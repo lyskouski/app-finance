@@ -24,10 +24,10 @@ class MyApp extends StatelessWidget {
         useMaterial3: true,
       ),
       themeMode: ThemeMode.system,
-      home: const HomePage(title: 'terCAD: Finance'),
+      home: const HomePage(),
       initialRoute: routes.homeRoute,
       routes: <String, WidgetBuilder>{
-        routes.homeRoute: (context) => const HomePage(title: 'terCAD: Finance'),
+        routes.homeRoute: (context) => const HomePage(),
       },
     );
   }
