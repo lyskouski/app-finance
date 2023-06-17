@@ -1,10 +1,10 @@
 import 'package:adaptive_breakpoints/adaptive_breakpoints.dart';
-import 'package:flutter/material.dart';
 import 'package:app_finance/customTheme.dart';
 import 'package:app_finance/routes/home/accountWidget.dart';
 import 'package:app_finance/routes/home/billWidget.dart';
 import 'package:app_finance/routes/home/budgetWidget.dart';
 import 'package:app_finance/routes/home/goalWidget.dart';
+import 'package:flutter/material.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});

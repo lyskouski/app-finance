@@ -1,29 +1,15 @@
+import 'package:app_finance/routes/home/baseWidget.dart';
 import 'package:flutter/material.dart';
 
-class BillWidget extends StatelessWidget {
+class BillWidget extends BaseWidget {
   BillWidget({
     super.key,
-    required this.margin,
-  });
-
-  EdgeInsetsGeometry margin;
-
-  @override
-  Widget build(context) {
-    return Expanded(
-      child: Container(
-        color: Colors.green,
-        margin: margin,
-        child: Center(
-          child: Text(
-            'Bill',
-            style: TextStyle(
-              color: Colors.white,
-              fontSize: 24,
-            ),
-          ),
-        ),
-      ),
-    );
-  }
+    String? title,
+    String? color,
+    required EdgeInsetsGeometry margin,
+  }) : super(
+    margin: margin,
+    title: 'Bill',
+    color: Colors.green,
+  );
 }
