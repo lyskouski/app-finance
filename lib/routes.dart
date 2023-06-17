@@ -1,1 +1,36 @@
+import 'package:flutter/material.dart';
+
 const String homeRoute = '/app/finance';
+
+var menuList = [
+  (
+    name: 'Home',
+    icon: Icons.home,
+    route: homeRoute,
+  ),
+  (
+    name: 'Goals',
+    icon: Icons.star,
+    route: homeRoute,
+  ),
+  (
+    name: 'Accounts',
+    icon: Icons.credit_card,
+    route: homeRoute,
+  ),
+  (
+    name: 'Bills',
+    icon: Icons.money_off,
+    route: homeRoute,
+  ),
+  (
+    name: 'Metrics',
+    icon: Icons.timeline,
+    route: homeRoute,
+  ),
+  (
+    name: 'Settings',
+    icon: Icons.settings,
+    route: homeRoute,
+  ),
+];
