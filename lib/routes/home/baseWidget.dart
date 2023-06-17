@@ -1,31 +1,94 @@
+import 'package:adaptive_breakpoints/adaptive_breakpoints.dart';
+import 'package:app_finance/customTheme.dart';
+import 'package:app_finance/routes/home/baseListWidget.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 
 class BaseWidget extends StatelessWidget {
   final EdgeInsetsGeometry margin;
   final String title;
-  final Color color; 
 
   const BaseWidget({
     Key? key,
     required this.margin,
     required this.title,
-    required this.color,
   }) : super(key: key);
 
   @override
   Widget build(context) {
+    var theme = CustomTheme(windowType: getWindowType(context));
+    final locale = Localizations.localeOf(context).toString();
+    final NumberFormat formatter = NumberFormat.currency(
+      locale: locale,
+      symbol: '\$',
+      decimalDigits: 2,
+    );
+    final DateFormat formatterDate = DateFormat.MMMMd(locale);
+
+    final TextTheme textTheme = Theme.of(context).textTheme;
+    final ColorScheme colorScheme = Theme.of(context).colorScheme;
+
     return Expanded(
       child: Container(
-        color: color,
         margin: margin,
-        child: Center(
-          child: Text(
-            title,
-            style: TextStyle(
-              color: Theme.of(context).colorScheme.primary,
-              fontSize: 24,
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            FractionallySizedBox(
+              widthFactor: 1.0, // Set widthFactor to 1.0 for full width
+              child: Container(
+                color: colorScheme.inverseSurface.withOpacity(0.1),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Padding(
+                      padding: EdgeInsets.fromLTRB(
+                          theme.getIndent(), theme.getIndent(), 0, 0),
+                      child: Text(
+                        title,
+                        style: textTheme.labelSmall,
+                      ),
+                    ),
+                    Padding(
+                      padding: EdgeInsets.fromLTRB(
+                          theme.getIndent(), 0, 0, theme.getIndent()),
+                      child: Text(
+                        formatter.format(123456.789),
+                        style: textTheme.displaySmall,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
             ),
-          ),
+            Expanded(
+              child: ListView(
+                children: [
+                  BaseLineWidget(
+                    title: 'Description $title 1',
+                    date: formatterDate.format(DateTime.parse('2023-06-17')),
+                    details: formatter.format(12345.789),
+                  ),
+                  BaseLineWidget(
+                    title: 'Description $title 2',
+                    date: formatterDate.format(DateTime.parse('2023-06-16 22:10')),
+                    details: formatter.format(1234.789),
+                  ),
+                  BaseLineWidget(
+                    title: 'Description $title 3',
+                    date: formatterDate.format(DateTime.parse('2023-06-15')),
+                    details: formatter.format(123.789),
+                  ),
+                  TextButton(
+                    onPressed: () {
+                      // Handle "More" button pressed
+                    },
+                    child: Text('More'),
+                  ),
+                ],
+              ),
+            ),
+          ],
         ),
       ),
     );

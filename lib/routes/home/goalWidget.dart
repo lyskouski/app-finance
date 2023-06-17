@@ -16,7 +16,7 @@ class GoalWidget extends StatelessWidget {
       height: MediaQuery.of(context).size.height * 0.1,
       child: Center(
         child: Text(
-          'Goal',
+          'Goals',
           style: TextStyle(
             color: Colors.white,
             fontSize: 24,
