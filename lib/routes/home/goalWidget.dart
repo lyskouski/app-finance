@@ -1,27 +1,127 @@
+import 'package:adaptive_breakpoints/adaptive_breakpoints.dart';
+import 'package:app_finance/customTheme.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 
 class GoalWidget extends StatelessWidget {
+  EdgeInsetsGeometry margin;
+  String title;
+  String startDate;
+  String endDate;
+
   GoalWidget({
     super.key,
     required this.margin,
+    required this.title,
+    required this.startDate,
+    required this.endDate,
   });
 
-  EdgeInsetsGeometry margin;
+  double _calculateState(strStartDate, strEndDate) {
+    DateTime startDate = DateTime.parse(strStartDate);
+    DateTime endDate = DateTime.parse(strEndDate);
+    DateTime currentDate = DateTime.now();
+    if (endDate.isBefore(currentDate) ||
+        endDate.isAtSameMomentAs(currentDate)) {
+      return 1.0;
+    } else if (currentDate.isBefore(startDate) ||
+        startDate.isAtSameMomentAs(currentDate)) {
+      return 0.0;
+    } else {
+      double totalDays = endDate.difference(startDate).inDays.toDouble();
+      double currentDays = currentDate.difference(startDate).inDays.toDouble();
+      return currentDays / totalDays;
+    }
+  }
 
   @override
   Widget build(context) {
+    var theme = CustomTheme(windowType: getWindowType(context));
+    final ColorScheme colorScheme = Theme.of(context).colorScheme;
+    final TextTheme textTheme = Theme.of(context).textTheme;
+    double screenWidth =
+        MediaQuery.of(context).size.width - theme.getIndent() * 2;
+
+    final locale = Localizations.localeOf(context).toString();
+    final DateFormat formatterDate = DateFormat.yMEd(locale);
+
     return Container(
-      color: Colors.blue,
       margin: margin,
-      height: MediaQuery.of(context).size.height * 0.1,
-      child: Center(
-        child: Text(
-          'Goals',
-          style: TextStyle(
-            color: Colors.white,
-            fontSize: 24,
+      height: 50 + theme.getIndent() * 2,
+      color: colorScheme.inversePrimary,
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          FractionallySizedBox(
+            widthFactor: 1.0,
+            child: Container(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Padding(
+                    padding: EdgeInsets.fromLTRB(
+                        theme.getIndent(), theme.getIndent(), 0, 0),
+                    child: Text(
+                      'Goals',
+                      style: textTheme.labelSmall,
+                    ),
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Padding(
+                        padding: EdgeInsets.only(left: theme.getIndent()),
+                        child: Text(
+                          title,
+                          style: textTheme.bodyMedium,
+                        ),
+                      ),
+                      Padding(
+                        padding: EdgeInsets.only(right: theme.getIndent()),
+                        child: Text(
+                          formatterDate.format(DateTime.parse(endDate)),
+                          style: textTheme.bodyMedium,
+                        ),
+                      ),
+                    ],
+                  ),
+                  Container(
+                    height: 8,
+                    margin: EdgeInsets.fromLTRB(theme.getIndent(),
+                        theme.getIndent() / 2, theme.getIndent(), 0),
+                    child: LinearProgressIndicator(
+                      value: 0.4,
+                      backgroundColor: colorScheme.primary.withOpacity(0.3),
+                      valueColor: AlwaysStoppedAnimation<Color>(
+                          colorScheme.onPrimaryContainer),
+                    ),
+                  ),
+                ],
+              ),
+            ),
           ),
-        ),
+          Stack(
+            children: [
+              Transform.translate(
+                offset: Offset(
+                    theme.getIndent() * 1.5 +
+                        screenWidth * _calculateState(startDate, endDate),
+                    -6),
+                child: Tooltip(
+                  message: 'Current Date',
+                  child: Container(
+                    width: 4.0,
+                    height: 4.0,
+                    decoration: BoxDecoration(
+                      color: colorScheme.inversePrimary,
+                      shape: BoxShape.circle,
+                    ),
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ],
       ),
     );
   }

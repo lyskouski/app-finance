@@ -1,38 +1,60 @@
+import 'package:adaptive_breakpoints/adaptive_breakpoints.dart';
+import 'package:app_finance/charts/barVerticalSingle.dart';
+import 'package:app_finance/customTheme.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
 class BaseLineWidget extends StatelessWidget {
   final String title;
   final String details;
-  final String date;
+  final String description;
+  final double progress;
+  final Color color;
 
-  const BaseLineWidget(
-      {required this.title, required this.details, required this.date});
+  const BaseLineWidget({
+    required this.title,
+    required this.details,
+    required this.description,
+    this.progress = 1,
+    required this.color,
+  });
 
   @override
   Widget build(BuildContext context) {
+    var theme = CustomTheme(windowType: getWindowType(context));
+    final TextTheme textTheme = Theme.of(context).textTheme;
+
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
+            Row(
+              mainAxisAlignment: MainAxisAlignment.start,
               children: [
-                Text(
-                  title,
-                  style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
-                ),
-                Text(
-                  date,
-                  style: TextStyle(fontSize: 12),
+                BarVerticalSingle(value: progress, height: 24, color: color),
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      title,
+                      style: textTheme.bodyMedium,
+                    ),
+                    Text(
+                      description,
+                      style: textTheme.bodySmall,
+                    ),
+                  ],
                 ),
               ],
             ),
             Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Text(details),
+              padding: EdgeInsets.all(theme.getIndent()),
+              child: Text(
+                details,
+                style: textTheme.bodyMedium,
+              ),
             ),
           ],
         ),
