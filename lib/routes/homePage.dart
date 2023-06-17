@@ -41,35 +41,43 @@ class _HomePageState extends State<HomePage> {
       ),
       body: Scaffold(
         body: SafeArea(
-          child: LayoutBuilder(
-            builder: (context, constraints) {
-              if (theme.isLower(AdaptiveWindowType.small)) {
-                return Column(
-                  children: [
-                    GoalWidget(margin: single),
-                    BillWidget(margin: single),
-                    AccountWidget(margin: single),
-                    BudgetWidget(margin: bottom),
-                  ],
-                );
-              } else {
-                return Column(
-                  children: [
-                    GoalWidget(margin: single),
-                    Expanded(
-                      child: Row(
-                        children: [
-                          BillWidget(margin: middleLeft),
-                          AccountWidget(margin: middleRight),
-                        ],
-                      ),
+          child: LayoutBuilder(builder: (context, constraints) {
+            if (theme.isLower(AdaptiveWindowType.small)) {
+              return Column(
+                children: [
+                  GoalWidget(
+                    margin: single,
+                    title: 'Implement new functionality',
+                    startDate: '2022-01-01 00:00',
+                    endDate: '2024-09-01 00:00',
+                  ),
+                  BillWidget(margin: single),
+                  AccountWidget(margin: single),
+                  BudgetWidget(margin: bottom),
+                ],
+              );
+            } else {
+              return Column(
+                children: [
+                  GoalWidget(
+                    margin: single,
+                    title: 'Implement new functionality',
+                    startDate: '2022-01-01',
+                    endDate: '2023-09-01',
+                  ),
+                  Expanded(
+                    child: Row(
+                      children: [
+                        AccountWidget(margin: middleLeft),
+                        BillWidget(margin: middleRight),
+                      ],
                     ),
-                    BudgetWidget(margin: bottom),
-                  ],
-                );
-              }
+                  ),
+                  BudgetWidget(margin: bottom),
+                ],
+              );
             }
-          ),
+          }),
         ),
       ),
       floatingActionButton: FloatingActionButton(

@@ -35,7 +35,7 @@ class BaseWidget extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             FractionallySizedBox(
-              widthFactor: 1.0, // Set widthFactor to 1.0 for full width
+              widthFactor: 1.0,
               child: Container(
                 color: colorScheme.inverseSurface.withOpacity(0.1),
                 child: Column(
@@ -64,20 +64,26 @@ class BaseWidget extends StatelessWidget {
             Expanded(
               child: ListView(
                 children: [
+                  SizedBox(height: theme.getIndent()),
                   BaseLineWidget(
                     title: 'Description $title 1',
-                    date: formatterDate.format(DateTime.parse('2023-06-17')),
+                    description: formatterDate.format(DateTime.parse('2023-06-17')),
                     details: formatter.format(12345.789),
+                    progress: 0.5,
+                    color: Colors.red,
                   ),
                   BaseLineWidget(
                     title: 'Description $title 2',
-                    date: formatterDate.format(DateTime.parse('2023-06-16 22:10')),
+                    description: formatterDate.format(DateTime.parse('2023-06-16 22:10')),
                     details: formatter.format(1234.789),
+                    progress: 0.8,
+                    color: Colors.green,
                   ),
                   BaseLineWidget(
                     title: 'Description $title 3',
-                    date: formatterDate.format(DateTime.parse('2023-06-15')),
+                    description: formatterDate.format(DateTime.parse('2023-06-15')),
                     details: formatter.format(123.789),
+                    color: Colors.yellow,
                   ),
                   TextButton(
                     onPressed: () {
