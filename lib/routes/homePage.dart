@@ -71,12 +71,14 @@ class _HomePageState extends State<HomePage> {
       body: Scaffold(
         body: SafeArea(
           child: LayoutBuilder(builder: (context, constraints) {
-            if (theme.isLower(AdaptiveWindowType.small) && constraints.maxWidth < constraints.maxHeight) {
+            if (theme.isLower(AdaptiveWindowType.small) &&
+                constraints.maxWidth < constraints.maxHeight) {
               return Column(
                 children: [
                   GoalWidget(
                     margin: single,
-                    title: 'Implement new functionality to reach the goal of MVP',
+                    title:
+                        'Implement new functionality to reach the goal of MVP',
                     startDate: '2022-01-01 00:00',
                     endDate: '2024-09-01 00:00',
                   ),
@@ -86,19 +88,21 @@ class _HomePageState extends State<HomePage> {
                 ],
               );
             } else {
+              double offsetWidth = MediaQuery.of(context).size.width / 2 - indent * 4;
               return Column(
                 children: [
                   GoalWidget(
                     margin: single,
-                    title: 'Implement new functionality to reach the goal of MVP',
+                    title:
+                        'Implement new functionality to reach the goal of MVP',
                     startDate: '2022-01-01',
                     endDate: '2023-09-01',
                   ),
                   Expanded(
                     child: Row(
                       children: [
-                        AccountWidget(margin: middleLeft),
-                        BillWidget(margin: middleRight),
+                        AccountWidget(margin: middleLeft, offset: offsetWidth),
+                        BillWidget(margin: middleRight, offset: offsetWidth),
                       ],
                     ),
                   ),

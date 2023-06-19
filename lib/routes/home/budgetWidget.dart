@@ -5,9 +5,11 @@ class BudgetWidget extends BaseWidget {
   BudgetWidget({
     super.key,
     String? title,
+    double? offset,
     required EdgeInsetsGeometry margin,
   }) : super(
     margin: margin,
+    offset: offset,
     title: 'Budgets',
   );
 }

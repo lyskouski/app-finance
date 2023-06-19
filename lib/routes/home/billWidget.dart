@@ -5,9 +5,11 @@ class BillWidget extends BaseWidget {
   BillWidget({
     super.key,
     String? title,
+    double? offset,
     required EdgeInsetsGeometry margin,
   }) : super(
     margin: margin,
+    offset: offset,
     title: 'Bills',
   );
 }

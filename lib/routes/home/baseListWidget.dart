@@ -11,6 +11,7 @@ class BaseLineWidget extends StatelessWidget {
   final String description;
   final double progress;
   final Color color;
+  final double offset;
 
   const BaseLineWidget({
     required this.title,
@@ -18,6 +19,7 @@ class BaseLineWidget extends StatelessWidget {
     required this.description,
     this.progress = 1,
     required this.color,
+    required this.offset,
   });
 
   @override
@@ -31,36 +33,48 @@ class BaseLineWidget extends StatelessWidget {
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: [
-                BarVerticalSingle(value: progress, height: 24, color: color),
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Tooltip(
+            Expanded(
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  BarVerticalSingle(value: progress, height: 24, color: color),
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Tooltip(
                         message: title,
-                        child: SizedBox(
-                          width: MediaQuery.of(context).size.width * 0.5,
+                        child: Container(
+                          constraints: BoxConstraints(
+                            maxWidth: offset * 0.6 - theme.getIndent() * 2,
+                          ),
                           child: Text(
                             title,
                             style: textTheme.bodyMedium,
+                            overflow: TextOverflow.ellipsis,
                           ),
                         ),
-                    ),
-                    Text(
-                      description,
-                      style: textTheme.bodySmall,
-                    ),
-                  ],
-                ),
-              ],
+                      ),
+                      Text(
+                        description,
+                        style: textTheme.bodySmall,
+                        overflow: TextOverflow.ellipsis,
+                      ),
+                    ],
+                  ),
+                ],
+              ),
             ),
             Padding(
               padding: EdgeInsets.all(theme.getIndent()),
-              child: Text(
-                details,
-                style: textTheme.numberMedium,
+              child: Container(
+                constraints: BoxConstraints(
+                  maxWidth: MediaQuery.of(context).size.width * 0.4,
+                ),
+                child: Text(
+                  details,
+                  style: textTheme.numberMedium,
+                  overflow: TextOverflow.ellipsis,
+                ),
               ),
             ),
           ],

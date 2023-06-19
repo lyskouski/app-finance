@@ -5,9 +5,11 @@ class AccountWidget extends BaseWidget {
   AccountWidget({
     super.key,
     String? title,
+    double? offset,
     required EdgeInsetsGeometry margin,
   }) : super(
     margin: margin,
+    offset: offset,
     title: 'Accounts',
   );
 }

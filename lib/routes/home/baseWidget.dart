@@ -8,11 +8,13 @@ import 'package:intl/intl.dart';
 class BaseWidget extends StatelessWidget {
   final EdgeInsetsGeometry margin;
   final String title;
+  final double? offset;
 
   const BaseWidget({
     Key? key,
     required this.margin,
     required this.title,
+    this.offset,
   }) : super(key: key);
 
   @override
@@ -67,11 +69,12 @@ class BaseWidget extends StatelessWidget {
                 children: [
                   SizedBox(height: theme.getIndent()),
                   BaseLineWidget(
-                    title: 'Description $title 1',
+                    title: 'Description $title 1 with a long explanation',
                     description: formatterDate.format(DateTime.parse('2023-06-17')),
                     details: formatter.format(12345789.098),
                     progress: 0.5,
                     color: Colors.red,
+                    offset: offset ?? MediaQuery.of(context).size.width,
                   ),
                   BaseLineWidget(
                     title: 'Description $title 2',
@@ -79,12 +82,14 @@ class BaseWidget extends StatelessWidget {
                     details: formatter.format(1234.789),
                     progress: 0.8,
                     color: Colors.green,
+                    offset: offset ?? MediaQuery.of(context).size.width,
                   ),
                   BaseLineWidget(
                     title: 'Description $title 3',
                     description: formatterDate.format(DateTime.parse('2023-06-15')),
                     details: formatter.format(123.789),
                     color: Colors.yellow,
+                    offset: offset ?? MediaQuery.of(context).size.width,
                   ),
                   TextButton(
                     onPressed: () {
