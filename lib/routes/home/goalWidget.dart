@@ -63,24 +63,31 @@ class GoalWidget extends StatelessWidget {
                         theme.getIndent(), theme.getIndent(), 0, 0),
                     child: Text(
                       'Goals',
-                      style: textTheme.labelSmall,
+                      style: textTheme.headlineSmall,
                     ),
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Padding(
-                        padding: EdgeInsets.only(left: theme.getIndent()),
-                        child: Text(
-                          title,
-                          style: textTheme.bodyMedium,
+                      Tooltip(
+                        message: title,
+                        child: SizedBox(
+                          width: MediaQuery.of(context).size.width * 0.65,
+                          child: Padding(
+                            padding: EdgeInsets.only(left: theme.getIndent()),
+                            child: Text(
+                              title,
+                              style: textTheme.headlineMedium,
+                              overflow: TextOverflow.ellipsis,
+                            ),
+                          ),
                         ),
                       ),
                       Padding(
                         padding: EdgeInsets.only(right: theme.getIndent()),
                         child: Text(
                           formatterDate.format(DateTime.parse(endDate)),
-                          style: textTheme.bodyMedium,
+                          style: textTheme.headlineMedium,
                         ),
                       ),
                     ],

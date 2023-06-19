@@ -1,5 +1,6 @@
 import 'package:adaptive_breakpoints/adaptive_breakpoints.dart';
 import 'package:app_finance/charts/barVerticalSingle.dart';
+import 'package:app_finance/customTextTheme.dart';
 import 'package:app_finance/customTheme.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
@@ -37,9 +38,15 @@ class BaseLineWidget extends StatelessWidget {
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text(
-                      title,
-                      style: textTheme.bodyMedium,
+                    Tooltip(
+                        message: title,
+                        child: SizedBox(
+                          width: MediaQuery.of(context).size.width * 0.5,
+                          child: Text(
+                            title,
+                            style: textTheme.bodyMedium,
+                          ),
+                        ),
                     ),
                     Text(
                       description,
@@ -53,7 +60,7 @@ class BaseLineWidget extends StatelessWidget {
               padding: EdgeInsets.all(theme.getIndent()),
               child: Text(
                 details,
-                style: textTheme.bodyMedium,
+                style: textTheme.numberMedium,
               ),
             ),
           ],

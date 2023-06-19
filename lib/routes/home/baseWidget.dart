@@ -1,4 +1,5 @@
 import 'package:adaptive_breakpoints/adaptive_breakpoints.dart';
+import 'package:app_finance/customTextTheme.dart';
 import 'package:app_finance/customTheme.dart';
 import 'package:app_finance/routes/home/baseListWidget.dart';
 import 'package:flutter/material.dart';
@@ -46,7 +47,7 @@ class BaseWidget extends StatelessWidget {
                           theme.getIndent(), theme.getIndent(), 0, 0),
                       child: Text(
                         title,
-                        style: textTheme.labelSmall,
+                        style: textTheme.headlineSmall,
                       ),
                     ),
                     Padding(
@@ -54,7 +55,7 @@ class BaseWidget extends StatelessWidget {
                           theme.getIndent(), 0, 0, theme.getIndent()),
                       child: Text(
                         formatter.format(123456.789),
-                        style: textTheme.displaySmall,
+                        style: textTheme.numberLarge,
                       ),
                     ),
                   ],
@@ -68,7 +69,7 @@ class BaseWidget extends StatelessWidget {
                   BaseLineWidget(
                     title: 'Description $title 1',
                     description: formatterDate.format(DateTime.parse('2023-06-17')),
-                    details: formatter.format(12345.789),
+                    details: formatter.format(12345789.098),
                     progress: 0.5,
                     color: Colors.red,
                   ),
