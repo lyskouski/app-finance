@@ -1,0 +1,68 @@
+\documentclass[12pt, a4paper, twoside]{extreport}
+\usepackage[T2A]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{makeidx}
+\usepackage{fancyhdr}
+\usepackage{graphicx}
+\usepackage{watermark}
+\usepackage{titling}
+\usepackage[fencedCode,hashEnumerators,smartEllipses]{markdown}
+
+\usepackage{customization}
+
+\sloppy
+
+% Creating headers
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead{} 
+\makeatletter
+\renewcommand{\chaptermark}[2]{\markboth{\tiny #1}{\tiny #2}}
+\makeatother
+
+\fancyhead[LE]{\thepage}
+\fancyhead[RE]{\itshape\nouppercase  \rightmark}
+\fancyhead[LO]{\itshape\nouppercase \leftmark}
+\fancyhead[RO]{\thepage}
+
+\author{Viachaslau Lyskouski}
+\title{Flutter Serverless Applications Development}
+%\subtitle{On Example of Financial Accounting Application Development Flow}
+\date{2023}
+
+
+\begin{document}
+
+%\put(-30,-556)
+%\put(-55,-565)
+%\thiswatermark{\centering%
+%\put(-50,-560){\includegraphics[scale=1.55]{./img/book_begin.jpg}}%
+%}
+
+%~
+%\thispagestyle{empty}
+%\newpage
+
+\maketitle
+\include{./info}
+\tableofcontents
+
+%\include{./example}
+%\markdownInput{./example.md}
+
+\thispagestyle{empty}
+
+%\newpage
+%\thispagestyle{empty}
+
+%\thiswatermark{\centering%
+%\put(-50,-560){\includegraphics[scale=1.55]{./img/book_end.jpg}}%
+%}
+
+~
+
+\end{document}

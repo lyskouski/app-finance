@@ -1,0 +1,55 @@
+\ProvidesPackage{customization}
+
+\usepackage{amsmath}
+\usepackage{fancyhdr}
+
+% ======
+% Part customization 
+\newcommand{\custompart}[3]{%
+\part*{#1 \\ 
+\small{~\\ Author: #2}
+\thispagestyle{empty}
+}
+\setcounter{section}{0}
+\addcontentsline{toc}{part}{#1}
+\chaptermark{<<#1>>, author: #2}{#3}
+}
+
+% ======
+% Section customization
+\newcommand{\customsection}[3]{%
+\section{#3}
+\chaptermark{<<#1>>, author: #2}{Section \thesection ~ #3 }
+}
+
+% ======
+% Chapter customization
+\renewcommand{\thechapter}{}
+\renewcommand\thesection{\arabic{section}.}
+\renewcommand{\thesubsection}{\arabic{section}.\arabic{subsection}.}
+
+% ======
+% Block with borders
+\newenvironment{mssg}[1]{%
+\noindent
+\begin{tiny}
+\begin{ttfamily}
+\begin{tabular}{|p{0.95\textwidth}|}
+\hline\\
+#1
+\\[1ex]
+\hline\\
+}
+{ 
+\\\\\hline
+\end{tabular}
+\end{ttfamily}
+\end{tiny}
+}
+
+% ======
+\newcommand\textline[4][t]{%
+  \parbox[#1]{.3\textwidth}{#2}%
+  \parbox[#1]{.1\textwidth}{#3}%
+  \parbox[#1]{.6\textwidth}{#4}%
+}
