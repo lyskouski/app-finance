@@ -69,10 +69,12 @@ class GoalWidget extends StatelessWidget {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Tooltip(
-                        message: title,
-                        child: SizedBox(
-                          width: MediaQuery.of(context).size.width * 0.65,
+                      Container(
+                        constraints: BoxConstraints(
+                          maxWidth: MediaQuery.of(context).size.width * 0.6,
+                        ),
+                        child: Tooltip(
+                          message: title,
                           child: Padding(
                             padding: EdgeInsets.only(left: theme.getIndent()),
                             child: Text(
@@ -83,11 +85,18 @@ class GoalWidget extends StatelessWidget {
                           ),
                         ),
                       ),
-                      Padding(
-                        padding: EdgeInsets.only(right: theme.getIndent()),
-                        child: Text(
-                          formatterDate.format(DateTime.parse(endDate)),
-                          style: textTheme.headlineMedium,
+                      Container(
+                        constraints: BoxConstraints(
+                          maxWidth: MediaQuery.of(context).size.width * 0.3,
+                        ),
+                        child: Padding(
+                          padding: EdgeInsets.only(right: theme.getIndent()),
+                          child: Text(
+                            formatterDate.format(DateTime.parse(endDate)),
+                            style: textTheme.headlineMedium,
+                            textAlign: TextAlign.right,
+                            overflow: TextOverflow.ellipsis,
+                          ),
                         ),
                       ),
                     ],
