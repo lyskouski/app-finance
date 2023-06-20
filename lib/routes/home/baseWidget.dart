@@ -1,6 +1,6 @@
 import 'package:adaptive_breakpoints/adaptive_breakpoints.dart';
 import 'package:app_finance/customTextTheme.dart';
-import 'package:app_finance/customTheme.dart';
+import 'package:app_finance/helpers/themeHelper.dart';
 import 'package:app_finance/routes/home/baseListWidget.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
@@ -20,7 +20,7 @@ class BaseWidget extends StatelessWidget {
 
   @override
   Widget build(context) {
-    var theme = CustomTheme(windowType: getWindowType(context));
+    var theme = ThemeHelper(windowType: getWindowType(context));
     final locale = Localizations.localeOf(context).toString();
     final NumberFormat formatter = NumberFormat.currency(
       locale: locale,

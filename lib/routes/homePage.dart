@@ -1,5 +1,5 @@
 import 'package:adaptive_breakpoints/adaptive_breakpoints.dart';
-import 'package:app_finance/customTheme.dart';
+import 'package:app_finance/helpers/themeHelper.dart';
 import 'package:app_finance/routes/home/accountWidget.dart';
 import 'package:app_finance/routes/home/billWidget.dart';
 import 'package:app_finance/routes/home/budgetWidget.dart';
@@ -24,7 +24,7 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
-    var theme = CustomTheme(windowType: getWindowType(context));
+    var theme = ThemeHelper(windowType: getWindowType(context));
     final ColorScheme colorScheme = Theme.of(context).colorScheme;
     double indent = theme.getIndent();
     EdgeInsets single = EdgeInsets.fromLTRB(indent, indent, indent, 0);

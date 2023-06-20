@@ -1,7 +1,7 @@
 import 'package:adaptive_breakpoints/adaptive_breakpoints.dart';
 import 'package:app_finance/charts/barVerticalSingle.dart';
 import 'package:app_finance/customTextTheme.dart';
-import 'package:app_finance/customTheme.dart';
+import 'package:app_finance/helpers/themeHelper.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
@@ -24,7 +24,7 @@ class BaseLineWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var theme = CustomTheme(windowType: getWindowType(context));
+    var theme = ThemeHelper(windowType: getWindowType(context));
     final TextTheme textTheme = Theme.of(context).textTheme;
 
     return Column(

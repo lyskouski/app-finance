@@ -1,7 +1,7 @@
 import 'package:adaptive_breakpoints/adaptive_breakpoints.dart';
 
-class CustomTheme {
-  const CustomTheme({
+class ThemeHelper {
+  const ThemeHelper({
     required this.windowType,
   });
 

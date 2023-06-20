@@ -2,7 +2,6 @@ import 'dart:ffi';
 
 import 'package:adaptive_breakpoints/adaptive_breakpoints.dart';
 import 'package:app_finance/routes.dart' as routes;
-import 'package:app_finance/customTheme.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 

@@ -1,5 +1,5 @@
 import 'package:adaptive_breakpoints/adaptive_breakpoints.dart';
-import 'package:app_finance/customTheme.dart';
+import 'package:app_finance/helpers/themeHelper.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:flutter_gen/gen_l10n/app_localization.dart';
@@ -37,7 +37,7 @@ class GoalWidget extends StatelessWidget {
 
   @override
   Widget build(context) {
-    var theme = CustomTheme(windowType: getWindowType(context));
+    var theme = ThemeHelper(windowType: getWindowType(context));
     final ColorScheme colorScheme = Theme.of(context).colorScheme;
     final TextTheme textTheme = Theme.of(context).textTheme;
     double screenWidth =
