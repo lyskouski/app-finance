@@ -3,6 +3,7 @@
 // found in the LICENSE file.
 
 import 'package:adaptive_breakpoints/adaptive_breakpoints.dart';
+import 'package:app_finance/data.dart';
 import 'package:app_finance/helpers/theme_helper.dart';
 import 'package:app_finance/widgets/home/account_widget.dart';
 import 'package:app_finance/widgets/home/base_widget.dart';
@@ -15,7 +16,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localization.dart';
 
 class HomePage extends StatefulWidget {
-  const HomePage({super.key});
+  final AppData state;
+  const HomePage({
+    super.key,
+    required this.state,
+  });
 
   @override
   State<HomePage> createState() => _HomePageState();
@@ -27,6 +32,7 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
+    final AppData state = widget.state;
     var theme = ThemeHelper(windowType: getWindowType(context));
     final ColorScheme colorScheme = Theme.of(context).colorScheme;
     double indent = theme.getIndent();
@@ -55,8 +61,8 @@ class _HomePageState extends State<HomePage> {
         ],
       ),
       drawer: Drawer(
-        elevation: 0, // Remove the elevation (shadow) of the drawer
-        shape: Border.all(width: 0), // Set a border without any width
+        elevation: 0,
+        shape: Border.all(width: 0),
         child: Container(
           color: colorScheme.onBackground,
           child: ListView.separated(
@@ -81,21 +87,23 @@ class _HomePageState extends State<HomePage> {
                 children: [
                   GoalWidget(
                     margin: single,
-                    title:
-                        'Implement new functionality to reach the goal of MVP',
-                    startDate: '2022-01-01 00:00',
-                    endDate: '2024-09-01 00:00',
+                    state: state.state['goals'],
                   ),
                   BillWidget(
-                      margin: single,
-                      title: AppLocalizations.of(context)!.billHeadline),
+                    margin: single,
+                    title: AppLocalizations.of(context)!.billHeadline,
+                    state: state.state['bills'],
+                  ),
                   AccountWidget(
                     margin: single,
                     title: AppLocalizations.of(context)!.accountHeadline,
+                    state: state.state['accounts'],
                   ),
                   BudgetWidget(
-                      margin: bottom,
-                      title: AppLocalizations.of(context)!.budgetHeadline),
+                    margin: bottom,
+                    title: AppLocalizations.of(context)!.budgetHeadline,
+                    state: state.state['budgets'],
+                  ),
                 ],
               );
             } else {
@@ -105,10 +113,7 @@ class _HomePageState extends State<HomePage> {
                 children: [
                   GoalWidget(
                     margin: single,
-                    title:
-                        'Implement new functionality to reach the goal of MVP',
-                    startDate: '2022-01-01',
-                    endDate: '2023-09-01',
+                    state: state.state['goals'],
                   ),
                   Expanded(
                     child: Row(
@@ -117,18 +122,22 @@ class _HomePageState extends State<HomePage> {
                           margin: middleLeft,
                           offset: offsetWidth,
                           title: AppLocalizations.of(context)!.accountHeadline,
+                          state: state.state['accounts'],
                         ),
                         BillWidget(
                           margin: middleRight,
                           offset: offsetWidth,
                           title: AppLocalizations.of(context)!.billHeadline,
+                          state: state.state['bills'],
                         ),
                       ],
                     ),
                   ),
                   BudgetWidget(
-                      margin: bottom,
-                      title: AppLocalizations.of(context)!.budgetHeadline),
+                    margin: bottom,
+                    title: AppLocalizations.of(context)!.budgetHeadline,
+                    state: state.state['budgets'],
+                  ),
                 ],
               );
             }

@@ -3,6 +3,7 @@
 // found in the LICENSE file.
 
 import 'package:app_finance/custom_text_theme.dart';
+import 'package:app_finance/data.dart';
 import 'package:app_finance/routes.dart' as routes;
 import 'package:app_finance/routes/home_page.dart';
 import 'package:flutter/material.dart';
@@ -11,12 +12,15 @@ import 'package:flutter_gen/gen_l10n/app_localization.dart';
 void main() {
   runApp(MyApp());
 }
+
 class MyApp extends StatefulWidget {
   @override
   _MyAppState createState() => _MyAppState();
 }
 
 class _MyAppState extends State<MyApp> {
+  final AppData state = AppData();
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -34,10 +38,10 @@ class _MyAppState extends State<MyApp> {
         useMaterial3: true,
       ),
       themeMode: ThemeMode.system,
-      home: const HomePage(),
+      home: HomePage(state: state),
       initialRoute: routes.homeRoute,
       routes: <String, WidgetBuilder>{
-        routes.homeRoute: (context) => const HomePage(),
+        routes.homeRoute: (context) => HomePage(state: state),
       },
     );
   }

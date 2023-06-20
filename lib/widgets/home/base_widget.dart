@@ -14,13 +14,27 @@ class BaseWidget extends StatelessWidget {
   final EdgeInsetsGeometry margin;
   final String title;
   final double? offset;
+  final Map<String, dynamic> state;
 
   const BaseWidget({
     Key? key,
     required this.margin,
     required this.title,
+    required this.state,
     this.offset,
   }) : super(key: key);
+
+  Widget buildListWidget(item, BuildContext context, NumberFormat formatter,
+      DateFormat formatterDate) {
+    return BaseLineWidget(
+      title: item.title,
+      description: formatterDate.format(DateTime.parse(item.description)),
+      details: formatter.format(item.details),
+      progress: item.progress,
+      color: item.color,
+      offset: offset ?? MediaQuery.of(context).size.width,
+    );
+  }
 
   @override
   Widget build(context) {
@@ -61,7 +75,7 @@ class BaseWidget extends StatelessWidget {
                       padding: EdgeInsets.fromLTRB(
                           theme.getIndent(), 0, 0, theme.getIndent()),
                       child: Text(
-                        formatter.format(123456.789),
+                        formatter.format(state['total']),
                         style: textTheme.numberLarge,
                       ),
                     ),
@@ -70,40 +84,24 @@ class BaseWidget extends StatelessWidget {
               ),
             ),
             Expanded(
-              child: ListView(
-                children: [
-                  SizedBox(height: theme.getIndent()),
-                  BaseLineWidget(
-                    title: 'Description $title 1 with a long explanation',
-                    description: formatterDate.format(DateTime.parse('2023-06-17')),
-                    details: formatter.format(12345789.098),
-                    progress: 0.5,
-                    color: Colors.red,
-                    offset: offset ?? MediaQuery.of(context).size.width,
-                  ),
-                  BaseLineWidget(
-                    title: 'Description $title 2',
-                    description: formatterDate.format(DateTime.parse('2023-06-16 22:10')),
-                    details: formatter.format(1234.789),
-                    progress: 0.8,
-                    color: Colors.green,
-                    offset: offset ?? MediaQuery.of(context).size.width,
-                  ),
-                  BaseLineWidget(
-                    title: 'Description $title 3',
-                    description: formatterDate.format(DateTime.parse('2023-06-15')),
-                    details: formatter.format(123.789),
-                    color: Colors.yellow,
-                    offset: offset ?? MediaQuery.of(context).size.width,
-                  ),
-                  TextButton(
-                    onPressed: () {
-                      // Handle "More" button pressed
-                    },
-                    child: Text(AppLocalizations.of(context)!.btnMore),
-                  ),
-                ],
-              ),
+              child: ListView.builder(
+                  itemCount: state['list'].length + 2,
+                  itemBuilder: (context, index) {
+                    if (index == 0) {
+                      return SizedBox(height: theme.getIndent());
+                    } else if (index <= state['list'].length) {
+                      final item = state['list'][index - 1];
+                      return buildListWidget(
+                          item, context, formatter, formatterDate);
+                    } else {
+                      return TextButton(
+                        onPressed: () {
+                          // Handle "More" button pressed
+                        },
+                        child: Text(AppLocalizations.of(context)!.btnMore),
+                      );
+                    }
+                  }),
             ),
           ],
         ),
