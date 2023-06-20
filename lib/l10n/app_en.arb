@@ -1,3 +1,11 @@
 {
-
+  "title": "terCAD: Finance",
+  "subscriptionTooltip": "Activate Subscription",
+  "addMainTooltip": "Add Bill, Income or Transfer",
+  "goalHeadline": "Goals",
+  "currentDate": "Current Date",
+  "budgetHeadline": "Budgets",
+  "billHeadline": "Bills",
+  "accountHeadline": "Accounts",
+  "btnMore": "More"
 }

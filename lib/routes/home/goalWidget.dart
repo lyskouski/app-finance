@@ -2,6 +2,7 @@ import 'package:adaptive_breakpoints/adaptive_breakpoints.dart';
 import 'package:app_finance/customTheme.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import 'package:flutter_gen/gen_l10n/app_localization.dart';
 
 class GoalWidget extends StatelessWidget {
   EdgeInsetsGeometry margin;
@@ -62,7 +63,7 @@ class GoalWidget extends StatelessWidget {
                     padding: EdgeInsets.fromLTRB(
                         theme.getIndent(), theme.getIndent(), 0, 0),
                     child: Text(
-                      'Goals',
+                      AppLocalizations.of(context)!.goalHeadline,
                       style: textTheme.headlineSmall,
                     ),
                   ),
@@ -124,7 +125,7 @@ class GoalWidget extends StatelessWidget {
                         screenWidth * _calculateState(startDate, endDate),
                     -6),
                 child: Tooltip(
-                  message: 'Current Date',
+                  message: AppLocalizations.of(context)!.currentDate,
                   child: Container(
                     width: 4.0,
                     height: 4.0,
