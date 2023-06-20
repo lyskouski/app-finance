@@ -3,13 +3,14 @@
 // found in the LICENSE file.
 
 import 'package:adaptive_breakpoints/adaptive_breakpoints.dart';
-import 'package:app_finance/helpers/themeHelper.dart';
-import 'package:app_finance/widgets/home/accountWidget.dart';
-import 'package:app_finance/widgets/home/billWidget.dart';
-import 'package:app_finance/widgets/home/budgetWidget.dart';
-import 'package:app_finance/widgets/home/goalWidget.dart';
+import 'package:app_finance/helpers/theme_helper.dart';
+import 'package:app_finance/widgets/home/account_widget.dart';
+import 'package:app_finance/widgets/home/base_widget.dart';
+import 'package:app_finance/widgets/home/bill_widget.dart';
+import 'package:app_finance/widgets/home/budget_widget.dart';
+import 'package:app_finance/widgets/home/goal_widget.dart';
 import 'package:app_finance/routes.dart' as routes;
-import 'package:app_finance/widgets/menuWidget.dart';
+import 'package:app_finance/widgets/menu_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localization.dart';
 

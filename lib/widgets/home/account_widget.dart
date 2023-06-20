@@ -1,9 +1,8 @@
-import 'package:app_finance/widgets/home/baseWidget.dart';
+import 'package:app_finance/widgets/home/base_widget.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_gen/gen_l10n/app_localization.dart';
 
-class BudgetWidget extends BaseWidget {
-  BudgetWidget({
+class AccountWidget extends BaseWidget {
+  AccountWidget({
     super.key,
     required String title,
     double? offset,

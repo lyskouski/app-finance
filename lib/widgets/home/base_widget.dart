@@ -3,9 +3,9 @@
 // found in the LICENSE file.
 
 import 'package:adaptive_breakpoints/adaptive_breakpoints.dart';
-import 'package:app_finance/customTextTheme.dart';
-import 'package:app_finance/helpers/themeHelper.dart';
-import 'package:app_finance/widgets/home/baseListWidget.dart';
+import 'package:app_finance/custom_text_theme.dart';
+import 'package:app_finance/helpers/theme_helper.dart';
+import 'package:app_finance/widgets/home/base_list_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:flutter_gen/gen_l10n/app_localization.dart';
