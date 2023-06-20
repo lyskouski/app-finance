@@ -1,4 +1,4 @@
-import 'package:app_finance/routes/home/baseWidget.dart';
+import 'package:app_finance/widgets/home/baseWidget.dart';
 import 'package:flutter/material.dart';
 
 class AccountWidget extends BaseWidget {

@@ -1,11 +1,11 @@
 import 'package:adaptive_breakpoints/adaptive_breakpoints.dart';
 import 'package:app_finance/helpers/themeHelper.dart';
-import 'package:app_finance/routes/home/accountWidget.dart';
-import 'package:app_finance/routes/home/billWidget.dart';
-import 'package:app_finance/routes/home/budgetWidget.dart';
-import 'package:app_finance/routes/home/goalWidget.dart';
+import 'package:app_finance/widgets/home/accountWidget.dart';
+import 'package:app_finance/widgets/home/billWidget.dart';
+import 'package:app_finance/widgets/home/budgetWidget.dart';
+import 'package:app_finance/widgets/home/goalWidget.dart';
 import 'package:app_finance/routes.dart' as routes;
-import 'package:app_finance/routes/menuWidget.dart';
+import 'package:app_finance/widgets/menuWidget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localization.dart';
 
