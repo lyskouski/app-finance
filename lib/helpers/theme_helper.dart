@@ -3,6 +3,7 @@
 // found in the LICENSE file.
 
 import 'package:adaptive_breakpoints/adaptive_breakpoints.dart';
+import 'package:flutter/material.dart';
 
 class ThemeHelper {
   const ThemeHelper({
@@ -14,4 +15,8 @@ class ThemeHelper {
   bool isLower(AdaptiveWindowType size) => windowType <= size;
 
   double getIndent() => isLower(AdaptiveWindowType.small) ? 8.0 : 16.0;
+
+  bool isVertical(BoxConstraints constraints) =>
+      isLower(AdaptiveWindowType.small) &&
+      constraints.maxWidth < constraints.maxHeight;
 }
