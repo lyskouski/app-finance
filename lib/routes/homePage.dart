@@ -7,6 +7,7 @@ import 'package:app_finance/routes/home/goalWidget.dart';
 import 'package:app_finance/routes.dart' as routes;
 import 'package:app_finance/routes/menuWidget.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localization.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -37,7 +38,7 @@ class _HomePageState extends State<HomePage> {
         toolbarHeight: 40,
         title: Center(
           child: Text(
-            'terCAD: Finance',
+            AppLocalizations.of(context)!.title,
             style:
                 TextStyle(color: Theme.of(context).colorScheme.inversePrimary),
           ),
@@ -45,7 +46,7 @@ class _HomePageState extends State<HomePage> {
         actions: [
           IconButton(
             icon: Icon(Icons.subscriptions),
-            tooltip: 'Activate Subscription',
+            tooltip: AppLocalizations.of(context)!.subscriptionTooltip,
             onPressed: () => Navigator.pushNamed(context, routes.homeRoute),
           ),
         ],
@@ -82,13 +83,21 @@ class _HomePageState extends State<HomePage> {
                     startDate: '2022-01-01 00:00',
                     endDate: '2024-09-01 00:00',
                   ),
-                  BillWidget(margin: single),
-                  AccountWidget(margin: single),
-                  BudgetWidget(margin: bottom),
+                  BillWidget(
+                      margin: single,
+                      title: AppLocalizations.of(context)!.billHeadline),
+                  AccountWidget(
+                    margin: single,
+                    title: AppLocalizations.of(context)!.accountHeadline,
+                  ),
+                  BudgetWidget(
+                      margin: bottom,
+                      title: AppLocalizations.of(context)!.budgetHeadline),
                 ],
               );
             } else {
-              double offsetWidth = MediaQuery.of(context).size.width / 2 - indent * 4;
+              double offsetWidth =
+                  MediaQuery.of(context).size.width / 2 - indent * 4;
               return Column(
                 children: [
                   GoalWidget(
@@ -101,12 +110,22 @@ class _HomePageState extends State<HomePage> {
                   Expanded(
                     child: Row(
                       children: [
-                        AccountWidget(margin: middleLeft, offset: offsetWidth),
-                        BillWidget(margin: middleRight, offset: offsetWidth),
+                        AccountWidget(
+                          margin: middleLeft,
+                          offset: offsetWidth,
+                          title: AppLocalizations.of(context)!.accountHeadline,
+                        ),
+                        BillWidget(
+                          margin: middleRight,
+                          offset: offsetWidth,
+                          title: AppLocalizations.of(context)!.billHeadline,
+                        ),
                       ],
                     ),
                   ),
-                  BudgetWidget(margin: bottom),
+                  BudgetWidget(
+                      margin: bottom,
+                      title: AppLocalizations.of(context)!.budgetHeadline),
                 ],
               );
             }
@@ -115,7 +134,7 @@ class _HomePageState extends State<HomePage> {
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: _openAddTab,
-        tooltip: 'Add Bill, Income or Transfer',
+        tooltip: AppLocalizations.of(context)!.addMainTooltip,
         child: const Icon(Icons.add),
       ),
     );

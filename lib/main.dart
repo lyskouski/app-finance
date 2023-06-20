@@ -1,8 +1,8 @@
-import 'package:adaptive_breakpoints/adaptive_breakpoints.dart';
 import 'package:app_finance/customTextTheme.dart';
 import 'package:app_finance/routes.dart' as routes;
 import 'package:app_finance/routes/homePage.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localization.dart';
 
 void main() {
   runApp(const MyApp());
@@ -15,8 +15,9 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'terCAD: Finance',
       debugShowCheckedModeBanner: false,
+      localizationsDelegates: AppLocalizations.localizationsDelegates,
+      supportedLocales: AppLocalizations.supportedLocales,
       theme: ThemeData(
         brightness: Brightness.light,
         textTheme: CustomTextTheme.textTheme(Theme.of(context).textTheme),

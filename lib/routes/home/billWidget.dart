@@ -4,12 +4,12 @@ import 'package:flutter/material.dart';
 class BillWidget extends BaseWidget {
   BillWidget({
     super.key,
-    String? title,
+    required String title,
     double? offset,
     required EdgeInsetsGeometry margin,
   }) : super(
     margin: margin,
     offset: offset,
-    title: 'Bills',
+    title: title,
   );
 }

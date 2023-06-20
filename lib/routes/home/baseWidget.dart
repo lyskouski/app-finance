@@ -4,6 +4,7 @@ import 'package:app_finance/customTheme.dart';
 import 'package:app_finance/routes/home/baseListWidget.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import 'package:flutter_gen/gen_l10n/app_localization.dart';
 
 class BaseWidget extends StatelessWidget {
   final EdgeInsetsGeometry margin;
@@ -95,7 +96,7 @@ class BaseWidget extends StatelessWidget {
                     onPressed: () {
                       // Handle "More" button pressed
                     },
-                    child: Text('More'),
+                    child: Text(AppLocalizations.of(context)!.btnMore),
                   ),
                 ],
               ),
