@@ -1,7 +1,11 @@
+// Copyright 2023 The terCAD team. All rights reserved.
+// Use of this source code is governed by a CC BY-NC-ND 4.0 license that can be
+// found in the LICENSE file.
+
 import 'package:adaptive_breakpoints/adaptive_breakpoints.dart';
-import 'package:app_finance/customTextTheme.dart';
-import 'package:app_finance/customTheme.dart';
-import 'package:app_finance/routes/home/baseListWidget.dart';
+import 'package:app_finance/custom_text_theme.dart';
+import 'package:app_finance/helpers/theme_helper.dart';
+import 'package:app_finance/widgets/home/base_list_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:flutter_gen/gen_l10n/app_localization.dart';
@@ -10,17 +14,31 @@ class BaseWidget extends StatelessWidget {
   final EdgeInsetsGeometry margin;
   final String title;
   final double? offset;
+  final Map<String, dynamic> state;
 
   const BaseWidget({
     Key? key,
     required this.margin,
     required this.title,
+    required this.state,
     this.offset,
   }) : super(key: key);
 
+  Widget buildListWidget(item, BuildContext context, NumberFormat formatter,
+      DateFormat formatterDate) {
+    return BaseLineWidget(
+      title: item.title,
+      description: formatterDate.format(DateTime.parse(item.description)),
+      details: formatter.format(item.details),
+      progress: item.progress,
+      color: item.color,
+      offset: (offset ?? MediaQuery.of(context).size.width) - 24,
+    );
+  }
+
   @override
   Widget build(context) {
-    var theme = CustomTheme(windowType: getWindowType(context));
+    var theme = ThemeHelper(windowType: getWindowType(context));
     final locale = Localizations.localeOf(context).toString();
     final NumberFormat formatter = NumberFormat.currency(
       locale: locale,
@@ -57,7 +75,7 @@ class BaseWidget extends StatelessWidget {
                       padding: EdgeInsets.fromLTRB(
                           theme.getIndent(), 0, 0, theme.getIndent()),
                       child: Text(
-                        formatter.format(123456.789),
+                        formatter.format(state['total']),
                         style: textTheme.numberLarge,
                       ),
                     ),
@@ -66,40 +84,24 @@ class BaseWidget extends StatelessWidget {
               ),
             ),
             Expanded(
-              child: ListView(
-                children: [
-                  SizedBox(height: theme.getIndent()),
-                  BaseLineWidget(
-                    title: 'Description $title 1 with a long explanation',
-                    description: formatterDate.format(DateTime.parse('2023-06-17')),
-                    details: formatter.format(12345789.098),
-                    progress: 0.5,
-                    color: Colors.red,
-                    offset: offset ?? MediaQuery.of(context).size.width,
-                  ),
-                  BaseLineWidget(
-                    title: 'Description $title 2',
-                    description: formatterDate.format(DateTime.parse('2023-06-16 22:10')),
-                    details: formatter.format(1234.789),
-                    progress: 0.8,
-                    color: Colors.green,
-                    offset: offset ?? MediaQuery.of(context).size.width,
-                  ),
-                  BaseLineWidget(
-                    title: 'Description $title 3',
-                    description: formatterDate.format(DateTime.parse('2023-06-15')),
-                    details: formatter.format(123.789),
-                    color: Colors.yellow,
-                    offset: offset ?? MediaQuery.of(context).size.width,
-                  ),
-                  TextButton(
-                    onPressed: () {
-                      // Handle "More" button pressed
-                    },
-                    child: Text(AppLocalizations.of(context)!.btnMore),
-                  ),
-                ],
-              ),
+              child: ListView.builder(
+                  itemCount: state['list'].length + 2,
+                  itemBuilder: (context, index) {
+                    if (index == 0) {
+                      return SizedBox(height: theme.getIndent());
+                    } else if (index <= state['list'].length) {
+                      final item = state['list'][index - 1];
+                      return buildListWidget(
+                          item, context, formatter, formatterDate);
+                    } else {
+                      return TextButton(
+                        onPressed: () {
+                          // Handle "More" button pressed
+                        },
+                        child: Text(AppLocalizations.of(context)!.btnMore),
+                      );
+                    }
+                  }),
             ),
           ],
         ),

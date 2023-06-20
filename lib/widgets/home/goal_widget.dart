@@ -1,21 +1,21 @@
+// Copyright 2023 The terCAD team. All rights reserved.
+// Use of this source code is governed by a CC BY-NC-ND 4.0 license that can be
+// found in the LICENSE file.
+
 import 'package:adaptive_breakpoints/adaptive_breakpoints.dart';
-import 'package:app_finance/customTheme.dart';
+import 'package:app_finance/helpers/theme_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:flutter_gen/gen_l10n/app_localization.dart';
 
 class GoalWidget extends StatelessWidget {
-  EdgeInsetsGeometry margin;
-  String title;
-  String startDate;
-  String endDate;
+  final EdgeInsetsGeometry margin;
+  final List<dynamic> state;
 
-  GoalWidget({
+  const GoalWidget({
     super.key,
     required this.margin,
-    required this.title,
-    required this.startDate,
-    required this.endDate,
+    required this.state,
   });
 
   double _calculateState(strStartDate, strEndDate) {
@@ -37,7 +37,7 @@ class GoalWidget extends StatelessWidget {
 
   @override
   Widget build(context) {
-    var theme = CustomTheme(windowType: getWindowType(context));
+    var theme = ThemeHelper(windowType: getWindowType(context));
     final ColorScheme colorScheme = Theme.of(context).colorScheme;
     final TextTheme textTheme = Theme.of(context).textTheme;
     double screenWidth =
@@ -75,11 +75,11 @@ class GoalWidget extends StatelessWidget {
                           maxWidth: MediaQuery.of(context).size.width * 0.6,
                         ),
                         child: Tooltip(
-                          message: title,
+                          message: state[0].title,
                           child: Padding(
                             padding: EdgeInsets.only(left: theme.getIndent()),
                             child: Text(
-                              title,
+                              state[0].title,
                               style: textTheme.headlineMedium,
                               overflow: TextOverflow.ellipsis,
                             ),
@@ -93,7 +93,7 @@ class GoalWidget extends StatelessWidget {
                         child: Padding(
                           padding: EdgeInsets.only(right: theme.getIndent()),
                           child: Text(
-                            formatterDate.format(DateTime.parse(endDate)),
+                            formatterDate.format(DateTime.parse(state[0].endDate)),
                             style: textTheme.headlineMedium,
                             textAlign: TextAlign.right,
                             overflow: TextOverflow.ellipsis,
@@ -122,7 +122,7 @@ class GoalWidget extends StatelessWidget {
               Transform.translate(
                 offset: Offset(
                     theme.getIndent() * 1.5 +
-                        screenWidth * _calculateState(startDate, endDate),
+                        screenWidth * _calculateState(state[0].startDate, state[0].endDate),
                     -6),
                 child: Tooltip(
                   message: AppLocalizations.of(context)!.currentDate,

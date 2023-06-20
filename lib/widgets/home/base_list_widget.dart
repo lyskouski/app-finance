@@ -1,9 +1,12 @@
+// Copyright 2023 The terCAD team. All rights reserved.
+// Use of this source code is governed by a CC BY-NC-ND 4.0 license that can be
+// found in the LICENSE file.
+
 import 'package:adaptive_breakpoints/adaptive_breakpoints.dart';
-import 'package:app_finance/charts/barVerticalSingle.dart';
-import 'package:app_finance/customTextTheme.dart';
-import 'package:app_finance/customTheme.dart';
+import 'package:app_finance/charts/bar_vertical_single.dart';
+import 'package:app_finance/custom_text_theme.dart';
+import 'package:app_finance/helpers/theme_helper.dart';
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
 
 class BaseLineWidget extends StatelessWidget {
   final String title;
@@ -24,7 +27,7 @@ class BaseLineWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var theme = CustomTheme(windowType: getWindowType(context));
+    var theme = ThemeHelper(windowType: getWindowType(context));
     final TextTheme textTheme = Theme.of(context).textTheme;
 
     return Column(
