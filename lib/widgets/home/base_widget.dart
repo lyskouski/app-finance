@@ -32,7 +32,7 @@ class BaseWidget extends StatelessWidget {
       details: formatter.format(item.details),
       progress: item.progress,
       color: item.color,
-      offset: offset ?? MediaQuery.of(context).size.width,
+      offset: (offset ?? MediaQuery.of(context).size.width) - 24,
     );
   }
 
