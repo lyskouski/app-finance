@@ -25,8 +25,6 @@ class _HomePageState extends State<HomePage> {
   get tabBarView => null;
   int selectedMenu = 0;
 
-  void _openAddTab() => Navigator.pushNamed(context, routes.homeRoute);
-
   @override
   Widget build(BuildContext context) {
     var theme = ThemeHelper(windowType: getWindowType(context));
@@ -138,7 +136,7 @@ class _HomePageState extends State<HomePage> {
         ),
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: _openAddTab,
+        onPressed: () => Navigator.pushNamed(context, routes.homeRoute),
         tooltip: AppLocalizations.of(context)!.addMainTooltip,
         child: const Icon(Icons.add),
       ),
