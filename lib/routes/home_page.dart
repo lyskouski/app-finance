@@ -32,6 +32,13 @@ class HomePage extends AbstractPage {
     return AppBar(
       backgroundColor: Theme.of(context).colorScheme.secondary,
       toolbarHeight: 40,
+      leading: IconButton(
+        icon: Icon(
+          Icons.menu,
+          color: Theme.of(context).colorScheme.inversePrimary.withOpacity(0.5),
+        ),
+        onPressed: () => Scaffold.of(context).openDrawer(),
+      ),
       title: Center(
         child: Text(
           getTitle(context),
@@ -40,7 +47,11 @@ class HomePage extends AbstractPage {
       ),
       actions: [
         IconButton(
-          icon: Icon(Icons.subscriptions),
+          icon: Icon(
+            Icons.subscriptions,
+            color:
+                Theme.of(context).colorScheme.inversePrimary.withOpacity(0.5),
+          ),
           tooltip: AppLocalizations.of(context)!.subscriptionTooltip,
           onPressed: () => Navigator.pushNamed(context, routes.homeRoute),
         ),

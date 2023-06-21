@@ -31,7 +31,10 @@ abstract class AbstractPage extends StatefulWidget {
       backgroundColor: Theme.of(context).colorScheme.secondary,
       toolbarHeight: 40,
       leading: IconButton(
-        icon: Icon(Icons.arrow_back),
+        icon: Icon(
+          Icons.arrow_back,
+          color: Theme.of(context).colorScheme.inversePrimary.withOpacity(0.6),
+        ),
         onPressed: () => Navigator.of(context).pop(),
       ),
       title: Text(
@@ -57,7 +60,10 @@ abstract class AbstractPage extends StatefulWidget {
           onSelected: (value) {
             Navigator.pushNamed(context, value);
           },
-          icon: Icon(Icons.more_vert),
+          icon: Icon(
+            Icons.more_vert,
+            color: Theme.of(context).colorScheme.inversePrimary.withOpacity(0.6),
+          ),
         ),
       ],
     );
