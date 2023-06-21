@@ -12,11 +12,15 @@ import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localization.dart';
 
 class AccountPage extends AbstractPage {
-  const AccountPage({
-    super.key,
+  AccountPage({
     required AppData state,
   }) : super(state: state);
 
+  @override
+  AccountPageState createState() => AccountPageState();
+}
+
+class AccountPageState extends AbstractPageState<AccountPage> {
   @override
   String getTitle(context) {
     return AppLocalizations.of(context)!.accountHeadline;

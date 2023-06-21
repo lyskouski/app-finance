@@ -15,13 +15,15 @@ import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localization.dart';
 
 class HomePage extends AbstractPage {
-  const HomePage({
-    super.key,
+  HomePage({
     required AppData state,
-  }) : super(
-          state: state,
-        );
+  }) : super(state: state);
 
+  @override
+  HomePageState createState() => HomePageState();
+}
+
+class HomePageState extends AbstractPageState<HomePage> {
   @override
   String getTitle(context) {
     return AppLocalizations.of(context)!.title;
