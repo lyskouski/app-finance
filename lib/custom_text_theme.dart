@@ -33,7 +33,7 @@ extension CustomTextTheme on TextTheme {
       ),
       bodyLarge: GoogleFonts.abel(
         fontSize: 16,
-        fontWeight: FontWeight.w400,
+        fontWeight: FontWeight.w600,
         letterSpacing: letterSpacingOrNone(1.2),
       ),
       bodyMedium: GoogleFonts.abel(
