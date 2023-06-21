@@ -38,6 +38,28 @@ abstract class AbstractPage extends StatefulWidget {
         getTitle(context),
         style: TextStyle(color: Theme.of(context).colorScheme.inversePrimary),
       ),
+      actions: [
+        PopupMenuButton(
+          itemBuilder: (BuildContext context) {
+            return routes.menuList.map((menuItem) {
+              return PopupMenuItem(
+                child: Row(
+                  children: [
+                    Icon(menuItem.icon),
+                    SizedBox(width: 8),
+                    Text(menuItem.name),
+                  ],
+                ),
+                value: menuItem.route,
+              );
+            }).toList();
+          },
+          onSelected: (value) {
+            Navigator.pushNamed(context, value);
+          },
+          icon: Icon(Icons.more_vert),
+        ),
+      ],
     );
   }
 }

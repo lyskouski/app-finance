@@ -1,5 +1,7 @@
 {
     "accountHeadline": "Accounts",
+    "accountTooltip": "Open Accounts",
+    "addAccountTooltip": "Add Account",
     "addMainTooltip": "Add Bill, Income or Transfer",
     "billHeadline": "Bills",
     "btnMore": "More",
@@ -7,5 +9,6 @@
     "currentDate": "Current Date",
     "goalHeadline": "Goals",
     "subscriptionTooltip": "Activate Subscription",
-    "title": "terCAD: Finance"
+    "title": "terCAD: Finance",
+    "homeTooltip": "Back to Main Page"
 }

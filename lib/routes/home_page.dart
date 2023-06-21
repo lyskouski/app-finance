@@ -83,6 +83,8 @@ class HomePage extends AbstractPage {
             margin: single,
             title: AppLocalizations.of(context)!.accountHeadline,
             state: state.state['accounts'],
+            route: routes.accountRoute,
+            tooltip: AppLocalizations.of(context)!.accountTooltip,
           ),
           BudgetWidget(
             margin: bottom,
@@ -107,6 +109,8 @@ class HomePage extends AbstractPage {
                   offset: offsetWidth,
                   title: AppLocalizations.of(context)!.accountHeadline,
                   state: state.state['accounts'],
+                  route: routes.accountRoute,
+                  tooltip: AppLocalizations.of(context)!.accountTooltip,
                 ),
                 BillWidget(
                   margin: middleRight,
