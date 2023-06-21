@@ -23,9 +23,9 @@ class AccountPage extends AbstractPage {
   }
 
   @override
-  FloatingActionButton buildButton(BuildContext context) {
+  Widget buildButton(BuildContext context, BoxConstraints constraints) {
     return FloatingActionButton(
-      onPressed: () => Navigator.pushNamed(context, routes.accountRoute),
+      onPressed: () => Navigator.pushNamed(context, routes.accountAddRoute),
       tooltip: AppLocalizations.of(context)!.addAccountTooltip,
       child: const Icon(Icons.add),
     );

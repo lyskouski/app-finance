@@ -60,7 +60,7 @@ class HomePage extends AbstractPage {
   }
 
   @override
-  FloatingActionButton buildButton(BuildContext context) {
+  Widget buildButton(BuildContext context, BoxConstraints constraints) {
     return FloatingActionButton(
       onPressed: () => Navigator.pushNamed(context, routes.homeRoute),
       tooltip: AppLocalizations.of(context)!.addMainTooltip,

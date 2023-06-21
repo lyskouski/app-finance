@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 
 const String homeRoute = '/app/finance';
 const String accountRoute = '/app/finance/account';
+const String accountAddRoute = '/app/finance/account/add';
 
 var menuList = [
   (

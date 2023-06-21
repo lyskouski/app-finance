@@ -5,6 +5,7 @@
 import 'package:app_finance/custom_text_theme.dart';
 import 'package:app_finance/data.dart';
 import 'package:app_finance/routes.dart' as routes;
+import 'package:app_finance/routes/account_add_page.dart';
 import 'package:app_finance/routes/account_page.dart';
 import 'package:app_finance/routes/home_page.dart';
 import 'package:flutter/material.dart';
@@ -44,6 +45,7 @@ class _MyAppState extends State<MyApp> {
       routes: <String, WidgetBuilder>{
         routes.homeRoute: (context) => HomePage(state: state),
         routes.accountRoute: (context) => AccountPage(state: state),
+        routes.accountAddRoute: (context) => AccountAddPage(state: state),
       },
     );
   }

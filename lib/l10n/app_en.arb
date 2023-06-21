@@ -6,9 +6,11 @@
     "billHeadline": "Bills",
     "btnMore": "More",
     "budgetHeadline": "Budgets",
+    "createAccountHeader": "Create new Account",
+    "createAccountTooltip": "Save Account",
     "currentDate": "Current Date",
     "goalHeadline": "Goals",
+    "homeTooltip": "Back to Main Page",
     "subscriptionTooltip": "Activate Subscription",
-    "title": "terCAD: Finance",
-    "homeTooltip": "Back to Main Page"
+    "title": "terCAD: Finance"
 }

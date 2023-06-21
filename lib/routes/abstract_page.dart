@@ -18,7 +18,7 @@ abstract class AbstractPage extends StatefulWidget {
 
   String getTitle(BuildContext context);
 
-  FloatingActionButton buildButton(BuildContext context);
+  Widget buildButton(BuildContext context, BoxConstraints constraints);
 
   Widget buildContent(
       BuildContext context, BoxConstraints constraints, AppData state);
@@ -62,7 +62,8 @@ abstract class AbstractPage extends StatefulWidget {
           },
           icon: Icon(
             Icons.more_vert,
-            color: Theme.of(context).colorScheme.inversePrimary.withOpacity(0.6),
+            color:
+                Theme.of(context).colorScheme.inversePrimary.withOpacity(0.6),
           ),
         ),
       ],
@@ -81,32 +82,34 @@ class _AbstractPageState extends State<AbstractPage> {
     double indent = ThemeHelper(windowType: getWindowType(context)).getIndent();
 
     return Scaffold(
-      appBar: widget.buildBar(context),
-      drawer: Drawer(
-        elevation: 0,
-        shape: Border.all(width: 0),
-        child: Container(
-          color: colorScheme.onBackground,
-          child: ListView.separated(
-            padding: EdgeInsets.symmetric(vertical: indent * 4),
-            separatorBuilder: (context, index) => SizedBox(height: indent * 2),
-            itemCount: routes.menuList.length,
-            itemBuilder: (context, index) => MenuWidget(
-              index: index,
-              setState: () => setState(() => selectedMenu = index),
-              selectedIndex: selectedMenu,
+        appBar: widget.buildBar(context),
+        drawer: Drawer(
+          elevation: 0,
+          shape: Border.all(width: 0),
+          child: Container(
+            color: colorScheme.onBackground,
+            child: ListView.separated(
+              padding: EdgeInsets.symmetric(vertical: indent * 4),
+              separatorBuilder: (context, index) =>
+                  SizedBox(height: indent * 2),
+              itemCount: routes.menuList.length,
+              itemBuilder: (context, index) => MenuWidget(
+                index: index,
+                setState: () => setState(() => selectedMenu = index),
+                selectedIndex: selectedMenu,
+              ),
             ),
           ),
         ),
-      ),
-      body: Scaffold(
-        body: SafeArea(
-          child: LayoutBuilder(builder: (context, constraints) {
-            return widget.buildContent(context, constraints, state);
-          }),
+        body: Scaffold(
+          body: SafeArea(
+            child: LayoutBuilder(builder: (context, constraints) {
+              return widget.buildContent(context, constraints, state);
+            }),
+          ),
         ),
-      ),
-      floatingActionButton: widget.buildButton(context),
-    );
+        floatingActionButton: LayoutBuilder(builder: (context, constraints) {
+          return widget.buildButton(context, constraints);
+        }));
   }
 }
