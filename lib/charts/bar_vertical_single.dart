@@ -20,7 +20,7 @@ class BarVerticalSingle extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SizedBox(
       width: height,
       height: width,
       child: Transform.rotate(

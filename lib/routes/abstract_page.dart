@@ -46,14 +46,14 @@ abstract class AbstractPage extends StatefulWidget {
           itemBuilder: (BuildContext context) {
             return routes.menuList.map((menuItem) {
               return PopupMenuItem(
+                value: menuItem.route,
                 child: Row(
                   children: [
                     Icon(menuItem.icon),
-                    SizedBox(width: 8),
+                    const SizedBox(width: 8),
                     Text(menuItem.name),
                   ],
                 ),
-                value: menuItem.route,
               );
             }).toList();
           },

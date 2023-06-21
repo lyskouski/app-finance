@@ -38,7 +38,7 @@ class AccountAddPage extends AccountPage {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Icon(Icons.save),
+              const Icon(Icons.save),
               Text(title, style: Theme.of(context).textTheme.headlineMedium)
             ],
           ),
@@ -50,7 +50,7 @@ class AccountAddPage extends AccountPage {
   @override
   Widget buildContent(
       BuildContext context, BoxConstraints constraints, AppData state) {
-    return Column(
+    return const Column(
       children: [Text('Form TBD')],
     );
   }

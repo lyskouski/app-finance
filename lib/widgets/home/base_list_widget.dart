@@ -16,7 +16,7 @@ class BaseLineWidget extends StatelessWidget {
   final Color color;
   final double offset;
 
-  const BaseLineWidget({
+  const BaseLineWidget({super.key, 
     required this.title,
     required this.details,
     required this.description,
@@ -82,7 +82,7 @@ class BaseLineWidget extends StatelessWidget {
             ),
           ],
         ),
-        Divider(),
+        const Divider(),
       ],
     );
   }
