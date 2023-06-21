@@ -5,6 +5,8 @@
 import 'package:flutter/material.dart';
 
 const String homeRoute = '/app/finance';
+const String accountRoute = '/app/finance/account';
+const String accountAddRoute = '/app/finance/account/add';
 
 var menuList = [
   (
@@ -20,7 +22,7 @@ var menuList = [
   (
     name: 'Accounts',
     icon: Icons.credit_card,
-    route: homeRoute,
+    route: accountRoute,
   ),
   (
     name: 'Bills',

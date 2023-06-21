@@ -11,14 +11,18 @@ class AccountWidget extends BaseWidget {
   AccountWidget({
     super.key,
     required String title,
-    double? offset,
     required EdgeInsetsGeometry margin,
     required Map<String, dynamic> state,
+    String? tooltip,
+    String? route,
+    double? offset,
   }) : super(
     margin: margin,
     offset: offset,
     title: title,
     state: state,
+    tooltip: tooltip,
+    route: route,
   );
 
   @override

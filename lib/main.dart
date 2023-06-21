@@ -5,6 +5,8 @@
 import 'package:app_finance/custom_text_theme.dart';
 import 'package:app_finance/data.dart';
 import 'package:app_finance/routes.dart' as routes;
+import 'package:app_finance/routes/account_add_page.dart';
+import 'package:app_finance/routes/account_page.dart';
 import 'package:app_finance/routes/home_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localization.dart';
@@ -42,6 +44,8 @@ class _MyAppState extends State<MyApp> {
       initialRoute: routes.homeRoute,
       routes: <String, WidgetBuilder>{
         routes.homeRoute: (context) => HomePage(state: state),
+        routes.accountRoute: (context) => AccountPage(state: state),
+        routes.accountAddRoute: (context) => AccountAddPage(state: state),
       },
     );
   }
