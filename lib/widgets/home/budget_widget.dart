@@ -9,7 +9,7 @@ class BudgetWidget extends AccountWidget {
   BudgetWidget({
     super.key,
     required String title,
-    double? offset,
+    required double offset,
     required EdgeInsetsGeometry margin,
     required Map<String, dynamic> state,
   }) : super(

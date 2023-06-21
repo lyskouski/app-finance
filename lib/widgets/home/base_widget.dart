@@ -14,7 +14,7 @@ import 'package:flutter_gen/gen_l10n/app_localization.dart';
 class BaseWidget extends StatelessWidget {
   final EdgeInsetsGeometry margin;
   final String title;
-  final double? offset;
+  final double offset;
   final Map<String, dynamic> state;
   String? tooltip;
   String? route;
@@ -24,20 +24,20 @@ class BaseWidget extends StatelessWidget {
     required this.margin,
     required this.title,
     required this.state,
+    required this.offset,
     this.tooltip,
     this.route,
-    this.offset,
   }) : super(key: key);
 
   Widget buildListWidget(item, BuildContext context, NumberFormat formatter,
-      DateFormat formatterDate) {
+      DateFormat formatterDate, double offset) {
     return BaseLineWidget(
       title: item.title,
       description: formatterDate.format(DateTime.parse(item.description)),
       details: formatter.format(item.details),
       progress: item.progress,
       color: item.color,
-      offset: (offset ?? MediaQuery.of(context).size.width) - 24,
+      offset: offset,
     );
   }
 
@@ -101,7 +101,7 @@ class BaseWidget extends StatelessWidget {
                     } else if (index <= state['list'].length) {
                       final item = state['list'][index - 1];
                       return buildListWidget(
-                          item, context, formatter, formatterDate);
+                          item, context, formatter, formatterDate, offset - 40);
                     } else {
                       return TextButton(
                         onPressed: () {

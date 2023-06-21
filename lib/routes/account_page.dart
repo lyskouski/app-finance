@@ -45,6 +45,7 @@ class AccountPageState extends AbstractPageState<AccountPage> {
           margin: EdgeInsets.all(helper.getIndent()),
           title: AppLocalizations.of(context)!.accountHeadline,
           state: state.state['accounts'],
+          offset: MediaQuery.of(context).size.width - helper.getIndent() * 2,
         )
       ],
     );

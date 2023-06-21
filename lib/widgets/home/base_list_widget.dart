@@ -48,7 +48,7 @@ class BaseLineWidget extends StatelessWidget {
                         message: title,
                         child: Container(
                           constraints: BoxConstraints(
-                            maxWidth: offset * 0.6 - theme.getIndent() * 2,
+                            maxWidth: offset * 0.6,
                           ),
                           child: Text(
                             title,
@@ -71,7 +71,7 @@ class BaseLineWidget extends StatelessWidget {
               padding: EdgeInsets.all(theme.getIndent()),
               child: Container(
                 constraints: BoxConstraints(
-                  maxWidth: MediaQuery.of(context).size.width * 0.4,
+                  maxWidth: offset * 0.4,
                 ),
                 child: Text(
                   details,

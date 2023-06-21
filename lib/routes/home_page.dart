@@ -79,6 +79,8 @@ class HomePageState extends AbstractPageState<HomePage> {
     EdgeInsets middleLeft = EdgeInsets.fromLTRB(indent, indent, 0, 0);
     EdgeInsets middleRight = EdgeInsets.fromLTRB(indent, indent, indent, 0);
     EdgeInsets bottom = EdgeInsets.fromLTRB(indent, indent, indent, indent);
+    double width = MediaQuery.of(context).size.width - indent * 2;
+    double halfWidth = width / 2 - indent;
 
     if (helper.isVertical(constraints)) {
       return Column(
@@ -91,6 +93,7 @@ class HomePageState extends AbstractPageState<HomePage> {
             margin: single,
             title: AppLocalizations.of(context)!.billHeadline,
             state: state.state['bills'],
+            offset: width,
           ),
           AccountWidget(
             margin: single,
@@ -98,16 +101,17 @@ class HomePageState extends AbstractPageState<HomePage> {
             state: state.state['accounts'],
             route: routes.accountRoute,
             tooltip: AppLocalizations.of(context)!.accountTooltip,
+            offset: width,
           ),
           BudgetWidget(
             margin: bottom,
             title: AppLocalizations.of(context)!.budgetHeadline,
             state: state.state['budgets'],
+            offset: width,
           ),
         ],
       );
     } else {
-      double offsetWidth = MediaQuery.of(context).size.width / 2 - indent * 4;
       return Column(
         children: [
           GoalWidget(
@@ -119,7 +123,7 @@ class HomePageState extends AbstractPageState<HomePage> {
               children: [
                 AccountWidget(
                   margin: middleLeft,
-                  offset: offsetWidth,
+                  offset: halfWidth,
                   title: AppLocalizations.of(context)!.accountHeadline,
                   state: state.state['accounts'],
                   route: routes.accountRoute,
@@ -127,7 +131,7 @@ class HomePageState extends AbstractPageState<HomePage> {
                 ),
                 BillWidget(
                   margin: middleRight,
-                  offset: offsetWidth,
+                  offset: halfWidth,
                   title: AppLocalizations.of(context)!.billHeadline,
                   state: state.state['bills'],
                 ),
@@ -138,6 +142,7 @@ class HomePageState extends AbstractPageState<HomePage> {
             margin: bottom,
             title: AppLocalizations.of(context)!.budgetHeadline,
             state: state.state['budgets'],
+            offset: width,
           ),
         ],
       );

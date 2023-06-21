@@ -13,9 +13,9 @@ class AccountWidget extends BaseWidget {
     required String title,
     required EdgeInsetsGeometry margin,
     required Map<String, dynamic> state,
+    required double offset,
     String? tooltip,
     String? route,
-    double? offset,
   }) : super(
     margin: margin,
     offset: offset,
@@ -27,14 +27,14 @@ class AccountWidget extends BaseWidget {
 
   @override
   Widget buildListWidget(item, BuildContext context, NumberFormat formatter,
-      DateFormat formatterDate) {
+      DateFormat formatterDate, double offset) {
     return BaseLineWidget(
       title: item.title,
       description: item.description,
       details: formatter.format(item.details),
       progress: item.progress,
       color: item.color,
-      offset: offset ?? MediaQuery.of(context).size.width,
+      offset: offset,
     );
   }
 }
