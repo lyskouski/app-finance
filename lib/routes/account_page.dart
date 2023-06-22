@@ -12,7 +12,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localization.dart';
 
 class AccountPage extends AbstractPage {
-  AccountPage({
+  AccountPage({super.key, 
     required AppData state,
   }) : super(state: state);
 

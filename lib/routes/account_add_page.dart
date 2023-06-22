@@ -23,7 +23,7 @@ class AccountAddPage extends AbstractPage {
   IconData? icon;
   Color? color;
 
-  AccountAddPage({
+  AccountAddPage({super.key, 
     required AppData state,
   }) : super(state: state);
 

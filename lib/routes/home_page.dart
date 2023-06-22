@@ -15,7 +15,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localization.dart';
 
 class HomePage extends AbstractPage {
-  HomePage({
+  HomePage({super.key, 
     required AppData state,
   }) : super(state: state);
 

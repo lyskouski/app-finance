@@ -13,7 +13,7 @@ abstract class AbstractPage<T> extends StatefulWidget {
   int selectedMenu = 0;
   final AppData state;
 
-  AbstractPage({
+  AbstractPage({super.key, 
     required this.state,
   });
 }
