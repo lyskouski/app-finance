@@ -15,15 +15,18 @@ import 'package:flutter_gen/gen_l10n/app_localization.dart';
 import 'package:intl/intl.dart';
 
 class AccountAddPage extends AbstractPage {
+  String? title;
+  String? description;
   String? type;
   String? currency;
   DateTime? validTillDate;
   DateTime balanceUpdateDate = DateTime.now();
   double? balance;
   IconData? icon;
-  Color? color;
+  MaterialColor? color;
 
-  AccountAddPage({super.key, 
+  AccountAddPage({
+    super.key,
     required AppData state,
   }) : super(state: state);
 
@@ -45,8 +48,18 @@ class AccountAddPageState extends AbstractPageState<AccountAddPage> {
       width: constraints.maxWidth - helper.getIndent() * 4,
       child: FloatingActionButton(
         onPressed: () => {
-          // Do stuff
-          Navigator.popAndPushNamed(context, routes.accountRoute)
+          setState(() {
+            var data = widget.state.state['accounts'];
+            data['list'].insert(0, (
+              title: widget.title,
+              description: widget.description,
+              details: widget.balance as double,
+              progress: 1.0,
+              color: widget.color,
+            ));
+            widget.state.set('accounts', data);
+            Navigator.popAndPushNamed(context, routes.accountRoute);
+          })
         },
         tooltip: title,
         child: Align(
@@ -61,6 +74,28 @@ class AccountAddPageState extends AbstractPageState<AccountAddPage> {
           ),
         ),
       ),
+    );
+  }
+
+  MaterialColor convertToMaterialColor(Color color) {
+    final red = color.red;
+    final green = color.green;
+    final blue = color.blue;
+
+    return MaterialColor(
+      color.value,
+      <int, Color>{
+        50: Color.fromRGBO(red, green, blue, 0.1),
+        100: Color.fromRGBO(red, green, blue, 0.2),
+        200: Color.fromRGBO(red, green, blue, 0.3),
+        300: Color.fromRGBO(red, green, blue, 0.4),
+        400: Color.fromRGBO(red, green, blue, 0.5),
+        500: Color.fromRGBO(red, green, blue, 0.6),
+        600: Color.fromRGBO(red, green, blue, 0.7),
+        700: Color.fromRGBO(red, green, blue, 0.8),
+        800: Color.fromRGBO(red, green, blue, 0.9),
+        900: Color.fromRGBO(red, green, blue, 1.0),
+      },
     );
   }
 
@@ -123,8 +158,7 @@ class AccountAddPageState extends AbstractPageState<AccountAddPage> {
               style: textTheme.bodyLarge,
             ),
             TextFormField(
-              initialValue:
-                  widget.balance != null ? widget.balance.toString() : '',
+              initialValue: widget.title != null ? widget.title.toString() : '',
               keyboardType: TextInputType.number,
               decoration: InputDecoration(
                 filled: true,
@@ -138,7 +172,7 @@ class AccountAddPageState extends AbstractPageState<AccountAddPage> {
               ),
               onChanged: (value) {
                 setState(() {
-                  widget.balance = double.parse(value);
+                  widget.title = value;
                 });
               },
             ),
@@ -222,11 +256,11 @@ class AccountAddPageState extends AbstractPageState<AccountAddPage> {
                                     title: const Text('Select a color'),
                                     content: SingleChildScrollView(
                                       child: ColorPicker(
-                                        pickerColor:
-                                            widget.color ?? Colors.red,
+                                        pickerColor: widget.color ?? Colors.red,
                                         onColorChanged: (color) {
                                           setState(() {
-                                            widget.color = color;
+                                            widget.color =
+                                                convertToMaterialColor(color);
                                           });
                                         },
                                       ),
@@ -263,10 +297,8 @@ class AccountAddPageState extends AbstractPageState<AccountAddPage> {
                         style: textTheme.bodyLarge,
                       ),
                       TextFormField(
-                        initialValue: widget.balance != null
-                            ? widget.balance.toString()
-                            : '',
-                        keyboardType: TextInputType.number,
+                        initialValue: widget.description ?? '',
+                        keyboardType: TextInputType.text,
                         decoration: InputDecoration(
                           filled: true,
                           border: InputBorder.none,
@@ -279,7 +311,7 @@ class AccountAddPageState extends AbstractPageState<AccountAddPage> {
                         ),
                         onChanged: (value) {
                           setState(() {
-                            widget.balance = double.parse(value);
+                            widget.description = value;
                           });
                         },
                       ),
