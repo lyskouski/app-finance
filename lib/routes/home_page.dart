@@ -15,16 +15,19 @@ import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localization.dart';
 
 class HomePage extends AbstractPage {
-  const HomePage({
+  HomePage({
     super.key,
     required AppData state,
-  }) : super(
-          state: state,
-        );
+  }) : super(state: state);
 
   @override
+  HomePageState createState() => HomePageState();
+}
+
+class HomePageState extends AbstractPageState<HomePage> {
+  @override
   String getTitle(context) {
-    return AppLocalizations.of(context)!.title;
+    return AppLocalizations.of(context)!.appTitle;
   }
 
   @override
@@ -32,12 +35,17 @@ class HomePage extends AbstractPage {
     return AppBar(
       backgroundColor: Theme.of(context).colorScheme.secondary,
       toolbarHeight: 40,
-      leading: IconButton(
-        icon: Icon(
-          Icons.menu,
-          color: Theme.of(context).colorScheme.inversePrimary.withOpacity(0.5),
-        ),
-        onPressed: () => Scaffold.of(context).openDrawer(),
+      leading: Builder(
+        builder: (BuildContext context) {
+          return IconButton(
+            icon: Icon(
+              Icons.menu,
+              color:
+                  Theme.of(context).colorScheme.inversePrimary.withOpacity(0.5),
+            ),
+            onPressed: () => Scaffold.of(context).openDrawer(),
+          );
+        },
       ),
       title: Center(
         child: Text(
@@ -77,6 +85,8 @@ class HomePage extends AbstractPage {
     EdgeInsets middleLeft = EdgeInsets.fromLTRB(indent, indent, 0, 0);
     EdgeInsets middleRight = EdgeInsets.fromLTRB(indent, indent, indent, 0);
     EdgeInsets bottom = EdgeInsets.fromLTRB(indent, indent, indent, indent);
+    double width = MediaQuery.of(context).size.width - indent * 2;
+    double halfWidth = width / 2 - indent;
 
     if (helper.isVertical(constraints)) {
       return Column(
@@ -89,6 +99,7 @@ class HomePage extends AbstractPage {
             margin: single,
             title: AppLocalizations.of(context)!.billHeadline,
             state: state.state['bills'],
+            offset: width,
           ),
           AccountWidget(
             margin: single,
@@ -96,16 +107,17 @@ class HomePage extends AbstractPage {
             state: state.state['accounts'],
             route: routes.accountRoute,
             tooltip: AppLocalizations.of(context)!.accountTooltip,
+            offset: width,
           ),
           BudgetWidget(
             margin: bottom,
             title: AppLocalizations.of(context)!.budgetHeadline,
             state: state.state['budgets'],
+            offset: width,
           ),
         ],
       );
     } else {
-      double offsetWidth = MediaQuery.of(context).size.width / 2 - indent * 4;
       return Column(
         children: [
           GoalWidget(
@@ -117,7 +129,7 @@ class HomePage extends AbstractPage {
               children: [
                 AccountWidget(
                   margin: middleLeft,
-                  offset: offsetWidth,
+                  offset: halfWidth,
                   title: AppLocalizations.of(context)!.accountHeadline,
                   state: state.state['accounts'],
                   route: routes.accountRoute,
@@ -125,7 +137,7 @@ class HomePage extends AbstractPage {
                 ),
                 BillWidget(
                   margin: middleRight,
-                  offset: offsetWidth,
+                  offset: halfWidth,
                   title: AppLocalizations.of(context)!.billHeadline,
                   state: state.state['bills'],
                 ),
@@ -136,6 +148,7 @@ class HomePage extends AbstractPage {
             margin: bottom,
             title: AppLocalizations.of(context)!.budgetHeadline,
             state: state.state['budgets'],
+            offset: width,
           ),
         ],
       );

@@ -6,7 +6,6 @@ import 'package:adaptive_breakpoints/adaptive_breakpoints.dart';
 import 'package:app_finance/custom_text_theme.dart';
 import 'package:app_finance/decorators/tap_area.dart';
 import 'package:app_finance/helpers/theme_helper.dart';
-import 'package:app_finance/routes.dart' as routes;
 import 'package:app_finance/widgets/home/base_list_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
@@ -15,30 +14,35 @@ import 'package:flutter_gen/gen_l10n/app_localization.dart';
 class BaseWidget extends StatelessWidget {
   final EdgeInsetsGeometry margin;
   final String title;
-  final double? offset;
+  final double offset;
   final Map<String, dynamic> state;
   String? tooltip;
   String? route;
+  String routeList;
 
   BaseWidget({
     Key? key,
     required this.margin,
     required this.title,
     required this.state,
+    required this.offset,
     this.tooltip,
     this.route,
-    this.offset,
+    this.routeList = '',
   }) : super(key: key);
 
   Widget buildListWidget(item, BuildContext context, NumberFormat formatter,
-      DateFormat formatterDate) {
+      DateFormat formatterDate, double offset) {
     return BaseLineWidget(
+      uuid: item.uuid,
       title: item.title,
       description: formatterDate.format(DateTime.parse(item.description)),
       details: formatter.format(item.details),
       progress: item.progress,
       color: item.color,
-      offset: (offset ?? MediaQuery.of(context).size.width) - 24,
+      hidden: item.hidden,
+      offset: offset,
+      route: routeList,
     );
   }
 
@@ -102,7 +106,7 @@ class BaseWidget extends StatelessWidget {
                     } else if (index <= state['list'].length) {
                       final item = state['list'][index - 1];
                       return buildListWidget(
-                          item, context, formatter, formatterDate);
+                          item, context, formatter, formatterDate, offset - 40);
                     } else {
                       return TextButton(
                         onPressed: () {

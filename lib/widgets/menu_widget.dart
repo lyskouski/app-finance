@@ -26,7 +26,8 @@ class MenuWidget extends StatelessWidget {
   Widget build(context) {
     final ColorScheme colorScheme = Theme.of(context).colorScheme;
     final TextTheme textTheme = Theme.of(context).textTheme;
-    Color color = selectedIndex == index ? colorScheme.primary : colorScheme.secondary;
+    Color color =
+        selectedIndex == index ? colorScheme.primary : colorScheme.secondary;
 
     return InkWell(
       child: ListTile(
@@ -34,10 +35,11 @@ class MenuWidget extends StatelessWidget {
           routes.menuList[index].icon,
           color: color,
         ),
-        title: Text(
-          routes.menuList[index].name,
-          style: textTheme.bodyMedium?.copyWith(
-            color: color
+        title: MouseRegion(
+          cursor: SystemMouseCursors.click,
+          child: Text(
+            routes.menuList[index].name,
+            style: textTheme.bodyMedium?.copyWith(color: color),
           ),
         ),
       ),

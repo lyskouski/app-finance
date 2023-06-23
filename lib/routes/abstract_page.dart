@@ -9,12 +9,16 @@ import 'package:app_finance/routes.dart' as routes;
 import 'package:app_finance/widgets/menu_widget.dart';
 import 'package:flutter/material.dart';
 
-abstract class AbstractPage extends StatefulWidget {
+abstract class AbstractPage<T> extends StatefulWidget {
+  int selectedMenu = 0;
   final AppData state;
-  const AbstractPage({
-    super.key,
+
+  AbstractPage({super.key, 
     required this.state,
   });
+}
+
+abstract class AbstractPageState<T extends AbstractPage> extends State<T> {
 
   String getTitle(BuildContext context);
 
@@ -22,9 +26,6 @@ abstract class AbstractPage extends StatefulWidget {
 
   Widget buildContent(
       BuildContext context, BoxConstraints constraints, AppData state);
-
-  @override
-  State<AbstractPage> createState() => _AbstractPageState();
 
   AppBar buildBar(BuildContext context) {
     return AppBar(
@@ -46,14 +47,14 @@ abstract class AbstractPage extends StatefulWidget {
           itemBuilder: (BuildContext context) {
             return routes.menuList.map((menuItem) {
               return PopupMenuItem(
+                value: menuItem.route,
                 child: Row(
                   children: [
                     Icon(menuItem.icon),
-                    SizedBox(width: 8),
+                    const SizedBox(width: 8),
                     Text(menuItem.name),
                   ],
                 ),
-                value: menuItem.route,
               );
             }).toList();
           },
@@ -69,11 +70,6 @@ abstract class AbstractPage extends StatefulWidget {
       ],
     );
   }
-}
-
-class _AbstractPageState extends State<AbstractPage> {
-  get tabBarView => null;
-  int selectedMenu = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -82,7 +78,7 @@ class _AbstractPageState extends State<AbstractPage> {
     double indent = ThemeHelper(windowType: getWindowType(context)).getIndent();
 
     return Scaffold(
-        appBar: widget.buildBar(context),
+        appBar: buildBar(context),
         drawer: Drawer(
           elevation: 0,
           shape: Border.all(width: 0),
@@ -95,8 +91,8 @@ class _AbstractPageState extends State<AbstractPage> {
               itemCount: routes.menuList.length,
               itemBuilder: (context, index) => MenuWidget(
                 index: index,
-                setState: () => setState(() => selectedMenu = index),
-                selectedIndex: selectedMenu,
+                setState: () => setState(() => widget.selectedMenu = index),
+                selectedIndex: widget.selectedMenu,
               ),
             ),
           ),
@@ -104,12 +100,12 @@ class _AbstractPageState extends State<AbstractPage> {
         body: Scaffold(
           body: SafeArea(
             child: LayoutBuilder(builder: (context, constraints) {
-              return widget.buildContent(context, constraints, state);
+              return buildContent(context, constraints, state);
             }),
           ),
         ),
         floatingActionButton: LayoutBuilder(builder: (context, constraints) {
-          return widget.buildButton(context, constraints);
+          return buildButton(context, constraints);
         }));
   }
 }

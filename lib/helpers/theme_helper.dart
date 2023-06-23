@@ -14,7 +14,7 @@ class ThemeHelper {
 
   bool isLower(AdaptiveWindowType size) => windowType <= size;
 
-  double getIndent() => isLower(AdaptiveWindowType.small) ? 8.0 : 16.0;
+  double getIndent() => 8.0;
 
   bool isVertical(BoxConstraints constraints) =>
       isLower(AdaptiveWindowType.small) &&
