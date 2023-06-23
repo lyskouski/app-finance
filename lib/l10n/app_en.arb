@@ -36,6 +36,7 @@
     "ok": "OK",
     "subscriptionTooltip": "Activate Subscription",
     "title": "Title",
+    "deleteAccountTooltip": "Delete or Deactivate",
     "titleAccountTooltip": "Enter Account Identifier",
     "validTillDate": "Valid Till"
 }

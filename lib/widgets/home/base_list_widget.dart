@@ -18,6 +18,7 @@ class BaseLineWidget extends StatelessWidget {
   final Color color;
   final double offset;
   final String route;
+  final bool hidden;
 
   const BaseLineWidget({
     super.key,
@@ -27,6 +28,7 @@ class BaseLineWidget extends StatelessWidget {
     required this.description,
     required this.color,
     required this.offset,
+    this.hidden = false,
     this.progress = 1,
     this.route = '',
   });
@@ -35,6 +37,10 @@ class BaseLineWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     var theme = ThemeHelper(windowType: getWindowType(context));
     final TextTheme textTheme = Theme.of(context).textTheme;
+
+    if (hidden) {
+      return SizedBox();
+    }
 
     return TapArea(
       tooltip: title,

@@ -32,13 +32,48 @@ class AccountViewPageState extends AbstractPageState<AccountViewPage> {
     return title ?? '';
   }
 
+  void deactivateAccount(BuildContext context) {
+    var data = widget.state.state['accounts'];
+    final index = data['list'].indexWhere((item) => item.uuid == widget.uuid);
+    if (index != -1) {
+      setState(() {
+        data['total'] -= data['list'][index].details;
+        var curr = data['list'][index];
+        data['list'][index] = (
+          uuid: curr.uuid,
+          title: curr.title,
+          description: curr.description,
+          details: curr.details,
+          progress: curr.progress,
+          color: curr.color,
+          hidden: true,
+        );
+        widget.state.set('accounts', data);
+      });
+    }
+    Navigator.pop(context);
+  }
+
   @override
   Widget buildButton(BuildContext context, BoxConstraints constraints) {
-    String route = routes.accountEditRoute.replaceAll('uuid:', 'uuid:${widget.uuid}');
-    return FloatingActionButton(
-      onPressed: () => Navigator.pushNamed(context, route),
-      tooltip: AppLocalizations.of(context)!.editAccountTooltip,
-      child: const Icon(Icons.edit),
+    String route =
+        routes.accountEditRoute.replaceAll('uuid:', 'uuid:${widget.uuid}');
+    double indent =
+        ThemeHelper(windowType: getWindowType(context)).getIndent() * 4;
+    return Container(
+      margin: EdgeInsets.only(left: indent),
+      child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
+        FloatingActionButton(
+          onPressed: () => deactivateAccount(context),
+          tooltip: AppLocalizations.of(context)!.deleteAccountTooltip,
+          child: const Icon(Icons.delete),
+        ),
+        FloatingActionButton(
+          onPressed: () => Navigator.pushNamed(context, route),
+          tooltip: AppLocalizations.of(context)!.editAccountTooltip,
+          child: const Icon(Icons.edit),
+        ),
+      ]),
     );
   }
 

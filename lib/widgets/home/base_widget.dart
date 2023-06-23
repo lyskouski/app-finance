@@ -40,6 +40,7 @@ class BaseWidget extends StatelessWidget {
       details: formatter.format(item.details),
       progress: item.progress,
       color: item.color,
+      hidden: item.hidden,
       offset: offset,
       route: routeList,
     );

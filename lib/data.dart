@@ -24,6 +24,7 @@ class AppData {
           details: 12345789.098,
           progress: 0.5,
           color: Colors.red,
+          hidden: false,
         ),
         (
           uuid: 'xxxxxxxx-xxxx-02xx-yxxx-xxxxxxxxxxxx',
@@ -32,6 +33,7 @@ class AppData {
           details: 1234.789,
           progress: 0.8,
           color: Colors.green,
+          hidden: false,
         ),
         (
           uuid: 'xxxxxxxx-xxxx-03xx-yxxx-xxxxxxxxxxxx',
@@ -40,6 +42,7 @@ class AppData {
           details: 123.789,
           progress: 1.0,
           color: Colors.yellow,
+          hidden: false,
         ),
       ]
     },
@@ -61,6 +64,7 @@ class AppData {
           details: 12345789.098,
           progress: 0.5,
           color: Colors.red,
+          hidden: false,
         ),
         (
           uuid: 'xxxxxxxx-xxxx-2xxx-yxxx-xxxxxxxxxxxx',
@@ -69,6 +73,7 @@ class AppData {
           details: 1234.789,
           progress: 0.8,
           color: Colors.green,
+          hidden: false,
         ),
         (
           uuid: 'xxxxxxxx-xxxx-3xxx-yxxx-xxxxxxxxxxxx',
@@ -77,6 +82,7 @@ class AppData {
           details: 123.789,
           progress: 1.0,
           color: Colors.yellow,
+          hidden: false,
         ),
       ],
     },
@@ -90,6 +96,7 @@ class AppData {
           details: 12345789.098,
           progress: 0.5,
           color: Colors.red,
+          hidden: false,
         ),
         (
           uuid: 'xxxxxxxx-xxxx-5xxx-yxxx-xxxxxxxxxxxx',
@@ -98,6 +105,7 @@ class AppData {
           details: 1234.789,
           progress: 0.8,
           color: Colors.green,
+          hidden: false,
         ),
         (
           uuid: 'xxxxxxxx-xxxx-6xxx-yxxx-xxxxxxxxxxxx',
@@ -106,6 +114,7 @@ class AppData {
           details: 123.789,
           progress: 1.0,
           color: Colors.yellow,
+          hidden: false,
         ),
       ],
     },

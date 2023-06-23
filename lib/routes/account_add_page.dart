@@ -81,6 +81,7 @@ class AccountAddPageState<T> extends AbstractPageState<AccountAddPage> {
       details: widget.balance ?? 0.0,
       progress: 1.0,
       color: widget.color ?? Colors.red,
+      hidden: false,
     ));
     widget.state.set('accounts', data);
   }

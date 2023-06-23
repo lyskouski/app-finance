@@ -36,6 +36,7 @@ class AccountWidget extends BaseWidget {
       details: formatter.format(item.details),
       progress: item.progress,
       color: item.color,
+      hidden: item.hidden,
       offset: offset,
       route: routes.accountViewRoute,
     );
