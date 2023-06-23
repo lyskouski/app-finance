@@ -3,19 +3,22 @@
 // found in the LICENSE file.
 
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
-class TextInput extends StatelessWidget {
+class SimpleInput extends StatelessWidget {
   Function setState;
   TextStyle? style;
   String? value;
   String? tooltip;
   TextInputType type;
+  List<TextInputFormatter>? formatter;
 
-  TextInput({
+  SimpleInput({
     super.key,
     this.value,
     this.style,
     this.tooltip,
+    this.formatter,
     this.type = TextInputType.text,
     required this.setState,
   });
@@ -24,6 +27,7 @@ class TextInput extends StatelessWidget {
   Widget build(BuildContext context) {
     return TextFormField(
       initialValue: value ?? '',
+      inputFormatters: formatter,
       keyboardType: type,
       decoration: InputDecoration(
         filled: true,

@@ -14,9 +14,10 @@ import 'package:app_finance/widgets/forms/date_input.dart';
 import 'package:app_finance/widgets/forms/datet_time_input.dart';
 import 'package:app_finance/widgets/forms/icon_selector.dart';
 import 'package:app_finance/widgets/forms/list_selector.dart';
-import 'package:app_finance/widgets/forms/text_input.dart';
+import 'package:app_finance/widgets/forms/simple_input.dart';
 import 'package:currency_picker/currency_picker.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_gen/gen_l10n/app_localization.dart';
 import 'package:intl/intl.dart';
 
@@ -136,7 +137,7 @@ class AccountAddPageState extends AbstractPageState<AccountAddPage> {
               AppLocalizations.of(context)!.title,
               style: textTheme.bodyLarge,
             ),
-            TextInput(
+            SimpleInput(
               value: widget.title,
               tooltip: AppLocalizations.of(context)!.titleAccountTooltip,
               style: textTheme.numberMedium,
@@ -204,7 +205,7 @@ class AccountAddPageState extends AbstractPageState<AccountAddPage> {
                         AppLocalizations.of(context)!.details,
                         style: textTheme.bodyLarge,
                       ),
-                      TextInput(
+                      SimpleInput(
                         value: widget.description,
                         tooltip: AppLocalizations.of(context)!.detailsTooltip,
                         style: textTheme.numberMedium,
@@ -266,13 +267,16 @@ class AccountAddPageState extends AbstractPageState<AccountAddPage> {
               AppLocalizations.of(context)!.balance,
               style: textTheme.bodyLarge,
             ),
-            TextInput(
+            SimpleInput(
               value: widget.balance != null ? widget.balance.toString() : '',
               type: const TextInputType.numberWithOptions(decimal: true),
               tooltip: AppLocalizations.of(context)!.balanceTooltip,
               style: textTheme.numberMedium,
+              formatter: [
+                FilteringTextInputFormatter.allow(RegExp(r'^\d+\.?\d{0,4}')),
+              ],
               setState: (value) =>
-                  setState(() => widget.balance = double.parse(value)),
+                  setState(() => widget.balance = double.tryParse(value)),
             ),
           ],
         ),
