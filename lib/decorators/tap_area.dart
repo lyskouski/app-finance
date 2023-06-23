@@ -27,9 +27,13 @@ class TapArea extends StatelessWidget {
       child: MouseRegion(
         cursor: SystemMouseCursors.click,
         child: GestureDetector(
-          onTap: () => onTap != null
-              ? onTap!()
-              : Navigator.pushNamed(context, route ?? routes.homeRoute),
+          onTap: () {
+            if (onTap != null) {
+              onTap!();
+            } else if (route != '') {
+              Navigator.pushNamed(context, route ?? routes.homeRoute);
+            }
+          },
           child: child,
         ),
       ),

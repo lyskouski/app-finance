@@ -18,6 +18,7 @@ class BaseWidget extends StatelessWidget {
   final Map<String, dynamic> state;
   String? tooltip;
   String? route;
+  String routeList;
 
   BaseWidget({
     Key? key,
@@ -27,17 +28,20 @@ class BaseWidget extends StatelessWidget {
     required this.offset,
     this.tooltip,
     this.route,
+    this.routeList = '',
   }) : super(key: key);
 
   Widget buildListWidget(item, BuildContext context, NumberFormat formatter,
       DateFormat formatterDate, double offset) {
     return BaseLineWidget(
+      uuid: item.uuid,
       title: item.title,
       description: formatterDate.format(DateTime.parse(item.description)),
       details: formatter.format(item.details),
       progress: item.progress,
       color: item.color,
       offset: offset,
+      route: routeList,
     );
   }
 

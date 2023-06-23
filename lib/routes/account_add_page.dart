@@ -19,6 +19,7 @@ import 'package:currency_picker/currency_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_gen/gen_l10n/app_localization.dart';
+import 'package:uuid/uuid.dart';
 
 class AccountAddPage extends AbstractPage {
   String? title;
@@ -42,7 +43,7 @@ class AccountAddPage extends AbstractPage {
   AccountAddPageState createState() => AccountAddPageState();
 }
 
-class AccountAddPageState extends AbstractPageState<AccountAddPage> {
+class AccountAddPageState<T> extends AbstractPageState<AccountAddPage> {
   @override
   String getTitle(context) {
     return AppLocalizations.of(context)!.createAccountHeader;
@@ -64,6 +65,7 @@ class AccountAddPageState extends AbstractPageState<AccountAddPage> {
   void updateStorage() {
     var data = widget.state.state['accounts'];
     data['list'].insert(0, (
+      id: const Uuid().v4(),
       title: widget.title,
       description: widget.description ?? '',
       details: widget.balance ?? 0.0,

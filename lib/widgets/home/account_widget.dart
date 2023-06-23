@@ -2,6 +2,7 @@
 // Use of this source code is governed by a CC BY-NC-ND 4.0 license that can be
 // found in the LICENSE file.
 
+import 'package:app_finance/routes.dart' as routes;
 import 'package:app_finance/widgets/home/base_list_widget.dart';
 import 'package:app_finance/widgets/home/base_widget.dart';
 import 'package:flutter/material.dart';
@@ -29,12 +30,14 @@ class AccountWidget extends BaseWidget {
   Widget buildListWidget(item, BuildContext context, NumberFormat formatter,
       DateFormat formatterDate, double offset) {
     return BaseLineWidget(
+      uuid: item.uuid,
       title: item.title,
       description: item.description,
       details: formatter.format(item.details),
       progress: item.progress,
       color: item.color,
       offset: offset,
+      route: routes.accountViewRoute,
     );
   }
 }

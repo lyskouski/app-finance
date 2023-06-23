@@ -6,6 +6,7 @@ import 'package:app_finance/custom_text_theme.dart';
 import 'package:app_finance/data.dart';
 import 'package:app_finance/routes.dart' as routes;
 import 'package:app_finance/routes/account_add_page.dart';
+import 'package:app_finance/routes/account_view_page.dart';
 import 'package:app_finance/routes/account_page.dart';
 import 'package:app_finance/routes/home_page.dart';
 import 'package:flutter/material.dart';
@@ -44,6 +45,17 @@ class _MyAppState extends State<MyApp> {
       themeMode: ThemeMode.system,
       home: HomePage(state: state),
       initialRoute: routes.homeRoute,
+      onGenerateRoute: (settings) {
+        final regex = RegExp(r'\/uuid:([\w-]+)');
+        final match = regex.firstMatch(settings.name!);
+        if (match != null) {
+          final uuid = match.group(1);
+          return MaterialPageRoute(
+            builder: (context) => AccountViewPage(state: state, uuid: uuid ?? '')
+          );
+        }
+        return null;
+      },
       routes: <String, WidgetBuilder>{
         routes.homeRoute: (context) => HomePage(state: state),
         routes.accountRoute: (context) => AccountPage(state: state),
