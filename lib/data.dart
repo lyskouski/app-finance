@@ -39,6 +39,14 @@ class AppData {
         ),
       ]
     },
+    'accountTypes': {
+      'account': (),
+      'cash': (),
+      'debitCard': (),
+      'creditCard': (),
+      'deposit': (),
+      'credit': (),
+    },
     'accounts': {
       'total': 123456.789,
       'list': [

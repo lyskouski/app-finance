@@ -26,7 +26,7 @@ class HomePage extends AbstractPage {
 class HomePageState extends AbstractPageState<HomePage> {
   @override
   String getTitle(context) {
-    return AppLocalizations.of(context)!.title;
+    return AppLocalizations.of(context)!.appTitle;
   }
 
   @override

@@ -10,12 +10,14 @@ class TapArea extends StatelessWidget {
   final Widget child;
   String? tooltip;
   String? route;
+  Function? onTap;
 
   TapArea({
-    super.key, 
+    super.key,
     required this.child,
     this.tooltip,
     this.route,
+    this.onTap,
   });
 
   @override
@@ -25,7 +27,9 @@ class TapArea extends StatelessWidget {
       child: MouseRegion(
         cursor: SystemMouseCursors.click,
         child: GestureDetector(
-          onTap: () => Navigator.pushNamed(context, route ?? routes.homeRoute),
+          onTap: () => onTap != null
+              ? onTap!()
+              : Navigator.pushNamed(context, route ?? routes.homeRoute),
           child: child,
         ),
       ),

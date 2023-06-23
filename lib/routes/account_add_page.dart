@@ -8,8 +8,14 @@ import 'package:app_finance/data.dart';
 import 'package:app_finance/helpers/theme_helper.dart';
 import 'package:app_finance/routes.dart' as routes;
 import 'package:app_finance/routes/abstract_page.dart';
-import 'package:flutter_colorpicker/flutter_colorpicker.dart';
-import 'package:flutter_datetime_picker_plus/flutter_datetime_picker_plus.dart';
+import 'package:app_finance/widgets/forms/color_selector.dart';
+import 'package:app_finance/widgets/forms/currency_selector.dart';
+import 'package:app_finance/widgets/forms/date_input.dart';
+import 'package:app_finance/widgets/forms/datet_time_input.dart';
+import 'package:app_finance/widgets/forms/icon_selector.dart';
+import 'package:app_finance/widgets/forms/list_selector.dart';
+import 'package:app_finance/widgets/forms/text_input.dart';
+import 'package:currency_picker/currency_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localization.dart';
 import 'package:intl/intl.dart';
@@ -18,7 +24,7 @@ class AccountAddPage extends AbstractPage {
   String? title;
   String? description;
   String? type;
-  String? currency;
+  Currency? currency;
   DateTime? validTillDate;
   DateTime balanceUpdateDate = DateTime.now();
   double? balance;
@@ -77,26 +83,20 @@ class AccountAddPageState extends AbstractPageState<AccountAddPage> {
     );
   }
 
-  MaterialColor convertToMaterialColor(Color color) {
-    final red = color.red;
-    final green = color.green;
-    final blue = color.blue;
-
-    return MaterialColor(
-      color.value,
-      <int, Color>{
-        50: Color.fromRGBO(red, green, blue, 0.1),
-        100: Color.fromRGBO(red, green, blue, 0.2),
-        200: Color.fromRGBO(red, green, blue, 0.3),
-        300: Color.fromRGBO(red, green, blue, 0.4),
-        400: Color.fromRGBO(red, green, blue, 0.5),
-        500: Color.fromRGBO(red, green, blue, 0.6),
-        600: Color.fromRGBO(red, green, blue, 0.7),
-        700: Color.fromRGBO(red, green, blue, 0.8),
-        800: Color.fromRGBO(red, green, blue, 0.9),
-        900: Color.fromRGBO(red, green, blue, 1.0),
-      },
-    );
+  List<ListSelectorItem> getAccountTypes(BuildContext context) {
+    return [
+      ListSelectorItem(
+          id: 'account', name: AppLocalizations.of(context)!.bankAccount),
+      ListSelectorItem(id: 'cash', name: AppLocalizations.of(context)!.cash),
+      ListSelectorItem(
+          id: 'debitCard', name: AppLocalizations.of(context)!.debitCard),
+      ListSelectorItem(
+          id: 'creditCard', name: AppLocalizations.of(context)!.creditCard),
+      ListSelectorItem(
+          id: 'deposit', name: AppLocalizations.of(context)!.deposit),
+      ListSelectorItem(
+          id: 'credit', name: AppLocalizations.of(context)!.credit),
+    ];
   }
 
   @override
@@ -111,7 +111,6 @@ class AccountAddPageState extends AbstractPageState<AccountAddPage> {
     DateTime lastDate = currentDate.add(dateRange);
     final locale = Localizations.localeOf(context).toString();
     final DateFormat formatterDate = DateFormat.yMd(locale);
-    final DateFormat formatterTime = DateFormat.Hms(locale);
     double offset = MediaQuery.of(context).size.width - indent * 3;
     double offsetTriple = offset - indent;
 
@@ -122,59 +121,26 @@ class AccountAddPageState extends AbstractPageState<AccountAddPage> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              'Account Type',
+              AppLocalizations.of(context)!.accountType,
               style: textTheme.bodyLarge,
             ),
-            Container(
-              color:
-                  Theme.of(context).colorScheme.inversePrimary.withOpacity(0.3),
-              width: double.infinity,
-              child: DropdownButton<String>(
-                isExpanded: true,
-                value: widget.type,
-                onChanged: (value) {
-                  setState(() {
-                    widget.type = value;
-                  });
-                },
-                items: [
-                  'Account Template 1',
-                  'Account Template 2',
-                  'Account Template 3'
-                ].map<DropdownMenuItem<String>>((String value) {
-                  return DropdownMenuItem<String>(
-                    value: value,
-                    child: Padding(
-                      padding: EdgeInsets.only(left: indent),
-                      child: Text(value, style: textTheme.numberMedium),
-                    ),
-                  );
-                }).toList(),
-              ),
+            ListSelector(
+              value: widget.type,
+              options: getAccountTypes(context),
+              setState: (value) => setState(() => widget.type = value),
+              style: textTheme.numberMedium,
+              indent: indent,
             ),
             SizedBox(height: indent),
             Text(
-              'Title',
+              AppLocalizations.of(context)!.title,
               style: textTheme.bodyLarge,
             ),
-            TextFormField(
-              initialValue: widget.title != null ? widget.title.toString() : '',
-              keyboardType: TextInputType.number,
-              decoration: InputDecoration(
-                filled: true,
-                border: InputBorder.none,
-                fillColor: Theme.of(context)
-                    .colorScheme
-                    .inversePrimary
-                    .withOpacity(0.3),
-                hintText: 'Enter Account Identifier',
-                hintStyle: textTheme.numberMedium,
-              ),
-              onChanged: (value) {
-                setState(() {
-                  widget.title = value;
-                });
-              },
+            TextInput(
+              value: widget.title,
+              tooltip: AppLocalizations.of(context)!.titleAccountTooltip,
+              style: textTheme.numberMedium,
+              setState: (value) => setState(() => widget.title = value),
             ),
             SizedBox(height: indent),
             Row(
@@ -188,40 +154,20 @@ class AccountAddPageState extends AbstractPageState<AccountAddPage> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        'Icon',
+                        AppLocalizations.of(context)!.icon,
                         style: textTheme.bodyLarge,
                       ),
-                      Container(
-                        color: Theme.of(context)
-                            .colorScheme
-                            .inversePrimary
-                            .withOpacity(0.3),
-                        width: double.infinity,
-                        child: DropdownButton<IconData>(
-                          isExpanded: true,
-                          value: widget.icon,
-                          onChanged: (newIcon) {
-                            setState(() {
-                              widget.icon = newIcon;
-                            });
-                          },
-                          items: [
-                            Icons.home,
-                            Icons.star,
-                            Icons.favorite,
-                            Icons.settings,
-                            Icons.mail,
-                          ].map((icon) {
-                            return DropdownMenuItem<IconData>(
-                                value: icon,
-                                child: Center(
-                                  child: Tooltip(
-                                    message: icon.toString(),
-                                    child: Icon(icon),
-                                  ),
-                                ));
-                          }).toList(),
-                        ),
+                      IconSelector(
+                        value: widget.icon,
+                        options: const [
+                          Icons.home,
+                          Icons.star,
+                          Icons.favorite,
+                          Icons.settings,
+                          Icons.mail,
+                        ],
+                        setState: (value) =>
+                            setState(() => widget.icon = value),
                       ),
                     ],
                   ),
@@ -235,51 +181,13 @@ class AccountAddPageState extends AbstractPageState<AccountAddPage> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        'Color',
+                        AppLocalizations.of(context)!.color,
                         style: textTheme.bodyLarge,
                       ),
-                      TextFormField(
-                        decoration: InputDecoration(
-                          filled: true,
-                          border: InputBorder.none,
-                          fillColor: widget.color ??
-                              Theme.of(context)
-                                  .colorScheme
-                                  .inversePrimary
-                                  .withOpacity(0.3),
-                          suffixIcon: GestureDetector(
-                            onTap: () {
-                              showDialog(
-                                context: context,
-                                builder: (BuildContext context) {
-                                  return AlertDialog(
-                                    title: const Text('Select a color'),
-                                    content: SingleChildScrollView(
-                                      child: ColorPicker(
-                                        pickerColor: widget.color ?? Colors.red,
-                                        onColorChanged: (color) {
-                                          setState(() {
-                                            widget.color =
-                                                convertToMaterialColor(color);
-                                          });
-                                        },
-                                      ),
-                                    ),
-                                    actions: <Widget>[
-                                      ElevatedButton(
-                                        onPressed: () {
-                                          Navigator.of(context).pop();
-                                        },
-                                        child: const Text('OK'),
-                                      ),
-                                    ],
-                                  );
-                                },
-                              );
-                            },
-                            child: const Icon(Icons.color_lens),
-                          ),
-                        ),
+                      ColorSelector(
+                        value: widget.color,
+                        setState: (value) =>
+                            setState(() => widget.color = value),
                       ),
                     ],
                   ),
@@ -293,27 +201,15 @@ class AccountAddPageState extends AbstractPageState<AccountAddPage> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        'Details',
+                        AppLocalizations.of(context)!.details,
                         style: textTheme.bodyLarge,
                       ),
-                      TextFormField(
-                        initialValue: widget.description ?? '',
-                        keyboardType: TextInputType.text,
-                        decoration: InputDecoration(
-                          filled: true,
-                          border: InputBorder.none,
-                          fillColor: Theme.of(context)
-                              .colorScheme
-                              .inversePrimary
-                              .withOpacity(0.3),
-                          hintText: '****2345 - last 4 digits of number',
-                          hintStyle: textTheme.numberMedium,
-                        ),
-                        onChanged: (value) {
-                          setState(() {
-                            widget.description = value;
-                          });
-                        },
+                      TextInput(
+                        value: widget.description,
+                        tooltip: AppLocalizations.of(context)!.detailsTooltip,
+                        style: textTheme.numberMedium,
+                        setState: (value) =>
+                            setState(() => widget.description = value),
                       ),
                     ],
                   ),
@@ -322,180 +218,61 @@ class AccountAddPageState extends AbstractPageState<AccountAddPage> {
             ),
             SizedBox(height: indent),
             Text(
-              'Currency',
+              AppLocalizations.of(context)!.currency,
               style: textTheme.bodyLarge,
             ),
             Container(
               color:
                   Theme.of(context).colorScheme.inversePrimary.withOpacity(0.3),
               width: double.infinity,
-              child: DropdownButton<String>(
-                isExpanded: true,
+              child: CurrencySelector(
                 value: widget.currency,
-                onChanged: (value) {
-                  setState(() {
-                    widget.currency = value;
-                  });
-                },
-                items: ['Currency 1', 'Currency 2', 'Currency 3']
-                    .map<DropdownMenuItem<String>>((String value) {
-                  return DropdownMenuItem<String>(
-                    value: value,
-                    child: Padding(
-                      padding: EdgeInsets.only(left: indent),
-                      child: Text(value, style: textTheme.numberMedium),
-                    ),
-                  );
-                }).toList(),
+                setState: (value) => setState(() => widget.currency = value),
               ),
             ),
             SizedBox(height: indent),
             Text(
-              'Valid Till',
+              AppLocalizations.of(context)!.validTillDate,
               style: textTheme.bodyLarge,
             ),
-            Container(
-              color:
-                  Theme.of(context).colorScheme.inversePrimary.withOpacity(0.3),
-              child: ListTile(
-                title: Text(
-                  widget.validTillDate != null
-                      ? formatterDate.format(widget.validTillDate!)
-                      : 'Select date',
-                  style: textTheme.numberMedium,
-                ),
-                onTap: () async {
-                  final DateTime? selectedDate = await showDatePicker(
-                    context: context,
-                    initialDate: widget.validTillDate ?? currentDate,
-                    firstDate: firstDate,
-                    lastDate: lastDate,
-                  );
-                  if (selectedDate != null) {
-                    setState(() {
-                      widget.validTillDate = selectedDate;
-                    });
-                  }
-                },
-              ),
+            DateInput(
+              value: widget.validTillDate,
+              setState: (value) => setState(() => widget.validTillDate = value),
+              style: textTheme.numberMedium,
             ),
             SizedBox(height: indent),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text(
-                  'Balance Date Update',
+                  AppLocalizations.of(context)!.balanceDate,
                   style: textTheme.bodyLarge,
                 ),
-                const Tooltip(
-                  message:
-                      'Outcomes and Incomes before this date won\'t affect the balance',
-                  child: Icon(Icons.info_outline),
+                Tooltip(
+                  message: AppLocalizations.of(context)!.balanceDateTooltip,
+                  child: const Icon(Icons.info_outline),
                 ),
               ],
             ),
-            Container(
-              child: Row(
-                children: [
-                  Expanded(
-                    child: Container(
-                      constraints: BoxConstraints(
-                        maxWidth: offset * 0.6,
-                      ),
-                      color: Theme.of(context)
-                          .colorScheme
-                          .inversePrimary
-                          .withOpacity(0.3),
-                      child: ListTile(
-                        title: Text(
-                          formatterDate.format(widget.balanceUpdateDate),
-                          overflow: TextOverflow.ellipsis,
-                          style: textTheme.numberMedium,
-                        ),
-                        onTap: () async {
-                          final DateTime? selectedDate = await showDatePicker(
-                            context: context,
-                            initialDate: widget.balanceUpdateDate,
-                            firstDate: firstDate,
-                            lastDate: lastDate,
-                          );
-                          if (selectedDate != null) {
-                            setState(() {
-                              widget.balanceUpdateDate = selectedDate;
-                            });
-                          }
-                        },
-                      ),
-                    ),
-                  ),
-                  SizedBox(width: indent),
-                  Container(
-                    constraints: BoxConstraints(
-                      maxWidth: offset * 0.4,
-                    ),
-                    color: Theme.of(context)
-                        .colorScheme
-                        .inversePrimary
-                        .withOpacity(0.3),
-                    child: ListTile(
-                      title: Text(
-                        formatterTime.format(widget.balanceUpdateDate),
-                        overflow: TextOverflow.ellipsis,
-                        style: textTheme.numberMedium,
-                      ),
-                      onTap: () {
-                        DatePicker.showTimePicker(
-                          context,
-                          showTitleActions: true,
-                          currentTime: widget.balanceUpdateDate,
-                          onChanged: (dateTime) {
-                            // Handle date and time changes
-                            setState(() {
-                              Duration dateRange = Duration(
-                                seconds: dateTime.second,
-                                minutes: dateTime.minute,
-                                hours: dateTime.hour,
-                              );
-                              widget.balanceUpdateDate.add(dateRange);
-                            });
-                          },
-                          onConfirm: (dateTime) {
-                            // Handle date and time confirmation
-                            setState(() {
-                              widget.balanceUpdateDate = dateTime;
-                            });
-                          },
-                        );
-                      },
-                    ),
-                  ),
-                ],
-              ),
+            DateTimeInput(
+              style: textTheme.numberMedium,
+              width: offset,
+              value: widget.balanceUpdateDate,
+              setState: (value) =>
+                  setState(() => widget.balanceUpdateDate = value),
             ),
             SizedBox(height: indent),
             Text(
-              'Actual Balance',
+              AppLocalizations.of(context)!.balance,
               style: textTheme.bodyLarge,
             ),
-            TextFormField(
-              initialValue:
-                  widget.balance != null ? widget.balance.toString() : '',
-              keyboardType: TextInputType.number,
-              decoration: InputDecoration(
-                filled: true,
-                border: InputBorder.none,
-                fillColor: Theme.of(context)
-                    .colorScheme
-                    .inversePrimary
-                    .withOpacity(0.3),
-                hintText: 'Set Balance',
-                hintStyle: textTheme.numberMedium,
-              ),
-              onChanged: (value) {
-                setState(() {
-                  widget.balance = double.parse(value);
-                });
-              },
+            TextInput(
+              value: widget.balance != null ? widget.balance.toString() : '',
+              type: const TextInputType.numberWithOptions(decimal: true),
+              tooltip: AppLocalizations.of(context)!.balanceTooltip,
+              style: textTheme.numberMedium,
+              setState: (value) =>
+                  setState(() => widget.balance = double.parse(value)),
             ),
           ],
         ),

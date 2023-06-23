@@ -41,6 +41,8 @@ dependencies:
   intl: ^0.18.0
   flutter_datetime_picker_plus: ^2.0.1
   flutter_colorpicker: ^0.5.0
+  currency_picker: ^2.0.15
+  flutter_iconpicker: ^3.2.4
 
 dev_dependencies:
   flutter_test:
