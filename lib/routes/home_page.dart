@@ -15,7 +15,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localization.dart';
 
 class HomePage extends AbstractPage {
-  HomePage({super.key, 
+  HomePage({
+    super.key,
     required AppData state,
   }) : super(state: state);
 
@@ -34,12 +35,17 @@ class HomePageState extends AbstractPageState<HomePage> {
     return AppBar(
       backgroundColor: Theme.of(context).colorScheme.secondary,
       toolbarHeight: 40,
-      leading: IconButton(
-        icon: Icon(
-          Icons.menu,
-          color: Theme.of(context).colorScheme.inversePrimary.withOpacity(0.5),
-        ),
-        onPressed: () => Scaffold.of(context).openDrawer(),
+      leading: Builder(
+        builder: (BuildContext context) {
+          return IconButton(
+            icon: Icon(
+              Icons.menu,
+              color:
+                  Theme.of(context).colorScheme.inversePrimary.withOpacity(0.5),
+            ),
+            onPressed: () => Scaffold.of(context).openDrawer(),
+          );
+        },
       ),
       title: Center(
         child: Text(
