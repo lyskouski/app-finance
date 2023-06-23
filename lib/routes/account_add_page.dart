@@ -19,12 +19,13 @@ import 'package:currency_picker/currency_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_gen/gen_l10n/app_localization.dart';
-import 'package:intl/intl.dart';
 
 class AccountAddPage extends AbstractPage {
   String? title;
+  String titleErrorMessage = '';
   String? description;
   String? type;
+  String typeErrorMessage = '';
   Currency? currency;
   DateTime? validTillDate;
   DateTime balanceUpdateDate = DateTime.now();
@@ -47,6 +48,31 @@ class AccountAddPageState extends AbstractPageState<AccountAddPage> {
     return AppLocalizations.of(context)!.createAccountHeader;
   }
 
+  bool hasFormErrors() {
+    bool isError = false;
+    if (widget.type == null || widget.type!.isEmpty) {
+      widget.typeErrorMessage = AppLocalizations.of(context)!.isRequired;
+      isError = true;
+    }
+    if (widget.title == null || widget.title!.isEmpty) {
+      widget.titleErrorMessage = AppLocalizations.of(context)!.isRequired;
+      isError = true;
+    }
+    return isError;
+  }
+
+  void updateStorage() {
+    var data = widget.state.state['accounts'];
+    data['list'].insert(0, (
+      title: widget.title,
+      description: widget.description ?? '',
+      details: widget.balance ?? 0.0,
+      progress: 1.0,
+      color: widget.color ?? Colors.red,
+    ));
+    widget.state.set('accounts', data);
+  }
+
   @override
   Widget buildButton(BuildContext context, BoxConstraints constraints) {
     var helper = ThemeHelper(windowType: getWindowType(context));
@@ -56,15 +82,10 @@ class AccountAddPageState extends AbstractPageState<AccountAddPage> {
       child: FloatingActionButton(
         onPressed: () => {
           setState(() {
-            var data = widget.state.state['accounts'];
-            data['list'].insert(0, (
-              title: widget.title,
-              description: widget.description,
-              details: widget.balance as double,
-              progress: 1.0,
-              color: widget.color,
-            ));
-            widget.state.set('accounts', data);
+            if (hasFormErrors()) {
+              return;
+            }
+            updateStorage();
             Navigator.popAndPushNamed(context, routes.accountRoute);
           })
         },
@@ -106,12 +127,6 @@ class AccountAddPageState extends AbstractPageState<AccountAddPage> {
     final TextTheme textTheme = Theme.of(context).textTheme;
     double indent =
         ThemeHelper(windowType: getWindowType(context)).getIndent() * 2;
-    DateTime currentDate = DateTime.now();
-    const Duration dateRange = Duration(days: 20 * 365);
-    DateTime firstDate = currentDate.subtract(dateRange);
-    DateTime lastDate = currentDate.add(dateRange);
-    final locale = Localizations.localeOf(context).toString();
-    final DateFormat formatterDate = DateFormat.yMd(locale);
     double offset = MediaQuery.of(context).size.width - indent * 3;
     double offsetTriple = offset - indent;
 
@@ -121,9 +136,19 @@ class AccountAddPageState extends AbstractPageState<AccountAddPage> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text(
-              AppLocalizations.of(context)!.accountType,
-              style: textTheme.bodyLarge,
+            Row(
+              children: [
+                Text(
+                  '${AppLocalizations.of(context)!.accountType}*',
+                  style: textTheme.bodyLarge,
+                ),
+                Text(
+                  widget.typeErrorMessage,
+                  style: TextStyle(
+                    color: Theme.of(context).colorScheme.error,
+                  ),
+                ),
+              ],
             ),
             ListSelector(
               value: widget.type,
@@ -133,9 +158,19 @@ class AccountAddPageState extends AbstractPageState<AccountAddPage> {
               indent: indent,
             ),
             SizedBox(height: indent),
-            Text(
-              AppLocalizations.of(context)!.title,
-              style: textTheme.bodyLarge,
+            Row(
+              children: [
+                Text(
+                  '${AppLocalizations.of(context)!.title}*',
+                  style: textTheme.bodyLarge,
+                ),
+                Text(
+                  widget.titleErrorMessage,
+                  style: TextStyle(
+                    color: Theme.of(context).colorScheme.error,
+                  ),
+                ),
+              ],
             ),
             SimpleInput(
               value: widget.title,

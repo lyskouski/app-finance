@@ -29,6 +29,7 @@
     "detailsTooltip": "****2345 - last 4 digits of number",
     "goalHeadline": "Goals",
     "homeTooltip": "Back to Main Page",
+    "isRequired": " - required",
     "icon": "Icon",
     "ok": "OK",
     "subscriptionTooltip": "Activate Subscription",
