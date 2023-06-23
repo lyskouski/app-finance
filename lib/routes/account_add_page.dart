@@ -22,6 +22,7 @@ import 'package:flutter_gen/gen_l10n/app_localization.dart';
 import 'package:uuid/uuid.dart';
 
 class AccountAddPage extends AbstractPage {
+  String? uuid;
   String? title;
   String titleErrorMessage = '';
   String? description;
@@ -37,6 +38,15 @@ class AccountAddPage extends AbstractPage {
   AccountAddPage({
     super.key,
     required AppData state,
+    this.uuid,
+    this.title,
+    this.description,
+    this.type,
+    this.currency,
+    this.validTillDate,
+    this.balance,
+    this.icon,
+    this.color,
   }) : super(state: state);
 
   @override
@@ -65,7 +75,7 @@ class AccountAddPageState<T> extends AbstractPageState<AccountAddPage> {
   void updateStorage() {
     var data = widget.state.state['accounts'];
     data['list'].insert(0, (
-      id: const Uuid().v4(),
+      uuid: widget.uuid ?? const Uuid().v4(),
       title: widget.title,
       description: widget.description ?? '',
       details: widget.balance ?? 0.0,

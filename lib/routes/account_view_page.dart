@@ -34,9 +34,10 @@ class AccountViewPageState extends AbstractPageState<AccountViewPage> {
 
   @override
   Widget buildButton(BuildContext context, BoxConstraints constraints) {
+    String route = routes.accountEditRoute.replaceAll('uuid:', 'uuid:${widget.uuid}');
     return FloatingActionButton(
-      onPressed: () => Navigator.pushNamed(context, routes.accountAddRoute),
-      tooltip: AppLocalizations.of(context)!.addAccountTooltip,
+      onPressed: () => Navigator.pushNamed(context, route),
+      tooltip: AppLocalizations.of(context)!.editAccountTooltip,
       child: const Icon(Icons.edit),
     );
   }

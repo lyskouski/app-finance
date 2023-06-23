@@ -6,6 +6,7 @@ import 'package:app_finance/custom_text_theme.dart';
 import 'package:app_finance/data.dart';
 import 'package:app_finance/routes.dart' as routes;
 import 'package:app_finance/routes/account_add_page.dart';
+import 'package:app_finance/routes/account_edit_page.dart';
 import 'package:app_finance/routes/account_view_page.dart';
 import 'package:app_finance/routes/account_page.dart';
 import 'package:app_finance/routes/home_page.dart';
@@ -26,6 +27,24 @@ class MyApp extends StatefulWidget {
 class _MyAppState extends State<MyApp> {
   final AppData state = AppData();
 
+  MaterialPageRoute? getDynamicRouter(settings) {
+    final String route = settings.name!;
+    final regex = RegExp(r'\/uuid:([\w-]+)');
+    final match = regex.firstMatch(route);
+    if (match != null) {
+      final String uuid = match.group(1) ?? '';
+      switch (route.replaceAll(uuid, '')) {
+        case routes.accountViewRoute:
+          return MaterialPageRoute(
+              builder: (context) => AccountViewPage(state: state, uuid: uuid));
+        case routes.accountEditRoute:
+          return MaterialPageRoute(
+              builder: (context) => AccountEditPage(state: state, uuid: uuid));
+      }
+    }
+    return null;
+  }
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -45,17 +64,7 @@ class _MyAppState extends State<MyApp> {
       themeMode: ThemeMode.system,
       home: HomePage(state: state),
       initialRoute: routes.homeRoute,
-      onGenerateRoute: (settings) {
-        final regex = RegExp(r'\/uuid:([\w-]+)');
-        final match = regex.firstMatch(settings.name!);
-        if (match != null) {
-          final uuid = match.group(1);
-          return MaterialPageRoute(
-            builder: (context) => AccountViewPage(state: state, uuid: uuid ?? '')
-          );
-        }
-        return null;
-      },
+      onGenerateRoute: getDynamicRouter,
       routes: <String, WidgetBuilder>{
         routes.homeRoute: (context) => HomePage(state: state),
         routes.accountRoute: (context) => AccountPage(state: state),

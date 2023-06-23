@@ -8,6 +8,7 @@ const String homeRoute = '/app/finance';
 const String accountRoute = '/app/finance/account';
 const String accountAddRoute = '/app/finance/account/add';
 const String accountViewRoute = '/app/finance/account/uuid:';
+const String accountEditRoute = '/app/finance/account/uuid:/edit';
 
 var menuList = [
   (
