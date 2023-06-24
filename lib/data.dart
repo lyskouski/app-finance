@@ -122,21 +122,39 @@ class AppData extends ChangeNotifier {
 
   Map<String, dynamic> get state => _data;
 
-  void set(String property, dynamic value) {
-    if (_data.containsKey(property)) {
-      _data[property] = value;
-      notifyListeners();
-    } else {
+  void check(String property) {
+    if (!_data.containsKey(property)) {
       throw ArgumentError('Invalid property: $property');
     }
   }
 
-  get(String property, String uuid) {
-    if (_data.containsKey(property)) {
-      var scope = (_data[property] as Map)['list'];
-      return scope.firstWhere((item) => item.uuid == uuid);
-    } else {
-      throw ArgumentError('Invalid property: $property');
+  void set(String property, dynamic value) {
+    check(property);
+    _data[property] = value;
+    notifyListeners();
+  }
+
+  void update(String property, String uuid, dynamic value) {
+    check(property);
+    var data = (_data[property] as Map);
+    final index = data['list'].indexWhere((item) => item.uuid == uuid);
+    if (index != -1) {
+      data['list'][index] = (
+        uuid: uuid,
+        title: value.title,
+        description: value.description,
+        details: value.details,
+        progress: value.progress,
+        color: value.color,
+        hidden: value.hidden,
+      );
+      set(property, data);
     }
+  }
+
+  dynamic getByUuid(String property, String uuid) {
+    check(property);
+    var scope = (_data[property] as Map)['list'];
+    return scope.firstWhere((item) => item.uuid == uuid);
   }
 }

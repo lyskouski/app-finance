@@ -27,27 +27,23 @@ class AccountEditPageState extends AccountAddPageState<AccountEditPage> {
   @override
   void updateStorage() {
     String uuid = (widget as AccountEditPage).uuid;
-    var data = widget.state?.state['accounts'];
-    final index = data['list'].indexWhere((item) => item.uuid == uuid);
-    if (index != -1) {
-      data['list'][index] = (
-        uuid: uuid,
-        title: widget.title,
-        description: widget.description ?? '',
-        details: widget.balance ?? 0.0,
-        progress: 1.0,
-        color: widget.color ?? Colors.red,
-        hidden: false,
-      );
-    }
-    widget.state?.set('accounts', data);
+    widget.state?.update('accounts', uuid, (
+      uuid: uuid,
+      title: widget.title,
+      description: widget.description ?? '',
+      details: widget.balance ?? 0.0,
+      progress: 1.0,
+      color: widget.color ?? Colors.red,
+      hidden: false,
+    ));
   }
 
   @override
   Widget buildContent(BuildContext context, BoxConstraints constraints) {
     if ((widget as AccountEditPage).isFirstRun) {
       (widget as AccountEditPage).isFirstRun = false;
-      var form = widget.state?.get('accounts', (widget as AccountEditPage).uuid);
+      var form =
+          widget.state?.getByUuid('accounts', (widget as AccountEditPage).uuid);
       widget.title = form.title;
       widget.description = form.description;
       widget.balance = form.details;

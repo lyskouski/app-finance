@@ -25,7 +25,7 @@ class AccountViewPage extends AbstractPage {
 class AccountViewPageState extends AbstractPageState<AccountViewPage> {
   @override
   String getTitle(context) {
-    final item = widget.state?.get('accounts', widget.uuid);
+    final item = widget.state?.getByUuid('accounts', widget.uuid);
     String? title = item!.title;
     return title ?? '';
   }
@@ -77,7 +77,7 @@ class AccountViewPageState extends AbstractPageState<AccountViewPage> {
 
   @override
   Widget buildContent(BuildContext context, BoxConstraints constraints) {
-    final item = widget.state?.get('accounts', widget.uuid);
+    final item = widget.state?.getByUuid('accounts', widget.uuid);
     var theme = ThemeHelper(windowType: getWindowType(context));
     double indent =
         ThemeHelper(windowType: getWindowType(context)).getIndent() * 2;
