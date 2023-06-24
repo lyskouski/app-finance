@@ -13,7 +13,7 @@ class AccountWidget extends BaseWidget {
     super.key,
     required String title,
     required EdgeInsetsGeometry margin,
-    required Map<String, dynamic> state,
+    required dynamic state,
     required double offset,
     String? tooltip,
     String? route,

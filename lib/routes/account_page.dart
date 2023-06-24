@@ -41,7 +41,7 @@ class AccountPageState extends AbstractPageState<AccountPage> {
         AccountWidget(
           margin: EdgeInsets.all(helper.getIndent()),
           title: AppLocalizations.of(context)!.accountHeadline,
-          state: widget.state?.state['accounts'],
+          state: widget.state?.get(AppDataType.accounts),
           offset: MediaQuery.of(context).size.width - helper.getIndent() * 2,
         )
       ],

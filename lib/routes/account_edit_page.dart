@@ -2,6 +2,7 @@
 // Use of this source code is governed by a CC BY-NC-ND 4.0 license that can be
 // found in the LICENSE file.
 
+import 'package:app_finance/data.dart';
 import 'package:app_finance/routes/account_add_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localization.dart';
@@ -27,7 +28,7 @@ class AccountEditPageState extends AccountAddPageState<AccountEditPage> {
   @override
   void updateStorage() {
     String uuid = (widget as AccountEditPage).uuid;
-    widget.state?.update('accounts', uuid, (
+    widget.state?.update(AppDataType.accounts, uuid, (
       uuid: uuid,
       title: widget.title,
       description: widget.description ?? '',
@@ -43,7 +44,7 @@ class AccountEditPageState extends AccountAddPageState<AccountEditPage> {
     if ((widget as AccountEditPage).isFirstRun) {
       (widget as AccountEditPage).isFirstRun = false;
       var form =
-          widget.state?.getByUuid('accounts', (widget as AccountEditPage).uuid);
+          widget.state?.getByUuid(AppDataType.accounts, (widget as AccountEditPage).uuid);
       widget.title = form.title;
       widget.description = form.description;
       widget.balance = form.details;

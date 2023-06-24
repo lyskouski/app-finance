@@ -15,7 +15,7 @@ class BaseWidget extends StatelessWidget {
   final EdgeInsetsGeometry margin;
   final String title;
   final double offset;
-  final Map<String, dynamic> state;
+  final dynamic state;
   String? tooltip;
   String? route;
   String routeList;
@@ -88,7 +88,7 @@ class BaseWidget extends StatelessWidget {
                         padding: EdgeInsets.fromLTRB(
                             theme.getIndent(), 0, 0, theme.getIndent()),
                         child: Text(
-                          formatter.format(state['total']),
+                          formatter.format(state.total),
                           style: textTheme.numberLarge,
                         ),
                       ),
@@ -99,12 +99,12 @@ class BaseWidget extends StatelessWidget {
             ),
             Expanded(
               child: ListView.builder(
-                  itemCount: state['list'].length + 2,
+                  itemCount: state.list.length + 2,
                   itemBuilder: (context, index) {
                     if (index == 0) {
                       return SizedBox(height: theme.getIndent());
-                    } else if (index <= state['list'].length) {
-                      final item = state['list'][index - 1];
+                    } else if (index <= state.list.length) {
+                      final item = state.list[index - 1];
                       return buildListWidget(
                           item, context, formatter, formatterDate, offset - 40);
                     } else {

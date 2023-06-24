@@ -4,6 +4,7 @@
 
 import 'package:adaptive_breakpoints/adaptive_breakpoints.dart';
 import 'package:app_finance/custom_text_theme.dart';
+import 'package:app_finance/data.dart';
 import 'package:app_finance/helpers/theme_helper.dart';
 import 'package:app_finance/routes.dart' as routes;
 import 'package:app_finance/routes/abstract_page.dart';
@@ -47,7 +48,8 @@ class AccountAddPage extends AbstractPage {
   AccountAddPageState createState() => AccountAddPageState();
 }
 
-class AccountAddPageState<T extends AccountAddPage> extends AbstractPageState<AccountAddPage> {
+class AccountAddPageState<T extends AccountAddPage>
+    extends AbstractPageState<AccountAddPage> {
   @override
   String getTitle(context) {
     return AppLocalizations.of(context)!.createAccountHeader;
@@ -67,7 +69,7 @@ class AccountAddPageState<T extends AccountAddPage> extends AbstractPageState<Ac
   }
 
   void updateStorage() {
-    widget.state?.add('accounts', (
+    widget.state?.add(AppDataType.accounts, (
       title: widget.title,
       description: widget.description ?? '',
       details: widget.balance ?? 0.0,
@@ -112,16 +114,23 @@ class AccountAddPageState<T extends AccountAddPage> extends AbstractPageState<Ac
   List<ListSelectorItem> getAccountTypes(BuildContext context) {
     return [
       ListSelectorItem(
-          id: 'account', name: AppLocalizations.of(context)!.bankAccount),
-      ListSelectorItem(id: 'cash', name: AppLocalizations.of(context)!.cash),
+          id: AppAccountType.account.toString(),
+          name: AppLocalizations.of(context)!.bankAccount),
       ListSelectorItem(
-          id: 'debitCard', name: AppLocalizations.of(context)!.debitCard),
+          id: AppAccountType.cash.toString(),
+          name: AppLocalizations.of(context)!.cash),
       ListSelectorItem(
-          id: 'creditCard', name: AppLocalizations.of(context)!.creditCard),
+          id: AppAccountType.debitCard.toString(),
+          name: AppLocalizations.of(context)!.debitCard),
       ListSelectorItem(
-          id: 'deposit', name: AppLocalizations.of(context)!.deposit),
+          id: AppAccountType.creditCard.toString(),
+          name: AppLocalizations.of(context)!.creditCard),
       ListSelectorItem(
-          id: 'credit', name: AppLocalizations.of(context)!.credit),
+          id: AppAccountType.deposit.toString(),
+          name: AppLocalizations.of(context)!.deposit),
+      ListSelectorItem(
+          id: AppAccountType.credit.toString(),
+          name: AppLocalizations.of(context)!.credit),
     ];
   }
 

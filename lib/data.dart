@@ -5,17 +5,45 @@
 import 'package:flutter/material.dart';
 import 'package:uuid/uuid.dart';
 
+enum AppDataType {
+  goals,
+  bills,
+  accounts,
+  budgets,
+}
+
+enum AppAccountType {
+  account,
+  cash,
+  debitCard,
+  creditCard,
+  deposit,
+  credit,
+}
+
 class AppData extends ChangeNotifier {
+  final _account = {
+    AppAccountType.account: (),
+    AppAccountType.cash: (),
+    AppAccountType.debitCard: (),
+    AppAccountType.creditCard: (),
+    AppAccountType.deposit: (),
+    AppAccountType.credit: (),
+  };
+
   final _data = {
-    'goals': [
-      (
-        uuid: 'xxxxxxxx-xxxx-0xxx-yxxx-xxxxxxxxxxxx',
-        title: 'Implement new functionality to reach the goal of MVP',
-        startDate: '2022-01-01 00:00',
-        endDate: '2024-09-01 00:00',
-      )
-    ],
-    'bills': {
+    AppDataType.goals: {
+      'total': 123.45,
+      'list': [
+        (
+          uuid: 'xxxxxxxx-xxxx-0xxx-yxxx-xxxxxxxxxxxx',
+          title: 'Implement new functionality to reach the goal of MVP',
+          startDate: '2022-01-01 00:00',
+          endDate: '2024-09-01 00:00',
+        ),
+      ]
+    },
+    AppDataType.bills: {
       'total': 123456.789,
       'list': [
         (
@@ -47,15 +75,7 @@ class AppData extends ChangeNotifier {
         ),
       ]
     },
-    'accountTypes': {
-      'account': (),
-      'cash': (),
-      'debitCard': (),
-      'creditCard': (),
-      'deposit': (),
-      'credit': (),
-    },
-    'accounts': {
+    AppDataType.accounts: {
       'total': 123456.789,
       'list': [
         (
@@ -87,7 +107,7 @@ class AppData extends ChangeNotifier {
         ),
       ],
     },
-    'budgets': {
+    AppDataType.budgets: {
       'total': 123456.789,
       'list': [
         (
@@ -121,22 +141,12 @@ class AppData extends ChangeNotifier {
     },
   };
 
-  Map<String, dynamic> get state => _data;
-
-  void check(String property) {
-    if (!_data.containsKey(property)) {
-      throw ArgumentError('Invalid property: $property');
-    }
-  }
-
-  void set(String property, dynamic value) {
-    check(property);
+  void set(AppDataType property, dynamic value) {
     _data[property] = value;
     notifyListeners();
   }
 
-  void add(String property, dynamic value) {
-    check(property);
+  void add(AppDataType property, dynamic value) {
     var data = (_data[property] as Map);
     data['list'].insert(0, (
       uuid: const Uuid().v4(),
@@ -150,8 +160,7 @@ class AppData extends ChangeNotifier {
     set(property, data);
   }
 
-  void update(String property, String uuid, dynamic value) {
-    check(property);
+  void update(AppDataType property, String uuid, dynamic value) {
     var data = (_data[property] as Map);
     final index = data['list'].indexWhere((item) => item.uuid == uuid);
     if (index != -1) {
@@ -168,9 +177,24 @@ class AppData extends ChangeNotifier {
     }
   }
 
-  dynamic getByUuid(String property, String uuid) {
-    check(property);
+  dynamic get(AppDataType property) {
+    var data = (_data[property] as Map);
+    return (
+      total: data['total'],
+      list: data['list'],
+    );
+  }
+
+  double getTotal(AppDataType property) {
+    return (_data[property] as Map)['total'];
+  }
+
+  dynamic getByUuid(AppDataType property, String uuid) {
     var scope = (_data[property] as Map)['list'];
     return scope.firstWhere((item) => item.uuid == uuid);
+  }
+
+  dynamic getType(AppAccountType property) {
+    return _account[property];
   }
 }
