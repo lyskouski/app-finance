@@ -12,9 +12,12 @@
 \usepackage{makeidx}
 \usepackage{fancyhdr}
 \usepackage{graphicx}
+\graphicspath{ {./} }
 \usepackage{watermark}
 \usepackage{titling}
 \usepackage[fencedCode,hashEnumerators,smartEllipses]{markdown}
+\usepackage{lipsum}
+\usepackage{tocloft}
 
 \usepackage{customization}
 
@@ -38,6 +41,8 @@
 %\subtitle{On Example of Financial Accounting Application Development Flow}
 \date{2023}
 
+\setlength{\cftsecindent}{0pt}
+\setlength{\cftsubsecindent}{0pt}
 
 \begin{document}
 
@@ -74,8 +79,8 @@
 % 5 	\subparagraph{subparagraph}
 
 \include{./ch00-intro}
-
-\include{./ch03-flow}
+\section{Implementing Core Functionality}
+\input{./ch03-s01-first-steps}
 
 \thispagestyle{empty}
 
