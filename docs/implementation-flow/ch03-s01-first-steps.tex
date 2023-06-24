@@ -87,6 +87,77 @@ Connect a physical device or start an emulator/simulator.
 Use your IDE's run or debug command to launch the Flutter app.
 The app will build and deploy to the connected device/emulator.
 
+To run Flutter with the Android SDK, you need to make sure that you have the Android SDK installed on your machine and 
+properly configured. Here are the steps to set up Flutter with the Android SDK:
+
+Install Android Studio: Download and install Android Studio from the official website 
+(https://developer.android.com/studio). This will install the Android SDK along with other necessary tools.
+
+Set up Android SDK in Android Studio: Launch Android Studio and go through the initial setup wizard. When 
+prompted to choose the type of setup, select "Standard" and follow the instructions to install the necessary components.
+
+Set up Android device or emulator: Connect a physical Android device to your computer using a USB cable or set 
+up an Android emulator in Android Studio. Make sure the device/emulator is recognized by your machine.
+
+Install Flutter: Download and install the Flutter SDK from the official Flutter website (https://flutter.dev). 
+Extract the downloaded archive to a desired location on your machine.
+
+Set up Flutter in your environment: Add the Flutter binary path to your system's PATH variable. The exact steps 
+for setting up the PATH variable may vary depending on your operating system. Refer to the official Flutter 
+documentation for detailed instructions (https://flutter.dev/docs/get-started/install).
+
+Verify Flutter installation: Open a terminal or command prompt and run the following command to verify that 
+Flutter is properly installed: flutter doctor
+
+This command will check your environment and display a report with any missing dependencies or configuration issues. 
+Make sure to resolve any reported issues before proceeding.
+
+Run a Flutter app on Android: Once you have set up the Android SDK and Flutter, you can run a Flutter app on an 
+Android device or emulator. In your Flutter project directory, open a terminal or command prompt and run the 
+following command: flutter run.
+
+This command will build the Flutter app and launch it on the connected Android device or emulator. Make sure the 
+device/emulator is already running or connected before running the command.
+
+To set up an Android emulator in Android Studio, follow these steps:
+
+Open Android Studio: Launch Android Studio on your computer.
+
+Open AVD Manager: Click on the "Configure" button in the welcome screen, or go to "File" -> "Settings" (on Windows/Linux) 
+or "Android Studio" -> "Preferences" (on macOS) to open the settings. In the settings window, navigate to 
+"Appearance \& Behavior" -> "System Settings" -> "Android SDK".
+
+Install emulator system image: In the "Android SDK" settings, click on the "SDK Platforms" tab. Here, you will 
+see a list of available Android versions. Check the box next to the desired Android version(s) for which you want
+ to create an emulator. Click "Apply" to install the selected system image(s).
+
+Open AVD Manager: Once the system image(s) are installed, click on the "SDK Tools" tab in the "Android SDK" settings. 
+Check the box next to "Android Emulator" and click "Apply" to install the emulator component.
+
+Open AVD Manager: After installing the emulator component, go to "Tools" -> "AVD Manager" in the main toolbar to 
+open the Android Virtual Device (AVD) Manager.
+
+Create a new virtual device: In the AVD Manager, click on the "Create Virtual Device" button. This will open the 
+"Select Hardware" window.
+
+Choose a device definition: In the "Select Hardware" window, choose a device definition that matches the 
+characteristics of the emulator you want to create. You can select a predefined device from the list, or click 
+on "New Hardware Profile" to create a custom device profile. Click "Next" to proceed.
+
+Select a system image: In the "System Image" window, select the desired Android version and select a system image 
+from the list. The list will only show the system images that you have installed in step 3. Click "Next" to continue.
+
+Configure emulator options: In the "Emulator Options" window, you can customize additional options for the 
+emulator, such as its name, orientation, and initial scale. Make the desired selections and click "Finish" 
+to create the emulator.
+
+Launch the emulator: Once the emulator is created, it will appear in the AVD Manager list. Click on the green 
+play button next to the emulator to launch it.
+
+Wait for the emulator to start: The emulator will take some time to start up. You will see a progress bar 
+indicating the startup progress. Once the emulator is fully started, you can use it to test and run your 
+Android applications.
+
 Start experimenting with Flutter widgets and explore different UI layouts.
 Refer to the Flutter documentation (https://flutter.dev/docs) and online resources for learning more about Flutter 
 development. Try adding features, integrating APIs, and building more complex functionality to expand your knowledge.
