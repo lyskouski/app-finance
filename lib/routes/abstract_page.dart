@@ -15,9 +15,8 @@ abstract class AbstractPage<T> extends StatefulWidget {
   AppData? state;
 
   AbstractPage({
-    super.key,
     this.state,
-  });
+  }) : super(key: UniqueKey());
 }
 
 abstract class AbstractPageState<T extends AbstractPage> extends State<T> {

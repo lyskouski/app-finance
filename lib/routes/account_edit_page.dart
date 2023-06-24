@@ -7,20 +7,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localization.dart';
 
 class AccountEditPage extends AccountAddPage {
+  String uuid;
+  bool isFirstRun;
+
   AccountEditPage({
-    required uuid,
-  }) : super(
-          key: UniqueKey(),
-          uuid: uuid,
-        ) {
-    var form = state?.get('accounts', uuid);
-    title = form.title;
-    description = form.description;
-    title = form.title;
-    description = form.description;
-    balance = form.details;
-    color = form.color;
-  }
+    required this.uuid,
+    this.isFirstRun = true,
+  }) : super();
 
   @override
   AccountEditPageState createState() => AccountEditPageState();
@@ -34,11 +27,12 @@ class AccountEditPageState extends AccountAddPageState<AccountEditPage> {
 
   @override
   void updateStorage() {
+    String uuid = (widget as AccountEditPage).uuid;
     var data = widget.state?.state['accounts'];
-    final index = data['list'].indexWhere((item) => item.uuid == widget.uuid);
+    final index = data['list'].indexWhere((item) => item.uuid == uuid);
     if (index != -1) {
       data['list'][index] = (
-        uuid: widget.uuid,
+        uuid: uuid,
         title: widget.title,
         description: widget.description ?? '',
         details: widget.balance ?? 0.0,
@@ -48,5 +42,18 @@ class AccountEditPageState extends AccountAddPageState<AccountEditPage> {
       );
     }
     widget.state?.set('accounts', data);
+  }
+
+  @override
+  Widget buildContent(BuildContext context, BoxConstraints constraints) {
+    if ((widget as AccountEditPage).isFirstRun) {
+      (widget as AccountEditPage).isFirstRun = false;
+      var form = widget.state?.get('accounts', (widget as AccountEditPage).uuid);
+      widget.title = form.title;
+      widget.description = form.description;
+      widget.balance = form.details;
+      widget.color = form.color;
+    }
+    return super.buildContent(context, constraints);
   }
 }
