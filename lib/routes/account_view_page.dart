@@ -3,7 +3,6 @@
 // found in the LICENSE file.
 
 import 'package:adaptive_breakpoints/adaptive_breakpoints.dart';
-import 'package:app_finance/data.dart';
 import 'package:app_finance/helpers/theme_helper.dart';
 import 'package:app_finance/routes.dart' as routes;
 import 'package:app_finance/routes/abstract_page.dart';
@@ -17,8 +16,7 @@ class AccountViewPage extends AbstractPage {
 
   AccountViewPage({
     required this.uuid,
-    required AppData state,
-  }) : super(state: state);
+  }) : super();
 
   @override
   AccountViewPageState createState() => AccountViewPageState();
@@ -27,13 +25,13 @@ class AccountViewPage extends AbstractPage {
 class AccountViewPageState extends AbstractPageState<AccountViewPage> {
   @override
   String getTitle(context) {
-    final item = widget.state.get('accounts', widget.uuid);
+    final item = widget.state?.get('accounts', widget.uuid);
     String? title = item!.title;
     return title ?? '';
   }
 
   void deactivateAccount(BuildContext context) {
-    var data = widget.state.state['accounts'];
+    var data = widget.state?.state['accounts'];
     final index = data['list'].indexWhere((item) => item.uuid == widget.uuid);
     if (index != -1) {
       setState(() {
@@ -48,7 +46,7 @@ class AccountViewPageState extends AbstractPageState<AccountViewPage> {
           color: curr.color,
           hidden: true,
         );
-        widget.state.set('accounts', data);
+        widget.state?.set('accounts', data);
       });
     }
     Navigator.pop(context);
@@ -78,9 +76,8 @@ class AccountViewPageState extends AbstractPageState<AccountViewPage> {
   }
 
   @override
-  Widget buildContent(
-      BuildContext context, BoxConstraints constraints, AppData state) {
-    final item = widget.state.get('accounts', widget.uuid);
+  Widget buildContent(BuildContext context, BoxConstraints constraints) {
+    final item = widget.state?.get('accounts', widget.uuid);
     var theme = ThemeHelper(windowType: getWindowType(context));
     double indent =
         ThemeHelper(windowType: getWindowType(context)).getIndent() * 2;

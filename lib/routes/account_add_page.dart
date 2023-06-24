@@ -4,7 +4,6 @@
 
 import 'package:adaptive_breakpoints/adaptive_breakpoints.dart';
 import 'package:app_finance/custom_text_theme.dart';
-import 'package:app_finance/data.dart';
 import 'package:app_finance/helpers/theme_helper.dart';
 import 'package:app_finance/routes.dart' as routes;
 import 'package:app_finance/routes/abstract_page.dart';
@@ -37,7 +36,6 @@ class AccountAddPage extends AbstractPage {
 
   AccountAddPage({
     super.key,
-    required AppData state,
     this.uuid,
     this.title,
     this.description,
@@ -47,7 +45,7 @@ class AccountAddPage extends AbstractPage {
     this.balance,
     this.icon,
     this.color,
-  }) : super(state: state);
+  }) : super();
 
   @override
   AccountAddPageState createState() => AccountAddPageState();
@@ -73,7 +71,7 @@ class AccountAddPageState<T> extends AbstractPageState<AccountAddPage> {
   }
 
   void updateStorage() {
-    var data = widget.state.state['accounts'];
+    var data = widget.state?.state['accounts'];
     data['list'].insert(0, (
       uuid: widget.uuid ?? const Uuid().v4(),
       title: widget.title,
@@ -83,7 +81,7 @@ class AccountAddPageState<T> extends AbstractPageState<AccountAddPage> {
       color: widget.color ?? Colors.red,
       hidden: false,
     ));
-    widget.state.set('accounts', data);
+    widget.state?.set('accounts', data);
   }
 
   @override
@@ -135,8 +133,7 @@ class AccountAddPageState<T> extends AbstractPageState<AccountAddPage> {
   }
 
   @override
-  Widget buildContent(
-      BuildContext context, BoxConstraints constraints, AppData state) {
+  Widget buildContent(BuildContext context, BoxConstraints constraints) {
     final TextTheme textTheme = Theme.of(context).textTheme;
     double indent =
         ThemeHelper(windowType: getWindowType(context)).getIndent() * 2;

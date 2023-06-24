@@ -8,24 +8,24 @@ import 'package:app_finance/helpers/theme_helper.dart';
 import 'package:app_finance/routes.dart' as routes;
 import 'package:app_finance/widgets/menu_widget.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 abstract class AbstractPage<T> extends StatefulWidget {
   int selectedMenu = 0;
-  final AppData state;
+  AppData? state;
 
-  AbstractPage({super.key, 
-    required this.state,
+  AbstractPage({
+    super.key,
+    this.state,
   });
 }
 
 abstract class AbstractPageState<T extends AbstractPage> extends State<T> {
-
   String getTitle(BuildContext context);
 
   Widget buildButton(BuildContext context, BoxConstraints constraints);
 
-  Widget buildContent(
-      BuildContext context, BoxConstraints constraints, AppData state);
+  Widget buildContent(BuildContext context, BoxConstraints constraints);
 
   AppBar buildBar(BuildContext context) {
     return AppBar(
@@ -73,39 +73,41 @@ abstract class AbstractPageState<T extends AbstractPage> extends State<T> {
 
   @override
   Widget build(BuildContext context) {
-    final AppData state = widget.state;
     final ColorScheme colorScheme = Theme.of(context).colorScheme;
     double indent = ThemeHelper(windowType: getWindowType(context)).getIndent();
 
-    return Scaffold(
-        appBar: buildBar(context),
-        drawer: Drawer(
-          elevation: 0,
-          shape: Border.all(width: 0),
-          child: Container(
-            color: colorScheme.onBackground,
-            child: ListView.separated(
-              padding: EdgeInsets.symmetric(vertical: indent * 4),
-              separatorBuilder: (context, index) =>
-                  SizedBox(height: indent * 2),
-              itemCount: routes.menuList.length,
-              itemBuilder: (context, index) => MenuWidget(
-                index: index,
-                setState: () => setState(() => widget.selectedMenu = index),
-                selectedIndex: widget.selectedMenu,
+    return Consumer<AppData>(builder: (context, appState, _) {
+      widget.state = appState;
+      return Scaffold(
+          appBar: buildBar(context),
+          drawer: Drawer(
+            elevation: 0,
+            shape: Border.all(width: 0),
+            child: Container(
+              color: colorScheme.onBackground,
+              child: ListView.separated(
+                padding: EdgeInsets.symmetric(vertical: indent * 4),
+                separatorBuilder: (context, index) =>
+                    SizedBox(height: indent * 2),
+                itemCount: routes.menuList.length,
+                itemBuilder: (context, index) => MenuWidget(
+                  index: index,
+                  setState: () => setState(() => widget.selectedMenu = index),
+                  selectedIndex: widget.selectedMenu,
+                ),
               ),
             ),
           ),
-        ),
-        body: Scaffold(
-          body: SafeArea(
-            child: LayoutBuilder(builder: (context, constraints) {
-              return buildContent(context, constraints, state);
-            }),
+          body: Scaffold(
+            body: SafeArea(
+              child: LayoutBuilder(builder: (context, constraints) {
+                return buildContent(context, constraints);
+              }),
+            ),
           ),
-        ),
-        floatingActionButton: LayoutBuilder(builder: (context, constraints) {
-          return buildButton(context, constraints);
-        }));
+          floatingActionButton: LayoutBuilder(builder: (context, constraints) {
+            return buildButton(context, constraints);
+          }));
+    });
   }
 }

@@ -4,7 +4,7 @@
 
 import 'package:flutter/material.dart';
 
-class AppData {
+class AppData extends ChangeNotifier {
   final _data = {
     'goals': [
       (
@@ -125,6 +125,7 @@ class AppData {
   void set(String property, dynamic value) {
     if (_data.containsKey(property)) {
       _data[property] = value;
+      notifyListeners();
     } else {
       throw ArgumentError('Invalid property: $property');
     }

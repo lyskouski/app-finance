@@ -2,7 +2,6 @@
 // Use of this source code is governed by a CC BY-NC-ND 4.0 license that can be
 // found in the LICENSE file.
 
-import 'package:app_finance/data.dart';
 import 'package:app_finance/routes/account_add_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localization.dart';
@@ -10,13 +9,11 @@ import 'package:flutter_gen/gen_l10n/app_localization.dart';
 class AccountEditPage extends AccountAddPage {
   AccountEditPage({
     required uuid,
-    required AppData state,
   }) : super(
           key: UniqueKey(),
-          state: state,
           uuid: uuid,
         ) {
-    var form = state.get('accounts', uuid);
+    var form = state?.get('accounts', uuid);
     title = form.title;
     description = form.description;
     title = form.title;
@@ -37,7 +34,7 @@ class AccountEditPageState extends AccountAddPageState<AccountEditPage> {
 
   @override
   void updateStorage() {
-    var data = widget.state.state['accounts'];
+    var data = widget.state?.state['accounts'];
     final index = data['list'].indexWhere((item) => item.uuid == widget.uuid);
     if (index != -1) {
       data['list'][index] = (
@@ -50,6 +47,6 @@ class AccountEditPageState extends AccountAddPageState<AccountEditPage> {
         hidden: false,
       );
     }
-    widget.state.set('accounts', data);
+    widget.state?.set('accounts', data);
   }
 }
