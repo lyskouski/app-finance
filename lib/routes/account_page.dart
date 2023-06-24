@@ -12,9 +12,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localization.dart';
 
 class AccountPage extends AbstractPage {
-  AccountPage({super.key, 
-    required AppData state,
-  }) : super(state: state);
+  AccountPage() : super();
 
   @override
   AccountPageState createState() => AccountPageState();
@@ -36,15 +34,14 @@ class AccountPageState extends AbstractPageState<AccountPage> {
   }
 
   @override
-  Widget buildContent(
-      BuildContext context, BoxConstraints constraints, AppData state) {
+  Widget buildContent(BuildContext context, BoxConstraints constraints) {
     var helper = ThemeHelper(windowType: getWindowType(context));
     return Column(
       children: [
         AccountWidget(
           margin: EdgeInsets.all(helper.getIndent()),
           title: AppLocalizations.of(context)!.accountHeadline,
-          state: state.state['accounts'],
+          state: widget.state?.get(AppDataType.accounts),
           offset: MediaQuery.of(context).size.width - helper.getIndent() * 2,
         )
       ],

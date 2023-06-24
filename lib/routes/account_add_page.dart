@@ -19,10 +19,8 @@ import 'package:currency_picker/currency_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_gen/gen_l10n/app_localization.dart';
-import 'package:uuid/uuid.dart';
 
 class AccountAddPage extends AbstractPage {
-  String? uuid;
   String? title;
   String titleErrorMessage = '';
   String? description;
@@ -36,9 +34,6 @@ class AccountAddPage extends AbstractPage {
   MaterialColor? color;
 
   AccountAddPage({
-    super.key,
-    required AppData state,
-    this.uuid,
     this.title,
     this.description,
     this.type,
@@ -47,13 +42,14 @@ class AccountAddPage extends AbstractPage {
     this.balance,
     this.icon,
     this.color,
-  }) : super(state: state);
+  }) : super();
 
   @override
   AccountAddPageState createState() => AccountAddPageState();
 }
 
-class AccountAddPageState<T> extends AbstractPageState<AccountAddPage> {
+class AccountAddPageState<T extends AccountAddPage>
+    extends AbstractPageState<AccountAddPage> {
   @override
   String getTitle(context) {
     return AppLocalizations.of(context)!.createAccountHeader;
@@ -73,9 +69,7 @@ class AccountAddPageState<T> extends AbstractPageState<AccountAddPage> {
   }
 
   void updateStorage() {
-    var data = widget.state.state['accounts'];
-    data['list'].insert(0, (
-      uuid: widget.uuid ?? const Uuid().v4(),
+    widget.state?.add(AppDataType.accounts, (
       title: widget.title,
       description: widget.description ?? '',
       details: widget.balance ?? 0.0,
@@ -83,7 +77,6 @@ class AccountAddPageState<T> extends AbstractPageState<AccountAddPage> {
       color: widget.color ?? Colors.red,
       hidden: false,
     ));
-    widget.state.set('accounts', data);
   }
 
   @override
@@ -121,22 +114,28 @@ class AccountAddPageState<T> extends AbstractPageState<AccountAddPage> {
   List<ListSelectorItem> getAccountTypes(BuildContext context) {
     return [
       ListSelectorItem(
-          id: 'account', name: AppLocalizations.of(context)!.bankAccount),
-      ListSelectorItem(id: 'cash', name: AppLocalizations.of(context)!.cash),
+          id: AppAccountType.account.toString(),
+          name: AppLocalizations.of(context)!.bankAccount),
       ListSelectorItem(
-          id: 'debitCard', name: AppLocalizations.of(context)!.debitCard),
+          id: AppAccountType.cash.toString(),
+          name: AppLocalizations.of(context)!.cash),
       ListSelectorItem(
-          id: 'creditCard', name: AppLocalizations.of(context)!.creditCard),
+          id: AppAccountType.debitCard.toString(),
+          name: AppLocalizations.of(context)!.debitCard),
       ListSelectorItem(
-          id: 'deposit', name: AppLocalizations.of(context)!.deposit),
+          id: AppAccountType.creditCard.toString(),
+          name: AppLocalizations.of(context)!.creditCard),
       ListSelectorItem(
-          id: 'credit', name: AppLocalizations.of(context)!.credit),
+          id: AppAccountType.deposit.toString(),
+          name: AppLocalizations.of(context)!.deposit),
+      ListSelectorItem(
+          id: AppAccountType.credit.toString(),
+          name: AppLocalizations.of(context)!.credit),
     ];
   }
 
   @override
-  Widget buildContent(
-      BuildContext context, BoxConstraints constraints, AppData state) {
+  Widget buildContent(BuildContext context, BoxConstraints constraints) {
     final TextTheme textTheme = Theme.of(context).textTheme;
     double indent =
         ThemeHelper(windowType: getWindowType(context)).getIndent() * 2;

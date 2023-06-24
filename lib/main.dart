@@ -12,9 +12,15 @@ import 'package:app_finance/routes/account_page.dart';
 import 'package:app_finance/routes/home_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localization.dart';
+import 'package:provider/provider.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(
+    ChangeNotifierProvider(
+      create: (_) => AppData(),
+      child: const MyApp(),
+    ),
+  );
 }
 
 class MyApp extends StatefulWidget {
@@ -25,8 +31,6 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  final AppData state = AppData();
-
   MaterialPageRoute? getDynamicRouter(settings) {
     final String route = settings.name!;
     final regex = RegExp(r'\/uuid:([\w-]+)');
@@ -36,10 +40,10 @@ class _MyAppState extends State<MyApp> {
       switch (route.replaceAll(uuid, '')) {
         case routes.accountViewRoute:
           return MaterialPageRoute(
-              builder: (context) => AccountViewPage(state: state, uuid: uuid));
+              builder: (context) => AccountViewPage(uuid: uuid));
         case routes.accountEditRoute:
           return MaterialPageRoute(
-              builder: (context) => AccountEditPage(state: state, uuid: uuid));
+              builder: (context) => AccountEditPage(uuid: uuid));
       }
     }
     return null;
@@ -62,13 +66,13 @@ class _MyAppState extends State<MyApp> {
         useMaterial3: true,
       ),
       themeMode: ThemeMode.system,
-      home: HomePage(state: state),
+      home: HomePage(),
       initialRoute: routes.homeRoute,
       onGenerateRoute: getDynamicRouter,
       routes: <String, WidgetBuilder>{
-        routes.homeRoute: (context) => HomePage(state: state),
-        routes.accountRoute: (context) => AccountPage(state: state),
-        routes.accountAddRoute: (context) => AccountAddPage(state: state),
+        routes.homeRoute: (context) => HomePage(),
+        routes.accountRoute: (context) => AccountPage(),
+        routes.accountAddRoute: (context) => AccountAddPage(),
       },
     );
   }

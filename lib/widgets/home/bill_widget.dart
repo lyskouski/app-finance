@@ -11,7 +11,7 @@ class BillWidget extends BaseWidget {
     required String title,
     required double offset,
     required EdgeInsetsGeometry margin,
-    required Map<String, dynamic> state,
+    required dynamic state,
   }) : super(
     margin: margin,
     offset: offset,
