@@ -18,7 +18,6 @@ import 'package:currency_picker/currency_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_gen/gen_l10n/app_localization.dart';
-import 'package:uuid/uuid.dart';
 
 class AccountAddPage extends AbstractPage {
   String? title;
@@ -68,9 +67,7 @@ class AccountAddPageState<T extends AccountAddPage> extends AbstractPageState<Ac
   }
 
   void updateStorage() {
-    var data = widget.state?.state['accounts'];
-    data['list'].insert(0, (
-      uuid: const Uuid().v4(),
+    widget.state?.add('accounts', (
       title: widget.title,
       description: widget.description ?? '',
       details: widget.balance ?? 0.0,
@@ -78,7 +75,6 @@ class AccountAddPageState<T extends AccountAddPage> extends AbstractPageState<Ac
       color: widget.color ?? Colors.red,
       hidden: false,
     ));
-    widget.state?.set('accounts', data);
   }
 
   @override

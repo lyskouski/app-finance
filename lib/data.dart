@@ -3,6 +3,7 @@
 // found in the LICENSE file.
 
 import 'package:flutter/material.dart';
+import 'package:uuid/uuid.dart';
 
 class AppData extends ChangeNotifier {
   final _data = {
@@ -132,6 +133,21 @@ class AppData extends ChangeNotifier {
     check(property);
     _data[property] = value;
     notifyListeners();
+  }
+
+  void add(String property, dynamic value) {
+    check(property);
+    var data = (_data[property] as Map);
+    data['list'].insert(0, (
+      uuid: const Uuid().v4(),
+      title: value.title,
+      description: value.description,
+      details: value.details,
+      progress: value.progress,
+      color: value.color,
+      hidden: value.hidden,
+    ));
+    set(property, data);
   }
 
   void update(String property, String uuid, dynamic value) {
