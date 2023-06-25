@@ -107,7 +107,7 @@ class GoalWidget extends StatelessWidget {
                     margin: EdgeInsets.fromLTRB(theme.getIndent(),
                         theme.getIndent() / 2, theme.getIndent(), 0),
                     child: LinearProgressIndicator(
-                      value: 0.4,
+                      value: state[0].progress,
                       backgroundColor: colorScheme.primary.withOpacity(0.3),
                       valueColor: AlwaysStoppedAnimation<Color>(
                           colorScheme.onPrimaryContainer),

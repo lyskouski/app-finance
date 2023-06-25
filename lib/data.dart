@@ -38,6 +38,8 @@ class AppData extends ChangeNotifier {
         (
           uuid: 'xxxxxxxx-xxxx-0xxx-yxxx-xxxxxxxxxxxx',
           title: 'Implement new functionality to reach the goal of MVP',
+          details: 12345789.098,
+          progress: 0.3,
           startDate: '2022-01-01 00:00',
           endDate: '2024-09-01 00:00',
         ),
