@@ -22,7 +22,7 @@ class BudgetEditPage extends BudgetAddPage {
 class BudgetEditPageState extends BudgetAddPageState<BudgetEditPage> {
   @override
   String getTitle(context) {
-    return AppLocalizations.of(context)!.editAccountHeader;
+    return AppLocalizations.of(context)!.editBudgetHeader;
   }
 
   @override
@@ -37,6 +37,11 @@ class BudgetEditPageState extends BudgetAddPageState<BudgetEditPage> {
       color: widget.color ?? Colors.red,
       hidden: false,
     ));
+  }
+
+  @override
+  String getButtonName() {
+    return AppLocalizations.of(context)!.updateBudgetTooltip;
   }
 
   @override

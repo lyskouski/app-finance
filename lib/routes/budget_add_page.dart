@@ -60,10 +60,14 @@ class BudgetAddPageState<T extends BudgetAddPage>
     ));
   }
 
+  String getButtonName() {
+    return AppLocalizations.of(context)!.createBudgetTooltip;
+  }
+
   @override
   Widget buildButton(BuildContext context, BoxConstraints constraints) {
     var helper = ThemeHelper(windowType: getWindowType(context));
-    String title = AppLocalizations.of(context)!.createBudgetTooltip;
+    String title = getButtonName();
     return SizedBox(
       width: constraints.maxWidth - helper.getIndent() * 4,
       child: FloatingActionButton(

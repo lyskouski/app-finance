@@ -40,6 +40,11 @@ class AccountEditPageState extends AccountAddPageState<AccountEditPage> {
   }
 
   @override
+  String getButtonName() {
+    return AppLocalizations.of(context)!.updateAccountTooltip;
+  }
+
+  @override
   Widget buildContent(BuildContext context, BoxConstraints constraints) {
     if ((widget as AccountEditPage).isFirstRun) {
       (widget as AccountEditPage).isFirstRun = false;
