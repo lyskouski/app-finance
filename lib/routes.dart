@@ -2,6 +2,7 @@
 // Use of this source code is governed by a CC BY-NC-ND 4.0 license that can be
 // found in the LICENSE file.
 
+import 'package:app_finance/classes/appMenuItem.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localization.dart';
 
@@ -14,18 +15,6 @@ const String budgetRoute = '/app/finance/budget';
 const String budgetAddRoute = '/app/finance/budget/add';
 const String budgetViewRoute = '/app/finance/budget/uuid:';
 const String budgetEditRoute = '/app/finance/budget/uuid:/edit';
-
-class AppMenuItem {
-  String name;
-  IconData icon;
-  String route;
-
-  AppMenuItem({
-    required this.name,
-    required this.icon,
-    required this.route,
-  });
-}
 
 class AppMenu {
   BuildContext context;
