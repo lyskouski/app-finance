@@ -3,6 +3,7 @@
 // found in the LICENSE file.
 
 import 'package:app_finance/classes/app_route.dart';
+import 'package:app_finance/classes/budget_app_data.dart';
 import 'package:app_finance/widgets/home/account_widget.dart';
 import 'package:app_finance/widgets/home/base_list_widget.dart';
 import 'package:flutter/material.dart';
@@ -31,13 +32,14 @@ class BudgetWidget extends AccountWidget {
   @override
   Widget buildListWidget(item, BuildContext context, NumberFormat formatter,
       DateFormat formatterDate, double offset) {
+    item.updateContext(context);
     return BaseLineWidget(
-      uuid: item.uuid,
+      uuid: item.uuid ?? '',
       title: item.title,
       description: item.description,
-      details: formatter.format(item.details),
+      details: item.detailsFormatted,
       progress: item.progress,
-      color: item.color,
+      color: item.color ?? Colors.transparent,
       hidden: item.hidden,
       offset: offset,
       route: routeList,

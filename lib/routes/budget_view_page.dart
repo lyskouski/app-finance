@@ -4,6 +4,7 @@
 
 import 'package:adaptive_breakpoints/adaptive_breakpoints.dart';
 import 'package:app_finance/classes/app_menu.dart';
+import 'package:app_finance/classes/budget_app_data.dart';
 import 'package:app_finance/data.dart';
 import 'package:app_finance/helpers/theme_helper.dart';
 import 'package:app_finance/classes/app_route.dart';
@@ -27,22 +28,14 @@ class BudgetViewPage extends AbstractPage {
 class BudgetViewPageState extends AbstractPageState<BudgetViewPage> {
   @override
   String getTitle(context) {
-    final item = widget.state?.getByUuid(AppDataType.budgets, widget.uuid);
-    String? title = item!.title;
-    return title ?? '';
+    final item = widget.state?.getByUuid(AppDataType.budgets, widget.uuid) as BudgetAppData;
+    return item.title;
   }
 
   void deactivateAccount(BuildContext context) {
-    var data = widget.state?.getByUuid(AppDataType.budgets, widget.uuid);
-    widget.state?.update(AppDataType.budgets, widget.uuid, (
-      uuid: data.uuid,
-      title: data.title,
-      description: data.description,
-      details: data.details,
-      progress: data.progress,
-      color: data.color,
-      hidden: true,
-    ));
+    var data = widget.state?.getByUuid(AppDataType.budgets, widget.uuid) as BudgetAppData;
+    data.hidden = true;
+    widget.state?.update(AppDataType.budgets, widget.uuid, data);
     Navigator.pop(context);
   }
 
@@ -71,25 +64,19 @@ class BudgetViewPageState extends AbstractPageState<BudgetViewPage> {
 
   @override
   Widget buildContent(BuildContext context, BoxConstraints constraints) {
-    final item = widget.state?.getByUuid(AppDataType.budgets, widget.uuid);
+    final item = widget.state?.getByUuid(AppDataType.budgets, widget.uuid) as BudgetAppData;
     double indent =
         ThemeHelper(windowType: getWindowType(context)).getIndent() * 2;
     double offset = MediaQuery.of(context).size.width - indent * 3;
-    final locale = Localizations.localeOf(context).toString();
-    final NumberFormat formatter = NumberFormat.currency(
-      locale: locale,
-      symbol: '\$',
-      decimalDigits: 2,
-    );
     return Column(
       children: [
         BaseLineWidget(
-          uuid: item.uuid,
+          uuid: item.uuid ?? '',
           title: item.title,
           description: item.description,
-          details: formatter.format(item.details),
+          details: item.detailsFormatted,
           progress: item.progress,
-          color: item.color,
+          color: item.color ?? Colors.transparent,
           offset: offset,
           route: AppRoute.budgetViewRoute,
         )

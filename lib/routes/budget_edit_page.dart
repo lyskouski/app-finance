@@ -2,6 +2,7 @@
 // Use of this source code is governed by a CC BY-NC-ND 4.0 license that can be
 // found in the LICENSE file.
 
+import 'package:app_finance/classes/budget_app_data.dart';
 import 'package:app_finance/data.dart';
 import 'package:app_finance/routes/budget_add_page.dart';
 import 'package:flutter/material.dart';
@@ -28,15 +29,13 @@ class BudgetEditPageState extends BudgetAddPageState<BudgetEditPage> {
   @override
   void updateStorage() {
     String uuid = (widget as BudgetEditPage).uuid;
-    widget.state?.update(AppDataType.budgets, uuid, (
-      uuid: uuid,
-      title: widget.title,
-      description: '',
-      details: widget.budgetLimit ?? 0.0,
-      progress: 1.0,
-      color: widget.color ?? Colors.red,
-      hidden: false,
-    ));
+    var data =
+          widget.state?.getByUuid(AppDataType.budgets, (widget as BudgetEditPage).uuid) as BudgetAppData;
+    data.title = widget.title ?? '';
+    data.color = widget.color;
+    data.amountLimit = widget.budgetLimit ?? 0.0;
+    data.currency = widget.currency;
+    widget.state?.update(AppDataType.budgets, uuid, data);
   }
 
   @override
@@ -49,10 +48,11 @@ class BudgetEditPageState extends BudgetAddPageState<BudgetEditPage> {
     if ((widget as BudgetEditPage).isFirstRun) {
       (widget as BudgetEditPage).isFirstRun = false;
       var form =
-          widget.state?.getByUuid(AppDataType.budgets, (widget as BudgetEditPage).uuid);
+          widget.state?.getByUuid(AppDataType.budgets, (widget as BudgetEditPage).uuid) as BudgetAppData;
       widget.title = form.title;
-      widget.budgetLimit = form.details;
+      widget.budgetLimit = form.amountLimit;
       widget.color = form.color;
+      widget.currency = form.currency;
     }
     return super.buildContent(context, constraints);
   }

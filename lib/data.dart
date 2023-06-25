@@ -3,6 +3,7 @@
 // found in the LICENSE file.
 
 import 'package:app_finance/classes/account_app_data.dart';
+import 'package:app_finance/classes/budget_app_data.dart';
 import 'package:app_finance/classes/goal_app_data.dart';
 import 'package:flutter/material.dart';
 import 'package:uuid/uuid.dart';
@@ -117,30 +118,27 @@ class AppData extends ChangeNotifier {
     AppDataType.budgets: {
       'total': 123456.789,
       'list': [
-        (
+        BudgetAppData(
           uuid: 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx',
           title: 'Description budgets with a long explanation',
-          description: '1,234 / 1,233,241.44',
           details: 12345789.098,
           progress: 0.5,
           color: Colors.red,
           hidden: false,
         ),
-        (
+        BudgetAppData(
           uuid: 'xxxxxxxx-xxxx-5xxx-yxxx-xxxxxxxxxxxx',
           title: 'Description budgets 2',
-          description: '1,234 / 3,241.44',
           details: 1234.789,
           progress: 0.8,
           color: Colors.green,
           hidden: false,
         ),
-        (
+        BudgetAppData(
           uuid: 'xxxxxxxx-xxxx-6xxx-yxxx-xxxxxxxxxxxx',
           title: 'Description budgets 3',
-          description: '134 / 33,241.44',
           details: 123.789,
-          progress: 1.0,
+          progress: 1.5,
           color: Colors.yellow,
           hidden: false,
         ),
@@ -155,7 +153,7 @@ class AppData extends ChangeNotifier {
 
   void add(AppDataType property, dynamic value) {
     var data = (_data[property] as Map);
-    if (value is AccountAppData) {
+    if (value is AccountAppData || value is BudgetAppData) {
       value.uuid = const Uuid().v4();
       data['list'].insert(0, value);
     } else {
@@ -176,7 +174,7 @@ class AppData extends ChangeNotifier {
     var data = (_data[property] as Map);
     final index = data['list'].indexWhere((item) => item.uuid == uuid);
     if (index != -1) {
-      if (value is AccountAppData) {
+      if (value is AccountAppData || value is BudgetAppData) {
         data['list'][index] = value;
       } else {
         data['list'][index] = (
