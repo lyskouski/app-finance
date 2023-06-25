@@ -9,13 +9,8 @@ import 'package:app_finance/helpers/theme_helper.dart';
 import 'package:app_finance/classes/appRoute.dart';
 import 'package:app_finance/routes/abstract_page.dart';
 import 'package:app_finance/widgets/forms/color_selector.dart';
-import 'package:app_finance/widgets/forms/currency_selector.dart';
-import 'package:app_finance/widgets/forms/date_input.dart';
-import 'package:app_finance/widgets/forms/datet_time_input.dart';
 import 'package:app_finance/widgets/forms/icon_selector.dart';
-import 'package:app_finance/widgets/forms/list_selector.dart';
 import 'package:app_finance/widgets/forms/simple_input.dart';
-import 'package:currency_picker/currency_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_gen/gen_l10n/app_localization.dart';
@@ -23,20 +18,13 @@ import 'package:flutter_gen/gen_l10n/app_localization.dart';
 class BudgetAddPage extends AbstractPage {
   String? title;
   String titleErrorMessage = '';
-  String? description;
-  Currency? currency;
-  DateTime? validTillDate;
-  DateTime balanceUpdateDate = DateTime.now();
-  double? balance;
+  double? budgetLimit;
   IconData? icon;
   MaterialColor? color;
 
   BudgetAddPage({
     this.title,
-    this.description,
-    this.currency,
-    this.validTillDate,
-    this.balance,
+    this.budgetLimit,
     this.icon,
     this.color,
   }) : super();
@@ -64,8 +52,8 @@ class BudgetAddPageState<T extends BudgetAddPage>
   void updateStorage() {
     widget.state?.add(AppDataType.budgets, (
       title: widget.title,
-      description: widget.description ?? '',
-      details: widget.balance ?? 0.0,
+      description: '',
+      details: widget.budgetLimit ?? 0.0,
       progress: 1.0,
       color: widget.color ?? Colors.red,
       hidden: false,
@@ -110,7 +98,6 @@ class BudgetAddPageState<T extends BudgetAddPage>
     double indent =
         ThemeHelper(windowType: getWindowType(context)).getIndent() * 2;
     double offset = MediaQuery.of(context).size.width - indent * 3;
-    double offsetTriple = offset - indent;
 
     return SingleChildScrollView(
       child: Container(
@@ -144,7 +131,7 @@ class BudgetAddPageState<T extends BudgetAddPage>
               children: [
                 Container(
                   constraints: BoxConstraints(
-                    maxWidth: offsetTriple * 0.2,
+                    maxWidth: offset * 0.5,
                   ),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -171,7 +158,7 @@ class BudgetAddPageState<T extends BudgetAddPage>
                 SizedBox(width: indent),
                 Container(
                   constraints: BoxConstraints(
-                    maxWidth: offsetTriple * 0.2,
+                    maxWidth: offset * 0.5,
                   ),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -188,82 +175,15 @@ class BudgetAddPageState<T extends BudgetAddPage>
                     ],
                   ),
                 ),
-                SizedBox(width: indent),
-                Container(
-                  constraints: BoxConstraints(
-                    maxWidth: offsetTriple * 0.6,
-                  ),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        AppLocalizations.of(context)!.details,
-                        style: textTheme.bodyLarge,
-                      ),
-                      SimpleInput(
-                        value: widget.description,
-                        tooltip: AppLocalizations.of(context)!.detailsTooltip,
-                        style: textTheme.numberMedium,
-                        setState: (value) =>
-                            setState(() => widget.description = value),
-                      ),
-                    ],
-                  ),
-                ),
               ],
             ),
             SizedBox(height: indent),
             Text(
-              AppLocalizations.of(context)!.currency,
-              style: textTheme.bodyLarge,
-            ),
-            Container(
-              color:
-                  Theme.of(context).colorScheme.inversePrimary.withOpacity(0.3),
-              width: double.infinity,
-              child: CurrencySelector(
-                value: widget.currency,
-                setState: (value) => setState(() => widget.currency = value),
-              ),
-            ),
-            SizedBox(height: indent),
-            Text(
-              AppLocalizations.of(context)!.validTillDate,
-              style: textTheme.bodyLarge,
-            ),
-            DateInput(
-              value: widget.validTillDate,
-              setState: (value) => setState(() => widget.validTillDate = value),
-              style: textTheme.numberMedium,
-            ),
-            SizedBox(height: indent),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Text(
-                  AppLocalizations.of(context)!.balanceDate,
-                  style: textTheme.bodyLarge,
-                ),
-                Tooltip(
-                  message: AppLocalizations.of(context)!.balanceDateTooltip,
-                  child: const Icon(Icons.info_outline),
-                ),
-              ],
-            ),
-            DateTimeInput(
-              style: textTheme.numberMedium,
-              width: offset,
-              value: widget.balanceUpdateDate,
-              setState: (value) =>
-                  setState(() => widget.balanceUpdateDate = value),
-            ),
-            SizedBox(height: indent),
-            Text(
-              AppLocalizations.of(context)!.balance,
+              AppLocalizations.of(context)!.budgetLimit,
               style: textTheme.bodyLarge,
             ),
             SimpleInput(
-              value: widget.balance != null ? widget.balance.toString() : '',
+              value: widget.budgetLimit != null ? widget.budgetLimit.toString() : '',
               type: const TextInputType.numberWithOptions(decimal: true),
               tooltip: AppLocalizations.of(context)!.balanceTooltip,
               style: textTheme.numberMedium,
@@ -271,7 +191,7 @@ class BudgetAddPageState<T extends BudgetAddPage>
                 FilteringTextInputFormatter.allow(RegExp(r'^\d+\.?\d{0,4}')),
               ],
               setState: (value) =>
-                  setState(() => widget.balance = double.tryParse(value)),
+                  setState(() => widget.budgetLimit = double.tryParse(value)),
             ),
           ],
         ),

@@ -31,8 +31,8 @@ class BudgetEditPageState extends BudgetAddPageState<BudgetEditPage> {
     widget.state?.update(AppDataType.budgets, uuid, (
       uuid: uuid,
       title: widget.title,
-      description: widget.description ?? '',
-      details: widget.balance ?? 0.0,
+      description: '',
+      details: widget.budgetLimit ?? 0.0,
       progress: 1.0,
       color: widget.color ?? Colors.red,
       hidden: false,
@@ -46,8 +46,7 @@ class BudgetEditPageState extends BudgetAddPageState<BudgetEditPage> {
       var form =
           widget.state?.getByUuid(AppDataType.budgets, (widget as BudgetEditPage).uuid);
       widget.title = form.title;
-      widget.description = form.description;
-      widget.balance = form.details;
+      widget.budgetLimit = form.details;
       widget.color = form.color;
     }
     return super.buildContent(context, constraints);
