@@ -5,7 +5,7 @@
 import 'package:adaptive_breakpoints/adaptive_breakpoints.dart';
 import 'package:app_finance/data.dart';
 import 'package:app_finance/helpers/theme_helper.dart';
-import 'package:app_finance/routes.dart' as routes;
+import 'package:app_finance/classes/appRoute.dart';
 import 'package:app_finance/routes/abstract_page.dart';
 import 'package:app_finance/widgets/home/account_widget.dart';
 import 'package:app_finance/widgets/home/bill_widget.dart';
@@ -58,7 +58,7 @@ class HomePageState extends AbstractPageState<HomePage> {
                 Theme.of(context).colorScheme.inversePrimary.withOpacity(0.5),
           ),
           tooltip: AppLocalizations.of(context)!.subscriptionTooltip,
-          onPressed: () => Navigator.pushNamed(context, routes.homeRoute),
+          onPressed: () => Navigator.pushNamed(context, AppRoute.homeRoute),
         ),
       ],
     );
@@ -67,7 +67,7 @@ class HomePageState extends AbstractPageState<HomePage> {
   @override
   Widget buildButton(BuildContext context, BoxConstraints constraints) {
     return FloatingActionButton(
-      onPressed: () => Navigator.pushNamed(context, routes.homeRoute),
+      onPressed: () => Navigator.pushNamed(context, AppRoute.homeRoute),
       tooltip: AppLocalizations.of(context)!.addMainTooltip,
       child: const Icon(Icons.add),
     );
@@ -101,7 +101,7 @@ class HomePageState extends AbstractPageState<HomePage> {
             margin: single,
             title: AppLocalizations.of(context)!.accountHeadline,
             state: widget.state?.get(AppDataType.accounts),
-            route: routes.accountRoute,
+            route: AppRoute.accountRoute,
             tooltip: AppLocalizations.of(context)!.accountTooltip,
             offset: width,
           ),
@@ -109,7 +109,7 @@ class HomePageState extends AbstractPageState<HomePage> {
             margin: bottom,
             title: AppLocalizations.of(context)!.budgetHeadline,
             state: widget.state?.get(AppDataType.budgets),
-            route: routes.budgetRoute,
+            route: AppRoute.budgetRoute,
             tooltip: AppLocalizations.of(context)!.budgetTooltip,
             offset: width,
           ),
@@ -130,7 +130,7 @@ class HomePageState extends AbstractPageState<HomePage> {
                   offset: halfWidth,
                   title: AppLocalizations.of(context)!.accountHeadline,
                   state: widget.state?.get(AppDataType.accounts),
-                  route: routes.accountRoute,
+                  route: AppRoute.accountRoute,
                   tooltip: AppLocalizations.of(context)!.accountTooltip,
                 ),
                 BillWidget(

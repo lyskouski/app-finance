@@ -6,7 +6,7 @@ import 'package:adaptive_breakpoints/adaptive_breakpoints.dart';
 import 'package:app_finance/classes/appMenu.dart';
 import 'package:app_finance/data.dart';
 import 'package:app_finance/helpers/theme_helper.dart';
-import 'package:app_finance/routes.dart' as routes;
+import 'package:app_finance/classes/appRoute.dart';
 import 'package:app_finance/routes/abstract_page.dart';
 import 'package:app_finance/widgets/home/base_list_widget.dart';
 import 'package:flutter/material.dart';
@@ -49,7 +49,7 @@ class AccountViewPageState extends AbstractPageState<AccountViewPage> {
   @override
   Widget buildButton(BuildContext context, BoxConstraints constraints) {
     String route = AppMenu(context: context)
-        .uuid(routes.accountEditRoute, widget.uuid);
+        .uuid(AppRoute.accountEditRoute, widget.uuid);
     double indent =
         ThemeHelper(windowType: getWindowType(context)).getIndent() * 4;
     return Container(
@@ -91,7 +91,7 @@ class AccountViewPageState extends AbstractPageState<AccountViewPage> {
           progress: item.progress,
           color: item.color,
           offset: offset,
-          route: routes.accountViewRoute,
+          route: AppRoute.accountViewRoute,
         )
       ],
     );

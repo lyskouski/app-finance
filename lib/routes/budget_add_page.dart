@@ -6,7 +6,7 @@ import 'package:adaptive_breakpoints/adaptive_breakpoints.dart';
 import 'package:app_finance/custom_text_theme.dart';
 import 'package:app_finance/data.dart';
 import 'package:app_finance/helpers/theme_helper.dart';
-import 'package:app_finance/routes.dart' as routes;
+import 'package:app_finance/classes/appRoute.dart';
 import 'package:app_finance/routes/abstract_page.dart';
 import 'package:app_finance/widgets/forms/color_selector.dart';
 import 'package:app_finance/widgets/forms/currency_selector.dart';
@@ -85,7 +85,7 @@ class BudgetAddPageState<T extends BudgetAddPage>
               return;
             }
             updateStorage();
-            Navigator.popAndPushNamed(context, routes.budgetRoute);
+            Navigator.popAndPushNamed(context, AppRoute.budgetRoute);
           })
         },
         tooltip: title,

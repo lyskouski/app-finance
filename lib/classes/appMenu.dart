@@ -1,5 +1,9 @@
+// Copyright 2023 The terCAD team. All rights reserved.
+// Use of this source code is governed by a CC BY-NC-ND 4.0 license that can be
+// found in the LICENSE file.
+
 import 'package:app_finance/classes/appMenuItem.dart';
-import 'package:app_finance/routes.dart' as routes;
+import 'package:app_finance/classes/appRoute.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localization.dart';
 
@@ -24,37 +28,37 @@ class AppMenu {
       AppMenuItem(
         name: locale!.homeHeadline,
         icon: Icons.home,
-        route: routes.homeRoute,
+        route: AppRoute.homeRoute,
       ),
       AppMenuItem(
         name: locale!.goalHeadline,
         icon: Icons.star,
-        route: routes.homeRoute,
+        route: AppRoute.homeRoute,
       ),
       AppMenuItem(
         name: locale!.accountHeadline,
         icon: Icons.credit_card,
-        route: routes.accountRoute,
+        route: AppRoute.accountRoute,
       ),
       AppMenuItem(
         name: locale!.budgetHeadline,
         icon: Icons.calendar_month,
-        route: routes.budgetRoute,
+        route: AppRoute.budgetRoute,
       ),
       AppMenuItem(
         name: locale!.billHeadline,
         icon: Icons.money_off,
-        route: routes.homeRoute,
+        route: AppRoute.homeRoute,
       ),
       AppMenuItem(
         name: locale!.metricsHeadline,
         icon: Icons.timeline,
-        route: routes.homeRoute,
+        route: AppRoute.homeRoute,
       ),
       AppMenuItem(
         name: locale!.settingsHeadline,
         icon: Icons.settings,
-        route: routes.homeRoute,
+        route: AppRoute.homeRoute,
       ),
     ];
   }

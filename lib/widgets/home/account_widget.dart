@@ -2,7 +2,7 @@
 // Use of this source code is governed by a CC BY-NC-ND 4.0 license that can be
 // found in the LICENSE file.
 
-import 'package:app_finance/routes.dart' as routes;
+import 'package:app_finance/classes/appRoute.dart';
 import 'package:app_finance/widgets/home/base_list_widget.dart';
 import 'package:app_finance/widgets/home/base_widget.dart';
 import 'package:flutter/material.dart';
@@ -17,7 +17,7 @@ class AccountWidget extends BaseWidget {
     required double offset,
     String? tooltip,
     String? route,
-    String routeList = routes.accountViewRoute,
+    String routeList = AppRoute.accountViewRoute,
   }) : super(
     margin: margin,
     offset: offset,
