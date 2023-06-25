@@ -14,7 +14,7 @@ This is a book diving deep into the core mechanisms of the Flatter and Dart lang
 Please feel free to contribute to the quality of this content by submitting PRs.
 
 Any contributions you make to this effort **are of course greatly appreciated** (don't forget to update `info.tex`
-by adding your name into `Authors` or `Editorial` section as a gratitude).
+by adding your name into `Contributors` section as a gratitude).
 
 However, if you choose to contribute content (not just typo corrections) to this repo, you agree that you're giving
 me a non-exclusive license to use that content for the book, as I (and my possible publisher) deem appropriate. 

@@ -1,3 +1,6 @@
+% Copyright 2023 The terCAD team. All rights reserved.
+% Use of this content is governed by a CC BY-NC-ND 4.0 license that can be found in the LICENSE file.
+
 \ProvidesPackage{customization}
 
 \usepackage{amsmath}
@@ -25,8 +28,8 @@
 % ======
 % Chapter customization
 \renewcommand{\thechapter}{}
-\renewcommand\thesection{\arabic{section}.}
-\renewcommand{\thesubsection}{\arabic{section}.\arabic{subsection}.}
+\renewcommand\thesection{\arabic{section}}
+\renewcommand\thesubsection{\thesection.\arabic{subsection}}
 
 % ======
 % Block with borders
@@ -45,6 +48,15 @@
 \end{tabular}
 \end{ttfamily}
 \end{tiny}
+}
+
+% ======
+% Image
+\newcommand{\img}[2]{%
+  \noindent \begin{figure}[h]%
+    \centering \includegraphics[width=0.9\textwidth]{#1}%
+    \caption{#2}%
+  \end{figure}%
 }
 
 % ======

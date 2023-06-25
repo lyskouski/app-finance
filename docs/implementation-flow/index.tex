@@ -1,5 +1,9 @@
+% Copyright 2023 The terCAD team. All rights reserved.
+% Use of this content is governed by a CC BY-NC-ND 4.0 license that can be found in the LICENSE file.
+
 \documentclass[12pt, a4paper, twoside]{extreport}
-\usepackage[T2A]{fontenc}
+\setlength{\headheight}{17.0pt}
+\usepackage[OT1]{fontenc}
 \usepackage[utf8]{inputenc}
 \usepackage[english]{babel}
 \usepackage{amsmath}
@@ -8,11 +12,16 @@
 \usepackage{makeidx}
 \usepackage{fancyhdr}
 \usepackage{graphicx}
+\graphicspath{ {./} }
 \usepackage{watermark}
 \usepackage{titling}
 \usepackage[fencedCode,hashEnumerators,smartEllipses]{markdown}
+\usepackage{lipsum}
+\usepackage{tocloft}
+\usepackage{listings}
 
-\usepackage{customization}
+\usepackage{lib/customization}
+\usepackage{lib/code-style}
 
 \sloppy
 
@@ -34,6 +43,8 @@
 %\subtitle{On Example of Financial Accounting Application Development Flow}
 \date{2023}
 
+\setlength{\cftsecindent}{0pt}
+\setlength{\cftsubsecindent}{0pt}
 
 \begin{document}
 
@@ -48,11 +59,35 @@
 %\newpage
 
 \maketitle
-\include{./info}
+
+%\include{./info}
+
 \tableofcontents
 
-%\include{./example}
+%\listoffigures 
+
+%\listoftables 
+
+%\input{./example}
 %\markdownInput{./example.md}
+
+% Notes: Level of content
+% -1 	\part{part}
+% 0 	\chapter{chapter}
+% 1 	\section{section}
+% 2 	\subsection{subsection}
+% 3 	\subsubsection{subsubsection}
+% 4 	\paragraph{paragraph}
+% 5 	\subparagraph{subparagraph}
+
+\include{./ch00-intro}
+
+\section{Designing the Financial Accounting Application}
+\input{./ch02-s01-insights}
+
+\section{Implementing Core Functionality}
+\input{./ch03-s01-first-steps}
+\input{./ch03-s02-prototyping}
 
 \thispagestyle{empty}
 
