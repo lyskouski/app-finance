@@ -4,7 +4,7 @@
 
 import 'package:app_finance/custom_text_theme.dart';
 import 'package:app_finance/data.dart';
-import 'package:app_finance/classes/appRoute.dart';
+import 'package:app_finance/classes/app_route.dart';
 import 'package:app_finance/routes/account_add_page.dart';
 import 'package:app_finance/routes/account_edit_page.dart';
 import 'package:app_finance/routes/account_view_page.dart';
