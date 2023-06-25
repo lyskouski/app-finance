@@ -44,7 +44,7 @@ abstract class AbstractPageState<T extends AbstractPage> extends State<T> {
       actions: [
         PopupMenuButton(
           itemBuilder: (BuildContext context) {
-            return routes.menuList.map((menuItem) {
+            return routes.AppMenu(context: context).get().map((menuItem) {
               return PopupMenuItem(
                 value: menuItem.route,
                 child: Row(
@@ -88,7 +88,7 @@ abstract class AbstractPageState<T extends AbstractPage> extends State<T> {
                 padding: EdgeInsets.symmetric(vertical: indent * 4),
                 separatorBuilder: (context, index) =>
                     SizedBox(height: indent * 2),
-                itemCount: routes.menuList.length,
+                itemCount: routes.AppMenu(context: context).get().length,
                 itemBuilder: (context, index) => MenuWidget(
                   index: index,
                   setState: () => setState(() => widget.selectedMenu = index),

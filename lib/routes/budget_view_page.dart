@@ -12,28 +12,28 @@ import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localization.dart';
 import 'package:intl/intl.dart';
 
-class AccountViewPage extends AbstractPage {
+class BudgetViewPage extends AbstractPage {
   String uuid;
 
-  AccountViewPage({
+  BudgetViewPage({
     required this.uuid,
   }) : super();
 
   @override
-  AccountViewPageState createState() => AccountViewPageState();
+  BudgetViewPageState createState() => BudgetViewPageState();
 }
 
-class AccountViewPageState extends AbstractPageState<AccountViewPage> {
+class BudgetViewPageState extends AbstractPageState<BudgetViewPage> {
   @override
   String getTitle(context) {
-    final item = widget.state?.getByUuid(AppDataType.accounts, widget.uuid);
+    final item = widget.state?.getByUuid(AppDataType.budgets, widget.uuid);
     String? title = item!.title;
     return title ?? '';
   }
 
   void deactivateAccount(BuildContext context) {
-    var data = widget.state?.getByUuid(AppDataType.accounts, widget.uuid);
-    widget.state?.update(AppDataType.accounts, widget.uuid, (
+    var data = widget.state?.getByUuid(AppDataType.budgets, widget.uuid);
+    widget.state?.update(AppDataType.budgets, widget.uuid, (
       uuid: data.uuid,
       title: data.title,
       description: data.description,
@@ -48,7 +48,7 @@ class AccountViewPageState extends AbstractPageState<AccountViewPage> {
   @override
   Widget buildButton(BuildContext context, BoxConstraints constraints) {
     String route = routes.AppMenu(context: context)
-        .uuid(routes.accountEditRoute, widget.uuid);
+        .uuid(routes.budgetEditRoute, widget.uuid);
     double indent =
         ThemeHelper(windowType: getWindowType(context)).getIndent() * 4;
     return Container(
@@ -56,12 +56,12 @@ class AccountViewPageState extends AbstractPageState<AccountViewPage> {
       child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
         FloatingActionButton(
           onPressed: () => deactivateAccount(context),
-          tooltip: AppLocalizations.of(context)!.deleteAccountTooltip,
+          tooltip: AppLocalizations.of(context)!.deleteBudgetTooltip,
           child: const Icon(Icons.delete),
         ),
         FloatingActionButton(
           onPressed: () => Navigator.pushNamed(context, route),
-          tooltip: AppLocalizations.of(context)!.editAccountTooltip,
+          tooltip: AppLocalizations.of(context)!.editBudgetTooltip,
           child: const Icon(Icons.edit),
         ),
       ]),
@@ -70,7 +70,7 @@ class AccountViewPageState extends AbstractPageState<AccountViewPage> {
 
   @override
   Widget buildContent(BuildContext context, BoxConstraints constraints) {
-    final item = widget.state?.getByUuid(AppDataType.accounts, widget.uuid);
+    final item = widget.state?.getByUuid(AppDataType.budgets, widget.uuid);
     double indent =
         ThemeHelper(windowType: getWindowType(context)).getIndent() * 2;
     double offset = MediaQuery.of(context).size.width - indent * 3;
@@ -90,7 +90,7 @@ class AccountViewPageState extends AbstractPageState<AccountViewPage> {
           progress: item.progress,
           color: item.color,
           offset: offset,
-          route: routes.accountViewRoute,
+          route: routes.budgetViewRoute,
         )
       ],
     );

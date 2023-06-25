@@ -9,6 +9,10 @@ import 'package:app_finance/routes/account_add_page.dart';
 import 'package:app_finance/routes/account_edit_page.dart';
 import 'package:app_finance/routes/account_view_page.dart';
 import 'package:app_finance/routes/account_page.dart';
+import 'package:app_finance/routes/budget_page.dart';
+import 'package:app_finance/routes/budget_add_page.dart';
+import 'package:app_finance/routes/budget_edit_page.dart';
+import 'package:app_finance/routes/budget_view_page.dart';
 import 'package:app_finance/routes/home_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localization.dart';
@@ -35,6 +39,7 @@ class _MyAppState extends State<MyApp> {
     final String route = settings.name!;
     final regex = RegExp(r'\/uuid:([\w-]+)');
     final match = regex.firstMatch(route);
+    print(['route', route]);
     if (match != null) {
       final String uuid = match.group(1) ?? '';
       switch (route.replaceAll(uuid, '')) {
@@ -44,6 +49,12 @@ class _MyAppState extends State<MyApp> {
         case routes.accountEditRoute:
           return MaterialPageRoute(
               builder: (context) => AccountEditPage(uuid: uuid));
+        case routes.budgetViewRoute:
+          return MaterialPageRoute(
+              builder: (context) => BudgetViewPage(uuid: uuid));
+        case routes.budgetEditRoute:
+          return MaterialPageRoute(
+              builder: (context) => BudgetEditPage(uuid: uuid));
       }
     }
     return null;
@@ -73,6 +84,8 @@ class _MyAppState extends State<MyApp> {
         routes.homeRoute: (context) => HomePage(),
         routes.accountRoute: (context) => AccountPage(),
         routes.accountAddRoute: (context) => AccountAddPage(),
+        routes.budgetRoute: (context) => BudgetPage(),
+        routes.budgetAddRoute: (context) => BudgetAddPage(),
       },
     );
   }

@@ -23,29 +23,31 @@ class MenuWidget extends StatelessWidget {
   }
 
   @override
-  Widget build(context) {
+  Widget build(BuildContext context) {
     final ColorScheme colorScheme = Theme.of(context).colorScheme;
     final TextTheme textTheme = Theme.of(context).textTheme;
     Color color =
         selectedIndex == index ? colorScheme.primary : colorScheme.secondary;
+    routes.AppMenuItem menu =
+        routes.AppMenu(context: context).getByIndex(index);
 
     return InkWell(
       child: ListTile(
         leading: Icon(
-          routes.menuList[index].icon,
+          menu.icon,
           color: color,
         ),
         title: MouseRegion(
           cursor: SystemMouseCursors.click,
           child: Text(
-            routes.menuList[index].name,
+            menu.name,
             style: textTheme.bodyMedium?.copyWith(color: color),
           ),
         ),
       ),
       onTap: () {
         setState();
-        _navigateToPage(context, routes.menuList[index].route);
+        _navigateToPage(context, menu.route);
       },
       onHover: (isHovered) {
         if (isHovered) {

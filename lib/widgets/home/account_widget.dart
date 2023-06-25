@@ -17,6 +17,7 @@ class AccountWidget extends BaseWidget {
     required double offset,
     String? tooltip,
     String? route,
+    String routeList = routes.accountViewRoute,
   }) : super(
     margin: margin,
     offset: offset,
@@ -24,6 +25,7 @@ class AccountWidget extends BaseWidget {
     state: state,
     tooltip: tooltip,
     route: route,
+    routeList: routeList,
   );
 
   @override
@@ -38,7 +40,7 @@ class AccountWidget extends BaseWidget {
       color: item.color,
       hidden: item.hidden,
       offset: offset,
-      route: routes.accountViewRoute,
+      route: routeList,
     );
   }
 }
