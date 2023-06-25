@@ -3,7 +3,7 @@
 
 \documentclass[12pt, a4paper, twoside]{extreport}
 \setlength{\headheight}{17.0pt}
-\usepackage[T2A]{fontenc}
+\usepackage[OT1]{fontenc}
 \usepackage[utf8]{inputenc}
 \usepackage[english]{babel}
 \usepackage{amsmath}
@@ -20,7 +20,8 @@
 \usepackage{tocloft}
 \usepackage{listings}
 
-\usepackage{customization}
+\usepackage{lib/customization}
+\usepackage{lib/code-style}
 
 \sloppy
 
@@ -80,6 +81,7 @@
 % 5 	\subparagraph{subparagraph}
 
 \include{./ch00-intro}
+
 \section{Implementing Core Functionality}
 \input{./ch03-s01-first-steps}
 \input{./ch03-s02-prototyping}
