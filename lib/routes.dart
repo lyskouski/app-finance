@@ -12,6 +12,8 @@ const String accountViewRoute = '/app/finance/account/uuid:';
 const String accountEditRoute = '/app/finance/account/uuid:/edit';
 const String budgetRoute = '/app/finance/budget';
 const String budgetAddRoute = '/app/finance/budget/add';
+const String budgetViewRoute = '/app/finance/budget/uuid:';
+const String budgetEditRoute = '/app/finance/budget/uuid:/edit';
 
 class AppMenuItem {
   String name;
@@ -31,6 +33,10 @@ class AppMenu {
 
   AppMenu({required this.context}) {
     locale = AppLocalizations.of(context);
+  }
+
+  String uuid(String route, String uuid) {
+    return route.replaceAll('uuid:', 'uuid:$uuid');
   }
 
   AppMenuItem getByIndex(int index) {

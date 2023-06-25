@@ -109,6 +109,8 @@ class HomePageState extends AbstractPageState<HomePage> {
             margin: bottom,
             title: AppLocalizations.of(context)!.budgetHeadline,
             state: widget.state?.get(AppDataType.budgets),
+            route: routes.budgetRoute,
+            tooltip: AppLocalizations.of(context)!.budgetTooltip,
             offset: width,
           ),
         ],

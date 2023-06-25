@@ -11,6 +11,7 @@ class BudgetWidget extends AccountWidget {
     super.key,
     required String title,
     required double offset,
+    String? tooltip,
     required EdgeInsetsGeometry margin,
     required dynamic state,
     String? route,
@@ -18,6 +19,7 @@ class BudgetWidget extends AccountWidget {
   }) : super(
     margin: margin,
     offset: offset,
+    tooltip: tooltip,
     title: title,
     state: state,
     route: route,
