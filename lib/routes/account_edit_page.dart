@@ -2,6 +2,7 @@
 // Use of this source code is governed by a CC BY-NC-ND 4.0 license that can be
 // found in the LICENSE file.
 
+import 'package:app_finance/classes/account_app_data.dart';
 import 'package:app_finance/data.dart';
 import 'package:app_finance/routes/account_add_page.dart';
 import 'package:flutter/material.dart';
@@ -28,14 +29,19 @@ class AccountEditPageState extends AccountAddPageState<AccountEditPage> {
   @override
   void updateStorage() {
     String uuid = (widget as AccountEditPage).uuid;
-    widget.state?.update(AppDataType.accounts, uuid, (
+    widget.state?.update(AppDataType.accounts, uuid, AccountAppData(
       uuid: uuid,
-      title: widget.title,
+      title: widget.title ?? '',
+      type: widget.type ?? AppAccountType.cash.toString(),
       description: widget.description ?? '',
       details: widget.balance ?? 0.0,
       progress: 1.0,
       color: widget.color ?? Colors.red,
+      currency: widget.currency,
       hidden: false,
+      icon: widget.icon,
+      closedAt: widget.validTillDate,
+      createdAt: widget.balanceUpdateDate,
     ));
   }
 
@@ -49,11 +55,16 @@ class AccountEditPageState extends AccountAddPageState<AccountEditPage> {
     if ((widget as AccountEditPage).isFirstRun) {
       (widget as AccountEditPage).isFirstRun = false;
       var form =
-          widget.state?.getByUuid(AppDataType.accounts, (widget as AccountEditPage).uuid);
+          widget.state?.getByUuid(AppDataType.accounts, (widget as AccountEditPage).uuid) as AccountAppData;
       widget.title = form.title;
       widget.description = form.description;
+      widget.type = form.type;
       widget.balance = form.details;
       widget.color = form.color;
+      widget.currency = form.currency;
+      widget.icon = form.icon;
+      widget.validTillDate = form.closedAt;
+      widget.balanceUpdateDate = form.createdAt;
     }
     return super.buildContent(context, constraints);
   }

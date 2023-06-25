@@ -3,6 +3,7 @@
 // found in the LICENSE file.
 
 import 'package:adaptive_breakpoints/adaptive_breakpoints.dart';
+import 'package:app_finance/classes/account_app_data.dart';
 import 'package:app_finance/custom_text_theme.dart';
 import 'package:app_finance/data.dart';
 import 'package:app_finance/helpers/theme_helper.dart';
@@ -69,13 +70,18 @@ class AccountAddPageState<T extends AccountAddPage>
   }
 
   void updateStorage() {
-    widget.state?.add(AppDataType.accounts, (
-      title: widget.title,
+    widget.state?.add(AppDataType.accounts, AccountAppData(
+      title: widget.title ?? '',
+      type: widget.type ?? AppAccountType.cash.toString(),
       description: widget.description ?? '',
       details: widget.balance ?? 0.0,
       progress: 1.0,
       color: widget.color ?? Colors.red,
+      currency: widget.currency,
       hidden: false,
+      icon: widget.icon,
+      closedAt: widget.validTillDate,
+      createdAt: widget.balanceUpdateDate,
     ));
   }
   

@@ -4,7 +4,9 @@
 
 import 'package:app_finance/classes/app_route.dart';
 import 'package:app_finance/widgets/home/account_widget.dart';
+import 'package:app_finance/widgets/home/base_list_widget.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 
 class BudgetWidget extends AccountWidget {
   BudgetWidget({
@@ -25,4 +27,20 @@ class BudgetWidget extends AccountWidget {
     route: route,
     routeList: routeList,
   );
+
+  @override
+  Widget buildListWidget(item, BuildContext context, NumberFormat formatter,
+      DateFormat formatterDate, double offset) {
+    return BaseLineWidget(
+      uuid: item.uuid,
+      title: item.title,
+      description: item.description,
+      details: formatter.format(item.details),
+      progress: item.progress,
+      color: item.color,
+      hidden: item.hidden,
+      offset: offset,
+      route: routeList,
+    );
+  }
 }

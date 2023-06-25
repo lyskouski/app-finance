@@ -4,11 +4,13 @@
 
 import 'package:app_finance/classes/abstract_app_data.dart';
 
-class GoalAppData extends AbstractAppData {
+class AccountAppData extends AbstractAppData {
   DateTime _closedAt;
+  String type;
 
-  GoalAppData({
+  AccountAppData({
     required super.title,
+    required this.type,
     super.uuid,
     super.details,
     super.progress = 0.0,
@@ -28,18 +30,5 @@ class GoalAppData extends AbstractAppData {
   String get closedAtFormatted => getDateFormatted(_closedAt);
   set closedAtFormatted(String value) => _closedAt = DateTime.parse(value);
 
-  double get state {
-    DateTime currentDate = DateTime.now();
-    if (closedAt.isBefore(currentDate) ||
-        closedAt.isAtSameMomentAs(currentDate)) {
-      return 1.0;
-    } else if (currentDate.isBefore(super.createdAt) ||
-        super.createdAt.isAtSameMomentAs(currentDate)) {
-      return 0.0;
-    } else {
-      double totalDays = closedAt.difference(super.createdAt).inDays.toDouble();
-      double currentDays = currentDate.difference(super.createdAt).inDays.toDouble();
-      return currentDays / totalDays;
-    }
-  }
+  String get detailsFormatted => getNumberFormatted(super.details);
 }

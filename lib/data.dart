@@ -2,6 +2,7 @@
 // Use of this source code is governed by a CC BY-NC-ND 4.0 license that can be
 // found in the LICENSE file.
 
+import 'package:app_finance/classes/account_app_data.dart';
 import 'package:app_finance/classes/goal_app_data.dart';
 import 'package:flutter/material.dart';
 import 'package:uuid/uuid.dart';
@@ -81,27 +82,30 @@ class AppData extends ChangeNotifier {
     AppDataType.accounts: {
       'total': 123456.789,
       'list': [
-        (
+        AccountAppData(
           uuid: 'xxxxxxxx-xxxx-1xxx-yxxx-xxxxxxxxxxxx',
           title: 'Description of Account with a long explanation',
+          type: AppAccountType.account.toString(),
           description: '****1234',
           details: 12345789.098,
           progress: 0.5,
           color: Colors.red,
           hidden: false,
         ),
-        (
+        AccountAppData(
           uuid: 'xxxxxxxx-xxxx-2xxx-yxxx-xxxxxxxxxxxx',
           title: 'MasterCard',
+          type: AppAccountType.debitCard.toString(),
           description: '*****5432',
           details: 1234.789,
           progress: 0.8,
           color: Colors.green,
           hidden: false,
         ),
-        (
+        AccountAppData(
           uuid: 'xxxxxxxx-xxxx-3xxx-yxxx-xxxxxxxxxxxx',
           title: 'Visa Credit Card',
+          type: AppAccountType.creditCard.toString(),
           description: '****3224',
           details: 123.789,
           progress: 1.0,
@@ -151,15 +155,20 @@ class AppData extends ChangeNotifier {
 
   void add(AppDataType property, dynamic value) {
     var data = (_data[property] as Map);
-    data['list'].insert(0, (
-      uuid: const Uuid().v4(),
-      title: value.title,
-      description: value.description,
-      details: value.details,
-      progress: value.progress,
-      color: value.color,
-      hidden: value.hidden,
-    ));
+    if (value is AccountAppData) {
+      value.uuid = const Uuid().v4();
+      data['list'].insert(0, value);
+    } else {
+      data['list'].insert(0, (
+        uuid: const Uuid().v4(),
+        title: value.title,
+        description: value.description,
+        details: value.details,
+        progress: value.progress,
+        color: value.color,
+        hidden: value.hidden,
+      ));
+    }
     set(property, data);
   }
 
@@ -167,15 +176,19 @@ class AppData extends ChangeNotifier {
     var data = (_data[property] as Map);
     final index = data['list'].indexWhere((item) => item.uuid == uuid);
     if (index != -1) {
-      data['list'][index] = (
-        uuid: uuid,
-        title: value.title,
-        description: value.description,
-        details: value.details,
-        progress: value.progress,
-        color: value.color,
-        hidden: value.hidden,
-      );
+      if (value is AccountAppData) {
+        data['list'][index] = value;
+      } else {
+        data['list'][index] = (
+          uuid: uuid,
+          title: value.title,
+          description: value.description,
+          details: value.details,
+          progress: value.progress,
+          color: value.color,
+          hidden: value.hidden,
+        );
+      }
       set(property, data);
     }
   }

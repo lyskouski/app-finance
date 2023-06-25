@@ -7,21 +7,21 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
 abstract class AbstractAppData {
-  final String uuid;
   double _amount = 0.0;
   DateTime _createdAt;
   BuildContext? _context;
   String title;
   double progress;
   bool hidden;
+  String? uuid;
   String? description;
-  Color? color;
+  MaterialColor? color;
   IconData? icon;
   Currency? currency;
 
   AbstractAppData({
-    required this.uuid,
     required this.title,
+    this.uuid,
     this.description,
     this.color,
     this.icon,
@@ -31,7 +31,11 @@ abstract class AbstractAppData {
     details = 0.0,
     this.progress = 1.0,
     this.hidden = false,
-  }) : _createdAt = createdAt ?? (createdAtFormatted != null ? DateTime.parse(createdAtFormatted) : DateTime.now());
+  })  : _createdAt = createdAt ??
+            (createdAtFormatted != null
+                ? DateTime.parse(createdAtFormatted)
+                : DateTime.now()),
+        _amount = details;
 
   dynamic updateContext(BuildContext context) {
     _context = context;
@@ -42,6 +46,16 @@ abstract class AbstractAppData {
     final locale = Localizations.localeOf(_context!).toString();
     final DateFormat formatterDate = DateFormat.yMEd(locale);
     return formatterDate.format(date);
+  }
+
+  String getNumberFormatted(double value) {
+    final locale = Localizations.localeOf(_context!).toString();
+    final NumberFormat formatter = NumberFormat.currency(
+      locale: locale,
+      symbol: currency?.symbol ?? '?',
+      decimalDigits: 2,
+    );
+    return formatter.format(value);
   }
 
   dynamic get details => _amount;
