@@ -2,6 +2,7 @@
 // Use of this source code is governed by a CC BY-NC-ND 4.0 license that can be
 // found in the LICENSE file.
 
+import 'package:app_finance/classes/goal_app_data.dart';
 import 'package:flutter/material.dart';
 import 'package:uuid/uuid.dart';
 
@@ -35,13 +36,13 @@ class AppData extends ChangeNotifier {
     AppDataType.goals: {
       'total': 123.45,
       'list': [
-        (
+        GoalAppData(
           uuid: 'xxxxxxxx-xxxx-0xxx-yxxx-xxxxxxxxxxxx',
           title: 'Implement new functionality to reach the goal of MVP',
           details: 12345789.098,
           progress: 0.3,
-          startDate: '2022-01-01 00:00',
-          endDate: '2024-09-01 00:00',
+          createdAtFormatted: '2022-01-01 00:00',
+          closedAtFormatted: '2024-09-01 00:00',
         ),
       ]
     },

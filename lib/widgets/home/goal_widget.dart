@@ -3,9 +3,9 @@
 // found in the LICENSE file.
 
 import 'package:adaptive_breakpoints/adaptive_breakpoints.dart';
+import 'package:app_finance/classes/goal_app_data.dart';
 import 'package:app_finance/helpers/theme_helper.dart';
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
 import 'package:flutter_gen/gen_l10n/app_localization.dart';
 
 class GoalWidget extends StatelessWidget {
@@ -18,23 +18,6 @@ class GoalWidget extends StatelessWidget {
     required this.state,
   });
 
-  double _calculateState(strStartDate, strEndDate) {
-    DateTime startDate = DateTime.parse(strStartDate);
-    DateTime endDate = DateTime.parse(strEndDate);
-    DateTime currentDate = DateTime.now();
-    if (endDate.isBefore(currentDate) ||
-        endDate.isAtSameMomentAs(currentDate)) {
-      return 1.0;
-    } else if (currentDate.isBefore(startDate) ||
-        startDate.isAtSameMomentAs(currentDate)) {
-      return 0.0;
-    } else {
-      double totalDays = endDate.difference(startDate).inDays.toDouble();
-      double currentDays = currentDate.difference(startDate).inDays.toDouble();
-      return currentDays / totalDays;
-    }
-  }
-
   @override
   Widget build(context) {
     var theme = ThemeHelper(windowType: getWindowType(context));
@@ -42,9 +25,7 @@ class GoalWidget extends StatelessWidget {
     final TextTheme textTheme = Theme.of(context).textTheme;
     double screenWidth =
         MediaQuery.of(context).size.width - theme.getIndent() * 2;
-
-    final locale = Localizations.localeOf(context).toString();
-    final DateFormat formatterDate = DateFormat.yMEd(locale);
+    GoalAppData current = state[0].updateContext(context);
 
     return Container(
       margin: margin,
@@ -75,11 +56,11 @@ class GoalWidget extends StatelessWidget {
                           maxWidth: MediaQuery.of(context).size.width * 0.6,
                         ),
                         child: Tooltip(
-                          message: state[0].title,
+                          message: current.title,
                           child: Padding(
                             padding: EdgeInsets.only(left: theme.getIndent()),
                             child: Text(
-                              state[0].title,
+                              current.title,
                               style: textTheme.headlineMedium,
                               overflow: TextOverflow.ellipsis,
                             ),
@@ -93,7 +74,7 @@ class GoalWidget extends StatelessWidget {
                         child: Padding(
                           padding: EdgeInsets.only(right: theme.getIndent()),
                           child: Text(
-                            formatterDate.format(DateTime.parse(state[0].endDate)),
+                            current.closedAtFormatted,
                             style: textTheme.headlineMedium,
                             textAlign: TextAlign.right,
                             overflow: TextOverflow.ellipsis,
@@ -107,7 +88,7 @@ class GoalWidget extends StatelessWidget {
                     margin: EdgeInsets.fromLTRB(theme.getIndent(),
                         theme.getIndent() / 2, theme.getIndent(), 0),
                     child: LinearProgressIndicator(
-                      value: state[0].progress,
+                      value: current.progress,
                       backgroundColor: colorScheme.primary.withOpacity(0.3),
                       valueColor: AlwaysStoppedAnimation<Color>(
                           colorScheme.onPrimaryContainer),
@@ -121,9 +102,7 @@ class GoalWidget extends StatelessWidget {
             children: [
               Transform.translate(
                 offset: Offset(
-                    theme.getIndent() * 1.5 +
-                        screenWidth * _calculateState(state[0].startDate, state[0].endDate),
-                    -6),
+                    theme.getIndent() * 1.5 + screenWidth * current.state, -6),
                 child: Tooltip(
                   message: AppLocalizations.of(context)!.currentDate,
                   child: Container(
