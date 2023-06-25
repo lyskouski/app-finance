@@ -7,7 +7,7 @@ import 'package:app_finance/data.dart';
 import 'package:app_finance/helpers/theme_helper.dart';
 import 'package:app_finance/routes.dart' as routes;
 import 'package:app_finance/routes/abstract_page.dart';
-import 'package:app_finance/widgets/home/account_widget.dart';
+import 'package:app_finance/widgets/home/budget_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localization.dart';
 
@@ -38,7 +38,7 @@ class BudgetPageState extends AbstractPageState<BudgetPage> {
     var helper = ThemeHelper(windowType: getWindowType(context));
     return Column(
       children: [
-        AccountWidget(
+        BudgetWidget(
           margin: EdgeInsets.all(helper.getIndent()),
           title: AppLocalizations.of(context)!.budgetHeadline,
           state: widget.state?.get(AppDataType.budgets),
