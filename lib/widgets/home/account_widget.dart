@@ -2,7 +2,8 @@
 // Use of this source code is governed by a CC BY-NC-ND 4.0 license that can be
 // found in the LICENSE file.
 
-import 'package:app_finance/routes.dart' as routes;
+import 'package:app_finance/classes/account_app_data.dart';
+import 'package:app_finance/classes/app_route.dart';
 import 'package:app_finance/widgets/home/base_list_widget.dart';
 import 'package:app_finance/widgets/home/base_widget.dart';
 import 'package:flutter/material.dart';
@@ -17,7 +18,7 @@ class AccountWidget extends BaseWidget {
     required double offset,
     String? tooltip,
     String? route,
-    String routeList = routes.accountViewRoute,
+    String routeList = AppRoute.accountViewRoute,
   }) : super(
     margin: margin,
     offset: offset,
@@ -31,13 +32,14 @@ class AccountWidget extends BaseWidget {
   @override
   Widget buildListWidget(item, BuildContext context, NumberFormat formatter,
       DateFormat formatterDate, double offset) {
+    item.updateContext(context);
     return BaseLineWidget(
       uuid: item.uuid,
       title: item.title,
-      description: item.description,
-      details: formatter.format(item.details),
+      description: item.description ?? '',
+      details: item.detailsFormatted,
       progress: item.progress,
-      color: item.color,
+      color: item.color ?? Colors.transparent,
       hidden: item.hidden,
       offset: offset,
       route: routeList,

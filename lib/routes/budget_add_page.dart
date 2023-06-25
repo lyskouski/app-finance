@@ -3,17 +3,15 @@
 // found in the LICENSE file.
 
 import 'package:adaptive_breakpoints/adaptive_breakpoints.dart';
+import 'package:app_finance/classes/budget_app_data.dart';
 import 'package:app_finance/custom_text_theme.dart';
 import 'package:app_finance/data.dart';
 import 'package:app_finance/helpers/theme_helper.dart';
-import 'package:app_finance/routes.dart' as routes;
+import 'package:app_finance/classes/app_route.dart';
 import 'package:app_finance/routes/abstract_page.dart';
 import 'package:app_finance/widgets/forms/color_selector.dart';
 import 'package:app_finance/widgets/forms/currency_selector.dart';
-import 'package:app_finance/widgets/forms/date_input.dart';
-import 'package:app_finance/widgets/forms/datet_time_input.dart';
 import 'package:app_finance/widgets/forms/icon_selector.dart';
-import 'package:app_finance/widgets/forms/list_selector.dart';
 import 'package:app_finance/widgets/forms/simple_input.dart';
 import 'package:currency_picker/currency_picker.dart';
 import 'package:flutter/material.dart';
@@ -23,22 +21,17 @@ import 'package:flutter_gen/gen_l10n/app_localization.dart';
 class BudgetAddPage extends AbstractPage {
   String? title;
   String titleErrorMessage = '';
-  String? description;
-  Currency? currency;
-  DateTime? validTillDate;
-  DateTime balanceUpdateDate = DateTime.now();
-  double? balance;
+  double? budgetLimit;
   IconData? icon;
   MaterialColor? color;
+  Currency? currency;
 
   BudgetAddPage({
     this.title,
-    this.description,
-    this.currency,
-    this.validTillDate,
-    this.balance,
+    this.budgetLimit,
     this.icon,
     this.color,
+    this.currency,
   }) : super();
 
   @override
@@ -62,20 +55,24 @@ class BudgetAddPageState<T extends BudgetAddPage>
   }
 
   void updateStorage() {
-    widget.state?.add(AppDataType.budgets, (
-      title: widget.title,
-      description: widget.description ?? '',
-      details: widget.balance ?? 0.0,
-      progress: 1.0,
+    widget.state?.add(AppDataType.budgets, BudgetAppData(
+      title: widget.title ?? '',
+      amountLimit: widget.budgetLimit ?? 0.0,
+      progress: 0.0,
       color: widget.color ?? Colors.red,
       hidden: false,
+      currency: widget.currency,
     ));
+  }
+
+  String getButtonName() {
+    return AppLocalizations.of(context)!.createBudgetTooltip;
   }
 
   @override
   Widget buildButton(BuildContext context, BoxConstraints constraints) {
     var helper = ThemeHelper(windowType: getWindowType(context));
-    String title = AppLocalizations.of(context)!.createBudgetTooltip;
+    String title = getButtonName();
     return SizedBox(
       width: constraints.maxWidth - helper.getIndent() * 4,
       child: FloatingActionButton(
@@ -85,7 +82,7 @@ class BudgetAddPageState<T extends BudgetAddPage>
               return;
             }
             updateStorage();
-            Navigator.popAndPushNamed(context, routes.budgetRoute);
+            Navigator.popAndPushNamed(context, AppRoute.budgetRoute);
           })
         },
         tooltip: title,
@@ -110,7 +107,6 @@ class BudgetAddPageState<T extends BudgetAddPage>
     double indent =
         ThemeHelper(windowType: getWindowType(context)).getIndent() * 2;
     double offset = MediaQuery.of(context).size.width - indent * 3;
-    double offsetTriple = offset - indent;
 
     return SingleChildScrollView(
       child: Container(
@@ -144,7 +140,7 @@ class BudgetAddPageState<T extends BudgetAddPage>
               children: [
                 Container(
                   constraints: BoxConstraints(
-                    maxWidth: offsetTriple * 0.2,
+                    maxWidth: offset * 0.5,
                   ),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -171,7 +167,7 @@ class BudgetAddPageState<T extends BudgetAddPage>
                 SizedBox(width: indent),
                 Container(
                   constraints: BoxConstraints(
-                    maxWidth: offsetTriple * 0.2,
+                    maxWidth: offset * 0.5,
                   ),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -188,29 +184,23 @@ class BudgetAddPageState<T extends BudgetAddPage>
                     ],
                   ),
                 ),
-                SizedBox(width: indent),
-                Container(
-                  constraints: BoxConstraints(
-                    maxWidth: offsetTriple * 0.6,
-                  ),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        AppLocalizations.of(context)!.details,
-                        style: textTheme.bodyLarge,
-                      ),
-                      SimpleInput(
-                        value: widget.description,
-                        tooltip: AppLocalizations.of(context)!.detailsTooltip,
-                        style: textTheme.numberMedium,
-                        setState: (value) =>
-                            setState(() => widget.description = value),
-                      ),
-                    ],
-                  ),
-                ),
               ],
+            ),
+            SizedBox(height: indent),
+            Text(
+              AppLocalizations.of(context)!.budgetLimit,
+              style: textTheme.bodyLarge,
+            ),
+            SimpleInput(
+              value: widget.budgetLimit != null ? widget.budgetLimit.toString() : '',
+              type: const TextInputType.numberWithOptions(decimal: true),
+              tooltip: AppLocalizations.of(context)!.balanceTooltip,
+              style: textTheme.numberMedium,
+              formatter: [
+                FilteringTextInputFormatter.allow(RegExp(r'^\d+\.?\d{0,4}')),
+              ],
+              setState: (value) =>
+                  setState(() => widget.budgetLimit = double.tryParse(value)),
             ),
             SizedBox(height: indent),
             Text(
@@ -225,53 +215,6 @@ class BudgetAddPageState<T extends BudgetAddPage>
                 value: widget.currency,
                 setState: (value) => setState(() => widget.currency = value),
               ),
-            ),
-            SizedBox(height: indent),
-            Text(
-              AppLocalizations.of(context)!.validTillDate,
-              style: textTheme.bodyLarge,
-            ),
-            DateInput(
-              value: widget.validTillDate,
-              setState: (value) => setState(() => widget.validTillDate = value),
-              style: textTheme.numberMedium,
-            ),
-            SizedBox(height: indent),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Text(
-                  AppLocalizations.of(context)!.balanceDate,
-                  style: textTheme.bodyLarge,
-                ),
-                Tooltip(
-                  message: AppLocalizations.of(context)!.balanceDateTooltip,
-                  child: const Icon(Icons.info_outline),
-                ),
-              ],
-            ),
-            DateTimeInput(
-              style: textTheme.numberMedium,
-              width: offset,
-              value: widget.balanceUpdateDate,
-              setState: (value) =>
-                  setState(() => widget.balanceUpdateDate = value),
-            ),
-            SizedBox(height: indent),
-            Text(
-              AppLocalizations.of(context)!.balance,
-              style: textTheme.bodyLarge,
-            ),
-            SimpleInput(
-              value: widget.balance != null ? widget.balance.toString() : '',
-              type: const TextInputType.numberWithOptions(decimal: true),
-              tooltip: AppLocalizations.of(context)!.balanceTooltip,
-              style: textTheme.numberMedium,
-              formatter: [
-                FilteringTextInputFormatter.allow(RegExp(r'^\d+\.?\d{0,4}')),
-              ],
-              setState: (value) =>
-                  setState(() => widget.balance = double.tryParse(value)),
             ),
           ],
         ),

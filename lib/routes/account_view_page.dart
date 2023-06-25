@@ -3,14 +3,15 @@
 // found in the LICENSE file.
 
 import 'package:adaptive_breakpoints/adaptive_breakpoints.dart';
+import 'package:app_finance/classes/account_app_data.dart';
+import 'package:app_finance/classes/app_menu.dart';
 import 'package:app_finance/data.dart';
 import 'package:app_finance/helpers/theme_helper.dart';
-import 'package:app_finance/routes.dart' as routes;
+import 'package:app_finance/classes/app_route.dart';
 import 'package:app_finance/routes/abstract_page.dart';
 import 'package:app_finance/widgets/home/base_list_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localization.dart';
-import 'package:intl/intl.dart';
 
 class AccountViewPage extends AbstractPage {
   String uuid;
@@ -26,29 +27,21 @@ class AccountViewPage extends AbstractPage {
 class AccountViewPageState extends AbstractPageState<AccountViewPage> {
   @override
   String getTitle(context) {
-    final item = widget.state?.getByUuid(AppDataType.accounts, widget.uuid);
-    String? title = item!.title;
-    return title ?? '';
+    final item = widget.state?.getByUuid(AppDataType.accounts, widget.uuid) as AccountAppData;
+    return item.title;
   }
 
   void deactivateAccount(BuildContext context) {
-    var data = widget.state?.getByUuid(AppDataType.accounts, widget.uuid);
-    widget.state?.update(AppDataType.accounts, widget.uuid, (
-      uuid: data.uuid,
-      title: data.title,
-      description: data.description,
-      details: data.details,
-      progress: data.progress,
-      color: data.color,
-      hidden: true,
-    ));
+    var data = widget.state?.getByUuid(AppDataType.accounts, widget.uuid) as AccountAppData;
+    data.hidden = true;
+    widget.state?.update(AppDataType.accounts, widget.uuid, data);
     Navigator.pop(context);
   }
 
   @override
   Widget buildButton(BuildContext context, BoxConstraints constraints) {
-    String route = routes.AppMenu(context: context)
-        .uuid(routes.accountEditRoute, widget.uuid);
+    String route = AppMenu(context: context)
+        .uuid(AppRoute.accountEditRoute, widget.uuid);
     double indent =
         ThemeHelper(windowType: getWindowType(context)).getIndent() * 4;
     return Container(
@@ -70,27 +63,21 @@ class AccountViewPageState extends AbstractPageState<AccountViewPage> {
 
   @override
   Widget buildContent(BuildContext context, BoxConstraints constraints) {
-    final item = widget.state?.getByUuid(AppDataType.accounts, widget.uuid);
+    final item = widget.state?.getByUuid(AppDataType.accounts, widget.uuid) as AccountAppData;
     double indent =
         ThemeHelper(windowType: getWindowType(context)).getIndent() * 2;
     double offset = MediaQuery.of(context).size.width - indent * 3;
-    final locale = Localizations.localeOf(context).toString();
-    final NumberFormat formatter = NumberFormat.currency(
-      locale: locale,
-      symbol: '\$',
-      decimalDigits: 2,
-    );
     return Column(
       children: [
         BaseLineWidget(
-          uuid: item.uuid,
+          uuid: item.uuid ?? '',
           title: item.title,
-          description: item.description,
-          details: formatter.format(item.details),
+          description: item.description ?? '',
+          details: item.detailsFormatted,
           progress: item.progress,
-          color: item.color,
+          color: item.color ?? Colors.transparent,
           offset: offset,
-          route: routes.accountViewRoute,
+          route: AppRoute.accountViewRoute,
         )
       ],
     );

@@ -4,7 +4,7 @@
 
 import 'package:app_finance/custom_text_theme.dart';
 import 'package:app_finance/data.dart';
-import 'package:app_finance/routes.dart' as routes;
+import 'package:app_finance/classes/app_route.dart';
 import 'package:app_finance/routes/account_add_page.dart';
 import 'package:app_finance/routes/account_edit_page.dart';
 import 'package:app_finance/routes/account_view_page.dart';
@@ -39,20 +39,19 @@ class _MyAppState extends State<MyApp> {
     final String route = settings.name!;
     final regex = RegExp(r'\/uuid:([\w-]+)');
     final match = regex.firstMatch(route);
-    print(['route', route]);
     if (match != null) {
       final String uuid = match.group(1) ?? '';
       switch (route.replaceAll(uuid, '')) {
-        case routes.accountViewRoute:
+        case AppRoute.accountViewRoute:
           return MaterialPageRoute(
               builder: (context) => AccountViewPage(uuid: uuid));
-        case routes.accountEditRoute:
+        case AppRoute.accountEditRoute:
           return MaterialPageRoute(
               builder: (context) => AccountEditPage(uuid: uuid));
-        case routes.budgetViewRoute:
+        case AppRoute.budgetViewRoute:
           return MaterialPageRoute(
               builder: (context) => BudgetViewPage(uuid: uuid));
-        case routes.budgetEditRoute:
+        case AppRoute.budgetEditRoute:
           return MaterialPageRoute(
               builder: (context) => BudgetEditPage(uuid: uuid));
       }
@@ -78,14 +77,14 @@ class _MyAppState extends State<MyApp> {
       ),
       themeMode: ThemeMode.system,
       home: HomePage(),
-      initialRoute: routes.homeRoute,
+      initialRoute: AppRoute.homeRoute,
       onGenerateRoute: getDynamicRouter,
       routes: <String, WidgetBuilder>{
-        routes.homeRoute: (context) => HomePage(),
-        routes.accountRoute: (context) => AccountPage(),
-        routes.accountAddRoute: (context) => AccountAddPage(),
-        routes.budgetRoute: (context) => BudgetPage(),
-        routes.budgetAddRoute: (context) => BudgetAddPage(),
+        AppRoute.homeRoute: (context) => HomePage(),
+        AppRoute.accountRoute: (context) => AccountPage(),
+        AppRoute.accountAddRoute: (context) => AccountAddPage(),
+        AppRoute.budgetRoute: (context) => BudgetPage(),
+        AppRoute.budgetAddRoute: (context) => BudgetAddPage(),
       },
     );
   }

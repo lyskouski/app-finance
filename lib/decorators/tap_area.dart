@@ -2,7 +2,7 @@
 // Use of this source code is governed by a CC BY-NC-ND 4.0 license that can be
 // found in the LICENSE file.
 
-import 'package:app_finance/routes.dart' as routes;
+import 'package:app_finance/classes/app_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localization.dart';
 
@@ -31,7 +31,7 @@ class TapArea extends StatelessWidget {
             if (onTap != null) {
               onTap!();
             } else if (route != '') {
-              Navigator.pushNamed(context, route ?? routes.homeRoute);
+              Navigator.pushNamed(context, route ?? AppRoute.homeRoute);
             }
           },
           child: child,

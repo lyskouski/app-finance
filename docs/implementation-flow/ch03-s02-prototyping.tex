@@ -2773,3 +2773,57 @@ If a match is found, we assign the corresponding enum value to the accountType v
 Option 2 shows how to use a lookup map to match the string with the enum value. We define a map where the keys 
 are the string representations of the enum values, and the values are the actual enum values. We then use the 
 string representation as the key to retrieve the enum value from the map.
+
+[<- to be fully refactored, and adjusted to context of development flow]
+==========================================================================
+
+By migrating our data structures to class objects it can be used additionally getter and setter for class variables.
+That will help us to cover, as an example, `description`-attribute for Budget structures by showing 
+`Spent Amount / Total Budget`, and for `details`-attribute - `Left Amount`.
+
+\begin{lstlisting}
+class MyClass {
+  String _name; // Private variable
+
+  // Getter for name
+  String get name => _name;
+
+  // Setter for name
+  set name(String value) {
+    _name = value;
+  }
+}
+
+void main() {
+  MyClass myObject = MyClass();
+
+  // Using the setter
+  myObject.name = 'John';
+
+  // Using the getter
+  print(myObject.name); // Output: John
+}
+\end{lstlisting}
+
+In the example above, the `MyClass`-class has a private variable `\_name`. The getter for `\_name` is defined 
+using the get keyword, and the setter is defined using the set keyword. The getter returns the value of 
+`\_name`, and the setter sets the value of `\_name` to the provided value. By using that approach we can control 
+the access to class variables and perform additional logic or validation when getting or setting their values.
+
+One more question, is how to set `DateTime.now()` inside a constructor as default value, since, by defining it inside
+the constructor, an error would be taken: The default value of an optional parameter must be constant.
+
+So, to set a default value for a DateTime variable as the current date and time, we can use the `DateTime.now()` method 
+during the initialization of the variable.
+
+\begin{lstlisting}
+class MyClass {
+    DateTime _createdAt;
+
+    MyClass({DateTime? createdAt})
+        : _createdAt = createdAt ?? DateTime.now();
+
+    DateTime get createdAt => _createdAt;
+}
+\end{lstlisting}
+

@@ -5,7 +5,7 @@
 import 'package:adaptive_breakpoints/adaptive_breakpoints.dart';
 import 'package:app_finance/data.dart';
 import 'package:app_finance/helpers/theme_helper.dart';
-import 'package:app_finance/routes.dart' as routes;
+import 'package:app_finance/classes/app_route.dart';
 import 'package:app_finance/routes/abstract_page.dart';
 import 'package:app_finance/widgets/home/budget_widget.dart';
 import 'package:flutter/material.dart';
@@ -27,7 +27,7 @@ class BudgetPageState extends AbstractPageState<BudgetPage> {
   @override
   Widget buildButton(BuildContext context, BoxConstraints constraints) {
     return FloatingActionButton(
-      onPressed: () => Navigator.pushNamed(context, routes.budgetAddRoute),
+      onPressed: () => Navigator.pushNamed(context, AppRoute.budgetAddRoute),
       tooltip: AppLocalizations.of(context)!.addBudgetTooltip,
       child: const Icon(Icons.add),
     );

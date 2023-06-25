@@ -3,10 +3,11 @@
 // found in the LICENSE file.
 
 import 'package:adaptive_breakpoints/adaptive_breakpoints.dart';
+import 'package:app_finance/classes/account_app_data.dart';
 import 'package:app_finance/custom_text_theme.dart';
 import 'package:app_finance/data.dart';
 import 'package:app_finance/helpers/theme_helper.dart';
-import 'package:app_finance/routes.dart' as routes;
+import 'package:app_finance/classes/app_route.dart';
 import 'package:app_finance/routes/abstract_page.dart';
 import 'package:app_finance/widgets/forms/color_selector.dart';
 import 'package:app_finance/widgets/forms/currency_selector.dart';
@@ -69,20 +70,29 @@ class AccountAddPageState<T extends AccountAddPage>
   }
 
   void updateStorage() {
-    widget.state?.add(AppDataType.accounts, (
-      title: widget.title,
+    widget.state?.add(AppDataType.accounts, AccountAppData(
+      title: widget.title ?? '',
+      type: widget.type ?? AppAccountType.cash.toString(),
       description: widget.description ?? '',
       details: widget.balance ?? 0.0,
       progress: 1.0,
       color: widget.color ?? Colors.red,
+      currency: widget.currency,
       hidden: false,
+      icon: widget.icon,
+      closedAt: widget.validTillDate,
+      createdAt: widget.balanceUpdateDate,
     ));
+  }
+  
+  String getButtonName() {
+    return AppLocalizations.of(context)!.createAccountTooltip;
   }
 
   @override
   Widget buildButton(BuildContext context, BoxConstraints constraints) {
     var helper = ThemeHelper(windowType: getWindowType(context));
-    String title = AppLocalizations.of(context)!.createAccountTooltip;
+    String title = getButtonName();
     return SizedBox(
       width: constraints.maxWidth - helper.getIndent() * 4,
       child: FloatingActionButton(
@@ -92,7 +102,7 @@ class AccountAddPageState<T extends AccountAddPage>
               return;
             }
             updateStorage();
-            Navigator.popAndPushNamed(context, routes.accountRoute);
+            Navigator.popAndPushNamed(context, AppRoute.accountRoute);
           })
         },
         tooltip: title,

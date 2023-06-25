@@ -3,9 +3,11 @@
 // found in the LICENSE file.
 
 import 'package:adaptive_breakpoints/adaptive_breakpoints.dart';
+import 'package:app_finance/classes/app_menu.dart';
+import 'package:app_finance/classes/budget_app_data.dart';
 import 'package:app_finance/data.dart';
 import 'package:app_finance/helpers/theme_helper.dart';
-import 'package:app_finance/routes.dart' as routes;
+import 'package:app_finance/classes/app_route.dart';
 import 'package:app_finance/routes/abstract_page.dart';
 import 'package:app_finance/widgets/home/base_list_widget.dart';
 import 'package:flutter/material.dart';
@@ -26,29 +28,21 @@ class BudgetViewPage extends AbstractPage {
 class BudgetViewPageState extends AbstractPageState<BudgetViewPage> {
   @override
   String getTitle(context) {
-    final item = widget.state?.getByUuid(AppDataType.budgets, widget.uuid);
-    String? title = item!.title;
-    return title ?? '';
+    final item = widget.state?.getByUuid(AppDataType.budgets, widget.uuid) as BudgetAppData;
+    return item.title;
   }
 
   void deactivateAccount(BuildContext context) {
-    var data = widget.state?.getByUuid(AppDataType.budgets, widget.uuid);
-    widget.state?.update(AppDataType.budgets, widget.uuid, (
-      uuid: data.uuid,
-      title: data.title,
-      description: data.description,
-      details: data.details,
-      progress: data.progress,
-      color: data.color,
-      hidden: true,
-    ));
+    var data = widget.state?.getByUuid(AppDataType.budgets, widget.uuid) as BudgetAppData;
+    data.hidden = true;
+    widget.state?.update(AppDataType.budgets, widget.uuid, data);
     Navigator.pop(context);
   }
 
   @override
   Widget buildButton(BuildContext context, BoxConstraints constraints) {
-    String route = routes.AppMenu(context: context)
-        .uuid(routes.budgetEditRoute, widget.uuid);
+    String route =
+        AppMenu(context: context).uuid(AppRoute.budgetEditRoute, widget.uuid);
     double indent =
         ThemeHelper(windowType: getWindowType(context)).getIndent() * 4;
     return Container(
@@ -70,27 +64,21 @@ class BudgetViewPageState extends AbstractPageState<BudgetViewPage> {
 
   @override
   Widget buildContent(BuildContext context, BoxConstraints constraints) {
-    final item = widget.state?.getByUuid(AppDataType.budgets, widget.uuid);
+    final item = widget.state?.getByUuid(AppDataType.budgets, widget.uuid) as BudgetAppData;
     double indent =
         ThemeHelper(windowType: getWindowType(context)).getIndent() * 2;
     double offset = MediaQuery.of(context).size.width - indent * 3;
-    final locale = Localizations.localeOf(context).toString();
-    final NumberFormat formatter = NumberFormat.currency(
-      locale: locale,
-      symbol: '\$',
-      decimalDigits: 2,
-    );
     return Column(
       children: [
         BaseLineWidget(
-          uuid: item.uuid,
+          uuid: item.uuid ?? '',
           title: item.title,
           description: item.description,
-          details: formatter.format(item.details),
+          details: item.detailsFormatted,
           progress: item.progress,
-          color: item.color,
+          color: item.color ?? Colors.transparent,
           offset: offset,
-          route: routes.budgetViewRoute,
+          route: AppRoute.budgetViewRoute,
         )
       ],
     );
