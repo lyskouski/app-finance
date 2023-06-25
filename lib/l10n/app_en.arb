@@ -26,6 +26,8 @@
     "debitCard": "Debit Card",
     "deposit": "Deposit",
     "details": "Details",
+    "budgetHeadline": "Budgets",
+    "addBudgetTooltip": "Add new Budget Category",
     "detailsTooltip": "****2345 - last 4 digits of number",
     "editAccountHeader": "Update Account",
     "editAccountTooltip": "Edit Account",

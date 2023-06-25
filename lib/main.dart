@@ -9,6 +9,7 @@ import 'package:app_finance/routes/account_add_page.dart';
 import 'package:app_finance/routes/account_edit_page.dart';
 import 'package:app_finance/routes/account_view_page.dart';
 import 'package:app_finance/routes/account_page.dart';
+import 'package:app_finance/routes/budget_page.dart';
 import 'package:app_finance/routes/home_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localization.dart';
@@ -73,6 +74,7 @@ class _MyAppState extends State<MyApp> {
         routes.homeRoute: (context) => HomePage(),
         routes.accountRoute: (context) => AccountPage(),
         routes.accountAddRoute: (context) => AccountAddPage(),
+        routes.budgetRoute: (context) => BudgetPage(),
       },
     );
   }
