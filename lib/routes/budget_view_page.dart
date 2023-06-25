@@ -3,6 +3,7 @@
 // found in the LICENSE file.
 
 import 'package:adaptive_breakpoints/adaptive_breakpoints.dart';
+import 'package:app_finance/classes/appMenu.dart';
 import 'package:app_finance/data.dart';
 import 'package:app_finance/helpers/theme_helper.dart';
 import 'package:app_finance/routes.dart' as routes;
@@ -47,8 +48,8 @@ class BudgetViewPageState extends AbstractPageState<BudgetViewPage> {
 
   @override
   Widget buildButton(BuildContext context, BoxConstraints constraints) {
-    String route = routes.AppMenu(context: context)
-        .uuid(routes.budgetEditRoute, widget.uuid);
+    String route =
+        AppMenu(context: context).uuid(routes.budgetEditRoute, widget.uuid);
     double indent =
         ThemeHelper(windowType: getWindowType(context)).getIndent() * 4;
     return Container(

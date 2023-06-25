@@ -3,6 +3,7 @@
 // found in the LICENSE file.
 
 import 'package:adaptive_breakpoints/adaptive_breakpoints.dart';
+import 'package:app_finance/classes/appMenu.dart';
 import 'package:app_finance/data.dart';
 import 'package:app_finance/helpers/theme_helper.dart';
 import 'package:app_finance/routes.dart' as routes;
@@ -44,7 +45,7 @@ abstract class AbstractPageState<T extends AbstractPage> extends State<T> {
       actions: [
         PopupMenuButton(
           itemBuilder: (BuildContext context) {
-            return routes.AppMenu(context: context).get().map((menuItem) {
+            return AppMenu(context: context).get().map((menuItem) {
               return PopupMenuItem(
                 value: menuItem.route,
                 child: Row(
@@ -88,7 +89,7 @@ abstract class AbstractPageState<T extends AbstractPage> extends State<T> {
                 padding: EdgeInsets.symmetric(vertical: indent * 4),
                 separatorBuilder: (context, index) =>
                     SizedBox(height: indent * 2),
-                itemCount: routes.AppMenu(context: context).get().length,
+                itemCount: AppMenu(context: context).get().length,
                 itemBuilder: (context, index) => MenuWidget(
                   index: index,
                   setState: () => setState(() => widget.selectedMenu = index),

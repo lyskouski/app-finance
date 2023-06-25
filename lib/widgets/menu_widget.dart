@@ -2,8 +2,8 @@
 // Use of this source code is governed by a CC BY-NC-ND 4.0 license that can be
 // found in the LICENSE file.
 
+import 'package:app_finance/classes/appMenu.dart';
 import 'package:app_finance/classes/appMenuItem.dart';
-import 'package:app_finance/routes.dart' as routes;
 import 'package:flutter/material.dart';
 
 class MenuWidget extends StatelessWidget {
@@ -29,8 +29,7 @@ class MenuWidget extends StatelessWidget {
     final TextTheme textTheme = Theme.of(context).textTheme;
     Color color =
         selectedIndex == index ? colorScheme.primary : colorScheme.secondary;
-    AppMenuItem menu =
-        routes.AppMenu(context: context).getByIndex(index);
+    AppMenuItem menu = AppMenu(context: context).getByIndex(index);
 
     return InkWell(
       child: ListTile(

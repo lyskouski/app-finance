@@ -39,7 +39,6 @@ class _MyAppState extends State<MyApp> {
     final String route = settings.name!;
     final regex = RegExp(r'\/uuid:([\w-]+)');
     final match = regex.firstMatch(route);
-    print(['route', route]);
     if (match != null) {
       final String uuid = match.group(1) ?? '';
       switch (route.replaceAll(uuid, '')) {
