@@ -12,7 +12,6 @@ import 'package:app_finance/routes/abstract_page.dart';
 import 'package:app_finance/widgets/home/base_list_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localization.dart';
-import 'package:intl/intl.dart';
 
 class BudgetViewPage extends AbstractPage {
   String uuid;
