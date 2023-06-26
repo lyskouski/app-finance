@@ -2827,3 +2827,17 @@ class MyClass {
 }
 \end{lstlisting}
 
+Migration our Bills to classes construction has lead to an error on .firstWhere when Account of Budget not found. 
+To resolve that we have to cast our getter (otherwise it would be an error: type '() => dynamic' is not a subtype 
+of type '(() => BudgetAppData)?' of 'orElse') and add orElse operator as following:
+
+\begin{lstlisting}
+  dynamic getByUuid(AppDataType property, String uuid) {
+    var scope = (_data[property] as Map)['list'];
+    return scope.cast<dynamic>() // cast to cover different types, 
+    .firstWhere(
+      (item) => item.uuid == uuid,
+      orElse: () => null, // Return null if not found
+    );
+  }
+\end{lstlisting}

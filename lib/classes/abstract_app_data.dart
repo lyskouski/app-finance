@@ -2,6 +2,7 @@
 // Use of this source code is governed by a CC BY-NC-ND 4.0 license that can be
 // found in the LICENSE file.
 
+import 'package:app_finance/data.dart';
 import 'package:currency_picker/currency_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
@@ -10,6 +11,7 @@ abstract class AbstractAppData {
   double _amount = 0.0;
   DateTime _createdAt;
   BuildContext? _context;
+  AppData? _state;
   String title;
   double progress;
   bool hidden;
@@ -43,6 +45,13 @@ abstract class AbstractAppData {
   }
 
   BuildContext? getContext() => _context;
+
+  dynamic setState(AppData state) {
+    _state = state;
+    return this;
+  }
+
+  AppData? getState() => _state;
 
   String getDateFormatted(DateTime date) {
     final locale = Localizations.localeOf(_context!).toString();

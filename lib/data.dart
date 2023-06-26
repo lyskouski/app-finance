@@ -2,6 +2,7 @@
 // Use of this source code is governed by a CC BY-NC-ND 4.0 license that can be
 // found in the LICENSE file.
 
+import 'package:app_finance/classes/abstract_app_data.dart';
 import 'package:app_finance/classes/account_app_data.dart';
 import 'package:app_finance/classes/bill_app_data.dart';
 import 'package:app_finance/classes/budget_app_data.dart';
@@ -53,6 +54,8 @@ class AppData extends ChangeNotifier {
       'total': 123456.789,
       'list': [
         BillAppData(
+          account: '',
+          category: 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx',
           uuid: 'xxxxxxxx-xxxx-01xx-yxxx-xxxxxxxxxxxx',
           title: 'Description BILLS with a long explanation',
           createdAtFormatted: '2023-06-17',
@@ -60,6 +63,8 @@ class AppData extends ChangeNotifier {
           hidden: false,
         ),
         BillAppData(
+          account: '',
+          category: '',
           uuid: 'xxxxxxxx-xxxx-02xx-yxxx-xxxxxxxxxxxx',
           title: 'Description BILLS 2',
           createdAtFormatted: '2023-06-16 22:10',
@@ -67,6 +72,8 @@ class AppData extends ChangeNotifier {
           hidden: false,
         ),
         BillAppData(
+          account: '',
+          category: '',
           uuid: 'xxxxxxxx-xxxx-03xx-yxxx-xxxxxxxxxxxx',
           title: 'Description BILLS 3',
           createdAtFormatted: '2023-06-15',
@@ -190,7 +197,7 @@ class AppData extends ChangeNotifier {
     var data = (_data[property] as Map);
     return (
       total: data['total'],
-      list: data['list'],
+      list: data['list'].map((e) => e.setState(this)).toList(),
     );
   }
 
@@ -200,7 +207,10 @@ class AppData extends ChangeNotifier {
 
   dynamic getByUuid(AppDataType property, String uuid) {
     var scope = (_data[property] as Map)['list'];
-    return scope.firstWhere((item) => item.uuid == uuid);
+    return scope.cast<dynamic>().firstWhere(
+      (item) => item.uuid == uuid,
+      orElse: () => null,
+    );
   }
 
   dynamic getType(AppAccountType property) {

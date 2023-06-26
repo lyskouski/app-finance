@@ -25,6 +25,7 @@
     "updateAccountTooltip": "Update Account",
     "createBudgetHeader": "New Budget Category",
     "createBudgetTooltip": "Create new Budget Category",
+    "createBillTooltip": "Add new Bill",
     "editBudgetHeader": "Update Budget Category",
     "updateBudgetTooltip": "Update Budget Category",
     "credit": "Credit",
