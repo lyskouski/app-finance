@@ -96,6 +96,9 @@ class BillAddPageState<T extends BillAddPage>
   }
 
   void switchTab(int newIndex) {
+    if (newIndex < 0 || newIndex >= widget.tabCount) {
+      return;
+    }
     setState(() {
       widget.tabIndex = newIndex;
       widget.tabController?.animateTo(newIndex);
