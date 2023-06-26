@@ -39,7 +39,7 @@ class BaseLineWidget extends StatelessWidget {
     final TextTheme textTheme = Theme.of(context).textTheme;
 
     if (hidden) {
-      return SizedBox();
+      return const SizedBox();
     }
 
     return TapArea(

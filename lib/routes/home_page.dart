@@ -67,7 +67,7 @@ class HomePageState extends AbstractPageState<HomePage> {
   @override
   Widget buildButton(BuildContext context, BoxConstraints constraints) {
     return FloatingActionButton(
-      onPressed: () => Navigator.pushNamed(context, AppRoute.homeRoute),
+      onPressed: () => Navigator.pushNamed(context, AppRoute.billAddRoute),
       tooltip: AppLocalizations.of(context)!.addMainTooltip,
       child: const Icon(Icons.add),
     );

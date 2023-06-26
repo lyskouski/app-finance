@@ -3,6 +3,7 @@
 // found in the LICENSE file.
 
 import 'package:adaptive_breakpoints/adaptive_breakpoints.dart';
+import 'package:app_finance/classes/bill_app_data.dart';
 import 'package:app_finance/custom_text_theme.dart';
 import 'package:app_finance/decorators/tap_area.dart';
 import 'package:app_finance/helpers/theme_helper.dart';
@@ -33,13 +34,14 @@ class BaseWidget extends StatelessWidget {
 
   Widget buildListWidget(item, BuildContext context, NumberFormat formatter,
       DateFormat formatterDate, double offset) {
+    item.updateContext(context);
     return BaseLineWidget(
-      uuid: item.uuid,
+      uuid: item.uuid ?? '',
       title: item.title,
-      description: formatterDate.format(DateTime.parse(item.description)),
-      details: formatter.format(item.details),
+      description: item.description,
+      details: item.detailsFormatted,
       progress: item.progress,
-      color: item.color,
+      color: item.color ?? Colors.transparent,
       hidden: item.hidden,
       offset: offset,
       route: routeList,

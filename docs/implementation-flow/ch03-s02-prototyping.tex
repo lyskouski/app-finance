@@ -2827,3 +2827,250 @@ class MyClass {
 }
 \end{lstlisting}
 
+Migration our Bills to classes construction has lead to an error on .firstWhere when Account of Budget not found. 
+To resolve that we have to cast our getter (otherwise it would be an error: type '() => dynamic' is not a subtype 
+of type '(() => BudgetAppData)?' of 'orElse') and add orElse operator as following:
+
+\begin{lstlisting}
+  dynamic getByUuid(AppDataType property, String uuid) {
+    var scope = (_data[property] as Map)['list'];
+    return scope.cast<dynamic>() // cast to cover different types, 
+    .firstWhere(
+      (item) => item.uuid == uuid,
+      orElse: () => null, // Return null if not found
+    );
+  }
+\end{lstlisting}
+
+Now we're going to add three pages controlled by swiping left and right for adding new bills, we'll use a combination 
+of PageView and PageController. 
+
+\begin{lstlisting}
+class Page1 extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      color: Colors.blue,
+      child: Center(
+        child: Text('Page 1'),
+      ),
+    );
+  }
+}
+
+class Page2 extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      color: Colors.green,
+      child: Center(
+        child: Text('Page 2'),
+      ),
+    );
+  }
+}
+
+class Page3 extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      color: Colors.orange,
+      child: Center(
+        child: Text('Page 3'),
+      ),
+    );
+  }
+}
+
+class MyApp extends StatelessWidget {
+  final PageController _pageController = PageController(initialPage: 0);
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      home: Scaffold(
+        body: GestureDetector(
+          onHorizontalDragEnd: (DragEndDetails details) {
+            if (details.primaryVelocity! > 0) {
+              // Swiped right
+              _pageController.previousPage(
+                duration: Duration(milliseconds: 500),
+                curve: Curves.ease,
+              );
+            } else if (details.primaryVelocity! < 0) {
+              // Swiped left
+              _pageController.nextPage(
+                duration: Duration(milliseconds: 500),
+                curve: Curves.ease,
+              );
+            }
+          },
+          child: PageView(
+            controller: _pageController,
+            children: [
+              Page1(),
+              Page2(),
+              Page3(),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
+\end{lstlisting}
+
+To operate with visible tabs it can be changed to:
+
+\begin{lstlisting}
+class MyApp extends StatelessWidget {
+  final PageController _pageController = PageController(initialPage: 0);
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      home: DefaultTabController(
+        length: 3,
+        child: Scaffold(
+          appBar: AppBar(
+            title: Text('Swiping Pages'),
+            bottom: TabBar(
+              tabs: [
+                Tab(text: 'Page 1'),
+                Tab(text: 'Page 2'),
+                Tab(text: 'Page 3'),
+              ],
+            ),
+          ),
+          body: TabBarView(
+            children: [
+              Page1(),
+              Page2(),
+              Page3(),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
+\end{lstlisting}
+
+Let's combine all together:
+
+\begin{lstlisting}
+class MyApp extends StatelessWidget {
+  final int tabCount = 3;
+  int tabIndex = 1;
+  PageController? pageController;
+  TabController? tabController;
+
+  @override
+  void initState() {
+    super.initState();
+    pageController = PageController(initialPage: tabIndex);
+    tabController = TabController(
+      length: tabCount,
+      vsync: const _VSync(),
+      initialIndex: tabIndex,
+    );
+  }
+
+  @override
+  void dispose() {
+    pageController?.dispose();
+    tabController?.dispose();
+    super.dispose();
+  }
+
+  void switchTab(int newIndex) {
+    setState(() {
+      tabIndex = newIndex;
+      tabController?.animateTo(newIndex);
+      pageController?.animateToPage(
+        newIndex,
+        duration: Duration(milliseconds: 300),
+        curve: Curves.ease,
+      );
+    });
+  }
+
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      home: GestureDetector(
+        onHorizontalDragEnd: (DragEndDetails details) {
+          if (details.primaryVelocity! > 0) {
+            switchTab(widget.tabIndex - 1);
+          } else if (details.primaryVelocity! < 0) {
+            switchTab(widget.tabIndex + 1);
+          }
+        },
+        child: Scaffold(
+          appBar: TabBar(
+              controller: tabController,
+              onTap: switchTab,
+              tabs: [
+                Tab(text: 'Page 1'),
+                Tab(text: 'Page 2'),
+                Tab(text: 'Page 3'),
+              ],
+            ),
+          body: PageView(
+            controller: pageController,
+            onPageChanged: switchTab,
+            children: [
+              Page1(),
+              Page2(),
+              Page3(),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class _VSync implements TickerProvider {
+  const _VSync();
+
+  @override
+  Ticker createTicker(TickerCallback onTick) {
+    return Ticker(onTick);
+  }
+}
+
+class Page1 extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      child: Center(
+        child: Text('Page 1'),
+      ),
+    );
+  }
+}
+
+class Page2 extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      child: Center(
+        child: Text('Page 2'),
+      ),
+    );
+  }
+}
+
+class Page3 extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      child: Center(
+        child: Text('Page 3'),
+      ),
+    );
+  }
+}
+\end{lstlisting}

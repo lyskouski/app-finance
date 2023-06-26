@@ -9,6 +9,7 @@ import 'package:app_finance/routes/account_add_page.dart';
 import 'package:app_finance/routes/account_edit_page.dart';
 import 'package:app_finance/routes/account_view_page.dart';
 import 'package:app_finance/routes/account_page.dart';
+import 'package:app_finance/routes/bill_add_page.dart';
 import 'package:app_finance/routes/budget_page.dart';
 import 'package:app_finance/routes/budget_add_page.dart';
 import 'package:app_finance/routes/budget_edit_page.dart';
@@ -85,6 +86,7 @@ class _MyAppState extends State<MyApp> {
         AppRoute.accountAddRoute: (context) => AccountAddPage(),
         AppRoute.budgetRoute: (context) => BudgetPage(),
         AppRoute.budgetAddRoute: (context) => BudgetAddPage(),
+        AppRoute.billAddRoute: (context) => BillAddPage(),
       },
     );
   }

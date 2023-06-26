@@ -2,7 +2,9 @@
 // Use of this source code is governed by a CC BY-NC-ND 4.0 license that can be
 // found in the LICENSE file.
 
+import 'package:app_finance/classes/abstract_app_data.dart';
 import 'package:app_finance/classes/account_app_data.dart';
+import 'package:app_finance/classes/bill_app_data.dart';
 import 'package:app_finance/classes/budget_app_data.dart';
 import 'package:app_finance/classes/goal_app_data.dart';
 import 'package:flutter/material.dart';
@@ -51,31 +53,31 @@ class AppData extends ChangeNotifier {
     AppDataType.bills: {
       'total': 123456.789,
       'list': [
-        (
+        BillAppData(
+          account: 'xxxxxxxx-xxxx-1xxx-yxxx-xxxxxxxxxxxx',
+          category: 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx',
           uuid: 'xxxxxxxx-xxxx-01xx-yxxx-xxxxxxxxxxxx',
           title: 'Description BILLS with a long explanation',
-          description: '2023-06-17',
+          createdAtFormatted: '2023-06-17',
           details: 12345789.098,
-          progress: 0.5,
-          color: Colors.red,
           hidden: false,
         ),
-        (
+        BillAppData(
+          account: '',
+          category: '',
           uuid: 'xxxxxxxx-xxxx-02xx-yxxx-xxxxxxxxxxxx',
           title: 'Description BILLS 2',
-          description: '2023-06-16 22:10',
+          createdAtFormatted: '2023-06-16 22:10',
           details: 1234.789,
-          progress: 0.8,
-          color: Colors.green,
           hidden: false,
         ),
-        (
+        BillAppData(
+          account: '',
+          category: '',
           uuid: 'xxxxxxxx-xxxx-03xx-yxxx-xxxxxxxxxxxx',
           title: 'Description BILLS 3',
-          description: '2023-06-15',
+          createdAtFormatted: '2023-06-15',
           details: 123.789,
-          progress: 1.0,
-          color: Colors.yellow,
           hidden: false,
         ),
       ]
@@ -195,7 +197,7 @@ class AppData extends ChangeNotifier {
     var data = (_data[property] as Map);
     return (
       total: data['total'],
-      list: data['list'],
+      list: data['list'].map((e) => e.setState(this)).toList(),
     );
   }
 
@@ -205,7 +207,10 @@ class AppData extends ChangeNotifier {
 
   dynamic getByUuid(AppDataType property, String uuid) {
     var scope = (_data[property] as Map)['list'];
-    return scope.firstWhere((item) => item.uuid == uuid);
+    return scope.cast<dynamic>().firstWhere(
+      (item) => item.uuid == uuid,
+      orElse: () => null,
+    );
   }
 
   dynamic getType(AppAccountType property) {

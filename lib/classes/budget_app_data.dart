@@ -3,6 +3,7 @@
 // found in the LICENSE file.
 
 import 'package:app_finance/classes/abstract_app_data.dart';
+import 'package:flutter_gen/gen_l10n/app_localization.dart';
 
 class BudgetAppData extends AbstractAppData {
   BudgetAppData({
@@ -24,7 +25,10 @@ class BudgetAppData extends AbstractAppData {
   @override
   double get details => super.details - super.details * super.progress;
 
-  String get detailsFormatted => '${getNumberFormatted(details)} left';
+  String get detailsFormatted{
+    String left = AppLocalizations.of(getContext()!)!.left;
+    return '${getNumberFormatted(details)} $left';
+  }
 
   double get amountLimit => super.details;
   set amountLimit(double value) => super.details = value;
