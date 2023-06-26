@@ -3,13 +3,22 @@
 // found in the LICENSE file.
 
 import 'package:adaptive_breakpoints/adaptive_breakpoints.dart';
+import 'package:app_finance/classes/tab_controller_sync.dart';
 import 'package:app_finance/helpers/theme_helper.dart';
 import 'package:app_finance/classes/app_route.dart';
 import 'package:app_finance/routes/abstract_page.dart';
+import 'package:app_finance/widgets/bill/expenses_tab.dart';
+import 'package:app_finance/widgets/bill/income_tab.dart';
+import 'package:app_finance/widgets/bill/transfer_tab.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localization.dart';
 
 class BillAddPage extends AbstractPage {
+  final int tabCount = 3;
+  int tabIndex = 1;
+  PageController? pageController;
+  TabController? tabController;
+
   BillAddPage() : super();
 
   @override
@@ -69,15 +78,64 @@ class BillAddPageState<T extends BillAddPage>
   }
 
   @override
+  void initState() {
+    super.initState();
+    widget.pageController = PageController(initialPage: widget.tabIndex);
+    widget.tabController = TabController(
+      length: widget.tabCount,
+      vsync: const TabControllerSync(),
+      initialIndex: widget.tabIndex,
+    );
+  }
+
+  @override
+  void dispose() {
+    widget.pageController?.dispose();
+    widget.tabController?.dispose();
+    super.dispose();
+  }
+
+  void switchTab(int newIndex) {
+    setState(() {
+      widget.tabIndex = newIndex;
+      widget.tabController?.animateTo(newIndex);
+      widget.pageController?.animateToPage(
+        newIndex,
+        duration: Duration(milliseconds: 300),
+        curve: Curves.ease,
+      );
+    });
+  }
+
+  @override
   Widget buildContent(BuildContext context, BoxConstraints constraints) {
-    double indent =
-        ThemeHelper(windowType: getWindowType(context)).getIndent() * 2;
-
-    return SingleChildScrollView(
-      child: Container(
-        margin: EdgeInsets.fromLTRB(indent, indent, indent, 90),
-        child: Text('test'),
-
+    return GestureDetector(
+      onHorizontalDragEnd: (DragEndDetails details) {
+        if (details.primaryVelocity! > 0) {
+          switchTab(widget.tabIndex - 1);
+        } else if (details.primaryVelocity! < 0) {
+          switchTab(widget.tabIndex + 1);
+        }
+      },
+      child: Scaffold(
+        appBar: TabBar(
+            controller: widget.tabController,
+            onTap: switchTab,
+            tabs: [
+              Tab(text: AppLocalizations.of(context)!.incomeHeadline),
+              Tab(text: AppLocalizations.of(context)!.expenseHeadline),
+              Tab(text: AppLocalizations.of(context)!.transferHeadline),
+            ],
+          ),
+        body: PageView(
+          controller: widget.pageController,
+          onPageChanged: switchTab,
+          children: [
+            IncomeTab(),
+            ExpensesTab(),
+            TransferTab(),
+          ],
+        ),
       ),
     );
   }
