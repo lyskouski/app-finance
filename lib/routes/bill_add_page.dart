@@ -95,18 +95,29 @@ class BillAddPageState<T extends BillAddPage>
     super.dispose();
   }
 
+  Future<void> delaySwitchTab(int delay, int newIndex) async {
+    await Future.delayed(Duration(milliseconds: delay));
+    switchTab(newIndex);
+    
+  }
+
   void switchTab(int newIndex) {
     if (newIndex < 0 || newIndex >= widget.tabCount) {
       return;
     }
     setState(() {
+      const delay = 300;
+      final currIndex = widget.tabIndex;
       widget.tabIndex = newIndex;
       widget.tabController?.animateTo(newIndex);
       widget.pageController?.animateToPage(
         newIndex,
-        duration: Duration(milliseconds: 300),
+        duration: const Duration(milliseconds: delay),
         curve: Curves.ease,
       );
+      if ((currIndex - newIndex).abs() > 1) {
+        delaySwitchTab(delay, newIndex);
+      }
     });
   }
 
