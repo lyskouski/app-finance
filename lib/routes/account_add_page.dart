@@ -217,13 +217,6 @@ class AccountAddPageState<T extends AccountAddPage>
                       ),
                       IconSelector(
                         value: widget.icon,
-                        options: const [
-                          Icons.home,
-                          Icons.star,
-                          Icons.favorite,
-                          Icons.settings,
-                          Icons.mail,
-                        ],
                         setState: (value) =>
                             setState(() => widget.icon = value),
                       ),

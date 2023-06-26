@@ -6,14 +6,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_iconpicker/flutter_iconpicker.dart';
 
 class IconSelector extends StatelessWidget {
-  List<IconData> options;
   Function setState;
   IconData? value;
 
   IconSelector({
     super.key,
     this.value,
-    required this.options,
     required this.setState,
   });
 
