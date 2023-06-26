@@ -1,5 +1,6 @@
 {
     "a": "RUN `dart run grinder sort-translations` FOR ORDERING",
+    "account": "Account",
     "accountHeadline": "Accounts",
     "accountTooltip": "Open Accounts",
     "accountType": "Account Type",
