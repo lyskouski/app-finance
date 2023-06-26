@@ -7,6 +7,7 @@ import 'package:app_finance/custom_text_theme.dart';
 import 'package:app_finance/data.dart';
 import 'package:app_finance/helpers/theme_helper.dart';
 import 'package:app_finance/widgets/forms/list_account_selector.dart';
+import 'package:app_finance/widgets/forms/list_budget_selector.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localization.dart';
 import 'package:provider/provider.dart';
@@ -15,9 +16,13 @@ class ExpensesTab extends StatefulWidget {
   AppData? state;
   String? account;
   String accountErrorMessage = '';
+  String? budget;
+  String budgetErrorMessage = '';
 
   ExpensesTab({
     super.key,
+    this.account,
+    this.budget,
   });
 
   @override
@@ -25,18 +30,6 @@ class ExpensesTab extends StatefulWidget {
 }
 
 class ExpensesTabState extends State<ExpensesTab> {
-  List<ListAccountSelectorItem> getAccountList(BuildContext context) {
-    return widget.state
-        ?.get(AppDataType.accounts)
-        .list
-        .map((account) => ListAccountSelectorItem(
-              id: account.uuid ?? '',
-              account: account,
-            ))
-        .cast<ListAccountSelectorItem>()
-        .toList();
-  }
-
   @override
   Widget build(BuildContext context) {
     final TextTheme textTheme = Theme.of(context).textTheme;
@@ -67,8 +60,31 @@ class ExpensesTabState extends State<ExpensesTab> {
               ),
               ListAccountSelector(
                 value: widget.account,
-                options: getAccountList(context),
+                state: widget.state,
                 setState: (value) => setState(() => widget.account = value),
+                style: textTheme.numberMedium,
+                indent: indent,
+                width: offset,
+              ),
+              SizedBox(height: indent),
+              Row(
+                children: [
+                  Text(
+                    '${AppLocalizations.of(context)!.budget}*',
+                    style: textTheme.bodyLarge,
+                  ),
+                  Text(
+                    widget.budgetErrorMessage,
+                    style: TextStyle(
+                      color: Theme.of(context).colorScheme.error,
+                    ),
+                  ),
+                ],
+              ),
+              ListBudgetSelector(
+                value: widget.budget,
+                state: widget.state,
+                setState: (value) => setState(() => widget.budget = value),
                 style: textTheme.numberMedium,
                 indent: indent,
                 width: offset,

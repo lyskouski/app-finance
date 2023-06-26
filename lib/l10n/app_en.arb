@@ -15,6 +15,7 @@
     "bankAccount": "Bank Account",
     "billHeadline": "Bills",
     "btnMore": "More",
+    "budget": "Budget Category",
     "budgetHeadline": "Budgets",
     "budgetLimit": "Limit per Month",
     "budgetTooltip": "Open Budget Types",

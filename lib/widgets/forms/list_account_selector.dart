@@ -2,19 +2,21 @@
 // Use of this source code is governed by a CC BY-NC-ND 4.0 license that can be
 // found in the LICENSE file.
 
+import 'package:app_finance/classes/abstract_app_data.dart';
 import 'package:app_finance/classes/account_app_data.dart';
+import 'package:app_finance/data.dart';
 import 'package:app_finance/widgets/home/base_list_widget.dart';
 import 'package:flutter/material.dart';
 
-class ListAccountSelectorItem {
+class ListAccountSelectorItem<T> {
   final String id;
-  final AccountAppData account;
+  T item;
 
-  ListAccountSelectorItem({required this.id, required this.account});
+  ListAccountSelectorItem({required this.id, required this.item});
 }
 
-class ListAccountSelector extends StatelessWidget {
-  List<ListAccountSelectorItem> options;
+class ListAccountSelector<T extends ListAccountSelectorItem> extends StatelessWidget {
+  AppData? state;
   Function setState;
   TextStyle? style;
   String? value;
@@ -22,14 +24,25 @@ class ListAccountSelector extends StatelessWidget {
   double width;
 
   ListAccountSelector({
-    super.key,
-    required this.options,
+    required this.state,
     required this.setState,
     required this.width,
     this.style,
     this.value,
     this.indent = 0.0,
-  });
+  }) : super(key: UniqueKey());
+
+  List<T> getList(BuildContext context) {
+    return state
+        ?.get(AppDataType.accounts)
+        .list
+        .map((item) => ListAccountSelectorItem(
+              id: item.uuid ?? '',
+              item: item,
+            ))
+        .cast<ListAccountSelectorItem>()
+        .toList();
+  }
 
   @override
   Widget build(context) {
@@ -41,21 +54,21 @@ class ListAccountSelector extends StatelessWidget {
         value: value,
         itemHeight: null,
         onChanged: (value) => setState(value),
-        items: options
-            .map<DropdownMenuItem<String>>((ListAccountSelectorItem value) {
-          value.account.updateContext(context);
+        items: getList(context)
+            .map<DropdownMenuItem<String>>((value) {
+          value.item?.updateContext(context);
           return DropdownMenuItem<String>(
             value: value.id,
             child: Padding(
               padding: EdgeInsets.only(top: indent),
               child: BaseLineWidget(
-                uuid: value.account.uuid ?? '',
-                title: value.account.title,
-                description: value.account.description ?? '',
-                details: value.account.detailsFormatted,
-                progress: value.account.progress,
-                color: value.account.color ?? Colors.transparent,
-                hidden: value.account.hidden,
+                uuid: value.item?.uuid ?? '',
+                title: value.item?.title ?? '',
+                description: value.item?.description ?? '',
+                details: value.item?.detailsFormatted ?? '',
+                progress: value.item?.progress ?? 0.0,
+                color: value.item?.color ?? Colors.transparent,
+                hidden: value.item?.hidden ?? false,
                 offset: width - indent * 3,
               ),
             ),
