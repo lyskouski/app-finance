@@ -42,6 +42,8 @@ abstract class AbstractAppData {
     return this;
   }
 
+  BuildContext? getContext() => _context;
+
   String getDateFormatted(DateTime date) {
     final locale = Localizations.localeOf(_context!).toString();
     final DateFormat formatterDate = DateFormat.yMEd(locale);
