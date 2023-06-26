@@ -3,9 +3,11 @@
 // found in the LICENSE file.
 
 import 'package:app_finance/classes/abstract_app_data.dart';
+import 'package:app_finance/classes/account_app_data.dart';
 import 'package:app_finance/classes/budget_app_data.dart';
 import 'package:app_finance/data.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localization.dart';
 import 'package:intl/intl.dart';
 
 class BillAppData extends AbstractAppData {
@@ -30,12 +32,16 @@ class BillAppData extends AbstractAppData {
   String get description {
     final locale = Localizations.localeOf(getContext()!).toString();
     final DateFormat formatterDate = DateFormat.MMMMd(locale);
-    return formatterDate.format(super.createdAt);
+    AccountAppData? type = getState()?.getByUuid(AppDataType.accounts, account);
+    String from = AppLocalizations.of(getContext()!)!.from;
+    return formatterDate.format(super.createdAt) +
+        (type?.description != null ? ' ($from "${type?.description}")' : '');
   }
 
   @override
   MaterialColor? get color {
-    BudgetAppData? budget = getState()?.getByUuid(AppDataType.budgets, category);
+    BudgetAppData? budget =
+        getState()?.getByUuid(AppDataType.budgets, category);
     return budget?.color;
   }
 }

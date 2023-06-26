@@ -54,7 +54,7 @@ class AppData extends ChangeNotifier {
       'total': 123456.789,
       'list': [
         BillAppData(
-          account: '',
+          account: 'xxxxxxxx-xxxx-1xxx-yxxx-xxxxxxxxxxxx',
           category: 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx',
           uuid: 'xxxxxxxx-xxxx-01xx-yxxx-xxxxxxxxxxxx',
           title: 'Description BILLS with a long explanation',
