@@ -29,7 +29,7 @@ class BillAddPageState<T extends BillAddPage>
     extends AbstractPageState<BillAddPage> {
   @override
   String getTitle(context) {
-    return AppLocalizations.of(context)!.createAccountHeader;
+    return AppLocalizations.of(context)!.createBillHeader;
   }
 
   bool hasFormErrors() {
@@ -98,7 +98,6 @@ class BillAddPageState<T extends BillAddPage>
   Future<void> delaySwitchTab(int delay, int newIndex) async {
     await Future.delayed(Duration(milliseconds: delay));
     switchTab(newIndex);
-    
   }
 
   void switchTab(int newIndex) {

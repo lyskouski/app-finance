@@ -25,6 +25,7 @@
     "colorTooltip": "Select a color",
     "createAccountHeader": "Create new Account",
     "createAccountTooltip": "Create new Account",
+    "createBillHeader": "Create new Transaction",
     "createBillTooltip": "Add new Bill",
     "createBudgetHeader": "New Budget Category",
     "createBudgetTooltip": "Create new Budget Category",
