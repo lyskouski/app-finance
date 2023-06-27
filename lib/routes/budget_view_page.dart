@@ -64,6 +64,7 @@ class BudgetViewPageState extends AbstractPageState<BudgetViewPage> {
   @override
   Widget buildContent(BuildContext context, BoxConstraints constraints) {
     final item = widget.state?.getByUuid(AppDataType.budgets, widget.uuid) as BudgetAppData;
+    item.updateContext(context);
     double indent =
         ThemeHelper(windowType: getWindowType(context)).getIndent() * 2;
     double offset = MediaQuery.of(context).size.width - indent * 3;
