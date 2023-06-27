@@ -155,20 +155,8 @@ class AppData extends ChangeNotifier {
 
   void add(AppDataType property, dynamic value) {
     var data = (_data[property] as Map);
-    if (value is AccountAppData || value is BudgetAppData) {
-      value.uuid = const Uuid().v4();
-      data['list'].insert(0, value);
-    } else {
-      data['list'].insert(0, (
-        uuid: const Uuid().v4(),
-        title: value.title,
-        description: value.description,
-        details: value.details,
-        progress: value.progress,
-        color: value.color,
-        hidden: value.hidden,
-      ));
-    }
+    value.uuid = const Uuid().v4();
+    data['list'].insert(0, value);
     set(property, data);
   }
 
@@ -176,19 +164,7 @@ class AppData extends ChangeNotifier {
     var data = (_data[property] as Map);
     final index = data['list'].indexWhere((item) => item.uuid == uuid);
     if (index != -1) {
-      if (value is AccountAppData || value is BudgetAppData) {
-        data['list'][index] = value;
-      } else {
-        data['list'][index] = (
-          uuid: uuid,
-          title: value.title,
-          description: value.description,
-          details: value.details,
-          progress: value.progress,
-          color: value.color,
-          hidden: value.hidden,
-        );
-      }
+      data['list'][index] = value;
       set(property, data);
     }
   }
@@ -208,9 +184,9 @@ class AppData extends ChangeNotifier {
   dynamic getByUuid(AppDataType property, String uuid) {
     var scope = (_data[property] as Map)['list'];
     return scope.cast<dynamic>().firstWhere(
-      (item) => item.uuid == uuid,
-      orElse: () => null,
-    );
+          (item) => item.uuid == uuid,
+          orElse: () => null,
+        );
   }
 
   dynamic getType(AppAccountType property) {

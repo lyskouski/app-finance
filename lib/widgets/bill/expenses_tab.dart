@@ -4,6 +4,7 @@
 
 import 'package:adaptive_breakpoints/adaptive_breakpoints.dart';
 import 'package:app_finance/classes/app_route.dart';
+import 'package:app_finance/classes/bill_app_data.dart';
 import 'package:app_finance/custom_text_theme.dart';
 import 'package:app_finance/data.dart';
 import 'package:app_finance/helpers/theme_helper.dart';
@@ -48,7 +49,13 @@ class ExpensesTabState extends State<ExpensesTab> {
   }
 
   void updateStorage() {
-    // widget.state?.add(AppDataType.bills, BillAppData());
+    widget.state?.add(AppDataType.bills, BillAppData(
+      account: widget.account ?? '',
+      category: widget.budget ?? '',
+      currency: widget.currency,
+      title: widget.description ?? '',
+      details: widget.bill,
+    ));
   }
 
   Widget buildButton(BuildContext context, BoxConstraints constraints) {
