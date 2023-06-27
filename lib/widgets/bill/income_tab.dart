@@ -5,12 +5,22 @@
 import 'package:flutter/material.dart';
 
 class IncomeTab extends StatelessWidget {
+  Function callback;
+
+  IncomeTab({
+    super.key,
+    required this.callback,
+  });
+
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: Center(
-        child: Text('Page Income'),
-      ),
-    );
+    return LayoutBuilder(builder: (context, constraints) {
+      callback(const SizedBox());
+      return Container(
+        child: Center(
+          child: Text('Page Income'),
+        ),
+      );
+    });
   }
 }
