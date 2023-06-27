@@ -3106,3 +3106,24 @@ void switchTab(int newIndex) {
   });
 }
 \end{lstlisting}
+
+While defining functions as arguments for widgets, it can be used an expectation of that function structure
+
+\begin{lstlisting}
+typedef SetViewFunction = String Function(Currency input);
+
+class CurrencySelector extends StatelessWidget {
+  SetViewFunction? setView;
+
+  CurrencySelector({
+    Key? key,
+    this.setView,
+  }) {
+    setView ??= setDefaultView;
+  }
+
+  String setDefaultView(Currency input) {
+    // Default implementation
+  }
+}
+\end{lstlisting}
