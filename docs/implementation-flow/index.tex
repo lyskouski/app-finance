@@ -19,6 +19,10 @@
 \usepackage{lipsum}
 \usepackage{tocloft}
 \usepackage{listings}
+\usepackage{hyperref}
+\usepackage{cleveref}
+\crefname{figure}{Figure}{Figures}
+\crefname{table}{Table}{Tables}
 
 \usepackage{lib/customization}
 \usepackage{lib/code-style}
@@ -85,9 +89,10 @@
 \section{Designing the Financial Accounting Application}
 \input{./ch02-s01-insights}
 
+\newpage
 \section{Implementing Core Functionality}
 \input{./ch03-s01-first-steps}
-\input{./ch03-s02-prototyping}
+\include{./ch03-s02-prototyping}
 
 \thispagestyle{empty}
 
