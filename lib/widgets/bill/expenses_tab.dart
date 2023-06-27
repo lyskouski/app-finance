@@ -71,7 +71,12 @@ class ExpensesTabState extends State<ExpensesTab> {
               ListAccountSelector(
                 value: widget.account,
                 state: widget.state,
-                setState: (value) => setState(() => widget.account = value),
+                setState: (value) => setState(() {
+                  widget.account = value;
+                  widget.currency ??= widget.state
+                      ?.getByUuid(AppDataType.accounts, value)
+                      .currency;
+                }),
                 style: textTheme.numberMedium,
                 indent: indent,
                 width: offset,
@@ -94,7 +99,21 @@ class ExpensesTabState extends State<ExpensesTab> {
               ListBudgetSelector(
                 value: widget.budget,
                 state: widget.state,
-                setState: (value) => setState(() => widget.budget = value),
+                setState: (value) => setState(() {
+                  widget.budget = value;
+                  var bdgCurrency = widget.state
+                      ?.getByUuid(AppDataType.budgets, value)
+                      .currency;
+                  var accCurrency = widget.account != null
+                      ? widget.state
+                          ?.getByUuid(
+                              AppDataType.accounts, widget.account ?? '')
+                          .currency
+                      : null as Currency;
+                  widget.currency = widget.currency == accCurrency
+                      ? bdgCurrency
+                      : widget.currency ?? accCurrency;
+                }),
                 style: textTheme.numberMedium,
                 indent: indent,
                 width: offset,
@@ -170,8 +189,7 @@ class ExpensesTabState extends State<ExpensesTab> {
                 type: const TextInputType.numberWithOptions(decimal: true),
                 tooltip: AppLocalizations.of(context)!.descriptionTooltip,
                 style: textTheme.numberMedium,
-                setState: (value) =>
-                    setState(() => widget.description = value),
+                setState: (value) => setState(() => widget.description = value),
               ),
             ],
           ),
