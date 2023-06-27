@@ -151,13 +151,6 @@ class BudgetAddPageState<T extends BudgetAddPage>
                       ),
                       IconSelector(
                         value: widget.icon,
-                        options: const [
-                          Icons.home,
-                          Icons.star,
-                          Icons.favorite,
-                          Icons.settings,
-                          Icons.mail,
-                        ],
                         setState: (value) =>
                             setState(() => widget.icon = value),
                       ),

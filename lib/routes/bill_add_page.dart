@@ -18,6 +18,7 @@ class BillAddPage extends AbstractPage {
   int tabIndex = 1;
   PageController? pageController;
   TabController? tabController;
+  Widget? button;
 
   BillAddPage() : super();
 
@@ -29,52 +30,16 @@ class BillAddPageState<T extends BillAddPage>
     extends AbstractPageState<BillAddPage> {
   @override
   String getTitle(context) {
-    return AppLocalizations.of(context)!.createAccountHeader;
+    return AppLocalizations.of(context)!.createBillHeader;
   }
 
-  bool hasFormErrors() {
-    bool isError = false;
-    return isError;
-  }
-
-  void updateStorage() {
-    // widget.state?.add(AppDataType.bills, BillAppData());
-  }
-
-  String getButtonName() {
-    return AppLocalizations.of(context)!.createBillTooltip;
+  void setButton(Widget button) {
+    widget.button = button;
   }
 
   @override
   Widget buildButton(BuildContext context, BoxConstraints constraints) {
-    var helper = ThemeHelper(windowType: getWindowType(context));
-    String title = getButtonName();
-    return SizedBox(
-      width: constraints.maxWidth - helper.getIndent() * 4,
-      child: FloatingActionButton(
-        onPressed: () => {
-          setState(() {
-            if (hasFormErrors()) {
-              return;
-            }
-            updateStorage();
-            Navigator.popAndPushNamed(context, AppRoute.homeRoute);
-          })
-        },
-        tooltip: title,
-        child: Align(
-          alignment: Alignment.center,
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              const Icon(Icons.save),
-              SizedBox(height: helper.getIndent()),
-              Text(title, style: Theme.of(context).textTheme.headlineMedium)
-            ],
-          ),
-        ),
-      ),
-    );
+    return widget.button ?? const SizedBox();
   }
 
   @override
@@ -95,15 +60,28 @@ class BillAddPageState<T extends BillAddPage>
     super.dispose();
   }
 
+  Future<void> delaySwitchTab(int delay, int newIndex) async {
+    await Future.delayed(Duration(milliseconds: delay));
+    switchTab(newIndex);
+  }
+
   void switchTab(int newIndex) {
+    if (newIndex < 0 || newIndex >= widget.tabCount) {
+      return;
+    }
     setState(() {
+      const delay = 300;
+      final currIndex = widget.tabIndex;
       widget.tabIndex = newIndex;
       widget.tabController?.animateTo(newIndex);
       widget.pageController?.animateToPage(
         newIndex,
-        duration: Duration(milliseconds: 300),
+        duration: const Duration(milliseconds: delay),
         curve: Curves.ease,
       );
+      if ((currIndex - newIndex).abs() > 1) {
+        delaySwitchTab(delay, newIndex);
+      }
     });
   }
 
@@ -119,21 +97,21 @@ class BillAddPageState<T extends BillAddPage>
       },
       child: Scaffold(
         appBar: TabBar(
-            controller: widget.tabController,
-            onTap: switchTab,
-            tabs: [
-              Tab(text: AppLocalizations.of(context)!.incomeHeadline),
-              Tab(text: AppLocalizations.of(context)!.expenseHeadline),
-              Tab(text: AppLocalizations.of(context)!.transferHeadline),
-            ],
-          ),
+          controller: widget.tabController,
+          onTap: switchTab,
+          tabs: [
+            Tab(text: AppLocalizations.of(context)!.incomeHeadline),
+            Tab(text: AppLocalizations.of(context)!.expenseHeadline),
+            Tab(text: AppLocalizations.of(context)!.transferHeadline),
+          ],
+        ),
         body: PageView(
           controller: widget.pageController,
           onPageChanged: switchTab,
           children: [
-            IncomeTab(),
-            ExpensesTab(),
-            TransferTab(),
+            IncomeTab(callback: setButton),
+            ExpensesTab(callback: setButton),
+            TransferTab(callback: setButton),
           ],
         ),
       ),

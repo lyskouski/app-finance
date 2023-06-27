@@ -3074,3 +3074,56 @@ class Page3 extends StatelessWidget {
   }
 }
 \end{lstlisting}
+
+By combining both solutions, some irritating behavior is happened, - we cannot tab from `Income' to `Transfer' 
+(more than one position) since `pageController` after the first movement will send an update via `onPageChanged`. 
+Hopefully, we do have a solution for that by introducing delayed trigger to proceed with switching to a chosen tab:
+
+\begin{lstlisting}
+Future<void> delaySwitchTab(int delay, int newIndex) async {
+  await Future.delayed(Duration(milliseconds: delay));
+  switchTab(newIndex);
+}
+
+void switchTab(int newIndex) {
+  if (newIndex < 0 || newIndex >= widget.tabCount) {
+    return;
+  }
+  setState(() {
+    const delay = 300;
+    final currIndex = widget.tabIndex; // Saving current state for the check after 
+    widget.tabIndex = newIndex;
+    widget.tabController?.animateTo(newIndex);
+    widget.pageController?.animateToPage(
+      newIndex,
+      duration: const Duration(milliseconds: delay),
+      curve: Curves.ease,
+    );
+    // Verify that the difference is more than one
+    if ((currIndex - newIndex).abs() > 1) {
+      delaySwitchTab(delay, newIndex);
+    }
+  });
+}
+\end{lstlisting}
+
+While defining functions as arguments for widgets, it can be used an expectation of that function structure
+
+\begin{lstlisting}
+typedef SetViewFunction = String Function(Currency input);
+
+class CurrencySelector extends StatelessWidget {
+  SetViewFunction? setView;
+
+  CurrencySelector({
+    Key? key,
+    this.setView,
+  }) {
+    setView ??= setDefaultView;
+  }
+
+  String setDefaultView(Currency input) {
+    // Default implementation
+  }
+}
+\end{lstlisting}

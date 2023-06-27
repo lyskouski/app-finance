@@ -5,12 +5,22 @@
 import 'package:flutter/material.dart';
 
 class TransferTab extends StatelessWidget {
+  Function callback;
+
+  TransferTab({
+    super.key,
+    required this.callback,
+  });
+
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: Center(
-        child: Text('Page Transfer'),
-      ),
-    );
+    return LayoutBuilder(builder: (context, constraints) {
+      callback(const SizedBox());
+      return Container(
+        child: Center(
+          child: Text('Page Transfer'),
+        ),
+      );
+    });
   }
 }

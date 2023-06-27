@@ -27,21 +27,4 @@ class BudgetWidget extends AccountWidget {
     route: route,
     routeList: routeList,
   );
-
-  @override
-  Widget buildListWidget(item, BuildContext context, NumberFormat formatter,
-      DateFormat formatterDate, double offset) {
-    item.updateContext(context);
-    return BaseLineWidget(
-      uuid: item.uuid ?? '',
-      title: item.title,
-      description: item.description,
-      details: item.detailsFormatted,
-      progress: item.progress,
-      color: item.color ?? Colors.transparent,
-      hidden: item.hidden,
-      offset: offset,
-      route: routeList,
-    );
-  }
 }
