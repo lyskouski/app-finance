@@ -6,8 +6,11 @@ import 'package:adaptive_breakpoints/adaptive_breakpoints.dart';
 import 'package:app_finance/custom_text_theme.dart';
 import 'package:app_finance/data.dart';
 import 'package:app_finance/helpers/theme_helper.dart';
+import 'package:app_finance/widgets/forms/currency_selector.dart';
 import 'package:app_finance/widgets/forms/list_account_selector.dart';
 import 'package:app_finance/widgets/forms/list_budget_selector.dart';
+import 'package:app_finance/widgets/forms/simple_input.dart';
+import 'package:currency_picker/currency_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localization.dart';
 import 'package:provider/provider.dart';
@@ -18,11 +21,15 @@ class ExpensesTab extends StatefulWidget {
   String accountErrorMessage = '';
   String? budget;
   String budgetErrorMessage = '';
+  Currency? currency;
+  double? bill;
 
   ExpensesTab({
     super.key,
     this.account,
     this.budget,
+    this.currency,
+    this.bill,
   });
 
   @override
@@ -89,6 +96,61 @@ class ExpensesTabState extends State<ExpensesTab> {
                 indent: indent,
                 width: offset,
               ),
+              SizedBox(height: indent),
+              Row(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                Container(
+                  constraints: BoxConstraints(
+                    maxWidth: offset * 0.3,
+                  ),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        AppLocalizations.of(context)!.currency,
+                        style: textTheme.bodyLarge,
+                      ),
+                      Container(
+                        color:
+                            Theme.of(context).colorScheme.inversePrimary.withOpacity(0.3),
+                        width: double.infinity,
+                        child: CurrencySelector(
+                          value: widget.currency,
+                          setState: (value) => setState(() => widget.currency = value),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                SizedBox(width: indent),
+                Container(
+                  constraints: BoxConstraints(
+                    maxWidth: offset * 0.7,
+                  ),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        AppLocalizations.of(context)!.expense,
+                        style: textTheme.bodyLarge,
+                      ),
+                      SimpleInput(
+                        value: widget.bill != null ? widget.bill.toString() : '',
+                        type: const TextInputType.numberWithOptions(decimal: true),
+                        tooltip: AppLocalizations.of(context)!.billTooltip,
+                        style: textTheme.numberMedium,
+                        formatter: [
+                          SimpleInput.filterDouble,
+                        ],
+                        setState: (value) =>
+                            setState(() => widget.bill = double.tryParse(value)),
+                      ),
+                    ],
+                  ),
+                ),
+              ],
+            ),
             ],
           ),
         ),

@@ -13,6 +13,9 @@ class SimpleInput extends StatelessWidget {
   TextInputType type;
   List<TextInputFormatter>? formatter;
 
+  static FilteringTextInputFormatter filterDouble =
+      FilteringTextInputFormatter.allow(RegExp(r'^\d+\.?\d{0,4}'));
+
   SimpleInput({
     super.key,
     this.value,

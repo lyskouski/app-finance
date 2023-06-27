@@ -323,7 +323,7 @@ class AccountAddPageState<T extends AccountAddPage>
               tooltip: AppLocalizations.of(context)!.balanceTooltip,
               style: textTheme.numberMedium,
               formatter: [
-                FilteringTextInputFormatter.allow(RegExp(r'^\d+\.?\d{0,4}')),
+                SimpleInput.filterDouble,
               ],
               setState: (value) =>
                   setState(() => widget.balance = double.tryParse(value)),
