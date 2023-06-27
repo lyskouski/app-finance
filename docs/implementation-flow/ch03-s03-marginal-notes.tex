@@ -1,0 +1,369 @@
+% Copyright 2023 The terCAD team. All rights reserved.
+% Use of this content is governed by a CC BY-NC-ND 4.0 license that can be found in the LICENSE file.
+
+\subsection{[TBD] Adding Marginal Notes of Flutter usage}
+\markboth{Implementing Core Functionality}{Adding Marginal Notes of Flutter usage}
+
+[TBD]
+
+\subsubsection{Applying Getters and Setters for Class Variables}
+
+By migrating our data structures to class objects it can be used additionally getter and setter for class variables.
+That will help us to cover, as an example, `description`-attribute for Budget structures by showing 
+`Spent Amount / Total Budget`, and for `details`-attribute - `Left Amount`.
+
+\begin{lstlisting}
+class MyClass {
+  String _name; // Private variable
+
+  // Getter for name
+  String get name => _name;
+
+  // Setter for name
+  set name(String value) {
+    _name = value;
+  }
+}
+
+void main() {
+  MyClass myObject = MyClass();
+
+  // Using the setter
+  myObject.name = 'John';
+
+  // Using the getter
+  print(myObject.name); // Output: John
+}
+\end{lstlisting}
+
+In the example above, the `MyClass`-class has a private variable `\_name`. The getter for `\_name` is defined 
+using the get keyword, and the setter is defined using the set keyword. The getter returns the value of 
+`\_name`, and the setter sets the value of `\_name` to the provided value. By using that approach we can control 
+the access to class variables and perform additional logic or validation when getting or setting their values.
+
+One more question, is how to set `DateTime.now()` inside a constructor as default value, since, by defining it inside
+the constructor, an error would be taken: The default value of an optional parameter must be constant.
+
+So, to set a default value for a DateTime variable as the current date and time, we can use the `DateTime.now()` method 
+during the initialization of the variable.
+
+\begin{lstlisting}
+class MyClass {
+    DateTime _createdAt;
+
+    MyClass({DateTime? createdAt})
+        : _createdAt = createdAt ?? DateTime.now();
+
+    DateTime get createdAt => _createdAt;
+}
+\end{lstlisting}
+
+
+\subsubsection{Using cast to resolve dynamic structures}
+
+Migration our Bills to classes construction has lead to an error on .firstWhere when Account of Budget not found. 
+To resolve that we have to cast our getter (otherwise it would be an error: type '() => dynamic' is not a subtype 
+of type '(() => BudgetAppData)?' of 'orElse') and add orElse operator as following:
+
+\begin{lstlisting}
+  dynamic getByUuid(AppDataType property, String uuid) {
+    var scope = (_data[property] as Map)['list'];
+    return scope.cast<dynamic>() // cast to cover different types, 
+    .firstWhere(
+      (item) => item.uuid == uuid,
+      orElse: () => null, // Return null if not found
+    );
+  }
+\end{lstlisting}
+
+
+\subsubsection{Mixing `PageView`' and `PageController`}
+
+Now we're going to add three pages controlled by swiping left and right for adding new bills, we'll use a combination 
+of PageView and PageController. 
+
+\begin{lstlisting}
+class Page1 extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      color: Colors.blue,
+      child: Center(
+        child: Text('Page 1'),
+      ),
+    );
+  }
+}
+
+class Page2 extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      color: Colors.green,
+      child: Center(
+        child: Text('Page 2'),
+      ),
+    );
+  }
+}
+
+class Page3 extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      color: Colors.orange,
+      child: Center(
+        child: Text('Page 3'),
+      ),
+    );
+  }
+}
+
+class MyApp extends StatelessWidget {
+  final PageController _pageController = PageController(initialPage: 0);
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      home: Scaffold(
+        body: GestureDetector(
+          onHorizontalDragEnd: (DragEndDetails details) {
+            if (details.primaryVelocity! > 0) {
+              // Swiped right
+              _pageController.previousPage(
+                duration: Duration(milliseconds: 500),
+                curve: Curves.ease,
+              );
+            } else if (details.primaryVelocity! < 0) {
+              // Swiped left
+              _pageController.nextPage(
+                duration: Duration(milliseconds: 500),
+                curve: Curves.ease,
+              );
+            }
+          },
+          child: PageView(
+            controller: _pageController,
+            children: [
+              Page1(),
+              Page2(),
+              Page3(),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
+\end{lstlisting}
+
+To operate with visible tabs it can be changed to:
+
+\begin{lstlisting}
+class MyApp extends StatelessWidget {
+  final PageController _pageController = PageController(initialPage: 0);
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      home: DefaultTabController(
+        length: 3,
+        child: Scaffold(
+          appBar: AppBar(
+            title: Text('Swiping Pages'),
+            bottom: TabBar(
+              tabs: [
+                Tab(text: 'Page 1'),
+                Tab(text: 'Page 2'),
+                Tab(text: 'Page 3'),
+              ],
+            ),
+          ),
+          body: TabBarView(
+            children: [
+              Page1(),
+              Page2(),
+              Page3(),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
+\end{lstlisting}
+
+Let's combine all together:
+
+\begin{lstlisting}
+class MyApp extends StatelessWidget {
+  final int tabCount = 3;
+  int tabIndex = 1;
+  PageController? pageController;
+  TabController? tabController;
+
+  @override
+  void initState() {
+    super.initState();
+    pageController = PageController(initialPage: tabIndex);
+    tabController = TabController(
+      length: tabCount,
+      vsync: const _VSync(),
+      initialIndex: tabIndex,
+    );
+  }
+
+  @override
+  void dispose() {
+    pageController?.dispose();
+    tabController?.dispose();
+    super.dispose();
+  }
+
+  void switchTab(int newIndex) {
+    setState(() {
+      tabIndex = newIndex;
+      tabController?.animateTo(newIndex);
+      pageController?.animateToPage(
+        newIndex,
+        duration: Duration(milliseconds: 300),
+        curve: Curves.ease,
+      );
+    });
+  }
+
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      home: GestureDetector(
+        onHorizontalDragEnd: (DragEndDetails details) {
+          if (details.primaryVelocity! > 0) {
+            switchTab(widget.tabIndex - 1);
+          } else if (details.primaryVelocity! < 0) {
+            switchTab(widget.tabIndex + 1);
+          }
+        },
+        child: Scaffold(
+          appBar: TabBar(
+              controller: tabController,
+              onTap: switchTab,
+              tabs: [
+                Tab(text: 'Page 1'),
+                Tab(text: 'Page 2'),
+                Tab(text: 'Page 3'),
+              ],
+            ),
+          body: PageView(
+            controller: pageController,
+            onPageChanged: switchTab,
+            children: [
+              Page1(),
+              Page2(),
+              Page3(),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class _VSync implements TickerProvider {
+  const _VSync();
+
+  @override
+  Ticker createTicker(TickerCallback onTick) {
+    return Ticker(onTick);
+  }
+}
+
+class Page1 extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      child: Center(
+        child: Text('Page 1'),
+      ),
+    );
+  }
+}
+
+class Page2 extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      child: Center(
+        child: Text('Page 2'),
+      ),
+    );
+  }
+}
+
+class Page3 extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      child: Center(
+        child: Text('Page 3'),
+      ),
+    );
+  }
+}
+\end{lstlisting}
+
+By combining both solutions, some irritating behavior is happened, - we cannot tab from `Income' to `Transfer' 
+(more than one position) since `pageController` after the first movement will send an update via `onPageChanged`. 
+Hopefully, we do have a solution for that by introducing delayed trigger to proceed with switching to a chosen tab:
+
+\begin{lstlisting}
+Future<void> delaySwitchTab(int delay, int newIndex) async {
+  await Future.delayed(Duration(milliseconds: delay));
+  switchTab(newIndex);
+}
+
+void switchTab(int newIndex) {
+  if (newIndex < 0 || newIndex >= widget.tabCount) {
+    return;
+  }
+  setState(() {
+    const delay = 300;
+    final currIndex = widget.tabIndex; // Saving current state for the check after 
+    widget.tabIndex = newIndex;
+    widget.tabController?.animateTo(newIndex);
+    widget.pageController?.animateToPage(
+      newIndex,
+      duration: const Duration(milliseconds: delay),
+      curve: Curves.ease,
+    );
+    // Verify that the difference is more than one
+    if ((currIndex - newIndex).abs() > 1) {
+      delaySwitchTab(delay, newIndex);
+    }
+  });
+}
+\end{lstlisting}
+
+
+\subsubsection{Asserting Functions Definition}
+
+While defining functions as arguments for widgets, it can be used an expectation of that function structure
+
+\begin{lstlisting}
+typedef SetViewFunction = String Function(Currency input);
+
+class CurrencySelector extends StatelessWidget {
+  SetViewFunction? setView;
+
+  CurrencySelector({
+    Key? key,
+    this.setView,
+  }) {
+    setView ??= setDefaultView;
+  }
+
+  String setDefaultView(Currency input) {
+    // Default implementation
+  }
+}
+\end{lstlisting}

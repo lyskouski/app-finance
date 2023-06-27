@@ -3,6 +3,16 @@
 
 \documentclass[12pt, a4paper, twoside]{extreport}
 \setlength{\headheight}{17.0pt}
+% Notes: Level of content
+% -1 	\part{part}
+% 0 	\chapter{chapter}
+% 1 	\section{section}
+% 2 	\subsection{subsection}
+% 3 	\subsubsection{subsubsection}
+% 4 	\paragraph{paragraph}
+% 5 	\subparagraph{subparagraph}
+\setcounter{tocdepth}{3}
+\setcounter{secnumdepth}{3}
 \usepackage[OT1]{fontenc}
 \usepackage[utf8]{inputenc}
 \usepackage[english]{babel}
@@ -18,6 +28,10 @@
 \usepackage[fencedCode,hashEnumerators,smartEllipses]{markdown}
 \usepackage{lipsum}
 \usepackage{tocloft}
+\setlength{\cftsecindent}{0pt}
+\setlength{\cftsubsecindent}{0pt}
+\setlength{\cftsubsubsecindent}{0pt}
+\cftsetindents{paragraph}{0em}{5em}
 \usepackage{listings}
 \usepackage{hyperref}
 \usepackage{cleveref}
@@ -47,9 +61,6 @@
 %\subtitle{On Example of Financial Accounting Application Development Flow}
 \date{2023}
 
-\setlength{\cftsecindent}{0pt}
-\setlength{\cftsubsecindent}{0pt}
-
 \begin{document}
 
 %\put(-30,-556)
@@ -75,15 +86,6 @@
 %\input{./example}
 %\markdownInput{./example.md}
 
-% Notes: Level of content
-% -1 	\part{part}
-% 0 	\chapter{chapter}
-% 1 	\section{section}
-% 2 	\subsection{subsection}
-% 3 	\subsubsection{subsubsection}
-% 4 	\paragraph{paragraph}
-% 5 	\subparagraph{subparagraph}
-
 \include{./ch00-intro}
 
 \section{Designing the Financial Accounting Application}
@@ -93,6 +95,9 @@
 \section{Implementing Core Functionality}
 \input{./ch03-s01-first-steps}
 \include{./ch03-s02-prototyping}
+\include{./ch03-s03-marginal-notes}
+
+\include{./ch03-dump} % TBD: refactor, and adjust to context of marginal notes
 
 \thispagestyle{empty}
 
