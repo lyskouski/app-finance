@@ -23,6 +23,7 @@ class ExpensesTab extends StatefulWidget {
   String budgetErrorMessage = '';
   Currency? currency;
   double? bill;
+  String? description;
 
   ExpensesTab({
     super.key,
@@ -30,6 +31,7 @@ class ExpensesTab extends StatefulWidget {
     this.budget,
     this.currency,
     this.bill,
+    this.description,
   });
 
   @override
@@ -43,6 +45,7 @@ class ExpensesTabState extends State<ExpensesTab> {
     double indent =
         ThemeHelper(windowType: getWindowType(context)).getIndent() * 2;
     double offset = MediaQuery.of(context).size.width - indent * 3;
+
     return Consumer<AppData>(builder: (context, appState, _) {
       widget.state = appState;
       return SingleChildScrollView(
@@ -98,59 +101,78 @@ class ExpensesTabState extends State<ExpensesTab> {
               ),
               SizedBox(height: indent),
               Row(
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: [
-                Container(
-                  constraints: BoxConstraints(
-                    maxWidth: offset * 0.3,
-                  ),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        AppLocalizations.of(context)!.currency,
-                        style: textTheme.bodyLarge,
-                      ),
-                      Container(
-                        color:
-                            Theme.of(context).colorScheme.inversePrimary.withOpacity(0.3),
-                        width: double.infinity,
-                        child: CurrencySelector(
-                          value: widget.currency,
-                          setState: (value) => setState(() => widget.currency = value),
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  Container(
+                    constraints: BoxConstraints(
+                      maxWidth: offset * 0.3,
+                    ),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          AppLocalizations.of(context)!.currency,
+                          style: textTheme.bodyLarge,
                         ),
-                      ),
-                    ],
+                        Container(
+                          color: Theme.of(context)
+                              .colorScheme
+                              .inversePrimary
+                              .withOpacity(0.3),
+                          width: double.infinity,
+                          child: CurrencySelector(
+                            value: widget.currency,
+                            setView: (Currency currency) => currency.code,
+                            setState: (value) =>
+                                setState(() => widget.currency = value),
+                          ),
+                        ),
+                      ],
+                    ),
                   ),
-                ),
-                SizedBox(width: indent),
-                Container(
-                  constraints: BoxConstraints(
-                    maxWidth: offset * 0.7,
+                  SizedBox(width: indent),
+                  Container(
+                    constraints: BoxConstraints(
+                      maxWidth: offset * 0.7,
+                    ),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          AppLocalizations.of(context)!.expense,
+                          style: textTheme.bodyLarge,
+                        ),
+                        SimpleInput(
+                          value:
+                              widget.bill != null ? widget.bill.toString() : '',
+                          type: const TextInputType.numberWithOptions(
+                              decimal: true),
+                          tooltip: AppLocalizations.of(context)!.billTooltip,
+                          style: textTheme.numberMedium,
+                          formatter: [
+                            SimpleInput.filterDouble,
+                          ],
+                          setState: (value) => setState(
+                              () => widget.bill = double.tryParse(value)),
+                        ),
+                      ],
+                    ),
                   ),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        AppLocalizations.of(context)!.expense,
-                        style: textTheme.bodyLarge,
-                      ),
-                      SimpleInput(
-                        value: widget.bill != null ? widget.bill.toString() : '',
-                        type: const TextInputType.numberWithOptions(decimal: true),
-                        tooltip: AppLocalizations.of(context)!.billTooltip,
-                        style: textTheme.numberMedium,
-                        formatter: [
-                          SimpleInput.filterDouble,
-                        ],
-                        setState: (value) =>
-                            setState(() => widget.bill = double.tryParse(value)),
-                      ),
-                    ],
-                  ),
-                ),
-              ],
-            ),
+                ],
+              ),
+              SizedBox(height: indent),
+              Text(
+                AppLocalizations.of(context)!.description,
+                style: textTheme.bodyLarge,
+              ),
+              SimpleInput(
+                value: widget.description ?? '',
+                type: const TextInputType.numberWithOptions(decimal: true),
+                tooltip: AppLocalizations.of(context)!.descriptionTooltip,
+                style: textTheme.numberMedium,
+                setState: (value) =>
+                    setState(() => widget.description = value),
+              ),
             ],
           ),
         ),
