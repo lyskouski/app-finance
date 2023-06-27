@@ -32,7 +32,7 @@ class BillAppData extends AbstractAppData {
   String get description {
     final locale = Localizations.localeOf(getContext()!).toString();
     final DateFormat formatterDate = DateFormat.MMMMd(locale);
-    AccountAppData? type = getState()?.getByUuid(AppDataType.accounts, account);
+    AccountAppData? type = getState()?.getByUuid(account);
     String from = AppLocalizations.of(getContext()!)!.from;
     return formatterDate.format(super.createdAt) +
         (type?.description != null ? ' ($from "${type?.description}")' : '');
@@ -40,8 +40,7 @@ class BillAppData extends AbstractAppData {
 
   @override
   MaterialColor? get color {
-    BudgetAppData? budget =
-        getState()?.getByUuid(AppDataType.budgets, category);
+    BudgetAppData? budget = getState()?.getByUuid(category);
     return budget?.color;
   }
 }

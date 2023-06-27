@@ -49,13 +49,15 @@ class ExpensesTabState extends State<ExpensesTab> {
   }
 
   void updateStorage() {
-    widget.state?.add(AppDataType.bills, BillAppData(
-      account: widget.account ?? '',
-      category: widget.budget ?? '',
-      currency: widget.currency,
-      title: widget.description ?? '',
-      details: widget.bill,
-    ));
+    widget.state?.add(
+        AppDataType.bills,
+        BillAppData(
+          account: widget.account ?? '',
+          category: widget.budget ?? '',
+          currency: widget.currency,
+          title: widget.description ?? '',
+          details: widget.bill,
+        ));
   }
 
   Widget buildButton(BuildContext context, BoxConstraints constraints) {
@@ -125,9 +127,7 @@ class ExpensesTabState extends State<ExpensesTab> {
                   state: widget.state,
                   setState: (value) => setState(() {
                     widget.account = value;
-                    widget.currency ??= widget.state
-                        ?.getByUuid(AppDataType.accounts, value)
-                        .currency;
+                    widget.currency ??= widget.state?.getByUuid(value).currency;
                   }),
                   style: textTheme.numberMedium,
                   indent: indent,
@@ -153,14 +153,9 @@ class ExpensesTabState extends State<ExpensesTab> {
                   state: widget.state,
                   setState: (value) => setState(() {
                     widget.budget = value;
-                    var bdgCurrency = widget.state
-                        ?.getByUuid(AppDataType.budgets, value)
-                        .currency;
+                    var bdgCurrency = widget.state?.getByUuid(value).currency;
                     var accCurrency = widget.account != null
-                        ? widget.state
-                            ?.getByUuid(
-                                AppDataType.accounts, widget.account ?? '')
-                            .currency
+                        ? widget.state?.getByUuid(widget.account ?? '').currency
                         : null as Currency;
                     widget.currency = widget.currency == accCurrency
                         ? bdgCurrency

@@ -55,7 +55,7 @@ class AccountEditPageState extends AccountAddPageState<AccountEditPage> {
     if ((widget as AccountEditPage).isFirstRun) {
       (widget as AccountEditPage).isFirstRun = false;
       var form =
-          widget.state?.getByUuid(AppDataType.accounts, (widget as AccountEditPage).uuid) as AccountAppData;
+          widget.state?.getByUuid((widget as AccountEditPage).uuid) as AccountAppData;
       widget.title = form.title;
       widget.description = form.description;
       widget.type = form.type;

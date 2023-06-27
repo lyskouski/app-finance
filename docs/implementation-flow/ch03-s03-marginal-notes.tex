@@ -367,3 +367,56 @@ class CurrencySelector extends StatelessWidget {
   }
 }
 \end{lstlisting}
+
+
+\subsubsection{Ignoring Function Arguments}
+
+Not required fields are specified slightly different in comparison with classes constructors:
+
+\begin{lstlisting}
+void add(String value, [int? id]);
+\end{lstlisting}
+
+
+\subsubsection{Differentiating Map Types}
+
+`HashMap`, as named, provides access to items by their hash in (potentially amortized) constant time.
+
+`SplayTreeMap`' is based on a self-balancing binary tree that allows most single-entry operations in amortized 
+logarithmic time.
+
+\begin{lstlisting}
+class SummaryAppData {
+  // Tree provides improved state on sorting
+  final _scope = SplayTreeMap<int, String>();
+  // Hash gives us better performance to search by key
+  final _hash = HashMap<String, int>();
+
+  SummaryAppData({
+    required List<String> list,
+  }) {
+    this.list = list; // Cover the original property by get/set
+  }
+
+  // Return list in reversed order
+  List<String> get list => _scope.values.toList().reversed.toList();
+
+  set list(List<String> list) {
+    for (int i = 0; i < list.length; i++) {
+      add(list[i], i + 1);
+    }
+  }
+
+  add(String value, [int? id]) {
+    // Checking that our UUIDs are unique across the list
+    if (_hash.containsKey(value)) {
+      _scope.remove(_hash[value]);
+      _hash.remove(value);
+    }
+    // Used to sort the list based on last modification 
+    int key = id ?? DateTime.now().millisecondsSinceEpoch;
+    _scope[key] = value;
+    _hash[value] = key;
+  }
+}
+\end{lstlisting}

@@ -27,12 +27,12 @@ class BudgetViewPage extends AbstractPage {
 class BudgetViewPageState extends AbstractPageState<BudgetViewPage> {
   @override
   String getTitle(context) {
-    final item = widget.state?.getByUuid(AppDataType.budgets, widget.uuid) as BudgetAppData;
+    final item = widget.state?.getByUuid(widget.uuid) as BudgetAppData;
     return item.title;
   }
 
   void deactivateAccount(BuildContext context) {
-    var data = widget.state?.getByUuid(AppDataType.budgets, widget.uuid) as BudgetAppData;
+    var data = widget.state?.getByUuid(widget.uuid) as BudgetAppData;
     data.hidden = true;
     widget.state?.update(AppDataType.budgets, widget.uuid, data);
     Navigator.pop(context);
@@ -63,7 +63,7 @@ class BudgetViewPageState extends AbstractPageState<BudgetViewPage> {
 
   @override
   Widget buildContent(BuildContext context, BoxConstraints constraints) {
-    final item = widget.state?.getByUuid(AppDataType.budgets, widget.uuid) as BudgetAppData;
+    final item = widget.state?.getByUuid(widget.uuid) as BudgetAppData;
     item.updateContext(context);
     double indent =
         ThemeHelper(windowType: getWindowType(context)).getIndent() * 2;

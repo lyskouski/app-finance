@@ -30,7 +30,7 @@ class BudgetEditPageState extends BudgetAddPageState<BudgetEditPage> {
   void updateStorage() {
     String uuid = (widget as BudgetEditPage).uuid;
     var data =
-          widget.state?.getByUuid(AppDataType.budgets, (widget as BudgetEditPage).uuid) as BudgetAppData;
+          widget.state?.getByUuid((widget as BudgetEditPage).uuid) as BudgetAppData;
     data.title = widget.title ?? '';
     data.color = widget.color;
     data.amountLimit = widget.budgetLimit ?? 0.0;
@@ -48,7 +48,7 @@ class BudgetEditPageState extends BudgetAddPageState<BudgetEditPage> {
     if ((widget as BudgetEditPage).isFirstRun) {
       (widget as BudgetEditPage).isFirstRun = false;
       var form =
-          widget.state?.getByUuid(AppDataType.budgets, (widget as BudgetEditPage).uuid) as BudgetAppData;
+          widget.state?.getByUuid((widget as BudgetEditPage).uuid) as BudgetAppData;
       widget.title = form.title;
       widget.budgetLimit = form.amountLimit;
       widget.color = form.color;

@@ -89,7 +89,7 @@ class HomePageState extends AbstractPageState<HomePage> {
         children: [
           GoalWidget(
             margin: single,
-            state: widget.state?.get(AppDataType.goals).list,
+            state: widget.state!.getList(AppDataType.goals),
           ),
           BillWidget(
             margin: single,
