@@ -6,6 +6,7 @@ import 'dart:collection';
 
 class SummaryAppData {
   final _scope = SplayTreeMap<int, String>();
+  final _actual = SplayTreeMap<int, String>();
   final _hash = HashMap<String, int>();
   double total;
 
@@ -18,6 +19,8 @@ class SummaryAppData {
 
   List<String> get list => _scope.values.toList().reversed.toList();
 
+  List<String> get listActual => _actual.values.toList().reversed.toList();
+
   set list(List<String> list) {
     for (int i = 0; i < list.length; i++) {
       add(list[i], i + 1);
@@ -27,10 +30,15 @@ class SummaryAppData {
   add(String value, [int? id]) {
     if (_hash.containsKey(value)) {
       _scope.remove(_hash[value]);
+      _actual.remove(_hash[value]);
       _hash.remove(value);
     }
-    int key = id ?? DateTime.now().millisecondsSinceEpoch;
+    DateTime now = DateTime.now();
+    int key = id ?? now.millisecondsSinceEpoch;
     _scope[key] = value;
-    _hash[value] = key;
+    _hash[value] = key; 
+    if (key >= DateTime(now.year, now.month).millisecondsSinceEpoch) {
+      _actual[key] = value;
+    }
   }
 }

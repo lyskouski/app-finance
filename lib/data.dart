@@ -221,20 +221,23 @@ class AppData extends ChangeNotifier {
   void _updateBill(BillAppData? initial, BillAppData change) {
     AccountAppData currAccount = getByUuid(change.account, false);
     BudgetAppData currBudget = getByUuid(change.category, false);
+    double delta = change.hidden ? 0.0 : change.details;
     if (initial != null) {
       AccountAppData prevAccount = getByUuid(initial.account, false);
       BudgetAppData prevBudget = getByUuid(initial.category, false);
       if (currAccount.uuid != prevAccount.uuid) {
-        prevAccount.details += initial.hidden ? 0.0 : initial.details;
+        double prevDelta = initial.hidden ? 0.0 : initial.details;
+        prevAccount.details += prevDelta;
         prevBudget.progress = _getProgress(
-            prevBudget.amountLimit, prevBudget.progress, -initial.details);
-        currAccount.details -= change.hidden ? 0.0 : change.details;
-        currBudget.progress = _getProgress(
-            currBudget.amountLimit, currBudget.progress, change.details);
+            prevBudget.amountLimit, prevBudget.progress, -prevDelta);
+        currAccount.details -= delta;
+        currBudget.progress =
+            _getProgress(currBudget.amountLimit, currBudget.progress, delta);
+        delta -= prevDelta;
         _data[AppDataType.budgets]?.add(initial.category);
         _data[AppDataType.accounts]?.add(initial.account);
       } else {
-        double delta = change.hidden
+        delta = change.hidden
             ? -initial.details
             : (initial.hidden
                 ? change.details
@@ -244,13 +247,24 @@ class AppData extends ChangeNotifier {
             _getProgress(currBudget.amountLimit, currBudget.progress, delta);
       }
     } else {
-      currAccount.details -= change.hidden ? 0.0 : change.details;
-      currBudget.progress = _getProgress(
-          currBudget.amountLimit, currBudget.progress, change.details);
+      currAccount.details -= delta;
+      currBudget.progress =
+          _getProgress(currBudget.amountLimit, currBudget.progress, delta);
     }
     _data[AppDataType.budgets]?.add(change.category);
     _data[AppDataType.accounts]?.add(change.account);
+    _recalculateBillTotal(delta);
     _set(AppDataType.bills, change);
+  }
+
+  void _recalculateBillTotal(double delta) {
+    var list = _data[AppDataType.bills]?.listActual;
+    _data[AppDataType.bills]?.total = delta +
+        (list == null || list.isEmpty
+            ? 0.0
+            : list
+                .map<double>((dynamic element) => element.details as double)
+                .reduce((value, details) => value + details));
   }
 
   void _updateBudget(BudgetAppData? initial, BudgetAppData change) {

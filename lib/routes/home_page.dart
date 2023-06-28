@@ -13,6 +13,7 @@ import 'package:app_finance/widgets/home/budget_widget.dart';
 import 'package:app_finance/widgets/home/goal_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localization.dart';
+import 'package:intl/intl.dart';
 
 class HomePage extends AbstractPage {
   HomePage() : super();
@@ -83,6 +84,8 @@ class HomePageState extends AbstractPageState<HomePage> {
     EdgeInsets bottom = EdgeInsets.fromLTRB(indent, indent, indent, indent);
     double width = MediaQuery.of(context).size.width - indent * 2;
     double halfWidth = width / 2 - indent;
+    final locale = Localizations.localeOf(context).toString();
+    final DateFormat formatterDate = DateFormat.MMMM(locale);
 
     if (helper.isVertical(constraints)) {
       return Column(
@@ -93,7 +96,7 @@ class HomePageState extends AbstractPageState<HomePage> {
           ),
           BillWidget(
             margin: single,
-            title: AppLocalizations.of(context)!.billHeadline,
+            title: '${AppLocalizations.of(context)!.billHeadline} (${formatterDate.format(DateTime.now())})',
             state: widget.state?.get(AppDataType.bills),
             offset: width,
           ),
