@@ -172,8 +172,9 @@ class AppData extends ChangeNotifier {
   }
 
   void update(AppDataType property, String uuid, dynamic value) {
-    if (_hashTable[uuid] != null) {
-      _update(property, getByUuid(uuid, false), value);
+    var initial = getByUuid(uuid, false);
+    if (initial != null) {
+      _update(property, initial, value);
     }
   }
 
@@ -194,15 +195,18 @@ class AppData extends ChangeNotifier {
     if (initial != null) {
       var goalList = getList(AppDataType.goals, false)
           .where((dynamic goal) => goal.progress < 1.0);
-      if (goalList.isNotEmpty) {
-        double delta = (change.details - initial.details) / goalList.length;
+      if (goalList.isNotEmpty && !initial.hidden) {
+        double delta = change.hidden
+            ? -initial.details
+            : (change.details - initial.details) / goalList.length;
         int index = 0;
         goalList.forEach((dynamic goal) {
           index++;
           double progress = _getProgress(goal.details, goal.progress, delta);
           if (progress > 1.0) {
             if (index < goalList.length) {
-              delta += goal.details * (progress - 1.0) / (goalList.length - index);
+              delta +=
+                  goal.details * (progress - 1.0) / (goalList.length - index);
             }
             progress = 1.0;
           }
@@ -220,22 +224,26 @@ class AppData extends ChangeNotifier {
       AccountAppData prevAccount = getByUuid(initial.account, false);
       BudgetAppData prevBudget = getByUuid(initial.category, false);
       if (currAccount.uuid != prevAccount.uuid) {
-        prevAccount.details += initial.details;
+        prevAccount.details += initial.hidden ? 0.0 : initial.details;
         prevBudget.progress = _getProgress(
             prevBudget.amountLimit, prevBudget.progress, -initial.details);
-        currAccount.details -= change.details;
+        currAccount.details -= change.hidden ? 0.0 : change.details;
         currBudget.progress = _getProgress(
             currBudget.amountLimit, currBudget.progress, change.details);
         _data[AppDataType.budgets]?.add(initial.category);
         _data[AppDataType.accounts]?.add(initial.account);
       } else {
-        double delta = change.details - initial.details;
+        double delta = change.hidden
+            ? -initial.details
+            : (initial.hidden
+                ? change.details
+                : change.details - initial.details);
         currAccount.details -= delta;
         currBudget.progress =
             _getProgress(currBudget.amountLimit, currBudget.progress, delta);
       }
     } else {
-      currAccount.details -= change.details;
+      currAccount.details -= change.hidden ? 0.0 : change.details;
       currBudget.progress = _getProgress(
           currBudget.amountLimit, currBudget.progress, change.details);
     }
@@ -245,7 +253,7 @@ class AppData extends ChangeNotifier {
   }
 
   void _updateBudget(BudgetAppData? initial, BudgetAppData change) {
-    if (initial != null && change.amountLimit > 0) {
+    if (!change.hidden && initial != null && change.amountLimit > 0) {
       change.progress =
           (change.amountLimit - initial.amountLimit * initial.progress) /
               change.amountLimit;
