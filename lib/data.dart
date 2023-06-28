@@ -273,6 +273,11 @@ class AppData extends ChangeNotifier {
   }
 
   void _updateGoal(GoalAppData? initial, GoalAppData change) {
+    if (initial != null && !change.hidden) {
+      change.progress = _getProgress(initial.details, initial.progress, change.details - initial.details);
+    } else {
+      change.progress = 0.0;
+    }
     _set(AppDataType.goals, change);
   }
 
