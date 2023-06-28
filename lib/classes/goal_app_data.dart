@@ -23,6 +23,23 @@ class GoalAppData extends AbstractAppData {
     super.hidden,
   }) : _closedAt = closedAt ?? (closedAtFormatted != null ? DateTime.parse(closedAtFormatted) : DateTime.now());
 
+  @override
+  GoalAppData clone() {
+    return GoalAppData(
+      title: super.title,
+      uuid: super.uuid,
+      details: super.details,
+      progress: super.progress,
+      description: super.description,
+      color: super.color,
+      icon: super.icon,
+      currency: super.currency,
+      createdAt: super.createdAt,
+      closedAt: closedAt,
+      hidden: super.hidden,
+    );
+  }
+
   DateTime get closedAt => _closedAt;
   set closedAt(DateTime value) => _closedAt = value;
   String get closedAtFormatted => getDateFormatted(_closedAt);

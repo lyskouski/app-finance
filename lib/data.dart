@@ -182,7 +182,7 @@ class AppData extends ChangeNotifier {
 
   void update(AppDataType property, String uuid, dynamic value) {
     if (_hashTable[uuid] != null) {
-      var data = getByUuid(uuid);
+      var data = getByUuid(uuid, false);
       switch (property) {
         case AppDataType.accounts:
           return _updateAccount(data, value);
@@ -197,15 +197,15 @@ class AppData extends ChangeNotifier {
   }
 
   void _updateAccount(AccountAppData? initial, AccountAppData change) {
-    _set(AppDataType.goals, change);
+    _set(AppDataType.accounts, change);
   }
 
   void _updateBill(BillAppData? initial, BillAppData change) {
-    AccountAppData currAccount = getByUuid(change.account);
-    BudgetAppData currBudget = getByUuid(change.category);
+    AccountAppData currAccount = getByUuid(change.account, false);
+    BudgetAppData currBudget = getByUuid(change.category, false);
     if (initial != null) {
-      AccountAppData prevAccount = getByUuid(initial.account);
-      BudgetAppData prevBudget = getByUuid(initial.category);
+      AccountAppData prevAccount = getByUuid(initial.account, false);
+      BudgetAppData prevBudget = getByUuid(initial.category, false);
       if (currAccount.uuid != prevAccount.uuid) {
         prevAccount.details += initial.details;
         prevBudget.progress = _getBudgetProgress(prevBudget.amountLimit, prevBudget.progress, -initial.details);
@@ -228,7 +228,12 @@ class AppData extends ChangeNotifier {
   }
 
   void _updateBudget(BudgetAppData? initial, BudgetAppData change) {
-    _set(AppDataType.goals, change);
+    if (initial != null && change.amountLimit > 0) {
+      change.progress = (change.amountLimit - initial.amountLimit * initial.progress) / change.amountLimit;
+    } else {
+      change.progress = 0.0;
+    }
+    _set(AppDataType.budgets, change);
   }
 
   double _getBudgetProgress(double amount, double progress, double delta) {
@@ -251,10 +256,10 @@ class AppData extends ChangeNotifier {
     );
   }
 
-  List<dynamic> getList(AppDataType property) {
+  List<dynamic> getList(AppDataType property, [bool isClone = true]) {
     SummaryAppData(total: 1, list: ['test']);
     return (_data[property]?.list ?? [])
-        .map((uuid) => getByUuid(uuid).setState(this))
+        .map((uuid) => getByUuid(uuid, isClone).setState(this))
         .toList();
   }
 
@@ -262,8 +267,8 @@ class AppData extends ChangeNotifier {
     return _data[property]?.total ?? 0.0;
   }
 
-  dynamic getByUuid(String uuid) {
-    return _hashTable[uuid];
+  dynamic getByUuid(String uuid, [bool isClone = true]) {
+    return isClone ? _hashTable[uuid].clone() : _hashTable[uuid];
   }
 
   dynamic getType(AppAccountType property) {

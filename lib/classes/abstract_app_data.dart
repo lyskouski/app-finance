@@ -39,6 +39,8 @@ abstract class AbstractAppData {
                 : DateTime.now()),
         _amount = details;
 
+  AbstractAppData clone();
+
   dynamic updateContext(BuildContext context) {
     _context = context;
     return this;

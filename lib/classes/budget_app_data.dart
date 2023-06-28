@@ -16,11 +16,25 @@ class BudgetAppData extends AbstractAppData {
     super.currency,
     super.createdAt,
     super.createdAtFormatted,
-    DateTime? closedAt,
-    String? closedAtFormatted,
     amountLimit,
     super.hidden,
   });
+
+  @override
+  BudgetAppData clone() {
+    return BudgetAppData(
+      title: super.title,
+      uuid: super.uuid,
+      details: super.details,
+      progress: super.progress,
+      color: super.color,
+      icon: super.icon,
+      currency: super.currency,
+      createdAt: super.createdAt,
+      amountLimit: amountLimit,
+      hidden: super.hidden,
+    );
+  }
 
   @override
   double get details => super.details - super.details * super.progress;
