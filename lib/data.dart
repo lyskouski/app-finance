@@ -197,6 +197,25 @@ class AppData extends ChangeNotifier {
   }
 
   void _updateAccount(AccountAppData? initial, AccountAppData change) {
+    if (initial != null) {
+      var goalList = getList(AppDataType.goals, false)
+          .where((dynamic goal) => goal.progress < 1.0);
+      if (goalList.isNotEmpty) {
+        double delta = (change.details - initial.details) / goalList.length;
+        int index = 0;
+        goalList.forEach((dynamic goal) {
+          index++;
+          double progress = _getProgress(goal.details, goal.progress, delta);
+          if (progress > 1.0) {
+            if (index < goalList.length) {
+              delta += goal.details * (progress - 1.0) / (goalList.length - index);
+            }
+            progress = 1.0;
+          }
+          goal.progress = progress;
+        });
+      }
+    }
     _set(AppDataType.accounts, change);
   }
 
@@ -208,19 +227,23 @@ class AppData extends ChangeNotifier {
       BudgetAppData prevBudget = getByUuid(initial.category, false);
       if (currAccount.uuid != prevAccount.uuid) {
         prevAccount.details += initial.details;
-        prevBudget.progress = _getBudgetProgress(prevBudget.amountLimit, prevBudget.progress, -initial.details);
+        prevBudget.progress = _getProgress(
+            prevBudget.amountLimit, prevBudget.progress, -initial.details);
         currAccount.details -= change.details;
-        currBudget.progress = _getBudgetProgress(currBudget.amountLimit, currBudget.progress, change.details);
+        currBudget.progress = _getProgress(
+            currBudget.amountLimit, currBudget.progress, change.details);
         _data[AppDataType.budgets]?.add(initial.category);
         _data[AppDataType.accounts]?.add(initial.account);
       } else {
         double delta = change.details - initial.details;
         currAccount.details -= delta;
-        currBudget.progress = _getBudgetProgress(currBudget.amountLimit, currBudget.progress, delta);
+        currBudget.progress =
+            _getProgress(currBudget.amountLimit, currBudget.progress, delta);
       }
     } else {
       currAccount.details -= change.details;
-      currBudget.progress = _getBudgetProgress(currBudget.amountLimit, currBudget.progress, change.details);
+      currBudget.progress = _getProgress(
+          currBudget.amountLimit, currBudget.progress, change.details);
     }
     _data[AppDataType.budgets]?.add(change.category);
     _data[AppDataType.accounts]?.add(change.account);
@@ -229,14 +252,16 @@ class AppData extends ChangeNotifier {
 
   void _updateBudget(BudgetAppData? initial, BudgetAppData change) {
     if (initial != null && change.amountLimit > 0) {
-      change.progress = (change.amountLimit - initial.amountLimit * initial.progress) / change.amountLimit;
+      change.progress =
+          (change.amountLimit - initial.amountLimit * initial.progress) /
+              change.amountLimit;
     } else {
       change.progress = 0.0;
     }
     _set(AppDataType.budgets, change);
   }
 
-  double _getBudgetProgress(double amount, double progress, double delta) {
+  double _getProgress(double amount, double progress, double delta) {
     if (amount > 0) {
       progress = (amount * progress + delta) / amount;
     } else {
@@ -268,7 +293,7 @@ class AppData extends ChangeNotifier {
   }
 
   dynamic getByUuid(String uuid, [bool isClone = true]) {
-    return isClone ? _hashTable[uuid].clone() : _hashTable[uuid];
+    return isClone ? _hashTable[uuid]?.clone() : _hashTable[uuid];
   }
 
   dynamic getType(AppAccountType property) {
