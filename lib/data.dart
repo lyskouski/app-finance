@@ -137,14 +137,11 @@ class AppData extends ChangeNotifier {
         'xxxxxxxx-xxxx-0xxx-yxxx-xxxxxxxxxxxx',
       ],
     ),
-    AppDataType.bills: SummaryAppData(
-      total: 123456.789,
-      list: [
-        'xxxxxxxx-xxxx-01xx-yxxx-xxxxxxxxxxxx',
-        'xxxxxxxx-xxxx-02xx-yxxx-xxxxxxxxxxxx',
-        'xxxxxxxx-xxxx-03xx-yxxx-xxxxxxxxxxxx',
-      ]
-    ),
+    AppDataType.bills: SummaryAppData(total: 123456.789, list: [
+      'xxxxxxxx-xxxx-01xx-yxxx-xxxxxxxxxxxx',
+      'xxxxxxxx-xxxx-02xx-yxxx-xxxxxxxxxxxx',
+      'xxxxxxxx-xxxx-03xx-yxxx-xxxxxxxxxxxx',
+    ]),
     AppDataType.accounts: SummaryAppData(
       total: 123456.789,
       list: [
@@ -171,13 +168,48 @@ class AppData extends ChangeNotifier {
 
   void add(AppDataType property, dynamic value) {
     value.uuid = const Uuid().v4();
-    _set(property, value);
+    switch (property) {
+      case AppDataType.accounts:
+        return _updateAccount(null, value);
+      case AppDataType.bills:
+        return _updateBill(null, value);
+      case AppDataType.budgets:
+        return _updateBudget(null, value);
+      case AppDataType.goals:
+        return _updateGoal(null, value);
+    }
   }
 
   void update(AppDataType property, String uuid, dynamic value) {
     if (_hashTable[uuid] != null) {
-      _set(property, value);
+      var data = getByUuid(uuid);
+      switch (property) {
+        case AppDataType.accounts:
+          return _updateAccount(data, value);
+        case AppDataType.bills:
+          return _updateBill(data, value);
+        case AppDataType.budgets:
+          return _updateBudget(data, value);
+        case AppDataType.goals:
+          return _updateGoal(data, value);
+      }
     }
+  }
+
+  void _updateAccount(AccountAppData? initial, AccountAppData change) {
+    _set(AppDataType.goals, change);
+  }
+
+  void _updateBill(BillAppData? initial, BillAppData change) {
+    _set(AppDataType.goals, change);
+  }
+
+  void _updateBudget(BudgetAppData? initial, BudgetAppData change) {
+    _set(AppDataType.goals, change);
+  }
+
+  void _updateGoal(GoalAppData? initial, GoalAppData change) {
+    _set(AppDataType.goals, change);
   }
 
   dynamic get(AppDataType property) {
@@ -189,7 +221,9 @@ class AppData extends ChangeNotifier {
 
   List<dynamic> getList(AppDataType property) {
     SummaryAppData(total: 1, list: ['test']);
-    return (_data[property]?.list ?? []).map((uuid) => getByUuid(uuid).setState(this)).toList();
+    return (_data[property]?.list ?? [])
+        .map((uuid) => getByUuid(uuid).setState(this))
+        .toList();
   }
 
   double getTotal(AppDataType property) {
