@@ -168,31 +168,25 @@ class AppData extends ChangeNotifier {
 
   void add(AppDataType property, dynamic value) {
     value.uuid = const Uuid().v4();
-    switch (property) {
-      case AppDataType.accounts:
-        return _updateAccount(null, value);
-      case AppDataType.bills:
-        return _updateBill(null, value);
-      case AppDataType.budgets:
-        return _updateBudget(null, value);
-      case AppDataType.goals:
-        return _updateGoal(null, value);
-    }
+    _update(property, null, value);
   }
 
   void update(AppDataType property, String uuid, dynamic value) {
     if (_hashTable[uuid] != null) {
-      var data = getByUuid(uuid, false);
-      switch (property) {
-        case AppDataType.accounts:
-          return _updateAccount(data, value);
-        case AppDataType.bills:
-          return _updateBill(data, value);
-        case AppDataType.budgets:
-          return _updateBudget(data, value);
-        case AppDataType.goals:
-          return _updateGoal(data, value);
-      }
+      _update(property, getByUuid(uuid, false), value);
+    }
+  }
+
+  void _update(AppDataType property, dynamic initial, dynamic change) {
+    switch (property) {
+      case AppDataType.accounts:
+        return _updateAccount(initial, change);
+      case AppDataType.bills:
+        return _updateBill(initial, change);
+      case AppDataType.budgets:
+        return _updateBudget(initial, change);
+      case AppDataType.goals:
+        return _updateGoal(initial, change);
     }
   }
 
