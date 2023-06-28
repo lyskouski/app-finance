@@ -195,11 +195,12 @@ class AppData extends ChangeNotifier {
     if (initial != null) {
       var goalList = getList(AppDataType.goals, false)
           .where((dynamic goal) => goal.progress < 1.0);
+      double delta =
+          change.hidden ? -initial.details : change.details - initial.details;
+      _data[AppDataType.accounts]?.total += delta;
       if (goalList.isNotEmpty && !initial.hidden) {
-        double delta = change.hidden
-            ? -initial.details
-            : (change.details - initial.details) / goalList.length;
         int index = 0;
+        delta /= goalList.length;
         goalList.forEach((dynamic goal) {
           index++;
           double progress = _getProgress(goal.details, goal.progress, delta);
@@ -274,7 +275,8 @@ class AppData extends ChangeNotifier {
 
   void _updateGoal(GoalAppData? initial, GoalAppData change) {
     if (initial != null && !change.hidden) {
-      change.progress = _getProgress(initial.details, initial.progress, change.details - initial.details);
+      change.progress = _getProgress(
+          initial.details, initial.progress, change.details - initial.details);
     } else {
       change.progress = 0.0;
     }
