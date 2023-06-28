@@ -201,11 +201,43 @@ class AppData extends ChangeNotifier {
   }
 
   void _updateBill(BillAppData? initial, BillAppData change) {
-    _set(AppDataType.goals, change);
+    AccountAppData currAccount = getByUuid(change.account);
+    BudgetAppData currBudget = getByUuid(change.category);
+    if (initial != null) {
+      AccountAppData prevAccount = getByUuid(initial.account);
+      BudgetAppData prevBudget = getByUuid(initial.category);
+      if (currAccount.uuid != prevAccount.uuid) {
+        prevAccount.details += initial.details;
+        prevBudget.progress = _getBudgetProgress(prevBudget.amountLimit, prevBudget.progress, -initial.details);
+        currAccount.details -= change.details;
+        currBudget.progress = _getBudgetProgress(currBudget.amountLimit, currBudget.progress, change.details);
+        _data[AppDataType.budgets]?.add(initial.category);
+        _data[AppDataType.accounts]?.add(initial.account);
+      } else {
+        double delta = change.details - initial.details;
+        currAccount.details -= delta;
+        currBudget.progress = _getBudgetProgress(currBudget.amountLimit, currBudget.progress, delta);
+      }
+    } else {
+      currAccount.details -= change.details;
+      currBudget.progress = _getBudgetProgress(currBudget.amountLimit, currBudget.progress, change.details);
+    }
+    _data[AppDataType.budgets]?.add(change.category);
+    _data[AppDataType.accounts]?.add(change.account);
+    _set(AppDataType.bills, change);
   }
 
   void _updateBudget(BudgetAppData? initial, BudgetAppData change) {
     _set(AppDataType.goals, change);
+  }
+
+  double _getBudgetProgress(double amount, double progress, double delta) {
+    if (amount > 0) {
+      progress = (amount * progress + delta) / amount;
+    } else {
+      progress = 0.0;
+    }
+    return progress;
   }
 
   void _updateGoal(GoalAppData? initial, GoalAppData change) {
