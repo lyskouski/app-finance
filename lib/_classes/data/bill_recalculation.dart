@@ -35,21 +35,30 @@ class BillRecalculation extends AbstractRecalculation {
   }
 
   BillRecalculation updateAccounts(
-      AccountAppData change, AccountAppData? initial) {
-    if (initial != null && change.uuid != initial.uuid) {
-      initial.details += getPrevDelta();
+      AccountAppData accountChange, AccountAppData? accountInitial) {
+    if (accountInitial != null &&
+        accountChange.uuid != accountInitial.uuid &&
+        accountInitial.createdAt.isBefore(initial!.createdAt)) {
+      accountInitial.details += getPrevDelta();
     }
-    change.details -= getDelta();
+    if (accountChange.createdAt.isBefore(change.createdAt)) {
+      accountChange.details -= getDelta();
+    }
     return this;
   }
 
-  BillRecalculation updateBudget(BudgetAppData change, BudgetAppData? initial) {
-    if (initial != null && change.uuid != initial.uuid) {
-      initial.progress =
-          getProgress(initial.amountLimit, initial.progress, -getPrevDelta());
+  BillRecalculation updateBudget(
+      BudgetAppData budgetChange, BudgetAppData? budgetInitial) {
+    DateTime now = DateTime.now();
+    if (DateTime(now.year, now.month).isAfter(change.createdAt)) {
+      return this;
     }
-    change.progress =
-        getProgress(change.amountLimit, change.progress, getDelta());
+    if (budgetInitial != null && budgetChange.uuid != budgetInitial.uuid) {
+      budgetInitial.progress = getProgress(
+          budgetInitial.amountLimit, budgetInitial.progress, -getPrevDelta());
+    }
+    budgetChange.progress =
+        getProgress(budgetChange.amountLimit, change.progress, getDelta());
     return this;
   }
 
