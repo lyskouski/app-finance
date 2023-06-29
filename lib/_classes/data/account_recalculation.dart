@@ -19,8 +19,10 @@ class AccountRecalculation extends AbstractRecalculation {
   @override
   double getDelta() {
     return change.hidden
-        ? -initial!.details
-        : change.details - initial!.details;
+        ? -(initial?.details ?? 0.0)
+        : (initial?.hidden ?? true
+            ? change.details
+            : change.details - initial?.details);
   }
 
   AccountRecalculation updateGoals(dynamic goalList) {
