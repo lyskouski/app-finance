@@ -29,20 +29,23 @@ class AccountEditPageState extends AccountAddPageState<AccountEditPage> {
   @override
   void updateStorage() {
     String uuid = (widget as AccountEditPage).uuid;
-    widget.state?.update(AppDataType.accounts, uuid, AccountAppData(
-      uuid: uuid,
-      title: widget.title ?? '',
-      type: widget.type ?? AppAccountType.cash.toString(),
-      description: widget.description ?? '',
-      details: widget.balance ?? 0.0,
-      progress: 1.0,
-      color: widget.color ?? Colors.red,
-      currency: widget.currency,
-      hidden: false,
-      icon: widget.icon,
-      closedAt: widget.validTillDate,
-      createdAt: widget.balanceUpdateDate,
-    ));
+    widget.state?.update(
+        AppDataType.accounts,
+        uuid,
+        AccountAppData(
+          uuid: uuid,
+          title: widget.title ?? '',
+          type: widget.type ?? AppAccountType.cash.toString(),
+          description: widget.description ?? '',
+          details: widget.balance ?? 0.0,
+          progress: 1.0,
+          color: widget.color ?? Colors.red,
+          currency: widget.currency,
+          hidden: false,
+          icon: widget.icon,
+          closedAt: widget.validTillDate,
+          createdAt: widget.balanceUpdateDate,
+        ));
   }
 
   @override
@@ -54,8 +57,8 @@ class AccountEditPageState extends AccountAddPageState<AccountEditPage> {
   Widget buildContent(BuildContext context, BoxConstraints constraints) {
     if ((widget as AccountEditPage).isFirstRun) {
       (widget as AccountEditPage).isFirstRun = false;
-      var form =
-          widget.state?.getByUuid((widget as AccountEditPage).uuid) as AccountAppData;
+      var form = widget.state?.getByUuid((widget as AccountEditPage).uuid)
+          as AccountAppData;
       widget.title = form.title;
       widget.description = form.description;
       widget.type = form.type;

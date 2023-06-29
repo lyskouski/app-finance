@@ -40,8 +40,8 @@ class AccountViewPageState extends AbstractPageState<AccountViewPage> {
 
   @override
   Widget buildButton(BuildContext context, BoxConstraints constraints) {
-    String route = AppMenu(context: context)
-        .uuid(AppRoute.accountEditRoute, widget.uuid);
+    String route =
+        AppMenu(context: context).uuid(AppRoute.accountEditRoute, widget.uuid);
     double indent =
         ThemeHelper(windowType: getWindowType(context)).getIndent() * 4;
     return Container(

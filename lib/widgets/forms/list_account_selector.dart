@@ -13,7 +13,8 @@ class ListAccountSelectorItem<T> {
   ListAccountSelectorItem({required this.id, required this.item});
 }
 
-class ListAccountSelector<T extends ListAccountSelectorItem> extends StatelessWidget {
+class ListAccountSelector<T extends ListAccountSelectorItem>
+    extends StatelessWidget {
   AppData? state;
   Function setState;
   TextStyle? style;
@@ -52,8 +53,7 @@ class ListAccountSelector<T extends ListAccountSelectorItem> extends StatelessWi
         value: value,
         itemHeight: null,
         onChanged: (value) => setState(value),
-        items: getList(context)
-            .map<DropdownMenuItem<String>>((value) {
+        items: getList(context).map<DropdownMenuItem<String>>((value) {
           value.item?.updateContext(context);
           return DropdownMenuItem<String>(
             value: value.id,

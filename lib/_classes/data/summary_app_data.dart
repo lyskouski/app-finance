@@ -36,7 +36,7 @@ class SummaryAppData {
     DateTime now = DateTime.now();
     int key = id ?? now.millisecondsSinceEpoch;
     _scope[key] = value;
-    _hash[value] = key; 
+    _hash[value] = key;
     if (key >= DateTime(now.year, now.month).millisecondsSinceEpoch) {
       _actual[key] = value;
     }

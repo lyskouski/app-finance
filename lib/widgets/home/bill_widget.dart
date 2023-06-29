@@ -13,9 +13,9 @@ class BillWidget extends BaseWidget {
     required EdgeInsetsGeometry margin,
     required dynamic state,
   }) : super(
-    margin: margin,
-    offset: offset,
-    title: title,
-    state: state,
-  );
+          margin: margin,
+          offset: offset,
+          title: title,
+          state: state,
+        );
 }

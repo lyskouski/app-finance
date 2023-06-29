@@ -17,12 +17,12 @@ class BudgetWidget extends AccountWidget {
     String? route,
     String routeList = AppRoute.budgetViewRoute,
   }) : super(
-    margin: margin,
-    offset: offset,
-    tooltip: tooltip,
-    title: title,
-    state: state,
-    route: route,
-    routeList: routeList,
-  );
+          margin: margin,
+          offset: offset,
+          tooltip: tooltip,
+          title: title,
+          state: state,
+          route: route,
+          routeList: routeList,
+        );
 }

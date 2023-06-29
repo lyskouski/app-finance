@@ -21,13 +21,13 @@ class ListBudgetSelector extends ListAccountSelector<ListBudgetSelectorItem> {
     String? value,
     double indent = 0.0,
   }) : super(
-    state: state,
-    setState: setState,
-    width: width,
-    style: style,
-    value: value,
-    indent: indent,
-  );
+          state: state,
+          setState: setState,
+          width: width,
+          style: style,
+          value: value,
+          indent: indent,
+        );
 
   @override
   List<ListBudgetSelectorItem> getList(BuildContext context) {

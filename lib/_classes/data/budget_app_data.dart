@@ -39,7 +39,7 @@ class BudgetAppData extends AbstractAppData {
   @override
   double get details => super.details * (1 - super.progress);
 
-  String get detailsFormatted{
+  String get detailsFormatted {
     String left = AppLocalizations.of(getContext()!)!.left;
     return '${getNumberFormatted(details)} $left';
   }

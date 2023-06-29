@@ -9,7 +9,8 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:provider/provider.dart';
 
 void main() {
-  testWidgets('Given Main page When tap on Create Then opened BillAddPage', (WidgetTester tester) async {
+  testWidgets('Given Main page When tap on Create Then opened BillAddPage',
+      (WidgetTester tester) async {
     await tester.pumpWidget(ChangeNotifierProvider(
       create: (_) => AppData(),
       child: const MyApp(),
