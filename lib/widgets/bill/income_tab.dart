@@ -17,7 +17,7 @@ class IncomeTab extends StatelessWidget {
     return LayoutBuilder(builder: (context, constraints) {
       callback(const SizedBox());
       return Container(
-        child: Center(
+        child: const Center(
           child: Text('Page Income'),
         ),
       );

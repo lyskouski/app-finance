@@ -30,7 +30,7 @@ void main() {
       [false, 2.0, true, 3.0, -2.0],
     ];
 
-    testCases.forEach((v) {
+    for (var v in testCases) {
       test(
           'initial(hidden[${v[0]}], details[${v[1]}]), change(hidden[${v[2]}], details[${v[3]}]) => ${v[4]}',
           () {
@@ -40,7 +40,7 @@ void main() {
         mock.change.details = v[3] as double;
         expect(mock.getDelta(), v[4]);
       });
-    });
+    }
 
     test('initial(null), change(hidden[false], details[2.0]) => 2.0', () {
       mock.initial = null;
