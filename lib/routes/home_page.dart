@@ -96,13 +96,13 @@ class HomePageState extends AbstractPageState<HomePage> {
           ),
           BillWidget(
             margin: single,
-            title: '${AppLocalizations.of(context)!.billHeadline} (${formatterDate.format(DateTime.now())})',
+            title: '${AppLocalizations.of(context)!.billHeadline}, ${formatterDate.format(DateTime.now())}',
             state: widget.state?.get(AppDataType.bills),
             offset: width,
           ),
           AccountWidget(
             margin: single,
-            title: AppLocalizations.of(context)!.accountHeadline,
+            title: '${AppLocalizations.of(context)!.accountHeadline}, ${AppLocalizations.of(context)!.total}',
             state: widget.state?.get(AppDataType.accounts),
             route: AppRoute.accountRoute,
             tooltip: AppLocalizations.of(context)!.accountTooltip,
@@ -110,7 +110,7 @@ class HomePageState extends AbstractPageState<HomePage> {
           ),
           BudgetWidget(
             margin: bottom,
-            title: AppLocalizations.of(context)!.budgetHeadline,
+            title: '${AppLocalizations.of(context)!.budgetHeadline}, ${AppLocalizations.of(context)!.left}',
             state: widget.state?.get(AppDataType.budgets),
             route: AppRoute.budgetRoute,
             tooltip: AppLocalizations.of(context)!.budgetTooltip,

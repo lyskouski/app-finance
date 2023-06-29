@@ -61,6 +61,7 @@
     "subscriptionTooltip": "Activate Subscription",
     "title": "Title",
     "titleAccountTooltip": "Enter Account Identifier",
+    "total": "total",
     "transferHeadline": "Transfer",
     "updateAccountTooltip": "Update Account",
     "updateBudgetTooltip": "Update Budget Category",
