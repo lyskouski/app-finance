@@ -19,14 +19,14 @@ class AccountWidget extends BaseWidget {
     String? route,
     String routeList = AppRoute.accountViewRoute,
   }) : super(
-    margin: margin,
-    offset: offset,
-    title: title,
-    state: state,
-    tooltip: tooltip,
-    route: route,
-    routeList: routeList,
-  );
+          margin: margin,
+          offset: offset,
+          title: title,
+          state: state,
+          tooltip: tooltip,
+          route: route,
+          routeList: routeList,
+        );
 
   @override
   Widget buildListWidget(item, BuildContext context, NumberFormat formatter,

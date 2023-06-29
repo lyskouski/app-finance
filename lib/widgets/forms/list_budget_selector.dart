@@ -5,7 +5,6 @@
 import 'package:app_finance/_classes/data/budget_app_data.dart';
 import 'package:app_finance/data.dart';
 import 'package:app_finance/widgets/forms/list_account_selector.dart';
-import 'package:app_finance/widgets/home/base_list_widget.dart';
 import 'package:flutter/material.dart';
 
 class ListBudgetSelectorItem extends ListAccountSelectorItem<BudgetAppData> {
@@ -22,13 +21,13 @@ class ListBudgetSelector extends ListAccountSelector<ListBudgetSelectorItem> {
     String? value,
     double indent = 0.0,
   }) : super(
-    state: state,
-    setState: setState,
-    width: width,
-    style: style,
-    value: value,
-    indent: indent,
-  );
+          state: state,
+          setState: setState,
+          width: width,
+          style: style,
+          value: value,
+          indent: indent,
+        );
 
   @override
   List<ListBudgetSelectorItem> getList(BuildContext context) {

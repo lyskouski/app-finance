@@ -23,7 +23,10 @@ class AccountAppData extends AbstractAppData {
     DateTime? closedAt,
     String? closedAtFormatted,
     super.hidden,
-  }) : _closedAt = closedAt ?? (closedAtFormatted != null ? DateTime.parse(closedAtFormatted) : DateTime.now());
+  }) : _closedAt = closedAt ??
+            (closedAtFormatted != null
+                ? DateTime.parse(closedAtFormatted)
+                : DateTime.now());
 
   @override
   AccountAppData clone() {

@@ -20,11 +20,12 @@ class GoalWidget extends StatelessWidget {
 
   @override
   Widget build(context) {
-    GoalAppData? current = state.isEmpty ? null : state.first.updateContext(context);
+    GoalAppData? current =
+        state.isEmpty ? null : state.first.updateContext(context);
     if (current == null) {
-      return SizedBox();
+      return const SizedBox();
     }
-    
+
     var theme = ThemeHelper(windowType: getWindowType(context));
     final ColorScheme colorScheme = Theme.of(context).colorScheme;
     final TextTheme textTheme = Theme.of(context).textTheme;

@@ -27,16 +27,15 @@ class GoalRecalculation extends AbstractRecalculation {
   }
 
   @override
-  GoalRecalculation updateTotal(SummaryAppData? summary, HashMap<String, dynamic> hashTable) {
+  GoalRecalculation updateTotal(
+      SummaryAppData? summary, HashMap<String, dynamic> hashTable) {
     var list = summary?.list;
     summary?.total = (list == null || list.isEmpty
         ? 0.0
-        : list
-            .map<double>((String uuid) {
-              var element = hashTable[uuid];
-              return element.details * (1 - element.progress);
-            })
-            .reduce((value, details) => value + details));
+        : list.map<double>((String uuid) {
+            var element = hashTable[uuid];
+            return element.details * (1 - element.progress);
+          }).reduce((value, details) => value + details));
     return this;
   }
 

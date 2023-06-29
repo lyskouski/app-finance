@@ -19,7 +19,7 @@ class CurrencySelector extends StatelessWidget {
     this.setView,
   }) {
     setView ??= setDefaultView;
-  } 
+  }
 
   String setDefaultView(Currency value) {
     return '${value.symbol} - ${value.name} (${value.code})';

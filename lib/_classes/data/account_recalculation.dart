@@ -2,10 +2,8 @@
 // Use of this source code is governed by a CC BY-NC-ND 4.0 license that can be
 // found in the LICENSE file.
 
-import 'dart:collection';
 import 'package:app_finance/_classes/data/abstract_recalculation.dart';
 import 'package:app_finance/_classes/data/account_app_data.dart';
-import 'package:app_finance/_classes/data/summary_app_data.dart';
 
 class AccountRecalculation extends AbstractRecalculation {
   AccountAppData change;
@@ -19,8 +17,10 @@ class AccountRecalculation extends AbstractRecalculation {
   @override
   double getDelta() {
     return change.hidden
-        ? -initial!.details
-        : change.details - initial!.details;
+        ? -(initial?.details ?? 0.0)
+        : (initial?.hidden ?? true
+            ? change.details
+            : change.details - initial?.details);
   }
 
   AccountRecalculation updateGoals(dynamic goalList) {

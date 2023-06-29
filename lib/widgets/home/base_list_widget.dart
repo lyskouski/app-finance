@@ -58,24 +58,24 @@ class BaseLineWidget extends StatelessWidget {
                     BarVerticalSingle(
                         value: progress, height: 24, color: color),
                     Container(
-                          constraints: BoxConstraints(
-                            maxWidth: offset * 0.6,
-                          ),
-                          child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
+                      constraints: BoxConstraints(
+                        maxWidth: offset * 0.6,
+                      ),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
                             title,
                             style: textTheme.bodyMedium,
                             overflow: TextOverflow.ellipsis,
                           ),
-                        Text(
-                          description,
-                          style: textTheme.bodySmall,
-                          overflow: TextOverflow.ellipsis,
-                        ),
-                      ],
+                          Text(
+                            description,
+                            style: textTheme.bodySmall,
+                            overflow: TextOverflow.ellipsis,
                           ),
+                        ],
+                      ),
                     ),
                   ],
                 ),

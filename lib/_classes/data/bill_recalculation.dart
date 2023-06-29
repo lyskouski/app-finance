@@ -64,7 +64,8 @@ class BillRecalculation extends AbstractRecalculation {
   }
 
   @override
-  BillRecalculation updateTotal(SummaryAppData? summary, HashMap<String, dynamic> hashTable) {
+  BillRecalculation updateTotal(
+      SummaryAppData? summary, HashMap<String, dynamic> hashTable) {
     var list = summary?.listActual;
     summary?.total = getDelta() +
         (list == null || list.isEmpty

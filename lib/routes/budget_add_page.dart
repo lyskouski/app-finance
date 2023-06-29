@@ -55,14 +55,16 @@ class BudgetAddPageState<T extends BudgetAddPage>
   }
 
   void updateStorage() {
-    widget.state?.add(AppDataType.budgets, BudgetAppData(
-      title: widget.title ?? '',
-      amountLimit: widget.budgetLimit ?? 0.0,
-      progress: 0.0,
-      color: widget.color ?? Colors.red,
-      hidden: false,
-      currency: widget.currency,
-    ));
+    widget.state?.add(
+        AppDataType.budgets,
+        BudgetAppData(
+          title: widget.title ?? '',
+          amountLimit: widget.budgetLimit ?? 0.0,
+          progress: 0.0,
+          color: widget.color ?? Colors.red,
+          hidden: false,
+          currency: widget.currency,
+        ));
   }
 
   String getButtonName() {
@@ -185,7 +187,9 @@ class BudgetAddPageState<T extends BudgetAddPage>
               style: textTheme.bodyLarge,
             ),
             SimpleInput(
-              value: widget.budgetLimit != null ? widget.budgetLimit.toString() : '',
+              value: widget.budgetLimit != null
+                  ? widget.budgetLimit.toString()
+                  : '',
               type: const TextInputType.numberWithOptions(decimal: true),
               tooltip: AppLocalizations.of(context)!.balanceTooltip,
               style: textTheme.numberMedium,

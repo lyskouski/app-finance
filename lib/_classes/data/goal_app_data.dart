@@ -21,7 +21,10 @@ class GoalAppData extends AbstractAppData {
     DateTime? closedAt,
     String? closedAtFormatted,
     super.hidden,
-  }) : _closedAt = closedAt ?? (closedAtFormatted != null ? DateTime.parse(closedAtFormatted) : DateTime.now());
+  }) : _closedAt = closedAt ??
+            (closedAtFormatted != null
+                ? DateTime.parse(closedAtFormatted)
+                : DateTime.now());
 
   @override
   GoalAppData clone() {
@@ -55,7 +58,8 @@ class GoalAppData extends AbstractAppData {
       return 0.0;
     } else {
       double totalDays = closedAt.difference(super.createdAt).inDays.toDouble();
-      double currentDays = currentDate.difference(super.createdAt).inDays.toDouble();
+      double currentDays =
+          currentDate.difference(super.createdAt).inDays.toDouble();
       return currentDays / totalDays;
     }
   }

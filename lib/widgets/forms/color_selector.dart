@@ -79,7 +79,8 @@ class ColorSelector extends StatelessWidget {
       decoration: InputDecoration(
         filled: true,
         border: InputBorder.none,
-        fillColor: value ?? Theme.of(context).colorScheme.inversePrimary.withOpacity(0.3),
+        fillColor: value ??
+            Theme.of(context).colorScheme.inversePrimary.withOpacity(0.3),
         suffixIcon: GestureDetector(
           child: const Icon(Icons.color_lens),
         ),
