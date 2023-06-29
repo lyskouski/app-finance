@@ -2,10 +2,7 @@
 // Use of this source code is governed by a CC BY-NC-ND 4.0 license that can be
 // found in the LICENSE file.
 
-import 'package:adaptive_breakpoints/adaptive_breakpoints.dart';
 import 'package:app_finance/_classes/tab_controller_sync.dart';
-import 'package:app_finance/helpers/theme_helper.dart';
-import 'package:app_finance/_classes/app_route.dart';
 import 'package:app_finance/routes/abstract_page.dart';
 import 'package:app_finance/widgets/bill/expenses_tab.dart';
 import 'package:app_finance/widgets/bill/income_tab.dart';
@@ -100,9 +97,18 @@ class BillAddPageState<T extends BillAddPage>
           controller: widget.tabController,
           onTap: switchTab,
           tabs: [
-            Tab(text: AppLocalizations.of(context)!.incomeHeadline),
-            Tab(text: AppLocalizations.of(context)!.expenseHeadline),
-            Tab(text: AppLocalizations.of(context)!.transferHeadline),
+            Tab(
+              icon: const Icon(Icons.insert_invitation),
+              text: AppLocalizations.of(context)!.incomeHeadline,
+            ),
+            Tab(
+              icon: const Icon(Icons.money_off),
+              text: AppLocalizations.of(context)!.expenseHeadline,
+            ),
+            Tab(
+              icon: const Icon(Icons.transform),
+              text: AppLocalizations.of(context)!.transferHeadline,
+            ),
           ],
         ),
         body: PageView(

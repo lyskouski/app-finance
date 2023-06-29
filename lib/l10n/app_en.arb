@@ -46,6 +46,7 @@
     "editBudgetHeader": "Update Budget Category",
     "editBudgetTooltip": "Edit Budget Category",
     "expense": "Amount of Expenses",
+    "expenseDateTime": "Expense Date",
     "expenseHeadline": "Expense",
     "from": "from",
     "goalHeadline": "Goals",

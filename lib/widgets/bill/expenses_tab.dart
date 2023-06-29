@@ -9,6 +9,7 @@ import 'package:app_finance/custom_text_theme.dart';
 import 'package:app_finance/data.dart';
 import 'package:app_finance/helpers/theme_helper.dart';
 import 'package:app_finance/widgets/forms/currency_selector.dart';
+import 'package:app_finance/widgets/forms/datet_time_input.dart';
 import 'package:app_finance/widgets/forms/list_account_selector.dart';
 import 'package:app_finance/widgets/forms/list_budget_selector.dart';
 import 'package:app_finance/widgets/forms/simple_input.dart';
@@ -27,6 +28,7 @@ class ExpensesTab extends StatefulWidget {
   Currency? currency;
   double? bill;
   String? description;
+  DateTime? createdAt;
 
   ExpensesTab({
     super.key,
@@ -36,6 +38,7 @@ class ExpensesTab extends StatefulWidget {
     this.currency,
     this.bill,
     this.description,
+    this.createdAt,
   });
 
   @override
@@ -57,6 +60,7 @@ class ExpensesTabState extends State<ExpensesTab> {
           currency: widget.currency,
           title: widget.description ?? '',
           details: widget.bill,
+          createdAt: widget.createdAt ?? DateTime.now(),
         ));
   }
 
@@ -239,6 +243,17 @@ class ExpensesTabState extends State<ExpensesTab> {
                   style: textTheme.numberMedium,
                   setState: (value) =>
                       setState(() => widget.description = value),
+                ),
+                SizedBox(height: indent),
+                Text(
+                  AppLocalizations.of(context)!.expenseDateTime,
+                  style: textTheme.bodyLarge,
+                ),
+                DateTimeInput(
+                  style: textTheme.numberMedium,
+                  width: offset,
+                  value: widget.createdAt ?? DateTime.now(),
+                  setState: (value) => setState(() => widget.createdAt = value),
                 ),
               ],
             ),
