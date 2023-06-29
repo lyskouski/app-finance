@@ -3,7 +3,7 @@
 // found in the LICENSE file.
 
 import 'package:adaptive_breakpoints/adaptive_breakpoints.dart';
-import 'package:app_finance/classes/account_app_data.dart';
+import 'package:app_finance/classes/data/account_app_data.dart';
 import 'package:app_finance/classes/app_menu.dart';
 import 'package:app_finance/data.dart';
 import 'package:app_finance/helpers/theme_helper.dart';

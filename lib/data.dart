@@ -4,11 +4,11 @@
 
 import 'dart:collection';
 
-import 'package:app_finance/classes/account_app_data.dart';
-import 'package:app_finance/classes/bill_app_data.dart';
-import 'package:app_finance/classes/budget_app_data.dart';
-import 'package:app_finance/classes/goal_app_data.dart';
-import 'package:app_finance/classes/summary_app_data.dart';
+import 'package:app_finance/classes/data/account_app_data.dart';
+import 'package:app_finance/classes/data/bill_app_data.dart';
+import 'package:app_finance/classes/data/budget_app_data.dart';
+import 'package:app_finance/classes/data/goal_app_data.dart';
+import 'package:app_finance/classes/data/summary_app_data.dart';
 import 'package:flutter/material.dart';
 import 'package:uuid/uuid.dart';
 

@@ -2,7 +2,7 @@
 // Use of this source code is governed by a CC BY-NC-ND 4.0 license that can be
 // found in the LICENSE file.
 
-import 'package:app_finance/classes/abstract_app_data.dart';
+import 'package:app_finance/classes/data/abstract_app_data.dart';
 import 'package:flutter_gen/gen_l10n/app_localization.dart';
 
 class BudgetAppData extends AbstractAppData {
