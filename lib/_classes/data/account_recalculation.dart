@@ -2,6 +2,7 @@
 // Use of this source code is governed by a CC BY-NC-ND 4.0 license that can be
 // found in the LICENSE file.
 
+import 'dart:collection';
 import 'package:app_finance/_classes/data/abstract_recalculation.dart';
 import 'package:app_finance/_classes/data/account_app_data.dart';
 import 'package:app_finance/_classes/data/summary_app_data.dart';
@@ -50,7 +51,7 @@ class AccountRecalculation extends AbstractRecalculation {
   }
 
   @override
-  AccountRecalculation updateTotal(SummaryAppData? summary) {
+  AccountRecalculation updateTotal(SummaryAppData? summary, HashMap<String, dynamic> hashTable) {
     summary?.total += getDelta();
     return this;
   }

@@ -3,7 +3,6 @@
 // found in the LICENSE file.
 
 import 'dart:collection';
-
 import 'package:app_finance/_classes/data/account_app_data.dart';
 import 'package:app_finance/_classes/data/account_recalculation.dart';
 import 'package:app_finance/_classes/data/bill_app_data.dart';
@@ -197,7 +196,7 @@ class AppData extends ChangeNotifier {
 
   void _updateAccount(AccountAppData? initial, AccountAppData change) {
     var calc = AccountRecalculation(change: change, initial: initial)
-      .updateTotal(_data[AppDataType.accounts]);
+      .updateTotal(_data[AppDataType.accounts], _hashTable);
     if (initial != null) {
       var goalList = getList(AppDataType.goals, false)
           .where((dynamic goal) => goal.progress < 1.0);
@@ -220,7 +219,7 @@ class AppData extends ChangeNotifier {
     BillRecalculation(change: change, initial: initial)
       .updateAccounts(currAccount, prevAccount)
       .updateBudget(currBudget, prevBudget)
-      .updateTotal(_data[AppDataType.bills]);
+      .updateTotal(_data[AppDataType.bills], _hashTable);
     _data[AppDataType.budgets]?.add(change.category);
     _data[AppDataType.accounts]?.add(change.account);
     _set(AppDataType.bills, change);
@@ -229,14 +228,14 @@ class AppData extends ChangeNotifier {
   void _updateBudget(BudgetAppData? initial, BudgetAppData change) {
     BudgetRecalculation(change: change, initial: initial)
       .updateBudget()
-      .updateTotal(_data[AppDataType.budgets]);
+      .updateTotal(_data[AppDataType.budgets], _hashTable);
     _set(AppDataType.budgets, change);
   }
 
   void _updateGoal(GoalAppData? initial, GoalAppData change) {
     GoalRecalculation(change: change, initial: initial)
       .updateGoal()
-      .updateTotal(_data[AppDataType.goals]);
+      .updateTotal(_data[AppDataType.goals], _hashTable);
     _set(AppDataType.goals, change);
   }
 

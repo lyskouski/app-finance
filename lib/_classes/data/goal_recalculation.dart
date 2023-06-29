@@ -2,6 +2,7 @@
 // Use of this source code is governed by a CC BY-NC-ND 4.0 license that can be
 // found in the LICENSE file.
 
+import 'dart:collection';
 import 'package:app_finance/_classes/data/abstract_recalculation.dart';
 import 'package:app_finance/_classes/data/goal_app_data.dart';
 import 'package:app_finance/_classes/data/summary_app_data.dart';
@@ -26,13 +27,15 @@ class GoalRecalculation extends AbstractRecalculation {
   }
 
   @override
-  GoalRecalculation updateTotal(SummaryAppData? summary) {
+  GoalRecalculation updateTotal(SummaryAppData? summary, HashMap<String, dynamic> hashTable) {
     var list = summary?.list;
     summary?.total = (list == null || list.isEmpty
         ? 0.0
         : list
-            .map<double>(
-                (dynamic element) => element.details * (1 - element.progress))
+            .map<double>((String uuid) {
+              var element = hashTable[uuid];
+              return element.details * (1 - element.progress);
+            })
             .reduce((value, details) => value + details));
     return this;
   }
