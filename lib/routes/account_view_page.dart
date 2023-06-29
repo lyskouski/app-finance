@@ -3,11 +3,11 @@
 // found in the LICENSE file.
 
 import 'package:adaptive_breakpoints/adaptive_breakpoints.dart';
-import 'package:app_finance/classes/account_app_data.dart';
-import 'package:app_finance/classes/app_menu.dart';
+import 'package:app_finance/_classes/data/account_app_data.dart';
+import 'package:app_finance/_classes/app_menu.dart';
 import 'package:app_finance/data.dart';
 import 'package:app_finance/helpers/theme_helper.dart';
-import 'package:app_finance/classes/app_route.dart';
+import 'package:app_finance/_classes/app_route.dart';
 import 'package:app_finance/routes/abstract_page.dart';
 import 'package:app_finance/widgets/home/base_list_widget.dart';
 import 'package:flutter/material.dart';
@@ -27,12 +27,12 @@ class AccountViewPage extends AbstractPage {
 class AccountViewPageState extends AbstractPageState<AccountViewPage> {
   @override
   String getTitle(context) {
-    final item = widget.state?.getByUuid(AppDataType.accounts, widget.uuid) as AccountAppData;
+    final item = widget.state?.getByUuid(widget.uuid) as AccountAppData;
     return item.title;
   }
 
   void deactivateAccount(BuildContext context) {
-    var data = widget.state?.getByUuid(AppDataType.accounts, widget.uuid) as AccountAppData;
+    var data = widget.state?.getByUuid(widget.uuid) as AccountAppData;
     data.hidden = true;
     widget.state?.update(AppDataType.accounts, widget.uuid, data);
     Navigator.pop(context);
@@ -63,7 +63,7 @@ class AccountViewPageState extends AbstractPageState<AccountViewPage> {
 
   @override
   Widget buildContent(BuildContext context, BoxConstraints constraints) {
-    final item = widget.state?.getByUuid(AppDataType.accounts, widget.uuid) as AccountAppData;
+    final item = widget.state?.getByUuid(widget.uuid) as AccountAppData;
     item.updateContext(context);
     double indent =
         ThemeHelper(windowType: getWindowType(context)).getIndent() * 2;

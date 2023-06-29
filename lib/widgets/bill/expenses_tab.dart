@@ -3,12 +3,13 @@
 // found in the LICENSE file.
 
 import 'package:adaptive_breakpoints/adaptive_breakpoints.dart';
-import 'package:app_finance/classes/app_route.dart';
-import 'package:app_finance/classes/bill_app_data.dart';
+import 'package:app_finance/_classes/app_route.dart';
+import 'package:app_finance/_classes/data/bill_app_data.dart';
 import 'package:app_finance/custom_text_theme.dart';
 import 'package:app_finance/data.dart';
 import 'package:app_finance/helpers/theme_helper.dart';
 import 'package:app_finance/widgets/forms/currency_selector.dart';
+import 'package:app_finance/widgets/forms/datet_time_input.dart';
 import 'package:app_finance/widgets/forms/list_account_selector.dart';
 import 'package:app_finance/widgets/forms/list_budget_selector.dart';
 import 'package:app_finance/widgets/forms/simple_input.dart';
@@ -27,6 +28,7 @@ class ExpensesTab extends StatefulWidget {
   Currency? currency;
   double? bill;
   String? description;
+  DateTime? createdAt;
 
   ExpensesTab({
     super.key,
@@ -36,6 +38,7 @@ class ExpensesTab extends StatefulWidget {
     this.currency,
     this.bill,
     this.description,
+    this.createdAt,
   });
 
   @override
@@ -49,13 +52,16 @@ class ExpensesTabState extends State<ExpensesTab> {
   }
 
   void updateStorage() {
-    widget.state?.add(AppDataType.bills, BillAppData(
-      account: widget.account ?? '',
-      category: widget.budget ?? '',
-      currency: widget.currency,
-      title: widget.description ?? '',
-      details: widget.bill,
-    ));
+    widget.state?.add(
+        AppDataType.bills,
+        BillAppData(
+          account: widget.account ?? '',
+          category: widget.budget ?? '',
+          currency: widget.currency,
+          title: widget.description ?? '',
+          details: widget.bill,
+          createdAt: widget.createdAt ?? DateTime.now(),
+        ));
   }
 
   Widget buildButton(BuildContext context, BoxConstraints constraints) {
@@ -125,9 +131,7 @@ class ExpensesTabState extends State<ExpensesTab> {
                   state: widget.state,
                   setState: (value) => setState(() {
                     widget.account = value;
-                    widget.currency ??= widget.state
-                        ?.getByUuid(AppDataType.accounts, value)
-                        .currency;
+                    widget.currency ??= widget.state?.getByUuid(value).currency;
                   }),
                   style: textTheme.numberMedium,
                   indent: indent,
@@ -153,14 +157,9 @@ class ExpensesTabState extends State<ExpensesTab> {
                   state: widget.state,
                   setState: (value) => setState(() {
                     widget.budget = value;
-                    var bdgCurrency = widget.state
-                        ?.getByUuid(AppDataType.budgets, value)
-                        .currency;
+                    var bdgCurrency = widget.state?.getByUuid(value).currency;
                     var accCurrency = widget.account != null
-                        ? widget.state
-                            ?.getByUuid(
-                                AppDataType.accounts, widget.account ?? '')
-                            .currency
+                        ? widget.state?.getByUuid(widget.account ?? '').currency
                         : null as Currency;
                     widget.currency = widget.currency == accCurrency
                         ? bdgCurrency
@@ -244,6 +243,17 @@ class ExpensesTabState extends State<ExpensesTab> {
                   style: textTheme.numberMedium,
                   setState: (value) =>
                       setState(() => widget.description = value),
+                ),
+                SizedBox(height: indent),
+                Text(
+                  AppLocalizations.of(context)!.expenseDateTime,
+                  style: textTheme.bodyLarge,
+                ),
+                DateTimeInput(
+                  style: textTheme.numberMedium,
+                  width: offset,
+                  value: widget.createdAt ?? DateTime.now(),
+                  setState: (value) => setState(() => widget.createdAt = value),
                 ),
               ],
             ),

@@ -1,0 +1,2776 @@
+% Copyright 2023 The terCAD team. All rights reserved.
+% Use of this content is governed by a CC BY-NC-ND 4.0 license that can be found in the LICENSE file.
+
+\subsection{[TBD] Prototyping}
+\markboth{Implementing Core Functionality}{Prototyping}
+
+Question: how to apply MainAxisAlignment.spaceBetween only for the last item
+
+Answer: In Flutter, you can apply MainAxisAlignment.spaceBetween to only the last item in a row or column by 
+wrapping the last item with an additional container or widget.
+
+\begin{lstlisting}
+Row(
+  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+  children: [
+    Row(
+        children: [
+            Container(
+            child: Text("Left 1"),
+            ),
+            Container(
+            child: Text("Left 2"),
+            ),
+        ]
+    ),
+    Container(
+      child: Text("Right 3"),
+    ),
+  ],
+)
+\end{lstlisting}
+
+
+Question: how to take max available width for the widget
+
+Answer: To take the maximum available width for a widget in Flutter, you can use the Expanded widget or 
+the Flexible widget. Both widgets allow a child widget to expand and take up all the remaining available 
+space within a row or column.
+
+\begin{lstlisting}
+Expanded(
+    child: Container(
+        color: Colors.red,
+        child: Text("Widget 2"),
+    ),
+),
+\end{lstlisting}
+
+Widget is wrapped in an Expanded widget, allowing it to take up the maximum available width within the row.
+
+The Flexible widget can be used instead of Expanded. The behavior is similar, allowing the 
+child widget to expand and take up the maximum available width within the row. Both the Expanded and Flexible 
+widgets can be used within a Row or Column to control the width or height, respectively, of the child widgets.
+
+
+Question: How to plot vertical progress bar
+
+Answer: To plot a vertical progress bar in Flutter, you can use the LinearProgressIndicator widget and rotate 
+it vertically using the Transform widget. 
+
+\begin{lstlisting}
+import 'package:flutter/material.dart';
+
+class VerticalProgressBar extends StatelessWidget {
+  final double value;
+  final Color color;
+  final double width;
+  final double height;
+
+  VerticalProgressBar({required this.value, this.color = Colors.blue, this.width = 10.0, this.height = 100.0});
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      width: width,
+      height: height,
+      child: Transform.rotate(
+        angle: -90 * 3.14 / 180, // Rotate the progress bar vertically
+        child: LinearProgressIndicator(
+          value: value,
+          backgroundColor: Colors.grey,
+          valueColor: AlwaysStoppedAnimation<Color>(color),
+        ),
+      ),
+    );
+  }
+}
+\end{lstlisting}
+
+In the example above, we define a VerticalProgressBar widget that accepts the value, color, width, and height as 
+parameters. The value represents the progress value between 0.0 and 1.0, color specifies the color of the 
+progress bar, and width and height define the dimensions of the progress bar.
+
+Inside the build method, we create a container with the specified width and height. Within the container, 
+we use the Transform.rotate widget to rotate the child widget, which is the LinearProgressIndicator, 
+by -90 degrees (counter-clockwise) to make it vertical. The LinearProgressIndicator is set up with the 
+provided value, backgroundColor, and valueColor properties.
+
+To use the VerticalProgressBar widget in your application, simply instantiate it and provide the necessary parameters:
+
+\begin{lstlisting}
+VerticalProgressBar(
+  value: 0.75, // Example value
+  color: Colors.blue, // Optional, default is blue
+  width: 10.0, // Optional, default width is 10.0
+  height: 100.0, // Optional, default height is 100.0
+)
+\end{lstlisting}
+
+
+Question: how to retrieve max height for nested Container
+
+Answer: To retrieve the maximum height for nested Container widgets in Flutter, you can use the LayoutBuilder 
+widget. The LayoutBuilder widget provides the constraints of its parent widget, which allows you to obtain 
+the maximum available height for its child widgets.
+
+\begin{lstlisting}
+LayoutBuilder(
+  builder: (BuildContext context, BoxConstraints constraints) {
+    final maxHeight = constraints.maxHeight;
+
+    return Container(
+      color: Colors.blue,
+      height: maxHeight,
+      child: Column(
+        children: [
+          Container(
+            color: Colors.red,
+            height: maxHeight * 0.5, // Example height based on a percentage of the maximum height
+          ),
+          Container(
+            color: Colors.green,
+            height: maxHeight * 0.3, // Example height based on a percentage of the maximum height
+          ),
+          Container(
+            color: Colors.yellow,
+            height: maxHeight * 0.2, // Example height based on a percentage of the maximum height
+          ),
+        ],
+      ),
+    );
+  },
+);
+\end{lstlisting}
+
+In the example above, we wrap the nested Container widgets with a LayoutBuilder widget. Inside the builder function, 
+we retrieve the maxHeight from the constraints provided by the LayoutBuilder. The maxHeight represents the 
+maximum available height within the parent widget.
+
+We then use the maxHeight value to set the desired heights of the nested Container widgets. In this example, 
+we set the heights to be a percentage of the maximum height.
+
+By using the LayoutBuilder widget, you can dynamically calculate and assign the maximum height to the nested 
+Container widgets based on the available space within their parent widget.
+\\
+That leads to our first error: The following assertion was thrown during performLayout(): 
+BoxConstraints forces an infinite width.
+
+Use the LayoutBuilder widget along with the ConstrainedBox widget.
+
+\begin{lstlisting}
+    LayoutBuilder(
+        builder: (BuildContext context, BoxConstraints constraints) {
+          final maxHeight = constraints.maxHeight;
+      
+          return Container(
+            color: Colors.blue,
+            child: Column(
+              children: [
+                ConstrainedBox(
+                  constraints: BoxConstraints(
+                    maxHeight: maxHeight * 0.5, // Example height based on a percentage of the maximum height
+                  ),
+                  child: Container(
+                    color: Colors.red,
+                  ),
+                ),
+                ConstrainedBox(
+                  constraints: BoxConstraints(
+                    maxHeight: maxHeight * 0.3, // Example height based on a percentage of the maximum height
+                  ),
+                  child: Container(
+                    color: Colors.green,
+                  ),
+                ),
+                ConstrainedBox(
+                  constraints: BoxConstraints(
+                    maxHeight: maxHeight * 0.2, // Example height based on a percentage of the maximum height
+                  ),
+                  child: Container(
+                    color: Colors.yellow,
+                  ),
+                ),
+              ],
+            ),
+          );
+        },
+      );      
+\end{lstlisting}
+
+In this updated example, we use the LayoutBuilder widget to retrieve the maxHeight from the constraints provided by 
+its parent. We then use the maxHeight value to set the maximum height of each Container widget by wrapping 
+them with ConstrainedBox widgets.
+
+Each ConstrainedBox widget sets the maxHeight of the nested Container based on a percentage of the maximum height. 
+Adjust the percentage values as needed to achieve the desired layout.
+
+That leads to error: The following assertion was thrown during performLayout():
+RenderFlex children have non-zero flex but incoming width constraints are unbounded.
+When a row is in a parent that does not provide a finite width constraint, for example if it is in a
+horizontal scrollable, it will try to shrink-wrap its children along the horizontal axis. Setting a
+flex on a child (e.g. using Expanded) indicates that the child is to expand to fill the remaining
+space in the horizontal direction.
+
+To address the error you encountered, you can use a combination of Expanded and FractionallySizedBox widgets. 
+
+\begin{lstlisting}
+LayoutBuilder(
+  builder: (BuildContext context, BoxConstraints constraints) {
+    final maxHeight = constraints.maxHeight;
+
+    return Container(
+      color: Colors.blue,
+      child: Column(
+        children: [
+          Expanded(
+            child: FractionallySizedBox(
+              alignment: Alignment.topCenter,
+              heightFactor: 0.5, // Example height factor based on a percentage of the maximum height
+              child: Container(
+                color: Colors.red,
+              ),
+            ),
+          ),
+          Expanded(
+            child: FractionallySizedBox(
+              alignment: Alignment.topCenter,
+              heightFactor: 0.3, // Example height factor based on a percentage of the maximum height
+              child: Container(
+                color: Colors.green,
+              ),
+            ),
+          ),
+          Expanded(
+            child: FractionallySizedBox(
+              alignment: Alignment.topCenter,
+              heightFactor: 0.2, // Example height factor based on a percentage of the maximum height
+              child: Container(
+                color: Colors.yellow,
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
+  },
+);
+\end{lstlisting}
+
+In this updated example, we use the LayoutBuilder widget to retrieve the maxHeight from the constraints provided 
+by its parent. We then use the maxHeight value to set the height of each Container widget by wrapping them 
+with FractionallySizedBox widgets.
+
+Each FractionallySizedBox widget sets the heightFactor of the nested Container based on a percentage of the 
+maximum height. The alignment property is set to Alignment.topCenter to align the content at the top.
+
+Using the combination of Expanded and FractionallySizedBox, the nested Container widgets will expand to occupy 
+the available height based on the provided height factors.
+
+
+Question: flutter default value in constructor
+
+Answer: In Flutter, you can assign default values to constructor parameters using the = operator. 
+
+\begin{lstlisting}
+class MyClass {
+  final int myValue;
+
+  MyClass({this.myValue = 10});
+}
+\end{lstlisting}
+
+In the example above, the MyClass constructor has a parameter myValue with a default value of 10. 
+If no value is provided for myValue when creating an instance of MyClass, it will default to 10.
+
+You can then create an instance of MyClass with or without providing a value for myValue:
+
+\begin{lstlisting}
+// Using the default value
+MyClass instance1 = MyClass();
+print(instance1.myValue); // Output: 10
+
+// Providing a custom value
+MyClass instance2 = MyClass(myValue: 20);
+print(instance2.myValue); // Output: 20    
+\end{lstlisting}
+
+In the first case, where no value is provided for myValue, it takes on the default value of 10. In the second case, 
+a custom value of 20 is provided, which overrides the default value.
+
+
+Question: What's the element for indent in a list of items
+
+Answer: If you want to add an indent or padding to each element in a list of items in Flutter, you can 
+wrap each item with a Padding widget.
+
+\begin{lstlisting}
+ListView(
+  children: myList.map((item) {
+    return Padding(
+      padding: EdgeInsets.symmetric(horizontal: 16.0),
+      child: ListTile(
+        title: Text(item),
+      ),
+    );
+  }).toList(),
+);
+\end{lstlisting}
+
+In the example above, we have a ListView with a list of items stored in the myList variable. We use the map 
+method to transform each item into a Padding widget wrapped around a ListTile. The Padding widget provides 
+horizontal padding of 16.0 on both sides.
+
+By using the map method, we iterate over each item in the list and return a Padding widget with the desired 
+padding applied. Finally, we convert the resulting list of Padding widgets to a list of children using the 
+toList method.
+
+This approach adds the specified horizontal padding to each item in the list, providing an indentation effect. 
+Adjust the horizontal value in the EdgeInsets.symmetric constructor to control the amount of indentation you want.
+
+
+Question: What's vertical intent component
+
+Answer: If you want to add vertical spacing or indentation between components in Flutter, you can use the 
+SizedBox or Container widget with a specified height. 
+
+\begin{lstlisting}
+Column(
+    children: [
+        Text('Component 1'),
+        SizedBox(height: 16.0), // Vertical spacing of 16.0
+        Text('Component 2'),
+        SizedBox(height: 32.0), // Vertical spacing of 32.0
+        Text('Component 3'),
+    ],
+    ) 
+\end{lstlisting}
+
+In the example above, we use a Column widget to arrange multiple components vertically. To add vertical spacing 
+between components, we insert a SizedBox widget with a specified height property. The height value determines 
+the amount of vertical spacing between components.
+
+You can adjust the height value to control the amount of vertical spacing you want between the components. 
+For example, 16.0 represents 16 logical pixels of spacing.
+
+Alternatively, you can use a Container widget with a height property to achieve the same effect:
+
+\begin{lstlisting}
+Column(
+  children: [
+    Text('Component 1'),
+    Container(height: 16.0), // Vertical spacing of 16.0
+    Text('Component 2'),
+    Container(height: 32.0), // Vertical spacing of 32.0
+    Text('Component 3'),
+  ],
+)
+\end{lstlisting}
+
+Both approaches allow you to add vertical spacing or indentation between components in a Column or any other 
+widget that arranges its children vertically.
+
+
+Question: show dot on LinearProgressIndicator by reposition one element on top of another.
+
+Answer: To reposition one element on top of another in Flutter, you can use a Stack widget and adjust the 
+positioning of the child widgets using the Positioned widget.
+
+\begin{lstlisting}
+import 'package:flutter/material.dart';
+
+void main() {
+  runApp(MyApp());
+}
+
+class MyApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      home: Scaffold(
+        appBar: AppBar(
+          title: Text('Element Repositioning Demo'),
+        ),
+        body: Center(
+          child: Stack(
+            children: [
+              Container(
+                width: 200,
+                height: 200,
+                color: Colors.blue,
+              ),
+              Positioned(
+                top: 100,
+                left: 100,
+                child: Container(
+                  width: 100,
+                  height: 100,
+                  color: Colors.red,
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
+\end{lstlisting}
+
+In this example, we use a Stack widget to overlay two containers. The first container represents the background 
+element and has a blue color. The second container represents the foreground element and has a red color.
+
+We use the Positioned widget to reposition the second container on top of the first container. By specifying 
+the top and left properties of the Positioned widget, we can adjust the position of the child widget relative 
+to the stack.
+
+In this case, the second container is positioned 100 pixels from the top and 100 pixels from the left, resulting 
+in it being centered on top of the first container.
+
+You can modify the width, height, colors, and positioning properties of the containers and adjust them 
+according to your specific requirements.
+
+By running this code in a Flutter project, you will see the second container positioned on top of the first 
+container based on the specified top and left values.
+
+
+it throw exception:
+The following assertion was thrown while applying parent data.:
+Incorrect use of ParentDataWidget.
+The ParentDataWidget Positioned wants to apply ParentData of type StackParentData to a RenderObject,
+which has been set up to accept ParentData of incompatible type FlexParentData.
+
+The error you encountered suggests that the parent data provided to the Positioned widget is not compatible 
+with the parent Stack widget.
+
+To resolve this issue, you can use a Positioned widget inside a Positioned.fill widget instead of directly 
+within the Stack widget.
+
+\begin{lstlisting}
+import 'package:flutter/material.dart';
+
+void main() {
+  runApp(MyApp());
+}
+
+class MyApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      home: Scaffold(
+        appBar: AppBar(
+          title: Text('Element Repositioning Demo'),
+        ),
+        body: Center(
+          child: Stack(
+            children: [
+              Container(
+                width: 200,
+                height: 200,
+                color: Colors.blue,
+              ),
+              Positioned.fill(
+                child: Container(
+                  alignment: Alignment.center,
+                  child: Container(
+                    width: 100,
+                    height: 100,
+                    color: Colors.red,
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
+\end{lstlisting}
+
+In this updated example, we use a Positioned.fill widget as the parent for the second container. The Positioned.fill 
+widget sizes itself to fill the available space within the Stack widget.
+
+The inner container is aligned to the center using the alignment property of the Positioned.fill widget. 
+The second container is then placed inside the Positioned.fill widget and sized with a width and height of 
+100 pixels, and given a red color.
+
+By wrapping the second container with Positioned.fill, it ensures that the second container will be positioned 
+on top of the first container within the Stack widget, without causing any conflicts with the parent data.
+
+You can modify the sizes, colors, and alignment properties according to your specific requirements. Running this 
+updated code in a Flutter project should display the second container positioned on top of the first container.
+
+
+If the previous approach didn't work for you, there is an alternative way to reposition elements using a Stack 
+widget and the Transform.translate widget.
+
+\begin{lstlisting}
+import 'package:flutter/material.dart';
+
+void main() {
+  runApp(MyApp());
+}
+
+class MyApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      home: Scaffold(
+        appBar: AppBar(
+          title: Text('Element Repositioning Demo'),
+        ),
+        body: Center(
+          child: Stack(
+            children: [
+              Container(
+                width: 200,
+                height: 200,
+                color: Colors.blue,
+              ),
+              Transform.translate(
+                offset: Offset(100, 100),
+                child: Container(
+                  width: 100,
+                  height: 100,
+                  color: Colors.red,
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
+\end{lstlisting}
+
+In this updated example, we use the Transform.translate widget to reposition the second container on top of the 
+first container. The offset property of Transform.translate allows you to specify the horizontal and vertical 
+displacement of the child widget.
+
+In this case, we set the offset to Offset(100, 100), which moves the second container 100 pixels to the right and 
+100 pixels down from its original position.
+
+You can adjust the values of offset according to your desired positioning. Additionally, you can modify the sizes 
+and colors of the containers to suit your needs.
+
+Running this updated code in a Flutter project should display the second container positioned on top of the first 
+container based on the specified offset values.
+
+
+Question: show tooltip for container
+
+Answer: To add a tooltip to a Container widget in Flutter, you can wrap the Container with a Tooltip widget. 
+The Tooltip widget provides a tooltip when the user hovers over or long-presses on the widget.
+
+\begin{lstlisting}
+import 'package:flutter/material.dart';
+
+void main() {
+    runApp(MyApp());
+}
+
+class MyApp extends StatelessWidget {
+    @override
+    Widget build(BuildContext context) {
+    return MaterialApp(
+        home: Scaffold(
+        appBar: AppBar(
+            title: Text('Tooltip Demo'),
+        ),
+        body: Center(
+            child: Tooltip(
+            message: 'This is a tooltip',
+            child: Container(
+                width: 200,
+                height: 200,
+                color: Colors.blue,
+            ),
+            ),
+        ),
+        ),
+    );
+    }
+}    
+\end{lstlisting}
+
+In this example, we wrap the Container widget with the Tooltip widget. The Tooltip widget requires a message parameter, 
+which represents the text to be displayed as the tooltip.
+
+By running this code in a Flutter project, you will see a blue container. When you hover over or long-press on 
+the container, a tooltip with the message "This is a tooltip" will appear.
+
+You can modify the message property of the Tooltip widget to display a different tooltip message. Additionally, 
+you can adjust the size, color, and other properties of the Container according to your specific requirements.
+
+
+Question: get full width for Offset
+
+Answer: To get the full width of the screen in Flutter, you can use the MediaQuery class to access the 
+device's screen size.
+
+\begin{lstlisting}
+import 'package:flutter/material.dart';
+
+void main() {
+  runApp(MyApp());
+}
+
+class MyApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    // Get the screen width
+    double screenWidth = MediaQuery.of(context).size.width;
+
+    return MaterialApp(
+      home: Scaffold(
+        appBar: AppBar(
+          title: Text('Full Width Example'),
+        ),
+        body: Center(
+          child: Container(
+            width: screenWidth,
+            height: 200,
+            color: Colors.blue,
+            child: Text(
+              'Full Width',
+              style: TextStyle(fontSize: 24, color: Colors.white),
+              textAlign: TextAlign.center,
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+}
+\end{lstlisting}
+
+In this example, we retrieve the screen width using MediaQuery.of(context).size.width and store it in the screenWidth 
+variable. Then, we use the screenWidth variable as the width of the Container widget to make it take up the full 
+width of the screen.
+
+You can access the screenWidth variable within your widget's build method and use it wherever you need to set 
+the width dynamically.
+
+By running this code in a Flutter project, you will see a blue container with a text "Full Width" centered 
+horizontally and taking up the full width of the screen.
+
+Remember to import the necessary dependencies (import 'package:flutter/material.dart';) and wrap your app with 
+the appropriate MaterialApp and Scaffold widgets.
+
+
+Question: First business logic
+if endDate <= currentDate then return 1
+if startDate = currentDate then return 0
+else return related float
+
+Answer: Based on your description, you can create a function that takes startDate, endDate, and currentDate as 
+parameters and returns a float value based on the conditions you mentioned. Here's an example implementation:
+
+\begin{lstlisting}
+double calculateValue(DateTime startDate, DateTime endDate, DateTime currentDate) {
+  if (endDate.isBefore(currentDate) || endDate.isAtSameMomentAs(currentDate)) {
+    return 1.0;
+  } else if (startDate.isAtSameMomentAs(currentDate)) {
+    return 0.0;
+  } else {
+    double totalDays = endDate.difference(startDate).inDays.toDouble();
+    double currentDays = currentDate.difference(startDate).inDays.toDouble();
+    return currentDays / totalDays;
+  }
+}
+\end{lstlisting}
+
+In this example, the calculateValue function takes three DateTime parameters: startDate, endDate, and currentDate.
+
+If endDate is less than or equal to currentDate, it means the end date has passed or is the same as 
+the current date, so we return 1.0.
+If startDate is the same as currentDate, we return 0.0.
+Otherwise, we calculate the float value based on the ratio of the number of days between startDate and 
+currentDate to the total number of days between startDate and endDate.
+
+To get the current date in Flutter, you can use the DateTime class along with the DateTime.now() method. 
+
+Question: debug by plotting into console values
+
+Answer: To debug and plot values in the console in Flutter, you can use the print() function to display 
+the values of variables or expressions. 
+
+\begin{lstlisting}
+void main() {
+  double value = 3.14159;
+  String name = 'John Doe';
+  int count = 42;
+
+  print('Value: $value');
+  print('Name: $name');
+  print('Count: $count');
+}
+\end{lstlisting}
+
+In this example, we have a double variable named value, a String variable named name, and an int variable named count. 
+We use the print() function to display their values in the console.
+
+By running this code in a Flutter project, you will see the values of value, name, and count printed in the console 
+output. The values will be displayed along with their respective variable names.
+
+You can apply the print() function wherever you need to debug and plot values in your code. You can also combine 
+variables and strings using string interpolation, as shown in the example, to format the output and provide 
+additional context for the displayed values.
+
+
+Question: Make content scrollable
+
+Answer: To make the content of a Flutter widget scrollable, you can wrap it with a SingleChildScrollView widget. 
+The SingleChildScrollView allows its child to scroll vertically when its content exceeds the available vertical space.
+
+\begin{lstlisting}
+import 'package:flutter/material.dart';
+
+void main() {
+  runApp(MyApp());
+}
+
+class MyApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      home: Scaffold(
+        appBar: AppBar(
+          title: Text('Scrollable Content Example'),
+        ),
+        body: SingleChildScrollView(
+          child: Container(
+            height: 1000, // Set a larger height to demonstrate scrolling
+            color: Colors.yellow,
+            child: Center(
+              child: Text(
+                'Scrollable Content',
+                style: TextStyle(fontSize: 24),
+              ),
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+}
+\end{lstlisting}
+
+In this example, we wrap the Container widget with SingleChildScrollView. The Container has a fixed height of 1000 to 
+exceed the available vertical space, so it requires scrolling.
+
+By running this code in a Flutter project, you will see a yellow container with the text "Scrollable Content" 
+centered within it. If the container's height exceeds the available vertical space, you will be able to scroll 
+vertically to see the entire content.
+
+Feel free to adjust the size, color, and content of the Container widget according to your requirements. The 
+SingleChildScrollView will enable scrolling when needed, allowing you to display scrollable content in your app.
+
+Question: how to avoid bottom overflow error on screen
+
+Answer: o avoid the "Bottom overflowed by..." error in Flutter, you can make use of widgets that provide built-in 
+scrolling behavior, such as ListView, Column inside a SingleChildScrollView, or CustomScrollView.
+
+\begin{lstlisting}
+    import 'package:flutter/material.dart';
+
+    void main() {
+      runApp(MyApp());
+    }
+    
+    class MyApp extends StatelessWidget {
+      @override
+      Widget build(BuildContext context) {
+        return MaterialApp(
+          home: Scaffold(
+            appBar: AppBar(
+              title: Text('Avoid Bottom Overflow Error'),
+            ),
+            body: ListView(
+              children: <Widget>[
+                // Add your widgets here
+                // ...
+              ],
+            ),
+          ),
+        );
+      }
+    }    
+\end{lstlisting}
+
+In this example, instead of using a regular Container or Column as the body of the Scaffold, we use a ListView widget. 
+The ListView automatically provides scrolling behavior when the content exceeds the available vertical space.
+
+By using a ListView, you can add as many child widgets as needed, and if the content exceeds the screen's height, 
+the list will become scrollable, preventing the bottom overflow error.
+
+Alternatively, you can wrap a Column widget with a SingleChildScrollView if you need more flexibility in organizing 
+your content vertically.
+
+\begin{lstlisting}
+body: SingleChildScrollView(
+  child: Column(
+    children: <Widget>[
+      // Add your widgets here
+      // ...
+    ],
+  ),
+),
+\end{lstlisting}
+
+By using a SingleChildScrollView with a Column, the content inside the Column will be scrollable if it exceeds the 
+available vertical space.
+
+Question: how to hide ListView on small screen based on height
+
+Answer: To hide a ListView on a small screen based on its height, you can use the MediaQuery widget to access the 
+screen dimensions and conditionally render the ListView based on a specific height threshold.
+
+\begin{lstlisting}
+import 'package:flutter/material.dart';
+
+void main() {
+  runApp(MyApp());
+}
+
+class MyApp extends StatelessWidget {
+  final double screenHeightThreshold = 600; // Adjust the threshold value as needed
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      home: Scaffold(
+        appBar: AppBar(
+          title: Text('Hide ListView Example'),
+        ),
+        body: LayoutBuilder(
+          builder: (BuildContext context, BoxConstraints constraints) {
+            double screenHeight = MediaQuery.of(context).size.height;
+
+            if (screenHeight < screenHeightThreshold) {
+              // Hide the ListView on small screens
+              return Container();
+            } else {
+              // Show the ListView on large screens
+              return ListView(
+                children: <Widget>[
+                  // Add your ListView children here
+                  // ...
+                ],
+              );
+            }
+          },
+        ),
+      ),
+    );
+  }
+}
+\end{lstlisting}
+
+In this example, we use the LayoutBuilder widget to access the available screen size. We retrieve the screen height 
+using MediaQuery.of(context).size.height. We then compare the screenHeight with a screenHeightThreshold value 
+(in this case, 600), and if the screenHeight is below the threshold, we return an empty Container widget, 
+effectively hiding the ListView. If the screenHeight is equal to or greater than the threshold, we return 
+the ListView with its children.
+
+You can adjust the screenHeightThreshold value to match your desired screen height breakpoint where the ListView 
+should be hidden. This approach allows you to conditionally render the ListView based on the screen height, 
+providing a responsive and adaptable UI.
+
+
+Question: how to hide ListView on small screen based on constraints sizes
+
+Answer: To hide a ListView on a small screen based on its constraints sizes, you can use the LayoutBuilder widget to 
+access the constraints and conditionally render the ListView based on specific size constraints.
+
+\begin{lstlisting}
+import 'package:flutter/material.dart';
+
+void main() {
+  runApp(MyApp());
+}
+
+class MyApp extends StatelessWidget {
+  final double minWidthThreshold = 400; // Adjust the minimum width threshold
+  final double minHeightThreshold = 600; // Adjust the minimum height threshold
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      home: Scaffold(
+        appBar: AppBar(
+          title: Text('Hide ListView Example'),
+        ),
+        body: LayoutBuilder(
+          builder: (BuildContext context, BoxConstraints constraints) {
+            double minWidth = constraints.minWidth;
+            double minHeight = constraints.minHeight;
+
+            if (minWidth < minWidthThreshold || minHeight < minHeightThreshold) {
+              // Hide the ListView on small screens
+              return Container();
+            } else {
+              // Show the ListView on large screens
+              return ListView(
+                children: <Widget>[
+                  // Add your ListView children here
+                  // ...
+                ],
+              );
+            }
+          },
+        ),
+      ),
+    );
+  }
+}
+\end{lstlisting}
+
+In this example, we use the LayoutBuilder widget to access the constraints provided by its parent. We retrieve the 
+minimum width and minimum height of the constraints using constraints.minWidth and constraints.minHeight. We then 
+compare these values with the respective thresholds (minWidthThreshold and minHeightThreshold), and if either the 
+minimum width or minimum height is below the threshold, we return an empty Container widget, effectively hiding 
+the ListView. If both the minimum width and minimum height meet or exceed the thresholds, we return the ListView 
+with its children.
+
+You can adjust the minWidthThreshold and minHeightThreshold values to match your desired size constraints where 
+the ListView should be hidden. This approach allows you to conditionally render the ListView based on the 
+constraints sizes, providing a responsive and adaptable UI.
+
+Question: Add button to appbar
+
+Answer: To add a button to the AppBar in Flutter, you can use the actions property of the AppBar and provide a 
+list of widgets that represent the buttons you want to add.
+
+\begin{lstlisting}
+import 'package:flutter/material.dart';
+
+void main() {
+  runApp(MyApp());
+}
+
+class MyApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      home: Scaffold(
+        appBar: AppBar(
+          title: Text('AppBar with Button'),
+          actions: [
+            IconButton(
+              icon: Icon(Icons.settings),
+              onPressed: () {
+                // Add your button's onPressed logic here
+                // ...
+              },
+            ),
+          ],
+        ),
+        body: Center(
+          child: Text('Content goes here'),
+        ),
+      ),
+    );
+  }
+}
+\end{lstlisting}
+
+In this example, we add an IconButton to the actions property of the AppBar. The IconButton displays an icon (in this 
+case, the "settings" icon) and invokes the onPressed callback when pressed. Inside the onPressed callback, you can 
+define the logic that should be executed when the button is pressed.
+
+You can customize the appearance and behavior of the button by using different types of widgets, such as IconButton, 
+FlatButton, RaisedButton, or TextButton. Choose the widget that best suits your needs and customize it accordingly.
+
+By running this code in a Flutter project, you will see an AppBar with a title and a button on the right side. When 
+you tap the button, the onPressed callback will be invoked, allowing you to define the desired behavior for your button.
+
+
+Question: add navigation menu
+
+Answer: To add a navigation menu, you can use the Drawer widget in Flutter. The Drawer provides a panel that slides 
+in from the left or right side of the screen to display navigation options or settings.
+
+\begin{lstlisting}
+import 'package:flutter/material.dart';
+
+void main() {
+  runApp(MyApp());
+}
+
+class MyApp extends StatelessWidget {
+  void _navigateToPage(BuildContext context, String routeName) {
+    Navigator.pop(context); // Close the drawer
+    Navigator.pushNamed(context, routeName); // Navigate to the specified route
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      home: Scaffold(
+        appBar: AppBar(
+          title: Text('Navigation Menu Example'),
+        ),
+        drawer: Drawer(
+          child: ListView(
+            padding: EdgeInsets.zero,
+            children: [
+              DrawerHeader(
+                decoration: BoxDecoration(
+                  color: Colors.blue,
+                ),
+                child: Text(
+                  'Navigation Menu',
+                  style: TextStyle(
+                    fontSize: 24,
+                    color: Colors.white,
+                  ),
+                ),
+              ),
+              ListTile(
+                leading: Icon(Icons.home),
+                title: Text('Home'),
+                onTap: () => _navigateToPage(context, '/home'),
+              ),
+              ListTile(
+                leading: Icon(Icons.settings),
+                title: Text('Settings'),
+                onTap: () => _navigateToPage(context, '/settings'),
+              ),
+            ],
+          ),
+        ),
+        body: Center(
+          child: Text('Content goes here'),
+        ),
+      ),
+    );
+  }
+}
+\end{lstlisting}
+
+In this example, we create a Drawer and provide it as the drawer property of the Scaffold. Inside the Drawer, we use 
+a ListView with a DrawerHeader and a list of ListTile widgets representing the navigation options.
+
+Each ListTile represents a navigation item and is assigned an icon, title, and an onTap callback. In the onTap 
+callback, we close the drawer using Navigator.pop(context) and navigate to the desired route using 
+Navigator.pushNamed(context, routeName).
+
+You can customize the appearance and behavior of the navigation menu by modifying the icons, titles, and onTap 
+callbacks of the ListTile widgets. Additionally, you can add more navigation options or additional widgets inside 
+the Drawer to suit your app's needs.
+
+By running this code in a Flutter project, you will see an AppBar with a navigation menu icon (typically three 
+horizontal lines or a menu icon). Tapping the menu icon will open the navigation menu, and tapping on a navigation 
+item will close the drawer and navigate to the corresponding page.
+
+Remember to define the routes for the different pages in your app using MaterialApp or Navigator so that the 
+navigation can be properly handled.
+
+
+Question: How to stylize Drawer
+
+Answer: To stylize the Drawer in Flutter, you can customize various aspects such as the background color, text 
+style, and item icons. 
+
+\begin{lstlisting}
+import 'package:flutter/material.dart';
+
+void main() {
+  runApp(MyApp());
+}
+
+class MyApp extends StatelessWidget {
+  void _navigateToPage(BuildContext context, String routeName) {
+    Navigator.pop(context); // Close the drawer
+    Navigator.pushNamed(context, routeName); // Navigate to the specified route
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      home: Scaffold(
+        appBar: AppBar(
+          title: Text('Stylized Drawer Example'),
+        ),
+        drawer: Drawer(
+          child: Container(
+            color: Colors.grey[900], // Set the background color
+            child: ListView(
+              padding: EdgeInsets.zero,
+              children: [
+                DrawerHeader(
+                  decoration: BoxDecoration(
+                    color: Colors.blue,
+                  ),
+                  child: Text(
+                    'Navigation Menu',
+                    style: TextStyle(
+                      fontSize: 24,
+                      color: Colors.white,
+                    ),
+                  ),
+                ),
+                ListTile(
+                  leading: Icon(
+                    Icons.home,
+                    color: Colors.white, // Set the icon color
+                  ),
+                  title: Text(
+                    'Home',
+                    style: TextStyle(
+                      fontSize: 16,
+                      color: Colors.white, // Set the text color
+                    ),
+                  ),
+                  onTap: () => _navigateToPage(context, '/home'),
+                ),
+                ListTile(
+                  leading: Icon(
+                    Icons.settings,
+                    color: Colors.white, // Set the icon color
+                  ),
+                  title: Text(
+                    'Settings',
+                    style: TextStyle(
+                      fontSize: 16,
+                      color: Colors.white, // Set the text color
+                    ),
+                  ),
+                  onTap: () => _navigateToPage(context, '/settings'),
+                ),
+              ],
+            ),
+          ),
+        ),
+        body: Center(
+          child: Text('Content goes here'),
+        ),
+      ),
+    );
+  }
+}
+\end{lstlisting}
+
+In this example, we make the following style modifications to the Drawer:
+
+We set the background color of the Drawer container using the color property of the Container widget. In this case, 
+we set it to Colors.grey[900].
+We customize the text style of the navigation items by setting the fontSize and color properties of the Text widget.
+We customize the icon color of the navigation items by setting the color property of the Icon widget.
+We can also customize other aspects such as the decoration of the DrawerHeader, which sets the background color for
+the header section.
+
+Feel free to adjust these styles according to your preferences. You can modify the colors, font sizes, and other 
+properties to match your app's design.
+
+By running this code in a Flutter project, you will see a stylized Drawer with a customized background color, text 
+style, and icon color.
+
+Question: remove rounded corners for Drawer
+
+Answer: To remove the rounded corners of the Drawer in Flutter and make it have straight edges, you can use the 
+ShapeBorder property of the Drawer to define a custom shape without rounded corners.
+
+\begin{lstlisting}
+import 'package:flutter/material.dart';
+
+void main() {
+  runApp(MyApp());
+}
+
+class MyApp extends StatelessWidget {
+  void _navigateToPage(BuildContext context, String routeName) {
+    Navigator.pop(context); // Close the drawer
+    Navigator.pushNamed(context, routeName); // Navigate to the specified route
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      home: Scaffold(
+        appBar: AppBar(
+          title: Text('Drawer without Rounded Corners'),
+        ),
+        drawer: Drawer(
+          elevation: 0, // Remove the elevation (shadow) of the drawer
+          shape: Border.all(width: 0), // Set a border without any width
+          child: Container(
+            color: Colors.grey[900], // Set the background color
+            child: ListView(
+              padding: EdgeInsets.zero,
+              children: [
+                DrawerHeader(
+                  decoration: BoxDecoration(
+                    color: Colors.blue,
+                  ),
+                  child: Text(
+                    'Navigation Menu',
+                    style: TextStyle(
+                      fontSize: 24,
+                      color: Colors.white,
+                    ),
+                  ),
+                ),
+                ListTile(
+                  leading: Icon(
+                    Icons.home,
+                    color: Colors.white, // Set the icon color
+                  ),
+                  title: Text(
+                    'Home',
+                    style: TextStyle(
+                      fontSize: 16,
+                      color: Colors.white, // Set the text color
+                    ),
+                  ),
+                  onTap: () => _navigateToPage(context, '/home'),
+                ),
+                ListTile(
+                  leading: Icon(
+                    Icons.settings,
+                    color: Colors.white, // Set the icon color
+                  ),
+                  title: Text(
+                    'Settings',
+                    style: TextStyle(
+                      fontSize: 16,
+                      color: Colors.white, // Set the text color
+                    ),
+                  ),
+                  onTap: () => _navigateToPage(context, '/settings'),
+                ),
+              ],
+            ),
+          ),
+        ),
+        body: Center(
+          child: Text('Content goes here'),
+        ),
+      ),
+    );
+  }
+}
+\end{lstlisting}
+
+In this example, we modify the Drawer by setting the following properties:
+
+We set the elevation property of the Drawer to 0 to remove the elevation (shadow) effect.
+We set the shape property of the Drawer to a Border with zero width. This effectively removes the rounded 
+corners and gives the drawer straight edges.
+We wrap the Drawer content in a Container and set its background color using the color property.
+
+By running this code in a Flutter project, you will see a Drawer without rounded corners and with a customized 
+background color.
+
+
+Question: Center vertically ListView
+
+Answer: To center a ListView vertically in Flutter, you can wrap it with a Container and use the alignment property 
+to align the contents vertically.
+
+\begin{lstlisting}
+import 'package:flutter/material.dart';
+
+void main() {
+  runApp(MyApp());
+}
+
+class MyApp extends StatelessWidget {
+  List<String> items = [
+    'Item 1',
+    'Item 2',
+    'Item 3',
+    'Item 4',
+    'Item 5',
+  ];
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      home: Scaffold(
+        appBar: AppBar(
+          title: Text('Centered ListView'),
+        ),
+        body: Container(
+          alignment: Alignment.center,
+          child: ListView.builder(
+            itemCount: items.length,
+            itemBuilder: (context, index) {
+              return ListTile(
+                title: Text(items[index]),
+              );
+            },
+          ),
+        ),
+      ),
+    );
+  }
+}
+\end{lstlisting}
+
+In this example, we wrap the ListView.builder with a Container and set the alignment property to Alignment.center. 
+This centers the ListView vertically within the available space.
+
+You can customize the ListView by providing your own data and modifying the itemBuilder function to create the 
+desired list items.
+
+Run this code in a Flutter project to see the ListView centered vertically on the screen.
+
+
+Question: get indent between children of ListView
+
+Answer: To add indentation or spacing between children in a ListView, you can utilize the ListView.separated 
+constructor instead of ListView.builder. The ListView.separated constructor allows you to specify a separator 
+widget that will be inserted between each pair of children.
+
+\begin{lstlisting}
+import 'package:flutter/material.dart';
+
+void main() {
+  runApp(MyApp());
+}
+
+class MyApp extends StatelessWidget {
+  List<String> items = [
+    'Item 1',
+    'Item 2',
+    'Item 3',
+    'Item 4',
+    'Item 5',
+  ];
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      home: Scaffold(
+        appBar: AppBar(
+          title: Text('Indented ListView'),
+        ),
+        body: Container(
+          alignment: Alignment.center,
+          child: ListView.separated(
+            itemCount: items.length,
+            separatorBuilder: (context, index) => SizedBox(height: 16.0),
+            itemBuilder: (context, index) {
+              return ListTile(
+                title: Text(items[index]),
+              );
+            },
+          ),
+        ),
+      ),
+    );
+  }
+}
+\end{lstlisting}
+
+To add indentation or spacing between children in a ListView, you can utilize the ListView.separated constructor 
+instead of ListView.builder. The ListView.separated constructor allows you to specify a separator widget that will 
+be inserted between each pair of children.
+
+Here's an example that demonstrates how to add indentation between ListTile widgets in a ListView:
+
+\begin{lstlisting}
+import 'package:flutter/material.dart';
+
+void main() {
+  runApp(MyApp());
+}
+
+class MyApp extends StatelessWidget {
+  List<String> items = [
+    'Item 1',
+    'Item 2',
+    'Item 3',
+    'Item 4',
+    'Item 5',
+  ];
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      home: Scaffold(
+        appBar: AppBar(
+          title: Text('Indented ListView'),
+        ),
+        body: Container(
+          alignment: Alignment.center,
+          child: ListView.separated(
+            itemCount: items.length,
+            separatorBuilder: (context, index) => SizedBox(height: 16.0),
+            itemBuilder: (context, index) {
+              return ListTile(
+                title: Text(items[index]),
+              );
+            },
+          ),
+        ),
+      ),
+    );
+  }
+}
+\end{lstlisting}
+
+In this example, we use ListView.separated instead of ListView.builder. We provide a separatorBuilder function that 
+returns a SizedBox with a height of 16.0 between each pair of ListTile widgets.
+
+Feel free to adjust the value of 16.0 to increase or decrease the indentation between the ListTile widgets according 
+to your desired spacing.
+
+
+Question: on hover for Drawer
+
+Answer: To add a hover effect for the items in a Flutter Drawer, you can use the MouseRegion widget to detect mouse 
+events and change the styling of the drawer items accordingly. 
+
+\begin{lstlisting}
+import 'package:flutter/material.dart';
+
+void main() {
+  runApp(MyApp());
+}
+
+class MyApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      home: Scaffold(
+        appBar: AppBar(
+          title: Text('Drawer with Hover Effect'),
+        ),
+        drawer: MyDrawer(),
+        body: Center(
+          child: Text('Content of the Page'),
+        ),
+      ),
+    );
+  }
+}
+
+class MyDrawer extends StatelessWidget {
+  final List<String> drawerItems = [
+    'Item 1',
+    'Item 2',
+    'Item 3',
+  ];
+
+  @override
+  Widget build(BuildContext context) {
+    return Drawer(
+      child: ListView.builder(
+        itemCount: drawerItems.length,
+        itemBuilder: (context, index) {
+          return MouseRegion(
+            onEnter: (event) {
+              // Handle mouse enter event
+              // You can change the style of the drawer item here
+            },
+            onExit: (event) {
+              // Handle mouse exit event
+              // You can reset the style of the drawer item here
+            },
+            child: ListTile(
+              title: Text(drawerItems[index]),
+              onTap: () {
+                // Handle item tap event
+              },
+            ),
+          );
+        },
+      ),
+    );
+  }
+}
+\end{lstlisting}
+
+In this example, we create a custom MyDrawer widget that extends StatelessWidget and represents the drawer content. 
+Inside the build method of MyDrawer, we use a ListView.builder to build the list of drawer items dynamically.
+
+For each drawer item, we wrap it with a MouseRegion widget to detect mouse enter and exit events. You can customize 
+the styling of the drawer item based on these events.
+
+Inside the MouseRegion, we have a ListTile widget representing each drawer item. You can handle the onTap event to 
+perform specific actions when the item is clicked.
+
+Question: highlight by hover
+
+Answer: To add a hover effect to the items in a Flutter Drawer and highlight them when hovered, you can use the 
+InkWell widget along with the onHover property.
+
+\begin{lstlisting}
+import 'package:flutter/material.dart';
+
+void main() {
+  runApp(MyApp());
+}
+
+class MyApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      home: Scaffold(
+        appBar: AppBar(
+          title: Text('Drawer with Hover Highlight'),
+        ),
+        drawer: MyDrawer(),
+        body: Center(
+          child: Text('Content of the Page'),
+        ),
+      ),
+    );
+  }
+}
+
+class MyDrawer extends StatefulWidget {
+  @override
+  _MyDrawerState createState() => _MyDrawerState();
+}
+
+class _MyDrawerState extends State<MyDrawer> {
+  int selectedIndex = 0;
+
+  List<String> drawerItems = [
+    'Item 1',
+    'Item 2',
+    'Item 3',
+  ];
+
+  @override
+  Widget build(BuildContext context) {
+    return Drawer(
+      child: ListView.builder(
+        itemCount: drawerItems.length,
+        itemBuilder: (context, index) {
+          return InkWell(
+            onTap: () {
+              setState(() {
+                selectedIndex = index;
+              });
+              // Handle item tap event
+            },
+            onHover: (isHovered) {
+              if (isHovered) {
+                setState(() {
+                  selectedIndex = index;
+                });
+              }
+            },
+            child: Container(
+              color: selectedIndex == index ? Colors.blue.withOpacity(0.2) : null,
+              child: ListTile(
+                title: Text(drawerItems[index]),
+              ),
+            ),
+          );
+        },
+      ),
+    );
+  }
+}
+\end{lstlisting}
+
+In this example, we have a MyDrawer widget that extends StatefulWidget to maintain the selected index state. Inside 
+the build method, we create a Drawer and use a ListView.builder to dynamically build the drawer items.
+
+For each item, we wrap it with an InkWell widget to handle tap and hover events. The onTap callback is triggered 
+when the item is clicked, and the onHover callback is triggered when the item is hovered.
+
+Inside the InkWell, we have a Container that applies a background color to the item when it is selected or hovered. 
+You can modify the color and opacity to match your desired highlighting effect.
+
+Question: how to identify horizontal layout
+
+Answer: To identify whether a Flutter widget is using a horizontal layout, you can check the constraints and layout 
+properties of the widget. Here are a few approaches to determine the horizontal layout:
+
+Check the BoxConstraints: You can inspect the BoxConstraints of the widget to determine the available width and 
+height. If the width constraint is greater than the height constraint, it indicates a horizontal layout.
+
+\begin{lstlisting}
+LayoutBuilder(
+  builder: (context, constraints) {
+    if (constraints.maxWidth > constraints.maxHeight) {
+      // Horizontal layout
+      return Container(
+        color: Colors.red,
+        width: constraints.maxWidth,
+        height: constraints.maxHeight,
+      );
+    } else {
+      // Vertical layout
+      return Container(
+        color: Colors.blue,
+        width: constraints.maxWidth,
+        height: constraints.maxHeight,
+      );
+    }
+  },
+)
+\end{lstlisting}
+
+In this example, the LayoutBuilder widget provides the constraints of its parent. By comparing the maxWidth and 
+maxHeight, you can determine if the layout is horizontal or vertical.
+
+Check the Orientation of the device: If you want to detect the device's orientation and identify a horizontal 
+layout, you can use the MediaQuery to access the device's orientation. 
+
+\begin{lstlisting}
+if (MediaQuery.of(context).orientation == Orientation.landscape) {
+    // Horizontal layout
+    return Container(
+        color: Colors.red,
+        width: MediaQuery.of(context).size.width,
+        height: MediaQuery.of(context).size.height,
+    );
+} else {
+    // Vertical layout
+    return Container(
+        color: Colors.blue,
+        width: MediaQuery.of(context).size.width,
+        height: MediaQuery.of(context).size.height,
+    );
+}
+\end{lstlisting}
+
+In this example, the MediaQuery.of(context).orientation provides the current device orientation, and you can use it 
+to conditionally render different layouts.
+
+Question: Flutter Container overflow with dots
+
+Answer: To create a container with overflow dots in Flutter, you can use the Text widget with the overflow 
+property set to TextOverflow.ellipsis
+
+\begin{lstlisting}
+Container(
+    width: 200,
+    child: Text(
+        'This is a long text that may overflow the container',
+        overflow: TextOverflow.ellipsis,
+    ),
+)      
+\end{lstlisting}
+
+In this example, the Container has a fixed width of 200 pixels. The Text widget inside the Container contains a 
+long text. By setting the overflow property of the Text widget to TextOverflow.ellipsis, the text will be truncated 
+with an ellipsis (...) if it overflows the available width of the container.
+
+If you want to display the overflow dots at the end of the text, you can wrap the Text widget with a Row and an 
+Expanded widget. 
+
+\begin{lstlisting}
+Container(
+  width: 200,
+  child: Row(
+    children: [
+      Expanded(
+        child: Text(
+          'This is a long text that may overflow the container',
+          overflow: TextOverflow.ellipsis,
+        ),
+      ),
+    ],
+  ),
+)
+\end{lstlisting}
+
+In this updated example, the Text widget is wrapped with an Expanded widget, which allows the text to take up the 
+remaining space within the Row. If the text overflows the available space, the ellipsis will be displayed at the 
+end of the text.
+
+
+Question: width half of screen
+
+Answer: To set the width of a container to half of the screen in Flutter, you can use the MediaQuery to get the 
+screen size and calculate the desired width. 
+
+\begin{lstlisting}
+Container(
+  width: MediaQuery.of(context).size.width * 0.5,
+)
+\end{lstlisting}
+
+In this example, MediaQuery.of(context).size.width retrieves the total width of the screen. By multiplying it with 0.5
+ (half), you can set the width of the container to half of the screen width.
+
+Make sure to use this code within a widget's build method and pass context as the parameter to access the current 
+context.
+
+Question: tooltip for container
+
+Answer: To add a tooltip to a Flutter container, you can use the Tooltip widget as a parent to the container. 
+
+\begin{lstlisting}
+Tooltip(
+    message: 'This is a tooltip',
+    child: Container(
+        width: 200,
+        height: 50,
+        color: Colors.blue,
+        // other properties and child widgets
+    ),
+)      
+\end{lstlisting}
+
+In this example, the Tooltip widget wraps around the Container widget. The message property of the Tooltip widget 
+defines the text to be displayed as the tooltip when the user hovers over or long-presses on the container.
+
+You can customize the appearance of the tooltip by specifying additional properties for the Tooltip widget, such 
+as preferBelow to control the placement of the tooltip below the container, verticalOffset to adjust the vertical 
+position of the tooltip, and height to set a specific height for the tooltip.
+
+By wrapping the container with the Tooltip widget, you can provide additional contextual information or descriptions 
+to the user when interacting with the container in your Flutter application.
+
+Question: how to extend TextTheme with own parameters
+
+Answer: To extend the TextTheme in Flutter with your own custom parameters, you can create a new TextTheme instance 
+and provide values for the desired properties.
+
+\begin{lstlisting}
+TextTheme myTextTheme = TextTheme(
+  headline1: TextStyle(fontSize: 32, fontWeight: FontWeight.bold),
+  headline2: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+  numberLarge: TextStyle(fontSize: 48, fontWeight: FontWeight.bold), // Custom property
+);
+\end{lstlisting}
+
+In this example, we create a new TextTheme called myTextTheme. We define the headline1 and headline2 properties with 
+custom font sizes and font weights. Additionally, we add a custom property called numberLarge with a larger font size.
+
+However, please note that the error you mentioned (The named parameter 'numberLarge' isn't defined) occurs because 
+numberLarge is not a built-in property of TextTheme. To define custom properties, you need to create your own 
+extension of the TextTheme class.
+
+Here's an example of how you can create a custom extension of TextTheme:
+
+\begin{lstlisting}
+extension MyTextTheme on TextTheme {
+  TextStyle get numberLarge => TextStyle(fontSize: 48, fontWeight: FontWeight.bold);
+}
+\end{lstlisting}
+
+By using an extension, you can define additional properties or methods for the TextTheme class. In this case, 
+the numberLarge property is added to the TextTheme class, allowing you to access it directly from an instance of 
+TextTheme.
+
+You can then use your custom TextTheme and the extended properties in your app as follows:
+
+\begin{lstlisting}
+MaterialApp(
+  theme: ThemeData(
+    textTheme: myTextTheme,
+  ),
+  // other app configuration
+)
+\end{lstlisting}
+
+By setting the textTheme property of your app's ThemeData to your custom TextTheme instance, you can apply the 
+extended properties throughout your app.
+
+To have an effect inside different files do not forget to include the theme:
+\begin{lstlisting}
+import 'package:app_finance/custom_text_theme.dart';
+\end{lstlisting}
+
+Otherwise your customizations won't be visible.
+
+
+Question: will use theme dark and light modes?
+
+Answer: to extend the TextTheme for both dark and light modes
+
+\begin{lstlisting}
+extension MyTextTheme on TextTheme {
+  TextStyle get numberLarge => TextStyle(fontSize: 48, fontWeight: FontWeight.bold);
+}
+
+class MyApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      theme: ThemeData.light().copyWith(
+        textTheme: TextTheme().apply(
+          bodyColor: Colors.black, // Customize text color for light mode
+        ),
+      ),
+      darkTheme: ThemeData.dark().copyWith(
+        textTheme: TextTheme().apply(
+          bodyColor: Colors.white, // Customize text color for dark mode
+        ),
+      ),
+      themeMode: ThemeMode.system, // Use system theme mode (light or dark based on device settings)
+      home: MyHomePage(),
+    );
+  }
+}
+
+class MyHomePage extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text(
+          'My App',
+          style: Theme.of(context).textTheme.headline6,
+        ),
+      ),
+      body: Center(
+        child: Text(
+          'Hello, World!',
+          style: Theme.of(context).textTheme.numberLarge,
+        ),
+      ),
+    );
+  }
+}
+\end{lstlisting}
+
+In this example, we extend the TextTheme using the MyTextTheme extension. Then, in the MyApp widget, we configure the 
+light and dark themes by customizing the text color for each mode using the bodyColor property. We set the themeMode 
+to ThemeMode.system to follow the system's light or dark mode based on device settings.
+
+Inside the MyHomePage widget, we use the Theme.of(context) to access the appropriate theme's TextTheme and apply 
+the extended numberLarge style to the Text widget.
+
+By using this approach, the text style defined in the numberLarge extension will automatically adapt to the chosen 
+theme mode (light or dark) without needing separate extensions for each mode.
+
+
+Question: TextTheme.copyWith to update only font size
+
+Answer: To update only the font size of a TextTheme while keeping the other properties intact, you can use the 
+copyWith method. 
+
+\begin{lstlisting}
+class CustomTextTheme {
+    static TextTheme? createCustomTextTheme(TextTheme? baseTheme) {
+        if (baseTheme == null) {
+        return null;
+        }
+        
+        return baseTheme.copyWith(
+        headline1: baseTheme.headline1!.copyWith(fontSize: 32, fontWeight: FontWeight.bold),
+        headline2: baseTheme.headline2!.copyWith(fontSize: 24, fontWeight: FontWeight.bold),
+        // Add your custom text styles here
+        );
+    }
+}     
+\end{lstlisting}
+
+In this updated example, the createCustomTextTheme function accepts a nullable baseTheme. It checks if the 
+baseTheme is null and returns null in that case. Otherwise, it proceeds to create a modified copy of the 
+baseTheme with your custom text styles applied.
+
+To use this custom text theme in your app, you can pass CustomTextTheme.myTextTheme to the textTheme property of 
+your app's ThemeData:
+
+\begin{lstlisting}
+MaterialApp(
+    theme: ThemeData(
+        textTheme: CustomTextTheme.createCustomTextTheme(Theme.of(context).textTheme),
+    ),
+    // Other app configurations
+)   
+\end{lstlisting}
+
+By using this approach, you can generate a custom TextTheme by invoking the updated utility function that accepts a 
+nullable TextTheme and returns a nullable TextTheme.
+
+Question: How to resolve overflow on complex container
+
+Answer: To resolve overflow issues on a complex container, you can use various techniques to handle the content 
+overflow and ensure that it fits within the available space. Here are a few approaches you can consider:
+
+Wrap the overflowing content with an OverflowBox widget: The OverflowBox widget allows you to specify how the 
+child should behave when it overflows the parent's constraints. You can set the maxWidth and maxHeight properties 
+of the OverflowBox to limit the size of the overflowing content.
+
+Implement scrolling: If the container has a large amount of content, you can wrap it with a SingleChildScrollView, 
+ListView, or CustomScrollView to provide scrolling functionality. This allows the user to scroll through the content 
+and view it in its entirety.
+
+Adjust the layout: Review the layout of your container and consider using techniques like Expanded, Flexible, or 
+SizedBox with appropriate constraints to control the size and positioning of the child widgets. This can help 
+distribute the available space more effectively and prevent overflow.
+
+Use FittedBox or LayoutBuilder: If you have a specific widget that is causing the overflow, you can wrap it with a 
+FittedBox widget to scale its content down to fit within the available space. Alternatively, you can use a 
+LayoutBuilder to obtain the available space constraints and dynamically adjust the layout of the child widgets 
+based on those constraints.
+
+Remember to analyze your container's structure, review the content, and apply the appropriate techniques to handle 
+the overflow effectively. It may require a combination of approaches depending on the complexity of the container.
+
+Question: how to use OverflowBox 
+
+Answer: To use the OverflowBox widget, you can wrap it around a child widget that may overflow its parent's constraints. 
+The OverflowBox widget allows you to control how the child widget behaves when it exceeds the available space.
+
+\begin{lstlisting}
+OverflowBox(
+  maxWidth: double.infinity, // Maximum width allowed for the child
+  maxHeight: double.infinity, // Maximum height allowed for the child
+  child: YourContentWidget(),
+)
+\end{lstlisting}
+
+In this example, YourContentWidget() represents the child widget that might overflow its parent. By wrapping it with 
+OverflowBox, you can set the maxWidth and maxHeight properties to limit the size of the child widget within the 
+available space.
+
+Note that setting double.infinity for maxWidth and maxHeight allows the child widget to take up the full available 
+width and height, respectively. You can adjust these values according to your specific needs.
+
+By using OverflowBox, you can prevent the child widget from exceeding the specified maximum dimensions, and it will 
+be scaled down or clipped to fit within those bounds.
+
+Remember to consider the overall layout and structure of your container, as well as the relationship between the child 
+widget and its parent, to effectively handle the overflow and maintain a visually pleasing UI.
+
+Question: check that nullable variable is not set
+
+Answer: To check if a nullable variable is not set (i.e., null), you can use the null-aware operator ?. in Dart. 
+
+\begin{lstlisting}
+String? nullableVariable;
+
+if (nullableVariable == null) {
+  // Variable is not set
+  print('Nullable variable is not set');
+} else {
+  // Variable is set
+  print('Nullable variable is set: $nullableVariable');
+}
+\end{lstlisting}
+
+In this code, we first declare a nullable variable nullableVariable of type String?. Then, we check if the variable 
+is null using the == operator. If the variable is null, it means it is not set. Otherwise, if the variable has a 
+non-null value, we can access and use it accordingly.
+
+The null-aware operator ?. is used to safely access properties or invoke methods on nullable objects without causing 
+a null reference exception. It short-circuits the expression and returns null if the object is null, otherwise, it 
+continues with the property access or method invocation.
+
+By using the == operator to check for null, you can determine if a nullable variable is not set and handle it 
+accordingly in your code.
+
+
+Question: how to use flutter pub run grinder
+
+Answer: To use the flutter pub run grinder l10n command, you need to have the grinder package added as a dev 
+dependency in your pubspec.yaml file. Here's how you can set it up:
+
+Open your project's pubspec.yaml file.
+
+Locate the dev\_dependencies section.
+
+Add the grinder package as a dev dependency:
+
+\begin{lstlisting}
+dev_dependencies:
+  grinder: ^1.0.0
+\end{lstlisting}
+
+Save the pubspec.yaml file.
+
+Once you have the grinder package added, you can run the flutter pub run grinder l10n command to generate the 
+localized resources for your Flutter app.
+
+Note: The grinder package is a task runner for Dart, and it provides a convenient way to automate repetitive tasks 
+in your project. In this case, it is used to generate localized resources based on the localization configuration 
+in your project.
+
+Make sure you have the necessary localization configuration set up in your Flutter project. Typically, this 
+involves adding localization files (e.g., .arb files) and configuring them in your pubspec.yaml file.
+
+After setting up the grinder package and the localization configuration, you can run the flutter pub run grinder 
+l10n command in your project's root directory using a terminal or command prompt.
+
+To install the grinder package from the console, you can use the following command:
+dart pub global activate grinder
+
+This command activates the grinder package globally on your system, making it available for use in any Dart project.
+
+Make sure you have Dart SDK installed and added to your system's PATH environment variable before running the 
+above command. You can verify the installation by running dart --version in the console, which should display the 
+Dart SDK version if it is properly installed.
+
+Once the installation is complete, you can use the grinder command in the console to run tasks defined in a 
+Grindfile.dart script within your project.
+
+For example, you can run grinder l10n to execute the l10n task defined in the Grindfile.dart script, assuming 
+you have set up the Grindfile.dart with the necessary tasks.
+
+Remember that grinder is a task runner for Dart, and you need to have a valid Grindfile.dart script with the 
+required tasks defined in order to use it effectively.
+
+dart run grinder:init - to generate grinder file with basic construction.
+
+grinder show list of tasks: dart run grinder -h
+
+Question: Flutter check that variable is a function
+
+Answer: In Flutter, you can use the is operator to check if a variable is a function. 
+
+\begin{lstlisting}
+void main() {
+  var variable = () {
+    // Function body
+  };
+
+  if (variable is Function) {
+    print('Variable is a function');
+  } else {
+    print('Variable is not a function');
+  }
+}
+\end{lstlisting}
+
+In this example, the is operator is used to check if the variable is of type Function. If it is, the condition 
+variable is Function will evaluate to true, indicating that the variable is a function. Otherwise, it will 
+evaluate to false, indicating that the variable is not a function.
+
+
+Question: Flutter optional parameters to the function
+
+Answer: In Flutter, you can define optional parameters in a function by enclosing them in square brackets 
+([]) in the function declaration. 
+
+\begin{lstlisting}
+void greet(String name, {String? prefix, String? suffix}) {
+  String message = 'Hello, $name';
+
+  if (prefix != null) {
+    message = '$prefix $message';
+  }
+
+  if (suffix != null) {
+    message = '$message $suffix';
+  }
+
+  print(message);
+}
+\end{lstlisting}
+
+n the greet function above, prefix and suffix are optional parameters. They are enclosed in square brackets 
+in the function declaration. You can call the greet function and provide values for the optional parameters 
+if needed, or omit them to use the default values. 
+
+Question: Flutter set default locale if not found
+
+\begin{lstlisting}
+MaterialApp(
+  ...
+  localizationsDelegates: AppLocalizations.localizationsDelegates,
+  supportedLocales: AppLocalizations.supportedLocales,
+  ...
+)
+\end{lstlisting}
+
+Question: how to create menu with three dots on right side
+
+Answer: To create a menu with three dots on the right side of the app bar in Flutter, you can use the PopupMenuButton 
+widget along with the PopupMenuEntry widgets.
+
+\begin{lstlisting}
+AppBar(
+  title: Text('My App'),
+  actions: [
+    PopupMenuButton(
+      itemBuilder: (BuildContext context) {
+        return [
+          PopupMenuItem(
+            child: Text('Option 1'),
+            value: 'option1',
+          ),
+          PopupMenuItem(
+            child: Text('Option 2'),
+            value: 'option2',
+          ),
+          PopupMenuItem(
+            child: Text('Option 3'),
+            value: 'option3',
+          ),
+        ];
+      },
+      onSelected: (value) {
+        // Handle the selected option
+        if (value == 'option1') {
+          // Option 1 selected
+        } else if (value == 'option2') {
+          // Option 2 selected
+        } else if (value == 'option3') {
+          // Option 3 selected
+        }
+      },
+      icon: Icon(Icons.more_vert),
+    ),
+  ],
+)
+\end{lstlisting}
+
+In the above code, the PopupMenuButton widget is added to the actions list of the AppBar. The itemBuilder property 
+is used to define the menu items as PopupMenuItem widgets. Each menu item has a child widget, which in this case 
+is a Text widget, and a value associated with it. When a menu item is selected, the onSelected callback is 
+triggered with the selected value.
+
+The icon property of the PopupMenuButton widget is set to an Icon widget, in this case, the Icons.more\_vert 
+icon, which represents the three dots.
+
+
+Question: how to convert
+\begin{lstlisting}
+var menuList = [
+  (
+    name: 'Home',
+    icon: Icons.home,
+    route: homeRoute,
+  ),
+  (
+    name: 'Goals',
+    icon: Icons.star,
+    route: homeRoute,
+  )
+];
+\end{lstlisting}
+to PopupMenuButton
+
+To convert the menuList to a PopupMenuButton widget, you can map each item in the list to a PopupMenuItem widget. 
+
+\begin{lstlisting}
+PopupMenuButton(
+  itemBuilder: (BuildContext context) {
+    return menuList.map((menuItem) {
+      return PopupMenuItem(
+        child: Row(
+          children: [
+            Icon(menuItem['icon']),
+            SizedBox(width: 8),
+            Text(menuItem['name']),
+          ],
+        ),
+        value: menuItem['route'],
+      );
+    }).toList();
+  },
+  onSelected: (value) {
+    // Handle the selected route
+    // You can navigate to the selected route using Navigator.pushNamed(context, value)
+    Navigator.pushNamed(context, value);
+  },
+  icon: Icon(Icons.more_vert),
+)
+\end{lstlisting}
+
+In this example, menuList is mapped to a list of PopupMenuItem widgets using the map method. Each PopupMenuItem 
+contains a Row with an Icon and Text widget to display the icon and name from each item in the menuList. 
+The value property of PopupMenuItem is set to the route value from each item.
+
+When a menu item is selected, the onSelected callback is triggered with the selected route value. In this example,
+Navigator.pushNamed is used to navigate to the selected route.
+
+
+Question: Drawer icon change
+
+Answer: To change the drawer icon in Flutter, you can use the IconButton widget along with the Scaffold widget. 
+
+\begin{lstlisting}
+Scaffold(
+  appBar: AppBar(
+    title: Text('My App'),
+    leading: IconButton(
+      icon: Icon(Icons.menu),
+      onPressed: () {
+        // Open the drawer
+        Scaffold.of(context).openDrawer();
+      },
+    ),
+  ),
+  drawer: Drawer(
+    // Drawer content goes here
+  ),
+  // Other body content of the scaffold
+)
+\end{lstlisting}
+
+In this example, the leading property of the AppBar is set to an IconButton with the Icons.menu icon. When the 
+icon is pressed, the onPressed callback is triggered, and the openDrawer() method is called to open the drawer.
+
+Make sure to wrap the Scaffold widget with a Builder widget if you're using this code inside a function 
+where the context is not directly available.
+
+Question: set width of full width to FloatingActionButton
+
+Answer: To set the width of a FloatingActionButton to the full width of the screen, you can wrap it with a Container 
+widget and set the width property of the Container to double.infinity.
+
+\begin{lstlisting}
+Container(
+  width: double.infinity,
+  child: FloatingActionButton(
+    onPressed: () {
+      // Handle button press
+    },
+    child: Icon(Icons.add),
+  ),
+)
+\end{lstlisting}
+
+In this example, the Container widget has its width property set to double.infinity, which means it will take up the
+full available width. The FloatingActionButton is the child of the Container.
+
+By setting the width of the Container, you can control the width of the FloatingActionButton and make it extend 
+to the full width of its parent widget, which in this case is the Container.
+
+Question: center row
+
+Answer: To center a Row widget horizontally, you can wrap it with an Align widget and set its alignment 
+property to Alignment.center. Here's an example:
+
+\begin{lstlisting}
+Align(
+  alignment: Alignment.center,
+  child: Row(
+    mainAxisAlignment: MainAxisAlignment.center,
+    children: [
+      // Add your widgets here
+    ],
+  ),
+)
+\end{lstlisting}
+
+In this example, the Align widget is used to center the Row horizontally. The alignment property is set to 
+Alignment.center, which positions the child Row at the center of the available space.
+
+Inside the Row, you can add your desired widgets, such as Text, Icon, or any other widget that you want to display 
+in a centered row.
+
+By adjusting the mainAxisAlignment property of the Row, you can control how the children widgets are aligned within 
+the row. Setting it to MainAxisAlignment.center will center the children horizontally within the row.
+
+Question: Flutter Create Selector with list of icons
+
+Question: Add Color Picker to Form
+
+Question: get random MaterialColor
+
+Answer: To get a random MaterialColor in Flutter, you can use the Colors.primaries property, which is a list of 
+the standard material design colors defined by Flutter. You can select a random color from this list to create
+a MaterialColor object.
+
+\begin{lstlisting}
+import 'package:flutter/material.dart';
+import 'dart:math';
+
+void main() {
+  MaterialColor randomColor = getRandomMaterialColor();
+  print(randomColor);
+}
+
+MaterialColor getRandomMaterialColor() {
+  List<Color> colors = Colors.primaries;
+  Random random = Random();
+  Color randomColor = colors[random.nextInt(colors.length)];
+  return MaterialColor(randomColor.value, {
+    50: randomColor.shade50,
+    100: randomColor.shade100,
+    200: randomColor.shade200,
+    300: randomColor.shade300,
+    400: randomColor.shade400,
+    500: randomColor.shade500,
+    600: randomColor.shade600,
+    700: randomColor.shade700,
+    800: randomColor.shade800,
+    900: randomColor.shade900,
+  });
+}
+\end{lstlisting}
+
+In this example, the getRandomMaterialColor function selects a random color from the Colors.primaries list using the 
+Random class. It then creates a MaterialColor object using the selected color and returns it.
+
+Note that the MaterialColor constructor requires shades of the color, so we create a Map with shade values ranging 
+from 50 to 900 using the shade methods provided by the selected color.
+
+Question: (id: 1, name: 'Title') - DropdownButton how to show text value value by select id
+
+Answer: To display the text value in a DropdownButton based on the selected ID, you can use a combination of a list 
+of items, a DropdownMenuItem, and the value and onChanged properties of the DropdownButton.
+
+\begin{lstlisting}
+import 'package:flutter/material.dart';
+
+void main() {
+  runApp(MyApp());
+}
+
+class Item {
+  final int id;
+  final String name;
+
+  Item({required this.id, required this.name});
+}
+
+class MyApp extends StatelessWidget {
+  final List<Item> items = [
+    Item(id: 1, name: 'Title 1'),
+    Item(id: 2, name: 'Title 2'),
+    Item(id: 3, name: 'Title 3'),
+  ];
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      home: Scaffold(
+        appBar: AppBar(
+          title: Text('DropdownButton Demo'),
+        ),
+        body: Center(
+          child: DropdownButton<int>(
+            value: 1, // Selected ID
+            onChanged: (int? newValue) {
+              // Update the selected ID here
+              // You can use the newValue to perform any desired action
+            },
+            items: items.map((Item item) {
+              return DropdownMenuItem<int>(
+                value: item.id,
+                child: Text(item.name),
+              );
+            }).toList(),
+          ),
+        ),
+      ),
+    );
+  }
+}
+\end{lstlisting}
+
+In this example, we have a list of Item objects, each containing an id and a name. The DropdownButton is configured 
+with the items property, which maps each Item in the list to a DropdownMenuItem. The value property of the 
+DropdownButton is set to the selected ID, which in this case is 1.
+
+To handle the selection change, you can provide a callback to the onChanged property of the DropdownButton. 
+In the example, the onChanged function is defined but doesn't perform any action. You can update this function 
+to update the selected ID or perform any other desired action based on the selected ID.
+
+Question: flutter get list of currencies
+
+Question: value is not shown right after changed state
+
+Answer: To ensure that the updated value is displayed in the TextFormField after the state has changed, you can make 
+use of the ValueKey parameter and the key property of the TextFormField.
+
+\begin{lstlisting}
+class CurrencySelector extends StatelessWidget {
+  TextEditingController _controller = TextEditingController();
+  Function setState;
+  Currency? value;
+
+  CurrencySelector({
+    Key? key,
+    this.value,
+    required this.setState,
+  }) : super(key: key ?? ValueKey(value));
+
+  String getValue(Currency? value) {
+    return value != null ? '${value.symbol} - ${value.name} (${value.code})' : '';
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    _controller.text = getValue(value);
+    return TextFormField(
+      key: ValueKey(value),
+      controller: _controller,
+      decoration: InputDecoration(
+        filled: true,
+        border: InputBorder.none,
+        fillColor: Theme.of(context).colorScheme.inversePrimary.withOpacity(0.0),
+        suffixIcon: GestureDetector(
+          onTap: () {
+            showCurrencyPicker(
+              context: context,
+              showFlag: true,
+              showCurrencyName: true,
+              showCurrencyCode: true,
+              onSelect: (Currency currency) => setState(currency),
+            );
+            _controller.text = getValue(value);
+          },
+          child: const Icon(Icons.arrow_drop_down),
+        ),
+      ),
+    );
+  }
+}
+\end{lstlisting}
+
+In this updated code, we set the key property of the TextFormField to ValueKey(value) using the null-aware operator ??. 
+This ensures that when the state changes and the CurrencySelector is rebuilt, the TextFormField will receive a 
+new key based on the updated value. This will trigger the TextFormField to update its value accordingly.
+
+Question: Disable entering something into the field
+
+To disable entering something into a TextFormField in Flutter, you can use the readOnly property. 
+
+\begin{lstlisting}
+TextFormField(
+  readOnly: true,
+),
+\end{lstlisting}
+
+
+By setting readOnly to true, the field becomes non-editable, and the user won't be able to enter any text into it. 
+The field will still display the label and any existing value set in the controller.
+
+Question: prevent from typing anything outside of definition TextInputType
+
+Answer: To prevent users from typing anything outside the defined TextInputType, you can create a custom 
+TextInputFormatter and attach it to the inputFormatters property of the TextFormField.
+
+\begin{lstlisting}
+class LimitedTextInputFormatter extends TextInputFormatter {
+  final TextInputType textInputType;
+
+  LimitedTextInputFormatter(this.textInputType);
+
+  @override
+  TextEditingValue formatEditUpdate(
+      TextEditingValue oldValue, TextEditingValue newValue) {
+    if (newValue.text.isNotEmpty &&
+        !_isValidInput(newValue.text, textInputType)) {
+      // Return the old value if the new value is not valid
+      return oldValue;
+    }
+    return newValue;
+  }
+
+  bool _isValidInput(String text, TextInputType textInputType) {
+    switch (textInputType) {
+      case TextInputType.number:
+        return double.tryParse(text) != null;
+      case TextInputType.phone:
+        return text.contains(RegExp(r'^[0-9+\-()\s]+$'));
+      // Add more cases for other types if needed
+      default:
+        return true; // Allow any input for unsupported types
+    }
+  }
+}
+\end{lstlisting}
+
+To use the LimitedTextInputFormatter in your TextFormField, you can pass it as an element of the inputFormatters list:
+
+\begin{lstlisting}
+TextFormField(
+  keyboardType: textInputType,
+  inputFormatters: [
+    LimitedTextInputFormatter(textInputType),
+  ],
+  // Other properties...
+)
+\end{lstlisting}
+
+In the above code, textInputType is the desired TextInputType for the TextFormField. The LimitedTextInputFormatter 
+will validate the input based on the specified TextInputType and allow or disallow input accordingly.
+
+FilteringTextInputFormatter.allow for double
+
+To allow input of double values using FilteringTextInputFormatter.allow, you can define a pattern to allow specific 
+characters in the input. Here's an example of how to allow input of double values using 
+FilteringTextInputFormatter.allow:
+
+\begin{lstlisting}
+TextFormField(
+  keyboardType: TextInputType.numberWithOptions(decimal: true),
+  inputFormatters: [
+    FilteringTextInputFormatter.allow(RegExp(r'^(\d+)?\.?\d{0,2}')),
+  ],
+  // Other properties...
+)
+
+In this example, RegExp(r'^(\d+)?\.?\d{0,2}') is used as the pattern to allow the following input:
+
+    An optional sequence of digits (\d+).
+    An optional decimal point (\.?).
+    Up to two decimal places (\d{0,2}).
+\end{lstlisting}
+
+This pattern ensures that the input allows digits, an optional decimal point, and up to two decimal places.
+
+By setting keyboardType to TextInputType.numberWithOptions(decimal: true), the keyboard will include a 
+decimal point button for convenience.
+
+Question: Scaffold.of(context).openDrawer() leads to error Scaffold.of() called with a context that does 
+not contain a Scaffold.
+
+The error "Scaffold.of() called with a context that does not contain a Scaffold" occurs when you try to access 
+the Scaffold widget using the Scaffold.of() method but the BuildContext you provide does not have a Scaffold 
+widget as an ancestor.
+
+To resolve this error, make sure that you are calling Scaffold.of() within a context where a Scaffold widget 
+exists. Here are a few possible solutions:
+
+Wrap the widget that contains the Scaffold.of() call with a Builder widget:
+
+\begin{lstlisting}
+Builder(
+  builder: (BuildContext context) {
+    return YourWidget(
+      onPressed: () {
+        Scaffold.of(context).openDrawer();
+      },
+    );
+  },
+)
+\end{lstlisting}
+
+If the widget that contains the Scaffold.of() call is already inside a Builder widget, ensure that the BuildContext 
+passed to Scaffold.of() is the correct one. Double-check that you are using the correct BuildContext in your code.
+
+If you are trying to open the drawer from a different widget, you can consider using a callback or state management 
+approach. Pass a callback function from the parent widget that owns the Scaffold to the child widget, and call that 
+function to trigger the drawer opening.
+
+
+Question: how to create dynamic routing?
+
+Answer: To create dynamic routing in Flutter, you can use a combination of named routes and route parameters. 
+
+\begin{lstlisting}
+MaterialApp(
+    // Other app configurations...
+    
+    onGenerateRoute: (settings) {
+        if (settings.name!.startsWith("/app/finance/account/add/")) {
+        // Extract the UUID from the route path
+        final uuid = settings.name!.substring(25);
+    
+        return MaterialPageRoute(
+            builder: (context) => HomePage(id: uuid),
+        );
+        }
+    
+        // Handle other routes if needed
+    
+        return null; // Return null if the route is not supported
+    },
+)     
+\end{lstlisting}
+
+In this example, we're using onGenerateRoute to handle routes that start with "/app/finance/account/add/". 
+We extract the UUID from the route path by removing the common prefix, and then we create and return the 
+appropriate widget, in this case, HomePage, with the extracted UUID.
+
+Question: `[{id: 1}, {id: 2}]` how to find by id
+
+Answer: To find an item in a list based on its ID, you can use the firstWhere method with a condition that 
+matches the desired ID. 
+
+\begin{lstlisting}
+List<Map<String, dynamic>> items = [
+  {'id': 1},
+  {'id': 2},
+];
+
+int targetId = 2;
+
+Map<String, dynamic>? foundItem = items.firstWhere((item) => item['id'] == targetId, orElse: () => null);
+
+if (foundItem != null) {
+  print('Item found: $foundItem');
+} else {
+  print('Item not found');
+}
+\end{lstlisting}
+
+In this example, we have a list of maps items containing items with IDs. We want to find an item with ID 2. 
+The firstWhere method iterates over the list and returns the first item that satisfies the condition 
+item['id'] == targetId. If no item is found, the orElse argument is invoked, and we set foundItem to null. 
+Finally, we check if foundItem is not null and print the result accordingly.
+
+Error: For some reasons from AccountEditPageState widget.uuid is not accessible, and fails with an error The getter 
+'uuid' isn't defined for the type 'AccountAddPage'.
+
+\begin{lstlisting}
+import 'package:flutter/material.dart';
+
+class AccountEditPage extends AccountAddPage {
+  String uuid;
+
+  AccountEditPage({
+    required this.uuid,
+  }) : super();
+
+  @override
+  AccountEditPageState createState() => AccountEditPageState();
+}
+
+class AccountEditPageState extends AccountAddPageState<AccountEditPage> {
+  String get uuid => widget.uuid; // ERROR: The getter 'uuid' isn't defined for the type 'AccountAddPage'.
+}
+
+
+class AccountAddPage extends AbstractPage {
+  String? title;
+
+  AccountAddPage({
+    this.title,
+  }) : super();
+
+  @override
+  AccountAddPageState createState() => AccountAddPageState();
+}
+
+class AccountAddPageState<T extends AccountAddPage> extends AbstractPageState<AccountAddPage> {
+  String? get title => widget.title; // OK
+}
+
+
+abstract class AbstractPage<T> extends StatefulWidget {
+  int selectedMenu = 0;
+
+  AbstractPage() : super(key: UniqueKey());
+}
+
+abstract class AbstractPageState<T extends AbstractPage> extends State<T> {
+  @override
+  Widget build(BuildContext context) {
+    return Text('test');
+  }
+}
+\end{lstlisting}
+
+Resolution - (widget as AccountEditPage).uuid
+
+
+Question: do we have enum for Flutter
+
+Answer: Yes, Flutter provides an enum class that you can use to define enumerations. Enums in Flutter work similarly to 
+enums in other programming languages. You can use enums to define a set of named values, and each value represents 
+a constant.
+
+\begin{lstlisting}
+enum Color {
+  red,
+  green,
+  blue,
+}
+
+void main() {
+  Color myColor = Color.red;
+
+  switch (myColor) {
+    case Color.red:
+      print('Selected color: Red');
+      break;
+    case Color.green:
+      print('Selected color: Green');
+      break;
+    case Color.blue:
+      print('Selected color: Blue');
+      break;
+  }
+}
+\end{lstlisting}
+
+In this example, we defined an enum called Color with three possible values: red, green, and blue. We created a 
+variable myColor and assigned it the value Color.red. Then, using a switch statement, we checked the value of 
+myColor and printed a corresponding message based on the selected color.
+
+To validate function arguments using an enum in Flutter, you can define the function parameter with the enum type and 
+use a switch statement to handle the different enum values.
+
+\begin{lstlisting}
+enum Status {
+  active,
+  inactive,
+  pending,
+}
+
+void processStatus(Status status) {
+  switch (status) {
+    case Status.active:
+      print('Processing active status');
+      // Perform actions for active status
+      break;
+    case Status.inactive:
+      print('Processing inactive status');
+      // Perform actions for inactive status
+      break;
+    case Status.pending:
+      print('Processing pending status');
+      // Perform actions for pending status
+      break;
+  }
+}
+
+void main() {
+  Status myStatus = Status.active;
+
+  processStatus(myStatus);
+}
+\end{lstlisting}
+
+In this example, we defined an enum called Status with three possible values: active, inactive, and pending. The 
+processStatus function takes a parameter of type Status. Inside the function, we use a switch statement to 
+handle each possible status value and perform the corresponding actions.
+
+In the main function, we created a variable myStatus and assigned it the value Status.active. We then passed 
+myStatus as an argument to the processStatus function, which will execute the appropriate code block based on 
+the provided enum value.
+
+By using enums in function parameters, you can enforce valid enum values and provide clear validation and handling 
+for each possible value within the function.
+
+you can use the toString() method of the AppAccountType enum to convert it to a string representation.
+
+To convert a string representation back to an enum in Flutter, you can use the AppAccountType.values property and a 
+loop or a lookup map to match the string with the corresponding enum value.
+
+\begin{lstlisting}
+enum AppAccountType {
+  type1,
+  type2,
+  type3,
+}
+
+void main() {
+  String accountTypeString = AppAccountType.type1.toString(); // Convert enum to string
+
+  // Option 1: Use a loop to match the string with the enum value
+  AppAccountType? accountType;
+  for (var value in AppAccountType.values) {
+    if (value.toString() == accountTypeString) {
+      accountType = value;
+      break;
+    }
+  }
+  print('Converted enum value: $accountType');
+
+  // Option 2: Use a lookup map to match the string with the enum value
+  final accountTypeMap = {
+    'type1': AppAccountType.type1,
+    'type2': AppAccountType.type2,
+    'type3': AppAccountType.type3,
+  };
+  AppAccountType? accountTypeFromMap = accountTypeMap[accountTypeString];
+  print('Converted enum value from map: $accountTypeFromMap');
+}
+\end{lstlisting}
+
+In this example, we start with a string representation of the AppAccountType.type1 enum value using 
+AppAccountType.type1.toString().
+
+Option 1 demonstrates how to match the string with the enum value using a loop. We iterate over the 
+AppAccountType.values property and compare each enum's string representation with the desired string. 
+If a match is found, we assign the corresponding enum value to the accountType variable.
+
+Option 2 shows how to use a lookup map to match the string with the enum value. We define a map where the keys 
+are the string representations of the enum values, and the values are the actual enum values. We then use the 
+string representation as the key to retrieve the enum value from the map.
+

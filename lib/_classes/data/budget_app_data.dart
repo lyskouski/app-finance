@@ -2,7 +2,7 @@
 // Use of this source code is governed by a CC BY-NC-ND 4.0 license that can be
 // found in the LICENSE file.
 
-import 'package:app_finance/classes/abstract_app_data.dart';
+import 'package:app_finance/_classes/data/abstract_app_data.dart';
 import 'package:flutter_gen/gen_l10n/app_localization.dart';
 
 class BudgetAppData extends AbstractAppData {
@@ -16,14 +16,28 @@ class BudgetAppData extends AbstractAppData {
     super.currency,
     super.createdAt,
     super.createdAtFormatted,
-    DateTime? closedAt,
-    String? closedAtFormatted,
     amountLimit,
     super.hidden,
   });
 
   @override
-  double get details => super.details - super.details * super.progress;
+  BudgetAppData clone() {
+    return BudgetAppData(
+      title: super.title,
+      uuid: super.uuid,
+      details: super.details,
+      progress: super.progress,
+      color: super.color,
+      icon: super.icon,
+      currency: super.currency,
+      createdAt: super.createdAt,
+      amountLimit: amountLimit,
+      hidden: super.hidden,
+    );
+  }
+
+  @override
+  double get details => super.details * (1 - super.progress);
 
   String get detailsFormatted{
     String left = AppLocalizations.of(getContext()!)!.left;

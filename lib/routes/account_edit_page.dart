@@ -2,7 +2,7 @@
 // Use of this source code is governed by a CC BY-NC-ND 4.0 license that can be
 // found in the LICENSE file.
 
-import 'package:app_finance/classes/account_app_data.dart';
+import 'package:app_finance/_classes/data/account_app_data.dart';
 import 'package:app_finance/data.dart';
 import 'package:app_finance/routes/account_add_page.dart';
 import 'package:flutter/material.dart';
@@ -55,7 +55,7 @@ class AccountEditPageState extends AccountAddPageState<AccountEditPage> {
     if ((widget as AccountEditPage).isFirstRun) {
       (widget as AccountEditPage).isFirstRun = false;
       var form =
-          widget.state?.getByUuid(AppDataType.accounts, (widget as AccountEditPage).uuid) as AccountAppData;
+          widget.state?.getByUuid((widget as AccountEditPage).uuid) as AccountAppData;
       widget.title = form.title;
       widget.description = form.description;
       widget.type = form.type;

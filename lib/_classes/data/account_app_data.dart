@@ -2,7 +2,7 @@
 // Use of this source code is governed by a CC BY-NC-ND 4.0 license that can be
 // found in the LICENSE file.
 
-import 'package:app_finance/classes/abstract_app_data.dart';
+import 'package:app_finance/_classes/data/abstract_app_data.dart';
 
 class AccountAppData extends AbstractAppData {
   DateTime _closedAt;
@@ -24,6 +24,24 @@ class AccountAppData extends AbstractAppData {
     String? closedAtFormatted,
     super.hidden,
   }) : _closedAt = closedAt ?? (closedAtFormatted != null ? DateTime.parse(closedAtFormatted) : DateTime.now());
+
+  @override
+  AccountAppData clone() {
+    return AccountAppData(
+      uuid: super.uuid,
+      title: super.title,
+      type: type,
+      details: super.details,
+      progress: super.progress,
+      description: super.description,
+      color: super.color,
+      icon: super.icon,
+      currency: super.currency,
+      createdAt: super.createdAt,
+      closedAt: closedAt,
+      hidden: super.hidden,
+    );
+  }
 
   DateTime get closedAt => _closedAt;
   set closedAt(DateTime value) => _closedAt = value;

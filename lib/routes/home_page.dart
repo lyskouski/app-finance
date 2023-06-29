@@ -5,7 +5,7 @@
 import 'package:adaptive_breakpoints/adaptive_breakpoints.dart';
 import 'package:app_finance/data.dart';
 import 'package:app_finance/helpers/theme_helper.dart';
-import 'package:app_finance/classes/app_route.dart';
+import 'package:app_finance/_classes/app_route.dart';
 import 'package:app_finance/routes/abstract_page.dart';
 import 'package:app_finance/widgets/home/account_widget.dart';
 import 'package:app_finance/widgets/home/bill_widget.dart';
@@ -13,6 +13,7 @@ import 'package:app_finance/widgets/home/budget_widget.dart';
 import 'package:app_finance/widgets/home/goal_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localization.dart';
+import 'package:intl/intl.dart';
 
 class HomePage extends AbstractPage {
   HomePage() : super();
@@ -83,23 +84,25 @@ class HomePageState extends AbstractPageState<HomePage> {
     EdgeInsets bottom = EdgeInsets.fromLTRB(indent, indent, indent, indent);
     double width = MediaQuery.of(context).size.width - indent * 2;
     double halfWidth = width / 2 - indent;
+    final locale = Localizations.localeOf(context).toString();
+    final DateFormat formatterDate = DateFormat.MMMM(locale);
 
     if (helper.isVertical(constraints)) {
       return Column(
         children: [
           GoalWidget(
             margin: single,
-            state: widget.state?.get(AppDataType.goals).list,
+            state: widget.state!.getList(AppDataType.goals),
           ),
           BillWidget(
             margin: single,
-            title: AppLocalizations.of(context)!.billHeadline,
+            title: '${AppLocalizations.of(context)!.billHeadline}, ${formatterDate.format(DateTime.now())}',
             state: widget.state?.get(AppDataType.bills),
             offset: width,
           ),
           AccountWidget(
             margin: single,
-            title: AppLocalizations.of(context)!.accountHeadline,
+            title: '${AppLocalizations.of(context)!.accountHeadline}, ${AppLocalizations.of(context)!.total}',
             state: widget.state?.get(AppDataType.accounts),
             route: AppRoute.accountRoute,
             tooltip: AppLocalizations.of(context)!.accountTooltip,
@@ -107,7 +110,7 @@ class HomePageState extends AbstractPageState<HomePage> {
           ),
           BudgetWidget(
             margin: bottom,
-            title: AppLocalizations.of(context)!.budgetHeadline,
+            title: '${AppLocalizations.of(context)!.budgetHeadline}, ${AppLocalizations.of(context)!.left}',
             state: widget.state?.get(AppDataType.budgets),
             route: AppRoute.budgetRoute,
             tooltip: AppLocalizations.of(context)!.budgetTooltip,

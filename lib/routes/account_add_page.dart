@@ -3,22 +3,21 @@
 // found in the LICENSE file.
 
 import 'package:adaptive_breakpoints/adaptive_breakpoints.dart';
-import 'package:app_finance/classes/account_app_data.dart';
+import 'package:app_finance/_classes/data/account_app_data.dart';
 import 'package:app_finance/custom_text_theme.dart';
 import 'package:app_finance/data.dart';
 import 'package:app_finance/helpers/theme_helper.dart';
-import 'package:app_finance/classes/app_route.dart';
+import 'package:app_finance/_classes/app_route.dart';
 import 'package:app_finance/routes/abstract_page.dart';
 import 'package:app_finance/widgets/forms/color_selector.dart';
 import 'package:app_finance/widgets/forms/currency_selector.dart';
-import 'package:app_finance/widgets/forms/date_input.dart';
 import 'package:app_finance/widgets/forms/datet_time_input.dart';
 import 'package:app_finance/widgets/forms/icon_selector.dart';
 import 'package:app_finance/widgets/forms/list_selector.dart';
+import 'package:app_finance/widgets/forms/month_year_input.dart';
 import 'package:app_finance/widgets/forms/simple_input.dart';
 import 'package:currency_picker/currency_picker.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_gen/gen_l10n/app_localization.dart';
 
 class AccountAddPage extends AbstractPage {
@@ -70,21 +69,23 @@ class AccountAddPageState<T extends AccountAddPage>
   }
 
   void updateStorage() {
-    widget.state?.add(AppDataType.accounts, AccountAppData(
-      title: widget.title ?? '',
-      type: widget.type ?? AppAccountType.cash.toString(),
-      description: widget.description ?? '',
-      details: widget.balance ?? 0.0,
-      progress: 1.0,
-      color: widget.color ?? Colors.red,
-      currency: widget.currency,
-      hidden: false,
-      icon: widget.icon,
-      closedAt: widget.validTillDate,
-      createdAt: widget.balanceUpdateDate,
-    ));
+    widget.state?.add(
+        AppDataType.accounts,
+        AccountAppData(
+          title: widget.title ?? '',
+          type: widget.type ?? AppAccountType.cash.toString(),
+          description: widget.description ?? '',
+          details: widget.balance ?? 0.0,
+          progress: 1.0,
+          color: widget.color ?? Colors.red,
+          currency: widget.currency,
+          hidden: false,
+          icon: widget.icon,
+          closedAt: widget.validTillDate,
+          createdAt: widget.balanceUpdateDate,
+        ));
   }
-  
+
   String getButtonName() {
     return AppLocalizations.of(context)!.createAccountTooltip;
   }
@@ -286,10 +287,26 @@ class AccountAddPageState<T extends AccountAddPage>
               AppLocalizations.of(context)!.validTillDate,
               style: textTheme.bodyLarge,
             ),
-            DateInput(
+            MonthYearInput(
               value: widget.validTillDate,
               setState: (value) => setState(() => widget.validTillDate = value),
               style: textTheme.numberMedium,
+            ),
+            SizedBox(height: indent),
+            Text(
+              AppLocalizations.of(context)!.balance,
+              style: textTheme.bodyLarge,
+            ),
+            SimpleInput(
+              value: widget.balance != null ? widget.balance.toString() : '',
+              type: const TextInputType.numberWithOptions(decimal: true),
+              tooltip: AppLocalizations.of(context)!.balanceTooltip,
+              style: textTheme.numberMedium,
+              formatter: [
+                SimpleInput.filterDouble,
+              ],
+              setState: (value) =>
+                  setState(() => widget.balance = double.tryParse(value)),
             ),
             SizedBox(height: indent),
             Row(
@@ -311,22 +328,6 @@ class AccountAddPageState<T extends AccountAddPage>
               value: widget.balanceUpdateDate,
               setState: (value) =>
                   setState(() => widget.balanceUpdateDate = value),
-            ),
-            SizedBox(height: indent),
-            Text(
-              AppLocalizations.of(context)!.balance,
-              style: textTheme.bodyLarge,
-            ),
-            SimpleInput(
-              value: widget.balance != null ? widget.balance.toString() : '',
-              type: const TextInputType.numberWithOptions(decimal: true),
-              tooltip: AppLocalizations.of(context)!.balanceTooltip,
-              style: textTheme.numberMedium,
-              formatter: [
-                SimpleInput.filterDouble,
-              ],
-              setState: (value) =>
-                  setState(() => widget.balance = double.tryParse(value)),
             ),
           ],
         ),

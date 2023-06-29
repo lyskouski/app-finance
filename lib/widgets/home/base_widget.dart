@@ -3,7 +3,7 @@
 // found in the LICENSE file.
 
 import 'package:adaptive_breakpoints/adaptive_breakpoints.dart';
-import 'package:app_finance/classes/bill_app_data.dart';
+import 'package:app_finance/_classes/data/bill_app_data.dart';
 import 'package:app_finance/custom_text_theme.dart';
 import 'package:app_finance/decorators/tap_area.dart';
 import 'package:app_finance/helpers/theme_helper.dart';
@@ -51,6 +51,7 @@ class BaseWidget extends StatelessWidget {
   @override
   Widget build(context) {
     var theme = ThemeHelper(windowType: getWindowType(context));
+    double indent = theme.getIndent();
     final locale = Localizations.localeOf(context).toString();
     final NumberFormat formatter = NumberFormat.currency(
       locale: locale,
@@ -58,7 +59,6 @@ class BaseWidget extends StatelessWidget {
       decimalDigits: 2,
     );
     final DateFormat formatterDate = DateFormat.MMMMd(locale);
-
     final TextTheme textTheme = Theme.of(context).textTheme;
     final ColorScheme colorScheme = Theme.of(context).colorScheme;
 
@@ -79,16 +79,14 @@ class BaseWidget extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Padding(
-                        padding: EdgeInsets.fromLTRB(
-                            theme.getIndent(), theme.getIndent(), 0, 0),
+                        padding: EdgeInsets.fromLTRB(indent, indent, 0, 0),
                         child: Text(
                           title,
                           style: textTheme.headlineSmall,
                         ),
                       ),
                       Padding(
-                        padding: EdgeInsets.fromLTRB(
-                            theme.getIndent(), 0, 0, theme.getIndent()),
+                        padding: EdgeInsets.fromLTRB(indent, 0, 0, indent),
                         child: Text(
                           formatter.format(state.total),
                           style: textTheme.numberLarge,
@@ -104,7 +102,7 @@ class BaseWidget extends StatelessWidget {
                   itemCount: state.list.length + 2,
                   itemBuilder: (context, index) {
                     if (index == 0) {
-                      return SizedBox(height: theme.getIndent());
+                      return SizedBox(height: indent);
                     } else if (index <= state.list.length) {
                       final item = state.list[index - 1];
                       return buildListWidget(

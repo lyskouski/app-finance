@@ -52,10 +52,11 @@
 
 % ======
 % Image
-\newcommand{\img}[2]{%
+\newcommand{\img}[3]{%
   \noindent \begin{figure}[h]%
     \centering \includegraphics[width=0.9\textwidth]{#1}%
     \caption{#2}%
+    \label{#3}%
   \end{figure}%
 }
 

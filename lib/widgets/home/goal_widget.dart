@@ -3,7 +3,7 @@
 // found in the LICENSE file.
 
 import 'package:adaptive_breakpoints/adaptive_breakpoints.dart';
-import 'package:app_finance/classes/goal_app_data.dart';
+import 'package:app_finance/_classes/data/goal_app_data.dart';
 import 'package:app_finance/helpers/theme_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localization.dart';
@@ -20,12 +20,16 @@ class GoalWidget extends StatelessWidget {
 
   @override
   Widget build(context) {
+    GoalAppData? current = state.isEmpty ? null : state.first.updateContext(context);
+    if (current == null) {
+      return SizedBox();
+    }
+    
     var theme = ThemeHelper(windowType: getWindowType(context));
     final ColorScheme colorScheme = Theme.of(context).colorScheme;
     final TextTheme textTheme = Theme.of(context).textTheme;
     double screenWidth =
         MediaQuery.of(context).size.width - theme.getIndent() * 2;
-    GoalAppData current = state[0].updateContext(context);
 
     return Container(
       margin: margin,
