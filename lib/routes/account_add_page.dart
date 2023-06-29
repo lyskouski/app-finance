@@ -11,10 +11,10 @@ import 'package:app_finance/_classes/app_route.dart';
 import 'package:app_finance/routes/abstract_page.dart';
 import 'package:app_finance/widgets/forms/color_selector.dart';
 import 'package:app_finance/widgets/forms/currency_selector.dart';
-import 'package:app_finance/widgets/forms/date_input.dart';
 import 'package:app_finance/widgets/forms/datet_time_input.dart';
 import 'package:app_finance/widgets/forms/icon_selector.dart';
 import 'package:app_finance/widgets/forms/list_selector.dart';
+import 'package:app_finance/widgets/forms/month_year_input.dart';
 import 'package:app_finance/widgets/forms/simple_input.dart';
 import 'package:currency_picker/currency_picker.dart';
 import 'package:flutter/material.dart';
@@ -287,7 +287,7 @@ class AccountAddPageState<T extends AccountAddPage>
               AppLocalizations.of(context)!.validTillDate,
               style: textTheme.bodyLarge,
             ),
-            DateInput(
+            MonthYearInput(
               value: widget.validTillDate,
               setState: (value) => setState(() => widget.validTillDate = value),
               style: textTheme.numberMedium,
