@@ -5,9 +5,13 @@
 import 'dart:collection';
 
 import 'package:app_finance/_classes/data/account_app_data.dart';
+import 'package:app_finance/_classes/data/account_recalculation.dart';
 import 'package:app_finance/_classes/data/bill_app_data.dart';
+import 'package:app_finance/_classes/data/bill_recalculation.dart';
 import 'package:app_finance/_classes/data/budget_app_data.dart';
+import 'package:app_finance/_classes/data/budget_recalculation.dart';
 import 'package:app_finance/_classes/data/goal_app_data.dart';
+import 'package:app_finance/_classes/data/goal_recalculation.dart';
 import 'package:app_finance/_classes/data/summary_app_data.dart';
 import 'package:flutter/material.dart';
 import 'package:uuid/uuid.dart';
@@ -192,108 +196,47 @@ class AppData extends ChangeNotifier {
   }
 
   void _updateAccount(AccountAppData? initial, AccountAppData change) {
+    var calc = AccountRecalculation(change: change, initial: initial)
+      .updateTotal(_data[AppDataType.accounts]);
     if (initial != null) {
       var goalList = getList(AppDataType.goals, false)
           .where((dynamic goal) => goal.progress < 1.0);
-      double delta =
-          change.hidden ? -initial.details : change.details - initial.details;
-      _data[AppDataType.accounts]?.total += delta;
-      if (goalList.isNotEmpty && !initial.hidden) {
-        int index = 0;
-        delta /= goalList.length;
-        goalList.forEach((dynamic goal) {
-          index++;
-          double progress = _getProgress(goal.details, goal.progress, delta);
-          if (progress > 1.0) {
-            if (index < goalList.length) {
-              delta +=
-                  goal.details * (progress - 1.0) / (goalList.length - index);
-            }
-            progress = 1.0;
-          }
-          goal.progress = progress;
-        });
-      }
+      calc.updateGoals(goalList);
     }
     _set(AppDataType.accounts, change);
   }
 
   void _updateBill(BillAppData? initial, BillAppData change) {
     AccountAppData currAccount = getByUuid(change.account, false);
+    AccountAppData? prevAccount;
     BudgetAppData currBudget = getByUuid(change.category, false);
-    double delta = change.hidden ? 0.0 : change.details;
+    BudgetAppData? prevBudget;
     if (initial != null) {
-      AccountAppData prevAccount = getByUuid(initial.account, false);
-      BudgetAppData prevBudget = getByUuid(initial.category, false);
-      if (currAccount.uuid != prevAccount.uuid) {
-        double prevDelta = initial.hidden ? 0.0 : initial.details;
-        prevAccount.details += prevDelta;
-        prevBudget.progress = _getProgress(
-            prevBudget.amountLimit, prevBudget.progress, -prevDelta);
-        currAccount.details -= delta;
-        currBudget.progress =
-            _getProgress(currBudget.amountLimit, currBudget.progress, delta);
-        delta -= prevDelta;
-        _data[AppDataType.budgets]?.add(initial.category);
-        _data[AppDataType.accounts]?.add(initial.account);
-      } else {
-        delta = change.hidden
-            ? -initial.details
-            : (initial.hidden
-                ? change.details
-                : change.details - initial.details);
-        currAccount.details -= delta;
-        currBudget.progress =
-            _getProgress(currBudget.amountLimit, currBudget.progress, delta);
-      }
-    } else {
-      currAccount.details -= delta;
-      currBudget.progress =
-          _getProgress(currBudget.amountLimit, currBudget.progress, delta);
+      prevAccount = getByUuid(initial.account, false);
+      prevBudget = getByUuid(initial.category, false);
+      _data[AppDataType.budgets]?.add(initial.category);
+      _data[AppDataType.accounts]?.add(initial.account);
     }
+    BillRecalculation(change: change, initial: initial)
+      .updateAccounts(currAccount, prevAccount)
+      .updateBudget(currBudget, prevBudget)
+      .updateTotal(_data[AppDataType.bills]);
     _data[AppDataType.budgets]?.add(change.category);
     _data[AppDataType.accounts]?.add(change.account);
-    _recalculateBillTotal(delta);
     _set(AppDataType.bills, change);
   }
 
-  void _recalculateBillTotal(double delta) {
-    var list = _data[AppDataType.bills]?.listActual;
-    _data[AppDataType.bills]?.total = delta +
-        (list == null || list.isEmpty
-            ? 0.0
-            : list
-                .map<double>((dynamic element) => element.details as double)
-                .reduce((value, details) => value + details));
-  }
-
   void _updateBudget(BudgetAppData? initial, BudgetAppData change) {
-    if (!change.hidden && initial != null && change.amountLimit > 0) {
-      change.progress =
-          (change.amountLimit - initial.amountLimit * initial.progress) /
-              change.amountLimit;
-    } else {
-      change.progress = 0.0;
-    }
+    BudgetRecalculation(change: change, initial: initial)
+      .updateBudget()
+      .updateTotal(_data[AppDataType.budgets]);
     _set(AppDataType.budgets, change);
   }
 
-  double _getProgress(double amount, double progress, double delta) {
-    if (amount > 0) {
-      progress = (amount * progress + delta) / amount;
-    } else {
-      progress = 0.0;
-    }
-    return progress;
-  }
-
   void _updateGoal(GoalAppData? initial, GoalAppData change) {
-    if (initial != null && !change.hidden) {
-      change.progress = _getProgress(
-          initial.details, initial.progress, change.details - initial.details);
-    } else {
-      change.progress = 0.0;
-    }
+    GoalRecalculation(change: change, initial: initial)
+      .updateGoal()
+      .updateTotal(_data[AppDataType.goals]);
     _set(AppDataType.goals, change);
   }
 
