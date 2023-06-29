@@ -2,7 +2,7 @@
 // Use of this source code is governed by a CC BY-NC-ND 4.0 license that can be
 // found in the LICENSE file.
 
-import 'package:app_finance/classes/data/account_app_data.dart';
+import 'package:app_finance/_classes/data/account_app_data.dart';
 import 'package:app_finance/data.dart';
 import 'package:app_finance/routes/account_add_page.dart';
 import 'package:flutter/material.dart';

@@ -3,11 +3,11 @@
 // found in the LICENSE file.
 
 import 'package:adaptive_breakpoints/adaptive_breakpoints.dart';
-import 'package:app_finance/classes/data/budget_app_data.dart';
+import 'package:app_finance/_classes/data/budget_app_data.dart';
 import 'package:app_finance/custom_text_theme.dart';
 import 'package:app_finance/data.dart';
 import 'package:app_finance/helpers/theme_helper.dart';
-import 'package:app_finance/classes/app_route.dart';
+import 'package:app_finance/_classes/app_route.dart';
 import 'package:app_finance/routes/abstract_page.dart';
 import 'package:app_finance/widgets/forms/color_selector.dart';
 import 'package:app_finance/widgets/forms/currency_selector.dart';

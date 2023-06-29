@@ -3,9 +3,9 @@
 // found in the LICENSE file.
 
 import 'package:adaptive_breakpoints/adaptive_breakpoints.dart';
-import 'package:app_finance/classes/tab_controller_sync.dart';
+import 'package:app_finance/_classes/tab_controller_sync.dart';
 import 'package:app_finance/helpers/theme_helper.dart';
-import 'package:app_finance/classes/app_route.dart';
+import 'package:app_finance/_classes/app_route.dart';
 import 'package:app_finance/routes/abstract_page.dart';
 import 'package:app_finance/widgets/bill/expenses_tab.dart';
 import 'package:app_finance/widgets/bill/income_tab.dart';
