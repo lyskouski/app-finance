@@ -49,10 +49,4 @@ class AccountRecalculation extends AbstractRecalculation {
     }
     return this;
   }
-
-  @override
-  AccountRecalculation updateTotal(SummaryAppData? summary, HashMap<String, dynamic> hashTable) {
-    summary?.total += getDelta();
-    return this;
-  }
 }
