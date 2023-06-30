@@ -29,8 +29,7 @@ void generateBadge(String packageRoot, int lineCoverage) {
       .replaceAll('{rightLength}', metrics.rightLength.toString())
       .replaceAll('{color}', color.toString())
       .replaceAll('{value}', '$lineCoverage%');
-  File(path.join(packageRoot, 'coverage_badge.svg'))
-      .writeAsStringSync(content);
+  File(path.join(packageRoot, 'coverage_badge.svg')).writeAsStringSync(content);
 }
 
 class _BadgeMetrics {
