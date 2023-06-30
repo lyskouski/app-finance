@@ -111,13 +111,13 @@ void main() {
 By typing `flutter test` in the command line we would see something like that:
 
 \begin{lstlisting}
-[+] Given Main page When tap on Create Then opened BillAddPage
-[+] Account Recalculation:getDelta initial(hidden[false], details[5.0]), change(hidden[false], details[1.0]) => -4.0
-[+] Account Recalculation:getDelta initial(hidden[false], details[1.0]), change(hidden[false], details[5.0]) => 4.0
+[V] Given Main page When tap on Create Then opened BillAddPage
+[V] Account Recalculation:getDelta initial(hidden[false], details[5.0]), change(hidden[false], details[1.0]) => -4.0
+[V] Account Recalculation:getDelta initial(hidden[false], details[1.0]), change(hidden[false], details[5.0]) => 4.0
 Expected: <3.0>
   Actual: <1.0>
 [X] Account Recalculation:getDelta initial(hidden[true], details[2.0]), change(hidden[false], details[3.0]) => 3.0
-[+] Account Recalculation:getDelta initial(hidden[false], details[2.0]), change(hidden[true], details[3.0]) => -2.0
+[V] Account Recalculation:getDelta initial(hidden[false], details[2.0]), change(hidden[true], details[3.0]) => -2.0
 Null check operator used on a null value
 [X] Account Recalculation:getDelta initial(null), change(hidden[false], details[2.0]) => 2.0
 Exited (1)
@@ -153,9 +153,31 @@ dart fix // Check what can be improved, by `--apply` will change the code
 Someone might think that additional checks before `git commit` and `git push` will slowdown the development process, 
 contrary that minimizes pushes back and forward to resolve failures on CI/CD build procedure. For a really big projects
 that might take hours in contrast with seconds on local environment. Surely, the automation process has to be done
-accurately and properly, otherwise will be constantly bored.
+accurately and properly, otherwise it will be constantly bored.
 
-Let's use Grinder to install our hooks (`dart run grinder:init` to generate a skeleton structure if missing).
+Implementing git hooks is a preparation of bash-scripts for execution, so, let's discuss here `pre-push`-file (since
+`pre-commit`-file contains almost the same logic for another scope of commands).
+
+\begin{lstlisting}[language=bash]
+#!/bin/bash
+
+status=0
+
+flutter test # Trigger tests
+status_test=$? # Take status for lastly executed command
+
+if [ $status_test -ne 0 ]; then
+  echo "[x] flutter test - failed."
+  status=1
+else
+  echo "[+] flutter test - passed."
+fi
+
+exit $status
+\end{lstlisting}
+
+\noindent Let's use Grinder to install our hooks (`dart run grinder:init` can be used to generate a skeleton 
+structure if it's missing yet).
 
 \begin{lstlisting}
 // {app folder}\tool\grind.dart
@@ -179,6 +201,167 @@ installGitHooks() {
 }
 \end{lstlisting}
 
-\paragraph{Updating Grinder helpers by failured exit}
+\noindent After that by using command line, let's check what we have:
+
+\begin{lstlisting}[language=bash]
+$ dart run grinder -h
+Dart workflows, automated.
+
+Usage: grinder [options] [<tasks>...]
+
+Global options:
+  --no-color           Whether to use terminal colors.
+  --version            Reports the version of this tool.
+  -h, --help           Print this usage information.
+
+Available tasks:
+  install-git-hooks    Install Git Hooks
+  sort-translations    Update Translations by sorting values alphabetically
+
+$ dart run grinder install-git-hooks
+  grinder running install-git-hooks
+  
+  install-git-hooks
+    Applying: pre-commit
+    Applying: pre-push
+    Git Hooks applied!
+  
+  finished in 0.0 seconds
+
+$ git add .
+$ git commit -m "Sample Commit"
+Computing fixes in app-finance (dry run)...
+Nothing to fix!
+Formatted 56 files (0 changed) in 0.42 seconds.
+
+[+] dart fix - passed.
+[+] dart format - passed.
+[+] dart run grinder sort-translations - passed.
+Sample Commit
+ 3 files changed, 65 insertions(+), 90 deletions(-)
+
+$ git push
+# ... logs from tests
+[+] flutter test - passed.
+# ... other logs from git
+\end{lstlisting}
+
+
+\paragraph{Adding Grinder Helpers}
+
+We haven't yet discussed our `grinder sort-translations` that was shown through the logs above. That task is needed
+to automatically rearrange our labels in `/lib/l10n/app\_*.arb`-files. We might extend our grinder tasks lately
+by also checking consistency (enter missing labels across the `.arb`-files), exporting labels to `.scv`-file
+for translation purposes, and importing them back.
+
+\begin{lstlisting}
+import './localization.dart' as locale;
+
+@Task('Update Translations by sorting values alphabetically')
+sortTranslations() {
+  // Get all additional arguments for the command
+  TaskArgs args = context.invocation.arguments;
+  // Run: dart run grinder sort-translations --quiet
+  bool isQuiet = args.getFlag('quiet'); // Returns `true` if set
+  bool isChanged = locale.sortArbKeys('./lib/l10n');
+  if (isChanged && !isQuiet) {
+    fail('Changes detected'); // (!) to handle failure
+  }
+}
+\end{lstlisting}
+
+\begin{lstlisting}
+import 'dart:convert';
+import 'dart:io';
+import 'package:grinder/grinder.dart';
+
+bool sortArbKeys(String path) {
+  log('Checking $path'); // Add to console output the text
+  final arbDir = Directory(path);
+  bool isChanged = false;
+  // Check, that folder is not missing
+  if (!arbDir.existsSync()) {
+    log('Error: Directory not found');
+    return true;
+  }
+  // Loop per each file there
+  for (var file in arbDir.listSync()) {
+    // Take only .arb-files
+    if (file is File && file.path.endsWith('.arb')) {
+      log('- ${file.path}');
+      // `|=` is a boolean OR assignment
+      isChanged |= sortArbFileKeys(file);
+    }
+  }
+  log(isChanged ? 'Labels reordered' : 'Nothing was changed');
+  return isChanged;
+}
+
+bool sortArbFileKeys(File file) {
+  // Load data from file
+  final jsonContent = file.readAsStringSync();
+  final arbMap = json.decode(jsonContent) as Map<String, dynamic>;
+  // Sort labels
+  final entries = arbMap.entries.toList();
+  entries.sort((a, b) {
+    final aKey = a.key.startsWith('@') ? a.key.substring(1) : a.key;
+    final bKey = b.key.startsWith('@') ? b.key.substring(1) : b.key;
+    return aKey.compareTo(bKey);
+  });
+  final sortedArbMap = Map.fromEntries(entries);
+  // Write back to the file with preserved indentation
+  const encoder = JsonEncoder.withIndent('    ');
+  var jsonOutputContent = encoder.convert(sortedArbMap);
+  file.writeAsStringSync(jsonOutputContent);
+  return jsonOutputContent != jsonContent; // Check if changed
+}
+\end{lstlisting}
 
 \paragraph{Activating GitHub Workflow}
+
+We've done with our automation for local environment, let's go further and define quality gates on GitHub repository.
+
+\begin{lstlisting}[language=yaml]
+# ./.github/workflows/dart.yml
+name: Flutter/Dart Quality Gates # Name of the 
+
+on:
+  push: # Trigger after a merge
+    branches: [ "main" ] # limit to main-branch
+  pull_request: # Trigger on pull-request
+    branches: [ "main" ] # if the target is main-branch
+
+jobs:
+  build:
+    runs-on: ubuntu-latest # Environment for execution
+
+    steps:
+      - uses: actions/checkout@v3 # Checkout from repository
+      - uses: subosito/flutter-action@v2 # Install Flutter/Dart
+        with:
+          channel: 'stable'
+      - run: flutter --version # Show version in logs
+
+      - name: Install Dependencies
+        run: flutter pub get
+
+      - name: Verify Formatting
+        run: dart format --output=none --set-exit-if-changed .
+
+      - name: Check Localizations ordering
+        run: dart run grinder sort-translations
+
+      # Consider passing '--fatal-infos' for slightly stricter analysis.
+      - name: Analyze Project Source
+        run: flutter analyze
+
+      - name: Run tests
+        run: flutter test
+\end{lstlisting}
+
+\noindent By preparing a pull-request we would see next representative validations flow 
+(\cref{img:pt-github}, \cref{img:pt-github-details})):
+
+\img{prototyping/github-check}{GitHub Toolbar on pull-request}{img:pt-github}
+
+\img{prototyping/github-check-details}{GitHub Workflow Actions details}{img:pt-github-details}

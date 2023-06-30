@@ -6,10 +6,8 @@
 name: Flutter/Dart Quality Gates
 
 on:
-  push:
-    branches: [ "main" ]
-  pull_request:
-    branches: [ "main" ]
+  push: {}
+  pull_request: {}
 
 jobs:
   build:

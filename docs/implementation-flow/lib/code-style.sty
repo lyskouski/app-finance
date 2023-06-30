@@ -28,3 +28,37 @@
     tabsize=2,
     language=java
 }   
+
+% Define YAML support
+\newcommand\YAMLcolonstyle{\color{red}\fontsize{9}{12}\selectfont\ttfamily}
+\newcommand\YAMLkeystyle{\color{black}\fontsize{9}{12}\selectfont\ttfamily}
+\newcommand\YAMLvaluestyle{\color{blue}\fontsize{9}{12}\selectfont\ttfamily}
+
+\newcommand\language@yaml{yaml}
+\expandafter\expandafter\expandafter\lstdefinelanguage
+\expandafter{\language@yaml}
+{
+  keywords={true,false,null,y,n},
+  keywordstyle=\color{darkgray}\bfseries,
+  basicstyle=\YAMLkeystyle,
+  sensitive=false,
+  comment=[l]{\#},
+  morecomment=[s]{/*}{*/},
+  commentstyle=\color{purple}\ttfamily,
+  stringstyle=\YAMLvaluestyle\ttfamily,
+  moredelim=[l][\color{orange}]{\&},
+  moredelim=[l][\color{magenta}]{*},
+  moredelim=**[il][\YAMLcolonstyle{:}\YAMLvaluestyle]{:},
+  morestring=[b]',
+  morestring=[b]",
+  literate =    {---}{{\ProcessThreeDashes}}3
+                {>}{{\textcolor{codegreen}\textgreater}}1     
+                {|}{{\textcolor{codegreen}\textbar}}1 
+                {\ -\ }{{\mdseries\ -\ }}3,
+}
+
+% switch to key style at EOL
+\lst@AddToHook{EveryLine}{\ifx\lst@language\language@yaml\YAMLkeystyle\fi}
+\makeatother
+
+\newcommand\ProcessThreeDashes{\llap{\color{cyan}\mdseries-{-}-}}
