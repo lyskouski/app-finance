@@ -18,7 +18,8 @@ void defaultTask() {
 
 @Task('Add Coverage Badge to README.md file')
 coverageBadge() {
-  final lineCoverage = coverage.calculateLineCoverage(File('coverage/lcov.info'));
+  final lineCoverage =
+      coverage.calculateLineCoverage(File('coverage/lcov.info'));
   coverage.generateBadge('${Directory.current.path}/coverage', lineCoverage);
 }
 
