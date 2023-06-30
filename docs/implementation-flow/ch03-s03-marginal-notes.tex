@@ -83,41 +83,9 @@ Now we're going to add three pages controlled by swiping left and right for addi
 of PageView and PageController. 
 
 \begin{lstlisting}
-class Page1 extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      color: Colors.blue,
-      child: Center(
-        child: Text('Page 1'),
-      ),
-    );
-  }
-}
-
-class Page2 extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      color: Colors.green,
-      child: Center(
-        child: Text('Page 2'),
-      ),
-    );
-  }
-}
-
-class Page3 extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      color: Colors.orange,
-      child: Center(
-        child: Text('Page 3'),
-      ),
-    );
-  }
-}
+class Page1 extends StatelessWidget { /* ... */ }
+class Page2 extends StatelessWidget { /* ... */ }
+class Page3 extends StatelessWidget { /* ... */ }
 
 class MyApp extends StatelessWidget {
   final PageController _pageController = PageController(initialPage: 0);
@@ -128,14 +96,12 @@ class MyApp extends StatelessWidget {
       home: Scaffold(
         body: GestureDetector(
           onHorizontalDragEnd: (DragEndDetails details) {
-            if (details.primaryVelocity! > 0) {
-              // Swiped right
+            if (details.primaryVelocity! > 0) { // Swiped right
               _pageController.previousPage(
                 duration: Duration(milliseconds: 500),
                 curve: Curves.ease,
               );
-            } else if (details.primaryVelocity! < 0) {
-              // Swiped left
+            } else if (details.primaryVelocity! < 0) { // Swiped left
               _pageController.nextPage(
                 duration: Duration(milliseconds: 500),
                 curve: Curves.ease,
@@ -144,11 +110,7 @@ class MyApp extends StatelessWidget {
           },
           child: PageView(
             controller: _pageController,
-            children: [
-              Page1(),
-              Page2(),
-              Page3(),
-            ],
+            children: [Page1(), Page2(), Page3()],
           ),
         ),
       ),
@@ -157,7 +119,7 @@ class MyApp extends StatelessWidget {
 }
 \end{lstlisting}
 
-To operate with visible tabs it can be changed to:
+If we do want to click on tabs instead of swiping, then it can be changed to:
 
 \begin{lstlisting}
 class MyApp extends StatelessWidget {
@@ -193,7 +155,7 @@ class MyApp extends StatelessWidget {
 }
 \end{lstlisting}
 
-Let's combine all together:
+By loving a reach User Interface flow, let's combine all together:
 
 \begin{lstlisting}
 class MyApp extends StatelessWidget {
@@ -231,7 +193,6 @@ class MyApp extends StatelessWidget {
       );
     });
   }
-
 
   @override
   Widget build(BuildContext context) {
@@ -278,43 +239,16 @@ class _VSync implements TickerProvider {
   }
 }
 
-class Page1 extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      child: Center(
-        child: Text('Page 1'),
-      ),
-    );
-  }
-}
+class Page1 extends StatelessWidget { /* ... */ }
 
-class Page2 extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      child: Center(
-        child: Text('Page 2'),
-      ),
-    );
-  }
-}
+class Page2 extends StatelessWidget { /* ... */ }
 
-class Page3 extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      child: Center(
-        child: Text('Page 3'),
-      ),
-    );
-  }
-}
+class Page3 extends StatelessWidget { /* ... */ }
 \end{lstlisting}
 
-By combining both solutions, some irritating behavior is happened, - we cannot tab from `Income' to `Transfer' 
+By combining both solutions, some irritating behavior happens, - we cannot tab from `Page1' to `Page3' 
 (more than one position) since `pageController` after the first movement will send an update via `onPageChanged`. 
-Hopefully, we do have a solution for that by introducing delayed trigger to proceed with switching to a chosen tab:
+Hopefully, we do have a solution for that by introducing delayed trigger to proceed with switching till the chosen tab:
 
 \begin{lstlisting}
 Future<void> delaySwitchTab(int delay, int newIndex) async {
@@ -347,7 +281,7 @@ void switchTab(int newIndex) {
 
 \subsubsection{Asserting Functions Definition}
 
-While defining functions as arguments for widgets, it can be used an expectation of that function structure
+By defining functions as arguments for widgets, we can use then as an expectation of functions structure.
 
 \begin{lstlisting}
 typedef SetViewFunction = String Function(Currency input);
@@ -422,7 +356,7 @@ class SummaryAppData {
 \end{lstlisting}
 
 
-\subsubsection{Using `TextEditingController ` for tabbing}
+\subsubsection{Using `TextEditingController` for tabbing}
 
 For the cases when we do want to control focus and further steps, solution would be the following:
 
@@ -503,8 +437,7 @@ For one field it's much simpler:
 
 \begin{lstlisting}
 TextFormField(
-    controller: _controller,
-    decoration: InputDecoration(labelText: 'Input Field'),
-    autofocus: true, // Autofocus enabled for this field
-  ),
+  autofocus: true,
+  // other properties
+),
 \end{lstlisting}

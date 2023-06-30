@@ -136,3 +136,49 @@ double getDelta() {
 +      : change.details - initial?.details);
 }
 \end{lstlisting}
+
+\subsubsection{Creating Automated Quality Gates}
+
+Tests writing is not enough for a quality check, we have to implement some dozen of automation till the phase 
+when will become too lazy to trigger that manually. In addition, Flutter provides a couple of commands for the 
+code improvement:
+\begin{lstlisting}
+flutter analyze // Static analysis of Dart code
+dart format // Apply rules from https://dart.dev/effective-dart/style#formatting
+dart fix // Check what can be improved, by `--apply` will change the code
+\end{lstlisting}
+
+\paragraph{Creating Git Hooks}
+
+Someone might think that additional checks before `git commit` and `git push` will slowdown the development process, 
+contrary that minimizes pushes back and forward to resolve failures on CI/CD build procedure. For a really big projects
+that might take hours in contrast with seconds on local environment. Surely, the automation process has to be done
+accurately and properly, otherwise will be constantly bored.
+
+Let's use Grinder to install our hooks (`dart run grinder:init` to generate a skeleton structure if missing).
+
+\begin{lstlisting}
+// {app folder}\tool\grind.dart
+import 'dart:io';
+import 'package:path/path.dart' as path;
+import 'package:grinder/grinder.dart';
+
+main(args) => grind(args);
+
+@Task('Install Git Hooks')
+installGitHooks() {
+  final currDir = Directory('./');
+  final hookDir = Directory('./.git/hooks');
+  final hookNames = ['pre-commit', 'pre-push'];
+  for (final name in hookNames) {
+    log('Applying: $name');
+    final sourceFile = File(path.join(currDir.absolute.path, name));
+    sourceFile.copySync(path.join(hookDir.absolute.path, name));
+  }
+  log('Git Hooks applied!');
+}
+\end{lstlisting}
+
+\paragraph{Updating Grinder helpers by failured exit}
+
+\paragraph{Activating GitHub Workflow}
