@@ -34,7 +34,7 @@ jobs:
       - name: Run tests
         run: |
           if [[ "${{ github.ref }}" == "refs/heads/main" ]]; then
-            flutter test --file-reporter=json:coverage/summary.json
+            flutter test --file-reporter=json:coverage/coverage-summary.json
           else
             flutter test
           fi
@@ -43,4 +43,4 @@ jobs:
         if: github.ref == format('refs/heads/{0}', github.event.repository.default_branch)
         uses: we-cli/coverage-badge-action@main
         with:
-          source: coverage/summary.json
+          source: coverage/coverage-summary.json
