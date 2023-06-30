@@ -16,9 +16,6 @@ fi
 dart format --set-exit-if-changed .
 status_format=$?
 
-flutter test
-status_test=$?
-
 echo " "
 echo "Summary:"
 
@@ -41,13 +38,6 @@ if [ $status_format -ne 0 ]; then
   status=1
 else
   echo "[+] dart format - passed."
-fi
-
-if [ $status_test -ne 0 ]; then
-  echo "[x] flutter test - failed."
-  status=1
-else
-  echo "[+] flutter test - passed."
 fi
 
 if [ $status -ne 0 ]; then

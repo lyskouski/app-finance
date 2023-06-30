@@ -1,0 +1,24 @@
+#!/bin/bash
+
+# To enable pre-push validation, copy that file to `.git/hooks/`
+
+status=0
+
+flutter test
+status_test=$?
+
+echo " "
+echo "Summary:"
+
+if [ $status_test -ne 0 ]; then
+  echo "[x] flutter test - failed."
+  status=1
+else
+  echo "[+] flutter test - passed."
+fi
+
+if [ $status -ne 0 ]; then
+  echo "ERROR: Checks failures above and fix before pushing."
+fi
+
+exit $status
