@@ -52,13 +52,14 @@ class MyApp extends StatelessWidget {
   
   // `@override` - replace implementation from parent class
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context) { // Returns `Widget` class based Object
     return MaterialApp(
       title: 'Flutter Demo',
       // Application theme definition
       theme: ThemeData(
         // Basic color scheme
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+        // Configuration of Widgets' styles
         useMaterial3: true,
       ),
       // Main page definition
