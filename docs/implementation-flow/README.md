@@ -1,7 +1,7 @@
 # Flutter Serverless Application Creation
 ## Sampling on Life-Cycles of Financial Accounting Application
 
-This is a book diving deep into the core mechanisms of the Flatter and Dart language to implement a serverless application.
+This book is diving deep into the core mechanisms of the Flatter and Dart language to implement a serverless application.
 
 > Remarks of the implementation flow process of https://github.com/lyskouski/app-finance.
 
