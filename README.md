@@ -1,1 +1,1 @@
-![Build Status](https://github.com/lyskouski/app-finance/actions/workflows/dart.yml/badge.svg?branch=main) [![Tests Coverage](https://lyskouski.github.io/app-finance/badges/coverage.svg)](https://github.com/lyskouski/app-finance/actions)
+![Build Status](https://github.com/lyskouski/app-finance/actions/workflows/dart.yml/badge.svg?branch=main) [![Tests Coverage](https://lyskouski.github.io/app-finance/coverage/coverage_badge.svg)](https://github.com/lyskouski/app-finance/actions)
