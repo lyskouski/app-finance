@@ -4,25 +4,33 @@
 
 import 'dart:convert';
 import 'dart:io';
+import 'package:grinder/grinder.dart';
 
-void sortArbKeys(String path) {
-  print('Checking $path');
+bool sortArbKeys(String path) {
+  log('Checking $path');
   final arbDir = Directory(path);
+  bool isChanged = false;
 
   if (!arbDir.existsSync()) {
-    print('Error: Directory not found');
-    return;
+    log('Error: Directory not found');
+    return true;
   }
 
   for (var file in arbDir.listSync()) {
     if (file is File && file.path.endsWith('.arb')) {
-      print('- ${file.path}');
-      sortArbFileKeys(file);
+      log('- ${file.path}');
+      isChanged |= sortArbFileKeys(file);
     }
   }
+  if (isChanged) {
+    log('Labels reordered');
+  } else {
+    log('Nothing was changed');
+  }
+  return isChanged;
 }
 
-void sortArbFileKeys(File file) {
+bool sortArbFileKeys(File file) {
   final jsonContent = file.readAsStringSync();
   final arbMap = json.decode(jsonContent) as Map<String, dynamic>;
 
@@ -37,5 +45,7 @@ void sortArbFileKeys(File file) {
   final sortedArbMap = Map.fromEntries(entries);
 
   const encoder = JsonEncoder.withIndent('    ');
-  file.writeAsStringSync(encoder.convert(sortedArbMap));
+  var jsonOutputContent = encoder.convert(sortedArbMap);
+  file.writeAsStringSync(jsonOutputContent);
+  return jsonOutputContent != jsonContent;
 }

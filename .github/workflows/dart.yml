@@ -29,6 +29,9 @@ jobs:
       - name: Verify Formatting
         run: dart format --output=none --set-exit-if-changed .
 
+      - name: Check Localizations ordering
+        run: dart run grinder sort-translations
+
       # Consider passing '--fatal-infos' for slightly stricter analysis.
       #- name: Analyze Project Source
       #  run: flutter analyze
