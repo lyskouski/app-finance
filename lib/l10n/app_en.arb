@@ -29,6 +29,7 @@
     "createBillTooltip": "Add new Bill",
     "createBudgetHeader": "New Budget Category",
     "createBudgetTooltip": "Create new Budget Category",
+    "createIncomeTooltip": "Add new Income",
     "credit": "Credit",
     "creditCard": "Credit Card",
     "currency": "Currency",
