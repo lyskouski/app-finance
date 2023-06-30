@@ -4,6 +4,8 @@
 
 status=0
 
+rm test/_coverage.dart
+
 #flutter analyze
 #status_analyze=$?
 
