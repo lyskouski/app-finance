@@ -1,13 +1,13 @@
 #!/bin/bash
 
-# To enable pre-commit validation, copy that file to `.git/hooks/`
+# RUN: dart run grinder install-git-hooks
 
 status=0
 
 flutter analyze
 status_analyze=$?
 
-dart fix --dry-run
+dart fix --dry-run .
 status_fix=$?
 if [ $status_fix -ne 0 ]; then
   dart fix --apply

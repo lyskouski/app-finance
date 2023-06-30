@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# To enable pre-push validation, copy that file to `.git/hooks/`
+# RUN: dart run grinder install-git-hooks
 
 status=0
 

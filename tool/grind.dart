@@ -2,6 +2,8 @@
 // Use of this source code is governed by a CC BY-NC-ND 4.0 license that can be
 // found in the LICENSE file.
 
+import 'dart:io';
+import 'package:path/path.dart' as path;
 import 'package:grinder/grinder.dart';
 import './localization.dart' as locale;
 
@@ -11,6 +13,19 @@ main(args) => grind(args);
 void defaultTask() {
   log('Run `dart run grinder -h` to view the list');
   log('Run `dart run grinder <taskName>` to execute the task');
+}
+
+@Task('Install Git Hooks')
+installGitHooks() {
+  final currDir = Directory('./');
+  final hookDir = Directory('./.git/hooks');
+  final hookNames = ['pre-commit', 'pre-push'];
+  for (final name in hookNames) {
+    log('Applying: $name');
+    final sourceFile = File(path.join(currDir.absolute.path, name));
+    sourceFile.copySync(path.join(hookDir.absolute.path, name));
+  }
+  log('Git Hooks applied!');
 }
 
 @Task('Update Translations by sorting values alphabetically')
