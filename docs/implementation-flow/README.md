@@ -1,5 +1,5 @@
-# Flutter Serverless Applications Development
-## On Example of Financial Accounting Application Development Flow
+# Flutter Serverless Application Creation
+## Sampling on Life-Cycles of Financial Accounting Application
 
 This is a book diving deep into the core mechanisms of the Flatter and Dart language to implement a serverless application.
 
