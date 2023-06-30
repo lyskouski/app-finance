@@ -5,9 +5,7 @@
 
 name: Flutter/Dart Quality Gates
 
-on:
-  push: {}
-  pull_request: {}
+on: [push, pull_request, workflow_dispatch]
 
 jobs:
   build:
@@ -34,4 +32,15 @@ jobs:
       #  run: flutter analyze
 
       - name: Run tests
-        run: flutter test
+        run: |
+          if [[ "${{ github.ref }}" == "refs/heads/main" ]]; then
+            flutter test --file-reporter=json:coverage/summary.json
+          else
+            flutter test
+          fi
+
+      - name: Update Coverage Badge
+        if: github.ref == format('refs/heads/{0}', github.event.repository.default_branch)
+        uses: we-cli/coverage-badge-action@main
+        with:
+          source: coverage/summary.json
