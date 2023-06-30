@@ -2,25 +2,199 @@
 // Use of this source code is governed by a CC BY-NC-ND 4.0 license that can be
 // found in the LICENSE file.
 
+import 'package:adaptive_breakpoints/adaptive_breakpoints.dart';
+import 'package:app_finance/_classes/app_route.dart';
+import 'package:app_finance/_classes/data/account_app_data.dart';
+import 'package:app_finance/custom_text_theme.dart';
+import 'package:app_finance/data.dart';
+import 'package:app_finance/helpers/theme_helper.dart';
+import 'package:app_finance/widgets/forms/currency_selector.dart';
+import 'package:app_finance/widgets/forms/list_account_selector.dart';
+import 'package:app_finance/widgets/forms/simple_input.dart';
+import 'package:currency_picker/currency_picker.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localization.dart';
+import 'package:provider/provider.dart';
 
-class IncomeTab extends StatelessWidget {
+class IncomeTab extends StatefulWidget {
   Function callback;
+  AppData? state;
+  String? account;
+  String accountErrorMessage = '';
+  Currency? currency;
+  double? amount;
 
   IncomeTab({
     super.key,
     required this.callback,
+    this.account,
+    this.currency,
+    this.amount,
   });
 
   @override
-  Widget build(BuildContext context) {
-    return LayoutBuilder(builder: (context, constraints) {
-      callback(const SizedBox());
-      return Container(
-        child: const Center(
-          child: Text('Page Income'),
+  IncomeTabState createState() => IncomeTabState();
+}
+
+class IncomeTabState extends State<IncomeTab> {
+  bool hasFormErrors() {
+    bool isError = false;
+    if (widget.account == null) {
+      widget.accountErrorMessage = AppLocalizations.of(context)!.isRequired;
+      isError = true;
+    }
+    return isError;
+  }
+
+  void updateStorage() {
+    String uuid = widget.account ?? '';
+    AccountAppData value = widget.state?.getByUuid(uuid);
+    value.details += widget.amount ?? 0.0;
+    value.currency = widget.currency;
+    widget.state?.update(AppDataType.accounts, uuid, value);
+  }
+
+  Widget buildButton(BuildContext context, BoxConstraints constraints) {
+    var helper = ThemeHelper(windowType: getWindowType(context));
+    String title = AppLocalizations.of(context)!.createIncomeTooltip;
+    return SizedBox(
+      width: constraints.maxWidth - helper.getIndent() * 4,
+      child: FloatingActionButton(
+        onPressed: () => {
+          setState(() {
+            if (hasFormErrors()) {
+              return;
+            }
+            updateStorage();
+            Navigator.popAndPushNamed(context, AppRoute.homeRoute);
+          })
+        },
+        tooltip: title,
+        child: Align(
+          alignment: Alignment.center,
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              const Icon(Icons.save),
+              SizedBox(height: helper.getIndent()),
+              Text(title, style: Theme.of(context).textTheme.headlineMedium)
+            ],
+          ),
         ),
-      );
+      ),
+    );
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final TextTheme textTheme = Theme.of(context).textTheme;
+    double indent =
+        ThemeHelper(windowType: getWindowType(context)).getIndent() * 2;
+    double offset = MediaQuery.of(context).size.width - indent * 3;
+
+    return LayoutBuilder(builder: (context, constraints) {
+      widget.callback(buildButton(context, constraints));
+      return Consumer<AppData>(builder: (context, appState, _) {
+        widget.state = appState;
+        return SingleChildScrollView(
+          child: Container(
+            margin: EdgeInsets.fromLTRB(indent, indent, indent, 90),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Row(
+                  children: [
+                    Text(
+                      '${AppLocalizations.of(context)!.account}*',
+                      style: textTheme.bodyLarge,
+                    ),
+                    Text(
+                      widget.accountErrorMessage,
+                      style: TextStyle(
+                        color: Theme.of(context).colorScheme.error,
+                      ),
+                    ),
+                  ],
+                ),
+                ListAccountSelector(
+                  value: widget.account,
+                  state: widget.state,
+                  setState: (value) => setState(() {
+                    widget.account = value;
+                    widget.currency ??= widget.state?.getByUuid(value).currency;
+                  }),
+                  style: textTheme.numberMedium,
+                  indent: indent,
+                  width: offset,
+                ),
+                SizedBox(height: indent),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    Container(
+                      constraints: BoxConstraints(
+                        maxWidth: offset * 0.3,
+                      ),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            AppLocalizations.of(context)!.currency,
+                            style: textTheme.bodyLarge,
+                          ),
+                          Container(
+                            color: Theme.of(context)
+                                .colorScheme
+                                .inversePrimary
+                                .withOpacity(0.3),
+                            width: double.infinity,
+                            child: CurrencySelector(
+                              value: widget.currency,
+                              setView: (Currency currency) => currency.code,
+                              setState: (value) =>
+                                  setState(() => widget.currency = value),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                    SizedBox(width: indent),
+                    Container(
+                      constraints: BoxConstraints(
+                        maxWidth: offset * 0.7,
+                      ),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            AppLocalizations.of(context)!.expense,
+                            style: textTheme.bodyLarge,
+                          ),
+                          SimpleInput(
+                            value: widget.amount != null
+                                ? widget.amount.toString()
+                                : '',
+                            type: const TextInputType.numberWithOptions(
+                                decimal: true),
+                            tooltip: AppLocalizations.of(context)!.billTooltip,
+                            style: textTheme.numberMedium,
+                            formatter: [
+                              SimpleInput.filterDouble,
+                            ],
+                            setState: (value) => setState(
+                                () => widget.amount = double.tryParse(value)),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
+                SizedBox(height: indent),
+              ],
+            ),
+          ),
+        );
+      });
     });
   }
 }
