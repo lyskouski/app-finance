@@ -6,6 +6,7 @@ import 'dart:io';
 import 'package:path/path.dart' as path;
 import 'package:grinder/grinder.dart';
 import './localization.dart' as locale;
+import './coverage_badge.dart' as coverage;
 
 main(args) => grind(args);
 
@@ -13,6 +14,12 @@ main(args) => grind(args);
 void defaultTask() {
   log('Run `dart run grinder -h` to view the list');
   log('Run `dart run grinder <taskName>` to execute the task');
+}
+
+@Task('Add Coverage Badge to README.md file')
+coverageBadge() {
+  final lineCoverage = coverage.calculateLineCoverage(File('coverage/lcov.info'));
+  coverage.generateBadge('${Directory.current.path}/coverage', lineCoverage);
 }
 
 @Task('Install Git Hooks')

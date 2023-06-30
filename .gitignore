@@ -10,6 +10,9 @@
 .svn/
 migrate_working_dir/
 
+# Coverage report
+coverage/
+
 # IntelliJ related
 *.iml
 *.ipr
