@@ -2,17 +2,56 @@
 
 # To enable pre-commit validation, copy that file to `.git/hooks/`
 
-flutter analyze
+status=0
 
-dart fix --apply
+flutter analyze
+status_analyze=$?
+
+dart fix --dry-run
+status_fix=$?
+if [ $status_fix -ne 0 ]; then
+  dart fix --apply
+fi
 
 dart format --set-exit-if-changed .
+status_format=$?
 
 flutter test
+status_test=$?
 
-status=$?
-if [ $status -ne 0 ]; then
-  echo "Code checks or build process failed. Please fix the issues before committing."
-  exit $status
+echo " "
+echo "Summary:"
+
+if [ $status_analyze -ne 0 ]; then
+  echo "[x] flutter analyze - failed (ignored by now)."
+#  status=1
+else
+  echo "[+] flutter analyze - passed."
 fi
-exit 0
+
+if [ $status_fix -ne 0 ]; then
+  echo "[x] dart fix - failed."
+  status=1
+else
+  echo "[+] dart fix - passed."
+fi
+
+if [ $status_format -ne 0 ]; then
+  echo "[x] dart format - failed."
+  status=1
+else
+  echo "[+] dart format - passed."
+fi
+
+if [ $status_test -ne 0 ]; then
+  echo "[x] flutter test - failed."
+  status=1
+else
+  echo "[+] flutter test - passed."
+fi
+
+if [ $status -ne 0 ]; then
+  echo "ERROR: Checks failures above and fix before committing."
+fi
+
+exit $status
