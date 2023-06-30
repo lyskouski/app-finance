@@ -3,3 +3,136 @@
 
 \subsection{[TBD] Prototyping Application Skeleton}
 \markboth{Implementing Core Functionality}{Prototyping Application Skeleton}
+
+[TBD]
+
+\subsubsection{Creating Unit Tests}
+
+By now we've created some business logic functionality with not so trivial flow. Not to waste the time on checking it
+all the time manually after significant changes or refactoring, let's create some tests to check it for us automatically.
+
+Furthermore we've already broken our first test (that's been provided by a Flutter template generation). At the 
+beginning it was covering the `Add`-button as an increment trigger for the shown counter.
+
+\begin{lstlisting}
+void main() {
+  testWidgets('Counter increments smoke test', (WidgetTester tester) async {
+    // Build our app and trigger a frame.
+    await tester.pumpWidget(const MyApp());
+
+    // Verify that our counter starts at 0.
+    expect(find.text('0'), findsOneWidget);
+    expect(find.text('1'), findsNothing);
+
+    // Tap the '+' icon and trigger a frame.
+    await tester.tap(find.byIcon(Icons.add));
+    await tester.pump();
+
+    // Verify that our counter has incremented.
+    expect(find.text('0'), findsNothing);
+    expect(find.text('1'), findsOneWidget);
+  });
+}
+\end{lstlisting}
+
+\noindent Let's check that `Add`-button is opening a Widget with a three named tabs.
+
+\begin{lstlisting}
+void main() {
+  testWidgets('Given Main page When tap on Create Then opened BillAddPage', (WidgetTester tester) async {
+    // App initialization
+    await tester.pumpWidget(
+        // Taken as is from `void main` of `lib/main.dart`-file
+        ChangeNotifierProvider(
+            create: (_) => AppData(),
+            child: const MyApp(),
+        )
+    );
+    // Checking one of the text widgets
+    expect(find.text('Goals'), findsOneWidget);
+    // Clicking on `Add`-button
+    await tester.tap(find.byIcon(Icons.add));
+    await tester.pumpAndSettle(); // Waiting till finished render state
+    // Asserting icons on our tabs
+    expect(find.byIcon(Icons.insert_invitation), findsOneWidget);
+    expect(find.byIcon(Icons.money_off), findsOneWidget);
+    expect(find.byIcon(Icons.transform), findsOneWidget);
+  });
+}
+\end{lstlisting}
+
+Here we are, by `tab` and `expect` the flow of the whole application can be checked. Such type of tests are named as 
+Widget tests that emphasized by specially named `testWidgets`-function.
+
+Initially, it would be better to concentrate mostly on Business Logic than on the draft state of our pages. We'll 
+return later to UI/UX, redesign if not dramatically but vastly, and right after that write a reliable 
+Test Suite for the Widgets. To check business based calculations it's used `test`-function, and, by example, we would
+take our implemented Account Recalculation flow.
+
+\begin{lstlisting}
+void main() {
+  group('Account Recalculation:getDelta', () { // Add prefix to all the tests inside
+    late AccountRecalculation mock; // Deferred initialization 
+    // `setUp`-is going to be executed before each(!) test
+    setUp(() {
+      final accountMock = AccountAppData(
+        uuid: '1',
+        title: 'test',
+        type: AppAccountType.account.toString(),
+      );
+      mock = AccountRecalculation(
+        initial: accountMock.clone(),
+        change: accountMock.clone(),
+      );
+    });
+    // Define "table" of an input arguments and output assertions
+    final testCases = [
+      [false, 5.0, false, 1.0, -4.0],
+      [false, 1.0, false, 5.0, 4.0],
+      [true, 2.0, false, 3.0, 3.0],
+      [false, 2.0, true, 3.0, -2.0],
+    ];
+    // Run all defined Test Cases
+    for (var v in testCases) {
+      test('initial(hidden[${v[0]}], details[${v[1]}]), change(hidden[${v[2]}], details[${v[3]}]) => ${v[4]}', () {
+        // Update inputs
+        mock.initial!.hidden = v[0] as bool;
+        mock.initial!.details = v[1] as double;
+        mock.change.hidden = v[2] as bool;
+        mock.change.details = v[3] as double;
+        // Assert `AccountRecalculation.getDelta`-method results
+        expect(mock.getDelta(), v[4]); 
+      });
+    }
+  });
+}
+\end{lstlisting}
+
+By typing `flutter test` in the command line we would see something like that:
+
+\begin{lstlisting}
+[+] Given Main page When tap on Create Then opened BillAddPage
+[+] Account Recalculation:getDelta initial(hidden[false], details[5.0]), change(hidden[false], details[1.0]) => -4.0
+[+] Account Recalculation:getDelta initial(hidden[false], details[1.0]), change(hidden[false], details[5.0]) => 4.0
+Expected: <3.0>
+  Actual: <1.0>
+[X] Account Recalculation:getDelta initial(hidden[true], details[2.0]), change(hidden[false], details[3.0]) => 3.0
+[+] Account Recalculation:getDelta initial(hidden[false], details[2.0]), change(hidden[true], details[3.0]) => -2.0
+Null check operator used on a null value
+[X] Account Recalculation:getDelta initial(null), change(hidden[false], details[2.0]) => 2.0
+Exited (1)
+\end{lstlisting}
+
+That test has highlighted a dozen of troubles and failures in our code, so, it definitely has not been written in vain.
+
+\begin{lstlisting}
+double getDelta() {
+  return change.hidden
+-  ? -initial!.details
++  ? -(initial?.details ?? 0.0)
+-  : change.details - initial!.details;
++  : (initial?.hidden ?? true
++      ? change.details
++      : change.details - initial?.details);
+}
+\end{lstlisting}
