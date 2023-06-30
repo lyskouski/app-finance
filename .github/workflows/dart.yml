@@ -42,5 +42,3 @@ jobs:
       - name: Update Coverage Badge
         if: github.ref == format('refs/heads/{0}', github.event.repository.default_branch)
         uses: we-cli/coverage-badge-action@main
-        with:
-          source: coverage/coverage-summary.json
