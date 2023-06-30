@@ -4,8 +4,8 @@
 
 status=0
 
-flutter analyze
-status_analyze=$?
+#flutter analyze
+#status_analyze=$?
 
 dart fix --dry-run .
 status_fix=$?
@@ -16,15 +16,18 @@ fi
 dart format --set-exit-if-changed .
 status_format=$?
 
+dart run grinder sort-translations
+status_loc=$?
+
 echo " "
 echo "Summary:"
 
-if [ $status_analyze -ne 0 ]; then
-  echo "[x] flutter analyze - failed (ignored by now)."
+#if [ $status_analyze -ne 0 ]; then
+#  echo "[x] flutter analyze - failed (ignored by now)."
 #  status=1
-else
-  echo "[+] flutter analyze - passed."
-fi
+#else
+#  echo "[+] flutter analyze - passed."
+#fi
 
 if [ $status_fix -ne 0 ]; then
   echo "[x] dart fix - failed."
@@ -38,6 +41,13 @@ if [ $status_format -ne 0 ]; then
   status=1
 else
   echo "[+] dart format - passed."
+fi
+
+if [ $status_loc -ne 0 ]; then
+  echo "[x] dart run grinder sort-translations - failed."
+  status=1
+else
+  echo "[+] dart run grinder sort-translations - passed."
 fi
 
 if [ $status -ne 0 ]; then
