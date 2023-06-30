@@ -30,8 +30,12 @@ installGitHooks() {
 
 @Task('Update Translations by sorting values alphabetically')
 sortTranslations() {
-  locale.sortArbKeys('./lib/l10n');
-  log('Labels reordered');
+  TaskArgs args = context.invocation.arguments;
+  bool isQuiet = args.getFlag('quiet');
+  bool isChanged = locale.sortArbKeys('./lib/l10n');
+  if (isChanged && !isQuiet) {
+    fail('Changes detected');
+  }
 }
 
 @Task('Export Translations')
