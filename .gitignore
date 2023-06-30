@@ -12,6 +12,7 @@ migrate_working_dir/
 
 # Coverage report
 coverage/
+test/_coverage.dart
 
 # IntelliJ related
 *.iml

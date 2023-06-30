@@ -34,7 +34,9 @@ jobs:
       - name: Run tests
         run: |
           if [[ "${{ github.ref }}" == "refs/heads/main" ]]; then
-            flutter test --coverage
+            dart run grinder full-coverage
+            flutter test --coverage test/unit
+            flutter test test/widget
             dart run grinder coverage-badge
           else
             flutter test
