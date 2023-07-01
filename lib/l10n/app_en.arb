@@ -1,7 +1,9 @@
 {
     "a": "RUN `dart run grinder sort-translations --quiet` FOR ORDERING",
     "account": "Account",
+    "accountFrom": "From Account",
     "accountHeadline": "Accounts",
+    "accountTo": "To Account",
     "accountTooltip": "Open Accounts",
     "accountType": "Account Type",
     "addAccountTooltip": "Add Account",
@@ -30,6 +32,7 @@
     "createBudgetHeader": "New Budget Category",
     "createBudgetTooltip": "Create new Budget Category",
     "createIncomeTooltip": "Add new Income",
+    "createTransferTooltip": "Create Transfer",
     "credit": "Credit",
     "creditCard": "Credit Card",
     "currency": "Currency",
