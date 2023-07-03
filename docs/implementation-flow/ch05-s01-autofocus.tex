@@ -1,0 +1,106 @@
+% Copyright 2023 The terCAD team. All rights reserved.
+% Use of this content is governed by a CC BY-NC-ND 4.0 license that can be found in the LICENSE file.
+
+\subsection{Using `TextEditingController` for tabbing}
+\markboth{Optimizing UI/UX Flow}{Using `TextEditingController` for tabbing}
+
+\subsubsection{Reasoning}
+
+Transition across fields on a form (after pressing the enter key) eliminates the need for users to manually 
+click or tap on the desired field, resulting in a smoother data entry process. Users can swiftly enter data in a 
+sequential manner, mimicking the natural flow of their thoughts and reducing repetitive actions. This helps prevent 
+errors and ensures that all necessary information is captured. Users can confidently complete forms, knowing that 
+they are guided through the process and not likely to overlook any fields, resulting in a more error-free experience.
+
+Autofocus and the enter key functionality enhance the accessibility of the application for individuals who rely on 
+keyboard navigation or assistive technologies. Users who prefer or require keyboard-based interactions can easily 
+navigate through the application and complete forms without the need for mouse or touch input. This inclusivity ensures 
+that the application is accessible to a wider range of users, including those with motor impairments or visual 
+challenges.
+
+By implementing these features, the application maintains consistency with user expectations, reducing the learning 
+curve, ensuring a familiar and intuitive experience, and allure breathe life into the application's usability,
+ushering users into a realm where efficiency reigns supreme.
+
+\subsubsection{Relevant Changes}
+
+\href{https://github.com/lyskouski/app-finance/issues/46}{https://github.com/lyskouski/app-finance/issues/46}
+
+\subsection{Implementation Notes}
+
+For the cases when we do want to control focus and further steps, basic solution would be the following:
+
+\begin{lstlisting}
+class MyForm extends StatefulWidget {
+  @override
+  _MyFormState createState() => _MyFormState();
+}
+
+class _MyFormState extends State<MyForm> {
+  late FocusNode _focusNode1;
+  late FocusNode _focusNode2;
+  late TextEditingController _controller1;
+  late TextEditingController _controller2;
+
+  @override
+  void initState() {
+    super.initState();
+    _focusNode1 = FocusNode();
+    _focusNode2 = FocusNode();
+    _controller1 = TextEditingController();
+    _controller2 = TextEditingController();
+  }
+
+  @override
+  void dispose() {
+    _focusNode1.dispose();
+    _focusNode2.dispose();
+    _controller1.dispose();
+    _controller2.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(title: Text('Form Example')),
+      body: Padding(
+        padding: EdgeInsets.all(16.0),
+        child: Column(
+          children: [
+            TextField(
+              focusNode: _focusNode1,
+              controller: _controller1,
+              autofocus: true,
+              decoration: InputDecoration(labelText: 'Field 1'),
+              textInputAction: TextInputAction.next,
+              onEditingComplete: () {
+                FocusScope.of(context).requestFocus(_focusNode2);
+              },
+            ),
+            TextField(
+              focusNode: _focusNode2,
+              controller: _controller2,
+              decoration: InputDecoration(labelText: 'Field 2'),
+              textInputAction: TextInputAction.done,
+              onEditingComplete: () {
+                // Perform any final actions here
+                _submitForm();
+              },
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
+  void _submitForm() {
+    // Handle form submission
+    // e.g., validate input, perform data processing, etc.
+    print('Field 1 value: ${_controller1.text}');
+    print('Field 2 value: ${_controller2.text}');
+  }
+}
+\end{lstlisting}
+
+For a single field it's just `autofocus: true`-attribute on `TextFormField`-widget.
