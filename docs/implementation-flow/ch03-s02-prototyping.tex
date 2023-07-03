@@ -415,10 +415,10 @@ run: |
 
 \img{prototyping/badges}{Generated README.md on our main page of the repository}{img:pt-badge}
 
-Everything is done (\cref{img:pt-badge})... almost. Coverage 46\% is unbelievable for written tests. The problem is that
-untouched (by tests) files are not included into the report. And, additionally, widget tests cover most of the 
-files without checking them. So, let's separate type of tests' execution, and add additional Grinder task to touch all 
-our files for the coverage report.
+Everything is done (\cref{img:pt-badge})... almost. Coverage 46\% is unbelievable for written tests. The problem is 
+that untouched (by tests) files are not included into the report. And, additionally, widget tests cover most of the 
+files without checking them. So, let's separate type of tests' execution, and provide additional Grinder task to 
+touch all our files for the coverage report.
 
 \begin{lstlisting}[language=yaml]
 # .github/workflows/dart.yml
@@ -477,4 +477,4 @@ test/_coverage.dart
 \end{lstlisting}
 
 \noindent 10\% Coverage... here we are. Slowly and progressively, we will correct this assessment but not immediately.
-Do remember that we're on an early stage and nothing is stable or finalized yet.
+Do remember that we're on an early stage and nothing is neither stable, nor finalized yet.
