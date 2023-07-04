@@ -10,7 +10,6 @@ import 'package:flutter_gen/gen_l10n/app_localization.dart';
 
 class AccountEditPage extends AccountAddPage {
   String uuid;
-  bool isFirstRun = true;
 
   AccountEditPage({
     required this.uuid,
@@ -21,6 +20,15 @@ class AccountEditPage extends AccountAddPage {
 }
 
 class AccountEditPageState extends AccountAddPageState<AccountEditPage> {
+  late String uuid;
+  bool isFirstRun = true;
+
+  @override
+  void initState() {
+    uuid = (widget as AccountEditPage).uuid;
+    super.initState();
+  }
+
   @override
   String getTitle(context) {
     return AppLocalizations.of(context)!.editAccountHeader;
@@ -28,23 +36,22 @@ class AccountEditPageState extends AccountAddPageState<AccountEditPage> {
 
   @override
   void updateStorage() {
-    String uuid = (widget as AccountEditPage).uuid;
     widget.state?.update(
         AppDataType.accounts,
         uuid,
         AccountAppData(
           uuid: uuid,
-          title: widget.title ?? '',
-          type: widget.type ?? AppAccountType.cash.toString(),
-          description: widget.description ?? '',
-          details: widget.balance ?? 0.0,
+          title: super.title ?? '',
+          type: super.type ?? AppAccountType.cash.toString(),
+          description: super.description ?? '',
+          details: super.balance ?? 0.0,
           progress: 1.0,
-          color: widget.color ?? Colors.red,
-          currency: widget.currency,
+          color: super.color ?? Colors.red,
+          currency: super.currency,
           hidden: false,
-          icon: widget.icon,
-          closedAt: widget.validTillDate,
-          createdAt: widget.balanceUpdateDate,
+          icon: super.icon,
+          closedAt: super.validTillDate,
+          createdAt: super.balanceUpdateDate,
         ));
   }
 
@@ -55,19 +62,18 @@ class AccountEditPageState extends AccountAddPageState<AccountEditPage> {
 
   @override
   Widget buildContent(BuildContext context, BoxConstraints constraints) {
-    if ((widget as AccountEditPage).isFirstRun) {
-      (widget as AccountEditPage).isFirstRun = false;
-      var form = widget.state?.getByUuid((widget as AccountEditPage).uuid)
-          as AccountAppData;
-      widget.title = form.title;
-      widget.description = form.description;
-      widget.type = form.type;
-      widget.balance = form.details;
-      widget.color = form.color;
-      widget.currency = form.currency;
-      widget.icon = form.icon;
-      widget.validTillDate = form.closedAt;
-      widget.balanceUpdateDate = form.createdAt;
+    if (isFirstRun) {
+      isFirstRun = false;
+      var form = widget.state?.getByUuid(uuid) as AccountAppData;
+      super.title = form.title;
+      super.description = form.description;
+      super.type = form.type;
+      super.balance = form.details;
+      super.color = form.color;
+      super.currency = form.currency;
+      super.icon = form.icon;
+      super.validTillDate = form.closedAt;
+      super.balanceUpdateDate = form.createdAt;
     }
     return super.buildContent(context, constraints);
   }
