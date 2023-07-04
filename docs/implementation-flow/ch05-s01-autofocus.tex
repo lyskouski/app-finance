@@ -188,3 +188,41 @@ Form(build `context1`) -> Widget(build `context2`) -> ... -> Widget(build `conte
 
 \noindent We should trigger `FocusController.setContext(context);` directly for `context3`, otherwise re-render will 
 block any additional interactions.
+
+We're continuing bravely fix errors that producing by our own, and the next might be nor obvious, nor trivial till 
+the fact how exactly `setState`-method should be used. So, we've been testing our application in build OC mode, but 
+only once via Android emulator. The Flutter team tells us that everything will be working cross-operations but only 
+in case we're using the functionality as it's been expected from their side. And the situation is that we're loosing 
+the state of values that's been defined inside `StatefulWidget` class of our component that updated via 
+`setState`-method inside `State`-extended class.
+
+In our code, the issue with losing the form values state is related to the fact, that by assigning default values 
+directly to the fields, those values will not be preserved when the widget is rebuilt. To maintain the form values 
+state, we have to use the `initState`-method to initialize the fields with the provided values.
+
+\begin{lstlisting}
+class ExpensesTabState extends State<ExpensesTab> {
+  String? account;
+  String accountErrorMessage = '';
+  String? budget;
+  String budgetErrorMessage = '';
+  Currency? currency;
+  double? bill;
+  String? description;
+  DateTime? createdAt;
+
+  @override
+  void initState() {
+    FocusController.resetFocus();
+    account = widget.account;
+    budget = widget.budget;
+    currency = widget.currency;
+    bill = widget.bill;
+    description = widget.description;
+    createdAt = widget.createdAt;
+    super.initState();
+  }
+// ... other code
+}
+\end{lstlisting}
+

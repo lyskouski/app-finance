@@ -47,6 +47,15 @@ class ExpensesTab extends StatefulWidget {
 }
 
 class ExpensesTabState extends State<ExpensesTab> {
+  String? account;
+  String accountErrorMessage = '';
+  String? budget;
+  String budgetErrorMessage = '';
+  Currency? currency;
+  double? bill;
+  String? description;
+  DateTime? createdAt;
+
   @override
   void dispose() {
     // FocusController.dispose();
@@ -56,6 +65,12 @@ class ExpensesTabState extends State<ExpensesTab> {
   @override
   void initState() {
     FocusController.resetFocus();
+    account = widget.account;
+    budget = widget.budget;
+    currency = widget.currency;
+    bill = widget.bill;
+    description = widget.description;
+    createdAt = widget.createdAt;
     super.initState();
   }
 
@@ -68,12 +83,12 @@ class ExpensesTabState extends State<ExpensesTab> {
     widget.state?.add(
         AppDataType.bills,
         BillAppData(
-          account: widget.account ?? '',
-          category: widget.budget ?? '',
-          currency: widget.currency,
-          title: widget.description ?? '',
-          details: widget.bill,
-          createdAt: widget.createdAt ?? DateTime.now(),
+          account: account ?? '',
+          category: budget ?? '',
+          currency: currency,
+          title: description ?? '',
+          details: bill,
+          createdAt: createdAt ?? DateTime.now(),
         ));
   }
 
@@ -143,11 +158,11 @@ class ExpensesTabState extends State<ExpensesTab> {
                   ],
                 ),
                 ListAccountSelector(
-                  value: widget.account,
+                  value: account,
                   state: widget.state,
                   setState: (value) => setState(() {
-                    widget.account = value;
-                    widget.currency ??= widget.state?.getByUuid(value).currency;
+                    account = value;
+                    currency ??= widget.state?.getByUuid(value).currency;
                   }),
                   style: textTheme.numberMedium,
                   indent: indent,
@@ -170,17 +185,17 @@ class ExpensesTabState extends State<ExpensesTab> {
                   ],
                 ),
                 ListBudgetSelector(
-                  value: widget.budget,
+                  value: budget,
                   state: widget.state,
                   setState: (value) => setState(() {
-                    widget.budget = value;
+                    budget = value;
                     var bdgCurrency = widget.state?.getByUuid(value).currency;
-                    var accCurrency = widget.account != null
-                        ? widget.state?.getByUuid(widget.account ?? '').currency
+                    var accCurrency = account != null
+                        ? widget.state?.getByUuid(account ?? '').currency
                         : null as Currency;
-                    widget.currency = widget.currency == accCurrency
+                    currency = currency == accCurrency
                         ? bdgCurrency
-                        : widget.currency ?? accCurrency;
+                        : currency ?? accCurrency;
                   }),
                   style: textTheme.numberMedium,
                   indent: indent,
@@ -209,11 +224,11 @@ class ExpensesTabState extends State<ExpensesTab> {
                                 .withOpacity(0.3),
                             width: double.infinity,
                             child: CurrencySelector(
-                              value: widget.currency,
+                              value: currency,
                               setView: (Currency currency) => currency.code,
                               focusOrder: focusOrder += 1,
                               setState: (value) =>
-                                  setState(() => widget.currency = value),
+                                  setState(() => currency = value),
                             ),
                           ),
                         ],
@@ -232,9 +247,7 @@ class ExpensesTabState extends State<ExpensesTab> {
                             style: textTheme.bodyLarge,
                           ),
                           SimpleInput(
-                            value: widget.bill != null
-                                ? widget.bill.toString()
-                                : '',
+                            value: bill != null ? bill.toString() : '',
                             type: const TextInputType.numberWithOptions(
                                 decimal: true),
                             tooltip: AppLocalizations.of(context)!.billTooltip,
@@ -242,8 +255,8 @@ class ExpensesTabState extends State<ExpensesTab> {
                             formatter: [
                               SimpleInput.filterDouble,
                             ],
-                            setState: (value) => setState(
-                                () => widget.bill = double.tryParse(value)),
+                            setState: (value) =>
+                                setState(() => bill = double.tryParse(value)),
                             focusOrder: focusOrder += 1,
                           ),
                         ],
@@ -257,11 +270,10 @@ class ExpensesTabState extends State<ExpensesTab> {
                   style: textTheme.bodyLarge,
                 ),
                 SimpleInput(
-                  value: widget.description ?? '',
+                  value: description ?? '',
                   tooltip: AppLocalizations.of(context)!.descriptionTooltip,
                   style: textTheme.numberMedium,
-                  setState: (value) =>
-                      setState(() => widget.description = value),
+                  setState: (value) => setState(() => description = value),
                   focusOrder: focusOrder += 1,
                 ),
                 SizedBox(height: indent),
@@ -272,8 +284,8 @@ class ExpensesTabState extends State<ExpensesTab> {
                 DateTimeInput(
                   style: textTheme.numberMedium,
                   width: offset,
-                  value: widget.createdAt ?? DateTime.now(),
-                  setState: (value) => setState(() => widget.createdAt = value),
+                  value: createdAt ?? DateTime.now(),
+                  setState: (value) => setState(() => createdAt = value),
                 ),
               ],
             ),
