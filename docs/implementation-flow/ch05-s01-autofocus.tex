@@ -28,8 +28,8 @@ ushering users into a realm where efficiency reigns supreme.
 
 \subsection{Technical Details}
 
-For a single field it's just `autofocus: true`-attribute on `TextFormField`-widget while when we do want to control 
-further steps autofocus, a basic solution would be the following:
+For a single field it's needed just `autofocus: true`-attribute while when we do want to control 
+further steps to autofocus:
 
 \begin{lstlisting}
 class MyForm extends StatefulWidget {
@@ -86,7 +86,6 @@ class _MyFormState extends State<MyForm> {
               textInputAction: TextInputAction.done,
               onEditingComplete: () {
                 // Perform any final actions here
-                _submitForm();
               },
             ),
           ],
@@ -94,37 +93,98 @@ class _MyFormState extends State<MyForm> {
       ),
     );
   }
-
-  void _submitForm() {
-    // Handle form submission
-    // e.g., validate input, perform data processing, etc.
-    print('Field 1 value: ${_controller1.text}');
-    print('Field 2 value: ${_controller2.text}');
-  }
 }
 \end{lstlisting}
 
 \subsection{Implementation Notes}
 
-[TBD]
+Proposal above might become overcomplicated for complex forms, so, we might take into account the usage of a state 
+machine, also known as a finite-state machine (FSM). It's a conceptual model that is used to describe the behavior of a 
+system in discrete states, transitions between those states, and actions associated with each state or transition.
 
-If we'll implement as is, focus event will concurrent with an update request, that can be resolved by using a delay.
-
-\begin{lstlisting}
-// [OR] Future.delayed(Duration(milliseconds: 300), () {
-Future.microtask(() {
-  FocusScope.of(context).requestFocus(secondFocusNode);
-});
-\end{lstlisting}
-
-Furthermore, we're not able to open our custom selectors anymore since `FocusScope.of(context).requestFocus` leads to 
-re-build by any changed focus action. The problem is relevant to fact that we've been using `BuildContext` of our Form
-whereas it should be taken context, where `DropdownButton`-element is located 
+For our case it should provide a scope of Focus Nodes and determined transition between them; to propagate it across
+multiple widgets we'll use static class.
 
 \begin{lstlisting}
-class ListAccountSelector<T extends ListAccountSelectorItem> extends StatelessWidget {
-  @override
-  Widget build(context) {
-    FocusController.setContext(context); // (!) fix
-    // ... other code
+class FocusController {
+  // Define ignored case (when FocusNode is not defined)
+  static const DEFAULT = -1;
+  // List of generated nodes
+  static List<FocusNode> nodes = [];
+  // Index of field to focus on
+  static int focus = DEFAULT;
+  // Index to check previous focus
+  static int _focus = DEFAULT;
+  // Context is needed to request focus
+  static late BuildContext _context;
+  // BuildContext setter
+  static void setContext(BuildContext context) {
+    _context = context;
+  }
+  // Get focus node by index
+  static FocusNode? getFocusNode(int idx) {
+    // Generate nodes if missing
+    while (idx >= nodes.length) {
+      nodes.add(FocusNode());
+    }
+    return idx >= 0 ? nodes[idx] : null;
+  }
+  // For the last field set "done" state, all above - "next"
+  static TextInputAction getAction(int idx) {
+    return idx >= nodes.length ? TextInputAction.done : TextInputAction.next;
+  }
+  // Trigger re-focus on form
+  static void requestFocus() {
+    // Without delay focus event will concurrent with an update request
+    Future.delayed(const Duration(milliseconds: 300), () {
+      if (focus >= 0 && _focus != focus) {
+        _focus = focus;
+        FocusScope.of(_context).requestFocus(nodes[focus]);
+      }
+    });
+  }
+  // Re-focus to the next field
+  static void onEditingComplete(idx) {
+    if (idx >= 0 && idx < nodes.length) {
+      focus = idx + 1;
+      requestFocus();
+    }
+  }
+  // Reset focus index after `build`-method
+  static void resetFocus() {
+    focus = DEFAULT;
+    _focus = DEFAULT;
+  }
+  // Used for `autofocus`-property on Widget
+  static bool isFocused(int idx, dynamic value) {
+    if (value == null && idx != DEFAULT && (focus == DEFAULT || focus == idx)) {
+      focus = idx;
+      requestFocus();
+      return true;
+    }
+    return false;
+  }
+  // Cleanup
+  static void dispose() {
+    // Clone of `nodes` to avoid concurrent operations on list
+    List<FocusNode> nodesCopy = List.of(nodes);
+    for (FocusNode node in nodesCopy) {
+      node.dispose(); // destroy Widget
+      nodes.remove(node);
+    }
+    resetFocus();
+  }
+}
 \end{lstlisting}
+
+One of the problem that we might face with is an inability to open dropdowns anymore since 
+`FocusScope.of(context).requestFocus` leads to re-build by any changed focus action. The problem is relevant to the
+fact that we've been using `BuildContext` of our Form whereas it should be taken context from `DropdownButton`-element 
+location. For the following example:
+
+\begin{lstlisting}
+Form(build `context1`) -> Widget(build `context2`) -> ... -> Widget(build `context3`) -> TextFormField.
+\end{lstlisting}
+
+\noindent We should trigger `FocusController.setContext(context);` directly for `context3`, otherwise re-render will 
+block any additional interactions.
