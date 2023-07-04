@@ -258,7 +258,6 @@ class ExpensesTabState extends State<ExpensesTab> {
                 ),
                 SimpleInput(
                   value: widget.description ?? '',
-                  type: const TextInputType.numberWithOptions(decimal: true),
                   tooltip: AppLocalizations.of(context)!.descriptionTooltip,
                   style: textTheme.numberMedium,
                   setState: (value) =>
