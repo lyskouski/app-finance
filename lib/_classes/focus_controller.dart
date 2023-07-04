@@ -49,6 +49,7 @@ class FocusController {
 
   static void resetFocus() {
     focus = DEFAULT;
+    _focus = DEFAULT;
   }
 
   static bool isFocused(int idx, dynamic value) {
@@ -66,7 +67,6 @@ class FocusController {
       node.dispose();
       nodes.remove(node);
     }
-    focus = DEFAULT;
-    _focus = DEFAULT;
+    resetFocus();
   }
 }

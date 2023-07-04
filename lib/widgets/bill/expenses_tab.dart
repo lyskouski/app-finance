@@ -55,7 +55,7 @@ class ExpensesTabState extends State<ExpensesTab> {
 
   @override
   void initState() {
-    // FocusController.resetFocus();
+    FocusController.resetFocus();
     super.initState();
   }
 
