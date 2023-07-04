@@ -2,6 +2,7 @@
 // Use of this source code is governed by a CC BY-NC-ND 4.0 license that can be
 // found in the LICENSE file.
 
+import 'package:app_finance/_classes/focus_controller.dart';
 import 'package:currency_picker/currency_picker.dart';
 import 'package:flutter/material.dart';
 
@@ -11,12 +12,15 @@ class CurrencySelector extends StatelessWidget {
   Function setState;
   SetViewFunction? setView;
   Currency? value;
+  int focusOrder;
+  bool isOpened = false;
 
   CurrencySelector({
     super.key,
     this.value,
     required this.setState,
     this.setView,
+    this.focusOrder = -1,
   }) {
     setView ??= setDefaultView;
   }
@@ -30,22 +34,35 @@ class CurrencySelector extends StatelessWidget {
   }
 
   void onTap(BuildContext context) {
+    isOpened = true;
     showCurrencyPicker(
-      context: context,
-      showFlag: true,
-      showCurrencyName: true,
-      showCurrencyCode: true,
-      onSelect: (Currency currency) => setState(currency),
-    );
+        context: context,
+        showFlag: true,
+        showCurrencyName: true,
+        showCurrencyCode: true,
+        onSelect: (Currency currency) {
+          isOpened = false;
+          setState(currency);
+          FocusController.onEditingComplete(focusOrder);
+        });
   }
 
   @override
   Widget build(BuildContext context) {
+    FocusController.setContext(context);
+    if (!isOpened &&
+        focusOrder > -1 &&
+        FocusController.isFocused(focusOrder, value)) {
+      Future.delayed(Duration.zero, () {
+        onTap(context);
+      });
+    }
     return TextFormField(
       onTap: () => onTap(context),
       key: ValueKey(value),
       initialValue: getValue(value),
       readOnly: true,
+      focusNode: FocusController.getFocusNode(focusOrder),
       decoration: InputDecoration(
         filled: true,
         border: InputBorder.none,

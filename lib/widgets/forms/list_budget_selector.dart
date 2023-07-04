@@ -19,6 +19,7 @@ class ListBudgetSelector extends ListAccountSelector<ListBudgetSelectorItem> {
     required double width,
     TextStyle? style,
     String? value,
+    int focusOrder = -1,
     double indent = 0.0,
   }) : super(
           state: state,
@@ -27,10 +28,11 @@ class ListBudgetSelector extends ListAccountSelector<ListBudgetSelectorItem> {
           style: style,
           value: value,
           indent: indent,
+          focusOrder: focusOrder,
         );
 
   @override
-  List<ListBudgetSelectorItem> getList(BuildContext context) {
+  List<ListBudgetSelectorItem> getList() {
     return state
         ?.get(AppDataType.budgets)
         .list

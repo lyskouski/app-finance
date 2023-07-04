@@ -26,9 +26,10 @@ ushering users into a realm where efficiency reigns supreme.
 
 \href{https://github.com/lyskouski/app-finance/issues/46}{https://github.com/lyskouski/app-finance/issues/46}
 
-\subsection{Implementation Notes}
+\subsection{Technical Details}
 
-For the cases when we do want to control focus and further steps, basic solution would be the following:
+For a single field it's just `autofocus: true`-attribute on `TextFormField`-widget while when we do want to control 
+further steps autofocus, a basic solution would be the following:
 
 \begin{lstlisting}
 class MyForm extends StatefulWidget {
@@ -103,4 +104,27 @@ class _MyFormState extends State<MyForm> {
 }
 \end{lstlisting}
 
-For a single field it's just `autofocus: true`-attribute on `TextFormField`-widget.
+\subsection{Implementation Notes}
+
+[TBD]
+
+If we'll implement as is, focus event will concurrent with an update request, that can be resolved by using a delay.
+
+\begin{lstlisting}
+// [OR] Future.delayed(Duration(milliseconds: 300), () {
+Future.microtask(() {
+  FocusScope.of(context).requestFocus(secondFocusNode);
+});
+\end{lstlisting}
+
+Furthermore, we're not able to open our custom selectors anymore since `FocusScope.of(context).requestFocus` leads to 
+re-build by any changed focus action. The problem is relevant to fact that we've been using `BuildContext` of our Form
+whereas it should be taken context, where `DropdownButton`-element is located 
+
+\begin{lstlisting}
+class ListAccountSelector<T extends ListAccountSelectorItem> extends StatelessWidget {
+  @override
+  Widget build(context) {
+    FocusController.setContext(context); // (!) fix
+    // ... other code
+\end{lstlisting}

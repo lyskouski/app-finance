@@ -5,6 +5,7 @@
 import 'package:adaptive_breakpoints/adaptive_breakpoints.dart';
 import 'package:app_finance/_classes/app_route.dart';
 import 'package:app_finance/_classes/data/bill_app_data.dart';
+import 'package:app_finance/_classes/focus_controller.dart';
 import 'package:app_finance/custom_text_theme.dart';
 import 'package:app_finance/data.dart';
 import 'package:app_finance/helpers/theme_helper.dart';
@@ -46,6 +47,18 @@ class ExpensesTab extends StatefulWidget {
 }
 
 class ExpensesTabState extends State<ExpensesTab> {
+  @override
+  void dispose() {
+    // FocusController.dispose();
+    super.dispose();
+  }
+
+  @override
+  void initState() {
+    // FocusController.resetFocus();
+    super.initState();
+  }
+
   bool hasFormErrors() {
     bool isError = false;
     return isError;
@@ -67,6 +80,7 @@ class ExpensesTabState extends State<ExpensesTab> {
   Widget buildButton(BuildContext context, BoxConstraints constraints) {
     var helper = ThemeHelper(windowType: getWindowType(context));
     String title = AppLocalizations.of(context)!.createBillTooltip;
+    FocusController.setContext(context);
     return SizedBox(
       width: constraints.maxWidth - helper.getIndent() * 4,
       child: FloatingActionButton(
@@ -79,6 +93,7 @@ class ExpensesTabState extends State<ExpensesTab> {
             Navigator.popAndPushNamed(context, AppRoute.homeRoute);
           })
         },
+        focusNode: FocusController.getFocusNode(5),
         tooltip: title,
         child: Align(
           alignment: Alignment.center,
@@ -101,6 +116,7 @@ class ExpensesTabState extends State<ExpensesTab> {
     double indent =
         ThemeHelper(windowType: getWindowType(context)).getIndent() * 2;
     double offset = MediaQuery.of(context).size.width - indent * 3;
+    int focusOrder = FocusController.DEFAULT;
 
     return LayoutBuilder(builder: (context, constraints) {
       widget.callback(buildButton(context, constraints));
@@ -136,6 +152,7 @@ class ExpensesTabState extends State<ExpensesTab> {
                   style: textTheme.numberMedium,
                   indent: indent,
                   width: offset,
+                  focusOrder: focusOrder += 1,
                 ),
                 SizedBox(height: indent),
                 Row(
@@ -168,6 +185,7 @@ class ExpensesTabState extends State<ExpensesTab> {
                   style: textTheme.numberMedium,
                   indent: indent,
                   width: offset,
+                  focusOrder: focusOrder += 1,
                 ),
                 SizedBox(height: indent),
                 Row(
@@ -193,6 +211,7 @@ class ExpensesTabState extends State<ExpensesTab> {
                             child: CurrencySelector(
                               value: widget.currency,
                               setView: (Currency currency) => currency.code,
+                              focusOrder: focusOrder += 1,
                               setState: (value) =>
                                   setState(() => widget.currency = value),
                             ),
@@ -225,6 +244,7 @@ class ExpensesTabState extends State<ExpensesTab> {
                             ],
                             setState: (value) => setState(
                                 () => widget.bill = double.tryParse(value)),
+                            focusOrder: focusOrder += 1,
                           ),
                         ],
                       ),
@@ -243,6 +263,7 @@ class ExpensesTabState extends State<ExpensesTab> {
                   style: textTheme.numberMedium,
                   setState: (value) =>
                       setState(() => widget.description = value),
+                  focusOrder: focusOrder += 1,
                 ),
                 SizedBox(height: indent),
                 Text(
