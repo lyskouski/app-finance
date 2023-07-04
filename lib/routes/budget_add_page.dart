@@ -40,6 +40,22 @@ class BudgetAddPage extends AbstractPage {
 
 class BudgetAddPageState<T extends BudgetAddPage>
     extends AbstractPageState<BudgetAddPage> {
+  String? title;
+  double? budgetLimit;
+  IconData? icon;
+  MaterialColor? color;
+  Currency? currency;
+
+  @override
+  void initState() {
+    title = widget.title;
+    budgetLimit = widget.budgetLimit;
+    icon = widget.icon;
+    color = widget.color;
+    currency = widget.currency;
+    super.initState();
+  }
+
   @override
   String getTitle(context) {
     return AppLocalizations.of(context)!.createBudgetHeader;
@@ -47,7 +63,7 @@ class BudgetAddPageState<T extends BudgetAddPage>
 
   bool hasFormErrors() {
     bool isError = false;
-    if (widget.title == null || widget.title!.isEmpty) {
+    if (title == null || title!.isEmpty) {
       widget.titleErrorMessage = AppLocalizations.of(context)!.isRequired;
       isError = true;
     }
@@ -58,12 +74,13 @@ class BudgetAddPageState<T extends BudgetAddPage>
     widget.state?.add(
         AppDataType.budgets,
         BudgetAppData(
-          title: widget.title ?? '',
-          amountLimit: widget.budgetLimit ?? 0.0,
+          title: title ?? '',
+          amountLimit: budgetLimit ?? 0.0,
           progress: 0.0,
-          color: widget.color ?? Colors.red,
+          color: color ?? Colors.red,
           hidden: false,
-          currency: widget.currency,
+          currency: currency,
+          icon: icon,
         ));
   }
 
@@ -131,10 +148,10 @@ class BudgetAddPageState<T extends BudgetAddPage>
               ],
             ),
             SimpleInput(
-              value: widget.title,
+              value: title,
               tooltip: AppLocalizations.of(context)!.titleAccountTooltip,
               style: textTheme.numberMedium,
-              setState: (value) => setState(() => widget.title = value),
+              setState: (value) => setState(() => title = value),
             ),
             SizedBox(height: indent),
             Row(
@@ -152,9 +169,8 @@ class BudgetAddPageState<T extends BudgetAddPage>
                         style: textTheme.bodyLarge,
                       ),
                       IconSelector(
-                        value: widget.icon,
-                        setState: (value) =>
-                            setState(() => widget.icon = value),
+                        value: icon,
+                        setState: (value) => setState(() => icon = value),
                       ),
                     ],
                   ),
@@ -172,9 +188,8 @@ class BudgetAddPageState<T extends BudgetAddPage>
                         style: textTheme.bodyLarge,
                       ),
                       ColorSelector(
-                        value: widget.color,
-                        setState: (value) =>
-                            setState(() => widget.color = value),
+                        value: color,
+                        setState: (value) => setState(() => color = value),
                       ),
                     ],
                   ),
@@ -187,9 +202,7 @@ class BudgetAddPageState<T extends BudgetAddPage>
               style: textTheme.bodyLarge,
             ),
             SimpleInput(
-              value: widget.budgetLimit != null
-                  ? widget.budgetLimit.toString()
-                  : '',
+              value: budgetLimit != null ? budgetLimit.toString() : '',
               type: const TextInputType.numberWithOptions(decimal: true),
               tooltip: AppLocalizations.of(context)!.balanceTooltip,
               style: textTheme.numberMedium,
@@ -197,7 +210,7 @@ class BudgetAddPageState<T extends BudgetAddPage>
                 FilteringTextInputFormatter.allow(RegExp(r'^\d+\.?\d{0,4}')),
               ],
               setState: (value) =>
-                  setState(() => widget.budgetLimit = double.tryParse(value)),
+                  setState(() => budgetLimit = double.tryParse(value)),
             ),
             SizedBox(height: indent),
             Text(
@@ -209,8 +222,8 @@ class BudgetAddPageState<T extends BudgetAddPage>
                   Theme.of(context).colorScheme.inversePrimary.withOpacity(0.3),
               width: double.infinity,
               child: CurrencySelector(
-                value: widget.currency,
-                setState: (value) => setState(() => widget.currency = value),
+                value: currency,
+                setState: (value) => setState(() => currency = value),
               ),
             ),
           ],

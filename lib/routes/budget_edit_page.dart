@@ -10,7 +10,6 @@ import 'package:flutter_gen/gen_l10n/app_localization.dart';
 
 class BudgetEditPage extends BudgetAddPage {
   String uuid;
-  bool isFirstRun = true;
 
   BudgetEditPage({
     required this.uuid,
@@ -21,6 +20,15 @@ class BudgetEditPage extends BudgetAddPage {
 }
 
 class BudgetEditPageState extends BudgetAddPageState<BudgetEditPage> {
+  late String uuid;
+  bool isFirstRun = true;
+
+  @override
+  void initState() {
+    uuid = (widget as BudgetEditPage).uuid;
+    super.initState();
+  }
+
   @override
   String getTitle(context) {
     return AppLocalizations.of(context)!.editBudgetHeader;
@@ -28,13 +36,11 @@ class BudgetEditPageState extends BudgetAddPageState<BudgetEditPage> {
 
   @override
   void updateStorage() {
-    String uuid = (widget as BudgetEditPage).uuid;
-    var data = widget.state?.getByUuid((widget as BudgetEditPage).uuid)
-        as BudgetAppData;
-    data.title = widget.title ?? '';
-    data.color = widget.color;
-    data.amountLimit = widget.budgetLimit ?? 0.0;
-    data.currency = widget.currency;
+    var data = widget.state?.getByUuid(uuid) as BudgetAppData;
+    data.title = super.title ?? '';
+    data.color = super.color;
+    data.amountLimit = super.budgetLimit ?? 0.0;
+    data.currency = super.currency;
     widget.state?.update(AppDataType.budgets, uuid, data);
   }
 
@@ -45,14 +51,14 @@ class BudgetEditPageState extends BudgetAddPageState<BudgetEditPage> {
 
   @override
   Widget buildContent(BuildContext context, BoxConstraints constraints) {
-    if ((widget as BudgetEditPage).isFirstRun) {
-      (widget as BudgetEditPage).isFirstRun = false;
-      var form = widget.state?.getByUuid((widget as BudgetEditPage).uuid)
-          as BudgetAppData;
-      widget.title = form.title;
-      widget.budgetLimit = form.amountLimit;
-      widget.color = form.color;
-      widget.currency = form.currency;
+    if (isFirstRun) {
+      isFirstRun = false;
+      var form = widget.state?.getByUuid(uuid) as BudgetAppData;
+      super.title = form.title;
+      super.budgetLimit = form.amountLimit;
+      super.color = form.color;
+      super.icon = form.icon;
+      super.currency = form.currency;
     }
     return super.buildContent(context, constraints);
   }

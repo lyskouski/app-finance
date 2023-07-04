@@ -9,7 +9,6 @@ class BudgetAppData extends AbstractAppData {
   BudgetAppData({
     required super.title,
     super.uuid,
-    super.details,
     super.progress = 0.0,
     super.color,
     super.icon,
@@ -18,14 +17,15 @@ class BudgetAppData extends AbstractAppData {
     super.createdAtFormatted,
     amountLimit,
     super.hidden,
-  });
+  }) : super(
+          details: amountLimit,
+        );
 
   @override
   BudgetAppData clone() {
     return BudgetAppData(
       title: super.title,
       uuid: super.uuid,
-      details: super.details,
       progress: super.progress,
       color: super.color,
       icon: super.icon,
