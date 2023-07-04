@@ -35,9 +35,21 @@ class TransferTab extends StatefulWidget {
 }
 
 class TransferTabState extends State<TransferTab> {
+  String? accountFrom;
+  String? accountTo;
+  double? amount;
+
+  @override
+  void initState() {
+    accountFrom = widget.accountFrom;
+    accountTo = widget.accountTo;
+    amount = widget.amount;
+    super.initState();
+  }
+
   bool hasFormErrors() {
     bool isError = false;
-    if (widget.accountFrom == null || widget.accountTo == null) {
+    if (accountFrom == null || accountTo == null) {
       widget.accountErrorMessage = AppLocalizations.of(context)!.isRequired;
       isError = true;
     }
@@ -45,13 +57,13 @@ class TransferTabState extends State<TransferTab> {
   }
 
   void updateStorage() {
-    String uuidFrom = widget.accountFrom ?? '';
+    String uuidFrom = accountFrom ?? '';
     AccountAppData from = widget.state?.getByUuid(uuidFrom);
-    from.details -= widget.amount ?? 0.0;
+    from.details -= amount ?? 0.0;
     widget.state?.update(AppDataType.accounts, uuidFrom, from);
-    String uuidTo = widget.accountTo ?? '';
+    String uuidTo = accountTo ?? '';
     AccountAppData to = widget.state?.getByUuid(uuidTo);
-    to.details += widget.amount ?? 0.0;
+    to.details += amount ?? 0.0;
     widget.state?.update(AppDataType.accounts, uuidTo, to);
   }
 
