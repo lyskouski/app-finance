@@ -1,0 +1,228 @@
+% Copyright 2023 The terCAD team. All rights reserved.
+% Use of this content is governed by a CC BY-NC-ND 4.0 license that can be found in the LICENSE file.
+
+\subsection{Using `TextEditingController` for tabbing}
+\markboth{Optimizing UI/UX Flow}{Using `TextEditingController` for tabbing}
+
+\subsubsection{Reasoning}
+
+Transition across fields on a form (after pressing the enter key) eliminates the need for users to manually 
+click or tap on the desired field, resulting in a smoother data entry process. Users can swiftly enter data in a 
+sequential manner, mimicking the natural flow of their thoughts and reducing repetitive actions. This helps prevent 
+errors and ensures that all necessary information is captured. Users can confidently complete forms, knowing that 
+they are guided through the process and not likely to overlook any fields, resulting in a more error-free experience.
+
+Autofocus and the enter key functionality enhance the accessibility of the application for individuals who rely on 
+keyboard navigation or assistive technologies. Users who prefer or require keyboard-based interactions can easily 
+navigate through the application and complete forms without the need for mouse or touch input. This inclusivity ensures 
+that the application is accessible to a wider range of users, including those with motor impairments or visual 
+challenges.
+
+By implementing these features, the application maintains consistency with user expectations, reducing the learning 
+curve, ensuring a familiar and intuitive experience, and allure breathe life into the application's usability,
+ushering users into a realm where efficiency reigns supreme.
+
+\subsubsection{Relevant Changes}
+
+\href{https://github.com/lyskouski/app-finance/issues/46}{https://github.com/lyskouski/app-finance/issues/46}
+
+\subsection{Technical Details}
+
+For a single field it's needed just `autofocus: true`-attribute while when we do want to control 
+further steps to autofocus:
+
+\begin{lstlisting}
+class MyForm extends StatefulWidget {
+  @override
+  _MyFormState createState() => _MyFormState();
+}
+
+class _MyFormState extends State<MyForm> {
+  late FocusNode _focusNode1;
+  late FocusNode _focusNode2;
+  late TextEditingController _controller1;
+  late TextEditingController _controller2;
+
+  @override
+  void initState() {
+    super.initState();
+    _focusNode1 = FocusNode();
+    _focusNode2 = FocusNode();
+    _controller1 = TextEditingController();
+    _controller2 = TextEditingController();
+  }
+
+  @override
+  void dispose() {
+    _focusNode1.dispose();
+    _focusNode2.dispose();
+    _controller1.dispose();
+    _controller2.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(title: Text('Form Example')),
+      body: Padding(
+        padding: EdgeInsets.all(16.0),
+        child: Column(
+          children: [
+            TextField(
+              focusNode: _focusNode1,
+              controller: _controller1,
+              autofocus: true,
+              decoration: InputDecoration(labelText: 'Field 1'),
+              textInputAction: TextInputAction.next,
+              onEditingComplete: () {
+                FocusScope.of(context).requestFocus(_focusNode2);
+              },
+            ),
+            TextField(
+              focusNode: _focusNode2,
+              controller: _controller2,
+              decoration: InputDecoration(labelText: 'Field 2'),
+              textInputAction: TextInputAction.done,
+              onEditingComplete: () {
+                // Perform any final actions here
+              },
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+\end{lstlisting}
+
+\subsection{Implementation Notes}
+
+Proposal above might become overcomplicated for complex forms, so, we might take into account the usage of a state 
+machine, also known as a finite-state machine (FSM). It's a conceptual model that is used to describe the behavior of a 
+system in discrete states, transitions between those states, and actions associated with each state or transition.
+
+For our case it should provide a scope of Focus Nodes and determined transition between them; to propagate it across
+multiple widgets we'll use static class.
+
+\begin{lstlisting}
+class FocusController {
+  // Define ignored case (when FocusNode is not defined)
+  static const DEFAULT = -1;
+  // List of generated nodes
+  static List<FocusNode> nodes = [];
+  // Index of field to focus on
+  static int focus = DEFAULT;
+  // Index to check previous focus
+  static int _focus = DEFAULT;
+  // Context is needed to request focus
+  static late BuildContext _context;
+  // BuildContext setter
+  static void setContext(BuildContext context) {
+    _context = context;
+  }
+  // Get focus node by index
+  static FocusNode? getFocusNode(int idx) {
+    // Generate nodes if missing
+    while (idx >= nodes.length) {
+      nodes.add(FocusNode());
+    }
+    return idx >= 0 ? nodes[idx] : null;
+  }
+  // For the last field set "done" state, all above - "next"
+  static TextInputAction getAction(int idx) {
+    return idx >= nodes.length ? TextInputAction.done : TextInputAction.next;
+  }
+  // Trigger re-focus on form
+  static void requestFocus() {
+    // Without delay focus event will concurrent with an update request
+    Future.delayed(const Duration(milliseconds: 300), () {
+      if (focus >= 0 && _focus != focus) {
+        _focus = focus;
+        FocusScope.of(_context).requestFocus(nodes[focus]);
+      }
+    });
+  }
+  // Re-focus to the next field
+  static void onEditingComplete(idx) {
+    if (idx >= 0 && idx < nodes.length) {
+      focus = idx + 1;
+      requestFocus();
+    }
+  }
+  // Reset focus index after `build`-method
+  static void resetFocus() {
+    focus = DEFAULT;
+    _focus = DEFAULT;
+  }
+  // Used for `autofocus`-property on Widget
+  static bool isFocused(int idx, dynamic value) {
+    if (value == null && idx != DEFAULT && (focus == DEFAULT || focus == idx)) {
+      focus = idx;
+      requestFocus();
+      return true;
+    }
+    return false;
+  }
+  // Cleanup
+  static void dispose() {
+    // Clone of `nodes` to avoid concurrent operations on list
+    List<FocusNode> nodesCopy = List.of(nodes);
+    for (FocusNode node in nodesCopy) {
+      node.dispose(); // destroy Widget
+      nodes.remove(node);
+    }
+    resetFocus();
+  }
+}
+\end{lstlisting}
+
+One of the problem that we might face with is an inability to open dropdowns anymore since 
+`FocusScope.of(context).requestFocus` leads to re-build by any changed focus action. The problem is relevant to the
+fact that we've been using `BuildContext` of our Form whereas it should be taken context from `DropdownButton`-element 
+location. For the following example:
+
+\begin{lstlisting}
+Form(build `context1`) -> Widget(build `context2`) -> ... -> Widget(build `context3`) -> TextFormField.
+\end{lstlisting}
+
+\noindent We should trigger `FocusController.setContext(context);` directly for `context3`, otherwise re-render will 
+block any additional interactions.
+
+We're continuing bravely fix errors that producing by our own, and the next might be nor obvious, nor trivial till 
+the fact how exactly `setState`-method should be used. So, we've been testing our application in build OC mode, but 
+only once via Android emulator. The Flutter team tells us that everything will be working cross-operations but only 
+in case we're using the functionality as it's been expected from their side. And the situation is that we're loosing 
+the state of values that's been defined inside `StatefulWidget` class of our component that updated via 
+`setState`-method inside `State`-extended class.
+
+In our code, the issue with losing the form values state is related to the fact, that by assigning default values 
+directly to the fields, those values will not be preserved when the widget is rebuilt. To maintain the form values 
+state, we have to use the `initState`-method to initialize the fields with the provided values.
+
+\begin{lstlisting}
+class ExpensesTabState extends State<ExpensesTab> {
+  String? account;
+  String accountErrorMessage = '';
+  String? budget;
+  String budgetErrorMessage = '';
+  Currency? currency;
+  double? bill;
+  String? description;
+  DateTime? createdAt;
+
+  @override
+  void initState() {
+    FocusController.resetFocus();
+    account = widget.account;
+    budget = widget.budget;
+    currency = widget.currency;
+    bill = widget.bill;
+    description = widget.description;
+    createdAt = widget.createdAt;
+    super.initState();
+  }
+// ... other code
+}
+\end{lstlisting}
+

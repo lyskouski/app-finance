@@ -110,7 +110,7 @@ class AppData extends ChangeNotifier {
     'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx': BudgetAppData(
       uuid: 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx',
       title: 'Description budgets with a long explanation',
-      details: 12345789.098,
+      amountLimit: 12345789.098,
       progress: 0.5,
       color: Colors.red,
       hidden: false,
@@ -118,7 +118,7 @@ class AppData extends ChangeNotifier {
     'xxxxxxxx-xxxx-5xxx-yxxx-xxxxxxxxxxxx': BudgetAppData(
       uuid: 'xxxxxxxx-xxxx-5xxx-yxxx-xxxxxxxxxxxx',
       title: 'Description budgets 2',
-      details: 1234.789,
+      amountLimit: 1234.789,
       progress: 0.8,
       color: Colors.green,
       hidden: false,
@@ -126,7 +126,7 @@ class AppData extends ChangeNotifier {
     'xxxxxxxx-xxxx-6xxx-yxxx-xxxxxxxxxxxx': BudgetAppData(
       uuid: 'xxxxxxxx-xxxx-6xxx-yxxx-xxxxxxxxxxxx',
       title: 'Description budgets 3',
-      details: 123.789,
+      amountLimit: 123.789,
       progress: 1.5,
       color: Colors.yellow,
       hidden: false,

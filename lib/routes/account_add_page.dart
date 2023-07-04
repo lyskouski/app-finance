@@ -50,6 +50,30 @@ class AccountAddPage extends AbstractPage {
 
 class AccountAddPageState<T extends AccountAddPage>
     extends AbstractPageState<AccountAddPage> {
+  String? title;
+  String? description;
+  String? type;
+  Currency? currency;
+  DateTime? validTillDate;
+  late DateTime balanceUpdateDate;
+  double? balance;
+  IconData? icon;
+  MaterialColor? color;
+
+  @override
+  void initState() {
+    title = widget.title;
+    description = widget.description;
+    type = widget.type;
+    currency = widget.currency;
+    validTillDate = widget.validTillDate;
+    balanceUpdateDate = widget.balanceUpdateDate;
+    balance = widget.balance;
+    icon = widget.icon;
+    color = widget.color;
+    super.initState();
+  }
+
   @override
   String getTitle(context) {
     return AppLocalizations.of(context)!.createAccountHeader;
@@ -57,11 +81,11 @@ class AccountAddPageState<T extends AccountAddPage>
 
   bool hasFormErrors() {
     bool isError = false;
-    if (widget.type == null || widget.type!.isEmpty) {
+    if (type == null || type!.isEmpty) {
       widget.typeErrorMessage = AppLocalizations.of(context)!.isRequired;
       isError = true;
     }
-    if (widget.title == null || widget.title!.isEmpty) {
+    if (title == null || title!.isEmpty) {
       widget.titleErrorMessage = AppLocalizations.of(context)!.isRequired;
       isError = true;
     }
@@ -72,17 +96,17 @@ class AccountAddPageState<T extends AccountAddPage>
     widget.state?.add(
         AppDataType.accounts,
         AccountAppData(
-          title: widget.title ?? '',
-          type: widget.type ?? AppAccountType.cash.toString(),
-          description: widget.description ?? '',
-          details: widget.balance ?? 0.0,
+          title: title ?? '',
+          type: type ?? AppAccountType.cash.toString(),
+          description: description ?? '',
+          details: balance ?? 0.0,
           progress: 1.0,
-          color: widget.color ?? Colors.red,
-          currency: widget.currency,
+          color: color ?? Colors.red,
+          currency: currency,
           hidden: false,
-          icon: widget.icon,
-          closedAt: widget.validTillDate,
-          createdAt: widget.balanceUpdateDate,
+          icon: icon,
+          closedAt: validTillDate,
+          createdAt: balanceUpdateDate,
         ));
   }
 
@@ -174,9 +198,9 @@ class AccountAddPageState<T extends AccountAddPage>
               ],
             ),
             ListSelector(
-              value: widget.type,
+              value: type,
               options: getAccountTypes(context),
-              setState: (value) => setState(() => widget.type = value),
+              setState: (value) => setState(() => type = value),
               style: textTheme.numberMedium,
               indent: indent,
             ),
@@ -196,10 +220,10 @@ class AccountAddPageState<T extends AccountAddPage>
               ],
             ),
             SimpleInput(
-              value: widget.title,
+              value: title,
               tooltip: AppLocalizations.of(context)!.titleAccountTooltip,
               style: textTheme.numberMedium,
-              setState: (value) => setState(() => widget.title = value),
+              setState: (value) => setState(() => title = value),
             ),
             SizedBox(height: indent),
             Row(
@@ -217,9 +241,8 @@ class AccountAddPageState<T extends AccountAddPage>
                         style: textTheme.bodyLarge,
                       ),
                       IconSelector(
-                        value: widget.icon,
-                        setState: (value) =>
-                            setState(() => widget.icon = value),
+                        value: icon,
+                        setState: (value) => setState(() => icon = value),
                       ),
                     ],
                   ),
@@ -237,9 +260,8 @@ class AccountAddPageState<T extends AccountAddPage>
                         style: textTheme.bodyLarge,
                       ),
                       ColorSelector(
-                        value: widget.color,
-                        setState: (value) =>
-                            setState(() => widget.color = value),
+                        value: color,
+                        setState: (value) => setState(() => color = value),
                       ),
                     ],
                   ),
@@ -257,11 +279,11 @@ class AccountAddPageState<T extends AccountAddPage>
                         style: textTheme.bodyLarge,
                       ),
                       SimpleInput(
-                        value: widget.description,
+                        value: description,
                         tooltip: AppLocalizations.of(context)!.detailsTooltip,
                         style: textTheme.numberMedium,
                         setState: (value) =>
-                            setState(() => widget.description = value),
+                            setState(() => description = value),
                       ),
                     ],
                   ),
@@ -278,8 +300,8 @@ class AccountAddPageState<T extends AccountAddPage>
                   Theme.of(context).colorScheme.inversePrimary.withOpacity(0.3),
               width: double.infinity,
               child: CurrencySelector(
-                value: widget.currency,
-                setState: (value) => setState(() => widget.currency = value),
+                value: currency,
+                setState: (value) => setState(() => currency = value),
               ),
             ),
             SizedBox(height: indent),
@@ -288,8 +310,8 @@ class AccountAddPageState<T extends AccountAddPage>
               style: textTheme.bodyLarge,
             ),
             MonthYearInput(
-              value: widget.validTillDate,
-              setState: (value) => setState(() => widget.validTillDate = value),
+              value: validTillDate,
+              setState: (value) => setState(() => validTillDate = value),
               style: textTheme.numberMedium,
             ),
             SizedBox(height: indent),
@@ -298,7 +320,7 @@ class AccountAddPageState<T extends AccountAddPage>
               style: textTheme.bodyLarge,
             ),
             SimpleInput(
-              value: widget.balance != null ? widget.balance.toString() : '',
+              value: balance != null ? balance.toString() : '',
               type: const TextInputType.numberWithOptions(decimal: true),
               tooltip: AppLocalizations.of(context)!.balanceTooltip,
               style: textTheme.numberMedium,
@@ -306,7 +328,7 @@ class AccountAddPageState<T extends AccountAddPage>
                 SimpleInput.filterDouble,
               ],
               setState: (value) =>
-                  setState(() => widget.balance = double.tryParse(value)),
+                  setState(() => balance = double.tryParse(value)),
             ),
             SizedBox(height: indent),
             Row(
@@ -325,9 +347,8 @@ class AccountAddPageState<T extends AccountAddPage>
             DateTimeInput(
               style: textTheme.numberMedium,
               width: offset,
-              value: widget.balanceUpdateDate,
-              setState: (value) =>
-                  setState(() => widget.balanceUpdateDate = value),
+              value: balanceUpdateDate,
+              setState: (value) => setState(() => balanceUpdateDate = value),
             ),
           ],
         ),

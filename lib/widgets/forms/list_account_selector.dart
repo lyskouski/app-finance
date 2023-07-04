@@ -2,6 +2,7 @@
 // Use of this source code is governed by a CC BY-NC-ND 4.0 license that can be
 // found in the LICENSE file.
 
+import 'package:app_finance/_classes/focus_controller.dart';
 import 'package:app_finance/data.dart';
 import 'package:app_finance/widgets/home/base_list_widget.dart';
 import 'package:flutter/material.dart';
@@ -21,6 +22,8 @@ class ListAccountSelector<T extends ListAccountSelectorItem>
   String? value;
   double indent;
   double width;
+  int focusOrder;
+  List<DropdownMenuItem<String>>? scope;
 
   ListAccountSelector({
     required this.state,
@@ -29,9 +32,10 @@ class ListAccountSelector<T extends ListAccountSelectorItem>
     this.style,
     this.value,
     this.indent = 0.0,
+    this.focusOrder = -1,
   }) : super(key: UniqueKey());
 
-  List<T> getList(BuildContext context) {
+  List<T> getList() {
     return state
         ?.get(AppDataType.accounts)
         .list
@@ -43,8 +47,34 @@ class ListAccountSelector<T extends ListAccountSelectorItem>
         .toList();
   }
 
+  List<DropdownMenuItem<String>> generateList(context) {
+    return getList().map<DropdownMenuItem<String>>((value) {
+      if (value.item?.getContext() == null) {
+        value.item?.updateContext(context);
+      }
+      return DropdownMenuItem<String>(
+        value: value.id,
+        child: Padding(
+          padding: EdgeInsets.only(top: indent),
+          child: BaseLineWidget(
+            uuid: value.item?.uuid ?? '',
+            title: value.item?.title ?? '',
+            description: value.item?.description ?? '',
+            details: value.item?.detailsFormatted ?? '',
+            progress: value.item?.progress ?? 0.0,
+            color: value.item?.color ?? Colors.transparent,
+            hidden: value.item?.hidden ?? false,
+            offset: width - indent * 3,
+          ),
+        ),
+      );
+    }).toList();
+  }
+
   @override
   Widget build(context) {
+    FocusController.setContext(context);
+    scope ??= generateList(context);
     return Container(
       color: Theme.of(context).colorScheme.inversePrimary.withOpacity(0.3),
       width: double.infinity,
@@ -52,26 +82,13 @@ class ListAccountSelector<T extends ListAccountSelectorItem>
         isExpanded: true,
         value: value,
         itemHeight: null,
-        onChanged: (value) => setState(value),
-        items: getList(context).map<DropdownMenuItem<String>>((value) {
-          value.item?.updateContext(context);
-          return DropdownMenuItem<String>(
-            value: value.id,
-            child: Padding(
-              padding: EdgeInsets.only(top: indent),
-              child: BaseLineWidget(
-                uuid: value.item?.uuid ?? '',
-                title: value.item?.title ?? '',
-                description: value.item?.description ?? '',
-                details: value.item?.detailsFormatted ?? '',
-                progress: value.item?.progress ?? 0.0,
-                color: value.item?.color ?? Colors.transparent,
-                hidden: value.item?.hidden ?? false,
-                offset: width - indent * 3,
-              ),
-            ),
-          );
-        }).toList(),
+        focusNode: FocusController.getFocusNode(focusOrder),
+        autofocus: FocusController.isFocused(focusOrder, value),
+        onChanged: (value) {
+          setState(value);
+          FocusController.onEditingComplete(focusOrder);
+        },
+        items: scope,
       ),
     );
   }

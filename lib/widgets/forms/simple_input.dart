@@ -2,6 +2,7 @@
 // Use of this source code is governed by a CC BY-NC-ND 4.0 license that can be
 // found in the LICENSE file.
 
+import 'package:app_finance/_classes/focus_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
@@ -12,6 +13,7 @@ class SimpleInput extends StatelessWidget {
   String? tooltip;
   TextInputType type;
   List<TextInputFormatter>? formatter;
+  int focusOrder;
 
   static FilteringTextInputFormatter filterDouble =
       FilteringTextInputFormatter.allow(RegExp(r'^\d+\.?\d{0,4}'));
@@ -23,15 +25,21 @@ class SimpleInput extends StatelessWidget {
     this.tooltip,
     this.formatter,
     this.type = TextInputType.text,
+    this.focusOrder = -1,
     required this.setState,
   });
 
   @override
   Widget build(BuildContext context) {
+    FocusController.setContext(context);
     return TextFormField(
       initialValue: value ?? '',
       inputFormatters: formatter,
       keyboardType: type,
+      focusNode: FocusController.getFocusNode(focusOrder),
+      textInputAction: FocusController.getAction(focusOrder),
+      onEditingComplete: () => FocusController.onEditingComplete(focusOrder),
+      autofocus: FocusController.isFocused(focusOrder, value),
       decoration: InputDecoration(
         filled: true,
         border: InputBorder.none,

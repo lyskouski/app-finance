@@ -37,9 +37,21 @@ class IncomeTab extends StatefulWidget {
 }
 
 class IncomeTabState extends State<IncomeTab> {
+  String? account;
+  Currency? currency;
+  double? amount;
+
+  @override
+  void initState() {
+    account = widget.account;
+    currency = widget.currency;
+    amount = widget.amount;
+    super.initState();
+  }
+
   bool hasFormErrors() {
     bool isError = false;
-    if (widget.account == null) {
+    if (account == null) {
       widget.accountErrorMessage = AppLocalizations.of(context)!.isRequired;
       isError = true;
     }
@@ -47,10 +59,10 @@ class IncomeTabState extends State<IncomeTab> {
   }
 
   void updateStorage() {
-    String uuid = widget.account ?? '';
+    String uuid = account ?? '';
     AccountAppData value = widget.state?.getByUuid(uuid);
-    value.details += widget.amount ?? 0.0;
-    value.currency = widget.currency;
+    value.details += amount ?? 0.0;
+    value.currency = currency;
     widget.state?.update(AppDataType.accounts, uuid, value);
   }
 
@@ -117,11 +129,11 @@ class IncomeTabState extends State<IncomeTab> {
                   ],
                 ),
                 ListAccountSelector(
-                  value: widget.account,
+                  value: account,
                   state: widget.state,
                   setState: (value) => setState(() {
-                    widget.account = value;
-                    widget.currency ??= widget.state?.getByUuid(value).currency;
+                    account = value;
+                    currency ??= widget.state?.getByUuid(value).currency;
                   }),
                   style: textTheme.numberMedium,
                   indent: indent,
@@ -149,10 +161,10 @@ class IncomeTabState extends State<IncomeTab> {
                                 .withOpacity(0.3),
                             width: double.infinity,
                             child: CurrencySelector(
-                              value: widget.currency,
+                              value: currency,
                               setView: (Currency currency) => currency.code,
                               setState: (value) =>
-                                  setState(() => widget.currency = value),
+                                  setState(() => currency = value),
                             ),
                           ),
                         ],
@@ -171,9 +183,7 @@ class IncomeTabState extends State<IncomeTab> {
                             style: textTheme.bodyLarge,
                           ),
                           SimpleInput(
-                            value: widget.amount != null
-                                ? widget.amount.toString()
-                                : '',
+                            value: amount != null ? amount.toString() : '',
                             type: const TextInputType.numberWithOptions(
                                 decimal: true),
                             tooltip: AppLocalizations.of(context)!.billTooltip,
@@ -181,8 +191,8 @@ class IncomeTabState extends State<IncomeTab> {
                             formatter: [
                               SimpleInput.filterDouble,
                             ],
-                            setState: (value) => setState(
-                                () => widget.amount = double.tryParse(value)),
+                            setState: (value) =>
+                                setState(() => amount = double.tryParse(value)),
                           ),
                         ],
                       ),
