@@ -38,7 +38,7 @@ class SimpleInput extends StatelessWidget {
       keyboardType: type,
       focusNode: FocusController.getFocusNode(focusOrder),
       textInputAction: FocusController.getAction(focusOrder),
-      onEditingComplete: () => FocusController.onEditingComplete(focusOrder),
+      onEditingComplete: FocusController.resetFocus,
       autofocus: FocusController.isFocused(focusOrder, value),
       decoration: InputDecoration(
         filled: true,

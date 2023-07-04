@@ -190,12 +190,7 @@ class ExpensesTabState extends State<ExpensesTab> {
                   setState: (value) => setState(() {
                     budget = value;
                     var bdgCurrency = widget.state?.getByUuid(value).currency;
-                    var accCurrency = account != null
-                        ? widget.state?.getByUuid(account ?? '').currency
-                        : null as Currency;
-                    currency = currency == accCurrency
-                        ? bdgCurrency
-                        : currency ?? accCurrency;
+                    currency ??= bdgCurrency;
                   }),
                   style: textTheme.numberMedium,
                   indent: indent,

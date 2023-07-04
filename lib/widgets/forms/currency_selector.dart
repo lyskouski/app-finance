@@ -43,7 +43,7 @@ class CurrencySelector extends StatelessWidget {
         onSelect: (Currency currency) {
           isOpened = false;
           setState(currency);
-          FocusController.onEditingComplete(focusOrder);
+          FocusController.resetFocus();
         });
   }
 

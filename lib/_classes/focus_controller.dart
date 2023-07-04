@@ -40,20 +40,15 @@ class FocusController {
     });
   }
 
-  static void onEditingComplete(idx) {
-    if (idx >= 0 && idx < nodes.length) {
-      focus = idx + 1;
-      requestFocus();
-    }
-  }
-
   static void resetFocus() {
     focus = DEFAULT;
     _focus = DEFAULT;
   }
 
   static bool isFocused(int idx, dynamic value) {
-    if (value == null && idx != DEFAULT && (focus == DEFAULT || focus == idx)) {
+    if ((value == null || value == '') &&
+        idx != DEFAULT &&
+        (focus == DEFAULT || focus == idx)) {
       focus = idx;
       requestFocus();
       return true;

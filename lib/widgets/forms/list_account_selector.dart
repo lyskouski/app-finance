@@ -86,7 +86,7 @@ class ListAccountSelector<T extends ListAccountSelectorItem>
         autofocus: FocusController.isFocused(focusOrder, value),
         onChanged: (value) {
           setState(value);
-          FocusController.onEditingComplete(focusOrder);
+          FocusController.resetFocus();
         },
         items: scope,
       ),

@@ -137,27 +137,23 @@ class FocusController {
   static void requestFocus() {
     // Without delay focus event will concurrent with an update request
     Future.delayed(const Duration(milliseconds: 300), () {
+      // To prevent multiple triggers for the same index
       if (focus >= 0 && _focus != focus) {
         _focus = focus;
         FocusScope.of(_context).requestFocus(nodes[focus]);
       }
     });
   }
-  // Re-focus to the next field
-  static void onEditingComplete(idx) {
-    if (idx >= 0 && idx < nodes.length) {
-      focus = idx + 1;
-      requestFocus();
-    }
-  }
-  // Reset focus index after `build`-method
+  // Reset focus to search for a new one
   static void resetFocus() {
     focus = DEFAULT;
     _focus = DEFAULT;
   }
   // Used for `autofocus`-property on Widget
   static bool isFocused(int idx, dynamic value) {
-    if (value == null && idx != DEFAULT && (focus == DEFAULT || focus == idx)) {
+    if ((value == null || value == '') &&
+        idx != DEFAULT &&
+        (focus == DEFAULT || focus == idx)) {
       focus = idx;
       requestFocus();
       return true;
