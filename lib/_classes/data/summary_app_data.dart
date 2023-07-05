@@ -3,11 +3,12 @@
 // found in the LICENSE file.
 
 import 'dart:collection';
+import 'dart:math';
 
 class SummaryAppData {
-  final _scope = SplayTreeMap<int, String>();
-  final _actual = SplayTreeMap<int, String>();
-  final _hash = HashMap<String, int>();
+  final _scope = SplayTreeMap<double, String>();
+  final _actual = SplayTreeMap<double, String>();
+  final _hash = HashMap<String, double>();
   double total;
 
   SummaryAppData({
@@ -34,7 +35,8 @@ class SummaryAppData {
       _hash.remove(value);
     }
     DateTime now = DateTime.now();
-    int key = id ?? now.millisecondsSinceEpoch;
+    double key =
+        (id ?? now.millisecondsSinceEpoch).toDouble() + Random().nextDouble();
     _scope[key] = value;
     _hash[value] = key;
     if (key >= DateTime(now.year, now.month).millisecondsSinceEpoch) {

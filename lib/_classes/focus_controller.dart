@@ -18,7 +18,9 @@ class FocusController {
     while (idx >= values.length) {
       values.add(null);
     }
-    values[idx] = value;
+    if (idx >= 0) {
+      values[idx] = value;
+    }
     _idx = idx;
     return FocusController;
   }
@@ -56,7 +58,8 @@ class FocusController {
   static void _scrollToFocusedElement(FocusNode node) {
     final focusedNode = node.context?.findRenderObject();
     final firstNode = nodes[0].context?.findRenderObject();
-    if (focusedNode is RenderBox && firstNode is RenderBox) {
+    bool isAttached = _controller?.hasClients ?? false;
+    if (isAttached && focusedNode is RenderBox && firstNode is RenderBox) {
       _controller?.animateTo(
         focusedNode.localToGlobal(Offset.zero).dy -
             firstNode.localToGlobal(Offset.zero).dy,
@@ -68,6 +71,9 @@ class FocusController {
 
   static void onEditingComplete() {
     resetFocus();
+    if (_idx >= 0 && (values[_idx] == null || values[_idx] == '')) {
+      values[_idx] == true;
+    }
     for (int idx = 0; idx < nodes.length; idx++) {
       isFocused(idx, values[idx]);
     }
@@ -80,7 +86,7 @@ class FocusController {
 
   static bool isFocused([int? i, dynamic val]) {
     int idx = i ?? _idx;
-    dynamic value = val ?? values[idx];
+    dynamic value = val ?? (_idx >= 0 ? values[idx] : null);
     if ((value == null || value == '') &&
         idx != DEFAULT &&
         (focus == DEFAULT || focus == idx)) {

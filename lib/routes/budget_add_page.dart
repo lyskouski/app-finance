@@ -4,6 +4,7 @@
 
 import 'package:adaptive_breakpoints/adaptive_breakpoints.dart';
 import 'package:app_finance/_classes/data/budget_app_data.dart';
+import 'package:app_finance/_classes/focus_controller.dart';
 import 'package:app_finance/custom_text_theme.dart';
 import 'package:app_finance/data.dart';
 import 'package:app_finance/helpers/theme_helper.dart';
@@ -92,6 +93,7 @@ class BudgetAddPageState<T extends BudgetAddPage>
   Widget buildButton(BuildContext context, BoxConstraints constraints) {
     var helper = ThemeHelper(windowType: getWindowType(context));
     String title = getButtonName();
+    FocusController.setContext(3);
     return SizedBox(
       width: constraints.maxWidth - helper.getIndent() * 4,
       child: FloatingActionButton(
@@ -104,6 +106,7 @@ class BudgetAddPageState<T extends BudgetAddPage>
             Navigator.popAndPushNamed(context, AppRoute.budgetRoute);
           })
         },
+        focusNode: FocusController.getFocusNode(),
         tooltip: title,
         child: Align(
           alignment: Alignment.center,
@@ -126,6 +129,7 @@ class BudgetAddPageState<T extends BudgetAddPage>
     double indent =
         ThemeHelper(windowType: getWindowType(context)).getIndent() * 2;
     double offset = MediaQuery.of(context).size.width - indent * 3;
+    int focusOrder = FocusController.DEFAULT;
 
     return SingleChildScrollView(
       child: Container(
@@ -152,6 +156,7 @@ class BudgetAddPageState<T extends BudgetAddPage>
               tooltip: AppLocalizations.of(context)!.titleAccountTooltip,
               style: textTheme.numberMedium,
               setState: (value) => setState(() => title = value),
+              focusOrder: focusOrder += 1,
             ),
             SizedBox(height: indent),
             Row(
@@ -171,6 +176,7 @@ class BudgetAddPageState<T extends BudgetAddPage>
                       IconSelector(
                         value: icon,
                         setState: (value) => setState(() => icon = value),
+                        // focusOrder: focusOrder += 1,
                       ),
                     ],
                   ),
@@ -190,6 +196,7 @@ class BudgetAddPageState<T extends BudgetAddPage>
                       ColorSelector(
                         value: color,
                         setState: (value) => setState(() => color = value),
+                        // focusOrder: focusOrder += 1,
                       ),
                     ],
                   ),
@@ -211,6 +218,7 @@ class BudgetAddPageState<T extends BudgetAddPage>
               ],
               setState: (value) =>
                   setState(() => budgetLimit = double.tryParse(value)),
+              focusOrder: focusOrder += 1,
             ),
             SizedBox(height: indent),
             Text(
@@ -224,6 +232,7 @@ class BudgetAddPageState<T extends BudgetAddPage>
               child: CurrencySelector(
                 value: currency,
                 setState: (value) => setState(() => currency = value),
+                focusOrder: focusOrder += 1,
               ),
             ),
           ],

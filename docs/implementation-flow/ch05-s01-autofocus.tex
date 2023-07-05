@@ -140,7 +140,9 @@ class FocusController {
     final focusedNode = node.context?.findRenderObject();
     // Is needed to take indent from top (take into account widgets above)
     final firstNode = nodes[0].context?.findRenderObject();
-    if (focusedNode is RenderBox && firstNode is RenderBox) {
+    // Check that controller is attached to a scroll view
+    bool isAttached = _controller?.hasClients ?? false;
+    if (isAttached && focusedNode is RenderBox && firstNode is RenderBox) {
       _controller?.animateTo(
         // Get Y-axis positions and apply as a delta for animation
         focusedNode.localToGlobal(Offset.zero).dy -
@@ -209,7 +211,10 @@ class FocusController {
     while (idx >= values.length) {
       values.add(null);
     }
-    values[idx] = value;
+    // To avoid error: Not in inclusive range -1
+    if (idx >= 0) {
+      values[idx] = value;
+    }
     _idx = idx;
     // To use '..' cascade operator:
     // > FocusController..setContext(idx, value)..getFocusNode()
@@ -225,7 +230,7 @@ class FocusController {
   // Optional parameters for internal usage above
   static bool isFocused([int? i, dynamic val]) {
     int idx = i ?? _idx;
-    dynamic value = val ?? values[idx];
+    dynamic value = val ?? (_idx >= 0 ? values[idx] : null);
     if ((value == null || value == '') &&
         idx != DEFAULT &&
         (focus == DEFAULT || focus == idx)) {

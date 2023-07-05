@@ -5,6 +5,7 @@
 import 'package:adaptive_breakpoints/adaptive_breakpoints.dart';
 import 'package:app_finance/_classes/app_route.dart';
 import 'package:app_finance/_classes/data/account_app_data.dart';
+import 'package:app_finance/_classes/focus_controller.dart';
 import 'package:app_finance/custom_text_theme.dart';
 import 'package:app_finance/data.dart';
 import 'package:app_finance/helpers/theme_helper.dart';
@@ -70,6 +71,7 @@ class TransferTabState extends State<TransferTab> {
   Widget buildButton(BuildContext context, BoxConstraints constraints) {
     var helper = ThemeHelper(windowType: getWindowType(context));
     String title = AppLocalizations.of(context)!.createTransferTooltip;
+    FocusController.setContext(3);
     return SizedBox(
       width: constraints.maxWidth - helper.getIndent() * 4,
       child: FloatingActionButton(
@@ -82,6 +84,7 @@ class TransferTabState extends State<TransferTab> {
             Navigator.popAndPushNamed(context, AppRoute.homeRoute);
           })
         },
+        focusNode: FocusController.getFocusNode(),
         tooltip: title,
         child: Align(
           alignment: Alignment.center,
@@ -104,12 +107,14 @@ class TransferTabState extends State<TransferTab> {
     double indent =
         ThemeHelper(windowType: getWindowType(context)).getIndent() * 2;
     double offset = MediaQuery.of(context).size.width - indent * 3;
+    int focusOrder = FocusController.DEFAULT;
 
     return LayoutBuilder(builder: (context, constraints) {
       widget.callback(buildButton(context, constraints));
       return Consumer<AppData>(builder: (context, appState, _) {
         widget.state = appState;
         return SingleChildScrollView(
+          controller: FocusController.getController(),
           child: Container(
             margin: EdgeInsets.fromLTRB(indent, indent, indent, 90),
             child: Column(
@@ -130,14 +135,15 @@ class TransferTabState extends State<TransferTab> {
                   ],
                 ),
                 ListAccountSelector(
-                  value: widget.accountFrom,
+                  value: accountFrom,
                   state: widget.state,
                   setState: (value) => setState(() {
-                    widget.accountFrom = value;
+                    accountFrom = value;
                   }),
                   style: textTheme.numberMedium,
                   indent: indent,
                   width: offset,
+                  focusOrder: focusOrder += 1,
                 ),
                 SizedBox(height: indent),
                 Row(
@@ -155,14 +161,15 @@ class TransferTabState extends State<TransferTab> {
                   ],
                 ),
                 ListAccountSelector(
-                  value: widget.accountTo,
+                  value: accountTo,
                   state: widget.state,
                   setState: (value) => setState(() {
-                    widget.accountTo = value;
+                    accountTo = value;
                   }),
                   style: textTheme.numberMedium,
                   indent: indent,
                   width: offset,
+                  focusOrder: focusOrder += 1,
                 ),
                 SizedBox(height: indent),
                 Text(
@@ -170,7 +177,7 @@ class TransferTabState extends State<TransferTab> {
                   style: textTheme.bodyLarge,
                 ),
                 SimpleInput(
-                  value: widget.amount != null ? widget.amount.toString() : '',
+                  value: amount != null ? amount.toString() : '',
                   type: const TextInputType.numberWithOptions(decimal: true),
                   tooltip: AppLocalizations.of(context)!.billTooltip,
                   style: textTheme.numberMedium,
@@ -178,7 +185,8 @@ class TransferTabState extends State<TransferTab> {
                     SimpleInput.filterDouble,
                   ],
                   setState: (value) =>
-                      setState(() => widget.amount = double.tryParse(value)),
+                      setState(() => amount = double.tryParse(value)),
+                  focusOrder: focusOrder += 1,
                 ),
               ],
             ),

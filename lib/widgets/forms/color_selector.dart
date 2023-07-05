@@ -4,6 +4,7 @@
 
 import 'dart:math';
 
+import 'package:app_finance/_classes/focus_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_colorpicker/flutter_colorpicker.dart';
 import 'package:flutter_gen/gen_l10n/app_localization.dart';
@@ -11,11 +12,14 @@ import 'package:flutter_gen/gen_l10n/app_localization.dart';
 class ColorSelector extends StatelessWidget {
   Function setState;
   MaterialColor? value;
+  int focusOrder;
+  bool isOpened = false;
 
   ColorSelector({
     super.key,
-    this.value,
     required this.setState,
+    this.value,
+    this.focusOrder = -1,
   });
 
   MaterialColor convertToMaterialColor(Color color) {
@@ -47,35 +51,46 @@ class ColorSelector extends StatelessWidget {
     return convertToMaterialColor(randomColor);
   }
 
-  @override
-  Widget build(context) {
-    return TextFormField(
-      readOnly: true,
-      onTap: () {
-        showDialog(
-          context: context,
-          builder: (BuildContext context) {
-            return AlertDialog(
-              title: Text(AppLocalizations.of(context)!.colorTooltip),
-              content: SingleChildScrollView(
-                child: ColorPicker(
-                  pickerColor: value ?? getRandomMaterialColor(),
-                  onColorChanged: (color) =>
-                      setState(convertToMaterialColor(color)),
-                ),
-              ),
-              actions: <Widget>[
-                ElevatedButton(
-                  onPressed: () {
-                    Navigator.of(context).pop();
-                  },
-                  child: Text(AppLocalizations.of(context)!.ok),
-                ),
-              ],
-            );
-          },
+  void onTap(context) {
+    isOpened = true;
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text(AppLocalizations.of(context)!.colorTooltip),
+          content: SingleChildScrollView(
+            child: ColorPicker(
+                pickerColor: value ?? getRandomMaterialColor(),
+                onColorChanged: (color) {
+                  isOpened = false;
+                  setState(convertToMaterialColor(color));
+                  FocusController.resetFocus();
+                }),
+          ),
+          actions: <Widget>[
+            ElevatedButton(
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+              child: Text(AppLocalizations.of(context)!.ok),
+            ),
+          ],
         );
       },
+    );
+  }
+
+  @override
+  Widget build(context) {
+    FocusController.setContext(focusOrder, value);
+    if (!isOpened && focusOrder > -1 && FocusController.isFocused()) {
+      Future.delayed(const Duration(milliseconds: 300), () {
+        onTap(context);
+      });
+    }
+    return TextFormField(
+      readOnly: true,
+      onTap: () => onTap(context),
       decoration: InputDecoration(
         filled: true,
         border: InputBorder.none,
