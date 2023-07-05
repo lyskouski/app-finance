@@ -31,15 +31,15 @@ class SimpleInput extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    FocusController.setContext(context);
+    FocusController.setContext(focusOrder, value);
     return TextFormField(
       initialValue: value ?? '',
       inputFormatters: formatter,
       keyboardType: type,
-      focusNode: FocusController.getFocusNode(focusOrder),
-      textInputAction: FocusController.getAction(focusOrder),
-      onEditingComplete: FocusController.resetFocus,
-      autofocus: FocusController.isFocused(focusOrder, value),
+      focusNode: FocusController.getFocusNode(),
+      textInputAction: FocusController.getAction(),
+      onEditingComplete: FocusController.onEditingComplete,
+      autofocus: FocusController.isFocused(),
       decoration: InputDecoration(
         filled: true,
         border: InputBorder.none,

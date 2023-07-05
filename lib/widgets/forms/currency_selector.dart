@@ -49,11 +49,9 @@ class CurrencySelector extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    FocusController.setContext(context);
-    if (!isOpened &&
-        focusOrder > -1 &&
-        FocusController.isFocused(focusOrder, value)) {
-      Future.delayed(Duration.zero, () {
+    FocusController.setContext(focusOrder, value);
+    if (!isOpened && focusOrder > -1 && FocusController.isFocused()) {
+      Future.delayed(const Duration(milliseconds: 300), () {
         onTap(context);
       });
     }
@@ -62,7 +60,7 @@ class CurrencySelector extends StatelessWidget {
       key: ValueKey(value),
       initialValue: getValue(value),
       readOnly: true,
-      focusNode: FocusController.getFocusNode(focusOrder),
+      focusNode: FocusController.getFocusNode(),
       decoration: InputDecoration(
         filled: true,
         border: InputBorder.none,

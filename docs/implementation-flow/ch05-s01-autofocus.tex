@@ -28,8 +28,7 @@ ushering users into a realm where efficiency reigns supreme.
 
 \subsection{Technical Details}
 
-For a single field it's needed just `autofocus: true`-attribute while when we do want to control 
-further steps to autofocus:
+For a single field it's needed just `autofocus: true`-attribute while when we do want to control further steps:
 
 \begin{lstlisting}
 class MyForm extends StatefulWidget {
@@ -63,34 +62,23 @@ class _MyFormState extends State<MyForm> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(title: Text('Form Example')),
-      body: Padding(
-        padding: EdgeInsets.all(16.0),
-        child: Column(
-          children: [
-            TextField(
-              focusNode: _focusNode1,
-              controller: _controller1,
-              autofocus: true,
-              decoration: InputDecoration(labelText: 'Field 1'),
-              textInputAction: TextInputAction.next,
-              onEditingComplete: () {
-                FocusScope.of(context).requestFocus(_focusNode2);
-              },
-            ),
-            TextField(
-              focusNode: _focusNode2,
-              controller: _controller2,
-              decoration: InputDecoration(labelText: 'Field 2'),
-              textInputAction: TextInputAction.done,
-              onEditingComplete: () {
-                // Perform any final actions here
-              },
-            ),
-          ],
+    return Column(
+      children: [
+        TextField(
+          focusNode: _focusNode1,
+          controller: _controller1,
+          autofocus: true,
+          textInputAction: TextInputAction.next,
+          onEditingComplete: () =>
+            FocusScope.of(context).requestFocus(_focusNode2),
         ),
-      ),
+        TextField(
+          focusNode: _focusNode2,
+          controller: _controller2,
+          textInputAction: TextInputAction.done,
+          onEditingComplete: () { /* final actions */ },
+        ),
+      ],
     );
   }
 }
@@ -102,7 +90,7 @@ Proposal above might become overcomplicated for complex forms, so, we might take
 machine, also known as a finite-state machine (FSM). It's a conceptual model that is used to describe the behavior of a 
 system in discrete states, transitions between those states, and actions associated with each state or transition.
 
-For our case it should provide a scope of Focus Nodes and determined transition between them; to propagate it across
+For our case it should provide a scope of Focus Nodes and determine transition between them; to propagate it across
 multiple widgets we'll use static class.
 
 \begin{lstlisting}
@@ -124,6 +112,7 @@ class FocusController {
   // Get focus node by index
   static FocusNode? getFocusNode(int idx) {
     // Generate nodes if missing
+    // Otherwise, error: Valid value range is empty
     while (idx >= nodes.length) {
       nodes.add(FocusNode());
     }
@@ -147,9 +136,9 @@ class FocusController {
   }
   // Scroll to focused element
   static void _scrollToFocusedElement(FocusNode node) {
-    // Find our object
+    // Find our widget in rendered context
     final focusedNode = node.context?.findRenderObject();
-    // Is needed to take indent from top (menu and other widgets)
+    // Is needed to take indent from top (take into account widgets above)
     final firstNode = nodes[0].context?.findRenderObject();
     if (focusedNode is RenderBox && firstNode is RenderBox) {
       _controller?.animateTo(
@@ -170,9 +159,9 @@ class FocusController {
   }
   // Used for `autofocus`-property on Widget
   static bool isFocused(int idx, dynamic value) {
-    if ((value == null || value == '') &&
-        idx != DEFAULT &&
-        (focus == DEFAULT || focus == idx)) {
+    if ((value == null || value == '') && // not set
+        idx != DEFAULT && // not equal '-1'
+        (focus == DEFAULT || focus == idx)) { // focus not set or equal to target
       focus = idx;
       requestFocus();
       return true;
@@ -181,7 +170,7 @@ class FocusController {
   }
   // Cleanup
   static void dispose() {
-    // Clone of `nodes` to avoid concurrent operations on list
+    // Copy of `nodes` to avoid concurrent operations on list
     List<FocusNode> nodesCopy = List.of(nodes);
     for (FocusNode node in nodesCopy) {
       node.dispose(); // destroy Widget
@@ -194,50 +183,97 @@ class FocusController {
 
 One of the problem that we might face with is an inability to open dropdowns anymore since 
 `FocusScope.of(context).requestFocus` leads to re-build by any changed focus action. The problem is relevant to the
-fact that we've been using `BuildContext` of our Form whereas it should be taken context from `DropdownButton`-element 
-location. For the following example:
+fact that we've been using `BuildContext` of our Form whereas it should be taken context from `DropdownButton`-element:
 
 \begin{lstlisting}
 Form(build `context1`) -> Widget(build `context2`) -> ... -> Widget(build `context3`) -> TextFormField.
 \end{lstlisting}
 
 \noindent We should trigger `FocusController.setContext(context);` directly for `context3`, otherwise re-render will 
-block any additional interactions.
+block any additional interactions. But the right fix is to use context from our FocusNode:
+
+\begin{lstlisting}
+FocusScope.of(nodes[focus].context!).requestFocus(nodes[focus]);
+\end{lstlisting}
+
+\noindent That also gives us capability to change `setContext`-method in order to store index of current element 
+and its value:
+
+\begin{lstlisting}
+class FocusController {
+  static List<dynamic> values = [];
+  static int _idx = DEFAULT;
+
+  static Type setContext(int idx, [dynamic value]) {
+    // Guard state to avoid: Valid value range is empty
+    while (idx >= values.length) {
+      values.add(null);
+    }
+    values[idx] = value;
+    _idx = idx;
+    // To use '..' cascade operator:
+    // > FocusController..setContext(idx, value)..getFocusNode()
+    return FocusController; 
+  }
+  // To be used for `onEditingComplete`' or `onChange`
+  static void onEditingComplete() {
+    resetFocus();
+    for (int idx = 0; idx < nodes.length; idx++) {
+      isFocused(idx, values[idx]);
+    }
+  }
+  // Optional parameters for internal usage above
+  static bool isFocused([int? i, dynamic val]) {
+    int idx = i ?? _idx;
+    dynamic value = val ?? values[idx];
+    if ((value == null || value == '') &&
+        idx != DEFAULT &&
+        (focus == DEFAULT || focus == idx)) {
+      focus = idx;
+      requestFocus();
+      return true;
+    }
+    return false;
+  }
+\end{lstlisting}
 
 We're continuing bravely fix errors that producing by our own, and the next might be nor obvious, nor trivial till 
-the fact how exactly `setState`-method should be used. So, we've been testing our application in build OC mode, but 
-only once via Android emulator. The Flutter team tells us that everything will be working cross-operations but only 
-in case we're using the functionality as it's been expected from their side. And the situation is that we're loosing 
-the state of values that's been defined inside `StatefulWidget` class of our component that updated via 
-`setState`-method inside `State`-extended class.
+the fact how exactly `setState`-method should be used. While we've been testing our application in build OC mode, an 
+error is appeared on Android. The Flutter team tells us that everything will be cross-functional through all devices
+and systems but it's only in the case when we're using a functionality as it's been expected from their side. And 
+the error is relevant to a lost state of values that's been defined inside `StatefulWidget` class of our 
+component that updated via `setState`-method inside `State`-extended class.
 
 In our code, the issue with losing the form values state is related to the fact, that by assigning default values 
 directly to the fields, those values will not be preserved when the widget is rebuilt. To maintain the form values 
-state, we have to use the `initState`-method to initialize the fields with the provided values.
+state, we have to use the `initState`-method to initialize fields by provided values.
 
 \begin{lstlisting}
+class ExpensesTab extends StatefulWidget {
+  String? account;
+  // ...
+
+  ExpensesTab({
+    super.key,
+    this.account,
+    // ...
+  });
+
+  @override
+  ExpensesTabState createState() => ExpensesTabState();
+}
+
 class ExpensesTabState extends State<ExpensesTab> {
   String? account;
-  String accountErrorMessage = '';
-  String? budget;
-  String budgetErrorMessage = '';
-  Currency? currency;
-  double? bill;
-  String? description;
-  DateTime? createdAt;
+  // ...
 
   @override
   void initState() {
     FocusController.resetFocus();
     account = widget.account;
-    budget = widget.budget;
-    currency = widget.currency;
-    bill = widget.bill;
-    description = widget.description;
-    createdAt = widget.createdAt;
+    // ...
     super.initState();
   }
 // ... other code
 }
 \end{lstlisting}
-

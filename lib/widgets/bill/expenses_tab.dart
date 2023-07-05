@@ -95,7 +95,7 @@ class ExpensesTabState extends State<ExpensesTab> {
   Widget buildButton(BuildContext context, BoxConstraints constraints) {
     var helper = ThemeHelper(windowType: getWindowType(context));
     String title = AppLocalizations.of(context)!.createBillTooltip;
-    FocusController.setContext(context);
+    FocusController.setContext(5, null);
     return SizedBox(
       width: constraints.maxWidth - helper.getIndent() * 4,
       child: FloatingActionButton(
@@ -108,7 +108,7 @@ class ExpensesTabState extends State<ExpensesTab> {
             Navigator.popAndPushNamed(context, AppRoute.homeRoute);
           })
         },
-        focusNode: FocusController.getFocusNode(5),
+        focusNode: FocusController.getFocusNode(),
         tooltip: title,
         child: Align(
           alignment: Alignment.center,

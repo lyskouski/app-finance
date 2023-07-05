@@ -73,7 +73,7 @@ class ListAccountSelector<T extends ListAccountSelectorItem>
 
   @override
   Widget build(context) {
-    FocusController.setContext(context);
+    FocusController.setContext(focusOrder, value);
     scope ??= generateList(context);
     return Container(
       color: Theme.of(context).colorScheme.inversePrimary.withOpacity(0.3),
@@ -82,8 +82,8 @@ class ListAccountSelector<T extends ListAccountSelectorItem>
         isExpanded: true,
         value: value,
         itemHeight: null,
-        focusNode: FocusController.getFocusNode(focusOrder),
-        autofocus: FocusController.isFocused(focusOrder, value),
+        focusNode: FocusController.getFocusNode(),
+        autofocus: FocusController.isFocused(),
         onChanged: (value) {
           setState(value);
           FocusController.resetFocus();

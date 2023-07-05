@@ -8,20 +8,26 @@ class FocusController {
   static const DEFAULT = -1;
 
   static List<FocusNode> nodes = [];
+  static List<dynamic> values = [];
+  static int _idx = DEFAULT;
   static int focus = DEFAULT;
   static int _focus = DEFAULT;
-  static late BuildContext _context;
   static ScrollController? _controller;
 
-  static void setContext(BuildContext context) {
-    _context = context;
+  static Type setContext(int idx, [dynamic value]) {
+    while (idx >= values.length) {
+      values.add(null);
+    }
+    values[idx] = value;
+    _idx = idx;
+    return FocusController;
   }
 
-  static FocusNode? getFocusNode(int idx) {
-    while (idx >= nodes.length) {
+  static FocusNode? getFocusNode() {
+    while (_idx >= nodes.length) {
       nodes.add(FocusNode());
     }
-    return idx >= 0 ? nodes[idx] : null;
+    return _idx >= 0 ? nodes[_idx] : null;
   }
 
   static ScrollController getController() {
@@ -29,19 +35,19 @@ class FocusController {
     return _controller!;
   }
 
-  static bool isLast(int idx) {
-    return idx >= nodes.length;
+  static bool isLast() {
+    return _idx >= nodes.length;
   }
 
-  static TextInputAction getAction(int idx) {
-    return isLast(idx) ? TextInputAction.done : TextInputAction.next;
+  static TextInputAction getAction() {
+    return isLast() ? TextInputAction.done : TextInputAction.next;
   }
 
   static void requestFocus() {
     Future.delayed(const Duration(milliseconds: 300), () {
       if (focus >= 0 && _focus != focus) {
         _focus = focus;
-        FocusScope.of(_context).requestFocus(nodes[focus]);
+        FocusScope.of(nodes[focus].context!).requestFocus(nodes[focus]);
         _scrollToFocusedElement(nodes[focus]);
       }
     });
@@ -60,12 +66,21 @@ class FocusController {
     }
   }
 
+  static void onEditingComplete() {
+    resetFocus();
+    for (int idx = 0; idx < nodes.length; idx++) {
+      isFocused(idx, values[idx]);
+    }
+  }
+
   static void resetFocus() {
     focus = DEFAULT;
     _focus = DEFAULT;
   }
 
-  static bool isFocused(int idx, dynamic value) {
+  static bool isFocused([int? i, dynamic val]) {
+    int idx = i ?? _idx;
+    dynamic value = val ?? values[idx];
     if ((value == null || value == '') &&
         idx != DEFAULT &&
         (focus == DEFAULT || focus == idx)) {
@@ -82,6 +97,7 @@ class FocusController {
       node.dispose();
       nodes.remove(node);
     }
+    values.removeWhere((value) => true);
     resetFocus();
   }
 }
