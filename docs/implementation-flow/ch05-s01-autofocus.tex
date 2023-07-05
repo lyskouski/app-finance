@@ -141,8 +141,27 @@ class FocusController {
       if (focus >= 0 && _focus != focus) {
         _focus = focus;
         FocusScope.of(_context).requestFocus(nodes[focus]);
+        _scrollToFocusedElement(nodes[focus]);
       }
     });
+  }
+  // Scroll to focused element
+  static void _scrollToFocusedElement(FocusNode node) {
+    // Find our object
+    final focusedNode = node.context?.findRenderObject();
+    // Is needed to take indent from top (menu and other widgets)
+    final firstNode = nodes[0].context?.findRenderObject();
+    if (focusedNode is RenderBox && firstNode is RenderBox) {
+      _controller?.animateTo(
+        // Get Y-axis positions and apply as a delta for animation
+        focusedNode.localToGlobal(Offset.zero).dy -
+            firstNode.localToGlobal(Offset.zero).dy,
+        // Duration of animation
+        duration: const Duration(milliseconds: 300),
+        // Start animation slowly, accelerates in the middle, and slows down at the end
+        curve: Curves.easeInOut,
+      );
+    }
   }
   // Reset focus to search for a new one
   static void resetFocus() {

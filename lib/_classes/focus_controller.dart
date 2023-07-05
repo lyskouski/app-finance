@@ -11,6 +11,7 @@ class FocusController {
   static int focus = DEFAULT;
   static int _focus = DEFAULT;
   static late BuildContext _context;
+  static ScrollController? _controller;
 
   static void setContext(BuildContext context) {
     _context = context;
@@ -21,6 +22,11 @@ class FocusController {
       nodes.add(FocusNode());
     }
     return idx >= 0 ? nodes[idx] : null;
+  }
+
+  static ScrollController getController() {
+    _controller ??= ScrollController();
+    return _controller!;
   }
 
   static bool isLast(int idx) {
@@ -36,8 +42,22 @@ class FocusController {
       if (focus >= 0 && _focus != focus) {
         _focus = focus;
         FocusScope.of(_context).requestFocus(nodes[focus]);
+        _scrollToFocusedElement(nodes[focus]);
       }
     });
+  }
+
+  static void _scrollToFocusedElement(FocusNode node) {
+    final focusedNode = node.context?.findRenderObject();
+    final firstNode = nodes[0].context?.findRenderObject();
+    if (focusedNode is RenderBox && firstNode is RenderBox) {
+      _controller?.animateTo(
+        focusedNode.localToGlobal(Offset.zero).dy -
+            firstNode.localToGlobal(Offset.zero).dy,
+        duration: const Duration(milliseconds: 300),
+        curve: Curves.easeInOut,
+      );
+    }
   }
 
   static void resetFocus() {

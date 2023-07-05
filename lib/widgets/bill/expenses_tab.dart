@@ -138,6 +138,7 @@ class ExpensesTabState extends State<ExpensesTab> {
       return Consumer<AppData>(builder: (context, appState, _) {
         widget.state = appState;
         return SingleChildScrollView(
+          controller: FocusController.getController(),
           child: Container(
             margin: EdgeInsets.fromLTRB(indent, indent, indent, 90),
             child: Column(
