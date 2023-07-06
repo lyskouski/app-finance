@@ -22,20 +22,15 @@ class BillAddPageState<T extends BillAddPage>
   late TabController tabController;
   final int tabCount = 3;
   int tabIndex = 1;
-  Widget? button;
 
   @override
   String getTitle(context) {
     return AppLocalizations.of(context)!.createBillHeader;
   }
 
-  void setButton(Widget btn) {
-    button = btn;
-  }
-
   @override
   Widget buildButton(BuildContext context, BoxConstraints constraints) {
-    return button ?? const SizedBox();
+    return const SizedBox();
   }
 
   @override
@@ -115,9 +110,9 @@ class BillAddPageState<T extends BillAddPage>
           controller: pageController,
           onPageChanged: switchTab,
           children: [
-            IncomeTab(callback: setButton),
-            ExpensesTab(callback: setButton),
-            TransferTab(callback: setButton),
+            IncomeTab(),
+            ExpensesTab(),
+            TransferTab(),
           ],
         ),
       ),

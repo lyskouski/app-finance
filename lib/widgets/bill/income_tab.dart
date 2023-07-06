@@ -18,7 +18,6 @@ import 'package:flutter_gen/gen_l10n/app_localization.dart';
 import 'package:provider/provider.dart';
 
 class IncomeTab extends StatefulWidget {
-  Function callback;
   String? account;
   String accountErrorMessage = '';
   Currency? currency;
@@ -26,7 +25,6 @@ class IncomeTab extends StatefulWidget {
 
   IncomeTab({
     super.key,
-    required this.callback,
     this.account,
     this.currency,
     this.amount,
@@ -44,7 +42,6 @@ class IncomeTabState extends State<IncomeTab> {
 
   @override
   void initState() {
-    FocusController.dispose();
     account = widget.account;
     currency = widget.currency;
     amount = widget.amount;
@@ -103,6 +100,7 @@ class IncomeTabState extends State<IncomeTab> {
 
   @override
   Widget build(BuildContext context) {
+    // FocusController.dispose();
     final TextTheme textTheme = Theme.of(context).textTheme;
     double indent =
         ThemeHelper(windowType: getWindowType(context)).getIndent() * 2;
@@ -110,108 +108,111 @@ class IncomeTabState extends State<IncomeTab> {
     int focusOrder = FocusController.DEFAULT;
 
     return LayoutBuilder(builder: (context, constraints) {
-      widget.callback(buildButton(context, constraints));
       return Consumer<AppData>(builder: (context, appState, _) {
         state = appState;
-        return SingleChildScrollView(
-          controller: FocusController.getController(),
-          child: Container(
-            margin: EdgeInsets.fromLTRB(indent, indent, indent, 90),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Row(
-                  children: [
-                    Text(
-                      '${AppLocalizations.of(context)!.account}*',
-                      style: textTheme.bodyLarge,
-                    ),
-                    Text(
-                      widget.accountErrorMessage,
-                      style: TextStyle(
-                        color: Theme.of(context).colorScheme.error,
+        return Scaffold(
+          body: SingleChildScrollView(
+            controller: FocusController.getController(),
+            child: Container(
+              margin: EdgeInsets.fromLTRB(indent, indent, indent, 90),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Row(
+                    children: [
+                      Text(
+                        '${AppLocalizations.of(context)!.account}*',
+                        style: textTheme.bodyLarge,
                       ),
-                    ),
-                  ],
-                ),
-                ListAccountSelector(
-                  value: account,
-                  state: state,
-                  setState: (value) => setState(() {
-                    account = value;
-                    currency ??= state.getByUuid(value).currency;
-                  }),
-                  style: textTheme.numberMedium,
-                  indent: indent,
-                  width: offset,
-                  focusOrder: focusOrder += 1,
-                ),
-                SizedBox(height: indent),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  children: [
-                    Container(
-                      constraints: BoxConstraints(
-                        maxWidth: offset * 0.3,
+                      Text(
+                        widget.accountErrorMessage,
+                        style: TextStyle(
+                          color: Theme.of(context).colorScheme.error,
+                        ),
                       ),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            AppLocalizations.of(context)!.currency,
-                            style: textTheme.bodyLarge,
-                          ),
-                          Container(
-                            color: Theme.of(context)
-                                .colorScheme
-                                .inversePrimary
-                                .withOpacity(0.3),
-                            width: double.infinity,
-                            child: CurrencySelector(
-                              value: currency,
-                              setView: (Currency currency) => currency.code,
-                              setState: (value) =>
-                                  setState(() => currency = value),
+                    ],
+                  ),
+                  ListAccountSelector(
+                    value: account,
+                    state: state,
+                    setState: (value) => setState(() {
+                      account = value;
+                      currency ??= state.getByUuid(value).currency;
+                    }),
+                    style: textTheme.numberMedium,
+                    indent: indent,
+                    width: offset,
+                    focusOrder: focusOrder += 1,
+                  ),
+                  SizedBox(height: indent),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
+                      Container(
+                        constraints: BoxConstraints(
+                          maxWidth: offset * 0.3,
+                        ),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              AppLocalizations.of(context)!.currency,
+                              style: textTheme.bodyLarge,
+                            ),
+                            Container(
+                              color: Theme.of(context)
+                                  .colorScheme
+                                  .inversePrimary
+                                  .withOpacity(0.3),
+                              width: double.infinity,
+                              child: CurrencySelector(
+                                value: currency,
+                                setView: (Currency currency) => currency.code,
+                                setState: (value) =>
+                                    setState(() => currency = value),
+                                focusOrder: focusOrder += 1,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                      SizedBox(width: indent),
+                      Container(
+                        constraints: BoxConstraints(
+                          maxWidth: offset * 0.7,
+                        ),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              AppLocalizations.of(context)!.expense,
+                              style: textTheme.bodyLarge,
+                            ),
+                            SimpleInput(
+                              value: amount != null ? amount.toString() : '',
+                              type: const TextInputType.numberWithOptions(
+                                  decimal: true),
+                              tooltip:
+                                  AppLocalizations.of(context)!.billTooltip,
+                              style: textTheme.numberMedium,
+                              formatter: [
+                                SimpleInput.filterDouble,
+                              ],
+                              setState: (value) => setState(
+                                  () => amount = double.tryParse(value)),
                               focusOrder: focusOrder += 1,
                             ),
-                          ),
-                        ],
+                          ],
+                        ),
                       ),
-                    ),
-                    SizedBox(width: indent),
-                    Container(
-                      constraints: BoxConstraints(
-                        maxWidth: offset * 0.7,
-                      ),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            AppLocalizations.of(context)!.expense,
-                            style: textTheme.bodyLarge,
-                          ),
-                          SimpleInput(
-                            value: amount != null ? amount.toString() : '',
-                            type: const TextInputType.numberWithOptions(
-                                decimal: true),
-                            tooltip: AppLocalizations.of(context)!.billTooltip,
-                            style: textTheme.numberMedium,
-                            formatter: [
-                              SimpleInput.filterDouble,
-                            ],
-                            setState: (value) =>
-                                setState(() => amount = double.tryParse(value)),
-                            focusOrder: focusOrder += 1,
-                          ),
-                        ],
-                      ),
-                    ),
-                  ],
-                ),
-                SizedBox(height: indent),
-              ],
+                    ],
+                  ),
+                  SizedBox(height: indent),
+                ],
+              ),
             ),
           ),
+          floatingActionButton: buildButton(context, constraints),
         );
       });
     });

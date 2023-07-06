@@ -16,7 +16,6 @@ import 'package:flutter_gen/gen_l10n/app_localization.dart';
 import 'package:provider/provider.dart';
 
 class TransferTab extends StatefulWidget {
-  Function callback;
   String? accountFrom;
   String accountErrorMessage = '';
   String? accountTo;
@@ -24,7 +23,6 @@ class TransferTab extends StatefulWidget {
 
   TransferTab({
     super.key,
-    required this.callback,
     this.accountFrom,
     this.accountTo,
     this.amount,
@@ -42,8 +40,6 @@ class TransferTabState extends State<TransferTab> {
 
   @override
   void initState() {
-    FocusController.dispose();
-    FocusController.requestFocus();
     accountFrom = widget.accountFrom;
     accountTo = widget.accountTo;
     amount = widget.amount;
@@ -105,6 +101,7 @@ class TransferTabState extends State<TransferTab> {
 
   @override
   Widget build(BuildContext context) {
+    // FocusController.dispose();
     final TextTheme textTheme = Theme.of(context).textTheme;
     double indent =
         ThemeHelper(windowType: getWindowType(context)).getIndent() * 2;
@@ -112,87 +109,89 @@ class TransferTabState extends State<TransferTab> {
     int focusOrder = FocusController.DEFAULT;
 
     return LayoutBuilder(builder: (context, constraints) {
-      widget.callback(buildButton(context, constraints));
       return Consumer<AppData>(builder: (context, appState, _) {
         state = appState;
-        return SingleChildScrollView(
-          controller: FocusController.getController(),
-          child: Container(
-            margin: EdgeInsets.fromLTRB(indent, indent, indent, 90),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Row(
-                  children: [
-                    Text(
-                      '${AppLocalizations.of(context)!.accountFrom}*',
-                      style: textTheme.bodyLarge,
-                    ),
-                    Text(
-                      widget.accountErrorMessage,
-                      style: TextStyle(
-                        color: Theme.of(context).colorScheme.error,
+        return Scaffold(
+          body: SingleChildScrollView(
+            controller: FocusController.getController(),
+            child: Container(
+              margin: EdgeInsets.fromLTRB(indent, indent, indent, 90),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Row(
+                    children: [
+                      Text(
+                        '${AppLocalizations.of(context)!.accountFrom}*',
+                        style: textTheme.bodyLarge,
                       ),
-                    ),
-                  ],
-                ),
-                ListAccountSelector(
-                  value: accountFrom,
-                  state: state,
-                  setState: (value) => setState(() {
-                    accountFrom = value;
-                  }),
-                  style: textTheme.numberMedium,
-                  indent: indent,
-                  width: offset,
-                  focusOrder: focusOrder += 1,
-                ),
-                SizedBox(height: indent),
-                Row(
-                  children: [
-                    Text(
-                      '${AppLocalizations.of(context)!.accountTo}*',
-                      style: textTheme.bodyLarge,
-                    ),
-                    Text(
-                      widget.accountErrorMessage,
-                      style: TextStyle(
-                        color: Theme.of(context).colorScheme.error,
+                      Text(
+                        widget.accountErrorMessage,
+                        style: TextStyle(
+                          color: Theme.of(context).colorScheme.error,
+                        ),
                       ),
-                    ),
-                  ],
-                ),
-                ListAccountSelector(
-                  value: accountTo,
-                  state: state,
-                  setState: (value) => setState(() {
-                    accountTo = value;
-                  }),
-                  style: textTheme.numberMedium,
-                  indent: indent,
-                  width: offset,
-                  focusOrder: focusOrder += 1,
-                ),
-                SizedBox(height: indent),
-                Text(
-                  AppLocalizations.of(context)!.expense,
-                  style: textTheme.bodyLarge,
-                ),
-                SimpleInput(
-                  value: amount != null ? amount.toString() : '',
-                  type: const TextInputType.numberWithOptions(decimal: true),
-                  tooltip: AppLocalizations.of(context)!.billTooltip,
-                  style: textTheme.numberMedium,
-                  formatter: [
-                    SimpleInput.filterDouble,
-                  ],
-                  setState: (value) =>
-                      setState(() => amount = double.tryParse(value)),
-                  focusOrder: focusOrder += 1,
-                ),
-              ],
+                    ],
+                  ),
+                  ListAccountSelector(
+                    value: accountFrom,
+                    state: state,
+                    setState: (value) => setState(() {
+                      accountFrom = value;
+                    }),
+                    style: textTheme.numberMedium,
+                    indent: indent,
+                    width: offset,
+                    focusOrder: focusOrder += 1,
+                  ),
+                  SizedBox(height: indent),
+                  Row(
+                    children: [
+                      Text(
+                        '${AppLocalizations.of(context)!.accountTo}*',
+                        style: textTheme.bodyLarge,
+                      ),
+                      Text(
+                        widget.accountErrorMessage,
+                        style: TextStyle(
+                          color: Theme.of(context).colorScheme.error,
+                        ),
+                      ),
+                    ],
+                  ),
+                  ListAccountSelector(
+                    value: accountTo,
+                    state: state,
+                    setState: (value) => setState(() {
+                      accountTo = value;
+                    }),
+                    style: textTheme.numberMedium,
+                    indent: indent,
+                    width: offset,
+                    focusOrder: focusOrder += 1,
+                  ),
+                  SizedBox(height: indent),
+                  Text(
+                    AppLocalizations.of(context)!.expense,
+                    style: textTheme.bodyLarge,
+                  ),
+                  SimpleInput(
+                    value: amount != null ? amount.toString() : '',
+                    type: const TextInputType.numberWithOptions(decimal: true),
+                    tooltip: AppLocalizations.of(context)!.billTooltip,
+                    style: textTheme.numberMedium,
+                    formatter: [
+                      SimpleInput.filterDouble,
+                    ],
+                    setState: (value) =>
+                        setState(() => amount = double.tryParse(value)),
+                    focusOrder: focusOrder += 1,
+                  ),
+                ],
+              ),
             ),
           ),
+          floatingActionButton: buildButton(context, constraints),
         );
       });
     });
