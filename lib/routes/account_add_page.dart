@@ -4,6 +4,7 @@
 
 import 'package:adaptive_breakpoints/adaptive_breakpoints.dart';
 import 'package:app_finance/_classes/data/account_app_data.dart';
+import 'package:app_finance/_classes/focus_controller.dart';
 import 'package:app_finance/custom_text_theme.dart';
 import 'package:app_finance/data.dart';
 import 'package:app_finance/helpers/theme_helper.dart';
@@ -93,7 +94,7 @@ class AccountAddPageState<T extends AccountAddPage>
   }
 
   void updateStorage() {
-    widget.state?.add(
+    super.state.add(
         AppDataType.accounts,
         AccountAppData(
           title: title ?? '',
@@ -118,6 +119,7 @@ class AccountAddPageState<T extends AccountAddPage>
   Widget buildButton(BuildContext context, BoxConstraints constraints) {
     var helper = ThemeHelper(windowType: getWindowType(context));
     String title = getButtonName();
+    FocusController.setContext(6);
     return SizedBox(
       width: constraints.maxWidth - helper.getIndent() * 4,
       child: FloatingActionButton(
@@ -130,6 +132,7 @@ class AccountAddPageState<T extends AccountAddPage>
             Navigator.popAndPushNamed(context, AppRoute.accountRoute);
           })
         },
+        focusNode: FocusController.getFocusNode(),
         tooltip: title,
         child: Align(
           alignment: Alignment.center,
@@ -176,6 +179,7 @@ class AccountAddPageState<T extends AccountAddPage>
         ThemeHelper(windowType: getWindowType(context)).getIndent() * 2;
     double offset = MediaQuery.of(context).size.width - indent * 3;
     double offsetTriple = offset - indent;
+    int focusOrder = FocusController.DEFAULT;
 
     return SingleChildScrollView(
       child: Container(
@@ -203,6 +207,7 @@ class AccountAddPageState<T extends AccountAddPage>
               setState: (value) => setState(() => type = value),
               style: textTheme.numberMedium,
               indent: indent,
+              focusOrder: focusOrder += 1,
             ),
             SizedBox(height: indent),
             Row(
@@ -224,6 +229,7 @@ class AccountAddPageState<T extends AccountAddPage>
               tooltip: AppLocalizations.of(context)!.titleAccountTooltip,
               style: textTheme.numberMedium,
               setState: (value) => setState(() => title = value),
+              focusOrder: focusOrder += 1,
             ),
             SizedBox(height: indent),
             Row(
@@ -243,6 +249,7 @@ class AccountAddPageState<T extends AccountAddPage>
                       IconSelector(
                         value: icon,
                         setState: (value) => setState(() => icon = value),
+                        // focusOrder: focusOrder += 1,
                       ),
                     ],
                   ),
@@ -262,6 +269,7 @@ class AccountAddPageState<T extends AccountAddPage>
                       ColorSelector(
                         value: color,
                         setState: (value) => setState(() => color = value),
+                        // focusOrder: focusOrder += 1,
                       ),
                     ],
                   ),
@@ -284,6 +292,7 @@ class AccountAddPageState<T extends AccountAddPage>
                         style: textTheme.numberMedium,
                         setState: (value) =>
                             setState(() => description = value),
+                        focusOrder: focusOrder += 1,
                       ),
                     ],
                   ),
@@ -302,6 +311,7 @@ class AccountAddPageState<T extends AccountAddPage>
               child: CurrencySelector(
                 value: currency,
                 setState: (value) => setState(() => currency = value),
+                focusOrder: focusOrder += 1,
               ),
             ),
             SizedBox(height: indent),
@@ -313,6 +323,7 @@ class AccountAddPageState<T extends AccountAddPage>
               value: validTillDate,
               setState: (value) => setState(() => validTillDate = value),
               style: textTheme.numberMedium,
+              focusOrder: focusOrder += 1,
             ),
             SizedBox(height: indent),
             Text(
@@ -329,6 +340,7 @@ class AccountAddPageState<T extends AccountAddPage>
               ],
               setState: (value) =>
                   setState(() => balance = double.tryParse(value)),
+              focusOrder: focusOrder += 1,
             ),
             SizedBox(height: indent),
             Row(

@@ -20,7 +20,7 @@ class CurrencySelector extends StatelessWidget {
     this.value,
     required this.setState,
     this.setView,
-    this.focusOrder = -1,
+    this.focusOrder = FocusController.DEFAULT,
   }) {
     setView ??= setDefaultView;
   }
@@ -43,17 +43,17 @@ class CurrencySelector extends StatelessWidget {
         onSelect: (Currency currency) {
           isOpened = false;
           setState(currency);
-          FocusController.onEditingComplete(focusOrder);
+          FocusController.resetFocus();
         });
   }
 
   @override
   Widget build(BuildContext context) {
-    FocusController.setContext(context);
+    FocusController.setContext(focusOrder, value);
     if (!isOpened &&
-        focusOrder > -1 &&
-        FocusController.isFocused(focusOrder, value)) {
-      Future.delayed(Duration.zero, () {
+        focusOrder > FocusController.DEFAULT &&
+        FocusController.isFocused()) {
+      Future.delayed(const Duration(milliseconds: 300), () {
         onTap(context);
       });
     }
@@ -62,7 +62,7 @@ class CurrencySelector extends StatelessWidget {
       key: ValueKey(value),
       initialValue: getValue(value),
       readOnly: true,
-      focusNode: FocusController.getFocusNode(focusOrder),
+      focusNode: FocusController.getFocusNode(),
       decoration: InputDecoration(
         filled: true,
         border: InputBorder.none,

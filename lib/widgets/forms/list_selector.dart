@@ -2,6 +2,7 @@
 // Use of this source code is governed by a CC BY-NC-ND 4.0 license that can be
 // found in the LICENSE file.
 
+import 'package:app_finance/_classes/focus_controller.dart';
 import 'package:flutter/material.dart';
 
 class ListSelectorItem {
@@ -17,6 +18,7 @@ class ListSelector extends StatelessWidget {
   TextStyle? style;
   String? value;
   double indent;
+  int focusOrder;
 
   ListSelector({
     super.key,
@@ -25,17 +27,24 @@ class ListSelector extends StatelessWidget {
     this.style,
     this.value,
     this.indent = 0.0,
+    this.focusOrder = FocusController.DEFAULT,
   });
 
   @override
   Widget build(context) {
+    FocusController.setContext(focusOrder, value);
     return Container(
       color: Theme.of(context).colorScheme.inversePrimary.withOpacity(0.3),
       width: double.infinity,
       child: DropdownButton<String>(
         isExpanded: true,
         value: value,
-        onChanged: (value) => setState(value),
+        focusNode: FocusController.getFocusNode(),
+        autofocus: FocusController.isFocused(),
+        onChanged: (value) {
+          setState(value);
+          FocusController.resetFocus();
+        },
         items: options.map<DropdownMenuItem<String>>((ListSelectorItem value) {
           return DropdownMenuItem<String>(
             value: value.id,

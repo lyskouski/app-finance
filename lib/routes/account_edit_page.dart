@@ -36,7 +36,7 @@ class AccountEditPageState extends AccountAddPageState<AccountEditPage> {
 
   @override
   void updateStorage() {
-    widget.state?.update(
+    super.state.update(
         AppDataType.accounts,
         uuid,
         AccountAppData(
@@ -64,7 +64,7 @@ class AccountEditPageState extends AccountAddPageState<AccountEditPage> {
   Widget buildContent(BuildContext context, BoxConstraints constraints) {
     if (isFirstRun) {
       isFirstRun = false;
-      var form = widget.state?.getByUuid(uuid) as AccountAppData;
+      var form = super.state.getByUuid(uuid) as AccountAppData;
       super.title = form.title;
       super.description = form.description;
       super.type = form.type;

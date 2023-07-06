@@ -14,7 +14,7 @@ class ListBudgetSelectorItem extends ListAccountSelectorItem<BudgetAppData> {
 
 class ListBudgetSelector extends ListAccountSelector<ListBudgetSelectorItem> {
   ListBudgetSelector({
-    required AppData? state,
+    required AppData state,
     required Function setState,
     required double width,
     TextStyle? style,
@@ -34,7 +34,7 @@ class ListBudgetSelector extends ListAccountSelector<ListBudgetSelectorItem> {
   @override
   List<ListBudgetSelectorItem> getList() {
     return state
-        ?.get(AppDataType.budgets)
+        .get(AppDataType.budgets)
         .list
         .map((item) => ListBudgetSelectorItem(
               id: item.uuid ?? '',

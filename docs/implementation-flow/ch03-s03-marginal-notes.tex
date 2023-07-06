@@ -262,10 +262,11 @@ void switchTab(int newIndex) {
   }
   setState(() {
     const delay = 300;
-    final currIndex = widget.tabIndex; // Saving current state for the check after 
-    widget.tabIndex = newIndex;
-    widget.tabController?.animateTo(newIndex);
-    widget.pageController?.animateToPage(
+    // Saving current state for the check after 
+    final currIndex = tabIndex;
+    tabIndex = newIndex;
+    tabController?.animateTo(newIndex);
+    pageController?.animateToPage(
       newIndex,
       duration: const Duration(milliseconds: delay),
       curve: Curves.ease,

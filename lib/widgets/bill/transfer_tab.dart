@@ -5,6 +5,7 @@
 import 'package:adaptive_breakpoints/adaptive_breakpoints.dart';
 import 'package:app_finance/_classes/app_route.dart';
 import 'package:app_finance/_classes/data/account_app_data.dart';
+import 'package:app_finance/_classes/focus_controller.dart';
 import 'package:app_finance/custom_text_theme.dart';
 import 'package:app_finance/data.dart';
 import 'package:app_finance/helpers/theme_helper.dart';
@@ -15,8 +16,6 @@ import 'package:flutter_gen/gen_l10n/app_localization.dart';
 import 'package:provider/provider.dart';
 
 class TransferTab extends StatefulWidget {
-  Function callback;
-  AppData? state;
   String? accountFrom;
   String accountErrorMessage = '';
   String? accountTo;
@@ -24,7 +23,6 @@ class TransferTab extends StatefulWidget {
 
   TransferTab({
     super.key,
-    required this.callback,
     this.accountFrom,
     this.accountTo,
     this.amount,
@@ -35,6 +33,7 @@ class TransferTab extends StatefulWidget {
 }
 
 class TransferTabState extends State<TransferTab> {
+  late AppData state;
   String? accountFrom;
   String? accountTo;
   double? amount;
@@ -58,18 +57,19 @@ class TransferTabState extends State<TransferTab> {
 
   void updateStorage() {
     String uuidFrom = accountFrom ?? '';
-    AccountAppData from = widget.state?.getByUuid(uuidFrom);
+    AccountAppData from = state.getByUuid(uuidFrom);
     from.details -= amount ?? 0.0;
-    widget.state?.update(AppDataType.accounts, uuidFrom, from);
+    state.update(AppDataType.accounts, uuidFrom, from);
     String uuidTo = accountTo ?? '';
-    AccountAppData to = widget.state?.getByUuid(uuidTo);
+    AccountAppData to = state.getByUuid(uuidTo);
     to.details += amount ?? 0.0;
-    widget.state?.update(AppDataType.accounts, uuidTo, to);
+    state.update(AppDataType.accounts, uuidTo, to);
   }
 
   Widget buildButton(BuildContext context, BoxConstraints constraints) {
     var helper = ThemeHelper(windowType: getWindowType(context));
     String title = AppLocalizations.of(context)!.createTransferTooltip;
+    FocusController.setContext(3);
     return SizedBox(
       width: constraints.maxWidth - helper.getIndent() * 4,
       child: FloatingActionButton(
@@ -82,6 +82,7 @@ class TransferTabState extends State<TransferTab> {
             Navigator.popAndPushNamed(context, AppRoute.homeRoute);
           })
         },
+        focusNode: FocusController.getFocusNode(),
         tooltip: title,
         child: Align(
           alignment: Alignment.center,
@@ -100,89 +101,97 @@ class TransferTabState extends State<TransferTab> {
 
   @override
   Widget build(BuildContext context) {
+    // FocusController.dispose();
     final TextTheme textTheme = Theme.of(context).textTheme;
     double indent =
         ThemeHelper(windowType: getWindowType(context)).getIndent() * 2;
     double offset = MediaQuery.of(context).size.width - indent * 3;
+    int focusOrder = FocusController.DEFAULT;
 
     return LayoutBuilder(builder: (context, constraints) {
-      widget.callback(buildButton(context, constraints));
       return Consumer<AppData>(builder: (context, appState, _) {
-        widget.state = appState;
-        return SingleChildScrollView(
-          child: Container(
-            margin: EdgeInsets.fromLTRB(indent, indent, indent, 90),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Row(
-                  children: [
-                    Text(
-                      '${AppLocalizations.of(context)!.accountFrom}*',
-                      style: textTheme.bodyLarge,
-                    ),
-                    Text(
-                      widget.accountErrorMessage,
-                      style: TextStyle(
-                        color: Theme.of(context).colorScheme.error,
+        state = appState;
+        return Scaffold(
+          body: SingleChildScrollView(
+            controller: FocusController.getController(),
+            child: Container(
+              margin: EdgeInsets.fromLTRB(indent, indent, indent, 90),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Row(
+                    children: [
+                      Text(
+                        '${AppLocalizations.of(context)!.accountFrom}*',
+                        style: textTheme.bodyLarge,
                       ),
-                    ),
-                  ],
-                ),
-                ListAccountSelector(
-                  value: widget.accountFrom,
-                  state: widget.state,
-                  setState: (value) => setState(() {
-                    widget.accountFrom = value;
-                  }),
-                  style: textTheme.numberMedium,
-                  indent: indent,
-                  width: offset,
-                ),
-                SizedBox(height: indent),
-                Row(
-                  children: [
-                    Text(
-                      '${AppLocalizations.of(context)!.accountTo}*',
-                      style: textTheme.bodyLarge,
-                    ),
-                    Text(
-                      widget.accountErrorMessage,
-                      style: TextStyle(
-                        color: Theme.of(context).colorScheme.error,
+                      Text(
+                        widget.accountErrorMessage,
+                        style: TextStyle(
+                          color: Theme.of(context).colorScheme.error,
+                        ),
                       ),
-                    ),
-                  ],
-                ),
-                ListAccountSelector(
-                  value: widget.accountTo,
-                  state: widget.state,
-                  setState: (value) => setState(() {
-                    widget.accountTo = value;
-                  }),
-                  style: textTheme.numberMedium,
-                  indent: indent,
-                  width: offset,
-                ),
-                SizedBox(height: indent),
-                Text(
-                  AppLocalizations.of(context)!.expense,
-                  style: textTheme.bodyLarge,
-                ),
-                SimpleInput(
-                  value: widget.amount != null ? widget.amount.toString() : '',
-                  type: const TextInputType.numberWithOptions(decimal: true),
-                  tooltip: AppLocalizations.of(context)!.billTooltip,
-                  style: textTheme.numberMedium,
-                  formatter: [
-                    SimpleInput.filterDouble,
-                  ],
-                  setState: (value) =>
-                      setState(() => widget.amount = double.tryParse(value)),
-                ),
-              ],
+                    ],
+                  ),
+                  ListAccountSelector(
+                    value: accountFrom,
+                    state: state,
+                    setState: (value) => setState(() {
+                      accountFrom = value;
+                    }),
+                    style: textTheme.numberMedium,
+                    indent: indent,
+                    width: offset,
+                    focusOrder: focusOrder += 1,
+                  ),
+                  SizedBox(height: indent),
+                  Row(
+                    children: [
+                      Text(
+                        '${AppLocalizations.of(context)!.accountTo}*',
+                        style: textTheme.bodyLarge,
+                      ),
+                      Text(
+                        widget.accountErrorMessage,
+                        style: TextStyle(
+                          color: Theme.of(context).colorScheme.error,
+                        ),
+                      ),
+                    ],
+                  ),
+                  ListAccountSelector(
+                    value: accountTo,
+                    state: state,
+                    setState: (value) => setState(() {
+                      accountTo = value;
+                    }),
+                    style: textTheme.numberMedium,
+                    indent: indent,
+                    width: offset,
+                    focusOrder: focusOrder += 1,
+                  ),
+                  SizedBox(height: indent),
+                  Text(
+                    AppLocalizations.of(context)!.expense,
+                    style: textTheme.bodyLarge,
+                  ),
+                  SimpleInput(
+                    value: amount != null ? amount.toString() : '',
+                    type: const TextInputType.numberWithOptions(decimal: true),
+                    tooltip: AppLocalizations.of(context)!.billTooltip,
+                    style: textTheme.numberMedium,
+                    formatter: [
+                      SimpleInput.filterDouble,
+                    ],
+                    setState: (value) =>
+                        setState(() => amount = double.tryParse(value)),
+                    focusOrder: focusOrder += 1,
+                  ),
+                ],
+              ),
             ),
           ),
+          floatingActionButton: buildButton(context, constraints),
         );
       });
     });

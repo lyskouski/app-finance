@@ -36,12 +36,12 @@ class BudgetEditPageState extends BudgetAddPageState<BudgetEditPage> {
 
   @override
   void updateStorage() {
-    var data = widget.state?.getByUuid(uuid) as BudgetAppData;
+    var data = super.state.getByUuid(uuid) as BudgetAppData;
     data.title = super.title ?? '';
     data.color = super.color;
     data.amountLimit = super.budgetLimit ?? 0.0;
     data.currency = super.currency;
-    widget.state?.update(AppDataType.budgets, uuid, data);
+    super.state.update(AppDataType.budgets, uuid, data);
   }
 
   @override
@@ -53,7 +53,7 @@ class BudgetEditPageState extends BudgetAddPageState<BudgetEditPage> {
   Widget buildContent(BuildContext context, BoxConstraints constraints) {
     if (isFirstRun) {
       isFirstRun = false;
-      var form = widget.state?.getByUuid(uuid) as BudgetAppData;
+      var form = super.state.getByUuid(uuid) as BudgetAppData;
       super.title = form.title;
       super.budgetLimit = form.amountLimit;
       super.color = form.color;

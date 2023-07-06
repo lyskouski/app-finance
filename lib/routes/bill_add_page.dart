@@ -2,6 +2,7 @@
 // Use of this source code is governed by a CC BY-NC-ND 4.0 license that can be
 // found in the LICENSE file.
 
+import 'package:app_finance/_classes/focus_controller.dart';
 import 'package:app_finance/_classes/tab_controller_sync.dart';
 import 'package:app_finance/routes/abstract_page.dart';
 import 'package:app_finance/widgets/bill/expenses_tab.dart';
@@ -11,49 +12,43 @@ import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localization.dart';
 
 class BillAddPage extends AbstractPage {
-  final int tabCount = 3;
-  int tabIndex = 1;
-  PageController? pageController;
-  TabController? tabController;
-  Widget? button;
-
-  BillAddPage() : super();
-
   @override
   BillAddPageState createState() => BillAddPageState();
 }
 
 class BillAddPageState<T extends BillAddPage>
     extends AbstractPageState<BillAddPage> {
+  late PageController pageController;
+  late TabController tabController;
+  final int tabCount = 3;
+  int tabIndex = 1;
+
   @override
   String getTitle(context) {
     return AppLocalizations.of(context)!.createBillHeader;
   }
 
-  void setButton(Widget button) {
-    widget.button = button;
-  }
-
   @override
   Widget buildButton(BuildContext context, BoxConstraints constraints) {
-    return widget.button ?? const SizedBox();
+    return const SizedBox();
   }
 
   @override
   void initState() {
     super.initState();
-    widget.pageController = PageController(initialPage: widget.tabIndex);
-    widget.tabController = TabController(
-      length: widget.tabCount,
+    pageController = PageController(initialPage: tabIndex);
+    tabController = TabController(
+      length: tabCount,
       vsync: const TabControllerSync(),
-      initialIndex: widget.tabIndex,
+      initialIndex: tabIndex,
     );
   }
 
   @override
   void dispose() {
-    widget.pageController?.dispose();
-    widget.tabController?.dispose();
+    FocusController.dispose();
+    pageController.dispose();
+    tabController.dispose();
     super.dispose();
   }
 
@@ -63,15 +58,15 @@ class BillAddPageState<T extends BillAddPage>
   }
 
   void switchTab(int newIndex) {
-    if (newIndex < 0 || newIndex >= widget.tabCount) {
+    if (newIndex < 0 || newIndex >= tabCount) {
       return;
     }
     setState(() {
       const delay = 300;
-      final currIndex = widget.tabIndex;
-      widget.tabIndex = newIndex;
-      widget.tabController?.animateTo(newIndex);
-      widget.pageController?.animateToPage(
+      final currIndex = tabIndex;
+      tabIndex = newIndex;
+      tabController.animateTo(newIndex);
+      pageController.animateToPage(
         newIndex,
         duration: const Duration(milliseconds: delay),
         curve: Curves.ease,
@@ -87,14 +82,14 @@ class BillAddPageState<T extends BillAddPage>
     return GestureDetector(
       onHorizontalDragEnd: (DragEndDetails details) {
         if (details.primaryVelocity! > 0) {
-          switchTab(widget.tabIndex - 1);
+          switchTab(tabIndex - 1);
         } else if (details.primaryVelocity! < 0) {
-          switchTab(widget.tabIndex + 1);
+          switchTab(tabIndex + 1);
         }
       },
       child: Scaffold(
         appBar: TabBar(
-          controller: widget.tabController,
+          controller: tabController,
           onTap: switchTab,
           tabs: [
             Tab(
@@ -112,12 +107,12 @@ class BillAddPageState<T extends BillAddPage>
           ],
         ),
         body: PageView(
-          controller: widget.pageController,
+          controller: pageController,
           onPageChanged: switchTab,
           children: [
-            IncomeTab(callback: setButton),
-            ExpensesTab(callback: setButton),
-            TransferTab(callback: setButton),
+            IncomeTab(),
+            ExpensesTab(),
+            TransferTab(),
           ],
         ),
       ),

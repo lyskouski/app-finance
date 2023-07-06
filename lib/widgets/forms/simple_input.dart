@@ -25,21 +25,21 @@ class SimpleInput extends StatelessWidget {
     this.tooltip,
     this.formatter,
     this.type = TextInputType.text,
-    this.focusOrder = -1,
+    this.focusOrder = FocusController.DEFAULT,
     required this.setState,
   });
 
   @override
   Widget build(BuildContext context) {
-    FocusController.setContext(context);
+    FocusController.setContext(focusOrder, value);
     return TextFormField(
       initialValue: value ?? '',
       inputFormatters: formatter,
       keyboardType: type,
-      focusNode: FocusController.getFocusNode(focusOrder),
-      textInputAction: FocusController.getAction(focusOrder),
-      onEditingComplete: () => FocusController.onEditingComplete(focusOrder),
-      autofocus: FocusController.isFocused(focusOrder, value),
+      focusNode: FocusController.getFocusNode(),
+      textInputAction: FocusController.getAction(),
+      onEditingComplete: FocusController.onEditingComplete,
+      autofocus: FocusController.isFocused(),
       decoration: InputDecoration(
         filled: true,
         border: InputBorder.none,

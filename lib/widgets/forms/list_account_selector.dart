@@ -16,7 +16,7 @@ class ListAccountSelectorItem<T> {
 
 class ListAccountSelector<T extends ListAccountSelectorItem>
     extends StatelessWidget {
-  AppData? state;
+  AppData state;
   Function setState;
   TextStyle? style;
   String? value;
@@ -32,12 +32,12 @@ class ListAccountSelector<T extends ListAccountSelectorItem>
     this.style,
     this.value,
     this.indent = 0.0,
-    this.focusOrder = -1,
+    this.focusOrder = FocusController.DEFAULT,
   }) : super(key: UniqueKey());
 
   List<T> getList() {
     return state
-        ?.get(AppDataType.accounts)
+        .get(AppDataType.accounts)
         .list
         .map((item) => ListAccountSelectorItem(
               id: item.uuid ?? '',
@@ -73,7 +73,7 @@ class ListAccountSelector<T extends ListAccountSelectorItem>
 
   @override
   Widget build(context) {
-    FocusController.setContext(context);
+    FocusController.setContext(focusOrder, value);
     scope ??= generateList(context);
     return Container(
       color: Theme.of(context).colorScheme.inversePrimary.withOpacity(0.3),
@@ -82,11 +82,11 @@ class ListAccountSelector<T extends ListAccountSelectorItem>
         isExpanded: true,
         value: value,
         itemHeight: null,
-        focusNode: FocusController.getFocusNode(focusOrder),
-        autofocus: FocusController.isFocused(focusOrder, value),
+        focusNode: FocusController.getFocusNode(),
+        autofocus: FocusController.isFocused(),
         onChanged: (value) {
           setState(value);
-          FocusController.onEditingComplete(focusOrder);
+          FocusController.resetFocus();
         },
         items: scope,
       ),
