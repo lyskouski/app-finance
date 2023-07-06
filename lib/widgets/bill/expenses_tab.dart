@@ -21,7 +21,6 @@ import 'package:provider/provider.dart';
 
 class ExpensesTab extends StatefulWidget {
   Function callback;
-  AppData? state;
   String? account;
   String accountErrorMessage = '';
   String? budget;
@@ -47,6 +46,7 @@ class ExpensesTab extends StatefulWidget {
 }
 
 class ExpensesTabState extends State<ExpensesTab> {
+  late AppData state;
   String? account;
   String accountErrorMessage = '';
   String? budget;
@@ -74,7 +74,7 @@ class ExpensesTabState extends State<ExpensesTab> {
   }
 
   void updateStorage() {
-    widget.state?.add(
+    state.add(
         AppDataType.bills,
         BillAppData(
           account: account ?? '',
@@ -130,7 +130,7 @@ class ExpensesTabState extends State<ExpensesTab> {
     return LayoutBuilder(builder: (context, constraints) {
       widget.callback(buildButton(context, constraints));
       return Consumer<AppData>(builder: (context, appState, _) {
-        widget.state = appState;
+        state = appState;
         return SingleChildScrollView(
           controller: FocusController.getController(),
           child: Container(
@@ -154,10 +154,10 @@ class ExpensesTabState extends State<ExpensesTab> {
                 ),
                 ListAccountSelector(
                   value: account,
-                  state: widget.state,
+                  state: state,
                   setState: (value) => setState(() {
                     account = value;
-                    currency ??= widget.state?.getByUuid(value).currency;
+                    currency ??= state.getByUuid(value).currency;
                   }),
                   style: textTheme.numberMedium,
                   indent: indent,
@@ -181,10 +181,10 @@ class ExpensesTabState extends State<ExpensesTab> {
                 ),
                 ListBudgetSelector(
                   value: budget,
-                  state: widget.state,
+                  state: state,
                   setState: (value) => setState(() {
                     budget = value;
-                    var bdgCurrency = widget.state?.getByUuid(value).currency;
+                    var bdgCurrency = state.getByUuid(value).currency;
                     currency ??= bdgCurrency;
                   }),
                   style: textTheme.numberMedium,

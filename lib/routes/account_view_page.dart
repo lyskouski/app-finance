@@ -27,14 +27,14 @@ class AccountViewPage extends AbstractPage {
 class AccountViewPageState extends AbstractPageState<AccountViewPage> {
   @override
   String getTitle(context) {
-    final item = widget.state?.getByUuid(widget.uuid) as AccountAppData;
+    final item = super.state.getByUuid(widget.uuid) as AccountAppData;
     return item.title;
   }
 
   void deactivateAccount(BuildContext context) {
-    var data = widget.state?.getByUuid(widget.uuid) as AccountAppData;
+    var data = super.state.getByUuid(widget.uuid) as AccountAppData;
     data.hidden = true;
-    widget.state?.update(AppDataType.accounts, widget.uuid, data);
+    super.state.update(AppDataType.accounts, widget.uuid, data);
     Navigator.pop(context);
   }
 
@@ -63,7 +63,7 @@ class AccountViewPageState extends AbstractPageState<AccountViewPage> {
 
   @override
   Widget buildContent(BuildContext context, BoxConstraints constraints) {
-    final item = widget.state?.getByUuid(widget.uuid) as AccountAppData;
+    final item = super.state.getByUuid(widget.uuid) as AccountAppData;
     item.updateContext(context);
     double indent =
         ThemeHelper(windowType: getWindowType(context)).getIndent() * 2;

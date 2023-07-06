@@ -19,7 +19,6 @@ import 'package:provider/provider.dart';
 
 class IncomeTab extends StatefulWidget {
   Function callback;
-  AppData? state;
   String? account;
   String accountErrorMessage = '';
   Currency? currency;
@@ -38,6 +37,7 @@ class IncomeTab extends StatefulWidget {
 }
 
 class IncomeTabState extends State<IncomeTab> {
+  late AppData state;
   String? account;
   Currency? currency;
   double? amount;
@@ -62,10 +62,10 @@ class IncomeTabState extends State<IncomeTab> {
 
   void updateStorage() {
     String uuid = account ?? '';
-    AccountAppData value = widget.state?.getByUuid(uuid);
+    AccountAppData value = state.getByUuid(uuid);
     value.details += amount ?? 0.0;
     value.currency = currency;
-    widget.state?.update(AppDataType.accounts, uuid, value);
+    state.update(AppDataType.accounts, uuid, value);
   }
 
   Widget buildButton(BuildContext context, BoxConstraints constraints) {
@@ -112,7 +112,7 @@ class IncomeTabState extends State<IncomeTab> {
     return LayoutBuilder(builder: (context, constraints) {
       widget.callback(buildButton(context, constraints));
       return Consumer<AppData>(builder: (context, appState, _) {
-        widget.state = appState;
+        state = appState;
         return SingleChildScrollView(
           controller: FocusController.getController(),
           child: Container(
@@ -136,10 +136,10 @@ class IncomeTabState extends State<IncomeTab> {
                 ),
                 ListAccountSelector(
                   value: account,
-                  state: widget.state,
+                  state: state,
                   setState: (value) => setState(() {
                     account = value;
-                    currency ??= widget.state?.getByUuid(value).currency;
+                    currency ??= state.getByUuid(value).currency;
                   }),
                   style: textTheme.numberMedium,
                   indent: indent,

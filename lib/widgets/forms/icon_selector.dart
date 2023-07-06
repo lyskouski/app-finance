@@ -16,7 +16,7 @@ class IconSelector extends StatelessWidget {
     super.key,
     required this.setState,
     this.value,
-    this.focusOrder = -1,
+    this.focusOrder = FocusController.DEFAULT,
   });
 
   Future<void> onTap(context) async {
@@ -31,7 +31,9 @@ class IconSelector extends StatelessWidget {
   @override
   Widget build(context) {
     FocusController.setContext(focusOrder, value);
-    if (!isOpened && focusOrder > -1 && FocusController.isFocused()) {
+    if (!isOpened &&
+        focusOrder > FocusController.DEFAULT &&
+        FocusController.isFocused()) {
       Future.delayed(const Duration(milliseconds: 300), () {
         onTap(context);
       });

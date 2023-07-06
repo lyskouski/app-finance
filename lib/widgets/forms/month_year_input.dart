@@ -19,7 +19,7 @@ class MonthYearInput extends StatelessWidget {
     required this.setState,
     required this.value,
     this.style,
-    this.focusOrder = -1,
+    this.focusOrder = FocusController.DEFAULT,
   });
 
   Future<void> onTap(context) async {

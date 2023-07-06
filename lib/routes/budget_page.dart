@@ -41,7 +41,7 @@ class BudgetPageState extends AbstractPageState<BudgetPage> {
         BudgetWidget(
           margin: EdgeInsets.all(helper.getIndent()),
           title: AppLocalizations.of(context)!.budgetHeadline,
-          state: widget.state?.get(AppDataType.budgets),
+          state: super.state.get(AppDataType.budgets),
           offset: MediaQuery.of(context).size.width - helper.getIndent() * 2,
         )
       ],

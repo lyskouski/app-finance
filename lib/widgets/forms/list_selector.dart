@@ -27,7 +27,7 @@ class ListSelector extends StatelessWidget {
     this.style,
     this.value,
     this.indent = 0.0,
-    this.focusOrder = -1,
+    this.focusOrder = FocusController.DEFAULT,
   });
 
   @override

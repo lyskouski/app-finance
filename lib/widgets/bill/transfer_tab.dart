@@ -17,7 +17,6 @@ import 'package:provider/provider.dart';
 
 class TransferTab extends StatefulWidget {
   Function callback;
-  AppData? state;
   String? accountFrom;
   String accountErrorMessage = '';
   String? accountTo;
@@ -36,6 +35,7 @@ class TransferTab extends StatefulWidget {
 }
 
 class TransferTabState extends State<TransferTab> {
+  late AppData state;
   String? accountFrom;
   String? accountTo;
   double? amount;
@@ -43,6 +43,7 @@ class TransferTabState extends State<TransferTab> {
   @override
   void initState() {
     FocusController.dispose();
+    FocusController.requestFocus();
     accountFrom = widget.accountFrom;
     accountTo = widget.accountTo;
     amount = widget.amount;
@@ -60,13 +61,13 @@ class TransferTabState extends State<TransferTab> {
 
   void updateStorage() {
     String uuidFrom = accountFrom ?? '';
-    AccountAppData from = widget.state?.getByUuid(uuidFrom);
+    AccountAppData from = state.getByUuid(uuidFrom);
     from.details -= amount ?? 0.0;
-    widget.state?.update(AppDataType.accounts, uuidFrom, from);
+    state.update(AppDataType.accounts, uuidFrom, from);
     String uuidTo = accountTo ?? '';
-    AccountAppData to = widget.state?.getByUuid(uuidTo);
+    AccountAppData to = state.getByUuid(uuidTo);
     to.details += amount ?? 0.0;
-    widget.state?.update(AppDataType.accounts, uuidTo, to);
+    state.update(AppDataType.accounts, uuidTo, to);
   }
 
   Widget buildButton(BuildContext context, BoxConstraints constraints) {
@@ -113,7 +114,7 @@ class TransferTabState extends State<TransferTab> {
     return LayoutBuilder(builder: (context, constraints) {
       widget.callback(buildButton(context, constraints));
       return Consumer<AppData>(builder: (context, appState, _) {
-        widget.state = appState;
+        state = appState;
         return SingleChildScrollView(
           controller: FocusController.getController(),
           child: Container(
@@ -137,7 +138,7 @@ class TransferTabState extends State<TransferTab> {
                 ),
                 ListAccountSelector(
                   value: accountFrom,
-                  state: widget.state,
+                  state: state,
                   setState: (value) => setState(() {
                     accountFrom = value;
                   }),
@@ -163,7 +164,7 @@ class TransferTabState extends State<TransferTab> {
                 ),
                 ListAccountSelector(
                   value: accountTo,
-                  state: widget.state,
+                  state: state,
                   setState: (value) => setState(() {
                     accountTo = value;
                   }),

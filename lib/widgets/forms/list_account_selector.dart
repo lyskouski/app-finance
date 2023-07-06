@@ -16,7 +16,7 @@ class ListAccountSelectorItem<T> {
 
 class ListAccountSelector<T extends ListAccountSelectorItem>
     extends StatelessWidget {
-  AppData? state;
+  AppData state;
   Function setState;
   TextStyle? style;
   String? value;
@@ -32,12 +32,12 @@ class ListAccountSelector<T extends ListAccountSelectorItem>
     this.style,
     this.value,
     this.indent = 0.0,
-    this.focusOrder = -1,
+    this.focusOrder = FocusController.DEFAULT,
   }) : super(key: UniqueKey());
 
   List<T> getList() {
     return state
-        ?.get(AppDataType.accounts)
+        .get(AppDataType.accounts)
         .list
         .map((item) => ListAccountSelectorItem(
               id: item.uuid ?? '',

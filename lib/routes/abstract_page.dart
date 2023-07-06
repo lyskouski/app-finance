@@ -11,15 +11,13 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 abstract class AbstractPage<T> extends StatefulWidget {
-  int selectedMenu = 0;
-  AppData? state;
-
-  AbstractPage({
-    this.state,
-  }) : super(key: UniqueKey());
+  AbstractPage() : super(key: UniqueKey());
 }
 
 abstract class AbstractPageState<T extends AbstractPage> extends State<T> {
+  late AppData state;
+  int selectedMenu = 0;
+
   String getTitle(BuildContext context);
 
   Widget buildButton(BuildContext context, BoxConstraints constraints);
@@ -76,7 +74,7 @@ abstract class AbstractPageState<T extends AbstractPage> extends State<T> {
     double indent = ThemeHelper(windowType: getWindowType(context)).getIndent();
 
     return Consumer<AppData>(builder: (context, appState, _) {
-      widget.state = appState;
+      state = appState;
       return Scaffold(
           appBar: buildBar(context),
           drawer: Drawer(
@@ -91,8 +89,8 @@ abstract class AbstractPageState<T extends AbstractPage> extends State<T> {
                 itemCount: AppMenu(context: context).get().length,
                 itemBuilder: (context, index) => MenuWidget(
                   index: index,
-                  setState: () => setState(() => widget.selectedMenu = index),
-                  selectedIndex: widget.selectedMenu,
+                  setState: () => setState(() => selectedMenu = index),
+                  selectedIndex: selectedMenu,
                 ),
               ),
             ),

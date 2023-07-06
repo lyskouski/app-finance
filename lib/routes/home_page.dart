@@ -92,20 +92,20 @@ class HomePageState extends AbstractPageState<HomePage> {
         children: [
           GoalWidget(
             margin: single,
-            state: widget.state!.getList(AppDataType.goals),
+            state: super.state.getList(AppDataType.goals),
           ),
           BillWidget(
             margin: single,
             title:
                 '${AppLocalizations.of(context)!.billHeadline}, ${formatterDate.format(DateTime.now())}',
-            state: widget.state?.get(AppDataType.bills),
+            state: super.state.get(AppDataType.bills),
             offset: width,
           ),
           AccountWidget(
             margin: single,
             title:
                 '${AppLocalizations.of(context)!.accountHeadline}, ${AppLocalizations.of(context)!.total}',
-            state: widget.state?.get(AppDataType.accounts),
+            state: super.state.get(AppDataType.accounts),
             route: AppRoute.accountRoute,
             tooltip: AppLocalizations.of(context)!.accountTooltip,
             offset: width,
@@ -114,7 +114,7 @@ class HomePageState extends AbstractPageState<HomePage> {
             margin: bottom,
             title:
                 '${AppLocalizations.of(context)!.budgetHeadline}, ${AppLocalizations.of(context)!.left}',
-            state: widget.state?.get(AppDataType.budgets),
+            state: super.state.get(AppDataType.budgets),
             route: AppRoute.budgetRoute,
             tooltip: AppLocalizations.of(context)!.budgetTooltip,
             offset: width,
@@ -126,7 +126,7 @@ class HomePageState extends AbstractPageState<HomePage> {
         children: [
           GoalWidget(
             margin: single,
-            state: widget.state?.get(AppDataType.goals).list,
+            state: super.state.get(AppDataType.goals).list,
           ),
           Expanded(
             child: Row(
@@ -135,7 +135,7 @@ class HomePageState extends AbstractPageState<HomePage> {
                   margin: middleLeft,
                   offset: halfWidth,
                   title: AppLocalizations.of(context)!.accountHeadline,
-                  state: widget.state?.get(AppDataType.accounts),
+                  state: super.state.get(AppDataType.accounts),
                   route: AppRoute.accountRoute,
                   tooltip: AppLocalizations.of(context)!.accountTooltip,
                 ),
@@ -143,7 +143,7 @@ class HomePageState extends AbstractPageState<HomePage> {
                   margin: middleRight,
                   offset: halfWidth,
                   title: AppLocalizations.of(context)!.billHeadline,
-                  state: widget.state?.get(AppDataType.bills),
+                  state: super.state.get(AppDataType.bills),
                 ),
               ],
             ),
@@ -151,7 +151,7 @@ class HomePageState extends AbstractPageState<HomePage> {
           BudgetWidget(
             margin: bottom,
             title: AppLocalizations.of(context)!.budgetHeadline,
-            state: widget.state?.get(AppDataType.budgets),
+            state: super.state.get(AppDataType.budgets),
             offset: width,
           ),
         ],

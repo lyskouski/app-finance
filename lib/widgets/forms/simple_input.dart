@@ -25,7 +25,7 @@ class SimpleInput extends StatelessWidget {
     this.tooltip,
     this.formatter,
     this.type = TextInputType.text,
-    this.focusOrder = -1,
+    this.focusOrder = FocusController.DEFAULT,
     required this.setState,
   });
 

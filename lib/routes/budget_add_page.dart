@@ -72,7 +72,7 @@ class BudgetAddPageState<T extends BudgetAddPage>
   }
 
   void updateStorage() {
-    widget.state?.add(
+    super.state.add(
         AppDataType.budgets,
         BudgetAppData(
           title: title ?? '',

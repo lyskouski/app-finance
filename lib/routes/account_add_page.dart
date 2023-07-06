@@ -94,7 +94,7 @@ class AccountAddPageState<T extends AccountAddPage>
   }
 
   void updateStorage() {
-    widget.state?.add(
+    super.state.add(
         AppDataType.accounts,
         AccountAppData(
           title: title ?? '',
