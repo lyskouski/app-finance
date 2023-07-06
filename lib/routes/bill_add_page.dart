@@ -2,6 +2,7 @@
 // Use of this source code is governed by a CC BY-NC-ND 4.0 license that can be
 // found in the LICENSE file.
 
+import 'package:app_finance/_classes/focus_controller.dart';
 import 'package:app_finance/_classes/tab_controller_sync.dart';
 import 'package:app_finance/routes/abstract_page.dart';
 import 'package:app_finance/widgets/bill/expenses_tab.dart';
@@ -52,6 +53,7 @@ class BillAddPageState<T extends BillAddPage>
 
   @override
   void dispose() {
+    FocusController.dispose();
     widget.pageController?.dispose();
     widget.tabController?.dispose();
     super.dispose();

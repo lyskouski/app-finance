@@ -44,6 +44,7 @@ class IncomeTabState extends State<IncomeTab> {
 
   @override
   void initState() {
+    FocusController.dispose();
     account = widget.account;
     currency = widget.currency;
     amount = widget.amount;

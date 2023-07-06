@@ -57,14 +57,8 @@ class ExpensesTabState extends State<ExpensesTab> {
   DateTime? createdAt;
 
   @override
-  void dispose() {
-    // FocusController.dispose();
-    super.dispose();
-  }
-
-  @override
   void initState() {
-    FocusController.resetFocus();
+    FocusController.dispose();
     account = widget.account;
     budget = widget.budget;
     currency = widget.currency;

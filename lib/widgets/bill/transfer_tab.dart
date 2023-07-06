@@ -42,6 +42,7 @@ class TransferTabState extends State<TransferTab> {
 
   @override
   void initState() {
+    FocusController.dispose();
     accountFrom = widget.accountFrom;
     accountTo = widget.accountTo;
     amount = widget.amount;
