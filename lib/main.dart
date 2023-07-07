@@ -10,6 +10,9 @@ import 'package:app_finance/routes/account_edit_page.dart';
 import 'package:app_finance/routes/account_view_page.dart';
 import 'package:app_finance/routes/account_page.dart';
 import 'package:app_finance/routes/bill_add_page.dart';
+import 'package:app_finance/routes/bill_edit_page.dart';
+import 'package:app_finance/routes/bill_page.dart';
+import 'package:app_finance/routes/bill_view_page.dart';
 import 'package:app_finance/routes/budget_page.dart';
 import 'package:app_finance/routes/budget_add_page.dart';
 import 'package:app_finance/routes/budget_edit_page.dart';
@@ -55,6 +58,12 @@ class _MyAppState extends State<MyApp> {
         case AppRoute.budgetEditRoute:
           return MaterialPageRoute(
               builder: (context) => BudgetEditPage(uuid: uuid));
+        case AppRoute.billViewRoute:
+          return MaterialPageRoute(
+              builder: (context) => BillViewPage(uuid: uuid));
+        case AppRoute.billEditRoute:
+          return MaterialPageRoute(
+              builder: (context) => BillEditPage(uuid: uuid));
       }
     }
     return null;
@@ -86,6 +95,7 @@ class _MyAppState extends State<MyApp> {
         AppRoute.accountAddRoute: (context) => AccountAddPage(),
         AppRoute.budgetRoute: (context) => BudgetPage(),
         AppRoute.budgetAddRoute: (context) => BudgetAddPage(),
+        AppRoute.billRoute: (context) => BillPage(),
         AppRoute.billAddRoute: (context) => BillAddPage(),
       },
     );

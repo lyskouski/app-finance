@@ -178,7 +178,7 @@ class TransferTabState extends State<TransferTab> {
                   SimpleInput(
                     value: amount != null ? amount.toString() : '',
                     type: const TextInputType.numberWithOptions(decimal: true),
-                    tooltip: AppLocalizations.of(context)!.billTooltip,
+                    tooltip: AppLocalizations.of(context)!.billSetTooltip,
                     style: textTheme.numberMedium,
                     formatter: [
                       SimpleInput.filterDouble,

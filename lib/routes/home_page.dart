@@ -87,73 +87,60 @@ class HomePageState extends AbstractPageState<HomePage> {
     final locale = Localizations.localeOf(context).toString();
     final DateFormat formatterDate = DateFormat.MMMM(locale);
 
+    final goalWidget = GoalWidget(
+      margin: single,
+      state: super.state.getList(AppDataType.goals),
+    );
+    final billWidget = BillWidget(
+      margin: helper.isVertical(constraints) ? single : middleRight,
+      title:
+          '${AppLocalizations.of(context)!.billHeadline}, ${formatterDate.format(DateTime.now())}',
+      state: super.state.get(AppDataType.bills),
+      route: AppRoute.billRoute,
+      tooltip: AppLocalizations.of(context)!.billTooltip,
+      offset: helper.isVertical(constraints) ? width : halfWidth,
+    );
+    final accountWidget = AccountWidget(
+      margin: helper.isVertical(constraints) ? single : middleLeft,
+      title:
+          '${AppLocalizations.of(context)!.accountHeadline}, ${AppLocalizations.of(context)!.total}',
+      state: super.state.get(AppDataType.accounts),
+      route: AppRoute.accountRoute,
+      tooltip: AppLocalizations.of(context)!.accountTooltip,
+      offset: helper.isVertical(constraints) ? width : halfWidth,
+    );
+    final budgetWidget = BudgetWidget(
+      margin: bottom,
+      title:
+          '${AppLocalizations.of(context)!.budgetHeadline}, ${AppLocalizations.of(context)!.left}',
+      state: super.state.get(AppDataType.budgets),
+      route: AppRoute.budgetRoute,
+      tooltip: AppLocalizations.of(context)!.budgetTooltip,
+      offset: width,
+    );
+
     if (helper.isVertical(constraints)) {
       return Column(
         children: [
-          GoalWidget(
-            margin: single,
-            state: super.state.getList(AppDataType.goals),
-          ),
-          BillWidget(
-            margin: single,
-            title:
-                '${AppLocalizations.of(context)!.billHeadline}, ${formatterDate.format(DateTime.now())}',
-            state: super.state.get(AppDataType.bills),
-            offset: width,
-          ),
-          AccountWidget(
-            margin: single,
-            title:
-                '${AppLocalizations.of(context)!.accountHeadline}, ${AppLocalizations.of(context)!.total}',
-            state: super.state.get(AppDataType.accounts),
-            route: AppRoute.accountRoute,
-            tooltip: AppLocalizations.of(context)!.accountTooltip,
-            offset: width,
-          ),
-          BudgetWidget(
-            margin: bottom,
-            title:
-                '${AppLocalizations.of(context)!.budgetHeadline}, ${AppLocalizations.of(context)!.left}',
-            state: super.state.get(AppDataType.budgets),
-            route: AppRoute.budgetRoute,
-            tooltip: AppLocalizations.of(context)!.budgetTooltip,
-            offset: width,
-          ),
+          goalWidget,
+          billWidget,
+          accountWidget,
+          budgetWidget,
         ],
       );
     } else {
       return Column(
         children: [
-          GoalWidget(
-            margin: single,
-            state: super.state.get(AppDataType.goals).list,
-          ),
+          goalWidget,
           Expanded(
             child: Row(
               children: [
-                AccountWidget(
-                  margin: middleLeft,
-                  offset: halfWidth,
-                  title: AppLocalizations.of(context)!.accountHeadline,
-                  state: super.state.get(AppDataType.accounts),
-                  route: AppRoute.accountRoute,
-                  tooltip: AppLocalizations.of(context)!.accountTooltip,
-                ),
-                BillWidget(
-                  margin: middleRight,
-                  offset: halfWidth,
-                  title: AppLocalizations.of(context)!.billHeadline,
-                  state: super.state.get(AppDataType.bills),
-                ),
+                accountWidget,
+                billWidget,
               ],
             ),
           ),
-          BudgetWidget(
-            margin: bottom,
-            title: AppLocalizations.of(context)!.budgetHeadline,
-            state: super.state.get(AppDataType.budgets),
-            offset: width,
-          ),
+          budgetWidget,
         ],
       );
     }

@@ -47,7 +47,7 @@ class FocusController {
 
   static void requestFocus() {
     Future.delayed(const Duration(milliseconds: 300), () {
-      if (focus >= 0 && _focus != focus) {
+      if (focus >= 0 && _focus != focus && nodes[focus].context != null) {
         _focus = focus;
         FocusScope.of(nodes[focus].context!).requestFocus(nodes[focus]);
         _scrollToFocusedElement(nodes[focus]);

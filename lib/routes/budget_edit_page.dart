@@ -9,7 +9,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localization.dart';
 
 class BudgetEditPage extends BudgetAddPage {
-  String uuid;
+  final String uuid;
 
   BudgetEditPage({
     required this.uuid,

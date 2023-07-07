@@ -193,7 +193,7 @@ class IncomeTabState extends State<IncomeTab> {
                               type: const TextInputType.numberWithOptions(
                                   decimal: true),
                               tooltip:
-                                  AppLocalizations.of(context)!.billTooltip,
+                                  AppLocalizations.of(context)!.billSetTooltip,
                               style: textTheme.numberMedium,
                               formatter: [
                                 SimpleInput.filterDouble,
