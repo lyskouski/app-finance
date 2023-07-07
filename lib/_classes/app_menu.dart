@@ -48,7 +48,7 @@ class AppMenu {
       AppMenuItem(
         name: locale!.billHeadline,
         icon: Icons.money_off,
-        route: AppRoute.homeRoute,
+        route: AppRoute.billRoute,
       ),
       AppMenuItem(
         name: locale!.metricsHeadline,
