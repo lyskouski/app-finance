@@ -12,5 +12,8 @@ class AppRoute {
   static const String budgetAddRoute = '/app/finance/budget/add';
   static const String budgetViewRoute = '/app/finance/budget/uuid:';
   static const String budgetEditRoute = '/app/finance/budget/uuid:/edit';
+  static const String billRoute = '/app/finance/bill';
   static const String billAddRoute = '/app/finance/bill/add';
+  static const String billViewRoute = '/app/finance/bill/uuid:';
+  static const String billEditRoute = '/app/finance/bill/uuid:/edit';
 }

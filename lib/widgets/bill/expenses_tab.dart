@@ -19,7 +19,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localization.dart';
 import 'package:provider/provider.dart';
 
-class ExpensesTab extends StatefulWidget {
+class ExpensesTab<T> extends StatefulWidget {
   String? account;
   String accountErrorMessage = '';
   String? budget;
@@ -30,20 +30,19 @@ class ExpensesTab extends StatefulWidget {
   DateTime? createdAt;
 
   ExpensesTab({
-    super.key,
     this.account,
     this.budget,
     this.currency,
     this.bill,
     this.description,
     this.createdAt,
-  });
+  }) : super(key: UniqueKey());
 
   @override
   ExpensesTabState createState() => ExpensesTabState();
 }
 
-class ExpensesTabState extends State<ExpensesTab> {
+class ExpensesTabState<T extends ExpensesTab> extends State<T> {
   late AppData state;
   String? account;
   String accountErrorMessage = '';
@@ -83,9 +82,13 @@ class ExpensesTabState extends State<ExpensesTab> {
         ));
   }
 
+  String getButtonTitle(context) {
+    return AppLocalizations.of(context)!.createBillTooltip;
+  }
+
   Widget buildButton(BuildContext context, BoxConstraints constraints) {
     var helper = ThemeHelper(windowType: getWindowType(context));
-    String title = AppLocalizations.of(context)!.createBillTooltip;
+    String title = getButtonTitle(context);
     FocusController.setContext(5);
     return SizedBox(
       width: constraints.maxWidth - helper.getIndent() * 4,
@@ -239,7 +242,7 @@ class ExpensesTabState extends State<ExpensesTab> {
                               type: const TextInputType.numberWithOptions(
                                   decimal: true),
                               tooltip:
-                                  AppLocalizations.of(context)!.billTooltip,
+                                  AppLocalizations.of(context)!.billSetTooltip,
                               style: textTheme.numberMedium,
                               formatter: [
                                 SimpleInput.filterDouble,

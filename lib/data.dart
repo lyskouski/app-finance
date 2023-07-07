@@ -206,22 +206,30 @@ class AppData extends ChangeNotifier {
   }
 
   void _updateBill(BillAppData? initial, BillAppData change) {
-    AccountAppData currAccount = getByUuid(change.account, false);
+    AccountAppData? currAccount = getByUuid(change.account, false);
     AccountAppData? prevAccount;
-    BudgetAppData currBudget = getByUuid(change.category, false);
+    BudgetAppData? currBudget = getByUuid(change.category, false);
     BudgetAppData? prevBudget;
     if (initial != null) {
       prevAccount = getByUuid(initial.account, false);
+      if (prevAccount != null) {
+        _data[AppDataType.accounts]?.add(initial.account);
+      }
       prevBudget = getByUuid(initial.category, false);
-      _data[AppDataType.budgets]?.add(initial.category);
-      _data[AppDataType.accounts]?.add(initial.account);
+      if (prevBudget != null) {
+        _data[AppDataType.budgets]?.add(initial.category);
+      }
     }
-    BillRecalculation(change: change, initial: initial)
-        .updateAccounts(currAccount, prevAccount)
-        .updateBudget(currBudget, prevBudget)
+    final rec = BillRecalculation(change: change, initial: initial)
         .updateTotal(_data[AppDataType.bills], _hashTable);
-    _data[AppDataType.budgets]?.add(change.category);
-    _data[AppDataType.accounts]?.add(change.account);
+    if (currAccount != null) {
+      rec.updateAccounts(currAccount, prevAccount);
+      _data[AppDataType.accounts]?.add(change.account);
+    }
+    if (currBudget != null) {
+      rec.updateBudget(currBudget, prevBudget);
+      _data[AppDataType.budgets]?.add(change.category);
+    }
     _set(AppDataType.bills, change);
   }
 

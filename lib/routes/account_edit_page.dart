@@ -9,7 +9,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localization.dart';
 
 class AccountEditPage extends AccountAddPage {
-  String uuid;
+  final String uuid;
 
   AccountEditPage({
     required this.uuid,

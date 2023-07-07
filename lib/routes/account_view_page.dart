@@ -14,7 +14,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localization.dart';
 
 class AccountViewPage extends AbstractPage {
-  String uuid;
+  final String uuid;
 
   AccountViewPage({
     required this.uuid,
