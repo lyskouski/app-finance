@@ -52,6 +52,9 @@ class _CustomTabIndicatorPainter extends BoxPainter {
   void paint(Canvas canvas, Offset offset, ImageConfiguration configuration) {
     final activeIndex = controller.page?.round() ?? controller.initialPage;
     final dotPaint = Paint()..color = color;
+    if (itemCount <= 1) {
+      return;
+    }
     for (int i = 0; i < itemCount; i++) {
       double xPos = spacing + i * (dotSize + spacing);
       double yPos = spacing * 0.6;

@@ -111,10 +111,13 @@ class TabWidgetState extends State<TabWidget> {
       },
       child: Scaffold(
         appBar: getAppBar(context),
-        body: PageView(
-          controller: pageController,
-          onPageChanged: switchTab,
-          children: widget.children,
+        body: Transform.translate(
+          offset: Offset(0, widget.asDots ? -20 : 0),
+          child: PageView(
+            controller: pageController,
+            onPageChanged: switchTab,
+            children: widget.children,
+          ),
         ),
       ),
     );
