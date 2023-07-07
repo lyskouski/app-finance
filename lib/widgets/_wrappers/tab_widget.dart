@@ -2,19 +2,24 @@
 // Use of this source code is governed by a CC BY-NC-ND 4.0 license that can be
 // found in the LICENSE file.
 
+import 'package:adaptive_breakpoints/adaptive_breakpoints.dart';
 import 'package:app_finance/_classes/tab_controller_sync.dart';
+import 'package:app_finance/helpers/theme_helper.dart';
+import 'package:app_finance/widgets/_wrappers/dots_tab_bar_widget.dart';
 import 'package:flutter/material.dart';
 
 class TabWidget extends StatefulWidget {
   final List<Tab> tabs;
   final List<Widget> children;
   final int focus;
+  final bool asDots;
 
   const TabWidget({
     super.key,
     required this.tabs,
     required this.children,
     this.focus = 0,
+    this.asDots = false,
   });
 
   @override
@@ -72,6 +77,28 @@ class TabWidgetState extends State<TabWidget> {
     });
   }
 
+  PreferredSizeWidget? getAppBar(BuildContext context) {
+    if (widget.asDots) {
+      var theme = ThemeHelper(windowType: getWindowType(context));
+      double indent = theme.getIndent();
+      return DotsTabBarWidget(
+        tabController: tabController,
+        pageController: pageController,
+        onTap: switchTab,
+        tabList: widget.tabs,
+        indent: indent,
+        width: MediaQuery.of(context).size.width - indent * 2,
+        color: Theme.of(context).colorScheme.primary,
+      );
+    } else {
+      return TabBar(
+        controller: tabController,
+        onTap: switchTab,
+        tabs: widget.tabs,
+      );
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -83,11 +110,7 @@ class TabWidgetState extends State<TabWidget> {
         }
       },
       child: Scaffold(
-        appBar: TabBar(
-          controller: tabController,
-          onTap: switchTab,
-          tabs: widget.tabs,
-        ),
+        appBar: getAppBar(context),
         body: PageView(
           controller: pageController,
           onPageChanged: switchTab,
