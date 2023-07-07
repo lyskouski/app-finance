@@ -12,7 +12,7 @@ By now we've created some business logic functionality with not so trivial flow.
 all the time manually after significant changes or refactoring, let's create some tests to check it for us automatically.
 
 Furthermore we've already broken our first test (that's been provided by a Flutter template generation). At the 
-beginning it was covering the `Add`-button as an increment trigger for the shown counter.
+beginning it was covering the `Add`-button as an incremental trigger for the shown counter.
 
 \begin{lstlisting}
 void main() {
@@ -70,6 +70,7 @@ Test Suite for the Widgets. To check business based calculations it's used `test
 take our implemented Account Recalculation flow.
 
 \begin{lstlisting}
+// test/unit/_classes/data/account_recalculation_test.dart 
 void main() {
   group('Account Recalculation:getDelta', () { // Add prefix to all the tests inside
     late AccountRecalculation mock; // Deferred initialization 
@@ -85,12 +86,13 @@ void main() {
         change: accountMock.clone(),
       );
     });
-    // Define "table" of an input arguments and output assertions
+    // Define "table" of input arguments and output assertions
     final testCases = [
-      [false, 5.0, false, 1.0, -4.0],
-      [false, 1.0, false, 5.0, 4.0],
-      [true, 2.0, false, 3.0, 3.0],
-      [false, 2.0, true, 3.0, -2.0],
+      // initial  |   change   | result
+      [false, 5.0,  false, 1.0,  -4.0],
+      [false, 1.0,  false, 5.0,   4.0],
+      [true,  2.0,  false, 3.0,   3.0],
+      [false, 2.0,  true,  3.0,  -2.0],
     ];
     // Run all defined Test Cases
     for (var v in testCases) {
@@ -123,19 +125,34 @@ Null check operator used on a null value
 Exited (1)
 \end{lstlisting}
 
-That test has highlighted a dozen of troubles and failures in our code, so, it definitely has not been written in vain.
+\noindent That test has highlighted a dozen of troubles and failures in our code, so, it definitely has not been 
+written in vain.
 
-\begin{lstlisting}
+\begin{lstlisting}[firstnumber=17]
+// ./lib/_classes/data/account_recalculation.dart
 double getDelta() {
   return change.hidden
--  ? -initial!.details
-+  ? -(initial?.details ?? 0.0)
--  : change.details - initial!.details;
-+  : (initial?.hidden ?? true
-+      ? change.details
-+      : change.details - initial?.details);
+\end{lstlisting}
+{
+\xpretocmd{\lstlisting}{\vspace{-12pt}}{}{}
+\begin{lstlisting}[firstnumber=20, backgroundcolor=\color{backred}]
+(*@\kdiff{-}@*)  ? -initial!.details
+\end{lstlisting}
+\begin{lstlisting}[firstnumber=20, backgroundcolor=\color{backgreen}]
+(*@\kdiff{+}@*)  ? -(initial?.details ?? 0.0)
+\end{lstlisting}
+\begin{lstlisting}[firstnumber=21, backgroundcolor=\color{backred}]
+(*@\kdiff{-}@*)  : change.details - initial!.details;
+\end{lstlisting}
+\begin{lstlisting}[firstnumber=21, backgroundcolor=\color{backgreen}]
+(*@\kdiff{+}@*)  : (initial?.hidden ?? true
+(*@\kdiff{+}@*)      ? change.details
+(*@\kdiff{+}@*)      : change.details - initial?.details);
+\end{lstlisting}
+\begin{lstlisting}[firstnumber=24]
 }
 \end{lstlisting}
+}
 
 \subsubsection{Creating Automated Quality Gates}
 
@@ -180,7 +197,7 @@ exit $status
 structure if it's missing yet).
 
 \begin{lstlisting}
-// {app folder}\tool\grind.dart
+// ./tool/grind.dart
 import 'dart:io';
 import 'package:path/path.dart' as path;
 import 'package:grinder/grinder.dart';
@@ -255,6 +272,7 @@ by also checking consistency (enter missing labels across the `.arb`-files), exp
 for translation purposes, and importing them back.
 
 \begin{lstlisting}
+// ./tool/grind.dart
 import './localization.dart' as locale;
 
 @Task('Update Translations by sorting values alphabetically')
@@ -271,6 +289,7 @@ sortTranslations() {
 \end{lstlisting}
 
 \begin{lstlisting}
+// ./tool/localization.dart
 import 'dart:convert';
 import 'dart:io';
 import 'package:grinder/grinder.dart';
@@ -369,7 +388,7 @@ jobs:
 In which way we can improve the current state is to gratitude ourselves by Badges of Workflow Status and Code Coverage.
 
 \begin{lstlisting}[language=bash]
-# README.md
+# ./README.md
 # Notation of an image with tooltip "Build Status" 
 ![Build Status](https://github.com/{user}/{repo}/actions/workflows/{workflow-name}.yml/badge.svg?branch=main)
 # Notation of an image with a link to our repository
@@ -389,7 +408,7 @@ git push -u origin gh-pages
 git checkout main
 \end{lstlisting}
 
-\noindent That will create for us a special branch that is accessible via `https://\{user\}.github.io/\{repo\}`-link. 
+\noindent That will create for us a special branch that is accessible via \`https://\{user\}.github.io/\{repo\}\`-link. 
 Then we need to extend our GitHub Workflow by including there a section to upload artifacts:
 
 \begin{lstlisting}[language=yaml]
@@ -421,7 +440,7 @@ files without checking them. So, let's separate type of tests' execution, and pr
 touch all our files for the coverage report.
 
 \begin{lstlisting}[language=yaml]
-# .github/workflows/dart.yml
+# ./.github/workflows/dart.yml
 - name: Run tests
   run: |
     if [[ "${{ github.ref }}" == "refs/heads/main" ]]; then

@@ -35,12 +35,6 @@ class GoalWidget extends StatelessWidget {
         color: colorScheme.inversePrimary,
         child: TabWidget(
           asDots: true,
-          tabs: state
-              .map((e) => Tab(
-                    icon: e.icon,
-                    text: e.title,
-                  ))
-              .toList(),
           children: state.map((e) => GoalLineWidget(goal: e)).toList(),
         ),
       ),

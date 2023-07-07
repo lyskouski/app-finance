@@ -50,19 +50,19 @@ class _CustomTabIndicatorPainter extends BoxPainter {
 
   @override
   void paint(Canvas canvas, Offset offset, ImageConfiguration configuration) {
-    final activeIndex = controller.page?.round() ?? controller.initialPage;
-    final dotPaint = Paint()..color = color;
     if (itemCount <= 1) {
       return;
     }
+    final activeIndex = controller.page?.round() ?? controller.initialPage;
+    final active = Paint()..color = color;
+    final inactive = Paint()..color = color.withOpacity(0.3);
     for (int i = 0; i < itemCount; i++) {
       double xPos = spacing + i * (dotSize + spacing);
       double yPos = spacing * 0.6;
       if (i == activeIndex) {
-        canvas.drawCircle(Offset(xPos, yPos), dotSize / 2, dotPaint);
+        canvas.drawCircle(Offset(xPos, yPos), dotSize / 2, active);
       } else {
-        final inactiveDotPaint = Paint()..color = color.withOpacity(0.3);
-        canvas.drawCircle(Offset(xPos, yPos), dotSize / 2, inactiveDotPaint);
+        canvas.drawCircle(Offset(xPos, yPos), dotSize / 2, inactive);
       }
     }
   }

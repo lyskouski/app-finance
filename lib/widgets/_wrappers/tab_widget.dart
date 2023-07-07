@@ -9,15 +9,15 @@ import 'package:app_finance/widgets/_wrappers/dots_tab_bar_widget.dart';
 import 'package:flutter/material.dart';
 
 class TabWidget extends StatefulWidget {
-  final List<Tab> tabs;
+  final List<Tab>? tabs;
   final List<Widget> children;
   final int focus;
   final bool asDots;
 
   const TabWidget({
     super.key,
-    required this.tabs,
     required this.children,
+    this.tabs,
     this.focus = 0,
     this.asDots = false,
   });
@@ -85,7 +85,7 @@ class TabWidgetState extends State<TabWidget> {
         tabController: tabController,
         pageController: pageController,
         onTap: switchTab,
-        tabList: widget.tabs,
+        tabList: widget.children,
         indent: indent,
         width: MediaQuery.of(context).size.width - indent * 2,
         color: Theme.of(context).colorScheme.primary,
@@ -94,7 +94,7 @@ class TabWidgetState extends State<TabWidget> {
       return TabBar(
         controller: tabController,
         onTap: switchTab,
-        tabs: widget.tabs,
+        tabs: widget.tabs!,
       );
     }
   }

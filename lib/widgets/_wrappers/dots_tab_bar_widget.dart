@@ -8,7 +8,7 @@ import 'package:flutter/material.dart';
 class DotsTabBarWidget extends TabBar {
   final TabController tabController;
   final PageController pageController;
-  final List<Tab> tabList;
+  final List<Widget> tabList;
   final double indent;
   final double width;
   final Color color;
