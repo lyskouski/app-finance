@@ -267,6 +267,7 @@ class AppData extends ChangeNotifier {
     SummaryAppData(total: 1, list: ['test']);
     return (_data[property]?.list ?? [])
         .map((uuid) => getByUuid(uuid, isClone).setState(this))
+        .where((element) => !element.hidden)
         .toList();
   }
 
