@@ -17,6 +17,7 @@ import 'package:app_finance/routes/budget_page.dart';
 import 'package:app_finance/routes/budget_add_page.dart';
 import 'package:app_finance/routes/budget_edit_page.dart';
 import 'package:app_finance/routes/budget_view_page.dart';
+import 'package:app_finance/routes/goal_add_page.dart';
 import 'package:app_finance/routes/goal_page.dart';
 import 'package:app_finance/routes/home_page.dart';
 import 'package:flutter/material.dart';
@@ -99,6 +100,7 @@ class _MyAppState extends State<MyApp> {
         AppRoute.billRoute: (context) => BillPage(),
         AppRoute.billAddRoute: (context) => BillAddPage(),
         AppRoute.goalRoute: (context) => GoalPage(),
+        AppRoute.goalAddRoute: (context) => GoalAddPage(),
       },
     );
   }

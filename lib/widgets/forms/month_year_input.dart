@@ -45,7 +45,9 @@ class MonthYearInput extends StatelessWidget {
   Widget build(BuildContext context) {
     final locale = Localizations.localeOf(context).toString();
     final DateFormat formatterDate = DateFormat.yM(locale);
-    if (!isOpened && focusOrder > -1 && FocusController.isFocused()) {
+    if (!isOpened &&
+        focusOrder > FocusController.DEFAULT &&
+        FocusController.isFocused()) {
       Future.delayed(const Duration(milliseconds: 300), () {
         onTap(context);
       });

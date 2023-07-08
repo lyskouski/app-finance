@@ -10,7 +10,7 @@ import 'package:app_finance/custom_text_theme.dart';
 import 'package:app_finance/data.dart';
 import 'package:app_finance/helpers/theme_helper.dart';
 import 'package:app_finance/widgets/forms/currency_selector.dart';
-import 'package:app_finance/widgets/forms/datet_time_input.dart';
+import 'package:app_finance/widgets/forms/date_time_input.dart';
 import 'package:app_finance/widgets/forms/list_account_selector.dart';
 import 'package:app_finance/widgets/forms/list_budget_selector.dart';
 import 'package:app_finance/widgets/forms/simple_input.dart';

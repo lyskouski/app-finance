@@ -47,7 +47,7 @@ class GoalPageState extends AbstractPageState<GoalPage> {
         uuid: goal.uuid,
         details: goal.getNumberFormatted(goal.details),
         description: goal.closedAtFormatted,
-        color: Colors.green.shade700,
+        color: goal.color ?? Colors.green.shade700,
         hidden: goal.hidden,
         progress: goal.progress,
         route: AppRoute.goalViewRoute,
