@@ -6,6 +6,7 @@ import 'package:adaptive_breakpoints/adaptive_breakpoints.dart';
 import 'package:app_finance/_classes/app_route.dart';
 import 'package:app_finance/_classes/data/bill_app_data.dart';
 import 'package:app_finance/_classes/focus_controller.dart';
+import 'package:app_finance/_mixins/shared_preferences_mixin.dart';
 import 'package:app_finance/custom_text_theme.dart';
 import 'package:app_finance/data.dart';
 import 'package:app_finance/helpers/theme_helper.dart';
@@ -42,7 +43,8 @@ class ExpensesTab<T> extends StatefulWidget {
   ExpensesTabState createState() => ExpensesTabState();
 }
 
-class ExpensesTabState<T extends ExpensesTab> extends State<T> {
+class ExpensesTabState<T extends ExpensesTab> extends State<T>
+    with SharedPreferencesMixin {
   late AppData state;
   String? account;
   String accountErrorMessage = '';
@@ -62,6 +64,9 @@ class ExpensesTabState<T extends ExpensesTab> extends State<T> {
     description = widget.description;
     createdAt = widget.createdAt;
     super.initState();
+    getPreference(prefAccount)
+        .then((value) => setState(() => account ??= value));
+    getPreference(prefBudget).then((value) => setState(() => budget ??= value));
   }
 
   bool hasFormErrors() {
@@ -70,6 +75,8 @@ class ExpensesTabState<T extends ExpensesTab> extends State<T> {
   }
 
   void updateStorage() {
+    setPreference(prefAccount, account ?? '');
+    setPreference(prefBudget, budget ?? '');
     state.add(
         AppDataType.bills,
         BillAppData(

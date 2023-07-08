@@ -6,6 +6,7 @@ import 'package:adaptive_breakpoints/adaptive_breakpoints.dart';
 import 'package:app_finance/_classes/app_route.dart';
 import 'package:app_finance/_classes/data/account_app_data.dart';
 import 'package:app_finance/_classes/focus_controller.dart';
+import 'package:app_finance/_mixins/shared_preferences_mixin.dart';
 import 'package:app_finance/custom_text_theme.dart';
 import 'package:app_finance/data.dart';
 import 'package:app_finance/helpers/theme_helper.dart';
@@ -34,7 +35,7 @@ class IncomeTab extends StatefulWidget {
   IncomeTabState createState() => IncomeTabState();
 }
 
-class IncomeTabState extends State<IncomeTab> {
+class IncomeTabState extends State<IncomeTab> with SharedPreferencesMixin {
   late AppData state;
   String? account;
   Currency? currency;
@@ -46,6 +47,8 @@ class IncomeTabState extends State<IncomeTab> {
     currency = widget.currency;
     amount = widget.amount;
     super.initState();
+    getPreference(prefAccount)
+        .then((value) => setState(() => account ??= value));
   }
 
   bool hasFormErrors() {
@@ -59,6 +62,7 @@ class IncomeTabState extends State<IncomeTab> {
 
   void updateStorage() {
     String uuid = account ?? '';
+    setPreference(prefAccount, uuid);
     AccountAppData value = state.getByUuid(uuid);
     value.details += amount ?? 0.0;
     value.currency = currency;
