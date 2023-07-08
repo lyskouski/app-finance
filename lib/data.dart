@@ -50,6 +50,14 @@ class AppData extends ChangeNotifier {
       createdAtFormatted: '2022-01-01 00:00',
       closedAtFormatted: '2024-09-01 00:00',
     ),
+    'xxxxxxxx-xxx0-1xxx-yxxx-xxxxxxxxxxxx': GoalAppData(
+      uuid: 'xxxxxxxx-xxx0-1xxx-yxxx-xxxxxxxxxxxx',
+      title: 'Publish the book',
+      details: 12349.098,
+      progress: 0.6,
+      createdAtFormatted: '2023-01-01 00:00',
+      closedAtFormatted: '2023-12-01 00:00',
+    ),
     'xxxxxxxx-xxxx-01xx-yxxx-xxxxxxxxxxxx': BillAppData(
       uuid: 'xxxxxxxx-xxxx-01xx-yxxx-xxxxxxxxxxxx',
       account: 'xxxxxxxx-xxxx-1xxx-yxxx-xxxxxxxxxxxx',
@@ -137,6 +145,7 @@ class AppData extends ChangeNotifier {
     AppDataType.goals: SummaryAppData(
       total: 123.45,
       list: [
+        'xxxxxxxx-xxx0-1xxx-yxxx-xxxxxxxxxxxx',
         'xxxxxxxx-xxxx-0xxx-yxxx-xxxxxxxxxxxx',
       ],
     ),

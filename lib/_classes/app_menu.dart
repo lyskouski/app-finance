@@ -33,7 +33,7 @@ class AppMenu {
       AppMenuItem(
         name: locale!.goalHeadline,
         icon: Icons.star,
-        route: AppRoute.homeRoute,
+        route: AppRoute.goalRoute,
       ),
       AppMenuItem(
         name: locale!.accountHeadline,
