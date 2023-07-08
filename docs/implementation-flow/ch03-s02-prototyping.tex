@@ -72,9 +72,10 @@ take our implemented Account Recalculation flow.
 \begin{lstlisting}
 // test/unit/_classes/data/account_recalculation_test.dart 
 void main() {
-  group('Account Recalculation:getDelta', () { // Add prefix to all the tests inside
+  // `group` works as a prefix to all the tests inside
+  group('Account Recalculation:getDelta', () {
     late AccountRecalculation mock; // Deferred initialization 
-    // `setUp`-is going to be executed before each(!) test
+    // `setUp`-is going to be executed before each test
     setUp(() {
       final accountMock = AccountAppData(
         uuid: '1',
@@ -432,7 +433,7 @@ run: |
     publish_dir: ./coverage # Folder to upload
 \end{lstlisting}
 
-\img{prototyping/badges}{Generated README.md on our main page of the repository}{img:pt-badge}
+\img{prototyping/badges}{Generated README.md for the repository}{img:pt-badge}
 
 Everything is done (\cref{img:pt-badge})... almost. Coverage 46\% is unbelievable for written tests. The problem is 
 that untouched (by tests) files are not included into the report. And, additionally, widget tests cover most of the 
