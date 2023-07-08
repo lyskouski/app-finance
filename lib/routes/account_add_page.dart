@@ -12,7 +12,7 @@ import 'package:app_finance/_classes/app_route.dart';
 import 'package:app_finance/routes/abstract_page.dart';
 import 'package:app_finance/widgets/forms/color_selector.dart';
 import 'package:app_finance/widgets/forms/currency_selector.dart';
-import 'package:app_finance/widgets/forms/datet_time_input.dart';
+import 'package:app_finance/widgets/forms/date_time_input.dart';
 import 'package:app_finance/widgets/forms/icon_selector.dart';
 import 'package:app_finance/widgets/forms/list_selector.dart';
 import 'package:app_finance/widgets/forms/month_year_input.dart';

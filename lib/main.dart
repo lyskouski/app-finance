@@ -17,6 +17,10 @@ import 'package:app_finance/routes/budget_page.dart';
 import 'package:app_finance/routes/budget_add_page.dart';
 import 'package:app_finance/routes/budget_edit_page.dart';
 import 'package:app_finance/routes/budget_view_page.dart';
+import 'package:app_finance/routes/goal_add_page.dart';
+import 'package:app_finance/routes/goal_edit_page.dart';
+import 'package:app_finance/routes/goal_page.dart';
+import 'package:app_finance/routes/goal_view_page.dart';
 import 'package:app_finance/routes/home_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localization.dart';
@@ -64,6 +68,12 @@ class _MyAppState extends State<MyApp> {
         case AppRoute.billEditRoute:
           return MaterialPageRoute(
               builder: (context) => BillEditPage(uuid: uuid));
+        case AppRoute.goalViewRoute:
+          return MaterialPageRoute(
+              builder: (context) => GoalViewPage(uuid: uuid));
+        case AppRoute.goalEditRoute:
+          return MaterialPageRoute(
+              builder: (context) => GoalEditPage(uuid: uuid));
       }
     }
     return null;
@@ -97,6 +107,8 @@ class _MyAppState extends State<MyApp> {
         AppRoute.budgetAddRoute: (context) => BudgetAddPage(),
         AppRoute.billRoute: (context) => BillPage(),
         AppRoute.billAddRoute: (context) => BillAddPage(),
+        AppRoute.goalRoute: (context) => GoalPage(),
+        AppRoute.goalAddRoute: (context) => GoalAddPage(),
       },
     );
   }

@@ -88,7 +88,7 @@ class HomePageState extends AbstractPageState<HomePage> {
     final DateFormat formatterDate = DateFormat.MMMM(locale);
 
     final goalWidget = GoalWidget(
-      margin: single,
+      margin: EdgeInsets.fromLTRB(indent, 0, indent, 0),
       state: super.state.getList(AppDataType.goals),
     );
     final billWidget = BillWidget(
