@@ -310,3 +310,54 @@ class DotsTabBarWidget extends TabBar {
       );
 }
 \end{lstlisting}
+
+\subsubsection{Using Shared Preferences}
+
+To use shared preferences (store / retrieve string values) in Flutter, we should install the proper package via
+`flutter pub add shared\_preferences` command. To operate with preferences it would be better to use mixin --
+a powerful way in Flutter to reuse code across multiple classes by combining the members of the mixin with the 
+classes that use it (a composition without inheritance).
+
+A mixin is defined by using the `mixin`-keyword followed by its name and a set of members, such as properties, methods, 
+and getters/setters. It cannot be instantiated on its own; instead, it is meant to be mixed into other classes 
+using the `with`-keyword (it inherits all the members from the mixin). This allows the class to access and use the 
+properties and methods defined in the mixin as if they were part of its own implementation.
+
+\begin{lstlisting}
+// ./lib/_mixins/shared_preferences_mixin.dart
+mixin SharedPreferencesMixin {
+  Future<void> setPreference(String key, String value) async {
+    SharedPreferences pref = await SharedPreferences.getInstance();
+    await pref.setString(key, value);
+  }
+
+  Future<String?> getPreference(String key) async {
+    SharedPreferences pref = await SharedPreferences.getInstance();
+    return pref.getString(key);
+  }
+}
+\end{lstlisting}
+
+\noindent And now we can apply it to our class(es):
+
+\begin{lstlisting}
+// ./lib/widgets/bill/expenses_tab.dart
+class ExpensesTabState<T extends ExpensesTab> extends State<T>
+    with SharedPreferencesMixin {(*@ \stopnumber @*)
+
+  // ... properties and constructor
+  (*@ \startnumber{10} @*)
+  @override
+  void initState() { // We cannot make `initState` async
+    account = widget.account;
+    super.initState();
+    // Waiting for the value, then apply via `setState`
+    getPreference('account')
+        .then((value) => setState(() => account ??= value));
+  }
+
+  void updateStorage() {
+    // On `save`-action store preferences
+    setPreference(prefAccount, account ?? '');
+// ... other code
+\end{lstlisting}
