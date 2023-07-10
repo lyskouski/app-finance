@@ -41,6 +41,7 @@
     "credit": "Credit",
     "creditCard": "Credit Card",
     "currency": "Currency",
+    "currencyHeadline": "Currencies",
     "currentDate": "Current Date",
     "debitCard": "Debit Card",
     "deleteAccountTooltip": "Deactivate Account",

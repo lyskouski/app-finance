@@ -4,7 +4,6 @@
 
 import 'package:adaptive_breakpoints/adaptive_breakpoints.dart';
 import 'package:app_finance/_classes/app_menu.dart';
-import 'package:app_finance/_classes/data/bill_app_data.dart';
 import 'package:app_finance/_classes/data/goal_app_data.dart';
 import 'package:app_finance/data.dart';
 import 'package:app_finance/helpers/theme_helper.dart';

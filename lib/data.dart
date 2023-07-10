@@ -9,6 +9,7 @@ import 'package:app_finance/_classes/data/bill_app_data.dart';
 import 'package:app_finance/_classes/data/bill_recalculation.dart';
 import 'package:app_finance/_classes/data/budget_app_data.dart';
 import 'package:app_finance/_classes/data/budget_recalculation.dart';
+import 'package:app_finance/_classes/data/currency_app_data.dart';
 import 'package:app_finance/_classes/data/goal_app_data.dart';
 import 'package:app_finance/_classes/data/goal_recalculation.dart';
 import 'package:app_finance/_classes/data/summary_app_data.dart';
@@ -20,6 +21,7 @@ enum AppDataType {
   bills,
   accounts,
   budgets,
+  currencies,
 }
 
 enum AppAccountType {
@@ -200,6 +202,8 @@ class AppData extends ChangeNotifier {
         return _updateBudget(initial, change);
       case AppDataType.goals:
         return _updateGoal(initial, change);
+      case AppDataType.currencies:
+        return _updateCurrency(initial, change);
     }
   }
 
@@ -254,6 +258,11 @@ class AppData extends ChangeNotifier {
         .updateGoal()
         .updateTotal(_data[AppDataType.goals], _hashTable);
     _set(AppDataType.goals, change);
+  }
+
+  void _updateCurrency(CurrencyAppData? initial, CurrencyAppData change) {
+    _set(AppDataType.currencies, change);
+    // TBD: Update totals for Budget and Account
   }
 
   dynamic get(AppDataType property) {

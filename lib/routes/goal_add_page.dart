@@ -17,7 +17,6 @@ import 'package:app_finance/widgets/forms/icon_selector.dart';
 import 'package:app_finance/widgets/forms/simple_input.dart';
 import 'package:currency_picker/currency_picker.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_gen/gen_l10n/app_localization.dart';
 
 class GoalAddPage extends AbstractPage {
