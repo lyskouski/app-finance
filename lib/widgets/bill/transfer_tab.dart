@@ -9,23 +9,26 @@ import 'package:app_finance/_classes/focus_controller.dart';
 import 'package:app_finance/custom_text_theme.dart';
 import 'package:app_finance/data.dart';
 import 'package:app_finance/helpers/theme_helper.dart';
+import 'package:app_finance/widgets/forms/currency_selector.dart';
 import 'package:app_finance/widgets/forms/list_account_selector.dart';
 import 'package:app_finance/widgets/forms/simple_input.dart';
+import 'package:currency_picker/currency_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localization.dart';
 import 'package:provider/provider.dart';
 
 class TransferTab extends StatefulWidget {
   String? accountFrom;
-  String accountErrorMessage = '';
   String? accountTo;
   double? amount;
+  Currency? currency;
 
   TransferTab({
     super.key,
     this.accountFrom,
     this.accountTo,
     this.amount,
+    this.currency,
   });
 
   @override
@@ -37,19 +40,22 @@ class TransferTabState extends State<TransferTab> {
   String? accountFrom;
   String? accountTo;
   double? amount;
+  Currency? currency;
+  String accountErrorMessage = '';
 
   @override
   void initState() {
     accountFrom = widget.accountFrom;
     accountTo = widget.accountTo;
     amount = widget.amount;
+    currency = widget.currency;
     super.initState();
   }
 
   bool hasFormErrors() {
     bool isError = false;
     if (accountFrom == null || accountTo == null) {
-      widget.accountErrorMessage = AppLocalizations.of(context)!.isRequired;
+      accountErrorMessage = AppLocalizations.of(context)!.isRequired;
       isError = true;
     }
     return isError;
@@ -126,7 +132,7 @@ class TransferTabState extends State<TransferTab> {
                         style: textTheme.bodyLarge,
                       ),
                       Text(
-                        widget.accountErrorMessage,
+                        accountErrorMessage,
                         style: TextStyle(
                           color: Theme.of(context).colorScheme.error,
                         ),
@@ -152,7 +158,7 @@ class TransferTabState extends State<TransferTab> {
                         style: textTheme.bodyLarge,
                       ),
                       Text(
-                        widget.accountErrorMessage,
+                        accountErrorMessage,
                         style: TextStyle(
                           color: Theme.of(context).colorScheme.error,
                         ),
@@ -171,21 +177,67 @@ class TransferTabState extends State<TransferTab> {
                     focusOrder: focusOrder += 1,
                   ),
                   SizedBox(height: indent),
-                  Text(
-                    AppLocalizations.of(context)!.expense,
-                    style: textTheme.bodyLarge,
-                  ),
-                  SimpleInput(
-                    value: amount != null ? amount.toString() : '',
-                    type: const TextInputType.numberWithOptions(decimal: true),
-                    tooltip: AppLocalizations.of(context)!.billSetTooltip,
-                    style: textTheme.numberMedium,
-                    formatter: [
-                      SimpleInput.filterDouble,
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
+                      Container(
+                        constraints: BoxConstraints(
+                          maxWidth: offset * 0.3,
+                        ),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              AppLocalizations.of(context)!.currency,
+                              style: textTheme.bodyLarge,
+                            ),
+                            Container(
+                              color: Theme.of(context)
+                                  .colorScheme
+                                  .inversePrimary
+                                  .withOpacity(0.3),
+                              width: double.infinity,
+                              child: CurrencySelector(
+                                value: currency,
+                                setView: (Currency currency) => currency.code,
+                                setState: (value) =>
+                                    setState(() => currency = value),
+                                focusOrder: focusOrder += 1,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                      SizedBox(width: indent),
+                      Container(
+                        constraints: BoxConstraints(
+                          maxWidth: offset * 0.7,
+                        ),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              AppLocalizations.of(context)!.expenseTransfer,
+                              style: textTheme.bodyLarge,
+                            ),
+                            SimpleInput(
+                              value: amount != null ? amount.toString() : '',
+                              type: const TextInputType.numberWithOptions(
+                                  decimal: true),
+                              tooltip:
+                                  AppLocalizations.of(context)!.billSetTooltip,
+                              style: textTheme.numberMedium,
+                              formatter: [
+                                SimpleInput.filterDouble,
+                              ],
+                              setState: (value) => setState(
+                                  () => amount = double.tryParse(value)),
+                              focusOrder: focusOrder += 1,
+                            ),
+                          ],
+                        ),
+                      ),
                     ],
-                    setState: (value) =>
-                        setState(() => amount = double.tryParse(value)),
-                    focusOrder: focusOrder += 1,
                   ),
                 ],
               ),

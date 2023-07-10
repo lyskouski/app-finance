@@ -64,6 +64,7 @@
     "expense": "Amount of Expenses",
     "expenseDateTime": "Expense Date",
     "expenseHeadline": "Expense",
+    "expenseTransfer": "Amount of Transfer",
     "from": "from",
     "goalHeadline": "Goals",
     "goalTooltip": "Open Goals",
