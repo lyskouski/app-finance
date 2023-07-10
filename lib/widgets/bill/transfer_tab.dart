@@ -9,6 +9,7 @@ import 'package:app_finance/_classes/focus_controller.dart';
 import 'package:app_finance/custom_text_theme.dart';
 import 'package:app_finance/data.dart';
 import 'package:app_finance/helpers/theme_helper.dart';
+import 'package:app_finance/widgets/_wrappers/required_widget.dart';
 import 'package:app_finance/widgets/_wrappers/row_widget.dart';
 import 'package:app_finance/widgets/forms/currency_selector.dart';
 import 'package:app_finance/widgets/forms/list_account_selector.dart';
@@ -19,12 +20,12 @@ import 'package:flutter_gen/gen_l10n/app_localization.dart';
 import 'package:provider/provider.dart';
 
 class TransferTab extends StatefulWidget {
-  String? accountFrom;
-  String? accountTo;
-  double? amount;
-  Currency? currency;
+  final String? accountFrom;
+  final String? accountTo;
+  final double? amount;
+  final Currency? currency;
 
-  TransferTab({
+  const TransferTab({
     super.key,
     this.accountFrom,
     this.accountTo,
@@ -42,7 +43,7 @@ class TransferTabState extends State<TransferTab> {
   String? accountTo;
   double? amount;
   Currency? currency;
-  String accountErrorMessage = '';
+  bool hasErrors = false;
 
   @override
   void initState() {
@@ -54,12 +55,8 @@ class TransferTabState extends State<TransferTab> {
   }
 
   bool hasFormErrors() {
-    bool isError = false;
-    if (accountFrom == null || accountTo == null) {
-      accountErrorMessage = AppLocalizations.of(context)!.isRequired;
-      isError = true;
-    }
-    return isError;
+    setState(() => hasErrors = accountFrom == null || accountTo == null);
+    return hasErrors;
   }
 
   void updateStorage() {
@@ -126,19 +123,9 @@ class TransferTabState extends State<TransferTab> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Row(
-                    children: [
-                      Text(
-                        '${AppLocalizations.of(context)!.accountFrom}*',
-                        style: textTheme.bodyLarge,
-                      ),
-                      Text(
-                        accountErrorMessage,
-                        style: TextStyle(
-                          color: Theme.of(context).colorScheme.error,
-                        ),
-                      ),
-                    ],
+                  RequiredWidget(
+                    title: AppLocalizations.of(context)!.accountFrom,
+                    showError: hasErrors && accountFrom == null,
                   ),
                   ListAccountSelector(
                     value: accountFrom,
@@ -152,19 +139,9 @@ class TransferTabState extends State<TransferTab> {
                     focusOrder: focusOrder += 1,
                   ),
                   SizedBox(height: indent),
-                  Row(
-                    children: [
-                      Text(
-                        '${AppLocalizations.of(context)!.accountTo}*',
-                        style: textTheme.bodyLarge,
-                      ),
-                      Text(
-                        accountErrorMessage,
-                        style: TextStyle(
-                          color: Theme.of(context).colorScheme.error,
-                        ),
-                      ),
-                    ],
+                  RequiredWidget(
+                    title: AppLocalizations.of(context)!.accountTo,
+                    showError: hasErrors && accountTo == null,
                   ),
                   ListAccountSelector(
                     value: accountTo,

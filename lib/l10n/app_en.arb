@@ -72,7 +72,7 @@
     "homeTooltip": "Back to Main Page",
     "icon": "Icon",
     "incomeHeadline": "Income",
-    "isRequired": " - required",
+    "isRequired": "required",
     "left": "left",
     "metricsHeadline": "Metrics",
     "ok": "OK",
