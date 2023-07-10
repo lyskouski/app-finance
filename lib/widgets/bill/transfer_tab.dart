@@ -130,9 +130,7 @@ class TransferTabState extends State<TransferTab> {
                   ListAccountSelector(
                     value: accountFrom,
                     state: state,
-                    setState: (value) => setState(() {
-                      accountFrom = value;
-                    }),
+                    setState: (value) => setState(() => accountFrom = value),
                     style: textTheme.numberMedium,
                     indent: indent,
                     width: offset,
@@ -148,6 +146,7 @@ class TransferTabState extends State<TransferTab> {
                     state: state,
                     setState: (value) => setState(() {
                       accountTo = value;
+                      currency ??= state.getByUuid(value).currency;
                     }),
                     style: textTheme.numberMedium,
                     indent: indent,
