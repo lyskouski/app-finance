@@ -9,6 +9,7 @@ import 'package:app_finance/_classes/focus_controller.dart';
 import 'package:app_finance/custom_text_theme.dart';
 import 'package:app_finance/data.dart';
 import 'package:app_finance/helpers/theme_helper.dart';
+import 'package:app_finance/widgets/_wrappers/row_widget.dart';
 import 'package:app_finance/widgets/forms/currency_selector.dart';
 import 'package:app_finance/widgets/forms/list_account_selector.dart';
 import 'package:app_finance/widgets/forms/simple_input.dart';
@@ -177,66 +178,50 @@ class TransferTabState extends State<TransferTab> {
                     focusOrder: focusOrder += 1,
                   ),
                   SizedBox(height: indent),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.start,
+                  RowWidget(
+                    indent: indent,
+                    maxWidth: offset + indent,
+                    chunk: const [0.3, 0.7],
                     children: [
-                      Container(
-                        constraints: BoxConstraints(
-                          maxWidth: offset * 0.3,
+                      [
+                        Text(
+                          AppLocalizations.of(context)!.currency,
+                          style: textTheme.bodyLarge,
                         ),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                              AppLocalizations.of(context)!.currency,
-                              style: textTheme.bodyLarge,
-                            ),
-                            Container(
-                              color: Theme.of(context)
-                                  .colorScheme
-                                  .inversePrimary
-                                  .withOpacity(0.3),
-                              width: double.infinity,
-                              child: CurrencySelector(
-                                value: currency,
-                                setView: (Currency currency) => currency.code,
-                                setState: (value) =>
-                                    setState(() => currency = value),
-                                focusOrder: focusOrder += 1,
-                              ),
-                            ),
+                        Container(
+                          color: Theme.of(context)
+                              .colorScheme
+                              .inversePrimary
+                              .withOpacity(0.3),
+                          width: double.infinity,
+                          child: CurrencySelector(
+                            value: currency,
+                            setView: (Currency currency) => currency.code,
+                            setState: (value) =>
+                                setState(() => currency = value),
+                            focusOrder: focusOrder += 1,
+                          ),
+                        ),
+                      ],
+                      [
+                        Text(
+                          AppLocalizations.of(context)!.expenseTransfer,
+                          style: textTheme.bodyLarge,
+                        ),
+                        SimpleInput(
+                          value: amount != null ? amount.toString() : '',
+                          type: const TextInputType.numberWithOptions(
+                              decimal: true),
+                          tooltip: AppLocalizations.of(context)!.billSetTooltip,
+                          style: textTheme.numberMedium,
+                          formatter: [
+                            SimpleInput.filterDouble,
                           ],
+                          setState: (value) =>
+                              setState(() => amount = double.tryParse(value)),
+                          focusOrder: focusOrder += 1,
                         ),
-                      ),
-                      SizedBox(width: indent),
-                      Container(
-                        constraints: BoxConstraints(
-                          maxWidth: offset * 0.7,
-                        ),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                              AppLocalizations.of(context)!.expenseTransfer,
-                              style: textTheme.bodyLarge,
-                            ),
-                            SimpleInput(
-                              value: amount != null ? amount.toString() : '',
-                              type: const TextInputType.numberWithOptions(
-                                  decimal: true),
-                              tooltip:
-                                  AppLocalizations.of(context)!.billSetTooltip,
-                              style: textTheme.numberMedium,
-                              formatter: [
-                                SimpleInput.filterDouble,
-                              ],
-                              setState: (value) => setState(
-                                  () => amount = double.tryParse(value)),
-                              focusOrder: focusOrder += 1,
-                            ),
-                          ],
-                        ),
-                      ),
+                      ],
                     ],
                   ),
                 ],
