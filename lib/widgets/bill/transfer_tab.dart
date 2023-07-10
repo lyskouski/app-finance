@@ -9,6 +9,7 @@ import 'package:app_finance/_classes/focus_controller.dart';
 import 'package:app_finance/custom_text_theme.dart';
 import 'package:app_finance/data.dart';
 import 'package:app_finance/helpers/theme_helper.dart';
+import 'package:app_finance/widgets/_forms/currency_exchange_input.dart';
 import 'package:app_finance/widgets/_wrappers/required_widget.dart';
 import 'package:app_finance/widgets/_wrappers/row_widget.dart';
 import 'package:app_finance/widgets/_forms/currency_selector.dart';
@@ -199,6 +200,22 @@ class TransferTabState extends State<TransferTab> {
                         ),
                       ],
                     ],
+                  ),
+                  SizedBox(height: indent),
+                  CurrencyExchangeInput(
+                    width: offset + indent,
+                    indent: indent,
+                    target: currency,
+                    state: state,
+                    targetAmount: amount,
+                    source: [
+                      accountFrom != null
+                          ? state.getByUuid(accountFrom!).currency
+                          : null,
+                      accountTo != null
+                          ? state.getByUuid(accountTo!).currency
+                          : null,
+                    ].cast<Currency?>(),
                   ),
                 ],
               ),

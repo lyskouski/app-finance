@@ -172,6 +172,10 @@ class AppData extends ChangeNotifier {
         'xxxxxxxx-xxxx-6xxx-yxxx-xxxxxxxxxxxx',
       ],
     ),
+    AppDataType.currencies: SummaryAppData(
+      total: 0,
+      list: [],
+    )
   };
 
   void _set(AppDataType property, dynamic value) {
@@ -180,9 +184,10 @@ class AppData extends ChangeNotifier {
     notifyListeners();
   }
 
-  void add(AppDataType property, dynamic value) {
+  dynamic add(AppDataType property, dynamic value) {
     value.uuid = const Uuid().v4();
     _update(property, null, value);
+    return getByUuid(value.uuid);
   }
 
   void update(AppDataType property, String uuid, dynamic value) {

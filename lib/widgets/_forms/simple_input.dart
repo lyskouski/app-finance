@@ -7,18 +7,18 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 class SimpleInput extends StatelessWidget {
-  Function setState;
-  TextStyle? style;
-  String? value;
-  String? tooltip;
-  TextInputType type;
-  List<TextInputFormatter>? formatter;
-  int focusOrder;
+  final Function setState;
+  final TextStyle? style;
+  final String? value;
+  final String? tooltip;
+  final TextInputType type;
+  final List<TextInputFormatter>? formatter;
+  final int focusOrder;
 
   static FilteringTextInputFormatter filterDouble =
       FilteringTextInputFormatter.allow(RegExp(r'^\d+\.?\d{0,4}'));
 
-  SimpleInput({
+  const SimpleInput({
     super.key,
     this.value,
     this.style,

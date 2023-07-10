@@ -28,6 +28,8 @@
     "closedAt": "Finished till Date",
     "color": "Color",
     "colorTooltip": "Select a color",
+    "conversion": "Conversion",
+    "conversionMessage": "Taken in {currency}",
     "createAccountHeader": "Create new Account",
     "createAccountTooltip": "Create new Account",
     "createBillHeader": "Create new Transaction",
@@ -41,6 +43,12 @@
     "credit": "Credit",
     "creditCard": "Credit Card",
     "currency": "Currency",
+    "currencyExchange": "Currency Exchange: {from} -> {to}",
+    "@currencyExchange": {
+        "currency": {
+            "type": "String"
+        }
+    },
     "currencyHeadline": "Currencies",
     "currentDate": "Current Date",
     "debitCard": "Debit Card",
