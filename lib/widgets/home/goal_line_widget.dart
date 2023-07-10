@@ -5,7 +5,7 @@
 import 'package:adaptive_breakpoints/adaptive_breakpoints.dart';
 import 'package:app_finance/_classes/app_route.dart';
 import 'package:app_finance/_classes/data/goal_app_data.dart';
-import 'package:app_finance/decorators/tap_area.dart';
+import 'package:app_finance/widgets/_wrappers/tap_widget.dart';
 import 'package:app_finance/helpers/theme_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localization.dart';
@@ -26,7 +26,7 @@ class GoalLineWidget extends StatelessWidget {
     double screenWidth =
         MediaQuery.of(context).size.width - theme.getIndent() * 2;
     goal.updateContext(context);
-    return TapArea(
+    return TapWidget(
       tooltip: AppLocalizations.of(context)!.goalTooltip,
       route: AppRoute.goalRoute,
       child: Container(
