@@ -10,6 +10,7 @@ import 'package:app_finance/_mixins/shared_preferences_mixin.dart';
 import 'package:app_finance/custom_text_theme.dart';
 import 'package:app_finance/data.dart';
 import 'package:app_finance/helpers/theme_helper.dart';
+import 'package:app_finance/widgets/_forms/currency_exchange_input.dart';
 import 'package:app_finance/widgets/_forms/currency_selector.dart';
 import 'package:app_finance/widgets/_forms/date_time_input.dart';
 import 'package:app_finance/widgets/_forms/list_account_selector.dart';
@@ -233,6 +234,19 @@ class ExpensesTabState<T extends ExpensesTab> extends State<T>
                     ],
                   ),
                   SizedBox(height: indent),
+                  CurrencyExchangeInput(
+                    width: offset + indent,
+                    indent: indent,
+                    target: currency,
+                    state: state,
+                    targetAmount: bill,
+                    source: [
+                      account != null
+                          ? state.getByUuid(account!).currency
+                          : null,
+                      budget != null ? state.getByUuid(budget!).currency : null,
+                    ].cast<Currency?>(),
+                  ),
                   Text(
                     AppLocalizations.of(context)!.description,
                     style: textTheme.bodyLarge,
