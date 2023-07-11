@@ -57,7 +57,7 @@ class BillAddPageState<T extends BillAddPage>
       children: [
         IncomeTab(),
         ExpensesTab(),
-        TransferTab(),
+        const TransferTab(),
       ],
     );
   }

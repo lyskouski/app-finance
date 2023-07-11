@@ -6,7 +6,7 @@ import 'package:app_finance/_classes/focus_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
-class SimpleInput extends StatelessWidget {
+class SimpleInput extends StatefulWidget {
   final Function setState;
   final TextStyle? style;
   final String? value;
@@ -30,25 +30,44 @@ class SimpleInput extends StatelessWidget {
   });
 
   @override
+  SimpleInputState createState() => SimpleInputState();
+}
+
+class SimpleInputState extends State<SimpleInput> {
+  final TextEditingController _controller = TextEditingController();
+  bool isChanged = false;
+
+  @override
   Widget build(BuildContext context) {
-    FocusController.setContext(focusOrder, value);
+    if (!isChanged) {
+      setState(() {
+        _controller.text = widget.value ?? '';
+      });
+    }
+    FocusController.setContext(widget.focusOrder, widget.value);
     return TextFormField(
-      initialValue: value ?? '',
-      inputFormatters: formatter,
-      keyboardType: type,
+      controller: _controller,
+      inputFormatters: widget.formatter,
+      keyboardType: widget.type,
       focusNode: FocusController.getFocusNode(),
       textInputAction: FocusController.getAction(),
-      onEditingComplete: FocusController.onEditingComplete,
+      onEditingComplete: () {
+        isChanged = false;
+        FocusController.onEditingComplete();
+      },
       autofocus: FocusController.isFocused(),
       decoration: InputDecoration(
         filled: true,
         border: InputBorder.none,
         fillColor:
             Theme.of(context).colorScheme.inversePrimary.withOpacity(0.3),
-        hintText: tooltip,
-        hintStyle: style,
+        hintText: widget.tooltip,
+        hintStyle: widget.style,
       ),
-      onChanged: (value) => setState(value),
+      onChanged: (value) {
+        isChanged = true;
+        widget.setState(value);
+      },
     );
   }
 }

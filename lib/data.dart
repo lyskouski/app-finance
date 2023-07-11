@@ -190,9 +190,11 @@ class AppData extends ChangeNotifier {
     return getByUuid(value.uuid);
   }
 
-  void update(AppDataType property, String uuid, dynamic value) {
+  void update(AppDataType property, String uuid, dynamic value,
+      [bool createIfMissing = false]) {
     var initial = getByUuid(uuid, false);
-    if (initial != null) {
+    if (initial != null || createIfMissing) {
+      initial ??= value;
       _update(property, initial, value);
     }
   }
