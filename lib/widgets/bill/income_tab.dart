@@ -13,18 +13,19 @@ import 'package:app_finance/helpers/theme_helper.dart';
 import 'package:app_finance/widgets/_forms/currency_selector.dart';
 import 'package:app_finance/widgets/_forms/list_account_selector.dart';
 import 'package:app_finance/widgets/_forms/simple_input.dart';
+import 'package:app_finance/widgets/_wrappers/required_widget.dart';
+import 'package:app_finance/widgets/_wrappers/row_widget.dart';
 import 'package:currency_picker/currency_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localization.dart';
 import 'package:provider/provider.dart';
 
 class IncomeTab extends StatefulWidget {
-  String? account;
-  String accountErrorMessage = '';
-  Currency? currency;
-  double? amount;
+  final String? account;
+  final Currency? currency;
+  final double? amount;
 
-  IncomeTab({
+  const IncomeTab({
     super.key,
     this.account,
     this.currency,
@@ -40,6 +41,7 @@ class IncomeTabState extends State<IncomeTab> with SharedPreferencesMixin {
   String? account;
   Currency? currency;
   double? amount;
+  bool hasErrors = false;
 
   @override
   void initState() {
@@ -47,17 +49,15 @@ class IncomeTabState extends State<IncomeTab> with SharedPreferencesMixin {
     currency = widget.currency;
     amount = widget.amount;
     super.initState();
-    getPreference(prefAccount)
-        .then((value) => setState(() => account ??= value));
+    getPreference(prefAccount).then((value) => setState(() {
+          account ??= value;
+          currency ??= state.getByUuid(value ?? '')?.currency;
+        }));
   }
 
   bool hasFormErrors() {
-    bool isError = false;
-    if (account == null) {
-      widget.accountErrorMessage = AppLocalizations.of(context)!.isRequired;
-      isError = true;
-    }
-    return isError;
+    setState(() => hasErrors = account == null);
+    return hasErrors;
   }
 
   void updateStorage() {
@@ -122,19 +122,9 @@ class IncomeTabState extends State<IncomeTab> with SharedPreferencesMixin {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Row(
-                    children: [
-                      Text(
-                        '${AppLocalizations.of(context)!.account}*',
-                        style: textTheme.bodyLarge,
-                      ),
-                      Text(
-                        widget.accountErrorMessage,
-                        style: TextStyle(
-                          color: Theme.of(context).colorScheme.error,
-                        ),
-                      ),
-                    ],
+                  RequiredWidget(
+                    title: AppLocalizations.of(context)!.account,
+                    showError: hasErrors && account == null,
                   ),
                   ListAccountSelector(
                     value: account,
@@ -149,66 +139,50 @@ class IncomeTabState extends State<IncomeTab> with SharedPreferencesMixin {
                     focusOrder: focusOrder += 1,
                   ),
                   SizedBox(height: indent),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.start,
+                  RowWidget(
+                    indent: indent,
+                    maxWidth: offset + indent,
+                    chunk: const [0.3, 0.7],
                     children: [
-                      Container(
-                        constraints: BoxConstraints(
-                          maxWidth: offset * 0.3,
+                      [
+                        Text(
+                          AppLocalizations.of(context)!.currency,
+                          style: textTheme.bodyLarge,
                         ),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                              AppLocalizations.of(context)!.currency,
-                              style: textTheme.bodyLarge,
-                            ),
-                            Container(
-                              color: Theme.of(context)
-                                  .colorScheme
-                                  .inversePrimary
-                                  .withOpacity(0.3),
-                              width: double.infinity,
-                              child: CurrencySelector(
-                                value: currency,
-                                setView: (Currency currency) => currency.code,
-                                setState: (value) =>
-                                    setState(() => currency = value),
-                                focusOrder: focusOrder += 1,
-                              ),
-                            ),
+                        Container(
+                          color: Theme.of(context)
+                              .colorScheme
+                              .inversePrimary
+                              .withOpacity(0.3),
+                          width: double.infinity,
+                          child: CurrencySelector(
+                            value: currency,
+                            setView: (Currency currency) => currency.code,
+                            setState: (value) =>
+                                setState(() => currency = value),
+                            focusOrder: focusOrder += 1,
+                          ),
+                        ),
+                      ],
+                      [
+                        Text(
+                          AppLocalizations.of(context)!.expense,
+                          style: textTheme.bodyLarge,
+                        ),
+                        SimpleInput(
+                          value: amount != null ? amount.toString() : '',
+                          type: const TextInputType.numberWithOptions(
+                              decimal: true),
+                          tooltip: AppLocalizations.of(context)!.billSetTooltip,
+                          style: textTheme.numberMedium,
+                          formatter: [
+                            SimpleInput.filterDouble,
                           ],
+                          setState: (value) =>
+                              setState(() => amount = double.tryParse(value)),
+                          focusOrder: focusOrder += 1,
                         ),
-                      ),
-                      SizedBox(width: indent),
-                      Container(
-                        constraints: BoxConstraints(
-                          maxWidth: offset * 0.7,
-                        ),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                              AppLocalizations.of(context)!.expense,
-                              style: textTheme.bodyLarge,
-                            ),
-                            SimpleInput(
-                              value: amount != null ? amount.toString() : '',
-                              type: const TextInputType.numberWithOptions(
-                                  decimal: true),
-                              tooltip:
-                                  AppLocalizations.of(context)!.billSetTooltip,
-                              style: textTheme.numberMedium,
-                              formatter: [
-                                SimpleInput.filterDouble,
-                              ],
-                              setState: (value) => setState(
-                                  () => amount = double.tryParse(value)),
-                              focusOrder: focusOrder += 1,
-                            ),
-                          ],
-                        ),
-                      ),
+                      ],
                     ],
                   ),
                   SizedBox(height: indent),
