@@ -133,6 +133,8 @@ class CurrencyExchangeInputState extends State<CurrencyExchangeInput> {
                           ),
                           SimpleInput(
                               value: rate[index]?.details.toString(),
+                              type: const TextInputType.numberWithOptions(
+                                  decimal: true),
                               setState: (value) => setState(() {
                                     value = double.tryParse(value);
                                     if (value != null &&
@@ -155,6 +157,8 @@ class CurrencyExchangeInputState extends State<CurrencyExchangeInput> {
                             value: amount[index] != null
                                 ? amount[index].toString()
                                 : '',
+                            type: const TextInputType.numberWithOptions(
+                                decimal: true),
                             setState: (value) => setState(() {
                               value = double.tryParse(value);
                               if (value != null) {
