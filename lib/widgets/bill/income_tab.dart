@@ -10,6 +10,7 @@ import 'package:app_finance/_mixins/shared_preferences_mixin.dart';
 import 'package:app_finance/custom_text_theme.dart';
 import 'package:app_finance/data.dart';
 import 'package:app_finance/helpers/theme_helper.dart';
+import 'package:app_finance/widgets/_forms/currency_exchange_input.dart';
 import 'package:app_finance/widgets/_forms/currency_selector.dart';
 import 'package:app_finance/widgets/_forms/list_account_selector.dart';
 import 'package:app_finance/widgets/_forms/simple_input.dart';
@@ -186,6 +187,18 @@ class IncomeTabState extends State<IncomeTab> with SharedPreferencesMixin {
                     ],
                   ),
                   SizedBox(height: indent),
+                  CurrencyExchangeInput(
+                    width: offset + indent,
+                    indent: indent,
+                    target: currency,
+                    state: state,
+                    targetAmount: amount,
+                    source: [
+                      account != null
+                          ? state.getByUuid(account!).currency
+                          : null,
+                    ].cast<Currency?>(),
+                  ),
                 ],
               ),
             ),
