@@ -7,9 +7,9 @@ import 'package:app_finance/_classes/app_menu_item.dart';
 import 'package:flutter/material.dart';
 
 class MenuWidget extends StatelessWidget {
-  int index;
-  int selectedIndex;
-  Function setState;
+  final int index;
+  final int selectedIndex;
+  final Function setState;
 
   MenuWidget({
     super.key,

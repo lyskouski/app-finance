@@ -8,11 +8,11 @@ import 'package:flutter_gen/gen_l10n/app_localization.dart';
 
 class TapWidget extends StatelessWidget {
   final Widget child;
-  String? tooltip;
-  String? route;
-  Function? onTap;
+  final String? tooltip;
+  final String? route;
+  final Function? onTap;
 
-  TapWidget({
+  const TapWidget({
     super.key,
     required this.child,
     this.tooltip,
