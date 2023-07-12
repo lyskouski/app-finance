@@ -28,6 +28,8 @@
     "closedAt": "Finished till Date",
     "color": "Color",
     "colorTooltip": "Select a color",
+    "conversion": "Conversion",
+    "conversionMessage": "Taken in {currency}",
     "createAccountHeader": "Create new Account",
     "createAccountTooltip": "Create new Account",
     "createBillHeader": "Create new Transaction",
@@ -41,6 +43,13 @@
     "credit": "Credit",
     "creditCard": "Credit Card",
     "currency": "Currency",
+    "currencyExchange": "Currency Exchange: {from} -> {to}",
+    "@currencyExchange": {
+        "currency": {
+            "type": "String"
+        }
+    },
+    "currencyHeadline": "Currencies",
     "currentDate": "Current Date",
     "debitCard": "Debit Card",
     "deleteAccountTooltip": "Deactivate Account",
@@ -63,6 +72,7 @@
     "expense": "Amount of Expenses",
     "expenseDateTime": "Expense Date",
     "expenseHeadline": "Expense",
+    "expenseTransfer": "Amount of Transfer",
     "from": "from",
     "goalHeadline": "Goals",
     "goalTooltip": "Open Goals",
@@ -70,7 +80,7 @@
     "homeTooltip": "Back to Main Page",
     "icon": "Icon",
     "incomeHeadline": "Income",
-    "isRequired": " - required",
+    "isRequired": "required",
     "left": "left",
     "metricsHeadline": "Metrics",
     "ok": "OK",

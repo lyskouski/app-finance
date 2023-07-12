@@ -6,13 +6,13 @@ import 'package:app_finance/_classes/app_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localization.dart';
 
-class TapArea extends StatelessWidget {
+class TapWidget extends StatelessWidget {
   final Widget child;
-  String? tooltip;
-  String? route;
-  Function? onTap;
+  final String? tooltip;
+  final String? route;
+  final Function? onTap;
 
-  TapArea({
+  const TapWidget({
     super.key,
     required this.child,
     this.tooltip,

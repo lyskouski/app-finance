@@ -10,34 +10,36 @@ import 'package:app_finance/_mixins/shared_preferences_mixin.dart';
 import 'package:app_finance/custom_text_theme.dart';
 import 'package:app_finance/data.dart';
 import 'package:app_finance/helpers/theme_helper.dart';
-import 'package:app_finance/widgets/forms/currency_selector.dart';
-import 'package:app_finance/widgets/forms/date_time_input.dart';
-import 'package:app_finance/widgets/forms/list_account_selector.dart';
-import 'package:app_finance/widgets/forms/list_budget_selector.dart';
-import 'package:app_finance/widgets/forms/simple_input.dart';
+import 'package:app_finance/widgets/_forms/currency_exchange_input.dart';
+import 'package:app_finance/widgets/_forms/currency_selector.dart';
+import 'package:app_finance/widgets/_forms/date_time_input.dart';
+import 'package:app_finance/widgets/_forms/list_account_selector.dart';
+import 'package:app_finance/widgets/_forms/list_budget_selector.dart';
+import 'package:app_finance/widgets/_forms/simple_input.dart';
+import 'package:app_finance/widgets/_wrappers/required_widget.dart';
+import 'package:app_finance/widgets/_wrappers/row_widget.dart';
 import 'package:currency_picker/currency_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localization.dart';
 import 'package:provider/provider.dart';
 
 class ExpensesTab<T> extends StatefulWidget {
-  String? account;
-  String accountErrorMessage = '';
-  String? budget;
-  String budgetErrorMessage = '';
-  Currency? currency;
-  double? bill;
-  String? description;
-  DateTime? createdAt;
+  final String? account;
+  final String? budget;
+  final Currency? currency;
+  final double? bill;
+  final String? description;
+  final DateTime? createdAt;
 
-  ExpensesTab({
+  const ExpensesTab({
+    super.key,
     this.account,
     this.budget,
     this.currency,
     this.bill,
     this.description,
     this.createdAt,
-  }) : super(key: UniqueKey());
+  });
 
   @override
   ExpensesTabState createState() => ExpensesTabState();
@@ -47,13 +49,12 @@ class ExpensesTabState<T extends ExpensesTab> extends State<T>
     with SharedPreferencesMixin {
   late AppData state;
   String? account;
-  String accountErrorMessage = '';
   String? budget;
-  String budgetErrorMessage = '';
   Currency? currency;
   double? bill;
   String? description;
   DateTime? createdAt;
+  bool hasErrors = false;
 
   @override
   void initState() {
@@ -64,14 +65,20 @@ class ExpensesTabState<T extends ExpensesTab> extends State<T>
     description = widget.description;
     createdAt = widget.createdAt;
     super.initState();
-    getPreference(prefAccount)
-        .then((value) => setState(() => account ??= value));
-    getPreference(prefBudget).then((value) => setState(() => budget ??= value));
+    getPreference(prefAccount).then((value) => setState(() {
+          account ??= value;
+          currency ??= state.getByUuid(value ?? '')?.currency;
+        }));
+    getPreference(prefBudget).then((value) => setState(() {
+          budget ??= value;
+          currency ??= state.getByUuid(value ?? '')?.currency;
+        }));
   }
 
   bool hasFormErrors() {
-    bool isError = false;
-    return isError;
+    setState(
+        () => hasErrors = account == null || budget == null || bill == null);
+    return hasErrors;
   }
 
   void updateStorage() {
@@ -146,19 +153,9 @@ class ExpensesTabState<T extends ExpensesTab> extends State<T>
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Row(
-                    children: [
-                      Text(
-                        '${AppLocalizations.of(context)!.account}*',
-                        style: textTheme.bodyLarge,
-                      ),
-                      Text(
-                        widget.accountErrorMessage,
-                        style: TextStyle(
-                          color: Theme.of(context).colorScheme.error,
-                        ),
-                      ),
-                    ],
+                  RequiredWidget(
+                    title: AppLocalizations.of(context)!.account,
+                    showError: hasErrors && account == null,
                   ),
                   ListAccountSelector(
                     value: account,
@@ -173,19 +170,9 @@ class ExpensesTabState<T extends ExpensesTab> extends State<T>
                     focusOrder: focusOrder += 1,
                   ),
                   SizedBox(height: indent),
-                  Row(
-                    children: [
-                      Text(
-                        '${AppLocalizations.of(context)!.budget}*',
-                        style: textTheme.bodyLarge,
-                      ),
-                      Text(
-                        widget.budgetErrorMessage,
-                        style: TextStyle(
-                          color: Theme.of(context).colorScheme.error,
-                        ),
-                      ),
-                    ],
+                  RequiredWidget(
+                    title: AppLocalizations.of(context)!.budget,
+                    showError: hasErrors && budget == null,
                   ),
                   ListBudgetSelector(
                     value: budget,
@@ -201,69 +188,66 @@ class ExpensesTabState<T extends ExpensesTab> extends State<T>
                     focusOrder: focusOrder += 1,
                   ),
                   SizedBox(height: indent),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.start,
+                  RowWidget(
+                    indent: indent,
+                    maxWidth: offset + indent,
+                    chunk: const [0.3, 0.7],
                     children: [
-                      Container(
-                        constraints: BoxConstraints(
-                          maxWidth: offset * 0.3,
+                      [
+                        Text(
+                          AppLocalizations.of(context)!.currency,
+                          style: textTheme.bodyLarge,
                         ),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                              AppLocalizations.of(context)!.currency,
-                              style: textTheme.bodyLarge,
-                            ),
-                            Container(
-                              color: Theme.of(context)
-                                  .colorScheme
-                                  .inversePrimary
-                                  .withOpacity(0.3),
-                              width: double.infinity,
-                              child: CurrencySelector(
-                                value: currency,
-                                setView: (Currency currency) => currency.code,
-                                focusOrder: focusOrder += 1,
-                                setState: (value) =>
-                                    setState(() => currency = value),
-                              ),
-                            ),
+                        Container(
+                          color: Theme.of(context)
+                              .colorScheme
+                              .inversePrimary
+                              .withOpacity(0.3),
+                          width: double.infinity,
+                          child: CurrencySelector(
+                            value: currency,
+                            setView: (Currency currency) => currency.code,
+                            focusOrder: focusOrder += 1,
+                            setState: (value) =>
+                                setState(() => currency = value),
+                          ),
+                        ),
+                      ],
+                      [
+                        RequiredWidget(
+                          title: AppLocalizations.of(context)!.expense,
+                          showError: hasErrors && bill == null,
+                        ),
+                        SimpleInput(
+                          value: bill != null ? bill.toString() : '',
+                          type: const TextInputType.numberWithOptions(
+                              decimal: true),
+                          tooltip: AppLocalizations.of(context)!.billSetTooltip,
+                          style: textTheme.numberMedium,
+                          formatter: [
+                            SimpleInput.filterDouble,
                           ],
+                          setState: (value) =>
+                              setState(() => bill = double.tryParse(value)),
+                          focusOrder: focusOrder += 1,
                         ),
-                      ),
-                      SizedBox(width: indent),
-                      Container(
-                        constraints: BoxConstraints(
-                          maxWidth: offset * 0.7,
-                        ),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                              AppLocalizations.of(context)!.expense,
-                              style: textTheme.bodyLarge,
-                            ),
-                            SimpleInput(
-                              value: bill != null ? bill.toString() : '',
-                              type: const TextInputType.numberWithOptions(
-                                  decimal: true),
-                              tooltip:
-                                  AppLocalizations.of(context)!.billSetTooltip,
-                              style: textTheme.numberMedium,
-                              formatter: [
-                                SimpleInput.filterDouble,
-                              ],
-                              setState: (value) =>
-                                  setState(() => bill = double.tryParse(value)),
-                              focusOrder: focusOrder += 1,
-                            ),
-                          ],
-                        ),
-                      ),
+                      ],
                     ],
                   ),
                   SizedBox(height: indent),
+                  CurrencyExchangeInput(
+                    width: offset + indent,
+                    indent: indent,
+                    target: currency,
+                    state: state,
+                    targetAmount: bill,
+                    source: [
+                      account != null
+                          ? state.getByUuid(account!).currency
+                          : null,
+                      budget != null ? state.getByUuid(budget!).currency : null,
+                    ].cast<Currency?>(),
+                  ),
                   Text(
                     AppLocalizations.of(context)!.description,
                     style: textTheme.bodyLarge,

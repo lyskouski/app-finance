@@ -2633,7 +2633,8 @@ class AccountAddPageState<T extends AccountAddPage> extends AbstractPageState<Ac
 
 abstract class AbstractPage<T> extends StatefulWidget {
   int selectedMenu = 0;
-
+  // Be accurate with `UniqueKey`-method usage for nested widgets
+  // That will trigger `initState` each time of store updates 
   AbstractPage() : super(key: UniqueKey());
 }
 

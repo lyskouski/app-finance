@@ -5,7 +5,7 @@
 import 'package:adaptive_breakpoints/adaptive_breakpoints.dart';
 import 'package:app_finance/charts/bar_vertical_single.dart';
 import 'package:app_finance/custom_text_theme.dart';
-import 'package:app_finance/decorators/tap_area.dart';
+import 'package:app_finance/widgets/_wrappers/tap_widget.dart';
 import 'package:app_finance/helpers/theme_helper.dart';
 import 'package:flutter/material.dart';
 
@@ -42,7 +42,7 @@ class BaseLineWidget extends StatelessWidget {
       return const SizedBox();
     }
 
-    return TapArea(
+    return TapWidget(
       tooltip: title,
       route: route.replaceAll('uuid:', 'uuid:$uuid'),
       child: Column(

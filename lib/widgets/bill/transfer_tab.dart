@@ -9,23 +9,29 @@ import 'package:app_finance/_classes/focus_controller.dart';
 import 'package:app_finance/custom_text_theme.dart';
 import 'package:app_finance/data.dart';
 import 'package:app_finance/helpers/theme_helper.dart';
-import 'package:app_finance/widgets/forms/list_account_selector.dart';
-import 'package:app_finance/widgets/forms/simple_input.dart';
+import 'package:app_finance/widgets/_forms/currency_exchange_input.dart';
+import 'package:app_finance/widgets/_wrappers/required_widget.dart';
+import 'package:app_finance/widgets/_wrappers/row_widget.dart';
+import 'package:app_finance/widgets/_forms/currency_selector.dart';
+import 'package:app_finance/widgets/_forms/list_account_selector.dart';
+import 'package:app_finance/widgets/_forms/simple_input.dart';
+import 'package:currency_picker/currency_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localization.dart';
 import 'package:provider/provider.dart';
 
 class TransferTab extends StatefulWidget {
-  String? accountFrom;
-  String accountErrorMessage = '';
-  String? accountTo;
-  double? amount;
+  final String? accountFrom;
+  final String? accountTo;
+  final double? amount;
+  final Currency? currency;
 
-  TransferTab({
+  const TransferTab({
     super.key,
     this.accountFrom,
     this.accountTo,
     this.amount,
+    this.currency,
   });
 
   @override
@@ -37,32 +43,31 @@ class TransferTabState extends State<TransferTab> {
   String? accountFrom;
   String? accountTo;
   double? amount;
+  Currency? currency;
+  bool hasErrors = false;
 
   @override
   void initState() {
     accountFrom = widget.accountFrom;
     accountTo = widget.accountTo;
     amount = widget.amount;
+    currency = widget.currency;
     super.initState();
   }
 
   bool hasFormErrors() {
-    bool isError = false;
-    if (accountFrom == null || accountTo == null) {
-      widget.accountErrorMessage = AppLocalizations.of(context)!.isRequired;
-      isError = true;
-    }
-    return isError;
+    setState(() => hasErrors = accountFrom == null || accountTo == null);
+    return hasErrors;
   }
 
   void updateStorage() {
     String uuidFrom = accountFrom ?? '';
     AccountAppData from = state.getByUuid(uuidFrom);
-    from.details -= amount ?? 0.0;
+    from.details -= state.reform(amount, from.currency, currency);
     state.update(AppDataType.accounts, uuidFrom, from);
     String uuidTo = accountTo ?? '';
     AccountAppData to = state.getByUuid(uuidTo);
-    to.details += amount ?? 0.0;
+    to.details += state.reform(amount, currency, to.currency);
     state.update(AppDataType.accounts, uuidTo, to);
   }
 
@@ -119,51 +124,30 @@ class TransferTabState extends State<TransferTab> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Row(
-                    children: [
-                      Text(
-                        '${AppLocalizations.of(context)!.accountFrom}*',
-                        style: textTheme.bodyLarge,
-                      ),
-                      Text(
-                        widget.accountErrorMessage,
-                        style: TextStyle(
-                          color: Theme.of(context).colorScheme.error,
-                        ),
-                      ),
-                    ],
+                  RequiredWidget(
+                    title: AppLocalizations.of(context)!.accountFrom,
+                    showError: hasErrors && accountFrom == null,
                   ),
                   ListAccountSelector(
                     value: accountFrom,
                     state: state,
-                    setState: (value) => setState(() {
-                      accountFrom = value;
-                    }),
+                    setState: (value) => setState(() => accountFrom = value),
                     style: textTheme.numberMedium,
                     indent: indent,
                     width: offset,
                     focusOrder: focusOrder += 1,
                   ),
                   SizedBox(height: indent),
-                  Row(
-                    children: [
-                      Text(
-                        '${AppLocalizations.of(context)!.accountTo}*',
-                        style: textTheme.bodyLarge,
-                      ),
-                      Text(
-                        widget.accountErrorMessage,
-                        style: TextStyle(
-                          color: Theme.of(context).colorScheme.error,
-                        ),
-                      ),
-                    ],
+                  RequiredWidget(
+                    title: AppLocalizations.of(context)!.accountTo,
+                    showError: hasErrors && accountTo == null,
                   ),
                   ListAccountSelector(
                     value: accountTo,
                     state: state,
                     setState: (value) => setState(() {
                       accountTo = value;
+                      currency ??= state.getByUuid(value).currency;
                     }),
                     style: textTheme.numberMedium,
                     indent: indent,
@@ -171,21 +155,67 @@ class TransferTabState extends State<TransferTab> {
                     focusOrder: focusOrder += 1,
                   ),
                   SizedBox(height: indent),
-                  Text(
-                    AppLocalizations.of(context)!.expense,
-                    style: textTheme.bodyLarge,
-                  ),
-                  SimpleInput(
-                    value: amount != null ? amount.toString() : '',
-                    type: const TextInputType.numberWithOptions(decimal: true),
-                    tooltip: AppLocalizations.of(context)!.billSetTooltip,
-                    style: textTheme.numberMedium,
-                    formatter: [
-                      SimpleInput.filterDouble,
+                  RowWidget(
+                    indent: indent,
+                    maxWidth: offset + indent,
+                    chunk: const [0.3, 0.7],
+                    children: [
+                      [
+                        Text(
+                          AppLocalizations.of(context)!.currency,
+                          style: textTheme.bodyLarge,
+                        ),
+                        Container(
+                          color: Theme.of(context)
+                              .colorScheme
+                              .inversePrimary
+                              .withOpacity(0.3),
+                          width: double.infinity,
+                          child: CurrencySelector(
+                            value: currency,
+                            setView: (Currency currency) => currency.code,
+                            setState: (value) =>
+                                setState(() => currency = value),
+                            focusOrder: focusOrder += 1,
+                          ),
+                        ),
+                      ],
+                      [
+                        Text(
+                          AppLocalizations.of(context)!.expenseTransfer,
+                          style: textTheme.bodyLarge,
+                        ),
+                        SimpleInput(
+                          value: amount != null ? amount.toString() : '',
+                          type: const TextInputType.numberWithOptions(
+                              decimal: true),
+                          tooltip: AppLocalizations.of(context)!.billSetTooltip,
+                          style: textTheme.numberMedium,
+                          formatter: [
+                            SimpleInput.filterDouble,
+                          ],
+                          setState: (value) =>
+                              setState(() => amount = double.tryParse(value)),
+                          focusOrder: focusOrder += 1,
+                        ),
+                      ],
                     ],
-                    setState: (value) =>
-                        setState(() => amount = double.tryParse(value)),
-                    focusOrder: focusOrder += 1,
+                  ),
+                  SizedBox(height: indent),
+                  CurrencyExchangeInput(
+                    width: offset + indent,
+                    indent: indent,
+                    target: currency,
+                    state: state,
+                    targetAmount: amount,
+                    source: [
+                      accountFrom != null
+                          ? state.getByUuid(accountFrom!).currency
+                          : null,
+                      accountTo != null
+                          ? state.getByUuid(accountTo!).currency
+                          : null,
+                    ].cast<Currency?>(),
                   ),
                 ],
               ),

@@ -8,15 +8,14 @@ import 'package:app_finance/_classes/focus_controller.dart';
 import 'package:app_finance/custom_text_theme.dart';
 import 'package:app_finance/data.dart';
 import 'package:app_finance/helpers/theme_helper.dart';
-import 'package:app_finance/_classes/app_route.dart';
 import 'package:app_finance/routes/abstract_page.dart';
-import 'package:app_finance/widgets/forms/color_selector.dart';
-import 'package:app_finance/widgets/forms/currency_selector.dart';
-import 'package:app_finance/widgets/forms/date_time_input.dart';
-import 'package:app_finance/widgets/forms/icon_selector.dart';
-import 'package:app_finance/widgets/forms/list_selector.dart';
-import 'package:app_finance/widgets/forms/month_year_input.dart';
-import 'package:app_finance/widgets/forms/simple_input.dart';
+import 'package:app_finance/widgets/_forms/color_selector.dart';
+import 'package:app_finance/widgets/_forms/currency_selector.dart';
+import 'package:app_finance/widgets/_forms/date_time_input.dart';
+import 'package:app_finance/widgets/_forms/icon_selector.dart';
+import 'package:app_finance/widgets/_forms/list_selector.dart';
+import 'package:app_finance/widgets/_forms/month_year_input.dart';
+import 'package:app_finance/widgets/_forms/simple_input.dart';
 import 'package:currency_picker/currency_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localization.dart';
@@ -129,7 +128,8 @@ class AccountAddPageState<T extends AccountAddPage>
               return;
             }
             updateStorage();
-            Navigator.popAndPushNamed(context, AppRoute.accountRoute);
+            Navigator.pop(context);
+            Navigator.pop(context);
           })
         },
         focusNode: FocusController.getFocusNode(),

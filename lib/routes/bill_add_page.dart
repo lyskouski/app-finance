@@ -54,7 +54,7 @@ class BillAddPageState<T extends BillAddPage>
           text: AppLocalizations.of(context)!.transferHeadline,
         ),
       ],
-      children: [
+      children: const [
         IncomeTab(),
         ExpensesTab(),
         TransferTab(),
