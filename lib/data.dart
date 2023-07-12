@@ -13,6 +13,7 @@ import 'package:app_finance/_classes/data/currency_app_data.dart';
 import 'package:app_finance/_classes/data/goal_app_data.dart';
 import 'package:app_finance/_classes/data/goal_recalculation.dart';
 import 'package:app_finance/_classes/data/summary_app_data.dart';
+import 'package:currency_picker/currency_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:uuid/uuid.dart';
 
@@ -199,6 +200,22 @@ class AppData extends ChangeNotifier {
     }
   }
 
+  double reform(double? amount, Currency? origin, Currency? target) {
+    amount ??= 0.0;
+    if (origin?.code != target?.code) {
+      CurrencyAppData? ex = getByUuid('${origin?.code}-${target?.code}');
+      if (ex == null) {
+        ex = CurrencyAppData(
+          currency: target,
+          currencyFrom: origin,
+        );
+        add(AppDataType.currencies, ex);
+      }
+      amount *= ex.details;
+    }
+    return amount;
+  }
+
   void _update(AppDataType property, dynamic initial, dynamic change) {
     switch (property) {
       case AppDataType.accounts:
@@ -240,8 +257,9 @@ class AppData extends ChangeNotifier {
         _data[AppDataType.budgets]?.add(initial.category);
       }
     }
-    final rec = BillRecalculation(change: change, initial: initial)
-        .updateTotal(_data[AppDataType.bills], _hashTable);
+    final rec =
+        BillRecalculation(change: change, initial: initial, reform: reform)
+            .updateTotal(_data[AppDataType.bills], _hashTable);
     if (currAccount != null) {
       rec.updateAccounts(currAccount, prevAccount);
       _data[AppDataType.accounts]?.add(change.account);

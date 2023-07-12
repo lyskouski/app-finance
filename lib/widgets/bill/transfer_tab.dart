@@ -63,11 +63,11 @@ class TransferTabState extends State<TransferTab> {
   void updateStorage() {
     String uuidFrom = accountFrom ?? '';
     AccountAppData from = state.getByUuid(uuidFrom);
-    from.details -= amount ?? 0.0;
+    from.details -= state.reform(amount, from.currency, currency);
     state.update(AppDataType.accounts, uuidFrom, from);
     String uuidTo = accountTo ?? '';
     AccountAppData to = state.getByUuid(uuidTo);
-    to.details += amount ?? 0.0;
+    to.details += state.reform(amount, currency, to.currency);
     state.update(AppDataType.accounts, uuidTo, to);
   }
 

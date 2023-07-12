@@ -65,8 +65,7 @@ class IncomeTabState extends State<IncomeTab> with SharedPreferencesMixin {
     String uuid = account ?? '';
     setPreference(prefAccount, uuid);
     AccountAppData value = state.getByUuid(uuid);
-    value.details += amount ?? 0.0;
-    value.currency = currency;
+    value.details += state.reform(amount, currency, value.currency);
     state.update(AppDataType.accounts, uuid, value);
   }
 
@@ -194,6 +193,7 @@ class IncomeTabState extends State<IncomeTab> with SharedPreferencesMixin {
                     state: state,
                     targetAmount: amount,
                     source: [
+                      null,
                       account != null
                           ? state.getByUuid(account!).currency
                           : null,

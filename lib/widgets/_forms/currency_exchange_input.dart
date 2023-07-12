@@ -12,15 +12,13 @@ import 'package:flutter_gen/gen_l10n/app_localization.dart';
 
 class CurrencyExchangeInput extends StatefulWidget {
   final Currency? target;
-  late final List<Currency?> source;
+  final List<Currency?> source;
   final double width;
   final double indent;
   final double? targetAmount;
   final AppData state;
-  late final Map<int, CurrencyAppData> rate = <int, CurrencyAppData>{};
-  late final Map<int, double?> amount = <int, double?>{};
 
-  CurrencyExchangeInput({
+  const CurrencyExchangeInput({
     super.key,
     required this.state,
     required this.width,
@@ -36,27 +34,26 @@ class CurrencyExchangeInput extends StatefulWidget {
 
 class CurrencyExchangeInputState extends State<CurrencyExchangeInput> {
   late AppData state;
-  late Map<int, CurrencyAppData> rate = <int, CurrencyAppData>{};
-  late Map<int, double?> amount = <int, double?>{};
+  Map<int, CurrencyAppData> rate = <int, CurrencyAppData>{};
+  Map<int, double?> amount = <int, double?>{};
+  double? targetAmount;
 
   @override
   void initState() {
     state = widget.state;
-    rate = widget.rate;
-    amount = widget.amount;
     super.initState();
   }
 
   String getKey(int index) {
     final String from = widget.target?.code ?? '?';
     final String to = widget.source[index]?.code ?? '?';
-    return index > 0 ? '$to-$from' : '$from-$to';
+    return index > 0 ? '$from-$to' : '$to-$from';
   }
 
   double? getAmount(index) {
     double? value = rate[index]?.details;
     if (value != null && widget.targetAmount != null) {
-      value *= widget.targetAmount!;
+      value *= (index > 0 ? amount[index - 1] : widget.targetAmount)!;
     } else {
       value = null;
     }
@@ -64,13 +61,13 @@ class CurrencyExchangeInputState extends State<CurrencyExchangeInput> {
   }
 
   void recalculate() {
-    amount = widget.amount;
+    targetAmount = widget.targetAmount;
     for (int idx = 0; idx < widget.source.length; idx++) {
       final String uuid = getKey(idx);
       rate[idx] = state.getByUuid(uuid) ??
           CurrencyAppData(
-            currency: idx > 0 ? widget.target : widget.source[idx],
-            currencyFrom: idx > 0 ? widget.source[idx] : widget.target,
+            currency: idx > 0 ? widget.source[idx] : widget.target,
+            currencyFrom: idx > 0 ? widget.target : widget.source[idx],
           );
       amount[idx] = getAmount(idx);
     }
@@ -81,7 +78,7 @@ class CurrencyExchangeInputState extends State<CurrencyExchangeInput> {
     if (widget.source.isEmpty) {
       return const SizedBox();
     }
-    if (amount != widget.amount) {
+    if (targetAmount != widget.targetAmount) {
       setState(recalculate);
     }
     final TextTheme textTheme = Theme.of(context).textTheme;
@@ -142,8 +139,10 @@ class CurrencyExchangeInputState extends State<CurrencyExchangeInput> {
                                     if (value != null &&
                                         widget.targetAmount != null) {
                                       rate[index]?.details = value;
-                                      amount[index] =
-                                          widget.targetAmount! * value;
+                                      amount[index] = (index > 0
+                                              ? amount[index - 1]
+                                              : widget.targetAmount)! *
+                                          value;
                                       state.update(AppDataType.currencies,
                                           rate[index]!.uuid, rate[index], true);
                                     }
@@ -166,8 +165,10 @@ class CurrencyExchangeInputState extends State<CurrencyExchangeInput> {
                               if (value != null) {
                                 if (widget.targetAmount != null) {
                                   amount[index] = value;
-                                  rate[index]?.details =
-                                      value / widget.targetAmount;
+                                  rate[index]?.details = value /
+                                      (index > 0 && amount[index - 1]! > 0
+                                          ? amount[index - 1]
+                                          : widget.targetAmount)!;
                                   state.update(AppDataType.currencies,
                                       rate[index]!.uuid, rate[index], true);
                                 } else {

@@ -8,12 +8,18 @@ import 'package:app_finance/_classes/data/account_app_data.dart';
 import 'package:app_finance/_classes/data/bill_app_data.dart';
 import 'package:app_finance/_classes/data/budget_app_data.dart';
 import 'package:app_finance/_classes/data/summary_app_data.dart';
+import 'package:currency_picker/currency_picker.dart';
+
+typedef ReformFunction = double Function(
+    double? amount, Currency? origin, Currency? target);
 
 class BillRecalculation extends AbstractRecalculation {
   BillAppData change;
   BillAppData? initial;
+  ReformFunction reform;
 
   BillRecalculation({
+    required this.reform,
     required this.change,
     this.initial,
   });
@@ -40,10 +46,12 @@ class BillRecalculation extends AbstractRecalculation {
     if (accountInitial != null &&
         accountChange.uuid != accountInitial.uuid &&
         accountInitial.createdAt.isBefore(initial!.createdAt)) {
-      accountInitial.details += getPrevDelta();
+      accountInitial.details +=
+          reform(getPrevDelta(), initial?.currency, accountInitial.currency);
     }
     if (accountChange.createdAt.isBefore(change.createdAt)) {
-      accountChange.details -= getDelta();
+      accountChange.details -=
+          reform(getDelta(), change.currency, accountChange.currency);
     }
     return this;
   }
@@ -55,11 +63,14 @@ class BillRecalculation extends AbstractRecalculation {
       return this;
     }
     if (budgetInitial != null && budgetChange.uuid != budgetInitial.uuid) {
+      double prevDelta =
+          reform(getPrevDelta(), initial?.currency, budgetInitial.currency);
       budgetInitial.progress = getProgress(
-          budgetInitial.amountLimit, budgetInitial.progress, -getPrevDelta());
+          budgetInitial.amountLimit, budgetInitial.progress, -prevDelta);
     }
+    double delta = reform(getDelta(), change.currency, budgetChange.currency);
     budgetChange.progress =
-        getProgress(budgetChange.amountLimit, change.progress, getDelta());
+        getProgress(budgetChange.amountLimit, change.progress, delta);
     return this;
   }
 
