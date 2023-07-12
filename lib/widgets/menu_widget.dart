@@ -11,7 +11,7 @@ class MenuWidget extends StatelessWidget {
   final int selectedIndex;
   final Function setState;
 
-  MenuWidget({
+  const MenuWidget({
     super.key,
     required this.index,
     required this.selectedIndex,

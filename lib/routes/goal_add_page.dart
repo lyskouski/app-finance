@@ -8,7 +8,6 @@ import 'package:app_finance/_classes/focus_controller.dart';
 import 'package:app_finance/custom_text_theme.dart';
 import 'package:app_finance/data.dart';
 import 'package:app_finance/helpers/theme_helper.dart';
-import 'package:app_finance/_classes/app_route.dart';
 import 'package:app_finance/routes/abstract_page.dart';
 import 'package:app_finance/widgets/_forms/color_selector.dart';
 import 'package:app_finance/widgets/_forms/currency_selector.dart';
@@ -106,7 +105,8 @@ class GoalAddPageState<T extends GoalAddPage>
               return;
             }
             updateStorage();
-            Navigator.popAndPushNamed(context, AppRoute.goalRoute);
+            Navigator.pop(context);
+            Navigator.pop(context);
           })
         },
         focusNode: FocusController.getFocusNode(),
