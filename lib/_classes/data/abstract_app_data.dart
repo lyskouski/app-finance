@@ -2,6 +2,8 @@
 // Use of this source code is governed by a CC BY-NC-ND 4.0 license that can be
 // found in the LICENSE file.
 
+import 'dart:convert';
+import 'package:app_finance/_classes/data/transaction_log.dart';
 import 'package:app_finance/data.dart';
 import 'package:currency_picker/currency_picker.dart';
 import 'package:flutter/material.dart';
@@ -40,6 +42,35 @@ abstract class AbstractAppData {
         _amount = details;
 
   AbstractAppData clone();
+
+  Map<String, dynamic> toJson() => {
+        'uuid': uuid,
+        'title': title,
+        'description': description,
+        'color': color?.value,
+        'icon': icon?.codePoint,
+        'currency': currency?.toJson(),
+        'createdAt': createdAt.toIso8601String(),
+        'details': details,
+        'progress': progress,
+        'hidden': hidden,
+      };
+
+  Map<String, Map<String, dynamic>> toFile() {
+    var data = {...toJson()};
+    return {
+      'type': {
+        'name': runtimeType.toString(),
+        'hash': TransactionLog.getHash(data),
+      },
+      'data': data,
+    };
+  }
+
+  @override
+  String toString() {
+    return json.encode(toFile());
+  }
 
   dynamic updateContext(BuildContext context) {
     _context = context;

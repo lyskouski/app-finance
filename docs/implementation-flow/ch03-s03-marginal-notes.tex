@@ -361,3 +361,85 @@ class ExpensesTabState<T extends ExpensesTab> extends State<T>
     setPreference(prefAccount, account ?? '');
 // ... other code
 \end{lstlisting}
+
+
+\subsubsection{Using Dynamic Structures}
+
+To update object properties dynamically in Flutter/Dart, we can use the cascade notation (`..`) along with the object's 
+setter methods.
+
+\begin{lstlisting}
+class AppData {
+  int? prop1;
+  int? prop2;
+}
+
+void main() {
+  AppData data = AppData();
+
+  Map<String, dynamic> properties = {'prop1': 1, 'prop2': 2};
+
+  properties.forEach((key, value) {
+    if (data.hasOwnProperty(key)) {
+      data.setProp(key, value);
+    }
+  });
+
+  print('Updated properties: prop1=${data.prop1}, prop2=${data.prop2}');
+}
+
+extension ObjectExtension on Object {
+  bool hasOwnProperty(String propertyName) {
+    return this.runtimeType
+        .declarations
+        .any((declaration) => declaration.name == propertyName);
+  }
+
+  void setProp(String propertyName, dynamic value) {
+    (this as dynamic)['$propertyName'] = value;
+  }
+}
+\end{lstlisting}
+
+To convert an object to a string representation and then back to an object, it can be used the toString() 
+and fromJson() methods. 
+
+\begin{lstlisting}
+class MyClass {
+  int id;
+  String name;
+
+  MyClass(this.id, this.name);
+
+  @override
+  String toString() {
+    return '{"id": $id, "name": "$name"}';
+  }
+
+  factory MyClass.fromJson(String jsonString) {
+    Map<String, dynamic> json = jsonDecode(jsonString);
+    return MyClass(json['id'], json['name']);
+  }
+}
+
+void main() {
+  MyClass myObject = MyClass(1, 'John');
+  
+  // Convert object to a string representation
+  String jsonString = myObject.toString();
+  print(jsonString); // Output: '{"id": 1, "name": "John"}'
+  
+  // Convert string back to an object
+  MyClass newObj = MyClass.fromJson(jsonString);
+  print(newObj.id); // Output: 1
+  print(newObj.name); // Output: John
+}
+\end{lstlisting}
+
+In the above example, the MyClass object has a custom toString() method that converts the object's properties to a 
+JSON-like string representation. The fromJson() factory method takes a JSON string, parses it using jsonDecode(), 
+and creates a new MyClass object with the extracted values.
+
+By calling toString() on the object, you can convert it to a string representation. Then, by using fromJson() with the 
+string, you can recreate the object from the string representation. This approach allows you to serialize and 
+deserialize objects for storage or transmission purposes.

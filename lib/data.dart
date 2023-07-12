@@ -13,6 +13,7 @@ import 'package:app_finance/_classes/data/currency_app_data.dart';
 import 'package:app_finance/_classes/data/goal_app_data.dart';
 import 'package:app_finance/_classes/data/goal_recalculation.dart';
 import 'package:app_finance/_classes/data/summary_app_data.dart';
+import 'package:app_finance/_classes/data/transaction_log.dart';
 import 'package:currency_picker/currency_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:uuid/uuid.dart';
@@ -35,6 +36,8 @@ enum AppAccountType {
 }
 
 class AppData extends ChangeNotifier {
+  bool isLoading = false;
+
   final _account = {
     AppAccountType.account: (),
     AppAccountType.cash: (),
@@ -179,10 +182,20 @@ class AppData extends ChangeNotifier {
     )
   };
 
+  AppData() : super() {
+    isLoading = true;
+    TransactionLog.load(this)
+        .then((success) => notifyListeners())
+        .then((success) => isLoading = false);
+  }
+
   void _set(AppDataType property, dynamic value) {
     _hashTable[value.uuid] = value;
     _data[property]?.add(value.uuid);
-    notifyListeners();
+    if (!isLoading) {
+      TransactionLog.save(value);
+      notifyListeners();
+    }
   }
 
   dynamic add(AppDataType property, dynamic value) {
