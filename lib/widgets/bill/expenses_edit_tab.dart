@@ -11,7 +11,8 @@ import 'package:flutter_gen/gen_l10n/app_localization.dart';
 class ExpensesEditTab extends ExpensesTab {
   final String uuid;
 
-  ExpensesEditTab({
+  const ExpensesEditTab({
+    super.key,
     required this.uuid,
     String? account,
     String? budget,

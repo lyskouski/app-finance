@@ -31,14 +31,15 @@ class ExpensesTab<T> extends StatefulWidget {
   final String? description;
   final DateTime? createdAt;
 
-  ExpensesTab({
+  const ExpensesTab({
+    super.key,
     this.account,
     this.budget,
     this.currency,
     this.bill,
     this.description,
     this.createdAt,
-  }) : super(key: UniqueKey());
+  });
 
   @override
   ExpensesTabState createState() => ExpensesTabState();
