@@ -66,12 +66,14 @@ class ExpensesTabState<T extends ExpensesTab> extends State<T>
     createdAt = widget.createdAt;
     super.initState();
     getPreference(prefAccount).then((value) => setState(() {
-          account ??= value;
-          currency ??= state.getByUuid(value ?? '')?.currency;
+          var obj = state.getByUuid(value ?? '');
+          account ??= obj?.uuid;
+          currency ??= obj?.currency;
         }));
     getPreference(prefBudget).then((value) => setState(() {
-          budget ??= value;
-          currency ??= state.getByUuid(value ?? '')?.currency;
+          var obj = state.getByUuid(value ?? '');
+          budget ??= obj?.uuid;
+          currency ??= obj?.currency;
         }));
   }
 

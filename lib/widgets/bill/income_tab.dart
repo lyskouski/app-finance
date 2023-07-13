@@ -51,8 +51,9 @@ class IncomeTabState extends State<IncomeTab> with SharedPreferencesMixin {
     amount = widget.amount;
     super.initState();
     getPreference(prefAccount).then((value) => setState(() {
-          account ??= value;
-          currency ??= state.getByUuid(value ?? '')?.currency;
+          var obj = state.getByUuid(value ?? '');
+          account ??= obj?.uuid;
+          currency ??= obj?.currency;
         }));
   }
 
