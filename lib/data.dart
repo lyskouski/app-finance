@@ -227,4 +227,8 @@ class AppData extends ChangeNotifier {
   dynamic getType(AppAccountType property) {
     return _account[property];
   }
+
+  List<TransactionLogData>? getLog(String uuid) {
+    return _history[uuid]?.reversed.toList();
+  }
 }
