@@ -32,8 +32,26 @@ class CurrencyAppData extends AbstractAppData {
       details: super.details,
       currency: super.currency,
       currencyFrom: currencyFrom,
+      hidden: super.hidden,
     );
   }
+
+  factory CurrencyAppData.fromJson(Map<String, dynamic> json) {
+    return CurrencyAppData(
+      title: json['title'],
+      uuid: json['uuid'],
+      details: json['details'],
+      currency: CurrencyService().findByCode(json['currency']),
+      currencyFrom: CurrencyService().findByCode(json['currencyFrom']),
+      hidden: json['hidden'],
+    );
+  }
+
+  @override
+  Map<String, dynamic> toJson() => {
+        ...super.toJson(),
+        'currencyFrom': currencyFrom,
+      };
 
   String get detailsFormatted => getNumberFormatted(super.details);
 

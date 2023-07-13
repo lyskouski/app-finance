@@ -57,6 +57,7 @@ class TransactionLog with SharedPreferencesMixin {
       'AccountAppData': (data) => AccountAppData.fromJson(data),
       'BillAppData': (data) => BillAppData.fromJson(data),
       'BudgetAppData': (data) => BudgetAppData.fromJson(data),
+      'CurrencyAppData': (data) => CurrencyAppData.fromJson(data),
     };
     final obj = typeToClass[type];
     if (obj != null) {
