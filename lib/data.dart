@@ -83,7 +83,6 @@ class AppData extends ChangeNotifier {
       [bool createIfMissing = false]) {
     var initial = getByUuid(uuid, false);
     if (initial != null || createIfMissing) {
-      initial ??= value;
       _update(property, initial, value);
     }
   }

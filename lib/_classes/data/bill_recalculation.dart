@@ -70,7 +70,7 @@ class BillRecalculation extends AbstractRecalculation {
     }
     double delta = reform(getDelta(), change.currency, budgetChange.currency);
     budgetChange.progress =
-        getProgress(budgetChange.amountLimit, change.progress, delta);
+        getProgress(budgetChange.amountLimit, budgetChange.progress, delta);
     return this;
   }
 
