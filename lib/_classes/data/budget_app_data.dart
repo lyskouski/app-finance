@@ -16,6 +16,7 @@ class BudgetAppData extends AbstractAppData {
     super.color,
     super.icon,
     super.currency,
+    super.updatedAt,
     super.createdAt,
     super.createdAtFormatted,
     amountLimit,
@@ -47,9 +48,16 @@ class BudgetAppData extends AbstractAppData {
       title: json['title'],
       uuid: json['uuid'],
       progress: json['progress'],
-      color: MaterialColor(json['color'], const <int, Color>{}),
-      icon: IconData(json['icon'], fontFamily: 'MaterialIcons'),
-      currency: CurrencyService().findByCode(json['currency']),
+      color: json['color'] != null
+          ? MaterialColor(json['color'], const <int, Color>{})
+          : null,
+      icon: json['icon'] != null
+          ? IconData(json['icon'], fontFamily: 'MaterialIcons')
+          : null,
+      currency: json['currency'] != null
+          ? CurrencyService().findByCode(json['currency'])
+          : null,
+      updatedAt: DateTime.parse(json['updatedAt']),
       createdAt: DateTime.parse(json['createdAt']),
       amountLimit: json['amountLimit'],
       hidden: json['hidden'],

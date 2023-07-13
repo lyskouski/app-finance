@@ -17,6 +17,8 @@ class CurrencyAppData extends AbstractAppData {
     this.currencyFrom,
     super.currency,
     super.hidden,
+    super.updatedAt,
+    super.createdAt,
   }) {
     super.description = DateTime.now().toString();
   }
@@ -41,8 +43,14 @@ class CurrencyAppData extends AbstractAppData {
       title: json['title'],
       uuid: json['uuid'],
       details: json['details'],
-      currency: CurrencyService().findByCode(json['currency']),
-      currencyFrom: CurrencyService().findByCode(json['currencyFrom']),
+      updatedAt: DateTime.parse(json['updatedAt']),
+      createdAt: DateTime.parse(json['createdAt']),
+      currency: json['currency'] != null
+          ? CurrencyService().findByCode(json['currency'])
+          : null,
+      currencyFrom: json['currencyFrom'] != null
+          ? CurrencyService().findByCode(json['currencyFrom'])
+          : null,
       hidden: json['hidden'],
     );
   }
@@ -50,7 +58,7 @@ class CurrencyAppData extends AbstractAppData {
   @override
   Map<String, dynamic> toJson() => {
         ...super.toJson(),
-        'currencyFrom': currencyFrom,
+        'currencyFrom': currencyFrom?.code,
       };
 
   String get detailsFormatted => getNumberFormatted(super.details);

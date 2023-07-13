@@ -14,6 +14,7 @@ import 'package:app_finance/_classes/data/goal_app_data.dart';
 import 'package:app_finance/_classes/data/goal_recalculation.dart';
 import 'package:app_finance/_classes/data/summary_app_data.dart';
 import 'package:app_finance/_classes/data/transaction_log.dart';
+import 'package:app_finance/_classes/data/transaction_log_data.dart';
 import 'package:currency_picker/currency_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:uuid/uuid.dart';
@@ -49,6 +50,8 @@ class AppData extends ChangeNotifier {
 
   final _hashTable = HashMap<String, dynamic>();
 
+  final _history = HashMap<String, List<TransactionLogData>>();
+
   final _data = {
     AppDataType.goals: SummaryAppData(total: 0, list: []),
     AppDataType.bills: SummaryAppData(total: 0, list: []),
@@ -79,9 +82,28 @@ class AppData extends ChangeNotifier {
     return getByUuid(value.uuid);
   }
 
+  void addLog(uuid, dynamic initial, dynamic value,
+      [String? ref, DateTime? updatedAt]) {
+    if (_history[uuid] == null) {
+      _history[uuid] = [];
+    }
+    if (initial != value) {
+      _history[uuid]!.add(TransactionLogData(
+        timestamp: updatedAt,
+        ref: ref,
+        name: 'details',
+        changedFrom: initial,
+        changedTo: value,
+      ));
+    }
+  }
+
   void update(AppDataType property, String uuid, dynamic value,
       [bool createIfMissing = false]) {
     var initial = getByUuid(uuid, false);
+    if (initial != null) {
+      addLog(uuid, initial.details, value.details, null, value.updatedAt);
+    }
     if (initial != null || createIfMissing) {
       _update(property, initial, value);
     }
@@ -187,7 +209,7 @@ class AppData extends ChangeNotifier {
   List<dynamic> getList(AppDataType property, [bool isClone = true]) {
     SummaryAppData(total: 1, list: ['test']);
     return (_data[property]?.list ?? [])
-        .map((uuid) => getByUuid(uuid, isClone).setState(this))
+        .map((uuid) => getByUuid(uuid, isClone))
         .where((element) => !element.hidden)
         .toList();
   }
@@ -197,7 +219,9 @@ class AppData extends ChangeNotifier {
   }
 
   dynamic getByUuid(String uuid, [bool isClone = true]) {
-    return isClone ? _hashTable[uuid]?.clone() : _hashTable[uuid];
+    var obj = isClone ? _hashTable[uuid]?.clone() : _hashTable[uuid];
+    obj?.setState(this);
+    return obj;
   }
 
   dynamic getType(AppAccountType property) {

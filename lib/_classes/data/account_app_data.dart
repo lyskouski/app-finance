@@ -21,6 +21,7 @@ class AccountAppData extends AbstractAppData {
     super.color,
     super.icon,
     super.currency,
+    super.updatedAt,
     super.createdAt,
     super.createdAtFormatted,
     DateTime? closedAt,
@@ -60,10 +61,17 @@ class AccountAppData extends AbstractAppData {
       details: json['details'],
       progress: json['progress'],
       description: json['description'],
-      color: MaterialColor(json['color'], const <int, Color>{}),
-      icon: IconData(json['icon'], fontFamily: 'MaterialIcons'),
-      currency: CurrencyService().findByCode(json['currency']),
+      color: json['color'] != null
+          ? MaterialColor(json['color'], const <int, Color>{})
+          : null,
+      icon: json['icon'] != null
+          ? IconData(json['icon'], fontFamily: 'MaterialIcons')
+          : null,
+      currency: json['currency'] != null
+          ? CurrencyService().findByCode(json['currency'])
+          : null,
       createdAt: DateTime.parse(json['createdAt']),
+      updatedAt: DateTime.parse(json['updatedAt']),
       closedAt: DateTime.parse(json['closedAt']),
       hidden: json['hidden'],
     );

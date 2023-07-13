@@ -12,12 +12,14 @@ import 'package:intl/intl.dart';
 abstract class AbstractAppData {
   double _amount = 0.0;
   DateTime _createdAt;
+  DateTime _updatedAt;
   BuildContext? _context;
   AppData? _state;
   String title;
   double progress;
   bool hidden;
   String? uuid;
+  String? _ref;
   String? description;
   MaterialColor? color;
   IconData? icon;
@@ -30,6 +32,7 @@ abstract class AbstractAppData {
     this.color,
     this.icon,
     this.currency,
+    DateTime? updatedAt,
     DateTime? createdAt,
     String? createdAtFormatted,
     details = 0.0,
@@ -39,6 +42,7 @@ abstract class AbstractAppData {
             (createdAtFormatted != null
                 ? DateTime.parse(createdAtFormatted)
                 : DateTime.now()),
+        _updatedAt = updatedAt ?? DateTime.now(),
         _amount = details;
 
   AbstractAppData clone();
@@ -57,6 +61,7 @@ abstract class AbstractAppData {
         'icon': icon?.codePoint,
         'currency': currency?.code,
         'createdAt': createdAt.toIso8601String(),
+        'updatedAt': updatedAt.toIso8601String(),
         'details': details,
         'progress': progress,
         'hidden': hidden,
@@ -108,8 +113,18 @@ abstract class AbstractAppData {
     return formatter.format(value);
   }
 
+  set ref(String value) => _ref = value;
+
   dynamic get details => _amount;
-  set details(dynamic value) => _amount = value;
+
+  set details(dynamic value) {
+    _state?.addLog(uuid, _amount, value, _ref, _updatedAt);
+    _ref = null;
+    _amount = value;
+  }
+
+  DateTime get updatedAt => _updatedAt;
+  set updatedAt(DateTime value) => _updatedAt = value;
 
   DateTime get createdAt => _createdAt;
   set createdAt(DateTime value) => _createdAt = value;

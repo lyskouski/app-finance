@@ -70,6 +70,7 @@ class TransactionLog with SharedPreferencesMixin {
     final obj = typeToClass[type];
     if (obj != null) {
       final el = obj(data);
+      el.setState(store);
       store.update(el.getType(), el.uuid ?? '', el, true);
     }
   }
@@ -100,11 +101,12 @@ class TransactionLog with SharedPreferencesMixin {
           .transform(const LineSplitter());
     }
     bool isEncrypted = await doEncrypt();
-    try {
-      await for (var line in lines) {
-        if (line == '') {
-          continue;
-        }
+    bool isOK = true;
+    await for (var line in lines) {
+      if (line == '') {
+        continue;
+      }
+      try {
         if (isEncrypted) {
           line = salt.decrypt64(line, iv: code);
         }
@@ -114,10 +116,11 @@ class TransactionLog with SharedPreferencesMixin {
         } else {
           // Corrupted data... skip
         }
+      } catch (e, stackTrace) {
+        // print([e, stackTrace]);
+        isOK = false;
       }
-      return true;
-    } catch (e) {
-      return false;
     }
+    return isOK;
   }
 }

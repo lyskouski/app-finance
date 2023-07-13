@@ -22,6 +22,7 @@ class BillAppData extends AbstractAppData {
     super.title = '',
     super.details,
     super.currency,
+    super.updatedAt,
     super.createdAt,
     super.createdAtFormatted,
     super.hidden,
@@ -51,7 +52,10 @@ class BillAppData extends AbstractAppData {
       category: json['category'],
       title: json['title'],
       details: json['details'],
-      currency: CurrencyService().findByCode(json['currency']),
+      currency: json['currency'] != null
+          ? CurrencyService().findByCode(json['currency'])
+          : null,
+      updatedAt: DateTime.parse(json['updatedAt']),
       createdAt: DateTime.parse(json['createdAt']),
       hidden: json['hidden'],
     );
