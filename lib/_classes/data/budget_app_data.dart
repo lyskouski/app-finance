@@ -3,6 +3,9 @@
 // found in the LICENSE file.
 
 import 'package:app_finance/_classes/data/abstract_app_data.dart';
+import 'package:app_finance/data.dart';
+import 'package:currency_picker/currency_picker.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localization.dart';
 
 class BudgetAppData extends AbstractAppData {
@@ -36,6 +39,26 @@ class BudgetAppData extends AbstractAppData {
     );
   }
 
+  factory BudgetAppData.fromJson(Map<String, dynamic> json) {
+    return BudgetAppData(
+      title: json['title'],
+      uuid: json['uuid'],
+      progress: json['progress'],
+      color: MaterialColor(json['color'], const <int, Color>{}),
+      icon: IconData(json['icon'], fontFamily: 'MaterialIcons'),
+      currency: CurrencyService().findByCode(json['currency']),
+      createdAt: DateTime.parse(json['createdAt']),
+      amountLimit: json['amountLimit'],
+      hidden: json['hidden'],
+    );
+  }
+
+  @override
+  Map<String, dynamic> toJson() => {
+        ...super.toJson(),
+        'amountLimit': amountLimit,
+      };
+
   @override
   double get details => super.details * (1 - super.progress);
 
@@ -48,8 +71,9 @@ class BudgetAppData extends AbstractAppData {
   set amountLimit(double value) => super.details = value;
 
   @override
-  String get description =>
-      '${getNumberFormatted(super.details * super.progress)} / ${getNumberFormatted(super.details)}';
+  String get description => getContext() != null
+      ? '${getNumberFormatted(super.details * super.progress)} / ${getNumberFormatted(super.details)}'
+      : '';
 
   @override
   set description(String? value) => {};
