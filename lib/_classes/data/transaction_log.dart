@@ -15,9 +15,12 @@ import 'package:app_finance/data.dart';
 import 'package:crypto/crypto.dart';
 import 'package:encrypt/encrypt.dart';
 import 'package:path_provider/path_provider.dart';
+import 'package:flutter/foundation.dart' show kIsWeb;
 
 class TransactionLog with SharedPreferencesMixin {
   static String prefIsEncrypted = 'true';
+
+  static int increment = 0;
 
   static Encrypter get salt =>
       Encrypter(AES(Key.fromUtf8('tercad-app-finance-by-vlyskouski')));
@@ -48,7 +51,12 @@ class TransactionLog with SharedPreferencesMixin {
     if (await doEncrypt()) {
       line = salt.encrypt(line, iv: code).base64;
     }
-    (await _logFle).writeAsString("$line\n", mode: FileMode.append);
+    if (kIsWeb) {
+      await TransactionLog().setPreference('log$increment', line);
+      increment++;
+    } else {
+      (await _logFle).writeAsString("$line\n", mode: FileMode.append);
+    }
   }
 
   static void init(AppData store, String type, Map<String, dynamic> data) {
@@ -66,14 +74,37 @@ class TransactionLog with SharedPreferencesMixin {
     }
   }
 
+  static Stream<String> _loadWeb() async* {
+    int attempts = 0;
+    do {
+      int i = increment + attempts;
+      var line = await TransactionLog().getPreference('log$i');
+      if (line == null) {
+        attempts++;
+      } else {
+        increment += attempts + 1;
+        attempts = 0;
+      }
+      yield line ?? '';
+    } while (attempts < 10);
+  }
+
   static Future<bool> load(AppData store) async {
-    Stream<String> lines = (await _logFle)
-        .openRead()
-        .transform(utf8.decoder)
-        .transform(const LineSplitter());
+    Stream<String> lines;
+    if (kIsWeb) {
+      lines = _loadWeb();
+    } else {
+      lines = (await _logFle)
+          .openRead()
+          .transform(utf8.decoder)
+          .transform(const LineSplitter());
+    }
     bool isEncrypted = await doEncrypt();
     try {
       await for (var line in lines) {
+        if (line == '') {
+          continue;
+        }
         if (isEncrypted) {
           line = salt.decrypt64(line, iv: code);
         }

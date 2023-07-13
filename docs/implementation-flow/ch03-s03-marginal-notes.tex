@@ -420,6 +420,57 @@ class AppData extends ChangeNotifier {
 \end{lstlisting}
 
 
+\subsubsection{Streaming Local Storage}
+
+File usage is limited by systems where our application can be used as installed instance. To support web browsers
+we may rely on Local Storage. Instead of using `dart:html`, let's proceed with known `shared\_preferences` (\cref{img:mn-preferences}).
+
+\begin{lstlisting}
+import 'package:flutter/foundation.dart' show kIsWeb;
+
+static void save(dynamic content) async {
+  if (kIsWeb) {
+    await TransactionLog().setPreference('log$increment', content.toString());
+    increment++;
+  } else {
+    (await _logFle).writeAsString("$line\n", mode: FileMode.append);
+  }
+}
+
+static Stream<String> _loadWeb() async* {
+  // Some transactions might be lost or deleted
+  int attempts = 0;
+  do {
+    int i = increment + attempts;
+    var line = await TransactionLog().getPreference('log$i');
+    if (line == null) {
+      attempts++;
+    } else {
+      increment += attempts + 1;
+      attempts = 0;
+    }
+    yield line ?? '';
+    // Adding retrial approach
+  } while (attempts < 10);
+}
+
+static Future<bool> load(AppData store) async {
+  Stream<String> lines;
+  if (kIsWeb) {
+    lines = _loadWeb();
+  } else {
+    lines = (await _logFle)
+        .openRead()
+        .transform(utf8.decoder)
+        .transform(const LineSplitter());
+  }
+  // ... other stuff
+}
+\end{lstlisting}
+
+\img{prototyping/local-storage-web}{Usage of Local Storage by Application}{img:img:mn-preferences}
+
+
 \subsubsection{Using Dynamic Structures}
 
 To update object properties dynamically in Flutter/Dart, we can use the object's setter methods.

@@ -9,13 +9,14 @@ mixin SharedPreferencesMixin {
   final String prefAccount = 'account';
   final String prefBudget = 'budget';
 
+  static Future<SharedPreferences> get pref async =>
+      await SharedPreferences.getInstance();
+
   Future<void> setPreference(String key, String value) async {
-    SharedPreferences pref = await SharedPreferences.getInstance();
-    await pref.setString(key, value);
+    await (await pref).setString(key, value);
   }
 
   Future<String?> getPreference(String key) async {
-    SharedPreferences pref = await SharedPreferences.getInstance();
-    return pref.getString(key);
+    return (await pref).getString(key);
   }
 }
