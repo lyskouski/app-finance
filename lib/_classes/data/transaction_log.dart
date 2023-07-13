@@ -6,12 +6,15 @@ import 'dart:io';
 import 'dart:convert';
 import 'dart:async';
 import 'package:app_finance/_classes/data/goal_app_data.dart';
+import 'package:app_finance/_mixins/shared_preferences_mixin.dart';
 import 'package:app_finance/data.dart';
 import 'package:crypto/crypto.dart';
 import 'package:encrypt/encrypt.dart';
 import 'package:path_provider/path_provider.dart';
 
-class TransactionLog {
+class TransactionLog with SharedPreferencesMixin {
+  static String prefIsEncrypted = 'true';
+
   static Encrypter get salt =>
       Encrypter(AES(Key.fromUtf8('tercad-app-finance-by-vlyskouski')));
 
@@ -30,10 +33,18 @@ class TransactionLog {
     return md5.convert(utf8.encode(data.toString())).toString();
   }
 
+  static Future<bool> doEncrypt() async {
+    String? pref =
+        await TransactionLog().getPreference(TransactionLog().prefDoEncrypt);
+    return pref == prefIsEncrypted;
+  }
+
   static void save(dynamic content) async {
-    (await _logFle).writeAsString(
-        "${salt.encrypt(content.toString(), iv: code).base64}\n",
-        mode: FileMode.append);
+    String line = content.toString();
+    if (await doEncrypt()) {
+      line = salt.encrypt(line, iv: code).base64;
+    }
+    (await _logFle).writeAsString("$line\n", mode: FileMode.append);
   }
 
   static void init(AppData store, String type, Map<String, dynamic> data) {
@@ -50,9 +61,13 @@ class TransactionLog {
         .openRead()
         .transform(utf8.decoder)
         .transform(const LineSplitter());
+    bool isEncrypted = await doEncrypt();
     try {
       await for (var line in lines) {
-        var obj = json.decode(salt.decrypt64(line, iv: code));
+        if (isEncrypted) {
+          line = salt.decrypt64(line, iv: code);
+        }
+        var obj = json.decode(line);
         if (getHash(obj['data']) == obj['type']['hash']) {
           init(store, obj['type']['name'], obj['data']);
         } else {

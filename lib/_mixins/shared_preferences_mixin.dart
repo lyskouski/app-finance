@@ -5,6 +5,7 @@
 import 'package:shared_preferences/shared_preferences.dart';
 
 mixin SharedPreferencesMixin {
+  final String prefDoEncrypt = 'doEncrypt';
   final String prefAccount = 'account';
   final String prefBudget = 'budget';
 
