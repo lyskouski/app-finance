@@ -16,7 +16,7 @@ void main() {
       child: const MyApp(),
     ));
 
-    expect(find.text('Goals'), findsOneWidget);
+    expect(find.text('Budgets, left'), findsOneWidget);
 
     await tester.tap(find.byIcon(Icons.add));
     await tester.pumpAndSettle();
