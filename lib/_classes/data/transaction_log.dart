@@ -6,7 +6,9 @@ import 'dart:io';
 import 'dart:convert';
 import 'dart:async';
 import 'package:app_finance/_classes/data/account_app_data.dart';
+import 'package:app_finance/_classes/data/bill_app_data.dart';
 import 'package:app_finance/_classes/data/budget_app_data.dart';
+import 'package:app_finance/_classes/data/currency_app_data.dart';
 import 'package:app_finance/_classes/data/goal_app_data.dart';
 import 'package:app_finance/_mixins/shared_preferences_mixin.dart';
 import 'package:app_finance/data.dart';
@@ -53,6 +55,7 @@ class TransactionLog with SharedPreferencesMixin {
     final typeToClass = {
       'GoalAppData': (data) => GoalAppData.fromJson(data),
       'AccountAppData': (data) => AccountAppData.fromJson(data),
+      'BillAppData': (data) => BillAppData.fromJson(data),
       'BudgetAppData': (data) => BudgetAppData.fromJson(data),
     };
     final obj = typeToClass[type];

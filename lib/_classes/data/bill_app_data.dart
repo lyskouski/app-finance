@@ -6,6 +6,7 @@ import 'package:app_finance/_classes/data/abstract_app_data.dart';
 import 'package:app_finance/_classes/data/account_app_data.dart';
 import 'package:app_finance/_classes/data/budget_app_data.dart';
 import 'package:app_finance/data.dart';
+import 'package:currency_picker/currency_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localization.dart';
 import 'package:intl/intl.dart';
@@ -43,10 +44,33 @@ class BillAppData extends AbstractAppData {
     );
   }
 
+  factory BillAppData.fromJson(Map<String, dynamic> json) {
+    return BillAppData(
+      uuid: json['uuid'],
+      account: json['account'],
+      category: json['category'],
+      title: json['title'],
+      details: json['details'],
+      currency: CurrencyService().findByCode(json['currency']),
+      createdAt: DateTime.parse(json['createdAt']),
+      hidden: json['hidden'],
+    );
+  }
+
+  @override
+  Map<String, dynamic> toJson() => {
+        ...super.toJson(),
+        'account': account,
+        'category': category,
+      };
+
   String get detailsFormatted => getNumberFormatted(super.details);
 
   @override
   String get description {
+    if (getContext() == null) {
+      return '';
+    }
     final locale = Localizations.localeOf(getContext()!).toString();
     final DateFormat formatterDate = DateFormat.MMMMd(locale);
     AccountAppData? type = getState()?.getByUuid(account);
