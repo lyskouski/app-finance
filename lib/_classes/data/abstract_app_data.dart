@@ -49,7 +49,7 @@ abstract class AbstractAppData {
         'description': description,
         'color': color?.value,
         'icon': icon?.codePoint,
-        'currency': currency?.toJson(),
+        'currency': currency?.code,
         'createdAt': createdAt.toIso8601String(),
         'details': details,
         'progress': progress,

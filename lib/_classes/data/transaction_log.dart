@@ -5,6 +5,7 @@
 import 'dart:io';
 import 'dart:convert';
 import 'dart:async';
+import 'package:app_finance/_classes/data/account_app_data.dart';
 import 'package:app_finance/_classes/data/goal_app_data.dart';
 import 'package:app_finance/_mixins/shared_preferences_mixin.dart';
 import 'package:app_finance/data.dart';
@@ -52,6 +53,10 @@ class TransactionLog with SharedPreferencesMixin {
       case 'GoalAppData':
         var el = GoalAppData.fromJson(data);
         store.update(AppDataType.goals, el.uuid ?? '', el, true);
+        break;
+      case 'AccountAppData':
+        var el = AccountAppData.fromJson(data);
+        store.update(AppDataType.accounts, el.uuid ?? '', el, true);
         break;
     }
   }

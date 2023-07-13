@@ -3,6 +3,8 @@
 // found in the LICENSE file.
 
 import 'package:app_finance/_classes/data/abstract_app_data.dart';
+import 'package:currency_picker/currency_picker.dart';
+import 'package:flutter/material.dart';
 
 class AccountAppData extends AbstractAppData {
   DateTime _closedAt;
@@ -45,6 +47,30 @@ class AccountAppData extends AbstractAppData {
       hidden: super.hidden,
     );
   }
+
+  factory AccountAppData.fromJson(Map<String, dynamic> json) {
+    return AccountAppData(
+      uuid: json['uuid'],
+      title: json['title'],
+      type: json['type'],
+      details: json['details'],
+      progress: json['progress'],
+      description: json['description'],
+      color: MaterialColor(json['color'], const <int, Color>{}),
+      icon: IconData(json['icon'], fontFamily: 'MaterialIcons'),
+      currency: CurrencyService().findByCode(json['currency']),
+      createdAt: DateTime.parse(json['createdAt']),
+      closedAt: DateTime.parse(json['closedAt']),
+      hidden: json['hidden'],
+    );
+  }
+
+  @override
+  Map<String, dynamic> toJson() => {
+        ...super.toJson(),
+        'type': type,
+        'closedAt': closedAt.toIso8601String(),
+      };
 
   DateTime get closedAt => _closedAt;
   set closedAt(DateTime value) => _closedAt = value;
