@@ -25,6 +25,9 @@ class BudgetAppData extends AbstractAppData {
         );
 
   @override
+  AppDataType getType() => AppDataType.budgets;
+
+  @override
   BudgetAppData clone() {
     return BudgetAppData(
       title: super.title,

@@ -6,6 +6,7 @@ import 'dart:io';
 import 'dart:convert';
 import 'dart:async';
 import 'package:app_finance/_classes/data/account_app_data.dart';
+import 'package:app_finance/_classes/data/budget_app_data.dart';
 import 'package:app_finance/_classes/data/goal_app_data.dart';
 import 'package:app_finance/_mixins/shared_preferences_mixin.dart';
 import 'package:app_finance/data.dart';
@@ -49,15 +50,15 @@ class TransactionLog with SharedPreferencesMixin {
   }
 
   static void init(AppData store, String type, Map<String, dynamic> data) {
-    switch (type) {
-      case 'GoalAppData':
-        var el = GoalAppData.fromJson(data);
-        store.update(AppDataType.goals, el.uuid ?? '', el, true);
-        break;
-      case 'AccountAppData':
-        var el = AccountAppData.fromJson(data);
-        store.update(AppDataType.accounts, el.uuid ?? '', el, true);
-        break;
+    final typeToClass = {
+      'GoalAppData': (data) => GoalAppData.fromJson(data),
+      'AccountAppData': (data) => AccountAppData.fromJson(data),
+      'BudgetAppData': (data) => BudgetAppData.fromJson(data),
+    };
+    final obj = typeToClass[type];
+    if (obj != null) {
+      final el = obj(data);
+      store.update(el.getType(), el.uuid ?? '', el, true);
     }
   }
 

@@ -5,6 +5,7 @@
 import 'package:app_finance/_classes/data/abstract_app_data.dart';
 import 'package:app_finance/_classes/data/account_app_data.dart';
 import 'package:app_finance/_classes/data/budget_app_data.dart';
+import 'package:app_finance/data.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localization.dart';
 import 'package:intl/intl.dart';
@@ -24,6 +25,9 @@ class BillAppData extends AbstractAppData {
     super.createdAtFormatted,
     super.hidden,
   });
+
+  @override
+  AppDataType getType() => AppDataType.bills;
 
   @override
   BillAppData clone() {

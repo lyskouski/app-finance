@@ -3,6 +3,7 @@
 // found in the LICENSE file.
 
 import 'package:app_finance/_classes/data/abstract_app_data.dart';
+import 'package:app_finance/data.dart';
 import 'package:currency_picker/currency_picker.dart';
 import 'package:flutter/material.dart';
 
@@ -27,6 +28,9 @@ class GoalAppData extends AbstractAppData {
             (closedAtFormatted != null
                 ? DateTime.parse(closedAtFormatted)
                 : DateTime.now());
+
+  @override
+  AppDataType getType() => AppDataType.goals;
 
   @override
   GoalAppData clone() {

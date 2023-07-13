@@ -43,6 +43,12 @@ abstract class AbstractAppData {
 
   AbstractAppData clone();
 
+  AppDataType getType();
+
+  factory AbstractAppData.fromJson(Map<String, dynamic> json) {
+    throw Exception('Implement by extending');
+  }
+
   Map<String, dynamic> toJson() => {
         'uuid': uuid,
         'title': title,

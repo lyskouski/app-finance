@@ -3,6 +3,7 @@
 // found in the LICENSE file.
 
 import 'package:app_finance/_classes/data/abstract_app_data.dart';
+import 'package:app_finance/data.dart';
 import 'package:currency_picker/currency_picker.dart';
 
 class CurrencyAppData extends AbstractAppData {
@@ -19,6 +20,9 @@ class CurrencyAppData extends AbstractAppData {
   }) {
     super.description = DateTime.now().toString();
   }
+
+  @override
+  AppDataType getType() => AppDataType.currencies;
 
   @override
   CurrencyAppData clone() {
