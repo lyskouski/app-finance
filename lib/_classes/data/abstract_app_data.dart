@@ -2,6 +2,8 @@
 // Use of this source code is governed by a CC BY-NC-ND 4.0 license that can be
 // found in the LICENSE file.
 
+import 'dart:convert';
+import 'package:app_finance/_classes/data/transaction_log.dart';
 import 'package:app_finance/data.dart';
 import 'package:currency_picker/currency_picker.dart';
 import 'package:flutter/material.dart';
@@ -10,12 +12,14 @@ import 'package:intl/intl.dart';
 abstract class AbstractAppData {
   double _amount = 0.0;
   DateTime _createdAt;
+  DateTime _updatedAt;
   BuildContext? _context;
   AppData? _state;
   String title;
   double progress;
   bool hidden;
   String? uuid;
+  String? _ref;
   String? description;
   MaterialColor? color;
   IconData? icon;
@@ -28,6 +32,7 @@ abstract class AbstractAppData {
     this.color,
     this.icon,
     this.currency,
+    DateTime? updatedAt,
     DateTime? createdAt,
     String? createdAtFormatted,
     details = 0.0,
@@ -37,9 +42,46 @@ abstract class AbstractAppData {
             (createdAtFormatted != null
                 ? DateTime.parse(createdAtFormatted)
                 : DateTime.now()),
+        _updatedAt = updatedAt ?? DateTime.now(),
         _amount = details;
 
   AbstractAppData clone();
+
+  AppDataType getType();
+
+  factory AbstractAppData.fromJson(Map<String, dynamic> json) {
+    throw Exception('Implement by extending');
+  }
+
+  Map<String, dynamic> toJson() => {
+        'uuid': uuid,
+        'title': title,
+        'description': description,
+        'color': color?.value,
+        'icon': icon?.codePoint,
+        'currency': currency?.code,
+        'createdAt': createdAt.toIso8601String(),
+        'updatedAt': updatedAt.toIso8601String(),
+        'details': details,
+        'progress': progress,
+        'hidden': hidden,
+      };
+
+  Map<String, Map<String, dynamic>> toFile() {
+    var data = {...toJson()};
+    return {
+      'type': {
+        'name': runtimeType.toString(),
+        'hash': TransactionLog.getHash(data),
+      },
+      'data': data,
+    };
+  }
+
+  @override
+  String toString() {
+    return json.encode(toFile());
+  }
 
   dynamic updateContext(BuildContext context) {
     _context = context;
@@ -71,8 +113,18 @@ abstract class AbstractAppData {
     return formatter.format(value);
   }
 
+  set ref(String value) => _ref = value;
+
   dynamic get details => _amount;
-  set details(dynamic value) => _amount = value;
+
+  set details(dynamic value) {
+    _state?.addLog(uuid, _amount, value, _ref, _updatedAt);
+    _ref = null;
+    _amount = value;
+  }
+
+  DateTime get updatedAt => _updatedAt;
+  set updatedAt(DateTime value) => _updatedAt = value;
 
   DateTime get createdAt => _createdAt;
   set createdAt(DateTime value) => _createdAt = value;

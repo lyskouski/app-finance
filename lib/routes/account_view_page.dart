@@ -64,6 +64,7 @@ class AccountViewPageState extends AbstractPageState<AccountViewPage> {
   @override
   Widget buildContent(BuildContext context, BoxConstraints constraints) {
     final item = super.state.getByUuid(widget.uuid) as AccountAppData;
+    final log = super.state.getLog(widget.uuid);
     item.updateContext(context);
     double indent =
         ThemeHelper(windowType: getWindowType(context)).getIndent() * 2;
@@ -79,7 +80,19 @@ class AccountViewPageState extends AbstractPageState<AccountViewPage> {
           color: item.color ?? Colors.transparent,
           offset: offset,
           route: AppRoute.accountViewRoute,
-        )
+        ),
+        ...List<Widget>.generate(
+            log?.length ?? 0,
+            (i) => BaseLineWidget(
+                  uuid: '',
+                  title: '',
+                  description: item.getDateFormatted(log![i].timestamp),
+                  progress: 1.0,
+                  details: item.getNumberFormatted(
+                      log[i].changedTo - log[i].changedFrom),
+                  color: Colors.transparent,
+                  offset: offset,
+                ))
       ],
     );
   }

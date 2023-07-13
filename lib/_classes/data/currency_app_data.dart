@@ -3,6 +3,7 @@
 // found in the LICENSE file.
 
 import 'package:app_finance/_classes/data/abstract_app_data.dart';
+import 'package:app_finance/data.dart';
 import 'package:currency_picker/currency_picker.dart';
 
 class CurrencyAppData extends AbstractAppData {
@@ -16,9 +17,14 @@ class CurrencyAppData extends AbstractAppData {
     this.currencyFrom,
     super.currency,
     super.hidden,
+    super.updatedAt,
+    super.createdAt,
   }) {
     super.description = DateTime.now().toString();
   }
+
+  @override
+  AppDataType getType() => AppDataType.currencies;
 
   @override
   CurrencyAppData clone() {
@@ -28,8 +34,32 @@ class CurrencyAppData extends AbstractAppData {
       details: super.details,
       currency: super.currency,
       currencyFrom: currencyFrom,
+      hidden: super.hidden,
     );
   }
+
+  factory CurrencyAppData.fromJson(Map<String, dynamic> json) {
+    return CurrencyAppData(
+      title: json['title'],
+      uuid: json['uuid'],
+      details: json['details'],
+      updatedAt: DateTime.parse(json['updatedAt']),
+      createdAt: DateTime.parse(json['createdAt']),
+      currency: json['currency'] != null
+          ? CurrencyService().findByCode(json['currency'])
+          : null,
+      currencyFrom: json['currencyFrom'] != null
+          ? CurrencyService().findByCode(json['currencyFrom'])
+          : null,
+      hidden: json['hidden'],
+    );
+  }
+
+  @override
+  Map<String, dynamic> toJson() => {
+        ...super.toJson(),
+        'currencyFrom': currencyFrom?.code,
+      };
 
   String get detailsFormatted => getNumberFormatted(super.details);
 
