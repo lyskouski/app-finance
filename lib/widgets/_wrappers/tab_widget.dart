@@ -68,7 +68,6 @@ class TabWidgetState extends State<TabWidget> {
     setState(() {
       const delay = 300;
       final currIndex = tabIndex;
-      tabIndex = newIndex;
       tabController.animateTo(newIndex);
       pageController.animateToPage(
         newIndex,
@@ -77,6 +76,8 @@ class TabWidgetState extends State<TabWidget> {
       );
       if ((currIndex - newIndex).abs() > 1) {
         delaySwitchTab(delay, newIndex);
+      } else {
+        tabIndex = newIndex;
       }
     });
   }
