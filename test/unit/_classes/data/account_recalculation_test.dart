@@ -73,6 +73,19 @@ void main() {
 
       final testCases = [
         (getDelta: 0.0, progress: [0.0, 0.0, 0.0], result: [0.0, 0.0, 0.0]),
+        (getDelta: 200.0, progress: [0.0, 0.0, 0.0], result: [1.0, 1.0, 1.0]),
+        (getDelta: 30.0, progress: [0.0, 0.0, 0.0], result: [0.4, 0.2, 0.1]),
+        (getDelta: 75.0, progress: [0.0, 0.0, 0.0], result: [1.0, 0.5, 0.25]),
+        (
+          getDelta: 100.0,
+          progress: [0.0, 0.0, 0.0],
+          result: [1.0, 0.75, 0.375]
+        ),
+        (
+          getDelta: -100.0,
+          progress: [1.0, 1.0, 1.0],
+          result: [0.0, 0.333, 0.666]
+        ),
       ];
 
       for (var v in testCases) {
@@ -88,7 +101,7 @@ void main() {
           wrapper.updateGoals(goals);
           verify(mock.getDelta()).called(1);
           for (int i = 0; i < v.result.length; i++) {
-            expect(goals[i].progress, v.result[i]);
+            expect(goals[i].progress, closeTo(v.result[i], 0.001));
           }
         });
       }
