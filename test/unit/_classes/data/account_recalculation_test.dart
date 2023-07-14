@@ -8,7 +8,7 @@ import 'package:app_finance/data.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {
-  group('Account Recalculation:getDelta', () {
+  group('AccountRecalculation:getDelta', () {
     late AccountRecalculation mock;
 
     setUp(() {
@@ -32,7 +32,7 @@ void main() {
 
     for (var v in testCases) {
       test(
-          'initial(hidden[${v[0]}], details[${v[1]}]), change(hidden[${v[2]}], details[${v[3]}]) => ${v[4]}',
+          '[returned ${v[4]}] from(hidden: ${v[0]}, details: ${v[1]}), to(hidden: ${v[2]}, details: ${v[3]})',
           () {
         mock.initial!.hidden = v[0] as bool;
         mock.initial!.details = v[1] as double;
@@ -42,7 +42,7 @@ void main() {
       });
     }
 
-    test('initial(null), change(hidden[false], details[2.0]) => 2.0', () {
+    test('[returned 2.0] from(null), to(hidden: false, details: 2.0)', () {
       mock.initial = null;
       mock.change.hidden = false;
       mock.change.details = 2.0;
