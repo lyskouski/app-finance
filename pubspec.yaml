@@ -64,6 +64,7 @@ dev_dependencies:
   grinder: ^0.9.4
   path: ^1.8.3
   test_cov_console: ^0.2.2
+  mockito: ^5.4.2
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
