@@ -65,6 +65,8 @@ dev_dependencies:
   path: ^1.8.3
   test_cov_console: ^0.2.2
   mockito: ^5.4.2
+  build_runner: ^2.4.6
+  source_gen: ^1.4.0
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
@@ -107,3 +109,7 @@ flutter:
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages
+
+# Commands and their dependencies
+scripts:
+  test: dart run build_runner build --delete-conflicting-outputs && flutter test

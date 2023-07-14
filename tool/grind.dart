@@ -17,6 +17,42 @@ void defaultTask() {
   log('Run `dart run grinder <taskName>` to execute the task');
 }
 
+@Task('Generate Mocks')
+mock() {
+  ProcessResult build = Process.runSync('dart', [
+    'run',
+    'build_runner',
+    'build',
+    '--delete-conflicting-outputs',
+  ]);
+  if (build.exitCode > 0) {
+    fail(build.stderr);
+  }
+}
+
+@Task('Run tests')
+@Depends(fullCoverage, mock)
+test() {
+  TaskArgs args = context.invocation.arguments;
+  ProcessResult test = Process.runSync(
+      'flutter',
+      [
+        'test',
+        args.getFlag('coverage') ? '--coverage' : '',
+        args.getOption('path') ?? ''
+      ].where((e) => e != '').toList(),
+      runInShell: true);
+  String testResult =
+      "\n${test.stdout}".replaceAll(RegExp(r'(?<=:\s).*\.dart: '), '');
+  if (test.exitCode > 0) {
+    fail(testResult);
+  }
+  log(testResult);
+  if (args.getFlag('coverage')) {
+    coverageBadge();
+  }
+}
+
 @Task('Generate file with all lib/**.dart-files included')
 fullCoverage() {
   List<String> files = [];

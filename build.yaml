@@ -1,0 +1,14 @@
+targets:
+  $default:
+    builders:
+      app_finance|wrapper_generator:
+        enabled: true
+
+builders:
+  wrapper_generator:
+    import: "package:app_finance/_classes/gen/wrapper_generator.dart"
+    builder_factories: ["wrapperGenerator"]
+    build_extensions: {".dart": [".wrapper.dart"]}
+    auto_apply: dependents
+    build_to: source
+    applies_builders: ["source_gen|combining_builder"]

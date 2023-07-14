@@ -498,3 +498,203 @@ test/_coverage.dart
 
 \noindent 10\% Coverage... here we are. Slowly and progressively, we will correct this assessment but not immediately.
 Do remember that we're on an early stage and nothing is neither stable, nor finalized yet.
+
+
+\subsubsection{Creating Unit Tests with Wrappers}
+
+We've implemented earlier the test for a simple function that is isolated by itself from all other functionality. 
+In most of the cases our functions are calling other functions, while unit test has to check the logic of the defined 
+function isolately by cutting all external interactions (idealy, even within one class). To achieve that we might
+use `Mockito` (\href{https://github.com/dart-lang/mockito}{https://github.com/dart-lang/mockito}):
+
+\begin{lstlisting}
+// ./test/unit/_classes/data/account_recalculation_test.dart
+// Original class that we're testing
+import 'package:app_finance/_classes/data/account_recalculation.dart';
+// Wrapping our class by Mockito
+@GenerateNiceMocks([MockSpec<AccountRecalculation>()])
+import 'account_recalculation_test.mocks.dart';
+
+void main() {
+  group('AccountRecalculation updateGoals', () {
+    late List<GoalAppData> goals;
+    // Data initialization
+    setUp(() {
+      goals = [
+        GoalAppData(title: '1', details: 25.0, progress: 0.0),
+        GoalAppData(title: '2', details: 50.0, progress: 0.0),
+        GoalAppData(title: '3', details: 100.0, progress: 0.0),
+      ];
+    });
+    // Test Suite (Behavioral Matrix)
+    final testCases = [
+      (getDelta: 0.0, progress: [0.0, 0.0, 0.0], result: [0.0, 0.0, 0.0]),
+      // ... other cases
+    ];
+    // Loop across all Test Cases
+    for (var v in testCases) {
+      test('$v', () {// Make test representation named by its inputs
+        final mock = MockAccountRecalculation();
+        // Wrap "external" method
+        when(mock.getDelta()).thenReturn(v.getDelta);
+        // Preparing data for the test
+        for (int i = 0; i < v.progress.length; i++) {
+          goals[i].progress = v.progress[i];
+        }
+        mock.updateGoals(goals);
+        // Asserting results
+        for (int i = 0; i < v.result.length; i++) {
+          expect(goals[i].progress, v.result[i]);
+        }
+      });
+    }
+  });
+}
+\end{lstlisting}
+
+Almost done... failing since `account_recalculation_test.mocks.dart`-file is missing. To resolve that we have to use 
+additional a library `build\_runner` (`flutter pub add build\_runner --dev`) that will generate `*.mocks.dart`-files
+for us. But that makes our work harder since before each `flutter test` we have to run `flutter run build_runner build`.
+Let's cover that by additional Grinder task:
+
+\begin{lstlisting}
+// ./tool/grind.dart
+@Task('Generate Mocks')
+mock() {
+  ProcessResult build = Process.runSync('dart', [
+    'run',
+    'build_runner',
+    'build',
+    '--delete-conflicting-outputs',
+  ]);
+  if (build.exitCode > 0) {
+    fail(build.stderr);
+  }
+}
+
+@Task('Run tests')
+@Depends(mock)
+test() {
+  TaskArgs args = context.invocation.arguments;
+  ProcessResult test = Process.runSync(
+    'flutter', 
+    [
+      'test',
+      args.getFlag('coverage') ? '--coverage' : '',
+      args.getOption('path') ?? ''
+    ].where((e) => e != '').toList(), // Drop empty arguments 
+    runInShell: true // Otherwise, error: The system cannot find the file specified. 
+  );
+  if (test.exitCode > 0) {
+    fail(test.stderr);
+  }
+  log(test.stdout);
+}
+\end{lstlisting}
+
+\begin{lstlisting}[language=bash]
+> dart run grinder test
+grinder running test
+
+test
+  [INFO] Generating build script...
+  ...
+  [INFO] Succeeded after 51ms with 0 outputs (0 actions)
+
+  00:00 +0: AccountRecalculation updateGoals (getDelta: 0.0, ...
+  ...
+  00:01 +7: All tests passed!
+\end{lstlisting}
+
+\noindent The first test with mocks is passing, but not actually evaluate the original method as we might expect, 
+everything is mocked! To achieve a capability of a partial mocking we would need to implement a wrapper around the 
+original class. By using `mockGetDelta`-method it would be possible to override (mock) behavior of any method. 
+
+\begin{lstlisting}
+class WrapperAccountRecalculation extends AccountRecalculation {
+  double Function()? _getDelta;
+  // ignore: non_constant_identifier_names
+  set mockGetDelta(double Function() value) {
+    _getDelta = value;
+  }
+
+  @override
+  double getDelta() => (_getDelta ?? super.getDelta)();
+}
+\end{lstlisting}
+
+\noindent So, let's automated that part as well by using the `source\_gen` package, which provides capabilities to 
+generate `.dart`-files based on annotations. Firstly, it's needed to register our custom builder via `build.yaml`-file:
+
+\begin{lstlisting}[lang=yaml]
+# Force to activate our generator
+targets:
+  $default:
+    builders: 
+      # Combination of application name and builder definition
+      app_finance|wrapper_generator:
+        enabled: true # Activate its usage
+
+builders:
+  wrapper_generator: # Builder name
+    # Builder file location
+    import: "package:app_finance/_classes/gen/wrapper_generator.dart"
+    # Method name that is used as a factory
+    builder_factories: ["wrapperGenerator"]
+    build_extensions: {".dart": [".wrapper.dart"]}
+    auto_apply: dependents
+    build_to: source # Generate to file
+    applies_builders: ["source_gen|combining_builder"]
+\end{lstlisting}
+
+\begin{lstlisting}
+// ./lib/_classes/gen/generate_with_method_setters.dart
+class GenerateWithMethodSetters {
+  final List<Type> classes;
+  const GenerateWithMethodSetters([this.classes = const []]);
+}
+// ./lib/_classes/gen/wrapper_generator.dart
+class WrapperGenerator extends Generator {
+  String build(Iterable<DartObject> annotations) {(*@ \stopnumber @*)
+    // ... parse class and return back stringified code block
+    (*@ \startnumber{63} @*)
+  }
+
+  @override
+  String generate(LibraryReader library, BuildStep buildStep) {
+    final result = StringBuffer();
+    for (final element in library.allElements) {
+      final annotations =
+          const TypeChecker.fromRuntime(GenerateWithMethodSetters).annotationsOf(element);
+      if (annotations.isNotEmpty) {
+        result.writeln(build(annotations));
+      }
+    }
+    return result.toString();
+  }
+}
+\end{lstlisting}
+
+\noindent And, finally, or test would be adjusted to support implemented wrapper:
+
+\begin{lstlisting}
+@GenerateNiceMocks([MockSpec<AccountRecalculation>()])
+import 'account_recalculation_test.mocks.dart';
+@GenerateWithMethodSetters([AccountRecalculation])
+import 'account_recalculation_test.wrapper.dart';
+
+test('Demo', () {
+  final mock = MockAccountRecalculation();
+  final wrapper = WrapperAccountRecalculation();
+  when(mock.getDelta()).thenReturn(v.getDelta);
+  wrapper.mockGetDelta = mock.getDelta;
+  for (int i = 0; i < v.progress.length; i++) {
+    goals[i].progress = v.progress[i];
+  }
+  wrapper.updateGoals(goals);
+  verify(mock.getDelta()).called(1);
+  for (int i = 0; i < v.result.length; i++) {
+    expect(goals[i].progress, v.result[i]);
+  }
+});
+\end{lstlisting}
