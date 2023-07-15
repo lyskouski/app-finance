@@ -2,11 +2,12 @@
 // Use of this source code is governed by a CC BY-NC-ND 4.0 license that can be
 // found in the LICENSE file.
 
-import 'package:app_finance/_classes/gen/generate_with_method_setters.dart';
 // ignore: depend_on_referenced_packages
 import 'package:analyzer/dart/element/element.dart';
 // ignore: depend_on_referenced_packages
 import 'package:analyzer/dart/constant/value.dart';
+import 'package:app_finance/_classes/gen/generate_with_method_setters.dart';
+import 'package:app_finance/_classes/gen/wrapper_visitor.dart';
 // ignore: depend_on_referenced_packages
 import 'package:build/build.dart';
 // ignore: depend_on_referenced_packages
@@ -28,40 +29,8 @@ class WrapperGenerator extends Generator {
       for (final name in classes.toListValue()!) {
         final type = name.toTypeValue();
         final classElement = type?.element as ClassElement;
-        // Import
-        result.writeln(
-            "import '${classElement.enclosingElement.library.toString().replaceAll('library ', '')}';");
-        result.writeln('');
-        // Class definition
-        result.writeln(
-            'class Wrapper${classElement.name} extends ${classElement.name} {');
-        final constructor = classElement.unnamedConstructor;
-        final properties = constructor?.parameters;
-        // Constructor
-        result.writeln('  Wrapper${classElement.name}({');
-        if (properties!.isNotEmpty) {
-          for (var e in properties) {
-            result.writeln(
-                '    ${e.isRequired ? 'required ' : ''}super.${e.name},');
-          }
-        }
-        result.writeln('  });');
-        // Method(s) Wrapper
-        for (final m in classElement.methods) {
-          final args = m.parameters.map((e) => e.name).toList().join(', ');
-          final name = 'mock${m.name[0].toUpperCase()}${m.name.substring(1)}';
-          result.writeln('');
-          result.writeln('  ${m.returnType} Function()? _${m.name};');
-          result.writeln('  // ignore: non_constant_identifier_names');
-          result.writeln('  set $name(${m.returnType} Function() value) {');
-          result.writeln('    _${m.name} = value;');
-          result.writeln('  }');
-          result.writeln('');
-          result.writeln('  @override');
-          result.writeln('  $m => (_${m.name} ?? super.${m.name})($args);');
-        }
-        // End class
-        result.writeln('}');
+        final visitor = WrapperVisitor(classElement);
+        result.writeln(visitor.toString());
       }
     }
     return result.toString();
