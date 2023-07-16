@@ -503,7 +503,7 @@ test/_coverage.dart
 Do remember that we're on an early stage and nothing is neither stable, nor finalized yet.
 
 
-\subsubsection{Creating Unit Tests with Wrappers (Code Generators)}
+\subsubsection{Creating Unit Tests with Wrappers (Code Generators)} \label{ut-code-generator}
 
 We've implemented earlier the test for a simple function that is isolated by itself from all other functionality. 
 In most of the cases our functions are calling other functions, while unit test has to check the logic of the defined 
@@ -946,16 +946,30 @@ class ExecutableStepIterator {
 
   Iterable<ExecutableStep> aggregate() {
     return _register([
-      // Given
       OnDefinedPage(),
-      // When
       TapDefinedButton(),
       TapDefinedHeader(),
-      // Then
       CanSeeDefinedComponent(),
     ]);
   }
-}
+}(*@ \stopnumber @*)
+
+// ./test/e2e/_steps/given/on_defined_page.dart
+class OnDefinedPage extends Given1<String> {
+  @override
+  RegExp get pattern => RegExp(r"I am on {string} page");
+
+  @override
+  Future<void> executeStep(String route) async {
+    // ... test step implementation
+  }
+}(*@ \stopnumber @*)
+
+// ... other classes implementation: TapDefinedButton, TapDefinedHeader, CanSeeDefinedComponent
 \end{lstlisting}
 
 \img{prototyping/bdd-test}{Behavioral Test evaluation}{img:p-bdd}
+
+What can be noticed, is that we have to declare all our implementations (Given/When/Then) as a list of classes. 
+That stuff is better to be automated by scanning `\_steps`-folder and adding all classes into the list,  and we do 
+know already (\ref{ut-code-generator}) how to achieve that.

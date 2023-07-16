@@ -4,11 +4,10 @@
 
 // ignore: depend_on_referenced_packages
 import 'package:gherkin/gherkin.dart';
+import 'package:app_finance/_classes/gen/generate_list_of_classes.dart';
 
-import 'given/on_defined_page.dart';
-import 'then/can_see_defined_component.dart';
-import 'when/tap_defined_button.dart';
-import 'when/tap_defined_header.dart';
+@GenerateListOfClasses(['given', 'when', 'then'])
+import 'executable_step_iterator.list.dart';
 
 class ExecutableStepIterator {
   final List<CustomParameter> param = <CustomParameter>[];
@@ -31,14 +30,6 @@ class ExecutableStepIterator {
   }
 
   Iterable<ExecutableStep> aggregate() {
-    return _register([
-      // Given
-      OnDefinedPage(),
-      // When
-      TapDefinedButton(),
-      TapDefinedHeader(),
-      // Then
-      CanSeeDefinedComponent(),
-    ]);
+    return _register(classList);
   }
 }

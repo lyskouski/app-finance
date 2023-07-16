@@ -17,6 +17,7 @@ test/_coverage.dart
 # Generated files
 *.mocks.dart
 *.wrapper.dart
+*.list.dart
 
 # IntelliJ related
 *.iml
