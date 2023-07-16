@@ -10,23 +10,10 @@ import 'package:analyzer/dart/element/element.dart';
 // ignore: depend_on_referenced_packages
 import 'package:analyzer/dart/constant/value.dart';
 import 'package:app_finance/_classes/gen/generate_list_of_classes.dart';
-import 'package:app_finance/_classes/gen/wrapper_visitor.dart';
 // ignore: depend_on_referenced_packages
 import 'package:build/build.dart';
 // ignore: depend_on_referenced_packages
 import 'package:source_gen/source_gen.dart';
-// ignore: depend_on_referenced_packages
-import 'package:analyzer/dart/analysis/utilities.dart';
-// ignore: depend_on_referenced_packages
-import 'package:analyzer/dart/element/element.dart';
-// ignore: depend_on_referenced_packages
-import 'package:path/path.dart' as path;
-import 'package:analyzer/dart/analysis/utilities.dart';
-import 'package:analyzer/dart/ast/ast.dart';
-import 'package:analyzer/dart/element/element.dart';
-import 'package:path/path.dart' as path;
-import 'package:analyzer/dart/analysis/utilities.dart';
-import 'package:analyzer/dart/ast/ast.dart';
 
 Builder classListGenerator(BuilderOptions options) => LibraryBuilder(
       ClassListGenerator(),
