@@ -6,7 +6,7 @@
 
 [TBD]
 
-\subsubsection{Creating Unit Tests}
+\subsubsection{Creating Widget Tests} \label{widget-tests}
 
 By now we've created some business logic functionality with not so trivial flow. Not to waste the time on checking it
 all the time manually after significant changes or refactoring, let's create some tests to check it for us automatically.
@@ -75,7 +75,8 @@ void main() {
   // `group` works as a prefix to all the tests inside
   group('Account Recalculation:getDelta', () {
     late AccountRecalculation mock; // Deferred initialization 
-    // `setUp`-is going to be executed before each test
+    // `setUp` - is going to be executed before each test
+    // `setUpAll` - once at the beginning of group evaluation
     setUp(() {
       final accountMock = AccountAppData(
         uuid: '1',
@@ -165,6 +166,7 @@ flutter analyze // Static analysis of Dart code
 dart format // Apply rules from https://dart.dev/effective-dart/style#formatting
 dart fix // Check what can be improved, by `--apply` will change the code
 \end{lstlisting}
+
 
 \paragraph{Creating Git Hooks}
 
@@ -337,6 +339,7 @@ bool sortArbFileKeys(File file) {
 }
 \end{lstlisting}
 
+
 \paragraph{Activating GitHub Workflow}
 
 We've done with our automation for local environment, let's go further and define quality gates on GitHub repository.
@@ -500,7 +503,7 @@ test/_coverage.dart
 Do remember that we're on an early stage and nothing is neither stable, nor finalized yet.
 
 
-\subsubsection{Creating Unit Tests with Wrappers}
+\subsubsection{Creating Unit Tests with Wrappers (Code Generators)}
 
 We've implemented earlier the test for a simple function that is isolated by itself from all other functionality. 
 In most of the cases our functions are calling other functions, while unit test has to check the logic of the defined 
@@ -552,9 +555,9 @@ void main() {
 }
 \end{lstlisting}
 
-Almost done... failing since `account_recalculation_test.mocks.dart`-file is missing. To resolve that we have to use 
+Almost done... failing since `account\_recalculation\_test.mocks.dart`-file is missing. To resolve that we have to use 
 additional a library `build\_runner` (`flutter pub add build\_runner --dev`) that will generate `*.mocks.dart`-files
-for us. But that makes our work harder since before each `flutter test` we have to run `flutter run build_runner build`.
+for us. But that makes our work harder since before each `flutter test` we have to run `flutter run build\_runner build`.
 Let's cover that by additional Grinder task:
 
 \begin{lstlisting}
@@ -626,7 +629,7 @@ class WrapperAccountRecalculation extends AccountRecalculation {
 \noindent So, let's automated that part as well by using the `source\_gen` package, which provides capabilities to 
 generate `.dart`-files based on annotations. Firstly, it's needed to register our custom builder via `build.yaml`-file:
 
-\begin{lstlisting}[lang=yaml]
+\begin{lstlisting}[language=yaml]
 # Force to activate our generator
 targets:
   $default:
@@ -652,12 +655,30 @@ builders:
 class GenerateWithMethodSetters {
   final List<Type> classes;
   const GenerateWithMethodSetters([this.classes = const []]);
-}
+}(*@ \stopnumber @*)
+
 // ./lib/_classes/gen/wrapper_generator.dart
+Builder wrapperGenerator(BuilderOptions options) => LibraryBuilder(
+      WrapperGenerator(),
+      generatedExtension: '.wrapper.dart',
+    );
+
 class WrapperGenerator extends Generator {
-  String build(Iterable<DartObject> annotations) {(*@ \stopnumber @*)
-    // ... parse class and return back stringified code block
-    (*@ \startnumber{63} @*)
+  String build(Iterable<DartObject> annotations) {
+    final result = StringBuffer();
+    for (final annotation in annotations) {
+      final classes = annotation.getField('classes');
+      if (classes!.isNull) {
+        break;
+      }
+      for (final name in classes.toListValue()!) {
+        final type = name.toTypeValue();
+        final classElement = type?.element as ClassElement;
+        final visitor = WrapperVisitor(classElement);
+        result.writeln(visitor.toString());
+      }
+    }
+    return result.toString();
   }
 
   @override
@@ -665,12 +686,80 @@ class WrapperGenerator extends Generator {
     final result = StringBuffer();
     for (final element in library.allElements) {
       final annotations =
-          const TypeChecker.fromRuntime(GenerateWithMethodSetters).annotationsOf(element);
+          const TypeChecker.fromRuntime(GenerateWithMethodSetters)
+              .annotationsOf(element);
       if (annotations.isNotEmpty) {
         result.writeln(build(annotations));
       }
     }
     return result.toString();
+  }
+}(*@ \stopnumber @*)
+  
+// ./lib/_classes/gen/wrapper_visitor.dart
+class WrapperVisitor {
+  StringBuffer buffer = StringBuffer();
+  ClassElement element;
+
+  WrapperVisitor(this.element);
+
+  void addImports() {
+    final mainClass = element.enclosingElement.library;
+    addImport(mainClass);
+    for (final cls in mainClass.importedLibraries) {
+      addImport(cls);
+    }
+    buffer.writeln('');
+  }
+
+  void addImport(LibraryElement className) {
+    buffer.writeln('// ignore: unused_import');
+    buffer.writeln("import '${className.source.uri}';");
+  }
+
+  void addClassDefinition() {
+    buffer.writeln('class Wrapper${element.name} extends ${element.name} {');
+    final constructor = element.unnamedConstructor;
+    if (!constructor!.isDefaultConstructor) {
+      final properties = constructor.parameters;
+      buffer.writeln('  Wrapper${element.name}({');
+      if (properties.isNotEmpty) {
+        for (var e in properties) {
+          buffer.writeln(
+              '    ${e.isRequired ? 'required ' : ''}super.${e.name},');
+        }
+      }
+      buffer.writeln('  });');
+    }
+  }
+
+  void addMethods() {
+    for (final m in element.methods) {
+      final args = m.parameters.map((e) => e.name).toList().join(', ');
+      final name = 'mock${m.name[0].toUpperCase()}${m.name.substring(1)}';
+      buffer.writeln('');
+      buffer.writeln('  ${m.returnType} Function()? _${m.name};');
+      buffer.writeln('  // ignore: non_constant_identifier_names');
+      buffer.writeln('  set $name(${m.returnType} Function() value) {');
+      buffer.writeln('    _${m.name} = value;');
+      buffer.writeln('  }');
+      buffer.writeln('');
+      buffer.writeln('  @override');
+      buffer.writeln('  $m => (_${m.name} ?? super.${m.name})($args);');
+    }
+  }
+
+  void finalize() {
+    buffer.writeln('}');
+  }
+
+  @override
+  String toString() {
+    addImports();
+    addClassDefinition();
+    addMethods();
+    finalize();
+    return buffer.toString();
   }
 }
 \end{lstlisting}
@@ -698,3 +787,175 @@ test('Demo', () {
   }
 });
 \end{lstlisting}
+
+
+\subsubsection{Introducing Behavioral Tests (Gherkin)}
+
+Improvement cycles are never ends. Previously (\ref{widget-tests}), we've discussed approach to test widgets and used 
+`When ... Given ... Then ...`-notation. That notation is a part of Behavior-Driven Development (BDD), the process
+of approaching the desired outcome on first place before the code. But we've used that notation as a comment that is 
+useless without any interpreter (since it can be written one flow but tested totally different things; or, it's been 
+forgotten to update the comment).
+
+Cucumber (\href{https://docs.cucumber.io}{https://docs.cucumber.io}) is a practical standard, by being widely used, 
+a testing framework for Behavior Driven Development.
+
+Gherkin (\href{https://pub.dev/packages/gherkin}{https://pub.dev/packages/gherkin}), as a fully featured parser and 
+test runner for Flutter and Dart, would be used by us to convert When/Given/Then(And/But) into a real test steps.
+
+In Cucumber-JVM (as well as in Gherkin) calling steps from step definitions is not supported; this is by design. That's
+why I do love Robot Framework (\href{https://robotframework.org}{https://robotframework.org}) that allows to create 
+high-level scenarios by combining low-level steps. That limitation "by design" is made to not create a mess, with an 
+assumption, that this may lead to an explosion of step definitions, code duplication, and high maintenance costs. We 
+won't argue with highly-qualified specialists and take all the risks to our own. Testing is a variation of an art where 
+a common sense is a mantra to succeed.
+
+After adding it (`flutter pub add flutter\_gherkin --dev`) into our application, we can start from creation 
+`.feature`-file to describe our scenario.
+
+\begin{lstlisting}[language=cucumber]
+@account @currency
+Feature: Verify Account functionality alignment with expectations
+
+  Scenario: Opened Account Form
+    Given I am on "Main" page
+    When I tap "Account" header
+    And I tap "Create" button
+    Then I can see "Account Form" component
+
+  Scenario Outline: Created different Account types
+    Given Opened Account Form
+    When I fill the "Account" field with <type>
+    Then I should see <fields> fields
+    But not <hidden> fields
+
+    Examples: 
+      | type | fields | hidden |
+      | ...  |  ...   |  ...   |
+\end{lstlisting}
+
+We've created Scenario "Opened Account Form" and by braking all the recommendations re-used it in Scenario Outline 
+for `Given`-step. What's that giving us? To answer that question, let's check how a billing flow might look like:
+
+\begin{lstlisting}[language=cucumber]
+  Scenario Outline: Added different Expenses
+    Given Created different Account types
+    And Created different Budget types
+    And Opened Expense Form
+    When I fill the "Amount" field with <type>
+    ...
+    And I tap "Create" button
+    Then I should see "Account <account>" deduction by <amount>
+    And I should see "Budget <budget>" percentage change to <percent> with left <budget_amount>
+\end{lstlisting}
+
+So powerful simplification cannot be ignored, it's not a mess but extreme code-reusability and simplification. If
+something would be changed (pipeline to open form, properties, widgets, etc.), a single scenario would be responsible 
+for that. The only convention: scenario is written in past tense, step - in present. By following such a simple rule it 
+would be always obvious the nested structure. 
+
+Another drawback is that Gherkin runs User Interface tests (mostly known as Selenium tests) by compiling and running 
+the original application with enabled Flutter Driver Extension that simulates user behavior. It's not something that we 
+might be interested in by now, expecting their fast evaluation via simulation as it's done for widget tests. So, we're 
+going to take an interpreter of `.feature`-files and use `flutter\_test`-package for all other stuff. Additional benefit
+from that is that a basic Test Terminal in IDE would work for us with all features enabled (to run/re-run a single, a 
+group or all tests) and we would still have a single entry point to evaluate all our tests.
+
+But let's proceed iteratively, and implement wrapper around Gherkin to parse `.feature`-files and evaluate 
+them (\cref{img:p-bdd}):
+
+\begin{lstlisting}
+./test/e2e/e2e_test.dart
+void main() {
+  // Taking all our .feature files
+  late Iterable<File> scope = Directory('./test/e2e')
+      .listSync(recursive: true)
+      .where((entity) => entity is File && entity.path.endsWith('.feature'))
+      .cast<File>();
+
+  group('Behavioral Tests', () {
+    for (var file in scope) {
+      testWidgets(file.path, (WidgetTester tester) async {   
+        await tester.pumpWidget(ChangeNotifierProvider(
+          create: (_) => AppData(),
+          child: const MyApp(),
+        ));
+        final runner = FileRunner(file);
+        await runner.init();
+        runner.run();
+      });
+    }
+  });
+}(*@ \stopnumber @*)
+
+// ./test/e2e/_steps/file_runner.dart
+class FileRunner {
+  File file;
+  final language = LanguageService();
+  final parser = GherkinParser();
+  final featureFile = FeatureFile(RunnableDebugInformation.EMPTY());
+  late FeatureFileRunner runner;
+
+  FileRunner(this.file) {
+    language.initialise();
+    runner = FeatureFileRunner(
+      FlutterTestConfiguration(),
+      TagExpressionEvaluator(),
+      ExecutableStepIterator().aggregate(),
+      ProgressReporter(),
+      AggregatedHook(),
+    );
+  }
+
+  Future<void> init() async {
+    // Parsing taken file by Gherkin
+    final parserResult = await parser.parseFeatureFile(
+      file.readAsStringSync(),
+      '',
+      ProgressReporter(),
+      language,
+    );
+    for (final feature in parserResult.features) {
+      featureFile.addChild(feature);
+    }
+  }
+
+  void run() {
+    runner.run(featureFile);
+  }
+}(*@ \stopnumber @*)
+
+// ./test/e2e/_steps/executable_step_iterator.dart
+class ExecutableStepIterator {
+  final List<CustomParameter> param = <CustomParameter>[];
+
+  ExecutableStepIterator() {
+    param.addAll([
+      NumParameterLower(),
+      IntParameterLower(),
+      StringParameterLower(),
+      WordParameterLower(),
+    ]);
+  }
+
+  List<ExecutableStep> _register(List<dynamic> steps) {
+    return steps.map(
+      (s) => ExecutableStep(GherkinExpression(s.pattern, param), s),
+    ).toList();
+  }
+
+  Iterable<ExecutableStep> aggregate() {
+    return _register([
+      // Given
+      OnDefinedPage(),
+      // When
+      TapDefinedButton(),
+      TapDefinedHeader(),
+      // Then
+      CanSeeDefinedComponent(),
+    ]);
+  }
+}
+\end{lstlisting}
+
+\img{prototyping/bdd-test}{Behavioral Test evaluation}{img:p-bdd}
