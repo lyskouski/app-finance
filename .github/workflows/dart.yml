@@ -36,6 +36,7 @@ jobs:
           if [[ "${{ github.ref }}" == "refs/heads/main" ]]; then
             dart run grinder test --coverage --path=test/unit
             dart run grinder test --path=test/widget
+            dart run grinder test --path=test/e2e
           else
             dart run grinder test
           fi
