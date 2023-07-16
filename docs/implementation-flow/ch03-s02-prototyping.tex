@@ -881,8 +881,8 @@ void main() {
           child: const MyApp(),
         ));
         final runner = FileRunner(file);
-        await runner.init();
-        runner.run();
+        await runner.init(tester);
+        expect(await runner.run(), true);
       });
     }
   });
@@ -895,6 +895,7 @@ class FileRunner {
   final parser = GherkinParser();
   final featureFile = FeatureFile(RunnableDebugInformation.EMPTY());
   late FeatureFileRunner runner;
+  static late WidgetTester tester;
 
   FileRunner(this.file) {
     language.initialise();
@@ -907,7 +908,8 @@ class FileRunner {
     );
   }
 
-  Future<void> init() async {
+  Future<void> init(WidgetTester tester) async {
+    FileRunner.tester = tester;
     // Parsing taken file by Gherkin
     final parserResult = await parser.parseFeatureFile(
       file.readAsStringSync(),
@@ -920,8 +922,8 @@ class FileRunner {
     }
   }
 
-  void run() {
-    runner.run(featureFile);
+  Future<bool> run() async {
+    return await runner.run(featureFile);
   }
 }(*@ \stopnumber @*)
 
@@ -971,5 +973,5 @@ class OnDefinedPage extends Given1<String> {
 \img{prototyping/bdd-test}{Behavioral Test evaluation}{img:p-bdd}
 
 What can be noticed, is that we have to declare all our implementations (Given/When/Then) as a list of classes. 
-That stuff is better to be automated by scanning `\_steps`-folder and adding all classes into the list,  and we do 
+That stuff is better to be automated by scanning `\_steps`-folder and adding all classes into the list, and we do 
 know already (\ref{ut-code-generator}) how to achieve that.

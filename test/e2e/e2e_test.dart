@@ -25,8 +25,8 @@ void main() {
           child: const MyApp(),
         ));
         final runner = FileRunner(file);
-        await runner.init();
-        runner.run();
+        await runner.init(tester);
+        expect(await runner.run(), true);
       });
     }
   });

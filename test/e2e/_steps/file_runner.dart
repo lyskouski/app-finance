@@ -5,6 +5,7 @@
 import 'dart:io';
 
 import 'package:flutter_gherkin/flutter_gherkin.dart';
+import 'package:flutter_test/flutter_test.dart';
 // ignore: depend_on_referenced_packages
 import 'package:gherkin/gherkin.dart';
 // ignore: depend_on_referenced_packages
@@ -22,6 +23,7 @@ class FileRunner {
   final parser = GherkinParser();
   final featureFile = FeatureFile(RunnableDebugInformation.EMPTY());
   late FeatureFileRunner runner;
+  static late WidgetTester tester;
 
   FileRunner(this.file) {
     language.initialise();
@@ -34,7 +36,8 @@ class FileRunner {
     );
   }
 
-  Future<void> init() async {
+  Future<void> init(WidgetTester tester) async {
+    FileRunner.tester = tester;
     final parserResult = await parser.parseFeatureFile(
       file.readAsStringSync(),
       '',
@@ -46,7 +49,7 @@ class FileRunner {
     }
   }
 
-  void run() {
-    runner.run(featureFile);
+  Future<bool> run() async {
+    return await runner.run(featureFile);
   }
 }
