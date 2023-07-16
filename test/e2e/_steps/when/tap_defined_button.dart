@@ -2,15 +2,21 @@
 // Use of this source code is governed by a CC BY-NC-ND 4.0 license that can be
 // found in the LICENSE file.
 
+import 'package:flutter_test/flutter_test.dart';
 // ignore: depend_on_referenced_packages
 import 'package:gherkin/gherkin.dart';
 
+import '../file_runner.dart';
+
 class TapDefinedButton extends When1WithWorld<String, World> {
   @override
-  Future<void> executeStep(String route) async {
-    // TBD
-  }
+  RegExp get pattern => RegExp(r"I tap {string} button");
 
   @override
-  RegExp get pattern => RegExp(r"I tap {string} button");
+  Future<void> executeStep(String name) async {
+    final btn = find.byTooltip(name);
+    expect(btn, findsOneWidget);
+    await FileRunner.tester.tap(btn);
+    await FileRunner.tester.pumpAndSettle();
+  }
 }

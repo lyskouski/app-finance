@@ -2,10 +2,10 @@
 Feature: Verify Account functionality alignment with expectations
 
   Scenario: Opened Account Form
-    Given I am on "Main" page
-    When I tap "Account" header
-    And I tap "Create" button
-    Then I can see "Account Form" component
+    Given I am on "Home" page
+    When I tap "Accounts, total" header
+    And I tap "Add Account" button
+    Then I can see "Create new Account" component
 
 #  Scenario Outline: Creating different Account types
 #    Given Opened Account Form
