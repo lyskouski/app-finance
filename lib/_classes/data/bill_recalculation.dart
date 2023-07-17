@@ -41,7 +41,7 @@ class BillRecalculation extends AbstractRecalculation {
     return initial!.hidden ? 0.0 : initial?.details;
   }
 
-  BillRecalculation updateAccounts(
+  BillRecalculation updateAccount(
       AccountAppData accountChange, AccountAppData? accountInitial) {
     if (accountInitial != null &&
         accountChange.uuid != accountInitial.uuid &&
