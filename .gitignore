@@ -14,6 +14,12 @@ migrate_working_dir/
 coverage/
 test/_coverage.dart
 
+# Generated files
+*.mocks.dart
+*.wrapper.dart
+*.list.dart
+*.generic.dart
+
 # IntelliJ related
 *.iml
 *.ipr

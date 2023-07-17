@@ -170,7 +170,8 @@ class AppData extends ChangeNotifier {
         BillRecalculation(change: change, initial: initial, reform: reform)
             .updateTotal(_data[AppDataType.bills], _hashTable);
     if (currAccount != null) {
-      rec.updateAccounts(currAccount, prevAccount);
+      // @todo: update goals
+      rec.updateAccount(currAccount, prevAccount);
       _data[AppDataType.accounts]?.add(change.account);
     }
     if (currBudget != null) {
