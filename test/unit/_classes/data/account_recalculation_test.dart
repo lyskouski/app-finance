@@ -34,30 +34,51 @@ void main() {
 
     group('getDelta', () {
       final testCases = [
-        [false, 5.0, false, 1.0, -4.0],
-        [false, 1.0, false, 5.0, 4.0],
-        [true, 2.0, false, 3.0, 3.0],
-        [false, 2.0, true, 3.0, -2.0],
+        (
+          initial: (hidden: false, details: 5.0),
+          change: (hidden: false, details: 1.0),
+          result: -4.0
+        ),
+        (
+          initial: (hidden: false, details: 1.0),
+          change: (hidden: false, details: 5.0),
+          result: 4.0
+        ),
+        (
+          initial: (hidden: true, details: 2.0),
+          change: (hidden: false, details: 3.0),
+          result: 3.0
+        ),
+        (
+          initial: (hidden: false, details: 2.0),
+          change: (hidden: true, details: 3.0),
+          result: -2.0
+        ),
       ];
 
       for (var v in testCases) {
-        test(
-            '[returned ${v[4]}] from(hidden: ${v[0]}, details: ${v[1]}), to(hidden: ${v[2]}, details: ${v[3]})',
-            () {
-          object.initial!.hidden = v[0] as bool;
-          object.initial!.details = v[1] as double;
-          object.change.hidden = v[2] as bool;
-          object.change.details = v[3] as double;
-          expect(object.getDelta(), v[4]);
+        test('$v', () {
+          object.initial!.hidden = v.initial.hidden;
+          object.initial!.details = v.initial.details;
+          object.change.hidden = v.change.hidden;
+          object.change.details = v.change.details;
+          expect(object.getDelta(), v.result);
         });
       }
+    });
 
-      test('[returned 2.0] from(null), to(hidden: false, details: 2.0)', () {
-        object.initial = null;
-        object.change.hidden = false;
-        object.change.details = 2.0;
-        expect(object.getDelta(), 2.0);
-      });
+    group('getProgress', () {
+      final testCases = [
+        (amount: 0.0, progress: 0.0, delta: 0.0, result: 0.0),
+        (amount: 0.0, progress: 0.5, delta: 10.0, result: 0.0),
+        (amount: 100.0, progress: 0.1, delta: 10.0, result: 0.2),
+      ];
+
+      for (var v in testCases) {
+        test('$v', () {
+          expect(object.getProgress(v.amount, v.progress, v.delta), v.result);
+        });
+      }
     });
 
     group('updateGoals', () {
