@@ -18,6 +18,7 @@ test/_coverage.dart
 *.mocks.dart
 *.wrapper.dart
 *.list.dart
+*.generic.dart
 
 # IntelliJ related
 *.iml

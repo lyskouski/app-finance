@@ -12,20 +12,20 @@ import 'package:provider/provider.dart';
 import '_steps/file_runner.dart';
 
 void main() {
-  late Iterable<File> scope = Directory('./test/e2e')
+  Iterable<File> features = Directory('./test/e2e')
       .listSync(recursive: true)
       .where((entity) => entity is File && entity.path.endsWith('.feature'))
       .cast<File>();
 
   group('Behavioral Tests', () {
-    for (var file in scope) {
+    for (var file in features) {
       testWidgets(file.path, (WidgetTester tester) async {
         await tester.pumpWidget(ChangeNotifierProvider(
           create: (_) => AppData(),
           child: const MyApp(),
         ));
-        final runner = FileRunner(file);
-        await runner.init(tester);
+        final runner = FileRunner(tester);
+        await runner.init(file);
         expect(await runner.run(), true);
       });
     }

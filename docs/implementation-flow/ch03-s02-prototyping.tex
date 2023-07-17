@@ -975,3 +975,26 @@ class OnDefinedPage extends Given1<String> {
 What can be noticed, is that we have to declare all our implementations (Given/When/Then) as a list of classes. 
 That stuff is better to be automated by scanning `\_steps`-folder and adding all classes into the list, and we do 
 know already (\ref{ut-code-generator}) how to achieve that.
+
+Additional convention should be taken into account; as soon as we using Scenario as a low-level step, it should be
+excluded from an execution scope. Let's move such scenarios into `.resource`-files and cover them by generics 
+(additional code generated classes per each scenario in `.resource`-files).
+
+\begin{lstlisting}
+// That will generate all Given classes for us from .resource-files
+// that are located two levels up from the current file
+@GenerateGherkinResources(['../../'])
+class GivenGeneric extends Given {
+  @override
+  RegExp get pattern => RegExp('%step%'); // Replacement pattern for step assertion
+
+  @override
+  Future<void> executeStep() async {
+    // Replacement pattern for step execution
+    final step = await FileReader().getFromString('''
+    %feature%
+    ''');
+    expect(await FileRunner(FileRunner.tester).run(step), true);
+  }
+}
+\end{lstlisting}

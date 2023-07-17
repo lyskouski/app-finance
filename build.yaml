@@ -3,6 +3,8 @@ targets:
     builders:
       app_finance|wrapper_generator:
         enabled: true
+      app_finance|gherkin_generic_generator:
+        enabled: true
       app_finance|class_list_generator:
         enabled: true
 
@@ -11,6 +13,13 @@ builders:
     import: "package:app_finance/_classes/gen/wrapper_generator.dart"
     builder_factories: ["wrapperGenerator"]
     build_extensions: {".dart": [".wrapper.dart"]}
+    auto_apply: dependents
+    build_to: source
+    applies_builders: ["source_gen|combining_builder"]
+  gherkin_generic_generator:
+    import: "package:app_finance/_classes/gen/gherkin_generic_generator.dart"
+    builder_factories: ["gherkinGenericGenerator"]
+    build_extensions: {".dart": [".generic.dart"]}
     auto_apply: dependents
     build_to: source
     applies_builders: ["source_gen|combining_builder"]

@@ -5,6 +5,7 @@ void scanDirectory(Directory root, Directory directory, List<String> files) {
     if (entity is File &&
         entity.path.endsWith('.dart') &&
         !entity.path.endsWith('.g.dart') &&
+        !entity.path.endsWith('.generic.dart') &&
         !entity.path.endsWith('.mocks.dart') &&
         !entity.path.endsWith('.wrapper.dart')) {
       files.add(entity.absolute.path
