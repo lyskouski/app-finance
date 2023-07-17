@@ -19,17 +19,18 @@ class FileReader {
     language.initialise();
   }
 
-  Future<FeatureFile> get(File file) async {
-    return await getFromString(file.readAsStringSync());
+  Future<FeatureFile> get(File file, [ProgressReporter? reporter]) async {
+    return await getFromString(file.readAsStringSync(), reporter);
   }
 
-  Future<FeatureFile> getFromString(String content) async {
+  Future<FeatureFile> getFromString(String content,
+      [ProgressReporter? reporter]) async {
     final parser = GherkinParser();
     final featureFile = FeatureFile(RunnableDebugInformation.EMPTY());
     final parserResult = await parser.parseFeatureFile(
       content,
       '',
-      ProgressReporter(),
+      reporter ?? ProgressReporter(),
       language,
     );
     for (final feature in parserResult.features) {

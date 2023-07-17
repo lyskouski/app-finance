@@ -9,6 +9,7 @@ import 'package:gherkin/gherkin.dart';
 
 import '../file_reader.dart';
 import '../file_runner.dart';
+import '../file_reporter.dart';
 
 @GenerateGherkinResources(['../../'])
 class GivenGeneric extends Given {
@@ -17,9 +18,14 @@ class GivenGeneric extends Given {
 
   @override
   Future<void> executeStep() async {
+    final reporter = FileReporter();
     final step = await FileReader().getFromString('''
     %feature%
-    ''');
-    expect(await FileRunner(FileRunner.tester).run(step), true);
+    ''', reporter);
+    final result = await FileRunner(FileRunner.tester, reporter).run(step);
+    if (!result) {
+      reporter.publish();
+    }
+    expect(result, true);
   }
 }

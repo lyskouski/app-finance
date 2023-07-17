@@ -998,3 +998,37 @@ class GivenGeneric extends Given {
   }
 }
 \end{lstlisting}
+
+\noindent Let's verify what's we've taken:
+
+\begin{lstlisting}[language=bash]
+Shell: Running scenario: Creating different Account types Examples: (1) # :3
+Shell: Running scenario: Opened Account Form # :4
+Shell:    V Given I am on "Home" page # :5 took 313ms
+Shell:    V When I tap "Accounts, total" header # :6 took 77ms
+Shell:    V And I tap "Add Account" button # :7 took 184ms
+Shell:    V Then I can see "Create new Account" component # :8 took 1ms
+Shell: PASSED: Scenario Opened Account Form # :4
+Shell:    V Given Opened Account Form # :4 took 584ms
+\end{lstlisting}
+
+\noindent To hide results from low-level steps we can implement own `ProgressReporter` that will populate results into 
+the output only on failure; and by using `StringBuffer` override the flow of `printMessageLine` and `printMessage` 
+functions.
+
+\begin{lstlisting}[language=bash]
+# Success
+Shell: Running scenario: Creating different Account types Examples: (1) # :3
+Shell:    V Given Opened Account Form # :4 took 524ms
+
+# Failure
+Shell: Running scenario: Creating different Account types Examples: (1) # :3
+Shell: Running scenario: Opened Account Form # :4
+Shell:    V Given I am on "Home" page # :5 took 261ms
+Shell:    V When I tap "Accounts, total" header # :6 took 65ms
+Shell:    V And I tap "Add Account" button # :7 took 172ms
+Shell:    X Then I can see "Create new Account (!no)" component # :8 took 4ms  
+Shell: Expected: at least one matching node in the widget tree
+Shell:   Actual: _TextFinder:<zero widgets with text "Create new Account (!no)" (ignoring offstage widgets)>
+Shell:    Which: means none were found but some were expected
+\end{lstlisting}

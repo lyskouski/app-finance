@@ -21,14 +21,14 @@ class FileRunner {
   late FeatureFileRunner runner;
   static late WidgetTester tester;
 
-  FileRunner(WidgetTester tester) {
+  FileRunner(WidgetTester tester, [ProgressReporter? reporter]) {
     // ignore: prefer_initializing_formals
     FileRunner.tester = tester;
     runner = FeatureFileRunner(
       FlutterTestConfiguration(),
       TagExpressionEvaluator(),
       ExecutableStepIterator().aggregate(),
-      ProgressReporter(),
+      reporter ?? ProgressReporter(),
       AggregatedHook(),
     );
   }
