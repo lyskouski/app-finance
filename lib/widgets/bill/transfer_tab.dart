@@ -157,7 +157,7 @@ class TransferTabState extends State<TransferTab> {
                   SizedBox(height: indent),
                   RowWidget(
                     indent: indent,
-                    maxWidth: offset + indent,
+                    maxWidth: offset,
                     chunk: const [0.3, 0.7],
                     children: [
                       [

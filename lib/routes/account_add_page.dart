@@ -16,22 +16,21 @@ import 'package:app_finance/widgets/_forms/icon_selector.dart';
 import 'package:app_finance/widgets/_forms/list_selector.dart';
 import 'package:app_finance/widgets/_forms/month_year_input.dart';
 import 'package:app_finance/widgets/_forms/simple_input.dart';
+import 'package:app_finance/widgets/_wrappers/required_widget.dart';
+import 'package:app_finance/widgets/_wrappers/row_widget.dart';
 import 'package:currency_picker/currency_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localization.dart';
 
 class AccountAddPage extends AbstractPage {
-  String? title;
-  String titleErrorMessage = '';
-  String? description;
-  String? type;
-  String typeErrorMessage = '';
-  Currency? currency;
-  DateTime? validTillDate;
-  DateTime balanceUpdateDate = DateTime.now();
-  double? balance;
-  IconData? icon;
-  MaterialColor? color;
+  final String? title;
+  final String? description;
+  final String? type;
+  final Currency? currency;
+  final DateTime? validTillDate;
+  final double? balance;
+  final IconData? icon;
+  final MaterialColor? color;
 
   AccountAddPage({
     this.title,
@@ -55,10 +54,11 @@ class AccountAddPageState<T extends AccountAddPage>
   String? type;
   Currency? currency;
   DateTime? validTillDate;
-  late DateTime balanceUpdateDate;
+  DateTime balanceUpdateDate = DateTime.now();
   double? balance;
   IconData? icon;
   MaterialColor? color;
+  bool hasError = false;
 
   @override
   void initState() {
@@ -67,7 +67,6 @@ class AccountAddPageState<T extends AccountAddPage>
     type = widget.type;
     currency = widget.currency;
     validTillDate = widget.validTillDate;
-    balanceUpdateDate = widget.balanceUpdateDate;
     balance = widget.balance;
     icon = widget.icon;
     color = widget.color;
@@ -80,16 +79,9 @@ class AccountAddPageState<T extends AccountAddPage>
   }
 
   bool hasFormErrors() {
-    bool isError = false;
-    if (type == null || type!.isEmpty) {
-      widget.typeErrorMessage = AppLocalizations.of(context)!.isRequired;
-      isError = true;
-    }
-    if (title == null || title!.isEmpty) {
-      widget.titleErrorMessage = AppLocalizations.of(context)!.isRequired;
-      isError = true;
-    }
-    return isError;
+    setState(() => hasError =
+        type == null || type!.isEmpty || title == null || title!.isEmpty);
+    return hasError;
   }
 
   void updateStorage() {
@@ -178,7 +170,6 @@ class AccountAddPageState<T extends AccountAddPage>
     double indent =
         ThemeHelper(windowType: getWindowType(context)).getIndent() * 2;
     double offset = MediaQuery.of(context).size.width - indent * 3;
-    double offsetTriple = offset - indent;
     int focusOrder = FocusController.DEFAULT;
 
     return SingleChildScrollView(
@@ -187,19 +178,9 @@ class AccountAddPageState<T extends AccountAddPage>
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Row(
-              children: [
-                Text(
-                  '${AppLocalizations.of(context)!.accountType}*',
-                  style: textTheme.bodyLarge,
-                ),
-                Text(
-                  widget.typeErrorMessage,
-                  style: TextStyle(
-                    color: Theme.of(context).colorScheme.error,
-                  ),
-                ),
-              ],
+            RequiredWidget(
+              title: AppLocalizations.of(context)!.accountType,
+              showError: hasError && type == null,
             ),
             ListSelector(
               value: type,
@@ -210,19 +191,9 @@ class AccountAddPageState<T extends AccountAddPage>
               focusOrder: focusOrder += 1,
             ),
             SizedBox(height: indent),
-            Row(
-              children: [
-                Text(
-                  '${AppLocalizations.of(context)!.title}*',
-                  style: textTheme.bodyLarge,
-                ),
-                Text(
-                  widget.titleErrorMessage,
-                  style: TextStyle(
-                    color: Theme.of(context).colorScheme.error,
-                  ),
-                ),
-              ],
+            RequiredWidget(
+              title: AppLocalizations.of(context)!.title,
+              showError: hasError && (title == null || title!.isEmpty),
             ),
             SimpleInput(
               value: title,
@@ -232,71 +203,46 @@ class AccountAddPageState<T extends AccountAddPage>
               focusOrder: focusOrder += 1,
             ),
             SizedBox(height: indent),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.start,
+            RowWidget(
+              indent: indent,
+              maxWidth: offset,
+              chunk: const [0.2, 0.2, 0.6],
               children: [
-                Container(
-                  constraints: BoxConstraints(
-                    maxWidth: offsetTriple * 0.2,
+                [
+                  Text(
+                    AppLocalizations.of(context)!.icon,
+                    style: textTheme.bodyLarge,
                   ),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        AppLocalizations.of(context)!.icon,
-                        style: textTheme.bodyLarge,
-                      ),
-                      IconSelector(
-                        value: icon,
-                        setState: (value) => setState(() => icon = value),
-                        // focusOrder: focusOrder += 1,
-                      ),
-                    ],
+                  IconSelector(
+                    value: icon,
+                    setState: (value) => setState(() => icon = value),
+                    // focusOrder: focusOrder += 1,
                   ),
-                ),
-                SizedBox(width: indent),
-                Container(
-                  constraints: BoxConstraints(
-                    maxWidth: offsetTriple * 0.2,
+                ],
+                [
+                  Text(
+                    AppLocalizations.of(context)!.color,
+                    style: textTheme.bodyLarge,
                   ),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        AppLocalizations.of(context)!.color,
-                        style: textTheme.bodyLarge,
-                      ),
-                      ColorSelector(
-                        value: color,
-                        setState: (value) => setState(() => color = value),
-                        // focusOrder: focusOrder += 1,
-                      ),
-                    ],
+                  ColorSelector(
+                    value: color,
+                    setState: (value) => setState(() => color = value),
+                    // focusOrder: focusOrder += 1,
                   ),
-                ),
-                SizedBox(width: indent),
-                Container(
-                  constraints: BoxConstraints(
-                    maxWidth: offsetTriple * 0.6,
+                ],
+                [
+                  Text(
+                    AppLocalizations.of(context)!.details,
+                    style: textTheme.bodyLarge,
                   ),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        AppLocalizations.of(context)!.details,
-                        style: textTheme.bodyLarge,
-                      ),
-                      SimpleInput(
-                        value: description,
-                        tooltip: AppLocalizations.of(context)!.detailsTooltip,
-                        style: textTheme.numberMedium,
-                        setState: (value) =>
-                            setState(() => description = value),
-                        focusOrder: focusOrder += 1,
-                      ),
-                    ],
+                  SimpleInput(
+                    value: description,
+                    tooltip: AppLocalizations.of(context)!.detailsTooltip,
+                    style: textTheme.numberMedium,
+                    setState: (value) => setState(() => description = value),
+                    focusOrder: focusOrder += 1,
                   ),
-                ),
+                ],
               ],
             ),
             SizedBox(height: indent),

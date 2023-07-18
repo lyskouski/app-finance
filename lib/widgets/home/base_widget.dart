@@ -16,11 +16,11 @@ class BaseWidget extends StatelessWidget {
   final String title;
   final double offset;
   final dynamic state;
-  String? tooltip;
-  String? route;
-  String routeList;
+  final String? tooltip;
+  final String? route;
+  final String routeList;
 
-  BaseWidget({
+  const BaseWidget({
     Key? key,
     required this.margin,
     required this.title,

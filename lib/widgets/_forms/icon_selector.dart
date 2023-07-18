@@ -6,33 +6,39 @@ import 'package:app_finance/_classes/focus_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_iconpicker/flutter_iconpicker.dart';
 
-class IconSelector extends StatelessWidget {
-  Function setState;
-  IconData? value;
-  int focusOrder;
-  bool isOpened = false;
+class IconSelector extends StatefulWidget {
+  final Function setState;
+  final IconData? value;
+  final int focusOrder;
 
-  IconSelector({
+  const IconSelector({
     super.key,
     required this.setState,
     this.value,
     this.focusOrder = FocusController.DEFAULT,
   });
 
+  @override
+  IconSelectorState createState() => IconSelectorState();
+}
+
+class IconSelectorState extends State<IconSelector> {
+  bool isOpened = false;
+
   Future<void> onTap(context) async {
-    isOpened = true;
+    setState(() => isOpened = true);
     IconData? icon = await FlutterIconPicker.showIconPicker(context,
         iconPackModes: [IconPack.material]);
-    isOpened = false;
-    setState(icon);
+    widget.setState(icon);
+    setState(() => isOpened = false);
     FocusController.resetFocus();
   }
 
   @override
   Widget build(context) {
-    FocusController.setContext(focusOrder, value);
+    FocusController.setContext(widget.focusOrder, widget.value);
     if (!isOpened &&
-        focusOrder > FocusController.DEFAULT &&
+        widget.focusOrder > FocusController.DEFAULT &&
         FocusController.isFocused()) {
       Future.delayed(const Duration(milliseconds: 300), () {
         onTap(context);
@@ -47,7 +53,7 @@ class IconSelector extends StatelessWidget {
         border: InputBorder.none,
         fillColor:
             Theme.of(context).colorScheme.inversePrimary.withOpacity(0.3),
-        prefixIcon: Icon(value),
+        prefixIcon: Icon(widget.value),
         suffixIcon: GestureDetector(
           child: const Icon(Icons.arrow_drop_down),
         ),

@@ -9,7 +9,7 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
 class AccountWidget extends BaseWidget {
-  AccountWidget({
+  const AccountWidget({
     super.key,
     required String title,
     required EdgeInsetsGeometry margin,

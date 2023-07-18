@@ -13,14 +13,14 @@ class ListSelectorItem {
 }
 
 class ListSelector extends StatelessWidget {
-  List<ListSelectorItem> options;
-  Function setState;
-  TextStyle? style;
-  String? value;
-  double indent;
-  int focusOrder;
+  final List<ListSelectorItem> options;
+  final Function setState;
+  final TextStyle? style;
+  final String? value;
+  final double indent;
+  final int focusOrder;
 
-  ListSelector({
+  const ListSelector({
     super.key,
     required this.options,
     required this.setState,

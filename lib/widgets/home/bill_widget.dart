@@ -7,7 +7,7 @@ import 'package:app_finance/widgets/home/base_widget.dart';
 import 'package:flutter/material.dart';
 
 class BillWidget extends BaseWidget {
-  BillWidget({
+  const BillWidget({
     super.key,
     required String title,
     required double offset,

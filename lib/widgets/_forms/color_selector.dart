@@ -9,39 +9,41 @@ import 'package:flutter/material.dart';
 import 'package:flutter_colorpicker/flutter_colorpicker.dart';
 import 'package:flutter_gen/gen_l10n/app_localization.dart';
 
-class ColorSelector extends StatelessWidget {
-  Function setState;
-  MaterialColor? value;
-  int focusOrder;
-  bool isOpened = false;
+class ColorSelector extends StatefulWidget {
+  final Function setState;
+  final MaterialColor? value;
+  final int focusOrder;
 
-  ColorSelector({
+  const ColorSelector({
     super.key,
     required this.setState,
     this.value,
     this.focusOrder = FocusController.DEFAULT,
   });
 
+  @override
+  ColorSelectorState createState() => ColorSelectorState();
+}
+
+class ColorSelectorState extends State<ColorSelector> {
+  late MaterialColor value;
+  bool isOpened = false;
+
+  @override
+  void initState() {
+    value = widget.value ?? getRandomMaterialColor();
+    super.initState();
+  }
+
   MaterialColor convertToMaterialColor(Color color) {
+    final Map<int, Color> colorMap = {};
     final red = color.red;
     final green = color.green;
     final blue = color.blue;
-
-    return MaterialColor(
-      color.value,
-      <int, Color>{
-        50: Color.fromRGBO(red, green, blue, 0.1),
-        100: Color.fromRGBO(red, green, blue, 0.2),
-        200: Color.fromRGBO(red, green, blue, 0.3),
-        300: Color.fromRGBO(red, green, blue, 0.4),
-        400: Color.fromRGBO(red, green, blue, 0.5),
-        500: Color.fromRGBO(red, green, blue, 0.6),
-        600: Color.fromRGBO(red, green, blue, 0.7),
-        700: Color.fromRGBO(red, green, blue, 0.8),
-        800: Color.fromRGBO(red, green, blue, 0.9),
-        900: Color.fromRGBO(red, green, blue, 1.0),
-      },
-    );
+    for (int i = 50; i <= 900; i += 100) {
+      colorMap[i] = Color.fromRGBO(red, green, blue, i / 1000.0);
+    }
+    return MaterialColor(color.value, colorMap);
   }
 
   MaterialColor getRandomMaterialColor() {
@@ -52,7 +54,10 @@ class ColorSelector extends StatelessWidget {
   }
 
   void onTap(context) {
-    isOpened = true;
+    setState(() => isOpened = true);
+    if (widget.value == null) {
+      widget.setState(convertToMaterialColor(value));
+    }
     showDialog(
       context: context,
       builder: (BuildContext context) {
@@ -60,12 +65,13 @@ class ColorSelector extends StatelessWidget {
           title: Text(AppLocalizations.of(context)!.colorTooltip),
           content: SingleChildScrollView(
             child: ColorPicker(
-                pickerColor: value ?? getRandomMaterialColor(),
-                onColorChanged: (color) {
-                  isOpened = false;
-                  setState(convertToMaterialColor(color));
-                  FocusController.resetFocus();
-                }),
+              pickerColor: value,
+              onColorChanged: (color) {
+                widget.setState(convertToMaterialColor(color));
+                setState(() => isOpened = false);
+                FocusController.resetFocus();
+              },
+            ),
           ),
           actions: <Widget>[
             ElevatedButton(
@@ -82,9 +88,9 @@ class ColorSelector extends StatelessWidget {
 
   @override
   Widget build(context) {
-    FocusController.setContext(focusOrder, value);
+    FocusController.setContext(widget.focusOrder, widget.value);
     if (!isOpened &&
-        focusOrder > FocusController.DEFAULT &&
+        widget.focusOrder > FocusController.DEFAULT &&
         FocusController.isFocused()) {
       Future.delayed(const Duration(milliseconds: 300), () {
         onTap(context);
@@ -96,7 +102,7 @@ class ColorSelector extends StatelessWidget {
       decoration: InputDecoration(
         filled: true,
         border: InputBorder.none,
-        fillColor: value ??
+        fillColor: widget.value ??
             Theme.of(context).colorScheme.inversePrimary.withOpacity(0.3),
         suffixIcon: GestureDetector(
           child: const Icon(Icons.color_lens),
