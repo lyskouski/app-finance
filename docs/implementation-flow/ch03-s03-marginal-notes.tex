@@ -610,3 +610,59 @@ class TransactionLog {
   // to decrypt content
     content = salt.decrypt64(content, iv: code);
 \end{lstlisting}
+
+
+\subsubsection{Android: loading screen and icons}
+
+For Android to change background of loading screen:
+
+\begin{lstlisting}[language=xml]
+<!-- android/app/src/main/AndroidManifest.xml -->
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+  <application
+      android:background="@color/mainColor"
+
+<!-- android/app/src/main/res/drawable/launch_background.xml -->
+<!-- android/app/src/main/res/drawable-v21/launch_background.xml -->
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:drawable="@color/mainColor" />
+
+<!-- android/app/src/main/res/values/colors.xml -->
+<!-- android/app/src/main/res/values-night/colors.xml -->
+<resources>
+    <color name="mainColor">#912391</color>
+</resources>
+\end{lstlisting}
+
+To set icon with background:
+
+\begin{lstlisting}[language=xml]
+<!-- android/app/src/main/AndroidManifest.xml -->
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+  <application
+    android:icon="@mipmap/ic_launcher"
+    android:roundIcon="@mipmap/ic_launcher_round"
+
+<!-- android/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml -->
+<!-- android/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml -->
+<?xml version="1.0" encoding="utf-8"?>
+<adaptive-icon xmlns:android="http://schemas.android.com/apk/res/android">
+    <background android:drawable="@drawable/ic_launcher_background" />
+    <foreground android:drawable="@drawable/ic_launcher_foreground" />
+    <monochrome android:drawable="@drawable/ic_launcher_foreground" />
+</adaptive-icon>
+
+<!-- android/app/src/main/res/drawable/ic_launcher_background.xml -->
+<vector
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp" android:height="108dp"
+    android:viewportWidth="108" android:viewportHeight="108">
+    <path android:fillColor="#912391" android:pathData="M0,0h108v108h-108z" />
+</vector>
+
+<!-- android/app/src/main/res/drawable-v24/ic_launcher_foreground.xml -->
+<vector><!-- ... vector image --></vector>
+\end{lstlisting}
+
+And it has to be created `ic_launcher.png` and `ic_launcher_round.png` icons for all other formats (mipmap-hdpi, 
+mipmap-mdpi, ...) to support less than Android SDK 26 versions.
