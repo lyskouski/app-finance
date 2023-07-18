@@ -20,10 +20,11 @@ class RowWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    double offset = maxWidth - indent * (chunk.length - 1);
+    double offset = maxWidth - indent * (chunk.length - 2);
 
     return Row(
-      mainAxisAlignment: MainAxisAlignment.start,
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      // mainAxisAlignment: MainAxisAlignment.start,
       children: List<Widget>.generate(chunk.length + chunk.length - 1, (index) {
         if (index % 2 == 1) {
           return SizedBox(width: indent);

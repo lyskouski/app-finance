@@ -7,6 +7,7 @@ import 'package:app_finance/data.dart';
 import 'package:app_finance/helpers/theme_helper.dart';
 import 'package:app_finance/_classes/app_route.dart';
 import 'package:app_finance/routes/abstract_page.dart';
+import 'package:app_finance/widgets/_wrappers/toolbar_button_widget.dart';
 import 'package:app_finance/widgets/home/account_widget.dart';
 import 'package:app_finance/widgets/home/bill_widget.dart';
 import 'package:app_finance/widgets/home/budget_widget.dart';
@@ -35,13 +36,18 @@ class HomePageState extends AbstractPageState<HomePage> {
       toolbarHeight: 40,
       leading: Builder(
         builder: (BuildContext context) {
-          return IconButton(
-            icon: Icon(
-              Icons.menu,
-              color:
-                  Theme.of(context).colorScheme.inversePrimary.withOpacity(0.5),
+          return ToolbarButtonWidget(
+            child: IconButton(
+              icon: Icon(
+                Icons.menu,
+                color: Theme.of(context)
+                    .colorScheme
+                    .inversePrimary
+                    .withOpacity(0.5),
+              ),
+              tooltip: AppLocalizations.of(context)!.navigationTooltip,
+              onPressed: () => Scaffold.of(context).openDrawer(),
             ),
-            onPressed: () => Scaffold.of(context).openDrawer(),
           );
         },
       ),
@@ -52,14 +58,16 @@ class HomePageState extends AbstractPageState<HomePage> {
         ),
       ),
       actions: [
-        IconButton(
-          icon: Icon(
-            Icons.subscriptions,
-            color:
-                Theme.of(context).colorScheme.inversePrimary.withOpacity(0.5),
+        ToolbarButtonWidget(
+          child: IconButton(
+            icon: Icon(
+              Icons.switch_access_shortcut_add_outlined,
+              color:
+                  Theme.of(context).colorScheme.inversePrimary.withOpacity(0.5),
+            ),
+            tooltip: AppLocalizations.of(context)!.subscriptionTooltip,
+            onPressed: () => Navigator.pushNamed(context, AppRoute.homeRoute),
           ),
-          tooltip: AppLocalizations.of(context)!.subscriptionTooltip,
-          onPressed: () => Navigator.pushNamed(context, AppRoute.homeRoute),
         ),
       ],
     );

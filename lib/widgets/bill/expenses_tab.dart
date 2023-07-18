@@ -192,7 +192,7 @@ class ExpensesTabState<T extends ExpensesTab> extends State<T>
                   SizedBox(height: indent),
                   RowWidget(
                     indent: indent,
-                    maxWidth: offset + indent,
+                    maxWidth: offset,
                     chunk: const [0.3, 0.7],
                     children: [
                       [

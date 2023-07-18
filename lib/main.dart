@@ -17,6 +17,7 @@ import 'package:app_finance/routes/budget_page.dart';
 import 'package:app_finance/routes/budget_add_page.dart';
 import 'package:app_finance/routes/budget_edit_page.dart';
 import 'package:app_finance/routes/budget_view_page.dart';
+import 'package:app_finance/routes/currency_page.dart';
 import 'package:app_finance/routes/goal_add_page.dart';
 import 'package:app_finance/routes/goal_edit_page.dart';
 import 'package:app_finance/routes/goal_page.dart';
@@ -107,6 +108,7 @@ class _MyAppState extends State<MyApp> {
         AppRoute.budgetAddRoute: (context) => BudgetAddPage(),
         AppRoute.billRoute: (context) => BillPage(),
         AppRoute.billAddRoute: (context) => BillAddPage(),
+        AppRoute.currencyRoute: (context) => CurrencyPage(),
         AppRoute.goalRoute: (context) => GoalPage(),
         AppRoute.goalAddRoute: (context) => GoalAddPage(),
       },

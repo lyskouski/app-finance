@@ -53,7 +53,7 @@ class AppMenu {
       AppMenuItem(
         name: locale!.currencyHeadline,
         icon: Icons.currency_exchange,
-        route: AppRoute.homeRoute,
+        route: AppRoute.currencyRoute,
       ),
       AppMenuItem(
         name: locale!.metricsHeadline,

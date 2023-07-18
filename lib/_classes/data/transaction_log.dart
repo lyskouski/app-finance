@@ -116,6 +116,7 @@ class TransactionLog with SharedPreferencesMixin {
         } else {
           // Corrupted data... skip
         }
+        // ignore: unused_catch_stack
       } catch (e, stackTrace) {
         // print([e, stackTrace]);
         isOK = false;

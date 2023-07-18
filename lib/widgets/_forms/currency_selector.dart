@@ -8,21 +8,32 @@ import 'package:flutter/material.dart';
 
 typedef SetViewFunction = String Function(Currency input);
 
-class CurrencySelector extends StatelessWidget {
-  Function setState;
-  SetViewFunction? setView;
-  Currency? value;
-  int focusOrder;
-  bool isOpened = false;
+class CurrencySelector extends StatefulWidget {
+  final Function setState;
+  final SetViewFunction? setView;
+  final Currency? value;
+  final int focusOrder;
 
-  CurrencySelector({
+  const CurrencySelector({
     super.key,
     this.value,
     required this.setState,
     this.setView,
     this.focusOrder = FocusController.DEFAULT,
-  }) {
-    setView ??= setDefaultView;
+  });
+
+  @override
+  CurrencySelectorState createState() => CurrencySelectorState();
+}
+
+class CurrencySelectorState extends State<CurrencySelector> {
+  late SetViewFunction setView;
+  bool isOpened = false;
+
+  @override
+  void initState() {
+    setView = widget.setView ?? setDefaultView;
+    super.initState();
   }
 
   String setDefaultView(Currency value) {
@@ -30,28 +41,28 @@ class CurrencySelector extends StatelessWidget {
   }
 
   String getValue(Currency? value) {
-    return value != null ? setView!(value) : '';
+    return value != null ? setView(value) : '';
   }
 
   void onTap(BuildContext context) {
-    isOpened = true;
+    setState(() => isOpened = true);
     showCurrencyPicker(
         context: context,
         showFlag: true,
         showCurrencyName: true,
         showCurrencyCode: true,
         onSelect: (Currency currency) {
-          isOpened = false;
-          setState(currency);
+          widget.setState(currency);
+          setState(() => isOpened = false);
           FocusController.resetFocus();
         });
   }
 
   @override
   Widget build(BuildContext context) {
-    FocusController.setContext(focusOrder, value);
+    FocusController.setContext(widget.focusOrder, widget.value);
     if (!isOpened &&
-        focusOrder > FocusController.DEFAULT &&
+        widget.focusOrder > FocusController.DEFAULT &&
         FocusController.isFocused()) {
       Future.delayed(const Duration(milliseconds: 300), () {
         onTap(context);
@@ -59,8 +70,8 @@ class CurrencySelector extends StatelessWidget {
     }
     return TextFormField(
       onTap: () => onTap(context),
-      key: ValueKey(value),
-      initialValue: getValue(value),
+      key: ValueKey(widget.value),
+      initialValue: getValue(widget.value),
       readOnly: true,
       focusNode: FocusController.getFocusNode(),
       decoration: InputDecoration(

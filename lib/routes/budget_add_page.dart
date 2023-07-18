@@ -13,18 +13,19 @@ import 'package:app_finance/widgets/_forms/color_selector.dart';
 import 'package:app_finance/widgets/_forms/currency_selector.dart';
 import 'package:app_finance/widgets/_forms/icon_selector.dart';
 import 'package:app_finance/widgets/_forms/simple_input.dart';
+import 'package:app_finance/widgets/_wrappers/required_widget.dart';
+import 'package:app_finance/widgets/_wrappers/row_widget.dart';
 import 'package:currency_picker/currency_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_gen/gen_l10n/app_localization.dart';
 
 class BudgetAddPage extends AbstractPage {
-  String? title;
-  String titleErrorMessage = '';
-  double? budgetLimit;
-  IconData? icon;
-  MaterialColor? color;
-  Currency? currency;
+  final String? title;
+  final double? budgetLimit;
+  final IconData? icon;
+  final MaterialColor? color;
+  final Currency? currency;
 
   BudgetAddPage({
     this.title,
@@ -45,6 +46,7 @@ class BudgetAddPageState<T extends BudgetAddPage>
   IconData? icon;
   MaterialColor? color;
   Currency? currency;
+  bool hasError = false;
 
   @override
   void initState() {
@@ -62,12 +64,8 @@ class BudgetAddPageState<T extends BudgetAddPage>
   }
 
   bool hasFormErrors() {
-    bool isError = false;
-    if (title == null || title!.isEmpty) {
-      widget.titleErrorMessage = AppLocalizations.of(context)!.isRequired;
-      isError = true;
-    }
-    return isError;
+    setState(() => hasError = title == null || title!.isEmpty);
+    return hasError;
   }
 
   void updateStorage() {
@@ -137,20 +135,9 @@ class BudgetAddPageState<T extends BudgetAddPage>
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Row(
-              children: [
-                Text(
-                  '${AppLocalizations.of(context)!.title}*',
-                  style: textTheme.bodyLarge,
-                ),
-                Text(
-                  widget.titleErrorMessage,
-                  style: TextStyle(
-                    color: Theme.of(context).colorScheme.error,
-                  ),
-                ),
-              ],
-            ),
+            RequiredWidget(
+                title: AppLocalizations.of(context)!.title,
+                showError: hasError && title == null),
             SimpleInput(
               value: title,
               tooltip: AppLocalizations.of(context)!.titleAccountTooltip,
@@ -159,48 +146,33 @@ class BudgetAddPageState<T extends BudgetAddPage>
               focusOrder: focusOrder += 1,
             ),
             SizedBox(height: indent),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.start,
+            RowWidget(
+              indent: indent,
+              maxWidth: offset,
+              chunk: const [0.5, 0.5],
               children: [
-                Container(
-                  constraints: BoxConstraints(
-                    maxWidth: offset * 0.5,
+                [
+                  Text(
+                    AppLocalizations.of(context)!.icon,
+                    style: textTheme.bodyLarge,
                   ),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        AppLocalizations.of(context)!.icon,
-                        style: textTheme.bodyLarge,
-                      ),
-                      IconSelector(
-                        value: icon,
-                        setState: (value) => setState(() => icon = value),
-                        // focusOrder: focusOrder += 1,
-                      ),
-                    ],
+                  IconSelector(
+                    value: icon,
+                    setState: (value) => setState(() => icon = value),
+                    // focusOrder: focusOrder += 1,
                   ),
-                ),
-                SizedBox(width: indent),
-                Container(
-                  constraints: BoxConstraints(
-                    maxWidth: offset * 0.5,
+                ],
+                [
+                  Text(
+                    AppLocalizations.of(context)!.color,
+                    style: textTheme.bodyLarge,
                   ),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        AppLocalizations.of(context)!.color,
-                        style: textTheme.bodyLarge,
-                      ),
-                      ColorSelector(
-                        value: color,
-                        setState: (value) => setState(() => color = value),
-                        // focusOrder: focusOrder += 1,
-                      ),
-                    ],
+                  ColorSelector(
+                    value: color,
+                    setState: (value) => setState(() => color = value),
+                    // focusOrder: focusOrder += 1,
                   ),
-                ),
+                ],
               ],
             ),
             SizedBox(height: indent),

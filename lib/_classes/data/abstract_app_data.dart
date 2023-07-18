@@ -123,9 +123,13 @@ abstract class AbstractAppData {
     _amount = value;
   }
 
+  // ignore: unnecessary_getters_setters
   DateTime get updatedAt => _updatedAt;
   set updatedAt(DateTime value) => _updatedAt = value;
+  String get updatedAtFormatted => getDateFormatted(_updatedAt);
+  set updatedAtFormatted(String value) => _updatedAt = DateTime.parse(value);
 
+  // ignore: unnecessary_getters_setters
   DateTime get createdAt => _createdAt;
   set createdAt(DateTime value) => _createdAt = value;
   String get createdAtFormatted => getDateFormatted(_createdAt);

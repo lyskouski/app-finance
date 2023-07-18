@@ -15,15 +15,14 @@ class ListAccountSelectorItem<T> {
 }
 
 class ListAccountSelector<T extends ListAccountSelectorItem>
-    extends StatelessWidget {
-  AppData state;
-  Function setState;
-  TextStyle? style;
-  String? value;
-  double indent;
-  double width;
-  int focusOrder;
-  List<DropdownMenuItem<String>>? scope;
+    extends StatefulWidget {
+  final AppData state;
+  final Function setState;
+  final TextStyle? style;
+  final String? value;
+  final double indent;
+  final double width;
+  final int focusOrder;
 
   ListAccountSelector({
     required this.state,
@@ -47,15 +46,22 @@ class ListAccountSelector<T extends ListAccountSelectorItem>
         .toList();
   }
 
+  @override
+  ListAccountSelectorState createState() => ListAccountSelectorState();
+}
+
+class ListAccountSelectorState extends State<ListAccountSelector> {
+  List<DropdownMenuItem<String>>? scope;
+
   List<DropdownMenuItem<String>> generateList(context) {
-    return getList().map<DropdownMenuItem<String>>((value) {
+    return widget.getList().map<DropdownMenuItem<String>>((value) {
       if (value.item?.getContext() == null) {
         value.item?.updateContext(context);
       }
       return DropdownMenuItem<String>(
         value: value.id,
         child: Padding(
-          padding: EdgeInsets.only(top: indent),
+          padding: EdgeInsets.only(top: widget.indent),
           child: BaseLineWidget(
             uuid: value.item?.uuid ?? '',
             title: value.item?.title ?? '',
@@ -64,7 +70,7 @@ class ListAccountSelector<T extends ListAccountSelectorItem>
             progress: value.item?.progress ?? 0.0,
             color: value.item?.color ?? Colors.transparent,
             hidden: value.item?.hidden ?? false,
-            offset: width - indent * 3,
+            offset: widget.width - widget.indent * 3,
           ),
         ),
       );
@@ -73,19 +79,20 @@ class ListAccountSelector<T extends ListAccountSelectorItem>
 
   @override
   Widget build(context) {
-    FocusController.setContext(focusOrder, value);
     scope ??= generateList(context);
+    FocusController.setContext(widget.focusOrder, widget.value);
+
     return Container(
       color: Theme.of(context).colorScheme.inversePrimary.withOpacity(0.3),
       width: double.infinity,
       child: DropdownButton<String>(
         isExpanded: true,
-        value: value,
+        value: widget.value,
         itemHeight: null,
         focusNode: FocusController.getFocusNode(),
         autofocus: FocusController.isFocused(),
         onChanged: (value) {
-          setState(value);
+          widget.setState(value);
           FocusController.resetFocus();
         },
         items: scope,

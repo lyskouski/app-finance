@@ -7,14 +7,13 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:month_picker_dialog/month_picker_dialog.dart';
 
-class MonthYearInput extends StatelessWidget {
-  Function setState;
-  DateTime? value;
-  TextStyle? style;
-  int focusOrder;
-  bool isOpened = false;
+class MonthYearInput extends StatefulWidget {
+  final Function setState;
+  final DateTime? value;
+  final TextStyle? style;
+  final int focusOrder;
 
-  MonthYearInput({
+  const MonthYearInput({
     super.key,
     required this.setState,
     required this.value,
@@ -22,21 +21,33 @@ class MonthYearInput extends StatelessWidget {
     this.focusOrder = FocusController.DEFAULT,
   });
 
+  @override
+  MonthYearInputState createState() => MonthYearInputState();
+}
+
+class MonthYearInputState extends State<MonthYearInput> {
+  bool isOpened = false;
+
+  @override
+  void initState() {
+    super.initState();
+  }
+
   Future<void> onTap(context) async {
     DateTime currentDate = DateTime.now();
     const Duration dateRange = Duration(days: 20 * 365);
     DateTime firstDate = currentDate.subtract(dateRange);
     DateTime lastDate = currentDate.add(dateRange);
-    isOpened = true;
+    setState(() => isOpened = true);
     final DateTime? selectedDate = await showMonthPicker(
       context: context,
-      initialDate: value ?? currentDate,
+      initialDate: widget.value ?? currentDate,
       firstDate: firstDate,
       lastDate: lastDate,
     );
-    isOpened = false;
     if (selectedDate != null) {
-      setState(selectedDate);
+      widget.setState(selectedDate);
+      setState(() => isOpened = false);
       FocusController.resetFocus();
     }
   }
@@ -46,7 +57,7 @@ class MonthYearInput extends StatelessWidget {
     final locale = Localizations.localeOf(context).toString();
     final DateFormat formatterDate = DateFormat.yM(locale);
     if (!isOpened &&
-        focusOrder > FocusController.DEFAULT &&
+        widget.focusOrder > FocusController.DEFAULT &&
         FocusController.isFocused()) {
       Future.delayed(const Duration(milliseconds: 300), () {
         onTap(context);
@@ -56,8 +67,10 @@ class MonthYearInput extends StatelessWidget {
       color: Theme.of(context).colorScheme.inversePrimary.withOpacity(0.3),
       child: ListTile(
         title: Text(
-          value != null ? formatterDate.format(value!) : 'Select date',
-          style: style,
+          widget.value != null
+              ? formatterDate.format(widget.value!)
+              : 'Select date',
+          style: widget.style,
         ),
         onTap: () => onTap(context),
       ),

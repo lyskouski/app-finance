@@ -122,7 +122,7 @@ class CurrencyExchangeInputState extends State<CurrencyExchangeInput> {
                         widget.indent, 0, widget.indent, widget.indent),
                     child: RowWidget(
                       indent: widget.indent,
-                      maxWidth: widget.width - widget.indent * 2,
+                      maxWidth: widget.width - widget.indent * 3,
                       chunk: const [0.5, 0.49],
                       children: [
                         [

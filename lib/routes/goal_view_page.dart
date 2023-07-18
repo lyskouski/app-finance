@@ -71,7 +71,7 @@ class GoalViewPageState extends AbstractPageState<GoalViewPage> {
     return Column(
       children: [
         BaseLineWidget(
-          title: item.title ?? '',
+          title: item.title,
           offset: offset,
           uuid: widget.uuid,
           details: item.getNumberFormatted(item.details),

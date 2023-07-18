@@ -7,7 +7,7 @@ import 'package:app_finance/widgets/home/account_widget.dart';
 import 'package:flutter/material.dart';
 
 class BudgetWidget extends AccountWidget {
-  BudgetWidget({
+  const BudgetWidget({
     super.key,
     required String title,
     required double offset,
