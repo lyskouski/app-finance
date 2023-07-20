@@ -57,7 +57,11 @@ class InitPageState extends AbstractPageState<InitPage>
   }
 
   void handleNextStep(context) {
-    Navigator.popAndPushNamed(context, AppRoute.homeRoute);
+    if (isConfirmed) {
+      Navigator.popAndPushNamed(context, AppRoute.homeRoute);
+    } else {
+      Navigator.popAndPushNamed(context, AppRoute.startRoute);
+    }
   }
 
   @override

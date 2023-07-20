@@ -25,6 +25,7 @@ import 'package:app_finance/routes/goal_page.dart';
 import 'package:app_finance/routes/goal_view_page.dart';
 import 'package:app_finance/routes/home_page.dart';
 import 'package:app_finance/routes/init_page.dart';
+import 'package:app_finance/routes/start_page.dart';
 import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/foundation.dart';
@@ -106,6 +107,7 @@ class _MyAppState extends State<MyApp> {
     } else {
       final staticRoutes = <String, WidgetBuilder>{
         AppRoute.initRoute: (context) => InitPage(),
+        AppRoute.startRoute: (context) => StartPage(),
         AppRoute.homeRoute: (context) => HomePage(),
         AppRoute.accountRoute: (context) => AccountPage(),
         AppRoute.accountAddRoute: (context) => AccountAddPage(),

@@ -52,6 +52,7 @@ dependencies:
   encrypt: ^5.0.1
   firebase_core: ^2.15.0
   firebase_analytics: ^10.4.4
+  flutter_markdown: ^0.6.17
 
 dev_dependencies:
   flutter_test:
@@ -85,6 +86,7 @@ flutter:
   # To add assets to your application, add an assets section, like this:
   assets:
      - assets/images/logo.png
+     - assets/l10n/privacy_policy_en.md
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
