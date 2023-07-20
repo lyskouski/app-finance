@@ -36,14 +36,29 @@ class SimpleInput extends StatefulWidget {
 class SimpleInputState extends State<SimpleInput> {
   final TextEditingController _controller = TextEditingController();
   bool isChanged = false;
+  late String value;
+
+  @override
+  initState() {
+    super.initState();
+    value = widget.value ?? '';
+    _controller.text = value;
+  }
+
+  void delayedUpdate(newValue) {
+    setState(() {
+      isChanged = true;
+      value = newValue;
+    });
+    Future.delayed(const Duration(milliseconds: 1000), () {
+      if (newValue == value) {
+        widget.setState(value);
+      }
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
-    if (!isChanged) {
-      setState(() {
-        _controller.text = widget.value ?? '';
-      });
-    }
     FocusController.setContext(widget.focusOrder, widget.value);
     return TextFormField(
       controller: _controller,
@@ -52,7 +67,7 @@ class SimpleInputState extends State<SimpleInput> {
       focusNode: FocusController.getFocusNode(),
       textInputAction: FocusController.getAction(),
       onEditingComplete: () {
-        isChanged = false;
+        setState(() => isChanged = false);
         FocusController.onEditingComplete();
       },
       autofocus: FocusController.isFocused(),
@@ -64,10 +79,7 @@ class SimpleInputState extends State<SimpleInput> {
         hintText: widget.tooltip,
         hintStyle: widget.style,
       ),
-      onChanged: (value) {
-        isChanged = true;
-        widget.setState(value);
-      },
+      onChanged: delayedUpdate,
     );
   }
 }
