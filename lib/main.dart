@@ -24,6 +24,7 @@ import 'package:app_finance/routes/goal_edit_page.dart';
 import 'package:app_finance/routes/goal_page.dart';
 import 'package:app_finance/routes/goal_view_page.dart';
 import 'package:app_finance/routes/home_page.dart';
+import 'package:app_finance/routes/init_page.dart';
 import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/foundation.dart';
@@ -104,6 +105,7 @@ class _MyAppState extends State<MyApp> {
       }
     } else {
       final staticRoutes = <String, WidgetBuilder>{
+        AppRoute.initRoute: (context) => InitPage(),
         AppRoute.homeRoute: (context) => HomePage(),
         AppRoute.accountRoute: (context) => AccountPage(),
         AppRoute.accountAddRoute: (context) => AccountAddPage(),
@@ -116,9 +118,10 @@ class _MyAppState extends State<MyApp> {
         AppRoute.goalAddRoute: (context) => GoalAddPage(),
       };
       return MaterialPageRoute(
-        builder: staticRoutes[route] ?? (context) => HomePage(),
+        builder: staticRoutes[route] ?? (context) => InitPage(),
       );
     }
+    return null;
   }
 
   @override
@@ -138,8 +141,8 @@ class _MyAppState extends State<MyApp> {
         useMaterial3: true,
       ),
       themeMode: ThemeMode.system,
-      home: HomePage(),
-      initialRoute: AppRoute.homeRoute,
+      home: InitPage(),
+      initialRoute: AppRoute.initRoute,
       onGenerateRoute: getDynamicRouter,
     );
   }
