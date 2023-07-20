@@ -40,7 +40,7 @@ dependencies:
   google_fonts: ^5.0.0
   intl: ^0.18.0
   flutter_datetime_picker_plus: ^2.0.1
-  flutter_colorpicker: ^0.5.0
+  flutter_colorpicker: ^1.0.3
   currency_picker: ^2.0.15
   flutter_iconpicker: ^3.2.4
   uuid: ^3.0.4
@@ -50,6 +50,8 @@ dependencies:
   path_provider: ^2.0.15
   crypto: ^3.0.3
   encrypt: ^5.0.1
+  firebase_core: ^2.15.0
+  firebase_analytics: ^10.4.4
 
 dev_dependencies:
   flutter_test:

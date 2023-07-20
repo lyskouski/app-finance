@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "637490835303",
+    "project_id": "fingram-9030a",
+    "storage_bucket": "fingram-9030a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:637490835303:android:5e056fa931de68bac689c2",
+        "android_client_info": {
+          "package_name": "com.example.app_finance"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "637490835303-bpqfdad6f3gams18r439ent93au4s0ad.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD1b_6-j5yF2-IHc_hgbCJEym_s6ZTo1fM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "637490835303-bpqfdad6f3gams18r439ent93au4s0ad.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "637490835303-54nnsjspk2nrht9cpaqnfoc0qrvg6fhu.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.appFinance"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -5,6 +5,7 @@
 import 'package:app_finance/custom_text_theme.dart';
 import 'package:app_finance/data.dart';
 import 'package:app_finance/_classes/app_route.dart';
+import 'package:app_finance/firebase_options.dart';
 import 'package:app_finance/routes/account_add_page.dart';
 import 'package:app_finance/routes/account_edit_page.dart';
 import 'package:app_finance/routes/account_view_page.dart';
@@ -23,11 +24,32 @@ import 'package:app_finance/routes/goal_edit_page.dart';
 import 'package:app_finance/routes/goal_page.dart';
 import 'package:app_finance/routes/goal_view_page.dart';
 import 'package:app_finance/routes/home_page.dart';
+import 'package:firebase_analytics/firebase_analytics.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localization.dart';
 import 'package:provider/provider.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  final platform = DefaultFirebaseOptions.currentPlatform;
+  if (platform != null) {
+    await Firebase.initializeApp(
+      options: DefaultFirebaseOptions.currentPlatform,
+    );
+    FirebaseAnalytics.instance.logAppOpen();
+    PlatformDispatcher.instance.onError = (error, stack) {
+      FirebaseAnalytics.instance.logSelectContent(
+          contentType: error.toString(), itemId: 'platform-error');
+      return true;
+    };
+    FlutterError.onError = (details) {
+      FlutterError.presentError(details);
+      FirebaseAnalytics.instance.logSelectContent(
+          contentType: details.toString(), itemId: 'flutter-error');
+    };
+  }
   runApp(
     ChangeNotifierProvider(
       create: (_) => AppData(),
@@ -48,6 +70,10 @@ class _MyAppState extends State<MyApp> {
     final String route = settings.name!;
     final regex = RegExp(r'\/uuid:([\w-]+)');
     final match = regex.firstMatch(route);
+    if (DefaultFirebaseOptions.currentPlatform != null) {
+      FirebaseAnalytics.instance.logSelectContent(
+          contentType: route, itemId: match != null ? 'dynamic' : 'static');
+    }
     if (match != null) {
       final String uuid = match.group(1) ?? '';
       switch (route.replaceAll(uuid, '')) {
@@ -76,8 +102,23 @@ class _MyAppState extends State<MyApp> {
           return MaterialPageRoute(
               builder: (context) => GoalEditPage(uuid: uuid));
       }
+    } else {
+      final staticRoutes = <String, WidgetBuilder>{
+        AppRoute.homeRoute: (context) => HomePage(),
+        AppRoute.accountRoute: (context) => AccountPage(),
+        AppRoute.accountAddRoute: (context) => AccountAddPage(),
+        AppRoute.budgetRoute: (context) => BudgetPage(),
+        AppRoute.budgetAddRoute: (context) => BudgetAddPage(),
+        AppRoute.billRoute: (context) => BillPage(),
+        AppRoute.billAddRoute: (context) => BillAddPage(),
+        AppRoute.currencyRoute: (context) => CurrencyPage(),
+        AppRoute.goalRoute: (context) => GoalPage(),
+        AppRoute.goalAddRoute: (context) => GoalAddPage(),
+      };
+      return MaterialPageRoute(
+        builder: staticRoutes[route] ?? (context) => HomePage(),
+      );
     }
-    return null;
   }
 
   @override
@@ -100,18 +141,6 @@ class _MyAppState extends State<MyApp> {
       home: HomePage(),
       initialRoute: AppRoute.homeRoute,
       onGenerateRoute: getDynamicRouter,
-      routes: <String, WidgetBuilder>{
-        AppRoute.homeRoute: (context) => HomePage(),
-        AppRoute.accountRoute: (context) => AccountPage(),
-        AppRoute.accountAddRoute: (context) => AccountAddPage(),
-        AppRoute.budgetRoute: (context) => BudgetPage(),
-        AppRoute.budgetAddRoute: (context) => BudgetAddPage(),
-        AppRoute.billRoute: (context) => BillPage(),
-        AppRoute.billAddRoute: (context) => BillAddPage(),
-        AppRoute.currencyRoute: (context) => CurrencyPage(),
-        AppRoute.goalRoute: (context) => GoalPage(),
-        AppRoute.goalAddRoute: (context) => GoalAddPage(),
-      },
     );
   }
 }
