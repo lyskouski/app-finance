@@ -31,6 +31,7 @@ class TabWidgetState extends State<TabWidget> {
   late TabController tabController;
   late int tabCount;
   late int tabIndex;
+  late int initIndex;
 
   @override
   void initState() {
@@ -41,6 +42,7 @@ class TabWidgetState extends State<TabWidget> {
   void initControllers() {
     tabCount = widget.children.length;
     tabIndex = widget.focus;
+    initIndex = widget.focus;
     pageController = PageController(initialPage: tabIndex);
     tabController = TabController(
       length: tabCount,
@@ -108,6 +110,10 @@ class TabWidgetState extends State<TabWidget> {
   Widget build(BuildContext context) {
     if (tabCount != widget.children.length) {
       initControllers();
+    }
+    if (initIndex != widget.focus) {
+      setState(() => initIndex = widget.focus);
+      switchTab(widget.focus);
     }
     return GestureDetector(
       onHorizontalDragEnd: (DragEndDetails details) {

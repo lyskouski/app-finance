@@ -1,11 +1,11 @@
 {
-    "name": "app_finance",
-    "short_name": "app_finance",
+    "name": "Fingram",
+    "short_name": "Fingram",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",
     "theme_color": "#0175C2",
-    "description": "A new Flutter project.",
+    "description": "Open-sourced cross-platform financial accounting application.",
     "orientation": "portrait-primary",
     "prefer_related_applications": false,
     "icons": [

@@ -57,10 +57,13 @@ class MonthYearInputState extends State<MonthYearInput> {
     final locale = Localizations.localeOf(context).toString();
     final DateFormat formatterDate = DateFormat.yM(locale);
     if (!isOpened &&
+        widget.value == null &&
         widget.focusOrder > FocusController.DEFAULT &&
         FocusController.isFocused()) {
       Future.delayed(const Duration(milliseconds: 300), () {
-        onTap(context);
+        if (!isOpened && widget.value == null) {
+          onTap(context);
+        }
       });
     }
     return Container(

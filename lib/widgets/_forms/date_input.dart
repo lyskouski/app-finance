@@ -57,10 +57,13 @@ class DateInputState extends State<DateInput> {
   Widget build(BuildContext context) {
     FocusController.setContext(widget.focusOrder, widget.value);
     if (!isOpened &&
+        widget.value == null &&
         widget.focusOrder > FocusController.DEFAULT &&
         FocusController.isFocused()) {
       Future.delayed(const Duration(milliseconds: 300), () {
-        onTap(context);
+        if (!isOpened && widget.value == null) {
+          onTap(context);
+        }
       });
     }
     final locale = Localizations.localeOf(context).toString();

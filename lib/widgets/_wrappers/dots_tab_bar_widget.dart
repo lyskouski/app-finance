@@ -35,7 +35,7 @@ class DotsTabBarWidget extends TabBar {
 
   @override
   get padding => EdgeInsets.symmetric(
-      horizontal: (width - tabList.length * 2 * indent) / 2);
+      horizontal: (width - (tabList.length - 1) * 2 * indent) / 2);
 
   @override
   get indicator => DotsIndicatorDecoration(

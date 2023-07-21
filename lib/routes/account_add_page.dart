@@ -5,6 +5,7 @@
 import 'package:adaptive_breakpoints/adaptive_breakpoints.dart';
 import 'package:app_finance/_classes/data/account_app_data.dart';
 import 'package:app_finance/_classes/focus_controller.dart';
+import 'package:app_finance/_mixins/shared_preferences_mixin.dart';
 import 'package:app_finance/custom_text_theme.dart';
 import 'package:app_finance/data.dart';
 import 'package:app_finance/helpers/theme_helper.dart';
@@ -48,7 +49,7 @@ class AccountAddPage extends AbstractPage {
 }
 
 class AccountAddPageState<T extends AccountAddPage>
-    extends AbstractPageState<AccountAddPage> {
+    extends AbstractPageState<AccountAddPage> with SharedPreferencesMixin {
   String? title;
   String? description;
   String? type;
@@ -70,6 +71,9 @@ class AccountAddPageState<T extends AccountAddPage>
     balance = widget.balance;
     icon = widget.icon;
     color = widget.color;
+    getPreference(prefCurrency).then((currencyId) => setState(() {
+          currency ??= CurrencyService().findByCode(currencyId);
+        }));
     super.initState();
   }
 
@@ -106,6 +110,17 @@ class AccountAddPageState<T extends AccountAddPage>
     return AppLocalizations.of(context)!.createAccountTooltip;
   }
 
+  void triggerActionButton(BuildContext context) {
+    setState(() {
+      if (hasFormErrors()) {
+        return;
+      }
+      updateStorage();
+      Navigator.pop(context);
+      Navigator.pop(context);
+    });
+  }
+
   @override
   Widget buildButton(BuildContext context, BoxConstraints constraints) {
     var helper = ThemeHelper(windowType: getWindowType(context));
@@ -114,16 +129,7 @@ class AccountAddPageState<T extends AccountAddPage>
     return SizedBox(
       width: constraints.maxWidth - helper.getIndent() * 4,
       child: FloatingActionButton(
-        onPressed: () => {
-          setState(() {
-            if (hasFormErrors()) {
-              return;
-            }
-            updateStorage();
-            Navigator.pop(context);
-            Navigator.pop(context);
-          })
-        },
+        onPressed: () => triggerActionButton(context),
         focusNode: FocusController.getFocusNode(),
         tooltip: title,
         child: Align(

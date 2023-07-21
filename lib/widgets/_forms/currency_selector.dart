@@ -53,8 +53,8 @@ class CurrencySelectorState extends State<CurrencySelector> {
         showCurrencyCode: true,
         onSelect: (Currency currency) {
           widget.setState(currency);
-          setState(() => isOpened = false);
           FocusController.resetFocus();
+          setState(() => isOpened = false);
         });
   }
 
@@ -62,10 +62,13 @@ class CurrencySelectorState extends State<CurrencySelector> {
   Widget build(BuildContext context) {
     FocusController.setContext(widget.focusOrder, widget.value);
     if (!isOpened &&
+        widget.value == null &&
         widget.focusOrder > FocusController.DEFAULT &&
         FocusController.isFocused()) {
       Future.delayed(const Duration(milliseconds: 300), () {
-        onTap(context);
+        if (!isOpened && widget.value == null) {
+          onTap(context);
+        }
       });
     }
     return TextFormField(

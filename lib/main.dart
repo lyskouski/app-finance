@@ -5,6 +5,7 @@
 import 'package:app_finance/custom_text_theme.dart';
 import 'package:app_finance/data.dart';
 import 'package:app_finance/_classes/app_route.dart';
+import 'package:app_finance/firebase_options.dart';
 import 'package:app_finance/routes/account_add_page.dart';
 import 'package:app_finance/routes/account_edit_page.dart';
 import 'package:app_finance/routes/account_view_page.dart';
@@ -23,31 +24,59 @@ import 'package:app_finance/routes/goal_edit_page.dart';
 import 'package:app_finance/routes/goal_page.dart';
 import 'package:app_finance/routes/goal_view_page.dart';
 import 'package:app_finance/routes/home_page.dart';
+import 'package:app_finance/routes/init_page.dart';
+import 'package:app_finance/routes/start_page.dart';
+import 'package:firebase_analytics/firebase_analytics.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localization.dart';
 import 'package:provider/provider.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  final platform = DefaultFirebaseOptions.currentPlatform;
+  if (platform != null) {
+    await Firebase.initializeApp(
+      options: DefaultFirebaseOptions.currentPlatform,
+    );
+    FirebaseAnalytics.instance.logAppOpen();
+    PlatformDispatcher.instance.onError = (error, stack) {
+      FirebaseAnalytics.instance.logSelectContent(
+          contentType: error.toString(), itemId: 'platform-error');
+      return true;
+    };
+    FlutterError.onError = (details) {
+      FlutterError.presentError(details);
+      FirebaseAnalytics.instance.logSelectContent(
+          contentType: details.toString(), itemId: 'flutter-error');
+    };
+  }
   runApp(
     ChangeNotifierProvider(
       create: (_) => AppData(),
-      child: const MyApp(),
+      child: MyApp(platform: platform),
     ),
   );
 }
 
 class MyApp extends StatefulWidget {
-  const MyApp({super.key});
+  final FirebaseOptions? platform;
+  const MyApp({super.key, this.platform});
 
   @override
-  _MyAppState createState() => _MyAppState();
+  MyAppState createState() => MyAppState();
 }
 
-class _MyAppState extends State<MyApp> {
+class MyAppState extends State<MyApp> {
   MaterialPageRoute? getDynamicRouter(settings) {
     final String route = settings.name!;
     final regex = RegExp(r'\/uuid:([\w-]+)');
     final match = regex.firstMatch(route);
+    if (widget.platform != null) {
+      FirebaseAnalytics.instance.logSelectContent(
+          contentType: route, itemId: match != null ? 'dynamic' : 'static');
+    }
     if (match != null) {
       final String uuid = match.group(1) ?? '';
       switch (route.replaceAll(uuid, '')) {
@@ -76,6 +105,24 @@ class _MyAppState extends State<MyApp> {
           return MaterialPageRoute(
               builder: (context) => GoalEditPage(uuid: uuid));
       }
+    } else {
+      final staticRoutes = <String, WidgetBuilder>{
+        AppRoute.initRoute: (context) => InitPage(),
+        AppRoute.startRoute: (context) => StartPage(),
+        AppRoute.homeRoute: (context) => HomePage(),
+        AppRoute.accountRoute: (context) => AccountPage(),
+        AppRoute.accountAddRoute: (context) => AccountAddPage(),
+        AppRoute.budgetRoute: (context) => BudgetPage(),
+        AppRoute.budgetAddRoute: (context) => BudgetAddPage(),
+        AppRoute.billRoute: (context) => BillPage(),
+        AppRoute.billAddRoute: (context) => BillAddPage(),
+        AppRoute.currencyRoute: (context) => CurrencyPage(),
+        AppRoute.goalRoute: (context) => GoalPage(),
+        AppRoute.goalAddRoute: (context) => GoalAddPage(),
+      };
+      return MaterialPageRoute(
+        builder: staticRoutes[route] ?? (context) => InitPage(),
+      );
     }
     return null;
   }
@@ -97,21 +144,9 @@ class _MyAppState extends State<MyApp> {
         useMaterial3: true,
       ),
       themeMode: ThemeMode.system,
-      home: HomePage(),
-      initialRoute: AppRoute.homeRoute,
+      home: InitPage(),
+      initialRoute: AppRoute.initRoute,
       onGenerateRoute: getDynamicRouter,
-      routes: <String, WidgetBuilder>{
-        AppRoute.homeRoute: (context) => HomePage(),
-        AppRoute.accountRoute: (context) => AccountPage(),
-        AppRoute.accountAddRoute: (context) => AccountAddPage(),
-        AppRoute.budgetRoute: (context) => BudgetPage(),
-        AppRoute.budgetAddRoute: (context) => BudgetAddPage(),
-        AppRoute.billRoute: (context) => BillPage(),
-        AppRoute.billAddRoute: (context) => BillAddPage(),
-        AppRoute.currencyRoute: (context) => CurrencyPage(),
-        AppRoute.goalRoute: (context) => GoalPage(),
-        AppRoute.goalAddRoute: (context) => GoalAddPage(),
-      },
     );
   }
 }

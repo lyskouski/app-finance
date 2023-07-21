@@ -16,6 +16,13 @@ void main() {
       child: const MyApp(),
     ));
 
+    const initText = 'Project Initialization';
+    final init = find.text(initText);
+    expect(init, findsWidgets);
+    await tester.tap(init);
+    await tester.pumpAndSettle();
+    expect(find.text(initText), findsNothing);
+
     expect(find.text('Budgets, left'), findsOneWidget);
 
     await tester.tap(find.byIcon(Icons.add));

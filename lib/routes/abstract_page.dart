@@ -74,33 +74,35 @@ abstract class AbstractPageState<T extends AbstractPage> extends State<T> {
     );
   }
 
-  @override
-  Widget build(BuildContext context) {
+  Drawer? buildDrawer() {
     final ColorScheme colorScheme = Theme.of(context).colorScheme;
     double indent = ThemeHelper(windowType: getWindowType(context)).getIndent();
+    return Drawer(
+      elevation: 0,
+      shape: Border.all(width: 0),
+      child: Container(
+        color: colorScheme.onBackground,
+        child: ListView.separated(
+          padding: EdgeInsets.symmetric(vertical: indent * 4),
+          separatorBuilder: (context, index) => SizedBox(height: indent * 2),
+          itemCount: AppMenu(context: context).get().length,
+          itemBuilder: (context, index) => MenuWidget(
+            index: index,
+            setState: () => setState(() => selectedMenu = index),
+            selectedIndex: selectedMenu,
+          ),
+        ),
+      ),
+    );
+  }
 
+  @override
+  Widget build(BuildContext context) {
     return Consumer<AppData>(builder: (context, appState, _) {
       state = appState;
       return Scaffold(
           appBar: buildBar(context),
-          drawer: Drawer(
-            elevation: 0,
-            shape: Border.all(width: 0),
-            child: Container(
-              color: colorScheme.onBackground,
-              child: ListView.separated(
-                padding: EdgeInsets.symmetric(vertical: indent * 4),
-                separatorBuilder: (context, index) =>
-                    SizedBox(height: indent * 2),
-                itemCount: AppMenu(context: context).get().length,
-                itemBuilder: (context, index) => MenuWidget(
-                  index: index,
-                  setState: () => setState(() => selectedMenu = index),
-                  selectedIndex: selectedMenu,
-                ),
-              ),
-            ),
-          ),
+          drawer: buildDrawer(),
           body: Scaffold(
             body: SafeArea(
               child: LayoutBuilder(builder: (context, constraints) {
