@@ -6,7 +6,7 @@
     "accountTo": "To Account",
     "accountTooltip": "Open Accounts",
     "accountType": "Account Type",
-    "acknowledgeTooltip": "Acknowledge (Go Next)",
+    "acknowledgeTooltip": "Acknowledge",
     "addAccountTooltip": "Add Account",
     "addBudgetTooltip": "Add new Budget Category",
     "addGoalTooltip": "Add new Goal",
@@ -47,6 +47,7 @@
     "credit": "Credit",
     "creditCard": "Credit Card",
     "currency": "Currency",
+    "currencyDefault": "Default Currency",
     "currencyExchange": "Currency Exchange: {from} -> {to}",
     "@currencyExchange": {
         "currency": {
@@ -79,6 +80,7 @@
     "expenseHeadline": "Expense",
     "expenseTransfer": "Amount of Transfer",
     "from": "from",
+    "goNextTooltip": "Go Next",
     "goalHeadline": "Goals",
     "goalTooltip": "Open Goals",
     "homeHeadline": "Home",
@@ -91,6 +93,7 @@
     "navigationTooltip": "Open main menu",
     "ok": "OK",
     "saveNotification": "Changes saved!",
+    "saveTooltip": "Save",
     "settingsHeadline": "Settings",
     "subscriptionTooltip": "Activate Subscription",
     "targetAmount": "Target Amount",
