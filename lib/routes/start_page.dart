@@ -3,9 +3,9 @@
 // found in the LICENSE file.
 
 import 'package:app_finance/_classes/app_route.dart';
-import 'package:app_finance/_mixins/shared_preferences_mixin.dart';
 import 'package:app_finance/routes/abstract_page.dart';
 import 'package:app_finance/widgets/_wrappers/tab_widget.dart';
+import 'package:app_finance/widgets/start/account_tab.dart';
 import 'package:app_finance/widgets/start/privacy_tab.dart';
 import 'package:app_finance/widgets/start/setting_tab.dart';
 import 'package:flutter/material.dart';
@@ -18,8 +18,7 @@ class StartPage extends AbstractPage {
   StartPageState createState() => StartPageState();
 }
 
-class StartPageState extends AbstractPageState<StartPage>
-    with SharedPreferencesMixin {
+class StartPageState extends AbstractPageState<StartPage> {
   int currentStep = 0;
 
   @override
@@ -44,14 +43,10 @@ class StartPageState extends AbstractPageState<StartPage>
   }
 
   void updateState() {
-    switch (currentStep) {
-      case 0:
-        setPreference(prefPrivacyPolicy, 'true');
-        break;
-      default:
-        Navigator.popAndPushNamed(context, AppRoute.homeRoute);
-    }
     setState(() => currentStep++);
+    if (currentStep > 2) {
+      Navigator.popAndPushNamed(context, AppRoute.homeRoute);
+    }
   }
 
   @override
@@ -64,6 +59,7 @@ class StartPageState extends AbstractPageState<StartPage>
         children: [
           PrivacyTab(setState: updateState),
           SettingTab(setState: updateState),
+          AccountTab(setState: updateState),
         ],
       ),
     );

@@ -14,7 +14,7 @@ import 'package:intl/intl.dart';
 
 class SettingTab extends AbstractTab {
   SettingTab({
-    super.setState,
+    required super.setState,
   }) : super();
 
   @override

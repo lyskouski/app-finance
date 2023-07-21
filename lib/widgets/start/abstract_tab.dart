@@ -8,7 +8,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localization.dart';
 
 abstract class AbstractTab<T> extends StatefulWidget {
-  final Function()? setState;
+  final Function() setState;
 
   AbstractTab({required this.setState}) : super(key: UniqueKey());
 }
@@ -18,6 +18,10 @@ abstract class AbstractTabState<T extends AbstractTab> extends State<T> {
 
   Widget buildContent(BuildContext context);
 
+  void updateState() {
+    widget.setState();
+  }
+
   Widget buildButton(BuildContext context, BoxConstraints constraints) {
     final helper = ThemeHelper(windowType: getWindowType(context));
     String title =
@@ -25,7 +29,7 @@ abstract class AbstractTabState<T extends AbstractTab> extends State<T> {
     return SizedBox(
       width: constraints.maxWidth - helper.getIndent() * 4,
       child: FloatingActionButton(
-        onPressed: widget.setState,
+        onPressed: updateState,
         tooltip: title,
         child: Align(
           alignment: Alignment.center,
