@@ -26,7 +26,7 @@ void main() {
         ));
         final runner = FileRunner(tester);
         await runner.init(file);
-        expect(await runner.run(), true);
+        expectSync(await runner.run(), true);
       });
     }
   });

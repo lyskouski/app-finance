@@ -6,6 +6,7 @@ import 'package:app_finance/_classes/app_route.dart';
 import 'package:app_finance/_mixins/shared_preferences_mixin.dart';
 import 'package:app_finance/data.dart';
 import 'package:app_finance/routes/abstract_page.dart';
+import 'package:app_finance/widgets/_wrappers/tap_widget.dart';
 import 'package:app_finance/widgets/init/loading_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localization.dart';
@@ -42,10 +43,14 @@ class InitPageState extends AbstractPageState<InitPage>
       toolbarHeight: 40,
       automaticallyImplyLeading: false,
       actions: const [],
-      title: Center(
-        child: Text(
-          getTitle(context),
-          style: TextStyle(color: Theme.of(context).colorScheme.inversePrimary),
+      title: TapWidget(
+        onTap: () => Navigator.popAndPushNamed(context, AppRoute.homeRoute),
+        child: Center(
+          child: Text(
+            getTitle(context),
+            style:
+                TextStyle(color: Theme.of(context).colorScheme.inversePrimary),
+          ),
         ),
       ),
     );

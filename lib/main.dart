@@ -55,24 +55,25 @@ void main() async {
   runApp(
     ChangeNotifierProvider(
       create: (_) => AppData(),
-      child: const MyApp(),
+      child: MyApp(platform: platform),
     ),
   );
 }
 
 class MyApp extends StatefulWidget {
-  const MyApp({super.key});
+  final FirebaseOptions? platform;
+  const MyApp({super.key, this.platform});
 
   @override
-  _MyAppState createState() => _MyAppState();
+  MyAppState createState() => MyAppState();
 }
 
-class _MyAppState extends State<MyApp> {
+class MyAppState extends State<MyApp> {
   MaterialPageRoute? getDynamicRouter(settings) {
     final String route = settings.name!;
     final regex = RegExp(r'\/uuid:([\w-]+)');
     final match = regex.firstMatch(route);
-    if (DefaultFirebaseOptions.currentPlatform != null) {
+    if (widget.platform != null) {
       FirebaseAnalytics.instance.logSelectContent(
           contentType: route, itemId: match != null ? 'dynamic' : 'static');
     }

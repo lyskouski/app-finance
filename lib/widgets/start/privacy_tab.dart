@@ -57,7 +57,7 @@ class PrivacyTabState extends State<PrivacyTab> {
           child: Expanded(
             child: FutureBuilder(
               future: DefaultAssetBundle.of(context)
-                  .loadString('./assets/l10n/privacy_policy_${locale}.md'),
+                  .loadString('./assets/l10n/privacy_policy_$locale.md'),
               builder: (context, snapshot) {
                 if (snapshot.hasData) {
                   return Markdown(data: snapshot.data ?? '');
