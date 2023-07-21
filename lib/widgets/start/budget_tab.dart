@@ -3,6 +3,7 @@
 // found in the LICENSE file.
 
 import 'package:adaptive_breakpoints/adaptive_breakpoints.dart';
+import 'package:app_finance/_mixins/shared_preferences_mixin.dart';
 import 'package:app_finance/data.dart';
 import 'package:app_finance/helpers/theme_helper.dart';
 import 'package:app_finance/routes/budget_add_page.dart';
@@ -20,7 +21,8 @@ class BudgetTab extends BudgetAddPage {
   BudgetTabState createState() => BudgetTabState();
 }
 
-class BudgetTabState extends BudgetAddPageState<BudgetTab> {
+class BudgetTabState extends BudgetAddPageState<BudgetTab>
+    with SharedPreferencesMixin {
   @override
   void triggerActionButton(BuildContext context) {
     setState(() {
@@ -28,6 +30,8 @@ class BudgetTabState extends BudgetAddPageState<BudgetTab> {
         return;
       }
       updateStorage();
+      setPreference(
+          prefBudget, super.state.getList(AppDataType.budgets).first?.uuid);
       (widget as BudgetTab).setState();
     });
   }

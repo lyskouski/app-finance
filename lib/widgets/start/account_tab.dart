@@ -3,6 +3,7 @@
 // found in the LICENSE file.
 
 import 'package:adaptive_breakpoints/adaptive_breakpoints.dart';
+import 'package:app_finance/_mixins/shared_preferences_mixin.dart';
 import 'package:app_finance/data.dart';
 import 'package:app_finance/helpers/theme_helper.dart';
 import 'package:app_finance/routes/account_add_page.dart';
@@ -20,7 +21,8 @@ class AccountTab extends AccountAddPage {
   AccountTabState createState() => AccountTabState();
 }
 
-class AccountTabState extends AccountAddPageState<AccountTab> {
+class AccountTabState extends AccountAddPageState<AccountTab>
+    with SharedPreferencesMixin {
   @override
   void triggerActionButton(BuildContext context) {
     setState(() {
@@ -28,6 +30,8 @@ class AccountTabState extends AccountAddPageState<AccountTab> {
         return;
       }
       updateStorage();
+      setPreference(
+          prefAccount, super.state.getList(AppDataType.accounts).first?.uuid);
       (widget as AccountTab).setState();
     });
   }
