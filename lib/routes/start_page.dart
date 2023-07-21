@@ -6,6 +6,7 @@ import 'package:app_finance/_classes/app_route.dart';
 import 'package:app_finance/routes/abstract_page.dart';
 import 'package:app_finance/widgets/_wrappers/tab_widget.dart';
 import 'package:app_finance/widgets/start/account_tab.dart';
+import 'package:app_finance/widgets/start/budget_tab.dart';
 import 'package:app_finance/widgets/start/privacy_tab.dart';
 import 'package:app_finance/widgets/start/setting_tab.dart';
 import 'package:flutter/material.dart';
@@ -43,9 +44,10 @@ class StartPageState extends AbstractPageState<StartPage> {
   }
 
   void updateState() {
-    setState(() => currentStep++);
     if (currentStep > 2) {
       Navigator.popAndPushNamed(context, AppRoute.homeRoute);
+    } else {
+      setState(() => currentStep++);
     }
   }
 
@@ -60,6 +62,7 @@ class StartPageState extends AbstractPageState<StartPage> {
           PrivacyTab(setState: updateState),
           SettingTab(setState: updateState),
           AccountTab(setState: updateState),
+          BudgetTab(setState: updateState),
         ],
       ),
     );

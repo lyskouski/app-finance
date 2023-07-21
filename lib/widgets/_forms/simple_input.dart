@@ -50,8 +50,8 @@ class SimpleInputState extends State<SimpleInput> {
       isChanged = true;
       value = newValue;
     });
-    Future.delayed(const Duration(milliseconds: 1000), () {
-      if (newValue == value) {
+    Future.delayed(const Duration(milliseconds: 600), () {
+      if (newValue == value && isChanged) {
         widget.setState(value);
       }
     });
@@ -68,6 +68,7 @@ class SimpleInputState extends State<SimpleInput> {
       textInputAction: FocusController.getAction(),
       onEditingComplete: () {
         setState(() => isChanged = false);
+        widget.setState(value);
         FocusController.onEditingComplete();
       },
       autofocus: FocusController.isFocused(),
