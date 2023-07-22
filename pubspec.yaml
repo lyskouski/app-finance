@@ -53,6 +53,8 @@ dependencies:
   firebase_core: ^2.15.0
   firebase_analytics: ^10.4.4
   flutter_markdown: ^0.6.17
+  package_info_plus: ^4.0.2
+  url_launcher: ^6.1.12
 
 dev_dependencies:
   flutter_test:

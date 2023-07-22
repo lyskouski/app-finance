@@ -3,9 +3,7 @@
 // found in the LICENSE file.
 
 class AppRoute {
-  static const String initRoute = '/app/finance';
-  static const String startRoute = '/app/finance/start';
-  static const String homeRoute = '/app/finance/main';
+  static const String aboutRoute = '/app/finance/about';
   static const String accountRoute = '/app/finance/account';
   static const String accountAddRoute = '/app/finance/account/add';
   static const String accountViewRoute = '/app/finance/account/uuid:';
@@ -23,4 +21,7 @@ class AppRoute {
   static const String goalAddRoute = '/app/finance/goal/add';
   static const String goalViewRoute = '/app/finance/goal/uuid:';
   static const String goalEditRoute = '/app/finance/goal/uuid:/edit';
+  static const String homeRoute = '/app/finance/main';
+  static const String initRoute = '/app/finance';
+  static const String startRoute = '/app/finance/start';
 }

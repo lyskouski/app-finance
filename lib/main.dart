@@ -6,6 +6,7 @@ import 'package:app_finance/custom_text_theme.dart';
 import 'package:app_finance/data.dart';
 import 'package:app_finance/_classes/app_route.dart';
 import 'package:app_finance/firebase_options.dart';
+import 'package:app_finance/routes/about_page.dart';
 import 'package:app_finance/routes/account_add_page.dart';
 import 'package:app_finance/routes/account_edit_page.dart';
 import 'package:app_finance/routes/account_view_page.dart';
@@ -110,6 +111,7 @@ class MyAppState extends State<MyApp> {
         AppRoute.initRoute: (context) => InitPage(),
         AppRoute.startRoute: (context) => StartPage(),
         AppRoute.homeRoute: (context) => HomePage(),
+        AppRoute.aboutRoute: (context) => AboutPage(),
         AppRoute.accountRoute: (context) => AccountPage(),
         AppRoute.accountAddRoute: (context) => AccountAddPage(),
         AppRoute.budgetRoute: (context) => BudgetPage(),
