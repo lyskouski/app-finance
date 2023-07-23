@@ -65,6 +65,11 @@ class AppMenu {
         icon: Icons.settings,
         route: AppRoute.homeRoute,
       ),
+      AppMenuItem(
+        name: locale!.aboutHeadline,
+        icon: Icons.question_answer_outlined,
+        route: AppRoute.aboutRoute,
+      ),
     ];
   }
 }

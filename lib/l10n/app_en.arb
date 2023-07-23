@@ -1,5 +1,6 @@
 {
     "a": "RUN `dart run grinder sort-translations --quiet` FOR ORDERING",
+    "aboutHeadline": "About",
     "account": "Account",
     "accountFrom": "From Account",
     "accountHeadline": "Accounts",
@@ -11,9 +12,16 @@
     "addBudgetTooltip": "Add new Budget Category",
     "addGoalTooltip": "Add new Goal",
     "addMainTooltip": "Add Bill, Income or Transfer",
+    "appBuild": "Build: {build}",
     "appInitHeadline": "Project Initialization",
     "appStartHeadline": "Initial Setup",
     "appTitle": "Fingram",
+    "@appVersion": {
+        "build": {
+            "type": "String"
+        }
+    },
+    "appVersion": "Version: {version}",
     "backTooltip": "Return back",
     "balance": "Actual Balance",
     "balanceDate": "Balance Date Update",
@@ -50,7 +58,10 @@
     "currencyDefault": "Default Currency",
     "currencyExchange": "Currency Exchange: {from} -> {to}",
     "@currencyExchange": {
-        "currency": {
+        "from": {
+            "type": "String"
+        },
+        "to": {
             "type": "String"
         }
     },
@@ -90,8 +101,11 @@
     "isRequired": "required",
     "left": "left",
     "metricsHeadline": "Metrics",
+    "milestones": "Milestones",
     "navigationTooltip": "Open main menu",
     "ok": "OK",
+    "releases": "Releases",
+    "roadmap": "Roadmap",
     "saveNotification": "Changes saved!",
     "saveTooltip": "Save",
     "settingsHeadline": "Settings",
