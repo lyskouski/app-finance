@@ -161,7 +161,6 @@ class AppData extends ChangeNotifier {
     final rec = BillRecalculation(change: change, initial: initial)
       ..exchange = Exchange(store: this);
     if (currAccount != null) {
-      // @todo: update goals
       rec.updateAccount(currAccount, prevAccount);
       _data[AppDataType.accounts]?.add(change.account);
     }
@@ -170,7 +169,17 @@ class AppData extends ChangeNotifier {
       _data[AppDataType.budgets]?.add(change.category);
     }
     _set(AppDataType.bills, change);
-    rec.updateTotal(_data[AppDataType.bills], _hashTable).then(_notify);
+    rec.updateTotal(_data[AppDataType.bills], _hashTable).then((_) async {
+      if (currAccount != null) {
+        await AccountRecalculation(change: currAccount, initial: prevAccount)
+            .updateTotal(_data[AppDataType.accounts], _hashTable);
+      }
+    }).then((_) async {
+      if (currBudget != null) {
+        await BudgetRecalculation(change: currBudget, initial: prevBudget)
+            .updateTotal(_data[AppDataType.budgets], _hashTable);
+      }
+    }).then(_notify);
   }
 
   void _updateBudget(BudgetAppData? initial, BudgetAppData change) {
