@@ -5,6 +5,7 @@
 import 'package:adaptive_breakpoints/adaptive_breakpoints.dart';
 import 'package:app_finance/_classes/app_route.dart';
 import 'package:app_finance/_classes/data/account_app_data.dart';
+import 'package:app_finance/_classes/data/exchange.dart';
 import 'package:app_finance/_classes/focus_controller.dart';
 import 'package:app_finance/_mixins/shared_preferences_mixin.dart';
 import 'package:app_finance/custom_text_theme.dart';
@@ -66,7 +67,8 @@ class IncomeTabState extends State<IncomeTab> with SharedPreferencesMixin {
     String uuid = account ?? '';
     setPreference(prefAccount, uuid);
     AccountAppData value = state.getByUuid(uuid);
-    value.details += state.reform(amount, currency, value.currency);
+    value.details +=
+        Exchange(store: state).reform(amount, currency, value.currency);
     state.update(AppDataType.accounts, uuid, value);
   }
 

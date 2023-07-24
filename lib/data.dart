@@ -10,12 +10,12 @@ import 'package:app_finance/_classes/data/bill_recalculation.dart';
 import 'package:app_finance/_classes/data/budget_app_data.dart';
 import 'package:app_finance/_classes/data/budget_recalculation.dart';
 import 'package:app_finance/_classes/data/currency_app_data.dart';
+import 'package:app_finance/_classes/data/exchange.dart';
 import 'package:app_finance/_classes/data/goal_app_data.dart';
 import 'package:app_finance/_classes/data/goal_recalculation.dart';
 import 'package:app_finance/_classes/data/summary_app_data.dart';
 import 'package:app_finance/_classes/data/transaction_log.dart';
 import 'package:app_finance/_classes/data/transaction_log_data.dart';
-import 'package:currency_picker/currency_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:uuid/uuid.dart';
 
@@ -72,6 +72,12 @@ class AppData extends ChangeNotifier {
     _data[property]?.add(value.uuid);
     if (!isLoading) {
       TransactionLog.save(value);
+    }
+    _notify(null);
+  }
+
+  void _notify(dynamic value) {
+    if (!isLoading) {
       notifyListeners();
     }
   }
@@ -109,22 +115,6 @@ class AppData extends ChangeNotifier {
     }
   }
 
-  double reform(double? amount, Currency? origin, Currency? target) {
-    amount ??= 0.0;
-    if (origin?.code != target?.code) {
-      CurrencyAppData? ex = getByUuid('${origin?.code}-${target?.code}');
-      if (ex == null) {
-        ex = CurrencyAppData(
-          currency: target,
-          currencyFrom: origin,
-        );
-        add(AppDataType.currencies, ex);
-      }
-      amount *= ex.details;
-    }
-    return amount;
-  }
-
   void _update(AppDataType property, dynamic initial, dynamic change) {
     switch (property) {
       case AppDataType.accounts:
@@ -142,7 +132,8 @@ class AppData extends ChangeNotifier {
 
   void _updateAccount(AccountAppData? initial, AccountAppData change) {
     var calc = AccountRecalculation(change: change, initial: initial)
-        .updateTotal(_data[AppDataType.accounts], _hashTable);
+      ..exchange = Exchange(store: this);
+    calc.updateTotal(_data[AppDataType.accounts], _hashTable).then(_notify);
     if (initial != null) {
       var goalList = getList(AppDataType.goals, false)
           .where((dynamic goal) => goal.progress < 1.0);
@@ -166,9 +157,9 @@ class AppData extends ChangeNotifier {
         _data[AppDataType.budgets]?.add(initial.category);
       }
     }
-    final rec =
-        BillRecalculation(change: change, initial: initial, reform: reform)
-            .updateTotal(_data[AppDataType.bills], _hashTable);
+    final rec = BillRecalculation(change: change, initial: initial)
+      ..exchange = Exchange(store: this);
+    rec.updateTotal(_data[AppDataType.bills], _hashTable).then(_notify);
     if (currAccount != null) {
       // @todo: update goals
       rec.updateAccount(currAccount, prevAccount);
@@ -183,15 +174,19 @@ class AppData extends ChangeNotifier {
 
   void _updateBudget(BudgetAppData? initial, BudgetAppData change) {
     BudgetRecalculation(change: change, initial: initial)
-        .updateBudget()
-        .updateTotal(_data[AppDataType.budgets], _hashTable);
+      ..exchange = Exchange(store: this)
+      ..updateBudget()
+          .updateTotal(_data[AppDataType.budgets], _hashTable)
+          .then(_notify);
     _set(AppDataType.budgets, change);
   }
 
   void _updateGoal(GoalAppData? initial, GoalAppData change) {
     GoalRecalculation(change: change, initial: initial)
-        .updateGoal()
-        .updateTotal(_data[AppDataType.goals], _hashTable);
+      ..exchange = Exchange(store: this)
+      ..updateGoal()
+          .updateTotal(_data[AppDataType.goals], _hashTable)
+          .then(_notify);
     _set(AppDataType.goals, change);
   }
 

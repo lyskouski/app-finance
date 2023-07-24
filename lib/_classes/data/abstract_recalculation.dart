@@ -3,20 +3,22 @@
 // found in the LICENSE file.
 
 import 'dart:collection';
+import 'package:app_finance/_classes/data/exchange.dart';
 import 'package:app_finance/_classes/data/summary_app_data.dart';
 
 abstract class AbstractRecalculation {
+  late Exchange exchange;
+
   double getDelta();
 
-  dynamic updateTotal(
-      SummaryAppData? summary, HashMap<String, dynamic> hashTable) {
+  Future<void> updateTotal(
+      SummaryAppData? summary, HashMap<String, dynamic> hashTable) async {
     var list = summary?.list;
     summary?.total = (list == null || list.isEmpty
         ? 0.0
         : list
             .map<double>((String uuid) => hashTable[uuid].details)
             .reduce((value, details) => value + details));
-    return this;
   }
 
   double getProgress(double amount, double progress, double delta) {

@@ -27,8 +27,8 @@ class GoalRecalculation extends AbstractRecalculation {
   }
 
   @override
-  GoalRecalculation updateTotal(
-      SummaryAppData? summary, HashMap<String, dynamic> hashTable) {
+  Future<void> updateTotal(
+      SummaryAppData? summary, HashMap<String, dynamic> hashTable) async {
     var list = summary?.list;
     summary?.total = (list == null || list.isEmpty
         ? 0.0
@@ -36,7 +36,6 @@ class GoalRecalculation extends AbstractRecalculation {
             var element = hashTable[uuid];
             return element.details * (1 - element.progress);
           }).reduce((value, details) => value + details));
-    return this;
   }
 
   GoalRecalculation updateGoal() {
