@@ -62,6 +62,7 @@ class AppData extends ChangeNotifier {
 
   AppData() : super() {
     isLoading = true;
+    Exchange(store: this).getDefaultCurrency();
     TransactionLog.load(this)
         .then((success) => notifyListeners())
         .then((success) => isLoading = false);

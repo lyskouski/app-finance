@@ -9,14 +9,18 @@ import 'package:currency_picker/currency_picker.dart';
 
 class Exchange with SharedPreferencesMixin {
   AppData store;
+  static Currency? defaultCurrency;
 
   Exchange({
     required this.store,
   });
 
   Future<Currency?> getDefaultCurrency() async {
-    final code = await getPreference(prefCurrency) ?? 'EUR';
-    return CurrencyService().findByCode(code);
+    if (defaultCurrency == null) {
+      final code = await getPreference(prefCurrency) ?? 'EUR';
+      defaultCurrency = CurrencyService().findByCode(code);
+    }
+    return defaultCurrency;
   }
 
   double reform(double? amount, Currency? origin, Currency? target) {
