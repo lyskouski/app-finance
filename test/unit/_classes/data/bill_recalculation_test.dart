@@ -6,11 +6,16 @@ import 'package:app_finance/_classes/data/account_app_data.dart';
 import 'package:app_finance/_classes/data/bill_app_data.dart';
 import 'package:app_finance/_classes/data/bill_recalculation.dart';
 import 'package:app_finance/_classes/data/budget_app_data.dart';
+import 'package:app_finance/_classes/data/exchange.dart';
 import 'package:app_finance/_classes/gen/generate_with_method_setters.dart';
+import 'package:app_finance/data.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:mockito/annotations.dart';
 
 @GenerateWithMethodSetters([BillRecalculation])
 import 'bill_recalculation_test.wrapper.dart';
+@GenerateNiceMocks([MockSpec<AppData>()])
+import 'bill_recalculation_test.mocks.dart';
 
 void main() {
   group('BillRecalculation', () {
@@ -24,10 +29,10 @@ void main() {
         category: '',
       );
       object = BillRecalculation(
-        reform: (value, from, to) => value ?? 0.0,
         initial: billMock.clone(),
         change: billMock.clone(),
       );
+      object.exchange = Exchange(store: MockAppData());
     });
 
     group('getDelta', () {
@@ -158,10 +163,10 @@ void main() {
           object.initial!.createdAtFormatted = v.initial.createdAtFormatted;
           object.change.createdAtFormatted = v.change.createdAtFormatted;
           final mock = WrapperBillRecalculation(
-            reform: object.reform,
             initial: object.initial,
             change: object.change,
           );
+          mock.exchange = object.exchange;
           mock.mockGetDelta = () => v.getDelta;
           mock.mockGetPrevDelta = () => v.getPrevDelta;
           final initial = AccountAppData(title: '', type: '')
@@ -198,10 +203,10 @@ void main() {
       for (var v in testCases) {
         test('$v', () {
           final mock = WrapperBillRecalculation(
-            reform: object.reform,
             initial: object.initial,
             change: object.change,
           );
+          mock.exchange = object.exchange;
           mock.mockGetDelta = () => v.getDelta;
           mock.mockGetPrevDelta = () => v.getPrevDelta;
           final initial =

@@ -14,8 +14,9 @@ class Exchange with SharedPreferencesMixin {
     required this.store,
   });
 
-  Future<String> getDefaultCurrency() async {
-    return await getPreference(prefCurrency) ?? 'EUR';
+  Future<Currency?> getDefaultCurrency() async {
+    final code = await getPreference(prefCurrency) ?? 'EUR';
+    return CurrencyService().findByCode(code);
   }
 
   double reform(double? amount, Currency? origin, Currency? target) {

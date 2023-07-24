@@ -2,7 +2,6 @@
 // Use of this source code is governed by a CC BY-NC-ND 4.0 license that can be
 // found in the LICENSE file.
 
-import 'dart:collection';
 import 'package:app_finance/_classes/data/abstract_recalculation.dart';
 import 'package:app_finance/_classes/data/account_app_data.dart';
 import 'package:app_finance/_classes/data/bill_app_data.dart';
@@ -74,14 +73,7 @@ class BillRecalculation extends AbstractRecalculation {
   }
 
   @override
-  Future<void> updateTotal(
-      SummaryAppData? summary, HashMap<String, dynamic> hashTable) async {
-    var list = summary?.listActual;
-    summary?.total = getDelta() +
-        (list == null || list.isEmpty
-            ? 0.0
-            : list
-                .map<double>((String uuid) => hashTable[uuid].details as double)
-                .reduce((value, details) => value + details));
+  List<String>? getSummaryList(SummaryAppData? summary) {
+    return summary?.listActual;
   }
 }
