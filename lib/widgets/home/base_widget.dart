@@ -3,6 +3,7 @@
 // found in the LICENSE file.
 
 import 'package:adaptive_breakpoints/adaptive_breakpoints.dart';
+import 'package:app_finance/_classes/data/exchange.dart';
 import 'package:app_finance/custom_text_theme.dart';
 import 'package:app_finance/widgets/_wrappers/tap_widget.dart';
 import 'package:app_finance/helpers/theme_helper.dart';
@@ -54,7 +55,7 @@ class BaseWidget extends StatelessWidget {
     final locale = Localizations.localeOf(context).toString();
     final NumberFormat formatter = NumberFormat.currency(
       locale: locale,
-      symbol: '\$',
+      symbol: Exchange.defaultCurrency?.symbol,
       decimalDigits: 2,
     );
     final DateFormat formatterDate = DateFormat.MMMMd(locale);

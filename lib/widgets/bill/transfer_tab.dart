@@ -5,6 +5,7 @@
 import 'package:adaptive_breakpoints/adaptive_breakpoints.dart';
 import 'package:app_finance/_classes/app_route.dart';
 import 'package:app_finance/_classes/data/account_app_data.dart';
+import 'package:app_finance/_classes/data/exchange.dart';
 import 'package:app_finance/_classes/focus_controller.dart';
 import 'package:app_finance/custom_text_theme.dart';
 import 'package:app_finance/data.dart';
@@ -62,12 +63,13 @@ class TransferTabState extends State<TransferTab> {
 
   void updateStorage() {
     String uuidFrom = accountFrom ?? '';
+    final course = Exchange(store: state);
     AccountAppData from = state.getByUuid(uuidFrom);
-    from.details -= state.reform(amount, from.currency, currency);
+    from.details -= course.reform(amount, from.currency, currency);
     state.update(AppDataType.accounts, uuidFrom, from);
     String uuidTo = accountTo ?? '';
     AccountAppData to = state.getByUuid(uuidTo);
-    to.details += state.reform(amount, currency, to.currency);
+    to.details += course.reform(amount, currency, to.currency);
     state.update(AppDataType.accounts, uuidTo, to);
   }
 
