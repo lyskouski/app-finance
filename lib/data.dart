@@ -119,16 +119,22 @@ class AppData extends ChangeNotifier {
   void _update(AppDataType property, dynamic initial, dynamic change) {
     switch (property) {
       case AppDataType.accounts:
-        return _updateAccount(initial, change);
+        _updateAccount(initial, change);
+        break;
       case AppDataType.bills:
-        return _updateBill(initial, change);
+        _updateBill(initial, change);
+        break;
       case AppDataType.budgets:
-        return _updateBudget(initial, change);
+        _updateBudget(initial, change);
+        break;
       case AppDataType.goals:
-        return _updateGoal(initial, change);
+        _updateGoal(initial, change);
+        break;
       case AppDataType.currencies:
-        return _updateCurrency(initial, change);
+        _updateCurrency(initial, change);
+        break;
     }
+    _set(property, change);
   }
 
   void _updateAccount(AccountAppData? initial, AccountAppData change) {
@@ -139,7 +145,6 @@ class AppData extends ChangeNotifier {
           .where((dynamic goal) => goal.progress < 1.0);
       calc.updateGoals(goalList);
     }
-    _set(AppDataType.accounts, change);
     calc.updateTotal(_data[AppDataType.accounts], _hashTable).then(_notify);
   }
 
@@ -168,7 +173,6 @@ class AppData extends ChangeNotifier {
       rec.updateBudget(currBudget, prevBudget);
       _data[AppDataType.budgets]?.add(change.category);
     }
-    _set(AppDataType.bills, change);
     rec.updateTotal(_data[AppDataType.bills], _hashTable).then((_) async {
       if (currAccount != null) {
         await AccountRecalculation(change: currAccount, initial: prevAccount)
@@ -186,7 +190,6 @@ class AppData extends ChangeNotifier {
     final budget = BudgetRecalculation(change: change, initial: initial)
       ..exchange = Exchange(store: this)
       ..updateBudget();
-    _set(AppDataType.budgets, change);
     budget.updateTotal(_data[AppDataType.budgets], _hashTable).then(_notify);
   }
 
@@ -194,12 +197,10 @@ class AppData extends ChangeNotifier {
     final goal = GoalRecalculation(change: change, initial: initial)
       ..exchange = Exchange(store: this)
       ..updateGoal();
-    _set(AppDataType.goals, change);
     goal.updateTotal(_data[AppDataType.goals], _hashTable).then(_notify);
   }
 
   void _updateCurrency(CurrencyAppData? initial, CurrencyAppData change) {
-    _set(AppDataType.currencies, change);
     // TBD: Update totals for Budget and Account
   }
 
