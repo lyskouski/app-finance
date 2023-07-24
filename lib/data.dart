@@ -133,13 +133,13 @@ class AppData extends ChangeNotifier {
   void _updateAccount(AccountAppData? initial, AccountAppData change) {
     var calc = AccountRecalculation(change: change, initial: initial)
       ..exchange = Exchange(store: this);
-    calc.updateTotal(_data[AppDataType.accounts], _hashTable).then(_notify);
     if (initial != null) {
       var goalList = getList(AppDataType.goals, false)
           .where((dynamic goal) => goal.progress < 1.0);
       calc.updateGoals(goalList);
     }
     _set(AppDataType.accounts, change);
+    calc.updateTotal(_data[AppDataType.accounts], _hashTable).then(_notify);
   }
 
   void _updateBill(BillAppData? initial, BillAppData change) {
@@ -159,7 +159,6 @@ class AppData extends ChangeNotifier {
     }
     final rec = BillRecalculation(change: change, initial: initial)
       ..exchange = Exchange(store: this);
-    rec.updateTotal(_data[AppDataType.bills], _hashTable).then(_notify);
     if (currAccount != null) {
       // @todo: update goals
       rec.updateAccount(currAccount, prevAccount);
@@ -170,24 +169,23 @@ class AppData extends ChangeNotifier {
       _data[AppDataType.budgets]?.add(change.category);
     }
     _set(AppDataType.bills, change);
+    rec.updateTotal(_data[AppDataType.bills], _hashTable).then(_notify);
   }
 
   void _updateBudget(BudgetAppData? initial, BudgetAppData change) {
-    BudgetRecalculation(change: change, initial: initial)
+    final budget = BudgetRecalculation(change: change, initial: initial)
       ..exchange = Exchange(store: this)
-      ..updateBudget()
-          .updateTotal(_data[AppDataType.budgets], _hashTable)
-          .then(_notify);
+      ..updateBudget();
     _set(AppDataType.budgets, change);
+    budget.updateTotal(_data[AppDataType.budgets], _hashTable).then(_notify);
   }
 
   void _updateGoal(GoalAppData? initial, GoalAppData change) {
-    GoalRecalculation(change: change, initial: initial)
+    final goal = GoalRecalculation(change: change, initial: initial)
       ..exchange = Exchange(store: this)
-      ..updateGoal()
-          .updateTotal(_data[AppDataType.goals], _hashTable)
-          .then(_notify);
+      ..updateGoal();
     _set(AppDataType.goals, change);
+    goal.updateTotal(_data[AppDataType.goals], _hashTable).then(_notify);
   }
 
   void _updateCurrency(CurrencyAppData? initial, CurrencyAppData change) {
