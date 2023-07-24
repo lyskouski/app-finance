@@ -141,9 +141,7 @@ class AppData extends ChangeNotifier {
     var calc = AccountRecalculation(change: change, initial: initial)
       ..exchange = Exchange(store: this);
     if (initial != null) {
-      var goalList = getList(AppDataType.goals, false)
-          .where((dynamic goal) => goal.progress < 1.0);
-      calc.updateGoals(goalList);
+      calc.updateGoals(getList(AppDataType.goals, false));
     }
     calc.updateTotal(_data[AppDataType.accounts], _hashTable).then(_notify);
   }
@@ -175,8 +173,12 @@ class AppData extends ChangeNotifier {
     }
     rec.updateTotal(_data[AppDataType.bills], _hashTable).then((_) async {
       if (currAccount != null) {
-        await AccountRecalculation(change: currAccount, initial: prevAccount)
-            .updateTotal(_data[AppDataType.accounts], _hashTable);
+        final recAccount =
+            AccountRecalculation(change: currAccount, initial: prevAccount);
+        final currTotal = getTotal(AppDataType.accounts);
+        await recAccount.updateTotal(_data[AppDataType.accounts], _hashTable);
+        recAccount.updateGoals(getList(AppDataType.goals, false),
+            getTotal(AppDataType.accounts) - currTotal);
       }
     }).then((_) async {
       if (currBudget != null) {

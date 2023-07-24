@@ -23,11 +23,11 @@ class AccountRecalculation extends AbstractRecalculation {
             : change.details - initial?.details);
   }
 
-  AccountRecalculation updateGoals(dynamic goalList) {
+  AccountRecalculation updateGoals(dynamic goalList, [double? totalDelta]) {
     if (initial == null) {
       return this;
     }
-    double delta = getDelta();
+    double delta = totalDelta ?? getDelta();
     if (goalList.isNotEmpty && !initial!.hidden) {
       int index = 0;
       delta /= goalList.length;
