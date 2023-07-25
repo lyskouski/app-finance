@@ -140,10 +140,14 @@ class AppData extends ChangeNotifier {
   void _updateAccount(AccountAppData? initial, AccountAppData change) {
     var calc = AccountRecalculation(change: change, initial: initial)
       ..exchange = Exchange(store: this);
-    if (initial != null) {
-      calc.updateGoals(getList(AppDataType.goals, false));
-    }
-    calc.updateTotal(_data[AppDataType.accounts], _hashTable).then(_notify);
+
+    final currTotal = getTotal(AppDataType.accounts);
+    calc.updateTotal(_data[AppDataType.accounts], _hashTable).then((_) {
+      if (initial != null) {
+        calc.updateGoals(getList(AppDataType.goals, false), currTotal,
+            getTotal(AppDataType.accounts));
+      }
+    }).then(_notify);
   }
 
   void _updateBill(BillAppData? initial, BillAppData change) {
@@ -174,11 +178,13 @@ class AppData extends ChangeNotifier {
     rec.updateTotal(_data[AppDataType.bills], _hashTable).then((_) async {
       if (currAccount != null) {
         final recAccount =
-            AccountRecalculation(change: currAccount, initial: prevAccount);
+            AccountRecalculation(change: currAccount, initial: prevAccount)
+              ..exchange = Exchange(store: this);
         final currTotal = getTotal(AppDataType.accounts);
         await recAccount.updateTotal(_data[AppDataType.accounts], _hashTable);
-        recAccount.updateGoals(getList(AppDataType.goals, false),
-            getTotal(AppDataType.accounts) - currTotal);
+        final total = getTotal(AppDataType.accounts);
+        recAccount.updateGoals(
+            getList(AppDataType.goals, false), currTotal, total);
       }
     }).then((_) async {
       if (currBudget != null) {

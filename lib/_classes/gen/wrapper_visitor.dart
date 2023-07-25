@@ -22,7 +22,11 @@ class WrapperVisitor {
 
   void addImport(LibraryElement className) {
     buffer.writeln('// ignore: unused_import');
-    buffer.writeln("import '${className.source.uri}';");
+    String path = className.source.uri.toString();
+    if (path.contains('asset:')) {
+      path = className.source.uri.pathSegments.last;
+    }
+    buffer.writeln("import '$path';");
   }
 
   void addClassDefinition() {
@@ -44,11 +48,14 @@ class WrapperVisitor {
   void addMethods() {
     for (final m in element.methods) {
       final args = m.parameters.map((e) => e.name).toList().join(', ');
+      final typedArgs =
+          m.parameters.map((e) => '${e.type} ${e.name}').toList().join(', ');
       final name = 'mock${m.name[0].toUpperCase()}${m.name.substring(1)}';
       buffer.writeln('');
-      buffer.writeln('  ${m.returnType} Function()? _${m.name};');
+      buffer.writeln('  ${m.returnType} Function($typedArgs)? _${m.name};');
       buffer.writeln('  // ignore: non_constant_identifier_names');
-      buffer.writeln('  set $name(${m.returnType} Function() value) {');
+      buffer
+          .writeln('  set $name(${m.returnType} Function($typedArgs) value) {');
       buffer.writeln('    _${m.name} = value;');
       buffer.writeln('  }');
       buffer.writeln('');
