@@ -3,6 +3,7 @@
 // found in the LICENSE file.
 
 import 'package:adaptive_breakpoints/adaptive_breakpoints.dart';
+import 'package:app_finance/_classes/app_route.dart';
 import 'package:app_finance/_classes/data/exchange.dart';
 import 'package:app_finance/custom_text_theme.dart';
 import 'package:app_finance/widgets/_wrappers/tap_widget.dart';
@@ -118,7 +119,8 @@ class BaseWidget extends StatelessWidget {
                     } else {
                       return TextButton(
                         onPressed: () {
-                          // Handle "More" button pressed
+                          Navigator.pushNamed(
+                              context, route ?? AppRoute.homeRoute);
                         },
                         child: Text(AppLocalizations.of(context)!.btnMore),
                       );
