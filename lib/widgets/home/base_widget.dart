@@ -16,6 +16,7 @@ class BaseWidget extends StatelessWidget {
   final EdgeInsetsGeometry margin;
   final String title;
   final double offset;
+  final int? limit;
   final dynamic state;
   final String? tooltip;
   final String? route;
@@ -28,6 +29,7 @@ class BaseWidget extends StatelessWidget {
     required this.state,
     required this.offset,
     this.tooltip,
+    this.limit,
     this.route,
     this.routeList = '',
   }) : super(key: key);
@@ -61,6 +63,12 @@ class BaseWidget extends StatelessWidget {
     final DateFormat formatterDate = DateFormat.MMMMd(locale);
     final TextTheme textTheme = Theme.of(context).textTheme;
     final ColorScheme colorScheme = Theme.of(context).colorScheme;
+    int itemCount = state.list.length + 1;
+    bool hasMore = false;
+    if (limit != null && limit! < state.list.length) {
+      itemCount = limit! + 2;
+      hasMore = true;
+    }
 
     return Expanded(
       child: Container(
@@ -99,11 +107,11 @@ class BaseWidget extends StatelessWidget {
             ),
             Expanded(
               child: ListView.builder(
-                  itemCount: state.list.length + 2,
+                  itemCount: itemCount,
                   itemBuilder: (context, index) {
                     if (index == 0) {
                       return SizedBox(height: indent);
-                    } else if (index <= state.list.length) {
+                    } else if (index <= itemCount - (hasMore ? 2 : 0)) {
                       final item = state.list[index - 1];
                       return buildListWidget(
                           item, context, formatter, formatterDate, offset - 40);
