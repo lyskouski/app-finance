@@ -2,17 +2,12 @@
 // Use of this source code is governed by a CC BY-NC-ND 4.0 license that can be
 // found in the LICENSE file.
 
-import 'package:adaptive_breakpoints/adaptive_breakpoints.dart';
-import 'package:app_finance/_classes/app_route.dart';
 import 'package:app_finance/_classes/data/exchange.dart';
-import 'package:app_finance/widgets/_wrappers/row_widget.dart';
-import 'package:app_finance/helpers/theme_helper.dart';
 import 'package:app_finance/widgets/home/base_header_widget.dart';
 import 'package:app_finance/widgets/home/base_line_widget.dart';
 import 'package:app_finance/widgets/home/base_list_limited_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
-import 'package:flutter_gen/gen_l10n/app_localization.dart';
 
 class BaseWidget extends StatelessWidget {
   final EdgeInsetsGeometry margin;
@@ -35,6 +30,22 @@ class BaseWidget extends StatelessWidget {
     this.route,
     this.routeList = '',
   }) : super(key: key);
+
+  Widget buildListWidget(item, BuildContext context, NumberFormat formatter,
+      DateFormat formatterDate, double offset) {
+    item.updateContext(context);
+    return BaseLineWidget(
+      uuid: item.uuid ?? '',
+      title: item.title,
+      description: item.description,
+      details: item.detailsFormatted,
+      progress: item.progress,
+      color: item.color ?? Colors.transparent,
+      hidden: item.hidden,
+      offset: offset,
+      route: routeList,
+    );
+  }
 
   @override
   Widget build(context) {
@@ -65,6 +76,7 @@ class BaseWidget extends StatelessWidget {
                 limit: limit,
                 routeList: routeList,
                 offset: offset,
+                buildListWidget: buildListWidget,
               ),
             ),
           ],
