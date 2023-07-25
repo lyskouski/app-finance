@@ -9,6 +9,7 @@ import 'package:app_finance/widgets/_wrappers/row_widget.dart';
 import 'package:app_finance/helpers/theme_helper.dart';
 import 'package:app_finance/widgets/home/base_header_widget.dart';
 import 'package:app_finance/widgets/home/base_line_widget.dart';
+import 'package:app_finance/widgets/home/base_list_limited_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:flutter_gen/gen_l10n/app_localization.dart';
@@ -35,53 +36,13 @@ class BaseWidget extends StatelessWidget {
     this.routeList = '',
   }) : super(key: key);
 
-  Widget buildListWidget(item, BuildContext context, NumberFormat formatter,
-      DateFormat formatterDate, double offset) {
-    item.updateContext(context);
-    return BaseLineWidget(
-      uuid: item.uuid ?? '',
-      title: item.title,
-      description: item.description,
-      details: item.detailsFormatted,
-      progress: item.progress,
-      color: item.color ?? Colors.transparent,
-      hidden: item.hidden,
-      offset: offset,
-      route: routeList,
-    );
-  }
-
-  Widget buildButton(BuildContext context, String route, String title) {
-    return TextButton(
-      onPressed: () {
-        Navigator.pushNamed(context, AppRoute.homeRoute);
-        Navigator.pushNamed(context, route);
-      },
-      child: Text(title),
-    );
-  }
-
   @override
   Widget build(context) {
-    var theme = ThemeHelper(windowType: getWindowType(context));
-    double indent = theme.getIndent();
-    final locale = Localizations.localeOf(context).toString();
     final NumberFormat formatter = NumberFormat.currency(
-      locale: locale,
+      locale: Localizations.localeOf(context).toString(),
       symbol: Exchange.defaultCurrency?.symbol,
       decimalDigits: 2,
     );
-    final DateFormat formatterDate = DateFormat.MMMMd(locale);
-    int itemCount = state.list.length + 2;
-    bool hasMore = false;
-    if (limit != null && limit! < state.list.length) {
-      itemCount = limit! + 2;
-      hasMore = true;
-    }
-    final addButton = route == null
-        ? const SizedBox()
-        : buildButton(
-            context, '${route!}/add', AppLocalizations.of(context)!.btnAdd);
 
     return Expanded(
       child: Container(
@@ -97,32 +58,14 @@ class BaseWidget extends StatelessWidget {
               tooltip: tooltip,
             ),
             Expanded(
-              child: ListView.builder(
-                  itemCount: itemCount,
-                  itemBuilder: (context, index) {
-                    if (index == 0) {
-                      return SizedBox(height: indent);
-                    } else if (index <= itemCount - 2) {
-                      final item = state.list[index - 1];
-                      return buildListWidget(
-                          item, context, formatter, formatterDate, offset - 40);
-                    } else if (hasMore) {
-                      return RowWidget(
-                        indent: indent,
-                        maxWidth: offset,
-                        chunk: const [0.5, 0.5],
-                        children: [
-                          [
-                            buildButton(context, route ?? AppRoute.homeRoute,
-                                AppLocalizations.of(context)!.btnMore)
-                          ],
-                          [addButton]
-                        ],
-                      );
-                    } else {
-                      return addButton;
-                    }
-                  }),
+              child: BaseListLimitedWidget(
+                formatter: formatter,
+                route: route,
+                state: state,
+                limit: limit,
+                routeList: routeList,
+                offset: offset,
+              ),
             ),
           ],
         ),
