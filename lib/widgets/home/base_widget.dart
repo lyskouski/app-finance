@@ -6,6 +6,7 @@ import 'package:adaptive_breakpoints/adaptive_breakpoints.dart';
 import 'package:app_finance/_classes/app_route.dart';
 import 'package:app_finance/_classes/data/exchange.dart';
 import 'package:app_finance/custom_text_theme.dart';
+import 'package:app_finance/widgets/_wrappers/row_widget.dart';
 import 'package:app_finance/widgets/_wrappers/tap_widget.dart';
 import 'package:app_finance/helpers/theme_helper.dart';
 import 'package:app_finance/widgets/home/base_line_widget.dart';
@@ -51,6 +52,16 @@ class BaseWidget extends StatelessWidget {
     );
   }
 
+  Widget buildButton(BuildContext context, String route, String title) {
+    return TextButton(
+      onPressed: () {
+        Navigator.pushNamed(context, AppRoute.homeRoute);
+        Navigator.pushNamed(context, route);
+      },
+      child: Text(title),
+    );
+  }
+
   @override
   Widget build(context) {
     var theme = ThemeHelper(windowType: getWindowType(context));
@@ -64,12 +75,16 @@ class BaseWidget extends StatelessWidget {
     final DateFormat formatterDate = DateFormat.MMMMd(locale);
     final TextTheme textTheme = Theme.of(context).textTheme;
     final ColorScheme colorScheme = Theme.of(context).colorScheme;
-    int itemCount = state.list.length + 1;
+    int itemCount = state.list.length + 2;
     bool hasMore = false;
     if (limit != null && limit! < state.list.length) {
       itemCount = limit! + 2;
       hasMore = true;
     }
+    final addButton = route == null
+        ? const SizedBox()
+        : buildButton(
+            context, '${route!}/add', AppLocalizations.of(context)!.btnAdd);
 
     return Expanded(
       child: Container(
@@ -112,18 +127,25 @@ class BaseWidget extends StatelessWidget {
                   itemBuilder: (context, index) {
                     if (index == 0) {
                       return SizedBox(height: indent);
-                    } else if (index <= itemCount - (hasMore ? 2 : 0)) {
+                    } else if (index <= itemCount - 2) {
                       final item = state.list[index - 1];
                       return buildListWidget(
                           item, context, formatter, formatterDate, offset - 40);
-                    } else {
-                      return TextButton(
-                        onPressed: () {
-                          Navigator.pushNamed(
-                              context, route ?? AppRoute.homeRoute);
-                        },
-                        child: Text(AppLocalizations.of(context)!.btnMore),
+                    } else if (hasMore) {
+                      return RowWidget(
+                        indent: indent,
+                        maxWidth: offset,
+                        chunk: const [0.5, 0.5],
+                        children: [
+                          [
+                            buildButton(context, route ?? AppRoute.homeRoute,
+                                AppLocalizations.of(context)!.btnMore)
+                          ],
+                          [addButton]
+                        ],
                       );
+                    } else {
+                      return addButton;
                     }
                   }),
             ),
