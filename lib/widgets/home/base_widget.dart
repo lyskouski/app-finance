@@ -2,12 +2,11 @@
 // Use of this source code is governed by a CC BY-NC-ND 4.0 license that can be
 // found in the LICENSE file.
 
-import 'package:app_finance/_classes/data/exchange.dart';
 import 'package:app_finance/widgets/home/base_header_widget.dart';
 import 'package:app_finance/widgets/home/base_line_widget.dart';
+import 'package:app_finance/widgets/home/base_list_infinite_widget.dart';
 import 'package:app_finance/widgets/home/base_list_limited_widget.dart';
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
 
 class BaseWidget extends StatelessWidget {
   final EdgeInsetsGeometry margin;
@@ -31,8 +30,7 @@ class BaseWidget extends StatelessWidget {
     this.routeList = '',
   }) : super(key: key);
 
-  Widget buildListWidget(item, BuildContext context, NumberFormat formatter,
-      DateFormat formatterDate, double offset) {
+  Widget buildListWidget(item, BuildContext context, double offset) {
     item.updateContext(context);
     return BaseLineWidget(
       uuid: item.uuid ?? '',
@@ -49,12 +47,6 @@ class BaseWidget extends StatelessWidget {
 
   @override
   Widget build(context) {
-    final NumberFormat formatter = NumberFormat.currency(
-      locale: Localizations.localeOf(context).toString(),
-      symbol: Exchange.defaultCurrency?.symbol,
-      decimalDigits: 2,
-    );
-
     return Expanded(
       child: Container(
         margin: margin,
@@ -62,23 +54,28 @@ class BaseWidget extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             BaseHeaderWidget(
-              formatter: formatter,
               route: route,
               state: state,
               title: title,
               tooltip: tooltip,
             ),
             Expanded(
-              child: BaseListLimitedWidget(
-                formatter: formatter,
-                route: route,
-                state: state,
-                limit: limit,
-                routeList: routeList,
-                offset: offset,
-                buildListWidget: buildListWidget,
-              ),
+              child: limit != null
+                  ? BaseListLimitedWidget(
+                      route: route,
+                      state: state.list,
+                      limit: limit,
+                      routeList: routeList,
+                      offset: offset,
+                      buildListWidget: buildListWidget,
+                    )
+                  : BaseListInfiniteWidget(
+                      state: state.list,
+                      offset: offset,
+                      buildListWidget: buildListWidget,
+                    ),
             ),
+            SizedBox(height: limit != null ? 0 : 70),
           ],
         ),
       ),

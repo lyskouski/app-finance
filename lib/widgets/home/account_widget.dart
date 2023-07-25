@@ -31,8 +31,7 @@ class AccountWidget extends BaseWidget {
         );
 
   @override
-  Widget buildListWidget(item, BuildContext context, NumberFormat formatter,
-      DateFormat formatterDate, double offset) {
+  Widget buildListWidget(item, BuildContext context, double offset) {
     item.updateContext(context);
     return BaseLineWidget(
       uuid: item.uuid,

@@ -5,15 +5,14 @@
 import 'dart:convert';
 import 'package:app_finance/_classes/data/transaction_log.dart';
 import 'package:app_finance/_classes/app_data.dart';
+import 'package:app_finance/_mixins/formatter_mixin.dart';
 import 'package:currency_picker/currency_picker.dart';
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
 
-abstract class AbstractAppData {
+abstract class AbstractAppData with FormatterMixin {
   double _amount = 0.0;
   DateTime _createdAt;
   DateTime _updatedAt;
-  BuildContext? _context;
   AppData? _state;
   String title;
   double progress;
@@ -23,6 +22,8 @@ abstract class AbstractAppData {
   String? description;
   MaterialColor? color;
   IconData? icon;
+  @override
+  // ignore: overridden_fields
   Currency? currency;
 
   AbstractAppData({
@@ -83,13 +84,6 @@ abstract class AbstractAppData {
     return json.encode(toFile());
   }
 
-  dynamic updateContext(BuildContext context) {
-    _context = context;
-    return this;
-  }
-
-  BuildContext? getContext() => _context;
-
   dynamic setState(AppData state) {
     _state = state;
     return this;
@@ -97,28 +91,12 @@ abstract class AbstractAppData {
 
   AppData? getState() => _state;
 
-  String getDateFormatted(DateTime date) {
-    final locale = Localizations.localeOf(_context!).toString();
-    final DateFormat formatterDate = DateFormat.yMEd(locale);
-    return formatterDate.format(date);
-  }
-
-  String getNumberFormatted(double value) {
-    final locale = Localizations.localeOf(_context!).toString();
-    final NumberFormat formatter = NumberFormat.currency(
-      locale: locale,
-      symbol: currency?.symbol ?? '?',
-      decimalDigits: 2,
-    );
-    return formatter.format(value);
-  }
-
   set ref(String value) => _ref = value;
 
   dynamic get details => _amount;
 
   set details(dynamic value) {
-    _state?.addLog(uuid, _amount, value, _ref, _updatedAt);
+    _state?.addLog(uuid, currency, _amount, value, _ref, _updatedAt);
     _ref = null;
     _amount = value;
   }

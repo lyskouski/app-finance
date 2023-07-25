@@ -7,11 +7,9 @@ import 'package:app_finance/_classes/app_route.dart';
 import 'package:app_finance/helpers/theme_helper.dart';
 import 'package:app_finance/widgets/_wrappers/row_widget.dart';
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
 import 'package:flutter_gen/gen_l10n/app_localization.dart';
 
 class BaseListLimitedWidget extends StatelessWidget {
-  final NumberFormat formatter;
   final String? route;
   final String routeList;
   final dynamic state;
@@ -21,7 +19,6 @@ class BaseListLimitedWidget extends StatelessWidget {
 
   const BaseListLimitedWidget({
     super.key,
-    required this.formatter,
     required this.route,
     required this.state,
     required this.limit,
@@ -44,11 +41,9 @@ class BaseListLimitedWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     var theme = ThemeHelper(windowType: getWindowType(context));
     double indent = theme.getIndent();
-    final locale = Localizations.localeOf(context).toString();
-    final DateFormat formatterDate = DateFormat.MMMMd(locale);
-    int itemCount = state.list.length + 2;
+    int itemCount = state.length + 2;
     bool hasMore = false;
-    if (limit != null && limit! < state.list.length) {
+    if (limit != null && limit! < state.length) {
       itemCount = limit! + 2;
       hasMore = true;
     }
@@ -63,9 +58,8 @@ class BaseListLimitedWidget extends StatelessWidget {
           if (index == 0) {
             return SizedBox(height: indent);
           } else if (index <= itemCount - 2) {
-            final item = state.list[index - 1];
-            return buildListWidget(
-                item, context, formatter, formatterDate, offset - 40);
+            final item = state[index - 1];
+            return buildListWidget(item, context, offset - 40);
           } else if (hasMore) {
             return RowWidget(
               indent: indent,
