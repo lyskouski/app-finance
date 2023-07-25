@@ -40,6 +40,7 @@
     "closedAt": "Finished till Date",
     "color": "Color",
     "colorTooltip": "Select a color",
+    "completeGoalTooltip": "Complete Goal",
     "conversion": "Conversion",
     "conversionMessage": "Taken in {currency}",
     "createAccountHeader": "Create new Account",

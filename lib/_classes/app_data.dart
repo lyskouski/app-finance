@@ -188,8 +188,10 @@ class AppData extends ChangeNotifier {
       }
     }).then((_) async {
       if (currBudget != null) {
-        await BudgetRecalculation(change: currBudget, initial: prevBudget)
-            .updateTotal(_data[AppDataType.budgets], _hashTable);
+        final recBudget =
+            BudgetRecalculation(change: currBudget, initial: prevBudget)
+              ..exchange = Exchange(store: this);
+        await recBudget.updateTotal(_data[AppDataType.budgets], _hashTable);
       }
     }).then(_notify);
   }
