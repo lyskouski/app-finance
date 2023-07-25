@@ -47,7 +47,7 @@ class StartPageState extends AbstractPageState<StartPage> {
     if (currentStep > 2) {
       Navigator.popAndPushNamed(context, AppRoute.homeRoute);
     } else {
-      setState(() => currentStep++);
+      setState(() => currentStep += 1);
     }
   }
 
