@@ -3,7 +3,7 @@
 // found in the LICENSE file.
 
 import 'package:app_finance/_classes/focus_controller.dart';
-import 'package:app_finance/data.dart';
+import 'package:app_finance/_classes/app_data.dart';
 import 'package:app_finance/widgets/home/base_line_widget.dart';
 import 'package:flutter/material.dart';
 

@@ -4,8 +4,10 @@
 
 import 'package:adaptive_breakpoints/adaptive_breakpoints.dart';
 import 'package:app_finance/_classes/app_menu.dart';
+import 'package:app_finance/_classes/data/bill_app_data.dart';
 import 'package:app_finance/_classes/data/goal_app_data.dart';
-import 'package:app_finance/data.dart';
+import 'package:app_finance/_classes/app_data.dart';
+import 'package:app_finance/_mixins/shared_preferences_mixin.dart';
 import 'package:app_finance/helpers/theme_helper.dart';
 import 'package:app_finance/_classes/app_route.dart';
 import 'package:app_finance/routes/abstract_page.dart';
@@ -24,22 +26,48 @@ class GoalViewPage extends AbstractPage {
   GoalViewPageState createState() => GoalViewPageState();
 }
 
-class GoalViewPageState extends AbstractPageState<GoalViewPage> {
+class GoalViewPageState extends AbstractPageState<GoalViewPage>
+    with SharedPreferencesMixin {
+  late String defaultAccount;
+
   @override
-  String getTitle(context) {
-    final item = super.state.getByUuid(widget.uuid) as GoalAppData;
-    return item.title;
+  void initState() {
+    getPreference(prefAccount).then((accountId) => setState(() {
+          defaultAccount = accountId ?? '';
+        }));
+    super.initState();
   }
 
-  void deactivateAccount(BuildContext context) {
-    var data = super.state.getByUuid(widget.uuid) as GoalAppData;
+  @override
+  String getTitle(context) {
+    final data = super.state.getByUuid(widget.uuid) as GoalAppData;
+    return data.title;
+  }
+
+  void deactivateGoal(GoalAppData data, BuildContext context) {
     data.hidden = true;
     super.state.update(AppDataType.goals, widget.uuid, data);
     Navigator.pop(context);
   }
 
+  void completeGoal(GoalAppData data, BuildContext context) {
+    var newBill = BillAppData(
+        account: defaultAccount,
+        category: '',
+        title:
+            '${AppLocalizations.of(context)!.completeGoalTooltip}: ${data.title}',
+        details: data.details,
+        currency: data.currency);
+    newBill = super.state.add(AppDataType.bills, newBill);
+    deactivateGoal(data, context);
+    String route = AppMenu(context: context)
+        .uuid(AppRoute.billEditRoute, newBill.uuid ?? '');
+    Navigator.popAndPushNamed(context, route);
+  }
+
   @override
   Widget buildButton(BuildContext context, BoxConstraints constraints) {
+    final data = super.state.getByUuid(widget.uuid) as GoalAppData;
     String route =
         AppMenu(context: context).uuid(AppRoute.goalEditRoute, widget.uuid);
     double indent =
@@ -47,11 +75,17 @@ class GoalViewPageState extends AbstractPageState<GoalViewPage> {
     return Container(
       margin: EdgeInsets.only(left: indent),
       child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
-        FloatingActionButton(
-          onPressed: () => deactivateAccount(context),
-          tooltip: AppLocalizations.of(context)!.deleteGoalTooltip,
-          child: const Icon(Icons.delete),
-        ),
+        data.progress == 1.0
+            ? FloatingActionButton(
+                onPressed: () => completeGoal(data, context),
+                tooltip: AppLocalizations.of(context)!.completeGoalTooltip,
+                child: const Icon(Icons.check),
+              )
+            : FloatingActionButton(
+                onPressed: () => deactivateGoal(data, context),
+                tooltip: AppLocalizations.of(context)!.deleteGoalTooltip,
+                child: const Icon(Icons.delete),
+              ),
         FloatingActionButton(
           onPressed: () => Navigator.pushNamed(context, route),
           tooltip: AppLocalizations.of(context)!.editGoalTooltip,

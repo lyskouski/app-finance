@@ -5,7 +5,7 @@
 import 'dart:io';
 
 import 'package:app_finance/main.dart';
-import 'package:app_finance/data.dart';
+import 'package:app_finance/_classes/app_data.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:provider/provider.dart';
 

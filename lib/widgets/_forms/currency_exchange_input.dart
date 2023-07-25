@@ -3,7 +3,7 @@
 // found in the LICENSE file.
 
 import 'package:app_finance/_classes/data/currency_app_data.dart';
-import 'package:app_finance/data.dart';
+import 'package:app_finance/_classes/app_data.dart';
 import 'package:app_finance/widgets/_forms/simple_input.dart';
 import 'package:app_finance/widgets/_wrappers/row_widget.dart';
 import 'package:currency_picker/currency_picker.dart';

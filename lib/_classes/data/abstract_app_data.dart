@@ -4,7 +4,7 @@
 
 import 'dart:convert';
 import 'package:app_finance/_classes/data/transaction_log.dart';
-import 'package:app_finance/data.dart';
+import 'package:app_finance/_classes/app_data.dart';
 import 'package:currency_picker/currency_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
