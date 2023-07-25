@@ -25,18 +25,24 @@ class SettingTabState extends AbstractTabState<SettingTab>
     with SharedPreferencesMixin {
   Currency? currency;
 
-  String? initCurrencyFromLocale(BuildContext context) {
+  Future<void> saveCurrency(Currency? value) async {
+    await setPreference(prefCurrency, value!.code);
+    setState(() {
+      currency = value;
+    });
+  }
+
+  Future<void> initCurrencyFromLocale(BuildContext context) async {
     Locale locale = Localizations.localeOf(context);
-    var format = NumberFormat.simpleCurrency(locale: locale.toString());
-    if (format.currencyName != null) {
-      setPreference(prefCurrency, format.currencyName!);
-      Future.delayed(Duration.zero, () {
-        setState(() {
-          currency = CurrencyService().findByCode(format.currencyName!);
-        });
-      });
+    final format = NumberFormat.simpleCurrency(locale: locale.toString());
+    String? code = await getPreference(prefCurrency);
+    if (code == null && format.currencyName != null) {
+      await setPreference(prefCurrency, format.currencyName!);
+      code = format.currencyName!;
     }
-    return format.currencyName;
+    setState(() {
+      currency = CurrencyService().findByCode(code);
+    });
   }
 
   @override
@@ -60,7 +66,7 @@ class SettingTabState extends AbstractTabState<SettingTab>
           width: double.infinity,
           child: CurrencySelector(
             value: currency,
-            setState: (value) => setState(() => currency = value),
+            setState: saveCurrency,
           ),
         ),
       ],

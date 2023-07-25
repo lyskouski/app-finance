@@ -3,7 +3,6 @@
 // found in the LICENSE file.
 
 import 'package:adaptive_breakpoints/adaptive_breakpoints.dart';
-import 'package:app_finance/_classes/tab_controller_sync.dart';
 import 'package:app_finance/helpers/theme_helper.dart';
 import 'package:app_finance/widgets/_wrappers/dots_tab_bar_widget.dart';
 import 'package:flutter/material.dart';
@@ -26,7 +25,7 @@ class TabWidget extends StatefulWidget {
   TabWidgetState createState() => TabWidgetState();
 }
 
-class TabWidgetState extends State<TabWidget> {
+class TabWidgetState extends State<TabWidget> with TickerProviderStateMixin {
   late PageController pageController;
   late TabController tabController;
   late int tabCount;
@@ -46,7 +45,7 @@ class TabWidgetState extends State<TabWidget> {
     pageController = PageController(initialPage: tabIndex);
     tabController = TabController(
       length: tabCount,
-      vsync: const TabControllerSync(),
+      vsync: this,
       initialIndex: tabIndex,
     );
   }
