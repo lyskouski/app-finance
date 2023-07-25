@@ -3,10 +3,11 @@
 // found in the LICENSE file.
 
 import 'package:adaptive_breakpoints/adaptive_breakpoints.dart';
+import 'package:app_finance/_classes/data/exchange.dart';
 import 'package:app_finance/_classes/data/goal_app_data.dart';
 import 'package:app_finance/_classes/focus_controller.dart';
-import 'package:app_finance/custom_text_theme.dart';
 import 'package:app_finance/_classes/app_data.dart';
+import 'package:app_finance/custom_text_theme.dart';
 import 'package:app_finance/helpers/theme_helper.dart';
 import 'package:app_finance/routes/abstract_page.dart';
 import 'package:app_finance/widgets/_forms/color_selector.dart';
@@ -77,6 +78,10 @@ class GoalAddPageState<T extends GoalAddPage>
         AppDataType.goals,
         GoalAppData(
           title: title ?? '',
+          initial: Exchange(store: super.state).reform(
+              super.state.getTotal(AppDataType.accounts),
+              Exchange.defaultCurrency,
+              currency),
           progress: 0.0,
           color: color,
           hidden: false,

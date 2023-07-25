@@ -9,9 +9,11 @@ import 'package:flutter/material.dart';
 
 class GoalAppData extends AbstractAppData {
   DateTime _closedAt;
+  double initial;
 
   GoalAppData({
     required super.title,
+    required this.initial,
     super.uuid,
     super.details,
     super.progress = 0.0,
@@ -37,6 +39,7 @@ class GoalAppData extends AbstractAppData {
   GoalAppData clone() {
     return GoalAppData(
       title: super.title,
+      initial: initial,
       uuid: super.uuid,
       details: super.details,
       progress: super.progress,
@@ -53,6 +56,7 @@ class GoalAppData extends AbstractAppData {
   factory GoalAppData.fromJson(Map<String, dynamic> json) {
     return GoalAppData(
       title: json['title'],
+      initial: json['initial'] ?? 0.0,
       uuid: json['uuid'],
       details: json['details'],
       progress: json['progress'],
@@ -76,6 +80,7 @@ class GoalAppData extends AbstractAppData {
   @override
   Map<String, dynamic> toJson() => {
         ...super.toJson(),
+        'initial': initial,
         'closedAt': closedAt.toIso8601String(),
       };
 

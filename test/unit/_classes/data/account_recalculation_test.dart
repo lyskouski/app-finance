@@ -86,9 +86,9 @@ void main() {
 
       setUp(() {
         goals = [
-          GoalAppData(title: '1', details: 25.0, progress: 0.0),
-          GoalAppData(title: '2', details: 50.0, progress: 0.0),
-          GoalAppData(title: '3', details: 100.0, progress: 0.0),
+          GoalAppData(title: '1', initial: 0.0, details: 25.0, progress: 0.0),
+          GoalAppData(title: '2', initial: 0.0, details: 50.0, progress: 0.0),
+          GoalAppData(title: '3', initial: 0.0, details: 100.0, progress: 0.0),
         ];
       });
 
