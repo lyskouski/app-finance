@@ -5,10 +5,9 @@
 import 'package:adaptive_breakpoints/adaptive_breakpoints.dart';
 import 'package:app_finance/_classes/app_route.dart';
 import 'package:app_finance/_classes/data/exchange.dart';
-import 'package:app_finance/custom_text_theme.dart';
 import 'package:app_finance/widgets/_wrappers/row_widget.dart';
-import 'package:app_finance/widgets/_wrappers/tap_widget.dart';
 import 'package:app_finance/helpers/theme_helper.dart';
+import 'package:app_finance/widgets/home/base_header_widget.dart';
 import 'package:app_finance/widgets/home/base_line_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
@@ -73,8 +72,6 @@ class BaseWidget extends StatelessWidget {
       decimalDigits: 2,
     );
     final DateFormat formatterDate = DateFormat.MMMMd(locale);
-    final TextTheme textTheme = Theme.of(context).textTheme;
-    final ColorScheme colorScheme = Theme.of(context).colorScheme;
     int itemCount = state.list.length + 2;
     bool hasMore = false;
     if (limit != null && limit! < state.list.length) {
@@ -92,34 +89,12 @@ class BaseWidget extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            TapWidget(
-              tooltip: tooltip,
+            BaseHeaderWidget(
+              formatter: formatter,
               route: route,
-              child: FractionallySizedBox(
-                widthFactor: 1.0,
-                child: Container(
-                  color: colorScheme.inverseSurface.withOpacity(0.1),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Padding(
-                        padding: EdgeInsets.fromLTRB(indent, indent, 0, 0),
-                        child: Text(
-                          title,
-                          style: textTheme.headlineSmall,
-                        ),
-                      ),
-                      Padding(
-                        padding: EdgeInsets.fromLTRB(indent, 0, 0, indent),
-                        child: Text(
-                          formatter.format(state.total),
-                          style: textTheme.numberLarge,
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-              ),
+              state: state,
+              title: title,
+              tooltip: tooltip,
             ),
             Expanded(
               child: ListView.builder(
