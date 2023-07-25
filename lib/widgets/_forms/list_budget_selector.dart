@@ -3,7 +3,7 @@
 // found in the LICENSE file.
 
 import 'package:app_finance/_classes/data/budget_app_data.dart';
-import 'package:app_finance/data.dart';
+import 'package:app_finance/_classes/app_data.dart';
 import 'package:app_finance/widgets/_forms/list_account_selector.dart';
 import 'package:flutter/material.dart';
 

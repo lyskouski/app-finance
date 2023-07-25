@@ -3,7 +3,7 @@
 // found in the LICENSE file.
 
 import 'package:app_finance/_classes/data/bill_app_data.dart';
-import 'package:app_finance/data.dart';
+import 'package:app_finance/_classes/app_data.dart';
 import 'package:app_finance/widgets/bill/expenses_tab.dart';
 import 'package:currency_picker/currency_picker.dart';
 import 'package:flutter_gen/gen_l10n/app_localization.dart';

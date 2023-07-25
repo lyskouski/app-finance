@@ -4,7 +4,7 @@
 
 import 'package:app_finance/_classes/app_route.dart';
 import 'package:app_finance/_mixins/shared_preferences_mixin.dart';
-import 'package:app_finance/data.dart';
+import 'package:app_finance/_classes/app_data.dart';
 import 'package:app_finance/routes/abstract_page.dart';
 import 'package:app_finance/widgets/_wrappers/tap_widget.dart';
 import 'package:app_finance/widgets/init/loading_widget.dart';

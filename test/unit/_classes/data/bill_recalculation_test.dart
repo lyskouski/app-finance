@@ -8,7 +8,7 @@ import 'package:app_finance/_classes/data/bill_recalculation.dart';
 import 'package:app_finance/_classes/data/budget_app_data.dart';
 import 'package:app_finance/_classes/data/exchange.dart';
 import 'package:app_finance/_classes/gen/generate_with_method_setters.dart';
-import 'package:app_finance/data.dart';
+import 'package:app_finance/_classes/app_data.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/annotations.dart';
 

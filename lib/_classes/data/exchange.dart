@@ -4,7 +4,7 @@
 
 import 'package:app_finance/_classes/data/currency_app_data.dart';
 import 'package:app_finance/_mixins/shared_preferences_mixin.dart';
-import 'package:app_finance/data.dart';
+import 'package:app_finance/_classes/app_data.dart';
 import 'package:currency_picker/currency_picker.dart';
 
 class Exchange with SharedPreferencesMixin {

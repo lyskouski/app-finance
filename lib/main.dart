@@ -3,7 +3,7 @@
 // found in the LICENSE file.
 
 import 'package:app_finance/custom_text_theme.dart';
-import 'package:app_finance/data.dart';
+import 'package:app_finance/_classes/app_data.dart';
 import 'package:app_finance/_classes/app_route.dart';
 import 'package:app_finance/firebase_options.dart';
 import 'package:app_finance/routes/about_page.dart';
