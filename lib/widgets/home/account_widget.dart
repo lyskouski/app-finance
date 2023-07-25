@@ -15,6 +15,7 @@ class AccountWidget extends BaseWidget {
     required EdgeInsetsGeometry margin,
     required dynamic state,
     required double offset,
+    int? limit,
     String? tooltip,
     String? route,
     String routeList = AppRoute.accountViewRoute,
@@ -23,14 +24,14 @@ class AccountWidget extends BaseWidget {
           offset: offset,
           title: title,
           state: state,
+          limit: limit,
           tooltip: tooltip,
           route: route,
           routeList: routeList,
         );
 
   @override
-  Widget buildListWidget(item, BuildContext context, NumberFormat formatter,
-      DateFormat formatterDate, double offset) {
+  Widget buildListWidget(item, BuildContext context, double offset) {
     item.updateContext(context);
     return BaseLineWidget(
       uuid: item.uuid,

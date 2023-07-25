@@ -14,6 +14,7 @@ class BillWidget extends BaseWidget {
     String? tooltip,
     required EdgeInsetsGeometry margin,
     required dynamic state,
+    int? limit,
     String? route,
     String routeList = AppRoute.billViewRoute,
   }) : super(
@@ -21,6 +22,7 @@ class BillWidget extends BaseWidget {
           offset: offset,
           title: title,
           state: state,
+          limit: limit,
           tooltip: tooltip,
           route: route,
           routeList: routeList,

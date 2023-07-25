@@ -16,6 +16,7 @@ import 'package:app_finance/_classes/data/goal_recalculation.dart';
 import 'package:app_finance/_classes/data/summary_app_data.dart';
 import 'package:app_finance/_classes/data/transaction_log.dart';
 import 'package:app_finance/_classes/data/transaction_log_data.dart';
+import 'package:currency_picker/currency_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:uuid/uuid.dart';
 
@@ -89,7 +90,7 @@ class AppData extends ChangeNotifier {
     return getByUuid(value.uuid);
   }
 
-  void addLog(uuid, dynamic initial, dynamic value,
+  void addLog(uuid, Currency? currency, dynamic initial, dynamic value,
       [String? ref, DateTime? updatedAt]) {
     if (_history[uuid] == null) {
       _history[uuid] = [];
@@ -98,6 +99,7 @@ class AppData extends ChangeNotifier {
       _history[uuid]!.add(TransactionLogData(
         timestamp: updatedAt,
         ref: ref,
+        currency: currency,
         name: 'details',
         changedFrom: initial,
         changedTo: value,
@@ -109,7 +111,8 @@ class AppData extends ChangeNotifier {
       [bool createIfMissing = false]) {
     var initial = getByUuid(uuid, false);
     if (initial != null) {
-      addLog(uuid, initial.details, value.details, null, value.updatedAt);
+      addLog(uuid, initial.currency, initial.details, value.details, null,
+          value.updatedAt);
     }
     if (initial != null || createIfMissing) {
       _update(property, initial, value);

@@ -10,6 +10,7 @@ import 'package:app_finance/helpers/theme_helper.dart';
 import 'package:app_finance/_classes/app_route.dart';
 import 'package:app_finance/routes/abstract_page.dart';
 import 'package:app_finance/widgets/home/base_line_widget.dart';
+import 'package:app_finance/widgets/home/base_list_infinite_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localization.dart';
 
@@ -61,6 +62,19 @@ class AccountViewPageState extends AbstractPageState<AccountViewPage> {
     );
   }
 
+  Widget buildListWidget(item, BuildContext context, double offset) {
+    item.updateContext(context);
+    return BaseLineWidget(
+      uuid: '',
+      title: '',
+      description: item.getDateFormatted(item.timestamp),
+      progress: 1.0,
+      details: item.getNumberFormatted(item.changedTo - item.changedFrom),
+      color: Colors.transparent,
+      offset: offset,
+    );
+  }
+
   @override
   Widget buildContent(BuildContext context, BoxConstraints constraints) {
     final item = super.state.getByUuid(widget.uuid) as AccountAppData;
@@ -81,18 +95,14 @@ class AccountViewPageState extends AbstractPageState<AccountViewPage> {
           offset: offset,
           route: AppRoute.accountViewRoute,
         ),
-        ...List<Widget>.generate(
-            log?.length ?? 0,
-            (i) => BaseLineWidget(
-                  uuid: '',
-                  title: '',
-                  description: item.getDateFormatted(log![i].timestamp),
-                  progress: 1.0,
-                  details: item.getNumberFormatted(
-                      log[i].changedTo - log[i].changedFrom),
-                  color: Colors.transparent,
-                  offset: offset,
-                ))
+        Expanded(
+          child: BaseListInfiniteWidget(
+            state: log,
+            offset: offset,
+            buildListWidget: buildListWidget,
+          ),
+        ),
+        const SizedBox(height: 70)
       ],
     );
   }

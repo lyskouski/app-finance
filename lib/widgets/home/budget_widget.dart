@@ -14,6 +14,7 @@ class BudgetWidget extends AccountWidget {
     String? tooltip,
     required EdgeInsetsGeometry margin,
     required dynamic state,
+    int? limit,
     String? route,
     String routeList = AppRoute.budgetViewRoute,
   }) : super(
@@ -22,6 +23,7 @@ class BudgetWidget extends AccountWidget {
           tooltip: tooltip,
           title: title,
           state: state,
+          limit: limit,
           route: route,
           routeList: routeList,
         );

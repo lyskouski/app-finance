@@ -104,6 +104,7 @@ class HomePageState extends AbstractPageState<HomePage> {
       title:
           '${AppLocalizations.of(context)!.billHeadline}, ${formatterDate.format(DateTime.now())}',
       state: super.state.get(AppDataType.bills),
+      limit: 5,
       route: AppRoute.billRoute,
       tooltip: AppLocalizations.of(context)!.billTooltip,
       offset: helper.isVertical(constraints) ? width : halfWidth,
@@ -113,6 +114,7 @@ class HomePageState extends AbstractPageState<HomePage> {
       title:
           '${AppLocalizations.of(context)!.accountHeadline}, ${AppLocalizations.of(context)!.total}',
       state: super.state.get(AppDataType.accounts),
+      limit: 5,
       route: AppRoute.accountRoute,
       tooltip: AppLocalizations.of(context)!.accountTooltip,
       offset: helper.isVertical(constraints) ? width : halfWidth,
@@ -122,6 +124,7 @@ class HomePageState extends AbstractPageState<HomePage> {
       title:
           '${AppLocalizations.of(context)!.budgetHeadline}, ${AppLocalizations.of(context)!.left}',
       state: super.state.get(AppDataType.budgets),
+      limit: 5,
       route: AppRoute.budgetRoute,
       tooltip: AppLocalizations.of(context)!.budgetTooltip,
       offset: width,
