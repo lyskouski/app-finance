@@ -2,6 +2,7 @@
 // Use of this source code is governed by a CC BY-NC-ND 4.0 license that can be
 // found in the LICENSE file.
 
+import 'package:app_finance/_classes/app_data.dart';
 import 'package:app_finance/_classes/app_route.dart';
 import 'package:app_finance/routes/abstract_page.dart';
 import 'package:app_finance/widgets/_wrappers/tab_widget.dart';
@@ -11,6 +12,7 @@ import 'package:app_finance/widgets/start/privacy_tab.dart';
 import 'package:app_finance/widgets/start/setting_tab.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localization.dart';
+import 'package:provider/provider.dart';
 
 class StartPage extends AbstractPage {
   StartPage() : super();
@@ -43,6 +45,11 @@ class StartPageState extends AbstractPageState<StartPage> {
     return const SizedBox();
   }
 
+  @override
+  Widget buildContent(BuildContext context, BoxConstraints constraints) {
+    return const SizedBox();
+  }
+
   void updateState() {
     if (currentStep > 2) {
       Navigator.popAndPushNamed(context, AppRoute.homeRoute);
@@ -52,20 +59,26 @@ class StartPageState extends AbstractPageState<StartPage> {
   }
 
   @override
-  Widget buildContent(BuildContext context, BoxConstraints constraints) {
-    return Padding(
-      padding: const EdgeInsets.only(top: 4.0),
-      child: TabWidget(
-        asDots: true,
-        focus: currentStep,
-        children: [
-          PrivacyTab(setState: updateState),
-          SettingTab(setState: updateState),
-          AccountTab(setState: updateState),
-          BudgetTab(setState: updateState),
-        ],
-      ),
-    );
+  Widget build(BuildContext context) {
+    return Consumer<AppData>(builder: (context, appState, _) {
+      state = appState;
+      return Scaffold(
+        appBar: buildBar(context),
+        body: Padding(
+          padding: const EdgeInsets.only(top: 4.0),
+          child: TabWidget(
+            asDots: true,
+            focus: currentStep,
+            children: [
+              PrivacyTab(setState: updateState),
+              SettingTab(setState: updateState),
+              AccountTab(setState: updateState),
+              BudgetTab(setState: updateState),
+            ],
+          ),
+        ),
+      );
+    });
   }
 
   @override
