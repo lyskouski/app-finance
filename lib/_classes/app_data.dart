@@ -137,12 +137,12 @@ class AppData extends ChangeNotifier {
         _updateCurrency(initial, change);
         break;
     }
-    _set(property, change);
   }
 
   void _updateAccount(AccountAppData? initial, AccountAppData change) {
     var calc = AccountRecalculation(change: change, initial: initial)
       ..exchange = Exchange(store: this);
+    _set(AppDataType.accounts, change);
 
     final currTotal = getTotal(AppDataType.accounts);
     calc.updateTotal(_data[AppDataType.accounts], _hashTable).then((_) {
@@ -178,6 +178,7 @@ class AppData extends ChangeNotifier {
       rec.updateBudget(currBudget, prevBudget);
       _data[AppDataType.budgets]?.add(change.category);
     }
+    _set(AppDataType.bills, change);
     rec.updateTotal(_data[AppDataType.bills], _hashTable).then((_) async {
       if (currAccount != null) {
         final recAccount =
@@ -203,6 +204,7 @@ class AppData extends ChangeNotifier {
     final budget = BudgetRecalculation(change: change, initial: initial)
       ..exchange = Exchange(store: this)
       ..updateBudget();
+    _set(AppDataType.budgets, change);
     budget.updateTotal(_data[AppDataType.budgets], _hashTable).then(_notify);
   }
 
@@ -210,10 +212,12 @@ class AppData extends ChangeNotifier {
     final goal = GoalRecalculation(change: change, initial: initial)
       ..exchange = Exchange(store: this)
       ..updateGoal();
+    _set(AppDataType.goals, change);
     goal.updateTotal(_data[AppDataType.goals], _hashTable).then(_notify);
   }
 
   void _updateCurrency(CurrencyAppData? initial, CurrencyAppData change) {
+    _set(AppDataType.currencies, change);
     // TBD: Update totals for Budget and Account
   }
 
