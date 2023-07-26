@@ -66,6 +66,11 @@ class AppMenu {
         route: AppRoute.homeRoute,
       ),
       AppMenuItem(
+        name: locale!.subscriptionHeadline,
+        icon: Icons.switch_access_shortcut_add_outlined,
+        route: AppRoute.subscriptionRoute,
+      ),
+      AppMenuItem(
         name: locale!.aboutHeadline,
         icon: Icons.question_answer_outlined,
         route: AppRoute.aboutRoute,

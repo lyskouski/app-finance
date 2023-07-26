@@ -41,11 +41,7 @@ class AboutPageState extends AbstractPageState<AboutPage> {
 
   Future<void> _launchURL(String path) async {
     final url = Uri.parse(path);
-    if (await canLaunchUrl(url)) {
-      await launchUrl(url, mode: LaunchMode.externalApplication);
-    } else {
-      throw Exception('Could not launch $path');
-    }
+    await launchUrl(url, mode: LaunchMode.externalApplication);
   }
 
   @override
@@ -85,7 +81,7 @@ class AboutPageState extends AbstractPageState<AboutPage> {
           RowWidget(
             indent: indent,
             maxWidth: width,
-            chunk: const [0.3, 0.4, 0.3],
+            chunk: const [0.3, 0.3, 0.4],
             children: [
               [
                 ElevatedButton(

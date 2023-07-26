@@ -27,6 +27,7 @@ import 'package:app_finance/routes/goal_view_page.dart';
 import 'package:app_finance/routes/home_page.dart';
 import 'package:app_finance/routes/init_page.dart';
 import 'package:app_finance/routes/start_page.dart';
+import 'package:app_finance/routes/subscription_page.dart';
 import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/foundation.dart';
@@ -108,19 +109,20 @@ class MyAppState extends State<MyApp> {
       }
     } else {
       final staticRoutes = <String, WidgetBuilder>{
+        AppRoute.aboutRoute: (context) => AboutPage(),
+        AppRoute.accountAddRoute: (context) => AccountAddPage(),
+        AppRoute.accountRoute: (context) => AccountPage(),
+        AppRoute.billAddRoute: (context) => BillAddPage(),
+        AppRoute.billRoute: (context) => BillPage(),
+        AppRoute.budgetAddRoute: (context) => BudgetAddPage(),
+        AppRoute.budgetRoute: (context) => BudgetPage(),
+        AppRoute.currencyRoute: (context) => CurrencyPage(),
+        AppRoute.goalAddRoute: (context) => GoalAddPage(),
+        AppRoute.goalRoute: (context) => GoalPage(),
+        AppRoute.homeRoute: (context) => HomePage(),
         AppRoute.initRoute: (context) => InitPage(),
         AppRoute.startRoute: (context) => StartPage(),
-        AppRoute.homeRoute: (context) => HomePage(),
-        AppRoute.aboutRoute: (context) => AboutPage(),
-        AppRoute.accountRoute: (context) => AccountPage(),
-        AppRoute.accountAddRoute: (context) => AccountAddPage(),
-        AppRoute.budgetRoute: (context) => BudgetPage(),
-        AppRoute.budgetAddRoute: (context) => BudgetAddPage(),
-        AppRoute.billRoute: (context) => BillPage(),
-        AppRoute.billAddRoute: (context) => BillAddPage(),
-        AppRoute.currencyRoute: (context) => CurrencyPage(),
-        AppRoute.goalRoute: (context) => GoalPage(),
-        AppRoute.goalAddRoute: (context) => GoalAddPage(),
+        AppRoute.subscriptionRoute: (context) => SubscriptionPage(),
       };
       return MaterialPageRoute(
         builder: staticRoutes[route] ?? (context) => InitPage(),
