@@ -66,7 +66,8 @@ class HomePageState extends AbstractPageState<HomePage> {
                   Theme.of(context).colorScheme.inversePrimary.withOpacity(0.5),
             ),
             tooltip: AppLocalizations.of(context)!.subscriptionTooltip,
-            onPressed: () => Navigator.pushNamed(context, AppRoute.homeRoute),
+            onPressed: () =>
+                Navigator.pushNamed(context, AppRoute.subscriptionRoute),
           ),
         ),
       ],

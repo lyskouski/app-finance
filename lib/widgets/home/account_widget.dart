@@ -6,7 +6,6 @@ import 'package:app_finance/_classes/app_route.dart';
 import 'package:app_finance/widgets/home/base_line_widget.dart';
 import 'package:app_finance/widgets/home/base_widget.dart';
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
 
 class AccountWidget extends BaseWidget {
   const AccountWidget({
