@@ -55,9 +55,7 @@ abstract class AbstractTabState<T extends AbstractTab> extends State<T> {
         floatingActionButton: buildButton(context, constraints),
         body: Container(
           margin: EdgeInsets.fromLTRB(indent, indent, indent, 90),
-          child: Expanded(
-            child: buildContent(context),
-          ),
+          child: buildContent(context),
         ),
       );
     });

@@ -55,3 +55,74 @@ analyzed at compile time, tree shaking is not possible for those parts of the co
 \begin{lstlisting}[language=bash]
 flutter build -v web --release --no-tree-shake-icons
 \end{lstlisting}
+
+Another problem is that our production code is obfuscated. That means that `AccountAppData` will be converted to 
+something like `minified:iP`; and our restoring from a transactions is failing, but can be fixed via `runtimeType`
+property of classes:
+
+\begin{lstlisting}
+// ./lib/_classes/data/transaction_log.dart
+  static void init(AppData store, String type, Map<String, dynamic> data) {
+    final goal = GoalAppData(title: '', initial: 0.0).runtimeType.toString();
+    final account = AccountAppData(title: '', type: '').runtimeType.toString();
+    final bill = BillAppData(title: '', account: '', category: '').runtimeType.toString();
+    final budget = BudgetAppData(title: '').runtimeType.toString();
+    final currency = CurrencyAppData(title: '').runtimeType.toString();
+    final typeToClass = {
+      goal: (data) => GoalAppData.fromJson(data),
+      account: (data) => AccountAppData.fromJson(data),
+      bill: (data) => BillAppData.fromJson(data),
+      budget: (data) => BudgetAppData.fromJson(data),
+      currency: (data) => CurrencyAppData.fromJson(data),
+    };
+// ... other code
+\end{lstlisting}
+
+Finally, we can no longer ignore the notification "Incorrect use of ParentDataWidget" while it has become crucial, and 
+failure to address it may result in rendered widgets appearing as greyed-out pages.
+
+Regarding deployment, while we are following a Serverless approach, which means there is no dedicated server to 
+deploy into, we can improve usage of our GitHub Pages for deployment:
+
+\begin{lstlisting}[language=yaml]
+name: Web Deployment
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+      - uses: subosito/flutter-action@v2
+        with:
+          channel: 'stable'
+          cache: true
+      - run: flutter --version
+
+      - name: Install Dependencies
+        run: flutter pub get
+
+      - name: Build Web Package
+        run: flutter build -v web --release --no-tree-shake-icons --base-href="/app-finance/"
+
+      - name: Add Coverage Report to the Package
+        run: cp -R ./coverage ./build/web/coverage
+
+      - name: Update GitHub Pages 
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./build/web
+\end{lstlisting}
+
+\noindent Valuable point here is to update `base-href` for our Web package. It has to be aligned with GitHub Pages 
+notation:
+
+\begin{lstlisting}[language=bash]
+https://<account-name>.github.io/<repository-name>/
+\end{lstlisting}
