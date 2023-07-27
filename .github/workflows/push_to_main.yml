@@ -40,10 +40,10 @@ jobs:
         run: dart run grinder test --path=test/e2e
 
       - name: Build Web Package
-      - run: flutter build -v web --release --no-tree-shake-icons
+        run: flutter build -v web --release --no-tree-shake-icons
 
       - name: Add Coverage Report to the Package
-      - run: cp -R ./coverage ./build/web/coverage
+        run: cp -R ./coverage ./build/web/coverage
 
       - name: Update GitHub Pages 
         uses: peaceiris/actions-gh-pages@v3
