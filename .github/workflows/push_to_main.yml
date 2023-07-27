@@ -39,10 +39,8 @@ jobs:
       - name: Run End-To-End Tests
         run: dart run grinder test --path=test/e2e
 
-      - name: Build Web Package    
-        env:
-          FLUTTER_BASE_HREF: "/app-finance/"
-        run: flutter build -v web --release --no-tree-shake-icons
+      - name: Build Web Package
+        run: flutter build -v web --release --no-tree-shake-icons --base-href="/app-finance/"
 
       - name: Add Coverage Report to the Package
         run: cp -R ./coverage ./build/web/coverage
