@@ -4,6 +4,7 @@
 
 import 'package:app_finance/_classes/data/abstract_app_data.dart';
 import 'package:app_finance/_classes/app_data.dart';
+import 'package:app_finance/_mixins/formatter_mixin.dart';
 import 'package:currency_picker/currency_picker.dart';
 import 'package:flutter/material.dart';
 
@@ -65,7 +66,7 @@ class AccountAppData extends AbstractAppData {
           ? MaterialColor(json['color'], const <int, Color>{})
           : null,
       icon: json['icon'] != null
-          ? IconData(json['icon'], fontFamily: 'MaterialIcons')
+          ? FormatterMixin.getIconFromString(json['icon'])
           : null,
       currency: json['currency'] != null
           ? CurrencyService().findByCode(json['currency'])

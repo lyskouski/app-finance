@@ -1,11 +1,9 @@
-# This workflow uses actions that are not certified by GitHub.
-# They are provided by a third-party and are governed by
-# separate terms of service, privacy policy, and support
-# documentation.
-
 name: Flutter/Dart Quality Gates
 
-on: [push, pull_request, workflow_dispatch]
+on:
+  push:
+    branches:
+      - main
 
 jobs:
   build:
@@ -16,6 +14,7 @@ jobs:
       - uses: subosito/flutter-action@v2
         with:
           channel: 'stable'
+          cache: true
       - run: flutter --version
 
       - name: Install Dependencies
@@ -31,19 +30,23 @@ jobs:
       #- name: Analyze Project Source
       #  run: flutter analyze
 
-      - name: Run tests
-        run: |
-          if [[ "${{ github.ref }}" == "refs/heads/main" ]]; then
-            dart run grinder test --coverage --path=test/unit
-            dart run grinder test --path=test/widget
-            dart run grinder test --path=test/e2e
-          else
-            dart run grinder test
-          fi
+      - name: Run Unit Tests (with coverage)
+        run: dart run grinder test --coverage --path=test/unit
 
-      - name: Update Coverage Badge
-        if: github.ref == format('refs/heads/{0}', github.event.repository.default_branch)
+      - name: Run Widget Tests
+        run: dart run grinder test --path=test/widget
+
+      - name: Run End-To-End Tests
+        run: dart run grinder test --path=test/e2e
+
+      - name: Build Web Package
+      - run: flutter build -v web --release --no-tree-shake-icons
+
+      - name: Add Coverage Report to the Package
+      - run: cp -R ./coverage ./build/web/coverage
+
+      - name: Update GitHub Pages 
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./coverage
+          publish_dir: ./build/web
