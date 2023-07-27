@@ -41,6 +41,6 @@ class BudgetRecalculation extends AbstractRecalculation {
   double updateTotalMap(String uuid, HashMap<String, dynamic> hashTable) {
     final item = hashTable[uuid];
     return exchange.reform(item.details, item.currency, exchangeTo) *
-        (1 - item.progress);
+        (1 - item.progress).abs();
   }
 }
