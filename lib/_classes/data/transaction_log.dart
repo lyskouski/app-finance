@@ -60,12 +60,19 @@ class TransactionLog with SharedPreferencesMixin {
   }
 
   static void init(AppData store, String type, Map<String, dynamic> data) {
+    final goal = GoalAppData(title: '', initial: 0.0).runtimeType.toString();
+    final account = AccountAppData(title: '', type: '').runtimeType.toString();
+    final bill = BillAppData(title: '', account: '', category: '')
+        .runtimeType
+        .toString();
+    final budget = BudgetAppData(title: '').runtimeType.toString();
+    final currency = CurrencyAppData(title: '').runtimeType.toString();
     final typeToClass = {
-      'GoalAppData': (data) => GoalAppData.fromJson(data),
-      'AccountAppData': (data) => AccountAppData.fromJson(data),
-      'BillAppData': (data) => BillAppData.fromJson(data),
-      'BudgetAppData': (data) => BudgetAppData.fromJson(data),
-      'CurrencyAppData': (data) => CurrencyAppData.fromJson(data),
+      goal: (data) => GoalAppData.fromJson(data),
+      account: (data) => AccountAppData.fromJson(data),
+      bill: (data) => BillAppData.fromJson(data),
+      budget: (data) => BudgetAppData.fromJson(data),
+      currency: (data) => CurrencyAppData.fromJson(data),
     };
     final obj = typeToClass[type];
     if (obj != null) {
