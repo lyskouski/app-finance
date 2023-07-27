@@ -34,6 +34,11 @@ class GoalAppData extends AbstractAppData {
                 : DateTime.now());
 
   @override
+  String getClassName() {
+    return 'GoalAppData';
+  }
+
+  @override
   AppDataType getType() => AppDataType.goals;
 
   @override

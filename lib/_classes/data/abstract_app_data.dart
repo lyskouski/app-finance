@@ -50,6 +50,8 @@ abstract class AbstractAppData with FormatterMixin {
 
   AppDataType getType();
 
+  String getClassName();
+
   factory AbstractAppData.fromJson(Map<String, dynamic> json) {
     throw Exception('Implement by extending');
   }
@@ -72,7 +74,7 @@ abstract class AbstractAppData with FormatterMixin {
     var data = {...toJson()};
     return {
       'type': {
-        'name': runtimeType.toString(),
+        'name': getClassName(),
         'hash': TransactionLog.getHash(data),
       },
       'data': data,

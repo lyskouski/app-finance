@@ -27,6 +27,11 @@ class BudgetAppData extends AbstractAppData {
         );
 
   @override
+  String getClassName() {
+    return 'BudgetAppData';
+  }
+
+  @override
   AppDataType getType() => AppDataType.budgets;
 
   @override
