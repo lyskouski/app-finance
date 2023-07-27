@@ -1,0 +1,35 @@
+name: Flutter/Dart Quality Gates (Pull-Request, Branches)
+
+on:
+  push:
+    branches-ignore:
+      - master
+  pull_request:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+      - uses: subosito/flutter-action@v2
+        with:
+          channel: 'stable'
+          cache: true
+      - run: flutter --version
+
+      - name: Install Dependencies
+        run: flutter pub get
+
+      - name: Verify Formatting
+        run: dart format --output=none --set-exit-if-changed .
+
+      - name: Check Localizations Ordering
+        run: dart run grinder sort-translations
+
+      # Consider passing '--fatal-infos' for slightly stricter analysis.
+      #- name: Analyze Project Source
+      #  run: flutter analyze
+
+      - name: Run All Tests
+        run: dart run grinder test
