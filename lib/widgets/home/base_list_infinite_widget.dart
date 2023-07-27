@@ -49,17 +49,20 @@ class BaseListInfiniteWidgetState extends State<BaseListInfiniteWidget> {
     Future.delayed(const Duration(milliseconds: 300), () {
       setState(() {
         isLoading = false;
-        int endIndex = currentPage + widget.batch;
-        if (endIndex > widget.state.length) {
-          endIndex = widget.state.length;
+        if (widget.state != null) {
+          int endIndex = currentPage + widget.batch;
+          if (endIndex > widget.state.length) {
+            endIndex = widget.state.length;
+          }
+          items.addAll(widget.state.sublist(currentPage, endIndex));
         }
-        items.addAll(widget.state.sublist(currentPage, endIndex));
       });
     });
   }
 
   void _scrollListener() {
-    if (scrollController.position.extentAfter < 200 &&
+    if (widget.state != null &&
+        scrollController.position.extentAfter < 200 &&
         !isLoading &&
         currentPage + widget.batch < widget.state.length) {
       currentPage += widget.batch;
