@@ -34,6 +34,11 @@ class AccountAppData extends AbstractAppData {
                 : DateTime.now());
 
   @override
+  String getClassName() {
+    return 'AccountAppData';
+  }
+
+  @override
   AppDataType getType() => AppDataType.accounts;
 
   @override

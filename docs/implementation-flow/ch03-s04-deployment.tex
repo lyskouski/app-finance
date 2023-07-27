@@ -57,8 +57,8 @@ flutter build -v web --release --no-tree-shake-icons
 \end{lstlisting}
 
 Another problem is that our production code is obfuscated. That means that `AccountAppData` will be converted to 
-something like `minified:iP`; and our restoring from a transactions is failing, but can be fixed via `runtimeType`
-property of classes:
+something like `minified:iP`; and our restoring from a transactions is failing. We might assume it to fix in the 
+following direction:
 
 \begin{lstlisting}
 // ./lib/_classes/data/transaction_log.dart
@@ -78,10 +78,40 @@ property of classes:
 // ... other code
 \end{lstlisting}
 
+\noindent The main problem with that solution is that is cannot be portaged to other platforms since each type of the 
+build (even within one platform) will use different notation for the same classes. So, the right way would be to adjust 
+the conversion itself:
+
+\begin{lstlisting}
+// ./lib/_classes/data/abstract_app_data.dart
+  Map<String, Map<String, dynamic>> toFile() {
+    var data = {...toJson()};
+    return {
+      'type': {
+\end{lstlisting}
+{
+\xpretocmd{\lstlisting}{\vspace{-12pt}}{}{}
+\begin{lstlisting}[firstnumber=6, backgroundcolor=\color{backred}]
+(*@\kdiff{-}@*)        'name': runtimeType.toString(),
+\end{lstlisting}
+\begin{lstlisting}[firstnumber=6, backgroundcolor=\color{backgreen}]
+(*@\kdiff{+}@*)        'name': getClassName(),
+\end{lstlisting}
+\begin{lstlisting}[firstnumber=7]
+        'hash': TransactionLog.getHash(data),
+      },
+      'data': data,
+    };
+  }
+  // Abstract, has to be implemented by each class
+  String getClassName();
+\end{lstlisting}
+}
+
 Finally, we can no longer ignore the notification "Incorrect use of ParentDataWidget" while it has become crucial, and 
 failure to address it may result in rendered widgets appearing as greyed-out pages.
 
-Regarding deployment, while we are following a Serverless approach, which means there is no dedicated server to 
+Regarding deployment, while we are following a Serverless approach, which means there is no any dedicated server to 
 deploy into, we can improve usage of our GitHub Pages for deployment:
 
 \begin{lstlisting}[language=yaml]

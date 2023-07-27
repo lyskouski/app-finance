@@ -29,6 +29,11 @@ class BillAppData extends AbstractAppData {
   });
 
   @override
+  String getClassName() {
+    return 'BillAppData';
+  }
+
+  @override
   AppDataType getType() => AppDataType.bills;
 
   @override
