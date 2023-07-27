@@ -1,0 +1,57 @@
+% Copyright 2023 The terCAD team. All rights reserved.
+% Use of this content is governed by a CC BY-NC-ND 4.0 license that can be found in the LICENSE file.
+
+\subsection{Configuring Deployment}
+\markboth{Configuring Deployment}{Configuring Deployment}
+
+
+\subsubsection{Build Web Package}
+
+Creating a web package is handled by `flutter build -v web --release` command. It'll be more strict to our code, and 
+that might lead to additional failures as "non-constant instances of IconData".
+
+\begin{lstlisting}
+// ./lib/_classes/data/goal_app_data.dart
+factory GoalAppData.fromJson(Map<String, dynamic> json) {
+  return GoalAppData(
+    icon: json['icon'] != null
+      ? IconData(json['icon'], fontFamily: 'MaterialIcons') // Error
+      : null,
+// ... other code
+\end{lstlisting}
+
+\noindent To fix this issue, we need to ensure that all instances of IconData are used in a constant context, that can 
+be solved by the next modification:
+\begin{lstlisting}
+// ./lib/_mixins/formatter_mixin.dart
+mixin FormatterMixin {
+  static final Map<String, IconData> _cache = {};
+
+  static IconData getIconFromString(int icon) {
+    if (_cache.containsKey(icon)) {
+      return _cache[icon]!;
+    } else {
+      const String fontFamily = 'MaterialIcons';
+      return IconData(icon, fontFamily: fontFamily);
+    }
+  }
+  }(*@ \stopnumber @*)
+
+// ./lib/_classes/data/goal_app_data.dart
+factory GoalAppData.fromJson(Map<String, dynamic> json) {
+  return GoalAppData(
+    icon: json['icon'] != null
+      ? FormatterMixin.getIconFromString(json['icon'])
+      : null,
+\end{lstlisting}
+
+Now, when we'll call `getIconFromString` with a dynamic icon name, it will create the `IconData`-instance for that name 
+if it doesn't already exist and cache it in the `\_cache`-map. If the same icon name is used again in the future, 
+it will return the cached `IconData`-instance, allowing tree shaking to work correctly.
+
+And, finally, we suppress the error itself because, when we're dealing with dynamic values that cannot be statically 
+analyzed at compile time, tree shaking is not possible for those parts of the code:
+
+\begin{lstlisting}[language=bash]
+flutter build -v web --release --no-tree-shake-icons
+\end{lstlisting}
