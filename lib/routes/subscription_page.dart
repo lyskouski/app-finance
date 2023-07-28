@@ -2,6 +2,8 @@
 // Use of this source code is governed by a CC BY-NC-ND 4.0 license that can be
 // found in the LICENSE file.
 
+import 'dart:io';
+
 import 'package:adaptive_breakpoints/adaptive_breakpoints.dart';
 import 'package:app_finance/helpers/theme_helper.dart';
 import 'package:app_finance/routes/abstract_page.dart';
@@ -32,7 +34,9 @@ class SubscriptionPageState extends AbstractPageState<SubscriptionPage> {
         children: [
           Text(AppLocalizations.of(context)!.subscription),
           const Divider(),
-          const OtherWidget(),
+          Platform.isIOS || Platform.isMacOS
+              ? const SizedBox()
+              : const OtherWidget(),
         ],
       ),
     );
