@@ -5,7 +5,7 @@
 \markboth{Configuring Deployment}{Configuring Deployment}
 
 
-\subsubsection{Build Web Package}
+\subsubsection{Building Web Package}
 
 Creating a web package is handled by `flutter build -v web --release` command. It'll be more strict to our code, and 
 that might lead to additional failures as "non-constant instances of IconData".
@@ -21,7 +21,7 @@ factory GoalAppData.fromJson(Map<String, dynamic> json) {
 \end{lstlisting}
 
 \noindent To fix this issue, we need to ensure that all instances of IconData are used in a constant context, that can 
-be solved by the next modification:
+be partially solved by the next modification:
 \begin{lstlisting}
 // ./lib/_mixins/formatter_mixin.dart
 mixin FormatterMixin {
@@ -33,9 +33,8 @@ mixin FormatterMixin {
     } else {
       const String fontFamily = 'MaterialIcons';
       return IconData(icon, fontFamily: fontFamily);
-    }
+    }(*@ \stopnumber @*)
   }
-  }(*@ \stopnumber @*)
 
 // ./lib/_classes/data/goal_app_data.dart
 factory GoalAppData.fromJson(Map<String, dynamic> json) {
@@ -47,18 +46,17 @@ factory GoalAppData.fromJson(Map<String, dynamic> json) {
 
 Now, when we'll call `getIconFromString` with a dynamic icon name, it will create the `IconData`-instance for that name 
 if it doesn't already exist and cache it in the `\_cache`-map. If the same icon name is used again in the future, 
-it will return the cached `IconData`-instance, allowing tree shaking to work correctly.
-
-And, finally, we suppress the error itself because, when we're dealing with dynamic values that cannot be statically 
-analyzed at compile time, tree shaking is not possible for those parts of the code:
+it will return the cached `IconData`-instance, allowing tree shaking to work correctly. But we still have to suppress 
+the error itself because, when we're dealing with dynamic values that cannot be statically analyzed at compile time, 
+tree shaking is impossible:
 
 \begin{lstlisting}[language=bash]
 flutter build -v web --release --no-tree-shake-icons
 \end{lstlisting}
 
 Another problem is that our production code is obfuscated. That means that `AccountAppData` will be converted to 
-something like `minified:iP`; and our restoring from a transactions is failing. We might assume it to fix in the 
-following direction:
+something like `minified:iP`; and our restoring procedures from a transactions are going to fail. By a first assumption,
+it can be changed "magic strings" to a `runtimeType`-property of classes:
 
 \begin{lstlisting}
 // ./lib/_classes/data/transaction_log.dart
@@ -79,8 +77,8 @@ following direction:
 \end{lstlisting}
 
 \noindent The main problem with that solution is that is cannot be portaged to other platforms since each type of the 
-build (even within one platform) will use different notation for the same classes. So, the right way would be to adjust 
-the conversion itself:
+build (even within one platform) will use different runtime notation for the same class. So, the right way would be 
+to adjust the conversion to JSON:
 
 \begin{lstlisting}
 // ./lib/_classes/data/abstract_app_data.dart
@@ -108,11 +106,14 @@ the conversion itself:
 \end{lstlisting}
 }
 
-Finally, we can no longer ignore the notification "Incorrect use of ParentDataWidget" while it has become crucial, and 
-failure to address it may result in rendered widgets appearing as greyed-out pages.
+\noindent That's done.
 
-Regarding deployment, while we are following a Serverless approach, which means there is no any dedicated server to 
-deploy into, we can improve usage of our GitHub Pages for deployment:
+Finally, we cannot ignore anymore a notification "Incorrect use of ParentDataWidget" while it has become a crucial for 
+the production type of the build, and may lead to a greyed-out output instead of rendered widgets.\\
+\\
+
+Regarding the deployment, while we are following a Serverless approach, which means there is no any dedicated server to 
+deploy into, we can improve usage of our GitHub Pages:
 
 \begin{lstlisting}[language=yaml]
 name: Web Deployment
@@ -150,9 +151,12 @@ jobs:
           publish_dir: ./build/web
 \end{lstlisting}
 
-\noindent Valuable point here is to update `base-href` for our Web package. It has to be aligned with GitHub Pages 
-notation:
+\noindent A valuable point here is to update `base-href` (line 24) for our Web package. It has to be aligned with 
+GitHub Pages notation:
 
 \begin{lstlisting}[language=bash]
 https://<account-name>.github.io/<repository-name>/
 \end{lstlisting}
+
+Additionally, we may buy a domain name and configure GitHub Pages to be viewed there (detailed instructions provided by
+GitHub: \href{https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site/managing-a-custom-domain-for-your-github-pages-site}{https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site/managing-a-custom-domain-for-your-github-pages-site}).

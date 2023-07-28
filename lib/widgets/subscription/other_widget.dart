@@ -47,6 +47,12 @@ class OtherWidget extends StatelessWidget {
           text: AppLocalizations.of(context)!.subscriptionPatreon,
           icon: Icons.pattern,
         ),
+        SizedBox(height: indent),
+        ElevatedButtonWidget(
+          onPressed: () => _launchURL('https://github.com/sponsors/lyskouski'),
+          text: AppLocalizations.of(context)!.subscriptionGithub,
+          icon: Icons.gite,
+        ),
       ]),
     );
   }

@@ -1074,11 +1074,11 @@ Waiting for authentication...
 +  Success! Logged in as ...
 
 
->flutterfire configure --project=fingram-9030a
+> flutterfire configure
 
 i Found 1 Firebase projects.
-✔ Select a Firebase project to configure your Flutter application with · fingram-9030a (Fingram)
-✔ Which platforms should your configuration support (use arrow keys & space to select)? · macos, web, ios, android
+V Select a Firebase project to configure your Flutter application with  fingram-9030a (Fingram)
+V Which platforms should your configuration support (use arrow keys & space to select)? - macos, web, ios, android
 i Firebase android app com.example.app_finance is not registered on Firebase project fingram-9030a.
 i Registered a new Firebase android app on Firebase project fingram-9030a.
 i Firebase ios app com.example.appFinance is not registered on Firebase project fingram-9030a.
@@ -1097,7 +1097,7 @@ ios       ...
 macos     ...
 
 Learn more about using this file and next steps from the documentation:
- > https://firebase.google.com/docs/flutter/setup
+> https://firebase.google.com/docs/flutter/setup
 \end{lstlisting}
 
 Once complete, we should import the generated file and provide it to the `initializeApp`-method:
@@ -1117,7 +1117,7 @@ void main() async {
 \end{lstlisting}
 
 That might be the case for web, android, ios, and macos; but we have additionally linux and windows that are not 
-supported by now, so, let's patch firebase_options.dart to return null instead of exception:
+supported by now, so, let's patch firebase\_options.dart to return null instead of exception:
 
 \begin{lstlisting}
 // ./lib/firebase_options.dart
@@ -1156,7 +1156,7 @@ so, it's needed to be updated `android/app/build.gradle` file by adjusting `minS
 
 \begin{lstlisting}[language=yaml]
 // android/app/build.gradle
-android {                                                                                                       │
+android {
   defaultConfig {
     minSdkVersion 19
   }
