@@ -65,7 +65,7 @@ void main() async {
           create: (_) => AppData(),
         ),
         ChangeNotifierProvider<AppTheme>(
-          create: (_) => AppTheme(),
+          create: (_) => AppTheme(ThemeMode.system),
         ),
       ],
       child: MyApp(platform: platform),
@@ -160,7 +160,7 @@ class MyAppState extends State<MyApp> {
         textTheme: CustomTextTheme.textTheme(Theme.of(context).textTheme),
         useMaterial3: true,
       ),
-      themeMode: context.watch<AppTheme>().theme.value,
+      themeMode: context.watch<AppTheme>().value,
       home: InitPage(),
       initialRoute: AppRoute.initRoute,
       onGenerateRoute: getDynamicRouter,

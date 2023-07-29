@@ -5,22 +5,19 @@
 import 'package:app_finance/_mixins/shared_preferences_mixin.dart';
 import 'package:flutter/material.dart';
 
-class AppTheme extends ChangeNotifier with SharedPreferencesMixin {
-  final ValueNotifier<ThemeMode> theme =
-      ValueNotifier<ThemeMode>(ThemeMode.system);
-
-  AppTheme() {
-    getPreference(prefTheme).then((value) {
-      if (value != null) {
-        _set(value);
+class AppTheme extends ValueNotifier<ThemeMode> with SharedPreferencesMixin {
+  AppTheme(ThemeMode value) : super(value) {
+    getPreference(prefTheme).then((val) {
+      if (val != null) {
+        _set(val);
       }
     });
   }
 
-  _set(String value) {
-    int? idx = int.tryParse(value);
+  _set(String val) {
+    int? idx = int.tryParse(val);
     if (idx != null) {
-      theme.value = ThemeMode.values[idx];
+      value = ThemeMode.values[idx];
       notifyListeners();
     }
   }
