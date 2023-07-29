@@ -19,9 +19,8 @@ class BudgetRecalculation extends AbstractRecalculation {
 
   @override
   double getDelta() {
-    if (!change.hidden && initial != null && change.amountLimit != 0) {
-      return (change.amountLimit - initial!.amountLimit * initial!.progress) /
-          change.amountLimit;
+    if (!change.hidden && initial != null && !initial!.hidden) {
+      return initial!.amountLimit * initial!.progress / change.amountLimit;
     } else {
       return 0.0;
     }
@@ -40,7 +39,6 @@ class BudgetRecalculation extends AbstractRecalculation {
   @override
   double updateTotalMap(String uuid, HashMap<String, dynamic> hashTable) {
     final item = hashTable[uuid];
-    return exchange.reform(item.details, item.currency, exchangeTo) *
-        (1 - item.progress).abs();
+    return exchange.reform(item.details, item.currency, exchangeTo);
   }
 }
