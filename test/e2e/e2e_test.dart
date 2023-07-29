@@ -4,8 +4,10 @@
 
 import 'dart:io';
 
+import 'package:app_finance/_classes/app_theme.dart';
 import 'package:app_finance/main.dart';
 import 'package:app_finance/_classes/app_data.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:provider/provider.dart';
 
@@ -20,8 +22,15 @@ void main() {
   group('Behavioral Tests', () {
     for (var file in features) {
       testWidgets(file.path, (WidgetTester tester) async {
-        await tester.pumpWidget(ChangeNotifierProvider(
-          create: (_) => AppData(),
+        await tester.pumpWidget(MultiProvider(
+          providers: [
+            ChangeNotifierProvider<AppData>(
+              create: (_) => AppData(),
+            ),
+            ChangeNotifierProvider<AppTheme>(
+              create: (_) => AppTheme(ThemeMode.system),
+            ),
+          ],
           child: const MyApp(),
         ));
         final runner = FileRunner(tester);
