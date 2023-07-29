@@ -9,12 +9,14 @@ class RowWidget extends StatelessWidget {
   final List<List<Widget>> children;
   final double indent;
   final double maxWidth;
+  final MainAxisAlignment alignment;
 
   const RowWidget({
     required this.chunk,
     required this.children,
     required this.indent,
     required this.maxWidth,
+    this.alignment = MainAxisAlignment.spaceBetween,
     super.key,
   });
 
@@ -23,7 +25,7 @@ class RowWidget extends StatelessWidget {
     double offset = maxWidth - indent * (chunk.length - 2);
 
     return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      mainAxisAlignment: alignment,
       // mainAxisAlignment: MainAxisAlignment.start,
       children: List<Widget>.generate(chunk.length + chunk.length - 1, (index) {
         if (index % 2 == 1) {
