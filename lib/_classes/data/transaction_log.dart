@@ -64,7 +64,7 @@ class TransactionLog with SharedPreferencesMixin {
     final account = AccountAppData(title: '', type: '').getClassName();
     final bill =
         BillAppData(title: '', account: '', category: '').getClassName();
-    final budget = BudgetAppData(title: '').getClassName();
+    final budget = BudgetAppData(title: '', amountLimit: 0.0).getClassName();
     final currency = CurrencyAppData(title: '').getClassName();
     final typeToClass = {
       goal: (data) => GoalAppData.fromJson(data),
