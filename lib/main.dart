@@ -152,12 +152,12 @@ class MyAppState extends State<MyApp> {
       supportedLocales: AppLocalizations.supportedLocales,
       theme: ThemeData(
         brightness: Brightness.light,
-        textTheme: CustomTextTheme.textTheme(Theme.of(context).textTheme),
+        textTheme: CustomTextTheme.textTheme(Theme.of(context)),
         useMaterial3: true,
       ),
       darkTheme: ThemeData(
         brightness: Brightness.dark,
-        textTheme: CustomTextTheme.textTheme(Theme.of(context).textTheme),
+        textTheme: CustomTextTheme.textTheme(Theme.of(context)),
         useMaterial3: true,
       ),
       themeMode: context.watch<AppTheme>().value,

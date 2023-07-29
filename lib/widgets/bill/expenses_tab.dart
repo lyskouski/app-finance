@@ -172,7 +172,8 @@ class ExpensesTabState<T extends ExpensesTab> extends State<T>
                       account = value;
                       currency ??= state.getByUuid(value).currency;
                     }),
-                    style: textTheme.numberMedium,
+                    style: textTheme.numberMedium
+                        .copyWith(color: textTheme.headlineSmall?.color),
                     indent: indent,
                     width: offset,
                     focusOrder: focusOrder += 1,
@@ -190,7 +191,8 @@ class ExpensesTabState<T extends ExpensesTab> extends State<T>
                       var bdgCurrency = state.getByUuid(value).currency;
                       currency ??= bdgCurrency;
                     }),
-                    style: textTheme.numberMedium,
+                    style: textTheme.numberMedium
+                        .copyWith(color: textTheme.headlineSmall?.color),
                     indent: indent,
                     width: offset,
                     focusOrder: focusOrder += 1,
@@ -231,7 +233,8 @@ class ExpensesTabState<T extends ExpensesTab> extends State<T>
                           type: const TextInputType.numberWithOptions(
                               decimal: true),
                           tooltip: AppLocalizations.of(context)!.billSetTooltip,
-                          style: textTheme.numberMedium,
+                          style: textTheme.numberMedium
+                              .copyWith(color: textTheme.headlineSmall?.color),
                           formatter: [
                             SimpleInput.filterDouble,
                           ],
@@ -263,7 +266,8 @@ class ExpensesTabState<T extends ExpensesTab> extends State<T>
                   SimpleInput(
                     value: description ?? '',
                     tooltip: AppLocalizations.of(context)!.descriptionTooltip,
-                    style: textTheme.numberMedium,
+                    style: textTheme.numberMedium
+                        .copyWith(color: textTheme.headlineSmall?.color),
                     setState: (value) => setState(() => description = value),
                     focusOrder: focusOrder += 1,
                   ),
@@ -273,7 +277,8 @@ class ExpensesTabState<T extends ExpensesTab> extends State<T>
                     style: textTheme.bodyLarge,
                   ),
                   DateTimeInput(
-                    style: textTheme.numberMedium,
+                    style: textTheme.numberMedium
+                        .copyWith(color: textTheme.headlineSmall?.color),
                     width: offset,
                     value: createdAt ?? DateTime.now(),
                     setState: (value) => setState(() => createdAt = value),

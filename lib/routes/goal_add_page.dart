@@ -159,7 +159,8 @@ class GoalAddPageState<T extends GoalAddPage>
             SimpleInput(
               value: title,
               tooltip: AppLocalizations.of(context)!.titleGoalTooltip,
-              style: textTheme.numberMedium,
+              style: textTheme.numberMedium
+                  .copyWith(color: textTheme.headlineSmall?.color),
               setState: (value) => setState(() => title = value),
               focusOrder: focusOrder += 1,
             ),
@@ -256,7 +257,8 @@ class GoalAddPageState<T extends GoalAddPage>
                         type: const TextInputType.numberWithOptions(
                             decimal: true),
                         tooltip: AppLocalizations.of(context)!.billSetTooltip,
-                        style: textTheme.numberMedium,
+                        style: textTheme.numberMedium
+                            .copyWith(color: textTheme.headlineSmall?.color),
                         formatter: [
                           SimpleInput.filterDouble,
                         ],
@@ -285,7 +287,8 @@ class GoalAddPageState<T extends GoalAddPage>
               ],
             ),
             DateInput(
-              style: textTheme.numberMedium,
+              style: textTheme.numberMedium
+                  .copyWith(color: textTheme.headlineSmall?.color),
               value: closedAt,
               setState: (value) => setState(() => closedAt = value),
               focusOrder: focusOrder += 1,

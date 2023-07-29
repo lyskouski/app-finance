@@ -146,7 +146,8 @@ class SettingTabState extends AbstractTabState<SettingTab>
                 id: '2', name: AppLocalizations.of(context)!.darkMode),
           ],
           setState: saveTheme,
-          style: textTheme.numberMedium,
+          style: textTheme.numberMedium
+              .copyWith(color: textTheme.headlineSmall?.color),
           indent: indent,
         ),
       ],
