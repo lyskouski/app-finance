@@ -6,7 +6,6 @@ import 'package:app_finance/_classes/data/abstract_recalculation.dart';
 import 'package:app_finance/_classes/data/account_app_data.dart';
 import 'package:app_finance/_classes/data/bill_app_data.dart';
 import 'package:app_finance/_classes/data/budget_app_data.dart';
-import 'package:app_finance/_classes/data/summary_app_data.dart';
 
 class BillRecalculation extends AbstractRecalculation {
   BillAppData change;
@@ -70,10 +69,5 @@ class BillRecalculation extends AbstractRecalculation {
     budgetChange.progress =
         getProgress(budgetChange.amountLimit, budgetChange.progress, delta);
     return this;
-  }
-
-  @override
-  List<String>? getSummaryList(SummaryAppData? summary) {
-    return summary?.listActual;
   }
 }

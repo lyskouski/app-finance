@@ -2,7 +2,6 @@
 // Use of this source code is governed by a CC BY-NC-ND 4.0 license that can be
 // found in the LICENSE file.
 
-import 'dart:collection';
 import 'package:app_finance/_classes/data/abstract_recalculation.dart';
 import 'package:app_finance/_classes/data/goal_app_data.dart';
 
@@ -23,13 +22,6 @@ class GoalRecalculation extends AbstractRecalculation {
     } else {
       return 0.0;
     }
-  }
-
-  @override
-  double updateTotalMap(String uuid, HashMap<String, dynamic> hashTable) {
-    final item = hashTable[uuid];
-    return exchange.reform(item.details, item.currency, exchangeTo) *
-        (1 - item.progress);
   }
 
   GoalRecalculation updateGoal() {
