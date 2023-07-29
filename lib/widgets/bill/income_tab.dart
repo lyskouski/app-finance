@@ -2,7 +2,6 @@
 // Use of this source code is governed by a CC BY-NC-ND 4.0 license that can be
 // found in the LICENSE file.
 
-import 'package:adaptive_breakpoints/adaptive_breakpoints.dart';
 import 'package:app_finance/_classes/app_route.dart';
 import 'package:app_finance/_classes/data/account_app_data.dart';
 import 'package:app_finance/_classes/data/exchange.dart';
@@ -73,11 +72,10 @@ class IncomeTabState extends State<IncomeTab> with SharedPreferencesMixin {
   }
 
   Widget buildButton(BuildContext context, BoxConstraints constraints) {
-    var helper = ThemeHelper(windowType: getWindowType(context));
     String title = AppLocalizations.of(context)!.createIncomeTooltip;
     FocusController.setContext(3);
     return SizedBox(
-      width: constraints.maxWidth - helper.getIndent() * 4,
+      width: constraints.maxWidth - ThemeHelper.getIndent() * 4,
       child: FloatingActionButton(
         onPressed: () => {
           setState(() {
@@ -96,7 +94,7 @@ class IncomeTabState extends State<IncomeTab> with SharedPreferencesMixin {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               const Icon(Icons.save),
-              SizedBox(height: helper.getIndent()),
+              SizedBox(height: ThemeHelper.getIndent()),
               Text(title, style: Theme.of(context).textTheme.headlineMedium)
             ],
           ),
@@ -109,8 +107,7 @@ class IncomeTabState extends State<IncomeTab> with SharedPreferencesMixin {
   Widget build(BuildContext context) {
     // FocusController.dispose();
     final TextTheme textTheme = Theme.of(context).textTheme;
-    double indent =
-        ThemeHelper(windowType: getWindowType(context)).getIndent() * 2;
+    double indent = ThemeHelper.getIndent() * 2;
     double offset = MediaQuery.of(context).size.width - indent * 3;
     int focusOrder = FocusController.DEFAULT;
 

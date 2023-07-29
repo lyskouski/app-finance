@@ -2,7 +2,6 @@
 // Use of this source code is governed by a CC BY-NC-ND 4.0 license that can be
 // found in the LICENSE file.
 
-import 'package:adaptive_breakpoints/adaptive_breakpoints.dart';
 import 'package:app_finance/_classes/app_menu.dart';
 import 'package:app_finance/_classes/data/bill_app_data.dart';
 import 'package:app_finance/_classes/data/goal_app_data.dart';
@@ -70,8 +69,7 @@ class GoalViewPageState extends AbstractPageState<GoalViewPage>
     final data = super.state.getByUuid(widget.uuid) as GoalAppData;
     String route =
         AppMenu(context: context).uuid(AppRoute.goalEditRoute, widget.uuid);
-    double indent =
-        ThemeHelper(windowType: getWindowType(context)).getIndent() * 4;
+    double indent = ThemeHelper.getIndent() * 4;
     return Container(
       margin: EdgeInsets.only(left: indent),
       child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
@@ -99,8 +97,7 @@ class GoalViewPageState extends AbstractPageState<GoalViewPage>
   Widget buildContent(BuildContext context, BoxConstraints constraints) {
     final item = super.state.getByUuid(widget.uuid) as GoalAppData;
     item.updateContext(context);
-    double indent =
-        ThemeHelper(windowType: getWindowType(context)).getIndent() * 2;
+    double indent = ThemeHelper.getIndent() * 2;
     double offset = MediaQuery.of(context).size.width - indent * 3;
     return Column(
       children: [

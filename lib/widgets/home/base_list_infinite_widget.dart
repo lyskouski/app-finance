@@ -2,7 +2,6 @@
 // Use of this source code is governed by a CC BY-NC-ND 4.0 license that can be
 // found in the LICENSE file.
 
-import 'package:adaptive_breakpoints/adaptive_breakpoints.dart';
 import 'package:app_finance/helpers/theme_helper.dart';
 import 'package:app_finance/widgets/_wrappers/keep_alive_wrapper.dart';
 import 'package:flutter/material.dart';
@@ -72,8 +71,7 @@ class BaseListInfiniteWidgetState extends State<BaseListInfiniteWidget> {
 
   @override
   Widget build(BuildContext context) {
-    var theme = ThemeHelper(windowType: getWindowType(context));
-    double indent = theme.getIndent();
+    double indent = ThemeHelper.getIndent();
 
     return ListView.builder(
         controller: scrollController,

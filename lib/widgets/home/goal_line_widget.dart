@@ -2,7 +2,6 @@
 // Use of this source code is governed by a CC BY-NC-ND 4.0 license that can be
 // found in the LICENSE file.
 
-import 'package:adaptive_breakpoints/adaptive_breakpoints.dart';
 import 'package:app_finance/_classes/app_route.dart';
 import 'package:app_finance/_classes/data/goal_app_data.dart';
 import 'package:app_finance/widgets/_wrappers/tap_widget.dart';
@@ -20,17 +19,16 @@ class GoalLineWidget extends StatelessWidget {
 
   @override
   Widget build(context) {
-    var theme = ThemeHelper(windowType: getWindowType(context));
+    double indent = ThemeHelper.getIndent();
     final ColorScheme colorScheme = Theme.of(context).colorScheme;
     final TextTheme textTheme = Theme.of(context).textTheme;
-    double screenWidth =
-        MediaQuery.of(context).size.width - theme.getIndent() * 2;
+    double screenWidth = MediaQuery.of(context).size.width - indent * 2;
     goal.updateContext(context);
     return TapWidget(
       tooltip: AppLocalizations.of(context)!.goalTooltip,
       route: AppRoute.goalRoute,
       child: Container(
-        height: 50 + theme.getIndent() * 2,
+        height: 50 + indent * 2,
         color: colorScheme.inversePrimary,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -42,8 +40,7 @@ class GoalLineWidget extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Padding(
-                      padding: EdgeInsets.fromLTRB(
-                          theme.getIndent(), theme.getIndent(), 0, 0),
+                      padding: EdgeInsets.fromLTRB(indent, indent, 0, 0),
                       child: Text(
                         AppLocalizations.of(context)!.goalHeadline,
                         style: textTheme.headlineSmall,
@@ -59,7 +56,7 @@ class GoalLineWidget extends StatelessWidget {
                           child: Tooltip(
                             message: goal.title,
                             child: Padding(
-                              padding: EdgeInsets.only(left: theme.getIndent()),
+                              padding: EdgeInsets.only(left: indent),
                               child: Text(
                                 goal.title,
                                 style: textTheme.headlineMedium,
@@ -73,7 +70,7 @@ class GoalLineWidget extends StatelessWidget {
                             maxWidth: MediaQuery.of(context).size.width * 0.3,
                           ),
                           child: Padding(
-                            padding: EdgeInsets.only(right: theme.getIndent()),
+                            padding: EdgeInsets.only(right: indent),
                             child: Text(
                               goal.closedAtFormatted,
                               style: textTheme.headlineMedium,
@@ -86,8 +83,8 @@ class GoalLineWidget extends StatelessWidget {
                     ),
                     Container(
                       height: 8,
-                      margin: EdgeInsets.fromLTRB(theme.getIndent(),
-                          theme.getIndent() / 2, theme.getIndent(), 0),
+                      margin:
+                          EdgeInsets.fromLTRB(indent, indent / 2, indent, 0),
                       child: LinearProgressIndicator(
                         value: goal.progress,
                         backgroundColor: colorScheme.primary.withOpacity(0.3),
@@ -102,8 +99,7 @@ class GoalLineWidget extends StatelessWidget {
             Stack(
               children: [
                 Transform.translate(
-                  offset: Offset(
-                      theme.getIndent() * 1.5 + screenWidth * goal.state, -6),
+                  offset: Offset(indent * 1.5 + screenWidth * goal.state, -6),
                   child: Tooltip(
                     message: AppLocalizations.of(context)!.currentDate,
                     child: Container(

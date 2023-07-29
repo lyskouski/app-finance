@@ -2,7 +2,6 @@
 // Use of this source code is governed by a CC BY-NC-ND 4.0 license that can be
 // found in the LICENSE file.
 
-import 'package:adaptive_breakpoints/adaptive_breakpoints.dart';
 import 'package:app_finance/_classes/app_menu.dart';
 import 'package:app_finance/_classes/app_data.dart';
 import 'package:app_finance/helpers/theme_helper.dart';
@@ -76,7 +75,7 @@ abstract class AbstractPageState<T extends AbstractPage> extends State<T> {
 
   Drawer? buildDrawer() {
     final ColorScheme colorScheme = Theme.of(context).colorScheme;
-    double indent = ThemeHelper(windowType: getWindowType(context)).getIndent();
+    double indent = ThemeHelper.getIndent();
     return Drawer(
       elevation: 0,
       shape: Border.all(width: 0),
