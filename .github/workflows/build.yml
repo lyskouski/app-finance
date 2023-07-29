@@ -1,0 +1,121 @@
+name: Project Release Artifacts
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+jobs:
+  release:
+    name: Create Release Page
+    runs-on: ubuntu-latest
+    outputs:
+      version: ${{ steps.tag.outputs.name }}
+      upload_url: ${{ steps.create_release.outputs.upload_url }}
+    steps:
+      - name: Get Tag Name
+        id: tag
+        run: echo "name=${GITHUB_REF#refs/tags/v}" >> $GITHUB_OUTPUT
+
+      - name: Create Release Page
+        id: create_release
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: ${{ steps.tag.outputs.name }}
+          release_name: Release ${{ steps.tag.outputs.name }}
+          body: 'Fulfill details...'
+          draft: true
+          prerelease: true
+
+  build:
+    name: Create ${{ matrix.target }} build
+    runs-on: ${{ matrix.os }}
+    needs: release
+    strategy:
+      fail-fast: false
+      matrix:
+        target: [macOS, Windows, Linux]
+        include:
+          - os: macos-latest
+            target: macOS
+            build_path: build/macos/Build/Products/Release
+            asset_extension: .zip
+            asset_content_type: application/zip
+          - os: windows-latest
+            target: Windows
+            build_path: build/windows/runner/Release
+            asset_extension: .zip
+            asset_content_type: application/zip
+          - os: ubuntu-latest
+            target: Linux
+            build_path: build/linux/x64/release/bundle
+            asset_extension: .tar.gz
+            asset_content_type: application/gzip
+
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-java@v3
+        with:
+          distribution: 'temurin'
+          java-version: '17'
+          cache: 'gradle'
+      - uses: subosito/flutter-action@v2
+        with:
+          channel: 'stable'
+          cache: true
+      - run: flutter pub get
+
+      - name: Set Build Number
+        id: build_number
+        run: echo "build_number=$(git rev-list --count HEAD)" >> $GITHUB_OUTPUT
+
+      - name: Run Windows Build 
+        if: matrix.target == 'Windows'
+        run: |
+          flutter config --enable-windows-desktop
+          flutter build -v windows --build-name=${{ needs.release.outputs.version }} --build-number=${{ steps.build_number.outputs.build_number }} --release
+
+      - name: Compress Windows Package
+        if: matrix.target == 'Windows'
+        run: |   
+          Copy-Item (vswhere -latest -find 'VC\Redist\MSVC\*\x64\*\msvcp140.dll') .
+          Copy-Item (vswhere -latest -find 'VC\Redist\MSVC\*\x64\*\vcruntime140.dll') .
+          Copy-Item (vswhere -latest -find 'VC\Redist\MSVC\*\x64\*\vcruntime140_1.dll') .
+          compress-archive -Path * -DestinationPath ${env:GITHUB_WORKSPACE}/fingram_${{ matrix.target }}${{ matrix.asset_extension }}
+        working-directory: ${{ matrix.build_path }}
+
+      - name: Run Linux Build
+        if: matrix.target == 'Linux'
+        run: |
+          sudo apt-get install -y libgtk-3-dev ninja-build
+          flutter config --enable-linux-desktop
+          flutter build -v linux --build-name=${{ needs.release.outputs.version }} --build-number=${{ steps.build_number.outputs.build_number }} --release
+
+      - name: Compress Linux Package
+        if: matrix.target == 'Linux'          
+        run: tar czf $GITHUB_WORKSPACE/fingram_${{ matrix.target }}${{ matrix.asset_extension }} *
+        working-directory: ${{ matrix.build_path }}
+
+      - name: Run macOS Build
+        if: matrix.target == 'macOS'
+        run: |
+          flutter config --enable-macos-desktop
+          flutter build -v macos --build-name=${{ needs.release.outputs.version }} --build-number=${{ steps.build_number.outputs.build_number }} --release --no-tree-shake-icons
+
+      - name: Compress macOS Package
+        if: matrix.target == 'macOS'
+        run: ditto -c -k --sequesterRsrc --keepParent Fingram.app $GITHUB_WORKSPACE/fingram_${{ matrix.target }}${{ matrix.asset_extension }}
+        working-directory: ${{ matrix.build_path }}
+
+      - name: Upload ${{ matrix.target }} Artifact
+        id: upload_release_asset
+        uses: actions/upload-release-asset@latest
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ needs.release.outputs.upload_url }}
+          asset_path: ./fingram_${{ matrix.target }}${{ matrix.asset_extension }}
+          asset_name: fingram_${{ matrix.target }}${{ matrix.asset_extension }}
+          asset_content_type: ${{ matrix.asset_content_type }}
