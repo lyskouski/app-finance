@@ -2,11 +2,8 @@
 // Use of this source code is governed by a CC BY-NC-ND 4.0 license that can be
 // found in the LICENSE file.
 
-import 'dart:collection';
-
 import 'package:app_finance/_classes/data/abstract_recalculation.dart';
 import 'package:app_finance/_classes/data/budget_app_data.dart';
-import 'package:app_finance/_classes/data/summary_app_data.dart';
 
 class BudgetRecalculation extends AbstractRecalculation {
   BudgetAppData change;
@@ -29,16 +26,5 @@ class BudgetRecalculation extends AbstractRecalculation {
   BudgetRecalculation updateBudget() {
     change.progress = getDelta();
     return this;
-  }
-
-  @override
-  List<String>? getSummaryList(SummaryAppData? summary) {
-    return summary?.listActual;
-  }
-
-  @override
-  double updateTotalMap(String uuid, HashMap<String, dynamic> hashTable) {
-    final item = hashTable[uuid];
-    return exchange.reform(item.details, item.currency, exchangeTo);
   }
 }

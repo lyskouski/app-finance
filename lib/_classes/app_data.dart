@@ -4,7 +4,6 @@
 
 import 'dart:collection';
 import 'package:app_finance/_classes/data/account_app_data.dart';
-import 'package:app_finance/_classes/data/account_recalculation.dart';
 import 'package:app_finance/_classes/data/bill_app_data.dart';
 import 'package:app_finance/_classes/data/bill_recalculation.dart';
 import 'package:app_finance/_classes/data/budget_app_data.dart';
@@ -14,6 +13,7 @@ import 'package:app_finance/_classes/data/exchange.dart';
 import 'package:app_finance/_classes/data/goal_app_data.dart';
 import 'package:app_finance/_classes/data/goal_recalculation.dart';
 import 'package:app_finance/_classes/data/summary_app_data.dart';
+import 'package:app_finance/_classes/data/total_recalculation.dart';
 import 'package:app_finance/_classes/data/transaction_log.dart';
 import 'package:app_finance/_classes/data/transaction_log_data.dart';
 import 'package:currency_picker/currency_picker.dart';
@@ -63,10 +63,12 @@ class AppData extends ChangeNotifier {
 
   AppData() : super() {
     isLoading = true;
-    Exchange(store: this).getDefaultCurrency();
-    TransactionLog.load(this)
-        .then((success) => notifyListeners())
-        .then((success) => isLoading = false);
+    Exchange(store: this).getDefaultCurrency().then((_) {
+      TransactionLog.load(this)
+          .then((success) async => await updateTotals(AppDataType.values))
+          .then((success) => notifyListeners())
+          .then((success) => isLoading = false);
+    });
   }
 
   void _set(AppDataType property, dynamic value) {
@@ -119,6 +121,19 @@ class AppData extends ChangeNotifier {
     }
   }
 
+  Future<void> updateTotals(List<AppDataType> scope) async {
+    final accountTotal = getTotal(AppDataType.accounts);
+    final exchange = Exchange(store: this);
+    final rec = TotalRecalculation(exchange: exchange);
+    for (AppDataType type in scope) {
+      await rec.updateTotal(type, _data[type], _hashTable);
+    }
+    if (scope.contains(AppDataType.accounts)) {
+      rec.updateGoals(getList(AppDataType.goals, false), accountTotal,
+          getTotal(AppDataType.accounts));
+    }
+  }
+
   void _update(AppDataType property, dynamic initial, dynamic change) {
     switch (property) {
       case AppDataType.accounts:
@@ -140,17 +155,10 @@ class AppData extends ChangeNotifier {
   }
 
   void _updateAccount(AccountAppData? initial, AccountAppData change) {
-    var calc = AccountRecalculation(change: change, initial: initial)
-      ..exchange = Exchange(store: this);
     _set(AppDataType.accounts, change);
-
-    final currTotal = getTotal(AppDataType.accounts);
-    calc.updateTotal(_data[AppDataType.accounts], _hashTable).then((_) {
-      if (initial != null) {
-        calc.updateGoals(getList(AppDataType.goals, false), currTotal,
-            getTotal(AppDataType.accounts));
-      }
-    }).then(_notify);
+    if (!isLoading) {
+      updateTotals([AppDataType.accounts]).then(_notify);
+    }
   }
 
   void _updateBill(BillAppData? initial, BillAppData change) {
@@ -179,46 +187,38 @@ class AppData extends ChangeNotifier {
       _data[AppDataType.budgets]?.add(change.category);
     }
     _set(AppDataType.bills, change);
-    rec.updateTotal(_data[AppDataType.bills], _hashTable).then((_) async {
-      if (currAccount != null) {
-        final recAccount =
-            AccountRecalculation(change: currAccount, initial: prevAccount)
-              ..exchange = Exchange(store: this);
-        final currTotal = getTotal(AppDataType.accounts);
-        await recAccount.updateTotal(_data[AppDataType.accounts], _hashTable);
-        final total = getTotal(AppDataType.accounts);
-        recAccount.updateGoals(
-            getList(AppDataType.goals, false), currTotal, total);
-      }
-    }).then((_) async {
-      if (currBudget != null) {
-        final recBudget =
-            BudgetRecalculation(change: currBudget, initial: prevBudget)
-              ..exchange = Exchange(store: this);
-        await recBudget.updateTotal(_data[AppDataType.budgets], _hashTable);
-      }
-    }).then(_notify);
+    if (!isLoading) {
+      updateTotals(
+              [AppDataType.bills, AppDataType.accounts, AppDataType.budgets])
+          .then(_notify);
+    }
   }
 
   void _updateBudget(BudgetAppData? initial, BudgetAppData change) {
-    final budget = BudgetRecalculation(change: change, initial: initial)
+    BudgetRecalculation(change: change, initial: initial)
       ..exchange = Exchange(store: this)
       ..updateBudget();
     _set(AppDataType.budgets, change);
-    budget.updateTotal(_data[AppDataType.budgets], _hashTable).then(_notify);
+    if (!isLoading) {
+      updateTotals([AppDataType.budgets]).then(_notify);
+    }
   }
 
   void _updateGoal(GoalAppData? initial, GoalAppData change) {
-    final goal = GoalRecalculation(change: change, initial: initial)
+    GoalRecalculation(change: change, initial: initial)
       ..exchange = Exchange(store: this)
       ..updateGoal();
     _set(AppDataType.goals, change);
-    goal.updateTotal(_data[AppDataType.goals], _hashTable).then(_notify);
+    if (!isLoading) {
+      updateTotals([AppDataType.goals]).then(_notify);
+    }
   }
 
   void _updateCurrency(CurrencyAppData? initial, CurrencyAppData change) {
     _set(AppDataType.currencies, change);
-    // TBD: Update totals for Budget and Account
+    if (!isLoading) {
+      updateTotals(AppDataType.values).then(_notify);
+    }
   }
 
   dynamic get(AppDataType property) {
