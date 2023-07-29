@@ -39,6 +39,14 @@ bool sortArbFileKeys(File file) {
   entries.sort((a, b) {
     final aKey = a.key.startsWith('@') ? a.key.substring(1) : a.key;
     final bKey = b.key.startsWith('@') ? b.key.substring(1) : b.key;
+    if (aKey == bKey) {
+      if (a.key.startsWith('@')) {
+        return 1;
+      }
+      if (b.key.startsWith('@')) {
+        return -1;
+      }
+    }
     return aKey.compareTo(bKey);
   });
 
