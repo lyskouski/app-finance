@@ -16,12 +16,12 @@
     "appInitHeadline": "Project Initialization",
     "appStartHeadline": "Initial Setup",
     "appTitle": "Fingram",
+    "appVersion": "Version: {version}",
     "@appVersion": {
         "build": {
             "type": "String"
         }
     },
-    "appVersion": "Version: {version}",
     "backTooltip": "Return back",
     "balance": "Actual Balance",
     "balanceDate": "Balance Date Update",
@@ -31,6 +31,7 @@
     "billHeadline": "Bills",
     "billSetTooltip": "Set Amount",
     "billTooltip": "Open Bills",
+    "brightnessTheme": "Brightness Theme",
     "btnAdd": "Add",
     "btnMore": "More",
     "budget": "Budget Category",
@@ -70,6 +71,7 @@
     "currencyHeadline": "Currencies",
     "currencyUpdateTooltip": "Update Currencies Rate",
     "currentDate": "Current Date",
+    "darkMode": "Dark",
     "debitCard": "Debit Card",
     "deleteAccountTooltip": "Deactivate Account",
     "deleteBillTooltip": "Delete Bill",
@@ -104,6 +106,7 @@
     "incomeHeadline": "Income",
     "isRequired": "required",
     "left": "left",
+    "lightMode": "Light",
     "metricsHeadline": "Metrics",
     "milestones": "Milestones",
     "navigationTooltip": "Open main menu",
@@ -121,6 +124,7 @@
     "subscriptionPatreon": "Subscribe via Patreon",
     "subscriptionPaypal": "Buy a coffee (PayPal)",
     "subscriptionTooltip": "Activate Subscription",
+    "systemMode": "System",
     "targetAmount": "Target Amount",
     "title": "Title",
     "titleAccountTooltip": "Enter Account Identifier",

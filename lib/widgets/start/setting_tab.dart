@@ -3,15 +3,19 @@
 // found in the LICENSE file.
 
 import 'package:adaptive_breakpoints/adaptive_breakpoints.dart';
+import 'package:app_finance/_classes/app_theme.dart';
 import 'package:app_finance/_mixins/shared_preferences_mixin.dart';
+import 'package:app_finance/custom_text_theme.dart';
 import 'package:app_finance/helpers/theme_helper.dart';
 import 'package:app_finance/widgets/_forms/currency_selector.dart';
+import 'package:app_finance/widgets/_forms/list_selector.dart';
 import 'package:app_finance/widgets/_wrappers/row_widget.dart';
 import 'package:app_finance/widgets/start/abstract_tab.dart';
 import 'package:currency_picker/currency_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localization.dart';
 import 'package:intl/intl.dart';
+import 'package:provider/provider.dart';
 
 class SettingTab extends AbstractTab {
   final String? title;
@@ -27,9 +31,11 @@ class SettingTab extends AbstractTab {
 
 class SettingTabState extends AbstractTabState<SettingTab>
     with SharedPreferencesMixin {
+  late AppTheme theme;
   Currency? currency;
   bool isEncrypted = false;
   bool hasEncrypted = false;
+  String brightness = '0';
 
   @override
   void initState() {
@@ -38,6 +44,7 @@ class SettingTabState extends AbstractTabState<SettingTab>
       isEncrypted = value == 'true' || value == null;
       hasEncrypted = value != null;
     });
+    getPreference(prefTheme).then((value) => brightness = value ?? brightness);
   }
 
   @override
@@ -49,6 +56,11 @@ class SettingTabState extends AbstractTabState<SettingTab>
   Future<void> saveCurrency(Currency? value) async {
     await setPreference(prefCurrency, value!.code);
     setState(() => currency = value);
+  }
+
+  void saveTheme(String value) {
+    setState(() => brightness = value);
+    theme.updateState(value);
   }
 
   Future<void> initCurrencyFromLocale(BuildContext context) async {
@@ -64,6 +76,7 @@ class SettingTabState extends AbstractTabState<SettingTab>
 
   @override
   Widget buildContent(BuildContext context) {
+    theme = Provider.of<AppTheme>(context, listen: false);
     final TextTheme textTheme = Theme.of(context).textTheme;
     double indent =
         ThemeHelper(windowType: getWindowType(context)).getIndent() * 2;
@@ -71,6 +84,7 @@ class SettingTabState extends AbstractTabState<SettingTab>
     if (currency == null) {
       initCurrencyFromLocale(context);
     }
+
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -117,6 +131,25 @@ class SettingTabState extends AbstractTabState<SettingTab>
                   : const SizedBox(),
             ],
           ],
+        ),
+        SizedBox(height: indent),
+        Text(
+          AppLocalizations.of(context)!.brightnessTheme,
+          style: textTheme.bodyLarge,
+        ),
+        ListSelector(
+          value: brightness,
+          options: [
+            ListSelectorItem(
+                id: '0', name: AppLocalizations.of(context)!.systemMode),
+            ListSelectorItem(
+                id: '1', name: AppLocalizations.of(context)!.lightMode),
+            ListSelectorItem(
+                id: '2', name: AppLocalizations.of(context)!.darkMode),
+          ],
+          setState: saveTheme,
+          style: textTheme.numberMedium,
+          indent: indent,
         ),
       ],
     );

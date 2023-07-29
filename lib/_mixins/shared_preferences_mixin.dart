@@ -10,6 +10,7 @@ mixin SharedPreferencesMixin {
   final String prefAccount = 'account';
   final String prefBudget = 'budget';
   final String prefCurrency = 'currency';
+  final String prefTheme = 'themeMode';
 
   static Future<SharedPreferences> get pref async =>
       await SharedPreferences.getInstance();

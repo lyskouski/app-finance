@@ -2,6 +2,8 @@
 // Use of this source code is governed by a CC BY-NC-ND 4.0 license that can be
 // found in the LICENSE file.
 
+import 'package:adaptive_breakpoints/adaptive_breakpoints.dart';
+import 'package:app_finance/_classes/app_theme.dart';
 import 'package:app_finance/custom_text_theme.dart';
 import 'package:app_finance/_classes/app_data.dart';
 import 'package:app_finance/_classes/app_route.dart';
@@ -56,8 +58,15 @@ void main() async {
     };
   }
   runApp(
-    ChangeNotifierProvider(
-      create: (_) => AppData(),
+    MultiProvider(
+      providers: [
+        ChangeNotifierProvider<AppData>(
+          create: (_) => AppData(),
+        ),
+        ChangeNotifierProvider<AppTheme>(
+          create: (_) => AppTheme(),
+        ),
+      ],
       child: MyApp(platform: platform),
     ),
   );
@@ -149,7 +158,7 @@ class MyAppState extends State<MyApp> {
         textTheme: CustomTextTheme.textTheme(Theme.of(context).textTheme),
         useMaterial3: true,
       ),
-      themeMode: ThemeMode.system,
+      themeMode: context.watch<AppTheme>().theme.value,
       home: InitPage(),
       initialRoute: AppRoute.initRoute,
       onGenerateRoute: getDynamicRouter,
