@@ -24,5 +24,6 @@ class AppRoute {
   static const String homeRoute = '/app/finance/main';
   static const String initRoute = '/app/finance';
   static const String startRoute = '/app/finance/start';
+  static const String settingsRoute = '/app/finance/settings';
   static const String subscriptionRoute = '/app/finance/subscription';
 }

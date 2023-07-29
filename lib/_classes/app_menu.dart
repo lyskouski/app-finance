@@ -63,7 +63,7 @@ class AppMenu {
       AppMenuItem(
         name: locale!.settingsHeadline,
         icon: Icons.settings,
-        route: AppRoute.homeRoute,
+        route: AppRoute.settingsRoute,
       ),
       AppMenuItem(
         name: locale!.subscriptionHeadline,
