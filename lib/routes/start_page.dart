@@ -70,8 +70,8 @@ class StartPageState extends AbstractPageState<StartPage> {
             asDots: true,
             focus: currentStep,
             children: [
-              PrivacyTab(setState: updateState),
               SettingTab(setState: updateState),
+              PrivacyTab(setState: updateState),
               AccountTab(setState: updateState),
               BudgetTab(setState: updateState),
             ],

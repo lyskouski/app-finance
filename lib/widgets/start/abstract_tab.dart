@@ -2,7 +2,6 @@
 // Use of this source code is governed by a CC BY-NC-ND 4.0 license that can be
 // found in the LICENSE file.
 
-import 'package:adaptive_breakpoints/adaptive_breakpoints.dart';
 import 'package:app_finance/helpers/theme_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localization.dart';
@@ -23,11 +22,13 @@ abstract class AbstractTabState<T extends AbstractTab> extends State<T> {
   }
 
   Widget buildButton(BuildContext context, BoxConstraints constraints) {
-    final helper = ThemeHelper(windowType: getWindowType(context));
+    if (getButtonTitle() == '') {
+      return const SizedBox();
+    }
     String title =
         '${getButtonTitle()} (${AppLocalizations.of(context)!.goNextTooltip})';
     return SizedBox(
-      width: constraints.maxWidth - helper.getIndent() * 4,
+      width: constraints.maxWidth - ThemeHelper.getIndent() * 4,
       child: FloatingActionButton(
         onPressed: updateState,
         tooltip: title,
@@ -37,7 +38,7 @@ abstract class AbstractTabState<T extends AbstractTab> extends State<T> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               const Icon(Icons.exit_to_app_rounded),
-              SizedBox(height: helper.getIndent()),
+              SizedBox(height: ThemeHelper.getIndent()),
               Text(title, style: Theme.of(context).textTheme.headlineMedium)
             ],
           ),
@@ -48,8 +49,7 @@ abstract class AbstractTabState<T extends AbstractTab> extends State<T> {
 
   @override
   Widget build(BuildContext context) {
-    double indent =
-        ThemeHelper(windowType: getWindowType(context)).getIndent() * 2;
+    double indent = ThemeHelper.getIndent() * 2;
     return LayoutBuilder(builder: (context, constraints) {
       return Scaffold(
         floatingActionButton: buildButton(context, constraints),

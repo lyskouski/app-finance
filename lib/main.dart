@@ -2,10 +2,13 @@
 // Use of this source code is governed by a CC BY-NC-ND 4.0 license that can be
 // found in the LICENSE file.
 
+import 'package:adaptive_breakpoints/adaptive_breakpoints.dart';
+import 'package:app_finance/_classes/app_theme.dart';
 import 'package:app_finance/custom_text_theme.dart';
 import 'package:app_finance/_classes/app_data.dart';
 import 'package:app_finance/_classes/app_route.dart';
 import 'package:app_finance/firebase_options.dart';
+import 'package:app_finance/helpers/theme_helper.dart';
 import 'package:app_finance/routes/about_page.dart';
 import 'package:app_finance/routes/account_add_page.dart';
 import 'package:app_finance/routes/account_edit_page.dart';
@@ -26,6 +29,7 @@ import 'package:app_finance/routes/goal_page.dart';
 import 'package:app_finance/routes/goal_view_page.dart';
 import 'package:app_finance/routes/home_page.dart';
 import 'package:app_finance/routes/init_page.dart';
+import 'package:app_finance/routes/settings_page.dart';
 import 'package:app_finance/routes/start_page.dart';
 import 'package:app_finance/routes/subscription_page.dart';
 import 'package:firebase_analytics/firebase_analytics.dart';
@@ -55,8 +59,15 @@ void main() async {
     };
   }
   runApp(
-    ChangeNotifierProvider(
-      create: (_) => AppData(),
+    MultiProvider(
+      providers: [
+        ChangeNotifierProvider<AppData>(
+          create: (_) => AppData(),
+        ),
+        ChangeNotifierProvider<AppTheme>(
+          create: (_) => AppTheme(ThemeMode.system),
+        ),
+      ],
       child: MyApp(platform: platform),
     ),
   );
@@ -121,6 +132,7 @@ class MyAppState extends State<MyApp> {
         AppRoute.goalRoute: (context) => GoalPage(),
         AppRoute.homeRoute: (context) => HomePage(),
         AppRoute.initRoute: (context) => InitPage(),
+        AppRoute.settingsRoute: (context) => SettingsPage(),
         AppRoute.startRoute: (context) => StartPage(),
         AppRoute.subscriptionRoute: (context) => SubscriptionPage(),
       };
@@ -133,6 +145,7 @@ class MyAppState extends State<MyApp> {
 
   @override
   Widget build(BuildContext context) {
+    ThemeHelper(windowType: getWindowType(context));
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       localizationsDelegates: AppLocalizations.localizationsDelegates,
@@ -147,7 +160,7 @@ class MyAppState extends State<MyApp> {
         textTheme: CustomTextTheme.textTheme(Theme.of(context).textTheme),
         useMaterial3: true,
       ),
-      themeMode: ThemeMode.system,
+      themeMode: context.watch<AppTheme>().value,
       home: InitPage(),
       initialRoute: AppRoute.initRoute,
       onGenerateRoute: getDynamicRouter,

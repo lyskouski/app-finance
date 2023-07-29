@@ -666,3 +666,70 @@ To set icon with background:
 
 And it has to be created `ic\_launcher.png` and `ic\_launcher\_round.png` icons for all other formats (mipmap-hdpi, 
 mipmap-mdpi, ...) to support less than Android SDK 26 versions.
+
+
+\subsubsection{Adding Multiple Providers}
+
+In case of being aligned with SOLID principles, it would be better to preserve our classes small with a single 
+responsibility. So, for the case of handling theme mode (system, light, dark) it can be created a separate notifier:
+
+\begin{lstlisting}
+class AppTheme extends ValueNotifier<ThemeMode> with SharedPreferencesMixin {
+  AppTheme(ThemeMode value) : super(value) {
+    // Get from Shared Preferences current state of value
+    getPreference(prefTheme).then((val) {
+      if (val != null) {
+        _set(val);
+      }
+    });
+  }
+
+  _set(String val) {
+    int? idx = int.tryParse(val);
+    if (idx != null) {
+      // Trigger notification by value change
+      value = ThemeMode.values[idx];
+      notifyListeners();
+    }
+  }
+
+  updateState(String value) {
+    setPreference(prefTheme, value).then((_) {
+      _set(value);
+    });
+  }
+}
+\end{lstlisting}
+
+\noindent The simples way to observe value changes can be done via `context.watch`:
+
+\begin{lstlisting}
+void main() {
+  runApp(
+    // Clarify that we have more than one provider
+    MultiProvider(
+      providers: [
+        ChangeNotifierProvider<AppData>(
+          create: (_) => AppData(),
+        ),
+        ChangeNotifierProvider<AppTheme>(
+          create: (_) => AppTheme(ThemeMode.system),
+        ),
+      ],
+      child: MyApp(platform: platform),
+    ),
+  );
+}(*@ \stopnumber @*)
+
+class MyAppState extends State<MyApp> {
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      themeMode: context.watch<AppTheme>().value,
+// ... other code
+\end{lstlisting}
+
+\noindent And to update the state:
+
+\begin{lstlisting}
+Provider.of<AppTheme>(context, listen: false).updateState(value);
+\end{lstlisting}

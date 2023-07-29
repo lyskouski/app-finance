@@ -2,6 +2,7 @@
 // Use of this source code is governed by a CC BY-NC-ND 4.0 license that can be
 // found in the LICENSE file.
 
+import 'package:app_finance/_classes/app_theme.dart';
 import 'package:app_finance/main.dart';
 import 'package:app_finance/_classes/app_data.dart';
 import 'package:flutter/material.dart';
@@ -11,8 +12,15 @@ import 'package:provider/provider.dart';
 void main() {
   testWidgets('Given Main page When tap on Create Then opened BillAddPage',
       (WidgetTester tester) async {
-    await tester.pumpWidget(ChangeNotifierProvider(
-      create: (_) => AppData(),
+    await tester.pumpWidget(MultiProvider(
+      providers: [
+        ChangeNotifierProvider<AppData>(
+          create: (_) => AppData(),
+        ),
+        ChangeNotifierProvider<AppTheme>(
+          create: (_) => AppTheme(ThemeMode.system),
+        ),
+      ],
       child: const MyApp(),
     ));
 

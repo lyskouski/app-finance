@@ -2,7 +2,6 @@
 // Use of this source code is governed by a CC BY-NC-ND 4.0 license that can be
 // found in the LICENSE file.
 
-import 'package:adaptive_breakpoints/adaptive_breakpoints.dart';
 import 'package:app_finance/_classes/data/currency_app_data.dart';
 import 'package:app_finance/_classes/app_data.dart';
 import 'package:app_finance/helpers/theme_helper.dart';
@@ -50,9 +49,8 @@ class CurrencyPageState extends AbstractPageState<CurrencyPage> {
 
   @override
   Widget buildContent(BuildContext context, BoxConstraints constraints) {
-    final helper = ThemeHelper(windowType: getWindowType(context));
     final TextTheme textTheme = Theme.of(context).textTheme;
-    final indent = helper.getIndent();
+    final indent = ThemeHelper.getIndent();
     final double maxWidth = MediaQuery.of(context).size.width - indent * 2;
     scope ??= super.state.get(AppDataType.currencies).list;
 

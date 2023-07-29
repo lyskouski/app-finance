@@ -2,7 +2,6 @@
 // Use of this source code is governed by a CC BY-NC-ND 4.0 license that can be
 // found in the LICENSE file.
 
-import 'package:adaptive_breakpoints/adaptive_breakpoints.dart';
 import 'package:app_finance/helpers/theme_helper.dart';
 import 'package:app_finance/widgets/_forms/date_input.dart';
 import 'package:app_finance/widgets/_wrappers/row_widget.dart';
@@ -26,8 +25,7 @@ class DateTimeInput extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    double indent =
-        ThemeHelper(windowType: getWindowType(context)).getIndent() * 2;
+    double indent = ThemeHelper.getIndent() * 2;
     double offset = width ?? MediaQuery.of(context).size.width - indent * 2;
     final locale = Localizations.localeOf(context).toString();
     final DateFormat formatterTime = DateFormat.Hms(locale);

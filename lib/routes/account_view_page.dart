@@ -2,7 +2,6 @@
 // Use of this source code is governed by a CC BY-NC-ND 4.0 license that can be
 // found in the LICENSE file.
 
-import 'package:adaptive_breakpoints/adaptive_breakpoints.dart';
 import 'package:app_finance/_classes/data/account_app_data.dart';
 import 'package:app_finance/_classes/app_menu.dart';
 import 'package:app_finance/_classes/app_data.dart';
@@ -43,8 +42,7 @@ class AccountViewPageState extends AbstractPageState<AccountViewPage> {
   Widget buildButton(BuildContext context, BoxConstraints constraints) {
     String route =
         AppMenu(context: context).uuid(AppRoute.accountEditRoute, widget.uuid);
-    double indent =
-        ThemeHelper(windowType: getWindowType(context)).getIndent() * 4;
+    double indent = ThemeHelper.getIndent() * 4;
     return Container(
       margin: EdgeInsets.only(left: indent),
       child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
@@ -80,8 +78,7 @@ class AccountViewPageState extends AbstractPageState<AccountViewPage> {
     final item = super.state.getByUuid(widget.uuid) as AccountAppData;
     final log = super.state.getLog(widget.uuid);
     item.updateContext(context);
-    double indent =
-        ThemeHelper(windowType: getWindowType(context)).getIndent() * 2;
+    double indent = ThemeHelper.getIndent() * 2;
     double offset = MediaQuery.of(context).size.width - indent * 3;
     return Column(
       children: [
