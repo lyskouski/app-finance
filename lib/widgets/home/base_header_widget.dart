@@ -55,7 +55,8 @@ class BaseHeaderWidget extends StatelessWidget {
                 padding: EdgeInsets.fromLTRB(indent, 0, 0, indent),
                 child: Text(
                   formatter.format(state.total),
-                  style: textTheme.numberLarge,
+                  style: textTheme.numberLarge
+                      .copyWith(color: textTheme.headlineSmall?.color),
                 ),
               ),
             ],

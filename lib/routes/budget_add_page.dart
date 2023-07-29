@@ -144,7 +144,8 @@ class BudgetAddPageState<T extends BudgetAddPage>
             SimpleInput(
               value: title,
               tooltip: AppLocalizations.of(context)!.titleBudgetTooltip,
-              style: textTheme.numberMedium,
+              style: textTheme.numberMedium
+                  .copyWith(color: textTheme.headlineSmall?.color),
               setState: (value) => setState(() => title = value),
               focusOrder: focusOrder += 1,
             ),
@@ -187,7 +188,8 @@ class BudgetAddPageState<T extends BudgetAddPage>
               value: budgetLimit != null ? budgetLimit.toString() : '',
               type: const TextInputType.numberWithOptions(decimal: true),
               tooltip: AppLocalizations.of(context)!.balanceTooltip,
-              style: textTheme.numberMedium,
+              style: textTheme.numberMedium
+                  .copyWith(color: textTheme.headlineSmall?.color),
               formatter: [
                 FilteringTextInputFormatter.allow(RegExp(r'^\d+\.?\d{0,4}')),
               ],

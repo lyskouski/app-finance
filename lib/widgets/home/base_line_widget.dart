@@ -86,7 +86,8 @@ class BaseLineWidget extends StatelessWidget {
                   ),
                   child: Text(
                     details,
-                    style: textTheme.numberMedium,
+                    style: textTheme.numberMedium
+                        .copyWith(color: textTheme.headlineSmall?.color),
                     overflow: TextOverflow.ellipsis,
                   ),
                 ),

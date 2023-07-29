@@ -10,12 +10,8 @@ extension CustomTextTheme on TextTheme {
   static double letterSpacingOrNone(double letterSpacing) =>
       kIsWeb ? 0.0 : letterSpacing;
 
-  static TextTheme? textTheme(TextTheme? baseTheme) {
-    if (baseTheme == null) {
-      return null;
-    }
-
-    return baseTheme.copyWith(
+  static TextTheme? textTheme(ThemeData baseTheme) {
+    return baseTheme.textTheme.copyWith(
       headlineLarge: GoogleFonts.abel(
         fontSize: 32,
         fontWeight: FontWeight.w400,

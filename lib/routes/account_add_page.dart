@@ -189,7 +189,8 @@ class AccountAddPageState<T extends AccountAddPage>
               value: type,
               options: getAccountTypes(context),
               setState: (value) => setState(() => type = value),
-              style: textTheme.numberMedium,
+              style: textTheme.numberMedium
+                  .copyWith(color: textTheme.headlineSmall?.color),
               indent: indent,
               focusOrder: focusOrder += 1,
             ),
@@ -201,7 +202,8 @@ class AccountAddPageState<T extends AccountAddPage>
             SimpleInput(
               value: title,
               tooltip: AppLocalizations.of(context)!.titleAccountTooltip,
-              style: textTheme.numberMedium,
+              style: textTheme.numberMedium
+                  .copyWith(color: textTheme.headlineSmall?.color),
               setState: (value) => setState(() => title = value),
               focusOrder: focusOrder += 1,
             ),
@@ -241,7 +243,8 @@ class AccountAddPageState<T extends AccountAddPage>
                   SimpleInput(
                     value: description,
                     tooltip: AppLocalizations.of(context)!.detailsTooltip,
-                    style: textTheme.numberMedium,
+                    style: textTheme.numberMedium
+                        .copyWith(color: textTheme.headlineSmall?.color),
                     setState: (value) => setState(() => description = value),
                     focusOrder: focusOrder += 1,
                   ),
@@ -271,7 +274,8 @@ class AccountAddPageState<T extends AccountAddPage>
             MonthYearInput(
               value: validTillDate,
               setState: (value) => setState(() => validTillDate = value),
-              style: textTheme.numberMedium,
+              style: textTheme.numberMedium
+                  .copyWith(color: textTheme.headlineSmall?.color),
               focusOrder: focusOrder += 1,
             ),
             SizedBox(height: indent),
@@ -283,7 +287,8 @@ class AccountAddPageState<T extends AccountAddPage>
               value: balance != null ? balance.toString() : '',
               type: const TextInputType.numberWithOptions(decimal: true),
               tooltip: AppLocalizations.of(context)!.balanceTooltip,
-              style: textTheme.numberMedium,
+              style: textTheme.numberMedium
+                  .copyWith(color: textTheme.headlineSmall?.color),
               formatter: [
                 SimpleInput.filterDouble,
               ],
@@ -306,7 +311,8 @@ class AccountAddPageState<T extends AccountAddPage>
               ],
             ),
             DateTimeInput(
-              style: textTheme.numberMedium,
+              style: textTheme.numberMedium
+                  .copyWith(color: textTheme.headlineSmall?.color),
               width: offset,
               value: balanceUpdateDate,
               setState: (value) => setState(() => balanceUpdateDate = value),

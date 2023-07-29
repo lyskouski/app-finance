@@ -20,7 +20,7 @@ class BudgetAppData extends AbstractAppData {
     super.updatedAt,
     super.createdAt,
     super.createdAtFormatted,
-    amountLimit,
+    amountLimit = 0.0,
     super.hidden,
   }) : super(
           details: amountLimit,

@@ -131,7 +131,8 @@ class TransferTabState extends State<TransferTab> {
                     value: accountFrom,
                     state: state,
                     setState: (value) => setState(() => accountFrom = value),
-                    style: textTheme.numberMedium,
+                    style: textTheme.numberMedium
+                        .copyWith(color: textTheme.headlineSmall?.color),
                     indent: indent,
                     width: offset,
                     focusOrder: focusOrder += 1,
@@ -148,7 +149,8 @@ class TransferTabState extends State<TransferTab> {
                       accountTo = value;
                       currency ??= state.getByUuid(value).currency;
                     }),
-                    style: textTheme.numberMedium,
+                    style: textTheme.numberMedium
+                        .copyWith(color: textTheme.headlineSmall?.color),
                     indent: indent,
                     width: offset,
                     focusOrder: focusOrder += 1,
@@ -189,7 +191,8 @@ class TransferTabState extends State<TransferTab> {
                           type: const TextInputType.numberWithOptions(
                               decimal: true),
                           tooltip: AppLocalizations.of(context)!.billSetTooltip,
-                          style: textTheme.numberMedium,
+                          style: textTheme.numberMedium
+                              .copyWith(color: textTheme.headlineSmall?.color),
                           formatter: [
                             SimpleInput.filterDouble,
                           ],
