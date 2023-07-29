@@ -22,7 +22,7 @@ class SettingsPageState extends AbstractPageState<SettingsPage> {
 
   @override
   Widget buildContent(BuildContext context, BoxConstraints constraints) {
-    return SettingTab(setState: () {});
+    return SettingTab(setState: () {}, title: '');
   }
 
   @override

@@ -13,8 +13,11 @@ import 'package:flutter_gen/gen_l10n/app_localization.dart';
 import 'package:intl/intl.dart';
 
 class SettingTab extends AbstractTab {
+  final String? title;
+
   SettingTab({
     required super.setState,
+    this.title,
   }) : super();
 
   @override
@@ -75,6 +78,6 @@ class SettingTabState extends AbstractTabState<SettingTab>
 
   @override
   String getButtonTitle() {
-    return AppLocalizations.of(context)!.saveTooltip;
+    return widget.title ?? AppLocalizations.of(context)!.saveTooltip;
   }
 }
