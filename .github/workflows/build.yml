@@ -23,7 +23,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          tag_name: ${{ steps.tag.outputs.name }}
+          tag_name: v${{ steps.tag.outputs.name }}
           release_name: Release ${{ steps.tag.outputs.name }}
           body: 'Fulfill details...'
           draft: true
