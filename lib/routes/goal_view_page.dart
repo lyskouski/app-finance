@@ -31,9 +31,7 @@ class GoalViewPageState extends AbstractPageState<GoalViewPage>
 
   @override
   void initState() {
-    getPreference(prefAccount).then((accountId) => setState(() {
-          defaultAccount = accountId ?? '';
-        }));
+    defaultAccount = getPreference(prefAccount) ?? '';
     super.initState();
   }
 

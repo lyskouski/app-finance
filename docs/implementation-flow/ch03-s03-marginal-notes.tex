@@ -733,3 +733,23 @@ class MyAppState extends State<MyApp> {
 \begin{lstlisting}
 Provider.of<AppTheme>(context, listen: false).updateState(value);
 \end{lstlisting}
+
+\noindent The only this that the usage of asynchronous `getPreference` leads to a not needed complexity, and 
+additional computational efforts:
+
+\begin{lstlisting}[language=bash]
+User I/Choreographer( 4431): Skipped 244 frames!  The application may be doing too much work on its main thread.
+\end{lstlisting}
+
+\noindent While we've understood that, we can easily fix the problem by its single initialization during
+application start:
+
+\begin{lstlisting}
+// ./lib/main.dart
+void main() async {
+  SharedPreferencesMixin.pref = await SharedPreferences.getInstance();(*@ \stopnumber @*)
+
+// ./lib/_mixins/shared_preferences_mixin.dart
+mixin SharedPreferencesMixin {
+  static late SharedPreferences pref;
+\end{lstlisting}

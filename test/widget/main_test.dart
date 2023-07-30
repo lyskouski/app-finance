@@ -3,19 +3,28 @@
 // found in the LICENSE file.
 
 import 'package:app_finance/_classes/app_theme.dart';
+import 'package:app_finance/_mixins/shared_preferences_mixin.dart';
 import 'package:app_finance/main.dart';
 import 'package:app_finance/_classes/app_data.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:mockito/annotations.dart';
 import 'package:provider/provider.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+
+@GenerateNiceMocks([MockSpec<SharedPreferences>()])
+import 'main_test.mocks.dart';
 
 void main() {
   testWidgets('Given Main page When tap on Create Then opened BillAddPage',
       (WidgetTester tester) async {
+    SharedPreferencesMixin.pref = MockSharedPreferences();
+    final appData = AppData();
+    appData.isLoading = false;
     await tester.pumpWidget(MultiProvider(
       providers: [
         ChangeNotifierProvider<AppData>(
-          create: (_) => AppData(),
+          create: (_) => appData,
         ),
         ChangeNotifierProvider<AppTheme>(
           create: (_) => AppTheme(ThemeMode.system),
@@ -23,13 +32,6 @@ void main() {
       ],
       child: const MyApp(),
     ));
-
-    const initText = 'Project Initialization';
-    final init = find.text(initText);
-    expect(init, findsWidgets);
-    await tester.tap(init);
-    await tester.pumpAndSettle();
-    expect(find.text(initText), findsNothing);
 
     expect(find.text('Budgets, left'), findsOneWidget);
 

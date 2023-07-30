@@ -54,6 +54,7 @@ class ExpensesTabState<T extends ExpensesTab> extends State<T>
   String? description;
   DateTime? createdAt;
   bool hasErrors = false;
+  bool isFresh = true;
 
   @override
   void initState() {
@@ -64,24 +65,25 @@ class ExpensesTabState<T extends ExpensesTab> extends State<T>
     description = widget.description;
     createdAt = widget.createdAt;
     super.initState();
-    getPreference(prefAccount)
-        .then((accountId) => setState(() {
-              final obj = state.getByUuid(accountId ?? '');
-              account ??= obj?.uuid;
-              currency ??= obj?.currency;
-            }))
-        .then((value) {
-      getPreference(prefBudget)
-          .then((budgetId) => setState(() {
-                final obj = state.getByUuid(budgetId ?? '');
-                budget ??= obj?.uuid;
-                currency ??= obj?.currency;
-              }))
-          .then((value) {
-        getPreference(prefCurrency).then((currencyId) => setState(() {
-              currency ??= CurrencyService().findByCode(currencyId);
-            }));
-      });
+  }
+
+  Future<void> _loadPreferences() async {
+    await Future.delayed(Duration.zero);
+    setState(() {
+      isFresh = false;
+
+      final accountId = getPreference(prefAccount);
+      final objAccount = state.getByUuid(accountId ?? '');
+      account ??= objAccount?.uuid;
+      currency ??= objAccount?.currency;
+
+      final budgetId = getPreference(prefBudget);
+      final objBudget = state.getByUuid(budgetId ?? '');
+      budget ??= objBudget?.uuid;
+      currency ??= objBudget?.currency;
+
+      final currencyId = getPreference(prefCurrency);
+      currency ??= CurrencyService().findByCode(currencyId);
     });
   }
 
@@ -153,6 +155,9 @@ class ExpensesTabState<T extends ExpensesTab> extends State<T>
     return LayoutBuilder(builder: (context, constraints) {
       return Consumer<AppData>(builder: (context, appState, _) {
         state = appState;
+        if (isFresh) {
+          _loadPreferences();
+        }
         return Scaffold(
           body: SingleChildScrollView(
             controller: FocusController.getController(),

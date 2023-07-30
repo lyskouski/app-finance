@@ -7,18 +7,20 @@ import 'package:flutter/material.dart';
 
 class AppTheme extends ValueNotifier<ThemeMode> with SharedPreferencesMixin {
   AppTheme(ThemeMode value) : super(value) {
-    getPreference(prefTheme).then((val) {
-      if (val != null) {
-        _set(val);
-      }
-    });
+    final val = getPreference(prefTheme);
+    if (val != null) {
+      _set(val);
+    }
   }
 
   _set(String val) {
     int? idx = int.tryParse(val);
     if (idx != null) {
-      value = ThemeMode.values[idx];
-      notifyListeners();
+      final newValue = ThemeMode.values[idx];
+      if (newValue != value) {
+        value = newValue;
+        notifyListeners();
+      }
     }
   }
 

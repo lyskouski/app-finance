@@ -6,6 +6,7 @@ import 'package:app_finance/_classes/app_data.dart';
 import 'package:app_finance/helpers/theme_helper.dart';
 import 'package:app_finance/_classes/app_route.dart';
 import 'package:app_finance/routes/abstract_page.dart';
+import 'package:app_finance/routes/init_page.dart';
 import 'package:app_finance/widgets/_wrappers/toolbar_button_widget.dart';
 import 'package:app_finance/widgets/home/account_widget.dart';
 import 'package:app_finance/widgets/home/bill_widget.dart';
@@ -14,6 +15,7 @@ import 'package:app_finance/widgets/home/goal_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localization.dart';
 import 'package:intl/intl.dart';
+import 'package:provider/provider.dart';
 
 class HomePage extends AbstractPage {
   HomePage() : super();
@@ -80,6 +82,17 @@ class HomePageState extends AbstractPageState<HomePage> {
       tooltip: AppLocalizations.of(context)!.addMainTooltip,
       child: const Icon(Icons.add),
     );
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Consumer<AppData>(builder: (context, appState, _) {
+      state = appState;
+      if (appState.isLoading) {
+        return InitPage();
+      }
+      return super.build(context);
+    });
   }
 
   @override

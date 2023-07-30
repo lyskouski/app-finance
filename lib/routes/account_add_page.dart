@@ -65,14 +65,12 @@ class AccountAddPageState<T extends AccountAddPage>
     title = widget.title;
     description = widget.description;
     type = widget.type;
-    currency = widget.currency;
     validTillDate = widget.validTillDate;
     balance = widget.balance;
     icon = widget.icon;
     color = widget.color;
-    getPreference(prefCurrency).then((currencyId) => setState(() {
-          currency ??= CurrencyService().findByCode(currencyId);
-        }));
+    final currencyId = getPreference(prefCurrency);
+    currency = widget.currency ?? CurrencyService().findByCode(currencyId);
     super.initState();
   }
 
