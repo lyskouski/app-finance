@@ -22,9 +22,6 @@ abstract class AbstractTabState<T extends AbstractTab> extends State<T> {
   }
 
   Widget buildButton(BuildContext context, BoxConstraints constraints) {
-    if (getButtonTitle() == '') {
-      return const SizedBox();
-    }
     String title =
         '${getButtonTitle()} (${AppLocalizations.of(context)!.goNextTooltip})';
     return SizedBox(

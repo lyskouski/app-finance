@@ -17,18 +17,15 @@ import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 
 class SettingTab extends AbstractTab {
-  final String? title;
-
   SettingTab({
     required super.setState,
-    this.title,
   }) : super();
 
   @override
   SettingTabState createState() => SettingTabState();
 }
 
-class SettingTabState extends AbstractTabState<SettingTab>
+class SettingTabState<T extends SettingTab> extends AbstractTabState<T>
     with SharedPreferencesMixin {
   late AppTheme theme;
   Currency? currency;
@@ -79,7 +76,7 @@ class SettingTabState extends AbstractTabState<SettingTab>
     double indent = ThemeHelper.getIndent() * 2;
     double offset = MediaQuery.of(context).size.width - indent * 2;
     if (currency == null) {
-      initCurrencyFromLocale(context);
+      Future.delayed(Duration.zero, () => initCurrencyFromLocale(context));
     }
 
     return Column(
@@ -155,6 +152,6 @@ class SettingTabState extends AbstractTabState<SettingTab>
 
   @override
   String getButtonTitle() {
-    return widget.title ?? AppLocalizations.of(context)!.saveTooltip;
+    return AppLocalizations.of(context)!.saveTooltip;
   }
 }

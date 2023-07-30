@@ -3,7 +3,9 @@
 // found in the LICENSE file.
 
 import 'package:app_finance/routes/abstract_page.dart';
-import 'package:app_finance/widgets/start/setting_tab.dart';
+import 'package:app_finance/widgets/_wrappers/tab_widget.dart';
+import 'package:app_finance/widgets/settings/setting_tab.dart';
+import 'package:app_finance/widgets/settings/sync_tab.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localization.dart';
 
@@ -22,7 +24,23 @@ class SettingsPageState extends AbstractPageState<SettingsPage> {
 
   @override
   Widget buildContent(BuildContext context, BoxConstraints constraints) {
-    return SettingTab(setState: () {}, title: '');
+    return TabWidget(
+      focus: 0,
+      tabs: [
+        Tab(
+          icon: const Icon(Icons.settings),
+          text: AppLocalizations.of(context)!.settingsBaseHeadline,
+        ),
+        Tab(
+          icon: const Icon(Icons.sync),
+          text: AppLocalizations.of(context)!.settingsSyncHeadline,
+        ),
+      ],
+      children: [
+        SettingTab(),
+        const SyncTab(),
+      ],
+    );
   }
 
   @override
