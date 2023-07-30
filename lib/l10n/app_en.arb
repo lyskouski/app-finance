@@ -90,7 +90,7 @@
     "editBudgetTooltip": "Edit Budget Category",
     "editGoalHeader": "Edit Goal",
     "editGoalTooltip": "Update Goal",
-    "encryptionMode": "Encryption Mode:",
+    "encryptionMode": "Data Encryption:",
     "expense": "Amount of Expenses",
     "expenseDateTime": "Billed At",
     "expenseHeadline": "Expense",
