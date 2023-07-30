@@ -10,6 +10,7 @@ import 'package:app_finance/_classes/data/exchange.dart';
 import 'package:app_finance/_classes/data/summary_app_data.dart';
 
 class TotalRecalculation extends AbstractRecalculation {
+  @override
   Exchange exchange;
 
   TotalRecalculation({

@@ -43,6 +43,7 @@ class IncomeTabState extends State<IncomeTab> with SharedPreferencesMixin {
   Currency? currency;
   double? amount;
   bool hasErrors = false;
+  bool isFresh = true;
 
   @override
   void initState() {
@@ -50,11 +51,17 @@ class IncomeTabState extends State<IncomeTab> with SharedPreferencesMixin {
     currency = widget.currency;
     amount = widget.amount;
     super.initState();
-    getPreference(prefAccount).then((value) => setState(() {
-          var obj = state.getByUuid(value ?? '');
-          account ??= obj?.uuid;
-          currency ??= obj?.currency;
-        }));
+  }
+
+  Future<void> _loadPreferences() async {
+    await Future.delayed(Duration.zero);
+    setState(() {
+      isFresh = false;
+      final value = getPreference(prefAccount);
+      var obj = state.getByUuid(value ?? '');
+      account ??= obj?.uuid;
+      currency ??= obj?.currency;
+    });
   }
 
   bool hasFormErrors() {
@@ -114,6 +121,9 @@ class IncomeTabState extends State<IncomeTab> with SharedPreferencesMixin {
     return LayoutBuilder(builder: (context, constraints) {
       return Consumer<AppData>(builder: (context, appState, _) {
         state = appState;
+        if (isFresh) {
+          _loadPreferences();
+        }
         return Scaffold(
           body: SingleChildScrollView(
             controller: FocusController.getController(),

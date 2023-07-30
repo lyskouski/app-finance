@@ -4,6 +4,7 @@
 
 import 'package:adaptive_breakpoints/adaptive_breakpoints.dart';
 import 'package:app_finance/_classes/app_theme.dart';
+import 'package:app_finance/_mixins/shared_preferences_mixin.dart';
 import 'package:app_finance/custom_text_theme.dart';
 import 'package:app_finance/_classes/app_data.dart';
 import 'package:app_finance/_classes/app_route.dart';
@@ -38,6 +39,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localization.dart';
 import 'package:provider/provider.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -58,6 +60,7 @@ void main() async {
           contentType: details.toString(), itemId: 'flutter-error');
     };
   }
+  SharedPreferencesMixin.pref = await SharedPreferences.getInstance();
   runApp(
     MultiProvider(
       providers: [
@@ -82,8 +85,9 @@ class MyApp extends StatefulWidget {
 }
 
 class MyAppState extends State<MyApp> {
-  MaterialPageRoute? getDynamicRouter(settings) {
-    final String route = settings.name!;
+  String route = AppRoute.initRoute;
+
+  WidgetBuilder? getDynamicRouterWidget(String route) {
     final regex = RegExp(r'\/uuid:([\w-]+)');
     final match = regex.firstMatch(route);
     if (widget.platform != null) {
@@ -94,53 +98,49 @@ class MyAppState extends State<MyApp> {
       final String uuid = match.group(1) ?? '';
       switch (route.replaceAll(uuid, '')) {
         case AppRoute.accountViewRoute:
-          return MaterialPageRoute(
-              builder: (context) => AccountViewPage(uuid: uuid));
+          return (context) => AccountViewPage(uuid: uuid);
         case AppRoute.accountEditRoute:
-          return MaterialPageRoute(
-              builder: (context) => AccountEditPage(uuid: uuid));
+          return (context) => AccountEditPage(uuid: uuid);
         case AppRoute.budgetViewRoute:
-          return MaterialPageRoute(
-              builder: (context) => BudgetViewPage(uuid: uuid));
+          return (context) => BudgetViewPage(uuid: uuid);
         case AppRoute.budgetEditRoute:
-          return MaterialPageRoute(
-              builder: (context) => BudgetEditPage(uuid: uuid));
+          return (context) => BudgetEditPage(uuid: uuid);
         case AppRoute.billViewRoute:
-          return MaterialPageRoute(
-              builder: (context) => BillViewPage(uuid: uuid));
+          return (context) => BillViewPage(uuid: uuid);
         case AppRoute.billEditRoute:
-          return MaterialPageRoute(
-              builder: (context) => BillEditPage(uuid: uuid));
+          return (context) => BillEditPage(uuid: uuid);
         case AppRoute.goalViewRoute:
-          return MaterialPageRoute(
-              builder: (context) => GoalViewPage(uuid: uuid));
+          return (context) => GoalViewPage(uuid: uuid);
         case AppRoute.goalEditRoute:
-          return MaterialPageRoute(
-              builder: (context) => GoalEditPage(uuid: uuid));
+          return (context) => GoalEditPage(uuid: uuid);
       }
-    } else {
-      final staticRoutes = <String, WidgetBuilder>{
-        AppRoute.aboutRoute: (context) => AboutPage(),
-        AppRoute.accountAddRoute: (context) => AccountAddPage(),
-        AppRoute.accountRoute: (context) => AccountPage(),
-        AppRoute.billAddRoute: (context) => BillAddPage(),
-        AppRoute.billRoute: (context) => BillPage(),
-        AppRoute.budgetAddRoute: (context) => BudgetAddPage(),
-        AppRoute.budgetRoute: (context) => BudgetPage(),
-        AppRoute.currencyRoute: (context) => CurrencyPage(),
-        AppRoute.goalAddRoute: (context) => GoalAddPage(),
-        AppRoute.goalRoute: (context) => GoalPage(),
-        AppRoute.homeRoute: (context) => HomePage(),
-        AppRoute.initRoute: (context) => InitPage(),
-        AppRoute.settingsRoute: (context) => SettingsPage(),
-        AppRoute.startRoute: (context) => StartPage(),
-        AppRoute.subscriptionRoute: (context) => SubscriptionPage(),
-      };
-      return MaterialPageRoute(
-        builder: staticRoutes[route] ?? (context) => InitPage(),
-      );
     }
-    return null;
+    final staticRoutes = <String, WidgetBuilder>{
+      AppRoute.aboutRoute: (context) => AboutPage(),
+      AppRoute.accountAddRoute: (context) => AccountAddPage(),
+      AppRoute.accountRoute: (context) => AccountPage(),
+      AppRoute.billAddRoute: (context) => BillAddPage(),
+      AppRoute.billRoute: (context) => BillPage(),
+      AppRoute.budgetAddRoute: (context) => BudgetAddPage(),
+      AppRoute.budgetRoute: (context) => BudgetPage(),
+      AppRoute.currencyRoute: (context) => CurrencyPage(),
+      AppRoute.goalAddRoute: (context) => GoalAddPage(),
+      AppRoute.goalRoute: (context) => GoalPage(),
+      AppRoute.homeRoute: (context) => HomePage(),
+      AppRoute.initRoute: (context) => InitPage(),
+      AppRoute.settingsRoute: (context) => SettingsPage(),
+      AppRoute.startRoute: (context) => StartPage(),
+      AppRoute.subscriptionRoute: (context) => SubscriptionPage(),
+    };
+    if (staticRoutes.containsKey(route)) {
+      return staticRoutes[route];
+    }
+    return (context) => InitPage();
+  }
+
+  MaterialPageRoute? getDynamicRouter(settings) {
+    route = settings.name!;
+    return MaterialPageRoute(builder: getDynamicRouterWidget(route)!);
   }
 
   @override
@@ -161,8 +161,7 @@ class MyAppState extends State<MyApp> {
         useMaterial3: true,
       ),
       themeMode: context.watch<AppTheme>().value,
-      home: InitPage(),
-      initialRoute: AppRoute.initRoute,
+      home: HomePage(),
       onGenerateRoute: getDynamicRouter,
     );
   }

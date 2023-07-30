@@ -16,13 +16,6 @@ class OnDefinedPage extends Given1<String> with SharedPreferencesMixin {
 
   @override
   Future<void> executeStep(String route) async {
-    const initText = 'Project Initialization';
-    final init = find.text(initText);
-    expect(init, findsWidgets);
-    await FileRunner.tester.tap(init);
-    await FileRunner.tester.pumpAndSettle();
-    expect(find.text(initText), findsNothing);
-
     final ScaffoldState scafState =
         FileRunner.tester.firstState(find.byType(Scaffold));
     scafState.openDrawer();

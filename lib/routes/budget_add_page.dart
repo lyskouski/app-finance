@@ -54,10 +54,8 @@ class BudgetAddPageState<T extends BudgetAddPage>
     budgetLimit = widget.budgetLimit;
     icon = widget.icon;
     color = widget.color;
-    currency = widget.currency;
-    getPreference(prefCurrency).then((currencyId) => setState(() {
-          currency ??= CurrencyService().findByCode(currencyId);
-        }));
+    final currencyId = getPreference(prefCurrency);
+    currency = widget.currency ?? CurrencyService().findByCode(currencyId);
     super.initState();
   }
 

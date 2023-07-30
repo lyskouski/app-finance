@@ -42,7 +42,7 @@ class TransactionLog with SharedPreferencesMixin {
 
   static Future<bool> doEncrypt() async {
     String? pref =
-        await TransactionLog().getPreference(TransactionLog().prefDoEncrypt);
+        TransactionLog().getPreference(TransactionLog().prefDoEncrypt);
     return pref == prefIsEncrypted;
   }
 
@@ -85,7 +85,7 @@ class TransactionLog with SharedPreferencesMixin {
     int attempts = 0;
     do {
       int i = increment + attempts;
-      var line = await TransactionLog().getPreference('log$i');
+      var line = TransactionLog().getPreference('log$i');
       if (line == null) {
         attempts++;
       } else {

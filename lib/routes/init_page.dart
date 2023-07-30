@@ -4,13 +4,10 @@
 
 import 'package:app_finance/_classes/app_route.dart';
 import 'package:app_finance/_mixins/shared_preferences_mixin.dart';
-import 'package:app_finance/_classes/app_data.dart';
 import 'package:app_finance/routes/abstract_page.dart';
-import 'package:app_finance/widgets/_wrappers/tap_widget.dart';
 import 'package:app_finance/widgets/init/loading_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localization.dart';
-import 'package:provider/provider.dart';
 
 class InitPage extends AbstractPage {
   InitPage() : super();
@@ -21,16 +18,6 @@ class InitPage extends AbstractPage {
 
 class InitPageState extends AbstractPageState<InitPage>
     with SharedPreferencesMixin {
-  bool isConfirmed = false;
-  bool isTriggered = false;
-
-  @override
-  void initState() {
-    super.initState();
-    getPreference(prefPrivacyPolicy)
-        .then((state) => setState(() => isConfirmed = state != null));
-  }
-
   @override
   Drawer? buildDrawer() {
     return null;
@@ -43,14 +30,10 @@ class InitPageState extends AbstractPageState<InitPage>
       toolbarHeight: 40,
       automaticallyImplyLeading: false,
       actions: const [],
-      title: TapWidget(
-        onTap: () => Navigator.popAndPushNamed(context, AppRoute.homeRoute),
-        child: Center(
-          child: Text(
-            getTitle(context),
-            style:
-                TextStyle(color: Theme.of(context).colorScheme.inversePrimary),
-          ),
+      title: Center(
+        child: Text(
+          getTitle(context),
+          style: TextStyle(color: Theme.of(context).colorScheme.inversePrimary),
         ),
       ),
     );
@@ -61,29 +44,13 @@ class InitPageState extends AbstractPageState<InitPage>
     return const SizedBox();
   }
 
-  void handleNextStep(context) {
-    if (isConfirmed) {
-      Navigator.popAndPushNamed(context, AppRoute.homeRoute);
-    } else {
-      Navigator.popAndPushNamed(context, AppRoute.startRoute);
-    }
-  }
-
   @override
   Widget build(BuildContext context) {
-    return Consumer<AppData>(builder: (context, appState, _) {
-      if (!(appState.isLoading || isTriggered)) {
-        Future.delayed(const Duration(milliseconds: 300), () {
-          setState(() {
-            if (!isTriggered) {
-              handleNextStep(context);
-            }
-            isTriggered = true;
-          });
-        });
-      }
-      return super.build(context);
-    });
+    if (getPreference(prefPrivacyPolicy) == null) {
+      Future.delayed(Duration.zero,
+          () => Navigator.popAndPushNamed(context, AppRoute.startRoute));
+    }
+    return super.build(context);
   }
 
   @override

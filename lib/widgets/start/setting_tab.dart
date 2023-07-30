@@ -39,11 +39,10 @@ class SettingTabState extends AbstractTabState<SettingTab>
   @override
   void initState() {
     super.initState();
-    getPreference(prefDoEncrypt).then((value) {
-      isEncrypted = value == 'true' || value == null;
-      hasEncrypted = value != null;
-    });
-    getPreference(prefTheme).then((value) => brightness = value ?? brightness);
+    final doEncrypt = getPreference(prefDoEncrypt);
+    isEncrypted = doEncrypt == 'true' || doEncrypt == null;
+    hasEncrypted = doEncrypt != null;
+    brightness = getPreference(prefTheme) ?? brightness;
   }
 
   @override
@@ -65,7 +64,7 @@ class SettingTabState extends AbstractTabState<SettingTab>
   Future<void> initCurrencyFromLocale(BuildContext context) async {
     Locale locale = Localizations.localeOf(context);
     final format = NumberFormat.simpleCurrency(locale: locale.toString());
-    String? code = await getPreference(prefCurrency);
+    String? code = getPreference(prefCurrency);
     if (code == null && format.currencyName != null) {
       await setPreference(prefCurrency, format.currencyName!);
       code = format.currencyName!;
