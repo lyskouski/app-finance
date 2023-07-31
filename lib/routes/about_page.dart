@@ -2,6 +2,7 @@
 // Use of this source code is governed by a CC BY-NC-ND 4.0 license that can be
 // found in the LICENSE file.
 
+import 'package:adaptive_breakpoints/adaptive_breakpoints.dart';
 import 'package:app_finance/helpers/theme_helper.dart';
 import 'package:app_finance/routes/abstract_page.dart';
 import 'package:app_finance/widgets/_wrappers/row_widget.dart';
@@ -45,7 +46,8 @@ class AboutPageState extends AbstractPageState<AboutPage> {
 
   @override
   Widget buildContent(BuildContext context, BoxConstraints constraints) {
-    double indent = ThemeHelper.getIndent();
+    var helper = ThemeHelper(windowType: getWindowType(context));
+    double indent = helper.getIndent();
     double width = MediaQuery.of(context).size.width - indent * 4;
     final locale = AppLocalizations.of(context)!.localeName;
     return Padding(

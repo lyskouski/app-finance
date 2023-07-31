@@ -66,8 +66,8 @@ class AppData extends ChangeNotifier {
     Exchange(store: this).getDefaultCurrency().then((_) {
       TransactionLog.load(this).then((_) async {
         await updateTotals(AppDataType.values);
-        notifyListeners();
         isLoading = false;
+        notifyListeners();
       });
     });
   }

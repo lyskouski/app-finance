@@ -6,19 +6,15 @@ import 'package:adaptive_breakpoints/adaptive_breakpoints.dart';
 import 'package:flutter/material.dart';
 
 class ThemeHelper {
-  static late AdaptiveWindowType windowType;
+  const ThemeHelper({
+    required this.windowType,
+  });
 
-  ThemeHelper({
-    AdaptiveWindowType? windowType,
-  }) {
-    if (windowType != null) {
-      ThemeHelper.windowType = windowType;
-    }
-  }
+  final AdaptiveWindowType windowType;
 
   bool isLower(AdaptiveWindowType size) => windowType <= size;
 
-  static double getIndent() => 8.0;
+  double getIndent() => 8.0;
 
   bool isVertical(BoxConstraints constraints) =>
       isLower(AdaptiveWindowType.small) &&

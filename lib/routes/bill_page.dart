@@ -2,6 +2,7 @@
 // Use of this source code is governed by a CC BY-NC-ND 4.0 license that can be
 // found in the LICENSE file.
 
+import 'package:adaptive_breakpoints/adaptive_breakpoints.dart';
 import 'package:app_finance/_classes/app_data.dart';
 import 'package:app_finance/helpers/theme_helper.dart';
 import 'package:app_finance/_classes/app_route.dart';
@@ -34,14 +35,14 @@ class BillPageState extends AbstractPageState<BillPage> {
 
   @override
   Widget buildContent(BuildContext context, BoxConstraints constraints) {
+    var helper = ThemeHelper(windowType: getWindowType(context));
     return Column(
       children: [
         BillWidget(
-          margin: EdgeInsets.all(ThemeHelper.getIndent()),
+          margin: EdgeInsets.all(helper.getIndent()),
           title: AppLocalizations.of(context)!.billHeadline,
           state: super.state.get(AppDataType.bills),
-          offset:
-              MediaQuery.of(context).size.width - ThemeHelper.getIndent() * 2,
+          offset: MediaQuery.of(context).size.width - helper.getIndent() * 2,
         )
       ],
     );

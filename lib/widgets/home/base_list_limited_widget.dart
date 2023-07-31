@@ -2,6 +2,7 @@
 // Use of this source code is governed by a CC BY-NC-ND 4.0 license that can be
 // found in the LICENSE file.
 
+import 'package:adaptive_breakpoints/adaptive_breakpoints.dart';
 import 'package:app_finance/_classes/app_route.dart';
 import 'package:app_finance/helpers/theme_helper.dart';
 import 'package:app_finance/widgets/_wrappers/row_widget.dart';
@@ -38,7 +39,8 @@ class BaseListLimitedWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    double indent = ThemeHelper.getIndent();
+    var theme = ThemeHelper(windowType: getWindowType(context));
+    double indent = theme.getIndent();
     int itemCount = state.length + 2;
     bool hasMore = false;
     if (limit != null && limit! < state.length) {

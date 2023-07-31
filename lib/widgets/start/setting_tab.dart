@@ -2,6 +2,7 @@
 // Use of this source code is governed by a CC BY-NC-ND 4.0 license that can be
 // found in the LICENSE file.
 
+import 'package:adaptive_breakpoints/adaptive_breakpoints.dart';
 import 'package:app_finance/_classes/app_theme.dart';
 import 'package:app_finance/_mixins/shared_preferences_mixin.dart';
 import 'package:app_finance/custom_text_theme.dart';
@@ -73,7 +74,8 @@ class SettingTabState<T extends SettingTab> extends AbstractTabState<T>
   Widget buildContent(BuildContext context) {
     theme = Provider.of<AppTheme>(context, listen: false);
     final TextTheme textTheme = Theme.of(context).textTheme;
-    double indent = ThemeHelper.getIndent() * 2;
+    double indent =
+        ThemeHelper(windowType: getWindowType(context)).getIndent() * 2;
     double offset = MediaQuery.of(context).size.width - indent * 2;
     if (currency == null) {
       Future.delayed(Duration.zero, () => initCurrencyFromLocale(context));

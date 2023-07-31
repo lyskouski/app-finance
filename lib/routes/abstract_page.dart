@@ -2,6 +2,7 @@
 // Use of this source code is governed by a CC BY-NC-ND 4.0 license that can be
 // found in the LICENSE file.
 
+import 'package:adaptive_breakpoints/adaptive_breakpoints.dart';
 import 'package:app_finance/_classes/app_menu.dart';
 import 'package:app_finance/_classes/app_data.dart';
 import 'package:app_finance/helpers/theme_helper.dart';
@@ -26,6 +27,7 @@ abstract class AbstractPageState<T extends AbstractPage> extends State<T> {
   Widget buildContent(BuildContext context, BoxConstraints constraints);
 
   AppBar buildBar(BuildContext context) {
+    final helper = ThemeHelper(windowType: getWindowType(context));
     return AppBar(
       backgroundColor: Theme.of(context).colorScheme.secondary,
       toolbarHeight: 40,
@@ -53,7 +55,7 @@ abstract class AbstractPageState<T extends AbstractPage> extends State<T> {
                 child: Row(
                   children: [
                     Icon(menuItem.icon),
-                    SizedBox(width: ThemeHelper.getIndent()),
+                    SizedBox(width: helper.getIndent()),
                     Text(menuItem.name),
                   ],
                 ),
@@ -75,7 +77,7 @@ abstract class AbstractPageState<T extends AbstractPage> extends State<T> {
 
   Drawer? buildDrawer() {
     final ColorScheme colorScheme = Theme.of(context).colorScheme;
-    double indent = ThemeHelper.getIndent();
+    double indent = ThemeHelper(windowType: getWindowType(context)).getIndent();
     return Drawer(
       elevation: 0,
       shape: Border.all(width: 0),

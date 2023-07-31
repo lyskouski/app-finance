@@ -2,6 +2,7 @@
 // Use of this source code is governed by a CC BY-NC-ND 4.0 license that can be
 // found in the LICENSE file.
 
+import 'package:adaptive_breakpoints/adaptive_breakpoints.dart';
 import 'package:app_finance/charts/bar_vertical_single.dart';
 import 'package:app_finance/custom_text_theme.dart';
 import 'package:app_finance/widgets/_wrappers/tap_widget.dart';
@@ -34,6 +35,7 @@ class BaseLineWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var theme = ThemeHelper(windowType: getWindowType(context));
     final TextTheme textTheme = Theme.of(context).textTheme;
 
     if (hidden) {
@@ -79,7 +81,7 @@ class BaseLineWidget extends StatelessWidget {
                 ),
               ),
               Padding(
-                padding: EdgeInsets.all(ThemeHelper.getIndent()),
+                padding: EdgeInsets.all(theme.getIndent()),
                 child: Container(
                   constraints: BoxConstraints(
                     maxWidth: offset * 0.4,

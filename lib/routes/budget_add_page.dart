@@ -2,6 +2,7 @@
 // Use of this source code is governed by a CC BY-NC-ND 4.0 license that can be
 // found in the LICENSE file.
 
+import 'package:adaptive_breakpoints/adaptive_breakpoints.dart';
 import 'package:app_finance/_classes/data/budget_app_data.dart';
 import 'package:app_finance/_classes/focus_controller.dart';
 import 'package:app_finance/_mixins/shared_preferences_mixin.dart';
@@ -100,10 +101,11 @@ class BudgetAddPageState<T extends BudgetAddPage>
 
   @override
   Widget buildButton(BuildContext context, BoxConstraints constraints) {
+    var helper = ThemeHelper(windowType: getWindowType(context));
     String title = getButtonName();
     FocusController.setContext(3);
     return SizedBox(
-      width: constraints.maxWidth - ThemeHelper.getIndent() * 4,
+      width: constraints.maxWidth - helper.getIndent() * 4,
       child: FloatingActionButton(
         onPressed: () => triggerActionButton(context),
         focusNode: FocusController.getFocusNode(),
@@ -114,7 +116,7 @@ class BudgetAddPageState<T extends BudgetAddPage>
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               const Icon(Icons.save),
-              SizedBox(height: ThemeHelper.getIndent()),
+              SizedBox(height: helper.getIndent()),
               Text(title, style: Theme.of(context).textTheme.headlineMedium)
             ],
           ),
@@ -126,7 +128,8 @@ class BudgetAddPageState<T extends BudgetAddPage>
   @override
   Widget buildContent(BuildContext context, BoxConstraints constraints) {
     final TextTheme textTheme = Theme.of(context).textTheme;
-    double indent = ThemeHelper.getIndent() * 2;
+    double indent =
+        ThemeHelper(windowType: getWindowType(context)).getIndent() * 2;
     double offset = MediaQuery.of(context).size.width - indent * 3;
     int focusOrder = FocusController.DEFAULT;
 
