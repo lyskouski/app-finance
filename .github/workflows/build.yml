@@ -12,6 +12,7 @@ jobs:
     outputs:
       version: ${{ steps.tag.outputs.name }}
       upload_url: ${{ steps.create_release.outputs.upload_url }}
+      build_number: ${{ steps.build_number.outputs.build_number }}
     steps:
       - uses: actions/checkout@v3
         with:
@@ -41,6 +42,10 @@ jobs:
           done < "release_notes.log"
           echo "EOF" >> $GITHUB_ENV
           rm release_notes.log
+          
+      - name: Set Build Number
+        id: build_number
+        run: echo "build_number=$(git rev-list --count HEAD)" >> $GITHUB_OUTPUT
 
       - name: Create Release Page
         id: create_release
@@ -92,18 +97,14 @@ jobs:
           cache: true
       - run: flutter pub get
 
-      - name: Set Build Number
-        id: build_number
-        run: echo "build_number=$(git rev-list --count HEAD)" >> $GITHUB_OUTPUT
-
       - name: Patch PubSpec
-        run: dart run grinder pubspec-update --build-name=${{ needs.release.outputs.version }} --build-number=${{ steps.build_number.outputs.build_number }}
+        run: dart run grinder pubspec-update --build-name=${{ needs.release.outputs.version }} --build-number=${{ needs.release.outputs.build_number }}
 
       - name: Run Windows Build 
         if: matrix.target == 'Windows'
         run: |
           flutter config --enable-windows-desktop
-          flutter build -v windows --build-name=${{ needs.release.outputs.version }} --build-number=${{ steps.build_number.outputs.build_number }} --release
+          flutter build -v windows --build-name=${{ needs.release.outputs.version }} --build-number=${{ needs.release.outputs.build_number }} --release
 
       - name: Compress Windows Package
         if: matrix.target == 'Windows'
@@ -119,7 +120,7 @@ jobs:
         run: |
           sudo apt-get install -y libgtk-3-dev ninja-build
           flutter config --enable-linux-desktop
-          flutter build -v linux --build-name=${{ needs.release.outputs.version }} --build-number=${{ steps.build_number.outputs.build_number }} --release
+          flutter build -v linux --build-name=${{ needs.release.outputs.version }} --build-number=${{ needs.release.outputs.build_number }} --release
 
       - name: Compress Linux Package
         if: matrix.target == 'Linux'          
@@ -130,7 +131,7 @@ jobs:
         if: matrix.target == 'macOS'
         run: |
           flutter config --enable-macos-desktop
-          flutter build -v macos --build-name=${{ needs.release.outputs.version }} --build-number=${{ steps.build_number.outputs.build_number }} --release --no-tree-shake-icons
+          flutter build -v macos --build-name=${{ needs.release.outputs.version }} --build-number=${{ needs.release.outputs.build_number }} --release --no-tree-shake-icons
 
       - name: Compress macOS Package
         if: matrix.target == 'macOS'
