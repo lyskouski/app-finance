@@ -8,6 +8,7 @@ import 'package:grinder/grinder.dart';
 import './localization.dart' as locale;
 import './coverage_badge.dart' as badge;
 import './coverage.dart' as coverage;
+import './git_history.dart' as git;
 
 main(args) => grind(args);
 
@@ -94,6 +95,35 @@ sortTranslations() {
   if (isChanged && !isQuiet) {
     fail('Changes detected');
   }
+}
+
+@Task('Generate Release Notes')
+releaseNotes() {
+  TaskArgs args = context.invocation.arguments;
+  String tag = args.getOption('tag') ?? '0.0.0';
+  String? output = args.getOption('output');
+  String release = git.genRelease(tag);
+  if (output != null) {
+    final currDir = Directory('./');
+    final file = File(path.join(currDir.absolute.path, output));
+    file.writeAsStringSync(release);
+  }
+  log(release);
+}
+
+@Task('Patch PubSpec')
+pubspecUpdate() {
+  TaskArgs args = context.invocation.arguments;
+  String build = args.getOption('build-name') ?? '0.0.0';
+  String number = args.getOption('build-number') ?? '0';
+
+  final currDir = Directory('./');
+  final file = File(path.join(currDir.absolute.path, 'pubspec.yaml'));
+  final content = file
+      .readAsStringSync()
+      .replaceFirst('version: 1.0.0+1', 'version: $build+$number');
+
+  file.writeAsStringSync(content);
 }
 
 @Task('Export Translations')
