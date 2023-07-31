@@ -8,6 +8,7 @@ import 'package:grinder/grinder.dart';
 import './localization.dart' as locale;
 import './coverage_badge.dart' as badge;
 import './coverage.dart' as coverage;
+import './git_history.dart' as git;
 
 main(args) => grind(args);
 
@@ -94,6 +95,13 @@ sortTranslations() {
   if (isChanged && !isQuiet) {
     fail('Changes detected');
   }
+}
+
+@Task('Generate Release Notes')
+releaseNotes() {
+  TaskArgs args = context.invocation.arguments;
+  String tag = args.getOption('tag') ?? '0.0.0';
+  log(git.genRelease(tag));
 }
 
 @Task('Export Translations')
