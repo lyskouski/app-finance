@@ -111,6 +111,21 @@ releaseNotes() {
   log(release);
 }
 
+@Task('Patch PubSpec')
+pubspecUpdate() {
+  TaskArgs args = context.invocation.arguments;
+  String build = args.getOption('build-name') ?? '0.0.0';
+  String number = args.getOption('build-number') ?? '0';
+
+  final currDir = Directory('./');
+  final file = File(path.join(currDir.absolute.path, 'pubspec.yaml'));
+  final content = file
+      .readAsStringSync()
+      .replaceFirst('version: 1.0.0+1', 'version: $build+$number');
+
+  file.writeAsStringSync(content);
+}
+
 @Task('Export Translations')
 exportTranslations() {
   log('TBD: Messages extracted successfully');

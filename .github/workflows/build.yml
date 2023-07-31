@@ -93,6 +93,9 @@ jobs:
         id: build_number
         run: echo "build_number=$(git rev-list --count HEAD)" >> $GITHUB_OUTPUT
 
+      - name: Patch PubSpec
+        run: dart run grinder pubspec-update --build-name=${{ needs.release.outputs.version }} --build-number=${{ steps.build_number.outputs.build_number }}
+
       - name: Run Windows Build 
         if: matrix.target == 'Windows'
         run: |
