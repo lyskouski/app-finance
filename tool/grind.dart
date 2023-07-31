@@ -101,7 +101,14 @@ sortTranslations() {
 releaseNotes() {
   TaskArgs args = context.invocation.arguments;
   String tag = args.getOption('tag') ?? '0.0.0';
-  log(git.genRelease(tag));
+  String? output = args.getOption('output');
+  String release = git.genRelease(tag);
+  if (output != null) {
+    final currDir = Directory('./');
+    final file = File(path.join(currDir.absolute.path, output));
+    file.writeAsStringSync(release);
+  }
+  log(release);
 }
 
 @Task('Export Translations')
