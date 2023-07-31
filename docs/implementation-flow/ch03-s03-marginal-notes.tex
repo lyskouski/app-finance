@@ -753,3 +753,10 @@ void main() async {
 mixin SharedPreferencesMixin {
   static late SharedPreferences pref;
 \end{lstlisting}
+
+But we should be very accurate with what we're placing into a static variable, since, as an example, 
+caching `AdaptiveWindowType` for our `ThemeHelper` 
+(
+\href{https://github.com/lyskouski/app-finance/commit/615db383715e6c7ed6c52919458343405cfdfe72}{https://github.com/lyskouski/app-finance/commit/615db383715e6c7ed6c52919458343405cfdfe72}
+) leads to an infinite loop of re-rendering widgets:
+\href{https://github.com/lyskouski/app-finance/issues/112}{https://github.com/lyskouski/app-finance/issues/112}.
