@@ -16,7 +16,8 @@ String? getPreviousTag(String tag) {
   ProcessResult versions =
       Process.runSync('git', ['tag', '--list', 'v*'], runInShell: true);
 
-  List<String> tagList = const LineSplitter().convert(versions.stdout);
+  List<String> tagList =
+      const LineSplitter().convert(versions.stdout).reversed.toList();
 
   String? tillTag;
   for (String tagName in tagList) {
