@@ -38,15 +38,18 @@ class SettingTabState<T extends SettingTab> extends AbstractTabState<T>
   void initState() {
     super.initState();
     final doEncrypt = getPreference(prefDoEncrypt);
-    isEncrypted = doEncrypt == 'true' || doEncrypt == null;
     hasEncrypted = doEncrypt != null;
+    isEncrypted = doEncrypt == 'true' || doEncrypt == null;
+    setPreference(prefDoEncrypt, isEncrypted ? 'true' : 'false');
     brightness = getPreference(prefTheme) ?? brightness;
   }
 
-  @override
-  void updateState() {
+  void saveEncryption(newValue) {
+    if (hasEncrypted) {
+      return;
+    }
+    setState(() => isEncrypted = newValue);
     setPreference(prefDoEncrypt, isEncrypted ? 'true' : 'false');
-    super.updateState();
   }
 
   Future<void> saveCurrency(Currency? value) async {
@@ -113,12 +116,7 @@ class SettingTabState<T extends SettingTab> extends AbstractTabState<T>
             [
               Switch(
                 value: isEncrypted,
-                onChanged: (newValue) {
-                  if (hasEncrypted) {
-                    return;
-                  }
-                  setState(() => isEncrypted = newValue);
-                },
+                onChanged: saveEncryption,
               ),
             ],
             [
