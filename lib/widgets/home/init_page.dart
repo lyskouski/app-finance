@@ -2,8 +2,6 @@
 // Use of this source code is governed by a CC BY-NC-ND 4.0 license that can be
 // found in the LICENSE file.
 
-import 'package:app_finance/_classes/app_route.dart';
-import 'package:app_finance/_mixins/shared_preferences_mixin.dart';
 import 'package:app_finance/routes/abstract_page.dart';
 import 'package:app_finance/widgets/init/loading_widget.dart';
 import 'package:flutter/material.dart';
@@ -16,8 +14,7 @@ class InitPage extends AbstractPage {
   InitPageState createState() => InitPageState();
 }
 
-class InitPageState extends AbstractPageState<InitPage>
-    with SharedPreferencesMixin {
+class InitPageState extends AbstractPageState<InitPage> {
   @override
   Drawer? buildDrawer() {
     return null;
@@ -42,15 +39,6 @@ class InitPageState extends AbstractPageState<InitPage>
   @override
   Widget buildButton(BuildContext context, BoxConstraints constraints) {
     return const SizedBox();
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    if (getPreference(prefPrivacyPolicy) == null) {
-      Future.delayed(Duration.zero,
-          () => Navigator.popAndPushNamed(context, AppRoute.startRoute));
-    }
-    return super.build(context);
   }
 
   @override

@@ -5,9 +5,10 @@
 import 'dart:io';
 
 import 'package:app_finance/_classes/app_theme.dart';
+import 'package:app_finance/_classes/app_data.dart';
+import 'package:app_finance/_classes/gen/generate_with_method_setters.dart';
 import 'package:app_finance/_mixins/shared_preferences_mixin.dart';
 import 'package:app_finance/main.dart';
-import 'package:app_finance/_classes/app_data.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/annotations.dart';
@@ -18,6 +19,8 @@ import '_steps/file_runner.dart';
 
 @GenerateNiceMocks([MockSpec<SharedPreferences>()])
 import 'e2e_test.mocks.dart';
+@GenerateWithMethodSetters([MockSharedPreferences])
+import 'e2e_test.wrapper.dart';
 
 void main() {
   Iterable<File> features = Directory('./test/e2e')
@@ -28,7 +31,9 @@ void main() {
   group('Behavioral Tests', () {
     for (var file in features) {
       testWidgets(file.path, (WidgetTester tester) async {
-        SharedPreferencesMixin.pref = MockSharedPreferences();
+        final pref = WrapperMockSharedPreferences();
+        pref.mockGetString = (value) => '';
+        SharedPreferencesMixin.pref = pref;
         final appData = AppData();
         appData.isLoading = false;
         await tester.pumpWidget(MultiProvider(

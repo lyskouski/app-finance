@@ -2,7 +2,6 @@
 // Use of this source code is governed by a CC BY-NC-ND 4.0 license that can be
 // found in the LICENSE file.
 
-import 'package:adaptive_breakpoints/adaptive_breakpoints.dart';
 import 'package:app_finance/_classes/app_theme.dart';
 import 'package:app_finance/_mixins/shared_preferences_mixin.dart';
 import 'package:app_finance/custom_text_theme.dart';
@@ -28,7 +27,6 @@ import 'package:app_finance/routes/goal_edit_page.dart';
 import 'package:app_finance/routes/goal_page.dart';
 import 'package:app_finance/routes/goal_view_page.dart';
 import 'package:app_finance/routes/home_page.dart';
-import 'package:app_finance/routes/init_page.dart';
 import 'package:app_finance/routes/settings_page.dart';
 import 'package:app_finance/routes/start_page.dart';
 import 'package:app_finance/routes/subscription_page.dart';
@@ -84,7 +82,7 @@ class MyApp extends StatefulWidget {
 }
 
 class MyAppState extends State<MyApp> {
-  String route = AppRoute.initRoute;
+  String route = AppRoute.homeRoute;
 
   WidgetBuilder? getDynamicRouterWidget(String route) {
     final regex = RegExp(r'\/uuid:([\w-]+)');
@@ -126,7 +124,6 @@ class MyAppState extends State<MyApp> {
       AppRoute.goalAddRoute: (context) => GoalAddPage(),
       AppRoute.goalRoute: (context) => GoalPage(),
       AppRoute.homeRoute: (context) => HomePage(),
-      AppRoute.initRoute: (context) => InitPage(),
       AppRoute.settingsRoute: (context) => SettingsPage(),
       AppRoute.startRoute: (context) => StartPage(),
       AppRoute.subscriptionRoute: (context) => SubscriptionPage(),
@@ -134,7 +131,7 @@ class MyAppState extends State<MyApp> {
     if (staticRoutes.containsKey(route)) {
       return staticRoutes[route];
     }
-    return (context) => InitPage();
+    return (context) => HomePage();
   }
 
   MaterialPageRoute? getDynamicRouter(settings) {

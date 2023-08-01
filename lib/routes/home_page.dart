@@ -4,10 +4,11 @@
 
 import 'package:adaptive_breakpoints/adaptive_breakpoints.dart';
 import 'package:app_finance/_classes/app_data.dart';
+import 'package:app_finance/_mixins/shared_preferences_mixin.dart';
 import 'package:app_finance/helpers/theme_helper.dart';
 import 'package:app_finance/_classes/app_route.dart';
 import 'package:app_finance/routes/abstract_page.dart';
-import 'package:app_finance/routes/init_page.dart';
+import 'package:app_finance/widgets/home/init_page.dart';
 import 'package:app_finance/widgets/_wrappers/toolbar_button_widget.dart';
 import 'package:app_finance/widgets/home/account_widget.dart';
 import 'package:app_finance/widgets/home/bill_widget.dart';
@@ -25,7 +26,17 @@ class HomePage extends AbstractPage {
   HomePageState createState() => HomePageState();
 }
 
-class HomePageState extends AbstractPageState<HomePage> {
+class HomePageState extends AbstractPageState<HomePage>
+    with SharedPreferencesMixin {
+  @override
+  initState() {
+    super.initState();
+    if (getPreference(prefPrivacyPolicy) == null) {
+      Future.delayed(Duration.zero,
+          () => Navigator.popAndPushNamed(context, AppRoute.startRoute));
+    }
+  }
+
   @override
   String getTitle(context) {
     return AppLocalizations.of(context)!.appTitle;

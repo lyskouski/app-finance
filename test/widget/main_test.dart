@@ -3,9 +3,10 @@
 // found in the LICENSE file.
 
 import 'package:app_finance/_classes/app_theme.dart';
+import 'package:app_finance/_classes/app_data.dart';
+import 'package:app_finance/_classes/gen/generate_with_method_setters.dart';
 import 'package:app_finance/_mixins/shared_preferences_mixin.dart';
 import 'package:app_finance/main.dart';
-import 'package:app_finance/_classes/app_data.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/annotations.dart';
@@ -14,11 +15,15 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 @GenerateNiceMocks([MockSpec<SharedPreferences>()])
 import 'main_test.mocks.dart';
+@GenerateWithMethodSetters([MockSharedPreferences])
+import 'main_test.wrapper.dart';
 
 void main() {
   testWidgets('Given Main page When tap on Create Then opened BillAddPage',
       (WidgetTester tester) async {
-    SharedPreferencesMixin.pref = MockSharedPreferences();
+    final pref = WrapperMockSharedPreferences();
+    pref.mockGetString = (value) => '';
+    SharedPreferencesMixin.pref = pref;
     final appData = AppData();
     appData.isLoading = false;
     await tester.pumpWidget(MultiProvider(
