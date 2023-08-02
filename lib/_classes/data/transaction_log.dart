@@ -40,19 +40,18 @@ class TransactionLog with SharedPreferencesMixin {
     return md5.convert(utf8.encode(data.toString())).toString();
   }
 
-  static Future<bool> doEncrypt() async {
-    String? pref =
-        TransactionLog().getPreference(TransactionLog().prefDoEncrypt);
-    return pref == prefIsEncrypted;
+  static bool doEncrypt() {
+    final self = TransactionLog();
+    return self.getPreference(self.prefDoEncrypt) == prefIsEncrypted;
   }
 
   static void save(dynamic content) async {
     String line = content.toString();
-    if (await doEncrypt()) {
+    if (doEncrypt()) {
       line = salt.encrypt(line, iv: code).base64;
     }
     if (kIsWeb) {
-      await TransactionLog().setPreference('log$increment', line);
+      TransactionLog().setPreference('log$increment', line);
       increment++;
     } else {
       (await _logFle).writeAsString("$line\n", mode: FileMode.append);

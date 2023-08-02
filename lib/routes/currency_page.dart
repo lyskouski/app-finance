@@ -30,21 +30,25 @@ class CurrencyPageState extends AbstractPageState<CurrencyPage> {
 
   @override
   Widget buildButton(BuildContext context, BoxConstraints constraints) {
-    /*return FloatingActionButton(
-      onPressed: () => {},
+    return FloatingActionButton(
+      onPressed: () => updateAllRates(context),
       tooltip: AppLocalizations.of(context)!.currencyUpdateTooltip,
-      child: const Icon(Icons.sync),
-    );*/
-    return const SizedBox();
+      child: const Icon(Icons.save),
+    );
   }
 
-  void updateRate(
-      BuildContext context, CurrencyAppData initial, double? value) {
+  void updateAllRates(context) {
+    for (CurrencyAppData rate in scope!) {
+      print(rate);
+      super.state.update(AppDataType.currencies, rate.uuid, rate);
+    }
+    NotificationBar.showSnackBar(
+        context, AppLocalizations.of(context)!.saveNotification);
+  }
+
+  void updateRate(CurrencyAppData initial, double? value) {
     if (value != null) {
       initial.details = value;
-      super.state.update(AppDataType.currencies, initial.uuid, initial);
-      NotificationBar.showSnackBar(
-          context, AppLocalizations.of(context)!.saveNotification);
     }
   }
 
@@ -90,7 +94,7 @@ class CurrencyPageState extends AbstractPageState<CurrencyPage> {
                     value: item.details.toString(),
                     type: TextInputType.number,
                     setState: (value) =>
-                        updateRate(context, item, double.tryParse(value)),
+                        updateRate(item, double.tryParse(value)),
                   )
                 ],
               ],
