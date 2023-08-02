@@ -39,7 +39,6 @@ class CurrencyPageState extends AbstractPageState<CurrencyPage> {
 
   void updateAllRates(context) {
     for (CurrencyAppData rate in scope!) {
-      print(rate);
       super.state.update(AppDataType.currencies, rate.uuid, rate);
     }
     NotificationBar.showSnackBar(

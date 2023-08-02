@@ -4,6 +4,7 @@
 
 import 'package:app_finance/_classes/data/currency_app_data.dart';
 import 'package:app_finance/_classes/app_data.dart';
+import 'package:app_finance/_classes/delayed_call.dart';
 import 'package:app_finance/widgets/_forms/simple_input.dart';
 import 'package:app_finance/widgets/_wrappers/row_widget.dart';
 import 'package:currency_picker/currency_picker.dart';
@@ -33,16 +34,9 @@ class CurrencyExchangeInput extends StatefulWidget {
 }
 
 class CurrencyExchangeInputState extends State<CurrencyExchangeInput> {
-  late AppData state;
   Map<int, CurrencyAppData> rate = <int, CurrencyAppData>{};
   Map<int, double?> amount = <int, double?>{};
   double? targetAmount;
-
-  @override
-  void initState() {
-    state = widget.state;
-    super.initState();
-  }
 
   String getKey(int index) {
     final String from = widget.target?.code ?? '?';
@@ -64,7 +58,7 @@ class CurrencyExchangeInputState extends State<CurrencyExchangeInput> {
     targetAmount = widget.targetAmount;
     for (int idx = 0; idx < widget.source.length; idx++) {
       final String uuid = getKey(idx);
-      rate[idx] = state.getByUuid(uuid) ??
+      rate[idx] = widget.state.getByUuid(uuid) ??
           CurrencyAppData(
             currency: idx > 0 ? widget.source[idx] : widget.target,
             currencyFrom: idx > 0 ? widget.target : widget.source[idx],
@@ -73,13 +67,35 @@ class CurrencyExchangeInputState extends State<CurrencyExchangeInput> {
     }
   }
 
+  void onUpdate(String? newValue, int index, bool isTotal) {
+    if (widget.targetAmount == null && isTotal) {
+      return;
+    }
+    final delay = DelayedCall(1000);
+    delay.run(() => setState(() {
+          final value = double.tryParse(newValue ?? '') ?? 0.0;
+          if (isTotal) {
+            amount[index] = value;
+            rate[index]?.details = value /
+                (index > 0 && amount[index - 1]! > 0
+                    ? amount[index - 1]
+                    : widget.targetAmount)!;
+          } else {
+            rate[index]?.details = value;
+            amount[index] = getAmount(index);
+          }
+          widget.state.update(
+              AppDataType.currencies, rate[index]!.uuid, rate[index], true);
+        }));
+  }
+
   @override
   Widget build(BuildContext context) {
     if (widget.source.isEmpty) {
       return const SizedBox();
     }
     if (targetAmount != widget.targetAmount) {
-      setState(recalculate);
+      Future.delayed(Duration.zero, () => setState(recalculate));
     }
     final TextTheme textTheme = Theme.of(context).textTheme;
     return Column(
@@ -131,22 +147,11 @@ class CurrencyExchangeInputState extends State<CurrencyExchangeInput> {
                             style: textTheme.bodyLarge,
                           ),
                           SimpleInput(
-                              value: rate[index]?.details.toString(),
-                              type: const TextInputType.numberWithOptions(
-                                  decimal: true),
-                              setState: (value) => setState(() {
-                                    value = double.tryParse(value);
-                                    if (value != null &&
-                                        widget.targetAmount != null) {
-                                      rate[index]?.details = value;
-                                      amount[index] = (index > 0
-                                              ? amount[index - 1]
-                                              : widget.targetAmount)! *
-                                          value;
-                                      state.update(AppDataType.currencies,
-                                          rate[index]!.uuid, rate[index], true);
-                                    }
-                                  })),
+                            value: rate[index]?.details.toString(),
+                            type: const TextInputType.numberWithOptions(
+                                decimal: true),
+                            setState: (v) => onUpdate(v, index, false),
+                          )
                         ],
                         [
                           Text(
@@ -160,22 +165,7 @@ class CurrencyExchangeInputState extends State<CurrencyExchangeInput> {
                                 : '',
                             type: const TextInputType.numberWithOptions(
                                 decimal: true),
-                            setState: (value) => setState(() {
-                              value = double.tryParse(value);
-                              if (value != null) {
-                                if (widget.targetAmount != null) {
-                                  amount[index] = value;
-                                  rate[index]?.details = value /
-                                      (index > 0 && amount[index - 1]! > 0
-                                          ? amount[index - 1]
-                                          : widget.targetAmount)!;
-                                  state.update(AppDataType.currencies,
-                                      rate[index]!.uuid, rate[index], true);
-                                } else {
-                                  amount[index] = null;
-                                }
-                              }
-                            }),
+                            setState: (v) => onUpdate(v, index, true),
                           ),
                         ],
                       ],

@@ -2,6 +2,7 @@
 // Use of this source code is governed by a CC BY-NC-ND 4.0 license that can be
 // found in the LICENSE file.
 
+import 'package:app_finance/_classes/delayed_call.dart';
 import 'package:app_finance/_classes/focus_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -35,39 +36,42 @@ class SimpleInput extends StatefulWidget {
 
 class SimpleInputState extends State<SimpleInput> {
   final TextEditingController _controller = TextEditingController();
-  bool isChanged = false;
+  final FocusNode defaultFocus = FocusNode();
   late String value;
 
   @override
   initState() {
     super.initState();
+    changeInitialState();
+  }
+
+  void changeInitialState() {
     value = widget.value ?? '';
     _controller.text = value;
   }
 
   void delayedUpdate(newValue) {
-    setState(() {
-      isChanged = true;
-      value = newValue;
-    });
-    Future.delayed(const Duration(milliseconds: 600), () {
-      if (newValue == value && isChanged) {
-        widget.setState(value);
-      }
+    final delay = DelayedCall(600);
+    delay.run(() {
+      widget.setState(newValue);
+      setState(() => value = newValue);
     });
   }
 
   @override
   Widget build(BuildContext context) {
     FocusController.setContext(widget.focusOrder, widget.value);
+    final focus = FocusController.getFocusNode() ?? defaultFocus;
+    if (widget.value != '' && widget.value != value && !focus.hasFocus) {
+      Future.delayed(Duration.zero, () => setState(changeInitialState));
+    }
     return TextFormField(
       controller: _controller,
       inputFormatters: widget.formatter,
       keyboardType: widget.type,
-      focusNode: FocusController.getFocusNode(),
+      focusNode: focus,
       textInputAction: FocusController.getAction(),
       onEditingComplete: () {
-        setState(() => isChanged = false);
         widget.setState(value);
         FocusController.onEditingComplete();
       },
