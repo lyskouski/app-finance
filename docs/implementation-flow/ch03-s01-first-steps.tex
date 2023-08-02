@@ -4,55 +4,59 @@
 \subsection{Configuring Development Environment}
 \markboth{Implementing Core Functionality}{Configuring Development Environment}
 
-Our first steps we're doing from knowing nothing neither about Flutter, nor Dart. So, the better way to start from that
-position is to use some templates, and Flutter kindly gives us that option.
+Assume, our first steps we're doing from knowing nothing neither about Flutter, nor Dart. So, the better way to start 
+from that position is to use some templates (and Flutter kindly provides us such an option).
 
 But, initially, we do need to download and install Flutter (\href{https://flutter.dev}{https://flutter.dev}) by 
 following the installation instructions specific to operating system that is used (as an example, for Windows it 
-would needed to register library directory location in the system's PATH variable after downloading its sources).
+would be needed to register library directory location in the system's `PATH`-variable after downloading its sources, 
+\cref{img:fs-windows-path}).
+
+\img{first-steps/windows-path-variable}{Windows 10 `PATH`-variable location}{img:fs-windows-path}
 
 The choice of a better Integrated Development Environment (IDE) for Flutter development is something negligible, widely
-proposed Android Studio, Visual Studio Code, IntelliJ IDEA; but the truth is that nobody will care if you're using VIM,
-Notepad, or nano if the work is done. Nonetheless, further discussions in the book would be relevant to Visual Studio 
-Code (\href{https://code.visualstudio.com/}{https://code.visualstudio.com/}) usage in how-to examples if nobody minds.
+proposed Visual Studio Code, Android Studio, IntelliJ IDEA; but the truth is that nobody cares, what was used (even VIM,
+Notepad, or nano), if the work is done. Nonetheless, further discussions in the book would be relevant to Visual 
+Studio Code (\href{https://code.visualstudio.com/}{https://code.visualstudio.com/}) usage in "how-to configure IDE" 
+examples if nobody minds.
 
-By using Visual Studio Code, it's better not to forget open Extensions Marketplace and install "Flutter" and 
-"Dart" extensions from there, then IDE will ask regarding the Flutter SDK folder (it's the directory 
-where the Flutter software development kit [SDK] is installed, a step above we've been downloading to).
-\\
-\noindent P.S. Inside the Flutter SDK folder, we may find a various directories and files, including:
+With Visual Studio Code, let's start from Extensions Marketplace usage by installing "Flutter" and "Dart" extensions, 
+right after that IDE will ask regarding the Flutter Software Development Kit (SDK) folder (it's the directory where 
+the Flutter was installed / downloaded into).
 
-\begin{lstlisting}
-bin // Contains the Flutter command-line tools, such as flutter, dart, and other utilities.
-cache // Stores downloaded packages and other cached files.
-doc // (!) Documentation files for Flutter.
-examples // (!) Code examples and sample projects provided by the Flutter team.
-packages // Core Flutter packages and dependencies.
-version // A text file indicating the version of the Flutter SDK.
-\end{lstlisting}
+Inside the Flutter SDK folder, we may find a various directories and files, including:
+
+\begin{itemize}
+  \item bin -- Contains the Flutter command-line tools, such as flutter, dart, and other utilities.
+  \item cache -- Stores downloaded packages and other cached files.
+  \item doc -- Documentation files for Flutter.
+  \item examples -- (!) Code examples and sample projects provided by the Flutter team.
+  \item packages -- Core Flutter packages and dependencies.
+  \item version -- A text file indicating the version of the Flutter SDK.
+\end{itemize}
 
 After those steps, in Visual Studio Code from Command Palette (by pressing [Ctrl + Shift + P], or [Cmd + Shift + P] 
-on macOS) will become available "Flutter: New Project" command, by clicking on which prompt will ask project name 
-and location to generate a basic structure. Going farther, let's open the project in IDE and frustrate a minute 
+on macOS) will become available "Flutter: New Project"-command, by clicking on which prompt will ask regarding project 
+name and location to generate a basic structure. Going farther, let's open the project in IDE and frustrate a minute 
 about a wide variety of different scaring files that's been generated. Breathe... we do need only one of them by 
-now that's located in the `lib`-directory. File `main.dart` is the project's central orbit, the entry point of our 
+now, that's located in the `lib`-directory. File `main.dart` is the project's central orbit, the entry point of our 
 application.
 
 \begin{lstlisting}
+// ./lib/main.dart
 import 'package:flutter/material.dart';
-
 // Entry point
 void main() {
   runApp(const MyApp());
 }
-
+// `Stateless` means missing any saved states of MyApp
 class MyApp extends StatelessWidget {
   // `super` - parent class, `key` - widget unique identifier
   const MyApp({super.key}); // Class constructor
   
   // `@override` - replace implementation from parent class
   @override
-  Widget build(BuildContext context) { // Returns `Widget` class based Object
+  Widget build(BuildContext context) { // Returns `Widget` instance
     return MaterialApp(
       title: 'Flutter Demo',
       // Application theme definition
@@ -67,28 +71,28 @@ class MyApp extends StatelessWidget {
     );
   }
 }
-
+// `Stateful` to re-render widget by changed internal states
 class MyHomePage extends StatefulWidget {
-  // `required` means that `title` is mandatory for constructor on line 25
+  // `required` means that `title` is a mandatory for constructor on line 25
   const MyHomePage({super.key, required this.title});
   // `final` - cannot be changed afterwards
   final String title;
-
+  // Wrap an object for a state management
   @override
-  State<MyHomePage> createState() => _MyHomePageState();
+  _MyHomePageState createState() => _MyHomePageState();
 }
-
 // Underscore is a convention for internal classes, methods, and variables
 class _MyHomePageState extends State<MyHomePage> {
   int _counter = 0;
-
+  // Internal method to update `_counter` state
   void _incrementCounter() {
-    // `setState` - special method of `State` to re-draw Widgets
+    // `setState` - a special method to save state
+    // ... and re-trigger `build`-method
     setState(() {
       _counter++;
     });
   }
-
+  // Mandatory method for any Widget-based classes
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -101,10 +105,10 @@ class _MyHomePageState extends State<MyHomePage> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             // Usage of `const` is recommended to improve performance
+            // ... for any Widget that's not having a dynamic parameters
             const Text(
                 'You have pushed the button this many times:',
             ),
-            // But `const` cannot be used for a dynamic content
             Text(
               '$_counter', // `$` - for a variable interpolation
               style: Theme.of(context).textTheme.headlineMedium,
@@ -122,17 +126,17 @@ class _MyHomePageState extends State<MyHomePage> {
 }
 \end{lstlisting}
 
-Let's try together the first run (!) (\cref{img:fs-app}) by triggering the command `flutter run` from a terminal of the 
+Let's see results of a compilation (\cref{img:fs-app}) by triggering `flutter run`-command from a terminal of the 
 project directory (as an example, for Visual Studio Code by clicking on "View" in the top menu, selecting "Terminal"; 
-short key [Ctrl + backtick]). If no emulators are enabled, it may ask to clarify the type of execution, just follow 
-instructions there.
+short key [Ctrl + backtick]). If no emulators are enabled, it may ask to clarify the type of execution.
 
 Valuable tip for any development process is to activate a debug mode, that can be done simply by adding ` --debug` to 
 the previous console command (sample, `flutter run -d windows --debug` to run project on Windows in debug mode). Then, 
 the process is similar to any other programming language: set breakpoints in a code by clicking in IDE on the left 
-margin of the desired line, use the command, inspect variables and their states by stepping through the code. 
-By taking into account that we know exactly nothing about Flutter (and, possibly, any other programming languages 
-at all), let's return when out application and we'll become more mature... too early without any business logic on board.
+margin of the desired line, use the command, inspect variables and their states by stepping through the code. Instead of
+any debug mode it can be simply used `print`-function to plot anything into console. By taking into account that we 
+might know exactly nothing about Flutter (and, possibly, any other programming languages), let's return to that 
+statement when our application (and we) will become more mature... too early without any business logic on board.
 
 \img{first-steps/app-template}{First run with autogenerated application}{img:fs-app}
 
@@ -145,9 +149,9 @@ virtual device (\cref{img:fs-android})... a couple of clicks and we're done (\cr
 
 \img{first-steps/android-studio-create}{Android Studio choose and create Emuator}{img:fs-create}
 
-Once we've set up the Android SDK and the emulator is triggered to "Start", Flutter will recognize it automatically from
-a known to us execution `flutter run`. It will build the Flutter app and launch it on the connected Android 
-emulator (or even real device, connected via USB; check manuals if needed).
+Once we've set up Android SDK and triggered "Start" for the emulator, Flutter will recognize its availability from
+an execution `flutter run`. Flutter app will be build and launched on the connected Android emulator (or even real 
+device, connected via USB; check manuals if needed).\\
 \\
-\\
-Let's dive into the coding!
+
+\noindent Let's dive into the coding!
