@@ -1,0 +1,137 @@
+% Copyright 2023 The terCAD team. All rights reserved.
+% Use of this content is governed by a CC BY-NC-ND 4.0 license that can be found in the LICENSE file.
+
+\subsection{Adding Telemetry}
+\markboth{Implementing Core Functionality}{Adding Telemetry}
+
+\subsubsection{Activating Google Analytics}
+
+To understand how users behave (user experience), where are they from (to prioritize localization), what's the scope of
+troubles they're facing with (exception handling); we might use any external analytical instruments. One of them is 
+Google Analytics.
+
+The process is started from creating a Firebase account and a new project there (by clicking on the relative 
+button and proceeding with obvious steps; just don't forget to enable Google Analytics while creating the project): 
+\href{https://console.firebase.google.com}{https://console.firebase.google.com}.
+
+Then we have to add packages `flutter pub add firebase\_core` and `flutter pub add firebase\_analytics`, activate 
+FlutterFire CLI  via `dart pub global activate flutterfire\_cli` and `npm install -g firebase-tools` to make it 
+(`flutterfire`-command) globally accessible for our environment. As a note for Windows users, be attentive to 
+notifications like that (add `bin`-folder to PATH global variable, \cref{img:fs-windows-path}):
+
+\begin{lstlisting}[language=bash]
+Warning: Pub installs executables into C:\Users\...\AppData\Local\Pub\Cache\bin, which is not on your path.
+\end{lstlisting}
+
+\noindent By triggering sequence of `firebase login` and `flutterfire configure` from a command line 
+we'll be able to configure the project.
+
+\begin{lstlisting}[language=bash]
+> firebase login
+
+i  Firebase optionally collects CLI and Emulator Suite usage and error reporting information to help improve our 
+products. Data is collected in accordance with Google`s privacy policy (https://policies.google.com/privacy) and 
+is not used to identify you.
+
+? Allow Firebase to collect CLI and Emulator Suite usage and error reporting information? Yes
+i  To change your data collection preference at any time, run `firebase logout` and log in again.
+
+Visit this URL on this device to log in:
+https://accounts.google.com/o/oauth2/auth?...
+
+Waiting for authentication...
+
++  Success! Logged in as ...
+
+
+> flutterfire configure
+
+i Found 1 Firebase projects.
+V Select a Firebase project to configure your Flutter application with  fingram-9030a (Fingram)
+V Which platforms should your configuration support (use arrow keys & space to select)? - macos, web, ios, android
+# ... other info
+
+Firebase configuration file lib/firebase_options.dart generated successfully with the following Firebase apps:
+
+Platform  Firebase App Id
+web       ...
+android   ...
+ios       ...
+macos     ...
+
+Learn more about using this file and next steps from the documentation:
+  https://firebase.google.com/docs/flutter/setup
+\end{lstlisting}
+
+\noindent Once completed, we should import the generated file and adjust `main`-method:
+
+\begin{lstlisting}
+// ./lib/main.dart
+import 'package:app_finance/firebase_options.dart';
+import 'package:firebase_core/firebase_core.dart';
+
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
+  runApp(/* app initialization*/);
+}
+\end{lstlisting}
+
+\noindent That might be the case for web, android, ios, and macos; but we have additionally linux and windows that are 
+not supported by now, so, let's patch `firebase\_options.dart`-file to return null instead of throwing an exception:
+
+\begin{lstlisting}
+// ./lib/firebase_options.dart
+class DefaultFirebaseOptions {
+  static FirebaseOptions? get currentPlatform {
+    if (kIsWeb) {
+      return web;
+    }
+    switch (defaultTargetPlatform) {
+      case TargetPlatform.android:
+        return android;
+      case TargetPlatform.iOS:
+        return ios;
+      case TargetPlatform.macOS:
+        return macos;
+      case TargetPlatform.windows:
+      case TargetPlatform.linux:
+      default:
+        return null;
+    }
+  }
+\end{lstlisting}
+
+Alternatively, it can be implemented own cross-functional component by following Firebase REST API (
+\href{https://firebase.google.com/docs/reference/rest/database}{https://firebase.google.com/docs/reference/rest/database}
+)... but it's a topic for another discussion.
+
+After all of that modifications it's needed to evaluate `flutter clean` to avoid any errors; and after 
+`flutter run`-command we would be able to view a log report on 
+\href{https://analytics.google.com}{https://analytics.google.com}, \cref{img:pt-analytics}.
+
+\img{prototyping/google-analytics-report}{Google Analytics results}{img:pt-analytics}
+
+The negative impact here is that `firebase\_analytics` library force to use 19 version as a minimal SDK for Android, 
+so, it's needed to be updated `android/app/build.gradle` file by adjusting `minSdkVersion`-property:
+
+\begin{lstlisting}[language=yaml]
+## ./android/app/build.gradle
+android {
+  defaultConfig {
+\end{lstlisting}
+{
+\xpretocmd{\lstlisting}{\vspace{-12pt}}{}{}
+\begin{lstlisting}[firstnumber=4, backgroundcolor=\color{backred}]
+(*@\kdiff{-}@*)    minSdkVersion flutter.minSdkVersion
+\end{lstlisting}
+\begin{lstlisting}[firstnumber=4, backgroundcolor=\color{backgreen}]
+(*@\kdiff{+}@*)    minSdkVersion 19
+\end{lstlisting}
+\begin{lstlisting}[firstnumber=5]
+  }
+}
+\end{lstlisting}
+}
