@@ -8,11 +8,18 @@ import 'package:flutter/material.dart';
 class DelayedCall {
   final int delay;
   Timer? _timer;
+  VoidCallback? _action;
 
   DelayedCall(this.delay);
 
   void run(VoidCallback action) {
     _timer?.cancel();
+    _action = action;
     _timer = Timer(Duration(milliseconds: delay), action);
+  }
+
+  void cancel() {
+    _action?.call();
+    _timer?.cancel();
   }
 }

@@ -37,7 +37,9 @@ class SimpleInput extends StatefulWidget {
 class SimpleInputState extends State<SimpleInput> {
   final TextEditingController _controller = TextEditingController();
   final FocusNode defaultFocus = FocusNode();
+  final DelayedCall delay = DelayedCall(600);
   late String value;
+  bool isFocused = false;
 
   @override
   initState() {
@@ -45,13 +47,19 @@ class SimpleInputState extends State<SimpleInput> {
     changeInitialState();
   }
 
+  @override
+  dispose() {
+    super.dispose();
+    delay.cancel();
+  }
+
   void changeInitialState() {
     value = widget.value ?? '';
     _controller.text = value;
+    isFocused = false;
   }
 
   void delayedUpdate(newValue) {
-    final delay = DelayedCall(600);
     delay.run(() {
       widget.setState(newValue);
       setState(() => value = newValue);
@@ -62,10 +70,11 @@ class SimpleInputState extends State<SimpleInput> {
   Widget build(BuildContext context) {
     FocusController.setContext(widget.focusOrder, widget.value);
     final focus = FocusController.getFocusNode() ?? defaultFocus;
-    if (widget.value != '' && widget.value != value && !focus.hasFocus) {
+    if ((widget.value ?? '') != value && !focus.hasFocus) {
       Future.delayed(Duration.zero, () => setState(changeInitialState));
     }
-    if (widget.value == '' && focus.hasFocus) {
+    if (widget.value == '' && focus.hasFocus && !isFocused) {
+      Future.delayed(Duration.zero, () => setState(() => isFocused = true));
       Future.delayed(
           Duration.zero, () => FocusController.scrollToFocusedElement(focus));
     }
