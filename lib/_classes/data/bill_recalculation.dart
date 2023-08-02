@@ -18,8 +18,12 @@ class BillRecalculation extends AbstractRecalculation {
 
   @override
   double getDelta() {
+    throw UnimplementedError();
+  }
+
+  double getStateDelta(dynamic prev, dynamic curr) {
     double delta = change.hidden ? 0.0 : change.details;
-    if (initial != null && change.uuid == initial?.uuid) {
+    if (initial != null && prev?.uuid == curr?.uuid) {
       delta = change.hidden
           ? -initial?.details
           : (initial!.hidden
@@ -43,9 +47,10 @@ class BillRecalculation extends AbstractRecalculation {
           .reform(getPrevDelta(), initial?.currency, accountInitial.currency);
     }
     if (accountChange.createdAt.isBefore(change.createdAt)) {
-      accountChange.details -= super
-          .exchange
-          .reform(getDelta(), change.currency, accountChange.currency);
+      accountChange.details -= super.exchange.reform(
+          getStateDelta(accountInitial, accountChange),
+          change.currency,
+          accountChange.currency);
     }
     return this;
   }
@@ -63,9 +68,10 @@ class BillRecalculation extends AbstractRecalculation {
       budgetInitial.progress = getProgress(
           budgetInitial.amountLimit, budgetInitial.progress, -prevDelta);
     }
-    double delta = super
-        .exchange
-        .reform(getDelta(), change.currency, budgetChange.currency);
+    double delta = super.exchange.reform(
+        getStateDelta(budgetInitial, budgetChange),
+        change.currency,
+        budgetChange.currency);
     budgetChange.progress =
         getProgress(budgetChange.amountLimit, budgetChange.progress, delta);
     return this;

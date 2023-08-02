@@ -35,7 +35,7 @@ void main() {
       object.exchange = Exchange(store: MockAppData());
     });
 
-    group('getDelta', () {
+    group('getStateDelta', () {
       final testCases = [
         (
           initial: (hidden: true, uuid: '1', details: 10.0),
@@ -81,7 +81,7 @@ void main() {
           object.change.hidden = v.change.hidden;
           object.change.details = v.change.details;
           object.change.uuid = v.change.uuid;
-          expect(object.getDelta(), v.result);
+          expect(object.getStateDelta(object.initial, object.change), v.result);
         });
       }
     });
@@ -109,7 +109,7 @@ void main() {
     group('updateAccount', () {
       final testCases = [
         (
-          getDelta: 10.0,
+          getStateDelta: 10.0,
           getPrevDelta: 0.0,
           initial: (createdAtFormatted: '2023-07-17 00:00:00'),
           initialAccount: (
@@ -121,7 +121,7 @@ void main() {
           result: (initialAccountDetails: 0.0, changeAccountDetails: -10.0),
         ),
         (
-          getDelta: 20.0,
+          getStateDelta: 20.0,
           getPrevDelta: 10.0,
           initial: (createdAtFormatted: '2023-07-17 00:00:00'),
           initialAccount: (
@@ -133,7 +133,7 @@ void main() {
           result: (initialAccountDetails: 10.0, changeAccountDetails: -20.0),
         ),
         (
-          getDelta: 20.0,
+          getStateDelta: 20.0,
           getPrevDelta: 10.0,
           initial: (createdAtFormatted: '2023-07-17 00:00:00'),
           initialAccount: (
@@ -145,7 +145,7 @@ void main() {
           result: (initialAccountDetails: 0.0, changeAccountDetails: 0.0),
         ),
         (
-          getDelta: 20.0,
+          getStateDelta: 20.0,
           getPrevDelta: 10.0,
           initial: (createdAtFormatted: '2023-07-17 00:00:00'),
           initialAccount: (
@@ -167,7 +167,7 @@ void main() {
             change: object.change,
           );
           mock.exchange = object.exchange;
-          mock.mockGetDelta = () => v.getDelta;
+          mock.mockGetStateDelta = (a, b) => v.getStateDelta;
           mock.mockGetPrevDelta = () => v.getPrevDelta;
           final initial = AccountAppData(title: '', type: '')
             ..uuid = v.initialAccount.uuid
@@ -185,14 +185,14 @@ void main() {
     group('updateBudget', () {
       final testCases = [
         (
-          getDelta: 10.0,
+          getStateDelta: 10.0,
           getPrevDelta: 0.0,
           initialBudget: (amountLimit: 100.0, progress: 0.5, uuid: '1'),
           changeBudget: (amountLimit: 100.0, progress: 0.5, uuid: '1'),
           result: (initialBudgetProgress: 0.5, changeBudgetProgress: 0.6),
         ),
         (
-          getDelta: 10.0,
+          getStateDelta: 10.0,
           getPrevDelta: 20.0,
           initialBudget: (amountLimit: 100.0, progress: 0.5, uuid: '1'),
           changeBudget: (amountLimit: 100.0, progress: 0.5, uuid: '2'),
@@ -207,7 +207,7 @@ void main() {
             change: object.change,
           );
           mock.exchange = object.exchange;
-          mock.mockGetDelta = () => v.getDelta;
+          mock.mockGetStateDelta = (a, b) => v.getStateDelta;
           mock.mockGetPrevDelta = () => v.getPrevDelta;
           final initial =
               BudgetAppData(title: '', amountLimit: v.initialBudget.amountLimit)

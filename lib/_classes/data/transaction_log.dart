@@ -45,7 +45,7 @@ class TransactionLog with SharedPreferencesMixin {
     return self.getPreference(self.prefDoEncrypt) == prefIsEncrypted;
   }
 
-  static void save(dynamic content) async {
+  static Future<void> save(dynamic content) async {
     String line = content.toString();
     if (doEncrypt()) {
       line = salt.encrypt(line, iv: code).base64;
@@ -105,7 +105,7 @@ class TransactionLog with SharedPreferencesMixin {
           .transform(utf8.decoder)
           .transform(const LineSplitter());
     }
-    bool isEncrypted = await doEncrypt();
+    bool isEncrypted = doEncrypt();
     bool isOK = true;
     await for (var line in lines) {
       if (line == '') {
