@@ -50,12 +50,12 @@ class FocusController {
       if (focus >= 0 && _focus != focus && nodes[focus].context != null) {
         _focus = focus;
         FocusScope.of(nodes[focus].context!).requestFocus(nodes[focus]);
-        _scrollToFocusedElement(nodes[focus]);
+        scrollToFocusedElement(nodes[focus]);
       }
     });
   }
 
-  static void _scrollToFocusedElement(FocusNode node) {
+  static void scrollToFocusedElement(FocusNode node) {
     final focusedNode = node.context?.findRenderObject();
     final firstNode = nodes[0].context?.findRenderObject();
     bool isAttached = _controller?.hasClients ?? false;

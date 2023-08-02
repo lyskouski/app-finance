@@ -65,6 +65,10 @@ class SimpleInputState extends State<SimpleInput> {
     if (widget.value != '' && widget.value != value && !focus.hasFocus) {
       Future.delayed(Duration.zero, () => setState(changeInitialState));
     }
+    if (widget.value == '' && focus.hasFocus) {
+      Future.delayed(
+          Duration.zero, () => FocusController.scrollToFocusedElement(focus));
+    }
     return TextFormField(
       controller: _controller,
       inputFormatters: widget.formatter,
