@@ -205,7 +205,7 @@ class ExpensesTabState<T extends ExpensesTab> extends State<T> with SharedPrefer
                   RowWidget(
                     indent: indent,
                     maxWidth: offset,
-                    chunk: const [0.35, 0.65],
+                    chunk: const [0.32, 0.68],
                     children: [
                       [
                         Text(

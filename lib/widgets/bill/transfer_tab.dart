@@ -160,7 +160,7 @@ class TransferTabState extends State<TransferTab> {
                   RowWidget(
                     indent: indent,
                     maxWidth: offset,
-                    chunk: const [0.35, 0.65],
+                    chunk: const [0.32, 0.68],
                     children: [
                       [
                         Text(

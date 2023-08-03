@@ -154,7 +154,7 @@ class IncomeTabState extends State<IncomeTab> with SharedPreferencesMixin {
                   RowWidget(
                     indent: indent,
                     maxWidth: offset,
-                    chunk: const [0.35, 0.65],
+                    chunk: const [0.32, 0.68],
                     children: [
                       [
                         Text(
