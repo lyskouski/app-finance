@@ -73,6 +73,8 @@ class ListSelectorState<T extends ListSelector, K extends ListSelectorItem> exte
     return selectorBuilder(context, selectedItem);
   }
 
+  void onChange(K? value) => widget.setState(value.toString());
+
   @override
   Widget build(context) {
     if (widget.value == '' && focus.hasFocus && !isFocused) {
@@ -81,7 +83,7 @@ class ListSelectorState<T extends ListSelector, K extends ListSelectorItem> exte
     }
 
     return DropdownSearch<K>(
-      onChanged: (value) => widget.setState(value.toString()),
+      onChanged: onChange,
       selectedItem: widget.options.where((element) => element.id == widget.value).firstOrNull as K?,
       items: widget.options as List<K>,
       compareFn: (item, selectedItem) => item.name.contains(selectedItem.name),

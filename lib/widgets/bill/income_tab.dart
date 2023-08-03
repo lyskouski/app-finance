@@ -165,7 +165,7 @@ class IncomeTabState extends State<IncomeTab> with SharedPreferencesMixin {
                           color: Theme.of(context).colorScheme.inversePrimary.withOpacity(0.3),
                           width: double.infinity,
                           child: CurrencySelector(
-                            value: currency,
+                            value: currency?.code,
                             setView: (Currency currency) => currency.code,
                             setState: (value) => setState(() => currency = value),
                             focusOrder: focusOrder += 1,

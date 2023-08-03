@@ -94,7 +94,7 @@ class SettingTabState<T extends SettingTab> extends AbstractTabState<T> with Sha
           color: Theme.of(context).colorScheme.inversePrimary.withOpacity(0.3),
           width: double.infinity,
           child: CurrencySelector(
-            value: currency,
+            value: currency?.code,
             setState: saveCurrency,
           ),
         ),

@@ -96,7 +96,7 @@ class BaseLineWidget extends StatelessWidget {
               ),
             ],
           ),
-          showDivider ? const Divider() : const SizedBox(),
+          if (showDivider) ...[const Divider()],
         ],
       ),
     );

@@ -201,7 +201,7 @@ class BudgetAddPageState<T extends BudgetAddPage> extends AbstractPageState<Budg
               color: Theme.of(context).colorScheme.inversePrimary.withOpacity(0.3),
               width: double.infinity,
               child: CurrencySelector(
-                value: currency,
+                value: currency?.code,
                 setState: (value) => setState(() => currency = value),
                 focusOrder: focusOrder += 1,
               ),

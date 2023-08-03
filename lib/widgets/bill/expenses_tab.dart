@@ -216,7 +216,7 @@ class ExpensesTabState<T extends ExpensesTab> extends State<T> with SharedPrefer
                           color: Theme.of(context).colorScheme.inversePrimary.withOpacity(0.3),
                           width: double.infinity,
                           child: CurrencySelector(
-                            value: currency,
+                            value: currency?.code,
                             setView: (Currency currency) => currency.code,
                             focusOrder: focusOrder += 1,
                             setState: (value) => setState(() => currency = value),

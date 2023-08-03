@@ -2,86 +2,116 @@
 // Use of this source code is governed by a CC BY-NC-ND 4.0 license that can be
 // found in the LICENSE file.
 
+import 'package:adaptive_breakpoints/adaptive_breakpoints.dart';
 import 'package:app_finance/_classes/focus_controller.dart';
+import 'package:app_finance/helpers/theme_helper.dart';
+import 'package:app_finance/widgets/_forms/list_selector.dart';
 import 'package:currency_picker/currency_picker.dart';
 import 'package:flutter/material.dart';
 
 typedef SetViewFunction = String Function(Currency input);
 
-class CurrencySelector extends StatefulWidget {
-  final Function setState;
-  final SetViewFunction? setView;
-  final Currency? value;
-  final int focusOrder;
+class CurrencySelectorItem extends ListSelectorItem {
+  Currency item;
+  Function? setView;
 
-  const CurrencySelector({
-    super.key,
-    this.value,
-    required this.setState,
+  @override
+  String get id => item.code;
+
+  @override
+  String get name => '${item.symbol} - ${item.name} (${item.code})';
+
+  @override
+  String toString() => setView != null ? setView!(item) : name;
+
+  CurrencySelectorItem({
+    required this.item,
+    super.name = '',
+    super.id = '',
     this.setView,
-    this.focusOrder = FocusController.DEFAULT,
   });
+}
+
+class CurrencySelector extends ListSelector {
+  final SetViewFunction? setView;
+
+  CurrencySelector({
+    required super.setState,
+    super.value,
+    this.setView,
+    super.focusOrder = FocusController.DEFAULT,
+  }) : super(options: []);
+
+  @override
+  List<CurrencySelectorItem> get options {
+    return CurrencyService()
+        .getAll()
+        .map((item) => CurrencySelectorItem(
+              item: item,
+              setView: setView,
+            ))
+        .cast<CurrencySelectorItem>()
+        .toList();
+  }
 
   @override
   CurrencySelectorState createState() => CurrencySelectorState();
 }
 
-class CurrencySelectorState extends State<CurrencySelector> {
-  late SetViewFunction setView;
-  bool isOpened = false;
-
+class CurrencySelectorState extends ListSelectorState<CurrencySelector, CurrencySelectorItem> {
   @override
-  void initState() {
-    setView = widget.setView ?? setDefaultView;
-    super.initState();
-  }
-
-  String setDefaultView(Currency value) {
-    return '${value.symbol} - ${value.name} (${value.code})';
-  }
-
-  String getValue(Currency? value) {
-    return value != null ? setView(value) : '';
-  }
-
-  void onTap(BuildContext context) {
-    setState(() => isOpened = true);
-    showCurrencyPicker(
-        context: context,
-        showFlag: true,
-        showCurrencyName: true,
-        showCurrencyCode: true,
-        onSelect: (Currency currency) {
-          widget.setState(currency);
-          FocusController.resetFocus();
-          setState(() => isOpened = false);
-        });
+  Widget selectorBuilder(context, CurrencySelectorItem item) {
+    return Text(item.toString(), style: widget.style);
   }
 
   @override
-  Widget build(BuildContext context) {
-    FocusController.init(widget.focusOrder, widget.value);
-    if (!isOpened &&
-        widget.value == null &&
-        widget.focusOrder > FocusController.DEFAULT &&
-        FocusController.isFocused()) {
-      Future.delayed(const Duration(milliseconds: 300), () {
-        if (!isOpened && widget.value == null) {
-          onTap(context);
-        }
-      });
+  onChange(CurrencySelectorItem? value) {
+    widget.setState(value!.item);
+  }
+
+  @override
+  Widget itemBuilder(context, CurrencySelectorItem item, bool isSelected) {
+    final helper = ThemeHelper(windowType: getWindowType(context));
+    final indent = helper.getIndent();
+    if (widget.setView != null) {
+      return Tooltip(
+        message: item.name,
+        child: Padding(
+          padding: EdgeInsets.symmetric(vertical: indent, horizontal: indent),
+          child: selectorBuilder(context, item),
+        ),
+      );
     }
-    return TextFormField(
-      onTap: () => onTap(context),
-      key: ValueKey(widget.value),
-      initialValue: getValue(widget.value),
-      readOnly: true,
-      focusNode: FocusController.getFocusNode(),
-      decoration: InputDecoration(
-        filled: true,
-        border: InputBorder.none,
-        fillColor: Theme.of(context).colorScheme.inversePrimary.withOpacity(0.0),
-        suffixIcon: const Icon(Icons.arrow_drop_down),
+    return Padding(
+      padding: EdgeInsets.symmetric(vertical: indent, horizontal: indent),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: <Widget>[
+          Expanded(
+            child: Row(
+              children: [
+                SizedBox(width: indent * 2),
+                if (item.item.flag != null) ...[
+                  Text(CurrencyUtils.currencyToEmoji(item.item)),
+                  SizedBox(width: indent * 2),
+                ],
+                Expanded(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(item.item.code),
+                      Text(item.item.name),
+                    ],
+                  ),
+                ),
+              ],
+            ),
+          ),
+          Padding(
+            padding: EdgeInsets.symmetric(horizontal: indent * 2),
+            child: Text(item.item.symbol),
+          ),
+        ],
       ),
     );
   }
