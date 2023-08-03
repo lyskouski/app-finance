@@ -4,42 +4,38 @@
 
 import 'package:app_finance/_classes/data/budget_app_data.dart';
 import 'package:app_finance/_classes/app_data.dart';
+import 'package:app_finance/_classes/focus_controller.dart';
 import 'package:app_finance/widgets/_forms/list_account_selector.dart';
-import 'package:flutter/material.dart';
 
-class ListBudgetSelectorItem extends ListAccountSelectorItem<BudgetAppData> {
-  ListBudgetSelectorItem({required String id, required BudgetAppData item}) : super(id: id, item: item);
+class ListBudgetSelectorItem extends ListAccountSelectorItem {
+  ListBudgetSelectorItem({
+    required BudgetAppData item,
+  }) : super(item: item);
 }
 
 class ListBudgetSelector extends ListAccountSelector<ListBudgetSelectorItem> {
   ListBudgetSelector({
-    required AppData state,
-    required Function setState,
-    required double width,
-    TextStyle? style,
-    String? value,
-    int focusOrder = -1,
-    double indent = 0.0,
-  }) : super(
-          state: state,
-          setState: setState,
-          width: width,
-          style: style,
-          value: value,
-          indent: indent,
-          focusOrder: focusOrder,
-        );
+    required super.state,
+    required super.setState,
+    required super.width,
+    super.style,
+    super.value,
+    super.focusOrder = FocusController.DEFAULT,
+    super.indent = 0.0,
+  }) : super();
 
   @override
-  List<ListBudgetSelectorItem> getList() {
+  List<ListBudgetSelectorItem> get options {
     return state
         .get(AppDataType.budgets)
         .list
-        .map((item) => ListBudgetSelectorItem(
-              id: item.uuid ?? '',
-              item: item,
-            ))
+        .map((item) => ListBudgetSelectorItem(item: item))
         .cast<ListBudgetSelectorItem>()
         .toList();
   }
+
+  @override
+  ListBudgetSelectorState createState() => ListBudgetSelectorState();
 }
+
+class ListBudgetSelectorState extends ListAccountSelectorState<ListBudgetSelector, ListAccountSelectorItem> {}

@@ -19,6 +19,7 @@ class BaseLineWidget extends StatelessWidget {
   final double offset;
   final String route;
   final bool hidden;
+  final bool showDivider;
 
   const BaseLineWidget({
     super.key,
@@ -31,6 +32,7 @@ class BaseLineWidget extends StatelessWidget {
     this.hidden = false,
     this.progress = 1,
     this.route = '',
+    this.showDivider = true,
   });
 
   @override
@@ -94,7 +96,7 @@ class BaseLineWidget extends StatelessWidget {
               ),
             ],
           ),
-          const Divider(),
+          showDivider ? const Divider() : const SizedBox(),
         ],
       ),
     );
