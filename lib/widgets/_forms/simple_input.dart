@@ -67,7 +67,7 @@ class SimpleInputState extends State<SimpleInput> {
 
   @override
   Widget build(BuildContext context) {
-    FocusController.setContext(widget.focusOrder, widget.value);
+    FocusController.init(widget.focusOrder, widget.value);
     final focus = FocusController.getFocusNode() ?? defaultFocus;
     if ((widget.value ?? '') != value && !focus.hasFocus) {
       Future.delayed(Duration.zero, () => setState(changeInitialState));

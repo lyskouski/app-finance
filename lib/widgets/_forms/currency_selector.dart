@@ -60,7 +60,7 @@ class CurrencySelectorState extends State<CurrencySelector> {
 
   @override
   Widget build(BuildContext context) {
-    FocusController.setContext(widget.focusOrder, widget.value);
+    FocusController.init(widget.focusOrder, widget.value);
     if (!isOpened &&
         widget.value == null &&
         widget.focusOrder > FocusController.DEFAULT &&

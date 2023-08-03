@@ -88,7 +88,7 @@ class ColorSelectorState extends State<ColorSelector> {
 
   @override
   Widget build(context) {
-    FocusController.setContext(widget.focusOrder, widget.value);
+    FocusController.init(widget.focusOrder, widget.value);
     if (!isOpened &&
         widget.value == null &&
         widget.focusOrder > FocusController.DEFAULT &&

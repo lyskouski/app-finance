@@ -114,7 +114,7 @@ class ExpensesTabState<T extends ExpensesTab> extends State<T> with SharedPrefer
   Widget buildButton(BuildContext context, BoxConstraints constraints) {
     var helper = ThemeHelper(windowType: getWindowType(context));
     String title = getButtonTitle(context);
-    FocusController.setContext(5);
+    FocusController.init(5);
     return SizedBox(
       width: constraints.maxWidth - helper.getIndent() * 4,
       child: FloatingActionButton(
@@ -151,6 +151,7 @@ class ExpensesTabState<T extends ExpensesTab> extends State<T> with SharedPrefer
     double indent = ThemeHelper(windowType: getWindowType(context)).getIndent() * 2;
     double offset = MediaQuery.of(context).size.width - indent * 3;
     int focusOrder = FocusController.DEFAULT;
+    FocusController.setContext(context);
 
     return LayoutBuilder(builder: (context, constraints) {
       return Consumer<AppData>(builder: (context, appState, _) {

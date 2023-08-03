@@ -76,7 +76,7 @@ class TransferTabState extends State<TransferTab> {
   Widget buildButton(BuildContext context, BoxConstraints constraints) {
     var helper = ThemeHelper(windowType: getWindowType(context));
     String title = AppLocalizations.of(context)!.createTransferTooltip;
-    FocusController.setContext(3);
+    FocusController.init(3);
     return SizedBox(
       width: constraints.maxWidth - helper.getIndent() * 4,
       child: FloatingActionButton(
@@ -113,6 +113,7 @@ class TransferTabState extends State<TransferTab> {
     double indent = ThemeHelper(windowType: getWindowType(context)).getIndent() * 2;
     double offset = MediaQuery.of(context).size.width - indent * 3;
     int focusOrder = FocusController.DEFAULT;
+    FocusController.setContext(context);
 
     return LayoutBuilder(builder: (context, constraints) {
       return Consumer<AppData>(builder: (context, appState, _) {

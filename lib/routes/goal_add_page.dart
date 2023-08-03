@@ -97,7 +97,7 @@ class GoalAddPageState<T extends GoalAddPage> extends AbstractPageState<GoalAddP
   Widget buildButton(BuildContext context, BoxConstraints constraints) {
     var helper = ThemeHelper(windowType: getWindowType(context));
     String title = getButtonName();
-    FocusController.setContext(4);
+    FocusController.init(4);
     return SizedBox(
       width: constraints.maxWidth - helper.getIndent() * 4,
       child: FloatingActionButton(
@@ -134,6 +134,7 @@ class GoalAddPageState<T extends GoalAddPage> extends AbstractPageState<GoalAddP
     double indent = ThemeHelper(windowType: getWindowType(context)).getIndent() * 2;
     double offset = MediaQuery.of(context).size.width - indent * 3;
     int focusOrder = FocusController.DEFAULT;
+    FocusController.setContext(context);
 
     return SingleChildScrollView(
       child: Container(

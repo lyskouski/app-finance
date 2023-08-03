@@ -79,7 +79,7 @@ class ListAccountSelectorState extends State<ListAccountSelector> {
   @override
   Widget build(context) {
     scope ??= generateList(context);
-    FocusController.setContext(widget.focusOrder, widget.value);
+    FocusController.init(widget.focusOrder, widget.value);
 
     return Container(
       color: Theme.of(context).colorScheme.inversePrimary.withOpacity(0.3),
