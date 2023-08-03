@@ -45,8 +45,7 @@ class ExpensesTab<T> extends StatefulWidget {
   ExpensesTabState createState() => ExpensesTabState();
 }
 
-class ExpensesTabState<T extends ExpensesTab> extends State<T>
-    with SharedPreferencesMixin {
+class ExpensesTabState<T extends ExpensesTab> extends State<T> with SharedPreferencesMixin {
   late AppData state;
   String? account;
   String? budget;
@@ -89,8 +88,7 @@ class ExpensesTabState<T extends ExpensesTab> extends State<T>
   }
 
   bool hasFormErrors() {
-    setState(
-        () => hasErrors = account == null || budget == null || bill == null);
+    setState(() => hasErrors = account == null || budget == null || bill == null);
     return hasErrors;
   }
 
@@ -150,8 +148,7 @@ class ExpensesTabState<T extends ExpensesTab> extends State<T>
   Widget build(BuildContext context) {
     // FocusController.dispose();
     final TextTheme textTheme = Theme.of(context).textTheme;
-    double indent =
-        ThemeHelper(windowType: getWindowType(context)).getIndent() * 2;
+    double indent = ThemeHelper(windowType: getWindowType(context)).getIndent() * 2;
     double offset = MediaQuery.of(context).size.width - indent * 3;
     int focusOrder = FocusController.DEFAULT;
 
@@ -180,8 +177,7 @@ class ExpensesTabState<T extends ExpensesTab> extends State<T>
                       account = value;
                       currency ??= state.getByUuid(value).currency;
                     }),
-                    style: textTheme.numberMedium
-                        .copyWith(color: textTheme.headlineSmall?.color),
+                    style: textTheme.numberMedium.copyWith(color: textTheme.headlineSmall?.color),
                     indent: indent,
                     width: offset,
                     focusOrder: focusOrder += 1,
@@ -199,8 +195,7 @@ class ExpensesTabState<T extends ExpensesTab> extends State<T>
                       var bdgCurrency = state.getByUuid(value).currency;
                       currency ??= bdgCurrency;
                     }),
-                    style: textTheme.numberMedium
-                        .copyWith(color: textTheme.headlineSmall?.color),
+                    style: textTheme.numberMedium.copyWith(color: textTheme.headlineSmall?.color),
                     indent: indent,
                     width: offset,
                     focusOrder: focusOrder += 1,
@@ -217,17 +212,13 @@ class ExpensesTabState<T extends ExpensesTab> extends State<T>
                           style: textTheme.bodyLarge,
                         ),
                         Container(
-                          color: Theme.of(context)
-                              .colorScheme
-                              .inversePrimary
-                              .withOpacity(0.3),
+                          color: Theme.of(context).colorScheme.inversePrimary.withOpacity(0.3),
                           width: double.infinity,
                           child: CurrencySelector(
                             value: currency,
                             setView: (Currency currency) => currency.code,
                             focusOrder: focusOrder += 1,
-                            setState: (value) =>
-                                setState(() => currency = value),
+                            setState: (value) => setState(() => currency = value),
                           ),
                         ),
                       ],
@@ -238,16 +229,13 @@ class ExpensesTabState<T extends ExpensesTab> extends State<T>
                         ),
                         SimpleInput(
                           value: bill != null ? bill.toString() : '',
-                          type: const TextInputType.numberWithOptions(
-                              decimal: true),
+                          type: const TextInputType.numberWithOptions(decimal: true),
                           tooltip: AppLocalizations.of(context)!.billSetTooltip,
-                          style: textTheme.numberMedium
-                              .copyWith(color: textTheme.headlineSmall?.color),
+                          style: textTheme.numberMedium.copyWith(color: textTheme.headlineSmall?.color),
                           formatter: [
                             SimpleInput.filterDouble,
                           ],
-                          setState: (value) =>
-                              setState(() => bill = double.tryParse(value)),
+                          setState: (value) => setState(() => bill = double.tryParse(value)),
                           focusOrder: focusOrder += 1,
                         ),
                       ],
@@ -261,9 +249,7 @@ class ExpensesTabState<T extends ExpensesTab> extends State<T>
                     state: state,
                     targetAmount: bill,
                     source: [
-                      account != null
-                          ? state.getByUuid(account!).currency
-                          : null,
+                      account != null ? state.getByUuid(account!).currency : null,
                       budget != null ? state.getByUuid(budget!).currency : null,
                     ].cast<Currency?>(),
                   ),
@@ -274,8 +260,7 @@ class ExpensesTabState<T extends ExpensesTab> extends State<T>
                   SimpleInput(
                     value: description ?? '',
                     tooltip: AppLocalizations.of(context)!.descriptionTooltip,
-                    style: textTheme.numberMedium
-                        .copyWith(color: textTheme.headlineSmall?.color),
+                    style: textTheme.numberMedium.copyWith(color: textTheme.headlineSmall?.color),
                     setState: (value) => setState(() => description = value),
                     focusOrder: focusOrder += 1,
                   ),
@@ -285,8 +270,7 @@ class ExpensesTabState<T extends ExpensesTab> extends State<T>
                     style: textTheme.bodyLarge,
                   ),
                   DateTimeInput(
-                    style: textTheme.numberMedium
-                        .copyWith(color: textTheme.headlineSmall?.color),
+                    style: textTheme.numberMedium.copyWith(color: textTheme.headlineSmall?.color),
                     width: offset,
                     value: createdAt ?? DateTime.now(),
                     setState: (value) => setState(() => createdAt = value),

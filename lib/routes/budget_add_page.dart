@@ -40,8 +40,7 @@ class BudgetAddPage extends AbstractPage {
   BudgetAddPageState createState() => BudgetAddPageState();
 }
 
-class BudgetAddPageState<T extends BudgetAddPage>
-    extends AbstractPageState<BudgetAddPage> with SharedPreferencesMixin {
+class BudgetAddPageState<T extends BudgetAddPage> extends AbstractPageState<BudgetAddPage> with SharedPreferencesMixin {
   String? title;
   double? budgetLimit;
   IconData? icon;
@@ -128,8 +127,7 @@ class BudgetAddPageState<T extends BudgetAddPage>
   @override
   Widget buildContent(BuildContext context, BoxConstraints constraints) {
     final TextTheme textTheme = Theme.of(context).textTheme;
-    double indent =
-        ThemeHelper(windowType: getWindowType(context)).getIndent() * 2;
+    double indent = ThemeHelper(windowType: getWindowType(context)).getIndent() * 2;
     double offset = MediaQuery.of(context).size.width - indent * 3;
     int focusOrder = FocusController.DEFAULT;
 
@@ -139,14 +137,11 @@ class BudgetAddPageState<T extends BudgetAddPage>
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            RequiredWidget(
-                title: AppLocalizations.of(context)!.title,
-                showError: hasError && title == null),
+            RequiredWidget(title: AppLocalizations.of(context)!.title, showError: hasError && title == null),
             SimpleInput(
               value: title,
               tooltip: AppLocalizations.of(context)!.titleBudgetTooltip,
-              style: textTheme.numberMedium
-                  .copyWith(color: textTheme.headlineSmall?.color),
+              style: textTheme.numberMedium.copyWith(color: textTheme.headlineSmall?.color),
               setState: (value) => setState(() => title = value),
               focusOrder: focusOrder += 1,
             ),
@@ -189,13 +184,11 @@ class BudgetAddPageState<T extends BudgetAddPage>
               value: budgetLimit != null ? budgetLimit.toString() : '',
               type: const TextInputType.numberWithOptions(decimal: true),
               tooltip: AppLocalizations.of(context)!.balanceTooltip,
-              style: textTheme.numberMedium
-                  .copyWith(color: textTheme.headlineSmall?.color),
+              style: textTheme.numberMedium.copyWith(color: textTheme.headlineSmall?.color),
               formatter: [
                 FilteringTextInputFormatter.allow(RegExp(r'^\d+\.?\d{0,4}')),
               ],
-              setState: (value) =>
-                  setState(() => budgetLimit = double.tryParse(value)),
+              setState: (value) => setState(() => budgetLimit = double.tryParse(value)),
               focusOrder: focusOrder += 1,
             ),
             SizedBox(height: indent),
@@ -204,8 +197,7 @@ class BudgetAddPageState<T extends BudgetAddPage>
               style: textTheme.bodyLarge,
             ),
             Container(
-              color:
-                  Theme.of(context).colorScheme.inversePrimary.withOpacity(0.3),
+              color: Theme.of(context).colorScheme.inversePrimary.withOpacity(0.3),
               width: double.infinity,
               child: CurrencySelector(
                 value: currency,

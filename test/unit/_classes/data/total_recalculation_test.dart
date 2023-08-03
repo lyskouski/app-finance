@@ -21,8 +21,7 @@ void main() {
 
     setUp(() {
       final exchange = WrapperMockExchange();
-      exchange.mockReform =
-          (double? v, Currency? from, Currency? to) => v ?? 0.0;
+      exchange.mockReform = (double? v, Currency? from, Currency? to) => v ?? 0.0;
       object = TotalRecalculation(
         exchange: exchange,
       );
@@ -40,41 +39,11 @@ void main() {
       });
 
       final testCases = [
-        (
-          initTotal: 0.0,
-          total: 0.0,
-          initial: [0.0, 0.0, 0.0],
-          progress: [0.0, 0.0, 0.0],
-          result: [0.0, 0.0, 0.0]
-        ),
-        (
-          initTotal: 0.0,
-          total: 200.0,
-          initial: [0.0, 0.0, 0.0],
-          progress: [0.0, 0.0, 0.0],
-          result: [1.0, 1.0, 1.0]
-        ),
-        (
-          initTotal: 0.0,
-          total: 30.0,
-          initial: [0.0, 0.0, 0.0],
-          progress: [0.0, 0.0, 0.0],
-          result: [0.4, 0.2, 0.1]
-        ),
-        (
-          initTotal: 0.0,
-          total: 75.0,
-          initial: [0.0, 0.0, 0.0],
-          progress: [0.0, 0.0, 0.0],
-          result: [1.0, 0.5, 0.25]
-        ),
-        (
-          initTotal: 0.0,
-          total: 100.0,
-          initial: [0.0, 0.0, 0.0],
-          progress: [0.0, 0.0, 0.0],
-          result: [1.0, 0.75, 0.375]
-        ),
+        (initTotal: 0.0, total: 0.0, initial: [0.0, 0.0, 0.0], progress: [0.0, 0.0, 0.0], result: [0.0, 0.0, 0.0]),
+        (initTotal: 0.0, total: 200.0, initial: [0.0, 0.0, 0.0], progress: [0.0, 0.0, 0.0], result: [1.0, 1.0, 1.0]),
+        (initTotal: 0.0, total: 30.0, initial: [0.0, 0.0, 0.0], progress: [0.0, 0.0, 0.0], result: [0.4, 0.2, 0.1]),
+        (initTotal: 0.0, total: 75.0, initial: [0.0, 0.0, 0.0], progress: [0.0, 0.0, 0.0], result: [1.0, 0.5, 0.25]),
+        (initTotal: 0.0, total: 100.0, initial: [0.0, 0.0, 0.0], progress: [0.0, 0.0, 0.0], result: [1.0, 0.75, 0.375]),
         (
           initTotal: 200.0,
           total: 100.0,

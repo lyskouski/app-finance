@@ -35,8 +35,7 @@ class SummaryAppData {
       _hash.remove(value);
     }
     DateTime now = DateTime.now();
-    double key =
-        (id ?? now.millisecondsSinceEpoch).toDouble() + Random().nextDouble();
+    double key = (id ?? now.millisecondsSinceEpoch).toDouble() + Random().nextDouble();
     _scope[key] = value;
     _hash[value] = key;
     if (key >= DateTime(now.year, now.month).millisecondsSinceEpoch) {

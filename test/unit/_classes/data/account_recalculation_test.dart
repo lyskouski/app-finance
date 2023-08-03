@@ -22,8 +22,7 @@ void main() {
 
     setUp(() {
       final exchange = WrapperMockExchange();
-      exchange.mockReform =
-          (double? v, Currency? from, Currency? to) => v ?? 0.0;
+      exchange.mockReform = (double? v, Currency? from, Currency? to) => v ?? 0.0;
       final accountMock = AccountAppData(
         uuid: '1',
         title: 'test',
@@ -37,26 +36,10 @@ void main() {
 
     group('getDelta', () {
       final testCases = [
-        (
-          initial: (hidden: false, details: 5.0),
-          change: (hidden: false, details: 1.0),
-          result: -4.0
-        ),
-        (
-          initial: (hidden: false, details: 1.0),
-          change: (hidden: false, details: 5.0),
-          result: 4.0
-        ),
-        (
-          initial: (hidden: true, details: 2.0),
-          change: (hidden: false, details: 3.0),
-          result: 3.0
-        ),
-        (
-          initial: (hidden: false, details: 2.0),
-          change: (hidden: true, details: 3.0),
-          result: -2.0
-        ),
+        (initial: (hidden: false, details: 5.0), change: (hidden: false, details: 1.0), result: -4.0),
+        (initial: (hidden: false, details: 1.0), change: (hidden: false, details: 5.0), result: 4.0),
+        (initial: (hidden: true, details: 2.0), change: (hidden: false, details: 3.0), result: 3.0),
+        (initial: (hidden: false, details: 2.0), change: (hidden: true, details: 3.0), result: -2.0),
       ];
 
       for (var v in testCases) {

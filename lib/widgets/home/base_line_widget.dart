@@ -55,8 +55,7 @@ class BaseLineWidget extends StatelessWidget {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
-                    BarVerticalSingle(
-                        value: progress, height: 24, color: color),
+                    BarVerticalSingle(value: progress, height: 24, color: color),
                     Container(
                       constraints: BoxConstraints(
                         maxWidth: offset * 0.6,
@@ -88,8 +87,7 @@ class BaseLineWidget extends StatelessWidget {
                   ),
                   child: Text(
                     details,
-                    style: textTheme.numberMedium
-                        .copyWith(color: textTheme.headlineSmall?.color),
+                    style: textTheme.numberMedium.copyWith(color: textTheme.headlineSmall?.color),
                     overflow: TextOverflow.ellipsis,
                   ),
                 ),

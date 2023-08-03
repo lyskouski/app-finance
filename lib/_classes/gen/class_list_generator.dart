@@ -26,8 +26,7 @@ class ClassListGenerator extends Generator {
     final classes = StringBuffer();
     for (final annotation in annotations) {
       final note = annotation.getField('folders');
-      final parts =
-          node.source?.uri.toString().split(RegExp(r'[\\/]', unicode: true));
+      final parts = node.source?.uri.toString().split(RegExp(r'[\\/]', unicode: true));
       final dir = parts?.sublist(1, parts.length - 1).join('/');
       if (note!.isNull || dir!.isEmpty) {
         continue;
@@ -38,10 +37,7 @@ class ClassListGenerator extends Generator {
             .where((entity) => entity is File && entity.path.endsWith('.dart'))
             .cast<File>();
         for (final file in scope) {
-          final path = file.path
-              .toString()
-              .replaceAll('\\', '/')
-              .replaceAll('$dir/', '');
+          final path = file.path.toString().replaceAll('\\', '/').replaceAll('$dir/', '');
           imports.writeln("import '$path';");
           String content = await file.readAsString();
           final regex = RegExp(r'class\s+(\w+)');
@@ -59,8 +55,7 @@ class ClassListGenerator extends Generator {
   Future<String> generate(LibraryReader library, BuildStep buildStep) async {
     final result = StringBuffer();
     for (final element in library.allElements) {
-      final annotations = const TypeChecker.fromRuntime(GenerateListOfClasses)
-          .annotationsOf(element);
+      final annotations = const TypeChecker.fromRuntime(GenerateListOfClasses).annotationsOf(element);
       if (annotations.isNotEmpty) {
         result.writeln(await build(element, annotations));
       }

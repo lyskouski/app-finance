@@ -23,8 +23,7 @@ class FileReader {
     return await getFromString(file.readAsStringSync(), reporter);
   }
 
-  Future<FeatureFile> getFromString(String content,
-      [ProgressReporter? reporter]) async {
+  Future<FeatureFile> getFromString(String content, [ProgressReporter? reporter]) async {
     final parser = GherkinParser();
     final featureFile = FeatureFile(RunnableDebugInformation.EMPTY());
     final parserResult = await parser.parseFeatureFile(

@@ -37,14 +37,11 @@ test() {
   TaskArgs args = context.invocation.arguments;
   ProcessResult test = Process.runSync(
       'flutter',
-      [
-        'test',
-        args.getFlag('coverage') ? '--coverage' : '',
-        args.getOption('path') ?? ''
-      ].where((e) => e != '').toList(),
+      ['test', args.getFlag('coverage') ? '--coverage' : '', args.getOption('path') ?? '']
+          .where((e) => e != '')
+          .toList(),
       runInShell: true);
-  String testResult =
-      "\n${test.stdout}".replaceAll(RegExp(r'(?<=:\s).*\.dart: '), '');
+  String testResult = "\n${test.stdout}".replaceAll(RegExp(r'(?<=:\s).*\.dart: '), '');
   if (test.exitCode > 0) {
     fail(testResult);
   }
@@ -64,8 +61,7 @@ fullCoverage() {
     content += "import 'package:app_finance$file';\n";
   }
   content += "void main() {}\n";
-  File(path.join(Directory.current.path, 'test/_coverage.dart'))
-      .writeAsStringSync(content);
+  File(path.join(Directory.current.path, 'test/_coverage.dart')).writeAsStringSync(content);
 }
 
 @Task('Add Coverage Badge to README.md file')
@@ -119,9 +115,7 @@ pubspecUpdate() {
 
   final currDir = Directory('./');
   final file = File(path.join(currDir.absolute.path, 'pubspec.yaml'));
-  final content = file
-      .readAsStringSync()
-      .replaceFirst('version: 1.0.0+1', 'version: $build+$number');
+  final content = file.readAsStringSync().replaceFirst('version: 1.0.0+1', 'version: $build+$number');
 
   file.writeAsStringSync(content);
 }

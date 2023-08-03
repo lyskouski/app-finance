@@ -21,8 +21,7 @@ class BudgetTab extends BudgetAddPage {
   BudgetTabState createState() => BudgetTabState();
 }
 
-class BudgetTabState extends BudgetAddPageState<BudgetTab>
-    with SharedPreferencesMixin {
+class BudgetTabState extends BudgetAddPageState<BudgetTab> with SharedPreferencesMixin {
   @override
   void triggerActionButton(BuildContext context) {
     setState(() {
@@ -30,16 +29,14 @@ class BudgetTabState extends BudgetAddPageState<BudgetTab>
         return;
       }
       updateStorage();
-      setPreference(
-          prefBudget, super.state.getList(AppDataType.budgets).first?.uuid);
+      setPreference(prefBudget, super.state.getList(AppDataType.budgets).first?.uuid);
       (widget as BudgetTab).setState();
     });
   }
 
   @override
   Widget build(BuildContext context) {
-    double indent =
-        ThemeHelper(windowType: getWindowType(context)).getIndent() * 2;
+    double indent = ThemeHelper(windowType: getWindowType(context)).getIndent() * 2;
     return Consumer<AppData>(builder: (context, appState, _) {
       state = appState;
       return Padding(

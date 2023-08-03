@@ -27,8 +27,7 @@ class IconSelectorState extends State<IconSelector> {
 
   Future<void> onTap(context) async {
     setState(() => isOpened = true);
-    IconData? icon = await FlutterIconPicker.showIconPicker(context,
-        iconPackModes: [IconPack.material]);
+    IconData? icon = await FlutterIconPicker.showIconPicker(context, iconPackModes: [IconPack.material]);
     widget.setState(icon);
     setState(() => isOpened = false);
     FocusController.resetFocus();
@@ -54,8 +53,7 @@ class IconSelectorState extends State<IconSelector> {
       decoration: InputDecoration(
         filled: true,
         border: InputBorder.none,
-        fillColor:
-            Theme.of(context).colorScheme.inversePrimary.withOpacity(0.3),
+        fillColor: Theme.of(context).colorScheme.inversePrimary.withOpacity(0.3),
         prefixIcon: Icon(widget.value),
         suffixIcon: GestureDetector(
           child: const Icon(Icons.arrow_drop_down),

@@ -54,15 +54,9 @@ class BudgetAppData extends AbstractAppData {
       title: json['title'],
       uuid: json['uuid'],
       progress: json['progress'],
-      color: json['color'] != null
-          ? MaterialColor(json['color'], const <int, Color>{})
-          : null,
-      icon: json['icon'] != null
-          ? FormatterMixin.getIconFromString(json['icon'])
-          : null,
-      currency: json['currency'] != null
-          ? CurrencyService().findByCode(json['currency'])
-          : null,
+      color: json['color'] != null ? MaterialColor(json['color'], const <int, Color>{}) : null,
+      icon: json['icon'] != null ? FormatterMixin.getIconFromString(json['icon']) : null,
+      currency: json['currency'] != null ? CurrencyService().findByCode(json['currency']) : null,
       updatedAt: DateTime.parse(json['updatedAt']),
       createdAt: DateTime.parse(json['createdAt']),
       amountLimit: json['amountLimit'],

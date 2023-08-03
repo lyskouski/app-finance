@@ -24,8 +24,7 @@ class GherkinGenericGenerator extends Generator {
     final scope = StringBuffer();
     for (final annotation in annotations) {
       final note = annotation.getField('folders');
-      final parts =
-          node.source?.uri.toString().split(RegExp(r'[\\/]', unicode: true));
+      final parts = node.source?.uri.toString().split(RegExp(r'[\\/]', unicode: true));
       final dir = parts?.sublist(1, parts.length - 1).join('/');
       if (note!.isNull || dir!.isEmpty) {
         continue;
@@ -38,8 +37,7 @@ class GherkinGenericGenerator extends Generator {
       for (final name in note.toListValue()!) {
         Iterable<File> files = Directory('$dir/${name.toStringValue()}')
             .listSync(recursive: true)
-            .where(
-                (entity) => entity is File && entity.path.endsWith('.resource'))
+            .where((entity) => entity is File && entity.path.endsWith('.resource'))
             .cast<File>();
         for (final file in files) {
           String content = await file.readAsString();
@@ -48,12 +46,10 @@ class GherkinGenericGenerator extends Generator {
           final scenarioNames = matches.map((m) => m.group(0)).toList();
           final scenarios = content.split(pattern).toList();
           scenarioNames.asMap().forEach((index, scenario) {
-            final name =
-                scenarios[index + 1].split(RegExp('(\n|\r)')).first.trim();
+            final name = scenarios[index + 1].split(RegExp('(\n|\r)')).first.trim();
             scope.writeln('class ${name.replaceAll(' ', '')}$template'
                 .replaceAll('%step%', name)
-                .replaceAll('%feature%',
-                    '${scenarios[0]}\n$scenario${scenarios[index + 1]}'));
+                .replaceAll('%feature%', '${scenarios[0]}\n$scenario${scenarios[index + 1]}'));
           });
         }
       }
@@ -65,9 +61,7 @@ class GherkinGenericGenerator extends Generator {
   Future<String> generate(LibraryReader library, BuildStep buildStep) async {
     final result = StringBuffer();
     for (final element in library.allElements) {
-      final annotations =
-          const TypeChecker.fromRuntime(GenerateGherkinResources)
-              .annotationsOf(element);
+      final annotations = const TypeChecker.fromRuntime(GenerateGherkinResources).annotationsOf(element);
       if (annotations.isNotEmpty) {
         result.writeln(await build(element, annotations));
       }

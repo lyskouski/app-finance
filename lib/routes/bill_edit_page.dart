@@ -20,8 +20,7 @@ class BillEditPage extends AbstractPage {
   BillEditPageState createState() => BillEditPageState();
 }
 
-class BillEditPageState<T extends BillEditPage>
-    extends AbstractPageState<BillEditPage> {
+class BillEditPageState<T extends BillEditPage> extends AbstractPageState<BillEditPage> {
   @override
   String getTitle(context) {
     return AppLocalizations.of(context)!.editBillHeader;

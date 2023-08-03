@@ -8,8 +8,7 @@ import 'package:app_finance/widgets/_forms/list_account_selector.dart';
 import 'package:flutter/material.dart';
 
 class ListBudgetSelectorItem extends ListAccountSelectorItem<BudgetAppData> {
-  ListBudgetSelectorItem({required String id, required BudgetAppData item})
-      : super(id: id, item: item);
+  ListBudgetSelectorItem({required String id, required BudgetAppData item}) : super(id: id, item: item);
 }
 
 class ListBudgetSelector extends ListAccountSelector<ListBudgetSelectorItem> {

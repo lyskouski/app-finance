@@ -80,8 +80,7 @@ class CurrencySelectorState extends State<CurrencySelector> {
       decoration: InputDecoration(
         filled: true,
         border: InputBorder.none,
-        fillColor:
-            Theme.of(context).colorScheme.inversePrimary.withOpacity(0.0),
+        fillColor: Theme.of(context).colorScheme.inversePrimary.withOpacity(0.0),
         suffixIcon: const Icon(Icons.arrow_drop_down),
       ),
     );

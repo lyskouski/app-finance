@@ -74,8 +74,7 @@ class IncomeTabState extends State<IncomeTab> with SharedPreferencesMixin {
     String uuid = account ?? '';
     setPreference(prefAccount, uuid);
     AccountAppData value = state.getByUuid(uuid);
-    value.details +=
-        Exchange(store: state).reform(amount, currency, value.currency);
+    value.details += Exchange(store: state).reform(amount, currency, value.currency);
     state.update(AppDataType.accounts, uuid, value);
   }
 
@@ -116,8 +115,7 @@ class IncomeTabState extends State<IncomeTab> with SharedPreferencesMixin {
   Widget build(BuildContext context) {
     // FocusController.dispose();
     final TextTheme textTheme = Theme.of(context).textTheme;
-    double indent =
-        ThemeHelper(windowType: getWindowType(context)).getIndent() * 2;
+    double indent = ThemeHelper(windowType: getWindowType(context)).getIndent() * 2;
     double offset = MediaQuery.of(context).size.width - indent * 3;
     int focusOrder = FocusController.DEFAULT;
 
@@ -146,8 +144,7 @@ class IncomeTabState extends State<IncomeTab> with SharedPreferencesMixin {
                       account = value;
                       currency ??= state.getByUuid(value).currency;
                     }),
-                    style: textTheme.numberMedium
-                        .copyWith(color: textTheme.headlineSmall?.color),
+                    style: textTheme.numberMedium.copyWith(color: textTheme.headlineSmall?.color),
                     indent: indent,
                     width: offset,
                     focusOrder: focusOrder += 1,
@@ -164,16 +161,12 @@ class IncomeTabState extends State<IncomeTab> with SharedPreferencesMixin {
                           style: textTheme.bodyLarge,
                         ),
                         Container(
-                          color: Theme.of(context)
-                              .colorScheme
-                              .inversePrimary
-                              .withOpacity(0.3),
+                          color: Theme.of(context).colorScheme.inversePrimary.withOpacity(0.3),
                           width: double.infinity,
                           child: CurrencySelector(
                             value: currency,
                             setView: (Currency currency) => currency.code,
-                            setState: (value) =>
-                                setState(() => currency = value),
+                            setState: (value) => setState(() => currency = value),
                             focusOrder: focusOrder += 1,
                           ),
                         ),
@@ -185,16 +178,13 @@ class IncomeTabState extends State<IncomeTab> with SharedPreferencesMixin {
                         ),
                         SimpleInput(
                           value: amount != null ? amount.toString() : '',
-                          type: const TextInputType.numberWithOptions(
-                              decimal: true),
+                          type: const TextInputType.numberWithOptions(decimal: true),
                           tooltip: AppLocalizations.of(context)!.billSetTooltip,
-                          style: textTheme.numberMedium
-                              .copyWith(color: textTheme.headlineSmall?.color),
+                          style: textTheme.numberMedium.copyWith(color: textTheme.headlineSmall?.color),
                           formatter: [
                             SimpleInput.filterDouble,
                           ],
-                          setState: (value) =>
-                              setState(() => amount = double.tryParse(value)),
+                          setState: (value) => setState(() => amount = double.tryParse(value)),
                           focusOrder: focusOrder += 1,
                         ),
                       ],
@@ -209,9 +199,7 @@ class IncomeTabState extends State<IncomeTab> with SharedPreferencesMixin {
                     targetAmount: amount,
                     source: [
                       null,
-                      account != null
-                          ? state.getByUuid(account!).currency
-                          : null,
+                      account != null ? state.getByUuid(account!).currency : null,
                     ].cast<Currency?>(),
                   ),
                 ],

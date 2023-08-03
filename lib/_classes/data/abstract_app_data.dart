@@ -39,10 +39,7 @@ abstract class AbstractAppData with FormatterMixin {
     details = 0.0,
     this.progress = 1.0,
     this.hidden = false,
-  })  : _createdAt = createdAt ??
-            (createdAtFormatted != null
-                ? DateTime.parse(createdAtFormatted)
-                : DateTime.now()),
+  })  : _createdAt = createdAt ?? (createdAtFormatted != null ? DateTime.parse(createdAtFormatted) : DateTime.now()),
         _updatedAt = updatedAt ?? DateTime.now(),
         _amount = details;
 

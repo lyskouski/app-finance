@@ -18,8 +18,7 @@ class BillAddPage extends AbstractPage {
   BillAddPageState createState() => BillAddPageState();
 }
 
-class BillAddPageState<T extends BillAddPage>
-    extends AbstractPageState<BillAddPage> {
+class BillAddPageState<T extends BillAddPage> extends AbstractPageState<BillAddPage> {
   @override
   String getTitle(context) {
     return AppLocalizations.of(context)!.createBillHeader;

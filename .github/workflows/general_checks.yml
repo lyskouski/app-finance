@@ -24,7 +24,7 @@ jobs:
         run: flutter pub get
 
       - name: Verify Formatting
-        run: dart format --output=none --set-exit-if-changed .
+        run: dart format -l 120 --output=none --set-exit-if-changed .
 
       - name: Check Localizations Ordering
         run: dart run grinder sort-translations

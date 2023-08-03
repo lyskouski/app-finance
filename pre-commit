@@ -15,7 +15,7 @@ if [ $status_fix -ne 0 ]; then
   dart fix --apply
 fi
 
-dart format --set-exit-if-changed .
+dart format -l 120 --set-exit-if-changed .
 status_format=$?
 
 dart run grinder sort-translations

@@ -16,8 +16,7 @@ class OnDefinedPage extends Given1<String> with SharedPreferencesMixin {
 
   @override
   Future<void> executeStep(String route) async {
-    final ScaffoldState scafState =
-        FileRunner.tester.firstState(find.byType(Scaffold));
+    final ScaffoldState scafState = FileRunner.tester.firstState(find.byType(Scaffold));
     scafState.openDrawer();
     await FileRunner.tester.pumpAndSettle();
     final header = find.text(route);

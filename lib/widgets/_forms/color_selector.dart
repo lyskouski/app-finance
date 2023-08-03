@@ -105,8 +105,7 @@ class ColorSelectorState extends State<ColorSelector> {
       decoration: InputDecoration(
         filled: true,
         border: InputBorder.none,
-        fillColor: widget.value ??
-            Theme.of(context).colorScheme.inversePrimary.withOpacity(0.3),
+        fillColor: widget.value ?? Theme.of(context).colorScheme.inversePrimary.withOpacity(0.3),
         suffixIcon: GestureDetector(
           child: const Icon(Icons.color_lens),
         ),

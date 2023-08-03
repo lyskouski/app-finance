@@ -112,10 +112,7 @@ void main() {
           getStateDelta: 10.0,
           getPrevDelta: 0.0,
           initial: (createdAtFormatted: '2023-07-17 00:00:00'),
-          initialAccount: (
-            createdAtFormatted: '2023-07-10 00:00:00',
-            uuid: '1'
-          ),
+          initialAccount: (createdAtFormatted: '2023-07-10 00:00:00', uuid: '1'),
           change: (createdAtFormatted: '2023-07-17 00:00:00'),
           changeAccount: (createdAtFormatted: '2023-07-10 00:00:00', uuid: '1'),
           result: (initialAccountDetails: 0.0, changeAccountDetails: -10.0),
@@ -124,10 +121,7 @@ void main() {
           getStateDelta: 20.0,
           getPrevDelta: 10.0,
           initial: (createdAtFormatted: '2023-07-17 00:00:00'),
-          initialAccount: (
-            createdAtFormatted: '2023-07-10 00:00:00',
-            uuid: '1'
-          ),
+          initialAccount: (createdAtFormatted: '2023-07-10 00:00:00', uuid: '1'),
           change: (createdAtFormatted: '2023-07-17 00:00:00'),
           changeAccount: (createdAtFormatted: '2023-07-10 00:00:00', uuid: '2'),
           result: (initialAccountDetails: 10.0, changeAccountDetails: -20.0),
@@ -136,10 +130,7 @@ void main() {
           getStateDelta: 20.0,
           getPrevDelta: 10.0,
           initial: (createdAtFormatted: '2023-07-17 00:00:00'),
-          initialAccount: (
-            createdAtFormatted: '2023-07-20 00:00:00',
-            uuid: '1'
-          ),
+          initialAccount: (createdAtFormatted: '2023-07-20 00:00:00', uuid: '1'),
           change: (createdAtFormatted: '2023-07-17 00:00:00'),
           changeAccount: (createdAtFormatted: '2023-07-20 00:00:00', uuid: '2'),
           result: (initialAccountDetails: 0.0, changeAccountDetails: 0.0),
@@ -148,10 +139,7 @@ void main() {
           getStateDelta: 20.0,
           getPrevDelta: 10.0,
           initial: (createdAtFormatted: '2023-07-17 00:00:00'),
-          initialAccount: (
-            createdAtFormatted: '2023-07-10 00:00:00',
-            uuid: '1'
-          ),
+          initialAccount: (createdAtFormatted: '2023-07-10 00:00:00', uuid: '1'),
           change: (createdAtFormatted: '2023-07-17 00:00:00'),
           changeAccount: (createdAtFormatted: '2023-07-20 00:00:00', uuid: '2'),
           result: (initialAccountDetails: 10.0, changeAccountDetails: 0.0),
@@ -209,14 +197,12 @@ void main() {
           mock.exchange = object.exchange;
           mock.mockGetStateDelta = (a, b) => v.getStateDelta;
           mock.mockGetPrevDelta = () => v.getPrevDelta;
-          final initial =
-              BudgetAppData(title: '', amountLimit: v.initialBudget.amountLimit)
-                ..uuid = v.initialBudget.uuid
-                ..progress = v.initialBudget.progress;
-          final change =
-              BudgetAppData(title: '', amountLimit: v.changeBudget.amountLimit)
-                ..uuid = v.changeBudget.uuid
-                ..progress = v.changeBudget.progress;
+          final initial = BudgetAppData(title: '', amountLimit: v.initialBudget.amountLimit)
+            ..uuid = v.initialBudget.uuid
+            ..progress = v.initialBudget.progress;
+          final change = BudgetAppData(title: '', amountLimit: v.changeBudget.amountLimit)
+            ..uuid = v.changeBudget.uuid
+            ..progress = v.changeBudget.progress;
           mock.updateBudget(change, initial);
           expect(initial.progress, v.result.initialBudgetProgress);
           expect(change.progress, v.result.changeBudgetProgress);

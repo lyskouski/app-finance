@@ -16,8 +16,7 @@ class SimpleInput extends StatefulWidget {
   final List<TextInputFormatter>? formatter;
   final int focusOrder;
 
-  static FilteringTextInputFormatter filterDouble =
-      FilteringTextInputFormatter.allow(RegExp(r'^\d+\.?\d{0,4}'));
+  static FilteringTextInputFormatter filterDouble = FilteringTextInputFormatter.allow(RegExp(r'^\d+\.?\d{0,4}'));
 
   const SimpleInput({
     super.key,
@@ -75,8 +74,7 @@ class SimpleInputState extends State<SimpleInput> {
     }
     if (widget.value == '' && focus.hasFocus && !isFocused) {
       Future.delayed(Duration.zero, () => setState(() => isFocused = true));
-      Future.delayed(
-          Duration.zero, () => FocusController.scrollToFocusedElement(focus));
+      Future.delayed(Duration.zero, () => FocusController.scrollToFocusedElement(focus));
     }
     return TextFormField(
       controller: _controller,
@@ -92,8 +90,7 @@ class SimpleInputState extends State<SimpleInput> {
       decoration: InputDecoration(
         filled: true,
         border: InputBorder.none,
-        fillColor:
-            Theme.of(context).colorScheme.inversePrimary.withOpacity(0.3),
+        fillColor: Theme.of(context).colorScheme.inversePrimary.withOpacity(0.3),
         hintText: widget.tooltip,
         hintStyle: widget.style,
       ),

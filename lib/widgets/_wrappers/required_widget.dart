@@ -35,8 +35,7 @@ class RequiredWidget extends StatelessWidget {
           showError
               ? Icon(
                   Icons.error,
-                  semanticLabel:
-                      '$title: ${AppLocalizations.of(context)!.isRequired}',
+                  semanticLabel: '$title: ${AppLocalizations.of(context)!.isRequired}',
                   color: Theme.of(context).colorScheme.error,
                 )
               : const SizedBox(),

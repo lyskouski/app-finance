@@ -7,8 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 extension CustomTextTheme on TextTheme {
-  static double letterSpacingOrNone(double letterSpacing) =>
-      kIsWeb ? 0.0 : letterSpacing;
+  static double letterSpacingOrNone(double letterSpacing) => kIsWeb ? 0.0 : letterSpacing;
 
   static TextTheme? textTheme(ThemeData baseTheme) {
     return baseTheme.textTheme.copyWith(

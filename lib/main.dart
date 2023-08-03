@@ -47,14 +47,12 @@ void main() async {
     );
     FirebaseAnalytics.instance.logAppOpen();
     PlatformDispatcher.instance.onError = (error, stack) {
-      FirebaseAnalytics.instance.logSelectContent(
-          contentType: error.toString(), itemId: 'platform-error');
+      FirebaseAnalytics.instance.logSelectContent(contentType: error.toString(), itemId: 'platform-error');
       return true;
     };
     FlutterError.onError = (details) {
       FlutterError.presentError(details);
-      FirebaseAnalytics.instance.logSelectContent(
-          contentType: details.toString(), itemId: 'flutter-error');
+      FirebaseAnalytics.instance.logSelectContent(contentType: details.toString(), itemId: 'flutter-error');
     };
   }
   SharedPreferencesMixin.pref = await SharedPreferences.getInstance();
@@ -88,8 +86,7 @@ class MyAppState extends State<MyApp> {
     final regex = RegExp(r'\/uuid:([\w-]+)');
     final match = regex.firstMatch(route);
     if (widget.platform != null) {
-      FirebaseAnalytics.instance.logSelectContent(
-          contentType: route, itemId: match != null ? 'dynamic' : 'static');
+      FirebaseAnalytics.instance.logSelectContent(contentType: route, itemId: match != null ? 'dynamic' : 'static');
     }
     if (match != null) {
       final String uuid = match.group(1) ?? '';

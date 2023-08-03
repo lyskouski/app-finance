@@ -6,12 +6,8 @@ import 'dart:io';
 import 'package:path/path.dart' as path;
 
 int calculateLineCoverage(File lcovReport) {
-  ProcessResult result = Process.runSync('dart', [
-    'run',
-    'test_cov_console',
-    '--file="${lcovReport.absolute.path}"',
-    '--total'
-  ]);
+  ProcessResult result =
+      Process.runSync('dart', ['run', 'test_cov_console', '--file="${lcovReport.absolute.path}"', '--total']);
   List<String> lines = const LineSplitter().convert(result.stdout);
   String coverage = lines.isNotEmpty ? lines.last : '';
   return double.parse(coverage.trim()).round();
@@ -99,8 +95,7 @@ class _Color {
   _Color(this.r, this.g, this.b);
 
   @override
-  String toString() =>
-      '#${((1 << 24) + (r << 16) + (g << 8) + b).toRadixString(16).substring(1)}';
+  String toString() => '#${((1 << 24) + (r << 16) + (g << 8) + b).toRadixString(16).substring(1)}';
 }
 
 const _kBadgeTemplate = '''

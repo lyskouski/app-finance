@@ -57,9 +57,7 @@ class BillAppData extends AbstractAppData {
       category: json['category'],
       title: json['title'],
       details: json['details'],
-      currency: json['currency'] != null
-          ? CurrencyService().findByCode(json['currency'])
-          : null,
+      currency: json['currency'] != null ? CurrencyService().findByCode(json['currency']) : null,
       updatedAt: DateTime.parse(json['updatedAt']),
       createdAt: DateTime.parse(json['createdAt']),
       hidden: json['hidden'],
@@ -84,8 +82,7 @@ class BillAppData extends AbstractAppData {
     final DateFormat formatterDate = DateFormat.MMMMd(locale);
     AccountAppData? type = getState()?.getByUuid(account);
     String from = AppLocalizations.of(getContext()!)!.from;
-    return formatterDate.format(super.createdAt) +
-        (type?.description != null ? ' ($from "${type?.description}")' : '');
+    return formatterDate.format(super.createdAt) + (type?.description != null ? ' ($from "${type?.description}")' : '');
   }
 
   @override

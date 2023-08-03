@@ -26,8 +26,7 @@ class SettingTab extends AbstractTab {
   SettingTabState createState() => SettingTabState();
 }
 
-class SettingTabState<T extends SettingTab> extends AbstractTabState<T>
-    with SharedPreferencesMixin {
+class SettingTabState<T extends SettingTab> extends AbstractTabState<T> with SharedPreferencesMixin {
   late AppTheme theme;
   Currency? currency;
   bool isEncrypted = false;
@@ -77,8 +76,7 @@ class SettingTabState<T extends SettingTab> extends AbstractTabState<T>
   Widget buildContent(BuildContext context) {
     theme = Provider.of<AppTheme>(context, listen: false);
     final TextTheme textTheme = Theme.of(context).textTheme;
-    double indent =
-        ThemeHelper(windowType: getWindowType(context)).getIndent() * 2;
+    double indent = ThemeHelper(windowType: getWindowType(context)).getIndent() * 2;
     double offset = MediaQuery.of(context).size.width - indent * 2;
     if (currency == null) {
       Future.delayed(Duration.zero, () => initCurrencyFromLocale(context));
@@ -120,9 +118,7 @@ class SettingTabState<T extends SettingTab> extends AbstractTabState<T>
               ),
             ],
             [
-              hasEncrypted
-                  ? Text(AppLocalizations.of(context)!.hasEncrypted)
-                  : const SizedBox(),
+              hasEncrypted ? Text(AppLocalizations.of(context)!.hasEncrypted) : const SizedBox(),
             ],
           ],
         ),
@@ -134,16 +130,12 @@ class SettingTabState<T extends SettingTab> extends AbstractTabState<T>
         ListSelector(
           value: brightness,
           options: [
-            ListSelectorItem(
-                id: '0', name: AppLocalizations.of(context)!.systemMode),
-            ListSelectorItem(
-                id: '1', name: AppLocalizations.of(context)!.lightMode),
-            ListSelectorItem(
-                id: '2', name: AppLocalizations.of(context)!.darkMode),
+            ListSelectorItem(id: '0', name: AppLocalizations.of(context)!.systemMode),
+            ListSelectorItem(id: '1', name: AppLocalizations.of(context)!.lightMode),
+            ListSelectorItem(id: '2', name: AppLocalizations.of(context)!.darkMode),
           ],
           setState: saveTheme,
-          style: textTheme.numberMedium
-              .copyWith(color: textTheme.headlineSmall?.color),
+          style: textTheme.numberMedium.copyWith(color: textTheme.headlineSmall?.color),
           indent: indent,
         ),
       ],

@@ -33,8 +33,7 @@ class SubscriptionPageState extends AbstractPageState<SubscriptionPage> {
         children: [
           Text(AppLocalizations.of(context)!.subscription),
           const Divider(),
-          defaultTargetPlatform == TargetPlatform.iOS ||
-                  defaultTargetPlatform == TargetPlatform.macOS
+          defaultTargetPlatform == TargetPlatform.iOS || defaultTargetPlatform == TargetPlatform.macOS
               ? const SizedBox()
               : const OtherWidget(),
         ],

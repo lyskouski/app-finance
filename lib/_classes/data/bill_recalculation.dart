@@ -24,11 +24,8 @@ class BillRecalculation extends AbstractRecalculation {
   double getStateDelta(dynamic prev, dynamic curr) {
     double delta = change.hidden ? 0.0 : change.details;
     if (initial != null && prev?.uuid == curr?.uuid) {
-      delta = change.hidden
-          ? -initial?.details
-          : (initial!.hidden
-              ? change.details
-              : change.details - initial?.details);
+      delta =
+          change.hidden ? -initial?.details : (initial!.hidden ? change.details : change.details - initial?.details);
     }
     return delta;
   }
@@ -37,43 +34,31 @@ class BillRecalculation extends AbstractRecalculation {
     return initial!.hidden ? 0.0 : initial?.details;
   }
 
-  BillRecalculation updateAccount(
-      AccountAppData accountChange, AccountAppData? accountInitial) {
+  BillRecalculation updateAccount(AccountAppData accountChange, AccountAppData? accountInitial) {
     if (accountInitial != null &&
         accountChange.uuid != accountInitial.uuid &&
         accountInitial.createdAt.isBefore(initial!.createdAt)) {
-      accountInitial.details += super
-          .exchange
-          .reform(getPrevDelta(), initial?.currency, accountInitial.currency);
+      accountInitial.details += super.exchange.reform(getPrevDelta(), initial?.currency, accountInitial.currency);
     }
     if (accountChange.createdAt.isBefore(change.createdAt)) {
-      accountChange.details -= super.exchange.reform(
-          getStateDelta(accountInitial, accountChange),
-          change.currency,
-          accountChange.currency);
+      accountChange.details -=
+          super.exchange.reform(getStateDelta(accountInitial, accountChange), change.currency, accountChange.currency);
     }
     return this;
   }
 
-  BillRecalculation updateBudget(
-      BudgetAppData budgetChange, BudgetAppData? budgetInitial) {
+  BillRecalculation updateBudget(BudgetAppData budgetChange, BudgetAppData? budgetInitial) {
     DateTime now = DateTime.now();
     if (DateTime(now.year, now.month).isAfter(change.createdAt)) {
       return this;
     }
     if (budgetInitial != null && budgetChange.uuid != budgetInitial.uuid) {
-      double prevDelta = super
-          .exchange
-          .reform(getPrevDelta(), initial?.currency, budgetInitial.currency);
-      budgetInitial.progress = getProgress(
-          budgetInitial.amountLimit, budgetInitial.progress, -prevDelta);
+      double prevDelta = super.exchange.reform(getPrevDelta(), initial?.currency, budgetInitial.currency);
+      budgetInitial.progress = getProgress(budgetInitial.amountLimit, budgetInitial.progress, -prevDelta);
     }
-    double delta = super.exchange.reform(
-        getStateDelta(budgetInitial, budgetChange),
-        change.currency,
-        budgetChange.currency);
-    budgetChange.progress =
-        getProgress(budgetChange.amountLimit, budgetChange.progress, delta);
+    double delta =
+        super.exchange.reform(getStateDelta(budgetInitial, budgetChange), change.currency, budgetChange.currency);
+    budgetChange.progress = getProgress(budgetChange.amountLimit, budgetChange.progress, delta);
     return this;
   }
 }

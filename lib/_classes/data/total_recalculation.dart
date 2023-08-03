@@ -22,11 +22,9 @@ class TotalRecalculation extends AbstractRecalculation {
     throw UnimplementedError();
   }
 
-  double updateTotalMap(
-      AppDataType type, String uuid, HashMap<String, dynamic> hashTable) {
+  double updateTotalMap(AppDataType type, String uuid, HashMap<String, dynamic> hashTable) {
     final item = hashTable[uuid];
-    double total =
-        exchange.reform(item.details, item.currency, Exchange.defaultCurrency);
+    double total = exchange.reform(item.details, item.currency, Exchange.defaultCurrency);
     if (type == AppDataType.goals) {
       total *= (1 - item.progress);
     }
@@ -34,13 +32,10 @@ class TotalRecalculation extends AbstractRecalculation {
   }
 
   List<String>? getSummaryList(AppDataType type, SummaryAppData? summary) {
-    return type == AppDataType.bills || type == AppDataType.budgets
-        ? summary?.listActual
-        : summary?.list;
+    return type == AppDataType.bills || type == AppDataType.budgets ? summary?.listActual : summary?.list;
   }
 
-  Future<void> updateTotal(AppDataType type, SummaryAppData? summary,
-      HashMap<String, dynamic> hashTable) async {
+  Future<void> updateTotal(AppDataType type, SummaryAppData? summary, HashMap<String, dynamic> hashTable) async {
     var list = getSummaryList(type, summary);
     summary?.total = (list == null || list.isEmpty
         ? 0.0
@@ -56,20 +51,16 @@ class TotalRecalculation extends AbstractRecalculation {
       delta /= goalList.length;
       goalList.forEach((dynamic goal) {
         index++;
-        double convDelta =
-            exchange.reform(delta, Exchange.defaultCurrency, goal.currency);
+        double convDelta = exchange.reform(delta, Exchange.defaultCurrency, goal.currency);
         double progress = getProgress(goal.details, goal.progress, convDelta);
         if (progress > 1.0) {
           if (index < goalList.length) {
-            delta += exchange.reform(goal.details * (progress - 1.0),
-                    goal.currency, Exchange.defaultCurrency) /
+            delta += exchange.reform(goal.details * (progress - 1.0), goal.currency, Exchange.defaultCurrency) /
                 (goalList.length - index);
           }
           progress = 1.0;
         }
-        if (progress < 1.0 &&
-            goal.progress == 1.0 &&
-            goal.initial + goal.details < total) {
+        if (progress < 1.0 && goal.progress == 1.0 && goal.initial + goal.details < total) {
           progress = 1.0;
           delta += delta / (goalList.length - index);
         }

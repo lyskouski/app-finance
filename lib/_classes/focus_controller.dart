@@ -61,8 +61,7 @@ class FocusController {
     bool isAttached = _controller?.hasClients ?? false;
     if (isAttached && focusedNode is RenderBox && firstNode is RenderBox) {
       _controller?.animateTo(
-        focusedNode.localToGlobal(Offset.zero).dy -
-            firstNode.localToGlobal(Offset.zero).dy,
+        focusedNode.localToGlobal(Offset.zero).dy - firstNode.localToGlobal(Offset.zero).dy,
         duration: const Duration(milliseconds: 300),
         curve: Curves.easeInOut,
       );
@@ -87,9 +86,7 @@ class FocusController {
   static bool isFocused([int? i, dynamic val]) {
     int idx = i ?? _idx;
     dynamic value = val ?? (_idx >= 0 ? values[idx] : null);
-    if ((value == null || value == '') &&
-        idx != DEFAULT &&
-        (focus == DEFAULT || focus == idx)) {
+    if ((value == null || value == '') && idx != DEFAULT && (focus == DEFAULT || focus == idx)) {
       focus = idx;
       requestFocus();
       return true;

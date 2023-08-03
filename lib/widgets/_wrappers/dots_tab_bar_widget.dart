@@ -30,12 +30,10 @@ class DotsTabBarWidget extends TabBar {
         );
 
   @override
-  get tabs =>
-      tabList.map((tab) => SizedBox(width: indent, height: indent)).toList();
+  get tabs => tabList.map((tab) => SizedBox(width: indent, height: indent)).toList();
 
   @override
-  get padding => EdgeInsets.symmetric(
-      horizontal: (width - (tabList.length - 1) * 2 * indent) / 2);
+  get padding => EdgeInsets.symmetric(horizontal: (width - (tabList.length - 1) * 2 * indent) / 2);
 
   @override
   get indicator => DotsIndicatorDecoration(

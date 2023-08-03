@@ -14,8 +14,7 @@ class ListAccountSelectorItem<T> {
   ListAccountSelectorItem({required this.id, required this.item});
 }
 
-class ListAccountSelector<T extends ListAccountSelectorItem>
-    extends StatefulWidget {
+class ListAccountSelector<T extends ListAccountSelectorItem> extends StatefulWidget {
   final AppData state;
   final Function setState;
   final TextStyle? style;
