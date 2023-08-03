@@ -17,8 +17,7 @@ class FileReporter extends ProgressReporter {
     String? color,
   ]) {
     if (supportsAnsiEscapes) {
-      _writeln(
-          '${color ?? StdoutReporter.RESET_COLOR}$message${StdoutReporter.RESET_COLOR}');
+      _writeln('${color ?? StdoutReporter.RESET_COLOR}$message${StdoutReporter.RESET_COLOR}');
     } else {
       _writeln(message);
     }
@@ -30,8 +29,7 @@ class FileReporter extends ProgressReporter {
     String? color,
   ]) {
     if (supportsAnsiEscapes) {
-      _write(
-          '${color ?? StdoutReporter.RESET_COLOR}$message${StdoutReporter.RESET_COLOR}');
+      _write('${color ?? StdoutReporter.RESET_COLOR}$message${StdoutReporter.RESET_COLOR}');
     } else {
       _writeln(message);
     }

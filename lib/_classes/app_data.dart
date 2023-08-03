@@ -92,8 +92,7 @@ class AppData extends ChangeNotifier {
     return getByUuid(value.uuid);
   }
 
-  void addLog(uuid, Currency? currency, dynamic initial, dynamic value,
-      [String? ref, DateTime? updatedAt]) {
+  void addLog(uuid, Currency? currency, dynamic initial, dynamic value, [String? ref, DateTime? updatedAt]) {
     if (_history[uuid] == null) {
       _history[uuid] = [];
     }
@@ -109,12 +108,10 @@ class AppData extends ChangeNotifier {
     }
   }
 
-  void update(AppDataType property, String uuid, dynamic value,
-      [bool createIfMissing = false]) {
+  void update(AppDataType property, String uuid, dynamic value, [bool createIfMissing = false]) {
     var initial = getByUuid(uuid, false);
     if (initial != null) {
-      addLog(uuid, initial.currency, initial.details, value.details, null,
-          value.updatedAt);
+      addLog(uuid, initial.currency, initial.details, value.details, null, value.updatedAt);
     }
     if (initial != null || createIfMissing) {
       _update(property, initial, value);
@@ -129,8 +126,7 @@ class AppData extends ChangeNotifier {
       await rec.updateTotal(type, _data[type], _hashTable);
     }
     if (scope.contains(AppDataType.accounts)) {
-      rec.updateGoals(getList(AppDataType.goals, false), accountTotal,
-          getTotal(AppDataType.accounts));
+      rec.updateGoals(getList(AppDataType.goals, false), accountTotal, getTotal(AppDataType.accounts));
     }
   }
 
@@ -176,8 +172,7 @@ class AppData extends ChangeNotifier {
         _data[AppDataType.budgets]?.add(initial.category);
       }
     }
-    final rec = BillRecalculation(change: change, initial: initial)
-      ..exchange = Exchange(store: this);
+    final rec = BillRecalculation(change: change, initial: initial)..exchange = Exchange(store: this);
     if (currAccount != null) {
       rec.updateAccount(currAccount, prevAccount);
       _data[AppDataType.accounts]?.add(change.account);
@@ -188,9 +183,7 @@ class AppData extends ChangeNotifier {
     }
     _set(AppDataType.bills, change);
     if (!isLoading) {
-      updateTotals(
-              [AppDataType.bills, AppDataType.accounts, AppDataType.budgets])
-          .then(_notify);
+      updateTotals([AppDataType.bills, AppDataType.accounts, AppDataType.budgets]).then(_notify);
     }
   }
 

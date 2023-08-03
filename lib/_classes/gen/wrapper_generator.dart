@@ -40,9 +40,7 @@ class WrapperGenerator extends Generator {
   String generate(LibraryReader library, BuildStep buildStep) {
     final result = StringBuffer();
     for (final element in library.allElements) {
-      final annotations =
-          const TypeChecker.fromRuntime(GenerateWithMethodSetters)
-              .annotationsOf(element);
+      final annotations = const TypeChecker.fromRuntime(GenerateWithMethodSetters).annotationsOf(element);
       if (annotations.isNotEmpty) {
         result.writeln(build(annotations));
       }

@@ -47,10 +47,8 @@ class BaseListLimitedWidget extends StatelessWidget {
       itemCount = limit! + 2;
       hasMore = true;
     }
-    final addButton = route == null
-        ? const SizedBox()
-        : buildButton(
-            context, '${route!}/add', AppLocalizations.of(context)!.btnAdd);
+    final addButton =
+        route == null ? const SizedBox() : buildButton(context, '${route!}/add', AppLocalizations.of(context)!.btnAdd);
 
     return ListView.builder(
         itemCount: itemCount,
@@ -66,10 +64,7 @@ class BaseListLimitedWidget extends StatelessWidget {
               maxWidth: offset,
               chunk: const [0.5, 0.5],
               children: [
-                [
-                  buildButton(context, route ?? AppRoute.homeRoute,
-                      AppLocalizations.of(context)!.btnMore)
-                ],
+                [buildButton(context, route ?? AppRoute.homeRoute, AppLocalizations.of(context)!.btnMore)],
                 [addButton]
               ],
             );

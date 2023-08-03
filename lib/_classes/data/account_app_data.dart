@@ -28,10 +28,7 @@ class AccountAppData extends AbstractAppData {
     DateTime? closedAt,
     String? closedAtFormatted,
     super.hidden,
-  }) : _closedAt = closedAt ??
-            (closedAtFormatted != null
-                ? DateTime.parse(closedAtFormatted)
-                : DateTime.now());
+  }) : _closedAt = closedAt ?? (closedAtFormatted != null ? DateTime.parse(closedAtFormatted) : DateTime.now());
 
   @override
   String getClassName() {
@@ -67,15 +64,9 @@ class AccountAppData extends AbstractAppData {
       details: json['details'],
       progress: json['progress'],
       description: json['description'],
-      color: json['color'] != null
-          ? MaterialColor(json['color'], const <int, Color>{})
-          : null,
-      icon: json['icon'] != null
-          ? FormatterMixin.getIconFromString(json['icon'])
-          : null,
-      currency: json['currency'] != null
-          ? CurrencyService().findByCode(json['currency'])
-          : null,
+      color: json['color'] != null ? MaterialColor(json['color'], const <int, Color>{}) : null,
+      icon: json['icon'] != null ? FormatterMixin.getIconFromString(json['icon']) : null,
+      currency: json['currency'] != null ? CurrencyService().findByCode(json['currency']) : null,
       createdAt: DateTime.parse(json['createdAt']),
       updatedAt: DateTime.parse(json['updatedAt']),
       closedAt: DateTime.parse(json['closedAt']),

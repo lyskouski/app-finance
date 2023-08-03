@@ -85,22 +85,19 @@ class AboutPageState extends AbstractPageState<AboutPage> {
             children: [
               [
                 ElevatedButton(
-                  onPressed: () => _launchURL(
-                      'https://github.com/lyskouski/app-finance/releases'),
+                  onPressed: () => _launchURL('https://github.com/lyskouski/app-finance/releases'),
                   child: Text(AppLocalizations.of(context)!.releases),
                 ),
               ],
               [
                 ElevatedButton(
-                  onPressed: () => _launchURL(
-                      'https://github.com/users/lyskouski/projects/2/views/1'),
+                  onPressed: () => _launchURL('https://github.com/users/lyskouski/projects/2/views/1'),
                   child: Text(AppLocalizations.of(context)!.roadmap),
                 ),
               ],
               [
                 ElevatedButton(
-                  onPressed: () => _launchURL(
-                      'https://github.com/lyskouski/app-finance/milestones'),
+                  onPressed: () => _launchURL('https://github.com/lyskouski/app-finance/milestones'),
                   child: Text(AppLocalizations.of(context)!.milestones),
                 ),
               ],
@@ -109,8 +106,7 @@ class AboutPageState extends AbstractPageState<AboutPage> {
           const Divider(),
           Expanded(
             child: FutureBuilder(
-              future: DefaultAssetBundle.of(context)
-                  .loadString('./assets/l10n/privacy_policy_$locale.md'),
+              future: DefaultAssetBundle.of(context).loadString('./assets/l10n/privacy_policy_$locale.md'),
               builder: (context, snapshot) {
                 if (snapshot.hasData) {
                   return Markdown(data: snapshot.data ?? '');

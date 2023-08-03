@@ -40,10 +40,8 @@ class BudgetViewPageState extends AbstractPageState<BudgetViewPage> {
 
   @override
   Widget buildButton(BuildContext context, BoxConstraints constraints) {
-    String route =
-        AppMenu(context: context).uuid(AppRoute.budgetEditRoute, widget.uuid);
-    double indent =
-        ThemeHelper(windowType: getWindowType(context)).getIndent() * 4;
+    String route = AppMenu(context: context).uuid(AppRoute.budgetEditRoute, widget.uuid);
+    double indent = ThemeHelper(windowType: getWindowType(context)).getIndent() * 4;
     return Container(
       margin: EdgeInsets.only(left: indent),
       child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
@@ -65,8 +63,7 @@ class BudgetViewPageState extends AbstractPageState<BudgetViewPage> {
   Widget buildContent(BuildContext context, BoxConstraints constraints) {
     final item = super.state.getByUuid(widget.uuid) as BudgetAppData;
     item.updateContext(context);
-    double indent =
-        ThemeHelper(windowType: getWindowType(context)).getIndent() * 2;
+    double indent = ThemeHelper(windowType: getWindowType(context)).getIndent() * 2;
     double offset = MediaQuery.of(context).size.width - indent * 3;
     return Column(
       children: [

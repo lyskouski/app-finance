@@ -17,8 +17,7 @@ class PrivacyTab extends AbstractTab {
   PrivacyTabState createState() => PrivacyTabState();
 }
 
-class PrivacyTabState extends AbstractTabState<PrivacyTab>
-    with SharedPreferencesMixin {
+class PrivacyTabState extends AbstractTabState<PrivacyTab> with SharedPreferencesMixin {
   @override
   String getButtonTitle() {
     return AppLocalizations.of(context)!.acknowledgeTooltip;
@@ -34,8 +33,7 @@ class PrivacyTabState extends AbstractTabState<PrivacyTab>
   Widget buildContent(BuildContext context) {
     final locale = AppLocalizations.of(context)!.localeName;
     return FutureBuilder(
-      future: DefaultAssetBundle.of(context)
-          .loadString('./assets/l10n/privacy_policy_$locale.md'),
+      future: DefaultAssetBundle.of(context).loadString('./assets/l10n/privacy_policy_$locale.md'),
       builder: (context, snapshot) {
         if (snapshot.hasData) {
           return Markdown(data: snapshot.data ?? '');

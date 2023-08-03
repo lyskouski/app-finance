@@ -40,8 +40,7 @@ class GoalAddPage extends AbstractPage {
   GoalAddPageState createState() => GoalAddPageState();
 }
 
-class GoalAddPageState<T extends GoalAddPage>
-    extends AbstractPageState<GoalAddPage> {
+class GoalAddPageState<T extends GoalAddPage> extends AbstractPageState<GoalAddPage> {
   String? title;
   IconData? icon;
   MaterialColor? color;
@@ -78,10 +77,8 @@ class GoalAddPageState<T extends GoalAddPage>
         AppDataType.goals,
         GoalAppData(
           title: title ?? '',
-          initial: Exchange(store: super.state).reform(
-              super.state.getTotal(AppDataType.accounts),
-              Exchange.defaultCurrency,
-              currency),
+          initial: Exchange(store: super.state)
+              .reform(super.state.getTotal(AppDataType.accounts), Exchange.defaultCurrency, currency),
           progress: 0.0,
           color: color,
           hidden: false,
@@ -100,7 +97,7 @@ class GoalAddPageState<T extends GoalAddPage>
   Widget buildButton(BuildContext context, BoxConstraints constraints) {
     var helper = ThemeHelper(windowType: getWindowType(context));
     String title = getButtonName();
-    FocusController.setContext(4);
+    FocusController.init(4);
     return SizedBox(
       width: constraints.maxWidth - helper.getIndent() * 4,
       child: FloatingActionButton(
@@ -134,10 +131,10 @@ class GoalAddPageState<T extends GoalAddPage>
   @override
   Widget buildContent(BuildContext context, BoxConstraints constraints) {
     final TextTheme textTheme = Theme.of(context).textTheme;
-    double indent =
-        ThemeHelper(windowType: getWindowType(context)).getIndent() * 2;
+    double indent = ThemeHelper(windowType: getWindowType(context)).getIndent() * 2;
     double offset = MediaQuery.of(context).size.width - indent * 3;
     int focusOrder = FocusController.DEFAULT;
+    FocusController.setContext(context);
 
     return SingleChildScrollView(
       child: Container(
@@ -162,8 +159,7 @@ class GoalAddPageState<T extends GoalAddPage>
             SimpleInput(
               value: title,
               tooltip: AppLocalizations.of(context)!.titleGoalTooltip,
-              style: textTheme.numberMedium
-                  .copyWith(color: textTheme.headlineSmall?.color),
+              style: textTheme.numberMedium.copyWith(color: textTheme.headlineSmall?.color),
               setState: (value) => setState(() => title = value),
               focusOrder: focusOrder += 1,
             ),
@@ -228,13 +224,10 @@ class GoalAddPageState<T extends GoalAddPage>
                         style: textTheme.bodyLarge,
                       ),
                       Container(
-                        color: Theme.of(context)
-                            .colorScheme
-                            .inversePrimary
-                            .withOpacity(0.3),
+                        color: Theme.of(context).colorScheme.inversePrimary.withOpacity(0.3),
                         width: double.infinity,
                         child: CurrencySelector(
-                          value: currency,
+                          value: currency?.code,
                           setView: (Currency currency) => currency.code,
                           focusOrder: focusOrder += 1,
                           setState: (value) => setState(() => currency = value),
@@ -257,16 +250,13 @@ class GoalAddPageState<T extends GoalAddPage>
                       ),
                       SimpleInput(
                         value: details != null ? details.toString() : '',
-                        type: const TextInputType.numberWithOptions(
-                            decimal: true),
+                        type: const TextInputType.numberWithOptions(decimal: true),
                         tooltip: AppLocalizations.of(context)!.billSetTooltip,
-                        style: textTheme.numberMedium
-                            .copyWith(color: textTheme.headlineSmall?.color),
+                        style: textTheme.numberMedium.copyWith(color: textTheme.headlineSmall?.color),
                         formatter: [
                           SimpleInput.filterDouble,
                         ],
-                        setState: (value) =>
-                            setState(() => details = double.tryParse(value)),
+                        setState: (value) => setState(() => details = double.tryParse(value)),
                         focusOrder: focusOrder += 1,
                       ),
                     ],
@@ -290,8 +280,7 @@ class GoalAddPageState<T extends GoalAddPage>
               ],
             ),
             DateInput(
-              style: textTheme.numberMedium
-                  .copyWith(color: textTheme.headlineSmall?.color),
+              style: textTheme.numberMedium.copyWith(color: textTheme.headlineSmall?.color),
               value: closedAt,
               setState: (value) => setState(() => closedAt = value),
               focusOrder: focusOrder += 1,

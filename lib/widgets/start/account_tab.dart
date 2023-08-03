@@ -21,8 +21,7 @@ class AccountTab extends AccountAddPage {
   AccountTabState createState() => AccountTabState();
 }
 
-class AccountTabState extends AccountAddPageState<AccountTab>
-    with SharedPreferencesMixin {
+class AccountTabState extends AccountAddPageState<AccountTab> with SharedPreferencesMixin {
   @override
   void triggerActionButton(BuildContext context) {
     setState(() {
@@ -30,16 +29,14 @@ class AccountTabState extends AccountAddPageState<AccountTab>
         return;
       }
       updateStorage();
-      setPreference(
-          prefAccount, super.state.getList(AppDataType.accounts).first?.uuid);
+      setPreference(prefAccount, super.state.getList(AppDataType.accounts).first?.uuid);
       (widget as AccountTab).setState();
     });
   }
 
   @override
   Widget build(BuildContext context) {
-    double indent =
-        ThemeHelper(windowType: getWindowType(context)).getIndent() * 2;
+    double indent = ThemeHelper(windowType: getWindowType(context)).getIndent() * 2;
     return Consumer<AppData>(builder: (context, appState, _) {
       state = appState;
       return Padding(

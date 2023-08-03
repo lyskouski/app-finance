@@ -35,8 +35,7 @@ abstract class AbstractPageState<T extends AbstractPage> extends State<T> {
         child: IconButton(
           icon: Icon(
             Icons.arrow_back,
-            color:
-                Theme.of(context).colorScheme.inversePrimary.withOpacity(0.6),
+            color: Theme.of(context).colorScheme.inversePrimary.withOpacity(0.6),
           ),
           tooltip: AppLocalizations.of(context)!.backTooltip,
           onPressed: () => Navigator.of(context).pop(),
@@ -67,8 +66,7 @@ abstract class AbstractPageState<T extends AbstractPage> extends State<T> {
           },
           icon: Icon(
             Icons.more_vert,
-            color:
-                Theme.of(context).colorScheme.inversePrimary.withOpacity(0.6),
+            color: Theme.of(context).colorScheme.inversePrimary.withOpacity(0.6),
           ),
         ),
       ],

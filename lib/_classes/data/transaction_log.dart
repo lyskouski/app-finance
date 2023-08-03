@@ -22,8 +22,7 @@ class TransactionLog with SharedPreferencesMixin {
 
   static int increment = 0;
 
-  static Encrypter get salt =>
-      Encrypter(AES(Key.fromUtf8('tercad-app-finance-by-vlyskouski')));
+  static Encrypter get salt => Encrypter(AES(Key.fromUtf8('tercad-app-finance-by-vlyskouski')));
 
   static IV get code => IV.fromLength(8);
 
@@ -61,8 +60,7 @@ class TransactionLog with SharedPreferencesMixin {
   static void init(AppData store, String type, Map<String, dynamic> data) {
     final goal = GoalAppData(title: '', initial: 0.0).getClassName();
     final account = AccountAppData(title: '', type: '').getClassName();
-    final bill =
-        BillAppData(title: '', account: '', category: '').getClassName();
+    final bill = BillAppData(title: '', account: '', category: '').getClassName();
     final budget = BudgetAppData(title: '', amountLimit: 0.0).getClassName();
     final currency = CurrencyAppData(title: '').getClassName();
     final typeToClass = {
@@ -100,10 +98,7 @@ class TransactionLog with SharedPreferencesMixin {
     if (kIsWeb) {
       lines = _loadWeb();
     } else {
-      lines = (await _logFle)
-          .openRead()
-          .transform(utf8.decoder)
-          .transform(const LineSplitter());
+      lines = (await _logFle).openRead().transform(utf8.decoder).transform(const LineSplitter());
     }
     bool isEncrypted = doEncrypt();
     bool isOK = true;

@@ -41,10 +41,8 @@ class AccountViewPageState extends AbstractPageState<AccountViewPage> {
 
   @override
   Widget buildButton(BuildContext context, BoxConstraints constraints) {
-    String route =
-        AppMenu(context: context).uuid(AppRoute.accountEditRoute, widget.uuid);
-    double indent =
-        ThemeHelper(windowType: getWindowType(context)).getIndent() * 4;
+    String route = AppMenu(context: context).uuid(AppRoute.accountEditRoute, widget.uuid);
+    double indent = ThemeHelper(windowType: getWindowType(context)).getIndent() * 4;
     return Container(
       margin: EdgeInsets.only(left: indent),
       child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
@@ -80,8 +78,7 @@ class AccountViewPageState extends AbstractPageState<AccountViewPage> {
     final item = super.state.getByUuid(widget.uuid) as AccountAppData;
     final log = super.state.getLog(widget.uuid);
     item.updateContext(context);
-    double indent =
-        ThemeHelper(windowType: getWindowType(context)).getIndent() * 2;
+    double indent = ThemeHelper(windowType: getWindowType(context)).getIndent() * 2;
     double offset = MediaQuery.of(context).size.width - indent * 3;
     return Column(
       children: [

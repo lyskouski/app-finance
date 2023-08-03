@@ -13,8 +13,13 @@ class FocusController {
   static int focus = DEFAULT;
   static int _focus = DEFAULT;
   static ScrollController? _controller;
+  static BuildContext? _context;
 
-  static Type setContext(int idx, [dynamic value]) {
+  static void setContext(BuildContext context) {
+    _context = context;
+  }
+
+  static void init(int idx, [dynamic value]) {
     while (idx >= values.length) {
       values.add(null);
     }
@@ -22,7 +27,6 @@ class FocusController {
       values[idx] = value;
     }
     _idx = idx;
-    return FocusController;
   }
 
   static FocusNode? getFocusNode() {
@@ -61,8 +65,7 @@ class FocusController {
     bool isAttached = _controller?.hasClients ?? false;
     if (isAttached && focusedNode is RenderBox && firstNode is RenderBox) {
       _controller?.animateTo(
-        focusedNode.localToGlobal(Offset.zero).dy -
-            firstNode.localToGlobal(Offset.zero).dy,
+        focusedNode.localToGlobal(Offset.zero).dy - firstNode.localToGlobal(Offset.zero).dy,
         duration: const Duration(milliseconds: 300),
         curve: Curves.easeInOut,
       );
@@ -86,10 +89,12 @@ class FocusController {
 
   static bool isFocused([int? i, dynamic val]) {
     int idx = i ?? _idx;
-    dynamic value = val ?? (_idx >= 0 ? values[idx] : null);
-    if ((value == null || value == '') &&
-        idx != DEFAULT &&
-        (focus == DEFAULT || focus == idx)) {
+    dynamic value = val ?? (idx >= 0 ? values[idx] : null);
+    FocusNode? focusNode = _context != null ? FocusScope.of(_context!).focusedChild : null;
+    if (focusNode != null) {
+      return idx > 0 ? focusNode == nodes[idx] : false;
+    }
+    if ((value == null || value == '') && idx != DEFAULT && (focus == DEFAULT || focus == idx)) {
       focus = idx;
       requestFocus();
       return true;

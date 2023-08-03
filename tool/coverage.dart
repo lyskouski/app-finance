@@ -8,9 +8,7 @@ void scanDirectory(Directory root, Directory directory, List<String> files) {
         !entity.path.endsWith('.generic.dart') &&
         !entity.path.endsWith('.mocks.dart') &&
         !entity.path.endsWith('.wrapper.dart')) {
-      files.add(entity.absolute.path
-          .replaceAll(root.absolute.path, '')
-          .replaceAll('\\', '/'));
+      files.add(entity.absolute.path.replaceAll(root.absolute.path, '').replaceAll('\\', '/'));
     } else if (entity is Directory) {
       scanDirectory(root, entity, files);
     }

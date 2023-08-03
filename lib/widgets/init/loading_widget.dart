@@ -16,8 +16,7 @@ class LoadingWidget extends StatefulWidget {
   LoadingWidgetState createState() => LoadingWidgetState();
 }
 
-class LoadingWidgetState extends State<LoadingWidget>
-    with TickerProviderStateMixin {
+class LoadingWidgetState extends State<LoadingWidget> with TickerProviderStateMixin {
   late AnimationController _controller;
 
   @override

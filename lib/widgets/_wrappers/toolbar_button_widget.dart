@@ -30,10 +30,7 @@ class ToolbarButtonWidgetState extends State<ToolbarButtonWidget> {
         decoration: BoxDecoration(
           shape: BoxShape.rectangle,
           color: color,
-          border: Border.all(
-              color:
-                  Theme.of(context).colorScheme.inversePrimary.withOpacity(0.2),
-              width: 1),
+          border: Border.all(color: Theme.of(context).colorScheme.inversePrimary.withOpacity(0.2), width: 1),
         ),
         child: Transform.translate(
           offset: const Offset(0, -4),

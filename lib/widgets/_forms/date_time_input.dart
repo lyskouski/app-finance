@@ -26,8 +26,7 @@ class DateTimeInput extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    double indent =
-        ThemeHelper(windowType: getWindowType(context)).getIndent() * 2;
+    double indent = ThemeHelper(windowType: getWindowType(context)).getIndent() * 2;
     double offset = width ?? MediaQuery.of(context).size.width - indent * 2;
     final locale = Localizations.localeOf(context).toString();
     final DateFormat formatterTime = DateFormat.Hms(locale);
@@ -46,8 +45,7 @@ class DateTimeInput extends StatelessWidget {
         ],
         [
           Container(
-            color:
-                Theme.of(context).colorScheme.inversePrimary.withOpacity(0.3),
+            color: Theme.of(context).colorScheme.inversePrimary.withOpacity(0.3),
             child: ListTile(
               title: Text(
                 formatterTime.format(value),

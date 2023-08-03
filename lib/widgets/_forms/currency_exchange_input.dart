@@ -76,16 +76,13 @@ class CurrencyExchangeInputState extends State<CurrencyExchangeInput> {
           final value = double.tryParse(newValue ?? '') ?? 0.0;
           if (isTotal) {
             amount[index] = value;
-            rate[index]?.details = value /
-                (index > 0 && amount[index - 1]! > 0
-                    ? amount[index - 1]
-                    : widget.targetAmount)!;
+            rate[index]?.details =
+                value / (index > 0 && amount[index - 1]! > 0 ? amount[index - 1] : widget.targetAmount)!;
           } else {
             rate[index]?.details = value;
             amount[index] = getAmount(index);
           }
-          widget.state.update(
-              AppDataType.currencies, rate[index]!.uuid, rate[index], true);
+          widget.state.update(AppDataType.currencies, rate[index]!.uuid, rate[index], true);
         }));
   }
 
@@ -100,8 +97,7 @@ class CurrencyExchangeInputState extends State<CurrencyExchangeInput> {
     final TextTheme textTheme = Theme.of(context).textTheme;
     return Column(
       children: List<Widget>.generate(widget.source.length, (index) {
-        if (widget.source[index] == null ||
-            widget.source[index]?.code == widget.target?.code) {
+        if (widget.source[index] == null || widget.source[index]?.code == widget.target?.code) {
           return const SizedBox();
         }
         return Column(
@@ -110,32 +106,21 @@ class CurrencyExchangeInputState extends State<CurrencyExchangeInput> {
             Container(
               width: widget.width,
               decoration: BoxDecoration(
-                border: Border.all(
-                    color: Theme.of(context)
-                        .colorScheme
-                        .inversePrimary
-                        .withOpacity(0.6)),
+                border: Border.all(color: Theme.of(context).colorScheme.inversePrimary.withOpacity(0.6)),
               ),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
                   Text(
                       AppLocalizations.of(context)!.currencyExchange(
-                        (index > 0
-                                ? widget.target?.code
-                                : widget.source[index]?.code) ??
-                            '?',
-                        (index > 0
-                                ? widget.source[index]?.code
-                                : widget.target?.code) ??
-                            '?',
+                        (index > 0 ? widget.target?.code : widget.source[index]?.code) ?? '?',
+                        (index > 0 ? widget.source[index]?.code : widget.target?.code) ?? '?',
                       ),
                       style: textTheme.bodyLarge?.copyWith(
                         color: Theme.of(context).colorScheme.primary,
                       )),
                   Padding(
-                    padding: EdgeInsets.fromLTRB(
-                        widget.indent, 0, widget.indent, widget.indent),
+                    padding: EdgeInsets.fromLTRB(widget.indent, 0, widget.indent, widget.indent),
                     child: RowWidget(
                       indent: widget.indent,
                       maxWidth: widget.width - widget.indent * 3,
@@ -148,23 +133,18 @@ class CurrencyExchangeInputState extends State<CurrencyExchangeInput> {
                           ),
                           SimpleInput(
                             value: rate[index]?.details.toString(),
-                            type: const TextInputType.numberWithOptions(
-                                decimal: true),
+                            type: const TextInputType.numberWithOptions(decimal: true),
                             setState: (v) => onUpdate(v, index, false),
                           )
                         ],
                         [
                           Text(
-                            AppLocalizations.of(context)!.conversionMessage(
-                                widget.source[index]?.code ?? '?'),
+                            AppLocalizations.of(context)!.conversionMessage(widget.source[index]?.code ?? '?'),
                             style: textTheme.bodyLarge,
                           ),
                           SimpleInput(
-                            value: amount[index] != null
-                                ? amount[index].toString()
-                                : '',
-                            type: const TextInputType.numberWithOptions(
-                                decimal: true),
+                            value: amount[index] != null ? amount[index].toString() : '',
+                            type: const TextInputType.numberWithOptions(decimal: true),
                             setState: (v) => onUpdate(v, index, true),
                           ),
                         ],

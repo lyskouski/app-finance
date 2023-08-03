@@ -18,8 +18,6 @@ class AccountRecalculation extends AbstractRecalculation {
   double getDelta() {
     return change.hidden
         ? -(initial?.details ?? 0.0)
-        : (initial?.hidden ?? true
-            ? change.details
-            : change.details - initial?.details);
+        : (initial?.hidden ?? true ? change.details : change.details - initial?.details);
   }
 }

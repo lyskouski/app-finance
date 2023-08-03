@@ -19,8 +19,7 @@ import 'main_test.mocks.dart';
 import 'main_test.wrapper.dart';
 
 void main() {
-  testWidgets('Given Main page When tap on Create Then opened BillAddPage',
-      (WidgetTester tester) async {
+  testWidgets('Given Main page When tap on Create Then opened BillAddPage', (WidgetTester tester) async {
     final pref = WrapperMockSharedPreferences();
     pref.mockGetString = (value) => '';
     SharedPreferencesMixin.pref = pref;

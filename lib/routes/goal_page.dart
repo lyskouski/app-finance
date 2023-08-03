@@ -36,8 +36,7 @@ class GoalPageState extends AbstractPageState<GoalPage> {
   @override
   Widget buildContent(BuildContext context, BoxConstraints constraints) {
     var helper = ThemeHelper(windowType: getWindowType(context));
-    final double offset =
-        MediaQuery.of(context).size.width - helper.getIndent() * 2;
+    final double offset = MediaQuery.of(context).size.width - helper.getIndent() * 2;
     return Column(
         children: super.state.getList(AppDataType.goals).map((goal) {
       goal.updateContext(context);

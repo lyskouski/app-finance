@@ -13,11 +13,9 @@ String? getPreviousTag(String tag) {
   List<int> parts = getReleaseParts(tag);
   assert(parts.length == 3);
 
-  ProcessResult versions =
-      Process.runSync('git', ['tag', '--list', 'v*'], runInShell: true);
+  ProcessResult versions = Process.runSync('git', ['tag', '--list', 'v*'], runInShell: true);
 
-  List<String> tagList =
-      const LineSplitter().convert(versions.stdout).reversed.toList();
+  List<String> tagList = const LineSplitter().convert(versions.stdout).reversed.toList();
 
   String? tillTag;
   for (String tagName in tagList) {
@@ -26,10 +24,7 @@ String? getPreviousTag(String tag) {
       continue;
     }
     if ((parts[2] == curr[2] && parts[1] == curr[1] && parts[0] != curr[0]) ||
-        (parts[2] == 0 &&
-            curr[2] == 0 &&
-            parts[1] != 0 &&
-            parts[1] != curr[1]) ||
+        (parts[2] == 0 && curr[2] == 0 && parts[1] != 0 && parts[1] != curr[1]) ||
         (parts[2] != 0 && parts[2] != curr[2])) {
       tillTag = tagName;
       break;
@@ -48,8 +43,7 @@ String genRelease(String tag) {
 
   List<String> commentList = const LineSplitter()
       .convert(log.stdout)
-      .where((comment) =>
-          !comment.contains('Merge pull') && !comment.contains('Revert'))
+      .where((comment) => !comment.contains('Merge pull') && !comment.contains('Revert'))
       .map((comment) => '- ${comment.split('.').first.replaceAll('"', '')}')
       .toSet()
       .toList();

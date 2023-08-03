@@ -48,8 +48,8 @@ class AccountAddPage extends AbstractPage {
   AccountAddPageState createState() => AccountAddPageState();
 }
 
-class AccountAddPageState<T extends AccountAddPage>
-    extends AbstractPageState<AccountAddPage> with SharedPreferencesMixin {
+class AccountAddPageState<T extends AccountAddPage> extends AbstractPageState<AccountAddPage>
+    with SharedPreferencesMixin {
   String? title;
   String? description;
   String? type;
@@ -81,8 +81,7 @@ class AccountAddPageState<T extends AccountAddPage>
   }
 
   bool hasFormErrors() {
-    setState(() => hasError =
-        type == null || type!.isEmpty || title == null || title!.isEmpty);
+    setState(() => hasError = type == null || type!.isEmpty || title == null || title!.isEmpty);
     return hasError;
   }
 
@@ -123,7 +122,7 @@ class AccountAddPageState<T extends AccountAddPage>
   Widget buildButton(BuildContext context, BoxConstraints constraints) {
     var helper = ThemeHelper(windowType: getWindowType(context));
     String title = getButtonName();
-    FocusController.setContext(6);
+    FocusController.init(6);
     return SizedBox(
       width: constraints.maxWidth - helper.getIndent() * 4,
       child: FloatingActionButton(
@@ -147,34 +146,22 @@ class AccountAddPageState<T extends AccountAddPage>
 
   List<ListSelectorItem> getAccountTypes(BuildContext context) {
     return [
-      ListSelectorItem(
-          id: AppAccountType.account.toString(),
-          name: AppLocalizations.of(context)!.bankAccount),
-      ListSelectorItem(
-          id: AppAccountType.cash.toString(),
-          name: AppLocalizations.of(context)!.cash),
-      ListSelectorItem(
-          id: AppAccountType.debitCard.toString(),
-          name: AppLocalizations.of(context)!.debitCard),
-      ListSelectorItem(
-          id: AppAccountType.creditCard.toString(),
-          name: AppLocalizations.of(context)!.creditCard),
-      ListSelectorItem(
-          id: AppAccountType.deposit.toString(),
-          name: AppLocalizations.of(context)!.deposit),
-      ListSelectorItem(
-          id: AppAccountType.credit.toString(),
-          name: AppLocalizations.of(context)!.credit),
+      ListSelectorItem(id: AppAccountType.account.toString(), name: AppLocalizations.of(context)!.bankAccount),
+      ListSelectorItem(id: AppAccountType.cash.toString(), name: AppLocalizations.of(context)!.cash),
+      ListSelectorItem(id: AppAccountType.debitCard.toString(), name: AppLocalizations.of(context)!.debitCard),
+      ListSelectorItem(id: AppAccountType.creditCard.toString(), name: AppLocalizations.of(context)!.creditCard),
+      ListSelectorItem(id: AppAccountType.deposit.toString(), name: AppLocalizations.of(context)!.deposit),
+      ListSelectorItem(id: AppAccountType.credit.toString(), name: AppLocalizations.of(context)!.credit),
     ];
   }
 
   @override
   Widget buildContent(BuildContext context, BoxConstraints constraints) {
     final TextTheme textTheme = Theme.of(context).textTheme;
-    double indent =
-        ThemeHelper(windowType: getWindowType(context)).getIndent() * 2;
+    double indent = ThemeHelper(windowType: getWindowType(context)).getIndent() * 2;
     double offset = MediaQuery.of(context).size.width - indent * 3;
     int focusOrder = FocusController.DEFAULT;
+    FocusController.setContext(context);
 
     return SingleChildScrollView(
       child: Container(
@@ -190,8 +177,7 @@ class AccountAddPageState<T extends AccountAddPage>
               value: type,
               options: getAccountTypes(context),
               setState: (value) => setState(() => type = value),
-              style: textTheme.numberMedium
-                  .copyWith(color: textTheme.headlineSmall?.color),
+              style: textTheme.numberMedium.copyWith(color: textTheme.headlineSmall?.color),
               indent: indent,
               focusOrder: focusOrder += 1,
             ),
@@ -203,8 +189,7 @@ class AccountAddPageState<T extends AccountAddPage>
             SimpleInput(
               value: title,
               tooltip: AppLocalizations.of(context)!.titleAccountTooltip,
-              style: textTheme.numberMedium
-                  .copyWith(color: textTheme.headlineSmall?.color),
+              style: textTheme.numberMedium.copyWith(color: textTheme.headlineSmall?.color),
               setState: (value) => setState(() => title = value),
               focusOrder: focusOrder += 1,
             ),
@@ -244,8 +229,7 @@ class AccountAddPageState<T extends AccountAddPage>
                   SimpleInput(
                     value: description,
                     tooltip: AppLocalizations.of(context)!.detailsTooltip,
-                    style: textTheme.numberMedium
-                        .copyWith(color: textTheme.headlineSmall?.color),
+                    style: textTheme.numberMedium.copyWith(color: textTheme.headlineSmall?.color),
                     setState: (value) => setState(() => description = value),
                     focusOrder: focusOrder += 1,
                   ),
@@ -258,11 +242,10 @@ class AccountAddPageState<T extends AccountAddPage>
               style: textTheme.bodyLarge,
             ),
             Container(
-              color:
-                  Theme.of(context).colorScheme.inversePrimary.withOpacity(0.3),
+              color: Theme.of(context).colorScheme.inversePrimary.withOpacity(0.3),
               width: double.infinity,
               child: CurrencySelector(
-                value: currency,
+                value: currency?.code,
                 setState: (value) => setState(() => currency = value),
                 focusOrder: focusOrder += 1,
               ),
@@ -275,8 +258,7 @@ class AccountAddPageState<T extends AccountAddPage>
             MonthYearInput(
               value: validTillDate,
               setState: (value) => setState(() => validTillDate = value),
-              style: textTheme.numberMedium
-                  .copyWith(color: textTheme.headlineSmall?.color),
+              style: textTheme.numberMedium.copyWith(color: textTheme.headlineSmall?.color),
               focusOrder: focusOrder += 1,
             ),
             SizedBox(height: indent),
@@ -288,13 +270,11 @@ class AccountAddPageState<T extends AccountAddPage>
               value: balance != null ? balance.toString() : '',
               type: const TextInputType.numberWithOptions(decimal: true),
               tooltip: AppLocalizations.of(context)!.balanceTooltip,
-              style: textTheme.numberMedium
-                  .copyWith(color: textTheme.headlineSmall?.color),
+              style: textTheme.numberMedium.copyWith(color: textTheme.headlineSmall?.color),
               formatter: [
                 SimpleInput.filterDouble,
               ],
-              setState: (value) =>
-                  setState(() => balance = double.tryParse(value)),
+              setState: (value) => setState(() => balance = double.tryParse(value)),
               focusOrder: focusOrder += 1,
             ),
             SizedBox(height: indent),
@@ -312,8 +292,7 @@ class AccountAddPageState<T extends AccountAddPage>
               ],
             ),
             DateTimeInput(
-              style: textTheme.numberMedium
-                  .copyWith(color: textTheme.headlineSmall?.color),
+              style: textTheme.numberMedium.copyWith(color: textTheme.headlineSmall?.color),
               width: offset,
               value: balanceUpdateDate,
               setState: (value) => setState(() => balanceUpdateDate = value),

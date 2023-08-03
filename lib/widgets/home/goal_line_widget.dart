@@ -23,8 +23,7 @@ class GoalLineWidget extends StatelessWidget {
     var theme = ThemeHelper(windowType: getWindowType(context));
     final ColorScheme colorScheme = Theme.of(context).colorScheme;
     final TextTheme textTheme = Theme.of(context).textTheme;
-    double screenWidth =
-        MediaQuery.of(context).size.width - theme.getIndent() * 2;
+    double screenWidth = MediaQuery.of(context).size.width - theme.getIndent() * 2;
     goal.updateContext(context);
     return TapWidget(
       tooltip: AppLocalizations.of(context)!.goalTooltip,
@@ -42,8 +41,7 @@ class GoalLineWidget extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Padding(
-                      padding: EdgeInsets.fromLTRB(
-                          theme.getIndent(), theme.getIndent(), 0, 0),
+                      padding: EdgeInsets.fromLTRB(theme.getIndent(), theme.getIndent(), 0, 0),
                       child: Text(
                         AppLocalizations.of(context)!.goalHeadline,
                         style: textTheme.headlineSmall,
@@ -86,13 +84,11 @@ class GoalLineWidget extends StatelessWidget {
                     ),
                     Container(
                       height: 8,
-                      margin: EdgeInsets.fromLTRB(theme.getIndent(),
-                          theme.getIndent() / 2, theme.getIndent(), 0),
+                      margin: EdgeInsets.fromLTRB(theme.getIndent(), theme.getIndent() / 2, theme.getIndent(), 0),
                       child: LinearProgressIndicator(
                         value: goal.progress,
                         backgroundColor: colorScheme.primary.withOpacity(0.3),
-                        valueColor: AlwaysStoppedAnimation<Color>(
-                            colorScheme.onPrimaryContainer),
+                        valueColor: AlwaysStoppedAnimation<Color>(colorScheme.onPrimaryContainer),
                       ),
                     ),
                   ],
@@ -102,8 +98,7 @@ class GoalLineWidget extends StatelessWidget {
             Stack(
               children: [
                 Transform.translate(
-                  offset: Offset(
-                      theme.getIndent() * 1.5 + screenWidth * goal.state, -6),
+                  offset: Offset(theme.getIndent() * 1.5 + screenWidth * goal.state, -6),
                   child: Tooltip(
                     message: AppLocalizations.of(context)!.currentDate,
                     child: Container(

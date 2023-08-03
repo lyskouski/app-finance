@@ -26,14 +26,12 @@ class HomePage extends AbstractPage {
   HomePageState createState() => HomePageState();
 }
 
-class HomePageState extends AbstractPageState<HomePage>
-    with SharedPreferencesMixin {
+class HomePageState extends AbstractPageState<HomePage> with SharedPreferencesMixin {
   @override
   initState() {
     super.initState();
     if (getPreference(prefPrivacyPolicy) == null) {
-      Future.delayed(Duration.zero,
-          () => Navigator.popAndPushNamed(context, AppRoute.startRoute));
+      Future.delayed(Duration.zero, () => Navigator.popAndPushNamed(context, AppRoute.startRoute));
     }
   }
 
@@ -53,10 +51,7 @@ class HomePageState extends AbstractPageState<HomePage>
             child: IconButton(
               icon: Icon(
                 Icons.menu,
-                color: Theme.of(context)
-                    .colorScheme
-                    .inversePrimary
-                    .withOpacity(0.5),
+                color: Theme.of(context).colorScheme.inversePrimary.withOpacity(0.5),
               ),
               tooltip: AppLocalizations.of(context)!.navigationTooltip,
               onPressed: () => Scaffold.of(context).openDrawer(),
@@ -75,12 +70,10 @@ class HomePageState extends AbstractPageState<HomePage>
           child: IconButton(
             icon: Icon(
               Icons.switch_access_shortcut_add_outlined,
-              color:
-                  Theme.of(context).colorScheme.inversePrimary.withOpacity(0.5),
+              color: Theme.of(context).colorScheme.inversePrimary.withOpacity(0.5),
             ),
             tooltip: AppLocalizations.of(context)!.subscriptionTooltip,
-            onPressed: () =>
-                Navigator.pushNamed(context, AppRoute.subscriptionRoute),
+            onPressed: () => Navigator.pushNamed(context, AppRoute.subscriptionRoute),
           ),
         ),
       ],
@@ -126,8 +119,7 @@ class HomePageState extends AbstractPageState<HomePage>
     );
     final billWidget = BillWidget(
       margin: helper.isVertical(constraints) ? single : middleRight,
-      title:
-          '${AppLocalizations.of(context)!.billHeadline}, ${formatterDate.format(DateTime.now())}',
+      title: '${AppLocalizations.of(context)!.billHeadline}, ${formatterDate.format(DateTime.now())}',
       state: super.state.get(AppDataType.bills),
       limit: 5,
       route: AppRoute.billRoute,
@@ -136,8 +128,7 @@ class HomePageState extends AbstractPageState<HomePage>
     );
     final accountWidget = AccountWidget(
       margin: helper.isVertical(constraints) ? single : middleLeft,
-      title:
-          '${AppLocalizations.of(context)!.accountHeadline}, ${AppLocalizations.of(context)!.total}',
+      title: '${AppLocalizations.of(context)!.accountHeadline}, ${AppLocalizations.of(context)!.total}',
       state: super.state.get(AppDataType.accounts),
       limit: 5,
       route: AppRoute.accountRoute,
@@ -146,8 +137,7 @@ class HomePageState extends AbstractPageState<HomePage>
     );
     final budgetWidget = BudgetWidget(
       margin: bottom,
-      title:
-          '${AppLocalizations.of(context)!.budgetHeadline}, ${AppLocalizations.of(context)!.left}',
+      title: '${AppLocalizations.of(context)!.budgetHeadline}, ${AppLocalizations.of(context)!.left}',
       state: super.state.get(AppDataType.budgets),
       limit: 5,
       route: AppRoute.budgetRoute,

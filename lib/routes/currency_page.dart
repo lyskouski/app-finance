@@ -41,8 +41,7 @@ class CurrencyPageState extends AbstractPageState<CurrencyPage> {
     for (CurrencyAppData rate in scope!) {
       super.state.update(AppDataType.currencies, rate.uuid, rate);
     }
-    NotificationBar.showSnackBar(
-        context, AppLocalizations.of(context)!.saveNotification);
+    NotificationBar.showSnackBar(context, AppLocalizations.of(context)!.saveNotification);
   }
 
   void updateRate(CurrencyAppData initial, double? value) {
@@ -92,8 +91,7 @@ class CurrencyPageState extends AbstractPageState<CurrencyPage> {
                   SimpleInput(
                     value: item.details.toString(),
                     type: TextInputType.number,
-                    setState: (value) =>
-                        updateRate(item, double.tryParse(value)),
+                    setState: (value) => updateRate(item, double.tryParse(value)),
                   )
                 ],
               ],

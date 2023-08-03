@@ -28,10 +28,7 @@ class GoalAppData extends AbstractAppData {
     DateTime? closedAt,
     String? closedAtFormatted,
     super.hidden,
-  }) : _closedAt = closedAt ??
-            (closedAtFormatted != null
-                ? DateTime.parse(closedAtFormatted)
-                : DateTime.now());
+  }) : _closedAt = closedAt ?? (closedAtFormatted != null ? DateTime.parse(closedAtFormatted) : DateTime.now());
 
   @override
   String getClassName() {
@@ -67,15 +64,9 @@ class GoalAppData extends AbstractAppData {
       details: json['details'],
       progress: json['progress'],
       description: json['description'],
-      color: json['color'] != null
-          ? MaterialColor(json['color'], const <int, Color>{})
-          : null,
-      icon: json['icon'] != null
-          ? FormatterMixin.getIconFromString(json['icon'])
-          : null,
-      currency: json['currency'] != null
-          ? CurrencyService().findByCode(json['currency'])
-          : null,
+      color: json['color'] != null ? MaterialColor(json['color'], const <int, Color>{}) : null,
+      icon: json['icon'] != null ? FormatterMixin.getIconFromString(json['icon']) : null,
+      currency: json['currency'] != null ? CurrencyService().findByCode(json['currency']) : null,
       updatedAt: DateTime.parse(json['updatedAt']),
       createdAt: DateTime.parse(json['createdAt']),
       closedAt: DateTime.parse(json['closedAt']),
@@ -97,16 +88,13 @@ class GoalAppData extends AbstractAppData {
 
   double get state {
     DateTime currentDate = DateTime.now();
-    if (closedAt.isBefore(currentDate) ||
-        closedAt.isAtSameMomentAs(currentDate)) {
+    if (closedAt.isBefore(currentDate) || closedAt.isAtSameMomentAs(currentDate)) {
       return 1.0;
-    } else if (currentDate.isBefore(super.createdAt) ||
-        super.createdAt.isAtSameMomentAs(currentDate)) {
+    } else if (currentDate.isBefore(super.createdAt) || super.createdAt.isAtSameMomentAs(currentDate)) {
       return 0.0;
     } else {
       double totalDays = closedAt.difference(super.createdAt).inDays.toDouble();
-      double currentDays =
-          currentDate.difference(super.createdAt).inDays.toDouble();
+      double currentDays = currentDate.difference(super.createdAt).inDays.toDouble();
       return currentDays / totalDays;
     }
   }

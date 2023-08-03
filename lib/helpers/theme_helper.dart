@@ -17,6 +17,5 @@ class ThemeHelper {
   double getIndent() => 8.0;
 
   bool isVertical(BoxConstraints constraints) =>
-      isLower(AdaptiveWindowType.small) &&
-      constraints.maxWidth < constraints.maxHeight;
+      isLower(AdaptiveWindowType.small) && constraints.maxWidth < constraints.maxHeight;
 }

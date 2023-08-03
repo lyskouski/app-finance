@@ -24,8 +24,7 @@ abstract class AbstractTabState<T extends AbstractTab> extends State<T> {
 
   Widget buildButton(BuildContext context, BoxConstraints constraints) {
     final helper = ThemeHelper(windowType: getWindowType(context));
-    String title =
-        '${getButtonTitle()} (${AppLocalizations.of(context)!.goNextTooltip})';
+    String title = '${getButtonTitle()} (${AppLocalizations.of(context)!.goNextTooltip})';
     return SizedBox(
       width: constraints.maxWidth - helper.getIndent() * 4,
       child: FloatingActionButton(
@@ -48,8 +47,7 @@ abstract class AbstractTabState<T extends AbstractTab> extends State<T> {
 
   @override
   Widget build(BuildContext context) {
-    double indent =
-        ThemeHelper(windowType: getWindowType(context)).getIndent() * 2;
+    double indent = ThemeHelper(windowType: getWindowType(context)).getIndent() * 2;
     return LayoutBuilder(builder: (context, constraints) {
       return Scaffold(
         floatingActionButton: buildButton(context, constraints),

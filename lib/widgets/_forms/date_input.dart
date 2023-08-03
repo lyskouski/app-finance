@@ -55,7 +55,7 @@ class DateInputState extends State<DateInput> {
 
   @override
   Widget build(BuildContext context) {
-    FocusController.setContext(widget.focusOrder, widget.value);
+    FocusController.init(widget.focusOrder, widget.value);
     if (!isOpened &&
         widget.value == null &&
         widget.focusOrder > FocusController.DEFAULT &&
@@ -72,9 +72,7 @@ class DateInputState extends State<DateInput> {
       color: Theme.of(context).colorScheme.inversePrimary.withOpacity(0.3),
       child: ListTile(
         title: Text(
-          widget.value != null
-              ? formatterDate.format(widget.value!)
-              : 'Select date',
+          widget.value != null ? formatterDate.format(widget.value!) : 'Select date',
           style: widget.style,
         ),
         autofocus: FocusController.isFocused(),

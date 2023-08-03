@@ -50,12 +50,8 @@ class CurrencyAppData extends AbstractAppData {
       details: json['details'],
       updatedAt: DateTime.parse(json['updatedAt']),
       createdAt: DateTime.parse(json['createdAt']),
-      currency: json['currency'] != null
-          ? CurrencyService().findByCode(json['currency'])
-          : null,
-      currencyFrom: json['currencyFrom'] != null
-          ? CurrencyService().findByCode(json['currencyFrom'])
-          : null,
+      currency: json['currency'] != null ? CurrencyService().findByCode(json['currency']) : null,
+      currencyFrom: json['currencyFrom'] != null ? CurrencyService().findByCode(json['currencyFrom']) : null,
       hidden: json['hidden'],
     );
   }
@@ -68,8 +64,7 @@ class CurrencyAppData extends AbstractAppData {
 
   String get detailsFormatted => getNumberFormatted(super.details);
 
-  String get descriptionFormatted =>
-      getDateFormatted(DateTime.parse(super.description ?? ''));
+  String get descriptionFormatted => getDateFormatted(DateTime.parse(super.description ?? ''));
 
   @override
   String get title => '${currencyFrom?.code} -> ${currency?.code}';
