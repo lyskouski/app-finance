@@ -47,14 +47,14 @@ class BaseHeaderWidget extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Padding(
-                padding: EdgeInsets.fromLTRB(indent, indent, 0, 0),
+                padding: EdgeInsets.fromLTRB(indent, indent / 2, 0, 0),
                 child: Text(
                   title,
                   style: textTheme.headlineSmall,
                 ),
               ),
               Padding(
-                padding: EdgeInsets.fromLTRB(indent, 0, 0, indent),
+                padding: EdgeInsets.only(left: indent),
                 child: Text(
                   formatter.format(state.total),
                   style: textTheme.numberLarge.copyWith(color: textTheme.headlineSmall?.color),
