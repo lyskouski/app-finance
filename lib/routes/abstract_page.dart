@@ -29,7 +29,7 @@ abstract class AbstractPageState<T extends AbstractPage> extends State<T> {
   AppBar buildBar(BuildContext context) {
     final helper = ThemeHelper(windowType: getWindowType(context));
     return AppBar(
-      backgroundColor: Theme.of(context).colorScheme.secondary,
+      backgroundColor: Theme.of(context).colorScheme.primary,
       toolbarHeight: 40,
       leading: ToolbarButtonWidget(
         child: IconButton(
