@@ -73,7 +73,7 @@ class AppData extends ChangeNotifier {
 
   void _set(AppDataType property, dynamic value) {
     _hashTable[value.uuid] = value;
-    _data[property]?.add(value.uuid);
+    _data[property]?.add(value.uuid, updatedAt: value.createdAt);
     if (!isLoading) {
       TransactionLog.save(value);
     }
@@ -222,7 +222,6 @@ class AppData extends ChangeNotifier {
   }
 
   List<dynamic> getList(AppDataType property, [bool isClone = true]) {
-    SummaryAppData(total: 1, list: ['test']);
     return (_data[property]?.list ?? [])
         .map((uuid) => getByUuid(uuid, isClone))
         .where((element) => !element.hidden)

@@ -24,21 +24,21 @@ class SummaryAppData {
 
   set list(List<String> list) {
     for (int i = 0; i < list.length; i++) {
-      add(list[i], i + 1);
+      add(list[i], id: i + 1);
     }
   }
 
-  add(String value, [int? id]) {
+  add(String value, {DateTime? updatedAt, int? id}) {
     if (_hash.containsKey(value)) {
       _scope.remove(_hash[value]);
       _actual.remove(_hash[value]);
       _hash.remove(value);
     }
-    DateTime now = DateTime.now();
-    double key = (id ?? now.millisecondsSinceEpoch).toDouble() + Random().nextDouble();
+    updatedAt ??= DateTime.now();
+    double key = (id ?? updatedAt.millisecondsSinceEpoch).toDouble() + Random().nextDouble();
     _scope[key] = value;
     _hash[value] = key;
-    if (key >= DateTime(now.year, now.month).millisecondsSinceEpoch) {
+    if (key >= DateTime(updatedAt.year, updatedAt.month).millisecondsSinceEpoch) {
       _actual[key] = value;
     }
   }
