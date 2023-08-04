@@ -40,12 +40,17 @@ void main() {
         (initial: (hidden: false, details: 1.0), change: (hidden: false, details: 5.0), result: 4.0),
         (initial: (hidden: true, details: 2.0), change: (hidden: false, details: 3.0), result: 3.0),
         (initial: (hidden: false, details: 2.0), change: (hidden: true, details: 3.0), result: -2.0),
+        (initial: null, change: (hidden: false, details: 2.0), result: 2.0)
       ];
 
       for (var v in testCases) {
         test('$v', () {
-          object.initial!.hidden = v.initial.hidden;
-          object.initial!.details = v.initial.details;
+          if (v.initial != null) {
+            object.initial!.hidden = v.initial!.hidden;
+            object.initial!.details = v.initial!.details;
+          } else {
+            object.initial = null;
+          }
           object.change.hidden = v.change.hidden;
           object.change.details = v.change.details;
           expect(object.getDelta(), v.result);

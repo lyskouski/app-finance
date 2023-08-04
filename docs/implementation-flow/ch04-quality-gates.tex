@@ -1,0 +1,38 @@
+Quality gates are a set of defined criteria per each step of a software development lifecycle that cannot be
+ignored during a transition from one stage to another. They act as control points before (External Quality Gate) and 
+after (Internal Quality Gate) each step to monitor and evaluate the project's health by minimizing any sort of errors.
+Let's make a concise overview of lifecycle steps and their quality gates (check \cite{Hawl02} for details):
+
+\begin{itemize}
+  \item Analysis (External: \emph{Time Management, Risk Management, Project Planning with Quality Assertions}; 
+  Internal: -)
+
+  \item Specification (External: \emph{Requirements Management, Prototyping (Proof of Concepts), User Interface, 
+  Quality Requirements, Technical Concept}; Internal: \emph{Correctness, Uniqueness, Completeness, Consistency, 
+  Restrictions})
+
+  \item Draft (External: \emph{Plausibility, Flexibility, Maintenance Cost, Serviceability}; Internal: 
+  \emph{Architecture, Technical Requirements, Interfaces Declaration (Documentation), Test Plan, Integration Plan}) 
+
+  \item Coding (External: \emph{Complexity, Scope, Documentation}; Internal: \emph{Legibility, Structuredness, 
+  Robustness, User Interfaces})
+
+  \item Integration (External: \emph{Mean Time to Failure, Availability Error Rate}, Internal: \emph{Integration 
+  Strategy and Steps, Quality Characteristics, Recovery Flow})
+
+  \item Implementation (External: \emph{Telemetry, Installation Instructions, Manual Acceptance Tests}, Internal: -)
+\end{itemize}
+
+\noindent For the code itself it can be declared: 
+
+\begin{itemize}
+  \item Code Quality Gate (following coding standards [by static code analysis tools]) - maintenance cost.
+  \item Test Gate (coverage and effectiveness of tests) -- cost of failure.
+  \item Security Gate (evaluates for security vulnerabilities and weaknesses) - reputation cost.
+  \item Performance Gate (meets the specified performance criteria and does not degrade under certain loads) - churn rate.
+  \item Deployment Gate (stability of the deployment process) - upgrade cost.
+\end{itemize}
+
+As a summary, quality gates promote a culture of continuous improvement by providing a feedback on the software's 
+quality. By incorporating and automating quality gates, the company is gaining a confidence regarding the
+product quality, since it is designed into the product (not discovered as missing or present later).

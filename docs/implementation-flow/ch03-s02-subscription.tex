@@ -1,15 +1,14 @@
 % Copyright 2023 The terCAD team. All rights reserved.
 % Use of this content is governed by a CC BY-NC-ND 4.0 license that can be found in the LICENSE file.
 
-\subsection{Adding Subscriptions}
-\markboth{Adding Subscriptions}{Adding Subscriptions}
+\subsubsection{Adding Subscriptions}
 
-While we've chosen a Freemium business model (with a broken rule for limitations by being open-sourced, since Freemium 
+While we've chosen a Freemium business model (with a broken rule for limitations by being open-source, since Freemium 
 [portmanteau of "free" and "premium"] is a pricing strategy by which a basic product is free, but money is charged for 
 additional functionality), it's a time to land a subscription page.
 
 
-\subsubsection{Adding Custom References}
+\paragraph{Adding Custom References}
 
 For Windows, Linux, and Web releases the simplest way of adding subscriptions would be to provide links to external 
 services, that're specialized on crowdfunding initiatives:
@@ -22,7 +21,7 @@ services, that're specialized on crowdfunding initiatives:
   \item  and many others...
 \end{itemize}
 
-\noindent Implementation of external links is possible by `url\_launcher`-package:
+\noindent Implementation of external links is possible by \q{url\_launcher}-package:
 
 \begin{lstlisting}
 import 'package:url_launcher/url_launcher.dart';
@@ -45,7 +44,7 @@ class OtherWidget extends StatelessWidget {
 \end{lstlisting}
 
 
-\subsubsection{Enabling Google/Apply Pay}
+\paragraph{Enabling Google/Apply Pay}
 
 In-app purchases are required for mobile app stores since it cannot be used any third-party systems to handle payments
 by the terms and conditions of marketplaces.
@@ -62,7 +61,7 @@ There would be a couple of steps to verify your identity, add bank account, sign
 As an example, for Apple Store:
 \begin{enumerate}
   \item Activate paid apps on page: \href{https://appstoreconnect.apple.com/agreements}{https://appstoreconnect.apple.com/agreements}
-  \item Register Bundle ID: \href{https://developer.apple.com/account/resources/identifiers/bundleId/add/bundle}{https://developer.apple.com/account/resources/identifiers/bundleId/add/bundle}
+  \item Register Bundle ID: \href{https://developer.apple.com/account/resources/identifiers/bundleId/add/bundle}{https://developer.apple.com/.../add/bundle}
   \item Enroll small-business support: \href{https://developer.apple.com/app-store/small-business-program/enroll/}{https://developer.apple.com/app-store/small-business-program/enroll/}
   \item Fulfill app definition: \href{https://appstoreconnect.apple.com/apps}{https://appstoreconnect.apple.com/apps}
   \item Via "Features" > "In-App Purchases" [Create] and "Subscriptions" [Create] declare costs
@@ -70,5 +69,4 @@ As an example, for Apple Store:
 
 In-app purchases are differentiated by their applicability: consumables (applicable multiple times), non-consumables 
 (once), subscriptions (interval payments). And three different ways to integrate them into Flutter application:
-`in\_app\_purchase`, `flutter\_inapp\_purchase`, `purchases\_flutter`.
-
+\q{in\_app\_purchase}, \q{flutter\_inapp\_purchase}, \q{purchases\_flutter}.

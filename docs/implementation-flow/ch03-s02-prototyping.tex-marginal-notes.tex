@@ -1,12 +1,11 @@
 % Copyright 2023 The terCAD team. All rights reserved.
 % Use of this content is governed by a CC BY-NC-ND 4.0 license that can be found in the LICENSE file.
 
-\subsection{[TBD] Adding Marginal Notes of Flutter usage}
-\markboth{Implementing Core Functionality}{Adding Marginal Notes of Flutter usage}
+% Parts of "Prototyping" subsection
+\subsection{[TBD] Marginal Notes of Flutter usage}
 
-[TBD]
 
-\subsubsection{Mixing `PageView`' and `PageController`}
+\subsubsection{Mixing 'PageView' and 'PageController'}
 
 Now we're going to add three pages controlled by swiping left and right for adding new bills, we'll use a combination 
 of PageView and PageController. 
@@ -175,8 +174,8 @@ class Page2 extends StatelessWidget { /* ... */ }
 class Page3 extends StatelessWidget { /* ... */ }
 \end{lstlisting}
 
-By combining both solutions, some irritating behavior happens, - we cannot tab from `Page1' to `Page3' 
-(more than one position) since `pageController` after the first movement will send an update via `onPageChanged`. 
+By combining both solutions, some irritating behavior happens, - we cannot tab from \q{Page1} to \q{Page3} 
+(more than one position) since \q{pageController} after the first movement will send an update via \q{onPageChanged}. 
 Hopefully, we do have a solution for that by introducing delayed trigger to proceed with switching till the chosen tab:
 
 \begin{lstlisting}
@@ -209,12 +208,12 @@ void switchTab(int newIndex) {
 \end{lstlisting}
 
 
-\subsubsection{Adding `AppBar` as dots to `TabBar`}
+\subsubsection{Adding 'AppBar' as dots to 'TabBar'}
 
 In some cases we do not need a fully defined navigation bar (with titles and icons), just dots to identify that
 current block can be swiped or changed by clicking on any of dots. To implement them it can be used either existing 
-external components (and added to the page as Widget), or by defining `indicator`-property of `TabBar`-widget with
-custom implementation of `Decoration`-class. Let's paint our dots:
+external components (and added to the page as Widget), or by defining \q{indicator}-property of \q{TabBar}-widget with
+custom implementation of \q{Decoration}-class. Let's paint our dots:
 
 \begin{lstlisting}
 // ./lib/widgets/_wrappers/dots_indicator_decoration.dart
@@ -261,7 +260,7 @@ class _CustomTabIndicatorPainter extends BoxPainter {(*@ \stopnumber @*)
 }
 \end{lstlisting}
 
-\noindent Additionally, we might hide the usage of our custom indicator by extending from `TabBar`:
+\noindent Additionally, we might hide the usage of our custom indicator by extending from \q{TabBar}:
 
 \begin{lstlisting}
 // ./lib/widgets/_wrappers/dots_tab_bar_widget.dart
@@ -289,10 +288,10 @@ class DotsTabBarWidget extends TabBar {
           controller: tabController,
           mouseCursor: SystemMouseCursors.click,
           onTap: onTap,
-          // hook, since `tabs` is required
+          // hook, since 'tabs' is required
           tabs: tabList, // getter overrides the flow
         );
-  // Convert children of `PageView` to a clickable area 
+  // Convert children of 'PageView' to a clickable area 
   @override
   get tabs =>
       tabList.map((tab) => SizedBox(width: indent, height: indent)).toList();
@@ -314,13 +313,13 @@ class DotsTabBarWidget extends TabBar {
 \subsubsection{Using Shared Preferences}
 
 To use shared preferences (store / retrieve string values) in Flutter, we should install the proper package via
-`flutter pub add shared\_preferences` command. To operate with preferences it would be better to use mixin --
+\q{flutter pub add shared\_preferences} command. To operate with preferences it would be better to use mixin --
 a powerful way in Flutter to reuse code across multiple classes by combining the members of the mixin with the 
 classes that use it (a composition without inheritance).
 
-A mixin is defined by using the `mixin`-keyword followed by its name and a set of members, such as properties, methods, 
+A mixin is defined by using the \q{mixin}-keyword followed by its name and a set of members, such as properties, methods, 
 and getters/setters. It cannot be instantiated on its own; instead, it is meant to be mixed into other classes 
-using the `with`-keyword (it inherits all the members from the mixin). This allows the class to access and use the 
+using the \q{with}-keyword (it inherits all the members from the mixin). This allows the class to access and use the 
 properties and methods defined in the mixin as if they were part of its own implementation.
 
 \begin{lstlisting}
@@ -348,16 +347,16 @@ class ExpensesTabState<T extends ExpensesTab> extends State<T>
   // ... properties and constructor
   (*@ \startnumber{10} @*)
   @override
-  void initState() { // We cannot make `initState` async
+  void initState() { // We cannot make \q{initState} async
     account = widget.account;
     super.initState();
-    // Waiting for the value, then apply via `setState`
+    // Waiting for the value, then apply via \q{setState}
     getPreference('account')
         .then((value) => setState(() => account ??= value));
   }
 
   void updateStorage() {
-    // On `save`-action store preferences
+    // On \q{save}-action store preferences
     setPreference(prefAccount, account ?? '');
 // ... other code
 \end{lstlisting}
@@ -382,7 +381,7 @@ class TransactionLog {
   }
 
   static void save(dynamic content) async {
-    // Under the hood `content.toString()` evaluates
+    // Under the hood \q{content.toString()} evaluates
     (await _logFle).writeAsString("$content\n", mode: FileMode.append);
   }
 
@@ -423,7 +422,7 @@ class AppData extends ChangeNotifier {
 \subsubsection{Streaming Local Storage}
 
 File usage is limited by systems where our application can be used as installed instance. To support web browsers
-we may rely on Local Storage. Instead of using `dart:html`, let's proceed with known `shared\_preferences` (\cref{img:mn-preferences}).
+we may rely on Local Storage. Instead of using \q{dart:html}, let's proceed with known \q{shared\_preferences} (\cref{img:mn-preferences}).
 
 \begin{lstlisting}
 import 'package:flutter/foundation.dart' show kIsWeb;
@@ -468,7 +467,7 @@ static Future<bool> load(AppData store) async {
 }
 \end{lstlisting}
 
-\img{prototyping/local-storage-web}{Usage of Local Storage by Application}{img:img:mn-preferences}
+\img{prototyping/local-storage-web}{Usage of Local Storage by Application}{img:mn-preferences}
 
 
 \subsubsection{Using Dynamic Structures}
@@ -519,7 +518,7 @@ class MyClass {
     'name': name,
     'timestamp': timestamp.toIso8601String(),
   };
-  // By using 'dart:convert' transform `Map`-object
+  // By using 'dart:convert' transform \q{Map}-object
   String toString() {
     return json.encode(toJson());
   }
@@ -664,7 +663,7 @@ To set icon with background:
 <vector><!-- ... vector image --></vector>
 \end{lstlisting}
 
-And it has to be created `ic\_launcher.png` and `ic\_launcher\_round.png` icons for all other formats (mipmap-hdpi, 
+And it has to be created \q{ic\_launcher.png} and \q{ic\_launcher\_round.png} icons for all other formats (mipmap-hdpi, 
 mipmap-mdpi, ...) to support less than Android SDK 26 versions.
 
 
@@ -701,7 +700,7 @@ class AppTheme extends ValueNotifier<ThemeMode> with SharedPreferencesMixin {
 }
 \end{lstlisting}
 
-\noindent The simples way to observe value changes can be done via `context.watch`:
+\noindent The simples way to observe value changes can be done via \q{context.watch}:
 
 \begin{lstlisting}
 void main() {
@@ -734,7 +733,7 @@ class MyAppState extends State<MyApp> {
 Provider.of<AppTheme>(context, listen: false).updateState(value);
 \end{lstlisting}
 
-\noindent The only this that the usage of asynchronous `getPreference` leads to a not needed complexity, and 
+\noindent The only this that the usage of asynchronous \q{getPreference} leads to a not needed complexity, and 
 additional computational efforts:
 
 \begin{lstlisting}[language=bash]
@@ -755,8 +754,5 @@ mixin SharedPreferencesMixin {
 \end{lstlisting}
 
 But we should be very accurate with what we're placing into a static variable, since, as an example, 
-caching `AdaptiveWindowType` for our `ThemeHelper` 
-(
-\href{https://github.com/lyskouski/app-finance/commit/615db383715e6c7ed6c52919458343405cfdfe72}{https://github.com/lyskouski/app-finance/commit/615db383715e6c7ed6c52919458343405cfdfe72}
-) leads to an infinite loop of re-rendering widgets:
+caching \q{AdaptiveWindowType} for our \q{ThemeHelper} leads to an infinite loop of re-rendering widgets:
 \href{https://github.com/lyskouski/app-finance/issues/112}{https://github.com/lyskouski/app-finance/issues/112}.

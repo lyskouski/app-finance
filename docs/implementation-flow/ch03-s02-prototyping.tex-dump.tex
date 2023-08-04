@@ -2,7 +2,6 @@
 % Use of this content is governed by a CC BY-NC-ND 4.0 license that can be found in the LICENSE file.
 
 \subsection{[TBD] Prototyping}
-\markboth{Implementing Core Functionality}{Prototyping}
 
 Question: how to apply MainAxisAlignment.spaceBetween only for the last item
 
@@ -151,8 +150,8 @@ We then use the maxHeight value to set the desired heights of the nested Contain
 we set the heights to be a percentage of the maximum height.
 
 By using the LayoutBuilder widget, you can dynamically calculate and assign the maximum height to the nested 
-Container widgets based on the available space within their parent widget.
-\\
+Container widgets based on the available space within their parent widget.\\
+
 That leads to our first error: The following assertion was thrown during performLayout(): 
 BoxConstraints forces an infinite width.
 
@@ -266,37 +265,6 @@ maximum height. The alignment property is set to Alignment.topCenter to align th
 
 Using the combination of Expanded and FractionallySizedBox, the nested Container widgets will expand to occupy 
 the available height based on the provided height factors.
-
-
-Question: flutter default value in constructor
-
-Answer: In Flutter, you can assign default values to constructor parameters using the = operator. 
-
-\begin{lstlisting}
-class MyClass {
-  final int myValue;
-
-  MyClass({this.myValue = 10});
-}
-\end{lstlisting}
-
-In the example above, the MyClass constructor has a parameter myValue with a default value of 10. 
-If no value is provided for myValue when creating an instance of MyClass, it will default to 10.
-
-You can then create an instance of MyClass with or without providing a value for myValue:
-
-\begin{lstlisting}
-// Using the default value
-MyClass instance1 = MyClass();
-print(instance1.myValue); // Output: 10
-
-// Providing a custom value
-MyClass instance2 = MyClass(myValue: 20);
-print(instance2.myValue); // Output: 20    
-\end{lstlisting}
-
-In the first case, where no value is provided for myValue, it takes on the default value of 10. In the second case, 
-a custom value of 20 is provided, which overrides the default value.
 
 
 Question: What's the element for indent in a list of items
@@ -659,38 +627,6 @@ horizontally and taking up the full width of the screen.
 Remember to import the necessary dependencies (import 'package:flutter/material.dart';) and wrap your app with 
 the appropriate MaterialApp and Scaffold widgets.
 
-
-Question: First business logic
-if endDate <= currentDate then return 1
-if startDate = currentDate then return 0
-else return related float
-
-Answer: Based on your description, you can create a function that takes startDate, endDate, and currentDate as 
-parameters and returns a float value based on the conditions you mentioned. Here's an example implementation:
-
-\begin{lstlisting}
-double calculateValue(DateTime startDate, DateTime endDate, DateTime currentDate) {
-  if (endDate.isBefore(currentDate) || endDate.isAtSameMomentAs(currentDate)) {
-    return 1.0;
-  } else if (startDate.isAtSameMomentAs(currentDate)) {
-    return 0.0;
-  } else {
-    double totalDays = endDate.difference(startDate).inDays.toDouble();
-    double currentDays = currentDate.difference(startDate).inDays.toDouble();
-    return currentDays / totalDays;
-  }
-}
-\end{lstlisting}
-
-In this example, the calculateValue function takes three DateTime parameters: startDate, endDate, and currentDate.
-
-If endDate is less than or equal to currentDate, it means the end date has passed or is the same as 
-the current date, so we return 1.0.
-If startDate is the same as currentDate, we return 0.0.
-Otherwise, we calculate the float value based on the ratio of the number of days between startDate and 
-currentDate to the total number of days between startDate and endDate.
-
-To get the current date in Flutter, you can use the DateTime class along with the DateTime.now() method. 
 
 Question: debug by plotting into console values
 
@@ -1581,6 +1517,7 @@ when the item is clicked, and the onHover callback is triggered when the item is
 Inside the InkWell, we have a Container that applies a background color to the item when it is selected or hovered. 
 You can modify the color and opacity to match your desired highlighting effect.
 
+
 Question: how to identify horizontal layout
 
 Answer: To identify whether a Flutter widget is using a horizontal layout, you can check the constraints and layout 
@@ -1637,6 +1574,7 @@ if (MediaQuery.of(context).orientation == Orientation.landscape) {
 
 In this example, the MediaQuery.of(context).orientation provides the current device orientation, and you can use it 
 to conditionally render different layouts.
+
 
 Question: Flutter Container overflow with dots
 
@@ -1723,6 +1661,7 @@ position of the tooltip, and height to set a specific height for the tooltip.
 
 By wrapping the container with the Tooltip widget, you can provide additional contextual information or descriptions 
 to the user when interacting with the container in your Flutter application.
+
 
 Question: how to extend TextTheme with own parameters
 
@@ -1879,6 +1818,7 @@ MaterialApp(
 By using this approach, you can generate a custom TextTheme by invoking the updated utility function that accepts a 
 nullable TextTheme and returns a nullable TextTheme.
 
+
 Question: How to resolve overflow on complex container
 
 Answer: To resolve overflow issues on a complex container, you can use various techniques to handle the content 
@@ -1903,6 +1843,7 @@ based on those constraints.
 
 Remember to analyze your container's structure, review the content, and apply the appropriate techniques to handle 
 the overflow effectively. It may require a combination of approaches depending on the complexity of the container.
+
 
 Question: how to use OverflowBox 
 
@@ -1930,6 +1871,7 @@ be scaled down or clipped to fit within those bounds.
 Remember to consider the overall layout and structure of your container, as well as the relationship between the child 
 widget and its parent, to effectively handle the overflow and maintain a visually pleasing UI.
 
+
 Question: check that nullable variable is not set
 
 Answer: To check if a nullable variable is not set (i.e., null), you can use the null-aware operator ?. in Dart. 
@@ -1956,82 +1898,6 @@ continues with the property access or method invocation.
 
 By using the == operator to check for null, you can determine if a nullable variable is not set and handle it 
 accordingly in your code.
-
-
-Question: how to use flutter pub run grinder
-
-Answer: To use the flutter pub run grinder l10n command, you need to have the grinder package added as a dev 
-dependency in your pubspec.yaml file. Here's how you can set it up:
-
-Open your project's pubspec.yaml file.
-
-Locate the dev\_dependencies section.
-
-Add the grinder package as a dev dependency:
-
-\begin{lstlisting}
-dev_dependencies:
-  grinder: ^1.0.0
-\end{lstlisting}
-
-Save the pubspec.yaml file.
-
-Once you have the grinder package added, you can run the flutter pub run grinder l10n command to generate the 
-localized resources for your Flutter app.
-
-Note: The grinder package is a task runner for Dart, and it provides a convenient way to automate repetitive tasks 
-in your project. In this case, it is used to generate localized resources based on the localization configuration 
-in your project.
-
-Make sure you have the necessary localization configuration set up in your Flutter project. Typically, this 
-involves adding localization files (e.g., .arb files) and configuring them in your pubspec.yaml file.
-
-After setting up the grinder package and the localization configuration, you can run the flutter pub run grinder 
-l10n command in your project's root directory using a terminal or command prompt.
-
-To install the grinder package from the console, you can use the following command:
-dart pub global activate grinder
-
-This command activates the grinder package globally on your system, making it available for use in any Dart project.
-
-Make sure you have Dart SDK installed and added to your system's PATH environment variable before running the 
-above command. You can verify the installation by running dart --version in the console, which should display the 
-Dart SDK version if it is properly installed.
-
-Once the installation is complete, you can use the grinder command in the console to run tasks defined in a 
-Grindfile.dart script within your project.
-
-For example, you can run grinder l10n to execute the l10n task defined in the Grindfile.dart script, assuming 
-you have set up the Grindfile.dart with the necessary tasks.
-
-Remember that grinder is a task runner for Dart, and you need to have a valid Grindfile.dart script with the 
-required tasks defined in order to use it effectively.
-
-dart run grinder:init - to generate grinder file with basic construction.
-
-grinder show list of tasks: dart run grinder -h
-
-Question: Flutter check that variable is a function
-
-Answer: In Flutter, you can use the is operator to check if a variable is a function. 
-
-\begin{lstlisting}
-void main() {
-  var variable = () {
-    // Function body
-  };
-
-  if (variable is Function) {
-    print('Variable is a function');
-  } else {
-    print('Variable is not a function');
-  }
-}
-\end{lstlisting}
-
-In this example, the is operator is used to check if the variable is of type Function. If it is, the condition 
-variable is Function will evaluate to true, indicating that the variable is a function. Otherwise, it will 
-evaluate to false, indicating that the variable is not a function.
 
 
 Question: Flutter optional parameters to the function
@@ -2566,7 +2432,7 @@ In this example, we're using onGenerateRoute to handle routes that start with "/
 We extract the UUID from the route path by removing the common prefix, and then we create and return the 
 appropriate widget, in this case, HomePage, with the extracted UUID.
 
-Question: `[{id: 1}, {id: 2}]` how to find by id
+Question: \q{[{id: 1}, {id: 2}]} how to find by id
 
 Answer: To find an item in a list based on its ID, you can use the firstWhere method with a condition that 
 matches the desired ID. 
@@ -2633,8 +2499,8 @@ class AccountAddPageState<T extends AccountAddPage> extends AbstractPageState<Ac
 
 abstract class AbstractPage<T> extends StatefulWidget {
   int selectedMenu = 0;
-  // Be accurate with `UniqueKey`-method usage for nested widgets
-  // That will trigger `initState` each time of store updates 
+  // Be accurate with \q{UniqueKey}-method usage for nested widgets
+  // That will trigger \q{initState} each time of store updates 
   AbstractPage() : super(key: UniqueKey());
 }
 

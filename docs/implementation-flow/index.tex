@@ -39,8 +39,8 @@
 \crefname{table}{Table}{Tables}
 \usepackage{multicol}
 
-\usepackage{lib/customization}
-\usepackage{lib/code-style}
+\usepackage{_lib/customization}
+\usepackage{_lib/code-style}
 
 \sloppy
 
@@ -58,8 +58,8 @@
 \fancyhead[RO]{\thepage}
 
 \author{Viachaslau Lyskouski}
-\title{Flutter Serverless Application Creation}
-%\subtitle{Sampling on Life-Cycles of Financial Accounting Application}
+\title{Flutter for Serverless Applications}
+%\subtitle{Sampling on Financial Accounting App Life-Cycles}
 \date{2023}
 
 \begin{document}
@@ -82,48 +82,57 @@
 
 %\listoffigures 
 
-%\listoftables 
+%\listoftables
 
-%\input{./example}
-%\markdownInput{./example.md}
-
+\newpage
 \section*{Introduction}
 \addcontentsline{toc}{section}{Introduction}
 \input{./ch-intro}
 
 \newpage
 \section{[TBD] Bootcamping Dart and Flutter}
-\input{./ch00-flutter}
+\input{./ch00-s01-dart}
+\input{./ch00-s01-dart.tex-dump}
+\input{./ch00-s02-flutter}
+\input{./ch00-s02-flutter.tex-dump}
 
 \newpage
 \section{[TBD] Observing Serverless Computing}
 \input{./ch01-serverless}
 
 \newpage
-\section{[TBD] Conceptualizing Design for Application}
-\input{./ch02-s01-insights}
+\section{[TBD] Conceptualizing Design}
+\input{./ch02-concept}
 
 \newpage
 \section{[WIP] Implementing Core Functionality}
 \input{./ch03-s01-first-steps}
 \include{./ch03-s02-prototyping}
-\include{./ch03-s03-marginal-notes}
-\include{./ch03-s04-deployment}
-\include{./ch03-s05-subscription}
-
-\include{./ch03-dump} % TBD: refactor, and adjust to context of marginal notes
+\include{./ch03-s02-prototyping.tex-dump}
+\include{./ch03-s02-prototyping.tex-marginal-notes}
+\include{./ch03-s02-subscription}
 
 \newpage
-\section{[TBD] Unleashing Unparalleled Features}
-\input{./ch04-features}
+\section{[WIP] Defining Quality Gates}
+\input{./ch04-quality-gates}
+\input{./ch04-s01-tests}
+\include{./ch04-s02-automation}
+\input{./ch04-s03-telemetry}
+\include{./ch04-s04-deployment}
+
+\newpage
+\section{[TBD] Unleashing Features}
+\input{./ch05-features}
 
 \newpage
 \section{[WIP] Optimizing UI/UX Flow}
-\input{./ch05-s01-autofocus}
+\input{./ch06-s01-autofocus}
 
 \newpage
 \section{[TBD] Reaching Production-Ready Stage}
-\input{./ch06-production}
+\input{./ch07-production}
+
+\include{./references}
 
 \thispagestyle{empty}
 

@@ -42,8 +42,8 @@ void add(String value, [int? id]);
 \subsubsection{Applying Getters and Setters for Class Variables}
 
 By migrating our data structures to class objects it can be used additionally getter and setter for class variables.
-That will help us to cover, as an example, `description`-attribute for Budget structures by showing 
-`Spent Amount / Total Budget`, and for `details`-attribute - `Left Amount`.
+That will help us to cover, as an example, \q{description}-attribute for Budget structures by showing 
+"Spent Amount / Total Budget", and for \q{details}-attribute - "Left Amount".
 
 \begin{lstlisting}
 class MyClass {
@@ -69,15 +69,15 @@ void main() {
 }
 \end{lstlisting}
 
-In the example above, the `MyClass`-class has a private variable `\_name`. The getter for `\_name` is defined 
+In the example above, the \q{MyClass}-class has a private variable \q{\_name}. The getter for \q{\_name} is defined 
 using the get keyword, and the setter is defined using the set keyword. The getter returns the value of 
-`\_name`, and the setter sets the value of `\_name` to the provided value. By using that approach we can control 
+\q{\_name}, and the setter sets the value of \q{\_name} to the provided value. By using that approach we can control 
 the access to class variables and perform additional logic or validation when getting or setting their values.
 
-One more question, is how to set `DateTime.now()` inside a constructor as default value, since, by defining it inside
+One more question, is how to set \q{DateTime.now()} inside a constructor as default value, since, by defining it inside
 the constructor, an error would be taken: The default value of an optional parameter must be constant.
 
-So, to set a default value for a DateTime variable as the current date and time, we can use the `DateTime.now()` method 
+So, to set a default value for a DateTime variable as the current date and time, we can use the \q{DateTime.now()} method 
 during the initialization of the variable.
 
 \begin{lstlisting}
@@ -112,9 +112,9 @@ of type '(() => BudgetAppData)?' of 'orElse') and add orElse operator as followi
 
 \subsubsection{Differentiating Map Types}
 
-`HashMap`, as named, provides access to items by their hash in (potentially amortized) constant time.
+\q{HashMap}, as named, provides access to items by their hash in (potentially amortized) constant time.
 
-`SplayTreeMap`' is based on a self-balancing binary tree that allows most single-entry operations in amortized 
+\q{SplayTreeMap}' is based on a self-balancing binary tree that allows most single-entry operations in amortized 
 logarithmic time.
 
 \begin{lstlisting}

@@ -1,0 +1,384 @@
+% Copyright 2023 The terCAD team. All rights reserved.
+% Use of this content is governed by a CC BY-NC-ND 4.0 license that can be found in the LICENSE file.
+
+\subsection{Automating Quality Gates}
+\markboth{Defining Quality Gates}{Automating Quality Gates}
+
+Writing tests is not sufficient without a defined / automated continues integration. To achieve a robust quality check, 
+we need to implement a plethora of automations that gradually alleviate the need for a manual intervention. Futhermore, 
+Flutter provides a couple of commands to check the code itself:
+
+\begin{itemize}
+  \item flutter analyze -- static analysis;
+  \item dart format -- apply rules from \q{analysis\_options.yaml}, described on the page:
+  \href{https://dart.dev/effective-dart/style\#formatting}{https://dart.dev/effective-dart/style\#formatting};
+  \item dart fix -- check points of an improvement and optimisation.
+\end{itemize}
+
+
+\subsubsection{Creating Git Hooks}
+
+Someone might think that additional checks before \q{git commit} or \q{git push} will slowdown the development process, 
+contrary that minimizes pushes back and forward to resolve failures on CI/CD build procedure. For a really big projects
+that might take hours in contrast with seconds on a local environment. Certainly, the automation process must be 
+carried out accurately and diligently; otherwise, it will become a constant source of frustration.
+
+Implementation of git hooks is mostly a preparation of \q{bash}-scripts for execution, so, let's discuss here 
+\q{pre-push}-file (since \q{pre-commit}-file contains almost the same logic for another scope of commands).
+
+\begin{lstlisting}[language=bash]
+#!/bin/bash
+status=0
+# Trigger tests
+flutter test 
+# Take an exit code from lastly executed command
+status_test=$? 
+# Verify command results
+if [ $status_test -ne 0 ]; then
+  echo "[x] flutter test - failed."
+  status=1
+else
+  echo "[+] flutter test - passed."
+fi
+# Other than zero means a failure
+exit $status
+\end{lstlisting}
+
+\noindent And we'll use Grinder (\ref{a-grinder}) to install our hooks:
+
+\begin{lstlisting}
+// ./tool/grind.dart
+import 'dart:io';
+import 'package:path/path.dart' as path;
+import 'package:grinder/grinder.dart';
+
+main(args) => grind(args);
+
+@Task('Install Git Hooks')
+installGitHooks() {
+  final currDir = Directory('./');
+  final hookDir = Directory('./.git/hooks');
+  final hookNames = ['pre-commit', 'pre-push'];
+  for (final name in hookNames) {
+    log('Applying: $name');
+    final sourceFile = File(path.join(currDir.absolute.path, name));
+    sourceFile.copySync(path.join(hookDir.absolute.path, name));
+  }
+  log('Git Hooks applied!');
+}
+\end{lstlisting}
+
+\noindent After that, by using a command line, we may check what's been done:
+
+\begin{lstlisting}[language=bash]
+> dart run grinder -h
+Dart workflows, automated.
+
+Usage: grinder [options] [<tasks>...]
+
+Global options:
+  --no-color           Whether to use terminal colors.
+  --version            Reports the version of this tool.
+  -h, --help           Print this usage information.
+
+Available tasks:
+  install-git-hooks    Install Git Hooks
+
+> dart run grinder install-git-hooks
+  grinder running install-git-hooks
+  
+  install-git-hooks
+    Applying: pre-commit
+    Applying: pre-push
+    Git Hooks applied!
+  
+  finished in 0.0 seconds
+
+> git add .
+> git commit -m "Sample Commit"
+Computing fixes in app-finance (dry run)...
+Nothing to fix!
+Formatted 56 files (0 changed) in 0.42 seconds.
+
+[+] dart fix - passed.
+[+] dart format - passed.
+Sample Commit
+ 3 files changed, 65 insertions(+), 90 deletions(-)
+
+> git push
+# ... logs from tests
+[+] flutter test - passed.
+# ... other logs from git
+\end{lstlisting}
+
+
+\subsubsection{Adding Grinder Tasks} \label{a-grinder}
+
+Grinder is a task runner for Dart, helping to define and automate common project workflows, as said on its main page
+\href{https://pub.dev/packages/grinder}{https://pub.dev/packages/grinder}.  It can be either added via \q{flutter pub 
+add grinder --dev}-command, or by editing \q{pubspec.yaml}-file  (and IDE will install the dependency automatically):
+
+\begin{lstlisting}[language=yaml]
+## ./pubspec.yaml
+dev_dependencies:
+  grinder: ^0.9.4
+\end{lstlisting}
+
+In addition, grinder package can be made globally available by using \q{dart pub global activate grinder}-command. 
+To generate a skeleton of the tasks' code structure (if missing) follow \q{dart run grinder:init}, and 
+to view all of the tasks - \q{dart run grinder -h}.
+
+As one of the project workflow automation it can be mentioned a localization task 
+(\href{https://docs.flutter.dev/accessibility-and-localization/internationalization}{https://docs.flutter.dev/accessibility-and-localization/internationalization}). 
+Just to recap, in Flutter it's used Application Resource Bundle(s) (\q{.arb}-files) for internationalizing apps. 
+So, not to create a mess in those files, it's better to have an automation to rearrange our labels alphabetically
+(in \q{/lib/l10n/app\_*.arb}-files). Lately, the automation can be also extended by checking consistency (enter missing 
+labels across the \q{.arb}-files), exporting labels to \q{.scv}-file for a simplification of a translation process, and 
+importing them from \q{.scv}-file back to \q{.arb}-files.
+
+\begin{lstlisting}
+// ./tool/grind.dart
+import './localization.dart' as locale;
+
+@Task('Update Translations by sorting values alphabetically')
+sortTranslations() {
+  // Get all additional arguments for the command
+  TaskArgs args = context.invocation.arguments;
+  // Run: dart run grinder sort-translations --quiet
+  bool isQuiet = args.getFlag('quiet'); // Returns 'true' if set
+  bool isChanged = locale.sortArbKeys('./lib/l10n');
+  if (isChanged && !isQuiet) {
+    fail('Changes detected'); // (!) to handle failure
+  }
+}
+\end{lstlisting}
+
+\begin{lstlisting}
+// ./tool/localization.dart
+import 'dart:convert';
+import 'dart:io';
+import 'package:grinder/grinder.dart';
+
+bool sortArbKeys(String path) {
+  log('Checking $path'); // Add to console output the text
+  final arbDir = Directory(path);
+  bool isChanged = false;
+  // Check, that folder is not missing
+  if (!arbDir.existsSync()) {
+    log('Error: Directory not found');
+    return true;
+  }
+  // Loop per each file there
+  for (var file in arbDir.listSync()) {
+    // Take only .arb-files
+    if (file is File && file.path.endsWith('.arb')) {
+      log('- ${file.path}');
+      // '|=' is a boolean OR assignment
+      isChanged |= sortArbFileKeys(file);
+    }
+  }
+  log(isChanged ? 'Labels reordered' : 'Nothing was changed');
+  return isChanged;
+}
+
+bool sortArbFileKeys(File file) {
+  // Load data from file
+  final jsonContent = file.readAsStringSync();
+  final arbMap = json.decode(jsonContent) as Map<String, dynamic>;
+  // Sort labels
+  final entries = arbMap.entries.toList();
+  entries.sort((a, b) {
+    // '@key' should go after 'key'
+    final aKey = a.key.startsWith('@') ? a.key.substring(1) : a.key;
+    final bKey = b.key.startsWith('@') ? b.key.substring(1) : b.key;
+    if (aKey == bKey) {
+      if (a.key.startsWith('@')) {
+        return 1;
+      }
+      if (b.key.startsWith('@')) {
+        return -1;
+      }
+    }
+    return aKey.compareTo(bKey);
+  });
+  final sortedArbMap = Map.fromEntries(entries);
+  // Write back to the file with preserved indentation
+  const encoder = JsonEncoder.withIndent('    ');
+  var jsonOutputContent = encoder.convert(sortedArbMap);
+  file.writeAsStringSync(jsonOutputContent);
+  return jsonOutputContent != jsonContent; // Check if changed
+}
+\end{lstlisting}
+
+
+\subsubsection{Running GitHub Workflows}
+
+Since we've done with our automation for the local environment, let's go further and define quality gates on GitHub 
+repository.
+
+\begin{lstlisting}[language=yaml]
+## ./.github/workflows/dart.yml
+# Name would be shown in Actions-tab
+name: Flutter/Dart Quality Gates 
+# Trigger options
+on:
+  push: # Trigger after a merge
+    branches: [ "main" ] # limit to main-branch
+  pull_request: # Trigger on pull-request
+    branches: [ "main" ] # if the target is main-branch
+
+jobs:
+  build:
+    runs-on: ubuntu-latest # Environment for execution
+
+    steps:
+      - uses: actions/checkout@v3 # Checkout from repository
+      - uses: subosito/flutter-action@v2 # Install Flutter/Dart
+        with:
+          channel: 'stable'
+      - run: flutter --version # Show version in logs
+
+      - name: Install Dependencies
+        run: flutter pub get
+
+      - name: Verify Formatting
+        run: dart format --output=none --set-exit-if-changed .
+
+      - name: Check Localizations ordering
+        run: dart run grinder sort-translations
+
+# Disabled by having too many failures by now )) 
+#      # Consider passing '--fatal-infos' to be strict
+#      - name: Analyze Project Source
+#        run: flutter analyze
+
+      - name: Run tests
+        run: flutter test
+\end{lstlisting}
+
+\noindent By preparing a pull-request we would see next representative validations flow 
+(\cref{img:pt-github}, \cref{img:pt-github-details})):
+
+\img{prototyping/github-check}{GitHub Toolbar on pull-request}{img:pt-github}
+
+\img{prototyping/github-check-details}{GitHub Workflow Actions details}{img:pt-github-details}
+
+
+\subsubsection{Commending with Badges} \label{a-badges}
+
+One of the ways to enhance the current state is by acknowledging and appreciating our efforts through Badges of Workflow 
+Status and Code Coverage. These badges serve as a testament to our commitment to quality and efficiency, motivating us 
+to continually improve and achieve even greater heights.
+
+\begin{lstlisting}[language=bash]
+## ./README.md
+# Notation of an image with tooltip "Build Status" 
+![Build Status](https://github.com/{user}/{repo}/actions/workflows/{workflow-name}.yml/badge.svg?branch=main)
+# Notation of an image with a link to our repository
+![Tests Coverage](https://{user}.github.io/{repo}/coverage_badge.svg)](https://github.com/{user}/{repo})
+\end{lstlisting}
+
+\q{Build Status} is supported out of the box (OOTB) by GitHub, just it's needed to replace \q{\{user\}} (by account name
+on GitHub), \q{\{repo\}} (repository name), and \q{\{workflow-name\}} (name of the file in \q{.github/workflows}-folder).
+
+\q{Test Coverage} is needed to be cooked (there are many ways to do that and none of them is universal), and we would 
+start from creating \q{gh-pages} in our repository (drop hooks from \q{.git/hooks}-folder if they've been enabled):
+
+\begin{lstlisting}[language=bash]
+> git switch --orphan gh-pages
+> git commit --allow-empty -m "Initial commit"
+> git push -u origin gh-pages
+> git checkout main
+\end{lstlisting}
+
+\noindent That will create for us a special branch that is accessible via \q{https://\{user\}.github.io/\{repo\}}-link. 
+Then we need to extend our GitHub Workflow by adding a section with uploading artifacts:
+
+\begin{lstlisting}[language=yaml]
+## ./.github/workflows/dart.yml
+# Updating previously created step by a conditional execution
+- name: Run tests
+  run: |
+    if [[ "${{ github.ref }}" == "refs/heads/main" ]]; then
+        flutter test --coverage
+        dart run grinder coverage-badge # New Grinder task to generate '.svg'-file with coverage
+    else
+        flutter test
+    fi
+# New section to upload artifacts
+- name: Update Coverage Badge
+  # Get default branch variable and compare with current
+  if: github.ref == format('refs/heads/{0}', github.event.repository.default_branch)
+  uses: peaceiris/actions-gh-pages@v3 # Special action to upload artifacts
+  with:
+    github_token: ${{ secrets.GITHUB_TOKEN }} # Generated automatically by GitHub
+    publish_dir: ./coverage # Folder to upload
+\end{lstlisting}
+
+\img{prototyping/badges}{Generated README.md for the repository}{img:pt-badge}
+
+Everything is done (\cref{img:pt-badge})... almost. Coverage 46\% is unbelievable for written tests. The problem is 
+that untouched (by tests) files are not included into the report. And, additionally, widget tests cover most of the 
+files without checking them. So, let's separate type of tests' execution, and provide additional Grinder task to 
+touch all our files for the coverage report.
+
+\begin{lstlisting}[language=yaml]
+## ./.github/workflows/dart.yml
+- name: Run tests
+  run: |
+    if [[ "${{ github.ref }}" == "refs/heads/main" ]]; then
+      dart run grinder full-coverage
+      flutter test --coverage test/unit
+      flutter test test/widget
+      dart run grinder coverage-badge
+    else
+      flutter test
+    fi
+\end{lstlisting}
+
+\begin{lstlisting}
+// ./tool/coverage.dart
+import 'dart:io';
+void scanDirectory(Directory directory, List<String> files) {
+  directory.listSync(recursive: true).forEach((entity) {
+    if (entity is File && // Check that it's a file
+        entity.path.endsWith('.dart') && // Include only Dart
+        !entity.path.endsWith('.g.dart')) { // Code generation
+      files.add(entity.absolute.path
+        .replaceAll(root.absolute.path, '') // Cut out root prefix
+        .replaceAll('\\', '/')); // Fix for Windows' systems
+    } else if (entity is Directory) {
+      scanDirectory(entity, files); // Recursively scan further
+    }
+  });
+}
+\end{lstlisting}
+
+\begin{lstlisting}
+// ./tool/grind.dart
+import './coverage.dart' as coverage;
+@Task('Generate file with all lib/**.dart-files included')
+fullCoverage() {
+  List<String> files = [];
+  String content = "// AUTOGENERATED BY 'dart run grinder full-coverage' \n";
+  final rootFolder = Directory('${Directory.current.path}/lib');
+  coverage.scanDirectory(rootFolder, rootFolder, files);
+  for (var file in files) {
+    content += "import 'package:app_finance$file';\n";
+  }
+  content += "void main() {}\n";
+  File(path.join(Directory.current.path, 'test/_coverage.dart')).writeAsStringSync(content);
+}
+\end{lstlisting}
+
+\begin{lstlisting}[language=bash]
+## .gitignore
+# Coverage report
+coverage/
+test/_coverage.dart
+\end{lstlisting}
+
+\noindent 10\% Coverage... here we are. Slowly and progressively, we will correct this assessment but not immediately.
+Do remember that we're on an early stage and nothing is neither stable, nor finalized yet; but tests are a significant
+investment into the whole application quality and to speed-up the implementation cycles (by skipping a manual 
+verification each time for covered components).
