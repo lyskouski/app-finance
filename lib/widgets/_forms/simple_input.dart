@@ -59,6 +59,10 @@ class SimpleInputState extends State<SimpleInput> {
   }
 
   void delayedUpdate(newValue) {
+    final isNumber = [int.tryParse(newValue).toString(), double.tryParse(newValue).toString()];
+    if (widget.type.index == 2 && !isNumber.contains(newValue)) {
+      return;
+    }
     delay.run(() {
       widget.setState(newValue);
       setState(() => value = newValue);
