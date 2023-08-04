@@ -10,7 +10,7 @@ Flutter provides a couple of commands to check the code itself:
 
 \begin{itemize}
   \item flutter analyze -- static analysis;
-  \item dart format -- apply rules from `analysis\_options.yaml`, described on the page:
+  \item dart format -- apply rules from \q{analysis\_options.yaml}, described on the page:
   \href{https://dart.dev/effective-dart/style\#formatting}{https://dart.dev/effective-dart/style\#formatting};
   \item dart fix -- check points of an improvement and optimisation.
 \end{itemize}
@@ -18,13 +18,13 @@ Flutter provides a couple of commands to check the code itself:
 
 \subsubsection{Creating Git Hooks}
 
-Someone might think that additional checks before `git commit` or `git push` will slowdown the development process, 
+Someone might think that additional checks before \q{git commit} or \q{git push} will slowdown the development process, 
 contrary that minimizes pushes back and forward to resolve failures on CI/CD build procedure. For a really big projects
 that might take hours in contrast with seconds on a local environment. Certainly, the automation process must be 
 carried out accurately and diligently; otherwise, it will become a constant source of frustration.
 
-Implementation of git hooks is mostly a preparation of `bash`-scripts for execution, so, let's discuss here 
-`pre-push`-file (since `pre-commit`-file contains almost the same logic for another scope of commands).
+Implementation of git hooks is mostly a preparation of \q{bash}-scripts for execution, so, let's discuss here 
+\q{pre-push}-file (since \q{pre-commit}-file contains almost the same logic for another scope of commands).
 
 \begin{lstlisting}[language=bash]
 #!/bin/bash
@@ -115,17 +115,26 @@ Sample Commit
 \subsubsection{Adding Grinder Tasks} \label{a-grinder}
 
 Grinder is a task runner for Dart, helping to define and automate common project workflows, as said on its main page
-\href{https://pub.dev/packages/grinder}{https://pub.dev/packages/grinder}. 
-It can be added to the project by `flutter pub add grinder --dev`. Then, `dart run grinder:init`-command would help to
-generate a skeleton of the code structure (if missing).
+\href{https://pub.dev/packages/grinder}{https://pub.dev/packages/grinder}.  It can be either added via \q{flutter pub 
+add grinder --dev}-command, or by editing \q{pubspec.yaml}-file  (and IDE will install the dependency automatically):
+
+\begin{lstlisting}[language=yaml]
+## ./pubspec.yaml
+dev_dependencies:
+  grinder: ^0.9.4
+\end{lstlisting}
+
+In addition, grinder package can be made globally available by using \q{dart pub global activate grinder}-command. 
+To generate a skeleton of the tasks' code structure (if missing) follow \q{dart run grinder:init}, and 
+to view all of the tasks - \q{dart run grinder -h}.
 
 As one of the project workflow automation it can be mentioned a localization task 
 (\href{https://docs.flutter.dev/accessibility-and-localization/internationalization}{https://docs.flutter.dev/accessibility-and-localization/internationalization}). 
-Just to recap, in Flutter it's used Application Resource Bundle(s) (`.arb`-files) for internationalizing apps. 
+Just to recap, in Flutter it's used Application Resource Bundle(s) (\q{.arb}-files) for internationalizing apps. 
 So, not to create a mess in those files, it's better to have an automation to rearrange our labels alphabetically
-(in `/lib/l10n/app\_*.arb`-files). Lately, the automation can be also extended by checking consistency (enter missing 
-labels across the `.arb`-files), exporting labels to `.scv`-file for a simplification of a translation process, and 
-importing them from `.scv`-file back to `.arb`-files.
+(in \q{/lib/l10n/app\_*.arb}-files). Lately, the automation can be also extended by checking consistency (enter missing 
+labels across the \q{.arb}-files), exporting labels to \q{.scv}-file for a simplification of a translation process, and 
+importing them from \q{.scv}-file back to \q{.arb}-files.
 
 \begin{lstlisting}
 // ./tool/grind.dart
@@ -136,7 +145,7 @@ sortTranslations() {
   // Get all additional arguments for the command
   TaskArgs args = context.invocation.arguments;
   // Run: dart run grinder sort-translations --quiet
-  bool isQuiet = args.getFlag('quiet'); // Returns `true` if set
+  bool isQuiet = args.getFlag('quiet'); // Returns 'true' if set
   bool isChanged = locale.sortArbKeys('./lib/l10n');
   if (isChanged && !isQuiet) {
     fail('Changes detected'); // (!) to handle failure
@@ -164,7 +173,7 @@ bool sortArbKeys(String path) {
     // Take only .arb-files
     if (file is File && file.path.endsWith('.arb')) {
       log('- ${file.path}');
-      // `|=` is a boolean OR assignment
+      // '|=' is a boolean OR assignment
       isChanged |= sortArbFileKeys(file);
     }
   }
@@ -179,7 +188,7 @@ bool sortArbFileKeys(File file) {
   // Sort labels
   final entries = arbMap.entries.toList();
   entries.sort((a, b) {
-    // `@key` should go after `key`
+    // '@key' should go after 'key'
     final aKey = a.key.startsWith('@') ? a.key.substring(1) : a.key;
     final bKey = b.key.startsWith('@') ? b.key.substring(1) : b.key;
     if (aKey == bKey) {
@@ -200,6 +209,7 @@ bool sortArbFileKeys(File file) {
   return jsonOutputContent != jsonContent; // Check if changed
 }
 \end{lstlisting}
+
 
 \newpage
 \subsubsection{Running GitHub Workflows}
@@ -269,11 +279,11 @@ to continually improve and achieve even greater heights.
 ![Tests Coverage](https://{user}.github.io/{repo}/coverage_badge.svg)](https://github.com/{user}/{repo})
 \end{lstlisting}
 
-`Build Status` is supported out of the box (OOTB) by GitHub, just it's needed to replace `\{user\}` (by account name
-on GitHub), `\{repo\}` (repository name), and `\{workflow-name\}` (name of the file in `.github/workflows`-folder).
+\q{Build Status} is supported out of the box (OOTB) by GitHub, just it's needed to replace \q{\{user\}} (by account name
+on GitHub), \q{\{repo\}} (repository name), and \q{\{workflow-name\}} (name of the file in \q{.github/workflows}-folder).
 
-`Test Coverage` is needed to be cooked (there are many ways to do that and none of them is universal), and we would 
-start from creating `gh-pages` in our repository (drop hooks from `.git/hooks`-folder if they've been enabled):
+\q{Test Coverage} is needed to be cooked (there are many ways to do that and none of them is universal), and we would 
+start from creating \q{gh-pages} in our repository (drop hooks from \q{.git/hooks}-folder if they've been enabled):
 
 \begin{lstlisting}[language=bash]
 > git switch --orphan gh-pages
@@ -282,7 +292,7 @@ start from creating `gh-pages` in our repository (drop hooks from `.git/hooks`-f
 > git checkout main
 \end{lstlisting}
 
-\noindent That will create for us a special branch that is accessible via \`https://\{user\}.github.io/\{repo\}\`-link. 
+\noindent That will create for us a special branch that is accessible via \q{https://\{user\}.github.io/\{repo\}}-link. 
 Then we need to extend our GitHub Workflow by adding a section with uploading artifacts:
 
 \begin{lstlisting}[language=yaml]
@@ -292,7 +302,7 @@ Then we need to extend our GitHub Workflow by adding a section with uploading ar
   run: |
     if [[ "${{ github.ref }}" == "refs/heads/main" ]]; then
         flutter test --coverage
-        dart run grinder coverage-badge # New Grinder task to generate `.svg'-file with coverage
+        dart run grinder coverage-badge # New Grinder task to generate '.svg'-file with coverage
     else
         flutter test
     fi
@@ -351,7 +361,7 @@ import './coverage.dart' as coverage;
 @Task('Generate file with all lib/**.dart-files included')
 fullCoverage() {
   List<String> files = [];
-  String content = "// AUTOGENERATED BY `dart run grinder full-coverage` \n";
+  String content = "// AUTOGENERATED BY 'dart run grinder full-coverage' \n";
   final rootFolder = Directory('${Directory.current.path}/lib');
   coverage.scanDirectory(rootFolder, rootFolder, files);
   for (var file in files) {

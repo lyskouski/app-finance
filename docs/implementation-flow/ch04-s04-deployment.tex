@@ -7,7 +7,7 @@
 
 \subsubsection{Building Web Package}
 
-Creating a web package is handled by `flutter build -v web --release` command. It'll be more strict to our code, and 
+Creating a web package is handled by \q{flutter build -v web --release} command. It'll be more strict to our code, and 
 that might lead to additional failures as "non-constant instances of IconData".
 
 \begin{lstlisting}
@@ -44,9 +44,9 @@ factory GoalAppData.fromJson(Map<String, dynamic> json) {
       : null,
 \end{lstlisting}
 
-Now, when we'll call `getIconFromString` with a dynamic icon name, it will create the `IconData`-instance for that name 
-if it doesn't already exist and cache it in the `\_cache`-map. If the same icon name is used again in the future, 
-it will return the cached `IconData`-instance, allowing tree shaking to work correctly. But we still have to suppress 
+Now, when we'll call \q{getIconFromString} with a dynamic icon name, it will create the \q{IconData}-instance for that name 
+if it doesn't already exist and cache it in the \q{\_cache}-map. If the same icon name is used again in the future, 
+it will return the cached \q{IconData}-instance, allowing tree shaking to work correctly. But we still have to suppress 
 the error itself because, when we're dealing with dynamic values that cannot be statically analyzed at compile time, 
 tree shaking is impossible:
 
@@ -54,9 +54,9 @@ tree shaking is impossible:
 flutter build -v web --release --no-tree-shake-icons
 \end{lstlisting}
 
-Another problem is that our production code is obfuscated. That means that `AccountAppData` will be converted to 
-something like `minified:iP`; and our restoring procedures from a transactions are going to fail. By a first assumption,
-it can be changed "magic strings" to a `runtimeType`-property of classes:
+Another problem is that our production code is obfuscated. That means that \q{AccountAppData} will be converted to 
+something like \q{minified:iP}; and our restoring procedures from a transactions are going to fail. By a first assumption,
+it can be changed "magic strings" to a \q{runtimeType}-property of classes:
 
 \begin{lstlisting}
 // ./lib/_classes/data/transaction_log.dart
@@ -151,7 +151,7 @@ jobs:
           publish_dir: ./build/web
 \end{lstlisting}
 
-\noindent A valuable point here is to update `base-href` (line 24) for our Web package. It has to be aligned with 
+\noindent A valuable point here is to update \q{base-href} (line 24) for our Web package. It has to be aligned with 
 GitHub Pages notation:
 
 \begin{lstlisting}[language=bash]
@@ -163,3 +163,4 @@ GitHub: \href{https://docs.github.com/en/pages/configuring-a-custom-domain-for-y
 
 
 \subsubsection{Generating Artifacts}
+

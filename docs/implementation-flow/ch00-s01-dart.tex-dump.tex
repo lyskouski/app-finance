@@ -1,0 +1,83 @@
+Question: Flutter check that variable is a function
+
+Answer: In Flutter, you can use the is operator to check if a variable is a function. 
+
+\begin{lstlisting}
+void main() {
+  var variable = () {
+    // Function body
+  };
+
+  if (variable is Function) {
+    print('Variable is a function');
+  } else {
+    print('Variable is not a function');
+  }
+}
+\end{lstlisting}
+
+In this example, the is operator is used to check if the variable is of type Function. If it is, the condition 
+variable is Function will evaluate to true, indicating that the variable is a function. Otherwise, it will 
+evaluate to false, indicating that the variable is not a function.
+
+
+Question: flutter default value in constructor
+
+Answer: In Flutter, you can assign default values to constructor parameters using the = operator. 
+
+\begin{lstlisting}
+class MyClass {
+  final int myValue;
+
+  MyClass({this.myValue = 10});
+}
+\end{lstlisting}
+
+In the example above, the MyClass constructor has a parameter myValue with a default value of 10. 
+If no value is provided for myValue when creating an instance of MyClass, it will default to 10.
+
+You can then create an instance of MyClass with or without providing a value for myValue:
+
+\begin{lstlisting}
+// Using the default value
+MyClass instance1 = MyClass();
+print(instance1.myValue); // Output: 10
+
+// Providing a custom value
+MyClass instance2 = MyClass(myValue: 20);
+print(instance2.myValue); // Output: 20    
+\end{lstlisting}
+
+In the first case, where no value is provided for myValue, it takes on the default value of 10. In the second case, 
+a custom value of 20 is provided, which overrides the default value.
+
+
+Question: Operating with Dates
+As an example, first business logic
+if endDate <= currentDate then return 1
+if startDate = currentDate then return 0
+else return related float
+
+\begin{lstlisting}
+double calculateValue(DateTime startDate, DateTime endDate, DateTime currentDate) {
+  if (endDate.isBefore(currentDate) || endDate.isAtSameMomentAs(currentDate)) {
+    return 1.0;
+  } else if (startDate.isAtSameMomentAs(currentDate)) {
+    return 0.0;
+  } else {
+    double totalDays = endDate.difference(startDate).inDays.toDouble();
+    double currentDays = currentDate.difference(startDate).inDays.toDouble();
+    return currentDays / totalDays;
+  }
+}
+\end{lstlisting}
+
+In this example, the calculateValue function takes three DateTime parameters: startDate, endDate, and currentDate.
+
+If endDate is less than or equal to currentDate, it means the end date has passed or is the same as 
+the current date, so we return 1.0.
+If startDate is the same as currentDate, we return 0.0.
+Otherwise, we calculate the float value based on the ratio of the number of days between startDate and 
+currentDate to the total number of days between startDate and endDate.
+
+To get the current date in Flutter, you can use the DateTime class along with the DateTime.now() method. 

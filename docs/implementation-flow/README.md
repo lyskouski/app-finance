@@ -7,14 +7,14 @@ This book is diving deep into the core mechanisms of the Flatter and Dart langua
 
 **NOTE:** To compile the project
 1. Install LaTeX: https://miktex.org/download
-2. Run command `pdflatex index.tex -halt-on-error -output-directory=build` from current directory
+2. Run command ```pdflatex index.tex -halt-on-error -output-directory=build``` from current directory
 
 ## Contributions
 
 Please feel free to contribute to the quality of this content by submitting PRs.
 
-Any contributions you make to this effort **are of course greatly appreciated** (don't forget to update `info.tex`
-by adding your name into `Contributors` section as a gratitude).
+Any contributions you make to this effort **are of course greatly appreciated** (don't forget to update "info.tex"
+by adding your name into "Contributors"-section as a gratitude).
 
 However, if you choose to contribute content (not just typo corrections) to this repo, you agree that you're giving
 me a non-exclusive license to use that content for the book, as I (and my possible publisher) deem appropriate. 

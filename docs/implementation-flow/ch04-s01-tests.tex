@@ -13,7 +13,7 @@ and unit testing)} act as guardians of an application integrity per each dimensi
 single method)} to rectify issues (bugs or logic errors) on early stages before a release. Thus reduce the risk of 
 costly and time-consuming repairs later. To be more precise, the cost of fixing bugs is exponential through the
 product life-cycle (architecture, coding, integration, system distribution, production, post-release) 
-\cite{Sanket19}, and an architectural mistake might cost `N x 30` on post-release phase, where N -- is an amount of
+\cite{Sanket19}, and an architectural mistake might cost \q{N x 30} on post-release phase, where N -- is an amount of
 totally spent money for that feature.
 
 By subjecting the application to a diverse range of test cases and edge cases, developers can ensure its stability and 
@@ -39,9 +39,9 @@ yield the same output]). Unit tests are also known as "white box" approach, but 
 statement and follow Behavior Driven Development (BDD) rule -- assert user requirements and expectations instead of 
 functional coverage (by testing conditional statements that's written inside the targeted unit) \cite{Crispin09}.
 
-In Flutter, `test`-function from the `flutter\_test`- package is utilized for writing unit tests. By writing them, 
+In Flutter, \q{test}-function from the \q{flutter\_test}- package is utilized for writing unit tests. By writing them, 
 all the defined function calls within files following the *\_test.dart pattern are automatically recognized by the 
-`flutter test`-command line execution. Alternatively, all tests are shown in "Test Explorer" of IDE and can be
+\q{flutter test}-command line execution. Alternatively, all tests are shown in "Test Explorer" of IDE and can be
 evaluated solely, by group, by file, or fully (\cref{img:fs-test-explorer}).
 
 \img{prototyping/test-explorer}{Test Explorer in Visual Studio Code}{img:fs-test-explorer}
@@ -51,11 +51,11 @@ As a first step, we would start from covering implemented Account Recalculation 
 \begin{lstlisting}
 // test/unit/_classes/data/account_recalculation_test.dart 
 void main() {
-  // `group` works as a prefix to all the tests inside
+  // 'group' works as a prefix to all the tests inside
   group('Account Recalculation:getDelta', () {
     late AccountRecalculation mock; // Deferred initialization 
-    // `setUp` - is going to be executed before each test
-    // `setUpAll` - once at the beginning of group evaluation
+    // 'setUp' - is going to be executed before each test
+    // 'setUpAll' - once at the beginning of group evaluation
     setUp(() {
       final accountMock = AccountAppData(
         uuid: '1',
@@ -93,7 +93,7 @@ void main() {
         }
         object.change.hidden = v.change.hidden;
         object.change.details = v.change.details;
-        // Assert `AccountRecalculation.getDelta`-method results
+        // Assert 'AccountRecalculation.getDelta'-method results
         expect(object.getDelta(), v.result);
       });
     }
@@ -101,7 +101,7 @@ void main() {
 }
 \end{lstlisting}
 
-\noindent By typing `flutter test` in the command line we would see something like that:
+\noindent By typing \q{flutter test} in the command line we would see something like that:
 
 \begin{lstlisting}
 [V] Given Main page When tap on Create Then opened BillAddPage
@@ -153,7 +153,7 @@ widgets in an application. These tests are focused on evaluating the appearance,
 ensuring that they are rendered correctly and respond appropriately to user interactions.
 
 \noindent ... and we've already broken a first of them (that's been provided through the Flutter template generation). 
-At the beginning it was covering `Add`-button as an incremental trigger for the shown counter.
+At the beginning it was covering \q{Add}-button as an incremental trigger for the shown counter.
 
 \begin{lstlisting}
 void main() {
@@ -173,14 +173,14 @@ void main() {
 }
 \end{lstlisting}
 
-\noindent By now, let's just check that `Add`-button is opening a Widget with a three named tabs:
+\noindent By now, let's just check that \q{Add}-button is opening a Widget with a three named tabs:
 
 \begin{lstlisting}
 void main() {
   testWidgets('Given Main page When tap on Create Then opened BillAddPage', (WidgetTester tester) async {
     // App initialization
     await tester.pumpWidget(
-        // Taken as is from `void main` of `lib/main.dart`-file
+        // Taken as is from 'void main' of 'lib/main.dart'-file
         ChangeNotifierProvider(
             create: (_) => AppData(),
             child: const MyApp(),
@@ -188,7 +188,7 @@ void main() {
     );
     // Checking one of the text widgets
     expect(find.text('Goals'), findsOneWidget);
-    // Clicking on `Add`-button
+    // Clicking on 'Add'-button
     await tester.tap(find.byIcon(Icons.add));
     // Waiting till finished render state
     await tester.pumpAndSettle();
@@ -200,8 +200,8 @@ void main() {
 }
 \end{lstlisting}
 
-Here we are, by `tap` and `expect` the flow of the whole application can be checked. Such type of tests are named as 
-Widget tests that's emphasized by specially named `testWidgets`-function.
+Here we are, by \q{tap} and \q{expect} the flow of the whole application can be checked. Such type of tests are named as 
+Widget tests that's emphasized by specially named \q{testWidgets}-function.
 
 Initially, it would be better to concentrate mostly on Business Logic check (by unit tests) than on a draft state of 
 our pages and their flow. Nonetheless, the current one will check that the application can be started without errors, 
@@ -214,7 +214,7 @@ UI/UX, redesign if not dramatically but vastly, and right after that write a rel
 We've implemented earlier (\ref{ut-unit}) the test for a simple function that is isolated by itself from all other functionality. 
 In most of the cases our functions are calling other functions, while unit test has to check the logic of the defined 
 function isolately by cutting all external interactions (idealy, even within one class). To achieve that we might
-use `Mockito` (\href{https://github.com/dart-lang/mockito}{https://github.com/dart-lang/mockito}):
+use \q{Mockito} (\href{https://github.com/dart-lang/mockito}{https://github.com/dart-lang/mockito}):
 
 \begin{lstlisting}
 // ./test/unit/_classes/data/account_recalculation_test.dart
@@ -261,9 +261,9 @@ void main() {
 }
 \end{lstlisting}
 
-Almost done... failing since `account\_recalculation\_test.mocks.dart`-file is missing. To resolve that we have to use 
-additional library `build\_runner` (`flutter pub add build\_runner --dev`) that will generate `*.mocks.dart`-files
-for us. But that makes our work harder since before each `flutter test` we have to run `flutter run build\_runner build`.
+Almost done... failing since \q{account\_recalculation\_test.mocks.dart}-file is missing. To resolve that we have to use 
+additional library \q{build\_runner} (\q{flutter pub add build\_runner --dev}) that will generate \q{*.mocks.dart}-files
+for us. But that makes our work harder since before each \q{flutter test} we have to run \q{flutter run build\_runner build}.
 Let's cover that by Grinder task (\ref{a-grinder}):
 
 \begin{lstlisting}
@@ -303,7 +303,7 @@ test() {
 \end{lstlisting}
 
 \noindent Let's type in the console our new command for a tests execution (as a note, it can be used once to generate 
-files and then proceed with `flutter test`-command):
+files and then proceed with \q{flutter test}-command):
 
 \begin{lstlisting}[language=bash]
 > dart run grinder test
@@ -321,7 +321,7 @@ test
 
 \noindent The first test with mocks is passing, but not actually evaluate the original method as we might assume, 
 everything is mocked! To achieve a capability of a partial mocking we would need to implement a wrapper around the 
-original class. By using `mockGetDelta`-method it would be possible to override (mock) behavior of any method. 
+original class. By using \q{mockGetDelta}-method it would be possible to override (mock) behavior of any method. 
 
 \begin{lstlisting}
 class WrapperAccountRecalculation extends AccountRecalculation {
@@ -336,9 +336,9 @@ class WrapperAccountRecalculation extends AccountRecalculation {
 }
 \end{lstlisting}
 
-\noindent So, let's automate that part as well by using the `source\_gen` package, which provides capabilities to 
-generate `.dart`-files based on annotations (we've seen already - @GenerateNiceMocks). Firstly, it's needed to 
-register our custom builder via `build.yaml`-file:
+\noindent So, let's automate that part as well by using the \q{source\_gen} package, which provides capabilities to 
+generate \q{.dart}-files based on annotations (we've seen already - @GenerateNiceMocks). Firstly, it's needed to 
+register our custom builder via \q{build.yaml}-file:
 
 \begin{lstlisting}[language=yaml]
 ## ./build.yaml
@@ -502,7 +502,7 @@ test('Demo', () {
 \subsubsection{Adding Behavioral Tests (Gherkin)}
 
 Improvement cycles are never ends. Previously (\ref{widget-tests}), we've discussed approach to test widgets and applied 
-`When ... Given ... Then ...`-notation. That notation is a part of Behavior-Driven Development (BDD) -- the process
+\q{When ... Given ... Then ...}-notation. That notation is a part of Behavior-Driven Development (BDD) -- the process
 of approaching the desired outcome on first place before the code. But we've used that notation as a comment that is 
 useless without any interpreter (since it can be written one flow but tested totally different; or, it's been just
 forgotten to update the comment through the time of a project evolution).
@@ -520,8 +520,8 @@ assumption, that this may lead to an explosion of step definitions, code duplica
 won't argue with this product' architects (do you remember the cost of a major architectural error? \cite{Sanket19}) 
 and take all the risks to our own, since testing is a variation of an art where a common sense is a mantra to succeed.
 
-But let's go step-by-step. So, after adding Gherkin (`flutter pub add flutter\_gherkin --dev`), we can start from a
-creation of `.feature`-files to describe scenarios.
+But let's go step-by-step. So, after adding Gherkin (\q{flutter pub add flutter\_gherkin --dev}), we can start from a
+creation of \q{.feature}-files to describe scenarios.
 
 \begin{lstlisting}[language=cucumber]
 @account @currency
@@ -545,7 +545,7 @@ Feature: Verify Account functionality alignment with expectations
 \end{lstlisting}
 
 We've created Scenario "Opened Account Form" and, by braking all the recommendations, re-used it in Scenario Outline 
-for `Given`-step. What's that giving us? To answer that question, let's check how a billing flow might look like:
+for \q{Given}-step. What's that giving us? To answer that question, let's check how a billing flow might look like:
 
 \begin{lstlisting}[language=cucumber]
   Scenario Outline: Added different Expenses
@@ -567,14 +567,14 @@ obvious the nested structure from a written sentence.
 Another drawback is that Gherkin runs User Interface tests (mostly known as Selenium tests) by compiling and running 
 the original application with enabled Flutter Driver Extension (\cite{DocGh23}) that simulates user behavior. It's 
 not something that we might be interested in by now, expecting their fast evaluation via simulation as it's done for 
-widget tests. So, we're going to take an interpreter of `.feature`-files and use `flutter\_test`-package for all 
+widget tests. So, we're going to take an interpreter of \q{.feature}-files and use \q{flutter\_test}-package for all 
 other stuff. An additional benefit from that is the tests visibility via Tests Terminal in IDE. It would 
 work for us with all features enabled (to run/re-run a single, a group, or all tests) and we would preserve a 
 single entry point to evaluate all of them.
 
 \img{prototyping/bdd-test}{Behavioral Test evaluation}{img:p-bdd}
 
-But let's proceed iteratively, and implement wrapper around Gherkin to parse `.feature`-files and run them 
+But let's proceed iteratively, and implement wrapper around Gherkin to parse \q{.feature}-files and run them 
 (\cref{img:p-bdd}):
 
 \begin{lstlisting}
@@ -683,14 +683,14 @@ class OnDefinedPage extends Given1<String> {
 // ... other classes implementation: TapDefinedButton, TapDefinedHeader, CanSeeDefinedComponent
 \end{lstlisting}
 
-What can be noticed (line 20-23 for `executable\_step\_iterator.dart`-file), is that we have to declare all our 
+What can be noticed (line 20-23 for \q{executable\_step\_iterator.dart}-file), is that we have to declare all our 
 implementations (Given/When/Then) as a list of classes. That stuff is better to be automated by scanning 
-`\_steps`-folder and adding all classes into the list, and we do know already (\ref{ut-code-generator}) how to 
+\q{\_steps}-folder and adding all classes into the list, and we do know already (\ref{ut-code-generator}) how to 
 achieve that.
 
 Additional convention should be taken into account; as soon as we're using Scenario as a low-level step, it should be
-excluded from an execution scope. Let's move such scenarios into `.resource`-files and cover them by generics 
-(additional code generated classes per each scenario in `.resource`-files).
+excluded from an execution scope. Let's move such scenarios into \q{.resource}-files and cover them by generics 
+(additional code generated classes per each scenario in \q{.resource}-files).
 
 \begin{lstlisting}
 // That will generate all Given classes for us from .resource-files
@@ -724,8 +724,8 @@ Shell: PASSED: Scenario Opened Account Form # :4
 Shell:    V Given Opened Account Form # :4 took 584ms
 \end{lstlisting}
 
-\noindent To hide results from low-level steps we can implement own `ProgressReporter` that will populate results only 
-on failure; and by using `StringBuffer`-object override the flow of `printMessageLine` and `printMessage`-functions.
+\noindent To hide results from low-level steps we can implement own \q{ProgressReporter} that will populate results only 
+on failure; and by using \q{StringBuffer}-object override the flow of \q{printMessageLine} and \q{printMessage}-functions.
 
 \begin{lstlisting}[language=bash]
 # Success

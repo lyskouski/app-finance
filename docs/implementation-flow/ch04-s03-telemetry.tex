@@ -14,16 +14,16 @@ The process is started from creating a Firebase account and a new project there 
 button and proceeding with obvious steps; just don't forget to enable Google Analytics while creating the project): 
 \href{https://console.firebase.google.com}{https://console.firebase.google.com}.
 
-Then we have to add packages `flutter pub add firebase\_core` and `flutter pub add firebase\_analytics`, activate 
-FlutterFire CLI  via `dart pub global activate flutterfire\_cli` and `npm install -g firebase-tools` to make it 
-(`flutterfire`-command) globally accessible for our environment. As a note for Windows users, be attentive to 
-notifications like that (add `bin`-folder to PATH global variable, \cref{img:fs-windows-path}):
+Then we have to add packages \q{flutter pub add firebase\_core} and \q{flutter pub add firebase\_analytics}, activate 
+FlutterFire CLI  via \q{dart pub global activate flutterfire\_cli} and \q{npm install -g firebase-tools} to make it 
+(\q{flutterfire}-command) globally accessible for our environment. As a note for Windows users, be attentive to 
+notifications like that (add \q{bin}-folder to PATH global variable, \cref{img:fs-windows-path}):
 
 \begin{lstlisting}[language=bash]
 Warning: Pub installs executables into C:\Users\...\AppData\Local\Pub\Cache\bin, which is not on your path.
 \end{lstlisting}
 
-\noindent By triggering sequence of `firebase login` and `flutterfire configure` from a command line 
+\noindent By triggering sequence of \q{firebase login} and \q{flutterfire configure} from a command line 
 we'll be able to configure the project.
 
 \begin{lstlisting}[language=bash]
@@ -34,7 +34,7 @@ products. Data is collected in accordance with Google`s privacy policy (https://
 is not used to identify you.
 
 ? Allow Firebase to collect CLI and Emulator Suite usage and error reporting information? Yes
-i  To change your data collection preference at any time, run `firebase logout` and log in again.
+i  To change your data collection preference at any time, run \q{firebase logout} and log in again.
 
 Visit this URL on this device to log in:
 https://accounts.google.com/o/oauth2/auth?...
@@ -63,7 +63,7 @@ Learn more about using this file and next steps from the documentation:
   https://firebase.google.com/docs/flutter/setup
 \end{lstlisting}
 
-\noindent Once completed, we should import the generated file and adjust `main`-method:
+\noindent Once completed, we should import the generated file and adjust \q{main}-method:
 
 \begin{lstlisting}
 // ./lib/main.dart
@@ -80,7 +80,7 @@ void main() async {
 \end{lstlisting}
 
 \noindent That might be the case for web, android, ios, and macos; but we have additionally linux and windows that are 
-not supported by now, so, let's patch `firebase\_options.dart`-file to return null instead of throwing an exception:
+not supported by now, so, let's patch \q{firebase\_options.dart}-file to return null instead of throwing an exception:
 
 \begin{lstlisting}
 // ./lib/firebase_options.dart
@@ -108,14 +108,14 @@ Alternatively, it can be implemented own cross-functional component by following
 \href{https://firebase.google.com/docs/reference/rest/database}{https://firebase.google.com/docs/reference/rest/database}
 )... but it's a topic for another discussion.
 
-After all of that modifications it's needed to evaluate `flutter clean` to avoid any errors; and after 
-`flutter run`-command we would be able to view a log report on 
+After all of that modifications it's needed to evaluate \q{flutter clean} to avoid any errors; and after 
+\q{flutter run}-command we would be able to view a log report on 
 \href{https://analytics.google.com}{https://analytics.google.com}, \cref{img:pt-analytics}.
 
 \img{prototyping/google-analytics-report}{Google Analytics results}{img:pt-analytics}
 
-The negative impact here is that `firebase\_analytics` library force to use 19 version as a minimal SDK for Android, 
-so, it's needed to be updated `android/app/build.gradle` file by adjusting `minSdkVersion`-property:
+The negative impact here is that \q{firebase\_analytics} library force to use 19 version as a minimal SDK for Android, 
+so, it's needed to be updated \q{android/app/build.gradle} file by adjusting \q{minSdkVersion}-property:
 
 \begin{lstlisting}[language=yaml]
 ## ./android/app/build.gradle
