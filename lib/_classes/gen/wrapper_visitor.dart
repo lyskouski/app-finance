@@ -21,7 +21,7 @@ class WrapperVisitor {
   }
 
   void addImport(LibraryElement className) {
-    buffer.writeln('// ignore: unused_import');
+    buffer.writeln('// ignore: unused_import, unnecessary_import');
     String path = className.source.uri.toString();
     if (path.contains('asset:')) {
       path = className.source.uri.pathSegments.last;
