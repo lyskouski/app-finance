@@ -43,7 +43,7 @@ class HomePageState extends AbstractPageState<HomePage> with SharedPreferencesMi
   @override
   AppBar buildBar(BuildContext context) {
     return AppBar(
-      backgroundColor: Theme.of(context).colorScheme.secondary,
+      backgroundColor: Theme.of(context).colorScheme.primary,
       toolbarHeight: 40,
       leading: Builder(
         builder: (BuildContext context) {

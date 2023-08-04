@@ -27,7 +27,7 @@ class StartPageState extends AbstractPageState<StartPage> {
   @override
   AppBar buildBar(BuildContext context) {
     return AppBar(
-      backgroundColor: Theme.of(context).colorScheme.secondary,
+      backgroundColor: Theme.of(context).colorScheme.primary,
       toolbarHeight: 40,
       automaticallyImplyLeading: false,
       actions: const [],

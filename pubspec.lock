@@ -217,6 +217,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.3.2"
+  dio:
+    dependency: transitive
+    description:
+      name: dio
+      sha256: ce75a1b40947fea0a0e16ce73337122a86762e38b982e1ccb909daa3b9bc4197
+      url: "https://pub.dev"
+    source: hosted
+    version: "5.3.2"
   dropdown_search:
     dependency: "direct main"
     description:
@@ -663,6 +671,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.1.7"
+  petitparser:
+    dependency: transitive
+    description:
+      name: petitparser
+      sha256: cb3798bef7fc021ac45b308f4b51208a152792445cce0448c9a4ba5879dd8750
+      url: "https://pub.dev"
+    source: hosted
+    version: "5.4.0"
   platform:
     dependency: transitive
     description:
@@ -1004,6 +1020,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.4.0"
+  webdav_client:
+    dependency: "direct main"
+    description:
+      name: webdav_client
+      sha256: b3f5afee27e7db5635817ddd79d57f56d43fdc6dad4c6bc93b0703261f96064c
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.2.1"
   webdriver:
     dependency: transitive
     description:
@@ -1028,6 +1052,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.0.1"
+  xml:
+    dependency: transitive
+    description:
+      name: xml
+      sha256: "5bc72e1e45e941d825fd7468b9b4cc3b9327942649aeb6fc5cdbf135f0a86e84"
+      url: "https://pub.dev"
+    source: hosted
+    version: "6.3.0"
   yaml:
     dependency: transitive
     description:
