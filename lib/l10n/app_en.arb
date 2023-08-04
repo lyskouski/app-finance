@@ -8,6 +8,7 @@
     "accountTooltip": "Open Accounts",
     "accountType": "Account Type",
     "acknowledgeTooltip": "Acknowledge",
+    "activate": "Activate",
     "addAccountTooltip": "Add Account",
     "addBudgetTooltip": "Add new Budget Category",
     "addGoalTooltip": "Add new Goal",
@@ -91,6 +92,12 @@
     "editGoalHeader": "Edit Goal",
     "editGoalTooltip": "Update Goal",
     "encryptionMode": "Data Encryption:",
+    "error": "Error: {value}",
+    "@error": {
+        "value": {
+            "type": "String"
+        }
+    },
     "expense": "Amount of Expenses",
     "expenseDateTime": "Billed At",
     "expenseHeadline": "Expense",
@@ -107,17 +114,27 @@
     "isRequired": "required",
     "left": "left",
     "lightMode": "Light",
+    "link": "Uniform Resource Locator (URL)",
     "metricsHeadline": "Metrics",
     "milestones": "Milestones",
     "navigationTooltip": "Open main menu",
     "ok": "OK",
+    "password": "Password",
+    "path": "File Name (to save into, or load from)",
+    "progress": "Progress: {value}%",
+    "@progress": {
+        "value": {
+            "type": "double"
+        }
+    },
+    "recoveryHeadline": "Recovery",
+    "recoveryTooltip": "Recover from Storage",
     "releases": "Releases",
     "roadmap": "Roadmap",
     "saveNotification": "Changes saved!",
-    "saveTooltip": "Save",
+    "saveTooltip": "Save to Storage",
     "settingsBaseHeadline": "Basic States",
     "settingsHeadline": "Settings",
-    "settingsSyncHeadline": "Synchronization",
     "subscription": "As an open-source project, subscribing will not unlock any additional features. However, it would serve as an investment in the continuous evolution and improvement of the application.",
     "subscriptionCoffee": "Buy a coffee",
     "subscriptionDonorbox": "Subscribe via Donorbox",
@@ -126,6 +143,7 @@
     "subscriptionPatreon": "Subscribe via Patreon",
     "subscriptionPaypal": "Buy a coffee (PayPal)",
     "subscriptionTooltip": "Activate Subscription",
+    "success": "Succeeded",
     "systemMode": "System",
     "targetAmount": "Target Amount",
     "title": "Title",
@@ -139,5 +157,7 @@
     "updateBillTooltip": "Update Bill",
     "updateBudgetTooltip": "Update Budget Category",
     "updateGoalTooltip": "Update Goal",
-    "validTillDate": "Valid Till"
+    "username": "Username (Account)",
+    "validTillDate": "Valid Till",
+    "webDav": "Web Distributed Authoring and Versioning (WebDav)"
 }

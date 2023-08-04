@@ -44,9 +44,9 @@ class TransactionLog with SharedPreferencesMixin {
     return self.getPreference(self.prefDoEncrypt) == prefIsEncrypted;
   }
 
-  static Future<void> save(dynamic content) async {
+  static Future<void> save(dynamic content, [bool isDirect = false]) async {
     String line = content.toString();
-    if (doEncrypt()) {
+    if (!isDirect && doEncrypt()) {
       line = salt.encrypt(line, iv: code).base64;
     }
     if (kIsWeb) {
@@ -91,6 +91,18 @@ class TransactionLog with SharedPreferencesMixin {
       }
       yield line ?? '';
     } while (attempts < 10);
+  }
+
+  static Stream<String> read() async* {
+    Stream<String> lines;
+    if (kIsWeb) {
+      lines = _loadWeb();
+    } else {
+      lines = (await _logFle).openRead().transform(utf8.decoder).transform(const LineSplitter());
+    }
+    await for (var line in lines) {
+      yield line;
+    }
   }
 
   static Future<bool> load(AppData store) async {
