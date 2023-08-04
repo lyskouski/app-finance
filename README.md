@@ -3,7 +3,14 @@ Open-sourced cross-platform financial accounting application.
 
 ![Check Status](https://github.com/lyskouski/app-finance/actions/workflows/push_to_main.yml/badge.svg?branch=main) ![Build Status](https://github.com/lyskouski/app-finance/actions/workflows/build.yml/badge.svg) [![Tests Coverage](https://lyskouski.github.io/app-finance/coverage/coverage_badge.svg)](https://github.com/lyskouski/app-finance/actions)
 
+## Availability
 
+- Macos: [latest Release](https://github.com/lyskouski/app-finance/releases/latest) -> fingram_macOS.zip
+- Linux: [latest Release](https://github.com/lyskouski/app-finance/releases/latest) -> fingram_Linux.tar.gz
+- Windows: [latest Release](https://github.com/lyskouski/app-finance/releases/latest) -> fingram_Windows.zip
+- Web: https://lyskouski.github.io/app-finance/
+- iOS [[pending]](https://github.com/lyskouski/app-finance/issues/116)
+- Android [[on hold]](https://github.com/lyskouski/app-finance/issues/129)
 
 ## Support (Sponsorship)
 
