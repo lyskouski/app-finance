@@ -13,8 +13,8 @@ and unit testing)} act as guardians of an application integrity per each dimensi
 single method)} to rectify issues (bugs or logic errors) on early stages before a release. Thus reduce the risk of 
 costly and time-consuming repairs later. To be more precise, the cost of fixing bugs is exponential through the
 product life-cycle (architecture, coding, integration, system distribution, production, post-release) 
-\cite{Sanket19}, and an architectural mistake might cost \q{N x 30} on post-release phase, where N -- is an amount of
-totally spent money for that feature.
+\cite{Sanket19}, and an architectural mistake might cost \q{N x 30} on post-release phase, where \q{N} -- is an amount 
+of totally spent money for that feature.
 
 By subjecting the application to a diverse range of test cases and edge cases, developers can ensure its stability and 
 resilience; moreover, tests promote flexibility and maintainability, facilitating continuous integration and deployment 
@@ -337,7 +337,7 @@ class WrapperAccountRecalculation extends AccountRecalculation {
 \end{lstlisting}
 
 \noindent So, let's automate that part as well by using the \q{source\_gen} package, which provides capabilities to 
-generate \q{.dart}-files based on annotations (we've seen already - @GenerateNiceMocks). Firstly, it's needed to 
+generate \q{.dart}-files based on annotations (we've seen already - \q{@GenerateNiceMocks}). Firstly, it's needed to 
 register our custom builder via \q{build.yaml}-file:
 
 \begin{lstlisting}[language=yaml]
@@ -508,9 +508,8 @@ useless without any interpreter (since it can be written one flow but tested tot
 forgotten to update the comment through the time of a project evolution).
 
 Cucumber (\href{https://docs.cucumber.io}{https://docs.cucumber.io}) is a practical standard, by being widely used, 
-and testing framework for Behavior Driven Development approach.
-
-Gherkin (\href{https://pub.dev/packages/gherkin}{https://pub.dev/packages/gherkin}), as a fully featured parser and 
+and testing framework for Behavior Driven Development approach. Gherkin 
+(\href{https://pub.dev/packages/gherkin}{https://pub.dev/packages/gherkin}), as a fully featured parser and 
 test runner for Flutter and Dart, would be used by us to convert When / Given / Then (And / But) into a real test steps.
 
 In Cucumber-JVM (as well as in Gherkin) calling steps from step definitions is not supported; this is by design. That's
@@ -565,12 +564,13 @@ convention: scenario is written in past tense, step - in present. By following s
 obvious the nested structure from a written sentence. 
 
 Another drawback is that Gherkin runs User Interface tests (mostly known as Selenium tests) by compiling and running 
-the original application with enabled Flutter Driver Extension (\cite{DocGh23}) that simulates user behavior. It's 
-not something that we might be interested in by now, expecting their fast evaluation via simulation as it's done for 
-widget tests. So, we're going to take an interpreter of \q{.feature}-files and use \q{flutter\_test}-package for all 
-other stuff. An additional benefit from that is the tests visibility via Tests Terminal in IDE. It would 
-work for us with all features enabled (to run/re-run a single, a group, or all tests) and we would preserve a 
-single entry point to evaluate all of them.
+the original application with enabled Flutter Driver Extension 
+(\href{https://pub.dev/documentation/flutter_gherkin/latest/}{https://pub.dev/documentation/flutter\_gherkin/latest/}) 
+that simulates user behavior. It's not something that we might be interested in by now, expecting their fast evaluation 
+via simulation as it's done for widget tests. So, we're going to take an interpreter of \q{.feature}-files and use 
+\q{flutter\_test}-package for all other stuff. An additional benefit from that is the tests visibility via Tests 
+Terminal in IDE. It would work for us with all features enabled (to run/re-run a single, a group, or all tests) and 
+we would preserve a single entry point to evaluate all of the tests.
 
 \img{prototyping/bdd-test}{Behavioral Test evaluation}{img:p-bdd}
 

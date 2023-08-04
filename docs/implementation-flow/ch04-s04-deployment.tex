@@ -55,7 +55,7 @@ flutter build -v web --release --no-tree-shake-icons
 \end{lstlisting}
 
 Another problem is that our production code is obfuscated. That means that \q{AccountAppData} will be converted to 
-something like \q{minified:iP}; and our restoring procedures from a transactions are going to fail. By a first assumption,
+something like \q{minified:iP}; and our restoring procedure from transactions is going to fail. By a first assumption,
 it can be changed "magic strings" to a \q{runtimeType}-property of classes:
 
 \begin{lstlisting}
@@ -76,7 +76,7 @@ it can be changed "magic strings" to a \q{runtimeType}-property of classes:
 // ... other code
 \end{lstlisting}
 
-\noindent The main problem with that solution is that is cannot be portaged to other platforms since each type of the 
+\noindent The main problem with that solution is that it cannot be portaged to other platforms since each type of the 
 build (even within one platform) will use different runtime notation for the same class. So, the right way would be 
 to adjust the conversion to JSON:
 
@@ -162,5 +162,141 @@ Additionally, we may buy a domain name and configure GitHub Pages to be viewed t
 GitHub: \href{https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site/managing-a-custom-domain-for-your-github-pages-site}{https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site/managing-a-custom-domain-for-your-github-pages-site}).
 
 
+\subsubsection{Preparing Releases}
+
+Things, that can be automated, has to be automated, and Release generation is not an exception. Let's generate Release
+page by setting a new tag (as an example, \q{git tag v1.0.1}, \q{git push origin v1.0.1}):
+
+\begin{lstlisting}[language=yaml]
+name: Project Release Artifacts
+# Trigger Action by new tag recognition
+on:
+  push:
+    tags:
+      - 'v*' # Filter by pattern
+# Run jobs
+jobs:
+  release:
+    name: Create Release Page
+    runs-on: ubuntu-latest
+    outputs:
+      version: ${{ steps.tag.outputs.name }}
+      upload_url: ${{ steps.create_release.outputs.upload_url }}
+      build_number: ${{ steps.build_number.outputs.build_number }}
+    steps:
+      - uses: actions/checkout@v3
+        # Next args're required to retrieve full git-history
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+          fetch-depth: 0
+      - uses: subosito/flutter-action@v2
+        with:
+          channel: 'stable'
+          cache: true
+      - run: flutter pub get
+
+      - name: Get Tag Name
+        id: tag
+        run: echo "name=${GITHUB_REF#refs/tags/v}" >> $GITHUB_OUTPUT
+      # Generate notes from git-history between tags
+      - name: Prepare Release Notes
+        run: |
+          # Approach to handle multiline content 
+          dart run grinder release-notes --tag=v${{ steps.tag.outputs.name }} --output=release_notes.log
+          echo "RELEASE_NOTES<<EOF" >> $GITHUB_ENV
+          while IFS= read -r line; do
+            echo "$line" >> $GITHUB_ENV
+          done < "release_notes.log"
+          echo "EOF" >> $GITHUB_ENV
+          rm release_notes.log
+      # Build number as totals of commits
+      - name: Set Build Number
+        id: build_number
+        run: echo "build_number=$(git rev-list --count HEAD)" >> $GITHUB_OUTPUT
+
+      - name: Create Release Page
+        id: create_release
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: v${{ steps.tag.outputs.name }}
+          release_name: Release ${{ steps.tag.outputs.name }}
+          body: ${{ env.RELEASE_NOTES }}
+          # Prevent its publicity before a manual check
+          draft: true
+          prerelease: false
+\end{lstlisting}
+
+
 \subsubsection{Generating Artifacts}
+
+We've prepared a release page, but what can be done in addition, is to generate artifacts and attach them to our release
+page. Let's do that and generate desktop runners for Macos, Linux, and Windows:
+
+\begin{lstlisting}[language=yaml]
+jobs:
+  release:
+    # ... shown earlier
+  build:
+    name: Create ${{ matrix.target }} build
+    runs-on: ${{ matrix.os }}
+    needs: release
+    strategy:
+      fail-fast: false
+      matrix:
+        target: [macOS, Windows, Linux]
+        include:
+          - os: macos-latest
+            target: macOS
+            build_path: build/macos/Build/Products/Release
+            asset_extension: .zip
+            asset_content_type: application/zip
+          - os: windows-latest
+            target: Windows
+            build_path: build/windows/runner/Release
+            asset_extension: .zip
+            asset_content_type: application/zip
+          - os: ubuntu-latest
+            target: Linux
+            build_path: build/linux/x64/release/bundle
+            asset_extension: .tar.gz
+            asset_content_type: application/gzip
+
+    steps:
+      - uses: actions/checkout@v3
+      - uses: subosito/flutter-action@v2
+        with:
+          channel: 'stable'
+          cache: true
+      - run: flutter pub get
+
+      - name: Run Windows Build 
+        if: matrix.target == 'Windows'
+        run: |
+          flutter config --enable-windows-desktop
+          flutter build -v windows --build-name=${{ needs.release.outputs.version }} --build-number=${{ needs.release.outputs.build_number }} --release
+
+      - name: Compress Windows Package
+        if: matrix.target == 'Windows'
+        run: |
+          compress-archive -Path * -DestinationPath ${env:GITHUB_WORKSPACE}/fingram_${{ matrix.target }}${{ matrix.asset_extension }}
+        working-directory: ${{ matrix.build_path }}
+
+# ... the same steps for Linux '-v linux' and Macos '-v macos'
+
+      - name: Upload ${{ matrix.target }} Artifact
+        id: upload_release_asset
+        uses: actions/upload-release-asset@latest
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ needs.release.outputs.upload_url }}
+          asset_path: ./fingram_${{ matrix.target }}${{ matrix.asset_extension }}
+          asset_name: fingram_${{ matrix.target }}${{ matrix.asset_extension }}
+          asset_content_type: ${{ matrix.asset_content_type }}
+\end{lstlisting}
+
+
+
 
