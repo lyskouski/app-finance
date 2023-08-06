@@ -29,6 +29,25 @@ class AccountEditPageState extends AccountAddPageState<AccountEditPage> {
     super.initState();
   }
 
+  void bindState() {
+    if (!isFirstRun) {
+      return;
+    }
+    setState(() {
+      isFirstRun = false;
+      final form = state.getByUuid(uuid) as AccountAppData;
+      title.text = form.title;
+      description.text = form.description ?? '';
+      type = form.type;
+      balance.text = form.details != null ? form.details.toString() : '';
+      color = form.color;
+      currency = form.currency;
+      icon = form.icon;
+      validTillDate = form.closedAt;
+      balanceUpdateDate = form.createdAt;
+    });
+  }
+
   @override
   String getTitle(context) {
     return AppLocalizations.of(context)!.editAccountHeader;
@@ -41,17 +60,17 @@ class AccountEditPageState extends AccountAddPageState<AccountEditPage> {
         uuid,
         AccountAppData(
           uuid: uuid,
-          title: super.title ?? '',
-          type: super.type ?? AppAccountType.cash.toString(),
-          description: super.description ?? '',
-          details: super.balance ?? 0.0,
+          title: title.text,
+          type: type ?? AppAccountType.cash.toString(),
+          description: description.text,
+          details: double.tryParse(balance.text) ?? 0.0,
           progress: 1.0,
-          color: super.color ?? Colors.red,
-          currency: super.currency,
+          color: color ?? Colors.red,
+          currency: currency,
           hidden: false,
-          icon: super.icon,
-          closedAt: super.validTillDate,
-          createdAt: super.balanceUpdateDate,
+          icon: icon,
+          closedAt: validTillDate,
+          createdAt: balanceUpdateDate,
         ));
   }
 
@@ -62,19 +81,7 @@ class AccountEditPageState extends AccountAddPageState<AccountEditPage> {
 
   @override
   Widget buildContent(BuildContext context, BoxConstraints constraints) {
-    if (isFirstRun) {
-      isFirstRun = false;
-      var form = super.state.getByUuid(uuid) as AccountAppData;
-      super.title = form.title;
-      super.description = form.description;
-      super.type = form.type;
-      super.balance = form.details;
-      super.color = form.color;
-      super.currency = form.currency;
-      super.icon = form.icon;
-      super.validTillDate = form.closedAt;
-      super.balanceUpdateDate = form.createdAt;
-    }
+    WidgetsBinding.instance.addPostFrameCallback((_) => bindState());
     return super.buildContent(context, constraints);
   }
 }

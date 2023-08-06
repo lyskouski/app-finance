@@ -15,6 +15,7 @@ import 'package:app_finance/widgets/_forms/currency_selector.dart';
 import 'package:app_finance/widgets/_forms/date_input.dart';
 import 'package:app_finance/widgets/_forms/icon_selector.dart';
 import 'package:app_finance/widgets/_forms/simple_input.dart';
+import 'package:app_finance/widgets/_wrappers/required_widget.dart';
 import 'package:currency_picker/currency_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localization.dart';
@@ -41,22 +42,30 @@ class GoalAddPage extends AbstractPage {
 }
 
 class GoalAddPageState<T extends GoalAddPage> extends AbstractPageState<GoalAddPage> {
-  String? title;
+  late TextEditingController title;
   IconData? icon;
   MaterialColor? color;
   Currency? currency;
-  double? details;
+  late TextEditingController details;
   DateTime? closedAt;
+  bool hasError = false;
 
   @override
   void initState() {
-    title = widget.title;
+    title = TextEditingController(text: widget.title);
     icon = widget.icon;
     color = widget.color;
-    details = widget.details;
+    details = TextEditingController(text: widget.details != null ? widget.details.toString() : '');
     currency = widget.currency;
     closedAt = widget.closedAt;
     super.initState();
+  }
+
+  @override
+  void dispose() {
+    title.dispose();
+    details.dispose();
+    super.dispose();
   }
 
   @override
@@ -65,18 +74,15 @@ class GoalAddPageState<T extends GoalAddPage> extends AbstractPageState<GoalAddP
   }
 
   bool hasFormErrors() {
-    bool isError = false;
-    if (title == null || title!.isEmpty) {
-      isError = true;
-    }
-    return isError;
+    setState(() => hasError = title.text.isEmpty || closedAt == null);
+    return hasError;
   }
 
   void updateStorage() {
     super.state.add(
         AppDataType.goals,
         GoalAppData(
-          title: title ?? '',
+          title: title.text,
           initial: Exchange(store: super.state)
               .reform(super.state.getTotal(AppDataType.accounts), Exchange.defaultCurrency, currency),
           progress: 0.0,
@@ -84,7 +90,7 @@ class GoalAddPageState<T extends GoalAddPage> extends AbstractPageState<GoalAddP
           hidden: false,
           currency: currency,
           icon: icon,
-          details: details,
+          details: double.tryParse(details.text) ?? 0.0,
           closedAt: closedAt,
         ));
   }
@@ -137,30 +143,17 @@ class GoalAddPageState<T extends GoalAddPage> extends AbstractPageState<GoalAddP
     FocusController.setContext(context);
 
     return SingleChildScrollView(
+      controller: FocusController.getController(),
       child: Container(
         margin: EdgeInsets.fromLTRB(indent, indent, indent, 90),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Row(
-              children: [
-                Text(
-                  '${AppLocalizations.of(context)!.titleGoal}*',
-                  style: textTheme.bodyLarge,
-                ),
-                Text(
-                  '',
-                  style: TextStyle(
-                    color: Theme.of(context).colorScheme.error,
-                  ),
-                ),
-              ],
-            ),
+            RequiredWidget(title: AppLocalizations.of(context)!.titleGoal, showError: hasError && title.text.isEmpty),
             SimpleInput(
-              value: title,
+              controller: title,
               tooltip: AppLocalizations.of(context)!.titleGoalTooltip,
               style: textTheme.numberMedium.copyWith(color: textTheme.headlineSmall?.color),
-              setState: (value) => setState(() => title = value),
               focusOrder: focusOrder += 1,
             ),
             SizedBox(height: indent),
@@ -249,14 +242,13 @@ class GoalAddPageState<T extends GoalAddPage> extends AbstractPageState<GoalAddP
                         style: textTheme.bodyLarge,
                       ),
                       SimpleInput(
-                        value: details != null ? details.toString() : '',
+                        controller: details,
                         type: const TextInputType.numberWithOptions(decimal: true),
                         tooltip: AppLocalizations.of(context)!.billSetTooltip,
                         style: textTheme.numberMedium.copyWith(color: textTheme.headlineSmall?.color),
                         formatter: [
                           SimpleInput.filterDouble,
                         ],
-                        setState: (value) => setState(() => details = double.tryParse(value)),
                         focusOrder: focusOrder += 1,
                       ),
                     ],
@@ -265,20 +257,7 @@ class GoalAddPageState<T extends GoalAddPage> extends AbstractPageState<GoalAddP
               ],
             ),
             SizedBox(height: indent),
-            Row(
-              children: [
-                Text(
-                  '${AppLocalizations.of(context)!.closedAt}*',
-                  style: textTheme.bodyLarge,
-                ),
-                Text(
-                  '',
-                  style: TextStyle(
-                    color: Theme.of(context).colorScheme.error,
-                  ),
-                ),
-              ],
-            ),
+            RequiredWidget(title: AppLocalizations.of(context)!.closedAt, showError: hasError && closedAt == null),
             DateInput(
               style: textTheme.numberMedium.copyWith(color: textTheme.headlineSmall?.color),
               value: closedAt,

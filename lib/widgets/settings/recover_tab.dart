@@ -22,20 +22,20 @@ class RecoverTab extends StatefulWidget {
 }
 
 class SyncTabState extends State<RecoverTab> {
-  String? username;
-  String? password;
-  String? link;
-  String path = 'tmp.log';
+  final username = TextEditingController();
+  final password = TextEditingController();
+  final link = TextEditingController();
+  final path = TextEditingController(text: 'tmp.log');
   String message = '';
   bool inProgress = false;
 
   Client? _connect(BuildContext context) {
-    if (username == null || link == null || password == null) {
+    if (username.text.isEmpty || link.text.isEmpty || password.text.isEmpty) {
       setState(() => message = AppLocalizations.of(context)!.isRequired);
       return null;
     }
     setState(() => inProgress = true);
-    return newClient(link!, user: username!, password: password!);
+    return newClient(link.text, user: username.text, password: password.text);
   }
 
   Future<void> save2WebDav(BuildContext context) async {
@@ -49,7 +49,7 @@ class SyncTabState extends State<RecoverTab> {
       codeUnits.addAll('\n'.codeUnits);
     }
     final Uint8List unit8List = Uint8List.fromList(codeUnits);
-    await client.write(path, unit8List).catchError((err) {
+    await client.write(path.text, unit8List).catchError((err) {
       setState(() {
         message = AppLocalizations.of(context)!.error(err.toString());
         inProgress = false;
@@ -66,7 +66,7 @@ class SyncTabState extends State<RecoverTab> {
     if (client == null) {
       return;
     }
-    List<int> uint8list = await client.read(path);
+    List<int> uint8list = await client.read(path.text);
     List<String> lines = String.fromCharCodes(uint8list).split('\n');
     for (String line in lines) {
       await TransactionLog.save(line, true);
@@ -103,44 +103,40 @@ class SyncTabState extends State<RecoverTab> {
             SizedBox(height: indent),
             RequiredWidget(
               title: AppLocalizations.of(context)!.link,
-              showError: message != '' && link == null,
+              showError: message != '' && link.text.isEmpty,
             ),
             SimpleInput(
-              value: link,
+              controller: link,
               type: TextInputType.url,
               style: textTheme.numberMedium.copyWith(color: textTheme.headlineSmall?.color),
-              setState: (value) => setState(() => link = value),
             ),
             SizedBox(height: indent),
             RequiredWidget(
               title: AppLocalizations.of(context)!.username,
-              showError: message != '' && username == null,
+              showError: message != '' && username.text.isEmpty,
             ),
             SimpleInput(
-              value: username,
+              controller: username,
               style: textTheme.numberMedium.copyWith(color: textTheme.headlineSmall?.color),
-              setState: (value) => setState(() => username = value),
             ),
             SizedBox(height: indent),
             RequiredWidget(
               title: AppLocalizations.of(context)!.password,
-              showError: message != '' && password == null,
+              showError: message != '' && password.text.isEmpty,
             ),
             SimpleInput(
-              value: password,
+              controller: password,
               type: TextInputType.visiblePassword,
               style: textTheme.numberMedium.copyWith(color: textTheme.headlineSmall?.color),
-              setState: (value) => setState(() => password = value),
             ),
             SizedBox(height: indent),
             RequiredWidget(
               title: AppLocalizations.of(context)!.path,
-              showError: message != '' && path == '',
+              showError: message != '' && path.text.isEmpty,
             ),
             SimpleInput(
-              value: path,
+              controller: path,
               style: textTheme.numberMedium.copyWith(color: textTheme.headlineSmall?.color),
-              setState: (value) => setState(() => path = value),
             ),
             SizedBox(height: indent * 2),
             SizedBox(

@@ -36,14 +36,30 @@ class GoalEditPageState extends GoalAddPageState<GoalEditPage> {
 
   @override
   void updateStorage() {
-    var data = super.state.getByUuid(uuid) as GoalAppData;
-    data.title = super.title ?? '';
-    data.color = super.color;
-    data.icon = super.icon;
-    data.details = super.details;
-    data.closedAt = super.closedAt ?? DateTime.now();
-    data.currency = super.currency;
-    super.state.update(AppDataType.goals, uuid, data);
+    var data = state.getByUuid(uuid) as GoalAppData;
+    data.title = title.text;
+    data.color = color;
+    data.icon = icon;
+    data.details = double.tryParse(details.text) ?? 0.0;
+    data.closedAt = closedAt ?? DateTime.now();
+    data.currency = currency;
+    state.update(AppDataType.goals, uuid, data);
+  }
+
+  void bindState() {
+    if (!isFirstRun) {
+      return;
+    }
+    setState(() {
+      isFirstRun = false;
+      var form = super.state.getByUuid(uuid) as GoalAppData;
+      super.title.text = form.title;
+      super.details.text = form.details != null ? form.details.toString() : '';
+      super.color = form.color;
+      super.icon = form.icon;
+      super.currency = form.currency;
+      super.closedAt = form.closedAt;
+    });
   }
 
   @override
@@ -53,16 +69,7 @@ class GoalEditPageState extends GoalAddPageState<GoalEditPage> {
 
   @override
   Widget buildContent(BuildContext context, BoxConstraints constraints) {
-    if (isFirstRun) {
-      isFirstRun = false;
-      var form = super.state.getByUuid(uuid) as GoalAppData;
-      super.title = form.title;
-      super.details = form.details;
-      super.color = form.color;
-      super.icon = form.icon;
-      super.currency = form.currency;
-      super.closedAt = form.closedAt;
-    }
+    WidgetsBinding.instance.addPostFrameCallback((_) => bindState());
     return super.buildContent(context, constraints);
   }
 }

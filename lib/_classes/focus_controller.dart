@@ -60,12 +60,25 @@ class FocusController {
   }
 
   static void scrollToFocusedElement(FocusNode node) {
-    final focusedNode = node.context?.findRenderObject();
-    final firstNode = nodes[0].context?.findRenderObject();
     bool isAttached = _controller?.hasClients ?? false;
+    RenderObject? firstNode;
+    BuildContext? context = nodes[0].context;
+    if (context != null && context.mounted) {
+      firstNode = context.findRenderObject();
+    }
+    // @todo: drop after changing 'package:dropdown_search'
+    double shift = 0;
+    if (firstNode == null) {
+      context = nodes[1].context;
+      if (context != null && context.mounted) {
+        firstNode = context.findRenderObject();
+      }
+      shift = 100;
+    }
+    final focusedNode = node.context?.findRenderObject();
     if (isAttached && focusedNode is RenderBox && firstNode is RenderBox) {
       _controller?.animateTo(
-        focusedNode.localToGlobal(Offset.zero).dy - firstNode.localToGlobal(Offset.zero).dy,
+        focusedNode.localToGlobal(Offset.zero).dy - firstNode.localToGlobal(Offset.zero).dy + shift,
         duration: const Duration(milliseconds: 300),
         curve: Curves.easeInOut,
       );

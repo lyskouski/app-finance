@@ -89,7 +89,7 @@ class CurrencyPageState extends AbstractPageState<CurrencyPage> {
                 ],
                 [
                   SimpleInput(
-                    value: item.details.toString(),
+                    controller: TextEditingController(text: item.details.toString()),
                     type: TextInputType.number,
                     setState: (value) => updateRate(item, double.tryParse(value)),
                   )

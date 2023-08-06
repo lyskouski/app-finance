@@ -43,7 +43,7 @@ class TransferTabState extends State<TransferTab> {
   late AppData state;
   String? accountFrom;
   String? accountTo;
-  double? amount;
+  late TextEditingController amount;
   Currency? currency;
   bool hasErrors = false;
 
@@ -51,9 +51,15 @@ class TransferTabState extends State<TransferTab> {
   void initState() {
     accountFrom = widget.accountFrom;
     accountTo = widget.accountTo;
-    amount = widget.amount;
+    amount = TextEditingController(text: widget.amount != null ? widget.amount.toString() : '');
     currency = widget.currency;
     super.initState();
+  }
+
+  @override
+  dispose() {
+    amount.dispose();
+    super.dispose();
   }
 
   bool hasFormErrors() {
@@ -65,11 +71,11 @@ class TransferTabState extends State<TransferTab> {
     String uuidFrom = accountFrom ?? '';
     final course = Exchange(store: state);
     AccountAppData from = state.getByUuid(uuidFrom);
-    from.details -= course.reform(amount, from.currency, currency);
+    from.details -= course.reform(double.tryParse(amount.text), from.currency, currency);
     state.update(AppDataType.accounts, uuidFrom, from);
     String uuidTo = accountTo ?? '';
     AccountAppData to = state.getByUuid(uuidTo);
-    to.details += course.reform(amount, currency, to.currency);
+    to.details += course.reform(double.tryParse(amount.text), currency, to.currency);
     state.update(AppDataType.accounts, uuidTo, to);
   }
 
@@ -184,14 +190,13 @@ class TransferTabState extends State<TransferTab> {
                           style: textTheme.bodyLarge,
                         ),
                         SimpleInput(
-                          value: amount != null ? amount.toString() : '',
+                          controller: amount,
                           type: const TextInputType.numberWithOptions(decimal: true),
                           tooltip: AppLocalizations.of(context)!.billSetTooltip,
                           style: textTheme.numberMedium.copyWith(color: textTheme.headlineSmall?.color),
                           formatter: [
                             SimpleInput.filterDouble,
                           ],
-                          setState: (value) => setState(() => amount = double.tryParse(value)),
                           focusOrder: focusOrder += 1,
                         ),
                       ],
@@ -203,7 +208,7 @@ class TransferTabState extends State<TransferTab> {
                     indent: indent,
                     target: currency,
                     state: state,
-                    targetAmount: amount,
+                    targetAmount: double.tryParse(amount.text),
                     source: [
                       accountFrom != null ? state.getByUuid(accountFrom!).currency : null,
                       accountTo != null ? state.getByUuid(accountTo!).currency : null,

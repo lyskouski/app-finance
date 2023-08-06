@@ -50,8 +50,8 @@ class ExpensesTabState<T extends ExpensesTab> extends State<T> with SharedPrefer
   String? account;
   String? budget;
   Currency? currency;
-  double? bill;
-  String? description;
+  late TextEditingController bill;
+  late TextEditingController description;
   DateTime? createdAt;
   bool hasErrors = false;
   bool isFresh = true;
@@ -61,10 +61,17 @@ class ExpensesTabState<T extends ExpensesTab> extends State<T> with SharedPrefer
     account = widget.account;
     budget = widget.budget;
     currency = widget.currency;
-    bill = widget.bill;
-    description = widget.description;
+    bill = TextEditingController(text: widget.bill != null ? widget.bill.toString() : '');
+    description = TextEditingController(text: widget.description);
     createdAt = widget.createdAt;
     super.initState();
+  }
+
+  @override
+  dispose() {
+    bill.dispose();
+    description.dispose();
+    super.dispose();
   }
 
   Future<void> _loadPreferences() async {
@@ -88,7 +95,7 @@ class ExpensesTabState<T extends ExpensesTab> extends State<T> with SharedPrefer
   }
 
   bool hasFormErrors() {
-    setState(() => hasErrors = account == null || budget == null || bill == null);
+    setState(() => hasErrors = account == null || budget == null || bill.text.isEmpty);
     return hasErrors;
   }
 
@@ -101,8 +108,8 @@ class ExpensesTabState<T extends ExpensesTab> extends State<T> with SharedPrefer
           account: account ?? '',
           category: budget ?? '',
           currency: currency,
-          title: description ?? '',
-          details: bill,
+          title: description.text,
+          details: double.tryParse(bill.text) ?? 0.0,
           createdAt: createdAt ?? DateTime.now(),
         ));
   }
@@ -226,17 +233,16 @@ class ExpensesTabState<T extends ExpensesTab> extends State<T> with SharedPrefer
                       [
                         RequiredWidget(
                           title: AppLocalizations.of(context)!.expense,
-                          showError: hasErrors && bill == null,
+                          showError: hasErrors && bill.text.isEmpty,
                         ),
                         SimpleInput(
-                          value: bill != null ? bill.toString() : '',
+                          controller: bill,
                           type: const TextInputType.numberWithOptions(decimal: true),
                           tooltip: AppLocalizations.of(context)!.billSetTooltip,
                           style: textTheme.numberMedium.copyWith(color: textTheme.headlineSmall?.color),
                           formatter: [
                             SimpleInput.filterDouble,
                           ],
-                          setState: (value) => setState(() => bill = double.tryParse(value)),
                           focusOrder: focusOrder += 1,
                         ),
                       ],
@@ -248,7 +254,7 @@ class ExpensesTabState<T extends ExpensesTab> extends State<T> with SharedPrefer
                     indent: indent,
                     target: currency,
                     state: state,
-                    targetAmount: bill,
+                    targetAmount: double.tryParse(bill.text),
                     source: [
                       account != null ? state.getByUuid(account!).currency : null,
                       budget != null ? state.getByUuid(budget!).currency : null,
@@ -259,10 +265,9 @@ class ExpensesTabState<T extends ExpensesTab> extends State<T> with SharedPrefer
                     style: textTheme.bodyLarge,
                   ),
                   SimpleInput(
-                    value: description ?? '',
+                    controller: description,
                     tooltip: AppLocalizations.of(context)!.descriptionTooltip,
                     style: textTheme.numberMedium.copyWith(color: textTheme.headlineSmall?.color),
-                    setState: (value) => setState(() => description = value),
                     focusOrder: focusOrder += 1,
                   ),
                   SizedBox(height: indent),
