@@ -38,15 +38,17 @@ class CurrencyExchangeInputState extends State<CurrencyExchangeInput> {
   Map<int, double?> amount = <int, double?>{};
   Map<int, List<TextEditingController>> controllers = <int, List<TextEditingController>>{};
   double? targetAmount;
-  final delay = DelayedCall(1000);
+  final delay = DelayedCall(2000);
+
+  @override
+  initState() {
+    super.initState();
+    recalculate();
+  }
 
   @override
   void dispose() {
     delay.cancel();
-    for (int idx = 0; idx < widget.source.length; idx++) {
-      controllers[idx]![0].dispose();
-      controllers[idx]![1].dispose();
-    }
     super.dispose();
   }
 
@@ -87,19 +89,20 @@ class CurrencyExchangeInputState extends State<CurrencyExchangeInput> {
     if (widget.targetAmount == null && isTotal || controllers[index]![isTotal ? 0 : 1].text == newValue) {
       return;
     }
-    setState(() {
-      final value = double.tryParse(newValue ?? '') ?? 0.0;
-      if (isTotal) {
-        amount[index] = value;
-        rate[index]!.details = value / (index > 0 && amount[index - 1]! > 0 ? amount[index - 1] : widget.targetAmount)!;
-        controllers[index]![0].text = rate[index]!.details.toString();
-      } else {
-        rate[index]!.details = value;
-        amount[index] = getAmount(index);
-        controllers[index]![1].text = amount[index] != null ? amount[index].toString() : '';
-      }
-    });
-    delay.run(() => widget.state.update(AppDataType.currencies, rate[index]!.uuid, rate[index], true));
+    delay.run(() => setState(() {
+          final value = double.tryParse(newValue ?? '') ?? 0.0;
+          if (isTotal) {
+            amount[index] = value;
+            rate[index]!.details =
+                value / (index > 0 && amount[index - 1]! > 0 ? amount[index - 1] : widget.targetAmount)!;
+            controllers[index]![0].text = rate[index]!.details.toString();
+          } else {
+            rate[index]!.details = value;
+            amount[index] = getAmount(index);
+            controllers[index]![1].text = amount[index] != null ? amount[index].toString() : '';
+          }
+          widget.state.update(AppDataType.currencies, rate[index]!.uuid, rate[index], true);
+        }));
   }
 
   @override
