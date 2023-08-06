@@ -4,6 +4,7 @@
 
 import 'package:adaptive_breakpoints/adaptive_breakpoints.dart';
 import 'package:app_finance/_classes/data/transaction_log.dart';
+import 'package:app_finance/_classes/focus_controller.dart';
 import 'package:app_finance/custom_text_theme.dart';
 import 'package:app_finance/helpers/theme_helper.dart';
 import 'package:app_finance/widgets/_forms/simple_input.dart';
@@ -82,82 +83,85 @@ class SyncTabState extends State<RecoverTab> {
     final textTheme = Theme.of(context).textTheme;
     double indent = ThemeHelper(windowType: getWindowType(context)).getIndent() * 2;
 
-    return Padding(
-      padding: EdgeInsets.all(indent),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          if (inProgress) ...[
-            SizedBox(height: indent * 6),
-            LoadingWidget(isLoading: inProgress),
-          ] else ...[
-            SizedBox(height: indent),
-            Text(
-              AppLocalizations.of(context)!.webDav,
-              style: textTheme.bodyLarge?.copyWith(color: Theme.of(context).colorScheme.primary),
-            ),
-            Text(
-              message,
-              style: textTheme.bodyMedium?.copyWith(color: Theme.of(context).colorScheme.inversePrimary),
-            ),
-            SizedBox(height: indent),
-            RequiredWidget(
-              title: AppLocalizations.of(context)!.link,
-              showError: message != '' && link.text.isEmpty,
-            ),
-            SimpleInput(
-              controller: link,
-              type: TextInputType.url,
-              style: textTheme.numberMedium.copyWith(color: textTheme.headlineSmall?.color),
-            ),
-            SizedBox(height: indent),
-            RequiredWidget(
-              title: AppLocalizations.of(context)!.username,
-              showError: message != '' && username.text.isEmpty,
-            ),
-            SimpleInput(
-              controller: username,
-              style: textTheme.numberMedium.copyWith(color: textTheme.headlineSmall?.color),
-            ),
-            SizedBox(height: indent),
-            RequiredWidget(
-              title: AppLocalizations.of(context)!.password,
-              showError: message != '' && password.text.isEmpty,
-            ),
-            SimpleInput(
-              controller: password,
-              type: TextInputType.visiblePassword,
-              style: textTheme.numberMedium.copyWith(color: textTheme.headlineSmall?.color),
-            ),
-            SizedBox(height: indent),
-            RequiredWidget(
-              title: AppLocalizations.of(context)!.path,
-              showError: message != '' && path.text.isEmpty,
-            ),
-            SimpleInput(
-              controller: path,
-              style: textTheme.numberMedium.copyWith(color: textTheme.headlineSmall?.color),
-            ),
-            SizedBox(height: indent * 2),
-            SizedBox(
-              width: double.infinity,
-              child: FloatingActionButton(
-                onPressed: () => save2WebDav(context),
-                tooltip: AppLocalizations.of(context)!.saveTooltip,
-                child: Text(AppLocalizations.of(context)!.saveTooltip),
+    return SingleChildScrollView(
+      controller: FocusController.getController(),
+      child: Padding(
+        padding: EdgeInsets.all(indent),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            if (inProgress) ...[
+              SizedBox(height: indent * 6),
+              LoadingWidget(isLoading: inProgress),
+            ] else ...[
+              SizedBox(height: indent),
+              Text(
+                AppLocalizations.of(context)!.webDav,
+                style: textTheme.bodyLarge?.copyWith(color: Theme.of(context).colorScheme.primary),
               ),
-            ),
-            SizedBox(height: indent * 4),
-            SizedBox(
-              width: double.infinity,
-              child: FloatingActionButton(
-                onPressed: () => recover4WebDav(context),
-                tooltip: AppLocalizations.of(context)!.recoveryTooltip,
-                child: Text(AppLocalizations.of(context)!.recoveryTooltip),
+              Text(
+                message,
+                style: textTheme.bodyMedium?.copyWith(color: Theme.of(context).colorScheme.inversePrimary),
               ),
-            ),
-          ]
-        ],
+              SizedBox(height: indent),
+              RequiredWidget(
+                title: AppLocalizations.of(context)!.link,
+                showError: message != '' && link.text.isEmpty,
+              ),
+              SimpleInput(
+                controller: link,
+                type: TextInputType.url,
+                style: textTheme.numberMedium.copyWith(color: textTheme.headlineSmall?.color),
+              ),
+              SizedBox(height: indent),
+              RequiredWidget(
+                title: AppLocalizations.of(context)!.username,
+                showError: message != '' && username.text.isEmpty,
+              ),
+              SimpleInput(
+                controller: username,
+                style: textTheme.numberMedium.copyWith(color: textTheme.headlineSmall?.color),
+              ),
+              SizedBox(height: indent),
+              RequiredWidget(
+                title: AppLocalizations.of(context)!.password,
+                showError: message != '' && password.text.isEmpty,
+              ),
+              SimpleInput(
+                controller: password,
+                type: TextInputType.visiblePassword,
+                style: textTheme.numberMedium.copyWith(color: textTheme.headlineSmall?.color),
+              ),
+              SizedBox(height: indent),
+              RequiredWidget(
+                title: AppLocalizations.of(context)!.path,
+                showError: message != '' && path.text.isEmpty,
+              ),
+              SimpleInput(
+                controller: path,
+                style: textTheme.numberMedium.copyWith(color: textTheme.headlineSmall?.color),
+              ),
+              SizedBox(height: indent * 2),
+              SizedBox(
+                width: double.infinity,
+                child: FloatingActionButton(
+                  onPressed: () => save2WebDav(context),
+                  tooltip: AppLocalizations.of(context)!.saveTooltip,
+                  child: Text(AppLocalizations.of(context)!.saveTooltip),
+                ),
+              ),
+              SizedBox(height: indent * 4),
+              SizedBox(
+                width: double.infinity,
+                child: FloatingActionButton(
+                  onPressed: () => recover4WebDav(context),
+                  tooltip: AppLocalizations.of(context)!.recoveryTooltip,
+                  child: Text(AppLocalizations.of(context)!.recoveryTooltip),
+                ),
+              ),
+            ]
+          ],
+        ),
       ),
     );
   }
