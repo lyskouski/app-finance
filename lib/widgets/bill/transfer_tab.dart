@@ -128,7 +128,7 @@ class TransferTabState extends State<TransferTab> {
           body: SingleChildScrollView(
             controller: FocusController.getController(),
             child: Container(
-              margin: EdgeInsets.fromLTRB(indent, indent, indent, 90),
+              margin: EdgeInsets.fromLTRB(indent, indent, indent, 240),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [

@@ -77,8 +77,9 @@ class FocusController {
     }
     final focusedNode = node.context?.findRenderObject();
     if (isAttached && focusedNode is RenderBox && firstNode is RenderBox) {
+      double delta = focusedNode.localToGlobal(Offset.zero).dy - firstNode.localToGlobal(Offset.zero).dy + shift;
       _controller?.animateTo(
-        focusedNode.localToGlobal(Offset.zero).dy - firstNode.localToGlobal(Offset.zero).dy + shift,
+        delta,
         duration: const Duration(milliseconds: 300),
         curve: Curves.easeInOut,
       );
@@ -101,18 +102,15 @@ class FocusController {
   }
 
   static bool isFocused([int? i, dynamic val]) {
+    bool isFocused = false;
     int idx = i ?? _idx;
     dynamic value = val ?? (idx >= 0 ? values[idx] : null);
-    FocusNode? focusNode = _context != null ? FocusScope.of(_context!).focusedChild : null;
-    if (focusNode != null) {
-      return idx > 0 ? focusNode == nodes[idx] : false;
-    }
     if ((value == null || value == '') && idx != DEFAULT && (focus == DEFAULT || focus == idx)) {
       focus = idx;
+      isFocused = true;
       requestFocus();
-      return true;
     }
-    return false;
+    return isFocused;
   }
 
   static void dispose() {

@@ -135,7 +135,7 @@ class IncomeTabState extends State<IncomeTab> with SharedPreferencesMixin {
           body: SingleChildScrollView(
             controller: FocusController.getController(),
             child: Container(
-              margin: EdgeInsets.fromLTRB(indent, indent, indent, 90),
+              margin: EdgeInsets.fromLTRB(indent, indent, indent, 240),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [

@@ -36,10 +36,12 @@ abstract class AbstractFormElementState<T extends AbstractFormElement> extends S
 
   void onFocus() {
     if (mounted) {
-      isFocused = true;
+      FocusController.scrollToFocusedElement(focus);
+      focus.requestFocus();
+      if (!isFocused) {
+        setState(() => isFocused = true);
+      }
     }
-    FocusController.scrollToFocusedElement(focus);
-    focus.requestFocus();
   }
 
   @override
@@ -47,13 +49,13 @@ abstract class AbstractFormElementState<T extends AbstractFormElement> extends S
     if (!mounted) {
       return Container();
     }
-    FocusController.init(widget.focusOrder, widget.value);
+    FocusController.init(widget.focusOrder, value);
     focus = FocusController.getFocusNode() ?? defaultFocus;
     if ((widget.value ?? '') != value && !focus.hasFocus) {
       WidgetsBinding.instance.addPostFrameCallback((_) => setState(changeInitialState));
     }
     if (value == '' && focus.hasFocus && !isFocused) {
-      WidgetsBinding.instance.addPostFrameCallback((_) => setState(onFocus));
+      WidgetsBinding.instance.addPostFrameCallback((_) => onFocus());
     }
     return buildContent(context);
   }

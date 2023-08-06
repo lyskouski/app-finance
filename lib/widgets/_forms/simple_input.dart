@@ -46,7 +46,7 @@ class SimpleInputState extends AbstractFormElementState<SimpleInput> {
       textInputAction: FocusController.getAction(),
       onTap: onFocus,
       onEditingComplete: FocusController.onEditingComplete,
-      autofocus: isFocused || FocusController.isFocused(),
+      autofocus: FocusController.isFocused(),
       decoration: InputDecoration(
         filled: true,
         border: InputBorder.none,
