@@ -86,13 +86,15 @@ class FocusController {
     }
   }
 
-  static void onEditingComplete() {
+  static void onEditingComplete(index) {
     resetFocus();
-    if (_idx >= 0 && (values[_idx] == null || values[_idx] == '')) {
-      values[_idx] == true;
+    if (index >= 0 && (values[index] == null || values[index] == '')) {
+      values[index] = true;
     }
     for (int idx = 0; idx < nodes.length; idx++) {
-      isFocused(idx, values[idx]);
+      if (isFocused(idx, values[idx])) {
+        break;
+      }
     }
   }
 
