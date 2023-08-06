@@ -3,56 +3,60 @@
 // found in the LICENSE file.
 
 import 'package:app_finance/_classes/focus_controller.dart';
-import 'package:app_finance/widgets/_forms/abstract_form_element.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
-class SimpleInput extends AbstractFormElement {
+class SimpleInput extends StatelessWidget {
   final Function? setState;
   final TextStyle? style;
   final String? tooltip;
   final TextInputType type;
   final List<TextInputFormatter>? formatter;
   final TextEditingController controller;
+  final int focusOrder;
+  late final FocusNode focus;
 
   static FilteringTextInputFormatter filterDouble = FilteringTextInputFormatter.allow(RegExp(r'^\d+\.?\d{0,4}'));
 
   SimpleInput({
+    super.key,
     required this.controller,
     this.setState,
     this.style,
     this.tooltip,
     this.formatter,
     this.type = TextInputType.text,
-    super.focusOrder,
-  }) : super(value: controller.text) {
+    this.focusOrder = FocusController.DEFAULT,
+  }) {
     if (setState != null) {
       controller.addListener(() => setState!(controller.text));
     }
+    FocusController.init(focusOrder, controller.text);
+    focus = FocusController.getFocusNode() ?? FocusNode();
+  }
+
+  void onFocus() {
+    FocusController.scrollToFocusedElement(focus);
+    focus.requestFocus();
   }
 
   @override
-  SimpleInputState createState() => SimpleInputState();
-}
-
-class SimpleInputState extends AbstractFormElementState<SimpleInput> {
-  @override
-  Widget buildContent(BuildContext context) {
+  Widget build(BuildContext context) {
     return TextFormField(
-      controller: widget.controller,
-      inputFormatters: widget.formatter,
-      keyboardType: widget.type,
+      controller: controller,
+      inputFormatters: formatter,
+      keyboardType: type,
       focusNode: focus,
       textInputAction: FocusController.getAction(),
       onTap: onFocus,
-      onEditingComplete: () => FocusController.onEditingComplete(widget.focusOrder),
+      onEditingComplete: () => FocusController.onEditingComplete(focusOrder),
       autofocus: FocusController.isFocused(),
       decoration: InputDecoration(
         filled: true,
         border: InputBorder.none,
         fillColor: Theme.of(context).colorScheme.inversePrimary.withOpacity(0.3),
-        hintText: widget.tooltip,
-        hintStyle: widget.style,
+        hintText: tooltip,
+        hintStyle: style,
       ),
     );
   }
