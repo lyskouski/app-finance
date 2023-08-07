@@ -42,7 +42,8 @@ class IncomeTabState extends State<IncomeTab> with SharedPreferencesMixin {
   late AppData state;
   String? account;
   Currency? currency;
-  double? amount;
+  late TextEditingController amount;
+  double? amountValue;
   bool hasErrors = false;
   bool isFresh = true;
 
@@ -50,12 +51,12 @@ class IncomeTabState extends State<IncomeTab> with SharedPreferencesMixin {
   void initState() {
     account = widget.account;
     currency = widget.currency;
-    amount = widget.amount;
+    amount = TextEditingController(text: widget.amount != null ? widget.amount.toString() : '');
+    amountValue = widget.amount;
     super.initState();
   }
 
-  Future<void> _loadPreferences() async {
-    await Future.delayed(Duration.zero);
+  void _loadPreferences() {
     setState(() {
       isFresh = false;
       final value = getPreference(prefAccount);
@@ -74,14 +75,13 @@ class IncomeTabState extends State<IncomeTab> with SharedPreferencesMixin {
     String uuid = account ?? '';
     setPreference(prefAccount, uuid);
     AccountAppData value = state.getByUuid(uuid);
-    value.details += Exchange(store: state).reform(amount, currency, value.currency);
+    value.details += Exchange(store: state).reform(double.tryParse(amount.text), currency, value.currency);
     state.update(AppDataType.accounts, uuid, value);
   }
 
   Widget buildButton(BuildContext context, BoxConstraints constraints) {
     var helper = ThemeHelper(windowType: getWindowType(context));
     String title = AppLocalizations.of(context)!.createIncomeTooltip;
-    FocusController.init(3);
     return SizedBox(
       width: constraints.maxWidth - helper.getIndent() * 4,
       child: FloatingActionButton(
@@ -117,20 +117,19 @@ class IncomeTabState extends State<IncomeTab> with SharedPreferencesMixin {
     final TextTheme textTheme = Theme.of(context).textTheme;
     double indent = ThemeHelper(windowType: getWindowType(context)).getIndent() * 2;
     double offset = MediaQuery.of(context).size.width - indent * 3;
-    int focusOrder = FocusController.DEFAULT;
-    FocusController.setContext(context);
+    FocusController.init();
 
     return LayoutBuilder(builder: (context, constraints) {
       return Consumer<AppData>(builder: (context, appState, _) {
         state = appState;
         if (isFresh) {
-          _loadPreferences();
+          WidgetsBinding.instance.addPostFrameCallback((_) => _loadPreferences());
         }
         return Scaffold(
           body: SingleChildScrollView(
             controller: FocusController.getController(),
             child: Container(
-              margin: EdgeInsets.fromLTRB(indent, indent, indent, 90),
+              margin: EdgeInsets.fromLTRB(indent, indent, indent, 240),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -148,7 +147,6 @@ class IncomeTabState extends State<IncomeTab> with SharedPreferencesMixin {
                     style: textTheme.numberMedium.copyWith(color: textTheme.headlineSmall?.color),
                     indent: indent,
                     width: offset,
-                    focusOrder: focusOrder += 1,
                   ),
                   SizedBox(height: indent),
                   RowWidget(
@@ -168,7 +166,6 @@ class IncomeTabState extends State<IncomeTab> with SharedPreferencesMixin {
                             value: currency?.code,
                             setView: (Currency currency) => currency.code,
                             setState: (value) => setState(() => currency = value),
-                            focusOrder: focusOrder += 1,
                           ),
                         ),
                       ],
@@ -178,15 +175,14 @@ class IncomeTabState extends State<IncomeTab> with SharedPreferencesMixin {
                           style: textTheme.bodyLarge,
                         ),
                         SimpleInput(
-                          value: amount != null ? amount.toString() : '',
+                          controller: amount,
                           type: const TextInputType.numberWithOptions(decimal: true),
                           tooltip: AppLocalizations.of(context)!.billSetTooltip,
                           style: textTheme.numberMedium.copyWith(color: textTheme.headlineSmall?.color),
+                          setState: (v) => setState(() => amountValue = double.tryParse(v)),
                           formatter: [
                             SimpleInput.filterDouble,
                           ],
-                          setState: (value) => setState(() => amount = double.tryParse(value)),
-                          focusOrder: focusOrder += 1,
                         ),
                       ],
                     ],
@@ -197,11 +193,11 @@ class IncomeTabState extends State<IncomeTab> with SharedPreferencesMixin {
                     indent: indent,
                     target: currency,
                     state: state,
-                    targetAmount: amount,
-                    source: [
+                    targetAmount: amountValue,
+                    source: <Currency?>[
                       null,
                       account != null ? state.getByUuid(account!).currency : null,
-                    ].cast<Currency?>(),
+                    ],
                   ),
                 ],
               ),

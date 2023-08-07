@@ -96,6 +96,7 @@ class TransactionLog with SharedPreferencesMixin {
   static Stream<String> read() async* {
     Stream<String> lines;
     if (kIsWeb) {
+      increment = 0;
       lines = _loadWeb();
     } else {
       lines = (await _logFle).openRead().transform(utf8.decoder).transform(const LineSplitter());

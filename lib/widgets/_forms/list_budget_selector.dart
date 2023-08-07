@@ -4,7 +4,6 @@
 
 import 'package:app_finance/_classes/data/budget_app_data.dart';
 import 'package:app_finance/_classes/app_data.dart';
-import 'package:app_finance/_classes/focus_controller.dart';
 import 'package:app_finance/widgets/_forms/list_account_selector.dart';
 
 class ListBudgetSelectorItem extends ListAccountSelectorItem {
@@ -20,7 +19,6 @@ class ListBudgetSelector extends ListAccountSelector<ListBudgetSelectorItem> {
     required super.width,
     super.style,
     super.value,
-    super.focusOrder = FocusController.DEFAULT,
     super.indent = 0.0,
   }) : super();
 
@@ -33,9 +31,4 @@ class ListBudgetSelector extends ListAccountSelector<ListBudgetSelectorItem> {
         .cast<ListBudgetSelectorItem>()
         .toList();
   }
-
-  @override
-  ListBudgetSelectorState createState() => ListBudgetSelectorState();
 }
-
-class ListBudgetSelectorState extends ListAccountSelectorState<ListBudgetSelector, ListAccountSelectorItem> {}

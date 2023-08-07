@@ -43,7 +43,8 @@ class TransferTabState extends State<TransferTab> {
   late AppData state;
   String? accountFrom;
   String? accountTo;
-  double? amount;
+  late TextEditingController amount;
+  double? amountValue;
   Currency? currency;
   bool hasErrors = false;
 
@@ -51,7 +52,8 @@ class TransferTabState extends State<TransferTab> {
   void initState() {
     accountFrom = widget.accountFrom;
     accountTo = widget.accountTo;
-    amount = widget.amount;
+    amount = TextEditingController(text: widget.amount != null ? widget.amount.toString() : '');
+    amountValue = widget.amount;
     currency = widget.currency;
     super.initState();
   }
@@ -65,18 +67,17 @@ class TransferTabState extends State<TransferTab> {
     String uuidFrom = accountFrom ?? '';
     final course = Exchange(store: state);
     AccountAppData from = state.getByUuid(uuidFrom);
-    from.details -= course.reform(amount, from.currency, currency);
+    from.details -= course.reform(double.tryParse(amount.text), from.currency, currency);
     state.update(AppDataType.accounts, uuidFrom, from);
     String uuidTo = accountTo ?? '';
     AccountAppData to = state.getByUuid(uuidTo);
-    to.details += course.reform(amount, currency, to.currency);
+    to.details += course.reform(double.tryParse(amount.text), currency, to.currency);
     state.update(AppDataType.accounts, uuidTo, to);
   }
 
   Widget buildButton(BuildContext context, BoxConstraints constraints) {
     var helper = ThemeHelper(windowType: getWindowType(context));
     String title = AppLocalizations.of(context)!.createTransferTooltip;
-    FocusController.init(3);
     return SizedBox(
       width: constraints.maxWidth - helper.getIndent() * 4,
       child: FloatingActionButton(
@@ -112,8 +113,7 @@ class TransferTabState extends State<TransferTab> {
     final TextTheme textTheme = Theme.of(context).textTheme;
     double indent = ThemeHelper(windowType: getWindowType(context)).getIndent() * 2;
     double offset = MediaQuery.of(context).size.width - indent * 3;
-    int focusOrder = FocusController.DEFAULT;
-    FocusController.setContext(context);
+    FocusController.init();
 
     return LayoutBuilder(builder: (context, constraints) {
       return Consumer<AppData>(builder: (context, appState, _) {
@@ -122,7 +122,7 @@ class TransferTabState extends State<TransferTab> {
           body: SingleChildScrollView(
             controller: FocusController.getController(),
             child: Container(
-              margin: EdgeInsets.fromLTRB(indent, indent, indent, 90),
+              margin: EdgeInsets.fromLTRB(indent, indent, indent, 240),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -137,7 +137,6 @@ class TransferTabState extends State<TransferTab> {
                     style: textTheme.numberMedium.copyWith(color: textTheme.headlineSmall?.color),
                     indent: indent,
                     width: offset,
-                    focusOrder: focusOrder += 1,
                   ),
                   SizedBox(height: indent),
                   RequiredWidget(
@@ -154,7 +153,6 @@ class TransferTabState extends State<TransferTab> {
                     style: textTheme.numberMedium.copyWith(color: textTheme.headlineSmall?.color),
                     indent: indent,
                     width: offset,
-                    focusOrder: focusOrder += 1,
                   ),
                   SizedBox(height: indent),
                   RowWidget(
@@ -174,7 +172,6 @@ class TransferTabState extends State<TransferTab> {
                             value: currency?.code,
                             setView: (Currency currency) => currency.code,
                             setState: (value) => setState(() => currency = value),
-                            focusOrder: focusOrder += 1,
                           ),
                         ),
                       ],
@@ -184,15 +181,14 @@ class TransferTabState extends State<TransferTab> {
                           style: textTheme.bodyLarge,
                         ),
                         SimpleInput(
-                          value: amount != null ? amount.toString() : '',
+                          controller: amount,
                           type: const TextInputType.numberWithOptions(decimal: true),
                           tooltip: AppLocalizations.of(context)!.billSetTooltip,
                           style: textTheme.numberMedium.copyWith(color: textTheme.headlineSmall?.color),
+                          setState: (v) => setState(() => amountValue = double.tryParse(v)),
                           formatter: [
                             SimpleInput.filterDouble,
                           ],
-                          setState: (value) => setState(() => amount = double.tryParse(value)),
-                          focusOrder: focusOrder += 1,
                         ),
                       ],
                     ],
@@ -203,11 +199,11 @@ class TransferTabState extends State<TransferTab> {
                     indent: indent,
                     target: currency,
                     state: state,
-                    targetAmount: amount,
-                    source: [
+                    targetAmount: amountValue,
+                    source: <Currency?>[
                       accountFrom != null ? state.getByUuid(accountFrom!).currency : null,
                       accountTo != null ? state.getByUuid(accountTo!).currency : null,
-                    ].cast<Currency?>(),
+                    ],
                   ),
                 ],
               ),

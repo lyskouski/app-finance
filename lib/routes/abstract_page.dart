@@ -5,6 +5,7 @@
 import 'package:adaptive_breakpoints/adaptive_breakpoints.dart';
 import 'package:app_finance/_classes/app_menu.dart';
 import 'package:app_finance/_classes/app_data.dart';
+import 'package:app_finance/_classes/focus_controller.dart';
 import 'package:app_finance/helpers/theme_helper.dart';
 import 'package:app_finance/widgets/_wrappers/toolbar_button_widget.dart';
 import 'package:app_finance/widgets/menu_widget.dart';
@@ -97,6 +98,7 @@ abstract class AbstractPageState<T extends AbstractPage> extends State<T> {
 
   @override
   Widget build(BuildContext context) {
+    FocusController.init();
     return Consumer<AppData>(builder: (context, appState, _) {
       state = appState;
       return Scaffold(

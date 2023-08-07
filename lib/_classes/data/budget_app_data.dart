@@ -71,7 +71,7 @@ class BudgetAppData extends AbstractAppData {
       };
 
   @override
-  double get details => super.details * (1 - super.progress);
+  double get details => super.details > 0 ? super.details * (1 - super.progress) : 0.0;
 
   String get detailsFormatted {
     String left = AppLocalizations.of(getContext()!)!.left;
@@ -82,7 +82,7 @@ class BudgetAppData extends AbstractAppData {
   set amountLimit(double value) => super.details = value;
 
   @override
-  String get description => getContext() != null
+  String get description => getContext() != null && super.details > 0
       ? '${getNumberFormatted(super.details * super.progress)} / ${getNumberFormatted(super.details)}'
       : '';
 

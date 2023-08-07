@@ -3,52 +3,38 @@
 // found in the LICENSE file.
 
 import 'package:app_finance/_classes/focus_controller.dart';
+import 'package:app_finance/widgets/_forms/abstract_input.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:month_picker_dialog/month_picker_dialog.dart';
 
-class MonthYearInput extends StatefulWidget {
+class MonthYearInput extends AbstractInput {
   final Function setState;
-  final DateTime? value;
   final TextStyle? style;
-  final int focusOrder;
+  @override
+  // ignore: overridden_fields
+  final DateTime? value;
 
-  const MonthYearInput({
-    super.key,
+  MonthYearInput({
     required this.setState,
     required this.value,
     this.style,
-    this.focusOrder = FocusController.DEFAULT,
-  });
-
-  @override
-  MonthYearInputState createState() => MonthYearInputState();
-}
-
-class MonthYearInputState extends State<MonthYearInput> {
-  bool isOpened = false;
-
-  @override
-  void initState() {
-    super.initState();
-  }
+  }) : super();
 
   Future<void> onTap(context) async {
     DateTime currentDate = DateTime.now();
     const Duration dateRange = Duration(days: 20 * 365);
     DateTime firstDate = currentDate.subtract(dateRange);
     DateTime lastDate = currentDate.add(dateRange);
-    setState(() => isOpened = true);
     final DateTime? selectedDate = await showMonthPicker(
       context: context,
-      initialDate: widget.value ?? currentDate,
+      initialDate: value ?? currentDate,
       firstDate: firstDate,
       lastDate: lastDate,
     );
     if (selectedDate != null) {
-      widget.setState(selectedDate);
-      setState(() => isOpened = false);
-      FocusController.resetFocus();
+      setState(selectedDate);
+      FocusController.onEditingComplete(focusOrder);
     }
   }
 
@@ -56,12 +42,9 @@ class MonthYearInputState extends State<MonthYearInput> {
   Widget build(BuildContext context) {
     final locale = Localizations.localeOf(context).toString();
     final DateFormat formatterDate = DateFormat.yM(locale);
-    if (!isOpened &&
-        widget.value == null &&
-        widget.focusOrder > FocusController.DEFAULT &&
-        FocusController.isFocused()) {
+    if (FocusController.isFocused(focusOrder, value)) {
       Future.delayed(const Duration(milliseconds: 300), () {
-        if (!isOpened && widget.value == null) {
+        if (value == null) {
           onTap(context);
         }
       });
@@ -70,8 +53,8 @@ class MonthYearInputState extends State<MonthYearInput> {
       color: Theme.of(context).colorScheme.inversePrimary.withOpacity(0.3),
       child: ListTile(
         title: Text(
-          widget.value != null ? formatterDate.format(widget.value!) : 'Select date',
-          style: widget.style,
+          value != null ? formatterDate.format(value!) : 'Select date',
+          style: style,
         ),
         onTap: () => onTap(context),
       ),

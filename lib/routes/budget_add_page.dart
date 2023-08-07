@@ -41,8 +41,8 @@ class BudgetAddPage extends AbstractPage {
 }
 
 class BudgetAddPageState<T extends BudgetAddPage> extends AbstractPageState<BudgetAddPage> with SharedPreferencesMixin {
-  String? title;
-  double? budgetLimit;
+  late TextEditingController title;
+  late TextEditingController budgetLimit;
   IconData? icon;
   MaterialColor? color;
   Currency? currency;
@@ -50,8 +50,8 @@ class BudgetAddPageState<T extends BudgetAddPage> extends AbstractPageState<Budg
 
   @override
   void initState() {
-    title = widget.title;
-    budgetLimit = widget.budgetLimit;
+    title = TextEditingController(text: widget.title);
+    budgetLimit = TextEditingController(text: widget.budgetLimit != null ? widget.budgetLimit.toString() : '');
     icon = widget.icon;
     color = widget.color;
     final currencyId = getPreference(prefCurrency);
@@ -65,7 +65,7 @@ class BudgetAddPageState<T extends BudgetAddPage> extends AbstractPageState<Budg
   }
 
   bool hasFormErrors() {
-    setState(() => hasError = title == null || title!.isEmpty);
+    setState(() => hasError = title.text.isEmpty);
     return hasError;
   }
 
@@ -73,8 +73,8 @@ class BudgetAddPageState<T extends BudgetAddPage> extends AbstractPageState<Budg
     super.state.add(
         AppDataType.budgets,
         BudgetAppData(
-          title: title ?? '',
-          amountLimit: budgetLimit ?? 0.0,
+          title: title.text,
+          amountLimit: double.tryParse(budgetLimit.text) ?? 0.0,
           progress: 0.0,
           color: color ?? Colors.red,
           hidden: false,
@@ -102,7 +102,6 @@ class BudgetAddPageState<T extends BudgetAddPage> extends AbstractPageState<Budg
   Widget buildButton(BuildContext context, BoxConstraints constraints) {
     var helper = ThemeHelper(windowType: getWindowType(context));
     String title = getButtonName();
-    FocusController.init(3);
     return SizedBox(
       width: constraints.maxWidth - helper.getIndent() * 4,
       child: FloatingActionButton(
@@ -129,22 +128,19 @@ class BudgetAddPageState<T extends BudgetAddPage> extends AbstractPageState<Budg
     final TextTheme textTheme = Theme.of(context).textTheme;
     double indent = ThemeHelper(windowType: getWindowType(context)).getIndent() * 2;
     double offset = MediaQuery.of(context).size.width - indent * 3;
-    int focusOrder = FocusController.DEFAULT;
-    FocusController.setContext(context);
 
     return SingleChildScrollView(
+      controller: FocusController.getController(),
       child: Container(
-        margin: EdgeInsets.fromLTRB(indent, indent, indent, 90),
+        margin: EdgeInsets.fromLTRB(indent, indent, indent, 240),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            RequiredWidget(title: AppLocalizations.of(context)!.title, showError: hasError && title == null),
+            RequiredWidget(title: AppLocalizations.of(context)!.title, showError: hasError && title.text.isEmpty),
             SimpleInput(
-              value: title,
+              controller: title,
               tooltip: AppLocalizations.of(context)!.titleBudgetTooltip,
               style: textTheme.numberMedium.copyWith(color: textTheme.headlineSmall?.color),
-              setState: (value) => setState(() => title = value),
-              focusOrder: focusOrder += 1,
             ),
             SizedBox(height: indent),
             RowWidget(
@@ -182,15 +178,13 @@ class BudgetAddPageState<T extends BudgetAddPage> extends AbstractPageState<Budg
               style: textTheme.bodyLarge,
             ),
             SimpleInput(
-              value: budgetLimit != null ? budgetLimit.toString() : '',
+              controller: budgetLimit,
               type: const TextInputType.numberWithOptions(decimal: true),
               tooltip: AppLocalizations.of(context)!.balanceTooltip,
               style: textTheme.numberMedium.copyWith(color: textTheme.headlineSmall?.color),
               formatter: [
                 FilteringTextInputFormatter.allow(RegExp(r'^\d+\.?\d{0,4}')),
               ],
-              setState: (value) => setState(() => budgetLimit = double.tryParse(value)),
-              focusOrder: focusOrder += 1,
             ),
             SizedBox(height: indent),
             Text(
@@ -203,7 +197,6 @@ class BudgetAddPageState<T extends BudgetAddPage> extends AbstractPageState<Budg
               child: CurrencySelector(
                 value: currency?.code,
                 setState: (value) => setState(() => currency = value),
-                focusOrder: focusOrder += 1,
               ),
             ),
           ],

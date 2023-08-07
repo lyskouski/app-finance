@@ -44,8 +44,8 @@ class ExpensesEditTabState extends ExpensesTabState<ExpensesEditTab> {
           account: account ?? '',
           category: budget ?? '',
           currency: currency,
-          title: description ?? '',
-          details: bill,
+          title: description.text,
+          details: double.tryParse(bill.text) ?? 0.0,
           createdAt: createdAt,
         ));
   }

@@ -29,6 +29,21 @@ class BudgetEditPageState extends BudgetAddPageState<BudgetEditPage> {
     super.initState();
   }
 
+  void bindState() {
+    if (!isFirstRun) {
+      return;
+    }
+    setState(() {
+      isFirstRun = false;
+      final form = super.state.getByUuid(uuid) as BudgetAppData;
+      title.text = form.title;
+      budgetLimit.text = form.amountLimit.toString();
+      color = form.color;
+      icon = form.icon;
+      currency = form.currency;
+    });
+  }
+
   @override
   String getTitle(context) {
     return AppLocalizations.of(context)!.editBudgetHeader;
@@ -36,12 +51,12 @@ class BudgetEditPageState extends BudgetAddPageState<BudgetEditPage> {
 
   @override
   void updateStorage() {
-    var data = super.state.getByUuid(uuid) as BudgetAppData;
-    data.title = super.title ?? '';
-    data.color = super.color;
-    data.amountLimit = super.budgetLimit ?? 0.0;
-    data.currency = super.currency;
-    super.state.update(AppDataType.budgets, uuid, data);
+    var data = state.getByUuid(uuid) as BudgetAppData;
+    data.title = title.text;
+    data.color = color;
+    data.amountLimit = double.tryParse(budgetLimit.text) ?? 0.0;
+    data.currency = currency;
+    state.update(AppDataType.budgets, uuid, data);
   }
 
   @override
@@ -51,15 +66,7 @@ class BudgetEditPageState extends BudgetAddPageState<BudgetEditPage> {
 
   @override
   Widget buildContent(BuildContext context, BoxConstraints constraints) {
-    if (isFirstRun) {
-      isFirstRun = false;
-      var form = super.state.getByUuid(uuid) as BudgetAppData;
-      super.title = form.title;
-      super.budgetLimit = form.amountLimit;
-      super.color = form.color;
-      super.icon = form.icon;
-      super.currency = form.currency;
-    }
+    WidgetsBinding.instance.addPostFrameCallback((_) => bindState());
     return super.buildContent(context, constraints);
   }
 }

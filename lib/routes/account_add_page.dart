@@ -50,24 +50,24 @@ class AccountAddPage extends AbstractPage {
 
 class AccountAddPageState<T extends AccountAddPage> extends AbstractPageState<AccountAddPage>
     with SharedPreferencesMixin {
-  String? title;
-  String? description;
+  late TextEditingController title;
+  late TextEditingController description;
   String? type;
   Currency? currency;
   DateTime? validTillDate;
   DateTime balanceUpdateDate = DateTime.now();
-  double? balance;
+  late TextEditingController balance;
   IconData? icon;
   MaterialColor? color;
   bool hasError = false;
 
   @override
   void initState() {
-    title = widget.title;
-    description = widget.description;
+    title = TextEditingController(text: widget.title);
+    description = TextEditingController(text: widget.description);
     type = widget.type;
     validTillDate = widget.validTillDate;
-    balance = widget.balance;
+    balance = TextEditingController(text: widget.balance != null ? widget.balance.toString() : '');
     icon = widget.icon;
     color = widget.color;
     final currencyId = getPreference(prefCurrency);
@@ -81,7 +81,7 @@ class AccountAddPageState<T extends AccountAddPage> extends AbstractPageState<Ac
   }
 
   bool hasFormErrors() {
-    setState(() => hasError = type == null || type!.isEmpty || title == null || title!.isEmpty);
+    setState(() => hasError = type == null || type!.isEmpty || title.text.isEmpty);
     return hasError;
   }
 
@@ -89,10 +89,10 @@ class AccountAddPageState<T extends AccountAddPage> extends AbstractPageState<Ac
     super.state.add(
         AppDataType.accounts,
         AccountAppData(
-          title: title ?? '',
+          title: title.text,
           type: type ?? AppAccountType.cash.toString(),
-          description: description ?? '',
-          details: balance ?? 0.0,
+          description: description.text,
+          details: double.tryParse(balance.text) ?? 0.0,
           progress: 1.0,
           color: color ?? Colors.red,
           currency: currency,
@@ -122,7 +122,7 @@ class AccountAddPageState<T extends AccountAddPage> extends AbstractPageState<Ac
   Widget buildButton(BuildContext context, BoxConstraints constraints) {
     var helper = ThemeHelper(windowType: getWindowType(context));
     String title = getButtonName();
-    FocusController.init(6);
+
     return SizedBox(
       width: constraints.maxWidth - helper.getIndent() * 4,
       child: FloatingActionButton(
@@ -160,12 +160,12 @@ class AccountAddPageState<T extends AccountAddPage> extends AbstractPageState<Ac
     final TextTheme textTheme = Theme.of(context).textTheme;
     double indent = ThemeHelper(windowType: getWindowType(context)).getIndent() * 2;
     double offset = MediaQuery.of(context).size.width - indent * 3;
-    int focusOrder = FocusController.DEFAULT;
-    FocusController.setContext(context);
+    FocusController.init();
 
     return SingleChildScrollView(
+      controller: FocusController.getController(),
       child: Container(
-        margin: EdgeInsets.fromLTRB(indent, indent, indent, 90),
+        margin: EdgeInsets.fromLTRB(indent, indent, indent, 240),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -179,19 +179,16 @@ class AccountAddPageState<T extends AccountAddPage> extends AbstractPageState<Ac
               setState: (value) => setState(() => type = value),
               style: textTheme.numberMedium.copyWith(color: textTheme.headlineSmall?.color),
               indent: indent,
-              focusOrder: focusOrder += 1,
             ),
             SizedBox(height: indent),
             RequiredWidget(
               title: AppLocalizations.of(context)!.title,
-              showError: hasError && (title == null || title!.isEmpty),
+              showError: hasError && title.text.isEmpty,
             ),
             SimpleInput(
-              value: title,
+              controller: title,
               tooltip: AppLocalizations.of(context)!.titleAccountTooltip,
               style: textTheme.numberMedium.copyWith(color: textTheme.headlineSmall?.color),
-              setState: (value) => setState(() => title = value),
-              focusOrder: focusOrder += 1,
             ),
             SizedBox(height: indent),
             RowWidget(
@@ -227,11 +224,9 @@ class AccountAddPageState<T extends AccountAddPage> extends AbstractPageState<Ac
                     style: textTheme.bodyLarge,
                   ),
                   SimpleInput(
-                    value: description,
+                    controller: description,
                     tooltip: AppLocalizations.of(context)!.detailsTooltip,
                     style: textTheme.numberMedium.copyWith(color: textTheme.headlineSmall?.color),
-                    setState: (value) => setState(() => description = value),
-                    focusOrder: focusOrder += 1,
                   ),
                 ],
               ],
@@ -247,7 +242,6 @@ class AccountAddPageState<T extends AccountAddPage> extends AbstractPageState<Ac
               child: CurrencySelector(
                 value: currency?.code,
                 setState: (value) => setState(() => currency = value),
-                focusOrder: focusOrder += 1,
               ),
             ),
             SizedBox(height: indent),
@@ -259,7 +253,6 @@ class AccountAddPageState<T extends AccountAddPage> extends AbstractPageState<Ac
               value: validTillDate,
               setState: (value) => setState(() => validTillDate = value),
               style: textTheme.numberMedium.copyWith(color: textTheme.headlineSmall?.color),
-              focusOrder: focusOrder += 1,
             ),
             SizedBox(height: indent),
             Text(
@@ -267,15 +260,13 @@ class AccountAddPageState<T extends AccountAddPage> extends AbstractPageState<Ac
               style: textTheme.bodyLarge,
             ),
             SimpleInput(
-              value: balance != null ? balance.toString() : '',
+              controller: balance,
               type: const TextInputType.numberWithOptions(decimal: true),
               tooltip: AppLocalizations.of(context)!.balanceTooltip,
               style: textTheme.numberMedium.copyWith(color: textTheme.headlineSmall?.color),
               formatter: [
                 SimpleInput.filterDouble,
               ],
-              setState: (value) => setState(() => balance = double.tryParse(value)),
-              focusOrder: focusOrder += 1,
             ),
             SizedBox(height: indent),
             Row(

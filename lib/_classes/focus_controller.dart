@@ -13,27 +13,21 @@ class FocusController {
   static int focus = DEFAULT;
   static int _focus = DEFAULT;
   static ScrollController? _controller;
-  static BuildContext? _context;
 
-  static void setContext(BuildContext context) {
-    _context = context;
+  static void init() {
+    values = values.map((e) => null).cast<dynamic>().toList();
+    _idx = DEFAULT;
   }
 
-  static void init(int idx, [dynamic value]) {
-    while (idx >= values.length) {
-      values.add(null);
-    }
-    if (idx >= 0) {
-      values[idx] = value;
-    }
-    _idx = idx;
-  }
+  static int get current => _idx;
 
-  static FocusNode? getFocusNode() {
-    while (_idx >= nodes.length) {
+  static FocusNode getFocusNode([dynamic value]) {
+    _idx++;
+    if (_idx >= values.length) {
+      values.add(value);
       nodes.add(FocusNode());
     }
-    return _idx >= 0 ? nodes[_idx] : null;
+    return nodes[_idx];
   }
 
   static ScrollController getController() {
@@ -50,36 +44,59 @@ class FocusController {
   }
 
   static void requestFocus() {
-    Future.delayed(const Duration(milliseconds: 300), () {
-      if (focus >= 0 && _focus != focus && nodes[focus].context != null) {
-        _focus = focus;
-        FocusScope.of(nodes[focus].context!).requestFocus(nodes[focus]);
-        scrollToFocusedElement(nodes[focus]);
-      }
-    });
+    if (focus >= 0 && _focus != focus && nodes[focus].context != null) {
+      _focus = focus;
+      nodes[focus].requestFocus();
+      _scrollToFocusedElement(nodes[focus]);
+    }
   }
 
-  static void scrollToFocusedElement(FocusNode node) {
-    final focusedNode = node.context?.findRenderObject();
-    final firstNode = nodes[0].context?.findRenderObject();
+  static void _scrollToFocusedElement(FocusNode node) {
     bool isAttached = _controller?.hasClients ?? false;
+    RenderObject? firstNode;
+    // @todo: drop after changing 'package:dropdown_search'
+    double shift = 0;
+    int idx = nodes.indexOf(node);
+    for (int i = 0; i < idx; i++) {
+      BuildContext? context = nodes[i].context;
+      if (context != null && context.mounted) {
+        firstNode = context.findRenderObject();
+      }
+      if (firstNode != null) {
+        break;
+      }
+      shift += 100;
+    }
+    // end
+    RenderObject? focusedNode;
+    if (node.context != null && node.context!.mounted) {
+      focusedNode = node.context?.findRenderObject();
+    }
     if (isAttached && focusedNode is RenderBox && firstNode is RenderBox) {
+      double delta = focusedNode.localToGlobal(Offset.zero).dy - firstNode.localToGlobal(Offset.zero).dy + shift;
       _controller?.animateTo(
-        focusedNode.localToGlobal(Offset.zero).dy - firstNode.localToGlobal(Offset.zero).dy,
+        delta,
         duration: const Duration(milliseconds: 300),
         curve: Curves.easeInOut,
       );
     }
   }
 
-  static void onEditingComplete() {
+  static void onEditingComplete(index) {
     resetFocus();
-    if (_idx >= 0 && (values[_idx] == null || values[_idx] == '')) {
-      values[_idx] == true;
+    if (index >= 0) {
+      values.fillRange(0, index + 1, true);
     }
     for (int idx = 0; idx < nodes.length; idx++) {
-      isFocused(idx, values[idx]);
+      if (isFocused(idx, values[idx])) {
+        break;
+      }
     }
+  }
+
+  static void onFocus(idx) {
+    focus = idx;
+    requestFocus();
   }
 
   static void resetFocus() {
@@ -87,19 +104,13 @@ class FocusController {
     _focus = DEFAULT;
   }
 
-  static bool isFocused([int? i, dynamic val]) {
-    int idx = i ?? _idx;
-    dynamic value = val ?? (idx >= 0 ? values[idx] : null);
-    FocusNode? focusNode = _context != null ? FocusScope.of(_context!).focusedChild : null;
-    if (focusNode != null) {
-      return idx > 0 ? focusNode == nodes[idx] : false;
-    }
+  static bool isFocused(int idx, dynamic value) {
+    bool isFocused = false;
     if ((value == null || value == '') && idx != DEFAULT && (focus == DEFAULT || focus == idx)) {
-      focus = idx;
-      requestFocus();
-      return true;
+      isFocused = true;
+      onFocus(idx);
     }
-    return false;
+    return isFocused;
   }
 
   static void dispose() {

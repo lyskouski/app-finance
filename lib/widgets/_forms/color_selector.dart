@@ -5,35 +5,21 @@
 import 'dart:math';
 
 import 'package:app_finance/_classes/focus_controller.dart';
+import 'package:app_finance/widgets/_forms/abstract_input.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_colorpicker/flutter_colorpicker.dart';
 import 'package:flutter_gen/gen_l10n/app_localization.dart';
 
-class ColorSelector extends StatefulWidget {
+class ColorSelector extends AbstractInput {
   final Function setState;
+  @override
+  // ignore: overridden_fields
   final MaterialColor? value;
-  final int focusOrder;
 
-  const ColorSelector({
-    super.key,
+  ColorSelector({
     required this.setState,
     this.value,
-    this.focusOrder = FocusController.DEFAULT,
-  });
-
-  @override
-  ColorSelectorState createState() => ColorSelectorState();
-}
-
-class ColorSelectorState extends State<ColorSelector> {
-  late MaterialColor value;
-  bool isOpened = false;
-
-  @override
-  void initState() {
-    value = widget.value ?? getRandomMaterialColor();
-    super.initState();
-  }
+  }) : super(value: value);
 
   MaterialColor convertToMaterialColor(Color color) {
     final Map<int, Color> colorMap = {};
@@ -54,9 +40,9 @@ class ColorSelectorState extends State<ColorSelector> {
   }
 
   void onTap(context) {
-    setState(() => isOpened = true);
-    if (widget.value == null) {
-      widget.setState(convertToMaterialColor(value));
+    MaterialColor clr = value ?? getRandomMaterialColor();
+    if (value == null) {
+      setState(clr);
     }
     showDialog(
       context: context,
@@ -65,11 +51,10 @@ class ColorSelectorState extends State<ColorSelector> {
           title: Text(AppLocalizations.of(context)!.colorTooltip),
           content: SingleChildScrollView(
             child: ColorPicker(
-              pickerColor: value,
+              pickerColor: clr,
               onColorChanged: (color) {
-                widget.setState(convertToMaterialColor(color));
-                setState(() => isOpened = false);
-                FocusController.resetFocus();
+                setState(convertToMaterialColor(color));
+                FocusController.onEditingComplete(focusOrder);
               },
             ),
           ),
@@ -88,15 +73,9 @@ class ColorSelectorState extends State<ColorSelector> {
 
   @override
   Widget build(context) {
-    FocusController.init(widget.focusOrder, widget.value);
-    if (!isOpened &&
-        widget.value == null &&
-        widget.focusOrder > FocusController.DEFAULT &&
-        FocusController.isFocused()) {
+    if (!focus.hasFocus && FocusController.isFocused(focusOrder, value)) {
       Future.delayed(const Duration(milliseconds: 300), () {
-        if (!isOpened && widget.value == null) {
-          onTap(context);
-        }
+        onTap(context);
       });
     }
     return TextFormField(
@@ -105,7 +84,7 @@ class ColorSelectorState extends State<ColorSelector> {
       decoration: InputDecoration(
         filled: true,
         border: InputBorder.none,
-        fillColor: widget.value ?? Theme.of(context).colorScheme.inversePrimary.withOpacity(0.3),
+        fillColor: value ?? Theme.of(context).colorScheme.inversePrimary.withOpacity(0.3),
         suffixIcon: GestureDetector(
           child: const Icon(Icons.color_lens),
         ),

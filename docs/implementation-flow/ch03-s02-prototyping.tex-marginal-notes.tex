@@ -756,3 +756,6 @@ mixin SharedPreferencesMixin {
 But we should be very accurate with what we're placing into a static variable, since, as an example, 
 caching \q{AdaptiveWindowType} for our \q{ThemeHelper} leads to an infinite loop of re-rendering widgets:
 \href{https://github.com/lyskouski/app-finance/issues/112}{https://github.com/lyskouski/app-finance/issues/112}.
+
+Unwanted loop of rendering might also happen on the usage of \q{key: UniqueKey()} for \q{StatelessWidget}, it can cause 
+the widget to be rebuilt whenever the widget tree is rebuilt since a new UniqueKey will be generated for the widget.
