@@ -15,6 +15,7 @@ class DateInput extends AbstractInput {
   final DateTime? value;
 
   DateInput({
+    super.key,
     required this.setState,
     required this.value,
     this.style,

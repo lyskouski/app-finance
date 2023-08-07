@@ -10,7 +10,7 @@ abstract class AbstractInput extends StatelessWidget {
   late final int focusOrder;
   final dynamic value;
 
-  AbstractInput({this.value, super.key}) /* : super(key: UniqueKey())*/ {
+  AbstractInput({this.value, super.key}) {
     focus = FocusController.getFocusNode(value);
     focusOrder = FocusController.current;
   }

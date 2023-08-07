@@ -21,11 +21,12 @@ class DateTimeInput extends AbstractInput {
   final double? width;
 
   DateTimeInput({
+    super.key,
     required this.setState,
     required this.value,
     this.style,
     this.width,
-  }) : super();
+  });
 
   void onTap(BuildContext context) {
     DatePicker.showTimePicker(context, showTitleActions: true, currentTime: value, onConfirm: (dateTime) {

@@ -36,6 +36,7 @@ class CurrencySelector extends ListSelector<CurrencySelectorItem> {
   final SetViewFunction? setView;
 
   CurrencySelector({
+    super.key,
     required super.setState,
     super.value,
     this.setView,

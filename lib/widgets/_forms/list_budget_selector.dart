@@ -14,13 +14,14 @@ class ListBudgetSelectorItem extends ListAccountSelectorItem {
 
 class ListBudgetSelector extends ListAccountSelector<ListBudgetSelectorItem> {
   ListBudgetSelector({
+    super.key,
     required super.state,
     required super.setState,
     required super.width,
     super.style,
     super.value,
     super.indent = 0.0,
-  }) : super();
+  });
 
   @override
   List<ListBudgetSelectorItem> get options {

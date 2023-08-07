@@ -18,13 +18,14 @@ class SimpleInput extends AbstractInput {
   static FilteringTextInputFormatter filterDouble = FilteringTextInputFormatter.allow(RegExp(r'^\d+\.?\d{0,4}'));
 
   SimpleInput({
+    super.key,
     required this.controller,
     this.setState,
     this.style,
     this.tooltip,
     this.formatter,
     this.type = TextInputType.text,
-  }) : super() {
+  }) {
     if (setState != null) {
       controller.addListener(() => setState!(controller.text));
     }
