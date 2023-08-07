@@ -82,6 +82,7 @@ class SyncTabState extends State<RecoverTab> {
   Widget build(BuildContext context) {
     final textTheme = Theme.of(context).textTheme;
     double indent = ThemeHelper(windowType: getWindowType(context)).getIndent() * 2;
+    FocusController.init();
 
     return SingleChildScrollView(
       controller: FocusController.getController(),

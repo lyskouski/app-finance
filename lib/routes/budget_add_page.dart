@@ -102,7 +102,6 @@ class BudgetAddPageState<T extends BudgetAddPage> extends AbstractPageState<Budg
   Widget buildButton(BuildContext context, BoxConstraints constraints) {
     var helper = ThemeHelper(windowType: getWindowType(context));
     String title = getButtonName();
-    FocusController.init(3);
     return SizedBox(
       width: constraints.maxWidth - helper.getIndent() * 4,
       child: FloatingActionButton(
@@ -129,8 +128,6 @@ class BudgetAddPageState<T extends BudgetAddPage> extends AbstractPageState<Budg
     final TextTheme textTheme = Theme.of(context).textTheme;
     double indent = ThemeHelper(windowType: getWindowType(context)).getIndent() * 2;
     double offset = MediaQuery.of(context).size.width - indent * 3;
-    int focusOrder = FocusController.DEFAULT;
-    FocusController.setContext(context);
 
     return SingleChildScrollView(
       controller: FocusController.getController(),
@@ -144,7 +141,6 @@ class BudgetAddPageState<T extends BudgetAddPage> extends AbstractPageState<Budg
               controller: title,
               tooltip: AppLocalizations.of(context)!.titleBudgetTooltip,
               style: textTheme.numberMedium.copyWith(color: textTheme.headlineSmall?.color),
-              focusOrder: focusOrder += 1,
             ),
             SizedBox(height: indent),
             RowWidget(
@@ -189,7 +185,6 @@ class BudgetAddPageState<T extends BudgetAddPage> extends AbstractPageState<Budg
               formatter: [
                 FilteringTextInputFormatter.allow(RegExp(r'^\d+\.?\d{0,4}')),
               ],
-              focusOrder: focusOrder += 1,
             ),
             SizedBox(height: indent),
             Text(
@@ -202,7 +197,6 @@ class BudgetAddPageState<T extends BudgetAddPage> extends AbstractPageState<Budg
               child: CurrencySelector(
                 value: currency?.code,
                 setState: (value) => setState(() => currency = value),
-                focusOrder: focusOrder += 1,
               ),
             ),
           ],

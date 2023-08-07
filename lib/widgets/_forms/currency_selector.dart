@@ -32,14 +32,13 @@ class CurrencySelectorItem extends ListSelectorItem {
   });
 }
 
-class CurrencySelector extends ListSelector {
+class CurrencySelector extends ListSelector<CurrencySelectorItem> {
   final SetViewFunction? setView;
 
   CurrencySelector({
     required super.setState,
     super.value,
     this.setView,
-    super.focusOrder = FocusController.DEFAULT,
   }) : super(options: []);
 
   @override
@@ -55,25 +54,21 @@ class CurrencySelector extends ListSelector {
   }
 
   @override
-  CurrencySelectorState createState() => CurrencySelectorState();
-}
-
-class CurrencySelectorState extends ListSelectorState<CurrencySelector, CurrencySelectorItem> {
-  @override
   Widget selectorBuilder(context, CurrencySelectorItem item) {
-    return Text(item.toString(), style: widget.style);
+    return Text(item.toString(), style: style);
   }
 
   @override
   onChange(CurrencySelectorItem? value) {
-    widget.setState(value!.item);
+    setState(value!.item);
+    FocusController.onEditingComplete(focusOrder);
   }
 
   @override
   Widget itemBuilder(context, CurrencySelectorItem item, bool isSelected) {
     final helper = ThemeHelper(windowType: getWindowType(context));
     final indent = helper.getIndent();
-    if (widget.setView != null) {
+    if (setView != null) {
       return Tooltip(
         message: item.name,
         child: Padding(

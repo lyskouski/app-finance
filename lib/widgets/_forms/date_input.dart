@@ -3,65 +3,53 @@
 // found in the LICENSE file.
 
 import 'package:app_finance/_classes/focus_controller.dart';
+import 'package:app_finance/widgets/_forms/abstract_input.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
-class DateInput extends StatefulWidget {
+class DateInput extends AbstractInput {
   final Function setState;
-  final DateTime? value;
   final TextStyle? style;
-  final int focusOrder;
+  @override
+  // ignore: overridden_fields
+  final DateTime? value;
 
-  const DateInput({
-    super.key,
+  DateInput({
     required this.setState,
     required this.value,
     this.style,
-    this.focusOrder = FocusController.DEFAULT,
-  });
-
-  @override
-  DateInputState createState() => DateInputState();
-}
-
-class DateInputState extends State<DateInput> {
-  bool isOpened = false;
+  }) : super(value: value);
 
   Future<void> onTap(BuildContext context) async {
     DateTime currentDate = DateTime.now();
     const Duration dateRange = Duration(days: 20 * 365);
     DateTime firstDate = currentDate.subtract(dateRange);
     DateTime lastDate = currentDate.add(dateRange);
-    setState(() => isOpened = true);
     DateTime? selectedDate = await showDatePicker(
       context: context,
-      initialDate: widget.value ?? currentDate,
+      initialDate: value ?? currentDate,
       firstDate: firstDate,
       lastDate: lastDate,
     );
     if (selectedDate != null) {
-      if (widget.value != null) {
+      if (value != null) {
         selectedDate = selectedDate.add(Duration(
-          hours: widget.value!.hour,
-          minutes: widget.value!.minute,
-          seconds: widget.value!.second,
+          hours: value!.hour,
+          minutes: value!.minute,
+          seconds: value!.second,
         ));
       }
-      widget.setState(selectedDate);
-      setState(() => isOpened = false);
-      FocusController.resetFocus();
+      setState(selectedDate);
+      FocusController.onEditingComplete(focusOrder);
     }
   }
 
   @override
   Widget build(BuildContext context) {
-    FocusController.init(widget.focusOrder, widget.value);
-    if (!isOpened &&
-        widget.value == null &&
-        widget.focusOrder > FocusController.DEFAULT &&
-        FocusController.isFocused()) {
+    bool isFocused = FocusController.isFocused(focusOrder, value);
+    if (!focus.hasFocus && isFocused) {
       Future.delayed(const Duration(milliseconds: 300), () {
-        if (!isOpened && widget.value == null) {
+        if (!focus.hasFocus && value == null) {
           onTap(context);
         }
       });
@@ -72,10 +60,11 @@ class DateInputState extends State<DateInput> {
       color: Theme.of(context).colorScheme.inversePrimary.withOpacity(0.3),
       child: ListTile(
         title: Text(
-          widget.value != null ? formatterDate.format(widget.value!) : 'Select date',
-          style: widget.style,
+          value != null ? formatterDate.format(value!) : 'Select date',
+          style: style,
         ),
-        autofocus: FocusController.isFocused(),
+        focusNode: focus,
+        autofocus: isFocused,
         onTap: () => onTap(context),
       ),
     );

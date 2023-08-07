@@ -76,14 +76,6 @@ class AccountAddPageState<T extends AccountAddPage> extends AbstractPageState<Ac
   }
 
   @override
-  void dispose() {
-    title.dispose();
-    description.dispose();
-    balance.dispose();
-    super.dispose();
-  }
-
-  @override
   String getTitle(context) {
     return AppLocalizations.of(context)!.createAccountHeader;
   }
@@ -130,7 +122,7 @@ class AccountAddPageState<T extends AccountAddPage> extends AbstractPageState<Ac
   Widget buildButton(BuildContext context, BoxConstraints constraints) {
     var helper = ThemeHelper(windowType: getWindowType(context));
     String title = getButtonName();
-    FocusController.init(6);
+
     return SizedBox(
       width: constraints.maxWidth - helper.getIndent() * 4,
       child: FloatingActionButton(
@@ -168,8 +160,7 @@ class AccountAddPageState<T extends AccountAddPage> extends AbstractPageState<Ac
     final TextTheme textTheme = Theme.of(context).textTheme;
     double indent = ThemeHelper(windowType: getWindowType(context)).getIndent() * 2;
     double offset = MediaQuery.of(context).size.width - indent * 3;
-    int focusOrder = FocusController.DEFAULT;
-    FocusController.setContext(context);
+    FocusController.init();
 
     return SingleChildScrollView(
       controller: FocusController.getController(),
@@ -188,7 +179,6 @@ class AccountAddPageState<T extends AccountAddPage> extends AbstractPageState<Ac
               setState: (value) => setState(() => type = value),
               style: textTheme.numberMedium.copyWith(color: textTheme.headlineSmall?.color),
               indent: indent,
-              focusOrder: focusOrder += 1,
             ),
             SizedBox(height: indent),
             RequiredWidget(
@@ -199,7 +189,6 @@ class AccountAddPageState<T extends AccountAddPage> extends AbstractPageState<Ac
               controller: title,
               tooltip: AppLocalizations.of(context)!.titleAccountTooltip,
               style: textTheme.numberMedium.copyWith(color: textTheme.headlineSmall?.color),
-              focusOrder: focusOrder += 1,
             ),
             SizedBox(height: indent),
             RowWidget(
@@ -238,7 +227,6 @@ class AccountAddPageState<T extends AccountAddPage> extends AbstractPageState<Ac
                     controller: description,
                     tooltip: AppLocalizations.of(context)!.detailsTooltip,
                     style: textTheme.numberMedium.copyWith(color: textTheme.headlineSmall?.color),
-                    focusOrder: focusOrder += 1,
                   ),
                 ],
               ],
@@ -254,7 +242,6 @@ class AccountAddPageState<T extends AccountAddPage> extends AbstractPageState<Ac
               child: CurrencySelector(
                 value: currency?.code,
                 setState: (value) => setState(() => currency = value),
-                focusOrder: focusOrder += 1,
               ),
             ),
             SizedBox(height: indent),
@@ -266,7 +253,6 @@ class AccountAddPageState<T extends AccountAddPage> extends AbstractPageState<Ac
               value: validTillDate,
               setState: (value) => setState(() => validTillDate = value),
               style: textTheme.numberMedium.copyWith(color: textTheme.headlineSmall?.color),
-              focusOrder: focusOrder += 1,
             ),
             SizedBox(height: indent),
             Text(
@@ -281,7 +267,6 @@ class AccountAddPageState<T extends AccountAddPage> extends AbstractPageState<Ac
               formatter: [
                 SimpleInput.filterDouble,
               ],
-              focusOrder: focusOrder += 1,
             ),
             SizedBox(height: indent),
             Row(

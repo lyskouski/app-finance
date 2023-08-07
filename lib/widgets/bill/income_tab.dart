@@ -43,6 +43,7 @@ class IncomeTabState extends State<IncomeTab> with SharedPreferencesMixin {
   String? account;
   Currency? currency;
   late TextEditingController amount;
+  double? amountValue;
   bool hasErrors = false;
   bool isFresh = true;
 
@@ -51,13 +52,8 @@ class IncomeTabState extends State<IncomeTab> with SharedPreferencesMixin {
     account = widget.account;
     currency = widget.currency;
     amount = TextEditingController(text: widget.amount != null ? widget.amount.toString() : '');
+    amountValue = widget.amount;
     super.initState();
-  }
-
-  @override
-  dispose() {
-    amount.dispose();
-    super.dispose();
   }
 
   void _loadPreferences() {
@@ -86,7 +82,6 @@ class IncomeTabState extends State<IncomeTab> with SharedPreferencesMixin {
   Widget buildButton(BuildContext context, BoxConstraints constraints) {
     var helper = ThemeHelper(windowType: getWindowType(context));
     String title = AppLocalizations.of(context)!.createIncomeTooltip;
-    FocusController.init(3);
     return SizedBox(
       width: constraints.maxWidth - helper.getIndent() * 4,
       child: FloatingActionButton(
@@ -122,8 +117,7 @@ class IncomeTabState extends State<IncomeTab> with SharedPreferencesMixin {
     final TextTheme textTheme = Theme.of(context).textTheme;
     double indent = ThemeHelper(windowType: getWindowType(context)).getIndent() * 2;
     double offset = MediaQuery.of(context).size.width - indent * 3;
-    int focusOrder = FocusController.DEFAULT;
-    FocusController.setContext(context);
+    FocusController.init();
 
     return LayoutBuilder(builder: (context, constraints) {
       return Consumer<AppData>(builder: (context, appState, _) {
@@ -153,7 +147,6 @@ class IncomeTabState extends State<IncomeTab> with SharedPreferencesMixin {
                     style: textTheme.numberMedium.copyWith(color: textTheme.headlineSmall?.color),
                     indent: indent,
                     width: offset,
-                    focusOrder: focusOrder += 1,
                   ),
                   SizedBox(height: indent),
                   RowWidget(
@@ -173,7 +166,6 @@ class IncomeTabState extends State<IncomeTab> with SharedPreferencesMixin {
                             value: currency?.code,
                             setView: (Currency currency) => currency.code,
                             setState: (value) => setState(() => currency = value),
-                            focusOrder: focusOrder += 1,
                           ),
                         ),
                       ],
@@ -187,10 +179,10 @@ class IncomeTabState extends State<IncomeTab> with SharedPreferencesMixin {
                           type: const TextInputType.numberWithOptions(decimal: true),
                           tooltip: AppLocalizations.of(context)!.billSetTooltip,
                           style: textTheme.numberMedium.copyWith(color: textTheme.headlineSmall?.color),
+                          setState: (v) => setState(() => amountValue = double.tryParse(v)),
                           formatter: [
                             SimpleInput.filterDouble,
                           ],
-                          focusOrder: focusOrder += 1,
                         ),
                       ],
                     ],
@@ -201,11 +193,11 @@ class IncomeTabState extends State<IncomeTab> with SharedPreferencesMixin {
                     indent: indent,
                     target: currency,
                     state: state,
-                    targetAmount: double.tryParse(amount.text),
-                    source: [
+                    targetAmount: amountValue,
+                    source: <Currency?>[
                       null,
                       account != null ? state.getByUuid(account!).currency : null,
-                    ].cast<Currency?>(),
+                    ],
                   ),
                 ],
               ),

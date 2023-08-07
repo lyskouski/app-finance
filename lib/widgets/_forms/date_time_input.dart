@@ -3,26 +3,36 @@
 // found in the LICENSE file.
 
 import 'package:adaptive_breakpoints/adaptive_breakpoints.dart';
+import 'package:app_finance/_classes/focus_controller.dart';
 import 'package:app_finance/helpers/theme_helper.dart';
+import 'package:app_finance/widgets/_forms/abstract_input.dart';
 import 'package:app_finance/widgets/_forms/date_input.dart';
 import 'package:app_finance/widgets/_wrappers/row_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_datetime_picker_plus/flutter_datetime_picker_plus.dart';
 import 'package:intl/intl.dart';
 
-class DateTimeInput extends StatelessWidget {
+class DateTimeInput extends AbstractInput {
   final Function setState;
+  @override
+  // ignore: overridden_fields
   final DateTime value;
   final TextStyle? style;
   final double? width;
 
-  const DateTimeInput({
-    super.key,
+  DateTimeInput({
     required this.setState,
     required this.value,
     this.style,
     this.width,
-  });
+  }) : super();
+
+  void onTap(BuildContext context) {
+    DatePicker.showTimePicker(context, showTitleActions: true, currentTime: value, onConfirm: (dateTime) {
+      setState(dateTime);
+      FocusController.onEditingComplete(focusOrder);
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -30,6 +40,15 @@ class DateTimeInput extends StatelessWidget {
     double offset = width ?? MediaQuery.of(context).size.width - indent * 2;
     final locale = Localizations.localeOf(context).toString();
     final DateFormat formatterTime = DateFormat.Hms(locale);
+    bool isFocused = FocusController.isFocused(focusOrder, value);
+
+    if (!focus.hasFocus && isFocused) {
+      Future.delayed(const Duration(milliseconds: 300), () {
+        if (!focus.hasFocus) {
+          onTap(context);
+        }
+      });
+    }
 
     return RowWidget(
       indent: indent,
@@ -47,19 +66,14 @@ class DateTimeInput extends StatelessWidget {
           Container(
             color: Theme.of(context).colorScheme.inversePrimary.withOpacity(0.3),
             child: ListTile(
+              focusNode: focus,
+              autofocus: isFocused,
               title: Text(
                 formatterTime.format(value),
                 overflow: TextOverflow.ellipsis,
                 style: style,
               ),
-              onTap: () {
-                DatePicker.showTimePicker(
-                  context,
-                  showTitleActions: true,
-                  currentTime: value,
-                  onConfirm: (dateTime) => setState(dateTime),
-                );
-              },
+              onTap: () => onTap(context),
             ),
           ),
         ],

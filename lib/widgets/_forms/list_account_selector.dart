@@ -2,7 +2,6 @@
 // Use of this source code is governed by a CC BY-NC-ND 4.0 license that can be
 // found in the LICENSE file.
 
-import 'package:app_finance/_classes/focus_controller.dart';
 import 'package:app_finance/_classes/app_data.dart';
 import 'package:app_finance/widgets/_forms/list_selector.dart';
 import 'package:app_finance/widgets/home/base_line_widget.dart';
@@ -24,7 +23,7 @@ class ListAccountSelectorItem extends ListSelectorItem {
   });
 }
 
-class ListAccountSelector<T extends ListAccountSelectorItem> extends ListSelector {
+class ListAccountSelector<K extends ListAccountSelectorItem> extends ListSelector<ListAccountSelectorItem> {
   final AppData state;
   final double width;
 
@@ -36,11 +35,10 @@ class ListAccountSelector<T extends ListAccountSelectorItem> extends ListSelecto
     super.style,
     super.value,
     super.indent = 0.0,
-    super.focusOrder = FocusController.DEFAULT,
   }) : super();
 
   @override
-  List<T> get options {
+  List<K> get options {
     return state
         .get(AppDataType.accounts)
         .list
@@ -50,21 +48,15 @@ class ListAccountSelector<T extends ListAccountSelectorItem> extends ListSelecto
   }
 
   @override
-  ListAccountSelectorState createState() => ListAccountSelectorState();
-}
-
-class ListAccountSelectorState<T extends ListAccountSelector, K extends ListAccountSelectorItem>
-    extends ListSelectorState<T, K> {
-  @override
-  Widget itemBuilder(context, K item, bool isSelected) {
+  Widget itemBuilder(context, item, bool isSelected) {
     return Padding(
-      padding: EdgeInsets.fromLTRB(widget.indent, 0, widget.indent, 0),
+      padding: EdgeInsets.fromLTRB(indent, 0, indent, 0),
       child: selectorBuilder(context, item, true),
     );
   }
 
   @override
-  Widget selectorBuilder(context, K item, [bool showDivider = false]) {
+  Widget selectorBuilder(context, item, [bool showDivider = false]) {
     item.item.updateContext(context);
     return BaseLineWidget(
       uuid: item.item?.uuid ?? '',
@@ -74,7 +66,7 @@ class ListAccountSelectorState<T extends ListAccountSelector, K extends ListAcco
       progress: item.item?.progress ?? 0.0,
       color: item.item?.color ?? Colors.transparent,
       hidden: item.item?.hidden ?? false,
-      offset: widget.width - widget.indent * 3,
+      offset: width - indent * 3,
       showDivider: showDivider,
     );
   }

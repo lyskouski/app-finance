@@ -3,6 +3,7 @@
 // found in the LICENSE file.
 
 import 'package:app_finance/_classes/focus_controller.dart';
+import 'package:app_finance/widgets/_forms/abstract_input.dart';
 import 'package:dropdown_search/dropdown_search.dart';
 import 'package:flutter/material.dart';
 
@@ -20,48 +21,30 @@ class ListSelectorItem {
   ListSelectorItem({required this.id, required this.name});
 }
 
-class ListSelector<K extends ListSelectorItem> extends StatefulWidget {
+class ListSelector<K extends ListSelectorItem> extends AbstractInput {
   final List<K> options;
   final Function setState;
   final TextStyle? style;
-  final String? value;
   final String? hintText;
   final double indent;
-  final int focusOrder;
+  final _textController = TextEditingController(text: '');
 
   ListSelector({
     required this.options,
     required this.setState,
     this.style,
-    this.value,
+    super.value,
     this.hintText = '',
     this.indent = 0.0,
-    this.focusOrder = FocusController.DEFAULT,
-  }) : super(key: UniqueKey());
-
-  @override
-  ListSelectorState createState() => ListSelectorState();
-}
-
-class ListSelectorState<T extends ListSelector, K extends ListSelectorItem> extends State<T> {
-  final _textController = TextEditingController(text: '');
-  late FocusNode focus;
-  bool isFocused = false;
-
-  @override
-  void initState() {
-    FocusController.init(widget.focusOrder, widget.value);
-    focus = FocusController.getFocusNode() ?? FocusNode();
-    super.initState();
-  }
+  }) : super();
 
   Widget selectorBuilder(context, K item) {
-    return Text(item.name, style: widget.style);
+    return Text(item.name, style: style);
   }
 
   Widget itemBuilder(context, K item, bool isSelected) {
     return Padding(
-      padding: EdgeInsets.all(widget.indent),
+      padding: EdgeInsets.all(indent),
       child: selectorBuilder(context, item),
     );
   }
@@ -73,23 +56,25 @@ class ListSelectorState<T extends ListSelector, K extends ListSelectorItem> exte
     return selectorBuilder(context, selectedItem);
   }
 
-  void onChange(K? value) => widget.setState(value.toString());
+  void onChange(K? value) {
+    setState(value.toString());
+    FocusController.onEditingComplete(focusOrder);
+  }
 
   @override
   Widget build(context) {
-    if (widget.value == '' && focus.hasFocus && !isFocused) {
-      Future.delayed(Duration.zero, () => setState(() => isFocused = true));
-      Future.delayed(Duration.zero, () => FocusController.scrollToFocusedElement(focus));
+    bool isFocused = FocusController.isFocused(focusOrder, value);
+    if (isFocused) {
+      // open popup: openDropDownSearch
     }
-
     return DropdownSearch<K>(
       onChanged: onChange,
-      selectedItem: widget.options.where((element) => element.id == widget.value).firstOrNull as K?,
-      items: widget.options as List<K>,
+      selectedItem: options.where((element) => element.id == value).firstOrNull,
+      items: options,
       compareFn: (item, selectedItem) => item.name.contains(selectedItem.name),
       dropdownDecoratorProps: DropDownDecoratorProps(
         dropdownSearchDecoration: InputDecoration(
-          hintText: widget.hintText,
+          hintText: hintText,
           filled: true,
           border: InputBorder.none,
           fillColor: Theme.of(context).colorScheme.inversePrimary.withOpacity(0.3),
@@ -102,7 +87,7 @@ class ListSelectorState<T extends ListSelector, K extends ListSelectorItem> exte
         searchFieldProps: TextFieldProps(
           controller: _textController,
           focusNode: focus,
-          autofocus: FocusController.isFocused(),
+          autofocus: isFocused,
           decoration: InputDecoration(
             suffixIcon: IconButton(
               icon: const Icon(Icons.clear),

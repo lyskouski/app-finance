@@ -3,41 +3,31 @@
 // found in the LICENSE file.
 
 import 'package:app_finance/_classes/focus_controller.dart';
+import 'package:app_finance/widgets/_forms/abstract_input.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
-class SimpleInput extends StatelessWidget {
+class SimpleInput extends AbstractInput {
   final Function? setState;
   final TextStyle? style;
   final String? tooltip;
   final TextInputType type;
   final List<TextInputFormatter>? formatter;
   final TextEditingController controller;
-  final int focusOrder;
-  late final FocusNode focus;
 
   static FilteringTextInputFormatter filterDouble = FilteringTextInputFormatter.allow(RegExp(r'^\d+\.?\d{0,4}'));
 
   SimpleInput({
-    super.key,
     required this.controller,
     this.setState,
     this.style,
     this.tooltip,
     this.formatter,
     this.type = TextInputType.text,
-    this.focusOrder = FocusController.DEFAULT,
-  }) {
+  }) : super() {
     if (setState != null) {
       controller.addListener(() => setState!(controller.text));
     }
-    FocusController.init(focusOrder, controller.text);
-    focus = FocusController.getFocusNode() ?? FocusNode();
-  }
-
-  void onFocus() {
-    FocusController.scrollToFocusedElement(focus);
-    focus.requestFocus();
   }
 
   @override
@@ -48,9 +38,9 @@ class SimpleInput extends StatelessWidget {
       keyboardType: type,
       focusNode: focus,
       textInputAction: FocusController.getAction(),
-      onTap: onFocus,
+      onTap: () => FocusController.onFocus(focusOrder),
       onEditingComplete: () => FocusController.onEditingComplete(focusOrder),
-      autofocus: FocusController.isFocused(),
+      autofocus: FocusController.isFocused(focusOrder, controller.text),
       decoration: InputDecoration(
         filled: true,
         border: InputBorder.none,

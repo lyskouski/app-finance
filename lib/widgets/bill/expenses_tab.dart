@@ -52,6 +52,7 @@ class ExpensesTabState<T extends ExpensesTab> extends State<T> with SharedPrefer
   Currency? currency;
   late TextEditingController bill;
   late TextEditingController description;
+  double? billValue;
   DateTime? createdAt;
   bool hasErrors = false;
   bool isFresh = true;
@@ -62,16 +63,10 @@ class ExpensesTabState<T extends ExpensesTab> extends State<T> with SharedPrefer
     budget = widget.budget;
     currency = widget.currency;
     bill = TextEditingController(text: widget.bill != null ? widget.bill.toString() : '');
+    billValue = widget.bill;
     description = TextEditingController(text: widget.description);
     createdAt = widget.createdAt;
     super.initState();
-  }
-
-  @override
-  dispose() {
-    bill.dispose();
-    description.dispose();
-    super.dispose();
   }
 
   Future<void> _loadPreferences() async {
@@ -121,7 +116,6 @@ class ExpensesTabState<T extends ExpensesTab> extends State<T> with SharedPrefer
   Widget buildButton(BuildContext context, BoxConstraints constraints) {
     var helper = ThemeHelper(windowType: getWindowType(context));
     String title = getButtonTitle(context);
-    FocusController.init(5);
     return SizedBox(
       width: constraints.maxWidth - helper.getIndent() * 4,
       child: FloatingActionButton(
@@ -157,14 +151,13 @@ class ExpensesTabState<T extends ExpensesTab> extends State<T> with SharedPrefer
     final TextTheme textTheme = Theme.of(context).textTheme;
     double indent = ThemeHelper(windowType: getWindowType(context)).getIndent() * 2;
     double offset = MediaQuery.of(context).size.width - indent * 3;
-    int focusOrder = FocusController.DEFAULT;
-    FocusController.setContext(context);
+    FocusController.init();
 
     return LayoutBuilder(builder: (context, constraints) {
       return Consumer<AppData>(builder: (context, appState, _) {
         state = appState;
         if (isFresh) {
-          _loadPreferences();
+          WidgetsBinding.instance.addPostFrameCallback((_) => _loadPreferences());
         }
         return Scaffold(
           body: SingleChildScrollView(
@@ -188,7 +181,6 @@ class ExpensesTabState<T extends ExpensesTab> extends State<T> with SharedPrefer
                     style: textTheme.numberMedium.copyWith(color: textTheme.headlineSmall?.color),
                     indent: indent,
                     width: offset,
-                    focusOrder: focusOrder += 1,
                   ),
                   SizedBox(height: indent),
                   RequiredWidget(
@@ -206,7 +198,6 @@ class ExpensesTabState<T extends ExpensesTab> extends State<T> with SharedPrefer
                     style: textTheme.numberMedium.copyWith(color: textTheme.headlineSmall?.color),
                     indent: indent,
                     width: offset,
-                    focusOrder: focusOrder += 1,
                   ),
                   SizedBox(height: indent),
                   RowWidget(
@@ -225,7 +216,6 @@ class ExpensesTabState<T extends ExpensesTab> extends State<T> with SharedPrefer
                           child: CurrencySelector(
                             value: currency?.code,
                             setView: (Currency currency) => currency.code,
-                            focusOrder: focusOrder += 1,
                             setState: (value) => setState(() => currency = value),
                           ),
                         ),
@@ -240,10 +230,10 @@ class ExpensesTabState<T extends ExpensesTab> extends State<T> with SharedPrefer
                           type: const TextInputType.numberWithOptions(decimal: true),
                           tooltip: AppLocalizations.of(context)!.billSetTooltip,
                           style: textTheme.numberMedium.copyWith(color: textTheme.headlineSmall?.color),
+                          setState: (v) => setState(() => billValue = double.tryParse(v)),
                           formatter: [
                             SimpleInput.filterDouble,
                           ],
-                          focusOrder: focusOrder += 1,
                         ),
                       ],
                     ],
@@ -254,7 +244,7 @@ class ExpensesTabState<T extends ExpensesTab> extends State<T> with SharedPrefer
                     indent: indent,
                     target: currency,
                     state: state,
-                    targetAmount: double.tryParse(bill.text),
+                    targetAmount: billValue,
                     source: [
                       account != null ? state.getByUuid(account!).currency : null,
                       budget != null ? state.getByUuid(budget!).currency : null,
@@ -268,7 +258,6 @@ class ExpensesTabState<T extends ExpensesTab> extends State<T> with SharedPrefer
                     controller: description,
                     tooltip: AppLocalizations.of(context)!.descriptionTooltip,
                     style: textTheme.numberMedium.copyWith(color: textTheme.headlineSmall?.color),
-                    focusOrder: focusOrder += 1,
                   ),
                   SizedBox(height: indent),
                   Text(

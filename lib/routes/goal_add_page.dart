@@ -62,13 +62,6 @@ class GoalAddPageState<T extends GoalAddPage> extends AbstractPageState<GoalAddP
   }
 
   @override
-  void dispose() {
-    title.dispose();
-    details.dispose();
-    super.dispose();
-  }
-
-  @override
   String getTitle(context) {
     return AppLocalizations.of(context)!.createGoalHeader;
   }
@@ -103,7 +96,6 @@ class GoalAddPageState<T extends GoalAddPage> extends AbstractPageState<GoalAddP
   Widget buildButton(BuildContext context, BoxConstraints constraints) {
     var helper = ThemeHelper(windowType: getWindowType(context));
     String title = getButtonName();
-    FocusController.init(4);
     return SizedBox(
       width: constraints.maxWidth - helper.getIndent() * 4,
       child: FloatingActionButton(
@@ -139,8 +131,6 @@ class GoalAddPageState<T extends GoalAddPage> extends AbstractPageState<GoalAddP
     final TextTheme textTheme = Theme.of(context).textTheme;
     double indent = ThemeHelper(windowType: getWindowType(context)).getIndent() * 2;
     double offset = MediaQuery.of(context).size.width - indent * 3;
-    int focusOrder = FocusController.DEFAULT;
-    FocusController.setContext(context);
 
     return SingleChildScrollView(
       controller: FocusController.getController(),
@@ -154,7 +144,6 @@ class GoalAddPageState<T extends GoalAddPage> extends AbstractPageState<GoalAddP
               controller: title,
               tooltip: AppLocalizations.of(context)!.titleGoalTooltip,
               style: textTheme.numberMedium.copyWith(color: textTheme.headlineSmall?.color),
-              focusOrder: focusOrder += 1,
             ),
             SizedBox(height: indent),
             Row(
@@ -174,7 +163,6 @@ class GoalAddPageState<T extends GoalAddPage> extends AbstractPageState<GoalAddP
                       IconSelector(
                         value: icon,
                         setState: (value) => setState(() => icon = value),
-                        // focusOrder: focusOrder += 1,
                       ),
                     ],
                   ),
@@ -194,7 +182,6 @@ class GoalAddPageState<T extends GoalAddPage> extends AbstractPageState<GoalAddP
                       ColorSelector(
                         value: color,
                         setState: (value) => setState(() => color = value),
-                        // focusOrder: focusOrder += 1,
                       ),
                     ],
                   ),
@@ -222,7 +209,6 @@ class GoalAddPageState<T extends GoalAddPage> extends AbstractPageState<GoalAddP
                         child: CurrencySelector(
                           value: currency?.code,
                           setView: (Currency currency) => currency.code,
-                          focusOrder: focusOrder += 1,
                           setState: (value) => setState(() => currency = value),
                         ),
                       ),
@@ -249,7 +235,6 @@ class GoalAddPageState<T extends GoalAddPage> extends AbstractPageState<GoalAddP
                         formatter: [
                           SimpleInput.filterDouble,
                         ],
-                        focusOrder: focusOrder += 1,
                       ),
                     ],
                   ),
@@ -262,7 +247,6 @@ class GoalAddPageState<T extends GoalAddPage> extends AbstractPageState<GoalAddP
               style: textTheme.numberMedium.copyWith(color: textTheme.headlineSmall?.color),
               value: closedAt,
               setState: (value) => setState(() => closedAt = value),
-              focusOrder: focusOrder += 1,
             ),
           ],
         ),
