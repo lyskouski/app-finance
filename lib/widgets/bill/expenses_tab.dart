@@ -161,7 +161,7 @@ class ExpensesTabState<T extends ExpensesTab> extends State<T> with SharedPrefer
         }
         return Scaffold(
           body: SingleChildScrollView(
-            controller: FocusController.getController(),
+            controller: FocusController.getController(runtimeType),
             child: Container(
               margin: EdgeInsets.fromLTRB(indent, indent, indent, 240),
               child: Column(

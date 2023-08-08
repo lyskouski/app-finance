@@ -120,7 +120,7 @@ class TransferTabState extends State<TransferTab> {
         state = appState;
         return Scaffold(
           body: SingleChildScrollView(
-            controller: FocusController.getController(),
+            controller: FocusController.getController(runtimeType),
             child: Container(
               margin: EdgeInsets.fromLTRB(indent, indent, indent, 240),
               child: Column(

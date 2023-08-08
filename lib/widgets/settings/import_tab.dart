@@ -208,7 +208,7 @@ class ImportTabState extends State<ImportTab> with SharedPreferencesMixin {
     return Consumer<AppData>(builder: (context, appState, _) {
       state = appState;
       return SingleChildScrollView(
-        controller: FocusController.getController(),
+        controller: FocusController.getController(runtimeType),
         child: Padding(
           padding: EdgeInsets.all(indent),
           child: Column(

@@ -85,7 +85,7 @@ class SyncTabState extends State<RecoverTab> {
     FocusController.init();
 
     return SingleChildScrollView(
-      controller: FocusController.getController(),
+      controller: FocusController.getController(runtimeType),
       child: Padding(
         padding: EdgeInsets.all(indent),
         child: Column(

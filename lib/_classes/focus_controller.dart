@@ -11,7 +11,8 @@ class FocusController {
   static List<dynamic> values = [];
   static int _idx = DEFAULT;
   static int focus = DEFAULT;
-  static ScrollController? _controller;
+  static final Map<Type, ScrollController?> _controller = {};
+  static Type? _activeClass;
 
   static void init() {
     values = values.map((e) => null).cast<dynamic>().toList();
@@ -29,9 +30,10 @@ class FocusController {
     return nodes[_idx];
   }
 
-  static ScrollController getController() {
-    _controller ??= ScrollController();
-    return _controller!;
+  static ScrollController getController(Type name) {
+    _controller[name] ??= ScrollController();
+    _activeClass = name;
+    return _controller[name]!;
   }
 
   static bool isLast() {
@@ -50,7 +52,7 @@ class FocusController {
   }
 
   static void _scrollToFocusedElement(FocusNode node) {
-    bool isAttached = _controller?.hasClients ?? false;
+    bool isAttached = _controller[_activeClass]?.hasClients ?? false;
     RenderObject? firstNode;
     // @todo: drop after changing 'package:dropdown_search'
     double shift = 0;
@@ -72,7 +74,7 @@ class FocusController {
     }
     if (isAttached && focusedNode is RenderBox && firstNode is RenderBox) {
       double delta = focusedNode.localToGlobal(Offset.zero).dy - firstNode.localToGlobal(Offset.zero).dy + shift;
-      _controller?.animateTo(
+      _controller[_activeClass]?.animateTo(
         delta,
         duration: const Duration(milliseconds: 300),
         curve: Curves.easeInOut,

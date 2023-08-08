@@ -163,7 +163,7 @@ class AccountAddPageState<T extends AccountAddPage> extends AbstractPageState<Ac
     FocusController.init();
 
     return SingleChildScrollView(
-      controller: FocusController.getController(),
+      controller: FocusController.getController(runtimeType),
       child: Container(
         margin: EdgeInsets.fromLTRB(indent, indent, indent, 240),
         child: Column(

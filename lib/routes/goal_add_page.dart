@@ -133,7 +133,7 @@ class GoalAddPageState<T extends GoalAddPage> extends AbstractPageState<GoalAddP
     double offset = MediaQuery.of(context).size.width - indent * 3;
 
     return SingleChildScrollView(
-      controller: FocusController.getController(),
+      controller: FocusController.getController(runtimeType),
       child: Container(
         margin: EdgeInsets.fromLTRB(indent, indent, indent, 240),
         child: Column(

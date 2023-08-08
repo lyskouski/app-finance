@@ -127,7 +127,7 @@ class IncomeTabState extends State<IncomeTab> with SharedPreferencesMixin {
         }
         return Scaffold(
           body: SingleChildScrollView(
-            controller: FocusController.getController(),
+            controller: FocusController.getController(runtimeType),
             child: Container(
               margin: EdgeInsets.fromLTRB(indent, indent, indent, 240),
               child: Column(
