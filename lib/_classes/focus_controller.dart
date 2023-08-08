@@ -2,6 +2,7 @@
 // Use of this source code is governed by a CC BY-NC-ND 4.0 license that can be
 // found in the LICENSE file.
 
+import 'package:app_finance/_classes/delayed_call.dart';
 import 'package:flutter/material.dart';
 
 class FocusController {
@@ -13,6 +14,7 @@ class FocusController {
   static int focus = DEFAULT;
   static final Map<Type, ScrollController?> _controller = {};
   static Type? _activeClass;
+  static final DelayedCall _delay = DelayedCall(600);
 
   static void init() {
     values = values.map((e) => null).cast<dynamic>().toList();
@@ -47,7 +49,7 @@ class FocusController {
   static void requestFocus() {
     if (focus >= 0) {
       nodes[focus].requestFocus();
-      _scrollToFocusedElement(nodes[focus]);
+      _delay.run(() => _scrollToFocusedElement(nodes[focus]));
     }
   }
 
@@ -57,12 +59,12 @@ class FocusController {
     // @todo: drop after changing 'package:dropdown_search'
     double shift = 0;
     int idx = nodes.indexOf(node);
-    for (int i = 0; i < idx; i++) {
+    for (int i = 0; i <= idx; i++) {
       BuildContext? context = nodes[i].context;
       if (context != null && context.mounted) {
         firstNode = context.findRenderObject();
       }
-      if (firstNode != null) {
+      if (firstNode is RenderBox) {
         break;
       }
       shift += 67;
