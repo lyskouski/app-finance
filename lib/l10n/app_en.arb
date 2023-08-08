@@ -82,6 +82,8 @@
     "currencyUpdateTooltip": "Update Currencies Rate",
     "currentDate": "Current Date",
     "darkMode": "Dark",
+    "dateFormat": "Date Format",
+    "dateFormatPattern": "Pattern declaration: y [year], M [month], d [day], H [hours], m [minutes], s [seconds]",
     "debitCard": "Debit Card",
     "deleteAccountTooltip": "Deactivate Account",
     "deleteBillTooltip": "Delete Bill",
@@ -134,6 +136,7 @@
     "password": "Password",
     "path": "File Name (to save into, or load from)",
     "pickFile": "Pick .csv-file",
+    "processIsFinished": "Finished!",
     "progress": "Progress: {value}%",
     "@progress": {
         "value": {
