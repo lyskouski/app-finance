@@ -16,10 +16,11 @@ class MonthYearInput extends AbstractInput {
   final DateTime? value;
 
   MonthYearInput({
+    super.key,
     required this.setState,
     required this.value,
     this.style,
-  }) : super();
+  });
 
   Future<void> onTap(context) async {
     DateTime currentDate = DateTime.now();

@@ -4,6 +4,7 @@
 
 import 'package:app_finance/routes/abstract_page.dart';
 import 'package:app_finance/widgets/_wrappers/tab_widget.dart';
+import 'package:app_finance/widgets/settings/import_tab.dart';
 import 'package:app_finance/widgets/settings/setting_tab.dart';
 import 'package:app_finance/widgets/settings/recover_tab.dart';
 import 'package:flutter/material.dart';
@@ -35,10 +36,15 @@ class SettingsPageState extends AbstractPageState<SettingsPage> {
           icon: const Icon(Icons.health_and_safety),
           text: AppLocalizations.of(context)!.recoveryHeadline,
         ),
+        Tab(
+          icon: const Icon(Icons.imagesearch_roller_sharp),
+          text: AppLocalizations.of(context)!.importHeadline,
+        ),
       ],
       children: [
         SettingTab(),
         const RecoverTab(),
+        const ImportTab(),
       ],
     );
   }

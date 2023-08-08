@@ -28,6 +28,7 @@ class ListAccountSelector<K extends ListAccountSelectorItem> extends ListSelecto
   final double width;
 
   ListAccountSelector({
+    super.key,
     required this.state,
     required super.setState,
     required this.width,
@@ -35,7 +36,7 @@ class ListAccountSelector<K extends ListAccountSelectorItem> extends ListSelecto
     super.style,
     super.value,
     super.indent = 0.0,
-  }) : super();
+  });
 
   @override
   List<K> get options {

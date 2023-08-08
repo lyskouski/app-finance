@@ -11,7 +11,6 @@ class FocusController {
   static List<dynamic> values = [];
   static int _idx = DEFAULT;
   static int focus = DEFAULT;
-  static int _focus = DEFAULT;
   static ScrollController? _controller;
 
   static void init() {
@@ -44,8 +43,7 @@ class FocusController {
   }
 
   static void requestFocus() {
-    if (focus >= 0 && _focus != focus && nodes[focus].context != null) {
-      _focus = focus;
+    if (focus >= 0) {
       nodes[focus].requestFocus();
       _scrollToFocusedElement(nodes[focus]);
     }
@@ -101,7 +99,6 @@ class FocusController {
 
   static void resetFocus() {
     focus = DEFAULT;
-    _focus = DEFAULT;
   }
 
   static bool isFocused(int idx, dynamic value) {

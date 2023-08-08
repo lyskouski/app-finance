@@ -14,6 +14,7 @@ class IconSelector extends AbstractInput {
   final IconData? value;
 
   IconSelector({
+    super.key,
     required this.setState,
     this.value,
   }) : super(value: value);

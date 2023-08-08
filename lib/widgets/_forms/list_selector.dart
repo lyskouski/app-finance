@@ -30,13 +30,14 @@ class ListSelector<K extends ListSelectorItem> extends AbstractInput {
   final _textController = TextEditingController(text: '');
 
   ListSelector({
+    super.key,
     required this.options,
     required this.setState,
     this.style,
     super.value,
     this.hintText = '',
     this.indent = 0.0,
-  }) : super();
+  });
 
   Widget selectorBuilder(context, K item) {
     return Text(item.name, style: style);

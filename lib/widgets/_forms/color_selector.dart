@@ -17,6 +17,7 @@ class ColorSelector extends AbstractInput {
   final MaterialColor? value;
 
   ColorSelector({
+    super.key,
     required this.setState,
     this.value,
   }) : super(value: value);
@@ -54,7 +55,6 @@ class ColorSelector extends AbstractInput {
               pickerColor: clr,
               onColorChanged: (color) {
                 setState(convertToMaterialColor(color));
-                FocusController.onEditingComplete(focusOrder);
               },
             ),
           ),
@@ -62,6 +62,7 @@ class ColorSelector extends AbstractInput {
             ElevatedButton(
               onPressed: () {
                 Navigator.of(context).pop();
+                FocusController.onEditingComplete(focusOrder);
               },
               child: Text(AppLocalizations.of(context)!.ok),
             ),

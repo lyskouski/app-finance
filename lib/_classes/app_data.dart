@@ -64,11 +64,13 @@ class AppData extends ChangeNotifier {
   AppData() : super() {
     isLoading = true;
     Exchange(store: this).getDefaultCurrency();
-    TransactionLog.load(this).then((_) async {
-      await updateTotals(AppDataType.values);
-      isLoading = false;
-      notifyListeners();
-    });
+    TransactionLog.load(this).then((_) async => await restate());
+  }
+
+  Future<void> restate() async {
+    await updateTotals(AppDataType.values);
+    isLoading = false;
+    notifyListeners();
   }
 
   void _set(AppDataType property, dynamic value) {
