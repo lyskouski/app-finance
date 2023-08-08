@@ -18,7 +18,7 @@ class BaseListInfiniteWidget extends StatefulWidget {
     required this.state,
     required this.offset,
     required this.buildListWidget,
-    this.batch = 15,
+    this.batch = 25,
   });
 
   @override

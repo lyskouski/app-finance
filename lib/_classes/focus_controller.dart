@@ -63,7 +63,7 @@ class FocusController {
       if (firstNode != null) {
         break;
       }
-      shift += 100;
+      shift += 32;
     }
     // end
     RenderObject? focusedNode;
