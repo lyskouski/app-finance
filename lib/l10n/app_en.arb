@@ -29,9 +29,11 @@
     "balanceDateTooltip": "Outcomes and Incomes before this date won't affect the balance",
     "balanceTooltip": "Set Balance",
     "bankAccount": "Bank Account",
+    "bill": "Bill",
     "billHeadline": "Bills",
     "billSetTooltip": "Set Amount",
     "billTooltip": "Open Bills",
+    "billTypeTooltip": "[Type] Bill, Income or Transfer",
     "brightnessTheme": "Brightness Theme",
     "btnAdd": "Add",
     "btnMore": "More",
@@ -43,6 +45,13 @@
     "closedAt": "Finished till Date",
     "color": "Color",
     "colorTooltip": "Select a color",
+    "columnMap": "Mapping for Column '{value}'",
+    "@columnMap": {
+        "value": {
+            "type": "String"
+        }
+    },
+    "columnMapTooltip": "Choose Column Mapping",
     "completeGoalTooltip": "Complete Goal",
     "conversion": "Conversion",
     "conversionMessage": "Taken in {currency}",
@@ -110,6 +119,8 @@
     "homeHeadline": "Home",
     "homeTooltip": "Back to Main Page",
     "icon": "Icon",
+    "ignoreTooltip": "Ignore",
+    "importHeadline": "Import",
     "incomeHeadline": "Income",
     "isRequired": "required",
     "left": "left",
@@ -119,8 +130,10 @@
     "milestones": "Milestones",
     "navigationTooltip": "Open main menu",
     "ok": "OK",
+    "parseFile": "Parse .csv-file",
     "password": "Password",
     "path": "File Name (to save into, or load from)",
+    "pickFile": "Pick .csv-file",
     "progress": "Progress: {value}%",
     "@progress": {
         "value": {
