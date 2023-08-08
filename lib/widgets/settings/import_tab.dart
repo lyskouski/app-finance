@@ -8,6 +8,7 @@ import 'package:app_finance/_classes/app_data.dart';
 import 'package:app_finance/_classes/data/account_app_data.dart';
 import 'package:app_finance/_classes/data/bill_app_data.dart';
 import 'package:app_finance/_classes/data/budget_app_data.dart';
+import 'package:app_finance/_classes/data/transaction_log.dart';
 import 'package:app_finance/_classes/focus_controller.dart';
 import 'package:app_finance/_mixins/shared_preferences_mixin.dart';
 import 'package:app_finance/helpers/theme_helper.dart';
@@ -105,11 +106,11 @@ class ImportTabState extends State<ImportTab> with SharedPreferencesMixin {
         amount = double.tryParse(amount);
       }
       try {
-        state.add(
+        final newItem = state.add(
             AppDataType.bills,
             BillAppData(
-              account: _find(AppDataType.accounts, line, accountIdx, defaultAccount),
-              category: _find(AppDataType.budgets, line, budgetIdx, defaultBudget),
+              account: await _find(AppDataType.accounts, line, accountIdx, defaultAccount),
+              category: await _find(AppDataType.budgets, line, budgetIdx, defaultBudget),
               title: _get(line, attrBillComment).toString(),
               details: 0.0 + amount,
               createdAt: DateFormat(dateFormat.text).parse(_get(line, attrBillDate)),
@@ -117,6 +118,7 @@ class ImportTabState extends State<ImportTab> with SharedPreferencesMixin {
               currency: _getCurrency(line),
               hidden: false,
             ));
+        await TransactionLog.save(newItem);
       } catch (e) {
         setState(() => errorMessage.writeln('[$i / ${fileContent!.length}] ${e.toString()}'));
       }
@@ -141,7 +143,7 @@ class ImportTabState extends State<ImportTab> with SharedPreferencesMixin {
     });
   }
 
-  String _find(AppDataType type, List<dynamic> line, int index, String? def) {
+  Future<String> _find(AppDataType type, List<dynamic> line, int index, String? def) async {
     if (index < 0 || (line[index] ?? '') == '') {
       return def ?? '';
     }
@@ -156,7 +158,7 @@ class ImportTabState extends State<ImportTab> with SharedPreferencesMixin {
       uuid = item?.uuid;
       _cache[type]![line[index]] = uuid ?? '';
     }
-    return uuid ?? _new(type, line, index);
+    return uuid ?? await _new(type, line, index);
   }
 
   dynamic _get(List<dynamic> line, String type) {
@@ -168,7 +170,7 @@ class ImportTabState extends State<ImportTab> with SharedPreferencesMixin {
     return CurrencyService().findByCode(_get(line, attrBillCurrency));
   }
 
-  String _new(AppDataType type, List<dynamic> line, int index) {
+  Future<String> _new(AppDataType type, List<dynamic> line, int index) async {
     dynamic newItem;
     switch (type) {
       case AppDataType.accounts:
@@ -192,6 +194,7 @@ class ImportTabState extends State<ImportTab> with SharedPreferencesMixin {
             ));
     }
     _cache[type]![line[index]] = newItem.uuid;
+    await TransactionLog.save(newItem);
     return newItem.uuid;
   }
 
