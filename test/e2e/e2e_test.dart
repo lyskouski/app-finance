@@ -50,7 +50,7 @@ void main() {
         final runner = FileRunner(tester);
         await runner.init(file);
         expectSync(await runner.run(), true);
-        await tester.pumpAndSettle();
+        await tester.pumpAndSettle(const Duration(seconds: 1));
       });
     }
   });

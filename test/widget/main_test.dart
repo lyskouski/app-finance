@@ -45,5 +45,6 @@ void main() {
     expect(find.byIcon(Icons.insert_invitation), findsOneWidget);
     expect(find.byIcon(Icons.money_off), findsOneWidget);
     expect(find.byIcon(Icons.transform), findsOneWidget);
+    await tester.pumpAndSettle(const Duration(seconds: 1));
   });
 }
