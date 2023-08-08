@@ -17,6 +17,9 @@ class BillWidget extends BaseWidget {
     int? limit,
     String? route,
     String routeList = AppRoute.billViewRoute,
+    super.hasExpand,
+    super.toExpand,
+    super.callback,
   }) : super(
           margin: margin,
           offset: offset,

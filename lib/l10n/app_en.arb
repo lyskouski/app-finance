@@ -43,6 +43,7 @@
     "budgetTooltip": "Open Budget Types",
     "cash": "Cash",
     "closedAt": "Finished till Date",
+    "collapse": "Collapse (Restore) Section",
     "color": "Color",
     "colorTooltip": "Select a color",
     "columnMap": "Mapping for Column '{value}'",
@@ -109,6 +110,7 @@
             "type": "String"
         }
     },
+    "expand": "Expand Section",
     "expense": "Amount of Expenses",
     "expenseDateTime": "Billed At",
     "expenseHeadline": "Expense",

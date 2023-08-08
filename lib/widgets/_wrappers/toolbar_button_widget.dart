@@ -6,10 +6,14 @@ import 'package:flutter/material.dart';
 
 class ToolbarButtonWidget extends StatefulWidget {
   final Widget child;
+  final Color? borderColor;
+  final double offset;
 
   const ToolbarButtonWidget({
     super.key,
     required this.child,
+    this.borderColor,
+    this.offset = -4,
   });
 
   @override
@@ -30,10 +34,11 @@ class ToolbarButtonWidgetState extends State<ToolbarButtonWidget> {
         decoration: BoxDecoration(
           shape: BoxShape.rectangle,
           color: color,
-          border: Border.all(color: Theme.of(context).colorScheme.inversePrimary.withOpacity(0.2), width: 1),
+          border: Border.all(
+              color: widget.borderColor ?? Theme.of(context).colorScheme.inversePrimary.withOpacity(0.2), width: 1),
         ),
         child: Transform.translate(
-          offset: const Offset(0, -4),
+          offset: Offset(0, widget.offset),
           child: Material(
             elevation: 0,
             color: Colors.transparent,

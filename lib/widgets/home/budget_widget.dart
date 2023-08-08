@@ -18,6 +18,9 @@ class BudgetWidget extends AccountWidget {
     int? limit,
     String? route,
     String routeList = AppRoute.budgetViewRoute,
+    super.hasExpand,
+    super.toExpand,
+    super.callback,
   }) : super(
           margin: margin,
           offset: offset,

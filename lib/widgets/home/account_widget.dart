@@ -18,6 +18,9 @@ class AccountWidget extends BaseWidget {
     String? tooltip,
     String? route,
     String routeList = AppRoute.accountViewRoute,
+    super.hasExpand,
+    super.toExpand,
+    super.callback,
   }) : super(
           margin: margin,
           offset: offset,
