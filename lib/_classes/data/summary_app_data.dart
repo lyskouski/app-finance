@@ -34,11 +34,12 @@ class SummaryAppData {
       _actual.remove(_hash[value]);
       _hash.remove(value);
     }
-    updatedAt ??= DateTime.now();
+    final current = DateTime.now();
+    updatedAt ??= current;
     double key = (id ?? updatedAt.millisecondsSinceEpoch).toDouble() + Random().nextDouble();
     _scope[key] = value;
     _hash[value] = key;
-    if (key >= DateTime(updatedAt.year, updatedAt.month).millisecondsSinceEpoch) {
+    if (key >= DateTime(current.year, current.month).millisecondsSinceEpoch) {
       _actual[key] = value;
     }
   }
