@@ -27,6 +27,8 @@ class HomePage extends AbstractPage {
 }
 
 class HomePageState extends AbstractPageState<HomePage> with SharedPreferencesMixin {
+  String? toExpand;
+
   @override
   initState() {
     super.initState();
@@ -125,6 +127,9 @@ class HomePageState extends AbstractPageState<HomePage> with SharedPreferencesMi
       route: AppRoute.billRoute,
       tooltip: AppLocalizations.of(context)!.billTooltip,
       offset: helper.isVertical(constraints) ? width : halfWidth,
+      hasExpand: true,
+      toExpand: toExpand,
+      callback: (v) => setState(() => toExpand = v),
     );
     final accountWidget = AccountWidget(
       margin: helper.isVertical(constraints) ? single : middleLeft,
@@ -134,6 +139,9 @@ class HomePageState extends AbstractPageState<HomePage> with SharedPreferencesMi
       route: AppRoute.accountRoute,
       tooltip: AppLocalizations.of(context)!.accountTooltip,
       offset: helper.isVertical(constraints) ? width : halfWidth,
+      hasExpand: true,
+      toExpand: toExpand,
+      callback: (v) => setState(() => toExpand = v),
     );
     final budgetWidget = BudgetWidget(
       margin: bottom,
@@ -143,6 +151,9 @@ class HomePageState extends AbstractPageState<HomePage> with SharedPreferencesMi
       route: AppRoute.budgetRoute,
       tooltip: AppLocalizations.of(context)!.budgetTooltip,
       offset: width,
+      hasExpand: true,
+      toExpand: toExpand,
+      callback: (v) => setState(() => toExpand = v),
     );
 
     if (helper.isVertical(constraints)) {

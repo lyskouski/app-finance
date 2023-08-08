@@ -11,6 +11,7 @@ mixin SharedPreferencesMixin {
   final String prefBudget = 'budget';
   final String prefCurrency = 'currency';
   final String prefTheme = 'themeMode';
+  final String prefExpand = 'expand';
 
   static late SharedPreferences pref;
 
