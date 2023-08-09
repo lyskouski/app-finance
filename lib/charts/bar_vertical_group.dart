@@ -20,7 +20,8 @@ class BarVerticalGroup extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    value.insert(0, value.fold(1.0, (v, e) => v - e));
+    double left = value.fold(1.0, (v, e) => v - e);
+    value.insert(0, left < 0 ? 0.0 : left);
     color.insert(0, Colors.grey);
     return SizedBox(
       width: width,

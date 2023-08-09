@@ -56,7 +56,8 @@ class CurrencyPageState extends AbstractPageState<CurrencyPage> {
     final TextTheme textTheme = Theme.of(context).textTheme;
     final indent = helper.getIndent();
     final double maxWidth = MediaQuery.of(context).size.width - indent * 2;
-    scope ??= super.state.get(AppDataType.currencies).list;
+    scope ??=
+        super.state.getList(AppDataType.currencies).where((v) => v.currency?.code != v.currencyFrom?.code).toList();
 
     return ListView.builder(
         itemCount: scope?.length,

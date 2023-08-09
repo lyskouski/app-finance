@@ -18,8 +18,9 @@ class CurrencyExchangeInput extends StatefulWidget {
   final double indent;
   final double? targetAmount;
   final AppData state;
+  final List<List<String?>> conversion = [];
 
-  const CurrencyExchangeInput({
+  CurrencyExchangeInput({
     super.key,
     required this.state,
     required this.width,
@@ -27,7 +28,12 @@ class CurrencyExchangeInput extends StatefulWidget {
     required this.target,
     required this.targetAmount,
     required this.source,
-  });
+  }) {
+    conversion.add([target?.code, source.first?.code]);
+    for (int i = 0; i < source.length - 1; i++) {
+      conversion.add([source[i]?.code, source[i + 1]?.code]);
+    }
+  }
 
   @override
   CurrencyExchangeInputState createState() => CurrencyExchangeInputState();
@@ -53,9 +59,7 @@ class CurrencyExchangeInputState extends State<CurrencyExchangeInput> {
   }
 
   String getKey(int index) {
-    final String from = widget.target?.code ?? '?';
-    final String to = widget.source[index]?.code ?? '?';
-    return index > 0 ? '$from-$to' : '$to-$from';
+    return widget.conversion[index].map((v) => v ?? '?').toList().join('-');
   }
 
   double? getAmount(index) {
@@ -74,8 +78,8 @@ class CurrencyExchangeInputState extends State<CurrencyExchangeInput> {
       final String uuid = getKey(idx);
       rate[idx] = widget.state.getByUuid(uuid) ??
           CurrencyAppData(
-            currency: idx > 0 ? widget.source[idx] : widget.target,
-            currencyFrom: idx > 0 ? widget.target : widget.source[idx],
+            currency: CurrencyService().findByCode(widget.conversion[idx][1]),
+            currencyFrom: CurrencyService().findByCode(widget.conversion[idx][0]),
           );
       amount[idx] = getAmount(idx);
       controllers[idx] = [
@@ -116,7 +120,7 @@ class CurrencyExchangeInputState extends State<CurrencyExchangeInput> {
     final TextTheme textTheme = Theme.of(context).textTheme;
     return Column(
       children: List<Widget>.generate(widget.source.length, (index) {
-        if (widget.source[index] == null || widget.source[index]?.code == widget.target?.code) {
+        if (widget.source[index] == null || widget.conversion[index][0] == widget.conversion[index][1]) {
           return const SizedBox();
         }
         return Column(
@@ -132,8 +136,8 @@ class CurrencyExchangeInputState extends State<CurrencyExchangeInput> {
                 children: [
                   Text(
                       AppLocalizations.of(context)!.currencyExchange(
-                        (index > 0 ? widget.target?.code : widget.source[index]?.code) ?? '?',
-                        (index > 0 ? widget.source[index]?.code : widget.target?.code) ?? '?',
+                        widget.conversion[index][0] ?? '?',
+                        widget.conversion[index][1] ?? '?',
                       ),
                       style: textTheme.bodyLarge?.copyWith(
                         color: Theme.of(context).colorScheme.primary,
@@ -158,7 +162,7 @@ class CurrencyExchangeInputState extends State<CurrencyExchangeInput> {
                         ],
                         [
                           Text(
-                            AppLocalizations.of(context)!.conversionMessage(widget.source[index]?.code ?? '?'),
+                            AppLocalizations.of(context)!.conversionMessage(widget.conversion[index][0] ?? '?'),
                             style: textTheme.bodyLarge,
                           ),
                           SimpleInput(

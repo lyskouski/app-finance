@@ -74,25 +74,28 @@ class AccountWidget extends BaseWidget with SharedPreferencesMixin {
         : buildGroupedListWidget(item, context, offset);
   }
 
+  List<dynamic> updateItems(context, items, summaryItem) {
+    return items.map((o) {
+      o.updateContext(context);
+      o.progress = summaryItem.details > 0
+          ? exchange.reform(o.details, o.currency, exchange.getDefaultCurrency()) / summaryItem.details
+          : o.progress;
+      return o;
+    }).toList();
+  }
+
   Widget buildGroupedListWidget(List<dynamic> items, BuildContext context, double offset) {
     final item = wrapBySingleEntity(items);
     item.updateContext(context);
-    items = items.map((o) {
-      o.updateContext(context);
-      if (o is AccountAppData) {
-        o.progress = item.details > 0 ? o.details / item.details : o.progress;
-      }
-      return o;
-    }).toList();
-
+    final scope = updateItems(context, items, item);
     return BaseGroupWidget(
       title: item.title,
       total: item.details,
       description: item.detailsFormatted,
-      progress: items.map((e) => e.progress).cast<double>().toList(),
-      color: items.map((e) => e.color).cast<Color>().toList(),
+      progress: scope.map((e) => e.progress).cast<double>().toList(),
+      color: scope.map((e) => e.color).cast<Color>().toList(),
       offset: offset,
-      items: items,
+      items: scope,
       route: routeList,
     );
   }
