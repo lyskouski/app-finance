@@ -115,6 +115,7 @@ class HomePageState extends AbstractPageState<HomePage> with SharedPreferencesMi
     double halfWidth = width / 2 - indent;
     final locale = Localizations.localeOf(context).toString();
     final DateFormat formatterDate = DateFormat.MMMM(locale);
+    bool isVertical = helper.isVertical(constraints);
 
     final goalWidget = GoalWidget(
       margin: EdgeInsets.fromLTRB(indent, 0, indent, 0),
@@ -128,7 +129,7 @@ class HomePageState extends AbstractPageState<HomePage> with SharedPreferencesMi
       route: AppRoute.billRoute,
       tooltip: AppLocalizations.of(context)!.billTooltip,
       offset: helper.isVertical(constraints) ? width : halfWidth,
-      hasExpand: true,
+      hasExpand: isVertical,
       toExpand: toExpand,
       callback: (v) => setState(() => toExpand = v),
     );
@@ -140,7 +141,7 @@ class HomePageState extends AbstractPageState<HomePage> with SharedPreferencesMi
       route: AppRoute.accountRoute,
       tooltip: AppLocalizations.of(context)!.accountTooltip,
       offset: helper.isVertical(constraints) ? width : halfWidth,
-      hasExpand: true,
+      hasExpand: isVertical,
       toExpand: toExpand,
       callback: (v) => setState(() => toExpand = v),
     );
@@ -152,12 +153,12 @@ class HomePageState extends AbstractPageState<HomePage> with SharedPreferencesMi
       route: AppRoute.budgetRoute,
       tooltip: AppLocalizations.of(context)!.budgetTooltip,
       offset: width,
-      hasExpand: true,
+      hasExpand: isVertical,
       toExpand: toExpand,
       callback: (v) => setState(() => toExpand = v),
     );
 
-    if (helper.isVertical(constraints)) {
+    if (isVertical) {
       return Column(
         children: [
           goalWidget,
