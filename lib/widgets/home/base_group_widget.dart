@@ -5,6 +5,7 @@
 import 'package:adaptive_breakpoints/adaptive_breakpoints.dart';
 import 'package:app_finance/_classes/data/account_app_data.dart';
 import 'package:app_finance/charts/bar_vertical_group.dart';
+import 'package:app_finance/charts/bar_vertical_single.dart';
 import 'package:app_finance/charts/radial_bar_chart.dart';
 import 'package:app_finance/helpers/theme_helper.dart';
 import 'package:app_finance/widgets/_wrappers/row_widget.dart';
@@ -34,7 +35,7 @@ class BaseGroupWidget extends StatelessWidget {
     this.total = 0,
   });
 
-  Widget buildCategory(BuildContext context, index) {
+  Widget buildCategory(BuildContext context, int index, bool toSwap) {
     final item = items[index];
     item.updateContext(context);
     final tooltip = StringBuffer();
@@ -45,11 +46,19 @@ class BaseGroupWidget extends StatelessWidget {
     return TapWidget(
       tooltip: tooltip.toString(),
       route: '$route${item.uuid}',
-      child: RadialBarChart(
-        color: item.color,
-        icon: item.icon,
-        progress: item.progress,
-      ),
+      child: toSwap
+          ? Column(
+              children: [
+                Icon(item.icon, size: 16.0, color: item.color),
+                const SizedBox(height: 6.0),
+                BarVerticalSingle(value: item.progress, height: 12.0, color: item.color),
+              ],
+            )
+          : RadialBarChart(
+              color: item.color,
+              icon: item.icon,
+              progress: item.progress,
+            ),
     );
   }
 
@@ -58,6 +67,7 @@ class BaseGroupWidget extends StatelessWidget {
     var theme = ThemeHelper(windowType: getWindowType(context));
     double indent = theme.getIndent();
     final TextTheme textTheme = Theme.of(context).textTheme;
+    final toSwap = items.length * 36 + items.length * indent * 2 > offset * 0.5;
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -65,7 +75,7 @@ class BaseGroupWidget extends StatelessWidget {
         RowWidget(
           indent: indent,
           maxWidth: offset,
-          chunk: const [0.6, 0.4],
+          chunk: const [0.5, 0.5],
           children: [
             [
               Row(
@@ -77,7 +87,7 @@ class BaseGroupWidget extends StatelessWidget {
                   ),
                   Container(
                     constraints: BoxConstraints(
-                      maxWidth: offset * 0.6,
+                      maxWidth: offset * 0.5,
                     ),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
@@ -106,9 +116,9 @@ class BaseGroupWidget extends StatelessWidget {
                   items.length * 2,
                   (index) {
                     if (index % 2 != 0) {
-                      return SizedBox(width: indent * 2);
+                      return SizedBox(width: toSwap ? indent : indent * 2);
                     } else {
-                      return buildCategory(context, index ~/ 2);
+                      return buildCategory(context, index ~/ 2, toSwap);
                     }
                   },
                 ),
