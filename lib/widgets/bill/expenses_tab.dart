@@ -176,7 +176,7 @@ class ExpensesTabState<T extends ExpensesTab> extends State<T> with SharedPrefer
                     state: state,
                     setState: (value) => setState(() {
                       account = value;
-                      currency ??= state.getByUuid(value).currency;
+                      currency = state.getByUuid(value).currency;
                     }),
                     style: textTheme.numberMedium.copyWith(color: textTheme.headlineSmall?.color),
                     indent: indent,
