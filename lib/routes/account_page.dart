@@ -12,7 +12,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localization.dart';
 
 class AccountPage extends AbstractPage {
-  AccountPage() : super();
+  final String? search;
+
+  AccountPage({
+    this.search,
+  }) : super();
 
   @override
   AccountPageState createState() => AccountPageState();
@@ -21,6 +25,9 @@ class AccountPage extends AbstractPage {
 class AccountPageState extends AbstractPageState<AccountPage> {
   @override
   String getTitle(context) {
+    if (widget.search != null) {
+      return AppLocalizations.of(context)!.search(widget.search!);
+    }
     return AppLocalizations.of(context)!.accountHeadline;
   }
 
@@ -35,13 +42,24 @@ class AccountPageState extends AbstractPageState<AccountPage> {
 
   @override
   Widget buildContent(BuildContext context, BoxConstraints constraints) {
-    var helper = ThemeHelper(windowType: getWindowType(context));
+    final helper = ThemeHelper(windowType: getWindowType(context));
+    dynamic items;
+    if (widget.search != null) {
+      final scope = super
+          .state
+          .getList(AppDataType.accounts)
+          .where((e) => e.title.toString().startsWith(widget.search!))
+          .toList();
+      items = (total: scope.fold(0.0, (v, e) => v + e.details), list: scope);
+    } else {
+      items = super.state.get(AppDataType.accounts);
+    }
     return Column(
       children: [
         AccountWidget(
           margin: EdgeInsets.all(helper.getIndent()),
           title: AppLocalizations.of(context)!.accountHeadline,
-          state: super.state.get(AppDataType.accounts),
+          state: items,
           offset: MediaQuery.of(context).size.width - helper.getIndent() * 2,
         )
       ],

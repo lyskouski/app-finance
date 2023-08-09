@@ -3,7 +3,6 @@
 // found in the LICENSE file.
 
 import 'package:adaptive_breakpoints/adaptive_breakpoints.dart';
-import 'package:app_finance/_classes/data/account_app_data.dart';
 import 'package:app_finance/charts/bar_vertical_group.dart';
 import 'package:app_finance/charts/bar_vertical_single.dart';
 import 'package:app_finance/charts/radial_bar_chart.dart';
@@ -72,59 +71,63 @@ class BaseGroupWidget extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        RowWidget(
-          indent: indent,
-          maxWidth: offset,
-          chunk: const [0.5, 0.5],
-          children: [
-            [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.start,
-                children: [
-                  Padding(
-                    padding: EdgeInsets.only(left: indent + 1, right: indent),
-                    child: BarVerticalGroup(value: progress, height: 24, color: color),
-                  ),
-                  Container(
-                    constraints: BoxConstraints(
-                      maxWidth: offset * 0.5,
+        TapWidget(
+          route: '${route.replaceAll('uuid:', 'search:')}$title',
+          tooltip: AppLocalizations.of(context)!.search(title),
+          child: RowWidget(
+            indent: indent,
+            maxWidth: offset,
+            chunk: const [0.5, 0.5],
+            children: [
+              [
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    Padding(
+                      padding: EdgeInsets.only(left: indent + 1, right: indent),
+                      child: BarVerticalGroup(value: progress, height: 24, color: color),
                     ),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          title,
-                          style: textTheme.bodyMedium,
-                          overflow: TextOverflow.ellipsis,
-                        ),
-                        Text(
-                          description,
-                          style: textTheme.bodySmall,
-                          overflow: TextOverflow.ellipsis,
-                        ),
-                      ],
+                    Container(
+                      constraints: BoxConstraints(
+                        maxWidth: offset * 0.5,
+                      ),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            title,
+                            style: textTheme.bodyMedium,
+                            overflow: TextOverflow.ellipsis,
+                          ),
+                          Text(
+                            description,
+                            style: textTheme.bodySmall,
+                            overflow: TextOverflow.ellipsis,
+                          ),
+                        ],
+                      ),
                     ),
-                  ),
-                ],
-              ),
-            ],
-            [
-              Row(
-                crossAxisAlignment: CrossAxisAlignment.end,
-                mainAxisAlignment: MainAxisAlignment.end,
-                children: List.generate(
-                  items.length * 2,
-                  (index) {
-                    if (index % 2 != 0) {
-                      return SizedBox(width: toSwap ? indent : indent * 2);
-                    } else {
-                      return buildCategory(context, index ~/ 2, toSwap);
-                    }
-                  },
+                  ],
                 ),
-              ),
-            ]
-          ],
+              ],
+              [
+                Row(
+                  crossAxisAlignment: CrossAxisAlignment.end,
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: List.generate(
+                    items.length * 2,
+                    (index) {
+                      if (index % 2 != 0) {
+                        return SizedBox(width: toSwap ? indent : indent * 2);
+                      } else {
+                        return buildCategory(context, index ~/ 2, toSwap);
+                      }
+                    },
+                  ),
+                ),
+              ]
+            ],
+          ),
         ),
         const Divider(),
       ],

@@ -7,10 +7,12 @@ class AppRoute {
   static const String accountRoute = '/app/finance/account';
   static const String accountAddRoute = '/app/finance/account/add';
   static const String accountViewRoute = '/app/finance/account/uuid:';
+  static const String accountSearchRoute = '/app/finance/account/search:';
   static const String accountEditRoute = '/app/finance/account/uuid:/edit';
   static const String budgetRoute = '/app/finance/budget';
   static const String budgetAddRoute = '/app/finance/budget/add';
   static const String budgetViewRoute = '/app/finance/budget/uuid:';
+  static const String budgetSearchRoute = '/app/finance/account/search:';
   static const String budgetEditRoute = '/app/finance/budget/uuid:/edit';
   static const String billRoute = '/app/finance/bill';
   static const String billAddRoute = '/app/finance/bill/add';
