@@ -102,6 +102,8 @@ class MyAppState extends State<MyApp> {
           return (context) => BudgetViewPage(uuid: uuid);
         case AppRoute.budgetEditRoute:
           return (context) => BudgetEditPage(uuid: uuid);
+        case AppRoute.budgetSearchRoute:
+          return (context) => BudgetPage(search: uuid);
         case AppRoute.billViewRoute:
           return (context) => BillViewPage(uuid: uuid);
         case AppRoute.billEditRoute:
