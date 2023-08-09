@@ -4,6 +4,7 @@
 
 import 'package:adaptive_breakpoints/adaptive_breakpoints.dart';
 import 'package:app_finance/_classes/app_data.dart';
+import 'package:app_finance/_classes/data/exchange.dart';
 import 'package:app_finance/_mixins/shared_preferences_mixin.dart';
 import 'package:app_finance/helpers/theme_helper.dart';
 import 'package:app_finance/_classes/app_route.dart';
@@ -144,7 +145,7 @@ class HomePageState extends AbstractPageState<HomePage> with SharedPreferencesMi
       hasExpand: isVertical,
       toExpand: toExpand,
       callback: (v) => setState(() => toExpand = v),
-    );
+    )..exchange = Exchange(store: super.state);
     final budgetWidget = BudgetWidget(
       margin: bottom,
       title: '${AppLocalizations.of(context)!.budgetHeadline}, ${AppLocalizations.of(context)!.left}',
@@ -156,7 +157,7 @@ class HomePageState extends AbstractPageState<HomePage> with SharedPreferencesMi
       hasExpand: isVertical,
       toExpand: toExpand,
       callback: (v) => setState(() => toExpand = v),
-    );
+    )..exchange = Exchange(store: super.state);
 
     if (isVertical) {
       return Column(
