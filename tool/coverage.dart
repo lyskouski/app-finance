@@ -1,11 +1,13 @@
 import 'dart:io';
+import 'package:grinder/grinder.dart';
 
-void scanDirectory(Directory root, Directory directory, Set<String> files) {
-  directory.listSync(recursive: true).forEach((entity) {
-    if (entity is File && entity.path.endsWith('.dart') && !entity.path.endsWith('.g.dart')) {
-      files.add(entity.absolute.path.replaceAll(root.absolute.path, '').replaceAll('\\', '/'));
-    } else if (entity is Directory) {
-      scanDirectory(root, entity, files);
-    }
-  });
+List<String> scanDirectory(Directory root, Directory directory, [String pattern = '*.dart']) {
+  final fileSet = FileSet.fromDir(
+    directory,
+    pattern: pattern,
+    recurse: true,
+  );
+  return fileSet.files
+      .map((file) => file.absolute.path.replaceAll(root.absolute.path, '').replaceAll('\\', '/'))
+      .toList();
 }
