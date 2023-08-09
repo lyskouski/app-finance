@@ -63,7 +63,7 @@ class AccountWidget extends BaseWidget with SharedPreferencesMixin {
       title: getName(items.first),
       type: AppAccountType.account.toString(),
       currency: def,
-      details: items.fold(0.0, (value, e) => exchange.reform(e.details, e.currency, def)),
+      details: items.fold(0.0, (value, e) => value + exchange.reform(e.details, e.currency, def)),
     );
   }
 
@@ -75,15 +75,24 @@ class AccountWidget extends BaseWidget with SharedPreferencesMixin {
   }
 
   Widget buildGroupedListWidget(List<dynamic> items, BuildContext context, double offset) {
-    items.map((o) => o.updateContext(context));
     final item = wrapBySingleEntity(items);
     item.updateContext(context);
+    items = items.map((o) {
+      o.updateContext(context);
+      if (o is AccountAppData) {
+        o.progress = item.details > 0 ? o.details / item.details : o.progress;
+      }
+      return o;
+    }).toList();
+
     return BaseGroupWidget(
       title: item.title,
+      total: item.details,
       description: item.detailsFormatted,
       progress: items.map((e) => e.progress).cast<double>().toList(),
       color: items.map((e) => e.color).cast<Color>().toList(),
       offset: offset,
+      items: items,
       route: routeList,
     );
   }

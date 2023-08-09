@@ -20,7 +20,7 @@ class BarVerticalGroup extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    value.insert(0, value.fold(0.0, (v, e) => v + 1 - e));
+    value.insert(0, value.fold(1.0, (v, e) => v - e));
     color.insert(0, Colors.grey);
     return SizedBox(
       width: width,
@@ -32,7 +32,7 @@ class BarVerticalGroup extends StatelessWidget {
             color: color[index],
             child: SizedBox(
               width: width,
-              height: height * value[index] / (value.length - 1),
+              height: height * value[index],
             ),
           );
         },
