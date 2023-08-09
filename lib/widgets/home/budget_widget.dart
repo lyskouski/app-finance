@@ -5,6 +5,7 @@
 import 'package:app_finance/_classes/app_route.dart';
 import 'package:app_finance/_classes/data/budget_app_data.dart';
 import 'package:app_finance/widgets/home/account_widget.dart';
+import 'package:app_finance/widgets/home/base_group_widget.dart';
 import 'package:app_finance/widgets/home/base_line_widget.dart';
 import 'package:currency_picker/currency_picker.dart';
 import 'package:flutter/material.dart';
@@ -26,6 +27,39 @@ class BudgetWidget extends AccountWidget {
   }) : super(
           routeList: routeList,
         );
+
+  @override
+  List<dynamic> updateItems(context, items, summaryItem) {
+    return items.map((o) {
+      o.updateContext(context);
+      o.progress = (summaryItem.amountLimit > 0
+          ? (1 - o.progress) *
+              exchange.reform(o.amountLimit, o.currency, exchange.getDefaultCurrency()) /
+              summaryItem.amountLimit
+          : o.progress);
+      if (o.progress < 0) {
+        o.progress = 0.0;
+      }
+      return o;
+    }).toList();
+  }
+
+  @override
+  Widget buildGroupedListWidget(List<dynamic> items, BuildContext context, double offset) {
+    final item = wrapBySingleEntity(items);
+    item.updateContext(context);
+    final scope = updateItems(context, items, item);
+    return BaseGroupWidget(
+      title: item.title,
+      total: item.details,
+      description: item.description,
+      progress: scope.map((e) => e.progress).cast<double>().toList(),
+      color: scope.map((e) => e.color).cast<Color>().toList(),
+      offset: offset,
+      items: scope,
+      route: routeList,
+    );
+  }
 
   @override
   dynamic wrapBySingleEntity(List<dynamic> items) {
