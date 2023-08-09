@@ -54,6 +54,7 @@ class BudgetEditPageState extends BudgetAddPageState<BudgetEditPage> {
     var data = state.getByUuid(uuid) as BudgetAppData;
     data.title = title.text;
     data.color = color;
+    data.icon = icon;
     data.amountLimit = double.tryParse(budgetLimit.text) ?? 0.0;
     data.currency = currency;
     state.update(AppDataType.budgets, uuid, data);

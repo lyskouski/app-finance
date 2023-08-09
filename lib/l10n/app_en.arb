@@ -151,6 +151,12 @@
     "roadmap": "Roadmap",
     "saveNotification": "Changes saved!",
     "saveTooltip": "Save to Storage",
+    "search": "Show By '{value}' Pattern",
+    "@search": {
+        "value": {
+            "type": "String"
+        }
+    },
     "settingsBaseHeadline": "Basic States",
     "settingsHeadline": "Settings",
     "subscription": "As an open-source project, subscribing will not unlock any additional features. However, it would serve as an investment in the continuous evolution and improvement of the application.",

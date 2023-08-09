@@ -2,38 +2,103 @@
 // Use of this source code is governed by a CC BY-NC-ND 4.0 license that can be
 // found in the LICENSE file.
 
+import 'package:app_finance/_classes/app_data.dart';
 import 'package:app_finance/_classes/app_route.dart';
+import 'package:app_finance/_classes/data/account_app_data.dart';
+import 'package:app_finance/_classes/data/exchange.dart';
+import 'package:app_finance/_mixins/shared_preferences_mixin.dart';
+import 'package:app_finance/widgets/home/base_group_widget.dart';
 import 'package:app_finance/widgets/home/base_line_widget.dart';
 import 'package:app_finance/widgets/home/base_widget.dart';
+import 'package:currency_picker/currency_picker.dart';
 import 'package:flutter/material.dart';
 
-class AccountWidget extends BaseWidget {
-  const AccountWidget({
+class AccountWidget extends BaseWidget with SharedPreferencesMixin {
+  late final Exchange exchange;
+
+  AccountWidget({
     super.key,
-    required String title,
-    required EdgeInsetsGeometry margin,
-    required dynamic state,
-    required double offset,
-    int? limit,
-    String? tooltip,
-    String? route,
+    required super.title,
+    required super.margin,
+    required super.offset,
+    super.state,
+    super.limit,
+    super.tooltip,
+    super.route,
     String routeList = AppRoute.accountViewRoute,
     super.hasExpand,
     super.toExpand,
     super.callback,
   }) : super(
-          margin: margin,
-          offset: offset,
-          title: title,
-          state: state,
-          limit: limit,
-          tooltip: tooltip,
-          route: route,
           routeList: routeList,
         );
 
   @override
+  dynamic get state {
+    Map<String, List<dynamic>> pile = {};
+    for (dynamic item in super.state.list) {
+      String name = getName(item);
+      if (limit == null) {
+        name = item.uuid;
+      }
+      if (pile[name] == null) {
+        pile[name] = [];
+      }
+      pile[name]!.add(item);
+      pile[name]!.sort((a, b) => a.title.toString().compareTo(b.title.toString()));
+    }
+    return (
+      list: pile.entries.map((e) => e.value).toList(),
+      total: super.state.total,
+    );
+  }
+
+  String getName(dynamic item) {
+    return item.title.toString().split('/').first.trim();
+  }
+
+  dynamic wrapBySingleEntity(List<dynamic> items) {
+    Currency? def = CurrencyService().findByCode(getPreference(prefCurrency));
+    return AccountAppData(
+      title: getName(items.first),
+      type: AppAccountType.account.toString(),
+      currency: def,
+      details: items.fold(0.0, (value, e) => value + exchange.reform(e.details, e.currency, def)),
+    );
+  }
+
+  @override
   Widget buildListWidget(item, BuildContext context, double offset) {
+    return item.length == 1
+        ? buildSingleListWidget(item, context, offset)
+        : buildGroupedListWidget(item, context, offset);
+  }
+
+  Widget buildGroupedListWidget(List<dynamic> items, BuildContext context, double offset) {
+    final item = wrapBySingleEntity(items);
+    item.updateContext(context);
+    items = items.map((o) {
+      o.updateContext(context);
+      if (o is AccountAppData) {
+        o.progress = item.details > 0 ? o.details / item.details : o.progress;
+      }
+      return o;
+    }).toList();
+
+    return BaseGroupWidget(
+      title: item.title,
+      total: item.details,
+      description: item.detailsFormatted,
+      progress: items.map((e) => e.progress).cast<double>().toList(),
+      color: items.map((e) => e.color).cast<Color>().toList(),
+      offset: offset,
+      items: items,
+      route: routeList,
+    );
+  }
+
+  Widget buildSingleListWidget(item, BuildContext context, double offset) {
+    item = item.first;
     item.updateContext(context);
     return BaseLineWidget(
       uuid: item.uuid,

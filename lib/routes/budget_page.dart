@@ -12,7 +12,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localization.dart';
 
 class BudgetPage extends AbstractPage {
-  BudgetPage() : super();
+  final String? search;
+  BudgetPage({
+    this.search,
+  }) : super();
 
   @override
   BudgetPageState createState() => BudgetPageState();
@@ -21,6 +24,9 @@ class BudgetPage extends AbstractPage {
 class BudgetPageState extends AbstractPageState<BudgetPage> {
   @override
   String getTitle(context) {
+    if (widget.search != null) {
+      return AppLocalizations.of(context)!.search(widget.search!);
+    }
     return AppLocalizations.of(context)!.budgetHeadline;
   }
 
@@ -36,12 +42,20 @@ class BudgetPageState extends AbstractPageState<BudgetPage> {
   @override
   Widget buildContent(BuildContext context, BoxConstraints constraints) {
     var helper = ThemeHelper(windowType: getWindowType(context));
+    dynamic items;
+    if (widget.search != null) {
+      final scope =
+          super.state.getList(AppDataType.budgets).where((e) => e.title.toString().startsWith(widget.search!)).toList();
+      items = (total: scope.fold(0.0, (v, e) => v + e.details), list: scope);
+    } else {
+      items = super.state.get(AppDataType.budgets);
+    }
     return Column(
       children: [
         BudgetWidget(
           margin: EdgeInsets.all(helper.getIndent()),
           title: AppLocalizations.of(context)!.budgetHeadline,
-          state: super.state.get(AppDataType.budgets),
+          state: items,
           offset: MediaQuery.of(context).size.width - helper.getIndent() * 2,
         )
       ],

@@ -83,8 +83,9 @@ class MyAppState extends State<MyApp> {
   String route = AppRoute.homeRoute;
 
   WidgetBuilder? getDynamicRouterWidget(String route) {
-    final regex = RegExp(r'\/uuid:([\w-]+)');
-    final match = regex.firstMatch(route);
+    final regUuid = RegExp(r'\/uuid:([\w-]+)');
+    final regSearch = RegExp(r'\/search:(.*?)$');
+    final match = regUuid.firstMatch(route) ?? regSearch.firstMatch(route);
     if (widget.platform != null) {
       FirebaseAnalytics.instance.logSelectContent(contentType: route, itemId: match != null ? 'dynamic' : 'static');
     }
@@ -93,12 +94,16 @@ class MyAppState extends State<MyApp> {
       switch (route.replaceAll(uuid, '')) {
         case AppRoute.accountViewRoute:
           return (context) => AccountViewPage(uuid: uuid);
+        case AppRoute.accountSearchRoute:
+          return (context) => AccountPage(search: uuid);
         case AppRoute.accountEditRoute:
           return (context) => AccountEditPage(uuid: uuid);
         case AppRoute.budgetViewRoute:
           return (context) => BudgetViewPage(uuid: uuid);
         case AppRoute.budgetEditRoute:
           return (context) => BudgetEditPage(uuid: uuid);
+        case AppRoute.budgetSearchRoute:
+          return (context) => BudgetPage(search: uuid);
         case AppRoute.billViewRoute:
           return (context) => BillViewPage(uuid: uuid);
         case AppRoute.billEditRoute:
