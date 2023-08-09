@@ -32,6 +32,7 @@ class HomePageState extends AbstractPageState<HomePage> with SharedPreferencesMi
   @override
   initState() {
     super.initState();
+    toExpand = getPreference(prefExpand);
     if (getPreference(prefPrivacyPolicy) == null) {
       Future.delayed(Duration.zero, () => Navigator.popAndPushNamed(context, AppRoute.startRoute));
     }

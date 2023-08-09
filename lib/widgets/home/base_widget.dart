@@ -80,7 +80,7 @@ class BaseWidgetState extends State<BaseWidget> with SharedPreferencesMixin {
         title: widget.title,
         tooltip: widget.tooltip,
         hasExpand: widget.hasExpand,
-        toExpand: false,
+        toExpand: true,
         expand: _expand,
       ),
     );
@@ -99,7 +99,7 @@ class BaseWidgetState extends State<BaseWidget> with SharedPreferencesMixin {
               title: widget.title,
               tooltip: widget.tooltip,
               hasExpand: widget.hasExpand,
-              toExpand: true,
+              toExpand: (widget.toExpand ?? '') == '' || widget.toExpand != widget.title,
               expand: _expand,
             ),
             Expanded(
