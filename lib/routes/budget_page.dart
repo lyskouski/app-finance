@@ -4,6 +4,7 @@
 
 import 'package:adaptive_breakpoints/adaptive_breakpoints.dart';
 import 'package:app_finance/_classes/app_data.dart';
+import 'package:app_finance/_classes/data/exchange.dart';
 import 'package:app_finance/helpers/theme_helper.dart';
 import 'package:app_finance/_classes/app_route.dart';
 import 'package:app_finance/routes/abstract_page.dart';
@@ -46,7 +47,11 @@ class BudgetPageState extends AbstractPageState<BudgetPage> {
     if (widget.search != null) {
       final scope =
           super.state.getList(AppDataType.budgets).where((e) => e.title.toString().startsWith(widget.search!)).toList();
-      items = (total: scope.fold(0.0, (v, e) => v + e.details), list: scope);
+      final ex = Exchange(store: super.state);
+      items = (
+        total: scope.fold(0.0, (v, e) => v + ex.reform(e.details, e.currency, ex.getDefaultCurrency())),
+        list: scope
+      );
     } else {
       items = super.state.get(AppDataType.budgets);
     }
