@@ -95,7 +95,7 @@ abstract class AbstractAppData with FormatterMixin {
   dynamic get details => _amount;
 
   set details(dynamic value) {
-    _state?.addLog(uuid, currency, _amount, value, _ref, _updatedAt);
+    _state?.addLog(uuid, this, _amount, value, _ref);
     _ref = null;
     _amount = value;
   }
