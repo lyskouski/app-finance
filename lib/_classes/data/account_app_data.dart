@@ -2,10 +2,10 @@
 // Use of this source code is governed by a CC BY-NC-ND 4.0 license that can be
 // found in the LICENSE file.
 
+import 'package:app_finance/_classes/currency/currency_provider.dart';
 import 'package:app_finance/_classes/data/abstract_app_data.dart';
 import 'package:app_finance/_classes/app_data.dart';
 import 'package:app_finance/_mixins/formatter_mixin.dart';
-import 'package:currency_picker/currency_picker.dart';
 import 'package:flutter/material.dart';
 
 class AccountAppData extends AbstractAppData {
@@ -66,7 +66,7 @@ class AccountAppData extends AbstractAppData {
       description: json['description'],
       color: json['color'] != null ? MaterialColor(json['color'], const <int, Color>{}) : null,
       icon: json['icon'] != null ? FormatterMixin.getIconFromString(json['icon']) : null,
-      currency: json['currency'] != null ? CurrencyService().findByCode(json['currency']) : null,
+      currency: CurrencyProvider.findByCode(json['currency']),
       createdAt: DateTime.parse(json['createdAt']),
       updatedAt: DateTime.parse(json['updatedAt']),
       closedAt: DateTime.parse(json['closedAt']),

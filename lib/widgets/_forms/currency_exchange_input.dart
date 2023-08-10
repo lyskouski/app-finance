@@ -2,6 +2,7 @@
 // Use of this source code is governed by a CC BY-NC-ND 4.0 license that can be
 // found in the LICENSE file.
 
+import 'package:app_finance/_classes/currency/currency_provider.dart';
 import 'package:app_finance/_classes/data/currency_app_data.dart';
 import 'package:app_finance/_classes/app_data.dart';
 import 'package:app_finance/_classes/delayed_call.dart';
@@ -78,8 +79,8 @@ class CurrencyExchangeInputState extends State<CurrencyExchangeInput> {
       final String uuid = getKey(idx);
       rate[idx] = widget.state.getByUuid(uuid) ??
           CurrencyAppData(
-            currency: CurrencyService().findByCode(widget.conversion[idx][1]),
-            currencyFrom: CurrencyService().findByCode(widget.conversion[idx][0]),
+            currency: CurrencyProvider.findByCode(widget.conversion[idx][1]),
+            currencyFrom: CurrencyProvider.findByCode(widget.conversion[idx][0]),
           );
       amount[idx] = getAmount(idx);
       controllers[idx] = [

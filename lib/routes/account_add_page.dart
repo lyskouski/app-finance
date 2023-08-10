@@ -3,6 +3,7 @@
 // found in the LICENSE file.
 
 import 'package:adaptive_breakpoints/adaptive_breakpoints.dart';
+import 'package:app_finance/_classes/currency/currency_provider.dart';
 import 'package:app_finance/_classes/data/account_app_data.dart';
 import 'package:app_finance/_classes/focus_controller.dart';
 import 'package:app_finance/_mixins/shared_preferences_mixin.dart';
@@ -71,7 +72,7 @@ class AccountAddPageState<T extends AccountAddPage> extends AbstractPageState<Ac
     icon = widget.icon;
     color = widget.color;
     final currencyId = getPreference(prefCurrency);
-    currency = widget.currency ?? CurrencyService().findByCode(currencyId);
+    currency = widget.currency ?? CurrencyProvider.findByCode(currencyId);
     super.initState();
   }
 

@@ -3,6 +3,7 @@
 // found in the LICENSE file.
 
 import 'package:app_finance/_classes/app_route.dart';
+import 'package:app_finance/_classes/currency/currency_provider.dart';
 import 'package:app_finance/_classes/data/budget_app_data.dart';
 import 'package:app_finance/widgets/home/account_widget.dart';
 import 'package:app_finance/widgets/home/base_group_widget.dart';
@@ -63,7 +64,7 @@ class BudgetWidget extends AccountWidget {
 
   @override
   dynamic wrapBySingleEntity(List<dynamic> items) {
-    Currency? def = CurrencyService().findByCode(getPreference(prefCurrency));
+    Currency? def = CurrencyProvider.findByCode(getPreference(prefCurrency));
     double amount = items.fold(0.0, (value, e) => value + exchange.reform(e.amountLimit, e.currency, def));
     double amountSpent =
         items.fold(0.0, (value, e) => value + exchange.reform(e.amountLimit * e.progress, e.currency, def));

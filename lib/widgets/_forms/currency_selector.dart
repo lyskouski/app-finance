@@ -3,6 +3,7 @@
 // found in the LICENSE file.
 
 import 'package:adaptive_breakpoints/adaptive_breakpoints.dart';
+import 'package:app_finance/_classes/currency/currency_provider.dart';
 import 'package:app_finance/_classes/focus_controller.dart';
 import 'package:app_finance/helpers/theme_helper.dart';
 import 'package:app_finance/widgets/_forms/list_selector.dart';
@@ -44,8 +45,7 @@ class CurrencySelector extends ListSelector<CurrencySelectorItem> {
 
   @override
   List<CurrencySelectorItem> get options {
-    return CurrencyService()
-        .getAll()
+    return CurrencyProvider.getAll()
         .map((item) => CurrencySelectorItem(
               item: item,
               setView: setView,

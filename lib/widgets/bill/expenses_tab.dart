@@ -4,6 +4,7 @@
 
 import 'package:adaptive_breakpoints/adaptive_breakpoints.dart';
 import 'package:app_finance/_classes/app_route.dart';
+import 'package:app_finance/_classes/currency/currency_provider.dart';
 import 'package:app_finance/_classes/data/bill_app_data.dart';
 import 'package:app_finance/_classes/focus_controller.dart';
 import 'package:app_finance/_mixins/shared_preferences_mixin.dart';
@@ -85,7 +86,7 @@ class ExpensesTabState<T extends ExpensesTab> extends State<T> with SharedPrefer
       currency ??= objBudget?.currency;
 
       final currencyId = getPreference(prefCurrency);
-      currency ??= CurrencyService().findByCode(currencyId);
+      currency ??= CurrencyProvider.findByCode(currencyId);
     });
   }
 

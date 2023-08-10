@@ -5,6 +5,7 @@
 import 'dart:io';
 import 'package:adaptive_breakpoints/adaptive_breakpoints.dart';
 import 'package:app_finance/_classes/app_data.dart';
+import 'package:app_finance/_classes/currency/currency_provider.dart';
 import 'package:app_finance/_classes/data/account_app_data.dart';
 import 'package:app_finance/_classes/data/bill_app_data.dart';
 import 'package:app_finance/_classes/data/budget_app_data.dart';
@@ -167,7 +168,7 @@ class ImportTabState extends State<ImportTab> with SharedPreferencesMixin {
   }
 
   Currency? _getCurrency(List<dynamic> line) {
-    return CurrencyService().findByCode(_get(line, attrBillCurrency));
+    return CurrencyProvider.findByCode(_get(line, attrBillCurrency));
   }
 
   Future<String> _new(AppDataType type, List<dynamic> line, int index) async {
