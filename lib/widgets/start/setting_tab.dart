@@ -82,63 +82,65 @@ class SettingTabState<T extends SettingTab> extends AbstractTabState<T> with Sha
       Future.delayed(Duration.zero, () => initCurrencyFromLocale(context));
     }
 
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        SizedBox(height: indent),
-        Text(
-          AppLocalizations.of(context)!.currencyDefault,
-          style: textTheme.bodyLarge,
-        ),
-        Container(
-          color: Theme.of(context).colorScheme.inversePrimary.withOpacity(0.3),
-          width: double.infinity,
-          child: CurrencySelector(
-            value: currency?.code,
-            setState: saveCurrency,
+    return SingleChildScrollView(
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          SizedBox(height: indent),
+          Text(
+            AppLocalizations.of(context)!.currencyDefault,
+            style: textTheme.bodyLarge,
           ),
-        ),
-        SizedBox(height: indent),
-        RowWidget(
-          indent: indent,
-          maxWidth: offset,
-          alignment: MainAxisAlignment.start,
-          chunk: const [0.3, 0.1, 0.6],
-          children: [
-            [
-              Text(
-                AppLocalizations.of(context)!.encryptionMode,
-                style: textTheme.bodyLarge,
-              ),
+          Container(
+            color: Theme.of(context).colorScheme.inversePrimary.withOpacity(0.3),
+            width: double.infinity,
+            child: CurrencySelector(
+              value: currency?.code,
+              setState: saveCurrency,
+            ),
+          ),
+          SizedBox(height: indent),
+          RowWidget(
+            indent: indent,
+            maxWidth: offset,
+            alignment: MainAxisAlignment.start,
+            chunk: const [0.3, 0.1, 0.6],
+            children: [
+              [
+                Text(
+                  AppLocalizations.of(context)!.encryptionMode,
+                  style: textTheme.bodyLarge,
+                ),
+              ],
+              [
+                Switch(
+                  value: isEncrypted,
+                  onChanged: saveEncryption,
+                ),
+              ],
+              [
+                hasEncrypted ? Text(AppLocalizations.of(context)!.hasEncrypted) : const SizedBox(),
+              ],
             ],
-            [
-              Switch(
-                value: isEncrypted,
-                onChanged: saveEncryption,
-              ),
+          ),
+          SizedBox(height: indent),
+          Text(
+            AppLocalizations.of(context)!.brightnessTheme,
+            style: textTheme.bodyLarge,
+          ),
+          ListSelector(
+            value: brightness,
+            options: [
+              ListSelectorItem(id: '0', name: AppLocalizations.of(context)!.systemMode),
+              ListSelectorItem(id: '1', name: AppLocalizations.of(context)!.lightMode),
+              ListSelectorItem(id: '2', name: AppLocalizations.of(context)!.darkMode),
             ],
-            [
-              hasEncrypted ? Text(AppLocalizations.of(context)!.hasEncrypted) : const SizedBox(),
-            ],
-          ],
-        ),
-        SizedBox(height: indent),
-        Text(
-          AppLocalizations.of(context)!.brightnessTheme,
-          style: textTheme.bodyLarge,
-        ),
-        ListSelector(
-          value: brightness,
-          options: [
-            ListSelectorItem(id: '0', name: AppLocalizations.of(context)!.systemMode),
-            ListSelectorItem(id: '1', name: AppLocalizations.of(context)!.lightMode),
-            ListSelectorItem(id: '2', name: AppLocalizations.of(context)!.darkMode),
-          ],
-          setState: saveTheme,
-          style: textTheme.numberMedium.copyWith(color: textTheme.headlineSmall?.color),
-          indent: indent,
-        ),
-      ],
+            setState: saveTheme,
+            style: textTheme.numberMedium.copyWith(color: textTheme.headlineSmall?.color),
+            indent: indent,
+          ),
+        ],
+      ),
     );
   }
 

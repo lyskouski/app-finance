@@ -16,7 +16,6 @@ import 'package:app_finance/_classes/data/summary_app_data.dart';
 import 'package:app_finance/_classes/data/total_recalculation.dart';
 import 'package:app_finance/_classes/data/transaction_log.dart';
 import 'package:app_finance/_classes/data/transaction_log_data.dart';
-import 'package:currency_picker/currency_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:uuid/uuid.dart';
 

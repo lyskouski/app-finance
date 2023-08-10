@@ -48,22 +48,24 @@ class BudgetTab extends StatelessWidget {
     var helper = ThemeHelper(windowType: getWindowType(context));
     double indent = helper.getIndent();
     double width = MediaQuery.of(context).size.width - indent * 2;
-    return Padding(
-      padding: EdgeInsets.all(indent * 2),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Text(
-            AppLocalizations.of(context)!.chartForecast,
-            style: textTheme.bodyLarge,
-          ),
-          ForecastChart(
-            width: width - indent * 2,
-            indent: indent,
-            data: _generateData(),
-            yMax: _getBudgetTotal(),
-          ),
-        ],
+    return SingleChildScrollView(
+      child: Padding(
+        padding: EdgeInsets.all(indent * 2),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              AppLocalizations.of(context)!.chartForecast,
+              style: textTheme.bodyLarge,
+            ),
+            ForecastChart(
+              width: width - indent * 2,
+              indent: indent,
+              data: _generateData(),
+              yMax: _getBudgetTotal(),
+            ),
+          ],
+        ),
       ),
     );
   }
