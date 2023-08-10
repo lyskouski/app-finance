@@ -2,7 +2,7 @@
 // Use of this source code is governed by a CC BY-NC-ND 4.0 license that can be
 // found in the LICENSE file.
 
-import 'package:app_finance/_classes/data/exchange.dart';
+import 'package:app_finance/_classes/currency/exchange.dart';
 import 'package:app_finance/_classes/data/goal_app_data.dart';
 import 'package:app_finance/_classes/data/total_recalculation.dart';
 import 'package:app_finance/_classes/gen/generate_with_method_setters.dart';

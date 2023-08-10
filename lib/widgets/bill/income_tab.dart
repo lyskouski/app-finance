@@ -5,7 +5,7 @@
 import 'package:adaptive_breakpoints/adaptive_breakpoints.dart';
 import 'package:app_finance/_classes/app_route.dart';
 import 'package:app_finance/_classes/data/account_app_data.dart';
-import 'package:app_finance/_classes/data/exchange.dart';
+import 'package:app_finance/_classes/currency/exchange.dart';
 import 'package:app_finance/_classes/focus_controller.dart';
 import 'package:app_finance/_mixins/shared_preferences_mixin.dart';
 import 'package:app_finance/custom_text_theme.dart';
