@@ -54,7 +54,7 @@ class BudgetWidget extends AccountWidget {
       total: item.details,
       description: item.description,
       progress: scope.map((e) => e.progress).cast<double>().toList(),
-      color: scope.map((e) => e.color).cast<Color>().toList(),
+      color: scope.map((e) => e.color ?? Colors.transparent).cast<Color>().toList(),
       offset: offset,
       items: scope,
       route: routeList,
