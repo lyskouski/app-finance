@@ -92,7 +92,9 @@ class ForegroundChartPainter extends CustomPainter {
   }
 
   void _paintAxisY(Canvas canvas, Size size) {
-    final lineColor = Paint()..color = this.lineColor.withOpacity(0.4);
+    final lineColor = Paint()
+      ..color = this.lineColor.withOpacity(0.4)
+      ..strokeWidth = 0.5;
     double step = (yMax - yMin) / yDiv;
     for (int i = 0; i < yDiv; i++) {
       double delta = step * i;
@@ -107,7 +109,9 @@ class ForegroundChartPainter extends CustomPainter {
   }
 
   void _paintAxisX(Canvas canvas, Size size) {
-    final lineColor = Paint()..color = this.lineColor.withOpacity(0.4);
+    final lineColor = Paint()
+      ..color = this.lineColor.withOpacity(0.4)
+      ..strokeWidth = 0.5;
     final background = Paint()
       ..color = this.background.withOpacity(0.05)
       ..style = PaintingStyle.fill;
