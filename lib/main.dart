@@ -27,6 +27,7 @@ import 'package:app_finance/routes/goal_edit_page.dart';
 import 'package:app_finance/routes/goal_page.dart';
 import 'package:app_finance/routes/goal_view_page.dart';
 import 'package:app_finance/routes/home_page.dart';
+import 'package:app_finance/routes/metrics_page.dart';
 import 'package:app_finance/routes/settings_page.dart';
 import 'package:app_finance/routes/start_page.dart';
 import 'package:app_finance/routes/subscription_page.dart';
@@ -126,6 +127,7 @@ class MyAppState extends State<MyApp> {
       AppRoute.goalAddRoute: (context) => GoalAddPage(),
       AppRoute.goalRoute: (context) => GoalPage(),
       AppRoute.homeRoute: (context) => HomePage(),
+      AppRoute.metricsRoute: (context) => MetricsPage(),
       AppRoute.settingsRoute: (context) => SettingsPage(),
       AppRoute.startRoute: (context) => StartPage(),
       AppRoute.subscriptionRoute: (context) => SubscriptionPage(),

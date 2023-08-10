@@ -76,7 +76,6 @@ class AccountViewPageState extends AbstractPageState<AccountViewPage> {
   @override
   Widget buildContent(BuildContext context, BoxConstraints constraints) {
     final item = super.state.getByUuid(widget.uuid) as AccountAppData;
-    final log = super.state.getLog(widget.uuid);
     item.updateContext(context);
     double indent = ThemeHelper(windowType: getWindowType(context)).getIndent() * 2;
     double offset = MediaQuery.of(context).size.width - indent * 3;
@@ -94,7 +93,7 @@ class AccountViewPageState extends AbstractPageState<AccountViewPage> {
         ),
         Expanded(
           child: BaseListInfiniteWidget(
-            state: log,
+            state: super.state.getLog(widget.uuid),
             offset: offset,
             buildListWidget: buildListWidget,
           ),

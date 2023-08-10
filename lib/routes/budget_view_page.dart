@@ -10,6 +10,7 @@ import 'package:app_finance/helpers/theme_helper.dart';
 import 'package:app_finance/_classes/app_route.dart';
 import 'package:app_finance/routes/abstract_page.dart';
 import 'package:app_finance/widgets/home/base_line_widget.dart';
+import 'package:app_finance/widgets/home/base_list_infinite_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localization.dart';
 
@@ -59,6 +60,19 @@ class BudgetViewPageState extends AbstractPageState<BudgetViewPage> {
     );
   }
 
+  Widget buildListWidget(item, BuildContext context, double offset) {
+    item.updateContext(context);
+    return BaseLineWidget(
+      uuid: '',
+      title: '',
+      description: item.getDateFormatted(item.timestamp),
+      progress: 1.0,
+      details: item.getNumberFormatted(item.changedTo - item.changedFrom),
+      color: Colors.transparent,
+      offset: offset,
+    );
+  }
+
   @override
   Widget buildContent(BuildContext context, BoxConstraints constraints) {
     final item = super.state.getByUuid(widget.uuid) as BudgetAppData;
@@ -76,7 +90,15 @@ class BudgetViewPageState extends AbstractPageState<BudgetViewPage> {
           color: item.color ?? Colors.transparent,
           offset: offset,
           route: AppRoute.budgetViewRoute,
-        )
+        ),
+        Expanded(
+          child: BaseListInfiniteWidget(
+            state: super.state.getLog(widget.uuid),
+            offset: offset,
+            buildListWidget: buildListWidget,
+          ),
+        ),
+        const SizedBox(height: 70),
       ],
     );
   }

@@ -33,7 +33,7 @@ class BarVerticalGroup extends StatelessWidget {
             color: color[index],
             child: SizedBox(
               width: width,
-              height: height * value[index],
+              height: height * (value[index] > 0 ? value[index] : 0.0),
             ),
           );
         },

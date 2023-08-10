@@ -94,17 +94,17 @@ class AppData extends ChangeNotifier {
     return getByUuid(value.uuid);
   }
 
-  void addLog(uuid, Currency? currency, dynamic initial, dynamic value, [String? ref, DateTime? updatedAt]) {
+  void addLog(uuid, dynamic initial, dynamic initialValue, dynamic value, [String? ref]) {
     if (_history[uuid] == null) {
       _history[uuid] = [];
     }
-    if (initial != value) {
+    if (initialValue != value) {
       _history[uuid]!.add(TransactionLogData(
-        timestamp: updatedAt,
+        timestamp: initial.updatedAt,
         ref: ref,
-        currency: currency,
+        currency: initial.currency,
         name: 'details',
-        changedFrom: initial,
+        changedFrom: initialValue,
         changedTo: value,
       ));
     }
@@ -113,7 +113,7 @@ class AppData extends ChangeNotifier {
   void update(AppDataType property, String uuid, dynamic value, [bool createIfMissing = false]) {
     var initial = getByUuid(uuid, false);
     if (initial != null) {
-      addLog(uuid, initial.currency, initial.details, value.details, null, value.updatedAt);
+      addLog(uuid, value, initial.details, value.details);
     }
     if (initial != null || createIfMissing) {
       _update(property, initial, value);
@@ -181,6 +181,7 @@ class AppData extends ChangeNotifier {
     }
     if (currBudget != null) {
       rec.updateBudget(currBudget, prevBudget);
+      // addLog(currBudget.uuid, change, 0.0, change.details, change.uuid);
       _data[AppDataType.budgets]?.add(change.category);
     }
     _set(AppDataType.bills, change);
@@ -225,6 +226,13 @@ class AppData extends ChangeNotifier {
 
   List<dynamic> getList(AppDataType property, [bool isClone = true]) {
     return (_data[property]?.list ?? [])
+        .map((uuid) => getByUuid(uuid, isClone))
+        .where((element) => !element.hidden)
+        .toList();
+  }
+
+  List<dynamic> getActualList(AppDataType property, [bool isClone = true]) {
+    return (_data[property]?.listActual ?? [])
         .map((uuid) => getByUuid(uuid, isClone))
         .where((element) => !element.hidden)
         .toList();
