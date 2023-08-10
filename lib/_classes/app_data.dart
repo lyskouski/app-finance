@@ -100,7 +100,7 @@ class AppData extends ChangeNotifier {
     }
     if (initialValue != value) {
       _history[uuid]!.add(TransactionLogData(
-        timestamp: value.updatedAt,
+        timestamp: initial.updatedAt,
         ref: ref,
         currency: initial.currency,
         name: 'details',
@@ -226,6 +226,13 @@ class AppData extends ChangeNotifier {
 
   List<dynamic> getList(AppDataType property, [bool isClone = true]) {
     return (_data[property]?.list ?? [])
+        .map((uuid) => getByUuid(uuid, isClone))
+        .where((element) => !element.hidden)
+        .toList();
+  }
+
+  List<dynamic> getActualList(AppDataType property, [bool isClone = true]) {
+    return (_data[property]?.listActual ?? [])
         .map((uuid) => getByUuid(uuid, isClone))
         .where((element) => !element.hidden)
         .toList();

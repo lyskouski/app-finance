@@ -4,6 +4,7 @@
 
 import 'package:app_finance/routes/abstract_page.dart';
 import 'package:app_finance/widgets/_wrappers/tab_widget.dart';
+import 'package:app_finance/widgets/metrics/budget_tab.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localization.dart';
 
@@ -38,10 +39,10 @@ class MetricsPageState extends AbstractPageState<MetricsPage> {
           text: AppLocalizations.of(context)!.billHeadline,
         ),
       ],
-      children: const [
-        SizedBox(),
-        SizedBox(),
-        SizedBox(),
+      children: [
+        BudgetTab(store: super.state),
+        const SizedBox(),
+        const SizedBox(),
       ],
     );
   }

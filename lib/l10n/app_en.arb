@@ -42,6 +42,7 @@
     "budgetLimit": "Limit per Month",
     "budgetTooltip": "Open Budget Types",
     "cash": "Cash",
+    "chartForecast": "Forecast Chart",
     "closedAt": "Finished till Date",
     "collapse": "Collapse (Restore) Section",
     "color": "Color",
