@@ -58,7 +58,7 @@ class AppMenu {
       AppMenuItem(
         name: locale!.metricsHeadline,
         icon: Icons.timeline,
-        route: AppRoute.homeRoute,
+        route: AppRoute.metricsRoute,
       ),
       AppMenuItem(
         name: locale!.settingsHeadline,

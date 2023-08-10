@@ -131,6 +131,7 @@
     "lightMode": "Light",
     "link": "Uniform Resource Locator (URL)",
     "metricsHeadline": "Metrics",
+    "metricsTooltip": "Metrics",
     "milestones": "Milestones",
     "navigationTooltip": "Open main menu",
     "ok": "OK",
