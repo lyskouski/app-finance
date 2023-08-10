@@ -3,6 +3,7 @@
 // found in the LICENSE file.
 
 import 'package:app_finance/routes/abstract_page.dart';
+import 'package:app_finance/widgets/_wrappers/tab_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localization.dart';
 
@@ -21,7 +22,28 @@ class MetricsPageState extends AbstractPageState<MetricsPage> {
 
   @override
   Widget buildContent(BuildContext context, BoxConstraints constraints) {
-    return const SizedBox();
+    return TabWidget(
+      focus: 0,
+      tabs: [
+        Tab(
+          icon: const Icon(Icons.graphic_eq),
+          text: AppLocalizations.of(context)!.budgetHeadline,
+        ),
+        Tab(
+          icon: const Icon(Icons.incomplete_circle),
+          text: AppLocalizations.of(context)!.accountHeadline,
+        ),
+        Tab(
+          icon: const Icon(Icons.bar_chart),
+          text: AppLocalizations.of(context)!.billHeadline,
+        ),
+      ],
+      children: const [
+        SizedBox(),
+        SizedBox(),
+        SizedBox(),
+      ],
+    );
   }
 
   @override
