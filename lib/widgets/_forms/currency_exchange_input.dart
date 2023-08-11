@@ -163,7 +163,7 @@ class CurrencyExchangeInputState extends State<CurrencyExchangeInput> {
                         ],
                         [
                           Text(
-                            AppLocalizations.of(context)!.conversionMessage(widget.conversion[index][0] ?? '?'),
+                            AppLocalizations.of(context)!.conversionMessage(widget.conversion[index][1] ?? '?'),
                             style: textTheme.bodyLarge,
                           ),
                           SimpleInput(
