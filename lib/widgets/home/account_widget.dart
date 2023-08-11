@@ -4,8 +4,9 @@
 
 import 'package:app_finance/_classes/app_data.dart';
 import 'package:app_finance/_classes/app_route.dart';
+import 'package:app_finance/_classes/currency/currency_provider.dart';
 import 'package:app_finance/_classes/data/account_app_data.dart';
-import 'package:app_finance/_classes/data/exchange.dart';
+import 'package:app_finance/_classes/currency/exchange.dart';
 import 'package:app_finance/_mixins/shared_preferences_mixin.dart';
 import 'package:app_finance/widgets/home/base_group_widget.dart';
 import 'package:app_finance/widgets/home/base_line_widget.dart';
@@ -58,7 +59,7 @@ class AccountWidget extends BaseWidget with SharedPreferencesMixin {
   }
 
   dynamic wrapBySingleEntity(List<dynamic> items) {
-    Currency? def = CurrencyService().findByCode(getPreference(prefCurrency));
+    Currency? def = CurrencyProvider.findByCode(getPreference(prefCurrency));
     return AccountAppData(
       title: getName(items.first),
       type: AppAccountType.account.toString(),

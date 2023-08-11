@@ -1,0 +1,56 @@
+// Copyright 2023 The terCAD team. All rights reserved.
+// Use of this source code is governed by a CC BY-NC-ND 4.0 license that can be
+// found in the LICENSE file.
+
+// Cryptocurrencies: https://en.wikipedia.org/wiki/List_of_cryptocurrencies
+List<List<String>> cryptoList = [
+  ['Bitcoin', 'BTC'],
+  ['Litecoin', 'LTC'],
+  ['Namecoin', 'NMC'],
+  ['Peercoin', 'PPC '],
+  ['Dogecoin', 'XDG'],
+  ['Gridcoin', 'GRC '],
+  ['Primecoin', 'XPM'],
+  ['Ripple', 'XRP '],
+  ['BCNext NXT'],
+  ['Auroracoin', 'AUR'],
+  ['Dash', 'DASH'],
+  ['NEO', 'NEO '],
+  ['MazaCoin', 'MZC '],
+  ['Monero', 'XMR '],
+  ['Titcoin', 'TIT '],
+  ['Verge', 'XVG '],
+  ['Stellar', 'XLM '],
+  ['Vertcoin', 'VTC '],
+  ['Ethereum', 'ETH'],
+  ['Ethereum Classic', 'ETC '],
+  ['Nano', 'XNO'],
+  ['Tether', 'USDT '],
+  ['Firo', 'FIRO'],
+  ['Zcash', 'ZEC '],
+  ['Bitcoin Cash', 'BCH'],
+  ['EOS.IO', 'EOS '],
+  ['Cardano', 'ADA'],
+  ['TRON', 'TRX '],
+  ['Nervos Network', 'CKB '],
+  ['Algorand', 'ALGO '],
+  ['Avalanche', 'AVAX '],
+  ['Shiba Inu', 'SHIB'],
+  ['Polkadot', 'DOT '],
+  ['DeSo', 'DESO '],
+  ['SafeMoon', 'SAFEMOON'],
+];
+
+Map<String, dynamic> tplCurrency = {
+  "code": "",
+  "name": "",
+  "name_plural": "",
+  "symbol": "",
+  "flag": null,
+  "number": 0,
+  "decimal_digits": 2,
+  "thousands_separator": ",",
+  "decimal_separator": ".",
+  "space_between_amount_and_symbol": true,
+  "symbol_on_left": true,
+};

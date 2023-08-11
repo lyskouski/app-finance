@@ -2,6 +2,7 @@
 // Use of this source code is governed by a CC BY-NC-ND 4.0 license that can be
 // found in the LICENSE file.
 
+import 'package:app_finance/_classes/currency/currency_provider.dart';
 import 'package:app_finance/_classes/data/abstract_app_data.dart';
 import 'package:app_finance/_classes/app_data.dart';
 import 'package:currency_picker/currency_picker.dart';
@@ -50,8 +51,8 @@ class CurrencyAppData extends AbstractAppData {
       details: json['details'],
       updatedAt: DateTime.parse(json['updatedAt']),
       createdAt: DateTime.parse(json['createdAt']),
-      currency: json['currency'] != null ? CurrencyService().findByCode(json['currency']) : null,
-      currencyFrom: json['currencyFrom'] != null ? CurrencyService().findByCode(json['currencyFrom']) : null,
+      currency: CurrencyProvider.findByCode(json['currency']),
+      currencyFrom: CurrencyProvider.findByCode(json['currencyFrom']),
       hidden: json['hidden'],
     );
   }

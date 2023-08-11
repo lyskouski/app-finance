@@ -9,7 +9,7 @@ import 'package:app_finance/_classes/data/bill_recalculation.dart';
 import 'package:app_finance/_classes/data/budget_app_data.dart';
 import 'package:app_finance/_classes/data/budget_recalculation.dart';
 import 'package:app_finance/_classes/data/currency_app_data.dart';
-import 'package:app_finance/_classes/data/exchange.dart';
+import 'package:app_finance/_classes/currency/exchange.dart';
 import 'package:app_finance/_classes/data/goal_app_data.dart';
 import 'package:app_finance/_classes/data/goal_recalculation.dart';
 import 'package:app_finance/_classes/data/summary_app_data.dart';

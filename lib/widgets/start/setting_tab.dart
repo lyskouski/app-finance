@@ -4,6 +4,7 @@
 
 import 'package:adaptive_breakpoints/adaptive_breakpoints.dart';
 import 'package:app_finance/_classes/app_theme.dart';
+import 'package:app_finance/_classes/currency/currency_provider.dart';
 import 'package:app_finance/_mixins/shared_preferences_mixin.dart';
 import 'package:app_finance/custom_text_theme.dart';
 import 'package:app_finance/helpers/theme_helper.dart';
@@ -69,7 +70,7 @@ class SettingTabState<T extends SettingTab> extends AbstractTabState<T> with Sha
       await setPreference(prefCurrency, format.currencyName!);
       code = format.currencyName!;
     }
-    setState(() => currency = CurrencyService().findByCode(code));
+    setState(() => currency = CurrencyProvider.findByCode(code));
   }
 
   @override
