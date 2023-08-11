@@ -1,7 +1,7 @@
-# ![Fingram Logo](https://github.com/lyskouski/app-finance/blob/main/docs/mockups/logo/main.svg) Financial Accounting Application / Fingram
+# ![Fingram Logo](https://github.com/lyskouski/app-finance/blob/main/docs/mockups/logo/main.svg) Financial Accounting Application
 ![Check Status](https://github.com/lyskouski/app-finance/actions/workflows/push_to_main.yml/badge.svg?branch=main) ![Build Status](https://github.com/lyskouski/app-finance/actions/workflows/build.yml/badge.svg) [![Tests Coverage](https://lyskouski.github.io/app-finance/coverage/coverage_badge.svg)](https://github.com/lyskouski/app-finance/actions)
 
-Open-sourced cross-platform financial accounting application without Ads and limitations.
+**Fingram** - Open-sourced cross-platform financial accounting application without Ads and limitations.
 
 ## Functionality
 - Accounting (Account Type, Currency/Cryptocurrency)
