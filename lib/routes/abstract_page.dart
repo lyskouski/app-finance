@@ -34,9 +34,9 @@ abstract class AbstractPageState<T extends AbstractPage> extends State<T> {
       toolbarHeight: 40,
       leading: ToolbarButtonWidget(
         child: IconButton(
-          icon: Icon(
+          icon: const Icon(
             Icons.arrow_back,
-            color: Theme.of(context).colorScheme.inversePrimary.withOpacity(0.6),
+            color: Colors.white70,
           ),
           tooltip: AppLocalizations.of(context)!.backTooltip,
           onPressed: () => Navigator.of(context).pop(),
@@ -65,9 +65,9 @@ abstract class AbstractPageState<T extends AbstractPage> extends State<T> {
           onSelected: (value) {
             Navigator.pushNamed(context, value);
           },
-          icon: Icon(
+          icon: const Icon(
             Icons.more_vert,
-            color: Theme.of(context).colorScheme.inversePrimary.withOpacity(0.6),
+            color: Colors.white70,
           ),
         ),
       ],

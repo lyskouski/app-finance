@@ -53,9 +53,9 @@ class HomePageState extends AbstractPageState<HomePage> with SharedPreferencesMi
         builder: (BuildContext context) {
           return ToolbarButtonWidget(
             child: IconButton(
-              icon: Icon(
+              icon: const Icon(
                 Icons.menu,
-                color: Theme.of(context).colorScheme.inversePrimary.withOpacity(0.5),
+                color: Colors.white70,
               ),
               tooltip: AppLocalizations.of(context)!.navigationTooltip,
               onPressed: () => Scaffold.of(context).openDrawer(),
@@ -64,17 +64,22 @@ class HomePageState extends AbstractPageState<HomePage> with SharedPreferencesMi
         },
       ),
       title: Center(
-        child: Text(
+        child: Image.asset(
+          'assets/images/fingram.png',
+          //  width: width * 0.2,
+          //  height: width * 0.2,
+        ),
+        /*child: Text(
           getTitle(context),
           style: TextStyle(color: Theme.of(context).colorScheme.inversePrimary),
-        ),
+        ),*/
       ),
       actions: [
         ToolbarButtonWidget(
           child: IconButton(
-            icon: Icon(
+            icon: const Icon(
               Icons.switch_access_shortcut_add_outlined,
-              color: Theme.of(context).colorScheme.inversePrimary.withOpacity(0.5),
+              color: Colors.white70,
             ),
             tooltip: AppLocalizations.of(context)!.subscriptionTooltip,
             onPressed: () => Navigator.pushNamed(context, AppRoute.subscriptionRoute),
