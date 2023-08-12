@@ -40,7 +40,7 @@ fixMock() {
 }
 
 @Task('Run tests')
-@Depends(fullCoverage, mock, fixMock)
+@Depends(mock, fixMock)
 test() {
   TaskArgs args = context.invocation.arguments;
   ProcessResult test = Process.runSync(
