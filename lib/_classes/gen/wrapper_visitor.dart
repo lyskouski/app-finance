@@ -8,6 +8,7 @@ import 'package:analyzer/dart/element/element.dart';
 class WrapperVisitor {
   StringBuffer buffer = StringBuffer();
   ClassElement element;
+  String? singleton;
 
   WrapperVisitor(this.element);
 
@@ -21,7 +22,7 @@ class WrapperVisitor {
   }
 
   void addImport(LibraryElement className) {
-    buffer.writeln('// ignore: unused_import, unnecessary_import');
+    buffer.writeln('// ignore: unused_import, unnecessary_import, depend_on_referenced_packages');
     String path = className.source.uri.toString();
     if (path.contains('asset:')) {
       path = className.source.uri.pathSegments.last;
@@ -30,9 +31,15 @@ class WrapperVisitor {
   }
 
   void addClassDefinition() {
-    buffer.writeln('class Wrapper${element.name} extends ${element.name} {');
     final constructor = element.unnamedConstructor;
-    if (!constructor!.isDefaultConstructor) {
+    if (constructor == null) {
+      buffer.writeln('class Wrapper${element.name} implements ${element.name} {');
+      buffer.writeln('  static ${element.name}? wrap${element.name};');
+      singleton = element.name;
+      return;
+    }
+    buffer.writeln('class Wrapper${element.name} extends ${element.name} {');
+    if (!constructor.isDefaultConstructor) {
       final properties = constructor.parameters;
       buffer.writeln('  Wrapper${element.name}({');
       if (properties.isNotEmpty) {
@@ -46,18 +53,38 @@ class WrapperVisitor {
 
   void addMethods() {
     for (final m in element.methods) {
-      final args = m.parameters.map((e) => e.name).toList().join(', ');
-      final typedArgs = m.parameters.map((e) => '${e.type} ${e.name}').toList().join(', ');
+      if (m.name[0] == '_') {
+        continue;
+      }
+      final args = m.parameters.map((e) => e.isNamed ? '${e.name}: ${e.name}' : e.name).toList().join(', ');
+      final typedArgs = m.parameters
+          .map((e) {
+            String arg = '${e.type} ${e.name}';
+            if (e.isNamed) {
+              arg = '{$arg}';
+            } else if (e.isOptional) {
+              arg = '[$arg]';
+            }
+            return arg;
+          })
+          .toList()
+          .join(', ');
+      String static = m.isStatic ? 'static ' : '';
       final name = 'mock${m.name[0].toUpperCase()}${m.name.substring(1)}';
       buffer.writeln('');
-      buffer.writeln('  ${m.returnType} Function($typedArgs)? _${m.name};');
+      buffer.writeln('  $static${m.returnType} Function($typedArgs)? _${m.name};');
       buffer.writeln('  // ignore: non_constant_identifier_names');
-      buffer.writeln('  set $name(${m.returnType} Function($typedArgs) value) {');
+      buffer.writeln('  ${static}set $name(${m.returnType} Function($typedArgs) value) {');
       buffer.writeln('    _${m.name} = value;');
       buffer.writeln('  }');
       buffer.writeln('');
-      buffer.writeln('  @override');
-      buffer.writeln('  $m => (_${m.name} ?? super.${m.name})($args);');
+      if (singleton != null) {
+        buffer.writeln('  $static$m => _${m.name} != null ? '
+            '_${m.name}!($args) : ${m.isStatic ? singleton : 'wrap$singleton!'}.${m.name}($args);');
+      } else {
+        buffer.writeln('  @override');
+        buffer.writeln('  $static$m => (_${m.name} ?? ${m.isStatic ? element.name : 'super'}.${m.name})($args);');
+      }
     }
   }
 

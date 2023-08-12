@@ -23,8 +23,8 @@ class WrapperGenerator extends Generator {
     final result = StringBuffer();
     for (final annotation in annotations) {
       final classes = annotation.getField('classes');
-      if (classes!.isNull) {
-        break;
+      if (classes == null || classes.isNull) {
+        continue;
       }
       for (final name in classes.toListValue()!) {
         final type = name.toTypeValue();
