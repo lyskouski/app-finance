@@ -1,6 +1,5 @@
 // Copyright 2023 The terCAD team. All rights reserved.
-// Use of this source code is governed by a CC BY-NC-ND 4.0 license that can be
-// found in the LICENSE file.
+// Use of this source code is governed by a CC BY-NC-ND 4.0 license that can be found in the LICENSE file.
 
 import 'package:app_finance/_classes/delayed_call.dart';
 import 'package:flutter/material.dart';
@@ -39,7 +38,7 @@ class FocusController {
   }
 
   static bool isLast() {
-    return _idx >= nodes.length;
+    return focus + 1 == nodes.length;
   }
 
   static TextInputAction getAction() {
@@ -85,7 +84,7 @@ class FocusController {
   }
 
   static void onEditingComplete(index) {
-    resetFocus();
+    focus = DEFAULT;
     if (index >= 0) {
       values.fillRange(0, index + 1, true);
     }
@@ -99,10 +98,6 @@ class FocusController {
   static void onFocus(idx) {
     focus = idx;
     requestFocus();
-  }
-
-  static void resetFocus() {
-    focus = DEFAULT;
   }
 
   static bool isFocused(int idx, dynamic value) {
@@ -121,6 +116,7 @@ class FocusController {
       nodes.remove(node);
     }
     values.removeWhere((value) => true);
-    resetFocus();
+    focus = DEFAULT;
+    _idx = DEFAULT;
   }
 }
