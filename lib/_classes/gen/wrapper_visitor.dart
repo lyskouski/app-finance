@@ -51,24 +51,36 @@ class WrapperVisitor {
     }
   }
 
+  String _getTypedArguments(List<ParameterElement> parameters) {
+    List<String> optional = [];
+    List<String> named = [];
+    List<String> base = [];
+    for (ParameterElement e in parameters) {
+      String arg = '${e.type} ${e.name}';
+      if (e.isNamed) {
+        named.add(arg);
+      } else if (e.isOptional) {
+        optional.add(arg);
+      } else {
+        base.add(arg);
+      }
+    }
+    if (named.isNotEmpty) {
+      base.add('{${named.join(', ')}}');
+    }
+    if (optional.isNotEmpty) {
+      base.add('[${optional.join(', ')}]');
+    }
+    return base.join(', ');
+  }
+
   void addMethods() {
     for (final m in element.methods) {
       if (m.name[0] == '_') {
         continue;
       }
       final args = m.parameters.map((e) => e.isNamed ? '${e.name}: ${e.name}' : e.name).toList().join(', ');
-      final typedArgs = m.parameters
-          .map((e) {
-            String arg = '${e.type} ${e.name}';
-            if (e.isNamed) {
-              arg = '{$arg}';
-            } else if (e.isOptional) {
-              arg = '[$arg]';
-            }
-            return arg;
-          })
-          .toList()
-          .join(', ');
+      final typedArgs = _getTypedArguments(m.parameters);
       String static = m.isStatic ? 'static ' : '';
       final name = 'mock${m.name[0].toUpperCase()}${m.name.substring(1)}';
       buffer.writeln('');
