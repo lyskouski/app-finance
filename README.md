@@ -3,9 +3,14 @@
 
 **Fingram** - Open-sourced cross-platform financial accounting application without Ads and limitations.
 
-[![Unit Tests Coverage](https://lyskouski.github.io/app-finance/coverage/unit_coverage_badge.svg)](https://github.com/lyskouski/app-finance/test/unit) 
-[![Widget Tests Coverage](https://lyskouski.github.io/app-finance/coverage/widget_coverage_badge.svg)](https://github.com/lyskouski/app-finance/test/widget)  
+## Quality Gate
+
+[![Unit Tests Coverage](https://lyskouski.github.io/app-finance/coverage/unit_coverage_badge.svg)](https://github.com/lyskouski/app-finance/test/unit)
+
+[![Widget Tests Coverage](https://lyskouski.github.io/app-finance/coverage/widget_coverage_badge.svg)](https://github.com/lyskouski/app-finance/test/widget)
+
 [![End-To-End Coverage](https://lyskouski.github.io/app-finance/coverage/e2e_coverage_badge.svg)](https://github.com/lyskouski/app-finance/test/e2e)
+
 
 ## Functionality
 - Accounting (Account Type, Currency/Cryptocurrency)
