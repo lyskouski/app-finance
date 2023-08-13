@@ -1,6 +1,5 @@
 // Copyright 2023 The terCAD team. All rights reserved.
-// Use of this source code is governed by a CC BY-NC-ND 4.0 license that can be
-// found in the LICENSE file.
+// Use of this source code is governed by a CC BY-NC-ND 4.0 license that can be found in the LICENSE file.
 
 import 'dart:io';
 import 'package:path/path.dart' as path;
@@ -76,10 +75,12 @@ fullCoverage() {
   File(path.join(Directory.current.path, 'test/$type/_coverage_test.g.dart')).writeAsStringSync(content.toString());
 }
 
-@Task('Add Coverage Badge to README.md file')
+@Task('Generate Coverage Badge for README.md file')
 coverageBadge() {
+  TaskArgs args = context.invocation.arguments;
+  String path = (args.getOption('path') ?? '').split('/').last;
   final lineCoverage = badge.calculateLineCoverage(File('coverage/lcov.info'));
-  badge.generateBadge('${Directory.current.path}/coverage', lineCoverage);
+  badge.generateBadge('${Directory.current.path}/coverage', lineCoverage, path);
 }
 
 @Task('Install Git Hooks')
