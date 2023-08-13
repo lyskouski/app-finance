@@ -12,22 +12,22 @@ class WrapperVisitor {
 
   WrapperVisitor(this.element);
 
-  void addImports() {
+  static List<String> getImports(ClassElement element) {
     final mainClass = element.enclosingElement.library;
-    addImport(mainClass);
+    List<String> result = [_getImport(mainClass)];
     for (final cls in mainClass.importedLibraries) {
-      addImport(cls);
+      result.add(_getImport(cls));
     }
-    buffer.writeln('');
+    return result;
   }
 
-  void addImport(LibraryElement className) {
-    buffer.writeln('// ignore: unused_import, unnecessary_import, depend_on_referenced_packages');
+  static String _getImport(LibraryElement className) {
     String path = className.source.uri.toString();
     if (path.contains('asset:')) {
       path = className.source.uri.pathSegments.last;
     }
-    buffer.writeln("import '$path';");
+    String ignore = '// ignore: unused_import, unnecessary_import, depend_on_referenced_packages\n';
+    return "${ignore}import '$path';";
   }
 
   void addClassDefinition() {
@@ -94,7 +94,6 @@ class WrapperVisitor {
 
   @override
   String toString() {
-    addImports();
     addClassDefinition();
     addMethods();
     finalize();
