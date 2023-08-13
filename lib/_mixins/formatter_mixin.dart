@@ -18,18 +18,20 @@ mixin FormatterMixin {
 
   BuildContext? getContext() => _context;
 
+  String? getLocale() {
+    return Localizations.localeOf(_context!).toString();
+  }
+
   String getDateFormatted(DateTime date) {
-    final locale = Localizations.localeOf(_context!).toString();
-    final DateFormat formatterDate = DateFormat.yMEd(locale);
+    final DateFormat formatterDate = DateFormat.yMEd(getLocale());
     return formatterDate.format(date);
   }
 
   String getNumberFormatted(double value) {
-    final locale = Localizations.localeOf(_context!).toString();
     final NumberFormat formatter = NumberFormat.currency(
-      locale: locale,
+      locale: getLocale(),
       symbol: currency?.symbol ?? '?',
-      decimalDigits: 2,
+      decimalDigits: currency?.decimalDigits ?? 2,
     );
     return formatter.format(value);
   }
