@@ -74,15 +74,40 @@ class WrapperVisitor {
     return base.join(', ');
   }
 
+  String _getName(dynamic element) {
+    return 'mock${element.name[0].toUpperCase()}${element.name.substring(1)}';
+  }
+
+  void addGetters() {
+    for (PropertyAccessorElement m in element.accessors) {
+      if (m.name[0] == '_' || !m.isGetter) {
+        continue;
+      }
+      buffer.writeln('');
+      String static = m.isStatic ? 'static ' : '';
+      buffer.writeln('  $static${m.returnType}${m.returnType.toString().contains('?') ? '' : '?'} _${m.name};');
+      buffer.writeln('  // ignore: non_constant_identifier_names');
+      buffer.writeln('  ${static}set ${_getName(m)}(${m.returnType} value) {');
+      buffer.writeln('    _${m.name} = value;');
+      buffer.writeln('  }');
+      if (singleton == null) {
+        buffer.writeln('  @override');
+        buffer.writeln('  // ignore: unnecessary_overrides');
+      }
+      buffer.writeln('  $static$m => _${m.name} ?? ${m.isStatic ? element.name : 'super'}.${m.name};');
+      buffer.writeln('');
+    }
+  }
+
   void addMethods() {
-    for (final m in element.methods) {
+    for (MethodElement m in element.methods) {
       if (m.name[0] == '_') {
         continue;
       }
       final args = m.parameters.map((e) => e.isNamed ? '${e.name}: ${e.name}' : e.name).toList().join(', ');
       final typedArgs = _getTypedArguments(m.parameters);
       String static = m.isStatic ? 'static ' : '';
-      final name = 'mock${m.name[0].toUpperCase()}${m.name.substring(1)}';
+      final name = _getName(m);
       buffer.writeln('');
       buffer.writeln('  $static${m.returnType} Function($typedArgs)? _${m.name};');
       buffer.writeln('  // ignore: non_constant_identifier_names');
@@ -107,6 +132,7 @@ class WrapperVisitor {
   @override
   String toString() {
     addClassDefinition();
+    addGetters();
     addMethods();
     finalize();
     return buffer.toString();
