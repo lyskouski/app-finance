@@ -27,15 +27,6 @@ enum AppDataType {
   currencies,
 }
 
-enum AppAccountType {
-  account,
-  cash,
-  debitCard,
-  creditCard,
-  deposit,
-  credit,
-}
-
 class AppData extends ChangeNotifier {
   bool isLoading = false;
 

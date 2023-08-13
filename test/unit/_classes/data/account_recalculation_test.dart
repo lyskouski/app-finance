@@ -5,8 +5,8 @@
 import 'package:app_finance/_classes/data/account_app_data.dart';
 import 'package:app_finance/_classes/data/account_recalculation.dart';
 import 'package:app_finance/_classes/currency/exchange.dart';
+import 'package:app_finance/_classes/data/account_type.dart';
 import 'package:app_finance/_classes/gen/generate_with_method_setters.dart';
-import 'package:app_finance/_classes/app_data.dart';
 import 'package:currency_picker/currency_picker.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/annotations.dart';
