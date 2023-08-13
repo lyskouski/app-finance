@@ -39,15 +39,6 @@ enum AppAccountType {
 class AppData extends ChangeNotifier {
   bool isLoading = false;
 
-  final _account = {
-    AppAccountType.account: (),
-    AppAccountType.cash: (),
-    AppAccountType.debitCard: (),
-    AppAccountType.creditCard: (),
-    AppAccountType.deposit: (),
-    AppAccountType.credit: (),
-  };
-
   final _hashTable = HashMap<String, dynamic>();
 
   final _history = HashMap<String, List<TransactionLogData>>();
@@ -245,10 +236,6 @@ class AppData extends ChangeNotifier {
     var obj = isClone ? _hashTable[uuid]?.clone() : _hashTable[uuid];
     obj?.setState(this);
     return obj;
-  }
-
-  dynamic getType(AppAccountType property) {
-    return _account[property];
   }
 
   List<TransactionLogData>? getLog(String uuid) {
