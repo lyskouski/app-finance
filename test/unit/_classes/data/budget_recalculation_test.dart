@@ -4,7 +4,11 @@
 
 import 'package:app_finance/_classes/data/budget_app_data.dart';
 import 'package:app_finance/_classes/data/budget_recalculation.dart';
+import 'package:app_finance/_classes/gen/generate_with_method_setters.dart';
 import 'package:flutter_test/flutter_test.dart';
+
+@GenerateWithMethodSetters([BudgetRecalculation])
+import 'budget_recalculation_test.wrapper.dart';
 
 void main() {
   group('BudgetRecalculation', () {
@@ -76,6 +80,15 @@ void main() {
           expect(object.getDelta(), v.result);
         });
       }
+    });
+
+    test('updateBudget (change.progress: 0.5)', () {
+      final obj = WrapperBudgetRecalculation(initial: object.initial, change: object.change);
+      double result = 0.5;
+      obj.mockGetDelta = () => result;
+      expect(obj.change.progress, 0.0);
+      obj.updateBudget();
+      expect(obj.change.progress, result);
     });
   });
 }

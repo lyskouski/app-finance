@@ -17,10 +17,8 @@ class Exchange with SharedPreferencesMixin {
   });
 
   Currency? getDefaultCurrency() {
-    if (defaultCurrency == null) {
-      final code = getPreference(prefCurrency) ?? 'EUR';
-      defaultCurrency = CurrencyProvider.findByCode(code);
-    }
+    defaultCurrency ??= CurrencyProvider.findByCode(getPreference(prefCurrency));
+    defaultCurrency ??= CurrencyProvider.findByCode('EUR');
     return defaultCurrency;
   }
 

@@ -2,8 +2,12 @@
 // Use of this source code is governed by a CC BY-NC-ND 4.0 license that can be
 // found in the LICENSE file.
 
+import 'dart:collection';
+
+import 'package:app_finance/_classes/app_data.dart';
 import 'package:app_finance/_classes/currency/exchange.dart';
 import 'package:app_finance/_classes/data/goal_app_data.dart';
+import 'package:app_finance/_classes/data/summary_app_data.dart';
 import 'package:app_finance/_classes/data/total_recalculation.dart';
 import 'package:app_finance/_classes/gen/generate_with_method_setters.dart';
 import 'package:currency_picker/currency_picker.dart';
@@ -11,9 +15,9 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/annotations.dart';
 
 @GenerateNiceMocks([MockSpec<Exchange>()])
-import 'account_recalculation_test.mocks.dart';
-@GenerateWithMethodSetters([MockExchange])
-import 'account_recalculation_test.wrapper.dart';
+import 'total_recalculation_test.mocks.dart';
+@GenerateWithMethodSetters([MockExchange, SummaryAppData, TotalRecalculation])
+import 'total_recalculation_test.wrapper.dart';
 
 void main() {
   group('TotalRecalculation', () {
@@ -25,6 +29,66 @@ void main() {
       object = TotalRecalculation(
         exchange: exchange,
       );
+    });
+
+    test('getDelta (UnimplementedError)', () {
+      expect(() => object.getDelta(), throwsA(isA<UnimplementedError>()));
+    });
+
+    group('updateTotalMap', () {
+      final hashTable = HashMap<String, dynamic>();
+      hashTable['in-table'] = GoalAppData(initial: 1.0, details: 1.0, title: '');
+
+      final testCases = [
+        (type: AppDataType.goals, uuid: 'in-table', progress: 1.0, result: 0.0),
+        (type: AppDataType.goals, uuid: 'in-table', progress: 0.2, result: 0.8),
+        (type: AppDataType.accounts, uuid: 'in-table', progress: 1.0, result: 1.0),
+        (type: AppDataType.goals, uuid: 'not-in-table', progress: 1.0, result: 0.0),
+      ];
+
+      for (var v in testCases) {
+        test('$v', () {
+          hashTable['in-table'].progress = v.progress;
+          expect(object.updateTotalMap(v.type, v.uuid, hashTable), v.result);
+        });
+      }
+    });
+
+    group('getSummaryList', () {
+      final testCases = [
+        (type: AppDataType.accounts, isActualList: false),
+        (type: AppDataType.bills, isActualList: true),
+        (type: AppDataType.budgets, isActualList: true),
+        (type: AppDataType.currencies, isActualList: false),
+        (type: AppDataType.goals, isActualList: false),
+      ];
+
+      for (var v in testCases) {
+        test('$v', () {
+          final summary = WrapperSummaryAppData(list: [], total: 0.0);
+          summary.mockListActual = ['1', '2', '3'];
+          summary.mockList = ['4', '5', '6'];
+          expect(object.getSummaryList(v.type, summary), v.isActualList ? summary.listActual : summary.list);
+        });
+      }
+    });
+
+    group('updateTotal', () {
+      final testCases = [
+        (list: null, total: 1.0, result: 0.0),
+        (list: ['1', '2', '3'], total: 1.0, result: 3.0),
+      ];
+
+      for (var v in testCases) {
+        test('$v', () async {
+          final obj = WrapperTotalRecalculation(exchange: object.exchange);
+          obj.mockGetSummaryList = (AppDataType type, SummaryAppData? obj) => v.list;
+          obj.mockUpdateTotalMap = (type, uuid, hashTable) => v.total;
+          final summary = SummaryAppData(list: [], total: 0.0);
+          await obj.updateTotal(AppDataType.bills, summary, HashMap<String, dynamic>());
+          expect(summary.total, v.result);
+        });
+      }
     });
 
     group('updateGoals', () {

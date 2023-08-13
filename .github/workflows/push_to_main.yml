@@ -31,13 +31,19 @@ jobs:
       #  run: flutter analyze
 
       - name: Run Unit Tests (with coverage)
-        run: dart run grinder test --coverage --path=test/unit
+        run: |
+          dart run grinder full-coverage --path="/_classes" --type=unit
+          dart run grinder test --coverage --path=test/unit
 
       - name: Run Widget Tests
-        run: dart run grinder test --path=test/widget
+        run: |
+          dart run grinder full-coverage --path="" --type=widget
+          dart run grinder test --coverage --path=test/widget
 
       - name: Run End-To-End Tests
-        run: dart run grinder test --path=test/e2e
+        run: |
+          dart run grinder full-coverage --path="" --type=e2e
+          dart run grinder test --coverage --path=test/e2e
 
       - name: Build Web Package
         run: flutter build -v web --release --no-tree-shake-icons --base-href="/app-finance/"

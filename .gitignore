@@ -12,9 +12,9 @@ migrate_working_dir/
 
 # Coverage report
 coverage/
-test/_coverage.dart
 
 # Generated files
+*.g.dart
 *.mocks.dart
 *.wrapper.dart
 *.list.dart

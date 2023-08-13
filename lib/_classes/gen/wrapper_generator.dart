@@ -23,9 +23,15 @@ class WrapperGenerator extends Generator {
     final result = StringBuffer();
     for (final annotation in annotations) {
       final classes = annotation.getField('classes');
-      if (classes!.isNull) {
-        break;
+      if (classes == null || classes.isNull) {
+        continue;
       }
+      Set<String> imports = {};
+      for (final name in classes.toListValue()!) {
+        imports.addAll(WrapperVisitor.getImports(name.toTypeValue()?.element as ClassElement));
+      }
+      result.writeln(imports.toList().join('\n'));
+      result.writeln('');
       for (final name in classes.toListValue()!) {
         final type = name.toTypeValue();
         final classElement = type?.element as ClassElement;
