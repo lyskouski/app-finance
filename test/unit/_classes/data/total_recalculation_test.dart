@@ -2,6 +2,9 @@
 // Use of this source code is governed by a CC BY-NC-ND 4.0 license that can be
 // found in the LICENSE file.
 
+import 'dart:collection';
+
+import 'package:app_finance/_classes/app_data.dart';
 import 'package:app_finance/_classes/currency/exchange.dart';
 import 'package:app_finance/_classes/data/goal_app_data.dart';
 import 'package:app_finance/_classes/data/total_recalculation.dart';
@@ -25,6 +28,29 @@ void main() {
       object = TotalRecalculation(
         exchange: exchange,
       );
+    });
+
+    test('getDelta (UnimplementedError)', () {
+      expect(() => object.getDelta(), throwsA(isA<UnimplementedError>()));
+    });
+
+    group('updateTotalMap', () {
+      final hashTable = HashMap<String, dynamic>();
+      hashTable['in-table'] = GoalAppData(initial: 1.0, details: 1.0, title: '');
+
+      final testCases = [
+        (type: AppDataType.goals, uuid: 'in-table', progress: 1.0, result: 0.0),
+        (type: AppDataType.goals, uuid: 'in-table', progress: 0.2, result: 0.8),
+        (type: AppDataType.accounts, uuid: 'in-table', progress: 1.0, result: 1.0),
+        (type: AppDataType.goals, uuid: 'not-in-table', progress: 1.0, result: 0.0)
+      ];
+
+      for (var v in testCases) {
+        test('$v', () {
+          hashTable['in-table'].progress = v.progress;
+          expect(object.updateTotalMap(v.type, v.uuid, hashTable), v.result);
+        });
+      }
     });
 
     group('updateGoals', () {

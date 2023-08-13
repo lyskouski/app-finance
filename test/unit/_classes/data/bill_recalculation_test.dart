@@ -35,6 +35,10 @@ void main() {
       object.exchange = Exchange(store: MockAppData());
     });
 
+    test('getDelta (UnimplementedError)', () {
+      expect(() => object.getDelta(), throwsA(isA<UnimplementedError>()));
+    });
+
     group('getStateDelta', () {
       final testCases = [
         (

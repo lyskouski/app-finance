@@ -11,6 +11,7 @@ import 'package:app_finance/_classes/data/summary_app_data.dart';
 
 class TotalRecalculation extends AbstractRecalculation {
   @override
+  // ignore: overridden_fields
   Exchange exchange;
 
   TotalRecalculation({
@@ -24,6 +25,9 @@ class TotalRecalculation extends AbstractRecalculation {
 
   double updateTotalMap(AppDataType type, String uuid, HashMap<String, dynamic> hashTable) {
     final item = hashTable[uuid];
+    if (item == null) {
+      return 0.0;
+    }
     double total = exchange.reform(item.details, item.currency, Exchange.defaultCurrency);
     if (type == AppDataType.goals) {
       total *= (1 - item.progress);
