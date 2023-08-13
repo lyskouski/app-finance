@@ -11,7 +11,7 @@ mixin FormatterMixin {
   BuildContext? _context;
   Currency? currency;
 
-  dynamic updateContext(BuildContext context) {
+  dynamic setContext(BuildContext context) {
     _context = context;
     return this;
   }

@@ -38,7 +38,7 @@ class BaseWidget extends StatefulWidget {
   }) : super(key: key);
 
   Widget buildListWidget(item, BuildContext context, double offset) {
-    item.updateContext(context);
+    item.setContext(context);
     return BaseLineWidget(
       uuid: item.uuid ?? '',
       title: item.title,

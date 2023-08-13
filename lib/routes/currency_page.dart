@@ -63,7 +63,7 @@ class CurrencyPageState extends AbstractPageState<CurrencyPage> {
         itemCount: scope?.length,
         itemBuilder: (context, index) {
           final item = scope![index];
-          item.updateContext(context);
+          item.setContext(context);
           return Padding(
             padding: EdgeInsets.all(indent),
             child: RowWidget(
