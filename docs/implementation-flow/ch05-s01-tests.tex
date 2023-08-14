@@ -148,6 +148,13 @@ void main() {
 
 \img{features/perf-chrome-tracing}{Google Chrome -- performance trace}{img:perf-chrome-tracing}
 
+\noindent The \q{timeline.timeline\_summary.json}-file can be opened in IDE as a native \q{JSON}-file and analyzed 
+manually a performance of the application. For example, the value of \q{average\_frame\_build\_time\_millis}-parameter 
+should always be below 16 milliseconds to ensure that the app runs at 60 frames per second without glitches. Other 
+parameters are widely described on the page --
+\href{https://api.flutter.dev/flutter/flutter\_driver/TimelineSummary/summaryJson.html}{https://api.flutter.dev/flutter/flutter\_driver/TimelineSummary}.
+
+
 \paragraph{Load Testing}
 Check response time and resource utilization for creating account, budget category, and bill.
 

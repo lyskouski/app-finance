@@ -2,11 +2,7 @@
 // Use of this source code is governed by a CC BY-NC-ND 4.0 license that can be found in the LICENSE file.
 
 import 'package:app_finance/_classes/focus_controller.dart';
-import 'package:app_finance/_classes/gen/generate_with_method_setters.dart';
 import 'package:flutter_test/flutter_test.dart';
-
-@GenerateWithMethodSetters([FocusController])
-import 'focus_controller_test.wrapper.dart';
 
 void main() {
   group('FocusController', () {
