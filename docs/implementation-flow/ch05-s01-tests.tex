@@ -1,0 +1,170 @@
+% Copyright 2023 The terCAD team. All rights reserved.
+% Use of this content is governed by a CC BY-NC-ND 4.0 license that can be found in the LICENSE file.
+
+\subsection{Benchmarking Prototype}
+\markboth{Unleashing Features}{Benchmarking Prototype}
+
+Before adding functionality in the form of muscles to the created prototype skeleton, we need to verify its reliability.
+Restructuring the fundamental concepts of the application in the future would not only pose a considerable challenge 
+but also entail a substantial effort and potential complications.
+
+
+\subsubsection{Providing Integration Tests}
+
+Unit tests (\ref{ut-unit}) and widget tests (\ref{widget-tests}) serve as valuable tools for assessing isolated classes, 
+functions, or widgets. However, not all of the problems can be tackled by them. Integration tests are used to identify 
+systemic flaws (data corruption, concurrency problems, miscommunication between services, etc.) that might not be 
+evident in unit tests by verifying a synergy of individual assets, validating the application as a whole. 
+Integration tests are designed to reflect the real-time performance of an application on an actual device or platform. 
+In conclusion, they provide a vital link in the testing hierarchy by validating a collocation of various components 
+within an application. In such a way integration tests simulate end-to-end user workflows that we've implemented and 
+discussed earlier -- \ref{t-gherkin}.
+
+Integration tests in Flutter can be written by using \q{integration\_test}-package, \q{flutter\_driver}-package would 
+help us to evaluate our tests on real / virtual devices and environments and track the timeline of tests execution 
+(both packages are provided by the SDK):
+
+\begin{lstlisting}[language=yaml]
+## ./pubspec.yaml
+dev_dependencies:
+  integration_test:
+    sdk: flutter
+  flutter_driver: 
+    sdk: flutter
+\end{lstlisting}
+
+\noindent The implementation's deference from widget tests is in a usage of the next code line, that executes tests on 
+a physical device or platform:
+\begin{lstlisting}
+IntegrationTestWidgetsFlutterBinding.ensureInitialized();
+\end{lstlisting}
+
+
+\subsubsection{Doing Performance Testing}
+
+Performance testing is a type of software testing designed to evaluate the speed, responsiveness, stability, and 
+overall performance of an application under different conditions. It involves subjecting the application to 
+simulated workloads and stress scenarios to assess how it behaves in terms of speed, scalability, and resource usage. 
+Performance testing ensures that the software can handle the expected load without degradation in performance.
+
+By simulating different levels of user traffic, performance testing helps determine the application's scalability by
+assessing resources utilization (CPU, memory, network bandwidth, and other parameters), and identify performance 
+bottlenecks, such as slow database queries, inefficient code, or network latency, and address these issues before 
+they will impact users.
+
+The detailed information about performance testing can be taken from the International Software Testing Qualifications 
+Board (ISTQB) or the Software Engineering Institute (SEI), while here we'll highlight only their types definition 
+(\cite{Ian15}, \cite{Sag16}, \cite{Sag23}):
+\begin{itemize}
+  \item Load Testing: Evaluates how an application performs under expected load conditions. It helps determine the 
+  application's response time, resource utilization, and overall stability.
+
+  \item Stress Testing: Pushes the application to its limits by subjecting it to extreme conditions, such as excessive 
+  user loads or resource scarcity. It aims to identify the breaking point and understand how the application recovers 
+  from failures.
+
+  \item Endurance Testing: Assesses the application's performance over an extended period to identify issues related to 
+  memory leaks, resource exhaustion, or gradual degradation in performance.
+
+  \item Spike Testing: Simulates sudden spikes in user traffic to assess how the application responds to rapid changes
+  in load. This helps uncover bottlenecks and issues related to sudden surges in demand.
+
+  \item Volume Testing: Focuses on testing the application's performance with large volumes of data, such as a high 
+  number of records in a database. It helps identify scalability and performance issues associated with data volume.
+\end{itemize}
+
+\noindent Back to our process, it would be used the next command to evaluate performance tests:
+
+\begin{lstlisting}[language=bash]
+# Precondition for Web profiling
+chromedriver --port=4444
+# Launch tests
+flutter drive \
+  --driver=test_driver/perf_driver.dart \
+  --target=test/performance/name_of_test.dart \
+  --profile
+\end{lstlisting}
+
+The \q{--profile}-option enables the application compilation in "profile mode" that helps the benchmark results to be
+closer to what will be experienced by end users. By running on a mobile device or emulator it's proposed to use 
+\q{--no-dds}-parameter in addition, that will disable unaccessible Dart Development Service (DDS). The \q{--target} 
+declares the scope of test executions while \q{--driver}-option does track the outcomes. The driver configuration can be
+taken from \href{https://docs.flutter.dev/cookbook/testing/integration/profiling}{https://docs.flutter.dev/cookbook/testing/integration/profiling}:
+
+\begin{lstlisting}
+// ./test_driver/perf_driver.dart
+import 'package:flutter_driver/flutter_driver.dart' as driver;
+import 'package:integration_test/integration_test_driver.dart';
+
+Future<void> main() {
+  return integrationDriver(
+    responseDataCallback: (data) async {
+      if (data != null) {
+        final timeline = driver.Timeline.fromJson(data['timeline']);
+        final summary = driver.TimelineSummary.summarize(timeline);
+        await summary.writeTimelineToFile(
+          'timeline',
+          pretty: true,
+          includeSummary: true,
+          destinationDirectory: './coverage/',
+        );
+      }
+    },
+  );
+}
+\end{lstlisting}
+
+\noindent Since it's a Widget Tests'-based approach (\ref{widget-tests}, \ref{t-gherkin}), we'll accent only on the 
+usage of \q{traceAction}-method to store time-based metrics:
+
+\begin{lstlisting}
+// ./test/performance/load/creation_test.dart
+void main() {
+  final binding = IntegrationTestWidgetsFlutterBinding.ensureInitialized();
+  testWidgets('Cover Starting Page', (WidgetTester tester) async {
+    await binding.traceAction(() async {
+        // ... other steps
+        final amountField = find.byWidgetPredicate((widget) {
+          return widget is TextField && widget.decoration?.hintText == 'Set Balance';
+        });
+        await tester.ensureVisible(amountField);
+        await tester.tap(amountField);
+        // In profiling mode some delay is needed:
+        await tester.pumpAndSettle(const Duration(seconds: 1));
+        // await tester.pump();
+        await tester.enterText(amountField, '1000');
+        await tester.pumpAndSettle();
+        expect(find.text('1000'), findsOneWidget);
+        // ... other steps
+      },
+      reportKey: 'timeline',
+    );
+  });
+}
+\end{lstlisting}
+
+\noindent Generated file \q{timeline.timeline.json} can be traced by \q{chrome://tracing/} in Google Chrome browser 
+(\cref{img:perf-chrome-tracing}):
+
+\img{features/perf-chrome-tracing}{Google Chrome -- performance trace}{img:perf-chrome-tracing}
+
+\paragraph{Load Testing}
+Check response time and resource utilization for creating account, budget category, and bill.
+
+
+\paragraph{Stress Testing}
+Check initial load (a time before the enabled interaction) with a huge transaction log history (32Mb, 128Mb, 
+512Mb, 2Gb).
+
+
+\paragraph{Endurance Testing}
+Check response time and resource utilization by adding different types of data within a different time 
+periods (15 minutes, an hour, 4 hours, 16 hours).
+
+
+\paragraph{Spike Testing}
+Postponed till the enabled synchronization between different devices.
+
+
+\paragraph{Volume Testing}
+Combine reporting of "Load Testing" with data from "Stress Testing".
