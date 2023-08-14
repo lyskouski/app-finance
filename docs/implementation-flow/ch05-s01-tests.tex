@@ -150,13 +150,65 @@ void main() {
 
 \noindent The \q{timeline.timeline\_summary.json}-file can be opened in IDE as a native \q{JSON}-file and analyzed 
 manually a performance of the application. For example, the value of \q{average\_frame\_build\_time\_millis}-parameter 
-should always be below 16 milliseconds to ensure that the app runs at 60 frames per second without glitches. Other 
+is recommended to be below 16 milliseconds to ensure that the app runs at 60 frames per second without glitches. Other 
 parameters are widely described on the page --
 \href{https://api.flutter.dev/flutter/flutter\_driver/TimelineSummary/summaryJson.html}{https://api.flutter.dev/flutter/flutter\_driver/TimelineSummary}.
 
 
 \paragraph{Load Testing}
-Check response time and resource utilization for creating account, budget category, and bill.
+Check response time and resource utilization for the first run (Initial Setup) by creating account and budget 
+category:
+
+\begin{lstlisting}[language=cucumber]
+@start
+Feature: Verify Initial Flow
+  Scenario: Applying basic configuration through the start pages
+    Given I am firstly opened the app
+    Then I can see "Initial Setup" component
+    When I tap "Save to Storage (Go Next)" button
+    Then I can see "Acknowledge (Go Next)" component
+    When I tap "Acknowledge (Go Next)" button
+    Then I can see "Create new Account" component
+    When I tap on "first" of "ListSelector" field
+    And I tap "Bank Account" element
+    And I enter "Starting Page Account" to "Enter Account Identifier" text field
+    And I enter "1000" to "Set Balance" text field
+    And I tap "Create new Account" button
+    Then I can see "Create new Budget Category" component
+    When I enter "Starting Page Budget" to "Enter Budget Category Name" text field
+    And I enter "1000" to "Set Balance" text field
+    When I tap "Create new Budget Category" button
+    Then I can see "Accounts, total" component
+\end{lstlisting}
+
+\noindent And, what we've identified from our first tests execution is a degraded \q{frame build}-parameter 
+that affects our frames per second by providing 37 frames instead of 60 (\cref{tb:frame-build}, 
+\cref{img:perf-slow-frame}):\\
+
+\begin{table}[h!]
+  \begin{tabular}{ |p{6.8cm}||r|r|r|  }
+    \hline
+    \multicolumn{4}{|c|}{Frame Build Time, in milliseconds} \\
+    \hline
+    Type of state & Cold Start & Retrial & With Data\\
+    \hline
+    average          &  26.00 &  24.28 &  29.65 \\
+    90th percentile  &  47.20 &  43.38 &  70.33 \\
+    99th percentile  & 158.31 & 159.41 & 198.03 \\
+    \hline
+  \end{tabular}
+  \caption{Performance Test Results for Feature "Verify Initial Flow"} \label{tb:frame-build}
+\end{table}
+
+\img{features/perf-slow-frame}{Performance Monitor in Visual Studio Code}{img:perf-slow-frame}
+
+\noindent That problem is relevant to a shader (a piece of code that runs on a graphics processing unit [GPU]) rendering
+when the graphics backend (that Flutter uses) sees a new sequence of draw commands for the first time, it sometimes 
+generates and compiles a custom GPU shader for that sequence of commands. This allows that sequence and potentially similar sequences to render as fast as possible.
+
+Flutter provides command line tools for app developers to collect shaders that might be needed for end-users in the SkSL (Skia Shader Language) format. The SkSL shaders can then be packaged into the app, and get warmed up (pre-compiled) when an end-user first opens the app, thereby reducing the compilation jank in later animations.
+
+
 
 
 \paragraph{Stress Testing}

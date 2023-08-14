@@ -14,6 +14,7 @@ import 'package:app_finance/helpers/theme_helper.dart';
 import 'package:app_finance/widgets/_forms/currency_exchange_input.dart';
 import 'package:app_finance/widgets/_forms/currency_selector.dart';
 import 'package:app_finance/widgets/_forms/date_time_input.dart';
+import 'package:app_finance/widgets/_forms/full_sized_button.dart';
 import 'package:app_finance/widgets/_forms/list_account_selector.dart';
 import 'package:app_finance/widgets/_forms/list_budget_selector.dart';
 import 'package:app_finance/widgets/_forms/simple_input.dart';
@@ -115,34 +116,19 @@ class ExpensesTabState<T extends ExpensesTab> extends State<T> with SharedPrefer
   }
 
   Widget buildButton(BuildContext context, BoxConstraints constraints) {
-    var helper = ThemeHelper(windowType: getWindowType(context));
-    String title = getButtonTitle(context);
-    return SizedBox(
-      width: constraints.maxWidth - helper.getIndent() * 4,
-      child: FloatingActionButton(
-        onPressed: () => {
-          setState(() {
-            if (hasFormErrors()) {
-              return;
-            }
-            updateStorage();
-            Navigator.popAndPushNamed(context, AppRoute.homeRoute);
-          })
-        },
-        focusNode: FocusController.getFocusNode(),
-        tooltip: title,
-        child: Align(
-          alignment: Alignment.center,
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              const Icon(Icons.save),
-              SizedBox(height: helper.getIndent()),
-              Text(title, style: Theme.of(context).textTheme.headlineMedium)
-            ],
-          ),
-        ),
-      ),
+    return FullSizedButton(
+      constraints: constraints,
+      setState: () => {
+        setState(() {
+          if (hasFormErrors()) {
+            return;
+          }
+          updateStorage();
+          Navigator.popAndPushNamed(context, AppRoute.homeRoute);
+        })
+      },
+      title: getButtonTitle(context),
+      icon: Icons.save,
     );
   }
 

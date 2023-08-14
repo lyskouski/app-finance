@@ -35,7 +35,7 @@ class HomePageState extends AbstractPageState<HomePage> with SharedPreferencesMi
     super.initState();
     toExpand = getPreference(prefExpand);
     if (getPreference(prefPrivacyPolicy) == null) {
-      Future.delayed(Duration.zero, () => Navigator.popAndPushNamed(context, AppRoute.startRoute));
+      WidgetsBinding.instance.addPostFrameCallback((_) => Navigator.popAndPushNamed(context, AppRoute.startRoute));
     }
   }
 
@@ -64,15 +64,7 @@ class HomePageState extends AbstractPageState<HomePage> with SharedPreferencesMi
         },
       ),
       title: Center(
-        child: Image.asset(
-          'assets/images/fingram.png',
-          //  width: width * 0.2,
-          //  height: width * 0.2,
-        ),
-        /*child: Text(
-          getTitle(context),
-          style: TextStyle(color: Theme.of(context).colorScheme.inversePrimary),
-        ),*/
+        child: Image.asset('assets/images/fingram.png'),
       ),
       actions: [
         ToolbarButtonWidget(

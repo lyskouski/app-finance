@@ -53,6 +53,7 @@ void main() {
             And I tap "Create new Account" button
             Then I can see "Create new Budget Category" component
             When I enter "Starting Page Budget" to "Enter Budget Category Name" text field
+            And I enter "1000" to "Set Balance" text field
             When I tap "Create new Budget Category" button
             Then I can see "Accounts, total" component
         ''');
