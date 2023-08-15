@@ -20,6 +20,7 @@ void main() {
 
   _init(WidgetTester tester) async {
     SharedPreferencesMixin.pref = await SharedPreferences.getInstance();
+    await SharedPreferencesMixin.pref.clear();
     await tester.pumpWidget(MultiProvider(
       providers: [
         ChangeNotifierProvider<AppData>(
