@@ -40,7 +40,7 @@ class BillEditPageState<T extends BillEditPage> extends AbstractPageState<BillEd
   @override
   Widget buildContent(BuildContext context, BoxConstraints constraints) {
     var bill = super.state.getByUuid(widget.uuid) as BillAppData;
-    bill.updateContext(context);
+    bill.setContext(context);
     return ExpensesEditTab(
       uuid: widget.uuid,
       account: bill.account == '' ? null : bill.account,

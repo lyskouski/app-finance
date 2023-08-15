@@ -1,7 +1,7 @@
 \subsection{Assessing of Ignorance} \label{ut-fail}
 
 Initially we've declared importance of having tests and ecosystem for their automation but there were not written any 
-valuable amount of them (10\% coverage, \ref{a-badges}). That was done to show consequences of such a decision -- not 
+valuable amount of them (10\% coverage, \ref{a-badges}). That was done to show a consequence of such a decision -- not 
 to write tests. So, let's measure made mistakes during our Increment (four Iterations, two weeks each):
 
 \begin{lstlisting}[language=bash]
@@ -12,7 +12,7 @@ uniq -c
 \end{lstlisting}
 
 \noindent \q{git log}-command retrieves a commit history (\q{\%ad} - to include the commit date, \q{--date=iso}-option 
-converts dates to ISO 8601 [YYY-mm-dd]; \q{\%s} - take subject) with the specified format via \q{--grep} (since we've 
+converts dates to ISO 8601 [YYYY-mm-dd]; \q{\%s} - take subject) with the specified format via \q{--grep} (since we've 
 used \q{[BF]}-prefix in a title for created bug-reports [issues] and used it as a part of the commit message). \q{awk} 
 extracts the date part from each line and delegate sorting to \q{sort}-command by the extracted dates. Finally, 
 \q{uniq -c}-command counts the occurrences of each unique date. And the same operation we'll do for the \q{fix}-keyword.
@@ -54,16 +54,16 @@ as a tool to ensure quality throughout every phase, can find a practical applica
 
 Test-Driven Development approach is known from 1999 year as Extreme Programming flow, but for unknown to me reason 
 not widely spread. Argumentation that "we do not have a time to write tests" is the same as "we won't use a car since 
-already running to reach our 200km target within a day" (instead of an hour). In Agile transformations it's a mantra 
+already running to reach our 200km target within a day" (instead of a few hours). In Agile transformations it's a mantra 
 that the usage of Scrum (communication framework) will increase development flow 10 times. By looking wider, 
 Agile, DevOps, Lean, and other approaches put an emphasis on the quality throughout the process. It's so since a 
 communication itself has a natural limitation in the achievable performance optimization. Next 10x boost can be reached 
 by growing exceptionally a technical excellence. Observing developers dedicating half a day to test a seemingly 
-"one-hour" change, I find it perplexing that the idea of investing an additional hour in crafting tests is met with 
+"one-hour" change, we may find it perplexing that the idea of investing an additional hour in crafting tests is met with 
 resistance.
 
 As an example, by achieving the technical excellence through a semaphore approach ("red" - write test for the missed 
 part of a code, assert expectations; "yellow" - write code to pass tests; "green" - refactor your code) the 
-stabilization phase, "monthly" regression testing, even QA Department won't be needed. All acceptance criteria for 
-user story, feature, and even epic are transliterated into tests, and controlled by automation. That reinforces the 
-developer's mental model of the code, boosts confidence and increases productivity.
+stabilization phase, "monthly" regression testing, even a separate QA Department won't be needed. All acceptance 
+criteria for user story, feature, and even epic are transliterated into tests, and controlled by automation. That 
+reinforces the developer's mental model of the code, boosts confidence and increases productivity.

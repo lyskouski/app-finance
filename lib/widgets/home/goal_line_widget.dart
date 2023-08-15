@@ -24,7 +24,7 @@ class GoalLineWidget extends StatelessWidget {
     final ColorScheme colorScheme = Theme.of(context).colorScheme;
     final TextTheme textTheme = Theme.of(context).textTheme;
     double screenWidth = MediaQuery.of(context).size.width - theme.getIndent() * 2;
-    goal.updateContext(context);
+    goal.setContext(context);
     return TapWidget(
       tooltip: AppLocalizations.of(context)!.goalTooltip,
       route: AppRoute.goalRoute,

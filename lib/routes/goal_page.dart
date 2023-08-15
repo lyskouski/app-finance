@@ -39,7 +39,7 @@ class GoalPageState extends AbstractPageState<GoalPage> {
     final double offset = MediaQuery.of(context).size.width - helper.getIndent() * 2;
     return Column(
         children: super.state.getList(AppDataType.goals).map((goal) {
-      goal.updateContext(context);
+      goal.setContext(context);
       return BaseLineWidget(
         title: goal.title ?? '',
         offset: offset,

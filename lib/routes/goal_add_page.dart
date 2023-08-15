@@ -13,6 +13,7 @@ import 'package:app_finance/routes/abstract_page.dart';
 import 'package:app_finance/widgets/_forms/color_selector.dart';
 import 'package:app_finance/widgets/_forms/currency_selector.dart';
 import 'package:app_finance/widgets/_forms/date_input.dart';
+import 'package:app_finance/widgets/_forms/full_sized_button.dart';
 import 'package:app_finance/widgets/_forms/icon_selector.dart';
 import 'package:app_finance/widgets/_forms/simple_input.dart';
 import 'package:app_finance/widgets/_wrappers/required_widget.dart';
@@ -94,35 +95,20 @@ class GoalAddPageState<T extends GoalAddPage> extends AbstractPageState<GoalAddP
 
   @override
   Widget buildButton(BuildContext context, BoxConstraints constraints) {
-    var helper = ThemeHelper(windowType: getWindowType(context));
-    String title = getButtonName();
-    return SizedBox(
-      width: constraints.maxWidth - helper.getIndent() * 4,
-      child: FloatingActionButton(
-        onPressed: () => {
-          setState(() {
-            if (hasFormErrors()) {
-              return;
-            }
-            updateStorage();
-            Navigator.pop(context);
-            Navigator.pop(context);
-          })
-        },
-        focusNode: FocusController.getFocusNode(),
-        tooltip: title,
-        child: Align(
-          alignment: Alignment.center,
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              const Icon(Icons.save),
-              SizedBox(height: helper.getIndent()),
-              Text(title, style: Theme.of(context).textTheme.headlineMedium)
-            ],
-          ),
-        ),
-      ),
+    return FullSizedButton(
+      constraints: constraints,
+      setState: () => {
+        setState(() {
+          if (hasFormErrors()) {
+            return;
+          }
+          updateStorage();
+          Navigator.pop(context);
+          Navigator.pop(context);
+        })
+      },
+      title: getButtonName(),
+      icon: Icons.save,
     );
   }
 

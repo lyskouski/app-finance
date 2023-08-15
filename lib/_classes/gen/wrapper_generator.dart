@@ -28,13 +28,13 @@ class WrapperGenerator extends Generator {
       }
       Set<String> imports = {};
       for (final name in classes.toListValue()!) {
-        imports.addAll(WrapperVisitor.getImports(name.toTypeValue()?.element as ClassElement));
+        imports.addAll(WrapperVisitor.getImports(name.toTypeValue()?.element as InterfaceElement));
       }
       result.writeln(imports.toList().join('\n'));
       result.writeln('');
       for (final name in classes.toListValue()!) {
         final type = name.toTypeValue();
-        final classElement = type?.element as ClassElement;
+        final classElement = type?.element as InterfaceElement;
         final visitor = WrapperVisitor(classElement);
         result.writeln(visitor.toString());
       }

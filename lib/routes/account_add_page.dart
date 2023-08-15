@@ -5,6 +5,7 @@
 import 'package:adaptive_breakpoints/adaptive_breakpoints.dart';
 import 'package:app_finance/_classes/currency/currency_provider.dart';
 import 'package:app_finance/_classes/data/account_app_data.dart';
+import 'package:app_finance/_classes/data/account_type.dart';
 import 'package:app_finance/_classes/focus_controller.dart';
 import 'package:app_finance/_mixins/shared_preferences_mixin.dart';
 import 'package:app_finance/custom_text_theme.dart';
@@ -14,6 +15,7 @@ import 'package:app_finance/routes/abstract_page.dart';
 import 'package:app_finance/widgets/_forms/color_selector.dart';
 import 'package:app_finance/widgets/_forms/currency_selector.dart';
 import 'package:app_finance/widgets/_forms/date_time_input.dart';
+import 'package:app_finance/widgets/_forms/full_sized_button.dart';
 import 'package:app_finance/widgets/_forms/icon_selector.dart';
 import 'package:app_finance/widgets/_forms/list_selector.dart';
 import 'package:app_finance/widgets/_forms/month_year_input.dart';
@@ -121,39 +123,12 @@ class AccountAddPageState<T extends AccountAddPage> extends AbstractPageState<Ac
 
   @override
   Widget buildButton(BuildContext context, BoxConstraints constraints) {
-    var helper = ThemeHelper(windowType: getWindowType(context));
-    String title = getButtonName();
-
-    return SizedBox(
-      width: constraints.maxWidth - helper.getIndent() * 4,
-      child: FloatingActionButton(
-        onPressed: () => triggerActionButton(context),
-        focusNode: FocusController.getFocusNode(),
-        tooltip: title,
-        child: Align(
-          alignment: Alignment.center,
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              const Icon(Icons.save),
-              SizedBox(height: helper.getIndent()),
-              Text(title, style: Theme.of(context).textTheme.headlineMedium)
-            ],
-          ),
-        ),
-      ),
+    return FullSizedButton(
+      constraints: constraints,
+      setState: () => triggerActionButton(context),
+      title: getButtonName(),
+      icon: Icons.save,
     );
-  }
-
-  List<ListSelectorItem> getAccountTypes(BuildContext context) {
-    return [
-      ListSelectorItem(id: AppAccountType.account.toString(), name: AppLocalizations.of(context)!.bankAccount),
-      ListSelectorItem(id: AppAccountType.cash.toString(), name: AppLocalizations.of(context)!.cash),
-      ListSelectorItem(id: AppAccountType.debitCard.toString(), name: AppLocalizations.of(context)!.debitCard),
-      ListSelectorItem(id: AppAccountType.creditCard.toString(), name: AppLocalizations.of(context)!.creditCard),
-      ListSelectorItem(id: AppAccountType.deposit.toString(), name: AppLocalizations.of(context)!.deposit),
-      ListSelectorItem(id: AppAccountType.credit.toString(), name: AppLocalizations.of(context)!.credit),
-    ];
   }
 
   @override
@@ -176,7 +151,7 @@ class AccountAddPageState<T extends AccountAddPage> extends AbstractPageState<Ac
             ),
             ListSelector(
               value: type,
-              options: getAccountTypes(context),
+              options: AccountType(context).toList(),
               setState: (value) => setState(() => type = value),
               style: textTheme.numberMedium.copyWith(color: textTheme.headlineSmall?.color),
               indent: indent,

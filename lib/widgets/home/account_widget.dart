@@ -2,11 +2,11 @@
 // Use of this source code is governed by a CC BY-NC-ND 4.0 license that can be
 // found in the LICENSE file.
 
-import 'package:app_finance/_classes/app_data.dart';
 import 'package:app_finance/_classes/app_route.dart';
 import 'package:app_finance/_classes/currency/currency_provider.dart';
 import 'package:app_finance/_classes/data/account_app_data.dart';
 import 'package:app_finance/_classes/currency/exchange.dart';
+import 'package:app_finance/_classes/data/account_type.dart';
 import 'package:app_finance/_mixins/shared_preferences_mixin.dart';
 import 'package:app_finance/widgets/home/base_group_widget.dart';
 import 'package:app_finance/widgets/home/base_line_widget.dart';
@@ -77,7 +77,7 @@ class AccountWidget extends BaseWidget with SharedPreferencesMixin {
 
   List<dynamic> updateItems(context, items, summaryItem) {
     return items.map((o) {
-      o.updateContext(context);
+      o.setContext(context);
       o.progress = summaryItem.details > 0
           ? exchange.reform(o.details, o.currency, exchange.getDefaultCurrency()) / summaryItem.details
           : o.progress;
@@ -87,7 +87,7 @@ class AccountWidget extends BaseWidget with SharedPreferencesMixin {
 
   Widget buildGroupedListWidget(List<dynamic> items, BuildContext context, double offset) {
     final item = wrapBySingleEntity(items);
-    item.updateContext(context);
+    item.setContext(context);
     final scope = updateItems(context, items, item);
     return BaseGroupWidget(
       title: item.title,
@@ -103,7 +103,7 @@ class AccountWidget extends BaseWidget with SharedPreferencesMixin {
 
   Widget buildSingleListWidget(item, BuildContext context, double offset) {
     item = item.first;
-    item.updateContext(context);
+    item.setContext(context);
     return BaseLineWidget(
       uuid: item.uuid,
       title: item.title,

@@ -58,7 +58,7 @@ class ListAccountSelector<K extends ListAccountSelectorItem> extends ListSelecto
 
   @override
   Widget selectorBuilder(context, item, [bool showDivider = false]) {
-    item.item.updateContext(context);
+    item.item.setContext(context);
     return BaseLineWidget(
       uuid: item.item?.uuid ?? '',
       title: item.item?.title ?? '',

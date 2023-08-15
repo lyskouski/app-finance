@@ -11,6 +11,7 @@ import 'package:app_finance/custom_text_theme.dart';
 import 'package:app_finance/_classes/app_data.dart';
 import 'package:app_finance/helpers/theme_helper.dart';
 import 'package:app_finance/widgets/_forms/currency_exchange_input.dart';
+import 'package:app_finance/widgets/_forms/full_sized_button.dart';
 import 'package:app_finance/widgets/_wrappers/required_widget.dart';
 import 'package:app_finance/widgets/_wrappers/row_widget.dart';
 import 'package:app_finance/widgets/_forms/currency_selector.dart';
@@ -76,34 +77,19 @@ class TransferTabState extends State<TransferTab> {
   }
 
   Widget buildButton(BuildContext context, BoxConstraints constraints) {
-    var helper = ThemeHelper(windowType: getWindowType(context));
-    String title = AppLocalizations.of(context)!.createTransferTooltip;
-    return SizedBox(
-      width: constraints.maxWidth - helper.getIndent() * 4,
-      child: FloatingActionButton(
-        onPressed: () => {
-          setState(() {
-            if (hasFormErrors()) {
-              return;
-            }
-            updateStorage();
-            Navigator.popAndPushNamed(context, AppRoute.homeRoute);
-          })
-        },
-        focusNode: FocusController.getFocusNode(),
-        tooltip: title,
-        child: Align(
-          alignment: Alignment.center,
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              const Icon(Icons.save),
-              SizedBox(height: helper.getIndent()),
-              Text(title, style: Theme.of(context).textTheme.headlineMedium)
-            ],
-          ),
-        ),
-      ),
+    return FullSizedButton(
+      constraints: constraints,
+      setState: () => {
+        setState(() {
+          if (hasFormErrors()) {
+            return;
+          }
+          updateStorage();
+          Navigator.popAndPushNamed(context, AppRoute.homeRoute);
+        })
+      },
+      title: AppLocalizations.of(context)!.createTransferTooltip,
+      icon: Icons.save,
     );
   }
 

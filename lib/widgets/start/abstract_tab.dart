@@ -4,6 +4,7 @@
 
 import 'package:adaptive_breakpoints/adaptive_breakpoints.dart';
 import 'package:app_finance/helpers/theme_helper.dart';
+import 'package:app_finance/widgets/_forms/full_sized_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localization.dart';
 
@@ -23,25 +24,11 @@ abstract class AbstractTabState<T extends AbstractTab> extends State<T> {
   }
 
   Widget buildButton(BuildContext context, BoxConstraints constraints) {
-    final helper = ThemeHelper(windowType: getWindowType(context));
-    String title = '${getButtonTitle()} (${AppLocalizations.of(context)!.goNextTooltip})';
-    return SizedBox(
-      width: constraints.maxWidth - helper.getIndent() * 4,
-      child: FloatingActionButton(
-        onPressed: updateState,
-        tooltip: title,
-        child: Align(
-          alignment: Alignment.center,
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              const Icon(Icons.exit_to_app_rounded),
-              SizedBox(height: helper.getIndent()),
-              Text(title, style: Theme.of(context).textTheme.headlineMedium)
-            ],
-          ),
-        ),
-      ),
+    return FullSizedButton(
+      constraints: constraints,
+      setState: updateState,
+      title: '${getButtonTitle()} (${AppLocalizations.of(context)!.goNextTooltip})',
+      icon: Icons.exit_to_app_rounded,
     );
   }
 

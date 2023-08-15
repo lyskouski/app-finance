@@ -36,7 +36,7 @@ class BaseGroupWidget extends StatelessWidget {
 
   Widget buildCategory(BuildContext context, int index, bool toSwap) {
     final item = items[index];
-    item.updateContext(context);
+    item.setContext(context);
     final tooltip = StringBuffer();
     tooltip.writeAll([
       '${AppLocalizations.of(context)!.title}: "${item.title}"\n',
