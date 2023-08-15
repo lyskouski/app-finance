@@ -1,9 +1,9 @@
-## Tips to evaluate Performance Tests:
+## Tips to evaluate Integration Tests
 
 ```
 flutter drive \
   --driver=test_driver/perf_driver.dart \
-  --target=test/performance/{name}_test.dart \
+  --target=integration_test/{name}_test.dart \
   --no-dds
 ```
 

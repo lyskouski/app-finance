@@ -11,8 +11,9 @@ import 'package:integration_test/integration_test.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-import '../../e2e/_steps/file_reader.dart';
-import '../../e2e/_steps/file_runner.dart';
+import '../../test/e2e/_steps/file_reader.dart';
+import '../../test/e2e/_steps/file_reporter.dart';
+import '../../test/e2e/_steps/file_runner.dart';
 
 void main() {
   final binding = IntegrationTestWidgetsFlutterBinding.ensureInitialized();
@@ -36,6 +37,7 @@ void main() {
     await binding.traceAction(
       () async {
         await _init(tester);
+        final reporter = FileReporter();
         final step = await FileReader().getFromString('''
         @start
         Feature: Verify Initial Flow
@@ -56,30 +58,13 @@ void main() {
             And I enter "1000" to "Set Balance" text field
             When I tap "Create new Budget Category" button
             Then I can see "Accounts, total" component
-        ''');
-        final runner = FileRunner(tester);
-        expectSync(await runner.run(step), true);
+        ''', reporter);
+        final runner = FileRunner(tester, reporter);
+        final result = await runner.run(step);
+        reporter.publish();
+        expectSync(result, true);
       },
       reportKey: 'timeline',
     );
   });
-/*
-  testWidgets('Create Account', (WidgetTester tester) async {
-    await _init(tester);
-
-    await tester.pumpAndSettle(const Duration(seconds: 1));
-
-    final accountHeader = find.text('Accounts, total');
-    expect(accountHeader, findsOneWidget);
-    await tester.tap(accountHeader);
-    await tester.pumpAndSettle();
-
-    final btnAdd = find.text('Add account');
-    expect(btnAdd, findsOneWidget);
-    await tester.tap(btnAdd);
-    await tester.pumpAndSettle();
-
-    await tester.pumpAndSettle(const Duration(seconds: 1));
-  });
-*/
 }
