@@ -10,7 +10,7 @@ Feature: Verify Initial Flow
         When I tap "Acknowledge (Go Next)" button
         Given preferences are updated (actually, mocked)
         Then I can see "Create new Account" component
-        When I tap on "first" of "ListSelector" field
+        When I tap on 0 index of "ListSelector" fields
         And I tap "Bank Account" element
         And I enter "Starting Page Account" to "Enter Account Identifier" text field
         And I enter "1000" to "Set Balance" text field

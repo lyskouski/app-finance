@@ -8,21 +8,19 @@ import 'package:gherkin/gherkin.dart';
 
 import '../file_runner.dart';
 
-class TapOnNuOfDefinedField extends When2WithWorld<String, String, World> {
+class TapOnNuOfDefinedField extends When2WithWorld<int, String, World> {
   @override
-  RegExp get pattern => RegExp(r"I tap on {string} of {string} field");
+  RegExp get pattern => RegExp(r"I tap on {int} index of {string} fields");
 
   @override
-  Future<void> executeStep(String order, String type) async {
+  Future<void> executeStep(int order, String type) async {
     Finder? list;
     if (type == 'ListSelector') {
       list = find.byType(ListSelector);
     }
     expect(list, findsWidgets);
-    if (order == 'first') {
-      list = list!.first;
-    }
-    await FileRunner.tester.tap(list!);
+    await FileRunner.tester.ensureVisible(list!.at(order));
+    await FileRunner.tester.tap(list.at(order));
     await FileRunner.tester.pumpAndSettle();
   }
 }
