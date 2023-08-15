@@ -17,8 +17,8 @@ class FirstRun extends Given with SharedPreferencesMixin {
     Finder init;
     do {
       init = find.text('Project Initialization');
-      await FileRunner.tester.pumpAndSettle(const Duration(microseconds: 100));
+      await FileRunner.tester.pumpAndSettle(const Duration(microseconds: 50));
     } while (init.evaluate().isNotEmpty);
-    await FileRunner.tester.pumpAndSettle(const Duration(microseconds: 600));
+    await FileRunner.tester.pumpAndSettle();
   }
 }

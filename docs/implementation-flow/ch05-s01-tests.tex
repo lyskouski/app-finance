@@ -11,7 +11,7 @@ but also entail a substantial effort and potential complications.
 
 \subsubsection{Providing Integration Tests}
 
-Unit tests (\ref{ut-unit}) and widget tests (\ref{widget-tests}) serve as valuable tools for assessing isolated classes, 
+Unit (\ref{ut-unit}) and widget (\ref{widget-tests}) tests serve as valuable tools for assessing isolated classes, 
 functions, or widgets. However, not all of the problems can be tackled by them. Integration tests are used to identify 
 systemic flaws (data corruption, concurrency problems, miscommunication between services, etc.) that might not be 
 evident in unit tests by verifying a synergy of individual assets, validating the application as a whole. 
@@ -81,7 +81,7 @@ chromedriver --port=4444
 # Launch tests
 flutter drive \
   --driver=test_driver/perf_driver.dart \
-  --target=test/performance/name_of_test.dart \
+  --target=integration_test/name_of_test.dart \
   --profile
 \end{lstlisting}
 
@@ -143,18 +143,20 @@ void main() {
 }
 \end{lstlisting}
 
-\noindent Generated file \q{timeline.timeline.json} can be traced by \q{chrome://tracing/} in Google Chrome browser 
+\noindent Generated \q{timeline.timeline.json}-file can be traced by \q{chrome://tracing/} in Google Chrome browser 
 (\cref{img:perf-chrome-tracing}):
 
 \img{features/perf-chrome-tracing}{Google Chrome -- performance trace}{img:perf-chrome-tracing}
 
-\noindent The \q{timeline.timeline\_summary.json}-file can be opened in IDE as a native \q{JSON}-file and analyzed 
-manually a performance of the application. For example, the value of \q{average\_frame\_build\_time\_millis}-parameter 
-is recommended to be below 16 milliseconds to ensure that the app runs at 60 frames per second without glitches. Other 
-parameters are widely described on the page --
+\noindent The \q{timeline.timeline\_summary.json}-file, by being a native \q{JSON}-file, can be opened in IDE for a 
+manual check, but it's mostly used in CI/CD to fail the build if any of defined parameter is out of the declared range. 
+
+By example, the value of \q{average\_frame\_build\_time\_millis}-parameter is recommended to be below 16 milliseconds to 
+ensure that the app runs at 60 frames per second without glitches. Other parameters are widely described on the page --
 \href{https://api.flutter.dev/flutter/flutter\_driver/TimelineSummary/summaryJson.html}{https://api.flutter.dev/flutter/flutter\_driver/TimelineSummary}.
 
 
+\subsubsection{Measuring Responsiveness}
 \paragraph{Load Testing}
 Check response time and resource utilization for the first run (Initial Setup) by creating account and budget 
 category:
@@ -181,8 +183,8 @@ Feature: Verify Initial Flow
     Then I can see "Accounts, total" component
 \end{lstlisting}
 
-\noindent And, what we've identified from our first tests execution is a degraded \q{frame build}-parameter 
-(\cref{tb:frame-build}) that affects our frames per second (FPS) by generating only 37 frames instead of 60:\\
+\noindent And, what we've identified from executions (\cref{tb:frame-build}) is a degraded \q{frame build}-parameter 
+that affects our frames per second (FPS) by generating only 37 frames instead of 60:\\
 
 \begin{table}[h!]
   \begin{tabular}{ |p{6.8cm}||r|r|r|  }
@@ -250,20 +252,80 @@ Future<void> main() async {
 
 \noindent Finally, we've taken \q{56 FPS (average)} as an outcome from that tunning.
 
-
-\paragraph{Stress Testing}
+\subsubsection{Anticipating Churn Rate}
+\paragraph{Volume Testing}
 Check initial load (a time before the enabled interaction) with a huge transaction log history (32Mb, 128Mb, 
 512Mb, 2Gb).
+
+In the context of the current test, our primary objective is to ascertain the time required for the main page to 
+become accessible. To achieve this goal, we will monitor the disappearance of the "Project Initialization" header. 
+Subsequently, we will contrast this elapsed time with a size of the transactions' log history.
+
+\begin{lstlisting}
+// ./integration_test/stress/initialization_test.dart
+testWidgets('Cover Initial Page', (WidgetTester tester) async {
+  // Start app by using 'pumpWidget'
+  await _init(tester);
+  FileRunner.tester = tester;
+  // Trigger step to verify that data is loaded
+  await FirstRun().executeStep();
+  // Change test execution timeout (*@ \stopnumber @*)
+}, timeout: const Timeout(Duration(minutes: 30)));
+
+// ./test/e2e/_steps/given/first_run.dart
+class FirstRun extends Given with SharedPreferencesMixin {
+  @override
+  RegExp get pattern => RegExp(r"I am firstly opened the app");
+
+  @override
+  Future<void> executeStep() async {
+    Finder init;
+    do {
+      init = find.text('Project Initialization');
+      await FileRunner.tester.pumpAndSettle(const Duration(microseconds: 50));
+    } while (init.evaluate().isNotEmpty);
+    await FileRunner.tester.pumpAndSettle();
+  }
+}
+\end{lstlisting}
+
+\begin{figure}
+\begin{tikzpicture}
+  \begin{axis}[
+    xlabel={Items},
+    ylabel={Loading Time, ms},
+    xmin=0, xmax=5000000,
+    ymin=0, ymax=400000,
+    xmode=log,
+    log basis x={2},
+    legend pos=north west,
+    ymajorgrids=true,
+    grid style=dashed,
+  ] 
+  \addplot[
+    color=blue,
+    mark=square,
+    ]
+    coordinates {
+      (0, 863) (4, 935) (8, 887) (16, 937) (32, 931) (64, 932) (128, 957) (256, 1014) (512, 1025) (1024, 1069) 
+      (2048, 1169) (4096, 1358) (8192, 1664) (16384, 2221) (32768, 3351) (65536, 5515) (73659, 7064) (146444, 12687)
+      (292888, 24353) (585776, 47693) (4686208, 351456)
+    };
+    \legend{Loading Time}
+  \end{axis}
+\end{tikzpicture}
+\caption{Stress Testing: Loading Time vs. Number of Items} \label{t-stress}
+\end{figure}
+
+\noindent Results (\cref{t-stress}) have shown that the needed time for the cold start varies from 863 milliseconds  
+with zero items up to 5.85 minutes to load 2.53 GB transactions' log file with 4.7 millions of items. That's far away 
+from our assertion -- less than 2 seconds (for the current solution, 8.20 MB file size with 16,4 thousands of items).
+This implies that somewhere in between of 1.5 to 5 years of consistent usage, our customers might encounter a 
+situation where opening the application takes longer than 2 seconds. Based on retrieved data, we have to optimize our 
+initial start by providing warm-up caching approach (mostly known as cold / warm caches separation \cite{Tom17}). 
 
 
 \paragraph{Endurance Testing}
 Check response time and resource utilization by adding different types of data within a different time 
 periods (15 minutes, an hour, 4 hours, 16 hours).
 
-
-\paragraph{Spike Testing}
-Postponed till the enabled synchronization between different devices.
-
-
-\paragraph{Volume Testing}
-Combine reporting of "Load Testing" with data from "Stress Testing".
