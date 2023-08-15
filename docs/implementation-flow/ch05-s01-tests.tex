@@ -33,8 +33,8 @@ dev_dependencies:
     sdk: flutter
 \end{lstlisting}
 
-\noindent The implementation's deference from widget tests is in a usage of the next code line, that executes tests on 
-a physical device or platform:
+\noindent The implementation's deference from a widget test is in a usage of the next code line, that enables tests 
+execution on a physical device or platform:
 \begin{lstlisting}
 IntegrationTestWidgetsFlutterBinding.ensureInitialized();
 \end{lstlisting}
@@ -171,19 +171,18 @@ Feature: Verify Initial Flow
     Then I can see "Create new Account" component
     When I tap on "first" of "ListSelector" field
     And I tap "Bank Account" element
-    And I enter "Starting Page Account" to "Enter Account Identifier" text field
+    And I enter "New Account" to "Enter Account Identifier" text field
     And I enter "1000" to "Set Balance" text field
     And I tap "Create new Account" button
     Then I can see "Create new Budget Category" component
-    When I enter "Starting Page Budget" to "Enter Budget Category Name" text field
+    When I enter "New Budget" to "Enter Budget Category Name" text field
     And I enter "1000" to "Set Balance" text field
     When I tap "Create new Budget Category" button
     Then I can see "Accounts, total" component
 \end{lstlisting}
 
 \noindent And, what we've identified from our first tests execution is a degraded \q{frame build}-parameter 
-that affects our frames per second by providing 37 frames instead of 60 (\cref{tb:frame-build}, 
-\cref{img:perf-slow-frame}):\\
+(\cref{tb:frame-build}) that affects our frames per second (FPS) by generating only 37 frames instead of 60:\\
 
 \begin{table}[h!]
   \begin{tabular}{ |p{6.8cm}||r|r|r|  }
@@ -202,13 +201,54 @@ that affects our frames per second by providing 37 frames instead of 60 (\cref{t
 
 \img{features/perf-slow-frame}{Performance Monitor in Visual Studio Code}{img:perf-slow-frame}
 
-\noindent That problem is relevant to a shader (a piece of code that runs on a graphics processing unit [GPU]) rendering
-when the graphics backend (that Flutter uses) sees a new sequence of draw commands for the first time, it sometimes 
-generates and compiles a custom GPU shader for that sequence of commands. This allows that sequence and potentially similar sequences to render as fast as possible.
+\noindent This issue (\cref{img:perf-slow-frame}) pertains to a compilation jank in animations due to shaders 
+calculation (a code snippets executed on a graphics processing unit [GPU] to render a sequence of draw commands). 
+Their pre-compilation strategy mitigates the compilation-related disruptions during subsequent animations, and improves 
+frames per second rendering. To run the app with \q{--cache-sksl} turned on to capture shaders in SkSL:
 
-Flutter provides command line tools for app developers to collect shaders that might be needed for end-users in the SkSL (Skia Shader Language) format. The SkSL shaders can then be packaged into the app, and get warmed up (pre-compiled) when an end-user first opens the app, thereby reducing the compilation jank in later animations.
+\begin{lstlisting}[language=bash]
+flutter run --profile --cache-sksl --purge-persistent-cache
+\end{lstlisting}
 
+\noindent Warm-up shaders in Skia Shader Language (SkSL) format for an application build:
 
+\begin{lstlisting}[language=bash]
+# Capture shaders in Skia Shader Language (SkSL) format into a file
+flutter drive --profile --cache-sksl --write-sksl-on-exit sksl.json -t test_driver/warm_up.dart
+# Build app with SkSL warm-up
+flutter build ios --bundle-sksl-path sksl.json
+\end{lstlisting}
+
+\begin{lstlisting}
+// ./test_driver/warm_up.dart
+import 'package:integration_test/integration_test_driver.dart';
+Future<void> main() {
+  return integrationDriver();(*@ \stopnumber @*)
+}
+
+// ./test_driver/warm_up_test.dart
+Future<void> main() async {
+  IntegrationTestWidgetsFlutterBinding.ensureInitialized();
+  SharedPreferencesMixin.pref = await SharedPreferences.getInstance();
+
+  testWidgets('Warm-up', (WidgetTester tester) async {
+    await tester.pumpWidget(MultiProvider(
+      providers: [
+        ChangeNotifierProvider<AppData>(
+          create: (_) => AppData(),
+        ),
+        ChangeNotifierProvider<AppTheme>(
+          create: (_) => AppTheme(ThemeMode.system),
+        ),
+      ],
+      child: const MyApp(),
+    ));
+    await tester.pumpAndSettle(const Duration(seconds: 3));
+  });
+}
+\end{lstlisting}
+
+\noindent Finally, we've taken \q{56 FPS (average)} as an outcome from that tunning.
 
 
 \paragraph{Stress Testing}
