@@ -14,7 +14,11 @@ class FirstRun extends Given with SharedPreferencesMixin {
 
   @override
   Future<void> executeStep() async {
-    await FileRunner.tester.pumpAndSettle(const Duration(seconds: 2));
-    await FileRunner.tester.pumpAndSettle();
+    Finder init;
+    do {
+      init = find.text('Project Initialization');
+      await FileRunner.tester.pumpAndSettle(const Duration(microseconds: 100));
+    } while (init.evaluate().isNotEmpty);
+    await FileRunner.tester.pumpAndSettle(const Duration(microseconds: 600));
   }
 }
