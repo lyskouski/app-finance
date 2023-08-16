@@ -5,6 +5,7 @@
 import 'dart:io';
 import 'dart:convert';
 import 'dart:async';
+import 'dart:math';
 import 'package:app_finance/_classes/app_data.dart';
 import 'package:app_finance/_classes/data/account_app_data.dart';
 import 'package:app_finance/_classes/data/bill_app_data.dart';
@@ -26,13 +27,40 @@ class TransactionLog with SharedPreferencesMixin {
 
   static IV get code => IV.fromLength(8);
 
-  static Future<File> get _logFle async {
-    final path = await getApplicationDocumentsDirectory();
-    var file = File('${path.absolute.path}/terCAD/app-finance.log');
+  static Future<File> _get(Directory path) async {
+    File file = File('${path.absolute.path}/terCAD/app-finance.log');
     if (!(await file.exists())) {
       await file.create(recursive: true);
+      file.writeAsString("\n", mode: FileMode.append);
     }
     return file;
+  }
+
+  static Future<File> get _logFle async {
+    File? file;
+    try {
+      file = await _get(await getApplicationDocumentsDirectory());
+    } catch (e) {
+      file = await _get(Directory.systemTemp);
+    }
+    return file;
+  }
+
+  static String _formatBytes(int bytes) {
+    const sizes = ['B', 'KB', 'MB', 'GB', 'TB'];
+    if (bytes == 0) return '0 B';
+    final i = (log(bytes) / log(1024)).floor();
+    return '${(bytes / pow(1024, i)).toStringAsFixed(2)} ${sizes[i]}';
+  }
+
+  static Future<String> getSize() async {
+    int? size;
+    if (kIsWeb) {
+      size = increment * 256;
+    } else {
+      size = (await _logFle).lengthSync();
+    }
+    return _formatBytes(size);
   }
 
   static String getHash(Map<String, dynamic> data) {
@@ -44,17 +72,21 @@ class TransactionLog with SharedPreferencesMixin {
     return self.getPreference(self.prefDoEncrypt) == prefIsEncrypted;
   }
 
+  static Future<void> saveRaw(String line) async {
+    if (kIsWeb) {
+      TransactionLog().setPreference('log$increment', line);
+    } else {
+      (await _logFle).writeAsString("$line\n", mode: FileMode.append);
+    }
+  }
+
   static Future<void> save(dynamic content, [bool isDirect = false]) async {
     String line = content.toString();
     if (!isDirect && doEncrypt()) {
       line = salt.encrypt(line, iv: code).base64;
     }
-    if (kIsWeb) {
-      TransactionLog().setPreference('log$increment', line);
-      increment++;
-    } else {
-      (await _logFle).writeAsString("$line\n", mode: FileMode.append);
-    }
+    await saveRaw(line);
+    increment++;
   }
 
   static void init(AppData store, String type, Map<String, dynamic> data) {
@@ -95,27 +127,24 @@ class TransactionLog with SharedPreferencesMixin {
 
   static Stream<String> read() async* {
     Stream<String> lines;
+    increment = 0;
     if (kIsWeb) {
-      increment = 0;
       lines = _loadWeb();
     } else {
       lines = (await _logFle).openRead().transform(utf8.decoder).transform(const LineSplitter());
     }
     await for (var line in lines) {
+      if (!kIsWeb) {
+        increment++;
+      }
       yield line;
     }
   }
 
   static Future<bool> load(AppData store) async {
-    Stream<String> lines;
-    if (kIsWeb) {
-      lines = _loadWeb();
-    } else {
-      lines = (await _logFle).openRead().transform(utf8.decoder).transform(const LineSplitter());
-    }
     bool isEncrypted = doEncrypt();
     bool isOK = true;
-    await for (var line in lines) {
+    await for (var line in read()) {
       if (line == '') {
         continue;
       }

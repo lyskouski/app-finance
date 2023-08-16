@@ -11,7 +11,7 @@ but also entail a substantial effort and potential complications.
 
 \subsubsection{Providing Integration Tests}
 
-Unit tests (\ref{ut-unit}) and widget tests (\ref{widget-tests}) serve as valuable tools for assessing isolated classes, 
+Unit (\ref{ut-unit}) and widget (\ref{widget-tests}) tests serve as valuable tools for assessing isolated classes, 
 functions, or widgets. However, not all of the problems can be tackled by them. Integration tests are used to identify 
 systemic flaws (data corruption, concurrency problems, miscommunication between services, etc.) that might not be 
 evident in unit tests by verifying a synergy of individual assets, validating the application as a whole. 
@@ -38,6 +38,9 @@ execution on a physical device or platform:
 \begin{lstlisting}
 IntegrationTestWidgetsFlutterBinding.ensureInitialized();
 \end{lstlisting}
+
+\q{Firebase Test Lab} and \q{BrowserStack} stand as a cloud-powered testing platforms, and enable the integration tests
+evaluation across an extensive spectrum of devices and configurations.
 
 
 \subsubsection{Doing Performance Testing}
@@ -81,7 +84,7 @@ chromedriver --port=4444
 # Launch tests
 flutter drive \
   --driver=test_driver/perf_driver.dart \
-  --target=test/performance/name_of_test.dart \
+  --target=integration_test/name_of_test.dart \
   --profile
 \end{lstlisting}
 
@@ -143,18 +146,20 @@ void main() {
 }
 \end{lstlisting}
 
-\noindent Generated file \q{timeline.timeline.json} can be traced by \q{chrome://tracing/} in Google Chrome browser 
+\noindent Generated \q{timeline.timeline.json}-file can be traced by \q{chrome://tracing/} in Google Chrome browser 
 (\cref{img:perf-chrome-tracing}):
 
 \img{features/perf-chrome-tracing}{Google Chrome -- performance trace}{img:perf-chrome-tracing}
 
-\noindent The \q{timeline.timeline\_summary.json}-file can be opened in IDE as a native \q{JSON}-file and analyzed 
-manually a performance of the application. For example, the value of \q{average\_frame\_build\_time\_millis}-parameter 
-is recommended to be below 16 milliseconds to ensure that the app runs at 60 frames per second without glitches. Other 
-parameters are widely described on the page --
+\noindent The \q{timeline.timeline\_summary.json}-file, by being a native \q{JSON}-file, can be opened in IDE for a 
+manual check, but it's mostly used in CI/CD to fail the build if any of defined parameter is out of the declared range. 
+
+By example, the value of \q{average\_frame\_build\_time\_millis}-parameter is recommended to be below 16 milliseconds to 
+ensure that the app runs at 60 frames per second without glitches. Other parameters are widely described on the page --
 \href{https://api.flutter.dev/flutter/flutter\_driver/TimelineSummary/summaryJson.html}{https://api.flutter.dev/flutter/flutter\_driver/TimelineSummary}.
 
 
+\subsubsection{Measuring Responsiveness}
 \paragraph{Load Testing}
 Check response time and resource utilization for the first run (Initial Setup) by creating account and budget 
 category:
@@ -181,8 +186,8 @@ Feature: Verify Initial Flow
     Then I can see "Accounts, total" component
 \end{lstlisting}
 
-\noindent And, what we've identified from our first tests execution is a degraded \q{frame build}-parameter 
-(\cref{tb:frame-build}) that affects our frames per second (FPS) by generating only 37 frames instead of 60:\\
+\noindent And, what we've identified from executions (\cref{tb:frame-build}) is a degraded \q{frame build}-parameter 
+that affects our frames per second (FPS) by generating only 37 frames instead of 60:\\
 
 \begin{table}[h!]
   \begin{tabular}{ |p{6.8cm}||r|r|r|  }
@@ -250,20 +255,235 @@ Future<void> main() async {
 
 \noindent Finally, we've taken \q{56 FPS (average)} as an outcome from that tunning.
 
-
-\paragraph{Stress Testing}
+\subsubsection{Anticipating Churn Rate}
+\paragraph{Volume Testing}
 Check initial load (a time before the enabled interaction) with a huge transaction log history (32Mb, 128Mb, 
 512Mb, 2Gb).
+
+In the context of the current test, our primary objective is to ascertain the time required for the main page to 
+become accessible. To achieve this goal, we will monitor the disappearance of the "Project Initialization" header. 
+Subsequently, we will contrast this elapsed time with a size of the transactions' log history.
+
+\begin{lstlisting}
+// ./integration_test/stress/initialization_test.dart
+testWidgets('Cover Initial Page', (WidgetTester tester) async {
+  // Start app by using 'pumpWidget'
+  await _init(tester);
+  FileRunner.tester = tester;
+  // Trigger step to verify that data is loaded
+  await FirstRun().executeStep();
+  // Change test execution timeout (*@ \stopnumber @*)
+}, timeout: const Timeout(Duration(minutes: 30)));
+
+// ./test/e2e/_steps/given/first_run.dart
+class FirstRun extends Given with SharedPreferencesMixin {
+  @override
+  RegExp get pattern => RegExp(r"I am firstly opened the app");
+
+  @override
+  Future<void> executeStep() async {
+    Finder init;
+    do {
+      init = find.text('Project Initialization');
+      await FileRunner.tester.pumpAndSettle(const Duration(microseconds: 50));
+    } while (init.evaluate().isNotEmpty);
+    await FileRunner.tester.pumpAndSettle();
+  }
+}
+\end{lstlisting}
+
+\begin{figure}
+\begin{tikzpicture}
+  \begin{axis}[
+    xlabel={Items},
+    ylabel={Loading Time, ms},
+    xmin=0, xmax=5000000,
+    ymin=0, ymax=400000,
+    xmode=log,
+    log basis x={2},
+    legend pos=north west,
+    ymajorgrids=true,
+    grid style=dashed,
+  ] 
+  \addplot[
+    color=blue,
+    mark=square,
+    ]
+    coordinates {
+      (0, 863) (4, 935) (8, 887) (16, 937) (32, 931) (64, 932) (128, 957) (256, 1014) (512, 1025) (1024, 1069) 
+      (2048, 1169) (4096, 1358) (8192, 1664) (16384, 2221) (32768, 3351) (65536, 5515) (73659, 7064) (146444, 12687)
+      (292888, 24353) (585776, 47693) (4686208, 351456)
+    };
+    \legend{Loading Time}
+  \end{axis}
+\end{tikzpicture}
+\caption{Stress Testing: Loading Time vs. Number of Items} \label{t-stress}
+\end{figure}
+
+\noindent Results (\cref{t-stress}) have shown that the needed time for the cold start varies from 863 milliseconds  
+with zero items up to 5.85 minutes to load 2.53 GB transactions' log file with 4.7 millions of items. That's far away 
+from our assertion -- less than 2 seconds (for the current solution, 8.20 MB file size with 16.4 thousands of items).
+This implies that somewhere in between of 1.5 to 5 years of a consistent usage, our customers might encounter a 
+situation where opening the application takes longer than 2 seconds. Based on retrieved data, we have to optimize  
+initialization by implementing warm-up caching strategy (mostly known as hot, warm, and cold caches \cite{Tom17}). 
 
 
 \paragraph{Endurance Testing}
 Check response time and resource utilization by adding different types of data within a different time 
-periods (15 minutes, an hour, 4 hours, 16 hours).
+periods (15 minutes, an hour, 4 hours, 8 hours).
 
+In that test we would be interested in debugging memory issues via DevTools. DevTools is a suite of performance and 
+debugging tools for Dart and Flutter that can be started from IDE (with installed extensions from \ref{first-step}) 
+by pressing \q{[F1]} and typing \q{devtools} there.
 
-\paragraph{Spike Testing}
-Postponed till the enabled synchronization between different devices.
+Detecting memory leaks involves analyzing the Heap Snapshot within the Memory View. These snapshots 
+(\cref{img:memory-snapshot}) provide a means to compare the heap's growth and identify objects that might exhibit an 
+unexpected increase in count. While it's true that images and media can contribute substantially to memory consumption, 
+they often aren't the root cause of memory leaks. Instead, attention should be directed towards addressing a potential 
+incomplete rebound phenomenon (\cref{img:memory-leak}) for Resident Set Size (RSS, program's memory that is currently 
+loaded into RAM and is available for immediate use). A notable illustration of a sizeable, short-lived object that 
+could inadvertently infiltrate a long-lived area, consequently leading to leaks, is the \q{context}-parameter 
+transmitted to Flutter's build method:
 
+\begin{lstlisting}
+Widget build(BuildContext context) {
+\end{lstlisting}
+{
+\xpretocmd{\lstlisting}{\vspace{-12pt}}{}{}
+\begin{lstlisting}[firstnumber=2, backgroundcolor=\color{backred}]
+(*@\kdiff{-}@*)  // [!] Leak prone issue
+(*@\kdiff{-}@*)  final handler = () => apply(Theme.of(context));
+\end{lstlisting}
+\begin{lstlisting}[firstnumber=2, backgroundcolor=\color{backgreen}]
+(*@\kdiff{+}@*)  final theme = Theme.of(context);
+(*@\kdiff{+}@*)  final handler = () => apply(theme);
+\end{lstlisting}
+\begin{lstlisting}[firstnumber=4]
+   useHandler(handler);
+\end{lstlisting}
+}
 
-\paragraph{Volume Testing}
-Combine reporting of "Load Testing" with data from "Stress Testing".
+\img{features/memory-snapshot}{DevTools: Heap Snapshot within the Memory View}{img:memory-snapshot}
+\img{features/memory-leak}{Incomplete rebound phenomenon for RSS}{img:memory-leak}
+\img{features/devtools-connection}{DevTools: Connect to the running instance}{img:devtools-connection}
+
+\noindent To track CPU and Memory Heap we'll run Devtools separately, and connect it (\cref{img:devtools-connection}) 
+to the process by a provided URL from an integration tests' output:
+
+\begin{lstlisting}[language=bash]
+Building Windows application...           13.1s
+V  Built build\windows\runner\Debug\Fingram.exe.
+VMServiceFlutterDriver: Connecting to Flutter application at http://127.0.0.1:52135/VDm4NX0QVr4=/
+VMServiceFlutterDriver: Isolate found with number: 3513574544292703
+VMServiceFlutterDriver: Isolate is paused at start.
+\end{lstlisting}
+
+\noindent The test itself will simulate a user behavior by randomly creating bills (90\%), budget categories (10\%),
+and accounts (5\%): 
+
+\begin{lstlisting}
+testWidgets('Imitate User Activities', (WidgetTester tester) async {
+  final startTime = DateTime.now();
+  await cleanUp();
+  await firstRun(tester);
+  Duration duration;
+  int idx = 0;
+  final random = Random();
+  do {
+    if (random.nextDouble() <= 0.05) await createAccount(tester, idx);
+    await FileRunner.tester.pumpAndSettle(const Duration(seconds: 5));
+    if (random.nextDouble() <= 0.10) await createBudget(tester, idx);
+    await FileRunner.tester.pumpAndSettle(const Duration(seconds: 5));
+    if (random.nextDouble() <= 0.90) await createBill(tester, idx);
+    await FileRunner.tester.pumpAndSettle(const Duration(seconds: 5));
+    final endTime = DateTime.now();
+    duration = endTime.difference(startTime);
+    idx++;
+  } while (duration.inMinutes < 15);
+}, timeout: const Timeout(Duration(hours: 9)));
+\end{lstlisting}
+
+\noindent After a couple of minutes of execution we've taken an error:
+
+\begin{lstlisting}[language=bash]
+Running scenario: Create new Bill # :2
+  V Given I am on "Home" page # :3 took 945ms
+  V When I tap "Add Bill, Income or Transfer" button # :4 took 356ms
+  V And I tap on 0 index of "ListAccountSelector" fields # :5 took 696ms
+  V And I tap on 0 index of "BaseLineWidget" fields # :6 took 350ms
+  V And I tap on 0 index of "ListBudgetSelector" fields # :7 took 465ms
+  V And I tap on 0 index of "BaseLineWidget" fields # :8 took 350ms
+  V And I enter "10" to "Set Amount" text field # :9 took 266ms
+  V And I enter "Bill #8" to "Set Expense Details" text field # :10 took 266ms
+Exception: RangeError (index): Invalid value: Valid value range is empty: -1
+\end{lstlisting}
+
+\noindent The problem is linked to a \q{tap}-action on buttons that leads to \q{Navigator.pop | push}-command 
+execution, and it can be "easily" resolved by adding a duration freeze:
+
+\begin{lstlisting}
+// ./test/e2e/_steps/when/tap_defined_button.dart
+await FileRunner.tester.tap(btn);
+await FileRunner.tester.pumpAndSettle(const Duration(milliseconds: 400));
+\end{lstlisting}
+
+\noindent As a side effect of that case investigation, it's been noticed a couple of problems. One of them is relevant
+to a missed first record from transaction logs during initialization process:
+
+\begin{lstlisting}[language=bash]
+flutter: [FormatException: Invalid length, must be multiple of four (at character 84)
+\end{lstlisting}
+
+The problem here is that the \q{transaction log}-file was created with a BOM as a first symbol in a line, that's why 
+encryption is failing. Good catch! Let's add a new line at a moment of the file creation, and go further.
+
+\noindent Additionally raised a problem with \q{FloatingActionButton}-buttons:
+
+\begin{lstlisting}[language=bash]
+flutter: The following assertion was thrown during a scheduler callback:
+flutter: There are multiple heroes that share the same tag within a subtree.
+flutter: Within each subtree for which heroes are to be animated (i.e. a PageRoute subtree), each Hero must
+flutter: have a unique non-null tag.
+flutter: In this case, multiple heroes had the following tag: <default FloatingActionButton tag>
+\end{lstlisting}
+
+The error indicates that we have multiple \q{Hero} widgets (\q{FloatingActionButton}-buttons in our case) with the 
+same tag within a subtree. Heroes in Flutter are used to create smooth animations when transitioning between screens or 
+widgets. Each Hero widget must have a unique non-null tag to properly manage the animation between the source 
+and destination widgets. So, we have to make them unique by adding \q{heroTag}-property per each.
+
+Lastly, the outcomes gleaned from our exhaustive endurance testing have illuminated the presence of memory 
+leaks during the intensive application usage, as depicted in Figure \ref{img:memory-profiler}. Simply saying, each 
+new interaction within the application has a discernible impact on its responsiveness, culminating in a noticeable 
+performance degradation after a couple minutes, as illustrated in Graph \ref{gr:taken-cycle}. That fix has to go upfront
+of any other changes; ignoring to do so could result in a significant loss of users who will get their first impression 
+in a negative aspect.
+
+\img{features/memory-profiler}{Flutter DevTools: Memory Profiler Results}{img:memory-profiler}
+
+\begin{figure}
+\begin{tikzpicture}
+  \begin{axis}[
+    title={},
+    xlabel={Interation},
+    ylabel={Spent Time, ms},
+    legend pos=north west,
+    ymajorgrids=true,
+    grid style=dashed,
+    xtick=data,
+    xticklabels={10th, 20th, 40th, 100th, 200th},
+  ]
+  \addplot[
+    color=blue,
+    mark=square,
+    ]
+    coordinates {
+    (1, 833) (2, 917) (3, 1016) (4, 1633) (5, 3368)
+    };
+    \label{plot1}
+    \addlegendentry{Spent Time}
+  
+  \end{axis}
+\end{tikzpicture}
+\caption{Endurance Testing: Taken Cycle vs. Spent Time} \label{gr:taken-cycle}
+\end{figure}

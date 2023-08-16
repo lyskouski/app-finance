@@ -146,6 +146,7 @@ class SyncTabState extends State<RecoverTab> {
               SizedBox(
                 width: double.infinity,
                 child: FloatingActionButton(
+                  heroTag: 'recover_tab_save',
                   onPressed: () => save2WebDav(context),
                   tooltip: AppLocalizations.of(context)!.saveTooltip,
                   child: Text(AppLocalizations.of(context)!.saveTooltip),
@@ -155,6 +156,7 @@ class SyncTabState extends State<RecoverTab> {
               SizedBox(
                 width: double.infinity,
                 child: FloatingActionButton(
+                  heroTag: 'recover_tab_recover',
                   onPressed: () => recover4WebDav(context),
                   tooltip: AppLocalizations.of(context)!.recoveryTooltip,
                   child: Text(AppLocalizations.of(context)!.recoveryTooltip),

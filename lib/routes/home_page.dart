@@ -84,6 +84,7 @@ class HomePageState extends AbstractPageState<HomePage> with SharedPreferencesMi
   @override
   Widget buildButton(BuildContext context, BoxConstraints constraints) {
     return FloatingActionButton(
+      heroTag: 'home_page',
       onPressed: () => Navigator.pushNamed(context, AppRoute.billAddRoute),
       tooltip: AppLocalizations.of(context)!.addMainTooltip,
       child: const Icon(Icons.add),

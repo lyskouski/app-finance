@@ -27,6 +27,7 @@ class GoalPageState extends AbstractPageState<GoalPage> {
   @override
   Widget buildButton(BuildContext context, BoxConstraints constraints) {
     return FloatingActionButton(
+      heroTag: 'goal_view_page',
       onPressed: () => Navigator.pushNamed(context, AppRoute.goalAddRoute),
       tooltip: AppLocalizations.of(context)!.addGoalTooltip,
       child: const Icon(Icons.add),

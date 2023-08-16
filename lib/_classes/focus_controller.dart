@@ -56,6 +56,7 @@ class FocusController {
     bool isAttached = _controller[_activeClass]?.hasClients ?? false;
     RenderObject? firstNode;
     // @todo: drop after changing 'package:dropdown_search'
+    /*
     double shift = 0;
     int idx = nodes.indexOf(node);
     for (int i = 0; i <= idx; i++) {
@@ -67,14 +68,14 @@ class FocusController {
         break;
       }
       shift += 67;
-    }
+    }*/
     // end
     RenderObject? focusedNode;
     if (node.context != null && node.context!.mounted) {
       focusedNode = node.context?.findRenderObject();
     }
     if (isAttached && focusedNode is RenderBox && firstNode is RenderBox) {
-      double delta = focusedNode.localToGlobal(Offset.zero).dy - firstNode.localToGlobal(Offset.zero).dy + shift;
+      double delta = focusedNode.localToGlobal(Offset.zero).dy - firstNode.localToGlobal(Offset.zero).dy; // + shift;
       _controller[_activeClass]?.animateTo(
         delta,
         duration: const Duration(milliseconds: 300),

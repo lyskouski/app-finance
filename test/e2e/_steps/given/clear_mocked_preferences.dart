@@ -10,7 +10,7 @@ import 'package:gherkin/gherkin.dart';
 import '../file_runner.dart';
 import '../../e2e_test.wrapper.dart';
 
-class ClearPreferences extends Given with SharedPreferencesMixin {
+class ClearMockedPreferences extends Given with SharedPreferencesMixin {
   @override
   RegExp get pattern => RegExp(r"I clear my preferences at the start");
 

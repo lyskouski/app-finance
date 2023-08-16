@@ -18,8 +18,9 @@ import '../../test/e2e/_steps/file_runner.dart';
 void main() {
   final binding = IntegrationTestWidgetsFlutterBinding.ensureInitialized();
 
-  _init(WidgetTester tester) async {
+  Future<void> init(WidgetTester tester) async {
     SharedPreferencesMixin.pref = await SharedPreferences.getInstance();
+    await SharedPreferencesMixin.pref.clear();
     await tester.pumpWidget(MultiProvider(
       providers: [
         ChangeNotifierProvider<AppData>(
@@ -36,7 +37,7 @@ void main() {
   testWidgets('Cover Starting Page', (WidgetTester tester) async {
     await binding.traceAction(
       () async {
-        await _init(tester);
+        await init(tester);
         final reporter = FileReporter();
         final step = await FileReader().getFromString('''
         @start
