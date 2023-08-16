@@ -39,6 +39,9 @@ execution on a physical device or platform:
 IntegrationTestWidgetsFlutterBinding.ensureInitialized();
 \end{lstlisting}
 
+\q{Firebase Test Lab} and \q{BrowserStack} stand as a cloud-powered testing platforms, and enable the integration tests
+evaluation across an extensive spectrum of devices and configurations.
+
 
 \subsubsection{Doing Performance Testing}
 
@@ -319,13 +322,99 @@ class FirstRun extends Given with SharedPreferencesMixin {
 
 \noindent Results (\cref{t-stress}) have shown that the needed time for the cold start varies from 863 milliseconds  
 with zero items up to 5.85 minutes to load 2.53 GB transactions' log file with 4.7 millions of items. That's far away 
-from our assertion -- less than 2 seconds (for the current solution, 8.20 MB file size with 16,4 thousands of items).
-This implies that somewhere in between of 1.5 to 5 years of consistent usage, our customers might encounter a 
-situation where opening the application takes longer than 2 seconds. Based on retrieved data, we have to optimize our 
-initial start by providing warm-up caching approach (mostly known as cold / warm caches separation \cite{Tom17}). 
+from our assertion -- less than 2 seconds (for the current solution, 8.20 MB file size with 16.4 thousands of items).
+This implies that somewhere in between of 1.5 to 5 years of a consistent usage, our customers might encounter a 
+situation where opening the application takes longer than 2 seconds. Based on retrieved data, we have to optimize  
+initialization by implementing warm-up caching strategy (mostly known as hot, warm, and cold caches \cite{Tom17}). 
 
 
 \paragraph{Endurance Testing}
 Check response time and resource utilization by adding different types of data within a different time 
-periods (15 minutes, an hour, 4 hours, 16 hours).
+periods (15 minutes, an hour, 4 hours, 8 hours).
 
+In that test we would be interested in debugging memory issues and CPU profiling that can be achieved via DevTools.
+DevTools is a suite of performance and debugging tools for Dart and Flutter that can be started from IDE 
+(with installed extensions from \ref{first-step}) by pressing \q{[F1]} and typing \q{devtools} there.
+
+Detecting memory leaks involves analyzing the Heap Snapshot within the Memory View. These snapshots 
+(\cref{img:memory-snapshot}) provide a means to compare the heap's growth and identify objects that might exhibit an 
+unexpected increase in count. While it's true that images and media can contribute substantially to memory consumption, 
+they often aren't the root cause of memory leaks. Instead, attention should be directed towards addressing a potential 
+incomplete rebound phenomenon (\cref{img:memory-leak}) for Resident Set Size (RSS, program's memory that is currently 
+loaded into RAM and is available for immediate use). A notable illustration of a sizeable, short-lived object that 
+could inadvertently infiltrate a long-lived area, consequently leading to leaks, is the \q{context}-parameter 
+transmitted to Flutter's build method:
+
+\begin{lstlisting}
+Widget build(BuildContext context) {
+\end{lstlisting}
+{
+\xpretocmd{\lstlisting}{\vspace{-12pt}}{}{}
+\begin{lstlisting}[firstnumber=2, backgroundcolor=\color{backred}]
+(*@\kdiff{-}@*)  // [!] Leak prone issue
+(*@\kdiff{-}@*)  final handler = () => apply(Theme.of(context));
+\end{lstlisting}
+\begin{lstlisting}[firstnumber=2, backgroundcolor=\color{backgreen}]
+(*@\kdiff{+}@*)  final theme = Theme.of(context);
+(*@\kdiff{+}@*)  final handler = () => apply(theme);
+\end{lstlisting}
+\begin{lstlisting}[firstnumber=4]
+   useHandler(handler);
+\end{lstlisting}
+}
+
+\img{features/memory-snapshot}{DevTools: Heap Snapshot within the Memory View}{img:memory-snapshot}
+\img{features/memory-leak}{Incomplete rebound phenomenon for RSS}{img:memory-leak}
+\img{features/devtools-connection}{DevTools: Connect to the running instance}{img:devtools-connection}
+
+\noindent To track CPU and Memory Heap we'll run Devtools separately, and connect it (\cref{img:devtools-connection}) 
+to the process by a provided URL from an integration tests' output:
+
+\begin{lstlisting}[language=bash]
+Building Windows application...           13.1s
+V  Built build\windows\runner\Debug\Fingram.exe.
+VMServiceFlutterDriver: Connecting to Flutter application at http://127.0.0.1:52135/VDm4NX0QVr4=/
+VMServiceFlutterDriver: Isolate found with number: 3513574544292703
+VMServiceFlutterDriver: Isolate is paused at start.
+\end{lstlisting}
+
+\noindent The test itself will simulate a user behavior by randomly creating bills (90\%), budget categories (10\%),
+and accounts (5\%): 
+
+\begin{lstlisting}
+testWidgets('Imitate User Activities', (WidgetTester tester) async {
+  final startTime = DateTime.now();
+  await cleanUp();
+  await firstRun(tester);
+  Duration duration;
+  int idx = 0;
+  final random = Random();
+  do {
+    if (random.nextDouble() <= 0.05) await createAccount(tester, idx);
+    await FileRunner.tester.pumpAndSettle(const Duration(seconds: 5));
+    if (random.nextDouble() <= 0.10) await createBudget(tester, idx);
+    await FileRunner.tester.pumpAndSettle(const Duration(seconds: 5));
+    if (random.nextDouble() <= 0.90) await createBill(tester, idx);
+    await FileRunner.tester.pumpAndSettle(const Duration(seconds: 5));
+    final endTime = DateTime.now();
+    duration = endTime.difference(startTime);
+    idx++;
+  // Duration is going to be changed: 15 min, 1 hour, 4 hours, 8 hours
+  } while (duration.inMinutes < 15);
+}, timeout: const Timeout(Duration(hours: 9)));
+\end{lstlisting}
+
+\noindent After a couple of minutes of execution we've taken an error:
+
+\begin{lstlisting}[language=bash]
+Running scenario: Create new Bill # :2
+  V Given I am on "Home" page # :3 took 945ms
+  V When I tap "Add Bill, Income or Transfer" button # :4 took 356ms
+  V And I tap on 0 index of "ListAccountSelector" fields # :5 took 696ms
+  V And I tap on 0 index of "BaseLineWidget" fields # :6 took 350ms
+  V And I tap on 0 index of "ListBudgetSelector" fields # :7 took 465ms
+  V And I tap on 0 index of "BaseLineWidget" fields # :8 took 350ms
+  V And I enter "10" to "Set Amount" text field # :9 took 266ms
+  V And I enter "Bill #8" to "Set Expense Details" text field # :10 took 266ms
+Exception: RangeError (index): Invalid value: Valid value range is empty: -1
+\end{lstlisting}
