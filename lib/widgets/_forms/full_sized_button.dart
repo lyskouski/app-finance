@@ -14,6 +14,7 @@ class FullSizedButton extends AbstractInput {
   final String title;
   final IconData? icon;
   final BoxConstraints constraints;
+  late final String heroTag;
 
   FullSizedButton({
     super.key,
@@ -21,7 +22,9 @@ class FullSizedButton extends AbstractInput {
     required this.constraints,
     required this.title,
     this.icon,
-  }) : super(value: null);
+  }) : super(value: null) {
+    heroTag = 'fz_button_${UniqueKey()}';
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -29,6 +32,7 @@ class FullSizedButton extends AbstractInput {
     return SizedBox(
       width: constraints.maxWidth - helper.getIndent() * 4,
       child: FloatingActionButton(
+        heroTag: heroTag,
         onPressed: setState,
         tooltip: title,
         focusNode: FocusController.getFocusNode(),

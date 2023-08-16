@@ -428,3 +428,18 @@ flutter: [FormatException: Invalid length, must be multiple of four (at characte
 
 The problem here is that the \q{transaction log}-file was created with a BOM as a first symbol in a line, that's why 
 encryption is failing. Good catch! Let's add a new line at a moment of the file creation, and go further.
+
+\noindent Additionally identified the problem with \q{FloatingActionButton}-buttons:
+
+\begin{lstlisting}[language=bash]
+flutter: The following assertion was thrown during a scheduler callback:
+flutter: There are multiple heroes that share the same tag within a subtree.
+flutter: Within each subtree for which heroes are to be animated (i.e. a PageRoute subtree), each Hero must
+flutter: have a unique non-null tag.
+flutter: In this case, multiple heroes had the following tag: <default FloatingActionButton tag>
+\end{lstlisting}
+
+The error indicates that we have multiple \q{Hero} widgets (\q{FloatingActionButton}-buttons in our case) with the 
+same tag within a subtree. Heroes in Flutter are used to create smooth animations when transitioning between screens or 
+widgets. Each Hero widget must have a unique non-null tag to properly manage the animation between the source 
+and destination widgets. So, we have to make them unique by adding \q{heroTag}-property per each.

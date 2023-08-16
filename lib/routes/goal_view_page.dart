@@ -70,16 +70,19 @@ class GoalViewPageState extends AbstractPageState<GoalViewPage> with SharedPrefe
       child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
         data.progress == 1.0
             ? FloatingActionButton(
+                heroTag: 'goal_view_page_check',
                 onPressed: () => completeGoal(data, context),
                 tooltip: AppLocalizations.of(context)!.completeGoalTooltip,
                 child: const Icon(Icons.check),
               )
             : FloatingActionButton(
+                heroTag: 'goal_view_page_deactivate',
                 onPressed: () => deactivateGoal(data, context),
                 tooltip: AppLocalizations.of(context)!.deleteGoalTooltip,
                 child: const Icon(Icons.delete),
               ),
         FloatingActionButton(
+          heroTag: 'goal_view_page_edit',
           onPressed: () => Navigator.pushNamed(context, route),
           tooltip: AppLocalizations.of(context)!.editGoalTooltip,
           child: const Icon(Icons.edit),

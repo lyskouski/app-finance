@@ -47,11 +47,13 @@ class BudgetViewPageState extends AbstractPageState<BudgetViewPage> {
       margin: EdgeInsets.only(left: indent),
       child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
         FloatingActionButton(
+          heroTag: 'budget_view_page_deactivate',
           onPressed: () => deactivateAccount(context),
           tooltip: AppLocalizations.of(context)!.deleteBudgetTooltip,
           child: const Icon(Icons.delete),
         ),
         FloatingActionButton(
+          heroTag: 'budget_view_page_edit',
           onPressed: () => Navigator.pushNamed(context, route),
           tooltip: AppLocalizations.of(context)!.editBudgetTooltip,
           child: const Icon(Icons.edit),

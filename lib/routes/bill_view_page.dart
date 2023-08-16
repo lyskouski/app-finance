@@ -46,11 +46,13 @@ class BillViewPageState extends AbstractPageState<BillViewPage> {
       margin: EdgeInsets.only(left: indent),
       child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
         FloatingActionButton(
+          heroTag: 'bill_view_page_deactivate',
           onPressed: () => deactivateAccount(context),
           tooltip: AppLocalizations.of(context)!.deleteBillTooltip,
           child: const Icon(Icons.delete),
         ),
         FloatingActionButton(
+          heroTag: 'bill_view_page_edit',
           onPressed: () => Navigator.pushNamed(context, route),
           tooltip: AppLocalizations.of(context)!.editBillTooltip,
           child: const Icon(Icons.edit),

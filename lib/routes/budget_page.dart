@@ -34,6 +34,7 @@ class BudgetPageState extends AbstractPageState<BudgetPage> {
   @override
   Widget buildButton(BuildContext context, BoxConstraints constraints) {
     return FloatingActionButton(
+      heroTag: 'budget_page',
       onPressed: () => Navigator.pushNamed(context, AppRoute.budgetAddRoute),
       tooltip: AppLocalizations.of(context)!.addBudgetTooltip,
       child: const Icon(Icons.add),

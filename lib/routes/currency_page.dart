@@ -31,6 +31,7 @@ class CurrencyPageState extends AbstractPageState<CurrencyPage> {
   @override
   Widget buildButton(BuildContext context, BoxConstraints constraints) {
     return FloatingActionButton(
+      heroTag: 'currency_page',
       onPressed: () => updateAllRates(context),
       tooltip: AppLocalizations.of(context)!.currencyUpdateTooltip,
       child: const Icon(Icons.save),

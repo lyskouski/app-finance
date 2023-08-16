@@ -239,6 +239,7 @@ class ImportTabState extends State<ImportTab> with SharedPreferencesMixin {
                       SizedBox(
                         width: double.infinity,
                         child: FloatingActionButton(
+                          heroTag: 'import_tab_parse',
                           onPressed: () => wrapCall(context, parseFile),
                           tooltip: AppLocalizations.of(context)!.parseFile,
                           child: Text(
@@ -269,6 +270,7 @@ class ImportTabState extends State<ImportTab> with SharedPreferencesMixin {
                 SizedBox(
                   width: double.infinity,
                   child: FloatingActionButton(
+                    heroTag: 'import_tab_pick',
                     onPressed: () => wrapCall(context, pickFile),
                     tooltip: AppLocalizations.of(context)!.pickFile,
                     child: Text(

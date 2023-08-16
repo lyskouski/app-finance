@@ -27,6 +27,7 @@ class BillPageState extends AbstractPageState<BillPage> {
   @override
   Widget buildButton(BuildContext context, BoxConstraints constraints) {
     return FloatingActionButton(
+      heroTag: 'bill_page',
       onPressed: () => Navigator.pushNamed(context, AppRoute.billAddRoute),
       tooltip: AppLocalizations.of(context)!.addMainTooltip,
       child: const Icon(Icons.add),
