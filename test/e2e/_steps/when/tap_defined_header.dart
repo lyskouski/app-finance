@@ -14,8 +14,10 @@ class TapDefinedHeader extends When1WithWorld<String, World> {
 
   @override
   Future<void> executeStep(String name) async {
-    expect(find.text(name), findsOneWidget);
-    await FileRunner.tester.tap(find.text(name));
+    final header = find.text(name);
+    expect(header, findsOneWidget);
+    await FileRunner.tester.ensureVisible(header);
+    await FileRunner.tester.tap(header);
     await FileRunner.tester.pumpAndSettle();
   }
 }

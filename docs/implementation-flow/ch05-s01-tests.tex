@@ -332,9 +332,9 @@ initialization by implementing warm-up caching strategy (mostly known as hot, wa
 Check response time and resource utilization by adding different types of data within a different time 
 periods (15 minutes, an hour, 4 hours, 8 hours).
 
-In that test we would be interested in debugging memory issues and CPU profiling that can be achieved via DevTools.
-DevTools is a suite of performance and debugging tools for Dart and Flutter that can be started from IDE 
-(with installed extensions from \ref{first-step}) by pressing \q{[F1]} and typing \q{devtools} there.
+In that test we would be interested in debugging memory issues via DevTools. DevTools is a suite of performance and 
+debugging tools for Dart and Flutter that can be started from IDE (with installed extensions from \ref{first-step}) 
+by pressing \q{[F1]} and typing \q{devtools} there.
 
 Detecting memory leaks involves analyzing the Heap Snapshot within the Memory View. These snapshots 
 (\cref{img:memory-snapshot}) provide a means to compare the heap's growth and identify objects that might exhibit an 
@@ -399,7 +399,6 @@ testWidgets('Imitate User Activities', (WidgetTester tester) async {
     final endTime = DateTime.now();
     duration = endTime.difference(startTime);
     idx++;
-  // Duration is going to be changed: 15 min, 1 hour, 4 hours, 8 hours
   } while (duration.inMinutes < 15);
 }, timeout: const Timeout(Duration(hours: 9)));
 \end{lstlisting}
@@ -419,8 +418,17 @@ Running scenario: Create new Bill # :2
 Exception: RangeError (index): Invalid value: Valid value range is empty: -1
 \end{lstlisting}
 
-\noindent As a side effect of that case investigation, it's been identified the problem with restoring a first record
-from transaction logs:
+\noindent The problem is linked to a \q{tap}-action on buttons that leads to \q{Navigator.pop | push}-command 
+execution, and it can be "easily" resolved by adding a duration freeze:
+
+\begin{lstlisting}
+// ./test/e2e/_steps/when/tap_defined_button.dart
+await FileRunner.tester.tap(btn);
+await FileRunner.tester.pumpAndSettle(const Duration(milliseconds: 400));
+\end{lstlisting}
+
+\noindent As a side effect of that case investigation, it's been noticed a couple of problems. One of them is relevant
+to a missed first record from transaction logs during initialization process:
 
 \begin{lstlisting}[language=bash]
 flutter: [FormatException: Invalid length, must be multiple of four (at character 84)
@@ -429,7 +437,7 @@ flutter: [FormatException: Invalid length, must be multiple of four (at characte
 The problem here is that the \q{transaction log}-file was created with a BOM as a first symbol in a line, that's why 
 encryption is failing. Good catch! Let's add a new line at a moment of the file creation, and go further.
 
-\noindent Additionally identified the problem with \q{FloatingActionButton}-buttons:
+\noindent Additionally raised a problem with \q{FloatingActionButton}-buttons:
 
 \begin{lstlisting}[language=bash]
 flutter: The following assertion was thrown during a scheduler callback:
@@ -443,3 +451,39 @@ The error indicates that we have multiple \q{Hero} widgets (\q{FloatingActionBut
 same tag within a subtree. Heroes in Flutter are used to create smooth animations when transitioning between screens or 
 widgets. Each Hero widget must have a unique non-null tag to properly manage the animation between the source 
 and destination widgets. So, we have to make them unique by adding \q{heroTag}-property per each.
+
+Lastly, the outcomes gleaned from our exhaustive endurance testing have illuminated the presence of memory 
+leaks during the intensive application usage, as depicted in Figure \ref{img:memory-profiler}. Simply saying, each 
+new interaction within the application has a discernible impact on its responsiveness, culminating in a noticeable 
+performance degradation after a couple minutes, as illustrated in Graph \ref{gr:taken-cycle}. That fix has to go upfront
+of any other changes; ignoring to do so could result in a significant loss of users who will get their first impression 
+in a negative aspect.
+
+\img{features/memory-profiler}{Flutter DevTools: Memory Profiler Results}{img:memory-profiler}
+
+\begin{figure}
+\begin{tikzpicture}
+  \begin{axis}[
+    title={},
+    xlabel={Interation},
+    ylabel={Spent Time, ms},
+    legend pos=north west,
+    ymajorgrids=true,
+    grid style=dashed,
+    xtick=data,
+    xticklabels={10th, 20th, 40th, 100th, 200th},
+  ]
+  \addplot[
+    color=blue,
+    mark=square,
+    ]
+    coordinates {
+    (1, 833) (2, 917) (3, 1016) (4, 1633) (5, 3368)
+    };
+    \label{plot1}
+    \addlegendentry{Spent Time}
+  
+  \end{axis}
+\end{tikzpicture}
+\caption{Endurance Testing: Taken Cycle vs. Spent Time} \label{gr:taken-cycle}
+\end{figure}
