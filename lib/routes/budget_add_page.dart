@@ -85,7 +85,7 @@ class BudgetAddPageState<T extends BudgetAddPage> extends AbstractPageState<Budg
         ));
   }
 
-  String getButtonName() {
+  String getButtonName(BuildContext context) {
     return AppLocalizations.of(context)!.createBudgetTooltip;
   }
 
@@ -105,7 +105,7 @@ class BudgetAddPageState<T extends BudgetAddPage> extends AbstractPageState<Budg
     return FullSizedButton(
       constraints: constraints,
       setState: () => triggerActionButton(context),
-      title: getButtonName(),
+      title: getButtonName(context),
       icon: Icons.save,
     );
   }
@@ -115,6 +115,7 @@ class BudgetAddPageState<T extends BudgetAddPage> extends AbstractPageState<Budg
     final TextTheme textTheme = Theme.of(context).textTheme;
     double indent = ThemeHelper(windowType: getWindowType(context)).getIndent() * 2;
     double offset = MediaQuery.of(context).size.width - indent * 3;
+    AppLocalizations locale = AppLocalizations.of(context)!;
 
     return SingleChildScrollView(
       controller: FocusController.getController(runtimeType),
@@ -123,10 +124,10 @@ class BudgetAddPageState<T extends BudgetAddPage> extends AbstractPageState<Budg
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            RequiredWidget(title: AppLocalizations.of(context)!.title, showError: hasError && title.text.isEmpty),
+            RequiredWidget(title: locale.title, showError: hasError && title.text.isEmpty),
             SimpleInput(
               controller: title,
-              tooltip: AppLocalizations.of(context)!.titleBudgetTooltip,
+              tooltip: locale.titleBudgetTooltip,
               style: textTheme.numberMedium.copyWith(color: textTheme.headlineSmall?.color),
             ),
             SizedBox(height: indent),
@@ -137,7 +138,7 @@ class BudgetAddPageState<T extends BudgetAddPage> extends AbstractPageState<Budg
               children: [
                 [
                   Text(
-                    AppLocalizations.of(context)!.icon,
+                    locale.icon,
                     style: textTheme.bodyLarge,
                   ),
                   IconSelector(
@@ -148,7 +149,7 @@ class BudgetAddPageState<T extends BudgetAddPage> extends AbstractPageState<Budg
                 ],
                 [
                   Text(
-                    AppLocalizations.of(context)!.color,
+                    locale.color,
                     style: textTheme.bodyLarge,
                   ),
                   ColorSelector(
@@ -161,13 +162,13 @@ class BudgetAddPageState<T extends BudgetAddPage> extends AbstractPageState<Budg
             ),
             SizedBox(height: indent),
             Text(
-              AppLocalizations.of(context)!.budgetLimit,
+              locale.budgetLimit,
               style: textTheme.bodyLarge,
             ),
             SimpleInput(
               controller: budgetLimit,
               type: const TextInputType.numberWithOptions(decimal: true),
-              tooltip: AppLocalizations.of(context)!.balanceTooltip,
+              tooltip: locale.balanceTooltip,
               style: textTheme.numberMedium.copyWith(color: textTheme.headlineSmall?.color),
               formatter: [
                 FilteringTextInputFormatter.allow(RegExp(r'^\d+\.?\d{0,4}')),
@@ -175,17 +176,18 @@ class BudgetAddPageState<T extends BudgetAddPage> extends AbstractPageState<Budg
             ),
             SizedBox(height: indent),
             Text(
-              AppLocalizations.of(context)!.currency,
+              locale.currency,
               style: textTheme.bodyLarge,
             ),
             Container(
               color: Theme.of(context).colorScheme.inversePrimary.withOpacity(0.3),
-              width: double.infinity,
+              width: offset + indent,
               child: CurrencySelector(
                 value: currency?.code,
                 setState: (value) => setState(() => currency = value),
               ),
             ),
+            SizedBox(height: indent),
           ],
         ),
       ),

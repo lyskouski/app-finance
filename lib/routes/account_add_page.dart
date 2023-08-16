@@ -106,7 +106,7 @@ class AccountAddPageState<T extends AccountAddPage> extends AbstractPageState<Ac
         ));
   }
 
-  String getButtonName() {
+  String getButtonName(BuildContext context) {
     return AppLocalizations.of(context)!.createAccountTooltip;
   }
 
@@ -126,7 +126,7 @@ class AccountAddPageState<T extends AccountAddPage> extends AbstractPageState<Ac
     return FullSizedButton(
       constraints: constraints,
       setState: () => triggerActionButton(context),
-      title: getButtonName(),
+      title: getButtonName(context),
       icon: Icons.save,
     );
   }
@@ -214,7 +214,7 @@ class AccountAddPageState<T extends AccountAddPage> extends AbstractPageState<Ac
             ),
             Container(
               color: Theme.of(context).colorScheme.inversePrimary.withOpacity(0.3),
-              width: double.infinity,
+              width: offset + indent,
               child: CurrencySelector(
                 value: currency?.code,
                 setState: (value) => setState(() => currency = value),
@@ -264,6 +264,7 @@ class AccountAddPageState<T extends AccountAddPage> extends AbstractPageState<Ac
               value: balanceUpdateDate,
               setState: (value) => setState(() => balanceUpdateDate = value),
             ),
+            SizedBox(height: indent),
           ],
         ),
       ),

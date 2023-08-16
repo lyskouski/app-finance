@@ -61,7 +61,7 @@ class BudgetEditPageState extends BudgetAddPageState<BudgetEditPage> {
   }
 
   @override
-  String getButtonName() {
+  String getButtonName(BuildContext context) {
     return AppLocalizations.of(context)!.updateBudgetTooltip;
   }
 

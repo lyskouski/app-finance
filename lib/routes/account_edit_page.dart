@@ -76,7 +76,7 @@ class AccountEditPageState extends AccountAddPageState<AccountEditPage> {
   }
 
   @override
-  String getButtonName() {
+  String getButtonName(BuildContext context) {
     return AppLocalizations.of(context)!.updateAccountTooltip;
   }
 
