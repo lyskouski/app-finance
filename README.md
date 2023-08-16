@@ -3,7 +3,7 @@
 [![Check Status](https://github.com/lyskouski/app-finance/actions/workflows/push_to_main.yml/badge.svg?branch=main)](https://github.com/lyskouski/app-finance/actions/workflows/push_to_main.yml)
 [![Build Status](https://github.com/lyskouski/app-finance/actions/workflows/build.yml/badge.svg)](https://github.com/lyskouski/app-finance/actions/workflows/build.yml)
 
-**FinGram** - Open-sourced cross-platform financial accounting application without Ads and limitations.
+**Fingram** - Open-sourced cross-platform financial accounting application without Ads and limitations.
 
 ## Health Check
 
