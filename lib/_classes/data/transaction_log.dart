@@ -31,6 +31,7 @@ class TransactionLog with SharedPreferencesMixin {
     File file = File('${path.absolute.path}/terCAD/app-finance.log');
     if (!(await file.exists())) {
       await file.create(recursive: true);
+      file.writeAsString("\n", mode: FileMode.append);
     }
     return file;
   }
