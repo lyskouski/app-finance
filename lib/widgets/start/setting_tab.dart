@@ -62,9 +62,8 @@ class SettingTabState<T extends SettingTab> extends AbstractTabState<T> with Sha
     theme.updateState(value);
   }
 
-  Future<void> initCurrencyFromLocale(BuildContext context) async {
-    Locale locale = Localizations.localeOf(context);
-    final format = NumberFormat.simpleCurrency(locale: locale.toString());
+  Future<void> initCurrencyFromLocale(String locale) async {
+    final format = NumberFormat.simpleCurrency(locale: locale);
     String? code = getPreference(prefCurrency);
     if (code == null && format.currencyName != null) {
       await setPreference(prefCurrency, format.currencyName!);
@@ -75,12 +74,13 @@ class SettingTabState<T extends SettingTab> extends AbstractTabState<T> with Sha
 
   @override
   Widget buildContent(BuildContext context) {
+    String locale = Localizations.localeOf(context).toString();
     theme = Provider.of<AppTheme>(context, listen: false);
     final TextTheme textTheme = Theme.of(context).textTheme;
     double indent = ThemeHelper(windowType: getWindowType(context)).getIndent() * 2;
     double offset = MediaQuery.of(context).size.width - indent * 2;
     if (currency == null) {
-      Future.delayed(Duration.zero, () => initCurrencyFromLocale(context));
+      Future.delayed(Duration.zero, () => initCurrencyFromLocale(locale));
     }
 
     return SingleChildScrollView(
