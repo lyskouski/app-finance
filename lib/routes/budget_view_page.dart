@@ -41,7 +41,7 @@ class BudgetViewPageState extends AbstractPageState<BudgetViewPage> {
 
   @override
   Widget buildButton(BuildContext context, BoxConstraints constraints) {
-    String route = AppMenu(context: context).uuid(AppRoute.budgetEditRoute, widget.uuid);
+    String route = AppMenu.uuid(AppRoute.budgetEditRoute, widget.uuid);
     double indent = ThemeHelper(windowType: getWindowType(context)).getIndent() * 4;
     return Container(
       margin: EdgeInsets.only(left: indent),

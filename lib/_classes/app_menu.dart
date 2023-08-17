@@ -1,77 +1,69 @@
 // Copyright 2023 The terCAD team. All rights reserved.
-// Use of this source code is governed by a CC BY-NC-ND 4.0 license that can be
-// found in the LICENSE file.
+// Use of this source code is governed by a CC BY-NC-ND 4.0 license that can be found in the LICENSE file.
 
+import 'package:app_finance/_classes/app_locale.dart';
 import 'package:app_finance/_classes/app_menu_item.dart';
 import 'package:app_finance/_classes/app_route.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_gen/gen_l10n/app_localization.dart';
 
 class AppMenu {
-  BuildContext context;
-  AppLocalizations? locale;
-
-  AppMenu({required this.context}) {
-    locale = AppLocalizations.of(context);
-  }
-
-  String uuid(String route, String uuid) {
+  static String uuid(String route, String uuid) {
     return route.replaceAll('uuid:', 'uuid:$uuid');
   }
 
-  AppMenuItem getByIndex(int index) {
+  static AppMenuItem getByIndex(int index) {
     return get()[index];
   }
 
-  List<AppMenuItem> get() {
+  static List<AppMenuItem> get() {
     return [
       AppMenuItem(
-        name: locale!.homeHeadline,
+        name: AppLocale.labels.homeHeadline,
         icon: Icons.home,
         route: AppRoute.homeRoute,
       ),
       AppMenuItem(
-        name: locale!.goalHeadline,
+        name: AppLocale.labels.goalHeadline,
         icon: Icons.star,
         route: AppRoute.goalRoute,
       ),
       AppMenuItem(
-        name: locale!.accountHeadline,
+        name: AppLocale.labels.accountHeadline,
         icon: Icons.credit_card,
         route: AppRoute.accountRoute,
       ),
       AppMenuItem(
-        name: locale!.budgetHeadline,
+        name: AppLocale.labels.budgetHeadline,
         icon: Icons.calendar_month,
         route: AppRoute.budgetRoute,
       ),
       AppMenuItem(
-        name: locale!.billHeadline,
+        name: AppLocale.labels.billHeadline,
         icon: Icons.money_off,
         route: AppRoute.billRoute,
       ),
       AppMenuItem(
-        name: locale!.currencyHeadline,
+        name: AppLocale.labels.currencyHeadline,
         icon: Icons.currency_exchange,
         route: AppRoute.currencyRoute,
       ),
       AppMenuItem(
-        name: locale!.metricsHeadline,
+        name: AppLocale.labels.metricsHeadline,
         icon: Icons.timeline,
         route: AppRoute.metricsRoute,
       ),
       AppMenuItem(
-        name: locale!.settingsHeadline,
+        name: AppLocale.labels.settingsHeadline,
         icon: Icons.settings,
         route: AppRoute.settingsRoute,
       ),
       AppMenuItem(
-        name: locale!.subscriptionHeadline,
+        name: AppLocale.labels.subscriptionHeadline,
         icon: Icons.switch_access_shortcut_add_outlined,
         route: AppRoute.subscriptionRoute,
       ),
       AppMenuItem(
-        name: locale!.aboutHeadline,
+        name: AppLocale.labels.aboutHeadline,
         icon: Icons.question_answer_outlined,
         route: AppRoute.aboutRoute,
       ),

@@ -28,7 +28,7 @@ class MenuWidget extends StatelessWidget {
     final ColorScheme colorScheme = Theme.of(context).colorScheme;
     final TextTheme textTheme = Theme.of(context).textTheme;
     Color color = selectedIndex == index ? colorScheme.inversePrimary : colorScheme.secondary;
-    AppMenuItem menu = AppMenu(context: context).getByIndex(index);
+    AppMenuItem menu = AppMenu.getByIndex(index);
 
     return InkWell(
       child: ListTile(

@@ -56,14 +56,14 @@ class GoalViewPageState extends AbstractPageState<GoalViewPage> with SharedPrefe
         currency: data.currency);
     newBill = super.state.add(AppDataType.bills, newBill);
     deactivateGoal(data, context);
-    String route = AppMenu(context: context).uuid(AppRoute.billEditRoute, newBill.uuid ?? '');
+    String route = AppMenu.uuid(AppRoute.billEditRoute, newBill.uuid ?? '');
     Navigator.popAndPushNamed(context, route);
   }
 
   @override
   Widget buildButton(BuildContext context, BoxConstraints constraints) {
     final data = super.state.getByUuid(widget.uuid) as GoalAppData;
-    String route = AppMenu(context: context).uuid(AppRoute.goalEditRoute, widget.uuid);
+    String route = AppMenu.uuid(AppRoute.goalEditRoute, widget.uuid);
     double indent = ThemeHelper(windowType: getWindowType(context)).getIndent() * 4;
     return Container(
       margin: EdgeInsets.only(left: indent),
