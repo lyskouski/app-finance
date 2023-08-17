@@ -3,6 +3,7 @@
 // found in the LICENSE file.
 
 import 'package:adaptive_breakpoints/adaptive_breakpoints.dart';
+import 'package:app_finance/_classes/app_locale.dart';
 import 'package:app_finance/_classes/currency/currency_provider.dart';
 import 'package:app_finance/_classes/data/account_app_data.dart';
 import 'package:app_finance/_classes/data/account_type.dart';
@@ -24,7 +25,6 @@ import 'package:app_finance/widgets/_wrappers/required_widget.dart';
 import 'package:app_finance/widgets/_wrappers/row_widget.dart';
 import 'package:currency_picker/currency_picker.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_gen/gen_l10n/app_localization.dart';
 
 class AccountAddPage extends AbstractPage {
   final String? title;
@@ -80,7 +80,7 @@ class AccountAddPageState<T extends AccountAddPage> extends AbstractPageState<Ac
 
   @override
   String getTitle(context) {
-    return AppLocalizations.of(context)!.createAccountHeader;
+    return AppLocale.labels.createAccountHeader;
   }
 
   bool hasFormErrors() {
@@ -107,7 +107,7 @@ class AccountAddPageState<T extends AccountAddPage> extends AbstractPageState<Ac
   }
 
   String getButtonName(BuildContext context) {
-    return AppLocalizations.of(context)!.createAccountTooltip;
+    return AppLocale.labels.createAccountTooltip;
   }
 
   void triggerActionButton(BuildContext context) {
@@ -146,7 +146,7 @@ class AccountAddPageState<T extends AccountAddPage> extends AbstractPageState<Ac
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             RequiredWidget(
-              title: AppLocalizations.of(context)!.accountType,
+              title: AppLocale.labels.accountType,
               showError: hasError && type == null,
             ),
             ListSelector(
@@ -158,12 +158,12 @@ class AccountAddPageState<T extends AccountAddPage> extends AbstractPageState<Ac
             ),
             SizedBox(height: indent),
             RequiredWidget(
-              title: AppLocalizations.of(context)!.title,
+              title: AppLocale.labels.title,
               showError: hasError && title.text.isEmpty,
             ),
             SimpleInput(
               controller: title,
-              tooltip: AppLocalizations.of(context)!.titleAccountTooltip,
+              tooltip: AppLocale.labels.titleAccountTooltip,
               style: textTheme.numberMedium.copyWith(color: textTheme.headlineSmall?.color),
             ),
             SizedBox(height: indent),
@@ -174,7 +174,7 @@ class AccountAddPageState<T extends AccountAddPage> extends AbstractPageState<Ac
               children: [
                 [
                   Text(
-                    AppLocalizations.of(context)!.icon,
+                    AppLocale.labels.icon,
                     style: textTheme.bodyLarge,
                   ),
                   IconSelector(
@@ -185,7 +185,7 @@ class AccountAddPageState<T extends AccountAddPage> extends AbstractPageState<Ac
                 ],
                 [
                   Text(
-                    AppLocalizations.of(context)!.color,
+                    AppLocale.labels.color,
                     style: textTheme.bodyLarge,
                   ),
                   ColorSelector(
@@ -196,12 +196,12 @@ class AccountAddPageState<T extends AccountAddPage> extends AbstractPageState<Ac
                 ],
                 [
                   Text(
-                    AppLocalizations.of(context)!.details,
+                    AppLocale.labels.details,
                     style: textTheme.bodyLarge,
                   ),
                   SimpleInput(
                     controller: description,
-                    tooltip: AppLocalizations.of(context)!.detailsTooltip,
+                    tooltip: AppLocale.labels.detailsTooltip,
                     style: textTheme.numberMedium.copyWith(color: textTheme.headlineSmall?.color),
                   ),
                 ],
@@ -209,7 +209,7 @@ class AccountAddPageState<T extends AccountAddPage> extends AbstractPageState<Ac
             ),
             SizedBox(height: indent),
             Text(
-              AppLocalizations.of(context)!.currency,
+              AppLocale.labels.currency,
               style: textTheme.bodyLarge,
             ),
             Container(
@@ -222,7 +222,7 @@ class AccountAddPageState<T extends AccountAddPage> extends AbstractPageState<Ac
             ),
             SizedBox(height: indent),
             Text(
-              AppLocalizations.of(context)!.validTillDate,
+              AppLocale.labels.validTillDate,
               style: textTheme.bodyLarge,
             ),
             MonthYearInput(
@@ -232,13 +232,13 @@ class AccountAddPageState<T extends AccountAddPage> extends AbstractPageState<Ac
             ),
             SizedBox(height: indent),
             Text(
-              AppLocalizations.of(context)!.balance,
+              AppLocale.labels.balance,
               style: textTheme.bodyLarge,
             ),
             SimpleInput(
               controller: balance,
               type: const TextInputType.numberWithOptions(decimal: true),
-              tooltip: AppLocalizations.of(context)!.balanceTooltip,
+              tooltip: AppLocale.labels.balanceTooltip,
               style: textTheme.numberMedium.copyWith(color: textTheme.headlineSmall?.color),
               formatter: [
                 SimpleInput.filterDouble,
@@ -249,11 +249,11 @@ class AccountAddPageState<T extends AccountAddPage> extends AbstractPageState<Ac
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text(
-                  AppLocalizations.of(context)!.balanceDate,
+                  AppLocale.labels.balanceDate,
                   style: textTheme.bodyLarge,
                 ),
                 Tooltip(
-                  message: AppLocalizations.of(context)!.balanceDateTooltip,
+                  message: AppLocale.labels.balanceDateTooltip,
                   child: const Icon(Icons.info_outline),
                 ),
               ],

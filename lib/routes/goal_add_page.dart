@@ -3,6 +3,7 @@
 // found in the LICENSE file.
 
 import 'package:adaptive_breakpoints/adaptive_breakpoints.dart';
+import 'package:app_finance/_classes/app_locale.dart';
 import 'package:app_finance/_classes/currency/exchange.dart';
 import 'package:app_finance/_classes/data/goal_app_data.dart';
 import 'package:app_finance/_classes/focus_controller.dart';
@@ -19,7 +20,6 @@ import 'package:app_finance/widgets/_forms/simple_input.dart';
 import 'package:app_finance/widgets/_wrappers/required_widget.dart';
 import 'package:currency_picker/currency_picker.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_gen/gen_l10n/app_localization.dart';
 
 class GoalAddPage extends AbstractPage {
   final String? title;
@@ -64,7 +64,7 @@ class GoalAddPageState<T extends GoalAddPage> extends AbstractPageState<GoalAddP
 
   @override
   String getTitle(context) {
-    return AppLocalizations.of(context)!.createGoalHeader;
+    return AppLocale.labels.createGoalHeader;
   }
 
   bool hasFormErrors() {
@@ -90,7 +90,7 @@ class GoalAddPageState<T extends GoalAddPage> extends AbstractPageState<GoalAddP
   }
 
   String getButtonName() {
-    return AppLocalizations.of(context)!.createGoalTooltip;
+    return AppLocale.labels.createGoalTooltip;
   }
 
   @override
@@ -125,10 +125,10 @@ class GoalAddPageState<T extends GoalAddPage> extends AbstractPageState<GoalAddP
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            RequiredWidget(title: AppLocalizations.of(context)!.titleGoal, showError: hasError && title.text.isEmpty),
+            RequiredWidget(title: AppLocale.labels.titleGoal, showError: hasError && title.text.isEmpty),
             SimpleInput(
               controller: title,
-              tooltip: AppLocalizations.of(context)!.titleGoalTooltip,
+              tooltip: AppLocale.labels.titleGoalTooltip,
               style: textTheme.numberMedium.copyWith(color: textTheme.headlineSmall?.color),
             ),
             SizedBox(height: indent),
@@ -143,7 +143,7 @@ class GoalAddPageState<T extends GoalAddPage> extends AbstractPageState<GoalAddP
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        AppLocalizations.of(context)!.icon,
+                        AppLocale.labels.icon,
                         style: textTheme.bodyLarge,
                       ),
                       IconSelector(
@@ -162,7 +162,7 @@ class GoalAddPageState<T extends GoalAddPage> extends AbstractPageState<GoalAddP
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        AppLocalizations.of(context)!.color,
+                        AppLocale.labels.color,
                         style: textTheme.bodyLarge,
                       ),
                       ColorSelector(
@@ -186,7 +186,7 @@ class GoalAddPageState<T extends GoalAddPage> extends AbstractPageState<GoalAddP
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        AppLocalizations.of(context)!.currency,
+                        AppLocale.labels.currency,
                         style: textTheme.bodyLarge,
                       ),
                       Container(
@@ -210,13 +210,13 @@ class GoalAddPageState<T extends GoalAddPage> extends AbstractPageState<GoalAddP
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        AppLocalizations.of(context)!.targetAmount,
+                        AppLocale.labels.targetAmount,
                         style: textTheme.bodyLarge,
                       ),
                       SimpleInput(
                         controller: details,
                         type: const TextInputType.numberWithOptions(decimal: true),
-                        tooltip: AppLocalizations.of(context)!.billSetTooltip,
+                        tooltip: AppLocale.labels.billSetTooltip,
                         style: textTheme.numberMedium.copyWith(color: textTheme.headlineSmall?.color),
                         formatter: [
                           SimpleInput.filterDouble,
@@ -228,7 +228,7 @@ class GoalAddPageState<T extends GoalAddPage> extends AbstractPageState<GoalAddP
               ],
             ),
             SizedBox(height: indent),
-            RequiredWidget(title: AppLocalizations.of(context)!.closedAt, showError: hasError && closedAt == null),
+            RequiredWidget(title: AppLocale.labels.closedAt, showError: hasError && closedAt == null),
             DateInput(
               style: textTheme.numberMedium.copyWith(color: textTheme.headlineSmall?.color),
               value: closedAt,

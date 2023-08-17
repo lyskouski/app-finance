@@ -3,6 +3,7 @@
 // found in the LICENSE file.
 
 import 'package:adaptive_breakpoints/adaptive_breakpoints.dart';
+import 'package:app_finance/_classes/app_locale.dart';
 import 'package:app_finance/_classes/data/currency_app_data.dart';
 import 'package:app_finance/_classes/app_data.dart';
 import 'package:app_finance/helpers/theme_helper.dart';
@@ -11,7 +12,6 @@ import 'package:app_finance/widgets/_forms/notification_bar.dart';
 import 'package:app_finance/widgets/_forms/simple_input.dart';
 import 'package:app_finance/widgets/_wrappers/row_widget.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_gen/gen_l10n/app_localization.dart';
 
 class CurrencyPage extends AbstractPage {
   CurrencyPage() : super();
@@ -25,7 +25,7 @@ class CurrencyPageState extends AbstractPageState<CurrencyPage> {
 
   @override
   String getTitle(context) {
-    return AppLocalizations.of(context)!.currencyHeadline;
+    return AppLocale.labels.currencyHeadline;
   }
 
   @override
@@ -33,7 +33,7 @@ class CurrencyPageState extends AbstractPageState<CurrencyPage> {
     return FloatingActionButton(
       heroTag: 'currency_page',
       onPressed: () => updateAllRates(context),
-      tooltip: AppLocalizations.of(context)!.currencyUpdateTooltip,
+      tooltip: AppLocale.labels.currencyUpdateTooltip,
       child: const Icon(Icons.save),
     );
   }
@@ -42,7 +42,7 @@ class CurrencyPageState extends AbstractPageState<CurrencyPage> {
     for (CurrencyAppData rate in scope!) {
       super.state.update(AppDataType.currencies, rate.uuid, rate);
     }
-    NotificationBar.showSnackBar(context, AppLocalizations.of(context)!.saveNotification);
+    NotificationBar.showSnackBar(context, AppLocale.labels.saveNotification);
   }
 
   void updateRate(CurrencyAppData initial, double? value) {
@@ -64,7 +64,6 @@ class CurrencyPageState extends AbstractPageState<CurrencyPage> {
         itemCount: scope?.length,
         itemBuilder: (context, index) {
           final item = scope![index];
-          item.setContext(context);
           return Padding(
             padding: EdgeInsets.all(indent),
             child: RowWidget(

@@ -2,8 +2,8 @@
 // Use of this source code is governed by a CC BY-NC-ND 4.0 license that can be
 // found in the LICENSE file.
 
+import 'package:app_finance/_classes/app_locale.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_gen/gen_l10n/app_localization.dart';
 
 class RequiredWidget extends StatelessWidget {
   final String title;
@@ -27,7 +27,7 @@ class RequiredWidget extends StatelessWidget {
         ),
         Row(children: [
           Text(
-            showError ? AppLocalizations.of(context)!.isRequired : '',
+            showError ? AppLocale.labels.isRequired : '',
             style: TextStyle(
               color: Theme.of(context).colorScheme.error,
             ),
@@ -35,7 +35,7 @@ class RequiredWidget extends StatelessWidget {
           showError
               ? Icon(
                   Icons.error,
-                  semanticLabel: '$title: ${AppLocalizations.of(context)!.isRequired}',
+                  semanticLabel: '$title: ${AppLocale.labels.isRequired}',
                   color: Theme.of(context).colorScheme.error,
                 )
               : const SizedBox(),

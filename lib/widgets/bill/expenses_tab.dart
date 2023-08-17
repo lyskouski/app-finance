@@ -3,6 +3,7 @@
 // found in the LICENSE file.
 
 import 'package:adaptive_breakpoints/adaptive_breakpoints.dart';
+import 'package:app_finance/_classes/app_locale.dart';
 import 'package:app_finance/_classes/app_route.dart';
 import 'package:app_finance/_classes/currency/currency_provider.dart';
 import 'package:app_finance/_classes/data/bill_app_data.dart';
@@ -22,7 +23,6 @@ import 'package:app_finance/widgets/_wrappers/required_widget.dart';
 import 'package:app_finance/widgets/_wrappers/row_widget.dart';
 import 'package:currency_picker/currency_picker.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_gen/gen_l10n/app_localization.dart';
 import 'package:provider/provider.dart';
 
 class ExpensesTab<T> extends StatefulWidget {
@@ -112,7 +112,7 @@ class ExpensesTabState<T extends ExpensesTab> extends State<T> with SharedPrefer
   }
 
   String getButtonTitle(context) {
-    return AppLocalizations.of(context)!.createBillTooltip;
+    return AppLocale.labels.createBillTooltip;
   }
 
   Widget buildButton(BuildContext context, BoxConstraints constraints) {
@@ -155,7 +155,7 @@ class ExpensesTabState<T extends ExpensesTab> extends State<T> with SharedPrefer
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   RequiredWidget(
-                    title: AppLocalizations.of(context)!.account,
+                    title: AppLocale.labels.account,
                     showError: hasErrors && account == null,
                   ),
                   ListAccountSelector(
@@ -171,7 +171,7 @@ class ExpensesTabState<T extends ExpensesTab> extends State<T> with SharedPrefer
                   ),
                   SizedBox(height: indent),
                   RequiredWidget(
-                    title: AppLocalizations.of(context)!.budget,
+                    title: AppLocale.labels.budget,
                     showError: hasErrors && budget == null,
                   ),
                   ListBudgetSelector(
@@ -194,7 +194,7 @@ class ExpensesTabState<T extends ExpensesTab> extends State<T> with SharedPrefer
                     children: [
                       [
                         Text(
-                          AppLocalizations.of(context)!.currency,
+                          AppLocale.labels.currency,
                           style: textTheme.bodyLarge,
                         ),
                         Container(
@@ -209,13 +209,13 @@ class ExpensesTabState<T extends ExpensesTab> extends State<T> with SharedPrefer
                       ],
                       [
                         RequiredWidget(
-                          title: AppLocalizations.of(context)!.expense,
+                          title: AppLocale.labels.expense,
                           showError: hasErrors && bill.text.isEmpty,
                         ),
                         SimpleInput(
                           controller: bill,
                           type: const TextInputType.numberWithOptions(decimal: true),
-                          tooltip: AppLocalizations.of(context)!.billSetTooltip,
+                          tooltip: AppLocale.labels.billSetTooltip,
                           style: textTheme.numberMedium.copyWith(color: textTheme.headlineSmall?.color),
                           setState: (v) => setState(() => billValue = double.tryParse(v)),
                           formatter: [
@@ -238,17 +238,17 @@ class ExpensesTabState<T extends ExpensesTab> extends State<T> with SharedPrefer
                     ].cast<Currency?>(),
                   ),
                   Text(
-                    AppLocalizations.of(context)!.description,
+                    AppLocale.labels.description,
                     style: textTheme.bodyLarge,
                   ),
                   SimpleInput(
                     controller: description,
-                    tooltip: AppLocalizations.of(context)!.descriptionTooltip,
+                    tooltip: AppLocale.labels.descriptionTooltip,
                     style: textTheme.numberMedium.copyWith(color: textTheme.headlineSmall?.color),
                   ),
                   SizedBox(height: indent),
                   Text(
-                    AppLocalizations.of(context)!.expenseDateTime,
+                    AppLocale.labels.expenseDateTime,
                     style: textTheme.bodyLarge,
                   ),
                   DateTimeInput(

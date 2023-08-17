@@ -32,7 +32,6 @@ class BudgetWidget extends AccountWidget {
   @override
   List<dynamic> updateItems(context, items, summaryItem) {
     return items.map((o) {
-      o.setContext(context);
       o.progress = (summaryItem.amountLimit > 0
           ? (1 - o.progress) *
               exchange.reform(o.amountLimit, o.currency, exchange.getDefaultCurrency()) /
@@ -48,7 +47,6 @@ class BudgetWidget extends AccountWidget {
   @override
   Widget buildGroupedListWidget(List<dynamic> items, BuildContext context, double offset) {
     final item = wrapBySingleEntity(items);
-    item.setContext(context);
     final scope = updateItems(context, items, item);
     return BaseGroupWidget(
       title: item.title,
@@ -80,7 +78,6 @@ class BudgetWidget extends AccountWidget {
   @override
   Widget buildSingleListWidget(item, BuildContext context, double offset) {
     item = item.first;
-    item.setContext(context);
     return BaseLineWidget(
       uuid: item.uuid,
       title: item.title,

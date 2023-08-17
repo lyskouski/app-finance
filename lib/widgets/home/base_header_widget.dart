@@ -3,13 +3,13 @@
 // found in the LICENSE file.
 
 import 'package:adaptive_breakpoints/adaptive_breakpoints.dart';
+import 'package:app_finance/_classes/app_locale.dart';
 import 'package:app_finance/_classes/currency/exchange.dart';
 import 'package:app_finance/custom_text_theme.dart';
 import 'package:app_finance/helpers/theme_helper.dart';
 import 'package:app_finance/widgets/_wrappers/tap_widget.dart';
 import 'package:app_finance/widgets/_wrappers/toolbar_button_widget.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_gen/gen_l10n/app_localization.dart';
 import 'package:intl/intl.dart';
 
 class BaseHeaderWidget extends StatelessWidget {
@@ -85,7 +85,7 @@ class BaseHeaderWidget extends StatelessWidget {
                                 Icons.expand,
                                 color: Theme.of(context).colorScheme.primary.withOpacity(0.6),
                               ),
-                              tooltip: AppLocalizations.of(context)!.expand,
+                              tooltip: AppLocale.labels.expand,
                               onPressed: () => expand!(),
                             )
                           : IconButton(
@@ -93,7 +93,7 @@ class BaseHeaderWidget extends StatelessWidget {
                                 Icons.expand_less,
                                 color: Theme.of(context).colorScheme.primary.withOpacity(0.6),
                               ),
-                              tooltip: AppLocalizations.of(context)!.collapse,
+                              tooltip: AppLocale.labels.collapse,
                               onPressed: () => expand!(),
                             )),
                 ),

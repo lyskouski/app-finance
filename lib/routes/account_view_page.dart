@@ -3,6 +3,7 @@
 // found in the LICENSE file.
 
 import 'package:adaptive_breakpoints/adaptive_breakpoints.dart';
+import 'package:app_finance/_classes/app_locale.dart';
 import 'package:app_finance/_classes/data/account_app_data.dart';
 import 'package:app_finance/_classes/app_menu.dart';
 import 'package:app_finance/_classes/app_data.dart';
@@ -12,7 +13,6 @@ import 'package:app_finance/routes/abstract_page.dart';
 import 'package:app_finance/widgets/home/base_line_widget.dart';
 import 'package:app_finance/widgets/home/base_list_infinite_widget.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_gen/gen_l10n/app_localization.dart';
 
 class AccountViewPage extends AbstractPage {
   final String uuid;
@@ -49,13 +49,13 @@ class AccountViewPageState extends AbstractPageState<AccountViewPage> {
         FloatingActionButton(
           heroTag: 'account_view_page_deactivate',
           onPressed: () => deactivateAccount(context),
-          tooltip: AppLocalizations.of(context)!.deleteAccountTooltip,
+          tooltip: AppLocale.labels.deleteAccountTooltip,
           child: const Icon(Icons.delete),
         ),
         FloatingActionButton(
           heroTag: 'account_view_page_edit',
           onPressed: () => Navigator.pushNamed(context, route),
-          tooltip: AppLocalizations.of(context)!.editAccountTooltip,
+          tooltip: AppLocale.labels.editAccountTooltip,
           child: const Icon(Icons.edit),
         ),
       ]),
@@ -63,7 +63,6 @@ class AccountViewPageState extends AbstractPageState<AccountViewPage> {
   }
 
   Widget buildListWidget(item, BuildContext context, double offset) {
-    item.setContext(context);
     return BaseLineWidget(
       uuid: '',
       title: '',
@@ -78,7 +77,6 @@ class AccountViewPageState extends AbstractPageState<AccountViewPage> {
   @override
   Widget buildContent(BuildContext context, BoxConstraints constraints) {
     final item = super.state.getByUuid(widget.uuid) as AccountAppData;
-    item.setContext(context);
     double indent = ThemeHelper(windowType: getWindowType(context)).getIndent() * 2;
     double offset = MediaQuery.of(context).size.width - indent * 3;
     return Column(

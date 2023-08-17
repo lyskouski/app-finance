@@ -2,6 +2,7 @@
 // Use of this source code is governed by a CC BY-NC-ND 4.0 license that can be
 // found in the LICENSE file.
 
+import 'package:app_finance/_classes/app_locale.dart';
 import 'package:app_finance/_classes/app_theme.dart';
 import 'package:app_finance/_mixins/shared_preferences_mixin.dart';
 import 'package:app_finance/custom_text_theme.dart';
@@ -65,6 +66,9 @@ void main() async {
         ),
         ChangeNotifierProvider<AppTheme>(
           create: (_) => AppTheme(ThemeMode.system),
+        ),
+        ChangeNotifierProvider<AppLocale>(
+          create: (_) => AppLocale(),
         ),
       ],
       child: MyApp(platform: platform),
@@ -149,6 +153,7 @@ class MyAppState extends State<MyApp> {
       debugShowCheckedModeBanner: false,
       localizationsDelegates: AppLocalizations.localizationsDelegates,
       supportedLocales: AppLocalizations.supportedLocales,
+      locale: context.watch<AppLocale>().value,
       theme: ThemeData(
         brightness: Brightness.light,
         textTheme: CustomTextTheme.textTheme(Theme.of(context)),

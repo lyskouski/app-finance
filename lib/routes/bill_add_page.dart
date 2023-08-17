@@ -2,6 +2,7 @@
 // Use of this source code is governed by a CC BY-NC-ND 4.0 license that can be
 // found in the LICENSE file.
 
+import 'package:app_finance/_classes/app_locale.dart';
 import 'package:app_finance/_classes/focus_controller.dart';
 import 'package:app_finance/routes/abstract_page.dart';
 import 'package:app_finance/widgets/_wrappers/tab_widget.dart';
@@ -9,7 +10,6 @@ import 'package:app_finance/widgets/bill/expenses_tab.dart';
 import 'package:app_finance/widgets/bill/income_tab.dart';
 import 'package:app_finance/widgets/bill/transfer_tab.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_gen/gen_l10n/app_localization.dart';
 
 class BillAddPage extends AbstractPage {
   BillAddPage() : super();
@@ -21,7 +21,7 @@ class BillAddPage extends AbstractPage {
 class BillAddPageState<T extends BillAddPage> extends AbstractPageState<BillAddPage> {
   @override
   String getTitle(context) {
-    return AppLocalizations.of(context)!.createBillHeader;
+    return AppLocale.labels.createBillHeader;
   }
 
   @override
@@ -42,15 +42,15 @@ class BillAddPageState<T extends BillAddPage> extends AbstractPageState<BillAddP
       tabs: [
         Tab(
           icon: const Icon(Icons.insert_invitation),
-          text: AppLocalizations.of(context)!.incomeHeadline,
+          text: AppLocale.labels.incomeHeadline,
         ),
         Tab(
           icon: const Icon(Icons.money_off),
-          text: AppLocalizations.of(context)!.expenseHeadline,
+          text: AppLocale.labels.expenseHeadline,
         ),
         Tab(
           icon: const Icon(Icons.transform),
-          text: AppLocalizations.of(context)!.transferHeadline,
+          text: AppLocale.labels.transferHeadline,
         ),
       ],
       children: const [

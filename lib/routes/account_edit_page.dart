@@ -2,12 +2,12 @@
 // Use of this source code is governed by a CC BY-NC-ND 4.0 license that can be
 // found in the LICENSE file.
 
+import 'package:app_finance/_classes/app_locale.dart';
 import 'package:app_finance/_classes/data/account_app_data.dart';
 import 'package:app_finance/_classes/app_data.dart';
 import 'package:app_finance/_classes/data/account_type.dart';
 import 'package:app_finance/routes/account_add_page.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_gen/gen_l10n/app_localization.dart';
 
 class AccountEditPage extends AccountAddPage {
   final String uuid;
@@ -51,7 +51,7 @@ class AccountEditPageState extends AccountAddPageState<AccountEditPage> {
 
   @override
   String getTitle(context) {
-    return AppLocalizations.of(context)!.editAccountHeader;
+    return AppLocale.labels.editAccountHeader;
   }
 
   @override
@@ -77,7 +77,7 @@ class AccountEditPageState extends AccountAddPageState<AccountEditPage> {
 
   @override
   String getButtonName(BuildContext context) {
-    return AppLocalizations.of(context)!.updateAccountTooltip;
+    return AppLocale.labels.updateAccountTooltip;
   }
 
   @override

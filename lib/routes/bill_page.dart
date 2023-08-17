@@ -4,12 +4,12 @@
 
 import 'package:adaptive_breakpoints/adaptive_breakpoints.dart';
 import 'package:app_finance/_classes/app_data.dart';
+import 'package:app_finance/_classes/app_locale.dart';
 import 'package:app_finance/helpers/theme_helper.dart';
 import 'package:app_finance/_classes/app_route.dart';
 import 'package:app_finance/routes/abstract_page.dart';
 import 'package:app_finance/widgets/home/bill_widget.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_gen/gen_l10n/app_localization.dart';
 
 class BillPage extends AbstractPage {
   BillPage() : super();
@@ -21,7 +21,7 @@ class BillPage extends AbstractPage {
 class BillPageState extends AbstractPageState<BillPage> {
   @override
   String getTitle(context) {
-    return AppLocalizations.of(context)!.billHeadline;
+    return AppLocale.labels.billHeadline;
   }
 
   @override
@@ -29,7 +29,7 @@ class BillPageState extends AbstractPageState<BillPage> {
     return FloatingActionButton(
       heroTag: 'bill_page',
       onPressed: () => Navigator.pushNamed(context, AppRoute.billAddRoute),
-      tooltip: AppLocalizations.of(context)!.addMainTooltip,
+      tooltip: AppLocale.labels.addMainTooltip,
       child: const Icon(Icons.add),
     );
   }
@@ -41,7 +41,7 @@ class BillPageState extends AbstractPageState<BillPage> {
       children: [
         BillWidget(
           margin: EdgeInsets.all(helper.getIndent()),
-          title: AppLocalizations.of(context)!.billHeadline,
+          title: AppLocale.labels.billHeadline,
           state: super.state.get(AppDataType.bills),
           offset: MediaQuery.of(context).size.width - helper.getIndent() * 2,
         )

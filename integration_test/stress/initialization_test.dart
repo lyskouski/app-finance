@@ -2,20 +2,14 @@
 // Use of this source code is governed by a CC BY-NC-ND 4.0 license that can be found in the LICENSE file.
 
 import 'dart:io';
-import 'package:app_finance/_classes/app_data.dart';
-import 'package:app_finance/_classes/app_theme.dart';
 import 'package:app_finance/_classes/data/transaction_log.dart';
-import 'package:app_finance/_mixins/shared_preferences_mixin.dart';
-import 'package:app_finance/main.dart';
-import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:integration_test/integration_test.dart';
 import 'package:path_provider/path_provider.dart';
-import 'package:provider/provider.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../test/e2e/_steps/file_runner.dart';
 import '../../test/e2e/_steps/given/first_run.dart';
+import '../../test/pump_main.dart';
 
 void main() {
   IntegrationTestWidgetsFlutterBinding.ensureInitialized();
@@ -41,26 +35,11 @@ void main() {
     await file.writeAsString(existingContent, mode: FileMode.append);
   }
 
-  init(WidgetTester tester) async {
-    SharedPreferencesMixin.pref = await SharedPreferences.getInstance();
-    await tester.pumpWidget(MultiProvider(
-      providers: [
-        ChangeNotifierProvider<AppData>(
-          create: (_) => AppData(),
-        ),
-        ChangeNotifierProvider<AppTheme>(
-          create: (_) => AppTheme(ThemeMode.system),
-        ),
-      ],
-      child: const MyApp(),
-    ));
-  }
-
   testWidgets('Cover Initial Page', (WidgetTester tester) async {
     final file = await getLog();
     doubleTransactionSize();
     final startTime = DateTime.now();
-    await init(tester);
+    await PumpMain.init(tester, true);
     FileRunner.tester = tester;
     await FirstRun().executeStep();
     final endTime = DateTime.now();

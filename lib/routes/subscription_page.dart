@@ -3,12 +3,12 @@
 // found in the LICENSE file.
 
 import 'package:adaptive_breakpoints/adaptive_breakpoints.dart';
+import 'package:app_finance/_classes/app_locale.dart';
 import 'package:app_finance/helpers/theme_helper.dart';
 import 'package:app_finance/routes/abstract_page.dart';
 import 'package:app_finance/widgets/subscription/other_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/foundation.dart';
-import 'package:flutter_gen/gen_l10n/app_localization.dart';
 
 class SubscriptionPage extends AbstractPage {
   SubscriptionPage() : super();
@@ -31,7 +31,7 @@ class SubscriptionPageState extends AbstractPageState<SubscriptionPage> {
       padding: EdgeInsets.fromLTRB(indent, indent, indent, 0),
       child: Column(
         children: [
-          Text(AppLocalizations.of(context)!.subscription),
+          Text(AppLocale.labels.subscription),
           const Divider(),
           defaultTargetPlatform == TargetPlatform.iOS || defaultTargetPlatform == TargetPlatform.macOS
               ? const SizedBox()
@@ -43,6 +43,6 @@ class SubscriptionPageState extends AbstractPageState<SubscriptionPage> {
 
   @override
   String getTitle(BuildContext context) {
-    return AppLocalizations.of(context)!.subscriptionHeadline;
+    return AppLocale.labels.subscriptionHeadline;
   }
 }

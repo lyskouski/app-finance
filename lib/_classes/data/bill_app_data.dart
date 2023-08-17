@@ -2,13 +2,13 @@
 // Use of this source code is governed by a CC BY-NC-ND 4.0 license that can be
 // found in the LICENSE file.
 
+import 'package:app_finance/_classes/app_locale.dart';
 import 'package:app_finance/_classes/currency/currency_provider.dart';
 import 'package:app_finance/_classes/data/abstract_app_data.dart';
 import 'package:app_finance/_classes/data/account_app_data.dart';
 import 'package:app_finance/_classes/data/budget_app_data.dart';
 import 'package:app_finance/_classes/app_data.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_gen/gen_l10n/app_localization.dart';
 import 'package:intl/intl.dart';
 
 class BillAppData extends AbstractAppData {
@@ -75,14 +75,10 @@ class BillAppData extends AbstractAppData {
 
   @override
   String get description {
-    if (getContext() == null) {
-      return '';
-    }
-    final locale = Localizations.localeOf(getContext()!).toString();
-    final DateFormat formatterDate = DateFormat.MMMMd(locale);
+    final DateFormat formatterDate = DateFormat.MMMMd(AppLocale.code);
     AccountAppData? type = getState()?.getByUuid(account);
-    String from = AppLocalizations.of(getContext()!)!.from;
-    return formatterDate.format(super.createdAt) + (type?.description != null ? ' ($from "${type?.description}")' : '');
+    return formatterDate.format(super.createdAt) +
+        (type?.description != null ? ' (${AppLocale.labels.from} "${type?.description}")' : '');
   }
 
   @override

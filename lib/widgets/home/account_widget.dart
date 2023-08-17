@@ -77,7 +77,6 @@ class AccountWidget extends BaseWidget with SharedPreferencesMixin {
 
   List<dynamic> updateItems(context, items, summaryItem) {
     return items.map((o) {
-      o.setContext(context);
       o.progress = summaryItem.details > 0
           ? exchange.reform(o.details, o.currency, exchange.getDefaultCurrency()) / summaryItem.details
           : o.progress;
@@ -87,7 +86,6 @@ class AccountWidget extends BaseWidget with SharedPreferencesMixin {
 
   Widget buildGroupedListWidget(List<dynamic> items, BuildContext context, double offset) {
     final item = wrapBySingleEntity(items);
-    item.setContext(context);
     final scope = updateItems(context, items, item);
     return BaseGroupWidget(
       title: item.title,
@@ -103,7 +101,6 @@ class AccountWidget extends BaseWidget with SharedPreferencesMixin {
 
   Widget buildSingleListWidget(item, BuildContext context, double offset) {
     item = item.first;
-    item.setContext(context);
     return BaseLineWidget(
       uuid: item.uuid,
       title: item.title,

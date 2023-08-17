@@ -4,13 +4,13 @@
 
 import 'package:adaptive_breakpoints/adaptive_breakpoints.dart';
 import 'package:app_finance/_classes/app_data.dart';
+import 'package:app_finance/_classes/app_locale.dart';
 import 'package:app_finance/_classes/currency/exchange.dart';
 import 'package:app_finance/helpers/theme_helper.dart';
 import 'package:app_finance/_classes/app_route.dart';
 import 'package:app_finance/routes/abstract_page.dart';
 import 'package:app_finance/widgets/home/account_widget.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_gen/gen_l10n/app_localization.dart';
 
 class AccountPage extends AbstractPage {
   final String? search;
@@ -27,9 +27,9 @@ class AccountPageState extends AbstractPageState<AccountPage> {
   @override
   String getTitle(context) {
     if (widget.search != null) {
-      return AppLocalizations.of(context)!.search(widget.search!);
+      return AppLocale.labels.search(widget.search!);
     }
-    return AppLocalizations.of(context)!.accountHeadline;
+    return AppLocale.labels.accountHeadline;
   }
 
   @override
@@ -37,7 +37,7 @@ class AccountPageState extends AbstractPageState<AccountPage> {
     return FloatingActionButton(
       heroTag: 'account_page',
       onPressed: () => Navigator.pushNamed(context, AppRoute.accountAddRoute),
-      tooltip: AppLocalizations.of(context)!.addAccountTooltip,
+      tooltip: AppLocale.labels.addAccountTooltip,
       child: const Icon(Icons.add),
     );
   }
@@ -64,7 +64,7 @@ class AccountPageState extends AbstractPageState<AccountPage> {
       children: [
         AccountWidget(
           margin: EdgeInsets.all(helper.getIndent()),
-          title: AppLocalizations.of(context)!.accountHeadline,
+          title: AppLocale.labels.accountHeadline,
           state: items,
           offset: MediaQuery.of(context).size.width - helper.getIndent() * 2,
         )

@@ -2,6 +2,7 @@
 // Use of this source code is governed by a CC BY-NC-ND 4.0 license that can be
 // found in the LICENSE file.
 
+import 'package:app_finance/_classes/app_locale.dart';
 import 'package:app_finance/_classes/currency/currency_provider.dart';
 import 'package:app_finance/_classes/data/currency_app_data.dart';
 import 'package:app_finance/_classes/app_data.dart';
@@ -10,7 +11,6 @@ import 'package:app_finance/widgets/_forms/simple_input.dart';
 import 'package:app_finance/widgets/_wrappers/row_widget.dart';
 import 'package:currency_picker/currency_picker.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_gen/gen_l10n/app_localization.dart';
 
 class CurrencyExchangeInput extends StatefulWidget {
   final Currency? target;
@@ -136,7 +136,7 @@ class CurrencyExchangeInputState extends State<CurrencyExchangeInput> {
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
                   Text(
-                      AppLocalizations.of(context)!.currencyExchange(
+                      AppLocale.labels.currencyExchange(
                         widget.conversion[index][0] ?? '?',
                         widget.conversion[index][1] ?? '?',
                       ),
@@ -152,7 +152,7 @@ class CurrencyExchangeInputState extends State<CurrencyExchangeInput> {
                       children: [
                         [
                           Text(
-                            AppLocalizations.of(context)!.conversion,
+                            AppLocale.labels.conversion,
                             style: textTheme.bodyLarge,
                           ),
                           SimpleInput(
@@ -163,7 +163,7 @@ class CurrencyExchangeInputState extends State<CurrencyExchangeInput> {
                         ],
                         [
                           Text(
-                            AppLocalizations.of(context)!.conversionMessage(widget.conversion[index][1] ?? '?'),
+                            AppLocale.labels.conversionMessage(widget.conversion[index][1] ?? '?'),
                             style: textTheme.bodyLarge,
                           ),
                           SimpleInput(

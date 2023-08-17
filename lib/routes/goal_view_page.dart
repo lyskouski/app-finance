@@ -3,6 +3,7 @@
 // found in the LICENSE file.
 
 import 'package:adaptive_breakpoints/adaptive_breakpoints.dart';
+import 'package:app_finance/_classes/app_locale.dart';
 import 'package:app_finance/_classes/app_menu.dart';
 import 'package:app_finance/_classes/data/bill_app_data.dart';
 import 'package:app_finance/_classes/data/goal_app_data.dart';
@@ -13,7 +14,6 @@ import 'package:app_finance/_classes/app_route.dart';
 import 'package:app_finance/routes/abstract_page.dart';
 import 'package:app_finance/widgets/home/base_line_widget.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_gen/gen_l10n/app_localization.dart';
 
 class GoalViewPage extends AbstractPage {
   final String uuid;
@@ -51,7 +51,7 @@ class GoalViewPageState extends AbstractPageState<GoalViewPage> with SharedPrefe
     var newBill = BillAppData(
         account: defaultAccount,
         category: '',
-        title: '${AppLocalizations.of(context)!.completeGoalTooltip}: ${data.title}',
+        title: '${AppLocale.labels.completeGoalTooltip}: ${data.title}',
         details: data.details,
         currency: data.currency);
     newBill = super.state.add(AppDataType.bills, newBill);
@@ -72,19 +72,19 @@ class GoalViewPageState extends AbstractPageState<GoalViewPage> with SharedPrefe
             ? FloatingActionButton(
                 heroTag: 'goal_view_page_check',
                 onPressed: () => completeGoal(data, context),
-                tooltip: AppLocalizations.of(context)!.completeGoalTooltip,
+                tooltip: AppLocale.labels.completeGoalTooltip,
                 child: const Icon(Icons.check),
               )
             : FloatingActionButton(
                 heroTag: 'goal_view_page_deactivate',
                 onPressed: () => deactivateGoal(data, context),
-                tooltip: AppLocalizations.of(context)!.deleteGoalTooltip,
+                tooltip: AppLocale.labels.deleteGoalTooltip,
                 child: const Icon(Icons.delete),
               ),
         FloatingActionButton(
           heroTag: 'goal_view_page_edit',
           onPressed: () => Navigator.pushNamed(context, route),
-          tooltip: AppLocalizations.of(context)!.editGoalTooltip,
+          tooltip: AppLocale.labels.editGoalTooltip,
           child: const Icon(Icons.edit),
         ),
       ]),
@@ -94,7 +94,6 @@ class GoalViewPageState extends AbstractPageState<GoalViewPage> with SharedPrefe
   @override
   Widget buildContent(BuildContext context, BoxConstraints constraints) {
     final item = super.state.getByUuid(widget.uuid) as GoalAppData;
-    item.setContext(context);
     double indent = ThemeHelper(windowType: getWindowType(context)).getIndent() * 2;
     double offset = MediaQuery.of(context).size.width - indent * 3;
     return Column(

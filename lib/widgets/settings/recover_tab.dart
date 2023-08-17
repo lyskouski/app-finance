@@ -3,6 +3,7 @@
 // found in the LICENSE file.
 
 import 'package:adaptive_breakpoints/adaptive_breakpoints.dart';
+import 'package:app_finance/_classes/app_locale.dart';
 import 'package:app_finance/_classes/data/transaction_log.dart';
 import 'package:app_finance/_classes/focus_controller.dart';
 import 'package:app_finance/custom_text_theme.dart';
@@ -12,7 +13,6 @@ import 'package:app_finance/widgets/_wrappers/required_widget.dart';
 import 'package:app_finance/widgets/init/loading_widget.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_gen/gen_l10n/app_localization.dart';
 import 'package:webdav_client/webdav_client.dart';
 
 class RecoverTab extends StatefulWidget {
@@ -32,7 +32,7 @@ class SyncTabState extends State<RecoverTab> {
 
   Client? _connect(BuildContext context) {
     if (username.text.isEmpty || link.text.isEmpty || password.text.isEmpty) {
-      setState(() => message = AppLocalizations.of(context)!.isRequired);
+      setState(() => message = AppLocale.labels.isRequired);
       return null;
     }
     setState(() => inProgress = true);
@@ -52,13 +52,13 @@ class SyncTabState extends State<RecoverTab> {
     final Uint8List unit8List = Uint8List.fromList(codeUnits);
     await client.write(path.text, unit8List).catchError((err) {
       setState(() {
-        message = AppLocalizations.of(context)!.error(err.toString());
+        message = AppLocale.labels.error(err.toString());
         inProgress = false;
       });
     });
     setState(() {
       inProgress = false;
-      message = AppLocalizations.of(context)!.success;
+      message = AppLocale.labels.success;
     });
   }
 
@@ -74,7 +74,7 @@ class SyncTabState extends State<RecoverTab> {
     }
     setState(() {
       inProgress = false;
-      message = AppLocalizations.of(context)!.success;
+      message = AppLocale.labels.success;
     });
   }
 
@@ -97,7 +97,7 @@ class SyncTabState extends State<RecoverTab> {
             ] else ...[
               SizedBox(height: indent),
               Text(
-                AppLocalizations.of(context)!.webDav,
+                AppLocale.labels.webDav,
                 style: textTheme.bodyLarge?.copyWith(color: Theme.of(context).colorScheme.primary),
               ),
               Text(
@@ -106,7 +106,7 @@ class SyncTabState extends State<RecoverTab> {
               ),
               SizedBox(height: indent),
               RequiredWidget(
-                title: AppLocalizations.of(context)!.link,
+                title: AppLocale.labels.link,
                 showError: message != '' && link.text.isEmpty,
               ),
               SimpleInput(
@@ -116,7 +116,7 @@ class SyncTabState extends State<RecoverTab> {
               ),
               SizedBox(height: indent),
               RequiredWidget(
-                title: AppLocalizations.of(context)!.username,
+                title: AppLocale.labels.username,
                 showError: message != '' && username.text.isEmpty,
               ),
               SimpleInput(
@@ -125,7 +125,7 @@ class SyncTabState extends State<RecoverTab> {
               ),
               SizedBox(height: indent),
               RequiredWidget(
-                title: AppLocalizations.of(context)!.password,
+                title: AppLocale.labels.password,
                 showError: message != '' && password.text.isEmpty,
               ),
               SimpleInput(
@@ -135,7 +135,7 @@ class SyncTabState extends State<RecoverTab> {
               ),
               SizedBox(height: indent),
               RequiredWidget(
-                title: AppLocalizations.of(context)!.path,
+                title: AppLocale.labels.path,
                 showError: message != '' && path.text.isEmpty,
               ),
               SimpleInput(
@@ -148,8 +148,8 @@ class SyncTabState extends State<RecoverTab> {
                 child: FloatingActionButton(
                   heroTag: 'recover_tab_save',
                   onPressed: () => save2WebDav(context),
-                  tooltip: AppLocalizations.of(context)!.saveTooltip,
-                  child: Text(AppLocalizations.of(context)!.saveTooltip),
+                  tooltip: AppLocale.labels.saveTooltip,
+                  child: Text(AppLocale.labels.saveTooltip),
                 ),
               ),
               SizedBox(height: indent * 4),
@@ -158,8 +158,8 @@ class SyncTabState extends State<RecoverTab> {
                 child: FloatingActionButton(
                   heroTag: 'recover_tab_recover',
                   onPressed: () => recover4WebDav(context),
-                  tooltip: AppLocalizations.of(context)!.recoveryTooltip,
-                  child: Text(AppLocalizations.of(context)!.recoveryTooltip),
+                  tooltip: AppLocale.labels.recoveryTooltip,
+                  child: Text(AppLocale.labels.recoveryTooltip),
                 ),
               ),
             ]

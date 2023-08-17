@@ -3,11 +3,11 @@
 // found in the LICENSE file.
 
 import 'package:adaptive_breakpoints/adaptive_breakpoints.dart';
+import 'package:app_finance/_classes/app_locale.dart';
 import 'package:app_finance/_classes/app_route.dart';
 import 'package:app_finance/helpers/theme_helper.dart';
 import 'package:app_finance/widgets/_wrappers/row_widget.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_gen/gen_l10n/app_localization.dart';
 
 class BaseListLimitedWidget extends StatelessWidget {
   final String? route;
@@ -47,8 +47,7 @@ class BaseListLimitedWidget extends StatelessWidget {
       itemCount = limit! + 2;
       hasMore = true;
     }
-    final addButton =
-        route == null ? const SizedBox() : buildButton(context, '${route!}/add', AppLocalizations.of(context)!.btnAdd);
+    final addButton = route == null ? const SizedBox() : buildButton(context, '${route!}/add', AppLocale.labels.btnAdd);
 
     return ListView.builder(
         itemCount: itemCount,
@@ -64,7 +63,7 @@ class BaseListLimitedWidget extends StatelessWidget {
               maxWidth: offset,
               chunk: const [0.5, 0.5],
               children: [
-                [buildButton(context, route ?? AppRoute.homeRoute, AppLocalizations.of(context)!.btnMore)],
+                [buildButton(context, route ?? AppRoute.homeRoute, AppLocale.labels.btnMore)],
                 [addButton]
               ],
             );

@@ -3,6 +3,7 @@
 // found in the LICENSE file.
 
 import 'package:adaptive_breakpoints/adaptive_breakpoints.dart';
+import 'package:app_finance/_classes/app_locale.dart';
 import 'package:app_finance/_classes/app_menu.dart';
 import 'package:app_finance/_classes/app_data.dart';
 import 'package:app_finance/_classes/focus_controller.dart';
@@ -10,7 +11,6 @@ import 'package:app_finance/helpers/theme_helper.dart';
 import 'package:app_finance/widgets/_wrappers/toolbar_button_widget.dart';
 import 'package:app_finance/widgets/menu_widget.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_gen/gen_l10n/app_localization.dart';
 import 'package:provider/provider.dart';
 
 abstract class AbstractPage<T> extends StatefulWidget {
@@ -38,7 +38,7 @@ abstract class AbstractPageState<T extends AbstractPage> extends State<T> {
             Icons.arrow_back,
             color: Colors.white70,
           ),
-          tooltip: AppLocalizations.of(context)!.backTooltip,
+          tooltip: AppLocale.labels.backTooltip,
           onPressed: () => Navigator.of(context).pop(),
         ),
       ),

@@ -3,24 +3,14 @@
 
 import 'package:app_finance/_classes/gen/generate_with_method_setters.dart';
 import 'package:app_finance/_mixins/formatter_mixin.dart';
-import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:mockito/annotations.dart';
-
-@GenerateNiceMocks([MockSpec<BuildContext>(), MockSpec<Localizations>()])
-import 'formatter_mixin_test.mocks.dart';
 
 @GenerateWithMethodSetters([FormatterMixin])
 import 'formatter_mixin_test.wrapper.dart';
 
 void main() {
   group('FormatterMixin', () {
-    final mock = MockBuildContext();
     final object = WrapperFormatterMixin();
-
-    setUp(() {
-      object.setContext(mock);
-    });
 
     group('getDateFormatted', () {
       final testCases = [
@@ -30,7 +20,6 @@ void main() {
 
       for (var v in testCases) {
         test('$v', () {
-          object.mockGetLocale = () => v.locale;
           final date = DateTime(v.date[0], v.date[1], v.date[2]);
           expect(object.getDateFormatted(date), v.result);
         });

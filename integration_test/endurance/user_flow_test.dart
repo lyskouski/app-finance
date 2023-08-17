@@ -4,20 +4,16 @@
 import 'dart:io';
 import 'dart:math';
 
-import 'package:app_finance/_classes/app_data.dart';
-import 'package:app_finance/_classes/app_theme.dart';
 import 'package:app_finance/_mixins/shared_preferences_mixin.dart';
-import 'package:app_finance/main.dart';
-import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:integration_test/integration_test.dart';
 import 'package:path_provider/path_provider.dart';
-import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../test/e2e/_steps/file_reader.dart';
 import '../../test/e2e/_steps/file_reporter.dart';
 import '../../test/e2e/_steps/file_runner.dart';
+import '../../test/pump_main.dart';
 
 void main() {
   IntegrationTestWidgetsFlutterBinding.ensureInitialized();
@@ -33,20 +29,6 @@ void main() {
     await file.delete();
   }
 
-  Future<void> init(WidgetTester tester) async {
-    await tester.pumpWidget(MultiProvider(
-      providers: [
-        ChangeNotifierProvider<AppData>(
-          create: (_) => AppData(),
-        ),
-        ChangeNotifierProvider<AppTheme>(
-          create: (_) => AppTheme(ThemeMode.system),
-        ),
-      ],
-      child: const MyApp(),
-    ));
-  }
-
   Future<void> run(WidgetTester tester, String scenario) async {
     final reporter = FileReporter();
     final step = await FileReader().getFromString(scenario, reporter);
@@ -59,7 +41,6 @@ void main() {
   }
 
   Future<void> firstRun(WidgetTester tester) async {
-    await init(tester);
     await run(tester, '''
       @start
       Feature: Verify Initial Flow
@@ -129,6 +110,7 @@ void main() {
   testWidgets('Imitate User Activities', (WidgetTester tester) async {
     final startTime = DateTime.now();
     await cleanUp();
+    await PumpMain.init(tester, true);
     await firstRun(tester);
     Duration duration;
     int idx = 0;

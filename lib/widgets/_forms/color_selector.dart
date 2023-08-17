@@ -4,11 +4,11 @@
 
 import 'dart:math';
 
+import 'package:app_finance/_classes/app_locale.dart';
 import 'package:app_finance/_classes/focus_controller.dart';
 import 'package:app_finance/widgets/_forms/abstract_input.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_colorpicker/flutter_colorpicker.dart';
-import 'package:flutter_gen/gen_l10n/app_localization.dart';
 
 class ColorSelector extends AbstractInput {
   final Function setState;
@@ -49,7 +49,7 @@ class ColorSelector extends AbstractInput {
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
-          title: Text(AppLocalizations.of(context)!.colorTooltip),
+          title: Text(AppLocale.labels.colorTooltip),
           content: SingleChildScrollView(
             child: ColorPicker(
               pickerColor: clr,
@@ -64,7 +64,7 @@ class ColorSelector extends AbstractInput {
                 Navigator.of(context).pop();
                 FocusController.onEditingComplete(focusOrder);
               },
-              child: Text(AppLocalizations.of(context)!.ok),
+              child: Text(AppLocale.labels.ok),
             ),
           ],
         );

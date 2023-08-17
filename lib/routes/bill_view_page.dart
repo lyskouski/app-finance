@@ -3,6 +3,7 @@
 // found in the LICENSE file.
 
 import 'package:adaptive_breakpoints/adaptive_breakpoints.dart';
+import 'package:app_finance/_classes/app_locale.dart';
 import 'package:app_finance/_classes/app_menu.dart';
 import 'package:app_finance/_classes/data/bill_app_data.dart';
 import 'package:app_finance/_classes/app_data.dart';
@@ -11,7 +12,6 @@ import 'package:app_finance/_classes/app_route.dart';
 import 'package:app_finance/routes/abstract_page.dart';
 import 'package:app_finance/widgets/home/base_line_widget.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_gen/gen_l10n/app_localization.dart';
 
 class BillViewPage extends AbstractPage {
   final String uuid;
@@ -48,13 +48,13 @@ class BillViewPageState extends AbstractPageState<BillViewPage> {
         FloatingActionButton(
           heroTag: 'bill_view_page_deactivate',
           onPressed: () => deactivateAccount(context),
-          tooltip: AppLocalizations.of(context)!.deleteBillTooltip,
+          tooltip: AppLocale.labels.deleteBillTooltip,
           child: const Icon(Icons.delete),
         ),
         FloatingActionButton(
           heroTag: 'bill_view_page_edit',
           onPressed: () => Navigator.pushNamed(context, route),
-          tooltip: AppLocalizations.of(context)!.editBillTooltip,
+          tooltip: AppLocale.labels.editBillTooltip,
           child: const Icon(Icons.edit),
         ),
       ]),
@@ -64,7 +64,6 @@ class BillViewPageState extends AbstractPageState<BillViewPage> {
   @override
   Widget buildContent(BuildContext context, BoxConstraints constraints) {
     final item = super.state.getByUuid(widget.uuid) as BillAppData;
-    item.setContext(context);
     double indent = ThemeHelper(windowType: getWindowType(context)).getIndent() * 2;
     double offset = MediaQuery.of(context).size.width - indent * 3;
     return Column(

@@ -4,12 +4,12 @@
 
 import 'package:adaptive_breakpoints/adaptive_breakpoints.dart';
 import 'package:app_finance/_classes/app_data.dart';
+import 'package:app_finance/_classes/app_locale.dart';
 import 'package:app_finance/helpers/theme_helper.dart';
 import 'package:app_finance/_classes/app_route.dart';
 import 'package:app_finance/routes/abstract_page.dart';
 import 'package:app_finance/widgets/home/base_line_widget.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_gen/gen_l10n/app_localization.dart';
 
 class GoalPage extends AbstractPage {
   GoalPage() : super();
@@ -21,7 +21,7 @@ class GoalPage extends AbstractPage {
 class GoalPageState extends AbstractPageState<GoalPage> {
   @override
   String getTitle(context) {
-    return AppLocalizations.of(context)!.goalHeadline;
+    return AppLocale.labels.goalHeadline;
   }
 
   @override
@@ -29,7 +29,7 @@ class GoalPageState extends AbstractPageState<GoalPage> {
     return FloatingActionButton(
       heroTag: 'goal_view_page',
       onPressed: () => Navigator.pushNamed(context, AppRoute.goalAddRoute),
-      tooltip: AppLocalizations.of(context)!.addGoalTooltip,
+      tooltip: AppLocale.labels.addGoalTooltip,
       child: const Icon(Icons.add),
     );
   }
@@ -40,7 +40,6 @@ class GoalPageState extends AbstractPageState<GoalPage> {
     final double offset = MediaQuery.of(context).size.width - helper.getIndent() * 2;
     return Column(
         children: super.state.getList(AppDataType.goals).map((goal) {
-      goal.setContext(context);
       return BaseLineWidget(
         title: goal.title ?? '',
         offset: offset,

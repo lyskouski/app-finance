@@ -3,6 +3,7 @@
 // found in the LICENSE file.
 
 import 'package:adaptive_breakpoints/adaptive_breakpoints.dart';
+import 'package:app_finance/_classes/app_locale.dart';
 import 'package:app_finance/charts/bar_vertical_group.dart';
 import 'package:app_finance/charts/bar_vertical_single.dart';
 import 'package:app_finance/charts/radial_bar_chart.dart';
@@ -10,7 +11,6 @@ import 'package:app_finance/helpers/theme_helper.dart';
 import 'package:app_finance/widgets/_wrappers/row_widget.dart';
 import 'package:app_finance/widgets/_wrappers/tap_widget.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_gen/gen_l10n/app_localization.dart';
 
 class BaseGroupWidget extends StatelessWidget {
   final String title;
@@ -36,12 +36,9 @@ class BaseGroupWidget extends StatelessWidget {
 
   Widget buildCategory(BuildContext context, int index, bool toSwap) {
     final item = items[index];
-    item.setContext(context);
     final tooltip = StringBuffer();
-    tooltip.writeAll([
-      '${AppLocalizations.of(context)!.title}: "${item.title}"\n',
-      '${AppLocalizations.of(context)!.details}: ${item.detailsFormatted}'
-    ]);
+    tooltip.writeAll(
+        ['${AppLocale.labels.title}: "${item.title}"\n', '${AppLocale.labels.details}: ${item.detailsFormatted}']);
     return TapWidget(
       tooltip: tooltip.toString(),
       route: '$route${item.uuid}',
@@ -73,7 +70,7 @@ class BaseGroupWidget extends StatelessWidget {
       children: [
         TapWidget(
           route: '${route.replaceAll('uuid:', 'search:')}$title',
-          tooltip: AppLocalizations.of(context)!.search(title),
+          tooltip: AppLocale.labels.search(title),
           child: RowWidget(
             indent: indent,
             maxWidth: offset,

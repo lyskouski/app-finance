@@ -34,7 +34,11 @@ class ClassListGenerator extends Generator {
       for (final name in note.toListValue()!) {
         Iterable<File> scope = Directory('$dir/${name.toStringValue()}')
             .listSync(recursive: true)
-            .where((entity) => entity is File && entity.path.endsWith('.dart'))
+            .where((entity) =>
+                entity is File &&
+                entity.path.endsWith('.dart') &&
+                !entity.path.endsWith('.mocks.dart') &&
+                !entity.path.endsWith('.wrapper.dart'))
             .cast<File>();
         for (final file in scope) {
           final path = file.path.toString().replaceAll('\\', '/').replaceAll('$dir/', '');

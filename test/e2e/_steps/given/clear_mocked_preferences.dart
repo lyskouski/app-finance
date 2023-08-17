@@ -2,13 +2,20 @@
 // Use of this source code is governed by a CC BY-NC-ND 4.0 license that can be
 // found in the LICENSE file.
 
+import 'package:app_finance/_classes/gen/generate_with_method_setters.dart';
 import 'package:app_finance/_mixins/shared_preferences_mixin.dart';
 import 'package:flutter_test/flutter_test.dart';
 // ignore: depend_on_referenced_packages
 import 'package:gherkin/gherkin.dart';
+import 'package:mockito/annotations.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import '../file_runner.dart';
-import '../../e2e_test.wrapper.dart';
+
+@GenerateNiceMocks([MockSpec<SharedPreferences>()])
+import 'clear_mocked_preferences.mocks.dart';
+@GenerateWithMethodSetters([MockSharedPreferences])
+import 'clear_mocked_preferences.wrapper.dart';
 
 class ClearMockedPreferences extends Given with SharedPreferencesMixin {
   @override
