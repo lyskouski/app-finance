@@ -116,6 +116,7 @@ class ExpensesTabState<T extends ExpensesTab> extends State<T> with SharedPrefer
   }
 
   Widget buildButton(BuildContext context, BoxConstraints constraints) {
+    NavigatorState nav = Navigator.of(context);
     return FullSizedButton(
       constraints: constraints,
       setState: () => {
@@ -124,7 +125,7 @@ class ExpensesTabState<T extends ExpensesTab> extends State<T> with SharedPrefer
             return;
           }
           updateStorage();
-          Navigator.popAndPushNamed(context, AppRoute.homeRoute);
+          nav.popAndPushNamed(AppRoute.homeRoute);
         })
       },
       title: getButtonTitle(context),

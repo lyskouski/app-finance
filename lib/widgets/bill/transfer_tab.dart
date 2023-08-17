@@ -77,6 +77,7 @@ class TransferTabState extends State<TransferTab> {
   }
 
   Widget buildButton(BuildContext context, BoxConstraints constraints) {
+    NavigatorState nav = Navigator.of(context);
     return FullSizedButton(
       constraints: constraints,
       setState: () => {
@@ -85,7 +86,7 @@ class TransferTabState extends State<TransferTab> {
             return;
           }
           updateStorage();
-          Navigator.popAndPushNamed(context, AppRoute.homeRoute);
+          nav.popAndPushNamed(AppRoute.homeRoute);
         })
       },
       title: AppLocale.labels.createTransferTooltip,

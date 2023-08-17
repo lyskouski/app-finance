@@ -95,6 +95,7 @@ class GoalAddPageState<T extends GoalAddPage> extends AbstractPageState<GoalAddP
 
   @override
   Widget buildButton(BuildContext context, BoxConstraints constraints) {
+    NavigatorState nav = Navigator.of(context);
     return FullSizedButton(
       constraints: constraints,
       setState: () => {
@@ -103,8 +104,8 @@ class GoalAddPageState<T extends GoalAddPage> extends AbstractPageState<GoalAddP
             return;
           }
           updateStorage();
-          Navigator.pop(context);
-          Navigator.pop(context);
+          nav.pop();
+          nav.pop();
         })
       },
       title: getButtonName(),

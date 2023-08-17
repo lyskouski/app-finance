@@ -34,9 +34,10 @@ class AccountPageState extends AbstractPageState<AccountPage> {
 
   @override
   Widget buildButton(BuildContext context, BoxConstraints constraints) {
+    NavigatorState nav = Navigator.of(context);
     return FloatingActionButton(
       heroTag: 'account_page',
-      onPressed: () => Navigator.pushNamed(context, AppRoute.accountAddRoute),
+      onPressed: () => nav.pushNamed(AppRoute.accountAddRoute),
       tooltip: AppLocale.labels.addAccountTooltip,
       child: const Icon(Icons.add),
     );

@@ -81,6 +81,7 @@ class IncomeTabState extends State<IncomeTab> with SharedPreferencesMixin {
   }
 
   Widget buildButton(BuildContext context, BoxConstraints constraints) {
+    NavigatorState nav = Navigator.of(context);
     return FullSizedButton(
       constraints: constraints,
       setState: () => {
@@ -89,7 +90,7 @@ class IncomeTabState extends State<IncomeTab> with SharedPreferencesMixin {
             return;
           }
           updateStorage();
-          Navigator.popAndPushNamed(context, AppRoute.homeRoute);
+          nav.popAndPushNamed(AppRoute.homeRoute);
         })
       },
       title: AppLocale.labels.createIncomeTooltip,

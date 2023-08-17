@@ -22,6 +22,7 @@ class TapWidget extends StatelessWidget {
 
   @override
   Widget build(context) {
+    NavigatorState nav = Navigator.of(context);
     return Tooltip(
       message: tooltip ?? AppLocale.labels.homeTooltip,
       child: MouseRegion(
@@ -31,7 +32,7 @@ class TapWidget extends StatelessWidget {
             if (onTap != null) {
               onTap!();
             } else if (route != '') {
-              Navigator.pushNamed(context, route ?? AppRoute.homeRoute);
+              nav.pushNamed(route ?? AppRoute.homeRoute);
             }
           },
           child: child,

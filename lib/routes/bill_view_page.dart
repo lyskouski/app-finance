@@ -31,29 +31,30 @@ class BillViewPageState extends AbstractPageState<BillViewPage> {
     return item.title;
   }
 
-  void deactivateAccount(BuildContext context) {
+  void deactivateAccount(NavigatorState nav) {
     var data = super.state.getByUuid(widget.uuid) as BillAppData;
     data.hidden = true;
     super.state.update(AppDataType.bills, widget.uuid, data);
-    Navigator.pop(context);
+    nav.pop();
   }
 
   @override
   Widget buildButton(BuildContext context, BoxConstraints constraints) {
     String route = AppMenu.uuid(AppRoute.billEditRoute, widget.uuid);
     double indent = ThemeHelper(windowType: getWindowType(context)).getIndent() * 4;
+    NavigatorState nav = Navigator.of(context);
     return Container(
       margin: EdgeInsets.only(left: indent),
       child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
         FloatingActionButton(
           heroTag: 'bill_view_page_deactivate',
-          onPressed: () => deactivateAccount(context),
+          onPressed: () => deactivateAccount(nav),
           tooltip: AppLocale.labels.deleteBillTooltip,
           child: const Icon(Icons.delete),
         ),
         FloatingActionButton(
           heroTag: 'bill_view_page_edit',
-          onPressed: () => Navigator.pushNamed(context, route),
+          onPressed: () => nav.pushNamed(route),
           tooltip: AppLocale.labels.editBillTooltip,
           child: const Icon(Icons.edit),
         ),

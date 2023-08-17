@@ -41,23 +41,24 @@ class GoalViewPageState extends AbstractPageState<GoalViewPage> with SharedPrefe
     return data.title;
   }
 
-  void deactivateGoal(GoalAppData data, BuildContext context) {
+  void deactivateGoal(GoalAppData data, NavigatorState nav) {
     data.hidden = true;
     super.state.update(AppDataType.goals, widget.uuid, data);
-    Navigator.pop(context);
+    nav.pop();
   }
 
-  void completeGoal(GoalAppData data, BuildContext context) {
+  void completeGoal(GoalAppData data, NavigatorState nav) {
     var newBill = BillAppData(
-        account: defaultAccount,
-        category: '',
-        title: '${AppLocale.labels.completeGoalTooltip}: ${data.title}',
-        details: data.details,
-        currency: data.currency);
+      account: defaultAccount,
+      category: '',
+      title: '${AppLocale.labels.completeGoalTooltip}: ${data.title}',
+      details: data.details,
+      currency: data.currency,
+    );
     newBill = super.state.add(AppDataType.bills, newBill);
-    deactivateGoal(data, context);
+    deactivateGoal(data, nav);
     String route = AppMenu.uuid(AppRoute.billEditRoute, newBill.uuid ?? '');
-    Navigator.popAndPushNamed(context, route);
+    nav.popAndPushNamed(route);
   }
 
   @override
@@ -65,25 +66,26 @@ class GoalViewPageState extends AbstractPageState<GoalViewPage> with SharedPrefe
     final data = super.state.getByUuid(widget.uuid) as GoalAppData;
     String route = AppMenu.uuid(AppRoute.goalEditRoute, widget.uuid);
     double indent = ThemeHelper(windowType: getWindowType(context)).getIndent() * 4;
+    NavigatorState nav = Navigator.of(context);
     return Container(
       margin: EdgeInsets.only(left: indent),
       child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
         data.progress == 1.0
             ? FloatingActionButton(
                 heroTag: 'goal_view_page_check',
-                onPressed: () => completeGoal(data, context),
+                onPressed: () => completeGoal(data, nav),
                 tooltip: AppLocale.labels.completeGoalTooltip,
                 child: const Icon(Icons.check),
               )
             : FloatingActionButton(
                 heroTag: 'goal_view_page_deactivate',
-                onPressed: () => deactivateGoal(data, context),
+                onPressed: () => deactivateGoal(data, nav),
                 tooltip: AppLocale.labels.deleteGoalTooltip,
                 child: const Icon(Icons.delete),
               ),
         FloatingActionButton(
           heroTag: 'goal_view_page_edit',
-          onPressed: () => Navigator.pushNamed(context, route),
+          onPressed: () => nav.pushNamed(route),
           tooltip: AppLocale.labels.editGoalTooltip,
           child: const Icon(Icons.edit),
         ),

@@ -50,9 +50,9 @@ class StartPageState extends AbstractPageState<StartPage> {
     return const SizedBox();
   }
 
-  void updateState() {
+  void updateState(NavigatorState nav) {
     if (currentStep > 2) {
-      Navigator.popAndPushNamed(context, AppRoute.homeRoute);
+      nav.popAndPushNamed(AppRoute.homeRoute);
     } else {
       setState(() => currentStep += 1);
     }
@@ -60,6 +60,8 @@ class StartPageState extends AbstractPageState<StartPage> {
 
   @override
   Widget build(BuildContext context) {
+    NavigatorState nav = Navigator.of(context);
+    fn() => updateState(nav);
     return Consumer<AppData>(builder: (context, appState, _) {
       state = appState;
       return Scaffold(
@@ -70,10 +72,10 @@ class StartPageState extends AbstractPageState<StartPage> {
             asDots: true,
             focus: currentStep,
             children: [
-              SettingTab(setState: updateState),
-              PrivacyTab(setState: updateState),
-              AccountTab(setState: updateState),
-              BudgetTab(setState: updateState),
+              SettingTab(setState: fn),
+              PrivacyTab(setState: fn),
+              AccountTab(setState: fn),
+              BudgetTab(setState: fn),
             ],
           ),
         ),

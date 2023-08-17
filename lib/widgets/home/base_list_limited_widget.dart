@@ -28,10 +28,11 @@ class BaseListLimitedWidget extends StatelessWidget {
   });
 
   Widget buildButton(BuildContext context, String route, String title) {
+    NavigatorState nav = Navigator.of(context);
     return TextButton(
       onPressed: () {
-        Navigator.pushNamed(context, AppRoute.homeRoute);
-        Navigator.pushNamed(context, route);
+        nav.pushNamed(AppRoute.homeRoute);
+        nav.pushNamed(route);
       },
       child: Text(title),
     );

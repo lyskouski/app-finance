@@ -34,9 +34,6 @@ class HomePageState extends AbstractPageState<HomePage> with SharedPreferencesMi
   initState() {
     super.initState();
     toExpand = getPreference(prefExpand);
-    if (getPreference(prefPrivacyPolicy) == null) {
-      WidgetsBinding.instance.addPostFrameCallback((_) => Navigator.popAndPushNamed(context, AppRoute.startRoute));
-    }
   }
 
   @override
@@ -46,6 +43,7 @@ class HomePageState extends AbstractPageState<HomePage> with SharedPreferencesMi
 
   @override
   AppBar buildBar(BuildContext context) {
+    NavigatorState nav = Navigator.of(context);
     return AppBar(
       backgroundColor: Theme.of(context).colorScheme.primary,
       toolbarHeight: 40,
@@ -74,7 +72,7 @@ class HomePageState extends AbstractPageState<HomePage> with SharedPreferencesMi
               color: Colors.white70,
             ),
             tooltip: AppLocale.labels.subscriptionTooltip,
-            onPressed: () => Navigator.pushNamed(context, AppRoute.subscriptionRoute),
+            onPressed: () => nav.pushNamed(AppRoute.subscriptionRoute),
           ),
         ),
       ],
@@ -83,9 +81,10 @@ class HomePageState extends AbstractPageState<HomePage> with SharedPreferencesMi
 
   @override
   Widget buildButton(BuildContext context, BoxConstraints constraints) {
+    NavigatorState nav = Navigator.of(context);
     return FloatingActionButton(
       heroTag: 'home_page',
-      onPressed: () => Navigator.pushNamed(context, AppRoute.billAddRoute),
+      onPressed: () => nav.pushNamed(AppRoute.billAddRoute),
       tooltip: AppLocale.labels.addMainTooltip,
       child: const Icon(Icons.add),
     );
@@ -93,6 +92,10 @@ class HomePageState extends AbstractPageState<HomePage> with SharedPreferencesMi
 
   @override
   Widget build(BuildContext context) {
+    NavigatorState nav = Navigator.of(context);
+    if (getPreference(prefPrivacyPolicy) == null) {
+      WidgetsBinding.instance.addPostFrameCallback((_) => nav.popAndPushNamed(AppRoute.startRoute));
+    }
     Provider.of<AppLocale>(context, listen: false).updateState(context);
     return Consumer<AppData>(builder: (context, appState, _) {
       state = appState;

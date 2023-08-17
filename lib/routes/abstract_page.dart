@@ -29,6 +29,7 @@ abstract class AbstractPageState<T extends AbstractPage> extends State<T> {
 
   AppBar buildBar(BuildContext context) {
     final helper = ThemeHelper(windowType: getWindowType(context));
+    NavigatorState nav = Navigator.of(context);
     return AppBar(
       backgroundColor: Theme.of(context).colorScheme.primary,
       toolbarHeight: 40,
@@ -39,7 +40,7 @@ abstract class AbstractPageState<T extends AbstractPage> extends State<T> {
             color: Colors.white70,
           ),
           tooltip: AppLocale.labels.backTooltip,
-          onPressed: () => Navigator.of(context).pop(),
+          onPressed: () => nav.pop(),
         ),
       ),
       title: Text(
@@ -62,9 +63,7 @@ abstract class AbstractPageState<T extends AbstractPage> extends State<T> {
               );
             }).toList();
           },
-          onSelected: (value) {
-            Navigator.pushNamed(context, value);
-          },
+          onSelected: (value) => nav.pushNamed(value),
           icon: const Icon(
             Icons.more_vert,
             color: Colors.white70,

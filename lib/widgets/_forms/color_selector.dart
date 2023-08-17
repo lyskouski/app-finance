@@ -42,6 +42,7 @@ class ColorSelector extends AbstractInput {
 
   void onTap(context) {
     MaterialColor clr = value ?? getRandomMaterialColor();
+    NavigatorState nav = Navigator.of(context);
     if (value == null) {
       setState(clr);
     }
@@ -61,7 +62,7 @@ class ColorSelector extends AbstractInput {
           actions: <Widget>[
             ElevatedButton(
               onPressed: () {
-                Navigator.of(context).pop();
+                nav.pop();
                 FocusController.onEditingComplete(focusOrder);
               },
               child: Text(AppLocale.labels.ok),

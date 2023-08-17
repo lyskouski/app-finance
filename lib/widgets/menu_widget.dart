@@ -18,9 +18,9 @@ class MenuWidget extends StatelessWidget {
     required this.setState,
   });
 
-  void _navigateToPage(BuildContext context, String routeName) {
-    Navigator.pop(context);
-    Navigator.pushNamed(context, routeName);
+  void _navigateToPage(NavigatorState nav, String routeName) {
+    nav.pop();
+    nav.pushNamed(routeName);
   }
 
   @override
@@ -29,6 +29,7 @@ class MenuWidget extends StatelessWidget {
     final TextTheme textTheme = Theme.of(context).textTheme;
     Color color = selectedIndex == index ? colorScheme.inversePrimary : colorScheme.secondary;
     AppMenuItem menu = AppMenu.getByIndex(index);
+    NavigatorState nav = Navigator.of(context);
 
     return InkWell(
       child: ListTile(
@@ -46,7 +47,7 @@ class MenuWidget extends StatelessWidget {
       ),
       onTap: () {
         setState();
-        _navigateToPage(context, menu.route);
+        _navigateToPage(nav, menu.route);
       },
       onHover: (isHovered) {
         if (isHovered) {

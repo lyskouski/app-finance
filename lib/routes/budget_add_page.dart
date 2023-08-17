@@ -89,22 +89,23 @@ class BudgetAddPageState<T extends BudgetAddPage> extends AbstractPageState<Budg
     return AppLocale.labels.createBudgetTooltip;
   }
 
-  void triggerActionButton(BuildContext context) {
+  void triggerActionButton(NavigatorState nav) {
     setState(() {
       if (hasFormErrors()) {
         return;
       }
       updateStorage();
-      Navigator.pop(context);
-      Navigator.pop(context);
+      nav.pop();
+      nav.pop();
     });
   }
 
   @override
   Widget buildButton(BuildContext context, BoxConstraints constraints) {
+    NavigatorState nav = Navigator.of(context);
     return FullSizedButton(
       constraints: constraints,
-      setState: () => triggerActionButton(context),
+      setState: () => triggerActionButton(nav),
       title: getButtonName(context),
       icon: Icons.save,
     );

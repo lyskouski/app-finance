@@ -32,29 +32,30 @@ class BudgetViewPageState extends AbstractPageState<BudgetViewPage> {
     return item.title;
   }
 
-  void deactivateAccount(BuildContext context) {
+  void deactivateAccount(NavigatorState nav) {
     var data = super.state.getByUuid(widget.uuid) as BudgetAppData;
     data.hidden = true;
     super.state.update(AppDataType.budgets, widget.uuid, data);
-    Navigator.pop(context);
+    nav.pop();
   }
 
   @override
   Widget buildButton(BuildContext context, BoxConstraints constraints) {
     String route = AppMenu.uuid(AppRoute.budgetEditRoute, widget.uuid);
     double indent = ThemeHelper(windowType: getWindowType(context)).getIndent() * 4;
+    NavigatorState nav = Navigator.of(context);
     return Container(
       margin: EdgeInsets.only(left: indent),
       child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
         FloatingActionButton(
           heroTag: 'budget_view_page_deactivate',
-          onPressed: () => deactivateAccount(context),
+          onPressed: () => deactivateAccount(nav),
           tooltip: AppLocale.labels.deleteBudgetTooltip,
           child: const Icon(Icons.delete),
         ),
         FloatingActionButton(
           heroTag: 'budget_view_page_edit',
-          onPressed: () => Navigator.pushNamed(context, route),
+          onPressed: () => nav.pushNamed(route),
           tooltip: AppLocale.labels.editBudgetTooltip,
           child: const Icon(Icons.edit),
         ),
