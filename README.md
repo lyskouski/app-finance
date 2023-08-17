@@ -1,9 +1,9 @@
-# ![Fingram Logo](https://github.com/lyskouski/app-finance/blob/main/docs/mockups/logo/main.svg) Financial Accounting Application
+# ![Fingrom Logo](https://github.com/lyskouski/app-finance/blob/main/docs/mockups/logo/main.svg) Financial Accounting Application
 [![License: CC BY-NC-ND 4.0](https://img.shields.io/badge/License-CC_BY--NC--ND_4.0-lightgrey.svg)](https://creativecommons.org/licenses/by-nc-nd/4.0/) 
 [![Check Status](https://github.com/lyskouski/app-finance/actions/workflows/push_to_main.yml/badge.svg?branch=main)](https://github.com/lyskouski/app-finance/actions/workflows/push_to_main.yml)
 [![Build Status](https://github.com/lyskouski/app-finance/actions/workflows/build.yml/badge.svg)](https://github.com/lyskouski/app-finance/actions/workflows/build.yml)
 
-**Fingram** - Open-sourced cross-platform financial accounting application without Ads and limitations.
+**Fingrom** - Open-sourced cross-platform financial accounting application without Ads and limitations.
 
 ## Health Check
 
@@ -29,9 +29,9 @@
 
 ## Availability
 
-- Macos: [latest Release](https://github.com/lyskouski/app-finance/releases/latest) -> fingram_macOS.zip
-- Linux: [latest Release](https://github.com/lyskouski/app-finance/releases/latest) -> fingram_Linux.tar.gz
-- Windows: [latest Release](https://github.com/lyskouski/app-finance/releases/latest) -> fingram_Windows.zip
+- Macos: [latest Release](https://github.com/lyskouski/app-finance/releases/latest) -> fingrom_macOS.zip
+- Linux: [latest Release](https://github.com/lyskouski/app-finance/releases/latest) -> fingrom_Linux.tar.gz
+- Windows: [latest Release](https://github.com/lyskouski/app-finance/releases/latest) -> fingrom_Windows.zip
 - Web: https://lyskouski.github.io/app-finance/
 - iOS [[pending]](https://github.com/lyskouski/app-finance/issues/116)
 - Android [[on hold]](https://github.com/lyskouski/app-finance/issues/129)

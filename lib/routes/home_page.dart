@@ -64,7 +64,7 @@ class HomePageState extends AbstractPageState<HomePage> with SharedPreferencesMi
         },
       ),
       title: Center(
-        child: Image.asset('assets/images/fingram.png'),
+        child: Image.asset('assets/images/fingrom.png'),
       ),
       actions: [
         ToolbarButtonWidget(

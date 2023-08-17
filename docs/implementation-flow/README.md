@@ -3,7 +3,7 @@
 
 This book is diving deep into the core mechanisms of the Flatter and Dart language to implement a serverless application.
 
-> Remarks of [Fingram](https://github.com/lyskouski/app-finance) development process.
+> Remarks of [Fingrom](https://github.com/lyskouski/app-finance) development process.
 
 **NOTE:** To compile the project
 1. Install LaTeX: https://miktex.org/download

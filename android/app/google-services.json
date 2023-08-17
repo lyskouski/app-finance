@@ -9,7 +9,7 @@
       "client_info": {
         "mobilesdk_app_id": "1:637490835303:android:5e056fa931de68bac689c2",
         "android_client_info": {
-          "package_name": "com.example.app_finance"
+          "package_name": "com.tercad.fingrom"
         }
       },
       "oauth_client": [
@@ -34,7 +34,7 @@
               "client_id": "637490835303-54nnsjspk2nrht9cpaqnfoc0qrvg6fhu.apps.googleusercontent.com",
               "client_type": 2,
               "ios_info": {
-                "bundle_id": "com.example.appFinance"
+                "bundle_id": "com.tercad.fingrom"
               }
             }
           ]

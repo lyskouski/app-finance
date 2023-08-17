@@ -1,4 +1,4 @@
-package com.example.app_finance
+package com.tercad.fingrom
 
 import io.flutter.embedding.android.FlutterActivity
 

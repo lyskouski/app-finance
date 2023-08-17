@@ -57,7 +57,7 @@ class DefaultFirebaseOptions {
     projectId: 'fingram-9030a',
     storageBucket: 'fingram-9030a.appspot.com',
     iosClientId: '637490835303-54nnsjspk2nrht9cpaqnfoc0qrvg6fhu.apps.googleusercontent.com',
-    iosBundleId: 'com.example.appFinance',
+    iosBundleId: 'com.tercad.fingrom',
   );
 
   static const FirebaseOptions macos = FirebaseOptions(
@@ -67,6 +67,6 @@ class DefaultFirebaseOptions {
     projectId: 'fingram-9030a',
     storageBucket: 'fingram-9030a.appspot.com',
     iosClientId: '637490835303-ls93eg7028hj0rbtc6ioselm4h60q07p.apps.googleusercontent.com',
-    iosBundleId: 'com.example.appFinance.RunnerTests',
+    iosBundleId: 'com.tercad.fingrom.RunnerTests',
   );
 }

@@ -89,13 +89,13 @@ BEGIN
     BEGIN
         BLOCK "040904e4"
         BEGIN
-            VALUE "CompanyName", "com.example" "\0"
-            VALUE "FileDescription", "app_finance" "\0"
+            VALUE "CompanyName", "com.tercad" "\0"
+            VALUE "FileDescription", "fingrom" "\0"
             VALUE "FileVersion", VERSION_AS_STRING "\0"
-            VALUE "InternalName", "app_finance" "\0"
-            VALUE "LegalCopyright", "Copyright (C) 2023 com.example. All rights reserved." "\0"
-            VALUE "OriginalFilename", "app_finance.exe" "\0"
-            VALUE "ProductName", "app_finance" "\0"
+            VALUE "InternalName", "fingrom" "\0"
+            VALUE "LegalCopyright", "Copyright (C) 2023 terCAD. All rights reserved." "\0"
+            VALUE "OriginalFilename", "fingrom.exe" "\0"
+            VALUE "ProductName", "Fingrom" "\0"
             VALUE "ProductVersion", VERSION_AS_STRING "\0"
         END
     END

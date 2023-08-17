@@ -16,7 +16,7 @@
     "appBuild": "Build: {build}",
     "appInitHeadline": "Project Initialization",
     "appStartHeadline": "Initial Setup",
-    "appTitle": "Fingram",
+    "appTitle": "Fingrom",
     "appVersion": "Version: {version}",
     "@appVersion": {
         "build": {

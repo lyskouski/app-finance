@@ -1,4 +1,4 @@
-Contributing to Fingram (app-finance)
+Contributing to Fingrom (app-finance)
 =======================
 
 Any help is always welcome!

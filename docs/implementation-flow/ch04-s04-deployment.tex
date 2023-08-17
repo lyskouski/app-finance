@@ -279,7 +279,7 @@ jobs:
       - name: Compress Windows Package
         if: matrix.target == 'Windows'
         run: |
-          compress-archive -Path * -DestinationPath ${env:GITHUB_WORKSPACE}/fingram_${{ matrix.target }}${{ matrix.asset_extension }}
+          compress-archive -Path * -DestinationPath ${env:GITHUB_WORKSPACE}/fingrom_${{ matrix.target }}${{ matrix.asset_extension }}
         working-directory: ${{ matrix.build_path }}
 
 # ... the same steps for Linux '-v linux' and Macos '-v macos'
@@ -291,8 +291,8 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: ${{ needs.release.outputs.upload_url }}
-          asset_path: ./fingram_${{ matrix.target }}${{ matrix.asset_extension }}
-          asset_name: fingram_${{ matrix.target }}${{ matrix.asset_extension }}
+          asset_path: ./fingrom_${{ matrix.target }}${{ matrix.asset_extension }}
+          asset_name: fingrom_${{ matrix.target }}${{ matrix.asset_extension }}
           asset_content_type: ${{ matrix.asset_content_type }}
 \end{lstlisting}
 

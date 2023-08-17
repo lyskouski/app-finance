@@ -1,8 +1,8 @@
 ## Privacy Policy
 
-Effective date: 2023-07-20
+Effective date: 2023-08-17
 
-Thank you for using our application ("Fingram"). This Privacy Policy outlines how we handle your data and ensure your 
+Thank you for using our application ("Fingrom"). This Privacy Policy outlines how we handle your data and ensure your 
 privacy while using the App. We are committed to protecting your personal information and providing transparency 
 about the data we collect and how it is used.
 

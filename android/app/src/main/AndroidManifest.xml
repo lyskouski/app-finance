@@ -1,6 +1,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
     <application
-        android:label="Fingram"
+        android:label="Fingrom"
         android:name="${applicationName}"
         android:background="@color/mainColor"
         android:icon="@mipmap/ic_launcher"
