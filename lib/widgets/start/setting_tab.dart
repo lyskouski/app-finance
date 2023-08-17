@@ -80,7 +80,7 @@ class SettingTabState<T extends SettingTab> extends AbstractTabState<T> with Sha
     double indent = ThemeHelper(windowType: getWindowType(context)).getIndent() * 2;
     double offset = MediaQuery.of(context).size.width - indent * 2;
     if (currency == null) {
-      Future.delayed(Duration.zero, () => initCurrencyFromLocale(locale));
+      WidgetsBinding.instance.addPostFrameCallback((_) => initCurrencyFromLocale(locale));
     }
 
     return SingleChildScrollView(

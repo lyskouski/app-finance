@@ -71,8 +71,7 @@ class ExpensesTabState<T extends ExpensesTab> extends State<T> with SharedPrefer
     super.initState();
   }
 
-  Future<void> _loadPreferences() async {
-    await Future.delayed(Duration.zero);
+  void _loadPreferences() {
     setState(() {
       isFresh = false;
 
