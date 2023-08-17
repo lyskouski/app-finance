@@ -27,7 +27,7 @@ class BudgetViewPage extends AbstractPage {
 
 class BudgetViewPageState extends AbstractPageState<BudgetViewPage> {
   @override
-  String getTitle(context) {
+  String getTitle() {
     final item = super.state.getByUuid(widget.uuid) as BudgetAppData;
     return item.title;
   }

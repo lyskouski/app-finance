@@ -42,7 +42,7 @@ class SubscriptionPageState extends AbstractPageState<SubscriptionPage> {
   }
 
   @override
-  String getTitle(BuildContext context) {
+  String getTitle() {
     return AppLocale.labels.subscriptionHeadline;
   }
 }

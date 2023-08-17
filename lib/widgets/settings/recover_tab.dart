@@ -30,7 +30,7 @@ class SyncTabState extends State<RecoverTab> {
   String message = '';
   bool inProgress = false;
 
-  Client? _connect(BuildContext context) {
+  Client? _connect() {
     if (username.text.isEmpty || link.text.isEmpty || password.text.isEmpty) {
       setState(() => message = AppLocale.labels.isRequired);
       return null;
@@ -39,8 +39,8 @@ class SyncTabState extends State<RecoverTab> {
     return newClient(link.text, user: username.text, password: password.text);
   }
 
-  Future<void> save2WebDav(BuildContext context) async {
-    final client = _connect(context);
+  Future<void> save2WebDav() async {
+    final client = _connect();
     if (client == null) {
       return;
     }
@@ -62,8 +62,8 @@ class SyncTabState extends State<RecoverTab> {
     });
   }
 
-  Future<void> recover4WebDav(BuildContext context) async {
-    final client = _connect(context);
+  Future<void> recover4WebDav() async {
+    final client = _connect();
     if (client == null) {
       return;
     }
@@ -147,7 +147,7 @@ class SyncTabState extends State<RecoverTab> {
                 width: double.infinity,
                 child: FloatingActionButton(
                   heroTag: 'recover_tab_save',
-                  onPressed: () => save2WebDav(context),
+                  onPressed: save2WebDav,
                   tooltip: AppLocale.labels.saveTooltip,
                   child: Text(AppLocale.labels.saveTooltip),
                 ),
@@ -157,7 +157,7 @@ class SyncTabState extends State<RecoverTab> {
                 width: double.infinity,
                 child: FloatingActionButton(
                   heroTag: 'recover_tab_recover',
-                  onPressed: () => recover4WebDav(context),
+                  onPressed: recover4WebDav,
                   tooltip: AppLocale.labels.recoveryTooltip,
                   child: Text(AppLocale.labels.recoveryTooltip),
                 ),

@@ -110,7 +110,7 @@ class ExpensesTabState<T extends ExpensesTab> extends State<T> with SharedPrefer
         ));
   }
 
-  String getButtonTitle(context) {
+  String getButtonTitle() {
     return AppLocale.labels.createBillTooltip;
   }
 
@@ -127,7 +127,7 @@ class ExpensesTabState<T extends ExpensesTab> extends State<T> with SharedPrefer
           nav.popAndPushNamed(AppRoute.homeRoute);
         })
       },
-      title: getButtonTitle(context),
+      title: getButtonTitle(),
       icon: Icons.save,
     );
   }

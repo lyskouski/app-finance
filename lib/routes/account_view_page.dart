@@ -27,7 +27,7 @@ class AccountViewPage extends AbstractPage {
 
 class AccountViewPageState extends AbstractPageState<AccountViewPage> {
   @override
-  String getTitle(context) {
+  String getTitle() {
     final item = super.state.getByUuid(widget.uuid) as AccountAppData;
     return item.title;
   }

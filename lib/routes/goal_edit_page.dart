@@ -30,7 +30,7 @@ class GoalEditPageState extends GoalAddPageState<GoalEditPage> {
   }
 
   @override
-  String getTitle(context) {
+  String getTitle() {
     return AppLocale.labels.editGoalHeader;
   }
 

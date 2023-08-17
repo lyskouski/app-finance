@@ -26,7 +26,7 @@ class BillViewPage extends AbstractPage {
 
 class BillViewPageState extends AbstractPageState<BillViewPage> {
   @override
-  String getTitle(context) {
+  String getTitle() {
     final item = super.state.getByUuid(widget.uuid) as BillAppData;
     return item.title;
   }

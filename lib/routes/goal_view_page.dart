@@ -36,7 +36,7 @@ class GoalViewPageState extends AbstractPageState<GoalViewPage> with SharedPrefe
   }
 
   @override
-  String getTitle(context) {
+  String getTitle() {
     final data = super.state.getByUuid(widget.uuid) as GoalAppData;
     return data.title;
   }

@@ -45,7 +45,7 @@ class BudgetEditPageState extends BudgetAddPageState<BudgetEditPage> {
   }
 
   @override
-  String getTitle(context) {
+  String getTitle() {
     return AppLocale.labels.editBudgetHeader;
   }
 
@@ -61,7 +61,7 @@ class BudgetEditPageState extends BudgetAddPageState<BudgetEditPage> {
   }
 
   @override
-  String getButtonName(BuildContext context) {
+  String getButtonName() {
     return AppLocale.labels.updateBudgetTooltip;
   }
 

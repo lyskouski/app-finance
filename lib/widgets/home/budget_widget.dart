@@ -30,7 +30,7 @@ class BudgetWidget extends AccountWidget {
         );
 
   @override
-  List<dynamic> updateItems(context, items, summaryItem) {
+  List<dynamic> updateItems(items, summaryItem) {
     return items.map((o) {
       o.progress = (summaryItem.amountLimit > 0
           ? (1 - o.progress) *
@@ -47,7 +47,7 @@ class BudgetWidget extends AccountWidget {
   @override
   Widget buildGroupedListWidget(List<dynamic> items, BuildContext context, double offset) {
     final item = wrapBySingleEntity(items);
-    final scope = updateItems(context, items, item);
+    final scope = updateItems(items, item);
     return BaseGroupWidget(
       title: item.title,
       total: item.details,

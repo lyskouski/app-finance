@@ -21,7 +21,7 @@ abstract class AbstractPageState<T extends AbstractPage> extends State<T> {
   late AppData state;
   int selectedMenu = 0;
 
-  String getTitle(BuildContext context);
+  String getTitle();
 
   Widget buildButton(BuildContext context, BoxConstraints constraints);
 
@@ -44,7 +44,7 @@ abstract class AbstractPageState<T extends AbstractPage> extends State<T> {
         ),
       ),
       title: Text(
-        getTitle(context),
+        getTitle(),
         style: TextStyle(color: Theme.of(context).colorScheme.inversePrimary),
       ),
       actions: [

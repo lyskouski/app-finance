@@ -62,7 +62,7 @@ class BudgetAddPageState<T extends BudgetAddPage> extends AbstractPageState<Budg
   }
 
   @override
-  String getTitle(context) {
+  String getTitle() {
     return AppLocale.labels.createBudgetHeader;
   }
 
@@ -85,7 +85,7 @@ class BudgetAddPageState<T extends BudgetAddPage> extends AbstractPageState<Budg
         ));
   }
 
-  String getButtonName(BuildContext context) {
+  String getButtonName() {
     return AppLocale.labels.createBudgetTooltip;
   }
 
@@ -106,7 +106,7 @@ class BudgetAddPageState<T extends BudgetAddPage> extends AbstractPageState<Budg
     return FullSizedButton(
       constraints: constraints,
       setState: () => triggerActionButton(nav),
-      title: getButtonName(context),
+      title: getButtonName(),
       icon: Icons.save,
     );
   }

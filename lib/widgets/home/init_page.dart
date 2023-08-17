@@ -29,7 +29,7 @@ class InitPageState extends AbstractPageState<InitPage> {
       actions: const [],
       title: Center(
         child: Text(
-          getTitle(context),
+          getTitle(),
           style: TextStyle(color: Theme.of(context).colorScheme.inversePrimary),
         ),
       ),
@@ -47,7 +47,7 @@ class InitPageState extends AbstractPageState<InitPage> {
   }
 
   @override
-  String getTitle(BuildContext context) {
+  String getTitle() {
     return AppLocale.labels.appInitHeadline;
   }
 }

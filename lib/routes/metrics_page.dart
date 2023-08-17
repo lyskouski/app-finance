@@ -48,7 +48,7 @@ class MetricsPageState extends AbstractPageState<MetricsPage> {
   }
 
   @override
-  String getTitle(BuildContext context) {
+  String getTitle() {
     return AppLocale.labels.metricsTooltip;
   }
 }

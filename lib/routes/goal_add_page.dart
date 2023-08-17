@@ -63,7 +63,7 @@ class GoalAddPageState<T extends GoalAddPage> extends AbstractPageState<GoalAddP
   }
 
   @override
-  String getTitle(context) {
+  String getTitle() {
     return AppLocale.labels.createGoalHeader;
   }
 

@@ -24,7 +24,7 @@ class BudgetPage extends AbstractPage {
 
 class BudgetPageState extends AbstractPageState<BudgetPage> {
   @override
-  String getTitle(context) {
+  String getTitle() {
     if (widget.search != null) {
       return AppLocale.labels.search(widget.search!);
     }

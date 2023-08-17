@@ -121,7 +121,7 @@ class AboutPageState extends AbstractPageState<AboutPage> {
   }
 
   @override
-  String getTitle(BuildContext context) {
+  String getTitle() {
     return AppLocale.labels.aboutHeadline;
   }
 }

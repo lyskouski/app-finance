@@ -37,13 +37,14 @@ class HomePageState extends AbstractPageState<HomePage> with SharedPreferencesMi
   }
 
   @override
-  String getTitle(context) {
+  String getTitle() {
     return AppLocale.labels.appTitle;
   }
 
   @override
   AppBar buildBar(BuildContext context) {
     NavigatorState nav = Navigator.of(context);
+    ScaffoldState scaffold = Scaffold.of(context);
     return AppBar(
       backgroundColor: Theme.of(context).colorScheme.primary,
       toolbarHeight: 40,
@@ -56,7 +57,7 @@ class HomePageState extends AbstractPageState<HomePage> with SharedPreferencesMi
                 color: Colors.white70,
               ),
               tooltip: AppLocale.labels.navigationTooltip,
-              onPressed: () => Scaffold.of(context).openDrawer(),
+              onPressed: () => scaffold.openDrawer(),
             ),
           );
         },
@@ -116,8 +117,7 @@ class HomePageState extends AbstractPageState<HomePage> with SharedPreferencesMi
     EdgeInsets bottom = EdgeInsets.fromLTRB(indent, indent, indent, indent);
     double width = MediaQuery.of(context).size.width - indent * 2;
     double halfWidth = width / 2 - indent;
-    final locale = Localizations.localeOf(context).toString();
-    final DateFormat formatterDate = DateFormat.MMMM(locale);
+    final DateFormat formatterDate = DateFormat.MMMM(AppLocale.code);
     bool isVertical = helper.isVertical(constraints);
 
     final goalWidget = GoalWidget(

@@ -51,7 +51,7 @@ class ExpensesEditTabState extends ExpensesTabState<ExpensesEditTab> {
   }
 
   @override
-  String getButtonTitle(context) {
+  String getButtonTitle() {
     return AppLocale.labels.updateBillTooltip;
   }
 }

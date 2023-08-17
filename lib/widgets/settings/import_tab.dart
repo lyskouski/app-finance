@@ -50,7 +50,7 @@ class ImportTabState extends State<ImportTab> with SharedPreferencesMixin {
   final attrBillCurrency = 'billCurrency';
   final attrBillComment = 'billComment';
 
-  List<ListSelectorItem> getMappingTypes(BuildContext context) {
+  List<ListSelectorItem> getMappingTypes() {
     final account = AppLocale.labels.account;
     final budget = AppLocale.labels.budget;
     final bill = AppLocale.labels.bill;
@@ -128,7 +128,7 @@ class ImportTabState extends State<ImportTab> with SharedPreferencesMixin {
     await state.restate();
   }
 
-  Future<void> wrapCall(BuildContext context, Function callback) async {
+  Future<void> wrapCall(Function callback) async {
     setState(() {
       isLoading = true;
       errorMessage.clear();
@@ -240,7 +240,7 @@ class ImportTabState extends State<ImportTab> with SharedPreferencesMixin {
                         width: double.infinity,
                         child: FloatingActionButton(
                           heroTag: 'import_tab_parse',
-                          onPressed: () => wrapCall(context, parseFile),
+                          onPressed: () => wrapCall(parseFile),
                           tooltip: AppLocale.labels.parseFile,
                           child: Text(
                             AppLocale.labels.parseFile,
@@ -258,7 +258,7 @@ class ImportTabState extends State<ImportTab> with SharedPreferencesMixin {
                         style: textTheme.bodyLarge,
                       ),
                       ListSelector(
-                        options: getMappingTypes(context),
+                        options: getMappingTypes(),
                         indent: indent,
                         hintText: AppLocale.labels.columnMapTooltip,
                         setState: (value) => setState(() => columnMap[index] = value),
@@ -271,7 +271,7 @@ class ImportTabState extends State<ImportTab> with SharedPreferencesMixin {
                   width: double.infinity,
                   child: FloatingActionButton(
                     heroTag: 'import_tab_pick',
-                    onPressed: () => wrapCall(context, pickFile),
+                    onPressed: () => wrapCall(pickFile),
                     tooltip: AppLocale.labels.pickFile,
                     child: Text(
                       AppLocale.labels.pickFile,

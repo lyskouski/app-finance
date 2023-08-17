@@ -50,7 +50,7 @@ class AccountEditPageState extends AccountAddPageState<AccountEditPage> {
   }
 
   @override
-  String getTitle(context) {
+  String getTitle() {
     return AppLocale.labels.editAccountHeader;
   }
 

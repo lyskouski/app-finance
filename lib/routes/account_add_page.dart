@@ -79,7 +79,7 @@ class AccountAddPageState<T extends AccountAddPage> extends AbstractPageState<Ac
   }
 
   @override
-  String getTitle(context) {
+  String getTitle() {
     return AppLocale.labels.createAccountHeader;
   }
 

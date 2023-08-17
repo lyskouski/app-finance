@@ -22,7 +22,7 @@ class BillEditPage extends AbstractPage {
 
 class BillEditPageState<T extends BillEditPage> extends AbstractPageState<BillEditPage> {
   @override
-  String getTitle(context) {
+  String getTitle() {
     return AppLocale.labels.editBillHeader;
   }
 

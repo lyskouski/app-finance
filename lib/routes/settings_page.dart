@@ -50,7 +50,7 @@ class SettingsPageState extends AbstractPageState<SettingsPage> {
   }
 
   @override
-  String getTitle(BuildContext context) {
+  String getTitle() {
     return AppLocale.labels.settingsHeadline;
   }
 }

@@ -25,7 +25,7 @@ class AccountPage extends AbstractPage {
 
 class AccountPageState extends AbstractPageState<AccountPage> {
   @override
-  String getTitle(context) {
+  String getTitle() {
     if (widget.search != null) {
       return AppLocale.labels.search(widget.search!);
     }

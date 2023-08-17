@@ -24,7 +24,7 @@ class CurrencyPageState extends AbstractPageState<CurrencyPage> {
   List<dynamic>? scope;
 
   @override
-  String getTitle(context) {
+  String getTitle() {
     return AppLocale.labels.currencyHeadline;
   }
 

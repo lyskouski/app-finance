@@ -20,7 +20,7 @@ class GoalPage extends AbstractPage {
 
 class GoalPageState extends AbstractPageState<GoalPage> {
   @override
-  String getTitle(context) {
+  String getTitle() {
     return AppLocale.labels.goalHeadline;
   }
 
