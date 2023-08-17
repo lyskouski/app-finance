@@ -3,7 +3,6 @@
 
 import 'package:app_finance/_classes/app_locale.dart';
 import 'package:app_finance/widgets/_forms/list_selector.dart';
-import 'package:flutter/material.dart';
 
 enum AppAccountType {
   account,
@@ -15,11 +14,7 @@ enum AppAccountType {
 }
 
 class AccountType {
-  final BuildContext context;
-
-  AccountType(this.context);
-
-  List<ListSelectorItem> toList() {
+  static List<ListSelectorItem> getList() {
     return [
       ListSelectorItem(id: AppAccountType.account.toString(), name: AppLocale.labels.bankAccount),
       ListSelectorItem(id: AppAccountType.cash.toString(), name: AppLocale.labels.cash),

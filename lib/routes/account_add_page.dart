@@ -151,7 +151,7 @@ class AccountAddPageState<T extends AccountAddPage> extends AbstractPageState<Ac
             ),
             ListSelector(
               value: type,
-              options: AccountType(context).toList(),
+              options: AccountType.getList(),
               setState: (value) => setState(() => type = value),
               style: textTheme.numberMedium.copyWith(color: textTheme.headlineSmall?.color),
               indent: indent,
