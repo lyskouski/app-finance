@@ -44,7 +44,6 @@ class HomePageState extends AbstractPageState<HomePage> with SharedPreferencesMi
   @override
   AppBar buildBar(BuildContext context) {
     NavigatorState nav = Navigator.of(context);
-    ScaffoldState scaffold = Scaffold.of(context);
     return AppBar(
       backgroundColor: Theme.of(context).colorScheme.primary,
       toolbarHeight: 40,
@@ -57,7 +56,7 @@ class HomePageState extends AbstractPageState<HomePage> with SharedPreferencesMi
                 color: Colors.white70,
               ),
               tooltip: AppLocale.labels.navigationTooltip,
-              onPressed: () => scaffold.openDrawer(),
+              onPressed: () => Scaffold.of(context).openDrawer(),
             ),
           );
         },
