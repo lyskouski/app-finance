@@ -35,3 +35,9 @@ jobs:
 
       - name: Run All Tests
         run: dart run grinder test
+
+      - name: Store Tests Artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          name: testing_logs
+          path: coverage
