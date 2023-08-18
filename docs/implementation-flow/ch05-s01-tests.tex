@@ -418,11 +418,16 @@ Running scenario: Create new Bill # :2
 Exception: RangeError (index): Invalid value: Valid value range is empty: -1
 \end{lstlisting}
 
-\noindent The problem is linked to a \q{tap}-action on buttons that leads to \q{Navigator.pop | push}-command 
-execution, and it can be "easily" resolved by adding a duration freeze:
+\noindent The problem is linked to a guarded function conflict (first method had not yet finished executing at the time 
+that the second method was called) \q{tap}-action on buttons that leads to \q{Navigator.pop | push}-command 
+execution, and it can be "easily" resolved by adding a duration freeze and making assertions synchronic (\q{expect} 
+changed to \q{expectSync}):
 
 \begin{lstlisting}
 // ./test/e2e/_steps/when/tap_defined_button.dart
+final btn = find.byTooltip(name);
+await FileRunner.tester.ensureVisible(btn);
+expectSync(btn, findsOneWidget);
 await FileRunner.tester.tap(btn);
 await FileRunner.tester.pumpAndSettle(const Duration(milliseconds: 400));
 \end{lstlisting}
@@ -453,25 +458,28 @@ widgets. Each Hero widget must have a unique non-null tag to properly manage the
 and destination widgets. So, we have to make them unique by adding \q{heroTag}-property per each.
 
 Lastly, the outcomes gleaned from our exhaustive endurance testing have illuminated the presence of memory 
-leaks during the intensive application usage, as depicted in Figure \ref{img:memory-profiler}. Simply saying, each 
+leaks during the intensive application usage, as depicted in \cref{img:memory-profiler}. Simply saying, each 
 new interaction within the application has a discernible impact on its responsiveness, culminating in a noticeable 
-performance degradation after a couple minutes, as illustrated in Graph \ref{gr:taken-cycle}. That fix has to go upfront
-of any other changes; ignoring to do so could result in a significant loss of users who will get their first impression 
-in a negative aspect.
+performance degradation after a couple minutes, as illustrated in \cref{gr:taken-cycle} "Initial State". That 
+fix has to go upfront of any other changes; ignoring to do so could result in a significant loss of users who will 
+get their first impression in a negative aspect. DevTools has given to us an exhaustive information about the source 
+of the problem, and just a couple of hours resulted in a gain of 1 ms at the start but without any significant forecast 
+degradation through the time (\cref{img:m-profiler-after}, \cref{gr:taken-cycle} "Adjusted").
 
 \img{features/memory-profiler}{Flutter DevTools: Memory Profiler Results}{img:memory-profiler}
+\img{features/memory-profiler-after}{Flutter DevTools: Memory Profiler Results after Refactoring}{img:m-profiler-after}
 
 \begin{figure}
 \begin{tikzpicture}
   \begin{axis}[
     title={},
-    xlabel={Interation},
+    xlabel={Full Cycles},
     ylabel={Spent Time, ms},
     legend pos=north west,
     ymajorgrids=true,
     grid style=dashed,
     xtick=data,
-    xticklabels={10th, 20th, 40th, 100th, 200th},
+    xticklabels={10, 20, 40, 100, 200},
   ]
   \addplot[
     color=blue,
@@ -481,9 +489,18 @@ in a negative aspect.
     (1, 833) (2, 917) (3, 1016) (4, 1633) (5, 3368)
     };
     \label{plot1}
-    \addlegendentry{Spent Time}
+    \addlegendentry{Initial State}
   
+    \addplot[
+      color=red,
+      mark=triangle,
+      ]
+      coordinates {
+      (1, 832) (2, 832) (3, 920) (4, 1168) (5, 1267)
+      };
+      \label{plot1}
+      \addlegendentry{Adjusted}
   \end{axis}
 \end{tikzpicture}
-\caption{Endurance Testing: Taken Cycle vs. Spent Time} \label{gr:taken-cycle}
+\caption{Endurance Testing: Taken Cycles of Items Creation vs. Spent Time} \label{gr:taken-cycle}
 \end{figure}
