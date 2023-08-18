@@ -3,6 +3,7 @@
 // found in the LICENSE file.
 
 import 'package:adaptive_breakpoints/adaptive_breakpoints.dart';
+import 'package:app_finance/_classes/app_locale.dart';
 import 'package:app_finance/_classes/app_menu.dart';
 import 'package:app_finance/_classes/app_data.dart';
 import 'package:app_finance/_classes/focus_controller.dart';
@@ -10,7 +11,6 @@ import 'package:app_finance/helpers/theme_helper.dart';
 import 'package:app_finance/widgets/_wrappers/toolbar_button_widget.dart';
 import 'package:app_finance/widgets/menu_widget.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_gen/gen_l10n/app_localization.dart';
 import 'package:provider/provider.dart';
 
 abstract class AbstractPage<T> extends StatefulWidget {
@@ -21,7 +21,7 @@ abstract class AbstractPageState<T extends AbstractPage> extends State<T> {
   late AppData state;
   int selectedMenu = 0;
 
-  String getTitle(BuildContext context);
+  String getTitle();
 
   Widget buildButton(BuildContext context, BoxConstraints constraints);
 
@@ -29,6 +29,7 @@ abstract class AbstractPageState<T extends AbstractPage> extends State<T> {
 
   AppBar buildBar(BuildContext context) {
     final helper = ThemeHelper(windowType: getWindowType(context));
+    NavigatorState nav = Navigator.of(context);
     return AppBar(
       backgroundColor: Theme.of(context).colorScheme.primary,
       toolbarHeight: 40,
@@ -38,18 +39,18 @@ abstract class AbstractPageState<T extends AbstractPage> extends State<T> {
             Icons.arrow_back,
             color: Colors.white70,
           ),
-          tooltip: AppLocalizations.of(context)!.backTooltip,
-          onPressed: () => Navigator.of(context).pop(),
+          tooltip: AppLocale.labels.backTooltip,
+          onPressed: () => nav.pop(),
         ),
       ),
       title: Text(
-        getTitle(context),
+        getTitle(),
         style: TextStyle(color: Theme.of(context).colorScheme.inversePrimary),
       ),
       actions: [
         PopupMenuButton(
           itemBuilder: (BuildContext context) {
-            return AppMenu(context: context).get().map((menuItem) {
+            return AppMenu.get().map((menuItem) {
               return PopupMenuItem(
                 value: menuItem.route,
                 child: Row(
@@ -62,9 +63,7 @@ abstract class AbstractPageState<T extends AbstractPage> extends State<T> {
               );
             }).toList();
           },
-          onSelected: (value) {
-            Navigator.pushNamed(context, value);
-          },
+          onSelected: (value) => nav.pushNamed(value),
           icon: const Icon(
             Icons.more_vert,
             color: Colors.white70,
@@ -85,7 +84,7 @@ abstract class AbstractPageState<T extends AbstractPage> extends State<T> {
         child: ListView.separated(
           padding: EdgeInsets.symmetric(vertical: indent * 4),
           separatorBuilder: (context, index) => SizedBox(height: indent * 2),
-          itemCount: AppMenu(context: context).get().length,
+          itemCount: AppMenu.get().length,
           itemBuilder: (context, index) => MenuWidget(
             index: index,
             setState: () => setState(() => selectedMenu = index),

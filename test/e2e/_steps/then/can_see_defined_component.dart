@@ -13,6 +13,6 @@ class CanSeeDefinedComponent extends Then1WithWorld<String, World> {
   @override
   Future<void> executeStep(String name) async {
     final btn = find.text(name);
-    expect(btn, findsWidgets);
+    expectSync(btn, findsWidgets);
   }
 }

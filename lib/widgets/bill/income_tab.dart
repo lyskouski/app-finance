@@ -3,6 +3,7 @@
 // found in the LICENSE file.
 
 import 'package:adaptive_breakpoints/adaptive_breakpoints.dart';
+import 'package:app_finance/_classes/app_locale.dart';
 import 'package:app_finance/_classes/app_route.dart';
 import 'package:app_finance/_classes/data/account_app_data.dart';
 import 'package:app_finance/_classes/currency/exchange.dart';
@@ -20,7 +21,6 @@ import 'package:app_finance/widgets/_wrappers/required_widget.dart';
 import 'package:app_finance/widgets/_wrappers/row_widget.dart';
 import 'package:currency_picker/currency_picker.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_gen/gen_l10n/app_localization.dart';
 import 'package:provider/provider.dart';
 
 class IncomeTab extends StatefulWidget {
@@ -81,6 +81,7 @@ class IncomeTabState extends State<IncomeTab> with SharedPreferencesMixin {
   }
 
   Widget buildButton(BuildContext context, BoxConstraints constraints) {
+    NavigatorState nav = Navigator.of(context);
     return FullSizedButton(
       constraints: constraints,
       setState: () => {
@@ -89,10 +90,10 @@ class IncomeTabState extends State<IncomeTab> with SharedPreferencesMixin {
             return;
           }
           updateStorage();
-          Navigator.popAndPushNamed(context, AppRoute.homeRoute);
+          nav.popAndPushNamed(AppRoute.homeRoute);
         })
       },
-      title: AppLocalizations.of(context)!.createIncomeTooltip,
+      title: AppLocale.labels.createIncomeTooltip,
       icon: Icons.save,
     );
   }
@@ -120,7 +121,7 @@ class IncomeTabState extends State<IncomeTab> with SharedPreferencesMixin {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   RequiredWidget(
-                    title: AppLocalizations.of(context)!.account,
+                    title: AppLocale.labels.account,
                     showError: hasErrors && account == null,
                   ),
                   ListAccountSelector(
@@ -142,7 +143,7 @@ class IncomeTabState extends State<IncomeTab> with SharedPreferencesMixin {
                     children: [
                       [
                         Text(
-                          AppLocalizations.of(context)!.currency,
+                          AppLocale.labels.currency,
                           style: textTheme.bodyLarge,
                         ),
                         Container(
@@ -157,13 +158,13 @@ class IncomeTabState extends State<IncomeTab> with SharedPreferencesMixin {
                       ],
                       [
                         Text(
-                          AppLocalizations.of(context)!.expense,
+                          AppLocale.labels.expense,
                           style: textTheme.bodyLarge,
                         ),
                         SimpleInput(
                           controller: amount,
                           type: const TextInputType.numberWithOptions(decimal: true),
-                          tooltip: AppLocalizations.of(context)!.billSetTooltip,
+                          tooltip: AppLocale.labels.billSetTooltip,
                           style: textTheme.numberMedium.copyWith(color: textTheme.headlineSmall?.color),
                           setState: (v) => setState(() => amountValue = double.tryParse(v)),
                           formatter: [

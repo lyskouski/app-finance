@@ -4,13 +4,13 @@
 
 import 'package:adaptive_breakpoints/adaptive_breakpoints.dart';
 import 'package:app_finance/_classes/app_data.dart';
+import 'package:app_finance/_classes/app_locale.dart';
 import 'package:app_finance/_classes/currency/exchange.dart';
 import 'package:app_finance/helpers/theme_helper.dart';
 import 'package:app_finance/_classes/app_route.dart';
 import 'package:app_finance/routes/abstract_page.dart';
 import 'package:app_finance/widgets/home/budget_widget.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_gen/gen_l10n/app_localization.dart';
 
 class BudgetPage extends AbstractPage {
   final String? search;
@@ -24,19 +24,20 @@ class BudgetPage extends AbstractPage {
 
 class BudgetPageState extends AbstractPageState<BudgetPage> {
   @override
-  String getTitle(context) {
+  String getTitle() {
     if (widget.search != null) {
-      return AppLocalizations.of(context)!.search(widget.search!);
+      return AppLocale.labels.search(widget.search!);
     }
-    return AppLocalizations.of(context)!.budgetHeadline;
+    return AppLocale.labels.budgetHeadline;
   }
 
   @override
   Widget buildButton(BuildContext context, BoxConstraints constraints) {
+    NavigatorState nav = Navigator.of(context);
     return FloatingActionButton(
       heroTag: 'budget_page',
-      onPressed: () => Navigator.pushNamed(context, AppRoute.budgetAddRoute),
-      tooltip: AppLocalizations.of(context)!.addBudgetTooltip,
+      onPressed: () => nav.pushNamed(AppRoute.budgetAddRoute),
+      tooltip: AppLocale.labels.addBudgetTooltip,
       child: const Icon(Icons.add),
     );
   }
@@ -60,7 +61,7 @@ class BudgetPageState extends AbstractPageState<BudgetPage> {
       children: [
         BudgetWidget(
           margin: EdgeInsets.all(helper.getIndent()),
-          title: AppLocalizations.of(context)!.budgetHeadline,
+          title: AppLocale.labels.budgetHeadline,
           state: items,
           offset: MediaQuery.of(context).size.width - helper.getIndent() * 2,
         )

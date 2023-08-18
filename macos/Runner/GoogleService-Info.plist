@@ -3,21 +3,21 @@
 <plist version="1.0">
 <dict>
 	<key>CLIENT_ID</key>
-	<string>637490835303-ls93eg7028hj0rbtc6ioselm4h60q07p.apps.googleusercontent.com</string>
+	<string>316045786606-8tl5sft03rmf5tbdd4k9pk12a4f47d6m.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.637490835303-ls93eg7028hj0rbtc6ioselm4h60q07p</string>
+	<string>com.googleusercontent.apps.316045786606-8tl5sft03rmf5tbdd4k9pk12a4f47d6m</string>
 	<key>API_KEY</key>
-	<string>AIzaSyDL6lNmRUV3hw9o5RGA-IopdV631cFEcYw</string>
+	<string>AIzaSyByWAdeAUDluD-dlJHrt4Z1oyValCuFBpM</string>
 	<key>GCM_SENDER_ID</key>
-	<string>637490835303</string>
+	<string>316045786606</string>
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
 	<string>com.tercad.fingrom.RunnerTests</string>
 	<key>PROJECT_ID</key>
-	<string>fingram-9030a</string>
+	<string>fingrom</string>
 	<key>STORAGE_BUCKET</key>
-	<string>fingram-9030a.appspot.com</string>
+	<string>fingrom.appspot.com</string>
 	<key>IS_ADS_ENABLED</key>
 	<false></false>
 	<key>IS_ANALYTICS_ENABLED</key>
@@ -29,6 +29,6 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:637490835303:ios:c94c2442c25eae90c689c2</string>
+	<string>1:316045786606:ios:34250e2deee54195d562ff</string>
 </dict>
 </plist>

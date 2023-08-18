@@ -3,6 +3,7 @@
 // found in the LICENSE file.
 
 import 'package:adaptive_breakpoints/adaptive_breakpoints.dart';
+import 'package:app_finance/_classes/app_locale.dart';
 import 'package:app_finance/_classes/app_route.dart';
 import 'package:app_finance/_classes/data/account_app_data.dart';
 import 'package:app_finance/_classes/currency/exchange.dart';
@@ -19,7 +20,6 @@ import 'package:app_finance/widgets/_forms/list_account_selector.dart';
 import 'package:app_finance/widgets/_forms/simple_input.dart';
 import 'package:currency_picker/currency_picker.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_gen/gen_l10n/app_localization.dart';
 import 'package:provider/provider.dart';
 
 class TransferTab extends StatefulWidget {
@@ -77,6 +77,7 @@ class TransferTabState extends State<TransferTab> {
   }
 
   Widget buildButton(BuildContext context, BoxConstraints constraints) {
+    NavigatorState nav = Navigator.of(context);
     return FullSizedButton(
       constraints: constraints,
       setState: () => {
@@ -85,10 +86,10 @@ class TransferTabState extends State<TransferTab> {
             return;
           }
           updateStorage();
-          Navigator.popAndPushNamed(context, AppRoute.homeRoute);
+          nav.popAndPushNamed(AppRoute.homeRoute);
         })
       },
-      title: AppLocalizations.of(context)!.createTransferTooltip,
+      title: AppLocale.labels.createTransferTooltip,
       icon: Icons.save,
     );
   }
@@ -113,7 +114,7 @@ class TransferTabState extends State<TransferTab> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   RequiredWidget(
-                    title: AppLocalizations.of(context)!.accountFrom,
+                    title: AppLocale.labels.accountFrom,
                     showError: hasErrors && accountFrom == null,
                   ),
                   ListAccountSelector(
@@ -126,7 +127,7 @@ class TransferTabState extends State<TransferTab> {
                   ),
                   SizedBox(height: indent),
                   RequiredWidget(
-                    title: AppLocalizations.of(context)!.accountTo,
+                    title: AppLocale.labels.accountTo,
                     showError: hasErrors && accountTo == null,
                   ),
                   ListAccountSelector(
@@ -148,7 +149,7 @@ class TransferTabState extends State<TransferTab> {
                     children: [
                       [
                         Text(
-                          AppLocalizations.of(context)!.currency,
+                          AppLocale.labels.currency,
                           style: textTheme.bodyLarge,
                         ),
                         Container(
@@ -163,13 +164,13 @@ class TransferTabState extends State<TransferTab> {
                       ],
                       [
                         Text(
-                          AppLocalizations.of(context)!.expenseTransfer,
+                          AppLocale.labels.expenseTransfer,
                           style: textTheme.bodyLarge,
                         ),
                         SimpleInput(
                           controller: amount,
                           type: const TextInputType.numberWithOptions(decimal: true),
-                          tooltip: AppLocalizations.of(context)!.billSetTooltip,
+                          tooltip: AppLocale.labels.billSetTooltip,
                           style: textTheme.numberMedium.copyWith(color: textTheme.headlineSmall?.color),
                           setState: (v) => setState(() => amountValue = double.tryParse(v)),
                           formatter: [

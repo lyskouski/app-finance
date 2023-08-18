@@ -3,6 +3,7 @@
 // found in the LICENSE file.
 
 import 'package:adaptive_breakpoints/adaptive_breakpoints.dart';
+import 'package:app_finance/_classes/app_locale.dart';
 import 'package:app_finance/_classes/app_menu.dart';
 import 'package:app_finance/_classes/data/bill_app_data.dart';
 import 'package:app_finance/_classes/app_data.dart';
@@ -11,7 +12,6 @@ import 'package:app_finance/_classes/app_route.dart';
 import 'package:app_finance/routes/abstract_page.dart';
 import 'package:app_finance/widgets/home/base_line_widget.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_gen/gen_l10n/app_localization.dart';
 
 class BillViewPage extends AbstractPage {
   final String uuid;
@@ -26,35 +26,36 @@ class BillViewPage extends AbstractPage {
 
 class BillViewPageState extends AbstractPageState<BillViewPage> {
   @override
-  String getTitle(context) {
+  String getTitle() {
     final item = super.state.getByUuid(widget.uuid) as BillAppData;
     return item.title;
   }
 
-  void deactivateAccount(BuildContext context) {
+  void deactivateAccount(NavigatorState nav) {
     var data = super.state.getByUuid(widget.uuid) as BillAppData;
     data.hidden = true;
     super.state.update(AppDataType.bills, widget.uuid, data);
-    Navigator.pop(context);
+    nav.pop();
   }
 
   @override
   Widget buildButton(BuildContext context, BoxConstraints constraints) {
-    String route = AppMenu(context: context).uuid(AppRoute.billEditRoute, widget.uuid);
+    String route = AppMenu.uuid(AppRoute.billEditRoute, widget.uuid);
     double indent = ThemeHelper(windowType: getWindowType(context)).getIndent() * 4;
+    NavigatorState nav = Navigator.of(context);
     return Container(
       margin: EdgeInsets.only(left: indent),
       child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
         FloatingActionButton(
           heroTag: 'bill_view_page_deactivate',
-          onPressed: () => deactivateAccount(context),
-          tooltip: AppLocalizations.of(context)!.deleteBillTooltip,
+          onPressed: () => deactivateAccount(nav),
+          tooltip: AppLocale.labels.deleteBillTooltip,
           child: const Icon(Icons.delete),
         ),
         FloatingActionButton(
           heroTag: 'bill_view_page_edit',
-          onPressed: () => Navigator.pushNamed(context, route),
-          tooltip: AppLocalizations.of(context)!.editBillTooltip,
+          onPressed: () => nav.pushNamed(route),
+          tooltip: AppLocale.labels.editBillTooltip,
           child: const Icon(Icons.edit),
         ),
       ]),
@@ -64,7 +65,6 @@ class BillViewPageState extends AbstractPageState<BillViewPage> {
   @override
   Widget buildContent(BuildContext context, BoxConstraints constraints) {
     final item = super.state.getByUuid(widget.uuid) as BillAppData;
-    item.setContext(context);
     double indent = ThemeHelper(windowType: getWindowType(context)).getIndent() * 2;
     double offset = MediaQuery.of(context).size.width - indent * 3;
     return Column(

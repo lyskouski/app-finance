@@ -4,6 +4,7 @@
 
 import 'package:adaptive_breakpoints/adaptive_breakpoints.dart';
 import 'package:app_finance/_classes/app_data.dart';
+import 'package:app_finance/_classes/app_locale.dart';
 import 'package:app_finance/_classes/currency/exchange.dart';
 import 'package:app_finance/_mixins/shared_preferences_mixin.dart';
 import 'package:app_finance/helpers/theme_helper.dart';
@@ -16,7 +17,6 @@ import 'package:app_finance/widgets/home/bill_widget.dart';
 import 'package:app_finance/widgets/home/budget_widget.dart';
 import 'package:app_finance/widgets/home/goal_widget.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_gen/gen_l10n/app_localization.dart';
 import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 
@@ -34,18 +34,16 @@ class HomePageState extends AbstractPageState<HomePage> with SharedPreferencesMi
   initState() {
     super.initState();
     toExpand = getPreference(prefExpand);
-    if (getPreference(prefPrivacyPolicy) == null) {
-      WidgetsBinding.instance.addPostFrameCallback((_) => Navigator.popAndPushNamed(context, AppRoute.startRoute));
-    }
   }
 
   @override
-  String getTitle(context) {
-    return AppLocalizations.of(context)!.appTitle;
+  String getTitle() {
+    return AppLocale.labels.appTitle;
   }
 
   @override
   AppBar buildBar(BuildContext context) {
+    NavigatorState nav = Navigator.of(context);
     return AppBar(
       backgroundColor: Theme.of(context).colorScheme.primary,
       toolbarHeight: 40,
@@ -57,7 +55,7 @@ class HomePageState extends AbstractPageState<HomePage> with SharedPreferencesMi
                 Icons.menu,
                 color: Colors.white70,
               ),
-              tooltip: AppLocalizations.of(context)!.navigationTooltip,
+              tooltip: AppLocale.labels.navigationTooltip,
               onPressed: () => Scaffold.of(context).openDrawer(),
             ),
           );
@@ -73,8 +71,8 @@ class HomePageState extends AbstractPageState<HomePage> with SharedPreferencesMi
               Icons.switch_access_shortcut_add_outlined,
               color: Colors.white70,
             ),
-            tooltip: AppLocalizations.of(context)!.subscriptionTooltip,
-            onPressed: () => Navigator.pushNamed(context, AppRoute.subscriptionRoute),
+            tooltip: AppLocale.labels.subscriptionTooltip,
+            onPressed: () => nav.pushNamed(AppRoute.subscriptionRoute),
           ),
         ),
       ],
@@ -83,16 +81,22 @@ class HomePageState extends AbstractPageState<HomePage> with SharedPreferencesMi
 
   @override
   Widget buildButton(BuildContext context, BoxConstraints constraints) {
+    NavigatorState nav = Navigator.of(context);
     return FloatingActionButton(
       heroTag: 'home_page',
-      onPressed: () => Navigator.pushNamed(context, AppRoute.billAddRoute),
-      tooltip: AppLocalizations.of(context)!.addMainTooltip,
+      onPressed: () => nav.pushNamed(AppRoute.billAddRoute),
+      tooltip: AppLocale.labels.addMainTooltip,
       child: const Icon(Icons.add),
     );
   }
 
   @override
   Widget build(BuildContext context) {
+    NavigatorState nav = Navigator.of(context);
+    if (getPreference(prefPrivacyPolicy) == null) {
+      WidgetsBinding.instance.addPostFrameCallback((_) => nav.popAndPushNamed(AppRoute.startRoute));
+    }
+    Provider.of<AppLocale>(context, listen: false).updateState(context);
     return Consumer<AppData>(builder: (context, appState, _) {
       state = appState;
       if (appState.isLoading) {
@@ -112,8 +116,7 @@ class HomePageState extends AbstractPageState<HomePage> with SharedPreferencesMi
     EdgeInsets bottom = EdgeInsets.fromLTRB(indent, indent, indent, indent);
     double width = MediaQuery.of(context).size.width - indent * 2;
     double halfWidth = width / 2 - indent;
-    final locale = Localizations.localeOf(context).toString();
-    final DateFormat formatterDate = DateFormat.MMMM(locale);
+    final DateFormat formatterDate = DateFormat.MMMM(AppLocale.code);
     bool isVertical = helper.isVertical(constraints);
 
     final goalWidget = GoalWidget(
@@ -122,11 +125,11 @@ class HomePageState extends AbstractPageState<HomePage> with SharedPreferencesMi
     );
     final billWidget = BillWidget(
       margin: helper.isVertical(constraints) ? single : middleRight,
-      title: '${AppLocalizations.of(context)!.billHeadline}, ${formatterDate.format(DateTime.now())}',
+      title: '${AppLocale.labels.billHeadline}, ${formatterDate.format(DateTime.now())}',
       state: super.state.get(AppDataType.bills),
       limit: 5,
       route: AppRoute.billRoute,
-      tooltip: AppLocalizations.of(context)!.billTooltip,
+      tooltip: AppLocale.labels.billTooltip,
       offset: helper.isVertical(constraints) ? width : halfWidth,
       hasExpand: isVertical,
       toExpand: toExpand,
@@ -134,11 +137,11 @@ class HomePageState extends AbstractPageState<HomePage> with SharedPreferencesMi
     );
     final accountWidget = AccountWidget(
       margin: helper.isVertical(constraints) ? single : middleLeft,
-      title: '${AppLocalizations.of(context)!.accountHeadline}, ${AppLocalizations.of(context)!.total}',
+      title: '${AppLocale.labels.accountHeadline}, ${AppLocale.labels.total}',
       state: super.state.get(AppDataType.accounts),
       limit: 5,
       route: AppRoute.accountRoute,
-      tooltip: AppLocalizations.of(context)!.accountTooltip,
+      tooltip: AppLocale.labels.accountTooltip,
       offset: helper.isVertical(constraints) ? width : halfWidth,
       hasExpand: isVertical,
       toExpand: toExpand,
@@ -146,11 +149,11 @@ class HomePageState extends AbstractPageState<HomePage> with SharedPreferencesMi
     )..exchange = Exchange(store: super.state);
     final budgetWidget = BudgetWidget(
       margin: bottom,
-      title: '${AppLocalizations.of(context)!.budgetHeadline}, ${AppLocalizations.of(context)!.left}',
+      title: '${AppLocale.labels.budgetHeadline}, ${AppLocale.labels.left}',
       state: super.state.get(AppDataType.budgets),
       limit: 5,
       route: AppRoute.budgetRoute,
-      tooltip: AppLocalizations.of(context)!.budgetTooltip,
+      tooltip: AppLocale.labels.budgetTooltip,
       offset: width,
       hasExpand: isVertical,
       toExpand: toExpand,

@@ -26,6 +26,6 @@ class GivenGeneric extends Given {
     if (!result) {
       reporter.publish();
     }
-    expect(result, true);
+    expectSync(result, true);
   }
 }

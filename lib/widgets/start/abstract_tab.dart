@@ -3,10 +3,10 @@
 // found in the LICENSE file.
 
 import 'package:adaptive_breakpoints/adaptive_breakpoints.dart';
+import 'package:app_finance/_classes/app_locale.dart';
 import 'package:app_finance/helpers/theme_helper.dart';
 import 'package:app_finance/widgets/_forms/full_sized_button.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_gen/gen_l10n/app_localization.dart';
 
 abstract class AbstractTab<T> extends StatefulWidget {
   final Function() setState;
@@ -27,7 +27,7 @@ abstract class AbstractTabState<T extends AbstractTab> extends State<T> {
     return FullSizedButton(
       constraints: constraints,
       setState: updateState,
-      title: '${getButtonTitle()} (${AppLocalizations.of(context)!.goNextTooltip})',
+      title: '${getButtonTitle()} (${AppLocale.labels.goNextTooltip})',
       icon: Icons.exit_to_app_rounded,
     );
   }

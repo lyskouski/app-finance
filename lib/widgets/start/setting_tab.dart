@@ -3,6 +3,7 @@
 // found in the LICENSE file.
 
 import 'package:adaptive_breakpoints/adaptive_breakpoints.dart';
+import 'package:app_finance/_classes/app_locale.dart';
 import 'package:app_finance/_classes/app_theme.dart';
 import 'package:app_finance/_classes/currency/currency_provider.dart';
 import 'package:app_finance/_mixins/shared_preferences_mixin.dart';
@@ -14,7 +15,6 @@ import 'package:app_finance/widgets/_wrappers/row_widget.dart';
 import 'package:app_finance/widgets/start/abstract_tab.dart';
 import 'package:currency_picker/currency_picker.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_gen/gen_l10n/app_localization.dart';
 import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 
@@ -80,7 +80,7 @@ class SettingTabState<T extends SettingTab> extends AbstractTabState<T> with Sha
     double indent = ThemeHelper(windowType: getWindowType(context)).getIndent() * 2;
     double offset = MediaQuery.of(context).size.width - indent * 2;
     if (currency == null) {
-      Future.delayed(Duration.zero, () => initCurrencyFromLocale(locale));
+      WidgetsBinding.instance.addPostFrameCallback((_) => initCurrencyFromLocale(locale));
     }
 
     return SingleChildScrollView(
@@ -89,7 +89,7 @@ class SettingTabState<T extends SettingTab> extends AbstractTabState<T> with Sha
         children: [
           SizedBox(height: indent),
           Text(
-            AppLocalizations.of(context)!.currencyDefault,
+            AppLocale.labels.currencyDefault,
             style: textTheme.bodyLarge,
           ),
           Container(
@@ -109,7 +109,7 @@ class SettingTabState<T extends SettingTab> extends AbstractTabState<T> with Sha
             children: [
               [
                 Text(
-                  AppLocalizations.of(context)!.encryptionMode,
+                  AppLocale.labels.encryptionMode,
                   style: textTheme.bodyLarge,
                 ),
               ],
@@ -120,21 +120,21 @@ class SettingTabState<T extends SettingTab> extends AbstractTabState<T> with Sha
                 ),
               ],
               [
-                hasEncrypted ? Text(AppLocalizations.of(context)!.hasEncrypted) : const SizedBox(),
+                hasEncrypted ? Text(AppLocale.labels.hasEncrypted) : const SizedBox(),
               ],
             ],
           ),
           SizedBox(height: indent),
           Text(
-            AppLocalizations.of(context)!.brightnessTheme,
+            AppLocale.labels.brightnessTheme,
             style: textTheme.bodyLarge,
           ),
           ListSelector(
             value: brightness,
             options: [
-              ListSelectorItem(id: '0', name: AppLocalizations.of(context)!.systemMode),
-              ListSelectorItem(id: '1', name: AppLocalizations.of(context)!.lightMode),
-              ListSelectorItem(id: '2', name: AppLocalizations.of(context)!.darkMode),
+              ListSelectorItem(id: '0', name: AppLocale.labels.systemMode),
+              ListSelectorItem(id: '1', name: AppLocale.labels.lightMode),
+              ListSelectorItem(id: '2', name: AppLocale.labels.darkMode),
             ],
             setState: saveTheme,
             style: textTheme.numberMedium.copyWith(color: textTheme.headlineSmall?.color),
@@ -147,6 +147,6 @@ class SettingTabState<T extends SettingTab> extends AbstractTabState<T> with Sha
 
   @override
   String getButtonTitle() {
-    return AppLocalizations.of(context)!.saveTooltip;
+    return AppLocale.labels.saveTooltip;
   }
 }

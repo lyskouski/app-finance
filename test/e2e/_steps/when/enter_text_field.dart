@@ -18,7 +18,7 @@ class EnterTextField extends When2WithWorld<String, String, World> {
     final field = find.byWidgetPredicate((widget) {
       return widget is TextField && widget.decoration?.hintText == tooltip;
     });
-    expect(field, findsOneWidget);
+    expectSync(field, findsOneWidget);
     await FileRunner.tester.ensureVisible(field);
     await FileRunner.tester.tap(field);
     await FileRunner.tester.pump();

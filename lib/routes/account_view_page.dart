@@ -3,6 +3,7 @@
 // found in the LICENSE file.
 
 import 'package:adaptive_breakpoints/adaptive_breakpoints.dart';
+import 'package:app_finance/_classes/app_locale.dart';
 import 'package:app_finance/_classes/data/account_app_data.dart';
 import 'package:app_finance/_classes/app_menu.dart';
 import 'package:app_finance/_classes/app_data.dart';
@@ -12,7 +13,6 @@ import 'package:app_finance/routes/abstract_page.dart';
 import 'package:app_finance/widgets/home/base_line_widget.dart';
 import 'package:app_finance/widgets/home/base_list_infinite_widget.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_gen/gen_l10n/app_localization.dart';
 
 class AccountViewPage extends AbstractPage {
   final String uuid;
@@ -27,35 +27,36 @@ class AccountViewPage extends AbstractPage {
 
 class AccountViewPageState extends AbstractPageState<AccountViewPage> {
   @override
-  String getTitle(context) {
+  String getTitle() {
     final item = super.state.getByUuid(widget.uuid) as AccountAppData;
     return item.title;
   }
 
-  void deactivateAccount(BuildContext context) {
+  void deactivateAccount(NavigatorState nav) {
     var data = super.state.getByUuid(widget.uuid) as AccountAppData;
     data.hidden = true;
     super.state.update(AppDataType.accounts, widget.uuid, data);
-    Navigator.pop(context);
+    nav.pop();
   }
 
   @override
   Widget buildButton(BuildContext context, BoxConstraints constraints) {
-    String route = AppMenu(context: context).uuid(AppRoute.accountEditRoute, widget.uuid);
+    String route = AppMenu.uuid(AppRoute.accountEditRoute, widget.uuid);
     double indent = ThemeHelper(windowType: getWindowType(context)).getIndent() * 4;
+    NavigatorState nav = Navigator.of(context);
     return Container(
       margin: EdgeInsets.only(left: indent),
       child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
         FloatingActionButton(
           heroTag: 'account_view_page_deactivate',
-          onPressed: () => deactivateAccount(context),
-          tooltip: AppLocalizations.of(context)!.deleteAccountTooltip,
+          onPressed: () => deactivateAccount(nav),
+          tooltip: AppLocale.labels.deleteAccountTooltip,
           child: const Icon(Icons.delete),
         ),
         FloatingActionButton(
           heroTag: 'account_view_page_edit',
-          onPressed: () => Navigator.pushNamed(context, route),
-          tooltip: AppLocalizations.of(context)!.editAccountTooltip,
+          onPressed: () => nav.pushNamed(route),
+          tooltip: AppLocale.labels.editAccountTooltip,
           child: const Icon(Icons.edit),
         ),
       ]),
@@ -63,7 +64,6 @@ class AccountViewPageState extends AbstractPageState<AccountViewPage> {
   }
 
   Widget buildListWidget(item, BuildContext context, double offset) {
-    item.setContext(context);
     return BaseLineWidget(
       uuid: '',
       title: '',
@@ -78,7 +78,6 @@ class AccountViewPageState extends AbstractPageState<AccountViewPage> {
   @override
   Widget buildContent(BuildContext context, BoxConstraints constraints) {
     final item = super.state.getByUuid(widget.uuid) as AccountAppData;
-    item.setContext(context);
     double indent = ThemeHelper(windowType: getWindowType(context)).getIndent() * 2;
     double offset = MediaQuery.of(context).size.width - indent * 3;
     return Column(

@@ -135,3 +135,30 @@ android {
 }
 \end{lstlisting}
 }
+
+All actions above are not enough, it's needed to follow additional instructions from  
+\href{https://firebase.google.com/docs/guides/}{https://firebase.google.com/docs/guides/} to configure
+Firebase Analytics per each thread (Android, iOS, Macos, Web). As an example, for Android we have to adjust
+configuration build files:
+
+\begin{lstlisting}[language=yaml]
+## ./android/build.gradle
+buildscript {
+  repositories {
+      google()
+      # ... other settings
+  }
+  dependencies {
+    # ... other settings
+    classpath 'com.google.gms:google-services:4.3.3'
+  }
+}(*@ \stopnumber @*)
+
+## ./android/app/build.gradle
+apply plugin: 'com.google.gms.google-services'
+# ... other settings
+dependencies {
+  # ... other settings
+  implementation 'com.google.firebase:firebase-analytics:17.4.1'
+}
+\end{lstlisting}

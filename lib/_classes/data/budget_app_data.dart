@@ -2,12 +2,12 @@
 // Use of this source code is governed by a CC BY-NC-ND 4.0 license that can be
 // found in the LICENSE file.
 
+import 'package:app_finance/_classes/app_locale.dart';
 import 'package:app_finance/_classes/currency/currency_provider.dart';
 import 'package:app_finance/_classes/data/abstract_app_data.dart';
 import 'package:app_finance/_classes/app_data.dart';
 import 'package:app_finance/_mixins/formatter_mixin.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_gen/gen_l10n/app_localization.dart';
 
 class BudgetAppData extends AbstractAppData {
   BudgetAppData({
@@ -74,15 +74,14 @@ class BudgetAppData extends AbstractAppData {
   double get details => super.details > 0 ? super.details * (1 - super.progress) : 0.0;
 
   String get detailsFormatted {
-    String left = AppLocalizations.of(getContext()!)!.left;
-    return '${getNumberFormatted(details)} $left';
+    return '${getNumberFormatted(details)} ${AppLocale.labels.left}';
   }
 
   double get amountLimit => super.details;
   set amountLimit(double value) => super.details = value;
 
   @override
-  String get description => getContext() != null && super.details > 0
+  String get description => super.details > 0
       ? '${getNumberFormatted(super.details * super.progress)} / ${getNumberFormatted(super.details)}'
       : '';
 

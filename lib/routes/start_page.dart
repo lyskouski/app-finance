@@ -3,6 +3,7 @@
 // found in the LICENSE file.
 
 import 'package:app_finance/_classes/app_data.dart';
+import 'package:app_finance/_classes/app_locale.dart';
 import 'package:app_finance/_classes/app_route.dart';
 import 'package:app_finance/routes/abstract_page.dart';
 import 'package:app_finance/widgets/_wrappers/tab_widget.dart';
@@ -11,7 +12,6 @@ import 'package:app_finance/widgets/start/budget_tab.dart';
 import 'package:app_finance/widgets/start/privacy_tab.dart';
 import 'package:app_finance/widgets/start/setting_tab.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_gen/gen_l10n/app_localization.dart';
 import 'package:provider/provider.dart';
 
 class StartPage extends AbstractPage {
@@ -33,7 +33,7 @@ class StartPageState extends AbstractPageState<StartPage> {
       actions: const [],
       title: Center(
         child: Text(
-          getTitle(context),
+          getTitle(),
           style: TextStyle(color: Theme.of(context).colorScheme.inversePrimary),
         ),
       ),
@@ -50,9 +50,9 @@ class StartPageState extends AbstractPageState<StartPage> {
     return const SizedBox();
   }
 
-  void updateState() {
+  void updateState(NavigatorState nav) {
     if (currentStep > 2) {
-      Navigator.popAndPushNamed(context, AppRoute.homeRoute);
+      nav.popAndPushNamed(AppRoute.homeRoute);
     } else {
       setState(() => currentStep += 1);
     }
@@ -60,6 +60,8 @@ class StartPageState extends AbstractPageState<StartPage> {
 
   @override
   Widget build(BuildContext context) {
+    NavigatorState nav = Navigator.of(context);
+    fn() => updateState(nav);
     return Consumer<AppData>(builder: (context, appState, _) {
       state = appState;
       return Scaffold(
@@ -70,10 +72,10 @@ class StartPageState extends AbstractPageState<StartPage> {
             asDots: true,
             focus: currentStep,
             children: [
-              SettingTab(setState: updateState),
-              PrivacyTab(setState: updateState),
-              AccountTab(setState: updateState),
-              BudgetTab(setState: updateState),
+              SettingTab(setState: fn),
+              PrivacyTab(setState: fn),
+              AccountTab(setState: fn),
+              BudgetTab(setState: fn),
             ],
           ),
         ),
@@ -82,7 +84,7 @@ class StartPageState extends AbstractPageState<StartPage> {
   }
 
   @override
-  String getTitle(BuildContext context) {
-    return AppLocalizations.of(context)!.appStartHeadline;
+  String getTitle() {
+    return AppLocale.labels.appStartHeadline;
   }
 }

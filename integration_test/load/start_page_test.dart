@@ -1,43 +1,24 @@
 // Copyright 2023 The terCAD team. All rights reserved.
 // Use of this source code is governed by a CC BY-NC-ND 4.0 license that can be found in the LICENSE file.
 
-import 'package:app_finance/_classes/app_data.dart';
-import 'package:app_finance/_classes/app_theme.dart';
-import 'package:app_finance/_mixins/shared_preferences_mixin.dart';
-import 'package:app_finance/main.dart';
-import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:integration_test/integration_test.dart';
-import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../test/e2e/_steps/file_reader.dart';
 import '../../test/e2e/_steps/file_reporter.dart';
 import '../../test/e2e/_steps/file_runner.dart';
+import '../../test/pump_main.dart';
 
 void main() {
   final binding = IntegrationTestWidgetsFlutterBinding.ensureInitialized();
 
-  Future<void> init(WidgetTester tester) async {
-    SharedPreferencesMixin.pref = await SharedPreferences.getInstance();
-    await SharedPreferencesMixin.pref.clear();
-    await tester.pumpWidget(MultiProvider(
-      providers: [
-        ChangeNotifierProvider<AppData>(
-          create: (_) => AppData(),
-        ),
-        ChangeNotifierProvider<AppTheme>(
-          create: (_) => AppTheme(ThemeMode.system),
-        ),
-      ],
-      child: const MyApp(),
-    ));
-  }
-
   testWidgets('Cover Starting Page', (WidgetTester tester) async {
     await binding.traceAction(
       () async {
-        await init(tester);
+        final pref = await SharedPreferences.getInstance();
+        await pref.clear();
+        await PumpMain.init(tester, true);
         final reporter = FileReporter();
         final step = await FileReader().getFromString('''
         @start

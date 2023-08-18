@@ -23,7 +23,7 @@ class BudgetTab extends BudgetAddPage {
 
 class BudgetTabState extends BudgetAddPageState<BudgetTab> with SharedPreferencesMixin {
   @override
-  void triggerActionButton(BuildContext context) {
+  void triggerActionButton(NavigatorState nav) {
     setState(() {
       if (hasFormErrors()) {
         return;

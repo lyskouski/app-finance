@@ -2,11 +2,11 @@
 // Use of this source code is governed by a CC BY-NC-ND 4.0 license that can be
 // found in the LICENSE file.
 
+import 'package:app_finance/_classes/app_locale.dart';
 import 'package:app_finance/_classes/data/budget_app_data.dart';
 import 'package:app_finance/_classes/app_data.dart';
 import 'package:app_finance/routes/budget_add_page.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_gen/gen_l10n/app_localization.dart';
 
 class BudgetEditPage extends BudgetAddPage {
   final String uuid;
@@ -45,8 +45,8 @@ class BudgetEditPageState extends BudgetAddPageState<BudgetEditPage> {
   }
 
   @override
-  String getTitle(context) {
-    return AppLocalizations.of(context)!.editBudgetHeader;
+  String getTitle() {
+    return AppLocale.labels.editBudgetHeader;
   }
 
   @override
@@ -61,8 +61,8 @@ class BudgetEditPageState extends BudgetAddPageState<BudgetEditPage> {
   }
 
   @override
-  String getButtonName(BuildContext context) {
-    return AppLocalizations.of(context)!.updateBudgetTooltip;
+  String getButtonName() {
+    return AppLocale.labels.updateBudgetTooltip;
   }
 
   @override

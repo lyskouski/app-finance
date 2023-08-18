@@ -3,10 +3,10 @@
 // found in the LICENSE file.
 
 import 'package:adaptive_breakpoints/adaptive_breakpoints.dart';
+import 'package:app_finance/_classes/app_locale.dart';
 import 'package:app_finance/helpers/theme_helper.dart';
 import 'package:app_finance/widgets/_wrappers/elevate_button_widget.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_gen/gen_l10n/app_localization.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class OtherWidget extends StatelessWidget {
@@ -26,31 +26,31 @@ class OtherWidget extends StatelessWidget {
         SizedBox(height: indent / 2),
         ElevatedButtonWidget(
           onPressed: () => _launchURL('https://www.buymeacoffee.com/lyskouski'),
-          text: AppLocalizations.of(context)!.subscriptionCoffee,
+          text: AppLocale.labels.subscriptionCoffee,
           icon: Icons.coffee,
         ),
         SizedBox(height: indent),
         ElevatedButtonWidget(
           onPressed: () => _launchURL('https://paypal.me/terCAD'),
-          text: AppLocalizations.of(context)!.subscriptionPaypal,
+          text: AppLocale.labels.subscriptionPaypal,
           icon: Icons.coffee_maker,
         ),
         SizedBox(height: indent),
         ElevatedButtonWidget(
           onPressed: () => _launchURL('https://donorbox.org/tercad'),
-          text: AppLocalizations.of(context)!.subscriptionDonorbox,
+          text: AppLocale.labels.subscriptionDonorbox,
           icon: Icons.support,
         ),
         SizedBox(height: indent),
         ElevatedButtonWidget(
           onPressed: () => _launchURL('https://patreon.com/terCAD'),
-          text: AppLocalizations.of(context)!.subscriptionPatreon,
+          text: AppLocale.labels.subscriptionPatreon,
           icon: Icons.pattern,
         ),
         SizedBox(height: indent),
         ElevatedButtonWidget(
           onPressed: () => _launchURL('https://github.com/sponsors/lyskouski'),
-          text: AppLocalizations.of(context)!.subscriptionGithub,
+          text: AppLocale.labels.subscriptionGithub,
           icon: Icons.gite,
         ),
       ]),

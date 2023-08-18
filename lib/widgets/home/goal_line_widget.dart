@@ -3,12 +3,12 @@
 // found in the LICENSE file.
 
 import 'package:adaptive_breakpoints/adaptive_breakpoints.dart';
+import 'package:app_finance/_classes/app_locale.dart';
 import 'package:app_finance/_classes/app_route.dart';
 import 'package:app_finance/_classes/data/goal_app_data.dart';
 import 'package:app_finance/widgets/_wrappers/tap_widget.dart';
 import 'package:app_finance/helpers/theme_helper.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_gen/gen_l10n/app_localization.dart';
 
 class GoalLineWidget extends StatelessWidget {
   final GoalAppData goal;
@@ -24,9 +24,8 @@ class GoalLineWidget extends StatelessWidget {
     final ColorScheme colorScheme = Theme.of(context).colorScheme;
     final TextTheme textTheme = Theme.of(context).textTheme;
     double screenWidth = MediaQuery.of(context).size.width - theme.getIndent() * 2;
-    goal.setContext(context);
     return TapWidget(
-      tooltip: AppLocalizations.of(context)!.goalTooltip,
+      tooltip: AppLocale.labels.goalTooltip,
       route: AppRoute.goalRoute,
       child: Container(
         height: 50 + theme.getIndent() * 2,
@@ -43,7 +42,7 @@ class GoalLineWidget extends StatelessWidget {
                     Padding(
                       padding: EdgeInsets.fromLTRB(theme.getIndent(), theme.getIndent(), 0, 0),
                       child: Text(
-                        AppLocalizations.of(context)!.goalHeadline,
+                        AppLocale.labels.goalHeadline,
                         style: textTheme.headlineSmall,
                       ),
                     ),
@@ -100,7 +99,7 @@ class GoalLineWidget extends StatelessWidget {
                 Transform.translate(
                   offset: Offset(theme.getIndent() * 1.5 + screenWidth * goal.state, -6),
                   child: Tooltip(
-                    message: AppLocalizations.of(context)!.currentDate,
+                    message: AppLocale.labels.currentDate,
                     child: Container(
                       width: 4.0,
                       height: 4.0,

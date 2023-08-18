@@ -2,12 +2,12 @@
 // Use of this source code is governed by a CC BY-NC-ND 4.0 license that can be
 // found in the LICENSE file.
 
+import 'package:app_finance/_classes/app_locale.dart';
 import 'package:app_finance/_classes/data/bill_app_data.dart';
 import 'package:app_finance/_classes/focus_controller.dart';
 import 'package:app_finance/routes/abstract_page.dart';
 import 'package:app_finance/widgets/bill/expenses_edit_tab.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_gen/gen_l10n/app_localization.dart';
 
 class BillEditPage extends AbstractPage {
   final String uuid;
@@ -22,8 +22,8 @@ class BillEditPage extends AbstractPage {
 
 class BillEditPageState<T extends BillEditPage> extends AbstractPageState<BillEditPage> {
   @override
-  String getTitle(context) {
-    return AppLocalizations.of(context)!.editBillHeader;
+  String getTitle() {
+    return AppLocale.labels.editBillHeader;
   }
 
   @override
@@ -40,7 +40,6 @@ class BillEditPageState<T extends BillEditPage> extends AbstractPageState<BillEd
   @override
   Widget buildContent(BuildContext context, BoxConstraints constraints) {
     var bill = super.state.getByUuid(widget.uuid) as BillAppData;
-    bill.setContext(context);
     return ExpensesEditTab(
       uuid: widget.uuid,
       account: bill.account == '' ? null : bill.account,

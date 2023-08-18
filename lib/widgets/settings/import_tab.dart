@@ -5,6 +5,7 @@
 import 'dart:io';
 import 'package:adaptive_breakpoints/adaptive_breakpoints.dart';
 import 'package:app_finance/_classes/app_data.dart';
+import 'package:app_finance/_classes/app_locale.dart';
 import 'package:app_finance/_classes/currency/currency_provider.dart';
 import 'package:app_finance/_classes/data/account_app_data.dart';
 import 'package:app_finance/_classes/data/account_type.dart';
@@ -22,7 +23,6 @@ import 'package:currency_picker/currency_picker.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_gen/gen_l10n/app_localization.dart';
 import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 
@@ -50,19 +50,19 @@ class ImportTabState extends State<ImportTab> with SharedPreferencesMixin {
   final attrBillCurrency = 'billCurrency';
   final attrBillComment = 'billComment';
 
-  List<ListSelectorItem> getMappingTypes(BuildContext context) {
-    final account = AppLocalizations.of(context)!.account;
-    final budget = AppLocalizations.of(context)!.budget;
-    final bill = AppLocalizations.of(context)!.bill;
+  List<ListSelectorItem> getMappingTypes() {
+    final account = AppLocale.labels.account;
+    final budget = AppLocale.labels.budget;
+    final bill = AppLocale.labels.bill;
     final mapping = [
-      ListSelectorItem(id: '', name: '-- ${AppLocalizations.of(context)!.ignoreTooltip} --'),
-      ListSelectorItem(id: attrAccountName, name: '$account: ${AppLocalizations.of(context)!.title}'),
-      ListSelectorItem(id: attrCategoryName, name: '$budget: ${AppLocalizations.of(context)!.title}'),
-      ListSelectorItem(id: attrBillAmount, name: '$bill: ${AppLocalizations.of(context)!.expense}'),
-      // ListSelectorItem(id: attrBillType, name: '$bill: ${AppLocalizations.of(context)!.billTypeTooltip}'),
-      ListSelectorItem(id: attrBillDate, name: '$bill: ${AppLocalizations.of(context)!.expenseDateTime}'),
-      ListSelectorItem(id: attrBillCurrency, name: '$bill: ${AppLocalizations.of(context)!.currency}'),
-      ListSelectorItem(id: attrBillComment, name: '$bill: ${AppLocalizations.of(context)!.description}'),
+      ListSelectorItem(id: '', name: '-- ${AppLocale.labels.ignoreTooltip} --'),
+      ListSelectorItem(id: attrAccountName, name: '$account: ${AppLocale.labels.title}'),
+      ListSelectorItem(id: attrCategoryName, name: '$budget: ${AppLocale.labels.title}'),
+      ListSelectorItem(id: attrBillAmount, name: '$bill: ${AppLocale.labels.expense}'),
+      // ListSelectorItem(id: attrBillType, name: '$bill: ${AppLocale.labels.billTypeTooltip}'),
+      ListSelectorItem(id: attrBillDate, name: '$bill: ${AppLocale.labels.expenseDateTime}'),
+      ListSelectorItem(id: attrBillCurrency, name: '$bill: ${AppLocale.labels.currency}'),
+      ListSelectorItem(id: attrBillComment, name: '$bill: ${AppLocale.labels.description}'),
     ];
     mapping.sort((a, b) => a.name.compareTo(b.name));
     return mapping;
@@ -128,7 +128,7 @@ class ImportTabState extends State<ImportTab> with SharedPreferencesMixin {
     await state.restate();
   }
 
-  Future<void> wrapCall(BuildContext context, Function callback) async {
+  Future<void> wrapCall(Function callback) async {
     setState(() {
       isLoading = true;
       errorMessage.clear();
@@ -137,7 +137,7 @@ class ImportTabState extends State<ImportTab> with SharedPreferencesMixin {
     await Future.delayed(const Duration(seconds: 1));
     setState(() {
       isLoading = false;
-      String isFinished = AppLocalizations.of(context)!.processIsFinished;
+      String isFinished = AppLocale.labels.processIsFinished;
       errorMessage.write(isFinished);
       if (errorMessage.toString() == isFinished) {
         Future.delayed(const Duration(seconds: 2), () => setState(() => errorMessage.clear()));
@@ -227,11 +227,11 @@ class ImportTabState extends State<ImportTab> with SharedPreferencesMixin {
                     return Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
                       SizedBox(height: indent * 2),
                       Text(
-                        AppLocalizations.of(context)!.dateFormat,
+                        AppLocale.labels.dateFormat,
                         style: textTheme.bodyLarge,
                       ),
                       Text(
-                        AppLocalizations.of(context)!.dateFormatPattern,
+                        AppLocale.labels.dateFormatPattern,
                         style: textTheme.bodyMedium,
                       ),
                       SimpleInput(controller: dateFormat),
@@ -240,10 +240,10 @@ class ImportTabState extends State<ImportTab> with SharedPreferencesMixin {
                         width: double.infinity,
                         child: FloatingActionButton(
                           heroTag: 'import_tab_parse',
-                          onPressed: () => wrapCall(context, parseFile),
-                          tooltip: AppLocalizations.of(context)!.parseFile,
+                          onPressed: () => wrapCall(parseFile),
+                          tooltip: AppLocale.labels.parseFile,
                           child: Text(
-                            AppLocalizations.of(context)!.parseFile,
+                            AppLocale.labels.parseFile,
                           ),
                         ),
                       ),
@@ -254,13 +254,13 @@ class ImportTabState extends State<ImportTab> with SharedPreferencesMixin {
                     children: [
                       SizedBox(height: indent),
                       Text(
-                        AppLocalizations.of(context)!.columnMap(fileContent!.first[index]),
+                        AppLocale.labels.columnMap(fileContent!.first[index]),
                         style: textTheme.bodyLarge,
                       ),
                       ListSelector(
-                        options: getMappingTypes(context),
+                        options: getMappingTypes(),
                         indent: indent,
-                        hintText: AppLocalizations.of(context)!.columnMapTooltip,
+                        hintText: AppLocale.labels.columnMapTooltip,
                         setState: (value) => setState(() => columnMap[index] = value),
                       ),
                     ],
@@ -271,10 +271,10 @@ class ImportTabState extends State<ImportTab> with SharedPreferencesMixin {
                   width: double.infinity,
                   child: FloatingActionButton(
                     heroTag: 'import_tab_pick',
-                    onPressed: () => wrapCall(context, pickFile),
-                    tooltip: AppLocalizations.of(context)!.pickFile,
+                    onPressed: () => wrapCall(pickFile),
+                    tooltip: AppLocale.labels.pickFile,
                     child: Text(
-                      AppLocalizations.of(context)!.pickFile,
+                      AppLocale.labels.pickFile,
                     ),
                   ),
                 ),

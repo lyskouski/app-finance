@@ -3,6 +3,7 @@
 // found in the LICENSE file.
 
 import 'package:adaptive_breakpoints/adaptive_breakpoints.dart';
+import 'package:app_finance/_classes/app_locale.dart';
 import 'package:app_finance/_classes/currency/currency_provider.dart';
 import 'package:app_finance/_classes/data/budget_app_data.dart';
 import 'package:app_finance/_classes/focus_controller.dart';
@@ -21,7 +22,6 @@ import 'package:app_finance/widgets/_wrappers/row_widget.dart';
 import 'package:currency_picker/currency_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_gen/gen_l10n/app_localization.dart';
 
 class BudgetAddPage extends AbstractPage {
   final String? title;
@@ -62,8 +62,8 @@ class BudgetAddPageState<T extends BudgetAddPage> extends AbstractPageState<Budg
   }
 
   @override
-  String getTitle(context) {
-    return AppLocalizations.of(context)!.createBudgetHeader;
+  String getTitle() {
+    return AppLocale.labels.createBudgetHeader;
   }
 
   bool hasFormErrors() {
@@ -85,27 +85,28 @@ class BudgetAddPageState<T extends BudgetAddPage> extends AbstractPageState<Budg
         ));
   }
 
-  String getButtonName(BuildContext context) {
-    return AppLocalizations.of(context)!.createBudgetTooltip;
+  String getButtonName() {
+    return AppLocale.labels.createBudgetTooltip;
   }
 
-  void triggerActionButton(BuildContext context) {
+  void triggerActionButton(NavigatorState nav) {
     setState(() {
       if (hasFormErrors()) {
         return;
       }
       updateStorage();
-      Navigator.pop(context);
-      Navigator.pop(context);
+      nav.pop();
+      nav.pop();
     });
   }
 
   @override
   Widget buildButton(BuildContext context, BoxConstraints constraints) {
+    NavigatorState nav = Navigator.of(context);
     return FullSizedButton(
       constraints: constraints,
-      setState: () => triggerActionButton(context),
-      title: getButtonName(context),
+      setState: () => triggerActionButton(nav),
+      title: getButtonName(),
       icon: Icons.save,
     );
   }
@@ -115,7 +116,6 @@ class BudgetAddPageState<T extends BudgetAddPage> extends AbstractPageState<Budg
     final TextTheme textTheme = Theme.of(context).textTheme;
     double indent = ThemeHelper(windowType: getWindowType(context)).getIndent() * 2;
     double offset = MediaQuery.of(context).size.width - indent * 3;
-    AppLocalizations locale = AppLocalizations.of(context)!;
 
     return SingleChildScrollView(
       controller: FocusController.getController(runtimeType),
@@ -124,10 +124,10 @@ class BudgetAddPageState<T extends BudgetAddPage> extends AbstractPageState<Budg
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            RequiredWidget(title: locale.title, showError: hasError && title.text.isEmpty),
+            RequiredWidget(title: AppLocale.labels.title, showError: hasError && title.text.isEmpty),
             SimpleInput(
               controller: title,
-              tooltip: locale.titleBudgetTooltip,
+              tooltip: AppLocale.labels.titleBudgetTooltip,
               style: textTheme.numberMedium.copyWith(color: textTheme.headlineSmall?.color),
             ),
             SizedBox(height: indent),
@@ -138,7 +138,7 @@ class BudgetAddPageState<T extends BudgetAddPage> extends AbstractPageState<Budg
               children: [
                 [
                   Text(
-                    locale.icon,
+                    AppLocale.labels.icon,
                     style: textTheme.bodyLarge,
                   ),
                   IconSelector(
@@ -149,7 +149,7 @@ class BudgetAddPageState<T extends BudgetAddPage> extends AbstractPageState<Budg
                 ],
                 [
                   Text(
-                    locale.color,
+                    AppLocale.labels.color,
                     style: textTheme.bodyLarge,
                   ),
                   ColorSelector(
@@ -162,13 +162,13 @@ class BudgetAddPageState<T extends BudgetAddPage> extends AbstractPageState<Budg
             ),
             SizedBox(height: indent),
             Text(
-              locale.budgetLimit,
+              AppLocale.labels.budgetLimit,
               style: textTheme.bodyLarge,
             ),
             SimpleInput(
               controller: budgetLimit,
               type: const TextInputType.numberWithOptions(decimal: true),
-              tooltip: locale.balanceTooltip,
+              tooltip: AppLocale.labels.balanceTooltip,
               style: textTheme.numberMedium.copyWith(color: textTheme.headlineSmall?.color),
               formatter: [
                 FilteringTextInputFormatter.allow(RegExp(r'^\d+\.?\d{0,4}')),
@@ -176,7 +176,7 @@ class BudgetAddPageState<T extends BudgetAddPage> extends AbstractPageState<Budg
             ),
             SizedBox(height: indent),
             Text(
-              locale.currency,
+              AppLocale.labels.currency,
               style: textTheme.bodyLarge,
             ),
             Container(

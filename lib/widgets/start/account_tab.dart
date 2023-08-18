@@ -23,7 +23,7 @@ class AccountTab extends AccountAddPage {
 
 class AccountTabState extends AccountAddPageState<AccountTab> with SharedPreferencesMixin {
   @override
-  void triggerActionButton(BuildContext context) {
+  void triggerActionButton(NavigatorState nav) {
     setState(() {
       if (hasFormErrors()) {
         return;

@@ -3,11 +3,11 @@
 // found in the LICENSE file.
 
 import 'package:adaptive_breakpoints/adaptive_breakpoints.dart';
+import 'package:app_finance/_classes/app_locale.dart';
 import 'package:app_finance/helpers/theme_helper.dart';
 import 'package:app_finance/routes/abstract_page.dart';
 import 'package:app_finance/widgets/_wrappers/row_widget.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_gen/gen_l10n/app_localization.dart';
 import 'package:flutter_markdown/flutter_markdown.dart';
 import 'package:package_info_plus/package_info_plus.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -49,7 +49,7 @@ class AboutPageState extends AbstractPageState<AboutPage> {
     var helper = ThemeHelper(windowType: getWindowType(context));
     double indent = helper.getIndent();
     double width = MediaQuery.of(context).size.width - indent * 4;
-    final locale = AppLocalizations.of(context)!.localeName;
+    final locale = AppLocale.labels.localeName;
     return Padding(
       padding: EdgeInsets.fromLTRB(indent, indent, indent, 0),
       child: Column(
@@ -68,11 +68,11 @@ class AboutPageState extends AbstractPageState<AboutPage> {
               ],
               [
                 Text(
-                  AppLocalizations.of(context)!.appTitle,
+                  AppLocale.labels.appTitle,
                   style: Theme.of(context).textTheme.headlineLarge,
                 ),
-                Text(AppLocalizations.of(context)!.appVersion(version)),
-                Text(AppLocalizations.of(context)!.appBuild(buildNumber)),
+                Text(AppLocale.labels.appVersion(version)),
+                Text(AppLocale.labels.appBuild(buildNumber)),
                 SizedBox(width: width * 0.8),
               ],
             ],
@@ -86,19 +86,19 @@ class AboutPageState extends AbstractPageState<AboutPage> {
               [
                 ElevatedButton(
                   onPressed: () => _launchURL('https://github.com/lyskouski/app-finance/releases'),
-                  child: Text(AppLocalizations.of(context)!.releases),
+                  child: Text(AppLocale.labels.releases),
                 ),
               ],
               [
                 ElevatedButton(
                   onPressed: () => _launchURL('https://github.com/users/lyskouski/projects/2/views/1'),
-                  child: Text(AppLocalizations.of(context)!.roadmap),
+                  child: Text(AppLocale.labels.roadmap),
                 ),
               ],
               [
                 ElevatedButton(
                   onPressed: () => _launchURL('https://github.com/lyskouski/app-finance/milestones'),
-                  child: Text(AppLocalizations.of(context)!.milestones),
+                  child: Text(AppLocale.labels.milestones),
                 ),
               ],
             ],
@@ -121,7 +121,7 @@ class AboutPageState extends AbstractPageState<AboutPage> {
   }
 
   @override
-  String getTitle(BuildContext context) {
-    return AppLocalizations.of(context)!.aboutHeadline;
+  String getTitle() {
+    return AppLocale.labels.aboutHeadline;
   }
 }
