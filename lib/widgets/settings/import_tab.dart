@@ -1,9 +1,7 @@
 // Copyright 2023 The terCAD team. All rights reserved.
-// Use of this source code is governed by a CC BY-NC-ND 4.0 license that can be
-// found in the LICENSE file.
+// Use of this source code is governed by a CC BY-NC-ND 4.0 license that can be found in the LICENSE file.
 
 import 'dart:io';
-import 'package:adaptive_breakpoints/adaptive_breakpoints.dart';
 import 'package:app_finance/_classes/storage/app_data.dart';
 import 'package:app_finance/_classes/herald/app_locale.dart';
 import 'package:app_finance/_classes/structure/currency/currency_provider.dart';
@@ -204,7 +202,7 @@ class ImportTabState extends State<ImportTab> with SharedPreferencesMixin {
   Widget build(BuildContext context) {
     final textTheme = Theme.of(context).textTheme;
     final ColorScheme colorScheme = Theme.of(context).colorScheme;
-    double indent = ThemeHelper(windowType: getWindowType(context)).getIndent() * 2;
+    double indent = ThemeHelper.getIndent(2);
     FocusController.init();
 
     return Consumer<AppData>(builder: (context, appState, _) {

@@ -1,7 +1,6 @@
 // Copyright 2023 The terCAD team. All rights reserved.
 // Use of this source code is governed by a CC BY-NC-ND 4.0 license that can be found in the LICENSE file.
 
-import 'package:adaptive_breakpoints/adaptive_breakpoints.dart';
 import 'package:app_finance/_classes/herald/app_locale.dart';
 import 'package:app_finance/_classes/structure/currency/currency_provider.dart';
 import 'package:app_finance/_classes/controller/focus_controller.dart';
@@ -70,8 +69,7 @@ class CurrencySelector extends ListSelector<CurrencySelectorItem> {
 
   @override
   Widget itemBuilder(context, CurrencySelectorItem item, bool isSelected) {
-    final helper = ThemeHelper(windowType: getWindowType(context));
-    final indent = helper.getIndent();
+    final indent = ThemeHelper.getIndent();
     if (setView != null) {
       return Tooltip(
         message: item.name,

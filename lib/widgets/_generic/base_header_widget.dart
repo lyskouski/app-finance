@@ -1,7 +1,6 @@
 // Copyright 2023 The terCAD team. All rights reserved.
 // Use of this source code is governed by a CC BY-NC-ND 4.0 license that can be found in the LICENSE file.
 
-import 'package:adaptive_breakpoints/adaptive_breakpoints.dart';
 import 'package:app_finance/_classes/herald/app_locale.dart';
 import 'package:app_finance/_classes/structure/currency/exchange.dart';
 import 'package:app_finance/_configs/custom_text_theme.dart';
@@ -33,8 +32,7 @@ class BaseHeaderWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var theme = ThemeHelper(windowType: getWindowType(context));
-    double indent = theme.getIndent();
+    double indent = ThemeHelper.getIndent();
     final locale = Localizations.localeOf(context).toString();
     final NumberFormat formatter = NumberFormat.currency(
       locale: locale,

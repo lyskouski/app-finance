@@ -1,8 +1,6 @@
 // Copyright 2023 The terCAD team. All rights reserved.
-// Use of this source code is governed by a CC BY-NC-ND 4.0 license that can be
-// found in the LICENSE file.
+// Use of this source code is governed by a CC BY-NC-ND 4.0 license that can be found in the LICENSE file.
 
-import 'package:adaptive_breakpoints/adaptive_breakpoints.dart';
 import 'package:app_finance/_classes/herald/app_locale.dart';
 import 'package:app_finance/_classes/structure/navigation/app_menu.dart';
 import 'package:app_finance/_classes/structure/bill_app_data.dart';
@@ -65,7 +63,7 @@ class GoalViewPageState extends AbstractPageState<GoalViewPage> with SharedPrefe
   Widget buildButton(BuildContext context, BoxConstraints constraints) {
     final data = super.state.getByUuid(widget.uuid) as GoalAppData;
     String route = AppMenu.uuid(AppRoute.goalEditRoute, widget.uuid);
-    double indent = ThemeHelper(windowType: getWindowType(context)).getIndent() * 4;
+    double indent = ThemeHelper.getIndent(4);
     NavigatorState nav = Navigator.of(context);
     return Container(
       margin: EdgeInsets.only(left: indent),
@@ -96,13 +94,11 @@ class GoalViewPageState extends AbstractPageState<GoalViewPage> with SharedPrefe
   @override
   Widget buildContent(BuildContext context, BoxConstraints constraints) {
     final item = super.state.getByUuid(widget.uuid) as GoalAppData;
-    double indent = ThemeHelper(windowType: getWindowType(context)).getIndent() * 2;
-    double offset = MediaQuery.of(context).size.width - indent * 3;
     return Column(
       children: [
         BaseLineWidget(
           title: item.title,
-          offset: offset,
+          offset: ThemeHelper.getWidth(context, 6),
           uuid: widget.uuid,
           details: item.getNumberFormatted(item.details),
           description: item.closedAtFormatted,

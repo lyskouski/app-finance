@@ -1,8 +1,8 @@
 // Copyright 2023 The terCAD team. All rights reserved.
 // Use of this source code is governed by a CC BY-NC-ND 4.0 license that can be found in the LICENSE file.
 
-import 'package:adaptive_breakpoints/adaptive_breakpoints.dart';
 import 'package:app_finance/_classes/herald/app_locale.dart';
+import 'package:app_finance/_classes/structure/navigation/app_menu.dart';
 import 'package:app_finance/charts/bar_vertical_group.dart';
 import 'package:app_finance/charts/bar_vertical_single.dart';
 import 'package:app_finance/charts/radial_bar_chart.dart';
@@ -59,8 +59,7 @@ class BaseGroupWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var theme = ThemeHelper(windowType: getWindowType(context));
-    double indent = theme.getIndent();
+    double indent = ThemeHelper.getIndent();
     final TextTheme textTheme = Theme.of(context).textTheme;
     final toSwap = items.length * 36 + items.length * indent * 2 > offset * 0.5;
 
@@ -68,7 +67,7 @@ class BaseGroupWidget extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         TapWidget(
-          route: '${route.replaceAll('uuid:', 'search:')}$title',
+          route: AppMenu.search(route, title),
           tooltip: AppLocale.labels.search(title),
           child: RowWidget(
             indent: indent,

@@ -1,7 +1,6 @@
 // Copyright 2023 The terCAD team. All rights reserved.
 // Use of this source code is governed by a CC BY-NC-ND 4.0 license that can be found in the LICENSE file.
 
-import 'package:adaptive_breakpoints/adaptive_breakpoints.dart';
 import 'package:app_finance/_classes/herald/app_locale.dart';
 import 'package:app_finance/_configs/theme_helper.dart';
 import 'package:app_finance/widgets/_wrappers/elevate_button_widget.dart';
@@ -18,8 +17,7 @@ class OtherWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final helper = ThemeHelper(windowType: getWindowType(context));
-    double indent = helper.getIndent() * 2;
+    double indent = ThemeHelper.getIndent(2);
     return Expanded(
       child: Column(children: [
         SizedBox(height: indent / 2),

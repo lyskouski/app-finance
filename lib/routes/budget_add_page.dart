@@ -1,8 +1,6 @@
 // Copyright 2023 The terCAD team. All rights reserved.
-// Use of this source code is governed by a CC BY-NC-ND 4.0 license that can be
-// found in the LICENSE file.
+// Use of this source code is governed by a CC BY-NC-ND 4.0 license that can be found in the LICENSE file.
 
-import 'package:adaptive_breakpoints/adaptive_breakpoints.dart';
 import 'package:app_finance/_classes/herald/app_locale.dart';
 import 'package:app_finance/_classes/structure/currency/currency_provider.dart';
 import 'package:app_finance/_classes/structure/budget_app_data.dart';
@@ -114,8 +112,8 @@ class BudgetAddPageState<T extends BudgetAddPage> extends AbstractPageState<Budg
   @override
   Widget buildContent(BuildContext context, BoxConstraints constraints) {
     final TextTheme textTheme = Theme.of(context).textTheme;
-    double indent = ThemeHelper(windowType: getWindowType(context)).getIndent() * 2;
-    double offset = MediaQuery.of(context).size.width - indent * 3;
+    double indent = ThemeHelper.getIndent(2);
+    double offset = ThemeHelper.getWidth(context, 6);
 
     return SingleChildScrollView(
       controller: FocusController.getController(runtimeType),
@@ -144,7 +142,6 @@ class BudgetAddPageState<T extends BudgetAddPage> extends AbstractPageState<Budg
                   IconSelector(
                     value: icon,
                     setState: (value) => setState(() => icon = value),
-                    // focusOrder: focusOrder += 1,
                   ),
                 ],
                 [
@@ -155,7 +152,6 @@ class BudgetAddPageState<T extends BudgetAddPage> extends AbstractPageState<Budg
                   ColorSelector(
                     value: color,
                     setState: (value) => setState(() => color = value),
-                    // focusOrder: focusOrder += 1,
                   ),
                 ],
               ],

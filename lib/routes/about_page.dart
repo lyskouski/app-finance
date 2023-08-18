@@ -1,7 +1,6 @@
 // Copyright 2023 The terCAD team. All rights reserved.
 // Use of this source code is governed by a CC BY-NC-ND 4.0 license that can be found in the LICENSE file.
 
-import 'package:adaptive_breakpoints/adaptive_breakpoints.dart';
 import 'package:app_finance/_classes/herald/app_locale.dart';
 import 'package:app_finance/_configs/theme_helper.dart';
 import 'package:app_finance/routes/abstract_page.dart';
@@ -45,9 +44,8 @@ class AboutPageState extends AbstractPageState<AboutPage> {
 
   @override
   Widget buildContent(BuildContext context, BoxConstraints constraints) {
-    var helper = ThemeHelper(windowType: getWindowType(context));
-    double indent = helper.getIndent();
-    double width = MediaQuery.of(context).size.width - indent * 4;
+    double indent = ThemeHelper.getIndent();
+    double width = ThemeHelper.getWidth(context);
     final locale = AppLocale.labels.localeName;
     return Padding(
       padding: EdgeInsets.fromLTRB(indent, indent, indent, 0),

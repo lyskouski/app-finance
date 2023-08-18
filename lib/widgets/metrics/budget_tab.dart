@@ -1,9 +1,7 @@
 // Copyright 2023 The terCAD team. All rights reserved.
-// Use of this source code is governed by a CC BY-NC-ND 4.0 license that can be
-// found in the LICENSE file.
+// Use of this source code is governed by a CC BY-NC-ND 4.0 license that can be found in the LICENSE file.
 
 import 'dart:collection';
-import 'package:adaptive_breakpoints/adaptive_breakpoints.dart';
 import 'package:app_finance/_classes/storage/app_data.dart';
 import 'package:app_finance/_classes/herald/app_locale.dart';
 import 'package:app_finance/_classes/structure/bill_app_data.dart';
@@ -45,9 +43,7 @@ class BudgetTab extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final TextTheme textTheme = Theme.of(context).textTheme;
-    var helper = ThemeHelper(windowType: getWindowType(context));
-    double indent = helper.getIndent();
-    double width = MediaQuery.of(context).size.width - indent * 2;
+    double indent = ThemeHelper.getIndent();
     return SingleChildScrollView(
       child: Padding(
         padding: EdgeInsets.all(indent * 2),
@@ -59,7 +55,7 @@ class BudgetTab extends StatelessWidget {
               style: textTheme.bodyLarge,
             ),
             ForecastChart(
-              width: width - indent * 2,
+              width: ThemeHelper.getWidth(context, 4),
               indent: indent,
               data: _generateData(),
               yMax: _getBudgetTotal(),

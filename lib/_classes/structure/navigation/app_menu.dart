@@ -11,6 +11,10 @@ class AppMenu {
     return route.replaceAll('uuid:', 'uuid:$uuid');
   }
 
+  static String search(String route, String title) {
+    return '${route.replaceAll('uuid:', 'search:')}$title';
+  }
+
   static AppMenuItem getByIndex(int index) {
     return get()[index];
   }

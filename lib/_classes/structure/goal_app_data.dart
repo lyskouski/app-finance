@@ -80,6 +80,7 @@ class GoalAppData extends AbstractAppData {
         'closedAt': closedAt.toIso8601String(),
       };
 
+  // ignore: unnecessary_getters_setters
   DateTime get closedAt => _closedAt;
   set closedAt(DateTime value) => _closedAt = value;
   String get closedAtFormatted => getDateFormatted(_closedAt);

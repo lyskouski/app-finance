@@ -1,8 +1,6 @@
 // Copyright 2023 The terCAD team. All rights reserved.
-// Use of this source code is governed by a CC BY-NC-ND 4.0 license that can be
-// found in the LICENSE file.
+// Use of this source code is governed by a CC BY-NC-ND 4.0 license that can be found in the LICENSE file.
 
-import 'package:adaptive_breakpoints/adaptive_breakpoints.dart';
 import 'package:app_finance/_classes/herald/app_locale.dart';
 import 'package:app_finance/_classes/structure/currency/exchange.dart';
 import 'package:app_finance/_classes/structure/goal_app_data.dart';
@@ -116,8 +114,8 @@ class GoalAddPageState<T extends GoalAddPage> extends AbstractPageState<GoalAddP
   @override
   Widget buildContent(BuildContext context, BoxConstraints constraints) {
     final TextTheme textTheme = Theme.of(context).textTheme;
-    double indent = ThemeHelper(windowType: getWindowType(context)).getIndent() * 2;
-    double offset = MediaQuery.of(context).size.width - indent * 3;
+    double indent = ThemeHelper.getIndent(2);
+    double offset = ThemeHelper.getWidth(context, 6);
 
     return SingleChildScrollView(
       controller: FocusController.getController(runtimeType),

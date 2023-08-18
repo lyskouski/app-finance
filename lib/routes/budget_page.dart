@@ -1,8 +1,6 @@
 // Copyright 2023 The terCAD team. All rights reserved.
-// Use of this source code is governed by a CC BY-NC-ND 4.0 license that can be
-// found in the LICENSE file.
+// Use of this source code is governed by a CC BY-NC-ND 4.0 license that can be found in the LICENSE file.
 
-import 'package:adaptive_breakpoints/adaptive_breakpoints.dart';
 import 'package:app_finance/_classes/storage/app_data.dart';
 import 'package:app_finance/_classes/herald/app_locale.dart';
 import 'package:app_finance/_classes/structure/currency/exchange.dart';
@@ -44,7 +42,6 @@ class BudgetPageState extends AbstractPageState<BudgetPage> {
 
   @override
   Widget buildContent(BuildContext context, BoxConstraints constraints) {
-    var helper = ThemeHelper(windowType: getWindowType(context));
     dynamic items;
     if (widget.search != null) {
       final scope =
@@ -60,10 +57,10 @@ class BudgetPageState extends AbstractPageState<BudgetPage> {
     return Column(
       children: [
         BudgetWidget(
-          margin: EdgeInsets.all(helper.getIndent()),
+          margin: EdgeInsets.all(ThemeHelper.getIndent()),
           title: AppLocale.labels.budgetHeadline,
           state: items,
-          offset: MediaQuery.of(context).size.width - helper.getIndent() * 2,
+          offset: ThemeHelper.getWidth(context, 2),
         )
       ],
     );

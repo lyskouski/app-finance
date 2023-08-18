@@ -1,8 +1,6 @@
 // Copyright 2023 The terCAD team. All rights reserved.
-// Use of this source code is governed by a CC BY-NC-ND 4.0 license that can be
-// found in the LICENSE file.
+// Use of this source code is governed by a CC BY-NC-ND 4.0 license that can be found in the LICENSE file.
 
-import 'package:adaptive_breakpoints/adaptive_breakpoints.dart';
 import 'package:app_finance/_classes/storage/app_data.dart';
 import 'package:app_finance/_classes/herald/app_locale.dart';
 import 'package:app_finance/_configs/theme_helper.dart';
@@ -37,8 +35,7 @@ class GoalPageState extends AbstractPageState<GoalPage> {
 
   @override
   Widget buildContent(BuildContext context, BoxConstraints constraints) {
-    var helper = ThemeHelper(windowType: getWindowType(context));
-    final double offset = MediaQuery.of(context).size.width - helper.getIndent() * 2;
+    final double offset = ThemeHelper.getWidth(context, 2);
     return Column(
         children: super.state.getList(AppDataType.goals).map((goal) {
       return BaseLineWidget(

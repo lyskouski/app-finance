@@ -1,7 +1,6 @@
 // Copyright 2023 The terCAD team. All rights reserved.
 // Use of this source code is governed by a CC BY-NC-ND 4.0 license that can be found in the LICENSE file.
 
-import 'package:adaptive_breakpoints/adaptive_breakpoints.dart';
 import 'package:app_finance/charts/bar_vertical_single.dart';
 import 'package:app_finance/_configs/custom_text_theme.dart';
 import 'package:app_finance/widgets/_wrappers/tap_widget.dart';
@@ -36,12 +35,10 @@ class BaseLineWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var theme = ThemeHelper(windowType: getWindowType(context));
-    final TextTheme textTheme = Theme.of(context).textTheme;
-
     if (hidden) {
       return const SizedBox();
     }
+    final TextTheme textTheme = Theme.of(context).textTheme;
 
     return TapWidget(
       tooltip: title,
@@ -81,7 +78,7 @@ class BaseLineWidget extends StatelessWidget {
                 ),
               ),
               Padding(
-                padding: EdgeInsets.all(theme.getIndent()),
+                padding: EdgeInsets.all(ThemeHelper.getIndent()),
                 child: Container(
                   constraints: BoxConstraints(
                     maxWidth: offset * 0.4,

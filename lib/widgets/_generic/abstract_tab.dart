@@ -1,7 +1,6 @@
 // Copyright 2023 The terCAD team. All rights reserved.
 // Use of this source code is governed by a CC BY-NC-ND 4.0 license that can be found in the LICENSE file.
 
-import 'package:adaptive_breakpoints/adaptive_breakpoints.dart';
 import 'package:app_finance/_classes/herald/app_locale.dart';
 import 'package:app_finance/_configs/theme_helper.dart';
 import 'package:app_finance/widgets/_forms/full_sized_button.dart';
@@ -33,7 +32,7 @@ abstract class AbstractTabState<T extends AbstractTab> extends State<T> {
 
   @override
   Widget build(BuildContext context) {
-    double indent = ThemeHelper(windowType: getWindowType(context)).getIndent() * 2;
+    double indent = ThemeHelper.getIndent(2);
     return LayoutBuilder(builder: (context, constraints) {
       return Scaffold(
         floatingActionButton: buildButton(context, constraints),

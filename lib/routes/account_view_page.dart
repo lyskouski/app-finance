@@ -1,8 +1,6 @@
 // Copyright 2023 The terCAD team. All rights reserved.
-// Use of this source code is governed by a CC BY-NC-ND 4.0 license that can be
-// found in the LICENSE file.
+// Use of this source code is governed by a CC BY-NC-ND 4.0 license that can be found in the LICENSE file.
 
-import 'package:adaptive_breakpoints/adaptive_breakpoints.dart';
 import 'package:app_finance/_classes/herald/app_locale.dart';
 import 'package:app_finance/_classes/structure/account_app_data.dart';
 import 'package:app_finance/_classes/structure/navigation/app_menu.dart';
@@ -42,7 +40,7 @@ class AccountViewPageState extends AbstractPageState<AccountViewPage> {
   @override
   Widget buildButton(BuildContext context, BoxConstraints constraints) {
     String route = AppMenu.uuid(AppRoute.accountEditRoute, widget.uuid);
-    double indent = ThemeHelper(windowType: getWindowType(context)).getIndent() * 4;
+    double indent = ThemeHelper.getIndent(4);
     NavigatorState nav = Navigator.of(context);
     return Container(
       margin: EdgeInsets.only(left: indent),
@@ -78,8 +76,7 @@ class AccountViewPageState extends AbstractPageState<AccountViewPage> {
   @override
   Widget buildContent(BuildContext context, BoxConstraints constraints) {
     final item = super.state.getByUuid(widget.uuid) as AccountAppData;
-    double indent = ThemeHelper(windowType: getWindowType(context)).getIndent() * 2;
-    double offset = MediaQuery.of(context).size.width - indent * 3;
+    double offset = ThemeHelper.getWidth(context, 6);
     return Column(
       children: [
         BaseLineWidget(
