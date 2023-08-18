@@ -33,40 +33,39 @@ class DefaultFirebaseOptions {
   }
 
   static const FirebaseOptions web = FirebaseOptions(
-    apiKey: 'AIzaSyAT_5Ji7Mvj4ml1cSHpqJ_su2SLoJ_zgQI',
-    appId: '1:637490835303:web:71916a85b5ba3e79c689c2',
-    messagingSenderId: '637490835303',
-    projectId: 'fingram-9030a',
-    authDomain: 'fingram-9030a.firebaseapp.com',
-    storageBucket: 'fingram-9030a.appspot.com',
-    measurementId: 'G-3170SMMEH8',
+    apiKey: 'AIzaSyD-F5CBBZjskRbfqkeP1nPt7UUCuWQVy68',
+    appId: '1:316045786606:web:e9346723741d371ad562ff',
+    messagingSenderId: '316045786606',
+    projectId: 'fingrom',
+    authDomain: 'fingrom.firebaseapp.com',
+    storageBucket: 'fingrom.appspot.com',
   );
 
   static const FirebaseOptions android = FirebaseOptions(
-    apiKey: 'AIzaSyD1b_6-j5yF2-IHc_hgbCJEym_s6ZTo1fM',
-    appId: '1:637490835303:android:5e056fa931de68bac689c2',
-    messagingSenderId: '637490835303',
-    projectId: 'fingram-9030a',
-    storageBucket: 'fingram-9030a.appspot.com',
+    apiKey: 'AIzaSyBaT0FV9Xd46OZr4wcc_X44w1zpsaybiMo',
+    appId: '1:316045786606:android:56767cb0c0a39bbfd562ff',
+    messagingSenderId: '316045786606',
+    projectId: 'fingrom',
+    storageBucket: 'fingrom.appspot.com',
   );
 
   static const FirebaseOptions ios = FirebaseOptions(
-    apiKey: 'AIzaSyDL6lNmRUV3hw9o5RGA-IopdV631cFEcYw',
-    appId: '1:637490835303:ios:750aa49a672e8d4fc689c2',
-    messagingSenderId: '637490835303',
-    projectId: 'fingram-9030a',
-    storageBucket: 'fingram-9030a.appspot.com',
-    iosClientId: '637490835303-54nnsjspk2nrht9cpaqnfoc0qrvg6fhu.apps.googleusercontent.com',
+    apiKey: 'AIzaSyByWAdeAUDluD-dlJHrt4Z1oyValCuFBpM',
+    appId: '1:316045786606:ios:87bd828f023ae743d562ff',
+    messagingSenderId: '316045786606',
+    projectId: 'fingrom',
+    storageBucket: 'fingrom.appspot.com',
+    iosClientId: '316045786606-d806bn8s90gj03nil8gooku2frptvrge.apps.googleusercontent.com',
     iosBundleId: 'com.tercad.fingrom',
   );
 
   static const FirebaseOptions macos = FirebaseOptions(
-    apiKey: 'AIzaSyDL6lNmRUV3hw9o5RGA-IopdV631cFEcYw',
-    appId: '1:637490835303:ios:c94c2442c25eae90c689c2',
-    messagingSenderId: '637490835303',
-    projectId: 'fingram-9030a',
-    storageBucket: 'fingram-9030a.appspot.com',
-    iosClientId: '637490835303-ls93eg7028hj0rbtc6ioselm4h60q07p.apps.googleusercontent.com',
+    apiKey: 'AIzaSyByWAdeAUDluD-dlJHrt4Z1oyValCuFBpM',
+    appId: '1:316045786606:ios:34250e2deee54195d562ff',
+    messagingSenderId: '316045786606',
+    projectId: 'fingrom',
+    storageBucket: 'fingrom.appspot.com',
+    iosClientId: '316045786606-8tl5sft03rmf5tbdd4k9pk12a4f47d6m.apps.googleusercontent.com',
     iosBundleId: 'com.tercad.fingrom.RunnerTests',
   );
 }
