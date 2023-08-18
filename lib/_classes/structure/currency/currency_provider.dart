@@ -3,23 +3,26 @@
 // found in the LICENSE file.
 
 import 'dart:collection';
-import 'package:app_finance/_classes/structure/currency/cryptocurrencies.dart';
+import 'package:app_finance/_classes/structure/currency/crypto_list.dart';
+import 'package:app_finance/_classes/structure/currency/currency_list.dart';
+import 'package:app_finance/_classes/structure/currency/currency_template.dart';
 import 'package:currency_picker/currency_picker.dart';
-// ignore: implementation_imports
-import 'package:currency_picker/src/currencies.dart';
 
 class CurrencyProvider {
   static final _currencies = HashMap<String?, Currency>();
+  static final List<Currency> _list = [];
 
   static void _convert(List<Map<String, dynamic>> scope) {
-    for (final currency in scope) {
-      _currencies[currency['code']] = Currency.from(json: currency);
+    for (final code in scope) {
+      final currency = Currency.from(json: code);
+      _list.add(currency);
+      _currencies[currency.code] = currency;
     }
   }
 
   static void _check() {
     if (_currencies.isEmpty) {
-      _convert(currencies);
+      _convert(currencyList);
       List<Map<String, dynamic>> cryptocurrencies = cryptoList.map((e) {
         return {
           ...tplCurrency,
@@ -39,7 +42,7 @@ class CurrencyProvider {
 
   static List<Currency> getAll() {
     _check();
-    return _currencies.values.toList();
+    return _list;
   }
 
   static Currency? findByCode(String? code) {
