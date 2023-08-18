@@ -1,0 +1,53 @@
+% Copyright 2023 The terCAD team. All rights reserved.
+% Use of this content is governed by a CC BY-NC-ND 4.0 license that can be found in the LICENSE file.
+
+\subsection{Refactoring by Principles}
+\markboth{Unleashing Features}{Refactoring by Principles}
+
+Having scrutinized the application's "skeleton" encompassing scalability and fault tolerance (\ref{benchmark}), it's 
+now an opportune juncture to delve into its "nervous system" -- ensuring alignment with architectural and code style 
+principles.\\
+\\
+
+\noindent Architectural Principles \cite{Mart18}:
+
+\begin{itemize}
+  \item Architectural modularity emphasizes breaking down a software system into distinct modules or 
+  components. Each module should have a clear and well-defined purpose, promoting easier development, testing, and 
+  maintenance.
+
+  \item Layered architecture divides a system into logical layers, each responsible for specific tasks. This 
+  separation enhances code organization and facilitates the isolation of concerns.
+
+  \item Separation of Concerns (SoC) advocates segregating different aspects of functionality to prevent overlap. 
+  This minimizes code entanglement, making it easier to modify, debug, and maintain individual components.
+
+  \item Decoupled systems have minimal dependencies between components. This flexibility enables easier 
+  upgrades, replacements, and integrations without causing ripple effects.
+\end{itemize}
+
+\noindent Code Style Principles \cite{Mart22}:
+
+\begin{itemize}
+  \item Consistent code style promotes uniformity in formatting, naming conventions, and overall structure. 
+  This aids in enhancing code readability and collaboration among developers.
+
+  \item The DRY (Don't Repeat Yourself) principle advocates avoiding duplications in code.
+
+  \item Simplicity is key (KISS). Complex solutions are harder to understand and maintain. Embrace simplicity unless a 
+  more complex approach is justified.
+
+  \item SOLID Principles, as an acronym, representing a set of five design principles: Single Responsibility, 
+  Open-Closed, Liskov Substitution, Interface Segregation, and Dependency Inversion.
+\end{itemize}
+
+\noindent We'll not dive into details of architectural and code style principles (check references above), and even 
+won't discuss made changes \issue{159}{}, by reminding only the semaphore approach (\ref{ut-fail}) that declares 
+refactoring only after a significant code coverage. Refactoring as a process of rearchitecting \cite{Chec23} previously
+made decisions, to restate, revise and improve them by visualizing in a clean code. 
+
+In the context of extreme programming, the methodology includes a provision for pair programming \cite{Ligu19}. This 
+involves two programmers collaborating closely at a single workstation, communicating actively throughout the process 
+of writing each line of code. Delighting to restate and extremize that practice to the workflow: the first developer 
+composing the tests, followed by the second developer undertaking the implementation, and the third developer 
+performing an ultimate refactoring; and they're changing those "hats" continuously \cite{Bono17}.
