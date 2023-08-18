@@ -9,6 +9,8 @@ import '../pump_main.dart';
 import '_steps/file_runner.dart';
 
 void main() {
+  TestWidgetsFlutterBinding.ensureInitialized();
+
   Iterable<File> features = Directory('./test/e2e')
       .listSync(recursive: true)
       .where((entity) => entity is File && entity.path.endsWith('.feature'))

@@ -5,12 +5,15 @@ import 'package:flutter_test/flutter_test.dart';
 // ignore: depend_on_referenced_packages
 import 'package:gherkin/gherkin.dart';
 
+import '../../../pump_main.dart';
+
 class CanSeeDefinedComponent extends Then1WithWorld<String, World> {
   @override
   RegExp get pattern => RegExp(r"I can see {string} component");
 
   @override
   Future<void> executeStep(String name) async {
+    PumpMain.takeScreenshot(runtimeType.toString());
     final btn = find.text(name);
     expectSync(btn, findsWidgets);
   }

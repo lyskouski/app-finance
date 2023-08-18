@@ -7,6 +7,7 @@ import 'package:flutter_test/flutter_test.dart';
 // ignore: depend_on_referenced_packages
 import 'package:gherkin/gherkin.dart';
 
+import '../../../pump_main.dart';
 import '../file_runner.dart';
 
 class OnDefinedPage extends Given1<String> with SharedPreferencesMixin {
@@ -15,6 +16,7 @@ class OnDefinedPage extends Given1<String> with SharedPreferencesMixin {
 
   @override
   Future<void> executeStep(String route) async {
+    PumpMain.takeScreenshot(runtimeType.toString());
     final ScaffoldState scafState = FileRunner.tester.firstState(find.byType(Scaffold));
     scafState.openDrawer();
     await FileRunner.tester.pumpAndSettle();
@@ -22,5 +24,6 @@ class OnDefinedPage extends Given1<String> with SharedPreferencesMixin {
     expectSync(header, findsOneWidget);
     await FileRunner.tester.tap(header);
     await FileRunner.tester.pumpAndSettle();
+    PumpMain.takeScreenshot(runtimeType.toString());
   }
 }

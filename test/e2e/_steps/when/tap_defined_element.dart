@@ -5,6 +5,7 @@ import 'package:flutter_test/flutter_test.dart';
 // ignore: depend_on_referenced_packages
 import 'package:gherkin/gherkin.dart';
 
+import '../../../pump_main.dart';
 import '../file_runner.dart';
 
 class TapDefinedElement extends When1WithWorld<String, World> {
@@ -13,10 +14,12 @@ class TapDefinedElement extends When1WithWorld<String, World> {
 
   @override
   Future<void> executeStep(String name) async {
+    PumpMain.takeScreenshot(runtimeType.toString());
     final el = find.text(name);
     expectSync(el, findsOneWidget);
     await FileRunner.tester.ensureVisible(el);
     await FileRunner.tester.tap(el, warnIfMissed: false);
     await FileRunner.tester.pumpAndSettle(const Duration(milliseconds: 400));
+    PumpMain.takeScreenshot(runtimeType.toString());
   }
 }

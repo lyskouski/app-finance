@@ -29,8 +29,8 @@ class TransactionLog with SharedPreferencesMixin {
 
   static Future<File> _get(Directory path) async {
     File file = File('${path.absolute.path}/terCAD/app-finance.log');
-    if (!(await file.exists())) {
-      await file.create(recursive: true);
+    if (!file.existsSync()) {
+      file.createSync(recursive: true);
       file.writeAsString("\n", mode: FileMode.append);
     }
     return file;
