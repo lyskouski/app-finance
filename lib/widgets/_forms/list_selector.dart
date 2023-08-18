@@ -89,6 +89,7 @@ class ListSelector<K extends ListSelectorItem> extends AbstractInput {
           focusNode: focus,
           autofocus: isFocused,
           decoration: InputDecoration(
+            hintText: hintText,
             suffixIcon: IconButton(
               icon: const Icon(Icons.clear),
               onPressed: _textController.clear,
