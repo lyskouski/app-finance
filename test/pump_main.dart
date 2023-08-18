@@ -26,21 +26,40 @@ import 'pump_main.wrapper.dart';
 class PumpMain {
   static GlobalKey id = GlobalKey();
   static int step = 0;
+  static String imgLocation = '${Directory.current.absolute.path}/coverage';
+  static bool _saveScreen = false;
+
+  static void enableScreenCapture() {
+    _saveScreen = true;
+    PumpMain.dropImages();
+  }
 
   static Future<void> takeScreenshot(String name) async {
-    //return;
+    if (!_saveScreen) {
+      return;
+    }
     int currentStep = step++;
     // debugDumpApp();
     final boundary = id.currentContext!.findRenderObject() as RenderRepaintBoundary;
     ui.Image image = await boundary.toImage(pixelRatio: 3.0);
     ByteData? bytes = await image.toByteData(format: ui.ImageByteFormat.png);
     Uint8List imageData = bytes!.buffer.asUint8List();
-    File file = File('${Directory.current.absolute.path}/coverage/${currentStep.toString().padLeft(8, '0')}_$name.png');
-    if (file.existsSync()) {
-      file.deleteSync();
-    }
+    File file = File('$imgLocation/${currentStep.toString().padLeft(8, '0')}_$name.png');
     file.createSync(recursive: true, exclusive: false);
     file.writeAsBytesSync(imageData);
+  }
+
+  static Future<void> dropImages() async {
+    final dir = Directory(imgLocation);
+    if (!dir.existsSync()) {
+      return;
+    }
+    final scope = dir.listSync(recursive: true);
+    for (FileSystemEntity entity in scope) {
+      if (entity.uri.pathSegments.last.split('.').last == 'png') {
+        entity.deleteSync();
+      }
+    }
   }
 
   static init(WidgetTester tester, [bool isIntegration = false]) async {

@@ -17,6 +17,7 @@ void main() {
       .cast<File>();
 
   group('Behavioral Tests', () {
+    PumpMain.enableScreenCapture();
     for (var file in features) {
       testWidgets(file.path, (WidgetTester tester) async {
         await PumpMain.init(tester);
