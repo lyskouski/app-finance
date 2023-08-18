@@ -24,7 +24,7 @@ class EnterTextField extends When2WithWorld<String, String, World> {
     await FileRunner.tester.tap(field);
     await FileRunner.tester.pump();
     await FileRunner.tester.enterText(field, value);
-    await FileRunner.tester.pumpAndSettle();
+    await FileRunner.tester.pumpAndSettle(const Duration(seconds: 1));
     PumpMain.takeScreenshot(runtimeType.toString());
   }
 }
