@@ -16,7 +16,7 @@ class TapDefinedButton extends When1WithWorld<String, World> {
   Future<void> executeStep(String name) async {
     final btn = find.byTooltip(name);
     await FileRunner.tester.ensureVisible(btn);
-    expect(btn, findsOneWidget);
+    expectSync(btn, findsOneWidget);
     await FileRunner.tester.tap(btn);
     await FileRunner.tester.pumpAndSettle(const Duration(milliseconds: 400));
   }

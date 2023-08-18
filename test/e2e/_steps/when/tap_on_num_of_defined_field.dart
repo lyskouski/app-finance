@@ -34,9 +34,9 @@ class TapOnNuOfDefinedField extends When2WithWorld<int, String, World> {
       default:
         throw Exception('Not defined');
     }
-    expect(list, findsWidgets);
+    expectSync(list, findsWidgets);
     await FileRunner.tester.ensureVisible(list.at(order));
     await FileRunner.tester.tap(list.at(order), warnIfMissed: false);
-    await FileRunner.tester.pumpAndSettle();
+    await FileRunner.tester.pumpAndSettle(const Duration(milliseconds: 400));
   }
 }

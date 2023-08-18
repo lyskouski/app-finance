@@ -20,7 +20,7 @@ class OnDefinedPage extends Given1<String> with SharedPreferencesMixin {
     scafState.openDrawer();
     await FileRunner.tester.pumpAndSettle();
     final header = find.text(route);
-    expect(header, findsOneWidget);
+    expectSync(header, findsOneWidget);
     await FileRunner.tester.tap(header);
     await FileRunner.tester.pumpAndSettle();
   }

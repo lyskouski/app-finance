@@ -15,9 +15,9 @@ class TapDefinedElement extends When1WithWorld<String, World> {
   @override
   Future<void> executeStep(String name) async {
     final el = find.text(name);
-    expect(el, findsOneWidget);
+    expectSync(el, findsOneWidget);
     await FileRunner.tester.ensureVisible(el);
     await FileRunner.tester.tap(el, warnIfMissed: false);
-    await FileRunner.tester.pumpAndSettle();
+    await FileRunner.tester.pumpAndSettle(const Duration(milliseconds: 400));
   }
 }
