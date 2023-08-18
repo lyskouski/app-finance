@@ -742,3 +742,70 @@ Shell: Expected: at least one matching node in the widget tree
 Shell:   Actual: _TextFinder:<zero widgets with text "Create new Account (!no)" (ignoring offstage widgets)>
 Shell:    Which: means none were found but some were expected
 \end{lstlisting}
+
+
+\subsubsection{Recording Tests Flow}
+
+In widget tests, there might happen a situation when the cause of failure isn't immediately evident. While the failing 
+step and its assertion might be apparent, the lack of visual cues makes it challenging to pinpoint the issue with ease.
+\q{RepaintBoundary}-widget can mimic screen saver easily by wrapping the main widget for the test:
+
+\begin{lstlisting}
+// ./test/pump_main.dart
+class PumpMain {
+  // Will be used to take back the context of item
+  static GlobalKey id = GlobalKey();
+  // Increment for images
+  static int step = 0;
+
+  static Future<void> takeScreenshot(String name) async {
+    int currentStep = step++;
+    final boundary = id.currentContext!.findRenderObject() as RenderRepaintBoundary;
+    ui.Image image = await boundary.toImage(pixelRatio: 3.0);
+    // Convert image to bytes
+    ByteData? bytes = await image.toByteData(format: ui.ImageByteFormat.png);
+    Uint8List imageData = bytes!.buffer.asUint8List();
+    File file = File('${Directory.current.absolute.path}/coverage/${currentStep.toString().padLeft(8, '0')}_$name.png');
+    // Sync is needed to avoid an infinite freeze for the test execution
+    if (file.existsSync()) {
+      file.deleteSync();
+    }
+    file.createSync(recursive: true, exclusive: false);
+    file.writeAsBytesSync(imageData);
+  }
+
+  Future<void> initMain(WidgetTester tester, bool isIntegration) async {
+    await tester.pumpWidget(MultiProvider(
+      providers: [
+        ChangeNotifierProvider<AppData>(
+          create: (_) => getStore(isIntegration),
+        ),
+        ChangeNotifierProvider<AppTheme>(
+          create: (_) => AppTheme(ThemeMode.system),
+        ),
+        ChangeNotifierProvider<AppLocale>(
+          create: (_) => AppLocale(AppLocale.fromCode('en')),
+        ),
+      ],
+      // Wrapper for a screen capturing
+      child: RepaintBoundary(
+        key: id,
+        child: const MyApp(),
+      ),
+    ));
+  }
+}
+\end{lstlisting}
+
+\noindent Starting from that, we may do a screening simply by adding next command into the test (without \q{await}, 
+again, to avoid an infinite freeze for the test execution, \cref{img:bdd-visualization}):
+
+\begin{lstlisting}
+PumpMain.takeScreenshot(runtimeType.toString());
+\end{lstlisting}  
+
+\img{prototyping/bdd-visualization}{Usage of "takeScreenshot" to trace the problem}{img:bdd-visualization}
+
+Certainly, the appearance of our application in its original state isn't exactly replicated, as processed in a 
+simplified manner of rendering (like the Virtual DOM in React). However, the same method provides original screenshots 
+for integration tests (\cref{int-tests}).
