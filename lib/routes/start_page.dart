@@ -2,9 +2,9 @@
 // Use of this source code is governed by a CC BY-NC-ND 4.0 license that can be
 // found in the LICENSE file.
 
-import 'package:app_finance/_classes/app_data.dart';
-import 'package:app_finance/_classes/app_locale.dart';
-import 'package:app_finance/_classes/app_route.dart';
+import 'package:app_finance/_classes/storage/app_data.dart';
+import 'package:app_finance/_classes/herald/app_locale.dart';
+import 'package:app_finance/_classes/structure/navigation/app_route.dart';
 import 'package:app_finance/routes/abstract_page.dart';
 import 'package:app_finance/widgets/_wrappers/tab_widget.dart';
 import 'package:app_finance/widgets/start/account_tab.dart';

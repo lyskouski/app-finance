@@ -1,9 +1,9 @@
 // Copyright 2023 The terCAD team. All rights reserved.
 // Use of this source code is governed by a CC BY-NC-ND 4.0 license that can be found in the LICENSE file.
 
-import 'package:app_finance/_classes/app_data.dart';
-import 'package:app_finance/_classes/app_locale.dart';
-import 'package:app_finance/_classes/app_theme.dart';
+import 'package:app_finance/_classes/storage/app_data.dart';
+import 'package:app_finance/_classes/herald/app_locale.dart';
+import 'package:app_finance/_classes/herald/app_theme.dart';
 import 'package:app_finance/_classes/gen/generate_with_method_setters.dart';
 import 'package:app_finance/_mixins/shared_preferences_mixin.dart';
 import 'package:app_finance/main.dart';

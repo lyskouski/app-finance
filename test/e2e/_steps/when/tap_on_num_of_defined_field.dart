@@ -4,7 +4,7 @@
 import 'package:app_finance/widgets/_forms/list_account_selector.dart';
 import 'package:app_finance/widgets/_forms/list_budget_selector.dart';
 import 'package:app_finance/widgets/_forms/list_selector.dart';
-import 'package:app_finance/widgets/home/base_line_widget.dart';
+import 'package:app_finance/widgets/_generic/base_line_widget.dart';
 import 'package:flutter_test/flutter_test.dart';
 // ignore: depend_on_referenced_packages
 import 'package:gherkin/gherkin.dart';

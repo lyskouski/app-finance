@@ -2,10 +2,10 @@
 // Use of this source code is governed by a CC BY-NC-ND 4.0 license that can be
 // found in the LICENSE file.
 
-import 'package:app_finance/_classes/app_data.dart';
-import 'package:app_finance/_classes/currency/currency_provider.dart';
-import 'package:app_finance/_classes/currency/exchange.dart';
-import 'package:app_finance/_classes/data/currency_app_data.dart';
+import 'package:app_finance/_classes/storage/app_data.dart';
+import 'package:app_finance/_classes/structure/currency/currency_provider.dart';
+import 'package:app_finance/_classes/structure/currency/exchange.dart';
+import 'package:app_finance/_classes/structure/currency_app_data.dart';
 import 'package:app_finance/_mixins/shared_preferences_mixin.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/annotations.dart';

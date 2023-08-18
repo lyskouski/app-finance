@@ -3,15 +3,15 @@
 // found in the LICENSE file.
 
 import 'package:adaptive_breakpoints/adaptive_breakpoints.dart';
-import 'package:app_finance/_classes/app_locale.dart';
-import 'package:app_finance/_classes/data/account_app_data.dart';
-import 'package:app_finance/_classes/app_menu.dart';
-import 'package:app_finance/_classes/app_data.dart';
-import 'package:app_finance/helpers/theme_helper.dart';
-import 'package:app_finance/_classes/app_route.dart';
+import 'package:app_finance/_classes/herald/app_locale.dart';
+import 'package:app_finance/_classes/structure/account_app_data.dart';
+import 'package:app_finance/_classes/structure/navigation/app_menu.dart';
+import 'package:app_finance/_classes/storage/app_data.dart';
+import 'package:app_finance/_configs/theme_helper.dart';
+import 'package:app_finance/_classes/structure/navigation/app_route.dart';
 import 'package:app_finance/routes/abstract_page.dart';
-import 'package:app_finance/widgets/home/base_line_widget.dart';
-import 'package:app_finance/widgets/home/base_list_infinite_widget.dart';
+import 'package:app_finance/widgets/_generic/base_line_widget.dart';
+import 'package:app_finance/widgets/_generic/base_list_infinite_widget.dart';
 import 'package:flutter/material.dart';
 
 class AccountViewPage extends AbstractPage {

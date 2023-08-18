@@ -3,11 +3,11 @@
 
 import 'dart:collection';
 
-import 'package:app_finance/_classes/app_data.dart';
-import 'package:app_finance/_classes/currency/exchange.dart';
-import 'package:app_finance/_classes/data/goal_app_data.dart';
-import 'package:app_finance/_classes/data/summary_app_data.dart';
-import 'package:app_finance/_classes/data/total_recalculation.dart';
+import 'package:app_finance/_classes/storage/app_data.dart';
+import 'package:app_finance/_classes/structure/currency/exchange.dart';
+import 'package:app_finance/_classes/structure/goal_app_data.dart';
+import 'package:app_finance/_classes/structure/summary_app_data.dart';
+import 'package:app_finance/_classes/math/total_recalculation.dart';
 import 'package:app_finance/_classes/gen/generate_with_method_setters.dart';
 import 'package:currency_picker/currency_picker.dart';
 import 'package:flutter_test/flutter_test.dart';

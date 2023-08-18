@@ -2,8 +2,8 @@
 // Use of this source code is governed by a CC BY-NC-ND 4.0 license that can be
 // found in the LICENSE file.
 
-import 'package:app_finance/_classes/app_route.dart';
-import 'package:app_finance/widgets/home/base_widget.dart';
+import 'package:app_finance/_classes/structure/navigation/app_route.dart';
+import 'package:app_finance/widgets/_generic/base_widget.dart';
 import 'package:flutter/material.dart';
 
 class BillWidget extends BaseWidget {

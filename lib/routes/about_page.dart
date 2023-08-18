@@ -3,8 +3,8 @@
 // found in the LICENSE file.
 
 import 'package:adaptive_breakpoints/adaptive_breakpoints.dart';
-import 'package:app_finance/_classes/app_locale.dart';
-import 'package:app_finance/helpers/theme_helper.dart';
+import 'package:app_finance/_classes/herald/app_locale.dart';
+import 'package:app_finance/_configs/theme_helper.dart';
 import 'package:app_finance/routes/abstract_page.dart';
 import 'package:app_finance/widgets/_wrappers/row_widget.dart';
 import 'package:flutter/material.dart';

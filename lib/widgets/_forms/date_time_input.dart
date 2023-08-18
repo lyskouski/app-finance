@@ -3,8 +3,8 @@
 // found in the LICENSE file.
 
 import 'package:adaptive_breakpoints/adaptive_breakpoints.dart';
-import 'package:app_finance/_classes/focus_controller.dart';
-import 'package:app_finance/helpers/theme_helper.dart';
+import 'package:app_finance/_classes/controller/focus_controller.dart';
+import 'package:app_finance/_configs/theme_helper.dart';
 import 'package:app_finance/widgets/_forms/abstract_input.dart';
 import 'package:app_finance/widgets/_forms/date_input.dart';
 import 'package:app_finance/widgets/_wrappers/row_widget.dart';

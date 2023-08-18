@@ -3,16 +3,16 @@
 // found in the LICENSE file.
 
 import 'package:adaptive_breakpoints/adaptive_breakpoints.dart';
-import 'package:app_finance/_classes/app_locale.dart';
-import 'package:app_finance/_classes/app_theme.dart';
-import 'package:app_finance/_classes/currency/currency_provider.dart';
+import 'package:app_finance/_classes/herald/app_locale.dart';
+import 'package:app_finance/_classes/herald/app_theme.dart';
+import 'package:app_finance/_classes/structure/currency/currency_provider.dart';
 import 'package:app_finance/_mixins/shared_preferences_mixin.dart';
-import 'package:app_finance/custom_text_theme.dart';
-import 'package:app_finance/helpers/theme_helper.dart';
+import 'package:app_finance/_configs/custom_text_theme.dart';
+import 'package:app_finance/_configs/theme_helper.dart';
 import 'package:app_finance/widgets/_forms/currency_selector.dart';
 import 'package:app_finance/widgets/_forms/list_selector.dart';
 import 'package:app_finance/widgets/_wrappers/row_widget.dart';
-import 'package:app_finance/widgets/start/abstract_tab.dart';
+import 'package:app_finance/widgets/_generic/abstract_tab.dart';
 import 'package:currency_picker/currency_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';

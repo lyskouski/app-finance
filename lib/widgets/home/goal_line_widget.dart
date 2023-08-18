@@ -3,11 +3,11 @@
 // found in the LICENSE file.
 
 import 'package:adaptive_breakpoints/adaptive_breakpoints.dart';
-import 'package:app_finance/_classes/app_locale.dart';
-import 'package:app_finance/_classes/app_route.dart';
-import 'package:app_finance/_classes/data/goal_app_data.dart';
+import 'package:app_finance/_classes/herald/app_locale.dart';
+import 'package:app_finance/_classes/structure/navigation/app_route.dart';
+import 'package:app_finance/_classes/structure/goal_app_data.dart';
 import 'package:app_finance/widgets/_wrappers/tap_widget.dart';
-import 'package:app_finance/helpers/theme_helper.dart';
+import 'package:app_finance/_configs/theme_helper.dart';
 import 'package:flutter/material.dart';
 
 class GoalLineWidget extends StatelessWidget {

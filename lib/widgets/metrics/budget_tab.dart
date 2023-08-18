@@ -4,12 +4,12 @@
 
 import 'dart:collection';
 import 'package:adaptive_breakpoints/adaptive_breakpoints.dart';
-import 'package:app_finance/_classes/app_data.dart';
-import 'package:app_finance/_classes/app_locale.dart';
-import 'package:app_finance/_classes/data/bill_app_data.dart';
-import 'package:app_finance/_classes/data/budget_app_data.dart';
+import 'package:app_finance/_classes/storage/app_data.dart';
+import 'package:app_finance/_classes/herald/app_locale.dart';
+import 'package:app_finance/_classes/structure/bill_app_data.dart';
+import 'package:app_finance/_classes/structure/budget_app_data.dart';
 import 'package:app_finance/charts/forecast_chart.dart';
-import 'package:app_finance/helpers/theme_helper.dart';
+import 'package:app_finance/_configs/theme_helper.dart';
 import 'package:flutter/material.dart';
 
 class BudgetTab extends StatelessWidget {

@@ -3,7 +3,7 @@
 // found in the LICENSE file.
 
 import 'package:adaptive_breakpoints/adaptive_breakpoints.dart';
-import 'package:app_finance/helpers/theme_helper.dart';
+import 'package:app_finance/_configs/theme_helper.dart';
 import 'package:flutter/material.dart';
 
 typedef OnPressedFunction = Function();

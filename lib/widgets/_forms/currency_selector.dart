@@ -3,9 +3,9 @@
 // found in the LICENSE file.
 
 import 'package:adaptive_breakpoints/adaptive_breakpoints.dart';
-import 'package:app_finance/_classes/currency/currency_provider.dart';
-import 'package:app_finance/_classes/focus_controller.dart';
-import 'package:app_finance/helpers/theme_helper.dart';
+import 'package:app_finance/_classes/structure/currency/currency_provider.dart';
+import 'package:app_finance/_classes/controller/focus_controller.dart';
+import 'package:app_finance/_configs/theme_helper.dart';
 import 'package:app_finance/widgets/_forms/list_selector.dart';
 import 'package:currency_picker/currency_picker.dart';
 import 'package:flutter/material.dart';

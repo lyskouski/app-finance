@@ -2,12 +2,12 @@
 // Use of this source code is governed by a CC BY-NC-ND 4.0 license that can be
 // found in the LICENSE file.
 
-import 'package:app_finance/_classes/app_route.dart';
-import 'package:app_finance/_classes/currency/currency_provider.dart';
-import 'package:app_finance/_classes/data/budget_app_data.dart';
+import 'package:app_finance/_classes/structure/navigation/app_route.dart';
+import 'package:app_finance/_classes/structure/currency/currency_provider.dart';
+import 'package:app_finance/_classes/structure/budget_app_data.dart';
 import 'package:app_finance/widgets/home/account_widget.dart';
-import 'package:app_finance/widgets/home/base_group_widget.dart';
-import 'package:app_finance/widgets/home/base_line_widget.dart';
+import 'package:app_finance/widgets/_generic/base_group_widget.dart';
+import 'package:app_finance/widgets/_generic/base_line_widget.dart';
 import 'package:currency_picker/currency_picker.dart';
 import 'package:flutter/material.dart';
 

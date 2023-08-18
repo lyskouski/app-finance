@@ -3,15 +3,15 @@
 // found in the LICENSE file.
 
 import 'package:adaptive_breakpoints/adaptive_breakpoints.dart';
-import 'package:app_finance/_classes/app_locale.dart';
-import 'package:app_finance/_classes/app_route.dart';
-import 'package:app_finance/_classes/currency/currency_provider.dart';
-import 'package:app_finance/_classes/data/bill_app_data.dart';
-import 'package:app_finance/_classes/focus_controller.dart';
+import 'package:app_finance/_classes/herald/app_locale.dart';
+import 'package:app_finance/_classes/structure/navigation/app_route.dart';
+import 'package:app_finance/_classes/structure/currency/currency_provider.dart';
+import 'package:app_finance/_classes/structure/bill_app_data.dart';
+import 'package:app_finance/_classes/controller/focus_controller.dart';
 import 'package:app_finance/_mixins/shared_preferences_mixin.dart';
-import 'package:app_finance/custom_text_theme.dart';
-import 'package:app_finance/_classes/app_data.dart';
-import 'package:app_finance/helpers/theme_helper.dart';
+import 'package:app_finance/_configs/custom_text_theme.dart';
+import 'package:app_finance/_classes/storage/app_data.dart';
+import 'package:app_finance/_configs/theme_helper.dart';
 import 'package:app_finance/widgets/_forms/currency_exchange_input.dart';
 import 'package:app_finance/widgets/_forms/currency_selector.dart';
 import 'package:app_finance/widgets/_forms/date_time_input.dart';

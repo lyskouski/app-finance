@@ -3,12 +3,12 @@
 // found in the LICENSE file.
 
 import 'package:adaptive_breakpoints/adaptive_breakpoints.dart';
-import 'package:app_finance/_classes/app_locale.dart';
-import 'package:app_finance/_classes/data/currency_app_data.dart';
-import 'package:app_finance/_classes/app_data.dart';
-import 'package:app_finance/helpers/theme_helper.dart';
+import 'package:app_finance/_classes/herald/app_locale.dart';
+import 'package:app_finance/_classes/structure/currency_app_data.dart';
+import 'package:app_finance/_classes/storage/app_data.dart';
+import 'package:app_finance/_configs/theme_helper.dart';
 import 'package:app_finance/routes/abstract_page.dart';
-import 'package:app_finance/widgets/_forms/notification_bar.dart';
+import 'package:app_finance/widgets/_generic/notification_bar.dart';
 import 'package:app_finance/widgets/_forms/simple_input.dart';
 import 'package:app_finance/widgets/_wrappers/row_widget.dart';
 import 'package:flutter/material.dart';

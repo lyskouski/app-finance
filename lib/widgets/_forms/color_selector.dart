@@ -4,8 +4,8 @@
 
 import 'dart:math';
 
-import 'package:app_finance/_classes/app_locale.dart';
-import 'package:app_finance/_classes/focus_controller.dart';
+import 'package:app_finance/_classes/herald/app_locale.dart';
+import 'package:app_finance/_classes/controller/focus_controller.dart';
 import 'package:app_finance/widgets/_forms/abstract_input.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_colorpicker/flutter_colorpicker.dart';

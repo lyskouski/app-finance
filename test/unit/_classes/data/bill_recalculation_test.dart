@@ -2,13 +2,13 @@
 // Use of this source code is governed by a CC BY-NC-ND 4.0 license that can be
 // found in the LICENSE file.
 
-import 'package:app_finance/_classes/data/account_app_data.dart';
-import 'package:app_finance/_classes/data/bill_app_data.dart';
-import 'package:app_finance/_classes/data/bill_recalculation.dart';
-import 'package:app_finance/_classes/data/budget_app_data.dart';
-import 'package:app_finance/_classes/currency/exchange.dart';
+import 'package:app_finance/_classes/structure/account_app_data.dart';
+import 'package:app_finance/_classes/structure/bill_app_data.dart';
+import 'package:app_finance/_classes/math/bill_recalculation.dart';
+import 'package:app_finance/_classes/structure/budget_app_data.dart';
+import 'package:app_finance/_classes/structure/currency/exchange.dart';
 import 'package:app_finance/_classes/gen/generate_with_method_setters.dart';
-import 'package:app_finance/_classes/app_data.dart';
+import 'package:app_finance/_classes/storage/app_data.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/annotations.dart';
 
