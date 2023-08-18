@@ -14,15 +14,15 @@ but also entail a substantial effort and potential complications.
 Unit (\ref{ut-unit}) and widget (\ref{widget-tests}) tests serve as valuable tools for assessing isolated classes, 
 functions, or widgets. However, not all of the problems can be tackled by them. Integration tests are used to identify 
 systemic flaws (data corruption, concurrency problems, miscommunication between services, etc.) that might not be 
-evident in unit tests by verifying a synergy of individual assets, validating the application as a whole. 
-Integration tests are designed to reflect the real-time performance of an application on an actual device or platform. 
-In conclusion, they provide a vital link in the testing hierarchy by validating a collocation of various components 
-within an application. In such a way integration tests simulate end-to-end user workflows that we've implemented and 
-discussed earlier -- \ref{t-gherkin}.
+evident in unit tests by verifying a synergy of individual assets, while integration tests validate the application as 
+a whole. Integration tests are designed to reflect the real-time performance of an application on an actual device or 
+platform. In conclusion, they provide a vital link in the testing hierarchy by validating a collocation of various 
+components within an application. In such a way integration tests simulate end-to-end user workflows that we've 
+implemented and discussed earlier -- \ref{t-gherkin}.
 
-Integration tests in Flutter can be written by using \q{integration\_test}-package, \q{flutter\_driver}-package would 
-help us to evaluate our tests on real / virtual devices and environments and track the timeline of tests execution 
-(both packages are provided by the SDK):
+Integration tests in Flutter can be written by using \q{integration\_test}-package, in addition, 
+\q{flutter\_driver}-package would help us to evaluate tests on real or virtual devices, and environments to track 
+the timeline of tests execution (both packages are provided by the SDK):
 
 \begin{lstlisting}[language=yaml]
 ## ./pubspec.yaml
@@ -152,10 +152,10 @@ void main() {
 \img{features/perf-chrome-tracing}{Google Chrome -- performance trace}{img:perf-chrome-tracing}
 
 \noindent The \q{timeline.timeline\_summary.json}-file, by being a native \q{JSON}-file, can be opened in IDE for a 
-manual check, but it's mostly used in CI/CD to fail the build if any of defined parameter is out of the declared range. 
+manual check, but it's mostly used in CI/CD to fail the build if any of defined parameter is out of the boundaries. 
 
 By example, the value of \q{average\_frame\_build\_time\_millis}-parameter is recommended to be below 16 milliseconds to 
-ensure that the app runs at 60 frames per second without glitches. Other parameters are widely described on the page --
+ensure that the app runs at 60 frames per second without glitches. Other parameters are widely described on the page
 \href{https://api.flutter.dev/flutter/flutter\_driver/TimelineSummary/summaryJson.html}{https://api.flutter.dev/flutter/flutter\_driver/TimelineSummary}.
 
 
@@ -314,7 +314,7 @@ class FirstRun extends Given with SharedPreferencesMixin {
       (2048, 1169) (4096, 1358) (8192, 1664) (16384, 2221) (32768, 3351) (65536, 5515) (73659, 7064) (146444, 12687)
       (292888, 24353) (585776, 47693) (4686208, 351456)
     };
-    \legend{Loading Time}
+    \legend{Project Initialization}
   \end{axis}
 \end{tikzpicture}
 \caption{Stress Testing: Loading Time vs. Number of Items} \label{t-stress}
@@ -334,11 +334,11 @@ periods (15 minutes, an hour, 4 hours, 8 hours).
 
 In that test we would be interested in debugging memory issues via DevTools. DevTools is a suite of performance and 
 debugging tools for Dart and Flutter that can be started from IDE (with installed extensions from \ref{first-step}) 
-by pressing \q{[F1]} and typing \q{devtools} there.
+by pressing \key{F1} and typing \q{devtools} there.
 
-Detecting memory leaks involves analyzing the Heap Snapshot within the Memory View. These snapshots 
-(\cref{img:memory-snapshot}) provide a means to compare the heap's growth and identify objects that might exhibit an 
-unexpected increase in count. While it's true that images and media can contribute substantially to memory consumption, 
+Detecting memory leaks involves analyzing the Heap Snapshot from Memory View tab. These snapshots 
+(\cref{img:memory-snapshot}) provide a means of comparing heap growth and identifying objects that might increase in 
+number unexpectedly. While it's true that images and media can contribute substantially to memory consumption, 
 they often aren't the root cause of memory leaks. Instead, attention should be directed towards addressing a potential 
 incomplete rebound phenomenon (\cref{img:memory-leak}) for Resident Set Size (RSS, program's memory that is currently 
 loaded into RAM and is available for immediate use). A notable illustration of a sizeable, short-lived object that 
@@ -373,9 +373,8 @@ to the process by a provided URL from an integration tests' output:
 \begin{lstlisting}[language=bash]
 Building Windows application...           13.1s
 V  Built build\windows\runner\Debug\Fingrom.exe.
-VMServiceFlutterDriver: Connecting to Flutter application at http://127.0.0.1:52135/VDm4NX0QVr4=/
-VMServiceFlutterDriver: Isolate found with number: 3513574544292703
-VMServiceFlutterDriver: Isolate is paused at start.
+VMServiceFlutterDriver: Connecting to Flutter application at 
+    http://127.0.0.1:52135/VDm4NX0QVr4=/
 \end{lstlisting}
 
 \noindent The test itself will simulate a user behavior by randomly creating bills (90\%), budget categories (10\%),
@@ -388,13 +387,13 @@ testWidgets('Imitate User Activities', (WidgetTester tester) async {
   await firstRun(tester);
   Duration duration;
   int idx = 0;
-  final random = Random();
+  final r = Random();
   do {
-    if (random.nextDouble() <= 0.05) await createAccount(tester, idx);
+    if (r.nextDouble() <= 0.05) await createAccount(tester, idx);
     await FileRunner.tester.pumpAndSettle(const Duration(seconds: 5));
-    if (random.nextDouble() <= 0.10) await createBudget(tester, idx);
+    if (r.nextDouble() <= 0.10) await createBudget(tester, idx);
     await FileRunner.tester.pumpAndSettle(const Duration(seconds: 5));
-    if (random.nextDouble() <= 0.90) await createBill(tester, idx);
+    if (r.nextDouble() <= 0.90) await createBill(tester, idx);
     await FileRunner.tester.pumpAndSettle(const Duration(seconds: 5));
     final endTime = DateTime.now();
     duration = endTime.difference(startTime);
@@ -419,7 +418,7 @@ Exception: RangeError (index): Invalid value: Valid value range is empty: -1
 \end{lstlisting}
 
 \noindent The problem is linked to a guarded function conflict (first method had not yet finished executing at the time 
-that the second method was called) \q{tap}-action on buttons that leads to \q{Navigator.pop | push}-command 
+that the second one was called) \q{tap}-action on buttons that leads to \q{Navigator.pop | push}-command 
 execution, and it can be "easily" resolved by adding a duration freeze and making assertions synchronic (\q{expect} 
 changed to \q{expectSync}):
 
@@ -440,9 +439,8 @@ flutter: [FormatException: Invalid length, must be multiple of four (at characte
 \end{lstlisting}
 
 The problem here is that the \q{transaction log}-file was created with a BOM as a first symbol in a line, that's why 
-encryption is failing. Good catch! Let's add a new line at a moment of the file creation, and go further.
-
-\noindent Additionally raised a problem with \q{FloatingActionButton}-buttons:
+encryption is failing. Good catch! Let's add a new line at a moment of the file creation, and go further. Additionally,
+raised a problem with \q{FloatingActionButton}-buttons:
 
 \begin{lstlisting}[language=bash]
 flutter: The following assertion was thrown during a scheduler callback:
@@ -455,15 +453,15 @@ flutter: In this case, multiple heroes had the following tag: <default FloatingA
 The error indicates that we have multiple \q{Hero} widgets (\q{FloatingActionButton}-buttons in our case) with the 
 same tag within a subtree. Heroes in Flutter are used to create smooth animations when transitioning between screens or 
 widgets. Each Hero widget must have a unique non-null tag to properly manage the animation between the source 
-and destination widgets. So, we have to make them unique by adding \q{heroTag}-property per each.
+and destination widgets. So, we have to make them unique by adding \q{heroTag}-property per each \issue{130}{b4369fc}.
 
 Lastly, the outcomes gleaned from our exhaustive endurance testing have illuminated the presence of memory 
 leaks during the intensive application usage, as depicted in \cref{img:memory-profiler}. Simply saying, each 
 new interaction within the application has a discernible impact on its responsiveness, culminating in a noticeable 
-performance degradation after a couple minutes, as illustrated in \cref{gr:taken-cycle} "Initial State". That 
-fix has to go upfront of any other changes; ignoring to do so could result in a significant loss of users who will 
-get their first impression in a negative aspect. DevTools has given to us an exhaustive information about the source 
-of the problem, and just a couple of hours resulted in a gain of 1 ms at the start but without any significant forecast 
+performance degradation after a couple of minutes, as illustrated in \cref{gr:taken-cycle} "Initial State". That 
+fix has to go upfront of any other changes; since ignorance would definitely ended by a loss of users who will 
+get their first impression in a negative aspect. By analyzing traces from DevTools, it can be identified the source 
+of the problem, which fix is resulted in a gain of 1 ms at the start but without any significant forecast 
 degradation through the time (\cref{img:m-profiler-after}, \cref{gr:taken-cycle} "Adjusted").
 
 \img{features/memory-profiler}{Flutter DevTools: Memory Profiler Results}{img:memory-profiler}
@@ -502,5 +500,5 @@ degradation through the time (\cref{img:m-profiler-after}, \cref{gr:taken-cycle}
       \addlegendentry{Adjusted}
   \end{axis}
 \end{tikzpicture}
-\caption{Endurance Testing: Taken Cycles of Items Creation vs. Spent Time} \label{gr:taken-cycle}
+\caption{Taken Cycles of Items Creation vs. Spent Time} \label{gr:taken-cycle}
 \end{figure}
