@@ -101,7 +101,7 @@ class IncomeTabState extends State<IncomeTab> with SharedPreferencesMixin {
     // FocusController.dispose();
     final TextTheme textTheme = Theme.of(context).textTheme;
     double indent = ThemeHelper.getIndent(2);
-    double offset = ThemeHelper.getWidth(context, 6);
+    double width = ThemeHelper.getWidth(context, 6);
     FocusController.init();
 
     return LayoutBuilder(builder: (context, constraints) {
@@ -131,12 +131,12 @@ class IncomeTabState extends State<IncomeTab> with SharedPreferencesMixin {
                     }),
                     style: textTheme.numberMedium.copyWith(color: textTheme.headlineSmall?.color),
                     indent: indent,
-                    width: offset,
+                    width: width,
                   ),
                   SizedBox(height: indent),
                   RowWidget(
                     indent: indent,
-                    maxWidth: offset,
+                    maxWidth: width,
                     chunk: const [0.32, 0.68],
                     children: [
                       [
@@ -174,7 +174,7 @@ class IncomeTabState extends State<IncomeTab> with SharedPreferencesMixin {
                   ),
                   SizedBox(height: indent),
                   CurrencyExchangeInput(
-                    width: offset + indent,
+                    width: width + indent,
                     indent: indent,
                     target: currency,
                     state: state,

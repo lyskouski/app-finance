@@ -20,7 +20,7 @@ class AccountWidget extends BaseWidget with SharedPreferencesMixin {
     super.key,
     required super.title,
     required super.margin,
-    required super.offset,
+    required super.width,
     super.state,
     super.limit,
     super.tooltip,
@@ -68,10 +68,10 @@ class AccountWidget extends BaseWidget with SharedPreferencesMixin {
   }
 
   @override
-  Widget buildListWidget(item, BuildContext context, double offset) {
+  Widget buildListWidget(item, BuildContext context, double width) {
     return item.length == 1
-        ? buildSingleListWidget(item, context, offset)
-        : buildGroupedListWidget(item, context, offset);
+        ? buildSingleListWidget(item, context, width)
+        : buildGroupedListWidget(item, context, width);
   }
 
   List<dynamic> updateItems(items, summaryItem) {
@@ -83,7 +83,7 @@ class AccountWidget extends BaseWidget with SharedPreferencesMixin {
     }).toList();
   }
 
-  Widget buildGroupedListWidget(List<dynamic> items, BuildContext context, double offset) {
+  Widget buildGroupedListWidget(List<dynamic> items, BuildContext context, double width) {
     final item = wrapBySingleEntity(items);
     final scope = updateItems(items, item);
     return BaseGroupWidget(
@@ -92,13 +92,13 @@ class AccountWidget extends BaseWidget with SharedPreferencesMixin {
       description: item.detailsFormatted,
       progress: scope.map((e) => e.progress).cast<double>().toList(),
       color: scope.map((e) => e.color).cast<Color>().toList(),
-      offset: offset,
+      width: width,
       items: scope,
       route: routeList,
     );
   }
 
-  Widget buildSingleListWidget(item, BuildContext context, double offset) {
+  Widget buildSingleListWidget(item, BuildContext context, double width) {
     item = item.first;
     return BaseLineWidget(
       uuid: item.uuid,
@@ -108,7 +108,7 @@ class AccountWidget extends BaseWidget with SharedPreferencesMixin {
       progress: item.progress,
       color: item.color ?? Colors.transparent,
       hidden: item.hidden,
-      offset: offset,
+      width: width,
       route: routeList,
     );
   }

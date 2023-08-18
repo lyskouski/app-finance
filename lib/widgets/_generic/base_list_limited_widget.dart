@@ -12,7 +12,7 @@ class BaseListLimitedWidget extends StatelessWidget {
   final String routeList;
   final dynamic state;
   final int? limit;
-  final double offset;
+  final double width;
   final Function buildListWidget;
 
   const BaseListLimitedWidget({
@@ -21,7 +21,7 @@ class BaseListLimitedWidget extends StatelessWidget {
     required this.state,
     required this.limit,
     required this.routeList,
-    required this.offset,
+    required this.width,
     required this.buildListWidget,
   });
 
@@ -54,11 +54,11 @@ class BaseListLimitedWidget extends StatelessWidget {
             return SizedBox(height: indent);
           } else if (index <= itemCount - 2) {
             final item = state[index - 1];
-            return buildListWidget(item, context, offset - 40);
+            return buildListWidget(item, context, width - 40);
           } else if (hasMore) {
             return RowWidget(
               indent: indent,
-              maxWidth: offset,
+              maxWidth: width,
               chunk: const [0.5, 0.5],
               children: [
                 [buildButton(context, route ?? AppRoute.homeRoute, AppLocale.labels.btnMore)],

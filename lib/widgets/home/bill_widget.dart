@@ -9,7 +9,7 @@ class BillWidget extends BaseWidget {
   const BillWidget({
     super.key,
     required String title,
-    required double offset,
+    required double width,
     String? tooltip,
     required EdgeInsetsGeometry margin,
     required dynamic state,
@@ -21,7 +21,7 @@ class BillWidget extends BaseWidget {
     super.callback,
   }) : super(
           margin: margin,
-          offset: offset,
+          width: width,
           title: title,
           state: state,
           limit: limit,

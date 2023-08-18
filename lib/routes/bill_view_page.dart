@@ -63,7 +63,6 @@ class BillViewPageState extends AbstractPageState<BillViewPage> {
   @override
   Widget buildContent(BuildContext context, BoxConstraints constraints) {
     final item = super.state.getByUuid(widget.uuid) as BillAppData;
-    double offset = ThemeHelper.getWidth(context, 6);
     return Column(
       children: [
         BaseLineWidget(
@@ -73,7 +72,7 @@ class BillViewPageState extends AbstractPageState<BillViewPage> {
           details: item.detailsFormatted,
           progress: item.progress,
           color: item.color ?? Colors.transparent,
-          offset: offset,
+          width: ThemeHelper.getWidth(context, 6),
           route: AppRoute.billViewRoute,
         )
       ],

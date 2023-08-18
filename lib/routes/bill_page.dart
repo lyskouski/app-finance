@@ -41,7 +41,7 @@ class BillPageState extends AbstractPageState<BillPage> {
           margin: EdgeInsets.all(ThemeHelper.getIndent()),
           title: AppLocale.labels.billHeadline,
           state: super.state.get(AppDataType.bills),
-          offset: ThemeHelper.getWidth(context, 2),
+          width: ThemeHelper.getWidth(context, 2),
         )
       ],
     );

@@ -97,7 +97,7 @@ class TransferTabState extends State<TransferTab> {
     // FocusController.dispose();
     final TextTheme textTheme = Theme.of(context).textTheme;
     double indent = ThemeHelper.getIndent(2);
-    double offset = ThemeHelper.getWidth(context, 6);
+    double width = ThemeHelper.getWidth(context, 6);
     FocusController.init();
 
     return LayoutBuilder(builder: (context, constraints) {
@@ -121,7 +121,7 @@ class TransferTabState extends State<TransferTab> {
                     setState: (value) => setState(() => accountFrom = value),
                     style: textTheme.numberMedium.copyWith(color: textTheme.headlineSmall?.color),
                     indent: indent,
-                    width: offset,
+                    width: width,
                   ),
                   SizedBox(height: indent),
                   RequiredWidget(
@@ -137,12 +137,12 @@ class TransferTabState extends State<TransferTab> {
                     }),
                     style: textTheme.numberMedium.copyWith(color: textTheme.headlineSmall?.color),
                     indent: indent,
-                    width: offset,
+                    width: width,
                   ),
                   SizedBox(height: indent),
                   RowWidget(
                     indent: indent,
-                    maxWidth: offset,
+                    maxWidth: width,
                     chunk: const [0.32, 0.68],
                     children: [
                       [
@@ -180,7 +180,7 @@ class TransferTabState extends State<TransferTab> {
                   ),
                   SizedBox(height: indent),
                   CurrencyExchangeInput(
-                    width: offset + indent,
+                    width: width + indent,
                     indent: indent,
                     target: currency,
                     state: state,

@@ -36,7 +36,7 @@ class DateTimeInput extends AbstractInput {
   @override
   Widget build(BuildContext context) {
     double indent = ThemeHelper.getIndent(2);
-    double offset = width ?? ThemeHelper.getWidth(context, 4);
+    double width = this.width ?? ThemeHelper.getWidth(context, 4);
     final locale = Localizations.localeOf(context).toString();
     final DateFormat formatterTime = DateFormat.Hms(locale);
     bool isFocused = FocusController.isFocused(focusOrder, value);
@@ -51,7 +51,7 @@ class DateTimeInput extends AbstractInput {
 
     return RowWidget(
       indent: indent,
-      maxWidth: offset,
+      maxWidth: width,
       chunk: const [0.6, 0.4],
       children: [
         [

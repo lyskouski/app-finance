@@ -113,7 +113,7 @@ class BudgetAddPageState<T extends BudgetAddPage> extends AbstractPageState<Budg
   Widget buildContent(BuildContext context, BoxConstraints constraints) {
     final TextTheme textTheme = Theme.of(context).textTheme;
     double indent = ThemeHelper.getIndent(2);
-    double offset = ThemeHelper.getWidth(context, 6);
+    double width = ThemeHelper.getWidth(context, 6);
 
     return SingleChildScrollView(
       controller: FocusController.getController(runtimeType),
@@ -131,7 +131,7 @@ class BudgetAddPageState<T extends BudgetAddPage> extends AbstractPageState<Budg
             SizedBox(height: indent),
             RowWidget(
               indent: indent,
-              maxWidth: offset,
+              maxWidth: width,
               chunk: const [0.5, 0.5],
               children: [
                 [
@@ -177,7 +177,7 @@ class BudgetAddPageState<T extends BudgetAddPage> extends AbstractPageState<Budg
             ),
             Container(
               color: Theme.of(context).colorScheme.inversePrimary.withOpacity(0.3),
-              width: offset + indent,
+              width: width + indent,
               child: CurrencySelector(
                 value: currency?.code,
                 setState: (value) => setState(() => currency = value),

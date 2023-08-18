@@ -17,7 +17,7 @@ class BaseGroupWidget extends StatelessWidget {
   final List<dynamic> items;
   final List<double> progress;
   final List<Color> color;
-  final double offset;
+  final double width;
   final double total;
   final String route;
 
@@ -27,7 +27,7 @@ class BaseGroupWidget extends StatelessWidget {
     required this.title,
     required this.description,
     required this.color,
-    required this.offset,
+    required this.width,
     this.progress = const [],
     this.route = '',
     this.total = 0,
@@ -61,7 +61,7 @@ class BaseGroupWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     double indent = ThemeHelper.getIndent();
     final TextTheme textTheme = Theme.of(context).textTheme;
-    final toSwap = items.length * 36 + items.length * indent * 2 > offset * 0.5;
+    final toSwap = items.length * 36 + items.length * indent * 2 > width * 0.5;
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -71,7 +71,7 @@ class BaseGroupWidget extends StatelessWidget {
           tooltip: AppLocale.labels.search(title),
           child: RowWidget(
             indent: indent,
-            maxWidth: offset,
+            maxWidth: width,
             chunk: const [0.5, 0.5],
             children: [
               [
@@ -84,7 +84,7 @@ class BaseGroupWidget extends StatelessWidget {
                     ),
                     Container(
                       constraints: BoxConstraints(
-                        maxWidth: offset * 0.5,
+                        maxWidth: width * 0.5,
                       ),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,

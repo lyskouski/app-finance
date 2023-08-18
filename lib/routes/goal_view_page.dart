@@ -98,7 +98,7 @@ class GoalViewPageState extends AbstractPageState<GoalViewPage> with SharedPrefe
       children: [
         BaseLineWidget(
           title: item.title,
-          offset: ThemeHelper.getWidth(context, 6),
+          width: ThemeHelper.getWidth(context, 6),
           uuid: widget.uuid,
           details: item.getNumberFormatted(item.details),
           description: item.closedAtFormatted,

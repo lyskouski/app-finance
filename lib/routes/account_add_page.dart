@@ -134,7 +134,7 @@ class AccountAddPageState<T extends AccountAddPage> extends AbstractPageState<Ac
   Widget buildContent(BuildContext context, BoxConstraints constraints) {
     final TextTheme textTheme = Theme.of(context).textTheme;
     double indent = ThemeHelper.getIndent(2);
-    double offset = ThemeHelper.getWidth(context, 6);
+    double width = ThemeHelper.getWidth(context, 6);
     FocusController.init();
 
     return SingleChildScrollView(
@@ -168,7 +168,7 @@ class AccountAddPageState<T extends AccountAddPage> extends AbstractPageState<Ac
             SizedBox(height: indent),
             RowWidget(
               indent: indent,
-              maxWidth: offset,
+              maxWidth: width,
               chunk: const [0.2, 0.2, 0.6],
               children: [
                 [
@@ -213,7 +213,7 @@ class AccountAddPageState<T extends AccountAddPage> extends AbstractPageState<Ac
             ),
             Container(
               color: Theme.of(context).colorScheme.inversePrimary.withOpacity(0.3),
-              width: offset + indent,
+              width: width + indent,
               child: CurrencySelector(
                 value: currency?.code,
                 setState: (value) => setState(() => currency = value),
@@ -259,7 +259,7 @@ class AccountAddPageState<T extends AccountAddPage> extends AbstractPageState<Ac
             ),
             DateTimeInput(
               style: textTheme.numberMedium.copyWith(color: textTheme.headlineSmall?.color),
-              width: offset,
+              width: width,
               value: balanceUpdateDate,
               setState: (value) => setState(() => balanceUpdateDate = value),
             ),

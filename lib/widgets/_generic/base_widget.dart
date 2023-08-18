@@ -11,7 +11,7 @@ import 'package:flutter/material.dart';
 class BaseWidget extends StatefulWidget {
   final EdgeInsetsGeometry margin;
   final String title;
-  final double offset;
+  final double width;
   final int? limit;
   final dynamic state;
   final String? tooltip;
@@ -26,7 +26,7 @@ class BaseWidget extends StatefulWidget {
     required this.margin,
     required this.title,
     required this.state,
-    required this.offset,
+    required this.width,
     this.tooltip,
     this.limit,
     this.route,
@@ -36,7 +36,7 @@ class BaseWidget extends StatefulWidget {
     this.callback,
   }) : super(key: key);
 
-  Widget buildListWidget(item, BuildContext context, double offset) {
+  Widget buildListWidget(item, BuildContext context, double width) {
     return BaseLineWidget(
       uuid: item.uuid ?? '',
       title: item.title,
@@ -45,7 +45,7 @@ class BaseWidget extends StatefulWidget {
       progress: item.progress,
       color: item.color ?? Colors.transparent,
       hidden: item.hidden,
-      offset: offset,
+      width: width,
       route: routeList,
     );
   }
@@ -107,12 +107,12 @@ class BaseWidgetState extends State<BaseWidget> with SharedPreferencesMixin {
                       state: widget.state.list,
                       limit: widget.limit,
                       routeList: widget.routeList,
-                      offset: widget.offset,
+                      width: widget.width,
                       buildListWidget: widget.buildListWidget,
                     )
                   : BaseListInfiniteWidget(
                       state: widget.state.list,
-                      offset: widget.offset,
+                      width: widget.width,
                       buildListWidget: widget.buildListWidget,
                     ),
             ),

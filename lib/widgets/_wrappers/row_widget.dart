@@ -21,7 +21,7 @@ class RowWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    double offset = maxWidth - indent * (chunk.length - 2);
+    double width = maxWidth - indent * (chunk.length - 2);
 
     return Row(
       mainAxisAlignment: alignment,
@@ -32,7 +32,7 @@ class RowWidget extends StatelessWidget {
         } else {
           return Container(
             constraints: BoxConstraints(
-              maxWidth: offset * chunk[index ~/ 2],
+              maxWidth: width * chunk[index ~/ 2],
             ),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,

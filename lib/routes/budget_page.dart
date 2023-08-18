@@ -60,7 +60,7 @@ class BudgetPageState extends AbstractPageState<BudgetPage> {
           margin: EdgeInsets.all(ThemeHelper.getIndent()),
           title: AppLocale.labels.budgetHeadline,
           state: items,
-          offset: ThemeHelper.getWidth(context, 2),
+          width: ThemeHelper.getWidth(context, 2),
         )
       ],
     );

@@ -8,13 +8,13 @@ import 'package:flutter/material.dart';
 class BaseListInfiniteWidget extends StatefulWidget {
   final dynamic state;
   final int batch;
-  final double offset;
+  final double width;
   final Function buildListWidget;
 
   const BaseListInfiniteWidget({
     super.key,
     required this.state,
-    required this.offset,
+    required this.width,
     required this.buildListWidget,
     this.batch = 25,
   });
@@ -89,7 +89,7 @@ class BaseListInfiniteWidgetState extends State<BaseListInfiniteWidget> {
               child: widget.buildListWidget(
                 items[index - 1],
                 context,
-                widget.offset - 40,
+                widget.width - 40,
               ),
             );
           }

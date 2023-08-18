@@ -61,7 +61,7 @@ class BudgetViewPageState extends AbstractPageState<BudgetViewPage> {
     );
   }
 
-  Widget buildListWidget(item, BuildContext context, double offset) {
+  Widget buildListWidget(item, BuildContext context, double width) {
     return BaseLineWidget(
       uuid: '',
       title: '',
@@ -69,14 +69,14 @@ class BudgetViewPageState extends AbstractPageState<BudgetViewPage> {
       progress: 1.0,
       details: item.getNumberFormatted(item.changedTo - item.changedFrom),
       color: Colors.transparent,
-      offset: offset,
+      width: width,
     );
   }
 
   @override
   Widget buildContent(BuildContext context, BoxConstraints constraints) {
     final item = super.state.getByUuid(widget.uuid) as BudgetAppData;
-    double offset = ThemeHelper.getWidth(context, 6);
+    double width = ThemeHelper.getWidth(context, 6);
     return Column(
       children: [
         BaseLineWidget(
@@ -86,13 +86,13 @@ class BudgetViewPageState extends AbstractPageState<BudgetViewPage> {
           details: item.detailsFormatted,
           progress: item.progress,
           color: item.color ?? Colors.transparent,
-          offset: offset,
+          width: width,
           route: AppRoute.budgetViewRoute,
         ),
         Expanded(
           child: BaseListInfiniteWidget(
             state: super.state.getLog(widget.uuid),
-            offset: offset,
+            width: width,
             buildListWidget: buildListWidget,
           ),
         ),

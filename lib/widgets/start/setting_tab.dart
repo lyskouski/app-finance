@@ -76,7 +76,7 @@ class SettingTabState<T extends SettingTab> extends AbstractTabState<T> with Sha
     theme = Provider.of<AppTheme>(context, listen: false);
     final TextTheme textTheme = Theme.of(context).textTheme;
     double indent = ThemeHelper.getIndent(2);
-    double offset = ThemeHelper.getWidth(context, 4);
+    double width = ThemeHelper.getWidth(context, 4);
     if (currency == null) {
       WidgetsBinding.instance.addPostFrameCallback((_) => initCurrencyFromLocale(locale));
     }
@@ -101,7 +101,7 @@ class SettingTabState<T extends SettingTab> extends AbstractTabState<T> with Sha
           SizedBox(height: indent),
           RowWidget(
             indent: indent,
-            maxWidth: offset,
+            maxWidth: width,
             alignment: MainAxisAlignment.start,
             chunk: const [0.3, 0.1, 0.6],
             children: [

@@ -135,7 +135,7 @@ class ExpensesTabState<T extends ExpensesTab> extends State<T> with SharedPrefer
     // FocusController.dispose();
     final TextTheme textTheme = Theme.of(context).textTheme;
     double indent = ThemeHelper.getIndent(2);
-    double offset = ThemeHelper.getWidth(context, 6);
+    double width = ThemeHelper.getWidth(context, 6);
     FocusController.init();
 
     return LayoutBuilder(builder: (context, constraints) {
@@ -165,7 +165,7 @@ class ExpensesTabState<T extends ExpensesTab> extends State<T> with SharedPrefer
                     }),
                     style: textTheme.numberMedium.copyWith(color: textTheme.headlineSmall?.color),
                     indent: indent,
-                    width: offset,
+                    width: width,
                   ),
                   SizedBox(height: indent),
                   RequiredWidget(
@@ -182,12 +182,12 @@ class ExpensesTabState<T extends ExpensesTab> extends State<T> with SharedPrefer
                     }),
                     style: textTheme.numberMedium.copyWith(color: textTheme.headlineSmall?.color),
                     indent: indent,
-                    width: offset,
+                    width: width,
                   ),
                   SizedBox(height: indent),
                   RowWidget(
                     indent: indent,
-                    maxWidth: offset,
+                    maxWidth: width,
                     chunk: const [0.32, 0.68],
                     children: [
                       [
@@ -225,7 +225,7 @@ class ExpensesTabState<T extends ExpensesTab> extends State<T> with SharedPrefer
                   ),
                   SizedBox(height: indent),
                   CurrencyExchangeInput(
-                    width: offset + indent,
+                    width: width + indent,
                     indent: indent,
                     target: currency,
                     state: state,
@@ -251,7 +251,7 @@ class ExpensesTabState<T extends ExpensesTab> extends State<T> with SharedPrefer
                   ),
                   DateTimeInput(
                     style: textTheme.numberMedium.copyWith(color: textTheme.headlineSmall?.color),
-                    width: offset,
+                    width: width,
                     value: createdAt ?? DateTime.now(),
                     setState: (value) => setState(() => createdAt = value),
                   ),

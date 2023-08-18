@@ -35,12 +35,11 @@ class GoalPageState extends AbstractPageState<GoalPage> {
 
   @override
   Widget buildContent(BuildContext context, BoxConstraints constraints) {
-    final double offset = ThemeHelper.getWidth(context, 2);
     return Column(
         children: super.state.getList(AppDataType.goals).map((goal) {
       return BaseLineWidget(
         title: goal.title ?? '',
-        offset: offset,
+        width: ThemeHelper.getWidth(context, 2),
         uuid: goal.uuid,
         details: goal.getNumberFormatted(goal.details),
         description: goal.closedAtFormatted,

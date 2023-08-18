@@ -66,7 +66,7 @@ class ListAccountSelector<K extends ListAccountSelectorItem> extends ListSelecto
       progress: item.item?.progress ?? 0.0,
       color: item.item?.color ?? Colors.transparent,
       hidden: item.item?.hidden ?? false,
-      offset: width - indent * 3,
+      width: width - indent * 3,
       showDivider: showDivider,
     );
   }

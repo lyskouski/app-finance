@@ -115,7 +115,7 @@ class GoalAddPageState<T extends GoalAddPage> extends AbstractPageState<GoalAddP
   Widget buildContent(BuildContext context, BoxConstraints constraints) {
     final TextTheme textTheme = Theme.of(context).textTheme;
     double indent = ThemeHelper.getIndent(2);
-    double offset = ThemeHelper.getWidth(context, 6);
+    double width = ThemeHelper.getWidth(context, 6);
 
     return SingleChildScrollView(
       controller: FocusController.getController(runtimeType),
@@ -136,7 +136,7 @@ class GoalAddPageState<T extends GoalAddPage> extends AbstractPageState<GoalAddP
               children: [
                 Container(
                   constraints: BoxConstraints(
-                    maxWidth: offset * 0.5,
+                    maxWidth: width * 0.5,
                   ),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -155,7 +155,7 @@ class GoalAddPageState<T extends GoalAddPage> extends AbstractPageState<GoalAddP
                 SizedBox(width: indent),
                 Container(
                   constraints: BoxConstraints(
-                    maxWidth: offset * 0.5,
+                    maxWidth: width * 0.5,
                   ),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -179,7 +179,7 @@ class GoalAddPageState<T extends GoalAddPage> extends AbstractPageState<GoalAddP
               children: [
                 Container(
                   constraints: BoxConstraints(
-                    maxWidth: offset * 0.3,
+                    maxWidth: width * 0.3,
                   ),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -203,7 +203,7 @@ class GoalAddPageState<T extends GoalAddPage> extends AbstractPageState<GoalAddP
                 SizedBox(width: indent),
                 Container(
                   constraints: BoxConstraints(
-                    maxWidth: offset * 0.7,
+                    maxWidth: width * 0.7,
                   ),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,

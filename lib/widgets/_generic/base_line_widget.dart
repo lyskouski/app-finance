@@ -14,7 +14,7 @@ class BaseLineWidget extends StatelessWidget {
   final String description;
   final double progress;
   final Color color;
-  final double offset;
+  final double width;
   final String route;
   final bool hidden;
   final bool showDivider;
@@ -26,7 +26,7 @@ class BaseLineWidget extends StatelessWidget {
     required this.details,
     required this.description,
     required this.color,
-    required this.offset,
+    required this.width,
     this.hidden = false,
     this.progress = 1,
     this.route = '',
@@ -56,7 +56,7 @@ class BaseLineWidget extends StatelessWidget {
                     BarVerticalSingle(value: progress, height: 24, color: color),
                     Container(
                       constraints: BoxConstraints(
-                        maxWidth: offset * 0.6,
+                        maxWidth: width * 0.6,
                       ),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
@@ -81,7 +81,7 @@ class BaseLineWidget extends StatelessWidget {
                 padding: EdgeInsets.all(ThemeHelper.getIndent()),
                 child: Container(
                   constraints: BoxConstraints(
-                    maxWidth: offset * 0.4,
+                    maxWidth: width * 0.4,
                   ),
                   child: Text(
                     details,
