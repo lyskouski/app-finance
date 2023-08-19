@@ -46,7 +46,6 @@ class BudgetAddPageState<T extends BudgetAddPage> extends AbstractAddPageState<B
   IconData? icon;
   MaterialColor? color;
   Currency? currency;
-  bool hasError = false;
 
   @override
   void initState() {

@@ -73,8 +73,8 @@ class ColorSelector extends AbstractInput {
   }
 
   @override
-  Widget build(context) {
-    if (!focus.hasFocus && FocusController.isFocused(focusOrder, value)) {
+  Widget buildContent(context) {
+    if (!focus.hasFocus && isFocused) {
       Future.delayed(const Duration(milliseconds: 300), () {
         onTap(context);
       });

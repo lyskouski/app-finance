@@ -12,11 +12,13 @@ class FocusController {
   static int _idx = DEFAULT;
   static int focus = DEFAULT;
   static final Map<Type, ScrollController?> _controller = {};
+  static List<double> _shift = [];
   static Type? _activeClass;
   static final DelayedCall _delay = DelayedCall(600);
 
   static void init() {
     values = values.map((e) => null).cast<dynamic>().toList();
+    _shift = [];
     _idx = DEFAULT;
   }
 
@@ -29,6 +31,17 @@ class FocusController {
       nodes.add(FocusNode());
     }
     return nodes[_idx];
+  }
+
+  static bool _isControllerActive() {
+    return _controller[_activeClass]?.hasClients ?? false;
+  }
+
+  static void recordPosition(BuildContext context) {
+    RenderObject? firstNode = context.findRenderObject();
+    if (firstNode is RenderBox && _isControllerActive()) {
+      _shift.add(_controller[_activeClass]!.offset + firstNode.localToGlobal(Offset.zero).dy);
+    }
   }
 
   static ScrollController getController(Type name) {
@@ -47,38 +60,19 @@ class FocusController {
 
   static void requestFocus() {
     int idx = focus;
-    if (idx >= 0) {
+    if (idx >= 0 && idx < _shift.length - 1) {
       nodes[idx].requestFocus();
-      _delay.run(() => _scrollToFocusedElement(nodes[idx]));
+      _delay.run(() => _scrollToFocusedElement(idx));
     }
   }
 
-  static void _scrollToFocusedElement(FocusNode node) {
-    bool isAttached = _controller[_activeClass]?.hasClients ?? false;
-    RenderObject? firstNode;
-    // @todo: drop after changing 'package:dropdown_search'
-    /*
-    double shift = 0;
-    int idx = nodes.indexOf(node);
-    for (int i = 0; i <= idx; i++) {
-      BuildContext? context = nodes[i].context;
-      if (context != null && context.mounted) {
-        firstNode = context.findRenderObject();
-      }
-      if (firstNode is RenderBox) {
-        break;
-      }
-      shift += 67;
-    }*/
-    // end
-    RenderObject? focusedNode;
-    if (node.context != null && node.context!.mounted) {
-      focusedNode = node.context?.findRenderObject();
+  static void _scrollToFocusedElement(int idx) {
+    if (!_isControllerActive()) {
+      return;
     }
-    if (isAttached && focusedNode is RenderBox && firstNode is RenderBox) {
-      double delta = focusedNode.localToGlobal(Offset.zero).dy - firstNode.localToGlobal(Offset.zero).dy; // + shift;
+    if (_shift.isNotEmpty) {
       _controller[_activeClass]?.animateTo(
-        delta,
+        _shift[focus] - _shift.first,
         duration: const Duration(milliseconds: 300),
         curve: Curves.easeInOut,
       );

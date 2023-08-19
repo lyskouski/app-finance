@@ -2,6 +2,7 @@
 // Use of this source code is governed by a CC BY-NC-ND 4.0 license that can be found in the LICENSE file.
 
 import 'package:app_finance/_classes/controller/focus_controller.dart';
+import 'package:app_finance/_classes/herald/app_locale.dart';
 import 'package:app_finance/widgets/_forms/abstract_input.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
@@ -45,8 +46,7 @@ class DateInput extends AbstractInput {
   }
 
   @override
-  Widget build(BuildContext context) {
-    bool isFocused = FocusController.isFocused(focusOrder, value);
+  Widget buildContent(BuildContext context) {
     if (!focus.hasFocus && isFocused) {
       Future.delayed(const Duration(milliseconds: 300), () {
         if (!focus.hasFocus && value == null) {
@@ -54,8 +54,7 @@ class DateInput extends AbstractInput {
         }
       });
     }
-    final locale = Localizations.localeOf(context).toString();
-    final DateFormat formatterDate = DateFormat.yMd(locale);
+    final DateFormat formatterDate = DateFormat.yMd(AppLocale.code);
     return Container(
       color: Theme.of(context).colorScheme.inversePrimary.withOpacity(0.3),
       child: ListTile(

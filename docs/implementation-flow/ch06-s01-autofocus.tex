@@ -282,3 +282,6 @@ class ExpensesTabState extends State<ExpensesTab> {
 // ... other code
 }
 \end{lstlisting}
+
+And finally, let's refactor taken solution to make it reliable, by storing positions during components initialization
+and making a delta scroll by their deduction (positions of the current element and the first one) - \issue{164}{}.

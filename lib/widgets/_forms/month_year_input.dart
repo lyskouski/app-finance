@@ -2,6 +2,7 @@
 // Use of this source code is governed by a CC BY-NC-ND 4.0 license that can be found in the LICENSE file.
 
 import 'package:app_finance/_classes/controller/focus_controller.dart';
+import 'package:app_finance/_classes/herald/app_locale.dart';
 import 'package:app_finance/widgets/_forms/abstract_input.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
@@ -39,10 +40,9 @@ class MonthYearInput extends AbstractInput {
   }
 
   @override
-  Widget build(BuildContext context) {
-    final locale = Localizations.localeOf(context).toString();
-    final DateFormat formatterDate = DateFormat.yM(locale);
-    if (FocusController.isFocused(focusOrder, value)) {
+  Widget buildContent(BuildContext context) {
+    final DateFormat formatterDate = DateFormat.yM(AppLocale.code);
+    if (isFocused) {
       Future.delayed(const Duration(milliseconds: 300), () {
         if (value == null) {
           onTap(context);

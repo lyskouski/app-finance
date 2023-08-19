@@ -26,7 +26,7 @@ class FullSizedButton extends AbstractInput {
   }
 
   @override
-  Widget build(BuildContext context) {
+  Widget buildContent(BuildContext context) {
     return SizedBox(
       width: constraints.maxWidth - ThemeHelper.getIndent(4),
       child: FloatingActionButton(
