@@ -3,11 +3,11 @@
 
 import 'package:app_finance/_classes/controller/focus_controller.dart';
 import 'package:app_finance/_classes/herald/app_locale.dart';
-import 'package:app_finance/widgets/_forms/abstract_input.dart';
+import 'package:app_finance/widgets/_forms/abstract_selector.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
-class DateInput extends AbstractInput {
+class DateInput extends AbstractSelector {
   final Function setState;
   final TextStyle? style;
   @override
@@ -21,6 +21,7 @@ class DateInput extends AbstractInput {
     this.style,
   }) : super(value: value);
 
+  @override
   Future<void> onTap(BuildContext context) async {
     DateTime currentDate = DateTime.now();
     const Duration dateRange = Duration(days: 20 * 365);
@@ -47,19 +48,12 @@ class DateInput extends AbstractInput {
 
   @override
   Widget buildContent(BuildContext context) {
-    if (!focus.hasFocus && isFocused) {
-      Future.delayed(const Duration(milliseconds: 300), () {
-        if (!focus.hasFocus && value == null) {
-          onTap(context);
-        }
-      });
-    }
     final DateFormat formatterDate = DateFormat.yMd(AppLocale.code);
     return Container(
       color: Theme.of(context).colorScheme.inversePrimary.withOpacity(0.3),
       child: ListTile(
         title: Text(
-          value != null ? formatterDate.format(value!) : 'Select date',
+          value != null ? formatterDate.format(value!) : AppLocale.labels.dateTooltip,
           style: style,
         ),
         focusNode: focus,

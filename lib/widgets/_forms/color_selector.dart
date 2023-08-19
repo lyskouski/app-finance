@@ -5,11 +5,11 @@ import 'dart:math';
 
 import 'package:app_finance/_classes/herald/app_locale.dart';
 import 'package:app_finance/_classes/controller/focus_controller.dart';
-import 'package:app_finance/widgets/_forms/abstract_input.dart';
+import 'package:app_finance/widgets/_forms/abstract_selector.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_colorpicker/flutter_colorpicker.dart';
 
-class ColorSelector extends AbstractInput {
+class ColorSelector extends AbstractSelector {
   final Function setState;
   @override
   // ignore: overridden_fields
@@ -39,6 +39,7 @@ class ColorSelector extends AbstractInput {
     return convertToMaterialColor(randomColor);
   }
 
+  @override
   void onTap(context) {
     MaterialColor clr = value ?? getRandomMaterialColor();
     NavigatorState nav = Navigator.of(context);
@@ -74,11 +75,6 @@ class ColorSelector extends AbstractInput {
 
   @override
   Widget buildContent(context) {
-    if (!focus.hasFocus && isFocused) {
-      Future.delayed(const Duration(milliseconds: 300), () {
-        onTap(context);
-      });
-    }
     return TextFormField(
       readOnly: true,
       onTap: () => onTap(context),

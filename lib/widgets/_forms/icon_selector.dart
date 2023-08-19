@@ -2,11 +2,11 @@
 // Use of this source code is governed by a CC BY-NC-ND 4.0 license that can be found in the LICENSE file.
 
 import 'package:app_finance/_classes/controller/focus_controller.dart';
-import 'package:app_finance/widgets/_forms/abstract_input.dart';
+import 'package:app_finance/widgets/_forms/abstract_selector.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_iconpicker/flutter_iconpicker.dart';
 
-class IconSelector extends AbstractInput {
+class IconSelector extends AbstractSelector {
   final Function setState;
   @override
   // ignore: overridden_fields
@@ -18,6 +18,7 @@ class IconSelector extends AbstractInput {
     this.value,
   }) : super(value: value);
 
+  @override
   Future<void> onTap(context) async {
     IconData? icon = await FlutterIconPicker.showIconPicker(context, iconPackModes: [IconPack.material]);
     setState(icon);
@@ -26,11 +27,6 @@ class IconSelector extends AbstractInput {
 
   @override
   Widget buildContent(context) {
-    if (!focus.hasFocus && isFocused) {
-      Future.delayed(const Duration(milliseconds: 300), () {
-        onTap(context);
-      });
-    }
     return TextFormField(
       onTap: () => onTap(context),
       readOnly: true,

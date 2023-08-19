@@ -87,6 +87,7 @@
     "darkMode": "Dark",
     "dateFormat": "Date Format",
     "dateFormatPattern": "Pattern declaration: y [year], M [month], d [day], H [hours], m [minutes], s [seconds]",
+    "dateTooltip": "Select Date",
     "debitCard": "Debit Card",
     "deleteAccountTooltip": "Deactivate Account",
     "deleteBillTooltip": "Delete Bill",
