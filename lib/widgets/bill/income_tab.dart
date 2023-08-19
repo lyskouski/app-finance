@@ -75,7 +75,7 @@ class IncomeTabState extends State<IncomeTab> with SharedPreferencesMixin {
     setPreference(prefAccount, uuid);
     AccountAppData value = state.getByUuid(uuid);
     value.details += Exchange(store: state).reform(double.tryParse(amount.text), currency, value.currency);
-    state.update(AppDataType.accounts, uuid, value);
+    state.update(uuid, value);
   }
 
   Widget buildButton(BuildContext context, BoxConstraints constraints) {

@@ -3,7 +3,6 @@
 
 import 'package:app_finance/_classes/herald/app_locale.dart';
 import 'package:app_finance/_classes/structure/budget_app_data.dart';
-import 'package:app_finance/_classes/storage/app_data.dart';
 import 'package:app_finance/routes/budget_add_page.dart';
 import 'package:flutter/material.dart';
 
@@ -56,7 +55,7 @@ class BudgetEditPageState extends BudgetAddPageState<BudgetEditPage> {
     data.icon = icon;
     data.amountLimit = double.tryParse(budgetLimit.text) ?? 0.0;
     data.currency = currency;
-    state.update(AppDataType.budgets, uuid, data);
+    state.update(uuid, data);
   }
 
   @override

@@ -67,11 +67,11 @@ class TransferTabState extends State<TransferTab> {
     final course = Exchange(store: state);
     AccountAppData from = state.getByUuid(uuidFrom);
     from.details -= course.reform(double.tryParse(amount.text), from.currency, currency);
-    state.update(AppDataType.accounts, uuidFrom, from);
+    state.update(uuidFrom, from);
     String uuidTo = accountTo ?? '';
     AccountAppData to = state.getByUuid(uuidTo);
     to.details += course.reform(double.tryParse(amount.text), currency, to.currency);
-    state.update(AppDataType.accounts, uuidTo, to);
+    state.update(uuidTo, to);
   }
 
   Widget buildButton(BuildContext context, BoxConstraints constraints) {

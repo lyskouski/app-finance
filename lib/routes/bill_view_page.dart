@@ -2,9 +2,9 @@
 // Use of this source code is governed by a CC BY-NC-ND 4.0 license that can be found in the LICENSE file.
 
 import 'package:app_finance/_classes/herald/app_locale.dart';
+import 'package:app_finance/_classes/storage/data_handler.dart';
 import 'package:app_finance/_classes/structure/navigation/app_menu.dart';
 import 'package:app_finance/_classes/structure/bill_app_data.dart';
-import 'package:app_finance/_classes/storage/app_data.dart';
 import 'package:app_finance/_configs/theme_helper.dart';
 import 'package:app_finance/_classes/structure/navigation/app_route.dart';
 import 'package:app_finance/routes/abstract_page.dart';
@@ -29,13 +29,6 @@ class BillViewPageState extends AbstractPageState<BillViewPage> {
     return item.title;
   }
 
-  void deactivateAccount(NavigatorState nav) {
-    var data = super.state.getByUuid(widget.uuid) as BillAppData;
-    data.hidden = true;
-    super.state.update(AppDataType.bills, widget.uuid, data);
-    nav.pop();
-  }
-
   @override
   Widget buildButton(BuildContext context, BoxConstraints constraints) {
     String route = AppMenu.uuid(AppRoute.billEditRoute, widget.uuid);
@@ -46,7 +39,7 @@ class BillViewPageState extends AbstractPageState<BillViewPage> {
       child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
         FloatingActionButton(
           heroTag: 'bill_view_page_deactivate',
-          onPressed: () => deactivateAccount(nav),
+          onPressed: () => DataHandler.deactivate(nav, store: super.state, uuid: widget.uuid),
           tooltip: AppLocale.labels.deleteBillTooltip,
           child: const Icon(Icons.delete),
         ),

@@ -3,7 +3,6 @@
 
 import 'package:app_finance/_classes/herald/app_locale.dart';
 import 'package:app_finance/_classes/structure/account_app_data.dart';
-import 'package:app_finance/_classes/storage/app_data.dart';
 import 'package:app_finance/_configs/account_type.dart';
 import 'package:app_finance/routes/account_add_page.dart';
 import 'package:flutter/material.dart';
@@ -56,7 +55,6 @@ class AccountEditPageState extends AccountAddPageState<AccountEditPage> {
   @override
   void updateStorage() {
     super.state.update(
-        AppDataType.accounts,
         uuid,
         AccountAppData(
           uuid: uuid,

@@ -4,12 +4,12 @@
 
 import 'dart:convert';
 import 'package:app_finance/_classes/storage/transaction_log.dart';
-import 'package:app_finance/_classes/storage/app_data.dart';
+import 'package:app_finance/_classes/structure/interface_app_data.dart';
 import 'package:app_finance/_mixins/formatter_mixin.dart';
 import 'package:currency_picker/currency_picker.dart';
 import 'package:flutter/material.dart';
 
-abstract class AbstractAppData with FormatterMixin {
+abstract class AbstractAppData with FormatterMixin implements InterfaceAppData {
   double _amount = 0.0;
   DateTime _createdAt;
   DateTime _updatedAt;
@@ -43,9 +43,8 @@ abstract class AbstractAppData with FormatterMixin {
 
   AbstractAppData clone();
 
-  AppDataType getType();
-
-  String getClassName();
+  @override
+  void deactivate() => hidden = true;
 
   factory AbstractAppData.fromJson(Map<String, dynamic> json) {
     throw Exception('Implement by extending');

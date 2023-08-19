@@ -1,6 +1,5 @@
 // Copyright 2023 The terCAD team. All rights reserved.
-// Use of this source code is governed by a CC BY-NC-ND 4.0 license that can be
-// found in the LICENSE file.
+// Use of this source code is governed by a CC BY-NC-ND 4.0 license that can be found in the LICENSE file.
 
 import 'dart:collection';
 import 'package:app_finance/_classes/structure/account_app_data.dart';
@@ -12,6 +11,7 @@ import 'package:app_finance/_classes/structure/currency_app_data.dart';
 import 'package:app_finance/_classes/structure/currency/exchange.dart';
 import 'package:app_finance/_classes/structure/goal_app_data.dart';
 import 'package:app_finance/_classes/math/goal_recalculation.dart';
+import 'package:app_finance/_classes/structure/interface_app_data.dart';
 import 'package:app_finance/_classes/structure/summary_app_data.dart';
 import 'package:app_finance/_classes/math/total_recalculation.dart';
 import 'package:app_finance/_classes/storage/transaction_log.dart';
@@ -71,7 +71,7 @@ class AppData extends ChangeNotifier {
 
   dynamic add(AppDataType property, dynamic value) {
     value.uuid = const Uuid().v4();
-    _update(property, null, value);
+    _update(null, value);
     return getByUuid(value.uuid);
   }
 
@@ -91,13 +91,13 @@ class AppData extends ChangeNotifier {
     }
   }
 
-  void update(AppDataType property, String uuid, dynamic value, [bool createIfMissing = false]) {
+  void update(String uuid, dynamic value, [bool createIfMissing = false]) {
     var initial = getByUuid(uuid, false);
     if (initial != null) {
       addLog(uuid, value, initial.details, value.details);
     }
     if (initial != null || createIfMissing) {
-      _update(property, initial, value);
+      _update(initial, value);
     }
   }
 
@@ -113,22 +113,22 @@ class AppData extends ChangeNotifier {
     }
   }
 
-  void _update(AppDataType property, dynamic initial, dynamic change) {
-    switch (property) {
+  void _update(InterfaceAppData? initial, InterfaceAppData change) {
+    switch (change.getType()) {
       case AppDataType.accounts:
-        _updateAccount(initial, change);
+        _updateAccount(initial as AccountAppData?, change as AccountAppData);
         break;
       case AppDataType.bills:
-        _updateBill(initial, change);
+        _updateBill(initial as BillAppData?, change as BillAppData);
         break;
       case AppDataType.budgets:
-        _updateBudget(initial, change);
+        _updateBudget(initial as BudgetAppData?, change as BudgetAppData);
         break;
       case AppDataType.goals:
-        _updateGoal(initial, change);
+        _updateGoal(initial as GoalAppData?, change as GoalAppData);
         break;
       case AppDataType.currencies:
-        _updateCurrency(initial, change);
+        _updateCurrency(initial as CurrencyAppData?, change as CurrencyAppData);
         break;
     }
   }

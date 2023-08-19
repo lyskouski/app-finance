@@ -3,7 +3,6 @@
 
 import 'package:app_finance/_classes/herald/app_locale.dart';
 import 'package:app_finance/_classes/structure/bill_app_data.dart';
-import 'package:app_finance/_classes/storage/app_data.dart';
 import 'package:app_finance/widgets/bill/expenses_tab.dart';
 import 'package:currency_picker/currency_picker.dart';
 
@@ -36,7 +35,6 @@ class ExpensesEditTabState extends ExpensesTabState<ExpensesEditTab> {
   @override
   void updateStorage() {
     state.update(
-        AppDataType.bills,
         widget.uuid,
         BillAppData(
           uuid: widget.uuid,

@@ -105,7 +105,7 @@ class TransactionLog with SharedPreferencesMixin {
     final obj = typeToClass[type];
     if (obj != null) {
       final el = obj(data);
-      store.update(el.getType(), el.uuid ?? '', el, true);
+      store.update(el.uuid ?? '', el, true);
     }
   }
 

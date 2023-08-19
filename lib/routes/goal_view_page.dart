@@ -2,6 +2,7 @@
 // Use of this source code is governed by a CC BY-NC-ND 4.0 license that can be found in the LICENSE file.
 
 import 'package:app_finance/_classes/herald/app_locale.dart';
+import 'package:app_finance/_classes/storage/data_handler.dart';
 import 'package:app_finance/_classes/structure/navigation/app_menu.dart';
 import 'package:app_finance/_classes/structure/bill_app_data.dart';
 import 'package:app_finance/_classes/structure/goal_app_data.dart';
@@ -39,12 +40,6 @@ class GoalViewPageState extends AbstractPageState<GoalViewPage> with SharedPrefe
     return data.title;
   }
 
-  void deactivateGoal(GoalAppData data, NavigatorState nav) {
-    data.hidden = true;
-    super.state.update(AppDataType.goals, widget.uuid, data);
-    nav.pop();
-  }
-
   void completeGoal(GoalAppData data, NavigatorState nav) {
     var newBill = BillAppData(
       account: defaultAccount,
@@ -54,7 +49,7 @@ class GoalViewPageState extends AbstractPageState<GoalViewPage> with SharedPrefe
       currency: data.currency,
     );
     newBill = super.state.add(AppDataType.bills, newBill);
-    deactivateGoal(data, nav);
+    DataHandler.deactivate(nav, store: super.state, data: data);
     String route = AppMenu.uuid(AppRoute.billEditRoute, newBill.uuid ?? '');
     nav.popAndPushNamed(route);
   }
@@ -77,7 +72,7 @@ class GoalViewPageState extends AbstractPageState<GoalViewPage> with SharedPrefe
               )
             : FloatingActionButton(
                 heroTag: 'goal_view_page_deactivate',
-                onPressed: () => deactivateGoal(data, nav),
+                onPressed: () => DataHandler.deactivate(nav, store: super.state, data: data),
                 tooltip: AppLocale.labels.deleteGoalTooltip,
                 child: const Icon(Icons.delete),
               ),
