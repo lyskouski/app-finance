@@ -8,7 +8,7 @@ import 'package:app_finance/_classes/controller/focus_controller.dart';
 import 'package:app_finance/_mixins/shared_preferences_mixin.dart';
 import 'package:app_finance/_configs/custom_text_theme.dart';
 import 'package:app_finance/_configs/theme_helper.dart';
-import 'package:app_finance/routes/abstract_page.dart';
+import 'package:app_finance/routes/abstract_add_page.dart';
 import 'package:app_finance/widgets/_forms/color_selector.dart';
 import 'package:app_finance/widgets/_forms/currency_selector.dart';
 import 'package:app_finance/widgets/_forms/full_sized_button.dart';
@@ -20,7 +20,7 @@ import 'package:currency_picker/currency_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
-class BudgetAddPage extends AbstractPage {
+class BudgetAddPage extends AbstractAddPage {
   final String? title;
   final double? budgetLimit;
   final IconData? icon;
@@ -39,7 +39,8 @@ class BudgetAddPage extends AbstractPage {
   BudgetAddPageState createState() => BudgetAddPageState();
 }
 
-class BudgetAddPageState<T extends BudgetAddPage> extends AbstractPageState<BudgetAddPage> with SharedPreferencesMixin {
+class BudgetAddPageState<T extends BudgetAddPage> extends AbstractAddPageState<BudgetAddPage>
+    with SharedPreferencesMixin {
   late TextEditingController title;
   late TextEditingController budgetLimit;
   IconData? icon;
@@ -63,11 +64,13 @@ class BudgetAddPageState<T extends BudgetAddPage> extends AbstractPageState<Budg
     return AppLocale.labels.createBudgetHeader;
   }
 
+  @override
   bool hasFormErrors() {
     setState(() => hasError = title.text.isEmpty);
     return hasError;
   }
 
+  @override
   void updateStorage() {
     super.state.add(BudgetAppData(
           title: title.text,
@@ -82,17 +85,6 @@ class BudgetAddPageState<T extends BudgetAddPage> extends AbstractPageState<Budg
 
   String getButtonName() {
     return AppLocale.labels.createBudgetTooltip;
-  }
-
-  void triggerActionButton(NavigatorState nav) {
-    setState(() {
-      if (hasFormErrors()) {
-        return;
-      }
-      updateStorage();
-      nav.pop();
-      nav.pop();
-    });
   }
 
   @override
