@@ -7,9 +7,11 @@ import 'package:flutter_test/flutter_test.dart';
 
 import '../pump_main.dart';
 import '_steps/file_runner.dart';
+import '_steps/screen_capture.dart';
 
 void main() {
   TestWidgetsFlutterBinding.ensureInitialized();
+  ScreenCapture.enableScreenCapture();
 
   Iterable<File> features = Directory('./test/e2e')
       .listSync(recursive: true)
@@ -17,7 +19,6 @@ void main() {
       .cast<File>();
 
   group('Behavioral Tests', () {
-    PumpMain.enableScreenCapture();
     for (var file in features) {
       testWidgets(file.path, (WidgetTester tester) async {
         await PumpMain.init(tester);

@@ -5,8 +5,8 @@ import 'package:flutter_test/flutter_test.dart';
 // ignore: depend_on_referenced_packages
 import 'package:gherkin/gherkin.dart';
 
-import '../../../pump_main.dart';
 import '../file_runner.dart';
+import '../screen_capture.dart';
 
 class TapOnNumOfDefinedElement extends When2WithWorld<int, String, World> {
   @override
@@ -14,12 +14,12 @@ class TapOnNumOfDefinedElement extends When2WithWorld<int, String, World> {
 
   @override
   Future<void> executeStep(int index, String name) async {
-    PumpMain.takeScreenshot(runtimeType.toString());
+    ScreenCapture.seize(runtimeType.toString());
     final el = find.text(name).at(index);
     expectSync(el, findsOneWidget);
     await FileRunner.tester.ensureVisible(el);
     await FileRunner.tester.tap(el, warnIfMissed: false);
     await FileRunner.tester.pumpAndSettle(const Duration(milliseconds: 400));
-    PumpMain.takeScreenshot(runtimeType.toString());
+    ScreenCapture.seize(runtimeType.toString());
   }
 }

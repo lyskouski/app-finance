@@ -6,8 +6,8 @@ import 'package:flutter_test/flutter_test.dart';
 // ignore: depend_on_referenced_packages
 import 'package:gherkin/gherkin.dart';
 
-import '../../../pump_main.dart';
 import '../file_runner.dart';
+import '../screen_capture.dart';
 
 class EnterTextField extends When2WithWorld<String, String, World> {
   @override
@@ -15,7 +15,7 @@ class EnterTextField extends When2WithWorld<String, String, World> {
 
   @override
   Future<void> executeStep(String value, String tooltip) async {
-    PumpMain.takeScreenshot(runtimeType.toString());
+    ScreenCapture.seize(runtimeType.toString());
     final field = find.byWidgetPredicate((widget) {
       return widget is TextField && widget.decoration?.hintText == tooltip;
     });
@@ -25,6 +25,6 @@ class EnterTextField extends When2WithWorld<String, String, World> {
     await FileRunner.tester.pump();
     await FileRunner.tester.enterText(field, value);
     await FileRunner.tester.pumpAndSettle(const Duration(seconds: 1));
-    PumpMain.takeScreenshot(runtimeType.toString());
+    ScreenCapture.seize(runtimeType.toString());
   }
 }

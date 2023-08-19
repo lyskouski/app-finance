@@ -5,8 +5,8 @@ import 'package:flutter_test/flutter_test.dart';
 // ignore: depend_on_referenced_packages
 import 'package:gherkin/gherkin.dart';
 
-import '../../../pump_main.dart';
 import '../file_runner.dart';
+import '../screen_capture.dart';
 
 class TapDefinedHeader extends When1WithWorld<String, World> {
   @override
@@ -14,12 +14,12 @@ class TapDefinedHeader extends When1WithWorld<String, World> {
 
   @override
   Future<void> executeStep(String name) async {
-    PumpMain.takeScreenshot(runtimeType.toString());
+    ScreenCapture.seize(runtimeType.toString());
     final header = find.text(name);
     expectSync(header, findsOneWidget);
     await FileRunner.tester.ensureVisible(header);
     await FileRunner.tester.tap(header);
     await FileRunner.tester.pumpAndSettle(const Duration(milliseconds: 400));
-    PumpMain.takeScreenshot(runtimeType.toString());
+    ScreenCapture.seize(runtimeType.toString());
   }
 }

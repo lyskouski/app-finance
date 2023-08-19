@@ -10,8 +10,8 @@ import 'package:flutter_test/flutter_test.dart';
 // ignore: depend_on_referenced_packages
 import 'package:gherkin/gherkin.dart';
 
-import '../../../pump_main.dart';
 import '../file_runner.dart';
+import '../screen_capture.dart';
 
 class TapOnNuOfDefinedField extends When2WithWorld<int, String, World> {
   @override
@@ -19,7 +19,7 @@ class TapOnNuOfDefinedField extends When2WithWorld<int, String, World> {
 
   @override
   Future<void> executeStep(int order, String type) async {
-    PumpMain.takeScreenshot(runtimeType.toString());
+    ScreenCapture.seize(runtimeType.toString());
     Finder? list;
     switch (type) {
       case 'ListSelector':
@@ -44,6 +44,6 @@ class TapOnNuOfDefinedField extends When2WithWorld<int, String, World> {
     await FileRunner.tester.ensureVisible(list.at(order));
     await FileRunner.tester.tap(list.at(order), warnIfMissed: false);
     await FileRunner.tester.pumpAndSettle(const Duration(milliseconds: 400));
-    PumpMain.takeScreenshot(runtimeType.toString());
+    ScreenCapture.seize(runtimeType.toString());
   }
 }
