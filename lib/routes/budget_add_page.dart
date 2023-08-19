@@ -7,7 +7,6 @@ import 'package:app_finance/_classes/structure/budget_app_data.dart';
 import 'package:app_finance/_classes/controller/focus_controller.dart';
 import 'package:app_finance/_mixins/shared_preferences_mixin.dart';
 import 'package:app_finance/_configs/custom_text_theme.dart';
-import 'package:app_finance/_classes/storage/app_data.dart';
 import 'package:app_finance/_configs/theme_helper.dart';
 import 'package:app_finance/routes/abstract_page.dart';
 import 'package:app_finance/widgets/_forms/color_selector.dart';
@@ -70,9 +69,7 @@ class BudgetAddPageState<T extends BudgetAddPage> extends AbstractPageState<Budg
   }
 
   void updateStorage() {
-    super.state.add(
-        AppDataType.budgets,
-        BudgetAppData(
+    super.state.add(BudgetAppData(
           title: title.text,
           amountLimit: double.tryParse(budgetLimit.text) ?? 0.0,
           progress: 0.0,

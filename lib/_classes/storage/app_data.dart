@@ -69,10 +69,10 @@ class AppData extends ChangeNotifier {
     }
   }
 
-  dynamic add(AppDataType property, dynamic value) {
+  dynamic add(InterfaceAppData value) {
     value.uuid = const Uuid().v4();
     _update(null, value);
-    return getByUuid(value.uuid);
+    return getByUuid(value.uuid!);
   }
 
   void addLog(uuid, dynamic initial, dynamic initialValue, dynamic value, [String? ref]) {

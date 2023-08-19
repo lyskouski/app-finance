@@ -106,18 +106,16 @@ class ImportTabState extends State<ImportTab> with SharedPreferencesMixin {
         amount = double.tryParse(amount);
       }
       try {
-        final newItem = state.add(
-            AppDataType.bills,
-            BillAppData(
-              account: await _find(AppDataType.accounts, line, accountIdx, defaultAccount),
-              category: await _find(AppDataType.budgets, line, budgetIdx, defaultBudget),
-              title: _get(line, attrBillComment).toString(),
-              details: 0.0 + amount,
-              createdAt: DateFormat(dateFormat.text).parse(_get(line, attrBillDate)),
-              updatedAt: DateFormat(dateFormat.text).parse(_get(line, attrBillDate)),
-              currency: _getCurrency(line),
-              hidden: false,
-            ));
+        final newItem = state.add(BillAppData(
+          account: await _find(AppDataType.accounts, line, accountIdx, defaultAccount),
+          category: await _find(AppDataType.budgets, line, budgetIdx, defaultBudget),
+          title: _get(line, attrBillComment).toString(),
+          details: 0.0 + amount,
+          createdAt: DateFormat(dateFormat.text).parse(_get(line, attrBillDate)),
+          updatedAt: DateFormat(dateFormat.text).parse(_get(line, attrBillDate)),
+          currency: _getCurrency(line),
+          hidden: false,
+        ));
         await TransactionLog.save(newItem);
       } catch (e) {
         setState(() => errorMessage.writeln('[$i / ${fileContent!.length}] ${e.toString()}'));
@@ -174,24 +172,20 @@ class ImportTabState extends State<ImportTab> with SharedPreferencesMixin {
     dynamic newItem;
     switch (type) {
       case AppDataType.accounts:
-        newItem = state.add(
-            AppDataType.accounts,
-            AccountAppData(
-              title: line[index],
-              type: AppAccountType.account.toString(),
-              details: 0.0,
-              currency: _getCurrency(line),
-              hidden: false,
-            ));
+        newItem = state.add(AccountAppData(
+          title: line[index],
+          type: AppAccountType.account.toString(),
+          details: 0.0,
+          currency: _getCurrency(line),
+          hidden: false,
+        ));
         break;
       default:
-        newItem = state.add(
-            AppDataType.budgets,
-            BudgetAppData(
-              title: line[index],
-              currency: _getCurrency(line),
-              hidden: false,
-            ));
+        newItem = state.add(BudgetAppData(
+          title: line[index],
+          currency: _getCurrency(line),
+          hidden: false,
+        ));
     }
     _cache[type]![line[index]] = newItem.uuid;
     await TransactionLog.save(newItem);

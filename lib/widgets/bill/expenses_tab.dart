@@ -96,16 +96,14 @@ class ExpensesTabState<T extends ExpensesTab> extends State<T> with SharedPrefer
   void updateStorage() {
     setPreference(prefAccount, account ?? '');
     setPreference(prefBudget, budget ?? '');
-    state.add(
-        AppDataType.bills,
-        BillAppData(
-          account: account ?? '',
-          category: budget ?? '',
-          currency: currency,
-          title: description.text,
-          details: double.tryParse(bill.text) ?? 0.0,
-          createdAt: createdAt ?? DateTime.now(),
-        ));
+    state.add(BillAppData(
+      account: account ?? '',
+      category: budget ?? '',
+      currency: currency,
+      title: description.text,
+      details: double.tryParse(bill.text) ?? 0.0,
+      createdAt: createdAt ?? DateTime.now(),
+    ));
   }
 
   String getButtonTitle() {

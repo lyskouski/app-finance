@@ -4,6 +4,8 @@
 import 'package:app_finance/_classes/storage/app_data.dart';
 
 abstract class InterfaceAppData {
+  String? uuid;
+
   AppDataType getType();
 
   String getClassName();

@@ -31,7 +31,7 @@ class Exchange with SharedPreferencesMixin {
           currency: target,
           currencyFrom: origin,
         );
-        store.add(AppDataType.currencies, ex);
+        store.add(ex);
       }
       amount *= ex.details;
     }

@@ -10,13 +10,14 @@ import 'package:currency_picker/currency_picker.dart';
 import 'package:flutter/material.dart';
 
 abstract class AbstractAppData with FormatterMixin implements InterfaceAppData {
+  @override
+  String? uuid;
   double _amount = 0.0;
   DateTime _createdAt;
   DateTime _updatedAt;
   String title;
   double progress;
   bool hidden;
-  String? uuid;
   String? description;
   MaterialColor? color;
   IconData? icon;

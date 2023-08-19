@@ -71,9 +71,7 @@ class GoalAddPageState<T extends GoalAddPage> extends AbstractPageState<GoalAddP
   }
 
   void updateStorage() {
-    super.state.add(
-        AppDataType.goals,
-        GoalAppData(
+    super.state.add(GoalAppData(
           title: title.text,
           initial: Exchange(store: super.state)
               .reform(super.state.getTotal(AppDataType.accounts), Exchange.defaultCurrency, currency),

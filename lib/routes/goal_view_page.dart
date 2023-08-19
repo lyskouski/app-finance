@@ -48,7 +48,7 @@ class GoalViewPageState extends AbstractPageState<GoalViewPage> with SharedPrefe
       details: data.details,
       currency: data.currency,
     );
-    newBill = super.state.add(AppDataType.bills, newBill);
+    newBill = super.state.add(newBill);
     DataHandler.deactivate(nav, store: super.state, data: data);
     String route = AppMenu.uuid(AppRoute.billEditRoute, newBill.uuid ?? '');
     nav.popAndPushNamed(route);
