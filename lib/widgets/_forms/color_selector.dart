@@ -1,15 +1,14 @@
 // Copyright 2023 The terCAD team. All rights reserved.
 // Use of this source code is governed by a CC BY-NC-ND 4.0 license that can be found in the LICENSE file.
 
-import 'dart:math';
-
 import 'package:app_finance/_classes/herald/app_locale.dart';
 import 'package:app_finance/_classes/controller/focus_controller.dart';
+import 'package:app_finance/_mixins/color_mixin.dart';
 import 'package:app_finance/widgets/_forms/abstract_selector.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_colorpicker/flutter_colorpicker.dart';
 
-class ColorSelector extends AbstractSelector {
+class ColorSelector extends AbstractSelector with ColorMixin {
   final Function setState;
   @override
   // ignore: overridden_fields
@@ -20,24 +19,6 @@ class ColorSelector extends AbstractSelector {
     required this.setState,
     this.value,
   }) : super(value: value);
-
-  MaterialColor convertToMaterialColor(Color color) {
-    final Map<int, Color> colorMap = {};
-    final red = color.red;
-    final green = color.green;
-    final blue = color.blue;
-    for (int i = 50; i <= 900; i += 100) {
-      colorMap[i] = Color.fromRGBO(red, green, blue, i / 1000.0);
-    }
-    return MaterialColor(color.value, colorMap);
-  }
-
-  MaterialColor getRandomMaterialColor() {
-    List<Color> colors = Colors.primaries;
-    Random random = Random();
-    Color randomColor = colors[random.nextInt(colors.length)];
-    return convertToMaterialColor(randomColor);
-  }
 
   @override
   void onTap(context) {
