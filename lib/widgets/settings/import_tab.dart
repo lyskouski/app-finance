@@ -6,7 +6,7 @@ import 'package:app_finance/_classes/storage/app_data.dart';
 import 'package:app_finance/_classes/herald/app_locale.dart';
 import 'package:app_finance/_classes/structure/currency/currency_provider.dart';
 import 'package:app_finance/_classes/structure/account_app_data.dart';
-import 'package:app_finance/_classes/structure/account_type.dart';
+import 'package:app_finance/_configs/account_type.dart';
 import 'package:app_finance/_classes/structure/bill_app_data.dart';
 import 'package:app_finance/_classes/structure/budget_app_data.dart';
 import 'package:app_finance/_classes/storage/transaction_log.dart';

@@ -4,7 +4,7 @@
 import 'package:app_finance/_classes/herald/app_locale.dart';
 import 'package:app_finance/_classes/structure/currency/currency_provider.dart';
 import 'package:app_finance/_classes/structure/account_app_data.dart';
-import 'package:app_finance/_classes/structure/account_type.dart';
+import 'package:app_finance/_configs/account_type.dart';
 import 'package:app_finance/_classes/controller/focus_controller.dart';
 import 'package:app_finance/_mixins/shared_preferences_mixin.dart';
 import 'package:app_finance/_configs/custom_text_theme.dart';
