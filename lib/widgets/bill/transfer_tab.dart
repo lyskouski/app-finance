@@ -1,16 +1,14 @@
 // Copyright 2023 The terCAD team. All rights reserved.
-// Use of this source code is governed by a CC BY-NC-ND 4.0 license that can be
-// found in the LICENSE file.
+// Use of this source code is governed by a CC BY-NC-ND 4.0 license that can be found in the LICENSE file.
 
-import 'package:adaptive_breakpoints/adaptive_breakpoints.dart';
-import 'package:app_finance/_classes/app_locale.dart';
-import 'package:app_finance/_classes/app_route.dart';
-import 'package:app_finance/_classes/data/account_app_data.dart';
-import 'package:app_finance/_classes/currency/exchange.dart';
-import 'package:app_finance/_classes/focus_controller.dart';
-import 'package:app_finance/custom_text_theme.dart';
-import 'package:app_finance/_classes/app_data.dart';
-import 'package:app_finance/helpers/theme_helper.dart';
+import 'package:app_finance/_classes/herald/app_locale.dart';
+import 'package:app_finance/_classes/structure/navigation/app_route.dart';
+import 'package:app_finance/_classes/structure/account_app_data.dart';
+import 'package:app_finance/_classes/structure/currency/exchange.dart';
+import 'package:app_finance/_classes/controller/focus_controller.dart';
+import 'package:app_finance/_configs/custom_text_theme.dart';
+import 'package:app_finance/_classes/storage/app_data.dart';
+import 'package:app_finance/_configs/theme_helper.dart';
 import 'package:app_finance/widgets/_forms/currency_exchange_input.dart';
 import 'package:app_finance/widgets/_forms/full_sized_button.dart';
 import 'package:app_finance/widgets/_wrappers/required_widget.dart';
@@ -69,11 +67,11 @@ class TransferTabState extends State<TransferTab> {
     final course = Exchange(store: state);
     AccountAppData from = state.getByUuid(uuidFrom);
     from.details -= course.reform(double.tryParse(amount.text), from.currency, currency);
-    state.update(AppDataType.accounts, uuidFrom, from);
+    state.update(uuidFrom, from);
     String uuidTo = accountTo ?? '';
     AccountAppData to = state.getByUuid(uuidTo);
     to.details += course.reform(double.tryParse(amount.text), currency, to.currency);
-    state.update(AppDataType.accounts, uuidTo, to);
+    state.update(uuidTo, to);
   }
 
   Widget buildButton(BuildContext context, BoxConstraints constraints) {
@@ -98,8 +96,8 @@ class TransferTabState extends State<TransferTab> {
   Widget build(BuildContext context) {
     // FocusController.dispose();
     final TextTheme textTheme = Theme.of(context).textTheme;
-    double indent = ThemeHelper(windowType: getWindowType(context)).getIndent() * 2;
-    double offset = MediaQuery.of(context).size.width - indent * 3;
+    double indent = ThemeHelper.getIndent(2);
+    double width = ThemeHelper.getWidth(context, 6);
     FocusController.init();
 
     return LayoutBuilder(builder: (context, constraints) {
@@ -123,7 +121,7 @@ class TransferTabState extends State<TransferTab> {
                     setState: (value) => setState(() => accountFrom = value),
                     style: textTheme.numberMedium.copyWith(color: textTheme.headlineSmall?.color),
                     indent: indent,
-                    width: offset,
+                    width: width,
                   ),
                   SizedBox(height: indent),
                   RequiredWidget(
@@ -139,12 +137,12 @@ class TransferTabState extends State<TransferTab> {
                     }),
                     style: textTheme.numberMedium.copyWith(color: textTheme.headlineSmall?.color),
                     indent: indent,
-                    width: offset,
+                    width: width,
                   ),
                   SizedBox(height: indent),
                   RowWidget(
                     indent: indent,
-                    maxWidth: offset,
+                    maxWidth: width,
                     chunk: const [0.32, 0.68],
                     children: [
                       [
@@ -182,7 +180,7 @@ class TransferTabState extends State<TransferTab> {
                   ),
                   SizedBox(height: indent),
                   CurrencyExchangeInput(
-                    width: offset + indent,
+                    width: width + indent,
                     indent: indent,
                     target: currency,
                     state: state,

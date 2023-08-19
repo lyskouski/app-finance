@@ -1,11 +1,10 @@
 // Copyright 2023 The terCAD team. All rights reserved.
-// Use of this source code is governed by a CC BY-NC-ND 4.0 license that can be
-// found in the LICENSE file.
+// Use of this source code is governed by a CC BY-NC-ND 4.0 license that can be found in the LICENSE file.
 
-import 'package:adaptive_breakpoints/adaptive_breakpoints.dart';
-import 'package:app_finance/_classes/currency/currency_provider.dart';
-import 'package:app_finance/_classes/focus_controller.dart';
-import 'package:app_finance/helpers/theme_helper.dart';
+import 'package:app_finance/_classes/herald/app_locale.dart';
+import 'package:app_finance/_classes/structure/currency/currency_provider.dart';
+import 'package:app_finance/_classes/controller/focus_controller.dart';
+import 'package:app_finance/_configs/theme_helper.dart';
 import 'package:app_finance/widgets/_forms/list_selector.dart';
 import 'package:currency_picker/currency_picker.dart';
 import 'package:flutter/material.dart';
@@ -35,6 +34,9 @@ class CurrencySelectorItem extends ListSelectorItem {
 
 class CurrencySelector extends ListSelector<CurrencySelectorItem> {
   final SetViewFunction? setView;
+
+  @override
+  String get hintText => AppLocale.labels.currencyTooltip;
 
   CurrencySelector({
     super.key,
@@ -67,8 +69,7 @@ class CurrencySelector extends ListSelector<CurrencySelectorItem> {
 
   @override
   Widget itemBuilder(context, CurrencySelectorItem item, bool isSelected) {
-    final helper = ThemeHelper(windowType: getWindowType(context));
-    final indent = helper.getIndent();
+    final indent = ThemeHelper.getIndent();
     if (setView != null) {
       return Tooltip(
         message: item.name,

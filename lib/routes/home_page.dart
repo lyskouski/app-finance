@@ -1,16 +1,14 @@
 // Copyright 2023 The terCAD team. All rights reserved.
-// Use of this source code is governed by a CC BY-NC-ND 4.0 license that can be
-// found in the LICENSE file.
+// Use of this source code is governed by a CC BY-NC-ND 4.0 license that can be found in the LICENSE file.
 
-import 'package:adaptive_breakpoints/adaptive_breakpoints.dart';
-import 'package:app_finance/_classes/app_data.dart';
-import 'package:app_finance/_classes/app_locale.dart';
-import 'package:app_finance/_classes/currency/exchange.dart';
+import 'package:app_finance/_classes/storage/app_data.dart';
+import 'package:app_finance/_classes/herald/app_locale.dart';
+import 'package:app_finance/_classes/structure/currency/exchange.dart';
 import 'package:app_finance/_mixins/shared_preferences_mixin.dart';
-import 'package:app_finance/helpers/theme_helper.dart';
-import 'package:app_finance/_classes/app_route.dart';
+import 'package:app_finance/_configs/theme_helper.dart';
+import 'package:app_finance/_classes/structure/navigation/app_route.dart';
 import 'package:app_finance/routes/abstract_page.dart';
-import 'package:app_finance/widgets/home/init_page.dart';
+import 'package:app_finance/widgets/init/init_tab.dart';
 import 'package:app_finance/widgets/_wrappers/toolbar_button_widget.dart';
 import 'package:app_finance/widgets/home/account_widget.dart';
 import 'package:app_finance/widgets/home/bill_widget.dart';
@@ -100,7 +98,7 @@ class HomePageState extends AbstractPageState<HomePage> with SharedPreferencesMi
     return Consumer<AppData>(builder: (context, appState, _) {
       state = appState;
       if (appState.isLoading) {
-        return InitPage();
+        return InitTab();
       }
       return super.build(context);
     });
@@ -108,41 +106,40 @@ class HomePageState extends AbstractPageState<HomePage> with SharedPreferencesMi
 
   @override
   Widget buildContent(BuildContext context, BoxConstraints constraints) {
-    var helper = ThemeHelper(windowType: getWindowType(context));
-    double indent = helper.getIndent();
+    double indent = ThemeHelper.getIndent();
     EdgeInsets single = EdgeInsets.fromLTRB(indent, indent, indent, 0);
     EdgeInsets middleLeft = EdgeInsets.fromLTRB(indent, indent, 0, 0);
     EdgeInsets middleRight = EdgeInsets.fromLTRB(indent, indent, indent, 0);
     EdgeInsets bottom = EdgeInsets.fromLTRB(indent, indent, indent, indent);
-    double width = MediaQuery.of(context).size.width - indent * 2;
+    double width = ThemeHelper.getWidth(context, 2);
     double halfWidth = width / 2 - indent;
     final DateFormat formatterDate = DateFormat.MMMM(AppLocale.code);
-    bool isVertical = helper.isVertical(constraints);
+    bool isVertical = ThemeHelper.isVertical(constraints);
 
     final goalWidget = GoalWidget(
       margin: EdgeInsets.fromLTRB(indent, 0, indent, 0),
       state: super.state.getList(AppDataType.goals),
     );
     final billWidget = BillWidget(
-      margin: helper.isVertical(constraints) ? single : middleRight,
+      margin: ThemeHelper.isVertical(constraints) ? single : middleRight,
       title: '${AppLocale.labels.billHeadline}, ${formatterDate.format(DateTime.now())}',
       state: super.state.get(AppDataType.bills),
       limit: 5,
       route: AppRoute.billRoute,
       tooltip: AppLocale.labels.billTooltip,
-      offset: helper.isVertical(constraints) ? width : halfWidth,
+      width: ThemeHelper.isVertical(constraints) ? width : halfWidth,
       hasExpand: isVertical,
       toExpand: toExpand,
       callback: (v) => setState(() => toExpand = v),
     );
     final accountWidget = AccountWidget(
-      margin: helper.isVertical(constraints) ? single : middleLeft,
+      margin: ThemeHelper.isVertical(constraints) ? single : middleLeft,
       title: '${AppLocale.labels.accountHeadline}, ${AppLocale.labels.total}',
       state: super.state.get(AppDataType.accounts),
       limit: 5,
       route: AppRoute.accountRoute,
       tooltip: AppLocale.labels.accountTooltip,
-      offset: helper.isVertical(constraints) ? width : halfWidth,
+      width: ThemeHelper.isVertical(constraints) ? width : halfWidth,
       hasExpand: isVertical,
       toExpand: toExpand,
       callback: (v) => setState(() => toExpand = v),
@@ -154,7 +151,7 @@ class HomePageState extends AbstractPageState<HomePage> with SharedPreferencesMi
       limit: 5,
       route: AppRoute.budgetRoute,
       tooltip: AppLocale.labels.budgetTooltip,
-      offset: width,
+      width: width,
       hasExpand: isVertical,
       toExpand: toExpand,
       callback: (v) => setState(() => toExpand = v),

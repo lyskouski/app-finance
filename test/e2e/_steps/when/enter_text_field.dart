@@ -1,6 +1,5 @@
 // Copyright 2023 The terCAD team. All rights reserved.
-// Use of this source code is governed by a CC BY-NC-ND 4.0 license that can be
-// found in the LICENSE file.
+// Use of this source code is governed by a CC BY-NC-ND 4.0 license that can be found in the LICENSE file.
 
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
@@ -8,6 +7,7 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:gherkin/gherkin.dart';
 
 import '../file_runner.dart';
+import '../screen_capture.dart';
 
 class EnterTextField extends When2WithWorld<String, String, World> {
   @override
@@ -15,6 +15,7 @@ class EnterTextField extends When2WithWorld<String, String, World> {
 
   @override
   Future<void> executeStep(String value, String tooltip) async {
+    ScreenCapture.seize(runtimeType.toString());
     final field = find.byWidgetPredicate((widget) {
       return widget is TextField && widget.decoration?.hintText == tooltip;
     });
@@ -23,6 +24,7 @@ class EnterTextField extends When2WithWorld<String, String, World> {
     await FileRunner.tester.tap(field);
     await FileRunner.tester.pump();
     await FileRunner.tester.enterText(field, value);
-    await FileRunner.tester.pumpAndSettle();
+    await FileRunner.tester.pumpAndSettle(const Duration(seconds: 1));
+    ScreenCapture.seize(runtimeType.toString());
   }
 }

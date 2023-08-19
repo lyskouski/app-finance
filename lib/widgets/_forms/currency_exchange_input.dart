@@ -2,11 +2,11 @@
 // Use of this source code is governed by a CC BY-NC-ND 4.0 license that can be
 // found in the LICENSE file.
 
-import 'package:app_finance/_classes/app_locale.dart';
-import 'package:app_finance/_classes/currency/currency_provider.dart';
-import 'package:app_finance/_classes/data/currency_app_data.dart';
-import 'package:app_finance/_classes/app_data.dart';
-import 'package:app_finance/_classes/delayed_call.dart';
+import 'package:app_finance/_classes/herald/app_locale.dart';
+import 'package:app_finance/_classes/structure/currency/currency_provider.dart';
+import 'package:app_finance/_classes/structure/currency_app_data.dart';
+import 'package:app_finance/_classes/storage/app_data.dart';
+import 'package:app_finance/_classes/controller/delayed_call.dart';
 import 'package:app_finance/widgets/_forms/simple_input.dart';
 import 'package:app_finance/widgets/_wrappers/row_widget.dart';
 import 'package:currency_picker/currency_picker.dart';
@@ -106,7 +106,7 @@ class CurrencyExchangeInputState extends State<CurrencyExchangeInput> {
             amount[index] = getAmount(index);
             controllers[index]![1].text = amount[index] != null ? amount[index].toString() : '';
           }
-          widget.state.update(AppDataType.currencies, rate[index]!.uuid, rate[index], true);
+          widget.state.update(rate[index]!.uuid, rate[index], true);
         }));
   }
 

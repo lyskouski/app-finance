@@ -1,15 +1,13 @@
 // Copyright 2023 The terCAD team. All rights reserved.
-// Use of this source code is governed by a CC BY-NC-ND 4.0 license that can be
-// found in the LICENSE file.
+// Use of this source code is governed by a CC BY-NC-ND 4.0 license that can be found in the LICENSE file.
 
-import 'package:adaptive_breakpoints/adaptive_breakpoints.dart';
-import 'package:app_finance/_classes/app_locale.dart';
-import 'package:app_finance/_classes/currency/exchange.dart';
-import 'package:app_finance/_classes/data/goal_app_data.dart';
-import 'package:app_finance/_classes/focus_controller.dart';
-import 'package:app_finance/_classes/app_data.dart';
-import 'package:app_finance/custom_text_theme.dart';
-import 'package:app_finance/helpers/theme_helper.dart';
+import 'package:app_finance/_classes/herald/app_locale.dart';
+import 'package:app_finance/_classes/structure/currency/exchange.dart';
+import 'package:app_finance/_classes/structure/goal_app_data.dart';
+import 'package:app_finance/_classes/controller/focus_controller.dart';
+import 'package:app_finance/_classes/storage/app_data.dart';
+import 'package:app_finance/_configs/custom_text_theme.dart';
+import 'package:app_finance/_configs/theme_helper.dart';
 import 'package:app_finance/routes/abstract_page.dart';
 import 'package:app_finance/widgets/_forms/color_selector.dart';
 import 'package:app_finance/widgets/_forms/currency_selector.dart';
@@ -73,9 +71,7 @@ class GoalAddPageState<T extends GoalAddPage> extends AbstractPageState<GoalAddP
   }
 
   void updateStorage() {
-    super.state.add(
-        AppDataType.goals,
-        GoalAppData(
+    super.state.add(GoalAppData(
           title: title.text,
           initial: Exchange(store: super.state)
               .reform(super.state.getTotal(AppDataType.accounts), Exchange.defaultCurrency, currency),
@@ -116,8 +112,8 @@ class GoalAddPageState<T extends GoalAddPage> extends AbstractPageState<GoalAddP
   @override
   Widget buildContent(BuildContext context, BoxConstraints constraints) {
     final TextTheme textTheme = Theme.of(context).textTheme;
-    double indent = ThemeHelper(windowType: getWindowType(context)).getIndent() * 2;
-    double offset = MediaQuery.of(context).size.width - indent * 3;
+    double indent = ThemeHelper.getIndent(2);
+    double width = ThemeHelper.getWidth(context, 6);
 
     return SingleChildScrollView(
       controller: FocusController.getController(runtimeType),
@@ -138,7 +134,7 @@ class GoalAddPageState<T extends GoalAddPage> extends AbstractPageState<GoalAddP
               children: [
                 Container(
                   constraints: BoxConstraints(
-                    maxWidth: offset * 0.5,
+                    maxWidth: width * 0.5,
                   ),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -157,7 +153,7 @@ class GoalAddPageState<T extends GoalAddPage> extends AbstractPageState<GoalAddP
                 SizedBox(width: indent),
                 Container(
                   constraints: BoxConstraints(
-                    maxWidth: offset * 0.5,
+                    maxWidth: width * 0.5,
                   ),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -181,7 +177,7 @@ class GoalAddPageState<T extends GoalAddPage> extends AbstractPageState<GoalAddP
               children: [
                 Container(
                   constraints: BoxConstraints(
-                    maxWidth: offset * 0.3,
+                    maxWidth: width * 0.3,
                   ),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -205,7 +201,7 @@ class GoalAddPageState<T extends GoalAddPage> extends AbstractPageState<GoalAddP
                 SizedBox(width: indent),
                 Container(
                   constraints: BoxConstraints(
-                    maxWidth: offset * 0.7,
+                    maxWidth: width * 0.7,
                   ),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,

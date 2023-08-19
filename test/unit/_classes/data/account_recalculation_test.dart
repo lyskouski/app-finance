@@ -1,11 +1,10 @@
 // Copyright 2023 The terCAD team. All rights reserved.
-// Use of this source code is governed by a CC BY-NC-ND 4.0 license that can be
-// found in the LICENSE file.
+// Use of this source code is governed by a CC BY-NC-ND 4.0 license that can be found in the LICENSE file.
 
-import 'package:app_finance/_classes/data/account_app_data.dart';
-import 'package:app_finance/_classes/data/account_recalculation.dart';
-import 'package:app_finance/_classes/currency/exchange.dart';
-import 'package:app_finance/_classes/data/account_type.dart';
+import 'package:app_finance/_classes/structure/account_app_data.dart';
+import 'package:app_finance/_classes/math/account_recalculation.dart';
+import 'package:app_finance/_classes/structure/currency/exchange.dart';
+import 'package:app_finance/_configs/account_type.dart';
 import 'package:app_finance/_classes/gen/generate_with_method_setters.dart';
 import 'package:currency_picker/currency_picker.dart';
 import 'package:flutter_test/flutter_test.dart';

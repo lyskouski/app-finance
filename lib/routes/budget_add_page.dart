@@ -1,17 +1,14 @@
 // Copyright 2023 The terCAD team. All rights reserved.
-// Use of this source code is governed by a CC BY-NC-ND 4.0 license that can be
-// found in the LICENSE file.
+// Use of this source code is governed by a CC BY-NC-ND 4.0 license that can be found in the LICENSE file.
 
-import 'package:adaptive_breakpoints/adaptive_breakpoints.dart';
-import 'package:app_finance/_classes/app_locale.dart';
-import 'package:app_finance/_classes/currency/currency_provider.dart';
-import 'package:app_finance/_classes/data/budget_app_data.dart';
-import 'package:app_finance/_classes/focus_controller.dart';
+import 'package:app_finance/_classes/herald/app_locale.dart';
+import 'package:app_finance/_classes/structure/currency/currency_provider.dart';
+import 'package:app_finance/_classes/structure/budget_app_data.dart';
+import 'package:app_finance/_classes/controller/focus_controller.dart';
 import 'package:app_finance/_mixins/shared_preferences_mixin.dart';
-import 'package:app_finance/custom_text_theme.dart';
-import 'package:app_finance/_classes/app_data.dart';
-import 'package:app_finance/helpers/theme_helper.dart';
-import 'package:app_finance/routes/abstract_page.dart';
+import 'package:app_finance/_configs/custom_text_theme.dart';
+import 'package:app_finance/_configs/theme_helper.dart';
+import 'package:app_finance/routes/abstract_add_page.dart';
 import 'package:app_finance/widgets/_forms/color_selector.dart';
 import 'package:app_finance/widgets/_forms/currency_selector.dart';
 import 'package:app_finance/widgets/_forms/full_sized_button.dart';
@@ -23,7 +20,7 @@ import 'package:currency_picker/currency_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
-class BudgetAddPage extends AbstractPage {
+class BudgetAddPage extends AbstractAddPage {
   final String? title;
   final double? budgetLimit;
   final IconData? icon;
@@ -42,7 +39,8 @@ class BudgetAddPage extends AbstractPage {
   BudgetAddPageState createState() => BudgetAddPageState();
 }
 
-class BudgetAddPageState<T extends BudgetAddPage> extends AbstractPageState<BudgetAddPage> with SharedPreferencesMixin {
+class BudgetAddPageState<T extends BudgetAddPage> extends AbstractAddPageState<BudgetAddPage>
+    with SharedPreferencesMixin {
   late TextEditingController title;
   late TextEditingController budgetLimit;
   IconData? icon;
@@ -66,15 +64,15 @@ class BudgetAddPageState<T extends BudgetAddPage> extends AbstractPageState<Budg
     return AppLocale.labels.createBudgetHeader;
   }
 
+  @override
   bool hasFormErrors() {
     setState(() => hasError = title.text.isEmpty);
     return hasError;
   }
 
+  @override
   void updateStorage() {
-    super.state.add(
-        AppDataType.budgets,
-        BudgetAppData(
+    super.state.add(BudgetAppData(
           title: title.text,
           amountLimit: double.tryParse(budgetLimit.text) ?? 0.0,
           progress: 0.0,
@@ -87,17 +85,6 @@ class BudgetAddPageState<T extends BudgetAddPage> extends AbstractPageState<Budg
 
   String getButtonName() {
     return AppLocale.labels.createBudgetTooltip;
-  }
-
-  void triggerActionButton(NavigatorState nav) {
-    setState(() {
-      if (hasFormErrors()) {
-        return;
-      }
-      updateStorage();
-      nav.pop();
-      nav.pop();
-    });
   }
 
   @override
@@ -114,8 +101,8 @@ class BudgetAddPageState<T extends BudgetAddPage> extends AbstractPageState<Budg
   @override
   Widget buildContent(BuildContext context, BoxConstraints constraints) {
     final TextTheme textTheme = Theme.of(context).textTheme;
-    double indent = ThemeHelper(windowType: getWindowType(context)).getIndent() * 2;
-    double offset = MediaQuery.of(context).size.width - indent * 3;
+    double indent = ThemeHelper.getIndent(2);
+    double width = ThemeHelper.getWidth(context, 6);
 
     return SingleChildScrollView(
       controller: FocusController.getController(runtimeType),
@@ -133,7 +120,7 @@ class BudgetAddPageState<T extends BudgetAddPage> extends AbstractPageState<Budg
             SizedBox(height: indent),
             RowWidget(
               indent: indent,
-              maxWidth: offset,
+              maxWidth: width,
               chunk: const [0.5, 0.5],
               children: [
                 [
@@ -144,7 +131,6 @@ class BudgetAddPageState<T extends BudgetAddPage> extends AbstractPageState<Budg
                   IconSelector(
                     value: icon,
                     setState: (value) => setState(() => icon = value),
-                    // focusOrder: focusOrder += 1,
                   ),
                 ],
                 [
@@ -155,7 +141,6 @@ class BudgetAddPageState<T extends BudgetAddPage> extends AbstractPageState<Budg
                   ColorSelector(
                     value: color,
                     setState: (value) => setState(() => color = value),
-                    // focusOrder: focusOrder += 1,
                   ),
                 ],
               ],
@@ -181,7 +166,7 @@ class BudgetAddPageState<T extends BudgetAddPage> extends AbstractPageState<Budg
             ),
             Container(
               color: Theme.of(context).colorScheme.inversePrimary.withOpacity(0.3),
-              width: offset + indent,
+              width: width + indent,
               child: CurrencySelector(
                 value: currency?.code,
                 setState: (value) => setState(() => currency = value),

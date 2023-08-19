@@ -1,15 +1,17 @@
 // Copyright 2023 The terCAD team. All rights reserved.
 // Use of this source code is governed by a CC BY-NC-ND 4.0 license that can be found in the LICENSE file.
 
+import 'package:app_finance/widgets/_forms/currency_selector.dart';
 import 'package:app_finance/widgets/_forms/list_account_selector.dart';
 import 'package:app_finance/widgets/_forms/list_budget_selector.dart';
 import 'package:app_finance/widgets/_forms/list_selector.dart';
-import 'package:app_finance/widgets/home/base_line_widget.dart';
+import 'package:app_finance/widgets/_generic/base_line_widget.dart';
 import 'package:flutter_test/flutter_test.dart';
 // ignore: depend_on_referenced_packages
 import 'package:gherkin/gherkin.dart';
 
 import '../file_runner.dart';
+import '../screen_capture.dart';
 
 class TapOnNuOfDefinedField extends When2WithWorld<int, String, World> {
   @override
@@ -17,6 +19,7 @@ class TapOnNuOfDefinedField extends When2WithWorld<int, String, World> {
 
   @override
   Future<void> executeStep(int order, String type) async {
+    ScreenCapture.seize(runtimeType.toString());
     Finder? list;
     switch (type) {
       case 'ListSelector':
@@ -31,6 +34,9 @@ class TapOnNuOfDefinedField extends When2WithWorld<int, String, World> {
       case 'BaseLineWidget':
         list = find.byType(BaseLineWidget);
         break;
+      case 'CurrencySelector':
+        list = find.byType(CurrencySelector);
+        break;
       default:
         throw Exception('Not defined');
     }
@@ -38,5 +44,6 @@ class TapOnNuOfDefinedField extends When2WithWorld<int, String, World> {
     await FileRunner.tester.ensureVisible(list.at(order));
     await FileRunner.tester.tap(list.at(order), warnIfMissed: false);
     await FileRunner.tester.pumpAndSettle(const Duration(milliseconds: 400));
+    ScreenCapture.seize(runtimeType.toString());
   }
 }

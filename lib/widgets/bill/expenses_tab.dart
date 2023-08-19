@@ -1,17 +1,15 @@
 // Copyright 2023 The terCAD team. All rights reserved.
-// Use of this source code is governed by a CC BY-NC-ND 4.0 license that can be
-// found in the LICENSE file.
+// Use of this source code is governed by a CC BY-NC-ND 4.0 license that can be found in the LICENSE file.
 
-import 'package:adaptive_breakpoints/adaptive_breakpoints.dart';
-import 'package:app_finance/_classes/app_locale.dart';
-import 'package:app_finance/_classes/app_route.dart';
-import 'package:app_finance/_classes/currency/currency_provider.dart';
-import 'package:app_finance/_classes/data/bill_app_data.dart';
-import 'package:app_finance/_classes/focus_controller.dart';
+import 'package:app_finance/_classes/herald/app_locale.dart';
+import 'package:app_finance/_classes/structure/navigation/app_route.dart';
+import 'package:app_finance/_classes/structure/currency/currency_provider.dart';
+import 'package:app_finance/_classes/structure/bill_app_data.dart';
+import 'package:app_finance/_classes/controller/focus_controller.dart';
 import 'package:app_finance/_mixins/shared_preferences_mixin.dart';
-import 'package:app_finance/custom_text_theme.dart';
-import 'package:app_finance/_classes/app_data.dart';
-import 'package:app_finance/helpers/theme_helper.dart';
+import 'package:app_finance/_configs/custom_text_theme.dart';
+import 'package:app_finance/_classes/storage/app_data.dart';
+import 'package:app_finance/_configs/theme_helper.dart';
 import 'package:app_finance/widgets/_forms/currency_exchange_input.dart';
 import 'package:app_finance/widgets/_forms/currency_selector.dart';
 import 'package:app_finance/widgets/_forms/date_time_input.dart';
@@ -98,16 +96,14 @@ class ExpensesTabState<T extends ExpensesTab> extends State<T> with SharedPrefer
   void updateStorage() {
     setPreference(prefAccount, account ?? '');
     setPreference(prefBudget, budget ?? '');
-    state.add(
-        AppDataType.bills,
-        BillAppData(
-          account: account ?? '',
-          category: budget ?? '',
-          currency: currency,
-          title: description.text,
-          details: double.tryParse(bill.text) ?? 0.0,
-          createdAt: createdAt ?? DateTime.now(),
-        ));
+    state.add(BillAppData(
+      account: account ?? '',
+      category: budget ?? '',
+      currency: currency,
+      title: description.text,
+      details: double.tryParse(bill.text) ?? 0.0,
+      createdAt: createdAt ?? DateTime.now(),
+    ));
   }
 
   String getButtonTitle() {
@@ -136,8 +132,8 @@ class ExpensesTabState<T extends ExpensesTab> extends State<T> with SharedPrefer
   Widget build(BuildContext context) {
     // FocusController.dispose();
     final TextTheme textTheme = Theme.of(context).textTheme;
-    double indent = ThemeHelper(windowType: getWindowType(context)).getIndent() * 2;
-    double offset = MediaQuery.of(context).size.width - indent * 3;
+    double indent = ThemeHelper.getIndent(2);
+    double width = ThemeHelper.getWidth(context, 6);
     FocusController.init();
 
     return LayoutBuilder(builder: (context, constraints) {
@@ -167,7 +163,7 @@ class ExpensesTabState<T extends ExpensesTab> extends State<T> with SharedPrefer
                     }),
                     style: textTheme.numberMedium.copyWith(color: textTheme.headlineSmall?.color),
                     indent: indent,
-                    width: offset,
+                    width: width,
                   ),
                   SizedBox(height: indent),
                   RequiredWidget(
@@ -184,12 +180,12 @@ class ExpensesTabState<T extends ExpensesTab> extends State<T> with SharedPrefer
                     }),
                     style: textTheme.numberMedium.copyWith(color: textTheme.headlineSmall?.color),
                     indent: indent,
-                    width: offset,
+                    width: width,
                   ),
                   SizedBox(height: indent),
                   RowWidget(
                     indent: indent,
-                    maxWidth: offset,
+                    maxWidth: width,
                     chunk: const [0.32, 0.68],
                     children: [
                       [
@@ -227,7 +223,7 @@ class ExpensesTabState<T extends ExpensesTab> extends State<T> with SharedPrefer
                   ),
                   SizedBox(height: indent),
                   CurrencyExchangeInput(
-                    width: offset + indent,
+                    width: width + indent,
                     indent: indent,
                     target: currency,
                     state: state,
@@ -253,7 +249,7 @@ class ExpensesTabState<T extends ExpensesTab> extends State<T> with SharedPrefer
                   ),
                   DateTimeInput(
                     style: textTheme.numberMedium.copyWith(color: textTheme.headlineSmall?.color),
-                    width: offset,
+                    width: width,
                     value: createdAt ?? DateTime.now(),
                     setState: (value) => setState(() => createdAt = value),
                   ),

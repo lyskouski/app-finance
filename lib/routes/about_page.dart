@@ -1,16 +1,14 @@
 // Copyright 2023 The terCAD team. All rights reserved.
-// Use of this source code is governed by a CC BY-NC-ND 4.0 license that can be
-// found in the LICENSE file.
+// Use of this source code is governed by a CC BY-NC-ND 4.0 license that can be found in the LICENSE file.
 
-import 'package:adaptive_breakpoints/adaptive_breakpoints.dart';
-import 'package:app_finance/_classes/app_locale.dart';
-import 'package:app_finance/helpers/theme_helper.dart';
+import 'package:app_finance/_classes/herald/app_locale.dart';
+import 'package:app_finance/_configs/theme_helper.dart';
+import 'package:app_finance/_mixins/launcher_mixin.dart';
 import 'package:app_finance/routes/abstract_page.dart';
 import 'package:app_finance/widgets/_wrappers/row_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_markdown/flutter_markdown.dart';
 import 'package:package_info_plus/package_info_plus.dart';
-import 'package:url_launcher/url_launcher.dart';
 
 class AboutPage extends AbstractPage {
   AboutPage() : super();
@@ -19,7 +17,7 @@ class AboutPage extends AbstractPage {
   AboutPageState createState() => AboutPageState();
 }
 
-class AboutPageState extends AbstractPageState<AboutPage> {
+class AboutPageState extends AbstractPageState<AboutPage> with LauncherMixin {
   String version = '';
   String buildNumber = '';
 
@@ -35,20 +33,19 @@ class AboutPageState extends AbstractPageState<AboutPage> {
   }
 
   @override
+  String getTitle() {
+    return AppLocale.labels.aboutHeadline;
+  }
+
+  @override
   Widget buildButton(BuildContext context, BoxConstraints constraints) {
     return const SizedBox();
   }
 
-  Future<void> _launchURL(String path) async {
-    final url = Uri.parse(path);
-    await launchUrl(url, mode: LaunchMode.externalApplication);
-  }
-
   @override
   Widget buildContent(BuildContext context, BoxConstraints constraints) {
-    var helper = ThemeHelper(windowType: getWindowType(context));
-    double indent = helper.getIndent();
-    double width = MediaQuery.of(context).size.width - indent * 4;
+    double indent = ThemeHelper.getIndent();
+    double width = ThemeHelper.getWidth(context);
     final locale = AppLocale.labels.localeName;
     return Padding(
       padding: EdgeInsets.fromLTRB(indent, indent, indent, 0),
@@ -85,19 +82,19 @@ class AboutPageState extends AbstractPageState<AboutPage> {
             children: [
               [
                 ElevatedButton(
-                  onPressed: () => _launchURL('https://github.com/lyskouski/app-finance/releases'),
+                  onPressed: () => openURL('https://github.com/lyskouski/app-finance/releases'),
                   child: Text(AppLocale.labels.releases),
                 ),
               ],
               [
                 ElevatedButton(
-                  onPressed: () => _launchURL('https://github.com/users/lyskouski/projects/2/views/1'),
+                  onPressed: () => openURL('https://github.com/users/lyskouski/projects/2/views/1'),
                   child: Text(AppLocale.labels.roadmap),
                 ),
               ],
               [
                 ElevatedButton(
-                  onPressed: () => _launchURL('https://github.com/lyskouski/app-finance/milestones'),
+                  onPressed: () => openURL('https://github.com/lyskouski/app-finance/milestones'),
                   child: Text(AppLocale.labels.milestones),
                 ),
               ],
@@ -118,10 +115,5 @@ class AboutPageState extends AbstractPageState<AboutPage> {
         ],
       ),
     );
-  }
-
-  @override
-  String getTitle() {
-    return AppLocale.labels.aboutHeadline;
   }
 }

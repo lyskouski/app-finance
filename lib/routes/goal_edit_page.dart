@@ -1,10 +1,8 @@
 // Copyright 2023 The terCAD team. All rights reserved.
-// Use of this source code is governed by a CC BY-NC-ND 4.0 license that can be
-// found in the LICENSE file.
+// Use of this source code is governed by a CC BY-NC-ND 4.0 license that can be found in the LICENSE file.
 
-import 'package:app_finance/_classes/app_locale.dart';
-import 'package:app_finance/_classes/data/goal_app_data.dart';
-import 'package:app_finance/_classes/app_data.dart';
+import 'package:app_finance/_classes/herald/app_locale.dart';
+import 'package:app_finance/_classes/structure/goal_app_data.dart';
 import 'package:app_finance/routes/goal_add_page.dart';
 import 'package:flutter/material.dart';
 
@@ -43,7 +41,7 @@ class GoalEditPageState extends GoalAddPageState<GoalEditPage> {
     data.details = double.tryParse(details.text) ?? 0.0;
     data.closedAt = closedAt ?? DateTime.now();
     data.currency = currency;
-    state.update(AppDataType.goals, uuid, data);
+    state.update(uuid, data);
   }
 
   void bindState() {

@@ -6,6 +6,7 @@
 \usepackage{tikz}
 \usepackage{soul}
 \usepackage{xpatch}
+\usepackage{tcolorbox}
 
 % Define colors to use (http://latexcolor.com/)
 \definecolor{codegreen}{rgb}{0,0.6,0}
@@ -125,6 +126,21 @@
 % Inline code
 \newcommand{\q}[1]{%
   `\texttt{\color{purple}{#1}}`%
+}
+
+\newcommand{\key}[1]{%
+  \tikz[baseline=(char.base)]{
+    \node[fill=backcolour, draw=black!30, inner sep=1pt, anchor=text, rectangle] (char) {\texttt{ \color{black}#1 }};
+  }%
+}
+
+\newcommand{\issue}[2]{%
+  [\href{https://github.com/lyskouski/app-finance/issues/#1\#ref-commit-#2}{issue #1%
+  \ifx&#2&%
+  \else
+    \space hash #2%
+  \fi
+  }]
 }
 
 \makeatother

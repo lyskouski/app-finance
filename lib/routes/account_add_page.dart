@@ -1,18 +1,15 @@
 // Copyright 2023 The terCAD team. All rights reserved.
-// Use of this source code is governed by a CC BY-NC-ND 4.0 license that can be
-// found in the LICENSE file.
+// Use of this source code is governed by a CC BY-NC-ND 4.0 license that can be found in the LICENSE file.
 
-import 'package:adaptive_breakpoints/adaptive_breakpoints.dart';
-import 'package:app_finance/_classes/app_locale.dart';
-import 'package:app_finance/_classes/currency/currency_provider.dart';
-import 'package:app_finance/_classes/data/account_app_data.dart';
-import 'package:app_finance/_classes/data/account_type.dart';
-import 'package:app_finance/_classes/focus_controller.dart';
+import 'package:app_finance/_classes/herald/app_locale.dart';
+import 'package:app_finance/_classes/structure/currency/currency_provider.dart';
+import 'package:app_finance/_classes/structure/account_app_data.dart';
+import 'package:app_finance/_configs/account_type.dart';
+import 'package:app_finance/_classes/controller/focus_controller.dart';
 import 'package:app_finance/_mixins/shared_preferences_mixin.dart';
-import 'package:app_finance/custom_text_theme.dart';
-import 'package:app_finance/_classes/app_data.dart';
-import 'package:app_finance/helpers/theme_helper.dart';
-import 'package:app_finance/routes/abstract_page.dart';
+import 'package:app_finance/_configs/custom_text_theme.dart';
+import 'package:app_finance/_configs/theme_helper.dart';
+import 'package:app_finance/routes/abstract_add_page.dart';
 import 'package:app_finance/widgets/_forms/color_selector.dart';
 import 'package:app_finance/widgets/_forms/currency_selector.dart';
 import 'package:app_finance/widgets/_forms/date_time_input.dart';
@@ -26,7 +23,7 @@ import 'package:app_finance/widgets/_wrappers/row_widget.dart';
 import 'package:currency_picker/currency_picker.dart';
 import 'package:flutter/material.dart';
 
-class AccountAddPage extends AbstractPage {
+class AccountAddPage extends AbstractAddPage {
   final String? title;
   final String? description;
   final String? type;
@@ -51,7 +48,7 @@ class AccountAddPage extends AbstractPage {
   AccountAddPageState createState() => AccountAddPageState();
 }
 
-class AccountAddPageState<T extends AccountAddPage> extends AbstractPageState<AccountAddPage>
+class AccountAddPageState<T extends AccountAddPage> extends AbstractAddPageState<AccountAddPage>
     with SharedPreferencesMixin {
   late TextEditingController title;
   late TextEditingController description;
@@ -62,7 +59,6 @@ class AccountAddPageState<T extends AccountAddPage> extends AbstractPageState<Ac
   late TextEditingController balance;
   IconData? icon;
   MaterialColor? color;
-  bool hasError = false;
 
   @override
   void initState() {
@@ -83,15 +79,15 @@ class AccountAddPageState<T extends AccountAddPage> extends AbstractPageState<Ac
     return AppLocale.labels.createAccountHeader;
   }
 
+  @override
   bool hasFormErrors() {
     setState(() => hasError = type == null || type!.isEmpty || title.text.isEmpty);
     return hasError;
   }
 
+  @override
   void updateStorage() {
-    super.state.add(
-        AppDataType.accounts,
-        AccountAppData(
+    super.state.add(AccountAppData(
           title: title.text,
           type: type ?? AppAccountType.cash.toString(),
           description: description.text,
@@ -110,17 +106,6 @@ class AccountAddPageState<T extends AccountAddPage> extends AbstractPageState<Ac
     return AppLocale.labels.createAccountTooltip;
   }
 
-  void triggerActionButton(NavigatorState nav) {
-    setState(() {
-      if (hasFormErrors()) {
-        return;
-      }
-      updateStorage();
-      nav.pop();
-      nav.pop();
-    });
-  }
-
   @override
   Widget buildButton(BuildContext context, BoxConstraints constraints) {
     NavigatorState nav = Navigator.of(context);
@@ -135,8 +120,8 @@ class AccountAddPageState<T extends AccountAddPage> extends AbstractPageState<Ac
   @override
   Widget buildContent(BuildContext context, BoxConstraints constraints) {
     final TextTheme textTheme = Theme.of(context).textTheme;
-    double indent = ThemeHelper(windowType: getWindowType(context)).getIndent() * 2;
-    double offset = MediaQuery.of(context).size.width - indent * 3;
+    double indent = ThemeHelper.getIndent(2);
+    double width = ThemeHelper.getWidth(context, 6);
     FocusController.init();
 
     return SingleChildScrollView(
@@ -170,7 +155,7 @@ class AccountAddPageState<T extends AccountAddPage> extends AbstractPageState<Ac
             SizedBox(height: indent),
             RowWidget(
               indent: indent,
-              maxWidth: offset,
+              maxWidth: width,
               chunk: const [0.2, 0.2, 0.6],
               children: [
                 [
@@ -215,7 +200,7 @@ class AccountAddPageState<T extends AccountAddPage> extends AbstractPageState<Ac
             ),
             Container(
               color: Theme.of(context).colorScheme.inversePrimary.withOpacity(0.3),
-              width: offset + indent,
+              width: width + indent,
               child: CurrencySelector(
                 value: currency?.code,
                 setState: (value) => setState(() => currency = value),
@@ -261,7 +246,7 @@ class AccountAddPageState<T extends AccountAddPage> extends AbstractPageState<Ac
             ),
             DateTimeInput(
               style: textTheme.numberMedium.copyWith(color: textTheme.headlineSmall?.color),
-              width: offset,
+              width: width,
               value: balanceUpdateDate,
               setState: (value) => setState(() => balanceUpdateDate = value),
             ),

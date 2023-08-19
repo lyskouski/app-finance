@@ -1,27 +1,29 @@
 // Copyright 2023 The terCAD team. All rights reserved.
-// Use of this source code is governed by a CC BY-NC-ND 4.0 license that can be
-// found in the LICENSE file.
+// Use of this source code is governed by a CC BY-NC-ND 4.0 license that can be found in the LICENSE file.
 
-import 'package:app_finance/_classes/app_data.dart';
-import 'package:app_finance/_classes/currency/currency_provider.dart';
-import 'package:app_finance/_classes/currency/exchange.dart';
-import 'package:app_finance/_classes/data/currency_app_data.dart';
+import 'package:app_finance/_classes/gen/generate_with_method_setters.dart';
+import 'package:app_finance/_classes/storage/app_data.dart';
+import 'package:app_finance/_classes/structure/currency/currency_provider.dart';
+import 'package:app_finance/_classes/structure/currency/exchange.dart';
+import 'package:app_finance/_classes/structure/currency_app_data.dart';
 import 'package:app_finance/_mixins/shared_preferences_mixin.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-@GenerateNiceMocks([MockSpec<AppData>(), MockSpec<SharedPreferences>()])
+@GenerateNiceMocks([MockSpec<SharedPreferences>()])
 import 'exchange_test.mocks.dart';
+@GenerateWithMethodSetters([AppData])
+import 'exchange_test.wrapper.dart';
 
 void main() {
   group('Exchange', () {
     late Exchange object;
 
     setUp(() {
-      object = Exchange(store: MockAppData());
       SharedPreferencesMixin.pref = MockSharedPreferences();
+      object = Exchange(store: WrapperAppData());
     });
 
     tearDown(() => resetMockitoState());
@@ -62,10 +64,14 @@ void main() {
               details: v.rate,
             );
           }
-          when(object.store.getByUuid('${v.origin}-${v.target}')).thenReturn(exchange);
+          CurrencyAppData? assertObject;
+          (object.store as WrapperAppData).mockGetByUuid = (_, [bool v = true]) => exchange;
+          (object.store as WrapperAppData).mockAdd = (value) => assertObject = value as CurrencyAppData;
           expect(object.reform(v.amount, origin, target), v.result);
           if (v.rate == null) {
-            verify(object.store.add(AppDataType.currencies, any)).called(1);
+            assert(assertObject is CurrencyAppData);
+            expect(assertObject!.currencyFrom, origin);
+            expect(assertObject!.currency, target);
           }
         });
       }

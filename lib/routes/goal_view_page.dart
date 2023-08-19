@@ -1,18 +1,16 @@
 // Copyright 2023 The terCAD team. All rights reserved.
-// Use of this source code is governed by a CC BY-NC-ND 4.0 license that can be
-// found in the LICENSE file.
+// Use of this source code is governed by a CC BY-NC-ND 4.0 license that can be found in the LICENSE file.
 
-import 'package:adaptive_breakpoints/adaptive_breakpoints.dart';
-import 'package:app_finance/_classes/app_locale.dart';
-import 'package:app_finance/_classes/app_menu.dart';
-import 'package:app_finance/_classes/data/bill_app_data.dart';
-import 'package:app_finance/_classes/data/goal_app_data.dart';
-import 'package:app_finance/_classes/app_data.dart';
+import 'package:app_finance/_classes/herald/app_locale.dart';
+import 'package:app_finance/_classes/storage/data_handler.dart';
+import 'package:app_finance/_classes/structure/navigation/app_menu.dart';
+import 'package:app_finance/_classes/structure/bill_app_data.dart';
+import 'package:app_finance/_classes/structure/goal_app_data.dart';
 import 'package:app_finance/_mixins/shared_preferences_mixin.dart';
-import 'package:app_finance/helpers/theme_helper.dart';
-import 'package:app_finance/_classes/app_route.dart';
+import 'package:app_finance/_configs/theme_helper.dart';
+import 'package:app_finance/_classes/structure/navigation/app_route.dart';
 import 'package:app_finance/routes/abstract_page.dart';
-import 'package:app_finance/widgets/home/base_line_widget.dart';
+import 'package:app_finance/widgets/_generic/base_line_widget.dart';
 import 'package:flutter/material.dart';
 
 class GoalViewPage extends AbstractPage {
@@ -41,12 +39,6 @@ class GoalViewPageState extends AbstractPageState<GoalViewPage> with SharedPrefe
     return data.title;
   }
 
-  void deactivateGoal(GoalAppData data, NavigatorState nav) {
-    data.hidden = true;
-    super.state.update(AppDataType.goals, widget.uuid, data);
-    nav.pop();
-  }
-
   void completeGoal(GoalAppData data, NavigatorState nav) {
     var newBill = BillAppData(
       account: defaultAccount,
@@ -55,8 +47,8 @@ class GoalViewPageState extends AbstractPageState<GoalViewPage> with SharedPrefe
       details: data.details,
       currency: data.currency,
     );
-    newBill = super.state.add(AppDataType.bills, newBill);
-    deactivateGoal(data, nav);
+    newBill = super.state.add(newBill);
+    DataHandler.deactivate(nav, store: super.state, data: data);
     String route = AppMenu.uuid(AppRoute.billEditRoute, newBill.uuid ?? '');
     nav.popAndPushNamed(route);
   }
@@ -65,7 +57,7 @@ class GoalViewPageState extends AbstractPageState<GoalViewPage> with SharedPrefe
   Widget buildButton(BuildContext context, BoxConstraints constraints) {
     final data = super.state.getByUuid(widget.uuid) as GoalAppData;
     String route = AppMenu.uuid(AppRoute.goalEditRoute, widget.uuid);
-    double indent = ThemeHelper(windowType: getWindowType(context)).getIndent() * 4;
+    double indent = ThemeHelper.getIndent(4);
     NavigatorState nav = Navigator.of(context);
     return Container(
       margin: EdgeInsets.only(left: indent),
@@ -79,7 +71,7 @@ class GoalViewPageState extends AbstractPageState<GoalViewPage> with SharedPrefe
               )
             : FloatingActionButton(
                 heroTag: 'goal_view_page_deactivate',
-                onPressed: () => deactivateGoal(data, nav),
+                onPressed: () => DataHandler.deactivate(nav, store: super.state, data: data),
                 tooltip: AppLocale.labels.deleteGoalTooltip,
                 child: const Icon(Icons.delete),
               ),
@@ -96,13 +88,11 @@ class GoalViewPageState extends AbstractPageState<GoalViewPage> with SharedPrefe
   @override
   Widget buildContent(BuildContext context, BoxConstraints constraints) {
     final item = super.state.getByUuid(widget.uuid) as GoalAppData;
-    double indent = ThemeHelper(windowType: getWindowType(context)).getIndent() * 2;
-    double offset = MediaQuery.of(context).size.width - indent * 3;
     return Column(
       children: [
         BaseLineWidget(
           title: item.title,
-          offset: offset,
+          width: ThemeHelper.getWidth(context, 6),
           uuid: widget.uuid,
           details: item.getNumberFormatted(item.details),
           description: item.closedAtFormatted,

@@ -1,9 +1,7 @@
 // Copyright 2023 The terCAD team. All rights reserved.
-// Use of this source code is governed by a CC BY-NC-ND 4.0 license that can be
-// found in the LICENSE file.
+// Use of this source code is governed by a CC BY-NC-ND 4.0 license that can be found in the LICENSE file.
 
-import 'package:adaptive_breakpoints/adaptive_breakpoints.dart';
-import 'package:app_finance/helpers/theme_helper.dart';
+import 'package:app_finance/_configs/theme_helper.dart';
 import 'package:app_finance/widgets/_wrappers/dots_tab_bar_widget.dart';
 import 'package:flutter/material.dart';
 
@@ -85,15 +83,13 @@ class TabWidgetState extends State<TabWidget> with TickerProviderStateMixin {
 
   PreferredSizeWidget? getAppBar(BuildContext context) {
     if (widget.asDots) {
-      var theme = ThemeHelper(windowType: getWindowType(context));
-      double indent = theme.getIndent();
       return DotsTabBarWidget(
         tabController: tabController,
         pageController: pageController,
         onTap: switchTab,
         tabList: widget.children,
-        indent: indent,
-        width: MediaQuery.of(context).size.width - indent * 2,
+        indent: ThemeHelper.getIndent(),
+        width: ThemeHelper.getWidth(context, 2),
         color: Theme.of(context).colorScheme.primary,
       );
     } else {
@@ -108,11 +104,13 @@ class TabWidgetState extends State<TabWidget> with TickerProviderStateMixin {
   @override
   Widget build(BuildContext context) {
     if (tabCount != widget.children.length) {
-      initControllers();
+      WidgetsBinding.instance.addPostFrameCallback((_) => setState(() => initControllers()));
     }
     if (initIndex != widget.focus) {
-      setState(() => initIndex = widget.focus);
-      switchTab(widget.focus);
+      WidgetsBinding.instance.addPostFrameCallback((_) {
+        setState(() => initIndex = widget.focus);
+        switchTab(widget.focus);
+      });
     }
     return GestureDetector(
       onHorizontalDragEnd: (DragEndDetails details) {

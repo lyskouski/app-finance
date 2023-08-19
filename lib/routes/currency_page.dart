@@ -1,14 +1,12 @@
 // Copyright 2023 The terCAD team. All rights reserved.
-// Use of this source code is governed by a CC BY-NC-ND 4.0 license that can be
-// found in the LICENSE file.
+// Use of this source code is governed by a CC BY-NC-ND 4.0 license that can be found in the LICENSE file.
 
-import 'package:adaptive_breakpoints/adaptive_breakpoints.dart';
-import 'package:app_finance/_classes/app_locale.dart';
-import 'package:app_finance/_classes/data/currency_app_data.dart';
-import 'package:app_finance/_classes/app_data.dart';
-import 'package:app_finance/helpers/theme_helper.dart';
+import 'package:app_finance/_classes/herald/app_locale.dart';
+import 'package:app_finance/_classes/structure/currency_app_data.dart';
+import 'package:app_finance/_classes/storage/app_data.dart';
+import 'package:app_finance/_configs/theme_helper.dart';
 import 'package:app_finance/routes/abstract_page.dart';
-import 'package:app_finance/widgets/_forms/notification_bar.dart';
+import 'package:app_finance/widgets/_generic/notification_bar.dart';
 import 'package:app_finance/widgets/_forms/simple_input.dart';
 import 'package:app_finance/widgets/_wrappers/row_widget.dart';
 import 'package:flutter/material.dart';
@@ -40,7 +38,7 @@ class CurrencyPageState extends AbstractPageState<CurrencyPage> {
 
   void updateAllRates(context) {
     for (CurrencyAppData rate in scope!) {
-      super.state.update(AppDataType.currencies, rate.uuid, rate);
+      super.state.update(rate.uuid, rate);
     }
     NotificationBar.showSnackBar(context, AppLocale.labels.saveNotification);
   }
@@ -53,10 +51,9 @@ class CurrencyPageState extends AbstractPageState<CurrencyPage> {
 
   @override
   Widget buildContent(BuildContext context, BoxConstraints constraints) {
-    final helper = ThemeHelper(windowType: getWindowType(context));
     final TextTheme textTheme = Theme.of(context).textTheme;
-    final indent = helper.getIndent();
-    final double maxWidth = MediaQuery.of(context).size.width - indent * 2;
+    final indent = ThemeHelper.getIndent();
+    final double maxWidth = ThemeHelper.getWidth(context, 2);
     scope ??=
         super.state.getList(AppDataType.currencies).where((v) => v.currency?.code != v.currencyFrom?.code).toList();
 

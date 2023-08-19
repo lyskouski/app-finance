@@ -1,20 +1,18 @@
 // Copyright 2023 The terCAD team. All rights reserved.
-// Use of this source code is governed by a CC BY-NC-ND 4.0 license that can be
-// found in the LICENSE file.
+// Use of this source code is governed by a CC BY-NC-ND 4.0 license that can be found in the LICENSE file.
 
 import 'dart:io';
-import 'package:adaptive_breakpoints/adaptive_breakpoints.dart';
-import 'package:app_finance/_classes/app_data.dart';
-import 'package:app_finance/_classes/app_locale.dart';
-import 'package:app_finance/_classes/currency/currency_provider.dart';
-import 'package:app_finance/_classes/data/account_app_data.dart';
-import 'package:app_finance/_classes/data/account_type.dart';
-import 'package:app_finance/_classes/data/bill_app_data.dart';
-import 'package:app_finance/_classes/data/budget_app_data.dart';
-import 'package:app_finance/_classes/data/transaction_log.dart';
-import 'package:app_finance/_classes/focus_controller.dart';
+import 'package:app_finance/_classes/storage/app_data.dart';
+import 'package:app_finance/_classes/herald/app_locale.dart';
+import 'package:app_finance/_classes/structure/currency/currency_provider.dart';
+import 'package:app_finance/_classes/structure/account_app_data.dart';
+import 'package:app_finance/_configs/account_type.dart';
+import 'package:app_finance/_classes/structure/bill_app_data.dart';
+import 'package:app_finance/_classes/structure/budget_app_data.dart';
+import 'package:app_finance/_classes/storage/transaction_log.dart';
+import 'package:app_finance/_classes/controller/focus_controller.dart';
 import 'package:app_finance/_mixins/shared_preferences_mixin.dart';
-import 'package:app_finance/helpers/theme_helper.dart';
+import 'package:app_finance/_configs/theme_helper.dart';
 import 'package:app_finance/widgets/_forms/list_selector.dart';
 import 'package:app_finance/widgets/_forms/simple_input.dart';
 import 'package:app_finance/widgets/init/loading_widget.dart';
@@ -108,18 +106,16 @@ class ImportTabState extends State<ImportTab> with SharedPreferencesMixin {
         amount = double.tryParse(amount);
       }
       try {
-        final newItem = state.add(
-            AppDataType.bills,
-            BillAppData(
-              account: await _find(AppDataType.accounts, line, accountIdx, defaultAccount),
-              category: await _find(AppDataType.budgets, line, budgetIdx, defaultBudget),
-              title: _get(line, attrBillComment).toString(),
-              details: 0.0 + amount,
-              createdAt: DateFormat(dateFormat.text).parse(_get(line, attrBillDate)),
-              updatedAt: DateFormat(dateFormat.text).parse(_get(line, attrBillDate)),
-              currency: _getCurrency(line),
-              hidden: false,
-            ));
+        final newItem = state.add(BillAppData(
+          account: await _find(AppDataType.accounts, line, accountIdx, defaultAccount),
+          category: await _find(AppDataType.budgets, line, budgetIdx, defaultBudget),
+          title: _get(line, attrBillComment).toString(),
+          details: 0.0 + amount,
+          createdAt: DateFormat(dateFormat.text).parse(_get(line, attrBillDate)),
+          updatedAt: DateFormat(dateFormat.text).parse(_get(line, attrBillDate)),
+          currency: _getCurrency(line),
+          hidden: false,
+        ));
         await TransactionLog.save(newItem);
       } catch (e) {
         setState(() => errorMessage.writeln('[$i / ${fileContent!.length}] ${e.toString()}'));
@@ -176,24 +172,20 @@ class ImportTabState extends State<ImportTab> with SharedPreferencesMixin {
     dynamic newItem;
     switch (type) {
       case AppDataType.accounts:
-        newItem = state.add(
-            AppDataType.accounts,
-            AccountAppData(
-              title: line[index],
-              type: AppAccountType.account.toString(),
-              details: 0.0,
-              currency: _getCurrency(line),
-              hidden: false,
-            ));
+        newItem = state.add(AccountAppData(
+          title: line[index],
+          type: AppAccountType.account.toString(),
+          details: 0.0,
+          currency: _getCurrency(line),
+          hidden: false,
+        ));
         break;
       default:
-        newItem = state.add(
-            AppDataType.budgets,
-            BudgetAppData(
-              title: line[index],
-              currency: _getCurrency(line),
-              hidden: false,
-            ));
+        newItem = state.add(BudgetAppData(
+          title: line[index],
+          currency: _getCurrency(line),
+          hidden: false,
+        ));
     }
     _cache[type]![line[index]] = newItem.uuid;
     await TransactionLog.save(newItem);
@@ -204,7 +196,7 @@ class ImportTabState extends State<ImportTab> with SharedPreferencesMixin {
   Widget build(BuildContext context) {
     final textTheme = Theme.of(context).textTheme;
     final ColorScheme colorScheme = Theme.of(context).colorScheme;
-    double indent = ThemeHelper(windowType: getWindowType(context)).getIndent() * 2;
+    double indent = ThemeHelper.getIndent(2);
     FocusController.init();
 
     return Consumer<AppData>(builder: (context, appState, _) {

@@ -1,12 +1,10 @@
 // Copyright 2023 The terCAD team. All rights reserved.
-// Use of this source code is governed by a CC BY-NC-ND 4.0 license that can be
-// found in the LICENSE file.
+// Use of this source code is governed by a CC BY-NC-ND 4.0 license that can be found in the LICENSE file.
 
-import 'package:adaptive_breakpoints/adaptive_breakpoints.dart';
-import 'package:app_finance/_classes/app_data.dart';
-import 'package:app_finance/_classes/app_locale.dart';
-import 'package:app_finance/helpers/theme_helper.dart';
-import 'package:app_finance/_classes/app_route.dart';
+import 'package:app_finance/_classes/storage/app_data.dart';
+import 'package:app_finance/_classes/herald/app_locale.dart';
+import 'package:app_finance/_configs/theme_helper.dart';
+import 'package:app_finance/_classes/structure/navigation/app_route.dart';
 import 'package:app_finance/routes/abstract_page.dart';
 import 'package:app_finance/widgets/home/bill_widget.dart';
 import 'package:flutter/material.dart';
@@ -37,14 +35,13 @@ class BillPageState extends AbstractPageState<BillPage> {
 
   @override
   Widget buildContent(BuildContext context, BoxConstraints constraints) {
-    var helper = ThemeHelper(windowType: getWindowType(context));
     return Column(
       children: [
         BillWidget(
-          margin: EdgeInsets.all(helper.getIndent()),
+          margin: EdgeInsets.all(ThemeHelper.getIndent()),
           title: AppLocale.labels.billHeadline,
           state: super.state.get(AppDataType.bills),
-          offset: MediaQuery.of(context).size.width - helper.getIndent() * 2,
+          width: ThemeHelper.getWidth(context, 2),
         )
       ],
     );

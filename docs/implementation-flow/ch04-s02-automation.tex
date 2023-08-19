@@ -254,6 +254,12 @@ jobs:
 
       - name: Run tests
         run: flutter test
+
+      - name: Store Tests Artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          name: testing_logs
+          path: coverage
 \end{lstlisting}
 
 \noindent By preparing a pull-request we would see next representative validations flow 

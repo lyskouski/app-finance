@@ -1,13 +1,12 @@
 // Copyright 2023 The terCAD team. All rights reserved.
-// Use of this source code is governed by a CC BY-NC-ND 4.0 license that can be
-// found in the LICENSE file.
+// Use of this source code is governed by a CC BY-NC-ND 4.0 license that can be found in the LICENSE file.
 
-import 'package:app_finance/_classes/app_route.dart';
-import 'package:app_finance/_classes/currency/currency_provider.dart';
-import 'package:app_finance/_classes/data/budget_app_data.dart';
+import 'package:app_finance/_classes/structure/navigation/app_route.dart';
+import 'package:app_finance/_classes/structure/currency/currency_provider.dart';
+import 'package:app_finance/_classes/structure/budget_app_data.dart';
 import 'package:app_finance/widgets/home/account_widget.dart';
-import 'package:app_finance/widgets/home/base_group_widget.dart';
-import 'package:app_finance/widgets/home/base_line_widget.dart';
+import 'package:app_finance/widgets/_generic/base_group_widget.dart';
+import 'package:app_finance/widgets/_generic/base_line_widget.dart';
 import 'package:currency_picker/currency_picker.dart';
 import 'package:flutter/material.dart';
 
@@ -15,7 +14,7 @@ class BudgetWidget extends AccountWidget {
   BudgetWidget({
     super.key,
     required super.title,
-    required super.offset,
+    required super.width,
     required super.margin,
     required super.state,
     super.tooltip,
@@ -45,7 +44,7 @@ class BudgetWidget extends AccountWidget {
   }
 
   @override
-  Widget buildGroupedListWidget(List<dynamic> items, BuildContext context, double offset) {
+  Widget buildGroupedListWidget(List<dynamic> items, BuildContext context, double width) {
     final item = wrapBySingleEntity(items);
     final scope = updateItems(items, item);
     return BaseGroupWidget(
@@ -54,7 +53,7 @@ class BudgetWidget extends AccountWidget {
       description: item.description,
       progress: scope.map((e) => e.progress).cast<double>().toList(),
       color: scope.map((e) => e.color ?? Colors.transparent).cast<Color>().toList(),
-      offset: offset,
+      width: width,
       items: scope,
       route: routeList,
     );
@@ -76,7 +75,7 @@ class BudgetWidget extends AccountWidget {
   }
 
   @override
-  Widget buildSingleListWidget(item, BuildContext context, double offset) {
+  Widget buildSingleListWidget(item, BuildContext context, double width) {
     item = item.first;
     return BaseLineWidget(
       uuid: item.uuid,
@@ -86,7 +85,7 @@ class BudgetWidget extends AccountWidget {
       progress: (item.progress < 1 ? 1 - item.progress : 0.0).toDouble(),
       color: item.color ?? Colors.transparent,
       hidden: item.hidden,
-      offset: offset,
+      width: width,
       route: routeList,
     );
   }

@@ -1,6 +1,5 @@
 // Copyright 2023 The terCAD team. All rights reserved.
-// Use of this source code is governed by a CC BY-NC-ND 4.0 license that can be
-// found in the LICENSE file.
+// Use of this source code is governed by a CC BY-NC-ND 4.0 license that can be found in the LICENSE file.
 
 import 'package:flutter/material.dart';
 
@@ -22,7 +21,7 @@ class RowWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    double offset = maxWidth - indent * (chunk.length - 2);
+    double width = maxWidth - indent * (chunk.length - 2);
 
     return Row(
       mainAxisAlignment: alignment,
@@ -33,7 +32,7 @@ class RowWidget extends StatelessWidget {
         } else {
           return Container(
             constraints: BoxConstraints(
-              maxWidth: offset * chunk[index ~/ 2],
+              maxWidth: width * chunk[index ~/ 2],
             ),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,

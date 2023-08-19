@@ -1,17 +1,26 @@
 @account @currency
-Feature: Verify Account functionality alignment with expectations
+Feature: Verify Account Functionality
 
-    Scenario Outline: Creating different Account types
+    Scenario Outline: Created different Account types
         Given Opened Account Form
-#        When I fill the "Account Type*" field with <type>
-#        Then I should see <shown> fields
-#            But I should not see <hidden> fields
+        When I tap on 0 index of "ListSelector" fields
+          And I tap "<type>" element
+          And I enter "<type>" to "Enter Account Identifier" text field
+          And I enter "<amount>" to "Set Balance" text field
+          And I tap on 0 index of "CurrencySelector" fields
+          And I enter "<currency>" to "Type Code" text field
+          And I tap on 1 index of "<currency>" element
+          And I tap "OK" element # Close poped-up Calendar
+          And I tap "Create new Account" button
+        Then I can see "Accounts, total" component
+          And I can see "<type>" component
+          And I can see "<result>" component
 
     Examples:
-        | type         | shown | hidden |
-        | Bank Account | 5     | 7      |
-#        | Cash         | 5     | 15     |
-#        | Credit Card  | 5     | 15     |
-#        | Debit Card   | 5     | 15     |
-#        | Deposit      | 5     | 15     |
-#        | Credit       | 5     | 15     |
+        | type         |  amount | currency |        result  |
+        | Bank Account |     100 |   EUR    |       €100.00  |
+        | Cash         |    1000 |   USD    |     $1,000.00  |
+        | Credit Card  |    1500 |   JPY    |        ¥1,500  |
+        | Debit Card   | 500.256 |   GBP    |       £500.26  |
+        | Deposit      |   10000 |   AUD    |    $10,000.00  |
+#       | Credit       | 1000000 |   CNY    | ¥1,000,000.00  |

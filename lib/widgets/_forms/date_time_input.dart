@@ -1,10 +1,8 @@
 // Copyright 2023 The terCAD team. All rights reserved.
-// Use of this source code is governed by a CC BY-NC-ND 4.0 license that can be
-// found in the LICENSE file.
+// Use of this source code is governed by a CC BY-NC-ND 4.0 license that can be found in the LICENSE file.
 
-import 'package:adaptive_breakpoints/adaptive_breakpoints.dart';
-import 'package:app_finance/_classes/focus_controller.dart';
-import 'package:app_finance/helpers/theme_helper.dart';
+import 'package:app_finance/_classes/controller/focus_controller.dart';
+import 'package:app_finance/_configs/theme_helper.dart';
 import 'package:app_finance/widgets/_forms/abstract_input.dart';
 import 'package:app_finance/widgets/_forms/date_input.dart';
 import 'package:app_finance/widgets/_wrappers/row_widget.dart';
@@ -37,8 +35,8 @@ class DateTimeInput extends AbstractInput {
 
   @override
   Widget build(BuildContext context) {
-    double indent = ThemeHelper(windowType: getWindowType(context)).getIndent() * 2;
-    double offset = width ?? MediaQuery.of(context).size.width - indent * 2;
+    double indent = ThemeHelper.getIndent(2);
+    double width = this.width ?? ThemeHelper.getWidth(context, 4);
     final locale = Localizations.localeOf(context).toString();
     final DateFormat formatterTime = DateFormat.Hms(locale);
     bool isFocused = FocusController.isFocused(focusOrder, value);
@@ -53,7 +51,7 @@ class DateTimeInput extends AbstractInput {
 
     return RowWidget(
       indent: indent,
-      maxWidth: offset,
+      maxWidth: width,
       chunk: const [0.6, 0.4],
       children: [
         [

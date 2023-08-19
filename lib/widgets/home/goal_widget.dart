@@ -1,9 +1,7 @@
 // Copyright 2023 The terCAD team. All rights reserved.
-// Use of this source code is governed by a CC BY-NC-ND 4.0 license that can be
-// found in the LICENSE file.
+// Use of this source code is governed by a CC BY-NC-ND 4.0 license that can be found in the LICENSE file.
 
-import 'package:adaptive_breakpoints/adaptive_breakpoints.dart';
-import 'package:app_finance/helpers/theme_helper.dart';
+import 'package:app_finance/_configs/theme_helper.dart';
 import 'package:app_finance/widgets/_wrappers/tab_widget.dart';
 import 'package:app_finance/widgets/home/goal_line_widget.dart';
 import 'package:flutter/material.dart';
@@ -23,15 +21,13 @@ class GoalWidget extends StatelessWidget {
     if (state.isEmpty) {
       return const SizedBox();
     }
-
-    var theme = ThemeHelper(windowType: getWindowType(context));
     final ColorScheme colorScheme = Theme.of(context).colorScheme;
 
     return Transform.translate(
       offset: const Offset(0, 18),
       child: Container(
         margin: margin,
-        height: 50 + theme.getIndent() * 3,
+        height: 50 + ThemeHelper.getIndent(3),
         color: colorScheme.inversePrimary,
         child: TabWidget(
           asDots: true,

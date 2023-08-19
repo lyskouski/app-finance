@@ -1,15 +1,13 @@
 // Copyright 2023 The terCAD team. All rights reserved.
-// Use of this source code is governed by a CC BY-NC-ND 4.0 license that can be
-// found in the LICENSE file.
+// Use of this source code is governed by a CC BY-NC-ND 4.0 license that can be found in the LICENSE file.
 
-import 'package:adaptive_breakpoints/adaptive_breakpoints.dart';
-import 'package:app_finance/_classes/app_locale.dart';
-import 'package:app_finance/_classes/app_menu.dart';
-import 'package:app_finance/_classes/app_data.dart';
-import 'package:app_finance/_classes/focus_controller.dart';
-import 'package:app_finance/helpers/theme_helper.dart';
+import 'package:app_finance/_classes/herald/app_locale.dart';
+import 'package:app_finance/_classes/structure/navigation/app_menu.dart';
+import 'package:app_finance/_classes/storage/app_data.dart';
+import 'package:app_finance/_classes/controller/focus_controller.dart';
+import 'package:app_finance/_configs/theme_helper.dart';
 import 'package:app_finance/widgets/_wrappers/toolbar_button_widget.dart';
-import 'package:app_finance/widgets/menu_widget.dart';
+import 'package:app_finance/widgets/_generic/menu_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -28,7 +26,6 @@ abstract class AbstractPageState<T extends AbstractPage> extends State<T> {
   Widget buildContent(BuildContext context, BoxConstraints constraints);
 
   AppBar buildBar(BuildContext context) {
-    final helper = ThemeHelper(windowType: getWindowType(context));
     NavigatorState nav = Navigator.of(context);
     return AppBar(
       backgroundColor: Theme.of(context).colorScheme.primary,
@@ -56,7 +53,7 @@ abstract class AbstractPageState<T extends AbstractPage> extends State<T> {
                 child: Row(
                   children: [
                     Icon(menuItem.icon),
-                    SizedBox(width: helper.getIndent()),
+                    SizedBox(width: ThemeHelper.getIndent()),
                     Text(menuItem.name),
                   ],
                 ),
@@ -75,7 +72,7 @@ abstract class AbstractPageState<T extends AbstractPage> extends State<T> {
 
   Drawer? buildDrawer() {
     final ColorScheme colorScheme = Theme.of(context).colorScheme;
-    double indent = ThemeHelper(windowType: getWindowType(context)).getIndent();
+    double indent = ThemeHelper.getIndent();
     return Drawer(
       elevation: 0,
       shape: Border.all(width: 0),

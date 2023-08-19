@@ -1,6 +1,5 @@
 // Copyright 2023 The terCAD team. All rights reserved.
-// Use of this source code is governed by a CC BY-NC-ND 4.0 license that can be
-// found in the LICENSE file.
+// Use of this source code is governed by a CC BY-NC-ND 4.0 license that can be found in the LICENSE file.
 
 import 'package:flutter/material.dart';
 
@@ -38,7 +37,7 @@ class LoadingWidgetState extends State<LoadingWidget> with TickerProviderStateMi
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
-    double offset = (height > width ? width : height) * 0.6;
+    double size = (height > width ? width : height) * 0.6;
     return AnimatedBuilder(
       animation: _controller,
       builder: (context, child) {
@@ -47,7 +46,7 @@ class LoadingWidgetState extends State<LoadingWidget> with TickerProviderStateMi
             alignment: Alignment.center,
             children: [
               Transform.scale(
-                scale: offset / 25,
+                scale: size / 25,
                 child: CircularProgressIndicator(
                   value: _controller.value,
                   color: Theme.of(context).colorScheme.inversePrimary,
@@ -56,8 +55,8 @@ class LoadingWidgetState extends State<LoadingWidget> with TickerProviderStateMi
               ),
               Image.asset(
                 'assets/images/logo.png',
-                width: offset,
-                height: offset,
+                width: size,
+                height: size,
               ),
             ],
           ),

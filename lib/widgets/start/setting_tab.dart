@@ -1,18 +1,16 @@
 // Copyright 2023 The terCAD team. All rights reserved.
-// Use of this source code is governed by a CC BY-NC-ND 4.0 license that can be
-// found in the LICENSE file.
+// Use of this source code is governed by a CC BY-NC-ND 4.0 license that can be found in the LICENSE file.
 
-import 'package:adaptive_breakpoints/adaptive_breakpoints.dart';
-import 'package:app_finance/_classes/app_locale.dart';
-import 'package:app_finance/_classes/app_theme.dart';
-import 'package:app_finance/_classes/currency/currency_provider.dart';
+import 'package:app_finance/_classes/herald/app_locale.dart';
+import 'package:app_finance/_classes/herald/app_theme.dart';
+import 'package:app_finance/_classes/structure/currency/currency_provider.dart';
 import 'package:app_finance/_mixins/shared_preferences_mixin.dart';
-import 'package:app_finance/custom_text_theme.dart';
-import 'package:app_finance/helpers/theme_helper.dart';
+import 'package:app_finance/_configs/custom_text_theme.dart';
+import 'package:app_finance/_configs/theme_helper.dart';
 import 'package:app_finance/widgets/_forms/currency_selector.dart';
 import 'package:app_finance/widgets/_forms/list_selector.dart';
 import 'package:app_finance/widgets/_wrappers/row_widget.dart';
-import 'package:app_finance/widgets/start/abstract_tab.dart';
+import 'package:app_finance/widgets/_generic/abstract_tab.dart';
 import 'package:currency_picker/currency_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
@@ -77,8 +75,8 @@ class SettingTabState<T extends SettingTab> extends AbstractTabState<T> with Sha
     String locale = Localizations.localeOf(context).toString();
     theme = Provider.of<AppTheme>(context, listen: false);
     final TextTheme textTheme = Theme.of(context).textTheme;
-    double indent = ThemeHelper(windowType: getWindowType(context)).getIndent() * 2;
-    double offset = MediaQuery.of(context).size.width - indent * 2;
+    double indent = ThemeHelper.getIndent(2);
+    double width = ThemeHelper.getWidth(context, 4);
     if (currency == null) {
       WidgetsBinding.instance.addPostFrameCallback((_) => initCurrencyFromLocale(locale));
     }
@@ -103,7 +101,7 @@ class SettingTabState<T extends SettingTab> extends AbstractTabState<T> with Sha
           SizedBox(height: indent),
           RowWidget(
             indent: indent,
-            maxWidth: offset,
+            maxWidth: width,
             alignment: MainAxisAlignment.start,
             chunk: const [0.3, 0.1, 0.6],
             children: [
