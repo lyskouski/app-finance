@@ -104,11 +104,13 @@ class TabWidgetState extends State<TabWidget> with TickerProviderStateMixin {
   @override
   Widget build(BuildContext context) {
     if (tabCount != widget.children.length) {
-      initControllers();
+      WidgetsBinding.instance.addPostFrameCallback((_) => setState(() => initControllers()));
     }
     if (initIndex != widget.focus) {
-      setState(() => initIndex = widget.focus);
-      switchTab(widget.focus);
+      WidgetsBinding.instance.addPostFrameCallback((_) {
+        setState(() => initIndex = widget.focus);
+        switchTab(widget.focus);
+      });
     }
     return GestureDetector(
       onHorizontalDragEnd: (DragEndDetails details) {
