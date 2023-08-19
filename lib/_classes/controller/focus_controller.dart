@@ -60,7 +60,7 @@ class FocusController {
 
   static void requestFocus() {
     int idx = focus;
-    if (idx >= 0) {
+    if (idx >= 0 && idx < _shift.length - 1) {
       nodes[idx].requestFocus();
       _delay.run(() => _scrollToFocusedElement(idx));
     }
