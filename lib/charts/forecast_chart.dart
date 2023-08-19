@@ -30,11 +30,12 @@ class ForecastChartState extends State<ForecastChart> {
   Widget build(BuildContext context) {
     final now = DateTime.now();
     final size = Size(widget.width, widget.width / 1.9);
+    final bgColor = Theme.of(context).colorScheme.onBackground;
     final bg = ForegroundChartPainter(
       size: size,
-      color: Colors.black,
-      lineColor: Colors.black,
-      background: Colors.black.withOpacity(0.1),
+      color: bgColor,
+      lineColor: bgColor,
+      background: bgColor.withOpacity(0.1),
       yMin: 0.0,
       yMax: 1.4,
       yArea: [0.8, 1.2],
