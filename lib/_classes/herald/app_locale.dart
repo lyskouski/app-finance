@@ -40,7 +40,7 @@ class AppLocale extends ValueNotifier<Locale?> with SharedPreferencesMixin {
     final loc = fromCode(value);
     if (loc != null) {
       labels = AppLocalizations.of(context)!;
-      setPreference(prefTheme, value).then((_) {
+      setPreference(prefLocale, value).then((_) {
         _set(loc);
       });
     }
