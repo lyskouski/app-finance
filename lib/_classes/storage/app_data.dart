@@ -119,7 +119,8 @@ class AppData extends ChangeNotifier {
         _updateAccount(initial as AccountAppData?, change as AccountAppData);
         break;
       case AppDataType.bills:
-        _updateBill(initial as BillAppData?, change as BillAppData);
+        (change as BillAppData).setState(this);
+        _updateBill(initial as BillAppData?, change);
         break;
       case AppDataType.budgets:
         _updateBudget(initial as BudgetAppData?, change as BudgetAppData);
