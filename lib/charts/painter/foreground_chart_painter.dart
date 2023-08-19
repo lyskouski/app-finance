@@ -91,11 +91,7 @@ class ForegroundChartPainter extends CustomPainter {
       textDirection: TextDirection.ltr,
     );
     textPainter.layout();
-    final offset = Offset(
-      x - textPainter.width,
-      y,
-    );
-    textPainter.paint(canvas, offset);
+    textPainter.paint(canvas, Offset(x - textPainter.width, y));
   }
 
   void _paintAxisY(Canvas canvas, Size size) {
@@ -142,7 +138,7 @@ class ForegroundChartPainter extends CustomPainter {
           DateTime txt = DateTime.fromMillisecondsSinceEpoch((min + delta).toInt());
           value = intl.DateFormat('d').format(txt);
         }
-        _painText(canvas, x + shift / 2, height + 1, value.toString());
+        _painText(canvas, x + shift - 2, height + 1, value.toString());
       }
       if (i % 2 != 0) {
         canvas.drawRect(
