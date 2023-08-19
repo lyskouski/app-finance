@@ -3,17 +3,12 @@
 
 import 'package:app_finance/_classes/herald/app_locale.dart';
 import 'package:app_finance/_configs/theme_helper.dart';
+import 'package:app_finance/_mixins/launcher_mixin.dart';
 import 'package:app_finance/widgets/_wrappers/elevate_button_widget.dart';
 import 'package:flutter/material.dart';
-import 'package:url_launcher/url_launcher.dart';
 
-class OtherWidget extends StatelessWidget {
+class OtherWidget extends StatelessWidget with LauncherMixin {
   const OtherWidget({super.key});
-
-  Future<void> _launchURL(String path) async {
-    final url = Uri.parse(path);
-    await launchUrl(url, mode: LaunchMode.externalApplication);
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -22,31 +17,31 @@ class OtherWidget extends StatelessWidget {
       child: Column(children: [
         SizedBox(height: indent / 2),
         ElevatedButtonWidget(
-          onPressed: () => _launchURL('https://www.buymeacoffee.com/lyskouski'),
+          onPressed: () => openURL('https://www.buymeacoffee.com/lyskouski'),
           text: AppLocale.labels.subscriptionCoffee,
           icon: Icons.coffee,
         ),
         SizedBox(height: indent),
         ElevatedButtonWidget(
-          onPressed: () => _launchURL('https://paypal.me/terCAD'),
+          onPressed: () => openURL('https://paypal.me/terCAD'),
           text: AppLocale.labels.subscriptionPaypal,
           icon: Icons.coffee_maker,
         ),
         SizedBox(height: indent),
         ElevatedButtonWidget(
-          onPressed: () => _launchURL('https://donorbox.org/tercad'),
+          onPressed: () => openURL('https://donorbox.org/tercad'),
           text: AppLocale.labels.subscriptionDonorbox,
           icon: Icons.support,
         ),
         SizedBox(height: indent),
         ElevatedButtonWidget(
-          onPressed: () => _launchURL('https://patreon.com/terCAD'),
+          onPressed: () => openURL('https://patreon.com/terCAD'),
           text: AppLocale.labels.subscriptionPatreon,
           icon: Icons.pattern,
         ),
         SizedBox(height: indent),
         ElevatedButtonWidget(
-          onPressed: () => _launchURL('https://github.com/sponsors/lyskouski'),
+          onPressed: () => openURL('https://github.com/sponsors/lyskouski'),
           text: AppLocale.labels.subscriptionGithub,
           icon: Icons.gite,
         ),
