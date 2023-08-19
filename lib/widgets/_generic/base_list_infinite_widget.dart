@@ -27,11 +27,13 @@ class BaseListInfiniteWidgetState extends State<BaseListInfiniteWidget> {
   final ScrollController scrollController = ScrollController();
   int currentPage = 0;
   bool isLoading = false;
+  dynamic state;
   List<dynamic> items = [];
 
   @override
   void initState() {
     super.initState();
+    state = widget.state;
     _loadItems();
     scrollController.addListener(_scrollListener);
   }
@@ -47,29 +49,47 @@ class BaseListInfiniteWidgetState extends State<BaseListInfiniteWidget> {
     Future.delayed(const Duration(milliseconds: 300), () {
       setState(() {
         isLoading = false;
-        if (widget.state != null) {
-          int endIndex = currentPage + widget.batch;
-          if (endIndex > widget.state.length) {
-            endIndex = widget.state.length;
-          }
-          items.addAll(widget.state.sublist(currentPage, endIndex));
-        }
+        _addItems();
       });
     });
   }
 
+  void _addItems() {
+    if (state == null) {
+      return;
+    }
+    int endIndex = currentPage + widget.batch;
+    if (endIndex > state.length) {
+      endIndex = state.length;
+    }
+    items.addAll(state.sublist(currentPage, endIndex));
+  }
+
   void _scrollListener() {
-    if (widget.state != null &&
+    if (state != null &&
         scrollController.position.extentAfter < 200 &&
         !isLoading &&
-        currentPage + widget.batch < widget.state.length) {
+        currentPage + widget.batch < state.length) {
       currentPage += widget.batch;
       _loadItems();
     }
   }
 
+  void clearState() {
+    setState(() {
+      state = widget.state;
+      currentPage = 0;
+      scrollController.jumpTo(0);
+      items.clear();
+      _addItems();
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
+    if (widget.state != state) {
+      WidgetsBinding.instance.addPostFrameCallback((_) => clearState());
+    }
     return ListView.builder(
         controller: scrollController,
         itemCount: items.length + 2,
