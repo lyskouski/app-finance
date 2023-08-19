@@ -13,12 +13,10 @@ abstract class AbstractAppData with FormatterMixin {
   double _amount = 0.0;
   DateTime _createdAt;
   DateTime _updatedAt;
-  AppData? _state;
   String title;
   double progress;
   bool hidden;
   String? uuid;
-  String? _ref;
   String? description;
   MaterialColor? color;
   IconData? icon;
@@ -83,22 +81,9 @@ abstract class AbstractAppData with FormatterMixin {
     return json.encode(toFile());
   }
 
-  dynamic setState(AppData state) {
-    _state = state;
-    return this;
-  }
-
-  AppData? getState() => _state;
-
-  set ref(String value) => _ref = value;
-
   dynamic get details => _amount;
 
-  set details(dynamic value) {
-    _state?.addLog(uuid, this, _amount, value, _ref);
-    _ref = null;
-    _amount = value;
-  }
+  set details(dynamic value) => _amount = value;
 
   // ignore: unnecessary_getters_setters
   DateTime get updatedAt => _updatedAt;

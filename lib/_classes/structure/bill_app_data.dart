@@ -7,10 +7,11 @@ import 'package:app_finance/_classes/structure/abstract_app_data.dart';
 import 'package:app_finance/_classes/structure/account_app_data.dart';
 import 'package:app_finance/_classes/structure/budget_app_data.dart';
 import 'package:app_finance/_classes/storage/app_data.dart';
+import 'package:app_finance/_mixins/storage_mixin.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
-class BillAppData extends AbstractAppData {
+class BillAppData extends AbstractAppData with StorageMixin {
   String account;
   String category;
 
@@ -75,14 +76,14 @@ class BillAppData extends AbstractAppData {
   @override
   String get description {
     final DateFormat formatterDate = DateFormat.MMMMd(AppLocale.code);
-    AccountAppData? type = getState()?.getByUuid(account);
+    AccountAppData? type = getState().getByUuid(account);
     return formatterDate.format(super.createdAt) +
         (type?.description != null ? ' (${AppLocale.labels.from} "${type?.description}")' : '');
   }
 
   @override
   MaterialColor? get color {
-    BudgetAppData? budget = getState()?.getByUuid(category);
+    BudgetAppData? budget = getState().getByUuid(category);
     return budget?.color;
   }
 }

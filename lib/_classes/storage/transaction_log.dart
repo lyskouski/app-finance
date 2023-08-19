@@ -98,14 +98,13 @@ class TransactionLog with SharedPreferencesMixin {
     final typeToClass = {
       goal: (data) => GoalAppData.fromJson(data),
       account: (data) => AccountAppData.fromJson(data),
-      bill: (data) => BillAppData.fromJson(data),
+      bill: (data) => BillAppData.fromJson(data)..setState(store),
       budget: (data) => BudgetAppData.fromJson(data),
       currency: (data) => CurrencyAppData.fromJson(data),
     };
     final obj = typeToClass[type];
     if (obj != null) {
       final el = obj(data);
-      el.setState(store);
       store.update(el.getType(), el.uuid ?? '', el, true);
     }
   }

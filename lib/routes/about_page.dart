@@ -33,6 +33,11 @@ class AboutPageState extends AbstractPageState<AboutPage> with LauncherMixin {
   }
 
   @override
+  String getTitle() {
+    return AppLocale.labels.aboutHeadline;
+  }
+
+  @override
   Widget buildButton(BuildContext context, BoxConstraints constraints) {
     return const SizedBox();
   }
@@ -110,10 +115,5 @@ class AboutPageState extends AbstractPageState<AboutPage> with LauncherMixin {
         ],
       ),
     );
-  }
-
-  @override
-  String getTitle() {
-    return AppLocale.labels.aboutHeadline;
   }
 }
