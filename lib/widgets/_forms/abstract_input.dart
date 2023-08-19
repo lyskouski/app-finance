@@ -7,10 +7,20 @@ import 'package:flutter/material.dart';
 abstract class AbstractInput extends StatelessWidget {
   late final FocusNode focus;
   late final int focusOrder;
+  late final bool isFocused;
   final dynamic value;
 
   AbstractInput({this.value, super.key}) {
     focus = FocusController.getFocusNode(value);
     focusOrder = FocusController.current;
+    isFocused = FocusController.isFocused(focusOrder, value);
   }
+
+  @override
+  Widget build(BuildContext context) {
+    FocusController.recordPosition(context);
+    return buildContent(context);
+  }
+
+  Widget buildContent(BuildContext context);
 }

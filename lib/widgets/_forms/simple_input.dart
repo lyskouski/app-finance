@@ -24,14 +24,14 @@ class SimpleInput extends AbstractInput {
     this.tooltip,
     this.formatter,
     this.type = TextInputType.text,
-  }) {
+  }) : super(value: controller.text) {
     if (setState != null) {
       controller.addListener(() => setState!(controller.text));
     }
   }
 
   @override
-  Widget build(BuildContext context) {
+  Widget buildContent(BuildContext context) {
     return TextFormField(
       controller: controller,
       inputFormatters: formatter,
@@ -40,7 +40,7 @@ class SimpleInput extends AbstractInput {
       textInputAction: FocusController.getAction(),
       onTap: () => FocusController.onFocus(focusOrder),
       onEditingComplete: () => FocusController.onEditingComplete(focusOrder),
-      autofocus: FocusController.isFocused(focusOrder, controller.text),
+      autofocus: isFocused,
       decoration: InputDecoration(
         filled: true,
         border: InputBorder.none,

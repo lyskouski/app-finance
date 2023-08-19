@@ -25,8 +25,7 @@ class IconSelector extends AbstractInput {
   }
 
   @override
-  Widget build(context) {
-    bool isFocused = FocusController.isFocused(focusOrder, value);
+  Widget buildContent(context) {
     if (!focus.hasFocus && isFocused) {
       Future.delayed(const Duration(milliseconds: 300), () {
         onTap(context);

@@ -24,7 +24,7 @@ class DateTimeInput extends AbstractInput {
     required this.value,
     this.style,
     this.width,
-  });
+  }) : super(value: value);
 
   void onTap(BuildContext context) {
     DatePicker.showTimePicker(context, showTitleActions: true, currentTime: value, onConfirm: (dateTime) {
@@ -34,7 +34,7 @@ class DateTimeInput extends AbstractInput {
   }
 
   @override
-  Widget build(BuildContext context) {
+  Widget buildContent(BuildContext context) {
     double indent = ThemeHelper.getIndent(2);
     double width = this.width ?? ThemeHelper.getWidth(context, 4);
     final locale = Localizations.localeOf(context).toString();

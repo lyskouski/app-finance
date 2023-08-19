@@ -62,8 +62,7 @@ class ListSelector<K extends ListSelectorItem> extends AbstractInput {
   }
 
   @override
-  Widget build(context) {
-    bool isFocused = FocusController.isFocused(focusOrder, value);
+  Widget buildContent(context) {
     if (isFocused) {
       // open popup: openDropDownSearch
     }
@@ -86,6 +85,7 @@ class ListSelector<K extends ListSelectorItem> extends AbstractInput {
         showSelectedItems: true,
         searchFieldProps: TextFieldProps(
           controller: _textController,
+          onTap: () => FocusController.onFocus(focusOrder),
           focusNode: focus,
           autofocus: isFocused,
           decoration: InputDecoration(
