@@ -81,6 +81,7 @@ abstract class AbstractAppData with FormatterMixin implements InterfaceAppData {
     return json.encode(toFile());
   }
 
+  @override
   dynamic get details => _amount;
 
   set details(dynamic value) => _amount = value;
@@ -92,6 +93,7 @@ abstract class AbstractAppData with FormatterMixin implements InterfaceAppData {
   set updatedAtFormatted(String value) => _updatedAt = DateTime.parse(value);
 
   // ignore: unnecessary_getters_setters
+  @override
   DateTime get createdAt => _createdAt;
   set createdAt(DateTime value) => _createdAt = value;
   String get createdAtFormatted => getDateFormatted(_createdAt);
