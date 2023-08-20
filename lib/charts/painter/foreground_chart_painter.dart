@@ -36,8 +36,8 @@ class ForegroundChartPainter extends CustomPainter {
   }) {
     _setTextArea();
     shift = textArea * 1.2;
-    yDiv = 12 * size!.width ~/ 640;
-    xDiv = 12 * size!.height ~/ 240;
+    yDiv = 12 * size!.height ~/ 400;
+    xDiv = 12 * size!.width ~/ 640;
   }
 
   void _setTextArea() {

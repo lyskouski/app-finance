@@ -5,11 +5,19 @@ import 'package:app_finance/charts/painter/forecast_chart_painter.dart';
 import 'package:app_finance/charts/painter/foreground_chart_painter.dart';
 import 'package:flutter/material.dart';
 
+class ForecastData {
+  final List<Offset> data;
+  final Color color;
+
+  ForecastData(this.data, {this.color = Colors.red});
+}
+
 class ForecastChart extends StatefulWidget {
   final double width;
+  final double height;
   final double indent;
   final String tooltip;
-  final List<Offset> data;
+  final List<ForecastData> data;
   final double yMax;
 
   const ForecastChart({
@@ -17,6 +25,7 @@ class ForecastChart extends StatefulWidget {
     required this.data,
     required this.yMax,
     required this.width,
+    required this.height,
     this.indent = 0.0,
     this.tooltip = '',
   });
@@ -29,7 +38,7 @@ class ForecastChartState extends State<ForecastChart> {
   @override
   Widget build(BuildContext context) {
     final now = DateTime.now();
-    final size = Size(widget.width, widget.width / 1.9);
+    final size = Size(widget.width, widget.height);
     final bgColor = Theme.of(context).colorScheme.onBackground;
     final xMin = DateTime(now.year, now.month);
     final xMax = DateTime(now.year, now.month + 1);
@@ -51,7 +60,6 @@ class ForecastChartState extends State<ForecastChart> {
       child: CustomPaint(
         size: size,
         painter: ForecastChartPainter(
-          color: Colors.red,
           indent: bg.shift,
           size: size,
           data: widget.data,
