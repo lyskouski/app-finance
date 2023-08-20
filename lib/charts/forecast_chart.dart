@@ -14,6 +14,7 @@ class ForecastData {
 
 class ForecastChart extends StatefulWidget {
   final double width;
+  final double height;
   final double indent;
   final String tooltip;
   final List<ForecastData> data;
@@ -24,6 +25,7 @@ class ForecastChart extends StatefulWidget {
     required this.data,
     required this.yMax,
     required this.width,
+    required this.height,
     this.indent = 0.0,
     this.tooltip = '',
   });
@@ -36,7 +38,7 @@ class ForecastChartState extends State<ForecastChart> {
   @override
   Widget build(BuildContext context) {
     final now = DateTime.now();
-    final size = Size(widget.width, widget.width / 1.9);
+    final size = Size(widget.width, widget.height);
     final bgColor = Theme.of(context).colorScheme.onBackground;
     final xMin = DateTime(now.year, now.month);
     final xMax = DateTime(now.year, now.month + 1);

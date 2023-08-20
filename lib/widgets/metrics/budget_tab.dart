@@ -36,6 +36,7 @@ class BudgetTab extends StatelessWidget {
             ),
             ForecastChart(
               width: ThemeHelper.getWidth(context, 4),
+              height: 200,
               indent: indent,
               data: [
                 ForecastData(DataHandler.getAmountGroupedByDate(
@@ -48,6 +49,19 @@ class BudgetTab extends StatelessWidget {
                 exchange: exchange,
               ),
             ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text(
+                  AppLocale.labels.actualData,
+                  style: textTheme.bodySmall!.copyWith(color: Colors.red),
+                ),
+                Text(
+                  AppLocale.labels.forecastData,
+                  style: textTheme.bodySmall!.copyWith(color: Colors.red.withBlue(200)),
+                ),
+              ],
+            )
           ],
         ),
       ),
