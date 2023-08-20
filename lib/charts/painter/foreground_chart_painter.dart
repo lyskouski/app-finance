@@ -65,15 +65,15 @@ class ForegroundChartPainter extends CustomPainter {
     final line = Paint()
       ..color = areaColor
       ..strokeWidth = 1;
-    double y = _shiftStep(size.height, textArea, yDiv, ((yArea[0] + yArea[1]) / 2 - yMin) ~/ (yMax / yDiv));
+    double y = _shiftStep(size.height, textArea, yDiv, ((yArea[0] + yArea[1]) / 2 - yMin) / (yMax / yDiv));
     canvas.drawLine(Offset(shift, y), Offset(size.width, y), line);
     final background = Paint()
       ..color = areaColor.withOpacity(0.1)
       ..style = PaintingStyle.fill;
     canvas.drawRect(
       Rect.fromPoints(
-        Offset(shift, _shiftStep(size.height, textArea, yDiv, (yArea[0] - yMin) ~/ (yMax / yDiv))),
-        Offset(size.width, _shiftStep(size.height, textArea, yDiv, (yArea[1] - yMin) ~/ (yMax / yDiv))),
+        Offset(shift, _shiftStep(size.height, textArea, yDiv, ((yArea[0] - yMin) / (yMax / yDiv)).round())),
+        Offset(size.width, _shiftStep(size.height, textArea, yDiv, ((yArea[1] - yMin) / (yMax / yDiv)).round())),
       ),
       background,
     );
