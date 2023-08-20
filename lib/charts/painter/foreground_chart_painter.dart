@@ -18,8 +18,8 @@ class ForegroundChartPainter extends CustomPainter {
   final dynamic xMax;
   late final double textArea;
   late final double shift;
-  final int yDiv = 7;
-  final int xDiv = 12;
+  late final int yDiv;
+  late final int xDiv;
 
   ForegroundChartPainter({
     this.areaColor = Colors.green,
@@ -34,6 +34,13 @@ class ForegroundChartPainter extends CustomPainter {
     this.xMax = 1.0,
     this.size,
   }) {
+    _setTextArea();
+    shift = textArea * 1.2;
+    yDiv = 12 * size!.width ~/ 640;
+    xDiv = 12 * size!.height ~/ 240;
+  }
+
+  void _setTextArea() {
     double tmp = size!.width / 20;
     if (tmp > 32) {
       textArea = 32.0;
@@ -42,7 +49,6 @@ class ForegroundChartPainter extends CustomPainter {
     } else {
       textArea = tmp;
     }
-    shift = textArea * 1.2;
   }
 
   @override
@@ -56,16 +62,18 @@ class ForegroundChartPainter extends CustomPainter {
   }
 
   void _plotAssert(Canvas canvas, Size size) {
-    final line = Paint()..color = areaColor;
-    double y = _shiftStep(size.height, textArea, yDiv, ((yArea[0] + yArea[1]) / 2 - yMin) ~/ (yMax / yDiv));
+    final line = Paint()
+      ..color = areaColor
+      ..strokeWidth = 1;
+    double y = _shiftStep(size.height, textArea, yDiv, ((yArea[0] + yArea[1]) / 2 - yMin) / (yMax / yDiv));
     canvas.drawLine(Offset(shift, y), Offset(size.width, y), line);
     final background = Paint()
       ..color = areaColor.withOpacity(0.1)
       ..style = PaintingStyle.fill;
     canvas.drawRect(
       Rect.fromPoints(
-        Offset(shift, _shiftStep(size.height, textArea, yDiv, (yArea[0] - yMin) ~/ (yMax / yDiv))),
-        Offset(size.width, _shiftStep(size.height, textArea, yDiv, (yArea[1] - yMin) ~/ (yMax / yDiv))),
+        Offset(shift, _shiftStep(size.height, textArea, yDiv, ((yArea[0] - yMin) / (yMax / yDiv)).round())),
+        Offset(size.width, _shiftStep(size.height, textArea, yDiv, ((yArea[1] - yMin) / (yMax / yDiv)).round())),
       ),
       background,
     );
@@ -83,11 +91,7 @@ class ForegroundChartPainter extends CustomPainter {
       textDirection: TextDirection.ltr,
     );
     textPainter.layout();
-    final offset = Offset(
-      x - textPainter.width,
-      y,
-    );
-    textPainter.paint(canvas, offset);
+    textPainter.paint(canvas, Offset(x - textPainter.width, y));
   }
 
   void _paintAxisY(Canvas canvas, Size size) {
@@ -134,9 +138,9 @@ class ForegroundChartPainter extends CustomPainter {
           DateTime txt = DateTime.fromMillisecondsSinceEpoch((min + delta).toInt());
           value = intl.DateFormat('d').format(txt);
         }
-        _painText(canvas, x + shift / 2, height + 1, value.toString());
+        _painText(canvas, x + shift - 2, height + 1, value.toString());
       }
-      if (i % 2 != 0 && i < xDiv) {
+      if (i % 2 != 0) {
         canvas.drawRect(
           Rect.fromPoints(
             Offset(x + shift, 0),

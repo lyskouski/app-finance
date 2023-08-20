@@ -27,27 +27,62 @@ class ForecastChartPainter extends CustomPainter {
     return false;
   }
 
+  List<dynamic> _bind(Offset data, Size size, double total) {
+    return [
+      total + data.dy,
+      _getValue(data, size, total),
+    ];
+  }
+
+  Offset _getValue(Offset data, Size size, [double dy = 0]) {
+    return Offset(
+      (data.dx - xMin) / (xMax - xMin) * size.width + indent,
+      (1 - (data.dy + dy) / yMax) * size.height - indent,
+    );
+  }
+
+  double _sumY(List<Offset> data) {
+    return data.fold(0.0, (v, e) => v + e.dy);
+  }
+
+  Offset _getMedian(List<Offset> data) {
+    return Offset(
+      (data.last.dx + data.first.dx) / 2,
+      _sumY(data.sublist(0, data.length ~/ 2)),
+    );
+  }
+
   @override
   void paint(Canvas canvas, Size size) {
+    if (data.isEmpty) {
+      return;
+    }
     size = this.size ?? size;
     double total = 0.0;
     Offset startPoint;
-    Offset controlPoint;
-    Offset endPoint;
-    for (int i = 0; i < data.length - 2; i += 2) {
-      [total, startPoint] = _bind(data[i], size, total);
-      [total, controlPoint] = _bind(data[i + 1], size, total);
-      [_, endPoint] = _bind(data[i + 2], size, total);
-      _paintCurve(canvas, startPoint, controlPoint, endPoint);
+    [_, startPoint] = _bind(data.first, size, total);
+    Offset point = const Offset(0, 0);
+    int i = 0;
+    for (i; i < data.length; i++) {
+      [total, point] = _bind(data[i], size, total);
+      _paintDot(canvas, point);
+      if (point.dy < 0) {
+        break;
+      }
     }
+    int third = i ~/ 3;
+    Offset startBezier = _getValue(_getMedian(data.sublist(0, third)), size);
+    total = _sumY(data.sublist(0, third));
+    Offset middleBezier = _getValue(_getMedian(data.sublist(third, 2 * third)), size, total);
+    total += _sumY(data.sublist(third, 2 * third));
+    Offset endBezier = _getValue(_getMedian(data.sublist(2 * third, i)), size, total);
+    _paintCurve(canvas, startPoint, startBezier, middleBezier);
+    _paintCurve(canvas, middleBezier, endBezier, point);
   }
 
-  List<dynamic> _bind(Offset data, Size size, double total) {
-    double dy = total + data.dy;
-    return [
-      dy,
-      Offset((data.dx - xMin) / (xMax - xMin) * size.width + indent, (1 - dy / yMax) * size.height - indent),
-    ];
+  void _paintDot(Canvas canvas, Offset point) {
+    final dot = Paint()..color = color;
+    canvas.drawCircle(point, 2.2, dot);
   }
 
   _paintCurve(Canvas canvas, Offset startPoint, Offset controlPoint, Offset endPoint) {
@@ -59,11 +94,5 @@ class ForecastChartPainter extends CustomPainter {
       ..moveTo(startPoint.dx, startPoint.dy)
       ..quadraticBezierTo(controlPoint.dx, controlPoint.dy, endPoint.dx, endPoint.dy);
     canvas.drawPath(path, line);
-
-    final dot = Paint()..color = color;
-    double r = 2.2;
-    canvas.drawCircle(startPoint, r, dot);
-    canvas.drawCircle(controlPoint, r, dot);
-    canvas.drawCircle(endPoint, r, dot);
   }
 }

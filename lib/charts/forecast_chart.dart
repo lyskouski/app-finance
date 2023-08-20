@@ -30,17 +30,20 @@ class ForecastChartState extends State<ForecastChart> {
   Widget build(BuildContext context) {
     final now = DateTime.now();
     final size = Size(widget.width, widget.width / 1.9);
+    final bgColor = Theme.of(context).colorScheme.onBackground;
+    final xMin = DateTime(now.year, now.month);
+    final xMax = DateTime(now.year, now.month + 1);
     final bg = ForegroundChartPainter(
       size: size,
-      color: Colors.black,
-      lineColor: Colors.black,
-      background: Colors.black.withOpacity(0.1),
+      color: bgColor,
+      lineColor: bgColor,
+      background: bgColor.withOpacity(0.1),
       yMin: 0.0,
       yMax: 1.4,
       yArea: [0.8, 1.2],
       xType: DateTime,
-      xMin: DateTime(now.year, now.month),
-      xMax: DateTime(now.year, now.month + 1),
+      xMin: xMin,
+      xMax: xMax,
     );
     return SizedBox(
       height: size.height,
@@ -53,8 +56,8 @@ class ForecastChartState extends State<ForecastChart> {
           size: size,
           data: widget.data,
           yMax: widget.yMax,
-          xMin: DateTime(now.year, now.month).microsecondsSinceEpoch.toDouble(),
-          xMax: DateTime(now.year, now.month + 1).microsecondsSinceEpoch.toDouble(),
+          xMin: xMin.microsecondsSinceEpoch.toDouble(),
+          xMax: xMax.microsecondsSinceEpoch.toDouble(),
         ),
         foregroundPainter: bg,
         willChange: false,
