@@ -37,10 +37,12 @@ class BudgetTab extends StatelessWidget {
             ForecastChart(
               width: ThemeHelper.getWidth(context, 4),
               indent: indent,
-              data: DataHandler.getAmountGroupedByDate(
-                store.getActualList(AppDataType.bills).cast<BillAppData>(),
-                exchange: exchange,
-              ),
+              data: [
+                ForecastData(DataHandler.getAmountGroupedByDate(
+                  store.getActualList(AppDataType.bills).cast<BillAppData>(),
+                  exchange: exchange,
+                )),
+              ],
               yMax: DataHandler.countBudgetTotal(
                 store.getList(AppDataType.budgets).cast<BudgetAppData>(),
                 exchange: exchange,
