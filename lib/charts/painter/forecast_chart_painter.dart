@@ -1,6 +1,7 @@
 // Copyright 2023 The terCAD team. All rights reserved.
 // Use of this source code is governed by a CC BY-NC-ND 4.0 license that can be found in the LICENSE file.
 
+import 'package:app_finance/_classes/math/monte_carlo_simulation.dart';
 import 'package:app_finance/charts/forecast_chart.dart';
 import 'package:flutter/material.dart';
 
@@ -32,8 +33,16 @@ class ForecastChartPainter extends CustomPainter {
       return;
     }
     size = this.size ?? size;
+    double usDay = 86400000000;
     for (final scope in data) {
-      _paint(canvas, scope.data, size, scope.color);
+      final total = _paint(canvas, scope.data, size, scope.color);
+      final dx = scope.data.last.dx;
+      if (scope.data.length > 2 && dx < xMax) {
+        final cycles = (xMax - dx) ~/ usDay;
+        final forecast = [scope.data.last];
+        forecast.addAll(MonteCarloSimulation(cycles: cycles).generate(scope.data, usDay, xMax - 2 * usDay));
+        _paint(canvas, forecast, size, scope.color.withBlue(200).withOpacity(0.4), total);
+      }
     }
   }
 
@@ -62,27 +71,36 @@ class ForecastChartPainter extends CustomPainter {
     );
   }
 
-  void _paint(Canvas canvas, List<Offset> scope, Size size, Color color) {
-    double total = 0.0;
+  double _paint(Canvas canvas, List<Offset> scope, Size size, Color color, [double total = 0.0]) {
     Offset startPoint;
     [_, startPoint] = _bind(scope.first, size, total);
-    Offset point = const Offset(0, 0);
     int i = 0;
-    for (i; i < scope.length; i++) {
-      [total, point] = _bind(scope[i], size, total);
-      _paintDot(canvas, point, color);
-      if (point.dy < 0) {
-        break;
-      }
-    }
+    Offset point;
+    [i, point] = _paintDots(canvas, scope, size, color, total);
     int third = i ~/ 3;
-    Offset startBezier = _getValue(_getMedian(scope.sublist(0, third)), size);
-    total = _sumY(scope.sublist(0, third));
+    Offset startBezier = _getValue(_getMedian(scope.sublist(0, third)), size, total);
+    total += _sumY(scope.sublist(0, third));
     Offset middleBezier = _getValue(_getMedian(scope.sublist(third, 2 * third)), size, total);
     total += _sumY(scope.sublist(third, 2 * third));
     Offset endBezier = _getValue(_getMedian(scope.sublist(2 * third, i)), size, total);
     _paintCurve(canvas, startPoint, startBezier, middleBezier, color);
     _paintCurve(canvas, middleBezier, endBezier, point, color);
+    return total + point.dy;
+  }
+
+  List<dynamic> _paintDots(Canvas canvas, List<Offset> scope, Size size, Color color, double total) {
+    Offset point = const Offset(0, 0);
+    int i = 0;
+    for (i; i < scope.length; i++) {
+      [total, point] = _bind(scope[i], size, total);
+      if (point.dy < 0) {
+        point = Offset(point.dx, 0);
+        _paintDot(canvas, point, color);
+        break;
+      }
+      _paintDot(canvas, point, color);
+    }
+    return [i - 1, point];
   }
 
   void _paintDot(Canvas canvas, Offset point, Color color) {
