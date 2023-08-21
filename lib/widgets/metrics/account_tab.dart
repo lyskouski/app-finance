@@ -38,7 +38,7 @@ class AccountTab extends StatelessWidget {
               height: 200,
               indent: indent,
               data: DataHandler.generateOhlcSummary(
-                store.getList(AppDataType.accounts).cast<AccountAppData>(),
+                store.getMultiLog(store.getList(AppDataType.accounts).cast<AccountAppData>()),
                 exchange: exchange,
               ),
             ),

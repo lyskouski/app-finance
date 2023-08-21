@@ -41,11 +41,11 @@ class DataHandler {
     return result;
   }
 
-  static List<OhlcData> generateOhlcSummary(List<InterfaceAppData> scope, {required Exchange exchange}) {
+  static List<OhlcData> generateOhlcSummary(List<List<TransactionLogData>?> scope, {required Exchange exchange}) {
     return [];
   }
 
-  static List<OhlcData> generateOhlc(List<TransactionLogData> scope) {
+  static List<OhlcData> _generateOhlc(List<TransactionLogData> scope) {
     // date,open,high,low,close
     return [];
   }

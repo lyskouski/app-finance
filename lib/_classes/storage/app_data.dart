@@ -232,4 +232,8 @@ class AppData extends ChangeNotifier {
   List<TransactionLogData>? getLog(String uuid) {
     return _history[uuid]?.reversed.toList();
   }
+
+  List<List<TransactionLogData>?> getMultiLog(List<InterfaceAppData> scope) {
+    return scope.map((e) => _history[e.uuid]).toList();
+  }
 }
