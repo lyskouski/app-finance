@@ -5,7 +5,6 @@ import 'package:app_finance/_classes/gen/generate_with_method_setters.dart';
 import 'package:app_finance/_classes/storage/data_handler.dart';
 import 'package:app_finance/_classes/structure/currency/exchange.dart';
 import 'package:app_finance/_classes/structure/transaction_log_data.dart';
-import 'package:app_finance/charts/interface/ohlc_data.dart';
 import 'package:currency_picker/currency_picker.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/annotations.dart';
@@ -49,6 +48,23 @@ void main() {
       expect(result.first.high, 42.0);
       expect(result.first.low, 3.0);
       expect(result.first.open, 5.0);
+    });
+
+    test('generateOhlcSummary (negative)', () {
+      final data = [
+        [
+          TransactionLogData<double>(
+              changedFrom: 0.0, changedTo: -100.0, name: '', timestamp: DateTime(2023, 01, 01, 1)),
+          TransactionLogData<double>(changedFrom: 0.0, changedTo: -2.0, name: '', timestamp: DateTime(2023, 01, 01, 2)),
+        ]
+      ];
+      final result = DataHandler.generateOhlcSummary(data, exchange: exchange);
+      expect(result.length, 1);
+      expect(result.first.date, DateTime(2023, 01, 01));
+      expect(result.first.close, 0.0);
+      expect(result.first.high, 2.0);
+      expect(result.first.low, 0.0);
+      expect(result.first.open, 2.0);
     });
   });
 }

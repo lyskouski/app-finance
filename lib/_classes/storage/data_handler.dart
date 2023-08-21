@@ -74,10 +74,10 @@ class DataHandler {
       }
     }
     for (OhlcData data in result.values) {
-      data.open += min;
-      data.close += min;
-      data.high += min;
-      data.low += min;
+      data.open -= min;
+      data.close -= min;
+      data.high -= min;
+      data.low -= min;
     }
     return result.values.toList();
   }
