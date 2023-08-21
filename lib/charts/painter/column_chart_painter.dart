@@ -42,7 +42,7 @@ class ColumnChartPainter extends AbstractPainter {
     final time = value.dx.toDouble();
     final rect = Rect.fromPoints(
       getValue(Offset(time - usDay * shift * 6, value.dy), size),
-      getValue(Offset(time - usDay * (shift + 1) * 6, -50 * indent), size),
+      getValue(Offset(time - usDay * (shift + 1) * 6, 0.0), size),
     );
     canvas.drawRect(rect, paint);
   }

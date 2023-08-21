@@ -175,6 +175,8 @@ class ForegroundChartPainter extends CustomPainter {
           } else {
             value = intl.DateFormat('d').format(tmp);
           }
+        } else {
+          value = (value as double).toStringAsFixed(1);
         }
         _paintText(canvas, x + shift - 2, height + 1, value.toString());
       }
