@@ -26,6 +26,8 @@ class TransactionLog with SharedPreferencesMixin {
 
   static IV get code => IV.fromLength(8);
 
+  static bool _isLocked = false;
+
   static Future<File> _get(Directory path) async {
     File file = File('${path.absolute.path}/terCAD/app-finance.log');
     if (!file.existsSync()) {
@@ -72,10 +74,20 @@ class TransactionLog with SharedPreferencesMixin {
   }
 
   static Future<void> saveRaw(String line) async {
-    if (kIsWeb) {
-      TransactionLog().setPreference('log$increment', line);
-    } else {
-      (await _logFle).writeAsString("$line\n", mode: FileMode.append);
+    while (_isLocked) {
+      sleep(const Duration(microseconds: 10));
+    }
+    _isLocked = true;
+    try {
+      if (kIsWeb) {
+        TransactionLog().setPreference('log$increment', line);
+      } else {
+        await (await _logFle).writeAsString("$line\n", mode: FileMode.append);
+      }
+    } catch (e) {
+      rethrow;
+    } finally {
+      _isLocked = false;
     }
   }
 
@@ -158,7 +170,7 @@ class TransactionLog with SharedPreferencesMixin {
         }
         // ignore: unused_catch_stack
       } catch (e, stackTrace) {
-        // print([e, stackTrace]);
+        print([e, stackTrace]);
         isOK = false;
       }
     }
