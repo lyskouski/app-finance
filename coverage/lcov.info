@@ -1610,12 +1610,13 @@ DA:174,0
 DA:176,0
 DA:179,0
 DA:181,0
-DA:182,0
 DA:183,0
 DA:184,0
 DA:185,0
-DA:193,0
-LF:96
+DA:186,0
+DA:187,0
+DA:195,0
+LF:97
 LH:0
 end_of_record
 SF:lib/charts/bar_vertical_group.dart
