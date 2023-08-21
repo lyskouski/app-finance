@@ -3,10 +3,12 @@
 
 import 'package:app_finance/_classes/storage/app_data.dart';
 import 'package:currency_picker/currency_picker.dart';
+import 'package:flutter/material.dart';
 
 abstract class InterfaceAppData {
   String? uuid;
   Currency? currency;
+  IconData? icon;
 
   DateTime get createdAt;
 

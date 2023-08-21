@@ -4,6 +4,7 @@
 import 'dart:collection';
 
 import 'package:app_finance/_classes/storage/app_data.dart';
+import 'package:app_finance/_classes/structure/bill_app_data.dart';
 import 'package:app_finance/_classes/structure/budget_app_data.dart';
 import 'package:app_finance/_classes/structure/currency/exchange.dart';
 import 'package:app_finance/_classes/structure/interface_app_data.dart';
@@ -11,7 +12,7 @@ import 'package:app_finance/_classes/structure/transaction_log_data.dart';
 import 'package:app_finance/charts/interface/ohlc_data.dart';
 import 'package:flutter/material.dart';
 
-typedef DateCallback = int Function(DateTime date);
+typedef DateCallback = double Function(InterfaceAppData item);
 
 class DataHandler {
   static void deactivate(NavigatorState nav, {required AppData store, String? uuid, InterfaceAppData? data}) {
@@ -28,28 +29,36 @@ class DataHandler {
     return scope.fold(0.0, (v, e) => v + exchange.reform((e as BudgetAppData).amountLimit, e.currency, currency));
   }
 
+  static List<Offset> getAmountGroupedByCategory(List<BillAppData> scope, List<BudgetAppData> budgets,
+      {required Exchange exchange}) {
+    final idx = budgets.map((e) => e.uuid).toList();
+    fn(item) => idx.indexWhere((uuid) => uuid == item.category).toDouble();
+    return _getGroupedAmount(scope, fn, exchange: exchange);
+  }
+
   static List<Offset> getAmountGroupedByMonth(List<InterfaceAppData> scope, {required Exchange exchange}) {
-    fn(DateTime createdAt) => DateTime(createdAt.year, createdAt.month).microsecondsSinceEpoch;
+    fn(item) => DateTime(item.createdAt.year, item.createdAt.month).microsecondsSinceEpoch.toDouble();
     return _getGroupedAmount(scope, fn, exchange: exchange);
   }
 
   static List<Offset> getAmountGroupedByDate(List<InterfaceAppData> scope, {required Exchange exchange}) {
-    fn(DateTime createdAt) => DateTime(createdAt.year, createdAt.month, createdAt.day).microsecondsSinceEpoch;
+    fn(item) =>
+        DateTime(item.createdAt.year, item.createdAt.month, item.createdAt.day).microsecondsSinceEpoch.toDouble();
     return _getGroupedAmount(scope, fn, exchange: exchange);
   }
 
   static List<Offset> _getGroupedAmount(List<InterfaceAppData> scope, DateCallback fn, {required Exchange exchange}) {
-    final data = SplayTreeMap<int, List<double>>();
+    final data = SplayTreeMap<dynamic, List<double>>();
     final currency = exchange.getDefaultCurrency();
     for (final item in scope) {
-      int actual = fn(item.createdAt);
+      final actual = fn(item);
       if (data[actual] == null) {
         data[actual] = [];
       }
       data[actual]!.add(exchange.reform(item.details, item.currency, currency));
     }
     final List<Offset> result = [];
-    data.forEach((key, value) => result.add(Offset(key.toDouble(), value.fold(0.0, (v, e) => v + e))));
+    data.forEach((key, value) => result.add(Offset(key, value.fold(0.0, (v, e) => v + e))));
     return result;
   }
 

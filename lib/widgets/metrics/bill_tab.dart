@@ -7,6 +7,7 @@ import 'package:app_finance/_classes/storage/data_handler.dart';
 import 'package:app_finance/_classes/structure/bill_app_data.dart';
 import 'package:app_finance/_classes/structure/currency/exchange.dart';
 import 'package:app_finance/_configs/theme_helper.dart';
+import 'package:app_finance/charts/bar_race_chart.dart';
 import 'package:app_finance/charts/column_chart.dart';
 import 'package:app_finance/charts/interface/chart_data.dart';
 import 'package:flutter/material.dart';
@@ -55,6 +56,8 @@ class BillTab extends StatelessWidget {
       double yPrevMax = data.last.data.reduce((max, current) => current.dy > max.dy ? current : max).dy;
       yMax = yMax > yPrevMax ? yMax : yPrevMax;
     }
+    final budgets = store.getList(AppDataType.budgets);
+    double budgetCount = budgets.length + 1;
     return SingleChildScrollView(
       child: Padding(
         padding: EdgeInsets.all(indent * 2),
@@ -71,6 +74,23 @@ class BillTab extends StatelessWidget {
               indent: indent,
               data: data,
               yMax: yMax * 1.2,
+            ),
+            SizedBox(height: indent),
+            Text(
+              AppLocale.labels.chartBarRace,
+              style: textTheme.bodyLarge,
+            ),
+            BarRaceChart(
+              width: ThemeHelper.getWidth(context, 4),
+              height: 36 * budgetCount,
+              indent: indent,
+              categories: budgets.cast(),
+              data: DataHandler.getAmountGroupedByCategory(
+                store.getActualList(AppDataType.bills).cast(),
+                budgets.cast(),
+                exchange: Exchange(store: store),
+              ),
+              yMax: budgetCount,
             ),
           ],
         ),
