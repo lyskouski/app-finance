@@ -3,6 +3,7 @@
 
 import 'package:app_finance/_classes/herald/app_locale.dart';
 import 'package:app_finance/charts/interface/chart_data.dart';
+import 'package:app_finance/charts/painter/column_chart_painter.dart';
 import 'package:app_finance/charts/painter/foreground_chart_painter.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
@@ -49,14 +50,14 @@ class ColumnChart extends StatelessWidget {
       width: size.width,
       child: CustomPaint(
         size: size,
-        /* painter: ForecastChartPainter(
+        painter: ColumnChartPainter(
           indent: bg.shift,
           size: size,
           data: data,
           yMax: yMax,
           xMin: xMin.microsecondsSinceEpoch.toDouble(),
           xMax: xMax.microsecondsSinceEpoch.toDouble(),
-        ),*/
+        ),
         foregroundPainter: bg,
         willChange: false,
         child: Padding(

@@ -34,7 +34,10 @@ class BillTab extends StatelessWidget {
       ),
       ChartData(
         DataHandler.getAmountGroupedByMonth(
-          scope.where((e) => e.createdAt.isBefore(currentYear)).toList(),
+          scope.where((e) => e.createdAt.isBefore(currentYear)).map((e) {
+            e.createdAt = e.createdAt.add(const Duration(days: 365));
+            return e;
+          }).toList(),
           exchange: exchange,
         ),
         color: Colors.grey,
@@ -67,7 +70,7 @@ class BillTab extends StatelessWidget {
               height: 200,
               indent: indent,
               data: data,
-              yMax: yMax,
+              yMax: yMax * 1.2,
             ),
           ],
         ),
