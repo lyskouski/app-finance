@@ -41,10 +41,11 @@ class DataHandler {
     return result;
   }
 
-  static List<OhlcData> generateOhlcSummary(List<List<TransactionLogData>?> scope, {required Exchange exchange}) {
+  static List<OhlcData> generateOhlcSummary(List<List<TransactionLogData>?> scope,
+      {required Exchange exchange, DateTime? cut}) {
     final data = scope.firstOrNull;
     for (int i = 1; i < scope.length; i++) {
-      data!.addAll(scope[i]!);
+      data!.addAll(scope[i]!.where((e) => cut == null || e.timestamp.isAfter(cut)));
     }
     if (data != null && data.isNotEmpty) {
       data.sort((a, b) => a.timestamp.compareTo(b.timestamp));

@@ -12,6 +12,7 @@ class OhlcChart extends StatefulWidget {
   final double width;
   final double height;
   final double indent;
+  final DateTime xMin;
   final String tooltip;
   final List<OhlcData> data;
 
@@ -20,6 +21,7 @@ class OhlcChart extends StatefulWidget {
     required this.data,
     required this.width,
     required this.height,
+    required this.xMin,
     this.indent = 0.0,
     this.tooltip = '',
   });
@@ -34,7 +36,6 @@ class OhlcChartState extends State<OhlcChart> {
     final now = DateTime.now();
     final size = Size(widget.width, widget.height);
     final bgColor = Theme.of(context).colorScheme.onBackground;
-    final xMin = DateTime(now.year, now.month - 5);
     final xMax = DateTime(now.year, now.month + 1);
     double yMin = 0.0;
     double yMax = 0.0;
@@ -42,7 +43,7 @@ class OhlcChartState extends State<OhlcChart> {
       if (widget.data[i].low < yMin) yMin = widget.data[i].low;
       if (widget.data[i].high > yMax) yMax = widget.data[i].high;
     }
-    yMax *= 1.2;
+    yMax *= 1.25;
     final bg = ForegroundChartPainter(
       size: size,
       color: bgColor,
@@ -51,7 +52,7 @@ class OhlcChartState extends State<OhlcChart> {
       yMin: yMin,
       yMax: yMax,
       xType: DateTime,
-      xMin: xMin,
+      xMin: widget.xMin,
       xMax: xMax,
       xDivider: 6,
       xTpl: DateFormat.Md(AppLocale.code),
@@ -67,7 +68,7 @@ class OhlcChartState extends State<OhlcChart> {
           size: size,
           data: widget.data,
           yMax: yMax,
-          xMin: xMin.microsecondsSinceEpoch.toDouble(),
+          xMin: widget.xMin.microsecondsSinceEpoch.toDouble(),
           xMax: xMax.microsecondsSinceEpoch.toDouble(),
         ),
         foregroundPainter: bg,

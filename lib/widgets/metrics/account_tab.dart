@@ -23,6 +23,8 @@ class AccountTab extends StatelessWidget {
     final TextTheme textTheme = Theme.of(context).textTheme;
     double indent = ThemeHelper.getIndent();
     final exchange = Exchange(store: store);
+    final now = DateTime.now();
+    final xMin = DateTime(now.year, now.month - 5);
     return SingleChildScrollView(
       child: Padding(
         padding: EdgeInsets.all(indent * 2),
@@ -37,9 +39,11 @@ class AccountTab extends StatelessWidget {
               width: ThemeHelper.getWidth(context, 4),
               height: 200,
               indent: indent,
+              xMin: xMin,
               data: DataHandler.generateOhlcSummary(
                 store.getMultiLog(store.getList(AppDataType.accounts).cast<AccountAppData>()),
                 exchange: exchange,
+                cut: xMin,
               ),
             ),
           ],
