@@ -1,7 +1,7 @@
 // Copyright 2023 The terCAD team. All rights reserved.
 // Use of this source code is governed by a CC BY-NC-ND 4.0 license that can be found in the LICENSE file.
 
-import 'package:app_finance/charts/interface/forecast_data.dart';
+import 'package:app_finance/charts/interface/chart_data.dart';
 import 'package:app_finance/charts/painter/forecast_chart_painter.dart';
 import 'package:app_finance/charts/painter/foreground_chart_painter.dart';
 import 'package:flutter/material.dart';
@@ -11,7 +11,7 @@ class ForecastChart extends StatelessWidget {
   final double height;
   final double indent;
   final String tooltip;
-  final List<ForecastData> data;
+  final List<ChartData> data;
   final double yMax;
 
   const ForecastChart({

@@ -9,7 +9,7 @@ import 'package:app_finance/_classes/structure/budget_app_data.dart';
 import 'package:app_finance/_classes/structure/currency/exchange.dart';
 import 'package:app_finance/charts/forecast_chart.dart';
 import 'package:app_finance/_configs/theme_helper.dart';
-import 'package:app_finance/charts/interface/forecast_data.dart';
+import 'package:app_finance/charts/interface/chart_data.dart';
 import 'package:flutter/material.dart';
 
 class BudgetTab extends StatelessWidget {
@@ -40,7 +40,7 @@ class BudgetTab extends StatelessWidget {
               height: 200,
               indent: indent,
               data: [
-                ForecastData(DataHandler.getAmountGroupedByDate(
+                ChartData(DataHandler.getAmountGroupedByDate(
                   store.getActualList(AppDataType.bills).cast<BillAppData>(),
                   exchange: exchange,
                 )),

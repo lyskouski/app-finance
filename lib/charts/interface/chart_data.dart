@@ -3,9 +3,9 @@
 
 import 'package:flutter/material.dart';
 
-class ForecastData {
+class ChartData {
   final List<Offset> data;
   final Color color;
 
-  ForecastData(this.data, {this.color = Colors.red});
+  ChartData(this.data, {this.color = Colors.red});
 }
