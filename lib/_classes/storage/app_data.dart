@@ -158,12 +158,11 @@ class AppData extends ChangeNotifier {
     }
     final rec = BillRecalculation(change: change, initial: initial)..exchange = Exchange(store: this);
     if (currAccount != null) {
-      rec.updateAccount(currAccount, prevAccount);
+      rec.updateAccount(currAccount, prevAccount, addLog);
       _data[AppDataType.accounts]?.add(change.account);
     }
     if (currBudget != null) {
       rec.updateBudget(currBudget, prevBudget);
-      // addLog(currBudget.uuid, change, 0.0, change.details, change.uuid);
       _data[AppDataType.budgets]?.add(change.category);
     }
     _set(AppDataType.bills, change);

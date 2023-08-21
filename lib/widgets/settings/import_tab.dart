@@ -116,12 +116,13 @@ class ImportTabState extends State<ImportTab> with SharedPreferencesMixin {
           currency: _getCurrency(line),
           hidden: false,
         ));
-        await TransactionLog.save(newItem);
+        TransactionLog.save(newItem);
       } catch (e) {
         setState(() => errorMessage.writeln('[$i / ${fileContent!.length}] ${e.toString()}'));
       }
     }
     await state.restate();
+    setState(() => fileContent = null);
   }
 
   Future<void> wrapCall(Function callback) async {
@@ -188,7 +189,7 @@ class ImportTabState extends State<ImportTab> with SharedPreferencesMixin {
         ));
     }
     _cache[type]![line[index]] = newItem.uuid;
-    await TransactionLog.save(newItem);
+    TransactionLog.save(newItem);
     return newItem.uuid;
   }
 

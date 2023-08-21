@@ -10,13 +10,16 @@ import '_steps/file_runner.dart';
 import '_steps/screen_capture.dart';
 
 void main() {
-  TestWidgetsFlutterBinding.ensureInitialized();
-  ScreenCapture.enableScreenCapture();
-
   Iterable<File> features = Directory('./test/e2e')
       .listSync(recursive: true)
       .where((entity) => entity is File && entity.path.endsWith('.feature'))
       .cast<File>();
+
+  setUpAll(() {
+    TestWidgetsFlutterBinding.ensureInitialized();
+    ScreenCapture.enableScreenCapture();
+    PumpMain.cleanUpData();
+  });
 
   group('Behavioral Tests', () {
     for (var file in features) {

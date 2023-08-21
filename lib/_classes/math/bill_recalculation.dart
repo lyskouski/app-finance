@@ -6,6 +6,8 @@ import 'package:app_finance/_classes/structure/account_app_data.dart';
 import 'package:app_finance/_classes/structure/bill_app_data.dart';
 import 'package:app_finance/_classes/structure/budget_app_data.dart';
 
+typedef LogFunction = void Function(String uuid, dynamic initial, double initialValue, double value, [String? ref]);
+
 class BillRecalculation extends AbstractRecalculation {
   BillAppData change;
   BillAppData? initial;
@@ -33,15 +35,19 @@ class BillRecalculation extends AbstractRecalculation {
     return initial!.hidden ? 0.0 : initial?.details;
   }
 
-  BillRecalculation updateAccount(AccountAppData accountChange, AccountAppData? accountInitial) {
-    if (accountInitial != null &&
-        accountChange.uuid != accountInitial.uuid &&
-        accountInitial.createdAt.isBefore(initial!.createdAt)) {
-      accountInitial.details += super.exchange.reform(getPrevDelta(), initial?.currency, accountInitial.currency);
+  BillRecalculation updateAccount(AccountAppData accountChange, AccountAppData? accountInitial, LogFunction callback) {
+    double? diffDelta;
+    if (accountInitial != null && initial != null && accountChange.uuid != accountInitial.uuid) {
+      diffDelta = getPrevDelta();
+      callback(accountInitial.uuid!, initial, 0.0, diffDelta, initial!.uuid);
+    }
+    double delta = getStateDelta(accountInitial, accountChange);
+    callback(accountChange.uuid!, change, 0.0, -delta, change.uuid);
+    if (diffDelta != null && accountInitial!.createdAt.isBefore(initial!.createdAt)) {
+      accountInitial.details += super.exchange.reform(diffDelta, initial?.currency, accountInitial.currency);
     }
     if (accountChange.createdAt.isBefore(change.createdAt)) {
-      accountChange.details -=
-          super.exchange.reform(getStateDelta(accountInitial, accountChange), change.currency, accountChange.currency);
+      accountChange.details -= super.exchange.reform(delta, change.currency, accountChange.currency);
     }
     return this;
   }

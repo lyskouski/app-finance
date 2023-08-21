@@ -72,19 +72,24 @@ class ForecastChartPainter extends CustomPainter {
   }
 
   double _paint(Canvas canvas, List<Offset> scope, Size size, Color color, [double total = 0.0]) {
+    if (scope.isEmpty) {
+      return 0.0;
+    }
     Offset startPoint;
     [_, startPoint] = _bind(scope.first, size, total);
     int i = 0;
     Offset point;
     [i, point] = _paintDots(canvas, scope, size, color, total);
     int third = i ~/ 3;
-    Offset startBezier = _getValue(_getMedian(scope.sublist(0, third)), size, total);
-    total += _sumY(scope.sublist(0, third));
-    Offset middleBezier = _getValue(_getMedian(scope.sublist(third, 2 * third)), size, total);
-    total += _sumY(scope.sublist(third, 2 * third));
-    Offset endBezier = _getValue(_getMedian(scope.sublist(2 * third, i)), size, total);
-    _paintCurve(canvas, startPoint, startBezier, middleBezier, color);
-    _paintCurve(canvas, middleBezier, endBezier, point, color);
+    if (third > 0) {
+      Offset startBezier = _getValue(_getMedian(scope.sublist(0, third)), size, total);
+      total += _sumY(scope.sublist(0, third));
+      Offset middleBezier = _getValue(_getMedian(scope.sublist(third, 2 * third)), size, total);
+      total += _sumY(scope.sublist(third, 2 * third));
+      Offset endBezier = _getValue(_getMedian(scope.sublist(2 * third, i)), size, total);
+      _paintCurve(canvas, startPoint, startBezier, middleBezier, color);
+      _paintCurve(canvas, middleBezier, endBezier, point, color);
+    }
     return total + point.dy;
   }
 

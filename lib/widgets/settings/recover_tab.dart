@@ -68,7 +68,7 @@ class SyncTabState extends State<RecoverTab> {
     List<int> uint8list = await client.read(path.text);
     List<String> lines = String.fromCharCodes(uint8list).split('\n');
     for (String line in lines) {
-      await TransactionLog.save(line, true);
+      TransactionLog.save(line, true);
     }
     setState(() {
       inProgress = false;
