@@ -4,6 +4,7 @@
 import 'package:app_finance/_classes/herald/app_locale.dart';
 import 'package:app_finance/charts/interface/ohlc_data.dart';
 import 'package:app_finance/charts/painter/foreground_chart_painter.dart';
+import 'package:app_finance/charts/painter/ohlc_chart_painter.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
@@ -35,13 +36,20 @@ class OhlcChartState extends State<OhlcChart> {
     final bgColor = Theme.of(context).colorScheme.onBackground;
     final xMin = DateTime(now.year, now.month - 5);
     final xMax = DateTime(now.year, now.month + 1);
+    double yMin = 0.0;
+    double yMax = 0.0;
+    for (int i = 0; i < widget.data.length; i++) {
+      if (widget.data[i].low < yMin) yMin = widget.data[i].low;
+      if (widget.data[i].high > yMax) yMax = widget.data[i].high;
+    }
+    yMax *= 1.2;
     final bg = ForegroundChartPainter(
       size: size,
       color: bgColor,
       lineColor: bgColor,
       background: bgColor.withOpacity(0.1),
-      yMin: 0.0, //tbd
-      yMax: 1.4, //tbd
+      yMin: yMin,
+      yMax: yMax,
       xType: DateTime,
       xMin: xMin,
       xMax: xMax,
@@ -53,14 +61,15 @@ class OhlcChartState extends State<OhlcChart> {
       width: size.width,
       child: CustomPaint(
         size: size,
-        /* painter: OhlcChartPainter(
+        painter: OhlcChartPainter(
           indent: bg.shift,
+          color: bgColor,
           size: size,
           data: widget.data,
-          yMax: widget.yMax,
+          yMax: yMax,
           xMin: xMin.microsecondsSinceEpoch.toDouble(),
           xMax: xMax.microsecondsSinceEpoch.toDouble(),
-        ),*/
+        ),
         foregroundPainter: bg,
         willChange: false,
         child: Padding(

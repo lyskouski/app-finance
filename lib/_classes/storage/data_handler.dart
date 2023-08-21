@@ -47,6 +47,7 @@ class DataHandler {
       data!.addAll(scope[i]!);
     }
     if (data != null && data.isNotEmpty) {
+      data.sort((a, b) => a.timestamp.compareTo(b.timestamp));
       return _generateOhlc(data);
     }
     return [];
@@ -55,11 +56,13 @@ class DataHandler {
   static List<OhlcData> _generateOhlc(List<TransactionLogData> scope) {
     final result = SplayTreeMap<DateTime, OhlcData>();
     double min = 0;
+    double close = 0;
     for (int i = 0; i < scope.length; i++) {
-      final key = DateTime(scope[i].timestamp.year, scope[i].timestamp.month, (scope[i].timestamp.day / 7).ceil());
+      final key = DateTime(scope[i].timestamp.year, scope[i].timestamp.month, (scope[i].timestamp.day / 7).floor() * 6);
       final value = scope[i].changedTo - scope[i].changedFrom;
       if (!result.containsKey(key)) {
-        result[key] = OhlcData(date: key, open: value, close: value, high: value, low: value);
+        result[key] =
+            OhlcData(date: key, open: value + close, close: value + close, high: value + close, low: value + close);
       } else {
         result[key]!.close += value;
       }
@@ -72,6 +75,7 @@ class DataHandler {
       if (min > result[key]!.close) {
         min = result[key]!.close;
       }
+      close = result[key]!.close;
     }
     for (OhlcData data in result.values) {
       data.open -= min;
