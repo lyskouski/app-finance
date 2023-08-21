@@ -81,7 +81,7 @@ class AppData extends ChangeNotifier {
     }
     if (initialValue != value) {
       _history[uuid]!.add(TransactionLogData(
-        timestamp: initial.updatedAt,
+        timestamp: initial.createdAt,
         ref: ref,
         currency: initial.currency,
         name: 'details',
@@ -93,9 +93,7 @@ class AppData extends ChangeNotifier {
 
   void update(String uuid, dynamic value, [bool createIfMissing = false]) {
     var initial = getByUuid(uuid, false);
-    if (initial != null) {
-      addLog(uuid, value, initial.details, value.details);
-    }
+    addLog(uuid, value, initial?.details ?? 0.0, value.details);
     if (initial != null || createIfMissing) {
       _update(initial, value);
     }
