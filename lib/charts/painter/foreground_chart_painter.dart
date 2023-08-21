@@ -135,8 +135,8 @@ class ForegroundChartPainter extends CustomPainter {
       if (yType == double) {
         _paintText(canvas, textArea, y - textArea / 3, (yMin + delta).toStringAsFixed(2));
       } else if (yType == IconData) {
-        final code = i >= yMap.length ? Icons.question_mark : yMap[i];
-        _paintIcon(canvas, textArea, y - textArea / 3, code);
+        final code = yDiv - i - 1 >= yMap.length ? null : yMap[yDiv - i - 1];
+        _paintIcon(canvas, textArea, y - textArea, code);
       }
     }
   }

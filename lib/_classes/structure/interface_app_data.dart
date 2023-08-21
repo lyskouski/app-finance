@@ -9,6 +9,7 @@ abstract class InterfaceAppData {
   String? uuid;
   Currency? currency;
   IconData? icon;
+  MaterialColor? color;
 
   DateTime get createdAt;
 

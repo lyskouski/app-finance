@@ -57,7 +57,6 @@ class BillTab extends StatelessWidget {
       yMax = yMax > yPrevMax ? yMax : yPrevMax;
     }
     final budgets = store.getList(AppDataType.budgets);
-    double budgetCount = budgets.length + 1;
     return SingleChildScrollView(
       child: Padding(
         padding: EdgeInsets.all(indent * 2),
@@ -82,7 +81,6 @@ class BillTab extends StatelessWidget {
             ),
             BarRaceChart(
               width: ThemeHelper.getWidth(context, 4),
-              height: 36 * budgetCount,
               indent: indent,
               categories: budgets.cast(),
               data: DataHandler.getAmountGroupedByCategory(
@@ -90,7 +88,6 @@ class BillTab extends StatelessWidget {
                 budgets.cast(),
                 exchange: Exchange(store: store),
               ),
-              yMax: budgetCount,
             ),
           ],
         ),
