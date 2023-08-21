@@ -7,6 +7,8 @@ import 'package:app_finance/_classes/storage/app_data.dart';
 import 'package:app_finance/_classes/structure/budget_app_data.dart';
 import 'package:app_finance/_classes/structure/currency/exchange.dart';
 import 'package:app_finance/_classes/structure/interface_app_data.dart';
+import 'package:app_finance/_classes/structure/transaction_log_data.dart';
+import 'package:app_finance/charts/ohlc_chart.dart';
 import 'package:flutter/material.dart';
 
 class DataHandler {
@@ -37,5 +39,14 @@ class DataHandler {
     final List<Offset> result = [];
     data.forEach((key, value) => result.add(Offset(key.toDouble(), value.fold(0.0, (v, e) => v + e))));
     return result;
+  }
+
+  static List<OhlcData> generateOhlcSummary(List<InterfaceAppData> scope, {required Exchange exchange}) {
+    return [];
+  }
+
+  static List<OhlcData> generateOhlc(List<TransactionLogData> scope) {
+    // date,open,high,low,close
+    return [];
   }
 }

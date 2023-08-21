@@ -44,6 +44,7 @@
     "budgetTooltip": "Open Budget Types",
     "cash": "Cash",
     "chartForecast": "Forecast Chart",
+    "chartOHLC": "Candlestick (OHLC) Chart",
     "closedAt": "Finished till Date",
     "collapse": "Collapse (Restore) Section",
     "color": "Color",

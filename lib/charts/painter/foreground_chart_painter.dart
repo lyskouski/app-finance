@@ -19,7 +19,10 @@ class ForegroundChartPainter extends CustomPainter {
   late final double textArea;
   late final double shift;
   late final int yDiv;
+  final int yDivider;
   late final int xDiv;
+  final int xDivider;
+  final intl.DateFormat? xTpl;
 
   ForegroundChartPainter({
     this.areaColor = Colors.green,
@@ -33,11 +36,14 @@ class ForegroundChartPainter extends CustomPainter {
     this.xMin = 0.0,
     this.xMax = 1.0,
     this.size,
+    this.yDivider = 12,
+    this.xDivider = 12,
+    this.xTpl,
   }) {
     _setTextArea();
     shift = textArea * 1.2;
-    yDiv = 12 * size!.height ~/ 400;
-    xDiv = 12 * size!.width ~/ 640;
+    yDiv = yDivider * size!.height ~/ 400;
+    xDiv = xDivider * size!.width ~/ 640;
   }
 
   void _setTextArea() {
@@ -135,8 +141,12 @@ class ForegroundChartPainter extends CustomPainter {
       if (i < xDiv) {
         dynamic value = min! + delta;
         if (xType == DateTime) {
-          DateTime txt = DateTime.fromMillisecondsSinceEpoch((min + delta).toInt());
-          value = intl.DateFormat('d').format(txt);
+          DateTime tmp = DateTime.fromMillisecondsSinceEpoch((min + delta).toInt());
+          if (xTpl != null) {
+            value = xTpl!.format(tmp);
+          } else {
+            value = intl.DateFormat('d').format(tmp);
+          }
         }
         _painText(canvas, x + shift - 2, height + 1, value.toString());
       }

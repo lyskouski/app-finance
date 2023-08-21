@@ -46,7 +46,7 @@ class BaseGroupWidget extends StatelessWidget {
               children: [
                 Icon(item.icon, size: 16.0, color: item.color),
                 const SizedBox(height: 6.0),
-                BarVerticalSingle(value: item.progress, height: 12.0, color: item.color),
+                BarVerticalSingle(value: item.progress, height: 12.0, color: item.color ?? Colors.transparent),
               ],
             )
           : RadialBarChart(
