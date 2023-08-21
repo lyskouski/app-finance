@@ -122,6 +122,7 @@ class ImportTabState extends State<ImportTab> with SharedPreferencesMixin {
       }
     }
     await state.restate();
+    setState(() => fileContent = null);
   }
 
   Future<void> wrapCall(Function callback) async {
