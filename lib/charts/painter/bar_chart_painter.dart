@@ -39,9 +39,10 @@ class BarChartPainter extends AbstractPainter {
       ..color = color
       ..style = PaintingStyle.fill
       ..strokeWidth = 1;
+    final xPoint = yMax - value.dx - shift;
     final rect = Rect.fromPoints(
-      getValue(Offset(xMin, yMax - 1 - value.dx - shift), size),
-      getValue(Offset(value.dy, yMax - 1 - value.dx - shift + 0.5), size),
+      getValue(Offset(xMin, xPoint - 1), size),
+      getValue(Offset(value.dy, xPoint - 0.5), size),
     );
     canvas.drawRect(rect, paint);
   }
