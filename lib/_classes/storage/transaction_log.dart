@@ -28,6 +28,8 @@ class TransactionLog with SharedPreferencesMixin {
 
   static bool _isLocked = false;
 
+  static File? _logFile;
+
   static Future<File> _get(Directory path) async {
     File file = File('${path.absolute.path}/terCAD/app-finance.log');
     if (!file.existsSync()) {
@@ -37,14 +39,18 @@ class TransactionLog with SharedPreferencesMixin {
     return file;
   }
 
-  static Future<File> get _logFle async {
+  static Future<File> get logFle async {
+    if (_logFile != null) {
+      return Future.value(_logFile);
+    }
     File? file;
     try {
-      file = await _get(await getApplicationDocumentsDirectory());
+      final dir = await getApplicationDocumentsDirectory();
+      file = await _get(dir);
     } catch (e) {
       file = await _get(Directory.systemTemp);
     }
-    return file;
+    return _logFile = file;
   }
 
   static String _formatBytes(int bytes) {
@@ -59,7 +65,7 @@ class TransactionLog with SharedPreferencesMixin {
     if (kIsWeb) {
       size = increment * 256;
     } else {
-      size = (await _logFle).lengthSync();
+      size = (await logFle).lengthSync();
     }
     return _formatBytes(size);
   }
@@ -73,30 +79,32 @@ class TransactionLog with SharedPreferencesMixin {
     return self.getPreference(self.prefDoEncrypt) == prefIsEncrypted;
   }
 
-  static Future<void> saveRaw(String line) async {
-    while (_isLocked) {
-      sleep(const Duration(microseconds: 10));
+  static void saveRaw(String line) {
+    int retrial = 1;
+    while (_isLocked && retrial < 1000) {
+      sleep(Duration(microseconds: retrial * 10));
+      retrial++;
     }
     _isLocked = true;
     try {
       if (kIsWeb) {
         TransactionLog().setPreference('log$increment', line);
       } else {
-        await (await _logFle).writeAsString("$line\n", mode: FileMode.append);
+        _logFile!.writeAsStringSync("$line\n", mode: FileMode.append);
       }
-    } catch (e) {
-      rethrow;
-    } finally {
       _isLocked = false;
+    } catch (e) {
+      _isLocked = false;
+      rethrow;
     }
   }
 
-  static Future<void> save(dynamic content, [bool isDirect = false]) async {
+  static void save(dynamic content, [bool isDirect = false]) async {
     String line = content.toString();
     if (!isDirect && doEncrypt()) {
       line = salt.encrypt(line, iv: code).base64;
     }
-    await saveRaw(line);
+    saveRaw(line);
     increment++;
   }
 
@@ -141,7 +149,7 @@ class TransactionLog with SharedPreferencesMixin {
     if (kIsWeb) {
       lines = _loadWeb();
     } else {
-      lines = (await _logFle).openRead().transform(utf8.decoder).transform(const LineSplitter());
+      lines = (await logFle).openRead().transform(utf8.decoder).transform(const LineSplitter());
     }
     await for (var line in lines) {
       if (!kIsWeb) {
@@ -170,7 +178,7 @@ class TransactionLog with SharedPreferencesMixin {
         }
         // ignore: unused_catch_stack
       } catch (e, stackTrace) {
-        print([e, stackTrace]);
+        // print([e, stackTrace]);
         isOK = false;
       }
     }
