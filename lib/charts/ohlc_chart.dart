@@ -8,7 +8,7 @@ import 'package:app_finance/charts/painter/ohlc_chart_painter.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
-class OhlcChart extends StatefulWidget {
+class OhlcChart extends StatelessWidget {
   final double width;
   final double height;
   final double indent;
@@ -27,21 +27,16 @@ class OhlcChart extends StatefulWidget {
   });
 
   @override
-  OhlcChartState createState() => OhlcChartState();
-}
-
-class OhlcChartState extends State<OhlcChart> {
-  @override
   Widget build(BuildContext context) {
     final now = DateTime.now();
-    final size = Size(widget.width, widget.height);
+    final size = Size(width, height);
     final bgColor = Theme.of(context).colorScheme.onBackground;
     final xMax = DateTime(now.year, now.month + 1);
     double yMin = 0.0;
     double yMax = 0.0;
-    for (int i = 0; i < widget.data.length; i++) {
-      if (widget.data[i].low < yMin) yMin = widget.data[i].low;
-      if (widget.data[i].high > yMax) yMax = widget.data[i].high;
+    for (int i = 0; i < data.length; i++) {
+      if (data[i].low < yMin) yMin = data[i].low;
+      if (data[i].high > yMax) yMax = data[i].high;
     }
     yMax *= 1.25;
     final bg = ForegroundChartPainter(
@@ -52,7 +47,7 @@ class OhlcChartState extends State<OhlcChart> {
       yMin: yMin,
       yMax: yMax,
       xType: DateTime,
-      xMin: widget.xMin,
+      xMin: xMin,
       xMax: xMax,
       xDivider: 6,
       xTpl: DateFormat.Md(AppLocale.code),
@@ -66,16 +61,16 @@ class OhlcChartState extends State<OhlcChart> {
           indent: bg.shift,
           color: bgColor,
           size: size,
-          data: widget.data,
+          data: data,
           yMax: yMax,
-          xMin: widget.xMin.microsecondsSinceEpoch.toDouble(),
+          xMin: xMin.microsecondsSinceEpoch.toDouble(),
           xMax: xMax.microsecondsSinceEpoch.toDouble(),
         ),
         foregroundPainter: bg,
         willChange: false,
         child: Padding(
-          padding: EdgeInsets.only(top: widget.indent / 4),
-          child: Text(widget.tooltip),
+          padding: EdgeInsets.only(top: indent / 4),
+          child: Text(tooltip),
         ),
       ),
     );

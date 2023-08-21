@@ -6,7 +6,7 @@ import 'package:app_finance/charts/painter/forecast_chart_painter.dart';
 import 'package:app_finance/charts/painter/foreground_chart_painter.dart';
 import 'package:flutter/material.dart';
 
-class ForecastChart extends StatefulWidget {
+class ForecastChart extends StatelessWidget {
   final double width;
   final double height;
   final double indent;
@@ -25,14 +25,9 @@ class ForecastChart extends StatefulWidget {
   });
 
   @override
-  ForecastChartState createState() => ForecastChartState();
-}
-
-class ForecastChartState extends State<ForecastChart> {
-  @override
   Widget build(BuildContext context) {
     final now = DateTime.now();
-    final size = Size(widget.width, widget.height);
+    final size = Size(width, height);
     final bgColor = Theme.of(context).colorScheme.onBackground;
     final xMin = DateTime(now.year, now.month);
     final xMax = DateTime(now.year, now.month + 1);
@@ -56,16 +51,16 @@ class ForecastChartState extends State<ForecastChart> {
         painter: ForecastChartPainter(
           indent: bg.shift,
           size: size,
-          data: widget.data,
-          yMax: widget.yMax,
+          data: data,
+          yMax: yMax,
           xMin: xMin.microsecondsSinceEpoch.toDouble(),
           xMax: xMax.microsecondsSinceEpoch.toDouble(),
         ),
         foregroundPainter: bg,
         willChange: false,
         child: Padding(
-          padding: EdgeInsets.only(top: widget.indent / 4),
-          child: Text(widget.tooltip),
+          padding: EdgeInsets.only(top: indent / 4),
+          child: Text(tooltip),
         ),
       ),
     );
