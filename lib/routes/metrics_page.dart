@@ -5,6 +5,7 @@ import 'package:app_finance/_classes/herald/app_locale.dart';
 import 'package:app_finance/routes/abstract_page.dart';
 import 'package:app_finance/widgets/_wrappers/tab_widget.dart';
 import 'package:app_finance/widgets/metrics/account_tab.dart';
+import 'package:app_finance/widgets/metrics/bill_tab.dart';
 import 'package:app_finance/widgets/metrics/budget_tab.dart';
 import 'package:flutter/material.dart';
 
@@ -42,7 +43,7 @@ class MetricsPageState extends AbstractPageState<MetricsPage> {
       children: [
         BudgetTab(store: super.state),
         AccountTab(store: super.state),
-        const SizedBox(),
+        BillTab(store: super.state),
       ],
     );
   }

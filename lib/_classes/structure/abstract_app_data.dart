@@ -18,7 +18,9 @@ abstract class AbstractAppData with FormatterMixin implements InterfaceAppData {
   double progress;
   bool hidden;
   String? description;
+  @override
   MaterialColor? color;
+  @override
   IconData? icon;
   @override
   // ignore: overridden_fields

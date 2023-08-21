@@ -14,8 +14,10 @@ class ForegroundChartPainter extends CustomPainter {
   final double yMax;
   final List<double> yArea;
   final Type xType;
+  final Type yType;
   final dynamic xMin;
   final dynamic xMax;
+  final List<dynamic> yMap;
   late final double textArea;
   late final double shift;
   late final int yDiv;
@@ -32,7 +34,9 @@ class ForegroundChartPainter extends CustomPainter {
     this.yMin = 0.0,
     this.yMax = 1.0,
     this.yArea = const [],
+    this.yMap = const [],
     this.xType = double,
+    this.yType = double,
     this.xMin = 0.0,
     this.xMax = 1.0,
     this.size,
@@ -85,13 +89,32 @@ class ForegroundChartPainter extends CustomPainter {
     );
   }
 
-  void _painText(Canvas canvas, double x, double y, String text) {
+  void _paintText(Canvas canvas, double x, double y, String text) {
     final textPainter = TextPainter(
       text: TextSpan(
         text: text,
         style: TextStyle(
           color: color,
           fontSize: textArea / 2.2,
+        ),
+      ),
+      textDirection: TextDirection.ltr,
+    );
+    textPainter.layout();
+    textPainter.paint(canvas, Offset(x - textPainter.width, y));
+  }
+
+  void _paintIcon(Canvas canvas, double x, double y, IconData? icon) {
+    if (icon == null) {
+      return;
+    }
+    final textPainter = TextPainter(
+      text: TextSpan(
+        text: String.fromCharCode(icon.codePoint),
+        style: TextStyle(
+          color: color,
+          fontSize: textArea,
+          fontFamily: Icons.question_mark.fontFamily,
         ),
       ),
       textDirection: TextDirection.ltr,
@@ -109,7 +132,12 @@ class ForegroundChartPainter extends CustomPainter {
       double delta = step * i;
       double y = _shiftStep(size.height, textArea, yDiv, i);
       canvas.drawLine(Offset(shift, y), Offset(size.width, y), lineColor);
-      _painText(canvas, textArea, y - textArea / 3, (yMin + delta).toStringAsFixed(2));
+      if (yType == double) {
+        _paintText(canvas, textArea, y - textArea / 3, (yMin + delta).toStringAsFixed(2));
+      } else if (yType == IconData) {
+        final code = yDiv - i - 1 >= yMap.length ? null : yMap[yDiv - i - 1];
+        _paintIcon(canvas, textArea, y - textArea, code);
+      }
     }
   }
 
@@ -148,7 +176,7 @@ class ForegroundChartPainter extends CustomPainter {
             value = intl.DateFormat('d').format(tmp);
           }
         }
-        _painText(canvas, x + shift - 2, height + 1, value.toString());
+        _paintText(canvas, x + shift - 2, height + 1, value.toString());
       }
       if (i % 2 != 0) {
         canvas.drawRect(

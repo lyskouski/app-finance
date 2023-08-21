@@ -1,17 +1,17 @@
 // Copyright 2023 The terCAD team. All rights reserved.
 // Use of this source code is governed by a CC BY-NC-ND 4.0 license that can be found in the LICENSE file.
 
-import 'package:app_finance/charts/interface/forecast_data.dart';
+import 'package:app_finance/charts/interface/chart_data.dart';
 import 'package:app_finance/charts/painter/forecast_chart_painter.dart';
 import 'package:app_finance/charts/painter/foreground_chart_painter.dart';
 import 'package:flutter/material.dart';
 
-class ForecastChart extends StatefulWidget {
+class ForecastChart extends StatelessWidget {
   final double width;
   final double height;
   final double indent;
   final String tooltip;
-  final List<ForecastData> data;
+  final List<ChartData> data;
   final double yMax;
 
   const ForecastChart({
@@ -25,14 +25,9 @@ class ForecastChart extends StatefulWidget {
   });
 
   @override
-  ForecastChartState createState() => ForecastChartState();
-}
-
-class ForecastChartState extends State<ForecastChart> {
-  @override
   Widget build(BuildContext context) {
     final now = DateTime.now();
-    final size = Size(widget.width, widget.height);
+    final size = Size(width, height);
     final bgColor = Theme.of(context).colorScheme.onBackground;
     final xMin = DateTime(now.year, now.month);
     final xMax = DateTime(now.year, now.month + 1);
@@ -56,16 +51,16 @@ class ForecastChartState extends State<ForecastChart> {
         painter: ForecastChartPainter(
           indent: bg.shift,
           size: size,
-          data: widget.data,
-          yMax: widget.yMax,
+          data: data,
+          yMax: yMax,
           xMin: xMin.microsecondsSinceEpoch.toDouble(),
           xMax: xMax.microsecondsSinceEpoch.toDouble(),
         ),
         foregroundPainter: bg,
         willChange: false,
         child: Padding(
-          padding: EdgeInsets.only(top: widget.indent / 4),
-          child: Text(widget.tooltip),
+          padding: EdgeInsets.only(top: indent / 4),
+          child: Text(tooltip),
         ),
       ),
     );
