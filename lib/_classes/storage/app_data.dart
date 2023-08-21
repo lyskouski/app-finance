@@ -65,7 +65,7 @@ class AppData extends ChangeNotifier {
 
   void _notify(dynamic value) {
     if (!isLoading) {
-      notifyListeners();
+      WidgetsBinding.instance.addPostFrameCallback((_) => notifyListeners());
     }
   }
 
