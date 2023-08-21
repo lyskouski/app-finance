@@ -24,6 +24,10 @@ void main() {
       exchange.mockReform = (double? v, Currency? from, Currency? to) => v ?? 0.0;
     });
 
+    test('generateOhlcSummary (empty)', () {
+      expect(DataHandler.generateOhlcSummary([], exchange: exchange), []);
+    });
+
     test('generateOhlcSummary', () {
       final data = [
         [
