@@ -2,7 +2,7 @@
 // Use of this source code is governed by a CC BY-NC-ND 4.0 license that can be found in the LICENSE file.
 
 import 'package:app_finance/_classes/math/monte_carlo_simulation.dart';
-import 'package:app_finance/charts/forecast_chart.dart';
+import 'package:app_finance/charts/interface/forecast_data.dart';
 import 'package:flutter/material.dart';
 
 class ForecastChartPainter extends CustomPainter {

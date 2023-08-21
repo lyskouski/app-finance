@@ -8,7 +8,7 @@ import 'package:app_finance/_classes/structure/budget_app_data.dart';
 import 'package:app_finance/_classes/structure/currency/exchange.dart';
 import 'package:app_finance/_classes/structure/interface_app_data.dart';
 import 'package:app_finance/_classes/structure/transaction_log_data.dart';
-import 'package:app_finance/charts/ohlc_chart.dart';
+import 'package:app_finance/charts/interface/ohlc_data.dart';
 import 'package:flutter/material.dart';
 
 class DataHandler {

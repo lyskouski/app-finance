@@ -2,25 +2,10 @@
 // Use of this source code is governed by a CC BY-NC-ND 4.0 license that can be found in the LICENSE file.
 
 import 'package:app_finance/_classes/herald/app_locale.dart';
+import 'package:app_finance/charts/interface/ohlc_data.dart';
 import 'package:app_finance/charts/painter/foreground_chart_painter.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
-
-class OhlcData {
-  final DateTime date;
-  final double open;
-  final double high;
-  final double low;
-  final double close;
-
-  OhlcData({
-    required this.date,
-    required this.open,
-    required this.high,
-    required this.low,
-    required this.close,
-  });
-}
 
 class OhlcChart extends StatefulWidget {
   final double width;
