@@ -1,12 +1,14 @@
 // Copyright 2023 The terCAD team. All rights reserved.
 // Use of this source code is governed by a CC BY-NC-ND 4.0 license that can be found in the LICENSE file.
 
+import 'dart:convert';
+
 class OhlcData {
   final DateTime date;
-  final double open;
-  final double high;
-  final double low;
-  final double close;
+  double open;
+  double high;
+  double low;
+  double close;
 
   OhlcData({
     required this.date,
@@ -15,4 +17,13 @@ class OhlcData {
     required this.low,
     required this.close,
   });
+
+  @override
+  String toString() => json.encode({
+        'date': date.toIso8601String(),
+        'open': open,
+        'high': high,
+        'low': low,
+        'close': close,
+      });
 }

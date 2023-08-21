@@ -42,11 +42,43 @@ class DataHandler {
   }
 
   static List<OhlcData> generateOhlcSummary(List<List<TransactionLogData>?> scope, {required Exchange exchange}) {
+    final data = scope.firstOrNull;
+    for (int i = 1; i < scope.length; i++) {
+      data!.addAll(scope[i]!);
+    }
+    if (data != null && data.isNotEmpty) {
+      return _generateOhlc(data);
+    }
     return [];
   }
 
   static List<OhlcData> _generateOhlc(List<TransactionLogData> scope) {
-    // date,open,high,low,close
-    return [];
+    final result = SplayTreeMap<DateTime, OhlcData>();
+    double min = 0;
+    for (int i = 0; i < scope.length; i++) {
+      final key = DateTime(scope[i].timestamp.year, scope[i].timestamp.month, (scope[i].timestamp.day / 7).ceil());
+      final value = scope[i].changedTo - scope[i].changedFrom;
+      if (!result.containsKey(key)) {
+        result[key] = OhlcData(date: key, open: value, close: value, high: value, low: value);
+      } else {
+        result[key]!.close += value;
+      }
+      if (result[key]!.close > result[key]!.high) {
+        result[key]!.high = result[key]!.close;
+      }
+      if (result[key]!.close < result[key]!.low) {
+        result[key]!.low = result[key]!.close;
+      }
+      if (min > result[key]!.close) {
+        min = result[key]!.close;
+      }
+    }
+    for (OhlcData data in result.values) {
+      data.open += min;
+      data.close += min;
+      data.high += min;
+      data.low += min;
+    }
+    return result.values.toList();
   }
 }

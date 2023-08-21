@@ -43,9 +43,12 @@ void main() {
         ]
       ];
       final result = DataHandler.generateOhlcSummary(data, exchange: exchange);
-      expect(result, [
-        OhlcData(date: DateTime(2023, 01, 01), close: 41.0, high: 42.0, low: 3.0, open: 5.0),
-      ]);
+      expect(result.length, 1);
+      expect(result.first.date, DateTime(2023, 01, 01));
+      expect(result.first.close, 41.0);
+      expect(result.first.high, 42.0);
+      expect(result.first.low, 3.0);
+      expect(result.first.open, 5.0);
     });
   });
 }
