@@ -21,7 +21,9 @@
   - Simple grouping via `/` (in name) for the main page
 - Bills, Transfers, Incomes
 - Exchange rates, Default Currency for Summary
-- Metrics: Budget Forecast (with Monte Carlo simulation)
+- Metrics: 
+  - Budget Forecast (with Monte Carlo simulation)
+  - Account Candlestick (OHLC) Chart
 - Goals Definition
 - Recovery via WebDav
 - Import from `.csv`-files

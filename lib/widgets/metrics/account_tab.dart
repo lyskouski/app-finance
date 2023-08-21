@@ -46,6 +46,19 @@ class AccountTab extends StatelessWidget {
                 cut: xMin,
               ),
             ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text(
+                  AppLocale.labels.raiseData,
+                  style: textTheme.bodySmall!.copyWith(color: Colors.blue),
+                ),
+                Text(
+                  AppLocale.labels.failData,
+                  style: textTheme.bodySmall!.copyWith(color: Colors.red),
+                ),
+              ],
+            ),
           ],
         ),
       ),

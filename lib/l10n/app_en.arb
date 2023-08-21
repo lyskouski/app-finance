@@ -120,6 +120,7 @@
     "expenseDateTime": "Billed At",
     "expenseHeadline": "Expense",
     "expenseTransfer": "Amount of Transfer",
+    "failData": "Amount Deduction",
     "forecastData": "Forecast",
     "from": "from",
     "goNextTooltip": "Go Next",
@@ -152,6 +153,7 @@
             "type": "double"
         }
     },
+    "raiseData": "Amount Addition",
     "recoveryHeadline": "Recovery",
     "recoveryTooltip": "Recover from Storage",
     "releases": "Releases",

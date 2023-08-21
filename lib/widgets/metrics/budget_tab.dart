@@ -62,7 +62,7 @@ class BudgetTab extends StatelessWidget {
                   style: textTheme.bodySmall!.copyWith(color: Colors.red.withBlue(200)),
                 ),
               ],
-            )
+            ),
           ],
         ),
       ),
