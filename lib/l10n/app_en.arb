@@ -45,6 +45,7 @@
     "cash": "Cash",
     "chartForecast": "Forecast Chart",
     "chartOHLC": "Candlestick (OHLC) Chart",
+    "chartYtdExpense": "YTD Expenses",
     "closedAt": "Finished till Date",
     "collapse": "Collapse (Restore) Section",
     "color": "Color",

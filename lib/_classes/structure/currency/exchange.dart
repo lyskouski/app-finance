@@ -23,8 +23,8 @@ class Exchange with SharedPreferencesMixin {
 
   double reform(double? amount, Currency? origin, Currency? target) {
     amount ??= 0.0;
-    if (origin?.code != target?.code) {
-      CurrencyAppData? ex = store.getByUuid('${origin?.code}-${target?.code}');
+    if (origin != null && target != null && origin.code != target.code) {
+      CurrencyAppData? ex = store.getByUuid('${origin.code}-${target.code}');
       if (ex == null) {
         ex = CurrencyAppData(
           currency: target,

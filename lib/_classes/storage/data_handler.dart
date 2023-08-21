@@ -11,6 +11,8 @@ import 'package:app_finance/_classes/structure/transaction_log_data.dart';
 import 'package:app_finance/charts/interface/ohlc_data.dart';
 import 'package:flutter/material.dart';
 
+typedef DateCallback = int Function(DateTime date);
+
 class DataHandler {
   static void deactivate(NavigatorState nav, {required AppData store, String? uuid, InterfaceAppData? data}) {
     assert(uuid != null || data != null);
@@ -26,11 +28,21 @@ class DataHandler {
     return scope.fold(0.0, (v, e) => v + exchange.reform((e as BudgetAppData).amountLimit, e.currency, currency));
   }
 
+  static List<Offset> getAmountGroupedByMonth(List<InterfaceAppData> scope, {required Exchange exchange}) {
+    fn(DateTime createdAt) => DateTime(createdAt.year, createdAt.month).microsecondsSinceEpoch;
+    return _getGroupedAmount(scope, fn, exchange: exchange);
+  }
+
   static List<Offset> getAmountGroupedByDate(List<InterfaceAppData> scope, {required Exchange exchange}) {
+    fn(DateTime createdAt) => DateTime(createdAt.year, createdAt.month, createdAt.day).microsecondsSinceEpoch;
+    return _getGroupedAmount(scope, fn, exchange: exchange);
+  }
+
+  static List<Offset> _getGroupedAmount(List<InterfaceAppData> scope, DateCallback fn, {required Exchange exchange}) {
     final data = SplayTreeMap<int, List<double>>();
     final currency = exchange.getDefaultCurrency();
     for (final item in scope) {
-      int actual = DateTime(item.createdAt.year, item.createdAt.month, item.createdAt.day).microsecondsSinceEpoch;
+      int actual = fn(item.createdAt);
       if (data[actual] == null) {
         data[actual] = [];
       }
