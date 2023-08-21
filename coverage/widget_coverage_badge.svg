@@ -1,5 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="221" height="20">
-  <title>Widget Tests Coverage - 21.69%</title>
+  <title>Widget Tests Coverage - 21.68%</title>
   <defs>
     <linearGradient id="title-fill" x1="50%" y1="0%" x2="50%" y2="100%">
       <stop stop-color="#444D56" offset="0%"></stop>
@@ -23,10 +23,10 @@
     <g transform="translate(146)" font-family="&#39;DejaVu Sans&#39;,Verdana,Geneva,sans-serif" font-size="11">
       <path d="M0 0h46.939C48.629 0 50 1.343 50 3v14c0 1.657-1.37 3-3.061 3H0V0z" fill="url(#coverage-fill)" fill-rule="nonzero"></path>
       <text fill="#010101" fill-opacity=".3" aria-hidden="true">
-        <tspan x="7" y="15">21.69%</tspan>
+        <tspan x="7" y="15">21.68%</tspan>
       </text>
       <text fill="#FFFFFF">
-        <tspan x="7" y="14">21.69%</tspan>
+        <tspan x="7" y="14">21.68%</tspan>
       </text>
     </g>
   </g>
