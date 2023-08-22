@@ -60,10 +60,12 @@ class BillRecalculation extends AbstractRecalculation {
     if (budgetInitial != null && budgetChange.uuid != budgetInitial.uuid) {
       double prevDelta = super.exchange.reform(getPrevDelta(), initial?.currency, budgetInitial.currency);
       budgetInitial.progress = getProgress(budgetInitial.amountLimit, budgetInitial.progress, -prevDelta);
+      budgetInitial.amount -= prevDelta;
     }
     double delta =
         super.exchange.reform(getStateDelta(budgetInitial, budgetChange), change.currency, budgetChange.currency);
     budgetChange.progress = getProgress(budgetChange.amountLimit, budgetChange.progress, delta);
+    budgetChange.amount += delta;
     return this;
   }
 }
