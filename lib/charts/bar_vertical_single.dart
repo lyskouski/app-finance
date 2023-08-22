@@ -1,6 +1,7 @@
 // Copyright 2023 The terCAD team. All rights reserved.
 // Use of this source code is governed by a CC BY-NC-ND 4.0 license that can be found in the LICENSE file.
 
+import 'package:app_finance/charts/bar_vertical_group.dart';
 import 'package:flutter/material.dart';
 
 class BarVerticalSingle extends StatelessWidget {
@@ -19,17 +20,11 @@ class BarVerticalSingle extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      width: height,
-      height: width,
-      child: Transform.rotate(
-        angle: -90 * 3.14 / 180,
-        child: LinearProgressIndicator(
-          value: value,
-          backgroundColor: Colors.grey,
-          valueColor: AlwaysStoppedAnimation<Color>(color),
-        ),
-      ),
+    return BarVerticalGroup(
+      color: [color],
+      value: [value],
+      height: height,
+      width: width,
     );
   }
 }

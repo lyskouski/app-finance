@@ -4,6 +4,7 @@
 import 'package:app_finance/_classes/structure/navigation/app_menu.dart';
 import 'package:app_finance/charts/bar_vertical_single.dart';
 import 'package:app_finance/_configs/custom_text_theme.dart';
+import 'package:app_finance/widgets/_wrappers/row_widget.dart';
 import 'package:app_finance/widgets/_wrappers/tap_widget.dart';
 import 'package:app_finance/_configs/theme_helper.dart';
 import 'package:flutter/material.dart';
@@ -40,6 +41,12 @@ class BaseLineWidget extends StatelessWidget {
       return const SizedBox();
     }
     final TextTheme textTheme = Theme.of(context).textTheme;
+    final indent = ThemeHelper.getIndent();
+    final detailsText = Text(
+      details,
+      style: textTheme.numberMedium.copyWith(color: textTheme.headlineSmall?.color),
+      overflow: TextOverflow.ellipsis,
+    );
 
     return TapWidget(
       tooltip: title,
@@ -47,50 +54,37 @@ class BaseLineWidget extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          RowWidget(
+            indent: indent,
+            maxWidth: width,
+            chunk: [indent / 2, null, ThemeHelper.getTextWidth(detailsText) + 2 * indent],
             children: [
-              Expanded(
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.start,
+              [
+                BarVerticalSingle(value: progress, height: 32.0, color: color),
+              ],
+              [
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    BarVerticalSingle(value: progress, height: 24, color: color),
-                    Container(
-                      constraints: BoxConstraints(
-                        maxWidth: width * 0.6,
-                      ),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            title,
-                            style: textTheme.bodyMedium,
-                            overflow: TextOverflow.ellipsis,
-                          ),
-                          Text(
-                            description,
-                            style: textTheme.bodySmall,
-                            overflow: TextOverflow.ellipsis,
-                          ),
-                        ],
-                      ),
+                    Text(
+                      title,
+                      style: textTheme.bodyMedium,
+                      overflow: TextOverflow.ellipsis,
+                    ),
+                    Text(
+                      description,
+                      style: textTheme.bodySmall,
+                      overflow: TextOverflow.ellipsis,
                     ),
                   ],
                 ),
-              ),
-              Padding(
-                padding: EdgeInsets.all(ThemeHelper.getIndent()),
-                child: Container(
-                  constraints: BoxConstraints(
-                    maxWidth: width * 0.4,
-                  ),
-                  child: Text(
-                    details,
-                    style: textTheme.numberMedium.copyWith(color: textTheme.headlineSmall?.color),
-                    overflow: TextOverflow.ellipsis,
-                  ),
+              ],
+              [
+                Padding(
+                  padding: EdgeInsets.all(indent),
+                  child: detailsText,
                 ),
-              ),
+              ],
             ],
           ),
           if (showDivider) ...[const Divider()],

@@ -4,7 +4,6 @@
 import 'package:app_finance/_classes/herald/app_locale.dart';
 import 'package:app_finance/_classes/structure/navigation/app_route.dart';
 import 'package:app_finance/_configs/theme_helper.dart';
-import 'package:app_finance/widgets/_wrappers/row_widget.dart';
 import 'package:flutter/material.dart';
 
 class BaseListLimitedWidget extends StatelessWidget {
@@ -56,13 +55,11 @@ class BaseListLimitedWidget extends StatelessWidget {
             final item = state[index - 1];
             return buildListWidget(item, context, width - 40);
           } else if (hasMore) {
-            return RowWidget(
-              indent: indent,
-              maxWidth: width,
-              chunk: const [0.5, 0.5],
+            return Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                [buildButton(context, route ?? AppRoute.homeRoute, AppLocale.labels.btnMore)],
-                [addButton]
+                buildButton(context, route ?? AppRoute.homeRoute, AppLocale.labels.btnMore),
+                addButton,
               ],
             );
           } else {
