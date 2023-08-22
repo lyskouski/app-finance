@@ -6,7 +6,13 @@ import 'package:flutter/material.dart';
 class ChartData {
   final List<Offset> data;
   final MaterialColor color;
+  final double strokeWidth;
   final dynamic helper;
 
-  ChartData(this.data, {this.color = Colors.red, this.helper});
+  ChartData(
+    this.data, {
+    this.color = Colors.red,
+    this.strokeWidth = 2.0,
+    this.helper,
+  });
 }

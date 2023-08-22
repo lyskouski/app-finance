@@ -75,7 +75,6 @@ class SettingTabState<T extends SettingTab> extends AbstractTabState<T> with Sha
     theme = Provider.of<AppTheme>(context, listen: false);
     final TextTheme textTheme = Theme.of(context).textTheme;
     double indent = ThemeHelper.getIndent(2);
-    double width = ThemeHelper.getWidth(context, 4);
     if (currency == null) {
       WidgetsBinding.instance.addPostFrameCallback((_) => initCurrencyFromLocale(locale));
     }

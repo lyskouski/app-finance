@@ -41,8 +41,8 @@ class ColumnChart extends StatelessWidget {
       yMin: 0.0,
       yMax: yMax,
       xType: DateTime,
-      xMin: xMin,
-      xMax: xMax,
+      xMin: xMin.microsecondsSinceEpoch.toDouble(),
+      xMax: xMax.microsecondsSinceEpoch.toDouble(),
       xTpl: DateFormat.M(AppLocale.code),
     );
     return SizedBox(
@@ -55,8 +55,8 @@ class ColumnChart extends StatelessWidget {
           size: size,
           data: data,
           yMax: yMax,
-          xMin: xMin.microsecondsSinceEpoch.toDouble(),
-          xMax: xMax.microsecondsSinceEpoch.toDouble(),
+          xMin: bg.xMin,
+          xMax: bg.xMax,
         ),
         foregroundPainter: bg,
         willChange: false,
