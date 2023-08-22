@@ -76,9 +76,9 @@ class AccountWidget extends BaseWidget with SharedPreferencesMixin {
 
   List<dynamic> updateItems(items, summaryItem) {
     return items.map((o) {
-      o.progress = summaryItem.details > 0
-          ? exchange.reform(o.details, o.currency, exchange.getDefaultCurrency()) / summaryItem.details
-          : o.progress;
+      if (o is AccountAppData) {
+        o.progress = exchange.reform(o.details, o.currency, exchange.getDefaultCurrency()) / summaryItem.details;
+      }
       return o;
     }).toList();
   }

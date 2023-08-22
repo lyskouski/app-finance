@@ -74,9 +74,10 @@ class BudgetAppData extends AbstractAppData {
       };
 
   @override
-  double get details => amountLimit > 0 ? amountLimit * (1 - super.progress) : 0.0;
+  double get details => amountLimit > 0 ? amountLimit * (1 - progress) : 0.0;
 
   String get detailsFormatted {
+    print([title, amountLimit, amount, details, progress]);
     if (amountLimit > 0) {
       return '${getNumberFormatted(details)} ${AppLocale.labels.left}';
     } else {
@@ -84,13 +85,14 @@ class BudgetAppData extends AbstractAppData {
     }
   }
 
+  double get progressLeft => progress < 1 ? 1 - progress : 0.0;
+
   double get amountLimit => super.details;
   set amountLimit(double value) => super.details = value;
 
   @override
-  String get description => super.details > 0
-      ? '${getNumberFormatted(super.details * super.progress)} / ${getNumberFormatted(super.details)}'
-      : '';
+  String get description =>
+      amountLimit > 0 ? '${getNumberFormatted(amountLimit * progress)} / ${getNumberFormatted(amountLimit)}' : '';
 
   @override
   set description(String? value) => {};
