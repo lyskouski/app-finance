@@ -46,7 +46,7 @@ class BaseGroupWidget extends StatelessWidget {
               children: [
                 Icon(item.icon, size: 16.0, color: item.color),
                 const SizedBox(height: 6.0),
-                BarVerticalSingle(value: item.progress, height: 12.0, color: item.color ?? Colors.transparent),
+                BarVerticalSingle(value: item.progress, height: 14.0, color: item.color ?? Colors.transparent),
               ],
             )
           : RadialBarChart(
@@ -72,35 +72,24 @@ class BaseGroupWidget extends StatelessWidget {
           child: RowWidget(
             indent: indent,
             maxWidth: width,
-            chunk: const [0.5, 0.5],
+            chunk: [indent / 2, width * 0.5, null],
             children: [
               [
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.start,
+                BarVerticalGroup(value: progress, height: 32, color: color),
+              ],
+              [
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Padding(
-                      padding: EdgeInsets.only(left: indent + 1, right: indent),
-                      child: BarVerticalGroup(value: progress, height: 24, color: color),
+                    Text(
+                      title,
+                      style: textTheme.bodyMedium,
+                      overflow: TextOverflow.ellipsis,
                     ),
-                    Container(
-                      constraints: BoxConstraints(
-                        maxWidth: width * 0.5,
-                      ),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            title,
-                            style: textTheme.bodyMedium,
-                            overflow: TextOverflow.ellipsis,
-                          ),
-                          Text(
-                            description,
-                            style: textTheme.bodySmall,
-                            overflow: TextOverflow.ellipsis,
-                          ),
-                        ],
-                      ),
+                    Text(
+                      description,
+                      style: textTheme.bodySmall,
+                      overflow: TextOverflow.ellipsis,
                     ),
                   ],
                 ),

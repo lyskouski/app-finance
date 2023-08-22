@@ -7,7 +7,7 @@ import 'package:app_finance/_classes/structure/currency/exchange.dart';
 import 'package:app_finance/_configs/theme_helper.dart';
 import 'package:app_finance/_classes/structure/navigation/app_route.dart';
 import 'package:app_finance/routes/abstract_page.dart';
-import 'package:app_finance/widgets/home/budget_widget.dart';
+import 'package:app_finance/widgets/budget/budget_widget.dart';
 import 'package:flutter/material.dart';
 
 class BudgetPage extends AbstractPage {
