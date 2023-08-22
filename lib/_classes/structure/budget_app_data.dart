@@ -9,6 +9,8 @@ import 'package:app_finance/_mixins/formatter_mixin.dart';
 import 'package:flutter/material.dart';
 
 class BudgetAppData extends AbstractAppData {
+  double amount;
+
   BudgetAppData({
     required super.title,
     super.uuid,
@@ -20,6 +22,7 @@ class BudgetAppData extends AbstractAppData {
     super.createdAt,
     super.createdAtFormatted,
     amountLimit = 0.0,
+    this.amount = 0.0,
     super.hidden,
   }) : super(
           details: amountLimit,
@@ -44,6 +47,7 @@ class BudgetAppData extends AbstractAppData {
       currency: super.currency,
       createdAt: super.createdAt,
       amountLimit: amountLimit,
+      amount: amount,
       hidden: super.hidden,
     );
   }
@@ -70,10 +74,14 @@ class BudgetAppData extends AbstractAppData {
       };
 
   @override
-  double get details => super.details > 0 ? super.details * (1 - super.progress) : 0.0;
+  double get details => amountLimit > 0 ? amountLimit * (1 - super.progress) : 0.0;
 
   String get detailsFormatted {
-    return '${getNumberFormatted(details)} ${AppLocale.labels.left}';
+    if (amountLimit > 0) {
+      return '${getNumberFormatted(details)} ${AppLocale.labels.left}';
+    } else {
+      return '${getNumberFormatted(amount)} ${AppLocale.labels.spent}';
+    }
   }
 
   double get amountLimit => super.details;
