@@ -48,6 +48,7 @@ class SyncTabState extends State<RecoverTab> {
       codeUnits.addAll('\n'.codeUnits);
     }
     final Uint8List unit8List = Uint8List.fromList(codeUnits);
+    setState(() => message = '');
     await client.write(path.text, unit8List).catchError((err) {
       setState(() {
         message = AppLocale.labels.error(err.toString());
@@ -56,7 +57,9 @@ class SyncTabState extends State<RecoverTab> {
     });
     setState(() {
       inProgress = false;
-      message = AppLocale.labels.success;
+      if (message == '') {
+        message = AppLocale.labels.success;
+      }
     });
   }
 
