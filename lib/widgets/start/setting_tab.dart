@@ -9,7 +9,6 @@ import 'package:app_finance/_configs/custom_text_theme.dart';
 import 'package:app_finance/_configs/theme_helper.dart';
 import 'package:app_finance/widgets/_forms/currency_selector.dart';
 import 'package:app_finance/widgets/_forms/list_selector.dart';
-import 'package:app_finance/widgets/_wrappers/row_widget.dart';
 import 'package:app_finance/widgets/_generic/abstract_tab.dart';
 import 'package:currency_picker/currency_picker.dart';
 import 'package:flutter/material.dart';
@@ -99,27 +98,18 @@ class SettingTabState<T extends SettingTab> extends AbstractTabState<T> with Sha
             ),
           ),
           SizedBox(height: indent),
-          RowWidget(
-            indent: indent,
-            maxWidth: width,
-            alignment: MainAxisAlignment.start,
-            chunk: const [0.3, 0.1, 0.6],
+          Row(
+            mainAxisAlignment: MainAxisAlignment.start,
             children: [
-              [
-                Text(
-                  AppLocale.labels.encryptionMode,
-                  style: textTheme.bodyLarge,
-                ),
-              ],
-              [
-                Switch(
-                  value: isEncrypted,
-                  onChanged: saveEncryption,
-                ),
-              ],
-              [
-                hasEncrypted ? Text(AppLocale.labels.hasEncrypted) : const SizedBox(),
-              ],
+              Text(
+                AppLocale.labels.encryptionMode,
+                style: textTheme.bodyLarge,
+              ),
+              Switch(
+                value: isEncrypted,
+                onChanged: saveEncryption,
+              ),
+              hasEncrypted ? Text(AppLocale.labels.hasEncrypted) : const SizedBox(),
             ],
           ),
           SizedBox(height: indent),
