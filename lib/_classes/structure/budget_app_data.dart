@@ -77,7 +77,6 @@ class BudgetAppData extends AbstractAppData {
   double get details => amountLimit > 0 ? amountLimit * (1 - progress) : 0.0;
 
   String get detailsFormatted {
-    print([title, amountLimit, amount, details, progress]);
     if (amountLimit > 0) {
       return '${getNumberFormatted(details)} ${AppLocale.labels.left}';
     } else {
