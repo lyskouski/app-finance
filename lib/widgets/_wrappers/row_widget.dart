@@ -4,41 +4,66 @@
 import 'package:flutter/material.dart';
 
 class RowWidget extends StatelessWidget {
-  final List<double> chunk;
+  late final List<double> chunk;
   final List<List<Widget>> children;
   final double indent;
   final double maxWidth;
   final MainAxisAlignment alignment;
 
-  const RowWidget({
-    required this.chunk,
+  RowWidget({
+    required List<double?> chunk,
     required this.children,
     required this.indent,
     required this.maxWidth,
     this.alignment = MainAxisAlignment.spaceBetween,
     super.key,
-  });
+  }) {
+    int restCount = chunk.where((e) => e == null).length;
+    double takenWidth = 0;
+    double width = maxWidth - indent * (chunk.length - 2);
+    for (int i = 0; i < chunk.length; i++) {
+      if (chunk[i] == null) {
+        continue;
+      }
+      double value = chunk[i]!;
+      if (value < 1) {
+        chunk[i] = value * width;
+      }
+      takenWidth += value;
+    }
+    if (takenWidth > width) {
+      double cut = (width - takenWidth) / (chunk.length - restCount);
+      chunk = chunk.map((value) => value != null ? value + cut : null).toList();
+      takenWidth = width;
+    }
+    if (restCount > 0) {
+      double rest = (width - takenWidth) / restCount;
+      chunk = chunk.map((value) => value ?? rest).toList();
+    }
+    this.chunk = chunk.cast<double>();
+  }
 
   @override
   Widget build(BuildContext context) {
-    double width = maxWidth - indent * (chunk.length - 2);
-
     return Row(
       mainAxisAlignment: alignment,
       // mainAxisAlignment: MainAxisAlignment.start,
       children: List<Widget>.generate(chunk.length + chunk.length - 1, (index) {
         if (index % 2 == 1) {
           return SizedBox(width: indent);
-        } else {
+        } else if (chunk[index ~/ 2] > 0) {
           return Container(
             constraints: BoxConstraints(
-              maxWidth: width * chunk[index ~/ 2],
+              maxWidth: chunk[index ~/ 2],
+              minWidth: chunk[index ~/ 2],
             ),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: children[index ~/ 2],
             ),
           );
+        } else {
+          return const SizedBox();
         }
       }),
     );
