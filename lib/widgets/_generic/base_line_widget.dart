@@ -1,6 +1,7 @@
 // Copyright 2023 The terCAD team. All rights reserved.
 // Use of this source code is governed by a CC BY-NC-ND 4.0 license that can be found in the LICENSE file.
 
+import 'package:app_finance/_classes/structure/navigation/app_menu.dart';
 import 'package:app_finance/charts/bar_vertical_single.dart';
 import 'package:app_finance/_configs/custom_text_theme.dart';
 import 'package:app_finance/widgets/_wrappers/tap_widget.dart';
@@ -42,7 +43,7 @@ class BaseLineWidget extends StatelessWidget {
 
     return TapWidget(
       tooltip: title,
-      route: route.replaceAll('uuid:', 'uuid:$uuid'),
+      route: AppMenu.uuid(route, uuid),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
