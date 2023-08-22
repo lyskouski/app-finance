@@ -18,29 +18,30 @@ class RowWidget extends StatelessWidget {
     this.alignment = MainAxisAlignment.spaceBetween,
     super.key,
   }) {
-    int restCount = chunk.where((e) => e == null).length;
+    List<double?> scope = [...chunk];
+    int restCount = scope.where((e) => e == null).length;
     double takenWidth = 0;
-    double width = maxWidth - indent * (chunk.length - 2);
-    for (int i = 0; i < chunk.length; i++) {
-      if (chunk[i] == null) {
+    double width = maxWidth - indent * (scope.length - 2);
+    for (int i = 0; i < scope.length; i++) {
+      if (scope[i] == null) {
         continue;
       }
-      double value = chunk[i]!;
+      double value = scope[i]!;
       if (value < 1) {
-        chunk[i] = value * width;
+        scope[i] = value * width;
       }
       takenWidth += value;
     }
     if (takenWidth > width) {
-      double cut = (width - takenWidth) / (chunk.length - restCount);
-      chunk = chunk.map((value) => value != null ? value + cut : null).toList();
+      double cut = (width - takenWidth) / (scope.length - restCount);
+      scope = scope.map((value) => value != null ? value + cut : null).toList();
       takenWidth = width;
     }
     if (restCount > 0) {
       double rest = (width - takenWidth) / restCount;
-      chunk = chunk.map((value) => value ?? rest).toList();
+      scope = scope.map((value) => value ?? rest).toList();
     }
-    this.chunk = chunk.cast<double>();
+    this.chunk = scope.cast<double>();
   }
 
   @override
@@ -48,7 +49,7 @@ class RowWidget extends StatelessWidget {
     return Row(
       mainAxisAlignment: alignment,
       // mainAxisAlignment: MainAxisAlignment.start,
-      children: List<Widget>.generate(chunk.length + chunk.length - 1, (index) {
+      children: List<Widget>.generate(2 * chunk.length - 1, (index) {
         if (index % 2 == 1) {
           return SizedBox(width: indent);
         } else if (chunk[index ~/ 2] > 0) {
