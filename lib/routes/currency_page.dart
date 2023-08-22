@@ -5,6 +5,7 @@ import 'package:app_finance/_classes/herald/app_locale.dart';
 import 'package:app_finance/_classes/structure/currency_app_data.dart';
 import 'package:app_finance/_classes/storage/app_data.dart';
 import 'package:app_finance/_configs/theme_helper.dart';
+import 'package:app_finance/charts/trade_chart.dart';
 import 'package:app_finance/routes/abstract_page.dart';
 import 'package:app_finance/widgets/_generic/notification_bar.dart';
 import 'package:app_finance/widgets/_forms/simple_input.dart';
@@ -53,20 +54,25 @@ class CurrencyPageState extends AbstractPageState<CurrencyPage> {
   Widget buildContent(BuildContext context, BoxConstraints constraints) {
     final TextTheme textTheme = Theme.of(context).textTheme;
     final indent = ThemeHelper.getIndent();
-    final double maxWidth = ThemeHelper.getWidth(context, 2);
-    scope ??=
-        super.state.getList(AppDataType.currencies).where((v) => v.currency?.code != v.currencyFrom?.code).toList();
-
+    final now = DateTime.now();
+    final cutDate = DateTime(now.year, now.month - 2);
+    scope ??= super
+        .state
+        .getList(AppDataType.currencies)
+        .where((v) => v.currencyFrom != null && v.currency != null && v.currency.code != v.currencyFrom.code)
+        .toList();
     return ListView.builder(
         itemCount: scope?.length,
         itemBuilder: (context, index) {
           final item = scope![index];
+          final history =
+              super.state.getLog(item.uuid)?.where((e) => e.timestamp.isAfter(cutDate)).toList().reversed.toList();
           return Padding(
             padding: EdgeInsets.all(indent),
             child: RowWidget(
               indent: indent,
-              maxWidth: maxWidth - indent * 2,
-              chunk: const [0.2, 0.8],
+              maxWidth: ThemeHelper.getWidth(context, 4),
+              chunk: const [85, null, 100],
               children: [
                 [
                   Column(
@@ -91,6 +97,13 @@ class CurrencyPageState extends AbstractPageState<CurrencyPage> {
                     type: TextInputType.number,
                     setState: (value) => updateRate(item, double.tryParse(value)),
                   )
+                ],
+                [
+                  TradeChart(
+                    data: history ?? [],
+                    width: 100,
+                    height: 80,
+                  ),
                 ],
               ],
             ),

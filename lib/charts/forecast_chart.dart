@@ -40,8 +40,8 @@ class ForecastChart extends StatelessWidget {
       yMax: 1.4,
       yArea: [0.8, 1.2],
       xType: DateTime,
-      xMin: xMin,
-      xMax: xMax,
+      xMin: xMin.microsecondsSinceEpoch.toDouble(),
+      xMax: xMax.microsecondsSinceEpoch.toDouble(),
     );
     return SizedBox(
       height: size.height,

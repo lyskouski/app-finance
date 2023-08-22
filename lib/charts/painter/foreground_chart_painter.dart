@@ -1,22 +1,18 @@
 // Copyright 2023 The terCAD team. All rights reserved.
 // Use of this source code is governed by a CC BY-NC-ND 4.0 license that can be found in the LICENSE file.
 
+import 'package:app_finance/charts/painter/abstract_painter.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart' as intl;
 
-class ForegroundChartPainter extends CustomPainter {
-  final Size? size;
+class ForegroundChartPainter extends AbstractPainter {
   final Color color;
   final Color lineColor;
   final Color areaColor;
   final Color background;
-  final double yMin;
-  final double yMax;
   final List<double> yArea;
   final Type xType;
   final Type yType;
-  final dynamic xMin;
-  final dynamic xMax;
   final List<dynamic> yMap;
   late final double textArea;
   late final double shift;
@@ -27,19 +23,20 @@ class ForegroundChartPainter extends CustomPainter {
   final intl.DateFormat? xTpl;
 
   ForegroundChartPainter({
+    super.indent = 0.0,
     this.areaColor = Colors.green,
     this.color = Colors.black,
     this.lineColor = Colors.black,
     this.background = Colors.grey,
-    this.yMin = 0.0,
-    this.yMax = 1.0,
+    super.yMin = 0.0,
+    super.yMax = 1.0,
     this.yArea = const [],
     this.yMap = const [],
     this.xType = double,
     this.yType = double,
-    this.xMin = 0.0,
-    this.xMax = 1.0,
-    this.size,
+    super.xMin = 0.0,
+    super.xMax = 1.0,
+    super.size,
     this.yDivider = 12,
     this.xDivider = 12,
     this.xTpl,
@@ -68,15 +65,21 @@ class ForegroundChartPainter extends CustomPainter {
     _paintAxisX(canvas, size);
     if (yArea.length == 2) {
       _plotAssert(canvas, size);
+      _paintAssertLine(canvas, size, (yArea[0] + yArea[1]) / 2);
+    } else if (yArea.length == 1) {
+      _paintAssertLine(canvas, size, yArea[0]);
     }
   }
 
-  void _plotAssert(Canvas canvas, Size size) {
+  void _paintAssertLine(Canvas canvas, Size size, double yPos) {
     final line = Paint()
       ..color = areaColor
       ..strokeWidth = 1;
-    double y = _shiftStep(size.height, textArea, yDiv, ((yArea[0] + yArea[1]) / 2 - yMin) / (yMax / yDiv));
+    double y = _shiftStep(size.height, textArea, yDiv, (yPos - yMin) / (yMax / yDiv));
     canvas.drawLine(Offset(shift, y), Offset(size.width, y), line);
+  }
+
+  void _plotAssert(Canvas canvas, Size size) {
     final background = Paint()
       ..color = areaColor.withOpacity(0.1)
       ..style = PaintingStyle.fill;
@@ -153,23 +156,20 @@ class ForegroundChartPainter extends CustomPainter {
       ..color = this.background.withOpacity(0.05)
       ..style = PaintingStyle.fill;
     double? step;
-    double? min;
     if (xType == DateTime) {
-      min = xMin.millisecondsSinceEpoch * 1.0;
-      step = (xMax.millisecondsSinceEpoch - min - 1) / xDiv;
+      step = (xMax - xMin - 1) / xDiv;
     } else {
-      min = xMin;
       step = (xMax - xMin) / xDiv;
     }
     double height = size.height - textArea;
     for (int i = 0; i <= xDiv; i++) {
-      double delta = step! * (xDiv - i);
+      double delta = step * (xDiv - i);
       double x = _shiftStep(size.width, shift, xDiv, i);
       canvas.drawLine(Offset(x + shift, height), Offset(x + shift, height + 4), lineColor);
       if (i < xDiv) {
-        dynamic value = min! + delta;
+        dynamic value = xMin + delta;
         if (xType == DateTime) {
-          DateTime tmp = DateTime.fromMillisecondsSinceEpoch((min + delta).toInt());
+          DateTime tmp = DateTime.fromMillisecondsSinceEpoch((xMin + delta).toInt());
           if (xTpl != null) {
             value = xTpl!.format(tmp);
           } else {
@@ -190,10 +190,5 @@ class ForegroundChartPainter extends CustomPainter {
         );
       }
     }
-  }
-
-  @override
-  bool shouldRepaint(covariant CustomPainter oldDelegate) {
-    return false;
   }
 }
