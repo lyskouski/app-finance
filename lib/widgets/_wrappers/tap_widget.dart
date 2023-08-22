@@ -34,7 +34,10 @@ class TapWidget extends StatelessWidget {
               nav.pushNamed(route ?? AppRoute.homeRoute);
             }
           },
-          child: child,
+          child: Container(
+            color: Colors.transparent,
+            child: child,
+          ),
         ),
       ),
     );
