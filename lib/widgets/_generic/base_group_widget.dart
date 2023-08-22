@@ -52,7 +52,7 @@ class BaseGroupWidget extends StatelessWidget {
           : RadialBarChart(
               color: item.color,
               icon: item.icon,
-              progress: item.progress,
+              progress: progress[index],
             ),
     );
   }
