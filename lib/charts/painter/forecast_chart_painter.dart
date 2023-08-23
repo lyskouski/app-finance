@@ -49,8 +49,8 @@ class ForecastChartPainter extends AbstractPainter {
     return scope.fold(0.0, (v, e) => v + e.dy);
   }
 
-  Offset _getMedian(List<Offset> scope) {
-    return Offset((scope.last.dx + scope.first.dx) / 2, _sumY(scope));
+  Offset _getMedian(List<Offset> scope, [bool takeFirst = false]) {
+    return Offset(takeFirst ? scope.first.dx : scope.last.dx, _sumY(scope));
   }
 
   void _paint(Canvas canvas, List<Offset> scope, Size size, Color color, [double total = 0.0]) {
@@ -62,11 +62,11 @@ class ForecastChartPainter extends AbstractPainter {
     int count = 0;
     Offset endPoint;
     [count, endPoint] = _paintDots(canvas, scope, size, color, total);
-    int half = count ~/ 2;
-    if (half > 0) {
-      Offset startBezier = getValue(_getMedian(scope.sublist(0, half)), size, total);
-      total += _sumY(scope.sublist(0, half));
-      Offset endBezier = getValue(_getMedian(scope.sublist(half, count)), size, total);
+    int third = count ~/ 3;
+    if (third > 0) {
+      Offset startBezier = getValue(_getMedian(scope.sublist(0, third)), size, total);
+      total += _sumY(scope.sublist(0, third * 2));
+      Offset endBezier = getValue(_getMedian(scope.sublist(2 * third, count), true), size, total);
       _paintCurve(canvas, startPoint, startBezier, endBezier, endPoint, color);
     }
   }
