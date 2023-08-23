@@ -7,6 +7,7 @@ import 'package:app_finance/_classes/storage/data_handler.dart';
 import 'package:app_finance/_classes/structure/account_app_data.dart';
 import 'package:app_finance/_classes/structure/currency/exchange.dart';
 import 'package:app_finance/_configs/theme_helper.dart';
+import 'package:app_finance/charts/gauge_chart.dart';
 import 'package:app_finance/charts/ohlc_chart.dart';
 import 'package:flutter/material.dart';
 
@@ -22,9 +23,19 @@ class AccountTab extends StatelessWidget {
   Widget build(BuildContext context) {
     final TextTheme textTheme = Theme.of(context).textTheme;
     double indent = ThemeHelper.getIndent();
+    double width = ThemeHelper.getWidth(context, 4);
     final exchange = Exchange(store: store);
     final now = DateTime.now();
     final xMin = DateTime(now.year, now.month - 5);
+    final data = DataHandler.generateOhlcSummary(
+      store.getMultiLog(store.getList(AppDataType.accounts).cast<AccountAppData>()),
+      exchange: exchange,
+      cut: xMin,
+    );
+    double health = 0;
+    if (data.isNotEmpty && data.first.high > 0) {
+      health = 100 * (data.last.close - data.first.high) / data.first.high;
+    }
     return SingleChildScrollView(
       child: Padding(
         padding: EdgeInsets.all(indent * 2),
@@ -36,15 +47,11 @@ class AccountTab extends StatelessWidget {
               style: textTheme.bodyLarge,
             ),
             OhlcChart(
-              width: ThemeHelper.getWidth(context, 4),
+              width: width,
               height: 200,
               indent: indent,
               xMin: xMin,
-              data: DataHandler.generateOhlcSummary(
-                store.getMultiLog(store.getList(AppDataType.accounts).cast<AccountAppData>()),
-                exchange: exchange,
-                cut: xMin,
-              ),
+              data: data,
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -52,10 +59,33 @@ class AccountTab extends StatelessWidget {
                 Text(
                   AppLocale.labels.raiseData,
                   style: textTheme.bodySmall!.copyWith(color: Colors.blue),
+                  maxLines: 1,
+                  overflow: TextOverflow.ellipsis,
                 ),
                 Text(
                   AppLocale.labels.failData,
                   style: textTheme.bodySmall!.copyWith(color: Colors.red),
+                  maxLines: 1,
+                  overflow: TextOverflow.ellipsis,
+                ),
+              ],
+            ),
+            SizedBox(height: indent * 2),
+            Row(
+              children: [
+                Text(
+                  AppLocale.labels.incomeHealth,
+                  style: Theme.of(context).textTheme.bodyLarge,
+                  maxLines: 1,
+                  overflow: TextOverflow.ellipsis,
+                ),
+                SizedBox(width: indent * 2),
+                GaugeChart(
+                  value: health,
+                  valueMin: 0,
+                  valueMax: 100,
+                  width: 40,
+                  height: 30,
                 ),
               ],
             ),

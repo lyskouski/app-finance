@@ -11,7 +11,7 @@ abstract class AbstractPainter extends CustomPainter {
   final double yMin;
   final double yMax;
 
-  final double usDay = 86400000000;
+  final double msDay = 86400000;
 
   AbstractPainter({
     required this.indent,

@@ -61,7 +61,7 @@ class BarRaceChart extends StatelessWidget {
       xType: double,
       xMin: 0.0,
       xMax: (xMax * 1.2).ceilToDouble(),
-      xTpl: DateFormat.M(AppLocale.code),
+      xTpl: NumberFormat.compact(locale: AppLocale.code),
     );
     return SizedBox(
       height: size.height,

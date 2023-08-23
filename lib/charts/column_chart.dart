@@ -40,10 +40,11 @@ class ColumnChart extends StatelessWidget {
       background: bgColor.withOpacity(0.1),
       yMin: 0.0,
       yMax: yMax,
+      yTpl: NumberFormat.compact(locale: AppLocale.code),
       xType: DateTime,
-      xMin: xMin.microsecondsSinceEpoch.toDouble(),
-      xMax: xMax.microsecondsSinceEpoch.toDouble(),
-      xTpl: DateFormat.M(AppLocale.code),
+      xMin: xMin.millisecondsSinceEpoch.toDouble(),
+      xMax: xMax.millisecondsSinceEpoch.toDouble(),
+      xTpl: DateFormat.MMM(AppLocale.code),
     );
     return SizedBox(
       height: size.height,

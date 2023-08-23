@@ -10,7 +10,10 @@ import 'package:app_finance/widgets/metrics/budget_tab.dart';
 import 'package:flutter/material.dart';
 
 class MetricsPage extends AbstractPage {
-  MetricsPage() : super();
+  final String search;
+  MetricsPage({
+    this.search = '0',
+  }) : super();
 
   @override
   MetricsPageState createState() => MetricsPageState();
@@ -25,7 +28,7 @@ class MetricsPageState extends AbstractPageState<MetricsPage> {
   @override
   Widget buildContent(BuildContext context, BoxConstraints constraints) {
     return TabWidget(
-      focus: 0,
+      focus: int.tryParse(widget.search) ?? 0,
       tabs: [
         Tab(
           icon: const Icon(Icons.graphic_eq),
