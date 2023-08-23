@@ -94,28 +94,30 @@ class MyAppState extends State<MyApp> {
       FirebaseAnalytics.instance.logSelectContent(contentType: route, itemId: match != null ? 'dynamic' : 'static');
     }
     if (match != null) {
-      final String uuid = match.group(1) ?? '';
-      switch (route.replaceAll(uuid, '')) {
+      final String key = match.group(1) ?? '';
+      switch (route.replaceAll(key, '')) {
         case AppRoute.accountViewRoute:
-          return (context) => AccountViewPage(uuid: uuid);
+          return (context) => AccountViewPage(uuid: key);
         case AppRoute.accountSearchRoute:
-          return (context) => AccountPage(search: uuid);
+          return (context) => AccountPage(search: key);
         case AppRoute.accountEditRoute:
-          return (context) => AccountEditPage(uuid: uuid);
+          return (context) => AccountEditPage(uuid: key);
         case AppRoute.budgetViewRoute:
-          return (context) => BudgetViewPage(uuid: uuid);
+          return (context) => BudgetViewPage(uuid: key);
         case AppRoute.budgetEditRoute:
-          return (context) => BudgetEditPage(uuid: uuid);
+          return (context) => BudgetEditPage(uuid: key);
         case AppRoute.budgetSearchRoute:
-          return (context) => BudgetPage(search: uuid);
+          return (context) => BudgetPage(search: key);
         case AppRoute.billViewRoute:
-          return (context) => BillViewPage(uuid: uuid);
+          return (context) => BillViewPage(uuid: key);
         case AppRoute.billEditRoute:
-          return (context) => BillEditPage(uuid: uuid);
+          return (context) => BillEditPage(uuid: key);
         case AppRoute.goalViewRoute:
-          return (context) => GoalViewPage(uuid: uuid);
+          return (context) => GoalViewPage(uuid: key);
         case AppRoute.goalEditRoute:
-          return (context) => GoalEditPage(uuid: uuid);
+          return (context) => GoalEditPage(uuid: key);
+        case AppRoute.metricsSearchRoute:
+          return (context) => MetricsPage(search: key);
       }
     }
     final staticRoutes = <String, WidgetBuilder>{

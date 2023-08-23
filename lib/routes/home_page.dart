@@ -49,6 +49,7 @@ class HomePageState extends AbstractPageState<HomePage> with SharedPreferencesMi
         builder: (BuildContext context) {
           return ToolbarButtonWidget(
             child: IconButton(
+              hoverColor: Colors.transparent,
               icon: const Icon(
                 Icons.menu,
                 color: Colors.white70,
@@ -139,7 +140,7 @@ class HomePageState extends AbstractPageState<HomePage> with SharedPreferencesMi
       limit: 5,
       route: AppRoute.accountRoute,
       tooltip: AppLocale.labels.accountTooltip,
-      width: ThemeHelper.isVertical(constraints) ? width : halfWidth,
+      width: ThemeHelper.isVertical(constraints) ? width : halfWidth + indent,
       hasExpand: isVertical,
       toExpand: toExpand,
       callback: (v) => setState(() => toExpand = v),
@@ -151,7 +152,7 @@ class HomePageState extends AbstractPageState<HomePage> with SharedPreferencesMi
       limit: 5,
       route: AppRoute.budgetRoute,
       tooltip: AppLocale.labels.budgetTooltip,
-      width: width,
+      width: ThemeHelper.isVertical(constraints) ? width : width - indent / 2,
       hasExpand: isVertical,
       toExpand: toExpand,
       callback: (v) => setState(() => toExpand = v),

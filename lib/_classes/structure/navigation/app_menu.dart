@@ -11,6 +11,19 @@ class AppMenu {
     return route.replaceAll('uuid:', 'uuid:$uuid');
   }
 
+  static String metrics(String? route) {
+    String target = AppRoute.metricsRoute;
+    switch (route) {
+      case AppRoute.accountRoute:
+        return '$target/search:1';
+      case AppRoute.budgetRoute:
+        return '$target/search:0';
+      case AppRoute.billRoute:
+      default:
+        return '$target/search:2';
+    }
+  }
+
   static String search(String route, String title) {
     return '${route.replaceAll('uuid:', 'search:')}$title';
   }

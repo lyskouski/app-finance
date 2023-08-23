@@ -74,6 +74,7 @@ class BaseWidgetState extends State<BaseWidget> with SharedPreferencesMixin {
       margin: widget.margin,
       child: BaseHeaderWidget(
         route: widget.route,
+        width: widget.width,
         state: widget.state,
         title: widget.title,
         tooltip: widget.tooltip,
@@ -93,6 +94,7 @@ class BaseWidgetState extends State<BaseWidget> with SharedPreferencesMixin {
           children: [
             BaseHeaderWidget(
               route: widget.route,
+              width: widget.width,
               state: widget.state,
               title: widget.title,
               tooltip: widget.tooltip,

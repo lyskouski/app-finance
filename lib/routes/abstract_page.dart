@@ -32,6 +32,7 @@ abstract class AbstractPageState<T extends AbstractPage> extends State<T> {
       toolbarHeight: 40,
       leading: ToolbarButtonWidget(
         child: IconButton(
+          hoverColor: Colors.transparent,
           icon: const Icon(
             Icons.arrow_back,
             color: Colors.white70,
