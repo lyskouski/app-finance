@@ -47,9 +47,17 @@ class GoalPageState extends AbstractPageState<GoalPage> with FormatterMixin {
       if (left < 1) {
         left = 1;
       }
-      double value = (1 - e.progress) * exchange.reform(e.details, e.currency, exchange.getDefaultCurrency());
+      double value = (1 - e.progress) * exchange.reform(e.details, e.currency, Exchange.defaultCurrency);
       return prev + value / left;
     });
+  }
+
+  double _getValue(AppDataType type) {
+    final exchange = Exchange(store: super.state);
+    return super
+        .state
+        .getActualList(type)
+        .fold(0.0, (prev, e) => prev + exchange.reform(e.details, e.currency, Exchange.defaultCurrency));
   }
 
   @override
@@ -59,7 +67,9 @@ class GoalPageState extends AbstractPageState<GoalPage> with FormatterMixin {
     final TextTheme textTheme = Theme.of(context).textTheme;
     final goals = super.state.getList(AppDataType.goals);
     final maxValue = _getMaxValue(goals.cast<GoalAppData>());
-    final value = 0.0;
+    final valInvoice = _getValue(AppDataType.invoice);
+    final valBill = _getValue(AppDataType.bills);
+    final value = valInvoice - valBill;
 
     return SingleChildScrollView(
       child: Padding(
@@ -87,12 +97,24 @@ class GoalPageState extends AbstractPageState<GoalPage> with FormatterMixin {
                     overflow: TextOverflow.ellipsis,
                   ),
                   Text(
+                    AppLocale.labels.invoiceSum(getNumberFormatted(valInvoice, Exchange.defaultCurrency?.symbol)),
+                    style: Theme.of(context).textTheme.numberSmall.copyWith(color: textTheme.headlineSmall?.color),
+                    maxLines: 2,
+                    overflow: TextOverflow.ellipsis,
+                  ),
+                  Text(
+                    AppLocale.labels.billSum(getNumberFormatted(valBill, Exchange.defaultCurrency?.symbol)),
+                    style: Theme.of(context).textTheme.numberSmall.copyWith(color: textTheme.headlineSmall?.color),
+                    maxLines: 2,
+                    overflow: TextOverflow.ellipsis,
+                  ),
+                  Text(
                     AppLocale.labels.netProfit(getNumberFormatted(value, Exchange.defaultCurrency?.symbol)),
                     style: Theme.of(context).textTheme.numberSmall.copyWith(color: textTheme.headlineSmall?.color),
                     maxLines: 2,
                     overflow: TextOverflow.ellipsis,
                   ),
-                  SizedBox(height: indent * 4),
+                  SizedBox(height: indent),
                 ],
                 [
                   GaugeChart(

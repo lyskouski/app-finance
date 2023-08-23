@@ -33,6 +33,12 @@
     "bill": "Bill",
     "billHeadline": "Bills",
     "billSetTooltip": "Set Amount",
+    "billSum": "Bills: {value}",
+    "@billSum": {
+        "value": {
+            "type": "String"
+        }
+    },
     "billTooltip": "Open Bills",
     "billTypeTooltip": "[Type] Bill, Income or Transfer",
     "brightnessTheme": "Brightness Theme",
@@ -142,6 +148,12 @@
     "ignoreTooltip": "Ignore",
     "importHeadline": "Import",
     "incomeHeadline": "Income",
+    "invoiceSum": "Invoices: {value}",
+    "@invoiceSum": {
+        "value": {
+            "type": "String"
+        }
+    },
     "isRequired": "required",
     "left": "left",
     "lightMode": "Light",
