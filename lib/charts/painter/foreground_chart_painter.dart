@@ -1,6 +1,7 @@
 // Copyright 2023 The terCAD team. All rights reserved.
 // Use of this source code is governed by a CC BY-NC-ND 4.0 license that can be found in the LICENSE file.
 
+import 'package:app_finance/_classes/herald/app_locale.dart';
 import 'package:app_finance/charts/painter/abstract_painter.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart' as intl;
@@ -20,26 +21,28 @@ class ForegroundChartPainter extends AbstractPainter {
   final int yDivider;
   late final int xDiv;
   final int xDivider;
-  final intl.DateFormat? xTpl;
+  final dynamic xTpl;
+  final dynamic yTpl;
 
   ForegroundChartPainter({
+    super.size,
     super.indent = 0.0,
     this.areaColor = Colors.green,
+    this.background = Colors.grey,
     this.color = Colors.black,
     this.lineColor = Colors.black,
-    this.background = Colors.grey,
-    super.yMin = 0.0,
-    super.yMax = 1.0,
-    this.yArea = const [],
-    this.yMap = const [],
-    this.xType = double,
-    this.yType = double,
+    this.xDivider = 12,
     super.xMin = 0.0,
     super.xMax = 1.0,
-    super.size,
-    this.yDivider = 12,
-    this.xDivider = 12,
     this.xTpl,
+    this.xType = double,
+    this.yArea = const [],
+    this.yMap = const [],
+    this.yDivider = 12,
+    super.yMin = 0.0,
+    super.yMax = 1.0,
+    this.yTpl,
+    this.yType = double,
   }) {
     _setTextArea();
     shift = textArea * 1.2;
@@ -136,7 +139,8 @@ class ForegroundChartPainter extends AbstractPainter {
       double y = _shiftStep(size.height, textArea, yDiv, i);
       canvas.drawLine(Offset(shift, y), Offset(size.width, y), lineColor);
       if (yType == double) {
-        _paintText(canvas, textArea, y - textArea / 3, (yMin + delta).toStringAsFixed(2));
+        final formatter = yTpl ?? intl.NumberFormat.decimalPatternDigits(decimalDigits: 2, locale: AppLocale.code);
+        _paintText(canvas, textArea, y - textArea / 3, formatter.format(yMin + delta));
       } else if (yType == IconData) {
         final code = i >= yMap.length ? null : yMap[i];
         _paintIcon(canvas, textArea, y - textArea, code);
@@ -169,14 +173,11 @@ class ForegroundChartPainter extends AbstractPainter {
       if (i < xDiv) {
         dynamic value = xMin + delta;
         if (xType == DateTime) {
-          DateTime tmp = DateTime.fromMillisecondsSinceEpoch((xMin + delta).toInt());
-          if (xTpl != null) {
-            value = xTpl!.format(tmp);
-          } else {
-            value = intl.DateFormat('d').format(tmp);
-          }
+          final formatter = xTpl ?? intl.DateFormat('d');
+          value = formatter.format(DateTime.fromMillisecondsSinceEpoch((xMin + delta).toInt()));
         } else {
-          value = (value as double).toStringAsFixed(1);
+          final formatter = xTpl ?? intl.NumberFormat.decimalPatternDigits(decimalDigits: 1, locale: AppLocale.code);
+          value = formatter.format(value as double);
         }
         _paintText(canvas, x + shift - 2, height + 1, value.toString());
       }

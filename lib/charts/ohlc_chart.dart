@@ -46,6 +46,7 @@ class OhlcChart extends StatelessWidget {
       background: bgColor.withOpacity(0.1),
       yMin: yMin,
       yMax: yMax,
+      yTpl: NumberFormat.compact(locale: AppLocale.code),
       xType: DateTime,
       xMin: xMin.microsecondsSinceEpoch.toDouble(),
       xMax: xMax.microsecondsSinceEpoch.toDouble(),

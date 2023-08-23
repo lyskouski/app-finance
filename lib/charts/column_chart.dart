@@ -40,6 +40,7 @@ class ColumnChart extends StatelessWidget {
       background: bgColor.withOpacity(0.1),
       yMin: 0.0,
       yMax: yMax,
+      yTpl: NumberFormat.compact(locale: AppLocale.code),
       xType: DateTime,
       xMin: xMin.microsecondsSinceEpoch.toDouble(),
       xMax: xMax.microsecondsSinceEpoch.toDouble(),
