@@ -98,10 +98,13 @@ class CurrencyPageState extends AbstractPageState<CurrencyPage> {
                   )
                 ],
                 [
-                  TradeChart(
-                    data: history ?? [],
-                    width: 100,
-                    height: 80,
+                  Padding(
+                    padding: EdgeInsets.only(top: indent),
+                    child: TradeChart(
+                      data: history ?? [],
+                      width: 100,
+                      height: 40,
+                    ),
                   ),
                 ],
               ],
