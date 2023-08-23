@@ -37,13 +37,13 @@ class DataHandler {
   }
 
   static List<Offset> getAmountGroupedByMonth(List<InterfaceAppData> scope, {required Exchange exchange}) {
-    fn(item) => DateTime(item.createdAt.year, item.createdAt.month).microsecondsSinceEpoch.toDouble();
+    fn(item) => DateTime(item.createdAt.year, item.createdAt.month).millisecondsSinceEpoch.toDouble();
     return _getGroupedAmount(scope, fn, exchange: exchange);
   }
 
   static List<Offset> getAmountGroupedByDate(List<InterfaceAppData> scope, {required Exchange exchange}) {
     fn(item) =>
-        DateTime(item.createdAt.year, item.createdAt.month, item.createdAt.day).microsecondsSinceEpoch.toDouble();
+        DateTime(item.createdAt.year, item.createdAt.month, item.createdAt.day).millisecondsSinceEpoch.toDouble();
     return _getGroupedAmount(scope, fn, exchange: exchange);
   }
 

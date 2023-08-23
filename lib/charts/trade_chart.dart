@@ -30,12 +30,12 @@ class TradeChart extends StatelessWidget {
 
   DataScope _prepareData() {
     final result = SplayTreeMap<double, Offset>();
-    final xMax = DateTime.now().microsecondsSinceEpoch.toDouble();
+    final xMax = DateTime.now().millisecondsSinceEpoch.toDouble();
     double yMin = data.firstOrNull?.changedTo ?? 0.0;
     double yMax = 0.0;
     for (int i = 0; i < data.length; i++) {
       final time = data[i].timestamp;
-      final x = DateTime(time.year, time.month, time.day).microsecondsSinceEpoch.toDouble();
+      final x = DateTime(time.year, time.month, time.day).millisecondsSinceEpoch.toDouble();
       if (!result.containsKey(x) || result[x]!.dy < data[i].changedTo) {
         result[x] = Offset(x, data[i].changedTo ?? 0.0);
       }
@@ -60,7 +60,7 @@ class TradeChart extends StatelessWidget {
         if (scope.isNotEmpty)
           ChartData([
             scope.first,
-            Offset(DateTime.now().microsecondsSinceEpoch.toDouble(), scope.first.dy),
+            Offset(DateTime.now().millisecondsSinceEpoch.toDouble(), scope.first.dy),
           ], color: Colors.grey, strokeWidth: 1)
       ],
     );

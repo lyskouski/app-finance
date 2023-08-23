@@ -174,7 +174,7 @@ class ForegroundChartPainter extends AbstractPainter {
         dynamic value = xMin + delta;
         if (xType == DateTime) {
           final formatter = xTpl ?? intl.DateFormat('d');
-          value = formatter.format(DateTime.fromMillisecondsSinceEpoch((xMin + delta).toInt()));
+          value = formatter.format(DateTime.fromMillisecondsSinceEpoch(value.toInt()));
         } else {
           final formatter = xTpl ?? intl.NumberFormat.decimalPatternDigits(decimalDigits: 1, locale: AppLocale.code);
           value = formatter.format(value as double);

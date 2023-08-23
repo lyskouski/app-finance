@@ -30,9 +30,9 @@ class ForecastChartPainter extends AbstractPainter {
       final dx = scope.data.last.dx;
       final total = _sumY(scope.data);
       if (scope.data.length > 2 && dx < xMax && total < yMax) {
-        final cycles = (xMax - dx) ~/ usDay;
+        final cycles = (xMax - dx) ~/ msDay;
         final forecast = [scope.data.last];
-        forecast.addAll(MonteCarloSimulation(cycles: cycles).generate(scope.data, usDay, xMax - 2 * usDay));
+        forecast.addAll(MonteCarloSimulation(cycles: cycles).generate(scope.data, msDay, xMax - 2 * msDay));
         _paint(canvas, forecast, size, scope.color.withBlue(200).withOpacity(0.4), total);
       }
     }
