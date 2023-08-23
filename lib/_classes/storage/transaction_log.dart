@@ -11,6 +11,7 @@ import 'package:app_finance/_classes/structure/bill_app_data.dart';
 import 'package:app_finance/_classes/structure/budget_app_data.dart';
 import 'package:app_finance/_classes/structure/currency_app_data.dart';
 import 'package:app_finance/_classes/structure/goal_app_data.dart';
+import 'package:app_finance/_classes/structure/invoice_app_data.dart';
 import 'package:app_finance/_mixins/shared_preferences_mixin.dart';
 import 'package:crypto/crypto.dart';
 import 'package:encrypt/encrypt.dart';
@@ -114,12 +115,14 @@ class TransactionLog with SharedPreferencesMixin {
     final bill = BillAppData(title: '', account: '', category: '').getClassName();
     final budget = BudgetAppData(title: '', amountLimit: 0.0).getClassName();
     final currency = CurrencyAppData(title: '').getClassName();
+    final invoice = InvoiceAppData(title: '', account: '').getClassName();
     final typeToClass = {
       goal: (data) => GoalAppData.fromJson(data),
       account: (data) => AccountAppData.fromJson(data),
       bill: (data) => BillAppData.fromJson(data)..setState(store),
       budget: (data) => BudgetAppData.fromJson(data),
       currency: (data) => CurrencyAppData.fromJson(data),
+      invoice: (data) => InvoiceAppData.fromJson(data),
     };
     final obj = typeToClass[type];
     if (obj != null) {
