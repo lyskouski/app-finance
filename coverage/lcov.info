@@ -2642,7 +2642,9 @@ DA:97,0
 DA:100,0
 DA:101,0
 DA:102,0
-LF:51
+DA:103,0
+DA:104,0
+LF:53
 LH:0
 end_of_record
 SF:lib/routes/goal_add_page.dart
