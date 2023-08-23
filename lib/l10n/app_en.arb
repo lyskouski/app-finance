@@ -127,6 +127,13 @@
     "from": "from",
     "goNextTooltip": "Go Next",
     "goalHeadline": "Goals",
+    "goalProfit": "Goals Target: {value}",
+    "@goalProfit": {
+        "value": {
+            "type": "String"
+        }
+    },
+    "goalProfitTooltip": "Profit vs Goals Target",
     "goalTooltip": "Open Goals",
     "hasEncrypted": "Once set, cannot be changed",
     "homeHeadline": "Home",
@@ -143,6 +150,12 @@
     "metricsTooltip": "Metrics",
     "milestones": "Milestones",
     "navigationTooltip": "Open main menu",
+    "netProfit": "Profit: {value}",
+    "@netProfit": {
+        "value": {
+            "type": "String"
+        }
+    },
     "ok": "OK",
     "parseFile": "Parse .csv-file",
     "password": "Password",
