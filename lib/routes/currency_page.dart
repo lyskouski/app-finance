@@ -65,8 +65,7 @@ class CurrencyPageState extends AbstractPageState<CurrencyPage> {
         itemCount: scope?.length,
         itemBuilder: (context, index) {
           final item = scope![index];
-          final history =
-              super.state.getLog(item.uuid)?.where((e) => e.timestamp.isAfter(cutDate)).toList().reversed.toList();
+          final history = super.state.getLog(item.uuid)?.where((e) => e.timestamp.isAfter(cutDate)).toList();
           return Padding(
             padding: EdgeInsets.all(indent),
             child: RowWidget(

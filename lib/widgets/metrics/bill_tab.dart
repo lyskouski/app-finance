@@ -50,6 +50,7 @@ class BillTab extends StatelessWidget {
   Widget build(BuildContext context) {
     final TextTheme textTheme = Theme.of(context).textTheme;
     double indent = ThemeHelper.getIndent();
+    final width = ThemeHelper.getWidth(context, 4);
     final data = getData();
     double yMax = data.first.data.reduce((max, current) => current.dy > max.dy ? current : max).dy;
     if (data.last.data.isNotEmpty) {
@@ -68,7 +69,7 @@ class BillTab extends StatelessWidget {
               style: textTheme.bodyLarge,
             ),
             ColumnChart(
-              width: ThemeHelper.getWidth(context, 4),
+              width: width,
               height: 200,
               indent: indent,
               data: data,
@@ -80,7 +81,7 @@ class BillTab extends StatelessWidget {
               style: textTheme.bodyLarge,
             ),
             BarRaceChart(
-              width: ThemeHelper.getWidth(context, 4),
+              width: width,
               indent: indent,
               categories: budgets.cast(),
               data: DataHandler.getAmountGroupedByCategory(

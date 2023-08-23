@@ -1,9 +1,12 @@
 // Copyright 2023 The terCAD team. All rights reserved.
 // Use of this source code is governed by a CC BY-NC-ND 4.0 license that can be found in the LICENSE file.
 
+import 'dart:collection';
+
 import 'package:app_finance/_classes/herald/app_locale.dart';
 import 'package:app_finance/_classes/structure/transaction_log_data.dart';
 import 'package:app_finance/charts/interface/chart_data.dart';
+import 'package:app_finance/charts/interface/data_scope.dart';
 import 'package:app_finance/charts/painter/foreground_chart_painter.dart';
 import 'package:app_finance/charts/painter/line_chart_painter.dart';
 import 'package:flutter/material.dart';
@@ -25,46 +28,60 @@ class TradeChart extends StatelessWidget {
     this.tooltip = '',
   });
 
-  List<ChartData> _getData(double initial, double timestamp) {
-    final scope = data
-        .map((e) => Offset(
-              e.timestamp.microsecondsSinceEpoch.toDouble(),
-              initial + (e.changedTo ?? 0.0) - (e.changedFrom ?? 0.0),
-            ))
-        .toList();
-    if (scope.isNotEmpty) {
-      scope.replaceRange(0, 1, [Offset(timestamp, initial)]);
+  DataScope _prepareData() {
+    final result = SplayTreeMap<double, Offset>();
+    final xMax = DateTime.now().microsecondsSinceEpoch.toDouble();
+    double yMin = data.firstOrNull?.changedTo ?? 0.0;
+    double yMax = 0.0;
+    for (int i = 0; i < data.length; i++) {
+      final time = data[i].timestamp;
+      final x = DateTime(time.year, time.month, time.day).microsecondsSinceEpoch.toDouble();
+      if (!result.containsKey(x) || result[x]!.dy < data[i].changedTo) {
+        result[x] = Offset(x, data[i].changedTo ?? 0.0);
+      }
+      if (data[i].changedTo > yMax) {
+        yMax = data[i].changedTo;
+      }
+      if (data[i].changedTo < yMin) {
+        yMin = data[i].changedTo;
+      }
     }
-    return [
-      ChartData(scope, color: data.isNotEmpty && initial > data.last.changedTo ? Colors.orange : Colors.blue),
-      if (scope.isNotEmpty)
-        ChartData([
-          Offset(timestamp, initial),
-          Offset(DateTime.now().microsecondsSinceEpoch.toDouble(), initial),
-        ], color: Colors.grey, strokeWidth: 1)
-    ];
+    final scope = result.values.toList();
+    return DataScope(
+      xMax: xMax,
+      xMin: scope.firstOrNull?.dx ?? xMax,
+      yMin: yMin * 0.8,
+      yMax: yMax * 1.2,
+      data: [
+        ChartData(
+          scope,
+          color: scope.isNotEmpty && scope.first.dy > scope.last.dy ? Colors.orange : Colors.blue,
+        ),
+        if (scope.isNotEmpty)
+          ChartData([
+            scope.first,
+            Offset(DateTime.now().microsecondsSinceEpoch.toDouble(), scope.first.dy),
+          ], color: Colors.grey, strokeWidth: 1)
+      ],
+    );
   }
 
   @override
   Widget build(BuildContext context) {
     final size = Size(width, height);
     final bgColor = Theme.of(context).colorScheme.onBackground;
-    final xMin = data.firstOrNull?.timestamp ?? DateTime.now();
-    final xMax = DateTime.now();
-    final initial = data.firstOrNull?.changedTo ?? 0.0;
-    double yMin = initial * 0.2;
-    double yMax = initial * 2.2;
+    final scope = _prepareData();
 
     final bg = ForegroundChartPainter(
       size: size,
       color: bgColor,
       lineColor: bgColor,
       background: Colors.white.withOpacity(0.0),
-      yMin: yMin,
-      yMax: yMax,
+      yMin: scope.yMin,
+      yMax: scope.yMax,
       xType: DateTime,
-      xMin: xMin.microsecondsSinceEpoch.toDouble(),
-      xMax: xMax.microsecondsSinceEpoch.toDouble(),
+      xMin: scope.xMin,
+      xMax: scope.xMax,
       xDivider: 16,
       xTpl: DateFormat.Md(AppLocale.code),
     );
@@ -77,9 +94,9 @@ class TradeChart extends StatelessWidget {
         painter: LineChartPainter(
           indent: bg.shift,
           size: size,
-          data: _getData(initial, bg.xMin),
-          yMin: yMin,
-          yMax: yMax,
+          data: scope.data,
+          yMin: scope.yMin,
+          yMax: scope.yMax,
           xMin: bg.xMin,
           xMax: bg.xMax,
         ),
