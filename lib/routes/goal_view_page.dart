@@ -88,20 +88,23 @@ class GoalViewPageState extends AbstractPageState<GoalViewPage> with SharedPrefe
   @override
   Widget buildContent(BuildContext context, BoxConstraints constraints) {
     final item = super.state.getByUuid(widget.uuid) as GoalAppData;
-    return Column(
-      children: [
-        BaseLineWidget(
-          title: item.title,
-          width: ThemeHelper.getWidth(context, 6),
-          uuid: widget.uuid,
-          details: item.getNumberFormatted(item.details),
-          description: item.closedAtFormatted,
-          color: item.color ?? Colors.green.shade700,
-          hidden: item.hidden,
-          progress: item.progress,
-          route: AppRoute.goalViewRoute,
-        )
-      ],
+    return Padding(
+      padding: EdgeInsets.only(top: ThemeHelper.getIndent()),
+      child: Column(
+        children: [
+          BaseLineWidget(
+            title: item.title,
+            width: ThemeHelper.getWidth(context, 3),
+            uuid: widget.uuid,
+            details: item.getNumberFormatted(item.details),
+            description: item.closedAtFormatted,
+            color: item.color ?? Colors.green.shade700,
+            hidden: item.hidden,
+            progress: item.progress,
+            route: AppRoute.goalViewRoute,
+          )
+        ],
+      ),
     );
   }
 }

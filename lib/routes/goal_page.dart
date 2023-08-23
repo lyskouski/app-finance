@@ -35,19 +35,25 @@ class GoalPageState extends AbstractPageState<GoalPage> {
 
   @override
   Widget buildContent(BuildContext context, BoxConstraints constraints) {
-    return Column(
-        children: super.state.getList(AppDataType.goals).map((goal) {
-      return BaseLineWidget(
-        title: goal.title ?? '',
-        width: ThemeHelper.getWidth(context, 2),
-        uuid: goal.uuid,
-        details: goal.getNumberFormatted(goal.details),
-        description: goal.closedAtFormatted,
-        color: goal.color ?? Colors.green.shade700,
-        hidden: goal.hidden,
-        progress: goal.progress,
-        route: AppRoute.goalViewRoute,
-      );
-    }).toList());
+    return SingleChildScrollView(
+      child: Padding(
+        padding: EdgeInsets.all(ThemeHelper.getIndent()),
+        child: Column(
+          children: super.state.getList(AppDataType.goals).map((goal) {
+            return BaseLineWidget(
+              title: goal.title ?? '',
+              width: ThemeHelper.getWidth(context, 4),
+              uuid: goal.uuid,
+              details: goal.getNumberFormatted(goal.details),
+              description: goal.closedAtFormatted,
+              color: goal.color ?? Colors.green.shade700,
+              hidden: goal.hidden,
+              progress: goal.progress,
+              route: AppRoute.goalViewRoute,
+            );
+          }).toList(),
+        ),
+      ),
+    );
   }
 }

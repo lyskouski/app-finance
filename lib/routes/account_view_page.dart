@@ -69,28 +69,35 @@ class AccountViewPageState extends AbstractPageState<AccountViewPage> {
   @override
   Widget buildContent(BuildContext context, BoxConstraints constraints) {
     final item = super.state.getByUuid(widget.uuid) as AccountAppData;
-    double width = ThemeHelper.getWidth(context, 6);
-    return Column(
-      children: [
-        BaseLineWidget(
-          uuid: item.uuid ?? '',
-          title: item.title,
-          description: item.description ?? '',
-          details: item.detailsFormatted,
-          progress: item.progress,
-          color: item.color ?? Colors.transparent,
-          width: width,
-          route: AppRoute.accountViewRoute,
-        ),
-        Expanded(
-          child: BaseListInfiniteWidget(
-            state: super.state.getLog(widget.uuid),
+    final indent = ThemeHelper.getIndent();
+    double width = ThemeHelper.getWidth(context, 3);
+    return Padding(
+      padding: EdgeInsets.only(top: indent),
+      child: Column(
+        children: [
+          BaseLineWidget(
+            uuid: item.uuid ?? '',
+            title: item.title,
+            description: item.description ?? '',
+            details: item.detailsFormatted,
+            progress: item.progress,
+            color: item.color ?? Colors.transparent,
             width: width,
-            buildListWidget: buildListWidget,
+            route: AppRoute.accountViewRoute,
           ),
-        ),
-        const SizedBox(height: 70)
-      ],
+          Expanded(
+            child: Padding(
+              padding: EdgeInsets.fromLTRB(indent, 0, indent, 0),
+              child: BaseListInfiniteWidget(
+                state: super.state.getLog(widget.uuid),
+                width: width - indent,
+                buildListWidget: buildListWidget,
+              ),
+            ),
+          ),
+          const SizedBox(height: 70)
+        ],
+      ),
     );
   }
 }

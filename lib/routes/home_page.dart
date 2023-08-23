@@ -111,8 +111,8 @@ class HomePageState extends AbstractPageState<HomePage> with SharedPreferencesMi
     EdgeInsets middleLeft = EdgeInsets.fromLTRB(indent, indent, 0, 0);
     EdgeInsets middleRight = EdgeInsets.fromLTRB(indent, indent, indent, 0);
     EdgeInsets bottom = EdgeInsets.fromLTRB(indent, indent, indent, indent);
-    double width = ThemeHelper.getWidth(context, 2);
-    double halfWidth = width / 2 - indent;
+    double width = ThemeHelper.getWidth(context, -1);
+    double halfWidth = width / 2;
     final DateFormat formatterDate = DateFormat.MMMM(AppLocale.code);
     bool isVertical = ThemeHelper.isVertical(constraints);
 

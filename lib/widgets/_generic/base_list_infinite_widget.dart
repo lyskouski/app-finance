@@ -109,7 +109,7 @@ class BaseListInfiniteWidgetState extends State<BaseListInfiniteWidget> {
               child: widget.buildListWidget(
                 items[index - 1],
                 context,
-                widget.width - 40,
+                widget.width,
               ),
             );
           }

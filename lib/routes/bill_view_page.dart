@@ -56,19 +56,22 @@ class BillViewPageState extends AbstractPageState<BillViewPage> {
   @override
   Widget buildContent(BuildContext context, BoxConstraints constraints) {
     final item = super.state.getByUuid(widget.uuid) as BillAppData;
-    return Column(
-      children: [
-        BaseLineWidget(
-          uuid: item.uuid ?? '',
-          title: item.title,
-          description: item.description,
-          details: item.detailsFormatted,
-          progress: item.progress,
-          color: item.color ?? Colors.transparent,
-          width: ThemeHelper.getWidth(context, 6),
-          route: AppRoute.billViewRoute,
-        )
-      ],
+    return Padding(
+      padding: EdgeInsets.only(top: ThemeHelper.getIndent()),
+      child: Column(
+        children: [
+          BaseLineWidget(
+            uuid: item.uuid ?? '',
+            title: item.title,
+            description: item.description,
+            details: item.detailsFormatted,
+            progress: item.progress,
+            color: item.color ?? Colors.transparent,
+            width: ThemeHelper.getWidth(context, 3),
+            route: AppRoute.billViewRoute,
+          )
+        ],
+      ),
     );
   }
 }

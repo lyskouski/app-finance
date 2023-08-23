@@ -51,51 +51,49 @@ class AboutPageState extends AbstractPageState<AboutPage> with LauncherMixin {
       padding: EdgeInsets.fromLTRB(indent, indent, indent, 0),
       child: Column(
         children: [
-          RowWidget(
-            indent: indent,
-            maxWidth: width,
-            chunk: const [0.2, 0.8],
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
-              [
-                Image.asset(
-                  'assets/images/logo.png',
-                  width: width * 0.2,
-                  height: width * 0.2,
-                ),
-              ],
-              [
-                Text(
-                  AppLocale.labels.appTitle,
-                  style: Theme.of(context).textTheme.headlineLarge,
-                ),
-                Text(AppLocale.labels.appVersion(version)),
-                Text(AppLocale.labels.appBuild(buildNumber)),
-                SizedBox(width: width * 0.8),
-              ],
+              Image.asset(
+                'assets/images/logo.png',
+                width: 60,
+                height: 60,
+              ),
+              Text(
+                AppLocale.labels.appTitle,
+                style: Theme.of(context).textTheme.headlineLarge,
+              ),
+              Column(
+                children: [
+                  Text(AppLocale.labels.appVersion(version)),
+                  Text(AppLocale.labels.appBuild(buildNumber)),
+                ],
+              ),
             ],
           ),
           const Divider(),
           RowWidget(
             indent: indent,
             maxWidth: width,
-            chunk: const [0.3, 0.3, 0.4],
+            alignment: MainAxisAlignment.spaceEvenly,
+            chunk: const [null, null, null],
             children: [
               [
                 ElevatedButton(
                   onPressed: () => openURL('https://github.com/lyskouski/app-finance/releases'),
-                  child: Text(AppLocale.labels.releases),
+                  child: Text(AppLocale.labels.releases, overflow: TextOverflow.ellipsis),
                 ),
               ],
               [
                 ElevatedButton(
                   onPressed: () => openURL('https://github.com/users/lyskouski/projects/2/views/1'),
-                  child: Text(AppLocale.labels.roadmap),
+                  child: Text(AppLocale.labels.roadmap, overflow: TextOverflow.ellipsis),
                 ),
               ],
               [
                 ElevatedButton(
                   onPressed: () => openURL('https://github.com/lyskouski/app-finance/milestones'),
-                  child: Text(AppLocale.labels.milestones),
+                  child: Text(AppLocale.labels.milestones, overflow: TextOverflow.ellipsis),
                 ),
               ],
             ],

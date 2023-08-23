@@ -56,11 +56,15 @@ class BaseLineWidget extends StatelessWidget {
         children: [
           RowWidget(
             indent: indent,
+            alignment: MainAxisAlignment.start,
             maxWidth: width,
-            chunk: [indent / 2, null, ThemeHelper.getTextWidth(detailsText) + 2 * indent],
+            chunk: [indent * 1.5, null, ThemeHelper.getTextWidth(detailsText) + 2 * indent],
             children: [
               [
-                BarVerticalSingle(value: progress, height: 32.0, color: color),
+                Padding(
+                  padding: EdgeInsets.only(left: indent),
+                  child: BarVerticalSingle(value: progress, height: 32.0, width: indent / 2, color: color),
+                ),
               ],
               [
                 Column(
@@ -80,8 +84,8 @@ class BaseLineWidget extends StatelessWidget {
                 ),
               ],
               [
-                Padding(
-                  padding: EdgeInsets.all(indent),
+                Align(
+                  alignment: Alignment.centerRight,
                   child: detailsText,
                 ),
               ],

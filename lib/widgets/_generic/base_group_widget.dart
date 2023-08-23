@@ -61,7 +61,16 @@ class BaseGroupWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     double indent = ThemeHelper.getIndent();
     final TextTheme textTheme = Theme.of(context).textTheme;
-    final toSwap = items.length * 36 + items.length * indent * 2 > width * 0.5;
+    final titleText = Text(
+      title,
+      style: textTheme.bodyMedium,
+      overflow: TextOverflow.ellipsis,
+    );
+    double titleWidth = ThemeHelper.getTextWidth(titleText);
+    if (titleWidth > width / 2) {
+      titleWidth = width / 2;
+    }
+    final toSwap = items.length * 36 + items.length * indent * 2 > width - titleWidth - indent * 3;
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -71,21 +80,21 @@ class BaseGroupWidget extends StatelessWidget {
           tooltip: AppLocale.labels.search(title),
           child: RowWidget(
             indent: indent,
+            alignment: MainAxisAlignment.start,
             maxWidth: width,
-            chunk: [indent / 2, width * 0.5, null],
+            chunk: [indent * 1.5, titleWidth, null],
             children: [
               [
-                BarVerticalGroup(value: progress, height: 32, color: color),
+                Padding(
+                  padding: EdgeInsets.only(left: indent),
+                  child: BarVerticalGroup(value: progress, height: 32.0, width: indent / 2, color: color),
+                ),
               ],
               [
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text(
-                      title,
-                      style: textTheme.bodyMedium,
-                      overflow: TextOverflow.ellipsis,
-                    ),
+                    titleText,
                     Text(
                       description,
                       style: textTheme.bodySmall,
