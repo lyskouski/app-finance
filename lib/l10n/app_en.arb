@@ -129,6 +129,8 @@
     "expenseHeadline": "Expense",
     "expenseTransfer": "Amount of Transfer",
     "failData": "Amount Deduction",
+    "flowTypeInvoice": "Invoice",
+    "flowTypeTooltip": "Amount Type: Bill, Invoice",
     "forecastData": "Forecast",
     "from": "from",
     "goNextTooltip": "Go Next",
