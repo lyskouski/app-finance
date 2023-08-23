@@ -104,6 +104,7 @@ class ForecastChartPainter extends AbstractPainter {
     final path = Path()
       ..moveTo(startPoint.dx, startPoint.dy)
       ..quadraticBezierTo(controlPoint.dx, controlPoint.dy, endPoint.dx, endPoint.dy);
+    // qubicTo
     canvas.drawPath(path, line);
   }
 }

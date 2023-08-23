@@ -2,9 +2,8 @@
 // Use of this source code is governed by a CC BY-NC-ND 4.0 license that can be found in the LICENSE file.
 
 import 'package:app_finance/_classes/herald/app_locale.dart';
+import 'package:app_finance/_classes/structure/invoice_app_data.dart';
 import 'package:app_finance/_classes/structure/navigation/app_route.dart';
-import 'package:app_finance/_classes/structure/account_app_data.dart';
-import 'package:app_finance/_classes/structure/currency/exchange.dart';
 import 'package:app_finance/_classes/controller/focus_controller.dart';
 import 'package:app_finance/_mixins/shared_preferences_mixin.dart';
 import 'package:app_finance/_configs/custom_text_theme.dart';
@@ -12,6 +11,7 @@ import 'package:app_finance/_classes/storage/app_data.dart';
 import 'package:app_finance/_configs/theme_helper.dart';
 import 'package:app_finance/widgets/_forms/currency_exchange_input.dart';
 import 'package:app_finance/widgets/_forms/currency_selector.dart';
+import 'package:app_finance/widgets/_forms/date_time_input.dart';
 import 'package:app_finance/widgets/_forms/full_sized_button.dart';
 import 'package:app_finance/widgets/_forms/list_account_selector.dart';
 import 'package:app_finance/widgets/_forms/simple_input.dart';
@@ -25,12 +25,14 @@ class IncomeTab extends StatefulWidget {
   final String? account;
   final Currency? currency;
   final double? amount;
+  final DateTime? createdAt;
 
   const IncomeTab({
     super.key,
     this.account,
     this.currency,
     this.amount,
+    this.createdAt,
   });
 
   @override
@@ -42,6 +44,7 @@ class IncomeTabState extends State<IncomeTab> with SharedPreferencesMixin {
   String? account;
   Currency? currency;
   late TextEditingController amount;
+  late DateTime createdAt;
   double? amountValue;
   bool hasErrors = false;
   bool isFresh = true;
@@ -50,6 +53,7 @@ class IncomeTabState extends State<IncomeTab> with SharedPreferencesMixin {
   void initState() {
     account = widget.account;
     currency = widget.currency;
+    createdAt = widget.createdAt ?? DateTime.now();
     amount = TextEditingController(text: widget.amount != null ? widget.amount.toString() : '');
     amountValue = widget.amount;
     super.initState();
@@ -73,9 +77,13 @@ class IncomeTabState extends State<IncomeTab> with SharedPreferencesMixin {
   void updateStorage() {
     String uuid = account ?? '';
     setPreference(prefAccount, uuid);
-    AccountAppData value = state.getByUuid(uuid);
-    value.details += Exchange(store: state).reform(double.tryParse(amount.text), currency, value.currency);
-    state.update(uuid, value);
+    state.add(InvoiceAppData(
+      title: '',
+      account: uuid,
+      details: double.tryParse(amount.text),
+      currency: currency,
+      createdAt: createdAt,
+    ));
   }
 
   Widget buildButton(BuildContext context, BoxConstraints constraints) {
@@ -184,6 +192,18 @@ class IncomeTabState extends State<IncomeTab> with SharedPreferencesMixin {
                       account != null ? state.getByUuid(account!).currency : null,
                     ],
                   ),
+                  SizedBox(height: indent),
+                  Text(
+                    AppLocale.labels.balanceDate,
+                    style: textTheme.bodyLarge,
+                  ),
+                  DateTimeInput(
+                    style: textTheme.numberMedium.copyWith(color: textTheme.headlineSmall?.color),
+                    width: width,
+                    value: createdAt,
+                    setState: (value) => setState(() => createdAt = value),
+                  ),
+                  SizedBox(height: indent),
                 ],
               ),
             ),

@@ -44,34 +44,32 @@ class WrapperVisitor {
     final constructor = element.unnamedConstructor;
     if (!constructor!.isDefaultConstructor) {
       final properties = constructor.parameters;
-      buffer.writeln('  Wrapper${element.name}({');
+      buffer.writeln('  Wrapper${element.name}(');
       if (properties.isNotEmpty) {
-        for (var e in properties) {
-          buffer.writeln('    ${e.isRequired ? 'required ' : ''}super.${e.name},');
-        }
+        buffer.writeln(_getTypedArguments(properties, 'super.'));
       }
-      buffer.writeln('  });');
+      buffer.writeln('  );');
     }
   }
 
   void addClassDefinition() {
     if (element is MixinElement) {
-      return _withMixin();
+      _withMixin();
+    } else if (element.unnamedConstructor == null) {
+      _withPrivateConstructor();
+    } else {
+      _withConstructor();
     }
-    if (element.unnamedConstructor == null) {
-      return _withPrivateConstructor();
-    }
-    _withConstructor();
   }
 
-  String _getTypedArguments(List<ParameterElement> parameters) {
+  String _getTypedArguments(List<ParameterElement> parameters, [String? prefix]) {
     List<String> optional = [];
     List<String> named = [];
     List<String> base = [];
     for (ParameterElement e in parameters) {
-      String arg = '${e.type} ${e.name}';
+      String arg = prefix != null ? '$prefix${e.name}' : '${e.type} ${e.name}';
       if (e.isNamed) {
-        named.add(arg);
+        named.add('${e.isRequired ? 'required ' : ''}$arg');
       } else if (e.isOptional) {
         optional.add(arg);
       } else {

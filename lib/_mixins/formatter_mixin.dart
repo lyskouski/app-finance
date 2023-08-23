@@ -20,10 +20,10 @@ mixin FormatterMixin {
     return formatterDate.format(date);
   }
 
-  String getNumberFormatted(double value) {
+  String getNumberFormatted(double value, [String? symbol]) {
     final NumberFormat formatter = NumberFormat.currency(
       locale: AppLocale.code,
-      symbol: currency?.symbol ?? '?',
+      symbol: symbol ?? currency?.symbol ?? '?',
       decimalDigits: currency?.decimalDigits ?? 2,
     );
     return formatter.format(value);

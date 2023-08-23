@@ -6,6 +6,7 @@ import 'package:app_finance/_classes/storage/app_data.dart';
 import 'package:app_finance/_classes/herald/app_locale.dart';
 import 'package:app_finance/_classes/structure/currency/currency_provider.dart';
 import 'package:app_finance/_classes/structure/account_app_data.dart';
+import 'package:app_finance/_classes/structure/invoice_app_data.dart';
 import 'package:app_finance/_configs/account_type.dart';
 import 'package:app_finance/_classes/structure/bill_app_data.dart';
 import 'package:app_finance/_classes/structure/budget_app_data.dart';
@@ -43,7 +44,7 @@ class ImportTabState extends State<ImportTab> with SharedPreferencesMixin {
   final attrAccountName = 'accountName';
   final attrCategoryName = 'categoryName';
   final attrBillAmount = 'billAmount';
-  // final attrBillType = 'billType';
+  final attrBillType = 'billType';
   final attrBillDate = 'billDate';
   final attrBillCurrency = 'billCurrency';
   final attrBillComment = 'billComment';
@@ -57,7 +58,7 @@ class ImportTabState extends State<ImportTab> with SharedPreferencesMixin {
       ListSelectorItem(id: attrAccountName, name: '$account: ${AppLocale.labels.title}'),
       ListSelectorItem(id: attrCategoryName, name: '$budget: ${AppLocale.labels.title}'),
       ListSelectorItem(id: attrBillAmount, name: '$bill: ${AppLocale.labels.expense}'),
-      // ListSelectorItem(id: attrBillType, name: '$bill: ${AppLocale.labels.billTypeTooltip}'),
+      ListSelectorItem(id: attrBillType, name: '$bill: ${AppLocale.labels.flowTypeTooltip}'),
       ListSelectorItem(id: attrBillDate, name: '$bill: ${AppLocale.labels.expenseDateTime}'),
       ListSelectorItem(id: attrBillCurrency, name: '$bill: ${AppLocale.labels.currency}'),
       ListSelectorItem(id: attrBillComment, name: '$bill: ${AppLocale.labels.description}'),
@@ -106,16 +107,29 @@ class ImportTabState extends State<ImportTab> with SharedPreferencesMixin {
         amount = double.tryParse(amount);
       }
       try {
-        final newItem = state.add(BillAppData(
-          account: await _find(AppDataType.accounts, line, accountIdx, defaultAccount),
-          category: await _find(AppDataType.budgets, line, budgetIdx, defaultBudget),
-          title: _get(line, attrBillComment).toString(),
-          details: 0.0 + amount,
-          createdAt: DateFormat(dateFormat.text).parse(_get(line, attrBillDate)),
-          updatedAt: DateFormat(dateFormat.text).parse(_get(line, attrBillDate)),
-          currency: _getCurrency(line),
-          hidden: false,
-        ));
+        dynamic newItem;
+        if (_get(line, attrBillType) == AppLocale.labels.flowTypeInvoice) {
+          newItem = state.add(InvoiceAppData(
+            account: await _find(AppDataType.accounts, line, accountIdx, defaultAccount),
+            title: _get(line, attrBillComment).toString(),
+            details: 0.0 + amount,
+            createdAt: DateFormat(dateFormat.text).parse(_get(line, attrBillDate)),
+            updatedAt: DateFormat(dateFormat.text).parse(_get(line, attrBillDate)),
+            currency: _getCurrency(line),
+            hidden: false,
+          ));
+        } else {
+          newItem = state.add(BillAppData(
+            account: await _find(AppDataType.accounts, line, accountIdx, defaultAccount),
+            category: await _find(AppDataType.budgets, line, budgetIdx, defaultBudget),
+            title: _get(line, attrBillComment).toString(),
+            details: 0.0 + amount,
+            createdAt: DateFormat(dateFormat.text).parse(_get(line, attrBillDate)),
+            updatedAt: DateFormat(dateFormat.text).parse(_get(line, attrBillDate)),
+            currency: _getCurrency(line),
+            hidden: false,
+          ));
+        }
         TransactionLog.save(newItem);
       } catch (e) {
         setState(() => errorMessage.writeln('[$i / ${fileContent!.length}] ${e.toString()}'));

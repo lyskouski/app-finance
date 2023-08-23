@@ -2,6 +2,7 @@
 // Use of this source code is governed by a CC BY-NC-ND 4.0 license that can be found in the LICENSE file.
 
 import 'dart:collection';
+import 'package:app_finance/_classes/math/invoice_recalculation.dart';
 import 'package:app_finance/_classes/structure/account_app_data.dart';
 import 'package:app_finance/_classes/structure/bill_app_data.dart';
 import 'package:app_finance/_classes/math/bill_recalculation.dart';
@@ -12,6 +13,7 @@ import 'package:app_finance/_classes/structure/currency/exchange.dart';
 import 'package:app_finance/_classes/structure/goal_app_data.dart';
 import 'package:app_finance/_classes/math/goal_recalculation.dart';
 import 'package:app_finance/_classes/structure/interface_app_data.dart';
+import 'package:app_finance/_classes/structure/invoice_app_data.dart';
 import 'package:app_finance/_classes/structure/summary_app_data.dart';
 import 'package:app_finance/_classes/math/total_recalculation.dart';
 import 'package:app_finance/_classes/storage/transaction_log.dart';
@@ -25,6 +27,7 @@ enum AppDataType {
   accounts,
   budgets,
   currencies,
+  invoice,
 }
 
 class AppData extends ChangeNotifier {
@@ -39,7 +42,8 @@ class AppData extends ChangeNotifier {
     AppDataType.bills: SummaryAppData(total: 0, list: []),
     AppDataType.accounts: SummaryAppData(total: 0, list: []),
     AppDataType.budgets: SummaryAppData(total: 0, list: []),
-    AppDataType.currencies: SummaryAppData(total: 0, list: [])
+    AppDataType.currencies: SummaryAppData(total: 0, list: []),
+    AppDataType.invoice: SummaryAppData(total: 0, list: []),
   };
 
   AppData() : super() {
@@ -129,6 +133,30 @@ class AppData extends ChangeNotifier {
       case AppDataType.currencies:
         _updateCurrency(initial as CurrencyAppData?, change as CurrencyAppData);
         break;
+      case AppDataType.invoice:
+        _updateInvoice(initial as InvoiceAppData?, change as InvoiceAppData);
+        break;
+    }
+  }
+
+  void _updateInvoice(InvoiceAppData? initial, InvoiceAppData change) {
+    _set(AppDataType.invoice, change);
+    AccountAppData? currAccount = getByUuid(change.account, false);
+    AccountAppData? prevAccount;
+    if (initial != null) {
+      prevAccount = getByUuid(initial.account, false);
+      if (prevAccount != null) {
+        _data[AppDataType.accounts]?.add(initial.account);
+      }
+    }
+    if (currAccount != null) {
+      InvoiceRecalculation(change, initial)
+        ..exchange = Exchange(store: this)
+        ..updateAccount(currAccount, prevAccount, addLog);
+      _data[AppDataType.accounts]?.add(change.account);
+    }
+    if (!isLoading) {
+      updateTotals([AppDataType.accounts]).then(_notify);
     }
   }
 

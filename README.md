@@ -19,14 +19,17 @@
   - Freeze amount by Update date (to import previous history)
 - Budget Categories with limits restate per month
   - Simple grouping via `/` (in name) for the main page
-- Bills, Transfers, Incomes
+- Bills, Transfers, Incomes (Invoices)
 - Exchange rates, Default Currency for Summary
 - Metrics: 
   - Budget Forecast (with Monte Carlo simulation)
   - Account Candlestick (OHLC) Chart
+  - Bills YTD Expenses, and Bar Rase for Categories
+  - Goals Gauge Chart
+  - Currency Historical Chart
 - Goals Definition
 - Recovery via WebDav
-- Import from `.csv`-files
+- Import from `.csv`-files for Bills and Invoices
 - Data encryption
 
 ## Availability
