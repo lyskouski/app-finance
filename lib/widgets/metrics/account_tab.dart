@@ -65,7 +65,7 @@ class AccountTab extends StatelessWidget {
     final List<List<Widget>> result = [
       [
         const Text(''),
-        TextWidget(AppLocale.labels.currency),
+        TextWidget(AppLocale.labels.currencyShort),
         Align(
           alignment: Alignment.centerRight,
           child: TextWidget(AppLocale.labels.currencyIn(Exchange.defaultCurrency?.code ?? '?')),
