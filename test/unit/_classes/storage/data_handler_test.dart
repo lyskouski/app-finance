@@ -44,10 +44,10 @@ void main() {
       final result = DataHandler.generateOhlcSummary(data, exchange: exchange);
       expect(result.length, 1);
       expect(result.first.date, DateTime(2022, 12, 31));
-      expect(result.first.close, 41.0);
-      expect(result.first.high, 42.0);
-      expect(result.first.low, 3.0);
-      expect(result.first.open, 5.0);
+      expect(result.first.close, 38.0);
+      expect(result.first.high, 39.0);
+      expect(result.first.low, 0.0);
+      expect(result.first.open, 2.0);
     });
 
     test('generateOhlcSummary (two months)', () {
@@ -65,15 +65,15 @@ void main() {
       final result = DataHandler.generateOhlcSummary(data, exchange: exchange);
       expect(result.length, 2);
       expect(result.first.date, DateTime(2022, 12, 31));
-      expect(result.first.close, 28.0);
-      expect(result.first.high, 28.0);
-      expect(result.first.low, 3.0);
-      expect(result.first.open, 5.0);
+      expect(result.first.close, 25.0);
+      expect(result.first.high, 25.0);
+      expect(result.first.low, 0.0);
+      expect(result.first.open, 2.0);
       expect(result.last.date, DateTime(2023, 01, 31));
-      expect(result.last.close, 41.0);
-      expect(result.last.high, 42.0);
-      expect(result.last.low, 32.0);
-      expect(result.last.open, 32.0);
+      expect(result.last.close, 38.0);
+      expect(result.last.high, 39.0);
+      expect(result.last.low, 29.0);
+      expect(result.last.open, 29.0);
     });
 
     test('generateOhlcSummary (negative)', () {

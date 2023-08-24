@@ -77,7 +77,7 @@ class DataHandler {
 
   static List<OhlcData> _generateOhlc(List<TransactionLogData> scope) {
     final result = SplayTreeMap<DateTime, OhlcData>();
-    double min = 0;
+    double min = scope.first.changedTo;
     double close = 0;
     for (int i = 0; i < scope.length; i++) {
       final key = DateTime(scope[i].timestamp.year, scope[i].timestamp.month, (scope[i].timestamp.day / 7).floor() * 6);
