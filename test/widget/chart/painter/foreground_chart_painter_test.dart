@@ -5,6 +5,8 @@ import 'package:app_finance/charts/painter/foreground_chart_painter.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 
+import '../../../pump_main.dart';
+
 void main() {
   group('ForegroundChartPainter', () {
     final testCases = [
@@ -17,19 +19,16 @@ void main() {
 
     for (int i = 0; i < testCases.length; i++) {
       testWidgets('${testCases[i]}', (WidgetTester tester) async {
-        const size = Size(320, 240);
-        tester.view.physicalSize = size;
-        tester.view.devicePixelRatio = 1;
-        await tester.pumpWidget(CustomPaint(
-          size: size,
-          foregroundPainter: ForegroundChartPainter(
-            size: size,
+        await PumpMain.initPaint(
+          tester,
+          ForegroundChartPainter(
+            size: const Size(320, 240),
             xDivider: testCases[i].xDivider,
             yDivider: testCases[i].yDivider,
             yArea: testCases[i].yArea.cast(),
             yType: testCases[i].yType,
           ),
-        ));
+        );
         await expectLater(
           find.byType(CustomPaint),
           matchesGoldenFile('./foreground_chart_painter_test.dart.$i.png'),

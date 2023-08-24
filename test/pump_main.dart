@@ -26,11 +26,24 @@ import 'pump_main.wrapper.dart';
 class PumpMain {
   static const path = './coverage/data';
 
-  static init(WidgetTester tester, [bool isIntegration = false]) async {
+  static Future<void> init(WidgetTester tester, [bool isIntegration = false]) async {
     final pumpMain = PumpMain();
     wrapProvider(tester, 'plugins.flutter.io/path_provider', '$path/${UniqueKey()}');
     await pumpMain.initPref(isIntegration);
     await pumpMain.initMain(tester, isIntegration);
+  }
+
+  static Future<void> initPaint(WidgetTester tester, CustomPainter paint, [Size size = const Size(320, 240)]) async {
+    addTearDown(() {
+      tester.view.resetPhysicalSize();
+      tester.view.resetDevicePixelRatio();
+    });
+    tester.view.physicalSize = size;
+    tester.view.devicePixelRatio = 1;
+    await tester.pumpWidget(CustomPaint(
+      size: size,
+      painter: paint,
+    ));
   }
 
   AppData getStore(bool isIntegration) {

@@ -27,7 +27,7 @@ class ForegroundChartPainter extends AbstractPainter {
   static const double xFactor = 1.2;
 
   ForegroundChartPainter({
-    super.size,
+    required super.size,
     super.indent = 0.0,
     this.areaColor = Colors.green,
     this.background = Colors.grey,
