@@ -70,14 +70,13 @@ class DataHandler {
 
   static List<OhlcData> _generateOhlc(List<TransactionLogData> scope) {
     final result = SplayTreeMap<DateTime, OhlcData>();
-    double min = scope.first.changedTo;
+    double min = 0;
     double close = 0;
     for (int i = 0; i < scope.length; i++) {
       final key = DateTime(scope[i].timestamp.year, scope[i].timestamp.month, (scope[i].timestamp.day / 7).floor() * 6);
       final value = scope[i].changedTo - scope[i].changedFrom;
       if (!result.containsKey(key)) {
-        result[key] =
-            OhlcData(date: key, open: value + close, close: value + close, high: value + close, low: value + close);
+        result[key] = OhlcData(date: key, open: close, close: value + close, high: value + close, low: value + close);
       } else {
         result[key]!.close += value;
       }
