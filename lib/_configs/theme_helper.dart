@@ -9,14 +9,22 @@ class ThemeHelper {
   static double getWidth(BuildContext context, [double multiply = 4]) =>
       MediaQuery.of(context).size.width - getIndent() * multiply;
 
+  static double getTextHeight(Text txt) {
+    return _getPainter(txt).height;
+  }
+
   static double getTextWidth(Text txt) {
+    return _getPainter(txt).width;
+  }
+
+  static TextPainter _getPainter(Text txt) {
     final painter = TextPainter(
       text: TextSpan(text: txt.data, style: txt.style),
       textDirection: TextDirection.ltr,
       maxLines: txt.maxLines,
     );
     painter.layout();
-    return painter.width;
+    return painter;
   }
 
   static bool isVertical(BoxConstraints constraints) => constraints.maxWidth < constraints.maxHeight;

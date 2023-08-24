@@ -81,6 +81,7 @@
     "creditCard": "Credit Card",
     "currency": "Currency",
     "currencyDefault": "Default Currency",
+    "currencyDistribution": "Distribution",
     "currencyExchange": "Currency Exchange: {from} -> {to}",
     "@currencyExchange": {
         "from": {
@@ -91,6 +92,12 @@
         }
     },
     "currencyHeadline": "Currencies",
+    "currencyIn": "In {value}",
+    "@currencyIn": {
+        "value": {
+            "type": "String"
+        }
+    },
     "currencyTooltip": "Type Code",
     "currencyUpdateTooltip": "Update Currencies Rate",
     "currentDate": "Current Date",

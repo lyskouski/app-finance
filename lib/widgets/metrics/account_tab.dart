@@ -12,8 +12,11 @@ import 'package:app_finance/charts/interface/chart_value.dart';
 import 'package:app_finance/charts/interface/ohlc_data.dart';
 import 'package:app_finance/charts/ohlc_chart.dart';
 import 'package:app_finance/charts/pie_radius_chart.dart';
+import 'package:app_finance/widgets/_generic/text_widget.dart';
 import 'package:app_finance/widgets/_wrappers/row_widget.dart';
+import 'package:app_finance/widgets/_wrappers/table_widget.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 
 class AccountTab extends StatelessWidget {
   final AppData store;
@@ -54,15 +57,41 @@ class AccountTab extends StatelessWidget {
     return result.values.toList();
   }
 
+  List<List<Widget>> _generateCurrencyTable(List<ChartValue> data) {
+    final formatter = NumberFormat.compact();
+    final max = data.fold(0.0, (v, o) => v + o.value);
+    final List<List<Widget>> result = [
+      [
+        TextWidget(AppLocale.labels.currency),
+        Align(
+          alignment: Alignment.centerRight,
+          child: TextWidget(AppLocale.labels.currencyIn(Exchange.defaultCurrency?.code ?? '?')),
+        ),
+        Align(alignment: Alignment.centerRight, child: TextWidget(AppLocale.labels.currencyDistribution)),
+      ]
+    ];
+    for (int i = 0; i < data.length; i++) {
+      final grade = 100 * data[i].value / max;
+      result.add([
+        TextWidget(data[i].tooltip),
+        Align(alignment: Alignment.centerRight, child: TextWidget(formatter.format(data[i].value))),
+        Align(alignment: Alignment.centerRight, child: TextWidget('${grade.toStringAsFixed(2)}%')),
+      ]);
+    }
+    return result;
+  }
+
   @override
   Widget build(BuildContext context) {
     final TextTheme textTheme = Theme.of(context).textTheme;
     double indent = ThemeHelper.getIndent();
     double width = ThemeHelper.getWidth(context, 4);
+    double pieWidth = width > 600 ? 280 : width * 0.4;
     final now = DateTime.now();
     final xMin = DateTime(now.year, now.month - 5);
     final accountList = store.getList(AppDataType.accounts).cast<AccountAppData>();
     final data = _getData(accountList, xMin);
+    final currency = _getCurrencyDistribution(accountList);
     final healthTxt = Text(
       AppLocale.labels.incomeHealth,
       style: Theme.of(context).textTheme.bodyMedium,
@@ -75,7 +104,6 @@ class AccountTab extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            SizedBox(height: indent),
             RowWidget(
               alignment: MainAxisAlignment.end,
               indent: indent,
@@ -98,6 +126,7 @@ class AccountTab extends StatelessWidget {
                 ],
               ],
             ),
+            SizedBox(height: indent),
             Text(
               AppLocale.labels.chartOHLC,
               style: textTheme.bodyLarge,
@@ -126,12 +155,27 @@ class AccountTab extends StatelessWidget {
                 ),
               ],
             ),
-            Padding(
-              padding: EdgeInsets.only(left: width * 0.5),
-              child: PieRadiusChart(
-                data: _getCurrencyDistribution(accountList),
-                width: width * 0.5,
-              ),
+            SizedBox(height: indent * 3),
+            RowWidget(
+              maxWidth: width,
+              indent: indent,
+              chunk: [null, pieWidth],
+              children: [
+                [
+                  TableWidget(
+                    shadowColor: Theme.of(context).colorScheme.onBackground.withOpacity(0.1),
+                    width: width - pieWidth - 2 * indent,
+                    chunk: const [null, null, null],
+                    data: _generateCurrencyTable(currency),
+                  ),
+                ],
+                [
+                  PieRadiusChart(
+                    data: currency,
+                    width: pieWidth,
+                  ),
+                ]
+              ],
             ),
           ],
         ),
