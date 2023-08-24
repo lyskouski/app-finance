@@ -7,6 +7,7 @@ import 'package:app_finance/_classes/storage/data_handler.dart';
 import 'package:app_finance/_classes/structure/account_app_data.dart';
 import 'package:app_finance/_classes/structure/currency/exchange.dart';
 import 'package:app_finance/_configs/theme_helper.dart';
+import 'package:app_finance/charts/bar_vertical_single.dart';
 import 'package:app_finance/charts/gauge_chart.dart';
 import 'package:app_finance/charts/interface/chart_value.dart';
 import 'package:app_finance/charts/interface/ohlc_data.dart';
@@ -62,6 +63,7 @@ class AccountTab extends StatelessWidget {
     final max = data.fold(0.0, (v, o) => v + o.value);
     final List<List<Widget>> result = [
       [
+        const Text(''),
         TextWidget(AppLocale.labels.currency),
         Align(
           alignment: Alignment.centerRight,
@@ -73,6 +75,7 @@ class AccountTab extends StatelessWidget {
     for (int i = 0; i < data.length; i++) {
       final grade = 100 * data[i].value / max;
       result.add([
+        BarVerticalSingle(color: data[i].color, value: 1, height: 6),
         TextWidget(data[i].tooltip),
         Align(alignment: Alignment.centerRight, child: TextWidget(formatter.format(data[i].value))),
         Align(alignment: Alignment.centerRight, child: TextWidget('${grade.toStringAsFixed(2)}%')),
@@ -165,7 +168,7 @@ class AccountTab extends StatelessWidget {
                   TableWidget(
                     shadowColor: Theme.of(context).colorScheme.onBackground.withOpacity(0.1),
                     width: width - pieWidth - 2 * indent,
-                    chunk: const [null, null, null],
+                    chunk: const [8, null, null, null],
                     data: _generateCurrencyTable(currency),
                   ),
                 ],
