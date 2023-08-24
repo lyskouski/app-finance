@@ -150,7 +150,7 @@
     "ignoreTooltip": "Ignore",
     "importHeadline": "Import",
     "incomeHeadline": "Income",
-    "incomeHealth": "Income Health Radar:",
+    "incomeHealth": "Income Health Radar",
     "invoiceSum": "Invoices: {value}",
     "@invoiceSum": {
         "value": {

@@ -9,6 +9,7 @@ import 'package:app_finance/_classes/structure/currency/exchange.dart';
 import 'package:app_finance/_configs/theme_helper.dart';
 import 'package:app_finance/charts/gauge_chart.dart';
 import 'package:app_finance/charts/ohlc_chart.dart';
+import 'package:app_finance/widgets/_wrappers/row_widget.dart';
 import 'package:flutter/material.dart';
 
 class AccountTab extends StatelessWidget {
@@ -36,12 +37,41 @@ class AccountTab extends StatelessWidget {
     if (data.isNotEmpty && data.first.high > 0) {
       health = 100 * (data.last.close - data.first.high) / data.first.high;
     }
+    final healthTxt = Text(
+      AppLocale.labels.incomeHealth,
+      style: Theme.of(context).textTheme.bodyMedium,
+      maxLines: 1,
+      overflow: TextOverflow.ellipsis,
+    );
     return SingleChildScrollView(
       child: Padding(
         padding: EdgeInsets.all(indent * 2),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
+            SizedBox(height: indent),
+            RowWidget(
+              alignment: MainAxisAlignment.end,
+              indent: indent,
+              maxWidth: width - indent,
+              chunk: [null, ThemeHelper.getTextWidth(healthTxt), 40 + indent],
+              children: [
+                [],
+                [
+                  healthTxt,
+                  SizedBox(height: indent),
+                ],
+                [
+                  GaugeChart(
+                    value: health,
+                    valueMin: 0,
+                    valueMax: 100,
+                    width: 40,
+                    height: 30,
+                  ),
+                ],
+              ],
+            ),
             Text(
               AppLocale.labels.chartOHLC,
               style: textTheme.bodyLarge,
@@ -67,25 +97,6 @@ class AccountTab extends StatelessWidget {
                   style: textTheme.bodySmall!.copyWith(color: Colors.red),
                   maxLines: 1,
                   overflow: TextOverflow.ellipsis,
-                ),
-              ],
-            ),
-            SizedBox(height: indent * 2),
-            Row(
-              children: [
-                Text(
-                  AppLocale.labels.incomeHealth,
-                  style: Theme.of(context).textTheme.bodyLarge,
-                  maxLines: 1,
-                  overflow: TextOverflow.ellipsis,
-                ),
-                SizedBox(width: indent * 2),
-                GaugeChart(
-                  value: health,
-                  valueMin: 0,
-                  valueMax: 100,
-                  width: 40,
-                  height: 30,
                 ),
               ],
             ),
