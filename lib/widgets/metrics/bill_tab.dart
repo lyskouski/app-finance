@@ -83,6 +83,7 @@ class BillTab extends StatelessWidget {
               AppLocale.labels.chartBarRace,
               style: textTheme.bodyLarge,
             ),
+            SizedBox(height: indent),
             BarRaceChart(
               width: width,
               indent: indent,

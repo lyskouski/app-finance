@@ -56,7 +56,7 @@ class ForecastChart extends StatelessWidget {
           indent: bg.shift,
           size: size,
           data: data,
-          yMax: yMax,
+          yMax: yMax * 1.4,
           xMin: xMin.millisecondsSinceEpoch.toDouble(),
           xMax: xMax.millisecondsSinceEpoch.toDouble(),
         ),
