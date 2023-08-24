@@ -1,0 +1,14 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+      {
+        "label": "Generate Mocks",
+        "command": "dart",
+        "args": ["run", "grinder", "mock"],
+        "options": {
+          "cwd": "${workspaceFolder}"
+        },
+        "type": "shell"
+      }
+    ]
+  }
