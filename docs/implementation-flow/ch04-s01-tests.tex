@@ -820,8 +820,8 @@ these images allow developers to discern any deviations or anomalies in the UI r
 
 Moreover, this approach is instrumental in enabling the application to undergo across expected variability of screen 
 sizes and pixel ratios, thereby ensuring a comprehensive assessment of its adaptive design alignments 
-\issue{179}{b1873c2}. To generate images (\cref{img:t-images}) for further assertion it's used \q{test}-command with 
-an extra \q{update-goldens}-parameter, while inside the tests verification and generation is solely controlled by
+\issue{179}{b1873c2}. To generate images (\cref{img:t-images}) for a further assertion it's used \q{test}-command with 
+an extra \q{update-goldens}-parameter, since the tests' images verification and generation is solely controlled by
 \q{matchesGoldenFile}-method (a part of \q{flutter\_test}-package):
 
 \begin{lstlisting}[language=bash]
@@ -854,7 +854,22 @@ testWidgets('Foreground Chart', (WidgetTester tester) async {
 }
 \end{lstlisting}
 
-\noindent As a note, we can make golden tests either platform specific (as shown above), or add an acceptable 
-threshold of deviations as described 
-\href{https://github.com/flutter/flutter/pull/77014\#issuecomment-1048896776}{https://github.com/flutter/flutter/pull/77014\#issuecomment-1048896776}
-or \href{https://stackoverflow.com/questions/62551504/flutter-golden-image-tests-diff-threshold}{https://stackoverflow.com/questions/62551504/flutter-golden-image-tests-diff-threshold}.
+The absence of fonts discernible from the captured image earlier (\cref{img:bdd-visualization}), since \q{Foo}-font 
+family is used by default in tests. To address this, we might use \q{FontLoader}-class to preload all needed fonts
+(\cref{img:t-images}). That approach holds the potential to enhance the overall visualization aspect of the tests:
+
+\begin{lstlisting}
+final asset = rootBundle.load('assets/fonts/Abel-Regular.ttf');
+final font = FontLoader('Abel-Regular')..addFont(asset);
+await font.load();
+\end{lstlisting}
+
+Ultimately, we have the option to construct golden tests with platform-specific attributes (as mentioned above to 
+preempt errors, -- \cref{img:t-assert}), or alternatively, introduce a permissible threshold for allowable deviations 
+(as described 
+\href{https://github.com/flutter/flutter/pull/77014\#issuecomment-1048896776}{https://github.com/flutter/flutter/pull/77014}
+or \href{https://stackoverflow.com/questions/62551504/flutter-golden-image-tests-diff-threshold}{https://stackoverflow.com/questions/62551504/}
+and implemented in \issue{179}{c620a79}). This strategic flexibility ensures a balanced approach between stringent 
+conformity and the inherent variability of UI rendering across different environments.
+
+\img{prototyping/build-assert}{Sample of inconsistency between environments}{img:t-assert}

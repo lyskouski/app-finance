@@ -145,20 +145,39 @@ configuration build files:
 ## ./android/build.gradle
 buildscript {
   repositories {
+\end{lstlisting}
+{
+\xpretocmd{\lstlisting}{\vspace{-12pt}}{}{}
+\begin{lstlisting}[firstnumber=4, language=yaml, backgroundcolor=\color{backgreen}]
       google()
+\end{lstlisting}
+\begin{lstlisting}[firstnumber=5, language=yaml]
       # ... other settings
   }
   dependencies {
     # ... other settings
+\end{lstlisting}
+\begin{lstlisting}[firstnumber=9, language=yaml, backgroundcolor=\color{backgreen}]
     classpath 'com.google.gms:google-services:4.3.3'
-  }
-}(*@ \stopnumber @*)
+\end{lstlisting}
+\begin{lstlisting}[firstnumber=10, language=yaml]
+  }(*@ \stopnumber @*)
+}
 
 ## ./android/app/build.gradle
+\end{lstlisting}
+\begin{lstlisting}[firstnumber=2, language=yaml, backgroundcolor=\color{backgreen}]
 apply plugin: 'com.google.gms.google-services'
+\end{lstlisting}
+\begin{lstlisting}[firstnumber=3, language=yaml]
 # ... other settings
 dependencies {
   # ... other settings
+\end{lstlisting}
+\begin{lstlisting}[firstnumber=6, language=yaml, backgroundcolor=\color{backgreen}]
   implementation 'com.google.firebase:firebase-analytics:17.4.1'
+\end{lstlisting}
+\begin{lstlisting}[firstnumber=7, language=yaml]
 }
 \end{lstlisting}
+}
