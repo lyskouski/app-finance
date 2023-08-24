@@ -81,6 +81,7 @@
     "creditCard": "Credit Card",
     "currency": "Currency",
     "currencyDefault": "Default Currency",
+    "currencyDistribution": "Distribution",
     "currencyExchange": "Currency Exchange: {from} -> {to}",
     "@currencyExchange": {
         "from": {
@@ -91,6 +92,12 @@
         }
     },
     "currencyHeadline": "Currencies",
+    "currencyIn": "In {value}",
+    "@currencyIn": {
+        "value": {
+            "type": "String"
+        }
+    },
     "currencyTooltip": "Type Code",
     "currencyUpdateTooltip": "Update Currencies Rate",
     "currentDate": "Current Date",
@@ -150,7 +157,7 @@
     "ignoreTooltip": "Ignore",
     "importHeadline": "Import",
     "incomeHeadline": "Income",
-    "incomeHealth": "Income Health Radar:",
+    "incomeHealth": "Income Health Radar",
     "invoiceSum": "Invoices: {value}",
     "@invoiceSum": {
         "value": {

@@ -3,7 +3,6 @@
 
 import 'dart:collection';
 
-import 'package:app_finance/_classes/storage/app_data.dart';
 import 'package:app_finance/_classes/structure/bill_app_data.dart';
 import 'package:app_finance/_classes/structure/budget_app_data.dart';
 import 'package:app_finance/_classes/structure/currency/exchange.dart';
@@ -15,15 +14,6 @@ import 'package:flutter/material.dart';
 typedef DateCallback = double Function(InterfaceAppData item);
 
 class DataHandler {
-  static void deactivate(NavigatorState nav, {required AppData store, String? uuid, InterfaceAppData? data}) {
-    assert(uuid != null || data != null);
-    final obj = data ?? store.getByUuid(uuid!);
-    obj.deactivate();
-    store.update(obj.uuid, obj);
-    store.restate();
-    nav.pop();
-  }
-
   static double countBudgetTotal(List<InterfaceAppData> scope, {required Exchange exchange}) {
     final currency = exchange.getDefaultCurrency();
     return scope.fold(0.0, (v, e) => v + exchange.reform((e as BudgetAppData).amountLimit, e.currency, currency));
@@ -77,7 +67,7 @@ class DataHandler {
 
   static List<OhlcData> _generateOhlc(List<TransactionLogData> scope) {
     final result = SplayTreeMap<DateTime, OhlcData>();
-    double min = 0;
+    double min = scope.first.changedTo;
     double close = 0;
     for (int i = 0; i < scope.length; i++) {
       final key = DateTime(scope[i].timestamp.year, scope[i].timestamp.month, (scope[i].timestamp.day / 7).floor() * 6);

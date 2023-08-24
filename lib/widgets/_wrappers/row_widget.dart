@@ -21,7 +21,7 @@ class RowWidget extends StatelessWidget {
     List<double?> scope = [...chunk];
     int restCount = scope.where((e) => e == null).length;
     double takenWidth = 0;
-    double width = maxWidth - indent * (scope.length - 2);
+    double width = maxWidth - indent * (scope.length - 1);
     for (int i = 0; i < scope.length; i++) {
       if (scope[i] == null) {
         continue;
