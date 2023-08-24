@@ -52,10 +52,13 @@ class BillTab extends StatelessWidget {
     double indent = ThemeHelper.getIndent();
     final width = ThemeHelper.getWidth(context, 4);
     final data = getData();
-    double yMax = data.first.data.reduce((max, current) => current.dy > max.dy ? current : max).dy;
-    if (data.last.data.isNotEmpty) {
-      double yPrevMax = data.last.data.reduce((max, current) => current.dy > max.dy ? current : max).dy;
-      yMax = yMax > yPrevMax ? yMax : yPrevMax;
+    double yMax = 0;
+    if (data.isNotEmpty && data.first.data.isNotEmpty) {
+      yMax = data.first.data.reduce((max, current) => current.dy > max.dy ? current : max).dy;
+      if (data.last.data.isNotEmpty) {
+        double yPrevMax = data.last.data.reduce((max, current) => current.dy > max.dy ? current : max).dy;
+        yMax = yMax > yPrevMax ? yMax : yPrevMax;
+      }
     }
     final budgets = store.getList(AppDataType.budgets);
     return SingleChildScrollView(
@@ -80,6 +83,7 @@ class BillTab extends StatelessWidget {
               AppLocale.labels.chartBarRace,
               style: textTheme.bodyLarge,
             ),
+            SizedBox(height: indent),
             BarRaceChart(
               width: width,
               indent: indent,

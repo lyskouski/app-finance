@@ -22,9 +22,15 @@
 - Bills, Transfers, Incomes (Invoices)
 - Exchange rates, Default Currency for Summary
 - Metrics: 
-  - Budget Forecast (with Monte Carlo simulation)
-  - Account Candlestick (OHLC) Chart
-  - Bills YTD Expenses, and Bar Rase for Categories
+  - Budget:
+    - Forecast (with Monte Carlo simulation)
+  - Account:
+    - Candlestick (OHLC) Chart
+    - Income Health Radar
+    - Currency Distribution
+  - Bills:
+    - YTD Expenses
+    - Bar Rase for Categories
   - Goals Gauge Chart
   - Currency Historical Chart
 - Goals Definition

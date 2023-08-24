@@ -16,7 +16,11 @@ class PieRadiusPainter extends AbstractPainter {
     required this.data,
     required super.indent,
   }) {
-    max = data.fold(0.0, (v, o) => v + o.value) * (1 + indent * data.length);
+    int length = data.where((o) => o.value > 0).length;
+    if (length == 1) {
+      length = 0;
+    }
+    max = data.fold(0.0, (v, o) => v + o.value) * (1 + indent * length);
   }
 
   @override

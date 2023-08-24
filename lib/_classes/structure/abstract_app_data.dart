@@ -14,6 +14,7 @@ abstract class AbstractAppData with FormatterMixin implements InterfaceAppData {
   double _amount = 0.0;
   DateTime _createdAt;
   DateTime _updatedAt;
+  @override
   String title;
   double progress;
   bool hidden;

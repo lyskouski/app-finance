@@ -112,7 +112,7 @@ class HomePageState extends AbstractPageState<HomePage> with SharedPreferencesMi
     EdgeInsets middleLeft = EdgeInsets.fromLTRB(indent, indent, 0, 0);
     EdgeInsets middleRight = EdgeInsets.fromLTRB(indent, indent, indent, 0);
     EdgeInsets bottom = EdgeInsets.fromLTRB(indent, indent, indent, indent);
-    double width = ThemeHelper.getWidth(context, -1);
+    double width = ThemeHelper.getWidth(context, -2);
     double halfWidth = width / 2;
     final DateFormat formatterDate = DateFormat.MMMM(AppLocale.code);
     bool isVertical = ThemeHelper.isVertical(constraints);
@@ -125,7 +125,7 @@ class HomePageState extends AbstractPageState<HomePage> with SharedPreferencesMi
       margin: ThemeHelper.isVertical(constraints) ? single : middleRight,
       title: '${AppLocale.labels.billHeadline}, ${formatterDate.format(DateTime.now())}',
       state: super.state.get(AppDataType.bills),
-      limit: 5,
+      limit: 7,
       route: AppRoute.billRoute,
       tooltip: AppLocale.labels.billTooltip,
       width: ThemeHelper.isVertical(constraints) ? width : halfWidth,
@@ -137,7 +137,7 @@ class HomePageState extends AbstractPageState<HomePage> with SharedPreferencesMi
       margin: ThemeHelper.isVertical(constraints) ? single : middleLeft,
       title: '${AppLocale.labels.accountHeadline}, ${AppLocale.labels.total}',
       state: super.state.get(AppDataType.accounts),
-      limit: 5,
+      limit: 7,
       route: AppRoute.accountRoute,
       tooltip: AppLocale.labels.accountTooltip,
       width: ThemeHelper.isVertical(constraints) ? width : halfWidth + indent,
@@ -149,7 +149,7 @@ class HomePageState extends AbstractPageState<HomePage> with SharedPreferencesMi
       margin: bottom,
       title: '${AppLocale.labels.budgetHeadline}, ${AppLocale.labels.left}',
       state: super.state.get(AppDataType.budgets),
-      limit: 5,
+      limit: 7,
       route: AppRoute.budgetRoute,
       tooltip: AppLocale.labels.budgetTooltip,
       width: ThemeHelper.isVertical(constraints) ? width : width - indent / 2,

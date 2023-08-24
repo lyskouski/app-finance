@@ -3,6 +3,7 @@
 
 import 'package:app_finance/_classes/herald/app_locale.dart';
 import 'package:app_finance/_classes/controller/flow_state_machine.dart';
+import 'package:app_finance/_classes/storage/history_data.dart';
 import 'package:app_finance/_classes/structure/navigation/app_menu.dart';
 import 'package:app_finance/_classes/structure/budget_app_data.dart';
 import 'package:app_finance/_configs/theme_helper.dart';
@@ -89,7 +90,7 @@ class BudgetViewPageState extends AbstractPageState<BudgetViewPage> {
             child: Padding(
               padding: EdgeInsets.fromLTRB(indent, 0, indent, 0),
               child: BaseListInfiniteWidget(
-                state: super.state.getLog(widget.uuid),
+                state: HistoryData.getLog(widget.uuid),
                 width: width - indent,
                 buildListWidget: buildListWidget,
               ),

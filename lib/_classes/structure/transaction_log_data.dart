@@ -1,6 +1,8 @@
 // Copyright 2023 The terCAD team. All rights reserved.
 // Use of this source code is governed by a CC BY-NC-ND 4.0 license that can be found in the LICENSE file.
 
+import 'dart:convert';
+
 import 'package:app_finance/_mixins/formatter_mixin.dart';
 import 'package:currency_picker/currency_picker.dart';
 
@@ -24,4 +26,24 @@ class TransactionLogData<T> with FormatterMixin {
   }) : _time = timestamp ?? DateTime.now();
 
   DateTime get timestamp => _time;
+
+  TransactionLogData clone() {
+    return TransactionLogData(
+      name: name,
+      changedFrom: changedFrom,
+      changedTo: changedTo,
+      ref: ref,
+      timestamp: timestamp,
+    );
+  }
+
+  @override
+  String toString() {
+    return json.encode({
+      'ref': ref,
+      'timestamp': timestamp.toString(),
+      'changedFrom': changedFrom,
+      'changedTo': changedTo,
+    });
+  }
 }

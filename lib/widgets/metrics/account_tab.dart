@@ -4,6 +4,7 @@
 import 'package:app_finance/_classes/herald/app_locale.dart';
 import 'package:app_finance/_classes/storage/app_data.dart';
 import 'package:app_finance/_classes/storage/data_handler.dart';
+import 'package:app_finance/_classes/storage/history_data.dart';
 import 'package:app_finance/_classes/structure/account_app_data.dart';
 import 'package:app_finance/_classes/structure/currency/exchange.dart';
 import 'package:app_finance/_configs/theme_helper.dart';
@@ -30,7 +31,7 @@ class AccountTab extends StatelessWidget {
   List<OhlcData> _getData(List<AccountAppData> accounts, DateTime xMin) {
     final exchange = Exchange(store: store);
     return DataHandler.generateOhlcSummary(
-      store.getMultiLog(accounts),
+      HistoryData.getMultiLog(accounts),
       exchange: exchange,
       cut: xMin,
     );
@@ -64,7 +65,7 @@ class AccountTab extends StatelessWidget {
     final List<List<Widget>> result = [
       [
         const Text(''),
-        TextWidget(AppLocale.labels.currency),
+        TextWidget(AppLocale.labels.currencyShort),
         Align(
           alignment: Alignment.centerRight,
           child: TextWidget(AppLocale.labels.currencyIn(Exchange.defaultCurrency?.code ?? '?')),

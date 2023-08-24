@@ -30,19 +30,19 @@ class ColumnChartPainter extends AbstractPainter {
 
   void _draw(Canvas canvas, Size size, ChartData scope) {
     for (int i = 0; i < scope.data.length; i++) {
-      _drawRectangle(canvas, size, scope.data[i], i, scope.color);
+      _drawRectangle(canvas, size, scope.data[i], i, scope.color, scope.strokeWidth);
     }
   }
 
-  void _drawRectangle(Canvas canvas, Size size, Offset value, int shift, Color color) {
+  void _drawRectangle(Canvas canvas, Size size, Offset value, int shift, Color color, double stroke) {
     final paint = Paint()
       ..color = color
       ..style = PaintingStyle.fill
       ..strokeWidth = 1;
     final time = value.dx.toDouble();
     final rect = Rect.fromPoints(
-      getValue(Offset(time - msDay * shift * 6, value.dy), size),
-      getValue(Offset(time - msDay * (shift + 1) * 6, 0.0), size),
+      getValue(Offset(time - msDay * shift * 3 * stroke, value.dy), size),
+      getValue(Offset(time - msDay * (shift + 1) * 3 * stroke, 0.0), size),
     );
     canvas.drawRect(rect, paint);
   }
