@@ -11,6 +11,8 @@ abstract class InterfaceAppData {
   IconData? icon;
   MaterialColor? color;
 
+  String get title;
+
   DateTime get createdAt;
 
   dynamic get details;

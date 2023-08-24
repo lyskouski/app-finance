@@ -52,7 +52,7 @@ class BarRaceChart extends StatelessWidget {
     final bgColor = Theme.of(context).colorScheme.onBackground;
     final xMax = data.reduce((max, item) => item.dy > max.dy ? item : max).dy;
     final plot = _getData();
-    final size = Size(width, 36.0 * plot.length);
+    final size = Size(width, 36.0 * (1 + plot.length));
     final bg = ForegroundChartPainter(
       size: size,
       color: bgColor,
@@ -76,7 +76,7 @@ class BarRaceChart extends StatelessWidget {
           indent: bg.shift,
           size: size,
           data: plot,
-          yMax: bg.yMax,
+          yMax: bg.yMax + 1,
           xMin: bg.xMin,
           xMax: bg.xMax,
         ),
