@@ -3,6 +3,7 @@
 
 import 'dart:collection';
 import 'package:app_finance/_classes/math/invoice_recalculation.dart';
+import 'package:app_finance/_classes/storage/history_data.dart';
 import 'package:app_finance/_classes/structure/account_app_data.dart';
 import 'package:app_finance/_classes/structure/bill_app_data.dart';
 import 'package:app_finance/_classes/math/bill_recalculation.dart';
@@ -17,7 +18,6 @@ import 'package:app_finance/_classes/structure/invoice_app_data.dart';
 import 'package:app_finance/_classes/structure/summary_app_data.dart';
 import 'package:app_finance/_classes/math/total_recalculation.dart';
 import 'package:app_finance/_classes/storage/transaction_log.dart';
-import 'package:app_finance/_classes/structure/transaction_log_data.dart';
 import 'package:flutter/material.dart';
 import 'package:uuid/uuid.dart';
 
@@ -34,8 +34,6 @@ class AppData extends ChangeNotifier {
   bool isLoading = false;
 
   final _hashTable = HashMap<String, dynamic>();
-
-  final _history = HashMap<String, List<TransactionLogData>>();
 
   final _data = {
     AppDataType.goals: SummaryAppData(total: 0, list: []),
@@ -79,25 +77,9 @@ class AppData extends ChangeNotifier {
     return getByUuid(value.uuid!);
   }
 
-  void addLog(uuid, dynamic initial, dynamic initialValue, dynamic value, [String? ref]) {
-    if (_history[uuid] == null) {
-      _history[uuid] = [];
-    }
-    if (initialValue != value) {
-      _history[uuid]!.add(TransactionLogData(
-        timestamp: initial.createdAt,
-        ref: ref,
-        currency: initial.currency,
-        name: 'details',
-        changedFrom: initialValue,
-        changedTo: value,
-      ));
-    }
-  }
-
   void update(String uuid, dynamic value, [bool createIfMissing = false]) {
     var initial = getByUuid(uuid, false);
-    addLog(uuid, value, initial?.details ?? 0.0, value.details);
+    HistoryData.addLog(uuid, value, initial?.details ?? 0.0, value.details);
     if (initial != null || createIfMissing) {
       _update(initial, value);
     }
@@ -152,7 +134,7 @@ class AppData extends ChangeNotifier {
     if (currAccount != null) {
       InvoiceRecalculation(change, initial)
         ..exchange = Exchange(store: this)
-        ..updateAccount(currAccount, prevAccount, addLog);
+        ..updateAccount(currAccount, prevAccount);
       _data[AppDataType.accounts]?.add(change.account);
     }
     if (!isLoading) {
@@ -184,7 +166,7 @@ class AppData extends ChangeNotifier {
     }
     final rec = BillRecalculation(change: change, initial: initial)..exchange = Exchange(store: this);
     if (currAccount != null) {
-      rec.updateAccount(currAccount, prevAccount, addLog);
+      rec.updateAccount(currAccount, prevAccount);
       _data[AppDataType.accounts]?.add(change.account);
     }
     if (currBudget != null) {
@@ -255,13 +237,5 @@ class AppData extends ChangeNotifier {
       obj.setState(this);
     }
     return obj;
-  }
-
-  List<TransactionLogData>? getLog(String uuid) {
-    return _history[uuid]?.reversed.toList();
-  }
-
-  List<List<TransactionLogData>?> getMultiLog(List<InterfaceAppData> scope) {
-    return scope.map((e) => _history[e.uuid]).toList();
   }
 }

@@ -2,6 +2,7 @@
 // Use of this source code is governed by a CC BY-NC-ND 4.0 license that can be found in the LICENSE file.
 
 import 'package:app_finance/_classes/herald/app_locale.dart';
+import 'package:app_finance/_classes/storage/history_data.dart';
 import 'package:app_finance/_classes/structure/currency_app_data.dart';
 import 'package:app_finance/_classes/storage/app_data.dart';
 import 'package:app_finance/_configs/theme_helper.dart';
@@ -65,7 +66,7 @@ class CurrencyPageState extends AbstractPageState<CurrencyPage> {
         itemCount: scope?.length,
         itemBuilder: (context, index) {
           final item = scope![index];
-          final history = super.state.getLog(item.uuid)?.where((e) => e.timestamp.isAfter(cutDate)).toList();
+          final history = HistoryData.getLog(item.uuid)?.where((e) => e.timestamp.isAfter(cutDate)).toList();
           return Padding(
             padding: EdgeInsets.all(indent),
             child: RowWidget(

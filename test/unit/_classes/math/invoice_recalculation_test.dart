@@ -164,8 +164,7 @@ void main() {
           final change = AccountAppData(title: '', type: '')
             ..uuid = v.changeAccount.uuid
             ..createdAtFormatted = v.changeAccount.createdAtFormatted;
-          fn(String a, dynamic b, double c, double d, [String? e]) => null;
-          mock.updateAccount(change, initial, fn);
+          mock.updateAccount(change, initial);
           expect(initial.details, v.result.initialAccountDetails);
           expect(change.details, v.result.changeAccountDetails);
         });
