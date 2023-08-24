@@ -59,7 +59,7 @@ class BarChartPainter extends AbstractPainter {
         style: TextStyle(
           color: lineColor,
           fontSize: 11,
-          fontFamily: const String.fromEnvironment('Abel-Regular'),
+          fontFamily: 'Abel-Regular',
         ),
       ),
       textDirection: TextDirection.ltr,

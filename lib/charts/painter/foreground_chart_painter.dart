@@ -104,6 +104,7 @@ class ForegroundChartPainter extends AbstractPainter {
         style: TextStyle(
           color: color,
           fontSize: textArea / 2.2,
+          fontFamily: 'Abel-Regular',
         ),
       ),
       textDirection: TextDirection.ltr,
