@@ -7,10 +7,12 @@ import 'package:flutter/material.dart';
 
 class BarChartPainter extends AbstractPainter {
   final List<ChartData> data;
+  final Color lineColor;
 
   BarChartPainter({
     required super.indent,
     required this.data,
+    required this.lineColor,
     super.size,
     super.xMax = 1.0,
     super.xMin = 0.0,
@@ -27,13 +29,15 @@ class BarChartPainter extends AbstractPainter {
       for (int j = 0; j < data[i].data.length; j++) {
         final point = data[i].data[j];
         _draw(canvas, size, point, data[i].color);
-        _paintText(canvas, getValue(Offset(xMin, _getY(point, 0.1)), size), data[i].helper.title, data[i].color);
+        final txtPoint = getValue(Offset(xMin, _getY(point, 0.1)), size);
+        _paintText(canvas, txtPoint, data[i].helper.title);
+        _paintIcon(canvas, Offset(0.0, txtPoint.dy), data[i].helper.icon);
       }
     }
   }
 
   _getY(Offset point, double shift) {
-    return yMax - point.dx - 1 - shift;
+    return yMax - point.dx - shift;
   }
 
   void _draw(Canvas canvas, Size size, Offset point, Color color) {
@@ -48,11 +52,34 @@ class BarChartPainter extends AbstractPainter {
     canvas.drawRect(rect, paint);
   }
 
-  void _paintText(Canvas canvas, Offset point, String text, Color color) {
+  void _paintText(Canvas canvas, Offset point, String text) {
     final textPainter = TextPainter(
       text: TextSpan(
         text: text,
-        style: const TextStyle(fontSize: 11),
+        style: TextStyle(
+          color: lineColor,
+          fontSize: 11,
+          fontFamily: const String.fromEnvironment('Abel-Regular'),
+        ),
+      ),
+      textDirection: TextDirection.ltr,
+    );
+    textPainter.layout();
+    textPainter.paint(canvas, point);
+  }
+
+  void _paintIcon(Canvas canvas, Offset point, IconData? icon) {
+    if (icon == null) {
+      return;
+    }
+    final textPainter = TextPainter(
+      text: TextSpan(
+        text: String.fromCharCode(icon.codePoint),
+        style: TextStyle(
+          color: lineColor,
+          fontSize: 24,
+          fontFamily: Icons.question_mark.fontFamily,
+        ),
       ),
       textDirection: TextDirection.ltr,
     );

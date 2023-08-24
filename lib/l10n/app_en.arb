@@ -81,7 +81,7 @@
     "creditCard": "Credit Card",
     "currency": "Currency",
     "currencyDefault": "Default Currency",
-    "currencyDistribution": "% of Total",
+    "currencyDistribution": "Distr.",
     "currencyExchange": "Currency Exchange: {from} -> {to}",
     "@currencyExchange": {
         "from": {
