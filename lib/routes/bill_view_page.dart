@@ -2,7 +2,7 @@
 // Use of this source code is governed by a CC BY-NC-ND 4.0 license that can be found in the LICENSE file.
 
 import 'package:app_finance/_classes/herald/app_locale.dart';
-import 'package:app_finance/_classes/storage/data_handler.dart';
+import 'package:app_finance/_classes/controller/flow_state_machine.dart';
 import 'package:app_finance/_classes/structure/navigation/app_menu.dart';
 import 'package:app_finance/_classes/structure/bill_app_data.dart';
 import 'package:app_finance/_configs/theme_helper.dart';
@@ -39,7 +39,7 @@ class BillViewPageState extends AbstractPageState<BillViewPage> {
       child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
         FloatingActionButton(
           heroTag: 'bill_view_page_deactivate',
-          onPressed: () => DataHandler.deactivate(nav, store: super.state, uuid: widget.uuid),
+          onPressed: () => FlowStateMachine.deactivate(nav, store: super.state, uuid: widget.uuid),
           tooltip: AppLocale.labels.deleteBillTooltip,
           child: const Icon(Icons.delete),
         ),
