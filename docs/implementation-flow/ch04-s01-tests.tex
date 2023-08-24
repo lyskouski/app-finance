@@ -819,20 +819,21 @@ outputs during subsequent testing iterations. By capturing and preserving the vi
 these images allow developers to discern any deviations or anomalies in the UI rendering as the application evolves. 
 
 Moreover, this approach is instrumental in enabling the application to undergo across expected variability of screen 
-sizes and pixel ratios, thereby ensuring a comprehensive assessment of its adaptive design alignments \issue{179}{}.
-To generate images (\cref{img:t-images}) for further assertion it's used \q{test}-command with an extra 
-\q{update-goldens}-parameter, while inside the tests verification and generation is solely controlled by
+sizes and pixel ratios, thereby ensuring a comprehensive assessment of its adaptive design alignments 
+\issue{179}{b1873c2}. To generate images (\cref{img:t-images}) for further assertion it's used \q{test}-command with 
+an extra \q{update-goldens}-parameter, while inside the tests verification and generation is solely controlled by
 \q{matchesGoldenFile}-method (a part of \q{flutter\_test}-package):
 
 \begin{lstlisting}[language=bash]
 > flutter test --update-goldens test/widget
 \end{lstlisting}
 
+\img{prototyping/golden-images}{Golden Image generation assert}{img:t-images}
+
 \begin{lstlisting}
 // test/widget/chart/painter/foreground_chart_painter_test.dart
-testWidgets('', (WidgetTester tester) async {
+testWidgets('Foreground Chart', (WidgetTester tester) async {
   // Register functions to be post-evaluated
-  // As an alternative for tearDown
   addTearDown(() {
     tester.view.resetPhysicalSize();
     tester.view.resetDevicePixelRatio();
@@ -847,8 +848,13 @@ testWidgets('', (WidgetTester tester) async {
     find.byType(CustomPaint),
     // Asset taken results with image
     matchesGoldenFile('./painter_test.dart.$i.png'),
+    // Make assert the platform oriented
+    skip: !Platform.isWindows,
   );
 }
 \end{lstlisting}
 
-\img{prototyping/golden-images}{Golden Image generation assert}{img:t-images}
+\noindent As a note, we can make golden tests either platform specific (as shown above), or add an acceptable 
+threshold of deviations as described 
+\href{https://github.com/flutter/flutter/pull/77014\#issuecomment-1048896776}{https://github.com/flutter/flutter/pull/77014\#issuecomment-1048896776}
+or \href{https://stackoverflow.com/questions/62551504/flutter-golden-image-tests-diff-threshold}{https://stackoverflow.com/questions/62551504/flutter-golden-image-tests-diff-threshold}.
