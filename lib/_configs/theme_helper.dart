@@ -9,6 +9,22 @@ class ThemeHelper {
   static double getWidth(BuildContext context, [double multiply = 4]) =>
       MediaQuery.of(context).size.width - getIndent() * multiply;
 
+  static double getMaxHeight(List<dynamic> scope) {
+    double height = 0;
+    for (int i = 0; i < scope.length; i++) {
+      double tmpHeight = 0;
+      if (scope[i] is Text) {
+        tmpHeight = ThemeHelper.getTextHeight(scope[i]);
+      } else if (scope[i] is RenderBox) {
+        tmpHeight = (scope[i] as RenderBox).getMaxIntrinsicHeight(double.infinity);
+      }
+      if (tmpHeight > height) {
+        height = tmpHeight;
+      }
+    }
+    return height;
+  }
+
   static double getTextHeight(Text txt) {
     return _getPainter(txt).height;
   }

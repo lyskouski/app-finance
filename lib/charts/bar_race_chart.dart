@@ -9,6 +9,7 @@ import 'package:app_finance/_classes/structure/interface_app_data.dart';
 import 'package:app_finance/charts/interface/chart_data.dart';
 import 'package:app_finance/charts/painter/bar_chart_painter.dart';
 import 'package:app_finance/charts/painter/foreground_chart_painter.dart';
+import 'package:app_finance/widgets/_generic/empty_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
@@ -45,6 +46,9 @@ class BarRaceChart extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    if (data.isEmpty) {
+      return const EmptyWidget();
+    }
     final bgColor = Theme.of(context).colorScheme.onBackground;
     final xMax = data.reduce((max, item) => item.dy > max.dy ? item : max).dy;
     final plot = _getData();

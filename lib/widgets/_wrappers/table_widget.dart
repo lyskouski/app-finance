@@ -22,13 +22,10 @@ class TableWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final length = data.isNotEmpty ? data.length + 1 : 0;
-    Text txt = const Text(' ');
-    if (data.firstOrNull?.firstOrNull is Text) {
-      txt = data.first.first as Text;
-    }
+    double height = ThemeHelper.getMaxHeight(data.firstOrNull ?? [const Text('*')]) + ThemeHelper.getIndent();
     return SizedBox(
       width: width,
-      height: length * ThemeHelper.getTextHeight(txt),
+      height: length * height,
       child: ListView.builder(
         itemCount: length,
         itemBuilder: (context, index) {

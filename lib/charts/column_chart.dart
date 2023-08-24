@@ -5,6 +5,7 @@ import 'package:app_finance/_classes/herald/app_locale.dart';
 import 'package:app_finance/charts/interface/chart_data.dart';
 import 'package:app_finance/charts/painter/column_chart_painter.dart';
 import 'package:app_finance/charts/painter/foreground_chart_painter.dart';
+import 'package:app_finance/widgets/_generic/empty_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
@@ -28,6 +29,9 @@ class ColumnChart extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    if (data.isEmpty || data.first.data.isEmpty) {
+      return const EmptyWidget();
+    }
     final now = DateTime.now();
     final size = Size(width, height);
     final bgColor = Theme.of(context).colorScheme.onBackground;

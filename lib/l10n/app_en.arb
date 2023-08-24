@@ -178,6 +178,7 @@
             "type": "String"
         }
     },
+    "noChartData": "Data is missing (or not enough) to be shown",
     "ok": "OK",
     "parseFile": "Parse .csv-file",
     "password": "Password",

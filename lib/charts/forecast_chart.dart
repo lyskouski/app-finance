@@ -4,6 +4,7 @@
 import 'package:app_finance/charts/interface/chart_data.dart';
 import 'package:app_finance/charts/painter/forecast_chart_painter.dart';
 import 'package:app_finance/charts/painter/foreground_chart_painter.dart';
+import 'package:app_finance/widgets/_generic/empty_widget.dart';
 import 'package:flutter/material.dart';
 
 class ForecastChart extends StatelessWidget {
@@ -26,6 +27,9 @@ class ForecastChart extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    if (data.isEmpty || data.first.data.isEmpty) {
+      return const EmptyWidget();
+    }
     final now = DateTime.now();
     final size = Size(width, height);
     final bgColor = Theme.of(context).colorScheme.onBackground;
