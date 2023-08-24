@@ -94,3 +94,5 @@ scripts:
     dart run build_runner clean
     dart run build_runner build --delete-conflicting-outputs
     flutter test
+  goldenImages:
+    flutter test --update-goldens test/widget

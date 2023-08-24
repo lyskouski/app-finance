@@ -744,7 +744,7 @@ Shell:    Which: means none were found but some were expected
 \end{lstlisting}
 
 
-\subsubsection{Recording Tests Flow}
+\subsubsection{Recording Tests Flow} \label{t-record}
 
 In widget tests, there might happen a situation when the cause of failure isn't immediately evident. While the failing 
 step and its assertion might be apparent, the lack of visual cues makes it challenging to pinpoint the issue with ease.
@@ -809,3 +809,67 @@ PumpMain.takeScreenshot(runtimeType.toString());
 Certainly, the appearance of our application in its original state isn't exactly replicated, as processed in a 
 simplified manner of rendering (like the Virtual DOM in React). However, the same method provides original screenshots 
 for integration tests (\cref{int-tests}).
+
+
+\subsubsection{Asserting by Images}
+
+After successfully capturing images (\cref{t-record}), their utility extends beyond debugging alone by serving as 
+golden images. These images can be used as benchmark references, facilitating the process of comparing visual 
+outputs during subsequent testing iterations. By capturing and preserving the visual representation of a desired state, 
+these images allow developers to discern any deviations or anomalies in the UI rendering as the application evolves. 
+
+Moreover, this approach is instrumental in enabling the application to undergo across expected variability of screen 
+sizes and pixel ratios, thereby ensuring a comprehensive assessment of its adaptive design alignments 
+\issue{179}{b1873c2}. To generate images (\cref{img:t-images}) for a further assertion it's used \q{test}-command with 
+an extra \q{update-goldens}-parameter, since the tests' images verification and generation is solely controlled by
+\q{matchesGoldenFile}-method (a part of \q{flutter\_test}-package):
+
+\begin{lstlisting}[language=bash]
+> flutter test --update-goldens test/widget
+\end{lstlisting}
+
+\img{prototyping/golden-images}{Golden Image generation assert}{img:t-images}
+
+\begin{lstlisting}
+// test/widget/chart/painter/foreground_chart_painter_test.dart
+testWidgets('Foreground Chart', (WidgetTester tester) async {
+  // Register functions to be post-evaluated
+  addTearDown(() {
+    tester.view.resetPhysicalSize();
+    tester.view.resetDevicePixelRatio();
+  });
+  // Update size and pixel ratio
+  tester.view.physicalSize = const Size(320, 240);
+  tester.view.devicePixelRatio = 1;
+  // Init widget
+  await tester.pumpWidget(widget);
+  // expectLater is used for async matchers
+  await expectLater(
+    find.byType(CustomPaint),
+    // Asset taken results with image
+    matchesGoldenFile('./painter_test.dart.$i.png'),
+    // Make assert the platform oriented
+    skip: !Platform.isWindows,
+  );
+}
+\end{lstlisting}
+
+The absence of fonts discernible from the captured image earlier (\cref{img:bdd-visualization}), since \q{Foo}-font 
+family is used by default in tests. To address this, we might use \q{FontLoader}-class to preload all needed fonts
+(\cref{img:t-images}). That approach holds the potential to enhance the overall visualization aspect of the tests:
+
+\begin{lstlisting}
+final asset = rootBundle.load('assets/fonts/Abel-Regular.ttf');
+final font = FontLoader('Abel-Regular')..addFont(asset);
+await font.load();
+\end{lstlisting}
+
+Ultimately, we have the option to construct golden tests with platform-specific attributes (as mentioned above to 
+preempt errors, -- \cref{img:t-assert}), or alternatively, introduce a permissible threshold for allowable deviations 
+(as described 
+\href{https://github.com/flutter/flutter/pull/77014\#issuecomment-1048896776}{https://github.com/flutter/flutter/pull/77014}
+or \href{https://stackoverflow.com/questions/62551504/flutter-golden-image-tests-diff-threshold}{https://stackoverflow.com/questions/62551504/}
+and implemented in \issue{179}{c620a79}). This strategic flexibility ensures a balanced approach between stringent 
+conformity and the inherent variability of UI rendering across different environments.
+
+\img{prototyping/build-assert}{Sample of inconsistency between environments}{img:t-assert}

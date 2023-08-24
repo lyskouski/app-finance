@@ -169,7 +169,7 @@ class AccountTab extends StatelessWidget {
                   TableWidget(
                     shadowColor: Theme.of(context).colorScheme.onBackground.withOpacity(0.1),
                     width: width - pieWidth - 2 * indent,
-                    chunk: const [8, null, null, null],
+                    chunk: const [8, 34, null, null],
                     data: _generateCurrencyTable(currency),
                   ),
                 ],

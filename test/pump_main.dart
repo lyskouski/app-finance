@@ -7,10 +7,12 @@ import 'package:app_finance/_classes/storage/app_data.dart';
 import 'package:app_finance/_classes/herald/app_locale.dart';
 import 'package:app_finance/_classes/herald/app_theme.dart';
 import 'package:app_finance/_classes/gen/generate_with_method_setters.dart';
+import 'package:app_finance/_configs/custom_text_theme.dart';
 import 'package:app_finance/_mixins/shared_preferences_mixin.dart';
 import 'package:app_finance/main.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_gen/gen_l10n/app_localization.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/annotations.dart';
 import 'package:provider/provider.dart';
@@ -26,11 +28,46 @@ import 'pump_main.wrapper.dart';
 class PumpMain {
   static const path = './coverage/data';
 
-  static init(WidgetTester tester, [bool isIntegration = false]) async {
+  static Future<void> init(WidgetTester tester, [bool isIntegration = false]) async {
     final pumpMain = PumpMain();
     wrapProvider(tester, 'plugins.flutter.io/path_provider', '$path/${UniqueKey()}');
     await pumpMain.initPref(isIntegration);
     await pumpMain.initMain(tester, isIntegration);
+  }
+
+  static Future<void> initFont(String name) async {
+    final Future<ByteData> fontData = rootBundle.load('assets/fonts/$name.ttf');
+    final FontLoader fontLoader = FontLoader(name)..addFont(fontData);
+    await fontLoader.load();
+  }
+
+  static Future<void> initPaint(WidgetTester tester, CustomPainter paint, [Size size = const Size(320, 240)]) async {
+    addTearDown(() {
+      tester.view.resetPhysicalSize();
+      tester.view.resetDevicePixelRatio();
+    });
+    tester.view.physicalSize = size;
+    tester.view.devicePixelRatio = 1;
+
+    await initFont('Abel-Regular');
+    await initFont('RobotoCondensed-Regular');
+
+    await tester.pumpWidget(
+      MaterialApp(
+        debugShowCheckedModeBanner: false,
+        localizationsDelegates: AppLocalizations.localizationsDelegates,
+        supportedLocales: AppLocalizations.supportedLocales,
+        theme: ThemeData(
+          brightness: Brightness.light,
+          textTheme: CustomTextTheme.textTheme(ThemeData.light()),
+          useMaterial3: true,
+        ),
+        home: CustomPaint(
+          size: size,
+          painter: paint,
+        ),
+      ),
+    );
   }
 
   AppData getStore(bool isIntegration) {

@@ -60,11 +60,10 @@ class BarRaceChart extends StatelessWidget {
       background: bgColor.withOpacity(0.1),
       yMin: 0.0,
       yMax: 1.0 + plot.length,
-      yType: IconData,
-      yMap: plot.map((e) => e.helper.icon).toList(),
-      xType: double,
+      yType: null,
       xMin: 0.0,
       xMax: (xMax * 1.2).ceilToDouble(),
+      xType: double,
       xTpl: NumberFormat.compact(locale: AppLocale.code),
     );
     return SizedBox(
@@ -74,9 +73,10 @@ class BarRaceChart extends StatelessWidget {
         size: size,
         painter: BarChartPainter(
           indent: bg.shift,
+          lineColor: bgColor,
           size: size,
           data: plot,
-          yMax: bg.yMax + 1,
+          yMax: bg.yMax,
           xMin: bg.xMin,
           xMax: bg.xMax,
         ),

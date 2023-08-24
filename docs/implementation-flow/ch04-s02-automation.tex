@@ -210,6 +210,45 @@ bool sortArbFileKeys(File file) {
 }
 \end{lstlisting}
 
+\noindent Grinder tasks can be also made a part of IDE short-commands (VS Code sample, \cref{img:vsc-task}):
+
+% tbd: json
+\begin{lstlisting}[language=yaml]
+// .vscode/tasks.json
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Generate Mocks",
+      "command": "dart",
+      "args": ["run", "grinder", "mock"],
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "type": "shell"
+    }
+  ]
+}(*@ \stopnumber @*)
+
+// .vscode/launch.json
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Grinder",
+      "request": "launch",
+      "type": "dart",
+      "codeLens": {
+        "for": ["run-test", "run-test-file"]
+      },
+      "preLaunchTask": "Generate Mocks"
+    }
+  ]
+}
+\end{lstlisting}
+
+\img{prototyping/vscode-automation}{Custom task visual representation in VS Code}{img:vsc-task}
+
 
 \subsubsection{Running GitHub Workflows}
 

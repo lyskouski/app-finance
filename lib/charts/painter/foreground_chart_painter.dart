@@ -12,8 +12,8 @@ class ForegroundChartPainter extends AbstractPainter {
   final Color areaColor;
   final Color background;
   final List<double> yArea;
-  final Type xType;
-  final Type yType;
+  final Type? xType;
+  final Type? yType;
   final List<dynamic> yMap;
   late final double textArea;
   late final double shift;
@@ -27,7 +27,7 @@ class ForegroundChartPainter extends AbstractPainter {
   static const double xFactor = 1.2;
 
   ForegroundChartPainter({
-    super.size,
+    required super.size,
     super.indent = 0.0,
     this.areaColor = Colors.green,
     this.background = Colors.grey,
@@ -104,6 +104,7 @@ class ForegroundChartPainter extends AbstractPainter {
         style: TextStyle(
           color: color,
           fontSize: textArea / 2.2,
+          fontFamily: 'Abel-Regular',
         ),
       ),
       textDirection: TextDirection.ltr,
@@ -139,7 +140,9 @@ class ForegroundChartPainter extends AbstractPainter {
     for (int i = 0; i < yDiv; i++) {
       double delta = step * i;
       double y = _shiftStep(size.height, textArea, yDiv, i);
-      canvas.drawLine(Offset(shift, y), Offset(size.width, y), lineColor);
+      if (yType != null || i == 0) {
+        canvas.drawLine(Offset(shift, y), Offset(size.width, y), lineColor);
+      }
       if (yType == double) {
         final formatter = yTpl ?? intl.NumberFormat.decimalPatternDigits(decimalDigits: 2, locale: AppLocale.code);
         _paintText(canvas, textArea, y - textArea / 3, formatter.format(yMin + delta));
@@ -181,7 +184,9 @@ class ForegroundChartPainter extends AbstractPainter {
           final formatter = xTpl ?? intl.NumberFormat.decimalPatternDigits(decimalDigits: 1, locale: AppLocale.code);
           value = formatter.format(value as double);
         }
-        _paintText(canvas, x + shift - 2, height + 1, value.toString());
+        if (xType != null) {
+          _paintText(canvas, x + shift - 2, height + 1, value.toString());
+        }
       }
       if (i % 2 != 0) {
         canvas.drawRect(

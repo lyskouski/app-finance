@@ -19,6 +19,11 @@ void defaultTask() {
 
 @Task('Generate Mocks')
 mock() {
+  Process.runSync('dart', [
+    'run',
+    'build_runner',
+    'clean',
+  ]);
   ProcessResult build = Process.runSync('dart', [
     'run',
     'build_runner',
@@ -28,6 +33,7 @@ mock() {
   if (build.exitCode > 0) {
     fail(build.stderr);
   }
+  fixMock();
 }
 
 @Task('Fix Mocks by Dart Format')
@@ -39,7 +45,7 @@ fixMock() {
 }
 
 @Task('Run tests')
-@Depends(mock, fixMock)
+@Depends(mock)
 test() {
   TaskArgs args = context.invocation.arguments;
   ProcessResult test = Process.runSync(

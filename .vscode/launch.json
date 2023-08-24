@@ -1,0 +1,14 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+      {
+        "name": "Mock",
+        "request": "launch",
+        "type": "dart",
+        "codeLens": {
+          "for": ["run-test", "run-test-file"]
+        },
+        "preLaunchTask": "Generate Mocks"
+      }
+    ]
+  }
