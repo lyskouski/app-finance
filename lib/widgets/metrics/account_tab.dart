@@ -56,12 +56,14 @@ class AccountTab extends StatelessWidget {
       }
       result[code]!.value += value;
     }
-    return result.values.toList();
+    final scope = result.values.toList();
+    scope.sort((a, b) => b.value.compareTo(a.value));
+    return scope;
   }
 
   List<List<Widget>> _generateCurrencyTable(List<ChartValue> data) {
     final formatter = NumberFormat.compact();
-    final max = data.fold(0.0, (v, o) => v + o.value);
+    final max = data.fold(0.0, (v, o) => v + o.value.abs());
     final List<List<Widget>> result = [
       [
         const Text(''),
@@ -74,7 +76,7 @@ class AccountTab extends StatelessWidget {
       ]
     ];
     for (int i = 0; i < data.length; i++) {
-      final grade = 100 * data[i].value / max;
+      final grade = data[i].value > 0 ? 100 * data[i].value / max : 0.0;
       result.add([
         BarVerticalSingle(color: data[i].color, value: 1, height: 6),
         TextWidget(data[i].tooltip),
