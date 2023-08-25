@@ -18,7 +18,9 @@ import 'package:flutter/material.dart';
 enum RecoveryType { none, webdav, file }
 
 class RecoverTab extends StatefulWidget {
-  const RecoverTab({super.key});
+  final Function callback;
+
+  const RecoverTab({super.key, required this.callback});
 
   @override
   SyncTabState createState() => SyncTabState();
@@ -84,7 +86,10 @@ class SyncTabState extends State<RecoverTab> {
             child: IconButton(
               hoverColor: Colors.transparent,
               icon: Icon(icon),
-              onPressed: () => setState(() => type = nav),
+              onPressed: () => setState(() {
+                type = nav;
+                message = '';
+              }),
             ),
           ),
           SizedBox(width: indent),
@@ -140,7 +145,7 @@ class SyncTabState extends State<RecoverTab> {
           width: double.infinity,
           child: FloatingActionButton(
             heroTag: 'recover_tab_recover',
-            onPressed: () => file.load(path.text),
+            onPressed: () => file.load(path.text).then((_) => widget.callback()),
             tooltip: AppLocale.labels.recoveryTooltip,
             child: Text(AppLocale.labels.recoveryTooltip),
           ),

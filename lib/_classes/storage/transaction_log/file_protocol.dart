@@ -2,9 +2,13 @@
 // Use of this source code is governed by a CC BY-NC-ND 4.0 license that can be found in the LICENSE file.
 
 import 'package:app_finance/_classes/herald/app_locale.dart';
+import 'package:app_finance/_classes/storage/transaction_log/abstract_protocol.dart';
 import 'package:app_finance/_classes/storage/transaction_log/interface_protocol.dart';
+import 'package:app_finance/_mixins/file/file_import_mixin.dart';
+import 'package:app_finance/_mixins/file/file_export_mixin_web.dart'
+    if (dart.library.io) 'package:app_finance/_mixins/file/file_export_mixin.dart';
 
-class FileProtocol implements InterfaceProtocol {
+class FileProtocol extends AbstractProtocol with FileImportMixin, FileExportMixin implements InterfaceProtocol {
   @override
   final Function callbackMessage;
   @override
@@ -17,15 +21,29 @@ class FileProtocol implements InterfaceProtocol {
     required this.callbackProgress,
   });
 
+  @override
   Future<void> save(dynamic data) async {
-    if (data.isEmpty()) {
+    if (data.isEmpty) {
       callbackMessage(message = AppLocale.labels.isRequired);
-      return null;
+      return;
     }
-    // tbd
+    callbackProgress(inProgress = true);
+    final codeUnits = await exportTransactions();
+    await exportFile(codeUnits, data);
+    callbackProgress(inProgress = false);
+    callbackMessage(message = AppLocale.labels.success);
   }
 
+  @override
   Future<void> load(dynamic data) async {
-    // tbd
+    callbackProgress(inProgress = true);
+    final content = await importFile(['log']);
+    if (content != null) {
+      importTransactions(content.codeUnits);
+      callbackMessage(message = AppLocale.labels.success);
+    } else {
+      callbackMessage(message = AppLocale.labels.missingContent);
+    }
+    callbackProgress(inProgress = false);
   }
 }

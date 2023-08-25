@@ -1,7 +1,6 @@
 // Copyright 2023 The terCAD team. All rights reserved.
 // Use of this source code is governed by a CC BY-NC-ND 4.0 license that can be found in the LICENSE file.
 
-import 'dart:io';
 import 'package:app_finance/_classes/storage/app_data.dart';
 import 'package:app_finance/_classes/herald/app_locale.dart';
 import 'package:app_finance/_classes/structure/currency/currency_provider.dart';
@@ -12,6 +11,7 @@ import 'package:app_finance/_classes/structure/bill_app_data.dart';
 import 'package:app_finance/_classes/structure/budget_app_data.dart';
 import 'package:app_finance/_classes/storage/transaction_log.dart';
 import 'package:app_finance/_classes/controller/focus_controller.dart';
+import 'package:app_finance/_mixins/file/file_import_mixin.dart';
 import 'package:app_finance/_mixins/shared_preferences_mixin.dart';
 import 'package:app_finance/_configs/theme_helper.dart';
 import 'package:app_finance/widgets/_forms/list_selector.dart';
@@ -19,8 +19,6 @@ import 'package:app_finance/widgets/_forms/simple_input.dart';
 import 'package:app_finance/widgets/init/loading_widget.dart';
 import 'package:csv/csv.dart';
 import 'package:currency_picker/currency_picker.dart';
-import 'package:file_picker/file_picker.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
@@ -32,7 +30,7 @@ class ImportTab extends StatefulWidget {
   ImportTabState createState() => ImportTabState();
 }
 
-class ImportTabState extends State<ImportTab> with SharedPreferencesMixin {
+class ImportTabState extends State<ImportTab> with SharedPreferencesMixin, FileImportMixin {
   late AppData state;
   List<List<dynamic>>? fileContent;
   StringBuffer errorMessage = StringBuffer();
@@ -69,25 +67,15 @@ class ImportTabState extends State<ImportTab> with SharedPreferencesMixin {
 
   Future<void> pickFile() async {
     try {
-      FilePickerResult? result = await FilePicker.platform.pickFiles(
-        type: FileType.custom,
-        allowedExtensions: ['csv'],
-        withData: true,
-      );
+      String? result = await importFile(['csv']);
       if (result != null) {
-        Uint8List? fileBytes = result.files.first.bytes;
-        String? csvString;
-        if (fileBytes != null) {
-          csvString = String.fromCharCodes(fileBytes);
-        } else {
-          final file = File(result.paths.first!.toString());
-          csvString = file.readAsStringSync();
-        }
-        final List<List<dynamic>> csvTable = const CsvToListConverter().convert(csvString);
+        final List<List<dynamic>> csvTable = const CsvToListConverter().convert(result);
         setState(() {
           fileContent = csvTable;
           columnMap = List<String>.filled(csvTable.first.length, '');
         });
+      } else {
+        setState(() => errorMessage.writeln(AppLocale.labels.missingContent));
       }
     } catch (e) {
       setState(() => errorMessage.writeln(e.toString()));

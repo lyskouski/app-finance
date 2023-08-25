@@ -172,6 +172,7 @@
     "metricsHeadline": "Metrics",
     "metricsTooltip": "Metrics",
     "milestones": "Milestones",
+    "missingContent": "File cannot be processed (either canceled)",
     "navigationTooltip": "Open main menu",
     "netProfit": "Profit: {value}",
     "@netProfit": {
@@ -181,6 +182,7 @@
     },
     "noChartData": "Data is missing (or not enough) to be shown",
     "ok": "OK",
+    "outputFile": "Destination for the file",
     "parseFile": "Parse .csv-file",
     "password": "Password",
     "path": "File Name (to save into, or load from)",

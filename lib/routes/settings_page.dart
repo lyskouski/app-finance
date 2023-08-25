@@ -42,7 +42,7 @@ class SettingsPageState extends AbstractPageState<SettingsPage> {
       ],
       children: [
         SettingTab(),
-        const RecoverTab(),
+        RecoverTab(callback: super.state.restate),
         const ImportTab(),
       ],
     );
