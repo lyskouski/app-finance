@@ -9,8 +9,12 @@ import 'package:app_finance/_configs/custom_text_theme.dart';
 import 'package:app_finance/_configs/theme_helper.dart';
 import 'package:app_finance/widgets/_forms/simple_input.dart';
 import 'package:app_finance/widgets/_wrappers/required_widget.dart';
+import 'package:app_finance/widgets/_wrappers/tap_widget.dart';
+import 'package:app_finance/widgets/_wrappers/toolbar_button_widget.dart';
 import 'package:app_finance/widgets/init/loading_widget.dart';
 import 'package:flutter/material.dart';
+
+enum RecoveryType { none, webdav }
 
 class RecoverTab extends StatefulWidget {
   const RecoverTab({super.key});
@@ -26,6 +30,8 @@ class SyncTabState extends State<RecoverTab> {
   final path = TextEditingController(text: 'tmp.log');
   String message = '';
   bool inProgress = false;
+  RecoveryType type = RecoveryType.none;
+  double indent = ThemeHelper.getIndent(2);
 
   late final WebDavProtocol webDav;
 
@@ -40,102 +46,148 @@ class SyncTabState extends State<RecoverTab> {
 
   @override
   Widget build(BuildContext context) {
-    final textTheme = Theme.of(context).textTheme;
-    double indent = ThemeHelper.getIndent(2);
     FocusController.init();
+
+    Widget form;
+    switch (type) {
+      case RecoveryType.webdav:
+        form = buildWebDavForm(context);
+        break;
+      default:
+        form = buildListOfChoices(context);
+    }
 
     return SingleChildScrollView(
       controller: FocusController.getController(runtimeType),
       child: Padding(
         padding: EdgeInsets.all(indent),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            if (inProgress) ...[
-              SizedBox(height: indent * 6),
-              LoadingWidget(isLoading: inProgress),
-            ] else ...[
-              SizedBox(height: indent),
-              Text(
-                AppLocale.labels.webDav,
-                style: textTheme.bodyLarge?.copyWith(color: Theme.of(context).colorScheme.primary),
-              ),
-              Text(
-                message,
-                style: textTheme.bodyMedium?.copyWith(color: Theme.of(context).colorScheme.inversePrimary),
-              ),
-              SizedBox(height: indent),
-              RequiredWidget(
-                title: AppLocale.labels.link,
-                showError: message != '' && link.text.isEmpty,
-              ),
-              SimpleInput(
-                controller: link,
-                type: TextInputType.url,
-                style: textTheme.numberMedium.copyWith(color: textTheme.headlineSmall?.color),
-              ),
-              SizedBox(height: indent),
-              RequiredWidget(
-                title: AppLocale.labels.username,
-                showError: message != '' && username.text.isEmpty,
-              ),
-              SimpleInput(
-                controller: username,
-                style: textTheme.numberMedium.copyWith(color: textTheme.headlineSmall?.color),
-              ),
-              SizedBox(height: indent),
-              RequiredWidget(
-                title: AppLocale.labels.password,
-                showError: message != '' && password.text.isEmpty,
-              ),
-              SimpleInput(
-                controller: password,
-                type: TextInputType.visiblePassword,
-                style: textTheme.numberMedium.copyWith(color: textTheme.headlineSmall?.color),
-              ),
-              SizedBox(height: indent),
-              RequiredWidget(
-                title: AppLocale.labels.path,
-                showError: message != '' && path.text.isEmpty,
-              ),
-              SimpleInput(
-                controller: path,
-                style: textTheme.numberMedium.copyWith(color: textTheme.headlineSmall?.color),
-              ),
-              SizedBox(height: indent * 2),
-              SizedBox(
-                width: double.infinity,
-                child: FloatingActionButton(
-                  heroTag: 'recover_tab_save',
-                  onPressed: () => webDav.save2WebDav(WebDavData(
-                    link: link.text,
-                    username: username.text,
-                    password: password.text,
-                    path: path.text,
-                  )),
-                  tooltip: AppLocale.labels.saveTooltip,
-                  child: Text(AppLocale.labels.saveTooltip),
-                ),
-              ),
-              SizedBox(height: indent * 4),
-              SizedBox(
-                width: double.infinity,
-                child: FloatingActionButton(
-                  heroTag: 'recover_tab_recover',
-                  onPressed: () => webDav.recover4WebDav(WebDavData(
-                    link: link.text,
-                    username: username.text,
-                    password: password.text,
-                    path: path.text,
-                  )),
-                  tooltip: AppLocale.labels.recoveryTooltip,
-                  child: Text(AppLocale.labels.recoveryTooltip),
-                ),
-              ),
-            ]
-          ],
-        ),
+        child: inProgress ? buildProgressBar(context) : form,
       ),
+    );
+  }
+
+  Widget _navButton(BuildContext context, String name, RecoveryType nav, [IconData icon = Icons.arrow_right]) {
+    final textTheme = Theme.of(context).textTheme;
+    return TapWidget(
+      onTap: () => setState(() => type = nav),
+      tooltip: name,
+      child: Row(
+        children: [
+          ToolbarButtonWidget(
+            offset: const Offset(0, 0),
+            borderColor: Theme.of(context).colorScheme.inversePrimary,
+            child: IconButton(
+              hoverColor: Colors.transparent,
+              icon: Icon(icon),
+              onPressed: () => setState(() => type = nav),
+            ),
+          ),
+          SizedBox(width: indent),
+          Text(name, style: textTheme.bodyLarge),
+        ],
+      ),
+    );
+  }
+
+  Widget buildListOfChoices(BuildContext context) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        SizedBox(height: indent),
+        _navButton(context, AppLocale.labels.webDav, RecoveryType.webdav),
+      ],
+    );
+  }
+
+  Widget buildWebDavForm(BuildContext context) {
+    final textTheme = Theme.of(context).textTheme;
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        SizedBox(height: indent),
+        _navButton(context, AppLocale.labels.webDav, RecoveryType.none, Icons.arrow_left),
+        Text(
+          message,
+          style: textTheme.bodyMedium?.copyWith(color: Theme.of(context).colorScheme.inversePrimary),
+        ),
+        RequiredWidget(
+          title: AppLocale.labels.link,
+          showError: message != '' && link.text.isEmpty,
+        ),
+        SimpleInput(
+          controller: link,
+          type: TextInputType.url,
+          style: textTheme.numberMedium.copyWith(color: textTheme.headlineSmall?.color),
+        ),
+        SizedBox(height: indent),
+        RequiredWidget(
+          title: AppLocale.labels.username,
+          showError: message != '' && username.text.isEmpty,
+        ),
+        SimpleInput(
+          controller: username,
+          style: textTheme.numberMedium.copyWith(color: textTheme.headlineSmall?.color),
+        ),
+        SizedBox(height: indent),
+        RequiredWidget(
+          title: AppLocale.labels.password,
+          showError: message != '' && password.text.isEmpty,
+        ),
+        SimpleInput(
+          controller: password,
+          type: TextInputType.visiblePassword,
+          style: textTheme.numberMedium.copyWith(color: textTheme.headlineSmall?.color),
+        ),
+        SizedBox(height: indent),
+        RequiredWidget(
+          title: AppLocale.labels.path,
+          showError: message != '' && path.text.isEmpty,
+        ),
+        SimpleInput(
+          controller: path,
+          style: textTheme.numberMedium.copyWith(color: textTheme.headlineSmall?.color),
+        ),
+        SizedBox(height: indent * 2),
+        SizedBox(
+          width: double.infinity,
+          child: FloatingActionButton(
+            heroTag: 'recover_tab_save',
+            onPressed: () => webDav.save2WebDav(WebDavData(
+              link: link.text,
+              username: username.text,
+              password: password.text,
+              path: path.text,
+            )),
+            tooltip: AppLocale.labels.saveTooltip,
+            child: Text(AppLocale.labels.saveTooltip),
+          ),
+        ),
+        SizedBox(height: indent * 4),
+        SizedBox(
+          width: double.infinity,
+          child: FloatingActionButton(
+            heroTag: 'recover_tab_recover',
+            onPressed: () => webDav.recover4WebDav(WebDavData(
+              link: link.text,
+              username: username.text,
+              password: password.text,
+              path: path.text,
+            )),
+            tooltip: AppLocale.labels.recoveryTooltip,
+            child: Text(AppLocale.labels.recoveryTooltip),
+          ),
+        ),
+      ],
+    );
+  }
+
+  Widget buildProgressBar(BuildContext context) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        SizedBox(height: ThemeHelper.getIndent(12)),
+        LoadingWidget(isLoading: inProgress),
+      ],
     );
   }
 }
