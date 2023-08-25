@@ -4,8 +4,8 @@
 \subsection{Automating Quality Gates}
 \markboth{Defining Quality Gates}{Automating Quality Gates}
 
-Writing tests is not sufficient without a defined / automated continues integration. To achieve a robust quality check, 
-we need to implement a plethora of automations that gradually alleviate the need for a manual intervention. Futhermore, 
+Writing tests is not sufficient without a defined / automated continues integration. To achieve a robust quality check,
+we need to implement a plethora of automations that gradually alleviate the need for a manual intervention. Futhermore,
 Flutter provides a couple of commands to check the code itself:
 
 \begin{itemize}
@@ -18,21 +18,23 @@ Flutter provides a couple of commands to check the code itself:
 
 \subsubsection{Creating Git Hooks}
 
-Someone might think that additional checks before \q{git commit} or \q{git push} will slowdown the development process, 
+Someone might think that additional checks before \q{git commit} or \q{git push} will slowdown the development process,
 contrary that minimizes pushes back and forward to resolve failures on CI/CD build procedure. For a really big projects
-that might take hours in contrast with seconds on a local environment. Certainly, the automation process must be 
+that might take hours in contrast with seconds on a local environment. Certainly, the automation process must be
 carried out accurately and diligently; otherwise, it will become a constant source of frustration.
 
-Implementation of git hooks is mostly a preparation of \q{bash}-scripts for execution, so, let's discuss here 
-\q{pre-push}-file (since \q{pre-commit}-file contains almost the same logic for another scope of commands).
+Implementation of git hooks is mostly a preparation of \q{bash}-scripts for execution, so, let's discuss here
+\q{pre-push}-file (since \q{pre-commit}-file contains almost the same logic for another scope of commands). As an
+additional valuable tip, those files have to have "LF" end of line sequence otherwise won't be recognized by the system
+(Linux, Macos).
 
 \begin{lstlisting}[language=bash]
 #!/bin/bash
 status=0
 # Trigger tests
-flutter test 
+flutter test
 # Take an exit code from lastly executed command
-status_test=$? 
+status_test=$?
 # Verify command results
 if [ $status_test -ne 0 ]; then
   echo "[x] flutter test - failed."
@@ -63,6 +65,9 @@ installGitHooks() {
     log('Applying: $name');
     final sourceFile = File(path.join(currDir.absolute.path, name));
     sourceFile.copySync(path.join(hookDir.absolute.path, name));
+    if (!Platform.isWindows) {
+      Process.runSync('chmod', ['ug+x', './.git/hooks/$name']);
+    }
   }
   log('Git Hooks applied!');
 }
@@ -86,12 +91,12 @@ Available tasks:
 
 > dart run grinder install-git-hooks
   grinder running install-git-hooks
-  
+
   install-git-hooks
     Applying: pre-commit
     Applying: pre-push
     Git Hooks applied!
-  
+
   finished in 0.0 seconds
 
 > git add .
@@ -115,7 +120,7 @@ Sample Commit
 \subsubsection{Adding Grinder Tasks} \label{a-grinder}
 
 Grinder is a task runner for Dart, helping to define and automate common project workflows, as said on its main page
-\href{https://pub.dev/packages/grinder}{https://pub.dev/packages/grinder}.  It can be either added via \q{flutter pub 
+\href{https://pub.dev/packages/grinder}{https://pub.dev/packages/grinder}.  It can be either added via \q{flutter pub
 add grinder --dev}-command, or by editing \q{pubspec.yaml}-file  (and IDE will install the dependency automatically):
 
 \begin{lstlisting}[language=yaml]
@@ -124,16 +129,16 @@ dev_dependencies:
   grinder: ^0.9.4
 \end{lstlisting}
 
-In addition, grinder package can be made globally available by using \q{dart pub global activate grinder}-command. 
-To generate a skeleton of the tasks' code structure (if missing) follow \q{dart run grinder:init}, and 
+In addition, grinder package can be made globally available by using \q{dart pub global activate grinder}-command.
+To generate a skeleton of the tasks' code structure (if missing) follow \q{dart run grinder:init}, and
 to view all of the tasks - \q{dart run grinder -h}.
 
-As one of the project workflow automation it can be mentioned a localization task 
-(\href{https://docs.flutter.dev/accessibility-and-localization/internationalization}{https://docs.flutter.dev/accessibility-and-localization/internationalization}). 
-Just to recap, in Flutter it's used Application Resource Bundle(s) (\q{.arb}-files) for internationalizing apps. 
+As one of the project workflow automation it can be mentioned a localization task
+(\href{https://docs.flutter.dev/accessibility-and-localization/internationalization}{https://docs.flutter.dev/accessibility-and-localization/internationalization}).
+Just to recap, in Flutter it's used Application Resource Bundle(s) (\q{.arb}-files) for internationalizing apps.
 So, not to create a mess in those files, it's better to have an automation to rearrange our labels alphabetically
-(in \q{/lib/l10n/app\_*.arb}-files). Lately, the automation can be also extended by checking consistency (enter missing 
-labels across the \q{.arb}-files), exporting labels to \q{.scv}-file for a simplification of a translation process, and 
+(in \q{/lib/l10n/app\_*.arb}-files). Lately, the automation can be also extended by checking consistency (enter missing
+labels across the \q{.arb}-files), exporting labels to \q{.scv}-file for a simplification of a translation process, and
 importing them from \q{.scv}-file back to \q{.arb}-files.
 
 \begin{lstlisting}
@@ -252,13 +257,13 @@ bool sortArbFileKeys(File file) {
 
 \subsubsection{Running GitHub Workflows}
 
-Since we've done with our automation for the local environment, let's go further and define quality gates on GitHub 
+Since we've done with our automation for the local environment, let's go further and define quality gates on GitHub
 repository.
 
 \begin{lstlisting}[language=yaml]
 ## ./.github/workflows/dart.yml
 # Name would be shown in Actions-tab
-name: Flutter/Dart Quality Gates 
+name: Flutter/Dart Quality Gates
 # Trigger options
 on:
   push: # Trigger after a merge
@@ -286,7 +291,7 @@ jobs:
       - name: Check Localizations ordering
         run: dart run grinder sort-translations
 
-# Disabled by having too many failures by now )) 
+# Disabled by having too many failures by now ))
 #      # Consider passing '--fatal-infos' to be strict
 #      - name: Analyze Project Source
 #        run: flutter analyze
@@ -301,7 +306,7 @@ jobs:
           path: coverage
 \end{lstlisting}
 
-\noindent By preparing a pull-request we would see next representative validations flow 
+\noindent By preparing a pull-request we would see next representative validations flow
 (\cref{img:pt-github}, \cref{img:pt-github-details})):
 
 \img{prototyping/github-check}{GitHub Toolbar on pull-request}{img:pt-github}
@@ -311,13 +316,13 @@ jobs:
 
 \subsubsection{Commending with Badges} \label{a-badges}
 
-One of the ways to enhance the current state is by acknowledging and appreciating our efforts through Badges of Workflow 
-Status and Code Coverage. These badges serve as a testament to our commitment to quality and efficiency, motivating us 
+One of the ways to enhance the current state is by acknowledging and appreciating our efforts through Badges of Workflow
+Status and Code Coverage. These badges serve as a testament to our commitment to quality and efficiency, motivating us
 to continually improve and achieve even greater heights.
 
 \begin{lstlisting}[language=bash]
 ## ./README.md
-# Notation of an image with tooltip "Build Status" 
+# Notation of an image with tooltip "Build Status"
 ![Build Status](https://github.com/{user}/{repo}/actions/workflows/{workflow-name}.yml/badge.svg?branch=main)
 # Notation of an image with a link to our repository
 ![Tests Coverage](https://{user}.github.io/{repo}/coverage_badge.svg)](https://github.com/{user}/{repo})
@@ -326,7 +331,7 @@ to continually improve and achieve even greater heights.
 \q{Build Status} is supported out of the box (OOTB) by GitHub, just it's needed to replace \q{\{user\}} (by account name
 on GitHub), \q{\{repo\}} (repository name), and \q{\{workflow-name\}} (name of the file in \q{.github/workflows}-folder).
 
-\q{Test Coverage} is needed to be cooked (there are many ways to do that and none of them is universal), and we would 
+\q{Test Coverage} is needed to be cooked (there are many ways to do that and none of them is universal), and we would
 start from creating \q{gh-pages} in our repository (drop hooks from \q{.git/hooks}-folder if they've been enabled):
 
 \begin{lstlisting}[language=bash]
@@ -336,7 +341,7 @@ start from creating \q{gh-pages} in our repository (drop hooks from \q{.git/hook
 > git checkout main
 \end{lstlisting}
 
-\noindent That will create for us a special branch that is accessible via \q{https://\{user\}.github.io/\{repo\}}-link. 
+\noindent That will create for us a special branch that is accessible via \q{https://\{user\}.github.io/\{repo\}}-link.
 Then we need to extend our GitHub Workflow by adding a section with uploading artifacts:
 
 \begin{lstlisting}[language=yaml]
@@ -362,9 +367,9 @@ Then we need to extend our GitHub Workflow by adding a section with uploading ar
 
 \img{prototyping/badges}{Generated README.md for the repository}{img:pt-badge}
 
-Everything is done (\cref{img:pt-badge})... almost. Coverage 46\% is unbelievable for written tests. The problem is 
-that untouched (by tests) files are not included into the report. And, additionally, widget tests cover most of the 
-files without checking them. So, let's separate type of tests' execution, and provide additional Grinder task to 
+Everything is done (\cref{img:pt-badge})... almost. Coverage 46\% is unbelievable for written tests. The problem is
+that untouched (by tests) files are not included into the report. And, additionally, widget tests cover most of the
+files without checking them. So, let's separate type of tests' execution, and provide additional Grinder task to
 touch all our files for the coverage report.
 
 \begin{lstlisting}[language=yaml]
@@ -423,7 +428,7 @@ coverage/
 test/_coverage.dart
 \end{lstlisting}
 
-\noindent 10\% Coverage... here we are. We should always keep in mind (exists term \q{quality-first mindset}, \cite{Bjorn21}) 
-that tests are a significant investment into the whole application quality and to speed-up the implementation cycles 
-(by skipping a manual verification, and preventing regressions). Consequences of their ignorance would be described 
+\noindent 10\% Coverage... here we are. We should always keep in mind (exists term \q{quality-first mindset}, \cite{Bjorn21})
+that tests are a significant investment into the whole application quality and to speed-up the implementation cycles
+(by skipping a manual verification, and preventing regressions). Consequences of their ignorance would be described
 later (\ref{ut-fail}).

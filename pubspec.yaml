@@ -27,7 +27,7 @@ dependencies:
 
   adaptive_breakpoints: ^0.1.6
   google_fonts: ^5.0.0
-  intl: ^0.18.0
+  intl: ^0.18.1
   flutter_datetime_picker_plus: ^2.0.1
   flutter_colorpicker: ^1.0.3
   currency_picker: ^2.0.15

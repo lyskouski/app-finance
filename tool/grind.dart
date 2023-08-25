@@ -98,6 +98,9 @@ installGitHooks() {
     log('Applying: $name');
     final sourceFile = File(path.join(currDir.absolute.path, name));
     sourceFile.copySync(path.join(hookDir.absolute.path, name));
+    if (!Platform.isWindows) {
+      Process.runSync('chmod', ['ug+x', './.git/hooks/$name']);
+    }
   }
   log('Git Hooks applied!');
 }

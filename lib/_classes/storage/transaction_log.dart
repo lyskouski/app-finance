@@ -100,7 +100,7 @@ class TransactionLog with SharedPreferencesMixin {
     }
   }
 
-  static void save(dynamic content, [bool isDirect = false]) async {
+  static void save(dynamic content, [bool isDirect = false]) {
     String line = content.toString();
     if (!isDirect && doEncrypt()) {
       line = salt.encrypt(line, iv: code).base64;
