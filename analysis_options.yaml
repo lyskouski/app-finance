@@ -23,7 +23,8 @@ linter:
   # producing the lint.
   rules:
     lines_longer_than_80_chars: false
-    avoid_print: true  # Uncomment to disable the `avoid_print` rule
+    avoid_print: true
+    eol_at_end_of_file: true
     # prefer_single_quotes: true  # Uncomment to enable the `prefer_single_quotes` rule
 
 # Additional information about this file can be found at
