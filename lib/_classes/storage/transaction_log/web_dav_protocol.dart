@@ -3,12 +3,15 @@
 
 import 'package:app_finance/_classes/herald/app_locale.dart';
 import 'package:app_finance/_classes/storage/transaction_log.dart';
+import 'package:app_finance/_classes/storage/transaction_log/interface_protocol.dart';
 import 'package:app_finance/_classes/storage/transaction_log/web_dav_data.dart';
 import 'package:flutter/foundation.dart';
 import 'package:webdav_client/webdav_client.dart';
 
-class WebDavProtocol {
+class WebDavProtocol implements InterfaceProtocol {
+  @override
   final Function callbackMessage;
+  @override
   final Function callbackProgress;
   String message = '';
   bool inProgress = false;
@@ -27,7 +30,8 @@ class WebDavProtocol {
     return newClient(data.link, user: data.username, password: data.password);
   }
 
-  Future<void> save2WebDav(WebDavData data) async {
+  @override
+  Future<void> save(data) async {
     final client = _connect(data);
     if (client == null) {
       return;
@@ -49,7 +53,8 @@ class WebDavProtocol {
     }
   }
 
-  Future<void> recover4WebDav(WebDavData data) async {
+  @override
+  Future<void> load(data) async {
     final client = _connect(data);
     if (client == null) {
       return;

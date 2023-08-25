@@ -3,6 +3,7 @@
 
 import 'package:app_finance/_classes/herald/app_locale.dart';
 import 'package:app_finance/_classes/controller/focus_controller.dart';
+import 'package:app_finance/_classes/storage/transaction_log/file_protocol.dart';
 import 'package:app_finance/_classes/storage/transaction_log/web_dav_data.dart';
 import 'package:app_finance/_classes/storage/transaction_log/web_dav_protocol.dart';
 import 'package:app_finance/_configs/custom_text_theme.dart';
@@ -14,7 +15,7 @@ import 'package:app_finance/widgets/_wrappers/toolbar_button_widget.dart';
 import 'package:app_finance/widgets/init/loading_widget.dart';
 import 'package:flutter/material.dart';
 
-enum RecoveryType { none, webdav }
+enum RecoveryType { none, webdav, file }
 
 class RecoverTab extends StatefulWidget {
   const RecoverTab({super.key});
@@ -34,13 +35,14 @@ class SyncTabState extends State<RecoverTab> {
   double indent = ThemeHelper.getIndent(2);
 
   late final WebDavProtocol webDav;
+  late final FileProtocol file;
 
   @override
   void initState() {
-    webDav = WebDavProtocol(
-      callbackMessage: (String mssg) => setState(() => message = mssg),
-      callbackProgress: (bool state) => setState(() => inProgress = state),
-    );
+    cbMessage(String mssg) => setState(() => message = mssg);
+    cbProgress(bool state) => setState(() => inProgress = state);
+    webDav = WebDavProtocol(callbackMessage: cbMessage, callbackProgress: cbProgress);
+    file = FileProtocol(callbackMessage: cbMessage, callbackProgress: cbProgress);
     super.initState();
   }
 
@@ -52,6 +54,9 @@ class SyncTabState extends State<RecoverTab> {
     switch (type) {
       case RecoveryType.webdav:
         form = buildWebDavForm(context);
+        break;
+      case RecoveryType.file:
+        form = buildFileForm(context);
         break;
       default:
         form = buildListOfChoices(context);
@@ -95,6 +100,51 @@ class SyncTabState extends State<RecoverTab> {
       children: [
         SizedBox(height: indent),
         _navButton(context, AppLocale.labels.webDav, RecoveryType.webdav),
+        SizedBox(height: indent),
+        _navButton(context, AppLocale.labels.transactionFile, RecoveryType.file),
+      ],
+    );
+  }
+
+  Widget buildFileForm(BuildContext context) {
+    final textTheme = Theme.of(context).textTheme;
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        SizedBox(height: indent),
+        _navButton(context, AppLocale.labels.transactionFile, RecoveryType.none, Icons.arrow_left),
+        Text(
+          message,
+          style: textTheme.bodyMedium?.copyWith(color: Theme.of(context).colorScheme.inversePrimary),
+        ),
+        RequiredWidget(
+          title: AppLocale.labels.path,
+          showError: message != '' && path.text.isEmpty,
+        ),
+        SimpleInput(
+          controller: path,
+          style: textTheme.numberMedium.copyWith(color: textTheme.headlineSmall?.color),
+        ),
+        SizedBox(height: indent * 2),
+        SizedBox(
+          width: double.infinity,
+          child: FloatingActionButton(
+            heroTag: 'recover_tab_save',
+            onPressed: () => file.save(path.text),
+            tooltip: AppLocale.labels.saveTooltip,
+            child: Text(AppLocale.labels.saveTooltip),
+          ),
+        ),
+        SizedBox(height: indent * 4),
+        SizedBox(
+          width: double.infinity,
+          child: FloatingActionButton(
+            heroTag: 'recover_tab_recover',
+            onPressed: () => file.load(path.text),
+            tooltip: AppLocale.labels.recoveryTooltip,
+            child: Text(AppLocale.labels.recoveryTooltip),
+          ),
+        ),
       ],
     );
   }
@@ -152,7 +202,7 @@ class SyncTabState extends State<RecoverTab> {
           width: double.infinity,
           child: FloatingActionButton(
             heroTag: 'recover_tab_save',
-            onPressed: () => webDav.save2WebDav(WebDavData(
+            onPressed: () => webDav.save(WebDavData(
               link: link.text,
               username: username.text,
               password: password.text,
@@ -167,7 +217,7 @@ class SyncTabState extends State<RecoverTab> {
           width: double.infinity,
           child: FloatingActionButton(
             heroTag: 'recover_tab_recover',
-            onPressed: () => webDav.recover4WebDav(WebDavData(
+            onPressed: () => webDav.load(WebDavData(
               link: link.text,
               username: username.text,
               password: password.text,

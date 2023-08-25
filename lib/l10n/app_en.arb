@@ -225,6 +225,7 @@
     "titleGoal": "Goal",
     "titleGoalTooltip": "Define Goal Description",
     "total": "total",
+    "transactionFile": "Fingrom Transactions Log File (.log)",
     "transferHeadline": "Transfer",
     "updateAccountTooltip": "Update Account",
     "updateBillTooltip": "Update Bill",
