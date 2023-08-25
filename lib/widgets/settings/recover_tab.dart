@@ -2,16 +2,15 @@
 // Use of this source code is governed by a CC BY-NC-ND 4.0 license that can be found in the LICENSE file.
 
 import 'package:app_finance/_classes/herald/app_locale.dart';
-import 'package:app_finance/_classes/storage/transaction_log.dart';
 import 'package:app_finance/_classes/controller/focus_controller.dart';
+import 'package:app_finance/_classes/storage/transaction_log/web_dav_data.dart';
+import 'package:app_finance/_classes/storage/transaction_log/web_dav_protocol.dart';
 import 'package:app_finance/_configs/custom_text_theme.dart';
 import 'package:app_finance/_configs/theme_helper.dart';
 import 'package:app_finance/widgets/_forms/simple_input.dart';
 import 'package:app_finance/widgets/_wrappers/required_widget.dart';
 import 'package:app_finance/widgets/init/loading_widget.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:webdav_client/webdav_client.dart';
 
 class RecoverTab extends StatefulWidget {
   const RecoverTab({super.key});
@@ -28,55 +27,15 @@ class SyncTabState extends State<RecoverTab> {
   String message = '';
   bool inProgress = false;
 
-  Client? _connect() {
-    if (username.text.isEmpty || link.text.isEmpty || password.text.isEmpty) {
-      setState(() => message = AppLocale.labels.isRequired);
-      return null;
-    }
-    setState(() => inProgress = true);
-    return newClient(link.text, user: username.text, password: password.text);
-  }
+  late final WebDavProtocol webDav;
 
-  Future<void> save2WebDav() async {
-    final client = _connect();
-    if (client == null) {
-      return;
-    }
-    List<int> codeUnits = [];
-    await for (String line in TransactionLog.read()) {
-      codeUnits.addAll(line.codeUnits);
-      codeUnits.addAll('\n'.codeUnits);
-    }
-    final Uint8List unit8List = Uint8List.fromList(codeUnits);
-    setState(() => message = '');
-    await client.write(path.text, unit8List).catchError((err) {
-      setState(() {
-        message = AppLocale.labels.error(err.toString());
-        inProgress = false;
-      });
-    });
-    setState(() {
-      inProgress = false;
-      if (message == '') {
-        message = AppLocale.labels.success;
-      }
-    });
-  }
-
-  Future<void> recover4WebDav() async {
-    final client = _connect();
-    if (client == null) {
-      return;
-    }
-    List<int> uint8list = await client.read(path.text);
-    List<String> lines = String.fromCharCodes(uint8list).split('\n');
-    for (String line in lines) {
-      TransactionLog.save(line, true);
-    }
-    setState(() {
-      inProgress = false;
-      message = AppLocale.labels.success;
-    });
+  @override
+  void initState() {
+    webDav = WebDavProtocol(
+      callbackMessage: (String mssg) => setState(() => message = mssg),
+      callbackProgress: (bool state) => setState(() => inProgress = state),
+    );
+    super.initState();
   }
 
   @override
@@ -148,7 +107,12 @@ class SyncTabState extends State<RecoverTab> {
                 width: double.infinity,
                 child: FloatingActionButton(
                   heroTag: 'recover_tab_save',
-                  onPressed: save2WebDav,
+                  onPressed: () => webDav.save2WebDav(WebDavData(
+                    link: link.text,
+                    username: username.text,
+                    password: password.text,
+                    path: path.text,
+                  )),
                   tooltip: AppLocale.labels.saveTooltip,
                   child: Text(AppLocale.labels.saveTooltip),
                 ),
@@ -158,7 +122,12 @@ class SyncTabState extends State<RecoverTab> {
                 width: double.infinity,
                 child: FloatingActionButton(
                   heroTag: 'recover_tab_recover',
-                  onPressed: recover4WebDav,
+                  onPressed: () => webDav.recover4WebDav(WebDavData(
+                    link: link.text,
+                    username: username.text,
+                    password: password.text,
+                    path: path.text,
+                  )),
                   tooltip: AppLocale.labels.recoveryTooltip,
                   child: Text(AppLocale.labels.recoveryTooltip),
                 ),
