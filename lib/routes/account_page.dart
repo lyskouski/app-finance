@@ -64,7 +64,7 @@ class AccountPageState extends AbstractPageState<AccountPage> {
           margin: EdgeInsets.all(ThemeHelper.getIndent()),
           title: AppLocale.labels.accountHeadline,
           state: items,
-          width: ThemeHelper.getWidth(context),
+          width: ThemeHelper.getWidth(context, 3),
         )
       ],
     );

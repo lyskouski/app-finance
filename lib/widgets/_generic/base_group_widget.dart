@@ -1,6 +1,8 @@
 // Copyright 2023 The terCAD team. All rights reserved.
 // Use of this source code is governed by a CC BY-NC-ND 4.0 license that can be found in the LICENSE file.
 
+import 'dart:math';
+
 import 'package:app_finance/_classes/herald/app_locale.dart';
 import 'package:app_finance/_classes/structure/navigation/app_menu.dart';
 import 'package:app_finance/charts/bar_vertical_group.dart';
@@ -66,7 +68,12 @@ class BaseGroupWidget extends StatelessWidget {
       style: textTheme.bodyMedium,
       overflow: TextOverflow.ellipsis,
     );
-    double titleWidth = ThemeHelper.getTextWidth(titleText);
+    final subTitle = Text(
+      description,
+      style: textTheme.bodySmall,
+      overflow: TextOverflow.ellipsis,
+    );
+    double titleWidth = [ThemeHelper.getTextWidth(titleText), ThemeHelper.getTextWidth(subTitle)].reduce(max);
     if (titleWidth > width / 2) {
       titleWidth = width / 2;
     }
@@ -81,7 +88,7 @@ class BaseGroupWidget extends StatelessWidget {
           child: RowWidget(
             indent: indent,
             alignment: MainAxisAlignment.start,
-            maxWidth: width,
+            maxWidth: width + indent,
             chunk: [indent * 1.5, titleWidth, null],
             children: [
               [
@@ -93,14 +100,7 @@ class BaseGroupWidget extends StatelessWidget {
               [
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    titleText,
-                    Text(
-                      description,
-                      style: textTheme.bodySmall,
-                      overflow: TextOverflow.ellipsis,
-                    ),
-                  ],
+                  children: [titleText, subTitle],
                 ),
               ],
               [
@@ -111,7 +111,7 @@ class BaseGroupWidget extends StatelessWidget {
                     items.length * 2,
                     (index) {
                       if (index % 2 != 0) {
-                        return SizedBox(width: toSwap ? indent : indent * 2);
+                        return SizedBox(width: indent);
                       } else {
                         return buildCategory(context, index ~/ 2, toSwap);
                       }

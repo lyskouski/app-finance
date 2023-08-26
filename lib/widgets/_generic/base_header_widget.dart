@@ -55,7 +55,7 @@ class BaseHeaderWidget extends StatelessWidget {
           color: colorScheme.inverseSurface.withOpacity(0.1),
           child: RowWidget(
             indent: 0.0,
-            maxWidth: width - 4 * indent,
+            maxWidth: width,
             chunk: [null, 40, hasExpand ? 40 : 0],
             children: [
               [

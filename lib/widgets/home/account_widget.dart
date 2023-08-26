@@ -68,10 +68,8 @@ class AccountWidget extends BaseWidget with SharedPreferencesMixin {
   }
 
   @override
-  Widget buildListWidget(item, BuildContext context, double width) {
-    return item.length == 1
-        ? buildSingleListWidget(item, context, width)
-        : buildGroupedListWidget(item, context, width);
+  Widget buildListWidget(item, BuildContext context) {
+    return item.length == 1 ? buildSingleListWidget(item, context) : buildGroupedListWidget(item, context);
   }
 
   List<dynamic> updateItems(items, summaryItem) {
@@ -83,7 +81,7 @@ class AccountWidget extends BaseWidget with SharedPreferencesMixin {
     }).toList();
   }
 
-  Widget buildGroupedListWidget(List<dynamic> items, BuildContext context, double width) {
+  Widget buildGroupedListWidget(List<dynamic> items, BuildContext context) {
     final item = wrapBySingleEntity(items);
     final scope = updateItems(items, item);
     return BaseGroupWidget(
@@ -98,7 +96,7 @@ class AccountWidget extends BaseWidget with SharedPreferencesMixin {
     );
   }
 
-  Widget buildSingleListWidget(item, BuildContext context, double width) {
+  Widget buildSingleListWidget(item, BuildContext context) {
     item = item.first;
     return BaseLineWidget(
       uuid: item.uuid,

@@ -223,7 +223,7 @@ class ExpensesTabState<T extends ExpensesTab> extends State<T> with SharedPrefer
                   ),
                   SizedBox(height: indent),
                   CurrencyExchangeInput(
-                    width: width + indent,
+                    width: width,
                     indent: indent,
                     target: currency,
                     state: state,

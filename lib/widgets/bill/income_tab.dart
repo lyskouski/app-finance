@@ -182,7 +182,7 @@ class IncomeTabState extends State<IncomeTab> with SharedPreferencesMixin {
                   ),
                   SizedBox(height: indent),
                   CurrencyExchangeInput(
-                    width: width + indent,
+                    width: width,
                     indent: indent,
                     target: currency,
                     state: state,

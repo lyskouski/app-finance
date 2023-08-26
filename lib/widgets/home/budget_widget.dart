@@ -29,7 +29,7 @@ class BudgetWidget extends AccountWidget {
         );
 
   @override
-  Widget buildGroupedListWidget(List<dynamic> items, BuildContext context, double width) {
+  Widget buildGroupedListWidget(List<dynamic> items, BuildContext context) {
     final item = wrapBySingleEntity(items);
     return BaseGroupWidget(
       title: item.title,
@@ -58,7 +58,7 @@ class BudgetWidget extends AccountWidget {
   }
 
   @override
-  Widget buildSingleListWidget(item, BuildContext context, double width) {
+  Widget buildSingleListWidget(item, BuildContext context) {
     item = item.first;
     return BaseLineWidget(
       uuid: item.uuid,

@@ -9,7 +9,7 @@ class BudgetWidget extends home.BudgetWidget {
   BudgetWidget({super.key, required super.title, required super.width, required super.margin, required super.state});
 
   @override
-  Widget buildSingleListWidget(item, BuildContext context, double width) {
+  Widget buildSingleListWidget(item, BuildContext context) {
     item = item.first;
     return BudgetLineWidget(
       uuid: item.uuid,
