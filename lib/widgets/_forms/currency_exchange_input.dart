@@ -40,6 +40,7 @@ class CurrencyExchangeInput extends StatefulWidget {
 }
 
 class CurrencyExchangeInputState extends State<CurrencyExchangeInput> {
+  List<List<String?>> conversion = [];
   Map<int, CurrencyAppData> rate = <int, CurrencyAppData>{};
   Map<int, double?> amount = <int, double?>{};
   Map<int, List<TextEditingController>> controllers = <int, List<TextEditingController>>{};
@@ -59,7 +60,7 @@ class CurrencyExchangeInputState extends State<CurrencyExchangeInput> {
   }
 
   String getKey(int index) {
-    return widget.conversion[index].map((v) => v ?? '?').toList().join('-');
+    return conversion[index].map((v) => v ?? '?').toList().join('-');
   }
 
   double? getAmount(index) {
@@ -72,8 +73,20 @@ class CurrencyExchangeInputState extends State<CurrencyExchangeInput> {
     return value;
   }
 
+  void restate() {
+    rate.clear();
+    amount.clear();
+    for (var obj in controllers.values) {
+      obj.first.dispose();
+      obj.last.dispose();
+    }
+    controllers.clear();
+    recalculate();
+  }
+
   void recalculate() {
     targetAmount = widget.targetAmount;
+    conversion = widget.conversion;
     for (int idx = 0; idx < widget.source.length; idx++) {
       final String uuid = getKey(idx);
       rate[idx] = widget.state.getByUuid(uuid) ??
@@ -118,6 +131,10 @@ class CurrencyExchangeInputState extends State<CurrencyExchangeInput> {
     if (widget.source.isEmpty) {
       return const SizedBox();
     }
+    if (conversion.toString() != widget.conversion.toString()) {
+      WidgetsBinding.instance.addPostFrameCallback((_) => setState(restate));
+      return const SizedBox();
+    }
     if (targetAmount != widget.targetAmount) {
       WidgetsBinding.instance.addPostFrameCallback((_) => setState(recalculate));
     }
@@ -151,7 +168,7 @@ class CurrencyExchangeInputState extends State<CurrencyExchangeInput> {
                     child: RowWidget(
                       indent: widget.indent,
                       maxWidth: widget.width - widget.indent * 3,
-                      chunk: const [0.5, 0.49],
+                      chunk: const [0.5, null],
                       children: [
                         [
                           Text(
