@@ -64,6 +64,7 @@ class WebDavProtocol extends AbstractProtocol implements InterfaceProtocol {
     final content = await client.read(data.path).catchError((err) {
       callbackMessage(message = AppLocale.labels.error(err.toString()));
       callbackProgress(inProgress = false);
+      return Future<List<int>>.value([]);
     });
     importTransactions(content);
     callbackProgress(inProgress = false);
