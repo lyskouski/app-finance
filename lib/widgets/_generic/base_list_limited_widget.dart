@@ -53,7 +53,7 @@ class BaseListLimitedWidget extends StatelessWidget {
             return SizedBox(height: indent);
           } else if (index <= itemCount - 2) {
             final item = state[index - 1];
-            return buildListWidget(item, context, width - 40);
+            return buildListWidget(item, context);
           } else if (hasMore) {
             return Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,

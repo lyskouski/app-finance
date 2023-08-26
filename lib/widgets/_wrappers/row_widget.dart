@@ -48,27 +48,30 @@ class RowWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      mainAxisAlignment: alignment,
-      // mainAxisAlignment: MainAxisAlignment.start,
-      children: List<Widget>.generate(2 * chunk.length - 1, (index) {
-        if (index % 2 == 1) {
-          return SizedBox(width: indent);
-        } else if (chunk[index ~/ 2] > 0) {
-          return Container(
-            constraints: BoxConstraints(
-              maxWidth: chunk[index ~/ 2],
-              minWidth: chunk[index ~/ 2],
-            ),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: children[index ~/ 2],
-            ),
-          );
-        } else {
-          return const SizedBox();
-        }
-      }),
+    return SizedBox(
+      width: maxWidth,
+      child: Row(
+        mainAxisAlignment: alignment,
+        // mainAxisAlignment: MainAxisAlignment.start,
+        children: List<Widget>.generate(2 * chunk.length - 1, (index) {
+          if (index % 2 == 1) {
+            return SizedBox(width: indent);
+          } else if (chunk[index ~/ 2] > 0) {
+            return Container(
+              constraints: BoxConstraints(
+                maxWidth: chunk[index ~/ 2],
+                minWidth: chunk[index ~/ 2],
+              ),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: children[index ~/ 2],
+              ),
+            );
+          } else {
+            return const SizedBox();
+          }
+        }),
+      ),
     );
   }
 }

@@ -59,7 +59,7 @@ class BudgetLineWidget extends StatelessWidget {
           RowWidget(
             chunk: [18, null, ThemeHelper.getTextWidth(sum)],
             indent: indent,
-            maxWidth: width,
+            maxWidth: width + indent,
             children: [
               [
                 Icon(icon, color: color),

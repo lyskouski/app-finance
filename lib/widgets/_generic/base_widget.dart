@@ -36,7 +36,7 @@ class BaseWidget extends StatefulWidget {
     this.callback,
   }) : super(key: key);
 
-  Widget buildListWidget(item, BuildContext context, double width) {
+  Widget buildListWidget(item, BuildContext context) {
     return BaseLineWidget(
       uuid: item.uuid ?? '',
       title: item.title,

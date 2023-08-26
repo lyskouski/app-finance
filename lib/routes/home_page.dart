@@ -112,7 +112,7 @@ class HomePageState extends AbstractPageState<HomePage> with SharedPreferencesMi
     EdgeInsets middleLeft = EdgeInsets.fromLTRB(indent, indent, 0, 0);
     EdgeInsets middleRight = EdgeInsets.fromLTRB(indent, indent, indent, 0);
     EdgeInsets bottom = EdgeInsets.fromLTRB(indent, indent, indent, indent);
-    double width = ThemeHelper.getWidth(context, -2);
+    double width = ThemeHelper.getWidth(context, 3);
     double halfWidth = width / 2;
     final DateFormat formatterDate = DateFormat.MMMM(AppLocale.code);
     bool isVertical = ThemeHelper.isVertical(constraints);
@@ -128,7 +128,7 @@ class HomePageState extends AbstractPageState<HomePage> with SharedPreferencesMi
       limit: 7,
       route: AppRoute.billRoute,
       tooltip: AppLocale.labels.billTooltip,
-      width: ThemeHelper.isVertical(constraints) ? width : halfWidth,
+      width: ThemeHelper.isVertical(constraints) ? width : halfWidth - indent,
       hasExpand: isVertical,
       toExpand: toExpand,
       callback: (v) => setState(() => toExpand = v),
@@ -140,7 +140,7 @@ class HomePageState extends AbstractPageState<HomePage> with SharedPreferencesMi
       limit: 7,
       route: AppRoute.accountRoute,
       tooltip: AppLocale.labels.accountTooltip,
-      width: ThemeHelper.isVertical(constraints) ? width : halfWidth + indent,
+      width: ThemeHelper.isVertical(constraints) ? width : halfWidth - indent,
       hasExpand: isVertical,
       toExpand: toExpand,
       callback: (v) => setState(() => toExpand = v),
@@ -152,7 +152,7 @@ class HomePageState extends AbstractPageState<HomePage> with SharedPreferencesMi
       limit: 7,
       route: AppRoute.budgetRoute,
       tooltip: AppLocale.labels.budgetTooltip,
-      width: ThemeHelper.isVertical(constraints) ? width : width - indent / 2,
+      width: ThemeHelper.isVertical(constraints) ? width : width + indent / 2,
       hasExpand: isVertical,
       toExpand: toExpand,
       callback: (v) => setState(() => toExpand = v),
