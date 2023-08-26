@@ -29,8 +29,10 @@ class RowWidget extends StatelessWidget {
       double value = scope[i]!;
       if (value > 0 && value < 1) {
         scope[i] = value * width;
+        takenWidth += scope[i]!;
+      } else {
+        takenWidth += value;
       }
-      takenWidth += value;
     }
     if (takenWidth > width) {
       double cut = (width - takenWidth) / (scope.length - restCount);
