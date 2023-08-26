@@ -6,7 +6,7 @@ import 'dart:html' as html;
 
 mixin FileExportMixin {
   Future<void> exportFile(List<int> codeUnits, String filename) async {
-    final blob = html.Blob(['', String.fromCharCodes(codeUnits)]);
+    final blob = html.Blob(['\n', String.fromCharCodes(codeUnits)]);
     final anchorElement = html.AnchorElement(
       href: html.Url.createObjectUrlFromBlob(blob).toString(),
     )..setAttribute('download', filename);
