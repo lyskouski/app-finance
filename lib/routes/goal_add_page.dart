@@ -16,6 +16,7 @@ import 'package:app_finance/widgets/_forms/full_sized_button.dart';
 import 'package:app_finance/widgets/_forms/icon_selector.dart';
 import 'package:app_finance/widgets/_forms/simple_input.dart';
 import 'package:app_finance/widgets/_wrappers/required_widget.dart';
+import 'package:app_finance/widgets/_wrappers/row_widget.dart';
 import 'package:currency_picker/currency_picker.dart';
 import 'package:flutter/material.dart';
 
@@ -129,99 +130,71 @@ class GoalAddPageState<T extends GoalAddPage> extends AbstractPageState<GoalAddP
               style: textTheme.numberMedium.copyWith(color: textTheme.headlineSmall?.color),
             ),
             SizedBox(height: indent),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.start,
+            RowWidget(
+              indent: indent,
+              maxWidth: width + indent,
+              alignment: MainAxisAlignment.start,
+              chunk: const [null, null],
               children: [
-                Container(
-                  constraints: BoxConstraints(
-                    maxWidth: width * 0.5,
+                [
+                  Text(
+                    AppLocale.labels.icon,
+                    style: textTheme.bodyLarge,
                   ),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        AppLocale.labels.icon,
-                        style: textTheme.bodyLarge,
-                      ),
-                      IconSelector(
-                        value: icon,
-                        setState: (value) => setState(() => icon = value),
-                      ),
-                    ],
+                  IconSelector(
+                    value: icon,
+                    setState: (value) => setState(() => icon = value),
                   ),
-                ),
-                SizedBox(width: indent),
-                Container(
-                  constraints: BoxConstraints(
-                    maxWidth: width * 0.5,
+                ],
+                [
+                  Text(
+                    AppLocale.labels.color,
+                    style: textTheme.bodyLarge,
                   ),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        AppLocale.labels.color,
-                        style: textTheme.bodyLarge,
-                      ),
-                      ColorSelector(
-                        value: color,
-                        setState: (value) => setState(() => color = value),
-                      ),
-                    ],
+                  ColorSelector(
+                    value: color,
+                    setState: (value) => setState(() => color = value),
                   ),
-                ),
+                ],
               ],
             ),
             SizedBox(height: indent),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.start,
+            RowWidget(
+              indent: indent,
+              maxWidth: width + indent,
+              alignment: MainAxisAlignment.start,
+              chunk: const [120, null],
               children: [
-                Container(
-                  constraints: BoxConstraints(
-                    maxWidth: width * 0.3,
+                [
+                  Text(
+                    AppLocale.labels.currency,
+                    style: textTheme.bodyLarge,
                   ),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        AppLocale.labels.currency,
-                        style: textTheme.bodyLarge,
-                      ),
-                      Container(
-                        color: Theme.of(context).colorScheme.inversePrimary.withOpacity(0.3),
-                        width: double.infinity,
-                        child: CurrencySelector(
-                          value: currency?.code,
-                          setView: (Currency currency) => currency.code,
-                          setState: (value) => setState(() => currency = value),
-                        ),
-                      ),
+                  Container(
+                    color: Theme.of(context).colorScheme.inversePrimary.withOpacity(0.3),
+                    width: double.infinity,
+                    child: CurrencySelector(
+                      value: currency?.code,
+                      setView: (Currency currency) => currency.code,
+                      setState: (value) => setState(() => currency = value),
+                    ),
+                  ),
+                ],
+                [
+                  Text(
+                    AppLocale.labels.targetAmount,
+                    style: textTheme.bodyLarge,
+                  ),
+                  SimpleInput(
+                    controller: details,
+                    type: const TextInputType.numberWithOptions(decimal: true),
+                    tooltip: AppLocale.labels.billSetTooltip,
+                    style: textTheme.numberMedium.copyWith(color: textTheme.headlineSmall?.color),
+                    formatter: [
+                      SimpleInput.filterDouble,
                     ],
                   ),
-                ),
-                SizedBox(width: indent),
-                Container(
-                  constraints: BoxConstraints(
-                    maxWidth: width * 0.7,
-                  ),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        AppLocale.labels.targetAmount,
-                        style: textTheme.bodyLarge,
-                      ),
-                      SimpleInput(
-                        controller: details,
-                        type: const TextInputType.numberWithOptions(decimal: true),
-                        tooltip: AppLocale.labels.billSetTooltip,
-                        style: textTheme.numberMedium.copyWith(color: textTheme.headlineSmall?.color),
-                        formatter: [
-                          SimpleInput.filterDouble,
-                        ],
-                      ),
-                    ],
-                  ),
-                ),
+                ],
               ],
             ),
             SizedBox(height: indent),

@@ -43,7 +43,7 @@ class DateTimeInput extends AbstractSelector {
 
     return RowWidget(
       indent: indent,
-      maxWidth: width,
+      maxWidth: width + indent,
       chunk: const [0.6, 0.4],
       children: [
         [
