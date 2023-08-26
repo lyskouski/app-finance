@@ -144,8 +144,8 @@ class IncomeTabState extends State<IncomeTab> with SharedPreferencesMixin {
                   SizedBox(height: indent),
                   RowWidget(
                     indent: indent,
-                    maxWidth: width,
-                    chunk: const [0.32, 0.68],
+                    maxWidth: width + indent,
+                    chunk: const [120, null],
                     children: [
                       [
                         Text(
@@ -188,11 +188,9 @@ class IncomeTabState extends State<IncomeTab> with SharedPreferencesMixin {
                     state: state,
                     targetAmount: amountValue,
                     source: <Currency?>[
-                      null,
                       account != null ? state.getByUuid(account!).currency : null,
                     ],
                   ),
-                  SizedBox(height: indent),
                   Text(
                     AppLocale.labels.balanceDate,
                     style: textTheme.bodyLarge,

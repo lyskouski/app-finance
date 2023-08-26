@@ -155,8 +155,8 @@ class AccountAddPageState<T extends AccountAddPage> extends AbstractAddPageState
             SizedBox(height: indent),
             RowWidget(
               indent: indent,
-              maxWidth: width,
-              chunk: const [0.2, 0.2, 0.6],
+              maxWidth: width + indent,
+              chunk: const [80, 80, null],
               children: [
                 [
                   Text(

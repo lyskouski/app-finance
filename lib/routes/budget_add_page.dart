@@ -119,7 +119,7 @@ class BudgetAddPageState<T extends BudgetAddPage> extends AbstractAddPageState<B
             SizedBox(height: indent),
             RowWidget(
               indent: indent,
-              maxWidth: width,
+              maxWidth: width + indent,
               chunk: const [0.5, 0.5],
               children: [
                 [
