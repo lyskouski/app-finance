@@ -93,7 +93,9 @@ class CurrencyExchangeInputState extends State<CurrencyExchangeInput> {
     if (widget.targetAmount == null && isTotal || controllers[index]![isTotal ? 0 : 1].text == newValue) {
       return;
     }
-    delay.run(() => WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {
+    delay.run(() {
+      if (mounted) {
+        setState(() {
           final value = double.tryParse(newValue ?? '') ?? 0.0;
           if (isTotal) {
             amount[index] = value;
@@ -105,8 +107,10 @@ class CurrencyExchangeInputState extends State<CurrencyExchangeInput> {
             amount[index] = getAmount(index);
             controllers[index]![1].text = amount[index] != null ? amount[index].toString() : '';
           }
-          widget.state.update(rate[index]!.uuid, rate[index], true);
-        })));
+        });
+      }
+      widget.state.update(rate[index]!.uuid, rate[index], true);
+    });
   }
 
   @override
