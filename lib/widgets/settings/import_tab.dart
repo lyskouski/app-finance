@@ -46,6 +46,15 @@ class ImportTabState extends State<ImportTab> with SharedPreferencesMixin, FileI
   final attrBillDate = 'billDate';
   final attrBillCurrency = 'billCurrency';
   final attrBillComment = 'billComment';
+  late final List<String> attr = [
+    attrAccountName,
+    attrCategoryName,
+    attrBillAmount,
+    attrBillType,
+    attrBillDate,
+    attrBillCurrency,
+    attrBillComment,
+  ];
 
   List<ListSelectorItem> getMappingTypes() {
     final account = AppLocale.labels.account;
@@ -69,7 +78,8 @@ class ImportTabState extends State<ImportTab> with SharedPreferencesMixin, FileI
     try {
       String? result = await importFile(['csv']);
       if (result != null) {
-        final List<List<dynamic>> csvTable = const CsvToListConverter().convert(result);
+        final splitter = result.contains('\r\n') ? '\r\n' : '\n';
+        final List<List<dynamic>> csvTable = CsvToListConverter(eol: splitter).convert(result);
         setState(() {
           fileContent = csvTable;
           columnMap = List<String>.filled(csvTable.first.length, '');
@@ -215,34 +225,8 @@ class ImportTabState extends State<ImportTab> with SharedPreferencesMixin, FileI
               if (isLoading) ...[
                 SizedBox(height: indent * 6),
                 LoadingWidget(isLoading: isLoading),
-              ] else if (fileContent != null)
-                ...List<Widget>.generate(fileContent!.first.length + 1, (index) {
-                  if (index == fileContent!.first.length) {
-                    return Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-                      SizedBox(height: indent * 2),
-                      Text(
-                        AppLocale.labels.dateFormat,
-                        style: textTheme.bodyLarge,
-                      ),
-                      Text(
-                        AppLocale.labels.dateFormatPattern,
-                        style: textTheme.bodyMedium,
-                      ),
-                      SimpleInput(controller: dateFormat),
-                      SizedBox(height: indent * 2),
-                      SizedBox(
-                        width: double.infinity,
-                        child: FloatingActionButton(
-                          heroTag: 'import_tab_parse',
-                          onPressed: () => wrapCall(parseFile),
-                          tooltip: AppLocale.labels.parseFile,
-                          child: Text(
-                            AppLocale.labels.parseFile,
-                          ),
-                        ),
-                      ),
-                    ]);
-                  }
+              ] else if (fileContent != null) ...[
+                ...List<Widget>.generate(fileContent!.first.length, (index) {
                   return Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
@@ -259,8 +243,32 @@ class ImportTabState extends State<ImportTab> with SharedPreferencesMixin, FileI
                       ),
                     ],
                   );
-                })
-              else ...[
+                }),
+                Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+                  SizedBox(height: indent * 2),
+                  Text(
+                    AppLocale.labels.dateFormat,
+                    style: textTheme.bodyLarge,
+                  ),
+                  Text(
+                    AppLocale.labels.dateFormatPattern,
+                    style: textTheme.bodyMedium,
+                  ),
+                  SimpleInput(controller: dateFormat),
+                  SizedBox(height: indent * 2),
+                  SizedBox(
+                    width: double.infinity,
+                    child: FloatingActionButton(
+                      heroTag: 'import_tab_parse',
+                      onPressed: () => wrapCall(parseFile),
+                      tooltip: AppLocale.labels.parseFile,
+                      child: Text(
+                        AppLocale.labels.parseFile,
+                      ),
+                    ),
+                  ),
+                ]),
+              ] else ...[
                 SizedBox(
                   width: double.infinity,
                   child: FloatingActionButton(
