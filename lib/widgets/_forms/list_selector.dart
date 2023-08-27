@@ -84,19 +84,21 @@ class ListSelectorState<T extends ListSelector, K extends ListSelectorItem> exte
       builder: (context, controller) => TapWidget(
         onTap: () => onTap(null),
         child: Container(
-          width: ThemeHelper.getWidth(context),
+          width: double.infinity,
           color: Theme.of(context).colorScheme.inversePrimary.withOpacity(0.3),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Padding(
-                padding: EdgeInsets.fromLTRB(indent, indent * 3 / 2, 0, indent * 3 / 2),
-                child: item != null
-                    ? selectorBuilder(context, item)
-                    : Text(
-                        widget.hintText ?? '...',
-                        style: hintStyle,
-                      ),
+              Expanded(
+                child: Padding(
+                  padding: EdgeInsets.fromLTRB(indent, indent * 3 / 2, 0, indent * 3 / 2),
+                  child: item != null
+                      ? selectorBuilder(context, item)
+                      : Text(
+                          widget.hintText ?? '...',
+                          style: hintStyle,
+                        ),
+                ),
               ),
               IconButton(
                 icon: const Icon(Icons.arrow_drop_down),
