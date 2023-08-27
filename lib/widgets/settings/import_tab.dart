@@ -85,9 +85,7 @@ class ImportTabState extends State<ImportTab> with SharedPreferencesMixin, FileI
   Future<void> parseFile() async {
     state.isLoading = true;
     final defaultAccount = getPreference(prefAccount);
-    final accountIdx = columnMap.indexOf(attrAccountName);
     final defaultBudget = getPreference(prefBudget);
-    final budgetIdx = columnMap.indexOf(attrCategoryName);
     for (int i = 1; i < fileContent!.length; i++) {
       final line = fileContent![i];
       dynamic amount = _get(line, attrBillAmount);
@@ -96,9 +94,10 @@ class ImportTabState extends State<ImportTab> with SharedPreferencesMixin, FileI
       }
       try {
         dynamic newItem;
+        dynamic account = await _find(AppDataType.accounts, line, _get(line, attrAccountName), defaultAccount);
         if (_get(line, attrBillType) == AppLocale.labels.flowTypeInvoice) {
           newItem = state.add(InvoiceAppData(
-            account: await _find(AppDataType.accounts, line, accountIdx, defaultAccount),
+            account: account,
             title: _get(line, attrBillComment).toString(),
             details: 0.0 + amount,
             createdAt: DateFormat(dateFormat.text).parse(_get(line, attrBillDate)),
@@ -108,8 +107,8 @@ class ImportTabState extends State<ImportTab> with SharedPreferencesMixin, FileI
           ));
         } else {
           newItem = state.add(BillAppData(
-            account: await _find(AppDataType.accounts, line, accountIdx, defaultAccount),
-            category: await _find(AppDataType.budgets, line, budgetIdx, defaultBudget),
+            account: account,
+            category: await _find(AppDataType.budgets, line, _get(line, attrCategoryName), defaultBudget),
             title: _get(line, attrBillComment).toString(),
             details: 0.0 + amount,
             createdAt: DateFormat(dateFormat.text).parse(_get(line, attrBillDate)),
@@ -144,22 +143,22 @@ class ImportTabState extends State<ImportTab> with SharedPreferencesMixin, FileI
     });
   }
 
-  Future<String> _find(AppDataType type, List<dynamic> line, int index, String? def) async {
-    if (index < 0 || (line[index] ?? '') == '') {
+  Future<String> _find(AppDataType type, List<dynamic> line, dynamic value, String? def) async {
+    if (value == null) {
       return def ?? '';
     }
     String? uuid;
     if (_cache[type] == null) {
       _cache[type] = <String, String?>{};
     }
-    if (_cache[type]?[line[index]] != null) {
-      uuid = _cache[type]?[line[index]];
+    if (_cache[type]?[value] != null) {
+      uuid = _cache[type]?[value];
     } else {
-      final item = state.getList(type).where((element) => element.title == line[index]).firstOrNull;
+      final item = state.getList(type).where((element) => element.title == value).firstOrNull;
       uuid = item?.uuid;
-      _cache[type]![line[index]] = uuid ?? '';
+      _cache[type]![value] = uuid ?? '';
     }
-    return uuid ?? await _new(type, line, index);
+    return uuid ?? await _new(type, line, value);
   }
 
   dynamic _get(List<dynamic> line, String type) {
@@ -171,12 +170,12 @@ class ImportTabState extends State<ImportTab> with SharedPreferencesMixin, FileI
     return CurrencyProvider.findByCode(_get(line, attrBillCurrency));
   }
 
-  Future<String> _new(AppDataType type, List<dynamic> line, int index) async {
+  Future<String> _new(AppDataType type, List<dynamic> line, dynamic value) async {
     dynamic newItem;
     switch (type) {
       case AppDataType.accounts:
         newItem = state.add(AccountAppData(
-          title: line[index],
+          title: value,
           type: AppAccountType.account.toString(),
           details: 0.0,
           currency: _getCurrency(line),
@@ -185,12 +184,12 @@ class ImportTabState extends State<ImportTab> with SharedPreferencesMixin, FileI
         break;
       default:
         newItem = state.add(BudgetAppData(
-          title: line[index],
+          title: value,
           currency: _getCurrency(line),
           hidden: false,
         ));
     }
-    _cache[type]![line[index]] = newItem.uuid;
+    _cache[type]![value] = newItem.uuid;
     TransactionLog.save(newItem);
     return newItem.uuid;
   }
