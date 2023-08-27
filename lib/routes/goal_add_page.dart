@@ -6,7 +6,6 @@ import 'package:app_finance/_classes/structure/currency/exchange.dart';
 import 'package:app_finance/_classes/structure/goal_app_data.dart';
 import 'package:app_finance/_classes/controller/focus_controller.dart';
 import 'package:app_finance/_classes/storage/app_data.dart';
-import 'package:app_finance/_configs/custom_text_theme.dart';
 import 'package:app_finance/_configs/theme_helper.dart';
 import 'package:app_finance/routes/abstract_page.dart';
 import 'package:app_finance/widgets/_forms/color_selector.dart';
@@ -127,7 +126,6 @@ class GoalAddPageState<T extends GoalAddPage> extends AbstractPageState<GoalAddP
             SimpleInput(
               controller: title,
               tooltip: AppLocale.labels.titleGoalTooltip,
-              style: textTheme.numberMedium.copyWith(color: textTheme.headlineSmall?.color),
             ),
             SizedBox(height: indent),
             RowWidget(
@@ -170,14 +168,11 @@ class GoalAddPageState<T extends GoalAddPage> extends AbstractPageState<GoalAddP
                     AppLocale.labels.currency,
                     style: textTheme.bodyLarge,
                   ),
-                  Container(
-                    color: Theme.of(context).colorScheme.inversePrimary.withOpacity(0.3),
-                    width: double.infinity,
-                    child: CurrencySelector(
-                      value: currency?.code,
-                      setView: (Currency currency) => currency.code,
-                      setState: (value) => setState(() => currency = value),
-                    ),
+                  CurrencySelector(
+                    value: currency?.code,
+                    hintText: AppLocale.labels.currencyTooltip,
+                    setView: (Currency currency) => currency.code,
+                    setState: (value) => setState(() => currency = value),
                   ),
                 ],
                 [
@@ -189,7 +184,6 @@ class GoalAddPageState<T extends GoalAddPage> extends AbstractPageState<GoalAddP
                     controller: details,
                     type: const TextInputType.numberWithOptions(decimal: true),
                     tooltip: AppLocale.labels.billSetTooltip,
-                    style: textTheme.numberMedium.copyWith(color: textTheme.headlineSmall?.color),
                     formatter: [
                       SimpleInput.filterDouble,
                     ],
@@ -200,7 +194,6 @@ class GoalAddPageState<T extends GoalAddPage> extends AbstractPageState<GoalAddP
             SizedBox(height: indent),
             RequiredWidget(title: AppLocale.labels.closedAt, showError: hasError && closedAt == null),
             DateInput(
-              style: textTheme.numberMedium.copyWith(color: textTheme.headlineSmall?.color),
               value: closedAt,
               setState: (value) => setState(() => closedAt = value),
             ),

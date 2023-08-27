@@ -6,7 +6,6 @@ import 'package:app_finance/_classes/structure/invoice_app_data.dart';
 import 'package:app_finance/_classes/structure/navigation/app_route.dart';
 import 'package:app_finance/_classes/controller/focus_controller.dart';
 import 'package:app_finance/_mixins/shared_preferences_mixin.dart';
-import 'package:app_finance/_configs/custom_text_theme.dart';
 import 'package:app_finance/_classes/storage/app_data.dart';
 import 'package:app_finance/_configs/theme_helper.dart';
 import 'package:app_finance/widgets/_forms/currency_exchange_input.dart';
@@ -132,12 +131,12 @@ class IncomeTabState extends State<IncomeTab> with SharedPreferencesMixin {
                   ),
                   ListAccountSelector(
                     value: account,
+                    hintText: AppLocale.labels.titleAccountTooltip,
                     state: state,
                     setState: (value) => setState(() {
                       account = value;
                       currency ??= state.getByUuid(value).currency;
                     }),
-                    style: textTheme.numberMedium.copyWith(color: textTheme.headlineSmall?.color),
                     indent: indent,
                     width: width,
                   ),
@@ -152,14 +151,11 @@ class IncomeTabState extends State<IncomeTab> with SharedPreferencesMixin {
                           AppLocale.labels.currency,
                           style: textTheme.bodyLarge,
                         ),
-                        Container(
-                          color: Theme.of(context).colorScheme.inversePrimary.withOpacity(0.3),
-                          width: double.infinity,
-                          child: CurrencySelector(
-                            value: currency?.code,
-                            setView: (Currency currency) => currency.code,
-                            setState: (value) => setState(() => currency = value),
-                          ),
+                        CurrencySelector(
+                          value: currency?.code,
+                          hintText: AppLocale.labels.currencyTooltip,
+                          setView: (Currency currency) => currency.code,
+                          setState: (value) => setState(() => currency = value),
                         ),
                       ],
                       [
@@ -171,7 +167,6 @@ class IncomeTabState extends State<IncomeTab> with SharedPreferencesMixin {
                           controller: amount,
                           type: const TextInputType.numberWithOptions(decimal: true),
                           tooltip: AppLocale.labels.billSetTooltip,
-                          style: textTheme.numberMedium.copyWith(color: textTheme.headlineSmall?.color),
                           setState: (v) => setState(() => amountValue = double.tryParse(v)),
                           formatter: [
                             SimpleInput.filterDouble,
@@ -196,7 +191,6 @@ class IncomeTabState extends State<IncomeTab> with SharedPreferencesMixin {
                     style: textTheme.bodyLarge,
                   ),
                   DateTimeInput(
-                    style: textTheme.numberMedium.copyWith(color: textTheme.headlineSmall?.color),
                     width: width,
                     value: createdAt,
                     setState: (value) => setState(() => createdAt = value),

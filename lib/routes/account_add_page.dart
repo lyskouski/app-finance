@@ -7,7 +7,6 @@ import 'package:app_finance/_classes/structure/account_app_data.dart';
 import 'package:app_finance/_configs/account_type.dart';
 import 'package:app_finance/_classes/controller/focus_controller.dart';
 import 'package:app_finance/_mixins/shared_preferences_mixin.dart';
-import 'package:app_finance/_configs/custom_text_theme.dart';
 import 'package:app_finance/_configs/theme_helper.dart';
 import 'package:app_finance/routes/abstract_add_page.dart';
 import 'package:app_finance/widgets/_forms/color_selector.dart';
@@ -137,9 +136,9 @@ class AccountAddPageState<T extends AccountAddPage> extends AbstractAddPageState
             ),
             ListSelector(
               value: type,
+              hintText: AppLocale.labels.accountTypeTooltip,
               options: AccountType.getList(),
               setState: (value) => setState(() => type = value),
-              style: textTheme.numberMedium.copyWith(color: textTheme.headlineSmall?.color),
               indent: indent,
             ),
             SizedBox(height: indent),
@@ -150,7 +149,6 @@ class AccountAddPageState<T extends AccountAddPage> extends AbstractAddPageState
             SimpleInput(
               controller: title,
               tooltip: AppLocale.labels.titleAccountTooltip,
-              style: textTheme.numberMedium.copyWith(color: textTheme.headlineSmall?.color),
             ),
             SizedBox(height: indent),
             RowWidget(
@@ -188,7 +186,6 @@ class AccountAddPageState<T extends AccountAddPage> extends AbstractAddPageState
                   SimpleInput(
                     controller: description,
                     tooltip: AppLocale.labels.detailsTooltip,
-                    style: textTheme.numberMedium.copyWith(color: textTheme.headlineSmall?.color),
                   ),
                 ],
               ],
@@ -198,13 +195,10 @@ class AccountAddPageState<T extends AccountAddPage> extends AbstractAddPageState
               AppLocale.labels.currency,
               style: textTheme.bodyLarge,
             ),
-            Container(
-              color: Theme.of(context).colorScheme.inversePrimary.withOpacity(0.3),
-              width: width + indent,
-              child: CurrencySelector(
-                value: currency?.code,
-                setState: (value) => setState(() => currency = value),
-              ),
+            CurrencySelector(
+              value: currency?.code,
+              hintText: AppLocale.labels.currencyTooltip,
+              setState: (value) => setState(() => currency = value),
             ),
             SizedBox(height: indent),
             Text(
@@ -214,7 +208,6 @@ class AccountAddPageState<T extends AccountAddPage> extends AbstractAddPageState
             MonthYearInput(
               value: validTillDate,
               setState: (value) => setState(() => validTillDate = value),
-              style: textTheme.numberMedium.copyWith(color: textTheme.headlineSmall?.color),
             ),
             SizedBox(height: indent),
             Text(
@@ -225,7 +218,6 @@ class AccountAddPageState<T extends AccountAddPage> extends AbstractAddPageState
               controller: balance,
               type: const TextInputType.numberWithOptions(decimal: true),
               tooltip: AppLocale.labels.balanceTooltip,
-              style: textTheme.numberMedium.copyWith(color: textTheme.headlineSmall?.color),
               formatter: [
                 SimpleInput.filterDouble,
               ],
@@ -245,7 +237,6 @@ class AccountAddPageState<T extends AccountAddPage> extends AbstractAddPageState
               ],
             ),
             DateTimeInput(
-              style: textTheme.numberMedium.copyWith(color: textTheme.headlineSmall?.color),
               width: width,
               value: balanceUpdateDate,
               setState: (value) => setState(() => balanceUpdateDate = value),

@@ -78,6 +78,7 @@ class ImportTabState extends State<ImportTab> with SharedPreferencesMixin, FileI
           ),
           ListAccountSelector(
             state: state,
+            hintText: AppLocale.labels.titleAccountTooltip,
             value: getPreference(prefAccount),
             setState: (value) => setState(() => attr[0].value = value),
             width: widget.width,
@@ -98,6 +99,7 @@ class ImportTabState extends State<ImportTab> with SharedPreferencesMixin, FileI
           ),
           ListBudgetSelector(
             state: state,
+            hintText: AppLocale.labels.titleBudgetTooltip,
             value: getPreference(prefBudget),
             setState: (value) => setState(() => attr[1].value = value),
             width: widget.width,
@@ -117,6 +119,7 @@ class ImportTabState extends State<ImportTab> with SharedPreferencesMixin, FileI
           ),
           ListSelector(
             value: AppLocale.labels.bill,
+            hintText: AppLocale.labels.currencyTooltip,
             options: [
               ListSelectorItem(id: AppLocale.labels.bill, name: AppLocale.labels.bill),
               ListSelectorItem(id: AppLocale.labels.flowTypeInvoice, name: AppLocale.labels.flowTypeInvoice),
@@ -139,6 +142,7 @@ class ImportTabState extends State<ImportTab> with SharedPreferencesMixin, FileI
           ),
           CurrencySelector(
             value: getPreference(prefCurrency),
+            hintText: AppLocale.labels.currencyTooltip,
             setState: (value) => setState(() => attr[3].value = value.code),
           ),
         ],

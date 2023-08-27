@@ -12,16 +12,21 @@ class IconSelector extends AbstractSelector {
   // ignore: overridden_fields
   final IconData? value;
 
-  IconSelector({
+  const IconSelector({
     super.key,
     required this.setState,
     this.value,
   }) : super(value: value);
 
   @override
+  IconSelectorState createState() => IconSelectorState();
+}
+
+class IconSelectorState extends AbstractSelectorState<IconSelector> {
+  @override
   Future<void> onTap(context) async {
     IconData? icon = await FlutterIconPicker.showIconPicker(context, iconPackModes: [IconPack.material]);
-    setState(icon);
+    widget.setState(icon);
     FocusController.onEditingComplete(focusOrder);
   }
 
@@ -36,7 +41,7 @@ class IconSelector extends AbstractSelector {
         filled: true,
         border: InputBorder.none,
         fillColor: Theme.of(context).colorScheme.inversePrimary.withOpacity(0.3),
-        prefixIcon: Icon(value),
+        prefixIcon: Icon(widget.value),
         suffixIcon: GestureDetector(
           child: const Icon(Icons.arrow_drop_down),
         ),

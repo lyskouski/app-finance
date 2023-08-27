@@ -12,12 +12,12 @@ class ListBudgetSelectorItem extends ListAccountSelectorItem {
 }
 
 class ListBudgetSelector extends ListAccountSelector<ListBudgetSelectorItem> {
-  ListBudgetSelector({
+  const ListBudgetSelector({
     super.key,
     required super.state,
     required super.setState,
     required super.width,
-    super.style,
+    required super.hintText,
     super.value,
     super.indent = 0.0,
   });

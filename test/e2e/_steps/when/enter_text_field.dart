@@ -21,7 +21,7 @@ class EnterTextField extends When2WithWorld<String, String, World> {
     });
     expectSync(field, findsOneWidget);
     await FileRunner.tester.ensureVisible(field);
-    await FileRunner.tester.tap(field);
+    await FileRunner.tester.tap(field, warnIfMissed: false);
     await FileRunner.tester.pump();
     await FileRunner.tester.enterText(field, value);
     await FileRunner.tester.pumpAndSettle(const Duration(seconds: 1));

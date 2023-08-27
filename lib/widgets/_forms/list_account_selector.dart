@@ -26,13 +26,13 @@ class ListAccountSelector<K extends ListAccountSelectorItem> extends ListSelecto
   final AppData state;
   final double width;
 
-  ListAccountSelector({
+  const ListAccountSelector({
     super.key,
     required this.state,
     required super.setState,
     required this.width,
+    required super.hintText,
     super.options = const [],
-    super.style,
     super.value,
     super.indent = 0.0,
   });
@@ -48,15 +48,12 @@ class ListAccountSelector<K extends ListAccountSelectorItem> extends ListSelecto
   }
 
   @override
-  Widget itemBuilder(context, item, bool isSelected) {
-    return Padding(
-      padding: EdgeInsets.fromLTRB(indent, 0, indent, 0),
-      child: selectorBuilder(context, item, true),
-    );
-  }
+  ListAccountSelectorState createState() => ListAccountSelectorState();
+}
 
+class ListAccountSelectorState<K extends ListAccountSelectorItem> extends ListSelectorState<ListAccountSelector, K> {
   @override
-  Widget selectorBuilder(context, item, [bool showDivider = false]) {
+  Widget itemBuilder(context, item) {
     return BaseLineWidget(
       uuid: item.item?.uuid ?? '',
       title: item.item?.title ?? '',
@@ -65,8 +62,22 @@ class ListAccountSelector<K extends ListAccountSelectorItem> extends ListSelecto
       progress: item.item?.progress ?? 0.0,
       color: item.item?.color ?? Colors.transparent,
       hidden: item.item?.hidden ?? false,
-      width: width - indent * 3,
-      showDivider: showDivider,
+      width: widget.width,
+    );
+  }
+
+  @override
+  Widget selectorBuilder(context, item) {
+    return BaseLineWidget(
+      uuid: item.item?.uuid ?? '',
+      title: item.item?.title ?? '',
+      description: item.item?.description ?? '',
+      details: item.item?.detailsFormatted ?? '',
+      progress: item.item?.progress ?? 0.0,
+      color: item.item?.color ?? Colors.transparent,
+      hidden: item.item?.hidden ?? false,
+      width: widget.width - widget.indent * 3,
+      showDivider: false,
     );
   }
 }

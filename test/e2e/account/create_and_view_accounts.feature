@@ -10,7 +10,6 @@ Feature: Verify Account Functionality
           And I tap on 0 index of "CurrencySelector" fields
           And I enter "<currency>" to "Type Code" text field
           And I tap on 1 index of "<currency>" element
-          And I tap "OK" element # Close poped-up Calendar
           And I tap "Create new Account" button
         Then I can see "Accounts, total" component
           And I can see "<type>" component

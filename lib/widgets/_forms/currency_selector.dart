@@ -6,6 +6,7 @@ import 'package:app_finance/_classes/structure/currency/currency_provider.dart';
 import 'package:app_finance/_classes/controller/focus_controller.dart';
 import 'package:app_finance/_configs/theme_helper.dart';
 import 'package:app_finance/widgets/_forms/list_selector.dart';
+import 'package:app_finance/widgets/_wrappers/row_widget.dart';
 import 'package:currency_picker/currency_picker.dart';
 import 'package:flutter/material.dart';
 
@@ -41,6 +42,7 @@ class CurrencySelector extends ListSelector<CurrencySelectorItem> {
   CurrencySelector({
     super.key,
     required super.setState,
+    required super.hintText,
     super.value,
     this.setView,
   }) : super(options: []);
@@ -57,59 +59,39 @@ class CurrencySelector extends ListSelector<CurrencySelectorItem> {
   }
 
   @override
-  Widget selectorBuilder(context, CurrencySelectorItem item) {
-    return Text(item.toString(), style: style);
-  }
+  CurrencySelectorState createState() => CurrencySelectorState();
+}
 
+class CurrencySelectorState extends ListSelectorState<CurrencySelector, CurrencySelectorItem> {
   @override
   onChange(CurrencySelectorItem? value) {
-    setState(value!.item);
+    widget.setState(value!.item);
+    textController.closeView(null);
     FocusController.onEditingComplete(focusOrder);
   }
 
   @override
-  Widget itemBuilder(context, CurrencySelectorItem item, bool isSelected) {
-    final indent = ThemeHelper.getIndent();
-    if (setView != null) {
-      return Tooltip(
-        message: item.name,
-        child: Padding(
-          padding: EdgeInsets.symmetric(vertical: indent, horizontal: indent),
-          child: selectorBuilder(context, item),
-        ),
-      );
-    }
-    return Padding(
-      padding: EdgeInsets.symmetric(vertical: indent, horizontal: indent),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: <Widget>[
-          Expanded(
-            child: Row(
-              children: [
-                SizedBox(width: indent * 2),
-                if (item.item.flag != null) ...[
-                  Text(CurrencyUtils.currencyToEmoji(item.item)),
-                  SizedBox(width: indent * 2),
-                ],
-                Expanded(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(item.item.code),
-                      Text(item.item.name),
-                    ],
-                  ),
-                ),
-              ],
-            ),
-          ),
+  Widget itemBuilder(context, item, [bool isSelected = false]) {
+    return RowWidget(
+      indent: ThemeHelper.getIndent(),
+      maxWidth: ThemeHelper.getWidth(context, 8),
+      alignment: MainAxisAlignment.start,
+      chunk: const [24, null, 32],
+      children: [
+        [
+          if (item.item.flag != null) Text(CurrencyUtils.currencyToEmoji(item.item)),
+        ],
+        [
+          Text(item.item.code),
+          Text(item.item.name),
+        ],
+        [
           Padding(
-            padding: EdgeInsets.symmetric(horizontal: indent * 2),
+            padding: EdgeInsets.symmetric(horizontal: widget.indent * 2),
             child: Text(item.item.symbol),
           ),
         ],
-      ),
+      ],
     );
   }
 }

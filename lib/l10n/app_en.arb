@@ -7,6 +7,7 @@
     "accountTo": "To Account",
     "accountTooltip": "Open Accounts",
     "accountType": "Account Type",
+    "accountTypeTooltip": "Choose Account Type",
     "acknowledgeTooltip": "Acknowledge",
     "activate": "Activate",
     "actualData": "Historical Data",

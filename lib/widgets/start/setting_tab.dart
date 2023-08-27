@@ -5,7 +5,6 @@ import 'package:app_finance/_classes/herald/app_locale.dart';
 import 'package:app_finance/_classes/herald/app_theme.dart';
 import 'package:app_finance/_classes/structure/currency/currency_provider.dart';
 import 'package:app_finance/_mixins/shared_preferences_mixin.dart';
-import 'package:app_finance/_configs/custom_text_theme.dart';
 import 'package:app_finance/_configs/theme_helper.dart';
 import 'package:app_finance/widgets/_forms/currency_selector.dart';
 import 'package:app_finance/widgets/_forms/list_selector.dart';
@@ -88,13 +87,10 @@ class SettingTabState<T extends SettingTab> extends AbstractTabState<T> with Sha
             AppLocale.labels.currencyDefault,
             style: textTheme.bodyLarge,
           ),
-          Container(
-            color: Theme.of(context).colorScheme.inversePrimary.withOpacity(0.3),
-            width: double.infinity,
-            child: CurrencySelector(
-              value: currency?.code,
-              setState: saveCurrency,
-            ),
+          CurrencySelector(
+            value: currency?.code,
+            hintText: AppLocale.labels.currencyTooltip,
+            setState: saveCurrency,
           ),
           SizedBox(height: indent),
           Row(
@@ -118,13 +114,13 @@ class SettingTabState<T extends SettingTab> extends AbstractTabState<T> with Sha
           ),
           ListSelector(
             value: brightness,
+            hintText: AppLocale.labels.brightnessTheme,
             options: [
               ListSelectorItem(id: '0', name: AppLocale.labels.systemMode),
               ListSelectorItem(id: '1', name: AppLocale.labels.lightMode),
               ListSelectorItem(id: '2', name: AppLocale.labels.darkMode),
             ],
             setState: saveTheme,
-            style: textTheme.numberMedium.copyWith(color: textTheme.headlineSmall?.color),
             indent: indent,
           ),
         ],

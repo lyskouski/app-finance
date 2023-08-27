@@ -6,7 +6,6 @@ import 'package:app_finance/_classes/controller/focus_controller.dart';
 import 'package:app_finance/_classes/storage/transaction_log/file_protocol.dart';
 import 'package:app_finance/_classes/storage/transaction_log/web_dav_data.dart';
 import 'package:app_finance/_classes/storage/transaction_log/web_dav_protocol.dart';
-import 'package:app_finance/_configs/custom_text_theme.dart';
 import 'package:app_finance/_configs/theme_helper.dart';
 import 'package:app_finance/widgets/_forms/simple_input.dart';
 import 'package:app_finance/widgets/_wrappers/required_widget.dart';
@@ -128,7 +127,6 @@ class SyncTabState extends State<RecoverTab> {
         ),
         SimpleInput(
           controller: path,
-          style: textTheme.numberMedium.copyWith(color: textTheme.headlineSmall?.color),
         ),
         SizedBox(height: indent * 2),
         SizedBox(
@@ -172,7 +170,6 @@ class SyncTabState extends State<RecoverTab> {
         SimpleInput(
           controller: link,
           type: TextInputType.url,
-          style: textTheme.numberMedium.copyWith(color: textTheme.headlineSmall?.color),
         ),
         SizedBox(height: indent),
         RequiredWidget(
@@ -181,7 +178,6 @@ class SyncTabState extends State<RecoverTab> {
         ),
         SimpleInput(
           controller: username,
-          style: textTheme.numberMedium.copyWith(color: textTheme.headlineSmall?.color),
         ),
         SizedBox(height: indent),
         RequiredWidget(
@@ -191,7 +187,6 @@ class SyncTabState extends State<RecoverTab> {
         SimpleInput(
           controller: password,
           type: TextInputType.visiblePassword,
-          style: textTheme.numberMedium.copyWith(color: textTheme.headlineSmall?.color),
         ),
         SizedBox(height: indent),
         RequiredWidget(
@@ -200,7 +195,6 @@ class SyncTabState extends State<RecoverTab> {
         ),
         SimpleInput(
           controller: path,
-          style: textTheme.numberMedium.copyWith(color: textTheme.headlineSmall?.color),
         ),
         SizedBox(height: indent * 2),
         SizedBox(

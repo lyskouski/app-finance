@@ -6,7 +6,6 @@ import 'package:app_finance/_classes/structure/navigation/app_route.dart';
 import 'package:app_finance/_classes/structure/account_app_data.dart';
 import 'package:app_finance/_classes/structure/currency/exchange.dart';
 import 'package:app_finance/_classes/controller/focus_controller.dart';
-import 'package:app_finance/_configs/custom_text_theme.dart';
 import 'package:app_finance/_classes/storage/app_data.dart';
 import 'package:app_finance/_configs/theme_helper.dart';
 import 'package:app_finance/widgets/_forms/currency_exchange_input.dart';
@@ -117,9 +116,9 @@ class TransferTabState extends State<TransferTab> {
                   ),
                   ListAccountSelector(
                     value: accountFrom,
+                    hintText: AppLocale.labels.accountFrom,
                     state: state,
                     setState: (value) => setState(() => accountFrom = value),
-                    style: textTheme.numberMedium.copyWith(color: textTheme.headlineSmall?.color),
                     indent: indent,
                     width: width,
                   ),
@@ -130,12 +129,12 @@ class TransferTabState extends State<TransferTab> {
                   ),
                   ListAccountSelector(
                     value: accountTo,
+                    hintText: AppLocale.labels.accountTo,
                     state: state,
                     setState: (value) => setState(() {
                       accountTo = value;
                       currency ??= state.getByUuid(value).currency;
                     }),
-                    style: textTheme.numberMedium.copyWith(color: textTheme.headlineSmall?.color),
                     indent: indent,
                     width: width,
                   ),
@@ -150,14 +149,11 @@ class TransferTabState extends State<TransferTab> {
                           AppLocale.labels.currency,
                           style: textTheme.bodyLarge,
                         ),
-                        Container(
-                          color: Theme.of(context).colorScheme.inversePrimary.withOpacity(0.3),
-                          width: double.infinity,
-                          child: CurrencySelector(
-                            value: currency?.code,
-                            setView: (Currency currency) => currency.code,
-                            setState: (value) => setState(() => currency = value),
-                          ),
+                        CurrencySelector(
+                          value: currency?.code,
+                          hintText: AppLocale.labels.currencyTooltip,
+                          setView: (Currency currency) => currency.code,
+                          setState: (value) => setState(() => currency = value),
                         ),
                       ],
                       [
@@ -169,7 +165,6 @@ class TransferTabState extends State<TransferTab> {
                           controller: amount,
                           type: const TextInputType.numberWithOptions(decimal: true),
                           tooltip: AppLocale.labels.billSetTooltip,
-                          style: textTheme.numberMedium.copyWith(color: textTheme.headlineSmall?.color),
                           setState: (v) => setState(() => amountValue = double.tryParse(v)),
                           formatter: [
                             SimpleInput.filterDouble,
