@@ -35,8 +35,9 @@ class LoadingWidgetState extends State<LoadingWidget> with TickerProviderStateMi
 
   @override
   Widget build(BuildContext context) {
-    double width = MediaQuery.of(context).size.width;
-    double height = MediaQuery.of(context).size.height;
+    Size side = MediaQuery.sizeOf(context);
+    double width = side.width;
+    double height = side.height;
     double size = (height > width ? width : height) * 0.6;
     return AnimatedBuilder(
       animation: _controller,

@@ -7,7 +7,7 @@ class ThemeHelper {
   static double getIndent([double multiply = 1]) => 8.0 * multiply;
 
   static double getWidth(BuildContext context, [double multiply = 4]) =>
-      MediaQuery.of(context).size.width - getIndent() * multiply;
+      MediaQuery.sizeOf(context).width - getIndent() * multiply;
 
   static double getMaxHeight(List<dynamic> scope) {
     double height = 0;

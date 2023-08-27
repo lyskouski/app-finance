@@ -4,6 +4,7 @@
 import 'package:app_finance/_classes/herald/app_locale.dart';
 import 'package:app_finance/_classes/structure/navigation/app_route.dart';
 import 'package:app_finance/_classes/structure/goal_app_data.dart';
+import 'package:app_finance/widgets/_wrappers/row_widget.dart';
 import 'package:app_finance/widgets/_wrappers/tap_widget.dart';
 import 'package:app_finance/_configs/theme_helper.dart';
 import 'package:flutter/material.dart';
@@ -44,14 +45,14 @@ class GoalLineWidget extends StatelessWidget {
                         style: textTheme.headlineSmall,
                       ),
                     ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    RowWidget(
+                      indent: indent,
+                      maxWidth: screenWidth,
+                      alignment: MainAxisAlignment.spaceBetween,
+                      chunk: const [0.6, null],
                       children: [
-                        Container(
-                          constraints: BoxConstraints(
-                            maxWidth: MediaQuery.of(context).size.width * 0.6,
-                          ),
-                          child: Tooltip(
+                        [
+                          Tooltip(
                             message: goal.title,
                             child: Padding(
                               padding: EdgeInsets.only(left: indent),
@@ -62,12 +63,9 @@ class GoalLineWidget extends StatelessWidget {
                               ),
                             ),
                           ),
-                        ),
-                        Container(
-                          constraints: BoxConstraints(
-                            maxWidth: MediaQuery.of(context).size.width * 0.3,
-                          ),
-                          child: Padding(
+                        ],
+                        [
+                          Padding(
                             padding: EdgeInsets.only(right: indent),
                             child: Text(
                               goal.closedAtFormatted,
@@ -76,7 +74,7 @@ class GoalLineWidget extends StatelessWidget {
                               overflow: TextOverflow.ellipsis,
                             ),
                           ),
-                        ),
+                        ],
                       ],
                     ),
                     Container(

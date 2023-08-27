@@ -255,6 +255,15 @@ Future<void> main() async {
 
 \noindent Finally, we've taken \q{56 FPS (average)} as an outcome from that tunning.
 
+Further enhancements can be realized through optimization of listeners, like \q{MediaQuery.of(content)}. 
+Since its usage can inadvertently result in extensive rebuilds, particularly when the keyboard is toggled between 
+shown and hidden states. This is attributed to the intrinsic behavior of the \q{.of(context)} listeners, which react to 
+any change, including updates to the MediaQuery's \q{viewInsets} property. This may trigger the whole \q{.of(context)} 
+listeners, even if they don't utilize the mentioned property, ultimately affecting performance. The solution comes from 
+a partial listening in Flutter (\q{MediaQuery.platformBrightnessOf} - for brightness, \q{MediaQuery.sizeOf} - to track
+height and width). A simple tweak with the substantial benefits in the application performance.
+
+
 \subsubsection{Anticipating Churn Rate}
 \paragraph{Volume Testing}
 Check initial load (a time before the enabled interaction) with a huge transaction log history (32Mb, 128Mb, 
