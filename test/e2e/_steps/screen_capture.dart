@@ -24,7 +24,7 @@ class ScreenCapture {
   }
 
   static Future<void> seize(String name) async {
-    if (!_saveScreen) {
+    if (!_saveScreen || _id.currentContext == null) {
       return;
     }
     int currentStep = _step++;
