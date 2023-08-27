@@ -162,6 +162,7 @@ class BudgetAddPageState<T extends BudgetAddPage> extends AbstractAddPageState<B
             ),
             CurrencySelector(
               value: currency?.code,
+              hintText: AppLocale.labels.currencyTooltip,
               setState: (value) => setState(() => currency = value),
             ),
             SizedBox(height: indent),

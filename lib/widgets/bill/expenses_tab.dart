@@ -155,6 +155,7 @@ class ExpensesTabState<T extends ExpensesTab> extends State<T> with SharedPrefer
                   ),
                   ListAccountSelector(
                     value: account,
+                    hintText: AppLocale.labels.titleAccountTooltip,
                     state: state,
                     setState: (value) => setState(() {
                       account = value;
@@ -170,6 +171,7 @@ class ExpensesTabState<T extends ExpensesTab> extends State<T> with SharedPrefer
                   ),
                   ListBudgetSelector(
                     value: budget,
+                    hintText: AppLocale.labels.titleBudgetTooltip,
                     state: state,
                     setState: (value) => setState(() {
                       budget = value;
@@ -192,6 +194,7 @@ class ExpensesTabState<T extends ExpensesTab> extends State<T> with SharedPrefer
                         ),
                         CurrencySelector(
                           value: currency?.code,
+                          hintText: AppLocale.labels.currencyTooltip,
                           setView: (Currency currency) => currency.code,
                           setState: (value) => setState(() => currency = value),
                         ),

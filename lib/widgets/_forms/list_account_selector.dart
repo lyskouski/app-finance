@@ -31,6 +31,7 @@ class ListAccountSelector<K extends ListAccountSelectorItem> extends ListSelecto
     required this.state,
     required super.setState,
     required this.width,
+    required super.hintText,
     super.options = const [],
     super.value,
     super.indent = 0.0,

@@ -131,6 +131,7 @@ class IncomeTabState extends State<IncomeTab> with SharedPreferencesMixin {
                   ),
                   ListAccountSelector(
                     value: account,
+                    hintText: AppLocale.labels.titleAccountTooltip,
                     state: state,
                     setState: (value) => setState(() {
                       account = value;
@@ -152,6 +153,7 @@ class IncomeTabState extends State<IncomeTab> with SharedPreferencesMixin {
                         ),
                         CurrencySelector(
                           value: currency?.code,
+                          hintText: AppLocale.labels.currencyTooltip,
                           setView: (Currency currency) => currency.code,
                           setState: (value) => setState(() => currency = value),
                         ),

@@ -116,6 +116,7 @@ class TransferTabState extends State<TransferTab> {
                   ),
                   ListAccountSelector(
                     value: accountFrom,
+                    hintText: AppLocale.labels.accountFrom,
                     state: state,
                     setState: (value) => setState(() => accountFrom = value),
                     indent: indent,
@@ -128,6 +129,7 @@ class TransferTabState extends State<TransferTab> {
                   ),
                   ListAccountSelector(
                     value: accountTo,
+                    hintText: AppLocale.labels.accountTo,
                     state: state,
                     setState: (value) => setState(() {
                       accountTo = value;
@@ -149,6 +151,7 @@ class TransferTabState extends State<TransferTab> {
                         ),
                         CurrencySelector(
                           value: currency?.code,
+                          hintText: AppLocale.labels.currencyTooltip,
                           setView: (Currency currency) => currency.code,
                           setState: (value) => setState(() => currency = value),
                         ),

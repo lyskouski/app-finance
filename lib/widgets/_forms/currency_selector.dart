@@ -42,6 +42,7 @@ class CurrencySelector extends ListSelector<CurrencySelectorItem> {
   CurrencySelector({
     super.key,
     required super.setState,
+    required super.hintText,
     super.value,
     this.setView,
   }) : super(options: []);

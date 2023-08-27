@@ -136,6 +136,7 @@ class AccountAddPageState<T extends AccountAddPage> extends AbstractAddPageState
             ),
             ListSelector(
               value: type,
+              hintText: AppLocale.labels.accountTypeTooltip,
               options: AccountType.getList(),
               setState: (value) => setState(() => type = value),
               indent: indent,
@@ -196,6 +197,7 @@ class AccountAddPageState<T extends AccountAddPage> extends AbstractAddPageState
             ),
             CurrencySelector(
               value: currency?.code,
+              hintText: AppLocale.labels.currencyTooltip,
               setState: (value) => setState(() => currency = value),
             ),
             SizedBox(height: indent),

@@ -89,6 +89,7 @@ class SettingTabState<T extends SettingTab> extends AbstractTabState<T> with Sha
           ),
           CurrencySelector(
             value: currency?.code,
+            hintText: AppLocale.labels.currencyTooltip,
             setState: saveCurrency,
           ),
           SizedBox(height: indent),
@@ -113,6 +114,7 @@ class SettingTabState<T extends SettingTab> extends AbstractTabState<T> with Sha
           ),
           ListSelector(
             value: brightness,
+            hintText: AppLocale.labels.brightnessTheme,
             options: [
               ListSelectorItem(id: '0', name: AppLocale.labels.systemMode),
               ListSelectorItem(id: '1', name: AppLocale.labels.lightMode),

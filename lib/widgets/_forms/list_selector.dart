@@ -36,8 +36,8 @@ class ListSelector<K extends ListSelectorItem> extends AbstractSelector {
     super.key,
     required this.options,
     required this.setState,
+    required this.hintText,
     super.value,
-    this.hintText = '',
     this.indent = 0.0,
   });
 

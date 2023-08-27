@@ -170,6 +170,7 @@ class GoalAddPageState<T extends GoalAddPage> extends AbstractPageState<GoalAddP
                   ),
                   CurrencySelector(
                     value: currency?.code,
+                    hintText: AppLocale.labels.currencyTooltip,
                     setView: (Currency currency) => currency.code,
                     setState: (value) => setState(() => currency = value),
                   ),
