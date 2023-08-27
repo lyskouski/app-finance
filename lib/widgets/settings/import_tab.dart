@@ -15,7 +15,6 @@ import 'package:app_finance/_mixins/file/file_import_mixin.dart';
 import 'package:app_finance/_mixins/shared_preferences_mixin.dart';
 import 'package:app_finance/_configs/theme_helper.dart';
 import 'package:app_finance/widgets/_forms/currency_selector.dart';
-import 'package:app_finance/widgets/_forms/date_time_input.dart';
 import 'package:app_finance/widgets/_forms/list_account_selector.dart';
 import 'package:app_finance/widgets/_forms/list_budget_selector.dart';
 import 'package:app_finance/widgets/_forms/list_selector.dart';
@@ -185,8 +184,9 @@ class ImportTabState extends State<ImportTab> with SharedPreferencesMixin, FileI
 
   Future<void> parseFile() async {
     state.isLoading = true;
-    final defaultAccount = getPreference(prefAccount);
-    final defaultBudget = getPreference(prefBudget);
+    final defaultAccount = attr.firstWhere((e) => e.key == attrAccountName).value;
+    final defaultBudget = attr.firstWhere((e) => e.key == attrCategoryName).value;
+    final defaultCurrency = attr.firstWhere((e) => e.key == attrBillCurrency).value;
     for (int i = 1; i < fileContent!.length; i++) {
       final line = fileContent![i];
       dynamic amount = _get(line, attrBillAmount);
@@ -203,7 +203,7 @@ class ImportTabState extends State<ImportTab> with SharedPreferencesMixin, FileI
             details: 0.0 + amount,
             createdAt: DateFormat(dateFormat.text).parse(_get(line, attrBillDate)),
             updatedAt: DateFormat(dateFormat.text).parse(_get(line, attrBillDate)),
-            currency: _getCurrency(line),
+            currency: _getCurrency(line, defaultCurrency),
             hidden: false,
           ));
         } else {
@@ -214,7 +214,7 @@ class ImportTabState extends State<ImportTab> with SharedPreferencesMixin, FileI
             details: 0.0 + amount,
             createdAt: DateFormat(dateFormat.text).parse(_get(line, attrBillDate)),
             updatedAt: DateFormat(dateFormat.text).parse(_get(line, attrBillDate)),
-            currency: _getCurrency(line),
+            currency: _getCurrency(line, defaultCurrency),
             hidden: false,
           ));
         }
@@ -267,26 +267,27 @@ class ImportTabState extends State<ImportTab> with SharedPreferencesMixin, FileI
     return index >= 0 ? line[index] : null;
   }
 
-  Currency? _getCurrency(List<dynamic> line) {
-    return CurrencyProvider.findByCode(_get(line, attrBillCurrency));
+  Currency? _getCurrency(List<dynamic> line, String? def) {
+    return CurrencyProvider.findByCode(_get(line, attrBillCurrency) ?? def);
   }
 
   Future<String> _new(AppDataType type, List<dynamic> line, dynamic value) async {
     dynamic newItem;
+    final defaultCurrency = attr.firstWhere((e) => e.key == attrBillCurrency).value;
     switch (type) {
       case AppDataType.accounts:
         newItem = state.add(AccountAppData(
           title: value,
           type: AppAccountType.account.toString(),
           details: 0.0,
-          currency: _getCurrency(line),
+          currency: _getCurrency(line, defaultCurrency),
           hidden: false,
         ));
         break;
       default:
         newItem = state.add(BudgetAppData(
           title: value,
-          currency: _getCurrency(line),
+          currency: _getCurrency(line, defaultCurrency),
           hidden: false,
         ));
     }
