@@ -2,6 +2,7 @@
 // Use of this source code is governed by a CC BY-NC-ND 4.0 license that can be found in the LICENSE file.
 
 import 'package:app_finance/_classes/herald/app_locale.dart';
+import 'package:app_finance/_configs/theme_helper.dart';
 import 'package:app_finance/routes/abstract_page.dart';
 import 'package:app_finance/widgets/_wrappers/tab_widget.dart';
 import 'package:app_finance/widgets/settings/import_tab.dart';
@@ -43,7 +44,7 @@ class SettingsPageState extends AbstractPageState<SettingsPage> {
       children: [
         SettingTab(),
         RecoverTab(callback: super.state.restate),
-        const ImportTab(),
+        ImportTab(width: ThemeHelper.getWidth(context, 12), textTheme: Theme.of(context).textTheme),
       ],
     );
   }

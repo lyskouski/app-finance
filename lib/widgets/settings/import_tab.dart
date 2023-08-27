@@ -14,6 +14,9 @@ import 'package:app_finance/_classes/controller/focus_controller.dart';
 import 'package:app_finance/_mixins/file/file_import_mixin.dart';
 import 'package:app_finance/_mixins/shared_preferences_mixin.dart';
 import 'package:app_finance/_configs/theme_helper.dart';
+import 'package:app_finance/widgets/_forms/currency_selector.dart';
+import 'package:app_finance/widgets/_forms/list_account_selector.dart';
+import 'package:app_finance/widgets/_forms/list_budget_selector.dart';
 import 'package:app_finance/widgets/_forms/list_selector.dart';
 import 'package:app_finance/widgets/_forms/simple_input.dart';
 import 'package:app_finance/widgets/init/loading_widget.dart';
@@ -23,8 +26,23 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 
+class AttrType {
+  final String key;
+  final Widget widget;
+  dynamic value;
+
+  AttrType({required this.key, required this.widget, this.value});
+}
+
 class ImportTab extends StatefulWidget {
-  const ImportTab({super.key});
+  final double width;
+  final TextTheme textTheme;
+
+  const ImportTab({
+    super.key,
+    required this.width,
+    required this.textTheme,
+  });
 
   @override
   ImportTabState createState() => ImportTabState();
@@ -46,6 +64,87 @@ class ImportTabState extends State<ImportTab> with SharedPreferencesMixin, FileI
   final attrBillDate = 'billDate';
   final attrBillCurrency = 'billCurrency';
   final attrBillComment = 'billComment';
+  late final List<AttrType> attr = [
+    AttrType(
+      key: attrAccountName,
+      value: getPreference(prefAccount),
+      widget: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          SizedBox(height: ThemeHelper.getIndent(2)),
+          Text(
+            AppLocale.labels.def('${AppLocale.labels.account}: ${AppLocale.labels.title}'),
+            style: widget.textTheme.bodyLarge,
+          ),
+          ListAccountSelector(
+            state: state,
+            value: getPreference(prefAccount),
+            setState: (value) => setState(() => attr[0].value = value),
+            width: widget.width,
+          ),
+        ],
+      ),
+    ),
+    AttrType(
+      key: attrCategoryName,
+      value: getPreference(prefBudget),
+      widget: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          SizedBox(height: ThemeHelper.getIndent(2)),
+          Text(
+            AppLocale.labels.def('${AppLocale.labels.budget}: ${AppLocale.labels.title}'),
+            style: widget.textTheme.bodyLarge,
+          ),
+          ListBudgetSelector(
+            state: state,
+            value: getPreference(prefBudget),
+            setState: (value) => setState(() => attr[1].value = value),
+            width: widget.width,
+          ),
+        ],
+      ),
+    ),
+    AttrType(
+      key: attrBillType,
+      widget: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          SizedBox(height: ThemeHelper.getIndent(2)),
+          Text(
+            AppLocale.labels.def('${AppLocale.labels.bill}: ${AppLocale.labels.currency}'),
+            style: widget.textTheme.bodyLarge,
+          ),
+          ListSelector(
+            value: AppLocale.labels.bill,
+            options: [
+              ListSelectorItem(id: AppLocale.labels.bill, name: AppLocale.labels.bill),
+              ListSelectorItem(id: AppLocale.labels.flowTypeInvoice, name: AppLocale.labels.flowTypeInvoice),
+            ],
+            setState: (value) => setState(() => attr[2].value = value),
+          ),
+        ],
+      ),
+    ),
+    AttrType(
+      key: attrBillCurrency,
+      value: getPreference(prefCurrency),
+      widget: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          SizedBox(height: ThemeHelper.getIndent(2)),
+          Text(
+            AppLocale.labels.def('${AppLocale.labels.bill}: ${AppLocale.labels.currency}'),
+            style: widget.textTheme.bodyLarge,
+          ),
+          CurrencySelector(
+            value: getPreference(prefCurrency),
+            setState: (value) => setState(() => attr[3].value = value.code),
+          ),
+        ],
+      ),
+    ),
+  ];
 
   List<ListSelectorItem> getMappingTypes() {
     final account = AppLocale.labels.account;
@@ -69,7 +168,8 @@ class ImportTabState extends State<ImportTab> with SharedPreferencesMixin, FileI
     try {
       String? result = await importFile(['csv']);
       if (result != null) {
-        final List<List<dynamic>> csvTable = const CsvToListConverter().convert(result);
+        final splitter = result.contains('\r\n') ? '\r\n' : '\n';
+        final List<List<dynamic>> csvTable = CsvToListConverter(eol: splitter).convert(result);
         setState(() {
           fileContent = csvTable;
           columnMap = List<String>.filled(csvTable.first.length, '');
@@ -84,10 +184,9 @@ class ImportTabState extends State<ImportTab> with SharedPreferencesMixin, FileI
 
   Future<void> parseFile() async {
     state.isLoading = true;
-    final defaultAccount = getPreference(prefAccount);
-    final accountIdx = columnMap.indexOf(attrAccountName);
-    final defaultBudget = getPreference(prefBudget);
-    final budgetIdx = columnMap.indexOf(attrCategoryName);
+    final defaultAccount = attr.firstWhere((e) => e.key == attrAccountName).value;
+    final defaultBudget = attr.firstWhere((e) => e.key == attrCategoryName).value;
+    final defaultCurrency = attr.firstWhere((e) => e.key == attrBillCurrency).value;
     for (int i = 1; i < fileContent!.length; i++) {
       final line = fileContent![i];
       dynamic amount = _get(line, attrBillAmount);
@@ -96,25 +195,26 @@ class ImportTabState extends State<ImportTab> with SharedPreferencesMixin, FileI
       }
       try {
         dynamic newItem;
+        dynamic account = await _find(AppDataType.accounts, line, _get(line, attrAccountName), defaultAccount);
         if (_get(line, attrBillType) == AppLocale.labels.flowTypeInvoice) {
           newItem = state.add(InvoiceAppData(
-            account: await _find(AppDataType.accounts, line, accountIdx, defaultAccount),
+            account: account,
             title: _get(line, attrBillComment).toString(),
             details: 0.0 + amount,
             createdAt: DateFormat(dateFormat.text).parse(_get(line, attrBillDate)),
             updatedAt: DateFormat(dateFormat.text).parse(_get(line, attrBillDate)),
-            currency: _getCurrency(line),
+            currency: _getCurrency(line, defaultCurrency),
             hidden: false,
           ));
         } else {
           newItem = state.add(BillAppData(
-            account: await _find(AppDataType.accounts, line, accountIdx, defaultAccount),
-            category: await _find(AppDataType.budgets, line, budgetIdx, defaultBudget),
+            account: account,
+            category: await _find(AppDataType.budgets, line, _get(line, attrCategoryName), defaultBudget),
             title: _get(line, attrBillComment).toString(),
             details: 0.0 + amount,
             createdAt: DateFormat(dateFormat.text).parse(_get(line, attrBillDate)),
             updatedAt: DateFormat(dateFormat.text).parse(_get(line, attrBillDate)),
-            currency: _getCurrency(line),
+            currency: _getCurrency(line, defaultCurrency),
             hidden: false,
           ));
         }
@@ -144,22 +244,22 @@ class ImportTabState extends State<ImportTab> with SharedPreferencesMixin, FileI
     });
   }
 
-  Future<String> _find(AppDataType type, List<dynamic> line, int index, String? def) async {
-    if (index < 0 || (line[index] ?? '') == '') {
+  Future<String> _find(AppDataType type, List<dynamic> line, dynamic value, String? def) async {
+    if (value == null) {
       return def ?? '';
     }
     String? uuid;
     if (_cache[type] == null) {
       _cache[type] = <String, String?>{};
     }
-    if (_cache[type]?[line[index]] != null) {
-      uuid = _cache[type]?[line[index]];
+    if (_cache[type]?[value] != null) {
+      uuid = _cache[type]?[value];
     } else {
-      final item = state.getList(type).where((element) => element.title == line[index]).firstOrNull;
+      final item = state.getList(type).where((element) => element.title == value).firstOrNull;
       uuid = item?.uuid;
-      _cache[type]![line[index]] = uuid ?? '';
+      _cache[type]![value] = uuid ?? '';
     }
-    return uuid ?? await _new(type, line, index);
+    return uuid ?? await _new(type, line, value);
   }
 
   dynamic _get(List<dynamic> line, String type) {
@@ -167,30 +267,31 @@ class ImportTabState extends State<ImportTab> with SharedPreferencesMixin, FileI
     return index >= 0 ? line[index] : null;
   }
 
-  Currency? _getCurrency(List<dynamic> line) {
-    return CurrencyProvider.findByCode(_get(line, attrBillCurrency));
+  Currency? _getCurrency(List<dynamic> line, String? def) {
+    return CurrencyProvider.findByCode(_get(line, attrBillCurrency) ?? def);
   }
 
-  Future<String> _new(AppDataType type, List<dynamic> line, int index) async {
+  Future<String> _new(AppDataType type, List<dynamic> line, dynamic value) async {
     dynamic newItem;
+    final defaultCurrency = attr.firstWhere((e) => e.key == attrBillCurrency).value;
     switch (type) {
       case AppDataType.accounts:
         newItem = state.add(AccountAppData(
-          title: line[index],
+          title: value,
           type: AppAccountType.account.toString(),
           details: 0.0,
-          currency: _getCurrency(line),
+          currency: _getCurrency(line, defaultCurrency),
           hidden: false,
         ));
         break;
       default:
         newItem = state.add(BudgetAppData(
-          title: line[index],
-          currency: _getCurrency(line),
+          title: value,
+          currency: _getCurrency(line, defaultCurrency),
           hidden: false,
         ));
     }
-    _cache[type]![line[index]] = newItem.uuid;
+    _cache[type]![value] = newItem.uuid;
     TransactionLog.save(newItem);
     return newItem.uuid;
   }
@@ -216,34 +317,8 @@ class ImportTabState extends State<ImportTab> with SharedPreferencesMixin, FileI
               if (isLoading) ...[
                 SizedBox(height: indent * 6),
                 LoadingWidget(isLoading: isLoading),
-              ] else if (fileContent != null)
-                ...List<Widget>.generate(fileContent!.first.length + 1, (index) {
-                  if (index == fileContent!.first.length) {
-                    return Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-                      SizedBox(height: indent * 2),
-                      Text(
-                        AppLocale.labels.dateFormat,
-                        style: textTheme.bodyLarge,
-                      ),
-                      Text(
-                        AppLocale.labels.dateFormatPattern,
-                        style: textTheme.bodyMedium,
-                      ),
-                      SimpleInput(controller: dateFormat),
-                      SizedBox(height: indent * 2),
-                      SizedBox(
-                        width: double.infinity,
-                        child: FloatingActionButton(
-                          heroTag: 'import_tab_parse',
-                          onPressed: () => wrapCall(parseFile),
-                          tooltip: AppLocale.labels.parseFile,
-                          child: Text(
-                            AppLocale.labels.parseFile,
-                          ),
-                        ),
-                      ),
-                    ]);
-                  }
+              ] else if (fileContent != null) ...[
+                ...List<Widget>.generate(fileContent!.first.length, (index) {
                   return Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
@@ -260,8 +335,35 @@ class ImportTabState extends State<ImportTab> with SharedPreferencesMixin, FileI
                       ),
                     ],
                   );
-                })
-              else ...[
+                }),
+                const Divider(),
+                ...List<Widget>.generate(attr.length,
+                    (index) => columnMap.contains(attr[index].key) ? const SizedBox() : attr[index].widget),
+                Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+                  SizedBox(height: indent * 2),
+                  Text(
+                    AppLocale.labels.dateFormat,
+                    style: textTheme.bodyLarge,
+                  ),
+                  Text(
+                    AppLocale.labels.dateFormatPattern,
+                    style: textTheme.bodyMedium,
+                  ),
+                  SimpleInput(controller: dateFormat),
+                  SizedBox(height: indent * 2),
+                  SizedBox(
+                    width: double.infinity,
+                    child: FloatingActionButton(
+                      heroTag: 'import_tab_parse',
+                      onPressed: () => wrapCall(parseFile),
+                      tooltip: AppLocale.labels.parseFile,
+                      child: Text(
+                        AppLocale.labels.parseFile,
+                      ),
+                    ),
+                  ),
+                ]),
+              ] else ...[
                 SizedBox(
                   width: double.infinity,
                   child: FloatingActionButton(

@@ -107,6 +107,12 @@
     "dateFormatPattern": "Pattern declaration: y [year], M [month], d [day], H [hours], m [minutes], s [seconds]",
     "dateTooltip": "Select Date",
     "debitCard": "Debit Card",
+    "def": "Default Value for '{value}'",
+    "@def": {
+        "value": {
+            "type": "String"
+        }
+    },
     "deleteAccountTooltip": "Deactivate Account",
     "deleteBillTooltip": "Delete Bill",
     "deleteBudgetTooltip": "Deactivate Budget Category",
