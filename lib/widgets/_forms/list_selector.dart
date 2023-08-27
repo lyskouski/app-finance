@@ -2,102 +2,115 @@
 // Use of this source code is governed by a CC BY-NC-ND 4.0 license that can be found in the LICENSE file.
 
 import 'package:app_finance/_classes/controller/focus_controller.dart';
-import 'package:app_finance/widgets/_forms/abstract_input.dart';
-import 'package:dropdown_search/dropdown_search.dart';
+import 'package:app_finance/_configs/custom_text_theme.dart';
+import 'package:app_finance/_configs/theme_helper.dart';
+import 'package:app_finance/widgets/_forms/abstract_selector.dart';
+import 'package:app_finance/widgets/_wrappers/tap_widget.dart';
 import 'package:flutter/material.dart';
 
 class ListSelectorItem {
   final String id;
   final String name;
 
-  @override
-  String toString() => id;
-
-  bool isEqual(ListSelectorItem model) {
-    return id == model.id;
+  bool match(String search) {
+    return name.toLowerCase().contains(search.toLowerCase());
   }
+
+  bool equal(String val) {
+    return id == val;
+  }
+
+  @override
+  toString() => name;
 
   ListSelectorItem({required this.id, required this.name});
 }
 
-class ListSelector<K extends ListSelectorItem> extends AbstractInput {
+class ListSelector<K extends ListSelectorItem> extends AbstractSelector {
   final List<K> options;
   final Function setState;
-  final TextStyle? style;
   final String? hintText;
   final double indent;
-  final _textController = TextEditingController(text: '');
 
-  ListSelector({
+  const ListSelector({
     super.key,
     required this.options,
     required this.setState,
-    this.style,
     super.value,
     this.hintText = '',
     this.indent = 0.0,
   });
 
+  @override
+  ListSelectorState createState() => ListSelectorState();
+}
+
+class ListSelectorState<T extends ListSelector, K extends ListSelectorItem> extends AbstractSelectorState<T> {
   Widget selectorBuilder(context, K item) {
-    return Text(item.name, style: style);
+    final textTheme = Theme.of(context).textTheme;
+    final style = textTheme.numberMedium.copyWith(color: textTheme.headlineSmall?.color);
+    return Text(item.toString(), maxLines: 1, overflow: TextOverflow.ellipsis, style: style);
   }
 
-  Widget itemBuilder(context, K item, bool isSelected) {
-    return Padding(
-      padding: EdgeInsets.all(indent),
-      child: selectorBuilder(context, item),
-    );
+  Widget itemBuilder(context, K item) {
+    return selectorBuilder(context, item);
   }
 
-  Widget dropDownBuilder(BuildContext context, K? selectedItem) {
-    if (selectedItem == null) {
-      return const SizedBox();
-    }
-    return selectorBuilder(context, selectedItem);
-  }
-
-  void onChange(K? value) {
-    setState(value.toString());
+  void onChange(K value) {
+    widget.setState(value.id);
+    textController.closeView(null);
     FocusController.onEditingComplete(focusOrder);
   }
 
   @override
-  Widget buildContent(context) {
-    if (isFocused) {
-      // open popup: openDropDownSearch
+  void onTap(BuildContext? context) {
+    FocusController.onFocus(focusOrder);
+    if (!textController.isOpen) {
+      textController.openView();
     }
-    return DropdownSearch<K>(
-      onChanged: onChange,
-      selectedItem: options.where((element) => element.id == value).firstOrNull,
-      items: options,
-      compareFn: (item, selectedItem) => item.name.contains(selectedItem.name),
-      dropdownDecoratorProps: DropDownDecoratorProps(
-        dropdownSearchDecoration: InputDecoration(
-          hintText: hintText,
-          filled: true,
-          border: InputBorder.none,
-          fillColor: Theme.of(context).colorScheme.inversePrimary.withOpacity(0.3),
-        ),
-      ),
-      dropdownBuilder: dropDownBuilder,
-      popupProps: PopupProps.menu(
-        showSearchBox: true,
-        showSelectedItems: true,
-        searchFieldProps: TextFieldProps(
-          controller: _textController,
-          onTap: () => FocusController.onFocus(focusOrder),
-          focusNode: focus,
-          autofocus: isFocused,
-          decoration: InputDecoration(
-            hintText: hintText,
-            suffixIcon: IconButton(
-              icon: const Icon(Icons.clear),
-              onPressed: _textController.clear,
-            ),
+  }
+
+  @override
+  Widget buildContent(context) {
+    final indent = ThemeHelper.getIndent();
+    final textTheme = Theme.of(context).textTheme;
+    final hintStyle = textTheme.numberMedium.copyWith(color: textTheme.headlineSmall?.color!.withOpacity(0.4));
+    K? item = widget.value != null ? widget.options.cast().where((e) => e.equal(widget.value)).firstOrNull : null;
+    return SearchAnchor(
+      isFullScreen: true,
+      searchController: textController,
+      viewHintText: widget.hintText,
+      headerHintStyle: hintStyle,
+      builder: (context, controller) => TapWidget(
+        onTap: () => onTap(null),
+        child: Container(
+          width: ThemeHelper.getWidth(context),
+          color: Theme.of(context).colorScheme.inversePrimary.withOpacity(0.3),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Padding(
+                padding: EdgeInsets.fromLTRB(indent, indent * 3 / 2, 0, indent * 3 / 2),
+                child: item != null
+                    ? selectorBuilder(context, item)
+                    : Text(
+                        widget.hintText ?? '...',
+                        style: hintStyle,
+                      ),
+              ),
+              IconButton(
+                icon: const Icon(Icons.arrow_drop_down),
+                onPressed: () => controller.openView(),
+              ),
+            ],
           ),
         ),
-        itemBuilder: itemBuilder,
       ),
+      suggestionsBuilder: (context, controller) =>
+          widget.options.cast().where((e) => e.match(controller.text)).map((e) => ListTile(
+                title: itemBuilder(context, e),
+                onTap: () => onChange(e),
+              )),
     );
   }
 }

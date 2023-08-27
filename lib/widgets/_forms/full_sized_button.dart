@@ -27,6 +27,7 @@ class FullSizedButton extends AbstractInput {
 
   @override
   Widget buildContent(BuildContext context) {
+    final colorScheme = Theme.of(context).colorScheme;
     return SizedBox(
       width: constraints.maxWidth - ThemeHelper.getIndent(4),
       child: FloatingActionButton(
@@ -35,20 +36,21 @@ class FullSizedButton extends AbstractInput {
         tooltip: title,
         focusNode: FocusController.getFocusNode(),
         child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
             if (icon != null)
               Icon(
                 icon,
                 semanticLabel: title,
                 size: 32,
-                color: Theme.of(context).colorScheme.primary.withOpacity(0.4),
+                color: colorScheme.primary.withOpacity(0.5),
               ),
-            Expanded(
+            Padding(
+              padding: EdgeInsets.only(left: ThemeHelper.getIndent()),
               child: Text(
                 title,
-                textAlign: TextAlign.center,
                 overflow: TextOverflow.ellipsis,
-                style: Theme.of(context).textTheme.headlineMedium,
+                style: Theme.of(context).textTheme.bodyLarge?.copyWith(color: colorScheme.primary.withOpacity(0.8)),
               ),
             ),
           ],

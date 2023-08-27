@@ -6,7 +6,6 @@ import 'package:app_finance/_classes/structure/currency/currency_provider.dart';
 import 'package:app_finance/_classes/structure/budget_app_data.dart';
 import 'package:app_finance/_classes/controller/focus_controller.dart';
 import 'package:app_finance/_mixins/shared_preferences_mixin.dart';
-import 'package:app_finance/_configs/custom_text_theme.dart';
 import 'package:app_finance/_configs/theme_helper.dart';
 import 'package:app_finance/routes/abstract_add_page.dart';
 import 'package:app_finance/widgets/_forms/color_selector.dart';
@@ -114,7 +113,6 @@ class BudgetAddPageState<T extends BudgetAddPage> extends AbstractAddPageState<B
             SimpleInput(
               controller: title,
               tooltip: AppLocale.labels.titleBudgetTooltip,
-              style: textTheme.numberMedium.copyWith(color: textTheme.headlineSmall?.color),
             ),
             SizedBox(height: indent),
             RowWidget(
@@ -153,7 +151,6 @@ class BudgetAddPageState<T extends BudgetAddPage> extends AbstractAddPageState<B
               controller: budgetLimit,
               type: const TextInputType.numberWithOptions(decimal: true),
               tooltip: AppLocale.labels.balanceTooltip,
-              style: textTheme.numberMedium.copyWith(color: textTheme.headlineSmall?.color),
               formatter: [
                 FilteringTextInputFormatter.allow(RegExp(r'^\d+\.?\d{0,4}')),
               ],
@@ -163,13 +160,9 @@ class BudgetAddPageState<T extends BudgetAddPage> extends AbstractAddPageState<B
               AppLocale.labels.currency,
               style: textTheme.bodyLarge,
             ),
-            Container(
-              color: Theme.of(context).colorScheme.inversePrimary.withOpacity(0.3),
-              width: width + indent,
-              child: CurrencySelector(
-                value: currency?.code,
-                setState: (value) => setState(() => currency = value),
-              ),
+            CurrencySelector(
+              value: currency?.code,
+              setState: (value) => setState(() => currency = value),
             ),
             SizedBox(height: indent),
           ],

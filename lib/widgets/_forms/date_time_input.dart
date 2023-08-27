@@ -16,21 +16,24 @@ class DateTimeInput extends AbstractSelector {
   @override
   // ignore: overridden_fields
   final DateTime value;
-  final TextStyle? style;
   final double? width;
 
-  DateTimeInput({
+  const DateTimeInput({
     super.key,
     required this.setState,
     required this.value,
-    this.style,
     this.width,
   }) : super(value: value);
 
   @override
+  DateTimeInputState createState() => DateTimeInputState();
+}
+
+class DateTimeInputState extends AbstractSelectorState<DateTimeInput> {
+  @override
   void onTap(BuildContext context) {
-    DatePicker.showTimePicker(context, showTitleActions: true, currentTime: value, onConfirm: (dateTime) {
-      setState(dateTime);
+    DatePicker.showTimePicker(context, showTitleActions: true, currentTime: widget.value, onConfirm: (dateTime) {
+      widget.setState(dateTime);
       FocusController.onEditingComplete(focusOrder);
     });
   }
@@ -38,7 +41,7 @@ class DateTimeInput extends AbstractSelector {
   @override
   Widget buildContent(BuildContext context) {
     double indent = ThemeHelper.getIndent(2);
-    double width = this.width ?? ThemeHelper.getWidth(context, 4);
+    double width = widget.width ?? ThemeHelper.getWidth(context, 4);
     final DateFormat formatterTime = DateFormat.Hms(AppLocale.code);
 
     return RowWidget(
@@ -48,9 +51,8 @@ class DateTimeInput extends AbstractSelector {
       children: [
         [
           DateInput(
-            value: value,
+            value: widget.value,
             setState: setState,
-            style: style,
           ),
         ],
         [
@@ -60,9 +62,8 @@ class DateTimeInput extends AbstractSelector {
               focusNode: focus,
               autofocus: isFocused,
               title: Text(
-                formatterTime.format(value),
+                formatterTime.format(widget.value),
                 overflow: TextOverflow.ellipsis,
-                style: style,
               ),
               onTap: () => onTap(context),
             ),

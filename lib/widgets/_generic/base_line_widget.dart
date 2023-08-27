@@ -35,6 +35,17 @@ class BaseLineWidget extends StatelessWidget {
     this.showDivider = true,
   });
 
+  Widget wrapByTap(Widget child) {
+    if (route != '') {
+      return TapWidget(
+        tooltip: title,
+        route: AppMenu.uuid(route, uuid),
+        child: child,
+      );
+    }
+    return child;
+  }
+
   @override
   Widget build(BuildContext context) {
     if (hidden) {
@@ -48,10 +59,8 @@ class BaseLineWidget extends StatelessWidget {
       overflow: TextOverflow.ellipsis,
     );
 
-    return TapWidget(
-      tooltip: title,
-      route: AppMenu.uuid(route, uuid),
-      child: Column(
+    return wrapByTap(
+      Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           RowWidget(

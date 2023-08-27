@@ -17,6 +17,7 @@ class FocusController {
   static final DelayedCall _delay = DelayedCall(600);
 
   static void init() {
+    focus = DEFAULT;
     values = values.map((e) => null).cast<dynamic>().toList();
     _shift = [];
     _idx = DEFAULT;

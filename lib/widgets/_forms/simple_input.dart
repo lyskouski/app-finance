@@ -2,13 +2,13 @@
 // Use of this source code is governed by a CC BY-NC-ND 4.0 license that can be found in the LICENSE file.
 
 import 'package:app_finance/_classes/controller/focus_controller.dart';
+import 'package:app_finance/_configs/custom_text_theme.dart';
 import 'package:app_finance/widgets/_forms/abstract_input.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 class SimpleInput extends AbstractInput {
   final Function? setState;
-  final TextStyle? style;
   final String? tooltip;
   final TextInputType type;
   final List<TextInputFormatter>? formatter;
@@ -20,7 +20,6 @@ class SimpleInput extends AbstractInput {
     super.key,
     required this.controller,
     this.setState,
-    this.style,
     this.tooltip,
     this.formatter,
     this.type = TextInputType.text,
@@ -32,9 +31,11 @@ class SimpleInput extends AbstractInput {
 
   @override
   Widget buildContent(BuildContext context) {
+    final textTheme = Theme.of(context).textTheme;
     return TextFormField(
       controller: controller,
       inputFormatters: formatter,
+      style: textTheme.numberMedium.copyWith(color: textTheme.headlineSmall?.color),
       keyboardType: type,
       focusNode: focus,
       textInputAction: FocusController.getAction(),
@@ -46,7 +47,7 @@ class SimpleInput extends AbstractInput {
         border: InputBorder.none,
         fillColor: Theme.of(context).colorScheme.inversePrimary.withOpacity(0.3),
         hintText: tooltip,
-        hintStyle: style,
+        hintStyle: textTheme.numberMedium.copyWith(color: textTheme.headlineSmall?.color!.withOpacity(0.4)),
       ),
     );
   }

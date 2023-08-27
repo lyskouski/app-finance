@@ -8,24 +8,29 @@ import 'package:app_finance/widgets/_forms/abstract_selector.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_colorpicker/flutter_colorpicker.dart';
 
-class ColorSelector extends AbstractSelector with ColorMixin {
+class ColorSelector extends AbstractSelector {
   final Function setState;
   @override
   // ignore: overridden_fields
   final MaterialColor? value;
 
-  ColorSelector({
+  const ColorSelector({
     super.key,
     required this.setState,
     this.value,
   }) : super(value: value);
 
   @override
+  ColorSelectorState createState() => ColorSelectorState();
+}
+
+class ColorSelectorState extends AbstractSelectorState<ColorSelector> with ColorMixin {
+  @override
   void onTap(context) {
-    MaterialColor clr = value ?? getRandomMaterialColor();
+    MaterialColor clr = widget.value ?? getRandomMaterialColor();
     NavigatorState nav = Navigator.of(context);
-    if (value == null) {
-      setState(clr);
+    if (widget.value == null) {
+      widget.setState(clr);
     }
     showDialog(
       context: context,
@@ -36,7 +41,8 @@ class ColorSelector extends AbstractSelector with ColorMixin {
             child: ColorPicker(
               pickerColor: clr,
               onColorChanged: (color) {
-                setState(convertToMaterialColor(color));
+                widget.setState(convertToMaterialColor(color));
+                FocusController.onEditingComplete(focusOrder);
               },
             ),
           ),
@@ -62,7 +68,7 @@ class ColorSelector extends AbstractSelector with ColorMixin {
       decoration: InputDecoration(
         filled: true,
         border: InputBorder.none,
-        fillColor: value ?? Theme.of(context).colorScheme.inversePrimary.withOpacity(0.3),
+        fillColor: widget.value ?? Theme.of(context).colorScheme.inversePrimary.withOpacity(0.3),
         suffixIcon: GestureDetector(
           child: const Icon(Icons.color_lens),
         ),
