@@ -6,13 +6,15 @@ import 'package:app_finance/_classes/structure/navigation/app_route.dart';
 import 'package:app_finance/_configs/theme_helper.dart';
 import 'package:flutter/material.dart';
 
+typedef FnListWidget = Widget Function(dynamic item, BuildContext context);
+
 class BaseListLimitedWidget extends StatelessWidget {
   final String? route;
   final String routeList;
   final dynamic state;
   final int? limit;
   final double width;
-  final Function buildListWidget;
+  final FnListWidget buildListWidget;
 
   const BaseListLimitedWidget({
     super.key,

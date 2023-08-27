@@ -5,11 +5,13 @@ import 'package:app_finance/_configs/theme_helper.dart';
 import 'package:app_finance/widgets/_wrappers/keep_alive_wrapper.dart';
 import 'package:flutter/material.dart';
 
+typedef FnListWidget = Widget Function(dynamic item, BuildContext context);
+
 class BaseListInfiniteWidget extends StatefulWidget {
   final dynamic state;
   final int batch;
   final double width;
-  final Function buildListWidget;
+  final FnListWidget buildListWidget;
 
   const BaseListInfiniteWidget({
     super.key,

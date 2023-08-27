@@ -55,7 +55,7 @@ class AccountViewPageState extends AbstractPageState<AccountViewPage> {
     );
   }
 
-  Widget buildListWidget(item, BuildContext context, double width) {
+  Widget buildListWidget(item, BuildContext context) {
     return BaseLineWidget(
       uuid: '',
       title: '',
@@ -63,7 +63,7 @@ class AccountViewPageState extends AbstractPageState<AccountViewPage> {
       progress: 1.0,
       details: item.getNumberFormatted(item.changedTo - item.changedFrom),
       color: Colors.transparent,
-      width: width,
+      width: ThemeHelper.getWidth(context, 3),
     );
   }
 
