@@ -53,15 +53,20 @@ class DateInputState extends AbstractSelectorState<DateInput> {
   @override
   Widget buildContent(BuildContext context) {
     final textTheme = Theme.of(context).textTheme;
+    final style = textTheme.numberMedium.copyWith(color: textTheme.headlineSmall?.color);
     final DateFormat formatterDate = DateFormat.yMd(AppLocale.code);
     return Container(
       color: Theme.of(context).colorScheme.inversePrimary.withOpacity(0.3),
       child: ListTile(
-        title: Text(
-          widget.value != null ? formatterDate.format(widget.value!) : AppLocale.labels.dateTooltip,
-          style: textTheme.numberMedium
-              .copyWith(color: textTheme.headlineSmall?.color!.withOpacity(widget.value != null ? 1.0 : 0.4)),
-        ),
+        title: widget.value != null
+            ? Text(
+                formatterDate.format(widget.value!),
+                style: style,
+              )
+            : Text(
+                AppLocale.labels.dateTooltip,
+                style: style.copyWith(color: style.color?.withOpacity(0.4)),
+              ),
         focusNode: focus,
         autofocus: isFocused,
         onTap: () => onTap(context),

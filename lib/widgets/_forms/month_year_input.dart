@@ -47,13 +47,19 @@ class MonthYearInputState extends AbstractSelectorState<MonthYearInput> {
   @override
   Widget buildContent(BuildContext context) {
     final textTheme = Theme.of(context).textTheme;
+    final style = textTheme.numberMedium.copyWith(color: textTheme.headlineSmall?.color);
     return Container(
       color: Theme.of(context).colorScheme.inversePrimary.withOpacity(0.3),
       child: ListTile(
-        title: Text(
-          widget.value != null ? DateFormat.yM(AppLocale.code).format(widget.value!) : AppLocale.labels.dateTooltip,
-          style: textTheme.numberMedium.copyWith(color: textTheme.headlineSmall?.color),
-        ),
+        title: widget.value != null
+            ? Text(
+                DateFormat.yM(AppLocale.code).format(widget.value!),
+                style: style,
+              )
+            : Text(
+                AppLocale.labels.dateTooltip,
+                style: style.copyWith(color: style.color?.withOpacity(0.4)),
+              ),
         onTap: () => onTap(context),
       ),
     );
