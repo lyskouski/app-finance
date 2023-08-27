@@ -14,6 +14,10 @@ import 'package:app_finance/_classes/controller/focus_controller.dart';
 import 'package:app_finance/_mixins/file/file_import_mixin.dart';
 import 'package:app_finance/_mixins/shared_preferences_mixin.dart';
 import 'package:app_finance/_configs/theme_helper.dart';
+import 'package:app_finance/widgets/_forms/currency_selector.dart';
+import 'package:app_finance/widgets/_forms/date_time_input.dart';
+import 'package:app_finance/widgets/_forms/list_account_selector.dart';
+import 'package:app_finance/widgets/_forms/list_budget_selector.dart';
 import 'package:app_finance/widgets/_forms/list_selector.dart';
 import 'package:app_finance/widgets/_forms/simple_input.dart';
 import 'package:app_finance/widgets/init/loading_widget.dart';
@@ -23,8 +27,23 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 
+class AttrType {
+  final String key;
+  final Widget widget;
+  dynamic value;
+
+  AttrType({required this.key, required this.widget, this.value});
+}
+
 class ImportTab extends StatefulWidget {
-  const ImportTab({super.key});
+  final double width;
+  final TextTheme textTheme;
+
+  const ImportTab({
+    super.key,
+    required this.width,
+    required this.textTheme,
+  });
 
   @override
   ImportTabState createState() => ImportTabState();
@@ -46,14 +65,86 @@ class ImportTabState extends State<ImportTab> with SharedPreferencesMixin, FileI
   final attrBillDate = 'billDate';
   final attrBillCurrency = 'billCurrency';
   final attrBillComment = 'billComment';
-  late final List<String> attr = [
-    attrAccountName,
-    attrCategoryName,
-    attrBillAmount,
-    attrBillType,
-    attrBillDate,
-    attrBillCurrency,
-    attrBillComment,
+  late final List<AttrType> attr = [
+    AttrType(
+      key: attrAccountName,
+      value: getPreference(prefAccount),
+      widget: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          SizedBox(height: ThemeHelper.getIndent(2)),
+          Text(
+            AppLocale.labels.def('${AppLocale.labels.account}: ${AppLocale.labels.title}'),
+            style: widget.textTheme.bodyLarge,
+          ),
+          ListAccountSelector(
+            state: state,
+            value: getPreference(prefAccount),
+            setState: (value) => setState(() => attr[0].value = value),
+            width: widget.width,
+          ),
+        ],
+      ),
+    ),
+    AttrType(
+      key: attrCategoryName,
+      value: getPreference(prefBudget),
+      widget: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          SizedBox(height: ThemeHelper.getIndent(2)),
+          Text(
+            AppLocale.labels.def('${AppLocale.labels.budget}: ${AppLocale.labels.title}'),
+            style: widget.textTheme.bodyLarge,
+          ),
+          ListBudgetSelector(
+            state: state,
+            value: getPreference(prefBudget),
+            setState: (value) => setState(() => attr[1].value = value),
+            width: widget.width,
+          ),
+        ],
+      ),
+    ),
+    AttrType(
+      key: attrBillType,
+      widget: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          SizedBox(height: ThemeHelper.getIndent(2)),
+          Text(
+            AppLocale.labels.def('${AppLocale.labels.bill}: ${AppLocale.labels.currency}'),
+            style: widget.textTheme.bodyLarge,
+          ),
+          ListSelector(
+            value: AppLocale.labels.bill,
+            options: [
+              ListSelectorItem(id: AppLocale.labels.bill, name: AppLocale.labels.bill),
+              ListSelectorItem(id: AppLocale.labels.flowTypeInvoice, name: AppLocale.labels.flowTypeInvoice),
+            ],
+            setState: (value) => setState(() => attr[2].value = value),
+          ),
+        ],
+      ),
+    ),
+    AttrType(
+      key: attrBillCurrency,
+      value: getPreference(prefCurrency),
+      widget: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          SizedBox(height: ThemeHelper.getIndent(2)),
+          Text(
+            AppLocale.labels.def('${AppLocale.labels.bill}: ${AppLocale.labels.currency}'),
+            style: widget.textTheme.bodyLarge,
+          ),
+          CurrencySelector(
+            value: getPreference(prefCurrency),
+            setState: (value) => setState(() => attr[3].value = value.code),
+          ),
+        ],
+      ),
+    ),
   ];
 
   List<ListSelectorItem> getMappingTypes() {
@@ -244,6 +335,9 @@ class ImportTabState extends State<ImportTab> with SharedPreferencesMixin, FileI
                     ],
                   );
                 }),
+                const Divider(),
+                ...List<Widget>.generate(attr.length,
+                    (index) => columnMap.contains(attr[index].key) ? const SizedBox() : attr[index].widget),
                 Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
                   SizedBox(height: indent * 2),
                   Text(
