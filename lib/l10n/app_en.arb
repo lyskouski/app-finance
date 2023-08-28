@@ -48,6 +48,7 @@
     "budget": "Budget Category",
     "budgetHeadline": "Budgets",
     "budgetLimit": "Limit per Month",
+    "budgetLimitHeadline": "Limit Adjustments",
     "budgetTooltip": "Open Budget Types",
     "cash": "Cash",
     "chartBarRace": "Bar Race for Categories",
