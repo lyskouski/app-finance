@@ -3,14 +3,13 @@
 
 import 'package:app_finance/_classes/herald/app_locale.dart';
 import 'package:app_finance/_classes/controller/flow_state_machine.dart';
-import 'package:app_finance/_classes/storage/history_data.dart';
 import 'package:app_finance/_classes/structure/account_app_data.dart';
 import 'package:app_finance/_classes/structure/navigation/app_menu.dart';
 import 'package:app_finance/_configs/theme_helper.dart';
 import 'package:app_finance/_classes/structure/navigation/app_route.dart';
 import 'package:app_finance/routes/abstract_page.dart';
 import 'package:app_finance/widgets/_generic/base_line_widget.dart';
-import 'package:app_finance/widgets/_generic/base_list_infinite_widget.dart';
+import 'package:app_finance/widgets/account/summary_tab.dart';
 import 'package:flutter/material.dart';
 
 class AccountViewPage extends AbstractPage {
@@ -55,19 +54,6 @@ class AccountViewPageState extends AbstractPageState<AccountViewPage> {
     );
   }
 
-  Widget buildListWidget(item, BuildContext context) {
-    final obj = super.state.getByUuid(item.ref ?? '');
-    return BaseLineWidget(
-      uuid: '',
-      title: obj?.title ?? '',
-      description: item.getDateFormatted(item.timestamp),
-      progress: 1.0,
-      details: item.getNumberFormatted(item.changedTo - item.changedFrom),
-      color: obj?.color ?? Colors.transparent,
-      width: ThemeHelper.getWidth(context, 3),
-    );
-  }
-
   @override
   Widget buildContent(BuildContext context, BoxConstraints constraints) {
     final item = super.state.getByUuid(widget.uuid) as AccountAppData;
@@ -87,17 +73,8 @@ class AccountViewPageState extends AbstractPageState<AccountViewPage> {
             width: width,
             route: AppRoute.accountViewRoute,
           ),
-          Expanded(
-            child: Padding(
-              padding: EdgeInsets.fromLTRB(indent, 0, indent, 0),
-              child: BaseListInfiniteWidget(
-                state: HistoryData.getLog(widget.uuid),
-                width: width - indent,
-                buildListWidget: buildListWidget,
-              ),
-            ),
-          ),
-          const SizedBox(height: 70)
+          SummaryTab(uuid: widget.uuid, state: state),
+          const SizedBox(height: 70),
         ],
       ),
     );
