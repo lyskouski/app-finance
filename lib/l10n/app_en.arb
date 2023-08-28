@@ -48,6 +48,7 @@
     "budget": "Budget Category",
     "budgetHeadline": "Budgets",
     "budgetLimit": "Limit per Month",
+    "budgetLimitHeadline": "Limit Adjustments",
     "budgetTooltip": "Open Budget Types",
     "cash": "Cash",
     "chartBarRace": "Bar Race for Categories",
@@ -166,6 +167,7 @@
     "importHeadline": "Import",
     "incomeHeadline": "Income",
     "incomeHealth": "Income Health Radar",
+    "invoiceHeadline": "Invoices",
     "invoiceSum": "Invoices: {value}",
     "@invoiceSum": {
         "value": {
@@ -226,6 +228,7 @@
     "subscriptionPaypal": "Buy a coffee (PayPal)",
     "subscriptionTooltip": "Activate Subscription",
     "success": "Succeeded",
+    "summary": "Summary",
     "systemMode": "System",
     "targetAmount": "Target Amount",
     "title": "Title",

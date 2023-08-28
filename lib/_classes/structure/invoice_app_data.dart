@@ -1,11 +1,13 @@
 // Copyright 2023 The terCAD team. All rights reserved.
 // Use of this source code is governed by a CC BY-NC-ND 4.0 license that can be found in the LICENSE file.
 
+import 'package:app_finance/_classes/herald/app_locale.dart';
 import 'package:app_finance/_classes/storage/app_data.dart';
 import 'package:app_finance/_classes/structure/abstract_app_data.dart';
 import 'package:app_finance/_classes/structure/currency/currency_provider.dart';
 import 'package:app_finance/_mixins/formatter_mixin.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 
 class InvoiceAppData extends AbstractAppData {
   String account;
@@ -71,4 +73,9 @@ class InvoiceAppData extends AbstractAppData {
         ...super.toJson(),
         'account': account,
       };
+
+  String get detailsFormatted => getNumberFormatted(super.details);
+
+  @override
+  String get description => DateFormat.MMMMd(AppLocale.code).format(super.createdAt);
 }

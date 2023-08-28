@@ -3,6 +3,7 @@
 
 import 'package:app_finance/_classes/herald/app_locale.dart';
 import 'package:app_finance/_classes/controller/flow_state_machine.dart';
+import 'package:app_finance/_classes/storage/app_data.dart';
 import 'package:app_finance/_classes/storage/history_data.dart';
 import 'package:app_finance/_classes/structure/navigation/app_menu.dart';
 import 'package:app_finance/_classes/structure/budget_app_data.dart';
@@ -24,7 +25,15 @@ class BudgetViewPage extends AbstractPage {
   BudgetViewPageState createState() => BudgetViewPageState();
 }
 
-class BudgetViewPageState extends AbstractPageState<BudgetViewPage> {
+class BudgetViewPageState extends AbstractPageState<BudgetViewPage> with TickerProviderStateMixin {
+  late final TabController _tabController;
+
+  @override
+  void initState() {
+    super.initState();
+    _tabController = TabController(length: 3, vsync: this);
+  }
+
   @override
   String getTitle() {
     final item = super.state.getByUuid(widget.uuid) as BudgetAppData;
@@ -67,6 +76,20 @@ class BudgetViewPageState extends AbstractPageState<BudgetViewPage> {
     );
   }
 
+  Widget buildLineWidget(item, BuildContext context) {
+    return BaseLineWidget(
+      uuid: item.uuid ?? '',
+      title: item.title ?? '',
+      description: item.description ?? '',
+      details: item.detailsFormatted,
+      progress: item.progress,
+      color: item.color ?? Colors.transparent,
+      hidden: item.hidden,
+      width: ThemeHelper.getWidth(context, 3),
+      route: AppRoute.billViewRoute,
+    );
+  }
+
   @override
   Widget buildContent(BuildContext context, BoxConstraints constraints) {
     final item = super.state.getByUuid(widget.uuid) as BudgetAppData;
@@ -86,13 +109,30 @@ class BudgetViewPageState extends AbstractPageState<BudgetViewPage> {
             width: width,
             route: AppRoute.budgetViewRoute,
           ),
+          TabBar.secondary(
+            controller: _tabController,
+            tabs: <Widget>[
+              Tab(text: AppLocale.labels.billHeadline),
+              Tab(text: AppLocale.labels.budgetLimitHeadline),
+            ],
+          ),
           Expanded(
             child: Padding(
               padding: EdgeInsets.fromLTRB(indent, 0, indent, 0),
-              child: BaseListInfiniteWidget(
-                state: HistoryData.getLog(widget.uuid),
-                width: width - indent,
-                buildListWidget: buildListWidget,
+              child: TabBarView(
+                controller: _tabController,
+                children: <Widget>[
+                  BaseListInfiniteWidget(
+                    state: state.getActualList(AppDataType.bills).where((o) => o.category == widget.uuid).toList(),
+                    width: width - indent,
+                    buildListWidget: buildLineWidget,
+                  ),
+                  BaseListInfiniteWidget(
+                    state: HistoryData.getLog(widget.uuid),
+                    width: width - indent,
+                    buildListWidget: buildListWidget,
+                  ),
+                ],
               ),
             ),
           ),
