@@ -38,7 +38,11 @@ abstract class AbstractSelectorState<T extends AbstractSelector> extends State<T
     isFocused = FocusController.isFocused(focusOrder, widget.value);
     FocusController.recordPosition(context);
     if (!focus.hasFocus && isFocused && widget.value == null) {
-      delay.run(() => WidgetsBinding.instance.addPostFrameCallback((_) => onTap(context)));
+      delay.run(() => WidgetsBinding.instance.addPostFrameCallback((_) {
+            if (mounted && widget.value == null) {
+              onTap(context);
+            }
+          }));
     }
     return buildContent(context);
   }
