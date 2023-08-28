@@ -24,6 +24,7 @@ class BudgetRecalculation extends AbstractRecalculation {
 
   BudgetRecalculation updateBudget() {
     change.progress = getDelta();
+    change.amount = initial?.amount ?? 0.0;
     return this;
   }
 }
