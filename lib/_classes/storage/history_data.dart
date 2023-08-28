@@ -7,26 +7,26 @@ import 'package:app_finance/_classes/structure/interface_app_data.dart';
 import 'package:app_finance/_classes/structure/transaction_log_data.dart';
 
 class HistoryData {
-  static final _history = HashMap<String, List<TransactionLogData>>();
+  static final _history = HashMap<String, SplayTreeMap<int, TransactionLogData>>();
 
   static void addLog(uuid, dynamic initial, dynamic initialValue, dynamic value, [String? ref]) {
     if (_history[uuid] == null) {
-      _history[uuid] = [];
+      _history[uuid] = SplayTreeMap<int, TransactionLogData>();
     }
     if (initialValue != value) {
-      _history[uuid]!.add(TransactionLogData(
+      _history[uuid]![-initial.createdAt.millisecondsSinceEpoch] = TransactionLogData(
         timestamp: initial.createdAt,
         ref: ref,
         currency: initial.currency,
         name: 'details',
         changedFrom: initialValue,
         changedTo: value,
-      ));
+      );
     }
   }
 
   static List<TransactionLogData>? getLog(String uuid) {
-    return _history[uuid]?.reversed.map((e) => e.clone()).toList();
+    return _history[uuid]?.values.map((e) => e.clone()).toList();
   }
 
   static List<List<TransactionLogData>?> getMultiLog(List<InterfaceAppData> scope) {
