@@ -3,13 +3,15 @@
 
 import 'package:app_finance/_classes/herald/app_locale.dart';
 import 'package:app_finance/_classes/controller/flow_state_machine.dart';
+import 'package:app_finance/_classes/storage/app_data.dart';
+import 'package:app_finance/_classes/storage/history_data.dart';
 import 'package:app_finance/_classes/structure/account_app_data.dart';
 import 'package:app_finance/_classes/structure/navigation/app_menu.dart';
 import 'package:app_finance/_configs/theme_helper.dart';
 import 'package:app_finance/_classes/structure/navigation/app_route.dart';
 import 'package:app_finance/routes/abstract_page.dart';
 import 'package:app_finance/widgets/_generic/base_line_widget.dart';
-import 'package:app_finance/widgets/account/summary_tab.dart';
+import 'package:app_finance/widgets/_generic/base_list_infinite_widget.dart';
 import 'package:flutter/material.dart';
 
 class AccountViewPage extends AbstractPage {
@@ -23,7 +25,21 @@ class AccountViewPage extends AbstractPage {
   AccountViewPageState createState() => AccountViewPageState();
 }
 
-class AccountViewPageState extends AbstractPageState<AccountViewPage> {
+class AccountViewPageState extends AbstractPageState<AccountViewPage> with TickerProviderStateMixin {
+  late final TabController _tabController;
+
+  @override
+  void initState() {
+    super.initState();
+    _tabController = TabController(length: 3, vsync: this);
+  }
+
+  @override
+  void dispose() {
+    _tabController.dispose();
+    super.dispose();
+  }
+
   @override
   String getTitle() {
     final item = super.state.getByUuid(widget.uuid) as AccountAppData;
@@ -54,6 +70,32 @@ class AccountViewPageState extends AbstractPageState<AccountViewPage> {
     );
   }
 
+  Widget buildLogWidget(item, BuildContext context) {
+    final obj = state.getByUuid(item.ref ?? '');
+    return BaseLineWidget(
+      uuid: '',
+      title: obj?.title ?? '',
+      description: item.getDateFormatted(item.timestamp),
+      progress: 1.0,
+      details: item.getNumberFormatted(item.changedTo - item.changedFrom),
+      color: obj?.color ?? Colors.transparent,
+      width: ThemeHelper.getWidth(context, 3),
+    );
+  }
+
+  Widget buildLineWidget(item, BuildContext context) {
+    return BaseLineWidget(
+      uuid: item.uuid ?? '',
+      title: item.title ?? '',
+      description: item.description ?? '',
+      details: item.detailsFormatted,
+      progress: item.progress,
+      color: item.color ?? Colors.transparent,
+      hidden: item.hidden,
+      width: ThemeHelper.getWidth(context, 3),
+    );
+  }
+
   @override
   Widget buildContent(BuildContext context, BoxConstraints constraints) {
     final item = super.state.getByUuid(widget.uuid) as AccountAppData;
@@ -73,7 +115,39 @@ class AccountViewPageState extends AbstractPageState<AccountViewPage> {
             width: width,
             route: AppRoute.accountViewRoute,
           ),
-          SummaryTab(uuid: widget.uuid, state: state),
+          TabBar.secondary(
+            controller: _tabController,
+            tabs: <Widget>[
+              Tab(text: AppLocale.labels.summary),
+              Tab(text: AppLocale.labels.billHeadline),
+              Tab(text: AppLocale.labels.invoiceHeadline),
+            ],
+          ),
+          Expanded(
+            child: Padding(
+              padding: EdgeInsets.fromLTRB(indent, 0, indent, 0),
+              child: TabBarView(
+                controller: _tabController,
+                children: <Widget>[
+                  BaseListInfiniteWidget(
+                    state: HistoryData.getLog(widget.uuid),
+                    width: width - indent,
+                    buildListWidget: buildLogWidget,
+                  ),
+                  BaseListInfiniteWidget(
+                    state: state.getActualList(AppDataType.bills).where((o) => o.account == widget.uuid).toList(),
+                    width: width - indent,
+                    buildListWidget: buildLineWidget,
+                  ),
+                  BaseListInfiniteWidget(
+                    state: state.getActualList(AppDataType.invoice).where((o) => o.account == widget.uuid).toList(),
+                    width: width - indent,
+                    buildListWidget: buildLineWidget,
+                  ),
+                ],
+              ),
+            ),
+          ),
           const SizedBox(height: 70),
         ],
       ),

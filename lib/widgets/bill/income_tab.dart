@@ -22,6 +22,7 @@ import 'package:provider/provider.dart';
 
 class IncomeTab extends StatefulWidget {
   final String? account;
+  final String? description;
   final Currency? currency;
   final double? amount;
   final DateTime? createdAt;
@@ -29,6 +30,7 @@ class IncomeTab extends StatefulWidget {
   const IncomeTab({
     super.key,
     this.account,
+    this.description,
     this.currency,
     this.amount,
     this.createdAt,
@@ -43,6 +45,7 @@ class IncomeTabState extends State<IncomeTab> with SharedPreferencesMixin {
   String? account;
   Currency? currency;
   late TextEditingController amount;
+  late TextEditingController description;
   late DateTime createdAt;
   double? amountValue;
   bool hasErrors = false;
@@ -54,6 +57,7 @@ class IncomeTabState extends State<IncomeTab> with SharedPreferencesMixin {
     currency = widget.currency;
     createdAt = widget.createdAt ?? DateTime.now();
     amount = TextEditingController(text: widget.amount != null ? widget.amount.toString() : '');
+    description = TextEditingController(text: widget.description);
     amountValue = widget.amount;
     super.initState();
   }
@@ -77,7 +81,8 @@ class IncomeTabState extends State<IncomeTab> with SharedPreferencesMixin {
     String uuid = account ?? '';
     setPreference(prefAccount, uuid);
     state.add(InvoiceAppData(
-      title: '',
+      title: description.text,
+      color: state.getByUuid(uuid)?.color,
       account: uuid,
       details: double.tryParse(amount.text),
       currency: currency,
@@ -186,6 +191,15 @@ class IncomeTabState extends State<IncomeTab> with SharedPreferencesMixin {
                       account != null ? state.getByUuid(account!).currency : null,
                     ],
                   ),
+                  Text(
+                    AppLocale.labels.description,
+                    style: textTheme.bodyLarge,
+                  ),
+                  SimpleInput(
+                    controller: description,
+                    tooltip: AppLocale.labels.descriptionTooltip,
+                  ),
+                  SizedBox(height: indent),
                   Text(
                     AppLocale.labels.balanceDate,
                     style: textTheme.bodyLarge,

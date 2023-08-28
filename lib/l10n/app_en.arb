@@ -166,6 +166,7 @@
     "importHeadline": "Import",
     "incomeHeadline": "Income",
     "incomeHealth": "Income Health Radar",
+    "invoiceHeadline": "Invoices",
     "invoiceSum": "Invoices: {value}",
     "@invoiceSum": {
         "value": {
@@ -226,6 +227,7 @@
     "subscriptionPaypal": "Buy a coffee (PayPal)",
     "subscriptionTooltip": "Activate Subscription",
     "success": "Succeeded",
+    "summary": "Summary",
     "systemMode": "System",
     "targetAmount": "Target Amount",
     "title": "Title",
