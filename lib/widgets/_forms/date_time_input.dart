@@ -3,6 +3,7 @@
 
 import 'package:app_finance/_classes/controller/focus_controller.dart';
 import 'package:app_finance/_classes/herald/app_locale.dart';
+import 'package:app_finance/_configs/custom_text_theme.dart';
 import 'package:app_finance/_configs/theme_helper.dart';
 import 'package:app_finance/widgets/_forms/abstract_selector.dart';
 import 'package:app_finance/widgets/_forms/date_input.dart';
@@ -43,6 +44,7 @@ class DateTimeInputState extends AbstractSelectorState<DateTimeInput> {
     double indent = ThemeHelper.getIndent(2);
     double width = widget.width ?? ThemeHelper.getWidth(context, 4);
     final DateFormat formatterTime = DateFormat.Hms(AppLocale.code);
+    final textTheme = Theme.of(context).textTheme;
 
     return RowWidget(
       indent: indent,
@@ -64,6 +66,7 @@ class DateTimeInputState extends AbstractSelectorState<DateTimeInput> {
               title: Text(
                 formatterTime.format(widget.value),
                 overflow: TextOverflow.ellipsis,
+                style: textTheme.numberMedium.copyWith(color: textTheme.headlineSmall?.color),
               ),
               onTap: () => onTap(context),
             ),
