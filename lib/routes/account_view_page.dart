@@ -6,6 +6,7 @@ import 'package:app_finance/_classes/controller/flow_state_machine.dart';
 import 'package:app_finance/_classes/storage/app_data.dart';
 import 'package:app_finance/_classes/storage/history_data.dart';
 import 'package:app_finance/_classes/structure/account_app_data.dart';
+import 'package:app_finance/_classes/structure/bill_app_data.dart';
 import 'package:app_finance/_classes/structure/navigation/app_menu.dart';
 import 'package:app_finance/_configs/theme_helper.dart';
 import 'package:app_finance/_classes/structure/navigation/app_route.dart';
@@ -80,6 +81,7 @@ class AccountViewPageState extends AbstractPageState<AccountViewPage> with Ticke
       details: item.getNumberFormatted(item.changedTo - item.changedFrom),
       color: obj?.color ?? Colors.transparent,
       width: ThemeHelper.getWidth(context, 3),
+      route: item is BillAppData ? AppRoute.billViewRoute : '',
     );
   }
 
@@ -93,6 +95,7 @@ class AccountViewPageState extends AbstractPageState<AccountViewPage> with Ticke
       color: item.color ?? Colors.transparent,
       hidden: item.hidden,
       width: ThemeHelper.getWidth(context, 3),
+      route: item is BillAppData ? AppRoute.billViewRoute : '',
     );
   }
 
