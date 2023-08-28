@@ -14,7 +14,7 @@ class ColorSelector extends AbstractSelector {
   // ignore: overridden_fields
   final MaterialColor? value;
 
-  const ColorSelector({
+  ColorSelector({
     super.key,
     required this.setState,
     this.value,
@@ -42,7 +42,7 @@ class ColorSelectorState extends AbstractSelectorState<ColorSelector> with Color
               pickerColor: clr,
               onColorChanged: (color) {
                 widget.setState(convertToMaterialColor(color));
-                FocusController.onEditingComplete(focusOrder);
+                FocusController.onEditingComplete(widget.focusOrder);
               },
             ),
           ),
@@ -50,7 +50,7 @@ class ColorSelectorState extends AbstractSelectorState<ColorSelector> with Color
             ElevatedButton(
               onPressed: () {
                 nav.pop();
-                FocusController.onEditingComplete(focusOrder);
+                FocusController.onEditingComplete(widget.focusOrder);
               },
               child: Text(AppLocale.labels.ok),
             ),

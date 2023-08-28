@@ -164,7 +164,6 @@ class AccountAddPageState<T extends AccountAddPage> extends AbstractAddPageState
                   IconSelector(
                     value: icon,
                     setState: (value) => setState(() => icon = value),
-                    // focusOrder: focusOrder += 1,
                   ),
                 ],
                 [
@@ -175,7 +174,6 @@ class AccountAddPageState<T extends AccountAddPage> extends AbstractAddPageState
                   ColorSelector(
                     value: color,
                     setState: (value) => setState(() => color = value),
-                    // focusOrder: focusOrder += 1,
                   ),
                 ],
                 [

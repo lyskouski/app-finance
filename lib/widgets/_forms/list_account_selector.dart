@@ -26,7 +26,7 @@ class ListAccountSelector<K extends ListAccountSelectorItem> extends ListSelecto
   final AppData state;
   final double width;
 
-  const ListAccountSelector({
+  ListAccountSelector({
     super.key,
     required this.state,
     required super.setState,
@@ -35,7 +35,7 @@ class ListAccountSelector<K extends ListAccountSelectorItem> extends ListSelecto
     super.options = const [],
     super.value,
     super.indent = 0.0,
-  });
+  }) : super();
 
   @override
   List<K> get options {

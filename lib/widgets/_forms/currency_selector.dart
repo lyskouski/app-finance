@@ -67,7 +67,7 @@ class CurrencySelectorState extends ListSelectorState<CurrencySelector, Currency
   onChange(CurrencySelectorItem? value) {
     widget.setState(value!.item);
     textController.closeView(null);
-    FocusController.onEditingComplete(focusOrder);
+    FocusController.onEditingComplete(widget.focusOrder);
   }
 
   @override

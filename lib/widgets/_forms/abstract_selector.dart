@@ -7,27 +7,24 @@ import 'package:flutter/material.dart';
 
 abstract class AbstractSelector extends StatefulWidget {
   final dynamic value;
+  late final FocusNode focus;
+  late final int focusOrder;
 
-  const AbstractSelector({
+  AbstractSelector({
     super.key,
     this.value,
-  });
+  }) {
+    focus = FocusController.getFocusNode(value);
+    focusOrder = FocusController.current;
+  }
 }
 
 abstract class AbstractSelectorState<T extends AbstractSelector> extends State<T> {
-  late final FocusNode focus;
-  late final int focusOrder;
   bool isFocused = false;
+  bool wasOpened = false;
 
   final delay = DelayedCall(300);
   final textController = SearchController();
-
-  @override
-  initState() {
-    super.initState();
-    focus = FocusController.getFocusNode(widget.value);
-    focusOrder = FocusController.current;
-  }
 
   void onTap(BuildContext context);
 
@@ -35,11 +32,12 @@ abstract class AbstractSelectorState<T extends AbstractSelector> extends State<T
 
   @override
   Widget build(BuildContext context) {
-    isFocused = FocusController.isFocused(focusOrder, widget.value);
+    isFocused = FocusController.isFocused(widget.focusOrder, widget.value);
     FocusController.recordPosition(context);
-    if (!focus.hasFocus && isFocused && widget.value == null) {
+    if (!widget.focus.hasFocus && isFocused && widget.value == null) {
       delay.run(() => WidgetsBinding.instance.addPostFrameCallback((_) {
-            if (mounted && widget.value == null) {
+            if (mounted && widget.value == null && !wasOpened) {
+              setState(() => wasOpened = true);
               onTap(context);
             }
           }));

@@ -18,7 +18,7 @@ class DateTimeInput extends AbstractSelector {
   final DateTime value;
   final double? width;
 
-  const DateTimeInput({
+  DateTimeInput({
     super.key,
     required this.setState,
     required this.value,
@@ -34,7 +34,7 @@ class DateTimeInputState extends AbstractSelectorState<DateTimeInput> {
   void onTap(BuildContext context) {
     DatePicker.showTimePicker(context, showTitleActions: true, currentTime: widget.value, onConfirm: (dateTime) {
       widget.setState(dateTime);
-      FocusController.onEditingComplete(focusOrder);
+      FocusController.onEditingComplete(widget.focusOrder);
     });
   }
 
@@ -59,7 +59,7 @@ class DateTimeInputState extends AbstractSelectorState<DateTimeInput> {
           Container(
             color: Theme.of(context).colorScheme.inversePrimary.withOpacity(0.3),
             child: ListTile(
-              focusNode: focus,
+              focusNode: widget.focus,
               autofocus: isFocused,
               title: Text(
                 formatterTime.format(widget.value),

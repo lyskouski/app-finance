@@ -14,7 +14,7 @@ class DateInput extends AbstractSelector {
   // ignore: overridden_fields
   final DateTime? value;
 
-  const DateInput({
+  DateInput({
     super.key,
     required this.setState,
     required this.value,
@@ -46,7 +46,7 @@ class DateInputState extends AbstractSelectorState<DateInput> {
         ));
       }
       widget.setState(selectedDate);
-      FocusController.onEditingComplete(focusOrder);
+      FocusController.onEditingComplete(widget.focusOrder);
     }
   }
 
@@ -67,7 +67,7 @@ class DateInputState extends AbstractSelectorState<DateInput> {
                 AppLocale.labels.dateTooltip,
                 style: style.copyWith(color: style.color?.withOpacity(0.4)),
               ),
-        focusNode: focus,
+        focusNode: widget.focus,
         autofocus: isFocused,
         onTap: () => onTap(context),
       ),

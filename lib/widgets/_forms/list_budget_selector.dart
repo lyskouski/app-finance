@@ -12,7 +12,7 @@ class ListBudgetSelectorItem extends ListAccountSelectorItem {
 }
 
 class ListBudgetSelector extends ListAccountSelector<ListBudgetSelectorItem> {
-  const ListBudgetSelector({
+  ListBudgetSelector({
     super.key,
     required super.state,
     required super.setState,
@@ -20,7 +20,7 @@ class ListBudgetSelector extends ListAccountSelector<ListBudgetSelectorItem> {
     required super.hintText,
     super.value,
     super.indent = 0.0,
-  });
+  }) : super();
 
   @override
   List<ListBudgetSelectorItem> get options {

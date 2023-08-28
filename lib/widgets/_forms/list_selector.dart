@@ -32,14 +32,14 @@ class ListSelector<K extends ListSelectorItem> extends AbstractSelector {
   final String? hintText;
   final double indent;
 
-  const ListSelector({
+  ListSelector({
     super.key,
     required this.options,
     required this.setState,
     required this.hintText,
     super.value,
     this.indent = 0.0,
-  });
+  }) : super();
 
   @override
   ListSelectorState createState() => ListSelectorState();
@@ -59,12 +59,12 @@ class ListSelectorState<T extends ListSelector, K extends ListSelectorItem> exte
   void onChange(K value) {
     widget.setState(value.id);
     textController.closeView(null);
-    FocusController.onEditingComplete(focusOrder);
+    FocusController.onEditingComplete(widget.focusOrder);
   }
 
   @override
   void onTap(BuildContext? context) {
-    FocusController.onFocus(focusOrder);
+    FocusController.onFocus(widget.focusOrder);
     if (!textController.isOpen) {
       textController.openView();
     }

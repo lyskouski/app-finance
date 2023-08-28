@@ -15,7 +15,7 @@ class MonthYearInput extends AbstractSelector {
   // ignore: overridden_fields
   final DateTime? value;
 
-  const MonthYearInput({
+  MonthYearInput({
     super.key,
     required this.setState,
     required this.value,
@@ -40,7 +40,7 @@ class MonthYearInputState extends AbstractSelectorState<MonthYearInput> {
     );
     if (selectedDate != null) {
       widget.setState(selectedDate);
-      FocusController.onEditingComplete(focusOrder);
+      FocusController.onEditingComplete(widget.focusOrder);
     }
   }
 
