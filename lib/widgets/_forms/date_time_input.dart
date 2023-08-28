@@ -54,7 +54,7 @@ class DateTimeInputState extends AbstractSelectorState<DateTimeInput> {
         [
           DateInput(
             value: widget.value,
-            setState: setState,
+            setState: widget.setState,
           ),
         ],
         [
