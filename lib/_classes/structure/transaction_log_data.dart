@@ -34,6 +34,7 @@ class TransactionLogData<T> with FormatterMixin {
       changedTo: changedTo,
       ref: ref,
       timestamp: timestamp,
+      currency: currency,
     );
   }
 
@@ -44,6 +45,7 @@ class TransactionLogData<T> with FormatterMixin {
       'timestamp': timestamp.toString(),
       'changedFrom': changedFrom,
       'changedTo': changedTo,
+      'currency': currency?.code,
     });
   }
 }

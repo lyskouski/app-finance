@@ -56,13 +56,14 @@ class AccountViewPageState extends AbstractPageState<AccountViewPage> {
   }
 
   Widget buildListWidget(item, BuildContext context) {
+    final obj = super.state.getByUuid(item.ref ?? '');
     return BaseLineWidget(
       uuid: '',
-      title: '',
+      title: obj?.title ?? '',
       description: item.getDateFormatted(item.timestamp),
       progress: 1.0,
       details: item.getNumberFormatted(item.changedTo - item.changedFrom),
-      color: Colors.transparent,
+      color: obj?.color ?? Colors.transparent,
       width: ThemeHelper.getWidth(context, 3),
     );
   }
