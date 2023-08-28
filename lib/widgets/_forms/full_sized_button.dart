@@ -11,7 +11,7 @@ typedef OnPressedFunction = void Function();
 class FullSizedButton extends AbstractInput {
   final OnPressedFunction setState;
   final String title;
-  final IconData? icon;
+  final IconData icon;
   final BoxConstraints constraints;
   late final String heroTag;
 
@@ -20,16 +20,17 @@ class FullSizedButton extends AbstractInput {
     required this.setState,
     required this.constraints,
     required this.title,
-    this.icon,
+    required this.icon,
   }) : super(value: null) {
     heroTag = 'fz_button_${UniqueKey()}';
   }
 
   @override
   Widget buildContent(BuildContext context) {
+    final bool isKeyboardVisible = MediaQuery.of(context).viewInsets.bottom > 0;
     final colorScheme = Theme.of(context).colorScheme;
     return SizedBox(
-      width: constraints.maxWidth - ThemeHelper.getIndent(4),
+      width: isKeyboardVisible ? null : constraints.maxWidth - ThemeHelper.getIndent(4),
       child: FloatingActionButton(
         heroTag: heroTag,
         onPressed: setState,
@@ -38,21 +39,21 @@ class FullSizedButton extends AbstractInput {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            if (icon != null)
-              Icon(
-                icon,
-                semanticLabel: title,
-                size: 32,
-                color: colorScheme.primary.withOpacity(0.5),
-              ),
-            Padding(
-              padding: EdgeInsets.only(left: ThemeHelper.getIndent()),
-              child: Text(
-                title,
-                overflow: TextOverflow.ellipsis,
-                style: Theme.of(context).textTheme.bodyLarge?.copyWith(color: colorScheme.primary.withOpacity(0.8)),
-              ),
+            Icon(
+              icon,
+              semanticLabel: title,
+              size: 32,
+              color: colorScheme.primary.withOpacity(0.5),
             ),
+            if (!isKeyboardVisible)
+              Padding(
+                padding: EdgeInsets.only(left: ThemeHelper.getIndent()),
+                child: Text(
+                  title,
+                  overflow: TextOverflow.ellipsis,
+                  style: Theme.of(context).textTheme.bodyLarge?.copyWith(color: colorScheme.primary.withOpacity(0.8)),
+                ),
+              ),
           ],
         ),
       ),
