@@ -7,7 +7,7 @@ This book is diving deep into the core mechanisms of the Flatter and Dart langua
 
 **NOTE:** To compile the project
 1. Install LaTeX: https://miktex.org/download
-2. Run command ```pdflatex index.tex -halt-on-error -output-directory=build``` from current directory
+2. Run command ```pdflatex -halt-on-error -aux-directory=build -output-directory=build index.tex``` from current directory
 
 ## Contributions
 

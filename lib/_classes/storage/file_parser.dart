@@ -87,7 +87,7 @@ class FileParser with FileImportMixin {
     columnMap = [attrBillUuid, attrBillAmount, attrBillComment, attrCategoryName, attrBillDate];
     FileScope result = [header];
     final scope = content.split(splitter);
-    int idx = 0;
+    int idx = 1;
     Map<String, int> mapping = {
       'N': 0, // "Number" for the transaction
       'T': 1, // "Total" amount
@@ -101,12 +101,9 @@ class FileParser with FileImportMixin {
       }
       final key = scope[i].substring(0, 1);
       final value = scope[i].substring(1);
-      if (key == '!') {
+      if (key == '^') {
         idx++;
         result.add(List<dynamic>.filled(header.length, null));
-        continue;
-      }
-      if (idx == 0) {
         continue;
       }
       int? pos = mapping[key];
