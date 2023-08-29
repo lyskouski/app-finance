@@ -65,7 +65,12 @@
             "type": "String"
         }
     },
-    "columnMapTooltip": "Choose Column Mapping",
+    "columnMapTooltip": "'{value}' - Choose Column Mapping",
+    "@columnMapTooltip": {
+        "value": {
+            "type": "String"
+        }
+    },
     "completeGoalTooltip": "Complete Goal",
     "conversion": "Conversion",
     "conversionMessage": "Taken in {currency}",
@@ -195,7 +200,12 @@
     "parseFile": "Parse .csv-file",
     "password": "Password",
     "path": "File Name (to save into, or load from)",
-    "pickFile": "Pick .csv-file",
+    "pickFile": "Pick .{value}-file",
+    "@pickFile": {
+        "value": {
+            "type": "String"
+        }
+    },
     "processIsFinished": "Finished!",
     "progress": "Progress: {value}%",
     "@progress": {
@@ -244,6 +254,7 @@
     "updateBudgetTooltip": "Update Budget Category",
     "updateGoalTooltip": "Update Goal",
     "username": "Username (Account)",
+    "uuid": "Unique Transaction Identifier",
     "validTillDate": "Valid Till",
     "webDav": "Web Distributed Authoring and Versioning (WebDav)"
 }
