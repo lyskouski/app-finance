@@ -197,27 +197,32 @@ class ImportTabState extends State<ImportTab> with SharedPreferencesMixin {
       try {
         dynamic newItem;
         dynamic account = await _find(AppDataType.accounts, line, _get(line, attrAccountName), defaultAccount);
+        String? uuid = _get(line, attrBillUuid).toString();
         if (_get(line, attrBillType) == AppLocale.labels.flowTypeInvoice) {
-          newItem = state.add(InvoiceAppData(
-            account: account,
-            title: _get(line, attrBillComment).toString(),
-            details: 0.0 + amount,
-            createdAt: DateFormat(dateFormat.text).parse(_get(line, attrBillDate)),
-            updatedAt: DateFormat(dateFormat.text).parse(_get(line, attrBillDate)),
-            currency: _getCurrency(line, defaultCurrency),
-            hidden: false,
-          ));
+          newItem = state.add(
+              InvoiceAppData(
+                account: account,
+                title: _get(line, attrBillComment).toString(),
+                details: 0.0 + amount,
+                createdAt: DateFormat(dateFormat.text).parse(_get(line, attrBillDate)),
+                updatedAt: DateFormat(dateFormat.text).parse(_get(line, attrBillDate)),
+                currency: _getCurrency(line, defaultCurrency),
+                hidden: false,
+              ),
+              uuid);
         } else {
-          newItem = state.add(BillAppData(
-            account: account,
-            category: await _find(AppDataType.budgets, line, _get(line, attrCategoryName), defaultBudget),
-            title: _get(line, attrBillComment).toString(),
-            details: 0.0 + amount,
-            createdAt: DateFormat(dateFormat.text).parse(_get(line, attrBillDate)),
-            updatedAt: DateFormat(dateFormat.text).parse(_get(line, attrBillDate)),
-            currency: _getCurrency(line, defaultCurrency),
-            hidden: false,
-          ));
+          newItem = state.add(
+              BillAppData(
+                account: account,
+                category: await _find(AppDataType.budgets, line, _get(line, attrCategoryName), defaultBudget),
+                title: _get(line, attrBillComment).toString(),
+                details: 0.0 + amount,
+                createdAt: DateFormat(dateFormat.text).parse(_get(line, attrBillDate)),
+                updatedAt: DateFormat(dateFormat.text).parse(_get(line, attrBillDate)),
+                currency: _getCurrency(line, defaultCurrency),
+                hidden: false,
+              ),
+              uuid);
         }
         TransactionLog.save(newItem);
       } catch (e) {
