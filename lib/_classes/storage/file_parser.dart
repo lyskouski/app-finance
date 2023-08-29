@@ -83,8 +83,9 @@ class FileParser with FileImportMixin {
       AppLocale.labels.description,
       AppLocale.labels.budget,
       AppLocale.labels.balanceDate,
+      AppLocale.labels.flowTypeTooltip,
     ];
-    columnMap = [attrBillUuid, attrBillAmount, attrBillComment, attrCategoryName, attrBillDate];
+    columnMap = [attrBillUuid, attrBillAmount, attrBillComment, attrCategoryName, attrBillDate, attrBillType];
     FileScope result = [header];
     final scope = content.split(splitter);
     int idx = 1;
@@ -95,6 +96,7 @@ class FileParser with FileImportMixin {
       'L': 3, // "Category/Account Line"
       'D': 4, // "Date"
     };
+    int billType = 5;
     for (int i = 0; i < scope.length; i++) {
       if (scope[i].isEmpty) {
         continue;
@@ -108,7 +110,12 @@ class FileParser with FileImportMixin {
       }
       int? pos = mapping[key];
       if (pos != null) {
-        result[idx][pos] = value;
+        if (key == 'T') {
+          result[idx][pos] = (double.tryParse(value) ?? 0.0).abs().toString();
+          result[idx][billType] = (double.tryParse(value) ?? 0) > 0 ? AppLocale.labels.flowTypeInvoice : '';
+        } else {
+          result[idx][pos] = value;
+        }
       }
     }
     return result;
