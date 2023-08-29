@@ -104,7 +104,9 @@ class SettingTabState<T extends SettingTab> extends AbstractTabState<T> with Sha
                 value: isEncrypted,
                 onChanged: saveEncryption,
               ),
-              hasEncrypted ? Text(AppLocale.labels.hasEncrypted) : const SizedBox(),
+              Expanded(
+                child: hasEncrypted ? Text(AppLocale.labels.hasEncrypted) : const SizedBox(),
+              ),
             ],
           ),
           SizedBox(height: indent),

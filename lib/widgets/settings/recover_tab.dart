@@ -92,7 +92,9 @@ class SyncTabState extends State<RecoverTab> {
             ),
           ),
           SizedBox(width: indent),
-          Text(name, style: textTheme.bodyLarge),
+          Expanded(
+            child: Text(name, style: textTheme.bodyLarge),
+          ),
         ],
       ),
     );
