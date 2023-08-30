@@ -46,15 +46,10 @@ mixin DateFormatMixin {
       }
       for (int j = 0; j < value.length; j++) {
         final nm = int.tryParse(value[j]);
-        if (nm != null && nm > 0 && value[j].length >= 8) {
-          format[j] = [
-            'yyyy',
-            'MM',
-            'dd',
-            if (value[j].length > 8) ...["'T'", 'HH'],
-            if (value[j].length > 11) 'mm',
-            if (value[j].length > 13) 'ss'
-          ].join('');
+        if (nm != null && nm > 0 && value[j].length == 8) {
+          format[j] = 'yyyyMMdd';
+        } else if (value[j].startsWith('T')) {
+          format[j] = ["'T'", 'HH', if (value[j].length > 3) 'mm', if (value[j].length > 5) 'ss'].join('');
         } else if (value[j] == "'") {
           format[j] = "''";
         } else if (value[j].contains(RegExp(r'[,.\\\/\:\|; -]'))) {
