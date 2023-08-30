@@ -119,9 +119,19 @@ Generalized Markup Language (SGML; ISO 8879:1986) standard:
       </STMTTRN>
 \end{lstlisting}
 
-\noindent That's why we may use \q{xml}-package to parse content and import all needed data:
+\noindent That's why we may use \q{xml}-package to parse content and import all needed data \issue{189}{7bd7eea}:
 
 \begin{lstlisting}
 // @var String content
 XmlDocument.parse(content);
 \end{lstlisting}
+
+
+\subsubsection{Supporting Banking Protocols}
+
+Financial Transaction Services (FinTS) protocol, previously recognized as HBCI (Home Banking Computer Interface), stands 
+as a testament to technological advancement in the realm of digital finance. FinTS emerges as a bank-independent 
+interface, meticulously crafted to cater to the distinct needs of German banking institutions and their clientele;
+enabling them to seamlessly engage in statement downloads, initiate bank transfers, and facilitate direct debits.
+
+[TBD]
