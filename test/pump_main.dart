@@ -3,6 +3,7 @@
 
 import 'dart:io';
 
+import 'package:app_finance/_classes/herald/app_sync.dart';
 import 'package:app_finance/_classes/storage/app_data.dart';
 import 'package:app_finance/_classes/herald/app_locale.dart';
 import 'package:app_finance/_classes/herald/app_theme.dart';
@@ -107,6 +108,9 @@ class PumpMain {
       providers: [
         ChangeNotifierProvider<AppData>(
           create: (_) => getStore(isIntegration),
+        ),
+        ChangeNotifierProvider<AppSync>(
+          create: (_) => AppSync(),
         ),
         ChangeNotifierProvider<AppTheme>(
           create: (_) => AppTheme(ThemeMode.system),

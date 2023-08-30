@@ -216,12 +216,22 @@
     "parseFile": "Parse .csv-file",
     "password": "Password",
     "path": "File Name (to save into, or load from)",
+    "peerClosed": "terminated",
+    "peerConnect": "Connect Device",
+    "peerConnectBtn": "connect",
+    "peerDelete": "delete",
+    "peerId": "Your Device Identifier for Connection",
+    "peerOffline": "offline",
+    "peerOnline": "connected",
+    "peerOtherId": "Device Identifier for Connection",
+    "peerPing": "ping",
     "pickFile": "Pick .{value}-file",
     "@pickFile": {
         "value": {
             "type": "String"
         }
     },
+    "pongStatus": "Taken a test message from connected peer",
     "processIsFinished": "Finished!",
     "progress": "Progress: {value}%",
     "@progress": {
@@ -256,6 +266,7 @@
     "success": "Succeeded",
     "summary": "Summary",
     "symbol": "Symbol",
+    "syncHeadline": "Sync Devices",
     "systemMode": "System",
     "targetAmount": "Target Amount",
     "title": "Title",

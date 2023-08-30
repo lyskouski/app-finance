@@ -5,6 +5,7 @@ import 'package:app_finance/_classes/herald/app_locale.dart';
 import 'package:app_finance/_configs/theme_helper.dart';
 import 'package:app_finance/routes/abstract_page.dart';
 import 'package:app_finance/widgets/_wrappers/tab_widget.dart';
+import 'package:app_finance/widgets/automation/sync_tab.dart';
 //import 'package:app_finance/widgets/automation/notification_tab.dart';
 import 'package:flutter/material.dart';
 
@@ -23,9 +24,13 @@ class AutomationPageState extends AbstractPageState<AutomationPage> {
 
   @override
   Widget buildContent(BuildContext context, BoxConstraints constraints) {
-    return const TabWidget(
+    return TabWidget(
       focus: 0,
       tabs: [
+        Tab(
+          icon: const Icon(Icons.sync),
+          text: AppLocale.labels.syncHeadline,
+        ),
         /*
         if (Platform.isAndroid)
           Tab(
@@ -35,6 +40,7 @@ class AutomationPageState extends AbstractPageState<AutomationPage> {
           */
       ],
       children: [
+        const SyncTab(),
         /*
         if (Platform.isAndroid) const NotificationTab(),
         */

@@ -49,6 +49,7 @@ dependencies:
   csv: ^5.0.2
   xml: ^6.3.0
   notifications: ^3.0.0
+  peerdart: ^0.5.3
 
 dev_dependencies:
   flutter_test:

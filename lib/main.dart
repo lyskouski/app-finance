@@ -2,6 +2,7 @@
 // Use of this source code is governed by a CC BY-NC-ND 4.0 license that can be found in the LICENSE file.
 
 import 'package:app_finance/_classes/herald/app_locale.dart';
+import 'package:app_finance/_classes/herald/app_sync.dart';
 import 'package:app_finance/_classes/herald/app_theme.dart';
 import 'package:app_finance/_mixins/shared_preferences_mixin.dart';
 import 'package:app_finance/_configs/custom_text_theme.dart';
@@ -63,6 +64,9 @@ void main() async {
       providers: [
         ChangeNotifierProvider<AppData>(
           create: (_) => AppData(),
+        ),
+        ChangeNotifierProvider<AppSync>(
+          create: (_) => AppSync(),
         ),
         ChangeNotifierProvider<AppTheme>(
           create: (_) => AppTheme(ThemeMode.system),
