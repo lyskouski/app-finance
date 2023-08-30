@@ -93,34 +93,21 @@ class MyAppState extends State<MyApp> {
     if (widget.platform != null) {
       FirebaseAnalytics.instance.logSelectContent(contentType: route, itemId: match != null ? 'dynamic' : 'static');
     }
-    if (match != null) {
-      final String key = match.group(1) ?? '';
-      switch (route.replaceAll(key, '')) {
-        case AppRoute.accountViewRoute:
-          return (context) => AccountViewPage(uuid: key);
-        case AppRoute.accountSearchRoute:
-          return (context) => AccountPage(search: key);
-        case AppRoute.accountEditRoute:
-          return (context) => AccountEditPage(uuid: key);
-        case AppRoute.budgetViewRoute:
-          return (context) => BudgetViewPage(uuid: key);
-        case AppRoute.budgetEditRoute:
-          return (context) => BudgetEditPage(uuid: key);
-        case AppRoute.budgetSearchRoute:
-          return (context) => BudgetPage(search: key);
-        case AppRoute.billViewRoute:
-          return (context) => BillViewPage(uuid: key);
-        case AppRoute.billEditRoute:
-          return (context) => BillEditPage(uuid: key);
-        case AppRoute.goalViewRoute:
-          return (context) => GoalViewPage(uuid: key);
-        case AppRoute.goalEditRoute:
-          return (context) => GoalEditPage(uuid: key);
-        case AppRoute.metricsSearchRoute:
-          return (context) => MetricsPage(search: key);
-      }
-    }
-    final staticRoutes = <String, WidgetBuilder>{
+    final String key = match?.group(1) ?? '';
+    route = route.replaceAll(key, '');
+
+    final routes = <String, WidgetBuilder>{
+      AppRoute.accountViewRoute: (context) => AccountViewPage(uuid: key),
+      AppRoute.accountSearchRoute: (context) => AccountPage(search: key),
+      AppRoute.accountEditRoute: (context) => AccountEditPage(uuid: key),
+      AppRoute.budgetViewRoute: (context) => BudgetViewPage(uuid: key),
+      AppRoute.budgetEditRoute: (context) => BudgetEditPage(uuid: key),
+      AppRoute.budgetSearchRoute: (context) => BudgetPage(search: key),
+      AppRoute.billViewRoute: (context) => BillViewPage(uuid: key),
+      AppRoute.billEditRoute: (context) => BillEditPage(uuid: key),
+      AppRoute.goalViewRoute: (context) => GoalViewPage(uuid: key),
+      AppRoute.goalEditRoute: (context) => GoalEditPage(uuid: key),
+      AppRoute.metricsSearchRoute: (context) => MetricsPage(search: key),
       AppRoute.aboutRoute: (context) => AboutPage(),
       AppRoute.accountAddRoute: (context) => AccountAddPage(),
       AppRoute.accountRoute: (context) => AccountPage(),
@@ -137,10 +124,7 @@ class MyAppState extends State<MyApp> {
       AppRoute.startRoute: (context) => StartPage(),
       AppRoute.subscriptionRoute: (context) => SubscriptionPage(),
     };
-    if (staticRoutes.containsKey(route)) {
-      return staticRoutes[route];
-    }
-    return (context) => HomePage();
+    return routes[route] ?? (context) => HomePage();
   }
 
   MaterialPageRoute? getDynamicRouter(settings) {
