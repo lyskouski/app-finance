@@ -3,7 +3,7 @@
 
 import 'package:app_finance/_classes/herald/app_locale.dart';
 import 'package:app_finance/_configs/theme_helper.dart';
-import 'package:app_finance/widgets/_forms/full_sized_button.dart';
+import 'package:app_finance/widgets/_wrappers/full_sized_button_widget.dart';
 import 'package:flutter/material.dart';
 
 abstract class AbstractTab<T> extends StatefulWidget {
@@ -22,7 +22,7 @@ abstract class AbstractTabState<T extends AbstractTab> extends State<T> {
   }
 
   Widget buildButton(BuildContext context, BoxConstraints constraints) {
-    return FullSizedButton(
+    return FullSizedButtonWidget(
       constraints: constraints,
       setState: updateState,
       title: '${getButtonTitle()} (${AppLocale.labels.goNextTooltip})',

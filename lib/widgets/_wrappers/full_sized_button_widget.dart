@@ -8,14 +8,14 @@ import 'package:flutter/material.dart';
 
 typedef OnPressedFunction = void Function();
 
-class FullSizedButton extends AbstractInput {
+class FullSizedButtonWidget extends AbstractInput {
   final OnPressedFunction setState;
   final String title;
   final IconData icon;
   final BoxConstraints constraints;
   late final String heroTag;
 
-  FullSizedButton({
+  FullSizedButtonWidget({
     super.key,
     required this.setState,
     required this.constraints,
