@@ -82,7 +82,7 @@ class SettingTabState<T extends SettingTab> extends AbstractTabState<T> with Sha
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          SizedBox(height: indent),
+          ThemeHelper.hIndent2x,
           Text(
             AppLocale.labels.currencyDefault,
             style: textTheme.bodyLarge,
@@ -92,7 +92,7 @@ class SettingTabState<T extends SettingTab> extends AbstractTabState<T> with Sha
             hintText: AppLocale.labels.currencyTooltip,
             setState: saveCurrency,
           ),
-          SizedBox(height: indent),
+          ThemeHelper.hIndent2x,
           Row(
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
@@ -105,11 +105,11 @@ class SettingTabState<T extends SettingTab> extends AbstractTabState<T> with Sha
                 onChanged: saveEncryption,
               ),
               Expanded(
-                child: hasEncrypted ? Text(AppLocale.labels.hasEncrypted) : const SizedBox(),
+                child: hasEncrypted ? Text(AppLocale.labels.hasEncrypted) : ThemeHelper.emptyBox,
               ),
             ],
           ),
-          SizedBox(height: indent),
+          ThemeHelper.hIndent2x,
           Text(
             AppLocale.labels.brightnessTheme,
             style: textTheme.bodyLarge,

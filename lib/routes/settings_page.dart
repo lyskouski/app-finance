@@ -20,7 +20,7 @@ class SettingsPage extends AbstractPage {
 class SettingsPageState extends AbstractPageState<SettingsPage> {
   @override
   Widget buildButton(BuildContext context, BoxConstraints constraints) {
-    return const SizedBox();
+    return ThemeHelper.emptyBox;
   }
 
   @override

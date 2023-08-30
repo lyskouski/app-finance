@@ -116,10 +116,10 @@ class AccountTab extends StatelessWidget {
               maxWidth: width - indent,
               chunk: [null, ThemeHelper.getTextWidth(healthTxt), 40 + indent],
               children: [
-                const [SizedBox()],
+                const [ThemeHelper.emptyBox],
                 [
                   healthTxt,
-                  SizedBox(height: indent),
+                  ThemeHelper.hIndent,
                 ],
                 [
                   GaugeChart(
@@ -132,7 +132,7 @@ class AccountTab extends StatelessWidget {
                 ],
               ],
             ),
-            SizedBox(height: indent),
+            ThemeHelper.hIndent,
             Text(
               AppLocale.labels.chartOHLC,
               style: textTheme.bodyLarge,
@@ -161,7 +161,7 @@ class AccountTab extends StatelessWidget {
                 ),
               ],
             ),
-            SizedBox(height: indent * 3),
+            ThemeHelper.hIndent3x,
             RowWidget(
               maxWidth: width,
               indent: indent,

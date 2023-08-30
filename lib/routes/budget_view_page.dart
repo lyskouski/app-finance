@@ -136,7 +136,7 @@ class BudgetViewPageState extends AbstractPageState<BudgetViewPage> with TickerP
               ),
             ),
           ),
-          const SizedBox(height: 70),
+          ThemeHelper.formEndBox,
         ],
       ),
     );

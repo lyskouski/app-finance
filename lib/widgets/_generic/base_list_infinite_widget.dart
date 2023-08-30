@@ -97,7 +97,7 @@ class BaseListInfiniteWidgetState extends State<BaseListInfiniteWidget> {
         itemCount: items.length + 2,
         itemBuilder: (context, index) {
           if (index == 0) {
-            return SizedBox(height: ThemeHelper.getIndent());
+            return ThemeHelper.hIndent;
           } else if (index == items.length + 1) {
             if (isLoading) {
               return const Center(

@@ -19,7 +19,7 @@ class GoalWidget extends StatelessWidget {
   @override
   Widget build(context) {
     if (state.isEmpty) {
-      return const SizedBox();
+      return ThemeHelper.emptyBox;
     }
     final ColorScheme colorScheme = Theme.of(context).colorScheme;
 

@@ -44,11 +44,13 @@ class ElevatedButtonWidget extends StatelessWidget {
         child: Row(
           mainAxisSize: MainAxisSize.min,
           children: [
-            Icon(
-              icon,
-              color: textColor ?? Theme.of(context).colorScheme.inversePrimary,
-            ),
-            SizedBox(width: icon != null ? ThemeHelper.getIndent() : 0),
+            if (icon != null) ...[
+              Icon(
+                icon,
+                color: textColor ?? Theme.of(context).colorScheme.inversePrimary,
+              ),
+              ThemeHelper.wIndent,
+            ],
             Text(
               text,
               style: TextStyle(

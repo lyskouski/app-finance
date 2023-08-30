@@ -71,13 +71,13 @@ class SyncTabState extends State<RecoverTab> {
           form = Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              SizedBox(height: indent),
+              ThemeHelper.hIndent2x,
               NavButtonWidget(
                 name: AppLocale.labels.webDav,
                 nav: RecoveryType.webdav,
                 callback: cbType,
               ),
-              SizedBox(height: indent),
+              ThemeHelper.hIndent2x,
               NavButtonWidget(
                 name: AppLocale.labels.transactionFile,
                 nav: RecoveryType.file,

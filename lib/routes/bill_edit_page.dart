@@ -4,6 +4,7 @@
 import 'package:app_finance/_classes/herald/app_locale.dart';
 import 'package:app_finance/_classes/structure/bill_app_data.dart';
 import 'package:app_finance/_classes/controller/focus_controller.dart';
+import 'package:app_finance/_configs/theme_helper.dart';
 import 'package:app_finance/routes/abstract_page.dart';
 import 'package:app_finance/widgets/bill/expenses_edit_tab.dart';
 import 'package:flutter/material.dart';
@@ -27,7 +28,7 @@ class BillEditPageState<T extends BillEditPage> extends AbstractPageState<BillEd
 
   @override
   Widget buildButton(BuildContext context, BoxConstraints constraints) {
-    return const SizedBox();
+    return ThemeHelper.emptyBox;
   }
 
   @override

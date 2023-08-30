@@ -78,12 +78,12 @@ class BillTab extends StatelessWidget {
               data: data,
               yMax: yMax * 1.2,
             ),
-            SizedBox(height: indent),
+            ThemeHelper.hIndent,
             Text(
               AppLocale.labels.chartBarRace,
               style: textTheme.bodyLarge,
             ),
-            SizedBox(height: indent),
+            ThemeHelper.hIndent,
             BarRaceChart(
               width: width,
               indent: indent,

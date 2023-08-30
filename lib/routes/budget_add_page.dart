@@ -10,7 +10,7 @@ import 'package:app_finance/_configs/theme_helper.dart';
 import 'package:app_finance/routes/abstract_add_page.dart';
 import 'package:app_finance/widgets/_forms/color_selector.dart';
 import 'package:app_finance/widgets/_forms/currency_selector.dart';
-import 'package:app_finance/widgets/_forms/full_sized_button.dart';
+import 'package:app_finance/widgets/_wrappers/full_sized_button_widget.dart';
 import 'package:app_finance/widgets/_forms/icon_selector.dart';
 import 'package:app_finance/widgets/_forms/simple_input.dart';
 import 'package:app_finance/widgets/_wrappers/required_widget.dart';
@@ -88,7 +88,7 @@ class BudgetAddPageState<T extends BudgetAddPage> extends AbstractAddPageState<B
   @override
   Widget buildButton(BuildContext context, BoxConstraints constraints) {
     NavigatorState nav = Navigator.of(context);
-    return FullSizedButton(
+    return FullSizedButtonWidget(
       constraints: constraints,
       setState: () => triggerActionButton(nav),
       title: getButtonName(),
@@ -114,7 +114,7 @@ class BudgetAddPageState<T extends BudgetAddPage> extends AbstractAddPageState<B
               controller: title,
               tooltip: AppLocale.labels.titleBudgetTooltip,
             ),
-            SizedBox(height: indent),
+            ThemeHelper.hIndent2x,
             RowWidget(
               indent: indent,
               maxWidth: width + indent,
@@ -142,7 +142,7 @@ class BudgetAddPageState<T extends BudgetAddPage> extends AbstractAddPageState<B
                 ],
               ],
             ),
-            SizedBox(height: indent),
+            ThemeHelper.hIndent2x,
             Text(
               AppLocale.labels.budgetLimit,
               style: textTheme.bodyLarge,
@@ -155,7 +155,7 @@ class BudgetAddPageState<T extends BudgetAddPage> extends AbstractAddPageState<B
                 FilteringTextInputFormatter.allow(RegExp(r'^\d+\.?\d{0,4}')),
               ],
             ),
-            SizedBox(height: indent),
+            ThemeHelper.hIndent2x,
             Text(
               AppLocale.labels.currency,
               style: textTheme.bodyLarge,
@@ -165,7 +165,7 @@ class BudgetAddPageState<T extends BudgetAddPage> extends AbstractAddPageState<B
               hintText: AppLocale.labels.currencyTooltip,
               setState: (value) => setState(() => currency = value),
             ),
-            SizedBox(height: indent),
+            ThemeHelper.hIndent2x,
           ],
         ),
       ),

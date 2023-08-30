@@ -76,7 +76,7 @@ class GoalPageState extends AbstractPageState<GoalPage> with FormatterMixin {
         padding: EdgeInsets.all(ThemeHelper.getIndent()),
         child: Column(
           children: [
-            SizedBox(height: indent),
+            ThemeHelper.hIndent,
             RowWidget(
               alignment: MainAxisAlignment.start,
               indent: indent,
@@ -114,7 +114,7 @@ class GoalPageState extends AbstractPageState<GoalPage> with FormatterMixin {
                     maxLines: 2,
                     overflow: TextOverflow.ellipsis,
                   ),
-                  SizedBox(height: indent),
+                  ThemeHelper.hIndent,
                 ],
                 [
                   GaugeChart(
@@ -127,7 +127,7 @@ class GoalPageState extends AbstractPageState<GoalPage> with FormatterMixin {
                 ]
               ],
             ),
-            SizedBox(height: indent),
+            ThemeHelper.hIndent,
             const Divider(),
             ...goals.map((goal) {
               return BudgetLineWidget(

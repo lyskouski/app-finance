@@ -2,6 +2,7 @@
 // Use of this source code is governed by a CC BY-NC-ND 4.0 license that can be found in the LICENSE file.
 
 import 'package:app_finance/_classes/herald/app_locale.dart';
+import 'package:app_finance/_configs/theme_helper.dart';
 import 'package:app_finance/routes/abstract_page.dart';
 import 'package:app_finance/widgets/init/loading_widget.dart';
 import 'package:flutter/material.dart';
@@ -37,7 +38,7 @@ class InitTabState extends AbstractPageState<InitTab> {
 
   @override
   Widget buildButton(BuildContext context, BoxConstraints constraints) {
-    return const SizedBox();
+    return ThemeHelper.emptyBox;
   }
 
   @override

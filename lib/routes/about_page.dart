@@ -39,7 +39,7 @@ class AboutPageState extends AbstractPageState<AboutPage> with LauncherMixin {
 
   @override
   Widget buildButton(BuildContext context, BoxConstraints constraints) {
-    return const SizedBox();
+    return ThemeHelper.emptyBox;
   }
 
   @override

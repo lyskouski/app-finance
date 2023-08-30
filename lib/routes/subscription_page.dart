@@ -18,7 +18,7 @@ class SubscriptionPage extends AbstractPage {
 class SubscriptionPageState extends AbstractPageState<SubscriptionPage> {
   @override
   Widget buildButton(BuildContext context, BoxConstraints constraints) {
-    return const SizedBox();
+    return ThemeHelper.emptyBox;
   }
 
   @override
@@ -31,7 +31,7 @@ class SubscriptionPageState extends AbstractPageState<SubscriptionPage> {
           Text(AppLocale.labels.subscription),
           const Divider(),
           defaultTargetPlatform == TargetPlatform.iOS || defaultTargetPlatform == TargetPlatform.macOS
-              ? const SizedBox()
+              ? ThemeHelper.emptyBox
               : const OtherWidget(),
         ],
       ),

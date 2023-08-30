@@ -11,7 +11,7 @@ import 'package:app_finance/routes/abstract_page.dart';
 import 'package:app_finance/widgets/_forms/color_selector.dart';
 import 'package:app_finance/widgets/_forms/currency_selector.dart';
 import 'package:app_finance/widgets/_forms/date_input.dart';
-import 'package:app_finance/widgets/_forms/full_sized_button.dart';
+import 'package:app_finance/widgets/_wrappers/full_sized_button_widget.dart';
 import 'package:app_finance/widgets/_forms/icon_selector.dart';
 import 'package:app_finance/widgets/_forms/simple_input.dart';
 import 'package:app_finance/widgets/_wrappers/required_widget.dart';
@@ -92,7 +92,7 @@ class GoalAddPageState<T extends GoalAddPage> extends AbstractPageState<GoalAddP
   @override
   Widget buildButton(BuildContext context, BoxConstraints constraints) {
     NavigatorState nav = Navigator.of(context);
-    return FullSizedButton(
+    return FullSizedButtonWidget(
       constraints: constraints,
       setState: () => {
         setState(() {
@@ -127,7 +127,7 @@ class GoalAddPageState<T extends GoalAddPage> extends AbstractPageState<GoalAddP
               controller: title,
               tooltip: AppLocale.labels.titleGoalTooltip,
             ),
-            SizedBox(height: indent),
+            ThemeHelper.hIndent2x,
             RowWidget(
               indent: indent,
               maxWidth: width + indent,
@@ -156,7 +156,7 @@ class GoalAddPageState<T extends GoalAddPage> extends AbstractPageState<GoalAddP
                 ],
               ],
             ),
-            SizedBox(height: indent),
+            ThemeHelper.hIndent2x,
             RowWidget(
               indent: indent,
               maxWidth: width + indent,
@@ -191,7 +191,7 @@ class GoalAddPageState<T extends GoalAddPage> extends AbstractPageState<GoalAddP
                 ],
               ],
             ),
-            SizedBox(height: indent),
+            ThemeHelper.hIndent2x,
             RequiredWidget(title: AppLocale.labels.closedAt, showError: hasError && closedAt == null),
             DateInput(
               value: closedAt,

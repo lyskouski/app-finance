@@ -39,20 +39,20 @@ class BaseListLimitedWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    double indent = ThemeHelper.getIndent();
     int itemCount = state.length + 2;
     bool hasMore = false;
     if (limit != null && limit! < state.length) {
       itemCount = limit! + 2;
       hasMore = true;
     }
-    final addButton = route == null ? const SizedBox() : buildButton(context, '${route!}/add', AppLocale.labels.btnAdd);
+    final addButton =
+        route == null ? ThemeHelper.emptyBox : buildButton(context, '${route!}/add', AppLocale.labels.btnAdd);
 
     return ListView.builder(
         itemCount: itemCount,
         itemBuilder: (context, index) {
           if (index == 0) {
-            return SizedBox(height: indent);
+            return ThemeHelper.hIndent;
           } else if (index <= itemCount - 2) {
             final item = state[index - 1];
             return buildListWidget(item, context);

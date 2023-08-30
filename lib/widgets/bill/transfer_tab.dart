@@ -9,7 +9,7 @@ import 'package:app_finance/_classes/controller/focus_controller.dart';
 import 'package:app_finance/_classes/storage/app_data.dart';
 import 'package:app_finance/_configs/theme_helper.dart';
 import 'package:app_finance/widgets/_forms/currency_exchange_input.dart';
-import 'package:app_finance/widgets/_forms/full_sized_button.dart';
+import 'package:app_finance/widgets/_wrappers/full_sized_button_widget.dart';
 import 'package:app_finance/widgets/_wrappers/required_widget.dart';
 import 'package:app_finance/widgets/_wrappers/row_widget.dart';
 import 'package:app_finance/widgets/_forms/currency_selector.dart';
@@ -75,7 +75,7 @@ class TransferTabState extends State<TransferTab> {
 
   Widget buildButton(BuildContext context, BoxConstraints constraints) {
     NavigatorState nav = Navigator.of(context);
-    return FullSizedButton(
+    return FullSizedButtonWidget(
       constraints: constraints,
       setState: () => {
         setState(() {
@@ -122,7 +122,7 @@ class TransferTabState extends State<TransferTab> {
                     indent: indent,
                     width: width,
                   ),
-                  SizedBox(height: indent),
+                  ThemeHelper.hIndent2x,
                   RequiredWidget(
                     title: AppLocale.labels.accountTo,
                     showError: hasErrors && accountTo == null,
@@ -138,7 +138,7 @@ class TransferTabState extends State<TransferTab> {
                     indent: indent,
                     width: width,
                   ),
-                  SizedBox(height: indent),
+                  ThemeHelper.hIndent2x,
                   RowWidget(
                     indent: indent,
                     maxWidth: width + indent,
@@ -173,7 +173,7 @@ class TransferTabState extends State<TransferTab> {
                       ],
                     ],
                   ),
-                  SizedBox(height: indent),
+                  ThemeHelper.hIndent2x,
                   CurrencyExchangeInput(
                     width: width,
                     indent: indent,

@@ -287,6 +287,17 @@ ListView.builder(
 ),
 \end{lstlisting}
 
+\noindent Contrary, it can be still used methods (better a static properties) in case of constants usage:
+
+\begin{lstlisting}
+@override
+Widget buildButton(BuildContext context, BoxConstraints constraints) {
+  return const SizedBox();
+}
+\end{lstlisting}
+
+
+
 And not obvious but acknowledgeable, Flutter upgrade procedure (by example, Flutter 3.10 triples the frame rate if 
 change \q{FlutterViews} background color to a non-nil value, as proposed \cite{Chis23}).
 

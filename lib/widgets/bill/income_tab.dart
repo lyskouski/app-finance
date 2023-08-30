@@ -11,7 +11,7 @@ import 'package:app_finance/_configs/theme_helper.dart';
 import 'package:app_finance/widgets/_forms/currency_exchange_input.dart';
 import 'package:app_finance/widgets/_forms/currency_selector.dart';
 import 'package:app_finance/widgets/_forms/date_time_input.dart';
-import 'package:app_finance/widgets/_forms/full_sized_button.dart';
+import 'package:app_finance/widgets/_wrappers/full_sized_button_widget.dart';
 import 'package:app_finance/widgets/_forms/list_account_selector.dart';
 import 'package:app_finance/widgets/_forms/simple_input.dart';
 import 'package:app_finance/widgets/_wrappers/required_widget.dart';
@@ -92,7 +92,7 @@ class IncomeTabState extends State<IncomeTab> with SharedPreferencesMixin {
 
   Widget buildButton(BuildContext context, BoxConstraints constraints) {
     NavigatorState nav = Navigator.of(context);
-    return FullSizedButton(
+    return FullSizedButtonWidget(
       constraints: constraints,
       setState: () => {
         setState(() {
@@ -145,7 +145,7 @@ class IncomeTabState extends State<IncomeTab> with SharedPreferencesMixin {
                     indent: indent,
                     width: width,
                   ),
-                  SizedBox(height: indent),
+                  ThemeHelper.hIndent2x,
                   RowWidget(
                     indent: indent,
                     maxWidth: width + indent,
@@ -180,7 +180,7 @@ class IncomeTabState extends State<IncomeTab> with SharedPreferencesMixin {
                       ],
                     ],
                   ),
-                  SizedBox(height: indent),
+                  ThemeHelper.hIndent2x,
                   CurrencyExchangeInput(
                     width: width,
                     indent: indent,
@@ -199,7 +199,7 @@ class IncomeTabState extends State<IncomeTab> with SharedPreferencesMixin {
                     controller: description,
                     tooltip: AppLocale.labels.descriptionTooltip,
                   ),
-                  SizedBox(height: indent),
+                  ThemeHelper.hIndent2x,
                   Text(
                     AppLocale.labels.balanceDate,
                     style: textTheme.bodyLarge,
@@ -209,7 +209,7 @@ class IncomeTabState extends State<IncomeTab> with SharedPreferencesMixin {
                     value: createdAt,
                     setState: (value) => setState(() => createdAt = value),
                   ),
-                  SizedBox(height: indent),
+                  ThemeHelper.hIndent2x,
                 ],
               ),
             ),
