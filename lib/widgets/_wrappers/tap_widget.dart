@@ -10,6 +10,7 @@ class TapWidget extends StatelessWidget {
   final String? tooltip;
   final String? route;
   final Function? onTap;
+  final bool toWrap;
 
   const TapWidget({
     super.key,
@@ -17,10 +18,14 @@ class TapWidget extends StatelessWidget {
     this.tooltip,
     this.route,
     this.onTap,
+    this.toWrap = true,
   });
 
   @override
   Widget build(context) {
+    if (!toWrap) {
+      return child;
+    }
     NavigatorState nav = Navigator.of(context);
     return Tooltip(
       message: tooltip ?? AppLocale.labels.homeTooltip,
