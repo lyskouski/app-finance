@@ -13,6 +13,7 @@ import 'package:app_finance/routes/account_add_page.dart';
 import 'package:app_finance/routes/account_edit_page.dart';
 import 'package:app_finance/routes/account_view_page.dart';
 import 'package:app_finance/routes/account_page.dart';
+import 'package:app_finance/routes/automation_page.dart';
 import 'package:app_finance/routes/bill_add_page.dart';
 import 'package:app_finance/routes/bill_edit_page.dart';
 import 'package:app_finance/routes/bill_page.dart';
@@ -111,6 +112,7 @@ class MyAppState extends State<MyApp> {
       AppRoute.aboutRoute: (context) => AboutPage(),
       AppRoute.accountAddRoute: (context) => AccountAddPage(),
       AppRoute.accountRoute: (context) => AccountPage(),
+      AppRoute.automationRoute: (context) => AutomationPage(),
       AppRoute.billAddRoute: (context) => BillAddPage(),
       AppRoute.billRoute: (context) => BillPage(),
       AppRoute.budgetAddRoute: (context) => BudgetAddPage(),

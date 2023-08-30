@@ -8,6 +8,7 @@ class AppRoute {
   static const String accountViewRoute = '/app/finance/account/uuid:';
   static const String accountSearchRoute = '/app/finance/account/search:';
   static const String accountEditRoute = '/app/finance/account/uuid:/edit';
+  static const String automationRoute = '/app/finance/automation';
   static const String budgetRoute = '/app/finance/budget';
   static const String budgetAddRoute = '/app/finance/budget/add';
   static const String budgetViewRoute = '/app/finance/budget/uuid:';

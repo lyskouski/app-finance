@@ -70,6 +70,11 @@ class AppMenu {
         route: AppRoute.metricsRoute,
       ),
       AppMenuItem(
+        name: AppLocale.labels.automationHeadline,
+        icon: Icons.access_alarms,
+        route: AppRoute.automationRoute,
+      ),
+      AppMenuItem(
         name: AppLocale.labels.settingsHeadline,
         icon: Icons.settings,
         route: AppRoute.settingsRoute,

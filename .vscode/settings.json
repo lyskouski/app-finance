@@ -9,5 +9,8 @@
             120
         ],
         "editor.formatOnSave": true,
+    },
+    "files.associations": {
+        "*.arb": "json"
     }
 }

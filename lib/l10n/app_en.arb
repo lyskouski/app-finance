@@ -25,6 +25,7 @@
             "type": "String"
         }
     },
+    "automationHeadline": "Automation",
     "backTooltip": "Return back",
     "balance": "Actual Balance",
     "balanceDate": "Balance Date Update",
@@ -209,6 +210,7 @@
         }
     },
     "noChartData": "Data is missing (or not enough) to be shown",
+    "notifyHeadline": "Notifications Parser",
     "ok": "OK",
     "outputFile": "Destination for the file",
     "parseFile": "Parse .csv-file",
