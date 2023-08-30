@@ -5,12 +5,18 @@
 
 **Fingrom** - Open-sourced cross-platform financial accounting application without Ads and limitations.
 
-## Health Check
+#### Web App 
+- https://lyskouski.github.io/app-finance/
 
-[![Unit Tests Coverage](https://lyskouski.github.io/app-finance/coverage/unit_coverage_badge.svg)](https://github.com/lyskouski/app-finance/tree/main/test/unit/)
-[![Widget Tests Coverage](https://lyskouski.github.io/app-finance/coverage/widget_coverage_badge.svg)](https://github.com/lyskouski/app-finance/tree/main/test/widget)
-[![End-To-End Coverage](https://lyskouski.github.io/app-finance/coverage/e2e_coverage_badge.svg)](https://github.com/lyskouski/app-finance/tree/main/test/e2e)
+#### Desktop Apps
+- Macos: [latest Release](https://github.com/lyskouski/app-finance/releases/latest) -> fingrom_macOS.zip
+- Linux: [latest Release](https://github.com/lyskouski/app-finance/releases/latest) -> fingrom_Linux.tar.gz
+- Windows: [latest Release](https://github.com/lyskouski/app-finance/releases/latest) -> fingrom_Windows.zip
 
+#### Mobile Apps
+- iOS [[pending]](https://github.com/lyskouski/app-finance/issues/116)
+- Android [[on hold]](https://github.com/lyskouski/app-finance/issues/129)
+- F-Droid [[pending]](https://github.com/lyskouski/app-finance/issues/208)
 
 ## Functionality
 - Accounting (Account Type, Currency/Cryptocurrency)
@@ -20,6 +26,7 @@
 - Budget Categories with limits restate per month
   - Simple grouping via `/` (in name) for the main page
 - Bills, Transfers, Incomes (Invoices)
+- Goals Definition
 - Exchange rates, Default Currency for Summary
 - Metrics: 
   - Budget:
@@ -33,19 +40,15 @@
     - Bar Rase for Categories
   - Goals Gauge Chart
   - Currency Historical Chart
-- Goals Definition
-- Recovery via WebDav
-- Import from `.csv`-files for Bills and Invoices
+- Recovery via WebDav or a direct File
+- Import from `CSV`, `QIF` files for Bills and Invoices
 - Data encryption
 
-## Availability
+### Health Check
 
-- Macos: [latest Release](https://github.com/lyskouski/app-finance/releases/latest) -> fingrom_macOS.zip
-- Linux: [latest Release](https://github.com/lyskouski/app-finance/releases/latest) -> fingrom_Linux.tar.gz
-- Windows: [latest Release](https://github.com/lyskouski/app-finance/releases/latest) -> fingrom_Windows.zip
-- Web: https://lyskouski.github.io/app-finance/
-- iOS [[pending]](https://github.com/lyskouski/app-finance/issues/116)
-- Android [[on hold]](https://github.com/lyskouski/app-finance/issues/129)
+[![Unit Tests Coverage](https://lyskouski.github.io/app-finance/coverage/unit_coverage_badge.svg)](https://github.com/lyskouski/app-finance/tree/main/test/unit/)
+[![Widget Tests Coverage](https://lyskouski.github.io/app-finance/coverage/widget_coverage_badge.svg)](https://github.com/lyskouski/app-finance/tree/main/test/widget)
+[![End-To-End Coverage](https://lyskouski.github.io/app-finance/coverage/e2e_coverage_badge.svg)](https://github.com/lyskouski/app-finance/tree/main/test/e2e)
 
 ## Support (Sponsorship)
 

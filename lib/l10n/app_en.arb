@@ -65,7 +65,12 @@
             "type": "String"
         }
     },
-    "columnMapTooltip": "Choose Column Mapping",
+    "columnMapTooltip": "'{value}' - Choose Column Mapping",
+    "@columnMapTooltip": {
+        "value": {
+            "type": "String"
+        }
+    },
     "completeGoalTooltip": "Complete Goal",
     "conversion": "Conversion",
     "conversionMessage": "Taken in {currency}",
@@ -124,6 +129,19 @@
     "descriptionTooltip": "Set Expense Details",
     "details": "Details",
     "detailsTooltip": "****2345 - last 4 digits of number",
+    "dtAm": "am",
+    "dtAmPm": "hour in am/pm (0~11)",
+    "dtDay": "day in month",
+    "dtEscape": "escape for text",
+    "dtHalfHour": "hour in am/pm (1~12)",
+    "dtHour": "hour in day (0~23)",
+    "dtMinute": "minute in hour",
+    "dtMonth": "month in year",
+    "dtNamedDay": "day of week",
+    "dtPm": "pm",
+    "dtQuote": "single quote",
+    "dtSecond": "second in minute",
+    "dtYear": "year",
     "editAccountHeader": "Update Account",
     "editAccountTooltip": "Edit Account",
     "editBillHeader": "Update Bill",
@@ -139,6 +157,7 @@
             "type": "String"
         }
     },
+    "example": "Example",
     "expand": "Expand Section",
     "expense": "Amount of Expenses",
     "expenseDateTime": "Billed At",
@@ -178,6 +197,7 @@
     "left": "left",
     "lightMode": "Light",
     "link": "Uniform Resource Locator (URL)",
+    "meaning": "Meaning",
     "metricsHeadline": "Metrics",
     "metricsTooltip": "Metrics",
     "milestones": "Milestones",
@@ -195,7 +215,12 @@
     "parseFile": "Parse .csv-file",
     "password": "Password",
     "path": "File Name (to save into, or load from)",
-    "pickFile": "Pick .csv-file",
+    "pickFile": "Pick .{value}-file",
+    "@pickFile": {
+        "value": {
+            "type": "String"
+        }
+    },
     "processIsFinished": "Finished!",
     "progress": "Progress: {value}%",
     "@progress": {
@@ -229,6 +254,7 @@
     "subscriptionTooltip": "Activate Subscription",
     "success": "Succeeded",
     "summary": "Summary",
+    "symbol": "Symbol",
     "systemMode": "System",
     "targetAmount": "Target Amount",
     "title": "Title",
@@ -244,6 +270,7 @@
     "updateBudgetTooltip": "Update Budget Category",
     "updateGoalTooltip": "Update Goal",
     "username": "Username (Account)",
+    "uuid": "Unique Transaction Identifier",
     "validTillDate": "Valid Till",
     "webDav": "Web Distributed Authoring and Versioning (WebDav)"
 }

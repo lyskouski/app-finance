@@ -1,0 +1,137 @@
+% Copyright 2023 The terCAD team. All rights reserved.
+% Use of this content is governed by a CC BY-NC-ND 4.0 license that can be found in the LICENSE file.
+
+\subsection{Aggregating Externals}
+\markboth{Unleashing Features}{Aggregating Externals}
+
+In the realm of any application, the concept of "Seamless Migration" stands as a pivotal attribute that can 
+significantly elevate user experience. And it's imperative to provide convenient options to seamlessly import their 
+data \emph{(a broad spectrum of financial information, ranging from transaction histories to detailed account 
+statements)} from various external sources (actually, existing market competitors).
+
+The crux of this functionality lies in the establishment of integration channels with renowned financial institutions. 
+By enabling users to link their bank accounts, credit cards, or other financial platforms, our application can 
+orchestrate an automated and systematic import of transactional data. The architecture of this integration hinges 
+on the utilization of APIs and secure connection protocols that guarantee the confidentiality of sensitive financial 
+information.
+
+The implications of such seamless data import is appreciated in an era characterized by the urgency of time and the 
+demand for instantaneous solutions. And it reinforces the notion that our application isn't just another financial 
+tool, but a resource that is acutely attuned to users' needs, providing practical solutions that simplify their 
+financial management endeavors. So, it's a strategic initiative that encapsulates the essence of user-centric design. 
+
+
+\subsubsection{Importing Comma-Separated Values (CSV)}
+
+A CSV (comma-separated values) file is a text-based file format distinguished by its specific structure that facilitates 
+the storage of data in a tabular format. This format is particularly suited for representing data in rows and columns, 
+lending itself to various applications, ranging from simple data storage to complex data analysis.
+
+And that format is the simples in its usage to export from external resources financial data, and import it into our 
+application by using \q{csv}-package \issue{35}{a425bbd}:
+
+\begin{lstlisting}
+String content = await importFile(ext);
+// splitter - '\n' or '\r\n'
+final result = CsvToListConverter(eol: splitter).convert(content);
+\end{lstlisting}
+
+
+\subsubsection{Parsing Quicken Data (QIF)}
+
+QIF files stand as plain text documents that adhere to a structure of "tag-value" pairs. The architecture is 
+characterized by a distinct format wherein each line commences with a solitary character "tag" that is promptly 
+succeeded by its corresponding "value," which persists until the culmination of that line. This format provides a 
+straightforward and human-readable way to encapsulate financial data within a text-based paradigm, facilitating 
+easier comprehension and interpretation
+(\href{https://en.wikipedia.org/wiki/Quicken_Interchange_Format}{https://en.wikipedia.org/wiki/Quicken\_Interchange\_Format}):
+
+\begin{lstlisting}[language=bash]
+!Type:Bank # "!" - a section of records
+D7/02/84   # "D" - date
+T-500      # "T" - total amount of the transaction
+N1234      # "N" - transaction identifier
+C*         # "C": "*" - reconciled, "X" - cleared
+M          # "M" - transaction memo
+PJohn S.   # "P" - payee
+L[Visa]/   # "L" - category line
+^          # "^" - end of record
+\end{lstlisting}
+
+\noindent Armed with these foundational details, it becomes feasible to construct a parser for QIF files 
+\issue{189}{133ee9f}:
+
+\begin{lstlisting}
+FileScope _parseQif(String fileContent, [String splitter = '\n']) {
+  FileScope result = [];
+  final scope = fileContent.split(splitter);
+  int idx = 1;
+  Map<String, int> mapping = {
+    'N': 0, 'T': 1, 'P': 2, 'L': 3, 'D': 4
+  };
+  for (int i = 0; i < scope.length; i++) {
+    if (scope[i].isEmpty) {
+      continue;
+    }
+    final key = scope[i].substring(0, 1);
+    final value = scope[i].substring(1);
+    if (key == '^') {
+      idx++;
+      result.add(List<dynamic>.filled(header.length, null));
+      continue;
+    }
+    int? pos = mapping[key];
+    if (pos != null) {
+      result[idx][pos] = value;
+    }
+  }
+  return result;
+}
+\end{lstlisting}
+
+
+\subsubsection{Fulfilling Financial Exchange Data (OFX)}
+
+Open Financial Exchange (OFX) files serve as the conduit through which financial data is seamlessly shared between 
+software applications and financial institutions. This dynamic format plays a pivotal role in streamlining the complex 
+and intricate interactions that underpin modern financial management. The scope of this exchange varies from intricate 
+transaction details to comprehensive account information, even extending to encompass bill payments.
+
+One of the defining attributes of the OFX file format is its compatibility across a spectrum of software applications. 
+This format engenders a unified language that bridges the diverse software platforms utilized by both individuals and 
+financial institutions. Through this universal language, financial data flows seamlessly and amplifies the efficiency 
+of financial interactions across the digital domain. The data stored inside the OFX files is based on the Standard 
+Generalized Markup Language (SGML; ISO 8879:1986) standard:
+
+\begin{lstlisting}[language=xml]
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<OFX>
+<BANKMSGSRSV1>
+<STMTTRNRS>
+  <STMTRS>
+    <BANKTRANLIST>
+      <STMTTRN>
+        <TRNTYPE>DEBIT</TRNTYPE>
+        <DTPOSTED>***4332</DTPOSTED>
+        <TRNAMT>-100.00</TRNAMT>
+        <FITID>1234232</FITID>
+        <NAME>Market Store</NAME>
+      </STMTTRN>
+\end{lstlisting}
+
+\noindent That's why we may use \q{xml}-package to parse content and import all needed data \issue{189}{7bd7eea}:
+
+\begin{lstlisting}
+// @var String content
+XmlDocument.parse(content);
+\end{lstlisting}
+
+
+\subsubsection{Supporting Banking Protocols}
+
+Financial Transaction Services (FinTS) protocol, previously recognized as HBCI (Home Banking Computer Interface), stands 
+as a testament to technological advancement in the realm of digital finance. FinTS emerges as a bank-independent 
+interface, meticulously crafted to cater to the distinct needs of German banking institutions and their clientele;
+enabling them to seamlessly engage in statement downloads, initiate bank transfers, and facilitate direct debits.
+
+[TBD]

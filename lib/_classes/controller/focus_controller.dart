@@ -73,7 +73,7 @@ class FocusController {
     }
     if (_shift.isNotEmpty) {
       _controller[_activeClass]?.animateTo(
-        _shift[focus] - _shift.first,
+        _shift[idx] - _shift.first,
         duration: const Duration(milliseconds: 300),
         curve: Curves.easeInOut,
       );

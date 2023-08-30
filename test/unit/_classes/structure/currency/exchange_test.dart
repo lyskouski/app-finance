@@ -66,7 +66,7 @@ void main() {
           }
           CurrencyAppData? assertObject;
           (object.store as WrapperAppData).mockGetByUuid = (_, [bool v = true]) => exchange;
-          (object.store as WrapperAppData).mockAdd = (value) => assertObject = value as CurrencyAppData;
+          (object.store as WrapperAppData).mockAdd = (value, [String? uuid]) => assertObject = value as CurrencyAppData;
           expect(object.reform(v.amount, origin, target), v.result);
           if (v.rate == null) {
             assert(assertObject is CurrencyAppData);
