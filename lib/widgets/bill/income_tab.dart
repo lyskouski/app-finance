@@ -145,7 +145,7 @@ class IncomeTabState extends State<IncomeTab> with SharedPreferencesMixin {
                     indent: indent,
                     width: width,
                   ),
-                  SizedBox(height: indent),
+                  ThemeHelper.hIndent2x,
                   RowWidget(
                     indent: indent,
                     maxWidth: width + indent,
@@ -180,7 +180,7 @@ class IncomeTabState extends State<IncomeTab> with SharedPreferencesMixin {
                       ],
                     ],
                   ),
-                  SizedBox(height: indent),
+                  ThemeHelper.hIndent2x,
                   CurrencyExchangeInput(
                     width: width,
                     indent: indent,
@@ -199,7 +199,7 @@ class IncomeTabState extends State<IncomeTab> with SharedPreferencesMixin {
                     controller: description,
                     tooltip: AppLocale.labels.descriptionTooltip,
                   ),
-                  SizedBox(height: indent),
+                  ThemeHelper.hIndent2x,
                   Text(
                     AppLocale.labels.balanceDate,
                     style: textTheme.bodyLarge,
@@ -209,7 +209,7 @@ class IncomeTabState extends State<IncomeTab> with SharedPreferencesMixin {
                     value: createdAt,
                     setState: (value) => setState(() => createdAt = value),
                   ),
-                  SizedBox(height: indent),
+                  ThemeHelper.hIndent2x,
                 ],
               ),
             ),

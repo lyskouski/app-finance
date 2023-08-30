@@ -51,7 +51,7 @@ class RecoverWebdavFormState extends State<RecoverWebdavForm> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        SizedBox(height: indent),
+        ThemeHelper.hIndent2x,
         NavButtonWidget(
           name: AppLocale.labels.webDav,
           nav: RecoveryType.none,
@@ -70,7 +70,7 @@ class RecoverWebdavFormState extends State<RecoverWebdavForm> {
           controller: link,
           type: TextInputType.url,
         ),
-        SizedBox(height: indent),
+        ThemeHelper.hIndent2x,
         RequiredWidget(
           title: AppLocale.labels.username,
           showError: widget.message != '' && username.text.isEmpty,
@@ -78,7 +78,7 @@ class RecoverWebdavFormState extends State<RecoverWebdavForm> {
         SimpleInput(
           controller: username,
         ),
-        SizedBox(height: indent),
+        ThemeHelper.hIndent2x,
         RequiredWidget(
           title: AppLocale.labels.password,
           showError: widget.message != '' && password.text.isEmpty,
@@ -87,7 +87,7 @@ class RecoverWebdavFormState extends State<RecoverWebdavForm> {
           controller: password,
           type: TextInputType.visiblePassword,
         ),
-        SizedBox(height: indent),
+        ThemeHelper.hIndent2x,
         RequiredWidget(
           title: AppLocale.labels.path,
           showError: widget.message != '' && path.text.isEmpty,
@@ -95,7 +95,7 @@ class RecoverWebdavFormState extends State<RecoverWebdavForm> {
         SimpleInput(
           controller: path,
         ),
-        SizedBox(height: indent * 2),
+        ThemeHelper.hIndent4x,
         SizedBox(
           width: double.infinity,
           child: FloatingActionButton(

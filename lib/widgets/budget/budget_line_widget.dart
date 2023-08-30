@@ -38,7 +38,7 @@ class BudgetLineWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     if (hidden) {
-      return const SizedBox();
+      return ThemeHelper.emptyBox;
     }
     final indent = ThemeHelper.getIndent();
     final width = ThemeHelper.getWidth(context);
@@ -98,9 +98,9 @@ class BudgetLineWidget extends StatelessWidget {
               ]
             ],
           ),
-          SizedBox(height: indent / 2),
+          ThemeHelper.hIndent05,
           BarHorizontalSingle(value: progress, width: width, color: color),
-          SizedBox(height: indent / 2),
+          ThemeHelper.hIndent05,
         ],
       ),
     );

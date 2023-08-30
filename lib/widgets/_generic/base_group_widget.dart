@@ -111,7 +111,7 @@ class BaseGroupWidget extends StatelessWidget {
                     items.length * 2,
                     (index) {
                       if (index % 2 != 0) {
-                        return SizedBox(width: indent);
+                        return ThemeHelper.wIndent;
                       } else {
                         return buildCategory(context, index ~/ 2, toSwap);
                       }

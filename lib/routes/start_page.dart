@@ -4,6 +4,7 @@
 import 'package:app_finance/_classes/storage/app_data.dart';
 import 'package:app_finance/_classes/herald/app_locale.dart';
 import 'package:app_finance/_classes/structure/navigation/app_route.dart';
+import 'package:app_finance/_configs/theme_helper.dart';
 import 'package:app_finance/routes/abstract_page.dart';
 import 'package:app_finance/widgets/_wrappers/tab_widget.dart';
 import 'package:app_finance/widgets/start/account_tab.dart';
@@ -41,12 +42,12 @@ class StartPageState extends AbstractPageState<StartPage> {
 
   @override
   Widget buildButton(BuildContext context, BoxConstraints constraints) {
-    return const SizedBox();
+    return ThemeHelper.emptyBox;
   }
 
   @override
   Widget buildContent(BuildContext context, BoxConstraints constraints) {
-    return const SizedBox();
+    return ThemeHelper.emptyBox;
   }
 
   void updateState(NavigatorState nav) {

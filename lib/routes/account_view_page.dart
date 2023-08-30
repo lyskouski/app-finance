@@ -151,7 +151,7 @@ class AccountViewPageState extends AbstractPageState<AccountViewPage> with Ticke
               ),
             ),
           ),
-          const SizedBox(height: 70),
+          ThemeHelper.formEndBox,
         ],
       ),
     );

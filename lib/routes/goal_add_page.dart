@@ -127,7 +127,7 @@ class GoalAddPageState<T extends GoalAddPage> extends AbstractPageState<GoalAddP
               controller: title,
               tooltip: AppLocale.labels.titleGoalTooltip,
             ),
-            SizedBox(height: indent),
+            ThemeHelper.hIndent2x,
             RowWidget(
               indent: indent,
               maxWidth: width + indent,
@@ -156,7 +156,7 @@ class GoalAddPageState<T extends GoalAddPage> extends AbstractPageState<GoalAddP
                 ],
               ],
             ),
-            SizedBox(height: indent),
+            ThemeHelper.hIndent2x,
             RowWidget(
               indent: indent,
               maxWidth: width + indent,
@@ -191,7 +191,7 @@ class GoalAddPageState<T extends GoalAddPage> extends AbstractPageState<GoalAddP
                 ],
               ],
             ),
-            SizedBox(height: indent),
+            ThemeHelper.hIndent2x,
             RequiredWidget(title: AppLocale.labels.closedAt, showError: hasError && closedAt == null),
             DateInput(
               value: closedAt,

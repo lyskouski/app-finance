@@ -11,7 +11,7 @@ class NotificationBar {
         content: Row(
           children: [
             const Icon(Icons.check, color: Colors.green),
-            SizedBox(width: ThemeHelper.getIndent()),
+            ThemeHelper.wIndent,
             Text(message),
           ],
         ),

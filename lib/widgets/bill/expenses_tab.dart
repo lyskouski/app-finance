@@ -164,7 +164,7 @@ class ExpensesTabState<T extends ExpensesTab> extends State<T> with SharedPrefer
                     indent: indent,
                     width: width,
                   ),
-                  SizedBox(height: indent),
+                  ThemeHelper.hIndent2x,
                   RequiredWidget(
                     title: AppLocale.labels.budget,
                     showError: hasErrors && budget == null,
@@ -181,7 +181,7 @@ class ExpensesTabState<T extends ExpensesTab> extends State<T> with SharedPrefer
                     indent: indent,
                     width: width,
                   ),
-                  SizedBox(height: indent),
+                  ThemeHelper.hIndent2x,
                   RowWidget(
                     indent: indent,
                     maxWidth: width + indent,
@@ -216,7 +216,7 @@ class ExpensesTabState<T extends ExpensesTab> extends State<T> with SharedPrefer
                       ],
                     ],
                   ),
-                  SizedBox(height: indent),
+                  ThemeHelper.hIndent2x,
                   CurrencyExchangeInput(
                     width: width,
                     indent: indent,
@@ -236,7 +236,7 @@ class ExpensesTabState<T extends ExpensesTab> extends State<T> with SharedPrefer
                     controller: description,
                     tooltip: AppLocale.labels.descriptionTooltip,
                   ),
-                  SizedBox(height: indent),
+                  ThemeHelper.hIndent2x,
                   Text(
                     AppLocale.labels.expenseDateTime,
                     style: textTheme.bodyLarge,

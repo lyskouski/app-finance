@@ -3,8 +3,26 @@
 
 import 'package:flutter/material.dart';
 
+class _Sizes {
+  static const half = 4.0;
+  static const normal = 8.0;
+  static const double = 16.0;
+  static const triple = 24.0;
+  static const quatre = 32.0;
+}
+
 class ThemeHelper {
-  static double getIndent([double multiply = 1]) => 8.0 * multiply;
+  static const emptyBox = SizedBox();
+  static const formEndBox = SizedBox(height: 70);
+  static const hIndent = SizedBox(height: _Sizes.normal);
+  static const hIndent2x = SizedBox(height: _Sizes.double);
+  static const hIndent3x = SizedBox(height: _Sizes.triple);
+  static const hIndent4x = SizedBox(height: _Sizes.quatre);
+  static const hIndent05 = SizedBox(height: _Sizes.half);
+  static const wIndent = SizedBox(width: _Sizes.normal);
+  //static const wIndent2x = SizedBox(width: _Sizes.double);
+
+  static double getIndent([double multiply = 1]) => _Sizes.normal * multiply;
 
   static double getWidth(BuildContext context, [double multiply = 4]) =>
       MediaQuery.sizeOf(context).width - getIndent() * multiply;

@@ -38,7 +38,7 @@ class BaseLineWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     if (hidden) {
-      return const SizedBox();
+      return ThemeHelper.emptyBox;
     }
     final TextTheme textTheme = Theme.of(context).textTheme;
     final indent = ThemeHelper.getIndent();

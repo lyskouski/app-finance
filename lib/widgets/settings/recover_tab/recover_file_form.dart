@@ -47,7 +47,7 @@ class RecoverFileFormState extends State<RecoverFileForm> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        SizedBox(height: indent),
+        ThemeHelper.hIndent2x,
         NavButtonWidget(
           name: AppLocale.labels.transactionFile,
           nav: RecoveryType.none,
@@ -65,7 +65,7 @@ class RecoverFileFormState extends State<RecoverFileForm> {
         SimpleInput(
           controller: path,
         ),
-        SizedBox(height: indent * 2),
+        ThemeHelper.hIndent4x,
         SizedBox(
           width: double.infinity,
           child: FloatingActionButton(

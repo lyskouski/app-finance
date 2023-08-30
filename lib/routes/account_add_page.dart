@@ -141,7 +141,7 @@ class AccountAddPageState<T extends AccountAddPage> extends AbstractAddPageState
               setState: (value) => setState(() => type = value),
               indent: indent,
             ),
-            SizedBox(height: indent),
+            ThemeHelper.hIndent2x,
             RequiredWidget(
               title: AppLocale.labels.title,
               showError: hasError && title.text.isEmpty,
@@ -150,7 +150,7 @@ class AccountAddPageState<T extends AccountAddPage> extends AbstractAddPageState
               controller: title,
               tooltip: AppLocale.labels.titleAccountTooltip,
             ),
-            SizedBox(height: indent),
+            ThemeHelper.hIndent2x,
             RowWidget(
               indent: indent,
               maxWidth: width + indent,
@@ -188,7 +188,7 @@ class AccountAddPageState<T extends AccountAddPage> extends AbstractAddPageState
                 ],
               ],
             ),
-            SizedBox(height: indent),
+            ThemeHelper.hIndent2x,
             Text(
               AppLocale.labels.currency,
               style: textTheme.bodyLarge,
@@ -198,7 +198,7 @@ class AccountAddPageState<T extends AccountAddPage> extends AbstractAddPageState
               hintText: AppLocale.labels.currencyTooltip,
               setState: (value) => setState(() => currency = value),
             ),
-            SizedBox(height: indent),
+            ThemeHelper.hIndent2x,
             Text(
               AppLocale.labels.validTillDate,
               style: textTheme.bodyLarge,
@@ -207,7 +207,7 @@ class AccountAddPageState<T extends AccountAddPage> extends AbstractAddPageState
               value: validTillDate,
               setState: (value) => setState(() => validTillDate = value),
             ),
-            SizedBox(height: indent),
+            ThemeHelper.hIndent2x,
             Text(
               AppLocale.labels.balance,
               style: textTheme.bodyLarge,
@@ -220,7 +220,7 @@ class AccountAddPageState<T extends AccountAddPage> extends AbstractAddPageState
                 SimpleInput.filterDouble,
               ],
             ),
-            SizedBox(height: indent),
+            ThemeHelper.hIndent2x,
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
@@ -239,7 +239,7 @@ class AccountAddPageState<T extends AccountAddPage> extends AbstractAddPageState
               value: balanceUpdateDate,
               setState: (value) => setState(() => balanceUpdateDate = value),
             ),
-            SizedBox(height: indent),
+            ThemeHelper.hIndent2x,
           ],
         ),
       ),

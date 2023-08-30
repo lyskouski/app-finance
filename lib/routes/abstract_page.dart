@@ -54,7 +54,7 @@ abstract class AbstractPageState<T extends AbstractPage> extends State<T> {
                 child: Row(
                   children: [
                     Icon(menuItem.icon),
-                    SizedBox(width: ThemeHelper.getIndent()),
+                    ThemeHelper.wIndent,
                     Text(menuItem.name),
                   ],
                 ),
@@ -81,7 +81,7 @@ abstract class AbstractPageState<T extends AbstractPage> extends State<T> {
         color: colorScheme.background,
         child: ListView.separated(
           padding: EdgeInsets.symmetric(vertical: indent * 4),
-          separatorBuilder: (context, index) => SizedBox(height: indent * 2),
+          separatorBuilder: (context, index) => ThemeHelper.hIndent2x,
           itemCount: AppMenu.get().length,
           itemBuilder: (context, index) => MenuWidget(
             index: index,

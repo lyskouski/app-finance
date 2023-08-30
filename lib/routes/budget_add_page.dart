@@ -114,7 +114,7 @@ class BudgetAddPageState<T extends BudgetAddPage> extends AbstractAddPageState<B
               controller: title,
               tooltip: AppLocale.labels.titleBudgetTooltip,
             ),
-            SizedBox(height: indent),
+            ThemeHelper.hIndent2x,
             RowWidget(
               indent: indent,
               maxWidth: width + indent,
@@ -142,7 +142,7 @@ class BudgetAddPageState<T extends BudgetAddPage> extends AbstractAddPageState<B
                 ],
               ],
             ),
-            SizedBox(height: indent),
+            ThemeHelper.hIndent2x,
             Text(
               AppLocale.labels.budgetLimit,
               style: textTheme.bodyLarge,
@@ -155,7 +155,7 @@ class BudgetAddPageState<T extends BudgetAddPage> extends AbstractAddPageState<B
                 FilteringTextInputFormatter.allow(RegExp(r'^\d+\.?\d{0,4}')),
               ],
             ),
-            SizedBox(height: indent),
+            ThemeHelper.hIndent2x,
             Text(
               AppLocale.labels.currency,
               style: textTheme.bodyLarge,
@@ -165,7 +165,7 @@ class BudgetAddPageState<T extends BudgetAddPage> extends AbstractAddPageState<B
               hintText: AppLocale.labels.currencyTooltip,
               setState: (value) => setState(() => currency = value),
             ),
-            SizedBox(height: indent),
+            ThemeHelper.hIndent2x,
           ],
         ),
       ),

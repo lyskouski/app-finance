@@ -122,7 +122,7 @@ class TransferTabState extends State<TransferTab> {
                     indent: indent,
                     width: width,
                   ),
-                  SizedBox(height: indent),
+                  ThemeHelper.hIndent2x,
                   RequiredWidget(
                     title: AppLocale.labels.accountTo,
                     showError: hasErrors && accountTo == null,
@@ -138,7 +138,7 @@ class TransferTabState extends State<TransferTab> {
                     indent: indent,
                     width: width,
                   ),
-                  SizedBox(height: indent),
+                  ThemeHelper.hIndent2x,
                   RowWidget(
                     indent: indent,
                     maxWidth: width + indent,
@@ -173,7 +173,7 @@ class TransferTabState extends State<TransferTab> {
                       ],
                     ],
                   ),
-                  SizedBox(height: indent),
+                  ThemeHelper.hIndent2x,
                   CurrencyExchangeInput(
                     width: width,
                     indent: indent,

@@ -131,7 +131,7 @@ class ImportTabState extends State<ImportTab> with SharedPreferencesMixin, DateF
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              SizedBox(height: indent),
+              ThemeHelper.hIndent2x,
               if (errorMessage.toString() != '')
                 Text(errorMessage.toString(), style: textTheme.bodyMedium?.copyWith(color: colorScheme.error)),
               if (isLoading) ...[
@@ -142,7 +142,7 @@ class ImportTabState extends State<ImportTab> with SharedPreferencesMixin, DateF
                   return Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      SizedBox(height: indent),
+                      ThemeHelper.hIndent2x,
                       Text(
                         AppLocale.labels.columnMap(fileContent!.first[index]),
                         style: textTheme.bodyLarge,
@@ -164,7 +164,7 @@ class ImportTabState extends State<ImportTab> with SharedPreferencesMixin, DateF
                 }),
                 const Divider(),
                 if (!columnMap.contains(FileParser.attrAccountName)) ...[
-                  SizedBox(height: ThemeHelper.getIndent(2)),
+                  ThemeHelper.hIndent2x,
                   Text(
                     AppLocale.labels.def('${AppLocale.labels.account}: ${AppLocale.labels.title}'),
                     style: widget.textTheme.bodyLarge,
@@ -178,7 +178,7 @@ class ImportTabState extends State<ImportTab> with SharedPreferencesMixin, DateF
                   ),
                 ],
                 if (!columnMap.contains(FileParser.attrCategoryName)) ...[
-                  SizedBox(height: ThemeHelper.getIndent(2)),
+                  ThemeHelper.hIndent2x,
                   Text(
                     AppLocale.labels.def('${AppLocale.labels.budget}: ${AppLocale.labels.title}'),
                     style: widget.textTheme.bodyLarge,
@@ -192,7 +192,7 @@ class ImportTabState extends State<ImportTab> with SharedPreferencesMixin, DateF
                   ),
                 ],
                 if (!columnMap.contains(FileParser.attrBillType)) ...[
-                  SizedBox(height: ThemeHelper.getIndent(2)),
+                  ThemeHelper.hIndent2x,
                   Text(
                     AppLocale.labels.def('${AppLocale.labels.bill}: ${AppLocale.labels.billTypeTooltip}'),
                     style: widget.textTheme.bodyLarge,
@@ -208,7 +208,7 @@ class ImportTabState extends State<ImportTab> with SharedPreferencesMixin, DateF
                   ),
                 ],
                 if (!columnMap.contains(FileParser.attrBillCurrency)) ...[
-                  SizedBox(height: ThemeHelper.getIndent(2)),
+                  ThemeHelper.hIndent2x,
                   Text(
                     AppLocale.labels.def('${AppLocale.labels.bill}: ${AppLocale.labels.currency}'),
                     style: widget.textTheme.bodyLarge,
@@ -220,14 +220,14 @@ class ImportTabState extends State<ImportTab> with SharedPreferencesMixin, DateF
                   ),
                 ],
                 Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-                  SizedBox(height: indent * 2),
+                  ThemeHelper.hIndent4x,
                   Text(
                     AppLocale.labels.dateFormat,
                     style: textTheme.bodyLarge,
                   ),
                   SimpleInput(controller: dateFormat),
                   const DateTimeHelperWidget(),
-                  SizedBox(height: indent * 2),
+                  ThemeHelper.hIndent4x,
                   SizedBox(
                     width: double.infinity,
                     child: FloatingActionButton(
@@ -243,7 +243,7 @@ class ImportTabState extends State<ImportTab> with SharedPreferencesMixin, DateF
               ] else
                 ...List<Widget>.generate(FilePicker.fileFormats.length * 2, (index) {
                   if (index % 2 == 0) {
-                    return SizedBox(height: indent);
+                    return ThemeHelper.hIndent2x;
                   } else {
                     final format = FilePicker.fileFormats[index ~/ 2];
                     return SizedBox(

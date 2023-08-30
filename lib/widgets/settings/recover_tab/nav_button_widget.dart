@@ -23,7 +23,6 @@ class NavButtonWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    double indent = ThemeHelper.getIndent(2);
     final textTheme = Theme.of(context).textTheme;
     return TapWidget(
       onTap: () => callback(nav),
@@ -39,7 +38,7 @@ class NavButtonWidget extends StatelessWidget {
               onPressed: () => callback(nav),
             ),
           ),
-          SizedBox(width: indent),
+          ThemeHelper.hIndent2x,
           Expanded(
             child: Text(name, style: textTheme.bodyLarge),
           ),

@@ -48,7 +48,7 @@ class ElevatedButtonWidget extends StatelessWidget {
               icon,
               color: textColor ?? Theme.of(context).colorScheme.inversePrimary,
             ),
-            SizedBox(width: icon != null ? ThemeHelper.getIndent() : 0),
+            if (icon != null) ThemeHelper.wIndent,
             Text(
               text,
               style: TextStyle(

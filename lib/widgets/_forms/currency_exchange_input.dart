@@ -6,6 +6,7 @@ import 'package:app_finance/_classes/structure/currency/currency_provider.dart';
 import 'package:app_finance/_classes/structure/currency_app_data.dart';
 import 'package:app_finance/_classes/storage/app_data.dart';
 import 'package:app_finance/_classes/controller/delayed_call.dart';
+import 'package:app_finance/_configs/theme_helper.dart';
 import 'package:app_finance/widgets/_forms/simple_input.dart';
 import 'package:app_finance/widgets/_wrappers/row_widget.dart';
 import 'package:currency_picker/currency_picker.dart';
@@ -129,11 +130,11 @@ class CurrencyExchangeInputState extends State<CurrencyExchangeInput> {
   @override
   Widget build(BuildContext context) {
     if (widget.source.isEmpty) {
-      return const SizedBox();
+      return ThemeHelper.emptyBox;
     }
     if (conversion.toString() != widget.conversion.toString()) {
       WidgetsBinding.instance.addPostFrameCallback((_) => setState(restate));
-      return const SizedBox();
+      return ThemeHelper.emptyBox;
     }
     if (targetAmount != widget.targetAmount) {
       WidgetsBinding.instance.addPostFrameCallback((_) => setState(recalculate));
@@ -142,7 +143,7 @@ class CurrencyExchangeInputState extends State<CurrencyExchangeInput> {
     return Column(
       children: List<Widget>.generate(widget.source.length, (index) {
         if (widget.source[index] == null || widget.conversion[index][0] == widget.conversion[index][1]) {
-          return const SizedBox();
+          return ThemeHelper.emptyBox;
         }
         return Column(
           mainAxisAlignment: MainAxisAlignment.start,
