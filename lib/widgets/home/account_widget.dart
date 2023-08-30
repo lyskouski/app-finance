@@ -6,6 +6,7 @@ import 'package:app_finance/_classes/structure/currency/currency_provider.dart';
 import 'package:app_finance/_classes/structure/account_app_data.dart';
 import 'package:app_finance/_classes/structure/currency/exchange.dart';
 import 'package:app_finance/_configs/account_type.dart';
+import 'package:app_finance/_configs/theme_helper.dart';
 import 'package:app_finance/_mixins/shared_preferences_mixin.dart';
 import 'package:app_finance/widgets/_generic/base_group_widget.dart';
 import 'package:app_finance/widgets/_generic/base_line_widget.dart';
@@ -90,7 +91,7 @@ class AccountWidget extends BaseWidget with SharedPreferencesMixin {
       description: item.detailsFormatted,
       progress: scope.map((e) => e.progress).cast<double>().toList(),
       color: scope.map((e) => e.color).cast<Color>().toList(),
-      width: width,
+      width: width - ThemeHelper.getIndent() / 2,
       items: scope,
       route: routeList,
     );

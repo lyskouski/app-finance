@@ -4,6 +4,7 @@
 import 'package:app_finance/_classes/structure/currency/exchange.dart';
 import 'package:app_finance/_classes/structure/navigation/app_route.dart';
 import 'package:app_finance/_classes/structure/budget_app_data.dart';
+import 'package:app_finance/_configs/theme_helper.dart';
 import 'package:app_finance/widgets/home/account_widget.dart';
 import 'package:app_finance/widgets/_generic/base_group_widget.dart';
 import 'package:app_finance/widgets/_generic/base_line_widget.dart';
@@ -37,7 +38,7 @@ class BudgetWidget extends AccountWidget {
       description: item.description,
       progress: items.map((e) => e.progressLeft).cast<double>().toList(),
       color: items.map((e) => e.color ?? Colors.transparent).cast<Color>().toList(),
-      width: width,
+      width: width - ThemeHelper.getIndent() / 2,
       items: items,
       route: routeList,
     );
