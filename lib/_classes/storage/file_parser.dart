@@ -12,17 +12,14 @@ import 'package:app_finance/_classes/structure/currency/currency_provider.dart';
 import 'package:app_finance/_classes/structure/interface_app_data.dart';
 import 'package:app_finance/_classes/structure/invoice_app_data.dart';
 import 'package:app_finance/_configs/account_type.dart';
-import 'package:app_finance/_mixins/file/file_import_mixin.dart';
 import 'package:app_finance/widgets/_forms/list_selector.dart';
-import 'package:csv/csv.dart';
 import 'package:currency_picker/currency_picker.dart';
 import 'package:intl/intl.dart';
 
-typedef FileScope = List<List<dynamic>>;
 typedef SearchFunction = Function(AppDataType type, String value);
 typedef AddFunction = InterfaceAppData Function(InterfaceAppData item);
 
-class FileParser with FileImportMixin {
+class FileParser {
   static const attrBillUuid = 'billUuid';
   static const attrAccountName = 'accountName';
   static const attrCategoryName = 'categoryName';
@@ -33,22 +30,17 @@ class FileParser with FileImportMixin {
   static const attrBillComment = 'billComment';
   static const defDateFormat = 'dateFormat';
 
-  static const csvFormat = 'csv';
-  static const qifFormat = 'qif';
-  static const fileFormats = [csvFormat, qifFormat];
-  final List<String> ext;
   List<String> columnMap;
-  SearchFunction? search;
-  AddFunction? add;
+  SearchFunction search;
+  AddFunction add;
 
   String? _defaultCurrency;
   final _cache = <AppDataType, Map<String, String?>>{};
 
-  FileParser(
-    this.ext, {
+  FileParser({
+    required this.search,
+    required this.add,
     this.columnMap = const [],
-    this.search,
-    this.add,
   });
 
   static List<ListSelectorItem> getMappingTypes() {
@@ -68,73 +60,6 @@ class FileParser with FileImportMixin {
     ];
     mapping.sort((a, b) => a.name.compareTo(b.name));
     return mapping;
-  }
-
-  FileScope _parseCsv(String content, String splitter) {
-    final result = CsvToListConverter(eol: splitter).convert(content);
-    columnMap = List<String>.filled(result.first.length, '');
-    return result;
-  }
-
-  FileScope _parseQif(String content, String splitter) {
-    final header = [
-      AppLocale.labels.uuid,
-      AppLocale.labels.expense,
-      AppLocale.labels.description,
-      AppLocale.labels.budget,
-      AppLocale.labels.balanceDate,
-      AppLocale.labels.flowTypeTooltip,
-    ];
-    columnMap = [attrBillUuid, attrBillAmount, attrBillComment, attrCategoryName, attrBillDate, attrBillType];
-    FileScope result = [header];
-    final scope = content.split(splitter);
-    int idx = 1;
-    Map<String, int> mapping = {
-      'N': 0, // "Number" for the transaction
-      'T': 1, // "Total" amount
-      'P': 2, // "Payee"
-      'L': 3, // "Category/Account Line"
-      'D': 4, // "Date"
-    };
-    int billType = 5;
-    for (int i = 0; i < scope.length; i++) {
-      if (scope[i].isEmpty) {
-        continue;
-      }
-      final key = scope[i].substring(0, 1);
-      final value = scope[i].substring(1);
-      if (key == '^') {
-        idx++;
-        result.add(List<dynamic>.filled(header.length, null));
-        continue;
-      }
-      int? pos = mapping[key];
-      if (pos != null) {
-        if (key == 'T') {
-          result[idx][pos] = (double.tryParse(value) ?? 0.0).abs().toString();
-          result[idx][billType] = (double.tryParse(value) ?? 0) > 0 ? AppLocale.labels.flowTypeInvoice : '';
-        } else {
-          result[idx][pos] = value;
-        }
-      }
-    }
-    return result;
-  }
-
-  Future<FileScope?> pickFile() async {
-    String? content = await importFile(ext);
-    if (content != null) {
-      final splitter = content.contains('\r\n') ? '\r\n' : '\n';
-      switch (ext.first) {
-        case csvFormat:
-          return _parseCsv(content, splitter);
-        case qifFormat:
-          return _parseQif(content, splitter);
-      }
-    } else {
-      throw Exception(AppLocale.labels.missingContent);
-    }
-    return null;
   }
 
   Future<InterfaceAppData> parseFileLine(List<dynamic> line, Map<String, dynamic> def) async {
@@ -190,7 +115,7 @@ class FileParser with FileImportMixin {
     if (_cache[type]?[value] != null) {
       uuid = _cache[type]?[value];
     } else {
-      final item = search!(type, value);
+      final item = search(type, value);
       uuid = item?.uuid;
       _cache[type]![value] = uuid ?? '';
     }
@@ -214,7 +139,7 @@ class FileParser with FileImportMixin {
         hidden: false,
       );
     }
-    newItem = add!(newItem);
+    newItem = add(newItem);
     _cache[type]![value] = newItem.uuid;
     return newItem.uuid!;
   }

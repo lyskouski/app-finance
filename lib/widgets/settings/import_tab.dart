@@ -4,6 +4,7 @@
 import 'package:app_finance/_classes/storage/app_data.dart';
 import 'package:app_finance/_classes/herald/app_locale.dart';
 import 'package:app_finance/_classes/storage/file_parser.dart';
+import 'package:app_finance/_classes/storage/file_picker.dart';
 import 'package:app_finance/_classes/storage/transaction_log.dart';
 import 'package:app_finance/_classes/controller/focus_controller.dart';
 import 'package:app_finance/_classes/structure/interface_app_data.dart';
@@ -50,11 +51,11 @@ class ImportTabState extends State<ImportTab> with SharedPreferencesMixin {
   Future<void> pickFile(List<String> ext) async {
     try {
       setState(() => errorMessage.clear());
-      final parser = FileParser(ext);
-      final content = await parser.pickFile();
+      final picker = FilePicker(ext);
+      final content = await picker.pickFile();
       setState(() {
         fileContent = content;
-        columnMap = parser.columnMap;
+        columnMap = picker.columnMap;
       });
     } catch (e) {
       setState(() => errorMessage.writeln(e.toString()));
@@ -70,7 +71,7 @@ class ImportTabState extends State<ImportTab> with SharedPreferencesMixin {
       return item;
     }
 
-    final parser = FileParser([], columnMap: columnMap, search: fnSearch, add: fnAdd);
+    final parser = FileParser(columnMap: columnMap, search: fnSearch, add: fnAdd);
     final def = {
       FileParser.attrAccountName: attrValue[FileParser.attrAccountName],
       FileParser.attrCategoryName: attrValue[FileParser.attrCategoryName],
@@ -232,11 +233,11 @@ class ImportTabState extends State<ImportTab> with SharedPreferencesMixin {
                   ),
                 ]),
               ] else
-                ...List<Widget>.generate(FileParser.fileFormats.length * 2, (index) {
+                ...List<Widget>.generate(FilePicker.fileFormats.length * 2, (index) {
                   if (index % 2 == 0) {
                     return SizedBox(height: indent);
                   } else {
-                    final format = FileParser.fileFormats[index ~/ 2];
+                    final format = FilePicker.fileFormats[index ~/ 2];
                     return SizedBox(
                       width: double.infinity,
                       child: FloatingActionButton(
