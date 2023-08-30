@@ -111,7 +111,6 @@
     "currentDate": "Current Date",
     "darkMode": "Dark",
     "dateFormat": "Date Format",
-    "dateFormatPattern": "Pattern declaration: y [year], M [month], d [day], H [hours], m [minutes], s [seconds]",
     "dateTooltip": "Select Date",
     "debitCard": "Debit Card",
     "def": "Default Value for '{value}'",

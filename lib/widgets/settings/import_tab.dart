@@ -16,6 +16,7 @@ import 'package:app_finance/widgets/_forms/list_budget_selector.dart';
 import 'package:app_finance/widgets/_forms/list_selector.dart';
 import 'package:app_finance/widgets/_forms/simple_input.dart';
 import 'package:app_finance/widgets/init/loading_widget.dart';
+import 'package:app_finance/widgets/settings/date_time_helper_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -214,11 +215,8 @@ class ImportTabState extends State<ImportTab> with SharedPreferencesMixin {
                     AppLocale.labels.dateFormat,
                     style: textTheme.bodyLarge,
                   ),
-                  Text(
-                    AppLocale.labels.dateFormatPattern,
-                    style: textTheme.bodyMedium,
-                  ),
                   SimpleInput(controller: dateFormat),
+                  const DateTimeHelperWidget(),
                   SizedBox(height: indent * 2),
                   SizedBox(
                     width: double.infinity,
