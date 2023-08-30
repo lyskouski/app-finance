@@ -5,15 +5,32 @@ import 'package:app_finance/_classes/herald/app_locale.dart';
 import 'package:app_finance/_classes/storage/file_parser.dart';
 import 'package:app_finance/_mixins/file/file_import_mixin.dart';
 import 'package:csv/csv.dart';
+import 'package:xml/xml.dart';
 
 typedef FileScope = List<List<dynamic>>;
 
 class FilePicker with FileImportMixin {
   static const csvFormat = 'csv';
   static const qifFormat = 'qif';
-  static const fileFormats = [csvFormat, qifFormat];
+  static const ofxFormat = 'ofx';
+  static const fileFormats = [csvFormat, qifFormat, ofxFormat];
   final List<String> ext;
-  List<String> columnMap = [];
+  List<String> columnMap = [
+    FileParser.attrBillUuid,
+    FileParser.attrBillAmount,
+    FileParser.attrBillComment,
+    FileParser.attrCategoryName,
+    FileParser.attrBillDate,
+    FileParser.attrBillType,
+  ];
+  final header = [
+    AppLocale.labels.uuid,
+    AppLocale.labels.expense,
+    AppLocale.labels.description,
+    AppLocale.labels.budget,
+    AppLocale.labels.balanceDate,
+    AppLocale.labels.flowTypeTooltip,
+  ];
 
   FilePicker(this.ext);
 
@@ -24,22 +41,6 @@ class FilePicker with FileImportMixin {
   }
 
   FileScope _parseQif(String content, String splitter) {
-    final header = [
-      AppLocale.labels.uuid,
-      AppLocale.labels.expense,
-      AppLocale.labels.description,
-      AppLocale.labels.budget,
-      AppLocale.labels.balanceDate,
-      AppLocale.labels.flowTypeTooltip,
-    ];
-    columnMap = [
-      FileParser.attrBillUuid,
-      FileParser.attrBillAmount,
-      FileParser.attrBillComment,
-      FileParser.attrCategoryName,
-      FileParser.attrBillDate,
-      FileParser.attrBillType,
-    ];
     FileScope result = [header];
     final scope = content.split(splitter);
     int idx = 1;
@@ -75,6 +76,42 @@ class FilePicker with FileImportMixin {
     return result;
   }
 
+  FileScope _parseOfx(String content) {
+    FileScope result = [header];
+    final xmlData = XmlDocument.parse(content);
+    int amountType = 1;
+    int dateType = 4;
+    int billType = 5;
+    Map<String, int> mapping = {
+      'FITID': 0, // Unique ID
+      'TRNAMT': amountType, // Amount
+      'NAME': 2, // Description
+      'DTPOSTED': dateType, // Date
+    };
+    for (XmlElement node in xmlData.findAllElements('STMTTRN')) {
+      final tmp = List<dynamic>.filled(6, null);
+      for (XmlElement element in node.childElements) {
+        int? pos = mapping[element.name.toString()];
+        String value = element.innerText;
+        if (pos != null) {
+          if (pos == dateType) {
+            List<String> date = value.split('');
+            date.insert(8, 'T');
+            tmp[pos] = date.join('');
+          } else if (pos == amountType) {
+            double nm = double.tryParse(value) ?? 0.0;
+            tmp[pos] = nm.abs().toString();
+            tmp[billType] = nm > 0 ? AppLocale.labels.flowTypeInvoice : '';
+          } else {
+            tmp[pos] = value;
+          }
+        }
+      }
+      result.add(tmp);
+    }
+    return result;
+  }
+
   Future<FileScope?> pickFile() async {
     String? content = await importFile(ext);
     if (content != null) {
@@ -84,6 +121,8 @@ class FilePicker with FileImportMixin {
           return _parseCsv(content, splitter);
         case qifFormat:
           return _parseQif(content, splitter);
+        case ofxFormat:
+          return _parseOfx(content);
       }
     } else {
       throw Exception(AppLocale.labels.missingContent);

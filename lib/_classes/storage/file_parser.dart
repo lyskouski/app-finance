@@ -76,7 +76,14 @@ class FileParser {
     dynamic account = await _find(AppDataType.accounts, line, _get(line, attrAccountName), defaultAccount);
     String? uuid = _get(line, attrBillUuid);
     String? dateValue = _get(line, attrBillDate);
-    DateTime? date = dateValue != null ? DateFormat(dateFormat).parse(dateValue) : null;
+    DateTime? date;
+    if (dateValue != null) {
+      try {
+        date = DateFormat(dateFormat).parse(dateValue);
+      } catch (e) {
+        date = DateTime.parse(dateValue);
+      }
+    }
     if (_get(line, attrBillType) == AppLocale.labels.flowTypeInvoice) {
       newItem = InvoiceAppData(
         uuid: uuid,

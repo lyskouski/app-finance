@@ -85,7 +85,7 @@ class ImportTabState extends State<ImportTab> with SharedPreferencesMixin {
         TransactionLog.save(newItem);
       } catch (e) {
         setState(() => errorMessage.writeln('[$i / ${fileContent!.length}] ${e.toString()}.'));
-        rethrow;
+        //rethrow;
       }
     }
     await state.restate();

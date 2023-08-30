@@ -37,6 +37,8 @@ void main() {
         (date: ['8/13/2023 23:00'], result: 'M/d/yyyy HH:mm', locale: 'en_US'),
         // (date: ['8/13/2023 23:00'], result: 'd/M/yyyy HH:mm', locale: 'de'), // Locale has not been initialized
         (date: ['24/12/2023 23:00:12'], result: 'd/M/yyyy HH:mm:ss', locale: 'en_US'),
+        (date: ['20050824T080000'], result: "yyyyMMdd'T'HHmmss", locale: 'en_US'),
+        (date: ['20050824'], result: 'yyyyMMdd', locale: 'en_US'),
       ];
 
       for (var v in testCases) {

@@ -88,3 +88,40 @@ FileScope _parseQif(String fileContent, [String splitter = '\n']) {
   return result;
 }
 \end{lstlisting}
+
+
+\subsubsection{Fulfilling Financial Exchange Data (OFX)}
+
+Open Financial Exchange (OFX) files serve as the conduit through which financial data is seamlessly shared between 
+software applications and financial institutions. This dynamic format plays a pivotal role in streamlining the complex 
+and intricate interactions that underpin modern financial management. The scope of this exchange varies from intricate 
+transaction details to comprehensive account information, even extending to encompass bill payments.
+
+One of the defining attributes of the OFX file format is its compatibility across a spectrum of software applications. 
+This format engenders a unified language that bridges the diverse software platforms utilized by both individuals and 
+financial institutions. Through this universal language, financial data flows seamlessly and amplifies the efficiency 
+of financial interactions across the digital domain. The data stored inside the OFX files is based on the Standard 
+Generalized Markup Language (SGML; ISO 8879:1986) standard:
+
+\begin{lstlisting}[language=xml]
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<OFX>
+<BANKMSGSRSV1>
+<STMTTRNRS>
+  <STMTRS>
+    <BANKTRANLIST>
+      <STMTTRN>
+        <TRNTYPE>DEBIT</TRNTYPE>
+        <DTPOSTED>***4332</DTPOSTED>
+        <TRNAMT>-100.00</TRNAMT>
+        <FITID>1234232</FITID>
+        <NAME>Market Store</NAME>
+      </STMTTRN>
+\end{lstlisting}
+
+\noindent That's why we may use \q{xml}-package to parse content and import all needed data:
+
+\begin{lstlisting}
+// @var String content
+XmlDocument.parse(content);
+\end{lstlisting}
