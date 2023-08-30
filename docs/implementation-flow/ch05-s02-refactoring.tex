@@ -9,20 +9,26 @@ now an opportune juncture to delve into its "nervous system" -- ensuring alignme
 principles.\\
 \\
 
-\noindent Architectural Principles \cite{Mart18}:
+\noindent Architectural Principles:
 
 \begin{itemize}
-  \item Architectural modularity emphasizes breaking down a software system into distinct modules or 
+  \item Architectural modularity \cite{Rich20} emphasizes breaking down a software system into distinct modules or 
   components. Each module should have a clear and well-defined purpose, promoting easier development, testing, and 
   maintenance.
 
-  \item Layered architecture divides a system into logical layers, each responsible for specific tasks. This 
-  separation enhances code organization and facilitates the isolation of concerns.
+  \item Layered architecture \cite{Rich22} divides a system into logical layers, each responsible for specific tasks. 
+  This separation enhances code organization and facilitates the isolation of concerns.
 
-  \item Separation of Concerns (SoC) advocates segregating different aspects of functionality to prevent overlap. 
-  This minimizes code entanglement, making it easier to modify, debug, and maintain individual components.
+  \item Separation of Concerns (SoC) advocates segregating different aspects of functionality to prevent overlap. By 
+  example, Clean Architecture \cite{Mart18}, as an architectural pattern, introduces a distinctive approach to code 
+  structuring, fostering a meticulously organized framework that seamlessly aligns with software development principles. 
+  At its core, Clean Architecture reimagines the arrangement of code into distinct layers, each bearing a clearly 
+  defined and specialized responsibility. These layers are demarcated by robust boundaries that serve to insulate 
+  inner layers from the influences of outer ones. This strategic isolation promotes a coherent structure that safeguards 
+  the integrity of the system, even as it evolves and undergoes modifications over time. This minimizes code 
+  entanglement, making it easier to modify, debug, and maintain individual components and layers.
 
-  \item Decoupled systems have minimal dependencies between components. This flexibility enables easier 
+  \item Decoupled systems \cite{Kass05} have minimal dependencies between components. This flexibility enables easier 
   upgrades, replacements, and integrations without causing ripple effects.
 \end{itemize}
 
@@ -50,4 +56,4 @@ In the context of extreme programming, the methodology includes a provision for 
 involves two programmers collaborating closely at a single workstation, communicating actively throughout the process 
 of writing each line of code. Delighting to restate and extremize that practice to the workflow: the first developer 
 composing the tests, followed by the second developer undertaking the implementation, and the third developer 
-performing an ultimate refactoring; and they're changing those "hats" continuously \cite{Bono17}.
+performing an ultimate refactoring; and they're changing those "hats" \cite{Bono17} continuously.
