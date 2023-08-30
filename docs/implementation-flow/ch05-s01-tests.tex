@@ -253,7 +253,8 @@ Future<void> main() async {
 }
 \end{lstlisting}
 
-\noindent Finally, we've taken \q{56 FPS (average)} as an outcome from that tunning.
+\noindent Simply by SkSL caching we've taken \q{56 FPS (average)} as an outcome, but there are many other points for 
+the responsiveness optimization.
 
 Further enhancements can be realized through optimization of listeners, like \q{MediaQuery.of(content)}. 
 Since its usage can inadvertently result in extensive rebuilds, particularly when the keyboard is toggled between 
@@ -262,6 +263,32 @@ any change, including updates to the MediaQuery's \q{viewInsets} property. This 
 listeners, even if they don't utilize the mentioned property, ultimately affecting performance. The solution comes from 
 a partial listening in Flutter (\q{MediaQuery.platformBrightnessOf} - for brightness, \q{MediaQuery.sizeOf} - to track
 height and width). A simple tweak with the substantial benefits in the application performance.
+
+Another avenue for enhancement lies in the conversion of functions involving Widget generation (through Functions) into 
+native Widgets, with the aim of optimizing resource consumption and caching mechanisms. Given Flutter's propensity to 
+preload all UI components beforehand and subsequently feed data to widgets already resident in memory during runtime, 
+the merit of this approach becomes evident. Through this, the need for rebuilding the entire dynamic UI (as necessitated 
+by function callbacks) from scratch in a single frame is circumvented:
+
+\begin{lstlisting}
+// Bad practice
+ListView.builder(
+  itemCount: 5000,
+  itemBuilder: (BuildContext context, int index) {
+    return getMyWidget();
+  },
+),
+// Good choice
+ListView.builder(
+  itemCount: 5000,
+  itemBuilder: (BuildContext context, int index) {
+    return const MyWidget();
+  },
+),
+\end{lstlisting}
+
+And not obvious but acknowledgeable, Flutter upgrade procedure (by example, Flutter 3.10 triples the frame rate if 
+change \q{FlutterViews} background color to a non-nil value, as proposed \cite{Chis23}).
 
 
 \subsubsection{Anticipating Churn Rate}

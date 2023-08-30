@@ -41,7 +41,6 @@ class FilePicker with FileImportMixin {
   }
 
   FileScope _parseQif(String content, String splitter) {
-    FileScope result = [header];
     final scope = content.split(splitter);
     int idx = 1;
     Map<String, int> mapping = {
@@ -52,6 +51,8 @@ class FilePicker with FileImportMixin {
       'D': 4, // "Date"
     };
     int billType = 5;
+    FileScope result = [header];
+    result.add(List<dynamic>.filled(header.length, null));
     for (int i = 0; i < scope.length; i++) {
       if (scope[i].isEmpty) {
         continue;
@@ -72,6 +73,9 @@ class FilePicker with FileImportMixin {
           result[idx][pos] = value;
         }
       }
+    }
+    if (result.last.every((element) => element == null)) {
+      result.removeLast();
     }
     return result;
   }

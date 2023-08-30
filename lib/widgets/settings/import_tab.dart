@@ -8,6 +8,7 @@ import 'package:app_finance/_classes/storage/file_picker.dart';
 import 'package:app_finance/_classes/storage/transaction_log.dart';
 import 'package:app_finance/_classes/controller/focus_controller.dart';
 import 'package:app_finance/_classes/structure/interface_app_data.dart';
+import 'package:app_finance/_mixins/date_format_mixin.dart';
 import 'package:app_finance/_mixins/shared_preferences_mixin.dart';
 import 'package:app_finance/_configs/theme_helper.dart';
 import 'package:app_finance/widgets/_forms/currency_selector.dart';
@@ -16,6 +17,7 @@ import 'package:app_finance/widgets/_forms/list_budget_selector.dart';
 import 'package:app_finance/widgets/_forms/list_selector.dart';
 import 'package:app_finance/widgets/_forms/simple_input.dart';
 import 'package:app_finance/widgets/init/loading_widget.dart';
+import 'package:app_finance/widgets/settings/recover_tab/date_time_helper_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -33,7 +35,7 @@ class ImportTab extends StatefulWidget {
   ImportTabState createState() => ImportTabState();
 }
 
-class ImportTabState extends State<ImportTab> with SharedPreferencesMixin {
+class ImportTabState extends State<ImportTab> with SharedPreferencesMixin, DateFormatMixin {
   late AppData state;
   List<List<dynamic>>? fileContent;
   StringBuffer errorMessage = StringBuffer();
@@ -56,9 +58,14 @@ class ImportTabState extends State<ImportTab> with SharedPreferencesMixin {
       setState(() {
         fileContent = content;
         columnMap = picker.columnMap;
+        if (columnMap.contains(FileParser.attrBillDate)) {
+          int index = columnMap.indexOf(FileParser.attrBillDate);
+          dateFormat.text = detectFormat([fileContent!.last[index]], AppLocale.code);
+        }
       });
     } catch (e) {
       setState(() => errorMessage.writeln(e.toString()));
+      rethrow;
     }
   }
 
@@ -85,7 +92,6 @@ class ImportTabState extends State<ImportTab> with SharedPreferencesMixin {
         TransactionLog.save(newItem);
       } catch (e) {
         setState(() => errorMessage.writeln('[$i / ${fileContent!.length}] ${e.toString()}.'));
-        //rethrow;
       }
     }
     await state.restate();
@@ -146,7 +152,12 @@ class ImportTabState extends State<ImportTab> with SharedPreferencesMixin {
                         value: columnMap[index],
                         indent: indent,
                         hintText: AppLocale.labels.columnMapTooltip(fileContent!.first[index]),
-                        setState: (value) => setState(() => columnMap[index] = value),
+                        setState: (value) => setState(() {
+                          columnMap[index] = value;
+                          if (value == FileParser.attrBillDate) {
+                            dateFormat.text = detectFormat([fileContent!.last[index]], AppLocale.code);
+                          }
+                        }),
                       ),
                     ],
                   );
@@ -214,11 +225,8 @@ class ImportTabState extends State<ImportTab> with SharedPreferencesMixin {
                     AppLocale.labels.dateFormat,
                     style: textTheme.bodyLarge,
                   ),
-                  Text(
-                    AppLocale.labels.dateFormatPattern,
-                    style: textTheme.bodyMedium,
-                  ),
                   SimpleInput(controller: dateFormat),
+                  const DateTimeHelperWidget(),
                   SizedBox(height: indent * 2),
                   SizedBox(
                     width: double.infinity,
