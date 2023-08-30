@@ -17,7 +17,7 @@ import 'package:app_finance/widgets/_forms/list_budget_selector.dart';
 import 'package:app_finance/widgets/_forms/list_selector.dart';
 import 'package:app_finance/widgets/_forms/simple_input.dart';
 import 'package:app_finance/widgets/init/loading_widget.dart';
-import 'package:app_finance/widgets/settings/date_time_helper_widget.dart';
+import 'package:app_finance/widgets/settings/recover_tab/date_time_helper_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
