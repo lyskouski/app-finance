@@ -21,8 +21,8 @@ class AppSync extends ChangeNotifier with SharedPreferencesMixin {
   static const _disabled = 'deactivated';
   late Peer peer;
   final Map<String, SyncPeer> _status = {};
-  static final Map<String, Function> _cb = {};
-  static final Map<String, Function> _cbBin = {};
+  static final Map<Type, Function> _cb = {};
+  static final Map<Type, Function> _cbBin = {};
 
   AppSync() : super() {
     final id = getUuid();
@@ -80,17 +80,22 @@ class AppSync extends ChangeNotifier with SharedPreferencesMixin {
     return _status.values.map((e) => SyncStatus(e.id, e.status)).toList();
   }
 
-  static void follow(String type, Function callback) => _cb[type] = callback;
+  static void follow(Type type, Function callback) => _cb[type] = callback;
 
-  static void followBinary(String type, Function callback) => _cbBin[type] = callback;
+  static void followBinary(Type type, Function callback) => _cbBin[type] = callback;
 
-  static void unfollow(String type) {
+  static void unfollow(Type type) {
     _cb.remove(type);
     _cbBin.remove(type);
   }
 
+  bool isActive() {
+    return getPreference(prefPeer) != _disabled;
+  }
+
   void disable() {
     setPreference(prefPeer, _disabled);
+    setPreference(prefP2P, '');
     peer.dispose();
   }
 

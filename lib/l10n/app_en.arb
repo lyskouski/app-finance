@@ -216,6 +216,7 @@
     "parseFile": "Parse .csv-file",
     "password": "Password",
     "path": "File Name (to save into, or load from)",
+    "pearLoading": "In Progress...",
     "peerAccept": "accept",
     "peerAction": "Action",
     "peerClosed": "terminated",
@@ -229,7 +230,9 @@
     "peerOtherId": "Device Identifier for Connection",
     "peerPending": "pending",
     "peerPing": "ping",
+    "peerSent": "Data is transferred to connected Devices",
     "peerStatus": "Status",
+    "peerSync": "Transfer Data",
     "pickFile": "Pick .{value}-file",
     "@pickFile": {
         "value": {

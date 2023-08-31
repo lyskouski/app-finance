@@ -2,6 +2,7 @@
 // Use of this source code is governed by a CC BY-NC-ND 4.0 license that can be found in the LICENSE file.
 
 import 'dart:collection';
+import 'package:app_finance/_classes/herald/app_sync.dart';
 import 'package:app_finance/_classes/math/invoice_recalculation.dart';
 import 'package:app_finance/_classes/storage/history_data.dart';
 import 'package:app_finance/_classes/structure/account_app_data.dart';
@@ -47,7 +48,21 @@ class AppData extends ChangeNotifier {
   AppData() : super() {
     isLoading = true;
     Exchange(store: this).getDefaultCurrency();
-    TransactionLog.load(this).then((_) async => await restate());
+    TransactionLog.load(this).then((_) async => await restate()).then((_) => AppSync.follow(AppData, _stream));
+  }
+
+  @override
+  dispose() {
+    super.dispose();
+    AppSync.unfollow(AppData);
+  }
+
+  void _stream(String value) {
+    try {
+      TransactionLog.add(this, value, true);
+    } catch (e) {
+      //...
+    }
   }
 
   Future<void> restate() async {

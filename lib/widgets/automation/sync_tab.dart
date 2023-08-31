@@ -3,9 +3,11 @@
 
 import 'package:app_finance/_classes/herald/app_locale.dart';
 import 'package:app_finance/_classes/herald/app_sync.dart';
+import 'package:app_finance/_classes/storage/app_data.dart';
 import 'package:app_finance/_configs/theme_helper.dart';
 import 'package:app_finance/widgets/_forms/simple_input.dart';
 import 'package:app_finance/widgets/_wrappers/table_widget.dart';
+import 'package:app_finance/widgets/init/loading_widget.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -22,20 +24,21 @@ class SyncTab extends StatefulWidget {
 class SyncTabState extends State<SyncTab> {
   final _controller = TextEditingController();
   final _scroll = ScrollController();
-  late final id = runtimeType.toString();
   late AppSync sync;
+  late AppData dataProvider;
   List<String> request = [];
+  bool loading = false;
 
   @override
   void dispose() {
     _controller.dispose();
-    AppSync.unfollow(id);
+    AppSync.unfollow(runtimeType);
     super.dispose();
   }
 
   @override
   void initState() {
-    AppSync.followBinary(id, (Uint8List id) {
+    AppSync.followBinary(runtimeType, (Uint8List id) {
       final uuid = String.fromCharCodes(id);
       if (sync.getPeers().where((e) => e.id == uuid).isEmpty) {
         setState(() => request.add(uuid));
@@ -47,6 +50,17 @@ class SyncTabState extends State<SyncTab> {
     super.initState();
   }
 
+  void synchronize() {
+    setState(() => loading = true);
+    dataProvider.getList(AppDataType.accounts).forEach((o) => sync.send(o.toStream()));
+    dataProvider.getList(AppDataType.budgets).forEach((o) => sync.send(o.toStream()));
+    dataProvider.getActualList(AppDataType.bills).forEach((o) => sync.send(o.toStream()));
+    setState(() => loading = false);
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(content: Text(AppLocale.labels.peerSent)),
+    );
+  }
+
   void disconnect(String uuid) => sync.del(uuid);
   void closeConnection() => sync.disable();
   void reconnect() => sync.enable();
@@ -54,24 +68,53 @@ class SyncTabState extends State<SyncTab> {
   @override
   Widget build(BuildContext context) {
     final TextTheme textTheme = Theme.of(context).textTheme;
+    final indent = ThemeHelper.getIndent();
     return Consumer<AppSync>(builder: (context, appSync, _) {
       sync = appSync;
+      dataProvider = Provider.of<AppData>(context, listen: false);
       final data = sync.getPeers();
       return SingleChildScrollView(
         controller: _scroll,
         child: Padding(
-          padding: EdgeInsets.all(ThemeHelper.getIndent()),
+          padding: EdgeInsets.all(indent),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
-              Text(
-                AppLocale.labels.peerId,
-                style: textTheme.bodyLarge,
-              ),
-              Container(
-                padding: EdgeInsets.all(ThemeHelper.getIndent()),
-                color: Theme.of(context).colorScheme.inversePrimary.withOpacity(0.3),
-                child: SelectableText(sync.getUuid(), style: textTheme.bodyLarge),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Column(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
+                      Text(
+                        AppLocale.labels.peerId,
+                        style: textTheme.bodyLarge,
+                      ),
+                      Container(
+                        padding: EdgeInsets.all(indent),
+                        color: Theme.of(context).colorScheme.inversePrimary.withOpacity(0.3),
+                        child: SelectableText(sync.getUuid(), style: textTheme.bodyLarge),
+                      ),
+                    ],
+                  ),
+                  ThemeHelper.wIndent2x,
+                  loading
+                      ? Row(
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            Text(AppLocale.labels.pearLoading),
+                            LoadingWidget(isLoading: loading, size: const Size(48, 48)),
+                          ],
+                        )
+                      : Expanded(
+                          child: FloatingActionButton(
+                            heroTag: 'sync_tab_sync',
+                            onPressed: synchronize,
+                            tooltip: AppLocale.labels.peerSync,
+                            child: Text(AppLocale.labels.peerSync),
+                          ),
+                        ),
+                ],
               ),
               ThemeHelper.hIndent4x,
               TableWidget(

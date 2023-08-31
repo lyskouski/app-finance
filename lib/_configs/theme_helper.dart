@@ -20,7 +20,7 @@ class ThemeHelper {
   static const hIndent4x = SizedBox(height: _Sizes.quatre);
   static const hIndent05 = SizedBox(height: _Sizes.half);
   static const wIndent = SizedBox(width: _Sizes.normal);
-  //static const wIndent2x = SizedBox(width: _Sizes.double);
+  static const wIndent2x = SizedBox(width: _Sizes.double);
 
   static double getIndent([double multiply = 1]) => _Sizes.normal * multiply;
 

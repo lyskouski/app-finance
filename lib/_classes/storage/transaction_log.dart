@@ -5,6 +5,7 @@ import 'dart:io';
 import 'dart:convert';
 import 'dart:async';
 import 'dart:math';
+import 'package:app_finance/_classes/controller/encryption_handler.dart';
 import 'package:app_finance/_classes/storage/app_data.dart';
 import 'package:app_finance/_classes/structure/account_app_data.dart';
 import 'package:app_finance/_classes/structure/bill_app_data.dart';
@@ -13,19 +14,11 @@ import 'package:app_finance/_classes/structure/currency_app_data.dart';
 import 'package:app_finance/_classes/structure/goal_app_data.dart';
 import 'package:app_finance/_classes/structure/invoice_app_data.dart';
 import 'package:app_finance/_mixins/shared_preferences_mixin.dart';
-import 'package:crypto/crypto.dart';
-import 'package:encrypt/encrypt.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:flutter/foundation.dart' show kIsWeb;
 
 class TransactionLog with SharedPreferencesMixin {
-  static String prefIsEncrypted = 'true';
-
   static int increment = 0;
-
-  static Encrypter get salt => Encrypter(AES(Key.fromUtf8('tercad-app-finance-by-vlyskouski')));
-
-  static IV get code => IV.fromLength(8);
 
   static bool _isLocked = false;
 
@@ -71,15 +64,6 @@ class TransactionLog with SharedPreferencesMixin {
     return _formatBytes(size);
   }
 
-  static String getHash(Map<String, dynamic> data) {
-    return md5.convert(utf8.encode(data.toString())).toString();
-  }
-
-  static bool doEncrypt() {
-    final self = TransactionLog();
-    return self.getPreference(self.prefDoEncrypt) == prefIsEncrypted;
-  }
-
   static void saveRaw(String line) {
     int retrial = 1;
     while (_isLocked && retrial < 1000) {
@@ -102,8 +86,8 @@ class TransactionLog with SharedPreferencesMixin {
 
   static void save(dynamic content, [bool isDirect = false]) {
     String line = content.toString();
-    if (!isDirect && doEncrypt()) {
-      line = salt.encrypt(line, iv: code).base64;
+    if (!isDirect && EncryptionHandler.doEncrypt()) {
+      line = EncryptionHandler.encrypt(line);
     }
     saveRaw(line);
     increment++;
@@ -163,27 +147,33 @@ class TransactionLog with SharedPreferencesMixin {
   }
 
   static Future<bool> load(AppData store) async {
-    bool isEncrypted = doEncrypt();
+    bool isEncrypted = EncryptionHandler.doEncrypt();
     bool isOK = true;
     await for (var line in read()) {
-      if (line == '') {
-        continue;
+      isOK &= add(store, line, isEncrypted);
+    }
+    return isOK;
+  }
+
+  static bool add(AppData store, String line, bool isEncrypted) {
+    bool isOK = true;
+    if (line == '') {
+      return isOK;
+    }
+    try {
+      if (isEncrypted) {
+        line = EncryptionHandler.decrypt(line);
       }
-      try {
-        if (isEncrypted) {
-          line = salt.decrypt64(line, iv: code);
-        }
-        var obj = json.decode(line);
-        if (getHash(obj['data']) == obj['type']['hash']) {
-          init(store, obj['type']['name'], obj['data']);
-        } else {
-          // Corrupted data... skip
-        }
-        // ignore: unused_catch_stack
-      } catch (e, stackTrace) {
-        // print([e, stackTrace]);
-        isOK = false;
+      var obj = json.decode(line);
+      if (EncryptionHandler.getHash(obj['data']) == obj['type']['hash']) {
+        init(store, obj['type']['name'], obj['data']);
+      } else {
+        // Corrupted data... skip
       }
+      // ignore: unused_catch_stack
+    } catch (e, stackTrace) {
+      // print([e, stackTrace]);
+      isOK = false;
     }
     return isOK;
   }

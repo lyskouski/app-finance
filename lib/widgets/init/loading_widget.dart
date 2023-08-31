@@ -5,10 +5,12 @@ import 'package:flutter/material.dart';
 
 class LoadingWidget extends StatefulWidget {
   final bool isLoading;
+  final Size? size;
 
   const LoadingWidget({
     super.key,
     required this.isLoading,
+    this.size,
   });
 
   @override
@@ -35,7 +37,7 @@ class LoadingWidgetState extends State<LoadingWidget> with TickerProviderStateMi
 
   @override
   Widget build(BuildContext context) {
-    Size side = MediaQuery.sizeOf(context);
+    Size side = widget.size ?? MediaQuery.sizeOf(context);
     double width = side.width;
     double height = side.height;
     double size = (height > width ? width : height) * 0.6;
@@ -51,7 +53,7 @@ class LoadingWidgetState extends State<LoadingWidget> with TickerProviderStateMi
                 child: CircularProgressIndicator(
                   value: _controller.value,
                   color: Theme.of(context).colorScheme.inversePrimary,
-                  strokeWidth: 0.2,
+                  strokeWidth: 32 / size,
                 ),
               ),
               Image.asset(
