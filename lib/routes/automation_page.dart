@@ -4,7 +4,6 @@
 import 'package:app_finance/_classes/herald/app_locale.dart';
 import 'package:app_finance/_configs/theme_helper.dart';
 import 'package:app_finance/routes/abstract_page.dart';
-import 'package:app_finance/widgets/_wrappers/tab_widget.dart';
 import 'package:app_finance/widgets/automation/sync_tab.dart';
 //import 'package:app_finance/widgets/automation/notification_tab.dart';
 import 'package:flutter/material.dart';
@@ -16,7 +15,15 @@ class AutomationPage extends AbstractPage {
   AutomationPageState createState() => AutomationPageState();
 }
 
-class AutomationPageState extends AbstractPageState<AutomationPage> {
+class AutomationPageState extends AbstractPageState<AutomationPage> with TickerProviderStateMixin {
+  late final TabController _tabController;
+
+  @override
+  void initState() {
+    super.initState();
+    _tabController = TabController(length: 1, vsync: this);
+  }
+
   @override
   Widget buildButton(BuildContext context, BoxConstraints constraints) {
     return ThemeHelper.emptyBox;
@@ -24,27 +31,34 @@ class AutomationPageState extends AbstractPageState<AutomationPage> {
 
   @override
   Widget buildContent(BuildContext context, BoxConstraints constraints) {
-    return TabWidget(
-      focus: 0,
-      tabs: [
-        Tab(
-          icon: const Icon(Icons.sync),
-          text: AppLocale.labels.syncHeadline,
-        ),
-        /*
-        if (Platform.isAndroid)
-          Tab(
-            icon: const Icon(Icons.message),
-            text: AppLocale.labels.notifyHeadline,
+    final indent = ThemeHelper.getIndent();
+    return Padding(
+      padding: EdgeInsets.only(top: indent),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.start,
+        children: [
+          TabBar.secondary(
+            controller: _tabController,
+            tabs: <Widget>[
+              Tab(icon: const Icon(Icons.sync), text: AppLocale.labels.syncHeadline),
+              // if (Platform.isAndroid)
+              // Tab(icon: const Icon(Icons.message), text: AppLocale.labels.notifyHeadline),
+            ],
           ),
-          */
-      ],
-      children: [
-        const SyncTab(),
-        /*
-        if (Platform.isAndroid) const NotificationTab(),
-        */
-      ],
+          Expanded(
+            child: Padding(
+              padding: EdgeInsets.fromLTRB(indent, 0, indent, 0),
+              child: TabBarView(
+                controller: _tabController,
+                children: const [
+                  SyncTab(),
+                  //if (Platform.isAndroid) NotificationTab(),
+                ],
+              ),
+            ),
+          ),
+        ],
+      ),
     );
   }
 

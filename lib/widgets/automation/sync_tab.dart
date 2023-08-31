@@ -73,30 +73,38 @@ class SyncTabState extends State<SyncTab> {
                 width: ThemeHelper.getWidth(context),
                 shadowColor: Theme.of(context).colorScheme.onBackground.withOpacity(0.1),
                 chunk: const [80, null, 80, 90],
-                data: List.generate(data.length, (index) {
-                  String status = switch (data[index].status) {
-                    true => AppLocale.labels.peerOnline,
-                    false => AppLocale.labels.peerClosed,
-                    _ => AppLocale.labels.peerOffline,
-                  };
-                  return <Widget>[
-                    ElevatedButton(
-                      onPressed: () => sync.del(data[index].id),
-                      child: Text(AppLocale.labels.peerDelete),
-                    ),
-                    Text(data[index].id, maxLines: 1, overflow: TextOverflow.ellipsis),
-                    Text(status),
-                    data[index].status == true
-                        ? ElevatedButton(
-                            onPressed: () => sync.ping(data[index].id),
-                            child: Text(AppLocale.labels.peerPing),
-                          )
-                        : ElevatedButton(
-                            onPressed: () => sync.trace(data[index].id),
-                            child: Text(AppLocale.labels.peerConnectBtn),
-                          ),
-                  ];
-                }),
+                data: [
+                  [
+                    Center(child: Text(AppLocale.labels.peerAction)),
+                    Text(AppLocale.labels.peerDevice),
+                    Text(AppLocale.labels.peerStatus),
+                    Center(child: Text(AppLocale.labels.peerAction)),
+                  ],
+                  ...List.generate(data.length, (index) {
+                    String status = switch (data[index].status) {
+                      true => AppLocale.labels.peerOnline,
+                      false => AppLocale.labels.peerClosed,
+                      _ => AppLocale.labels.peerOffline,
+                    };
+                    return <Widget>[
+                      ElevatedButton(
+                        onPressed: () => sync.del(data[index].id),
+                        child: Text(AppLocale.labels.peerDelete),
+                      ),
+                      Text(data[index].id, maxLines: 1, overflow: TextOverflow.ellipsis),
+                      Text(status),
+                      data[index].status == true
+                          ? ElevatedButton(
+                              onPressed: () => sync.ping(data[index].id),
+                              child: Text(AppLocale.labels.peerPing),
+                            )
+                          : ElevatedButton(
+                              onPressed: () => sync.trace(data[index].id),
+                              child: Text(AppLocale.labels.peerConnectBtn),
+                            ),
+                    ];
+                  }),
+                ],
               ),
               ThemeHelper.hIndent4x,
               Text(
