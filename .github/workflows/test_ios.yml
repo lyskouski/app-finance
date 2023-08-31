@@ -1,0 +1,95 @@
+name: Test
+
+on:
+  pull_request:
+
+jobs:
+  release:
+    name: Create Release Page
+    runs-on: ubuntu-latest
+    outputs:
+      version: ${{ steps.tag.outputs.name }}
+      build_number: ${{ steps.build_number.outputs.build_number }}
+    steps:
+      - name: Get Tag Name
+        id: tag
+        run: echo "name=1.1.0" >> $GITHUB_OUTPUT
+          
+      - name: Set Build Number
+        id: build_number
+        run: echo "build_number=123" >> $GITHUB_OUTPUT
+
+  build:
+    name: Create ${{ matrix.target }} build
+    runs-on: ${{ matrix.os }}
+    needs: release
+    strategy:
+      fail-fast: false
+      matrix:
+        target: [iOS]
+        include:
+          - os: macos-latest
+            target: iOS
+            build_path: build/ios/ipa
+            asset_extension: .ipa
+            asset_content_type: application/zip
+
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-java@v3
+        with:
+          distribution: 'temurin'
+          java-version: '17'
+          cache: 'gradle'
+      - uses: subosito/flutter-action@v2
+        with:
+          channel: 'stable'
+          cache: true
+      - run: flutter pub get
+
+      - name: Patch PubSpec
+        run: dart run grinder pubspec-update --build-name=${{ needs.release.outputs.version }} --build-number=${{ needs.release.outputs.build_number }}
+
+      - name: Import Distribution Certificate
+        if: matrix.target == 'iOS'
+        uses: apple-actions/import-codesign-certs@v2
+        with: 
+          keychain: signing_distr
+          p12-file-base64: ${{ secrets.APPLE_P12 }}
+          p12-password: ${{ secrets.APPLE_P12_KEY }}
+
+#      - name: Import Development Certificate
+#        if: matrix.target == 'iOS'
+#        uses: apple-actions/import-codesign-certs@v2
+#        with: 
+#          keychain: signing_dev
+#          p12-file-base64: ${{ secrets.APPLE_DEV_P12 }}
+#          p12-password: ${{ secrets.APPLE_DEV_P12_KEY }}
+
+      - name: Install the provisioning profile
+        env:
+          PROVISIONING_CERTIFICATE_BASE64: ${{ secrets.APPLE_IOS_PROFILE }}
+        run: |
+          PP_PATH=$RUNNER_TEMP/Fingrom_iOS.mobileprovision
+          echo -n "$PROVISIONING_CERTIFICATE_BASE64" | base64 --decode --output $PP_PATH
+          mkdir -p ~/Library/MobileDevice/Provisioning\ Profiles
+          cp $PP_PATH ~/Library/MobileDevice/Provisioning\ Profiles
+
+#      - name: Add Provision Profile
+#        uses: timheuer/base64-to-file@v1.2
+#        with:
+#          fileName: 'Fingrom iOS.mobileprovision'
+#          fileDir: '~/Library/MobileDevice/Provisioning Profiles/'
+#          encodedString: ${{ secrets.APPLE_IOS_PROFILE }}
+
+      - name: Run iOS Build
+        if: matrix.target == 'iOS'
+        run: |
+          flutter build -v ios --build-name=${{ needs.release.outputs.version }} --build-number=${{ needs.release.outputs.build_number }} --release --no-tree-shake-icons
+
+      - name: Store Artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          name: build_${{ matrix.os }}
+          path: |
+            build/ios/ipa/*.ipa
