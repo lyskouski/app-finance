@@ -33,7 +33,7 @@ class AppSync extends ChangeNotifier with SharedPreferencesMixin {
   }
 
   List<String> _get() {
-    return getPreference(prefP2P)?.split(',') ?? [];
+    return getPreference(prefP2P)?.split(',').where((e) => e.isNotEmpty).toList() ?? [];
   }
 
   void add(String uuid) {

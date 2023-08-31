@@ -6,6 +6,7 @@ import 'package:app_finance/_classes/herald/app_sync.dart';
 import 'package:app_finance/_configs/theme_helper.dart';
 import 'package:app_finance/widgets/_forms/simple_input.dart';
 import 'package:app_finance/widgets/_wrappers/table_widget.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -23,6 +24,7 @@ class SyncTabState extends State<SyncTab> {
   final _scroll = ScrollController();
   late final id = runtimeType.toString();
   late AppSync sync;
+  List<String> request = [];
 
   @override
   void dispose() {
@@ -33,12 +35,15 @@ class SyncTabState extends State<SyncTab> {
 
   @override
   void initState() {
-    AppSync.followBinary(
-      id,
-      (m) => ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text(AppLocale.labels.pongStatus)),
-      ),
-    );
+    AppSync.followBinary(id, (Uint8List id) {
+      final uuid = String.fromCharCodes(id);
+      if (sync.getPeers().where((e) => e.id == uuid).isEmpty) {
+        setState(() => request.add(uuid));
+      }
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text(AppLocale.labels.pongStatus(uuid))),
+      );
+    });
     super.initState();
   }
 
@@ -102,6 +107,23 @@ class SyncTabState extends State<SyncTab> {
                               onPressed: () => sync.trace(data[index].id),
                               child: Text(AppLocale.labels.peerConnectBtn),
                             ),
+                    ];
+                  }),
+                  ...List.generate(request.length, (index) {
+                    return <Widget>[
+                      ElevatedButton(
+                        onPressed: () => setState(() => request.remove(request[index])),
+                        child: Text(AppLocale.labels.peerDelete),
+                      ),
+                      Text(request[index], maxLines: 1, overflow: TextOverflow.ellipsis),
+                      Text(AppLocale.labels.peerPending),
+                      ElevatedButton(
+                        onPressed: () => setState(() {
+                          sync.add(request[index]);
+                          request.remove(request[index]);
+                        }),
+                        child: Text(AppLocale.labels.peerAccept),
+                      ),
                     ];
                   }),
                 ],
