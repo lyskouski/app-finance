@@ -6,6 +6,7 @@ import 'package:app_finance/_classes/herald/app_sync.dart';
 import 'package:app_finance/_classes/storage/app_data.dart';
 import 'package:app_finance/_configs/theme_helper.dart';
 import 'package:app_finance/widgets/_forms/simple_input.dart';
+import 'package:app_finance/widgets/_wrappers/row_widget.dart';
 import 'package:app_finance/widgets/_wrappers/table_widget.dart';
 import 'package:app_finance/widgets/init/loading_widget.dart';
 import 'package:flutter/foundation.dart';
@@ -57,10 +58,6 @@ class SyncTabState extends State<SyncTab> {
     );
   }
 
-  void disconnect(String uuid) => sync.del(uuid);
-  void closeConnection() => sync.disable();
-  void reconnect() => sync.enable();
-
   @override
   Widget build(BuildContext context) {
     final TextTheme textTheme = Theme.of(context).textTheme;
@@ -76,42 +73,57 @@ class SyncTabState extends State<SyncTab> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              RowWidget(
+                maxWidth: ThemeHelper.getWidth(context),
+                alignment: MainAxisAlignment.spaceBetween,
+                indent: indent,
+                chunk: const [null, 70],
                 children: [
-                  Column(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    children: [
-                      Text(
-                        AppLocale.labels.peerId,
+                  [
+                    Text(
+                      AppLocale.labels.peerId,
+                      style: textTheme.bodyLarge,
+                    ),
+                    Container(
+                      padding: EdgeInsets.all(indent),
+                      color: Theme.of(context).colorScheme.inversePrimary.withOpacity(0.3),
+                      child: SelectableText(
+                        sync.getUuid() ?? AppLocale.labels.pearDisabled,
                         style: textTheme.bodyLarge,
                       ),
-                      Container(
-                        padding: EdgeInsets.all(indent),
-                        color: Theme.of(context).colorScheme.inversePrimary.withOpacity(0.3),
-                        child: SelectableText(sync.getUuid(), style: textTheme.bodyLarge),
-                      ),
-                    ],
-                  ),
-                  ThemeHelper.wIndent2x,
-                  loading
-                      ? Row(
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          children: [
-                            Text(AppLocale.labels.pearLoading),
-                            LoadingWidget(isLoading: loading, size: const Size(48, 48)),
-                          ],
-                        )
-                      : Expanded(
-                          child: FloatingActionButton(
-                            heroTag: 'sync_tab_sync',
-                            onPressed: synchronize,
-                            tooltip: AppLocale.labels.peerSync,
-                            child: Text(AppLocale.labels.peerSync),
-                          ),
-                        ),
+                    ),
+                  ],
+                  [
+                    Text(
+                      sync.isActive() ? AppLocale.labels.peerOnline : AppLocale.labels.peerClosed,
+                      style: textTheme.bodyLarge,
+                    ),
+                    Switch(
+                      value: sync.isActive(),
+                      onChanged: (value) => setState(() => value ? sync.enable() : sync.disable()),
+                    ),
+                  ],
                 ],
               ),
+              ThemeHelper.hIndent2x,
+              if (sync.isActive())
+                loading
+                    ? Row(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          Text(AppLocale.labels.pearLoading),
+                          LoadingWidget(isLoading: loading, size: const Size(48, 48)),
+                        ],
+                      )
+                    : SizedBox(
+                        width: double.infinity,
+                        child: FloatingActionButton(
+                          heroTag: 'sync_tab_sync',
+                          onPressed: synchronize,
+                          tooltip: AppLocale.labels.peerSync,
+                          child: Text(AppLocale.labels.peerSync),
+                        ),
+                      ),
               ThemeHelper.hIndent4x,
               TableWidget(
                 width: ThemeHelper.getWidth(context),
@@ -167,22 +179,24 @@ class SyncTabState extends State<SyncTab> {
                   }),
                 ],
               ),
-              ThemeHelper.hIndent4x,
-              Text(
-                AppLocale.labels.peerOtherId,
-                style: textTheme.bodyLarge,
-              ),
-              SimpleInput(controller: _controller),
-              ThemeHelper.hIndent2x,
-              SizedBox(
-                width: double.infinity,
-                child: FloatingActionButton(
-                  heroTag: 'sync_tab_add',
-                  onPressed: () => sync.add(_controller.text),
-                  tooltip: AppLocale.labels.peerConnect,
-                  child: Text(AppLocale.labels.peerConnect),
+              if (sync.isActive()) ...[
+                ThemeHelper.hIndent4x,
+                Text(
+                  AppLocale.labels.peerOtherId,
+                  style: textTheme.bodyLarge,
                 ),
-              ),
+                SimpleInput(controller: _controller),
+                ThemeHelper.hIndent2x,
+                SizedBox(
+                  width: double.infinity,
+                  child: FloatingActionButton(
+                    heroTag: 'sync_tab_add',
+                    onPressed: () => sync.add(_controller.text),
+                    tooltip: AppLocale.labels.peerConnect,
+                    child: Text(AppLocale.labels.peerConnect),
+                  ),
+                ),
+              ],
               ThemeHelper.formEndBox,
             ],
           ),

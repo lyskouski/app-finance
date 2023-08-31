@@ -18,7 +18,6 @@ class SyncPeer extends SyncStatus {
 }
 
 class AppSync extends ChangeNotifier with SharedPreferencesMixin {
-  static const _disabled = 'deactivated';
   late Peer peer;
   final Map<String, SyncPeer> _status = {};
   final Map<Type, Function> _cb = {};
@@ -26,7 +25,7 @@ class AppSync extends ChangeNotifier with SharedPreferencesMixin {
 
   AppSync() : super() {
     final id = getUuid();
-    if (id != _disabled) {
+    if (id != null && id.isNotEmpty) {
       enable(id);
       connect();
     }
@@ -90,12 +89,12 @@ class AppSync extends ChangeNotifier with SharedPreferencesMixin {
   }
 
   bool isActive() {
-    return getPreference(prefPeer) != _disabled;
+    return getPreference(prefPeer) != null;
   }
 
   void disable() {
-    setPreference(prefPeer, _disabled);
-    setPreference(prefP2P, '');
+    clearPreference(prefPeer);
+    clearPreference(prefP2P);
     peer.dispose();
   }
 
@@ -133,7 +132,7 @@ class AppSync extends ChangeNotifier with SharedPreferencesMixin {
 
   ping(String uuid) {
     if (_status[uuid] != null && _status[uuid]!.status == true) {
-      _status[uuid]!.connection.sendBinary(Uint8List.fromList(getUuid().codeUnits));
+      _status[uuid]!.connection.sendBinary(Uint8List.fromList(getUuid()!.codeUnits));
     }
   }
 
@@ -141,9 +140,9 @@ class AppSync extends ChangeNotifier with SharedPreferencesMixin {
     return const Uuid().v4();
   }
 
-  String getUuid([bool force = false]) {
+  String? getUuid([bool force = false]) {
     String? id = getPreference(prefPeer);
-    if (id == null || force) {
+    if (force) {
       setPreference(prefPeer, id = getNewUuid());
     }
     return id;

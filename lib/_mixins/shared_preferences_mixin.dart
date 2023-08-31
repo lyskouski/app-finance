@@ -21,6 +21,10 @@ mixin SharedPreferencesMixin {
     await pref.setString(key, value);
   }
 
+  Future<void> clearPreference(String key) async {
+    await pref.remove(key);
+  }
+
   String? getPreference(String key) {
     return pref.getString(key);
   }

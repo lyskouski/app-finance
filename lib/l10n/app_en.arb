@@ -216,6 +216,7 @@
     "parseFile": "Parse .csv-file",
     "password": "Password",
     "path": "File Name (to save into, or load from)",
+    "pearDisabled": "-- disabled --",
     "pearLoading": "In Progress...",
     "peerAccept": "accept",
     "peerAction": "Action",
