@@ -3,6 +3,7 @@
 
 import 'dart:io';
 
+import 'package:app_finance/_classes/herald/app_sync.dart';
 import 'package:app_finance/_classes/storage/app_data.dart';
 import 'package:app_finance/_classes/herald/app_locale.dart';
 import 'package:app_finance/_classes/herald/app_theme.dart';
@@ -70,8 +71,8 @@ class PumpMain {
     );
   }
 
-  AppData getStore(bool isIntegration) {
-    final appData = AppData();
+  AppData getStore(AppSync appSync, bool isIntegration) {
+    final appData = AppData(appSync);
     if (!isIntegration) {
       appData.isLoading = false;
     }
@@ -103,10 +104,14 @@ class PumpMain {
   }
 
   Future<void> initMain(WidgetTester tester, bool isIntegration) async {
+    final appSync = AppSync();
     await tester.pumpWidget(MultiProvider(
       providers: [
+        ChangeNotifierProvider<AppSync>(
+          create: (_) => appSync,
+        ),
         ChangeNotifierProvider<AppData>(
-          create: (_) => getStore(isIntegration),
+          create: (_) => getStore(appSync, isIntegration),
         ),
         ChangeNotifierProvider<AppTheme>(
           create: (_) => AppTheme(ThemeMode.system),

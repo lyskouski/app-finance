@@ -20,7 +20,7 @@ class NotificationTabState extends State<NotificationTab> {
   StreamSubscription<NotificationEvent>? _subscription;
 
   void onData(NotificationEvent event) {
-    print(event);
+    // print(event);
   }
 
   void stopListening() {
@@ -31,8 +31,9 @@ class NotificationTabState extends State<NotificationTab> {
     _notifications = Notifications();
     try {
       _subscription = _notifications!.notificationStream!.listen(onData);
+      // ignore: unused_catch_clause
     } on NotificationException catch (exception) {
-      print(exception);
+      // print(exception);
     }
   }
 

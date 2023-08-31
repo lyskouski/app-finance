@@ -2,7 +2,7 @@
 // Use of this source code is governed by a CC BY-NC-ND 4.0 license that can be found in the LICENSE file.
 
 import 'dart:convert';
-import 'package:app_finance/_classes/storage/transaction_log.dart';
+import 'package:app_finance/_classes/controller/encryption_handler.dart';
 import 'package:app_finance/_classes/structure/interface_app_data.dart';
 import 'package:app_finance/_mixins/formatter_mixin.dart';
 import 'package:currency_picker/currency_picker.dart';
@@ -72,10 +72,14 @@ abstract class AbstractAppData with FormatterMixin implements InterfaceAppData {
     return {
       'type': {
         'name': getClassName(),
-        'hash': TransactionLog.getHash(data),
+        'hash': EncryptionHandler.getHash(data),
       },
       'data': data,
     };
+  }
+
+  String toStream() {
+    return EncryptionHandler.encrypt(toString());
   }
 
   @override

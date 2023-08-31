@@ -216,9 +216,33 @@
     "parseFile": "Parse .csv-file",
     "password": "Password",
     "path": "File Name (to save into, or load from)",
+    "pearDisabled": "-- disabled --",
+    "pearLoading": "In Progress...",
+    "peerAccept": "accept",
+    "peerAction": "Action",
+    "peerClosed": "terminated",
+    "peerConnect": "Connect Device",
+    "peerConnectBtn": "connect",
+    "peerDelete": "delete",
+    "peerDevice": "Connected Devices",
+    "peerId": "Your Device Identifier for Connection",
+    "peerOffline": "offline",
+    "peerOnline": "connected",
+    "peerOtherId": "Device Identifier for Connection",
+    "peerPending": "pending",
+    "peerPing": "ping",
+    "peerSent": "Data is transferred to connected Devices",
+    "peerStatus": "Status",
+    "peerSync": "Transfer Data",
     "pickFile": "Pick .{value}-file",
     "@pickFile": {
         "value": {
+            "type": "String"
+        }
+    },
+    "pongStatus": "Taken request from {uuid}",
+    "@pongStatus": {
+        "uuid": {
             "type": "String"
         }
     },
@@ -256,6 +280,7 @@
     "success": "Succeeded",
     "summary": "Summary",
     "symbol": "Symbol",
+    "syncHeadline": "Sync Devices",
     "systemMode": "System",
     "targetAmount": "Target Amount",
     "title": "Title",

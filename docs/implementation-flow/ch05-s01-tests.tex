@@ -296,7 +296,8 @@ Widget buildButton(BuildContext context, BoxConstraints constraints) {
 }
 \end{lstlisting}
 
-
+Optimizing the utilization of \q{StatefulWidget} holds the potential to enhance performance, primarily due to the 
+reduced number of Widgets controlling the lifecycle. This streamlined approach translates to swifter response times.
 
 And not obvious but acknowledgeable, Flutter upgrade procedure (by example, Flutter 3.10 triples the frame rate if 
 change \q{FlutterViews} background color to a non-nil value, as proposed \cite{Chis23}).

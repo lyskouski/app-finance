@@ -12,9 +12,9 @@ import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-@GenerateNiceMocks([MockSpec<SharedPreferences>()])
+@GenerateNiceMocks([MockSpec<SharedPreferences>(), MockSpec<AppData>()])
 import 'exchange_test.mocks.dart';
-@GenerateWithMethodSetters([AppData])
+@GenerateWithMethodSetters([MockAppData])
 import 'exchange_test.wrapper.dart';
 
 void main() {
@@ -23,7 +23,7 @@ void main() {
 
     setUp(() {
       SharedPreferencesMixin.pref = MockSharedPreferences();
-      object = Exchange(store: WrapperAppData());
+      object = Exchange(store: WrapperMockAppData());
     });
 
     tearDown(() => resetMockitoState());
@@ -65,8 +65,9 @@ void main() {
             );
           }
           CurrencyAppData? assertObject;
-          (object.store as WrapperAppData).mockGetByUuid = (_, [bool v = true]) => exchange;
-          (object.store as WrapperAppData).mockAdd = (value, [String? uuid]) => assertObject = value as CurrencyAppData;
+          (object.store as WrapperMockAppData).mockGetByUuid = (_, [bool? v]) => exchange;
+          (object.store as WrapperMockAppData).mockAdd =
+              (value, [String? uuid]) => assertObject = value as CurrencyAppData;
           expect(object.reform(v.amount, origin, target), v.result);
           if (v.rate == null) {
             assert(assertObject is CurrencyAppData);

@@ -2,6 +2,7 @@
 // Use of this source code is governed by a CC BY-NC-ND 4.0 license that can be found in the LICENSE file.
 
 import 'package:app_finance/_classes/herald/app_locale.dart';
+import 'package:app_finance/_classes/herald/app_sync.dart';
 import 'package:app_finance/_classes/herald/app_theme.dart';
 import 'package:app_finance/_mixins/shared_preferences_mixin.dart';
 import 'package:app_finance/_configs/custom_text_theme.dart';
@@ -58,11 +59,15 @@ void main() async {
     };
   }
   SharedPreferencesMixin.pref = await SharedPreferences.getInstance();
+  final appSync = AppSync();
   runApp(
     MultiProvider(
       providers: [
+        ChangeNotifierProvider<AppSync>(
+          create: (_) => appSync,
+        ),
         ChangeNotifierProvider<AppData>(
-          create: (_) => AppData(),
+          create: (_) => AppData(appSync),
         ),
         ChangeNotifierProvider<AppTheme>(
           create: (_) => AppTheme(ThemeMode.system),

@@ -6,7 +6,7 @@
         "request": "launch",
         "type": "dart",
         "codeLens": {
-          "for": ["run-test", "run-test-file"]
+          "for": ["run-test-file"]
         },
         "preLaunchTask": "Generate Mocks"
       }

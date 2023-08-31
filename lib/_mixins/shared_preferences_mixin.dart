@@ -12,11 +12,17 @@ mixin SharedPreferencesMixin {
   final String prefTheme = 'themeMode';
   final String prefLocale = 'localeMode';
   final String prefExpand = 'expand';
+  final String prefPeer = 'p2p_host';
+  final String prefP2P = 'p2p_spot';
 
   static late SharedPreferences pref;
 
   Future<void> setPreference(String key, String value) async {
     await pref.setString(key, value);
+  }
+
+  Future<void> clearPreference(String key) async {
+    await pref.remove(key);
   }
 
   String? getPreference(String key) {
