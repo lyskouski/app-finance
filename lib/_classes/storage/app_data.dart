@@ -32,6 +32,7 @@ enum AppDataType {
 }
 
 class AppData extends ChangeNotifier {
+  final AppSync appSync;
   bool isLoading = false;
 
   final _hashTable = HashMap<String, dynamic>();
@@ -45,21 +46,21 @@ class AppData extends ChangeNotifier {
     AppDataType.invoice: SummaryAppData(total: 0, list: []),
   };
 
-  AppData() : super() {
+  AppData(this.appSync) : super() {
     isLoading = true;
     Exchange(store: this).getDefaultCurrency();
-    TransactionLog.load(this).then((_) async => await restate()).then((_) => AppSync.follow(AppData, _stream));
+    TransactionLog.load(this).then((_) async => await restate()).then((_) => appSync.follow(AppData, _stream));
   }
 
   @override
   dispose() {
     super.dispose();
-    AppSync.unfollow(AppData);
+    appSync.unfollow(AppData);
   }
 
   void _stream(String value) {
     try {
-      TransactionLog.add(this, value, true);
+      TransactionLog.add(this, value, true, true);
     } catch (e) {
       //...
     }
@@ -76,6 +77,7 @@ class AppData extends ChangeNotifier {
     _data[property]?.add(value.uuid, updatedAt: value.createdAt);
     if (!isLoading) {
       TransactionLog.save(value);
+      appSync.send(value.toStream());
     }
     _notify(null);
   }

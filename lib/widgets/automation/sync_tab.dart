@@ -32,22 +32,18 @@ class SyncTabState extends State<SyncTab> {
   @override
   void dispose() {
     _controller.dispose();
-    AppSync.unfollow(runtimeType);
+    sync.unfollow(runtimeType);
     super.dispose();
   }
 
-  @override
-  void initState() {
-    AppSync.followBinary(runtimeType, (Uint8List id) {
-      final uuid = String.fromCharCodes(id);
-      if (sync.getPeers().where((e) => e.id == uuid).isEmpty) {
-        setState(() => request.add(uuid));
-      }
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text(AppLocale.labels.pongStatus(uuid))),
-      );
-    });
-    super.initState();
+  void ping(Uint8List id) {
+    final uuid = String.fromCharCodes(id);
+    if (sync.getPeers().where((e) => e.id == uuid).isEmpty) {
+      setState(() => request.add(uuid));
+    }
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(content: Text(AppLocale.labels.pongStatus(uuid))),
+    );
   }
 
   void synchronize() {
@@ -70,7 +66,7 @@ class SyncTabState extends State<SyncTab> {
     final TextTheme textTheme = Theme.of(context).textTheme;
     final indent = ThemeHelper.getIndent();
     return Consumer<AppSync>(builder: (context, appSync, _) {
-      sync = appSync;
+      sync = appSync..followBinary(runtimeType, ping);
       dataProvider = Provider.of<AppData>(context, listen: false);
       final data = sync.getPeers();
       return SingleChildScrollView(

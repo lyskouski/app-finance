@@ -71,8 +71,8 @@ class PumpMain {
     );
   }
 
-  AppData getStore(bool isIntegration) {
-    final appData = AppData();
+  AppData getStore(AppSync appSync, bool isIntegration) {
+    final appData = AppData(appSync);
     if (!isIntegration) {
       appData.isLoading = false;
     }
@@ -104,13 +104,14 @@ class PumpMain {
   }
 
   Future<void> initMain(WidgetTester tester, bool isIntegration) async {
+    final appSync = AppSync();
     await tester.pumpWidget(MultiProvider(
       providers: [
-        ChangeNotifierProvider<AppData>(
-          create: (_) => getStore(isIntegration),
-        ),
         ChangeNotifierProvider<AppSync>(
-          create: (_) => AppSync(),
+          create: (_) => appSync,
+        ),
+        ChangeNotifierProvider<AppData>(
+          create: (_) => getStore(appSync, isIntegration),
         ),
         ChangeNotifierProvider<AppTheme>(
           create: (_) => AppTheme(ThemeMode.system),

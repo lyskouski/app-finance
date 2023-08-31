@@ -155,7 +155,7 @@ class TransactionLog with SharedPreferencesMixin {
     return isOK;
   }
 
-  static bool add(AppData store, String line, bool isEncrypted) {
+  static bool add(AppData store, String line, bool isEncrypted, [bool onlyNew = false]) {
     bool isOK = true;
     if (line == '') {
       return isOK;
@@ -165,7 +165,8 @@ class TransactionLog with SharedPreferencesMixin {
         line = EncryptionHandler.decrypt(line);
       }
       var obj = json.decode(line);
-      if (EncryptionHandler.getHash(obj['data']) == obj['type']['hash']) {
+      if (EncryptionHandler.getHash(obj['data']) == obj['type']['hash'] &&
+          (!onlyNew || store.getByUuid(obj['data']['uuid']) == null)) {
         init(store, obj['type']['name'], obj['data']);
       } else {
         // Corrupted data... skip

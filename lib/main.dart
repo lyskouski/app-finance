@@ -59,14 +59,15 @@ void main() async {
     };
   }
   SharedPreferencesMixin.pref = await SharedPreferences.getInstance();
+  final appSync = AppSync();
   runApp(
     MultiProvider(
       providers: [
-        ChangeNotifierProvider<AppData>(
-          create: (_) => AppData(),
-        ),
         ChangeNotifierProvider<AppSync>(
-          create: (_) => AppSync(),
+          create: (_) => appSync,
+        ),
+        ChangeNotifierProvider<AppData>(
+          create: (_) => AppData(appSync),
         ),
         ChangeNotifierProvider<AppTheme>(
           create: (_) => AppTheme(ThemeMode.system),
