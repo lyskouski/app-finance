@@ -30,19 +30,20 @@ class InvoiceRecalculation extends AbstractRecalculation {
     return delta;
   }
 
-  void updateAccount(AccountAppData accountChange, AccountAppData? accountInitial) {
+  void updateAccount(AccountAppData accountChange, AccountAppData? accountInitial, [bool reverse = false]) {
+    double plex = reverse ? -1 : 1;
     double? diffDelta;
     if (accountInitial != null && initial != null && accountChange.uuid != accountInitial.uuid) {
-      diffDelta = getPrevDelta();
+      diffDelta = plex * getPrevDelta();
       HistoryData.addLog(accountInitial.uuid!, initial, 0.0, -diffDelta, initial!.uuid);
     }
     double delta = getStateDelta(accountInitial, accountChange);
     HistoryData.addLog(accountChange.uuid!, change, 0.0, delta, change.uuid);
     if (diffDelta != null && accountInitial!.createdAt.isBefore(initial!.createdAt)) {
-      accountInitial.details -= super.exchange.reform(diffDelta, initial?.currency, accountInitial.currency);
+      accountInitial.details -= plex * super.exchange.reform(diffDelta, initial?.currency, accountInitial.currency);
     }
     if (accountChange.createdAt.isBefore(change.createdAt)) {
-      accountChange.details += super.exchange.reform(delta, change.currency, accountChange.currency);
+      accountChange.details += plex * super.exchange.reform(delta, change.currency, accountChange.currency);
     }
   }
 }

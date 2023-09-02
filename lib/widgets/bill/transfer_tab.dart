@@ -2,13 +2,13 @@
 // Use of this source code is governed by a CC BY-NC-ND 4.0 license that can be found in the LICENSE file.
 
 import 'package:app_finance/_classes/herald/app_locale.dart';
+import 'package:app_finance/_classes/structure/invoice_app_data.dart';
 import 'package:app_finance/_classes/structure/navigation/app_route.dart';
-import 'package:app_finance/_classes/structure/account_app_data.dart';
-import 'package:app_finance/_classes/structure/currency/exchange.dart';
 import 'package:app_finance/_classes/controller/focus_controller.dart';
 import 'package:app_finance/_classes/storage/app_data.dart';
 import 'package:app_finance/_configs/theme_helper.dart';
 import 'package:app_finance/widgets/_forms/currency_exchange_input.dart';
+import 'package:app_finance/widgets/_forms/date_time_input.dart';
 import 'package:app_finance/widgets/_wrappers/full_sized_button_widget.dart';
 import 'package:app_finance/widgets/_wrappers/required_widget.dart';
 import 'package:app_finance/widgets/_wrappers/row_widget.dart';
@@ -23,14 +23,18 @@ class TransferTab extends StatefulWidget {
   final String? accountFrom;
   final String? accountTo;
   final double? amount;
+  final String? description;
   final Currency? currency;
+  final DateTime? createdAt;
 
   const TransferTab({
     super.key,
     this.accountFrom,
     this.accountTo,
     this.amount,
+    this.description,
     this.currency,
+    this.createdAt,
   });
 
   @override
@@ -42,6 +46,8 @@ class TransferTabState extends State<TransferTab> {
   String? accountFrom;
   String? accountTo;
   late TextEditingController amount;
+  late TextEditingController description;
+  late DateTime createdAt;
   double? amountValue;
   Currency? currency;
   bool hasErrors = false;
@@ -50,7 +56,9 @@ class TransferTabState extends State<TransferTab> {
   void initState() {
     accountFrom = widget.accountFrom;
     accountTo = widget.accountTo;
+    createdAt = widget.createdAt ?? DateTime.now();
     amount = TextEditingController(text: widget.amount != null ? widget.amount.toString() : '');
+    description = TextEditingController(text: widget.description);
     amountValue = widget.amount;
     currency = widget.currency;
     super.initState();
@@ -62,15 +70,16 @@ class TransferTabState extends State<TransferTab> {
   }
 
   void updateStorage() {
-    String uuidFrom = accountFrom ?? '';
-    final course = Exchange(store: state);
-    AccountAppData from = state.getByUuid(uuidFrom);
-    from.details -= course.reform(double.tryParse(amount.text), from.currency, currency);
-    state.update(uuidFrom, from);
-    String uuidTo = accountTo ?? '';
-    AccountAppData to = state.getByUuid(uuidTo);
-    to.details += course.reform(double.tryParse(amount.text), currency, to.currency);
-    state.update(uuidTo, to);
+    final uuid = accountFrom ?? '';
+    state.add(InvoiceAppData(
+      title: description.text,
+      color: state.getByUuid(uuid)?.color,
+      account: accountTo ?? '',
+      accountFrom: uuid,
+      details: double.tryParse(amount.text),
+      currency: currency,
+      createdAt: createdAt,
+    ));
   }
 
   Widget buildButton(BuildContext context, BoxConstraints constraints) {
@@ -185,6 +194,25 @@ class TransferTabState extends State<TransferTab> {
                       accountTo != null ? state.getByUuid(accountTo!).currency : null,
                     ],
                   ),
+                  Text(
+                    AppLocale.labels.description,
+                    style: textTheme.bodyLarge,
+                  ),
+                  SimpleInput(
+                    controller: description,
+                    tooltip: AppLocale.labels.descriptionTooltip,
+                  ),
+                  ThemeHelper.hIndent2x,
+                  Text(
+                    AppLocale.labels.balanceDate,
+                    style: textTheme.bodyLarge,
+                  ),
+                  DateTimeInput(
+                    width: width,
+                    value: createdAt,
+                    setState: (value) => setState(() => createdAt = value),
+                  ),
+                  ThemeHelper.formEndBox,
                 ],
               ),
             ),

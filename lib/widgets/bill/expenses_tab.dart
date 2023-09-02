@@ -246,6 +246,7 @@ class ExpensesTabState<T extends ExpensesTab> extends State<T> with SharedPrefer
                     value: createdAt ?? DateTime.now(),
                     setState: (value) => setState(() => createdAt = value),
                   ),
+                  ThemeHelper.formEndBox,
                 ],
               ),
             ),

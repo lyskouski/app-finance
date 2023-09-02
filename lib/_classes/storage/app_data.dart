@@ -150,10 +150,14 @@ class AppData extends ChangeNotifier {
       }
     }
     if (currAccount != null) {
-      InvoiceRecalculation(change, initial)
-        ..exchange = Exchange(store: this)
-        ..updateAccount(currAccount, prevAccount);
+      final rec = InvoiceRecalculation(change, initial)..exchange = Exchange(store: this);
+      rec.updateAccount(currAccount, prevAccount);
       _data[AppDataType.accounts]?.add(change.account);
+      if (change.accountFrom != null) {
+        rec.updateAccount(getByUuid(change.accountFrom!, false),
+            initial != null && initial.accountFrom != null ? getByUuid(initial.accountFrom!, false) : null, true);
+        _data[AppDataType.accounts]?.add(change.accountFrom!);
+      }
     }
     if (!isLoading) {
       updateTotals([AppDataType.accounts]).then(_notify);
