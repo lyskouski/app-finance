@@ -85,7 +85,19 @@ jobs:
           mkdir -p Payload
           mv ./build/ios/iphoneos/Runner.app Payload
           zip -r -y Payload.zip Payload/Runner.app
-          mv Payload.zip fingrom_${{ matrix.os }}.ipa
+          mv Payload.zip fingrom_${{ matrix.target }}.ipa
+
+      - name: Store API key
+        env:
+          API_CERTIFICATE_BASE64: ${{ secrets.APPLE_API_P8 }}
+        run: |
+          mkdir -p ~/private_keys
+          echo -n "$API_CERTIFICATE_BASE64" | base64 --decode --output ~/private_keys/AuthKey_${{ secrets.APPLE_API_KEY }}.p8
+
+      - name: Upload to Apple Store
+        run: |
+          xcrun altool --validate-app --type ios -f fingrom_${{ matrix.target }}.ipa --apiKey ${{ secrets.APPLE_API_KEY }} --apiIssuer ${{ secrets.APPLE_API_ISSUE }}
+          xcrun altool --upload-app --type ios -f fingrom_${{ matrix.target }}.ipa --apiKey ${{ secrets.APPLE_API_KEY }} --apiIssuer ${{ secrets.APPLE_API_ISSUE }}
 
       - name: Store Artifacts
         uses: actions/upload-artifact@v3
