@@ -66,7 +66,7 @@ jobs:
 #          p12-file-base64: ${{ secrets.APPLE_DEV_P12 }}
 #          p12-password: ${{ secrets.APPLE_DEV_P12_KEY }}
 
-      - name: Install the provisioning profile
+      - name: Install the Provisioning Profile
         env:
           PROVISIONING_CERTIFICATE_BASE64: ${{ secrets.APPLE_IOS_PROFILE }}
         run: |
@@ -75,21 +75,21 @@ jobs:
           mkdir -p ~/Library/MobileDevice/Provisioning\ Profiles
           cp $PP_PATH ~/Library/MobileDevice/Provisioning\ Profiles
 
-#      - name: Add Provision Profile
-#        uses: timheuer/base64-to-file@v1.2
-#        with:
-#          fileName: 'Fingrom iOS.mobileprovision'
-#          fileDir: '~/Library/MobileDevice/Provisioning Profiles/'
-#          encodedString: ${{ secrets.APPLE_IOS_PROFILE }}
-
       - name: Run iOS Build
         if: matrix.target == 'iOS'
         run: |
           flutter build -v ios --build-name=${{ needs.release.outputs.version }} --build-number=${{ needs.release.outputs.build_number }} --release --no-tree-shake-icons
+
+      - name: Convert APP to IPA
+        run: |
+          mkdir -p Payload
+          mv ./build/ios/iphoneos/Runner.app Payload
+          zip -r -y Payload.zip Payload/Runner.app
+          mv Payload.zip fingrom_${{ matrix.os }}.ipa
 
       - name: Store Artifacts
         uses: actions/upload-artifact@v3
         with:
           name: build_${{ matrix.os }}
           path: |
-            build/ios/ipa/*.ipa
+            fingrom_${{ matrix.os }}.ipa
