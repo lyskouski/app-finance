@@ -1,0 +1,213 @@
+% Copyright 2023 The terCAD team. All rights reserved.
+% Use of this content is governed by a CC BY-NC-ND 4.0 license that can be found in the LICENSE file.
+
+\subsection{Packaging to Apple Store}
+\markboth{Distributing}{Packaging to Apple Store}
+
+Preliminaries from \href{https://docs.flutter.dev/deployment/ios}{https://docs.flutter.dev/deployment/ios} emphasize 
+the necessity of Xcode but what if we do not have any device running macOS to follow this guide, but yet aspire to 
+publish the app to Apple Store. In that case we can proceed with our CI/CD pipelines on GitHub:
+
+\begin{lstlisting}
+build:
+  name: Create ${{ matrix.target }} build
+  runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        target: [iOS, ...]
+        include:
+          - os: macos-latest
+            target: iOS
+            build_path: build/ios/ipa
+            asset_extension: .ipa
+            asset_content_type: application/zip
+  steps:
+  - name: Run iOS Build
+    if: matrix.target == 'iOS'
+    run: flutter build -v ios --build-name=${{ version }} --build-number=${{ number }} --release --no-tree-shake-icons
+\end{lstlisting}
+
+\noindent Unfortunately, this change fails, creating the expected hurdle in the form of our package not being signed:
+
+\begin{lstlisting}[language=bash]
+No valid code signing certificates were found
+For more information, please visit:
+  https://help.apple.com/xcode/mac/current/#/dev3a05256b8
+Error: Process completed with exit code 1.
+\end{lstlisting}
+
+Our focus doesn't lie in acquiring a personal certificate for developmental purposes (since it can be used 
+\q{flutter build -v ios --no-codesign} or next steps with chosen type "\emph{[Software] Apple Development: Sign 
+development versions of your iOS, iPadOS, macOS, tvOS, watchOS, and visionOS apps}"); rather, we're concerned with 
+obtaining a distribution certificate. The iOS distribution certificate ensures that the app's code originates from the 
+authorized organization and remains unaltered. To initiate this process, log in to your Apple Developer account and 
+proceed to Certificates
+(\href{https://developer.apple.com/account/resources/certificates/list}{https://developer.apple.com/account/resources/certificates/list}).
+
+Differentiation between development and distribution is in the \q{ios/Runner.xcodeproj/project.pbxproj}-file definitions:
+
+\begin{lstlisting}[language=bash]
+# Distribution certificate is applied
+"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+# Development certificate would be used
+"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+\end{lstlisting}
+
+By choosing "\emph{[Software] Apple Distribution: Sign your iOS, iPadOS, macOS, tvOS, watchOS, and visionOS apps for 
+release testing using Ad Hoc distribution or for submission to the App Store}" we're asked to upload self-signed 
+certificate. From macOS it can be done by using "Keychain Access", for other environments -- via \q{openssl} (download 
+\q{Win32 OpenSSL} for Windows):
+
+\begin{lstlisting}[language=bash]
+# Create a private key
+> openssl genrsa -out apple.key 2048
+# Create the CSR file (C - Country Name [2 letter code])
+> openssl req -new -key apple.key \ 
+    -out CertificateSigningRequest.certSigningRequest \
+    -subj "/emailAddress=your@mail.to, CN=Your Name, C=XX"
+\end{lstlisting}
+
+After the certificate uploading and processing (by taking back \q{.cer}-file from site) it's needed to create 
+"Identifier" with a set of permissions 
+(\href{https://developer.apple.com/account/resources/identifiers/list}{https://developer.apple.com/account/resources/identifiers/list})
+and initiate the app itself 
+(\href{https://appstoreconnect.apple.com/apps}{https://appstoreconnect.apple.com/apps}) by defining supported 
+environments and providing screenshots with description.
+
+While we've downloaded \q{.cer}-file, it's needed to be converted into a string (base64) representation:
+
+\begin{lstlisting}[language=bash]
+# Convert the .cer-file into .pem-format
+> openssl x509 -in apple.cer -inform DER -out apple.pem -outform PEM
+# Use .pem-file and private .key to generate .p12
+> openssl pkcs12 -export -legacy -out apple.p12 -inkey apple.key -in apple.pem
+Enter Export Password: #####
+# Convert file to base64 string
+> base64 file_name.p12 > apple.txt
+\end{lstlisting}
+
+\noindent Usage of \q{legacy}-attribute is a key factor to avoid a security failure "SecKeychainItemImport: MAC 
+verification failed" since OpenSSL 3.x has changed its default algorithm in \q{pkcs12} which is not compatible with 
+embedded Security frameworks in macOS/iOS.
+
+Then paste generated \q{.txt}-file content into secrets for GitHub together with p12 password (\cref{img:d-secrets}), 
+and extend pipeline by additional Actions:
+
+\begin{lstlisting}[language=yaml]
+- name: Import Distribution Certificate
+  uses: apple-actions/import-codesign-certs@v2
+  with: 
+    keychain: signing_distr
+    p12-file-base64: ${{ secrets.APPLE_P12 }}
+    p12-password: ${{ secrets.APPLE_P12_KEY }}
+\end{lstlisting}
+
+\img{distributing/github-secrets}{GitHub Repository Settings - Configuring Secrets}{img:d-secrets}
+
+Going further with resolving "\emph{Error (Xcode): Signing for "Runner" requires a development team. Select a 
+development team in the Signing \& Capabilities editor}". To fix that without Xcode some "magic" is required (since 
+next properties are not defined in the configuration file, generated by Flutter)... by opening 
+\q{ios/Runner.xcodeproj/project.pbxproj} and adding there a few lines regarding the Team ID and Provision Profile 
+(should be taken from \href{https://appstoreconnect.apple.com/access/users}{https://appstoreconnect.apple.com/access/users}
+and \href{https://developer.apple.com/account/resources/profiles/list}{https://developer.apple.com/account/resources/profiles/list}
+accordingly):
+
+\begin{lstlisting}[firstnumber=172]
+// ./ios/Runner.xcodeproj/project.pbxproj
+  TargetAttributes = {
+    331C8080294A63A400263BE5 = {
+			CreatedOnToolsVersion = 14.0;
+\end{lstlisting}
+{
+\xpretocmd{\lstlisting}{\vspace{-12pt}}{}{}
+\begin{lstlisting}[firstnumber=176, backgroundcolor=\color{backgreen}]
+(*@\kdiff{+}@*)     DevelopmentTeam = 8PVKPQ758L;
+(*@\kdiff{+}@*)     provisioningProfile = "Fingrom iOS";
+\end{lstlisting}
+\begin{lstlisting}[firstnumber=540]
+            /* Debug.xcconfig */;
+  buildSettings = {
+    ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+    CURRENT_PROJECT_VERSION = "$(FLUTTER_BUILD_NUMBER)";
+\end{lstlisting}
+\begin{lstlisting}[firstnumber=543, backgroundcolor=\color{backgreen}]
+(*@\kdiff{+}@*)   DEVELOPMENT_TEAM = 8PVKPQ758L;
+(*@\kdiff{+}@*)   PROVISIONING_PROFILE_SPECIFIER = "Fingrom iOS";
+\end{lstlisting}
+\begin{lstlisting}[firstnumber=564]
+            /* Release.xcconfig */;
+  buildSettings = {
+    ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+    CURRENT_PROJECT_VERSION = "$(FLUTTER_BUILD_NUMBER)";
+\end{lstlisting}
+\begin{lstlisting}[firstnumber=567, backgroundcolor=\color{backgreen}]
+(*@\kdiff{+}@*)   DEVELOPMENT_TEAM = 8PVKPQ758L;
+(*@\kdiff{+}@*)   PROVISIONING_PROFILE_SPECIFIER = "Fingrom iOS";
+\end{lstlisting}
+}
+
+Provision Profile is a second guard statement from Apple that can be taken from
+\href{https://developer.apple.com/account/resources/profiles/list}{https://developer.apple.com/account/resources/profiles/list}
+by choosing "\emph{App Store: Create a distribution provisioning profile to submit your app to the App Store}":
+
+\begin{lstlisting}[language=bash]
+# Convert file to base64 string
+> base64 apple.mobileprovision > apple-provision.txt
+\end{lstlisting}
+
+\noindent Proceed with adding it into GitHub secrets (\cref{img:d-secrets}) and extending pipeline by an additional step:
+
+\begin{lstlisting}[language=yaml]
+- name: Add Provision Profile
+  uses: timheuer/base64-to-file@v1.2
+  with:
+    fileName: 'apple.mobileprovision'
+    fileDir: '~/Library/MobileDevice/Provisioning\ Profiles'
+    encodedString: ${{ secrets.APPLE_IOS_PROFILE }}
+\end{lstlisting}
+
+\noindent Command \q{flutter build -v ios...} is succeeded, and we've taken \q{.app}-file that has to be 
+converted into \q{.ipa}-file by compressing:
+
+\begin{lstlisting}[language=yaml]
+- name: Convert APP to IPA
+  run: |
+    mkdir -p Payload
+    mv ./build/ios/iphoneos/Runner.app Payload
+    zip -r -y Payload.zip Payload/Runner.app
+    mv Payload.zip fingrom_${{ matrix.target }}.ipa
+\end{lstlisting}
+
+\img{distributing/app-store-connect}{Apple Store Connect - Build Section}{img:d-apple-store}
+
+\noindent Turn to upload generated artifact into \q{Build}-section of the application page on 
+\href{https://appstoreconnect.apple.com/}{https://appstoreconnect.apple.com/} (\cref{img:d-apple-store}) by using 
+\q{altool}, but before that it's needed to generate API Key from 
+\href{https://appstoreconnect.apple.com/access/api}{https://appstoreconnect.apple.com/access/api} with "App Manager"
+access, then download the \q{.p8}-key (and convert to base64 for GitHub secrets), and copy \q{Issuer ID} and \q{KEY ID}.
+
+\begin{lstlisting}[language=yaml]
+- name: Upload to Apple Store
+  env:
+    API_CERTIFICATE_BASE64: ${{ secrets.APPLE_API_P8 }}
+  run: |
+    # Apply API private key
+    mkdir -p ~/private_keys
+    echo -n "$API_CERTIFICATE_BASE64" | base64 --decode --output AuthKey_${{ secrets.APPLE_API_KEY }}.p8
+    # Validate package (is needed for "build ID" generation)
+    xcrun altool --validate-app --type ios -f fingrom_${{ matrix.target }}.ipa \ 
+      --apiKey ${{ secrets.APPLE_API_KEY }} \
+      --apiIssuer ${{ secrets.APPLE_API_ISSUE }}
+    # Upload
+    xcrun altool --upload-app --type ios -f fingrom_${{ matrix.target }}.ipa \
+      --apiKey ${{ secrets.APPLE_API_KEY }} \
+      --apiIssuer ${{ secrets.APPLE_API_ISSUE }}
+\end{lstlisting}
+
+\noindent The culmination of this process (\cref{img:d-apple-build}) marks the successful completion of our automated 
+distribution workflow. It's a moment marked by a reassuring message from the pipeline: \q{UPLOAD SUCCEEDED}. 
+This message signifies not just a technical achievement but also a testament to the diligent efforts and meticulous 
+planning that have propelled us toward this accomplishment. With this milestone achieved, we are now one step closer 
+to sharing our application with the world.
+
+\img{distributing/app-store-upload}{Apple Store Connect - Uploaded Build}{img:d-apple-build}
