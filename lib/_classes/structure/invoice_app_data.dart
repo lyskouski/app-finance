@@ -11,10 +11,12 @@ import 'package:intl/intl.dart';
 
 class InvoiceAppData extends AbstractAppData {
   String account;
+  String? accountFrom;
 
   InvoiceAppData({
     required super.title,
     required this.account,
+    this.accountFrom,
     super.uuid,
     super.details,
     super.progress = 0.0,
@@ -38,6 +40,7 @@ class InvoiceAppData extends AbstractAppData {
   InvoiceAppData clone() {
     return InvoiceAppData(
       account: account,
+      accountFrom: accountFrom,
       uuid: super.uuid,
       title: super.title,
       details: super.details,
@@ -56,6 +59,7 @@ class InvoiceAppData extends AbstractAppData {
       uuid: json['uuid'],
       title: json['title'],
       account: json['account'],
+      accountFrom: json['accountFrom'],
       details: json['details'],
       progress: json['progress'],
       description: json['description'],
@@ -72,6 +76,7 @@ class InvoiceAppData extends AbstractAppData {
   Map<String, dynamic> toJson() => {
         ...super.toJson(),
         'account': account,
+        'accountFrom': accountFrom,
       };
 
   String get detailsFormatted => getNumberFormatted(super.details);

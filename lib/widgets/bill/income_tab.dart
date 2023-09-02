@@ -209,7 +209,7 @@ class IncomeTabState extends State<IncomeTab> with SharedPreferencesMixin {
                     value: createdAt,
                     setState: (value) => setState(() => createdAt = value),
                   ),
-                  ThemeHelper.hIndent2x,
+                  ThemeHelper.formEndBox,
                 ],
               ),
             ),
