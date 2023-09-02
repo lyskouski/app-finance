@@ -14,7 +14,7 @@
 - Windows: [latest Release](https://github.com/lyskouski/app-finance/releases/latest) -> fingrom_Windows.zip
 
 #### Mobile Apps
-- iOS [[pending]](https://github.com/lyskouski/app-finance/issues/116)
+- iOS [latest Release](https://github.com/lyskouski/app-finance/releases/latest) -> fingrom_iOS.ipa
 - Android [[on hold]](https://github.com/lyskouski/app-finance/issues/129)
 - F-Droid [[pending]](https://github.com/lyskouski/app-finance/issues/208)
 
@@ -40,9 +40,15 @@
     - Bar Rase for Categories
   - Goals Gauge Chart
   - Currency Historical Chart
+- Synchronization between devices (P2P) 
 - Recovery via WebDav or a direct File
 - Import from `CSV`, `QIF` files for Bills and Invoices
 - Data encryption
+- User Experience
+  - Theme Mode (dark, light, system)
+  - Preserve last choice for Account, Budget, and Currency
+  - Auto-scroll to the focused element on Form
+  - Expand / Collapse sections on Main Page
 
 ### Health Check
 
