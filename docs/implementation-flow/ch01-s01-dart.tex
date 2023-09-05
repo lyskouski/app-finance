@@ -1,0 +1,46 @@
+% Copyright 2023 The terCAD team. All rights reserved.
+% Use of this content is governed by a CC BY-NC-ND 4.0 license that can be found in the LICENSE file.
+
+\subsection{Dart}
+\markboth{Bootcamping}{Dart}
+
+\subsubsection{Overloading operators}
+
+In Dart, "magic methods" are often referred to as "operator overloading" or "special methods." They allow you to define 
+custom behaviors for built-in operations:
+
+\begin{itemize}
+  \item \q{toString} returns a string representation of an object, can be used for a serialization and deserialization 
+  process of an object;
+  \item \q{call} allows an object to be treated as a function;
+  \item \q{hashCode} returns a hash code for an object (to use object as a key for \q{Map} and \q{Set});
+  \item \q{operator==} compares two objects for equality;
+  \item \q{get} and \q{set} -- to override the behavior of getting and setting properties.
+\end{itemize}
+
+\begin{lstlisting}
+class Person {
+  // Required from constructor
+  String name;
+  // Post-initialization
+  late DateTime _createdAt = DateTime.now();
+  // var person = Person('Tom');
+  Person(this.name);
+  // person() // 'Hello from Tom!'
+  String call() => 'Hello from $name!';
+  // person.createdAt = DateTime(2023, 01, 01);
+  set createdAt(DateTime date) => _createdAt = date;
+  // print(person.createdAt); // 2023-01-01 00:00:00
+  DateTime get createdAt => _createdAt;
+  // print(Person('Tom') == Person('Terry')); // false
+  @override
+  bool operator ==(Person other) => other.name == name;
+  // person = Person.fromString('Tom');
+  factory Person.fromString(String name) {
+    return Person(name);
+  }
+  // print(person); // 'Tom'
+  @override
+  String toString() => name;
+}
+\end{lstlisting}
