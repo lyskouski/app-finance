@@ -12,10 +12,7 @@ class AppLocale extends ValueNotifier<Locale?> with SharedPreferencesMixin {
   AppLocale([Locale? value]) : super(value) {
     final newValue = getPreference(prefLocale);
     if (newValue != null) {
-      final loc = fromCode(newValue);
-      if (loc != null && AppLocalizations.supportedLocales.contains(loc)) {
-        _set(loc);
-      }
+      set(newValue);
     }
   }
 
@@ -27,22 +24,21 @@ class AppLocale extends ValueNotifier<Locale?> with SharedPreferencesMixin {
     }
   }
 
-  void _set(Locale newValue) {
-    if (newValue != value) {
-      value = newValue;
+  void set(String newValue, [Function? callback]) {
+    final loc = fromCode(newValue);
+    if (loc != null && loc != value && AppLocalizations.supportedLocales.contains(loc)) {
+      value = loc;
       code = value.toString();
+      if (callback != null) {
+        callback();
+      }
       notifyListeners();
     }
   }
 
-  updateState(BuildContext context) {
+  void updateState(BuildContext context) {
     final value = Localizations.localeOf(context).toString();
-    final loc = fromCode(value);
-    if (loc != null) {
-      labels = AppLocalizations.of(context)!;
-      setPreference(prefLocale, value).then((_) {
-        _set(loc);
-      });
-    }
+    labels = AppLocalizations.of(context)!;
+    set(value, () => setPreference(prefLocale, value));
   }
 }
