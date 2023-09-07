@@ -55,7 +55,7 @@ class SettingTabState<T extends SettingTab> extends AbstractTabState<T> with Sha
 
   void saveTheme(String value) {
     setState(() => brightness = value);
-    theme.updateState(value);
+    theme.setTheme(value);
   }
 
   Future<void> initCurrencyFromLocale(String locale) async {
