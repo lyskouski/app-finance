@@ -114,15 +114,10 @@ class HomePageState extends AbstractPageState<HomePage> {
     EdgeInsets margin = EdgeInsets.only(top: indent);
     final matrix = ResponsiveMatrix(getWindowType(context));
     final countWidth = matrix.getWidthCount(constraints);
-    bool isVertical = ThemeHelper.isVertical(constraints) && countWidth == 1;
+    bool isVertical = countWidth == 1;
     double width = ThemeHelper.getWidth(context, 3);
     double partWidth = width / countWidth - indent * (countWidth - 1);
 
-    final goalWidget = GoalWidget(
-      margin: EdgeInsets.zero,
-      width: isVertical ? width : partWidth,
-      state: super.state.getList(AppDataType.goals),
-    );
     final billWidget = BillWidget(
       margin: margin,
       title: '${AppLocale.labels.billHeadline}, ${DateFormat.MMMM(AppLocale.code).format(DateTime.now())}',
@@ -184,7 +179,13 @@ class HomePageState extends AbstractPageState<HomePage> {
           ]
       },
       children: [
-        goalWidget,
+        matrix.getHeightCount(constraints) > 3
+            ? GoalWidget(
+                margin: EdgeInsets.zero,
+                width: isVertical ? width : partWidth,
+                state: super.state.getList(AppDataType.goals),
+              )
+            : ThemeHelper.emptyBox,
         billWidget,
         accountWidget,
         budgetWidget,

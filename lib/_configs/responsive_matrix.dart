@@ -11,20 +11,16 @@ class ResponsiveMatrix {
 
   bool isLower(AdaptiveWindowType size) => windowType <= size;
 
-  AdaptiveWindowType _getHighest(double size) {
+  int getWidthCount(BoxConstraints constraints) {
     final matrix = {
-      AdaptiveWindowType.xlarge: size >= 1440, // AdaptiveWindowType.xlarge.widthRangeValues.start,
-      AdaptiveWindowType.large: size >= 1024, // AdaptiveWindowType.large.widthRangeValues.start,
-      AdaptiveWindowType.medium: size >= 640, // AdaptiveWindowType.medium.widthRangeValues.start,
-      AdaptiveWindowType.small: size >= 320, // AdaptiveWindowType.small.widthRangeValues.start,
+      AdaptiveWindowType.xlarge: constraints.maxWidth >= 1440, // AdaptiveWindowType.xlarge.widthRangeValues.start,
+      AdaptiveWindowType.large: constraints.maxWidth >= 1024, // AdaptiveWindowType.large.widthRangeValues.start,
+      AdaptiveWindowType.medium: constraints.maxWidth >= 640, // AdaptiveWindowType.medium.widthRangeValues.start,
+      AdaptiveWindowType.small: constraints.maxWidth >= 320, // AdaptiveWindowType.small.widthRangeValues.start,
       AdaptiveWindowType.xsmall: true,
     };
     matrix.removeWhere((_, value) => value == false);
-    return matrix.keys.first;
-  }
-
-  int getWidthCount(BoxConstraints constraints) {
-    return switch (_getHighest(constraints.maxWidth)) {
+    return switch (matrix.keys.first) {
       AdaptiveWindowType.xlarge => 4,
       AdaptiveWindowType.large => 3,
       AdaptiveWindowType.medium => 2,
@@ -33,8 +29,17 @@ class ResponsiveMatrix {
   }
 
   int getHeightCount(BoxConstraints constraints) {
-    return switch (_getHighest(constraints.maxHeight)) {
+    final matrix = {
+      AdaptiveWindowType.xlarge: constraints.maxHeight >= 1440,
+      AdaptiveWindowType.large: constraints.maxHeight >= 800,
+      AdaptiveWindowType.medium: constraints.maxHeight >= 480,
+      AdaptiveWindowType.small: constraints.maxHeight >= 240,
+      AdaptiveWindowType.xsmall: true,
+    };
+    matrix.removeWhere((_, value) => value == false);
+    return switch (matrix.keys.first) {
       AdaptiveWindowType.xlarge => 7,
+      AdaptiveWindowType.small => 3,
       AdaptiveWindowType.xsmall => 3,
       _ => 4,
     };
