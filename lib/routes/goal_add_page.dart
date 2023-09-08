@@ -2,11 +2,13 @@
 // Use of this source code is governed by a CC BY-NC-ND 4.0 license that can be found in the LICENSE file.
 
 import 'package:app_finance/_classes/herald/app_locale.dart';
+import 'package:app_finance/_classes/structure/currency/currency_provider.dart';
 import 'package:app_finance/_classes/structure/currency/exchange.dart';
 import 'package:app_finance/_classes/structure/goal_app_data.dart';
 import 'package:app_finance/_classes/controller/focus_controller.dart';
 import 'package:app_finance/_classes/storage/app_data.dart';
 import 'package:app_finance/_configs/theme_helper.dart';
+import 'package:app_finance/_mixins/shared_preferences_mixin.dart';
 import 'package:app_finance/routes/abstract_page.dart';
 import 'package:app_finance/widgets/_forms/color_selector.dart';
 import 'package:app_finance/widgets/_forms/currency_selector.dart';
@@ -40,7 +42,7 @@ class GoalAddPage extends AbstractPage {
   GoalAddPageState createState() => GoalAddPageState();
 }
 
-class GoalAddPageState<T extends GoalAddPage> extends AbstractPageState<GoalAddPage> {
+class GoalAddPageState<T extends GoalAddPage> extends AbstractPageState<GoalAddPage> with SharedPreferencesMixin {
   late TextEditingController title;
   IconData? icon;
   MaterialColor? color;
@@ -55,7 +57,8 @@ class GoalAddPageState<T extends GoalAddPage> extends AbstractPageState<GoalAddP
     icon = widget.icon;
     color = widget.color;
     details = TextEditingController(text: widget.details != null ? widget.details.toString() : '');
-    currency = widget.currency;
+    final currencyId = getPreference(prefCurrency);
+    currency = widget.currency ?? CurrencyProvider.findByCode(currencyId);
     closedAt = widget.closedAt;
     super.initState();
   }
