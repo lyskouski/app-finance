@@ -2,7 +2,7 @@
 // Use of this source code is governed by a CC BY-NC-ND 4.0 license that can be found in the LICENSE file.
 
 import 'package:app_finance/_classes/herald/app_theme.dart';
-import 'package:app_finance/_mixins/shared_preferences_mixin.dart';
+import 'package:app_finance/_classes/storage/app_preferences.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/annotations.dart';
@@ -13,7 +13,7 @@ import 'app_theme_test.mocks.dart';
 
 void main() {
   setUp(() {
-    SharedPreferencesMixin.pref = MockSharedPreferences();
+    AppPreferences.pref = MockSharedPreferences();
   });
 
   group('AppTheme', () {

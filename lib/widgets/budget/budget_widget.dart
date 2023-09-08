@@ -6,7 +6,13 @@ import 'package:app_finance/widgets/home/budget_widget.dart' as home;
 import 'package:flutter/material.dart';
 
 class BudgetWidget extends home.BudgetWidget {
-  BudgetWidget({super.key, required super.title, required super.width, required super.margin, required super.state});
+  BudgetWidget({
+    super.key,
+    required super.title,
+    required super.width,
+    required super.margin,
+    required super.state,
+  });
 
   @override
   Widget buildSingleListWidget(item, BuildContext context) {

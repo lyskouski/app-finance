@@ -6,7 +6,7 @@ import 'package:app_finance/_classes/structure/currency/currency_provider.dart';
 import 'package:app_finance/_classes/structure/invoice_app_data.dart';
 import 'package:app_finance/_classes/structure/navigation/app_route.dart';
 import 'package:app_finance/_classes/controller/focus_controller.dart';
-import 'package:app_finance/_mixins/shared_preferences_mixin.dart';
+import 'package:app_finance/_classes/storage/app_preferences.dart';
 import 'package:app_finance/_classes/storage/app_data.dart';
 import 'package:app_finance/_configs/theme_helper.dart';
 import 'package:app_finance/widgets/_forms/currency_exchange_input.dart';
@@ -41,7 +41,7 @@ class IncomeTab extends StatefulWidget {
   IncomeTabState createState() => IncomeTabState();
 }
 
-class IncomeTabState extends State<IncomeTab> with SharedPreferencesMixin {
+class IncomeTabState extends State<IncomeTab> {
   late AppData state;
   String? account;
   Currency? currency;
@@ -66,12 +66,12 @@ class IncomeTabState extends State<IncomeTab> with SharedPreferencesMixin {
   void _loadPreferences() {
     setState(() {
       isFresh = false;
-      final value = getPreference(prefAccount);
+      final value = AppPreferences.get(AppPreferences.prefAccount);
       var obj = state.getByUuid(value ?? '');
       account ??= obj?.uuid;
       currency ??= obj?.currency;
 
-      final currencyId = getPreference(prefCurrency);
+      final currencyId = AppPreferences.get(AppPreferences.prefCurrency);
       currency ??= CurrencyProvider.findByCode(currencyId);
     });
   }
@@ -83,7 +83,7 @@ class IncomeTabState extends State<IncomeTab> with SharedPreferencesMixin {
 
   void updateStorage() {
     String uuid = account ?? '';
-    setPreference(prefAccount, uuid);
+    AppPreferences.set(AppPreferences.prefAccount, uuid);
     state.add(InvoiceAppData(
       title: description.text,
       color: state.getByUuid(uuid)?.color,

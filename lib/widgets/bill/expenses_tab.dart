@@ -6,7 +6,7 @@ import 'package:app_finance/_classes/structure/navigation/app_route.dart';
 import 'package:app_finance/_classes/structure/currency/currency_provider.dart';
 import 'package:app_finance/_classes/structure/bill_app_data.dart';
 import 'package:app_finance/_classes/controller/focus_controller.dart';
-import 'package:app_finance/_mixins/shared_preferences_mixin.dart';
+import 'package:app_finance/_classes/storage/app_preferences.dart';
 import 'package:app_finance/_classes/storage/app_data.dart';
 import 'package:app_finance/_configs/theme_helper.dart';
 import 'package:app_finance/widgets/_forms/currency_exchange_input.dart';
@@ -44,7 +44,7 @@ class ExpensesTab<T> extends StatefulWidget {
   ExpensesTabState createState() => ExpensesTabState();
 }
 
-class ExpensesTabState<T extends ExpensesTab> extends State<T> with SharedPreferencesMixin {
+class ExpensesTabState<T extends ExpensesTab> extends State<T> {
   late AppData state;
   String? account;
   String? budget;
@@ -72,17 +72,17 @@ class ExpensesTabState<T extends ExpensesTab> extends State<T> with SharedPrefer
     setState(() {
       isFresh = false;
 
-      final accountId = getPreference(prefAccount);
+      final accountId = AppPreferences.get(AppPreferences.prefAccount);
       final objAccount = state.getByUuid(accountId ?? '');
       account ??= objAccount?.uuid;
       currency ??= objAccount?.currency;
 
-      final budgetId = getPreference(prefBudget);
+      final budgetId = AppPreferences.get(AppPreferences.prefBudget);
       final objBudget = state.getByUuid(budgetId ?? '');
       budget ??= objBudget?.uuid;
       currency ??= objBudget?.currency;
 
-      final currencyId = getPreference(prefCurrency);
+      final currencyId = AppPreferences.get(AppPreferences.prefCurrency);
       currency ??= CurrencyProvider.findByCode(currencyId);
     });
   }
@@ -93,8 +93,8 @@ class ExpensesTabState<T extends ExpensesTab> extends State<T> with SharedPrefer
   }
 
   void updateStorage() {
-    setPreference(prefAccount, account ?? '');
-    setPreference(prefBudget, budget ?? '');
+    AppPreferences.set(AppPreferences.prefAccount, account ?? '');
+    AppPreferences.set(AppPreferences.prefBudget, budget ?? '');
     state.add(BillAppData(
       account: account ?? '',
       category: budget ?? '',

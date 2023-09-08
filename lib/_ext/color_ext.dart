@@ -5,22 +5,22 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 
-mixin ColorMixin {
-  MaterialColor convertToMaterialColor(Color color) {
+extension ColorExt on Color {
+  MaterialColor get toMaterialColor {
     final Map<int, Color> colorMap = {};
-    final red = color.red;
-    final green = color.green;
-    final blue = color.blue;
     for (int i = 50; i <= 900; i += 100) {
       colorMap[i] = Color.fromRGBO(red, green, blue, i / 1000.0);
     }
-    return MaterialColor(color.value, colorMap);
+    return MaterialColor(value, colorMap);
   }
 
-  MaterialColor getRandomMaterialColor() {
+  static Color getRandom() {
     List<Color> colors = Colors.primaries;
     Random random = Random();
-    Color randomColor = colors[random.nextInt(colors.length)];
-    return convertToMaterialColor(randomColor);
+    return colors[random.nextInt(colors.length)];
+  }
+
+  static MaterialColor getRandomMaterialColor() {
+    return getRandom().toMaterialColor;
   }
 }

@@ -7,16 +7,17 @@ import 'package:app_finance/_classes/structure/account_app_data.dart';
 import 'package:app_finance/_classes/structure/currency/exchange.dart';
 import 'package:app_finance/_configs/account_type.dart';
 import 'package:app_finance/_configs/theme_helper.dart';
-import 'package:app_finance/_mixins/shared_preferences_mixin.dart';
+import 'package:app_finance/_classes/storage/app_preferences.dart';
 import 'package:app_finance/widgets/_generic/base_group_widget.dart';
 import 'package:app_finance/widgets/_generic/base_line_widget.dart';
 import 'package:app_finance/widgets/_generic/base_widget.dart';
 import 'package:currency_picker/currency_picker.dart';
 import 'package:flutter/material.dart';
 
-class AccountWidget extends BaseWidget with SharedPreferencesMixin {
+class AccountWidget extends BaseWidget {
   late final Exchange exchange;
 
+  // ignore: prefer_const_constructors_in_immutables
   AccountWidget({
     super.key,
     required super.title,
@@ -59,7 +60,7 @@ class AccountWidget extends BaseWidget with SharedPreferencesMixin {
   }
 
   dynamic wrapBySingleEntity(List<dynamic> items) {
-    Currency? def = CurrencyProvider.findByCode(getPreference(prefCurrency));
+    Currency? def = CurrencyProvider.findByCode(AppPreferences.get(AppPreferences.prefCurrency));
     return AccountAppData(
       title: getName(items.first),
       type: AppAccountType.account.toString(),

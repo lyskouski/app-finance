@@ -3,7 +3,7 @@
 
 import 'package:app_finance/_classes/herald/app_locale.dart';
 import 'package:app_finance/_classes/controller/focus_controller.dart';
-import 'package:app_finance/_mixins/color_mixin.dart';
+import 'package:app_finance/_ext/color_ext.dart';
 import 'package:app_finance/widgets/_forms/abstract_selector.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_colorpicker/flutter_colorpicker.dart';
@@ -24,10 +24,10 @@ class ColorSelector extends AbstractSelector {
   ColorSelectorState createState() => ColorSelectorState();
 }
 
-class ColorSelectorState extends AbstractSelectorState<ColorSelector> with ColorMixin {
+class ColorSelectorState extends AbstractSelectorState<ColorSelector> {
   @override
   void onTap(context) {
-    MaterialColor clr = widget.value ?? getRandomMaterialColor();
+    MaterialColor clr = widget.value ?? ColorExt.getRandomMaterialColor();
     NavigatorState nav = Navigator.of(context);
     if (widget.value == null) {
       widget.setState(clr);
@@ -41,7 +41,7 @@ class ColorSelectorState extends AbstractSelectorState<ColorSelector> with Color
             child: ColorPicker(
               pickerColor: clr,
               onColorChanged: (color) {
-                widget.setState(convertToMaterialColor(color));
+                widget.setState(color.toMaterialColor);
                 FocusController.onEditingComplete(widget.focusOrder);
               },
             ),

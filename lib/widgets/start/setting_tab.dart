@@ -4,7 +4,7 @@
 import 'package:app_finance/_classes/herald/app_locale.dart';
 import 'package:app_finance/_classes/herald/app_theme.dart';
 import 'package:app_finance/_classes/structure/currency/currency_provider.dart';
-import 'package:app_finance/_mixins/shared_preferences_mixin.dart';
+import 'package:app_finance/_classes/storage/app_preferences.dart';
 import 'package:app_finance/_configs/theme_helper.dart';
 import 'package:app_finance/widgets/_forms/currency_selector.dart';
 import 'package:app_finance/widgets/_forms/list_selector.dart';
@@ -23,7 +23,7 @@ class SettingTab extends AbstractTab {
   SettingTabState createState() => SettingTabState();
 }
 
-class SettingTabState<T extends SettingTab> extends AbstractTabState<T> with SharedPreferencesMixin {
+class SettingTabState<T extends SettingTab> extends AbstractTabState<T> {
   late AppTheme theme;
   Currency? currency;
   bool isEncrypted = false;
@@ -33,11 +33,11 @@ class SettingTabState<T extends SettingTab> extends AbstractTabState<T> with Sha
   @override
   void initState() {
     super.initState();
-    final doEncrypt = getPreference(prefDoEncrypt);
+    final doEncrypt = AppPreferences.get(AppPreferences.prefDoEncrypt);
     hasEncrypted = doEncrypt != null;
     isEncrypted = doEncrypt == 'true' || doEncrypt == null;
-    setPreference(prefDoEncrypt, isEncrypted ? 'true' : 'false');
-    brightness = getPreference(prefTheme) ?? brightness;
+    AppPreferences.set(AppPreferences.prefDoEncrypt, isEncrypted ? 'true' : 'false');
+    brightness = AppPreferences.get(AppPreferences.prefTheme) ?? brightness;
   }
 
   void saveEncryption(newValue) {
@@ -45,11 +45,11 @@ class SettingTabState<T extends SettingTab> extends AbstractTabState<T> with Sha
       return;
     }
     setState(() => isEncrypted = newValue);
-    setPreference(prefDoEncrypt, isEncrypted ? 'true' : 'false');
+    AppPreferences.set(AppPreferences.prefDoEncrypt, isEncrypted ? 'true' : 'false');
   }
 
   Future<void> saveCurrency(Currency? value) async {
-    await setPreference(prefCurrency, value!.code);
+    await AppPreferences.set(AppPreferences.prefCurrency, value!.code);
     setState(() => currency = value);
   }
 
@@ -60,9 +60,9 @@ class SettingTabState<T extends SettingTab> extends AbstractTabState<T> with Sha
 
   Future<void> initCurrencyFromLocale(String locale) async {
     final format = NumberFormat.simpleCurrency(locale: locale);
-    String? code = getPreference(prefCurrency);
+    String? code = AppPreferences.get(AppPreferences.prefCurrency);
     if (code == null && format.currencyName != null) {
-      await setPreference(prefCurrency, format.currencyName!);
+      await AppPreferences.set(AppPreferences.prefCurrency, format.currencyName!);
       code = format.currencyName!;
     }
     setState(() => currency = CurrencyProvider.findByCode(code));

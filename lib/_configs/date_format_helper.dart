@@ -10,7 +10,7 @@ class _Assertion {
   int length = 0;
 }
 
-mixin DateFormatMixin {
+class DateFormatHelper {
   String detectFormat(List<String> data, String locale, [List<String>? ampm]) {
     ampm ??= [AppLocale.labels.dtAm, AppLocale.labels.dtPm];
     List<String?> format = [];

@@ -2,7 +2,7 @@
 // Use of this source code is governed by a CC BY-NC-ND 4.0 license that can be found in the LICENSE file.
 
 import 'package:app_finance/_classes/gen/generate_with_method_setters.dart';
-import 'package:app_finance/_mixins/shared_preferences_mixin.dart';
+import 'package:app_finance/_classes/storage/app_preferences.dart';
 import 'package:flutter_test/flutter_test.dart';
 // ignore: depend_on_referenced_packages
 import 'package:gherkin/gherkin.dart';
@@ -16,7 +16,7 @@ import 'clear_mocked_preferences.mocks.dart';
 @GenerateWithMethodSetters([MockSharedPreferences])
 import 'clear_mocked_preferences.wrapper.dart';
 
-class ClearMockedPreferences extends Given with SharedPreferencesMixin {
+class ClearMockedPreferences extends Given {
   @override
   RegExp get pattern => RegExp(r"I clear my preferences at the start");
 
@@ -24,7 +24,7 @@ class ClearMockedPreferences extends Given with SharedPreferencesMixin {
   Future<void> executeStep() async {
     final pref = WrapperMockSharedPreferences();
     pref.mockGetString = (value) => null;
-    SharedPreferencesMixin.pref = pref;
+    AppPreferences.pref = pref;
     await FileRunner.tester.pumpAndSettle();
   }
 }

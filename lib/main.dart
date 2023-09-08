@@ -4,7 +4,7 @@
 import 'package:app_finance/_classes/herald/app_locale.dart';
 import 'package:app_finance/_classes/herald/app_sync.dart';
 import 'package:app_finance/_classes/herald/app_theme.dart';
-import 'package:app_finance/_mixins/shared_preferences_mixin.dart';
+import 'package:app_finance/_classes/storage/app_preferences.dart';
 import 'package:app_finance/_configs/custom_text_theme.dart';
 import 'package:app_finance/_classes/storage/app_data.dart';
 import 'package:app_finance/_classes/structure/navigation/app_route.dart';
@@ -58,7 +58,7 @@ void main() async {
       FirebaseAnalytics.instance.logSelectContent(contentType: details.toString(), itemId: 'flutter-error');
     };
   }
-  SharedPreferencesMixin.pref = await SharedPreferences.getInstance();
+  AppPreferences.pref = await SharedPreferences.getInstance();
   final appSync = AppSync();
   runApp(
     MultiProvider(
