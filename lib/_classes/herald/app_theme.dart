@@ -14,7 +14,7 @@ class AppTheme extends ValueNotifier<ThemeMode> with SharedPreferencesMixin {
 
   _set(String val) {
     int? idx = int.tryParse(val);
-    if (idx != null) {
+    if (idx != null && idx < ThemeMode.values.length) {
       final newValue = ThemeMode.values[idx];
       if (newValue != value) {
         value = newValue;
@@ -23,9 +23,8 @@ class AppTheme extends ValueNotifier<ThemeMode> with SharedPreferencesMixin {
     }
   }
 
-  updateState(String value) {
-    setPreference(prefTheme, value).then((_) {
-      _set(value);
-    });
+  Future<void> setTheme(String value) async {
+    await setPreference(prefTheme, value);
+    _set(value);
   }
 }
