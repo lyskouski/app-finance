@@ -1,13 +1,16 @@
 // Copyright 2023 The terCAD team. All rights reserved.
 // Use of this source code is governed by a CC BY-NC-ND 4.0 license that can be found in the LICENSE file.
 
+import 'package:adaptive_breakpoints/adaptive_breakpoints.dart';
 import 'package:app_finance/_classes/storage/app_data.dart';
 import 'package:app_finance/_classes/herald/app_locale.dart';
 import 'package:app_finance/_classes/structure/currency/exchange.dart';
 import 'package:app_finance/_classes/storage/app_preferences.dart';
+import 'package:app_finance/_configs/responsive_matrix.dart';
 import 'package:app_finance/_configs/theme_helper.dart';
 import 'package:app_finance/_classes/structure/navigation/app_route.dart';
 import 'package:app_finance/routes/abstract_page.dart';
+import 'package:app_finance/widgets/_wrappers/grid_layer.dart';
 import 'package:app_finance/widgets/init/init_tab.dart';
 import 'package:app_finance/widgets/_wrappers/toolbar_button_widget.dart';
 import 'package:app_finance/widgets/home/account_widget.dart';
@@ -108,80 +111,85 @@ class HomePageState extends AbstractPageState<HomePage> {
   @override
   Widget buildContent(BuildContext context, BoxConstraints constraints) {
     double indent = ThemeHelper.getIndent();
-    EdgeInsets single = EdgeInsets.fromLTRB(indent, indent, indent, 0);
-    EdgeInsets middleLeft = EdgeInsets.fromLTRB(indent, indent, 0, 0);
-    EdgeInsets middleRight = EdgeInsets.fromLTRB(indent, indent, indent, 0);
-    EdgeInsets bottom = EdgeInsets.fromLTRB(indent, indent, indent, indent);
+    EdgeInsets margin = EdgeInsets.only(top: indent);
+    final matrix = ResponsiveMatrix(getWindowType(context));
+    final countWidth = matrix.getWidthCount(constraints);
+    bool isVertical = countWidth == 1;
     double width = ThemeHelper.getWidth(context, 3);
-    double halfWidth = width / 2;
-    final DateFormat formatterDate = DateFormat.MMMM(AppLocale.code);
-    bool isVertical = ThemeHelper.isVertical(constraints);
+    double partWidth = width / countWidth - indent * (countWidth - 1);
 
-    final goalWidget = GoalWidget(
-      margin: EdgeInsets.fromLTRB(indent, 0, indent, 0),
-      state: super.state.getList(AppDataType.goals),
-    );
     final billWidget = BillWidget(
-      margin: ThemeHelper.isVertical(constraints) ? single : middleRight,
-      title: '${AppLocale.labels.billHeadline}, ${formatterDate.format(DateTime.now())}',
+      margin: margin,
+      title: '${AppLocale.labels.billHeadline}, ${DateFormat.MMMM(AppLocale.code).format(DateTime.now())}',
       state: super.state.get(AppDataType.bills),
       limit: 7,
       route: AppRoute.billRoute,
       tooltip: AppLocale.labels.billTooltip,
-      width: ThemeHelper.isVertical(constraints) ? width : halfWidth - indent,
+      width: isVertical ? width : partWidth,
       hasExpand: isVertical,
       toExpand: toExpand,
       callback: (v) => setState(() => toExpand = v),
     );
     final accountWidget = AccountWidget(
-      margin: ThemeHelper.isVertical(constraints) ? single : middleLeft,
+      margin: margin,
       title: '${AppLocale.labels.accountHeadline}, ${AppLocale.labels.total}',
       state: super.state.get(AppDataType.accounts),
       limit: 7,
       route: AppRoute.accountRoute,
       tooltip: AppLocale.labels.accountTooltip,
-      width: ThemeHelper.isVertical(constraints) ? width : halfWidth - indent,
+      width: isVertical ? width : partWidth,
       hasExpand: isVertical,
       toExpand: toExpand,
       callback: (v) => setState(() => toExpand = v),
     )..exchange = Exchange(store: super.state);
     final budgetWidget = BudgetWidget(
-      margin: bottom,
+      margin: margin,
       title: '${AppLocale.labels.budgetHeadline}, ${AppLocale.labels.left}',
       state: super.state.get(AppDataType.budgets),
       limit: 7,
       route: AppRoute.budgetRoute,
       tooltip: AppLocale.labels.budgetTooltip,
-      width: ThemeHelper.isVertical(constraints) ? width : width + indent / 2,
+      width: isVertical ? width : partWidth,
       hasExpand: isVertical,
       toExpand: toExpand,
       callback: (v) => setState(() => toExpand = v),
     )..exchange = Exchange(store: super.state);
 
-    if (isVertical) {
-      return Column(
-        children: [
-          goalWidget,
-          billWidget,
-          accountWidget,
-          budgetWidget,
-        ],
-      );
-    } else {
-      return Column(
-        children: [
-          goalWidget,
-          Expanded(
-            child: Row(
-              children: [
-                accountWidget,
-                billWidget,
-              ],
-            ),
-          ),
-          budgetWidget,
-        ],
-      );
-    }
+    return GridLayer(
+      padding: indent,
+      crossAxisCount: countWidth,
+      rules: switch (countWidth) {
+        4 => [
+            [2],
+            [3],
+            [1],
+            [0]
+          ],
+        3 => [
+            [2],
+            [3],
+            [0, 1]
+          ],
+        2 => [
+            [2, 3],
+            [0, 1]
+          ],
+        _ => [
+            [0, 1, 2, 3]
+          ]
+      },
+      children: [
+        matrix.getHeightCount(constraints) > 3
+            ? GoalWidget(
+                margin: EdgeInsets.zero,
+                width: isVertical ? width : partWidth,
+                state: super.state.getList(AppDataType.goals),
+              )
+            : ThemeHelper.emptyBox,
+        billWidget,
+        accountWidget,
+        budgetWidget,
+      ],
+    );
   }
 }

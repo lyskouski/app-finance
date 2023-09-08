@@ -8,12 +8,14 @@ import 'package:flutter/material.dart';
 
 class GoalWidget extends StatelessWidget {
   final EdgeInsetsGeometry margin;
+  final double? width;
   final List<dynamic> state;
 
   const GoalWidget({
     super.key,
     required this.margin,
     required this.state,
+    this.width,
   });
 
   @override
@@ -31,7 +33,8 @@ class GoalWidget extends StatelessWidget {
         color: colorScheme.inversePrimary,
         child: TabWidget(
           asDots: true,
-          children: state.map((e) => GoalLineWidget(goal: e)).toList(),
+          maxWidth: width,
+          children: state.map((e) => GoalLineWidget(goal: e, width: width)).toList(),
         ),
       ),
     );
