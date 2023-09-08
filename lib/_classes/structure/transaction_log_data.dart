@@ -27,6 +27,8 @@ class TransactionLogData<T> with FormatterMixin {
 
   DateTime get timestamp => _time;
 
+  double get delta => (double.tryParse(changedTo.toString()) ?? 0.0) - (double.tryParse(changedFrom.toString()) ?? 0.0);
+
   TransactionLogData clone() {
     return TransactionLogData(
       name: name,
