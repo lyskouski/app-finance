@@ -266,7 +266,7 @@
             "type": "String"
         }
     },
-    "settingsBaseHeadline": "Basic States",
+    "settingsBaseHeadline": "Basics",
     "settingsHeadline": "Settings",
     "spent": "spent",
     "subscription": "As an open-source project, subscribing will not unlock any additional features. However, it would serve as an investment in the continuous evolution and improvement of the application.",

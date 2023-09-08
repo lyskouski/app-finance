@@ -32,7 +32,7 @@ class AppLocale extends ValueNotifier<Locale?> {
       if (callback != null) {
         callback();
       }
-      WidgetsBinding.instance.addPostFrameCallback((_) => notifyListeners());
+      notifyListeners();
     }
   }
 
