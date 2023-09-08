@@ -11,10 +11,12 @@ import 'package:flutter/material.dart';
 
 class GoalLineWidget extends StatelessWidget {
   final GoalAppData goal;
+  final double? width;
 
   const GoalLineWidget({
     super.key,
     required this.goal,
+    this.width,
   });
 
   @override
@@ -22,7 +24,7 @@ class GoalLineWidget extends StatelessWidget {
     final indent = ThemeHelper.getIndent();
     final ColorScheme colorScheme = Theme.of(context).colorScheme;
     final TextTheme textTheme = Theme.of(context).textTheme;
-    double screenWidth = ThemeHelper.getWidth(context, 2);
+    double screenWidth = width ?? ThemeHelper.getWidth(context, 2);
     return TapWidget(
       tooltip: AppLocale.labels.goalTooltip,
       route: AppRoute.goalRoute,
@@ -34,60 +36,58 @@ class GoalLineWidget extends StatelessWidget {
           children: [
             FractionallySizedBox(
               widthFactor: 1.0,
-              child: Container(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Padding(
-                      padding: EdgeInsets.fromLTRB(indent, indent, 0, 0),
-                      child: Text(
-                        AppLocale.labels.goalHeadline,
-                        style: textTheme.headlineSmall,
-                      ),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Padding(
+                    padding: EdgeInsets.fromLTRB(indent, indent, 0, 0),
+                    child: Text(
+                      AppLocale.labels.goalHeadline,
+                      style: textTheme.headlineSmall,
                     ),
-                    RowWidget(
-                      indent: indent,
-                      maxWidth: screenWidth,
-                      alignment: MainAxisAlignment.spaceBetween,
-                      chunk: const [0.6, null],
-                      children: [
-                        [
-                          Tooltip(
-                            message: goal.title,
-                            child: Padding(
-                              padding: EdgeInsets.only(left: indent),
-                              child: Text(
-                                goal.title,
-                                style: textTheme.headlineMedium,
-                                overflow: TextOverflow.ellipsis,
-                              ),
-                            ),
-                          ),
-                        ],
-                        [
-                          Padding(
-                            padding: EdgeInsets.only(right: indent),
+                  ),
+                  RowWidget(
+                    indent: indent,
+                    maxWidth: screenWidth,
+                    alignment: MainAxisAlignment.spaceBetween,
+                    chunk: const [null, 110],
+                    children: [
+                      [
+                        Tooltip(
+                          message: goal.title,
+                          child: Padding(
+                            padding: EdgeInsets.only(left: indent),
                             child: Text(
-                              goal.closedAtFormatted,
+                              goal.title,
                               style: textTheme.headlineMedium,
-                              textAlign: TextAlign.right,
                               overflow: TextOverflow.ellipsis,
                             ),
                           ),
-                        ],
+                        ),
                       ],
+                      [
+                        Padding(
+                          padding: EdgeInsets.only(right: indent),
+                          child: Text(
+                            goal.closedAtFormatted,
+                            style: textTheme.headlineMedium,
+                            textAlign: TextAlign.right,
+                            overflow: TextOverflow.ellipsis,
+                          ),
+                        ),
+                      ],
+                    ],
+                  ),
+                  Container(
+                    height: 8,
+                    margin: EdgeInsets.fromLTRB(indent, indent / 2, indent, 0),
+                    child: LinearProgressIndicator(
+                      value: goal.progress,
+                      backgroundColor: colorScheme.primary.withOpacity(0.3),
+                      valueColor: AlwaysStoppedAnimation<Color>(colorScheme.onPrimaryContainer),
                     ),
-                    Container(
-                      height: 8,
-                      margin: EdgeInsets.fromLTRB(indent, indent / 2, indent, 0),
-                      child: LinearProgressIndicator(
-                        value: goal.progress,
-                        backgroundColor: colorScheme.primary.withOpacity(0.3),
-                        valueColor: AlwaysStoppedAnimation<Color>(colorScheme.onPrimaryContainer),
-                      ),
-                    ),
-                  ],
-                ),
+                  ),
+                ],
               ),
             ),
             Stack(

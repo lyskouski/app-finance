@@ -8,12 +8,14 @@ import 'package:flutter/material.dart';
 class TabWidget extends StatefulWidget {
   final List<Tab>? tabs;
   final List<Widget> children;
+  final double? maxWidth;
   final int focus;
   final bool asDots;
 
   const TabWidget({
     super.key,
     required this.children,
+    this.maxWidth,
     this.tabs,
     this.focus = 0,
     this.asDots = false,
@@ -89,7 +91,7 @@ class TabWidgetState extends State<TabWidget> with TickerProviderStateMixin {
         onTap: switchTab,
         tabList: widget.children,
         indent: ThemeHelper.getIndent(),
-        width: ThemeHelper.getWidth(context, 2),
+        width: widget.maxWidth ?? ThemeHelper.getWidth(context, 2),
         color: Theme.of(context).colorScheme.primary,
       );
     } else {
