@@ -142,7 +142,7 @@ class TransferTabState extends State<TransferTab> {
                     state: state,
                     setState: (value) => setState(() {
                       accountTo = value;
-                      currency ??= state.getByUuid(value).currency;
+                      currency = state.getByUuid(value).currency;
                     }),
                     indent: indent,
                     width: width,
