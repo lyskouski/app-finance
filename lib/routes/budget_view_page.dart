@@ -70,7 +70,7 @@ class BudgetViewPageState extends AbstractPageState<BudgetViewPage> with TickerP
       title: '',
       description: item.getDateFormatted(item.timestamp),
       progress: 1.0,
-      details: item.getNumberFormatted(item.changedTo - item.changedFrom),
+      details: item.getNumberFormatted(item.delta),
       color: Colors.transparent,
       width: ThemeHelper.getWidth(context, 3),
     );

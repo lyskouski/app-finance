@@ -78,7 +78,7 @@ class AccountViewPageState extends AbstractPageState<AccountViewPage> with Ticke
       title: obj?.title ?? '',
       description: item.getDateFormatted(item.timestamp),
       progress: 1.0,
-      details: item.getNumberFormatted(item.changedTo - item.changedFrom),
+      details: item.getNumberFormatted(item.delta),
       color: obj?.color ?? Colors.transparent,
       width: ThemeHelper.getWidth(context, 3),
       route: item is BillAppData ? AppRoute.billViewRoute : '',
