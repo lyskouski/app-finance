@@ -46,6 +46,10 @@ class FocusController {
   }
 
   static ScrollController getController(Type name) {
+    if (_controller[name] != null && _controller[name]!.hasClients) {
+      _controller[name]!.dispose();
+      _controller[name] = null;
+    }
     _controller[name] ??= ScrollController();
     _activeClass = name;
     return _controller[name]!;

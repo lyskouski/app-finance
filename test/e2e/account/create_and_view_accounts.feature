@@ -22,4 +22,4 @@ Feature: Verify Account Functionality
         | Credit Card  |    1500 |   JPY    |        ¥1,500  |
         | Debit Card   | 500.256 |   GBP    |       £500.26  |
         | Deposit      |   10000 |   AUD    |    $10,000.00  |
-#       | Credit       | 1000000 |   CNY    | ¥1,000,000.00  |
+        | Credit       | 1000000 |   CNY    | ¥1,000,000.00  |
