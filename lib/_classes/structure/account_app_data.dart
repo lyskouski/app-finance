@@ -4,7 +4,7 @@
 import 'package:app_finance/_classes/structure/currency/currency_provider.dart';
 import 'package:app_finance/_classes/structure/abstract_app_data.dart';
 import 'package:app_finance/_classes/storage/app_data.dart';
-import 'package:app_finance/_mixins/formatter_mixin.dart';
+import 'package:app_finance/_ext/int_ext.dart';
 import 'package:flutter/material.dart';
 
 class AccountAppData extends AbstractAppData {
@@ -64,7 +64,7 @@ class AccountAppData extends AbstractAppData {
       progress: json['progress'],
       description: json['description'],
       color: json['color'] != null ? MaterialColor(json['color'], const <int, Color>{}) : null,
-      icon: json['icon'] != null ? FormatterMixin.getIconFromString(json['icon']) : null,
+      icon: json['icon'] != null ? int.tryParse(json['icon'])?.toIcon() : null,
       currency: CurrencyProvider.findByCode(json['currency']),
       createdAt: DateTime.parse(json['createdAt']),
       updatedAt: DateTime.parse(json['updatedAt']),

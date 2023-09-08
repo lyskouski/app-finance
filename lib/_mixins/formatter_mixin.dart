@@ -3,11 +3,9 @@
 
 import 'package:app_finance/_classes/herald/app_locale.dart';
 import 'package:currency_picker/currency_picker.dart';
-import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
 mixin FormatterMixin {
-  static final Map<String, IconData> _cache = {};
   Currency? currency;
 
   String getDateFormatted(DateTime date) {
@@ -27,14 +25,5 @@ mixin FormatterMixin {
       decimalDigits: currency?.decimalDigits ?? 2,
     );
     return formatter.format(value);
-  }
-
-  static IconData getIconFromString(int icon) {
-    if (_cache.containsKey(icon)) {
-      return _cache[icon]!;
-    } else {
-      const String fontFamily = 'MaterialIcons';
-      return IconData(icon, fontFamily: fontFamily);
-    }
   }
 }
