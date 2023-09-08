@@ -8,7 +8,7 @@ import 'package:app_finance/_classes/storage/file_picker.dart';
 import 'package:app_finance/_classes/storage/transaction_log.dart';
 import 'package:app_finance/_classes/controller/focus_controller.dart';
 import 'package:app_finance/_classes/structure/interface_app_data.dart';
-import 'package:app_finance/_mixins/date_format_mixin.dart';
+import 'package:app_finance/_configs/date_format_helper.dart';
 import 'package:app_finance/_mixins/shared_preferences_mixin.dart';
 import 'package:app_finance/_configs/theme_helper.dart';
 import 'package:app_finance/widgets/_forms/currency_selector.dart';
@@ -35,7 +35,7 @@ class ImportTab extends StatefulWidget {
   ImportTabState createState() => ImportTabState();
 }
 
-class ImportTabState extends State<ImportTab> with SharedPreferencesMixin, DateFormatMixin {
+class ImportTabState extends State<ImportTab> with SharedPreferencesMixin {
   late AppData state;
   List<List<dynamic>>? fileContent;
   StringBuffer errorMessage = StringBuffer();
@@ -60,7 +60,7 @@ class ImportTabState extends State<ImportTab> with SharedPreferencesMixin, DateF
         columnMap = picker.columnMap;
         if (columnMap.contains(FileParser.attrBillDate)) {
           int index = columnMap.indexOf(FileParser.attrBillDate);
-          dateFormat.text = detectFormat([fileContent!.last[index]], AppLocale.code);
+          dateFormat.text = DateFormatHelper().detectFormat([fileContent!.last[index]], AppLocale.code);
         }
       });
     } catch (e) {
@@ -155,7 +155,8 @@ class ImportTabState extends State<ImportTab> with SharedPreferencesMixin, DateF
                         setState: (value) => setState(() {
                           columnMap[index] = value;
                           if (value == FileParser.attrBillDate) {
-                            dateFormat.text = detectFormat([fileContent!.last[index]], AppLocale.code);
+                            dateFormat.text =
+                                DateFormatHelper().detectFormat([fileContent!.last[index]], AppLocale.code);
                           }
                         }),
                       ),

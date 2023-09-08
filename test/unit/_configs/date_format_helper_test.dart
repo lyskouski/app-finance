@@ -1,16 +1,12 @@
 // Copyright 2023 The terCAD team. All rights reserved.
 // Use of this source code is governed by a CC BY-NC-ND 4.0 license that can be found in the LICENSE file.
 
-import 'package:app_finance/_classes/gen/generate_with_method_setters.dart';
-import 'package:app_finance/_mixins/date_format_mixin.dart';
+import 'package:app_finance/_configs/date_format_helper.dart';
 import 'package:flutter_test/flutter_test.dart';
-
-@GenerateWithMethodSetters([DateFormatMixin])
-import 'date_format_mixin_test.wrapper.dart';
 
 void main() {
   group('DateFormatMixin', () {
-    final object = WrapperDateFormatMixin();
+    final object = DateFormatHelper();
 
     group('splitDateTime', () {
       final testCases = [
