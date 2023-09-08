@@ -138,12 +138,12 @@ class AccountViewPageState extends AbstractPageState<AccountViewPage> with Ticke
                     buildListWidget: buildLogWidget,
                   ),
                   BaseListInfiniteWidget(
-                    state: state.getActualList(AppDataType.bills).where((o) => o.account == widget.uuid).toList(),
+                    state: state.getList(AppDataType.bills).where((o) => o.account == widget.uuid).toList(),
                     width: width - indent,
                     buildListWidget: buildLineWidget,
                   ),
                   BaseListInfiniteWidget(
-                    state: state.getActualList(AppDataType.invoice).where((o) => o.account == widget.uuid).toList(),
+                    state: state.getList(AppDataType.invoice).where((o) => o.account == widget.uuid).toList(),
                     width: width - indent,
                     buildListWidget: buildLineWidget,
                   ),
