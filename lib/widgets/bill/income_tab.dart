@@ -2,6 +2,7 @@
 // Use of this source code is governed by a CC BY-NC-ND 4.0 license that can be found in the LICENSE file.
 
 import 'package:app_finance/_classes/herald/app_locale.dart';
+import 'package:app_finance/_classes/structure/currency/currency_provider.dart';
 import 'package:app_finance/_classes/structure/invoice_app_data.dart';
 import 'package:app_finance/_classes/structure/navigation/app_route.dart';
 import 'package:app_finance/_classes/controller/focus_controller.dart';
@@ -69,6 +70,9 @@ class IncomeTabState extends State<IncomeTab> with SharedPreferencesMixin {
       var obj = state.getByUuid(value ?? '');
       account ??= obj?.uuid;
       currency ??= obj?.currency;
+
+      final currencyId = getPreference(prefCurrency);
+      currency ??= CurrencyProvider.findByCode(currencyId);
     });
   }
 
@@ -140,7 +144,7 @@ class IncomeTabState extends State<IncomeTab> with SharedPreferencesMixin {
                     state: state,
                     setState: (value) => setState(() {
                       account = value;
-                      currency ??= state.getByUuid(value).currency;
+                      currency = state.getByUuid(value).currency;
                     }),
                     indent: indent,
                     width: width,
