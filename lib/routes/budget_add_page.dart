@@ -5,7 +5,7 @@ import 'package:app_finance/_classes/herald/app_locale.dart';
 import 'package:app_finance/_classes/structure/currency/currency_provider.dart';
 import 'package:app_finance/_classes/structure/budget_app_data.dart';
 import 'package:app_finance/_classes/controller/focus_controller.dart';
-import 'package:app_finance/_mixins/shared_preferences_mixin.dart';
+import 'package:app_finance/_classes/storage/app_preferences.dart';
 import 'package:app_finance/_configs/theme_helper.dart';
 import 'package:app_finance/routes/abstract_add_page.dart';
 import 'package:app_finance/widgets/_forms/color_selector.dart';
@@ -38,8 +38,7 @@ class BudgetAddPage extends AbstractAddPage {
   BudgetAddPageState createState() => BudgetAddPageState();
 }
 
-class BudgetAddPageState<T extends BudgetAddPage> extends AbstractAddPageState<BudgetAddPage>
-    with SharedPreferencesMixin {
+class BudgetAddPageState<T extends BudgetAddPage> extends AbstractAddPageState<BudgetAddPage> {
   late TextEditingController title;
   late TextEditingController budgetLimit;
   IconData? icon;
@@ -52,7 +51,7 @@ class BudgetAddPageState<T extends BudgetAddPage> extends AbstractAddPageState<B
     budgetLimit = TextEditingController(text: widget.budgetLimit != null ? widget.budgetLimit.toString() : '');
     icon = widget.icon;
     color = widget.color;
-    final currencyId = getPreference(prefCurrency);
+    final currencyId = AppPreferences.get(AppPreferences.prefCurrency);
     currency = widget.currency ?? CurrencyProvider.findByCode(currencyId);
     super.initState();
   }

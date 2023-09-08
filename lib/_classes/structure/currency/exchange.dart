@@ -3,11 +3,11 @@
 
 import 'package:app_finance/_classes/structure/currency/currency_provider.dart';
 import 'package:app_finance/_classes/structure/currency_app_data.dart';
-import 'package:app_finance/_mixins/shared_preferences_mixin.dart';
+import 'package:app_finance/_classes/storage/app_preferences.dart';
 import 'package:app_finance/_classes/storage/app_data.dart';
 import 'package:currency_picker/currency_picker.dart';
 
-class Exchange with SharedPreferencesMixin {
+class Exchange {
   AppData store;
   static Currency? defaultCurrency;
 
@@ -16,7 +16,7 @@ class Exchange with SharedPreferencesMixin {
   });
 
   Currency? getDefaultCurrency() {
-    defaultCurrency ??= CurrencyProvider.findByCode(getPreference(prefCurrency));
+    defaultCurrency ??= CurrencyProvider.findByCode(AppPreferences.get(AppPreferences.prefCurrency));
     defaultCurrency ??= CurrencyProvider.findByCode('EUR');
     return defaultCurrency;
   }

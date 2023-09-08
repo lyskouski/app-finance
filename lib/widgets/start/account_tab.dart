@@ -1,7 +1,7 @@
 // Copyright 2023 The terCAD team. All rights reserved.
 // Use of this source code is governed by a CC BY-NC-ND 4.0 license that can be found in the LICENSE file.
 
-import 'package:app_finance/_mixins/shared_preferences_mixin.dart';
+import 'package:app_finance/_classes/storage/app_preferences.dart';
 import 'package:app_finance/_classes/storage/app_data.dart';
 import 'package:app_finance/_configs/theme_helper.dart';
 import 'package:app_finance/routes/account_add_page.dart';
@@ -19,7 +19,7 @@ class AccountTab extends AccountAddPage {
   AccountTabState createState() => AccountTabState();
 }
 
-class AccountTabState extends AccountAddPageState<AccountTab> with SharedPreferencesMixin {
+class AccountTabState extends AccountAddPageState<AccountTab> {
   @override
   void triggerActionButton(NavigatorState nav) {
     setState(() {
@@ -27,7 +27,7 @@ class AccountTabState extends AccountAddPageState<AccountTab> with SharedPrefere
         return;
       }
       updateStorage();
-      setPreference(prefAccount, super.state.getList(AppDataType.accounts).first?.uuid);
+      AppPreferences.set(AppPreferences.prefAccount, super.state.getList(AppDataType.accounts).first?.uuid);
       (widget as AccountTab).setState();
     });
   }

@@ -6,7 +6,7 @@ import 'package:app_finance/_classes/storage/app_data.dart';
 import 'package:app_finance/_classes/structure/currency/currency_provider.dart';
 import 'package:app_finance/_classes/structure/currency/exchange.dart';
 import 'package:app_finance/_classes/structure/currency_app_data.dart';
-import 'package:app_finance/_mixins/shared_preferences_mixin.dart';
+import 'package:app_finance/_classes/storage/app_preferences.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
@@ -22,7 +22,7 @@ void main() {
     late Exchange object;
 
     setUp(() {
-      SharedPreferencesMixin.pref = MockSharedPreferences();
+      AppPreferences.pref = MockSharedPreferences();
       object = Exchange(store: WrapperMockAppData());
     });
 
@@ -38,7 +38,7 @@ void main() {
 
       for (var v in testCases) {
         test('$v', () {
-          when(SharedPreferencesMixin.pref.getString('currency')).thenReturn(v.getPreference);
+          when(AppPreferences.pref.getString('currency')).thenReturn(v.getPreference);
           Exchange.defaultCurrency = CurrencyProvider.findByCode(v.def);
           expect(object.getDefaultCurrency()?.code, v.result);
         });

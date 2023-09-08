@@ -9,7 +9,7 @@ import 'package:app_finance/_classes/herald/app_locale.dart';
 import 'package:app_finance/_classes/herald/app_theme.dart';
 import 'package:app_finance/_classes/gen/generate_with_method_setters.dart';
 import 'package:app_finance/_configs/custom_text_theme.dart';
-import 'package:app_finance/_mixins/shared_preferences_mixin.dart';
+import 'package:app_finance/_classes/storage/app_preferences.dart';
 import 'package:app_finance/main.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -95,11 +95,11 @@ class PumpMain {
 
   Future<void> initPref(bool isIntegration) async {
     if (isIntegration) {
-      SharedPreferencesMixin.pref = await SharedPreferences.getInstance();
+      AppPreferences.pref = await SharedPreferences.getInstance();
     } else {
       final pref = WrapperMockSharedPreferences();
       pref.mockGetString = (value) => '';
-      SharedPreferencesMixin.pref = pref;
+      AppPreferences.pref = pref;
     }
   }
 

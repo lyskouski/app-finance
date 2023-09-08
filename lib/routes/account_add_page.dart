@@ -6,7 +6,7 @@ import 'package:app_finance/_classes/structure/currency/currency_provider.dart';
 import 'package:app_finance/_classes/structure/account_app_data.dart';
 import 'package:app_finance/_configs/account_type.dart';
 import 'package:app_finance/_classes/controller/focus_controller.dart';
-import 'package:app_finance/_mixins/shared_preferences_mixin.dart';
+import 'package:app_finance/_classes/storage/app_preferences.dart';
 import 'package:app_finance/_configs/theme_helper.dart';
 import 'package:app_finance/routes/abstract_add_page.dart';
 import 'package:app_finance/widgets/_forms/color_selector.dart';
@@ -47,8 +47,7 @@ class AccountAddPage extends AbstractAddPage {
   AccountAddPageState createState() => AccountAddPageState();
 }
 
-class AccountAddPageState<T extends AccountAddPage> extends AbstractAddPageState<AccountAddPage>
-    with SharedPreferencesMixin {
+class AccountAddPageState<T extends AccountAddPage> extends AbstractAddPageState<AccountAddPage> {
   late TextEditingController title;
   late TextEditingController description;
   String? type;
@@ -68,7 +67,7 @@ class AccountAddPageState<T extends AccountAddPage> extends AbstractAddPageState
     balance = TextEditingController(text: widget.balance != null ? widget.balance.toString() : '');
     icon = widget.icon;
     color = widget.color;
-    final currencyId = getPreference(prefCurrency);
+    final currencyId = AppPreferences.get(AppPreferences.prefCurrency);
     currency = widget.currency ?? CurrencyProvider.findByCode(currencyId);
     super.initState();
   }

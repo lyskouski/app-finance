@@ -4,7 +4,7 @@
 import 'dart:io';
 import 'dart:math';
 
-import 'package:app_finance/_mixins/shared_preferences_mixin.dart';
+import 'package:app_finance/_classes/storage/app_preferences.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:integration_test/integration_test.dart';
 import 'package:path_provider/path_provider.dart';
@@ -19,8 +19,8 @@ void main() {
   IntegrationTestWidgetsFlutterBinding.ensureInitialized();
 
   Future<void> cleanUp() async {
-    SharedPreferencesMixin.pref = await SharedPreferences.getInstance();
-    await SharedPreferencesMixin.pref.clear();
+    AppPreferences.pref = await SharedPreferences.getInstance();
+    await AppPreferences.pref.clear();
     final path = await getApplicationDocumentsDirectory();
     var file = File('${path.absolute.path}/terCAD/app-finance.log');
     if (!file.existsSync()) {

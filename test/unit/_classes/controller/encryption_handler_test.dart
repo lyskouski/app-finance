@@ -2,7 +2,7 @@
 // Use of this source code is governed by a CC BY-NC-ND 4.0 license that can be found in the LICENSE file.
 
 import 'package:app_finance/_classes/controller/encryption_handler.dart';
-import 'package:app_finance/_mixins/shared_preferences_mixin.dart';
+import 'package:app_finance/_classes/storage/app_preferences.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
@@ -13,7 +13,7 @@ import 'encryption_handler_test.mocks.dart';
 
 void main() {
   setUp(() {
-    SharedPreferencesMixin.pref = MockSharedPreferences();
+    AppPreferences.pref = MockSharedPreferences();
   });
 
   group('EncryptionHandler', () {
@@ -31,7 +31,7 @@ void main() {
 
       for (var v in testCases) {
         test('$v', () {
-          when(SharedPreferencesMixin.pref.getString('doEncrypt')).thenReturn(v.getPreference);
+          when(AppPreferences.pref.getString('doEncrypt')).thenReturn(v.getPreference);
           expect(EncryptionHandler.doEncrypt(), v.result);
         });
       }

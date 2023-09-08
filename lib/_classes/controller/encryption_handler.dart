@@ -3,11 +3,11 @@
 
 import 'dart:convert';
 
-import 'package:app_finance/_mixins/shared_preferences_mixin.dart';
+import 'package:app_finance/_classes/storage/app_preferences.dart';
 import 'package:crypto/crypto.dart';
 import 'package:encrypt/encrypt.dart';
 
-class EncryptionHandler with SharedPreferencesMixin {
+class EncryptionHandler {
   static String prefNotEncrypted = 'false';
 
   static Encrypter get salt => Encrypter(AES(Key.fromUtf8('tercad-app-finance-by-vlyskouski')));
@@ -19,8 +19,7 @@ class EncryptionHandler with SharedPreferencesMixin {
   }
 
   static bool doEncrypt() {
-    final self = EncryptionHandler();
-    return self.getPreference(self.prefDoEncrypt) != prefNotEncrypted;
+    return AppPreferences.get(AppPreferences.prefDoEncrypt) != prefNotEncrypted;
   }
 
   static String encrypt(String line) {

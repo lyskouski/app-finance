@@ -9,7 +9,7 @@ import 'package:app_finance/_classes/storage/transaction_log.dart';
 import 'package:app_finance/_classes/controller/focus_controller.dart';
 import 'package:app_finance/_classes/structure/interface_app_data.dart';
 import 'package:app_finance/_configs/date_format_helper.dart';
-import 'package:app_finance/_mixins/shared_preferences_mixin.dart';
+import 'package:app_finance/_classes/storage/app_preferences.dart';
 import 'package:app_finance/_configs/theme_helper.dart';
 import 'package:app_finance/widgets/_forms/currency_selector.dart';
 import 'package:app_finance/widgets/_forms/list_account_selector.dart';
@@ -35,7 +35,7 @@ class ImportTab extends StatefulWidget {
   ImportTabState createState() => ImportTabState();
 }
 
-class ImportTabState extends State<ImportTab> with SharedPreferencesMixin {
+class ImportTabState extends State<ImportTab> {
   late AppData state;
   List<List<dynamic>>? fileContent;
   StringBuffer errorMessage = StringBuffer();
@@ -44,9 +44,9 @@ class ImportTabState extends State<ImportTab> with SharedPreferencesMixin {
   final dateFormat = TextEditingController(text: 'M/d/yyyy HH:mm');
 
   late Map<String, String?> attrValue = {
-    FileParser.attrAccountName: getPreference(prefAccount),
-    FileParser.attrCategoryName: getPreference(prefBudget),
-    FileParser.attrBillCurrency: getPreference(prefCurrency),
+    FileParser.attrAccountName: AppPreferences.get(AppPreferences.prefAccount),
+    FileParser.attrCategoryName: AppPreferences.get(AppPreferences.prefBudget),
+    FileParser.attrBillCurrency: AppPreferences.get(AppPreferences.prefCurrency),
     FileParser.attrBillType: AppLocale.labels.bill,
   };
 

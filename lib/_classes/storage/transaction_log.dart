@@ -13,11 +13,11 @@ import 'package:app_finance/_classes/structure/budget_app_data.dart';
 import 'package:app_finance/_classes/structure/currency_app_data.dart';
 import 'package:app_finance/_classes/structure/goal_app_data.dart';
 import 'package:app_finance/_classes/structure/invoice_app_data.dart';
-import 'package:app_finance/_mixins/shared_preferences_mixin.dart';
+import 'package:app_finance/_classes/storage/app_preferences.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:flutter/foundation.dart' show kIsWeb;
 
-class TransactionLog with SharedPreferencesMixin {
+class TransactionLog {
   static int increment = 0;
 
   static bool _isLocked = false;
@@ -73,7 +73,7 @@ class TransactionLog with SharedPreferencesMixin {
     _isLocked = true;
     try {
       if (kIsWeb) {
-        TransactionLog().setPreference('log$increment', line);
+        AppPreferences.set('log$increment', line);
       } else {
         _logFile!.writeAsStringSync("$line\n", mode: FileMode.append);
       }
@@ -119,7 +119,7 @@ class TransactionLog with SharedPreferencesMixin {
     int attempts = 0;
     do {
       int i = increment + attempts;
-      var line = TransactionLog().getPreference('log$i');
+      var line = AppPreferences.get('log$i');
       if (line == null) {
         attempts++;
       } else {

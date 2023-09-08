@@ -1,7 +1,7 @@
 // Copyright 2023 The terCAD team. All rights reserved.
 // Use of this source code is governed by a CC BY-NC-ND 4.0 license that can be found in the LICENSE file.
 
-import 'package:app_finance/_mixins/shared_preferences_mixin.dart';
+import 'package:app_finance/_classes/storage/app_preferences.dart';
 import 'package:flutter/foundation.dart';
 import 'package:peerdart/peerdart.dart';
 import 'package:uuid/uuid.dart';
@@ -17,7 +17,7 @@ class SyncPeer extends SyncStatus {
   SyncPeer(super.id, this.connection);
 }
 
-class AppSync extends ChangeNotifier with SharedPreferencesMixin {
+class AppSync extends ChangeNotifier {
   late Peer peer;
   final Map<String, SyncPeer> _status = {};
   final Map<Type, Function> _cb = {};
@@ -32,19 +32,19 @@ class AppSync extends ChangeNotifier with SharedPreferencesMixin {
   }
 
   List<String> _get() {
-    return getPreference(prefP2P)?.split(',').where((e) => e.isNotEmpty).toList() ?? [];
+    return AppPreferences.get(AppPreferences.prefP2P)?.split(',').where((e) => e.isNotEmpty).toList() ?? [];
   }
 
   void add(String uuid) {
     List<String> peers = _get();
     peers.add(uuid);
-    setPreference(prefP2P, (<String>{}..addAll(peers)).toList().join(',')).then((_) => connect());
+    AppPreferences.set(AppPreferences.prefP2P, (<String>{}..addAll(peers)).toList().join(',')).then((_) => connect());
   }
 
   void del(String uuid) {
     _status[uuid]!.connection.dispose();
     _status.remove(uuid);
-    setPreference(prefP2P, (_get()..remove(uuid)).join(',')).then((_) => notifyListeners());
+    AppPreferences.set(AppPreferences.prefP2P, (_get()..remove(uuid)).join(',')).then((_) => notifyListeners());
   }
 
   void connect() {
@@ -89,12 +89,12 @@ class AppSync extends ChangeNotifier with SharedPreferencesMixin {
   }
 
   bool isActive() {
-    return getPreference(prefPeer) != null;
+    return AppPreferences.get(AppPreferences.prefPeer) != null;
   }
 
   void disable() {
-    clearPreference(prefPeer);
-    clearPreference(prefP2P);
+    AppPreferences.clear(AppPreferences.prefPeer);
+    AppPreferences.clear(AppPreferences.prefP2P);
     peer.dispose();
   }
 
@@ -141,9 +141,9 @@ class AppSync extends ChangeNotifier with SharedPreferencesMixin {
   }
 
   String? getUuid([bool force = false]) {
-    String? id = getPreference(prefPeer);
+    String? id = AppPreferences.get(AppPreferences.prefPeer);
     if (force) {
-      setPreference(prefPeer, id = getNewUuid());
+      AppPreferences.set(AppPreferences.prefPeer, id = getNewUuid());
     }
     return id;
   }

@@ -8,7 +8,7 @@ import 'package:app_finance/_classes/structure/goal_app_data.dart';
 import 'package:app_finance/_classes/controller/focus_controller.dart';
 import 'package:app_finance/_classes/storage/app_data.dart';
 import 'package:app_finance/_configs/theme_helper.dart';
-import 'package:app_finance/_mixins/shared_preferences_mixin.dart';
+import 'package:app_finance/_classes/storage/app_preferences.dart';
 import 'package:app_finance/routes/abstract_page.dart';
 import 'package:app_finance/widgets/_forms/color_selector.dart';
 import 'package:app_finance/widgets/_forms/currency_selector.dart';
@@ -42,7 +42,7 @@ class GoalAddPage extends AbstractPage {
   GoalAddPageState createState() => GoalAddPageState();
 }
 
-class GoalAddPageState<T extends GoalAddPage> extends AbstractPageState<GoalAddPage> with SharedPreferencesMixin {
+class GoalAddPageState<T extends GoalAddPage> extends AbstractPageState<GoalAddPage> {
   late TextEditingController title;
   IconData? icon;
   MaterialColor? color;
@@ -57,7 +57,7 @@ class GoalAddPageState<T extends GoalAddPage> extends AbstractPageState<GoalAddP
     icon = widget.icon;
     color = widget.color;
     details = TextEditingController(text: widget.details != null ? widget.details.toString() : '');
-    final currencyId = getPreference(prefCurrency);
+    final currencyId = AppPreferences.get(AppPreferences.prefCurrency);
     currency = widget.currency ?? CurrencyProvider.findByCode(currencyId);
     closedAt = widget.closedAt;
     super.initState();

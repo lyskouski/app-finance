@@ -1,7 +1,7 @@
 // Copyright 2023 The terCAD team. All rights reserved.
 // Use of this source code is governed by a CC BY-NC-ND 4.0 license that can be found in the LICENSE file.
 
-import 'package:app_finance/_mixins/shared_preferences_mixin.dart';
+import 'package:app_finance/_classes/storage/app_preferences.dart';
 import 'package:app_finance/widgets/_generic/base_header_widget.dart';
 import 'package:app_finance/widgets/_generic/base_line_widget.dart';
 import 'package:app_finance/widgets/_generic/base_list_infinite_widget.dart';
@@ -54,10 +54,10 @@ class BaseWidget extends StatefulWidget {
   BaseWidgetState createState() => BaseWidgetState();
 }
 
-class BaseWidgetState extends State<BaseWidget> with SharedPreferencesMixin {
+class BaseWidgetState extends State<BaseWidget> {
   void _expand() {
     String outcome = widget.toExpand == widget.title ? '' : widget.title;
-    setPreference(prefExpand, outcome);
+    AppPreferences.set(AppPreferences.prefExpand, outcome);
     if (widget.callback != null) {
       widget.callback!(outcome);
     }
