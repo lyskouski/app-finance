@@ -42,7 +42,7 @@ abstract class AbstractAppData with FormatterMixin implements InterfaceAppData {
     this.hidden = false,
   })  : _createdAt = createdAt ?? (createdAtFormatted != null ? DateTime.parse(createdAtFormatted) : DateTime.now()),
         _updatedAt = updatedAt ?? DateTime.now(),
-        _amount = details;
+        _amount = 0.0 + details;
 
   AbstractAppData clone();
 
