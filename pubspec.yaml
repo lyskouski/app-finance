@@ -51,6 +51,7 @@ dependencies:
   notifications: ^3.0.0
   peerdart: ^0.5.3
   flutter_grid_layout: ^0.1.0
+  flutter_svg: ^2.0.7
 
 dev_dependencies:
   flutter_test:

@@ -18,6 +18,7 @@ import 'package:app_finance/widgets/home/bill_widget.dart';
 import 'package:app_finance/widgets/home/budget_widget.dart';
 import 'package:app_finance/widgets/home/goal_widget.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 
@@ -63,8 +64,13 @@ class HomePageState extends AbstractPageState<HomePage> {
           );
         },
       ),
-      title: Center(
-        child: Image.asset('assets/images/fingrom.png'),
+      title: Padding(
+        padding: EdgeInsets.only(top: ThemeHelper.getIndent(0.5)),
+        child: SvgPicture.asset(
+          'assets/images/fingrom.svg',
+          alignment: Alignment.centerLeft,
+          semanticsLabel: AppLocale.labels.appTitle,
+        ),
       ),
       actions: [
         ToolbarButtonWidget(
