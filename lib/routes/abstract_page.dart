@@ -1,12 +1,13 @@
 // Copyright 2023 The terCAD team. All rights reserved.
 // Use of this source code is governed by a CC BY-NC-ND 4.0 license that can be found in the LICENSE file.
 
-import 'package:app_finance/_classes/herald/app_locale.dart';
+import 'package:adaptive_breakpoints/adaptive_breakpoints.dart';
 import 'package:app_finance/_classes/structure/navigation/app_menu.dart';
 import 'package:app_finance/_classes/storage/app_data.dart';
 import 'package:app_finance/_classes/controller/focus_controller.dart';
+import 'package:app_finance/_configs/responsive_matrix.dart';
 import 'package:app_finance/_configs/theme_helper.dart';
-import 'package:app_finance/widgets/_wrappers/toolbar_button_widget.dart';
+import 'package:app_finance/widgets/_generic/app_bar_widget.dart';
 import 'package:app_finance/widgets/_generic/menu_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -26,48 +27,10 @@ abstract class AbstractPageState<T extends AbstractPage> extends State<T> {
   Widget buildContent(BuildContext context, BoxConstraints constraints);
 
   AppBar buildBar(BuildContext context) {
-    NavigatorState nav = Navigator.of(context);
-    return AppBar(
-      backgroundColor: Theme.of(context).colorScheme.primary,
-      toolbarHeight: 40,
-      leading: ToolbarButtonWidget(
-        child: IconButton(
-          hoverColor: Colors.transparent,
-          icon: const Icon(
-            Icons.arrow_back,
-            color: Colors.white70,
-          ),
-          tooltip: AppLocale.labels.backTooltip,
-          onPressed: () => nav.pop(),
-        ),
-      ),
-      title: Text(
-        getTitle(),
-        style: TextStyle(color: Theme.of(context).colorScheme.inversePrimary),
-      ),
-      actions: [
-        PopupMenuButton(
-          itemBuilder: (BuildContext context) {
-            return AppMenu.get().map((menuItem) {
-              return PopupMenuItem(
-                value: menuItem.route,
-                child: Row(
-                  children: [
-                    Icon(menuItem.icon),
-                    ThemeHelper.wIndent,
-                    Text(menuItem.name),
-                  ],
-                ),
-              );
-            }).toList();
-          },
-          onSelected: (value) => nav.pushNamed(value),
-          icon: const Icon(
-            Icons.more_vert,
-            color: Colors.white70,
-          ),
-        ),
-      ],
+    return AppBarWidget(
+      title: Text(getTitle(), style: TextStyle(color: Theme.of(context).colorScheme.inversePrimary)),
+      colorScheme: Theme.of(context).colorScheme,
+      nav: Navigator.of(context),
     );
   }
 
@@ -96,21 +59,44 @@ abstract class AbstractPageState<T extends AbstractPage> extends State<T> {
   @override
   Widget build(BuildContext context) {
     FocusController.init();
-    return Consumer<AppData>(builder: (context, appState, _) {
-      state = appState;
-      return Scaffold(
-          appBar: buildBar(context),
+    final appBar = buildBar(context);
+    final matrix = ResponsiveMatrix(getWindowType(context));
+    return LayoutBuilder(builder: (context, constraints) {
+      final button = buildButton(context, constraints);
+      final isBottom = matrix.getWidthCount(constraints) <= 2;
+      return Consumer<AppData>(builder: (context, appState, _) {
+        state = appState;
+        return Scaffold(
+          appBar: isBottom ? null : appBar,
+          bottomNavigationBar: isBottom
+              ? BottomAppBar(
+                  padding: EdgeInsets.zero,
+                  notchMargin: CircularProgressIndicator.strokeAlignCenter,
+                  height: appBar.toolbarHeight,
+                  color: appBar.backgroundColor,
+                  shape: button != ThemeHelper.emptyBox ? const CircularNotchedRectangle() : null,
+                  child: Row(
+                    children: appBar.leading != null
+                        ? [
+                            appBar.leading!,
+                            appBar.title!,
+                            const Spacer(),
+                            ...appBar.actions!,
+                          ]
+                        : [],
+                  ),
+                )
+              : null,
           drawer: buildDrawer(),
           body: Scaffold(
             body: SafeArea(
-              child: LayoutBuilder(builder: (context, constraints) {
-                return buildContent(context, constraints);
-              }),
+              child: buildContent(context, constraints),
             ),
           ),
-          floatingActionButton: LayoutBuilder(builder: (context, constraints) {
-            return buildButton(context, constraints);
-          }));
+          floatingActionButtonLocation: isBottom ? FloatingActionButtonLocation.centerDocked : null,
+          floatingActionButton: button,
+        );
+      });
     });
   }
 }
