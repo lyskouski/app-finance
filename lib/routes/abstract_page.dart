@@ -26,9 +26,10 @@ abstract class AbstractPageState<T extends AbstractPage> extends State<T> {
 
   Widget buildContent(BuildContext context, BoxConstraints constraints);
 
-  AppBar buildBar(BuildContext context) {
+  AppBar buildBar(BuildContext context, [bool isBottom = false]) {
+    final text = Text(getTitle(), style: TextStyle(color: Theme.of(context).colorScheme.inversePrimary));
     return AppBarWidget(
-      title: Text(getTitle(), style: TextStyle(color: Theme.of(context).colorScheme.inversePrimary)),
+      title: isBottom ? text : Center(child: text),
       colorScheme: Theme.of(context).colorScheme,
       nav: Navigator.of(context),
     );
@@ -59,13 +60,13 @@ abstract class AbstractPageState<T extends AbstractPage> extends State<T> {
   @override
   Widget build(BuildContext context) {
     FocusController.init();
-    final appBar = buildBar(context);
     final matrix = ResponsiveMatrix(getWindowType(context));
     return LayoutBuilder(builder: (context, constraints) {
       final button = buildButton(context, constraints);
       final isBottom = matrix.getWidthCount(constraints) <= 2;
       return Consumer<AppData>(builder: (context, appState, _) {
         state = appState;
+        final appBar = buildBar(context, isBottom);
         return Scaffold(
           appBar: isBottom ? null : appBar,
           bottomNavigationBar: isBottom

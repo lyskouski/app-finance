@@ -44,8 +44,14 @@ class HomePageState extends AbstractPageState<HomePage> {
   }
 
   @override
-  AppBar buildBar(BuildContext context) {
+  AppBar buildBar(BuildContext context, [bool isBottom = false]) {
     NavigatorState nav = Navigator.of(context);
+    final logo = SvgPicture.asset(
+      'assets/images/fingrom.svg',
+      width: isBottom ? 70 : 120,
+      alignment: Alignment.centerLeft,
+      semanticsLabel: AppLocale.labels.appTitle,
+    );
     return AppBar(
       backgroundColor: Theme.of(context).colorScheme.primary,
       toolbarHeight: 40,
@@ -64,14 +70,7 @@ class HomePageState extends AbstractPageState<HomePage> {
           );
         },
       ),
-      title: Padding(
-        padding: EdgeInsets.only(top: ThemeHelper.getIndent(0.5)),
-        child: SvgPicture.asset(
-          'assets/images/fingrom.svg',
-          alignment: Alignment.centerLeft,
-          semanticsLabel: AppLocale.labels.appTitle,
-        ),
-      ),
+      title: isBottom ? logo : Center(child: logo),
       actions: [
         ToolbarButtonWidget(
           child: IconButton(
