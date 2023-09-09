@@ -9,14 +9,14 @@ class GridLayer extends StatelessWidget {
   final double padding;
   final int crossAxisCount;
   final List<dynamic> children;
-  final List<dynamic> rules;
+  final List<dynamic> strategy;
 
   const GridLayer({
     super.key,
     required this.padding,
     required this.crossAxisCount,
     required this.children,
-    required this.rules,
+    required this.strategy,
   });
 
   @override
@@ -25,15 +25,15 @@ class GridLayer extends StatelessWidget {
     fnList(List<dynamic> scope) => scope.map((e) => e is List ? fnList(e).cast<Widget>().toList() : fnItem(e));
     return Padding(
       padding: EdgeInsets.only(left: padding, right: padding),
-      child: rules.length > 1
+      child: strategy.length > 1
           ? RowWidget(
               indent: padding,
               maxWidth: ThemeHelper.getWidth(context, 2),
               chunk: List.filled(crossAxisCount, null),
-              children: fnList(rules).cast<List<Widget>>().toList(),
+              children: fnList(strategy).cast<List<Widget>>().toList(),
             )
           : Column(
-              children: fnList(rules.first).cast<Widget>().toList(),
+              children: fnList(strategy.first).cast<Widget>().toList(),
             ),
     );
   }

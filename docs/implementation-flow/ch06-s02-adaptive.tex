@@ -1,0 +1,114 @@
+% Copyright 2023 The terCAD team. All rights reserved.
+% Use of this content is governed by a CC BY-NC-ND 4.0 license that can be found in the LICENSE file.
+
+\subsection{Applying Adaptive \& Responsive Design}
+\markboth{Optimizing UI/UX Flow}{Applying Adaptive \& Responsive Design}
+
+Basically, responsive design relies on fluid layouts and media queries to adapt content dynamically to different screen 
+sizes within a single codebase. Adaptive design, on the other hand, involves creating a specific layout per different 
+devices or screen sizes. Each approach has its strengths and weaknesses, and the choice between them depends on many 
+factors. But ideally it would be better to mix both solutions: widgets itself should be responsive, pages (aggregative 
+widgets, called by routes) -- adaptive.
+
+\q{RowWidget} describes responsiveness behavior \issue{37}{abd9308}, \issue{185}{e1e7385} when we set a direct size 
+for a couple of components, and left nullable size (alike, \q{Spacer}-widget) for others. In that case the text section 
+will be hidden in case of width less than 40 density-independent pixels (DIP):
+
+\begin{lstlisting}
+RowWidget(
+  chunk: [null, 40],
+  children: [
+    [
+      Text(
+        'Sample text with a long description', 
+        maxLines: 1,
+        overflow: TextOverflow.ellipsis,
+      ),
+    ],
+    [
+      FloatingActionButton(
+        child: Icon(Icons.add),
+      ),
+    ],
+  ],
+)
+\end{lstlisting}
+
+\noindent On other hand, \q{GridLayer} manages \issue{158}{} different strategies of a widgets' composition: 
+
+\begin{lstlisting}
+// ./lib/routes/home_page.dart
+GridLayer(
+  padding: indent,
+  crossAxisCount: countWidth,
+  strategy: switch (countWidth) {
+    // Rows with a single component per each
+    4 => [
+      [2], [3], [1], [0]
+    ],
+    // Three rows
+    3 => [
+      [2], [3], [0, 1]
+    ],
+    // Two rows with a column in each
+    2 => [
+      [2, 3], [0, 1]
+    ],
+    // Single column
+    _ => [
+      [0, 1, 2, 3]
+    ]
+  },
+  children: [
+    // Hide widget on a portrait mode
+    matrix.getHeightCount(constraints) > 3
+        ? goalWidget
+        : ThemeHelper.emptyBox,
+    billWidget,
+    accountWidget,
+    budgetWidget,
+  ],(*@ \stopnumber @*)
+);
+
+// ./lib/widgets/_wrappers/grid_layer.dart
+class GridLayer extends StatelessWidget {
+  // Indent between sections
+  final double padding;
+  // Number of rows
+  final int crossAxisCount;
+  // List<Widget | Widget Function>
+  final List<dynamic> children;
+  // Representation strategy
+  final List<dynamic> strategy;
+
+  const GridLayer({
+    super.key,
+    required this.padding,
+    required this.crossAxisCount,
+    required this.children,
+    required this.strategy,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    // Item can be callable to avoid unnecessary data aggregation
+    // if the widget is not a part of all strategies
+    fnItem(int index) => children[index] is Function ? children[index]() : children[index];
+    // Convert widget indexes into their representation
+    fnList(List<dynamic> scope) => scope.map((e) => e is List ? fnList(e).cast<Widget>().toList() : fnItem(e));
+    return Padding(
+      padding: EdgeInsets.only(left: padding, right: padding),
+      child: strategy.length > 1
+        ? RowWidget(
+            indent: padding,
+            maxWidth: ThemeHelper.getWidth(context, 2),
+            chunk: List.filled(crossAxisCount, null),
+            children: fnList(strategy).cast<List<Widget>>().toList()
+          )
+        : Column(
+            children: fnList(strategy.first).cast<Widget>().toList()
+          )
+    );
+  }
+}
+\end{lstlisting}

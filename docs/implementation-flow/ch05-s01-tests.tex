@@ -275,19 +275,17 @@ by function callbacks) from scratch in a single frame is circumvented:
 ListView.builder(
   itemCount: 5000,
   itemBuilder: (BuildContext context, int index) {
-    return getMyWidget();
-  },
-),
+    return _getMyWidget(); // Function call
+  }),
 // Good choice
 ListView.builder(
   itemCount: 5000,
   itemBuilder: (BuildContext context, int index) {
     return const MyWidget();
-  },
-),
+  }),
 \end{lstlisting}
 
-\noindent Contrary, it can be still used methods (better a static properties) in case of constants usage:
+\noindent Contrary, it can be still used methods (or static properties) in case of constants usage:
 
 \begin{lstlisting}
 @override
@@ -300,7 +298,7 @@ Optimizing the utilization of \q{StatefulWidget} holds the potential to enhance 
 reduced number of Widgets controlling the lifecycle. This streamlined approach translates to swifter response times.
 
 And not obvious but acknowledgeable, Flutter upgrade procedure (by example, Flutter 3.10 triples the frame rate if 
-change \q{FlutterViews} background color to a non-nil value, as proposed \cite{Chis23}).
+change \q{FlutterViews} background color to a non-nil value \cite{Chis23}).
 
 
 \subsubsection{Anticipating Churn Rate}
