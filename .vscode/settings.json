@@ -12,5 +12,6 @@
     },
     "files.associations": {
         "*.arb": "json"
-    }
+    },
+    "cmake.configureOnOpen": false
 }
