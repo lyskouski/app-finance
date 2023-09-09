@@ -158,7 +158,7 @@ class HomePageState extends AbstractPageState<HomePage> {
     return GridLayer(
       padding: indent,
       crossAxisCount: countWidth,
-      rules: switch (countWidth) {
+      strategy: switch (countWidth) {
         4 => [
             [2],
             [3],

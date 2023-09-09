@@ -45,6 +45,7 @@
 - Import from `CSV`, `QIF` files for Bills and Invoices
 - Data encryption
 - User Experience
+  - Responsive & Adaptive Design (`xlarge`, `large`, `medium`, `small`, and `xsmall` screens)
   - Theme Mode (dark, light, system)
   - Preserve last choice for Account, Budget, and Currency
   - Auto-scroll to the focused element on Form

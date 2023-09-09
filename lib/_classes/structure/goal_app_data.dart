@@ -64,7 +64,7 @@ class GoalAppData extends AbstractAppData {
       progress: json['progress'],
       description: json['description'],
       color: json['color'] != null ? MaterialColor(json['color'], const <int, Color>{}) : null,
-      icon: json['icon'] != null ? int.tryParse(json['icon'])?.toIcon() : null,
+      icon: json['icon'] != null ? (json['icon'] as int).toIcon() : null,
       currency: CurrencyProvider.findByCode(json['currency']),
       updatedAt: DateTime.parse(json['updatedAt']),
       createdAt: DateTime.parse(json['createdAt']),
