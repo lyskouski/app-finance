@@ -2,6 +2,8 @@
 // Use of this source code is governed by a CC BY-NC-ND 4.0 license that can be found in the LICENSE file.
 
 import 'package:app_finance/_classes/herald/app_locale.dart';
+import 'package:app_finance/_classes/structure/currency/currency_provider.dart';
+import 'package:app_finance/_ext/double_ext.dart';
 import 'package:currency_picker/currency_picker.dart';
 import 'package:intl/intl.dart';
 
@@ -18,12 +20,8 @@ mixin FormatterMixin {
     return formatterDate.format(date);
   }
 
+  @Deprecated('use double extension')
   String getNumberFormatted(double value, [String? symbol]) {
-    final NumberFormat formatter = NumberFormat.currency(
-      locale: AppLocale.code,
-      symbol: symbol ?? currency?.symbol ?? '?',
-      decimalDigits: currency?.decimalDigits ?? 2,
-    );
-    return formatter.format(value);
+    return value.toCurrency(symbol != null ? CurrencyProvider.findByCode(symbol) : currency);
   }
 }
