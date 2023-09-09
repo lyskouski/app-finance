@@ -112,3 +112,107 @@ class GridLayer extends StatelessWidget {
   }
 }
 \end{lstlisting}
+
+Embracing a grid layout as part of an adaptive design strategy is a pivotal step toward creating a versatile and 
+user-centric digital experience (\cref{img:u-grid}). Grids provide the structure needed to maintain visual consistency, 
+prioritize content, and seamlessly adapt to diverse screen sizes.
+
+\img{uiux/cssgrid-flexbox}{Representation of Grid Layout \cite{Tayl18}}{img:u-grid}
+
+And for that case we'll dive into an external package creation through the command \key{F1} -- \q{Flutter: New Project}
+-- \q{Package}, that will generate for us only "lib" and "test"-folders together with \q{.yaml}-configuration file.
+Inside \q{lib}-folder the file is located, named identically to our package, it's an entry point for the package
+(\href{https://pub.dev/packages/flutter_grid_layout}{https://pub.dev/packages/flutter\_grid\_layout}):
+
+\begin{lstlisting}
+// ./lib/flutter_grid_layout.dart
+library flutter_grid_layout;
+// 'src'-folder for internal files that 
+// might not be accessible without export
+export 'src/grid_container.dart';
+export 'src/grid_item.dart';
+\end{lstlisting}
+
+\noindent The implementation has a resemblance to the previously created \q{RowWidget} by its functionality of 
+converting relative values into density-independent pixels (DIP). \q{GridItem}-widget serves as an encapsulating 
+entity for the original widget, delineating its placement within a grid matrix; while \q{GridContainer}-widget covers
+all requisite calculations for repositioning:
+
+\begin{lstlisting}
+// ./lib/src/grid_item.dart
+class GridItem extends StatelessWidget {
+  final Size start;
+  final Size end;
+  final int zIndex;
+  final Widget child;
+
+  const GridItem({/* ... */});
+
+  @override
+  Widget build(BuildContext context) {
+    return child;
+  }(*@ \stopnumber @*)
+}
+
+// ./lib/src/grid_container.dart
+class GridContainer extends StatelessWidget {
+  final List<double?> columns;
+  final List<double?> rows;
+  final List<GridItem> children;
+
+  const GridContainer({/* ... */});
+  // Calculate actual DIP based on relative values
+  List<double> _calc(double size, List<double?> scope) {
+    // ... implementation similar to RowWidget
+    // Sample, 0.5 -> 50%, 10 -> 10 DIP, null -> auto
+    scope.insert(0, 0.0); // leading zero
+    return scope.cast(); // null-safety
+  }
+  // Count length from zero-point
+  List<double> _scale(List<double> scope) {
+    return scope.asMap().entries.map((entry) => scope.sublist(0, entry.key + 1).fold(0.0, (v, e) => v + e)).toList();
+  }
+  List<double> _calcWidth(width) => _calc(width, rows);
+  List<double> _calcHeight(height) => _calc(height, columns);
+
+  @override
+  Widget build(BuildContext context) {
+    if (columns.isEmpty || rows.isEmpty || children.isEmpty) {
+      return const SizedBox();
+    }
+    children.sort((a, b) => a.zIndex.compareTo(b.zIndex));
+    return LayoutBuilder(builder: (context, constraints) {
+      final width = _scale(_calcWidth(constraints.maxWidth));
+      final height = _scale(_calcHeight(constraints.maxHeight));
+      return Stack(
+        children: List<Widget>.generate(children.length, (index) {
+          final item = children[index];
+          // Calculate actual Widget size
+          final itemWidth = width[item.end.width.toInt()] - width[item.start.width.toInt()];
+          final itemHeight = height[item.end.height.toInt()] - height[item.start.height.toInt()];
+          // Bound by Container
+          return Container(
+            // Shift by starting position
+            margin: EdgeInsets.only(
+              left: width[item.start.width.toInt()],
+              top: height[item.start.height.toInt()],
+            ),
+            // Expand to the full area, alike in CSS:
+            // > justify-self: stretch;
+            constraints: BoxConstraints(
+              maxWidth: itemWidth,   minWidth: itemWidth,
+              maxHeight: itemHeight, minHeight: itemHeight,
+            ),
+            width: itemWidth,
+            height: itemHeight,
+            child: item.child,
+          );
+        }));
+    });
+  }
+}
+\end{lstlisting}
+
+\noindent By using \q{flutter pub publish}-command our package will become available on 
+\href{https://pub.dev}{https://pub.dev} and can be aggregated into our main project by 
+\q{flutter pub add flutter\_grid\_layout}.
