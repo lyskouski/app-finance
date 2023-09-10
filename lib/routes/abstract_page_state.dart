@@ -82,14 +82,14 @@ abstract class AbstractPageState<T extends StatefulWidget> extends State<T> {
                   notchMargin: CircularProgressIndicator.strokeAlignCenter,
                   height: appBar.toolbarHeight,
                   color: appBar.backgroundColor,
-                  child: appBar.leading == null
+                  child: appBar.title == null
                       ? ThemeHelper.emptyBox
                       : RowWidget(
                           maxWidth: constraints.maxWidth,
                           indent: 0,
                           chunk: [50, null, getButtonName().isNotEmpty ? 0.5 : 0, 50],
                           children: [
-                            [appBar.leading!],
+                            [appBar.leading ?? ThemeHelper.emptyBox],
                             [Center(heightFactor: 2, child: appBar.title!)],
                             [
                               Padding(

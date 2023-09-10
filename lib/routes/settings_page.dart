@@ -45,7 +45,7 @@ class SettingsPageState extends AbstractPageState<SettingsPage> {
         ),
       ],
       children: [
-        SettingTab(),
+        const SettingTab(),
         RecoverTab(callback: super.state.restate),
         ImportTab(width: ThemeHelper.getWidth(context, 12), textTheme: Theme.of(context).textTheme),
       ],

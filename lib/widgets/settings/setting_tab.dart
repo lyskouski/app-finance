@@ -5,11 +5,12 @@ import 'package:app_finance/_configs/theme_helper.dart';
 import 'package:app_finance/widgets/start/setting_tab.dart' as start;
 import 'package:flutter/material.dart';
 
-class SettingTab extends start.SettingTab {
-  SettingTab()
-      : super(
-          setState: () => {},
-        );
+class SettingTab extends StatefulWidget {
+  final bool isFirstBoot = false;
+
+  const SettingTab({super.key});
+
+  void setState() => {};
 
   @override
   SettingTabState createState() => SettingTabState();
@@ -17,7 +18,5 @@ class SettingTab extends start.SettingTab {
 
 class SettingTabState extends start.SettingTabState {
   @override
-  Widget buildButton(BuildContext context, BoxConstraints constraints) {
-    return ThemeHelper.emptyBox;
-  }
+  Widget buildButton(BuildContext context, BoxConstraints constraints) => ThemeHelper.emptyBox;
 }

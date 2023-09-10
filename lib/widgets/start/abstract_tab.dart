@@ -7,15 +7,20 @@ import 'package:app_finance/widgets/_wrappers/full_sized_button_widget.dart';
 import 'package:flutter/material.dart';
 
 abstract class AbstractTab<T> extends StatefulWidget {
-  final Function() setState;
+  final bool isFirstBoot;
+  final Function([Widget? btn]) setState;
 
-  AbstractTab({required this.setState}) : super(key: UniqueKey());
+  const AbstractTab({
+    super.key,
+    required this.setState,
+    required this.isFirstBoot,
+  });
 }
 
 abstract class AbstractTabState<T extends AbstractTab> extends State<T> {
   String getButtonTitle();
 
-  Widget buildContent(BuildContext context);
+  Widget buildContent(BuildContext context, BoxConstraints constraints);
 
   void updateState() {
     widget.setState();
@@ -34,12 +39,15 @@ abstract class AbstractTabState<T extends AbstractTab> extends State<T> {
   Widget build(BuildContext context) {
     double indent = ThemeHelper.getIndent(2);
     return LayoutBuilder(builder: (context, constraints) {
-      return Scaffold(
-        floatingActionButton: buildButton(context, constraints),
-        body: Container(
-          margin: EdgeInsets.fromLTRB(indent, indent, indent, 90),
-          child: buildContent(context),
-        ),
+      if (widget.isFirstBoot) {
+        WidgetsBinding.instance.addPostFrameCallback((_) {
+          widget.setState(buildButton(context, constraints));
+        });
+        return ThemeHelper.emptyBox;
+      }
+      return Container(
+        margin: EdgeInsets.all(indent),
+        child: buildContent(context, constraints),
       );
     });
   }
