@@ -17,9 +17,10 @@ import 'package:flutter/material.dart';
 class BudgetViewPage extends AbstractPage {
   final String uuid;
 
-  BudgetViewPage({
+  const BudgetViewPage({
+    super.key,
     required this.uuid,
-  }) : super();
+  });
 
   @override
   BudgetViewPageState createState() => BudgetViewPageState();

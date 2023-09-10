@@ -32,7 +32,8 @@ class AccountAddPage extends AbstractAddPage {
   final IconData? icon;
   final MaterialColor? color;
 
-  AccountAddPage({
+  const AccountAddPage({
+    super.key,
     this.title,
     this.description,
     this.type,
@@ -41,7 +42,7 @@ class AccountAddPage extends AbstractAddPage {
     this.balance,
     this.icon,
     this.color,
-  }) : super();
+  });
 
   @override
   AccountAddPageState createState() => AccountAddPageState();

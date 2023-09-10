@@ -9,7 +9,7 @@ import 'package:app_finance/widgets/automation/sync_tab.dart';
 import 'package:flutter/material.dart';
 
 class AutomationPage extends AbstractPage {
-  AutomationPage() : super();
+  const AutomationPage({super.key});
 
   @override
   AutomationPageState createState() => AutomationPageState();

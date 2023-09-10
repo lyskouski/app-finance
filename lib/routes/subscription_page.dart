@@ -9,7 +9,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/foundation.dart';
 
 class SubscriptionPage extends AbstractPage {
-  SubscriptionPage() : super();
+  const SubscriptionPage({super.key});
 
   @override
   SubscriptionPageState createState() => SubscriptionPageState();

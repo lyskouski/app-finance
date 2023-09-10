@@ -12,9 +12,10 @@ import 'package:flutter/material.dart';
 
 class MetricsPage extends AbstractPage {
   final String search;
-  MetricsPage({
+  const MetricsPage({
+    super.key,
     this.search = '0',
-  }) : super();
+  });
 
   @override
   MetricsPageState createState() => MetricsPageState();

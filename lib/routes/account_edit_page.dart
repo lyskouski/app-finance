@@ -10,9 +10,10 @@ import 'package:flutter/material.dart';
 class AccountEditPage extends AccountAddPage {
   final String uuid;
 
-  AccountEditPage({
+  const AccountEditPage({
+    super.key,
     required this.uuid,
-  }) : super();
+  });
 
   @override
   AccountEditPageState createState() => AccountEditPageState();

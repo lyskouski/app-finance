@@ -13,9 +13,10 @@ import 'package:flutter/material.dart';
 class AccountPage extends AbstractPage {
   final String? search;
 
-  AccountPage({
+  const AccountPage({
+    super.key,
     this.search,
-  }) : super();
+  });
 
   @override
   AccountPageState createState() => AccountPageState();

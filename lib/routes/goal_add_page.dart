@@ -29,14 +29,15 @@ class GoalAddPage extends AbstractPage {
   final double? details;
   final DateTime? closedAt;
 
-  GoalAddPage({
+  const GoalAddPage({
+    super.key,
     this.title,
     this.icon,
     this.color,
     this.currency,
     this.details,
     this.closedAt,
-  }) : super();
+  });
 
   @override
   GoalAddPageState createState() => GoalAddPageState();

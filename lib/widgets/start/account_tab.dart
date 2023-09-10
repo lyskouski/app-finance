@@ -11,9 +11,10 @@ import 'package:provider/provider.dart';
 class AccountTab extends AccountAddPage {
   final Function() setState;
 
-  AccountTab({
+  const AccountTab({
+    super.key,
     required this.setState,
-  }) : super();
+  });
 
   @override
   AccountTabState createState() => AccountTabState();

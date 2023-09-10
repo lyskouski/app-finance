@@ -9,9 +9,10 @@ import 'package:flutter/material.dart';
 class BudgetEditPage extends BudgetAddPage {
   final String uuid;
 
-  BudgetEditPage({
+  const BudgetEditPage({
+    super.key,
     required this.uuid,
-  }) : super();
+  });
 
   @override
   BudgetEditPageState createState() => BudgetEditPageState();

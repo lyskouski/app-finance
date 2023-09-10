@@ -14,7 +14,7 @@ import 'package:app_finance/widgets/_wrappers/row_widget.dart';
 import 'package:flutter/material.dart';
 
 class CurrencyPage extends AbstractPage {
-  CurrencyPage() : super();
+  const CurrencyPage({super.key});
 
   @override
   CurrencyPageState createState() => CurrencyPageState();

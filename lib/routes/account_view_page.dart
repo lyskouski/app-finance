@@ -18,9 +18,10 @@ import 'package:flutter/material.dart';
 class AccountViewPage extends AbstractPage {
   final String uuid;
 
-  AccountViewPage({
+  const AccountViewPage({
+    super.key,
     required this.uuid,
-  }) : super();
+  });
 
   @override
   AccountViewPageState createState() => AccountViewPageState();

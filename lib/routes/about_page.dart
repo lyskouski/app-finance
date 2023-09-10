@@ -11,7 +11,7 @@ import 'package:flutter_markdown/flutter_markdown.dart';
 import 'package:package_info_plus/package_info_plus.dart';
 
 class AboutPage extends AbstractPage {
-  AboutPage() : super();
+  const AboutPage({super.key});
 
   @override
   AboutPageState createState() => AboutPageState();

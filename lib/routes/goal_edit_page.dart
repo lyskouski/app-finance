@@ -9,9 +9,10 @@ import 'package:flutter/material.dart';
 class GoalEditPage extends GoalAddPage {
   final String uuid;
 
-  GoalEditPage({
+  const GoalEditPage({
+    super.key,
     required this.uuid,
-  }) : super();
+  });
 
   @override
   GoalEditPageState createState() => GoalEditPageState();

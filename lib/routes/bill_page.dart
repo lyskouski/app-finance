@@ -10,7 +10,7 @@ import 'package:app_finance/widgets/home/bill_widget.dart';
 import 'package:flutter/material.dart';
 
 class BillPage extends AbstractPage {
-  BillPage() : super();
+  const BillPage({super.key});
 
   @override
   BillPageState createState() => BillPageState();

@@ -14,9 +14,10 @@ import 'package:flutter/material.dart';
 class BillViewPage extends AbstractPage {
   final String uuid;
 
-  BillViewPage({
+  const BillViewPage({
+    super.key,
     required this.uuid,
-  }) : super();
+  });
 
   @override
   BillViewPageState createState() => BillViewPageState();

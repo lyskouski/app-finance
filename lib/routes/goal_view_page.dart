@@ -16,9 +16,10 @@ import 'package:flutter/material.dart';
 class GoalViewPage extends AbstractPage {
   final String uuid;
 
-  GoalViewPage({
+  const GoalViewPage({
+    super.key,
     required this.uuid,
-  }) : super();
+  });
 
   @override
   GoalViewPageState createState() => GoalViewPageState();

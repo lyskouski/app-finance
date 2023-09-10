@@ -114,24 +114,24 @@ class MyAppState extends State<MyApp> {
       AppRoute.goalViewRoute: (context) => GoalViewPage(uuid: key),
       AppRoute.goalEditRoute: (context) => GoalEditPage(uuid: key),
       AppRoute.metricsSearchRoute: (context) => MetricsPage(search: key),
-      AppRoute.aboutRoute: (context) => AboutPage(),
-      AppRoute.accountAddRoute: (context) => AccountAddPage(),
-      AppRoute.accountRoute: (context) => AccountPage(),
-      AppRoute.automationRoute: (context) => AutomationPage(),
-      AppRoute.billAddRoute: (context) => BillAddPage(),
-      AppRoute.billRoute: (context) => BillPage(),
-      AppRoute.budgetAddRoute: (context) => BudgetAddPage(),
-      AppRoute.budgetRoute: (context) => BudgetPage(),
-      AppRoute.currencyRoute: (context) => CurrencyPage(),
-      AppRoute.goalAddRoute: (context) => GoalAddPage(),
-      AppRoute.goalRoute: (context) => GoalPage(),
-      AppRoute.homeRoute: (context) => HomePage(),
-      AppRoute.metricsRoute: (context) => MetricsPage(),
-      AppRoute.settingsRoute: (context) => SettingsPage(),
-      AppRoute.startRoute: (context) => StartPage(),
-      AppRoute.subscriptionRoute: (context) => SubscriptionPage(),
+      AppRoute.aboutRoute: (context) => const AboutPage(),
+      AppRoute.accountAddRoute: (context) => const AccountAddPage(),
+      AppRoute.accountRoute: (context) => const AccountPage(),
+      AppRoute.automationRoute: (context) => const AutomationPage(),
+      AppRoute.billAddRoute: (context) => const BillAddPage(),
+      AppRoute.billRoute: (context) => const BillPage(),
+      AppRoute.budgetAddRoute: (context) => const BudgetAddPage(),
+      AppRoute.budgetRoute: (context) => const BudgetPage(),
+      AppRoute.currencyRoute: (context) => const CurrencyPage(),
+      AppRoute.goalAddRoute: (context) => const GoalAddPage(),
+      AppRoute.goalRoute: (context) => const GoalPage(),
+      AppRoute.homeRoute: (context) => const HomePage(),
+      AppRoute.metricsRoute: (context) => const MetricsPage(),
+      AppRoute.settingsRoute: (context) => const SettingsPage(),
+      AppRoute.startRoute: (context) => const StartPage(),
+      AppRoute.subscriptionRoute: (context) => const SubscriptionPage(),
     };
-    return routes[route] ?? (context) => HomePage();
+    return routes[route] ?? (context) => const HomePage();
   }
 
   MaterialPageRoute? getDynamicRouter(settings) {
@@ -157,7 +157,7 @@ class MyAppState extends State<MyApp> {
         useMaterial3: true,
       ),
       themeMode: context.watch<AppTheme>().value,
-      home: HomePage(),
+      home: const HomePage(),
       onGenerateRoute: getDynamicRouter,
     );
   }

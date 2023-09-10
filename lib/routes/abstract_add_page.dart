@@ -5,7 +5,7 @@ import 'package:app_finance/routes/abstract_page.dart';
 import 'package:flutter/material.dart';
 
 abstract class AbstractAddPage<T> extends AbstractPage {
-  AbstractAddPage() : super();
+  const AbstractAddPage({super.key});
 }
 
 abstract class AbstractAddPageState<T extends AbstractAddPage> extends AbstractPageState<T> {

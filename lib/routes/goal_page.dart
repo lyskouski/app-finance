@@ -16,7 +16,7 @@ import 'package:app_finance/widgets/_wrappers/row_widget.dart';
 import 'package:flutter/material.dart';
 
 class GoalPage extends AbstractPage {
-  GoalPage() : super();
+  const GoalPage({super.key});
 
   @override
   GoalPageState createState() => GoalPageState();

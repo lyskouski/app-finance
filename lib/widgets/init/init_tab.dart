@@ -8,7 +8,7 @@ import 'package:app_finance/widgets/init/loading_widget.dart';
 import 'package:flutter/material.dart';
 
 class InitTab extends AbstractPage {
-  InitTab() : super();
+  const InitTab({super.key});
 
   @override
   InitTabState createState() => InitTabState();

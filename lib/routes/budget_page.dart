@@ -12,9 +12,10 @@ import 'package:flutter/material.dart';
 
 class BudgetPage extends AbstractPage {
   final String? search;
-  BudgetPage({
+  const BudgetPage({
+    super.key,
     this.search,
-  }) : super();
+  });
 
   @override
   BudgetPageState createState() => BudgetPageState();

@@ -15,7 +15,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 class StartPage extends AbstractPage {
-  StartPage() : super();
+  const StartPage({super.key});
 
   @override
   StartPageState createState() => StartPageState();

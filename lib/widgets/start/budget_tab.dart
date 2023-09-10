@@ -11,9 +11,10 @@ import 'package:provider/provider.dart';
 class BudgetTab extends BudgetAddPage {
   final Function() setState;
 
-  BudgetTab({
+  const BudgetTab({
+    super.key,
     required this.setState,
-  }) : super();
+  });
 
   @override
   BudgetTabState createState() => BudgetTabState();

@@ -23,7 +23,7 @@ import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 
 class HomePage extends AbstractPage {
-  HomePage() : super();
+  const HomePage({super.key});
 
   @override
   HomePageState createState() => HomePageState();
@@ -110,7 +110,7 @@ class HomePageState extends AbstractPageState<HomePage> {
     return Consumer<AppData>(builder: (context, appState, _) {
       state = appState;
       if (appState.isLoading) {
-        return InitTab();
+        return const InitTab();
       }
       return super.build(context);
     });

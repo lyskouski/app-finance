@@ -11,7 +11,7 @@ import 'package:app_finance/widgets/settings/recover_tab.dart';
 import 'package:flutter/material.dart';
 
 class SettingsPage extends AbstractPage {
-  SettingsPage() : super();
+  const SettingsPage({super.key});
 
   @override
   SettingsPageState createState() => SettingsPageState();

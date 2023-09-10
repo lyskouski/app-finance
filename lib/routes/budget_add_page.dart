@@ -26,13 +26,14 @@ class BudgetAddPage extends AbstractAddPage {
   final MaterialColor? color;
   final Currency? currency;
 
-  BudgetAddPage({
+  const BudgetAddPage({
+    super.key,
     this.title,
     this.budgetLimit,
     this.icon,
     this.color,
     this.currency,
-  }) : super();
+  });
 
   @override
   BudgetAddPageState createState() => BudgetAddPageState();
