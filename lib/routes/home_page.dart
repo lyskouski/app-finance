@@ -10,6 +10,7 @@ import 'package:app_finance/_configs/responsive_matrix.dart';
 import 'package:app_finance/_configs/theme_helper.dart';
 import 'package:app_finance/_classes/structure/navigation/app_route.dart';
 import 'package:app_finance/routes/abstract_page_state.dart';
+import 'package:app_finance/routes/start_page.dart';
 import 'package:app_finance/widgets/_wrappers/grid_layer.dart';
 import 'package:app_finance/widgets/init/init_tab.dart';
 import 'package:app_finance/widgets/_wrappers/toolbar_button_widget.dart';
@@ -104,11 +105,10 @@ class HomePageState extends AbstractPageState<HomePage> {
 
   @override
   Widget build(BuildContext context) {
-    NavigatorState nav = Navigator.of(context);
-    if (AppPreferences.get(AppPreferences.prefPrivacyPolicy) == null) {
-      WidgetsBinding.instance.addPostFrameCallback((_) => nav.popAndPushNamed(AppRoute.startRoute));
-    }
     Provider.of<AppLocale>(context, listen: false).updateState(context);
+    if (AppPreferences.get(AppPreferences.prefPrivacyPolicy) == null) {
+      return const StartPage();
+    }
     return Consumer<AppData>(builder: (context, appState, _) {
       state = appState;
       if (appState.isLoading) {

@@ -16,7 +16,9 @@ import 'package:provider/provider.dart';
 
 abstract class AbstractPageState<T extends StatefulWidget> extends State<T> {
   static const barHeight = 40.0;
+  dynamic bar;
   late AppData state;
+
   int selectedMenu = 0;
 
   String getTitle();
@@ -99,6 +101,8 @@ abstract class AbstractPageState<T extends StatefulWidget> extends State<T> {
     return BottomAppBar(
       padding: EdgeInsets.zero,
       notchMargin: CircularProgressIndicator.strokeAlignCenter,
+      clipBehavior: Clip.none,
+      elevation: 0.0,
       height: barHeight,
       color: theme.colorScheme.primary,
       child: RowWidget(
@@ -155,22 +159,23 @@ abstract class AbstractPageState<T extends StatefulWidget> extends State<T> {
   @override
   Widget build(BuildContext context) {
     FocusController.init();
-    return Scaffold(
-      body: LayoutBuilder(builder: (context, constraints) {
+    return Consumer<AppData>(builder: (context, appState, _) {
+      state = appState;
+      return LayoutBuilder(builder: (context, constraints) {
         final button = buildButton(context, constraints);
         final isBottom = ResponsiveMatrix(getWindowType(context)).isNavBottom(constraints);
-        return Consumer<AppData>(builder: (context, appState, _) {
-          state = appState;
-          return Scaffold(
-            appBar: isBottom ? null : buildBar(context),
-            bottomNavigationBar: isBottom ? buildBottomBar(context, constraints) : null,
-            drawer: buildDrawer(),
-            body: SafeArea(child: buildContent(context, constraints)),
-            floatingActionButtonLocation: isBottom ? FloatingActionButtonLocation.centerDocked : null,
-            floatingActionButton: button,
-          );
-        });
-      }),
-    );
+        if (isBottom && bar is! BottomAppBar || bar is! AppBar) {
+          bar = isBottom ? buildBottomBar(context, constraints) : buildBar(context);
+        }
+        return Scaffold(
+          appBar: isBottom ? null : bar as AppBar,
+          bottomNavigationBar: isBottom ? bar as BottomAppBar : null,
+          drawer: buildDrawer(),
+          body: SafeArea(child: buildContent(context, constraints)),
+          floatingActionButtonLocation: isBottom ? FloatingActionButtonLocation.centerDocked : null,
+          floatingActionButton: button,
+        );
+      });
+    });
   }
 }

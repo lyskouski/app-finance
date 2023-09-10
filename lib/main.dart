@@ -136,7 +136,7 @@ class MyAppState extends State<MyApp> {
 
   MaterialPageRoute? getDynamicRouter(settings) {
     route = settings.name!;
-    return MaterialPageRoute(builder: getDynamicRouterWidget(route)!);
+    return MaterialPageRoute(/*maintainState: false,*/ builder: getDynamicRouterWidget(route)!);
   }
 
   @override
