@@ -30,6 +30,9 @@ class BillViewPageState extends AbstractPageState<BillViewPage> {
   }
 
   @override
+  String getButtonName() => '';
+
+  @override
   Widget buildButton(BuildContext context, BoxConstraints constraints) {
     String route = AppMenu.uuid(AppRoute.billEditRoute, widget.uuid);
     double indent = ThemeHelper.getIndent(4);

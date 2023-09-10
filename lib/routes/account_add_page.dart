@@ -100,9 +100,8 @@ class AccountAddPageState<T extends AccountAddPage> extends AbstractAddPageState
         ));
   }
 
-  String getButtonName(BuildContext context) {
-    return AppLocale.labels.createAccountTooltip;
-  }
+  @override
+  String getButtonName() => AppLocale.labels.createAccountTooltip;
 
   @override
   Widget buildButton(BuildContext context, BoxConstraints constraints) {
@@ -110,7 +109,7 @@ class AccountAddPageState<T extends AccountAddPage> extends AbstractAddPageState
     return FullSizedButtonWidget(
       constraints: constraints,
       setState: () => triggerActionButton(nav),
-      title: getButtonName(context),
+      title: getButtonName(),
       icon: Icons.save,
     );
   }

@@ -80,9 +80,8 @@ class BudgetAddPageState<T extends BudgetAddPage> extends AbstractAddPageState<B
         ));
   }
 
-  String getButtonName() {
-    return AppLocale.labels.createBudgetTooltip;
-  }
+  @override
+  String getButtonName() => AppLocale.labels.createBudgetTooltip;
 
   @override
   Widget buildButton(BuildContext context, BoxConstraints constraints) {

@@ -23,12 +23,15 @@ class BillPageState extends AbstractPageState<BillPage> {
   }
 
   @override
+  String getButtonName() => AppLocale.labels.addMainTooltip;
+
+  @override
   Widget buildButton(BuildContext context, BoxConstraints constraints) {
     NavigatorState nav = Navigator.of(context);
     return FloatingActionButton(
       heroTag: 'bill_page',
       onPressed: () => nav.pushNamed(AppRoute.billAddRoute),
-      tooltip: AppLocale.labels.addMainTooltip,
+      tooltip: getButtonName(),
       child: const Icon(Icons.add),
     );
   }

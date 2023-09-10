@@ -48,7 +48,7 @@ class HomePageState extends AbstractPageState<HomePage> {
     NavigatorState nav = Navigator.of(context);
     final logo = SvgPicture.asset(
       'assets/images/fingrom.svg',
-      width: isBottom ? 70 : 120,
+      height: isBottom ? 20 : 40,
       alignment: Alignment.centerLeft,
       semanticsLabel: AppLocale.labels.appTitle,
     );
@@ -87,12 +87,15 @@ class HomePageState extends AbstractPageState<HomePage> {
   }
 
   @override
+  String getButtonName() => AppLocale.labels.addMainTooltip;
+
+  @override
   Widget buildButton(BuildContext context, BoxConstraints constraints) {
     NavigatorState nav = Navigator.of(context);
     return FloatingActionButton(
       heroTag: 'home_page',
       onPressed: () => nav.pushNamed(AppRoute.billAddRoute),
-      tooltip: AppLocale.labels.addMainTooltip,
+      tooltip: getButtonName(),
       child: const Icon(Icons.add),
     );
   }

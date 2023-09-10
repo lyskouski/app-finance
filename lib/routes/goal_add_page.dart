@@ -88,9 +88,8 @@ class GoalAddPageState<T extends GoalAddPage> extends AbstractPageState<GoalAddP
         ));
   }
 
-  String getButtonName() {
-    return AppLocale.labels.createGoalTooltip;
-  }
+  @override
+  String getButtonName() => AppLocale.labels.createGoalTooltip;
 
   @override
   Widget buildButton(BuildContext context, BoxConstraints constraints) {

@@ -73,9 +73,7 @@ class AccountEditPageState extends AccountAddPageState<AccountEditPage> {
   }
 
   @override
-  String getButtonName(BuildContext context) {
-    return AppLocale.labels.updateAccountTooltip;
-  }
+  String getButtonName() => AppLocale.labels.updateAccountTooltip;
 
   @override
   Widget buildContent(BuildContext context, BoxConstraints constraints) {

@@ -17,6 +17,9 @@ class SubscriptionPage extends AbstractPage {
 
 class SubscriptionPageState extends AbstractPageState<SubscriptionPage> {
   @override
+  String getButtonName() => '';
+
+  @override
   Widget buildButton(BuildContext context, BoxConstraints constraints) {
     return ThemeHelper.emptyBox;
   }

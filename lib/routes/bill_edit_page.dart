@@ -29,6 +29,9 @@ class BillEditPageState<T extends BillEditPage> extends AbstractPageState<BillEd
   }
 
   @override
+  String getButtonName() => '';
+
+  @override
   Widget buildButton(BuildContext context, BoxConstraints constraints) {
     return button;
   }

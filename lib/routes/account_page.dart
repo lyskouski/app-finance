@@ -31,12 +31,15 @@ class AccountPageState extends AbstractPageState<AccountPage> {
   }
 
   @override
+  String getButtonName() => AppLocale.labels.addAccountTooltip;
+
+  @override
   Widget buildButton(BuildContext context, BoxConstraints constraints) {
     NavigatorState nav = Navigator.of(context);
     return FloatingActionButton(
       heroTag: 'account_page',
       onPressed: () => nav.pushNamed(AppRoute.accountAddRoute),
-      tooltip: AppLocale.labels.addAccountTooltip,
+      tooltip: getButtonName(),
       child: const Icon(Icons.add),
     );
   }

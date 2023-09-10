@@ -36,6 +36,9 @@ class InitTabState extends AbstractPageState<InitTab> {
   }
 
   @override
+  String getButtonName() => '';
+
+  @override
   Widget buildButton(BuildContext context, BoxConstraints constraints) {
     return ThemeHelper.emptyBox;
   }

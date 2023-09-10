@@ -9,6 +9,7 @@ import 'package:app_finance/_configs/responsive_matrix.dart';
 import 'package:app_finance/_configs/theme_helper.dart';
 import 'package:app_finance/widgets/_generic/app_bar_widget.dart';
 import 'package:app_finance/widgets/_generic/menu_widget.dart';
+import 'package:app_finance/widgets/_wrappers/row_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -21,6 +22,8 @@ abstract class AbstractPageState<T extends AbstractPage> extends State<T> {
   int selectedMenu = 0;
 
   String getTitle();
+
+  String getButtonName();
 
   Widget buildButton(BuildContext context, BoxConstraints constraints);
 
@@ -61,6 +64,7 @@ abstract class AbstractPageState<T extends AbstractPage> extends State<T> {
   Widget build(BuildContext context) {
     FocusController.init();
     final matrix = ResponsiveMatrix(getWindowType(context));
+    final indent = ThemeHelper.getIndent();
     return LayoutBuilder(builder: (context, constraints) {
       final button = buildButton(context, constraints);
       final isBottom = matrix.isNavBottom(constraints);
@@ -75,17 +79,29 @@ abstract class AbstractPageState<T extends AbstractPage> extends State<T> {
                   notchMargin: CircularProgressIndicator.strokeAlignCenter,
                   height: appBar.toolbarHeight,
                   color: appBar.backgroundColor,
-                  shape: button != ThemeHelper.emptyBox ? const CircularNotchedRectangle() : null,
-                  child: Row(
-                    children: appBar.leading != null
-                        ? [
-                            appBar.leading!,
-                            appBar.title!,
-                            const Spacer(),
-                            ...appBar.actions!,
-                          ]
-                        : [],
-                  ),
+                  child: appBar.leading == null
+                      ? ThemeHelper.emptyBox
+                      : RowWidget(
+                          maxWidth: constraints.maxWidth,
+                          indent: 0,
+                          chunk: const [50, null, 0.5, 50],
+                          children: [
+                            [appBar.leading!],
+                            [Center(heightFactor: 2, child: appBar.title!)],
+                            [
+                              Padding(
+                                padding: EdgeInsets.only(left: 84, top: indent),
+                                child: Text(getButtonName(),
+                                    maxLines: 2,
+                                    overflow: TextOverflow.ellipsis,
+                                    style: Theme.of(context).textTheme.bodySmall!.copyWith(
+                                          color: Theme.of(context).colorScheme.inversePrimary,
+                                        )),
+                              ),
+                            ],
+                            appBar.actions!,
+                          ],
+                        ),
                 )
               : null,
           drawer: buildDrawer(),

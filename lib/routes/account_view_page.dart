@@ -48,6 +48,9 @@ class AccountViewPageState extends AbstractPageState<AccountViewPage> with Ticke
   }
 
   @override
+  String getButtonName() => '';
+
+  @override
   Widget buildButton(BuildContext context, BoxConstraints constraints) {
     String route = AppMenu.uuid(AppRoute.accountEditRoute, widget.uuid);
     double indent = ThemeHelper.getIndent(4);

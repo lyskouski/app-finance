@@ -40,6 +40,9 @@ class StartPageState extends AbstractPageState<StartPage> {
   }
 
   @override
+  String getButtonName() => '';
+
+  @override
   Widget buildButton(BuildContext context, BoxConstraints constraints) {
     return ThemeHelper.emptyBox;
   }

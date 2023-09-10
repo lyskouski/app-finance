@@ -22,6 +22,9 @@ class MetricsPage extends AbstractPage {
 
 class MetricsPageState extends AbstractPageState<MetricsPage> {
   @override
+  String getButtonName() => '';
+
+  @override
   Widget buildButton(BuildContext context, BoxConstraints constraints) {
     return ThemeHelper.emptyBox;
   }

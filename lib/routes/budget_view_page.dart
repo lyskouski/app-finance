@@ -41,6 +41,9 @@ class BudgetViewPageState extends AbstractPageState<BudgetViewPage> with TickerP
   }
 
   @override
+  String getButtonName() => '';
+
+  @override
   Widget buildButton(BuildContext context, BoxConstraints constraints) {
     String route = AppMenu.uuid(AppRoute.budgetEditRoute, widget.uuid);
     double indent = ThemeHelper.getIndent(4);

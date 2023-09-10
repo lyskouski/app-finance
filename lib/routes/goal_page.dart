@@ -29,12 +29,15 @@ class GoalPageState extends AbstractPageState<GoalPage> with FormatterMixin {
   }
 
   @override
+  String getButtonName() => AppLocale.labels.addGoalTooltip;
+
+  @override
   Widget buildButton(BuildContext context, BoxConstraints constraints) {
     NavigatorState nav = Navigator.of(context);
     return FloatingActionButton(
       heroTag: 'goal_view_page',
       onPressed: () => nav.pushNamed(AppRoute.goalAddRoute),
-      tooltip: AppLocale.labels.addGoalTooltip,
+      tooltip: getButtonName(),
       child: const Icon(Icons.add),
     );
   }

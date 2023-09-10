@@ -54,6 +54,9 @@ class GoalViewPageState extends AbstractPageState<GoalViewPage> {
   }
 
   @override
+  String getButtonName() => '';
+
+  @override
   Widget buildButton(BuildContext context, BoxConstraints constraints) {
     final data = super.state.getByUuid(widget.uuid) as GoalAppData;
     String route = AppMenu.uuid(AppRoute.goalEditRoute, widget.uuid);

@@ -38,6 +38,9 @@ class AboutPageState extends AbstractPageState<AboutPage> with LauncherMixin {
   }
 
   @override
+  String getButtonName() => '';
+
+  @override
   Widget buildButton(BuildContext context, BoxConstraints constraints) {
     return ThemeHelper.emptyBox;
   }

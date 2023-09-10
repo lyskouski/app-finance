@@ -25,6 +25,9 @@ class AutomationPageState extends AbstractPageState<AutomationPage> with TickerP
   }
 
   @override
+  String getButtonName() => '';
+
+  @override
   Widget buildButton(BuildContext context, BoxConstraints constraints) {
     return ThemeHelper.emptyBox;
   }

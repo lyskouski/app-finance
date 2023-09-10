@@ -19,6 +19,9 @@ class SettingsPage extends AbstractPage {
 
 class SettingsPageState extends AbstractPageState<SettingsPage> {
   @override
+  String getButtonName() => '';
+
+  @override
   Widget buildButton(BuildContext context, BoxConstraints constraints) {
     return ThemeHelper.emptyBox;
   }

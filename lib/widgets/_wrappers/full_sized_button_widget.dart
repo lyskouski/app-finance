@@ -30,10 +30,11 @@ class FullSizedButtonWidget extends AbstractInput {
   @override
   Widget buildContent(BuildContext context) {
     final isBottom = ResponsiveMatrix(getWindowType(context)).isNavBottom(constraints);
-    final bool isKeyboardVisible = ThemeHelper.isKeyboardVisible(context);
+    final bool isKeyboardVisible = ThemeHelper.isKeyboardVisible(context) || isBottom;
     final colorScheme = Theme.of(context).colorScheme;
+    final width = constraints.maxWidth - ThemeHelper.getIndent(4) - 2;
     return SizedBox(
-      width: isKeyboardVisible ? null : constraints.maxWidth - ThemeHelper.getIndent(isBottom ? 8 : 4),
+      width: isKeyboardVisible ? null : width,
       child: FloatingActionButton(
         heroTag: heroTag,
         onPressed: setState,
@@ -46,15 +47,17 @@ class FullSizedButtonWidget extends AbstractInput {
               icon,
               semanticLabel: title,
               size: 32,
-              color: colorScheme.primary.withOpacity(0.5),
+              color: colorScheme.primary.withOpacity(0.7),
             ),
             if (!isKeyboardVisible)
-              Padding(
+              Container(
                 padding: EdgeInsets.only(left: ThemeHelper.getIndent()),
+                constraints: BoxConstraints(maxWidth: width - 34),
                 child: Text(
                   title,
+                  maxLines: 1,
                   overflow: TextOverflow.ellipsis,
-                  style: Theme.of(context).textTheme.bodyLarge?.copyWith(color: colorScheme.primary.withOpacity(0.8)),
+                  style: Theme.of(context).textTheme.bodyLarge?.copyWith(color: colorScheme.primary.withOpacity(0.9)),
                 ),
               ),
           ],
