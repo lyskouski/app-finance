@@ -44,45 +44,47 @@ class HomePageState extends AbstractPageState<HomePage> {
   }
 
   @override
-  AppBar buildBar(BuildContext context, [bool isBottom = false]) {
-    NavigatorState nav = Navigator.of(context);
-    final logo = SvgPicture.asset(
+  Widget? getBarLeading(NavigatorState nav) {
+    return Builder(
+      builder: (BuildContext context) {
+        return ToolbarButtonWidget(
+          child: IconButton(
+            hoverColor: Colors.transparent,
+            icon: const Icon(
+              Icons.menu,
+              color: Colors.white70,
+            ),
+            tooltip: AppLocale.labels.navigationTooltip,
+            onPressed: () => Scaffold.of(context).openDrawer(),
+          ),
+        );
+      },
+    );
+  }
+
+  @override
+  List<Widget> getBarActions(NavigatorState nav) {
+    return [
+      ToolbarButtonWidget(
+        child: IconButton(
+          icon: const Icon(
+            Icons.switch_access_shortcut_add_outlined,
+            color: Colors.white70,
+          ),
+          tooltip: AppLocale.labels.subscriptionTooltip,
+          onPressed: () => nav.pushNamed(AppRoute.subscriptionRoute),
+        ),
+      ),
+    ];
+  }
+
+  @override
+  Widget getBarTitle(BuildContext context, [bool isBottom = false]) {
+    return SvgPicture.asset(
       'assets/images/fingrom.svg',
       height: isBottom ? 20 : 40,
       alignment: Alignment.centerLeft,
       semanticsLabel: AppLocale.labels.appTitle,
-    );
-    return AppBar(
-      backgroundColor: Theme.of(context).colorScheme.primary,
-      toolbarHeight: 40,
-      leading: Builder(
-        builder: (BuildContext context) {
-          return ToolbarButtonWidget(
-            child: IconButton(
-              hoverColor: Colors.transparent,
-              icon: const Icon(
-                Icons.menu,
-                color: Colors.white70,
-              ),
-              tooltip: AppLocale.labels.navigationTooltip,
-              onPressed: () => Scaffold.of(context).openDrawer(),
-            ),
-          );
-        },
-      ),
-      title: isBottom ? logo : Center(child: logo),
-      actions: [
-        ToolbarButtonWidget(
-          child: IconButton(
-            icon: const Icon(
-              Icons.switch_access_shortcut_add_outlined,
-              color: Colors.white70,
-            ),
-            tooltip: AppLocale.labels.subscriptionTooltip,
-            onPressed: () => nav.pushNamed(AppRoute.subscriptionRoute),
-          ),
-        ),
-      ],
     );
   }
 

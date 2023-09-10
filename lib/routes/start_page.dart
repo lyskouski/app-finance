@@ -35,19 +35,10 @@ class StartPageState extends AbstractPageState<StartPage> {
   Widget buildButton(BuildContext context, BoxConstraints constraints) => button;
 
   @override
-  AppBar buildBar(BuildContext context, [bool isBottom = false]) {
-    final text = Text(
-      getTitle(),
-      style: TextStyle(color: Theme.of(context).colorScheme.inversePrimary),
-    );
-    return AppBar(
-      backgroundColor: Theme.of(context).colorScheme.primary,
-      toolbarHeight: 40,
-      automaticallyImplyLeading: false,
-      actions: const [],
-      title: isBottom ? text : Center(child: text),
-    );
-  }
+  List<Widget> getBarActions(NavigatorState nav) => [];
+
+  @override
+  Widget? getBarLeading(NavigatorState nav) => null;
 
   void updateState(Widget? btn, NavigatorState nav) {
     if (btn != null) {
