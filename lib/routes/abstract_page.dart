@@ -14,7 +14,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 abstract class AbstractPage<T> extends StatefulWidget {
-  AbstractPage() : super(key: UniqueKey());
+  const AbstractPage({super.key}); // : super(key: UniqueKey());
 }
 
 abstract class AbstractPageState<T extends AbstractPage> extends State<T> {
@@ -30,7 +30,12 @@ abstract class AbstractPageState<T extends AbstractPage> extends State<T> {
   Widget buildContent(BuildContext context, BoxConstraints constraints);
 
   AppBar buildBar(BuildContext context, [bool isBottom = false]) {
-    final text = Text(getTitle(), style: TextStyle(color: Theme.of(context).colorScheme.inversePrimary));
+    final text = Text(
+      getTitle(),
+      maxLines: 1,
+      overflow: TextOverflow.ellipsis,
+      style: TextStyle(color: Theme.of(context).colorScheme.inversePrimary),
+    );
     return AppBarWidget(
       title: isBottom ? text : Center(child: text),
       colorScheme: Theme.of(context).colorScheme,

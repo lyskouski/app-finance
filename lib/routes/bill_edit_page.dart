@@ -1,60 +1,34 @@
 // Copyright 2023 The terCAD team. All rights reserved.
 // Use of this source code is governed by a CC BY-NC-ND 4.0 license that can be found in the LICENSE file.
 
-import 'package:app_finance/_classes/herald/app_locale.dart';
+import 'package:app_finance/_classes/storage/app_data.dart';
 import 'package:app_finance/_classes/structure/bill_app_data.dart';
-import 'package:app_finance/_classes/controller/focus_controller.dart';
-import 'package:app_finance/_configs/theme_helper.dart';
-import 'package:app_finance/routes/abstract_page.dart';
 import 'package:app_finance/widgets/bill/expenses_edit_tab.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
-class BillEditPage extends AbstractPage {
+class BillEditPage extends StatelessWidget {
   final String uuid;
 
-  BillEditPage({
+  const BillEditPage({
+    super.key,
     required this.uuid,
-  }) : super();
+  });
 
   @override
-  BillEditPageState createState() => BillEditPageState();
-}
-
-class BillEditPageState<T extends BillEditPage> extends AbstractPageState<BillEditPage> {
-  Widget button = ThemeHelper.emptyBox;
-
-  @override
-  String getTitle() {
-    return AppLocale.labels.editBillHeader;
-  }
-
-  @override
-  String getButtonName() => '';
-
-  @override
-  Widget buildButton(BuildContext context, BoxConstraints constraints) {
-    return button;
-  }
-
-  @override
-  void dispose() {
-    FocusController.dispose();
-    super.dispose();
-  }
-
-  @override
-  Widget buildContent(BuildContext context, BoxConstraints constraints) {
-    var bill = super.state.getByUuid(widget.uuid) as BillAppData;
-    return ExpensesEditTab(
-      callback: (btn) => setState(() => button = btn),
-      state: state,
-      uuid: widget.uuid,
-      account: bill.account == '' ? null : bill.account,
-      budget: bill.category == '' ? null : bill.category,
-      currency: bill.currency,
-      bill: bill.details,
-      description: bill.title,
-      createdAt: bill.createdAt,
-    );
+  Widget build(BuildContext context) {
+    return Consumer<AppData>(builder: (context, appState, _) {
+      final bill = appState.getByUuid(uuid) as BillAppData;
+      return ExpensesEditTab(
+        state: appState,
+        uuid: uuid,
+        account: bill.account == '' ? null : bill.account,
+        budget: bill.category == '' ? null : bill.category,
+        currency: bill.currency,
+        bill: bill.details,
+        description: bill.title,
+        createdAt: bill.createdAt,
+      );
+    });
   }
 }

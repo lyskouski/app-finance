@@ -3,21 +3,22 @@
 
 import 'package:app_finance/_classes/herald/app_locale.dart';
 import 'package:app_finance/_classes/controller/focus_controller.dart';
+import 'package:app_finance/_classes/storage/app_data.dart';
 import 'package:app_finance/_configs/theme_helper.dart';
-import 'package:app_finance/routes/abstract_page.dart';
 import 'package:app_finance/widgets/bill/expenses_tab.dart';
 import 'package:app_finance/widgets/bill/income_tab.dart';
 import 'package:app_finance/widgets/bill/transfer_tab.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
-class BillAddPage extends AbstractPage {
-  BillAddPage() : super();
+class BillAddPage extends StatefulWidget {
+  const BillAddPage({super.key});
 
   @override
   BillAddPageState createState() => BillAddPageState();
 }
 
-class BillAddPageState<T extends BillAddPage> extends AbstractPageState<BillAddPage> with TickerProviderStateMixin {
+class BillAddPageState extends State<BillAddPage> with TickerProviderStateMixin {
   late final TabController _tabController;
   Widget button = ThemeHelper.emptyBox;
 
@@ -35,23 +36,8 @@ class BillAddPageState<T extends BillAddPage> extends AbstractPageState<BillAddP
   }
 
   @override
-  String getTitle() {
-    return AppLocale.labels.createBillHeader;
-  }
-
-  @override
-  String getButtonName() => '';
-
-  @override
-  Widget buildButton(BuildContext context, BoxConstraints constraints) {
-    return button;
-  }
-
-  @override
-  Widget buildContent(BuildContext context, BoxConstraints constraints) {
-    final indent = ThemeHelper.getIndent();
-    return Padding(
-      padding: EdgeInsets.only(top: indent),
+  Widget build(BuildContext context) {
+    return Material(
       child: Column(
         children: [
           TabBar.secondary(
@@ -73,15 +59,16 @@ class BillAddPageState<T extends BillAddPage> extends AbstractPageState<BillAddP
           ),
           Expanded(
             child: Padding(
-              padding: EdgeInsets.fromLTRB(indent, 0, indent, 0),
-              child: TabBarView(
-                controller: _tabController,
-                children: [
-                  IncomeTab(callback: (btn) => setState(() => button = btn), state: state),
-                  ExpensesTab(callback: (btn) => setState(() => button = btn), state: state),
-                  TransferTab(callback: (btn) => setState(() => button = btn), state: state),
-                ],
-              ),
+              padding: const EdgeInsets.only(top: 2),
+              child: Consumer<AppData>(
+                  builder: (context, appState, _) => TabBarView(
+                        controller: _tabController,
+                        children: [
+                          IncomeTab(state: appState),
+                          ExpensesTab(state: appState),
+                          TransferTab(state: appState),
+                        ],
+                      )),
             ),
           ),
         ],
