@@ -11,6 +11,8 @@ class ResponsiveMatrix {
 
   bool isLower(AdaptiveWindowType size) => windowType <= size;
 
+  bool isNavBottom(BoxConstraints constraints) => getWidthCount(constraints) <= 2;
+
   int getWidthCount(BoxConstraints constraints) {
     final matrix = {
       AdaptiveWindowType.xlarge: constraints.maxWidth >= 1440, // AdaptiveWindowType.xlarge.widthRangeValues.start,

@@ -12,6 +12,8 @@ class ExpensesEditTab extends ExpensesTab {
   const ExpensesEditTab({
     super.key,
     required this.uuid,
+    required super.callback,
+    required super.state,
     String? account,
     String? budget,
     Currency? currency,
@@ -34,7 +36,7 @@ class ExpensesEditTab extends ExpensesTab {
 class ExpensesEditTabState extends ExpensesTabState<ExpensesEditTab> {
   @override
   void updateStorage() {
-    state.update(
+    widget.state.update(
         widget.uuid,
         BillAppData(
           uuid: widget.uuid,

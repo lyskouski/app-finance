@@ -21,6 +21,8 @@ class BillEditPage extends AbstractPage {
 }
 
 class BillEditPageState<T extends BillEditPage> extends AbstractPageState<BillEditPage> {
+  Widget button = ThemeHelper.emptyBox;
+
   @override
   String getTitle() {
     return AppLocale.labels.editBillHeader;
@@ -28,7 +30,7 @@ class BillEditPageState<T extends BillEditPage> extends AbstractPageState<BillEd
 
   @override
   Widget buildButton(BuildContext context, BoxConstraints constraints) {
-    return ThemeHelper.emptyBox;
+    return button;
   }
 
   @override
@@ -41,6 +43,8 @@ class BillEditPageState<T extends BillEditPage> extends AbstractPageState<BillEd
   Widget buildContent(BuildContext context, BoxConstraints constraints) {
     var bill = super.state.getByUuid(widget.uuid) as BillAppData;
     return ExpensesEditTab(
+      callback: (btn) => setState(() => button = btn),
+      state: state,
       uuid: widget.uuid,
       account: bill.account == '' ? null : bill.account,
       budget: bill.category == '' ? null : bill.category,

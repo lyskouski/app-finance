@@ -63,7 +63,7 @@ abstract class AbstractPageState<T extends AbstractPage> extends State<T> {
     final matrix = ResponsiveMatrix(getWindowType(context));
     return LayoutBuilder(builder: (context, constraints) {
       final button = buildButton(context, constraints);
-      final isBottom = matrix.getWidthCount(constraints) <= 2;
+      final isBottom = matrix.isNavBottom(constraints);
       return Consumer<AppData>(builder: (context, appState, _) {
         state = appState;
         final appBar = buildBar(context, isBottom);

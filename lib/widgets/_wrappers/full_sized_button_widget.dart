@@ -1,7 +1,9 @@
 // Copyright 2023 The terCAD team. All rights reserved.
 // Use of this source code is governed by a CC BY-NC-ND 4.0 license that can be found in the LICENSE file.
 
+import 'package:adaptive_breakpoints/adaptive_breakpoints.dart';
 import 'package:app_finance/_classes/controller/focus_controller.dart';
+import 'package:app_finance/_configs/responsive_matrix.dart';
 import 'package:app_finance/_configs/theme_helper.dart';
 import 'package:app_finance/widgets/_forms/abstract_input.dart';
 import 'package:flutter/material.dart';
@@ -27,10 +29,11 @@ class FullSizedButtonWidget extends AbstractInput {
 
   @override
   Widget buildContent(BuildContext context) {
-    final bool isKeyboardVisible = MediaQuery.of(context).viewInsets.bottom > 0;
+    final isBottom = ResponsiveMatrix(getWindowType(context)).isNavBottom(constraints);
+    final bool isKeyboardVisible = ThemeHelper.isKeyboardVisible(context);
     final colorScheme = Theme.of(context).colorScheme;
     return SizedBox(
-      width: isKeyboardVisible ? null : constraints.maxWidth - ThemeHelper.getIndent(4),
+      width: isKeyboardVisible ? null : constraints.maxWidth - ThemeHelper.getIndent(isBottom ? 8 : 4),
       child: FloatingActionButton(
         heroTag: heroTag,
         onPressed: setState,

@@ -149,7 +149,7 @@ class CurrencyExchangeInputState extends State<CurrencyExchangeInput> {
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
             Container(
-              width: widget.width + widget.indent,
+              width: widget.width,
               decoration: BoxDecoration(
                 border: Border.all(color: Theme.of(context).colorScheme.inversePrimary.withOpacity(0.6)),
               ),
@@ -168,7 +168,7 @@ class CurrencyExchangeInputState extends State<CurrencyExchangeInput> {
                     padding: EdgeInsets.fromLTRB(widget.indent, 0, widget.indent, widget.indent),
                     child: RowWidget(
                       indent: widget.indent,
-                      maxWidth: widget.width - widget.indent - 2,
+                      maxWidth: widget.width - 2 * widget.indent - 2,
                       chunk: const [0.5, null],
                       children: [
                         [

@@ -20,7 +20,6 @@ import 'package:app_finance/widgets/_wrappers/required_widget.dart';
 import 'package:app_finance/widgets/_wrappers/row_widget.dart';
 import 'package:currency_picker/currency_picker.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 
 class ExpensesTab<T> extends StatefulWidget {
   final String? account;
@@ -29,9 +28,13 @@ class ExpensesTab<T> extends StatefulWidget {
   final double? bill;
   final String? description;
   final DateTime? createdAt;
+  final Function callback;
+  final AppData state;
 
   const ExpensesTab({
     super.key,
+    required this.callback,
+    required this.state,
     this.account,
     this.budget,
     this.currency,
@@ -45,7 +48,6 @@ class ExpensesTab<T> extends StatefulWidget {
 }
 
 class ExpensesTabState<T extends ExpensesTab> extends State<T> {
-  late AppData state;
   String? account;
   String? budget;
   Currency? currency;
@@ -54,13 +56,19 @@ class ExpensesTabState<T extends ExpensesTab> extends State<T> {
   double? billValue;
   DateTime? createdAt;
   bool hasErrors = false;
-  bool isFresh = true;
+  bool isPushed = false;
 
   @override
   void initState() {
-    account = widget.account;
-    budget = widget.budget;
-    currency = widget.currency;
+    final accountId = AppPreferences.get(AppPreferences.prefAccount);
+    final objAccount = widget.state.getByUuid(accountId ?? '');
+    final budgetId = AppPreferences.get(AppPreferences.prefBudget);
+    final objBudget = widget.state.getByUuid(budgetId ?? '');
+    final currencyId = AppPreferences.get(AppPreferences.prefCurrency);
+    account = widget.account ?? objAccount?.uuid;
+    budget = widget.budget ?? objBudget?.uuid;
+    currency =
+        widget.currency ?? objAccount?.currency ?? objBudget?.currency ?? CurrencyProvider.findByCode(currencyId);
     bill = TextEditingController(text: widget.bill != null ? widget.bill.toString() : '');
     billValue = widget.bill;
     description = TextEditingController(text: widget.description);
@@ -68,23 +76,12 @@ class ExpensesTabState<T extends ExpensesTab> extends State<T> {
     super.initState();
   }
 
-  void _loadPreferences() {
-    setState(() {
-      isFresh = false;
-
-      final accountId = AppPreferences.get(AppPreferences.prefAccount);
-      final objAccount = state.getByUuid(accountId ?? '');
-      account ??= objAccount?.uuid;
-      currency ??= objAccount?.currency;
-
-      final budgetId = AppPreferences.get(AppPreferences.prefBudget);
-      final objBudget = state.getByUuid(budgetId ?? '');
-      budget ??= objBudget?.uuid;
-      currency ??= objBudget?.currency;
-
-      final currencyId = AppPreferences.get(AppPreferences.prefCurrency);
-      currency ??= CurrencyProvider.findByCode(currencyId);
-    });
+  @override
+  dispose() {
+    isPushed = false;
+    bill.dispose();
+    description.dispose();
+    super.dispose();
   }
 
   bool hasFormErrors() {
@@ -95,7 +92,7 @@ class ExpensesTabState<T extends ExpensesTab> extends State<T> {
   void updateStorage() {
     AppPreferences.set(AppPreferences.prefAccount, account ?? '');
     AppPreferences.set(AppPreferences.prefBudget, budget ?? '');
-    state.add(BillAppData(
+    widget.state.add(BillAppData(
       account: account ?? '',
       category: budget ?? '',
       currency: currency,
@@ -127,6 +124,16 @@ class ExpensesTabState<T extends ExpensesTab> extends State<T> {
     );
   }
 
+  _upButton(context, constraints) {
+    if (isPushed) {
+      return;
+    }
+    setState(() {
+      isPushed = true;
+      widget.callback(buildButton(context, constraints));
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     // FocusController.dispose();
@@ -136,124 +143,116 @@ class ExpensesTabState<T extends ExpensesTab> extends State<T> {
     FocusController.init();
 
     return LayoutBuilder(builder: (context, constraints) {
-      return Consumer<AppData>(builder: (context, appState, _) {
-        state = appState;
-        if (isFresh) {
-          WidgetsBinding.instance.addPostFrameCallback((_) => _loadPreferences());
-        }
-        return Scaffold(
-          body: SingleChildScrollView(
-            controller: FocusController.getController(runtimeType),
-            child: Container(
-              margin: EdgeInsets.fromLTRB(indent, indent, indent, 240),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
+      WidgetsBinding.instance.addPostFrameCallback((_) => _upButton(context, constraints));
+      return SingleChildScrollView(
+        controller: FocusController.getController(runtimeType),
+        child: Container(
+          margin: EdgeInsets.fromLTRB(indent, indent, indent, 240),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              RequiredWidget(
+                title: AppLocale.labels.account,
+                showError: hasErrors && account == null,
+              ),
+              ListAccountSelector(
+                value: account,
+                hintText: AppLocale.labels.titleAccountTooltip,
+                state: widget.state,
+                setState: (value) => setState(() {
+                  account = value;
+                  currency = widget.state.getByUuid(value).currency;
+                }),
+                indent: indent,
+                width: width,
+              ),
+              ThemeHelper.hIndent2x,
+              RequiredWidget(
+                title: AppLocale.labels.budget,
+                showError: hasErrors && budget == null,
+              ),
+              ListBudgetSelector(
+                value: budget,
+                hintText: AppLocale.labels.titleBudgetTooltip,
+                state: widget.state,
+                setState: (value) => setState(() {
+                  budget = value;
+                  var bdgCurrency = widget.state.getByUuid(value).currency;
+                  currency ??= bdgCurrency;
+                }),
+                indent: indent,
+                width: width,
+              ),
+              ThemeHelper.hIndent2x,
+              RowWidget(
+                indent: indent,
+                maxWidth: width,
+                chunk: const [120, null],
                 children: [
-                  RequiredWidget(
-                    title: AppLocale.labels.account,
-                    showError: hasErrors && account == null,
-                  ),
-                  ListAccountSelector(
-                    value: account,
-                    hintText: AppLocale.labels.titleAccountTooltip,
-                    state: state,
-                    setState: (value) => setState(() {
-                      account = value;
-                      currency = state.getByUuid(value).currency;
-                    }),
-                    indent: indent,
-                    width: width,
-                  ),
-                  ThemeHelper.hIndent2x,
-                  RequiredWidget(
-                    title: AppLocale.labels.budget,
-                    showError: hasErrors && budget == null,
-                  ),
-                  ListBudgetSelector(
-                    value: budget,
-                    hintText: AppLocale.labels.titleBudgetTooltip,
-                    state: state,
-                    setState: (value) => setState(() {
-                      budget = value;
-                      var bdgCurrency = state.getByUuid(value).currency;
-                      currency ??= bdgCurrency;
-                    }),
-                    indent: indent,
-                    width: width,
-                  ),
-                  ThemeHelper.hIndent2x,
-                  RowWidget(
-                    indent: indent,
-                    maxWidth: width + indent,
-                    chunk: const [120, null],
-                    children: [
-                      [
-                        Text(
-                          AppLocale.labels.currency,
-                          style: textTheme.bodyLarge,
-                        ),
-                        CurrencySelector(
-                          value: currency?.code,
-                          hintText: AppLocale.labels.currencyTooltip,
-                          setView: (Currency currency) => currency.code,
-                          setState: (value) => setState(() => currency = value),
-                        ),
+                  [
+                    Text(
+                      AppLocale.labels.currency,
+                      style: textTheme.bodyLarge,
+                    ),
+                    CurrencySelector(
+                      value: currency?.code,
+                      hintText: AppLocale.labels.currencyTooltip,
+                      setView: (Currency currency) => currency.code,
+                      setState: (value) => setState(() => currency = value),
+                    ),
+                  ],
+                  [
+                    RequiredWidget(
+                      title: AppLocale.labels.expense,
+                      showError: hasErrors && bill.text.isEmpty,
+                    ),
+                    SimpleInput(
+                      controller: bill,
+                      type: const TextInputType.numberWithOptions(decimal: true),
+                      tooltip: AppLocale.labels.billSetTooltip,
+                      setState: (v) => setState(() => billValue = double.tryParse(v)),
+                      formatter: [
+                        SimpleInput.filterDouble,
                       ],
-                      [
-                        RequiredWidget(
-                          title: AppLocale.labels.expense,
-                          showError: hasErrors && bill.text.isEmpty,
-                        ),
-                        SimpleInput(
-                          controller: bill,
-                          type: const TextInputType.numberWithOptions(decimal: true),
-                          tooltip: AppLocale.labels.billSetTooltip,
-                          setState: (v) => setState(() => billValue = double.tryParse(v)),
-                          formatter: [
-                            SimpleInput.filterDouble,
-                          ],
-                        ),
-                      ],
-                    ],
-                  ),
-                  ThemeHelper.hIndent2x,
-                  CurrencyExchangeInput(
-                    width: width,
-                    indent: indent,
-                    target: currency,
-                    state: state,
-                    targetAmount: billValue,
-                    source: [
-                      account != null ? state.getByUuid(account!).currency : null,
-                      budget != null ? state.getByUuid(budget!).currency : null,
-                    ].cast<Currency?>(),
-                  ),
-                  Text(
-                    AppLocale.labels.description,
-                    style: textTheme.bodyLarge,
-                  ),
-                  SimpleInput(
-                    controller: description,
-                    tooltip: AppLocale.labels.descriptionTooltip,
-                  ),
-                  ThemeHelper.hIndent2x,
-                  Text(
-                    AppLocale.labels.expenseDateTime,
-                    style: textTheme.bodyLarge,
-                  ),
-                  DateTimeInput(
-                    width: width,
-                    value: createdAt ?? DateTime.now(),
-                    setState: (value) => setState(() => createdAt = value),
-                  ),
-                  ThemeHelper.formEndBox,
+                    ),
+                  ],
                 ],
               ),
-            ),
+              ThemeHelper.hIndent2x,
+              CurrencyExchangeInput(
+                width: width,
+                indent: indent,
+                target: currency,
+                state: widget.state,
+                targetAmount: billValue,
+                source: [
+                  account != null ? widget.state.getByUuid(account!).currency : null,
+                  budget != null ? widget.state.getByUuid(budget!).currency : null,
+                ].cast<Currency?>(),
+              ),
+              Text(
+                AppLocale.labels.description,
+                style: textTheme.bodyLarge,
+              ),
+              SimpleInput(
+                controller: description,
+                tooltip: AppLocale.labels.descriptionTooltip,
+              ),
+              ThemeHelper.hIndent2x,
+              Text(
+                AppLocale.labels.expenseDateTime,
+                style: textTheme.bodyLarge,
+              ),
+              DateTimeInput(
+                width: width - indent,
+                value: createdAt ?? DateTime.now(),
+                setState: (value) => setState(() => createdAt = value),
+              ),
+              ThemeHelper.formEndBox,
+            ],
           ),
-          floatingActionButton: buildButton(context, constraints),
-        );
-      });
+        ),
+      );
     });
   }
 }
