@@ -48,6 +48,8 @@ abstract class AbstractPageState<T extends StatefulWidget> extends State<T> {
       child: Container(
         color: colorScheme.background,
         child: ListView.separated(
+          scrollDirection: Axis.vertical,
+          shrinkWrap: true,
           padding: EdgeInsets.symmetric(vertical: indent * 4),
           separatorBuilder: (context, index) => ThemeHelper.hIndent2x,
           itemCount: AppMenu.get().length,

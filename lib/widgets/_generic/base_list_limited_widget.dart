@@ -49,6 +49,8 @@ class BaseListLimitedWidget extends StatelessWidget {
         route == null ? ThemeHelper.emptyBox : buildButton(context, '${route!}/add', AppLocale.labels.btnAdd);
 
     return ListView.builder(
+        scrollDirection: Axis.vertical,
+        shrinkWrap: true,
         itemCount: itemCount,
         itemBuilder: (context, index) {
           if (index == 0) {

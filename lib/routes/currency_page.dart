@@ -68,6 +68,7 @@ class CurrencyPageState extends AbstractPageState<CurrencyPage> {
       return ThemeHelper.emptyBox;
     }
     return ListView.builder(
+        scrollDirection: Axis.vertical,
         shrinkWrap: true,
         itemCount: scope?.length,
         itemBuilder: (context, index) {

@@ -93,6 +93,8 @@ class BaseListInfiniteWidgetState extends State<BaseListInfiniteWidget> {
       WidgetsBinding.instance.addPostFrameCallback((_) => clearState());
     }
     return ListView.builder(
+        scrollDirection: Axis.vertical,
+        shrinkWrap: true,
         controller: scrollController,
         itemCount: items.length + 2,
         itemBuilder: (context, index) {
