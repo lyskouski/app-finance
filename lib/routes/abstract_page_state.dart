@@ -91,7 +91,7 @@ abstract class AbstractPageState<T extends StatefulWidget> extends State<T> {
                             [Center(heightFactor: 2, child: appBar.title!)],
                             [
                               Padding(
-                                padding: EdgeInsets.only(left: 84, top: indent),
+                                padding: EdgeInsets.only(left: 84, top: indent / 2),
                                 child: Text(getButtonName(),
                                     maxLines: 2,
                                     overflow: TextOverflow.ellipsis,

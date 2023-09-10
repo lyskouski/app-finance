@@ -45,9 +45,15 @@ class AppBarWidget extends AppBar {
             }).toList();
           },
           onSelected: (value) => nav.pushNamed(value),
-          icon: const Icon(
-            Icons.more_vert,
-            color: Colors.white70,
+          child: ToolbarButtonWidget(
+            child: Padding(
+              padding: EdgeInsets.all(ThemeHelper.getIndent()),
+              child: Icon(
+                Icons.menu,
+                semanticLabel: AppLocale.labels.navigationTooltip,
+                color: Colors.white70,
+              ),
+            ),
           ),
         ),
       ];
