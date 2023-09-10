@@ -85,7 +85,7 @@ abstract class AbstractPageState<T extends StatefulWidget> extends State<T> {
                       : RowWidget(
                           maxWidth: constraints.maxWidth,
                           indent: 0,
-                          chunk: const [50, null, 0.5, 50],
+                          chunk: [50, null, getButtonName().isNotEmpty ? 0.5 : 0, 50],
                           children: [
                             [appBar.leading!],
                             [Center(heightFactor: 2, child: appBar.title!)],
