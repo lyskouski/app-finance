@@ -3,12 +3,12 @@
 
 import 'package:app_finance/_classes/herald/app_locale.dart';
 import 'package:app_finance/_configs/theme_helper.dart';
-import 'package:app_finance/routes/abstract_page.dart';
+import 'package:app_finance/routes/abstract_page_state.dart';
 import 'package:app_finance/widgets/subscription/other_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/foundation.dart';
 
-class SubscriptionPage extends AbstractPage {
+class SubscriptionPage extends StatefulWidget {
   const SubscriptionPage({super.key});
 
   @override

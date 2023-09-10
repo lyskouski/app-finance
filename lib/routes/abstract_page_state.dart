@@ -13,11 +13,7 @@ import 'package:app_finance/widgets/_wrappers/row_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-abstract class AbstractPage<T> extends StatefulWidget {
-  const AbstractPage({super.key}); // : super(key: UniqueKey());
-}
-
-abstract class AbstractPageState<T extends AbstractPage> extends State<T> {
+abstract class AbstractPageState<T extends StatefulWidget> extends State<T> {
   late AppData state;
   int selectedMenu = 0;
 

@@ -9,7 +9,7 @@ import 'package:app_finance/_classes/storage/app_preferences.dart';
 import 'package:app_finance/_configs/responsive_matrix.dart';
 import 'package:app_finance/_configs/theme_helper.dart';
 import 'package:app_finance/_classes/structure/navigation/app_route.dart';
-import 'package:app_finance/routes/abstract_page.dart';
+import 'package:app_finance/routes/abstract_page_state.dart';
 import 'package:app_finance/widgets/_wrappers/grid_layer.dart';
 import 'package:app_finance/widgets/init/init_tab.dart';
 import 'package:app_finance/widgets/_wrappers/toolbar_button_widget.dart';
@@ -22,7 +22,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 
-class HomePage extends AbstractPage {
+class HomePage extends StatefulWidget {
   const HomePage({super.key});
 
   @override

@@ -3,11 +3,11 @@
 
 import 'package:app_finance/_classes/herald/app_locale.dart';
 import 'package:app_finance/_configs/theme_helper.dart';
-import 'package:app_finance/routes/abstract_page.dart';
+import 'package:app_finance/routes/abstract_page_state.dart';
 import 'package:app_finance/widgets/init/loading_widget.dart';
 import 'package:flutter/material.dart';
 
-class InitTab extends AbstractPage {
+class InitTab extends StatefulWidget {
   const InitTab({super.key});
 
   @override

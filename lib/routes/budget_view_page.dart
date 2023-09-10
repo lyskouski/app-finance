@@ -9,12 +9,12 @@ import 'package:app_finance/_classes/structure/navigation/app_menu.dart';
 import 'package:app_finance/_classes/structure/budget_app_data.dart';
 import 'package:app_finance/_configs/theme_helper.dart';
 import 'package:app_finance/_classes/structure/navigation/app_route.dart';
-import 'package:app_finance/routes/abstract_page.dart';
+import 'package:app_finance/routes/abstract_page_state.dart';
 import 'package:app_finance/widgets/_generic/base_line_widget.dart';
 import 'package:app_finance/widgets/_generic/base_list_infinite_widget.dart';
 import 'package:flutter/material.dart';
 
-class BudgetViewPage extends AbstractPage {
+class BudgetViewPage extends StatefulWidget {
   final String uuid;
 
   const BudgetViewPage({

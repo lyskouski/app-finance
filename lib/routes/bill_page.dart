@@ -5,11 +5,11 @@ import 'package:app_finance/_classes/storage/app_data.dart';
 import 'package:app_finance/_classes/herald/app_locale.dart';
 import 'package:app_finance/_configs/theme_helper.dart';
 import 'package:app_finance/_classes/structure/navigation/app_route.dart';
-import 'package:app_finance/routes/abstract_page.dart';
+import 'package:app_finance/routes/abstract_page_state.dart';
 import 'package:app_finance/widgets/home/bill_widget.dart';
 import 'package:flutter/material.dart';
 
-class BillPage extends AbstractPage {
+class BillPage extends StatefulWidget {
   const BillPage({super.key});
 
   @override

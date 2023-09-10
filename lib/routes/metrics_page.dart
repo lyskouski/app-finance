@@ -3,14 +3,14 @@
 
 import 'package:app_finance/_classes/herald/app_locale.dart';
 import 'package:app_finance/_configs/theme_helper.dart';
-import 'package:app_finance/routes/abstract_page.dart';
+import 'package:app_finance/routes/abstract_page_state.dart';
 import 'package:app_finance/widgets/_wrappers/tab_widget.dart';
 import 'package:app_finance/widgets/metrics/account_tab.dart';
 import 'package:app_finance/widgets/metrics/bill_tab.dart';
 import 'package:app_finance/widgets/metrics/budget_tab.dart';
 import 'package:flutter/material.dart';
 
-class MetricsPage extends AbstractPage {
+class MetricsPage extends StatefulWidget {
   final String search;
   const MetricsPage({
     super.key,
