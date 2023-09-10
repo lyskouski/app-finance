@@ -17,6 +17,8 @@ class BillPage extends StatefulWidget {
 }
 
 class BillPageState extends AbstractPageState<BillPage> {
+  dynamic items;
+
   @override
   String getTitle() {
     return AppLocale.labels.billHeadline;
@@ -38,12 +40,16 @@ class BillPageState extends AbstractPageState<BillPage> {
 
   @override
   Widget buildContent(BuildContext context, BoxConstraints constraints) {
+    if (items == null) {
+      WidgetsBinding.instance.addPostFrameCallback((_) => setState(() => items = super.state.get(AppDataType.bills)));
+      return ThemeHelper.emptyBox;
+    }
     return Column(
       children: [
         BillWidget(
           margin: EdgeInsets.all(ThemeHelper.getIndent()),
           title: AppLocale.labels.billHeadline,
-          state: super.state.get(AppDataType.bills),
+          state: items,
           width: ThemeHelper.getWidth(context, 3),
         )
       ],

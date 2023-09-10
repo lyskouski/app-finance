@@ -22,6 +22,24 @@ class BudgetPage extends StatefulWidget {
 }
 
 class BudgetPageState extends AbstractPageState<BudgetPage> {
+  dynamic items;
+
+  dynamic _getItems() {
+    dynamic items;
+    if (widget.search != null) {
+      final scope =
+          super.state.getList(AppDataType.budgets).where((e) => e.title.toString().startsWith(widget.search!)).toList();
+      final ex = Exchange(store: super.state);
+      items = (
+        total: scope.fold(0.0, (v, e) => v + ex.reform(e.details, e.currency, ex.getDefaultCurrency())),
+        list: scope
+      );
+    } else {
+      items = super.state.get(AppDataType.budgets);
+    }
+    return items;
+  }
+
   @override
   String getTitle() {
     if (widget.search != null) {
@@ -46,17 +64,9 @@ class BudgetPageState extends AbstractPageState<BudgetPage> {
 
   @override
   Widget buildContent(BuildContext context, BoxConstraints constraints) {
-    dynamic items;
-    if (widget.search != null) {
-      final scope =
-          super.state.getList(AppDataType.budgets).where((e) => e.title.toString().startsWith(widget.search!)).toList();
-      final ex = Exchange(store: super.state);
-      items = (
-        total: scope.fold(0.0, (v, e) => v + ex.reform(e.details, e.currency, ex.getDefaultCurrency())),
-        list: scope
-      );
-    } else {
-      items = super.state.get(AppDataType.budgets);
+    if (items == null) {
+      WidgetsBinding.instance.addPostFrameCallback((_) => setState(() => items = _getItems()));
+      return ThemeHelper.emptyBox;
     }
     return Column(
       children: [
