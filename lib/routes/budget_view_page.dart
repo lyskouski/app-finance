@@ -32,7 +32,7 @@ class BudgetViewPageState extends AbstractPageState<BudgetViewPage> with TickerP
   @override
   void initState() {
     super.initState();
-    _tabController = TabController(length: 3, vsync: this);
+    _tabController = TabController(length: 2, vsync: this);
   }
 
   @override
@@ -50,7 +50,7 @@ class BudgetViewPageState extends AbstractPageState<BudgetViewPage> with TickerP
     double indent = ThemeHelper.getIndent(4);
     NavigatorState nav = Navigator.of(context);
     return Container(
-      margin: EdgeInsets.only(left: indent),
+      margin: EdgeInsets.only(left: 2 * indent, right: 2 * indent),
       child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
         FloatingActionButton(
           heroTag: 'budget_view_page_deactivate',

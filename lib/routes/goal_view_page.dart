@@ -64,7 +64,7 @@ class GoalViewPageState extends AbstractPageState<GoalViewPage> {
     double indent = ThemeHelper.getIndent(4);
     NavigatorState nav = Navigator.of(context);
     return Container(
-      margin: EdgeInsets.only(left: indent),
+      margin: EdgeInsets.only(left: 2 * indent, right: 2 * indent),
       child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
         data.progress == 1.0
             ? FloatingActionButton(
