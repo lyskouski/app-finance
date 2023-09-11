@@ -5,12 +5,10 @@ import 'package:app_finance/_configs/theme_helper.dart';
 import 'package:app_finance/widgets/start/setting_tab.dart' as start;
 import 'package:flutter/material.dart';
 
-class SettingTab extends StatefulWidget {
-  final bool isFirstBoot = false;
+fn([Widget? _]) => null;
 
-  const SettingTab({super.key});
-
-  void setState() => {};
+class SettingTab extends start.SettingTab {
+  const SettingTab({super.key, super.setState = fn, super.isFirstBoot = false});
 
   @override
   SettingTabState createState() => SettingTabState();
