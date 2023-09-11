@@ -161,8 +161,8 @@ class TransferTabState extends AbstractPageState<TransferTab> {
             ThemeHelper.hIndent2x,
             RowWidget(
               indent: indent,
-              maxWidth: width,
-              chunk: const [120, null],
+              maxWidth: width + indent,
+              chunk: const [125, null],
               children: [
                 [
                   Text(
@@ -219,7 +219,7 @@ class TransferTabState extends AbstractPageState<TransferTab> {
               style: textTheme.bodyLarge,
             ),
             DateTimeInput(
-              width: width - indent,
+              width: width,
               value: createdAt,
               setState: (value) => setState(() => createdAt = value),
             ),

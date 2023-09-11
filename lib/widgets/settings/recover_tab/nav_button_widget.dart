@@ -12,6 +12,7 @@ class NavButtonWidget extends StatelessWidget {
   final RecoveryType nav;
   final IconData icon;
   final Function callback;
+  final Offset offset;
 
   const NavButtonWidget({
     super.key,
@@ -19,6 +20,7 @@ class NavButtonWidget extends StatelessWidget {
     required this.nav,
     required this.callback,
     this.icon = Icons.arrow_right,
+    this.offset = const Offset(0, -5),
   });
 
   @override
@@ -30,7 +32,7 @@ class NavButtonWidget extends StatelessWidget {
       child: Row(
         children: [
           ToolbarButtonWidget(
-            offset: const Offset(0, 0),
+            offset: offset,
             borderColor: Theme.of(context).colorScheme.inversePrimary,
             child: IconButton(
               hoverColor: Colors.transparent,

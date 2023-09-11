@@ -174,8 +174,8 @@ class ExpensesTabState<T extends ExpensesTab> extends AbstractPageState<T> {
             ThemeHelper.hIndent2x,
             RowWidget(
               indent: indent,
-              maxWidth: width,
-              chunk: const [120, null],
+              maxWidth: width + indent,
+              chunk: const [125, null],
               children: [
                 [
                   Text(
@@ -199,9 +199,7 @@ class ExpensesTabState<T extends ExpensesTab> extends AbstractPageState<T> {
                     type: const TextInputType.numberWithOptions(decimal: true),
                     tooltip: AppLocale.labels.billSetTooltip,
                     setState: (v) => setState(() => billValue = double.tryParse(v)),
-                    formatter: [
-                      SimpleInput.filterDouble,
-                    ],
+                    formatter: [SimpleInput.filterDouble],
                   ),
                 ],
               ],
@@ -232,7 +230,7 @@ class ExpensesTabState<T extends ExpensesTab> extends AbstractPageState<T> {
               style: textTheme.bodyLarge,
             ),
             DateTimeInput(
-              width: width - indent,
+              width: width,
               value: createdAt ?? DateTime.now(),
               setState: (value) => setState(() => createdAt = value),
             ),

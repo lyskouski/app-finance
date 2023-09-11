@@ -147,8 +147,8 @@ class IncomeTabState extends AbstractPageState<IncomeTab> {
             ThemeHelper.hIndent2x,
             RowWidget(
               indent: indent,
-              maxWidth: width,
-              chunk: const [120, null],
+              maxWidth: width + indent,
+              chunk: const [125, null],
               children: [
                 [
                   Text(
@@ -204,7 +204,7 @@ class IncomeTabState extends AbstractPageState<IncomeTab> {
               style: textTheme.bodyLarge,
             ),
             DateTimeInput(
-              width: width - indent,
+              width: width,
               value: createdAt,
               setState: (value) => setState(() => createdAt = value),
             ),
