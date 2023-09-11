@@ -16,7 +16,6 @@
 #### Mobile Apps
 - iOS [latest Release](https://github.com/lyskouski/app-finance/releases/latest) -> fingrom_iOS.ipa
 - Android [[on hold]](https://github.com/lyskouski/app-finance/issues/129)
-- F-Droid [[pending]](https://github.com/lyskouski/app-finance/issues/208)
 
 ## Functionality
 - Accounting (Account Type, Currency/Cryptocurrency)
