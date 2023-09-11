@@ -10,6 +10,7 @@ import 'package:app_finance/_configs/responsive_matrix.dart';
 import 'package:app_finance/_configs/theme_helper.dart';
 import 'package:app_finance/widgets/_generic/menu_widget.dart';
 import 'package:app_finance/widgets/_wrappers/row_widget.dart';
+import 'package:app_finance/widgets/_wrappers/text_wrapper.dart';
 import 'package:app_finance/widgets/_wrappers/toolbar_button_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -76,10 +77,8 @@ abstract class AbstractPageState<T extends StatefulWidget> extends State<T> {
   }
 
   Widget getBarTitle(BuildContext context, [bool isBottom = false]) {
-    return Text(
+    return TextWrapper(
       getTitle(),
-      maxLines: 1,
-      overflow: TextOverflow.ellipsis,
       style: TextStyle(color: Theme.of(context).colorScheme.inversePrimary),
     );
   }
@@ -120,10 +119,11 @@ abstract class AbstractPageState<T extends StatefulWidget> extends State<T> {
           [
             Padding(
               padding: EdgeInsets.only(left: 84, top: ThemeHelper.getIndent(0.5)),
-              child: Text(getButtonName(),
-                  maxLines: 2,
-                  overflow: TextOverflow.ellipsis,
-                  style: theme.textTheme.bodySmall!.copyWith(color: theme.colorScheme.inversePrimary)),
+              child: TextWrapper(
+                getButtonName(),
+                maxLines: 2,
+                style: theme.textTheme.bodySmall!.copyWith(color: theme.colorScheme.inversePrimary),
+              ),
             ),
           ],
           getBarActions(nav),

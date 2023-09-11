@@ -56,6 +56,18 @@ class ThemeHelper {
     return _getPainter(txt).width;
   }
 
+  static bool isTextExceedWidth(String txt, TextStyle? style, double maxWidth) {
+    final textPainter = TextPainter(
+      text: TextSpan(
+        text: txt,
+        style: style,
+      ),
+      maxLines: 1,
+      textDirection: TextDirection.ltr,
+    )..layout(maxWidth: maxWidth);
+    return textPainter.didExceedMaxLines;
+  }
+
   static TextPainter _getPainter(Text txt) {
     final painter = TextPainter(
       text: TextSpan(text: txt.data, style: txt.style),

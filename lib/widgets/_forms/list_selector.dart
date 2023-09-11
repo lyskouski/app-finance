@@ -6,6 +6,7 @@ import 'package:app_finance/_configs/custom_text_theme.dart';
 import 'package:app_finance/_configs/theme_helper.dart';
 import 'package:app_finance/widgets/_forms/abstract_selector.dart';
 import 'package:app_finance/widgets/_wrappers/tap_widget.dart';
+import 'package:app_finance/widgets/_wrappers/text_wrapper.dart';
 import 'package:flutter/material.dart';
 
 class ListSelectorItem {
@@ -48,8 +49,7 @@ class ListSelector<K extends ListSelectorItem> extends AbstractSelector {
 class ListSelectorState<T extends ListSelector, K extends ListSelectorItem> extends AbstractSelectorState<T> {
   Widget selectorBuilder(context, K item) {
     final textTheme = Theme.of(context).textTheme;
-    final style = textTheme.numberMedium.copyWith(color: textTheme.headlineSmall?.color);
-    return Text(item.toString(), maxLines: 1, overflow: TextOverflow.ellipsis, style: style);
+    return TextWrapper(item.toString(), style: textTheme.numberMedium.copyWith(color: textTheme.headlineSmall?.color));
   }
 
   Widget itemBuilder(context, K item) {

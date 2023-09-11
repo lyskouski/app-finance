@@ -7,6 +7,7 @@ import 'package:app_finance/_configs/custom_text_theme.dart';
 import 'package:app_finance/widgets/_wrappers/row_widget.dart';
 import 'package:app_finance/widgets/_wrappers/tap_widget.dart';
 import 'package:app_finance/_configs/theme_helper.dart';
+import 'package:app_finance/widgets/_wrappers/text_wrapper.dart';
 import 'package:flutter/material.dart';
 
 class BaseLineWidget extends StatelessWidget {
@@ -49,7 +50,7 @@ class BaseLineWidget extends StatelessWidget {
     );
 
     return TapWidget(
-      tooltip: title,
+      tooltip: '',
       toWrap: route != '',
       route: AppMenu.uuid(route, uuid),
       child: Column(
@@ -71,15 +72,13 @@ class BaseLineWidget extends StatelessWidget {
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text(
+                    TextWrapper(
                       title,
                       style: textTheme.bodyMedium,
-                      overflow: TextOverflow.ellipsis,
                     ),
-                    Text(
+                    TextWrapper(
                       description,
                       style: textTheme.bodySmall,
-                      overflow: TextOverflow.ellipsis,
                     ),
                   ],
                 ),

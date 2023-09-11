@@ -6,6 +6,7 @@ import 'package:app_finance/_classes/controller/focus_controller.dart';
 import 'package:app_finance/_configs/responsive_matrix.dart';
 import 'package:app_finance/_configs/theme_helper.dart';
 import 'package:app_finance/widgets/_forms/abstract_input.dart';
+import 'package:app_finance/widgets/_wrappers/text_wrapper.dart';
 import 'package:flutter/material.dart';
 
 typedef OnPressedFunction = void Function();
@@ -53,10 +54,8 @@ class FullSizedButtonWidget extends AbstractInput {
               Container(
                 padding: EdgeInsets.only(left: ThemeHelper.getIndent()),
                 constraints: BoxConstraints(maxWidth: width - 34),
-                child: Text(
+                child: TextWrapper(
                   title,
-                  maxLines: 1,
-                  overflow: TextOverflow.ellipsis,
                   style: Theme.of(context).textTheme.bodyLarge?.copyWith(color: colorScheme.primary.withOpacity(0.9)),
                 ),
               ),

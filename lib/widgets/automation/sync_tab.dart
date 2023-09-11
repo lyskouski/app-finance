@@ -8,6 +8,7 @@ import 'package:app_finance/_configs/theme_helper.dart';
 import 'package:app_finance/widgets/_forms/simple_input.dart';
 import 'package:app_finance/widgets/_wrappers/row_widget.dart';
 import 'package:app_finance/widgets/_wrappers/table_widget.dart';
+import 'package:app_finance/widgets/_wrappers/text_wrapper.dart';
 import 'package:app_finance/widgets/init/loading_widget.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -132,8 +133,8 @@ class SyncTabState extends State<SyncTab> {
                 data: [
                   [
                     Center(child: Text(AppLocale.labels.peerAction)),
-                    Text(AppLocale.labels.peerDevice),
-                    Text(AppLocale.labels.peerStatus),
+                    TextWrapper(AppLocale.labels.peerDevice),
+                    TextWrapper(AppLocale.labels.peerStatus),
                     Center(child: Text(AppLocale.labels.peerAction)),
                   ],
                   ...List.generate(data.length, (index) {
@@ -147,8 +148,8 @@ class SyncTabState extends State<SyncTab> {
                         onPressed: () => sync.del(data[index].id),
                         child: Text(AppLocale.labels.peerDelete),
                       ),
-                      Text(data[index].id, maxLines: 1, overflow: TextOverflow.ellipsis),
-                      Text(status),
+                      TextWrapper(data[index].id),
+                      TextWrapper(status),
                       data[index].status == true
                           ? ElevatedButton(
                               onPressed: () => sync.ping(data[index].id),
@@ -166,8 +167,8 @@ class SyncTabState extends State<SyncTab> {
                         onPressed: () => setState(() => request.remove(request[index])),
                         child: Text(AppLocale.labels.peerDelete),
                       ),
-                      Text(request[index], maxLines: 1, overflow: TextOverflow.ellipsis),
-                      Text(AppLocale.labels.peerPending),
+                      TextWrapper(request[index]),
+                      TextWrapper(AppLocale.labels.peerPending),
                       ElevatedButton(
                         onPressed: () => setState(() {
                           sync.add(request[index]);

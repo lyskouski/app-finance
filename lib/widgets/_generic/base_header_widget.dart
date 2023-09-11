@@ -7,6 +7,7 @@ import 'package:app_finance/_configs/custom_text_theme.dart';
 import 'package:app_finance/_configs/theme_helper.dart';
 import 'package:app_finance/_ext/double_ext.dart';
 import 'package:app_finance/widgets/_wrappers/tap_widget.dart';
+import 'package:app_finance/widgets/_wrappers/text_wrapper.dart';
 import 'package:app_finance/widgets/_wrappers/toolbar_button_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_grid_layout/flutter_grid_layout.dart';
@@ -53,21 +54,17 @@ class BaseHeaderWidget extends StatelessWidget {
             GridItem(
               start: const Size(0, 0),
               end: const Size(1, 1),
-              child: Text(
+              child: TextWrapper(
                 title,
                 style: textTheme.headlineSmall,
-                maxLines: 1,
-                overflow: TextOverflow.ellipsis,
               ),
             ),
             GridItem(
               start: const Size(0, 1),
               end: const Size(1, 2),
-              child: Text(
+              child: TextWrapper(
                 (state.total as double).toCurrency(),
                 style: textTheme.numberLarge.copyWith(color: textTheme.headlineSmall?.color),
-                maxLines: 1,
-                overflow: TextOverflow.ellipsis,
               ),
             ),
             GridItem(

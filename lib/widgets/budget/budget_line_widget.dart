@@ -7,6 +7,7 @@ import 'package:app_finance/_configs/theme_helper.dart';
 import 'package:app_finance/charts/bar_horizontal_single.dart';
 import 'package:app_finance/widgets/_wrappers/row_widget.dart';
 import 'package:app_finance/widgets/_wrappers/tap_widget.dart';
+import 'package:app_finance/widgets/_wrappers/text_wrapper.dart';
 import 'package:flutter/material.dart';
 
 class BudgetLineWidget extends StatelessWidget {
@@ -43,21 +44,20 @@ class BudgetLineWidget extends StatelessWidget {
     final indent = ThemeHelper.getIndent();
     final width = ThemeHelper.getWidth(context);
     final TextTheme textTheme = Theme.of(context).textTheme;
-    final sum = Text(
-      details,
-      maxLines: 1,
-      style: textTheme.numberMedium.copyWith(color: textTheme.headlineSmall?.color),
-      overflow: TextOverflow.ellipsis,
-    );
+    final sumStyle = textTheme.numberMedium.copyWith(color: textTheme.headlineSmall?.color);
 
     return TapWidget(
-      tooltip: title,
+      tooltip: '',
       route: AppMenu.uuid(route, uuid),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           RowWidget(
-            chunk: [18, null, ThemeHelper.getTextWidth(sum)],
+            chunk: [
+              18,
+              null,
+              ThemeHelper.getTextWidth(Text(details, maxLines: 1, style: sumStyle, overflow: TextOverflow.ellipsis)),
+            ],
             indent: indent,
             maxWidth: width + indent,
             children: [
@@ -69,16 +69,8 @@ class BudgetLineWidget extends StatelessWidget {
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text(
-                        title,
-                        style: textTheme.bodyMedium,
-                        overflow: TextOverflow.ellipsis,
-                      ),
-                      Text(
-                        description,
-                        style: textTheme.bodySmall,
-                        overflow: TextOverflow.ellipsis,
-                      ),
+                      TextWrapper(title, style: textTheme.bodyMedium),
+                      TextWrapper(description, style: textTheme.bodySmall),
                     ],
                   ),
                 ]
@@ -86,15 +78,11 @@ class BudgetLineWidget extends StatelessWidget {
                 [
                   Padding(
                     padding: EdgeInsets.fromLTRB(0, indent - 1, 0, indent - 1),
-                    child: Text(
-                      title,
-                      style: textTheme.bodyMedium,
-                      overflow: TextOverflow.ellipsis,
-                    ),
+                    child: TextWrapper(title, style: textTheme.bodyMedium),
                   ),
                 ],
               [
-                sum,
+                TextWrapper(details, style: sumStyle),
               ]
             ],
           ),

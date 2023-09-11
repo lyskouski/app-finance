@@ -8,9 +8,11 @@ import 'package:app_finance/_classes/structure/goal_app_data.dart';
 import 'package:app_finance/_configs/custom_text_theme.dart';
 import 'package:app_finance/_configs/theme_helper.dart';
 import 'package:app_finance/_classes/structure/navigation/app_route.dart';
+import 'package:app_finance/_ext/double_ext.dart';
 import 'package:app_finance/_mixins/formatter_mixin.dart';
 import 'package:app_finance/charts/gauge_chart.dart';
 import 'package:app_finance/routes/abstract_page_state.dart';
+import 'package:app_finance/widgets/_wrappers/text_wrapper.dart';
 import 'package:app_finance/widgets/budget/budget_line_widget.dart';
 import 'package:app_finance/widgets/_wrappers/row_widget.dart';
 import 'package:flutter/material.dart';
@@ -73,6 +75,7 @@ class GoalPageState extends AbstractPageState<GoalPage> with FormatterMixin {
     final valInvoice = _getValue(AppDataType.invoice);
     final valBill = _getValue(AppDataType.bills);
     final value = valInvoice - valBill;
+    final textStyle = Theme.of(context).textTheme.numberSmall.copyWith(color: textTheme.headlineSmall?.color);
 
     return SingleChildScrollView(
       child: Padding(
@@ -87,36 +90,11 @@ class GoalPageState extends AbstractPageState<GoalPage> with FormatterMixin {
               chunk: const [null, null],
               children: [
                 [
-                  Text(
-                    AppLocale.labels.goalProfitTooltip,
-                    style: Theme.of(context).textTheme.bodyLarge,
-                    maxLines: 1,
-                    overflow: TextOverflow.ellipsis,
-                  ),
-                  Text(
-                    AppLocale.labels.goalProfit(getNumberFormatted(maxValue, Exchange.defaultCurrency?.symbol)),
-                    style: Theme.of(context).textTheme.numberSmall.copyWith(color: textTheme.headlineSmall?.color),
-                    maxLines: 2,
-                    overflow: TextOverflow.ellipsis,
-                  ),
-                  Text(
-                    AppLocale.labels.invoiceSum(getNumberFormatted(valInvoice, Exchange.defaultCurrency?.symbol)),
-                    style: Theme.of(context).textTheme.numberSmall.copyWith(color: textTheme.headlineSmall?.color),
-                    maxLines: 2,
-                    overflow: TextOverflow.ellipsis,
-                  ),
-                  Text(
-                    AppLocale.labels.billSum(getNumberFormatted(valBill, Exchange.defaultCurrency?.symbol)),
-                    style: Theme.of(context).textTheme.numberSmall.copyWith(color: textTheme.headlineSmall?.color),
-                    maxLines: 2,
-                    overflow: TextOverflow.ellipsis,
-                  ),
-                  Text(
-                    AppLocale.labels.netProfit(getNumberFormatted(value, Exchange.defaultCurrency?.symbol)),
-                    style: Theme.of(context).textTheme.numberSmall.copyWith(color: textTheme.headlineSmall?.color),
-                    maxLines: 2,
-                    overflow: TextOverflow.ellipsis,
-                  ),
+                  TextWrapper(AppLocale.labels.goalProfitTooltip, style: Theme.of(context).textTheme.bodyLarge),
+                  TextWrapper(AppLocale.labels.goalProfit(maxValue.toCurrency()), style: textStyle, maxLines: 2),
+                  TextWrapper(AppLocale.labels.invoiceSum(valInvoice.toCurrency()), style: textStyle, maxLines: 2),
+                  TextWrapper(AppLocale.labels.billSum(valBill.toCurrency()), style: textStyle, maxLines: 2),
+                  TextWrapper(AppLocale.labels.netProfit(value.toCurrency()), style: textStyle, maxLines: 2),
                   ThemeHelper.hIndent,
                 ],
                 [

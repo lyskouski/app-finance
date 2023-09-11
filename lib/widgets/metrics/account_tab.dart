@@ -17,6 +17,7 @@ import 'package:app_finance/charts/pie_radius_chart.dart';
 import 'package:app_finance/widgets/_generic/text_widget.dart';
 import 'package:app_finance/widgets/_wrappers/row_widget.dart';
 import 'package:app_finance/widgets/_wrappers/table_widget.dart';
+import 'package:app_finance/widgets/_wrappers/text_wrapper.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
@@ -98,12 +99,12 @@ class AccountTab extends StatelessWidget {
     final accountList = store.getList(AppDataType.accounts).cast<AccountAppData>();
     final data = _getData(accountList, xMin);
     final currency = _getCurrencyDistribution(accountList);
-    final healthTxt = Text(
+    final txtSize = ThemeHelper.getTextWidth(Text(
       AppLocale.labels.incomeHealth,
       style: Theme.of(context).textTheme.bodyMedium,
       maxLines: 1,
       overflow: TextOverflow.ellipsis,
-    );
+    ));
     return SingleChildScrollView(
       child: Padding(
         padding: EdgeInsets.all(indent * 2),
@@ -114,11 +115,11 @@ class AccountTab extends StatelessWidget {
               alignment: MainAxisAlignment.end,
               indent: indent,
               maxWidth: width - indent,
-              chunk: [null, ThemeHelper.getTextWidth(healthTxt), 40 + indent],
+              chunk: [null, txtSize, 40 + indent],
               children: [
                 const [ThemeHelper.emptyBox],
                 [
-                  healthTxt,
+                  TextWrapper(AppLocale.labels.incomeHealth, style: Theme.of(context).textTheme.bodyMedium),
                   ThemeHelper.hIndent,
                 ],
                 [
@@ -147,17 +148,13 @@ class AccountTab extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Text(
+                TextWrapper(
                   AppLocale.labels.raiseData,
                   style: textTheme.bodySmall!.copyWith(color: Colors.blue),
-                  maxLines: 1,
-                  overflow: TextOverflow.ellipsis,
                 ),
-                Text(
+                TextWrapper(
                   AppLocale.labels.failData,
                   style: textTheme.bodySmall!.copyWith(color: Colors.red),
-                  maxLines: 1,
-                  overflow: TextOverflow.ellipsis,
                 ),
               ],
             ),
