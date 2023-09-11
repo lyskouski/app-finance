@@ -5147,11 +5147,11 @@ LF:140
 LH:0
 end_of_record
 SF:lib/widgets/settings/setting_tab.dart
+DA:8,0
 DA:11,1
 DA:13,0
-DA:15,0
-DA:16,0
-DA:20,0
+DA:14,0
+DA:18,0
 LF:5
 LH:1
 end_of_record
@@ -5269,7 +5269,7 @@ LF:16
 LH:16
 end_of_record
 SF:lib/widgets/start/setting_tab.dart
-DA:18,1
+DA:18,2
 DA:24,1
 DA:25,1
 DA:35,1
@@ -6019,7 +6019,7 @@ LF:58
 LH:0
 end_of_record
 SF:lib/widgets/start/abstract_tab.dart
-DA:13,1
+DA:13,2
 DA:25,1
 DA:26,3
 DA:29,1
