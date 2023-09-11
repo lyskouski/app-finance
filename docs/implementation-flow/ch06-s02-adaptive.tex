@@ -259,7 +259,10 @@ await route.completed;
 // Deactivate inactive routes to be remained in memory
 MaterialPageRoute(maintainState: false, ... // or contrary, has to be "true"
 
-// ... other variants
+// Wrap lists content and declare scrolling
+ListView.builder(
+  scrollDirection: Axis.vertical,
+  shrinkWrap: true,
 \end{lstlisting}
 
 Sometimes the problem cannot be resolved in the application itself, and we have to change somehow used external 
