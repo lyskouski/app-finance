@@ -128,7 +128,7 @@ screen size and orientation. Whereas "Content Prioritization" entails thoughtful
 based on screen configuration, less critical elements can gracefully adapt, be positioned differently, or even hidden.
 
 \q{RowWidget} describes responsiveness behavior \issue{37}{abd9308}, \issue{185}{e1e7385} when we set a direct or 
-relative (values \q{0.0 ... 0.1} are converted into \q{0 ... 100\%} of an available width) size for a couple of 
+relative (values \q{0.0 ... 0.9(9)} are converted into \q{0 ... 99.9(9)\%} of an available width) size for a couple of 
 components, and left nullable size (alike, \q{Spacer}-widget) for others. In that case the text section will be hidden 
 for the width less than 40 density-independent pixels (DIP):
 
@@ -234,15 +234,16 @@ class GridLayer extends StatelessWidget {
 
 \subsubsection{Handling Instabilities}
 
-A rich interface may road us an area of instabilities...
+A rich interface may road us to an area of instabilities...
 
 By example, an error \emph{"Scaffold.geometryOf() must only be accessed during the paint phase"} (with ongoing 
 \emph{"'package:flutter/src/rendering/mouse\_tracker.dart': Failed assertion: ... '!\_debugDuringDeviceUpdate': 
-is not true"}) leads to a fully nonfunctional state (by not responding to any interaction) of the application. And we 
-might be not alone with the problematic area since it's been already highlighted to Flutter SDK team a few times
-(\href{https://github.com/flutter/flutter/issues/108363}{https://github.com/flutter/flutter/issues/108363} and
-\href{https://github.com/flutter/flutter/issues/126513}{https://github.com/flutter/flutter/issues/126513}), nonetheless
-both of the times closed without being resolved simply by not declared steps to reproduce it constantly.
+is not true"}) leads to a fully nonfunctional state  of the application (by not responding to any of interaction).
+Sometimes we might be not alone with the problematic area; as for the error above, it's been highlighted to Flutter 
+SDK team a few times (issues \href{https://github.com/flutter/flutter/issues/76325}{\#76325},
+\href{https://github.com/flutter/flutter/issues/108363}{\#108363}, and
+\href{https://github.com/flutter/flutter/issues/126513}{\#126513}), but closed without being resolved simply by not 
+declared steps to reproduce it constantly.
 
 \img{uiux/bottom-bar}{Application Bottom Bar for small screens}{img:u-bottom-bar}
 
