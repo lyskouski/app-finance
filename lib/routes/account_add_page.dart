@@ -32,7 +32,8 @@ class AccountAddPage extends AbstractAddPage {
   final IconData? icon;
   final MaterialColor? color;
 
-  AccountAddPage({
+  const AccountAddPage({
+    super.key,
     this.title,
     this.description,
     this.type,
@@ -41,7 +42,7 @@ class AccountAddPage extends AbstractAddPage {
     this.balance,
     this.icon,
     this.color,
-  }) : super();
+  });
 
   @override
   AccountAddPageState createState() => AccountAddPageState();
@@ -100,9 +101,8 @@ class AccountAddPageState<T extends AccountAddPage> extends AbstractAddPageState
         ));
   }
 
-  String getButtonName(BuildContext context) {
-    return AppLocale.labels.createAccountTooltip;
-  }
+  @override
+  String getButtonName() => AppLocale.labels.createAccountTooltip;
 
   @override
   Widget buildButton(BuildContext context, BoxConstraints constraints) {
@@ -110,7 +110,7 @@ class AccountAddPageState<T extends AccountAddPage> extends AbstractAddPageState
     return FullSizedButtonWidget(
       constraints: constraints,
       setState: () => triggerActionButton(nav),
-      title: getButtonName(context),
+      title: getButtonName(),
       icon: Icons.save,
     );
   }

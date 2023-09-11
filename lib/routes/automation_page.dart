@@ -3,13 +3,13 @@
 
 import 'package:app_finance/_classes/herald/app_locale.dart';
 import 'package:app_finance/_configs/theme_helper.dart';
-import 'package:app_finance/routes/abstract_page.dart';
+import 'package:app_finance/routes/abstract_page_state.dart';
 import 'package:app_finance/widgets/automation/sync_tab.dart';
 //import 'package:app_finance/widgets/automation/notification_tab.dart';
 import 'package:flutter/material.dart';
 
-class AutomationPage extends AbstractPage {
-  AutomationPage() : super();
+class AutomationPage extends StatefulWidget {
+  const AutomationPage({super.key});
 
   @override
   AutomationPageState createState() => AutomationPageState();
@@ -23,6 +23,9 @@ class AutomationPageState extends AbstractPageState<AutomationPage> with TickerP
     super.initState();
     _tabController = TabController(length: 1, vsync: this);
   }
+
+  @override
+  String getButtonName() => '';
 
   @override
   Widget buildButton(BuildContext context, BoxConstraints constraints) {

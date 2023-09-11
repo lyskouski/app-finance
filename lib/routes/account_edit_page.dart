@@ -10,9 +10,10 @@ import 'package:flutter/material.dart';
 class AccountEditPage extends AccountAddPage {
   final String uuid;
 
-  AccountEditPage({
+  const AccountEditPage({
+    super.key,
     required this.uuid,
-  }) : super();
+  });
 
   @override
   AccountEditPageState createState() => AccountEditPageState();
@@ -73,9 +74,7 @@ class AccountEditPageState extends AccountAddPageState<AccountEditPage> {
   }
 
   @override
-  String getButtonName(BuildContext context) {
-    return AppLocale.labels.updateAccountTooltip;
-  }
+  String getButtonName() => AppLocale.labels.updateAccountTooltip;
 
   @override
   Widget buildContent(BuildContext context, BoxConstraints constraints) {

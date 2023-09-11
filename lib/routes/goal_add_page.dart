@@ -9,7 +9,7 @@ import 'package:app_finance/_classes/controller/focus_controller.dart';
 import 'package:app_finance/_classes/storage/app_data.dart';
 import 'package:app_finance/_configs/theme_helper.dart';
 import 'package:app_finance/_classes/storage/app_preferences.dart';
-import 'package:app_finance/routes/abstract_page.dart';
+import 'package:app_finance/routes/abstract_page_state.dart';
 import 'package:app_finance/widgets/_forms/color_selector.dart';
 import 'package:app_finance/widgets/_forms/currency_selector.dart';
 import 'package:app_finance/widgets/_forms/date_input.dart';
@@ -21,7 +21,7 @@ import 'package:app_finance/widgets/_wrappers/row_widget.dart';
 import 'package:currency_picker/currency_picker.dart';
 import 'package:flutter/material.dart';
 
-class GoalAddPage extends AbstractPage {
+class GoalAddPage extends StatefulWidget {
   final String? title;
   final IconData? icon;
   final MaterialColor? color;
@@ -29,14 +29,15 @@ class GoalAddPage extends AbstractPage {
   final double? details;
   final DateTime? closedAt;
 
-  GoalAddPage({
+  const GoalAddPage({
+    super.key,
     this.title,
     this.icon,
     this.color,
     this.currency,
     this.details,
     this.closedAt,
-  }) : super();
+  });
 
   @override
   GoalAddPageState createState() => GoalAddPageState();
@@ -88,9 +89,8 @@ class GoalAddPageState<T extends GoalAddPage> extends AbstractPageState<GoalAddP
         ));
   }
 
-  String getButtonName() {
-    return AppLocale.labels.createGoalTooltip;
-  }
+  @override
+  String getButtonName() => AppLocale.labels.createGoalTooltip;
 
   @override
   Widget buildButton(BuildContext context, BoxConstraints constraints) {

@@ -1,7 +1,9 @@
 // Copyright 2023 The terCAD team. All rights reserved.
 // Use of this source code is governed by a CC BY-NC-ND 4.0 license that can be found in the LICENSE file.
 
+import 'package:adaptive_breakpoints/adaptive_breakpoints.dart';
 import 'package:app_finance/_classes/controller/focus_controller.dart';
+import 'package:app_finance/_configs/responsive_matrix.dart';
 import 'package:app_finance/_configs/theme_helper.dart';
 import 'package:app_finance/widgets/_forms/abstract_input.dart';
 import 'package:flutter/material.dart';
@@ -27,10 +29,12 @@ class FullSizedButtonWidget extends AbstractInput {
 
   @override
   Widget buildContent(BuildContext context) {
-    final bool isKeyboardVisible = MediaQuery.of(context).viewInsets.bottom > 0;
+    final isBottom = ResponsiveMatrix(getWindowType(context)).isNavBottom(constraints);
+    final bool isKeyboardVisible = ThemeHelper.isKeyboardVisible(context) || isBottom;
     final colorScheme = Theme.of(context).colorScheme;
+    final width = constraints.maxWidth - ThemeHelper.getIndent(4) - 2;
     return SizedBox(
-      width: isKeyboardVisible ? null : constraints.maxWidth - ThemeHelper.getIndent(4),
+      width: isKeyboardVisible ? null : width,
       child: FloatingActionButton(
         heroTag: heroTag,
         onPressed: setState,
@@ -43,15 +47,17 @@ class FullSizedButtonWidget extends AbstractInput {
               icon,
               semanticLabel: title,
               size: 32,
-              color: colorScheme.primary.withOpacity(0.5),
+              color: colorScheme.primary.withOpacity(0.7),
             ),
             if (!isKeyboardVisible)
-              Padding(
+              Container(
                 padding: EdgeInsets.only(left: ThemeHelper.getIndent()),
+                constraints: BoxConstraints(maxWidth: width - 34),
                 child: Text(
                   title,
+                  maxLines: 1,
                   overflow: TextOverflow.ellipsis,
-                  style: Theme.of(context).textTheme.bodyLarge?.copyWith(color: colorScheme.primary.withOpacity(0.8)),
+                  style: Theme.of(context).textTheme.bodyLarge?.copyWith(color: colorScheme.primary.withOpacity(0.9)),
                 ),
               ),
           ],

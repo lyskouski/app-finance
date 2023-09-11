@@ -6,42 +6,25 @@ import 'package:app_finance/_classes/herald/app_locale.dart';
 import 'package:app_finance/_classes/structure/currency/exchange.dart';
 import 'package:app_finance/_configs/theme_helper.dart';
 import 'package:app_finance/_classes/structure/navigation/app_route.dart';
-import 'package:app_finance/routes/abstract_page.dart';
+import 'package:app_finance/routes/abstract_page_state.dart';
 import 'package:app_finance/widgets/budget/budget_widget.dart';
 import 'package:flutter/material.dart';
 
-class BudgetPage extends AbstractPage {
+class BudgetPage extends StatefulWidget {
   final String? search;
-  BudgetPage({
+  const BudgetPage({
+    super.key,
     this.search,
-  }) : super();
+  });
 
   @override
   BudgetPageState createState() => BudgetPageState();
 }
 
 class BudgetPageState extends AbstractPageState<BudgetPage> {
-  @override
-  String getTitle() {
-    if (widget.search != null) {
-      return AppLocale.labels.search(widget.search!);
-    }
-    return AppLocale.labels.budgetHeadline;
-  }
+  dynamic items;
 
-  @override
-  Widget buildButton(BuildContext context, BoxConstraints constraints) {
-    NavigatorState nav = Navigator.of(context);
-    return FloatingActionButton(
-      heroTag: 'budget_page',
-      onPressed: () => nav.pushNamed(AppRoute.budgetAddRoute),
-      tooltip: AppLocale.labels.addBudgetTooltip,
-      child: const Icon(Icons.add),
-    );
-  }
-
-  @override
-  Widget buildContent(BuildContext context, BoxConstraints constraints) {
+  dynamic _getItems() {
     dynamic items;
     if (widget.search != null) {
       final scope =
@@ -53,6 +36,37 @@ class BudgetPageState extends AbstractPageState<BudgetPage> {
       );
     } else {
       items = super.state.get(AppDataType.budgets);
+    }
+    return items;
+  }
+
+  @override
+  String getTitle() {
+    if (widget.search != null) {
+      return AppLocale.labels.search(widget.search!);
+    }
+    return AppLocale.labels.budgetHeadline;
+  }
+
+  @override
+  String getButtonName() => AppLocale.labels.addBudgetTooltip;
+
+  @override
+  Widget buildButton(BuildContext context, BoxConstraints constraints) {
+    NavigatorState nav = Navigator.of(context);
+    return FloatingActionButton(
+      heroTag: 'budget_page',
+      onPressed: () => nav.pushNamed(AppRoute.budgetAddRoute),
+      tooltip: getButtonName(),
+      child: const Icon(Icons.add),
+    );
+  }
+
+  @override
+  Widget buildContent(BuildContext context, BoxConstraints constraints) {
+    if (items == null) {
+      WidgetsBinding.instance.addPostFrameCallback((_) => setState(() => items = _getItems()));
+      return ThemeHelper.emptyBox;
     }
     return Column(
       children: [

@@ -10,13 +10,13 @@ import 'package:app_finance/_configs/theme_helper.dart';
 import 'package:app_finance/_classes/structure/navigation/app_route.dart';
 import 'package:app_finance/_mixins/formatter_mixin.dart';
 import 'package:app_finance/charts/gauge_chart.dart';
-import 'package:app_finance/routes/abstract_page.dart';
+import 'package:app_finance/routes/abstract_page_state.dart';
 import 'package:app_finance/widgets/budget/budget_line_widget.dart';
 import 'package:app_finance/widgets/_wrappers/row_widget.dart';
 import 'package:flutter/material.dart';
 
-class GoalPage extends AbstractPage {
-  GoalPage() : super();
+class GoalPage extends StatefulWidget {
+  const GoalPage({super.key});
 
   @override
   GoalPageState createState() => GoalPageState();
@@ -29,12 +29,15 @@ class GoalPageState extends AbstractPageState<GoalPage> with FormatterMixin {
   }
 
   @override
+  String getButtonName() => AppLocale.labels.addGoalTooltip;
+
+  @override
   Widget buildButton(BuildContext context, BoxConstraints constraints) {
     NavigatorState nav = Navigator.of(context);
     return FloatingActionButton(
       heroTag: 'goal_view_page',
       onPressed: () => nav.pushNamed(AppRoute.goalAddRoute),
-      tooltip: AppLocale.labels.addGoalTooltip,
+      tooltip: getButtonName(),
       child: const Icon(Icons.add),
     );
   }

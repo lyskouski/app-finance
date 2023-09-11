@@ -9,11 +9,14 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 class AccountTab extends AccountAddPage {
-  final Function() setState;
+  final bool isFirstBoot;
+  final Function([Widget? btn]) setState;
 
-  AccountTab({
+  const AccountTab({
+    super.key,
+    required this.isFirstBoot,
     required this.setState,
-  }) : super();
+  });
 
   @override
   AccountTabState createState() => AccountTabState();
@@ -39,10 +42,13 @@ class AccountTabState extends AccountAddPageState<AccountTab> {
       return Padding(
         padding: EdgeInsets.only(top: ThemeHelper.getIndent(2)),
         child: LayoutBuilder(builder: (context, constraints) {
-          return Scaffold(
-            floatingActionButton: buildButton(context, constraints),
-            body: buildContent(context, constraints),
-          );
+          if ((widget as AccountTab).isFirstBoot) {
+            WidgetsBinding.instance.addPostFrameCallback((_) {
+              (widget as AccountTab).setState(buildButton(context, constraints));
+            });
+            return ThemeHelper.emptyBox;
+          }
+          return buildContent(context, constraints);
         }),
       );
     });

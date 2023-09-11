@@ -29,21 +29,15 @@ class TapWidget extends StatelessWidget {
     NavigatorState nav = Navigator.of(context);
     return Tooltip(
       message: tooltip ?? AppLocale.labels.homeTooltip,
-      child: MouseRegion(
-        cursor: SystemMouseCursors.click,
-        child: GestureDetector(
-          onTap: () {
-            if (onTap != null) {
-              onTap!();
-            } else if (route != '') {
-              nav.pushNamed(route ?? AppRoute.homeRoute);
-            }
-          },
-          child: Container(
-            color: Colors.transparent,
-            child: child,
-          ),
-        ),
+      child: InkWell(
+        onTap: () {
+          if (onTap != null) {
+            onTap!();
+          } else if (route != '') {
+            nav.pushNamed(route ?? AppRoute.homeRoute);
+          }
+        },
+        child: child,
       ),
     );
   }

@@ -7,14 +7,14 @@ import 'package:app_finance/_classes/structure/currency_app_data.dart';
 import 'package:app_finance/_classes/storage/app_data.dart';
 import 'package:app_finance/_configs/theme_helper.dart';
 import 'package:app_finance/charts/trade_chart.dart';
-import 'package:app_finance/routes/abstract_page.dart';
+import 'package:app_finance/routes/abstract_page_state.dart';
 import 'package:app_finance/widgets/_generic/notification_bar.dart';
 import 'package:app_finance/widgets/_forms/simple_input.dart';
 import 'package:app_finance/widgets/_wrappers/row_widget.dart';
 import 'package:flutter/material.dart';
 
-class CurrencyPage extends AbstractPage {
-  CurrencyPage() : super();
+class CurrencyPage extends StatefulWidget {
+  const CurrencyPage({super.key});
 
   @override
   CurrencyPageState createState() => CurrencyPageState();
@@ -29,11 +29,14 @@ class CurrencyPageState extends AbstractPageState<CurrencyPage> {
   }
 
   @override
+  String getButtonName() => AppLocale.labels.currencyUpdateTooltip;
+
+  @override
   Widget buildButton(BuildContext context, BoxConstraints constraints) {
     return FloatingActionButton(
       heroTag: 'currency_page',
       onPressed: () => updateAllRates(context),
-      tooltip: AppLocale.labels.currencyUpdateTooltip,
+      tooltip: getButtonName(),
       child: const Icon(Icons.save),
     );
   }
@@ -57,12 +60,16 @@ class CurrencyPageState extends AbstractPageState<CurrencyPage> {
     final indent = ThemeHelper.getIndent();
     final now = DateTime.now();
     final cutDate = DateTime(now.year, now.month - 2);
-    scope ??= super
-        .state
-        .getList(AppDataType.currencies)
-        .where((v) => v.currencyFrom != null && v.currency != null && v.currency.code != v.currencyFrom.code)
-        .toList();
+    if (scope == null) {
+      WidgetsBinding.instance.addPostFrameCallback((_) => setState(() => scope = state
+          .getList(AppDataType.currencies)
+          .where((v) => v.currencyFrom != null && v.currency != null && v.currency.code != v.currencyFrom.code)
+          .toList()));
+      return ThemeHelper.emptyBox;
+    }
     return ListView.builder(
+        scrollDirection: Axis.vertical,
+        shrinkWrap: true,
         itemCount: scope?.length,
         itemBuilder: (context, index) {
           final item = scope![index];

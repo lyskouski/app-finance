@@ -27,6 +27,11 @@ class ThemeHelper {
   static double getWidth(BuildContext context, [double multiply = 4]) =>
       MediaQuery.sizeOf(context).width - getIndent() * multiply;
 
+  static double getHeight(BuildContext context, [double multiply = 2]) =>
+      MediaQuery.sizeOf(context).height - getIndent() * multiply;
+
+  static bool isKeyboardVisible(BuildContext context) => MediaQuery.of(context).viewInsets.bottom > 0;
+
   static double getMaxHeight(List<dynamic> scope) {
     double height = 0;
     for (int i = 0; i < scope.length; i++) {

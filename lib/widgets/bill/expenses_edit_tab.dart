@@ -12,6 +12,7 @@ class ExpensesEditTab extends ExpensesTab {
   const ExpensesEditTab({
     super.key,
     required this.uuid,
+    required super.state,
     String? account,
     String? budget,
     Currency? currency,
@@ -34,7 +35,7 @@ class ExpensesEditTab extends ExpensesTab {
 class ExpensesEditTabState extends ExpensesTabState<ExpensesEditTab> {
   @override
   void updateStorage() {
-    state.update(
+    widget.state.update(
         widget.uuid,
         BillAppData(
           uuid: widget.uuid,
@@ -48,7 +49,8 @@ class ExpensesEditTabState extends ExpensesTabState<ExpensesEditTab> {
   }
 
   @override
-  String getButtonTitle() {
-    return AppLocale.labels.updateBillTooltip;
-  }
+  String getTitle() => AppLocale.labels.updateBillTooltip;
+
+  @override
+  String getButtonName() => AppLocale.labels.updateBillTooltip;
 }

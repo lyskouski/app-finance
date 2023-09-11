@@ -32,6 +32,7 @@ class ToolbarButtonWidgetState extends State<ToolbarButtonWidget> {
       child: Container(
         margin: widget.margin,
         padding: EdgeInsets.zero,
+        height: 32,
         decoration: BoxDecoration(
           shape: BoxShape.rectangle,
           color: color,

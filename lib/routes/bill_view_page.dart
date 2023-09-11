@@ -7,16 +7,17 @@ import 'package:app_finance/_classes/structure/navigation/app_menu.dart';
 import 'package:app_finance/_classes/structure/bill_app_data.dart';
 import 'package:app_finance/_configs/theme_helper.dart';
 import 'package:app_finance/_classes/structure/navigation/app_route.dart';
-import 'package:app_finance/routes/abstract_page.dart';
+import 'package:app_finance/routes/abstract_page_state.dart';
 import 'package:app_finance/widgets/_generic/base_line_widget.dart';
 import 'package:flutter/material.dart';
 
-class BillViewPage extends AbstractPage {
+class BillViewPage extends StatefulWidget {
   final String uuid;
 
-  BillViewPage({
+  const BillViewPage({
+    super.key,
     required this.uuid,
-  }) : super();
+  });
 
   @override
   BillViewPageState createState() => BillViewPageState();
@@ -30,12 +31,15 @@ class BillViewPageState extends AbstractPageState<BillViewPage> {
   }
 
   @override
+  String getButtonName() => '';
+
+  @override
   Widget buildButton(BuildContext context, BoxConstraints constraints) {
     String route = AppMenu.uuid(AppRoute.billEditRoute, widget.uuid);
     double indent = ThemeHelper.getIndent(4);
     NavigatorState nav = Navigator.of(context);
     return Container(
-      margin: EdgeInsets.only(left: indent),
+      margin: EdgeInsets.only(left: 2 * indent, right: 2 * indent),
       child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
         FloatingActionButton(
           heroTag: 'bill_view_page_deactivate',

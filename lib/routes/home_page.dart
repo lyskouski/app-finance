@@ -9,7 +9,8 @@ import 'package:app_finance/_classes/storage/app_preferences.dart';
 import 'package:app_finance/_configs/responsive_matrix.dart';
 import 'package:app_finance/_configs/theme_helper.dart';
 import 'package:app_finance/_classes/structure/navigation/app_route.dart';
-import 'package:app_finance/routes/abstract_page.dart';
+import 'package:app_finance/routes/abstract_page_state.dart';
+import 'package:app_finance/routes/start_page.dart';
 import 'package:app_finance/widgets/_wrappers/grid_layer.dart';
 import 'package:app_finance/widgets/init/init_tab.dart';
 import 'package:app_finance/widgets/_wrappers/toolbar_button_widget.dart';
@@ -18,11 +19,12 @@ import 'package:app_finance/widgets/home/bill_widget.dart';
 import 'package:app_finance/widgets/home/budget_widget.dart';
 import 'package:app_finance/widgets/home/goal_widget.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 
-class HomePage extends AbstractPage {
-  HomePage() : super();
+class HomePage extends StatefulWidget {
+  const HomePage({super.key});
 
   @override
   HomePageState createState() => HomePageState();
@@ -43,43 +45,52 @@ class HomePageState extends AbstractPageState<HomePage> {
   }
 
   @override
-  AppBar buildBar(BuildContext context) {
-    NavigatorState nav = Navigator.of(context);
-    return AppBar(
-      backgroundColor: Theme.of(context).colorScheme.primary,
-      toolbarHeight: 40,
-      leading: Builder(
-        builder: (BuildContext context) {
-          return ToolbarButtonWidget(
-            child: IconButton(
-              hoverColor: Colors.transparent,
-              icon: const Icon(
-                Icons.menu,
-                color: Colors.white70,
-              ),
-              tooltip: AppLocale.labels.navigationTooltip,
-              onPressed: () => Scaffold.of(context).openDrawer(),
-            ),
-          );
-        },
-      ),
-      title: Center(
-        child: Image.asset('assets/images/fingrom.png'),
-      ),
-      actions: [
-        ToolbarButtonWidget(
+  Widget? getBarLeading(NavigatorState nav) {
+    return Builder(
+      builder: (BuildContext context) {
+        return ToolbarButtonWidget(
           child: IconButton(
+            hoverColor: Colors.transparent,
             icon: const Icon(
-              Icons.switch_access_shortcut_add_outlined,
+              Icons.menu,
               color: Colors.white70,
             ),
-            tooltip: AppLocale.labels.subscriptionTooltip,
-            onPressed: () => nav.pushNamed(AppRoute.subscriptionRoute),
+            tooltip: AppLocale.labels.navigationTooltip,
+            onPressed: () => Scaffold.of(context).openDrawer(),
           ),
-        ),
-      ],
+        );
+      },
     );
   }
+
+  @override
+  List<Widget> getBarActions(NavigatorState nav) {
+    return [
+      ToolbarButtonWidget(
+        child: IconButton(
+          icon: const Icon(
+            Icons.switch_access_shortcut_add_outlined,
+            color: Colors.white70,
+          ),
+          tooltip: AppLocale.labels.subscriptionTooltip,
+          onPressed: () => nav.pushNamed(AppRoute.subscriptionRoute),
+        ),
+      ),
+    ];
+  }
+
+  @override
+  Widget getBarTitle(BuildContext context, [bool isBottom = false]) {
+    return SvgPicture.asset(
+      'assets/images/fingrom.svg',
+      height: isBottom ? 20 : 40,
+      alignment: Alignment.centerLeft,
+      semanticsLabel: AppLocale.labels.appTitle,
+    );
+  }
+
+  @override
+  String getButtonName() => AppLocale.labels.addMainTooltip;
 
   @override
   Widget buildButton(BuildContext context, BoxConstraints constraints) {
@@ -87,22 +98,21 @@ class HomePageState extends AbstractPageState<HomePage> {
     return FloatingActionButton(
       heroTag: 'home_page',
       onPressed: () => nav.pushNamed(AppRoute.billAddRoute),
-      tooltip: AppLocale.labels.addMainTooltip,
+      tooltip: getButtonName(),
       child: const Icon(Icons.add),
     );
   }
 
   @override
   Widget build(BuildContext context) {
-    NavigatorState nav = Navigator.of(context);
-    if (AppPreferences.get(AppPreferences.prefPrivacyPolicy) == null) {
-      WidgetsBinding.instance.addPostFrameCallback((_) => nav.popAndPushNamed(AppRoute.startRoute));
-    }
     Provider.of<AppLocale>(context, listen: false).updateState(context);
+    if (AppPreferences.get(AppPreferences.prefPrivacyPolicy) == null) {
+      return const StartPage();
+    }
     return Consumer<AppData>(builder: (context, appState, _) {
       state = appState;
       if (appState.isLoading) {
-        return InitTab();
+        return const InitTab();
       }
       return super.build(context);
     });

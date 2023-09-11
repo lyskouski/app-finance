@@ -3,21 +3,24 @@
 
 import 'package:app_finance/_classes/herald/app_locale.dart';
 import 'package:app_finance/_configs/theme_helper.dart';
-import 'package:app_finance/routes/abstract_page.dart';
+import 'package:app_finance/routes/abstract_page_state.dart';
 import 'package:app_finance/widgets/_wrappers/tab_widget.dart';
 import 'package:app_finance/widgets/settings/import_tab.dart';
 import 'package:app_finance/widgets/settings/setting_tab.dart';
 import 'package:app_finance/widgets/settings/recover_tab.dart';
 import 'package:flutter/material.dart';
 
-class SettingsPage extends AbstractPage {
-  SettingsPage() : super();
+class SettingsPage extends StatefulWidget {
+  const SettingsPage({super.key});
 
   @override
   SettingsPageState createState() => SettingsPageState();
 }
 
 class SettingsPageState extends AbstractPageState<SettingsPage> {
+  @override
+  String getButtonName() => '';
+
   @override
   Widget buildButton(BuildContext context, BoxConstraints constraints) {
     return ThemeHelper.emptyBox;
@@ -42,7 +45,7 @@ class SettingsPageState extends AbstractPageState<SettingsPage> {
         ),
       ],
       children: [
-        SettingTab(),
+        const SettingTab(),
         RecoverTab(callback: super.state.restate),
         ImportTab(width: ThemeHelper.getWidth(context, 12), textTheme: Theme.of(context).textTheme),
       ],

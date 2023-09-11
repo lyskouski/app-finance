@@ -27,15 +27,15 @@ void main() {
             Given I am firstly opened the app
             Then I can see "Initial Setup" component
             When I tap "Save to Storage (Go Next)" button
-            Then I can see "Acknowledge (Go Next)" component
+            Then I can see "Acknowledge (Go Next)" button
             When I tap "Acknowledge (Go Next)" button
-            Then I can see "Create new Account" component
+            Then I can see "Create new Account" button
             When I tap on 0 index of "ListSelector" fields
             And I tap "Bank Account" element
             And I enter "Starting Page Account" to "Enter Account Identifier" text field
             And I enter "1000" to "Set Balance" text field
             And I tap "Create new Account" button
-            Then I can see "Create new Budget Category" component
+            Then I can see "Create new Budget Category" button
             When I enter "Starting Page Budget" to "Enter Budget Category Name" text field
             And I enter "1000" to "Set Balance" text field
             When I tap "Create new Budget Category" button

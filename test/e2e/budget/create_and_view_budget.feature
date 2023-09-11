@@ -8,7 +8,6 @@ Feature: Verify Budget Functionality
           And I tap on 0 index of "CurrencySelector" fields
           And I enter "<currency>" to "Type Code" text field
           And I tap on 1 index of "<currency>" element
-          And I tap "Close" element # Popup with icons
           And I tap "Create new Budget Category" button
         Then I can see "Budgets, left" component
           And I can see "<name_result>" component

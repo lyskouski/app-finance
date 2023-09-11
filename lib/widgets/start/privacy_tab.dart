@@ -3,14 +3,16 @@
 
 import 'package:app_finance/_classes/herald/app_locale.dart';
 import 'package:app_finance/_classes/storage/app_preferences.dart';
-import 'package:app_finance/widgets/_generic/abstract_tab.dart';
+import 'package:app_finance/widgets/start/abstract_tab.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_markdown/flutter_markdown.dart';
 
 class PrivacyTab extends AbstractTab {
-  PrivacyTab({
+  const PrivacyTab({
+    super.key,
     required super.setState,
-  }) : super();
+    required super.isFirstBoot,
+  });
 
   @override
   PrivacyTabState createState() => PrivacyTabState();
@@ -29,7 +31,7 @@ class PrivacyTabState extends AbstractTabState<PrivacyTab> {
   }
 
   @override
-  Widget buildContent(BuildContext context) {
+  Widget buildContent(BuildContext context, BoxConstraints constraints) {
     final locale = AppLocale.labels.localeName;
     return FutureBuilder(
       future: DefaultAssetBundle.of(context).loadString('./assets/l10n/privacy_policy_$locale.md'),

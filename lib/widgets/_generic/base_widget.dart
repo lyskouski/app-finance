@@ -118,7 +118,6 @@ class BaseWidgetState extends State<BaseWidget> {
                       buildListWidget: widget.buildListWidget,
                     ),
             ),
-            SizedBox(height: widget.limit != null ? 0 : 70),
           ],
         ),
       ),

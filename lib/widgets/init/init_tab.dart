@@ -3,12 +3,12 @@
 
 import 'package:app_finance/_classes/herald/app_locale.dart';
 import 'package:app_finance/_configs/theme_helper.dart';
-import 'package:app_finance/routes/abstract_page.dart';
+import 'package:app_finance/routes/abstract_page_state.dart';
 import 'package:app_finance/widgets/init/loading_widget.dart';
 import 'package:flutter/material.dart';
 
-class InitTab extends AbstractPage {
-  InitTab() : super();
+class InitTab extends StatefulWidget {
+  const InitTab({super.key});
 
   @override
   InitTabState createState() => InitTabState();
@@ -21,20 +21,13 @@ class InitTabState extends AbstractPageState<InitTab> {
   }
 
   @override
-  AppBar buildBar(BuildContext context) {
-    return AppBar(
-      backgroundColor: Theme.of(context).colorScheme.primary,
-      toolbarHeight: 40,
-      automaticallyImplyLeading: false,
-      actions: const [],
-      title: Center(
-        child: Text(
-          getTitle(),
-          style: TextStyle(color: Theme.of(context).colorScheme.inversePrimary),
-        ),
-      ),
-    );
-  }
+  List<Widget> getBarActions(NavigatorState nav) => [];
+
+  @override
+  Widget? getBarLeading(NavigatorState nav) => null;
+
+  @override
+  String getButtonName() => '';
 
   @override
   Widget buildButton(BuildContext context, BoxConstraints constraints) {

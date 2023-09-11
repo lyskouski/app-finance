@@ -26,13 +26,14 @@ class BudgetAddPage extends AbstractAddPage {
   final MaterialColor? color;
   final Currency? currency;
 
-  BudgetAddPage({
+  const BudgetAddPage({
+    super.key,
     this.title,
     this.budgetLimit,
     this.icon,
     this.color,
     this.currency,
-  }) : super();
+  });
 
   @override
   BudgetAddPageState createState() => BudgetAddPageState();
@@ -80,9 +81,8 @@ class BudgetAddPageState<T extends BudgetAddPage> extends AbstractAddPageState<B
         ));
   }
 
-  String getButtonName() {
-    return AppLocale.labels.createBudgetTooltip;
-  }
+  @override
+  String getButtonName() => AppLocale.labels.createBudgetTooltip;
 
   @override
   Widget buildButton(BuildContext context, BoxConstraints constraints) {

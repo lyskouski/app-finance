@@ -6,43 +6,26 @@ import 'package:app_finance/_classes/herald/app_locale.dart';
 import 'package:app_finance/_classes/structure/currency/exchange.dart';
 import 'package:app_finance/_configs/theme_helper.dart';
 import 'package:app_finance/_classes/structure/navigation/app_route.dart';
-import 'package:app_finance/routes/abstract_page.dart';
+import 'package:app_finance/routes/abstract_page_state.dart';
 import 'package:app_finance/widgets/home/account_widget.dart';
 import 'package:flutter/material.dart';
 
-class AccountPage extends AbstractPage {
+class AccountPage extends StatefulWidget {
   final String? search;
 
-  AccountPage({
+  const AccountPage({
+    super.key,
     this.search,
-  }) : super();
+  });
 
   @override
   AccountPageState createState() => AccountPageState();
 }
 
 class AccountPageState extends AbstractPageState<AccountPage> {
-  @override
-  String getTitle() {
-    if (widget.search != null) {
-      return AppLocale.labels.search(widget.search!);
-    }
-    return AppLocale.labels.accountHeadline;
-  }
+  dynamic items;
 
-  @override
-  Widget buildButton(BuildContext context, BoxConstraints constraints) {
-    NavigatorState nav = Navigator.of(context);
-    return FloatingActionButton(
-      heroTag: 'account_page',
-      onPressed: () => nav.pushNamed(AppRoute.accountAddRoute),
-      tooltip: AppLocale.labels.addAccountTooltip,
-      child: const Icon(Icons.add),
-    );
-  }
-
-  @override
-  Widget buildContent(BuildContext context, BoxConstraints constraints) {
+  dynamic _getItems() {
     dynamic items;
     if (widget.search != null) {
       final scope = super
@@ -57,6 +40,37 @@ class AccountPageState extends AbstractPageState<AccountPage> {
       );
     } else {
       items = super.state.get(AppDataType.accounts);
+    }
+    return items;
+  }
+
+  @override
+  String getTitle() {
+    if (widget.search != null) {
+      return AppLocale.labels.search(widget.search!);
+    }
+    return AppLocale.labels.accountHeadline;
+  }
+
+  @override
+  String getButtonName() => AppLocale.labels.addAccountTooltip;
+
+  @override
+  Widget buildButton(BuildContext context, BoxConstraints constraints) {
+    NavigatorState nav = Navigator.of(context);
+    return FloatingActionButton(
+      heroTag: 'account_page',
+      onPressed: () => nav.pushNamed(AppRoute.accountAddRoute),
+      tooltip: getButtonName(),
+      child: const Icon(Icons.add),
+    );
+  }
+
+  @override
+  Widget buildContent(BuildContext context, BoxConstraints constraints) {
+    if (items == null) {
+      WidgetsBinding.instance.addPostFrameCallback((_) => setState(() => items = _getItems()));
+      return ThemeHelper.emptyBox;
     }
     return Column(
       children: [

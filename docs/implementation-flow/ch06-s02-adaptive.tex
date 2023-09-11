@@ -10,9 +10,127 @@ devices or screen sizes. Each approach has its strengths and weaknesses, and the
 factors. But ideally it would be better to mix both solutions: widgets itself should be responsive, pages (aggregative 
 widgets, called by routes) -- adaptive.
 
-\q{RowWidget} describes responsiveness behavior \issue{37}{abd9308}, \issue{185}{e1e7385} when we set a direct size 
-for a couple of components, and left nullable size (alike, \q{Spacer}-widget) for others. In that case the text section 
-will be hidden in case of width less than 40 density-independent pixels (DIP):
+
+\subsubsection{Packaging Components}
+
+Embracing a grid layout as part of an adaptive design strategy is a pivotal step toward creating a versatile and 
+user-centric digital experience (\cref{img:u-grid}). Grids provide the structure needed to maintain visual consistency, 
+prioritize content, and seamlessly adapt to diverse screen sizes.
+
+\img{uiux/cssgrid-flexbox}{Representation of Grid Layout \cite{Tayl18}}{img:u-grid}
+
+And for that case let's dive into an external package creation. From IDE, by pressing \key{F1} -- \q{Flutter: New 
+Project} -- \q{Package}, we will generate a package template (only "lib" and "test"-folders plus configuration files). 
+Inside \q{lib}-folder the file, named identically to our package, works as an entry point for the package
+(\href{https://pub.dev/packages/flutter_grid_layout}{https://pub.dev/packages/flutter\_grid\_layout}):
+
+\begin{lstlisting}
+// ./lib/flutter_grid_layout.dart
+library flutter_grid_layout;
+// 'src'-folder for internal files that 
+// might not be accessible without export
+export 'src/grid_container.dart';
+export 'src/grid_item.dart';
+\end{lstlisting}
+
+\noindent The implementation has a resemblance to the previously created \q{RowWidget} by its functionality of 
+converting relative values into density-independent pixels (DIP). \q{GridItem}-widget serves as an encapsulating 
+entity for the original widget, delineating its placement within a grid matrix; while \q{GridContainer}-widget covers
+all requisite calculations for repositioning:
+
+\begin{lstlisting}
+// ./lib/src/grid_item.dart
+class GridItem extends StatelessWidget {
+  final Size start;
+  final Size end;
+  final int zIndex;
+  final Widget child;
+
+  const GridItem({/* ... */});
+
+  @override
+  Widget build(BuildContext context) {
+    return child;
+  }(*@ \stopnumber @*)
+}
+
+// ./lib/src/grid_container.dart
+class GridContainer extends StatelessWidget {
+  final List<double?> columns;
+  final List<double?> rows;
+  final List<GridItem> children;
+
+  const GridContainer({/* ... */});
+  // Calculate actual DIP based on relative values
+  List<double> _calc(double size, List<double?> scope) {
+    // ... implementation similar to RowWidget
+    // Sample, 0.5 -> 50%, 10 -> 10 DIP, null -> auto
+    scope.insert(0, 0.0); // leading zero
+    return scope.cast(); // null-safety
+  }
+  // Count length from zero-point
+  List<double> _scale(List<double> scope) {
+    return scope.asMap().entries.map((entry) => scope.sublist(0, entry.key + 1).fold(0.0, (v, e) => v + e)).toList();
+  }
+  List<double> _calcWidth(width) => _calc(width, rows);
+  List<double> _calcHeight(height) => _calc(height, columns);
+
+  @override
+  Widget build(BuildContext context) {
+    if (columns.isEmpty || rows.isEmpty || children.isEmpty) {
+      return const SizedBox();
+    }
+    children.sort((a, b) => a.zIndex.compareTo(b.zIndex));
+    return LayoutBuilder(builder: (context, constraints) {
+      final width = _scale(_calcWidth(constraints.maxWidth));
+      final height = _scale(_calcHeight(constraints.maxHeight));
+      return Stack(
+        children: List<Widget>.generate(children.length, (index) {
+          final item = children[index];
+          // Calculate actual Widget size
+          final itemWidth = width[item.end.width.toInt()] - width[item.start.width.toInt()];
+          final itemHeight = height[item.end.height.toInt()] - height[item.start.height.toInt()];
+          // Bound by Container
+          return Container(
+            // Shift by starting position
+            margin: EdgeInsets.only(
+              left: width[item.start.width.toInt()],
+              top: height[item.start.height.toInt()],
+            ),
+            // Expand to the full area, alike in CSS:
+            // > justify-self: stretch;
+            constraints: BoxConstraints(
+              maxWidth: itemWidth,   minWidth: itemWidth,
+              maxHeight: itemHeight, minHeight: itemHeight,
+            ),
+            width: itemWidth,
+            height: itemHeight,
+            child: item.child,
+          );
+        }));
+    });
+  }
+}
+\end{lstlisting}
+
+\noindent By using \q{flutter pub publish}-command our package will become available on 
+\href{https://pub.dev}{https://pub.dev} and can be aggregated into the main project by 
+\q{flutter pub add flutter\_grid\_layout}-command evaluation.
+
+
+\subsubsection{Extending Responsiveness Behavior}
+
+Responsiveness, by being a paramount in engaging users across a multitude of devices, is covered by a couple of design 
+concepts \cite{Frai22}: fluid layouts, media queries, and content prioritization. The concept of "Fluid Layouts" is in 
+a usage of relative units like percentages for widths and heights, allowing content to dynamically expand or contract 
+based on the available screen real estate. "Media Queries" are used to apply rules based on characteristics such as 
+screen size and orientation. Whereas "Content Prioritization" entails thoughtful content ordering and reposition;
+based on screen configuration, less critical elements can gracefully adapt, be positioned differently, or even hidden.
+
+\q{RowWidget} describes responsiveness behavior \issue{37}{abd9308}, \issue{185}{e1e7385} when we set a direct or 
+relative (values \q{0.0 ... 0.1} are converted into \q{0 ... 100\%} of an available width) size for a couple of 
+components, and left nullable size (alike, \q{Spacer}-widget) for others. In that case the text section will be hidden 
+for the width less than 40 density-independent pixels (DIP):
 
 \begin{lstlisting}
 RowWidget(
@@ -112,3 +230,44 @@ class GridLayer extends StatelessWidget {
   }
 }
 \end{lstlisting}
+
+
+\subsubsection{Handling Instabilities}
+
+A rich interface may road us an area of instabilities...
+
+By example, an error \emph{"Scaffold.geometryOf() must only be accessed during the paint phase"} (with ongoing 
+\emph{"'package:flutter/src/rendering/mouse\_tracker.dart': Failed assertion: ... '!\_debugDuringDeviceUpdate': 
+is not true"}) leads to a fully nonfunctional state (by not responding to any interaction) of the application. And we 
+might be not alone with the problematic area since it's been already highlighted to Flutter SDK team a few times
+(\href{https://github.com/flutter/flutter/issues/108363}{https://github.com/flutter/flutter/issues/108363} and
+\href{https://github.com/flutter/flutter/issues/126513}{https://github.com/flutter/flutter/issues/126513}), nonetheless
+both of the times closed without being resolved simply by not declared steps to reproduce it constantly.
+
+\img{uiux/bottom-bar}{Application Bottom Bar for small screens}{img:u-bottom-bar}
+
+In our case (\cref{img:u-bottom-bar}) the problem is relevant to the usage of \q{floatingActionButtonLocation: 
+FloatingActionButtonLocation.centerDocked} with enabled \q{bottomNavigationBar} for \q{Scaffold}, and appears by 
+navigating back and forth between screens. The issue is connected to the way Flutter draws pixels under the hood, and 
+there are no any declared steps to resolve that, each time it can be a unique approach based on an application 
+architecture:
+
+\begin{lstlisting}
+// Awaiting for the route transition to be completed
+await route.completed;
+
+// Deactivate inactive routes to be remained in memory
+MaterialPageRoute(maintainState: false, ... // or contrary, has to be "true"
+
+// ... other variants
+\end{lstlisting}
+
+Sometimes the problem cannot be resolved in the application itself, and we have to change somehow used external 
+components. We may either create an issue 
+(\href{https://github.com/flutter/flutter/issues/134408}{https://github.com/flutter/flutter/issues/134408}) 
+with an assumption that it will be taken into account and fixed sometime, or create a patch by our own 
+\href{https://github.com/flutter/flutter/pull/134409}{https://github.com/flutter/flutter/pull/134409}. In cases, when 
+the fix is not universal (or we do not have a time for) and relevant only for us, external component should be forked 
+\href{https://github.com/lyskouski/flutter}{https://github.com/lyskouski/flutter} and re-targeted for the application
+via \q{pubspec.yaml}, or, in case of Flutter itself, by a local binding -- 
+\href{https://docs.flutter.dev/get-started/install/linux#install-flutter-manually}{https://docs.flutter.dev/get-started/install/linux\#install-flutter-manually}.

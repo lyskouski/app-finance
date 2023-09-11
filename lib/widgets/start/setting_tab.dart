@@ -8,16 +8,18 @@ import 'package:app_finance/_classes/storage/app_preferences.dart';
 import 'package:app_finance/_configs/theme_helper.dart';
 import 'package:app_finance/widgets/_forms/currency_selector.dart';
 import 'package:app_finance/widgets/_forms/list_selector.dart';
-import 'package:app_finance/widgets/_generic/abstract_tab.dart';
+import 'package:app_finance/widgets/start/abstract_tab.dart';
 import 'package:currency_picker/currency_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 
 class SettingTab extends AbstractTab {
-  SettingTab({
+  const SettingTab({
+    super.key,
     required super.setState,
-  }) : super();
+    super.isFirstBoot = true,
+  });
 
   @override
   SettingTabState createState() => SettingTabState();
@@ -69,7 +71,10 @@ class SettingTabState<T extends SettingTab> extends AbstractTabState<T> {
   }
 
   @override
-  Widget buildContent(BuildContext context) {
+  String getButtonTitle() => AppLocale.labels.saveTooltip;
+
+  @override
+  Widget buildContent(BuildContext context, BoxConstraints constraints) {
     String locale = Localizations.localeOf(context).toString();
     theme = Provider.of<AppTheme>(context, listen: false);
     final TextTheme textTheme = Theme.of(context).textTheme;
@@ -128,10 +133,5 @@ class SettingTabState<T extends SettingTab> extends AbstractTabState<T> {
         ],
       ),
     );
-  }
-
-  @override
-  String getButtonTitle() {
-    return AppLocale.labels.saveTooltip;
   }
 }
