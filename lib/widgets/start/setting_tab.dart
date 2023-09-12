@@ -10,6 +10,7 @@ import 'package:app_finance/widgets/_forms/currency_selector.dart';
 import 'package:app_finance/widgets/_forms/list_selector.dart';
 import 'package:app_finance/widgets/start/abstract_tab.dart';
 import 'package:currency_picker/currency_picker.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
@@ -98,23 +99,25 @@ class SettingTabState<T extends SettingTab> extends AbstractTabState<T> {
             setState: saveCurrency,
           ),
           ThemeHelper.hIndent2x,
-          Row(
-            mainAxisAlignment: MainAxisAlignment.start,
-            children: [
-              Text(
-                AppLocale.labels.encryptionMode,
-                style: textTheme.bodyLarge,
-              ),
-              Switch(
-                value: isEncrypted,
-                onChanged: saveEncryption,
-              ),
-              Expanded(
-                child: hasEncrypted ? Text(AppLocale.labels.hasEncrypted) : ThemeHelper.emptyBox,
-              ),
-            ],
-          ),
-          ThemeHelper.hIndent2x,
+          if (kDebugMode) ...[
+            Row(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                Text(
+                  AppLocale.labels.encryptionMode,
+                  style: textTheme.bodyLarge,
+                ),
+                Switch(
+                  value: isEncrypted,
+                  onChanged: saveEncryption,
+                ),
+                Expanded(
+                  child: hasEncrypted ? Text(AppLocale.labels.hasEncrypted) : ThemeHelper.emptyBox,
+                ),
+              ],
+            ),
+            ThemeHelper.hIndent2x,
+          ],
           Text(
             AppLocale.labels.brightnessTheme,
             style: textTheme.bodyLarge,
