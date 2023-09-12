@@ -66,6 +66,14 @@ class AppData extends ChangeNotifier {
     }
   }
 
+  Future<void> flush() async {
+    isLoading = true;
+    _hashTable.clear();
+    _data.updateAll((key, value) => SummaryAppData(total: 0, list: []));
+    await TransactionLog.load(this);
+    await restate();
+  }
+
   Future<void> restate() async {
     await updateTotals(AppDataType.values);
     isLoading = false;

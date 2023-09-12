@@ -22,13 +22,8 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 class ImportTab extends StatefulWidget {
-  final double width;
-  final TextTheme textTheme;
-
   const ImportTab({
     super.key,
-    required this.width,
-    required this.textTheme,
   });
 
   @override
@@ -117,9 +112,10 @@ class ImportTabState extends State<ImportTab> {
 
   @override
   Widget build(BuildContext context) {
+    final indent = ThemeHelper.getIndent(2);
+    final width = ThemeHelper.getWidth(context, 12);
     final textTheme = Theme.of(context).textTheme;
     final ColorScheme colorScheme = Theme.of(context).colorScheme;
-    double indent = ThemeHelper.getIndent(2);
     FocusController.init();
 
     return Consumer<AppData>(builder: (context, appState, _) {
@@ -168,35 +164,35 @@ class ImportTabState extends State<ImportTab> {
                   ThemeHelper.hIndent2x,
                   Text(
                     AppLocale.labels.def('${AppLocale.labels.account}: ${AppLocale.labels.title}'),
-                    style: widget.textTheme.bodyLarge,
+                    style: textTheme.bodyLarge,
                   ),
                   ListAccountSelector(
                     state: state,
                     hintText: AppLocale.labels.titleAccountTooltip,
                     value: attrValue[FileParser.attrAccountName],
                     setState: (value) => setState(() => attrValue[FileParser.attrAccountName] = value),
-                    width: widget.width,
+                    width: width,
                   ),
                 ],
                 if (!columnMap.contains(FileParser.attrCategoryName)) ...[
                   ThemeHelper.hIndent2x,
                   Text(
                     AppLocale.labels.def('${AppLocale.labels.budget}: ${AppLocale.labels.title}'),
-                    style: widget.textTheme.bodyLarge,
+                    style: textTheme.bodyLarge,
                   ),
                   ListBudgetSelector(
                     state: state,
                     hintText: AppLocale.labels.titleBudgetTooltip,
                     value: attrValue[FileParser.attrCategoryName],
                     setState: (value) => setState(() => attrValue[FileParser.attrCategoryName] = value),
-                    width: widget.width,
+                    width: width,
                   ),
                 ],
                 if (!columnMap.contains(FileParser.attrBillType)) ...[
                   ThemeHelper.hIndent2x,
                   Text(
                     AppLocale.labels.def('${AppLocale.labels.bill}: ${AppLocale.labels.billTypeTooltip}'),
-                    style: widget.textTheme.bodyLarge,
+                    style: textTheme.bodyLarge,
                   ),
                   ListSelector(
                     value: attrValue[FileParser.attrBillType],
@@ -212,7 +208,7 @@ class ImportTabState extends State<ImportTab> {
                   ThemeHelper.hIndent2x,
                   Text(
                     AppLocale.labels.def('${AppLocale.labels.bill}: ${AppLocale.labels.currency}'),
-                    style: widget.textTheme.bodyLarge,
+                    style: textTheme.bodyLarge,
                   ),
                   CurrencySelector(
                     value: attrValue[FileParser.attrBillCurrency],

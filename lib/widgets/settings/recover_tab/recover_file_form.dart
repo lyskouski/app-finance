@@ -32,6 +32,7 @@ class RecoverFileForm extends StatefulWidget {
 
 class RecoverFileFormState extends State<RecoverFileForm> {
   final path = TextEditingController(text: 'tmp.log');
+  bool isEncrypted = true;
   late final FileProtocol file;
 
   @override
@@ -65,6 +66,12 @@ class RecoverFileFormState extends State<RecoverFileForm> {
         SimpleInput(
           controller: path,
         ),
+        Row(
+          children: [
+            Checkbox(value: isEncrypted, onChanged: (value) => setState(() => isEncrypted = value!)),
+            Text(AppLocale.labels.isEncrypted),
+          ],
+        ),
         ThemeHelper.hIndent4x,
         SizedBox(
           width: double.infinity,
@@ -80,7 +87,7 @@ class RecoverFileFormState extends State<RecoverFileForm> {
           width: double.infinity,
           child: FloatingActionButton(
             heroTag: 'recover_tab_recover',
-            onPressed: () => file.load(path.text).then((_) => widget.cbFinal()),
+            onPressed: () => file.load(path.text, isEncrypted).then((_) => widget.cbFinal()),
             tooltip: AppLocale.labels.recoveryTooltip,
             child: Text(AppLocale.labels.recoveryTooltip),
           ),

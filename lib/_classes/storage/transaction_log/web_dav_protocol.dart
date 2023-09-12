@@ -56,7 +56,7 @@ class WebDavProtocol extends AbstractProtocol implements InterfaceProtocol {
   }
 
   @override
-  Future<void> load(data) async {
+  Future<void> load(data, [bool isEncrypted = true]) async {
     final client = await _connect(data);
     if (client == null) {
       return;
@@ -66,7 +66,7 @@ class WebDavProtocol extends AbstractProtocol implements InterfaceProtocol {
       callbackProgress(inProgress = false);
       return Future<List<int>>.value([]);
     });
-    importTransactions(content);
+    importTransactions(content, isEncrypted);
     callbackProgress(inProgress = false);
     if (message == '') {
       callbackMessage(message = AppLocale.labels.success);

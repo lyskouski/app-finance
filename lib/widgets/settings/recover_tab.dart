@@ -3,6 +3,7 @@
 
 import 'package:app_finance/_classes/herald/app_locale.dart';
 import 'package:app_finance/_classes/controller/focus_controller.dart';
+import 'package:app_finance/_classes/storage/app_data.dart';
 import 'package:app_finance/_configs/theme_helper.dart';
 import 'package:app_finance/widgets/init/loading_widget.dart';
 import 'package:app_finance/widgets/settings/recover_tab/nav_button_widget.dart';
@@ -10,17 +11,17 @@ import 'package:app_finance/widgets/settings/recover_tab/recover_file_form.dart'
 import 'package:app_finance/widgets/settings/recover_tab/recover_webdav_form.dart';
 import 'package:app_finance/widgets/settings/recover_tab/recovery_type.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class RecoverTab extends StatefulWidget {
-  final Function callback;
-
-  const RecoverTab({super.key, required this.callback});
+  const RecoverTab({super.key});
 
   @override
   SyncTabState createState() => SyncTabState();
 }
 
 class SyncTabState extends State<RecoverTab> {
+  late AppData state;
   String message = '';
   bool inProgress = false;
   RecoveryType type = RecoveryType.none;
@@ -51,7 +52,7 @@ class SyncTabState extends State<RecoverTab> {
       switch (type) {
         case RecoveryType.webdav:
           form = RecoverWebdavForm(
-            cbFinal: widget.callback,
+            cbFinal: state.flush,
             cbMessage: cbMessage,
             cbProgress: cbProgress,
             cbType: cbType,
@@ -60,7 +61,7 @@ class SyncTabState extends State<RecoverTab> {
           break;
         case RecoveryType.file:
           form = RecoverFileForm(
-            cbFinal: widget.callback,
+            cbFinal: state.flush,
             cbMessage: cbMessage,
             cbProgress: cbProgress,
             cbType: cbType,
@@ -87,12 +88,15 @@ class SyncTabState extends State<RecoverTab> {
           );
       }
     }
-    return SingleChildScrollView(
-      controller: FocusController.getController(runtimeType),
-      child: Padding(
-        padding: EdgeInsets.all(indent),
-        child: form,
-      ),
-    );
+    return Consumer<AppData>(builder: (context, appState, _) {
+      state = appState;
+      return SingleChildScrollView(
+        controller: FocusController.getController(runtimeType),
+        child: Padding(
+          padding: EdgeInsets.all(indent),
+          child: form,
+        ),
+      );
+    });
   }
 }

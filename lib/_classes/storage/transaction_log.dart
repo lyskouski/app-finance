@@ -25,7 +25,7 @@ class TransactionLog {
   static File? _logFile;
 
   static Future<File> _get(Directory path) async {
-    File file = File('${path.absolute.path}/terCAD/app-finance.log');
+    File file = File('${path.absolute.path}/.terCAD/app-finance.log');
     if (!file.existsSync()) {
       file.createSync(recursive: true);
       file.writeAsString("\n", mode: FileMode.append);
@@ -84,9 +84,9 @@ class TransactionLog {
     }
   }
 
-  static void save(dynamic content, [bool isDirect = false]) {
+  static void save(dynamic content) {
     String line = content.toString();
-    if (!isDirect && EncryptionHandler.doEncrypt()) {
+    if (EncryptionHandler.doEncrypt()) {
       line = EncryptionHandler.encrypt(line);
     }
     saveRaw(line);

@@ -26,7 +26,7 @@ void main() {
           Scenario: Applying basic configuration through the start pages
             Given I am firstly opened the app
             Then I can see "Initial Setup" component
-            When I tap "Save to Storage (Go Next)" button
+            When I tap "Save (Go Next)" button
             Then I can see "Acknowledge (Go Next)" button
             When I tap "Acknowledge (Go Next)" button
             Then I can see "Create new Account" button
