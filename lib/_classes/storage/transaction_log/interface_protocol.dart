@@ -11,5 +11,5 @@ abstract class InterfaceProtocol {
   });
 
   Future<void> save(dynamic data);
-  Future<void> load(dynamic data);
+  Future<void> load(dynamic data, [bool isEncrypted = true]);
 }

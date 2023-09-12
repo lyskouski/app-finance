@@ -84,9 +84,9 @@ class TransactionLog {
     }
   }
 
-  static void save(dynamic content, [bool isDirect = false]) {
+  static void save(dynamic content) {
     String line = content.toString();
-    if (!isDirect && EncryptionHandler.doEncrypt()) {
+    if (EncryptionHandler.doEncrypt()) {
       line = EncryptionHandler.encrypt(line);
     }
     saveRaw(line);

@@ -72,7 +72,7 @@ class SettingTabState<T extends SettingTab> extends AbstractTabState<T> {
   }
 
   @override
-  String getButtonTitle() => AppLocale.labels.saveTooltip;
+  String getButtonTitle() => AppLocale.labels.saveSettingsTooltip;
 
   @override
   Widget buildContent(BuildContext context, BoxConstraints constraints) {

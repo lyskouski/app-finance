@@ -52,7 +52,7 @@ class SyncTabState extends State<RecoverTab> {
       switch (type) {
         case RecoveryType.webdav:
           form = RecoverWebdavForm(
-            cbFinal: () => state.restate(),
+            cbFinal: state.flush,
             cbMessage: cbMessage,
             cbProgress: cbProgress,
             cbType: cbType,
@@ -61,7 +61,7 @@ class SyncTabState extends State<RecoverTab> {
           break;
         case RecoveryType.file:
           form = RecoverFileForm(
-            cbFinal: () => state.restate(),
+            cbFinal: state.flush,
             cbMessage: cbMessage,
             cbProgress: cbProgress,
             cbType: cbType,

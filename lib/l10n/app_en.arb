@@ -193,6 +193,7 @@
             "type": "String"
         }
     },
+    "isEncrypted": "File is encrypted (by default)",
     "isRequired": "required",
     "left": "left",
     "lightMode": "Light",
@@ -255,11 +256,12 @@
     },
     "raiseData": "Amount Addition",
     "recoveryHeadline": "Recovery",
-    "recoveryTooltip": "Recover from Storage",
+    "recoveryTooltip": "Recover From",
     "releases": "Releases",
     "roadmap": "Roadmap",
     "saveNotification": "Changes saved!",
-    "saveTooltip": "Save to Storage",
+    "saveSettingsTooltip": "Save",
+    "saveTooltip": "Save To",
     "search": "Show By '{value}' Pattern",
     "@search": {
         "value": {

@@ -5,7 +5,7 @@ Feature: Verify Initial Flow
         Given I clear my preferences at the start
         And I am on "Home" page
         Then I can see "Initial Setup" component
-        When I tap "Save to Storage (Go Next)" button
+        When I tap "Save (Go Next)" button
         Then I can see "Acknowledge (Go Next)" button
         When I tap "Acknowledge (Go Next)" button
         Given preferences are updated (actually, mocked)

@@ -37,6 +37,7 @@ class RecoverWebdavFormState extends State<RecoverWebdavForm> {
   final password = TextEditingController();
   final link = TextEditingController();
   final path = TextEditingController(text: 'tmp.log');
+  bool isEncrypted = true;
 
   @override
   void initState() {
@@ -95,6 +96,12 @@ class RecoverWebdavFormState extends State<RecoverWebdavForm> {
         SimpleInput(
           controller: path,
         ),
+        Row(
+          children: [
+            Checkbox(value: isEncrypted, onChanged: (value) => setState(() => isEncrypted = value!)),
+            Text(AppLocale.labels.isEncrypted),
+          ],
+        ),
         ThemeHelper.hIndent4x,
         SizedBox(
           width: double.infinity,
@@ -116,12 +123,15 @@ class RecoverWebdavFormState extends State<RecoverWebdavForm> {
           child: FloatingActionButton(
             heroTag: 'recover_tab_recover',
             onPressed: () => webDav
-                .load(WebDavData(
-                  link: link.text,
-                  username: username.text,
-                  password: password.text,
-                  path: path.text,
-                ))
+                .load(
+                  WebDavData(
+                    link: link.text,
+                    username: username.text,
+                    password: password.text,
+                    path: path.text,
+                  ),
+                  isEncrypted,
+                )
                 .then((_) => widget.cbFinal()),
             tooltip: AppLocale.labels.recoveryTooltip,
             child: Text(AppLocale.labels.recoveryTooltip),
