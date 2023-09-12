@@ -27,9 +27,9 @@ void main() {
     //  await TransactionLog.saveRaw(line);
     //}
     final path = await getApplicationDocumentsDirectory();
-    var file = File('${path.absolute.path}/terCAD/app-finance.log');
+    var file = File('${path.absolute.path}/.terCAD/app-finance.log');
     if (!file.existsSync()) {
-      file = File('${Directory.systemTemp.absolute.path}/terCAD/app-finance.log');
+      file = File('${Directory.systemTemp.absolute.path}/.terCAD/app-finance.log');
     }
     final existingContent = await file.readAsString();
     await file.writeAsString(existingContent, mode: FileMode.append);

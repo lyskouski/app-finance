@@ -22,9 +22,9 @@ void main() {
     AppPreferences.pref = await SharedPreferences.getInstance();
     await AppPreferences.pref.clear();
     final path = await getApplicationDocumentsDirectory();
-    var file = File('${path.absolute.path}/terCAD/app-finance.log');
+    var file = File('${path.absolute.path}/.terCAD/app-finance.log');
     if (!file.existsSync()) {
-      file = File('${Directory.systemTemp.absolute.path}/terCAD/app-finance.log');
+      file = File('${Directory.systemTemp.absolute.path}/.terCAD/app-finance.log');
     }
     await file.delete();
   }
