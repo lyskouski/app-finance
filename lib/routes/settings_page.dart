@@ -19,12 +19,13 @@ class SettingsPage extends StatefulWidget {
 
 class SettingsPageState extends AbstractPageState<SettingsPage> {
   @override
+  String getTitle() => AppLocale.labels.settingsHeadline;
+
+  @override
   String getButtonName() => '';
 
   @override
-  Widget buildButton(BuildContext context, BoxConstraints constraints) {
-    return ThemeHelper.emptyBox;
-  }
+  Widget buildButton(BuildContext context, BoxConstraints constraints) => ThemeHelper.emptyBox;
 
   @override
   Widget buildContent(BuildContext context, BoxConstraints constraints) {
@@ -44,16 +45,11 @@ class SettingsPageState extends AbstractPageState<SettingsPage> {
           text: AppLocale.labels.importHeadline,
         ),
       ],
-      children: [
-        const SettingTab(),
-        RecoverTab(callback: super.state.restate),
-        ImportTab(width: ThemeHelper.getWidth(context, 12), textTheme: Theme.of(context).textTheme),
+      children: const [
+        SettingTab(),
+        RecoverTab(),
+        ImportTab(),
       ],
     );
-  }
-
-  @override
-  String getTitle() {
-    return AppLocale.labels.settingsHeadline;
   }
 }
