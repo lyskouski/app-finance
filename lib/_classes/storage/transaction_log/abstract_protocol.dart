@@ -20,10 +20,14 @@ abstract class AbstractProtocol {
       if (line.trim() == '') {
         continue;
       }
-      if (isEncrypted) {
-        line = EncryptionHandler.decrypt(line);
+      try {
+        if (isEncrypted) {
+          line = EncryptionHandler.decrypt(line);
+        }
+        TransactionLog.save(line);
+      } catch (e) {
+        // ... ignore failures
       }
-      TransactionLog.save(line);
     }
   }
 }
