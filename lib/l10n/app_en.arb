@@ -45,6 +45,8 @@
     "billTypeTooltip": "[Type] Bill, Income or Transfer",
     "brightnessTheme": "Brightness Theme",
     "btnAdd": "Add",
+    "btnCancel": "Cancel",
+    "btnConfirm": "Confirm",
     "btnMore": "More",
     "budget": "Budget Category",
     "budgetHeadline": "Budgets",
@@ -73,6 +75,8 @@
         }
     },
     "completeGoalTooltip": "Complete Goal",
+    "confirmHeader": "Confirm Action",
+    "confirmTooltip": "Are you sure? This action cannot be undone.",
     "conversion": "Conversion",
     "conversionMessage": "Taken in {currency}",
     "createAccountHeader": "Create new Account",

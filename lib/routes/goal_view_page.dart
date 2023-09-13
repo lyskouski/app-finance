@@ -11,6 +11,7 @@ import 'package:app_finance/_configs/theme_helper.dart';
 import 'package:app_finance/_classes/structure/navigation/app_route.dart';
 import 'package:app_finance/routes/abstract_page_state.dart';
 import 'package:app_finance/widgets/_generic/base_line_widget.dart';
+import 'package:app_finance/widgets/_wrappers/confirmation_wrapper.dart';
 import 'package:flutter/material.dart';
 
 class GoalViewPage extends StatefulWidget {
@@ -81,7 +82,10 @@ class GoalViewPageState extends AbstractPageState<GoalViewPage> {
               )
             : FloatingActionButton(
                 heroTag: 'goal_view_page_deactivate',
-                onPressed: () => FlowStateMachine.deactivate(nav, store: super.state, data: data),
+                onPressed: () => ConfirmationWrapper.show(
+                  context,
+                  () => FlowStateMachine.deactivate(nav, store: super.state, data: data),
+                ),
                 tooltip: AppLocale.labels.deleteGoalTooltip,
                 child: const Icon(Icons.delete),
               ),
