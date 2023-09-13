@@ -3,6 +3,7 @@
 
 import 'package:adaptive_breakpoints/adaptive_breakpoints.dart';
 import 'package:app_finance/_classes/herald/app_locale.dart';
+import 'package:app_finance/_classes/storage/app_preferences.dart';
 import 'package:app_finance/_classes/structure/navigation/app_menu.dart';
 import 'package:app_finance/_classes/storage/app_data.dart';
 import 'package:app_finance/_classes/controller/focus_controller.dart';
@@ -12,11 +13,21 @@ import 'package:app_finance/widgets/_generic/menu_widget.dart';
 import 'package:app_finance/widgets/_wrappers/row_widget.dart';
 import 'package:app_finance/widgets/_wrappers/text_wrapper.dart';
 import 'package:app_finance/widgets/_wrappers/toolbar_button_widget.dart';
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
+
+enum AppEvents {
+  zoomIn,
+  zoomOut,
+  zoomReset,
+}
 
 abstract class AbstractPageState<T extends StatefulWidget> extends State<T> {
   static const barHeight = 40.0;
+  double _scale = ThemeHelper.zoom;
+  bool _ctrlPressed = false;
   dynamic bar;
   late AppData state;
 
@@ -156,6 +167,48 @@ abstract class AbstractPageState<T extends StatefulWidget> extends State<T> {
     );
   }
 
+  void handleEvent(AppEvents event) {
+    switch (event) {
+      case AppEvents.zoomOut:
+        return onScaleUpdate(ScaleUpdateDetails(scale: 0.9));
+      case AppEvents.zoomIn:
+        return onScaleUpdate(ScaleUpdateDetails(scale: 1.1));
+      case AppEvents.zoomReset:
+        AppPreferences.clear(AppPreferences.prefZoom);
+        return setState(() => _scale = 1.0);
+    }
+  }
+
+  void onScaleUpdate(ScaleUpdateDetails details) {
+    double newScale = _scale * details.scale;
+    newScale = newScale.clamp(1.0, 2.0);
+    setState(() => _scale = newScale);
+    AppPreferences.set(AppPreferences.prefZoom, newScale.toString());
+  }
+
+  void onKeyPressed(RawKeyEvent event) {
+    if (event is RawKeyDownEvent) {
+      if (event.isControlPressed) {
+        if (event.logicalKey == LogicalKeyboardKey.minus) {
+          handleEvent(AppEvents.zoomOut);
+        } else if (event.logicalKey == LogicalKeyboardKey.equal) {
+          handleEvent(AppEvents.zoomIn);
+        } else if (event.logicalKey == LogicalKeyboardKey.digit0) {
+          handleEvent(AppEvents.zoomReset);
+        }
+      }
+    }
+    if (event.logicalKey == LogicalKeyboardKey.controlLeft || event.logicalKey == LogicalKeyboardKey.controlRight) {
+      setState(() => _ctrlPressed = event is RawKeyDownEvent);
+    }
+  }
+
+  void onPointerSignal(PointerSignalEvent event) {
+    if (_ctrlPressed && event is PointerScrollEvent) {
+      handleEvent(event.scrollDelta.dy > 0 ? AppEvents.zoomOut : AppEvents.zoomIn);
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     FocusController.init();
@@ -171,7 +224,34 @@ abstract class AbstractPageState<T extends StatefulWidget> extends State<T> {
           appBar: isBottom ? null : bar as AppBar,
           bottomNavigationBar: isBottom ? bar as BottomAppBar : null,
           drawer: buildDrawer(),
-          body: SafeArea(child: buildContent(context, constraints)),
+          body: SafeArea(
+            child: Listener(
+              onPointerSignal: onPointerSignal,
+              child: RawKeyboardListener(
+                focusNode: FocusNode()..requestFocus(),
+                onKey: onKeyPressed,
+                child: GestureDetector(
+                  onScaleUpdate: onScaleUpdate,
+                  child: Transform.translate(
+                    offset: Offset(
+                      (constraints.maxWidth - constraints.maxWidth / _scale) / 2,
+                      (constraints.maxHeight - constraints.maxHeight / _scale) / 2,
+                    ),
+                    child: Transform.scale(
+                      scale: _scale,
+                      child: Container(
+                        alignment: Alignment.topLeft,
+                        transformAlignment: Alignment.topLeft,
+                        width: constraints.maxWidth / _scale,
+                        height: constraints.maxHeight / _scale,
+                        child: buildContent(context, constraints),
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+            ),
+          ),
           floatingActionButtonLocation: isBottom ? FloatingActionButtonLocation.centerDocked : null,
           floatingActionButton: button,
         );
