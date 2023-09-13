@@ -49,6 +49,7 @@
   - Preserve last choice for Account, Budget, and Currency
   - Auto-scroll to the focused element on Form
   - Expand / Collapse sections on Main Page
+  - Swipe for a quick access to Edit and Delete actions
 
 ### Health Check
 
