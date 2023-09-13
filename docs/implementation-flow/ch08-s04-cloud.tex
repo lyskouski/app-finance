@@ -1,0 +1,39 @@
+% Copyright 2023 The terCAD team. All rights reserved.
+% Use of this content is governed by a CC BY-NC-ND 4.0 license that can be found in the LICENSE file.
+
+\subsection{Uploading to Cloud}
+\markboth{Distributing}{Uploading to Cloud}
+
+Previously, we've discussed a capability to publish \q{Web}-package by using GitHub Pages (\ref{deploy-web}), but 
+directly the same flow can be used to release our application on Cloud. A breaf example of Amazon Simple Storage 
+Service (AWS S3) usage:
+
+\begin{lstlisting}[language=yaml]
+name: Deploy to AWS S3
+
+on: 
+  push:
+    branches: [main]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@main
+
+    - name: Configure AWS Credentials
+      uses: aws-actions/configure-aws-credentials@v1
+      with:
+        aws-region: ${{ secrets.AWS_REGION }}
+        aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+      env:
+        AWS_S3_BUCKET: ${{ secrets.AWS_S3_BUCKET }}
+
+    - name: Compile
+      run: flutter build -v web --release --no-tree-shake-icons
+
+    - name: Deploy
+      run: aws s3 sync ./build/web s3://${{ secrets.AWS_S3_BUCKET }} --delete
+\end{lstlisting}
