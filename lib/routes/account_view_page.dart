@@ -60,16 +60,16 @@ class AccountViewPageState extends AbstractPageState<AccountViewPage> with Ticke
       margin: EdgeInsets.only(left: 2 * indent, right: 2 * indent),
       child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
         FloatingActionButton(
-          heroTag: 'account_view_page_deactivate',
-          onPressed: () => FlowStateMachine.deactivate(nav, store: super.state, uuid: widget.uuid),
-          tooltip: AppLocale.labels.deleteAccountTooltip,
-          child: const Icon(Icons.delete),
-        ),
-        FloatingActionButton(
           heroTag: 'account_view_page_edit',
           onPressed: () => nav.pushNamed(route),
           tooltip: AppLocale.labels.editAccountTooltip,
           child: const Icon(Icons.edit),
+        ),
+        FloatingActionButton(
+          heroTag: 'account_view_page_deactivate',
+          onPressed: () => FlowStateMachine.deactivate(nav, store: super.state, uuid: widget.uuid),
+          tooltip: AppLocale.labels.deleteAccountTooltip,
+          child: const Icon(Icons.delete),
         ),
       ]),
     );

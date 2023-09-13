@@ -53,16 +53,16 @@ class BudgetViewPageState extends AbstractPageState<BudgetViewPage> with TickerP
       margin: EdgeInsets.only(left: 2 * indent, right: 2 * indent),
       child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
         FloatingActionButton(
-          heroTag: 'budget_view_page_deactivate',
-          onPressed: () => FlowStateMachine.deactivate(nav, store: super.state, uuid: widget.uuid),
-          tooltip: AppLocale.labels.deleteBudgetTooltip,
-          child: const Icon(Icons.delete),
-        ),
-        FloatingActionButton(
           heroTag: 'budget_view_page_edit',
           onPressed: () => nav.pushNamed(route),
           tooltip: AppLocale.labels.editBudgetTooltip,
           child: const Icon(Icons.edit),
+        ),
+        FloatingActionButton(
+          heroTag: 'budget_view_page_deactivate',
+          onPressed: () => FlowStateMachine.deactivate(nav, store: super.state, uuid: widget.uuid),
+          tooltip: AppLocale.labels.deleteBudgetTooltip,
+          child: const Icon(Icons.delete),
         ),
       ]),
     );

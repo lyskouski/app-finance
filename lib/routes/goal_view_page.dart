@@ -66,6 +66,12 @@ class GoalViewPageState extends AbstractPageState<GoalViewPage> {
     return Container(
       margin: EdgeInsets.only(left: 2 * indent, right: 2 * indent),
       child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
+        FloatingActionButton(
+          heroTag: 'goal_view_page_edit',
+          onPressed: () => nav.pushNamed(route),
+          tooltip: AppLocale.labels.editGoalTooltip,
+          child: const Icon(Icons.edit),
+        ),
         data.progress == 1.0
             ? FloatingActionButton(
                 heroTag: 'goal_view_page_check',
@@ -79,12 +85,6 @@ class GoalViewPageState extends AbstractPageState<GoalViewPage> {
                 tooltip: AppLocale.labels.deleteGoalTooltip,
                 child: const Icon(Icons.delete),
               ),
-        FloatingActionButton(
-          heroTag: 'goal_view_page_edit',
-          onPressed: () => nav.pushNamed(route),
-          tooltip: AppLocale.labels.editGoalTooltip,
-          child: const Icon(Icons.edit),
-        ),
       ]),
     );
   }

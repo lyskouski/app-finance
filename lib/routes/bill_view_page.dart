@@ -42,16 +42,16 @@ class BillViewPageState extends AbstractPageState<BillViewPage> {
       margin: EdgeInsets.only(left: 2 * indent, right: 2 * indent),
       child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
         FloatingActionButton(
-          heroTag: 'bill_view_page_deactivate',
-          onPressed: () => FlowStateMachine.deactivate(nav, store: super.state, uuid: widget.uuid),
-          tooltip: AppLocale.labels.deleteBillTooltip,
-          child: const Icon(Icons.delete),
-        ),
-        FloatingActionButton(
           heroTag: 'bill_view_page_edit',
           onPressed: () => nav.pushNamed(route),
           tooltip: AppLocale.labels.editBillTooltip,
           child: const Icon(Icons.edit),
+        ),
+        FloatingActionButton(
+          heroTag: 'bill_view_page_deactivate',
+          onPressed: () => FlowStateMachine.deactivate(nav, store: super.state, uuid: widget.uuid),
+          tooltip: AppLocale.labels.deleteBillTooltip,
+          child: const Icon(Icons.delete),
         ),
       ]),
     );
