@@ -14,6 +14,7 @@ class AppPreferences {
   static const String prefExpand = 'expand';
   static const String prefPeer = 'p2p_host';
   static const String prefP2P = 'p2p_spot';
+  static const String prefZoom = 'zoom';
 
   static late SharedPreferences pref;
 
