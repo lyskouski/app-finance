@@ -10,6 +10,7 @@ import 'package:app_finance/_configs/theme_helper.dart';
 import 'package:app_finance/_classes/storage/app_preferences.dart';
 import 'package:app_finance/widgets/_generic/base_group_widget.dart';
 import 'package:app_finance/widgets/_generic/base_line_widget.dart';
+import 'package:app_finance/widgets/_generic/base_swipe_widget.dart';
 import 'package:app_finance/widgets/_generic/base_widget.dart';
 import 'package:currency_picker/currency_picker.dart';
 import 'package:flutter/material.dart';
@@ -100,16 +101,20 @@ class AccountWidget extends BaseWidget {
 
   Widget buildSingleListWidget(item, BuildContext context) {
     item = item.first;
-    return BaseLineWidget(
+    return BaseSwipeWidget(
+      routePath: AppRoute.accountEditRoute,
       uuid: item.uuid,
-      title: item.title,
-      description: item.description ?? '',
-      details: item.detailsFormatted,
-      progress: item.progress,
-      color: item.color ?? Colors.transparent,
-      hidden: item.hidden,
-      width: width,
-      route: routeList,
+      child: BaseLineWidget(
+        uuid: item.uuid,
+        title: item.title,
+        description: item.description ?? '',
+        details: item.detailsFormatted,
+        progress: item.progress,
+        color: item.color ?? Colors.transparent,
+        hidden: item.hidden,
+        width: width,
+        route: routeList,
+      ),
     );
   }
 }

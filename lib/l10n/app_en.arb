@@ -124,6 +124,7 @@
     "deleteBillTooltip": "Delete Bill",
     "deleteBudgetTooltip": "Deactivate Budget Category",
     "deleteGoalTooltip": "Delete Goal",
+    "deleteTooltip": "Delete",
     "deposit": "Deposit",
     "description": "Description",
     "descriptionTooltip": "Set Expense Details",
@@ -150,6 +151,7 @@
     "editBudgetTooltip": "Edit Budget Category",
     "editGoalHeader": "Edit Goal",
     "editGoalTooltip": "Update Goal",
+    "editTooltip": "Edit",
     "encryptionMode": "Data Encryption:",
     "error": "Error: {value}",
     "@error": {

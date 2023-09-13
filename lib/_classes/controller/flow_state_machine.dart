@@ -6,12 +6,12 @@ import 'package:app_finance/_classes/structure/interface_app_data.dart';
 import 'package:flutter/material.dart';
 
 class FlowStateMachine {
-  static void deactivate(NavigatorState nav, {required AppData store, String? uuid, InterfaceAppData? data}) {
+  static void deactivate(NavigatorState? nav, {required AppData store, String? uuid, InterfaceAppData? data}) {
     assert(uuid != null || data != null);
     final obj = data ?? store.getByUuid(uuid!);
     obj.deactivate();
     store.update(obj.uuid, obj);
     store.restate();
-    nav.pop();
+    nav?.pop();
   }
 }

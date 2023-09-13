@@ -2,13 +2,15 @@
 // Use of this source code is governed by a CC BY-NC-ND 4.0 license that can be found in the LICENSE file.
 
 import 'package:app_finance/_classes/storage/app_preferences.dart';
+import 'package:app_finance/_classes/structure/navigation/app_menu.dart';
 import 'package:app_finance/widgets/_generic/base_header_widget.dart';
 import 'package:app_finance/widgets/_generic/base_line_widget.dart';
 import 'package:app_finance/widgets/_generic/base_list_infinite_widget.dart';
 import 'package:app_finance/widgets/_generic/base_list_limited_widget.dart';
+import 'package:app_finance/widgets/_generic/base_swipe_widget.dart';
 import 'package:flutter/material.dart';
 
-class BaseWidget extends StatefulWidget {
+class BaseWidget extends StatelessWidget {
   final EdgeInsetsGeometry margin;
   final String title;
   final double width;
@@ -37,48 +39,47 @@ class BaseWidget extends StatefulWidget {
   }) : super(key: key);
 
   Widget buildListWidget(item, BuildContext context) {
-    return BaseLineWidget(
-      uuid: item.uuid ?? '',
-      title: item.title,
-      description: item.description,
-      details: item.detailsFormatted,
-      progress: item.progress,
-      color: item.color ?? Colors.transparent,
-      hidden: item.hidden,
-      width: width,
-      route: routeList,
+    return BaseSwipeWidget(
+      routePath: AppMenu.viewRoute2Edit(routeList),
+      uuid: item.uuid,
+      child: BaseLineWidget(
+        uuid: item.uuid ?? '',
+        title: item.title,
+        description: item.description,
+        details: item.detailsFormatted,
+        progress: item.progress,
+        color: item.color ?? Colors.transparent,
+        hidden: item.hidden,
+        width: width,
+        route: routeList,
+      ),
     );
   }
 
-  @override
-  BaseWidgetState createState() => BaseWidgetState();
-}
-
-class BaseWidgetState extends State<BaseWidget> {
   void _expand() {
-    String outcome = widget.toExpand == widget.title ? '' : widget.title;
+    String outcome = toExpand == title ? '' : title;
     AppPreferences.set(AppPreferences.prefExpand, outcome);
-    if (widget.callback != null) {
-      widget.callback!(outcome);
+    if (callback != null) {
+      callback!(outcome);
     }
   }
 
   @override
   Widget build(context) {
-    bool toExpand = !widget.hasExpand || (widget.toExpand ?? '') == '' || widget.toExpand == widget.title;
-    return toExpand ? buildFull(context) : buildCollapsed(context);
+    bool isExpanded = !hasExpand || (toExpand ?? '') == '' || toExpand == title;
+    return isExpanded ? buildFull(context) : buildCollapsed(context);
   }
 
   Widget buildCollapsed(context) {
     return Container(
-      margin: widget.margin,
+      margin: margin,
       child: BaseHeaderWidget(
-        route: widget.route,
-        width: widget.width,
-        state: widget.state,
-        title: widget.title,
-        tooltip: widget.tooltip,
-        hasExpand: widget.hasExpand,
+        route: route,
+        width: width,
+        state: state,
+        title: title,
+        tooltip: tooltip,
+        hasExpand: hasExpand,
         toExpand: true,
         expand: _expand,
       ),
@@ -88,34 +89,34 @@ class BaseWidgetState extends State<BaseWidget> {
   Widget buildFull(context) {
     return Expanded(
       child: Container(
-        margin: widget.margin,
+        margin: margin,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             BaseHeaderWidget(
-              route: widget.route,
-              width: widget.width,
-              state: widget.state,
-              title: widget.title,
-              tooltip: widget.tooltip,
-              hasExpand: widget.hasExpand,
-              toExpand: (widget.toExpand ?? '') == '' || widget.toExpand != widget.title,
+              route: route,
+              width: width,
+              state: state,
+              title: title,
+              tooltip: tooltip,
+              hasExpand: hasExpand,
+              toExpand: (toExpand ?? '') == '' || toExpand != title,
               expand: _expand,
             ),
             Expanded(
-              child: widget.limit != null
+              child: limit != null
                   ? BaseListLimitedWidget(
-                      route: widget.route,
-                      state: widget.state.list,
-                      limit: widget.limit,
-                      routeList: widget.routeList,
-                      width: widget.width,
-                      buildListWidget: widget.buildListWidget,
+                      route: route,
+                      state: state.list,
+                      limit: limit,
+                      routeList: routeList,
+                      width: width,
+                      buildListWidget: buildListWidget,
                     )
                   : BaseListInfiniteWidget(
-                      state: widget.state.list,
-                      width: widget.width,
-                      buildListWidget: widget.buildListWidget,
+                      state: state.list,
+                      width: width,
+                      buildListWidget: buildListWidget,
                     ),
             ),
           ],
