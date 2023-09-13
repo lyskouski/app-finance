@@ -69,7 +69,7 @@ class AccountEditPageState extends AccountAddPageState<AccountEditPage> {
           hidden: false,
           icon: icon,
           closedAt: validTillDate,
-          createdAt: balanceUpdateDate,
+          createdAt: DateTime.now(),
         ));
   }
 
