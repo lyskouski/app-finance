@@ -667,6 +667,22 @@ And it has to be created \q{ic\_launcher.png} and \q{ic\_launcher\_round.png} ic
 mipmap-mdpi, ...) to support less than Android SDK 26 versions.
 
 
+\subsubsection{Linux: icons}
+
+Before the line \q{gtk_widget_show(GTK_WIDGET(window));} add the next:
+
+\begin{lstlisting}
+// ./linux/my_application.cc
+if (g_file_test("assets", G_FILE_TEST_IS_DIR)) {
+  // For debug mode
+  gtk_window_set_icon_from_file(window, "assets/icon.png", NULL); 
+} else {
+  // For release mode
+  gtk_window_set_icon_from_file(window, "data/flutter_assets/assets/icon.png", NULL);
+}
+\end{lstlisting}
+
+
 \subsubsection{Adding Multiple Providers}
 
 In case of being aligned with SOLID principles, it would be better to preserve our classes small with a single 
