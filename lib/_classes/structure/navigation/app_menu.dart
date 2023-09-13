@@ -24,6 +24,8 @@ class AppMenu {
     }
   }
 
+  static String viewRoute2Edit(String route) => '$route/edit';
+
   static String search(String route, String title) {
     return '${route.replaceAll('uuid:', 'search:')}$title';
   }

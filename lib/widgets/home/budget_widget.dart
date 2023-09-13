@@ -5,6 +5,7 @@ import 'package:app_finance/_classes/structure/currency/exchange.dart';
 import 'package:app_finance/_classes/structure/navigation/app_route.dart';
 import 'package:app_finance/_classes/structure/budget_app_data.dart';
 import 'package:app_finance/_configs/theme_helper.dart';
+import 'package:app_finance/widgets/_generic/base_swipe_widget.dart';
 import 'package:app_finance/widgets/home/account_widget.dart';
 import 'package:app_finance/widgets/_generic/base_group_widget.dart';
 import 'package:app_finance/widgets/_generic/base_line_widget.dart';
@@ -61,16 +62,20 @@ class BudgetWidget extends AccountWidget {
   @override
   Widget buildSingleListWidget(item, BuildContext context) {
     item = item.first;
-    return BaseLineWidget(
+    return BaseSwipeWidget(
+      routePath: AppRoute.budgetEditRoute,
       uuid: item.uuid,
-      title: item.title,
-      description: item.description ?? '',
-      details: item.detailsFormatted,
-      progress: item.progressLeft,
-      color: item.color ?? Colors.transparent,
-      hidden: item.hidden,
-      width: width,
-      route: routeList,
+      child: BaseLineWidget(
+        uuid: item.uuid,
+        title: item.title,
+        description: item.description ?? '',
+        details: item.detailsFormatted,
+        progress: item.progressLeft,
+        color: item.color ?? Colors.transparent,
+        hidden: item.hidden,
+        width: width,
+        route: routeList,
+      ),
     );
   }
 }
