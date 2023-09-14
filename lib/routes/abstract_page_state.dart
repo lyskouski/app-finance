@@ -3,7 +3,7 @@
 
 import 'package:adaptive_breakpoints/adaptive_breakpoints.dart';
 import 'package:app_finance/_classes/herald/app_locale.dart';
-import 'package:app_finance/_classes/storage/app_preferences.dart';
+import 'package:app_finance/_classes/herald/app_zoom.dart';
 import 'package:app_finance/_classes/structure/navigation/app_menu.dart';
 import 'package:app_finance/_classes/storage/app_data.dart';
 import 'package:app_finance/_classes/controller/focus_controller.dart';
@@ -26,10 +26,10 @@ enum AppEvents {
 
 abstract class AbstractPageState<T extends StatefulWidget> extends State<T> {
   static const barHeight = 40.0;
-  double _scale = ThemeHelper.zoom;
   bool _ctrlPressed = false;
   dynamic bar;
   late AppData state;
+  late AppZoom zoom;
 
   int selectedMenu = 0;
 
@@ -174,16 +174,14 @@ abstract class AbstractPageState<T extends StatefulWidget> extends State<T> {
       case AppEvents.zoomIn:
         return onScaleUpdate(ScaleUpdateDetails(scale: 1.1));
       case AppEvents.zoomReset:
-        AppPreferences.clear(AppPreferences.prefZoom);
-        return setState(() => _scale = 1.0);
+        zoom.set(1.0);
+        break;
     }
   }
 
   void onScaleUpdate(ScaleUpdateDetails details) {
-    double newScale = _scale * details.scale;
-    newScale = newScale.clamp(1.0, 2.0);
-    setState(() => _scale = newScale);
-    AppPreferences.set(AppPreferences.prefZoom, newScale.toString());
+    const step = 0.1;
+    zoom.set(zoom.value + (details.scale > 1 ? step : -step));
   }
 
   void onKeyPressed(RawKeyEvent event) {
@@ -212,6 +210,8 @@ abstract class AbstractPageState<T extends StatefulWidget> extends State<T> {
   @override
   Widget build(BuildContext context) {
     FocusController.init();
+    zoom = Provider.of<AppZoom>(context, listen: false);
+    final scale = context.watch<AppZoom>().value;
     return Consumer<AppData>(builder: (context, appState, _) {
       state = appState;
       return LayoutBuilder(builder: (context, constraints) {
@@ -220,6 +220,8 @@ abstract class AbstractPageState<T extends StatefulWidget> extends State<T> {
         if (isBottom && bar is! BottomAppBar || bar is! AppBar) {
           bar = isBottom ? buildBottomBar(context, constraints) : buildBar(context);
         }
+        final dx = (constraints.maxWidth - constraints.maxWidth / scale) / 2;
+        final dy = (constraints.maxHeight - constraints.maxHeight / scale) / 2;
         return Scaffold(
           appBar: isBottom ? null : bar as AppBar,
           bottomNavigationBar: isBottom ? bar as BottomAppBar : null,
@@ -232,18 +234,16 @@ abstract class AbstractPageState<T extends StatefulWidget> extends State<T> {
                 onKey: onKeyPressed,
                 child: GestureDetector(
                   onScaleUpdate: onScaleUpdate,
-                  child: Transform.translate(
-                    offset: Offset(
-                      (constraints.maxWidth - constraints.maxWidth / _scale) / 2,
-                      (constraints.maxHeight - constraints.maxHeight / _scale) / 2,
-                    ),
-                    child: Transform.scale(
-                      scale: _scale,
-                      child: Container(
-                        alignment: Alignment.topLeft,
-                        transformAlignment: Alignment.topLeft,
-                        width: constraints.maxWidth / _scale,
-                        height: constraints.maxHeight / _scale,
+                  child: OverflowBox(
+                    alignment: Alignment.topLeft,
+                    minWidth: constraints.maxWidth / scale,
+                    maxWidth: constraints.maxWidth / scale,
+                    minHeight: constraints.maxHeight / scale,
+                    maxHeight: constraints.maxHeight / scale,
+                    child: Transform.translate(
+                      offset: Offset(dx, dy),
+                      child: Transform.scale(
+                        scale: scale,
                         child: buildContent(context, constraints),
                       ),
                     ),
