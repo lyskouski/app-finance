@@ -4,6 +4,7 @@
 import 'dart:io';
 
 import 'package:app_finance/_classes/herald/app_sync.dart';
+import 'package:app_finance/_classes/herald/app_zoom.dart';
 import 'package:app_finance/_classes/storage/app_data.dart';
 import 'package:app_finance/_classes/herald/app_locale.dart';
 import 'package:app_finance/_classes/herald/app_theme.dart';
@@ -118,6 +119,9 @@ class PumpMain {
         ),
         ChangeNotifierProvider<AppLocale>(
           create: (_) => AppLocale(AppLocale.fromCode('en')),
+        ),
+        ChangeNotifierProvider<AppZoom>(
+          create: (_) => AppZoom(),
         ),
       ],
       child: RepaintBoundary(

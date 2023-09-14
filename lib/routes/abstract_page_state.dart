@@ -3,7 +3,7 @@
 
 import 'package:adaptive_breakpoints/adaptive_breakpoints.dart';
 import 'package:app_finance/_classes/herald/app_locale.dart';
-import 'package:app_finance/_classes/storage/app_preferences.dart';
+import 'package:app_finance/_classes/herald/app_zoom.dart';
 import 'package:app_finance/_classes/structure/navigation/app_menu.dart';
 import 'package:app_finance/_classes/storage/app_data.dart';
 import 'package:app_finance/_classes/controller/focus_controller.dart';
@@ -29,6 +29,7 @@ abstract class AbstractPageState<T extends StatefulWidget> extends State<T> {
   bool _ctrlPressed = false;
   dynamic bar;
   late AppData state;
+  late AppZoom zoom;
 
   int selectedMenu = 0;
 
@@ -173,15 +174,14 @@ abstract class AbstractPageState<T extends StatefulWidget> extends State<T> {
       case AppEvents.zoomIn:
         return onScaleUpdate(ScaleUpdateDetails(scale: 1.1));
       case AppEvents.zoomReset:
-        AppPreferences.clear(AppPreferences.prefZoom).then((_) => setState(() {}));
+        zoom.set(1.0);
         break;
     }
   }
 
   void onScaleUpdate(ScaleUpdateDetails details) {
     const step = 0.1;
-    final newScale = ThemeHelper.zoom + (details.scale > 1 ? step : -step);
-    AppPreferences.set(AppPreferences.prefZoom, newScale.clamp(1.0, 2.0).toString()).then((_) => setState(() {}));
+    zoom.set(zoom.value + (details.scale > 1 ? step : -step));
   }
 
   void onKeyPressed(RawKeyEvent event) {
@@ -210,7 +210,8 @@ abstract class AbstractPageState<T extends StatefulWidget> extends State<T> {
   @override
   Widget build(BuildContext context) {
     FocusController.init();
-    final scale = ThemeHelper.zoom;
+    zoom = Provider.of<AppZoom>(context, listen: false);
+    final scale = context.watch<AppZoom>().value;
     return Consumer<AppData>(builder: (context, appState, _) {
       state = appState;
       return LayoutBuilder(builder: (context, constraints) {

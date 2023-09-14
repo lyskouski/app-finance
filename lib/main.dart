@@ -4,6 +4,7 @@
 import 'package:app_finance/_classes/herald/app_locale.dart';
 import 'package:app_finance/_classes/herald/app_sync.dart';
 import 'package:app_finance/_classes/herald/app_theme.dart';
+import 'package:app_finance/_classes/herald/app_zoom.dart';
 import 'package:app_finance/_classes/storage/app_preferences.dart';
 import 'package:app_finance/_configs/custom_text_theme.dart';
 import 'package:app_finance/_classes/storage/app_data.dart';
@@ -74,6 +75,9 @@ void main() async {
         ),
         ChangeNotifierProvider<AppLocale>(
           create: (_) => AppLocale(),
+        ),
+        ChangeNotifierProvider<AppZoom>(
+          create: (_) => AppZoom(),
         ),
       ],
       child: MyApp(platform: platform),

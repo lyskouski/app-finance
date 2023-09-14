@@ -306,5 +306,6 @@
     "username": "Username (Account)",
     "uuid": "Unique Transaction Identifier",
     "validTillDate": "Valid Till",
-    "webDav": "Web Distributed Authoring and Versioning (WebDav)"
+    "webDav": "Web Distributed Authoring and Versioning (WebDav)",
+    "zoomState": "Zoom In / Zoom Out"
 }

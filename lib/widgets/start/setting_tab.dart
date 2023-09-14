@@ -3,6 +3,7 @@
 
 import 'package:app_finance/_classes/herald/app_locale.dart';
 import 'package:app_finance/_classes/herald/app_theme.dart';
+import 'package:app_finance/_classes/herald/app_zoom.dart';
 import 'package:app_finance/_classes/structure/currency/currency_provider.dart';
 import 'package:app_finance/_classes/storage/app_preferences.dart';
 import 'package:app_finance/_configs/theme_helper.dart';
@@ -28,6 +29,7 @@ class SettingTab extends AbstractTab {
 
 class SettingTabState<T extends SettingTab> extends AbstractTabState<T> {
   late AppTheme theme;
+  late AppZoom zoom;
   Currency? currency;
   bool isEncrypted = false;
   bool hasEncrypted = false;
@@ -78,6 +80,7 @@ class SettingTabState<T extends SettingTab> extends AbstractTabState<T> {
   Widget buildContent(BuildContext context, BoxConstraints constraints) {
     String locale = Localizations.localeOf(context).toString();
     theme = Provider.of<AppTheme>(context, listen: false);
+    zoom = Provider.of<AppZoom>(context, listen: false);
     final TextTheme textTheme = Theme.of(context).textTheme;
     double indent = ThemeHelper.getIndent(2);
     if (currency == null) {
@@ -133,6 +136,20 @@ class SettingTabState<T extends SettingTab> extends AbstractTabState<T> {
             setState: saveTheme,
             indent: indent,
           ),
+          ThemeHelper.hIndent2x,
+          Text(
+            AppLocale.labels.zoomState,
+            style: textTheme.bodyLarge,
+          ),
+          Slider(
+            value: zoom.value,
+            onChanged: zoom.set,
+            min: 0.5,
+            max: 2.0,
+            divisions: 15,
+            label: '${zoom.value}',
+          ),
+          ThemeHelper.hIndent2x,
         ],
       ),
     );

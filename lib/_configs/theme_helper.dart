@@ -1,7 +1,7 @@
 // Copyright 2023 The terCAD team. All rights reserved.
 // Use of this source code is governed by a CC BY-NC-ND 4.0 license that can be found in the LICENSE file.
 
-import 'package:app_finance/_classes/storage/app_preferences.dart';
+import 'package:app_finance/_classes/herald/app_zoom.dart';
 import 'package:flutter/material.dart';
 
 class _Sizes {
@@ -23,15 +23,13 @@ class ThemeHelper {
   static const wIndent = SizedBox(width: _Sizes.normal);
   static const wIndent2x = SizedBox(width: _Sizes.double);
 
-  static double get zoom => double.tryParse(AppPreferences.get(AppPreferences.prefZoom) ?? '') ?? 1.0;
-
-  static double getIndent([double multiply = 1]) => _Sizes.normal / zoom * multiply;
+  static double getIndent([double multiply = 1]) => _Sizes.normal / AppZoom.state * multiply;
 
   static double getWidth(BuildContext context, [double multiply = 4]) =>
-      MediaQuery.sizeOf(context).width / zoom - getIndent() * multiply;
+      MediaQuery.sizeOf(context).width / AppZoom.state - getIndent() * multiply;
 
   static double getHeight(BuildContext context, [double multiply = 2]) =>
-      MediaQuery.sizeOf(context).height / zoom - getIndent() * multiply;
+      MediaQuery.sizeOf(context).height / AppZoom.state - getIndent() * multiply;
 
   static bool isKeyboardVisible(BuildContext context) => MediaQuery.of(context).viewInsets.bottom > 0;
 
