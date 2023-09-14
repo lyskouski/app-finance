@@ -10,26 +10,17 @@ import 'package:app_finance/_classes/controller/focus_controller.dart';
 import 'package:app_finance/_configs/responsive_matrix.dart';
 import 'package:app_finance/_configs/theme_helper.dart';
 import 'package:app_finance/widgets/_generic/menu_widget.dart';
+import 'package:app_finance/widgets/_wrappers/input_controller_wrapper.dart';
 import 'package:app_finance/widgets/_wrappers/row_widget.dart';
 import 'package:app_finance/widgets/_wrappers/text_wrapper.dart';
 import 'package:app_finance/widgets/_wrappers/toolbar_button_widget.dart';
-import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
-
-enum AppEvents {
-  zoomIn,
-  zoomOut,
-  zoomReset,
-}
 
 abstract class AbstractPageState<T extends StatefulWidget> extends State<T> {
   static const barHeight = 40.0;
-  bool _ctrlPressed = false;
   dynamic bar;
   late AppData state;
-  late AppZoom zoom;
 
   int selectedMenu = 0;
 
@@ -167,50 +158,9 @@ abstract class AbstractPageState<T extends StatefulWidget> extends State<T> {
     );
   }
 
-  void handleEvent(AppEvents event) {
-    switch (event) {
-      case AppEvents.zoomOut:
-        return onScaleUpdate(ScaleUpdateDetails(scale: 0.9));
-      case AppEvents.zoomIn:
-        return onScaleUpdate(ScaleUpdateDetails(scale: 1.1));
-      case AppEvents.zoomReset:
-        zoom.set(1.0);
-        break;
-    }
-  }
-
-  void onScaleUpdate(ScaleUpdateDetails details) {
-    const step = 0.1;
-    zoom.set(zoom.value + (details.scale > 1 ? step : -step));
-  }
-
-  void onKeyPressed(RawKeyEvent event) {
-    if (event is RawKeyDownEvent) {
-      if (event.isControlPressed) {
-        if (event.logicalKey == LogicalKeyboardKey.minus) {
-          handleEvent(AppEvents.zoomOut);
-        } else if (event.logicalKey == LogicalKeyboardKey.equal) {
-          handleEvent(AppEvents.zoomIn);
-        } else if (event.logicalKey == LogicalKeyboardKey.digit0) {
-          handleEvent(AppEvents.zoomReset);
-        }
-      }
-    }
-    if (event.logicalKey == LogicalKeyboardKey.controlLeft || event.logicalKey == LogicalKeyboardKey.controlRight) {
-      setState(() => _ctrlPressed = event is RawKeyDownEvent);
-    }
-  }
-
-  void onPointerSignal(PointerSignalEvent event) {
-    if (_ctrlPressed && event is PointerScrollEvent) {
-      handleEvent(event.scrollDelta.dy > 0 ? AppEvents.zoomOut : AppEvents.zoomIn);
-    }
-  }
-
   @override
   Widget build(BuildContext context) {
     FocusController.init();
-    zoom = Provider.of<AppZoom>(context, listen: false);
     final scale = context.watch<AppZoom>().value;
     return Consumer<AppData>(builder: (context, appState, _) {
       state = appState;
@@ -227,26 +177,18 @@ abstract class AbstractPageState<T extends StatefulWidget> extends State<T> {
           bottomNavigationBar: isBottom ? bar as BottomAppBar : null,
           drawer: buildDrawer(),
           body: SafeArea(
-            child: Listener(
-              onPointerSignal: onPointerSignal,
-              child: RawKeyboardListener(
-                focusNode: FocusNode()..requestFocus(),
-                onKey: onKeyPressed,
-                child: GestureDetector(
-                  onScaleUpdate: onScaleUpdate,
-                  child: OverflowBox(
-                    alignment: Alignment.topLeft,
-                    minWidth: constraints.maxWidth / scale,
-                    maxWidth: constraints.maxWidth / scale,
-                    minHeight: constraints.maxHeight / scale,
-                    maxHeight: constraints.maxHeight / scale,
-                    child: Transform.translate(
-                      offset: Offset(dx, dy),
-                      child: Transform.scale(
-                        scale: scale,
-                        child: buildContent(context, constraints),
-                      ),
-                    ),
+            child: InputControllerWrapper(
+              child: OverflowBox(
+                alignment: Alignment.topLeft,
+                minWidth: constraints.maxWidth / scale,
+                maxWidth: constraints.maxWidth / scale,
+                minHeight: constraints.maxHeight / scale,
+                maxHeight: constraints.maxHeight / scale,
+                child: Transform.translate(
+                  offset: Offset(dx, dy),
+                  child: Transform.scale(
+                    scale: scale,
+                    child: buildContent(context, constraints),
                   ),
                 ),
               ),
