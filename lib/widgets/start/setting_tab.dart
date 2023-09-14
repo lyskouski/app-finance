@@ -141,13 +141,16 @@ class SettingTabState<T extends SettingTab> extends AbstractTabState<T> {
             AppLocale.labels.zoomState,
             style: textTheme.bodyLarge,
           ),
-          Slider(
-            value: zoom.value,
-            onChanged: zoom.set,
-            min: 0.5,
-            max: 2.0,
-            divisions: 15,
-            label: '${zoom.value}',
+          Container(
+            color: Theme.of(context).colorScheme.inversePrimary.withOpacity(0.3),
+            child: Slider(
+              value: zoom.value,
+              onChanged: zoom.set,
+              min: AppZoom.min,
+              max: AppZoom.max,
+              divisions: 15,
+              label: '${zoom.value}',
+            ),
           ),
           ThemeHelper.hIndent2x,
         ],

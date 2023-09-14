@@ -50,8 +50,8 @@
   - Auto-scroll to the focused element on Form
   - Expand / Collapse sections on Main Page
   - Swipe for a quick access to Edit and Delete actions
-  - Zoom in (up to 200%) by `Ctrl`+`+`(in), `-`(out), `0`(reset), or `Ctrl`+mouse wheel, or by two-finger touch 
-    pinch / spread operation
+  - Zoom in/out (from 60% up to 200%) by `Ctrl`+`+`(in), `-`(out), `0`(reset), or `Ctrl`+mouse wheel, or 
+    by two-finger touch pinch / spread operation
 
 ### Health Check
 

@@ -6,11 +6,13 @@ import 'package:flutter/material.dart';
 
 class AppZoom extends ValueNotifier<double> {
   static get state => double.tryParse(AppPreferences.get(AppPreferences.prefZoom) ?? '') ?? 1.0;
+  static const double max = 2.0;
+  static const double min = 0.6;
 
   AppZoom() : super(state);
 
   Future<void> set(double newValue) async {
-    newValue = newValue.clamp(1.0, 2.0);
+    newValue = newValue.clamp(min, max);
     if (newValue != value) {
       value = newValue;
       await AppPreferences.set(AppPreferences.prefZoom, value.toString());

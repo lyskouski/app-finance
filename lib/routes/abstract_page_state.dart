@@ -220,6 +220,8 @@ abstract class AbstractPageState<T extends StatefulWidget> extends State<T> {
         if (isBottom && bar is! BottomAppBar || bar is! AppBar) {
           bar = isBottom ? buildBottomBar(context, constraints) : buildBar(context);
         }
+        final dx = (constraints.maxWidth - constraints.maxWidth / scale) / 2;
+        final dy = (constraints.maxHeight - constraints.maxHeight / scale) / 2;
         return Scaffold(
           appBar: isBottom ? null : bar as AppBar,
           bottomNavigationBar: isBottom ? bar as BottomAppBar : null,
@@ -232,18 +234,16 @@ abstract class AbstractPageState<T extends StatefulWidget> extends State<T> {
                 onKey: onKeyPressed,
                 child: GestureDetector(
                   onScaleUpdate: onScaleUpdate,
-                  child: Transform.translate(
-                    offset: Offset(
-                      (constraints.maxWidth - constraints.maxWidth / scale) / 2,
-                      (constraints.maxHeight - constraints.maxHeight / scale) / 2,
-                    ),
-                    child: Transform.scale(
-                      scale: scale,
-                      child: Container(
-                        alignment: Alignment.topLeft,
-                        transformAlignment: Alignment.topLeft,
-                        width: constraints.maxWidth / scale,
-                        height: constraints.maxHeight / scale,
+                  child: OverflowBox(
+                    alignment: Alignment.topLeft,
+                    minWidth: constraints.maxWidth / scale,
+                    maxWidth: constraints.maxWidth / scale,
+                    minHeight: constraints.maxHeight / scale,
+                    maxHeight: constraints.maxHeight / scale,
+                    child: Transform.translate(
+                      offset: Offset(dx, dy),
+                      child: Transform.scale(
+                        scale: scale,
                         child: buildContent(context, constraints),
                       ),
                     ),
