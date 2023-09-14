@@ -26,7 +26,6 @@ enum AppEvents {
 
 abstract class AbstractPageState<T extends StatefulWidget> extends State<T> {
   static const barHeight = 40.0;
-  double _scale = ThemeHelper.zoom;
   bool _ctrlPressed = false;
   dynamic bar;
   late AppData state;
@@ -174,16 +173,15 @@ abstract class AbstractPageState<T extends StatefulWidget> extends State<T> {
       case AppEvents.zoomIn:
         return onScaleUpdate(ScaleUpdateDetails(scale: 1.1));
       case AppEvents.zoomReset:
-        AppPreferences.clear(AppPreferences.prefZoom);
-        return setState(() => _scale = 1.0);
+        AppPreferences.clear(AppPreferences.prefZoom).then((_) => setState(() {}));
+        break;
     }
   }
 
   void onScaleUpdate(ScaleUpdateDetails details) {
-    double newScale = _scale * details.scale;
-    newScale = newScale.clamp(1.0, 2.0);
-    setState(() => _scale = newScale);
-    AppPreferences.set(AppPreferences.prefZoom, newScale.toString());
+    const step = 0.1;
+    final newScale = ThemeHelper.zoom + (details.scale > 1 ? step : -step);
+    AppPreferences.set(AppPreferences.prefZoom, newScale.clamp(1.0, 2.0).toString()).then((_) => setState(() {}));
   }
 
   void onKeyPressed(RawKeyEvent event) {
@@ -212,6 +210,7 @@ abstract class AbstractPageState<T extends StatefulWidget> extends State<T> {
   @override
   Widget build(BuildContext context) {
     FocusController.init();
+    final scale = ThemeHelper.zoom;
     return Consumer<AppData>(builder: (context, appState, _) {
       state = appState;
       return LayoutBuilder(builder: (context, constraints) {
@@ -234,16 +233,16 @@ abstract class AbstractPageState<T extends StatefulWidget> extends State<T> {
                   onScaleUpdate: onScaleUpdate,
                   child: Transform.translate(
                     offset: Offset(
-                      (constraints.maxWidth - constraints.maxWidth / _scale) / 2,
-                      (constraints.maxHeight - constraints.maxHeight / _scale) / 2,
+                      (constraints.maxWidth - constraints.maxWidth / scale) / 2,
+                      (constraints.maxHeight - constraints.maxHeight / scale) / 2,
                     ),
                     child: Transform.scale(
-                      scale: _scale,
+                      scale: scale,
                       child: Container(
                         alignment: Alignment.topLeft,
                         transformAlignment: Alignment.topLeft,
-                        width: constraints.maxWidth / _scale,
-                        height: constraints.maxHeight / _scale,
+                        width: constraints.maxWidth / scale,
+                        height: constraints.maxHeight / scale,
                         child: buildContent(context, constraints),
                       ),
                     ),
