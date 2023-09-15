@@ -9,11 +9,11 @@ import 'package:app_finance/_classes/storage/app_data.dart';
 import 'package:app_finance/_classes/controller/focus_controller.dart';
 import 'package:app_finance/_configs/responsive_matrix.dart';
 import 'package:app_finance/_configs/theme_helper.dart';
-import 'package:app_finance/widgets/_generic/menu_widget.dart';
-import 'package:app_finance/widgets/_wrappers/input_controller_wrapper.dart';
-import 'package:app_finance/widgets/_wrappers/row_widget.dart';
-import 'package:app_finance/widgets/_wrappers/text_wrapper.dart';
-import 'package:app_finance/widgets/_wrappers/toolbar_button_widget.dart';
+import 'package:app_finance/widgets/generic/menu_widget.dart';
+import 'package:app_finance/widgets/wrapper/input_controller_wrapper.dart';
+import 'package:app_finance/widgets/wrapper/row_widget.dart';
+import 'package:app_finance/widgets/wrapper/text_wrapper.dart';
+import 'package:app_finance/widgets/wrapper/toolbar_button_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 

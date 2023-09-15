@@ -12,7 +12,7 @@ import 'package:app_finance/_classes/structure/currency/currency_provider.dart';
 import 'package:app_finance/_classes/structure/interface_app_data.dart';
 import 'package:app_finance/_classes/structure/invoice_app_data.dart';
 import 'package:app_finance/_configs/account_type.dart';
-import 'package:app_finance/widgets/_forms/list_selector.dart';
+import 'package:app_finance/widgets/form/list_selector.dart';
 import 'package:currency_picker/currency_picker.dart';
 import 'package:intl/intl.dart';
 
