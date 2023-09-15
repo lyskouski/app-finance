@@ -17,7 +17,7 @@ class CurrencyExchangeInput extends StatefulWidget {
   final List<Currency?> source;
   final double width;
   final double indent;
-  final double? targetAmount;
+  final TextEditingController targetController;
   final AppData state;
   final List<List<String?>> conversion = [];
 
@@ -27,7 +27,7 @@ class CurrencyExchangeInput extends StatefulWidget {
     required this.width,
     required this.indent,
     required this.target,
-    required this.targetAmount,
+    required this.targetController,
     required this.source,
   }) {
     conversion.add([target?.code, source.first?.code]);
@@ -50,14 +50,9 @@ class CurrencyExchangeInputState extends State<CurrencyExchangeInput> {
 
   @override
   initState() {
+    widget.targetController.addListener(() => setState(() {}));
     super.initState();
     recalculate();
-  }
-
-  @override
-  void dispose() {
-    delay.cancel();
-    super.dispose();
   }
 
   String getKey(int index) {
@@ -66,8 +61,9 @@ class CurrencyExchangeInputState extends State<CurrencyExchangeInput> {
 
   double? getAmount(index) {
     double? value = rate[index]?.details;
-    if (value != null && widget.targetAmount != null) {
-      value *= (index > 0 ? amount[index - 1] : widget.targetAmount)!;
+    double? input = double.tryParse(widget.targetController.text);
+    if (value != null && input != null) {
+      value *= (index > 0 ? amount[index - 1] : input)!;
     } else {
       value = null;
     }
@@ -86,7 +82,7 @@ class CurrencyExchangeInputState extends State<CurrencyExchangeInput> {
   }
 
   void recalculate() {
-    targetAmount = widget.targetAmount;
+    targetAmount = double.tryParse(widget.targetController.text);
     conversion = widget.conversion;
     for (int idx = 0; idx < widget.source.length; idx++) {
       final String uuid = getKey(idx);
@@ -104,7 +100,7 @@ class CurrencyExchangeInputState extends State<CurrencyExchangeInput> {
   }
 
   void onUpdate(String? newValue, int index, bool isTotal) {
-    if (widget.targetAmount == null && isTotal || controllers[index]![isTotal ? 0 : 1].text == newValue) {
+    if (widget.targetController.text.isEmpty && isTotal || controllers[index]![isTotal ? 0 : 1].text == newValue) {
       return;
     }
     delay.run(() {
@@ -113,8 +109,7 @@ class CurrencyExchangeInputState extends State<CurrencyExchangeInput> {
           final value = double.tryParse(newValue ?? '') ?? 0.0;
           if (isTotal) {
             amount[index] = value;
-            rate[index]!.details =
-                value / (index > 0 && amount[index - 1]! > 0 ? amount[index - 1] : widget.targetAmount)!;
+            rate[index]!.details = value / (index > 0 && amount[index - 1]! > 0 ? amount[index - 1] : targetAmount)!;
             controllers[index]![0].text = rate[index]!.details.toString();
           } else {
             rate[index]!.details = value;
@@ -136,7 +131,7 @@ class CurrencyExchangeInputState extends State<CurrencyExchangeInput> {
       WidgetsBinding.instance.addPostFrameCallback((_) => setState(restate));
       return ThemeHelper.emptyBox;
     }
-    if (targetAmount != widget.targetAmount) {
+    if (targetAmount != double.tryParse(widget.targetController.text)) {
       WidgetsBinding.instance.addPostFrameCallback((_) => setState(recalculate));
     }
     final TextTheme textTheme = Theme.of(context).textTheme;

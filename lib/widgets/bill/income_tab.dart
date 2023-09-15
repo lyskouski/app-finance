@@ -49,7 +49,6 @@ class IncomeTabState extends AbstractPageState<IncomeTab> {
   late TextEditingController amount;
   late TextEditingController description;
   late DateTime createdAt;
-  double? amountValue;
   bool hasErrors = false;
 
   @override
@@ -62,7 +61,6 @@ class IncomeTabState extends AbstractPageState<IncomeTab> {
     createdAt = widget.createdAt ?? DateTime.now();
     amount = TextEditingController(text: widget.amount != null ? widget.amount.toString() : '');
     description = TextEditingController(text: widget.description);
-    amountValue = widget.amount;
     super.initState();
   }
 
@@ -171,7 +169,6 @@ class IncomeTabState extends AbstractPageState<IncomeTab> {
                     controller: amount,
                     type: const TextInputType.numberWithOptions(decimal: true),
                     tooltip: AppLocale.labels.billSetTooltip,
-                    setState: (v) => setState(() => amountValue = double.tryParse(v)),
                     formatter: [
                       SimpleInput.filterDouble,
                     ],
@@ -185,7 +182,7 @@ class IncomeTabState extends AbstractPageState<IncomeTab> {
               indent: indent,
               target: currency,
               state: widget.state,
-              targetAmount: amountValue,
+              targetController: amount,
               source: <Currency?>[
                 account != null ? widget.state.getByUuid(account!).currency : null,
               ],
