@@ -18,7 +18,7 @@ abstract class AbstractInput extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    FocusController.recordPosition(context);
+    FocusController.recordPosition(context, focusOrder);
     return buildContent(context);
   }
 

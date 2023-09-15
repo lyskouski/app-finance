@@ -33,7 +33,7 @@ abstract class AbstractSelectorState<T extends AbstractSelector> extends State<T
   @override
   Widget build(BuildContext context) {
     isFocused = FocusController.isFocused(widget.focusOrder, widget.value);
-    FocusController.recordPosition(context);
+    FocusController.recordPosition(context, widget.focusOrder);
     if (!widget.focus.hasFocus && isFocused && widget.value == null) {
       delay.run(() => WidgetsBinding.instance.addPostFrameCallback((_) {
             if (mounted && widget.value == null && !wasOpened) {
