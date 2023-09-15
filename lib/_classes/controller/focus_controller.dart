@@ -12,14 +12,14 @@ class FocusController {
   static int _idx = DEFAULT;
   static int focus = DEFAULT;
   static final Map<Type, ScrollController?> _controller = {};
-  static List<double> _shift = [];
+  static final Map<int, double> _shift = {};
   static Type? _activeClass;
   static final DelayedCall _delay = DelayedCall(600);
 
   static void init() {
     focus = DEFAULT;
     values = values.map((e) => null).cast<dynamic>().toList();
-    _shift = [];
+    _shift.clear();
     _idx = DEFAULT;
   }
 
@@ -38,10 +38,10 @@ class FocusController {
     return _controller[_activeClass]?.hasClients ?? false;
   }
 
-  static void recordPosition(BuildContext context) {
-    RenderObject? firstNode = context.findRenderObject();
-    if (firstNode is RenderBox && _isControllerActive()) {
-      _shift.add(_controller[_activeClass]!.offset + firstNode.localToGlobal(Offset.zero).dy);
+  static void recordPosition(BuildContext context, int position) {
+    RenderObject? obj = context.findRenderObject();
+    if (obj is RenderBox && _isControllerActive()) {
+      _shift[position] = _controller[_activeClass]!.offset + obj.localToGlobal(Offset.zero).dy;
     }
   }
 
@@ -76,8 +76,9 @@ class FocusController {
       return;
     }
     if (_shift.isNotEmpty) {
+      double lowest = _shift.values.reduce((current, next) => current < next ? current : next);
       _controller[_activeClass]?.animateTo(
-        _shift[idx] - _shift.first,
+        _shift[idx]! - lowest,
         duration: const Duration(milliseconds: 300),
         curve: Curves.easeInOut,
       );
