@@ -4,7 +4,7 @@
 import 'package:app_finance/_classes/storage/app_preferences.dart';
 import 'package:app_finance/_classes/storage/app_data.dart';
 import 'package:app_finance/_configs/theme_helper.dart';
-import 'package:app_finance/routes/account_add_page.dart';
+import 'package:app_finance/pages/account_add_page.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 

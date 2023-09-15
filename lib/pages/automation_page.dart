@@ -3,7 +3,7 @@
 
 import 'package:app_finance/_classes/herald/app_locale.dart';
 import 'package:app_finance/_configs/theme_helper.dart';
-import 'package:app_finance/routes/abstract_page_state.dart';
+import 'package:app_finance/pages/abstract_page_state.dart';
 import 'package:app_finance/widgets/automation/sync_tab.dart';
 //import 'package:app_finance/widgets/automation/notification_tab.dart';
 import 'package:flutter/material.dart';

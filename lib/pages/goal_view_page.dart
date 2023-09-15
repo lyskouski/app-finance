@@ -9,7 +9,7 @@ import 'package:app_finance/_classes/structure/goal_app_data.dart';
 import 'package:app_finance/_classes/storage/app_preferences.dart';
 import 'package:app_finance/_configs/theme_helper.dart';
 import 'package:app_finance/_classes/structure/navigation/app_route.dart';
-import 'package:app_finance/routes/abstract_page_state.dart';
+import 'package:app_finance/pages/abstract_page_state.dart';
 import 'package:app_finance/widgets/_generic/base_line_widget.dart';
 import 'package:app_finance/widgets/_wrappers/confirmation_wrapper.dart';
 import 'package:flutter/material.dart';

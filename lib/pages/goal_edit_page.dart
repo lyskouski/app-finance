@@ -3,7 +3,7 @@
 
 import 'package:app_finance/_classes/herald/app_locale.dart';
 import 'package:app_finance/_classes/structure/goal_app_data.dart';
-import 'package:app_finance/routes/goal_add_page.dart';
+import 'package:app_finance/pages/goal_add_page.dart';
 import 'package:flutter/material.dart';
 
 class GoalEditPage extends GoalAddPage {

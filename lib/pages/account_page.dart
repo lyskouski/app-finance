@@ -6,36 +6,40 @@ import 'package:app_finance/_classes/herald/app_locale.dart';
 import 'package:app_finance/_classes/structure/currency/exchange.dart';
 import 'package:app_finance/_configs/theme_helper.dart';
 import 'package:app_finance/_classes/structure/navigation/app_route.dart';
-import 'package:app_finance/routes/abstract_page_state.dart';
-import 'package:app_finance/widgets/budget/budget_widget.dart';
+import 'package:app_finance/pages/abstract_page_state.dart';
+import 'package:app_finance/widgets/home/account_widget.dart';
 import 'package:flutter/material.dart';
 
-class BudgetPage extends StatefulWidget {
+class AccountPage extends StatefulWidget {
   final String? search;
-  const BudgetPage({
+
+  const AccountPage({
     super.key,
     this.search,
   });
 
   @override
-  BudgetPageState createState() => BudgetPageState();
+  AccountPageState createState() => AccountPageState();
 }
 
-class BudgetPageState extends AbstractPageState<BudgetPage> {
+class AccountPageState extends AbstractPageState<AccountPage> {
   dynamic items;
 
   dynamic _getItems() {
     dynamic items;
     if (widget.search != null) {
-      final scope =
-          super.state.getList(AppDataType.budgets).where((e) => e.title.toString().startsWith(widget.search!)).toList();
+      final scope = super
+          .state
+          .getList(AppDataType.accounts)
+          .where((e) => e.title.toString().startsWith(widget.search!))
+          .toList();
       final ex = Exchange(store: super.state);
       items = (
         total: scope.fold(0.0, (v, e) => v + ex.reform(e.details, e.currency, ex.getDefaultCurrency())),
         list: scope
       );
     } else {
-      items = super.state.get(AppDataType.budgets);
+      items = super.state.get(AppDataType.accounts);
     }
     return items;
   }
@@ -45,18 +49,18 @@ class BudgetPageState extends AbstractPageState<BudgetPage> {
     if (widget.search != null) {
       return AppLocale.labels.search(widget.search!);
     }
-    return AppLocale.labels.budgetHeadline;
+    return AppLocale.labels.accountHeadline;
   }
 
   @override
-  String getButtonName() => AppLocale.labels.addBudgetTooltip;
+  String getButtonName() => AppLocale.labels.addAccountTooltip;
 
   @override
   Widget buildButton(BuildContext context, BoxConstraints constraints) {
     NavigatorState nav = Navigator.of(context);
     return FloatingActionButton(
-      heroTag: 'budget_page',
-      onPressed: () => nav.pushNamed(AppRoute.budgetAddRoute),
+      heroTag: 'account_page',
+      onPressed: () => nav.pushNamed(AppRoute.accountAddRoute),
       tooltip: getButtonName(),
       child: const Icon(Icons.add),
     );
@@ -70,11 +74,11 @@ class BudgetPageState extends AbstractPageState<BudgetPage> {
     }
     return Column(
       children: [
-        BudgetWidget(
+        AccountWidget(
           margin: EdgeInsets.all(ThemeHelper.getIndent()),
-          title: AppLocale.labels.budgetHeadline,
+          title: AppLocale.labels.accountHeadline,
           state: items,
-          width: ThemeHelper.getWidth(context),
+          width: ThemeHelper.getWidth(context, 3),
         )
       ],
     );

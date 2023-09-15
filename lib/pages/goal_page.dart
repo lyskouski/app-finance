@@ -11,7 +11,7 @@ import 'package:app_finance/_classes/structure/navigation/app_route.dart';
 import 'package:app_finance/_ext/double_ext.dart';
 import 'package:app_finance/_mixins/formatter_mixin.dart';
 import 'package:app_finance/charts/gauge_chart.dart';
-import 'package:app_finance/routes/abstract_page_state.dart';
+import 'package:app_finance/pages/abstract_page_state.dart';
 import 'package:app_finance/widgets/_wrappers/text_wrapper.dart';
 import 'package:app_finance/widgets/budget/budget_line_widget.dart';
 import 'package:app_finance/widgets/_wrappers/row_widget.dart';
