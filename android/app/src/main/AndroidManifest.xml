@@ -33,6 +33,7 @@
             android:value="2" />
         <service
             android:label="notifications"
+            android:exported="true"
             android:name="dk.cachet.notifications.NotificationListener"
             android:permission="android.permission.BIND_NOTIFICATION_LISTENER_SERVICE">
             <intent-filter>
