@@ -52,7 +52,6 @@ class ExpensesTabState<T extends ExpensesTab> extends AbstractPageState<T> {
   Currency? currency;
   late TextEditingController bill;
   late TextEditingController description;
-  double? billValue;
   DateTime? createdAt;
   bool hasErrors = false;
   bool isPushed = false;
@@ -69,7 +68,6 @@ class ExpensesTabState<T extends ExpensesTab> extends AbstractPageState<T> {
     currency =
         widget.currency ?? objAccount?.currency ?? objBudget?.currency ?? CurrencyProvider.findByCode(currencyId);
     bill = TextEditingController(text: widget.bill != null ? widget.bill.toString() : '');
-    billValue = widget.bill;
     description = TextEditingController(text: widget.description);
     createdAt = widget.createdAt;
     super.initState();
@@ -198,7 +196,6 @@ class ExpensesTabState<T extends ExpensesTab> extends AbstractPageState<T> {
                     controller: bill,
                     type: const TextInputType.numberWithOptions(decimal: true),
                     tooltip: AppLocale.labels.billSetTooltip,
-                    setState: (v) => setState(() => billValue = double.tryParse(v)),
                     formatter: [SimpleInput.filterDouble],
                   ),
                 ],
@@ -210,7 +207,7 @@ class ExpensesTabState<T extends ExpensesTab> extends AbstractPageState<T> {
               indent: indent,
               target: currency,
               state: widget.state,
-              targetAmount: billValue,
+              targetController: bill,
               source: [
                 account != null ? widget.state.getByUuid(account!).currency : null,
                 budget != null ? widget.state.getByUuid(budget!).currency : null,

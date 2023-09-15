@@ -49,7 +49,6 @@ class TransferTabState extends AbstractPageState<TransferTab> {
   late TextEditingController amount;
   late TextEditingController description;
   late DateTime createdAt;
-  double? amountValue;
   Currency? currency;
   bool hasErrors = false;
   bool isPushed = false;
@@ -61,7 +60,6 @@ class TransferTabState extends AbstractPageState<TransferTab> {
     createdAt = widget.createdAt ?? DateTime.now();
     amount = TextEditingController(text: widget.amount != null ? widget.amount.toString() : '');
     description = TextEditingController(text: widget.description);
-    amountValue = widget.amount;
     currency = widget.currency;
     super.initState();
   }
@@ -185,10 +183,7 @@ class TransferTabState extends AbstractPageState<TransferTab> {
                     controller: amount,
                     type: const TextInputType.numberWithOptions(decimal: true),
                     tooltip: AppLocale.labels.billSetTooltip,
-                    setState: (v) => setState(() => amountValue = double.tryParse(v)),
-                    formatter: [
-                      SimpleInput.filterDouble,
-                    ],
+                    formatter: [SimpleInput.filterDouble],
                   ),
                 ],
               ],
@@ -199,7 +194,7 @@ class TransferTabState extends AbstractPageState<TransferTab> {
               indent: indent,
               target: currency,
               state: widget.state,
-              targetAmount: amountValue,
+              targetController: amount,
               source: <Currency?>[
                 accountFrom != null ? widget.state.getByUuid(accountFrom!).currency : null,
                 accountTo != null ? widget.state.getByUuid(accountTo!).currency : null,
