@@ -1,0 +1,76 @@
+% Copyright 2023 The terCAD team. All rights reserved.
+% Use of this content is governed by a CC BY-NC-ND 4.0 license that can be found in the LICENSE file.
+
+\subsection{Branding Palette}
+\markboth{Optimizing UI/UX Flow}{Branding Palette}
+
+A Branding Palette, often referred to as a Color Palette, is a thoughtfully curated selection of colors that reflect the 
+brand's personality, values, and objectives. It declares Primary (dominate the visual identity) and Secondary 
+(complement the primary colors) Colors, Typography (fonts and typography styles), and Imagery (guidelines for images 
+and icons selection or creation). Mostly, the palette is included into a Brand Book \cite{Geyr16}, also known as a 
+Brand Style Guide or Brand Guidelines, that provides in-depth guidance on how a brand's visual identity should be 
+applied consistently across all touchpoints. It serves as a reference manual for designers, marketers, and anyone 
+involved in representing the brand.
+
+In a context of Flutter applications, the palette is defined for \q{MaterialApp}-widget via \q{colorScheme} and 
+\q{floatingActionButtonTheme} properties, and, instead of fully declared color scheme, we might take a default one
+by overriding valuable for us colors: 
+
+\begin{lstlisting}
+// ./lib/main.dart
+return MaterialApp(
+  theme: ThemeData(
+    colorScheme: const ColorScheme.light().withCustom(),
+    floatingActionButtonTheme: const FloatingActionButtonThemeData().withCustom(Brightness.light),
+    // ... other options
+  ),
+  darkTheme: ThemeData(
+    colorScheme: const ColorScheme.dark().withCustom(),
+    floatingActionButtonTheme: const FloatingActionButtonThemeData().withCustom(Brightness.dark),
+\end{lstlisting}
+
+\noindent Where \q{withCustom}-method is a part of our extension for \q{ColorScheme} and \q{FloatingActionButtonThemeData}:
+
+\begin{lstlisting}
+// ./lib/_configs/custom_color_scheme.dart
+class AppColors {
+  late AppDefaultColors palette;
+  // Choose palette from brightness condition
+  AppColors(Brightness brightness) {
+    if (brightness == Brightness.dark) {
+      palette = AppDarkColors();
+    } else {
+      palette = AppDefaultColors();
+    }
+  }
+}
+// Light mode
+class AppDefaultColors {
+  Color get primary => const Color(0xff912391);
+  // ... other options
+}
+// Dark mode
+class AppDarkColors implements AppDefaultColors {
+  // ... other options
+}
+
+extension CustomColorScheme on ColorScheme {
+  ColorScheme withCustom() {
+    final palette = AppColors(brightness).palette;
+    return copyWith(
+      primary: palette.primary,
+      //... other options
+    );
+  }
+}
+
+extension CustomButtonTheme on FloatingActionButtonThemeData {
+  FloatingActionButtonThemeData withCustom(Brightness brightness) {
+    final palette = AppColors(brightness).palette;
+    return copyWith(
+      backgroundColor: palette.inversePrimary,
+      foregroundColor: palette.onButton,
+    );
+  }
+}
+\end{lstlisting}
