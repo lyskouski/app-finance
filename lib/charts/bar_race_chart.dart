@@ -6,6 +6,7 @@ import 'dart:math';
 
 import 'package:app_finance/_classes/herald/app_locale.dart';
 import 'package:app_finance/_classes/structure/interface_app_data.dart';
+import 'package:app_finance/_ext/build_context_ext.dart';
 import 'package:app_finance/charts/interface/chart_data.dart';
 import 'package:app_finance/charts/painter/bar_chart_painter.dart';
 import 'package:app_finance/charts/painter/foreground_chart_painter.dart';
@@ -49,7 +50,7 @@ class BarRaceChart extends StatelessWidget {
     if (data.isEmpty) {
       return const EmptyWidget();
     }
-    final bgColor = Theme.of(context).colorScheme.onBackground;
+    final bgColor = context.colorScheme.onBackground;
     final xMax = data.reduce((max, item) => item.dy > max.dy ? item : max).dy;
     final plot = _getData();
     final size = Size(width, 36.0 * (1 + plot.length));

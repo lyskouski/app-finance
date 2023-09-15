@@ -4,6 +4,7 @@
 import 'package:app_finance/_classes/structure/navigation/app_menu.dart';
 import 'package:app_finance/_configs/custom_text_theme.dart';
 import 'package:app_finance/_configs/theme_helper.dart';
+import 'package:app_finance/_ext/build_context_ext.dart';
 import 'package:app_finance/charts/bar_horizontal_single.dart';
 import 'package:app_finance/widgets/wrapper/row_widget.dart';
 import 'package:app_finance/widgets/wrapper/tap_widget.dart';
@@ -43,7 +44,7 @@ class BudgetLineWidget extends StatelessWidget {
     }
     final indent = ThemeHelper.getIndent();
     final width = ThemeHelper.getWidth(context);
-    final TextTheme textTheme = Theme.of(context).textTheme;
+    final textTheme = context.textTheme;
     final sumStyle = textTheme.numberMedium.copyWith(color: textTheme.headlineSmall?.color);
 
     return TapWidget(

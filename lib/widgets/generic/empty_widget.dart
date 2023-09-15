@@ -2,6 +2,7 @@
 // Use of this source code is governed by a CC BY-NC-ND 4.0 license that can be found in the LICENSE file.
 
 import 'package:app_finance/_classes/herald/app_locale.dart';
+import 'package:app_finance/_ext/build_context_ext.dart';
 import 'package:flutter/material.dart';
 
 class EmptyWidget extends StatelessWidget {
@@ -10,11 +11,11 @@ class EmptyWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: Theme.of(context).colorScheme.onBackground.withOpacity(0.1),
+      color: context.colorScheme.onBackground.withOpacity(0.1),
       child: Center(
         child: Text(
           AppLocale.labels.noChartData,
-          style: Theme.of(context).textTheme.headlineSmall,
+          style: context.textTheme.headlineSmall,
         ),
       ),
     );

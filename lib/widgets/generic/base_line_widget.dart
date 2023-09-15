@@ -2,6 +2,7 @@
 // Use of this source code is governed by a CC BY-NC-ND 4.0 license that can be found in the LICENSE file.
 
 import 'package:app_finance/_classes/structure/navigation/app_menu.dart';
+import 'package:app_finance/_ext/build_context_ext.dart';
 import 'package:app_finance/charts/bar_vertical_single.dart';
 import 'package:app_finance/_configs/custom_text_theme.dart';
 import 'package:app_finance/widgets/wrapper/row_widget.dart';
@@ -41,7 +42,7 @@ class BaseLineWidget extends StatelessWidget {
     if (hidden) {
       return ThemeHelper.emptyBox;
     }
-    final TextTheme textTheme = Theme.of(context).textTheme;
+    final textTheme = context.textTheme;
     final indent = ThemeHelper.getIndent();
     final detailsText = Text(
       details,

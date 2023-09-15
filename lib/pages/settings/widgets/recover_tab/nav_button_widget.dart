@@ -2,6 +2,7 @@
 // Use of this source code is governed by a CC BY-NC-ND 4.0 license that can be found in the LICENSE file.
 
 import 'package:app_finance/_configs/theme_helper.dart';
+import 'package:app_finance/_ext/build_context_ext.dart';
 import 'package:app_finance/widgets/wrapper/tap_widget.dart';
 import 'package:app_finance/widgets/wrapper/toolbar_button_widget.dart';
 import 'package:app_finance/pages/settings/widgets/recover_tab/recovery_type.dart';
@@ -25,7 +26,7 @@ class NavButtonWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final textTheme = Theme.of(context).textTheme;
+    final textTheme = context.textTheme;
     return TapWidget(
       onTap: () => callback(nav),
       tooltip: name,
@@ -33,7 +34,7 @@ class NavButtonWidget extends StatelessWidget {
         children: [
           ToolbarButtonWidget(
             offset: offset,
-            borderColor: Theme.of(context).colorScheme.inversePrimary,
+            borderColor: context.colorScheme.inversePrimary,
             child: IconButton(
               hoverColor: Colors.transparent,
               icon: Icon(icon),

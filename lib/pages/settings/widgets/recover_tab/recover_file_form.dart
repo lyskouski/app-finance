@@ -4,6 +4,7 @@
 import 'package:app_finance/_classes/herald/app_locale.dart';
 import 'package:app_finance/_classes/storage/transaction_log/file_protocol.dart';
 import 'package:app_finance/_configs/theme_helper.dart';
+import 'package:app_finance/_ext/build_context_ext.dart';
 import 'package:app_finance/widgets/form/simple_input.dart';
 import 'package:app_finance/widgets/wrapper/required_widget.dart';
 import 'package:app_finance/pages/settings/widgets/recover_tab/nav_button_widget.dart';
@@ -44,7 +45,7 @@ class RecoverFileFormState extends State<RecoverFileForm> {
   @override
   Widget build(BuildContext context) {
     double indent = ThemeHelper.getIndent(2);
-    final textTheme = Theme.of(context).textTheme;
+    final textTheme = context.textTheme;
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -57,7 +58,7 @@ class RecoverFileFormState extends State<RecoverFileForm> {
         ),
         Text(
           widget.message,
-          style: textTheme.bodyMedium?.copyWith(color: Theme.of(context).colorScheme.inversePrimary),
+          style: textTheme.bodyMedium?.copyWith(color: context.colorScheme.inversePrimary),
         ),
         RequiredWidget(
           title: AppLocale.labels.path,

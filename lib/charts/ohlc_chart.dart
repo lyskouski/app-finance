@@ -2,6 +2,7 @@
 // Use of this source code is governed by a CC BY-NC-ND 4.0 license that can be found in the LICENSE file.
 
 import 'package:app_finance/_classes/herald/app_locale.dart';
+import 'package:app_finance/_ext/build_context_ext.dart';
 import 'package:app_finance/charts/interface/ohlc_data.dart';
 import 'package:app_finance/charts/painter/foreground_chart_painter.dart';
 import 'package:app_finance/charts/painter/ohlc_chart_painter.dart';
@@ -41,7 +42,7 @@ class OhlcChart extends StatelessWidget {
     yMax *= 1.25;
     final now = DateTime.now();
     final size = Size(width, height);
-    final bgColor = Theme.of(context).colorScheme.onBackground;
+    final bgColor = context.colorScheme.onBackground;
     final xMax = DateTime(now.year, now.month + 1);
     final bg = ForegroundChartPainter(
       size: size,

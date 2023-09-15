@@ -1,6 +1,7 @@
 // Copyright 2023 The terCAD team. All rights reserved.
 // Use of this source code is governed by a CC BY-NC-ND 4.0 license that can be found in the LICENSE file.
 
+import 'package:app_finance/_ext/build_context_ext.dart';
 import 'package:flutter/material.dart';
 
 class LoadingWidget extends StatefulWidget {
@@ -52,7 +53,7 @@ class LoadingWidgetState extends State<LoadingWidget> with TickerProviderStateMi
                 scale: size / 25,
                 child: CircularProgressIndicator(
                   value: _controller.value,
-                  color: Theme.of(context).colorScheme.inversePrimary,
+                  color: context.colorScheme.inversePrimary,
                   strokeWidth: 32 / size,
                 ),
               ),

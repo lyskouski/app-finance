@@ -7,6 +7,7 @@ import 'package:app_finance/_classes/structure/budget_app_data.dart';
 import 'package:app_finance/_classes/controller/focus_controller.dart';
 import 'package:app_finance/_classes/storage/app_preferences.dart';
 import 'package:app_finance/_configs/theme_helper.dart';
+import 'package:app_finance/_ext/build_context_ext.dart';
 import 'package:app_finance/pages/abstract_add_page.dart';
 import 'package:app_finance/widgets/form/color_selector.dart';
 import 'package:app_finance/widgets/form/currency_selector.dart';
@@ -100,7 +101,7 @@ class BudgetAddPageState<T extends BudgetAddPage> extends AbstractAddPageState<B
 
   @override
   Widget buildContent(BuildContext context, BoxConstraints constraints) {
-    final TextTheme textTheme = Theme.of(context).textTheme;
+    final textTheme = context.textTheme;
     double indent = ThemeHelper.getIndent(2);
     double width = ThemeHelper.getWidth(context, 6);
 
@@ -199,7 +200,7 @@ class BudgetAddPageState<T extends BudgetAddPage> extends AbstractAddPageState<B
                     ],
                     [
                       Container(
-                        color: Theme.of(context).colorScheme.inversePrimary.withOpacity(0.3),
+                        color: context.colorScheme.inversePrimary.withOpacity(0.3),
                         child: Slider(
                           value: e.value,
                           onChanged: (v) => setState(() => amountSet[e.key] = v),

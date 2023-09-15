@@ -4,6 +4,7 @@
 import 'package:app_finance/_classes/controller/focus_controller.dart';
 import 'package:app_finance/_configs/custom_text_theme.dart';
 import 'package:app_finance/_configs/theme_helper.dart';
+import 'package:app_finance/_ext/build_context_ext.dart';
 import 'package:app_finance/widgets/form/abstract_selector.dart';
 import 'package:app_finance/widgets/wrapper/tap_widget.dart';
 import 'package:app_finance/widgets/wrapper/text_wrapper.dart';
@@ -48,7 +49,7 @@ class ListSelector<K extends ListSelectorItem> extends AbstractSelector {
 
 class ListSelectorState<T extends ListSelector, K extends ListSelectorItem> extends AbstractSelectorState<T> {
   Widget selectorBuilder(context, K item) {
-    final textTheme = Theme.of(context).textTheme;
+    final textTheme = context.textTheme;
     return TextWrapper(item.toString(), style: textTheme.numberMedium.copyWith(color: textTheme.headlineSmall?.color));
   }
 
@@ -73,7 +74,7 @@ class ListSelectorState<T extends ListSelector, K extends ListSelectorItem> exte
   @override
   Widget buildContent(context) {
     final indent = ThemeHelper.getIndent();
-    final textTheme = Theme.of(context).textTheme;
+    final textTheme = context.textTheme;
     final hintStyle = textTheme.numberMedium.copyWith(color: textTheme.headlineSmall?.color!.withOpacity(0.4));
     K? item = widget.value != null ? widget.options.cast().where((e) => e.equal(widget.value)).firstOrNull : null;
     return SearchAnchor(
@@ -85,7 +86,7 @@ class ListSelectorState<T extends ListSelector, K extends ListSelectorItem> exte
         onTap: () => onTap(null),
         child: Container(
           width: double.infinity,
-          color: Theme.of(context).colorScheme.inversePrimary.withOpacity(0.3),
+          color: context.colorScheme.inversePrimary.withOpacity(0.3),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [

@@ -3,6 +3,7 @@
 
 import 'package:app_finance/_classes/herald/app_locale.dart';
 import 'package:app_finance/_configs/theme_helper.dart';
+import 'package:app_finance/_ext/build_context_ext.dart';
 import 'package:flutter/material.dart';
 
 class RequiredWidget extends StatelessWidget {
@@ -17,7 +18,7 @@ class RequiredWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final TextTheme textTheme = Theme.of(context).textTheme;
+    final TextTheme textTheme = context.textTheme;
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
@@ -29,14 +30,14 @@ class RequiredWidget extends StatelessWidget {
           Text(
             showError ? AppLocale.labels.isRequired : '',
             style: TextStyle(
-              color: Theme.of(context).colorScheme.error,
+              color: context.colorScheme.error,
             ),
           ),
           showError
               ? Icon(
                   Icons.error,
                   semanticLabel: '$title: ${AppLocale.labels.isRequired}',
-                  color: Theme.of(context).colorScheme.error,
+                  color: context.colorScheme.error,
                 )
               : ThemeHelper.emptyBox,
         ]),

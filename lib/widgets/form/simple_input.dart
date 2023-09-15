@@ -3,6 +3,7 @@
 
 import 'package:app_finance/_classes/controller/focus_controller.dart';
 import 'package:app_finance/_configs/custom_text_theme.dart';
+import 'package:app_finance/_ext/build_context_ext.dart';
 import 'package:app_finance/widgets/form/abstract_input.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -31,7 +32,7 @@ class SimpleInput extends AbstractInput {
 
   @override
   Widget buildContent(BuildContext context) {
-    final textTheme = Theme.of(context).textTheme;
+    final textTheme = context.textTheme;
     return TextFormField(
       controller: controller,
       inputFormatters: formatter,
@@ -45,7 +46,7 @@ class SimpleInput extends AbstractInput {
       decoration: InputDecoration(
         filled: true,
         border: InputBorder.none,
-        fillColor: Theme.of(context).colorScheme.inversePrimary.withOpacity(0.3),
+        fillColor: context.colorScheme.inversePrimary.withOpacity(0.3),
         hintText: tooltip,
         hintStyle: textTheme.numberMedium.copyWith(color: textTheme.headlineSmall?.color!.withOpacity(0.4)),
       ),

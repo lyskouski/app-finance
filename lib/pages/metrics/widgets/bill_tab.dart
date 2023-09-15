@@ -7,6 +7,7 @@ import 'package:app_finance/_classes/storage/data_handler.dart';
 import 'package:app_finance/_classes/structure/bill_app_data.dart';
 import 'package:app_finance/_classes/structure/currency/exchange.dart';
 import 'package:app_finance/_configs/theme_helper.dart';
+import 'package:app_finance/_ext/build_context_ext.dart';
 import 'package:app_finance/charts/bar_race_chart.dart';
 import 'package:app_finance/charts/column_chart.dart';
 import 'package:app_finance/charts/interface/chart_data.dart';
@@ -48,7 +49,7 @@ class BillTab extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final TextTheme textTheme = Theme.of(context).textTheme;
+    final TextTheme textTheme = context.textTheme;
     double indent = ThemeHelper.getIndent();
     final width = ThemeHelper.getWidth(context, 4);
     final data = getData();

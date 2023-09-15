@@ -2,6 +2,7 @@
 // Use of this source code is governed by a CC BY-NC-ND 4.0 license that can be found in the LICENSE file.
 
 import 'package:app_finance/_configs/theme_helper.dart';
+import 'package:app_finance/_ext/build_context_ext.dart';
 import 'package:app_finance/widgets/wrapper/dots_tab_bar_widget.dart';
 import 'package:flutter/material.dart';
 
@@ -92,7 +93,7 @@ class TabWidgetState extends State<TabWidget> with TickerProviderStateMixin {
         tabList: widget.children,
         indent: ThemeHelper.getIndent(),
         width: widget.maxWidth ?? ThemeHelper.getWidth(context, 2),
-        color: Theme.of(context).colorScheme.primary,
+        color: context.colorScheme.primary,
       );
     } else {
       return TabBar(

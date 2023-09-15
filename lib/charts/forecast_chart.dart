@@ -1,6 +1,7 @@
 // Copyright 2023 The terCAD team. All rights reserved.
 // Use of this source code is governed by a CC BY-NC-ND 4.0 license that can be found in the LICENSE file.
 
+import 'package:app_finance/_ext/build_context_ext.dart';
 import 'package:app_finance/charts/interface/chart_data.dart';
 import 'package:app_finance/charts/painter/forecast_chart_painter.dart';
 import 'package:app_finance/charts/painter/foreground_chart_painter.dart';
@@ -32,7 +33,7 @@ class ForecastChart extends StatelessWidget {
     }
     final now = DateTime.now();
     final size = Size(width, height);
-    final bgColor = Theme.of(context).colorScheme.onBackground;
+    final bgColor = context.colorScheme.onBackground;
     final xMin = DateTime(now.year, now.month);
     final xMax = DateTime(now.year, now.month + 1);
     final bg = ForegroundChartPainter(

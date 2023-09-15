@@ -8,6 +8,7 @@ import 'package:app_finance/_classes/structure/goal_app_data.dart';
 import 'package:app_finance/_configs/custom_text_theme.dart';
 import 'package:app_finance/_configs/theme_helper.dart';
 import 'package:app_finance/_classes/structure/navigation/app_route.dart';
+import 'package:app_finance/_ext/build_context_ext.dart';
 import 'package:app_finance/_ext/double_ext.dart';
 import 'package:app_finance/_mixins/formatter_mixin.dart';
 import 'package:app_finance/charts/gauge_chart.dart';
@@ -69,13 +70,13 @@ class GoalPageState extends AbstractPageState<GoalPage> with FormatterMixin {
   Widget buildContent(BuildContext context, BoxConstraints constraints) {
     final indent = ThemeHelper.getIndent();
     final width = ThemeHelper.getWidth(context, 4);
-    final TextTheme textTheme = Theme.of(context).textTheme;
+    final TextTheme textTheme = context.textTheme;
     final goals = super.state.getList(AppDataType.goals);
     final maxValue = _getMaxValue(goals.cast<GoalAppData>());
     final valInvoice = _getValue(AppDataType.invoice);
     final valBill = _getValue(AppDataType.bills);
     final value = valInvoice - valBill;
-    final textStyle = Theme.of(context).textTheme.numberSmall.copyWith(color: textTheme.headlineSmall?.color);
+    final textStyle = context.textTheme.numberSmall.copyWith(color: textTheme.headlineSmall?.color);
 
     return SingleChildScrollView(
       child: Padding(
@@ -90,7 +91,7 @@ class GoalPageState extends AbstractPageState<GoalPage> with FormatterMixin {
               chunk: const [null, null],
               children: [
                 [
-                  TextWrapper(AppLocale.labels.goalProfitTooltip, style: Theme.of(context).textTheme.bodyLarge),
+                  TextWrapper(AppLocale.labels.goalProfitTooltip, style: context.textTheme.bodyLarge),
                   TextWrapper(AppLocale.labels.goalProfit(maxValue.toCurrency()), style: textStyle, maxLines: 2),
                   TextWrapper(AppLocale.labels.invoiceSum(valInvoice.toCurrency()), style: textStyle, maxLines: 2),
                   TextWrapper(AppLocale.labels.billSum(valBill.toCurrency()), style: textStyle, maxLines: 2),

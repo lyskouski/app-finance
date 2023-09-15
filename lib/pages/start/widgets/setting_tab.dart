@@ -7,6 +7,7 @@ import 'package:app_finance/_classes/herald/app_zoom.dart';
 import 'package:app_finance/_classes/structure/currency/currency_provider.dart';
 import 'package:app_finance/_classes/storage/app_preferences.dart';
 import 'package:app_finance/_configs/theme_helper.dart';
+import 'package:app_finance/_ext/build_context_ext.dart';
 import 'package:app_finance/widgets/form/currency_selector.dart';
 import 'package:app_finance/widgets/form/list_selector.dart';
 import 'package:app_finance/pages/start/widgets/abstract_tab.dart';
@@ -81,7 +82,7 @@ class SettingTabState<T extends SettingTab> extends AbstractTabState<T> {
     String locale = Localizations.localeOf(context).toString();
     theme = Provider.of<AppTheme>(context, listen: false);
     zoom = Provider.of<AppZoom>(context, listen: false);
-    final TextTheme textTheme = Theme.of(context).textTheme;
+    final TextTheme textTheme = context.textTheme;
     double indent = ThemeHelper.getIndent(2);
     if (currency == null) {
       WidgetsBinding.instance.addPostFrameCallback((_) => initCurrencyFromLocale(locale));
@@ -142,7 +143,7 @@ class SettingTabState<T extends SettingTab> extends AbstractTabState<T> {
             style: textTheme.bodyLarge,
           ),
           Container(
-            color: Theme.of(context).colorScheme.inversePrimary.withOpacity(0.3),
+            color: context.colorScheme.inversePrimary.withOpacity(0.3),
             child: Slider(
               value: zoom.value,
               onChanged: zoom.set,

@@ -6,6 +6,7 @@ import 'package:app_finance/_classes/storage/history_data.dart';
 import 'package:app_finance/_classes/structure/currency_app_data.dart';
 import 'package:app_finance/_classes/storage/app_data.dart';
 import 'package:app_finance/_configs/theme_helper.dart';
+import 'package:app_finance/_ext/build_context_ext.dart';
 import 'package:app_finance/charts/trade_chart.dart';
 import 'package:app_finance/pages/abstract_page_state.dart';
 import 'package:app_finance/widgets/generic/notification_bar.dart';
@@ -56,7 +57,7 @@ class CurrencyPageState extends AbstractPageState<CurrencyPage> {
 
   @override
   Widget buildContent(BuildContext context, BoxConstraints constraints) {
-    final TextTheme textTheme = Theme.of(context).textTheme;
+    final TextTheme textTheme = context.textTheme;
     final indent = ThemeHelper.getIndent();
     final now = DateTime.now();
     final cutDate = DateTime(now.year, now.month - 2);

@@ -7,6 +7,7 @@ import 'package:app_finance/_classes/structure/navigation/app_route.dart';
 import 'package:app_finance/_classes/controller/focus_controller.dart';
 import 'package:app_finance/_classes/storage/app_data.dart';
 import 'package:app_finance/_configs/theme_helper.dart';
+import 'package:app_finance/_ext/build_context_ext.dart';
 import 'package:app_finance/pages/abstract_page_state.dart';
 import 'package:app_finance/widgets/form/currency_exchange_input.dart';
 import 'package:app_finance/widgets/form/date_time_input.dart';
@@ -117,7 +118,7 @@ class TransferTabState extends AbstractPageState<TransferTab> {
 
   @override
   Widget buildContent(BuildContext context, BoxConstraints constraints) {
-    final TextTheme textTheme = Theme.of(context).textTheme;
+    final TextTheme textTheme = context.textTheme;
     double indent = ThemeHelper.getIndent(2);
     double width = ThemeHelper.getWidth(context, 6);
 
