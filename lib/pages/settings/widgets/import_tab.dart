@@ -11,6 +11,7 @@ import 'package:app_finance/_classes/structure/interface_app_data.dart';
 import 'package:app_finance/_configs/date_format_helper.dart';
 import 'package:app_finance/_classes/storage/app_preferences.dart';
 import 'package:app_finance/_configs/theme_helper.dart';
+import 'package:app_finance/_ext/build_context_ext.dart';
 import 'package:app_finance/widgets/form/currency_selector.dart';
 import 'package:app_finance/widgets/form/list_account_selector.dart';
 import 'package:app_finance/widgets/form/list_budget_selector.dart';
@@ -114,8 +115,8 @@ class ImportTabState extends State<ImportTab> {
   Widget build(BuildContext context) {
     final indent = ThemeHelper.getIndent(2);
     final width = ThemeHelper.getWidth(context, 12);
-    final textTheme = Theme.of(context).textTheme;
-    final ColorScheme colorScheme = Theme.of(context).colorScheme;
+    final textTheme = context.textTheme;
+    final ColorScheme colorScheme = context.colorScheme;
     FocusController.init();
 
     return Consumer<AppData>(builder: (context, appState, _) {

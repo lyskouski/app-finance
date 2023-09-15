@@ -3,6 +3,7 @@
 
 import 'package:app_finance/_classes/structure/navigation/app_menu.dart';
 import 'package:app_finance/_classes/structure/navigation/app_menu_item.dart';
+import 'package:app_finance/_ext/build_context_ext.dart';
 import 'package:flutter/material.dart';
 
 class MenuWidget extends StatelessWidget {
@@ -24,8 +25,8 @@ class MenuWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final ColorScheme colorScheme = Theme.of(context).colorScheme;
-    final TextTheme textTheme = Theme.of(context).textTheme;
+    final ColorScheme colorScheme = context.colorScheme;
+    final TextTheme textTheme = context.textTheme;
     Color color = selectedIndex == index ? colorScheme.inversePrimary : colorScheme.secondary;
     AppMenuItem menu = AppMenu.getByIndex(index);
     NavigatorState nav = Navigator.of(context);

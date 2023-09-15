@@ -3,8 +3,10 @@
 
 import 'package:adaptive_breakpoints/adaptive_breakpoints.dart';
 import 'package:app_finance/_classes/controller/focus_controller.dart';
+import 'package:app_finance/_configs/custom_color_scheme.dart';
 import 'package:app_finance/_configs/responsive_matrix.dart';
 import 'package:app_finance/_configs/theme_helper.dart';
+import 'package:app_finance/_ext/build_context_ext.dart';
 import 'package:app_finance/widgets/form/abstract_input.dart';
 import 'package:app_finance/widgets/wrapper/text_wrapper.dart';
 import 'package:flutter/material.dart';
@@ -32,7 +34,7 @@ class FullSizedButtonWidget extends AbstractInput {
   Widget buildContent(BuildContext context) {
     final isBottom = ResponsiveMatrix(getWindowType(context)).isNavBottom(constraints);
     final bool isKeyboardVisible = ThemeHelper.isKeyboardVisible(context) || isBottom;
-    final colorScheme = Theme.of(context).colorScheme;
+    final colorScheme = context.colorScheme;
     final width = constraints.maxWidth - ThemeHelper.getIndent(4) - 2;
     return SizedBox(
       width: isKeyboardVisible ? null : width,
@@ -48,16 +50,13 @@ class FullSizedButtonWidget extends AbstractInput {
               icon,
               semanticLabel: title,
               size: 32,
-              color: colorScheme.primary.withOpacity(0.7),
+              color: colorScheme.onButton.withOpacity(0.8),
             ),
             if (!isKeyboardVisible)
               Container(
                 padding: EdgeInsets.only(left: ThemeHelper.getIndent()),
                 constraints: BoxConstraints(maxWidth: width - 34),
-                child: TextWrapper(
-                  title,
-                  style: Theme.of(context).textTheme.bodyLarge?.copyWith(color: colorScheme.primary.withOpacity(0.9)),
-                ),
+                child: TextWrapper(title, style: context.textTheme.bodyLarge?.copyWith(color: colorScheme.onButton)),
               ),
           ],
         ),

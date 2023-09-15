@@ -8,6 +8,7 @@ import 'package:app_finance/_configs/account_type.dart';
 import 'package:app_finance/_classes/controller/focus_controller.dart';
 import 'package:app_finance/_classes/storage/app_preferences.dart';
 import 'package:app_finance/_configs/theme_helper.dart';
+import 'package:app_finance/_ext/build_context_ext.dart';
 import 'package:app_finance/pages/abstract_add_page.dart';
 import 'package:app_finance/widgets/form/color_selector.dart';
 import 'package:app_finance/widgets/form/currency_selector.dart';
@@ -117,7 +118,7 @@ class AccountAddPageState<T extends AccountAddPage> extends AbstractAddPageState
 
   @override
   Widget buildContent(BuildContext context, BoxConstraints constraints) {
-    final TextTheme textTheme = Theme.of(context).textTheme;
+    final TextTheme textTheme = context.textTheme;
     double indent = ThemeHelper.getIndent(2);
     double width = ThemeHelper.getWidth(context, 6);
     FocusController.init();

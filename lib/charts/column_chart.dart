@@ -2,6 +2,7 @@
 // Use of this source code is governed by a CC BY-NC-ND 4.0 license that can be found in the LICENSE file.
 
 import 'package:app_finance/_classes/herald/app_locale.dart';
+import 'package:app_finance/_ext/build_context_ext.dart';
 import 'package:app_finance/charts/interface/chart_data.dart';
 import 'package:app_finance/charts/painter/column_chart_painter.dart';
 import 'package:app_finance/charts/painter/foreground_chart_painter.dart';
@@ -34,7 +35,7 @@ class ColumnChart extends StatelessWidget {
     }
     final now = DateTime.now();
     final size = Size(width, height);
-    final bgColor = Theme.of(context).colorScheme.onBackground;
+    final bgColor = context.colorScheme.onBackground;
     final xMin = DateTime(now.year);
     final xMax = DateTime(now.year + 1);
     final bg = ForegroundChartPainter(

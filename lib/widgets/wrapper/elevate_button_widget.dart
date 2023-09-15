@@ -2,6 +2,7 @@
 // Use of this source code is governed by a CC BY-NC-ND 4.0 license that can be found in the LICENSE file.
 
 import 'package:app_finance/_configs/theme_helper.dart';
+import 'package:app_finance/_ext/build_context_ext.dart';
 import 'package:flutter/material.dart';
 
 typedef OnPressedFunction = Function();
@@ -26,6 +27,7 @@ class ElevatedButtonWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final colorScheme = context.colorScheme;
     return SizedBox(
       width: double.infinity,
       child: ElevatedButton(
@@ -34,9 +36,9 @@ class ElevatedButtonWidget extends StatelessWidget {
           backgroundColor: MaterialStateProperty.resolveWith<Color>(
             (states) {
               if (states.contains(MaterialState.hovered)) {
-                return hoveredColor ?? Theme.of(context).colorScheme.onSecondaryContainer;
+                return hoveredColor ?? colorScheme.onSecondaryContainer;
               }
-              return backgroundColor ?? Theme.of(context).colorScheme.secondary;
+              return backgroundColor ?? colorScheme.secondary;
             },
           ),
         ),
@@ -47,14 +49,14 @@ class ElevatedButtonWidget extends StatelessWidget {
             if (icon != null) ...[
               Icon(
                 icon,
-                color: textColor ?? Theme.of(context).colorScheme.inversePrimary,
+                color: textColor ?? colorScheme.inversePrimary,
               ),
               ThemeHelper.wIndent,
             ],
             Text(
               text,
               style: TextStyle(
-                color: textColor ?? Theme.of(context).colorScheme.inversePrimary,
+                color: textColor ?? colorScheme.inversePrimary,
                 shadows: const [],
               ),
             ),

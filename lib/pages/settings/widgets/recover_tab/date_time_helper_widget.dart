@@ -3,6 +3,7 @@
 
 import 'package:app_finance/_classes/herald/app_locale.dart';
 import 'package:app_finance/_configs/theme_helper.dart';
+import 'package:app_finance/_ext/build_context_ext.dart';
 import 'package:app_finance/widgets/wrapper/table_widget.dart';
 import 'package:flutter/material.dart';
 
@@ -14,7 +15,7 @@ class DateTimeHelperWidget extends StatelessWidget {
     return TableWidget(
       width: ThemeHelper.getWidth(context),
       chunk: const [64, null, null],
-      shadowColor: Theme.of(context).colorScheme.onBackground.withOpacity(0.1),
+      shadowColor: context.colorScheme.onBackground.withOpacity(0.1),
       data: [
         [Text(AppLocale.labels.symbol), Text(AppLocale.labels.meaning), Text(AppLocale.labels.example)],
         [const Text('y'), Text(AppLocale.labels.dtYear), const Text('2023')],

@@ -8,6 +8,7 @@ import 'package:app_finance/_classes/storage/history_data.dart';
 import 'package:app_finance/_classes/structure/account_app_data.dart';
 import 'package:app_finance/_classes/structure/currency/exchange.dart';
 import 'package:app_finance/_configs/theme_helper.dart';
+import 'package:app_finance/_ext/build_context_ext.dart';
 import 'package:app_finance/charts/bar_vertical_single.dart';
 import 'package:app_finance/charts/gauge_chart.dart';
 import 'package:app_finance/charts/interface/chart_value.dart';
@@ -90,7 +91,7 @@ class AccountTab extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final TextTheme textTheme = Theme.of(context).textTheme;
+    final TextTheme textTheme = context.textTheme;
     double indent = ThemeHelper.getIndent();
     double width = ThemeHelper.getWidth(context, 4);
     double pieWidth = width > 600 ? 280 : width * 0.4;
@@ -101,7 +102,7 @@ class AccountTab extends StatelessWidget {
     final currency = _getCurrencyDistribution(accountList);
     final txtSize = ThemeHelper.getTextWidth(Text(
       AppLocale.labels.incomeHealth,
-      style: Theme.of(context).textTheme.bodyMedium,
+      style: context.textTheme.bodyMedium,
       maxLines: 1,
       overflow: TextOverflow.ellipsis,
     ));
@@ -119,7 +120,7 @@ class AccountTab extends StatelessWidget {
               children: [
                 const [ThemeHelper.emptyBox],
                 [
-                  TextWrapper(AppLocale.labels.incomeHealth, style: Theme.of(context).textTheme.bodyMedium),
+                  TextWrapper(AppLocale.labels.incomeHealth, style: context.textTheme.bodyMedium),
                   ThemeHelper.hIndent,
                 ],
                 [
@@ -166,7 +167,7 @@ class AccountTab extends StatelessWidget {
               children: [
                 [
                   TableWidget(
-                    shadowColor: Theme.of(context).colorScheme.onBackground.withOpacity(0.1),
+                    shadowColor: context.colorScheme.onBackground.withOpacity(0.1),
                     width: width - pieWidth - 2 * indent,
                     chunk: const [8, 34, null, null],
                     data: _generateCurrencyTable(currency),

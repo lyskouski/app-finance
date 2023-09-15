@@ -4,6 +4,7 @@
 import 'package:app_finance/_classes/structure/navigation/app_menu.dart';
 import 'package:app_finance/_configs/custom_text_theme.dart';
 import 'package:app_finance/_configs/theme_helper.dart';
+import 'package:app_finance/_ext/build_context_ext.dart';
 import 'package:app_finance/charts/bar_horizontal_single.dart';
 import 'package:app_finance/widgets/wrapper/row_widget.dart';
 import 'package:app_finance/widgets/wrapper/tap_widget.dart';
@@ -43,8 +44,7 @@ class BudgetLineWidget extends StatelessWidget {
     }
     final indent = ThemeHelper.getIndent();
     final width = ThemeHelper.getWidth(context);
-    final TextTheme textTheme = Theme.of(context).textTheme;
-    final sumStyle = textTheme.numberMedium.copyWith(color: textTheme.headlineSmall?.color);
+    final textTheme = context.textTheme;
 
     return TapWidget(
       tooltip: '',
@@ -56,7 +56,12 @@ class BudgetLineWidget extends StatelessWidget {
             chunk: [
               18,
               null,
-              ThemeHelper.getTextWidth(Text(details, maxLines: 1, style: sumStyle, overflow: TextOverflow.ellipsis)),
+              ThemeHelper.getTextWidth(Text(
+                details,
+                maxLines: 1,
+                style: textTheme.numberMedium,
+                overflow: TextOverflow.ellipsis,
+              )),
             ],
             indent: indent,
             maxWidth: width + indent,
@@ -82,7 +87,7 @@ class BudgetLineWidget extends StatelessWidget {
                   ),
                 ],
               [
-                TextWrapper(details, style: sumStyle),
+                TextWrapper(details, style: textTheme.numberMedium),
               ]
             ],
           ),

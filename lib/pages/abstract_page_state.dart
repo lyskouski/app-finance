@@ -9,6 +9,7 @@ import 'package:app_finance/_classes/storage/app_data.dart';
 import 'package:app_finance/_classes/controller/focus_controller.dart';
 import 'package:app_finance/_configs/responsive_matrix.dart';
 import 'package:app_finance/_configs/theme_helper.dart';
+import 'package:app_finance/_ext/build_context_ext.dart';
 import 'package:app_finance/widgets/generic/menu_widget.dart';
 import 'package:app_finance/widgets/wrapper/input_controller_wrapper.dart';
 import 'package:app_finance/widgets/wrapper/row_widget.dart';
@@ -81,7 +82,7 @@ abstract class AbstractPageState<T extends StatefulWidget> extends State<T> {
   Widget getBarTitle(BuildContext context, [bool isBottom = false]) {
     return TextWrapper(
       getTitle(),
-      style: TextStyle(color: Theme.of(context).colorScheme.inversePrimary),
+      style: TextStyle(color: context.colorScheme.onInverseSurface.withOpacity(0.8)),
     );
   }
 
@@ -90,7 +91,7 @@ abstract class AbstractPageState<T extends StatefulWidget> extends State<T> {
     return AppBar(
       title: Center(child: getBarTitle(context)),
       toolbarHeight: barHeight,
-      backgroundColor: Theme.of(context).colorScheme.primary,
+      backgroundColor: context.colorScheme.primary,
       leading: getBarLeading(nav),
       actions: getBarActions(nav),
     );
@@ -124,7 +125,7 @@ abstract class AbstractPageState<T extends StatefulWidget> extends State<T> {
               child: TextWrapper(
                 getButtonName(),
                 maxLines: 2,
-                style: theme.textTheme.bodySmall!.copyWith(color: theme.colorScheme.inversePrimary),
+                style: theme.textTheme.bodySmall!.copyWith(color: theme.colorScheme.onInverseSurface.withOpacity(0.6)),
               ),
             ),
           ],
@@ -135,7 +136,7 @@ abstract class AbstractPageState<T extends StatefulWidget> extends State<T> {
   }
 
   Drawer? buildDrawer() {
-    final ColorScheme colorScheme = Theme.of(context).colorScheme;
+    final ColorScheme colorScheme = context.colorScheme;
     double indent = ThemeHelper.getIndent();
     return Drawer(
       elevation: 0,

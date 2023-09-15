@@ -7,6 +7,7 @@ import 'package:app_finance/_classes/structure/currency_app_data.dart';
 import 'package:app_finance/_classes/storage/app_data.dart';
 import 'package:app_finance/_classes/controller/delayed_call.dart';
 import 'package:app_finance/_configs/theme_helper.dart';
+import 'package:app_finance/_ext/build_context_ext.dart';
 import 'package:app_finance/widgets/form/simple_input.dart';
 import 'package:app_finance/widgets/wrapper/row_widget.dart';
 import 'package:currency_picker/currency_picker.dart';
@@ -134,7 +135,7 @@ class CurrencyExchangeInputState extends State<CurrencyExchangeInput> {
     if (targetAmount != double.tryParse(widget.targetController.text)) {
       WidgetsBinding.instance.addPostFrameCallback((_) => setState(recalculate));
     }
-    final TextTheme textTheme = Theme.of(context).textTheme;
+    final TextTheme textTheme = context.textTheme;
     return Column(
       children: List<Widget>.generate(widget.source.length, (index) {
         if (widget.source[index] == null || widget.conversion[index][0] == widget.conversion[index][1]) {
@@ -146,7 +147,7 @@ class CurrencyExchangeInputState extends State<CurrencyExchangeInput> {
             Container(
               width: widget.width,
               decoration: BoxDecoration(
-                border: Border.all(color: Theme.of(context).colorScheme.inversePrimary.withOpacity(0.6)),
+                border: Border.all(color: context.colorScheme.inversePrimary.withOpacity(0.6)),
               ),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.start,
@@ -157,7 +158,7 @@ class CurrencyExchangeInputState extends State<CurrencyExchangeInput> {
                         widget.conversion[index][1] ?? '?',
                       ),
                       style: textTheme.bodyLarge?.copyWith(
-                        color: Theme.of(context).colorScheme.primary,
+                        color: context.colorScheme.primary,
                       )),
                   Padding(
                     padding: EdgeInsets.fromLTRB(widget.indent, 0, widget.indent, widget.indent),

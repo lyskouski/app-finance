@@ -7,6 +7,7 @@ import 'package:app_finance/_classes/storage/data_handler.dart';
 import 'package:app_finance/_classes/structure/bill_app_data.dart';
 import 'package:app_finance/_classes/structure/budget_app_data.dart';
 import 'package:app_finance/_classes/structure/currency/exchange.dart';
+import 'package:app_finance/_ext/build_context_ext.dart';
 import 'package:app_finance/charts/forecast_chart.dart';
 import 'package:app_finance/_configs/theme_helper.dart';
 import 'package:app_finance/charts/interface/chart_data.dart';
@@ -22,7 +23,7 @@ class BudgetTab extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final TextTheme textTheme = Theme.of(context).textTheme;
+    final TextTheme textTheme = context.textTheme;
     double indent = ThemeHelper.getIndent();
     final exchange = Exchange(store: store);
     return SingleChildScrollView(

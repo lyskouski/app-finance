@@ -4,6 +4,7 @@
 import 'package:app_finance/_classes/herald/app_locale.dart';
 import 'package:app_finance/_classes/structure/navigation/app_route.dart';
 import 'package:app_finance/_classes/structure/goal_app_data.dart';
+import 'package:app_finance/_ext/build_context_ext.dart';
 import 'package:app_finance/widgets/wrapper/row_widget.dart';
 import 'package:app_finance/widgets/wrapper/tap_widget.dart';
 import 'package:app_finance/_configs/theme_helper.dart';
@@ -22,8 +23,8 @@ class GoalLineWidget extends StatelessWidget {
   @override
   Widget build(context) {
     final indent = ThemeHelper.getIndent();
-    final ColorScheme colorScheme = Theme.of(context).colorScheme;
-    final TextTheme textTheme = Theme.of(context).textTheme;
+    final ColorScheme colorScheme = context.colorScheme;
+    final TextTheme textTheme = context.textTheme;
     double screenWidth = width ?? ThemeHelper.getWidth(context, 2);
     return TapWidget(
       tooltip: AppLocale.labels.goalTooltip,

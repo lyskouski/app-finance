@@ -3,6 +3,8 @@
 
 import 'package:app_finance/_classes/herald/app_locale.dart';
 import 'package:app_finance/_classes/controller/focus_controller.dart';
+import 'package:app_finance/_configs/custom_color_scheme.dart';
+import 'package:app_finance/_ext/build_context_ext.dart';
 import 'package:app_finance/_ext/color_ext.dart';
 import 'package:app_finance/widgets/form/abstract_selector.dart';
 import 'package:flutter/material.dart';
@@ -68,7 +70,7 @@ class ColorSelectorState extends AbstractSelectorState<ColorSelector> {
       decoration: InputDecoration(
         filled: true,
         border: InputBorder.none,
-        fillColor: widget.value ?? Theme.of(context).colorScheme.inversePrimary.withOpacity(0.3),
+        fillColor: widget.value ?? context.colorScheme.fieldBackground,
         suffixIcon: GestureDetector(
           child: const Icon(Icons.color_lens),
         ),

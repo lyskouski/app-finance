@@ -4,7 +4,9 @@
 import 'package:app_finance/_classes/herald/app_locale.dart';
 import 'package:app_finance/_classes/herald/app_sync.dart';
 import 'package:app_finance/_classes/storage/app_data.dart';
+import 'package:app_finance/_configs/custom_color_scheme.dart';
 import 'package:app_finance/_configs/theme_helper.dart';
+import 'package:app_finance/_ext/build_context_ext.dart';
 import 'package:app_finance/widgets/form/simple_input.dart';
 import 'package:app_finance/widgets/wrapper/row_widget.dart';
 import 'package:app_finance/widgets/wrapper/table_widget.dart';
@@ -61,7 +63,7 @@ class SyncTabState extends State<SyncTab> {
 
   @override
   Widget build(BuildContext context) {
-    final TextTheme textTheme = Theme.of(context).textTheme;
+    final textTheme = context.textTheme;
     final indent = ThemeHelper.getIndent();
     return Consumer<AppSync>(builder: (context, appSync, _) {
       sync = appSync..followBinary(runtimeType, ping);
@@ -87,7 +89,7 @@ class SyncTabState extends State<SyncTab> {
                     ),
                     Container(
                       padding: EdgeInsets.all(indent),
-                      color: Theme.of(context).colorScheme.inversePrimary.withOpacity(0.3),
+                      color: context.colorScheme.fieldBackground,
                       child: SelectableText(
                         sync.getUuid() ?? AppLocale.labels.pearDisabled,
                         style: textTheme.bodyLarge,
@@ -128,7 +130,7 @@ class SyncTabState extends State<SyncTab> {
               ThemeHelper.hIndent4x,
               TableWidget(
                 width: ThemeHelper.getWidth(context),
-                shadowColor: Theme.of(context).colorScheme.onBackground.withOpacity(0.1),
+                shadowColor: context.colorScheme.onBackground.withOpacity(0.1),
                 chunk: const [80, null, 80, 90],
                 data: [
                   [

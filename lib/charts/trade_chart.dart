@@ -5,6 +5,7 @@ import 'dart:collection';
 
 import 'package:app_finance/_classes/herald/app_locale.dart';
 import 'package:app_finance/_classes/structure/transaction_log_data.dart';
+import 'package:app_finance/_ext/build_context_ext.dart';
 import 'package:app_finance/charts/interface/chart_data.dart';
 import 'package:app_finance/charts/interface/data_scope.dart';
 import 'package:app_finance/charts/painter/foreground_chart_painter.dart';
@@ -69,7 +70,7 @@ class TradeChart extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final size = Size(width, height);
-    final bgColor = Theme.of(context).colorScheme.onBackground;
+    final bgColor = context.colorScheme.onBackground;
     final scope = _prepareData();
 
     final bg = ForegroundChartPainter(

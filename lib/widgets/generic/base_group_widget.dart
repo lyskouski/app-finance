@@ -5,6 +5,7 @@ import 'dart:math';
 
 import 'package:app_finance/_classes/herald/app_locale.dart';
 import 'package:app_finance/_classes/structure/navigation/app_menu.dart';
+import 'package:app_finance/_ext/build_context_ext.dart';
 import 'package:app_finance/charts/bar_vertical_group.dart';
 import 'package:app_finance/charts/bar_vertical_single.dart';
 import 'package:app_finance/charts/radial_bar_chart.dart';
@@ -62,7 +63,7 @@ class BaseGroupWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     double indent = ThemeHelper.getIndent();
-    final TextTheme textTheme = Theme.of(context).textTheme;
+    final textTheme = context.textTheme;
     final titleText = Text(
       title,
       style: textTheme.bodyMedium,

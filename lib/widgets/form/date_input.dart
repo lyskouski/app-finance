@@ -3,7 +3,9 @@
 
 import 'package:app_finance/_classes/controller/focus_controller.dart';
 import 'package:app_finance/_classes/herald/app_locale.dart';
+import 'package:app_finance/_configs/custom_color_scheme.dart';
 import 'package:app_finance/_configs/custom_text_theme.dart';
+import 'package:app_finance/_ext/build_context_ext.dart';
 import 'package:app_finance/widgets/form/abstract_selector.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
@@ -52,11 +54,10 @@ class DateInputState extends AbstractSelectorState<DateInput> {
 
   @override
   Widget buildContent(BuildContext context) {
-    final textTheme = Theme.of(context).textTheme;
-    final style = textTheme.numberMedium.copyWith(color: textTheme.headlineSmall?.color);
+    final style = context.textTheme.numberMedium;
     final DateFormat formatterDate = DateFormat.yMd(AppLocale.code);
     return Container(
-      color: Theme.of(context).colorScheme.inversePrimary.withOpacity(0.3),
+      color: context.colorScheme.fieldBackground,
       child: ListTile(
         title: widget.value != null
             ? Text(

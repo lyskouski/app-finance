@@ -26,6 +26,7 @@ class DotsTabBarWidget extends TabBar {
           mouseCursor: SystemMouseCursors.click,
           onTap: onTap,
           tabs: tabList,
+          dividerColor: Colors.transparent,
         );
 
   @override
