@@ -68,7 +68,7 @@ class DateTimeInputState extends AbstractSelectorState<DateTimeInput> {
               title: Text(
                 formatterTime.format(widget.value),
                 overflow: TextOverflow.ellipsis,
-                style: textTheme.numberMedium.copyWith(color: textTheme.headlineSmall?.color),
+                style: textTheme.numberMedium,
               ),
               onTap: () => onTap(context),
             ),

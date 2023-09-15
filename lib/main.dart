@@ -6,6 +6,7 @@ import 'package:app_finance/_classes/herald/app_sync.dart';
 import 'package:app_finance/_classes/herald/app_theme.dart';
 import 'package:app_finance/_classes/herald/app_zoom.dart';
 import 'package:app_finance/_classes/storage/app_preferences.dart';
+import 'package:app_finance/_configs/custom_color_scheme.dart';
 import 'package:app_finance/_configs/custom_text_theme.dart';
 import 'package:app_finance/_classes/storage/app_data.dart';
 import 'package:app_finance/_classes/structure/navigation/app_route.dart';
@@ -151,11 +152,15 @@ class MyAppState extends State<MyApp> {
       supportedLocales: AppLocalizations.supportedLocales,
       locale: context.watch<AppLocale>().value,
       theme: ThemeData(
+        colorScheme: const ColorScheme.light().withCustom(),
+        floatingActionButtonTheme: const FloatingActionButtonThemeData().withCustom(Brightness.light),
         brightness: Brightness.light,
         textTheme: CustomTextTheme.textTheme(Theme.of(context)),
         useMaterial3: true,
       ),
       darkTheme: ThemeData(
+        colorScheme: const ColorScheme.dark().withCustom(),
+        floatingActionButtonTheme: const FloatingActionButtonThemeData().withCustom(Brightness.dark),
         brightness: Brightness.dark,
         textTheme: CustomTextTheme.textTheme(Theme.of(context)),
         useMaterial3: true,

@@ -3,6 +3,7 @@
 
 import 'package:app_finance/_classes/herald/app_locale.dart';
 import 'package:app_finance/_classes/structure/navigation/app_menu.dart';
+import 'package:app_finance/_configs/custom_color_scheme.dart';
 import 'package:app_finance/_configs/custom_text_theme.dart';
 import 'package:app_finance/_configs/theme_helper.dart';
 import 'package:app_finance/_ext/build_context_ext.dart';
@@ -65,20 +66,21 @@ class BaseHeaderWidget extends StatelessWidget {
               end: const Size(1, 2),
               child: TextWrapper(
                 (state.total as double).toCurrency(),
-                style: textTheme.numberLarge.copyWith(color: textTheme.headlineSmall?.color),
+                style: textTheme.numberLarge,
               ),
             ),
             GridItem(
               start: const Size(1, 0),
               end: const Size(2, 2),
               child: ToolbarButtonWidget(
-                borderColor: context.colorScheme.primary.withOpacity(0.2),
+                borderColor: context.colorScheme.button.withOpacity(0.3),
                 offset: const Offset(-4, 0),
+                margin: const EdgeInsets.only(left: 4),
                 child: IconButton(
                   hoverColor: Colors.transparent,
                   icon: Icon(
                     Icons.stacked_bar_chart,
-                    color: context.colorScheme.primary.withOpacity(0.6),
+                    color: context.colorScheme.button,
                   ),
                   tooltip: AppLocale.labels.metricsTooltip,
                   onPressed: () => nav.pushNamed(AppMenu.metrics(route)),
@@ -90,13 +92,14 @@ class BaseHeaderWidget extends StatelessWidget {
                 start: const Size(2, 0),
                 end: const Size(3, 2),
                 child: ToolbarButtonWidget(
-                  borderColor: context.colorScheme.primary.withOpacity(0.2),
+                  borderColor: context.colorScheme.button.withOpacity(0.3),
                   offset: const Offset(-4, 0),
+                  margin: const EdgeInsets.only(left: 4),
                   child: IconButton(
                     hoverColor: Colors.transparent,
                     selectedIcon: Icon(
                       Icons.expand,
-                      color: context.colorScheme.primary.withOpacity(0.6),
+                      color: context.colorScheme.button,
                     ),
                     icon: Icon(
                       Icons.expand_less,

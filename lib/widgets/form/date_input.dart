@@ -54,8 +54,7 @@ class DateInputState extends AbstractSelectorState<DateInput> {
 
   @override
   Widget buildContent(BuildContext context) {
-    final textTheme = context.textTheme;
-    final style = textTheme.numberMedium.copyWith(color: textTheme.headlineSmall?.color);
+    final style = context.textTheme.numberMedium;
     final DateFormat formatterDate = DateFormat.yMd(AppLocale.code);
     return Container(
       color: context.colorScheme.fieldBackground,

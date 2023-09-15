@@ -45,7 +45,6 @@ class BudgetLineWidget extends StatelessWidget {
     final indent = ThemeHelper.getIndent();
     final width = ThemeHelper.getWidth(context);
     final textTheme = context.textTheme;
-    final sumStyle = textTheme.numberMedium.copyWith(color: textTheme.headlineSmall?.color);
 
     return TapWidget(
       tooltip: '',
@@ -57,7 +56,12 @@ class BudgetLineWidget extends StatelessWidget {
             chunk: [
               18,
               null,
-              ThemeHelper.getTextWidth(Text(details, maxLines: 1, style: sumStyle, overflow: TextOverflow.ellipsis)),
+              ThemeHelper.getTextWidth(Text(
+                details,
+                maxLines: 1,
+                style: textTheme.numberMedium,
+                overflow: TextOverflow.ellipsis,
+              )),
             ],
             indent: indent,
             maxWidth: width + indent,
@@ -83,7 +87,7 @@ class BudgetLineWidget extends StatelessWidget {
                   ),
                 ],
               [
-                TextWrapper(details, style: sumStyle),
+                TextWrapper(details, style: textTheme.numberMedium),
               ]
             ],
           ),

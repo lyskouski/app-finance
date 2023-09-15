@@ -50,7 +50,7 @@ class ListSelector<K extends ListSelectorItem> extends AbstractSelector {
 
 class ListSelectorState<T extends ListSelector, K extends ListSelectorItem> extends AbstractSelectorState<T> {
   Widget selectorBuilder(context, K item) {
-    final textTheme = context.textTheme;
+    final textTheme = Theme.of(context).textTheme;
     return TextWrapper(item.toString(), style: textTheme.numberMedium.copyWith(color: textTheme.headlineSmall?.color));
   }
 
@@ -75,8 +75,9 @@ class ListSelectorState<T extends ListSelector, K extends ListSelectorItem> exte
   @override
   Widget buildContent(context) {
     final indent = ThemeHelper.getIndent();
-    final textTheme = context.textTheme;
-    final hintStyle = textTheme.numberMedium.copyWith(color: textTheme.headlineSmall?.color!.withOpacity(0.4));
+    final hintStyle = context.textTheme.numberMedium.copyWith(
+      color: context.textTheme.headlineSmall?.color!.withOpacity(0.4),
+    );
     K? item = widget.value != null ? widget.options.cast().where((e) => e.equal(widget.value)).firstOrNull : null;
     return SearchAnchor(
       isFullScreen: true,

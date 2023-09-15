@@ -70,13 +70,12 @@ class GoalPageState extends AbstractPageState<GoalPage> with FormatterMixin {
   Widget buildContent(BuildContext context, BoxConstraints constraints) {
     final indent = ThemeHelper.getIndent();
     final width = ThemeHelper.getWidth(context, 4);
-    final TextTheme textTheme = context.textTheme;
     final goals = super.state.getList(AppDataType.goals);
     final maxValue = _getMaxValue(goals.cast<GoalAppData>());
     final valInvoice = _getValue(AppDataType.invoice);
     final valBill = _getValue(AppDataType.bills);
     final value = valInvoice - valBill;
-    final textStyle = context.textTheme.numberSmall.copyWith(color: textTheme.headlineSmall?.color);
+    final textStyle = context.textTheme.numberSmall;
 
     return SingleChildScrollView(
       child: Padding(

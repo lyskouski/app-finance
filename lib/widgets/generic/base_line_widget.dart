@@ -46,7 +46,7 @@ class BaseLineWidget extends StatelessWidget {
     final indent = ThemeHelper.getIndent();
     final detailsText = Text(
       details,
-      style: textTheme.numberMedium.copyWith(color: textTheme.headlineSmall?.color),
+      style: textTheme.numberMedium,
       overflow: TextOverflow.ellipsis,
     );
 

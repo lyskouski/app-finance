@@ -37,7 +37,7 @@ class SimpleInput extends AbstractInput {
     return TextFormField(
       controller: controller,
       inputFormatters: formatter,
-      style: textTheme.numberMedium.copyWith(color: textTheme.headlineSmall?.color),
+      style: textTheme.numberMedium,
       keyboardType: type,
       focusNode: focus,
       textInputAction: FocusController.getAction(),
