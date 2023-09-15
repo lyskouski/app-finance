@@ -6,6 +6,7 @@ import 'package:app_finance/_classes/structure/currency/currency_provider.dart';
 import 'package:app_finance/_classes/structure/budget_app_data.dart';
 import 'package:app_finance/_classes/controller/focus_controller.dart';
 import 'package:app_finance/_classes/storage/app_preferences.dart';
+import 'package:app_finance/_configs/custom_color_scheme.dart';
 import 'package:app_finance/_configs/theme_helper.dart';
 import 'package:app_finance/_ext/build_context_ext.dart';
 import 'package:app_finance/pages/abstract_add_page.dart';
@@ -200,7 +201,7 @@ class BudgetAddPageState<T extends BudgetAddPage> extends AbstractAddPageState<B
                     ],
                     [
                       Container(
-                        color: context.colorScheme.inversePrimary.withOpacity(0.3),
+                        color: context.colorScheme.fieldBackground,
                         child: Slider(
                           value: e.value,
                           onChanged: (v) => setState(() => amountSet[e.key] = v),

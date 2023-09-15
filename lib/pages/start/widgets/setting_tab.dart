@@ -6,6 +6,7 @@ import 'package:app_finance/_classes/herald/app_theme.dart';
 import 'package:app_finance/_classes/herald/app_zoom.dart';
 import 'package:app_finance/_classes/structure/currency/currency_provider.dart';
 import 'package:app_finance/_classes/storage/app_preferences.dart';
+import 'package:app_finance/_configs/custom_color_scheme.dart';
 import 'package:app_finance/_configs/theme_helper.dart';
 import 'package:app_finance/_ext/build_context_ext.dart';
 import 'package:app_finance/widgets/form/currency_selector.dart';
@@ -143,7 +144,7 @@ class SettingTabState<T extends SettingTab> extends AbstractTabState<T> {
             style: textTheme.bodyLarge,
           ),
           Container(
-            color: context.colorScheme.inversePrimary.withOpacity(0.3),
+            color: context.colorScheme.fieldBackground,
             child: Slider(
               value: zoom.value,
               onChanged: zoom.set,

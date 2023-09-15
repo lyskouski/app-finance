@@ -4,6 +4,7 @@
 import 'package:app_finance/_classes/herald/app_locale.dart';
 import 'package:app_finance/_classes/herald/app_sync.dart';
 import 'package:app_finance/_classes/storage/app_data.dart';
+import 'package:app_finance/_configs/custom_color_scheme.dart';
 import 'package:app_finance/_configs/theme_helper.dart';
 import 'package:app_finance/_ext/build_context_ext.dart';
 import 'package:app_finance/widgets/form/simple_input.dart';
@@ -88,7 +89,7 @@ class SyncTabState extends State<SyncTab> {
                     ),
                     Container(
                       padding: EdgeInsets.all(indent),
-                      color: context.colorScheme.inversePrimary.withOpacity(0.3),
+                      color: context.colorScheme.fieldBackground,
                       child: SelectableText(
                         sync.getUuid() ?? AppLocale.labels.pearDisabled,
                         style: textTheme.bodyLarge,

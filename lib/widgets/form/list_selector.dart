@@ -2,6 +2,7 @@
 // Use of this source code is governed by a CC BY-NC-ND 4.0 license that can be found in the LICENSE file.
 
 import 'package:app_finance/_classes/controller/focus_controller.dart';
+import 'package:app_finance/_configs/custom_color_scheme.dart';
 import 'package:app_finance/_configs/custom_text_theme.dart';
 import 'package:app_finance/_configs/theme_helper.dart';
 import 'package:app_finance/_ext/build_context_ext.dart';
@@ -86,7 +87,7 @@ class ListSelectorState<T extends ListSelector, K extends ListSelectorItem> exte
         onTap: () => onTap(null),
         child: Container(
           width: double.infinity,
-          color: context.colorScheme.inversePrimary.withOpacity(0.3),
+          color: context.colorScheme.fieldBackground,
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [

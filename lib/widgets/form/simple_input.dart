@@ -2,6 +2,7 @@
 // Use of this source code is governed by a CC BY-NC-ND 4.0 license that can be found in the LICENSE file.
 
 import 'package:app_finance/_classes/controller/focus_controller.dart';
+import 'package:app_finance/_configs/custom_color_scheme.dart';
 import 'package:app_finance/_configs/custom_text_theme.dart';
 import 'package:app_finance/_ext/build_context_ext.dart';
 import 'package:app_finance/widgets/form/abstract_input.dart';
@@ -46,7 +47,7 @@ class SimpleInput extends AbstractInput {
       decoration: InputDecoration(
         filled: true,
         border: InputBorder.none,
-        fillColor: context.colorScheme.inversePrimary.withOpacity(0.3),
+        fillColor: context.colorScheme.fieldBackground,
         hintText: tooltip,
         hintStyle: textTheme.numberMedium.copyWith(color: textTheme.headlineSmall?.color!.withOpacity(0.4)),
       ),

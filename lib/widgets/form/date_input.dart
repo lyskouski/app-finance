@@ -3,6 +3,7 @@
 
 import 'package:app_finance/_classes/controller/focus_controller.dart';
 import 'package:app_finance/_classes/herald/app_locale.dart';
+import 'package:app_finance/_configs/custom_color_scheme.dart';
 import 'package:app_finance/_configs/custom_text_theme.dart';
 import 'package:app_finance/_ext/build_context_ext.dart';
 import 'package:app_finance/widgets/form/abstract_selector.dart';
@@ -57,7 +58,7 @@ class DateInputState extends AbstractSelectorState<DateInput> {
     final style = textTheme.numberMedium.copyWith(color: textTheme.headlineSmall?.color);
     final DateFormat formatterDate = DateFormat.yMd(AppLocale.code);
     return Container(
-      color: context.colorScheme.inversePrimary.withOpacity(0.3),
+      color: context.colorScheme.fieldBackground,
       child: ListTile(
         title: widget.value != null
             ? Text(
