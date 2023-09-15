@@ -28,10 +28,20 @@ class InputControllerWrapper extends StatefulWidget {
 class InputControllerWrapperState extends State<InputControllerWrapper> {
   bool _ctrlPressed = false;
   late AppZoom zoom;
+  final focus = FocusNode();
 
   @override
   initState() {
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      if (mounted) focus.requestFocus();
+    });
     super.initState();
+  }
+
+  @override
+  void dispose() {
+    focus.dispose();
+    super.dispose();
   }
 
   void handleEvent(AppEvents event) {
@@ -80,12 +90,12 @@ class InputControllerWrapperState extends State<InputControllerWrapper> {
     return Listener(
       onPointerSignal: onPointerSignal,
       child: RawKeyboardListener(
-        focusNode: FocusNode()..requestFocus(),
+        focusNode: focus,
         onKey: onKeyPressed,
-        child: GestureDetector(
-          onScaleUpdate: onScaleUpdate,
-          child: widget.child,
-        ),
+        //child: GestureDetector(
+        //  onScaleUpdate: onScaleUpdate,
+        child: widget.child,
+        //),
       ),
     );
   }
