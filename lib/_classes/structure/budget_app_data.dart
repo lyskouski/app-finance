@@ -5,10 +5,13 @@ import 'package:app_finance/_classes/herald/app_locale.dart';
 import 'package:app_finance/_classes/structure/currency/currency_provider.dart';
 import 'package:app_finance/_classes/structure/abstract_app_data.dart';
 import 'package:app_finance/_classes/storage/app_data.dart';
+import 'package:app_finance/_classes/structure/currency/exchange.dart';
+import 'package:app_finance/_ext/double_ext.dart';
 import 'package:app_finance/_ext/int_ext.dart';
+import 'package:app_finance/_mixins/storage_mixin.dart';
 import 'package:flutter/material.dart';
 
-class BudgetAppData extends AbstractAppData {
+class BudgetAppData extends AbstractAppData with StorageMixin {
   double amount;
 
   BudgetAppData({
@@ -77,10 +80,23 @@ class BudgetAppData extends AbstractAppData {
   double get details => amountLimit > 0 ? amountLimit * (1 - progress) : 0.0;
 
   String get detailsFormatted {
-    if (amountLimit > 0) {
-      return '${getNumberFormatted(details)} ${AppLocale.labels.left}';
+    if (amountLimit > 0 && amountLimit < 1) {
+      return '${(_relativeAmountLimit() - amount).toCurrency(currency)} ${AppLocale.labels.left}';
+    } else if (amountLimit > 0) {
+      return '${details.toCurrency(currency)} ${AppLocale.labels.left}';
     } else {
-      return '${getNumberFormatted(amount)} ${AppLocale.labels.spent}';
+      return '${amount.toCurrency(currency)} ${AppLocale.labels.spent}';
+    }
+  }
+
+  String _description() {
+    if (amountLimit > 0 && amountLimit < 1) {
+      final relativeLimit = _relativeAmountLimit();
+      return '${(relativeLimit - amount).toCurrency(currency)} / ${(relativeLimit).toCurrency(currency)}';
+    } else if (amountLimit > 0) {
+      return '${(amountLimit * progress).toCurrency(currency)} / ${(amountLimit).toCurrency(currency)}';
+    } else {
+      return '';
     }
   }
 
@@ -89,9 +105,16 @@ class BudgetAppData extends AbstractAppData {
   double get amountLimit => super.details;
   set amountLimit(double value) => super.details = value;
 
+  double _relativeAmountLimit() {
+    final ex = Exchange(store: super.getState());
+    return amountLimit *
+        getState()
+            .getActualList(AppDataType.invoice)
+            .fold(0.0, (v, e) => v + ex.reform(e.details, e.currency, currency));
+  }
+
   @override
-  String get description =>
-      amountLimit > 0 ? '${getNumberFormatted(amountLimit * progress)} / ${getNumberFormatted(amountLimit)}' : '';
+  String get description => _description();
 
   @override
   set description(String? value) => {};
