@@ -5,11 +5,16 @@ import 'package:app_finance/_classes/herald/app_locale.dart';
 import 'package:app_finance/_classes/structure/currency/currency_provider.dart';
 import 'package:app_finance/_classes/structure/abstract_app_data.dart';
 import 'package:app_finance/_classes/storage/app_data.dart';
+import 'package:app_finance/_classes/structure/currency/exchange.dart';
+import 'package:app_finance/_ext/double_ext.dart';
 import 'package:app_finance/_ext/int_ext.dart';
+import 'package:app_finance/_mixins/storage_mixin.dart';
 import 'package:flutter/material.dart';
 
-class BudgetAppData extends AbstractAppData {
+class BudgetAppData extends AbstractAppData with StorageMixin {
   double amount;
+  Map<int, double> amountSet;
+  final int _month = DateTime.now().month;
 
   BudgetAppData({
     required super.title,
@@ -22,6 +27,7 @@ class BudgetAppData extends AbstractAppData {
     super.createdAt,
     super.createdAtFormatted,
     amountLimit = 0.0,
+    this.amountSet = const {},
     this.amount = 0.0,
     super.hidden,
   }) : super(
@@ -47,6 +53,7 @@ class BudgetAppData extends AbstractAppData {
       currency: super.currency,
       createdAt: super.createdAt,
       amountLimit: amountLimit,
+      amountSet: amountSet,
       amount: amount,
       hidden: super.hidden,
     );
@@ -63,6 +70,7 @@ class BudgetAppData extends AbstractAppData {
       updatedAt: DateTime.parse(json['updatedAt']),
       createdAt: DateTime.parse(json['createdAt']),
       amountLimit: json['amountLimit'],
+      amountSet: json['amountSet'] != null ? json['amountSet'].toMap<int, double>() : {},
       hidden: json['hidden'],
     );
   }
@@ -71,27 +79,50 @@ class BudgetAppData extends AbstractAppData {
   Map<String, dynamic> toJson() => {
         ...super.toJson(),
         'amountLimit': amountLimit,
+        'amountSet': amountSet,
       };
 
   @override
   double get details => amountLimit > 0 ? amountLimit * (1 - progress) : 0.0;
 
   String get detailsFormatted {
-    if (amountLimit > 0) {
-      return '${getNumberFormatted(details)} ${AppLocale.labels.left}';
+    if (amountLimit > 0 && amountLimit < 1) {
+      return '${(_relativeAmountLimit() - amount).toCurrency(currency)} ${AppLocale.labels.left}';
+    } else if (amountLimit > 0) {
+      return '${details.toCurrency(currency)} ${AppLocale.labels.left}';
     } else {
-      return '${getNumberFormatted(amount)} ${AppLocale.labels.spent}';
+      return '${amount.toCurrency(currency)} ${AppLocale.labels.spent}';
+    }
+  }
+
+  String _description() {
+    if (amountLimit > 0 && amountLimit < 1) {
+      final percents = (amountLimit * 100).toStringAsFixed(2);
+      return '${(amount).toCurrency(currency)} / ${_relativeAmountLimit().toCurrency(currency)} ($percents%)';
+    } else if (amountLimit > 0) {
+      return '${(amountLimit * progress).toCurrency(currency)} / ${(amountLimit).toCurrency(currency)}';
+    } else {
+      return '';
     }
   }
 
   double get progressLeft => progress < 1 ? 1 - progress : 0.0;
 
-  double get amountLimit => super.details;
+  double get multiplication => amountSet[_month] ?? 1.0;
+
+  double get amountLimit => super.details * multiplication;
   set amountLimit(double value) => super.details = value;
 
+  double _relativeAmountLimit() {
+    final ex = Exchange(store: super.getState());
+    return amountLimit *
+        getState()
+            .getActualList(AppDataType.invoice)
+            .fold(0.0, (v, e) => v + ex.reform(e.details, e.currency, currency));
+  }
+
   @override
-  String get description =>
-      amountLimit > 0 ? '${getNumberFormatted(amountLimit * progress)} / ${getNumberFormatted(amountLimit)}' : '';
+  String get description => _description();
 
   @override
   set description(String? value) => {};

@@ -7,6 +7,7 @@ import 'package:app_finance/_classes/structure/abstract_app_data.dart';
 import 'package:app_finance/_classes/structure/account_app_data.dart';
 import 'package:app_finance/_classes/structure/budget_app_data.dart';
 import 'package:app_finance/_classes/storage/app_data.dart';
+import 'package:app_finance/_ext/double_ext.dart';
 import 'package:app_finance/_mixins/storage_mixin.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
@@ -71,7 +72,7 @@ class BillAppData extends AbstractAppData with StorageMixin {
         'category': category,
       };
 
-  String get detailsFormatted => getNumberFormatted(super.details);
+  String get detailsFormatted => (super.details as double).toCurrency(currency);
 
   @override
   String get description {

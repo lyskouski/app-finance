@@ -104,7 +104,7 @@ class TransactionLog {
       goal: (data) => GoalAppData.fromJson(data),
       account: (data) => AccountAppData.fromJson(data),
       bill: (data) => BillAppData.fromJson(data)..setState(store),
-      budget: (data) => BudgetAppData.fromJson(data),
+      budget: (data) => BudgetAppData.fromJson(data)..setState(store),
       currency: (data) => CurrencyAppData.fromJson(data),
       invoice: (data) => InvoiceAppData.fromJson(data),
     };

@@ -18,6 +18,7 @@ import 'package:app_finance/widgets/_wrappers/row_widget.dart';
 import 'package:currency_picker/currency_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:intl/intl.dart';
 
 class BudgetAddPage extends AbstractAddPage {
   final String? title;
@@ -45,6 +46,7 @@ class BudgetAddPageState<T extends BudgetAddPage> extends AbstractAddPageState<B
   IconData? icon;
   MaterialColor? color;
   Currency? currency;
+  Map<int, double> amountSet = {};
 
   @override
   void initState() {
@@ -73,6 +75,7 @@ class BudgetAddPageState<T extends BudgetAddPage> extends AbstractAddPageState<B
     super.state.add(BudgetAppData(
           title: title.text,
           amountLimit: double.tryParse(budgetLimit.text) ?? 0.0,
+          amountSet: amountSet,
           progress: 0.0,
           color: color ?? Colors.red,
           hidden: false,
@@ -141,10 +144,32 @@ class BudgetAddPageState<T extends BudgetAddPage> extends AbstractAddPageState<B
                 ],
               ],
             ),
-            ThemeHelper.hIndent2x,
-            Text(
-              AppLocale.labels.budgetLimit,
-              style: textTheme.bodyLarge,
+            ThemeHelper.hIndent,
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text(
+                  AppLocale.labels.budgetLimit,
+                  style: textTheme.bodyLarge,
+                ),
+                amountSet.isEmpty
+                    ? IconButton(
+                        icon: const Icon(Icons.vertical_split),
+                        tooltip: AppLocale.labels.splitTooltip,
+                        onPressed: () => setState(() {
+                          final result = Map<int, double>.from(amountSet);
+                          for (int i = 1; i <= 12; i++) {
+                            result[i] = 1.0;
+                          }
+                          amountSet = result;
+                        }),
+                      )
+                    : IconButton(
+                        icon: const Icon(Icons.delete),
+                        tooltip: AppLocale.labels.splitCancelTooltip,
+                        onPressed: () => setState(() => amountSet = {}),
+                      ),
+              ],
             ),
             SimpleInput(
               controller: budgetLimit,
@@ -155,6 +180,41 @@ class BudgetAddPageState<T extends BudgetAddPage> extends AbstractAddPageState<B
               ],
             ),
             ThemeHelper.hIndent2x,
+            if (amountSet.isNotEmpty) ...[
+              Text(
+                AppLocale.labels.budgetRelativeLimit,
+                style: textTheme.bodyLarge,
+              ),
+              ...amountSet.entries.map((e) {
+                return RowWidget(
+                  indent: indent,
+                  maxWidth: width + indent,
+                  chunk: const [100, null],
+                  children: [
+                    [
+                      Text(
+                        DateFormat.MMMM(AppLocale.code).format(DateTime(DateTime.now().year, e.key)),
+                        style: textTheme.bodyMedium,
+                      ),
+                    ],
+                    [
+                      Container(
+                        color: Theme.of(context).colorScheme.inversePrimary.withOpacity(0.3),
+                        child: Slider(
+                          value: e.value,
+                          onChanged: (v) => setState(() => amountSet[e.key] = v),
+                          min: 0.0,
+                          max: 4.0,
+                          divisions: 15,
+                          label: e.value.toStringAsFixed(2),
+                        ),
+                      ),
+                    ],
+                  ],
+                );
+              }),
+              ThemeHelper.hIndent2x,
+            ],
             Text(
               AppLocale.labels.currency,
               style: textTheme.bodyLarge,
