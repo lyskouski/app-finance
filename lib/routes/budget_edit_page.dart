@@ -37,6 +37,7 @@ class BudgetEditPageState extends BudgetAddPageState<BudgetEditPage> {
       final form = super.state.getByUuid(uuid) as BudgetAppData;
       title.text = form.title;
       budgetLimit.text = form.amountLimit.toString();
+      amountSet = form.amountSet;
       color = form.color;
       icon = form.icon;
       currency = form.currency;
@@ -54,6 +55,7 @@ class BudgetEditPageState extends BudgetAddPageState<BudgetEditPage> {
     data.title = title.text;
     data.color = color;
     data.icon = icon;
+    data.amountSet = amountSet;
     data.amountLimit = double.tryParse(budgetLimit.text) ?? 0.0;
     data.currency = currency;
     state.update(uuid, data);

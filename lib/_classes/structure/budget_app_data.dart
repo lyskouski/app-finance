@@ -13,6 +13,8 @@ import 'package:flutter/material.dart';
 
 class BudgetAppData extends AbstractAppData with StorageMixin {
   double amount;
+  Map<int, double> amountSet;
+  final int _month = DateTime.now().month;
 
   BudgetAppData({
     required super.title,
@@ -25,6 +27,7 @@ class BudgetAppData extends AbstractAppData with StorageMixin {
     super.createdAt,
     super.createdAtFormatted,
     amountLimit = 0.0,
+    this.amountSet = const {},
     this.amount = 0.0,
     super.hidden,
   }) : super(
@@ -50,6 +53,7 @@ class BudgetAppData extends AbstractAppData with StorageMixin {
       currency: super.currency,
       createdAt: super.createdAt,
       amountLimit: amountLimit,
+      amountSet: amountSet,
       amount: amount,
       hidden: super.hidden,
     );
@@ -66,6 +70,7 @@ class BudgetAppData extends AbstractAppData with StorageMixin {
       updatedAt: DateTime.parse(json['updatedAt']),
       createdAt: DateTime.parse(json['createdAt']),
       amountLimit: json['amountLimit'],
+      amountSet: json['amountSet'] != null ? json['amountSet'].toMap<int, double>() : {},
       hidden: json['hidden'],
     );
   }
@@ -74,6 +79,7 @@ class BudgetAppData extends AbstractAppData with StorageMixin {
   Map<String, dynamic> toJson() => {
         ...super.toJson(),
         'amountLimit': amountLimit,
+        'amountSet': amountSet,
       };
 
   @override
@@ -91,8 +97,8 @@ class BudgetAppData extends AbstractAppData with StorageMixin {
 
   String _description() {
     if (amountLimit > 0 && amountLimit < 1) {
-      final relativeLimit = _relativeAmountLimit();
-      return '${(relativeLimit - amount).toCurrency(currency)} / ${(relativeLimit).toCurrency(currency)}';
+      final percents = (amountLimit * 100).toStringAsFixed(2);
+      return '${(amount).toCurrency(currency)} / ${_relativeAmountLimit().toCurrency(currency)} ($percents%)';
     } else if (amountLimit > 0) {
       return '${(amountLimit * progress).toCurrency(currency)} / ${(amountLimit).toCurrency(currency)}';
     } else {
@@ -102,7 +108,9 @@ class BudgetAppData extends AbstractAppData with StorageMixin {
 
   double get progressLeft => progress < 1 ? 1 - progress : 0.0;
 
-  double get amountLimit => super.details;
+  double get multiplication => amountSet[_month] ?? 1.0;
+
+  double get amountLimit => super.details * multiplication;
   set amountLimit(double value) => super.details = value;
 
   double _relativeAmountLimit() {

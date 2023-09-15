@@ -149,7 +149,7 @@ class SettingTabState<T extends SettingTab> extends AbstractTabState<T> {
               min: AppZoom.min,
               max: AppZoom.max,
               divisions: 15,
-              label: '${zoom.value}',
+              label: zoom.value.toStringAsFixed(2),
             ),
           ),
           ThemeHelper.hIndent2x,
