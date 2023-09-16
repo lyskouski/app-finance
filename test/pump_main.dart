@@ -3,6 +3,7 @@
 
 import 'dart:io';
 
+import 'package:app_finance/_classes/herald/app_palette.dart';
 import 'package:app_finance/_classes/herald/app_sync.dart';
 import 'package:app_finance/_classes/herald/app_zoom.dart';
 import 'package:app_finance/_classes/storage/app_data.dart';
@@ -122,6 +123,9 @@ class PumpMain {
         ),
         ChangeNotifierProvider<AppZoom>(
           create: (_) => AppZoom(),
+        ),
+        ChangeNotifierProvider<AppPalette>(
+          create: (_) => AppPalette(),
         ),
       ],
       child: RepaintBoundary(
