@@ -10,6 +10,21 @@ extension CustomTextTheme on TextTheme {
 
   static TextTheme? textTheme(ThemeData baseTheme) {
     return baseTheme.textTheme.copyWith(
+      titleLarge: GoogleFonts.abel(
+        fontSize: 32,
+        fontWeight: FontWeight.w400,
+        letterSpacing: letterSpacingOrNone(1.2),
+      ),
+      titleMedium: GoogleFonts.abel(
+        fontSize: 18,
+        fontWeight: FontWeight.w400,
+        letterSpacing: letterSpacingOrNone(1.2),
+      ),
+      titleSmall: GoogleFonts.abel(
+        fontSize: 12,
+        fontWeight: FontWeight.w400,
+        letterSpacing: letterSpacingOrNone(1.2),
+      ),
       headlineLarge: GoogleFonts.abel(
         fontSize: 32,
         fontWeight: FontWeight.w400,

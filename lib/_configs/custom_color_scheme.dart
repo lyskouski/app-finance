@@ -52,8 +52,7 @@ class AppDefaultColors {
   }
 
   factory AppDefaultColors.fromJson(Map<String, dynamic> json) {
-    final palette = AppDefaultColors();
-    return palette
+    return AppDefaultColors()
       ..primary = Color(json['primary'])
       ..inversePrimary = Color(json['inversePrimary'])
       ..onSecondary = Color(json['onSecondary'])

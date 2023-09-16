@@ -114,6 +114,7 @@ class AboutPageState extends AbstractPageState<AboutPage> with LauncherMixin {
               },
             ),
           ),
+          ThemeHelper.formEndBox,
         ],
       ),
     );

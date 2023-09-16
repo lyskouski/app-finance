@@ -16,30 +16,31 @@ class FullSizedButtonWidget extends AbstractInput {
   final OnPressedFunction setState;
   final String title;
   final IconData icon;
-  final BoxConstraints constraints;
+  final BoxConstraints? constraints;
   late final String heroTag;
 
   FullSizedButtonWidget({
     super.key,
     required this.setState,
-    required this.constraints,
     required this.title,
     required this.icon,
+    this.constraints,
   }) : super(value: null) {
     heroTag = 'fz_button_${UniqueKey()}';
   }
 
   @override
   Widget buildContent(BuildContext context) {
-    final isBottom = ResponsiveMatrix(getWindowType(context)).isNavBottom(constraints);
+    final isBottom = constraints != null ? ResponsiveMatrix(getWindowType(context)).isNavBottom(constraints!) : false;
     final bool isKeyboardVisible = ThemeHelper.isKeyboardVisible(context) || isBottom;
     final colorScheme = context.colorScheme;
-    final width = constraints.maxWidth - ThemeHelper.getIndent(4) - 2;
+    final width = constraints != null ? constraints!.maxWidth - ThemeHelper.getIndent(4) - 2 : double.infinity;
     return SizedBox(
       width: isKeyboardVisible ? null : width,
       child: FloatingActionButton(
         heroTag: heroTag,
         onPressed: setState,
+        hoverColor: colorScheme.primary,
         tooltip: title,
         focusNode: FocusController.getFocusNode(),
         child: Row(
