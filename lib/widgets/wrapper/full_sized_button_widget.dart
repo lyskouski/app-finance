@@ -3,7 +3,6 @@
 
 import 'package:adaptive_breakpoints/adaptive_breakpoints.dart';
 import 'package:app_finance/_classes/controller/focus_controller.dart';
-import 'package:app_finance/_configs/custom_color_scheme.dart';
 import 'package:app_finance/_configs/responsive_matrix.dart';
 import 'package:app_finance/_configs/theme_helper.dart';
 import 'package:app_finance/_ext/build_context_ext.dart';
@@ -50,13 +49,13 @@ class FullSizedButtonWidget extends AbstractInput {
               icon,
               semanticLabel: title,
               size: 32,
-              color: colorScheme.onButton.withOpacity(0.8),
+              color: colorScheme.onSecondary.withOpacity(0.8),
             ),
             if (!isKeyboardVisible)
               Container(
                 padding: EdgeInsets.only(left: ThemeHelper.getIndent()),
                 constraints: BoxConstraints(maxWidth: width - 34),
-                child: TextWrapper(title, style: context.textTheme.bodyLarge?.copyWith(color: colorScheme.onButton)),
+                child: TextWrapper(title, style: context.textTheme.bodyLarge?.copyWith(color: colorScheme.onSecondary)),
               ),
           ],
         ),

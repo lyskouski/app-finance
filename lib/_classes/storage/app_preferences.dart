@@ -15,6 +15,7 @@ class AppPreferences {
   static const String prefPeer = 'p2p_host';
   static const String prefP2P = 'p2p_spot';
   static const String prefZoom = 'zoom';
+  static const String prefColor = 'color';
 
   static late SharedPreferences pref;
 

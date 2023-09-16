@@ -62,7 +62,11 @@
     "closedAt": "Finished till Date",
     "collapse": "Collapse (Restore) Section",
     "color": "Color",
+    "colorApp": "Custom",
+    "colorSystem": "Default",
+    "colorTheme": "Palette",
     "colorTooltip": "Select a color",
+    "colorUser": "Personal",
     "columnMap": "Mapping for Column '{value}'",
     "@columnMap": {
         "value": {

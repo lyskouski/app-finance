@@ -2,6 +2,7 @@
 // Use of this source code is governed by a CC BY-NC-ND 4.0 license that can be found in the LICENSE file.
 
 import 'package:app_finance/_classes/herald/app_locale.dart';
+import 'package:app_finance/_classes/herald/app_palette.dart';
 import 'package:app_finance/_classes/herald/app_theme.dart';
 import 'package:app_finance/_classes/herald/app_zoom.dart';
 import 'package:app_finance/_classes/structure/currency/currency_provider.dart';
@@ -32,10 +33,12 @@ class SettingTab extends AbstractTab {
 class SettingTabState<T extends SettingTab> extends AbstractTabState<T> {
   late AppTheme theme;
   late AppZoom zoom;
+  late AppPalette palette;
   Currency? currency;
   bool isEncrypted = false;
   bool hasEncrypted = false;
   String brightness = '0';
+  String colorMode = AppColors.colorApp;
 
   @override
   void initState() {
@@ -45,6 +48,7 @@ class SettingTabState<T extends SettingTab> extends AbstractTabState<T> {
     isEncrypted = doEncrypt == 'true' || doEncrypt == null;
     AppPreferences.set(AppPreferences.prefDoEncrypt, isEncrypted ? 'true' : 'false');
     brightness = AppPreferences.get(AppPreferences.prefTheme) ?? brightness;
+    colorMode = AppPreferences.get(AppPreferences.prefColor) ?? colorMode;
   }
 
   void saveEncryption(newValue) {
@@ -60,9 +64,14 @@ class SettingTabState<T extends SettingTab> extends AbstractTabState<T> {
     setState(() => currency = value);
   }
 
-  void saveTheme(String value) {
+  Future<void> saveTheme(String value) async {
+    await theme.setTheme(value);
     setState(() => brightness = value);
-    theme.setTheme(value);
+  }
+
+  Future<void> saveColor(String value) async {
+    await palette.setMode(value);
+    setState(() => colorMode = value);
   }
 
   Future<void> initCurrencyFromLocale(String locale) async {
@@ -83,6 +92,7 @@ class SettingTabState<T extends SettingTab> extends AbstractTabState<T> {
     String locale = Localizations.localeOf(context).toString();
     theme = Provider.of<AppTheme>(context, listen: false);
     zoom = Provider.of<AppZoom>(context, listen: false);
+    palette = Provider.of<AppPalette>(context, listen: false);
     final TextTheme textTheme = context.textTheme;
     double indent = ThemeHelper.getIndent(2);
     if (currency == null) {
@@ -136,6 +146,22 @@ class SettingTabState<T extends SettingTab> extends AbstractTabState<T> {
               ListSelectorItem(id: '2', name: AppLocale.labels.darkMode),
             ],
             setState: saveTheme,
+            indent: indent,
+          ),
+          ThemeHelper.hIndent2x,
+          Text(
+            AppLocale.labels.colorTheme,
+            style: textTheme.bodyLarge,
+          ),
+          ListSelector(
+            value: colorMode,
+            hintText: AppLocale.labels.brightnessTheme,
+            options: [
+              ListSelectorItem(id: AppColors.colorApp, name: AppLocale.labels.colorApp),
+              ListSelectorItem(id: AppColors.colorSystem, name: AppLocale.labels.colorSystem),
+              ListSelectorItem(id: AppColors.colorUser, name: AppLocale.labels.colorUser),
+            ],
+            setState: saveColor,
             indent: indent,
           ),
           ThemeHelper.hIndent2x,

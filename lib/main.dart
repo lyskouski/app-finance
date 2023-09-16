@@ -2,6 +2,7 @@
 // Use of this source code is governed by a CC BY-NC-ND 4.0 license that can be found in the LICENSE file.
 
 import 'package:app_finance/_classes/herald/app_locale.dart';
+import 'package:app_finance/_classes/herald/app_palette.dart';
 import 'package:app_finance/_classes/herald/app_sync.dart';
 import 'package:app_finance/_classes/herald/app_theme.dart';
 import 'package:app_finance/_classes/herald/app_zoom.dart';
@@ -80,6 +81,9 @@ void main() async {
         ChangeNotifierProvider<AppZoom>(
           create: (_) => AppZoom(),
         ),
+        ChangeNotifierProvider<AppPalette>(
+          create: (_) => AppPalette(),
+        ),
       ],
       child: MyApp(platform: platform),
     ),
@@ -146,21 +150,22 @@ class MyAppState extends State<MyApp> {
 
   @override
   Widget build(BuildContext context) {
+    final palette = context.watch<AppPalette>().value;
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       localizationsDelegates: AppLocalizations.localizationsDelegates,
       supportedLocales: AppLocalizations.supportedLocales,
       locale: context.watch<AppLocale>().value,
       theme: ThemeData(
-        colorScheme: const ColorScheme.light().withCustom(),
-        floatingActionButtonTheme: const FloatingActionButtonThemeData().withCustom(Brightness.light),
+        colorScheme: const ColorScheme.light().withCustom(palette),
+        floatingActionButtonTheme: const FloatingActionButtonThemeData().withCustom(palette, Brightness.light),
         brightness: Brightness.light,
         textTheme: CustomTextTheme.textTheme(Theme.of(context)),
         useMaterial3: true,
       ),
       darkTheme: ThemeData(
-        colorScheme: const ColorScheme.dark().withCustom(),
-        floatingActionButtonTheme: const FloatingActionButtonThemeData().withCustom(Brightness.dark),
+        colorScheme: const ColorScheme.dark().withCustom(palette),
+        floatingActionButtonTheme: const FloatingActionButtonThemeData().withCustom(palette, Brightness.dark),
         brightness: Brightness.dark,
         textTheme: CustomTextTheme.textTheme(Theme.of(context)),
         useMaterial3: true,
