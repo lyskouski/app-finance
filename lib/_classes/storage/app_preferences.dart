@@ -16,6 +16,8 @@ class AppPreferences {
   static const String prefP2P = 'p2p_spot';
   static const String prefZoom = 'zoom';
   static const String prefColor = 'color';
+  static const String prefPalette = 'palette';
+  static const String prefPaletteDark = 'palette_dark';
 
   static late SharedPreferences pref;
 

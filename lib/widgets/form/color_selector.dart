@@ -27,13 +27,20 @@ class ColorSelector extends AbstractSelector {
 }
 
 class ColorSelectorState extends AbstractSelectorState<ColorSelector> {
+  late MaterialColor value;
+
+  @override
+  void initState() {
+    value = widget.value ?? ColorExt.getRandomMaterialColor();
+    super.initState();
+  }
+
   @override
   void onTap(context) {
-    MaterialColor clr = widget.value ?? ColorExt.getRandomMaterialColor();
-    NavigatorState nav = Navigator.of(context);
-    if (widget.value == null) {
-      widget.setState(clr);
+    if (widget.value != null && widget.value != value) {
+      value = widget.value!;
     }
+    NavigatorState nav = Navigator.of(context);
     showDialog(
       context: context,
       builder: (BuildContext context) {
@@ -41,9 +48,9 @@ class ColorSelectorState extends AbstractSelectorState<ColorSelector> {
           title: Text(AppLocale.labels.colorTooltip),
           content: SingleChildScrollView(
             child: ColorPicker(
-              pickerColor: clr,
+              pickerColor: value,
               onColorChanged: (color) {
-                widget.setState(color.toMaterialColor);
+                setState(() => value = color.toMaterialColor);
                 FocusController.onEditingComplete(widget.focusOrder);
               },
             ),
@@ -52,6 +59,7 @@ class ColorSelectorState extends AbstractSelectorState<ColorSelector> {
             ElevatedButton(
               onPressed: () {
                 nav.pop();
+                widget.setState(value);
                 FocusController.onEditingComplete(widget.focusOrder);
               },
               child: Text(AppLocale.labels.ok),

@@ -22,10 +22,10 @@ class TableWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final length = data.isNotEmpty ? data.length + 1 : 0;
-    double height = ThemeHelper.getMaxHeight(data.firstOrNull ?? [const Text('*')]) + ThemeHelper.getIndent();
+    //double height = ThemeHelper.getMaxHeight(data.firstOrNull ?? [const Text('*')]) + ThemeHelper.getIndent();
     return SizedBox(
       width: width,
-      height: length * height,
+      //height: length * height,
       child: ListView.builder(
         scrollDirection: Axis.vertical,
         shrinkWrap: true,

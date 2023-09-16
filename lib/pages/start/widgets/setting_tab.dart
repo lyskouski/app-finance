@@ -10,9 +10,12 @@ import 'package:app_finance/_classes/storage/app_preferences.dart';
 import 'package:app_finance/_configs/custom_color_scheme.dart';
 import 'package:app_finance/_configs/theme_helper.dart';
 import 'package:app_finance/_ext/build_context_ext.dart';
+import 'package:app_finance/_ext/color_ext.dart';
+import 'package:app_finance/widgets/form/color_selector.dart';
 import 'package:app_finance/widgets/form/currency_selector.dart';
 import 'package:app_finance/widgets/form/list_selector.dart';
 import 'package:app_finance/pages/start/widgets/abstract_tab.dart';
+import 'package:app_finance/widgets/wrapper/table_widget.dart';
 import 'package:currency_picker/currency_picker.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -38,7 +41,11 @@ class SettingTabState<T extends SettingTab> extends AbstractTabState<T> {
   bool isEncrypted = false;
   bool hasEncrypted = false;
   String brightness = '0';
-  String colorMode = AppColors.colorApp;
+  String colorMode = AppPalette.state;
+  var paletteState = (
+    light: AppDefaultColors.fromString(AppPalette.light),
+    dark: AppDefaultColors.fromString(AppPalette.dark),
+  );
 
   @override
   void initState() {
@@ -72,6 +79,11 @@ class SettingTabState<T extends SettingTab> extends AbstractTabState<T> {
   Future<void> saveColor(String value) async {
     await palette.setMode(value);
     setState(() => colorMode = value);
+  }
+
+  Future<void> changePalette(_) async {
+    await palette.set(paletteState.light, paletteState.dark);
+    setState(() => paletteState);
   }
 
   Future<void> initCurrencyFromLocale(String locale) async {
@@ -155,7 +167,7 @@ class SettingTabState<T extends SettingTab> extends AbstractTabState<T> {
           ),
           ListSelector(
             value: colorMode,
-            hintText: AppLocale.labels.brightnessTheme,
+            hintText: AppLocale.labels.colorTheme,
             options: [
               ListSelectorItem(id: AppColors.colorApp, name: AppLocale.labels.colorApp),
               ListSelectorItem(id: AppColors.colorSystem, name: AppLocale.labels.colorSystem),
@@ -165,6 +177,88 @@ class SettingTabState<T extends SettingTab> extends AbstractTabState<T> {
             indent: indent,
           ),
           ThemeHelper.hIndent2x,
+          if (colorMode == AppColors.colorUser) ...[
+            TableWidget(
+              width: constraints.maxWidth - 2 * indent,
+              shadowColor: context.colorScheme.onBackground.withOpacity(0.05),
+              chunk: const [120, null, null],
+              data: [
+                [
+                  Text(AppLocale.labels.colorType),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(AppLocale.labels.colorLight),
+                      IconButton(
+                        onPressed: () =>
+                            changePalette(paletteState = (light: AppDefaultColors(), dark: paletteState.dark)),
+                        icon: const Icon(Icons.restore),
+                        tooltip: AppLocale.labels.colorRestore,
+                      ),
+                    ],
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(AppLocale.labels.colorDark),
+                      IconButton(
+                        onPressed: () =>
+                            changePalette(paletteState = (light: paletteState.light, dark: AppDarkColors())),
+                        icon: const Icon(Icons.restore),
+                        tooltip: AppLocale.labels.colorRestore,
+                      ),
+                    ],
+                  ),
+                ],
+                [
+                  Text(AppLocale.labels.colorPrimary),
+                  ColorSelector(
+                      value: paletteState.light.primary.toMaterialColor,
+                      setState: (v) => changePalette(paletteState.light.primary = v)),
+                  ColorSelector(
+                      value: paletteState.dark.primary.toMaterialColor,
+                      setState: (v) => changePalette(paletteState.dark.primary = v)),
+                ],
+                [
+                  Text(AppLocale.labels.colorInversePrimary),
+                  ColorSelector(
+                      value: paletteState.light.inversePrimary.toMaterialColor,
+                      setState: (v) => changePalette(paletteState.light.inversePrimary = v)),
+                  ColorSelector(
+                      value: paletteState.dark.inversePrimary.toMaterialColor,
+                      setState: (v) => changePalette(paletteState.dark.inversePrimary = v)),
+                ],
+                [
+                  Text(AppLocale.labels.colorSecondary),
+                  ColorSelector(
+                      value: paletteState.light.secondary.toMaterialColor,
+                      setState: (v) => changePalette(paletteState.light.secondary = v)),
+                  ColorSelector(
+                      value: paletteState.dark.secondary.toMaterialColor,
+                      setState: (v) => changePalette(paletteState.dark.secondary = v)),
+                ],
+                [
+                  Text(AppLocale.labels.colorOnSecondary),
+                  ColorSelector(
+                      value: paletteState.light.onSecondary.toMaterialColor,
+                      setState: (v) => changePalette(paletteState.light.onSecondary = v)),
+                  ColorSelector(
+                      value: paletteState.dark.onSecondary.toMaterialColor,
+                      setState: (v) => changePalette(paletteState.dark.onSecondary = v)),
+                ],
+                [
+                  Text(AppLocale.labels.colorOnSecondaryContainer),
+                  ColorSelector(
+                      value: paletteState.light.onSecondaryContainer.toMaterialColor,
+                      setState: (v) => changePalette(paletteState.light.onSecondaryContainer = v)),
+                  ColorSelector(
+                      value: paletteState.dark.onSecondaryContainer.toMaterialColor,
+                      setState: (v) => changePalette(paletteState.dark.onSecondaryContainer = v)),
+                ],
+              ],
+            ),
+            ThemeHelper.hIndent4x,
+          ],
           Text(
             AppLocale.labels.zoomState,
             style: textTheme.bodyLarge,

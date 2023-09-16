@@ -7,6 +7,8 @@ import 'package:flutter/material.dart';
 
 class AppPalette extends ValueNotifier<String> {
   static get state => AppPreferences.get(AppPreferences.prefColor) ?? AppColors.colorApp;
+  static get light => AppPreferences.get(AppPreferences.prefPalette) ?? AppDefaultColors().toString();
+  static get dark => AppPreferences.get(AppPreferences.prefPaletteDark) ?? AppDarkColors().toString();
 
   AppPalette() : super(state);
 
@@ -16,5 +18,11 @@ class AppPalette extends ValueNotifier<String> {
       await AppPreferences.set(AppPreferences.prefColor, value);
       notifyListeners();
     }
+  }
+
+  Future<void> set(AppDefaultColors light, AppDefaultColors dark) async {
+    await AppPreferences.set(AppPreferences.prefPalette, light.toString());
+    await AppPreferences.set(AppPreferences.prefPaletteDark, dark.toString());
+    notifyListeners();
   }
 }
