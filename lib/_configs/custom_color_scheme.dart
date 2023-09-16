@@ -77,9 +77,9 @@ class AppDarkColors extends AppDefaultColors {
 extension CustomColorScheme on ColorScheme {
   Color get fieldBackground => inversePrimary.withOpacity(0.3);
 
-  ColorScheme withCustom(String paletteType) {
+  ColorScheme? withCustom(String paletteType) {
     if (paletteType == AppColors.colorSystem) {
-      return this;
+      return null;
     }
     final palette = AppColors(paletteType, brightness).palette;
     return copyWith(
@@ -97,9 +97,9 @@ extension CustomColorScheme on ColorScheme {
 }
 
 extension CustomButtonTheme on FloatingActionButtonThemeData {
-  FloatingActionButtonThemeData withCustom(String paletteType, Brightness brightness) {
+  FloatingActionButtonThemeData? withCustom(String paletteType, Brightness brightness) {
     if (paletteType == AppColors.colorSystem) {
-      return this;
+      return null;
     }
     final palette = AppColors(paletteType, brightness).palette;
     return copyWith(
