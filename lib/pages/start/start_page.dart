@@ -11,6 +11,7 @@ import 'package:app_finance/pages/start/widgets/account_tab.dart';
 import 'package:app_finance/pages/start/widgets/budget_tab.dart';
 import 'package:app_finance/pages/start/widgets/privacy_tab.dart';
 import 'package:app_finance/pages/start/widgets/setting_tab.dart';
+import 'package:app_finance/widgets/wrapper/toolbar_button_widget.dart';
 import 'package:flutter/material.dart';
 
 class StartPage extends StatefulWidget {
@@ -23,7 +24,8 @@ class StartPage extends StatefulWidget {
 class StartPageState extends AbstractPageState<StartPage> {
   int currentStep = 0;
   Widget button = ThemeHelper.emptyBox;
-  late String buttonName = AppLocale.labels.goNextTooltip;
+  List<Widget> barActions = [];
+  String buttonName = AppLocale.labels.goNextTooltip;
 
   @override
   String getTitle() => AppLocale.labels.appStartHeadline;
@@ -35,7 +37,7 @@ class StartPageState extends AbstractPageState<StartPage> {
   Widget buildButton(BuildContext context, BoxConstraints constraints) => button;
 
   @override
-  List<Widget> getBarActions(NavigatorState nav) => [];
+  List<Widget> getBarActions(NavigatorState nav) => barActions;
 
   @override
   Widget? getBarLeading(NavigatorState nav) => null;
@@ -52,6 +54,21 @@ class StartPageState extends AbstractPageState<StartPage> {
       setState(() {
         button = ThemeHelper.emptyBox;
         currentStep += 1;
+        if (barActions.isEmpty && currentStep > 1) {
+          barActions = [
+            ToolbarButtonWidget(
+              child: IconButton(
+                hoverColor: Colors.transparent,
+                icon: const Icon(
+                  Icons.skip_next,
+                  color: Colors.white70,
+                ),
+                tooltip: AppLocale.labels.skipTooltip,
+                onPressed: () => nav.pushNamed(AppRoute.homeRoute),
+              ),
+            )
+          ];
+        }
       });
     }
   }
