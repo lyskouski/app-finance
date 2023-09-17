@@ -43,6 +43,7 @@
 - Recovery via WebDav or a direct File
 - Import from `CSV`, `QIF`, `OFX` files for Bills and Invoices
 - Data encryption
+- Localization: 2 languages
 - User Experience
   - Responsive & Adaptive Design (`xlarge`, `large`, `medium`, `small`, and `xsmall` screens)
   - Theme Mode (dark, light, system) with Palette definition (system, custom, personal -- colors selector)
