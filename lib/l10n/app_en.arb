@@ -63,9 +63,9 @@
     "collapse": "Collapse (Restore) Section",
     "color": "Color",
     "colorApp": "Custom",
-    "colorDark": "Dark Mode",
+    "colorDark": "Dark",
     "colorInversePrimary": "Inverse Primary",
-    "colorLight": "Light Mode",
+    "colorLight": "Light",
     "colorOnSecondary": "On Secondary",
     "colorOnSecondaryContainer": "On Container",
     "colorPrimary": "Primary",
@@ -107,7 +107,7 @@
     "creditCard": "Credit Card",
     "currency": "Currency",
     "currencyDefault": "Default Currency",
-    "currencyDistribution": "Distr.",
+    "currencyDistribution": "Distribution",
     "currencyExchange": "Currency Exchange: {from} -> {to}",
     "@currencyExchange": {
         "from": {
@@ -125,7 +125,7 @@
         }
     },
     "currencyShort": "Curr.",
-    "currencyTooltip": "Type Code",
+    "currencyTooltip": "Type of Code",
     "currencyUpdateTooltip": "Update Currencies Rate",
     "currentDate": "Current Date",
     "darkMode": "Dark",
@@ -167,10 +167,10 @@
     "editBillTooltip": "Edit Bill",
     "editBudgetHeader": "Update Budget Category",
     "editBudgetTooltip": "Edit Budget Category",
-    "editGoalHeader": "Edit Goal",
-    "editGoalTooltip": "Update Goal",
+    "editGoalHeader": "Update Goal",
+    "editGoalTooltip": "Edit Goal",
     "editTooltip": "Edit",
-    "encryptionMode": "Data Encryption:",
+    "encryptionMode": "Data Encryption",
     "error": "Error: {value}",
     "@error": {
         "value": {
