@@ -170,21 +170,14 @@ jobs:
       - name: Run iOS Build
         if: matrix.target == 'iOS'
         run: |
-          flutter build -v ios --build-name=${{ needs.release.outputs.version }} --build-number=${{ needs.release.outputs.build_number }} --release --no-tree-shake-icons
-      
-      - name: Compress iOS Package
-        if: matrix.target == 'iOS'
-        run: |
-          mkdir -p Payload
-          mv ./${{ matrix.build_path }}/Runner.app Payload
-          zip -r -y Payload.zip Payload/Runner.app
-          mv Payload.zip fingrom_${{ matrix.target }}${{ matrix.asset_extension }}
+          flutter build ipa --build-name=${{ needs.release.outputs.version }} --build-number=${{ needs.release.outputs.build_number }} --release --obfuscate --split-debug-info=build/ios/symbols --no-tree-shake-icons --export-options-plist ./ios/ExportOptions.plist
+          mv ${{ matrix.build_path }}/fingrom.ipa $GITHUB_WORKSPACE/fingrom_${{ matrix.target }}.ipa
 
       - name: Upload iOS Package to Apple Store
         if: matrix.target == 'iOS'
         run: |
-          xcrun altool --validate-app --type ios -f fingrom_${{ matrix.target }}.ipa --apiKey ${{ secrets.APPLE_API_KEY }} --apiIssuer ${{ secrets.APPLE_API_ISSUE }}
-          xcrun altool --upload-app --type ios -f fingrom_${{ matrix.target }}.ipa --apiKey ${{ secrets.APPLE_API_KEY }} --apiIssuer ${{ secrets.APPLE_API_ISSUE }}
+          xcrun altool --validate-app --type ios -f $GITHUB_WORKSPACE/fingrom_${{ matrix.target }}.ipa --apiKey ${{ secrets.APPLE_API_KEY }} --apiIssuer ${{ secrets.APPLE_API_ISSUE }}
+          xcrun altool --upload-app --type ios -f $GITHUB_WORKSPACE/fingrom_${{ matrix.target }}.ipa --apiKey ${{ secrets.APPLE_API_KEY }} --apiIssuer ${{ secrets.APPLE_API_ISSUE }}
 
 
       - name: Run macOS Build
