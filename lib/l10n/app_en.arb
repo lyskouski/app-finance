@@ -125,7 +125,7 @@
         }
     },
     "currencyShort": "Curr.",
-    "currencyTooltip": "Type of Code",
+    "currencyTooltip": "Currency Type (Code)",
     "currencyUpdateTooltip": "Update Currencies Rate",
     "currentDate": "Current Date",
     "darkMode": "Dark",

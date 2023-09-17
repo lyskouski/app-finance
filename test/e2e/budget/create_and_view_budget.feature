@@ -6,7 +6,7 @@ Feature: Verify Budget Functionality
         When I enter "<name>" to "Enter Budget Category Name" text field
           And I enter "<amount>" to "Set Balance" text field
           And I tap on 0 index of "CurrencySelector" fields
-          And I enter "<currency>" to "Type Code" text field
+          And I enter "<currency>" to "Currency Type (Code)" text field
           And I tap on 1 index of "<currency>" element
           And I tap "Create new Budget Category" button
         Then I can see "Budgets, left" component

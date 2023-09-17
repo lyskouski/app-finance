@@ -34,7 +34,7 @@ class PumpMain {
   static Future<void> init(WidgetTester tester, [bool isIntegration = false]) async {
     final pumpMain = PumpMain();
     wrapProvider(tester, 'plugins.flutter.io/path_provider', '$path/${UniqueKey()}');
-    await pumpMain.initPref(isIntegration);
+    await initPref(isIntegration);
     await pumpMain.initMain(tester, isIntegration);
   }
 
@@ -54,6 +54,7 @@ class PumpMain {
 
     await initFont('Abel-Regular');
     await initFont('RobotoCondensed-Regular');
+    await initPref(false);
 
     await tester.pumpWidget(
       MaterialApp(
@@ -95,12 +96,12 @@ class PumpMain {
     );
   }
 
-  Future<void> initPref(bool isIntegration) async {
+  static Future<void> initPref(bool isIntegration) async {
     if (isIntegration) {
       AppPreferences.pref = await SharedPreferences.getInstance();
     } else {
       final pref = WrapperMockSharedPreferences();
-      pref.mockGetString = (value) => '';
+      pref.mockGetString = (value) => value == AppPreferences.prefLocale ? 'en' : '';
       AppPreferences.pref = pref;
     }
   }
@@ -119,7 +120,7 @@ class PumpMain {
           create: (_) => AppTheme(ThemeMode.system),
         ),
         ChangeNotifierProvider<AppLocale>(
-          create: (_) => AppLocale(AppLocale.fromCode('en')),
+          create: (_) => AppLocale(),
         ),
         ChangeNotifierProvider<AppZoom>(
           create: (_) => AppZoom(),

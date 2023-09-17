@@ -125,7 +125,7 @@
         }
     },
     "currencyShort": "Вал.",
-    "currencyTooltip": "Тып кода",
+    "currencyTooltip": "Тып Валюты (код)",
     "currencyUpdateTooltip": "Абнавіць курс валют",
     "currentDate": "Актуальная дата",
     "darkMode": "Цёмны",
