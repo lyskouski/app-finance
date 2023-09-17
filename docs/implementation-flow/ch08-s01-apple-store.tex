@@ -212,3 +212,42 @@ planning that have propelled us toward this accomplishment. With this milestone 
 in sharing our application with others.
 
 \img{distributing/app-store-upload}{Apple Store Connect - Uploaded Build}{img:d-apple-build}
+
+\noindent P.S. With the current flow a message from Apple would be taken "ITMS-90426: Invalid Swift Support" \issue{227}{},
+and the artifact is gonna to be deleted from the application' page. The problem is in our custom conversion into 
+\q{.ipa}-format, that has to be replaced by \q{ipa}-typed build (\q{obfuscate} and \q{split-debug-info} is mostly to 
+minimize the package size but also declared as safeguards against a reserve engineering):
+
+\begin{lstlisting}[language=bash]
+> flutter build ipa --build-name=${{ version }} --build-number=${{ number }}  --release --obfuscate --split-debug-info=build/ios/symbols --no-tree-shake-icons --export-options-plist ./ios/ExportOptions.plist
+\end{lstlisting}
+
+\noindent The key point is in a usage of \q{--export-options-plist} with the following content of \q{ExportOptions.plist}:
+
+\begin{lstlisting}[language=xml]
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>method</key>
+    <string>app-store</string>
+    <key>provisioningProfiles</key>
+    <dict>
+      <key>com.tercad.fingrom</key>
+      <string>Fingrom iOS</string>
+    </dict>
+</dict>
+</plist>
+\end{lstlisting}
+
+In case of any encryption usage, it's needed to be changed \q{./ios/Runner/Info.plist}:
+
+\begin{lstlisting}[language=xml]
+<key>ITSAppUsesNonExemptEncryption</key>
+<true/>
+\end{lstlisting}
+
+\noindent and next form (if the application is going to be available in France marketplace) 
+\href{https://www.ssi.gouv.fr/en/regulation/cryptology/how-to-submit-an-application/}{https://www.ssi.gouv.fr/en/regulation/cryptology/how-to-submit-an-application/}
+to be sent to \q{controle@ssi.gouv.fr} with a title "[formalités] {organization} - {app name}", and attached the approval 
+of it during the processing of "Export Compliance Information" form in "Apple Store Connect".

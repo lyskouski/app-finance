@@ -9,12 +9,12 @@
 - https://lyskouski.github.io/app-finance/
 
 #### Desktop Apps
-- Macos: [latest Release](https://github.com/lyskouski/app-finance/releases/latest) -> fingrom_macOS.zip
-- Linux: [latest Release](https://github.com/lyskouski/app-finance/releases/latest) -> fingrom_Linux.tar.gz
-- Windows: [latest Release](https://github.com/lyskouski/app-finance/releases/latest) -> fingrom_Windows.zip
+- Macos: [Release](https://github.com/lyskouski/app-finance/releases/latest)/fingrom_macOS.zip
+- Linux: [Release](https://github.com/lyskouski/app-finance/releases/latest)/fingrom_Linux.tar.gz
+- Windows: [Release](https://github.com/lyskouski/app-finance/releases/latest)/fingrom_Windows.zip
 
 #### Mobile Apps
-- iOS [latest Release](https://github.com/lyskouski/app-finance/releases/latest) -> fingrom_iOS.ipa
+- iOS [Release](https://github.com/lyskouski/app-finance/releases/latest)/fingrom_iOS.ipa
 - Android [[on hold]](https://github.com/lyskouski/app-finance/issues/129)
 
 ## Functionality
@@ -36,12 +36,12 @@
     - Currency Distribution
   - Bills:
     - YTD Expenses
-    - Bar Rase for Categories
+    - Bar Race for Categories
   - Goals Gauge Chart
   - Currency Historical Chart
 - Synchronization between devices (P2P) 
 - Recovery via WebDav or a direct File
-- Import from `CSV`, `QIF` files for Bills and Invoices
+- Import from `CSV`, `QIF`, `OFX` files for Bills and Invoices
 - Data encryption
 - User Experience
   - Responsive & Adaptive Design (`xlarge`, `large`, `medium`, `small`, and `xsmall` screens)

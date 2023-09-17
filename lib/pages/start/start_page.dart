@@ -87,7 +87,7 @@ class StartPageState extends AbstractPageState<StartPage> {
           SettingTab(setState: fn, isFirstBoot: currentStep < 1 && isEmpty),
           PrivacyTab(setState: fn, isFirstBoot: currentStep < 2 && isEmpty),
           AccountTab(setState: fn, isFirstBoot: currentStep < 3 && isEmpty),
-          BudgetTab(setState: fn, isFirstBoot: currentStep < 4 && isEmpty),
+          BudgetTab(setState: fn, isFirstBoot: isEmpty),
         ],
       ),
     );
