@@ -6,6 +6,8 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart' as intl;
 import 'dart:math';
 
+typedef FnShift = double Function(double dx, TextPainter textPainter);
+
 class GaugePainter extends CustomPainter {
   final double value;
   final double max;
@@ -13,12 +15,14 @@ class GaugePainter extends CustomPainter {
   final Color color;
   late final intl.NumberFormat formatter;
   final double threshold = 80;
+  final double fontSize;
 
   GaugePainter({
     required this.value,
     required this.max,
     required this.min,
     this.color = Colors.grey,
+    this.fontSize = 12,
   }) {
     formatter = intl.NumberFormat.compact(locale: AppLocale.code);
   }
@@ -38,26 +42,34 @@ class GaugePainter extends CustomPainter {
   }
 
   void _paintText(Canvas canvas, Size size, Offset position, String text) {
+    callback(double dx, TextPainter textPainter) {
+      double shift = cos(pi * position.dx / size.width);
+      if (shift.toStringAsFixed(2) == '0.00') {
+        shift = -textPainter.width / 2;
+      } else if (position.dx >= size.width / 2) {
+        shift = shift * textPainter.width * 1.5;
+      } else {
+        shift *= textPainter.width / 2;
+      }
+      return shift;
+    }
+
+    paintText(canvas, size, callback, position, text);
+  }
+
+  void paintText(Canvas canvas, Size size, FnShift shift, Offset position, String text) {
     final textPainter = TextPainter(
       text: TextSpan(
         text: text,
         style: TextStyle(
           color: color.withOpacity(0.8),
-          fontSize: size.width > threshold * 2 ? 12 : 9,
+          fontSize: size.width > threshold * 2 ? fontSize : 9,
         ),
       ),
       textDirection: TextDirection.ltr,
     );
     textPainter.layout();
-    double shift = cos(pi * position.dx / size.width);
-    if (shift.toStringAsFixed(2) == '0.00') {
-      shift = -textPainter.width / 2;
-    } else if (position.dx >= size.width / 2) {
-      shift = shift * textPainter.width * 1.5;
-    } else {
-      shift *= textPainter.width / 2;
-    }
-    textPainter.paint(canvas, Offset(position.dx + shift, position.dy));
+    textPainter.paint(canvas, Offset(position.dx + shift(position.dx, textPainter), position.dy));
   }
 
   void _drawValue(Canvas canvas, Size size, double radius, Offset center, double pos) {

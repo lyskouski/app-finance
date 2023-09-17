@@ -10,7 +10,7 @@ import 'package:app_finance/_classes/structure/currency/exchange.dart';
 import 'package:app_finance/_configs/theme_helper.dart';
 import 'package:app_finance/_ext/build_context_ext.dart';
 import 'package:app_finance/charts/bar_vertical_single.dart';
-import 'package:app_finance/charts/gauge_chart.dart';
+import 'package:app_finance/charts/gauge_linear_chart.dart';
 import 'package:app_finance/charts/interface/chart_value.dart';
 import 'package:app_finance/charts/interface/ohlc_data.dart';
 import 'package:app_finance/charts/ohlc_chart.dart';
@@ -100,41 +100,21 @@ class AccountTab extends StatelessWidget {
     final accountList = store.getList(AppDataType.accounts).cast<AccountAppData>();
     final data = _getData(accountList, xMin);
     final currency = _getCurrencyDistribution(accountList);
-    final txtSize = ThemeHelper.getTextWidth(Text(
-      AppLocale.labels.incomeHealth,
-      style: context.textTheme.bodyMedium,
-      maxLines: 1,
-      overflow: TextOverflow.ellipsis,
-    ));
     return SingleChildScrollView(
       child: Padding(
         padding: EdgeInsets.all(indent * 2),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            RowWidget(
-              alignment: MainAxisAlignment.end,
-              indent: indent,
-              maxWidth: width - indent,
-              chunk: [null, txtSize, 40 + indent],
-              children: [
-                const [ThemeHelper.emptyBox],
-                [
-                  TextWrapper(AppLocale.labels.incomeHealth, style: context.textTheme.bodyMedium),
-                  ThemeHelper.hIndent,
-                ],
-                [
-                  GaugeChart(
-                    value: _getHealthData(data),
-                    valueMin: 0,
-                    valueMax: 100,
-                    width: 40,
-                    height: 30,
-                  ),
-                ],
-              ],
+            TextWrapper(AppLocale.labels.incomeHealth, style: context.textTheme.bodyLarge),
+            GaugeLinearChart(
+              value: _getHealthData(data),
+              valueMin: 0,
+              valueMax: 100,
+              width: width,
+              height: 20,
             ),
-            ThemeHelper.hIndent,
+            ThemeHelper.hIndent2x,
             Text(
               AppLocale.labels.chartOHLC,
               style: textTheme.bodyLarge,
