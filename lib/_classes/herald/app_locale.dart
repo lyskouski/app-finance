@@ -6,29 +6,26 @@ import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localization.dart';
 
 class AppLocale extends ValueNotifier<Locale?> {
-  static String code = 'en';
+  static String code = AppPreferences.get(AppPreferences.prefLocale) ?? 'en';
   static late AppLocalizations labels;
 
-  AppLocale([Locale? value]) : super(value) {
-    final newValue = AppPreferences.get(AppPreferences.prefLocale);
-    if (newValue != null) {
-      set(newValue);
-    }
-  }
+  AppLocale() : super(AppLocale.fromCode(code));
 
   static Locale? fromCode(String value) {
     try {
-      return Locale.fromSubtags(languageCode: value);
+      final keys = value.split('_');
+      return Locale.fromSubtags(languageCode: keys.first, countryCode: keys.length > 1 ? keys.last : null);
     } catch (e) {
       return null;
     }
   }
 
-  void set(String newValue, [Function? callback]) {
+  Future<void> set(String newValue, [Function? callback]) async {
     final loc = fromCode(newValue);
     if (loc != null && loc != value && AppLocalizations.supportedLocales.contains(loc)) {
       value = loc;
       code = value.toString();
+      await AppPreferences.set(AppPreferences.prefLocale, newValue);
       if (callback != null) {
         callback();
       }
@@ -39,6 +36,6 @@ class AppLocale extends ValueNotifier<Locale?> {
   void updateState(BuildContext context) {
     final value = Localizations.localeOf(context).toString();
     labels = AppLocalizations.of(context)!;
-    set(value, () => AppPreferences.set(AppPreferences.prefLocale, value));
+    set(value);
   }
 }

@@ -1,0 +1,332 @@
+{
+    "a": "RUN `dart run grinder sort-translations --quiet` FOR ORDERING",
+    "aboutHeadline": "Ab Dadatku",
+    "account": "Rachunak",
+    "accountFrom": "Z Rachunku",
+    "accountHeadline": "Rachunki",
+    "accountTo": "Da Rachunka",
+    "accountTooltip": "Adkryć rachunki",
+    "accountType": "Typ Rachunku",
+    "accountTypeTooltip": "Vybiarycie Typ Rachunku",
+    "acknowledgeTooltip": "Pryniać",
+    "activate": "Aktyvavać",
+    "actualData": "Histaryčnyja Dad́zienyja",
+    "addAccountTooltip": "Dadać Rachunak",
+    "addBudgetTooltip": "Dadać Katehoryju Biudžetu",
+    "addGoalTooltip": "Dadać Novuju Metu",
+    "addMainTooltip": "Dadać Ček, Prybytak abo Pieravod",
+    "appBuild": "Zborka: {build}",
+    "appInitHeadline": "Inicyjalizacyja Prajektu",
+    "appStartHeadline": "Pačatkovaja Nalada",
+    "appTitle": "Fingrom",
+    "appVersion": "Viersija: {version}",
+    "@appVersion": {
+        "build": {
+            "type": "String"
+        }
+    },
+    "automationHeadline": "Aŭtamatyzacyja",
+    "backTooltip": "Paviarnucca",
+    "balance": "Faktyčny Balans",
+    "balanceDate": "Data Abnaŭlieńnia Balansu",
+    "balanceDateTooltip": "Vyliki i Prybytki da hetaj daty nie paŭplyvajuć na balans",
+    "balanceTooltip": "Ustaliavać Balans",
+    "bankAccount": "Bankaŭski Rachunak",
+    "bill": "Ček",
+    "billHeadline": "Čeki",
+    "billSetTooltip": "Ustaliavać Sumu",
+    "billSum": "Čeki: {value}",
+    "@billSum": {
+        "value": {
+            "type": "String"
+        }
+    },
+    "billTooltip": "Adkrytyć Čeki",
+    "billTypeTooltip": "[Typ] Ček, Prybytak abo Pieravod",
+    "brightnessTheme": "Typ Jarkasci",
+    "btnAdd": "Dadać",
+    "btnCancel": "Admianić",
+    "btnConfirm": "Paćvierd́zić",
+    "btnMore": "Boĺš",
+    "budget": "Katehoryja Biudžetu",
+    "budgetHeadline": "Biudžety",
+    "budgetLimit": "Limit u Miesiac",
+    "budgetLimitHeadline": "Karekciroŭki Abmiežavańniaŭ",
+    "budgetRelativeLimit": "Adnosny Kaeficyjent u Miesiac",
+    "budgetTooltip": "Adkryć Typy Biudžetu",
+    "cash": "Najaŭnyja Hrošy",
+    "chartBarRace": "Histahrama pa Katehoryjach",
+    "chartForecast": "Dyjahrama Prahnozu",
+    "chartOHLC": "Dyjahrama Padsviečnikaŭ (OHLC)",
+    "chartYtdExpense": "Vydatki z Pačatku Hoda",
+    "closedAt": "Skončana da Daty",
+    "collapse": "Zharnuć (Razharnuć) Razd́ziel",
+    "color": "Kolier",
+    "colorApp": "Zvyčajnaja",
+    "colorDark": "Ciomny",
+    "colorInversePrimary": "Advarotny da Asnoŭnaha",
+    "colorLight": "Svietly",
+    "colorOnSecondary": "Na Druhasnym",
+    "colorOnSecondaryContainer": "Na Kantejniery",
+    "colorPrimary": "Asnoŭny",
+    "colorRestore": "Skinuć Palitru",
+    "colorSecondary": "Druhasny",
+    "colorSystem": "Sistemnaja",
+    "colorTheme": "Palitra",
+    "colorTooltip": "Abrać Kolier",
+    "colorType": "Kaliarovy Typ",
+    "colorUser": "Asabistaja",
+    "columnMap": "Adliustravańnie dlia Slupka '{value}'",
+    "@columnMap": {
+        "value": {
+            "type": "String"
+        }
+    },
+    "columnMapTooltip": "'{value}' - Abrać Kaliarovy Typ",
+    "@columnMapTooltip": {
+        "value": {
+            "type": "String"
+        }
+    },
+    "completeGoalTooltip": "Zkončyć Metu",
+    "confirmHeader": "Paćvierd́zić Dziejańnie",
+    "confirmTooltip": "Vy ŭpeŭnieny? Heta dziejańnie nieĺha admianić.",
+    "conversion": "Kanviersija",
+    "conversionMessage": "Uziata ŭ {currency}",
+    "createAccountHeader": "Stvaryć Rachunak",
+    "createAccountTooltip": "Stvaryć Rachunak",
+    "createBillHeader": "Dadać Tranzakcyju",
+    "createBillTooltip": "Dadać Ček",
+    "createBudgetHeader": "Novaja Katehoryja Biudžetu",
+    "createBudgetTooltip": "Stvaryć Katehoryju Biudžetu",
+    "createGoalHeader": "Zadać Metu",
+    "createGoalTooltip": "Zadać Metu",
+    "createIncomeTooltip": "Dadać Prybytak",
+    "createTransferTooltip": "Dadać Pieravod",
+    "credit": "Kredyt",
+    "creditCard": "Kredytnaja Kartka",
+    "currency": "Valiuta",
+    "currencyDefault": "Biezumoŭnaja Valiuta",
+    "currencyDistribution": "Razmierkavańnie",
+    "currencyExchange": "Abmien Valiuty: {from} -> {to}",
+    "@currencyExchange": {
+        "from": {
+            "type": "String"
+        },
+        "to": {
+            "type": "String"
+        }
+    },
+    "currencyHeadline": "Valiuty",
+    "currencyIn": "U {value}",
+    "@currencyIn": {
+        "value": {
+            "type": "String"
+        }
+    },
+    "currencyShort": "Val.",
+    "currencyTooltip": "Typ Valiuty (Kod)",
+    "currencyUpdateTooltip": "Abnavić Kurs Valiut",
+    "currentDate": "Aktuaĺnaja Data",
+    "darkMode": "Ciomny",
+    "dateFormat": "Farmat Daty",
+    "dateTooltip": "Abiarycie Datu",
+    "debitCard": "Debietavaja Kartka",
+    "def": "Biezumoŭnaje Značeńnie dlia '{value}'",
+    "@def": {
+        "value": {
+            "type": "String"
+        }
+    },
+    "deleteAccountTooltip": "Deaktyvavać Rachunak",
+    "deleteBillTooltip": "Vydalić Ček",
+    "deleteBudgetTooltip": "Deaktyvavać Katehoryju Biudžetu",
+    "deleteGoalTooltip": "Vydalić metu",
+    "deleteTooltip": "Vydalić",
+    "deposit": "Depazit",
+    "description": "Apisańnie",
+    "descriptionTooltip": "Vyznačyć Detali Vydatka",
+    "details": "Detali",
+    "detailsTooltip": "****2345 - apošnija 4 ličby numara",
+    "dtAm": "am",
+    "dtAmPm": "hadzina ŭ am/pm (0~11)",
+    "dtDay": "d'zen' u mesyatsy",
+    "dtEscape": "abmiežavańnie dlia tekstu",
+    "dtHalfHour": "hadzina ŭ am/pm (1~12)",
+    "dtHour": "had́zin u dni (0~23)",
+    "dtMinute": "chvilina u hadzinie",
+    "dtMonth": "miesiac u hod́zie",
+    "dtNamedDay": "d́zień tydnia",
+    "dtPm": "pm",
+    "dtQuote": "ad́zinkavaja ryska",
+    "dtSecond": "sekund u chvilinu",
+    "dtYear": "hod",
+    "editAccountHeader": "Abnavić Rachunak",
+    "editAccountTooltip": "Redahavać Rachunak",
+    "editBillHeader": "Abnavić Ček",
+    "editBillTooltip": "Redahavać Ček",
+    "editBudgetHeader": "Abnavić Katehoryju Biudžetu",
+    "editBudgetTooltip": "Redahavać Katehoryju Biudžetu",
+    "editGoalHeader": "Abnavić Metu",
+    "editGoalTooltip": "Redahavać Metu",
+    "editTooltip": "Redahavać",
+    "encryptionMode": "Šyfravańnie Dad́zienych",
+    "error": "Pamylka: {value}",
+    "@error": {
+        "value": {
+            "type": "String"
+        }
+    },
+    "example": "Pryklad",
+    "expand": "Razharnuć Razd́ziel",
+    "expense": "Suma Vydatkaŭ",
+    "expenseDateTime": "Vystaŭlieny",
+    "expenseHeadline": "Vydatak",
+    "expenseTransfer": "Suma Pieravodu",
+    "failData": "Suma vyliku",
+    "flowTypeInvoice": "Prybytak",
+    "flowTypeTooltip": "Typ sumy: Ček, Prybytak",
+    "forecastData": "Prahnoz",
+    "from": "ad",
+    "goNextTooltip": "Pierajści daliej",
+    "goalHeadline": "Mety",
+    "goalProfit": "Čakańnie: {value}",
+    "@goalProfit": {
+        "value": {
+            "type": "String"
+        }
+    },
+    "goalProfitTooltip": "Prybytak suprać Mety",
+    "goalTooltip": "Adkryć Mety",
+    "hasEncrypted": "Paslia ŭstanoŭki nieĺha zmianić",
+    "homeHeadline": "Haloŭnaja",
+    "homeTooltip": "Viarnucca da haloŭnaj staronki",
+    "icon": "Značok",
+    "ignoreTooltip": "Ihnaravać",
+    "importHeadline": "Impart",
+    "incomeHeadline": "Dachod",
+    "incomeHealth": "Radar Zdaroŭja Dachodaŭ",
+    "invoiceHeadline": "Faktury",
+    "invoiceSum": "Faktury: {value}",
+    "@invoiceSum": {
+        "value": {
+            "type": "String"
+        }
+    },
+    "isEncrypted": "Fajl zašyfravany (biezumoŭna)",
+    "isRequired": "abaviazkovy",
+    "language": "Mova",
+    "languageBe": "Тарашкевица (BE)",
+    "languageBeEu": "Latsinka (BE)",
+    "languageEn": "English",
+    "left": "zast.",
+    "lightMode": "Svietly",
+    "link": "Pakazaĺnik Infarmacyjnaha Resursu (URL)",
+    "meaning": "Sens",
+    "metricsHeadline": "Mietryki",
+    "metricsTooltip": "Mietryki",
+    "milestones": "Viechi",
+    "missingContent": "Fajl nie moža być apracavany (aĺbo admienieny)",
+    "navigationTooltip": "Adkryć haloŭnaje mieniu",
+    "netProfit": "Prybytak: {value}",
+    "@netProfit": {
+        "value": {
+            "type": "String"
+        }
+    },
+    "noChartData": "Adsutničajuć (abo niedastatkova) dad́zienyja dlia pakazu",
+    "notifyHeadline": "Apracoŭščyk Apaviaščeńniaŭ",
+    "ok": "OK",
+    "outputFile": "Pryznačeńnie dlia fajlu",
+    "parseFile": "Apracavać .csv-fajl",
+    "password": "Paroĺ",
+    "path": "Imia fajla (dlia zachavańnia abo zahruzki z)",
+    "pearDisabled": "-- adkliučany --",
+    "pearLoading": "U pracesie...",
+    "peerAccept": "pryniać",
+    "peerAction": "Dziejańnie",
+    "peerClosed": "spyniena",
+    "peerConnect": "Padkliučyć Pryladu",
+    "peerConnectBtn": "padkliučyć",
+    "peerDelete": "vydalić",
+    "peerDevice": "Padkliučanyja Prylady",
+    "peerId": "Identyfikatar vašaj Prylady dlia Padlučeńnia",
+    "peerOffline": "pa-za sietkaj",
+    "peerOnline": "zviazany",
+    "peerOtherId": "Identyfikatar Prylady dlia Padlučeńnia",
+    "peerPending": "u čakanni",
+    "peerPing": "pinh",
+    "peerSent": "Dadzienyja pieradany na Padlučanyja Prylady",
+    "peerStatus": "Status",
+    "peerSync": "Pieradača Dad́zienych",
+    "pickFile": "Abrać .{value}-fajl",
+    "@pickFile": {
+        "value": {
+            "type": "String"
+        }
+    },
+    "pongStatus": "Pryniaty zapyt z {uuid}",
+    "@pongStatus": {
+        "uuid": {
+            "type": "String"
+        }
+    },
+    "processIsFinished": "Skončana!",
+    "progress": "Prahres: {value}%",
+    "@progress": {
+        "value": {
+            "type": "double"
+        }
+    },
+    "raiseData": "Dabaŭlieńnie Sumy",
+    "recoveryHeadline": "Adnaŭlieńnie",
+    "recoveryTooltip": "Akryjać ad",
+    "releases": "Relizy",
+    "roadmap": "Mapa Razvićcia",
+    "saveNotification": "Źmieny zachavany!",
+    "saveSettingsTooltip": "Zachavać",
+    "saveTooltip": "Zachavać u",
+    "search": "Pakazać pa '{value}' Šablonie",
+    "@search": {
+        "value": {
+            "type": "String"
+        }
+    },
+    "settingsBaseHeadline": "Asnovy",
+    "settingsHeadline": "Nalady",
+    "skipTooltip": "Prapuscić Krok(i)",
+    "spent": "patr.",
+    "splitCancelTooltip": "Admianić Pad́ziel pa Miesiacy",
+    "splitTooltip": "Vyznačyć Miesiačnyja Limity",
+    "subscription": "Jak prajekt z adkrytym zychodnym kodam, padpiska nie adkryje anijakich dadatkovych funkcyj. Adnak heta paslužyć inviestycyjaj u biespierapynnuju evaliucyju i ŭdaskanalieńnie prykladańnia, a taksama zachavańnie jaho dastupnasci.",
+    "subscriptionCoffee": "Kupi kavy",
+    "subscriptionDonorbox": "Padpisacca praz Donorbox",
+    "subscriptionGithub": "Padpisacca praz GitHub",
+    "subscriptionHeadline": "Padpiska",
+    "subscriptionPatreon": "Padpisacca praz Patreon",
+    "subscriptionPaypal": "Kupi kavy (PayPal)",
+    "subscriptionTooltip": "Ukliučyć padpisku",
+    "success": "Atrymalasia",
+    "summary": "Reziume",
+    "symbol": "Symbaĺ",
+    "syncHeadline": "Sinchranizacyja prylad",
+    "systemMode": "Sistemny",
+    "targetAmount": "Metavaja Suma",
+    "title": "Nazva",
+    "titleAccountTooltip": "Uviad́zicie Identyfikatar Rachunka",
+    "titleBudgetTooltip": "Uviad́zicie nazvu katehoryi biudžetu",
+    "titleGoal": "Meta",
+    "titleGoalTooltip": "Vyznačcie apisańnie mety",
+    "total": "usiaho",
+    "transactionFile": "Fingrom Fajl Žurnala Tranzakcyj (.log)",
+    "transferHeadline": "Pieradača",
+    "updateAccountTooltip": "Zmianić Rachunak",
+    "updateBillTooltip": "Zmianić Ček",
+    "updateBudgetTooltip": "Zmianić Katehoryju Biudžetu",
+    "updateGoalTooltip": "Zmianić Metu",
+    "username": "Karystaĺnik (ulikovy zapis)",
+    "uuid": "Unikaĺny Identyfikatar Tranzakcyi",
+    "validTillDate": "D́ziejničaje da",
+    "webDav": "Veb-razmierkavanaje Stvarennie i Kiravannie Viersijami (WebDav)",
+    "zoomState": "Pavialičyć / Pamieńšyć"
+}
