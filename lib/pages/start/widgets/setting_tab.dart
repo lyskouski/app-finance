@@ -37,6 +37,7 @@ class SettingTabState<T extends SettingTab> extends AbstractTabState<T> {
   late AppTheme theme;
   late AppZoom zoom;
   late AppPalette palette;
+  late AppLocale locale;
   Currency? currency;
   bool isEncrypted = false;
   bool hasEncrypted = false;
@@ -81,6 +82,11 @@ class SettingTabState<T extends SettingTab> extends AbstractTabState<T> {
     setState(() => colorMode = value);
   }
 
+  Future<void> saveLocale(String value) async {
+    await locale.set(value);
+    setState(() {});
+  }
+
   Future<void> changePalette(_) async {
     await palette.set(paletteState.light, paletteState.dark);
     setState(() => paletteState);
@@ -101,20 +107,35 @@ class SettingTabState<T extends SettingTab> extends AbstractTabState<T> {
 
   @override
   Widget buildContent(BuildContext context, BoxConstraints constraints) {
-    String locale = Localizations.localeOf(context).toString();
     theme = Provider.of<AppTheme>(context, listen: false);
     zoom = Provider.of<AppZoom>(context, listen: false);
     palette = Provider.of<AppPalette>(context, listen: false);
+    locale = Provider.of<AppLocale>(context, listen: false);
     final TextTheme textTheme = context.textTheme;
     double indent = ThemeHelper.getIndent(2);
     if (currency == null) {
-      WidgetsBinding.instance.addPostFrameCallback((_) => initCurrencyFromLocale(locale));
+      WidgetsBinding.instance.addPostFrameCallback((_) => initCurrencyFromLocale(AppLocale.code));
     }
-
     return SingleChildScrollView(
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
+          ThemeHelper.hIndent2x,
+          Text(
+            AppLocale.labels.language,
+            style: textTheme.bodyLarge,
+          ),
+          ListSelector(
+            value: AppLocale.code,
+            hintText: AppLocale.labels.language,
+            options: [
+              ListSelectorItem(id: 'en', name: AppLocale.labels.languageEn),
+              ListSelectorItem(id: 'be', name: AppLocale.labels.languageBe),
+              ListSelectorItem(id: 'be_EU', name: AppLocale.labels.languageBeEu),
+            ],
+            setState: saveLocale,
+            indent: indent,
+          ),
           ThemeHelper.hIndent2x,
           Text(
             AppLocale.labels.currencyDefault,

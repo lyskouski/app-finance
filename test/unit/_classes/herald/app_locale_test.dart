@@ -20,13 +20,14 @@ void main() {
   group('AppLocale', () {
     test('fromCode', () {
       expect(AppLocale.fromCode('en'), const Locale('en'));
+      expect(AppLocale.fromCode('be_EU'), const Locale('be', 'EU'));
     });
 
-    test('set [en]', () {
+    test('set', () async {
       final locale = AppLocale();
-      expect(locale.value, null);
-      locale.set('en');
       expect(locale.value, const Locale('en'));
+      await locale.set('be');
+      expect(locale.value, const Locale('be'));
     });
 
     test('[TBD] updateState', () {
