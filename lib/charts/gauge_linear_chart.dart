@@ -2,25 +2,19 @@
 // Use of this source code is governed by a CC BY-NC-ND 4.0 license that can be found in the LICENSE file.
 
 import 'package:app_finance/_ext/build_context_ext.dart';
-import 'package:app_finance/charts/painter/gauge_painter.dart';
+import 'package:app_finance/charts/gauge_chart.dart';
+import 'package:app_finance/charts/painter/gauge_linear_painter.dart';
 import 'package:flutter/material.dart';
 
-class GaugeChart extends StatelessWidget {
-  final double width;
-  final double height;
-  final double indent;
-  final double value;
-  final double valueMax;
-  final double valueMin;
-
-  const GaugeChart({
+class GaugeLinearChart extends GaugeChart {
+  const GaugeLinearChart({
     super.key,
-    required this.value,
-    required this.valueMax,
-    required this.width,
-    required this.height,
-    this.indent = 0.0,
-    this.valueMin = 0.0,
+    required super.value,
+    required super.valueMax,
+    required super.width,
+    required super.height,
+    super.indent = 0.0,
+    super.valueMin = 0.0,
   });
 
   @override
@@ -30,7 +24,7 @@ class GaugeChart extends StatelessWidget {
       width: width,
       height: height,
       child: CustomPaint(
-        painter: GaugePainter(
+        painter: GaugeLinearPainter(
           value: data.clamp(0, 1),
           color: context.colorScheme.onBackground,
           max: valueMax,
