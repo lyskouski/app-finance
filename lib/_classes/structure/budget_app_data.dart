@@ -8,6 +8,7 @@ import 'package:app_finance/_classes/storage/app_data.dart';
 import 'package:app_finance/_classes/structure/currency/exchange.dart';
 import 'package:app_finance/_ext/double_ext.dart';
 import 'package:app_finance/_ext/int_ext.dart';
+import 'package:app_finance/_ext/string_ext.dart';
 import 'package:app_finance/_mixins/storage_mixin.dart';
 import 'package:flutter/material.dart';
 
@@ -70,7 +71,7 @@ class BudgetAppData extends AbstractAppData with StorageMixin {
       updatedAt: DateTime.parse(json['updatedAt']),
       createdAt: DateTime.parse(json['createdAt']),
       amountLimit: json['amountLimit'],
-      amountSet: json['amountSet'] != null ? json['amountSet'].toMap<int, double>() : {},
+      amountSet: json['amountSet'] != null ? json['amountSet'].toString().toMap<int, double>() : {},
       hidden: json['hidden'],
     );
   }
