@@ -53,7 +53,7 @@ class BudgetAppData extends AbstractAppData with StorageMixin {
       icon: super.icon,
       currency: super.currency,
       createdAt: super.createdAt,
-      amountLimit: amountLimit,
+      amountLimit: super.details,
       amountSet: amountSet,
       amount: amount,
       hidden: super.hidden,
@@ -84,12 +84,20 @@ class BudgetAppData extends AbstractAppData with StorageMixin {
       };
 
   @override
-  double get details => amountLimit > 0 ? amountLimit * (1 - progress) : 0.0;
+  double get details {
+    if (super.details > 0 && super.details < 1) {
+      return _relativeAmountLimit() - amount;
+    } else if (super.details > 0) {
+      return amountLimit * (1 - progress);
+    } else {
+      return 0.0;
+    }
+  }
 
   String get detailsFormatted {
-    if (amountLimit > 0 && amountLimit < 1) {
+    if (super.details > 0 && super.details < 1) {
       return '${(_relativeAmountLimit() - amount).toCurrency(currency)} ${AppLocale.labels.left}';
-    } else if (amountLimit > 0) {
+    } else if (super.details > 0) {
       return '${details.toCurrency(currency)} ${AppLocale.labels.left}';
     } else {
       return '${amount.toCurrency(currency)} ${AppLocale.labels.spent}';
@@ -97,10 +105,10 @@ class BudgetAppData extends AbstractAppData with StorageMixin {
   }
 
   String _description() {
-    if (amountLimit > 0 && amountLimit < 1) {
+    if (super.details > 0 && super.details < 1) {
       final percents = (amountLimit * 100).toStringAsFixed(2);
       return '${(amount).toCurrency(currency)} / ${_relativeAmountLimit().toCurrency(currency)} ($percents%)';
-    } else if (amountLimit > 0) {
+    } else if (super.details > 0) {
       return '${(amountLimit * progress).toCurrency(currency)} / ${(amountLimit).toCurrency(currency)}';
     } else {
       return '';

@@ -10,7 +10,6 @@ import 'package:app_finance/_configs/theme_helper.dart';
 import 'package:app_finance/_classes/structure/navigation/app_route.dart';
 import 'package:app_finance/_ext/build_context_ext.dart';
 import 'package:app_finance/_ext/double_ext.dart';
-import 'package:app_finance/_mixins/formatter_mixin.dart';
 import 'package:app_finance/charts/gauge_chart.dart';
 import 'package:app_finance/pages/abstract_page_state.dart';
 import 'package:app_finance/widgets/wrapper/text_wrapper.dart';
@@ -25,7 +24,7 @@ class GoalPage extends StatefulWidget {
   GoalPageState createState() => GoalPageState();
 }
 
-class GoalPageState extends AbstractPageState<GoalPage> with FormatterMixin {
+class GoalPageState extends AbstractPageState<GoalPage> {
   @override
   String getTitle() {
     return AppLocale.labels.goalHeadline;

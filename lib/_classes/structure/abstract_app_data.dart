@@ -4,11 +4,11 @@
 import 'dart:convert';
 import 'package:app_finance/_classes/controller/encryption_handler.dart';
 import 'package:app_finance/_classes/structure/interface_app_data.dart';
-import 'package:app_finance/_mixins/formatter_mixin.dart';
+import 'package:app_finance/_ext/date_time_ext.dart';
 import 'package:currency_picker/currency_picker.dart';
 import 'package:flutter/material.dart';
 
-abstract class AbstractAppData with FormatterMixin implements InterfaceAppData {
+abstract class AbstractAppData implements InterfaceAppData {
   @override
   String? uuid;
   double _amount = 0.0;
@@ -24,7 +24,6 @@ abstract class AbstractAppData with FormatterMixin implements InterfaceAppData {
   @override
   IconData? icon;
   @override
-  // ignore: overridden_fields
   Currency? currency;
 
   AbstractAppData({
@@ -95,13 +94,13 @@ abstract class AbstractAppData with FormatterMixin implements InterfaceAppData {
   // ignore: unnecessary_getters_setters
   DateTime get updatedAt => _updatedAt;
   set updatedAt(DateTime value) => _updatedAt = value;
-  String get updatedAtFormatted => getDateFormatted(_updatedAt);
+  String get updatedAtFormatted => _updatedAt.yMEd();
   set updatedAtFormatted(String value) => _updatedAt = DateTime.parse(value);
 
   // ignore: unnecessary_getters_setters
   @override
   DateTime get createdAt => _createdAt;
   set createdAt(DateTime value) => _createdAt = value;
-  String get createdAtFormatted => getDateFormatted(_createdAt);
+  String get createdAtFormatted => _createdAt.yMEd();
   set createdAtFormatted(String value) => _createdAt = DateTime.parse(value);
 }
