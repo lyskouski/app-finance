@@ -41,78 +41,106 @@ class BaseHeaderWidget extends StatelessWidget {
     final textTheme = context.textTheme;
     final colorScheme = context.colorScheme;
     NavigatorState nav = Navigator.of(context);
-    return TapWidget(
-      tooltip: tooltip,
-      route: route,
-      child: Container(
-        padding: EdgeInsets.all(indent / 2),
-        height: 60,
-        color: colorScheme.inverseSurface.withOpacity(0.1),
-        child: GridContainer(
-          rows: [null, 40, if (hasExpand) 40],
-          columns: const [13, null],
-          children: [
-            GridItem(
-              start: const Size(0, 0),
-              end: const Size(1, 1),
-              child: TextWrapper(
-                title,
-                style: textTheme.headlineSmall,
-              ),
+    return LayoutBuilder(builder: (context, constraints) {
+      if (constraints.maxWidth < 380) {
+        return TapWidget(
+          tooltip: tooltip,
+          route: route,
+          child: Container(
+            padding: EdgeInsets.all(indent / 2),
+            height: 24,
+            width: width + indent,
+            color: colorScheme.inverseSurface.withOpacity(0.1),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                TextWrapper(
+                  title,
+                  style: textTheme.headlineMedium,
+                ),
+                TextWrapper(
+                  (state.total as double).toCurrency(),
+                  style: textTheme.headlineMedium,
+                ),
+              ],
             ),
-            GridItem(
-              start: const Size(0, 1),
-              end: const Size(1, 2),
-              child: TextWrapper(
-                (state.total as double).toCurrency(),
-                style: textTheme.numberLarge,
-              ),
-            ),
-            GridItem(
-              start: const Size(1, 0),
-              end: const Size(2, 2),
-              child: ToolbarButtonWidget(
-                borderColor: context.colorScheme.onSecondaryContainer.withOpacity(0.3),
-                offset: const Offset(-4, 0),
-                margin: const EdgeInsets.only(left: 4),
-                child: IconButton(
-                  hoverColor: Colors.transparent,
-                  icon: Icon(
-                    Icons.stacked_bar_chart,
-                    color: context.colorScheme.onSecondaryContainer,
-                  ),
-                  tooltip: AppLocale.labels.metricsTooltip,
-                  onPressed: () => nav.pushNamed(AppMenu.metrics(route)),
+          ),
+        );
+      }
+      return TapWidget(
+        tooltip: tooltip,
+        route: route,
+        child: Container(
+          padding: EdgeInsets.all(indent / 2),
+          height: 60,
+          width: width + indent,
+          color: colorScheme.inverseSurface.withOpacity(0.1),
+          child: GridContainer(
+            rows: [null, 40, if (hasExpand) 40],
+            columns: const [13, null],
+            children: [
+              GridItem(
+                start: const Size(0, 0),
+                end: const Size(1, 1),
+                child: TextWrapper(
+                  title,
+                  style: textTheme.headlineSmall,
                 ),
               ),
-            ),
-            if (hasExpand)
               GridItem(
-                start: const Size(2, 0),
-                end: const Size(3, 2),
+                start: const Size(0, 1),
+                end: const Size(1, 2),
+                child: TextWrapper(
+                  (state.total as double).toCurrency(),
+                  style: textTheme.numberLarge,
+                ),
+              ),
+              GridItem(
+                start: const Size(1, 0),
+                end: const Size(2, 2),
                 child: ToolbarButtonWidget(
                   borderColor: context.colorScheme.onSecondaryContainer.withOpacity(0.3),
                   offset: const Offset(-4, 0),
                   margin: const EdgeInsets.only(left: 4),
                   child: IconButton(
                     hoverColor: Colors.transparent,
-                    selectedIcon: Icon(
-                      Icons.expand,
+                    icon: Icon(
+                      Icons.stacked_bar_chart,
                       color: context.colorScheme.onSecondaryContainer,
                     ),
-                    icon: Icon(
-                      Icons.expand_less,
-                      color: context.colorScheme.primary.withOpacity(0.6),
-                    ),
-                    tooltip: toExpand ? AppLocale.labels.expand : AppLocale.labels.collapse,
-                    onPressed: () => expand!(),
-                    isSelected: toExpand,
+                    tooltip: AppLocale.labels.metricsTooltip,
+                    onPressed: () => nav.pushNamed(AppMenu.metrics(route)),
                   ),
                 ),
               ),
-          ],
+              if (hasExpand)
+                GridItem(
+                  start: const Size(2, 0),
+                  end: const Size(3, 2),
+                  child: ToolbarButtonWidget(
+                    borderColor: context.colorScheme.onSecondaryContainer.withOpacity(0.3),
+                    offset: const Offset(-4, 0),
+                    margin: const EdgeInsets.only(left: 4),
+                    child: IconButton(
+                      hoverColor: Colors.transparent,
+                      selectedIcon: Icon(
+                        Icons.expand,
+                        color: context.colorScheme.onSecondaryContainer,
+                      ),
+                      icon: Icon(
+                        Icons.expand_less,
+                        color: context.colorScheme.primary.withOpacity(0.6),
+                      ),
+                      tooltip: toExpand ? AppLocale.labels.expand : AppLocale.labels.collapse,
+                      onPressed: () => expand!(),
+                      isSelected: toExpand,
+                    ),
+                  ),
+                ),
+            ],
+          ),
         ),
-      ),
-    );
+      );
+    });
   }
 }
