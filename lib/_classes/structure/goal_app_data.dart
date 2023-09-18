@@ -61,7 +61,7 @@ class GoalAppData extends AbstractAppData {
       initial: json['initial'] ?? 0.0,
       uuid: json['uuid'],
       details: json['details'],
-      progress: json['progress'],
+      progress: 0.0 + json['progress'],
       description: json['description'],
       color: json['color'] != null ? MaterialColor(json['color'], const <int, Color>{}) : null,
       icon: json['icon'] != null ? (json['icon'] as int).toIcon() : null,

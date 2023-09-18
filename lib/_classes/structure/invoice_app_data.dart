@@ -61,7 +61,7 @@ class InvoiceAppData extends AbstractAppData {
       account: json['account'],
       accountFrom: json['accountFrom'],
       details: json['details'],
-      progress: json['progress'],
+      progress: 0.0 + json['progress'],
       description: json['description'],
       color: json['color'] != null ? MaterialColor(json['color'], const <int, Color>{}) : null,
       icon: json['icon'] != null ? int.tryParse(json['icon'])?.toIcon() : null,
