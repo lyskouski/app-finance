@@ -74,7 +74,7 @@ jobs:
             asset_content_type: application/zip
           - os: macos-latest
             target: iOS
-            build_path: build/ios/iphoneos
+            build_path: build/ios/ipa
             asset_extension: .ipa
             asset_content_type: application/zip
           - os: windows-latest
