@@ -65,6 +65,7 @@
     "colorApp": "Custom",
     "colorDark": "Dark",
     "colorInversePrimary": "Inverse Primary",
+    "colorInverseSurface": "Inverse Surface",
     "colorLight": "Light",
     "colorOnSecondary": "On Secondary",
     "colorOnSecondaryContainer": "On Container",
