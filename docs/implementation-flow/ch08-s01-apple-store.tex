@@ -240,14 +240,22 @@ minimize the package size but also declared as safeguards against a reserve engi
 </plist>
 \end{lstlisting}
 
-In case of any encryption usage, it's needed to be changed \q{./ios/Runner/Info.plist}:
+\noindent In case of any encryption usage, it's needed to be changed \q{./ios/Runner/Info.plist}:
 
 \begin{lstlisting}[language=xml]
 <key>ITSAppUsesNonExemptEncryption</key>
 <true/>
+<key>ITSAppEncryptionExportComplianceCode</key>
+<string>NNNNNNNNNNNNNNNN</string>
 \end{lstlisting}
 
 \noindent and next form (if the application is going to be available in France marketplace) 
 \href{https://www.ssi.gouv.fr/en/regulation/cryptology/how-to-submit-an-application/}{https://www.ssi.gouv.fr/en/regulation/cryptology/how-to-submit-an-application/}
 to be sent to \q{controle@ssi.gouv.fr} with a title "[formalités] {organization} - {app name}", and attached the approval 
-of it during the processing of "Export Compliance Information" form in "Apple Store Connect".
+of it during the processing of "Export Compliance Information" form in "Apple Store Connect". Mentioned 
+\q{ITSAppEncryptionExportComplianceCode}-code can be taken from 
+\href{https://appstoreconnect.apple.com/apps}{https://appstoreconnect.apple.com/apps/\q{id}/features/encryption}
+(\cref{img:d-apple-compliance})
+
+\img{distributing/app-store-compliance}{Apple Store Connect: App Services -- Encryption}{img:d-apple-compliance}
+
