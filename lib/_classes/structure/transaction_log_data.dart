@@ -3,17 +3,14 @@
 
 import 'dart:convert';
 
-import 'package:app_finance/_mixins/formatter_mixin.dart';
 import 'package:currency_picker/currency_picker.dart';
 
-class TransactionLogData<T> with FormatterMixin {
+class TransactionLogData<T> {
   final String name;
   final T changedFrom;
   final T changedTo;
   final String? ref;
   final DateTime _time;
-  @override
-  // ignore: overridden_fields
   Currency? currency;
 
   TransactionLogData({

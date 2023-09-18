@@ -4,6 +4,8 @@
 import 'package:app_finance/_classes/structure/currency/currency_provider.dart';
 import 'package:app_finance/_classes/structure/abstract_app_data.dart';
 import 'package:app_finance/_classes/storage/app_data.dart';
+import 'package:app_finance/_ext/date_time_ext.dart';
+import 'package:app_finance/_ext/double_ext.dart';
 import 'package:app_finance/_ext/int_ext.dart';
 import 'package:flutter/material.dart';
 
@@ -82,8 +84,8 @@ class AccountAppData extends AbstractAppData {
 
   DateTime get closedAt => _closedAt;
   set closedAt(DateTime value) => _closedAt = value;
-  String get closedAtFormatted => getDateFormatted(_closedAt);
+  String get closedAtFormatted => _closedAt.yMEd();
   set closedAtFormatted(String value) => _closedAt = DateTime.parse(value);
 
-  String get detailsFormatted => getNumberFormatted(super.details);
+  String get detailsFormatted => (super.details as double).toCurrency(currency);
 }

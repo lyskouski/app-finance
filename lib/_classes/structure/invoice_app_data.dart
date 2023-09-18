@@ -5,6 +5,7 @@ import 'package:app_finance/_classes/herald/app_locale.dart';
 import 'package:app_finance/_classes/storage/app_data.dart';
 import 'package:app_finance/_classes/structure/abstract_app_data.dart';
 import 'package:app_finance/_classes/structure/currency/currency_provider.dart';
+import 'package:app_finance/_ext/double_ext.dart';
 import 'package:app_finance/_ext/int_ext.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
@@ -79,7 +80,7 @@ class InvoiceAppData extends AbstractAppData {
         'accountFrom': accountFrom,
       };
 
-  String get detailsFormatted => getNumberFormatted(super.details);
+  String get detailsFormatted => (super.details as double).toCurrency(currency);
 
   @override
   String get description => DateFormat.MMMMd(AppLocale.code).format(super.createdAt);

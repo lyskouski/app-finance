@@ -4,6 +4,8 @@
 import 'package:app_finance/_classes/structure/currency/currency_provider.dart';
 import 'package:app_finance/_classes/structure/abstract_app_data.dart';
 import 'package:app_finance/_classes/storage/app_data.dart';
+import 'package:app_finance/_ext/date_time_ext.dart';
+import 'package:app_finance/_ext/double_ext.dart';
 import 'package:currency_picker/currency_picker.dart';
 
 class CurrencyAppData extends AbstractAppData {
@@ -62,9 +64,9 @@ class CurrencyAppData extends AbstractAppData {
         'currencyFrom': currencyFrom?.code,
       };
 
-  String get detailsFormatted => getNumberFormatted(super.details);
+  String get detailsFormatted => (super.details as double).toCurrency(currency);
 
-  String get descriptionFormatted => getDateFormatted(DateTime.parse(super.description ?? ''));
+  String get descriptionFormatted => DateTime.parse(super.description ?? '').yMEd();
 
   @override
   String get title => '${currencyFrom?.code} -> ${currency?.code}';
