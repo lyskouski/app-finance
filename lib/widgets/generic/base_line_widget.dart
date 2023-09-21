@@ -23,6 +23,7 @@ class BaseLineWidget extends StatelessWidget {
   final String route;
   final bool hidden;
   final bool showDivider;
+  final Widget? error;
 
   const BaseLineWidget({
     super.key,
@@ -32,6 +33,7 @@ class BaseLineWidget extends StatelessWidget {
     required this.description,
     required this.color,
     required this.width,
+    this.error,
     this.hidden = false,
     this.progress = 1,
     this.route = '',
@@ -58,7 +60,7 @@ class BaseLineWidget extends StatelessWidget {
             indent: indent,
             alignment: MainAxisAlignment.start,
             maxWidth: width,
-            chunk: [indent * 1.5, null, txtWidth + 2 * indent],
+            chunk: [indent * 1.5, null, txtWidth + 2 * indent, if (error != null) 22],
             children: [
               [
                 Padding(
@@ -87,6 +89,7 @@ class BaseLineWidget extends StatelessWidget {
                   child: details.toColoredNumber(context),
                 ),
               ],
+              if (error != null) [error!],
             ],
           ),
           if (showDivider) const Divider(),

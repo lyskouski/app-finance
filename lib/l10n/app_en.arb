@@ -178,6 +178,7 @@
             "type": "String"
         }
     },
+    "errorNegative": "Cannot be negative! Please, fix the error",
     "example": "Example",
     "expand": "Expand Section",
     "expense": "Amount of Expenses",

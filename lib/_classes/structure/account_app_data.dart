@@ -1,9 +1,11 @@
 // Copyright 2023 The terCAD team. All rights reserved.
 // Use of this source code is governed by a CC BY-NC-ND 4.0 license that can be found in the LICENSE file.
 
+import 'package:app_finance/_classes/herald/app_locale.dart';
 import 'package:app_finance/_classes/structure/currency/currency_provider.dart';
 import 'package:app_finance/_classes/structure/abstract_app_data.dart';
 import 'package:app_finance/_classes/storage/app_data.dart';
+import 'package:app_finance/_configs/account_type.dart';
 import 'package:app_finance/_ext/date_time_ext.dart';
 import 'package:app_finance/_ext/double_ext.dart';
 import 'package:app_finance/_ext/int_ext.dart';
@@ -88,4 +90,13 @@ class AccountAppData extends AbstractAppData {
   set closedAtFormatted(String value) => _closedAt = DateTime.parse(value);
 
   String get detailsFormatted => (super.details as double).toCurrency(currency);
+
+  @override
+  Widget? get error =>
+      details < 0 && ![AppAccountType.credit.toString(), AppAccountType.creditCard.toString()].contains(type)
+          ? Tooltip(
+              message: AppLocale.labels.errorNegative,
+              child: Icon(Icons.warning, semanticLabel: AppLocale.labels.errorNegative),
+            )
+          : null;
 }
