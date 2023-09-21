@@ -114,7 +114,7 @@ class GoalPageState extends AbstractPageState<GoalPage> {
                 title: goal.title ?? '',
                 width: width,
                 uuid: goal.uuid,
-                details: goal.getNumberFormatted(goal.details),
+                details: (goal.details as double).toCurrency(goal.currency),
                 description: AppLocale.labels.goalProfit(goal.closedAtFormatted),
                 color: goal.color ?? Colors.green.shade700,
                 icon: goal.icon ?? Icons.star,
