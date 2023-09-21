@@ -3,6 +3,7 @@
 
 import 'package:app_finance/_classes/structure/navigation/app_menu.dart';
 import 'package:app_finance/_ext/build_context_ext.dart';
+import 'package:app_finance/_ext/string_ext.dart';
 import 'package:app_finance/charts/bar_vertical_single.dart';
 import 'package:app_finance/_configs/custom_text_theme.dart';
 import 'package:app_finance/widgets/wrapper/row_widget.dart';
@@ -44,11 +45,7 @@ class BaseLineWidget extends StatelessWidget {
     }
     final textTheme = context.textTheme;
     final indent = ThemeHelper.getIndent();
-    final detailsText = Text(
-      details,
-      style: textTheme.numberMedium,
-      overflow: TextOverflow.ellipsis,
-    );
+    final txtWidth = ThemeHelper.getTextWidth(Text(details, style: textTheme.numberMedium));
 
     return TapWidget(
       tooltip: '',
@@ -61,7 +58,7 @@ class BaseLineWidget extends StatelessWidget {
             indent: indent,
             alignment: MainAxisAlignment.start,
             maxWidth: width,
-            chunk: [indent * 1.5, null, ThemeHelper.getTextWidth(detailsText) + 2 * indent],
+            chunk: [indent * 1.5, null, txtWidth + 2 * indent],
             children: [
               [
                 Padding(
@@ -87,12 +84,12 @@ class BaseLineWidget extends StatelessWidget {
               [
                 Align(
                   alignment: Alignment.centerRight,
-                  child: detailsText,
+                  child: details.toColoredNumber(context),
                 ),
               ],
             ],
           ),
-          if (showDivider) ...[const Divider()],
+          if (showDivider) const Divider(),
         ],
       ),
     );
