@@ -199,15 +199,17 @@ class AccountAddPageState<T extends AccountAddPage> extends AbstractAddPageState
               setState: (value) => setState(() => currency = value),
             ),
             ThemeHelper.hIndent2x,
-            Text(
-              AppLocale.labels.validTillDate,
-              style: textTheme.bodyLarge,
-            ),
-            MonthYearInput(
-              value: validTillDate,
-              setState: (value) => setState(() => validTillDate = value),
-            ),
-            ThemeHelper.hIndent2x,
+            if (![AppAccountType.account.toString(), AppAccountType.cash.toString()].contains(type)) ...[
+              Text(
+                AppLocale.labels.validTillDate,
+                style: textTheme.bodyLarge,
+              ),
+              MonthYearInput(
+                value: validTillDate,
+                setState: (value) => setState(() => validTillDate = value),
+              ),
+              ThemeHelper.hIndent2x,
+            ],
             Text(
               AppLocale.labels.balance,
               style: textTheme.bodyLarge,
