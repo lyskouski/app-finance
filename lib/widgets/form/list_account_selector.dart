@@ -39,12 +39,14 @@ class ListAccountSelector<K extends ListAccountSelectorItem> extends ListSelecto
 
   @override
   List<K> get options {
-    return state
-        .get(AppDataType.accounts)
-        .list
-        .map((item) => ListAccountSelectorItem(item: item))
-        .cast<ListAccountSelectorItem>()
-        .toList();
+    return super.options.isNotEmpty
+        ? super.options
+        : state
+            .get(AppDataType.accounts)
+            .list
+            .map((item) => ListAccountSelectorItem(item: item))
+            .cast<ListAccountSelectorItem>()
+            .toList();
   }
 
   @override

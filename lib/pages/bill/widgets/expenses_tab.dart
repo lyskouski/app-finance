@@ -8,6 +8,7 @@ import 'package:app_finance/_classes/structure/bill_app_data.dart';
 import 'package:app_finance/_classes/controller/focus_controller.dart';
 import 'package:app_finance/_classes/storage/app_preferences.dart';
 import 'package:app_finance/_classes/storage/app_data.dart';
+import 'package:app_finance/_configs/account_type.dart';
 import 'package:app_finance/_configs/theme_helper.dart';
 import 'package:app_finance/_ext/build_context_ext.dart';
 import 'package:app_finance/pages/abstract_page_state.dart';
@@ -146,6 +147,11 @@ class ExpensesTabState<T extends ExpensesTab> extends AbstractPageState<T> {
               value: account,
               hintText: AppLocale.labels.titleAccountTooltip,
               state: widget.state,
+              options: widget.state
+                  .getList(AppDataType.accounts)
+                  .where((e) => ![AppAccountType.deposit.toString(), AppAccountType.credit.toString()].contains(e.type))
+                  .map((item) => ListAccountSelectorItem(item: item))
+                  .toList(),
               setState: (value) => setState(() {
                 account = value;
                 currency = widget.state.getByUuid(value).currency;
