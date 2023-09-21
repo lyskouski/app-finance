@@ -9,6 +9,8 @@ import 'package:app_finance/_classes/structure/navigation/app_menu.dart';
 import 'package:app_finance/_classes/structure/budget_app_data.dart';
 import 'package:app_finance/_configs/theme_helper.dart';
 import 'package:app_finance/_classes/structure/navigation/app_route.dart';
+import 'package:app_finance/_ext/date_time_ext.dart';
+import 'package:app_finance/_ext/double_ext.dart';
 import 'package:app_finance/pages/abstract_page_state.dart';
 import 'package:app_finance/widgets/generic/base_line_widget.dart';
 import 'package:app_finance/widgets/generic/base_list_infinite_widget.dart';
@@ -76,9 +78,9 @@ class BudgetViewPageState extends AbstractPageState<BudgetViewPage> with TickerP
     return BaseLineWidget(
       uuid: '',
       title: '',
-      description: item.getDateFormatted(item.timestamp),
+      description: (item.timestamp as DateTime).yMEd(),
       progress: 1.0,
-      details: item.getNumberFormatted(item.delta),
+      details: (item.delta as double).toCurrency(item.currency),
       color: Colors.transparent,
       width: ThemeHelper.getWidth(context, 3),
     );

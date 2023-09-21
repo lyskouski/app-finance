@@ -91,6 +91,8 @@ abstract class AbstractAppData implements InterfaceAppData {
 
   set details(dynamic value) => _amount = value;
 
+  Widget? get error => null;
+
   // ignore: unnecessary_getters_setters
   DateTime get updatedAt => _updatedAt;
   set updatedAt(DateTime value) => _updatedAt = value;

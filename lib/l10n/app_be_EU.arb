@@ -178,6 +178,7 @@
             "type": "String"
         }
     },
+    "errorNegative": "Nia moža być admoŭnym! Kali laska, vypraŭcie pamylku",
     "example": "Pryklad",
     "expand": "Razharnuć Razd́ziel",
     "expense": "Suma Vydatkaŭ",

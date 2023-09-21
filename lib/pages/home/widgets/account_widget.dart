@@ -114,6 +114,7 @@ class AccountWidget extends BaseWidget {
         hidden: item.hidden,
         width: width,
         route: routeList,
+        error: item.error,
       ),
     );
   }
