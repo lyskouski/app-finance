@@ -2,6 +2,7 @@
 // Use of this source code is governed by a CC BY-NC-ND 4.0 license that can be found in the LICENSE file.
 
 import 'package:app_finance/_classes/controller/focus_controller.dart';
+import 'package:app_finance/_classes/structure/def/list_selector_item.dart';
 import 'package:app_finance/_configs/custom_color_scheme.dart';
 import 'package:app_finance/_configs/custom_text_theme.dart';
 import 'package:app_finance/_configs/theme_helper.dart';
@@ -10,24 +11,6 @@ import 'package:app_finance/widgets/form/abstract_selector.dart';
 import 'package:app_finance/widgets/wrapper/tap_widget.dart';
 import 'package:app_finance/widgets/wrapper/text_wrapper.dart';
 import 'package:flutter/material.dart';
-
-class ListSelectorItem {
-  final String id;
-  final String name;
-
-  bool match(String search) {
-    return name.toLowerCase().contains(search.toLowerCase());
-  }
-
-  bool equal(String val) {
-    return id == val;
-  }
-
-  @override
-  toString() => name;
-
-  ListSelectorItem({required this.id, required this.name});
-}
 
 class ListSelector<K extends ListSelectorItem> extends AbstractSelector {
   final List<K> options;
