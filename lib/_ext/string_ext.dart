@@ -3,11 +3,6 @@
 
 import 'dart:convert';
 
-import 'package:app_finance/_configs/custom_text_theme.dart';
-import 'package:app_finance/_ext/build_context_ext.dart';
-import 'package:app_finance/widgets/wrapper/text_wrapper.dart';
-import 'package:flutter/material.dart';
-
 extension MapExt on String {
   T _asType<T>(value) {
     return switch (T) {
@@ -51,16 +46,5 @@ extension MapExt on String {
       result.add(value);
     }
     return result;
-  }
-
-  TextWrapper toColoredNumber(BuildContext context) {
-    final textTheme = context.textTheme;
-    final isNegative = characters.firstOrNull == '-';
-    return TextWrapper(
-      this,
-      style: textTheme.numberMedium.copyWith(
-        color: isNegative ? Color.alphaBlend(Colors.red.withOpacity(0.4), context.colorScheme.secondary) : null,
-      ),
-    );
   }
 }
