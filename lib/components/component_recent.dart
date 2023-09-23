@@ -12,14 +12,15 @@ class ComponentRecent extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    throw UnimplementedError();
+    return ThemeHelper.emptyBox;
   }
 }
 
 class ComponentRecentForm extends StatefulWidget {
   final ComponentData data;
+  final Function adjust;
 
-  const ComponentRecentForm(this.data, {super.key});
+  const ComponentRecentForm(this.data, {super.key, required this.adjust});
 
   @override
   ComponentRecentFormState createState() => ComponentRecentFormState();

@@ -5,10 +5,9 @@ import 'package:app_finance/_classes/storage/app_preferences.dart';
 import 'package:app_finance/_configs/theme_helper.dart';
 import 'package:app_finance/_ext/build_context_ext.dart';
 import 'package:app_finance/_ext/string_ext.dart';
-import 'package:app_finance/components/component_recent.dart';
+import 'package:app_finance/components/components_builder_item.dart';
 import 'package:app_finance/components/components_data.dart';
 import 'package:app_finance/components/interface_component.dart';
-import 'package:app_finance/components/list_component_registry.dart';
 import 'package:app_finance/components/widgets/draggable_frame.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_grid_layout/flutter_grid_layout.dart';
@@ -36,18 +35,6 @@ class ComponentsBuilder extends StatelessWidget {
 
   static List<ComponentData>? getData(BuildContext context) =>
       AppPreferences.get(getKey(context))?.toList<ComponentData>();
-
-  static Widget buildComponent(BuildContext context, ComponentData data, [bool editMode = false]) {
-    final key = ComponentRegistry.values.firstWhere((e) => e.toString() == data[InterfaceComponent.key]);
-    if (editMode) {
-      return switch (key) {
-        ComponentRegistry.recent => ComponentRecentForm(data),
-      };
-    }
-    return switch (key) {
-      _ => ThemeHelper.emptyBox,
-    };
-  }
 
   void resize(ComponentData change, Size start) {
     final scope = data[change[_order]];
@@ -99,7 +86,7 @@ class ComponentsBuilder extends StatelessWidget {
                 (i) => GridItem(
                   start: Size(data[i][InterfaceComponent.startX] + .0, data[i][InterfaceComponent.startY] + .0),
                   end: Size(data[i][InterfaceComponent.endX] + .0, data[i][InterfaceComponent.endY] + .0),
-                  child: DraggableFrame({...data[i], _order: i}, delete: delete!),
+                  child: DraggableFrame({...data[i], _order: i}, delete: delete!, adjust: adjust!),
                 ),
               ),
             ]
@@ -108,7 +95,7 @@ class ComponentsBuilder extends StatelessWidget {
               (i) => GridItem(
                     start: Size(data[i][InterfaceComponent.startX] + .0, data[i][InterfaceComponent.startY] + .0),
                     end: Size(data[i][InterfaceComponent.endX] + .0, data[i][InterfaceComponent.endY] + .0),
-                    child: buildComponent(context, data[i], editMode),
+                    child: ComponentsBuilderItem({...data[i], _order: i}),
                   )),
     );
   }

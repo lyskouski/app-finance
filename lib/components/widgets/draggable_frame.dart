@@ -3,7 +3,7 @@
 
 import 'package:app_finance/_classes/herald/app_locale.dart';
 import 'package:app_finance/_ext/build_context_ext.dart';
-import 'package:app_finance/components/components_builder.dart';
+import 'package:app_finance/components/components_builder_form.dart';
 import 'package:app_finance/components/components_data.dart';
 import 'package:app_finance/components/interface_component.dart';
 import 'package:app_finance/components/widgets/draggable_pointer.dart';
@@ -15,8 +15,14 @@ import 'package:flutter_grid_layout/flutter_grid_layout.dart';
 class DraggableFrame extends StatefulWidget {
   final Map<String, dynamic> data;
   final Function delete;
+  final Function adjust;
 
-  const DraggableFrame(this.data, {super.key, required this.delete});
+  const DraggableFrame(
+    this.data, {
+    super.key,
+    required this.delete,
+    required this.adjust,
+  });
 
   @override
   DraggableFrameState createState() => DraggableFrameState();
@@ -56,7 +62,7 @@ class DraggableFrameState extends State<DraggableFrame> {
                 end: const Size(4, 4),
                 child: Visibility(
                   visible: !isDrag,
-                  child: ComponentsBuilder.buildComponent(context, widget.data, true),
+                  child: ComponentsBuilderForm(widget.data, adjust: widget.adjust),
                 )),
             GridItem(
               start: const Size(0, 0),
