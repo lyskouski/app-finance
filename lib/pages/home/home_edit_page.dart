@@ -60,6 +60,7 @@ class HomeEditPageState extends State<HomeEditPage> {
   @override
   Widget build(BuildContext context) {
     key = ComponentsBuilder.getKey(context);
+    data = ComponentsBuilder.getData(context) ?? [];
     return Scaffold(
       appBar: AppBar(
         toolbarHeight: 45,
@@ -108,7 +109,7 @@ class HomeEditPageState extends State<HomeEditPage> {
       ),
       body: Padding(
         padding: EdgeInsets.all(ThemeHelper.getIndent(3)),
-        child: ComponentsBuilder(ComponentsBuilder.getData(context) ?? [], editMode: true),
+        child: ComponentsBuilder(data, editMode: true, callback: adjust),
       ),
     );
   }

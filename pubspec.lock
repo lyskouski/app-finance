@@ -383,10 +383,10 @@ packages:
     dependency: "direct main"
     description:
       name: flutter_grid_layout
-      sha256: "2a7300fd464d10ad0db3515d253387872f541b98274dec8f8f091cf1c2693ada"
+      sha256: "4b83afded707a6d26daed0a01f1313a0b53c048e21b278a8b498949fa8c4c5ce"
       url: "https://pub.dev"
     source: hosted
-    version: "0.1.0"
+    version: "1.0.0"
   flutter_iconpicker:
     dependency: "direct main"
     description:

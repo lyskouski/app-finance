@@ -26,10 +26,10 @@ class ThemeHelper {
   static double getIndent([double multiply = 1]) => _Sizes.normal / AppZoom.state * multiply;
 
   static double getWidth(BuildContext context, [double multiply = 4]) =>
-      MediaQuery.sizeOf(context).width / AppZoom.state - getIndent() * multiply;
+      MediaQuery.sizeOf(context).width / AppZoom.state - getIndent(multiply);
 
   static double getHeight(BuildContext context, [double multiply = 2]) =>
-      MediaQuery.sizeOf(context).height / AppZoom.state - getIndent() * multiply;
+      MediaQuery.sizeOf(context).height / AppZoom.state - getIndent(multiply);
 
   static bool isKeyboardVisible(BuildContext context) => MediaQuery.of(context).viewInsets.bottom > 0;
 
