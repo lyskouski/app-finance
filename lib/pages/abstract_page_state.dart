@@ -178,6 +178,7 @@ abstract class AbstractPageState<T extends StatefulWidget> extends State<T> {
       return LayoutBuilder(builder: (context, constraints) {
         final button = buildButton(context, constraints);
         final isBottom = ResponsiveMatrix(getWindowType(context)).isNavBottom(constraints);
+        final height = constraints.maxHeight / scale - (isBottom ? barHeight + ThemeHelper.getIndent() : 0);
         if (isBottom && bar is! BottomAppBar || bar is! AppBar) {
           bar = isBottom ? buildBottomBar(context, constraints) : buildBar(context);
         }
@@ -193,8 +194,8 @@ abstract class AbstractPageState<T extends StatefulWidget> extends State<T> {
                 alignment: Alignment.topLeft,
                 minWidth: constraints.maxWidth / scale,
                 maxWidth: constraints.maxWidth / scale,
-                minHeight: constraints.maxHeight / scale,
-                maxHeight: constraints.maxHeight / scale,
+                minHeight: height,
+                maxHeight: height,
                 child: Transform.translate(
                   offset: Offset(dx, dy),
                   child: Transform.scale(
