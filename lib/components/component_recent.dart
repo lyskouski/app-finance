@@ -4,6 +4,7 @@
 import 'package:app_finance/_classes/herald/app_locale.dart';
 import 'package:app_finance/_classes/storage/app_data.dart';
 import 'package:app_finance/_classes/structure/currency/exchange.dart';
+import 'package:app_finance/_classes/structure/def/list_selector_item.dart';
 import 'package:app_finance/_classes/structure/navigation/app_route.dart';
 import 'package:app_finance/_configs/theme_helper.dart';
 import 'package:app_finance/_ext/build_context_ext.dart';
@@ -40,7 +41,7 @@ class ComponentRecent extends StatelessWidget {
   Widget build(BuildContext context) {
     double indent = ThemeHelper.getIndent(0.5);
     EdgeInsets margin = EdgeInsets.all(indent);
-    ComponentRecentType? widgetType = data[type]?.toString().toEnum<ComponentRecentType>();
+    ComponentRecentType? widgetType = data[type]?.toString().toEnum(ComponentRecentType.values);
     final limit = switch (data[count].runtimeType) {
       String => (data[count] as String).toInt(),
       double => (data[count] as double).toInt(),

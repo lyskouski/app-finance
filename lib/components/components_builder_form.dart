@@ -16,7 +16,7 @@ class ComponentsBuilderForm extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final key = (data[InterfaceComponent.key] as String).toEnum<ComponentRegistry>();
+    final key = (data[InterfaceComponent.key] as String).toEnum(ComponentRegistry.values);
     return switch (key) {
       ComponentRegistry.recent => ComponentRecentForm(data, adjust: adjust),
     };
