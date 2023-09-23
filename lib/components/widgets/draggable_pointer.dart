@@ -8,11 +8,9 @@ import 'package:flutter/material.dart';
 
 class DraggablePointer extends StatefulWidget {
   final Map<String, dynamic> data;
-  final Size? size;
-  final Size? shift;
   final bool topLeft;
 
-  const DraggablePointer(this.data, {super.key, this.size, this.shift, this.topLeft = true});
+  const DraggablePointer(this.data, {super.key, this.topLeft = true});
 
   @override
   DraggablePointerState createState() => DraggablePointerState();
@@ -23,24 +21,10 @@ class DraggablePointerState extends State<DraggablePointer> {
 
   @override
   Widget build(BuildContext context) {
-    const sz = 20.0;
     final colorScheme = context.colorScheme;
-    EdgeInsetsGeometry? margin;
-    if (widget.size != null && widget.shift != null) {
-      final cellSize = Size(
-        ThemeHelper.getWidth(context, 0.0 + widget.size!.width) / widget.size!.width,
-        ThemeHelper.getHeight(context, 0.0 + widget.size!.height) / widget.size!.height,
-      );
-      margin = EdgeInsets.only(
-        left: widget.shift!.width * cellSize.width - sz,
-        top: widget.shift!.height * cellSize.height - sz,
-      );
-    }
     final border = BorderSide(width: 3, color: context.colorScheme.primary);
     return Container(
-      height: sz,
-      width: sz,
-      margin: margin,
+      margin: EdgeInsets.all(ThemeHelper.getIndent(0.5)),
       child: Draggable<ComponentData>(
         data: widget.data,
         feedback: Container(
@@ -56,7 +40,7 @@ class DraggablePointerState extends State<DraggablePointer> {
           width: 20,
         ),
         child: MouseRegion(
-          cursor: SystemMouseCursors.move,
+          cursor: SystemMouseCursors.resizeDownRight,
           onEnter: (_) => setState(() => color = colorScheme.primary.withOpacity(0.5)),
           onExit: (_) => setState(() => color = null),
           child: Container(

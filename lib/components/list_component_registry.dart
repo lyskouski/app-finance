@@ -8,6 +8,12 @@ enum ComponentRegistry {
   recent,
 }
 
+class ListComponentRegistryItem extends ListSelectorItem {
+  final ComponentRegistry key;
+
+  ListComponentRegistryItem({required this.key, required super.name}) : super(id: key.toString());
+}
+
 class ListComponentRegistry extends ListSelector {
   ListComponentRegistry({
     super.key,
@@ -19,9 +25,9 @@ class ListComponentRegistry extends ListSelector {
   }) : super();
 
   @override
-  List<ListSelectorItem> get options {
+  List<ListComponentRegistryItem> get options {
     return [
-      ListSelectorItem(id: ComponentRegistry.recent.toString(), name: AppLocale.labels.cmpRecent),
+      ListComponentRegistryItem(key: ComponentRegistry.recent, name: AppLocale.labels.cmpRecent),
     ];
   }
 }

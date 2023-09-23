@@ -75,11 +75,10 @@ class ListSelectorState<T extends ListSelector, K extends ListSelectorItem> exte
   @override
   Widget buildContent(context) {
     final indent = ThemeHelper.getIndent();
-    final hintStyle = widget.hintStyle ??
-        context.textTheme.numberMedium.copyWith(
-          color: context.textTheme.headlineSmall?.color!.withOpacity(0.4),
-          overflow: TextOverflow.ellipsis,
-        );
+    final hintStyle = context.textTheme.numberMedium.copyWith(
+      color: context.textTheme.headlineSmall?.color!.withOpacity(0.4),
+      overflow: TextOverflow.ellipsis,
+    );
     K? item = widget.value != null ? widget.options.cast().where((e) => e.equal(widget.value)).firstOrNull : null;
     return SearchAnchor(
       isFullScreen: true,
@@ -101,12 +100,12 @@ class ListSelectorState<T extends ListSelector, K extends ListSelectorItem> exte
                       ? selectorBuilder(context, item)
                       : Text(
                           widget.hintText ?? '...',
-                          style: hintStyle,
+                          style: widget.hintStyle ?? hintStyle,
                         ),
                 ),
               ),
               IconButton(
-                icon: const Icon(Icons.arrow_drop_down),
+                icon: Icon(Icons.arrow_drop_down, color: widget.hintStyle?.color),
                 onPressed: () => controller.openView(),
               ),
             ],

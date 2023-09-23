@@ -3,12 +3,14 @@
 
 abstract class InterfaceComponent {
   static const key = '_component';
+  static const order = '_order';
   static const endX = '_end_x';
   static const endY = '_end_y';
   static const startX = '_start_x';
   static const startY = '_start_y';
-
-  String get componentName;
+  static const start = '_start';
+  static const end = '_end';
+  static const shift = '_shift';
 
   Map<String, dynamic> toJson();
 }

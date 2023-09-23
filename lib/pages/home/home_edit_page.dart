@@ -53,7 +53,12 @@ class HomeEditPageState extends State<HomeEditPage> {
   }
 
   Future<void> adjust(int index, ComponentData change) async {
-    data[index] = {...data[index], ...change};
+    data[index] = change;
+    await _save();
+  }
+
+  Future<void> delete(int index) async {
+    data.removeAt(index);
     await _save();
   }
 
@@ -102,14 +107,14 @@ class HomeEditPageState extends State<HomeEditPage> {
             child: ListComponentRegistry(
               setState: add,
               hintText: AppLocale.labels.customAddTooltip,
-              hintStyle: context.textTheme.numberSmall,
+              hintStyle: context.textTheme.numberSmall.copyWith(color: Colors.white70),
             ),
           ),
         ],
       ),
       body: Padding(
         padding: EdgeInsets.all(ThemeHelper.getIndent(3)),
-        child: ComponentsBuilder(data, editMode: true, callback: adjust),
+        child: ComponentsBuilder(data, editMode: true, adjust: adjust, delete: delete),
       ),
     );
   }

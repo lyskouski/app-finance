@@ -5,9 +5,10 @@ import 'package:app_finance/_classes/storage/app_preferences.dart';
 import 'package:app_finance/_configs/theme_helper.dart';
 import 'package:app_finance/_ext/build_context_ext.dart';
 import 'package:app_finance/_ext/string_ext.dart';
+import 'package:app_finance/components/component_recent.dart';
 import 'package:app_finance/components/interface_component.dart';
+import 'package:app_finance/components/list_component_registry.dart';
 import 'package:app_finance/components/widgets/draggable_frame.dart';
-import 'package:app_finance/components/widgets/draggable_pointer.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_grid_layout/flutter_grid_layout.dart';
 
@@ -16,17 +17,19 @@ typedef ComponentData = Map<String, dynamic>;
 class ComponentsBuilder extends StatelessWidget {
   final List<ComponentData> data;
   final bool editMode;
-  final Function? callback;
-  final _shift = '_shift';
-  final _order = '_order';
-  final _start = '_start';
-  final _end = '_end';
+  final Function? adjust;
+  final Function? delete;
+  final _shift = InterfaceComponent.shift;
+  final _order = InterfaceComponent.order;
+  final _start = InterfaceComponent.start;
+  final _end = InterfaceComponent.end;
 
   const ComponentsBuilder(
     this.data, {
     super.key,
     this.editMode = false,
-    this.callback,
+    this.adjust,
+    this.delete,
   });
 
   static String getKey(BuildContext context) =>
@@ -35,19 +38,21 @@ class ComponentsBuilder extends StatelessWidget {
   static List<ComponentData>? getData(BuildContext context) =>
       AppPreferences.get(getKey(context))?.toList<ComponentData>();
 
-  static Widget buildComponent(BuildContext context, data, [editMode = false]) {
+  static Widget buildComponent(BuildContext context, ComponentData data, [bool editMode = false]) {
+    final key = ComponentRegistry.values.firstWhere((e) => e.toString() == data[InterfaceComponent.key]);
     if (editMode) {
-      return switch (data[InterfaceComponent.key]) {
-        _ => ThemeHelper.emptyBox,
+      return switch (key) {
+        ComponentRegistry.recent => const ComponentRecentForm(),
       };
     }
-    return switch (data[InterfaceComponent.key]) {
+    return switch (key) {
       _ => ThemeHelper.emptyBox,
     };
   }
 
   void resize(ComponentData change, Size start) {
     final scope = data[change[_order]];
+    scope[_order] = change[_order];
     if (change[_shift] != null) {
       scope[InterfaceComponent.endX] += start.width - scope[InterfaceComponent.startX];
       scope[InterfaceComponent.endY] += start.height - scope[InterfaceComponent.startY];
@@ -57,10 +62,10 @@ class ComponentsBuilder extends StatelessWidget {
       scope[InterfaceComponent.startX] = start.width;
       scope[InterfaceComponent.startY] = start.height;
     } else if (change[_end] != null) {
-      scope[InterfaceComponent.endX] = start.width + 1;
-      scope[InterfaceComponent.endY] = start.height + 1;
+      scope[InterfaceComponent.endX] = start.width + 1.0;
+      scope[InterfaceComponent.endY] = start.height + 1.0;
     }
-    callback!(change[_order], scope);
+    adjust!(scope[_order], scope);
   }
 
   @override
@@ -93,28 +98,17 @@ class ComponentsBuilder extends StatelessWidget {
               ...List.generate(
                 data.length,
                 (i) => GridItem(
-                  start: Size(0.0 + data[i][InterfaceComponent.startX], 0.0 + data[i][InterfaceComponent.startY]),
-                  end: Size(0.0 + data[i][InterfaceComponent.endX], 0.0 + data[i][InterfaceComponent.endY]),
-                  child: Stack(
-                    children: [
-                      DraggableFrame({...data[i], _order: i, _shift: true}),
-                      DraggablePointer({...data[i], _order: i, _start: true}),
-                      DraggablePointer(
-                        {...data[i], _order: i, _end: true},
-                        topLeft: false,
-                        size: Size(rowsCount.toDouble(), columnsCount.toDouble()),
-                        shift: Size(data[i][InterfaceComponent.endX], data[i][InterfaceComponent.endY]),
-                      ),
-                    ],
-                  ),
+                  start: Size(data[i][InterfaceComponent.startX] + .0, data[i][InterfaceComponent.startY] + .0),
+                  end: Size(data[i][InterfaceComponent.endX] + .0, data[i][InterfaceComponent.endY] + .0),
+                  child: DraggableFrame({...data[i], _order: i}, delete: delete!),
                 ),
               ),
             ]
           : List.generate(
               data.length,
               (i) => GridItem(
-                    start: Size(0.0 + data[i][InterfaceComponent.startX], 0.0 + data[i][InterfaceComponent.startY]),
-                    end: Size(0.0 + data[i][InterfaceComponent.endX], 0.0 + data[i][InterfaceComponent.endY]),
+                    start: Size(data[i][InterfaceComponent.startX] + .0, data[i][InterfaceComponent.startY] + .0),
+                    end: Size(data[i][InterfaceComponent.endX] + .0, data[i][InterfaceComponent.endY] + .0),
                     child: buildComponent(context, data[i], editMode),
                   )),
     );
