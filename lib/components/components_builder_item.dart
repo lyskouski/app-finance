@@ -16,7 +16,7 @@ class ComponentsBuilderItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final key = (data[InterfaceComponent.key] as String).toEnum<ComponentRegistry>();
+    final key = (data[InterfaceComponent.key] as String).toEnum(ComponentRegistry.values);
     return Padding(
       padding: EdgeInsets.all(ThemeHelper.getIndent(0.5)),
       child: switch (key) {

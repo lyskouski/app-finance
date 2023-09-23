@@ -3,9 +3,6 @@
 
 import 'dart:convert';
 
-import 'package:app_finance/components/component_recent.dart';
-import 'package:app_finance/components/list_component_registry.dart';
-
 extension MapExt on String {
   T _asType<T>(value) {
     return switch (T) {
@@ -51,12 +48,7 @@ extension MapExt on String {
     return result;
   }
 
-  T toEnum<T>() {
-    final values = switch (T) {
-      ComponentRegistry => ComponentRegistry.values,
-      ComponentRecentType => ComponentRecentType.values,
-      _ => [],
-    };
+  T toEnum<T>(List<T> values) {
     return values.firstWhere((e) => e.toString() == this);
   }
 

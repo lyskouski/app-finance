@@ -40,7 +40,7 @@ class ComponentRecent extends StatelessWidget {
   Widget build(BuildContext context) {
     double indent = ThemeHelper.getIndent(0.5);
     EdgeInsets margin = EdgeInsets.all(indent);
-    ComponentRecentType? widgetType = data[type]?.toString().toEnum<ComponentRecentType>();
+    ComponentRecentType? widgetType = data[type]?.toString().toEnum(ComponentRecentType.values);
     final limit = switch (data[count].runtimeType) {
       String => (data[count] as String).toInt(),
       double => (data[count] as double).toInt(),
