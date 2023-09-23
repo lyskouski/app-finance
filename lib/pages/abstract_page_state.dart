@@ -20,7 +20,6 @@ import 'package:provider/provider.dart';
 
 abstract class AbstractPageState<T extends StatefulWidget> extends State<T> {
   static const barHeight = 40.0;
-  dynamic bar;
   late AppData state;
 
   int selectedMenu = 0;
@@ -97,7 +96,7 @@ abstract class AbstractPageState<T extends StatefulWidget> extends State<T> {
     );
   }
 
-  BottomAppBar buildBottomBar(BuildContext context, BoxConstraints constraints) {
+  BottomAppBar? buildBottomBar(BuildContext context, BoxConstraints constraints) {
     final theme = Theme.of(context);
     final nav = Navigator.of(context);
     final actions = getBarActions(nav);
@@ -178,15 +177,14 @@ abstract class AbstractPageState<T extends StatefulWidget> extends State<T> {
       return LayoutBuilder(builder: (context, constraints) {
         final button = buildButton(context, constraints);
         final isBottom = ResponsiveMatrix(getWindowType(context)).isNavBottom(constraints);
-        final height = constraints.maxHeight / scale - (isBottom ? barHeight + ThemeHelper.getIndent() : 0);
-        if (isBottom && bar is! BottomAppBar || bar is! AppBar) {
-          bar = isBottom ? buildBottomBar(context, constraints) : buildBar(context);
-        }
+        final mlt = ResponsiveMatrix.getWidthCount(constraints) * ResponsiveMatrix.getHeightCount(context, constraints);
+        final hasShift = isBottom && mlt != 1;
+        final height = constraints.maxHeight / scale - (hasShift ? barHeight + ThemeHelper.getIndent() : 0);
         final dx = (constraints.maxWidth - constraints.maxWidth / scale) / 2;
         final dy = (constraints.maxHeight - constraints.maxHeight / scale) / 2;
         return Scaffold(
-          appBar: isBottom ? null : bar as AppBar,
-          bottomNavigationBar: isBottom ? bar as BottomAppBar : null,
+          appBar: isBottom ? null : buildBar(context),
+          bottomNavigationBar: isBottom ? buildBottomBar(context, constraints) : null,
           drawer: buildDrawer(),
           body: SafeArea(
             child: InputControllerWrapper(
@@ -206,7 +204,7 @@ abstract class AbstractPageState<T extends StatefulWidget> extends State<T> {
               ),
             ),
           ),
-          floatingActionButtonLocation: isBottom ? FloatingActionButtonLocation.centerDocked : null,
+          floatingActionButtonLocation: hasShift ? FloatingActionButtonLocation.centerDocked : null,
           floatingActionButton: button,
         );
       });

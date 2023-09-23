@@ -1,7 +1,6 @@
 // Copyright 2023 The terCAD team. All rights reserved.
 // Use of this source code is governed by a CC BY-NC-ND 4.0 license that can be found in the LICENSE file.
 
-import 'package:adaptive_breakpoints/adaptive_breakpoints.dart';
 import 'package:app_finance/_classes/storage/app_data.dart';
 import 'package:app_finance/_classes/herald/app_locale.dart';
 import 'package:app_finance/_classes/structure/currency/exchange.dart';
@@ -15,6 +14,7 @@ import 'package:app_finance/pages/home/home_edit_page.dart';
 import 'package:app_finance/pages/start/start_page.dart';
 import 'package:app_finance/widgets/wrapper/grid_layer.dart';
 import 'package:app_finance/pages/home/widgets/init_tab.dart';
+import 'package:app_finance/widgets/wrapper/tab_widget.dart';
 import 'package:app_finance/widgets/wrapper/toolbar_button_widget.dart';
 import 'package:app_finance/pages/home/widgets/account_widget.dart';
 import 'package:app_finance/pages/home/widgets/bill_widget.dart';
@@ -45,6 +45,16 @@ class HomePageState extends AbstractPageState<HomePage> {
   @override
   String getTitle() {
     return AppLocale.labels.appTitle;
+  }
+
+  @override
+  BottomAppBar? buildBottomBar(BuildContext context, BoxConstraints constraints) {
+    final countWidth = ResponsiveMatrix.getWidthCount(constraints);
+    final countHeight = ResponsiveMatrix.getHeightCount(context, constraints);
+    if (countWidth * countHeight == 1) {
+      return null;
+    }
+    return super.buildBottomBar(context, constraints);
   }
 
   @override
@@ -142,8 +152,8 @@ class HomePageState extends AbstractPageState<HomePage> {
     }
     double indent = ThemeHelper.getIndent();
     EdgeInsets margin = EdgeInsets.only(top: indent);
-    final matrix = ResponsiveMatrix(getWindowType(context));
-    final countWidth = matrix.getWidthCount(constraints);
+    final countWidth = ResponsiveMatrix.getWidthCount(constraints);
+    final countHeight = ResponsiveMatrix.getHeightCount(context, constraints);
     bool isVertical = countWidth == 1;
     double width = ThemeHelper.getWidth(context, 3);
     double partWidth = width / countWidth - indent * (countWidth - 1);
@@ -209,16 +219,30 @@ class HomePageState extends AbstractPageState<HomePage> {
           ]
       },
       children: [
-        matrix.getHeightCount(constraints) > 3
-            ? GoalWidget(
-                margin: EdgeInsets.zero,
-                width: isVertical ? width : partWidth,
-                state: super.state.getList(AppDataType.goals),
-              )
-            : ThemeHelper.emptyBox,
-        billWidget,
-        accountWidget,
-        budgetWidget,
+        if (countHeight * countWidth == 1) ...[
+          SizedBox(
+            height: constraints.maxHeight,
+            child: TabWidget(
+              asDots: true,
+              maxWidth: width,
+              children: [budgetWidget, accountWidget, billWidget],
+            ),
+          ),
+          ThemeHelper.emptyBox,
+          ThemeHelper.emptyBox,
+          ThemeHelper.emptyBox,
+        ] else ...[
+          countHeight > 3
+              ? GoalWidget(
+                  margin: EdgeInsets.zero,
+                  width: isVertical ? width : partWidth,
+                  state: super.state.getList(AppDataType.goals),
+                )
+              : ThemeHelper.emptyBox,
+          billWidget,
+          accountWidget,
+          budgetWidget,
+        ]
       ],
     );
   }
