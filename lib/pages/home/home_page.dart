@@ -9,6 +9,7 @@ import 'package:app_finance/_classes/storage/app_preferences.dart';
 import 'package:app_finance/_configs/responsive_matrix.dart';
 import 'package:app_finance/_configs/theme_helper.dart';
 import 'package:app_finance/_classes/structure/navigation/app_route.dart';
+import 'package:app_finance/components/components_builder.dart';
 import 'package:app_finance/pages/abstract_page_state.dart';
 import 'package:app_finance/pages/start/start_page.dart';
 import 'package:app_finance/widgets/wrapper/grid_layer.dart';
@@ -120,6 +121,10 @@ class HomePageState extends AbstractPageState<HomePage> {
 
   @override
   Widget buildContent(BuildContext context, BoxConstraints constraints) {
+    final data = ComponentsBuilder.getData(context);
+    if (data != null) {
+      return ComponentsBuilder(data);
+    }
     double indent = ThemeHelper.getIndent();
     EdgeInsets margin = EdgeInsets.only(top: indent);
     final matrix = ResponsiveMatrix(getWindowType(context));
