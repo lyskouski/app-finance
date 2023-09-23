@@ -7,6 +7,8 @@ import 'package:app_finance/_configs/custom_text_theme.dart';
 import 'package:app_finance/_configs/theme_helper.dart';
 import 'package:app_finance/_ext/build_context_ext.dart';
 import 'package:app_finance/components/components_builder.dart';
+import 'package:app_finance/components/interface_component.dart';
+import 'package:app_finance/components/list_component_registry.dart';
 import 'package:app_finance/widgets/wrapper/confirmation_wrapper.dart';
 import 'package:app_finance/widgets/wrapper/toolbar_button_widget.dart';
 import 'package:flutter/material.dart';
@@ -22,22 +24,45 @@ class HomeEditPage extends StatefulWidget {
 
 class HomeEditPageState extends State<HomeEditPage> {
   List<ComponentData> data = [];
+  late String key;
+
+  Future<void> _save() async {
+    await AppPreferences.set(key, data.toString());
+    setState(() {});
+  }
 
   Future<void> save() async {
-    await AppPreferences.set(ComponentsBuilder.getKey(context), data.toString());
+    await _save();
     widget.callback();
   }
 
-  Future<void> delete() async {
-    await AppPreferences.clear(ComponentsBuilder.getKey(context));
+  Future<void> drop() async {
+    await AppPreferences.clear(key);
     widget.callback();
+  }
+
+  Future<void> add(String key) async {
+    data.add({
+      InterfaceComponent.key: key,
+      InterfaceComponent.startX: 0,
+      InterfaceComponent.startY: 0,
+      InterfaceComponent.endX: 4,
+      InterfaceComponent.endY: 4,
+    });
+    await _save();
+  }
+
+  Future<void> adjust(int index, ComponentData change) async {
+    data[index] = {...data[index], ...change};
+    await _save();
   }
 
   @override
   Widget build(BuildContext context) {
+    key = ComponentsBuilder.getKey(context);
     return Scaffold(
       appBar: AppBar(
-        toolbarHeight: 40,
+        toolbarHeight: 45,
         backgroundColor: context.colorScheme.primary,
         title: Text(ComponentsBuilder.getKey(context)),
         titleTextStyle: context.textTheme.numberMedium,
@@ -64,16 +89,26 @@ class HomeEditPageState extends State<HomeEditPage> {
                   color: Colors.white70,
                 ),
                 tooltip: AppLocale.labels.customDeleteTooltip,
-                onPressed: () => ConfirmationWrapper.show(context, delete),
+                onPressed: () => ConfirmationWrapper.show(context, drop),
               ),
             ),
           ],
         ),
-        actions: [],
+        actions: [
+          Container(
+            width: 140,
+            padding: EdgeInsets.all(ThemeHelper.getIndent(0.5)),
+            child: ListComponentRegistry(
+              setState: add,
+              hintText: AppLocale.labels.customAddTooltip,
+              hintStyle: context.textTheme.numberSmall,
+            ),
+          ),
+        ],
       ),
       body: Padding(
         padding: EdgeInsets.all(ThemeHelper.getIndent(3)),
-        child: ComponentsBuilder(ComponentsBuilder.getData(context) ?? [], true),
+        child: ComponentsBuilder(ComponentsBuilder.getData(context) ?? [], editMode: true),
       ),
     );
   }

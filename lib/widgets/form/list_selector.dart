@@ -33,15 +33,15 @@ class ListSelector<K extends ListSelectorItem> extends AbstractSelector {
   final List<K> options;
   final Function setState;
   final String? hintText;
-  final double indent;
+  final TextStyle? hintStyle;
 
   ListSelector({
     super.key,
     required this.options,
     required this.setState,
     required this.hintText,
+    this.hintStyle,
     super.value,
-    this.indent = 0.0,
   }) : super();
 
   @override
@@ -75,10 +75,11 @@ class ListSelectorState<T extends ListSelector, K extends ListSelectorItem> exte
   @override
   Widget buildContent(context) {
     final indent = ThemeHelper.getIndent();
-    final hintStyle = context.textTheme.numberMedium.copyWith(
-      color: context.textTheme.headlineSmall?.color!.withOpacity(0.4),
-      overflow: TextOverflow.ellipsis,
-    );
+    final hintStyle = widget.hintStyle ??
+        context.textTheme.numberMedium.copyWith(
+          color: context.textTheme.headlineSmall?.color!.withOpacity(0.4),
+          overflow: TextOverflow.ellipsis,
+        );
     K? item = widget.value != null ? widget.options.cast().where((e) => e.equal(widget.value)).firstOrNull : null;
     return SearchAnchor(
       isFullScreen: true,

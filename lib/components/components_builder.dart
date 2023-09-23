@@ -13,9 +13,9 @@ typedef ComponentData = Map<String, dynamic>;
 
 class ComponentsBuilder extends StatelessWidget {
   final List<ComponentData> data;
-  final bool isEditMode;
+  final bool editMode;
 
-  const ComponentsBuilder(this.data, this.isEditMode, {super.key});
+  const ComponentsBuilder(this.data, {super.key, this.editMode = false});
 
   static String getKey(BuildContext context) =>
       'cmp${ThemeHelper.getWidth(context).toInt()}x${ThemeHelper.getHeight(context).toInt()}';
@@ -37,7 +37,7 @@ class ComponentsBuilder extends StatelessWidget {
       rows: List.filled(rowsCount, null),
       columns: List.filled(isVertical ? 12 : 6, null),
       children: [
-        if (isEditMode)
+        if (editMode)
           ...List.generate(72, (i) {
             final start = Size(i % rowsCount.toDouble(), (i ~/ rowsCount).toDouble());
             return GridItem(

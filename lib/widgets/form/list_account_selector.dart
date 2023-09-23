@@ -34,7 +34,6 @@ class ListAccountSelector<K extends ListAccountSelectorItem> extends ListSelecto
     required super.hintText,
     super.options = const [],
     super.value,
-    super.indent = 0.0,
   }) : super();
 
   @override
@@ -78,7 +77,7 @@ class ListAccountSelectorState<K extends ListAccountSelectorItem> extends ListSe
       progress: item.item?.progress ?? 0.0,
       color: item.item?.color ?? Colors.transparent,
       hidden: item.item?.hidden ?? false,
-      width: widget.width - widget.indent * 3,
+      width: widget.width - 32,
       showDivider: false,
     );
   }

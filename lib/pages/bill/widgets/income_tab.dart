@@ -140,7 +140,6 @@ class IncomeTabState extends AbstractPageState<IncomeTab> {
                 account = value;
                 currency = widget.state.getByUuid(value).currency;
               }),
-              indent: indent,
               width: width,
             ),
             ThemeHelper.hIndent2x,
@@ -179,7 +178,7 @@ class IncomeTabState extends AbstractPageState<IncomeTab> {
             ),
             ThemeHelper.hIndent2x,
             CurrencyExchangeInput(
-              width: width,
+              width: width + indent,
               indent: indent,
               target: currency,
               state: widget.state,

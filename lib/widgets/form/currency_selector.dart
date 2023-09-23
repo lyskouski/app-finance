@@ -87,7 +87,7 @@ class CurrencySelectorState extends ListSelectorState<CurrencySelector, Currency
         ],
         [
           Padding(
-            padding: EdgeInsets.symmetric(horizontal: widget.indent * 2),
+            padding: EdgeInsets.symmetric(horizontal: ThemeHelper.getIndent(2)),
             child: Text(item.item.symbol),
           ),
         ],

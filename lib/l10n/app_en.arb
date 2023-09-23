@@ -130,6 +130,7 @@
     "currencyTooltip": "Currency Type (Code)",
     "currencyUpdateTooltip": "Update Currencies Rate",
     "currentDate": "Current Date",
+    "customAddTooltip": "Add Widget",
     "customDeleteTooltip": "Delete Customization",
     "customSaveTooltip": "Save Customization",
     "customizeTooltip": "Customize Page",

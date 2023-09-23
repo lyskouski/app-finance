@@ -3,7 +3,7 @@
 
 abstract class InterfaceComponent {
   static const key = '_component';
-  static const endX = '_end_y';
+  static const endX = '_end_x';
   static const endY = '_end_y';
   static const startX = '_start_x';
   static const startY = '_start_y';
