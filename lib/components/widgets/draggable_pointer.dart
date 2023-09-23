@@ -9,8 +9,16 @@ import 'package:flutter/material.dart';
 class DraggablePointer extends StatefulWidget {
   final Map<String, dynamic> data;
   final bool topLeft;
+  final Function()? onDragStarted;
+  final Function(DraggableDetails)? onDragEnd;
 
-  const DraggablePointer(this.data, {super.key, this.topLeft = true});
+  const DraggablePointer(
+    this.data, {
+    super.key,
+    required this.onDragStarted,
+    required this.onDragEnd,
+    this.topLeft = true,
+  });
 
   @override
   DraggablePointerState createState() => DraggablePointerState();
@@ -27,6 +35,8 @@ class DraggablePointerState extends State<DraggablePointer> {
       margin: EdgeInsets.all(ThemeHelper.getIndent(0.5)),
       child: Draggable<ComponentData>(
         data: widget.data,
+        onDragEnd: widget.onDragEnd,
+        onDragStarted: widget.onDragStarted,
         feedback: Container(
           decoration: BoxDecoration(
             border: Border(

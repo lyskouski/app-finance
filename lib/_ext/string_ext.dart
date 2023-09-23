@@ -3,6 +3,9 @@
 
 import 'dart:convert';
 
+import 'package:app_finance/components/component_recent.dart';
+import 'package:app_finance/components/list_component_registry.dart';
+
 extension MapExt on String {
   T _asType<T>(value) {
     return switch (T) {
@@ -29,10 +32,10 @@ extension MapExt on String {
 
   String _wrap() {
     if (contains('{')) {
-      RegExp pattern = RegExp(r"(\w+):\s*([\w\.\-]+)");
+      RegExp pattern = RegExp(r"(\w+):\s*([\w\.\- ]+)");
       return replaceAllMapped(pattern, (match) {
         String key = match.group(1)!;
-        String value = match.group(2)!;
+        String value = match.group(2)!.trim();
         return '"$key": ${num.tryParse(value) ?? '"$value"'}';
       });
     }
@@ -47,4 +50,15 @@ extension MapExt on String {
     }
     return result;
   }
+
+  T toEnum<T>() {
+    final values = switch (T) {
+      ComponentRegistry => ComponentRegistry.values,
+      ComponentRecentType => ComponentRecentType.values,
+      _ => [],
+    };
+    return values.firstWhere((e) => e.toString() == this);
+  }
+
+  int toInt() => int.parse(this);
 }

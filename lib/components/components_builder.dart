@@ -69,6 +69,7 @@ class ComponentsBuilder extends StatelessWidget {
                 return GridItem(
                   start: start,
                   end: Size(start.width + 1, start.height + 1),
+                  order: 0,
                   child: DragTarget<ComponentData>(
                     onWillAccept: (_) => true,
                     onAccept: (change) => resize(change, start),
@@ -86,6 +87,7 @@ class ComponentsBuilder extends StatelessWidget {
                 (i) => GridItem(
                   start: Size(data[i][InterfaceComponent.startX] + .0, data[i][InterfaceComponent.startY] + .0),
                   end: Size(data[i][InterfaceComponent.endX] + .0, data[i][InterfaceComponent.endY] + .0),
+                  order: i + 1,
                   child: DraggableFrame({...data[i], _order: i}, delete: delete!, adjust: adjust!),
                 ),
               ),

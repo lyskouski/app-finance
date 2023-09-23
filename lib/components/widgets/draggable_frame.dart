@@ -46,10 +46,12 @@ class DraggableFrameState extends State<DraggableFrame> {
         color: color ?? colorScheme.secondary.withOpacity(0.2),
       ),
     );
+    onDragStarted() => setState(() => isDrag = true);
+    onDragEnd(_) => setState(() => isDrag = false);
     return Draggable<ComponentData>(
       data: {...widget.data, _shift: true},
-      onDragStarted: () => setState(() => isDrag = true),
-      onDragEnd: (_) => setState(() => isDrag = false),
+      onDragStarted: onDragStarted,
+      onDragEnd: onDragEnd,
       feedback: Container(color: context.colorScheme.primary, height: 40, width: 60),
       child: Padding(
         padding: const EdgeInsets.all(5),
@@ -67,26 +69,31 @@ class DraggableFrameState extends State<DraggableFrame> {
             GridItem(
               start: const Size(0, 0),
               end: const Size(5, 1),
+              order: 1,
               child: frameLine,
             ),
             GridItem(
               start: const Size(0, 1),
               end: const Size(1, 5),
+              order: 1,
               child: frameLine,
             ),
             GridItem(
               start: const Size(4, 1),
               end: const Size(5, 5),
+              order: 1,
               child: frameLine,
             ),
             GridItem(
               start: const Size(1, 4),
               end: const Size(4, 5),
+              order: 1,
               child: frameLine,
             ),
             GridItem(
               start: const Size(3, 1),
               end: const Size(4, 2),
+              order: 1,
               child: Visibility(
                 visible: !isDrag,
                 child: TapWidget(
@@ -105,17 +112,22 @@ class DraggableFrameState extends State<DraggableFrame> {
             GridItem(
               start: const Size(1, 1),
               end: const Size(2, 2),
-              child: Visibility(
-                visible: !isDrag,
-                child: DraggablePointer({...widget.data, _start: true}),
+              order: 2,
+              child: DraggablePointer(
+                {...widget.data, _start: true},
+                onDragStarted: onDragStarted,
+                onDragEnd: onDragEnd,
               ),
             ),
             GridItem(
               start: const Size(3, 3),
               end: const Size(4, 4),
-              child: Visibility(
-                visible: !isDrag,
-                child: DraggablePointer({...widget.data, _end: true}, topLeft: false),
+              order: 3,
+              child: DraggablePointer(
+                {...widget.data, _end: true},
+                onDragStarted: onDragStarted,
+                onDragEnd: onDragEnd,
+                topLeft: false,
               ),
             ),
           ],

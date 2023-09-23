@@ -10,9 +10,6 @@ enum ComponentRegistry {
 
 class ListComponentRegistryItem extends ListSelectorItem {
   final ComponentRegistry key;
-
-  static ComponentRegistry find(String key) => ComponentRegistry.values.firstWhere((e) => e.toString() == key);
-
   ListComponentRegistryItem({required this.key, required super.name}) : super(id: key.toString());
 }
 

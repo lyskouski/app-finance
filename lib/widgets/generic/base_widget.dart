@@ -45,7 +45,7 @@ class BaseWidget extends StatelessWidget {
       child: BaseLineWidget(
         uuid: item.uuid ?? '',
         title: item.title,
-        description: item.description,
+        description: item.description ?? '',
         details: item.detailsFormatted,
         progress: item.progress,
         color: item.color ?? Colors.transparent,

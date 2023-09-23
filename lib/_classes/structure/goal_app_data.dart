@@ -5,6 +5,7 @@ import 'package:app_finance/_classes/structure/currency/currency_provider.dart';
 import 'package:app_finance/_classes/structure/abstract_app_data.dart';
 import 'package:app_finance/_classes/storage/app_data.dart';
 import 'package:app_finance/_ext/date_time_ext.dart';
+import 'package:app_finance/_ext/double_ext.dart';
 import 'package:app_finance/_ext/int_ext.dart';
 import 'package:flutter/material.dart';
 
@@ -99,4 +100,6 @@ class GoalAppData extends AbstractAppData {
       return currentDays / totalDays;
     }
   }
+
+  String get detailsFormatted => (super.details as double).toCurrency(currency);
 }

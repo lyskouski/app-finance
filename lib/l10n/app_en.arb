@@ -61,6 +61,7 @@
     "chartYtdExpense": "YTD Expenses",
     "closedAt": "Finished till Date",
     "cmpRecent": "Recent Items",
+    "cmpRecentCount": "List Size",
     "collapse": "Collapse (Restore) Section",
     "color": "Color",
     "colorApp": "Custom",
