@@ -1,7 +1,9 @@
 // Copyright 2023 The terCAD team. All rights reserved.
 // Use of this source code is governed by a CC BY-NC-ND 4.0 license that can be found in the LICENSE file.
 
-import 'dart:io';
+import 'dart:io' as io;
+import 'package:file/file.dart';
+import 'package:file/local.dart';
 
 import 'package:app_finance/_classes/herald/app_palette.dart';
 import 'package:app_finance/_classes/herald/app_sync.dart';
@@ -19,6 +21,7 @@ import 'package:flutter_gen/gen_l10n/app_localization.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/annotations.dart';
 import 'package:provider/provider.dart';
+import 'package:platform/platform.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import 'e2e/_steps/screen_capture.dart';
@@ -30,6 +33,8 @@ import 'pump_main.wrapper.dart';
 
 class PumpMain {
   static const path = './coverage/data';
+  static const FileSystem fs = LocalFileSystem();
+  static const Platform platform = LocalPlatform();
 
   static Future<void> init(WidgetTester tester, [bool isIntegration = false]) async {
     final pumpMain = PumpMain();
@@ -38,8 +43,19 @@ class PumpMain {
     await pumpMain.initMain(tester, isIntegration);
   }
 
-  static Future<void> initFont(String name) async {
-    final Future<ByteData> fontData = rootBundle.load('assets/fonts/$name.ttf');
+  static Future<void> initFonts() async {
+    await _initFont('Abel-Regular');
+    await _initFont('RobotoCondensed-Regular');
+    // await _initFont('MaterialIcons');
+  }
+
+  static Future<void> _initFont(String name) async {
+    final root = fs.directory(platform.environment['FLUTTER_ROOT']).path.replaceAll('\\', '/');
+    final path = switch (name) {
+      'MaterialIcons' => '$root/bin/cache/artifacts/material_fonts/MaterialIcons-Regular.otf',
+      _ => 'assets/fonts/$name.ttf',
+    };
+    final Future<ByteData> fontData = rootBundle.load(path);
     final FontLoader fontLoader = FontLoader(name)..addFont(fontData);
     await fontLoader.load();
   }
@@ -52,8 +68,7 @@ class PumpMain {
     tester.view.physicalSize = size;
     tester.view.devicePixelRatio = 1;
 
-    await initFont('Abel-Regular');
-    await initFont('RobotoCondensed-Regular');
+    await initFonts();
     await initPref(false);
 
     await tester.pumpWidget(
@@ -83,7 +98,7 @@ class PumpMain {
   }
 
   static void cleanUpData() {
-    final dir = Directory(path);
+    final dir = io.Directory(path);
     if (dir.existsSync()) {
       dir.deleteSync(recursive: true);
     }
@@ -101,7 +116,11 @@ class PumpMain {
       AppPreferences.pref = await SharedPreferences.getInstance();
     } else {
       final pref = WrapperMockSharedPreferences();
-      pref.mockGetString = (value) => value == AppPreferences.prefLocale ? 'en' : '';
+      pref.mockGetString = (value) => switch (value) {
+            AppPreferences.prefLocale => 'en',
+            AppPreferences.prefPrivacyPolicy => '',
+            _ => null,
+          };
       AppPreferences.pref = pref;
     }
   }

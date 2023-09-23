@@ -70,6 +70,8 @@ dev_dependencies:
   build_runner: ^2.4.6
   source_gen: ^1.4.0
   flutter_gherkin: ^2.0.0
+  file: ^6.1.4
+  platform: ^3.1.0
 
 flutter:
   generate: true

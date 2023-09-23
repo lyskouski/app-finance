@@ -137,7 +137,7 @@ class HomePageState extends AbstractPageState<HomePage> {
   @override
   Widget buildContent(BuildContext context, BoxConstraints constraints) {
     final data = ComponentsBuilder.getData(context);
-    if (data != null) {
+    if (data != null && data.isNotEmpty) {
       return ComponentsBuilder(data);
     }
     double indent = ThemeHelper.getIndent();
