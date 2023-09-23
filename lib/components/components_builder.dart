@@ -6,13 +6,12 @@ import 'package:app_finance/_configs/theme_helper.dart';
 import 'package:app_finance/_ext/build_context_ext.dart';
 import 'package:app_finance/_ext/string_ext.dart';
 import 'package:app_finance/components/component_recent.dart';
+import 'package:app_finance/components/components_data.dart';
 import 'package:app_finance/components/interface_component.dart';
 import 'package:app_finance/components/list_component_registry.dart';
 import 'package:app_finance/components/widgets/draggable_frame.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_grid_layout/flutter_grid_layout.dart';
-
-typedef ComponentData = Map<String, dynamic>;
 
 class ComponentsBuilder extends StatelessWidget {
   final List<ComponentData> data;
@@ -42,7 +41,7 @@ class ComponentsBuilder extends StatelessWidget {
     final key = ComponentRegistry.values.firstWhere((e) => e.toString() == data[InterfaceComponent.key]);
     if (editMode) {
       return switch (key) {
-        ComponentRegistry.recent => const ComponentRecentForm(),
+        ComponentRegistry.recent => ComponentRecentForm(data),
       };
     }
     return switch (key) {

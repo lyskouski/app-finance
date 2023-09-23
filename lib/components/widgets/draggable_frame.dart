@@ -4,6 +4,7 @@
 import 'package:app_finance/_classes/herald/app_locale.dart';
 import 'package:app_finance/_ext/build_context_ext.dart';
 import 'package:app_finance/components/components_builder.dart';
+import 'package:app_finance/components/components_data.dart';
 import 'package:app_finance/components/interface_component.dart';
 import 'package:app_finance/components/widgets/draggable_pointer.dart';
 import 'package:app_finance/widgets/wrapper/confirmation_wrapper.dart';
