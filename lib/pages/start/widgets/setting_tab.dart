@@ -134,7 +134,6 @@ class SettingTabState<T extends SettingTab> extends AbstractTabState<T> {
               ListSelectorItem(id: 'be_EU', name: AppLocale.labels.languageBeEu),
             ],
             setState: saveLocale,
-            indent: indent,
           ),
           ThemeHelper.hIndent2x,
           Text(
@@ -179,7 +178,6 @@ class SettingTabState<T extends SettingTab> extends AbstractTabState<T> {
               ListSelectorItem(id: '2', name: AppLocale.labels.darkMode),
             ],
             setState: saveTheme,
-            indent: indent,
           ),
           ThemeHelper.hIndent2x,
           Text(
@@ -195,7 +193,6 @@ class SettingTabState<T extends SettingTab> extends AbstractTabState<T> {
               ListSelectorItem(id: AppColors.colorUser, name: AppLocale.labels.colorUser),
             ],
             setState: saveColor,
-            indent: indent,
           ),
           ThemeHelper.hIndent2x,
           if (colorMode == AppColors.colorUser) ...[

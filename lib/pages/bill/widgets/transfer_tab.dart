@@ -138,7 +138,6 @@ class TransferTabState extends AbstractPageState<TransferTab> {
               hintText: AppLocale.labels.accountFrom,
               state: widget.state,
               setState: (value) => setState(() => accountFrom = value),
-              indent: indent,
               width: width,
             ),
             ThemeHelper.hIndent2x,
@@ -154,7 +153,6 @@ class TransferTabState extends AbstractPageState<TransferTab> {
                 accountTo = value;
                 currency = widget.state.getByUuid(value).currency;
               }),
-              indent: indent,
               width: width,
             ),
             ThemeHelper.hIndent2x,
@@ -191,7 +189,7 @@ class TransferTabState extends AbstractPageState<TransferTab> {
             ),
             ThemeHelper.hIndent2x,
             CurrencyExchangeInput(
-              width: width,
+              width: width + indent,
               indent: indent,
               target: currency,
               state: widget.state,

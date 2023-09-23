@@ -139,7 +139,6 @@ class AccountAddPageState<T extends AccountAddPage> extends AbstractAddPageState
               hintText: AppLocale.labels.accountTypeTooltip,
               options: AccountType.getList(),
               setState: (value) => setState(() => type = value),
-              indent: indent,
             ),
             ThemeHelper.hIndent2x,
             RequiredWidget(

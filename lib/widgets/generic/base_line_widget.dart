@@ -3,9 +3,9 @@
 
 import 'package:app_finance/_classes/structure/navigation/app_menu.dart';
 import 'package:app_finance/_ext/build_context_ext.dart';
-import 'package:app_finance/_ext/string_ext.dart';
 import 'package:app_finance/charts/bar_vertical_single.dart';
 import 'package:app_finance/_configs/custom_text_theme.dart';
+import 'package:app_finance/widgets/wrapper/number_wrapper.dart';
 import 'package:app_finance/widgets/wrapper/row_widget.dart';
 import 'package:app_finance/widgets/wrapper/tap_widget.dart';
 import 'package:app_finance/_configs/theme_helper.dart';
@@ -86,7 +86,7 @@ class BaseLineWidget extends StatelessWidget {
               [
                 Align(
                   alignment: Alignment.centerRight,
-                  child: details.toColoredNumber(context),
+                  child: NumberWidget(details, colorScheme: context.colorScheme, style: textTheme.numberMedium),
                 ),
               ],
               if (error != null) [error!],

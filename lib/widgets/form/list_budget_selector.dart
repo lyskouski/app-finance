@@ -19,7 +19,6 @@ class ListBudgetSelector extends ListAccountSelector<ListBudgetSelectorItem> {
     required super.width,
     required super.hintText,
     super.value,
-    super.indent = 0.0,
   }) : super();
 
   @override

@@ -60,6 +60,7 @@
 - Data encryption
 - Localization: 2 languages
 - User Experience
+  - Configurable Main Page (multiple configurations per `width x height` set)
   - Responsive & Adaptive Design (`xlarge`, `large`, `medium`, `small`, and `xsmall` screens)
   - Theme Mode (dark, light, system) with Palette definition (system, custom, personal -- colors selector)
   - Preserve last choice for Account, Budget, and Currency

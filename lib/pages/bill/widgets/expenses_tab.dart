@@ -156,7 +156,6 @@ class ExpensesTabState<T extends ExpensesTab> extends AbstractPageState<T> {
                 account = value;
                 currency = widget.state.getByUuid(value).currency;
               }),
-              indent: indent,
               width: width,
             ),
             ThemeHelper.hIndent2x,
@@ -173,7 +172,6 @@ class ExpensesTabState<T extends ExpensesTab> extends AbstractPageState<T> {
                 var bdgCurrency = widget.state.getByUuid(value).currency;
                 currency ??= bdgCurrency;
               }),
-              indent: indent,
               width: width,
             ),
             ThemeHelper.hIndent2x,
@@ -210,7 +208,7 @@ class ExpensesTabState<T extends ExpensesTab> extends AbstractPageState<T> {
             ),
             ThemeHelper.hIndent2x,
             CurrencyExchangeInput(
-              width: width,
+              width: width + indent,
               indent: indent,
               target: currency,
               state: widget.state,

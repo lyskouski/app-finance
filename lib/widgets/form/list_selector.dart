@@ -33,15 +33,15 @@ class ListSelector<K extends ListSelectorItem> extends AbstractSelector {
   final List<K> options;
   final Function setState;
   final String? hintText;
-  final double indent;
+  final TextStyle? hintStyle;
 
   ListSelector({
     super.key,
     required this.options,
     required this.setState,
     required this.hintText,
+    this.hintStyle,
     super.value,
-    this.indent = 0.0,
   }) : super();
 
   @override
@@ -100,12 +100,12 @@ class ListSelectorState<T extends ListSelector, K extends ListSelectorItem> exte
                       ? selectorBuilder(context, item)
                       : Text(
                           widget.hintText ?? '...',
-                          style: hintStyle,
+                          style: widget.hintStyle ?? hintStyle,
                         ),
                 ),
               ),
               IconButton(
-                icon: const Icon(Icons.arrow_drop_down),
+                icon: Icon(Icons.arrow_drop_down, color: widget.hintStyle?.color),
                 onPressed: () => controller.openView(),
               ),
             ],

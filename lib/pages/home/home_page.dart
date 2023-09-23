@@ -9,7 +9,9 @@ import 'package:app_finance/_classes/storage/app_preferences.dart';
 import 'package:app_finance/_configs/responsive_matrix.dart';
 import 'package:app_finance/_configs/theme_helper.dart';
 import 'package:app_finance/_classes/structure/navigation/app_route.dart';
+import 'package:app_finance/components/components_builder.dart';
 import 'package:app_finance/pages/abstract_page_state.dart';
+import 'package:app_finance/pages/home/home_edit_page.dart';
 import 'package:app_finance/pages/start/start_page.dart';
 import 'package:app_finance/widgets/wrapper/grid_layer.dart';
 import 'package:app_finance/pages/home/widgets/init_tab.dart';
@@ -32,6 +34,7 @@ class HomePage extends StatefulWidget {
 
 class HomePageState extends AbstractPageState<HomePage> {
   String? toExpand;
+  bool isEditMode = false;
 
   @override
   initState() {
@@ -66,6 +69,16 @@ class HomePageState extends AbstractPageState<HomePage> {
   @override
   List<Widget> getBarActions(NavigatorState nav) {
     return [
+      ToolbarButtonWidget(
+        child: IconButton(
+          icon: const Icon(
+            Icons.app_registration_outlined,
+            color: Colors.white70,
+          ),
+          tooltip: AppLocale.labels.customizeTooltip,
+          onPressed: () => setState(() => isEditMode = true),
+        ),
+      ),
       ToolbarButtonWidget(
         child: IconButton(
           icon: const Icon(
@@ -106,6 +119,9 @@ class HomePageState extends AbstractPageState<HomePage> {
   @override
   Widget build(BuildContext context) {
     Provider.of<AppLocale>(context, listen: false).updateState(context);
+    if (isEditMode) {
+      return HomeEditPage(callback: () => setState(() => isEditMode = false));
+    }
     if (AppPreferences.get(AppPreferences.prefPrivacyPolicy) == null) {
       return const StartPage();
     }
@@ -120,6 +136,10 @@ class HomePageState extends AbstractPageState<HomePage> {
 
   @override
   Widget buildContent(BuildContext context, BoxConstraints constraints) {
+    final data = ComponentsBuilder.getData(context);
+    if (data != null && data.isNotEmpty) {
+      return ComponentsBuilder(data);
+    }
     double indent = ThemeHelper.getIndent();
     EdgeInsets margin = EdgeInsets.only(top: indent);
     final matrix = ResponsiveMatrix(getWindowType(context));

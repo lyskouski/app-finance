@@ -147,7 +147,6 @@ class ImportTabState extends State<ImportTab> {
                       ListSelector(
                         options: FileParser.getMappingTypes(),
                         value: columnMap[index],
-                        indent: indent,
                         hintText: AppLocale.labels.columnMapTooltip(fileContent!.first[index]),
                         setState: (value) => setState(() {
                           columnMap[index] = value;
