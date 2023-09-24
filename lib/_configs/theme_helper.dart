@@ -3,6 +3,7 @@
 
 import 'dart:math';
 
+import 'package:adaptive_breakpoints/adaptive_breakpoints.dart';
 import 'package:app_finance/_classes/herald/app_zoom.dart';
 import 'package:flutter/material.dart';
 
@@ -15,6 +16,7 @@ class _Sizes {
 }
 
 class ThemeHelper {
+  static late bool isWearable;
   static const emptyBox = SizedBox();
   static const formEndBox = SizedBox(height: 70);
   static const hIndent = SizedBox(height: _Sizes.normal);
@@ -28,7 +30,7 @@ class ThemeHelper {
   static double getIndent([double multiply = 1]) => _Sizes.normal / AppZoom.state * multiply;
 
   static double getWidth(BuildContext context, [double multiply = 4]) =>
-      MediaQuery.sizeOf(context).width / AppZoom.state - getIndent(multiply);
+      MediaQuery.sizeOf(context).width / AppZoom.state - getIndent(multiply) - (isNavRight(context) ? 40 : 0);
 
   static double getHeight(BuildContext context, [double multiply = 2]) =>
       MediaQuery.sizeOf(context).height / AppZoom.state - getIndent(multiply);
@@ -85,4 +87,50 @@ class ThemeHelper {
   }
 
   static bool isVertical(BoxConstraints constraints) => constraints.maxWidth < constraints.maxHeight;
+
+  static bool isLower(AdaptiveWindowType size, AdaptiveWindowType windowType) => windowType <= size;
+
+  static bool isNavBottom(BoxConstraints constraints) => getWidthCount(constraints) <= 2;
+
+  static bool isNavRight(BuildContext context, [BoxConstraints? constraints]) =>
+      getHeightCount(context, constraints) <= 2;
+
+  static int getWidthCount(BoxConstraints constraints) {
+    final matrix = {
+      AdaptiveWindowType.xlarge: constraints.maxWidth >= 1440, // AdaptiveWindowType.xlarge.widthRangeValues.start,
+      AdaptiveWindowType.large: constraints.maxWidth >= 1024, // AdaptiveWindowType.large.widthRangeValues.start,
+      AdaptiveWindowType.medium: constraints.maxWidth >= 640, // AdaptiveWindowType.medium.widthRangeValues.start,
+      AdaptiveWindowType.small: constraints.maxWidth >= 320, // AdaptiveWindowType.small.widthRangeValues.start,
+      AdaptiveWindowType.xsmall: true,
+    };
+    matrix.removeWhere((_, value) => value == false);
+    return switch (matrix.keys.first) {
+      AdaptiveWindowType.xlarge => 4,
+      AdaptiveWindowType.large => 3,
+      AdaptiveWindowType.medium => 2,
+      _ => 1,
+    };
+  }
+
+  static int getHeightCount(BuildContext context, [BoxConstraints? constraints]) {
+    final height = getMinHeight(context, constraints);
+    final matrix = {
+      AdaptiveWindowType.xlarge: height >= 1440,
+      AdaptiveWindowType.large: height >= 800,
+      AdaptiveWindowType.medium: height >= 480,
+      AdaptiveWindowType.small: height >= 240,
+      AdaptiveWindowType.xsmall: true,
+    };
+    matrix.removeWhere((_, value) => value == false);
+    return switch (matrix.keys.first) {
+      AdaptiveWindowType.xlarge => 7,
+      AdaptiveWindowType.large => 5,
+      AdaptiveWindowType.medium => 4,
+      AdaptiveWindowType.small => 2,
+      _ => 1,
+    };
+  }
+
+  static bool isWearableMode(BuildContext context, BoxConstraints constraints) =>
+      isWearable = getWidthCount(constraints) * getHeightCount(context, constraints) == 1;
 }

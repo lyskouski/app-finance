@@ -2,7 +2,6 @@
 // Use of this source code is governed by a CC BY-NC-ND 4.0 license that can be found in the LICENSE file.
 
 import 'package:app_finance/_classes/controller/focus_controller.dart';
-import 'package:app_finance/_configs/responsive_matrix.dart';
 import 'package:app_finance/_configs/theme_helper.dart';
 import 'package:app_finance/_ext/build_context_ext.dart';
 import 'package:app_finance/widgets/form/abstract_input.dart';
@@ -30,7 +29,7 @@ class FullSizedButtonWidget extends AbstractInput {
 
   @override
   Widget buildContent(BuildContext context) {
-    final isBottom = constraints != null ? ResponsiveMatrix.isNavBottom(constraints!) : false;
+    final isBottom = constraints != null ? ThemeHelper.isNavBottom(constraints!) : false;
     final bool isKeyboardVisible = ThemeHelper.isKeyboardVisible(context) || isBottom;
     final colorScheme = context.colorScheme;
     final width = constraints != null ? constraints!.maxWidth - ThemeHelper.getIndent(4) - 2 : double.infinity;

@@ -5,7 +5,6 @@ import 'package:app_finance/_classes/storage/app_data.dart';
 import 'package:app_finance/_classes/herald/app_locale.dart';
 import 'package:app_finance/_classes/structure/currency/exchange.dart';
 import 'package:app_finance/_classes/storage/app_preferences.dart';
-import 'package:app_finance/_configs/responsive_matrix.dart';
 import 'package:app_finance/_configs/theme_helper.dart';
 import 'package:app_finance/_classes/structure/navigation/app_route.dart';
 import 'package:app_finance/components/components_builder.dart';
@@ -49,7 +48,7 @@ class HomePageState extends AbstractPageState<HomePage> {
 
   @override
   BottomAppBar? buildBottomBar(BuildContext context, BoxConstraints constraints) {
-    return ResponsiveMatrix.isWearable ? null : super.buildBottomBar(context, constraints);
+    return ThemeHelper.isWearable ? null : super.buildBottomBar(context, constraints);
   }
 
   @override
@@ -115,7 +114,7 @@ class HomePageState extends AbstractPageState<HomePage> {
     NavigatorState nav = Navigator.of(context);
     return FloatingActionButton(
       heroTag: 'home_page',
-      mini: ResponsiveMatrix.isWearable,
+      mini: ThemeHelper.isWearable,
       onPressed: () => nav.pushNamed(AppRoute.billAddRoute),
       tooltip: getButtonName(),
       child: const Icon(Icons.add),
@@ -148,9 +147,9 @@ class HomePageState extends AbstractPageState<HomePage> {
     }
     double indent = ThemeHelper.getIndent();
     EdgeInsets margin = EdgeInsets.only(top: indent);
-    final countWidth = ResponsiveMatrix.getWidthCount(constraints);
-    final countHeight = ResponsiveMatrix.getHeightCount(context, constraints);
-    bool isVertical = countWidth == 1 && !ResponsiveMatrix.isWearable;
+    final countWidth = ThemeHelper.getWidthCount(constraints);
+    final countHeight = ThemeHelper.getHeightCount(context, constraints);
+    bool isVertical = countWidth == 1 && !ThemeHelper.isWearable;
     double width = ThemeHelper.getWidth(context, 3);
     double partWidth = width / countWidth - indent * (countWidth - 1);
 
@@ -215,7 +214,7 @@ class HomePageState extends AbstractPageState<HomePage> {
           ]
       },
       children: [
-        if (ResponsiveMatrix.isWearable) ...[
+        if (ThemeHelper.isWearable) ...[
           Container(
             height: constraints.maxHeight - indent,
             margin: EdgeInsets.only(top: indent),

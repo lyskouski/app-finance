@@ -2,7 +2,6 @@
 // Use of this source code is governed by a CC BY-NC-ND 4.0 license that can be found in the LICENSE file.
 
 import 'package:app_finance/_classes/structure/navigation/app_menu.dart';
-import 'package:app_finance/_configs/responsive_matrix.dart';
 import 'package:app_finance/_ext/build_context_ext.dart';
 import 'package:app_finance/charts/bar_vertical_single.dart';
 import 'package:app_finance/_configs/custom_text_theme.dart';
@@ -63,7 +62,7 @@ class BaseLineWidget extends StatelessWidget {
             indent: indent,
             alignment: MainAxisAlignment.start,
             maxWidth: width,
-            chunk: [ResponsiveMatrix.isWearable ? 0 : indent * 1.5, null, txtWidth + 2 * indent, if (error != null) 22],
+            chunk: [ThemeHelper.isWearable ? 0 : indent * 1.5, null, txtWidth + 2 * indent, if (error != null) 22],
             children: [
               [
                 Padding(
@@ -72,7 +71,7 @@ class BaseLineWidget extends StatelessWidget {
                 ),
               ],
               [
-                ResponsiveMatrix.isWearable
+                ThemeHelper.isWearable
                     ? Tooltip(
                         message: title,
                         child: Icon(icon, color: color),

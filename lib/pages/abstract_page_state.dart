@@ -1,12 +1,13 @@
 // Copyright 2023 The terCAD team. All rights reserved.
 // Use of this source code is governed by a CC BY-NC-ND 4.0 license that can be found in the LICENSE file.
 
+import 'dart:math';
+
 import 'package:app_finance/_classes/herald/app_locale.dart';
 import 'package:app_finance/_classes/herald/app_zoom.dart';
 import 'package:app_finance/_classes/structure/navigation/app_menu.dart';
 import 'package:app_finance/_classes/storage/app_data.dart';
 import 'package:app_finance/_classes/controller/focus_controller.dart';
-import 'package:app_finance/_configs/responsive_matrix.dart';
 import 'package:app_finance/_configs/theme_helper.dart';
 import 'package:app_finance/_ext/build_context_ext.dart';
 import 'package:app_finance/widgets/generic/menu_widget.dart';
@@ -95,7 +96,32 @@ abstract class AbstractPageState<T extends StatefulWidget> extends State<T> {
     );
   }
 
+  Widget buildRightBar(BuildContext context, BoxConstraints constraints) {
+    final nav = Navigator.of(context);
+    return Align(
+      alignment: Alignment.topRight,
+      child: Container(
+        color: context.colorScheme.primary,
+        width: barHeight,
+        child: Column(
+          children: [
+            getBarLeading(nav) ?? ThemeHelper.emptyBox,
+            ...getBarActions(nav),
+            ThemeHelper.hIndent,
+            Transform.rotate(
+              angle: -pi / 2,
+              child: getBarTitle(context),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
   BottomAppBar? buildBottomBar(BuildContext context, BoxConstraints constraints) {
+    if (ThemeHelper.isNavRight(context, constraints)) {
+      return null;
+    }
     final theme = Theme.of(context);
     final nav = Navigator.of(context);
     final actions = getBarActions(nav);
@@ -175,10 +201,12 @@ abstract class AbstractPageState<T extends StatefulWidget> extends State<T> {
     return Consumer<AppData>(builder: (context, appState, _) {
       state = appState;
       return LayoutBuilder(builder: (context, constraints) {
-        final isBottom = ResponsiveMatrix.isNavBottom(constraints);
-        final isWearable = ResponsiveMatrix.isWearableMode(context, constraints);
-        final hasShift = isBottom && !isWearable;
+        final isBottom = ThemeHelper.isNavBottom(constraints);
+        final isWearable = ThemeHelper.isWearableMode(context, constraints);
+        final isRight = isBottom && ThemeHelper.isNavRight(context, constraints);
+        final hasShift = isBottom && !isWearable && !isRight;
         final height = constraints.maxHeight / scale - (hasShift ? barHeight + ThemeHelper.getIndent() : 0);
+        final width = constraints.maxWidth / scale - (isRight && !isWearable ? barHeight : 0);
         final dx = (constraints.maxWidth - constraints.maxWidth / scale) / 2;
         final dy = (constraints.maxHeight - constraints.maxHeight / scale) / 2;
         return Scaffold(
@@ -187,19 +215,24 @@ abstract class AbstractPageState<T extends StatefulWidget> extends State<T> {
           drawer: buildDrawer(),
           body: SafeArea(
             child: InputControllerWrapper(
-              child: OverflowBox(
-                alignment: Alignment.topLeft,
-                minWidth: constraints.maxWidth / scale,
-                maxWidth: constraints.maxWidth / scale,
-                minHeight: height,
-                maxHeight: height,
-                child: Transform.translate(
-                  offset: Offset(dx, dy),
-                  child: Transform.scale(
-                    scale: scale,
-                    child: buildContent(context, constraints),
+              child: Stack(
+                children: [
+                  OverflowBox(
+                    alignment: Alignment.topLeft,
+                    minWidth: width,
+                    maxWidth: width,
+                    minHeight: height,
+                    maxHeight: height,
+                    child: Transform.translate(
+                      offset: Offset(dx, dy),
+                      child: Transform.scale(
+                        scale: scale,
+                        child: buildContent(context, constraints),
+                      ),
+                    ),
                   ),
-                ),
+                  isRight ? buildRightBar(context, constraints) : ThemeHelper.emptyBox,
+                ],
               ),
             ),
           ),
