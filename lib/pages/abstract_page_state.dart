@@ -100,8 +100,9 @@ abstract class AbstractPageState<T extends StatefulWidget> extends State<T> {
     final theme = Theme.of(context);
     final nav = Navigator.of(context);
     final actions = getBarActions(nav);
-    final tooltipWidth = ThemeHelper.getWidth(context) / 2 - 32;
+    final hasTooltip = getButtonName().isNotEmpty;
     final btnWidth = 50.0 * actions.length;
+    final tooltipWidth = ThemeHelper.getWidth(context, 0) / 2 - 100;
     return BottomAppBar(
       padding: EdgeInsets.zero,
       notchMargin: CircularProgressIndicator.strokeAlignCenter,
@@ -112,7 +113,7 @@ abstract class AbstractPageState<T extends StatefulWidget> extends State<T> {
       child: RowWidget(
         maxWidth: constraints.maxWidth,
         indent: 0,
-        chunk: [50, null, getButtonName().isNotEmpty ? tooltipWidth : 0, btnWidth],
+        chunk: [50, hasTooltip ? tooltipWidth : null, hasTooltip ? null : 0, btnWidth],
         children: [
           [getBarLeading(nav) ?? ThemeHelper.emptyBox],
           [
