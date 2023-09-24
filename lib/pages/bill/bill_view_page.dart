@@ -75,6 +75,7 @@ class BillViewPageState extends AbstractPageState<BillViewPage> {
             details: item.detailsFormatted,
             progress: item.progress,
             color: item.color ?? Colors.transparent,
+            icon: item.icon ?? Icons.radio_button_unchecked_sharp,
             width: ThemeHelper.getWidth(context, 3),
             route: AppRoute.billViewRoute,
           )

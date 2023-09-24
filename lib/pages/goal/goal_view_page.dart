@@ -108,6 +108,7 @@ class GoalViewPageState extends AbstractPageState<GoalViewPage> {
             details: (item.details as double).toCurrency(item.currency),
             description: item.closedAtFormatted,
             color: item.color ?? Colors.green.shade700,
+            icon: item.icon ?? Icons.radio_button_unchecked_sharp,
             hidden: item.hidden,
             progress: item.progress,
             route: AppRoute.goalViewRoute,

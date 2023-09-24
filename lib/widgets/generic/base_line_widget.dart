@@ -19,6 +19,7 @@ class BaseLineWidget extends StatelessWidget {
   final String description;
   final double progress;
   final Color color;
+  final IconData? icon;
   final double width;
   final String route;
   final bool hidden;
@@ -33,6 +34,7 @@ class BaseLineWidget extends StatelessWidget {
     required this.description,
     required this.color,
     required this.width,
+    this.icon = Icons.question_mark,
     this.error,
     this.hidden = false,
     this.progress = 1,
@@ -60,7 +62,7 @@ class BaseLineWidget extends StatelessWidget {
             indent: indent,
             alignment: MainAxisAlignment.start,
             maxWidth: width,
-            chunk: [indent * 1.5, null, txtWidth + 2 * indent, if (error != null) 22],
+            chunk: [ThemeHelper.isWearable ? 0 : indent * 1.5, null, txtWidth + 2 * indent, if (error != null) 22],
             children: [
               [
                 Padding(
@@ -69,19 +71,24 @@ class BaseLineWidget extends StatelessWidget {
                 ),
               ],
               [
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    TextWrapper(
-                      title,
-                      style: textTheme.bodyMedium,
-                    ),
-                    TextWrapper(
-                      description,
-                      style: textTheme.bodySmall,
-                    ),
-                  ],
-                ),
+                ThemeHelper.isWearable
+                    ? Tooltip(
+                        message: title,
+                        child: Icon(icon, color: color),
+                      )
+                    : Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          TextWrapper(
+                            title,
+                            style: textTheme.bodyMedium,
+                          ),
+                          TextWrapper(
+                            description,
+                            style: textTheme.bodySmall,
+                          ),
+                        ],
+                      ),
               ],
               [
                 Align(

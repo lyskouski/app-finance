@@ -6,14 +6,14 @@ import 'package:flutter/material.dart';
 class ToolbarButtonWidget extends StatefulWidget {
   final Widget child;
   final Color? borderColor;
-  final Offset offset;
+  final Offset? offset;
   final EdgeInsets margin;
 
   const ToolbarButtonWidget({
     super.key,
     required this.child,
     this.borderColor,
-    this.offset = const Offset(0, -4),
+    this.offset,
     this.margin = const EdgeInsets.all(4.0),
   });
 
@@ -38,15 +38,17 @@ class ToolbarButtonWidgetState extends State<ToolbarButtonWidget> {
           color: color,
           border: Border.all(color: widget.borderColor ?? Colors.white30, width: 1),
         ),
-        child: Transform.translate(
-          offset: widget.offset,
-          child: Material(
-            elevation: 0,
-            color: Colors.transparent,
-            borderRadius: BorderRadius.zero,
-            child: widget.child,
-          ),
-        ),
+        child: LayoutBuilder(builder: (context, constraints) {
+          return Transform.translate(
+            offset: widget.offset ?? Offset(constraints.maxWidth > 30 ? 0 : -4, -4),
+            child: Material(
+              elevation: 0,
+              color: Colors.transparent,
+              borderRadius: BorderRadius.zero,
+              child: widget.child,
+            ),
+          );
+        }),
       ),
     );
   }

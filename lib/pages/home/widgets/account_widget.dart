@@ -111,6 +111,7 @@ class AccountWidget extends BaseWidget {
         details: item.detailsFormatted,
         progress: item.progress,
         color: item.color ?? Colors.transparent,
+        icon: item.icon ?? Icons.radio_button_unchecked_sharp,
         hidden: item.hidden,
         width: width,
         route: routeList,

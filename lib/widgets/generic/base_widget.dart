@@ -3,6 +3,10 @@
 
 import 'package:app_finance/_classes/storage/app_preferences.dart';
 import 'package:app_finance/_classes/structure/navigation/app_menu.dart';
+import 'package:app_finance/_configs/custom_text_theme.dart';
+import 'package:app_finance/_configs/theme_helper.dart';
+import 'package:app_finance/_ext/build_context_ext.dart';
+import 'package:app_finance/_ext/double_ext.dart';
 import 'package:app_finance/widgets/generic/base_header_widget.dart';
 import 'package:app_finance/widgets/generic/base_line_widget.dart';
 import 'package:app_finance/widgets/generic/base_list_infinite_widget.dart';
@@ -49,6 +53,7 @@ class BaseWidget extends StatelessWidget {
         details: item.detailsFormatted,
         progress: item.progress,
         color: item.color ?? Colors.transparent,
+        icon: item.icon ?? Icons.radio_button_unchecked_sharp,
         hidden: item.hidden,
         width: width,
         route: routeList,
@@ -65,12 +70,37 @@ class BaseWidget extends StatelessWidget {
   }
 
   @override
-  Widget build(context) {
-    bool isExpanded = !hasExpand || (toExpand ?? '') == '' || toExpand == title;
-    return isExpanded ? buildFull(context) : buildCollapsed(context);
+  Widget build(BuildContext context) {
+    if (!hasExpand || (toExpand ?? '') == '' || toExpand == title) {
+      return buildFull(context);
+    }
+    return buildCollapsed(context);
   }
 
-  Widget buildCollapsed(context) {
+  Widget buildMinimized(BuildContext context) {
+    return Container(
+      margin: EdgeInsets.only(top: ThemeHelper.getIndent(3)),
+      alignment: Alignment.center,
+      decoration: BoxDecoration(
+        shape: BoxShape.circle,
+        color: context.colorScheme.inverseSurface.withOpacity(0.1),
+      ),
+      height: ThemeHelper.getHeight(context),
+      child: Column(
+        children: [
+          SizedBox(height: ThemeHelper.getHeight(context) / 2 - 2 * ThemeHelper.getTextHeight(Text(title))),
+          Text(title),
+          ThemeHelper.hIndent,
+          Text(
+            (state.total as double).toCurrency(),
+            style: context.textTheme.numberMedium,
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget buildCollapsed(BuildContext context) {
     return Container(
       margin: margin,
       child: BaseHeaderWidget(
@@ -86,7 +116,7 @@ class BaseWidget extends StatelessWidget {
     );
   }
 
-  Widget buildFull(context) {
+  Widget buildFull(BuildContext context) {
     return Expanded(
       child: Container(
         margin: margin,

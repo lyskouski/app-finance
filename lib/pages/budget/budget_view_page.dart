@@ -94,6 +94,7 @@ class BudgetViewPageState extends AbstractPageState<BudgetViewPage> with TickerP
       details: item.detailsFormatted,
       progress: item.progress,
       color: item.color ?? Colors.transparent,
+      icon: item.icon ?? Icons.radio_button_unchecked_sharp,
       hidden: item.hidden,
       width: ThemeHelper.getWidth(context, 3),
       route: AppRoute.billViewRoute,

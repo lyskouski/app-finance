@@ -1,13 +1,13 @@
 // Copyright 2023 The terCAD team. All rights reserved.
 // Use of this source code is governed by a CC BY-NC-ND 4.0 license that can be found in the LICENSE file.
 
-import 'package:adaptive_breakpoints/adaptive_breakpoints.dart';
+import 'dart:math';
+
 import 'package:app_finance/_classes/herald/app_locale.dart';
 import 'package:app_finance/_classes/herald/app_zoom.dart';
 import 'package:app_finance/_classes/structure/navigation/app_menu.dart';
 import 'package:app_finance/_classes/storage/app_data.dart';
 import 'package:app_finance/_classes/controller/focus_controller.dart';
-import 'package:app_finance/_configs/responsive_matrix.dart';
 import 'package:app_finance/_configs/theme_helper.dart';
 import 'package:app_finance/_ext/build_context_ext.dart';
 import 'package:app_finance/widgets/generic/menu_widget.dart';
@@ -20,7 +20,6 @@ import 'package:provider/provider.dart';
 
 abstract class AbstractPageState<T extends StatefulWidget> extends State<T> {
   static const barHeight = 40.0;
-  dynamic bar;
   late AppData state;
 
   int selectedMenu = 0;
@@ -97,12 +96,38 @@ abstract class AbstractPageState<T extends StatefulWidget> extends State<T> {
     );
   }
 
-  BottomAppBar buildBottomBar(BuildContext context, BoxConstraints constraints) {
+  Widget buildRightBar(BuildContext context, BoxConstraints constraints) {
+    final nav = Navigator.of(context);
+    return Align(
+      alignment: Alignment.topRight,
+      child: Container(
+        color: context.colorScheme.primary,
+        width: barHeight,
+        child: Column(
+          children: [
+            getBarLeading(nav) ?? ThemeHelper.emptyBox,
+            ...getBarActions(nav),
+            ThemeHelper.hIndent,
+            Transform.rotate(
+              angle: -pi / 2,
+              child: getBarTitle(context),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
+  BottomAppBar? buildBottomBar(BuildContext context, BoxConstraints constraints) {
+    if (ThemeHelper.isNavRight(context, constraints)) {
+      return null;
+    }
     final theme = Theme.of(context);
     final nav = Navigator.of(context);
     final actions = getBarActions(nav);
-    final tooltipWidth = ThemeHelper.getWidth(context) / 2 - 32;
+    final hasTooltip = getButtonName().isNotEmpty;
     final btnWidth = 50.0 * actions.length;
+    final tooltipWidth = ThemeHelper.getWidth(context, 0) / 2 - 100;
     return BottomAppBar(
       padding: EdgeInsets.zero,
       notchMargin: CircularProgressIndicator.strokeAlignCenter,
@@ -113,7 +138,7 @@ abstract class AbstractPageState<T extends StatefulWidget> extends State<T> {
       child: RowWidget(
         maxWidth: constraints.maxWidth,
         indent: 0,
-        chunk: [50, null, getButtonName().isNotEmpty ? tooltipWidth : 0, btnWidth],
+        chunk: [50, hasTooltip ? tooltipWidth : null, hasTooltip ? null : 0, btnWidth],
         children: [
           [getBarLeading(nav) ?? ThemeHelper.emptyBox],
           [
@@ -176,38 +201,43 @@ abstract class AbstractPageState<T extends StatefulWidget> extends State<T> {
     return Consumer<AppData>(builder: (context, appState, _) {
       state = appState;
       return LayoutBuilder(builder: (context, constraints) {
-        final button = buildButton(context, constraints);
-        final isBottom = ResponsiveMatrix(getWindowType(context)).isNavBottom(constraints);
-        final height = constraints.maxHeight / scale - (isBottom ? barHeight + ThemeHelper.getIndent() : 0);
-        if (isBottom && bar is! BottomAppBar || bar is! AppBar) {
-          bar = isBottom ? buildBottomBar(context, constraints) : buildBar(context);
-        }
+        final isBottom = ThemeHelper.isNavBottom(constraints);
+        final isWearable = ThemeHelper.isWearableMode(context, constraints);
+        final isRight = isBottom && ThemeHelper.isNavRight(context, constraints);
+        final hasShift = isBottom && !isWearable && !isRight;
+        final height = constraints.maxHeight / scale - (hasShift ? barHeight + ThemeHelper.getIndent() : 0);
+        final width = constraints.maxWidth / scale - (isRight && !isWearable ? barHeight : 0);
         final dx = (constraints.maxWidth - constraints.maxWidth / scale) / 2;
         final dy = (constraints.maxHeight - constraints.maxHeight / scale) / 2;
         return Scaffold(
-          appBar: isBottom ? null : bar as AppBar,
-          bottomNavigationBar: isBottom ? bar as BottomAppBar : null,
+          appBar: isBottom ? null : buildBar(context),
+          bottomNavigationBar: isBottom ? buildBottomBar(context, constraints) : null,
           drawer: buildDrawer(),
           body: SafeArea(
             child: InputControllerWrapper(
-              child: OverflowBox(
-                alignment: Alignment.topLeft,
-                minWidth: constraints.maxWidth / scale,
-                maxWidth: constraints.maxWidth / scale,
-                minHeight: height,
-                maxHeight: height,
-                child: Transform.translate(
-                  offset: Offset(dx, dy),
-                  child: Transform.scale(
-                    scale: scale,
-                    child: buildContent(context, constraints),
+              child: Stack(
+                children: [
+                  OverflowBox(
+                    alignment: Alignment.topLeft,
+                    minWidth: width,
+                    maxWidth: width,
+                    minHeight: height,
+                    maxHeight: height,
+                    child: Transform.translate(
+                      offset: Offset(dx, dy),
+                      child: Transform.scale(
+                        scale: scale,
+                        child: buildContent(context, constraints),
+                      ),
+                    ),
                   ),
-                ),
+                  isRight ? buildRightBar(context, constraints) : ThemeHelper.emptyBox,
+                ],
               ),
             ),
           ),
-          floatingActionButtonLocation: isBottom ? FloatingActionButtonLocation.centerDocked : null,
-          floatingActionButton: button,
+          floatingActionButtonLocation: hasShift ? FloatingActionButtonLocation.centerDocked : null,
+          floatingActionButton: buildButton(context, constraints),
         );
       });
     });
