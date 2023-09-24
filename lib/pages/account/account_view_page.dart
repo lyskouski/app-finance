@@ -90,6 +90,7 @@ class AccountViewPageState extends AbstractPageState<AccountViewPage> with Ticke
       progress: 1.0,
       details: (item.delta as double).toCurrency(item.currency),
       color: obj?.color ?? Colors.transparent,
+      icon: obj?.icon ?? Icons.radio_button_unchecked_sharp,
       width: ThemeHelper.getWidth(context, 3),
       route: item is BillAppData ? AppRoute.billViewRoute : '',
     );
@@ -103,6 +104,7 @@ class AccountViewPageState extends AbstractPageState<AccountViewPage> with Ticke
       details: item.detailsFormatted,
       progress: item.progress,
       color: item.color ?? Colors.transparent,
+      icon: item.icon ?? Icons.radio_button_unchecked_sharp,
       hidden: item.hidden,
       width: ThemeHelper.getWidth(context, 3),
       route: item is BillAppData ? AppRoute.billViewRoute : '',

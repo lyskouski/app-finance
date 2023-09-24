@@ -72,6 +72,7 @@ class BudgetWidget extends AccountWidget {
         details: item.detailsFormatted,
         progress: item.progressLeft,
         color: item.color ?? Colors.transparent,
+        icon: item.icon ?? Icons.radio_button_unchecked_sharp,
         hidden: item.hidden,
         width: width,
         route: routeList,

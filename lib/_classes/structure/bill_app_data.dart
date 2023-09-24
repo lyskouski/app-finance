@@ -87,4 +87,10 @@ class BillAppData extends AbstractAppData with StorageMixin {
     BudgetAppData? budget = getState().getByUuid(category);
     return budget?.color;
   }
+
+  @override
+  IconData? get icon {
+    BudgetAppData? budget = getState().getByUuid(category);
+    return budget?.icon;
+  }
 }

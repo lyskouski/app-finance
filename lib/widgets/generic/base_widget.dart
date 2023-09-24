@@ -4,7 +4,6 @@
 import 'package:app_finance/_classes/storage/app_preferences.dart';
 import 'package:app_finance/_classes/structure/navigation/app_menu.dart';
 import 'package:app_finance/_configs/custom_text_theme.dart';
-import 'package:app_finance/_configs/responsive_matrix.dart';
 import 'package:app_finance/_configs/theme_helper.dart';
 import 'package:app_finance/_ext/build_context_ext.dart';
 import 'package:app_finance/_ext/double_ext.dart';
@@ -54,6 +53,7 @@ class BaseWidget extends StatelessWidget {
         details: item.detailsFormatted,
         progress: item.progress,
         color: item.color ?? Colors.transparent,
+        icon: item.icon ?? Icons.radio_button_unchecked_sharp,
         hidden: item.hidden,
         width: width,
         route: routeList,
@@ -71,9 +71,7 @@ class BaseWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    if (ResponsiveMatrix.getHeightCount(context) == 1) {
-      return buildMinimized(context);
-    } else if (!hasExpand || (toExpand ?? '') == '' || toExpand == title) {
+    if (!hasExpand || (toExpand ?? '') == '' || toExpand == title) {
       return buildFull(context);
     }
     return buildCollapsed(context);
@@ -90,7 +88,7 @@ class BaseWidget extends StatelessWidget {
       height: ThemeHelper.getHeight(context),
       child: Column(
         children: [
-          SizedBox(height: width / 2 - 2 * ThemeHelper.getTextHeight(Text(title)) - ThemeHelper.getIndent(2)),
+          SizedBox(height: ThemeHelper.getHeight(context) / 2 - 2 * ThemeHelper.getTextHeight(Text(title))),
           Text(title),
           ThemeHelper.hIndent,
           Text(

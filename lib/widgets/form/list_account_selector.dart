@@ -63,6 +63,7 @@ class ListAccountSelectorState<K extends ListAccountSelectorItem> extends ListSe
       details: item.item?.detailsFormatted ?? '',
       progress: item.item?.progress ?? 0.0,
       color: item.item?.color ?? Colors.transparent,
+      icon: item.item?.icon ?? Icons.radio_button_unchecked_sharp,
       hidden: item.item?.hidden ?? false,
       width: widget.width,
     );
@@ -77,6 +78,7 @@ class ListAccountSelectorState<K extends ListAccountSelectorItem> extends ListSe
       details: item.item?.detailsFormatted ?? '',
       progress: item.item?.progress ?? 0.0,
       color: item.item?.color ?? Colors.transparent,
+      icon: item.item?.icon ?? Icons.radio_button_unchecked_sharp,
       hidden: item.item?.hidden ?? false,
       width: widget.width - 32,
       showDivider: false,

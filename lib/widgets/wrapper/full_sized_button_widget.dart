@@ -1,7 +1,6 @@
 // Copyright 2023 The terCAD team. All rights reserved.
 // Use of this source code is governed by a CC BY-NC-ND 4.0 license that can be found in the LICENSE file.
 
-import 'package:adaptive_breakpoints/adaptive_breakpoints.dart';
 import 'package:app_finance/_classes/controller/focus_controller.dart';
 import 'package:app_finance/_configs/responsive_matrix.dart';
 import 'package:app_finance/_configs/theme_helper.dart';
@@ -31,7 +30,7 @@ class FullSizedButtonWidget extends AbstractInput {
 
   @override
   Widget buildContent(BuildContext context) {
-    final isBottom = constraints != null ? ResponsiveMatrix(getWindowType(context)).isNavBottom(constraints!) : false;
+    final isBottom = constraints != null ? ResponsiveMatrix.isNavBottom(constraints!) : false;
     final bool isKeyboardVisible = ThemeHelper.isKeyboardVisible(context) || isBottom;
     final colorScheme = context.colorScheme;
     final width = constraints != null ? constraints!.maxWidth - ThemeHelper.getIndent(4) - 2 : double.infinity;

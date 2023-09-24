@@ -1,7 +1,6 @@
 // Copyright 2023 The terCAD team. All rights reserved.
 // Use of this source code is governed by a CC BY-NC-ND 4.0 license that can be found in the LICENSE file.
 
-import 'package:adaptive_breakpoints/adaptive_breakpoints.dart';
 import 'package:app_finance/_classes/herald/app_locale.dart';
 import 'package:app_finance/_classes/herald/app_zoom.dart';
 import 'package:app_finance/_classes/structure/navigation/app_menu.dart';
@@ -176,10 +175,9 @@ abstract class AbstractPageState<T extends StatefulWidget> extends State<T> {
     return Consumer<AppData>(builder: (context, appState, _) {
       state = appState;
       return LayoutBuilder(builder: (context, constraints) {
-        final button = buildButton(context, constraints);
-        final isBottom = ResponsiveMatrix(getWindowType(context)).isNavBottom(constraints);
-        final mlt = ResponsiveMatrix.getWidthCount(constraints) * ResponsiveMatrix.getHeightCount(context, constraints);
-        final hasShift = isBottom && mlt != 1;
+        final isBottom = ResponsiveMatrix.isNavBottom(constraints);
+        final isWearable = ResponsiveMatrix.isWearableMode(context, constraints);
+        final hasShift = isBottom && !isWearable;
         final height = constraints.maxHeight / scale - (hasShift ? barHeight + ThemeHelper.getIndent() : 0);
         final dx = (constraints.maxWidth - constraints.maxWidth / scale) / 2;
         final dy = (constraints.maxHeight - constraints.maxHeight / scale) / 2;
@@ -206,7 +204,7 @@ abstract class AbstractPageState<T extends StatefulWidget> extends State<T> {
             ),
           ),
           floatingActionButtonLocation: hasShift ? FloatingActionButtonLocation.centerDocked : null,
-          floatingActionButton: button,
+          floatingActionButton: buildButton(context, constraints),
         );
       });
     });

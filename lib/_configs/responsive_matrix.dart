@@ -1,20 +1,19 @@
 // Copyright 2023 The terCAD team. All rights reserved.
 // Use of this source code is governed by a CC BY-NC-ND 4.0 license that can be found in the LICENSE file.
 
-import 'dart:math';
-
 import 'package:adaptive_breakpoints/adaptive_breakpoints.dart';
 import 'package:app_finance/_configs/theme_helper.dart';
 import 'package:flutter/material.dart';
 
 class ResponsiveMatrix {
+  static late bool isWearable;
   final AdaptiveWindowType windowType;
 
-  const ResponsiveMatrix(this.windowType);
+  ResponsiveMatrix(this.windowType);
 
   bool isLower(AdaptiveWindowType size) => windowType <= size;
 
-  bool isNavBottom(BoxConstraints constraints) => getWidthCount(constraints) <= 2;
+  static bool isNavBottom(BoxConstraints constraints) => getWidthCount(constraints) <= 2;
 
   static int getWidthCount(BoxConstraints constraints) {
     final matrix = {
@@ -34,7 +33,7 @@ class ResponsiveMatrix {
   }
 
   static int getHeightCount(BuildContext context, [BoxConstraints? constraints]) {
-    final height = [ThemeHelper.getHeight(context), constraints?.maxHeight ?? double.infinity].reduce(min);
+    final height = ThemeHelper.getMinHeight(context, constraints);
     final matrix = {
       AdaptiveWindowType.xlarge: height >= 1440,
       AdaptiveWindowType.large: height >= 800,
@@ -51,4 +50,7 @@ class ResponsiveMatrix {
       _ => 1,
     };
   }
+
+  static bool isWearableMode(BuildContext context, BoxConstraints constraints) =>
+      isWearable = getWidthCount(constraints) * getHeightCount(context, constraints) == 1;
 }

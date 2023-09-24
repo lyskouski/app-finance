@@ -49,12 +49,7 @@ class HomePageState extends AbstractPageState<HomePage> {
 
   @override
   BottomAppBar? buildBottomBar(BuildContext context, BoxConstraints constraints) {
-    final countWidth = ResponsiveMatrix.getWidthCount(constraints);
-    final countHeight = ResponsiveMatrix.getHeightCount(context, constraints);
-    if (countWidth * countHeight == 1) {
-      return null;
-    }
-    return super.buildBottomBar(context, constraints);
+    return ResponsiveMatrix.isWearable ? null : super.buildBottomBar(context, constraints);
   }
 
   @override
@@ -120,6 +115,7 @@ class HomePageState extends AbstractPageState<HomePage> {
     NavigatorState nav = Navigator.of(context);
     return FloatingActionButton(
       heroTag: 'home_page',
+      mini: ResponsiveMatrix.isWearable,
       onPressed: () => nav.pushNamed(AppRoute.billAddRoute),
       tooltip: getButtonName(),
       child: const Icon(Icons.add),
@@ -154,7 +150,7 @@ class HomePageState extends AbstractPageState<HomePage> {
     EdgeInsets margin = EdgeInsets.only(top: indent);
     final countWidth = ResponsiveMatrix.getWidthCount(constraints);
     final countHeight = ResponsiveMatrix.getHeightCount(context, constraints);
-    bool isVertical = countWidth == 1;
+    bool isVertical = countWidth == 1 && !ResponsiveMatrix.isWearable;
     double width = ThemeHelper.getWidth(context, 3);
     double partWidth = width / countWidth - indent * (countWidth - 1);
 
@@ -219,9 +215,10 @@ class HomePageState extends AbstractPageState<HomePage> {
           ]
       },
       children: [
-        if (countHeight * countWidth == 1) ...[
-          SizedBox(
-            height: constraints.maxHeight,
+        if (ResponsiveMatrix.isWearable) ...[
+          Container(
+            height: constraints.maxHeight - indent,
+            margin: EdgeInsets.only(top: indent),
             child: TabWidget(
               asDots: true,
               maxWidth: width,

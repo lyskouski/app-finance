@@ -1,6 +1,8 @@
 // Copyright 2023 The terCAD team. All rights reserved.
 // Use of this source code is governed by a CC BY-NC-ND 4.0 license that can be found in the LICENSE file.
 
+import 'dart:math';
+
 import 'package:app_finance/_classes/herald/app_zoom.dart';
 import 'package:flutter/material.dart';
 
@@ -30,6 +32,9 @@ class ThemeHelper {
 
   static double getHeight(BuildContext context, [double multiply = 2]) =>
       MediaQuery.sizeOf(context).height / AppZoom.state - getIndent(multiply);
+
+  static double getMinHeight(BuildContext context, [BoxConstraints? constraints]) =>
+      [ThemeHelper.getHeight(context), constraints?.maxHeight ?? double.infinity].reduce(min);
 
   static bool isKeyboardVisible(BuildContext context) => MediaQuery.of(context).viewInsets.bottom > 0;
 

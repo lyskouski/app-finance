@@ -2,6 +2,7 @@
 // Use of this source code is governed by a CC BY-NC-ND 4.0 license that can be found in the LICENSE file.
 
 import 'package:app_finance/_classes/structure/navigation/app_menu.dart';
+import 'package:app_finance/_configs/responsive_matrix.dart';
 import 'package:app_finance/_ext/build_context_ext.dart';
 import 'package:app_finance/charts/bar_vertical_single.dart';
 import 'package:app_finance/_configs/custom_text_theme.dart';
@@ -19,6 +20,7 @@ class BaseLineWidget extends StatelessWidget {
   final String description;
   final double progress;
   final Color color;
+  final IconData? icon;
   final double width;
   final String route;
   final bool hidden;
@@ -33,6 +35,7 @@ class BaseLineWidget extends StatelessWidget {
     required this.description,
     required this.color,
     required this.width,
+    this.icon = Icons.question_mark,
     this.error,
     this.hidden = false,
     this.progress = 1,
@@ -60,7 +63,7 @@ class BaseLineWidget extends StatelessWidget {
             indent: indent,
             alignment: MainAxisAlignment.start,
             maxWidth: width,
-            chunk: [indent * 1.5, null, txtWidth + 2 * indent, if (error != null) 22],
+            chunk: [ResponsiveMatrix.isWearable ? 0 : indent * 1.5, null, txtWidth + 2 * indent, if (error != null) 22],
             children: [
               [
                 Padding(
@@ -69,19 +72,24 @@ class BaseLineWidget extends StatelessWidget {
                 ),
               ],
               [
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    TextWrapper(
-                      title,
-                      style: textTheme.bodyMedium,
-                    ),
-                    TextWrapper(
-                      description,
-                      style: textTheme.bodySmall,
-                    ),
-                  ],
-                ),
+                ResponsiveMatrix.isWearable
+                    ? Tooltip(
+                        message: title,
+                        child: Icon(icon, color: color),
+                      )
+                    : Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          TextWrapper(
+                            title,
+                            style: textTheme.bodyMedium,
+                          ),
+                          TextWrapper(
+                            description,
+                            style: textTheme.bodySmall,
+                          ),
+                        ],
+                      ),
               ],
               [
                 Align(
