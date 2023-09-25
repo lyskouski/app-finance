@@ -17,6 +17,7 @@ class Exchange {
   Currency? getDefaultCurrency() {
     defaultCurrency ??= CurrencyProvider.find(AppPreferences.get(AppPreferences.prefCurrency));
     defaultCurrency ??= CurrencyProvider.find('EUR');
+    CurrencyDefaults.defaultCurrency = defaultCurrency;
     return defaultCurrency;
   }
 
