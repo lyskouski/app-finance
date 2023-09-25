@@ -1,19 +1,65 @@
 % Copyright 2023 The terCAD team. All rights reserved.
 % Use of this content is governed by a CC BY-NC-ND 4.0 license that can be found in the LICENSE file.
 
-\subsection{Dart}
+\subsection{[TBD] Dart}
 \markboth{Bootcamping}{Dart}
+
+\textbf{Dart}-language, by following Object-Oriented Programming (OOP) paradigm, enables extending even built-in data 
+types (from \q{String}, \q{double}, ... to \q{null}; \q{dynamic} - calculated / changeable type at run-time):
+
+\begin{lstlisting}
+int counter = 123; // counter.toDouble() => 123.0
+double pi = 3.141592; // pi.clamp(0, 3) => 3.0
+bool isVisible = true; // true.toString() => 'true'
+String text = 'Some content'; // text.codeUnits // List<int>
+// 'StringBuffer' as a way to construct strings sequentially
+final spread = StringBuffer();
+spread.write('some text...'); // concatenate
+spread.writeln('... another content'); // add indentation at the end
+// But long text can be also broken and implicitly spliced back
+String test = 'some long text...'
+  '...continuation';
+// Convert other types to String by interpolation (via '$' sign)
+String sample = '$counter $isVisible';
+// Extend functionality of 'double'-type
+extension DoubleExt on double {
+  // 0.12.pcnt => '12.0%'
+  String get pcnt => '${this * 100}%';
+}
+\end{lstlisting}
+
+\noindent Collections are represented by \q{List}, \q{Map}, and \q{Set}. Where \q{List} is an ordered collection of 
+objects; \q{Map}, as a collection of key/value pairs, is used to retrieve a value by its associated key with a 
+maintained key uniqueness; as well as \q{Set} -- to control uniqueness of variables. As a distinctive feature, 
+iterativeness for \q{Map} deviates by its type:
+
+\begin{itemize}
+  \item \q{HashMap}, unordered, provides access to items (by key) in (potentially) amortized constant time;
+  \item \q{LinkedHashMap} iterates in key insertion order;
+  \item \q{SplayTreeMap} is based on a self-balancing binary tree that allows most single-entry operations in amortized 
+  logarithmic time;
+  \item Immutable Map (in round brackets) is not iterable but simplify the access to its values and control their
+  persistency in \q{List}.
+\end{itemize}
+
+\begin{lstlisting}
+List<int> data = [1, 2, 3]; // data.last; // 3
+Set<String> scope = {'a', 'b', 'a'}; // scope.length; // 2
+var map = (text: 'sample', at: 123); // map.text; // 'sample'
+HashMap<String, int> hash = {'test': 123}; // hash.values; // [123]
+\end{lstlisting}
+
 
 \subsubsection{Overloading operators}
 
-In Dart, "magic methods" are often referred to as "operator overloading" or "special methods." They allow you to define 
-custom behaviors for built-in operations:
+"Magic methods" are often referred to as "operator overloading" or "special methods." They allow to declare a custom 
+behavior for built-in operations:
 
 \begin{itemize}
   \item \q{toString} returns a string representation of an object, can be used for a serialization and deserialization 
   process of an object;
   \item \q{call} allows an object to be treated as a function;
-  \item \q{hashCode} returns a hash code for an object (to use object as a key for \q{Map} and \q{Set}, and override \q{==});
+  \item \q{hashCode} returns a hash code for an object (to use it as a key for \q{Map} and \q{Set}, and to override \q{==});
   \item \q{operator==} compares two objects for equality;
   \item \q{get} and \q{set} -- to override the behavior of getting and setting properties.
 \end{itemize}
@@ -44,5 +90,116 @@ class Person {
   // print(person); // 'Tom'
   @override
   String toString() => name;
+}
+\end{lstlisting}
+
+
+\subsubsection{Declaring Input Arguments}
+
+A few options are available for the arguments declaration:
+
+\begin{lstlisting}
+// Ordered scope
+/// Sample: add('test', null) 
+/// Sample: add('test', 123) 
+void add(String value, int? id);
+
+// With optional arguments
+/// Sample: add('test')
+void add(String value, [int? id]);
+void add(String value, [int id = 123]); // preset for 'id'
+
+// Named attributes
+/// Sample: add(value: 'test')
+/// Sample: add(id: 1, value: 'test')
+void add({String value, int? id});
+void add({String value, int id = 123});
+
+// Mix
+/// Sample: add('test', id: 123)
+void add(String value, {int? id});
+\end{lstlisting}
+
+\noindent In the context of classes, their properties can be protected (not declared in constructor, accessible for 
+extends), private (with underscore; neither visible, nor accessible from extends), and public (mentioned in 
+constructor); with extra options as \q{final} (immutable), \q{const} (not changeable for run-time), \q{static} (to 
+grant access without object initialization), and \q{late} (postponed initialization):
+
+\begin{lstlisting}
+class Person {
+  // Only static fields can be declared as const
+  static const gender = 'unknown';
+  // Private property
+  String _priv;
+  // Immutable after an object creation
+  final String name;
+  // Delayed assignment
+  late final int age;
+  // Post-initialization for a dynamic content
+  late cast = PersonCast(age);
+  // constructor
+  Person(
+    this.name, {
+    int? age
+    }
+  // Post-processing (random age if not set)
+  ) : this.age = age ?? Random().nextInt(120);
+}
+\end{lstlisting}
+
+
+\subsubsection{Casting Dynamic Structures}
+
+It might be useful to not declare the proper type:
+
+\begin{lstlisting}
+extension StringExt on String {
+  // Any letter in uppercase highlights that
+  // type would be set during the call
+  /// Sample: '[1,2,3]'.toList<int>(); // [1, 2, 3] 
+  List<T> toList<T>() {
+    final data = length > 0 ? json.decode(this) : [];
+    // Convert to declared Type
+    return data.cast<T>();
+  }
+}
+\end{lstlisting}
+
+\noindent Or, use \q{dynamic} instead of \q{T} to handle different types simultaneously:
+
+\begin{lstlisting}
+extension StringExt on String {
+  /// Sample: '[1,"2",3.0]'.toList(); // [1, '2', 3.0] 
+  List<dynamic> toList() =>
+      length > 0 ? json.decode(this) : [];
+}
+\end{lstlisting}
+
+
+\subsubsection{Asserting Functions Definition}
+
+By using a type definition (\q{typedef}) we can simplify representation of a complex structure as arguments or 
+declare the expected structure of a function (propagated as an argument):
+
+\begin{lstlisting}
+typedef SetViewFunction = String Function(Currency input);
+
+typedef Nested = Map<String, List<Person>>;
+
+class CurrencySelector {
+  Nested key;
+  SetViewFunction? setView;
+
+  CurrencySelector({
+    this.key,
+    this.setView,
+  }) {
+    // Set if 'null'
+    setView ??= setDefaultView;
+  }
+
+  String setDefaultView(Currency input) {
+    // Default implementation
+  }
 }
 \end{lstlisting}

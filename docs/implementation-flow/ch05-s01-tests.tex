@@ -297,6 +297,23 @@ Widget buildButton(BuildContext context, BoxConstraints constraints) {
 Optimizing the utilization of \q{StatefulWidget} holds the potential to enhance performance, primarily due to the 
 reduced number of Widgets controlling the lifecycle. This streamlined approach translates to swifter response times.
 
+\q{RepaintBoundary}-widget can be used for a render decoupling (isolate parts that need to be repainted from the rest 
+of the tree), the child widget will be rendered independently of its parent widget. For example, constantly animated 
+widgets can be wrapped by \q{RepaintBoundary}-widget to prevent it from causing the rest of the UI to be unnecessarily
+repainted.
+
+\q{AutomaticKeepAliveClientMixin}-mixin is another solution for retaining the state of widgets that are expensive to 
+rebuild, or for the widgets that come in and out of view like \q{ListView} or \q{GridView} by preserving the state of
+nested \q{StatefulWidget}s via:
+
+\begin{lstlisting}
+@override
+bool get wantKeepAlive => true;
+\end{lstlisting}
+
+\noindent Almost the same flow can be achieved by \q{Offstage}-widget usage, that toggle its child's visibility without 
+removing it from the widget tree (mostly, without losing their state or triggering a rebuild).
+
 And not obvious but acknowledgeable, Flutter upgrade procedure (by example, Flutter 3.10 triples the frame rate if 
 change \q{FlutterViews} background color to a non-nil value \cite{Chis23}).
 
