@@ -9,13 +9,13 @@ import 'package:app_finance/_configs/custom_text_theme.dart';
 import 'package:app_finance/_configs/theme_helper.dart';
 import 'package:app_finance/_classes/structure/navigation/app_route.dart';
 import 'package:app_finance/_ext/build_context_ext.dart';
-import 'package:app_finance/_ext/double_ext.dart';
 import 'package:app_finance/charts/gauge_chart.dart';
 import 'package:app_finance/pages/abstract_page_state.dart';
 import 'package:app_finance/widgets/wrapper/text_wrapper.dart';
 import 'package:app_finance/pages/budget/widgets/budget_line_widget.dart';
 import 'package:app_finance/widgets/wrapper/row_widget.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_currency_picker/flutter_currency_picker.dart';
 
 class GoalPage extends StatefulWidget {
   const GoalPage({super.key});
@@ -90,10 +90,26 @@ class GoalPageState extends AbstractPageState<GoalPage> {
               children: [
                 [
                   TextWrapper(AppLocale.labels.goalProfitTooltip, style: context.textTheme.bodyLarge),
-                  TextWrapper(AppLocale.labels.goalProfit(maxValue.toCurrency()), style: textStyle, maxLines: 2),
-                  TextWrapper(AppLocale.labels.invoiceSum(valInvoice.toCurrency()), style: textStyle, maxLines: 2),
-                  TextWrapper(AppLocale.labels.billSum(valBill.toCurrency()), style: textStyle, maxLines: 2),
-                  TextWrapper(AppLocale.labels.netProfit(value.toCurrency()), style: textStyle, maxLines: 2),
+                  TextWrapper(
+                    AppLocale.labels.goalProfit(maxValue.toCurrency(withPattern: false)),
+                    style: textStyle,
+                    maxLines: 2,
+                  ),
+                  TextWrapper(
+                    AppLocale.labels.invoiceSum(valInvoice.toCurrency(withPattern: false)),
+                    style: textStyle,
+                    maxLines: 2,
+                  ),
+                  TextWrapper(
+                    AppLocale.labels.billSum(valBill.toCurrency(withPattern: false)),
+                    style: textStyle,
+                    maxLines: 2,
+                  ),
+                  TextWrapper(
+                    AppLocale.labels.netProfit(value.toCurrency(withPattern: false)),
+                    style: textStyle,
+                    maxLines: 2,
+                  ),
                   ThemeHelper.hIndent,
                 ],
                 [
@@ -114,7 +130,7 @@ class GoalPageState extends AbstractPageState<GoalPage> {
                 title: goal.title ?? '',
                 width: width,
                 uuid: goal.uuid,
-                details: (goal.details as double).toCurrency(goal.currency),
+                details: (goal.details as double).toCurrency(currency: goal.currency, withPattern: false),
                 description: AppLocale.labels.goalProfit(goal.closedAtFormatted),
                 color: goal.color ?? Colors.green.shade700,
                 icon: goal.icon ?? Icons.star,

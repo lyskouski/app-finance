@@ -13,7 +13,7 @@ custom behaviors for built-in operations:
   \item \q{toString} returns a string representation of an object, can be used for a serialization and deserialization 
   process of an object;
   \item \q{call} allows an object to be treated as a function;
-  \item \q{hashCode} returns a hash code for an object (to use object as a key for \q{Map} and \q{Set});
+  \item \q{hashCode} returns a hash code for an object (to use object as a key for \q{Map} and \q{Set}, and override \q{==});
   \item \q{operator==} compares two objects for equality;
   \item \q{get} and \q{set} -- to override the behavior of getting and setting properties.
 \end{itemize}
@@ -34,7 +34,9 @@ class Person {
   DateTime get createdAt => _createdAt;
   // print(Person('Tom') == Person('Terry')); // false
   @override
-  bool operator ==(Person other) => other.name == name;
+  int get hashCode => int.parse(name.codeUnits.join(''));
+  @override
+  bool operator ==(Object other) => other is Person && other.name == name;
   // person = Person.fromString('Tom');
   factory Person.fromString(String name) {
     return Person(name);

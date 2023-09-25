@@ -3,10 +3,10 @@
 
 import 'package:app_finance/_classes/gen/generate_with_method_setters.dart';
 import 'package:app_finance/_classes/storage/app_data.dart';
-import 'package:app_finance/_classes/structure/currency/currency_provider.dart';
 import 'package:app_finance/_classes/structure/currency/exchange.dart';
 import 'package:app_finance/_classes/structure/currency_app_data.dart';
 import 'package:app_finance/_classes/storage/app_preferences.dart';
+import 'package:flutter_currency_picker/flutter_currency_picker.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
@@ -39,7 +39,7 @@ void main() {
       for (var v in testCases) {
         test('$v', () {
           when(AppPreferences.pref.getString('currency')).thenReturn(v.getPreference);
-          Exchange.defaultCurrency = CurrencyProvider.findByCode(v.def);
+          Exchange.defaultCurrency = CurrencyProvider.find(v.def);
           expect(object.getDefaultCurrency()?.code, v.result);
         });
       }
@@ -54,8 +54,8 @@ void main() {
 
       for (var v in testCases) {
         test('$v', () {
-          final origin = CurrencyProvider.findByCode(v.origin);
-          final target = CurrencyProvider.findByCode(v.target);
+          final origin = CurrencyProvider.find(v.origin);
+          final target = CurrencyProvider.find(v.target);
           CurrencyAppData? exchange;
           if (v.rate != null) {
             exchange = CurrencyAppData(

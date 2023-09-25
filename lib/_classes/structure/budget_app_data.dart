@@ -2,15 +2,14 @@
 // Use of this source code is governed by a CC BY-NC-ND 4.0 license that can be found in the LICENSE file.
 
 import 'package:app_finance/_classes/herald/app_locale.dart';
-import 'package:app_finance/_classes/structure/currency/currency_provider.dart';
 import 'package:app_finance/_classes/structure/abstract_app_data.dart';
 import 'package:app_finance/_classes/storage/app_data.dart';
 import 'package:app_finance/_classes/structure/currency/exchange.dart';
-import 'package:app_finance/_ext/double_ext.dart';
 import 'package:app_finance/_ext/int_ext.dart';
 import 'package:app_finance/_ext/string_ext.dart';
 import 'package:app_finance/_mixins/storage_mixin.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_currency_picker/flutter_currency_picker.dart';
 
 class BudgetAppData extends AbstractAppData with StorageMixin {
   double amount;
@@ -67,7 +66,7 @@ class BudgetAppData extends AbstractAppData with StorageMixin {
       progress: 0.0 + json['progress'],
       color: json['color'] != null ? MaterialColor(json['color'], const <int, Color>{}) : null,
       icon: json['icon'] != null ? (json['icon'] as int).toIcon() : null,
-      currency: CurrencyProvider.findByCode(json['currency']),
+      currency: CurrencyProvider.find(json['currency']),
       updatedAt: DateTime.parse(json['updatedAt']),
       createdAt: DateTime.parse(json['createdAt']),
       amountLimit: json['amountLimit'],
@@ -96,20 +95,23 @@ class BudgetAppData extends AbstractAppData with StorageMixin {
 
   String get detailsFormatted {
     if (super.details > 0 && super.details < 1) {
-      return '${(_relativeAmountLimit() - amount).toCurrency(currency)} ${AppLocale.labels.left}';
+      final curr = (_relativeAmountLimit() - amount).toCurrency(currency: currency, withPattern: false);
+      return '$curr ${AppLocale.labels.left}';
     } else if (super.details > 0) {
-      return '${details.toCurrency(currency)} ${AppLocale.labels.left}';
+      return '${details.toCurrency(currency: currency, withPattern: false)} ${AppLocale.labels.left}';
     } else {
-      return '${amount.toCurrency(currency)} ${AppLocale.labels.spent}';
+      return '${amount.toCurrency(currency: currency, withPattern: false)} ${AppLocale.labels.spent}';
     }
   }
 
   String _description() {
     if (super.details > 0 && super.details < 1) {
       final percents = (amountLimit * 100).toStringAsFixed(2);
-      return '${(amount).toCurrency(currency)} / ${_relativeAmountLimit().toCurrency(currency)} ($percents%)';
+      return '${(amount).toCurrency(currency: currency, withPattern: false)} /'
+          ' ${_relativeAmountLimit().toCurrency(currency: currency, withPattern: false)} ($percents%)';
     } else if (super.details > 0) {
-      return '${(amountLimit * progress).toCurrency(currency)} / ${(amountLimit).toCurrency(currency)}';
+      return '${(amountLimit * progress).toCurrency(currency: currency, withPattern: false)} /'
+          ' ${(amountLimit).toCurrency(currency: currency, withPattern: false)}';
     } else {
       return '';
     }

@@ -211,10 +211,10 @@ class ImportTabState extends State<ImportTab> {
                     AppLocale.labels.def('${AppLocale.labels.bill}: ${AppLocale.labels.currency}'),
                     style: textTheme.bodyLarge,
                   ),
-                  CurrencySelector(
+                  BaseCurrencySelector(
                     value: attrValue[FileParser.attrBillCurrency],
-                    hintText: AppLocale.labels.currencyTooltip,
-                    setState: (value) => setState(() => attrValue[FileParser.attrBillCurrency] = value.code),
+                    context: context,
+                    update: (value) => setState(() => attrValue[FileParser.attrBillCurrency] = value.code),
                   ),
                 ],
                 Column(crossAxisAlignment: CrossAxisAlignment.start, children: [

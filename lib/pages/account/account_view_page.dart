@@ -11,12 +11,12 @@ import 'package:app_finance/_classes/structure/navigation/app_menu.dart';
 import 'package:app_finance/_configs/theme_helper.dart';
 import 'package:app_finance/_classes/structure/navigation/app_route.dart';
 import 'package:app_finance/_ext/date_time_ext.dart';
-import 'package:app_finance/_ext/double_ext.dart';
 import 'package:app_finance/pages/abstract_page_state.dart';
 import 'package:app_finance/widgets/generic/base_line_widget.dart';
 import 'package:app_finance/widgets/generic/base_list_infinite_widget.dart';
 import 'package:app_finance/widgets/wrapper/confirmation_wrapper.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_currency_picker/flutter_currency_picker.dart';
 
 class AccountViewPage extends StatefulWidget {
   final String uuid;
@@ -88,7 +88,7 @@ class AccountViewPageState extends AbstractPageState<AccountViewPage> with Ticke
       title: obj?.title ?? '',
       description: (item.timestamp as DateTime).yMEd(),
       progress: 1.0,
-      details: (item.delta as double).toCurrency(item.currency),
+      details: (item.delta as double).toCurrency(currency: item.currency, withPattern: false),
       color: obj?.color ?? Colors.transparent,
       icon: obj?.icon ?? Icons.radio_button_unchecked_sharp,
       width: ThemeHelper.getWidth(context, 3),

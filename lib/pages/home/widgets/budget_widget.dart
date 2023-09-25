@@ -9,8 +9,8 @@ import 'package:app_finance/widgets/generic/base_swipe_widget.dart';
 import 'package:app_finance/pages/home/widgets/account_widget.dart';
 import 'package:app_finance/widgets/generic/base_group_widget.dart';
 import 'package:app_finance/widgets/generic/base_line_widget.dart';
-import 'package:currency_picker/currency_picker.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_currency_picker/flutter_currency_picker.dart';
 
 class BudgetWidget extends AccountWidget {
   BudgetWidget({

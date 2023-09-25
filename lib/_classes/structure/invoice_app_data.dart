@@ -4,10 +4,9 @@
 import 'package:app_finance/_classes/herald/app_locale.dart';
 import 'package:app_finance/_classes/storage/app_data.dart';
 import 'package:app_finance/_classes/structure/abstract_app_data.dart';
-import 'package:app_finance/_classes/structure/currency/currency_provider.dart';
-import 'package:app_finance/_ext/double_ext.dart';
 import 'package:app_finance/_ext/int_ext.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_currency_picker/flutter_currency_picker.dart';
 import 'package:intl/intl.dart';
 
 class InvoiceAppData extends AbstractAppData {
@@ -66,7 +65,7 @@ class InvoiceAppData extends AbstractAppData {
       description: json['description'],
       color: json['color'] != null ? MaterialColor(json['color'], const <int, Color>{}) : null,
       icon: json['icon'] != null ? int.tryParse(json['icon'])?.toIcon() : null,
-      currency: CurrencyProvider.findByCode(json['currency']),
+      currency: CurrencyProvider.find(json['currency']),
       createdAt: DateTime.parse(json['createdAt']),
       updatedAt: DateTime.parse(json['updatedAt']),
       hidden: json['hidden'],
@@ -80,7 +79,7 @@ class InvoiceAppData extends AbstractAppData {
         'accountFrom': accountFrom,
       };
 
-  String get detailsFormatted => (super.details as double).toCurrency(currency);
+  String get detailsFormatted => (super.details as double).toCurrency(currency: currency, withPattern: false);
 
   @override
   String get description => DateFormat.MMMMd(AppLocale.code).format(super.createdAt);

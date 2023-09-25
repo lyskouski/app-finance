@@ -2,7 +2,6 @@
 // Use of this source code is governed by a CC BY-NC-ND 4.0 license that can be found in the LICENSE file.
 
 import 'package:app_finance/_classes/herald/app_locale.dart';
-import 'package:app_finance/_classes/structure/currency/currency_provider.dart';
 import 'package:app_finance/_classes/structure/account_app_data.dart';
 import 'package:app_finance/_configs/account_type.dart';
 import 'package:app_finance/_classes/controller/focus_controller.dart';
@@ -20,8 +19,8 @@ import 'package:app_finance/widgets/form/month_year_input.dart';
 import 'package:app_finance/widgets/form/simple_input.dart';
 import 'package:app_finance/widgets/wrapper/required_widget.dart';
 import 'package:app_finance/widgets/wrapper/row_widget.dart';
-import 'package:currency_picker/currency_picker.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_currency_picker/flutter_currency_picker.dart';
 
 class AccountAddPage extends AbstractAddPage {
   final String? title;
@@ -70,7 +69,7 @@ class AccountAddPageState<T extends AccountAddPage> extends AbstractAddPageState
     icon = widget.icon;
     color = widget.color;
     final currencyId = AppPreferences.get(AppPreferences.prefCurrency);
-    currency = widget.currency ?? CurrencyProvider.findByCode(currencyId);
+    currency = widget.currency ?? CurrencyProvider.find(currencyId);
     super.initState();
   }
 
@@ -192,10 +191,10 @@ class AccountAddPageState<T extends AccountAddPage> extends AbstractAddPageState
               AppLocale.labels.currency,
               style: textTheme.bodyLarge,
             ),
-            CurrencySelector(
+            BaseCurrencySelector(
               value: currency?.code,
-              hintText: AppLocale.labels.currencyTooltip,
-              setState: (value) => setState(() => currency = value),
+              context: context,
+              update: (value) => setState(() => currency = value),
             ),
             ThemeHelper.hIndent2x,
             if (![AppAccountType.account.toString(), AppAccountType.cash.toString()].contains(type)) ...[

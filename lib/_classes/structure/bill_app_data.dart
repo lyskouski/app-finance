@@ -2,14 +2,13 @@
 // Use of this source code is governed by a CC BY-NC-ND 4.0 license that can be found in the LICENSE file.
 
 import 'package:app_finance/_classes/herald/app_locale.dart';
-import 'package:app_finance/_classes/structure/currency/currency_provider.dart';
 import 'package:app_finance/_classes/structure/abstract_app_data.dart';
 import 'package:app_finance/_classes/structure/account_app_data.dart';
 import 'package:app_finance/_classes/structure/budget_app_data.dart';
 import 'package:app_finance/_classes/storage/app_data.dart';
-import 'package:app_finance/_ext/double_ext.dart';
 import 'package:app_finance/_mixins/storage_mixin.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_currency_picker/flutter_currency_picker.dart';
 import 'package:intl/intl.dart';
 
 class BillAppData extends AbstractAppData with StorageMixin {
@@ -58,7 +57,7 @@ class BillAppData extends AbstractAppData with StorageMixin {
       category: json['category'],
       title: json['title'],
       details: json['details'],
-      currency: CurrencyProvider.findByCode(json['currency']),
+      currency: CurrencyProvider.find(json['currency']),
       updatedAt: DateTime.parse(json['updatedAt']),
       createdAt: DateTime.parse(json['createdAt']),
       hidden: json['hidden'],
@@ -72,7 +71,7 @@ class BillAppData extends AbstractAppData with StorageMixin {
         'category': category,
       };
 
-  String get detailsFormatted => (super.details as double).toCurrency(currency);
+  String get detailsFormatted => (super.details as double).toCurrency(currency: currency, withPattern: false);
 
   @override
   String get description {
