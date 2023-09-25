@@ -32,12 +32,12 @@ class ListSelector<K extends ListSelectorItem> extends AbstractSelector {
 }
 
 class ListSelectorState<T extends ListSelector, K extends ListSelectorItem> extends AbstractSelectorState<T> {
-  Widget selectorBuilder(context, K item) {
+  Widget selectorBuilder(BuildContext context, K item) {
     final textTheme = Theme.of(context).textTheme;
     return TextWrapper(item.toString(), style: textTheme.numberMedium.copyWith(color: textTheme.headlineSmall?.color));
   }
 
-  Widget itemBuilder(context, K item) {
+  Widget itemBuilder(BuildContext context, K item) {
     return selectorBuilder(context, item);
   }
 
@@ -56,7 +56,7 @@ class ListSelectorState<T extends ListSelector, K extends ListSelectorItem> exte
   }
 
   @override
-  Widget buildContent(context) {
+  Widget buildContent(BuildContext context) {
     final indent = ThemeHelper.getIndent();
     final hintStyle = context.textTheme.numberMedium.copyWith(
       color: context.textTheme.headlineSmall?.color!.withOpacity(0.4),

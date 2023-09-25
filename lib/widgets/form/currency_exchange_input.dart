@@ -2,7 +2,6 @@
 // Use of this source code is governed by a CC BY-NC-ND 4.0 license that can be found in the LICENSE file.
 
 import 'package:app_finance/_classes/herald/app_locale.dart';
-import 'package:app_finance/_classes/structure/currency/currency_provider.dart';
 import 'package:app_finance/_classes/structure/currency_app_data.dart';
 import 'package:app_finance/_classes/storage/app_data.dart';
 import 'package:app_finance/_classes/controller/delayed_call.dart';
@@ -10,8 +9,8 @@ import 'package:app_finance/_configs/theme_helper.dart';
 import 'package:app_finance/_ext/build_context_ext.dart';
 import 'package:app_finance/widgets/form/simple_input.dart';
 import 'package:app_finance/widgets/wrapper/row_widget.dart';
-import 'package:currency_picker/currency_picker.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_currency_picker/flutter_currency_picker.dart';
 
 class CurrencyExchangeInput extends StatefulWidget {
   final Currency? target;
@@ -89,8 +88,8 @@ class CurrencyExchangeInputState extends State<CurrencyExchangeInput> {
       final String uuid = getKey(idx);
       rate[idx] = widget.state.getByUuid(uuid) ??
           CurrencyAppData(
-            currency: CurrencyProvider.findByCode(widget.conversion[idx][1]),
-            currencyFrom: CurrencyProvider.findByCode(widget.conversion[idx][0]),
+            currency: CurrencyProvider.find(widget.conversion[idx][1]),
+            currencyFrom: CurrencyProvider.find(widget.conversion[idx][0]),
           );
       amount[idx] = getAmount(idx);
       controllers[idx] = [

@@ -1,12 +1,10 @@
 // Copyright 2023 The terCAD team. All rights reserved.
 // Use of this source code is governed by a CC BY-NC-ND 4.0 license that can be found in the LICENSE file.
 
-import 'package:app_finance/_classes/structure/currency/currency_provider.dart';
 import 'package:app_finance/_classes/structure/abstract_app_data.dart';
 import 'package:app_finance/_classes/storage/app_data.dart';
 import 'package:app_finance/_ext/date_time_ext.dart';
-import 'package:app_finance/_ext/double_ext.dart';
-import 'package:currency_picker/currency_picker.dart';
+import 'package:flutter_currency_picker/flutter_currency_picker.dart';
 
 class CurrencyAppData extends AbstractAppData {
   Currency? currencyFrom;
@@ -52,8 +50,8 @@ class CurrencyAppData extends AbstractAppData {
       details: json['details'],
       updatedAt: DateTime.parse(json['updatedAt']),
       createdAt: DateTime.parse(json['createdAt']),
-      currency: CurrencyProvider.findByCode(json['currency']),
-      currencyFrom: CurrencyProvider.findByCode(json['currencyFrom']),
+      currency: CurrencyProvider.find(json['currency']),
+      currencyFrom: CurrencyProvider.find(json['currencyFrom']),
       hidden: json['hidden'],
     );
   }
@@ -64,7 +62,7 @@ class CurrencyAppData extends AbstractAppData {
         'currencyFrom': currencyFrom?.code,
       };
 
-  String get detailsFormatted => (super.details as double).toCurrency(currency);
+  String get detailsFormatted => (super.details as double).toCurrency(currency: currency, withPattern: false);
 
   String get descriptionFormatted => DateTime.parse(super.description ?? '').yMEd();
 

@@ -8,12 +8,11 @@ import 'package:app_finance/_classes/storage/app_data.dart';
 import 'package:app_finance/_classes/structure/account_app_data.dart';
 import 'package:app_finance/_classes/structure/bill_app_data.dart';
 import 'package:app_finance/_classes/structure/budget_app_data.dart';
-import 'package:app_finance/_classes/structure/currency/currency_provider.dart';
 import 'package:app_finance/_classes/structure/def/list_selector_item.dart';
 import 'package:app_finance/_classes/structure/interface_app_data.dart';
 import 'package:app_finance/_classes/structure/invoice_app_data.dart';
 import 'package:app_finance/_configs/account_type.dart';
-import 'package:currency_picker/currency_picker.dart';
+import 'package:flutter_currency_picker/flutter_currency_picker.dart';
 import 'package:intl/intl.dart';
 
 typedef SearchFunction = Function(AppDataType type, String value);
@@ -157,6 +156,6 @@ class FileParser {
   }
 
   Currency? _getCurrency(List<dynamic> line, String? def) {
-    return CurrencyProvider.findByCode(_get(line, attrBillCurrency) ?? def);
+    return CurrencyProvider.find(_get(line, attrBillCurrency) ?? def);
   }
 }

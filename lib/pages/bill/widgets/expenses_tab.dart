@@ -3,7 +3,6 @@
 
 import 'package:app_finance/_classes/herald/app_locale.dart';
 import 'package:app_finance/_classes/structure/navigation/app_route.dart';
-import 'package:app_finance/_classes/structure/currency/currency_provider.dart';
 import 'package:app_finance/_classes/structure/bill_app_data.dart';
 import 'package:app_finance/_classes/controller/focus_controller.dart';
 import 'package:app_finance/_classes/storage/app_preferences.dart';
@@ -21,8 +20,8 @@ import 'package:app_finance/widgets/form/list_budget_selector.dart';
 import 'package:app_finance/widgets/form/simple_input.dart';
 import 'package:app_finance/widgets/wrapper/required_widget.dart';
 import 'package:app_finance/widgets/wrapper/row_widget.dart';
-import 'package:currency_picker/currency_picker.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_currency_picker/flutter_currency_picker.dart';
 
 class ExpensesTab<T> extends StatefulWidget {
   final String? account;
@@ -67,8 +66,7 @@ class ExpensesTabState<T extends ExpensesTab> extends AbstractPageState<T> {
     final currencyId = AppPreferences.get(AppPreferences.prefCurrency);
     account = widget.account ?? objAccount?.uuid;
     budget = widget.budget ?? objBudget?.uuid;
-    currency =
-        widget.currency ?? objAccount?.currency ?? objBudget?.currency ?? CurrencyProvider.findByCode(currencyId);
+    currency = widget.currency ?? objAccount?.currency ?? objBudget?.currency ?? CurrencyProvider.find(currencyId);
     bill = TextEditingController(text: widget.bill != null ? widget.bill.toString() : '');
     description = TextEditingController(text: widget.description);
     createdAt = widget.createdAt;
@@ -185,11 +183,10 @@ class ExpensesTabState<T extends ExpensesTab> extends AbstractPageState<T> {
                     AppLocale.labels.currency,
                     style: textTheme.bodyLarge,
                   ),
-                  CurrencySelector(
+                  CodeCurrencySelector(
                     value: currency?.code,
-                    hintText: AppLocale.labels.currencyTooltip,
-                    setView: (Currency currency) => currency.code,
-                    setState: (value) => setState(() => currency = value),
+                    context: context,
+                    update: (value) => setState(() => currency = value),
                   ),
                 ],
                 [

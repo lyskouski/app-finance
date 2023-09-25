@@ -13,10 +13,10 @@ packages:
     dependency: transitive
     description:
       name: _flutterfire_internals
-      sha256: "1a5e13736d59235ce0139621b4bbe29bc89839e202409081bc667eb3cd20674c"
+      sha256: "2d8e8e123ca3675625917f535fcc0d3a50092eef44334168f9b18adc050d4c6e"
       url: "https://pub.dev"
     source: hosted
-    version: "1.3.5"
+    version: "1.3.6"
   adaptive_breakpoints:
     dependency: "direct main"
     description:
@@ -125,10 +125,10 @@ packages:
     dependency: transitive
     description:
       name: built_value
-      sha256: ff627b645b28fb8bdb69e645f910c2458fd6b65f6585c3a53e0626024897dedf
+      sha256: a8de5955205b4d1dbbbc267daddf2178bd737e4bab8987c04a500478c9651e74
       url: "https://pub.dev"
     source: hosted
-    version: "8.6.2"
+    version: "8.6.3"
   characters:
     dependency: transitive
     description:
@@ -165,10 +165,10 @@ packages:
     dependency: transitive
     description:
       name: code_builder
-      sha256: "315a598c7fbe77f22de1c9da7cfd6fd21816312f16ffa124453b4fc679e540f1"
+      sha256: "1be9be30396d7e4c0db42c35ea6ccd7cc6a1e19916b5dc64d6ac216b5544d677"
       url: "https://pub.dev"
     source: hosted
-    version: "4.6.0"
+    version: "4.7.0"
   collection:
     dependency: transitive
     description:
@@ -209,14 +209,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.0.6"
-  currency_picker:
-    dependency: "direct main"
-    description:
-      name: currency_picker
-      sha256: b63dab8530de424323e0c6d31bff85b3628bc8515de0eb4fa8c2eb58065f1c2d
-      url: "https://pub.dev"
-    source: hosted
-    version: "2.0.17"
   dart_style:
     dependency: transitive
     description:
@@ -237,10 +229,10 @@ packages:
     dependency: transitive
     description:
       name: dio
-      sha256: ce75a1b40947fea0a0e16ce73337122a86762e38b982e1ccb909daa3b9bc4197
+      sha256: "417e2a6f9d83ab396ec38ff4ea5da6c254da71e4db765ad737a42af6930140b7"
       url: "https://pub.dev"
     source: hosted
-    version: "5.3.2"
+    version: "5.3.3"
   encrypt:
     dependency: "direct main"
     description:
@@ -293,34 +285,34 @@ packages:
     dependency: "direct main"
     description:
       name: firebase_analytics
-      sha256: "82992b2e93e4752d30296a881f65dde6dfdc09671f9a8cf994fa5d453bd72bde"
+      sha256: c35213b72c9dbab6a20954bb968ed70e7d9e0ea3acb3426b9d4f4a51a522cdb4
       url: "https://pub.dev"
     source: hosted
-    version: "10.4.5"
+    version: "10.5.0"
   firebase_analytics_platform_interface:
     dependency: transitive
     description:
       name: firebase_analytics_platform_interface
-      sha256: b277ab49112ebc4e545c7fc4fdfab99f692f7cd0e35347f8ed6c85d52a87562c
+      sha256: "9a8bdbf5345de01f7f1905c9ab6f9bff0b7fd739620d68c16b3b3b639b487dc3"
       url: "https://pub.dev"
     source: hosted
-    version: "3.6.5"
+    version: "3.7.0"
   firebase_analytics_web:
     dependency: transitive
     description:
       name: firebase_analytics_web
-      sha256: "3f05999c06294dbdc05f4afef2b8976e6f57eb449e6aaa07ff751784763a68e0"
+      sha256: da79ab9c1e32c389cd6224939a0437a9e074783e3f2b51e9dc6d850d769d9af8
       url: "https://pub.dev"
     source: hosted
-    version: "0.5.4+5"
+    version: "0.5.5"
   firebase_core:
     dependency: "direct main"
     description:
       name: firebase_core
-      sha256: c78132175edda4bc532a71e01a32964e4b4fcf53de7853a422d96dac3725f389
+      sha256: "675c209c94a1817649137cbd113fc4c9ae85e48d03dd578629abbec6d8a4d93d"
       url: "https://pub.dev"
     source: hosted
-    version: "2.15.1"
+    version: "2.16.0"
   firebase_core_platform_interface:
     dependency: transitive
     description:
@@ -333,10 +325,10 @@ packages:
     dependency: transitive
     description:
       name: firebase_core_web
-      sha256: "4cf4d2161530332ddc3c562f19823fb897ff37a9a774090d28df99f47370e973"
+      sha256: e8c408923cd3a25bd342c576a114f2126769cd1a57106a4edeaa67ea4a84e962
       url: "https://pub.dev"
     source: hosted
-    version: "2.7.0"
+    version: "2.8.0"
   fixnum:
     dependency: transitive
     description:
@@ -358,6 +350,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.0.3"
+  flutter_currency_picker:
+    dependency: "direct main"
+    description:
+      name: flutter_currency_picker
+      sha256: "0c27cad2a9461bd99580dcc57302950d5f6daf7c8200d29a7d7f2641c50f2f16"
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.1.1"
   flutter_datetime_picker_plus:
     dependency: "direct main"
     description:
@@ -383,10 +383,10 @@ packages:
     dependency: "direct main"
     description:
       name: flutter_grid_layout
-      sha256: "4b83afded707a6d26daed0a01f1313a0b53c048e21b278a8b498949fa8c4c5ce"
+      sha256: "073c45593e1749b13e17ccd005c18ed9ba849fb944f88c0a45aa1d9cd320748b"
       url: "https://pub.dev"
     source: hosted
-    version: "1.0.0"
+    version: "1.0.2"
   flutter_iconpicker:
     dependency: "direct main"
     description:
@@ -454,10 +454,10 @@ packages:
     dependency: transitive
     description:
       name: flutter_webrtc
-      sha256: f952d207725ea66f36f1e59898a8026645d1e0e02f1455710289f75f09e458e5
+      sha256: "215a8a2f8a85459e3c5762a7684ddde0d3d4585b7f206f5c10aae2e32ee137cb"
       url: "https://pub.dev"
     source: hosted
-    version: "0.9.42+hotfix.1"
+    version: "0.9.44"
   font_awesome_flutter:
     dependency: transitive
     description:
@@ -1189,10 +1189,10 @@ packages:
     dependency: transitive
     description:
       name: win32
-      sha256: "9e82a402b7f3d518fb9c02d0e9ae45952df31b9bf34d77baf19da2de03fc2aaa"
+      sha256: c97defd418eef4ec88c0d1652cdce84b9f7b63dd7198e266d06ac1710d527067
       url: "https://pub.dev"
     source: hosted
-    version: "5.0.7"
+    version: "5.0.8"
   xdg_directories:
     dependency: transitive
     description:

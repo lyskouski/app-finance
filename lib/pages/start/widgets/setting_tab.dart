@@ -5,7 +5,6 @@ import 'package:app_finance/_classes/herald/app_locale.dart';
 import 'package:app_finance/_classes/herald/app_palette.dart';
 import 'package:app_finance/_classes/herald/app_theme.dart';
 import 'package:app_finance/_classes/herald/app_zoom.dart';
-import 'package:app_finance/_classes/structure/currency/currency_provider.dart';
 import 'package:app_finance/_classes/storage/app_preferences.dart';
 import 'package:app_finance/_classes/structure/def/list_selector_item.dart';
 import 'package:app_finance/_configs/custom_color_scheme.dart';
@@ -17,9 +16,9 @@ import 'package:app_finance/widgets/form/currency_selector.dart';
 import 'package:app_finance/widgets/form/list_selector.dart';
 import 'package:app_finance/pages/start/widgets/abstract_tab.dart';
 import 'package:app_finance/widgets/wrapper/table_widget.dart';
-import 'package:currency_picker/currency_picker.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_currency_picker/flutter_currency_picker.dart';
 import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 
@@ -100,7 +99,7 @@ class SettingTabState<T extends SettingTab> extends AbstractTabState<T> {
       await AppPreferences.set(AppPreferences.prefCurrency, format.currencyName!);
       code = format.currencyName!;
     }
-    setState(() => currency = CurrencyProvider.findByCode(code));
+    setState(() => currency = CurrencyProvider.find(code));
   }
 
   @override
@@ -141,10 +140,10 @@ class SettingTabState<T extends SettingTab> extends AbstractTabState<T> {
             AppLocale.labels.currencyDefault,
             style: textTheme.bodyLarge,
           ),
-          CurrencySelector(
+          BaseCurrencySelector(
             value: currency?.code,
-            hintText: AppLocale.labels.currencyTooltip,
-            setState: saveCurrency,
+            context: context,
+            update: saveCurrency,
           ),
           ThemeHelper.hIndent2x,
           if (kDebugMode) ...[

@@ -6,13 +6,13 @@ import 'package:app_finance/_classes/structure/navigation/app_menu.dart';
 import 'package:app_finance/_configs/custom_text_theme.dart';
 import 'package:app_finance/_configs/theme_helper.dart';
 import 'package:app_finance/_ext/build_context_ext.dart';
-import 'package:app_finance/_ext/double_ext.dart';
 import 'package:app_finance/widgets/generic/base_header_widget.dart';
 import 'package:app_finance/widgets/generic/base_line_widget.dart';
 import 'package:app_finance/widgets/generic/base_list_infinite_widget.dart';
 import 'package:app_finance/widgets/generic/base_list_limited_widget.dart';
 import 'package:app_finance/widgets/generic/base_swipe_widget.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_currency_picker/flutter_currency_picker.dart';
 
 class BaseWidget extends StatelessWidget {
   final EdgeInsetsGeometry margin;
@@ -92,7 +92,7 @@ class BaseWidget extends StatelessWidget {
           Text(title),
           ThemeHelper.hIndent,
           Text(
-            (state.total as double).toCurrency(),
+            (state.total as double).toCurrency(withPattern: false),
             style: context.textTheme.numberMedium,
           ),
         ],

@@ -9,11 +9,11 @@ import 'package:app_finance/_classes/structure/goal_app_data.dart';
 import 'package:app_finance/_classes/storage/app_preferences.dart';
 import 'package:app_finance/_configs/theme_helper.dart';
 import 'package:app_finance/_classes/structure/navigation/app_route.dart';
-import 'package:app_finance/_ext/double_ext.dart';
 import 'package:app_finance/pages/abstract_page_state.dart';
 import 'package:app_finance/widgets/generic/base_line_widget.dart';
 import 'package:app_finance/widgets/wrapper/confirmation_wrapper.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_currency_picker/flutter_currency_picker.dart';
 
 class GoalViewPage extends StatefulWidget {
   final String uuid;
@@ -105,7 +105,7 @@ class GoalViewPageState extends AbstractPageState<GoalViewPage> {
             title: item.title,
             width: ThemeHelper.getWidth(context, 3),
             uuid: widget.uuid,
-            details: (item.details as double).toCurrency(item.currency),
+            details: (item.details as double).toCurrency(currency: item.currency, withPattern: false),
             description: item.closedAtFormatted,
             color: item.color ?? Colors.green.shade700,
             icon: item.icon ?? Icons.radio_button_unchecked_sharp,

@@ -3,7 +3,7 @@
 
 import 'dart:convert';
 
-import 'package:currency_picker/currency_picker.dart';
+import 'package:flutter_currency_picker/flutter_currency_picker.dart';
 
 class TransactionLogData<T> {
   final String name;

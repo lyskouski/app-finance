@@ -1,11 +1,10 @@
 // Copyright 2023 The terCAD team. All rights reserved.
 // Use of this source code is governed by a CC BY-NC-ND 4.0 license that can be found in the LICENSE file.
 
-import 'package:app_finance/_classes/structure/currency/currency_provider.dart';
 import 'package:app_finance/_classes/structure/currency_app_data.dart';
 import 'package:app_finance/_classes/storage/app_preferences.dart';
 import 'package:app_finance/_classes/storage/app_data.dart';
-import 'package:currency_picker/currency_picker.dart';
+import 'package:flutter_currency_picker/flutter_currency_picker.dart';
 
 class Exchange {
   AppData store;
@@ -16,8 +15,9 @@ class Exchange {
   });
 
   Currency? getDefaultCurrency() {
-    defaultCurrency ??= CurrencyProvider.findByCode(AppPreferences.get(AppPreferences.prefCurrency));
-    defaultCurrency ??= CurrencyProvider.findByCode('EUR');
+    defaultCurrency ??= CurrencyProvider.find(AppPreferences.get(AppPreferences.prefCurrency));
+    defaultCurrency ??= CurrencyProvider.find('EUR');
+    CurrencyDefaults.defaultCurrency = defaultCurrency;
     return defaultCurrency;
   }
 

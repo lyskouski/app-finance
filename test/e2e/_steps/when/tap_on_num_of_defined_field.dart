@@ -20,26 +20,15 @@ class TapOnNuOfDefinedField extends When2WithWorld<int, String, World> {
   @override
   Future<void> executeStep(int order, String type) async {
     ScreenCapture.seize(runtimeType.toString());
-    Finder? list;
-    switch (type) {
-      case 'ListSelector':
-        list = find.byType(ListSelector);
-        break;
-      case 'ListAccountSelector':
-        list = find.byType(ListAccountSelector);
-        break;
-      case 'ListBudgetSelector':
-        list = find.byType(ListBudgetSelector);
-        break;
-      case 'BaseLineWidget':
-        list = find.byType(BaseLineWidget);
-        break;
-      case 'CurrencySelector':
-        list = find.byType(CurrencySelector);
-        break;
-      default:
-        throw Exception('Not defined');
-    }
+    Finder? list = switch (type) {
+      'ListSelector' => find.byType(ListSelector),
+      'ListAccountSelector' => find.byType(ListAccountSelector),
+      'ListBudgetSelector' => find.byType(ListBudgetSelector),
+      'BaseLineWidget' => find.byType(BaseLineWidget),
+      'CurrencySelector' => find.byType(BaseCurrencySelector),
+      'CodeCurrencySelector' => find.byType(CodeCurrencySelector),
+      _ => throw Exception('Not defined'),
+    };
     expectSync(list, findsWidgets);
     await FileRunner.tester.ensureVisible(list.at(order));
     await FileRunner.tester.tap(list.at(order), warnIfMissed: false);

@@ -7,11 +7,11 @@ import 'package:app_finance/_classes/structure/navigation/app_menu.dart';
 import 'package:app_finance/_configs/custom_text_theme.dart';
 import 'package:app_finance/_configs/theme_helper.dart';
 import 'package:app_finance/_ext/build_context_ext.dart';
-import 'package:app_finance/_ext/double_ext.dart';
 import 'package:app_finance/widgets/wrapper/tap_widget.dart';
 import 'package:app_finance/widgets/wrapper/text_wrapper.dart';
 import 'package:app_finance/widgets/wrapper/toolbar_button_widget.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_currency_picker/flutter_currency_picker.dart';
 import 'package:flutter_grid_layout/flutter_grid_layout.dart';
 import 'package:provider/provider.dart';
 
@@ -69,7 +69,7 @@ class BaseHeaderWidget extends StatelessWidget {
               start: const Size(0, 1),
               end: const Size(1, 2),
               child: TextWrapper(
-                (state.total as double).toCurrency(),
+                (state.total as double).toCurrency(withPattern: false),
                 style: isWide ? textTheme.numberSmall : textTheme.numberLarge,
               ),
             ),

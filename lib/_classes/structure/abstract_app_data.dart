@@ -5,8 +5,8 @@ import 'dart:convert';
 import 'package:app_finance/_classes/controller/encryption_handler.dart';
 import 'package:app_finance/_classes/structure/interface_app_data.dart';
 import 'package:app_finance/_ext/date_time_ext.dart';
-import 'package:currency_picker/currency_picker.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_currency_picker/flutter_currency_picker.dart';
 
 abstract class AbstractAppData implements InterfaceAppData {
   @override

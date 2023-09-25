@@ -114,9 +114,11 @@ class PumpMain {
   static Future<void> initPref(bool isIntegration) async {
     if (isIntegration) {
       AppPreferences.pref = await SharedPreferences.getInstance();
+      await AppPreferences.set(AppPreferences.prefCurrency, 'USD');
     } else {
       final pref = WrapperMockSharedPreferences();
       pref.mockGetString = (value) => switch (value) {
+            AppPreferences.prefCurrency => 'USD',
             AppPreferences.prefLocale => 'en',
             AppPreferences.prefPrivacyPolicy => '',
             _ => null,

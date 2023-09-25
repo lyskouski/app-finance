@@ -2,14 +2,13 @@
 // Use of this source code is governed by a CC BY-NC-ND 4.0 license that can be found in the LICENSE file.
 
 import 'package:app_finance/_classes/herald/app_locale.dart';
-import 'package:app_finance/_classes/structure/currency/currency_provider.dart';
 import 'package:app_finance/_classes/structure/abstract_app_data.dart';
 import 'package:app_finance/_classes/storage/app_data.dart';
 import 'package:app_finance/_configs/account_type.dart';
 import 'package:app_finance/_ext/date_time_ext.dart';
-import 'package:app_finance/_ext/double_ext.dart';
 import 'package:app_finance/_ext/int_ext.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_currency_picker/flutter_currency_picker.dart';
 
 class AccountAppData extends AbstractAppData {
   DateTime _closedAt;
@@ -69,7 +68,7 @@ class AccountAppData extends AbstractAppData {
       description: json['description'],
       color: json['color'] != null ? MaterialColor(json['color'], const <int, Color>{}) : null,
       icon: json['icon'] != null ? (json['icon'] as int).toIcon() : null,
-      currency: CurrencyProvider.findByCode(json['currency']),
+      currency: CurrencyProvider.find(json['currency']),
       createdAt: DateTime.parse(json['createdAt']),
       updatedAt: DateTime.parse(json['updatedAt']),
       closedAt: DateTime.parse(json['closedAt']),
@@ -84,12 +83,13 @@ class AccountAppData extends AbstractAppData {
         'closedAt': closedAt.toIso8601String(),
       };
 
+  // ignore: unnecessary_getters_setters
   DateTime get closedAt => _closedAt;
   set closedAt(DateTime value) => _closedAt = value;
   String get closedAtFormatted => _closedAt.yMEd();
   set closedAtFormatted(String value) => _closedAt = DateTime.parse(value);
 
-  String get detailsFormatted => (super.details as double).toCurrency(currency);
+  String get detailsFormatted => (super.details as double).toCurrency(currency: currency, withPattern: false);
 
   @override
   Widget? get error =>

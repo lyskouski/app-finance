@@ -17,8 +17,8 @@ import 'package:app_finance/widgets/wrapper/row_widget.dart';
 import 'package:app_finance/widgets/form/currency_selector.dart';
 import 'package:app_finance/widgets/form/list_account_selector.dart';
 import 'package:app_finance/widgets/form/simple_input.dart';
-import 'package:currency_picker/currency_picker.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_currency_picker/flutter_currency_picker.dart';
 
 class TransferTab extends StatefulWidget {
   final String? accountFrom;
@@ -166,11 +166,10 @@ class TransferTabState extends AbstractPageState<TransferTab> {
                     AppLocale.labels.currency,
                     style: textTheme.bodyLarge,
                   ),
-                  CurrencySelector(
+                  CodeCurrencySelector(
                     value: currency?.code,
-                    hintText: AppLocale.labels.currencyTooltip,
-                    setView: (Currency currency) => currency.code,
-                    setState: (value) => setState(() => currency = value),
+                    context: context,
+                    update: (value) => setState(() => currency = value),
                   ),
                 ],
                 [

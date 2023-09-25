@@ -2,7 +2,6 @@
 // Use of this source code is governed by a CC BY-NC-ND 4.0 license that can be found in the LICENSE file.
 
 import 'package:app_finance/_classes/structure/navigation/app_route.dart';
-import 'package:app_finance/_classes/structure/currency/currency_provider.dart';
 import 'package:app_finance/_classes/structure/account_app_data.dart';
 import 'package:app_finance/_classes/structure/currency/exchange.dart';
 import 'package:app_finance/_configs/account_type.dart';
@@ -12,8 +11,8 @@ import 'package:app_finance/widgets/generic/base_group_widget.dart';
 import 'package:app_finance/widgets/generic/base_line_widget.dart';
 import 'package:app_finance/widgets/generic/base_swipe_widget.dart';
 import 'package:app_finance/widgets/generic/base_widget.dart';
-import 'package:currency_picker/currency_picker.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_currency_picker/flutter_currency_picker.dart';
 
 class AccountWidget extends BaseWidget {
   late final Exchange exchange;
@@ -61,7 +60,7 @@ class AccountWidget extends BaseWidget {
   }
 
   dynamic wrapBySingleEntity(List<dynamic> items) {
-    Currency? def = CurrencyProvider.findByCode(AppPreferences.get(AppPreferences.prefCurrency));
+    Currency? def = CurrencyProvider.find(AppPreferences.get(AppPreferences.prefCurrency));
     return AccountAppData(
       title: getName(items.first),
       type: AppAccountType.account.toString(),

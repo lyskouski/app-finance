@@ -3,11 +3,13 @@
 
 import 'package:app_finance/_classes/storage/app_preferences.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_currency_picker/flutter_currency_picker.dart';
 import 'package:flutter_gen/gen_l10n/app_localization.dart';
+import 'package:flutter_gen/gen_l10n/app_localization_en.dart';
 
 class AppLocale extends ValueNotifier<Locale?> {
   static String code = AppPreferences.get(AppPreferences.prefLocale) ?? 'en';
-  static late AppLocalizations labels;
+  static AppLocalizations labels = AppLocalizationsEn();
 
   AppLocale() : super(AppLocale.fromCode(code));
 
@@ -26,6 +28,7 @@ class AppLocale extends ValueNotifier<Locale?> {
       value = loc;
       code = value.toString();
       await AppPreferences.set(AppPreferences.prefLocale, newValue);
+      CurrencyDefaults.defaultLocale = loc;
       if (callback != null) {
         callback();
       }
