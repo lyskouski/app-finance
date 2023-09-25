@@ -18,4 +18,4 @@ Feature: Verify Budget Functionality
         | Limited      |     100 |   EUR    |    €100.00 left | Limited     |
         | Unlimited    |       0 |   USD    |     $0.00 spent | Unlimited   |
         | Group / 1    |      50 |   USD    |     $50.00 left | Group / 1   |
-        | Group / 2    |      75 |   USD    | €0.00 / €125.00 | Group       |
+        | Group / 2    |      75 |   USD    | $0.00 / $125.00 | Group       |
