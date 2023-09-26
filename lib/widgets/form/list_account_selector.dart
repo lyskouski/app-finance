@@ -80,7 +80,7 @@ class ListAccountSelectorState<K extends ListAccountSelectorItem> extends ListSe
       color: item.item?.color ?? Colors.transparent,
       icon: item.item?.icon ?? Icons.radio_button_unchecked_sharp,
       hidden: item.item?.hidden ?? false,
-      width: widget.width - 32,
+      width: widget.width - 34,
       showDivider: false,
     );
   }

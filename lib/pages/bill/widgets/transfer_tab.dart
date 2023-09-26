@@ -120,7 +120,7 @@ class TransferTabState extends AbstractPageState<TransferTab> {
   Widget buildContent(BuildContext context, BoxConstraints constraints) {
     final TextTheme textTheme = context.textTheme;
     double indent = ThemeHelper.getIndent(2);
-    double width = ThemeHelper.getWidth(context, 6);
+    double width = ThemeHelper.getWidth(context, 6, constraints);
 
     return SingleChildScrollView(
       controller: FocusController.getController(runtimeType),
