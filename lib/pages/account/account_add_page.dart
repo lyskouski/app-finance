@@ -217,7 +217,7 @@ class AccountAddPageState<T extends AccountAddPage> extends AbstractAddPageState
               type: const TextInputType.numberWithOptions(decimal: true),
               tooltip: AppLocale.labels.balanceTooltip,
               formatter: [
-                SimpleInput.filterDouble,
+                SimpleInputFormatter.filterDouble,
               ],
             ),
             ThemeHelper.hIndent2x,

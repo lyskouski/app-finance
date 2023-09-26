@@ -197,7 +197,7 @@ class ExpensesTabState<T extends ExpensesTab> extends AbstractPageState<T> {
                     controller: bill,
                     type: const TextInputType.numberWithOptions(decimal: true),
                     tooltip: AppLocale.labels.billSetTooltip,
-                    formatter: [SimpleInput.filterDouble],
+                    formatter: [SimpleInputFormatter.filterDouble],
                   ),
                 ],
               ],

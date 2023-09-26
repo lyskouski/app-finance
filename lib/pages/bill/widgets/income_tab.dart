@@ -168,7 +168,7 @@ class IncomeTabState extends AbstractPageState<IncomeTab> {
                     type: const TextInputType.numberWithOptions(decimal: true),
                     tooltip: AppLocale.labels.billSetTooltip,
                     formatter: [
-                      SimpleInput.filterDouble,
+                      SimpleInputFormatter.filterDouble,
                     ],
                   ),
                 ],

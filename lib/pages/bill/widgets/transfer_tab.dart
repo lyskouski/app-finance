@@ -181,7 +181,7 @@ class TransferTabState extends AbstractPageState<TransferTab> {
                     controller: amount,
                     type: const TextInputType.numberWithOptions(decimal: true),
                     tooltip: AppLocale.labels.billSetTooltip,
-                    formatter: [SimpleInput.filterDouble],
+                    formatter: [SimpleInputFormatter.filterDouble],
                   ),
                 ],
               ],

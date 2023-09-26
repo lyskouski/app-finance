@@ -187,7 +187,7 @@ class GoalAddPageState<T extends GoalAddPage> extends AbstractPageState<GoalAddP
                     type: const TextInputType.numberWithOptions(decimal: true),
                     tooltip: AppLocale.labels.billSetTooltip,
                     formatter: [
-                      SimpleInput.filterDouble,
+                      SimpleInputFormatter.filterDouble,
                     ],
                   ),
                 ],

@@ -9,14 +9,17 @@ import 'package:app_finance/widgets/form/abstract_input.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
+abstract class SimpleInputFormatter {
+  static get filterDouble => FilteringTextInputFormatter.allow(RegExp(r'^\d+\.?\d{0,4}'));
+  static get filterInt => FilteringTextInputFormatter.allow(RegExp(r'\d+'));
+}
+
 class SimpleInput extends AbstractInput {
   final Function? setState;
   final String? tooltip;
   final TextInputType type;
   final List<TextInputFormatter>? formatter;
   final TextEditingController controller;
-
-  static FilteringTextInputFormatter filterDouble = FilteringTextInputFormatter.allow(RegExp(r'^\d+\.?\d{0,4}'));
 
   SimpleInput({
     super.key,
