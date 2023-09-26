@@ -44,7 +44,7 @@ class AccountEditPageState extends AccountAddPageState<AccountEditPage> {
       currency = form.currency;
       icon = form.icon;
       validTillDate = form.closedAt;
-      balanceUpdateDate = form.createdAt;
+      balanceUpdateDate = DateTime.now();
     });
   }
 
@@ -69,7 +69,7 @@ class AccountEditPageState extends AccountAddPageState<AccountEditPage> {
           hidden: false,
           icon: icon,
           closedAt: validTillDate,
-          createdAt: DateTime.now(),
+          createdAt: balanceUpdateDate,
         ));
   }
 

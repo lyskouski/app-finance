@@ -58,6 +58,7 @@ class BudgetEditPageState extends BudgetAddPageState<BudgetEditPage> {
     data.amountSet = amountSet;
     data.amountLimit = double.tryParse(budgetLimit.text) ?? 0.0;
     data.currency = currency;
+    data.createdAt = DateTime.now();
     state.update(uuid, data);
   }
 
