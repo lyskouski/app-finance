@@ -4,6 +4,8 @@
 import 'package:app_finance/_classes/herald/app_locale.dart';
 import 'package:app_finance/_configs/theme_helper.dart';
 import 'package:app_finance/_ext/build_context_ext.dart';
+import 'package:app_finance/widgets/wrapper/row_widget.dart';
+import 'package:app_finance/widgets/wrapper/text_wrapper.dart';
 import 'package:flutter/material.dart';
 
 class RequiredWidget extends StatelessWidget {
@@ -19,29 +21,38 @@ class RequiredWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final TextTheme textTheme = context.textTheme;
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: [
-        Text(
-          '$title*',
-          style: textTheme.bodyLarge,
-        ),
-        Row(children: [
-          Text(
-            showError ? AppLocale.labels.isRequired : '',
-            style: TextStyle(
-              color: context.colorScheme.error,
+    return LayoutBuilder(builder: (context, constraints) {
+      return RowWidget(
+        alignment: MainAxisAlignment.spaceBetween,
+        indent: ThemeHelper.getIndent(),
+        maxWidth: constraints.maxWidth,
+        chunk: [null, showError ? null : 0, showError ? 12 : 0],
+        children: [
+          [
+            TextWrapper(
+              '$title*',
+              style: textTheme.bodyLarge,
             ),
-          ),
-          showError
-              ? Icon(
-                  Icons.error,
-                  semanticLabel: '$title: ${AppLocale.labels.isRequired}',
-                  color: context.colorScheme.error,
-                )
-              : ThemeHelper.emptyBox,
-        ]),
-      ],
-    );
+          ],
+          [
+            TextWrapper(
+              showError ? AppLocale.labels.isRequired : '',
+              style: TextStyle(
+                color: context.colorScheme.error,
+              ),
+            ),
+          ],
+          [
+            showError
+                ? Icon(
+                    Icons.error,
+                    semanticLabel: '$title: ${AppLocale.labels.isRequired}',
+                    color: context.colorScheme.error,
+                  )
+                : ThemeHelper.emptyBox,
+          ],
+        ],
+      );
+    });
   }
 }

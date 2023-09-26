@@ -54,6 +54,10 @@ class BaseCurrencySelector<T extends CurrencySelectorItem> extends CurrencySelec
   @override
   TextStyle? get headerHintStyle => _hintStyle;
 
+  late final TextStyle? _textStyle;
+  @override
+  TextStyle? get textStyle => _textStyle;
+
   late final Color? _fieldBackground;
   @override
   Color? get fieldBackground => _fieldBackground;
@@ -61,9 +65,9 @@ class BaseCurrencySelector<T extends CurrencySelectorItem> extends CurrencySelec
   @override
   EdgeInsets get indent => EdgeInsets.fromLTRB(
         ThemeHelper.getIndent(),
-        ThemeHelper.getIndent() * 3 / 2,
+        ThemeHelper.getIndent(1.6),
         0,
-        ThemeHelper.getIndent() * 3 / 2,
+        ThemeHelper.getIndent(1.6),
       );
 
   BaseCurrencySelector({
@@ -75,6 +79,9 @@ class BaseCurrencySelector<T extends CurrencySelectorItem> extends CurrencySelec
     CurrencyItemRegistry.list[CodeCurrencySelectorItem] = CodeCurrencySelectorItem.fromCurrency;
     _hintStyle = context.textTheme.numberMedium.copyWith(
       color: context.textTheme.headlineSmall?.color!.withOpacity(0.4),
+      overflow: TextOverflow.ellipsis,
+    );
+    _textStyle = context.textTheme.numberMedium.copyWith(
       overflow: TextOverflow.ellipsis,
     );
     _fieldBackground = context.colorScheme.fieldBackground;

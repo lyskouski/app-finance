@@ -14,7 +14,7 @@
     "addAccountTooltip": "Add Account",
     "addBudgetTooltip": "Add new Budget Category",
     "addGoalTooltip": "Add new Goal",
-    "addMainTooltip": "Add Bill, Income or Transfer",
+    "addMainTooltip": "Add Bill , Income or Transfer",
     "appBuild": "Build: {build}",
     "appInitHeadline": "Project Initialization",
     "appStartHeadline": "Initial Setup",

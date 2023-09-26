@@ -96,7 +96,7 @@ void main() {
       Feature: Bill
         Scenario: Create new Bill
           Given I am on "Home" page
-          When I tap "Add Bill, Income or Transfer" button
+          When I tap "Add Bill , Income or Transfer" button
           And I tap on 0 index of "ListAccountSelector" fields
           And I tap on 0 index of "BaseLineWidget" fields
           And I tap on 0 index of "ListBudgetSelector" fields
