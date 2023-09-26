@@ -43,6 +43,7 @@ class SimpleInput extends AbstractInput {
       controller: controller,
       inputFormatters: formatter,
       style: textTheme.numberMedium,
+      keyboardAppearance: context.colorScheme.brightness,
       obscureText: obscure,
       obscuringCharacter: '*',
       keyboardType: type,
