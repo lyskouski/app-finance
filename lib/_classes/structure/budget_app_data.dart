@@ -35,9 +35,7 @@ class BudgetAppData extends AbstractAppData with StorageMixin {
         );
 
   @override
-  String getClassName() {
-    return 'BudgetAppData';
-  }
+  String getClassName() => 'BudgetAppData';
 
   @override
   AppDataType getType() => AppDataType.budgets;

@@ -29,9 +29,7 @@ class BillAppData extends AbstractAppData with StorageMixin {
   });
 
   @override
-  String getClassName() {
-    return 'BillAppData';
-  }
+  String getClassName() => 'BillAppData';
 
   @override
   AppDataType getType() => AppDataType.bills;

@@ -7,6 +7,7 @@ import 'dart:async';
 import 'dart:math';
 import 'package:app_finance/_classes/controller/encryption_handler.dart';
 import 'package:app_finance/_classes/storage/app_data.dart';
+import 'package:app_finance/_classes/structure/abstract_app_data.dart';
 import 'package:app_finance/_classes/structure/account_app_data.dart';
 import 'package:app_finance/_classes/structure/bill_app_data.dart';
 import 'package:app_finance/_classes/structure/budget_app_data.dart';
@@ -16,6 +17,18 @@ import 'package:app_finance/_classes/structure/invoice_app_data.dart';
 import 'package:app_finance/_classes/storage/app_preferences.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:flutter/foundation.dart' show kIsWeb;
+
+extension DataExt on String {
+  AbstractAppData? toDataObject(Map<String, dynamic> data, AppData store) => switch (this) {
+        'GoalAppData' => GoalAppData.fromJson(data),
+        'AccountAppData' => AccountAppData.fromJson(data),
+        'BillAppData' => BillAppData.fromJson(data)..setState(store),
+        'BudgetAppData' => BudgetAppData.fromJson(data)..setState(store),
+        'CurrencyAppData' => CurrencyAppData.fromJson(data),
+        'InvoiceAppData' => InvoiceAppData.fromJson(data),
+        _ => null,
+      };
+}
 
 class TransactionLog {
   static int increment = 0;
@@ -94,24 +107,9 @@ class TransactionLog {
   }
 
   static void init(AppData store, String type, Map<String, dynamic> data) {
-    final goal = GoalAppData(title: '', initial: 0.0).getClassName();
-    final account = AccountAppData(title: '', type: '').getClassName();
-    final bill = BillAppData(title: '', account: '', category: '').getClassName();
-    final budget = BudgetAppData(title: '', amountLimit: 0.0).getClassName();
-    final currency = CurrencyAppData(title: '').getClassName();
-    final invoice = InvoiceAppData(title: '', account: '').getClassName();
-    final typeToClass = {
-      goal: (data) => GoalAppData.fromJson(data),
-      account: (data) => AccountAppData.fromJson(data),
-      bill: (data) => BillAppData.fromJson(data)..setState(store),
-      budget: (data) => BudgetAppData.fromJson(data)..setState(store),
-      currency: (data) => CurrencyAppData.fromJson(data),
-      invoice: (data) => InvoiceAppData.fromJson(data),
-    };
-    final obj = typeToClass[type];
+    final obj = type.toDataObject(data, store);
     if (obj != null) {
-      final el = obj(data);
-      store.update(el.uuid ?? '', el, true);
+      store.update(obj.uuid ?? '', obj, true);
     }
   }
 

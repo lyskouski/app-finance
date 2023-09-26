@@ -33,9 +33,7 @@ class AccountAppData extends AbstractAppData {
   }) : _closedAt = closedAt ?? (closedAtFormatted != null ? DateTime.parse(closedAtFormatted) : DateTime.now());
 
   @override
-  String getClassName() {
-    return 'AccountAppData';
-  }
+  String getClassName() => 'AccountAppData';
 
   @override
   AppDataType getType() => AppDataType.accounts;

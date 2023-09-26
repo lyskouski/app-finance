@@ -77,14 +77,10 @@ abstract class AbstractAppData implements InterfaceAppData {
     };
   }
 
-  String toStream() {
-    return EncryptionHandler.encrypt(toString());
-  }
+  String toStream() => EncryptionHandler.encrypt(toString());
 
   @override
-  String toString() {
-    return json.encode(toFile());
-  }
+  String toString() => json.encode(toFile());
 
   @override
   dynamic get details => _amount;

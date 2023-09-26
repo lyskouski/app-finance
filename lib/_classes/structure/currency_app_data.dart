@@ -24,9 +24,7 @@ class CurrencyAppData extends AbstractAppData {
   }
 
   @override
-  String getClassName() {
-    return 'CurrencyAppData';
-  }
+  String getClassName() => 'CurrencyAppData';
 
   @override
   AppDataType getType() => AppDataType.currencies;

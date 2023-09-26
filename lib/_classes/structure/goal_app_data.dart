@@ -31,9 +31,7 @@ class GoalAppData extends AbstractAppData {
   }) : _closedAt = closedAt ?? (closedAtFormatted != null ? DateTime.parse(closedAtFormatted) : DateTime.now());
 
   @override
-  String getClassName() {
-    return 'GoalAppData';
-  }
+  String getClassName() => 'GoalAppData';
 
   @override
   AppDataType getType() => AppDataType.goals;
