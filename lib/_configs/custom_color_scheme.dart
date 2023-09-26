@@ -4,6 +4,7 @@
 import 'dart:convert';
 
 import 'package:app_finance/_classes/herald/app_palette.dart';
+import 'package:app_finance/_configs/custom_text_theme.dart';
 import 'package:flutter/material.dart';
 
 class AppColors {
@@ -110,6 +111,21 @@ extension CustomButtonTheme on FloatingActionButtonThemeData {
     return copyWith(
       backgroundColor: palette.inversePrimary,
       foregroundColor: palette.onSecondary,
+    );
+  }
+}
+
+extension CustomTimePickerTheme on TimePickerThemeData {
+  TimePickerThemeData? withCustom(String paletteType, TextTheme? text, Brightness brightness) {
+    if (paletteType == AppColors.colorSystem) {
+      return null;
+    }
+    final palette = AppColors(paletteType, brightness).palette;
+    return copyWith(
+      shape: Border.all(width: 0.2),
+      backgroundColor: palette.onSecondary,
+      dialBackgroundColor: palette.onSecondary,
+      hourMinuteTextStyle: text?.numberLarge,
     );
   }
 }

@@ -151,6 +151,7 @@ class MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     final palette = context.watch<AppPalette>().value;
+    final text = CustomTextTheme.textTheme(Theme.of(context));
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       localizationsDelegates: AppLocalizations.localizationsDelegates,
@@ -160,14 +161,16 @@ class MyAppState extends State<MyApp> {
         colorScheme: const ColorScheme.light().withCustom(palette),
         floatingActionButtonTheme: const FloatingActionButtonThemeData().withCustom(palette, Brightness.light),
         brightness: Brightness.light,
-        textTheme: CustomTextTheme.textTheme(Theme.of(context)),
+        textTheme: text,
+        timePickerTheme: TimePickerTheme.of(context).withCustom(palette, text, Brightness.light),
         useMaterial3: true,
       ),
       darkTheme: ThemeData(
         colorScheme: const ColorScheme.dark().withCustom(palette),
         floatingActionButtonTheme: const FloatingActionButtonThemeData().withCustom(palette, Brightness.dark),
         brightness: Brightness.dark,
-        textTheme: CustomTextTheme.textTheme(Theme.of(context)),
+        textTheme: text,
+        timePickerTheme: TimePickerTheme.of(context).withCustom(palette, text, Brightness.dark),
         useMaterial3: true,
       ),
       themeMode: context.watch<AppTheme>().value,

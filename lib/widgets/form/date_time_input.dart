@@ -11,7 +11,6 @@ import 'package:app_finance/widgets/form/abstract_selector.dart';
 import 'package:app_finance/widgets/form/date_input.dart';
 import 'package:app_finance/widgets/wrapper/row_widget.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_datetime_picker_plus/flutter_datetime_picker_plus.dart';
 import 'package:intl/intl.dart';
 
 class DateTimeInput extends AbstractSelector {
@@ -34,11 +33,16 @@ class DateTimeInput extends AbstractSelector {
 
 class DateTimeInputState extends AbstractSelectorState<DateTimeInput> {
   @override
-  void onTap(BuildContext context) {
-    DatePicker.showTimePicker(context, showTitleActions: true, currentTime: widget.value, onConfirm: (dateTime) {
-      widget.setState(dateTime);
+  Future<void> onTap(BuildContext context) async {
+    final time = await showTimePicker(
+      context: context,
+      initialTime: TimeOfDay.fromDateTime(widget.value),
+      initialEntryMode: TimePickerEntryMode.input,
+    );
+    if (time != null) {
+      widget.setState(DateTime(widget.value.year, widget.value.month, widget.value.day, time.hour, time.minute));
       FocusController.onEditingComplete(widget.focusOrder);
-    });
+    }
   }
 
   @override
