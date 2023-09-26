@@ -20,6 +20,7 @@ class SimpleInput extends AbstractInput {
   final TextInputType type;
   final List<TextInputFormatter>? formatter;
   final TextEditingController controller;
+  final bool obscure;
 
   SimpleInput({
     super.key,
@@ -28,6 +29,7 @@ class SimpleInput extends AbstractInput {
     this.tooltip,
     this.formatter,
     this.type = TextInputType.text,
+    this.obscure = false,
   }) : super(value: controller.text) {
     if (setState != null) {
       controller.addListener(() => setState!(controller.text));
@@ -41,6 +43,8 @@ class SimpleInput extends AbstractInput {
       controller: controller,
       inputFormatters: formatter,
       style: textTheme.numberMedium,
+      obscureText: obscure,
+      obscuringCharacter: '*',
       keyboardType: type,
       focusNode: focus,
       textInputAction: FocusController.getAction(),

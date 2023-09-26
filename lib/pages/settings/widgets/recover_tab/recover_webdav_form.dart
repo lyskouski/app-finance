@@ -88,6 +88,7 @@ class RecoverWebdavFormState extends State<RecoverWebdavForm> {
         SimpleInput(
           controller: password,
           type: TextInputType.visiblePassword,
+          obscure: true,
         ),
         ThemeHelper.hIndent2x,
         RequiredWidget(
