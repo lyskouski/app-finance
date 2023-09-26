@@ -3,63 +3,60 @@
 
 \markboth{Introduction}{Introduction}
 
-Dear readers, I invite you to dive together with me into a platform-agnostic application development from a zero-state 
-position. Meaning, that we (me and, possibly, you) might know nothing about cross-platform development by using
-\q{Flutter}-framework with \q{Dart}-language under the hood, do not have an idea for the application, and chosen only a
-target market, which to shake (in our case, -- financial accounting).
+Dear readers, I invite you to join me on a journey into platform-agnostic application development, starting from ground 
+zero. Meaning, that we (me and, possibly, you) might know nothing about cross-platform or mobile development, 
+\q{Flutter}-framework, \q{Dart}-language, by not having even an idea for the application; ideally, it might 
+be chosen a market, which to shake (in our case, -- financial accounting).
 
-That book might be misaligned with concepts that you're following, respect, or adepting; by representing my, 
-Viachaslau Lyskouski, personal vision, that's why I invite you to argue with me on the page
-\href{https://github.com/lyskouski/app-finance/issues}{https://github.com/lyskouski/app-finance/issues}. And who knows,
-may be your arguments will change ground ideas of that book, and we'll republish it together. So, here are those 
-statements:
+That book might be misaligned with the concepts that you're following, respecting, or adepting; by representing the 
+author's vision, that's why I invite you to argue with me (\emph{and kindly request your assistance in identifying 
+possible errors and misprints}) on the pages of a repository that contains the sources of this book and an application 
+that we'll develop together as reading through 
+\href{https://github.com/lyskouski/app-finance/issues}{https://github.com/lyskouski/app-finance/issues}. And... 
+who knows, may be your arguments will change the ground ideas of that book, and we'll republish it together. 
+So, here are those statements:
 
 \begin{itemize}
-    \item Creating a product (rarely it can be finished and never changed then) is similar a pottery workshop flow, 
-    by taking amorphous idea and shaping it. Through the time it can be changed an architectural style (homogeneous, 
-    layered, multitier, microservices, ...) and structure (monolithic, distributed, hierarchical, ...), even platform 
-    (from platform specific to serverless), and language. It's all about being Agile, be adaptive to all external and 
-    internal challenges.
+    \item Creating any program is similar to a pottery workshop flow, by taking amorphous idea and shaping it. Through 
+    the time it can be changed an architectural style (homogeneous, layered, multitier, microservices, etc.), structure 
+    (monolithic, distributed, hierarchical, etc.), even platform (from platform specific to serverless), and language. 
+    It's all about being Agile, being adaptive to all external and internal challenges. Meaning, that the application's 
+    revenue justifies any refactoring, including the possibility of re-creating it from scratch.
 
-    \item Programming is not something about creativity, in its philosophic meaning (\emph{no one, except the author, 
+    \item Programming is not something about creativity, in its pragmatic meaning (\emph{no one, except the author, 
     will be able to accurately obtain the same result if the same initial situation is created}), but mastery 
-    (\emph{how accurate, balanced, and far-sighted will be your implementation}).
+    (\emph{how accurate, quick, balanced, and far-sighted will be your implementation}).
 
     \item Instruments (languages, frameworks, libraries, etc.) should be adapted to solve the problem instead of 
     adapting initial ideas to a capability of available / known tools.
 
     \item Instead of being \q{I}, \q{T}, \q{U}, or \q{M}-shaped, nowadays dictate us to be \q{\_}-shaped 
     (underscore-shaped); technologies are infinitely replacing each other through the time via tick-tock model 
-    (evolution / revolution) and the only right way is to constantly extend background fundamentals by being familiar 
-    with used instruments.
+    (characterized by periods of evolution and revolution) and the most effective approach is to continuously expand 
+    one's fundamental knowledge by staying acquainted with the technologies in use.
 \end{itemize}
 
 \noindent In case of having any discrepancies with this, the book may cause a rejection; and it's the best time to 
-refund. I've started that book without any knowledge in mobile-development, Flutter / Dart, and understanding the needs
-of financial accounting. \q{ChartGPT} was my mentor, \q{Midjourney} has helped to generate a few images (including 
-covers of that book) and "shared" some design insights.
+refund. Moreover, it was started without any knowledge in mobile and cross-platform development, Flutter, Dart, and 
+understanding the needs of "financial accounting" market. \q{ChartGPT} was used as a mentor, and \q{Midjourney} --
+to generate a few images (including covers of that book), and "shared" some design insights.
 
-Going back to the actuals of the book and chosen technologies... In today's fast-paced digital world, businesses strive 
-to adopt innovative technologies to streamline their operations and deliver exceptional user experiences. Programs have 
-become indispensable tools for organizations seeking to engage with their customers, increase efficiency, and stay 
-ahead of the competition. Flutter has emerged as a popular choice for building high-performance, platform-agnostic 
-(desktop, mobile, web) applications.
+Returning to the core themes of the book and the selected technologies, it's evident that businesses aim to embrace 
+innovative technologies to optimize their processes and provide outstanding user experiences, all while ensuring 
+broad platform compatibility. Not so far, Flutter (\emph{Dec 4th, 2018 -- version 1; May 10th, 2023 -- version 3}) 
+has emerged as a popular choice for building high-performance, platform-agnostic (desktop, mobile, web) applications. 
+And this book, "\emph{From Nothing to Market with Flutter: Desktop, Mobile, and Web Distribution}", road us to a 
+comprehensive journey through the creation of a robust competitive application by using Flutter with 
+\q{no-server}-basis (while \q{serverless} is mostly associated with cloud-based infrastructure).
 
-This book, "From Nothing to Market with Flutter: Desktop, Mobile, and Web Distribution" takes us to a comprehensive 
-journey through the creation of a robust competitive application by using Flutter with \q{no-server}-architecture (while 
-\q{serverless} is mostly associated with cloud-based infrastructure). And go through building a powerful and efficient 
-application together.
+The central objective of this book is to illustrate how to harness the extensive capabilities of Flutter to build a 
+comprehensive and feature-rich application. Across the chapters, we will delve into every phase of the application 
+development process, starting from conceptualization and culminating in distribution:
 
-The primary focus of this book is to demonstrate how to leverage Flutter's rich ecosystem and no-server approach, 
-to create a feature-rich (financial accounting) application. Throughout the chapters, you'll explore the various 
-stages of an application creation, from conceptualization to deployment.
-\\
-\noindent Key features of this book:
 \begin{itemize}
-    \item Understand Flutter architecture, and how it enables cross-platform development. Make an overview of 
-    the Dart programming language, which forms the foundation of Flutter applications.
+    \item Take basics in \q{Dart}-language and \q{Flutter}-framework, and how it enables cross-platform development.
 
-    \item Gain insights into the design principles of an application development and distribution. 
+    \item Gain insights into the design principles of an application development. 
     
     \item Go through User Interface and Experience practices to create an intuitive user interface.
 
@@ -69,6 +66,8 @@ stages of an application creation, from conceptualization to deployment.
 
     \item Master techniques for testing (unit, widget, integration, and performance tests) and debugging practices. 
 
-    \item Configure the application distribution across all platforms, and explore strategies for ongoing 
-    maintenance and updates.
+    \item Configure the application distribution across all platforms (Windows, Linux, MacOS, Android, iOS) to their 
+    marketplaces, and explore strategies for ongoing maintenance and updates.
 \end{itemize}
+
+\noindent So, let's embark on this learning curve journey and keep \q{Flutter}ing.

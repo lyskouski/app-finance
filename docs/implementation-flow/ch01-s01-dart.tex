@@ -1,17 +1,51 @@
 % Copyright 2023 The terCAD team. All rights reserved.
 % Use of this content is governed by a CC BY-NC-ND 4.0 license that can be found in the LICENSE file.
 
-\subsection{[TBD] Dart}
+\subsection{Dart}
 \markboth{Bootcamping}{Dart}
 
-\textbf{Dart}-language, by following Object-Oriented Programming (OOP) paradigm, enables extending even built-in data 
-types (from \q{String}, \q{double}, ... to \q{null}; \q{dynamic} - calculated / changeable type at run-time):
+Dart is known for its simplicity and readability as object-oriented and class-based language. It offers C-style syntax 
+and supports common programming concepts like inheritance, polymorphism, and encapsulation.
+
+\paragraph{Dart Virtual Machine (VM)} includes a just-in-time (JIT) compiler for fast development cycles and an 
+ahead-of-time (AOT) compiler for optimized production performance by translating \q{Dart}-code into a native machine 
+code. With a support of multi-threaded execution, VM provides efficient utilization of modern multi-core processors via 
+\q{Isolates} (\emph{lightweight, independent workers that communicate via message passing}) for concurrent executions.
+
+Dart Virtual Machine is designed as a platform-agnostic interpreter (\emph{desktop environments [Windows, macOS, Linux], 
+mobile devices [Android, iOS], and web browsers}) with a modular and extensible architecture (capabilities to extend 
+core-components as primitives and classes). It includes components such as Dart Core Libraries, Garbage Collector 
+(\emph{with separating objects into young and old generations, automatically reclaims memory occupied by objects that 
+are no longer reachable}), and Dart Development Compiler (DDC, \emph{designed to compile Dart to JavaScript / TypeScript 
+by enabling real-time code changes and efficient debugging for web applications}).
+
+\paragraph{Dart Software Development Kit (SDK)} provides a command-line interface (CLI), a package manager, 
+and a collection of utility libraries that simplify common tasks. Package Manager (\q{pub}) controls libraries and 
+their dependencies via \q{pubspec.yaml}-file by using public (\href{https://pub.dev}{https://pub.dev}) and private 
+(\q{dart pub add private\_package --hosted https://...}) storages.
+
+\paragraph{Entire End-to-End Stack}
+
+Dart is well-equipped to cover the full stack development. \q{Flutter}, powered by Dart, enables developers to write 
+code once and run it on multiple platforms, providing a unified user experience. \q{Aqueduct} provides a robust 
+foundation for building scalable and high-performance backend services and APIs. Dart's versatility extends 
+seamlessly to the database layer, offering compatibility with a wide range of database systems, both traditional 
+(as \q{Aqueduct ORM} for PostgreSQL, \q{Realm} for MongoDB) and those built specifically using Dart as their foundation
+(as \q{DartinoDB}).
+
+
+\newpage
+\subsubsection{Checking Primitives} \label{dart-prim}
+
+Primitives (built-in data types) behave as objects with own methods and properties, and can be even extended 
+by \q{extension}:
 
 \begin{lstlisting}
 int counter = 123; // counter.toDouble() => 123.0
 double pi = 3.141592; // pi.clamp(0, 3) => 3.0
 bool isVisible = true; // true.toString() => 'true'
 String text = 'Some content'; // text.codeUnits // List<int>
+dynamic tmp = 1; tmp = 'test'; tmp = false; // ...
 // 'StringBuffer' as a way to construct strings sequentially
 final spread = StringBuffer();
 spread.write('some text...'); // concatenate
@@ -21,36 +55,133 @@ String test = 'some long text...'
   '...continuation';
 // Convert other types to String by interpolation (via '$' sign)
 String sample = '$counter $isVisible';
-// Extend functionality of 'double'-type
+// Extend functionality of 'double'-type (except 'null' - a keyword)
 extension DoubleExt on double {
   // 0.12.pcnt => '12.0%'
   String get pcnt => '${this * 100}%';
 }
 \end{lstlisting}
 
-\noindent Collections are represented by \q{List}, \q{Map}, and \q{Set}. Where \q{List} is an ordered collection of 
-objects; \q{Map}, as a collection of key/value pairs, is used to retrieve a value by its associated key with a 
-maintained key uniqueness; as well as \q{Set} -- to control uniqueness of variables. As a distinctive feature, 
-iterativeness for \q{Map} deviates by its type:
+\noindent Collections are represented by \q{List}, \q{Map}, \q{Set}, and \q{Queue}. Where \q{List} is an ordered 
+collection of objects; \q{Map}, as a collection of key/value pairs, is used to retrieve a value by its associated key 
+with a maintained key uniqueness; as well as \q{Set} -- to control uniqueness of variables. \q{Queue} implements both 
+stack and queue behavior (where, ListQueue -- keeps a cyclic buffer of elements, DoubleLinkedQueue -- to guarantee 
+constant time on 'add', 'remove-at-ends' and 'peek'-operations). As a distinctive feature of collections, their 
+iterativeness is declared by subtype:
 
 \begin{itemize}
-  \item \q{HashMap}, unordered, provides access to items (by key) in (potentially) amortized constant time;
-  \item \q{LinkedHashMap} iterates in key insertion order;
-  \item \q{SplayTreeMap} is based on a self-balancing binary tree that allows most single-entry operations in amortized 
+  \item \q{HashMap} and \q{HashSet}, unordered, provides access to items (by key) in (potentially) amortized constant time;
+  \item \q{LinkedHashMap} and \q{LinkedHashSet} iterate in key insertion order;
+  \item \q{SplayTreeMap} and \q{SplayTreeSet} are based on a self-balancing binary tree that allows most single-entry operations in amortized 
   logarithmic time;
-  \item Immutable Map (in round brackets) is not iterable but simplify the access to its values and control their
-  persistency in \q{List}.
 \end{itemize}
 
 \begin{lstlisting}
 List<int> data = [1, 2, 3]; // data.last; // 3
 Set<String> scope = {'a', 'b', 'a'}; // scope.length; // 2
-var map = (text: 'sample', at: 123); // map.text; // 'sample'
 HashMap<String, int> hash = {'test': 123}; // hash.values; // [123]
+// Immutable Map - not iterable, with an object-based access
+var map = (text: 'sample', at: 123); // map.text; // 'sample'
 \end{lstlisting}
 
 
-\subsubsection{Overloading operators}
+\subsubsection{Operating with Dates}
+
+Let's revise a few build-in capabilities of dates' type from an example:\\
+- IF \q{end}-date is lower or equal to \q{current}-date THEN return 1\\
+- IF \q{start}-date is equal to \q{current}-date THEN return 0\\
+- ELSE return a relative value in the range of \q{0...1} by calculating the float value based on the ratio of the number 
+of days between \q{start} and \q{current} to the total number of days between \q{start} and \q{end}.
+
+\begin{lstlisting}
+calculateValue(DateTime start, DateTime end, DateTime current) {
+  if (end.isBefore(current) || end.isAtSameMomentAs(current))
+    return 1;
+  if (start.isAtSameMomentAs(current))
+    return 0;  
+  double total = end.difference(start).inDays.toDouble();
+  double diff = current.difference(start).inDays.toDouble();
+  return diff / total;
+}
+\end{lstlisting}
+
+\noindent \q{DateFormat} is used to convert and parse dates into a specific format, such as 'yyyy-MM-dd' (4 characters 
+for a year, dash, 2 symbols for a month, dash, last two to identify the date), while considering localization preferences.
+
+\begin{lstlisting}
+DateTime dt = DateTime(2023, 11, 1);
+var text = DateFormat.yMMMEd().format(dt);
+print(text);  // Wed, Nov 1, 2023
+// Parsing stringified date back without exceptions on failure
+DateTime? value = DateTime.tryParse(text);
+\end{lstlisting}
+
+\noindent \q{DateTime}-class doesn't inherently handle time zones, but it can be covered by external libraries like 
+\q{timezone} or \q{intl}. To facilitate time processing, one can utilize the "Unix" timestamp, also known as an epoch 
+timestamp, through the properties \q{microsecondsSinceEpoch} and \q{millisecondsSinceEpoch} properties.
+
+Additionally, for application testing purposes, consider the use of libraries like \q{fake\_datetime} to mock the 
+current time, enabling more effective testing scenarios.
+
+\newpage
+\subsubsection{Understanding Operations}
+
+Dart provides a wide range of built-in functions and libraries to cover various operations and functionalities:
+
+\begin{lstlisting}
+double num1 = 10.0; double num2 = 3.0; double? num3;
+// '+' Addition
+var result = num1 + num2; // 13.0
+// '-' Subtraction
+result = num1 - num2; // 7.0
+// '*' Multiplication
+result = num1 * num2; // 30.0
+// '/' Division
+result = num1 / num2; // 3.3333333333333335
+// '~/' Integer Division (Floor Division)
+result = num1 ~/ num2; // 3 (int)
+// '%' Modulus (Remainder)
+result = num1 % num2; // 1.0
+// '??' null-check statement
+num3 ?? num1; // return 'num1' in 'num3' is null
+/// Math "import 'dart:math';"
+num3 = 2.0;
+// 'sqrt' Square Root
+result = sqrt(num3); // 1.4142135623730951
+// 'pow' Exponentiation
+result = pow(num3, 3); // 8.0
+// 'sin' Sine
+result = sin(num3); // 0.9092974268256817
+// 'cos' Cosine
+result = cos(num3); // -0.4161468365471424
+// 'tan' Tangent
+result = tan(num3); // -2.185039863261519
+// 'log' Natural Logarithm
+result = log(num3); // 0.6931471805599453
+// 'log10' Base-10 Logarithm
+result = log(num3) / ln10; // 0.3010299956639812
+/// Overloading: null + 5 = 5
+extension Ext<T extends num> on T? {
+  T? operator +(T val) => this != null ? this + val : val;
+}
+\end{lstlisting}
+
+\noindent In addition, each type has own operands:
+
+\begin{lstlisting}
+// Range limitation: '-10.0' to '0.0'; '100.0' to '3.0'
+return (num as double).clamp(0, 3);
+// Dates comparison
+DateTime(now.year, now.month).isAfter(createdAt);
+createdAt.isBefore(DateTime.now());
+// Transformations
+final m = {'Sample': 1, 'sample': 2};
+CanonicalizedMap.from(m, (k) => k.toLowerCase()) // {'Sample': 1}
+\end{lstlisting}
+
+
+\newpage
+\subsubsection{Overloading Operators}
 
 "Magic methods" are often referred to as "operator overloading" or "special methods." They allow to declare a custom 
 behavior for built-in operations:
@@ -60,13 +191,15 @@ behavior for built-in operations:
   process of an object;
   \item \q{call} allows an object to be treated as a function;
   \item \q{hashCode} returns a hash code for an object (to use it as a key for \q{Map} and \q{Set}, and to override \q{==});
-  \item \q{operator==} compares two objects for equality;
+  \item \q{operator}: overload basic operands (as \q{==} to compare, \q{+} to sum, etc.);
   \item \q{get} and \q{set} -- to override the behavior of getting and setting properties.
 \end{itemize}
 
 \begin{lstlisting}
 class Person {
-  // Required from constructor
+  // Private property - 'null' or 'DateTime'
+  DateTime? _createdAt;
+  // Required from a constructor since cannot be null
   String name;
   // Post-initialization
   late DateTime _createdAt = DateTime.now();
@@ -79,10 +212,10 @@ class Person {
   // print(person.createdAt); // 2023-01-01 00:00:00
   DateTime get createdAt => _createdAt;
   // print(Person('Tom') == Person('Terry')); // false
-  @override
-  int get hashCode => int.parse(name.codeUnits.join(''));
-  @override
-  bool operator ==(Object other) => other is Person && other.name == name;
+  @override // Pre-requisite for any operator change
+  int get hashCode => hashValues(name); // core-method to hash value
+  @override // 'covariant' limits comparison to the same class
+  bool operator ==(covariant Person other) => other.name == name;
   // person = Person.fromString('Tom');
   factory Person.fromString(String name) {
     return Person(name);
@@ -120,9 +253,9 @@ void add({String value, int id = 123});
 void add(String value, {int? id});
 \end{lstlisting}
 
-\noindent In the context of classes, their properties can be protected (not declared in constructor, accessible for 
-extends), private (with underscore; neither visible, nor accessible from extends), and public (mentioned in 
-constructor); with extra options as \q{final} (immutable), \q{const} (not changeable for run-time), \q{static} (to 
+\noindent In the context of classes, their properties can be protected (with \q{@protected}-annotation, accessible for 
+extends), private (started from underscore; neither visible, nor accessible from extends), and public (others); 
+with extra options as \q{final} (immutable), \q{const} (not changeable for run-time), \q{static} (to 
 grant access without object initialization), and \q{late} (postponed initialization):
 
 \begin{lstlisting}
@@ -148,9 +281,36 @@ class Person {
 \end{lstlisting}
 
 
+\subsubsection{Asserting Functions Definition}
+
+By utilizing a type definition (\q{typedef}), we can simplify the representation of a complex structure as arguments or 
+declare the expected structure of a function, which is then propagated as an argument:
+
+\begin{lstlisting}
+typedef SetViewFunction = String Function(Currency input);
+typedef Nested = Map<String, List<Person>>;
+
+class CurrencySelector {
+  final Nested key;
+  final SetViewFunction? setView;
+  // 'const'-constructors is used to boost performance
+  const CurrencySelector({
+    this.key,
+    this.setView,
+  }) {
+    setView ??= setDefaultView; // Set if 'null'
+  }
+  // Short notation ('=>') for "one-line" methods
+  String setDefaultView(Currency input) => /* ... */;
+}
+\end{lstlisting}
+
+\noindent And, once the function type is declared, it becomes extensible (\ref{dart-prim}).
+
+
 \subsubsection{Casting Dynamic Structures}
 
-It might be useful to not declare the proper type:
+For a specific cases it might be useful to post-pone the type declaration:
 
 \begin{lstlisting}
 extension StringExt on String {
@@ -165,7 +325,7 @@ extension StringExt on String {
 }
 \end{lstlisting}
 
-\noindent Or, use \q{dynamic} instead of \q{T} to handle different types simultaneously:
+\noindent Or, use \q{dynamic} to cover different types simultaneously:
 
 \begin{lstlisting}
 extension StringExt on String {
@@ -175,31 +335,10 @@ extension StringExt on String {
 }
 \end{lstlisting}
 
-
-\subsubsection{Asserting Functions Definition}
-
-By using a type definition (\q{typedef}) we can simplify representation of a complex structure as arguments or 
-declare the expected structure of a function (propagated as an argument):
+\noindent And, cast to type by using \q{is} or \q{as}:
 
 \begin{lstlisting}
-typedef SetViewFunction = String Function(Currency input);
-
-typedef Nested = Map<String, List<Person>>;
-
-class CurrencySelector {
-  Nested key;
-  SetViewFunction? setView;
-
-  CurrencySelector({
-    this.key,
-    this.setView,
-  }) {
-    // Set if 'null'
-    setView ??= setDefaultView;
-  }
-
-  String setDefaultView(Currency input) {
-    // Default implementation
-  }
-}
+(val as double).toInt();
+if (val is Function) val();
 \end{lstlisting}
+
