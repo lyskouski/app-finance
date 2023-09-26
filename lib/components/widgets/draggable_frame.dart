@@ -67,26 +67,26 @@ class DraggableFrameState extends State<DraggableFrame> {
                   child: ComponentsBuilderForm(widget.data, adjust: widget.adjust),
                 )),
             GridItem(
-              start: const Size(0, 0),
+              start: const Size(2, 0),
               end: const Size(5, 1),
               order: 1,
               child: frameLine,
             ),
             GridItem(
-              start: const Size(0, 1),
+              start: const Size(0, 2),
               end: const Size(1, 5),
               order: 1,
               child: frameLine,
             ),
             GridItem(
               start: const Size(4, 1),
-              end: const Size(5, 5),
+              end: const Size(5, 3),
               order: 1,
               child: frameLine,
             ),
             GridItem(
               start: const Size(1, 4),
-              end: const Size(4, 5),
+              end: const Size(3, 5),
               order: 1,
               child: frameLine,
             ),
@@ -110,7 +110,7 @@ class DraggableFrameState extends State<DraggableFrame> {
               ),
             ),
             GridItem(
-              start: const Size(1, 1),
+              start: const Size(0, 0),
               end: const Size(2, 2),
               order: 2,
               child: DraggablePointer(
@@ -121,7 +121,7 @@ class DraggableFrameState extends State<DraggableFrame> {
             ),
             GridItem(
               start: const Size(3, 3),
-              end: const Size(4, 4),
+              end: const Size(5, 5),
               order: 3,
               child: DraggablePointer(
                 {...widget.data, _end: true},
