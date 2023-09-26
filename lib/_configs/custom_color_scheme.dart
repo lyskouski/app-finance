@@ -129,3 +129,18 @@ extension CustomTimePickerTheme on TimePickerThemeData {
     );
   }
 }
+
+extension CustomDatePickerThemeData on DatePickerThemeData {
+  DatePickerThemeData? withCustom(String paletteType, TextTheme? text, Brightness brightness) {
+    if (paletteType == AppColors.colorSystem) {
+      return null;
+    }
+    final palette = AppColors(paletteType, brightness).palette;
+    return copyWith(
+      shape: Border.all(width: 0.2),
+      backgroundColor: palette.onSecondary,
+      dayStyle: text?.numberMedium,
+      yearStyle: text?.numberMedium,
+    );
+  }
+}
