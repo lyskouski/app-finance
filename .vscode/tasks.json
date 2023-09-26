@@ -9,6 +9,15 @@
           "cwd": "${workspaceFolder}"
         },
         "type": "shell"
+      },
+      {
+        "label": "Generate Mock",
+        "command": "dart",
+        "args": ["run", "build_runner", "build", "--delete-conflicting-outputs", "--build-filter=\"${file}/../*.dart\""],
+        "options": {
+          "cwd": "${workspaceFolder}"
+        },
+        "type": "shell"
       }
     ]
   }
