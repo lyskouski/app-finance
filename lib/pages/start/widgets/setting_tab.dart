@@ -142,7 +142,8 @@ class SettingTabState<T extends SettingTab> extends AbstractTabState<T> {
           ),
           BaseCurrencySelector(
             value: currency?.code,
-            context: context,
+            textTheme: context.textTheme,
+            colorScheme: context.colorScheme,
             update: saveCurrency,
           ),
           ThemeHelper.hIndent2x,

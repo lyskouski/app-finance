@@ -5,7 +5,6 @@ import 'package:app_finance/_classes/herald/app_locale.dart';
 import 'package:app_finance/_configs/custom_color_scheme.dart';
 import 'package:app_finance/_configs/custom_text_theme.dart';
 import 'package:app_finance/_configs/theme_helper.dart';
-import 'package:app_finance/_ext/build_context_ext.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_currency_picker/flutter_currency_picker.dart';
 
@@ -73,18 +72,19 @@ class BaseCurrencySelector<T extends CurrencySelectorItem> extends CurrencySelec
   BaseCurrencySelector({
     super.key,
     required super.update,
-    required BuildContext context,
+    required TextTheme textTheme,
+    required ColorScheme colorScheme,
     super.value,
   }) {
     CurrencyItemRegistry.list[CodeCurrencySelectorItem] = CodeCurrencySelectorItem.fromCurrency;
-    _hintStyle = context.textTheme.numberMedium.copyWith(
-      color: context.textTheme.headlineSmall?.color!.withOpacity(0.4),
+    _hintStyle = textTheme.numberMedium.copyWith(
+      color: textTheme.headlineSmall?.color!.withOpacity(0.4),
       overflow: TextOverflow.ellipsis,
     );
-    _textStyle = context.textTheme.numberMedium.copyWith(
+    _textStyle = textTheme.numberMedium.copyWith(
       overflow: TextOverflow.ellipsis,
     );
-    _fieldBackground = context.colorScheme.fieldBackground;
+    _fieldBackground = colorScheme.fieldBackground;
   }
 }
 
@@ -92,7 +92,11 @@ class CodeCurrencySelector extends BaseCurrencySelector<CodeCurrencySelectorItem
   CodeCurrencySelector({
     super.key,
     required super.update,
-    required BuildContext context,
+    required TextTheme textTheme,
+    required ColorScheme colorScheme,
     super.value,
-  }) : super(context: context);
+  }) : super(
+          textTheme: textTheme,
+          colorScheme: colorScheme,
+        );
 }

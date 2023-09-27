@@ -213,7 +213,8 @@ class ImportTabState extends State<ImportTab> {
                   ),
                   BaseCurrencySelector(
                     value: attrValue[FileParser.attrBillCurrency],
-                    context: context,
+                    textTheme: context.textTheme,
+                    colorScheme: context.colorScheme,
                     update: (value) => setState(() => attrValue[FileParser.attrBillCurrency] = value.code),
                   ),
                 ],

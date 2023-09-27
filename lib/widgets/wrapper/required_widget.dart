@@ -20,13 +20,21 @@ class RequiredWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final TextTheme textTheme = context.textTheme;
+    final textTheme = context.textTheme;
+    final colorScheme = context.colorScheme;
+    if (!showError) {
+      return TextWrapper(
+        '$title*',
+        style: textTheme.bodyLarge,
+      );
+    }
     return LayoutBuilder(builder: (context, constraints) {
+      final indent = ThemeHelper.getIndent();
       return RowWidget(
         alignment: MainAxisAlignment.spaceBetween,
-        indent: ThemeHelper.getIndent(),
-        maxWidth: constraints.maxWidth,
-        chunk: [null, showError ? null : 0, showError ? 12 : 0],
+        indent: indent,
+        maxWidth: constraints.maxWidth - indent,
+        chunk: [null, ThemeHelper.getTextWidth(Text(AppLocale.labels.isRequired)), 12],
         children: [
           [
             TextWrapper(
@@ -36,20 +44,18 @@ class RequiredWidget extends StatelessWidget {
           ],
           [
             TextWrapper(
-              showError ? AppLocale.labels.isRequired : '',
+              AppLocale.labels.isRequired,
               style: TextStyle(
-                color: context.colorScheme.error,
+                color: colorScheme.error,
               ),
             ),
           ],
           [
-            showError
-                ? Icon(
-                    Icons.error,
-                    semanticLabel: '$title: ${AppLocale.labels.isRequired}',
-                    color: context.colorScheme.error,
-                  )
-                : ThemeHelper.emptyBox,
+            Icon(
+              Icons.error,
+              semanticLabel: '$title: ${AppLocale.labels.isRequired}',
+              color: colorScheme.error,
+            ),
           ],
         ],
       );

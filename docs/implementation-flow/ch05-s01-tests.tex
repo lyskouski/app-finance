@@ -42,6 +42,12 @@ IntegrationTestWidgetsFlutterBinding.ensureInitialized();
 \q{Firebase Test Lab} and \q{BrowserStack} stand as a cloud-powered testing platforms, and enable the integration tests
 evaluation across an extensive spectrum of devices and configurations.
 
+It's essential to note that Just-In-Time (JIT) and Ahead-of-Time (AOT) compilers (\ref{dart}) may yield different 
+results. What works flawlessly in development mode (JIT) might encounter issues in release mode (AOT), as 
+demonstrated by the following \cref{img:compilation-err}. That is why integration tests are a valuable asset in the 
+automated verification process.
+
+\img{features/compilation-err}{Deviation between JIT (left) and AOT (right) compilations}{img:compilation-err}
 
 \subsubsection{Doing Performance Testing}
 

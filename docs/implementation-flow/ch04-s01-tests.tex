@@ -335,9 +335,9 @@ class WrapperAccountRecalculation extends AccountRecalculation {
 }
 \end{lstlisting}
 
-\noindent So, let's automate that part as well by using the \q{source\_gen} package, which provides capabilities to 
-generate \q{.dart}-files based on annotations (we've seen already - \q{@GenerateNiceMocks}). Firstly, it's needed to 
-register our custom builder via \q{build.yaml}-file:
+\noindent Let's automate that part as well by using \q{source\_gen}-package, that enables a code generation based on 
+annotations (we've seen already - \q{@GenerateNiceMocks}). Firstly, our custom builder is needed to be registered via 
+\q{build.yaml}-file:
 
 \begin{lstlisting}[language=yaml]
 ## ./build.yaml
@@ -475,7 +475,7 @@ class WrapperVisitor {
 }
 \end{lstlisting}
 
-\noindent And, finally, or test would be adjusted to support implemented wrapper:
+\noindent And, finally, the test should be adjusted to support implemented wrapper:
 
 \begin{lstlisting}
 @GenerateWithMethodSetters([AccountRecalculation])
@@ -511,15 +511,16 @@ and testing framework for Behavior Driven Development approach. Gherkin
 (\href{https://pub.dev/packages/gherkin}{https://pub.dev/packages/gherkin}), as a fully featured parser and 
 test runner for Flutter and Dart, would be used by us to convert When / Given / Then (And / But) into a real test steps.
 
-In Cucumber-JVM (as well as in Gherkin) calling steps from step definitions is not supported; this is by design. That's
-why I do love Robot Framework (\href{https://robotframework.org}{https://robotframework.org}) that allows to create 
-high-level scenarios by combining low-level steps. That limitation "by design" is made to not create a mess, with an 
-assumption, that this may lead to an explosion of step definitions, code duplication, and high maintenance costs. We 
-won't argue with this product' architects (do you remember the cost of a major architectural error? \cite{Sanket19}) 
-and take all the risks to our own, since testing is a variation of an art where a common sense is a mantra to succeed.
+In Cucumber-JVM (as well as in Gherkin) calling steps from step definitions is not supported; this is by design. 
+That "by design" limitation is made to not create a mess, with an assumption, that this may lead to an explosion of step 
+definitions, code duplication, and high maintenance costs. We won't argue with them, since a community has already tried 
+(as a reminder, an architectural error consequences -- \cite{Sanket19}), and take all the risks to our own, since testing 
+is a variation of an art where a common sense is a mantra to succeed. Furthermore, this approach is already utilized by 
+Robot Framework (\href{https://robotframework.org}{https://robotframework.org}) where a high-level scenarios creation 
+on top of others signifies the declaration of a new layer of abstractions.
 
-But let's go step-by-step. So, after adding Gherkin (\q{flutter pub add flutter\_gherkin --dev}), we can start from a
-creation of \q{.feature}-files to describe scenarios.
+But let's go step-by-step... After installing Gherkin (\q{flutter pub add flutter\_gherkin --dev}), we can start from 
+\q{.feature}-files creation to describe our test scenarios.
 
 \begin{lstlisting}[language=cucumber]
 @account @currency

@@ -173,7 +173,8 @@ class GoalAddPageState<T extends GoalAddPage> extends AbstractPageState<GoalAddP
                   ),
                   CodeCurrencySelector(
                     value: currency?.code,
-                    context: context,
+                    textTheme: context.textTheme,
+                    colorScheme: context.colorScheme,
                     update: (value) => setState(() => currency = value),
                   ),
                 ],

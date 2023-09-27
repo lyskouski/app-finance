@@ -2,6 +2,7 @@
 // Use of this source code is governed by a CC BY-NC-ND 4.0 license that can be found in the LICENSE file.
 
 import 'package:app_finance/_classes/herald/app_locale.dart';
+import 'package:app_finance/_classes/structure/currency/exchange.dart';
 import 'package:app_finance/_classes/structure/navigation/app_route.dart';
 import 'package:app_finance/_classes/structure/bill_app_data.dart';
 import 'package:app_finance/_classes/controller/focus_controller.dart';
@@ -63,10 +64,9 @@ class ExpensesTabState<T extends ExpensesTab> extends AbstractPageState<T> {
     final objAccount = widget.state.getByUuid(accountId ?? '');
     final budgetId = AppPreferences.get(AppPreferences.prefBudget);
     final objBudget = widget.state.getByUuid(budgetId ?? '');
-    final currencyId = AppPreferences.get(AppPreferences.prefCurrency);
     account = widget.account ?? objAccount?.uuid;
     budget = widget.budget ?? objBudget?.uuid;
-    currency = widget.currency ?? objAccount?.currency ?? objBudget?.currency ?? CurrencyProvider.find(currencyId);
+    currency = widget.currency ?? objAccount?.currency ?? objBudget?.currency ?? Exchange.defaultCurrency;
     bill = TextEditingController(text: widget.bill != null ? widget.bill.toString() : '');
     description = TextEditingController(text: widget.description);
     createdAt = widget.createdAt;
@@ -126,9 +126,9 @@ class ExpensesTabState<T extends ExpensesTab> extends AbstractPageState<T> {
 
   @override
   Widget buildContent(BuildContext context, BoxConstraints constraints) {
-    final TextTheme textTheme = context.textTheme;
-    double indent = ThemeHelper.getIndent(2);
-    double width = ThemeHelper.getWidth(context, 6, constraints);
+    final textTheme = context.textTheme;
+    final indent = ThemeHelper.getIndent(2);
+    final width = ThemeHelper.getWidth(context, 6, constraints);
     return SingleChildScrollView(
       controller: FocusController.getController(runtimeType),
       child: Container(
@@ -184,7 +184,8 @@ class ExpensesTabState<T extends ExpensesTab> extends AbstractPageState<T> {
                   ),
                   CodeCurrencySelector(
                     value: currency?.code,
-                    context: context,
+                    textTheme: textTheme,
+                    colorScheme: context.colorScheme,
                     update: (value) => setState(() => currency = value),
                   ),
                 ],

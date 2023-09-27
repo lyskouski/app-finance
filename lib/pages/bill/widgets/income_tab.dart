@@ -2,6 +2,7 @@
 // Use of this source code is governed by a CC BY-NC-ND 4.0 license that can be found in the LICENSE file.
 
 import 'package:app_finance/_classes/herald/app_locale.dart';
+import 'package:app_finance/_classes/structure/currency/exchange.dart';
 import 'package:app_finance/_classes/structure/invoice_app_data.dart';
 import 'package:app_finance/_classes/structure/navigation/app_route.dart';
 import 'package:app_finance/_classes/controller/focus_controller.dart';
@@ -55,9 +56,8 @@ class IncomeTabState extends AbstractPageState<IncomeTab> {
   void initState() {
     final value = AppPreferences.get(AppPreferences.prefAccount);
     final obj = widget.state.getByUuid(value ?? '');
-    final currencyId = AppPreferences.get(AppPreferences.prefCurrency);
     account = widget.account ?? obj?.uuid;
-    currency = widget.currency ?? obj?.currency ?? CurrencyProvider.find(currencyId);
+    currency = widget.currency ?? obj?.currency ?? Exchange.defaultCurrency;
     createdAt = widget.createdAt ?? DateTime.now();
     amount = TextEditingController(text: widget.amount != null ? widget.amount.toString() : '');
     description = TextEditingController(text: widget.description);
@@ -116,9 +116,9 @@ class IncomeTabState extends AbstractPageState<IncomeTab> {
 
   @override
   Widget buildContent(BuildContext context, BoxConstraints constraints) {
-    final TextTheme textTheme = context.textTheme;
-    double indent = ThemeHelper.getIndent(2);
-    double width = ThemeHelper.getWidth(context, 6, constraints);
+    final textTheme = context.textTheme;
+    final indent = ThemeHelper.getIndent(2);
+    final width = ThemeHelper.getWidth(context, 6, constraints);
 
     return SingleChildScrollView(
       controller: FocusController.getController(runtimeType),
@@ -154,7 +154,8 @@ class IncomeTabState extends AbstractPageState<IncomeTab> {
                   ),
                   CodeCurrencySelector(
                     value: currency?.code,
-                    context: context,
+                    textTheme: textTheme,
+                    colorScheme: context.colorScheme,
                     update: (value) => setState(() => currency = value),
                   ),
                 ],

@@ -222,7 +222,8 @@ class BudgetAddPageState<T extends BudgetAddPage> extends AbstractAddPageState<B
             ),
             BaseCurrencySelector(
               value: currency?.code,
-              context: context,
+              textTheme: context.textTheme,
+              colorScheme: context.colorScheme,
               update: (value) => setState(() => currency = value),
             ),
             ThemeHelper.hIndent2x,

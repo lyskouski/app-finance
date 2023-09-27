@@ -256,11 +256,10 @@ declared steps to reproduce it constantly.
 
 \img{uiux/bottom-bar}{Application Bottom Bar for small screens}{img:u-bottom-bar}
 
-In our case (\cref{img:u-bottom-bar}) the problem is relevant to the usage of \q{floatingActionButtonLocation: 
-FloatingActionButtonLocation.centerDocked} with enabled \q{bottomNavigationBar} for \q{Scaffold}, and appears by 
-navigating back and forth between screens. The issue is connected to the way Flutter draws pixels under the hood, and 
-there are no any declared steps to resolve that, each time it can be a unique approach based on an application 
-architecture:
+In our case (\cref{img:u-bottom-bar}) the problem is relevant to the usage of \q{FloatingActionButtonLocation.centerDocked} 
+with enabled \q{bottomNavigationBar} for \q{Scaffold}, and appears by navigating back and forth between pages. The issue 
+is related to how Flutter renders under the hood, and there are no declared steps to resolve it. Each time, the 
+solution may require a unique approach:
 
 \begin{lstlisting}
 // Awaiting for the route transition to be completed

@@ -2,6 +2,7 @@
 // Use of this source code is governed by a CC BY-NC-ND 4.0 license that can be found in the LICENSE file.
 
 import 'package:app_finance/_classes/herald/app_locale.dart';
+import 'package:app_finance/_classes/structure/currency/exchange.dart';
 import 'package:app_finance/_classes/structure/invoice_app_data.dart';
 import 'package:app_finance/_classes/structure/navigation/app_route.dart';
 import 'package:app_finance/_classes/controller/focus_controller.dart';
@@ -61,7 +62,7 @@ class TransferTabState extends AbstractPageState<TransferTab> {
     createdAt = widget.createdAt ?? DateTime.now();
     amount = TextEditingController(text: widget.amount != null ? widget.amount.toString() : '');
     description = TextEditingController(text: widget.description);
-    currency = widget.currency;
+    currency = widget.currency ?? Exchange.defaultCurrency;
     super.initState();
   }
 
@@ -99,7 +100,7 @@ class TransferTabState extends AbstractPageState<TransferTab> {
 
   @override
   Widget buildButton(BuildContext context, BoxConstraints constraints) {
-    NavigatorState nav = Navigator.of(context);
+    final nav = Navigator.of(context);
     return FullSizedButtonWidget(
       constraints: constraints,
       setState: () => {
@@ -118,10 +119,9 @@ class TransferTabState extends AbstractPageState<TransferTab> {
 
   @override
   Widget buildContent(BuildContext context, BoxConstraints constraints) {
-    final TextTheme textTheme = context.textTheme;
-    double indent = ThemeHelper.getIndent(2);
-    double width = ThemeHelper.getWidth(context, 6, constraints);
-
+    final textTheme = context.textTheme;
+    final indent = ThemeHelper.getIndent(2);
+    final width = ThemeHelper.getWidth(context, 6, constraints);
     return SingleChildScrollView(
       controller: FocusController.getController(runtimeType),
       child: Container(
@@ -151,7 +151,7 @@ class TransferTabState extends AbstractPageState<TransferTab> {
               state: widget.state,
               setState: (value) => setState(() {
                 accountTo = value;
-                currency = widget.state.getByUuid(value).currency;
+                currency = widget.state.getByUuid(value)?.currency;
               }),
               width: width,
             ),
@@ -168,7 +168,8 @@ class TransferTabState extends AbstractPageState<TransferTab> {
                   ),
                   CodeCurrencySelector(
                     value: currency?.code,
-                    context: context,
+                    textTheme: textTheme,
+                    colorScheme: context.colorScheme,
                     update: (value) => setState(() => currency = value),
                   ),
                 ],
@@ -194,8 +195,8 @@ class TransferTabState extends AbstractPageState<TransferTab> {
               state: widget.state,
               targetController: amount,
               source: <Currency?>[
-                accountFrom != null ? widget.state.getByUuid(accountFrom!).currency : null,
-                accountTo != null ? widget.state.getByUuid(accountTo!).currency : null,
+                accountFrom != null ? widget.state.getByUuid(accountFrom!)?.currency : null,
+                accountTo != null ? widget.state.getByUuid(accountTo!)?.currency : null,
               ],
             ),
             Text(

@@ -1,7 +1,15 @@
-# Flutter for Serverless Applications
+# Book: From Zero to Market with Flutter
+
+[![License: CC BY-NC-ND 4.0](https://img.shields.io/badge/License-CC_BY--NC--ND_4.0-lightgrey.svg)](https://creativecommons.org/licenses/by-nc-nd/4.0/) 
+
+**Status:** [Work In Progress] 30%
+
+**Amazon Books**: (postponed till 1st November)
+**Google Books**: (postponed till 1st November)
+
 ## Sampling on Financial Accounting App Life-Cycles
 
-This book is diving deep into the core mechanisms of the Flatter and Dart language to implement a serverless application.
+This book is diving deep into the core mechanisms of Flutter to implement a platform-agnostic application.
 
 > Remarks of [Fingrom](https://github.com/lyskouski/app-finance) development process.
 
