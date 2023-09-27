@@ -75,8 +75,7 @@ class BillAppData extends AbstractAppData with StorageMixin {
   String get description {
     final DateFormat formatterDate = DateFormat.MMMMd(AppLocale.code);
     AccountAppData? type = getState().getByUuid(account);
-    return formatterDate.format(super.createdAt) +
-        (type?.description != null ? ' (${AppLocale.labels.from} "${type?.description}")' : '');
+    return formatterDate.format(super.createdAt) + (type != null ? ' (${type.title})' : '');
   }
 
   @override
