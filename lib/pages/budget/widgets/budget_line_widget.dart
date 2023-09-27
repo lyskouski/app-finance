@@ -6,6 +6,7 @@ import 'package:app_finance/_configs/custom_text_theme.dart';
 import 'package:app_finance/_configs/theme_helper.dart';
 import 'package:app_finance/_ext/build_context_ext.dart';
 import 'package:app_finance/charts/bar_horizontal_single.dart';
+import 'package:app_finance/widgets/wrapper/number_wrapper.dart';
 import 'package:app_finance/widgets/wrapper/row_widget.dart';
 import 'package:app_finance/widgets/wrapper/tap_widget.dart';
 import 'package:app_finance/widgets/wrapper/text_wrapper.dart';
@@ -45,7 +46,7 @@ class BudgetLineWidget extends StatelessWidget {
     final indent = ThemeHelper.getIndent();
     final width = ThemeHelper.getWidth(context);
     final textTheme = context.textTheme;
-
+    const iconSize = 18.0;
     return TapWidget(
       tooltip: '',
       route: AppMenu.uuid(route, uuid),
@@ -54,7 +55,7 @@ class BudgetLineWidget extends StatelessWidget {
         children: [
           RowWidget(
             chunk: [
-              18,
+              iconSize,
               null,
               ThemeHelper.getTextWidth(Text(
                 details,
@@ -67,7 +68,7 @@ class BudgetLineWidget extends StatelessWidget {
             maxWidth: width + indent,
             children: [
               [
-                Icon(icon, color: color),
+                Icon(icon, color: color, size: iconSize),
               ],
               if (description != '')
                 [
@@ -87,7 +88,7 @@ class BudgetLineWidget extends StatelessWidget {
                   ),
                 ],
               [
-                TextWrapper(details, style: textTheme.numberMedium),
+                NumberWidget(details, colorScheme: context.colorScheme, style: textTheme.numberMedium),
               ]
             ],
           ),

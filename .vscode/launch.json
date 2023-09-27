@@ -8,6 +8,15 @@
         "codeLens": {
           "for": ["run-test-file"]
         },
+        "preLaunchTask": "Generate Mock"
+      },
+      {
+        "name": "Mock All",
+        "request": "launch",
+        "type": "dart",
+        "codeLens": {
+          "for": ["run-test-file"]
+        },
         "preLaunchTask": "Generate Mocks"
       }
     ]

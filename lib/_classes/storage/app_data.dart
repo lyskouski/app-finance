@@ -31,6 +31,11 @@ enum AppDataType {
   invoice,
 }
 
+typedef AppDataGetter = ({
+  List<dynamic> list,
+  double total,
+});
+
 class AppData extends ChangeNotifier {
   final AppSync appSync;
   bool isLoading = false;
@@ -236,7 +241,7 @@ class AppData extends ChangeNotifier {
     }
   }
 
-  dynamic get(AppDataType property) {
+  AppDataGetter get(AppDataType property) {
     return (
       list: getList(property),
       total: getTotal(property),
