@@ -97,12 +97,13 @@ class ThemeHelper {
   static bool isNavRight(BuildContext context, [BoxConstraints? constraints]) =>
       getHeightCount(context, constraints) <= 2;
 
-  static int getWidthCount(BoxConstraints constraints) {
+  static int getWidthCount(BoxConstraints? constraints, [BuildContext? context]) {
+    final width = constraints?.maxWidth ?? getWidth(context!);
     final matrix = {
-      AdaptiveWindowType.xlarge: constraints.maxWidth >= 1440, // AdaptiveWindowType.xlarge.widthRangeValues.start,
-      AdaptiveWindowType.large: constraints.maxWidth >= 1024, // AdaptiveWindowType.large.widthRangeValues.start,
-      AdaptiveWindowType.medium: constraints.maxWidth >= 640, // AdaptiveWindowType.medium.widthRangeValues.start,
-      AdaptiveWindowType.small: constraints.maxWidth >= 320, // AdaptiveWindowType.small.widthRangeValues.start,
+      AdaptiveWindowType.xlarge: width >= 1440, // AdaptiveWindowType.xlarge.widthRangeValues.start,
+      AdaptiveWindowType.large: width >= 1024, // AdaptiveWindowType.large.widthRangeValues.start,
+      AdaptiveWindowType.medium: width >= 640, // AdaptiveWindowType.medium.widthRangeValues.start,
+      AdaptiveWindowType.small: width >= 320, // AdaptiveWindowType.small.widthRangeValues.start,
       AdaptiveWindowType.xsmall: true,
     };
     matrix.removeWhere((_, value) => value == false);

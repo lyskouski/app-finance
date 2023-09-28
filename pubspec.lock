@@ -379,14 +379,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.0.2"
-  flutter_iconpicker:
-    dependency: "direct main"
-    description:
-      name: flutter_iconpicker
-      sha256: a51d1c8ed5447334652d6fe6d004f1d361184d124e982762373f9be6a78a18b6
-      url: "https://pub.dev"
-    source: hosted
-    version: "3.2.4"
   flutter_lints:
     dependency: "direct dev"
     description:
@@ -450,14 +442,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "0.9.44"
-  font_awesome_flutter:
-    dependency: transitive
-    description:
-      name: font_awesome_flutter
-      sha256: "5fb789145cae1f4c3245c58b3f8fb287d055c26323879eab57a7bf0cfd1e45f3"
-      url: "https://pub.dev"
-    source: hosted
-    version: "10.5.0"
   frontend_server_client:
     dependency: transitive
     description:
