@@ -87,7 +87,7 @@ class AccountHeaderWidget extends StatelessWidget {
             if (showValidDate) ...[
               [
                 TextWrapper(
-                  '${AppLocale.labels.validTillDate}: ',
+                  AppLocale.labels.validTillDate,
                   style: textTheme.bodySmall?.copyWith(fontWeight: FontWeight.bold),
                 )
               ],
