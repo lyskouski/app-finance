@@ -76,7 +76,7 @@ class BudgetLineWidget extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       TextWrapper(title, style: textTheme.bodyMedium),
-                      TextWrapper(description, style: textTheme.bodySmall),
+                      TextWrapper(description, style: textTheme.numberSmall),
                     ],
                   ),
                 ]
