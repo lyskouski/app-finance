@@ -4,11 +4,12 @@
 import 'package:app_finance/_classes/herald/app_locale.dart';
 import 'package:app_finance/_classes/structure/navigation/app_route.dart';
 import 'package:app_finance/_classes/structure/goal_app_data.dart';
+import 'package:app_finance/_configs/custom_text_theme.dart';
 import 'package:app_finance/_ext/build_context_ext.dart';
-import 'package:app_finance/widgets/wrapper/row_widget.dart';
 import 'package:app_finance/widgets/wrapper/tap_widget.dart';
 import 'package:app_finance/_configs/theme_helper.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_grid_layout/flutter_grid_layout.dart';
 
 class GoalLineWidget extends StatelessWidget {
   final GoalAppData goal;
@@ -30,84 +31,80 @@ class GoalLineWidget extends StatelessWidget {
       tooltip: AppLocale.labels.goalTooltip,
       route: AppRoute.goalRoute,
       child: Container(
-        height: 50 + indent * 2,
         color: colorScheme.inversePrimary,
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
+        height: 20,
+        child: GridContainer(
+          rows: [indent, null, null, indent],
+          columns: [indent, 18, 24, indent, indent, indent / 2],
           children: [
-            FractionallySizedBox(
-              widthFactor: 1.0,
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Padding(
-                    padding: EdgeInsets.fromLTRB(indent, indent, 0, 0),
-                    child: Text(
-                      AppLocale.labels.goalHeadline,
-                      style: textTheme.headlineSmall,
-                    ),
-                  ),
-                  RowWidget(
-                    indent: indent,
-                    maxWidth: screenWidth,
-                    alignment: MainAxisAlignment.spaceBetween,
-                    chunk: const [null, 110],
-                    children: [
-                      [
-                        Tooltip(
-                          message: goal.title,
-                          child: Padding(
-                            padding: EdgeInsets.only(left: indent),
-                            child: Text(
-                              goal.title,
-                              style: textTheme.headlineMedium,
-                              overflow: TextOverflow.ellipsis,
-                            ),
-                          ),
-                        ),
-                      ],
-                      [
-                        Padding(
-                          padding: EdgeInsets.only(right: indent),
-                          child: Text(
-                            goal.closedAtFormatted,
-                            style: textTheme.headlineMedium,
-                            textAlign: TextAlign.right,
-                            overflow: TextOverflow.ellipsis,
-                          ),
-                        ),
-                      ],
-                    ],
-                  ),
-                  Container(
-                    height: 8,
-                    margin: EdgeInsets.fromLTRB(indent, indent / 2, indent, 0),
-                    child: LinearProgressIndicator(
-                      value: goal.progress,
-                      backgroundColor: colorScheme.primary.withOpacity(0.3),
-                      valueColor: AlwaysStoppedAnimation<Color>(colorScheme.onPrimaryContainer),
-                    ),
-                  ),
-                ],
+            if (goal.progress == 1)
+              GridItem(
+                start: const Size(2, 0),
+                end: const Size(4, 4),
+                order: 3,
+                child: Banner(
+                  message: AppLocale.labels.processIsFinished,
+                  location: BannerLocation.topEnd,
+                  textStyle: textTheme.numberSmall,
+                ),
+              ),
+            GridItem(
+              start: const Size(1, 1),
+              end: const Size(2, 2),
+              child: Text(
+                AppLocale.labels.goalHeadline,
+                style: textTheme.headlineSmall,
               ),
             ),
-            Stack(
-              children: [
-                Transform.translate(
-                  offset: Offset(indent * 1.5 + screenWidth * goal.state, -6),
-                  child: Tooltip(
-                    message: AppLocale.labels.currentDate,
-                    child: Container(
-                      width: 4.0,
-                      height: 4.0,
-                      decoration: BoxDecoration(
-                        color: colorScheme.inversePrimary,
-                        shape: BoxShape.circle,
-                      ),
+            GridItem(
+              start: const Size(1, 2),
+              end: const Size(3, 3),
+              child: Text(
+                goal.title,
+                style: textTheme.headlineMedium,
+                overflow: TextOverflow.ellipsis,
+              ),
+            ),
+            GridItem(
+              start: const Size(2, 2),
+              end: const Size(3, 3),
+              child: Padding(
+                padding: EdgeInsets.only(top: ThemeHelper.getIndent(0.7)),
+                child: Text(
+                  goal.closedAtFormatted,
+                  style: textTheme.headlineSmall,
+                  textAlign: TextAlign.right,
+                  overflow: TextOverflow.ellipsis,
+                ),
+              ),
+            ),
+            GridItem(
+              start: const Size(1, 3),
+              end: const Size(3, 4),
+              child: LinearProgressIndicator(
+                value: goal.progress,
+                backgroundColor: colorScheme.primary.withOpacity(0.3),
+                valueColor: AlwaysStoppedAnimation<Color>(colorScheme.onPrimaryContainer),
+              ),
+            ),
+            GridItem(
+              start: const Size(1, 3),
+              end: const Size(3, 4),
+              order: 2,
+              child: Transform.translate(
+                offset: Offset(indent * 1.5 + screenWidth * goal.state, 0),
+                child: Tooltip(
+                  message: AppLocale.labels.currentDate,
+                  child: Container(
+                    width: 4.0,
+                    height: 4.0,
+                    decoration: BoxDecoration(
+                      color: colorScheme.inversePrimary,
+                      shape: BoxShape.circle,
                     ),
                   ),
                 ),
-              ],
+              ),
             ),
           ],
         ),
