@@ -55,6 +55,8 @@ class ListSelectorState<T extends ListSelector, K extends ListSelectorItem> exte
     }
   }
 
+  Widget Function(Iterable<Widget>)? getViewBuilder(BuildContext context) => null;
+
   @override
   Widget buildContent(BuildContext context) {
     final indent = ThemeHelper.getIndent();
@@ -95,6 +97,7 @@ class ListSelectorState<T extends ListSelector, K extends ListSelectorItem> exte
           ),
         ),
       ),
+      viewBuilder: getViewBuilder(context),
       suggestionsBuilder: (context, controller) =>
           widget.options.cast().where((e) => e.match(controller.text)).map((e) => ListTile(
                 title: itemBuilder(context, e),

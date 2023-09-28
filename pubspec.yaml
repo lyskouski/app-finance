@@ -29,7 +29,6 @@ dependencies:
   google_fonts: ^5.0.0
   intl: ^0.18.1
   flutter_colorpicker: ^1.0.3
-  flutter_iconpicker: ^3.2.4
   uuid: ^3.0.4
   provider: ^6.0.5
   month_picker_dialog: ^2.0.2

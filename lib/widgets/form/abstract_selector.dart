@@ -26,6 +26,12 @@ abstract class AbstractSelectorState<T extends AbstractSelector> extends State<T
   final delay = DelayedCall(300);
   final textController = SearchController();
 
+  @override
+  void dispose() {
+    textController.dispose();
+    super.dispose();
+  }
+
   void onTap(BuildContext context);
 
   Widget buildContent(BuildContext context);

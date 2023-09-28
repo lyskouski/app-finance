@@ -22,12 +22,6 @@ class ListBudgetSelector extends ListAccountSelector<ListBudgetSelectorItem> {
   }) : super();
 
   @override
-  List<ListBudgetSelectorItem> get options {
-    return state
-        .get(AppDataType.budgets)
-        .list
-        .map((item) => ListBudgetSelectorItem(item: item))
-        .cast<ListBudgetSelectorItem>()
-        .toList();
-  }
+  List<ListBudgetSelectorItem> get options =>
+      state.getList(AppDataType.budgets).map((item) => ListBudgetSelectorItem(item: item)).toList();
 }

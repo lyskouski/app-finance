@@ -5,13 +5,9 @@ class ListSelectorItem {
   final String id;
   final String name;
 
-  bool match(String search) {
-    return name.toLowerCase().contains(search.toLowerCase());
-  }
+  bool match(String search) => name.toLowerCase().contains(search.toLowerCase());
 
-  bool equal(String val) {
-    return id == val;
-  }
+  bool equal(val) => id == val;
 
   @override
   toString() => name;
