@@ -8,7 +8,7 @@ import 'package:app_finance/_classes/structure/bill_app_data.dart';
 import 'package:app_finance/_configs/theme_helper.dart';
 import 'package:app_finance/_classes/structure/navigation/app_route.dart';
 import 'package:app_finance/pages/abstract_page_state.dart';
-import 'package:app_finance/widgets/generic/base_line_widget.dart';
+import 'package:app_finance/pages/bill/widgets/bill_header_widget.dart';
 import 'package:app_finance/widgets/wrapper/confirmation_wrapper.dart';
 import 'package:flutter/material.dart';
 
@@ -63,22 +63,17 @@ class BillViewPageState extends AbstractPageState<BillViewPage> {
 
   @override
   Widget buildContent(BuildContext context, BoxConstraints constraints) {
-    final item = super.state.getByUuid(widget.uuid) as BillAppData;
     return Padding(
       padding: EdgeInsets.only(top: ThemeHelper.getIndent()),
       child: Column(
         children: [
-          BaseLineWidget(
-            uuid: item.uuid ?? '',
-            title: item.title,
-            description: item.description,
-            details: item.detailsFormatted,
-            progress: item.progress,
-            color: item.color ?? Colors.transparent,
-            icon: item.icon ?? Icons.radio_button_unchecked_sharp,
-            width: ThemeHelper.getWidth(context, 3),
-            route: AppRoute.billViewRoute,
-          )
+          BillHeaderWidget(
+            item: state.getByUuid(widget.uuid) as BillAppData,
+          ),
+          ThemeHelper.hIndent05,
+          const Divider(height: 2),
+          // List of items
+          // Images
         ],
       ),
     );

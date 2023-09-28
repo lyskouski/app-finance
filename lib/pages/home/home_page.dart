@@ -230,7 +230,6 @@ class HomePageState extends AbstractPageState<HomePage> {
         ] else ...[
           countHeight > 3
               ? GoalWidget(
-                  margin: EdgeInsets.zero,
                   width: isVertical ? width : partWidth,
                   state: super.state.getList(AppDataType.goals),
                 )
