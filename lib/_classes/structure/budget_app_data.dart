@@ -84,6 +84,8 @@ class BudgetAppData extends AbstractAppData with StorageMixin {
   double get details {
     if (super.details > 0 && super.details < 1) {
       return _relativeAmountLimit() - amount;
+    } else if (amountLimit == 0) {
+      return -amount;
     } else if (super.details > 0) {
       return amountLimit * (1 - progress);
     } else {
