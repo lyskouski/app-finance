@@ -115,7 +115,7 @@ class AccountViewPageState extends AbstractPageState<AccountViewPage> with Ticke
   @override
   Widget buildContent(BuildContext context, BoxConstraints constraints) {
     final indent = ThemeHelper.getIndent();
-    double width = ThemeHelper.getWidth(context, 3);
+    double width = ThemeHelper.getWidth(context, 4);
     return Padding(
       padding: EdgeInsets.only(top: indent),
       child: Column(
@@ -139,17 +139,17 @@ class AccountViewPageState extends AbstractPageState<AccountViewPage> with Ticke
                 children: <Widget>[
                   BaseListInfiniteWidget(
                     state: HistoryData.getLog(widget.uuid),
-                    width: width - indent,
+                    width: width,
                     buildListWidget: buildLogWidget,
                   ),
                   BaseListInfiniteWidget(
                     state: state.getList(AppDataType.bills).where((o) => o.account == widget.uuid).toList(),
-                    width: width - indent,
+                    width: width,
                     buildListWidget: buildLineWidget,
                   ),
                   BaseListInfiniteWidget(
                     state: state.getList(AppDataType.invoice).where((o) => o.account == widget.uuid).toList(),
-                    width: width - indent,
+                    width: width,
                     buildListWidget: buildLineWidget,
                   ),
                 ],

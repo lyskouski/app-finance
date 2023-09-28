@@ -38,7 +38,7 @@ class InvoiceRecalculation extends AbstractRecalculation {
       HistoryData.addLog(accountInitial.uuid!, initial, 0.0, -diffDelta, initial!.uuid);
     }
     double delta = getStateDelta(accountInitial, accountChange);
-    HistoryData.addLog(accountChange.uuid!, change, 0.0, delta, change.uuid);
+    HistoryData.addLog(accountChange.uuid!, change, 0.0, delta * plex, change.uuid);
     if (diffDelta != null && accountInitial!.createdAt.isBefore(initial!.createdAt)) {
       accountInitial.details -= plex * super.exchange.reform(diffDelta, initial?.currency, accountInitial.currency);
     }
