@@ -74,7 +74,7 @@ void main() {
 
     group('updateTotal', () {
       final testCases = [
-        (list: null, total: 1.0, result: 0.0),
+        (list: <String>[], total: 1.0, result: 0.0),
         (list: ['1', '2', '3'], total: 1.0, result: 3.0),
       ];
 

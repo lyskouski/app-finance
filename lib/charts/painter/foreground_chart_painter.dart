@@ -24,7 +24,7 @@ class ForegroundChartPainter extends AbstractPainter {
   final dynamic xTpl;
   final dynamic yTpl;
 
-  static const double xFactor = 1.2;
+  static const double coercion = 1.2;
 
   ForegroundChartPainter({
     required super.size,
@@ -47,7 +47,7 @@ class ForegroundChartPainter extends AbstractPainter {
     this.yType = double,
   }) {
     _setTextArea();
-    shift = textArea * xFactor;
+    shift = textArea * coercion;
     yDiv = yDivider * size!.height ~/ 400;
     xDiv = xDivider * size!.width ~/ 640;
   }

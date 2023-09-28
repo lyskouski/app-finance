@@ -30,7 +30,12 @@ abstract class AbstractPainter extends CustomPainter {
 
   Offset getValue(Offset point, Size size, [double dy = 0]) {
     double x = (point.dx - xMin) / (xMax - xMin) * size.width + indent;
-    double y = (1 - (point.dy + dy - yMin) / (yMax - yMin)) * size.height - indent / ForegroundChartPainter.xFactor;
-    return Offset(x > size.width ? size.width + 0.01 : x, y < 0 ? -0.01 : y);
+    if (x > size.width) {
+      x = size.width + 0.01;
+    } else if (x < indent) {
+      x = indent;
+    }
+    double y = (1 - (point.dy + dy - yMin) / (yMax - yMin)) * size.height - indent / ForegroundChartPainter.coercion;
+    return Offset(x, y < 0 ? -0.01 : y);
   }
 }

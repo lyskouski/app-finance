@@ -36,7 +36,7 @@ class OhlcChartPainter extends AbstractPainter {
       ..color = value.open > value.close ? Colors.red : Colors.blue
       ..style = PaintingStyle.fill
       ..strokeWidth = 1;
-    final time = value.date.millisecondsSinceEpoch.toDouble();
+    final time = value.date.millisecondsSinceEpoch.toDouble() - msDay * 8;
     final rect = Rect.fromPoints(
       getValue(Offset(time - msDay * 1.5, value.open), size),
       getValue(Offset(time + msDay * 1.5, value.close), size),
@@ -49,7 +49,7 @@ class OhlcChartPainter extends AbstractPainter {
       ..color = color
       ..style = PaintingStyle.stroke
       ..strokeWidth = 1;
-    final time = value.date.millisecondsSinceEpoch.toDouble();
+    final time = value.date.millisecondsSinceEpoch.toDouble() - msDay * 8;
     canvas.drawLine(getValue(Offset(time, value.low), size), getValue(Offset(time, value.high), size), line);
   }
 }
