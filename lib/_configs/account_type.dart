@@ -24,4 +24,8 @@ class AccountType {
       ListSelectorItem(id: AppAccountType.credit.toString(), name: AppLocale.labels.credit),
     ];
   }
+
+  static String getLabel(String id) => getList().firstWhere((e) => e.id == id).name;
+
+  static bool contains(String id, List<AppAccountType> type) => type.map((e) => e.toString()).contains(id);
 }

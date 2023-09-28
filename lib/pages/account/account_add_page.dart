@@ -198,7 +198,7 @@ class AccountAddPageState<T extends AccountAddPage> extends AbstractAddPageState
               update: (value) => setState(() => currency = value),
             ),
             ThemeHelper.hIndent2x,
-            if (![AppAccountType.account.toString(), AppAccountType.cash.toString()].contains(type)) ...[
+            if (!AccountType.contains(type ?? '', [AppAccountType.account, AppAccountType.cash])) ...[
               Text(
                 AppLocale.labels.validTillDate,
                 style: textTheme.bodyLarge,

@@ -84,7 +84,7 @@ class AccountAppData extends AbstractAppData {
   // ignore: unnecessary_getters_setters
   DateTime get closedAt => _closedAt;
   set closedAt(DateTime value) => _closedAt = value;
-  String get closedAtFormatted => _closedAt.yMEd();
+  String get closedAtFormatted => _closedAt.yearMonth();
   set closedAtFormatted(String value) => _closedAt = DateTime.parse(value);
 
   String get detailsFormatted => (super.details as double).toCurrency(currency: currency, withPattern: false);
