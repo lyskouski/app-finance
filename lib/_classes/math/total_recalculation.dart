@@ -34,17 +34,22 @@ class TotalRecalculation extends AbstractRecalculation {
     return total;
   }
 
-  List<String>? getSummaryList(AppDataType type, SummaryAppData? summary) {
-    return type == AppDataType.bills || type == AppDataType.budgets ? summary?.listActual : summary?.list;
+  List<String> getSummaryList(AppDataType type, SummaryAppData? summary) {
+    if (summary == null) {
+      return [];
+    }
+    return [AppDataType.bills, AppDataType.budgets, AppDataType.invoice].contains(type)
+        ? summary.listActual
+        : summary.list;
   }
 
   Future<void> updateTotal(AppDataType type, SummaryAppData? summary, HashMap<String, dynamic> hashTable) async {
-    var list = getSummaryList(type, summary);
-    summary?.total = (list == null || list.isEmpty
+    final list = getSummaryList(type, summary);
+    summary?.total = list.isEmpty
         ? 0.0
         : list
             .map<double>((String uuid) => updateTotalMap(type, uuid, hashTable))
-            .reduce((value, details) => value + details));
+            .reduce((value, details) => value + details);
   }
 
   void updateGoals(dynamic goalList, double initTotal, double total) {
