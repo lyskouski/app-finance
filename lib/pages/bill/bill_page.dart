@@ -26,7 +26,7 @@ class BillPage extends StatefulWidget {
 class BillPageState extends AbstractPageState<BillPage> {
   List<dynamic>? items;
   List<Widget> itemsShown = [];
-  DateTime timer = DateTime(DateTime.now().year, DateTime.now().month, DateTime.now().day);
+  DateTime timer = DateTime.now();
   Queue<String> title = Queue();
   final _scrollController = ScrollController();
   bool isLoading = false;

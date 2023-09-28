@@ -14,4 +14,14 @@ extension DateTimeExt on DateTime {
     }
     return formatterDate.format(this);
   }
+
+  String yearMonth() {
+    DateFormat formatterDate;
+    try {
+      formatterDate = DateFormat.yM(AppLocale.code);
+    } catch (e) {
+      formatterDate = DateFormat.yM('en_US');
+    }
+    return formatterDate.format(this);
+  }
 }

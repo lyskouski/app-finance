@@ -22,22 +22,19 @@ class BudgetPage extends StatefulWidget {
 }
 
 class BudgetPageState extends AbstractPageState<BudgetPage> {
-  dynamic items;
+  late AppDataGetter items;
 
-  dynamic _getItems() {
-    dynamic items;
+  AppDataGetter _getItems() {
     if (widget.search != null) {
       final scope =
-          super.state.getList(AppDataType.budgets).where((e) => e.title.toString().startsWith(widget.search!)).toList();
+          state.getList(AppDataType.budgets).where((e) => e.title.toString().startsWith(widget.search!)).toList();
       final ex = Exchange(store: super.state);
-      items = (
+      return (
         total: scope.fold(0.0, (v, e) => v + ex.reform(e.details, e.currency, ex.getDefaultCurrency())),
         list: scope
       );
-    } else {
-      items = super.state.get(AppDataType.budgets);
     }
-    return items;
+    return state.get(AppDataType.budgets);
   }
 
   @override
@@ -64,10 +61,7 @@ class BudgetPageState extends AbstractPageState<BudgetPage> {
 
   @override
   Widget buildContent(BuildContext context, BoxConstraints constraints) {
-    if (items == null) {
-      WidgetsBinding.instance.addPostFrameCallback((_) => setState(() => items = _getItems()));
-      return ThemeHelper.emptyBox;
-    }
+    items = _getItems();
     return Column(
       children: [
         BudgetWidget(

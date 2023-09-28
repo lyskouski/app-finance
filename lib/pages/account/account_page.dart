@@ -23,25 +23,18 @@ class AccountPage extends StatefulWidget {
 }
 
 class AccountPageState extends AbstractPageState<AccountPage> {
-  dynamic items;
+  late AppDataGetter items;
 
   dynamic _getItems() {
-    dynamic items;
     if (widget.search != null) {
-      final scope = super
-          .state
-          .getList(AppDataType.accounts)
-          .where((e) => e.title.toString().startsWith(widget.search!))
-          .toList();
+      final scope = state.getList(AppDataType.accounts).where((e) => e.title.toString().startsWith(widget.search!));
       final ex = Exchange(store: super.state);
-      items = (
+      return (
         total: scope.fold(0.0, (v, e) => v + ex.reform(e.details, e.currency, ex.getDefaultCurrency())),
-        list: scope
+        list: scope.toList()
       );
-    } else {
-      items = super.state.get(AppDataType.accounts);
     }
-    return items;
+    return state.get(AppDataType.accounts);
   }
 
   @override
@@ -68,10 +61,7 @@ class AccountPageState extends AbstractPageState<AccountPage> {
 
   @override
   Widget buildContent(BuildContext context, BoxConstraints constraints) {
-    if (items == null) {
-      WidgetsBinding.instance.addPostFrameCallback((_) => setState(() => items = _getItems()));
-      return ThemeHelper.emptyBox;
-    }
+    items = _getItems();
     return Column(
       children: [
         AccountWidget(
