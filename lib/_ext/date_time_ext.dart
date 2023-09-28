@@ -24,4 +24,27 @@ extension DateTimeExt on DateTime {
     }
     return formatterDate.format(this);
   }
+
+  String monthDay() {
+    DateFormat formatterDate;
+    try {
+      formatterDate = DateFormat.MMMMd(AppLocale.code);
+    } catch (e) {
+      formatterDate = DateFormat.MMMMd('en_US');
+    }
+    return formatterDate.format(this);
+  }
+
+  String dateTime() {
+    DateFormat formatterDate;
+    DateFormat formatterTime;
+    try {
+      formatterDate = DateFormat.yMMMd(AppLocale.code);
+      formatterTime = DateFormat.jms(AppLocale.code);
+    } catch (e) {
+      formatterDate = DateFormat.yMMMd('en_US');
+      formatterTime = DateFormat.jms('en_US');
+    }
+    return '${formatterTime.format(this)}, ${formatterDate.format(this)}';
+  }
 }

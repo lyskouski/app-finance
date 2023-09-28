@@ -1,15 +1,14 @@
 // Copyright 2023 The terCAD team. All rights reserved.
 // Use of this source code is governed by a CC BY-NC-ND 4.0 license that can be found in the LICENSE file.
 
-import 'package:app_finance/_classes/herald/app_locale.dart';
 import 'package:app_finance/_classes/structure/abstract_app_data.dart';
 import 'package:app_finance/_classes/structure/account_app_data.dart';
 import 'package:app_finance/_classes/structure/budget_app_data.dart';
 import 'package:app_finance/_classes/storage/app_data.dart';
+import 'package:app_finance/_ext/date_time_ext.dart';
 import 'package:app_finance/_mixins/storage_mixin.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_currency_picker/flutter_currency_picker.dart';
-import 'package:intl/intl.dart';
 
 class BillAppData extends AbstractAppData with StorageMixin {
   String account;
@@ -73,10 +72,11 @@ class BillAppData extends AbstractAppData with StorageMixin {
 
   @override
   String get description {
-    final DateFormat formatterDate = DateFormat.MMMMd(AppLocale.code);
     AccountAppData? type = getState().getByUuid(account);
-    return formatterDate.format(super.createdAt) + (type != null ? ' (${type.title})' : '');
+    return super.createdAt.monthDay() + (type != null ? ' (${type.title})' : '');
   }
+
+  String get accountNamed => getState().getByUuid(account).title;
 
   @override
   MaterialColor? get color {
