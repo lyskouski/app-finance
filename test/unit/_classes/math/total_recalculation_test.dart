@@ -121,6 +121,13 @@ void main() {
           progress: [1.0, 1.0, 1.0],
           result: [0.0, 0.333, 0.666],
         ),
+        (
+          initTotal: 200.0,
+          total: 100.0,
+          initial: [150.0, 100.0, 100.0],
+          progress: [0.0, 1.0, 1.0],
+          result: [0.0, 0.333, 0.666],
+        ),
       ];
 
       for (var v in testCases) {

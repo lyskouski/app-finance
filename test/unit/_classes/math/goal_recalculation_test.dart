@@ -25,7 +25,7 @@ void main() {
         (initial: null, change: (progress: 0.5, details: 1.0, hidden: false), result: 0.0),
         (initial: null, change: (progress: 0.5, details: 1.0, hidden: true), result: 0.0),
         (initial: (progress: 0.5, details: 1.0), change: (progress: 0.6, details: 1.2, hidden: true), result: 0.0),
-        (initial: (progress: 0.1, details: 5.0), change: (progress: 0.1, details: 10.0, hidden: false), result: 1.1),
+        (initial: (progress: 0.1, details: 5.0), change: (progress: 0.1, details: 10.0, hidden: false), result: 0.05),
       ];
 
       for (var v in testCases) {

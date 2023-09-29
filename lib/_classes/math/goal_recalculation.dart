@@ -15,11 +15,11 @@ class GoalRecalculation extends AbstractRecalculation {
 
   @override
   double getDelta() {
-    if (initial != null && !change.hidden) {
-      return getProgress(initial!.details, initial!.progress, change.details - initial!.details);
-    } else {
-      return 0.0;
+    double result = 0.0;
+    if (initial != null && !change.hidden && change.details > 0) {
+      result = initial!.details * initial!.progress / change.details;
     }
+    return result.clamp(0, 1);
   }
 
   GoalRecalculation updateGoal() {

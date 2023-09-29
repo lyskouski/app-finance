@@ -8,9 +8,9 @@ abstract class AbstractRecalculation {
 
   double getDelta();
 
-  double getProgress(double amount, double progress, double delta) {
-    if (amount > 0) {
-      progress = (amount * progress + delta) / amount;
+  double getProgress(double amount, double progress, double delta, [double shift = 0]) {
+    if (amount + shift != 0) {
+      progress = (amount * progress + delta) / (amount + shift);
     } else {
       progress = 0.0;
     }
