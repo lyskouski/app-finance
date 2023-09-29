@@ -3,7 +3,6 @@
 
 import 'package:app_finance/_classes/herald/app_locale.dart';
 import 'package:app_finance/_classes/controller/flow_state_machine.dart';
-import 'package:app_finance/_classes/structure/navigation/app_menu.dart';
 import 'package:app_finance/_classes/structure/bill_app_data.dart';
 import 'package:app_finance/_classes/structure/goal_app_data.dart';
 import 'package:app_finance/_classes/storage/app_preferences.dart';
@@ -52,8 +51,7 @@ class GoalViewPageState extends AbstractPageState<GoalViewPage> {
     );
     newBill = super.state.add(newBill);
     FlowStateMachine.deactivate(nav, store: super.state, data: data);
-    String route = AppMenu.uuid(AppRoute.billEditRoute, newBill.uuid ?? '');
-    nav.popAndPushNamed(route);
+    nav.popAndPushNamed(AppRoute.billEditRoute, arguments: {routeArguments.uuid: newBill.uuid ?? ''});
   }
 
   @override
@@ -62,7 +60,6 @@ class GoalViewPageState extends AbstractPageState<GoalViewPage> {
   @override
   Widget buildButton(BuildContext context, BoxConstraints constraints) {
     final data = super.state.getByUuid(widget.uuid) as GoalAppData;
-    String route = AppMenu.uuid(AppRoute.goalEditRoute, widget.uuid);
     double indent = ThemeHelper.getIndent(4);
     NavigatorState nav = Navigator.of(context);
     return Container(
@@ -70,7 +67,7 @@ class GoalViewPageState extends AbstractPageState<GoalViewPage> {
       child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
         FloatingActionButton(
           heroTag: 'goal_view_page_edit',
-          onPressed: () => nav.pushNamed(route),
+          onPressed: () => nav.pushNamed(AppRoute.goalEditRoute, arguments: {routeArguments.uuid: widget.uuid}),
           tooltip: AppLocale.labels.editGoalTooltip,
           child: const Icon(Icons.edit),
         ),

@@ -1,7 +1,7 @@
 // Copyright 2023 The terCAD team. All rights reserved.
 // Use of this source code is governed by a CC BY-NC-ND 4.0 license that can be found in the LICENSE file.
 
-import 'package:app_finance/_classes/structure/navigation/app_menu.dart';
+import 'package:app_finance/_classes/structure/navigation/app_route.dart';
 import 'package:app_finance/_configs/custom_text_theme.dart';
 import 'package:app_finance/_configs/theme_helper.dart';
 import 'package:app_finance/_ext/build_context_ext.dart';
@@ -49,7 +49,7 @@ class BudgetLineWidget extends StatelessWidget {
     const iconSize = 18.0;
     return TapWidget(
       tooltip: '',
-      route: AppMenu.uuid(route, uuid),
+      route: RouteSettings(name: route, arguments: {routeArguments.uuid: uuid}),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [

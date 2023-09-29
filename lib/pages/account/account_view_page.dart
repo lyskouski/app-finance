@@ -7,7 +7,6 @@ import 'package:app_finance/_classes/storage/app_data.dart';
 import 'package:app_finance/_classes/storage/history_data.dart';
 import 'package:app_finance/_classes/structure/account_app_data.dart';
 import 'package:app_finance/_classes/structure/bill_app_data.dart';
-import 'package:app_finance/_classes/structure/navigation/app_menu.dart';
 import 'package:app_finance/_configs/theme_helper.dart';
 import 'package:app_finance/_classes/structure/navigation/app_route.dart';
 import 'package:app_finance/_ext/date_time_ext.dart';
@@ -57,7 +56,6 @@ class AccountViewPageState extends AbstractPageState<AccountViewPage> with Ticke
 
   @override
   Widget buildButton(BuildContext context, BoxConstraints constraints) {
-    String route = AppMenu.uuid(AppRoute.accountEditRoute, widget.uuid);
     double indent = ThemeHelper.getIndent(4);
     NavigatorState nav = Navigator.of(context);
     return Container(
@@ -65,7 +63,7 @@ class AccountViewPageState extends AbstractPageState<AccountViewPage> with Ticke
       child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
         FloatingActionButton(
           heroTag: 'account_view_page_edit',
-          onPressed: () => nav.pushNamed(route),
+          onPressed: () => nav.pushNamed(AppRoute.accountEditRoute, arguments: {routeArguments.uuid: widget.uuid}),
           tooltip: AppLocale.labels.editAccountTooltip,
           child: const Icon(Icons.edit),
         ),

@@ -4,7 +4,7 @@
 import 'dart:math';
 
 import 'package:app_finance/_classes/herald/app_locale.dart';
-import 'package:app_finance/_classes/structure/navigation/app_menu.dart';
+import 'package:app_finance/_classes/structure/navigation/app_route.dart';
 import 'package:app_finance/_ext/build_context_ext.dart';
 import 'package:app_finance/charts/bar_vertical_group.dart';
 import 'package:app_finance/charts/bar_vertical_single.dart';
@@ -43,7 +43,7 @@ class BaseGroupWidget extends StatelessWidget {
         ['${AppLocale.labels.title}: "${item.title}"\n', '${AppLocale.labels.details}: ${item.detailsFormatted}']);
     return TapWidget(
       tooltip: tooltip.toString(),
-      route: '$route${item.uuid}',
+      route: RouteSettings(name: route, arguments: {routeArguments.uuid: item.uuid}),
       child: toSwap
           ? Column(
               children: [
@@ -84,7 +84,7 @@ class BaseGroupWidget extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         TapWidget(
-          route: AppMenu.search(route, title),
+          route: RouteSettings(name: route, arguments: {routeArguments.search: title}),
           tooltip: AppLocale.labels.search(title),
           child: RowWidget(
             indent: indent,

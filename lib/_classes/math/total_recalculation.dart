@@ -59,7 +59,12 @@ class TotalRecalculation extends AbstractRecalculation {
       delta /= goalList.length;
       goalList.forEach((dynamic goal) {
         index++;
-        double convDelta = exchange.reform(delta, Exchange.defaultCurrency, goal.currency);
+        double convDelta = 0;
+        if (delta > 0 && total < goal.initial) {
+          convDelta = exchange.reform(total, Exchange.defaultCurrency, goal.currency) - goal.initial;
+        } else {
+          convDelta = exchange.reform(delta, Exchange.defaultCurrency, goal.currency);
+        }
         double progress = getProgress(goal.details, goal.progress, convDelta);
         if (progress > 1.0) {
           if (index < goalList.length) {

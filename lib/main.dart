@@ -101,14 +101,15 @@ class MyApp extends StatefulWidget {
 class MyAppState extends State<MyApp> {
   String route = AppRoute.homeRoute;
 
-  WidgetBuilder? getDynamicRouterWidget(String route) {
-    final regUuid = RegExp(r'\/uuid:([\w-]+)');
-    final regSearch = RegExp(r'\/search:(.*?)$');
-    final match = regUuid.firstMatch(route) ?? regSearch.firstMatch(route);
+  WidgetBuilder? getDynamicRouterWidget(String route, Object? arguments) {
     if (widget.platform != null) {
-      FirebaseAnalytics.instance.logSelectContent(contentType: route, itemId: match != null ? 'dynamic' : 'static');
+      FirebaseAnalytics.instance.logSelectContent(
+        contentType: route,
+        itemId: arguments != null ? 'dynamic' : 'static',
+      );
     }
-    final String key = match?.group(1) ?? '';
+    final args = arguments as Map<String, String>?;
+    final String key = args?['uuid'] ?? args?['search'] ?? '';
     route = route.replaceAll(key, '');
 
     final routes = <String, WidgetBuilder>{
@@ -143,10 +144,8 @@ class MyAppState extends State<MyApp> {
     return routes[route] ?? (context) => const HomePage();
   }
 
-  MaterialPageRoute? getDynamicRouter(settings) {
-    route = settings.name!;
-    return MaterialPageRoute(/*maintainState: false,*/ builder: getDynamicRouterWidget(route)!);
-  }
+  MaterialPageRoute? getDynamicRouter(RouteSettings settings) =>
+      MaterialPageRoute(builder: getDynamicRouterWidget(settings.name ?? '', settings.arguments)!);
 
   @override
   Widget build(BuildContext context) {

@@ -3,7 +3,6 @@
 
 import 'package:app_finance/_classes/herald/app_locale.dart';
 import 'package:app_finance/_classes/controller/flow_state_machine.dart';
-import 'package:app_finance/_classes/structure/navigation/app_menu.dart';
 import 'package:app_finance/_classes/structure/bill_app_data.dart';
 import 'package:app_finance/_configs/theme_helper.dart';
 import 'package:app_finance/_classes/structure/navigation/app_route.dart';
@@ -36,7 +35,6 @@ class BillViewPageState extends AbstractPageState<BillViewPage> {
 
   @override
   Widget buildButton(BuildContext context, BoxConstraints constraints) {
-    String route = AppMenu.uuid(AppRoute.billEditRoute, widget.uuid);
     double indent = ThemeHelper.getIndent(4);
     NavigatorState nav = Navigator.of(context);
     return Container(
@@ -44,7 +42,7 @@ class BillViewPageState extends AbstractPageState<BillViewPage> {
       child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
         FloatingActionButton(
           heroTag: 'bill_view_page_edit',
-          onPressed: () => nav.pushNamed(route),
+          onPressed: () => nav.pushNamed(AppRoute.billEditRoute, arguments: {routeArguments.uuid: widget.uuid}),
           tooltip: AppLocale.labels.editBillTooltip,
           child: const Icon(Icons.edit),
         ),

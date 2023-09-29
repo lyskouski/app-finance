@@ -3,6 +3,7 @@
 
 import 'dart:collection';
 import 'package:app_finance/_classes/herald/app_sync.dart';
+import 'package:app_finance/_classes/math/goal_recalculation.dart';
 import 'package:app_finance/_classes/math/invoice_recalculation.dart';
 import 'package:app_finance/_classes/storage/history_data.dart';
 import 'package:app_finance/_classes/structure/account_app_data.dart';
@@ -13,7 +14,6 @@ import 'package:app_finance/_classes/math/budget_recalculation.dart';
 import 'package:app_finance/_classes/structure/currency_app_data.dart';
 import 'package:app_finance/_classes/structure/currency/exchange.dart';
 import 'package:app_finance/_classes/structure/goal_app_data.dart';
-import 'package:app_finance/_classes/math/goal_recalculation.dart';
 import 'package:app_finance/_classes/structure/interface_app_data.dart';
 import 'package:app_finance/_classes/structure/invoice_app_data.dart';
 import 'package:app_finance/_classes/structure/summary_app_data.dart';

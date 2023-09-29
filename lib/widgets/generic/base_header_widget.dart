@@ -45,9 +45,10 @@ class BaseHeaderWidget extends StatelessWidget {
     final nav = Navigator.of(context);
     final isWide = Provider.of<AppZoom>(context, listen: false).value > 1.5;
     final bnShift = Offset(-4, isWide ? -8 : 0);
+    final metrics = AppMenu.metrics(route);
     return TapWidget(
       tooltip: tooltip,
-      route: route,
+      route: RouteSettings(name: route),
       child: Container(
         padding: EdgeInsets.all(indent / 2),
         height: isWide ? 32 : 60,
@@ -87,7 +88,7 @@ class BaseHeaderWidget extends StatelessWidget {
                     color: context.colorScheme.onSecondaryContainer,
                   ),
                   tooltip: AppLocale.labels.metricsTooltip,
-                  onPressed: () => nav.pushNamed(AppMenu.metrics(route)),
+                  onPressed: () => nav.pushNamed(metrics.name!, arguments: metrics.arguments),
                 ),
               ),
             ),

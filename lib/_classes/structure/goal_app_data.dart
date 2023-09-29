@@ -16,7 +16,7 @@ class GoalAppData extends AbstractAppData {
     required super.title,
     required this.initial,
     super.uuid,
-    super.details,
+    super.details = 0.0,
     super.progress = 0.0,
     super.description,
     super.color,

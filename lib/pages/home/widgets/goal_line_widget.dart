@@ -26,10 +26,10 @@ class GoalLineWidget extends StatelessWidget {
     final indent = ThemeHelper.getIndent();
     final ColorScheme colorScheme = context.colorScheme;
     final TextTheme textTheme = context.textTheme;
-    double screenWidth = width ?? ThemeHelper.getWidth(context, 2);
+    double screenWidth = (width ?? ThemeHelper.getWidth(context, 2)) - indent * 1.5;
     return TapWidget(
       tooltip: AppLocale.labels.goalTooltip,
-      route: AppRoute.goalRoute,
+      route: const RouteSettings(name: AppRoute.goalRoute),
       child: Container(
         color: colorScheme.inversePrimary,
         height: 20,
@@ -91,13 +91,14 @@ class GoalLineWidget extends StatelessWidget {
               start: const Size(1, 3),
               end: const Size(3, 4),
               order: 2,
-              child: Transform.translate(
-                offset: Offset(indent * 1.5 + screenWidth * goal.state, 0),
+              child: Container(
+                alignment: Alignment.topLeft,
+                margin: EdgeInsets.only(left: screenWidth * goal.state),
+                height: 5.0,
                 child: Tooltip(
                   message: AppLocale.labels.currentDate,
                   child: Container(
-                    width: 4.0,
-                    height: 4.0,
+                    width: 5.0,
                     decoration: BoxDecoration(
                       color: colorScheme.inversePrimary,
                       shape: BoxShape.circle,

@@ -115,8 +115,7 @@ class GoalPageState extends AbstractPageState<GoalPage> {
                 [
                   GaugeChart(
                     value: value,
-                    valueMin: maxValue,
-                    valueMax: maxValue,
+                    valueMax: maxValue * 2.2,
                     width: width > 200 ? 200 : width,
                     height: 100,
                   ),

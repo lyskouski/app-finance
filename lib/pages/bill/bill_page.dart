@@ -6,7 +6,6 @@ import 'dart:collection';
 import 'package:app_finance/_classes/storage/app_data.dart';
 import 'package:app_finance/_classes/herald/app_locale.dart';
 import 'package:app_finance/_classes/structure/bill_app_data.dart';
-import 'package:app_finance/_classes/structure/navigation/app_menu.dart';
 import 'package:app_finance/_configs/theme_helper.dart';
 import 'package:app_finance/_classes/structure/navigation/app_route.dart';
 import 'package:app_finance/_ext/date_time_ext.dart';
@@ -74,7 +73,7 @@ class BillPageState extends AbstractPageState<BillPage> {
       final budget = state.getByUuid(item.category);
       itemsShown.add(SliverToBoxAdapter(
         child: BaseSwipeWidget(
-          routePath: AppMenu.viewRoute2Edit(AppRoute.billViewRoute),
+          routePath: AppRoute.billEditRoute,
           uuid: item.uuid!,
           child: BillLineWidget(
             uuid: item.uuid!,

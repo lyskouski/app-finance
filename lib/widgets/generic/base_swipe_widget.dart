@@ -4,7 +4,7 @@
 import 'package:app_finance/_classes/controller/flow_state_machine.dart';
 import 'package:app_finance/_classes/herald/app_locale.dart';
 import 'package:app_finance/_classes/storage/app_data.dart';
-import 'package:app_finance/_classes/structure/navigation/app_menu.dart';
+import 'package:app_finance/_classes/structure/navigation/app_route.dart';
 import 'package:app_finance/_configs/theme_helper.dart';
 import 'package:app_finance/widgets/wrapper/text_wrapper.dart';
 import 'package:flutter/material.dart';
@@ -43,7 +43,6 @@ class BaseSwipeWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    String route = AppMenu.uuid(routePath, uuid);
     NavigatorState nav = Navigator.of(context);
     return Consumer<AppData>(builder: (context, appState, _) {
       return Visibility(
@@ -82,7 +81,7 @@ class BaseSwipeWidget extends StatelessWidget {
             SwipeAction(
               color: Colors.transparent,
               closeOnTap: true,
-              onTap: (_) => nav.pushNamed(route),
+              onTap: (_) => nav.pushNamed(routePath, arguments: {routeArguments.uuid: uuid}),
               content: _getIcon(Icons.edit, Colors.grey, Colors.white, AppLocale.labels.editTooltip),
             ),
           ],
