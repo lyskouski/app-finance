@@ -5,7 +5,6 @@ import 'package:app_finance/_classes/herald/app_locale.dart';
 import 'package:app_finance/_classes/controller/flow_state_machine.dart';
 import 'package:app_finance/_classes/storage/app_data.dart';
 import 'package:app_finance/_classes/storage/history_data.dart';
-import 'package:app_finance/_classes/structure/navigation/app_menu.dart';
 import 'package:app_finance/_classes/structure/budget_app_data.dart';
 import 'package:app_finance/_configs/theme_helper.dart';
 import 'package:app_finance/_classes/structure/navigation/app_route.dart';
@@ -50,7 +49,6 @@ class BudgetViewPageState extends AbstractPageState<BudgetViewPage> with TickerP
 
   @override
   Widget buildButton(BuildContext context, BoxConstraints constraints) {
-    String route = AppMenu.uuid(AppRoute.budgetEditRoute, widget.uuid);
     double indent = ThemeHelper.getIndent(4);
     NavigatorState nav = Navigator.of(context);
     return Container(
@@ -58,7 +56,7 @@ class BudgetViewPageState extends AbstractPageState<BudgetViewPage> with TickerP
       child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
         FloatingActionButton(
           heroTag: 'budget_view_page_edit',
-          onPressed: () => nav.pushNamed(route),
+          onPressed: () => nav.pushNamed(AppRoute.budgetEditRoute, arguments: {routeArguments.uuid: widget.uuid}),
           tooltip: AppLocale.labels.editBudgetTooltip,
           child: const Icon(Icons.edit),
         ),

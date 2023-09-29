@@ -29,7 +29,7 @@ class GoalLineWidget extends StatelessWidget {
     double screenWidth = (width ?? ThemeHelper.getWidth(context, 2)) - indent * 1.5;
     return TapWidget(
       tooltip: AppLocale.labels.goalTooltip,
-      route: AppRoute.goalRoute,
+      route: const RouteSettings(name: AppRoute.goalRoute),
       child: Container(
         color: colorScheme.inversePrimary,
         height: 20,

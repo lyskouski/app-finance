@@ -41,7 +41,7 @@ class BudgetWidget extends AccountWidget {
       color: items.map((e) => e.color ?? Colors.transparent).cast<Color>().toList(),
       width: width - ThemeHelper.getIndent() / 2,
       items: items,
-      route: routeList,
+      route: AppRoute.budgetSearchRoute,
     );
   }
 

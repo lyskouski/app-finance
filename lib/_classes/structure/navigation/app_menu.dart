@@ -7,27 +7,13 @@ import 'package:app_finance/_classes/structure/navigation/app_route.dart';
 import 'package:flutter/material.dart';
 
 class AppMenu {
-  static String uuid(String route, String uuid) {
-    return route.replaceAll('uuid:', 'uuid:$uuid');
-  }
-
-  static String metrics(String? route) {
-    String target = AppRoute.metricsRoute;
-    switch (route) {
-      case AppRoute.accountRoute:
-        return '$target/search:1';
-      case AppRoute.budgetRoute:
-        return '$target/search:0';
-      case AppRoute.billRoute:
-      default:
-        return '$target/search:2';
-    }
-  }
-
-  static String viewRoute2Edit(String route) => '$route/edit';
-
-  static String search(String route, String title) {
-    return '${route.replaceAll('uuid:', 'search:')}$title';
+  static RouteSettings metrics(String? route) {
+    final key = switch (route) {
+      AppRoute.accountRoute => '1',
+      AppRoute.budgetRoute => '0',
+      _ => '2',
+    };
+    return RouteSettings(name: AppRoute.metricsSearchRoute, arguments: {routeArguments.search: key});
   }
 
   static AppMenuItem getByIndex(int index) {

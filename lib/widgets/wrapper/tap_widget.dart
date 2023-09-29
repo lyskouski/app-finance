@@ -8,7 +8,7 @@ import 'package:flutter/material.dart';
 class TapWidget extends StatelessWidget {
   final Widget child;
   final String? tooltip;
-  final String? route;
+  final RouteSettings? route;
   final Function? onTap;
   final bool toWrap;
 
@@ -33,8 +33,8 @@ class TapWidget extends StatelessWidget {
         onTap: () {
           if (onTap != null) {
             onTap!();
-          } else if (route != '') {
-            nav.pushNamed(route ?? AppRoute.homeRoute);
+          } else if (route?.name != '') {
+            nav.pushNamed(route?.name ?? AppRoute.homeRoute, arguments: route?.arguments);
           }
         },
         child: child,
