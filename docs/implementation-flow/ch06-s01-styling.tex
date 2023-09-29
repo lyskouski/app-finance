@@ -18,20 +18,49 @@ by overriding valuable for us colors:
 
 \begin{lstlisting}
 // ./lib/main.dart
+final palette = context.watch<AppPalette>().value;
+final text = CustomTextTheme.textTheme(Theme.of(context));
 return MaterialApp(
   theme: ThemeData(
     colorScheme: const ColorScheme.light().withCustom(),
+    textTheme: text,
     floatingActionButtonTheme: const FloatingActionButtonThemeData().withCustom(Brightness.light),
+    datePickerTheme: DatePickerTheme.of(context).withCustom(palette, text, Brightness.light),
+    timePickerTheme: TimePickerTheme.of(context).withCustom(palette, text, Brightness.light),
     // ... other options
   ),
-  darkTheme: ThemeData(
-    colorScheme: const ColorScheme.dark().withCustom(),
-    floatingActionButtonTheme: const FloatingActionButtonThemeData().withCustom(Brightness.dark),
+  darkTheme: ThemeData(/* same options with 'Brightness.dark' */),
 \end{lstlisting}
 
-\noindent Where \q{withCustom}-method is a part of our extension for \q{ColorScheme} and \q{FloatingActionButtonThemeData}:
+\noindent Where \q{withCustom}-method is a part of our extension for \q{ColorScheme} and other types:
 
 \begin{lstlisting}
+// ./lib/_classes/herald/app_palette.dart
+class AppPalette extends ValueNotifier<String> {
+  // Get current palette from shared preferences
+  static get state => AppPreferences.get(AppPreferences.prefColor) ?? AppColors.colorApp;
+  // Keep its light mode (since can be configured by user)
+  static get light => AppPreferences.get(AppPreferences.prefPalette) ?? AppDefaultColors().toString();
+  // Keep its dark mode (since can be configured by user)
+  static get dark => AppPreferences.get(AppPreferences.prefPaletteDark) ?? AppDarkColors().toString();
+
+  AppPalette() : super(state);
+  // Change mode type
+  Future<void> setMode(String newValue) async {
+    if (newValue != value) {
+      value = newValue;
+      await AppPreferences.set(AppPreferences.prefColor, value);
+      notifyListeners();
+    }
+  }
+  // Change color preferences
+  Future<void> set(AppDefaultColors light, AppDefaultColors dark) async {
+    await AppPreferences.set(AppPreferences.prefPalette, light.toString());
+    await AppPreferences.set(AppPreferences.prefPaletteDark, dark.toString());
+    notifyListeners();
+  }
+}
+
 // ./lib/_configs/custom_color_scheme.dart
 class AppColors {
   late AppDefaultColors palette;

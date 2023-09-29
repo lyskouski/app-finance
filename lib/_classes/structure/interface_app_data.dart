@@ -5,7 +5,7 @@ import 'package:app_finance/_classes/storage/app_data.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_currency_picker/flutter_currency_picker.dart';
 
-abstract class InterfaceAppData {
+abstract interface class InterfaceAppData {
   String? uuid;
   Currency? currency;
   IconData? icon;

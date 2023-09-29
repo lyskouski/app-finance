@@ -4,18 +4,18 @@
 \subsection{Unlocking Multi-Platform Support}
 \markboth{Implementing Core Functionality}{Unlocking Multi-Platform Support}
 
-Flutter is designed to work seamlessly across all environments. However, there are certain scenarios, such as file
+Flutter is designed to work seamlessly across all environments. However, there are a certain scenarios, such as file
 handling, where its behavior may deviate from being entirely platform-agnostic. Independently of that, there are two
-ways to brake that limitation.
+ways to brake that limitation.\\
+\\
 
-Firstly, conditional imports:
+\noindent Conditional imports:
 
 \begin{lstlisting}
 import 'package:file_picker_web/file_picker_web.dart' if (dart.library.io) 'package:file_picker/file_picker.dart';
 \end{lstlisting}
 
-For the cases when libraries do have different interfaces, conditional exports (where \q{connector\_*}-files represent
-unified interface for the methods):
+\noindent and exports:
 
 \begin{lstlisting}
 export 'src/connector_none.dart' // Stub implementation

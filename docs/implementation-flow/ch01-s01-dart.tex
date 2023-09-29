@@ -5,7 +5,7 @@
 \markboth{Bootcamping}{Dart} \label{dart}
 
 Dart is known for its simplicity and readability as object-oriented and class-based language. It offers C-style syntax 
-and supports common programming concepts like inheritance, polymorphism, and encapsulation.
+and object-oriented programming (OOP) concept (inheritance, polymorphism, and encapsulation).
 
 \paragraph{Dart Virtual Machine (VM)} includes a just-in-time (JIT) compiler for fast development cycles and an 
 ahead-of-time (AOT) compiler for optimized production performance by translating \q{Dart}-code into a native machine 
@@ -29,9 +29,9 @@ their dependencies via \q{pubspec.yaml}-file by using public (\href{https://pub.
 Dart is well-equipped to cover the full stack development. \q{Flutter}, powered by Dart, enables developers to write 
 code once and run it on multiple platforms, providing a unified user experience. \q{Aqueduct} provides a robust 
 foundation for building scalable and high-performance backend services and APIs. Dart's versatility extends 
-seamlessly to the database layer, offering compatibility with a wide range of database systems, both traditional 
-(as \q{Aqueduct ORM} for PostgreSQL, \q{Realm} for MongoDB) and those built specifically using Dart as their foundation
-(as \q{DartinoDB}).
+seamlessly to a database layer, offering compatibility with a wide range of database systems, both SQL and 
+noSQL databases (as \q{Aqueduct ORM} for PostgreSQL, \q{Realm} for MongoDB), as well as databases built specifically 
+using Dart as their foundation (like \q{DartinoDB}).
 
 
 \newpage
@@ -99,14 +99,15 @@ calculateValue(DateTime start, DateTime end, DateTime current) {
     return 1;
   if (start.isAtSameMomentAs(current))
     return 0;  
-  double total = end.difference(start).inDays.toDouble();
-  double diff = current.difference(start).inDays.toDouble();
+  int total = end.difference(start).inDays;
+  int diff = current.difference(start).inDays;
   return diff / total;
 }
 \end{lstlisting}
 
-\noindent \q{DateFormat} is used to convert and parse dates into a specific format, such as 'yyyy-MM-dd' (4 characters 
-for a year, dash, 2 symbols for a month, dash, last two to identify the date), while considering localization preferences.
+\noindent \q{DateFormat} is used to convert and parse dates into a specific format, such as 'yyyy-MM-dd' 
+(\emph{4 characters for a year, dash, 2 symbols for a month, dash, last two to identify the date}), while considering 
+localization preferences.
 
 \begin{lstlisting}
 DateTime dt = DateTime(2023, 11, 1);
@@ -116,10 +117,20 @@ print(text);  // Wed, Nov 1, 2023
 DateTime? value = DateTime.tryParse(text);
 \end{lstlisting}
 
+\noindent And, we may extend \q{DateTime} by an insensible usage of \q{DateFormat}-class:
+
+\begin{lstlisting}
+extension DateTimeExt on DateTime {
+  // DateTime(/* ... */).toMonthDay(); 
+  String toMonthDay(Locale? locale) =>
+      DateFormat.MMMMd(locale ?? 'en_US').format(this);
+}
+\end{lstlisting}
+
 \noindent \q{DateTime}-class doesn't inherently handle time zones, but it can be covered by external libraries like 
 \q{timezone} or \q{intl}. To facilitate time processing, one can utilize the "Unix" timestamp, also known as an epoch 
-timestamp, through the properties \q{microsecondsSinceEpoch} and \q{millisecondsSinceEpoch} properties.
-
+timestamp, through the properties \q{microsecondsSinceEpoch} and \q{millisecondsSinceEpoch}. 
+ 
 Additionally, for application testing purposes, consider the use of libraries like \q{fake\_datetime} to mock the 
 current time, enabling more effective testing scenarios.
 
@@ -130,22 +141,17 @@ Dart provides a wide range of built-in functions and libraries to cover various 
 
 \begin{lstlisting}
 double num1 = 10.0; double num2 = 3.0; double? num3;
-// '+' Addition
-var result = num1 + num2; // 13.0
-// '-' Subtraction
-result = num1 - num2; // 7.0
-// '*' Multiplication
-result = num1 * num2; // 30.0
-// '/' Division
-result = num1 / num2; // 3.3333333333333335
+var result = num1 + num2; // Addition: 13.0
+result = num1 - num2; // Subtraction: 7.0
+result = num1 * num2; // Multiplication: 30.0
+result = num1 / num2; // Division: 3.3333333333333335
 // '~/' Integer Division (Floor Division)
 result = num1 ~/ num2; // 3 (int)
 // '%' Modulus (Remainder)
 result = num1 % num2; // 1.0
 // '??' null-check statement
-num3 ?? num1; // return 'num1' in 'num3' is null
-/// Math "import 'dart:math';"
-num3 = 2.0;
+num3 ?? num1; // return 'num1' if 'num3' is null
+num3 = 2.0; /// Math "import 'dart:math';"
 // 'sqrt' Square Root
 result = sqrt(num3); // 1.4142135623730951
 // 'pow' Exponentiation
@@ -163,6 +169,11 @@ result = log(num3) / ln10; // 0.3010299956639812
 /// Overloading: null + 5 = 5
 extension Ext<T extends num> on T? {
   T? operator +(T val) => this != null ? this + val : val;
+}
+/// Overloading '|' to merge maps
+extension Merge<T, K> on Map<T, K> {
+  Map<T, K> operator |(Map<T, K> other) => 
+      {...this}..addEntries(other.entries);
 }
 \end{lstlisting}
 
@@ -291,9 +302,8 @@ typedef SetViewFunction = String Function(Currency input);
 typedef Nested = Map<String, List<Person>>;
 
 class CurrencySelector {
-  final Nested key;
-  final SetViewFunction? setView;
-  // 'const'-constructors is used to boost performance
+  final Nested key; // 'final' to set once, immutable then
+  SetViewFunction? setView; // accept nullable by '?'
   const CurrencySelector({
     this.key,
     this.setView,
@@ -305,7 +315,7 @@ class CurrencySelector {
 }
 \end{lstlisting}
 
-\noindent And, once the function type is declared, it becomes extensible (\ref{dart-prim}).
+\noindent Once the function is declared with \q{void}-result, it becomes extensible via \q{VoidCallback} (\ref{dart-prim}).
 
 
 \subsubsection{Casting Dynamic Structures}
@@ -342,3 +352,94 @@ extension StringExt on String {
 if (val is Function) val();
 \end{lstlisting}
 
+
+\subsubsection{Initializating Classes}
+
+Every object is an instance of a class, and all classes (except \q{null}) inherit from the \q{Object}-class. While each 
+class typically has only one superclass (via \q{extends}), it might cover multiple interfaces by using \q{implements}.
+Moreover, dart implements a form of multiple inheritance via \q{Mixin}s. Extension methods provide a means to 
+enhance a class's functionality without altering the class or creating a subclass.
+
+\begin{lstlisting}
+class WebDavProtocol
+    // inherits superclass methods and properties
+    extends AbstractProtocol 
+    // class extended by methods from mixin
+    with FileImportMixin, FileExportMixin 
+    // structure is controlled by interfaces
+    implements InterfaceProtocol, InterfaceFile {
+  // ... content
+}
+// Interface ('abstract' to define a pure interface)
+abstract interface class InterfaceFile {
+  String getContentSync(File data);
+}
+// Mixin
+mixin FileImportMixin {
+  Future<String?> importFile(List<String> ext) async { /* ... */ }
+}
+\end{lstlisting}
+  
+\noindent Additionally, class modifiers enable control over how a class can be extended or specialized:
+
+\begin{itemize}
+  \item \q{abstract} -- prevents instantiation, allows methods definition without their implementation;
+  \item \q{base} -- disallows implementation (\q{implements}), only inheritance (\q{extends});
+  \item \q{interface} -- guarantees interface implementation, but not inheritance;
+  \item \q{final} -- subtyping is forbidden from that class;
+  \item \q{sealed} -- provides enumerable set of subtypes (to be used in \q{switch});
+  \item \q{@immutable}-notation -- force all properties to be \q{final}.
+\end{itemize}
+
+\noindent With a few restrictions (cannot be combined):
+
+\begin{itemize}
+  \item \q{abstract} with \q{sealed};
+  \item \q{interface}, \q{final} or \q{sealed} with \q{mixin}.
+\end{itemize}
+
+
+\subsubsection{Differentiating Constructors}
+
+Classes may have a several constructors and factories to simplify or differentiate their flow:
+
+\begin{lstlisting}
+// Search-widget types
+enum CurrencySelectorType {
+  searchAnchor,
+  searchAnchorMin,
+  searchAnchorBar,
+}
+// Class declaration
+class CurrencySelector<K extends CurrencySelectorItem> extends StatefulWidget {
+  final CurrencySelectorType searchType;
+  final String? value;
+  // ... other properties
+
+  // SearchAnchor
+  const CurrencySelector({ /* ... */}) : 
+      searchType = CurrencySelectorType.searchAnchor;
+  // SearchAnchor(isFullScreen: false)
+  const CurrencySelector.min({ /* ... */}) : 
+      searchType = CurrencySelectorType.searchAnchorMin;
+  // SearchAnchor.bar
+  const CurrencySelector.bar({ /* ... */}) : 
+      searchType = CurrencySelectorType.searchAnchorBar;
+  // Differentiate State-manager per taken type
+  @override
+  CurrencySelectorState createState() => switch (searchType) {
+        CurrencySelectorType.searchAnchorBar =>
+          CurrencySelectorBarState<CurrencySelector, K>(),
+        CurrencySelectorType.searchAnchorMin =>
+          CurrencySelectorMinState<CurrencySelector, K>(),
+        _ => CurrencySelectorState<CurrencySelector, K>(),
+      };
+  // Instantiate class from its string representation 
+  factory CurrencySelector<K>.fromString(String data) {
+    return CurrencySelector<K>(/* ... */);
+  }
+  // Create object by using structured data
+  factory CurrencySelector<K>.fromJson(Map<String, dynamic> json) =>
+      CurrencySelector<K>(/* ... */);
+}
+\end{lstlisting}

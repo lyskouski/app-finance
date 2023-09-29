@@ -9,8 +9,7 @@ import 'package:app_finance/_classes/structure/navigation/app_route.dart';
 import 'package:app_finance/_configs/theme_helper.dart';
 import 'package:app_finance/_ext/build_context_ext.dart';
 import 'package:app_finance/_ext/string_ext.dart';
-import 'package:app_finance/components/components_data.dart';
-import 'package:app_finance/components/interface_component.dart';
+import 'package:app_finance/components/component_data.dart';
 import 'package:app_finance/pages/home/widgets/account_widget.dart';
 import 'package:app_finance/pages/home/widgets/bill_widget.dart';
 import 'package:app_finance/pages/home/widgets/budget_widget.dart';
@@ -150,7 +149,7 @@ class ComponentRecentFormState extends State<ComponentRecentForm> {
             ListSelector<ListSelectorItem>(
               setState: (value) {
                 setState(() => _option = value);
-                widget.adjust(widget.data[InterfaceComponent.order], {...widget.data, ComponentRecent.type: value});
+                widget.adjust(widget.data[componentData.order], {...widget.data, ComponentRecent.type: value});
               },
               hintText: AppLocale.labels.cmpRecent,
               value: _option,
@@ -169,7 +168,7 @@ class ComponentRecentFormState extends State<ComponentRecentForm> {
               formatter: [SimpleInputFormatter.filterInt],
               setState: (String value) {
                 widget.adjust(
-                  widget.data[InterfaceComponent.order],
+                  widget.data[componentData.order],
                   {...widget.data, ComponentRecent.count: value.isEmpty ? '0' : value},
                 );
               },

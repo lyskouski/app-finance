@@ -4,8 +4,7 @@
 import 'package:app_finance/_classes/herald/app_locale.dart';
 import 'package:app_finance/_ext/build_context_ext.dart';
 import 'package:app_finance/components/components_builder_form.dart';
-import 'package:app_finance/components/components_data.dart';
-import 'package:app_finance/components/interface_component.dart';
+import 'package:app_finance/components/component_data.dart';
 import 'package:app_finance/components/widgets/draggable_pointer.dart';
 import 'package:app_finance/widgets/wrapper/confirmation_wrapper.dart';
 import 'package:app_finance/widgets/wrapper/tap_widget.dart';
@@ -31,9 +30,9 @@ class DraggableFrame extends StatefulWidget {
 class DraggableFrameState extends State<DraggableFrame> {
   Color? color;
   bool isDrag = false;
-  final _shift = InterfaceComponent.shift;
-  final _start = InterfaceComponent.start;
-  final _end = InterfaceComponent.end;
+  final _shift = componentData.shift;
+  final _start = componentData.start;
+  final _end = componentData.end;
 
   @override
   Widget build(BuildContext context) {
@@ -100,7 +99,7 @@ class DraggableFrameState extends State<DraggableFrame> {
                   tooltip: AppLocale.labels.deleteTooltip,
                   onTap: () => ConfirmationWrapper.show(
                     context,
-                    () => widget.delete(widget.data[InterfaceComponent.order]),
+                    () => widget.delete(widget.data[componentData.order]),
                   ),
                   child: Icon(
                     Icons.delete,

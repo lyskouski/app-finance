@@ -6,8 +6,7 @@ import 'package:app_finance/_configs/theme_helper.dart';
 import 'package:app_finance/_ext/build_context_ext.dart';
 import 'package:app_finance/_ext/string_ext.dart';
 import 'package:app_finance/components/components_builder_item.dart';
-import 'package:app_finance/components/components_data.dart';
-import 'package:app_finance/components/interface_component.dart';
+import 'package:app_finance/components/component_data.dart';
 import 'package:app_finance/components/widgets/draggable_frame.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_grid_layout/flutter_grid_layout.dart';
@@ -17,12 +16,12 @@ class ComponentsBuilder extends StatelessWidget {
   final bool editMode;
   final Function? adjust;
   final Function? delete;
-  final _shift = InterfaceComponent.shift;
-  final _order = InterfaceComponent.order;
-  final _start = InterfaceComponent.start;
-  final _end = InterfaceComponent.end;
+  final _shift = componentData.shift;
+  final _order = componentData.order;
+  final _start = componentData.start;
+  final _end = componentData.end;
 
-  const ComponentsBuilder(
+  ComponentsBuilder(
     this.data, {
     super.key,
     this.editMode = false,
@@ -40,16 +39,16 @@ class ComponentsBuilder extends StatelessWidget {
     final scope = data[change[_order]];
     scope[_order] = change[_order];
     if (change[_shift] != null) {
-      scope[InterfaceComponent.endX] += start.width - scope[InterfaceComponent.startX];
-      scope[InterfaceComponent.endY] += start.height - scope[InterfaceComponent.startY];
-      scope[InterfaceComponent.startX] = start.width;
-      scope[InterfaceComponent.startY] = start.height;
+      scope[componentData.endX] += start.width - scope[componentData.startX];
+      scope[componentData.endY] += start.height - scope[componentData.startY];
+      scope[componentData.startX] = start.width;
+      scope[componentData.startY] = start.height;
     } else if (change[_start] != null) {
-      scope[InterfaceComponent.startX] = start.width;
-      scope[InterfaceComponent.startY] = start.height;
+      scope[componentData.startX] = start.width;
+      scope[componentData.startY] = start.height;
     } else if (change[_end] != null) {
-      scope[InterfaceComponent.endX] = start.width + 1.0;
-      scope[InterfaceComponent.endY] = start.height + 1.0;
+      scope[componentData.endX] = start.width + 1.0;
+      scope[componentData.endY] = start.height + 1.0;
     }
     adjust!(scope[_order], scope);
   }
@@ -85,8 +84,8 @@ class ComponentsBuilder extends StatelessWidget {
               ...List.generate(
                 data.length,
                 (i) => GridItem(
-                  start: Size(data[i][InterfaceComponent.startX] + .0, data[i][InterfaceComponent.startY] + .0),
-                  end: Size(data[i][InterfaceComponent.endX] + .0, data[i][InterfaceComponent.endY] + .0),
+                  start: Size(data[i][componentData.startX] + .0, data[i][componentData.startY] + .0),
+                  end: Size(data[i][componentData.endX] + .0, data[i][componentData.endY] + .0),
                   order: i + 1,
                   child: DraggableFrame({...data[i], _order: i}, delete: delete!, adjust: adjust!),
                 ),
@@ -95,8 +94,8 @@ class ComponentsBuilder extends StatelessWidget {
           : List.generate(
               data.length,
               (i) => GridItem(
-                    start: Size(data[i][InterfaceComponent.startX] + .0, data[i][InterfaceComponent.startY] + .0),
-                    end: Size(data[i][InterfaceComponent.endX] + .0, data[i][InterfaceComponent.endY] + .0),
+                    start: Size(data[i][componentData.startX] + .0, data[i][componentData.startY] + .0),
+                    end: Size(data[i][componentData.endX] + .0, data[i][componentData.endY] + .0),
                     child: ComponentsBuilderItem({...data[i], _order: i}),
                   )),
     );

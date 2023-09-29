@@ -7,8 +7,7 @@ import 'package:app_finance/_configs/custom_text_theme.dart';
 import 'package:app_finance/_configs/theme_helper.dart';
 import 'package:app_finance/_ext/build_context_ext.dart';
 import 'package:app_finance/components/components_builder.dart';
-import 'package:app_finance/components/components_data.dart';
-import 'package:app_finance/components/interface_component.dart';
+import 'package:app_finance/components/component_data.dart';
 import 'package:app_finance/components/list_component_registry.dart';
 import 'package:app_finance/widgets/wrapper/confirmation_wrapper.dart';
 import 'package:app_finance/widgets/wrapper/toolbar_button_widget.dart';
@@ -44,11 +43,11 @@ class HomeEditPageState extends State<HomeEditPage> {
 
   Future<void> add(String key) async {
     data.add({
-      InterfaceComponent.key: key,
-      InterfaceComponent.startX: 0,
-      InterfaceComponent.startY: 0,
-      InterfaceComponent.endX: 4,
-      InterfaceComponent.endY: 4,
+      componentData.key: key,
+      componentData.startX: 0,
+      componentData.startY: 0,
+      componentData.endX: 4,
+      componentData.endY: 4,
     });
     await _save();
   }

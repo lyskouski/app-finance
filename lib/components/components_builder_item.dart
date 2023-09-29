@@ -4,8 +4,7 @@
 import 'package:app_finance/_configs/theme_helper.dart';
 import 'package:app_finance/_ext/string_ext.dart';
 import 'package:app_finance/components/component_recent.dart';
-import 'package:app_finance/components/components_data.dart';
-import 'package:app_finance/components/interface_component.dart';
+import 'package:app_finance/components/component_data.dart';
 import 'package:app_finance/components/list_component_registry.dart';
 import 'package:flutter/material.dart';
 
@@ -16,7 +15,7 @@ class ComponentsBuilderItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final key = (data[InterfaceComponent.key] as String).toEnum(ComponentRegistry.values);
+    final key = (data[componentData.key] as String).toEnum(ComponentRegistry.values);
     return Padding(
       padding: EdgeInsets.all(ThemeHelper.getIndent(0.5)),
       child: switch (key) {
