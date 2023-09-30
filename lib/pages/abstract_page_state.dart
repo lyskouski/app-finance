@@ -16,6 +16,7 @@ import 'package:app_finance/widgets/wrapper/row_widget.dart';
 import 'package:app_finance/widgets/wrapper/text_wrapper.dart';
 import 'package:app_finance/widgets/wrapper/toolbar_button_widget.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_markdown/flutter_markdown.dart';
 import 'package:provider/provider.dart';
 
 abstract class AbstractPageState<T extends StatefulWidget> extends State<T> {
@@ -28,6 +29,8 @@ abstract class AbstractPageState<T extends StatefulWidget> extends State<T> {
 
   String getButtonName();
 
+  String? getHelperName() => null;
+
   Widget buildButton(BuildContext context, BoxConstraints constraints);
 
   Widget buildContent(BuildContext context, BoxConstraints constraints);
@@ -36,18 +39,76 @@ abstract class AbstractPageState<T extends StatefulWidget> extends State<T> {
     return ToolbarButtonWidget(
       child: IconButton(
         hoverColor: Colors.transparent,
+        tooltip: AppLocale.labels.backTooltip,
+        onPressed: () => nav.pop(),
         icon: const Icon(
           Icons.arrow_back,
           color: Colors.white70,
         ),
-        tooltip: AppLocale.labels.backTooltip,
-        onPressed: () => nav.pop(),
+      ),
+    );
+  }
+
+  Widget buildHelper(BuildContext context) {
+    final locale = AppLocale.labels.localeName;
+    final type = getHelperName();
+    return Container(
+      width: double.infinity,
+      color: context.colorScheme.background,
+      child: Column(
+        children: [
+          Transform.translate(
+            offset: const Offset(-10, -24),
+            child: Align(
+              alignment: Alignment.topRight,
+              child: FloatingActionButton(
+                heroTag: 'helper',
+                mini: true,
+                tooltip: AppLocale.labels.closeTooltip,
+                onPressed: () => Navigator.pop(context),
+                child: Icon(
+                  Icons.close,
+                  color: Colors.white70,
+                  semanticLabel: AppLocale.labels.closeTooltip,
+                ),
+              ),
+            ),
+          ),
+          Expanded(
+            child: FutureBuilder(
+              future: DefaultAssetBundle.of(context).loadString('./assets/l10n/${type}_$locale.md'),
+              builder: (context, snapshot) {
+                if (snapshot.hasData) {
+                  return Markdown(data: snapshot.data ?? '');
+                }
+                return Container();
+              },
+            ),
+          ),
+        ],
       ),
     );
   }
 
   List<Widget> getBarActions(NavigatorState nav) {
     return [
+      if (getHelperName() != null)
+        ToolbarButtonWidget(
+          child: IconButton(
+            hoverColor: Colors.transparent,
+            tooltip: AppLocale.labels.helpTooltip,
+            onPressed: () => showModalBottomSheet(
+              context: context,
+              backgroundColor: context.colorScheme.background,
+              builder: buildHelper,
+            ),
+            icon: Icon(
+              Icons.contact_support_outlined,
+              color: Colors.white70,
+              semanticLabel: AppLocale.labels.helpTooltip,
+            ),
+          ),
+        ),
       PopupMenuButton(
         itemBuilder: (BuildContext context) {
           return AppMenu.get().map((menuItem) {
