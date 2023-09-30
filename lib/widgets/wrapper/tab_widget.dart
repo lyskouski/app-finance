@@ -12,11 +12,13 @@ class TabWidget extends StatefulWidget {
   final double? maxWidth;
   final int focus;
   final bool asDots;
+  final Function? callback;
 
   const TabWidget({
     super.key,
     required this.children,
     this.maxWidth,
+    this.callback,
     this.tabs,
     this.focus = 0,
     this.asDots = false,
@@ -80,6 +82,9 @@ class TabWidgetState extends State<TabWidget> with TickerProviderStateMixin {
         delaySwitchTab(delay, newIndex);
       } else {
         tabIndex = newIndex;
+        if (widget.callback != null) {
+          widget.callback!(newIndex);
+        }
       }
     });
   }
