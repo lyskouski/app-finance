@@ -11,10 +11,11 @@ import 'package:app_finance/pages/metrics/widgets/budget_tab.dart';
 import 'package:flutter/material.dart';
 
 class MetricsPage extends StatefulWidget {
-  final String search;
+  final String? search;
+
   const MetricsPage({
     super.key,
-    this.search = '0',
+    this.search,
   });
 
   @override
@@ -22,8 +23,24 @@ class MetricsPage extends StatefulWidget {
 }
 
 class MetricsPageState extends AbstractPageState<MetricsPage> {
+  late int index;
+
+  @override
+  void initState() {
+    index = int.tryParse(widget.search ?? '') ?? 0;
+    super.initState();
+  }
+
   @override
   String getButtonName() => '';
+
+  @override
+  String? getHelperName() => switch (index) {
+        0 => 'help_metrics_budget',
+        1 => 'help_metrics_account',
+        2 => 'help_metrics_bill',
+        _ => null,
+      };
 
   @override
   Widget buildButton(BuildContext context, BoxConstraints constraints) {
@@ -33,7 +50,8 @@ class MetricsPageState extends AbstractPageState<MetricsPage> {
   @override
   Widget buildContent(BuildContext context, BoxConstraints constraints) {
     return TabWidget(
-      focus: int.tryParse(widget.search) ?? 0,
+      focus: index,
+      callback: (idx) => setState(() => index = idx),
       tabs: [
         Tab(
           icon: const Icon(Icons.graphic_eq),

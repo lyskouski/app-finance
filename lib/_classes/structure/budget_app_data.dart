@@ -77,7 +77,7 @@ class BudgetAppData extends AbstractAppData with StorageMixin {
   Map<String, dynamic> toJson() => {
         ...super.toJson(),
         'amountLimit': amountLimit,
-        'amountSet': amountSet,
+        'amountSet': amountSet.toString(),
       };
 
   @override
@@ -111,7 +111,8 @@ class BudgetAppData extends AbstractAppData with StorageMixin {
           ' ${_relativeAmountLimit().toCurrency(currency: currency, withPattern: false)} ($percents%)';
     } else if (super.details > 0) {
       return '${(amountLimit * progress).toCurrency(currency: currency, withPattern: false)} /'
-          ' ${(amountLimit).toCurrency(currency: currency, withPattern: false)}';
+          ' ${(amountLimit).toCurrency(currency: currency, withPattern: false)}'
+          '${multiplication > 1 ? ' (${multiplication.toStringAsFixed(2)} ${AppLocale.labels.coef})' : ''}';
     } else {
       return '';
     }

@@ -62,10 +62,14 @@ class CurrencyPageState extends AbstractPageState<CurrencyPage> {
     final now = DateTime.now();
     final cutDate = DateTime(now.year, now.month - 2);
     if (scope == null) {
-      WidgetsBinding.instance.addPostFrameCallback((_) => setState(() => scope = state
-          .getList(AppDataType.currencies)
-          .where((v) => v.currencyFrom != null && v.currency != null && v.currency.code != v.currencyFrom.code)
-          .toList()));
+      WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {
+            var tmp = state
+                .getList(AppDataType.currencies)
+                .where((v) => v.currencyFrom != null && v.currency != null && v.currency.code != v.currencyFrom.code)
+                .toList();
+            tmp.sort((a, b) => a.currencyFrom.code.toString().compareTo(b.currencyFrom.code));
+            scope = tmp;
+          }));
       return ThemeHelper.emptyBox;
     }
     return ListView.builder(
