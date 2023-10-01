@@ -67,6 +67,7 @@ class BillViewPageState extends AbstractPageState<BillViewPage> {
         children: [
           BillHeaderWidget(
             item: state.getByUuid(widget.uuid) as BillAppData,
+            width: ThemeHelper.getWidth(context, 2, constraints),
           ),
           ThemeHelper.hIndent05,
           const Divider(height: 2),

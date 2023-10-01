@@ -14,6 +14,7 @@ import 'package:app_finance/pages/budget/widgets/budget_header_widget.dart';
 import 'package:app_finance/widgets/generic/base_line_widget.dart';
 import 'package:app_finance/widgets/generic/base_list_infinite_widget.dart';
 import 'package:app_finance/widgets/wrapper/confirmation_wrapper.dart';
+import 'package:app_finance/widgets/wrapper/tab_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_currency_picker/flutter_currency_picker.dart';
 
@@ -30,13 +31,7 @@ class BudgetViewPage extends StatefulWidget {
 }
 
 class BudgetViewPageState extends AbstractPageState<BudgetViewPage> with TickerProviderStateMixin {
-  late final TabController _tabController;
-
-  @override
-  void initState() {
-    super.initState();
-    _tabController = TabController(length: 2, vsync: this);
-  }
+  late double width;
 
   @override
   String getTitle() {
@@ -81,7 +76,7 @@ class BudgetViewPageState extends AbstractPageState<BudgetViewPage> with TickerP
       progress: 1.0,
       details: (item.delta as double).toCurrency(currency: item.currency, withPattern: false),
       color: Colors.transparent,
-      width: ThemeHelper.getWidth(context, 3),
+      width: width,
     );
   }
 
@@ -95,7 +90,7 @@ class BudgetViewPageState extends AbstractPageState<BudgetViewPage> with TickerP
       color: item.color ?? Colors.transparent,
       icon: item.icon ?? Icons.radio_button_unchecked_sharp,
       hidden: item.hidden,
-      width: ThemeHelper.getWidth(context, 3),
+      width: width,
       route: AppRoute.billViewRoute,
     );
   }
@@ -103,40 +98,39 @@ class BudgetViewPageState extends AbstractPageState<BudgetViewPage> with TickerP
   @override
   Widget buildContent(BuildContext context, BoxConstraints constraints) {
     final indent = ThemeHelper.getIndent();
-    double width = ThemeHelper.getWidth(context, 3);
-    bool isBottom = ThemeHelper.isNavBottom(constraints);
+    final pageWidth = ThemeHelper.getWidth(context, 3, constraints);
+    width = pageWidth - indent;
+    bool isLeft = ThemeHelper.isNavRight(context, constraints);
+    if (isLeft) {
+      width -= AbstractPageState.barHeight;
+    }
     return Padding(
       padding: EdgeInsets.only(top: indent),
       child: Column(
         children: [
-          BudgetHeaderWidget(item: state.getByUuid(widget.uuid) as BudgetAppData),
+          BudgetHeaderWidget(item: state.getByUuid(widget.uuid) as BudgetAppData, width: pageWidth),
           ThemeHelper.hIndent05,
           const Divider(height: 2),
-          TabBar.secondary(
-            controller: _tabController,
-            tabs: <Widget>[
-              Tab(text: AppLocale.labels.billHeadline),
-              Tab(text: AppLocale.labels.budgetLimitHeadline),
-            ],
-          ),
           Expanded(
-            child: Padding(
-              padding: EdgeInsets.fromLTRB(indent, 0, indent, isBottom ? AbstractPageState.barHeight : 0),
-              child: TabBarView(
-                controller: _tabController,
-                children: <Widget>[
-                  BaseListInfiniteWidget(
-                    state: state.getActualList(AppDataType.bills).where((o) => o.category == widget.uuid).toList(),
-                    width: width - indent,
-                    buildListWidget: buildLineWidget,
-                  ),
-                  BaseListInfiniteWidget(
-                    state: HistoryData.getLog(widget.uuid),
-                    width: width - indent,
-                    buildListWidget: buildListWidget,
-                  ),
-                ],
-              ),
+            child: TabWidget(
+              type: TabType.secondary,
+              isLeft: isLeft,
+              tabs: [
+                Tab(text: AppLocale.labels.billHeadline),
+                Tab(text: AppLocale.labels.budgetLimitHeadline),
+              ],
+              children: [
+                BaseListInfiniteWidget(
+                  state: state.getActualList(AppDataType.bills).where((o) => o.category == widget.uuid).toList(),
+                  width: width,
+                  buildListWidget: buildLineWidget,
+                ),
+                BaseListInfiniteWidget(
+                  state: HistoryData.getLog(widget.uuid),
+                  width: width,
+                  buildListWidget: buildListWidget,
+                ),
+              ],
             ),
           ),
         ],

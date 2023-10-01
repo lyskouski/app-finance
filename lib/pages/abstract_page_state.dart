@@ -35,7 +35,6 @@ abstract class AbstractPageState<T extends StatefulWidget> extends State<T> {
 
   Widget? getBarLeading(NavigatorState nav) {
     return ToolbarButtonWidget(
-      backgroundColor: context.colorScheme.primary,
       child: IconButton(
         hoverColor: Colors.transparent,
         tooltip: AppLocale.labels.backTooltip,
@@ -93,7 +92,6 @@ abstract class AbstractPageState<T extends StatefulWidget> extends State<T> {
     return [
       if (getHelperName() != null)
         ToolbarButtonWidget(
-          backgroundColor: context.colorScheme.primary,
           child: IconButton(
             hoverColor: Colors.transparent,
             tooltip: AppLocale.labels.helpTooltip,
@@ -126,7 +124,6 @@ abstract class AbstractPageState<T extends StatefulWidget> extends State<T> {
         },
         onSelected: (value) => nav.pushNamed(value),
         child: ToolbarButtonWidget(
-          backgroundColor: context.colorScheme.primary,
           child: Padding(
             padding: EdgeInsets.all(ThemeHelper.getIndent()),
             child: Icon(
@@ -153,7 +150,12 @@ abstract class AbstractPageState<T extends StatefulWidget> extends State<T> {
     return AppBar(
       title: Center(child: getBarTitle(context)),
       toolbarHeight: barHeight,
-      shape: isWide ? UnderlineInputBorder(borderSide: BorderSide(color: context.colorScheme.primary)) : null,
+      shape: isWide
+          ? UnderlineInputBorder(
+              borderSide: BorderSide(color: context.colorScheme.primary),
+              borderRadius: BorderRadius.zero,
+            )
+          : null,
       backgroundColor: isWide ? context.colorScheme.inverseSurface.withOpacity(0.4) : context.colorScheme.primary,
       leading: getBarLeading(nav),
       actions: getBarActions(nav),
@@ -174,7 +176,7 @@ abstract class AbstractPageState<T extends StatefulWidget> extends State<T> {
             ThemeHelper.hIndent,
             RotatedBox(
               quarterTurns: 3,
-              child: getBarTitle(context),
+              child: SizedBox(width: constraints.maxHeight / 2.5, child: getBarTitle(context)),
             ),
           ],
         ),

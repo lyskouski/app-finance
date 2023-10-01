@@ -83,7 +83,7 @@ class CurrencyPageState extends AbstractPageState<CurrencyPage> {
             padding: EdgeInsets.all(indent),
             child: RowWidget(
               indent: indent,
-              maxWidth: ThemeHelper.getWidth(context, 4),
+              maxWidth: ThemeHelper.getWidth(context, 4, constraints),
               chunk: const [85, null, 100],
               children: [
                 [

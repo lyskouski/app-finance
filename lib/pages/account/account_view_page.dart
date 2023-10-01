@@ -110,7 +110,7 @@ class AccountViewPageState extends AbstractPageState<AccountViewPage> {
       padding: EdgeInsets.only(top: ThemeHelper.getIndent()),
       child: Column(
         children: [
-          AccountHeaderWidget(item: state.getByUuid(widget.uuid) as AccountAppData),
+          AccountHeaderWidget(item: state.getByUuid(widget.uuid) as AccountAppData, width: width),
           ThemeHelper.hIndent05,
           const Divider(height: 2),
           Expanded(

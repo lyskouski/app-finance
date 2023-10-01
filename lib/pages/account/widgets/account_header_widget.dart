@@ -14,10 +14,12 @@ import 'package:flutter/material.dart';
 
 class AccountHeaderWidget extends StatelessWidget {
   final AccountAppData item;
+  final double width;
 
   const AccountHeaderWidget({
     super.key,
     required this.item,
+    required this.width,
   });
 
   @override
@@ -34,7 +36,7 @@ class AccountHeaderWidget extends StatelessWidget {
         RowWidget(
           indent: indent,
           alignment: MainAxisAlignment.start,
-          maxWidth: ThemeHelper.getWidth(context, 2),
+          maxWidth: width,
           chunk: [null, txtWidth + 2 * indent, if (item.error != null) 22],
           children: [
             [
@@ -65,7 +67,7 @@ class AccountHeaderWidget extends StatelessWidget {
         RowWidget(
           indent: indent,
           alignment: MainAxisAlignment.start,
-          maxWidth: ThemeHelper.getWidth(context, 2),
+          maxWidth: width,
           chunk: [
             typeWidth + indent / 2,
             null,

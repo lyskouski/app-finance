@@ -68,7 +68,7 @@ class GoalPageState extends AbstractPageState<GoalPage> {
   @override
   Widget buildContent(BuildContext context, BoxConstraints constraints) {
     final indent = ThemeHelper.getIndent();
-    final width = ThemeHelper.getWidth(context, 4);
+    final width = ThemeHelper.getWidth(context, 4, constraints);
     final goals = super.state.getList(AppDataType.goals);
     final maxValue = _getMaxValue(goals.cast<GoalAppData>());
     final valInvoice = _getValue(AppDataType.invoice);

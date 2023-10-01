@@ -175,10 +175,12 @@ abstract class BasicTabWidgetState extends State<TabWidget> with TickerProviderS
                         ),
                         label: RotatedBox(
                           quarterTurns: 3,
-                          child: Icon(
-                            (e.value.icon as Icon).icon,
-                            color: tabIndex == e.key ? color : color.withOpacity(0.6),
-                          ),
+                          child: e.value.icon != null
+                              ? Icon(
+                                  (e.value.icon as Icon).icon,
+                                  color: tabIndex == e.key ? color : color.withOpacity(0.6),
+                                )
+                              : null,
                         ),
                       )
                   : (e) => NavigationRailDestination(

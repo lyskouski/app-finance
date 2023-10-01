@@ -32,6 +32,7 @@ class BillPageState extends AbstractPageState<BillPage> {
   int currentPage = 0;
   final batch = 25;
   bool isTop = true;
+  late double width;
 
   @override
   void initState() {
@@ -86,6 +87,7 @@ class BillPageState extends AbstractPageState<BillPage> {
             icon: budget?.icon ?? Icons.radio_button_unchecked_sharp,
             iconTooltip: budget?.title ?? '?',
             hidden: item.hidden,
+            width: width,
             route: AppRoute.billViewRoute,
           ),
         ),
@@ -130,6 +132,7 @@ class BillPageState extends AbstractPageState<BillPage> {
 
   @override
   Widget buildContent(BuildContext context, BoxConstraints constraints) {
+    width = ThemeHelper.getWidth(context, 2, constraints);
     if (items == null) {
       WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {
             items = super.state.getList(AppDataType.bills).cast();

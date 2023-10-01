@@ -22,6 +22,7 @@ class BillLineWidget extends StatelessWidget {
   final String iconTooltip;
   final String route;
   final bool hidden;
+  final double width;
 
   const BillLineWidget({
     super.key,
@@ -33,6 +34,7 @@ class BillLineWidget extends StatelessWidget {
     required this.color,
     required this.icon,
     required this.iconTooltip,
+    required this.width,
     this.hidden = false,
     this.progress = 1,
     this.route = '',
@@ -44,7 +46,6 @@ class BillLineWidget extends StatelessWidget {
       return ThemeHelper.emptyBox;
     }
     final indent = ThemeHelper.getIndent();
-    final width = ThemeHelper.getWidth(context, 2);
     final textTheme = context.textTheme;
 
     return Padding(

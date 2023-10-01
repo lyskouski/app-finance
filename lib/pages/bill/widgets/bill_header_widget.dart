@@ -14,10 +14,12 @@ import 'package:flutter/material.dart';
 
 class BillHeaderWidget extends StatelessWidget {
   final BillAppData item;
+  final double width;
 
   const BillHeaderWidget({
     super.key,
     required this.item,
+    required this.width,
   });
 
   @override
@@ -29,7 +31,7 @@ class BillHeaderWidget extends StatelessWidget {
         RowWidget(
           indent: indent,
           alignment: MainAxisAlignment.start,
-          maxWidth: ThemeHelper.getWidth(context, 2),
+          maxWidth: width,
           chunk: const [null, null],
           children: [
             [
