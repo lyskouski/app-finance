@@ -321,7 +321,16 @@ bool get wantKeepAlive => true;
 removing it from the widget tree (mostly, without losing their state or triggering a rebuild).
 
 And not obvious but acknowledgeable, Flutter upgrade procedure (by example, Flutter 3.10 triples the frame rate if 
-change \q{FlutterViews} background color to a non-nil value \cite{Chis23}).
+change \q{FlutterViews} background color to a non-nil value \cite{Chis23}). Contrary, the upgrade itself can lead to 
+the outage by broken dependencies and missed packages support:
+
+\begin{lstlisting}
+[!] CocoaPods could not find compatible versions for pod "flutter_webrtc"
+
+[!] `<XCBuildConfiguration name=`Debug` UUID=`331C8088294A63A400263BE5`>` attempted to initialize an object with an 
+unknown UUID. `AE0B7B92F70575B8D7E0D07E` for attribute: `base_configuration_reference`. This can be the result of a 
+merge and the unknown UUID is being discarded.
+\end{lstlisting}
 
 
 \subsubsection{Anticipating Churn Rate}
