@@ -2,6 +2,7 @@
 // Use of this source code is governed by a CC BY-NC-ND 4.0 license that can be found in the LICENSE file.
 
 import 'package:app_finance/_classes/herald/app_locale.dart';
+import 'package:app_finance/_classes/controller/focus_controller.dart';
 import 'package:app_finance/_classes/storage/app_data.dart';
 import 'package:app_finance/_configs/theme_helper.dart';
 import 'package:app_finance/pages/bill/widgets/expenses_tab.dart';
@@ -11,19 +12,32 @@ import 'package:app_finance/widgets/wrapper/tab_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-class BillAddPage extends StatelessWidget {
+class BillAddPage extends StatefulWidget {
   const BillAddPage({super.key});
+
+  @override
+  BillAddPageState createState() => BillAddPageState();
+}
+
+class BillAddPageState extends State<BillAddPage> {
+  bool? isLeft;
+
+  @override
+  void dispose() {
+    FocusController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
     return Material(
       child: Consumer<AppData>(builder: (context, appState, _) {
         return LayoutBuilder(builder: (context, constraints) {
-          bool isLeft = ThemeHelper.getHeight(context) < 520;
+          isLeft ??= ThemeHelper.getHeight(context) < 520;
           return TabWidget(
             type: TabType.secondary,
             hasIndent: false,
-            isLeft: isLeft,
+            isLeft: isLeft!,
             focus: 1,
             tabs: [
               Tab(
@@ -40,9 +54,9 @@ class BillAddPage extends StatelessWidget {
               ),
             ],
             children: [
-              IncomeTab(state: appState, isLeft: isLeft),
-              ExpensesTab(state: appState, isLeft: isLeft),
-              TransferTab(state: appState, isLeft: isLeft),
+              IncomeTab(state: appState, isLeft: isLeft!),
+              ExpensesTab(state: appState, isLeft: isLeft!),
+              TransferTab(state: appState, isLeft: isLeft!),
             ],
           );
         });
