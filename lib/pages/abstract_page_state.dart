@@ -35,6 +35,7 @@ abstract class AbstractPageState<T extends StatefulWidget> extends State<T> {
 
   Widget? getBarLeading(NavigatorState nav) {
     return ToolbarButtonWidget(
+      backgroundColor: context.colorScheme.primary,
       child: IconButton(
         hoverColor: Colors.transparent,
         tooltip: AppLocale.labels.backTooltip,
@@ -92,6 +93,7 @@ abstract class AbstractPageState<T extends StatefulWidget> extends State<T> {
     return [
       if (getHelperName() != null)
         ToolbarButtonWidget(
+          backgroundColor: context.colorScheme.primary,
           child: IconButton(
             hoverColor: Colors.transparent,
             tooltip: AppLocale.labels.helpTooltip,
@@ -124,6 +126,7 @@ abstract class AbstractPageState<T extends StatefulWidget> extends State<T> {
         },
         onSelected: (value) => nav.pushNamed(value),
         child: ToolbarButtonWidget(
+          backgroundColor: context.colorScheme.primary,
           child: Padding(
             padding: EdgeInsets.all(ThemeHelper.getIndent()),
             child: Icon(
@@ -144,12 +147,14 @@ abstract class AbstractPageState<T extends StatefulWidget> extends State<T> {
     );
   }
 
-  AppBar buildBar(BuildContext context) {
+  AppBar buildBar(BuildContext context, BoxConstraints constraints) {
     final nav = Navigator.of(context);
+    bool isWide = ThemeHelper.getWidthCount(constraints) >= 4;
     return AppBar(
       title: Center(child: getBarTitle(context)),
       toolbarHeight: barHeight,
-      backgroundColor: context.colorScheme.primary,
+      shape: isWide ? UnderlineInputBorder(borderSide: BorderSide(color: context.colorScheme.primary)) : null,
+      backgroundColor: isWide ? context.colorScheme.inverseSurface.withOpacity(0.4) : context.colorScheme.primary,
       leading: getBarLeading(nav),
       actions: getBarActions(nav),
     );
@@ -269,7 +274,7 @@ abstract class AbstractPageState<T extends StatefulWidget> extends State<T> {
         final dx = (constraints.maxWidth - constraints.maxWidth / scale) / 2;
         final dy = (constraints.maxHeight - constraints.maxHeight / scale) / 2;
         return Scaffold(
-          appBar: isBottom ? null : buildBar(context),
+          appBar: isBottom ? null : buildBar(context, constraints),
           bottomNavigationBar: isBottom ? buildBottomBar(context, constraints) : null,
           drawer: buildDrawer(),
           body: SafeArea(

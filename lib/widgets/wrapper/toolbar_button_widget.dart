@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 class ToolbarButtonWidget extends StatefulWidget {
   final Widget child;
   final Color? borderColor;
+  final Color? backgroundColor;
   final Offset? offset;
   final EdgeInsets margin;
 
@@ -13,6 +14,7 @@ class ToolbarButtonWidget extends StatefulWidget {
     super.key,
     required this.child,
     this.borderColor,
+    this.backgroundColor,
     this.offset,
     this.margin = const EdgeInsets.all(4.0),
   });
@@ -22,13 +24,13 @@ class ToolbarButtonWidget extends StatefulWidget {
 }
 
 class ToolbarButtonWidgetState extends State<ToolbarButtonWidget> {
-  Color color = Colors.transparent;
+  late Color color = widget.backgroundColor ?? Colors.transparent;
 
   @override
   Widget build(BuildContext context) {
     return MouseRegion(
       onEnter: (_) => setState(() => color = Colors.black26),
-      onExit: (_) => setState(() => color = Colors.transparent),
+      onExit: (_) => setState(() => color = widget.backgroundColor ?? Colors.transparent),
       child: Container(
         margin: widget.margin,
         padding: EdgeInsets.zero,
