@@ -37,8 +37,13 @@
   - Simple grouping via `/` (in name) for the main page
   - Transactions log
   - Freeze amount by Update date (to import previous history)
-- Budget Categories with limits restate per month
+- Budget Categories
   - Simple grouping via `/` (in name) for the main page
+  - With limits restate:
+    - Renewed at the beginning of each month
+    - Configurable limits per month
+    - Relatives (0.0 ... 1.0) to Income
+  - Or, without limitations by showing a spent amount
 - Bills, Transfers, Incomes (Invoices)
 - Goals Definition
 - Exchange rates, Default Currency for Summary
@@ -61,7 +66,8 @@
 - Localization: 2 languages
 - User Experience
   - Configurable Main Page (multiple configurations per `width x height` set)
-  - Responsive & Adaptive Design (`xlarge`, `large`, `medium`, `small`, and `xsmall` screens)
+  - Responsive & Adaptive Design
+    - Adaptive navigation panel (top, bottom, right) and tabs (top, left)
   - Theme Mode (dark, light, system) with Palette definition (system, custom, personal -- colors selector)
   - Preserve last choice for Account, Budget, and Currency
   - Auto-scroll to the focused element on Form
