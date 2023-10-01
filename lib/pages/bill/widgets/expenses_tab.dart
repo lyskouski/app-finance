@@ -32,6 +32,7 @@ class ExpensesTab<T> extends StatefulWidget {
   final String? description;
   final DateTime? createdAt;
   final AppData state;
+  final bool isLeft;
 
   const ExpensesTab({
     super.key,
@@ -42,6 +43,7 @@ class ExpensesTab<T> extends StatefulWidget {
     this.bill,
     this.description,
     this.createdAt,
+    this.isLeft = false,
   });
 
   @override
@@ -128,7 +130,10 @@ class ExpensesTabState<T extends ExpensesTab> extends AbstractPageState<T> {
   Widget buildContent(BuildContext context, BoxConstraints constraints) {
     final textTheme = context.textTheme;
     final indent = ThemeHelper.getIndent(2);
-    final width = ThemeHelper.getWidth(context, 6, constraints);
+    double width = ThemeHelper.getWidth(context, 6, constraints);
+    if (widget.isLeft) {
+      width -= AbstractPageState.barHeight;
+    }
     return SingleChildScrollView(
       controller: FocusController.getController(runtimeType),
       child: Container(

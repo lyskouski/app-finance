@@ -8,6 +8,7 @@ import 'package:app_finance/_configs/theme_helper.dart';
 import 'package:app_finance/pages/bill/widgets/expenses_tab.dart';
 import 'package:app_finance/pages/bill/widgets/income_tab.dart';
 import 'package:app_finance/pages/bill/widgets/transfer_tab.dart';
+import 'package:app_finance/widgets/wrapper/tab_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -19,18 +20,8 @@ class BillAddPage extends StatefulWidget {
 }
 
 class BillAddPageState extends State<BillAddPage> with TickerProviderStateMixin {
-  late final TabController _tabController;
-  Widget button = ThemeHelper.emptyBox;
-
-  @override
-  void initState() {
-    super.initState();
-    _tabController = TabController(length: 3, vsync: this, initialIndex: 1);
-  }
-
   @override
   void dispose() {
-    _tabController.dispose();
     FocusController.dispose();
     super.dispose();
   }
@@ -38,10 +29,13 @@ class BillAddPageState extends State<BillAddPage> with TickerProviderStateMixin 
   @override
   Widget build(BuildContext context) {
     return Material(
-      child: Column(
-        children: [
-          TabBar.secondary(
-            controller: _tabController,
+      child: Consumer<AppData>(builder: (context, appState, _) {
+        return LayoutBuilder(builder: (context, constraints) {
+          bool isLeft = ThemeHelper.getHeight(context) < 520;
+          return TabWidget(
+            type: TabType.secondary,
+            hasIndent: false,
+            isLeft: isLeft,
             tabs: [
               Tab(
                 icon: const Icon(Icons.insert_invitation),
@@ -56,23 +50,14 @@ class BillAddPageState extends State<BillAddPage> with TickerProviderStateMixin 
                 text: AppLocale.labels.transferHeadline,
               ),
             ],
-          ),
-          Expanded(
-            child: Padding(
-              padding: const EdgeInsets.only(top: 2),
-              child: Consumer<AppData>(
-                  builder: (context, appState, _) => TabBarView(
-                        controller: _tabController,
-                        children: [
-                          IncomeTab(state: appState),
-                          ExpensesTab(state: appState),
-                          TransferTab(state: appState),
-                        ],
-                      )),
-            ),
-          ),
-        ],
-      ),
+            children: [
+              IncomeTab(state: appState, isLeft: isLeft),
+              ExpensesTab(state: appState, isLeft: isLeft),
+              TransferTab(state: appState, isLeft: isLeft),
+            ],
+          );
+        });
+      }),
     );
   }
 }

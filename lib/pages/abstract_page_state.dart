@@ -144,7 +144,7 @@ abstract class AbstractPageState<T extends StatefulWidget> extends State<T> {
     );
   }
 
-  AppBar buildBar(BuildContext context, BoxConstraints constraints) {
+  AppBar? buildBar(BuildContext context, BoxConstraints constraints) {
     final nav = Navigator.of(context);
     bool isWide = ThemeHelper.getWidthCount(constraints) >= 4;
     return AppBar(
@@ -162,7 +162,7 @@ abstract class AbstractPageState<T extends StatefulWidget> extends State<T> {
     );
   }
 
-  Widget buildRightBar(BuildContext context, BoxConstraints constraints) {
+  Widget? buildRightBar(BuildContext context, BoxConstraints constraints) {
     final nav = Navigator.of(context);
     return Align(
       alignment: Alignment.topRight,
@@ -272,7 +272,14 @@ abstract class AbstractPageState<T extends StatefulWidget> extends State<T> {
         final isRight = !isWearable && ThemeHelper.isNavRight(context, constraints);
         final hasShift = isBottom && !isWearable && !isRight;
         final height = constraints.maxHeight / scale - (hasShift ? barHeight + ThemeHelper.getIndent() : 0);
-        final width = constraints.maxWidth / scale - (isRight && !isWearable ? barHeight : 0);
+        double width = constraints.maxWidth / scale;
+        Widget? rightBar;
+        if (isRight && !isWearable) {
+          rightBar = buildRightBar(context, constraints);
+          if (rightBar != null) {
+            width -= barHeight;
+          }
+        }
         final dx = (constraints.maxWidth - constraints.maxWidth / scale) / 2;
         final dy = (constraints.maxHeight - constraints.maxHeight / scale) / 2;
         return Scaffold(
@@ -297,7 +304,7 @@ abstract class AbstractPageState<T extends StatefulWidget> extends State<T> {
                       ),
                     ),
                   ),
-                  isRight ? buildRightBar(context, constraints) : ThemeHelper.emptyBox,
+                  if (rightBar != null) rightBar,
                 ],
               ),
             ),

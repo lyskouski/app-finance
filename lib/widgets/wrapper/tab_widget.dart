@@ -22,6 +22,7 @@ class TabWidget extends StatefulWidget {
   final Function? callback;
   final TabType type;
   final bool isLeft;
+  final bool hasIndent;
 
   const TabWidget({
     super.key,
@@ -30,6 +31,7 @@ class TabWidget extends StatefulWidget {
     this.callback,
     this.tabs,
     this.isLeft = false,
+    this.hasIndent = true,
     this.focus = 0,
     this.type = TabType.primary,
   }) : assert(tabs != null || type == TabType.dots);
@@ -222,7 +224,7 @@ abstract class BasicTabWidgetState extends State<TabWidget> with TickerProviderS
               }
             },
             child: Padding(
-              padding: EdgeInsets.fromLTRB(indent, 0, indent, 0),
+              padding: widget.hasIndent ? EdgeInsets.fromLTRB(indent, 0, indent, 0) : EdgeInsets.zero,
               child: TabBarView(
                 controller: tabController,
                 children: widget.children,
@@ -314,7 +316,7 @@ class TabSecondaryWidgetState extends BasicTabWidgetState {
         getAppBar(context)!,
         Expanded(
           child: Padding(
-            padding: EdgeInsets.fromLTRB(indent, 0, indent, 0),
+            padding: widget.hasIndent ? EdgeInsets.fromLTRB(indent, 0, indent, 0) : EdgeInsets.zero,
             child: TabBarView(
               controller: tabController,
               children: widget.children,
