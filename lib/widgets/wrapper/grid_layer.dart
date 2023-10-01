@@ -7,6 +7,7 @@ import 'package:flutter/material.dart';
 
 class GridLayer extends StatelessWidget {
   final double padding;
+  final double? width;
   final int crossAxisCount;
   final List<dynamic> children;
   final List<dynamic> strategy;
@@ -17,6 +18,7 @@ class GridLayer extends StatelessWidget {
     required this.crossAxisCount,
     required this.children,
     required this.strategy,
+    this.width,
   });
 
   @override
@@ -28,7 +30,7 @@ class GridLayer extends StatelessWidget {
       child: strategy.length > 1
           ? RowWidget(
               indent: padding,
-              maxWidth: ThemeHelper.getWidth(context, 2),
+              maxWidth: width ?? ThemeHelper.getWidth(context, 2),
               chunk: List.filled(crossAxisCount, null),
               children: fnList(strategy).cast<List<Widget>>().toList(),
             )

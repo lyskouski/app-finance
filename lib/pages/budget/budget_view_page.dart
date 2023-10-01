@@ -104,6 +104,7 @@ class BudgetViewPageState extends AbstractPageState<BudgetViewPage> with TickerP
   Widget buildContent(BuildContext context, BoxConstraints constraints) {
     final indent = ThemeHelper.getIndent();
     double width = ThemeHelper.getWidth(context, 3);
+    bool isBottom = ThemeHelper.isNavBottom(constraints);
     return Padding(
       padding: EdgeInsets.only(top: indent),
       child: Column(
@@ -120,7 +121,7 @@ class BudgetViewPageState extends AbstractPageState<BudgetViewPage> with TickerP
           ),
           Expanded(
             child: Padding(
-              padding: EdgeInsets.fromLTRB(indent, 0, indent, 0),
+              padding: EdgeInsets.fromLTRB(indent, 0, indent, isBottom ? AbstractPageState.barHeight : 0),
               child: TabBarView(
                 controller: _tabController,
                 children: <Widget>[
@@ -138,7 +139,6 @@ class BudgetViewPageState extends AbstractPageState<BudgetViewPage> with TickerP
               ),
             ),
           ),
-          ThemeHelper.formEndBox,
         ],
       ),
     );

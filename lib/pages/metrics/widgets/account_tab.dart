@@ -94,7 +94,6 @@ class AccountTab extends StatelessWidget {
     final TextTheme textTheme = context.textTheme;
     double indent = ThemeHelper.getIndent();
     double width = ThemeHelper.getWidth(context, 4);
-    double pieWidth = width > 600 ? 280 : width * 0.4;
     final now = DateTime.now();
     final xMin = DateTime(now.year, now.month - 5);
     final accountList = store.getList(AppDataType.accounts).cast<AccountAppData>();
@@ -140,27 +139,33 @@ class AccountTab extends StatelessWidget {
               ],
             ),
             ThemeHelper.hIndent3x,
-            RowWidget(
-              maxWidth: width,
-              indent: indent,
-              chunk: [null, pieWidth],
-              children: [
-                [
-                  TableWidget(
-                    shadowColor: context.colorScheme.onBackground.withOpacity(0.1),
-                    width: width - pieWidth - 2 * indent,
-                    chunk: const [8, 34, null, null],
-                    data: _generateCurrencyTable(currency),
-                  ),
-                ],
-                [
-                  PieRadiusChart(
-                    data: currency,
-                    width: pieWidth,
-                  ),
-                ]
-              ],
+            SizedBox(
+              child: LayoutBuilder(builder: (context, constraints) {
+                double pieWidth = constraints.maxWidth > 600 ? 280 : constraints.maxWidth * 0.4;
+                return RowWidget(
+                  maxWidth: constraints.maxWidth,
+                  indent: indent,
+                  chunk: [null, pieWidth],
+                  children: [
+                    [
+                      TableWidget(
+                        shadowColor: context.colorScheme.onBackground.withOpacity(0.1),
+                        width: constraints.maxWidth - pieWidth - 2 * indent,
+                        chunk: const [8, 34, null, null],
+                        data: _generateCurrencyTable(currency),
+                      ),
+                    ],
+                    [
+                      PieRadiusChart(
+                        data: currency,
+                        width: pieWidth,
+                      ),
+                    ]
+                  ],
+                );
+              }),
             ),
+            ThemeHelper.formEndBox,
           ],
         ),
       ),

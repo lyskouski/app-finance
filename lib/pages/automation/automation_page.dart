@@ -35,6 +35,7 @@ class AutomationPageState extends AbstractPageState<AutomationPage> with TickerP
   @override
   Widget buildContent(BuildContext context, BoxConstraints constraints) {
     final indent = ThemeHelper.getIndent();
+    bool isBottom = ThemeHelper.isNavBottom(constraints);
     return Padding(
       padding: EdgeInsets.only(top: indent),
       child: Column(
@@ -50,7 +51,7 @@ class AutomationPageState extends AbstractPageState<AutomationPage> with TickerP
           ),
           Expanded(
             child: Padding(
-              padding: EdgeInsets.fromLTRB(indent, 0, indent, 0),
+              padding: EdgeInsets.fromLTRB(indent, 0, indent, isBottom ? AbstractPageState.barHeight : 0),
               child: TabBarView(
                 controller: _tabController,
                 children: const [

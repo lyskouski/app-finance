@@ -51,6 +51,7 @@ class MetricsPageState extends AbstractPageState<MetricsPage> {
   Widget buildContent(BuildContext context, BoxConstraints constraints) {
     return TabWidget(
       focus: index,
+      isLeft: ThemeHelper.isNavRight(context, constraints),
       callback: (idx) => setState(() => index = idx),
       tabs: [
         Tab(

@@ -15,6 +15,7 @@ import 'package:app_finance/pages/account/widgets/account_header_widget.dart';
 import 'package:app_finance/widgets/generic/base_line_widget.dart';
 import 'package:app_finance/widgets/generic/base_list_infinite_widget.dart';
 import 'package:app_finance/widgets/wrapper/confirmation_wrapper.dart';
+import 'package:app_finance/widgets/wrapper/tab_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_currency_picker/flutter_currency_picker.dart';
 
@@ -30,20 +31,8 @@ class AccountViewPage extends StatefulWidget {
   AccountViewPageState createState() => AccountViewPageState();
 }
 
-class AccountViewPageState extends AbstractPageState<AccountViewPage> with TickerProviderStateMixin {
-  late final TabController _tabController;
-
-  @override
-  void initState() {
-    super.initState();
-    _tabController = TabController(length: 3, vsync: this);
-  }
-
-  @override
-  void dispose() {
-    _tabController.dispose();
-    super.dispose();
-  }
+class AccountViewPageState extends AbstractPageState<AccountViewPage> {
+  late double width;
 
   @override
   String getTitle() {
@@ -90,7 +79,7 @@ class AccountViewPageState extends AbstractPageState<AccountViewPage> with Ticke
       details: (item.delta as double).toCurrency(currency: item.currency, withPattern: false),
       color: obj?.color ?? Colors.transparent,
       icon: obj?.icon ?? Icons.radio_button_unchecked_sharp,
-      width: ThemeHelper.getWidth(context, 3),
+      width: width,
       route: item is BillAppData ? AppRoute.billViewRoute : '',
     );
   }
@@ -105,56 +94,53 @@ class AccountViewPageState extends AbstractPageState<AccountViewPage> with Ticke
       color: item.color ?? Colors.transparent,
       icon: item.icon ?? Icons.radio_button_unchecked_sharp,
       hidden: item.hidden,
-      width: ThemeHelper.getWidth(context, 3),
+      width: width,
       route: item is BillAppData ? AppRoute.billViewRoute : '',
     );
   }
 
   @override
   Widget buildContent(BuildContext context, BoxConstraints constraints) {
-    final indent = ThemeHelper.getIndent();
-    double width = ThemeHelper.getWidth(context, 4);
+    width = ThemeHelper.getWidth(context, 4, constraints);
+    bool isLeft = ThemeHelper.isNavRight(context, constraints);
+    if (isLeft) {
+      width -= AbstractPageState.barHeight;
+    }
     return Padding(
-      padding: EdgeInsets.only(top: indent),
+      padding: EdgeInsets.only(top: ThemeHelper.getIndent()),
       child: Column(
         children: [
           AccountHeaderWidget(item: state.getByUuid(widget.uuid) as AccountAppData),
           ThemeHelper.hIndent05,
           const Divider(height: 2),
-          TabBar.secondary(
-            controller: _tabController,
-            tabs: <Widget>[
-              Tab(text: AppLocale.labels.summary),
-              Tab(text: AppLocale.labels.billHeadline),
-              Tab(text: AppLocale.labels.invoiceHeadline),
-            ],
-          ),
           Expanded(
-            child: Padding(
-              padding: EdgeInsets.fromLTRB(indent, 0, indent, 0),
-              child: TabBarView(
-                controller: _tabController,
-                children: <Widget>[
-                  BaseListInfiniteWidget(
-                    state: HistoryData.getLog(widget.uuid),
-                    width: width,
-                    buildListWidget: buildLogWidget,
-                  ),
-                  BaseListInfiniteWidget(
-                    state: state.getList(AppDataType.bills).where((o) => o.account == widget.uuid).toList(),
-                    width: width,
-                    buildListWidget: buildLineWidget,
-                  ),
-                  BaseListInfiniteWidget(
-                    state: state.getList(AppDataType.invoice).where((o) => o.account == widget.uuid).toList(),
-                    width: width,
-                    buildListWidget: buildLineWidget,
-                  ),
-                ],
-              ),
+            child: TabWidget(
+              type: TabType.secondary,
+              isLeft: isLeft,
+              tabs: [
+                Tab(text: AppLocale.labels.summary),
+                Tab(text: AppLocale.labels.billHeadline),
+                Tab(text: AppLocale.labels.invoiceHeadline),
+              ],
+              children: [
+                BaseListInfiniteWidget(
+                  state: HistoryData.getLog(widget.uuid),
+                  width: width,
+                  buildListWidget: buildLogWidget,
+                ),
+                BaseListInfiniteWidget(
+                  state: state.getList(AppDataType.bills).where((o) => o.account == widget.uuid).toList(),
+                  width: width,
+                  buildListWidget: buildLineWidget,
+                ),
+                BaseListInfiniteWidget(
+                  state: state.getList(AppDataType.invoice).where((o) => o.account == widget.uuid).toList(),
+                  width: width,
+                  buildListWidget: buildLineWidget,
+                ),
+              ],
             ),
           ),
-          ThemeHelper.formEndBox,
         ],
       ),
     );

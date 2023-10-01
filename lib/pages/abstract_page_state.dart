@@ -1,8 +1,6 @@
 // Copyright 2023 The terCAD team. All rights reserved.
 // Use of this source code is governed by a CC BY-NC-ND 4.0 license that can be found in the LICENSE file.
 
-import 'dart:math';
-
 import 'package:app_finance/_classes/herald/app_locale.dart';
 import 'package:app_finance/_classes/herald/app_zoom.dart';
 import 'package:app_finance/_classes/structure/navigation/app_menu.dart';
@@ -169,8 +167,8 @@ abstract class AbstractPageState<T extends StatefulWidget> extends State<T> {
             getBarLeading(nav) ?? ThemeHelper.emptyBox,
             ...getBarActions(nav),
             ThemeHelper.hIndent,
-            Transform.rotate(
-              angle: -pi / 2,
+            RotatedBox(
+              quarterTurns: 3,
               child: getBarTitle(context),
             ),
           ],
@@ -264,7 +262,7 @@ abstract class AbstractPageState<T extends StatefulWidget> extends State<T> {
       return LayoutBuilder(builder: (context, constraints) {
         final isBottom = ThemeHelper.isNavBottom(constraints);
         final isWearable = ThemeHelper.isWearableMode(context, constraints);
-        final isRight = isBottom && ThemeHelper.isNavRight(context, constraints);
+        final isRight = !isWearable && ThemeHelper.isNavRight(context, constraints);
         final hasShift = isBottom && !isWearable && !isRight;
         final height = constraints.maxHeight / scale - (hasShift ? barHeight + ThemeHelper.getIndent() : 0);
         final width = constraints.maxWidth / scale - (isRight && !isWearable ? barHeight : 0);
