@@ -2,7 +2,6 @@
 // Use of this source code is governed by a CC BY-NC-ND 4.0 license that can be found in the LICENSE file.
 
 import 'package:app_finance/_classes/herald/app_locale.dart';
-import 'package:app_finance/_classes/controller/focus_controller.dart';
 import 'package:app_finance/_classes/storage/app_data.dart';
 import 'package:app_finance/_configs/theme_helper.dart';
 import 'package:app_finance/pages/bill/widgets/expenses_tab.dart';
@@ -12,19 +11,8 @@ import 'package:app_finance/widgets/wrapper/tab_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-class BillAddPage extends StatefulWidget {
+class BillAddPage extends StatelessWidget {
   const BillAddPage({super.key});
-
-  @override
-  BillAddPageState createState() => BillAddPageState();
-}
-
-class BillAddPageState extends State<BillAddPage> with TickerProviderStateMixin {
-  @override
-  void dispose() {
-    FocusController.dispose();
-    super.dispose();
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -36,6 +24,7 @@ class BillAddPageState extends State<BillAddPage> with TickerProviderStateMixin 
             type: TabType.secondary,
             hasIndent: false,
             isLeft: isLeft,
+            focus: 1,
             tabs: [
               Tab(
                 icon: const Icon(Icons.insert_invitation),
