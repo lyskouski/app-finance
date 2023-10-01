@@ -26,7 +26,7 @@ class GoalWidget extends StatelessWidget {
       child: Transform.translate(
         offset: const Offset(0, 18),
         child: TabWidget(
-          asDots: true,
+          type: TabType.dots,
           maxWidth: width,
           children: state.map((e) => GoalLineWidget(goal: e, width: width)).toList(),
         ),

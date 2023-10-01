@@ -7,6 +7,7 @@ import 'package:app_finance/_classes/storage/app_data.dart';
 import 'package:app_finance/_configs/custom_color_scheme.dart';
 import 'package:app_finance/_configs/theme_helper.dart';
 import 'package:app_finance/_ext/build_context_ext.dart';
+import 'package:app_finance/pages/abstract_page_state.dart';
 import 'package:app_finance/widgets/form/simple_input.dart';
 import 'package:app_finance/widgets/wrapper/row_widget.dart';
 import 'package:app_finance/widgets/wrapper/table_widget.dart';
@@ -71,142 +72,151 @@ class SyncTabState extends State<SyncTab> {
       sync = appSync..followBinary(runtimeType, ping);
       dataProvider = Provider.of<AppData>(context, listen: false);
       final data = sync.getPeers();
-      return SingleChildScrollView(
-        controller: _scroll,
-        child: Padding(
-          padding: EdgeInsets.all(indent),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.start,
-            children: [
-              RowWidget(
-                maxWidth: ThemeHelper.getWidth(context),
-                alignment: MainAxisAlignment.spaceBetween,
-                indent: indent,
-                chunk: const [null, 70],
-                children: [
-                  [
-                    Text(
-                      AppLocale.labels.peerId,
-                      style: textTheme.bodyLarge,
-                    ),
-                    Container(
-                      padding: EdgeInsets.all(indent),
-                      color: context.colorScheme.fieldBackground,
-                      child: SelectableText(
-                        sync.getUuid() ?? AppLocale.labels.pearDisabled,
+      return LayoutBuilder(builder: (context, constraints) {
+        double width = ThemeHelper.getWidth(context, 4, constraints);
+        if (ThemeHelper.isNavRight(context, constraints)) {
+          width -= AbstractPageState.barHeight;
+        }
+        return SingleChildScrollView(
+          controller: _scroll,
+          child: Padding(
+            padding: EdgeInsets.all(indent),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                RowWidget(
+                  maxWidth: width,
+                  alignment: MainAxisAlignment.spaceBetween,
+                  indent: indent,
+                  chunk: const [null, 85],
+                  children: [
+                    [
+                      Text(
+                        AppLocale.labels.peerId,
                         style: textTheme.bodyLarge,
                       ),
-                    ),
-                  ],
-                  [
-                    Text(
-                      sync.isActive() ? AppLocale.labels.peerOnline : AppLocale.labels.peerClosed,
-                      style: textTheme.bodyLarge,
-                    ),
-                    Switch(
-                      value: sync.isActive(),
-                      onChanged: (value) => setState(() => value ? sync.enable() : sync.disable()),
-                    ),
-                  ],
-                ],
-              ),
-              ThemeHelper.hIndent2x,
-              if (sync.isActive())
-                loading
-                    ? Row(
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
-                          Text(AppLocale.labels.pearLoading),
-                          LoadingWidget(isLoading: loading, size: const Size(48, 48)),
-                        ],
-                      )
-                    : SizedBox(
-                        width: double.infinity,
-                        child: FloatingActionButton(
-                          heroTag: 'sync_tab_sync',
-                          onPressed: synchronize,
-                          tooltip: AppLocale.labels.peerSync,
-                          child: Text(AppLocale.labels.peerSync),
+                      Container(
+                        padding: EdgeInsets.all(indent),
+                        color: context.colorScheme.fieldBackground,
+                        child: SelectableText(
+                          sync.getUuid() ?? AppLocale.labels.pearDisabled,
+                          style: textTheme.bodyLarge,
                         ),
                       ),
-              ThemeHelper.hIndent4x,
-              TableWidget(
-                width: ThemeHelper.getWidth(context),
-                shadowColor: context.colorScheme.onBackground.withOpacity(0.1),
-                chunk: const [80, null, 80, 90],
-                data: [
-                  [
-                    Center(child: Text(AppLocale.labels.peerAction)),
-                    TextWrapper(AppLocale.labels.peerDevice),
-                    TextWrapper(AppLocale.labels.peerStatus),
-                    Center(child: Text(AppLocale.labels.peerAction)),
+                    ],
+                    [
+                      Text(
+                        sync.isActive() ? AppLocale.labels.peerOnline : AppLocale.labels.peerClosed,
+                        style: textTheme.bodyLarge,
+                      ),
+                      Align(
+                        alignment: Alignment.topRight,
+                        child: Switch(
+                          value: sync.isActive(),
+                          onChanged: (value) => setState(() => value ? sync.enable() : sync.disable()),
+                        ),
+                      ),
+                    ],
                   ],
-                  ...List.generate(data.length, (index) {
-                    String status = switch (data[index].status) {
-                      true => AppLocale.labels.peerOnline,
-                      false => AppLocale.labels.peerClosed,
-                      _ => AppLocale.labels.peerOffline,
-                    };
-                    return <Widget>[
-                      ElevatedButton(
-                        onPressed: () => sync.del(data[index].id),
-                        child: Text(AppLocale.labels.peerDelete),
-                      ),
-                      TextWrapper(data[index].id),
-                      TextWrapper(status),
-                      data[index].status == true
-                          ? ElevatedButton(
-                              onPressed: () => sync.ping(data[index].id),
-                              child: Text(AppLocale.labels.peerPing),
-                            )
-                          : ElevatedButton(
-                              onPressed: () => sync.trace(data[index].id),
-                              child: Text(AppLocale.labels.peerConnectBtn),
-                            ),
-                    ];
-                  }),
-                  ...List.generate(request.length, (index) {
-                    return <Widget>[
-                      ElevatedButton(
-                        onPressed: () => setState(() => request.remove(request[index])),
-                        child: Text(AppLocale.labels.peerDelete),
-                      ),
-                      TextWrapper(request[index]),
-                      TextWrapper(AppLocale.labels.peerPending),
-                      ElevatedButton(
-                        onPressed: () => setState(() {
-                          sync.add(request[index]);
-                          request.remove(request[index]);
-                        }),
-                        child: Text(AppLocale.labels.peerAccept),
-                      ),
-                    ];
-                  }),
-                ],
-              ),
-              if (sync.isActive()) ...[
-                ThemeHelper.hIndent4x,
-                Text(
-                  AppLocale.labels.peerOtherId,
-                  style: textTheme.bodyLarge,
                 ),
-                SimpleInput(controller: _controller),
                 ThemeHelper.hIndent2x,
-                SizedBox(
-                  width: double.infinity,
-                  child: FloatingActionButton(
-                    heroTag: 'sync_tab_add',
-                    onPressed: () => sync.add(_controller.text),
-                    tooltip: AppLocale.labels.peerConnect,
-                    child: Text(AppLocale.labels.peerConnect),
-                  ),
+                if (sync.isActive())
+                  loading
+                      ? Row(
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            Text(AppLocale.labels.pearLoading),
+                            LoadingWidget(isLoading: loading, size: const Size(48, 48)),
+                          ],
+                        )
+                      : SizedBox(
+                          width: double.infinity,
+                          child: FloatingActionButton(
+                            heroTag: 'sync_tab_sync',
+                            onPressed: synchronize,
+                            tooltip: AppLocale.labels.peerSync,
+                            child: Text(AppLocale.labels.peerSync),
+                          ),
+                        ),
+                ThemeHelper.hIndent4x,
+                TableWidget(
+                  width: width,
+                  shadowColor: context.colorScheme.onBackground.withOpacity(0.1),
+                  chunk: const [80, null, 80, 90],
+                  data: [
+                    [
+                      Center(child: Text(AppLocale.labels.peerAction)),
+                      TextWrapper(AppLocale.labels.peerDevice),
+                      TextWrapper(AppLocale.labels.peerStatus),
+                      Center(child: Text(AppLocale.labels.peerAction)),
+                    ],
+                    ...List.generate(data.length, (index) {
+                      String status = switch (data[index].status) {
+                        true => AppLocale.labels.peerOnline,
+                        false => AppLocale.labels.peerClosed,
+                        _ => AppLocale.labels.peerOffline,
+                      };
+                      return <Widget>[
+                        ElevatedButton(
+                          onPressed: () => sync.del(data[index].id),
+                          child: Text(AppLocale.labels.peerDelete),
+                        ),
+                        TextWrapper(data[index].id),
+                        TextWrapper(status),
+                        data[index].status == true
+                            ? ElevatedButton(
+                                onPressed: () => sync.ping(data[index].id),
+                                child: Text(AppLocale.labels.peerPing),
+                              )
+                            : ElevatedButton(
+                                onPressed: () => sync.trace(data[index].id),
+                                child: Text(AppLocale.labels.peerConnectBtn),
+                              ),
+                      ];
+                    }),
+                    ...List.generate(request.length, (index) {
+                      return <Widget>[
+                        ElevatedButton(
+                          onPressed: () => setState(() => request.remove(request[index])),
+                          child: Text(AppLocale.labels.peerDelete),
+                        ),
+                        TextWrapper(request[index]),
+                        TextWrapper(AppLocale.labels.peerPending),
+                        ElevatedButton(
+                          onPressed: () => setState(() {
+                            sync.add(request[index]);
+                            request.remove(request[index]);
+                          }),
+                          child: Text(AppLocale.labels.peerAccept),
+                        ),
+                      ];
+                    }),
+                  ],
                 ),
+                if (sync.isActive()) ...[
+                  ThemeHelper.hIndent4x,
+                  Text(
+                    AppLocale.labels.peerOtherId,
+                    style: textTheme.bodyLarge,
+                  ),
+                  SimpleInput(controller: _controller),
+                  ThemeHelper.hIndent2x,
+                  SizedBox(
+                    width: double.infinity,
+                    child: FloatingActionButton(
+                      heroTag: 'sync_tab_add',
+                      onPressed: () => sync.add(_controller.text),
+                      tooltip: AppLocale.labels.peerConnect,
+                      child: Text(AppLocale.labels.peerConnect),
+                    ),
+                  ),
+                ],
+                ThemeHelper.formEndBox,
               ],
-              ThemeHelper.formEndBox,
-            ],
+            ),
           ),
-        ),
-      );
+        );
+      });
     });
   }
 }

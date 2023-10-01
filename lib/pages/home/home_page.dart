@@ -150,7 +150,7 @@ class HomePageState extends AbstractPageState<HomePage> {
     final countWidth = ThemeHelper.getWidthCount(constraints);
     final countHeight = ThemeHelper.getHeightCount(context, constraints);
     bool isVertical = countWidth == 1 && !ThemeHelper.isWearable;
-    double width = ThemeHelper.getWidth(context, 3);
+    double width = ThemeHelper.getWidth(context, 3, constraints);
     double partWidth = width / countWidth - indent * (countWidth - 1);
 
     final billWidget = BillWidget(
@@ -192,6 +192,7 @@ class HomePageState extends AbstractPageState<HomePage> {
 
     return GridLayer(
       padding: indent,
+      width: width,
       crossAxisCount: countWidth,
       strategy: switch (countWidth) {
         4 => [
@@ -219,7 +220,7 @@ class HomePageState extends AbstractPageState<HomePage> {
             height: constraints.maxHeight - indent,
             margin: EdgeInsets.only(top: indent),
             child: TabWidget(
-              asDots: true,
+              type: TabType.dots,
               maxWidth: width,
               children: [budgetWidget, accountWidget, billWidget],
             ),

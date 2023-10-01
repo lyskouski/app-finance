@@ -12,10 +12,12 @@ import 'package:flutter/material.dart';
 
 class BudgetHeaderWidget extends StatelessWidget {
   final BudgetAppData item;
+  final double width;
 
   const BudgetHeaderWidget({
     super.key,
     required this.item,
+    required this.width,
   });
 
   @override
@@ -28,7 +30,7 @@ class BudgetHeaderWidget extends StatelessWidget {
         RowWidget(
           indent: indent,
           alignment: MainAxisAlignment.start,
-          maxWidth: ThemeHelper.getWidth(context, 2),
+          maxWidth: width,
           chunk: [null, txtWidth + 2 * indent, if (item.error != null) 22],
           children: [
             [

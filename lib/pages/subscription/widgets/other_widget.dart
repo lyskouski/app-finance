@@ -12,7 +12,7 @@ class OtherWidget extends StatelessWidget with LauncherMixin {
 
   @override
   Widget build(BuildContext context) {
-    return Expanded(
+    return SingleChildScrollView(
       child: Column(children: [
         ThemeHelper.hIndent,
         FullSizedButtonWidget(
@@ -44,6 +44,7 @@ class OtherWidget extends StatelessWidget with LauncherMixin {
           title: AppLocale.labels.subscriptionGithub,
           icon: Icons.gite,
         ),
+        ThemeHelper.hIndent2x,
       ]),
     );
   }

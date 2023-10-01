@@ -7,6 +7,7 @@ import 'package:app_finance/_ext/build_context_ext.dart';
 import 'package:app_finance/_mixins/launcher_mixin.dart';
 import 'package:app_finance/pages/abstract_page_state.dart';
 import 'package:app_finance/widgets/wrapper/row_widget.dart';
+import 'package:app_finance/widgets/wrapper/text_wrapper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_markdown/flutter_markdown.dart';
 import 'package:package_info_plus/package_info_plus.dart';
@@ -49,30 +50,35 @@ class AboutPageState extends AbstractPageState<AboutPage> with LauncherMixin {
   @override
   Widget buildContent(BuildContext context, BoxConstraints constraints) {
     double indent = ThemeHelper.getIndent();
-    double width = ThemeHelper.getWidth(context);
+    double width = ThemeHelper.getWidth(context, 2, constraints);
     final locale = AppLocale.labels.localeName;
     return Padding(
       padding: EdgeInsets.fromLTRB(indent, indent, indent, 0),
       child: Column(
         children: [
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          RowWidget(
+            alignment: MainAxisAlignment.spaceEvenly,
+            indent: indent,
+            maxWidth: width,
+            chunk: const [60, null, null],
             children: [
-              Image.asset(
-                'assets/images/logo.png',
-                width: 60,
-                height: 60,
-              ),
-              Text(
-                AppLocale.labels.appTitle,
-                style: context.textTheme.headlineLarge,
-              ),
-              Column(
-                children: [
-                  Text(AppLocale.labels.appVersion(version)),
-                  Text(AppLocale.labels.appBuild(buildNumber)),
-                ],
-              ),
+              [
+                Image.asset(
+                  'assets/images/logo.png',
+                  width: 60,
+                  height: 60,
+                ),
+              ],
+              [
+                TextWrapper(
+                  AppLocale.labels.appTitle,
+                  style: context.textTheme.headlineLarge,
+                ),
+              ],
+              [
+                TextWrapper(AppLocale.labels.appVersion(version)),
+                TextWrapper(AppLocale.labels.appBuild(buildNumber)),
+              ],
             ],
           ),
           const Divider(),
@@ -89,15 +95,20 @@ class AboutPageState extends AbstractPageState<AboutPage> with LauncherMixin {
                 ),
               ],
               [
-                ElevatedButton(
-                  onPressed: () => openURL('https://github.com/users/lyskouski/projects/2/views/1'),
-                  child: Text(AppLocale.labels.roadmap, overflow: TextOverflow.ellipsis),
+                Center(
+                  child: ElevatedButton(
+                    onPressed: () => openURL('https://github.com/users/lyskouski/projects/2/views/1'),
+                    child: Text(AppLocale.labels.roadmap, overflow: TextOverflow.ellipsis),
+                  ),
                 ),
               ],
               [
-                ElevatedButton(
-                  onPressed: () => openURL('https://github.com/lyskouski/app-finance/milestones'),
-                  child: Text(AppLocale.labels.milestones, overflow: TextOverflow.ellipsis),
+                Align(
+                  alignment: Alignment.centerRight,
+                  child: ElevatedButton(
+                    onPressed: () => openURL('https://github.com/lyskouski/app-finance/milestones'),
+                    child: Text(AppLocale.labels.milestones, overflow: TextOverflow.ellipsis),
+                  ),
                 ),
               ],
             ],
@@ -114,7 +125,6 @@ class AboutPageState extends AbstractPageState<AboutPage> with LauncherMixin {
               },
             ),
           ),
-          ThemeHelper.formEndBox,
         ],
       ),
     );

@@ -1,8 +1,6 @@
 // Copyright 2023 The terCAD team. All rights reserved.
 // Use of this source code is governed by a CC BY-NC-ND 4.0 license that can be found in the LICENSE file.
 
-import 'dart:math';
-
 import 'package:app_finance/_classes/herald/app_locale.dart';
 import 'package:app_finance/_classes/herald/app_zoom.dart';
 import 'package:app_finance/_classes/structure/navigation/app_menu.dart';
@@ -146,18 +144,25 @@ abstract class AbstractPageState<T extends StatefulWidget> extends State<T> {
     );
   }
 
-  AppBar buildBar(BuildContext context) {
+  AppBar? buildBar(BuildContext context, BoxConstraints constraints) {
     final nav = Navigator.of(context);
+    bool isWide = ThemeHelper.getWidthCount(constraints) >= 4;
     return AppBar(
       title: Center(child: getBarTitle(context)),
       toolbarHeight: barHeight,
-      backgroundColor: context.colorScheme.primary,
+      shape: isWide
+          ? UnderlineInputBorder(
+              borderSide: BorderSide(color: context.colorScheme.primary),
+              borderRadius: BorderRadius.zero,
+            )
+          : null,
+      backgroundColor: isWide ? context.colorScheme.inverseSurface.withOpacity(0.4) : context.colorScheme.primary,
       leading: getBarLeading(nav),
       actions: getBarActions(nav),
     );
   }
 
-  Widget buildRightBar(BuildContext context, BoxConstraints constraints) {
+  Widget? buildRightBar(BuildContext context, BoxConstraints constraints) {
     final nav = Navigator.of(context);
     return Align(
       alignment: Alignment.topRight,
@@ -169,9 +174,9 @@ abstract class AbstractPageState<T extends StatefulWidget> extends State<T> {
             getBarLeading(nav) ?? ThemeHelper.emptyBox,
             ...getBarActions(nav),
             ThemeHelper.hIndent,
-            Transform.rotate(
-              angle: -pi / 2,
-              child: getBarTitle(context),
+            RotatedBox(
+              quarterTurns: 3,
+              child: SizedBox(width: constraints.maxHeight / 2.5, child: getBarTitle(context)),
             ),
           ],
         ),
@@ -264,14 +269,21 @@ abstract class AbstractPageState<T extends StatefulWidget> extends State<T> {
       return LayoutBuilder(builder: (context, constraints) {
         final isBottom = ThemeHelper.isNavBottom(constraints);
         final isWearable = ThemeHelper.isWearableMode(context, constraints);
-        final isRight = isBottom && ThemeHelper.isNavRight(context, constraints);
+        final isRight = !isWearable && ThemeHelper.isNavRight(context, constraints);
         final hasShift = isBottom && !isWearable && !isRight;
         final height = constraints.maxHeight / scale - (hasShift ? barHeight + ThemeHelper.getIndent() : 0);
-        final width = constraints.maxWidth / scale - (isRight && !isWearable ? barHeight : 0);
+        double width = constraints.maxWidth / scale;
+        Widget? rightBar;
+        if (isRight && !isWearable) {
+          rightBar = buildRightBar(context, constraints);
+          if (rightBar != null) {
+            width -= barHeight;
+          }
+        }
         final dx = (constraints.maxWidth - constraints.maxWidth / scale) / 2;
         final dy = (constraints.maxHeight - constraints.maxHeight / scale) / 2;
         return Scaffold(
-          appBar: isBottom ? null : buildBar(context),
+          appBar: isBottom ? null : buildBar(context, constraints),
           bottomNavigationBar: isBottom ? buildBottomBar(context, constraints) : null,
           drawer: buildDrawer(),
           body: SafeArea(
@@ -292,7 +304,7 @@ abstract class AbstractPageState<T extends StatefulWidget> extends State<T> {
                       ),
                     ),
                   ),
-                  isRight ? buildRightBar(context, constraints) : ThemeHelper.emptyBox,
+                  if (rightBar != null) rightBar,
                 ],
               ),
             ),

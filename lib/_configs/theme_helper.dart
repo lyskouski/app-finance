@@ -32,7 +32,7 @@ class ThemeHelper {
   static double getWidth(BuildContext context, [double multiply = 4, BoxConstraints? constraints]) =>
       MediaQuery.sizeOf(context).width / AppZoom.state -
       getIndent(multiply) -
-      (isNavRight(context, constraints) ? 40 : 0);
+      (constraints != null && isNavRight(context, constraints) && !isWearable ? 40 : 0);
 
   static double getHeight(BuildContext context, [double multiply = 2]) =>
       MediaQuery.sizeOf(context).height / AppZoom.state - getIndent(multiply);
@@ -94,8 +94,8 @@ class ThemeHelper {
 
   static bool isNavBottom(BoxConstraints constraints) => getWidthCount(constraints) <= 2;
 
-  static bool isNavRight(BuildContext context, [BoxConstraints? constraints]) =>
-      getHeightCount(context, constraints) <= 2;
+  static bool isNavRight(BuildContext context, BoxConstraints constraints) =>
+      isNavBottom(constraints) && getHeightCount(context, constraints) <= 2;
 
   static int getWidthCount(BoxConstraints? constraints, [BuildContext? context]) {
     final width = constraints?.maxWidth ?? getWidth(context!);

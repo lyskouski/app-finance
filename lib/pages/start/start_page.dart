@@ -81,7 +81,7 @@ class StartPageState extends AbstractPageState<StartPage> {
     return Padding(
       padding: const EdgeInsets.only(top: 4.0),
       child: TabWidget(
-        asDots: true,
+        type: TabType.dots,
         focus: currentStep,
         children: [
           SettingTab(setState: fn, isFirstBoot: currentStep < 1 && isEmpty),

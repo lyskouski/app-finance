@@ -33,9 +33,12 @@ class SubscriptionPageState extends AbstractPageState<SubscriptionPage> {
         children: [
           Text(AppLocale.labels.subscription),
           const Divider(),
-          defaultTargetPlatform == TargetPlatform.iOS || defaultTargetPlatform == TargetPlatform.macOS
-              ? ThemeHelper.emptyBox
-              : const OtherWidget(),
+          Expanded(
+            child: defaultTargetPlatform == TargetPlatform.iOS || defaultTargetPlatform == TargetPlatform.macOS
+                ? ThemeHelper.emptyBox
+                : const OtherWidget(),
+          ),
+          ThemeHelper.hIndent,
         ],
       ),
     );

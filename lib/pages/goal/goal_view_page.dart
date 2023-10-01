@@ -100,7 +100,7 @@ class GoalViewPageState extends AbstractPageState<GoalViewPage> {
         children: [
           BaseLineWidget(
             title: item.title,
-            width: ThemeHelper.getWidth(context, 3),
+            width: ThemeHelper.getWidth(context, 2, constraints),
             uuid: widget.uuid,
             details: (item.details as double).toCurrency(currency: item.currency, withPattern: false),
             description: item.closedAtFormatted,
@@ -108,7 +108,6 @@ class GoalViewPageState extends AbstractPageState<GoalViewPage> {
             icon: item.icon ?? Icons.radio_button_unchecked_sharp,
             hidden: item.hidden,
             progress: item.progress,
-            route: AppRoute.goalViewRoute,
           )
         ],
       ),

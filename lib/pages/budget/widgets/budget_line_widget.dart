@@ -44,7 +44,6 @@ class BudgetLineWidget extends StatelessWidget {
       return ThemeHelper.emptyBox;
     }
     final indent = ThemeHelper.getIndent();
-    final width = ThemeHelper.getWidth(context);
     final textTheme = context.textTheme;
     const iconSize = 18.0;
     return TapWidget(

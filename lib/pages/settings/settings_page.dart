@@ -31,6 +31,7 @@ class SettingsPageState extends AbstractPageState<SettingsPage> {
   Widget buildContent(BuildContext context, BoxConstraints constraints) {
     return TabWidget(
       focus: 0,
+      isLeft: ThemeHelper.isNavRight(context, constraints),
       tabs: [
         Tab(
           icon: const Icon(Icons.settings),

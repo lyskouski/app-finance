@@ -29,6 +29,7 @@ class IncomeTab extends StatefulWidget {
   final double? amount;
   final DateTime? createdAt;
   final AppData state;
+  final bool isLeft;
 
   const IncomeTab({
     super.key,
@@ -38,6 +39,7 @@ class IncomeTab extends StatefulWidget {
     this.currency,
     this.amount,
     this.createdAt,
+    this.isLeft = false,
   });
 
   @override
@@ -118,12 +120,16 @@ class IncomeTabState extends AbstractPageState<IncomeTab> {
   Widget buildContent(BuildContext context, BoxConstraints constraints) {
     final textTheme = context.textTheme;
     final indent = ThemeHelper.getIndent(2);
-    final width = ThemeHelper.getWidth(context, 6, constraints);
+    double width = ThemeHelper.getWidth(context, 6, constraints);
+    if (widget.isLeft) {
+      width -= AbstractPageState.barHeight;
+    }
 
     return SingleChildScrollView(
       controller: FocusController.getController(runtimeType),
       child: Container(
         margin: EdgeInsets.fromLTRB(indent, indent, indent, 240),
+        width: width,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
