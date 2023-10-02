@@ -17,15 +17,17 @@
   - Apple Store: __postponed till 1st November__
   - [TestFlight](https://developer.apple.com/testflight/): [[pending]](https://github.com/lyskouski/app-finance/issues/287)
   - [Release](https://github.com/lyskouski/app-finance/releases/latest)/fingrom_macOS.zip
-- **Linux**: 
+- **Linux**:
+  - Snap Store: [[pending]](https://github.com/lyskouski/app-finance/issues/209)
   - [Release](https://github.com/lyskouski/app-finance/releases/latest)/fingrom_Linux.tar.gz
 - **Windows**: 
+  - Windows Apps: [[pending]](https://github.com/lyskouski/app-finance/issues/209)
   - [Release](https://github.com/lyskouski/app-finance/releases/latest)/fingrom_Windows.zip
 
 #### Mobile Apps
 - **iOS**
   - Apple Store: __postponed till 1st November__
-  - [TestFlight](https://developer.apple.com/testflight/): [early access](https://testflight.apple.com/join/93ECy9ZB)
+  - [TestFlight](https://developer.apple.com/testflight/): [**early access**](https://testflight.apple.com/join/93ECy9ZB)
   - [Release](https://github.com/lyskouski/app-finance/releases/latest)/fingrom_iOS.ipa
 - **Android**
   - Google Play: [[on hold]](https://github.com/lyskouski/app-finance/issues/129)
