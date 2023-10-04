@@ -37,3 +37,10 @@ jobs:
     - name: Deploy
       run: aws s3 sync ./build/web s3://${{ secrets.AWS_S3_BUCKET }} --delete
 \end{lstlisting}
+
+\noindent With a configured DNS record with the provided \q{AWS S3}-URL, alike:
+
+\begin{lstlisting}[language=bash]
+[Type]	 [Host]        [Value]
+APEX	   tercad.pt.    d1eojshauhnf9p.cloudfront.net.
+\end{lstlisting}

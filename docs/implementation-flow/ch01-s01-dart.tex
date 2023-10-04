@@ -151,7 +151,7 @@ result = num1 ~/ num2; // 3 (int)
 result = num1 % num2; // 1.0
 // '??' null-check statement
 num3 ?? num1; // return 'num1' if 'num3' is null
-num3 = 2.0; /// Math "import 'dart:math';"
+num3 = 2.0;
 // 'sqrt' Square Root
 result = sqrt(num3); // 1.4142135623730951
 // 'pow' Exponentiation
@@ -324,10 +324,9 @@ For a specific cases it might be useful to post-pone the type declaration:
 
 \begin{lstlisting}
 extension StringExt on String {
-  // Any letter in uppercase highlights that
-  // type would be set during the call
+  // Letter in uppercase highlights a type variability
   /// Sample: '[1,2,3]'.toList<int>(); // [1, 2, 3] 
-  List<T> toList<T>() {
+  List<T> toList<T>() { // Limitation: <T extends num>
     final data = length > 0 ? json.decode(this) : [];
     // Convert to declared Type
     return data.cast<T>();
@@ -443,3 +442,52 @@ class CurrencySelector<K extends CurrencySelectorItem> extends StatefulWidget {
       CurrencySelector<K>(/* ... */);
 }
 \end{lstlisting}
+
+\newpage
+\subsubsection{Asserting in Tests}
+
+Assertions in tests help to ensure the correctness and reliability of given code by matching the expected result.
+
+\begin{lstlisting}
+// Compare two dynamic values
+expect(1, 0); // Expected: <0>; Actual: <1>
+// Partial comparison
+expect(result, contains('some text'));
+expect(result, matches('part'));
+expect(result, matches(RegExp('^\w+$')));
+// Occurrence check
+expect(result, isIn('some text'));
+expect(result, everyElement(expected)); // List
+expect(result, anyElement(expected)); // List
+expect(result, containsValue(expected)); // List
+expect(result, containsPair(position, value)); // Map
+// Numbers check (or objects with operators: >, <, ==)
+expect(result, isZero); // isPositive, ...
+expect(result, inInclusiveRange(0, 100));
+expect(result, greaterThan(0));
+// Simple type check
+expect(result, isNull); // isList, isTrue, ...
+// Class type check
+expect(result, isA<SomeClass>());
+expect(result, isNot(isA<SomeClass>())); // Inverse
+expect(result, same(someObject)); // Same instance check
+// Stream assertions
+expect(stream, emits(expected));
+expect(stream, emitsInOrder(expectedList));
+expect(stream, neverEmits(notExpected));
+// Async assertions, when result is a Future
+await expectLater(result, completion(expected));
+
+// Exception check (call() => throw Exception())
+expect(() => call(), throwsA(isException));
+
+// Customize failed output
+expect(result, expected, reason: 'Expected ___!');
+
+// Skip comparison (deactivate test)
+expect(result, 0, skip: true); // Or, set String as a comment
+\end{lstlisting}
+
+\noindent In addition, \q{allOf}-matcher allows combining multiple matchers, \q{anyOf} -- check if any of the conditions 
+are met. While \q{expect}-function is used to compare the results of some operations, \q{mocktail}-package declares 
+\q{verify}-function to ensure that some other functions were used (or not) during the test execution.

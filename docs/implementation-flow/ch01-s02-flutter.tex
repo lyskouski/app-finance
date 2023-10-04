@@ -1,13 +1,170 @@
 % Copyright 2023 The terCAD team. All rights reserved.
 % Use of this content is governed by a CC BY-NC-ND 4.0 license that can be found in the LICENSE file.
 
-\subsection{[TBD] Flutter}
+\subsection{Flutter}
 \markboth{Bootcamping}{Flutter}
 
-[TBD]
+Flutter is an open-source framework developed by Google for building natively compiled applications for mobile, web, and 
+desktop from a single codebase by using \q{Dart}-language. The framework provides a comprehensive set of libraries and 
+tools for building UIs, handling user input, and accessing device features. Flutter's UI is constructed by using widgets, 
+that are the building blocks of Flutter apps, and everything, from a simple button to a complex layout, is a widget
+(including animations and layout controls).
 
-\paragraph{Flutter Engine Embedder}
+\paragraph{Engine} At the core of Flutter is the C/C++ engine, known as Skia (open-source 2D-graphics library, developed 
+and maintained by Google), that provides a set of low-level APIs for rendering graphics (support for both vector and 
+bitmap graphics to draw shapes, text, and images) and low-level platform services. Skia includes anti-aliasing 
+capabilities, which smooth out edges and lines to create visually pleasing graphics. This engine provides interfaces 
+with the platform-specific code to interact with device hardware. It bridges the gap between the Flutter framework, 
+written in Dart, and the platform-specific code, allowing Flutter apps to access device features and services.
+
+\paragraph{Engine Embedder}
 
 The Flutter Engine is window toolkit agnostic, meaning a capability to build Flutter embedders on one of the platforms 
-not supported out of the box (i.e, iOS \& Android). That enables creation of custom solutions with the power and 
-flexibility of Flutter with a distribution to anywhere, including smart devices, cars, and more.
+not supported out of the box. That enables creation of custom solutions with the power and flexibility of Flutter with 
+a distribution to anywhere, including smart devices, cars, and more.
+
+\paragraph{Platform Channels} Device-specific features and APIs are accessible through what are known as platform channels, 
+which facilitate the integration of a native functionality. Platform Channels enables bi-directional asynchronous 
+communication between Dart and the native code of the host platform. It's possible to invoke methods on that channel 
+from either the Dart or native side (for example, a native method to access the device's camera). Bi-directional 
+communication is covered by a data serialization and deserialization process that ensures that it is in a format that 
+both can understand.
+
+\paragraph{Plugins} Flutter plugins provide a way to encapsulate and interact with platform-specific code, by using 
+\q{Dart}-language as bridge between Flutter and the native code, accessing hardware features, third-party libraries, 
+and platform-specific APIs.
+
+\subsubsection{Considering Diversity}
+
+Out of the box (OOTB), Flutter offers a vast array of widgets that greatly facilitate the creation of diverse and 
+complex user interfaces. These widgets are designed to cater to a wide range of application needs, from crafting simple 
+layouts to developing intricate and feature-rich interfaces. This comprehensive selection of widgets significantly 
+accelerates the development process, allowing you to focus more on crafting the user experience and less on building UI 
+components from scratch.
+
+\begin{itemize}
+  \item \q{SizedBox} for a size allocation, \q{Container} extends it by styling as padding, margin, and background color.
+
+  \item \q{Row} and \q{Column} arrange child widgets horizontally and vertically accordingly, and \q{DataTable}  
+  mixes both.
+
+  \item \q{ListView} for creating scrollable lists of widgets
+
+  \item \q{Stack} allows to overlay widgets on top of one another.
+
+  \item \q{AppBar} enables a navigation on top of the page, \q{BottomNavigationBar} is specific for the bottom 
+  layer, for the sidebar it can be used \q{NavigationRail}, \q{Drawer} -- to implement navigation drawers, and 
+  \q{SnackBar} for the popping up content.
+
+  \item \q{FlatButton}, \q{RaisedButton}, \q{FloatingActionButton} -- different buttons with customizable visual feedback.
+
+  \item \q{TextField}-widget offers input fields where users can enter text, numbers, or other data. Meanwhile,
+  \q{SearchAnchor} manages selections from a list of options.
+  
+  \item \q{Card} -- for creating material design cards with a consistent and customizable elevation effect.
+
+  \item \q{PageRouteBuilder} enables custom page transitions and animations when navigating between screens.
+
+  \item \q{FutureBuilder} simplifies working with asynchronous operations by rebuilding itself when the future state is 
+  resolved, allowing for dynamic UI updates.
+
+  \item \q{InkWell} provides a Material-style ripple effect for making widgets tappable and interactive.
+\end{itemize}
+
+\noindent And, a lot of others...
+
+
+\newpage
+\subsubsection{Distinguishing Stateless and Stateful}
+
+A \q{StatelessWidget} in Flutter represents interfaces with an immutable state (once created), requiring a new instance 
+for updates; providing suitability for static content like text, icons, or images; and performance advantages due to 
+their lack of mutable state, making them generally more memory and processing-efficient.
+
+Where as \q{StatefulWidget} is capable of changing its properties and appearance over a time and composed of two classes 
+(immutable \q{Widget}-class and a corresponding mutable \q{State}-class). Key attributes encompass mutable state stored 
+within the associated \q{State}-object and can be changed by the \q{setState}-method. Suits for crafting interactive 
+and dynamic user interfaces such as forms and animations. It's worth noting that \q{StatefulWidget} may demand more 
+memory due to a potentially frequent rebuilds, necessitating a careful state management to ensure optimal performance.
+
+\begin{lstlisting}
+class LoadingWidget extends StatefulWidget {
+  const LoadingWidget({super.key});
+  @override
+  LoadingWidgetState createState() => LoadingWidgetState();
+}
+
+class LoadingWidgetState extends State<LoadingWidget> with TickerProviderStateMixin {
+  late AnimationController _controller = AnimationController(
+      vsync: this,
+      duration: const Duration(seconds: 2),
+    )..repeat();
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) => AnimatedBuilder(
+      animation: _controller,
+      builder: (context, child) {
+        return CircularProgressIndicator(
+          value: _controller.value,
+          color: context.colorScheme.inversePrimary,
+          strokeWidth: 4,
+        );
+      },
+    );
+}
+\end{lstlisting}
+
+
+\newpage
+\subsubsection{Asserting in Tests}
+
+In case of any test (unit, widget, or integration) creating for Flutter applications, the ultimate objective is to 
+confirm that the actual outcomes align with the anticipated results.
+
+\begin{lstlisting}
+// Find and check Widget by its text
+expect(find.text('text'), findsNothing);
+// ... by Widget's type
+expect(find.byType(DemoPage), findsOneWidget);
+expect(find.byType(Container), findsWidgets);
+\end{lstlisting}
+
+\noindent Flutter helps to automate accessibility checks (that can be extended by inheriting \q{AccessibilityGuideline}):
+
+\begin{lstlisting}
+testWidgets('Verify Guidelines', (tester) async {
+  await tester.pumpWidget(MyApp()); // Initialize Widget
+  // Verify a tappable area (min 44x44 for iOS, 48x48 - Android)
+  await expectLater(tester, 
+      meetsGuideline(iOSTapTargetGuideline));
+  await expectLater(tester, 
+      meetsGuideline(androidTapTargetGuideline));
+  // WCAG text contrast requirements
+  await expectLater(tester, 
+      meetsGuideline(textContrastGuideline));
+  // Enforces all navigation elements to have a label
+  await expectLater(tester,
+      meetsGuideline(labeledTapTargetGuideline));
+}
+\end{lstlisting}
+
+\noindent In the context of a complex layout, we may employ an image as a means to verify the rendered output (as a 
+warning, fonts generation is a platforms specific even with \q{FlutterTest}-font, that is used if font family isn't 
+specified or not available; check \ref{golden-image} for details):
+
+\begin{lstlisting}
+testWidgets('Compare with Image', (tester) async {
+  await tester.pumpWidget(widget);
+  final check = find.byType(MyApp);
+  // By using a stored image file
+  await expectLater(check, matchesGoldenFile('result.png'));
+  // Compare with generated by "PictureRecorder" instance
+  await expectLater(check, matchesReferenceImage(image));
+});
+\end{lstlisting}
