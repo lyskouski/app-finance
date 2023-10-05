@@ -81,11 +81,12 @@ A \q{StatelessWidget} in Flutter represents interfaces with an immutable state (
 for updates; providing suitability for static content like text, icons, or images; and performance advantages due to 
 their lack of mutable state, making them generally more memory and processing-efficient.
 
-Where as \q{StatefulWidget} is capable of changing its properties and appearance over a time and composed of two classes 
-(immutable \q{Widget}-class and a corresponding mutable \q{State}-class). Key attributes encompass mutable state stored 
+Where as \q{StatefulWidget} is capable of changing its properties and appearance over a time. It consists of two classes: 
+immutable \q{Widget}-class and a corresponding mutable \q{State}-class. Key attributes encompass mutable state stored 
 within the associated \q{State}-object and can be changed by the \q{setState}-method. Suits for crafting interactive 
 and dynamic user interfaces such as forms and animations. It's worth noting that \q{StatefulWidget} may demand more 
-memory due to a potentially frequent rebuilds, necessitating a careful state management to ensure optimal performance.
+memory due to a potentially frequent rebuilds, but performance itself can be improved by \q{RepaintBoundary}-widget 
+usage that tears off (isolate) the render of bounded widgets from predecessor objects rendering.
 
 \begin{lstlisting}
 class LoadingWidget extends StatefulWidget {
@@ -93,7 +94,6 @@ class LoadingWidget extends StatefulWidget {
   @override
   LoadingWidgetState createState() => LoadingWidgetState();
 }
-
 class LoadingWidgetState extends State<LoadingWidget> with TickerProviderStateMixin {
   late AnimationController _controller = AnimationController(
       vsync: this,
@@ -105,7 +105,6 @@ class LoadingWidgetState extends State<LoadingWidget> with TickerProviderStateMi
     _controller.dispose();
     super.dispose();
   }
-
   @override
   Widget build(BuildContext context) => AnimatedBuilder(
       animation: _controller,

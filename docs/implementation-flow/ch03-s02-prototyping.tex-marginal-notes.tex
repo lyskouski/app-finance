@@ -1,9 +1,7 @@
 % Copyright 2023 The terCAD team. All rights reserved.
 % Use of this content is governed by a CC BY-NC-ND 4.0 license that can be found in the LICENSE file.
 
-% Parts of "Prototyping" subsection
-\subsection{[TBD] Marginal Notes of Flutter usage}
-
+\subsection{[TBD] Taking Marginal Notes}
 
 \subsubsection{Mixing 'PageView' and 'PageController'}
 
@@ -533,11 +531,11 @@ void main() {
   MyClass myObject = MyClass(DateTime.now(), 'Sample');
   // Convert object to a string representation
   String jsonString = myObject.toString();
-  print(jsonString); // Output: '{"timestamp": 123..., "name": "John"}'
+  print(jsonString); // {"timestamp": 123..., "name": "John"}
   // Convert string back to an object
   MyClass newObj = MyClass.fromJson(jsonString);
-  print(newObj.timestamp.toIso8601String()); // Output: 2023-...
-  print(newObj.name); // Output: Sample
+  print(newObj.timestamp.toIso8601String()); // '2023-10-01T...'
+  print(newObj.name); // 'Sample'
 }
 \end{lstlisting}
 
@@ -611,29 +609,9 @@ class TransactionLog {
 \end{lstlisting}
 
 
-\subsubsection{Android: loading screen and icons}
+\subsubsection{Defining Application Icons}
 
-For Android to change background of loading screen:
-
-\begin{lstlisting}[language=xml]
-<!-- android/app/src/main/AndroidManifest.xml -->
-<manifest xmlns:android="http://schemas.android.com/apk/res/android">
-  <application
-      android:background="@color/mainColor"
-
-<!-- android/app/src/main/res/drawable/launch_background.xml -->
-<!-- android/app/src/main/res/drawable-v21/launch_background.xml -->
-<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:drawable="@color/mainColor" />
-
-<!-- android/app/src/main/res/values/colors.xml -->
-<!-- android/app/src/main/res/values-night/colors.xml -->
-<resources>
-    <color name="mainColor">#912391</color>
-</resources>
-\end{lstlisting}
-
-To set icon with background:
+To set an icon with background for \q{Android}:
 
 \begin{lstlisting}[language=xml]
 <!-- android/app/src/main/AndroidManifest.xml -->
@@ -664,12 +642,28 @@ To set icon with background:
 \end{lstlisting}
 
 And it has to be created \q{ic\_launcher.png} and \q{ic\_launcher\_round.png} icons for all other formats (mipmap-hdpi, 
-mipmap-mdpi, ...) to support less than Android SDK 26 versions.
+mipmap-mdpi, ...) to support less than Android SDK 26 versions. Additionally, it can be changed background of loading 
+screen:
 
+\begin{lstlisting}[language=xml]
+<!-- android/app/src/main/AndroidManifest.xml -->
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+  <application
+      android:background="@color/mainColor"
 
-\subsubsection{Linux: icons}
+<!-- android/app/src/main/res/drawable/launch_background.xml -->
+<!-- android/app/src/main/res/drawable-v21/launch_background.xml -->
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:drawable="@color/mainColor" />
 
-Before the line \q{gtk\_widget\_show(GTK\_WIDGET(window));} add the next:
+<!-- android/app/src/main/res/values/colors.xml -->
+<!-- android/app/src/main/res/values-night/colors.xml -->
+<resources>
+    <color name="mainColor">#912391</color>
+</resources>
+\end{lstlisting}
+
+For \q{Linux} the icons are declared from \q{my\_application.cc}-file before the line \q{gtk\_widget\_show(GTK\_WIDGET(window))}:
 
 \begin{lstlisting}
 // ./linux/my_application.cc
