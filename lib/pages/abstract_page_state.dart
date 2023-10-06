@@ -77,7 +77,7 @@ abstract class AbstractPageState<T extends StatefulWidget> extends State<T> {
               future: DefaultAssetBundle.of(context).loadString('./assets/l10n/${type}_$locale.md'),
               builder: (context, snapshot) {
                 if (snapshot.hasData) {
-                  return Markdown(data: snapshot.data ?? '');
+                  return Markdown(data: snapshot.data!);
                 }
                 return Container();
               },
@@ -191,9 +191,11 @@ abstract class AbstractPageState<T extends StatefulWidget> extends State<T> {
     final theme = Theme.of(context);
     final nav = Navigator.of(context);
     final actions = getBarActions(nav);
-    final hasTooltip = getButtonName().isNotEmpty;
     final btnWidth = 50.0 * actions.length;
-    final tooltipWidth = ThemeHelper.getWidth(context, 0) / 2 - 100;
+    final titleWidth = ThemeHelper.getWidth(context, 0) / 2 - 100;
+    final hasTooltip = getButtonName().isNotEmpty;
+    final showTooltip = hasTooltip && (constraints.maxWidth - titleWidth - btnWidth - 50 > 125);
+
     return BottomAppBar(
       padding: EdgeInsets.zero,
       notchMargin: CircularProgressIndicator.strokeAlignCenter,
@@ -204,7 +206,7 @@ abstract class AbstractPageState<T extends StatefulWidget> extends State<T> {
       child: RowWidget(
         maxWidth: constraints.maxWidth,
         indent: 0,
-        chunk: [50, hasTooltip ? tooltipWidth : null, hasTooltip ? null : 0, btnWidth],
+        chunk: [50, hasTooltip ? titleWidth : null, hasTooltip ? null : 0, btnWidth],
         children: [
           [getBarLeading(nav) ?? ThemeHelper.emptyBox],
           [
@@ -214,14 +216,16 @@ abstract class AbstractPageState<T extends StatefulWidget> extends State<T> {
             ),
           ],
           [
-            Padding(
-              padding: EdgeInsets.only(left: 84, top: ThemeHelper.getIndent(0.5)),
-              child: TextWrapper(
-                getButtonName(),
-                maxLines: 2,
-                style: theme.textTheme.bodySmall!.copyWith(color: theme.colorScheme.onInverseSurface.withOpacity(0.6)),
+            if (showTooltip)
+              Padding(
+                padding: EdgeInsets.only(left: 84, top: ThemeHelper.getIndent(0.5)),
+                child: TextWrapper(
+                  getButtonName(),
+                  maxLines: 2,
+                  style:
+                      theme.textTheme.bodySmall!.copyWith(color: theme.colorScheme.onInverseSurface.withOpacity(0.6)),
+                ),
               ),
-            ),
           ],
           [
             RowWidget(

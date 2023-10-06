@@ -11,6 +11,7 @@ import 'package:app_finance/_configs/custom_color_scheme.dart';
 import 'package:app_finance/_configs/theme_helper.dart';
 import 'package:app_finance/_ext/build_context_ext.dart';
 import 'package:app_finance/_ext/color_ext.dart';
+import 'package:app_finance/l10n/index.dart';
 import 'package:app_finance/widgets/form/color_selector.dart';
 import 'package:app_finance/widgets/form/currency_selector.dart';
 import 'package:app_finance/widgets/form/list_selector.dart';
@@ -47,6 +48,7 @@ class SettingTabState<T extends SettingTab> extends AbstractTabState<T> {
     light: AppDefaultColors.fromString(AppPalette.light),
     dark: AppDefaultColors.fromString(AppPalette.dark),
   );
+  final languages = languageList.map((e) => ListSelectorItem(id: e.id, name: e.name)).toList();
 
   @override
   void initState() {
@@ -128,11 +130,7 @@ class SettingTabState<T extends SettingTab> extends AbstractTabState<T> {
           ListSelector(
             value: AppLocale.code,
             hintText: AppLocale.labels.language,
-            options: [
-              ListSelectorItem(id: 'en', name: AppLocale.labels.languageEn),
-              ListSelectorItem(id: 'be', name: AppLocale.labels.languageBe),
-              ListSelectorItem(id: 'be_EU', name: AppLocale.labels.languageBeEu),
-            ],
+            options: languages,
             setState: saveLocale,
           ),
           ThemeHelper.hIndent2x,
