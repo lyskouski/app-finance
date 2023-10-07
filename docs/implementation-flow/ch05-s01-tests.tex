@@ -134,7 +134,8 @@ void main() {
     await binding.traceAction(() async {
         // ... other steps
         final amountField = find.byWidgetPredicate((widget) {
-          return widget is TextField && widget.decoration?.hintText == 'Set Balance';
+          return widget is TextField && 
+              widget.decoration?.hintText == 'Set Balance';
         });
         await tester.ensureVisible(amountField);
         await tester.tap(amountField);
@@ -325,11 +326,13 @@ change \q{FlutterViews} background color to a non-nil value \cite{Chis23}). Cont
 the outage by broken dependencies and missed packages support:
 
 \begin{lstlisting}
-[!] CocoaPods could not find compatible versions for pod "flutter_webrtc"
+[!] CocoaPods could not find compatible versions for 
+    pod "flutter_webrtc"
 
-[!] `<XCBuildConfiguration name=`Debug` UUID=`331C8088294A63A400263BE5`>` attempted to initialize an object with an 
-unknown UUID. `AE0B7B92F70575B8D7E0D07E` for attribute: `base_configuration_reference`. This can be the result of a 
-merge and the unknown UUID is being discarded.
+[!] `<XCBuildConfiguration name=`Debug` UUID=`...`>` attempted to 
+    initialize an object with an unknown UUID `...` for attribute: 
+    `base_configuration_reference`. This can be the result of a 
+    merge and the unknown UUID is being discarded.
 \end{lstlisting}
 
 

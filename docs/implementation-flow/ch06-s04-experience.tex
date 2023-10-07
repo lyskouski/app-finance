@@ -1,39 +1,23 @@
 % Copyright 2023 The terCAD team. All rights reserved.
 % Use of this content is governed by a CC BY-NC-ND 4.0 license that can be found in the LICENSE file.
 
-\subsection{[TBD] Asserting User Experience}
-\markboth{Optimizing UI/UX Flow}{Asserting User Experience}
+\subsection{Asserting User Experience}
+\markboth{Optimizing User Interface}{Asserting User Experience}
 
 Users have a distinct expectation regarding how an application should behave in general (summarized "know-how"), and 
 covering these expectations might be beneficial by asserting that applications is aligned with user needs. That approach
 is mostly known as User-Centric Design (UCD) \cite{Stil16}. It entails understanding the needs, goals, and pain points 
-of the target audience by conducting user research, creating user personas, and gathering feedback, designers can 
-craft interfaces that resonate with users and fulfill their expectations.
+of the target audience by conducting user research, creating user personas, and gathering feedback. 
 
-
-\subsubsection{Building Navigation} 
-
-Asserting user experience involves designing clear and logical navigation paths,
-minimizing complexity, and ensuring that users can seamlessly move through the application's features and content.
-
-As an example, it can be an additional actions' accessability on an element by swiping (\cref{img:u-swipe}). In our case, 
-that helps to access \q{Edit}-form or \q{Delete} item without going through the multiple navigation steps. Such behavior 
-can be achieved by the usage of \q{flutter\_swipe\_action\_cell}-component as a wrapper of our Widget (\issue{206}{}).
-
-\img{uiux/swipe-actions}{Swipe Actions on Cell}{img:u-swipe}
-
-
-\subsubsection{Following Conventions} 
-
-Consistency in design elements, such as button placement, color schemes, and typography, helps users feel at ease and 
-reduces cognitive load.
+We should craft interfaces that resonate with users and fulfill their expectations. Consistency in design elements, 
+such as button placement, color schemes, and typography, helps users feel at ease and reduces cognitive load.
 
 
 \subsubsection{Adding Localizations} 
 
-Adapting to various languages and regions makes the application more accessible and inclusive to a global audience. 
-That includes translating text, adjusting layouts for different languages, and incorporating region-specific content 
-or functionalities.
+Adapting to various languages and regions makes the application more accessible and inclusive to a global audience (the 
+quality of translation significantly impacts \cite{Lomm07}). That includes translating text, adjusting layouts for 
+different languages, and incorporating region-specific content or functionalities.
 
 Localization can be enabled from a configurational \q{pubspec.yaml}-file with an additional declaration in 
 \q{l10n.yaml}-file: 
@@ -63,41 +47,80 @@ Widget build(BuildContext context) => MaterialApp(
   localizationsDelegates: AppLocalizations.localizationsDelegates,
   // List is generated based on the '.arb'-files availability
   supportedLocales: AppLocalizations.supportedLocales,
-  // 'AppLocale' extends from 'ValueNotifier'
+  // 'AppLocale' extends from 'ValueNotifier', returns 'Locale'
   locale: context.watch<AppLocale>().value,
   // ... other options
 );
 \end{lstlisting}
 
-\noindent Rich text can be stored in \q{assets}-folder as \q{.md}-files and integrated into application by using 
+\noindent Rich text can be stored in \q{assets}-folder as \q{.md}-files and integrated back into an application by using 
 \q{flutter\_markdown}-package:
 
 \begin{lstlisting}
 FutureBuilder(
-  future: DefaultAssetBundle.of(context).loadString('./assets/l10n/file.md'),
-  builder: (ContextBuilder context, AsyncSnapshot<String> snapshot) {
-    if (snapshot.hasData) {
-      return Markdown(data: snapshot.data!);
-    }
-    return Container();
-  },
+  future: DefaultAssetBundle.of(context).loadString(
+    './assets/l10n/$fileName.md'
+  ),
+  builder: (context, AsyncSnapshot<String> snapshot) =>
+      snapshot.hasData ? Markdown(data: snapshot.data!) : Container();
 )
 \end{lstlisting}
 
-\noindent Localization encompasses more than just translating text; it involves adapting content and design for 
-different regions and cultures. For instance, consider adjusting the layout by rearranging elements from left-to-right
-to right-to-left (as a reposition of a left-hand navigation bar to the right) for languages like Arabic, Hebrew, and 
-Japanese. Additionally, color choices can vary, with colder colors preferred in Europe and warmer colors in Latin 
-America. These details enhance the user experience for diverse audiences \cite{Rein14}.
+\noindent Localization encompasses more than just translating a text \cite{Hofs03}; it involves adapting content 
+(\emph{in Japan it's usual to get information through stories, while in Germany -- it should be complete, clear and 
+precise}) and design for different regions and cultures. For instance, consider adjusting the layout by rearranging 
+elements from left-to-right to right-to-left (as a reposition of a left-hand navigation bar to the right) for languages 
+like Arabic, Hebrew, and Japanese. In Germany, a navigation bar is typically arranged in alphabetical order, whereas 
+in most other regions, it is organized based on the priority of usage intensity. In France, the typical orientation is 
+centered, meaning that buttons are usually located in the center of the menu bar rather than in a corner.
+
+Asian cultures often lean towards vibrant layouts, emphasizing the importance of contextual relationships between 
+elements. In contrast, Western cultures tend to prefer minimalistic and concise designs, typically incorporating a 
+limited color palette while placing primary emphasis on key objects or elements.
+
+Icons are like visual metaphors representing user actions, and their interpretation can vary significantly across 
+different cultures. When using icons for purposes such as indicating currencies, locations, or navigation (as Chinese 
+apps don't use hamburger or kebab symbols for the "menu"-button), it's needed to be mindful that symbols may not have 
+universal meanings and can be understood differently.
+
+Color choices can vary widely, with Europeans favoring colder colors, Latin Americans preferring warmer hues, and Asian 
+cultures embracing vibrant and diverse color palettes. \\
+\\
+
+\noindent \q{[TBD] Sample images} \\
+\\
+
+\noindent These details \cite{Rein14} enhance the user experience for diverse audiences.
 
 
-\subsubsection{Personalizing View}
+\subsubsection{Creating Navigational Clarity} 
+
+Asserting user experience involves designing clear and logical navigation paths, minimizing complexity, and ensuring 
+that users can seamlessly move through the application's features and content.
+
+There should be a minimal set of actions to achieve the goal. As an example, by showing additional actions by swiping 
+on element (\cref{img:u-swipe}). In our case, that helps to access \q{Edit}-form or \q{Delete} item without going 
+through the multiple navigation steps. Such behavior can be achieved by the usage of 
+\q{flutter\_swipe\_action\_cell}-component as a wrapper of our Widget \issue{206}{}.
+
+\img{uiux/swipe-actions}{Swipe Actions on Cell}{img:u-swipe}
+
+\noindent The presentation of navigation layers may vary to accommodate different screen resolutions. This adaptation 
+ensures that the user experience remains consistent and user-friendly across various devices and screen sizes 
+(\cref{img:u-nav}).
+
+\img{uiux/navigation-bar}{Navigation Bar deviations across multiple screens}{img:u-nav}
+
+
+\subsubsection{Personalizing Layout}
 
 Tailored content recommendations or customizable settings, enable applications to assert user experience by delivering 
 a more individualized and engaging interaction.
 
+Users might expect not only functionality but also the ability to tailor their experience to their liking; and an 
+aspect of this customization is the ability to configure layout settings (color schemes \issue{231}{}, font sizes 
+\issue{237}{}, and arrangement of content \issue{258}{}). Allowing them to configure these aspects empowers them to 
+create an interface that suits their individual needs and aesthetics (\cref{img:u-custom}). This reduces cognitive 
+load and makes navigation more intuitive and personalized.
 
-\subsubsection{Looping Feedback} 
-
-Collecting user input, analyzing user behavior through analytics, and conducting usability testing all contribute to 
-iterative improvements that align the application with evolving user expectations.
+\img{uiux/layout-editor}{Layout Configuration}{img:u-custom}

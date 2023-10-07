@@ -1,8 +1,8 @@
 % Copyright 2023 The terCAD team. All rights reserved.
 % Use of this content is governed by a CC BY-NC-ND 4.0 license that can be found in the LICENSE file.
 
-\subsection{Applying Adaptive \& Responsive Design}
-\markboth{Optimizing UI/UX Flow}{Applying Adaptive \& Responsive Design}
+\subsection{Relying Adaptiveness \& Responsiveness}
+\markboth{Optimizing User Interface}{Relying Adaptiveness \& Responsiveness}
 
 Basically, responsive design relies on fluid layouts and media queries to adapt content dynamically to different screen 
 sizes within a single codebase. Adaptive design, on the other hand, involves creating a specific layout per different 
@@ -17,8 +17,6 @@ Embracing a grid layout as part of an adaptive design strategy is a pivotal step
 user-centric digital experience (\cref{img:u-grid}). Grids provide the structure needed to maintain visual consistency, 
 prioritize content, and seamlessly adapt to diverse screen sizes.
 
-\img{uiux/cssgrid-flexbox}{Representation of Grid Layout \cite{Tayl18}}{img:u-grid}
-
 And for that case let's dive into an external package creation. From IDE, by pressing \key{F1} -- \q{Flutter: New 
 Project} -- \q{Package}, we will generate a package template (only "lib" and "test"-folders plus configuration files). 
 Inside \q{lib}-folder the file, named identically to our package, works as an entry point for the package
@@ -32,6 +30,8 @@ library flutter_grid_layout;
 export 'src/grid_container.dart';
 export 'src/grid_item.dart';
 \end{lstlisting}
+
+\img{uiux/cssgrid-flexbox}{Representation of Grid Layout \cite{Tayl18}}{img:u-grid}
 
 \noindent The implementation has a resemblance to the previously created \q{RowWidget} by its functionality of 
 converting relative values into density-independent pixels (DIP). \q{GridItem}-widget serves as an encapsulating 
@@ -118,7 +118,7 @@ class GridContainer extends StatelessWidget {
 \q{flutter pub add flutter\_grid\_layout}-command evaluation.
 
 
-\subsubsection{Extending Responsiveness Behavior}
+\subsubsection{Extending Behavior}
 
 Responsiveness, by being a paramount in engaging users across a multitude of devices, is covered by a couple of design 
 concepts \cite{Frai22}: fluid layouts, media queries, and content prioritization. The concept of "Fluid Layouts" is in 
@@ -230,56 +230,3 @@ class GridLayer extends StatelessWidget {
   }
 }
 \end{lstlisting}
-
-
-\subsubsection{[TBD] Configuring Layout}
-
-Users might expect not only functionality but also the ability to tailor their experience to their liking; and an 
-aspect of this customization is the ability to configure layout settings (color schemes \issue{231}{}, font sizes 
-\issue{237}{}, and arrangement of content \issue{258}{}). Whether it's a website, a mobile app, or a software 
-application. Allowing them to configure these aspects empowers them to create an interface that suits their individual 
-needs and aesthetics. This reduces cognitive load and makes navigation more intuitive and personalized.
-
-
-\subsubsection{Handling Instabilities}
-
-A rich interface may road us to an area of instabilities...
-
-By example, an error \emph{"Scaffold.geometryOf() must only be accessed during the paint phase"} (with ongoing 
-\emph{"'package:flutter/src/rendering/mouse\_tracker.dart': Failed assertion: ... '!\_debugDuringDeviceUpdate': 
-is not true"}) leads to a fully nonfunctional state  of the application (by not responding to any of interaction).
-Sometimes we might be not alone with the problematic area; as for the error above, it's been highlighted to Flutter 
-SDK team a few times (issues \href{https://github.com/flutter/flutter/issues/76325}{\#76325},
-\href{https://github.com/flutter/flutter/issues/108363}{\#108363}, and
-\href{https://github.com/flutter/flutter/issues/126513}{\#126513}), but closed without being resolved simply by not 
-declared steps to reproduce it constantly.
-
-\img{uiux/bottom-bar}{Application Bottom Bar for small screens}{img:u-bottom-bar}
-
-In our case (\cref{img:u-bottom-bar}) the problem is relevant to the usage of \q{FloatingActionButtonLocation.centerDocked} 
-with enabled \q{bottomNavigationBar} for \q{Scaffold}, and appears by navigating back and forth between pages. The issue 
-is related to how Flutter renders under the hood, and there are no declared steps to resolve it. Each time, the 
-solution may require a unique approach:
-
-\begin{lstlisting}
-// Awaiting for the route transition to be completed
-await route.completed;
-
-// Deactivate inactive routes to be remained in memory
-MaterialPageRoute(maintainState: false, ... // or contrary, has to be "true"
-
-// Wrap lists content and declare scrolling
-ListView.builder(
-  scrollDirection: Axis.vertical,
-  shrinkWrap: true,
-\end{lstlisting}
-
-Sometimes the problem cannot be resolved in the application itself, and we have to change somehow used external 
-components. We may either create an issue 
-(\href{https://github.com/flutter/flutter/issues/134408}{https://github.com/flutter/flutter/issues/134408}) 
-with an assumption that it will be taken into account and fixed sometime, or create a patch by our own 
-\href{https://github.com/flutter/flutter/pull/134409}{https://github.com/flutter/flutter/pull/134409}. In cases, when 
-the fix is not universal (or we do not have a time for) and relevant only for us, external component should be forked 
-\href{https://github.com/lyskouski/flutter}{https://github.com/lyskouski/flutter} and re-targeted for the application
-via \q{pubspec.yaml}, or, in case of Flutter itself, by a local binding -- 
-\href{https://docs.flutter.dev/get-started/install/linux#install-flutter-manually}{https://docs.flutter.dev/get-started/install/linux\#install-flutter-manually}.

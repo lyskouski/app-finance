@@ -2,7 +2,7 @@
 % Use of this content is governed by a CC BY-NC-ND 4.0 license that can be found in the LICENSE file.
 
 \subsection{Branding Palette}
-\markboth{Optimizing UI/UX Flow}{Branding Palette}
+\markboth{Optimizing User Interface}{Branding Palette}
 
 A Branding Palette, often referred to as a Color Palette, is a thoughtfully curated selection of colors that reflect the 
 brand's personality, values, and objectives. It declares Primary (dominate the visual identity) and Secondary 
@@ -58,7 +58,7 @@ class AppPalette extends ValueNotifier<String> {
     await AppPreferences.set(AppPreferences.prefPalette, light.toString());
     await AppPreferences.set(AppPreferences.prefPaletteDark, dark.toString());
     notifyListeners();
-  }
+  }(*@ \stopnumber @*)
 }
 
 // ./lib/_configs/custom_color_scheme.dart
