@@ -19,6 +19,7 @@ import 'package:provider/provider.dart';
 
 abstract class AbstractPageState<T extends StatefulWidget> extends State<T> {
   static const barHeight = 40.0;
+  static const menuWidth = 200.0;
   late AppData state;
 
   int selectedMenu = 0;
@@ -146,7 +147,7 @@ abstract class AbstractPageState<T extends StatefulWidget> extends State<T> {
 
   AppBar? buildBar(BuildContext context, BoxConstraints constraints) {
     final nav = Navigator.of(context);
-    bool isWide = ThemeHelper.getWidthCount(constraints) >= 4;
+    final isWide = ThemeHelper.isWideScreen(constraints);
     return AppBar(
       title: Center(child: getBarTitle(context)),
       toolbarHeight: barHeight,
@@ -240,26 +241,30 @@ abstract class AbstractPageState<T extends StatefulWidget> extends State<T> {
     );
   }
 
+  Widget buildNavigation() {
+    double indent = ThemeHelper.getIndent();
+    return ListView.separated(
+      scrollDirection: Axis.vertical,
+      shrinkWrap: true,
+      padding: EdgeInsets.symmetric(vertical: indent * 4),
+      separatorBuilder: (context, index) => ThemeHelper.hIndent2x,
+      itemCount: AppMenu.get().length,
+      itemBuilder: (context, index) => MenuWidget(
+        index: index,
+        setState: () => setState(() => selectedMenu = index),
+        selectedIndex: selectedMenu,
+      ),
+    );
+  }
+
   Drawer? buildDrawer() {
     final ColorScheme colorScheme = context.colorScheme;
-    double indent = ThemeHelper.getIndent();
     return Drawer(
       elevation: 0,
       shape: Border.all(width: 0),
       child: Container(
         color: colorScheme.background,
-        child: ListView.separated(
-          scrollDirection: Axis.vertical,
-          shrinkWrap: true,
-          padding: EdgeInsets.symmetric(vertical: indent * 4),
-          separatorBuilder: (context, index) => ThemeHelper.hIndent2x,
-          itemCount: AppMenu.get().length,
-          itemBuilder: (context, index) => MenuWidget(
-            index: index,
-            setState: () => setState(() => selectedMenu = index),
-            selectedIndex: selectedMenu,
-          ),
-        ),
+        child: buildNavigation(),
       ),
     );
   }
@@ -271,6 +276,7 @@ abstract class AbstractPageState<T extends StatefulWidget> extends State<T> {
     return Consumer<AppData>(builder: (context, appState, _) {
       state = appState;
       return LayoutBuilder(builder: (context, constraints) {
+        final isWide = ThemeHelper.isWideScreen(constraints);
         final isBottom = ThemeHelper.isNavBottom(constraints);
         final isWearable = ThemeHelper.isWearableMode(context, constraints);
         final isRight = !isWearable && ThemeHelper.isNavRight(context, constraints);
@@ -283,6 +289,8 @@ abstract class AbstractPageState<T extends StatefulWidget> extends State<T> {
           if (rightBar != null) {
             width -= barHeight;
           }
+        } else if (isWide) {
+          width -= menuWidth;
         }
         final dx = (constraints.maxWidth - constraints.maxWidth / scale) / 2;
         final dy = (constraints.maxHeight - constraints.maxHeight / scale) / 2;
@@ -294,17 +302,27 @@ abstract class AbstractPageState<T extends StatefulWidget> extends State<T> {
             child: InputControllerWrapper(
               child: Stack(
                 children: [
-                  OverflowBox(
-                    alignment: Alignment.topLeft,
-                    minWidth: width,
-                    maxWidth: width,
-                    minHeight: height,
-                    maxHeight: height,
-                    child: Transform.translate(
-                      offset: Offset(dx, dy),
-                      child: Transform.scale(
-                        scale: scale,
-                        child: buildContent(context, constraints),
+                  if (isWide)
+                    Container(
+                      color: context.colorScheme.inversePrimary.withOpacity(0.2),
+                      width: menuWidth,
+                      height: double.infinity,
+                      child: buildNavigation(),
+                    ),
+                  Container(
+                    margin: isWide ? const EdgeInsets.only(left: menuWidth) : EdgeInsets.zero,
+                    child: OverflowBox(
+                      alignment: Alignment.topLeft,
+                      minWidth: width,
+                      maxWidth: width,
+                      minHeight: height,
+                      maxHeight: height,
+                      child: Transform.translate(
+                        offset: Offset(dx, dy),
+                        child: Transform.scale(
+                          scale: scale,
+                          child: buildContent(context, constraints),
+                        ),
                       ),
                     ),
                   ),

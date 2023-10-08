@@ -5,6 +5,7 @@ import 'package:app_finance/_classes/herald/app_locale.dart';
 import 'package:app_finance/_classes/structure/abstract_app_data.dart';
 import 'package:app_finance/_classes/storage/app_data.dart';
 import 'package:app_finance/_classes/structure/currency/exchange.dart';
+import 'package:app_finance/_classes/structure/invoice_app_data.dart';
 import 'package:app_finance/_ext/int_ext.dart';
 import 'package:app_finance/_ext/string_ext.dart';
 import 'package:app_finance/_mixins/storage_mixin.dart';
@@ -130,6 +131,8 @@ class BudgetAppData extends AbstractAppData with StorageMixin {
     return amountLimit *
         getState()
             .getActualList(AppDataType.invoice)
+            .cast<InvoiceAppData>()
+            .where((e) => e.accountFrom == null)
             .fold(0.0, (v, e) => v + ex.reform(e.details, e.currency, currency));
   }
 

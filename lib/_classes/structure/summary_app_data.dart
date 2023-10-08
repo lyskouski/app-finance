@@ -11,8 +11,8 @@ class SummaryAppData {
   double total;
 
   SummaryAppData({
-    required this.total,
-    required List<String> list,
+    this.total = 0,
+    List<String> list = const [],
   }) {
     this.list = list;
   }

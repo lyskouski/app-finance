@@ -39,20 +39,14 @@ typedef AppDataGetter = ({
 class AppData extends ChangeNotifier {
   final AppSync appSync;
   bool isLoading = false;
-
   final _hashTable = HashMap<String, dynamic>();
-
-  final _data = {
-    AppDataType.goals: SummaryAppData(total: 0, list: []),
-    AppDataType.bills: SummaryAppData(total: 0, list: []),
-    AppDataType.accounts: SummaryAppData(total: 0, list: []),
-    AppDataType.budgets: SummaryAppData(total: 0, list: []),
-    AppDataType.currencies: SummaryAppData(total: 0, list: []),
-    AppDataType.invoice: SummaryAppData(total: 0, list: []),
-  };
+  final _data = {};
 
   AppData(this.appSync) : super() {
     isLoading = true;
+    for (var key in AppDataType.values) {
+      _data[key] = SummaryAppData();
+    }
     Exchange(store: this).getDefaultCurrency();
     TransactionLog.load(this).then((_) async => await restate()).then((_) => appSync.follow(AppData, _stream));
   }
@@ -92,10 +86,10 @@ class AppData extends ChangeNotifier {
       TransactionLog.save(value);
       appSync.send(value.toStream());
     }
-    _notify(null);
+    _notify();
   }
 
-  void _notify(dynamic value) {
+  void _notify([_]) {
     if (!isLoading) {
       WidgetsBinding.instance.addPostFrameCallback((_) => notifyListeners());
     }

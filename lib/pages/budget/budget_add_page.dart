@@ -82,7 +82,7 @@ class BudgetAddPageState<T extends BudgetAddPage> extends AbstractAddPageState<B
           hidden: false,
           currency: currency,
           icon: icon,
-        ));
+        )..setState(state));
   }
 
   @override
