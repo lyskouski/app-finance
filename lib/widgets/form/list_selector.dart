@@ -55,6 +55,20 @@ class ListSelectorState<T extends ListSelector, K extends ListSelectorItem> exte
 
   Widget Function(Iterable<Widget>)? getViewBuilder(BuildContext context) => null;
 
+  List<Widget> buildSuggestions(BuildContext context, SearchController controller) {
+    final result = <Widget>[];
+    final scope = widget.options.cast().where((e) => e.match(controller.text));
+    scope.toList().asMap().forEach((index, e) {
+      result.add(ListTile(
+        title: itemBuilder(context, e),
+        tileColor: index % 2 == 0 ? context.colorScheme.primary.withOpacity(0.05) : null,
+        hoverColor: context.colorScheme.primary.withOpacity(0.15),
+        onTap: () => onChange(e),
+      ));
+    });
+    return result;
+  }
+
   @override
   Widget buildContent(BuildContext context) {
     final indent = ThemeHelper.getIndent();
@@ -64,50 +78,39 @@ class ListSelectorState<T extends ListSelector, K extends ListSelectorItem> exte
     );
     K? item = widget.value != null ? widget.options.cast().where((e) => e.equal(widget.value)).firstOrNull : null;
     return SearchAnchor(
-        isFullScreen: true,
-        searchController: textController,
-        viewHintText: widget.hintText,
-        headerHintStyle: hintStyle,
-        builder: (context, controller) => TapWidget(
-              onTap: () => onTap(null),
-              child: Container(
-                width: double.infinity,
-                color: context.colorScheme.fieldBackground,
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Expanded(
-                      child: Padding(
-                        padding: EdgeInsets.fromLTRB(indent, indent * 3 / 2, 0, indent * 3 / 2),
-                        child: item != null
-                            ? selectorBuilder(context, item)
-                            : Text(
-                                widget.hintText ?? '...',
-                                style: widget.hintStyle ?? hintStyle,
-                              ),
-                      ),
-                    ),
-                    IconButton(
-                      icon: Icon(Icons.arrow_drop_down, color: widget.hintStyle?.color),
-                      onPressed: () => controller.openView(),
-                    ),
-                  ],
+      isFullScreen: true,
+      searchController: textController,
+      viewHintText: widget.hintText,
+      headerHintStyle: hintStyle,
+      builder: (context, controller) => TapWidget(
+        onTap: () => onTap(null),
+        child: Container(
+          width: double.infinity,
+          color: context.colorScheme.fieldBackground,
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Expanded(
+                child: Padding(
+                  padding: EdgeInsets.fromLTRB(indent, indent * 3 / 2, 0, indent * 3 / 2),
+                  child: item != null
+                      ? selectorBuilder(context, item)
+                      : Text(
+                          widget.hintText ?? '...',
+                          style: widget.hintStyle ?? hintStyle,
+                        ),
                 ),
               ),
-            ),
-        viewBuilder: getViewBuilder(context),
-        suggestionsBuilder: (BuildContext context, SearchController controller) {
-          final result = <Widget>[];
-          final scope = widget.options.cast().where((e) => e.match(controller.text));
-          scope.toList().asMap().forEach((index, e) {
-            result.add(ListTile(
-              title: itemBuilder(context, e),
-              tileColor: index % 2 == 0 ? context.colorScheme.primary.withOpacity(0.05) : null,
-              hoverColor: context.colorScheme.primary.withOpacity(0.15),
-              onTap: () => onChange(e),
-            ));
-          });
-          return result;
-        });
+              IconButton(
+                icon: Icon(Icons.arrow_drop_down, color: widget.hintStyle?.color),
+                onPressed: () => controller.openView(),
+              ),
+            ],
+          ),
+        ),
+      ),
+      viewBuilder: getViewBuilder(context),
+      suggestionsBuilder: buildSuggestions,
+    );
   }
 }

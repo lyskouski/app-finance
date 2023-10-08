@@ -48,6 +48,7 @@ class IconSelector extends ListSelector {
 class IconSelectorState extends ListSelectorState<IconSelector, IconSelectorItem> {
   late List<IconSelectorItem> fullScope = widget.options;
   late List<IconSelectorItem> options = widget.options;
+  late int crossAxisCount;
 
   @override
   void setState(VoidCallback fn) {
@@ -66,11 +67,11 @@ class IconSelectorState extends ListSelectorState<IconSelector, IconSelectorItem
 
   @override
   Widget Function(Iterable<Widget>)? getViewBuilder(BuildContext context) {
-    final count = ThemeHelper.getWidthCount(null, context);
+    crossAxisCount = ThemeHelper.getWidthCount(null, context) * 4;
     return (Iterable<Widget> suggestions) {
       return GridView.builder(
         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-          crossAxisCount: count * 4,
+          crossAxisCount: crossAxisCount,
         ),
         itemCount: suggestions.length,
         itemBuilder: (_, index) => suggestions.elementAt(index),
@@ -97,4 +98,21 @@ class IconSelectorState extends ListSelectorState<IconSelector, IconSelectorItem
           TextWrapper(item.name, style: context.textTheme.numberSmall),
         ],
       );
+
+  @override
+  List<Widget> buildSuggestions(BuildContext context, SearchController controller) {
+    final result = <Widget>[];
+    final scope = widget.options.cast().where((e) => e.match(controller.text));
+    scope.toList().asMap().forEach((index, e) {
+      bool oddRow = (index ~/ crossAxisCount) % 2 == 0;
+      bool highlight = index % 2 == 0 && oddRow || index % 2 != 0 && !oddRow;
+      result.add(ListTile(
+        title: itemBuilder(context, e),
+        tileColor: highlight ? context.colorScheme.primary.withOpacity(0.05) : null,
+        hoverColor: context.colorScheme.primary.withOpacity(0.15),
+        onTap: () => onChange(e),
+      ));
+    });
+    return result;
+  }
 }
