@@ -42,8 +42,8 @@ class WrapperVisitor {
   void _withConstructor() {
     buffer.writeln('class Wrapper${element.name} extends ${element.name} {');
     final constructor = element.unnamedConstructor;
-    if (!constructor!.isDefaultConstructor) {
-      final properties = constructor.parameters;
+    final properties = constructor?.parameters ?? [];
+    if (properties.isNotEmpty) {
       buffer.writeln('  Wrapper${element.name}(');
       if (properties.isNotEmpty) {
         buffer.writeln(_getTypedArguments(properties, 'super.'));

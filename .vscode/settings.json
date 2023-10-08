@@ -13,5 +13,5 @@
     "files.associations": {
         "*.arb": "json"
     },
-    "cmake.configureOnOpen": false
+    "cmake.configureOnOpen": false,
 }
