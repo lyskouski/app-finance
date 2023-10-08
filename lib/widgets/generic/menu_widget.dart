@@ -4,6 +4,7 @@
 import 'package:app_finance/_classes/structure/navigation/app_menu.dart';
 import 'package:app_finance/_classes/structure/navigation/app_menu_item.dart';
 import 'package:app_finance/_ext/build_context_ext.dart';
+import 'package:app_finance/widgets/wrapper/text_wrapper.dart';
 import 'package:flutter/material.dart';
 
 class MenuWidget extends StatelessWidget {
@@ -39,7 +40,7 @@ class MenuWidget extends StatelessWidget {
         ),
         title: MouseRegion(
           cursor: SystemMouseCursors.click,
-          child: Text(
+          child: TextWrapper(
             menu.name,
             style: textTheme.bodyMedium?.copyWith(color: color),
           ),

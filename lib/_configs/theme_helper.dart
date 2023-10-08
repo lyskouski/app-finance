@@ -5,6 +5,7 @@ import 'dart:math';
 
 import 'package:adaptive_breakpoints/adaptive_breakpoints.dart';
 import 'package:app_finance/_classes/herald/app_zoom.dart';
+import 'package:app_finance/pages/abstract_page_state.dart';
 import 'package:flutter/material.dart';
 
 class _Sizes {
@@ -32,7 +33,8 @@ class ThemeHelper {
   static double getWidth(BuildContext context, [double multiply = 4, BoxConstraints? constraints]) =>
       MediaQuery.sizeOf(context).width / AppZoom.state -
       getIndent(multiply) -
-      (constraints != null && isNavRight(context, constraints) && !isWearable ? 40 : 0);
+      (constraints != null && isNavRight(context, constraints) && !isWearable ? AbstractPageState.barHeight : 0) -
+      (constraints != null && isWideScreen(constraints) ? AbstractPageState.menuWidth : 0);
 
   static double getHeight(BuildContext context, [double multiply = 2]) =>
       MediaQuery.sizeOf(context).height / AppZoom.state - getIndent(multiply);
@@ -133,6 +135,8 @@ class ThemeHelper {
       _ => 1,
     };
   }
+
+  static bool isWideScreen(BoxConstraints constraints) => ThemeHelper.getWidthCount(constraints) >= 4;
 
   static bool isWearableMode(BuildContext context, BoxConstraints constraints) =>
       isWearable = getWidthCount(constraints) * getHeightCount(context, constraints) == 1;
