@@ -40,8 +40,8 @@ class ListSelectorState<T extends ListSelector, K extends ListSelectorItem> exte
   Widget itemBuilder(BuildContext context, K item) => selectorBuilder(context, item);
 
   void onChange(K value) {
-    widget.setState(value.id);
     textController.closeView(null);
+    widget.setState(value.id);
     FocusController.onEditingComplete(widget.focusOrder);
   }
 
