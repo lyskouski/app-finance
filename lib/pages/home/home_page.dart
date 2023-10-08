@@ -156,7 +156,7 @@ class HomePageState extends AbstractPageState<HomePage> {
     final billWidget = BillWidget(
       margin: margin,
       title: '${AppLocale.labels.billHeadline}, ${DateFormat.MMMM(AppLocale.code).format(DateTime.now())}',
-      state: super.state.get(AppDataType.bills),
+      state: state.get(AppDataType.bills),
       limit: 7,
       route: AppRoute.billRoute,
       tooltip: AppLocale.labels.billTooltip,
@@ -168,7 +168,7 @@ class HomePageState extends AbstractPageState<HomePage> {
     final accountWidget = AccountWidget(
       margin: margin,
       title: '${AppLocale.labels.accountHeadline}, ${AppLocale.labels.total}',
-      state: super.state.get(AppDataType.accounts),
+      state: state.get(AppDataType.accounts),
       limit: 7,
       route: AppRoute.accountRoute,
       tooltip: AppLocale.labels.accountTooltip,
@@ -180,7 +180,7 @@ class HomePageState extends AbstractPageState<HomePage> {
     final budgetWidget = BudgetWidget(
       margin: margin,
       title: '${AppLocale.labels.budgetHeadline}, ${AppLocale.labels.left}',
-      state: super.state.get(AppDataType.budgets),
+      state: state.get(AppDataType.budgets),
       limit: 7,
       route: AppRoute.budgetRoute,
       tooltip: AppLocale.labels.budgetTooltip,

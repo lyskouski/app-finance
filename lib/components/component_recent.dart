@@ -166,6 +166,7 @@ class ComponentRecentFormState extends State<ComponentRecentForm> {
               controller: _controller,
               type: TextInputType.number,
               formatter: [SimpleInputFormatter.filterInt],
+              withLabel: true,
               setState: (String value) {
                 widget.adjust(
                   widget.data[componentData.order],

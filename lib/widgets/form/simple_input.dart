@@ -21,6 +21,7 @@ class SimpleInput extends AbstractInput {
   final List<TextInputFormatter>? formatter;
   final TextEditingController controller;
   final bool obscure;
+  final bool withLabel;
 
   SimpleInput({
     super.key,
@@ -30,6 +31,7 @@ class SimpleInput extends AbstractInput {
     this.formatter,
     this.type = TextInputType.text,
     this.obscure = false,
+    this.withLabel = false,
   }) : super(value: controller.text) {
     if (setState != null) {
       controller.addListener(() => setState!(controller.text));
@@ -56,8 +58,10 @@ class SimpleInput extends AbstractInput {
         filled: true,
         border: InputBorder.none,
         fillColor: context.colorScheme.fieldBackground,
-        hintText: tooltip,
+        hintText: withLabel ? null : tooltip,
         hintStyle: textTheme.numberMedium.copyWith(color: textTheme.headlineSmall?.color!.withOpacity(0.4)),
+        labelText: withLabel ? tooltip : null,
+        labelStyle: textTheme.bodyMedium!.copyWith(color: textTheme.headlineSmall?.color!.withOpacity(0.4)),
       ),
     );
   }
