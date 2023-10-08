@@ -193,7 +193,7 @@ abstract class AbstractPageState<T extends StatefulWidget> extends State<T> {
     final nav = Navigator.of(context);
     final actions = getBarActions(nav);
     final btnWidth = 50.0 * actions.length;
-    final titleWidth = ThemeHelper.getWidth(context, 0) / 2 - 100;
+    final titleWidth = ThemeHelper.getWidth(context, 0, constraints, false) / 2 - 100;
     final hasTooltip = getButtonName().isNotEmpty;
     final showTooltip = hasTooltip && (constraints.maxWidth - titleWidth - btnWidth - 50 > 125);
 

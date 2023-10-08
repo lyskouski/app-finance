@@ -30,8 +30,9 @@ class ThemeHelper {
 
   static double getIndent([double multiply = 1]) => _Sizes.normal / AppZoom.state * multiply;
 
-  static double getWidth(BuildContext context, [double multiply = 4, BoxConstraints? constraints]) =>
-      MediaQuery.sizeOf(context).width / AppZoom.state -
+  static double getWidth(BuildContext context,
+          [double multiply = 4, BoxConstraints? constraints, bool withZoom = true]) =>
+      MediaQuery.sizeOf(context).width / (withZoom ? AppZoom.state : 1) -
       getIndent(multiply) -
       (constraints != null && isNavRight(context, constraints) && !isWearable ? AbstractPageState.barHeight : 0) -
       (constraints != null && isWideScreen(constraints) ? AbstractPageState.menuWidth : 0);
