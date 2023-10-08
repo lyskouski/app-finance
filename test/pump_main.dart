@@ -2,6 +2,7 @@
 // Use of this source code is governed by a CC BY-NC-ND 4.0 license that can be found in the LICENSE file.
 
 import 'dart:io' as io;
+import 'package:app_finance/_configs/custom_text_theme.dart';
 import 'package:file/file.dart';
 import 'package:file/local.dart';
 
@@ -12,7 +13,6 @@ import 'package:app_finance/_classes/storage/app_data.dart';
 import 'package:app_finance/_classes/herald/app_locale.dart';
 import 'package:app_finance/_classes/herald/app_theme.dart';
 import 'package:app_finance/_classes/gen/generate_with_method_setters.dart';
-import 'package:app_finance/_configs/custom_text_theme.dart';
 import 'package:app_finance/_classes/storage/app_preferences.dart';
 import 'package:app_finance/main.dart';
 import 'package:flutter/material.dart';
@@ -78,7 +78,7 @@ class PumpMain {
         supportedLocales: AppLocalizations.supportedLocales,
         theme: ThemeData(
           brightness: Brightness.light,
-          textTheme: CustomTextTheme.textTheme(ThemeData.light()),
+          textTheme: ThemeData.light().textTheme.withCustom('', Brightness.light),
           useMaterial3: true,
         ),
         home: CustomPaint(
