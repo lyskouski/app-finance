@@ -150,7 +150,8 @@ class MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     final palette = context.watch<AppPalette>().value;
-    final text = CustomTextTheme.textTheme(Theme.of(context));
+    final text = Theme.of(context).textTheme.withCustom(palette, Brightness.light);
+    final textDark = Theme.of(context).textTheme.withCustom(palette, Brightness.dark);
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       localizationsDelegates: AppLocalizations.localizationsDelegates,
@@ -170,9 +171,9 @@ class MyAppState extends State<MyApp> {
         colorScheme: const ColorScheme.dark().withCustom(palette),
         floatingActionButtonTheme: const FloatingActionButtonThemeData().withCustom(palette, Brightness.dark),
         brightness: Brightness.dark,
-        textTheme: text,
-        datePickerTheme: DatePickerTheme.of(context).withCustom(palette, text, Brightness.dark),
-        timePickerTheme: TimePickerTheme.of(context).withCustom(palette, text, Brightness.dark),
+        textTheme: textDark,
+        datePickerTheme: DatePickerTheme.of(context).withCustom(palette, textDark, Brightness.dark),
+        timePickerTheme: TimePickerTheme.of(context).withCustom(palette, textDark, Brightness.dark),
         dividerTheme: CustomDividerTheme(palette, Brightness.dark),
         useMaterial3: true,
       ),

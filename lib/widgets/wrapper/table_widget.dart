@@ -22,29 +22,23 @@ class TableWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final length = data.isNotEmpty ? data.length + 1 : 0;
-    //double height = ThemeHelper.getMaxHeight(data.firstOrNull ?? [const Text('*')]) + ThemeHelper.getIndent();
-    return SizedBox(
-      width: width,
-      //height: length * height,
-      child: ListView.builder(
-        itemCount: length,
-        itemBuilder: (context, index) {
-          if (index == 1) {
-            return const Divider(thickness: 1);
-          }
-          final idx = index == 0 ? 0 : index - 1;
-          return Container(
-            color: idx > 0 && idx % 2 == 0 ? shadowColor : Colors.transparent,
-            child: RowWidget(
-              chunk: chunk,
-              alignment: MainAxisAlignment.end,
-              indent: ThemeHelper.getIndent(),
-              maxWidth: width,
-              children: data[idx].map((o) => [o]).toList(),
-            ),
-          );
-        },
-      ),
+    return Column(
+      children: List<Widget>.generate(length, (index) {
+        if (index == 1) {
+          return const Divider(thickness: 1);
+        }
+        final idx = index == 0 ? 0 : index - 1;
+        return Container(
+          color: idx > 0 && idx % 2 == 0 ? shadowColor : Colors.transparent,
+          child: RowWidget(
+            chunk: chunk,
+            alignment: MainAxisAlignment.end,
+            indent: ThemeHelper.getIndent(),
+            maxWidth: width,
+            children: data[idx].map((o) => [o]).toList(),
+          ),
+        );
+      }),
     );
   }
 }
