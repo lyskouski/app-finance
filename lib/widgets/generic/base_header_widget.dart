@@ -53,7 +53,7 @@ class BaseHeaderWidget extends StatelessWidget {
         padding: EdgeInsets.all(indent / 2),
         height: isWide ? 32 : 60,
         width: double.infinity,
-        color: colorScheme.inverseSurface,
+        color: colorScheme.inverseSurface.withOpacity(0.1),
         child: GridContainer(
           rows: [null, 40, if (hasExpand) 40],
           columns: const [13, null],

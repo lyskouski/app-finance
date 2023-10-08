@@ -30,7 +30,7 @@ class AppDefaultColors {
   Color background = Colors.white;
   Color primary = const Color(0xff912391);
   Color inversePrimary = const Color(0xffdca3bc);
-  Color inverseSurface = Colors.black.withOpacity(0.1);
+  Color inverseSurface = Colors.black;
   Color onSecondary = Colors.white;
   Color onInverseSurface = Colors.white;
   Color onSecondaryContainer = Colors.grey.withOpacity(0.7);
@@ -78,7 +78,7 @@ class AppDarkColors extends AppDefaultColors {
   @override
   Color get inversePrimary => const Color(0xff5d233c);
   @override
-  Color get inverseSurface => Colors.grey.withOpacity(0.1);
+  Color get inverseSurface => Colors.grey;
   @override
   Color get onSecondary => Colors.grey;
   @override
