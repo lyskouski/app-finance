@@ -27,8 +27,6 @@ class TableWidget extends StatelessWidget {
       width: width,
       //height: length * height,
       child: ListView.builder(
-        scrollDirection: Axis.vertical,
-        shrinkWrap: true,
         itemCount: length,
         itemBuilder: (context, index) {
           if (index == 1) {
