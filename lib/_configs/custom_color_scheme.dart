@@ -27,10 +27,12 @@ class AppColors {
 }
 
 class AppDefaultColors {
+  Color background = Colors.white;
   Color primary = const Color(0xff912391);
   Color inversePrimary = const Color(0xffdca3bc);
-  Color inverseSurface = Colors.black;
+  Color inverseSurface = Colors.black.withOpacity(0.1);
   Color onSecondary = Colors.white;
+  Color onInverseSurface = Colors.white;
   Color onSecondaryContainer = Colors.grey.withOpacity(0.7);
   Color secondary = Colors.black;
 
@@ -42,9 +44,11 @@ class AppDefaultColors {
   }
 
   Map<String, dynamic> toJson() => {
+        'background': background.value,
         'primary': primary.value,
         'inversePrimary': inversePrimary.value,
         'onSecondary': onSecondary.value,
+        'onInverseSurface': onInverseSurface.value,
         'onSecondaryContainer': onSecondaryContainer.value,
         'secondary': secondary.value,
       };
@@ -55,9 +59,11 @@ class AppDefaultColors {
 
   factory AppDefaultColors.fromJson(Map<String, dynamic> json) {
     return AppDefaultColors()
+      ..background = Color(json['background'] ?? 0)
       ..primary = Color(json['primary'] ?? 0)
       ..inversePrimary = Color(json['inversePrimary'] ?? 0)
       ..inverseSurface = Color(json['inverseSurface'] ?? 0)
+      ..onInverseSurface = Color(json['onInverseSurface'] ?? 0)
       ..onSecondary = Color(json['onSecondary'] ?? 0)
       ..onSecondaryContainer = Color(json['onSecondaryContainer'] ?? 0)
       ..secondary = Color(json['secondary'] ?? 0);
@@ -66,13 +72,17 @@ class AppDefaultColors {
 
 class AppDarkColors extends AppDefaultColors {
   @override
+  Color get background => Colors.black;
+  @override
   Color get primary => const Color(0xff912391);
   @override
   Color get inversePrimary => const Color(0xff5d233c);
   @override
-  Color get inverseSurface => Colors.grey;
+  Color get inverseSurface => Colors.grey.withOpacity(0.1);
   @override
   Color get onSecondary => Colors.grey;
+  @override
+  Color get onInverseSurface => Colors.white;
   @override
   Color get onSecondaryContainer => Colors.grey;
   @override
@@ -88,6 +98,7 @@ extension CustomColorScheme on ColorScheme {
     }
     final palette = AppColors(paletteType, brightness).palette;
     return copyWith(
+      background: palette.background,
       primary: palette.primary,
       onPrimary: palette.secondary,
       inversePrimary: palette.inversePrimary,
@@ -96,7 +107,7 @@ extension CustomColorScheme on ColorScheme {
       onSecondary: palette.onSecondary,
       onSecondaryContainer: palette.onSecondaryContainer,
       onSurface: palette.secondary,
-      onInverseSurface: Colors.white,
+      onInverseSurface: palette.onInverseSurface,
       onSurfaceVariant: palette.secondary,
     );
   }

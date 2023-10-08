@@ -228,6 +228,15 @@ class SettingTabState<T extends SettingTab> extends AbstractTabState<T> {
                   ),
                 ],
                 [
+                  Text(AppLocale.labels.colorBackground),
+                  ColorSelector(
+                      value: paletteState.light.background.toMaterialColor,
+                      setState: (v) => changePalette(paletteState.light.background = v)),
+                  ColorSelector(
+                      value: paletteState.dark.background.toMaterialColor,
+                      setState: (v) => changePalette(paletteState.dark.background = v)),
+                ],
+                [
                   Text(AppLocale.labels.colorPrimary),
                   ColorSelector(
                       value: paletteState.light.primary.toMaterialColor,
@@ -253,6 +262,15 @@ class SettingTabState<T extends SettingTab> extends AbstractTabState<T> {
                   ColorSelector(
                       value: paletteState.dark.inverseSurface.toMaterialColor,
                       setState: (v) => changePalette(paletteState.dark.inverseSurface = v)),
+                ],
+                [
+                  Text(AppLocale.labels.colorOnInverseSurface),
+                  ColorSelector(
+                      value: paletteState.light.onInverseSurface.toMaterialColor,
+                      setState: (v) => changePalette(paletteState.light.onInverseSurface = v)),
+                  ColorSelector(
+                      value: paletteState.dark.onInverseSurface.toMaterialColor,
+                      setState: (v) => changePalette(paletteState.dark.onInverseSurface = v)),
                 ],
                 [
                   Text(AppLocale.labels.colorSecondary),
