@@ -144,3 +144,27 @@ extension CustomDatePickerThemeData on DatePickerThemeData {
     );
   }
 }
+
+class CustomDividerTheme extends DividerThemeData {
+  late final Color? _color;
+
+  @override
+  Color? get color => _color;
+
+  CustomDividerTheme(
+    String paletteType,
+    Brightness brightness, {
+    super.color,
+    super.space,
+    super.thickness,
+    super.indent,
+    super.endIndent,
+  }) {
+    if (paletteType != AppColors.colorSystem) {
+      final palette = AppColors(paletteType, brightness).palette;
+      _color = palette.secondary.withOpacity(0.2);
+    } else {
+      _color = null;
+    }
+  }
+}

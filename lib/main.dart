@@ -163,6 +163,7 @@ class MyAppState extends State<MyApp> {
         textTheme: text,
         datePickerTheme: DatePickerTheme.of(context).withCustom(palette, text, Brightness.light),
         timePickerTheme: TimePickerTheme.of(context).withCustom(palette, text, Brightness.light),
+        dividerTheme: CustomDividerTheme(palette, Brightness.light),
         useMaterial3: true,
       ),
       darkTheme: ThemeData(
@@ -170,8 +171,9 @@ class MyAppState extends State<MyApp> {
         floatingActionButtonTheme: const FloatingActionButtonThemeData().withCustom(palette, Brightness.dark),
         brightness: Brightness.dark,
         textTheme: text,
-        datePickerTheme: DatePickerTheme.of(context).withCustom(palette, text, Brightness.light),
+        datePickerTheme: DatePickerTheme.of(context).withCustom(palette, text, Brightness.dark),
         timePickerTheme: TimePickerTheme.of(context).withCustom(palette, text, Brightness.dark),
+        dividerTheme: CustomDividerTheme(palette, Brightness.dark),
         useMaterial3: true,
       ),
       themeMode: context.watch<AppTheme>().value,
