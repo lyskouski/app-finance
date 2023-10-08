@@ -1,0 +1,86 @@
+% Copyright 2023 The terCAD team. All rights reserved.
+% Use of this content is governed by a CC BY-NC-ND 4.0 license that can be found in the LICENSE file.
+
+\subsection{[TBD] Securing Information}
+\markboth{Productionizing}{Securing Information}
+
+[TBD]
+
+\subsubsection{Storing API keys}
+\markboth{Productionizing}{Storing API keys}
+
+Every API requires passing a secret key with each request to validate the identity. These keys should remain 
+confidential (as not be a part of the \q{git} history). Even detaching credentials into a separate \q{.env}-file  
+susceptible to leaks. The most secure way is to store secrets as environment variables during the compilation 
+(\q{build}) or evaluation (\q{run}):
+
+\begin{lstlisting}[language=bash]
+flutter build --dart-define==KEY=SECRET \
+    --dart-define==KEY2=SECRET2 \
+    --dart-define==KEY3=SECRET3
+\end{lstlisting}
+
+\noindent To get the API key from an environment:
+
+\begin{lstlisting}
+String? apiKey = String.fromEnvironment('KEY', defaultValue: null);
+\end{lstlisting}
+
+
+\subsubsection{Encrypting Storage}
+\markboth{Productionizing}{Encrypting Storage}
+
+Encryption is a critical process in the realm of cybersecurity, as it involves transforming a plain text into its 
+encoded format, bolstering the confidentiality, integrity, and overall security of sensitive information. The process 
+of "hiding" information can be one-way direction (by taking \q{hash}-key from a value, and using it for a comparison) 
+or bidirectional (decrypt with a cryptographic key). For the last, there are two primary types of encryption: symmetric 
+(AES, 3-DES, SNOW) and asymmetric (RSA, Elliptic curve cryptography) encryption, which is also referred to as public 
+key encryption. Symmetric encryption relies on a single shared key, which all parties involved use for both encrypting 
+and decrypting data. In contrast, asymmetric encryption, often referred to as public-key encryption, employs a pair of 
+keys: one for encryption and another distinct key for decryption purposes.
+
+To "disable" (at least make harder) capability to change financial transactions directly, it may be used a sum control 
+\q{hash}-key \issue{58}{}:
+
+\begin{lstlisting}
+// ./lib/_classes/data/transaction_log.dart
+import 'package:crypto/crypto.dart';
+
+class TransactionLog {
+  static String getHash(Map<String, dynamic> data) {
+    return md5.convert(utf8.encode(data.toString())).toString();
+  }
+
+  static Future<bool> load() async {
+    // ... other stuff
+    await for (var line in lines) {
+      var obj = json.decode(line);
+      if (getHash(obj['data']) != obj['type']['hash']) {
+        continue; // Corrupted data... skip
+      }
+\end{lstlisting}
+
+\noindent Additionally, to protect user data we should apply mechanics of lines encryption:
+
+\begin{lstlisting}
+// ./lib/_classes/data/transaction_log.dart
+import 'package:encrypt/encrypt.dart';
+
+class TransactionLog {
+  static Encrypter get salt =>
+      Encrypter(AES(Key.fromUtf8('32symbols-salt-for-encryption...')));
+
+  static IV get code => IV.fromLength(8);(*@ \stopnumber @*)
+
+  (*@ \startnumber{49} @*)
+  // to encrypt content
+  content = salt.encrypt(content, iv: code).base64;
+  // to decrypt content
+  content = salt.decrypt64(content, iv: code);
+\end{lstlisting}
+
+\noindent As a note, the usage of any external library for encryption (and not only) might be relevant to additional 
+risks, as a failed upgrade or data corruption (as a failed decryption after the changed version -- 
+\href{https://github.com/leocavalcante/encrypt/issues/314}{https://github.com/leocavalcante/encrypt/issues/314}).
+So, it's better to be chosen a built-in functionality even with an additional complexity; in our case, through the 
+\q{dart:crypto}-library, which includes hashing, symmetric and asymmetric encryption.

@@ -568,47 +568,6 @@ static void init(AppData store, String type, Map<String, dynamic> data) {
 \end{lstlisting}
 
 
-
-\subsubsection{Using Encryption}
-
-To "disable" (at least make harder) capability to change log files directly, may be used control sum hash key:
-
-\begin{lstlisting}
-// ./lib/_classes/data/transaction_log.dart
-import 'package:crypto/crypto.dart';
-class TransactionLog {
-  static String getHash(Map<String, dynamic> data) {
-    return md5.convert(utf8.encode(data.toString())).toString();
-  }
-
-  static Future<bool> load() async {
-    // ... other stuff
-    await for (var line in lines) {
-      var obj = json.decode(line);
-      if (getHash(obj['data']) != obj['type']['hash']) {
-        continue; // Corrupted data... skip
-      }
-\end{lstlisting}
-
-Additionally, to protect user data we should apply mechanics of lines encryption:
-
-\begin{lstlisting}
-// ./lib/_classes/data/transaction_log.dart
-import 'package:encrypt/encrypt.dart';
-class TransactionLog {
-  static Encrypter get salt =>
-      Encrypter(AES(Key.fromUtf8('32symbols-salt-for-encryption...')));
-
-  static IV get code => IV.fromLength(8);(*@ \stopnumber @*)
-
-  (*@ \startnumber{49} @*)
-  // to encrypt content
-    content = salt.encrypt(content, iv: code).base64;
-  // to decrypt content
-    content = salt.decrypt64(content, iv: code);
-\end{lstlisting}
-
-
 \subsubsection{Defining Application Icons}
 
 To set an icon with background for \q{Android}:
