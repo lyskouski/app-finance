@@ -19,6 +19,7 @@ import 'package:app_finance/widgets/form/list_account_selector.dart';
 import 'package:app_finance/widgets/form/simple_input.dart';
 import 'package:app_finance/widgets/wrapper/required_widget.dart';
 import 'package:app_finance/widgets/wrapper/row_widget.dart';
+import 'package:app_finance/widgets/wrapper/text_wrapper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_currency_picker/flutter_currency_picker.dart';
 
@@ -166,8 +167,8 @@ class IncomeTabState extends AbstractPageState<IncomeTab> {
                   ),
                 ],
                 [
-                  Text(
-                    AppLocale.labels.expense,
+                  TextWrapper(
+                    AppLocale.labels.income,
                     style: textTheme.bodyLarge,
                   ),
                   SimpleInput(

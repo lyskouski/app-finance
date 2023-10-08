@@ -18,6 +18,7 @@ import 'package:app_finance/widgets/wrapper/row_widget.dart';
 import 'package:app_finance/widgets/form/currency_selector.dart';
 import 'package:app_finance/widgets/form/list_account_selector.dart';
 import 'package:app_finance/widgets/form/simple_input.dart';
+import 'package:app_finance/widgets/wrapper/text_wrapper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_currency_picker/flutter_currency_picker.dart';
 
@@ -180,7 +181,7 @@ class TransferTabState extends AbstractPageState<TransferTab> {
                   ),
                 ],
                 [
-                  Text(
+                  TextWrapper(
                     AppLocale.labels.expenseTransfer,
                     style: textTheme.bodyLarge,
                   ),

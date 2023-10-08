@@ -216,6 +216,7 @@
     "iconTooltip": "Select Icon",
     "ignoreTooltip": "Ignore",
     "importHeadline": "Import",
+    "income": "Amount of Income",
     "incomeHeadline": "Income",
     "incomeHealth": "Income Health Radar",
     "incomeTooltip": "Set Income Details",
