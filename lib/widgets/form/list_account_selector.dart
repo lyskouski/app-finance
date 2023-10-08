@@ -56,11 +56,12 @@ class ListAccountSelectorState<K extends ListAccountSelectorItem> extends ListSe
       title: item.item?.title ?? '',
       description: item.item?.description ?? '',
       details: item.item?.detailsFormatted ?? '',
-      progress: item.item?.progress ?? 0.0,
+      progress: 1.0,
       color: item.item?.color ?? Colors.transparent,
       icon: item.item?.icon ?? Icons.radio_button_unchecked_sharp,
       hidden: item.item?.hidden ?? false,
       width: widget.width,
+      showDivider: false,
     );
   }
 

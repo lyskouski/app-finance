@@ -37,9 +37,7 @@ class ListSelectorState<T extends ListSelector, K extends ListSelectorItem> exte
     return TextWrapper(item.toString(), style: textTheme.numberMedium.copyWith(color: textTheme.headlineSmall?.color));
   }
 
-  Widget itemBuilder(BuildContext context, K item) {
-    return selectorBuilder(context, item);
-  }
+  Widget itemBuilder(BuildContext context, K item) => selectorBuilder(context, item);
 
   void onChange(K value) {
     widget.setState(value.id);
@@ -66,43 +64,50 @@ class ListSelectorState<T extends ListSelector, K extends ListSelectorItem> exte
     );
     K? item = widget.value != null ? widget.options.cast().where((e) => e.equal(widget.value)).firstOrNull : null;
     return SearchAnchor(
-      isFullScreen: true,
-      searchController: textController,
-      viewHintText: widget.hintText,
-      headerHintStyle: hintStyle,
-      builder: (context, controller) => TapWidget(
-        onTap: () => onTap(null),
-        child: Container(
-          width: double.infinity,
-          color: context.colorScheme.fieldBackground,
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Expanded(
-                child: Padding(
-                  padding: EdgeInsets.fromLTRB(indent, indent * 3 / 2, 0, indent * 3 / 2),
-                  child: item != null
-                      ? selectorBuilder(context, item)
-                      : Text(
-                          widget.hintText ?? '...',
-                          style: widget.hintStyle ?? hintStyle,
-                        ),
+        isFullScreen: true,
+        searchController: textController,
+        viewHintText: widget.hintText,
+        headerHintStyle: hintStyle,
+        builder: (context, controller) => TapWidget(
+              onTap: () => onTap(null),
+              child: Container(
+                width: double.infinity,
+                color: context.colorScheme.fieldBackground,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Expanded(
+                      child: Padding(
+                        padding: EdgeInsets.fromLTRB(indent, indent * 3 / 2, 0, indent * 3 / 2),
+                        child: item != null
+                            ? selectorBuilder(context, item)
+                            : Text(
+                                widget.hintText ?? '...',
+                                style: widget.hintStyle ?? hintStyle,
+                              ),
+                      ),
+                    ),
+                    IconButton(
+                      icon: Icon(Icons.arrow_drop_down, color: widget.hintStyle?.color),
+                      onPressed: () => controller.openView(),
+                    ),
+                  ],
                 ),
               ),
-              IconButton(
-                icon: Icon(Icons.arrow_drop_down, color: widget.hintStyle?.color),
-                onPressed: () => controller.openView(),
-              ),
-            ],
-          ),
-        ),
-      ),
-      viewBuilder: getViewBuilder(context),
-      suggestionsBuilder: (context, controller) =>
-          widget.options.cast().where((e) => e.match(controller.text)).map((e) => ListTile(
-                title: itemBuilder(context, e),
-                onTap: () => onChange(e),
-              )),
-    );
+            ),
+        viewBuilder: getViewBuilder(context),
+        suggestionsBuilder: (BuildContext context, SearchController controller) {
+          final result = <Widget>[];
+          final scope = widget.options.cast().where((e) => e.match(controller.text));
+          scope.toList().asMap().forEach((index, e) {
+            result.add(ListTile(
+              title: itemBuilder(context, e),
+              tileColor: index % 2 == 0 ? context.colorScheme.primary.withOpacity(0.05) : null,
+              hoverColor: context.colorScheme.primary.withOpacity(0.15),
+              onTap: () => onChange(e),
+            ));
+          });
+          return result;
+        });
   }
 }

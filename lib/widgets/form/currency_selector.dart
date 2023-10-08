@@ -61,6 +61,10 @@ class BaseCurrencySelector<T extends CurrencySelectorItem> extends CurrencySelec
   @override
   Color? get fieldBackground => _fieldBackground;
 
+  late final Color? _tileColor;
+  @override
+  Color? get tileColor => _tileColor;
+
   @override
   EdgeInsets get indent => EdgeInsets.fromLTRB(
         ThemeHelper.getIndent(),
@@ -85,6 +89,7 @@ class BaseCurrencySelector<T extends CurrencySelectorItem> extends CurrencySelec
       overflow: TextOverflow.ellipsis,
     );
     _fieldBackground = colorScheme.fieldBackground;
+    _tileColor = colorScheme.primary;
   }
 }
 
