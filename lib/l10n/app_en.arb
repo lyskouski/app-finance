@@ -218,6 +218,7 @@
     "importHeadline": "Import",
     "incomeHeadline": "Income",
     "incomeHealth": "Income Health Radar",
+    "incomeTooltip": "Set Income Details",
     "invoiceHeadline": "Invoices",
     "invoiceSum": "Invoices: {value}",
     "@invoiceSum": {
@@ -329,6 +330,7 @@
     "total": "total",
     "transactionFile": "Fingrom Transactions Log File (.log)",
     "transferHeadline": "Transfer",
+    "transferTooltip": "Set Transfer Details",
     "updateAccountTooltip": "Update Account",
     "updateBillTooltip": "Update Bill",
     "updateBudgetTooltip": "Update Budget Category",

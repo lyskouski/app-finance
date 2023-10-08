@@ -198,7 +198,7 @@ class IncomeTabState extends AbstractPageState<IncomeTab> {
             ),
             SimpleInput(
               controller: description,
-              tooltip: AppLocale.labels.descriptionTooltip,
+              tooltip: AppLocale.labels.incomeTooltip,
             ),
             ThemeHelper.hIndent2x,
             Text(

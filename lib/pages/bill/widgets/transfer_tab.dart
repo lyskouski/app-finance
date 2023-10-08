@@ -211,7 +211,7 @@ class TransferTabState extends AbstractPageState<TransferTab> {
             ),
             SimpleInput(
               controller: description,
-              tooltip: AppLocale.labels.descriptionTooltip,
+              tooltip: AppLocale.labels.transferTooltip,
             ),
             ThemeHelper.hIndent2x,
             Text(

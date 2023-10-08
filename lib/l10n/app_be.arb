@@ -218,6 +218,7 @@
     "importHeadline": "Імпарт",
     "incomeHeadline": "Даход",
     "incomeHealth": "Радар здароўя даходаў",
+    "incomeTooltip": "Усталюйце звесткі аб даходах",
     "invoiceHeadline": "Фактуры",
     "invoiceSum": "Фактуры: {value}",
     "@invoiceSum": {
@@ -329,6 +330,7 @@
     "total": "усяго",
     "transactionFile": "Fingrom Файл журнала транзакцый (.log)",
     "transferHeadline": "Перадача",
+    "transferTooltip": "Усталюйце звесткі перадачы",
     "updateAccountTooltip": "Змяніць рахунак",
     "updateBillTooltip": "Змяніць чэк",
     "updateBudgetTooltip": "Змяніць катэгорыю бюджэту",
