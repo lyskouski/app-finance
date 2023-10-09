@@ -7,6 +7,7 @@ import 'package:app_finance/_classes/herald/app_sync.dart';
 import 'package:app_finance/_classes/herald/app_theme.dart';
 import 'package:app_finance/_classes/herald/app_zoom.dart';
 import 'package:app_finance/_classes/storage/app_preferences.dart';
+import 'package:app_finance/_classes/structure/navigation/app_page_route.dart';
 import 'package:app_finance/_configs/custom_color_scheme.dart';
 import 'package:app_finance/_configs/custom_text_theme.dart';
 import 'package:app_finance/_classes/storage/app_data.dart';
@@ -101,7 +102,7 @@ class MyApp extends StatefulWidget {
 class MyAppState extends State<MyApp> {
   String route = AppRoute.homeRoute;
 
-  WidgetBuilder? getDynamicRouterWidget(String route, Object? arguments) {
+  WidgetBuilder? getPage(String route, Object? arguments) {
     if (widget.platform != null) {
       FirebaseAnalytics.instance.logSelectContent(
         contentType: route,
@@ -110,7 +111,6 @@ class MyAppState extends State<MyApp> {
     }
     final args = arguments as Map<String, String>?;
     final String key = args?['uuid'] ?? args?['search'] ?? '';
-    route = route.replaceAll(key, '');
 
     final routes = <String, WidgetBuilder>{
       AppRoute.accountViewRoute: (context) => AccountViewPage(uuid: key),
@@ -144,9 +144,6 @@ class MyAppState extends State<MyApp> {
     return routes[route] ?? (context) => const HomePage();
   }
 
-  MaterialPageRoute? getDynamicRouter(RouteSettings settings) =>
-      MaterialPageRoute(builder: getDynamicRouterWidget(settings.name ?? '', settings.arguments)!);
-
   @override
   Widget build(BuildContext context) {
     final palette = context.watch<AppPalette>().value;
@@ -179,7 +176,7 @@ class MyAppState extends State<MyApp> {
       ),
       themeMode: context.watch<AppTheme>().value,
       home: const HomePage(),
-      onGenerateRoute: getDynamicRouter,
+      onGenerateRoute: (settings) => AppPageRoute(builder: getPage(settings.name ?? '', settings.arguments)!),
     );
   }
 }

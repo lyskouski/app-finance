@@ -80,7 +80,8 @@ class TransactionLog {
 \end{lstlisting}
 
 \noindent As a note, the usage of any external library for encryption (and not only) might be relevant to additional 
-risks, as a failed upgrade or data corruption (as a failed decryption after the changed version -- 
+risks, as a failed upgrade ("dependency shock" \cite{Inki23}) or a breakable change (in case of \q{encrypt}-package, a 
+failed decryption after a migration from 5.0.1 to 5.0.2 -- 
 \href{https://github.com/leocavalcante/encrypt/issues/314}{https://github.com/leocavalcante/encrypt/issues/314}).
 So, it's better to be chosen a built-in functionality even with an additional complexity; in our case, through the 
 \q{dart:crypto}-library, which includes hashing, symmetric and asymmetric encryption.
