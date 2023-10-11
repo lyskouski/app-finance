@@ -67,13 +67,14 @@ collection of objects; \q{Map}, as a collection of key/value pairs, is used to r
 with a maintained key uniqueness; as well as \q{Set} -- to control uniqueness of variables. \q{Queue} implements both 
 stack and queue behavior (where, ListQueue -- keeps a cyclic buffer of elements, DoubleLinkedQueue -- to guarantee 
 constant time on 'add', 'remove-at-ends' and 'peek'-operations). As a distinctive feature of collections, their 
-iterativeness is declared by subtype:
+iterativeness is declared by a subtype:
 
 \begin{itemize}
-  \item \q{HashMap} and \q{HashSet}, unordered, provides access to items (by key) in (potentially) amortized constant time;
+  \item \q{HashMap} and \q{HashSet}, unordered, both provide an access to items (by key) in (potentially) amortized 
+  constant time;
   \item \q{LinkedHashMap} and \q{LinkedHashSet} iterate in key insertion order;
-  \item \q{SplayTreeMap} and \q{SplayTreeSet} are based on a self-balancing binary tree that allows most single-entry operations in amortized 
-  logarithmic time;
+  \item \q{SplayTreeMap} and \q{SplayTreeSet} are based on a self-balancing binary tree that allows most single-entry 
+  operations in amortized logarithmic time;
 \end{itemize}
 
 \begin{lstlisting}
@@ -274,7 +275,7 @@ class Person {
   // Only static fields can be declared as const
   static const gender = 'unknown';
   // Private property
-  String _priv;
+  String? _priv;
   // Immutable after an object creation
   final String name;
   // Delayed assignment
@@ -379,7 +380,7 @@ mixin FileImportMixin {
 }
 \end{lstlisting}
   
-\noindent Additionally, class modifiers enable control over how a class can be extended or specialized:
+\noindent Additionally, class modifiers enable a control over how a class can be extended or specialized:
 
 \begin{itemize}
   \item \q{abstract} -- prevents instantiation, allows methods definition without their implementation;

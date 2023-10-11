@@ -1,7 +1,834 @@
 % Copyright 2023 The terCAD team. All rights reserved.
 % Use of this content is governed by a CC BY-NC-ND 4.0 license that can be found in the LICENSE file.
 
-\subsection{[TBD] Creating Application Skeleton}
+\subsection{Creating Application Skeleton}
 \markboth{Implementing Core Functionality}{Creating Application Skeleton}
 
-[TBD]
+In case of a valuable uncertainties scope, the problem resolution is started from a prototype creation with "no 
+architecture" approach and sometimes even with "no code" solution. Designers and Researches (Business Analysts) 
+collaborate together to form initial conditions by interpreting users' paint points into features.
+
+As an example, Dropbox founder Drew Houston explained that a demo video was released during Dropbox's early days
+and has helped to form a partnership with Arash Ferdowsi to proceed with its farther creation, "it was easy to explain 
+the idea, but really hard to do it" \cite{Shon13}.
+
+Without the luxury of a dedicated team and abundant resources, similar to the indie game development model, we might 
+shift our focus toward becoming both consumers and contributors, bypassing the traditional process of crafting intricate 
+interactive design concepts. Fortunately, Flutter's extensive library of components unlocks a prototyping process from 
+the code.
+
+Let's begin by identifying preferences and priorities from our fillings, focusing on what holds the utmost significance 
+for us on the initial screen, and a secondary information within the "one-click" vicinity. We should avoid being overly 
+influenced by existing applications, as doing so could lead us down the path of mimicry (term, "create own black-jack"), 
+or potentially stifle our initial impulse and creative drive (term, "re-implement the wheel"). But will return to their 
+analysis right after a first working solution creation (minimum viable product).
+
+A \q{financial accounting application} should display our current balance (particularly essential in cases of 
+multi-banking), budget limits for various expense categories, a history of expenses (especially for a shared mode of 
+the application usage, as between partners), and visualize our financial goals, which serves as the core motivation for 
+using the application. Secondly, it's important to view and analyze income and expense metrics, that are giving insights 
+into our financial patterns. 
+
+Once we've formulated an idea of \q{what} to showcase but find ourselves challenged in understanding \q{how} to 
+represent it, let's take a peek on "Rally" in Flutter Gallery 
+(\href{https://gallery.flutter.dev/\#/rally}{https://gallery.flutter.dev/\#/rally}, \cref{img:proto-rally}). A brief 
+overview has given us insights: a vertical bar is a good choice to indicate how much money remains in the budget 
+category, headers can be used not only as grouping containers but also to display summary, and the use of colors and 
+fonts to differentiate and interconnect information (as linking  by color Bill with Category, and Bill with Account). 
+That has helped us to construct our application from two main blocks as \q{BaseWidget} (header with a list) and 
+\q{BaseLineWidget} (a single line from it) \issue{2}{}.
+
+\img{prototyping/rally-app}{Rally application from Flutter Gallery}{img:proto-rally}
+
+To make the most of the available screen real estate in both height and width, it's essential to leverage the 
+\q{LayoutBuilder}-widget. This widget grants access to the constraints of its parent widget, allowing us to ascertain 
+the maximum height available for its child widgets:
+
+\begin{lstlisting}
+LayoutBuilder(
+  builder: (BuildContext context, BoxConstraints constraints) {
+    final maxHeight = constraints.maxHeight;
+    return Container(
+      color: Colors.blue,
+      height: maxHeight,
+      child: Column(
+        children: [
+          Container(color: Colors.red, height: maxHeight * 0.5),
+          Container(color: Colors.green, height: maxHeight * 0.3),
+          Container(color: Colors.yellow, height: maxHeight * 0.2),
+        ],
+      ),
+    );
+  },
+);
+\end{lstlisting}
+
+\noindent In the example above, we wrap the nested \q{Container}-widgets with a \q{LayoutBuilder}-widget. Inside the 
+\q{builder} function, we retrieve the \q{maxHeight}-property from the \q{constraints} provided by the \q{LayoutBuilder}. 
+That helps us to dynamically calculate and assign the maximum height to the nested \q{Container}-widgets based on the 
+available space within their parent widget.
+
+\noindent And... that leads to our first error: 
+\begin{lstlisting}[language=bash]
+The following assertion was thrown during performLayout\(\):\\
+  BoxConstraints forces an infinite width.
+
+  RenderFlex children have non-zero flex but incoming width 
+  constraints are unbounded. When a row is in a parent that does 
+  not provide a finite width constraint, for example if it is in 
+  a horizontal scrollable, it will try to shrink-wrap its children 
+  along the horizontal axis. Setting a flex on a child (e.g. using 
+  Expanded) indicates that the child is to expand to fill the 
+  remaining space in the horizontal direction.
+\end{lstlisting}
+
+\noindent To address the error, we might either use a combination of \q{Expanded} and \q{FractionallySizedBox} widgets,
+or bound the \q{LayoutBuilder} by \q{SizedBox} or \q{Container} with defined height, or by using \q{Expanded} as a root 
+element.
+
+\begin{lstlisting}
+LayoutBuilder(
+  builder: (BuildContext context, BoxConstraints constraints) {
+    final maxHeight = constraints.maxHeight;
+    return Container(
+      color: Colors.blue,
+      child: Column(
+        children: [
+          Expanded(
+            child: FractionallySizedBox(
+              alignment: Alignment.topCenter,
+              heightFactor: 0.5,
+              child: Container(
+                color: Colors.red,
+              ),
+            ),
+          ),
+          Expanded(
+            child: FractionallySizedBox(
+              alignment: Alignment.topCenter,
+              heightFactor: 0.3,
+              child: Container(
+                color: Colors.green,
+              ),
+            ),
+          ),
+// ... other content
+\end{lstlisting}
+
+\noindent We may create a vertical indentation between elements by using either the \q{Padding}-widget or an "empty" 
+\q{SizedBox} (without a "child" property):
+
+\begin{lstlisting}
+SizedBox(height: 16.0), // Vertical spacing of 16.0 DIP
+\end{lstlisting}
+
+\noindent To take the maximum available width for a widget we would use \q{Expanded}-widget (or, it can be 
+\q{Flexible}-widget) that allows nested widgets to expand and take up all the remaining space within a row or column, 
+also, it makes them scrollable in case of exceeding the limitation. Another approach -- by an infinitive width 
+declaration (\emph{additionally, \q{OverflowBox}-widget allows to control how the child widget behaves when it 
+exceeds the available space}):
+
+\begin{lstlisting}
+OverflowBox(
+  maxWidth: double.infinity, // To take the maximum allowed width
+  child: ContentWidget(),
+);
+Container(
+  width: double.infinity, // To make full-sized button
+  child: FloatingActionButton(
+    onPressed: () {}, // Handle button press
+    child: Icon(Icons.add),
+  ),
+);
+\end{lstlisting}
+
+\noindent To create a vertical progress bar, we'll proceed with the usage of a \q{LinearProgressIndicator}-widget and 
+rotate it vertically (-90$^{\circ}$, counter-clockwise) by using the a \q{Transform}-widget:
+
+\begin{lstlisting}
+// ./lib/routes/home/baseListWidget.dart
+class BaseLineWidget extends StatelessWidget {
+  /* ... properties declaration */
+  const BaseLineWidget({super.key, required this.title, /*...*/ });
+
+  @override
+  Widget build(BuildContext context) {
+    return Column( // To group content with a divider at the end
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Row(
+          // Spread apart Description and Amount on different sides
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            // Left Side Section (Info)
+            Row(
+              children: [
+                BarVerticalSingle(
+                  value: progress, 
+                  height: 24, 
+                  color: color,
+                ),
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    // The main information
+                    Text(
+                      title,
+                      style: TextStyle(fontSize: 16, 
+                          fontWeight: FontWeight.bold),
+                    ),
+                    // Additional info
+                    Text(
+                      description,
+                      style: TextStyle(fontSize: 12),
+                    ),
+                  ],
+                ),
+              ],
+            ),
+            // Right-Side Block (Amount)
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Text(details),
+            ),
+          ],
+        ),
+        Divider(), // To plot a horizontal line
+      ],
+    );
+  }(*@ \stopnumber @*)
+}
+
+// ./lib/charts/barVerticalSingle.dart
+class BarVerticalSingle extends StatelessWidget {
+  /* ... properties declaration */
+  const BarVerticalSingle({super.key, /* ... */ });
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      width: height,
+      height: width,
+      child: Transform.rotate(// Rotate vertically
+        angle: -90 * pi / 180,
+        child: LinearProgressIndicator(
+          value: value,
+          backgroundColor: Colors.grey, // Background color
+          valueColor: AlwaysStoppedAnimation<Color>(color),
+        ),
+      ),
+    );
+  }(*@ \stopnumber @*)
+}
+
+// ./lib/routes/home/baseWidget.dart
+class BaseWidget extends StatelessWidget {
+  final String title;
+  const BaseWidget({super.key, required this.title});
+  @override
+  Widget build(context) {
+    return Expanded(
+      child: Container(
+        margin: EdgeInsets.all(8.0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Container(
+              color: Theme.of(context).colorScheme.inverseSurface,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(title, style: textTheme.labelSmall),
+                  Text(
+                    '123,456.789', // hardcoded data
+                    style: textTheme.displaySmall,
+                  ),
+                ],
+              ),
+            ),
+            Expanded(// To accumulate the remaining height 
+              child: ListView(
+                children: [
+                  BaseLineWidget(
+                    title: 'Description $title 1',
+                    description: '2023-06-17',
+                    details: formatter.format(12345.789),
+                    progress: 0.8,
+                  ),
+                  // ... other blocks
+// ... closing tags
+\end{lstlisting}
+
+\noindent As it might be notices, we've injected our data into components. This helps us focus on design 
+(\cref{img:prototype}) rather than on a data structure that is still unknown. However, preserving the data 
+injection per each component could also be counterproductive, as it would necessitate extra efforts to cleanup the 
+components later. That's why we should separate representation and data layers on the early stages independently of 
+understanding the context of a data structure \issue{10}{}.
+
+\newpage
+\img{prototyping/prototype-v1}{The first outcome from our implementation}{img:prototype}
+
+\begin{lstlisting}
+// ./lib/data.dart
+class AppData {
+  final _data = {
+    'goals': [
+      (
+        title: 'Implement new functionality to reach the goal',
+        startDate: '2022-01-01 00:00',
+        endDate: '2024-09-01 00:00',
+      )
+    ],
+    'bills': {
+      'total': 123456.789,
+      'list': [
+        (
+          details: 12345789.098,
+          // Approach to split String into several chunks
+          title: 'Description with a long explanation'
+              '... long explanation and details',
+          description: '2023-06-17',
+          progress: 0.5,
+          color: Colors.red,
+        ),
+        // ...
+      ]
+    },
+    // .. other sections
+  };
+
+  Map<String, dynamic> get state => _data;
+
+  void set(String property, dynamic value) {
+    if (_data.containsKey(property)) {
+      _data[property] = value;
+    } else {
+      throw ArgumentError('Invalid property: $property');
+    }
+  }
+}
+\end{lstlisting}
+
+\noindent By separating information from its representation, we need an option to iteratively generate widgets:
+
+\begin{lstlisting}
+ListView(
+  children: myList.map((item) {
+    return Padding( // indentation widget
+      padding: EdgeInsets.symmetric(horizontal: 16.0),
+      child: ListTile(title: Text(item)),
+    );
+  }).toList(),
+);
+\end{lstlisting}
+
+\noindent In the example above, we have a \q{ListView} with a list of items stored in the \q{myList}-variable. We use 
+the \q{map}-method to iterate over each item in the list and return a \q{Padding}-widget wrapped around a 
+\q{ListTile} (a single fixed-height row with a capability of adding leading or/and trailing icons). Finally, we convert 
+the resulting output \q{Iterative<Widget>} to a list of children (\q{List<Widget>}) using the \q{toList}-method. 
+But \q{map}-function is not recommended due to a much lower comparative performance \cite{HanT21}.
+
+\begin{lstlisting}
+Expanded(
+  child: ListView.builder(
+    itemCount: state['list'].length + 2, //+ leading and trailing
+    // To inject widget in between with 'ListView.separated' usage
+    /// separatorBuilder: (context, index) => SizedBox(height: 4.0),
+    // To improve the rendering performance from a template usage
+    /// prototypeItem: ListTile(title: Text(state['list'].first)),
+    itemBuilder: (context, index) {
+      if (index == 0) { // Leading indentation
+        return SizedBox(height: 8.0);
+      } else if (index <= state['list'].length) {
+        final item = state['list'][index - 1];
+        return BaseLineWidget(
+          title: item.title,
+          description: item.description,
+          details: item.details,
+          progress: item.progress,
+          color: item.color,
+        );
+      } else { // Trailing "button" at the end
+        return TextButton(
+          onPressed: () {}, // Handle "More" button pressed
+          child: Text(AppLocalizations.of(context)!.btnMore),
+        );
+      }
+    }),
+);
+\end{lstlisting}
+
+\noindent Described iterative builder can be additionally improved by the usage of \q{Stream}s (instead of \q{List}s, 
+\issue{305}{}) and \q{KeepAliveWrapper}-widget (\emph{with a \q{AutomaticKeepAliveClientMixin}-mixin that retains the 
+state of widgets that are either expensive to rebuild, or come in and out of the view, -- \q{ListView} and 
+\q{GridView}}, \issue{86}{}) in the context of an optimal memory allocation and utilization.
+
+\begin{lstlisting}
+class KeepAliveWrapper extends StatefulWidget {
+  final Widget child;
+  const KeepAliveWrapper({super.key, required this.child});
+  @override
+  KeepAliveWrapperState createState() => KeepAliveWrapperState();
+}
+class KeepAliveWrapperState extends State<KeepAliveWrapper> 
+    with AutomaticKeepAliveClientMixin {
+  @override
+  bool get wantKeepAlive => true;
+
+  @override
+  Widget build(BuildContext context) {
+    super.build(context); // required by mixin
+    return widget.child;
+  }
+}
+\end{lstlisting}
+
+\noindent While the main page is ready, let's discuss a routing in Flutter \issue{14}{}:
+
+\begin{lstlisting}
+// ./lib/routes.dart
+const String homeRoute = '/app/finance';
+const String accountRoute = '/app/finance/account';
+const String accountAddRoute = '/app/finance/account/add';
+const String accountViewRoute = '/app/finance/account/uuid:';(*@ \stopnumber @*)
+const String accountEditRoute = '/app/finance/account/uuid:/edit';
+
+// ./lib/main.dart
+void main() => runApp(const MyApp());
+class MyApp extends StatefulWidget {
+  const MyApp({super.key});
+
+  @override
+  _MyAppState createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
+  final AppData state = AppData();
+
+  MaterialPageRoute? getDynamicRouter(settings) {
+    final String route = settings.name!;
+    final regex = RegExp(r'\/uuid:([\w-]+)');
+    final match = regex.firstMatch(route);
+    if (match != null) {
+      final String uuid = match.group(1) ?? '';
+      switch (route.replaceAll(uuid, '')) {
+        case routes.accountViewRoute:
+          return MaterialPageRoute(builder: (context) => 
+                AccountViewPage(state: state, uuid: uuid));
+        case routes.accountEditRoute:
+          return MaterialPageRoute(builder: (context) => 
+                AccountEditPage(state: state, uuid: uuid));
+      }
+    }
+    return null;
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      initialRoute: routes.homeRoute,
+      onGenerateRoute: getDynamicRouter,
+      routes: <String, WidgetBuilder>{
+        routes.homeRoute: (context) => HomePage(state: state),
+        routes.accountRoute: (context) => AccountPage(state: state),
+// ... other content
+\end{lstlisting}
+
+\noindent In the current scenario, we utilize the \q{onGenerateRoute}-method to manage routes with a dynamic structure. 
+This involves extracting the \q{uuid}-parameter from the route path and return the appropriate widget with propagated 
+parameters. For more "static" content the \q{routes}-list is used. It's essential to note that while this approach 
+aligns with URLs construction patterns, Flutter doesn't treat routes as unique URLs in the browsing history. Therefore, 
+it's more practical to work with additional parameters instead of \q{RegExp} transformations \issue{249}{}:
+\newpage
+\begin{lstlisting}
+MaterialPageRoute? getDynamicRouter(RouteSettings settings) {
+  final args = settings.arguments as Map<String, String>?;
+  final uuid = args?['uuid'] ?? '';
+  final route = settings.name ?? '';
+  // ...
+// To call the route with parameters
+Navigator.pushNamed(context, routes.accountViewRoute,
+    arguments: {'uuid': '1'});
+\end{lstlisting}
+
+\noindent Additionally, it's worth considering removing the \q{routes}-attribute from the \q{MaterialApp}-widget. This 
+enables the usage of dynamic construction for all routes, unifying the control over route management.
+
+\begin{lstlisting}
+final routes = <String, WidgetBuilder>{
+  AppRoute.accountViewRoute: (context) => AccountViewPage(uuid: key),
+  // ... other pages
+  AppRoute.subscriptionRoute: (context) => const SubscriptionPage(),
+};
+return routes[route] ?? (context) => const HomePage();
+\end{lstlisting}
+
+\noindent With the routing declaration completed, let's move on with creating a navigation. To add a button to the 
+\q{AppBar}-widget, we can use the \q{actions}-property and provide a list of widgets that represent the buttons that 
+we want to see on the right side, for the left corner -- the \q{leading}-property should be used:
+
+\begin{lstlisting}
+Scaffold(
+  appBar: AppBar(
+    title: Text('AppBar with Button'),
+    actions: [
+      IconButton(
+        icon: Icon(Icons.settings),
+        onPressed: () { /* ... */ }, 
+      ),
+      // ... other options
+    ],
+  ),
+  body: /* ... */
+}
+\end{lstlisting}
+
+\noindent We may additionally customize the appearance and behavior of buttons by using different types of widgets, 
+such as \q{IconButton}, \q{FlatButton}, \q{RaisedButton}, or \q{TextButton}. As an example, to create a menu with three 
+dots -- \q{PopupMenuButton}-widget along with the \q{PopupMenuEntry}-widgets:
+
+\begin{lstlisting}
+AppBar(
+  title: Text('My App'),
+  actions: [
+    PopupMenuButton(
+      icon: Icon(Icons.more_vert),
+      onSelected: (value) {/* ... */},
+      itemBuilder: (BuildContext context) {
+        return [
+          PopupMenuItem(
+            child: Text('Option 1'),
+            value: 'option1',
+          ),
+          // ... other options
+        ];
+      },
+    ),
+  ],
+)
+\end{lstlisting}
+
+\noindent Each menu item has a child widget, which in this case is a \q{Text}-widget, and a value associated with it. 
+When a menu item is selected, the \q{onSelected}-callback is triggered with the selected value.
+
+There are multiple options available for creating the navigation. As \q{Drawer}-widget offers a panel that slides in 
+from either the left or right side of the screen to present navigation options or settings:
+
+\begin{lstlisting}
+class MyApp extends StatelessWidget {
+  void _navigateToPage(context, String routeName) {
+    Navigator.pop(context); // Close the drawer
+    // Navigate to the specified route
+    Navigator.pushNamed(context, routeName); 
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      home: Scaffold(
+        appBar: AppBar(
+          title: Text('Navigation Menu Example'),
+        ),
+        drawer: Drawer(
+          child: ListView(
+            padding: EdgeInsets.zero,
+            children: [
+              DrawerHeader(
+                decoration: BoxDecoration(color: Colors.blue),
+                child: Text('Navigation Menu',
+                  style: TextStyle(fontSize:24, color:Colors.white),
+                ),
+              ),
+              ListTile(
+                leading: Icon(Icons.home),
+                title: Text('Home'),
+                onTap: () => _navigateToPage(context, '/home'),
+              ),
+// ... other options
+\end{lstlisting}
+
+\noindent Each \q{ListTile} serves as a navigation item and is attributed an icon, title, and an \q{onTap}-callback. 
+For customizing the appearance of the \q{Drawer}, we may eliminate the rounded corners and give it a more squared-off 
+appearance:
+
+\begin{lstlisting}
+Drawer(
+  // Remove the elevation (shadow) of the drawer
+  elevation: 0,
+  // Set a border without any width
+  shape: Border.all(width: 0), 
+  child: Container(
+    // Set the background color
+    color: Colors.grey[900], 
+    child: /* ... */
+  ),
+);
+\end{lstlisting}
+
+\noindent For a desktop application it's important to reflect a mouse hover (covered by a \q{MouseRegion}-widget): 
+
+\begin{lstlisting}
+class MyDrawer extends StatelessWidget {
+  final List<String> drawerItems = [/* ... */];
+
+  @override
+  Widget build(BuildContext context) {
+    return Drawer(
+      child: ListView.builder(
+        itemCount: drawerItems.length,
+        itemBuilder: (context, index) {
+          return MouseRegion(
+            cursor: SystemMouseCursors.click,
+            onEnter: (event) {
+              // Handle mouse enter event
+            },
+            onExit: (event) {
+              // Handle mouse exit event
+            },
+            child: ListTile(
+              title: Text(drawerItems[index]),
+              onTap: () {
+                // Handle item tap event
+              },
+// ... other options
+\end{lstlisting}
+
+\noindent \q{InkWell}-widget might be an alternative to the \q{MouseRegion}-widget usage, by having a 
+\q{Container}-widget inside that applies a background color to the item when it is selected or hovered.
+
+Going further, the defined setter in our fake data storage would help to implement \q{Add}-form(s) \issue{16}{bed81f5} 
+(\cref{img:proto-form}). Flutter provides a set of widgets to display all basic inputs as \q{TextFormField} (for 
+input), \q{DropdownButton} / \q{DropdownMenuItem} and \q{SearchAnchor} (for selector), \q{Switch} (toggler), and others. 
+Additionally, it can be used Package Manager (\q{pub}) to apply their extensions and wrappers as an additional 
+abstraction and simplification layer, alike \q{Icon}-picker (\q{flutter\_iconpicker}-package), \q{Color}-selector 
+(\q{flutter\_colorpicker}-package), and others. However, after combining dozens of different widgets from various 
+libraries, we might encounter a stylistic inconsistency between these widgets (term, "UX Hell") and end up having to 
+make compromises or even remove some of them.
+
+When starting with a basic input field, it's essential to ensure that the input matches our expectations, such as 
+expecting numbers for numeric fields. To prevent users from typing anything outside the defined \q{TextInputType}, 
+we should create a custom \q{TextInputFormatter} and attach it to the \q{inputFormatters}-property:
+
+\begin{lstlisting}
+class LimitedTextInputFormatter extends TextInputFormatter {
+  final TextInputType textInputType;
+
+  LimitedTextInputFormatter(this.textInputType);
+
+  @override
+  TextEditingValue formatEditUpdate(
+      TextEditingValue oldValue, TextEditingValue newValue) {
+    if (newValue.text.isNotEmpty &&
+        !_isValidInput(newValue.text, textInputType)) {
+      // Return the old value if the new value is not valid
+      return oldValue;
+    }
+    return newValue;
+  }
+
+  bool _isValidInput(String text, TextInputType textInputType) {
+    switch (textInputType) {
+      case TextInputType.number:
+        return double.tryParse(text) != null;
+      case TextInputType.phone:
+        return text.contains(RegExp(r'^[0-9+\-()\s]+$'));
+      // Add more cases for other types if needed
+      default:
+        return true; // Allow any input for unsupported types
+    }
+  }
+}
+
+// 'LimitedTextInputFormatter' usage
+TextFormField(
+  keyboardType: textInputType,
+  inputFormatters: [
+    LimitedTextInputFormatter(textInputType),
+  ],
+  // ... other properties
+);
+\end{lstlisting}
+
+\noindent Alternatively, the allowance can be declared via a \q{RegExp}-expression:
+
+\begin{lstlisting}
+TextFormField(
+  // Force the keyboard to show a decimal point button
+  keyboardType: TextInputType.numberWithOptions(decimal: true),
+  inputFormatters: [ // Allow numbers with max two decimal places
+    FilteringTextInputFormatter.allow(RegExp(r'^(\d+)?\.?\d{0,2}')),
+  ],
+  // ... other options
+);
+\end{lstlisting}
+
+\noindent And, in case of forbidding everything, we may use the boolean \q{readOnly}-property. Also, it should 
+be mentioned that the field's value change is covered by \q{TextEditingController}:
+
+\begin{lstlisting}
+class CurrencySelector extends StatelessWidget {
+  final _controller = TextEditingController();
+  final Function callback;
+  final Currency? value;
+
+  CurrencySelector({
+    super.key,
+    this.value,
+    required this.callback,
+  }) {
+    _controller.text = value.symbol;
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final color = Theme.of(context).colorScheme.primary;
+    return TextFormField(
+      key: ValueKey(value),
+      controller: _controller,
+      decoration: InputDecoration(
+        filled: true,
+        border: InputBorder.none,
+        fillColor: color.withOpacity(0.1),
+        suffixIcon: GestureDetector(
+          onTap: () async {
+            await showCurrencyPicker(
+              context: context,
+              showFlag: true,
+              showCurrencyName: true,
+              showCurrencyCode: true,
+              onSelect: (Currency currency) => callback(currency),
+            );
+          },
+          child: const Icon(Icons.arrow_drop_down),
+        ),
+      ),
+    );
+  }
+}
+\end{lstlisting}
+
+\noindent In this code, we set the key property of the \q{TextFormField} to \q{ValueKey(value)} to ensure that when the 
+state changes and the \q{CurrencySelector} is rebuilt, the \q{TextFormField} will receive a new key based on the updated 
+value, -- force the \q{TextFormField} to re-render.
+
+For the \q{Color}-picker it might be added a tiny improvement as a color preset (randomly taken 
+by \q{Color.getRandomMaterialColor()}):
+
+\begin{lstlisting}
+// ./lib/_ext/color_ext.dart
+extension ColorExt on Color {
+  MaterialColor get toMaterialColor {
+    final Map<int, Color> colorMap = {};
+    for (int i = 50; i <= 900; i += 100) {
+      colorMap[i] = Color.fromRGBO(red, green, blue, i / 1000);
+    }
+    return MaterialColor(value, colorMap);
+  }
+  static Color getRandom() {
+    List<Color> colors = Colors.primaries;
+    Random random = Random();
+    return colors[random.nextInt(colors.length)];
+  }
+  static MaterialColor getRandomMaterialColor() {
+    return getRandom().toMaterialColor;
+  }
+}
+\end{lstlisting}
+
+\noindent The \q{getRandom}-function selects a random color from the \q{Colors.primaries}-list using the 
+\q{Random}-class. As a note, the \q{MaterialColor}-constructor requires shades of the color, so we've created a 
+\q{Map} with shade values ranging from 50 to 900.
+
+An icon on the opposite side of the text "Balance Date Update" (\cref{img:proto-form}), mostly known as an informational 
+anchor, should show a tooltip by a long-press. To add such a behavior to the icon, it should be wrapped by a \q{Tooltip} 
+or \q{Semantics}-widget:
+
+\begin{lstlisting}
+Tooltip(message: 'This is a tooltip', child: /* ... */);
+\end{lstlisting}
+
+\img{prototyping/prototype-form}{Form to create new Account}{img:proto-form}
+
+\noindent Also, our form may exceed the available vertical space, and in that case we should use a
+\q{SingleChildScrollView}-widget (or, \q{CustomScrollView}) to make the content scrollable:
+
+\begin{lstlisting}
+class MyApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      home: Scaffold(
+        // Bar stays visible all the time
+        appBar: AppBar(
+          title: Text('Scrollable Content Example'),
+        ),
+        body: SingleChildScrollView(
+          child: Container(
+            height: 1000, // to demonstrate scrolling
+            color: Colors.yellow,
+            child: Text('Scrollable Content'),
+          ),
+// ... other stuff
+\end{lstlisting}
+
+\noindent On the other hand, we may hide elements based on a screen resolution. That can be achieved by using a 
+\q{MediaQuery}-widget (or, constraints sizes) to access the screen dimensions and conditionally render the content 
+based on a specific threshold.
+
+\begin{lstlisting}
+final minHeightThreshold = 640;
+final minWidthThreshold = 480;
+LayoutBuilder(
+  builder: (BuildContext context, BoxConstraints constraints) {
+    double screenHeight = MediaQuery.of(context).size.height;
+    /// double maxWidth = constraints.maxWidth;
+    /// double maxHeight = constraints.maxHeight;
+    if (screenHeight < minHeightThreshold) {
+      // Hide the ListView on small screens
+        return Container();
+    } else {
+      // Show the ListView on large screens
+      return ListView(
+        children: <Widget>[/* ... */],
+      );
+    }
+  },
+);
+\end{lstlisting}
+
+\noindent This approach allows us to conditionally render the widget based on the screen height, providing a responsive
+and adaptable user interface (UI). Furthermore, \q{MediaQuery} helps to identify not only the size of the screen, but
+an orientation of it:
+
+\begin{lstlisting}
+MediaQuery.of(context).orientation == Orientation.landscape
+\end{lstlisting}
+
+\noindent In the context of a text, we may use the \q{Text}-widget with an \q{overflow}-property:
+
+\begin{lstlisting}
+Container(
+  constraints: BoxConstraints(
+    maxWidth: 200,
+    minWidth: 50,
+  ),
+  /// width: 200,
+  child: Text(
+    'This is a long text that may overflow the container',
+    overflow: TextOverflow.ellipsis,
+  ),
+)      
+\end{lstlisting}
+
+\noindent By setting the overflow property, the text will be truncated with an ellipsis (...) if it overflows the 
+defined container constraints.\\
+\\
+
+[TBD]\\
+\\
+
+
+\noindent Finally, it's important to note that all the inputs (we've used on the form) have been encapsulated within 
+their own widget (\q{SimpleInput}, \q{MonthYearInput}, \q{IconSelector}, etc.). This approach facilitates a seamless 
+transition from one presentation layer to another or from one external library to another, all without requiring any 
+changes beyond the component itself.
