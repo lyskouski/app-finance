@@ -1,8 +1,8 @@
 % Copyright 2023 The terCAD team. All rights reserved.
 % Use of this content is governed by a CC BY-NC-ND 4.0 license that can be found in the LICENSE file.
 
-\subsection{Creating Application Skeleton}
-\markboth{Implementing Core Functionality}{Creating Application Skeleton}
+\subsection{Creating Application's Skeleton}
+\markboth{Prototyping}{Creating Application's Skeleton}
 
 In case of a valuable uncertainties scope, the problem resolution is started from a prototype creation with "no 
 architecture" approach and sometimes even with "no code" solution. Designers and Researches (Business Analysts) 
@@ -39,6 +39,9 @@ That has helped us to construct our application from two main blocks as \q{BaseW
 \q{BaseLineWidget} (a single line from it) \issue{2}{}.
 
 \img{prototyping/rally-app}{Rally application from Flutter Gallery}{img:proto-rally}
+
+
+\subsubsection{Assembling Blocks}
 
 To make the most of the available screen real estate in both height and width, it's essential to leverage the 
 \q{LayoutBuilder}-widget. This widget grants access to the constraints of its parent widget, allowing us to ascertain 
@@ -110,8 +113,6 @@ LayoutBuilder(
               child: Container(
                 color: Colors.green,
               ),
-            ),
-          ),
 // ... other content
 \end{lstlisting}
 
@@ -203,7 +204,6 @@ class BaseLineWidget extends StatelessWidget {
 class BarVerticalSingle extends StatelessWidget {
   /* ... properties declaration */
   const BarVerticalSingle({super.key, /* ... */ });
-
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -215,12 +215,11 @@ class BarVerticalSingle extends StatelessWidget {
           value: value,
           backgroundColor: Colors.grey, // Background color
           valueColor: AlwaysStoppedAnimation<Color>(color),
-        ),
-      ),
-    );
-  }(*@ \stopnumber @*)
-}
+// .. closing brackets
+\end{lstlisting}
+\noindent That solution can be improved by the usage of \q{RotatedBox}.
 
+\begin{lstlisting}
 // ./lib/routes/home/baseWidget.dart
 class BaseWidget extends StatelessWidget {
   final String title;
@@ -259,7 +258,7 @@ class BaseWidget extends StatelessWidget {
 // ... closing tags
 \end{lstlisting}
 
-\noindent As it might be notices, we've injected our data into components. This helps us focus on design 
+\noindent As it might be noticed, we've injected our data into components. This helps to focus on a design 
 (\cref{img:prototype}) rather than on a data structure that is still unknown. However, preserving the data 
 injection per each component could also be counterproductive, as it would necessitate extra efforts to cleanup the 
 components later. That's why we should separate representation and data layers on the early stages independently of 
@@ -268,7 +267,7 @@ understanding the context of a data structure \issue{10}{}.
 \newpage
 \img{prototyping/prototype-v1}{The first outcome from our implementation}{img:prototype}
 
-\begin{lstlisting}
+\begin{lstlisting}[caption=Mock Structure of a Financial Data, label=code:app-data]
 // ./lib/data.dart
 class AppData {
   final _data = {
@@ -291,10 +290,7 @@ class AppData {
           progress: 0.5,
           color: Colors.red,
         ),
-        // ...
-      ]
-    },
-    // .. other sections
+    // .. other sections and data
   };
 
   Map<String, dynamic> get state => _data;
@@ -383,6 +379,9 @@ class KeepAliveWrapperState extends State<KeepAliveWrapper>
 }
 \end{lstlisting}
 
+
+\subsubsection{Separating Context}
+
 \noindent While the main page is ready, let's discuss a routing in Flutter \issue{14}{}:
 
 \begin{lstlisting}
@@ -439,7 +438,7 @@ This involves extracting the \q{uuid}-parameter from the route path and return t
 parameters. For more "static" content the \q{routes}-list is used. It's essential to note that while this approach 
 aligns with URLs construction patterns, Flutter doesn't treat routes as unique URLs in the browsing history. Therefore, 
 it's more practical to work with additional parameters instead of \q{RegExp} transformations \issue{249}{}:
-\newpage
+
 \begin{lstlisting}
 MaterialPageRoute? getDynamicRouter(RouteSettings settings) {
   final args = settings.arguments as Map<String, String>?;
@@ -456,7 +455,7 @@ enables the usage of dynamic construction for all routes, unifying the control o
 
 \begin{lstlisting}
 final routes = <String, WidgetBuilder>{
-  AppRoute.accountViewRoute: (context) => AccountViewPage(uuid: key),
+  AppRoute.accountViewRoute: (context)=> AccountViewPage(uuid: key),
   // ... other pages
   AppRoute.subscriptionRoute: (context) => const SubscriptionPage(),
 };
@@ -483,9 +482,8 @@ Scaffold(
 }
 \end{lstlisting}
 
-\noindent We may additionally customize the appearance and behavior of buttons by using different types of widgets, 
-such as \q{IconButton}, \q{FlatButton}, \q{RaisedButton}, or \q{TextButton}. As an example, to create a menu with three 
-dots -- \q{PopupMenuButton}-widget along with the \q{PopupMenuEntry}-widgets:
+\noindent We may additionally customize the appearance and behavior of buttons by using their different types, as 
+\q{IconButton}, \q{FlatButton}, \q{RaisedButton}, \q{TextButton}, or \q{PopupMenuButton}:
 
 \begin{lstlisting}
 AppBar(
@@ -526,16 +524,15 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
-        appBar: AppBar(
-          title: Text('Navigation Menu Example'),
-        ),
+        appBar: AppBar(title: Text('Navigation Menu Example')),
         drawer: Drawer(
           child: ListView(
             padding: EdgeInsets.zero,
             children: [
               DrawerHeader(
                 decoration: BoxDecoration(color: Colors.blue),
-                child: Text('Navigation Menu',
+                child: Text(
+                  'Navigation Menu',
                   style: TextStyle(fontSize:24, color:Colors.white),
                 ),
               ),
@@ -587,23 +584,32 @@ class MyDrawer extends StatelessWidget {
             },
             child: ListTile(
               title: Text(drawerItems[index]),
-              onTap: () {
-                // Handle item tap event
-              },
+              onTap: () { /* ... */ },
 // ... other options
 \end{lstlisting}
 
-\noindent \q{InkWell}-widget might be an alternative to the \q{MouseRegion}-widget usage, by having a 
-\q{Container}-widget inside that applies a background color to the item when it is selected or hovered.
+\noindent \q{InkWell}-widget might be an alternative to the \q{MouseRegion}-widget usage.
 
-Going further, the defined setter in our fake data storage would help to implement \q{Add}-form(s) \issue{16}{bed81f5} 
-(\cref{img:proto-form}). Flutter provides a set of widgets to display all basic inputs as \q{TextFormField} (for 
-input), \q{DropdownButton} / \q{DropdownMenuItem} and \q{SearchAnchor} (for selector), \q{Switch} (toggler), and others. 
-Additionally, it can be used Package Manager (\q{pub}) to apply their extensions and wrappers as an additional 
-abstraction and simplification layer, alike \q{Icon}-picker (\q{flutter\_iconpicker}-package), \q{Color}-selector 
-(\q{flutter\_colorpicker}-package), and others. However, after combining dozens of different widgets from various 
-libraries, we might encounter a stylistic inconsistency between these widgets (term, "UX Hell") and end up having to 
-make compromises or even remove some of them.
+
+\subsubsection{Configuring Inputs}
+
+Going further, the defined setter in our fake data storage (Listing \ref{code:app-data}) would help to implement 
+\q{Add}-form(s) \issue{16}{bed81f5} (\cref{img:proto-form}). Flutter provides a set of widgets to display all basic 
+inputs as \q{TextFormField} (for input), \q{DropdownButton} / \q{DropdownMenuItem} and \q{SearchAnchor} (for selector), 
+\q{Switch} (toggler), and others. Additionally, it can be used Package Manager (\q{pub}) to apply additional components, 
+as \q{Icon}-picker (\q{flutter\_iconpicker}-package), \q{Color}-selector (\q{flutter\_colorpicker}-package), and 
+others. However, after combining dozens of different widgets from various libraries, we might encounter a stylistic 
+inconsistency between these widgets (term, "UX Hell") and end up having to make compromises or even remove some of them
+by wrapping the original components (\issue{149}{}, \issue{200}{}, \issue{204}{}, \issue{207}{}, \issue{329}{}).
+
+That's why it's important to highlight that all the inputs (we've used on the form) have been encapsulated within 
+their own widget (\q{SimpleInput}, \q{MonthYearInput}, \q{IconSelector}, etc.). This approach facilitates a seamless 
+transition from one presentation layer to another or from one external library to another, all without requiring any 
+changes beyond the component itself \footnote{This technique finds application in the majority of Object-Relational 
+Mapping (ORM) libraries, where its primary purpose is to standardize the interface for connecting to and interacting 
+with various databases. By abstracting the underlying complexities of different database systems, ORM libraries 
+streamline the process of database access and data manipulation, making it easier for developers to work with diverse 
+database platforms in a generalized manner.}.
 
 When starting with a basic input field, it's essential to ensure that the input matches our expectations, such as 
 expecting numbers for numeric fields. To prevent users from typing anything outside the defined \q{TextInputType}, 
@@ -627,26 +633,19 @@ class LimitedTextInputFormatter extends TextInputFormatter {
   }
 
   bool _isValidInput(String text, TextInputType textInputType) {
-    switch (textInputType) {
-      case TextInputType.number:
-        return double.tryParse(text) != null;
-      case TextInputType.phone:
-        return text.contains(RegExp(r'^[0-9+\-()\s]+$'));
-      // Add more cases for other types if needed
-      default:
-        return true; // Allow any input for unsupported types
-    }
-  }
-}
+    return switch (textInputType) {
+      TextInputType.number => double.tryParse(text) != null;
+      TextInputType.phone => 
+          text.contains(RegExp(r'^[0-9+\-()\s]+$'));
+      // ... more cases for other types
+\end{lstlisting}
 
-// 'LimitedTextInputFormatter' usage
+\noindent An example of the formatter usage:
+
+\begin{lstlisting}
 TextFormField(
-  keyboardType: textInputType,
   inputFormatters: [
     LimitedTextInputFormatter(textInputType),
-  ],
-  // ... other properties
-);
 \end{lstlisting}
 
 \noindent Alternatively, the allowance can be declared via a \q{RegExp}-expression:
@@ -655,15 +654,19 @@ TextFormField(
 TextFormField(
   // Force the keyboard to show a decimal point button
   keyboardType: TextInputType.numberWithOptions(decimal: true),
-  inputFormatters: [ // Allow numbers with max two decimal places
+  inputFormatters: [ // Allow numbers with at max two decimal places
     FilteringTextInputFormatter.allow(RegExp(r'^(\d+)?\.?\d{0,2}')),
   ],
   // ... other options
 );
 \end{lstlisting}
 
-\noindent And, in case of forbidding everything, we may use the boolean \q{readOnly}-property. Also, it should 
-be mentioned that the field's value change is covered by \q{TextEditingController}:
+\noindent And, for the case of forbidding everything, we may use the boolean \q{readOnly}-property. 
+
+It's important to note that the changes in the field's value are managed and monitored through \q{TextEditingController}. 
+That component allows bidirectional communication with text input widgets. It not only enables retrieving the current 
+value of a text field but also provides a capability to programmatically change the content (whether a real-time 
+validation, or respond to user inputs):
 
 \begin{lstlisting}
 class CurrencySelector extends StatelessWidget {
@@ -690,15 +693,13 @@ class CurrencySelector extends StatelessWidget {
         border: InputBorder.none,
         fillColor: color.withOpacity(0.1),
         suffixIcon: GestureDetector(
-          onTap: () async {
-            await showCurrencyPicker(
+          onTap: () => showCurrencyPicker(
               context: context,
               showFlag: true,
               showCurrencyName: true,
               showCurrencyCode: true,
               onSelect: (Currency currency) => callback(currency),
-            );
-          },
+            ),
           child: const Icon(Icons.arrow_drop_down),
         ),
       ),
@@ -712,7 +713,7 @@ state changes and the \q{CurrencySelector} is rebuilt, the \q{TextFormField} wil
 value, -- force the \q{TextFormField} to re-render.
 
 For the \q{Color}-picker it might be added a tiny improvement as a color preset (randomly taken 
-by \q{Color.getRandomMaterialColor()}):
+via \q{Color.getRandomMaterialColor()}-call):
 
 \begin{lstlisting}
 // ./lib/_ext/color_ext.dart
@@ -750,30 +751,10 @@ Tooltip(message: 'This is a tooltip', child: /* ... */);
 \img{prototyping/prototype-form}{Form to create new Account}{img:proto-form}
 
 \noindent Also, our form may exceed the available vertical space, and in that case we should use a
-\q{SingleChildScrollView}-widget (or, \q{CustomScrollView}) to make the content scrollable:
-
-\begin{lstlisting}
-class MyApp extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      home: Scaffold(
-        // Bar stays visible all the time
-        appBar: AppBar(
-          title: Text('Scrollable Content Example'),
-        ),
-        body: SingleChildScrollView(
-          child: Container(
-            height: 1000, // to demonstrate scrolling
-            color: Colors.yellow,
-            child: Text('Scrollable Content'),
-          ),
-// ... other stuff
-\end{lstlisting}
-
-\noindent On the other hand, we may hide elements based on a screen resolution. That can be achieved by using a 
-\q{MediaQuery}-widget (or, constraints sizes) to access the screen dimensions and conditionally render the content 
-based on a specific threshold.
+\q{SingleChildScrollView}-widget (or, \q{CustomScrollView}) to make the content scrollable. On the other hand, 
+it might be needed to hide elements based on a screen resolution. That can be achieved by using a \q{MediaQuery}-widget 
+(or, constraints sizes) to access the screen dimensions and conditionally render the content based on a specific 
+threshold.
 
 \begin{lstlisting}
 final minHeightThreshold = 640;
@@ -784,10 +765,8 @@ LayoutBuilder(
     /// double maxWidth = constraints.maxWidth;
     /// double maxHeight = constraints.maxHeight;
     if (screenHeight < minHeightThreshold) {
-      // Hide the ListView on small screens
-        return Container();
+      return Container(); // Mimic a 'Visibility'-widget
     } else {
-      // Show the ListView on large screens
       return ListView(
         children: <Widget>[/* ... */],
       );
@@ -804,7 +783,7 @@ an orientation of it:
 MediaQuery.of(context).orientation == Orientation.landscape
 \end{lstlisting}
 
-\noindent In the context of a text, we may use the \q{Text}-widget with an \q{overflow}-property:
+\noindent As for the text, it can be truncated with an ellipsis (...) if it overflows the defined container constraints:
 
 \begin{lstlisting}
 Container(
@@ -815,20 +794,8 @@ Container(
   /// width: 200,
   child: Text(
     'This is a long text that may overflow the container',
+    maxLines: 1,
     overflow: TextOverflow.ellipsis,
   ),
 )      
 \end{lstlisting}
-
-\noindent By setting the overflow property, the text will be truncated with an ellipsis (...) if it overflows the 
-defined container constraints.\\
-\\
-
-[TBD]\\
-\\
-
-
-\noindent Finally, it's important to note that all the inputs (we've used on the form) have been encapsulated within 
-their own widget (\q{SimpleInput}, \q{MonthYearInput}, \q{IconSelector}, etc.). This approach facilitates a seamless 
-transition from one presentation layer to another or from one external library to another, all without requiring any 
-changes beyond the component itself.

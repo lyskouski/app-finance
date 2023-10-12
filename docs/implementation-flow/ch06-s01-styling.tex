@@ -103,3 +103,29 @@ extension CustomButtonTheme on FloatingActionButtonThemeData {
   }
 }
 \end{lstlisting}
+
+
+\subsubsection{Declaring Typography}
+
+We may customize not only the palette but a text declaration, and even extend \q{TextTheme} by our own types:
+
+\begin{lstlisting}
+extension MyTextTheme on TextTheme {
+  TextStyle get numberLarge => TextStyle(
+    fontSize: 48,
+    fontWeight: FontWeight.bold,
+    // to align color set across all declarations
+    color: headline1?.color,
+  );
+}
+\end{lstlisting}
+
+\noindent In addition, it might be used \q{copyWith}-method to update only a few properties (as a font size) while 
+keeping others intact: 
+
+\begin{lstlisting}
+Theme.of(context).textTheme.copyWith(
+  headline1: baseTheme.headline1!.copyWith(fontSize: 32),
+  headline2: baseTheme.headline2!.copyWith(fontSize: 24),
+);
+\end{lstlisting}

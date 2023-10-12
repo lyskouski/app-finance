@@ -75,7 +75,7 @@ components from scratch.
 
 
 \newpage
-\subsubsection{Distinguishing Stateless and Stateful}
+\subsubsection{Distinguishing Stateless and Stateful} \label{flutter-state}
 
 A \q{StatelessWidget} in Flutter represents interfaces with an immutable state (once created), requiring a new instance 
 for updates; providing suitability for static content like text, icons, or images; and performance advantages due to 
@@ -94,7 +94,8 @@ class LoadingWidget extends StatefulWidget {
   @override
   LoadingWidgetState createState() => LoadingWidgetState();
 }
-class LoadingWidgetState extends State<LoadingWidget> with TickerProviderStateMixin {
+class LoadingWidgetState extends State<LoadingWidget> 
+    with TickerProviderStateMixin {
   late AnimationController _controller = AnimationController(
       vsync: this,
       duration: const Duration(seconds: 2),

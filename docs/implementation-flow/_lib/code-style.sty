@@ -14,30 +14,13 @@
 \definecolor{codegray}{rgb}{0.5,0.5,0.5}
 \definecolor{codepurple}{rgb}{0.58,0,0.82}
 \definecolor{backcolour}{rgb}{0.95, 0.95, 0.96}
+\definecolor{backline}{rgb}{0.9, 0.9, 0.9}
 \definecolor{backgreen}{rgb}{0.9,1,0.9}
 \definecolor{backred}{rgb}{1,0.85,0.9}
-
-% Codebox definition
-\lstset{
-    basicstyle=\fontsize{9}{12}\selectfont\ttfamily,
-    backgroundcolor=\color{backcolour},
-    commentstyle=\color{codegreen},
-    keywordstyle=\color{magenta},
-    numberstyle=\tiny\color{codegray},
-    stringstyle=\color{codepurple},
-    breakatwhitespace=false,
-    breaklines=true,
-    captionpos=b,
-    keepspaces=true,
-    numbers=left,
-    numbersep=5pt,
-    showspaces=false,
-    showstringspaces=false,
-    showtabs=false,
-    tabsize=2,
-    language=java,
-    escapeinside={(*@}{@*)}
-}
+% styles
+\newcommand\YAMLcolonstyle{\color{red}\fontsize{9}{12}\selectfont\ttfamily}
+\newcommand\YAMLkeystyle{\color{black}\fontsize{9}{12}\selectfont\ttfamily}
+\newcommand\YAMLvaluestyle{\color{blue}\fontsize{9}{12}\selectfont\ttfamily}
 
 % Emulate kdiff
 \newcommand{\kdiff}[1]{%
@@ -73,12 +56,16 @@
     \startnumber{-2}%
 }
 
-% Define YAML support
-\newcommand\YAMLcolonstyle{\color{red}\fontsize{9}{12}\selectfont\ttfamily}
-\newcommand\YAMLkeystyle{\color{black}\fontsize{9}{12}\selectfont\ttfamily}
-\newcommand\YAMLvaluestyle{\color{blue}\fontsize{9}{12}\selectfont\ttfamily}
-
 \makeatletter
+\newcommand\language@dart{dart}
+\expandafter\expandafter\expandafter\lstdefinelanguage
+\expandafter{\language@dart}
+{
+  language=java,
+  morekeywords=[2]{String,bool,@override,required,dynamic,extension,on,with,var,late,as,is,factory,set,get,typedef,%
+mixin,async,await,enum,sealed},
+}
+
 \newcommand\language@yaml{yaml}
 \expandafter\expandafter\expandafter\lstdefinelanguage
 \expandafter{\language@yaml}
@@ -144,3 +131,26 @@
 }
 
 \makeatother
+
+% Codebox definition
+\lstset{
+  basicstyle=\fontsize{9}{12}\selectfont\ttfamily,
+  backgroundcolor=\color{backcolour},
+  commentstyle=\color{codegreen},
+  keywordstyle=\color{magenta},
+  numberstyle=\tiny\color{codegray},
+  stringstyle=\color{codepurple},
+  breakatwhitespace=false,
+  breaklines=true,
+  captionpos=b,
+  keepspaces=true,
+  numbers=left,
+  numbersep=5pt,
+  showspaces=false,
+  showstringspaces=false,
+  showtabs=false,
+  tabsize=2,
+  language=dart,
+  escapeinside={(*@}{@*)},
+  literate={\ \ }{{\textcolor{backline}{\textbar}}\ }2,
+}

@@ -56,7 +56,8 @@ class MyApp extends StatelessWidget {
       // Application theme definition
       theme: ThemeData(
         // Basic color scheme
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+        colorScheme:
+            ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         // Configuration of Widgets' styles
         useMaterial3: true,
       ),
@@ -67,7 +68,7 @@ class MyApp extends StatelessWidget {
 }
 // 'Stateful' to re-render widget by changed internal states
 class MyHomePage extends StatefulWidget {
-  // 'required' mark 'title' as a mandatory for constructor [line 25]
+  // To mark 'title' as a mandatory for constructor [line 26]
   const MyHomePage({super.key, required this.title});
   // 'final' - cannot be changed afterwards
   final String title;
@@ -90,8 +91,10 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      // Pinned to the top container
       appBar: AppBar(
-        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
+        backgroundColor:
+            Theme.of(context).colorScheme.inversePrimary,
         title: Text(widget.title),
       ),
       body: Center(
@@ -101,7 +104,7 @@ class _MyHomePageState extends State<MyHomePage> {
           // Usage of 'const' is recommended to improve performance
           // ... for any Widget without dynamic parameters
             const Text(
-                'You have pushed the button this many times:',
+              'You have pushed the button this many times:',
             ),
             Text(
               '$_counter', // '$' - for a variable interpolation

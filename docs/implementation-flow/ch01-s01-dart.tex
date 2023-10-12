@@ -391,12 +391,58 @@ mixin FileImportMixin {
   \item \q{@immutable}-notation -- force all properties to be \q{final}.
 \end{itemize}
 
-\noindent With a few restrictions (cannot be combined):
+\noindent With a few restrictions (cannot be combined): \q{abstract} with \q{sealed}; \q{interface}, \q{final} or 
+\q{sealed} with \q{mixin}.
 
-\begin{itemize}
-  \item \q{abstract} with \q{sealed};
-  \item \q{interface}, \q{final} or \q{sealed} with \q{mixin}.
-\end{itemize}
+\noindent By using \q{extends}-operand (especially for \q{StatefullWidget}s pairs, \ref{flutter-state}), it might be 
+raised an error that defined property is not accessible:
+
+\begin{lstlisting}
+// AccountEditPage <- AccountAddPage <- AbstractPage
+// AccountEditPageState <- AccountAddPageState <- AbstractPageState
+
+class AccountEditPage extends AccountAddPage {
+  String uuid;
+
+  AccountEditPage({required this.uuid}) : super();
+
+  @override
+  AccountEditPageState createState() => AccountEditPageState();
+}
+
+class AccountEditPageState extends 
+      AccountAddPageState<AccountEditPage> {
+  // ERROR: The getter 'uuid' isn't defined for 'AccountAddPage'
+  String get uuid => widget.uuid; 
+  // FIX: (widget as AccountEditPage).uuid
+}
+
+class AccountAddPage extends AbstractPage {
+  String? title;
+
+  AccountAddPage({this.title}) : super();
+
+  @override
+  AccountAddPageState createState() => AccountAddPageState();
+}
+
+class AccountAddPageState<T extends AccountAddPage> extends AbstractPageState<AccountAddPage> {
+  String? get title => widget.title; // OK
+}
+
+abstract class AbstractPage<T> extends StatefulWidget {
+  int selectedMenu = 0;
+  // Be accurate with "UniqueKey"-method usage for nested widgets
+  // That will trigger "initState" each time of store updates 
+  AbstractPage() : super(key: UniqueKey());
+}
+
+abstract class AbstractPageState<T extends AbstractPage> 
+      extends State<T> {
+  @override
+  Widget build(BuildContext context) => Text('test');
+}
+\end{lstlisting}
 
 
 \subsubsection{Differentiating Constructors}
@@ -442,6 +488,64 @@ class CurrencySelector<K extends CurrencySelectorItem> extends StatefulWidget {
   factory CurrencySelector<K>.fromJson(Map<String, dynamic> json) =>
       CurrencySelector<K>(/* ... */);
 }
+\end{lstlisting}
+
+
+\newpage
+\subsubsection{Enumerating Classifications}
+
+Enumerated types, often referred to as enums, are a distinct category of classes designed for the representation of a 
+predefined set of constant values. As an example, to validate function arguments or switch statement:
+
+\begin{lstlisting}
+enum Status { active, inactive, pending }
+
+void processStatus(Status status) {
+  switch (status) {
+    case Status.active:
+      // Perform actions for active status
+      break;
+    case Status.inactive:
+      // Perform actions for inactive status
+      break;
+    case Status.pending:
+      // Perform actions for pending status
+      break;
+  }
+}
+
+void main() => processStatus(Status.active);
+\end{lstlisting}
+
+\noindent By using enums in function parameters, we may can enforce valid enum values and provide clear validation and 
+handling for each possible value within the function. In addition, it's possible to convert \q{enum} to \q{String} and
+back:
+
+\begin{lstlisting}
+enum AppAccountType { type1, type2, type3 }
+// Convert to string
+String type = AppAccountType.type1.toString();
+// Back to enum value
+AppAccountType? accountType = AppAccountType.values
+    .where((v) => v.toString() == type).firstOrNull;
+\end{lstlisting}
+
+\noindent Sealed classes may be used in the same way as \q{enum} by defining a union class to leverage a pattern matching.
+
+\begin{lstlisting}
+sealed class DefaultState { /* ... */ }
+class LoadingState extends DefaultState { /* ... */ }
+class LoadedState extends DefaultState { /* ... */ }
+class ErrorState extends DefaultState { /* ... */ }
+// Matching
+String message = switch (state) {
+    LoadingState() => 'Loading...',
+    // Taking a property state from the class
+    ErrorState(message:var msg) => 'Error taken: ${msg}',
+    // To access the object in a case block by its type 
+    LoadedState obj => obj.data,    
+    _ => 'Unhandled state (all others)'
+  };
 \end{lstlisting}
 
 \newpage
