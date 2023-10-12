@@ -1,0 +1,309 @@
+% Copyright 2023 The terCAD team. All rights reserved.
+% Use of this content is governed by a CC BY-NC-ND 4.0 license that can be found in the LICENSE file.
+
+\subsection{[TBD] Enriching Interface}
+
+\subsubsection{Mixing 'PageView' and 'PageController'}
+
+Now we're going to add three pages controlled by swiping left and right for adding new bills, we'll use a combination 
+of PageView and PageController. 
+
+\begin{lstlisting}
+class Page1 extends StatelessWidget { /* ... */ }
+class Page2 extends StatelessWidget { /* ... */ }
+class Page3 extends StatelessWidget { /* ... */ }
+
+class MyApp extends StatelessWidget {
+  final PageController _pageController = PageController(initialPage: 0);
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      home: Scaffold(
+        body: GestureDetector(
+          onHorizontalDragEnd: (DragEndDetails details) {
+            if (details.primaryVelocity! > 0) { // Swiped right
+              _pageController.previousPage(
+                duration: Duration(milliseconds: 500),
+                curve: Curves.ease,
+              );
+            } else if (details.primaryVelocity! < 0) { // Swiped left
+              _pageController.nextPage(
+                duration: Duration(milliseconds: 500),
+                curve: Curves.ease,
+              );
+            }
+          },
+          child: PageView(
+            controller: _pageController,
+            children: [Page1(), Page2(), Page3()],
+          ),
+        ),
+      ),
+    );
+  }
+}
+\end{lstlisting}
+
+If we do want to click on tabs instead of swiping, then it can be changed to:
+
+\begin{lstlisting}
+class MyApp extends StatelessWidget {
+  final PageController _pageController = PageController(initialPage: 0);
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      home: DefaultTabController(
+        length: 3,
+        child: Scaffold(
+          appBar: AppBar(
+            title: Text('Swiping Pages'),
+            bottom: TabBar(
+              tabs: [
+                Tab(text: 'Page 1'),
+                Tab(text: 'Page 2'),
+                Tab(text: 'Page 3'),
+              ],
+            ),
+          ),
+          body: TabBarView(
+            children: [
+              Page1(),
+              Page2(),
+              Page3(),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
+\end{lstlisting}
+
+By loving a reach User Interface flow, let's combine all together:
+
+\begin{lstlisting}
+class MyApp extends StatelessWidget {
+  final int tabCount = 3;
+  int tabIndex = 1;
+  PageController? pageController;
+  TabController? tabController;
+
+  @override
+  void initState() {
+    super.initState();
+    pageController = PageController(initialPage: tabIndex);
+    tabController = TabController(
+      length: tabCount,
+      vsync: const _VSync(),
+      initialIndex: tabIndex,
+    );
+  }
+
+  @override
+  void dispose() {
+    pageController?.dispose();
+    tabController?.dispose();
+    super.dispose();
+  }
+
+  void switchTab(int newIndex) {
+    setState(() {
+      tabIndex = newIndex;
+      tabController?.animateTo(newIndex);
+      pageController?.animateToPage(
+        newIndex,
+        duration: Duration(milliseconds: 300),
+        curve: Curves.ease,
+      );
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      home: GestureDetector(
+        onHorizontalDragEnd: (DragEndDetails details) {
+          if (details.primaryVelocity! > 0) {
+            switchTab(widget.tabIndex - 1);
+          } else if (details.primaryVelocity! < 0) {
+            switchTab(widget.tabIndex + 1);
+          }
+        },
+        child: Scaffold(
+          appBar: TabBar(
+              controller: tabController,
+              onTap: switchTab,
+              tabs: [
+                Tab(text: 'Page 1'),
+                Tab(text: 'Page 2'),
+                Tab(text: 'Page 3'),
+              ],
+            ),
+          body: PageView(
+            controller: pageController,
+            onPageChanged: switchTab,
+            children: [
+              Page1(),
+              Page2(),
+              Page3(),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class _VSync implements TickerProvider {
+  const _VSync();
+
+  @override
+  Ticker createTicker(TickerCallback onTick) {
+    return Ticker(onTick);
+  }
+}
+
+class Page1 extends StatelessWidget { /* ... */ }
+
+class Page2 extends StatelessWidget { /* ... */ }
+
+class Page3 extends StatelessWidget { /* ... */ }
+\end{lstlisting}
+
+By combining both solutions, some irritating behavior happens, - we cannot tab from \q{Page1} to \q{Page3} 
+(more than one position) since \q{pageController} after the first movement will send an update via \q{onPageChanged}. 
+Hopefully, we do have a solution for that by introducing delayed trigger to proceed with switching till the chosen tab:
+
+\begin{lstlisting}
+Future<void> delaySwitchTab(int delay, int newIndex) async {
+  await Future.delayed(Duration(milliseconds: delay));
+  switchTab(newIndex);
+}
+
+void switchTab(int newIndex) {
+  if (newIndex < 0 || newIndex >= widget.tabCount) {
+    return;
+  }
+  setState(() {
+    const delay = 300;
+    // Saving current state for the check after 
+    final currIndex = tabIndex;
+    tabIndex = newIndex;
+    tabController?.animateTo(newIndex);
+    pageController?.animateToPage(
+      newIndex,
+      duration: const Duration(milliseconds: delay),
+      curve: Curves.ease,
+    );
+    // Verify that the difference is more than one
+    if ((currIndex - newIndex).abs() > 1) {
+      delaySwitchTab(delay, newIndex);
+    }
+  });
+}
+\end{lstlisting}
+
+
+\subsubsection{Adding 'AppBar' as dots to 'TabBar'}
+
+In some cases we do not need a fully defined navigation bar (with titles and icons), just dots to identify that
+current block can be swiped or changed by clicking on any of dots. To implement them it can be used either existing 
+external components (and added to the page as Widget), or by defining \q{indicator}-property of \q{TabBar}-widget with
+custom implementation of \q{Decoration}-class. Let's paint our dots:
+
+\begin{lstlisting}
+// ./lib/widgets/_wrappers/dots_indicator_decoration.dart
+import 'package:flutter/material.dart';
+
+class DotsIndicatorDecoration extends Decoration {(*@ \stopnumber @*)
+
+  // ... properties and constructor
+  (*@ \startnumber{10} @*)
+  @override
+  BoxPainter createBoxPainter([VoidCallback? onChanged]) {
+    return _CustomTabIndicatorPainter(
+      // ... properties
+      onChanged: onChanged,
+    );
+  }
+}
+
+class _CustomTabIndicatorPainter extends BoxPainter {(*@ \stopnumber @*)
+
+  // ... properties and constructor
+  (*@ \startnumber{33} @*)
+  @override
+  void paint(Canvas canvas, Offset offset, ImageConfiguration configuration) {
+    if (itemCount <= 1) { // Skip for a single tab
+      return;
+    }
+    // Take from PageController an actual page, otherwise - initial
+    final activeIndex = controller.page?.round() ?? controller.initialPage;
+    // dotSize, spacing, color - initialized properties
+    final active = Paint()..color = color;
+    final inactive = Paint()..color = color.withOpacity(0.3);
+    for (int i = 0; i < itemCount; i++) {
+      double xPos = spacing + i * (dotSize + spacing);
+      // Pu cycle a little below the baseline
+      double yPos = spacing * 0.6; 
+      if (i == activeIndex) {
+        canvas.drawCircle(Offset(xPos, yPos), dotSize / 2, active);
+      } else {
+        canvas.drawCircle(Offset(xPos, yPos), dotSize / 2, inactive);
+      }
+    }
+  }
+}
+\end{lstlisting}
+
+\noindent Additionally, we might hide the usage of our custom indicator by extending from \q{TabBar}:
+
+\begin{lstlisting}
+// ./lib/widgets/_wrappers/dots_tab_bar_widget.dart
+import 'package:app_finance/widgets/_wrappers/dots_indicator_decoration.dart';
+import 'package:flutter/material.dart';
+
+class DotsTabBarWidget extends TabBar {
+  final TabController tabController;
+  final PageController pageController;
+  final List<Widget> tabList;
+  final double indent; // Indentation between cycles
+  final double width; // MediaQuery.of(context).size.width
+  final Color color; // Color for active cycle
+
+  const DotsTabBarWidget({
+    super.key,
+    required this.tabController,
+    required this.pageController,
+    required this.tabList,
+    required this.indent,
+    required this.width,
+    required this.color,
+    onTap,
+  }) : super(
+          controller: tabController,
+          mouseCursor: SystemMouseCursors.click,
+          onTap: onTap,
+          // hook, since 'tabs' is required
+          tabs: tabList, // getter overrides the flow
+        );
+  // Convert children of 'PageView' to a clickable area 
+  @override
+  get tabs =>
+      tabList.map((tab) => SizedBox(width: indent, height: indent)).toList();
+  // Make our dots centered on the page
+  @override
+  get padding => EdgeInsets.symmetric(
+      horizontal: (width - tabList.length * 2 * indent) / 2);
+  // Apply custom decorator to draw cycles
+  @override
+  get indicator => DotsIndicatorDecoration(
+        controller: pageController,
+        itemCount: tabList.length,
+        color: color,
+        dotSize: indent,
+      );
+}
+\end{lstlisting}

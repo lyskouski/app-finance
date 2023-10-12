@@ -1,0 +1,359 @@
+% Copyright 2023 The terCAD team. All rights reserved.
+% Use of this content is governed by a CC BY-NC-ND 4.0 license that can be found in the LICENSE file.
+
+\subsection{[TBD] Defining Storage}
+\markboth{Prototyping}{Defining Storage}
+
+
+\subsubsection{Using Shared Preferences}
+
+To use shared preferences (store / retrieve string values) in Flutter, we should install the proper package via
+\q{flutter pub add shared\_preferences} command. To operate with preferences it would be better to use mixin --
+a powerful way in Flutter to reuse code across multiple classes by combining the members of the mixin with the 
+classes that use it (a composition without inheritance).
+
+A mixin is defined by using the \q{mixin}-keyword followed by its name and a set of members, such as properties, methods, 
+and getters/setters. It cannot be instantiated on its own; instead, it is meant to be mixed into other classes 
+using the \q{with}-keyword (it inherits all the members from the mixin). This allows the class to access and use the 
+properties and methods defined in the mixin as if they were part of its own implementation.
+
+\begin{lstlisting}
+// ./lib/_mixins/shared_preferences_mixin.dart
+mixin SharedPreferencesMixin {
+  Future<void> setPreference(String key, String value) async {
+    SharedPreferences pref = await SharedPreferences.getInstance();
+    await pref.setString(key, value);
+  }
+
+  Future<String?> getPreference(String key) async {
+    SharedPreferences pref = await SharedPreferences.getInstance();
+    return pref.getString(key);
+  }
+}
+\end{lstlisting}
+
+\noindent And now we can apply it to our class(es):
+
+\begin{lstlisting}
+// ./lib/widgets/bill/expenses_tab.dart
+class ExpensesTabState<T extends ExpensesTab> extends State<T>
+    with SharedPreferencesMixin {(*@ \stopnumber @*)
+
+  // ... properties and constructor
+  (*@ \startnumber{10} @*)
+  @override
+  void initState() { // We cannot make \q{initState} async
+    account = widget.account;
+    super.initState();
+    // Waiting for the value, then apply via \q{setState}
+    getPreference('account')
+        .then((value) => setState(() => account ??= value));
+  }
+
+  void updateStorage() {
+    // On \q{save}-action store preferences
+    setPreference(prefAccount, account ?? '');
+// ... other code
+\end{lstlisting}
+
+
+\subsubsection{Streaming Big Files}
+
+Since our transaction log can be counted in millions of millions, the better way to restore data structures from a file
+is to use streaming approach.
+
+\begin{lstlisting}
+// ./lib/_classes/data/transaction_log.dart
+class TransactionLog {
+  // Get or Create file
+  static Future<File> get _logFle async {
+    final path = await getApplicationDocumentsDirectory();
+    var file = File('${path.absolute.path}/app-finance.log');
+    if (!(await file.exists())) {
+      await file.create(recursive: true);
+    }
+    return file;
+  }
+
+  static void save(dynamic content) async {
+    // Under the hood \q{content.toString()} evaluates
+    (await _logFle).writeAsString("$content\n", mode: FileMode.append);
+  }
+
+  static Future<bool> load(AppData store) async {
+    Stream<String> lines = (await _logFle)
+        .openRead()
+        .transform(utf8.decoder)
+        .transform(const LineSplitter());
+    try {
+      await for (var line in lines) {
+        var obj = json.decode(line);
+        // ... restore object [explained further]
+      }
+      return true;
+    } catch (e) {
+      return false;
+    }
+  }
+}
+\end{lstlisting}
+
+And adjust our constructor for AppData as follows:
+
+\begin{lstlisting}
+class AppData extends ChangeNotifier {
+  bool isLoading = false;
+
+  AppData() : super() {
+    isLoading = true;
+    TransactionLog.load(this)
+        .then((success) => notifyListeners())
+        .then((success) => isLoading = false);
+  }
+// ... other stuff
+\end{lstlisting}
+
+
+\subsubsection{Streaming Local Storage}
+
+File usage is limited by systems where our application can be used as installed instance. To support web browsers
+we may rely on Local Storage. Instead of using \q{dart:html}, let's proceed with known \q{shared\_preferences} (\cref{img:mn-preferences}).
+
+\begin{lstlisting}
+import 'package:flutter/foundation.dart' show kIsWeb;
+
+static void save(dynamic content) async {
+  if (kIsWeb) {
+    await TransactionLog().setPreference('log$increment', content.toString());
+    increment++;
+  } else {
+    (await _logFle).writeAsString("$line\n", mode: FileMode.append);
+  }
+}
+
+static Stream<String> _loadWeb() async* {
+  // Some transactions might be lost or deleted
+  int attempts = 0;
+  do {
+    int i = increment + attempts;
+    var line = await TransactionLog().getPreference('log$i');
+    if (line == null) {
+      attempts++;
+    } else {
+      increment += attempts + 1;
+      attempts = 0;
+    }
+    yield line ?? '';
+    // Adding retrial approach
+  } while (attempts < 10);
+}
+
+static Future<bool> load(AppData store) async {
+  Stream<String> lines;
+  if (kIsWeb) {
+    lines = _loadWeb();
+  } else {
+    lines = (await _logFle)
+        .openRead()
+        .transform(utf8.decoder)
+        .transform(const LineSplitter());
+  }
+  // ... other stuff
+}
+\end{lstlisting}
+
+\img{prototyping/local-storage-web}{Usage of Local Storage by Application}{img:mn-preferences}
+
+
+\subsubsection{Using Dynamic Structures}
+
+To update object properties dynamically in Flutter/Dart, we can use the object's setter methods.
+
+\begin{lstlisting}
+class AppData {
+  int? prop1;
+  int? prop2;
+}
+
+void main() {
+  AppData data = AppData();
+  Map<String, dynamic> properties = {'prop1': 1, 'prop2': 2};
+
+  properties.forEach((key, value) {
+    if (data.hasOwnProperty(key)) {
+      data.setProp(key, value);
+    }
+  });
+}
+
+extension ObjectExtension on Object {
+  bool hasOwnProperty(String propertyName) {
+    return this.runtimeType
+        .declarations
+        .any((declaration) => declaration.name == propertyName);
+  }
+
+  void setProp(String propertyName, dynamic value) {
+    (this as dynamic)[propertyName] = value;
+  }
+}
+\end{lstlisting}
+
+To convert an object to a string representation and then back to an object, it can be used the toString() 
+and fromJson() methods. 
+
+\begin{lstlisting}
+class MyClass {
+  String name;
+  DateTime timestamp;
+  // Constructor
+  MyClass(this.timestamp, this.name);
+  // Props to simple built-in types (String, double, int, bool)
+  Map<String, dynamic> toJson() => {
+    'name': name,
+    'timestamp': timestamp.toIso8601String(),
+  };
+  // By using 'dart:convert' transform \q{Map}-object
+  String toString() {
+    return json.encode(toJson());
+  }
+  // NOTE: in factory it cannot be used class' methods
+  factory MyClass.fromJson(String jsonString) {
+    Map<String, dynamic> json = jsonDecode(jsonString);
+    return MyClass(DateTime.parse(json['timestamp']), json['name']);
+  }
+}
+
+void main() {
+  MyClass myObject = MyClass(DateTime.now(), 'Sample');
+  // Convert object to a string representation
+  String jsonString = myObject.toString();
+  print(jsonString); // {"timestamp": 123..., "name": "John"}
+  // Convert string back to an object
+  MyClass newObj = MyClass.fromJson(jsonString);
+  print(newObj.timestamp.toIso8601String()); // '2023-10-01T...'
+  print(newObj.name); // 'Sample'
+}
+\end{lstlisting}
+
+In the above example, the MyClass object has a custom toString() method that converts the object's properties to a 
+JSON-like string representation. The fromJson() factory method takes a JSON string, parses it using jsonDecode(), 
+and creates a new MyClass object with the extracted values.
+
+By calling toString() on the object, you can convert it to a string representation. Then, by using fromJson() with the 
+string, you can recreate the object from the string representation. This approach allows you to serialize and 
+deserialize objects for storage or transmission purposes.
+
+So, finally our method to restore objects from their representation in log-file would be the next:
+
+\begin{lstlisting}[firstnumber=54]
+// ./lib/_classes/data/transaction_log.dart
+static void init(AppData store, String type, Map<String, dynamic> data) {
+  final typeToClass = {
+    'GoalAppData': (data) => GoalAppData.fromJson(data),
+    'AccountAppData': (data) => AccountAppData.fromJson(data),
+    'BillAppData': (data) => BillAppData.fromJson(data),
+    'BudgetAppData': (data) => BudgetAppData.fromJson(data),
+    'CurrencyAppData': (data) => CurrencyAppData.fromJson(data),
+  };
+  final obj = typeToClass[type];
+  if (obj != null) {
+    final el = obj(data);
+    store.update(el.getType(), el.uuid ?? '', el, true);
+  }
+}
+\end{lstlisting}
+
+
+\subsubsection{Adding Multiple Providers}
+
+In case of being aligned with SOLID principles, it would be better to preserve our classes small with a single 
+responsibility. So, for the case of handling theme mode (system, light, dark) it can be created a separate notifier:
+
+\begin{lstlisting}
+class AppTheme extends ValueNotifier<ThemeMode> with SharedPreferencesMixin {
+  AppTheme(ThemeMode value) : super(value) {
+    // Get from Shared Preferences current state of value
+    getPreference(prefTheme).then((val) {
+      if (val != null) {
+        _set(val);
+      }
+    });
+  }
+
+  _set(String val) {
+    int? idx = int.tryParse(val);
+    if (idx != null) {
+      // Trigger notification by value change
+      value = ThemeMode.values[idx];
+      notifyListeners();
+    }
+  }
+
+  updateState(String value) {
+    setPreference(prefTheme, value).then((_) {
+      _set(value);
+    });
+  }
+}
+\end{lstlisting}
+
+\noindent The simples way to observe value changes can be done via \q{context.watch}:
+
+\begin{lstlisting}
+void main() {
+  runApp(
+    // Clarify that we have more than one provider
+    MultiProvider(
+      providers: [
+        ChangeNotifierProvider<AppData>(
+          create: (_) => AppData(),
+        ),
+        ChangeNotifierProvider<AppTheme>(
+          create: (_) => AppTheme(ThemeMode.system),
+        ),
+      ],
+      child: MyApp(platform: platform),
+    ),
+  );
+}(*@ \stopnumber @*)
+
+class MyAppState extends State<MyApp> {
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      themeMode: context.watch<AppTheme>().value,
+// ... other code
+\end{lstlisting}
+
+\noindent And to update the state:
+
+\begin{lstlisting}
+Provider.of<AppTheme>(context, listen: false).updateState(value);
+\end{lstlisting}
+
+\noindent The only this that the usage of asynchronous \q{getPreference} leads to a not needed complexity, and 
+additional computational efforts:
+
+\begin{lstlisting}[language=bash]
+User I/Choreographer( 4431): Skipped 244 frames!  The application may be doing too much work on its main thread.
+\end{lstlisting}
+
+\noindent While we've understood that, we can easily fix the problem by its single initialization during
+application start:
+
+\begin{lstlisting}
+// ./lib/main.dart
+void main() async {
+  SharedPreferencesMixin.pref = await SharedPreferences.getInstance();(*@ \stopnumber @*)
+
+// ./lib/_mixins/shared_preferences_mixin.dart
+mixin SharedPreferencesMixin {
+  static late SharedPreferences pref;
+\end{lstlisting}
+
+But we should be very accurate with what we're placing into a static variable, since, as an example, 
+caching \q{AdaptiveWindowType} for our \q{ThemeHelper} leads to an infinite loop of re-rendering widgets:
+\href{https://github.com/lyskouski/app-finance/issues/112}{https://github.com/lyskouski/app-finance/issues/112}.
+
+Unwanted loop of rendering might also happen on the usage of \q{key: UniqueKey()} for \q{StatelessWidget}, it can cause 
+the widget to be rebuilt whenever the widget tree is rebuilt since a new UniqueKey will be generated for the widget.

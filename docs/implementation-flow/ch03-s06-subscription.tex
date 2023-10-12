@@ -1,14 +1,15 @@
 % Copyright 2023 The terCAD team. All rights reserved.
 % Use of this content is governed by a CC BY-NC-ND 4.0 license that can be found in the LICENSE file.
 
-\subsubsection{Activating Subscriptions}
+\subsection{Activating Sponsorship}
+\markboth{Prototyping}{Activating Sponsorship}
 
 While we've chosen a Freemium business model (with a broken rule for limitations by being open-source, since Freemium 
 [portmanteau of "free" and "premium"] is a pricing strategy by which a basic product is free, but money is charged for 
 additional functionality), it's a time to land a subscription page.
 
 
-\paragraph{Adding Custom References}
+\subsubsection{Adding Custom References}
 
 For Windows, Linux, and Web releases the simplest way of adding a subscription would be to provide links to external 
 services, that're specialized on crowdfunding initiatives:
@@ -44,7 +45,7 @@ class OtherWidget extends StatelessWidget {
 \end{lstlisting}
 
 
-\paragraph{Enabling Google/Apply Pay}
+\subsubsection{Enabling Google/Apply Pay}
 
 In-app purchases are required for mobile app stores since it cannot be used any third-party systems to handle payments
 by the terms and conditions of marketplaces.
@@ -61,10 +62,13 @@ There would be a couple of steps to verify your identity, add bank account, sign
 As an example, for Apple Store:
 \begin{enumerate}
   \item Activate paid apps on page: \href{https://appstoreconnect.apple.com/agreements}{https://appstoreconnect.apple.com/agreements}
-  \item Register Bundle ID: \href{https://developer.apple.com/account/resources/identifiers/bundleId/add/bundle}{https://developer.apple.com/.../add/bundle}
-  \item Enroll small-business support: \href{https://developer.apple.com/app-store/small-business-program/enroll/}{https://developer.apple.com/app-store/small-business-program/enroll/}
-  \item Fulfill app definition: \href{https://appstoreconnect.apple.com/apps}{https://appstoreconnect.apple.com/apps}
-  \item Via "Features" > "In-App Purchases" [Create] and "Subscriptions" [Create] declare costs
+  \item Register Bundle ID: 
+  \href{https://developer.apple.com/account/resources/identifiers/bundleId/add/bundle}{https://developer.apple.com/.../add/bundle}
+  \item Enroll small-business support: 
+  \href{https://developer.apple.com/app-store/small-business-program/enroll/}{https://developer.apple.com/app-store/small-business-program/enroll/}
+  \item Fulfill app definition: 
+  \href{https://appstoreconnect.apple.com/apps}{https://appstoreconnect.apple.com/apps}
+  \item Via "Features" $\rightarrow$ "In-App Purchases" [Create] and "Subscriptions" [Create] declare costs
 \end{enumerate}
 
 In-app purchases are differentiated by their applicability: consumables (applicable multiple times), non-consumables 
