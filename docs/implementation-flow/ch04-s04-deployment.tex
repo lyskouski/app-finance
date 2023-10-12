@@ -50,7 +50,7 @@ it will return the cached \q{IconData}-instance, allowing tree shaking to work c
 the error itself because, when we're dealing with dynamic values that cannot be statically analyzed at compile time, 
 tree shaking is impossible:
 
-\begin{lstlisting}[language=bash]
+\begin{lstlisting}[language=terminal]
 flutter build -v web --release --no-tree-shake-icons
 \end{lstlisting}
 
@@ -154,7 +154,7 @@ jobs:
 \noindent A valuable point here is to update \q{base-href} (line 24) for our Web package. It has to be aligned with 
 GitHub Pages notation:
 
-\begin{lstlisting}[language=bash]
+\begin{lstlisting}[language=terminal]
 https://<account-name>.github.io/<repository-name>/
 \end{lstlisting}
 

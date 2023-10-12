@@ -14,7 +14,7 @@ confidential (as not be a part of the \q{git} history). Even detaching credentia
 susceptible to leaks. The most secure way is to store secrets as environment variables during the compilation 
 (\q{build}) or evaluation (\q{run}):
 
-\begin{lstlisting}[language=bash]
+\begin{lstlisting}[language=terminal]
 flutter build --dart-define==KEY=SECRET \
     --dart-define==KEY2=SECRET2 \
     --dart-define==KEY3=SECRET3

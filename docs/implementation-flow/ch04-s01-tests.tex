@@ -304,8 +304,8 @@ test() {
 \noindent Let's type in the console our new command for a tests execution (as a note, it can be used once to generate 
 files and then proceed with \q{flutter test}-command):
 
-\begin{lstlisting}[language=bash]
-> dart run grinder test
+\begin{lstlisting}[language=terminal]
+$ dart run grinder test
 grinder running test
 
 test
@@ -713,7 +713,7 @@ class GivenGeneric extends Given {
 
 \noindent Let's verify what's we've taken:
 
-\begin{lstlisting}[language=bash]
+\begin{lstlisting}[language=terminal]
 Shell: Running scenario: Creating different Account types Examples: (1) # :3
 Shell: Running scenario: Opened Account Form # :4
 Shell:    V Given I am on "Home" page # :5 took 313ms
@@ -727,7 +727,7 @@ Shell:    V Given Opened Account Form # :4 took 584ms
 \noindent To hide results from low-level steps we can implement own \q{ProgressReporter} that will populate results only 
 on failure; and by using \q{StringBuffer}-object override the flow of \q{printMessageLine} and \q{printMessage}-functions.
 
-\begin{lstlisting}[language=bash]
+\begin{lstlisting}[language=terminal]
 # Success
 Shell: Running scenario: Creating different Account types Examples: (1) # :3
 Shell:    V Given Opened Account Form # :4 took 524ms
@@ -825,8 +825,8 @@ sizes and pixel ratios, thereby ensuring a comprehensive assessment of its adapt
 an extra \q{update-goldens}-parameter, since the tests' images verification and generation is solely controlled by
 \q{matchesGoldenFile}-method (a part of \q{flutter\_test}-package):
 
-\begin{lstlisting}[language=bash]
-> flutter test --update-goldens test/widget
+\begin{lstlisting}[language=terminal]
+$ flutter test --update-goldens test/widget
 \end{lstlisting}
 
 \img{prototyping/golden-images}{Golden Image generation assert}{img:t-images}

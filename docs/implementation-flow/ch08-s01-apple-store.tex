@@ -8,7 +8,7 @@ Preliminaries from \href{https://docs.flutter.dev/deployment/ios}{https://docs.f
 the necessity of Xcode but what if we do not have any device running macOS to follow this guide, but yet aspire to 
 publish the app to Apple Store. In that case we can proceed with our CI/CD pipelines on GitHub:
 
-\begin{lstlisting}
+\begin{lstlisting}[language=yaml]
 build:
   name: Create ${{ matrix.target }} build
   runs-on: ${{ matrix.os }}
@@ -29,7 +29,7 @@ build:
 
 \noindent Unfortunately, this change fails, creating the expected hurdle in the form of our package not being signed:
 
-\begin{lstlisting}[language=bash]
+\begin{lstlisting}[language=terminal]
 No valid code signing certificates were found
 For more information, please visit:
   https://help.apple.com/xcode/mac/current/#/dev3a05256b8
@@ -46,7 +46,7 @@ proceed to Certificates
 
 Differentiation between development and distribution is in the \q{ios/Runner.xcodeproj/project.pbxproj}-file definitions:
 
-\begin{lstlisting}[language=bash]
+\begin{lstlisting}[language=terminal]
 # Distribution certificate is applied
 "CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 # Development certificate would be used
@@ -58,11 +58,11 @@ release testing using Ad Hoc distribution or for submission to the App Store}" w
 certificate. From macOS it can be done by using "Keychain Access", for other environments -- via \q{openssl} (download 
 \q{Win32 OpenSSL} for Windows):
 
-\begin{lstlisting}[language=bash]
+\begin{lstlisting}[language=terminal]
 # Create a private key
-> openssl genrsa -out apple.key 2048
+$ openssl genrsa -out apple.key 2048
 # Create the CSR file (C - Country Name [2 letter code])
-> openssl req -new -key apple.key \ 
+$ openssl req -new -key apple.key \ 
     -out CertificateSigningRequest.certSigningRequest \
     -subj "/emailAddress=your@mail.to, CN=Your Name, C=XX"
 \end{lstlisting}
@@ -76,14 +76,14 @@ environments and providing screenshots with description.
 
 While we've downloaded \q{.cer}-file, it's needed to be converted into a string (base64) representation:
 
-\begin{lstlisting}[language=bash]
+\begin{lstlisting}[language=terminal]
 # Convert the .cer-file into .pem-format
-> openssl x509 -in apple.cer -inform DER -out apple.pem -outform PEM
+$ openssl x509 -in apple.cer -inform DER -out apple.pem -outform PEM
 # Use .pem-file and private .key to generate .p12
-> openssl pkcs12 -export -legacy -out apple.p12 -inkey apple.key -in apple.pem
+$ openssl pkcs12 -export -legacy -out apple.p12 -inkey apple.key -in apple.pem
 Enter Export Password: #####
 # Convert file to base64 string
-> base64 file_name.p12 > apple.txt
+$ base64 file_name.p12 > apple.txt
 \end{lstlisting}
 
 \noindent Usage of \q{legacy}-attribute is a key factor to avoid a security failure "SecKeychainItemImport: MAC 
@@ -151,9 +151,9 @@ Provision Profile, as a second guard statement from Apple, can be received from
 \href{https://developer.apple.com/account/resources/profiles/list}{https://developer.apple.com/account/resources/profiles/list}
 by choosing "\emph{App Store: Create a distribution provisioning profile to submit your app to the App Store}":
 
-\begin{lstlisting}[language=bash]
+\begin{lstlisting}[language=terminal]
 # Convert file to base64 string
-> base64 apple.mobileprovision > apple-provision.txt
+$ base64 apple.mobileprovision > apple-provision.txt
 \end{lstlisting}
 
 \noindent Proceed with adding it into GitHub secrets (\cref{img:d-secrets}) and extending pipeline by an additional step:
@@ -218,8 +218,13 @@ and the artifact is gonna to be deleted from the application' page. The problem 
 \q{.ipa}-format, that has to be replaced by \q{ipa}-typed build (\q{obfuscate} and \q{split-debug-info} is mostly to 
 minimize the package size but also declared as safeguards against a reserve engineering):
 
-\begin{lstlisting}[language=bash]
-> flutter build ipa --build-name=${{ version }} --build-number=${{ number }}  --release --obfuscate --split-debug-info=build/ios/symbols --no-tree-shake-icons --export-options-plist ./ios/ExportOptions.plist
+\begin{lstlisting}[language=terminal]
+$ flutter build ipa --build-name=${{ version }} \
+  --build-number=${{ number }} \
+  --release --obfuscate \
+  --split-debug-info=build/ios/symbols \
+  --no-tree-shake-icons \
+  --export-options-plist ./ios/ExportOptions.plist
 \end{lstlisting}
 
 \noindent The key point is in a usage of \q{--export-options-plist} with the following content of \q{ExportOptions.plist}:

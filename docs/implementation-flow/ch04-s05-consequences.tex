@@ -4,7 +4,7 @@ Initially we've declared importance of having tests and ecosystem for their auto
 valuable amount of them (10\% coverage, \ref{a-badges}). That was done to show a consequence of such a decision -- not 
 to write tests. So, let's measure made mistakes during our Increment (four Iterations, two weeks each):
 
-\begin{lstlisting}[language=bash]
+\begin{lstlisting}[language=terminal]
 git log --format="%ad %s" --grep="\[BF\]" --date=iso | \
 awk -F ' ' '{print $1}' | \
 sort | \

@@ -19,15 +19,15 @@ FlutterFire CLI  via \q{dart pub global activate flutterfire\_cli} and \q{npm in
 (\q{flutterfire}-command) globally accessible for our environment. As a note for Windows users, be attentive to 
 notifications like that (add \q{bin}-folder to PATH global variable, \cref{img:fs-windows-path}):
 
-\begin{lstlisting}[language=bash]
+\begin{lstlisting}[language=terminal]
 Warning: Pub installs executables into C:\Users\...\AppData\Local\Pub\Cache\bin, which is not on your path.
 \end{lstlisting}
 
 \noindent By triggering sequence of \q{firebase login} and \q{flutterfire configure} from a command line 
 we'll be able to configure the project.
 
-\begin{lstlisting}[language=bash]
-> firebase login
+\begin{lstlisting}[language=terminal]
+$ firebase login
 
 i  Firebase optionally collects CLI and Emulator Suite usage and error reporting information to help improve our 
 products. Data is collected in accordance with Google`s privacy policy (https://policies.google.com/privacy) and 
@@ -44,7 +44,7 @@ Waiting for authentication...
 +  Success! Logged in as ...
 
 
-> flutterfire configure
+$ flutterfire configure
 
 i Found 1 Firebase projects.
 V Select a Firebase project to configure your Flutter application with  fingrom-9030a (Fingrom)

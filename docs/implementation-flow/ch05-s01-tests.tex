@@ -84,7 +84,7 @@ Board (ISTQB) or the Software Engineering Institute (SEI), while here we'll high
 
 \noindent Back to our process, it would be used the next command to evaluate performance tests:
 
-\begin{lstlisting}[language=bash]
+\begin{lstlisting}[language=terminal]
 # Precondition for Web profiling
 chromedriver --port=4444
 # Launch tests
@@ -218,13 +218,13 @@ calculation (a code snippets executed on a graphics processing unit [GPU] to ren
 Their pre-compilation strategy mitigates the compilation-related disruptions during subsequent animations, and improves 
 frames per second rendering. To run the app with \q{--cache-sksl} turned on to capture shaders in SkSL:
 
-\begin{lstlisting}[language=bash]
+\begin{lstlisting}[language=terminal]
 flutter run --profile --cache-sksl --purge-persistent-cache
 \end{lstlisting}
 
 \noindent Warm-up shaders in Skia Shader Language (SkSL) format for an application build:
 
-\begin{lstlisting}[language=bash]
+\begin{lstlisting}[language=terminal]
 # Capture shaders in Skia Shader Language (SkSL) format into a file
 flutter drive --profile --cache-sksl --write-sksl-on-exit sksl.json -t test_driver/warm_up.dart
 # Build app with SkSL warm-up
@@ -451,7 +451,7 @@ Widget build(BuildContext context) {
 \noindent To track CPU and Memory Heap we'll run Devtools separately, and connect it (\cref{img:devtools-connection}) 
 to the process by a provided URL from an integration tests' output:
 
-\begin{lstlisting}[language=bash]
+\begin{lstlisting}[language=terminal]
 Building Windows application...           13.1s
 V  Built build\windows\runner\Debug\Fingrom.exe.
 VMServiceFlutterDriver: Connecting to Flutter application at 
@@ -485,7 +485,7 @@ testWidgets('Imitate User Activities', (WidgetTester tester) async {
 
 \noindent After a couple of minutes of execution we've taken an error:
 
-\begin{lstlisting}[language=bash]
+\begin{lstlisting}[language=terminal]
 Running scenario: Create new Bill # :2
   V Given I am on "Home" page # :3 took 945ms
   V When I tap "Add Bill, Income or Transfer" button # :4 took 356ms
@@ -515,7 +515,7 @@ await FileRunner.tester.pumpAndSettle(const Duration(milliseconds: 400));
 \noindent As a side effect of that case investigation, it's been noticed a couple of problems. One of them is relevant
 to a missed first record from transaction logs during initialization process:
 
-\begin{lstlisting}[language=bash]
+\begin{lstlisting}[language=terminal]
 flutter: [FormatException: Invalid length, must be multiple of four (at character 84)
 \end{lstlisting}
 
@@ -523,7 +523,7 @@ The problem here is that the \q{transaction log}-file was created with a BOM as 
 encryption is failing. Good catch! Let's add a new line at a moment of the file creation, and go further. Additionally,
 raised a problem with \q{FloatingActionButton}-buttons:
 
-\begin{lstlisting}[language=bash]
+\begin{lstlisting}[language=terminal]
 flutter: The following assertion was thrown during a scheduler callback:
 flutter: There are multiple heroes that share the same tag within a subtree.
 flutter: Within each subtree for which heroes are to be animated (i.e. a PageRoute subtree), each Hero must

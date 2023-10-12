@@ -6,18 +6,13 @@
 
 Flutter is designed to work seamlessly across all environments. However, there are a certain scenarios, such as file
 handling, where its behavior may deviate from being entirely platform-agnostic. Independently of that, there are two
-ways to brake that limitation.\\
-\\
-
-\noindent Conditional imports:
+ways to brake that limitation:
 
 \begin{lstlisting}
+// Conditional Imports
 import 'package:file_picker_web/file_picker_web.dart' if (dart.library.io) 'package:file_picker/file_picker.dart';
-\end{lstlisting}
 
-\noindent and exports:
-
-\begin{lstlisting}
+// ... and Exports
 export 'src/connector_none.dart' // Stub implementation
   if (dart.library.io) 'src/connector_io.dart' // dart:io
   if (dart.library.html) 'src/connector_html.dart'; // dart:html

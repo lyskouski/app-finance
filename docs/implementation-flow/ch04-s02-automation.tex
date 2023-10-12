@@ -28,7 +28,7 @@ Implementation of git hooks is mostly a preparation of \q{bash}-scripts for exec
 additional valuable tip, those files have to have "LF" end of line sequence otherwise won't be recognized by the system
 (Linux, Macos).
 
-\begin{lstlisting}[language=bash]
+\begin{lstlisting}[language=terminal]
 #!/bin/bash
 status=0
 # Trigger tests
@@ -75,8 +75,8 @@ installGitHooks() {
 
 \noindent After that, by using a command line, we may check what's been done:
 
-\begin{lstlisting}[language=bash]
-> dart run grinder -h
+\begin{lstlisting}[language=terminal]
+$ dart run grinder -h
 Dart workflows, automated.
 
 Usage: grinder [options] [<tasks>...]
@@ -89,7 +89,7 @@ Global options:
 Available tasks:
   install-git-hooks    Install Git Hooks
 
-> dart run grinder install-git-hooks
+$ dart run grinder install-git-hooks
   grinder running install-git-hooks
 
   install-git-hooks
@@ -99,8 +99,8 @@ Available tasks:
 
   finished in 0.0 seconds
 
-> git add .
-> git commit -m "Sample Commit"
+$ git add .
+$ git commit -m "Sample Commit"
 Computing fixes in app-finance (dry run)...
 Nothing to fix!
 Formatted 56 files (0 changed) in 0.42 seconds.
@@ -110,7 +110,7 @@ Formatted 56 files (0 changed) in 0.42 seconds.
 Sample Commit
  3 files changed, 65 insertions(+), 90 deletions(-)
 
-> git push
+$ git push
 # ... logs from tests
 [+] flutter test - passed.
 # ... other logs from git
@@ -320,7 +320,7 @@ One of the ways to enhance the current state is by acknowledging and appreciatin
 Status and Code Coverage. These badges serve as a testament to our commitment to quality and efficiency, motivating us
 to continually improve and achieve even greater heights.
 
-\begin{lstlisting}[language=bash]
+\begin{lstlisting}[language=terminal]
 ## ./README.md
 # Notation of an image with tooltip "Build Status"
 ![Build Status](https://github.com/{user}/{repo}/actions/workflows/{workflow-name}.yml/badge.svg?branch=main)
@@ -334,11 +334,11 @@ on GitHub), \q{\{repo\}} (repository name), and \q{\{workflow-name\}} (name of t
 \q{Test Coverage} is needed to be cooked (there are many ways to do that and none of them is universal), and we would
 start from creating \q{gh-pages} in our repository (drop hooks from \q{.git/hooks}-folder if they've been enabled):
 
-\begin{lstlisting}[language=bash]
-> git switch --orphan gh-pages
-> git commit --allow-empty -m "Initial commit"
-> git push -u origin gh-pages
-> git checkout main
+\begin{lstlisting}[language=terminal]
+$ git switch --orphan gh-pages
+$ git commit --allow-empty -m "Initial commit"
+$ git push -u origin gh-pages
+$ git checkout main
 \end{lstlisting}
 
 \noindent That will create for us a special branch that is accessible via \q{https://\{user\}.github.io/\{repo\}}-link.
@@ -421,7 +421,7 @@ fullCoverage() {
 }
 \end{lstlisting}
 
-\begin{lstlisting}[language=bash]
+\begin{lstlisting}[language=terminal]
 ## .gitignore
 # Coverage report
 coverage/

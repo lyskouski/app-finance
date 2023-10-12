@@ -110,6 +110,16 @@ mixin,async,await,enum,sealed},
   moredelim=[l][\color{orange}]{@}
 }
 
+\newcommand\language@terminal{terminal}
+\expandafter\expandafter\expandafter\lstdefinelanguage
+\expandafter{\language@terminal}
+{
+  language=bash,
+  morekeywords={\$},
+  keywordstyle=\color{magenta},
+  morestring=[s]{--}{\ },
+}
+
 % Inline code
 \newcommand{\q}[1]{%
   `\texttt{\color{purple}{#1}}`%

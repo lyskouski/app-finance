@@ -9,32 +9,69 @@ from that position is to use some templates (and Flutter kindly provides us such
 
 But, initially, we do need to download and install Flutter (\href{https://flutter.dev}{https://flutter.dev}) by 
 following the installation instructions specific to operating system that is used (as an example, for Windows it 
-would be needed to register library directory location in the system's \q{PATH}-variable after downloading its sources, 
-\cref{img:fs-windows-path}).
+would be needed to register a library directory location in the system's \q{PATH}-variable after downloading its 
+sources, \cref{img:fs-windows-path}).
 
 \img{first-steps/windows-path-variable}{Windows 10 \q{PATH}-variable location}{img:fs-windows-path}
 
-The choice of a better Integrated Development Environment (IDE) for Flutter development is something negligible, widely
-proposed Visual Studio Code, Android Studio, IntelliJ IDEA; but the truth is that nobody cares, what was used (even VIM,
-Notepad, or nano), if the work is done. Nonetheless, further discussions in the book would be relevant to Visual 
-Studio Code (\href{https://code.visualstudio.com/}{https://code.visualstudio.com/}) usage in "how-to configure IDE" 
-examples if nobody minds.
+The choice of a better Integrated Development Environment (IDE) for the Flutter development process is something 
+negligible, widely proposed Visual Studio Code, Android Studio, IntelliJ IDEA; but the truth is that nobody cares, 
+what was used (even VIM, Notepad, or nano), if the work is done. Nonetheless, further discussions in the book would be 
+relevant to Visual Studio Code (\href{https://code.visualstudio.com/}{https://code.visualstudio.com/}) usage in 
+"how-to configure IDE" examples if nobody minds.
 
-With Visual Studio Code, let's start from Extensions Marketplace usage by installing "Flutter" and "Dart" extensions, 
-right after that IDE will ask regarding the Flutter Software Development Kit (SDK) folder (it's the directory where 
-the Flutter was installed / downloaded into). Inside that folder, we may find a various directories and files, including:
+\noindent Let's start from an Extensions Marketplace usage for Visual Studio Code by installing helpful extensions:
+
+\begin{lstlisting}[language=terminal]
+$ code --install-extension Dart-Code.dart-code
+$ code --install-extension Dart-Code.flutter
+# To display a summary for the test execution with coverage
+$ code --install-extension flutterando.flutter-coverage
+# To display a color icon on front of its definition
+$ code --install-extension circlecodesolution.ccs-flutter-color
+# To simplify a work with Git-repository
+$ code --install-extension eamodio.gitlens
+# To check misprints
+$ code --install-extension streetsidesoftware.code-spell-checker
+\end{lstlisting}
+
+\noindent and proceed with configuring project settings to apply \q{dart}-formatting on \q{Save}-action, display 
+localization files in a \q{JSON}-language mode, and show the relations of a nested widget structure:
+
+\begin{lstlisting}[language=bash]
+# ./.vscode/settings.json 
+{
+    "dart.lineLength": 120,
+    "editor.rulers": [120],
+    "[dart]": {
+        "editor.rulers": [120],
+        "editor.formatOnSave": true,
+    },
+    "files.associations": {
+        "*.arb": "json"
+    },
+    "dart.previewFlutterUiGuidesCustomTracking": true,
+    "dart.previewFlutterUiGuides": true,
+}
+\end{lstlisting}
+
+\noindent Right after that IDE will ask regarding the Flutter Software Development Kit (SDK) folder (it's the directory 
+where the Flutter was installed / downloaded into). Inside that folder, we may find a various directories and files, 
+including:
 \q{bin} -- Flutter command-line tools, such as \q{flutter}, \q{dart}, and other utilities;
 \q{cache} -- cached files and downloaded packages;
 \q{doc} -- documentation;
 \q{examples} -- code examples and sample projects;
 \q{packages} -- core Flutter packages and dependencies.
 
-After those steps, in Visual Studio Code from Command Palette (by pressing \key{Ctrl} + \key{Shift} + \key{P}, or 
-\key{Cmd} + \key{Shift} + \key{P} on macOS) will become available "Flutter: New Project"-command, by clicking on which 
-prompt will ask regarding project name and location to generate a basic structure. Going farther, let's open the project 
-in IDE and frustrate a minute about a wide variety of different scaring files that's been generated. Breathe... we do 
-need only a one of them by now, that's located in the \q{lib}-directory. File \q{main.dart} is the project's central 
-orbit, the entry point of our application.
+After those steps, from a Command Palette (by pressing \key{Ctrl} + \key{Shift} + \key{P}, or \key{Cmd} + \key{Shift} + 
+\key{P} on macOS) will become available "Flutter: New Project"-command, by clicking on which prompt will ask regarding
+project name and location to generate a basic structure. Going farther, let's open the project in IDE and frustrate a 
+minute about a wide variety of different scaring files that's been generated. 
+
+\newpage
+\noindent Breathe... we do need only a one of them by now, that's located in the \q{lib}-directory. The 
+\q{main.dart}-file is the project's central orbit, the entry point of our application:
 
 \begin{lstlisting}
 // ./lib/main.dart
@@ -56,8 +93,9 @@ class MyApp extends StatelessWidget {
       // Application theme definition
       theme: ThemeData(
         // Basic color scheme
-        colorScheme:
-            ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+        colorScheme: ColorScheme.fromSeed(
+          seedColor: Colors.deepPurple,
+        ),
         // Configuration of Widgets' styles
         useMaterial3: true,
       ),
@@ -128,8 +166,8 @@ terminal (as an example, for Visual Studio Code by clicking on "View" from the t
 key \key{Ctrl} + \key{backtick}). With an inactive emulator state and a variety of options, it may ask to clarify 
 the type of execution:
 
-\begin{lstlisting}[language=bash]
-> flutter run
+\begin{lstlisting}[language=terminal]
+$ flutter run
 Connected devices:
 [1]: Linux (desktop)
 [2]: Chrome (web)

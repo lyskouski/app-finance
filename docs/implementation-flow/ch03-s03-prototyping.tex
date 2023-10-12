@@ -69,10 +69,9 @@ LayoutBuilder(
 \noindent In the example above, we wrap the nested \q{Container}-widgets with a \q{LayoutBuilder}-widget. Inside the 
 \q{builder} function, we retrieve the \q{maxHeight}-property from the \q{constraints} provided by the \q{LayoutBuilder}. 
 That helps us to dynamically calculate and assign the maximum height to the nested \q{Container}-widgets based on the 
-available space within their parent widget.
+available space within their parent widget. And... that leads to our first error: 
 
-\noindent And... that leads to our first error: 
-\begin{lstlisting}[language=bash]
+\begin{lstlisting}[language=terminal]
 The following assertion was thrown during performLayout\(\):\\
   BoxConstraints forces an infinite width.
 
@@ -197,9 +196,10 @@ class BaseLineWidget extends StatelessWidget {
         Divider(), // To plot a horizontal line
       ],
     );
-  }(*@ \stopnumber @*)
+  }
 }
-
+\end{lstlisting}
+\begin{lstlisting}
 // ./lib/charts/barVerticalSingle.dart
 class BarVerticalSingle extends StatelessWidget {
   /* ... properties declaration */
@@ -217,7 +217,9 @@ class BarVerticalSingle extends StatelessWidget {
           valueColor: AlwaysStoppedAnimation<Color>(color),
 // .. closing brackets
 \end{lstlisting}
-\noindent That solution can be improved by the usage of \q{RotatedBox}.
+
+\noindent As a note, the rotation can be improved by the usage of \q{RotatedBox}-widget.\\
+\\
 
 \begin{lstlisting}
 // ./lib/routes/home/baseWidget.dart
@@ -238,8 +240,7 @@ class BaseWidget extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(title, style: textTheme.labelSmall),
-                  Text(
-                    '123,456.789', // hardcoded data
+                  Text('123,456.789', // hardcoded number
                     style: textTheme.displaySmall,
                   ),
                 ],
@@ -264,7 +265,6 @@ injection per each component could also be counterproductive, as it would necess
 components later. That's why we should separate representation and data layers on the early stages independently of 
 understanding the context of a data structure \issue{10}{}.
 
-\newpage
 \img{prototyping/prototype-v1}{The first outcome from our implementation}{img:prototype}
 
 \begin{lstlisting}[caption=Mock Structure of a Financial Data, label=code:app-data]
@@ -357,7 +357,7 @@ Expanded(
 \noindent Described iterative builder can be additionally improved by the usage of \q{Stream}s (instead of \q{List}s, 
 \issue{305}{}) and \q{KeepAliveWrapper}-widget (\emph{with a \q{AutomaticKeepAliveClientMixin}-mixin that retains the 
 state of widgets that are either expensive to rebuild, or come in and out of the view, -- \q{ListView} and 
-\q{GridView}}, \issue{86}{}) in the context of an optimal memory allocation and utilization.
+\q{GridView}}, \issue{86}{}) in the context of an optimal memory allocation and utilization:
 
 \begin{lstlisting}
 class KeepAliveWrapper extends StatefulWidget {
@@ -474,12 +474,6 @@ Scaffold(
       IconButton(
         icon: Icon(Icons.settings),
         onPressed: () { /* ... */ }, 
-      ),
-      // ... other options
-    ],
-  ),
-  body: /* ... */
-}
 \end{lstlisting}
 
 \noindent We may additionally customize the appearance and behavior of buttons by using their different types, as 
@@ -524,7 +518,8 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
-        appBar: AppBar(title: Text('Navigation Menu Example')),
+        appBar: AppBar(
+          title: Text('Navigation Menu Example')),
         drawer: Drawer(
           child: ListView(
             padding: EdgeInsets.zero,
@@ -576,12 +571,8 @@ class MyDrawer extends StatelessWidget {
         itemBuilder: (context, index) {
           return MouseRegion(
             cursor: SystemMouseCursors.click,
-            onEnter: (event) {
-              // Handle mouse enter event
-            },
-            onExit: (event) {
-              // Handle mouse exit event
-            },
+            onEnter: (event) { /* ... */ },
+            onExit: (event) { /* ... */ },
             child: ListTile(
               title: Text(drawerItems[index]),
               onTap: () { /* ... */ },
@@ -618,20 +609,16 @@ we should create a custom \q{TextInputFormatter} and attach it to the \q{inputFo
 \begin{lstlisting}
 class LimitedTextInputFormatter extends TextInputFormatter {
   final TextInputType textInputType;
-
-  LimitedTextInputFormatter(this.textInputType);
+  const LimitedTextInputFormatter(this.textInputType);
 
   @override
   TextEditingValue formatEditUpdate(
       TextEditingValue oldValue, TextEditingValue newValue) {
-    if (newValue.text.isNotEmpty &&
-        !_isValidInput(newValue.text, textInputType)) {
-      // Return the old value if the new value is not valid
-      return oldValue;
-    }
-    return newValue;
+    // Return the old value if the new value is not valid
+    return (newValue.text.isNotEmpty &&
+        !_isValidInput(newValue.text, textInputType)) ?
+      oldValue : newValue;
   }
-
   bool _isValidInput(String text, TextInputType textInputType) {
     return switch (textInputType) {
       TextInputType.number => double.tryParse(text) != null;
