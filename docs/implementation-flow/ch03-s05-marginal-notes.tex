@@ -1,12 +1,13 @@
 % Copyright 2023 The terCAD team. All rights reserved.
 % Use of this content is governed by a CC BY-NC-ND 4.0 license that can be found in the LICENSE file.
 
-\subsection{[TBD] Enriching Interface}
+\subsection{Enriching Interface}
 
-\subsubsection{Mixing 'PageView' and 'PageController'}
+\subsubsection{Splitting Pages}
 
-Now we're going to add three pages controlled by swiping left and right for adding new bills, we'll use a combination 
-of PageView and PageController. 
+Now that we've implemented forms for managing Accounts and Budgets, the next step is to introduce the functionality 
+for adding Bills \issue{18}{}. This addition involves creating three separate tabs, specifically for Income, Expenses, 
+and Transfers \issue{3}{}. We can accomplish this by utilizing the \q{PageView}-widget:
 
 \begin{lstlisting}
 class Page1 extends StatelessWidget { /* ... */ }
@@ -14,7 +15,7 @@ class Page2 extends StatelessWidget { /* ... */ }
 class Page3 extends StatelessWidget { /* ... */ }
 
 class MyApp extends StatelessWidget {
-  final PageController _pageController = PageController(initialPage: 0);
+  final _pageController = PageController(initialPage: 0);
 
   @override
   Widget build(BuildContext context) {
@@ -22,12 +23,14 @@ class MyApp extends StatelessWidget {
       home: Scaffold(
         body: GestureDetector(
           onHorizontalDragEnd: (DragEndDetails details) {
-            if (details.primaryVelocity! > 0) { // Swiped right
+            // Swipe right
+            if (details.primaryVelocity! > 0) { 
               _pageController.previousPage(
                 duration: Duration(milliseconds: 500),
                 curve: Curves.ease,
               );
-            } else if (details.primaryVelocity! < 0) { // Swiped left
+            // Swipe left
+            } else if (details.primaryVelocity! < 0) { 
               _pageController.nextPage(
                 duration: Duration(milliseconds: 500),
                 curve: Curves.ease,
@@ -45,11 +48,11 @@ class MyApp extends StatelessWidget {
 }
 \end{lstlisting}
 
-If we do want to click on tabs instead of swiping, then it can be changed to:
+\noindent To enable switching between tabs by tapping instead of swiping, we should make following adjustments:
 
 \begin{lstlisting}
 class MyApp extends StatelessWidget {
-  final PageController _pageController = PageController(initialPage: 0);
+  final _pageController = PageController(initialPage: 0);
 
   @override
   Widget build(BuildContext context) {
@@ -68,11 +71,7 @@ class MyApp extends StatelessWidget {
             ),
           ),
           body: TabBarView(
-            children: [
-              Page1(),
-              Page2(),
-              Page3(),
-            ],
+            children: [Page1(), Page2(), Page3()],
           ),
         ),
       ),
@@ -81,10 +80,10 @@ class MyApp extends StatelessWidget {
 }
 \end{lstlisting}
 
-By loving a reach User Interface flow, let's combine all together:
+\noindent It's a time to combine both solutions into one:
 
 \begin{lstlisting}
-class MyApp extends StatelessWidget {
+class MyApp extends StatelessWidget with TickerProviderStateMixin {
   final int tabCount = 3;
   int tabIndex = 1;
   PageController? pageController;
@@ -96,7 +95,7 @@ class MyApp extends StatelessWidget {
     pageController = PageController(initialPage: tabIndex);
     tabController = TabController(
       length: tabCount,
-      vsync: const _VSync(),
+      vsync: this, // covered by mixin
       initialIndex: tabIndex,
     );
   }
@@ -144,37 +143,19 @@ class MyApp extends StatelessWidget {
           body: PageView(
             controller: pageController,
             onPageChanged: switchTab,
-            children: [
-              Page1(),
-              Page2(),
-              Page3(),
-            ],
+            children: [Page1(), Page2(), Page3()],
           ),
         ),
       ),
     );
   }
 }
-
-class _VSync implements TickerProvider {
-  const _VSync();
-
-  @override
-  Ticker createTicker(TickerCallback onTick) {
-    return Ticker(onTick);
-  }
-}
-
-class Page1 extends StatelessWidget { /* ... */ }
-
-class Page2 extends StatelessWidget { /* ... */ }
-
-class Page3 extends StatelessWidget { /* ... */ }
 \end{lstlisting}
 
-By combining both solutions, some irritating behavior happens, - we cannot tab from \q{Page1} to \q{Page3} 
-(more than one position) since \q{pageController} after the first movement will send an update via \q{onPageChanged}. 
-Hopefully, we do have a solution for that by introducing delayed trigger to proceed with switching till the chosen tab:
+\noindent By combining both solutions, we encounter an issue -- we can't navigate from \q{Page1} to \q{Page3} directly 
+(skipping more than one position) because the \q{pageController} triggers an update through \q{onPageChanged} after the 
+first movement. Fortunately, we can resolve this by introducing a delayed trigger to enable switching to the selected 
+tab:
 
 \begin{lstlisting}
 Future<void> delaySwitchTab(int delay, int newIndex) async {
@@ -205,22 +186,37 @@ void switchTab(int newIndex) {
 }
 \end{lstlisting}
 
+\noindent As we might be thinking, this solution might seem overly complex for the seemingly simple task of supporting 
+both swiping and tapping for tabs. And we would be right in our doubts, the whole implementation can be replaced by 
+\q{TabBarView}-widget:
 
-\subsubsection{Adding 'AppBar' as dots to 'TabBar'}
+\begin{lstlisting}
+Column(
+  children: [
+    TabBar.secondary(
+      controller: tabController,
+      tabs: [ /* ... */ ],
+    ),
+    Expanded(
+      child: TabBarView(
+        controller: tabController,
+        children: [Page1(), Page2(), Page3()],
+      )),
+  ]);
+\end{lstlisting}
 
-In some cases we do not need a fully defined navigation bar (with titles and icons), just dots to identify that
-current block can be swiped or changed by clicking on any of dots. To implement them it can be used either existing 
-external components (and added to the page as Widget), or by defining \q{indicator}-property of \q{TabBar}-widget with
-custom implementation of \q{Decoration}-class. Let's paint our dots:
+\subsubsection{Sprinkling Breadcrumbs}
+
+In certain scenarios, like when we want to display Goals on the main page (\cref{img:prototype}), we don't require a 
+fully structured navigation bar with titles and icons. Instead, we simply need dots to indicate that the current block 
+can be swiped or changed by clicking on any of these dots. Implementing these dots can be achieved by either using 
+existing external components (adding them to the page as widgets) or by customizing the indicator property of the 
+\q{TabBar}-widget with a custom implementation of the \q{Decoration}-class:
 
 \begin{lstlisting}
 // ./lib/widgets/_wrappers/dots_indicator_decoration.dart
-import 'package:flutter/material.dart';
-
-class DotsIndicatorDecoration extends Decoration {(*@ \stopnumber @*)
-
-  // ... properties and constructor
-  (*@ \startnumber{10} @*)
+class DotsIndicatorDecoration extends Decoration {
+  // ... properties and constructor definition
   @override
   BoxPainter createBoxPainter([VoidCallback? onChanged]) {
     return _CustomTabIndicatorPainter(
@@ -230,41 +226,37 @@ class DotsIndicatorDecoration extends Decoration {(*@ \stopnumber @*)
   }
 }
 
-class _CustomTabIndicatorPainter extends BoxPainter {(*@ \stopnumber @*)
-
-  // ... properties and constructor
-  (*@ \startnumber{33} @*)
+class _CustomTabIndicatorPainter extends BoxPainter {
+  // ... properties and constructor definition
   @override
   void paint(Canvas canvas, Offset offset, ImageConfiguration configuration) {
     if (itemCount <= 1) { // Skip for a single tab
       return;
     }
     // Take from PageController an actual page, otherwise - initial
-    final activeIndex = controller.page?.round() ?? controller.initialPage;
+    final activeIndex = controller.page?.round() ?? 
+        controller.initialPage;
     // dotSize, spacing, color - initialized properties
     final active = Paint()..color = color;
     final inactive = Paint()..color = color.withOpacity(0.3);
     for (int i = 0; i < itemCount; i++) {
       double xPos = spacing + i * (dotSize + spacing);
-      // Pu cycle a little below the baseline
+      // Put the cycle a little below the baseline
       double yPos = spacing * 0.6; 
       if (i == activeIndex) {
-        canvas.drawCircle(Offset(xPos, yPos), dotSize / 2, active);
+        canvas.drawCircle(Offset(xPos, yPos), dotSize/2, active);
       } else {
-        canvas.drawCircle(Offset(xPos, yPos), dotSize / 2, inactive);
+        canvas.drawCircle(Offset(xPos, yPos), dotSize/2, inactive);
       }
     }
   }
 }
 \end{lstlisting}
 
-\noindent Additionally, we might hide the usage of our custom indicator by extending from \q{TabBar}:
+\noindent Additionally, we might simplify the usage by extending our widget from \q{TabBar}:
 
 \begin{lstlisting}
 // ./lib/widgets/_wrappers/dots_tab_bar_widget.dart
-import 'package:app_finance/widgets/_wrappers/dots_indicator_decoration.dart';
-import 'package:flutter/material.dart';
-
 class DotsTabBarWidget extends TabBar {
   final TabController tabController;
   final PageController pageController;

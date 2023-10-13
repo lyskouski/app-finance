@@ -129,9 +129,9 @@ dev_dependencies:
   grinder: ^0.9.4
 \end{lstlisting}
 
-In addition, grinder package can be made globally available by using \q{dart pub global activate grinder}-command.
-To generate a skeleton of the tasks' code structure (if missing) follow \q{dart run grinder:init}, and
-to view all of the tasks - \q{dart run grinder -h}.
+\noindent In addition, grinder package can be made globally available by using \q{dart pub global activate grinder}-command.
+To generate a skeleton of the tasks' code structure (if missing) follow \q{dart run grinder:init}, and to view all of 
+the tasks -- \q{dart run grinder -h}.
 
 As one of the project workflow automation it can be mentioned a localization task
 (\href{https://docs.flutter.dev/accessibility-and-localization/internationalization}{https://docs.flutter.dev/accessibility-and-localization/internationalization}).
@@ -139,7 +139,7 @@ Just to recap, in Flutter it's used Application Resource Bundle(s) (\q{.arb}-fil
 So, not to create a mess in those files, it's better to have an automation to rearrange our labels alphabetically
 (in \q{/lib/l10n/app\_*.arb}-files). Lately, the automation can be also extended by checking consistency (enter missing
 labels across the \q{.arb}-files), exporting labels to \q{.scv}-file for a simplification of a translation process, and
-importing them from \q{.scv}-file back to \q{.arb}-files.
+importing them from \q{.scv}-file back to \q{.arb}-files \issue{283}{}.
 
 \begin{lstlisting}
 // ./tool/grind.dart
@@ -154,11 +154,9 @@ sortTranslations() {
   bool isChanged = locale.sortArbKeys('./lib/l10n');
   if (isChanged && !isQuiet) {
     fail('Changes detected'); // (!) to handle failure
-  }
+  }(*@ \stopnumber @*)
 }
-\end{lstlisting}
 
-\begin{lstlisting}
 // ./tool/localization.dart
 import 'dart:convert';
 import 'dart:io';
@@ -218,37 +216,34 @@ bool sortArbFileKeys(File file) {
 \noindent Grinder tasks can be also made a part of IDE short-commands (VS Code sample, \cref{img:vsc-task}):
 
 % tbd: json
-\begin{lstlisting}[language=yaml]
-// .vscode/tasks.json
+\begin{lstlisting}[language=bash]
+# ./.vscode/tasks.json
 {
   "version": "2.0.0",
-  "tasks": [
-    {
-      "label": "Generate Mocks",
-      "command": "dart",
-      "args": ["run", "grinder", "mock"],
-      "options": {
-        "cwd": "${workspaceFolder}"
-      },
-      "type": "shell"
-    }
-  ]
-}(*@ \stopnumber @*)
-
-// .vscode/launch.json
+  "tasks": [{
+    "label": "Generate Mocks",
+    "command": "dart",
+    "args": ["run", "grinder", "mock"],
+    "options": {
+      "cwd": "${workspaceFolder}"
+    },
+    "type": "shell"
+  }]
+}
+\end{lstlisting}
+\begin{lstlisting}[language=bash]
+# ./.vscode/launch.json
 {
   "version": "0.2.0",
-  "configurations": [
-    {
-      "name": "Grinder",
-      "request": "launch",
-      "type": "dart",
-      "codeLens": {
-        "for": ["run-test", "run-test-file"]
-      },
-      "preLaunchTask": "Generate Mocks"
-    }
-  ]
+  "configurations": [{
+    "name": "Grinder",
+    "request": "launch",
+    "type": "dart",
+    "codeLens": {
+      "for": ["run-test", "run-test-file"]
+    },
+    "preLaunchTask": "Generate Mocks"
+  }]
 }
 \end{lstlisting}
 
@@ -257,8 +252,7 @@ bool sortArbFileKeys(File file) {
 
 \subsubsection{Running GitHub Workflows}
 
-Since we've done with our automation for the local environment, let's go further and define quality gates on GitHub
-repository.
+With our local automation in place, it's time to take the next step and establish quality gates for our GitHub repository.
 
 \begin{lstlisting}[language=yaml]
 ## ./.github/workflows/dart.yml
@@ -328,11 +322,12 @@ to continually improve and achieve even greater heights.
 ![Tests Coverage](https://{user}.github.io/{repo}/coverage_badge.svg)](https://github.com/{user}/{repo})
 \end{lstlisting}
 
-\q{Build Status} is supported out of the box (OOTB) by GitHub, just it's needed to replace \q{\{user\}} (by account name
-on GitHub), \q{\{repo\}} (repository name), and \q{\{workflow-name\}} (name of the file in \q{.github/workflows}-folder).
+\noindent \q{Build Status} is supported out of the box (OOTB) by GitHub, just it's needed to replace \q{\{user\}} 
+(by account name on GitHub), \q{\{repo\}} (repository name), and \q{\{workflow-name\}} (name of the file in 
+\q{.github/workflows}-folder).
 
-\q{Test Coverage} is needed to be cooked (there are many ways to do that and none of them is universal), and we would
-start from creating \q{gh-pages} in our repository (drop hooks from \q{.git/hooks}-folder if they've been enabled):
+\q{Test Coverage} is needed to be cooked (there isn't a one-size-fits-all solution), and we would start from creating 
+\q{gh-pages} in our repository (drop hooks from \q{.git/hooks}-folder if they've been enabled):
 
 \begin{lstlisting}[language=terminal]
 $ git switch --orphan gh-pages
@@ -367,10 +362,12 @@ Then we need to extend our GitHub Workflow by adding a section with uploading ar
 
 \img{prototyping/badges}{Generated README.md for the repository}{img:pt-badge}
 
-Everything is done (\cref{img:pt-badge})... almost. Coverage 46\% is unbelievable for written tests. The problem is
-that untouched (by tests) files are not included into the report. And, additionally, widget tests cover most of the
-files without checking them. So, let's separate type of tests' execution, and provide additional Grinder task to
-touch all our files for the coverage report.
+\noindent Everything is done (\cref{img:pt-badge})... almost. Coverage 46\% is unbelievable for written tests. The 
+problem is that untouched (by tests) files are not included into the report. And, additionally, widget tests cover 
+most of the files without checking them. 
+
+We have to separate type of tests' execution, and provide additional Grinder task to touch all our files for the 
+coverage report:
 
 \begin{lstlisting}[language=yaml]
 ## ./.github/workflows/dart.yml

@@ -14,23 +14,17 @@ double calculateLineCoverage(File lcovReport) {
 }
 
 void generateBadge(String packageRoot, double lineCoverage, String type) {
-  String? title;
-  switch (type) {
-    case 'e2e':
-      title = 'End-To-End Coverage';
-      break;
-    case 'widget':
-      title = 'Widget Tests Coverage';
-      break;
-    case 'unit':
-      title = 'Unit Tests Coverage';
-      break;
-    default:
-      title = 'Full Coverage';
-  }
+  String title = switch (type) {
+    'e2e' => 'End-To-End Coverage',
+    'widget' => 'Widget Tests Coverage',
+    'unit' => 'Unit Tests Coverage',
+    _ => 'Full Coverage',
+  };
+  final titleLength = 20 + title.length * 6;
   final content = _kBadgeTemplate
       .replaceAll('{title}', title)
-      .replaceAll('{width}', (20 + title.length * 6).toString())
+      .replaceAll('{badgeWidth}', (titleLength + 50).toString())
+      .replaceAll('{width}', titleLength.toString())
       .replaceAll('{rightX}', (17 - lineCoverage.toString().length * 2).toString())
       .replaceAll('{color}', _getColor(lineCoverage).toString())
       .replaceAll('{value}', '$lineCoverage%');
@@ -78,7 +72,7 @@ class _Color {
 }
 
 const _kBadgeTemplate = '''
-<svg xmlns="http://www.w3.org/2000/svg" width="221" height="20">
+<svg xmlns="http://www.w3.org/2000/svg" width="{badgeWidth}" height="20">
   <title>{title} - {value}</title>
   <defs>
     <linearGradient id="title-fill" x1="50%" y1="0%" x2="50%" y2="100%">
@@ -92,7 +86,7 @@ const _kBadgeTemplate = '''
   </defs>
   <g fill="none" fill-rule="evenodd">
     <g font-family="&#39;DejaVu Sans&#39;,Verdana,Geneva,sans-serif" font-size="11">
-      <path d="M0,3 C0,1.3431 1.3552,0 3.02702703,0 L171,0 L171,20 L3.02702703,20 C1.3552,20 0,18.6569 0,17 L0,3 Z" fill="url(#title-fill)" fill-rule="nonzero"></path>
+      <path d="M0,3 C0,1.3431 1.3552,0 3.02702703,0 L{width},0 L{width},20 L3.02702703,20 C1.3552,20 0,18.6569 0,17 L0,3 Z" fill="url(#title-fill)" fill-rule="nonzero"></path>
       <text fill="#010101" fill-opacity=".3">
         <tspan x="12" y="15" aria-hidden="true">{title}</tspan>
       </text>

@@ -43,7 +43,6 @@ Waiting for authentication...
 
 +  Success! Logged in as ...
 
-
 $ flutterfire configure
 
 i Found 1 Firebase projects.
@@ -104,18 +103,18 @@ class DefaultFirebaseOptions {
   }
 \end{lstlisting}
 
-Alternatively, it can be implemented own cross-functional component by following Firebase REST API (
-\href{https://firebase.google.com/docs/reference/rest/database}{https://firebase.google.com/docs/reference/rest/database}
-)... but it's a topic for another discussion.
+\noindent Alternatively, it can be implemented own cross-functional component by following Firebase REST API 
+(\href{https://firebase.google.com/docs/reference/rest/database}{https://firebase.google.com/docs/})... but it's a 
+topic for another discussion.
 
-After all of that modifications it's needed to evaluate \q{flutter clean} to avoid any errors; and after 
+After all of that modifications, it's needed to evaluate \q{flutter clean} to avoid any errors; and right after the
 \q{flutter run}-command we would be able to view a log report on 
 \href{https://analytics.google.com}{https://analytics.google.com}, \cref{img:pt-analytics}.
 
 \img{prototyping/google-analytics-report}{Google Analytics results}{img:pt-analytics}
 
-The negative impact here is that \q{firebase\_analytics} library force to use 19 version as a minimal SDK for Android, 
-so, it's needed to be updated \q{android/app/build.gradle} file by adjusting \q{minSdkVersion}-property:
+\noindent The negative impact here is that \q{firebase\_analytics} library force to use 19 version as a minimal SDK for 
+Android, so, it's needed to be updated \q{android/app/build.gradle} file by adjusting \q{minSdkVersion}-property:
 
 \begin{lstlisting}[language=yaml]
 ## ./android/app/build.gradle
@@ -136,7 +135,7 @@ android {
 \end{lstlisting}
 }
 
-All actions above are not enough, it's needed to follow additional instructions from  
+\noindent All actions above are not enough, it's needed to follow additional instructions from  
 \href{https://firebase.google.com/docs/guides/}{https://firebase.google.com/docs/guides/} to configure
 Firebase Analytics per each thread (Android, iOS, Macos, Web). As an example, for Android we have to adjust
 configuration build files:

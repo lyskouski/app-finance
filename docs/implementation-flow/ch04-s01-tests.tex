@@ -2,7 +2,7 @@
 % Use of this content is governed by a CC BY-NC-ND 4.0 license that can be found in the LICENSE file.
 
 \subsection{Testing Quality}
-\markboth{Gating}{Testing Quality}
+\markboth{Gating}{Testing Quality} \label{quality}
 
 Testing is an indispensable aspect (robustness, reliability, and even user satisfaction) of any development process 
 through a rigorous examination of application capabilities.
@@ -239,8 +239,7 @@ void main() {
       (getDelta: 0.0, progress: [0.0, 0.0, 0.0], result: [0.0, 0.0, 0.0]),
       // ... other cases
     ];
-    // Loop across all Test Cases
-    for (var v in testCases) {
+    for (var v in testCases) { // Loop across all Test Cases
       test('$v', () {// Make test representation named by its inputs
         final mock = MockAccountRecalculation();
         // Wrap "external" method
@@ -254,10 +253,7 @@ void main() {
         for (int i = 0; i < v.result.length; i++) {
           expect(goals[i].progress, v.result[i]);
         }
-      });
-    }
-  });
-}
+// ... closing brackets
 \end{lstlisting}
 
 \noindent Almost done... failing since \q{account\_recalculation\_test.mocks.dart}-file is missing. To resolve that we 
@@ -404,15 +400,13 @@ class WrapperGenerator extends Generator {
       }
     }
     return result.toString();
-  }
+  }(*@ \stopnumber @*)
 }
-\end{lstlisting}
-\begin{lstlisting}
+
 // ./lib/_classes/gen/wrapper_visitor.dart
 class WrapperVisitor {
   StringBuffer buffer = StringBuffer();
   ClassElement element;
-
   WrapperVisitor(this.element);
 
   void addImports() {
@@ -438,7 +432,7 @@ class WrapperVisitor {
       if (properties.isNotEmpty) {
         for (var e in properties) {
           buffer.writeln(
-              '    ${e.isRequired ? 'required ' : ''}super.${e.name},');
+            '${e.isRequired ? 'required ' : ''}super.${e.name},');
         }
       }
       buffer.writeln('  });');
@@ -450,14 +444,14 @@ class WrapperVisitor {
       final args = m.parameters.map((e) => e.name).toList().join(', ');
       final name = 'mock${m.name[0].toUpperCase()}${m.name.substring(1)}';
       buffer.writeln('');
-      buffer.writeln('  ${m.returnType} Function()? _${m.name};');
-      buffer.writeln('  // ignore: non_constant_identifier_names');
-      buffer.writeln('  set $name(${m.returnType} Function() value) {');
-      buffer.writeln('    _${m.name} = value;');
-      buffer.writeln('  }');
+      buffer.writeln('${m.returnType} Function()? _${m.name};');
+      buffer.writeln('// ignore: non_constant_identifier_names');
+      buffer.writeln('set $name(${m.returnType} Function() val) {');
+      buffer.writeln('    _${m.name} = val;');
+      buffer.writeln('}');
       buffer.writeln('');
-      buffer.writeln('  @override');
-      buffer.writeln('  $m => (_${m.name} ?? super.${m.name})($args);');
+      buffer.writeln('@override');
+      buffer.writeln('$m => (_${m.name} ?? super.${m.name})($args);');
     }
   }
 
@@ -476,7 +470,7 @@ class WrapperVisitor {
 }
 \end{lstlisting}
 
-\noindent And, finally, the test should be adjusted to support implemented wrapper:
+\noindent Lastly, we need to adjust the test to accommodate the implemented wrapper:
 
 \begin{lstlisting}
 @GenerateWithMethodSetters([AccountRecalculation])
@@ -502,7 +496,7 @@ test('Demo', () {
 \subsubsection{Adding Behavioral Tests (Gherkin)} \label{t-gherkin}
 
 Improvement cycles are never ends. Previously (\ref{widget-tests}), we've discussed the approach to test widgets and 
-applied \q{When ... Given ... Then ...}-notation. That notation is a part of Behavior-Driven Development (BDD) -- the 
+applied \q{When...Given...Then...}-notation. That notation is a part of Behavior-Driven Development (BDD) -- the 
 process of approaching the desired outcome on first place before the code. But we've used that notation as a comment 
 that is useless without any interpreter (since it can be written one flow but tested totally different; or, it's been 
 just forgotten to update the comment through the time of a project evolution).
@@ -514,11 +508,11 @@ test runner for Flutter and Dart, would be used by us to convert When / Given / 
 
 In Cucumber-JVM (as well as in Gherkin) calling steps from step definitions is not supported; this is by design. 
 That "by design" limitation is made to not create a mess, with an assumption, that this may lead to an explosion of step 
-definitions, code duplication, and high maintenance costs. We won't argue with them, since a community has already tried 
-(as a reminder, an architectural error consequences -- \cite{Sanket19}), and take all the risks to our own, since testing 
-is a variation of an art where a common sense is a mantra to succeed. Furthermore, this approach is already utilized by 
-Robot Framework (\href{https://robotframework.org}{https://robotframework.org}) where a high-level scenarios creation 
-on top of others signifies the declaration of a new layer of abstractions.
+definitions, code duplication, and high maintenance costs. We won't argue with them (recalling the repercussions of an 
+architectural mistake, \ref{quality}), since a community has already tried, and take all the risks to our own, 
+since testing is a variation of an art where a common sense is a mantra to succeed. Furthermore, this approach is 
+already utilized by Robot Framework (\href{https://robotframework.org}{https://robotframework.org}) where a high-level 
+scenarios creation on top of others signifies the declaration of a new layer of abstractions.
 
 But let's go step-by-step... After installing Gherkin (\q{flutter pub add flutter\_gherkin --dev}), we can start from 
 \q{.feature}-files creation to describe our test scenarios.
@@ -544,28 +538,29 @@ Feature: Verify Account functionality alignment with expectations
       | ...  |  ...    |  ...   |
 \end{lstlisting}
 
-We've created Scenario "Opened Account Form" and, by braking all the recommendations, re-used it in Scenario Outline 
-for \q{Given}-step. What's that giving us? To answer that question, let's check how a billing flow might look like:
+\noindent We've created Scenario "Opened Account Form" and, by braking all the recommendations, re-used it in Scenario 
+Outline for \q{Given}-step. What's that giving us? To answer that question, let's check how a billing flow might look 
+like:
 
 \begin{lstlisting}[language=cucumber]
   Scenario Outline: Added different Expenses
     Given Created different Account types
     And Created different Budget types
+    And Defined Exchange Rates
     And Opened Expense Form
     When I fill the "Amount" field with <type>
-    ...
     And I tap "Create" button
     Then I should see "Account <account>" deduction by <amount>
-    And I should see "Budget <budget>" percentage change to <percent> with left <budget_amount>
+    And I should see "Budget <budget>" percentage change to <value> with left <budget_amount>
 \end{lstlisting}
 
-Such a powerful simplification cannot be ignored, it's not a mess but the extreme reusability. If something would be 
-changed (pipeline to open form, properties, widgets, etc.), a single scenario would be responsible for that. The only 
-convention: scenario is written in past tense, step - in present. By following such a simple rule it would be always 
-obvious the nested structure from a written sentence. 
+\noindent Such a powerful simplification cannot be ignored, it's not a mess but the extreme reusability. If something
+would be changed (pipeline to open form, properties, widgets, etc.), a single scenario would be responsible for that. 
+The naming convention: scenario is written in past tense, step -- in present. By following such a simple rule it would 
+be always obvious the nested structure from a written sentence. 
 
-Another drawback is that Gherkin runs User Interface tests (mostly known as Selenium tests) by compiling and running 
-the original application with enabled Flutter Driver Extension 
+Another drawback is that Gherkin runs User Interface tests by compiling and running the original application with 
+enabled Flutter Driver Extension 
 (\href{https://pub.dev/documentation/flutter_gherkin/latest/}{https://pub.dev/documentation/flutter\_gherkin/latest/}) 
 that simulates user behavior. It's not something that we might be interested in by now, expecting their fast evaluation 
 via simulation as it's done for widget tests. So, we're going to take an interpreter of \q{.feature}-files and use 
@@ -575,8 +570,8 @@ we would preserve a single entry point to evaluate all of the tests.
 
 \img{prototyping/bdd-test}{Behavioral Test evaluation}{img:p-bdd}
 
-But let's proceed iteratively, and implement wrapper around Gherkin to parse \q{.feature}-files and run them 
-(\cref{img:p-bdd}):
+\noindent But let's move forward iteratively, beginning with the development of a wrapper for Gherkin to parse and 
+execute \q{.feature}-files (\cref{img:p-bdd}):
 
 \begin{lstlisting}
 // ./test/e2e/e2e_test.dart
@@ -584,7 +579,8 @@ void main() {
   // Taking all our .feature files
   late Iterable<File> scope = Directory('./test/e2e')
       .listSync(recursive: true)
-      .where((entity) => entity is File && entity.path.endsWith('.feature'))
+      .where((entity) => entity is File && 
+              entity.path.endsWith('.feature'))
       .cast<File>();
 
   group('Behavioral Tests', () {
@@ -599,8 +595,8 @@ void main() {
         expect(await runner.run(), true);
       });
     }
-  });
-}(*@ \stopnumber @*)
+  });(*@ \stopnumber @*)
+}
 
 // ./test/e2e/_steps/file_runner.dart
 class FileRunner {
@@ -638,8 +634,8 @@ class FileRunner {
 
   Future<bool> run() async {
     return await runner.run(featureFile);
-  }
-}(*@ \stopnumber @*)
+  }(*@ \stopnumber @*)
+}
 
 // ./test/e2e/_steps/executable_step_iterator.dart
 class ExecutableStepIterator {
@@ -653,13 +649,11 @@ class ExecutableStepIterator {
       WordParameterLower(),
     ]);
   }
-
   List<ExecutableStep> _register(List<dynamic> steps) {
     return steps.map(
       (s) => ExecutableStep(GherkinExpression(s.pattern, param), s),
     ).toList();
   }
-
   Iterable<ExecutableStep> aggregate() {
     return _register([
       OnDefinedPage(),
@@ -667,8 +661,8 @@ class ExecutableStepIterator {
       TapDefinedHeader(),
       CanSeeDefinedComponent(),
     ]);
-  }
-}(*@ \stopnumber @*)
+  }(*@ \stopnumber @*)
+}
 
 // ./test/e2e/_steps/given/on_defined_page.dart
 class OnDefinedPage extends Given1<String> {
@@ -684,8 +678,8 @@ class OnDefinedPage extends Given1<String> {
 // ... other classes implementation: TapDefinedButton, TapDefinedHeader, CanSeeDefinedComponent
 \end{lstlisting}
 
-What can be noticed (line 20-23 for \q{executable\_step\_iterator.dart}-file), is that we have to declare all our 
-implementations (Given/When/Then) as a list of classes. That stuff is better to be automated by scanning 
+\noindent What can be noticed (line 19-22 for \q{executable\_step\_iterator.dart}-file), is that we have to declare all 
+our implementations (Given/When/Then) as a list of classes. That stuff is better to be automated by scanning 
 \q{\_steps}-folder and adding all classes into the list, and we do know already (\ref{ut-code-generator}) how to 
 achieve that.
 
@@ -712,7 +706,7 @@ class GivenGeneric extends Given {
 }
 \end{lstlisting}
 
-\noindent Let's verify what's we've taken:
+\noindent Let's verify what we've gathered:
 
 \begin{lstlisting}[language=terminal]
 Shell: Running scenario: Creating different Account types Examples: (1) # :3
@@ -725,8 +719,9 @@ Shell: PASSED: Scenario Opened Account Form # :4
 Shell:    V Given Opened Account Form # :4 took 584ms
 \end{lstlisting}
 
-\noindent To hide results from low-level steps we can implement own \q{ProgressReporter} that will populate results only 
-on failure; and by using \q{StringBuffer}-object override the flow of \q{printMessageLine} and \q{printMessage}-functions.
+\noindent To conceal results from low-level steps, we can create a custom \q{ProgressReporter} that will record results 
+only upon failure. We can override the behavior of the \q{printMessageLine} and \q{printMessage}-functions using a 
+\q{StringBuffer}-object to control the flow.
 
 \begin{lstlisting}[language=terminal]
 # Success
@@ -748,12 +743,13 @@ Shell:    Which: means none were found but some were expected
 
 \subsubsection{Recording Tests Flow} \label{t-record}
 
-In widget tests, there might happen a situation when the cause of failure isn't immediately evident. While the failing 
-step and its assertion might be apparent, the lack of visual cues makes it challenging to pinpoint the issue with ease.
-\q{RepaintBoundary}-widget can mimic screen saver easily by wrapping the main widget for the test:
+During widget tests, identifying the root cause of failure can sometimes be challenging. While the failing step and 
+its assertion are clear, the absence of visual cues makes it difficult to pinpoint the issue promptly. By utilizing the 
+\q{RepaintBoundary}-widget, we may effectively mimic a screen saver by wrapping the primary widget for the test:
 
 \begin{lstlisting}
 // ./test/pump_main.dart
+import 'dart:ui' as ui;
 class PumpMain {
   // Will be used to take back the context of item
   static GlobalKey id = GlobalKey();
@@ -762,10 +758,12 @@ class PumpMain {
 
   static Future<void> takeScreenshot(String name) async {
     int currentStep = step++;
-    final boundary = id.currentContext!.findRenderObject() as RenderRepaintBoundary;
+    final boundary = id.currentContext!.findRenderObject() 
+          as RenderRepaintBoundary;
     ui.Image image = await boundary.toImage(pixelRatio: 3.0);
     // Convert image to bytes
-    ByteData? bytes = await image.toByteData(format: ui.ImageByteFormat.png);
+    ByteData? bytes = await image.toByteData(
+        format: ui.ImageByteFormat.png);
     Uint8List imageData = bytes!.buffer.asUint8List();
     File file = File('${Directory.current.absolute.path}/coverage/${currentStep.toString().padLeft(8, '0')}_$name.png');
     // Sync is needed to avoid an infinite freeze for the test execution
@@ -802,13 +800,13 @@ class PumpMain {
 \noindent Starting from that, we may do a screening simply by adding next command into the test (without \q{await}, 
 again, to avoid an infinite freeze for the test execution, \cref{img:bdd-visualization}):
 
-\begin{lstlisting}
+\begin{lstlisting}[language=terminal]
 PumpMain.takeScreenshot(runtimeType.toString());
 \end{lstlisting}  
 
 \img{prototyping/bdd-visualization}{Usage of "takeScreenshot" to trace the problem}{img:bdd-visualization}
 
-Certainly, the appearance of our application in its original state isn't exactly replicated, as processed in a 
+\noindent Certainly, the appearance of our application in its original state isn't exactly replicated, as processed in a 
 simplified manner of rendering (like the Virtual DOM in React). However, the same method provides original screenshots 
 for integration tests (\cref{int-tests}).
 
@@ -830,8 +828,6 @@ an extra \q{update-goldens}-parameter, since the tests' images verification and 
 $ flutter test --update-goldens test/widget
 \end{lstlisting}
 
-\img{prototyping/golden-images}{Golden Image generation assert}{img:t-images}
-
 \begin{lstlisting}
 // test/widget/chart/painter/foreground_chart_painter_test.dart
 testWidgets('Foreground Chart', (WidgetTester tester) async {
@@ -846,9 +842,8 @@ testWidgets('Foreground Chart', (WidgetTester tester) async {
   // Init widget
   await tester.pumpWidget(widget);
   // expectLater is used for async matchers
-  await expectLater(
+  await expectLater( // Asset taken results with image
     find.byType(CustomPaint),
-    // Asset taken results with image
     matchesGoldenFile('./painter_test.dart.$i.png'),
     // Make assert the platform oriented
     skip: !Platform.isWindows,
@@ -856,9 +851,12 @@ testWidgets('Foreground Chart', (WidgetTester tester) async {
 }
 \end{lstlisting}
 
-The absence of fonts discernible from the captured image earlier (\cref{img:bdd-visualization}), since \q{Foo}-font 
-family is used by default in tests. To address this, we might use \q{FontLoader}-class to preload all needed fonts
-(\cref{img:t-images}). That approach holds the potential to enhance the overall visualization aspect of the tests:
+\img{prototyping/golden-images}{Golden Image generation assert}{img:t-images}
+
+\noindent The absence of fonts discernible from the captured image earlier (\cref{img:bdd-visualization}), since 
+\q{Foo}-font family is used by default in tests. To address this, we might use \q{FontLoader}-class to preload all 
+needed fonts (\cref{img:t-images}). That approach holds the potential to enhance the overall visualization aspect of 
+the tests:
 
 \begin{lstlisting}
 final asset = rootBundle.load('assets/fonts/Abel-Regular.ttf');
@@ -866,8 +864,8 @@ final font = FontLoader('Abel-Regular')..addFont(asset);
 await font.load();
 \end{lstlisting}
 
-Ultimately, we have the option to construct golden tests with platform-specific attributes (as mentioned above to 
-preempt errors, -- \cref{img:t-assert}), or alternatively, introduce a permissible threshold for allowable deviations 
+\noindent Ultimately, we have the option to construct golden tests with platform-specific attributes (as mentioned above 
+to preempt errors, -- \cref{img:t-assert}), or alternatively, introduce a permissible threshold for allowable deviations 
 (as described 
 \href{https://github.com/flutter/flutter/pull/77014\#issuecomment-1048896776}{https://github.com/flutter/flutter/pull/77014}
 or \href{https://stackoverflow.com/questions/62551504/flutter-golden-image-tests-diff-threshold}{https://stackoverflow.com/questions/62551504/}

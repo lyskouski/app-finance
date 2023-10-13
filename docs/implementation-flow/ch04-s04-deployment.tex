@@ -22,6 +22,7 @@ factory GoalAppData.fromJson(Map<String, dynamic> json) {
 
 \noindent To fix this issue, we need to ensure that all instances of IconData are used in a constant context, that can 
 be partially solved by the next modification:
+
 \begin{lstlisting}
 // ./lib/_mixins/formatter_mixin.dart
 mixin FormatterMixin {
@@ -44,41 +45,41 @@ factory GoalAppData.fromJson(Map<String, dynamic> json) {
       : null,
 \end{lstlisting}
 
-Now, when we'll call \q{getIconFromString} with a dynamic icon name, it will create the \q{IconData}-instance for that name 
-if it doesn't already exist and cache it in the \q{\_cache}-map. If the same icon name is used again in the future, 
-it will return the cached \q{IconData}-instance, allowing tree shaking to work correctly. But we still have to suppress 
-the error itself because, when we're dealing with dynamic values that cannot be statically analyzed at compile time, 
-tree shaking is impossible:
+\noindent Now, when we'll call \q{getIconFromString} with a dynamic icon name, it will create the \q{IconData}-instance 
+for that name if it doesn't already exist and cache it in the \q{\_cache}-map. If the same icon name is used again in 
+the future, it will return the cached \q{IconData}-instance, allowing tree shaking to work correctly. But we still have 
+to suppress the error itself because, when we're dealing with dynamic values that cannot be statically analyzed at 
+compile time, tree shaking is impossible:
 
 \begin{lstlisting}[language=terminal]
 flutter build -v web --release --no-tree-shake-icons
 \end{lstlisting}
 
-Another problem is that our production code is obfuscated. That means that \q{AccountAppData} will be converted to 
-something like \q{minified:iP}; and our restoring procedure from transactions is going to fail. By a first assumption,
-it can be changed "magic strings" to a \q{runtimeType}-property of classes:
+\noindent Another challenge arises due to the obfuscated code. This obfuscation can transform something like 
+\q{AccountAppData}-type into \q{minified:iP}, which disrupts our transaction restoration process. Initially, we can 
+replace "magic strings" with the \q{runtimeType}-property of classes to address this issue:
 
 \begin{lstlisting}
 // ./lib/_classes/data/transaction_log.dart
-  static void init(AppData store, String type, Map<String, dynamic> data) {
-    final goal = GoalAppData(title: '', initial: 0.0).runtimeType.toString();
-    final account = AccountAppData(title: '', type: '').runtimeType.toString();
-    final bill = BillAppData(title: '', account: '', category: '').runtimeType.toString();
-    final budget = BudgetAppData(title: '').runtimeType.toString();
-    final currency = CurrencyAppData(title: '').runtimeType.toString();
-    final typeToClass = {
-      goal: (data) => GoalAppData.fromJson(data),
-      account: (data) => AccountAppData.fromJson(data),
-      bill: (data) => BillAppData.fromJson(data),
-      budget: (data) => BudgetAppData.fromJson(data),
-      currency: (data) => CurrencyAppData.fromJson(data),
-    };
+static void init(AppData store, String type, Map<String, dynamic> data) {
+  final goal = GoalAppData(title: '', initial: 0.0).runtimeType.toString();
+  final account = AccountAppData(title: '', type: '').runtimeType.toString();
+  final bill = BillAppData(title: '', account: '', category: '').runtimeType.toString();
+  final budget = BudgetAppData(title: '').runtimeType.toString();
+  final curr = CurrencyAppData(title: '').runtimeType.toString();
+  final typeToClass = {
+    goal: (data) => GoalAppData.fromJson(data),
+    account: (data) => AccountAppData.fromJson(data),
+    bill: (data) => BillAppData.fromJson(data),
+    budget: (data) => BudgetAppData.fromJson(data),
+    curr: (data) => CurrencyAppData.fromJson(data),
+  };
 // ... other code
 \end{lstlisting}
 
-\noindent The main problem with that solution is that it cannot be portaged to other platforms since each type of the 
-build (even within one platform) will use different runtime notation for the same class. So, the right way would be 
-to adjust the conversion to JSON:
+\noindent The primary issue with this solution is that it cannot be portaged to other platforms, as different build 
+types (even within the same platform) may use various runtime notations for the same class. A more robust approach is 
+to adjust the JSON conversion process:
 
 \begin{lstlisting}
 // ./lib/_classes/data/abstract_app_data.dart
@@ -108,12 +109,11 @@ to adjust the conversion to JSON:
 
 \noindent That's done.
 
-Finally, we cannot ignore anymore a notification "Incorrect use of ParentDataWidget" while it has become a crucial for 
-the production type of the build, and may lead to a greyed-out output instead of rendered widgets.\\
-\\
+From now, we can't afford to ignore the "Incorrect use of ParentDataWidget" notification anymore, especially for the 
+production build, as it could result in a grayed-out output instead of rendering the widgets (\cref{img:compilation-err}).
 
-Regarding the deployment, while we are following a Serverless approach, which means there is no any dedicated server to 
-deploy into, we can improve usage of our GitHub Pages (\ref{a-badges}):
+Regarding the deployment procedure, while we are following a Serverless approach, which means there is no any dedicated 
+server to deploy into, we can improve usage of our GitHub Pages (\ref{a-badges}):
 
 \begin{lstlisting}[language=yaml]
 name: Web Deployment
