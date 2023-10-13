@@ -4,18 +4,96 @@
 \subsection{Defining Storage}
 \markboth{Prototyping}{Defining Storage}
 
+After a series of experiments aimed at modifying the content visualization, through repeated adjustments involving 
+forms' inputs categorized as prioritized, required, and optional data, it became increasingly clear what information is 
+truly relevant for each item within our application \issue{17}{}. But here is the trick! In the context of a financial 
+application, we only need to store a single item -- the transaction. All other structures (as bills, accounts, 
+budgets, currencies rate, invoices, transfers, etc.) are derived from this core item and will be used at run-time only
+as a representation layer of transactions.
+
+To answer on a possible questions "what's for", we should dive into the world of finances. Transactions are the 
+foundation of financial record-keeping. Their immutability (cannot be adjusted or deleted) is dictated by a regulated 
+environment of the banking industry (historical transaction data can be trusted and is compliant with regulatory 
+standards), and helps maintain a data integrity by minimizing the risk of its manipulation or loss.
+
+We might not be a bank, but the immutability of transactions provides us with a powerful built-in fault tolerance 
+mechanism. This immutability ensures that every user entry is preserved exactly as it was entered. When an edit action 
+is performed, what's happening behind the scenes is the creation of a new transaction. This approach safeguards against 
+any computational errors in our code. In case of any error, the next patch (application upgrade) automatically 
+restores the application's quality state without requiring complex migrations, conversions, or any other type of 
+the data manipulations. It's all about preserving data integrity and ensuring a seamless user experience.
+
+
+\subsubsection{Streaming Big Files}
+
+Since our transaction log can be counted in millions of millions, the better way to restore data structures from a file
+is to use streaming approach.
+
+\begin{lstlisting}
+// ./lib/_classes/data/transaction_log.dart
+class TransactionLog {
+  // Get (or create if missing) file
+  static Future<File> get _logFle async {
+    final path = await getApplicationDocumentsDirectory();
+    var file = File('${path.absolute.path}/app-finance.log');
+    if (!(await file.exists())) {
+      await file.create(recursive: true);
+    }
+    return file;
+  }
+
+  static void save(dynamic content) async {
+    // Under the hood "content.toString()" is evaluated
+    (await _logFle).writeAsString("$content\n", mode: FileMode.append);
+  }
+
+  static Future<bool> load(AppData store) async {
+    Stream<String> lines = (await _logFle).openRead()
+        .transform(utf8.decoder)
+        .transform(const LineSplitter());
+    try {
+      await for (var line in lines) {
+        var obj = json.decode(line);
+        // ... restore object [explained further]
+      }
+      return true;
+    } catch (e) {
+      return false;
+    }
+  }
+}
+\end{lstlisting}
+
+\noindent And adjust our constructor for \q{AppData} as follows:
+
+\begin{lstlisting}
+class AppData extends ChangeNotifier {
+  bool isLoading = false;
+
+  AppData() : super() {
+    isLoading = true;
+    TransactionLog.load(this)
+        .then((success) => notifyListeners())
+        .then((success) => isLoading = false);
+  }
+// ... other stuff
+\end{lstlisting}
+
 
 \subsubsection{Using Shared Preferences}
 
-To use shared preferences (store / retrieve string values) in Flutter, we should install the proper package via
-\q{flutter pub add shared\_preferences} command. To operate with preferences it would be better to use mixin --
-a powerful way in Flutter to reuse code across multiple classes by combining the members of the mixin with the 
-classes that use it (a composition without inheritance).
+Let's take a step back and explore the use of shared preferences as an effective alternative to "saving files" for Web,
+and user settings across all platforms:
 
-A mixin is defined by using the \q{mixin}-keyword followed by its name and a set of members, such as properties, methods, 
-and getters/setters. It cannot be instantiated on its own; instead, it is meant to be mixed into other classes 
-using the \q{with}-keyword (it inherits all the members from the mixin). This allows the class to access and use the 
-properties and methods defined in the mixin as if they were part of its own implementation.
+\begin{lstlisting}[language=terminal]
+$ flutter pub add shared_preferences
+\end{lstlisting}
+
+To interact with preferences efficiently, we might employ mixins, which offer a powerful mechanism for reusing code 
+across multiple classes. A mixin is defined by using the \q{mixin}-keyword followed by its name and a set of members, 
+such as properties, methods, and getters/setters. It cannot be instantiated on its own; instead, it is meant to be mixed 
+into other classes by using the \q{with}-keyword (it inherits all the members from the mixin). That allows the class 
+to access and use the properties and methods defined in the mixin as if they were a part of its own implementation:
 
 \begin{lstlisting}
 // ./lib/_mixins/shared_preferences_mixin.dart
@@ -24,7 +102,6 @@ mixin SharedPreferencesMixin {
     SharedPreferences pref = await SharedPreferences.getInstance();
     await pref.setString(key, value);
   }
-
   Future<String?> getPreference(String key) async {
     SharedPreferences pref = await SharedPreferences.getInstance();
     return pref.getString(key);
@@ -57,67 +134,11 @@ class ExpensesTabState<T extends ExpensesTab> extends State<T>
 \end{lstlisting}
 
 
-\subsubsection{Streaming Big Files}
-
-Since our transaction log can be counted in millions of millions, the better way to restore data structures from a file
-is to use streaming approach.
-
-\begin{lstlisting}
-// ./lib/_classes/data/transaction_log.dart
-class TransactionLog {
-  // Get or Create file
-  static Future<File> get _logFle async {
-    final path = await getApplicationDocumentsDirectory();
-    var file = File('${path.absolute.path}/app-finance.log');
-    if (!(await file.exists())) {
-      await file.create(recursive: true);
-    }
-    return file;
-  }
-
-  static void save(dynamic content) async {
-    // Under the hood \q{content.toString()} evaluates
-    (await _logFle).writeAsString("$content\n", mode: FileMode.append);
-  }
-
-  static Future<bool> load(AppData store) async {
-    Stream<String> lines = (await _logFle)
-        .openRead()
-        .transform(utf8.decoder)
-        .transform(const LineSplitter());
-    try {
-      await for (var line in lines) {
-        var obj = json.decode(line);
-        // ... restore object [explained further]
-      }
-      return true;
-    } catch (e) {
-      return false;
-    }
-  }
-}
-\end{lstlisting}
-
-And adjust our constructor for AppData as follows:
-
-\begin{lstlisting}
-class AppData extends ChangeNotifier {
-  bool isLoading = false;
-
-  AppData() : super() {
-    isLoading = true;
-    TransactionLog.load(this)
-        .then((success) => notifyListeners())
-        .then((success) => isLoading = false);
-  }
-// ... other stuff
-\end{lstlisting}
-
-
-\subsubsection{Streaming Local Storage}
+\subsubsection{Managing Local Storage}
 
 File usage is limited by systems where our application can be used as installed instance. To support web browsers
-we may rely on Local Storage. Instead of using \q{dart:html}, let's proceed with known \q{shared\_preferences} (\cref{img:mn-preferences}).
+we may rely on Local Storage. Instead of using \q{dart:html}, let's proceed with known \q{shared\_preferences} 
+(\cref{img:mn-preferences}).
 
 \begin{lstlisting}
 import 'package:flutter/foundation.dart' show kIsWeb;
@@ -147,27 +168,28 @@ static Stream<String> _loadWeb() async* {
     // Adding retrial approach
   } while (attempts < 10);
 }
-
-static Future<bool> load(AppData store) async {
-  Stream<String> lines;
-  if (kIsWeb) {
-    lines = _loadWeb();
-  } else {
-    lines = (await _logFle)
-        .openRead()
-        .transform(utf8.decoder)
-        .transform(const LineSplitter());
-  }
-  // ... other stuff
-}
 \end{lstlisting}
 
 \img{prototyping/local-storage-web}{Usage of Local Storage by Application}{img:mn-preferences}
 
+\begin{lstlisting}[firstnumber=29]
+static Future<bool> load(AppData store) async {
+  Stream<String> lines = kIsWeb
+      ? _loadWeb()
+      : (await _logFle).openRead()
+        .transform(utf8.decoder)
+        .transform(const LineSplitter());
+// ... other stuff
+\end{lstlisting}
+
 
 \subsubsection{Using Dynamic Structures}
 
-To update object properties dynamically in Flutter/Dart, we can use the object's setter methods.
+Once we've defined the procedure for storing transactions, let's delve into manipulating these objects. 
+
+One approach for managing object structures with dynamic content is to dynamically set properties of a data object 
+based on key-value pairs from the properties map. So, we need a method for checking if an object has specific 
+properties and setting their values accordingly:
 
 \begin{lstlisting}
 class AppData {
@@ -199,14 +221,13 @@ extension ObjectExtension on Object {
 }
 \end{lstlisting}
 
-To convert an object to a string representation and then back to an object, it can be used the toString() 
-and fromJson() methods. 
+\noindent To convert an object to a string representation and then back to the object, it can be used the 
+\q{toString}-method and the \q{fromJson}-factory: 
 
 \begin{lstlisting}
 class MyClass {
   String name;
   DateTime timestamp;
-  // Constructor
   MyClass(this.timestamp, this.name);
   // Props to simple built-in types (String, double, int, bool)
   Map<String, dynamic> toJson() => {
@@ -217,7 +238,7 @@ class MyClass {
   String toString() {
     return json.encode(toJson());
   }
-  // NOTE: in factory it cannot be used class' methods
+  // Note: in factory it cannot be used class' methods (but static)
   factory MyClass.fromJson(String jsonString) {
     Map<String, dynamic> json = jsonDecode(jsonString);
     return MyClass(DateTime.parse(json['timestamp']), json['name']);
@@ -236,15 +257,12 @@ void main() {
 }
 \end{lstlisting}
 
-In the above example, the MyClass object has a custom toString() method that converts the object's properties to a 
-JSON-like string representation. The fromJson() factory method takes a JSON string, parses it using jsonDecode(), 
-and creates a new MyClass object with the extracted values.
-
-By calling toString() on the object, you can convert it to a string representation. Then, by using fromJson() with the 
-string, you can recreate the object from the string representation. This approach allows you to serialize and 
-deserialize objects for storage or transmission purposes.
-
-So, finally our method to restore objects from their representation in log-file would be the next:
+\noindent In the example above, the \q{MyClass}-object has a custom \q{toString}-method that converts the object's 
+properties into a stringified JSON representation. The \q{fromJson}-factory method takes a JSON string, parses it using 
+\q{jsonDecode}, and creates a new \q{MyClass}-object with the extracted values. This approach provides a more 
+controlled way to serialize and deserialize objects, as it maintains data consistency within the object itself,
+as opposed to the previously checked solution that used an \q{extension}. So, finally our method to restore objects 
+from their representation in \q{.log}-file would be the next:
 
 \begin{lstlisting}[firstnumber=54]
 // ./lib/_classes/data/transaction_log.dart
@@ -265,10 +283,15 @@ static void init(AppData store, String type, Map<String, dynamic> data) {
 \end{lstlisting}
 
 
-\subsubsection{Adding Multiple Providers}
+\subsubsection{Observing Changes}
 
-In case of being aligned with SOLID principles, it would be better to preserve our classes small with a single 
-responsibility. So, for the case of handling theme mode (system, light, dark) it can be created a separate notifier:
+In adherence to the SOLID principles \footnote{S - Single-responsibility Principle, O - Open-closed Principle, L - 
+Liskov Substitution Principle, I - Interface Segregation Principle, D - Dependency Inversion Principle}, it is advisable 
+to maintain classes that adhere to the single responsibility principle. In our case, we're interested in tracking the 
+preference changes (such as theme switch between system, light, and dark) and adjust our application in accordance.
+
+In Flutter, a \q{ValueNotifier} is a core class that allows to hold a single value and notify its listeners when the 
+value changes. So, it is beneficial to establish a dedicated notifier for managing and updating the user interface:
 
 \begin{lstlisting}
 class AppTheme extends ValueNotifier<ThemeMode> with SharedPreferencesMixin {
@@ -298,7 +321,7 @@ class AppTheme extends ValueNotifier<ThemeMode> with SharedPreferencesMixin {
 }
 \end{lstlisting}
 
-\noindent The simples way to observe value changes can be done via \q{context.watch}:
+\noindent The simplest way to observe value changes can be achieved by using \q{context.watch}:
 
 \begin{lstlisting}
 void main() {
@@ -331,15 +354,16 @@ class MyAppState extends State<MyApp> {
 Provider.of<AppTheme>(context, listen: false).updateState(value);
 \end{lstlisting}
 
-\noindent The only this that the usage of asynchronous \q{getPreference} leads to a not needed complexity, and 
+\noindent The only thing is that the usage of asynchronous \q{getPreference} leads to unnecessary complexity and 
 additional computational efforts:
 
 \begin{lstlisting}[language=terminal]
-User I/Choreographer( 4431): Skipped 244 frames!  The application may be doing too much work on its main thread.
+User I/Choreographer( 4431): Skipped 244 frames!
+  The application may be doing too much work on its main thread.
 \end{lstlisting}
 
-\noindent While we've understood that, we can easily fix the problem by its single initialization during
-application start:
+\noindent Now that we've understood this, we can easily fix the problem by initializing the preferences' object only 
+once during the application start:
 
 \begin{lstlisting}
 // ./lib/main.dart
@@ -351,9 +375,9 @@ mixin SharedPreferencesMixin {
   static late SharedPreferences pref;
 \end{lstlisting}
 
-But we should be very accurate with what we're placing into a static variable, since, as an example, 
-caching \q{AdaptiveWindowType} for our \q{ThemeHelper} leads to an infinite loop of re-rendering widgets:
-\href{https://github.com/lyskouski/app-finance/issues/112}{https://github.com/lyskouski/app-finance/issues/112}.
+\noindent But we should be very accurate with what we're placing into a static variable, since, as an example, 
+caching \q{AdaptiveWindowType} for our \q{ThemeHelper} leads to an infinite loop of re-rendering widgets \issue{112}{}.
 
-Unwanted loop of rendering might also happen on the usage of \q{key: UniqueKey()} for \q{StatelessWidget}, it can cause 
-the widget to be rebuilt whenever the widget tree is rebuilt since a new UniqueKey will be generated for the widget.
+An unintended loop of rendering can also occur when using \q{key: UniqueKey()} for a \q{StatelessWidget}. This happens 
+because it causes the widget to be rebuilt whenever the widget tree is rebuilt due to the generation of a new 
+\q{UniqueKey} for the widget.
