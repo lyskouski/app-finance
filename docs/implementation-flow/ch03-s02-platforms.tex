@@ -24,10 +24,10 @@ for iOS or Java/Kotlin for Android:
 
 \begin{lstlisting}
 // To create a Flutter Method Channel
-const platform = MethodChannel('channel_name');
+const platform = MethodChannel('channelName');
 // To call the native code
 try {
-  final result = await platform.invokeMethod('method_name', arguments);
+  final result = await platform.invokeMethod('methodName', params);
   // ... handle the result
 } on PlatformException catch (e) { /* handle errors */ }
 \end{lstlisting}

@@ -13,5 +13,6 @@
     "files.associations": {
         "*.arb": "json"
     },
-    "cmake.configureOnOpen": false,
+    "dart.previewFlutterUiGuidesCustomTracking": true,
+    "dart.previewFlutterUiGuides": true,
 }

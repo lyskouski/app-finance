@@ -13,17 +13,19 @@ and has helped to form a partnership with Arash Ferdowsi to proceed with its far
 the idea, but really hard to do it" \cite{Shon13}.
 
 Without the luxury of a dedicated team and abundant resources, similar to the indie game development model, we might 
-shift our focus toward becoming both consumers and contributors, bypassing the traditional process of crafting intricate 
-interactive design concepts. Fortunately, Flutter's extensive library of components unlocks a prototyping process from 
-the code.
+shift our focus toward becoming both consumers and contributors. Creating a product and assuming that everyone grasps 
+its functionality is a misconception disconnected from reality. What seems straightforward to us might pose a challenge 
+for someone else, and that's perfectly normal. Each individual has their unique perspective, and what appears effortless 
+to them can be perceived as intricate by others. That highlights the fact that the application has to be configurable 
+and adaptive.
 
 Let's begin by identifying preferences and priorities from our fillings, focusing on what holds the utmost significance 
 for us on the initial screen, and a secondary information within the "one-click" vicinity. We should avoid being overly 
 influenced by existing applications, as doing so could lead us down the path of mimicry (term, "create own black-jack"), 
 or potentially stifle our initial impulse and creative drive (term, "re-implement the wheel"). But we will return to 
-their analysis right after a first working solution creation (minimum viable product).
+their analysis right after achieving a first working solution (term, "minimum viable product").
 
-A \q{financial accounting application} should display our current balance (particularly essential in cases of 
+A \textbf{Financial Accounting Application} should display our current balance (particularly essential in cases of 
 multi-banking), budget limits for various expense categories, a history of expenses (especially for a shared mode of 
 the application usage, as between partners), and visualize our financial goals, which serves as the core motivation for 
 using the application. Secondly, it's important to view and analyze income and expense metrics, that are giving insights 
@@ -39,7 +41,8 @@ and fonts facilitated the connection of data points, such as linking bills with 
 
 That has helped us to formalize that the core interface can be effectively constructed using only two essential 
 components: "Title" and "Item". In our context, the \q{BaseWidget} is designed to combine a header with a list of items, 
-while the \q{BaseLineWidget} serves to represent individual items as lines \issue{2}{}.
+while the \q{BaseLineWidget} serves to represent individual items as lines \issue{2}{}. Fortunately, Flutter's extensive 
+library of components unlocks a prototyping process from the code.
 
 \img{prototyping/rally-app}{Rally application from Flutter Gallery}{img:proto-rally}
 
@@ -105,9 +108,7 @@ LayoutBuilder(
             child: FractionallySizedBox(
               alignment: Alignment.topCenter,
               heightFactor: 0.5,
-              child: Container(
-                color: Colors.red,
-              ),
+              child: Container(color: Colors.red),
             ),
           ),
           Expanded(
@@ -161,8 +162,7 @@ class BaseLineWidget extends StatelessWidget {
     return Column( // To group content with a divider at the end
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Row(
-          // Spread apart Description and Amount on different sides
+        Row( // Spread apart Description and Amount
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Row( // Left Side Section (Info)
@@ -176,24 +176,20 @@ class BaseLineWidget extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     // The main information
-                    Text(title,
-                      style: TextStyle(fontSize: 16, 
-                          fontWeight: FontWeight.bold),
-                    ),
+                    Text(title, style: TextStyle(fontSize: 16, 
+                        fontWeight: FontWeight.bold)),
                     // Additional info
                     Text(description,
                       style: TextStyle(fontSize: 12),
                     ),
                   ],
                 ),
-              ],
-            ),
+              ]),
             Padding( // Right-Side Block (Amount)
               padding: const EdgeInsets.all(8.0),
               child: Text(details),
             ),
-          ],
-        ),
+          ]),
         Divider(), // To plot a horizontal line
       ]);
   }(*@ \stopnumber @*)
@@ -246,7 +242,8 @@ class BaseWidget extends StatelessWidget {
                 ],
               ),
             ),
-            Expanded(// To accumulate the remaining height 
+            // To accumulate the remaining height
+            Expanded( 
               child: ListView(
                 children: [
                   BaseLineWidget(
@@ -333,7 +330,8 @@ Expanded(
     // To improve the rendering performance from a template usage
     /// prototypeItem: ListTile(title: Text(state['list'].first)),
     itemBuilder: (context, index) {
-      if (index == 0) { // Leading indentation
+      // Leading indentation
+      if (index == 0) { 
         return SizedBox(height: 8.0);
       } else if (index <= state['list'].length) {
         final item = state['list'][index - 1];
@@ -344,7 +342,8 @@ Expanded(
           progress: item.progress,
           color: item.color,
         );
-      } else { // Trailing "button" at the end
+      // Trailing "button" at the end
+      } else { 
         return TextButton(
           onPressed: () {}, // Handle "More" button pressed
           child: Text(AppLocalizations.of(context)!.btnMore),
@@ -353,6 +352,33 @@ Expanded(
     }),
 );
 \end{lstlisting}
+
+\noindent It's the first time when we've used a localization (line 25, autogenerated \q{AppLocalizations}-class) but the 
+discussion will be postponed till \cref{locale}. Its usage matches with our goal of separating the presentation and data 
+layers (\emph{as a tip, they should not be transpiled into the folders structure, organize files around the targets}):
+
+\hspace{0.5cm}
+\dirtree{%
+  .1 Application.
+  .2 Business Logic Layer.
+  .3 Functional Rules.
+  .3 Computations.
+  .3 Data Structures.
+  .2 Service Layer \emph{(encapsulate complex logic)}.
+  .3 Security Layer (Controllers).
+  .3 Extensions \emph{(extend, unify or wrap basics)}.
+  .2 Data Access Layer.
+  .3 Representation Layer \emph{(a visual state of primitives)}.
+  .3 Connectors \emph{(connection to different sources)}.
+  .3 Subscribers \emph{(to notify about the data change)}.
+  .2 Presentation Layer.
+  .3 Communication Layer \emph{(exchange data between visual elements)}.
+  .3 User Experience Layer \emph{(reflect to the context of usage)}.
+  .3 Interface Layer \emph{(basic building blocks, pure UI modules)}.
+  .3 Components \emph{(inject data into their respective interfaces)}.
+  .3 Routing \emph{(respond to user interactions)}.
+}
+\hspace{1cm}
 
 \noindent Described iterative builder can be additionally improved by the usage of \q{Stream}s (instead of \q{List}s, 
 \issue{305}{}) and \q{KeepAliveWrapper}-widget (\emph{with a \q{AutomaticKeepAliveClientMixin}-mixin that retains the 
@@ -363,9 +389,11 @@ state of widgets that are either expensive to rebuild, or come in and out of the
 class KeepAliveWrapper extends StatefulWidget {
   final Widget child;
   const KeepAliveWrapper({super.key, required this.child});
+
   @override
   KeepAliveWrapperState createState() => KeepAliveWrapperState();
 }
+
 class KeepAliveWrapperState extends State<KeepAliveWrapper> 
     with AutomaticKeepAliveClientMixin {
   @override
@@ -451,7 +479,7 @@ Navigator.pushNamed(context, routeName, arguments: {'uuid': '1'});
 \end{lstlisting}
 
 \noindent Additionally, it's worth considering removing the \q{routes}-attribute from the \q{MaterialApp}-widget. This 
-enables the usage of dynamic construction for all routes, unifying the control over the route management.
+enables the usage of dynamic construction for all routes, unifying the control over their management.
 
 \begin{lstlisting}
 final routes = <String, WidgetBuilder>{
@@ -494,11 +522,7 @@ AppBar(
             value: 'option1',
           ),
           // ... other options
-        ];
-      },
-    ),
-  ],
-)
+// ... closing tags
 \end{lstlisting}
 
 \noindent Each menu item has a child widget, which in this case is a \q{Text}-widget, and a value associated with it. 
@@ -510,10 +534,12 @@ from either the left or right side of the screen to present navigation options o
 \begin{lstlisting}
 class MyApp extends StatelessWidget {
   void _navigateToPage(context, String routeName) {
-    Navigator.pop(context); // Close the drawer
+    // Trick to close the drawer
+    Navigator.pop(context); 
     // Navigate to the specified route
     Navigator.pushNamed(context, routeName); 
   }
+
 
   @override
   Widget build(BuildContext context) {
@@ -721,8 +747,8 @@ extension ColorExt on Color {
 \end{lstlisting}
 
 \noindent The \q{getRandom}-function selects a random color from the \q{Colors.primaries}-list using the 
-\q{Random}-class. As a note, the \q{MaterialColor}-constructor requires shades of the color, so we've created a 
-\q{Map} with shade values ranging from 50 to 900.
+\q{Random}-class; the \q{MaterialColor}-constructor requires shades of the color, that's why we've created a \q{Map} 
+with shade values ranging from 50 to 900.
 
 An icon on the opposite side of the text "Balance Date Update" (\cref{img:proto-form}), mostly known as an informational 
 anchor, should show a tooltip by a long-press. To add such a behavior to the icon, it should be wrapped by a \q{Tooltip} 
@@ -769,8 +795,7 @@ MediaQuery.of(context).orientation == Orientation.landscape
 \end{lstlisting}
 
 \noindent As for the text, it can be truncated with an ellipsis (...) if it overflows the defined container 
-constraints:\\
-\\
+constraints:
 
 \begin{lstlisting}
 Container(

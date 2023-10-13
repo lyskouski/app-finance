@@ -2,7 +2,7 @@
 % Use of this content is governed by a CC BY-NC-ND 4.0 license that can be found in the LICENSE file.
 
 \subsection{Testing Quality}
-\markboth{Defining Quality Gates}{Testing Quality}
+\markboth{Gating}{Testing Quality}
 
 Testing is an indispensable aspect (robustness, reliability, and even user satisfaction) of any development process 
 through a rigorous examination of application capabilities.
@@ -208,12 +208,12 @@ our pages and their flow. Nonetheless, the current one will check that the appli
 and there're no any freezes or an infinite loops of rendering (at least for those two pages). 
 
 
-\subsubsection{Writing Unit Tests with Wrappers (Code Generators)} \label{ut-code-generator}
+\subsubsection{Using Code Generators} \label{ut-code-generator}
 
-We've implemented earlier (\ref{ut-unit}) the test for a simple function that is isolated by itself from all other functionality. 
-In most of the cases our functions are calling other functions, while unit test has to check the logic of the defined 
-function isolately by cutting all external interactions (idealy, even within one class). To achieve that we might
-use \q{Mockito} (\href{https://github.com/dart-lang/mockito}{https://github.com/dart-lang/mockito}):
+We've implemented earlier (\ref{ut-unit}) the test for a simple function that is isolated by itself from all other 
+functionality. In most of the cases our functions are calling other functions, while unit test has to check the logic 
+of the defined function isolately by cutting all external interactions (idealy, even within one class). To achieve that 
+we might use \q{Mockito} (\href{https://github.com/dart-lang/mockito}{https://github.com/dart-lang/mockito}):
 
 \begin{lstlisting}
 // ./test/unit/_classes/data/account_recalculation_test.dart
