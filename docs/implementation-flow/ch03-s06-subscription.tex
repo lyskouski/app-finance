@@ -4,9 +4,14 @@
 \subsection{Activating Sponsorship}
 \markboth{Prototyping}{Activating Sponsorship}
 
-While we've chosen a Freemium business model (with a broken rule for limitations by being open-source, since Freemium 
-[portmanteau of "free" and "premium"] is a pricing strategy by which a basic product is free, but money is charged for 
-additional functionality), it's a time to land a subscription page.
+Now that we've opted for a Freemium business model (portmanteau of "free" and "premium"), which is a pricing strategy 
+combining free basic features with paid access to premium functionality (broken by us due to the open-source), it's 
+time to implement a subscription page. 
+
+Monetization is vital because, as we attract more users, the application demands greater attention and resources.
+That's why, the subscription is not just about making money; it's about sustaining (the costs of development, 
+maintenance, and support) and growing while delivering value to our users. It allows us to keep pace with competitors 
+and invest in innovation.
 
 
 \subsubsection{Adding Custom References}
@@ -30,14 +35,13 @@ import 'package:url_launcher/url_launcher.dart';
 class OtherWidget extends StatelessWidget {
   const OtherWidget({super.key});
 
-  Future<void> _launchURL(String path) async {
-    final url = Uri.parse(path);
-    await launchUrl(url, mode: LaunchMode.externalApplication);
-  }
+  Future<void> _launchURL(String url) =>
+    launchUrl(Uri.parse(url), mode: LaunchMode.externalApplication);
 
   Widget build(BuildContext context) {
     return ElevatedButton(
-      onPressed: () => _launchURL('https://www.buymeacoffee.com/lyskouski'),
+      onPressed: () => _launchURL(
+          'https://buymeacoffee.com/lyskouski'),
       child: Text('Buy me a coffee'),
     ),
   }
@@ -45,7 +49,7 @@ class OtherWidget extends StatelessWidget {
 \end{lstlisting}
 
 
-\subsubsection{Enabling Google/Apply Pay}
+\subsubsection{Enabling Marketplaces Purchases}
 
 In-app purchases are required for mobile app stores since it cannot be used any third-party systems to handle payments
 by the terms and conditions of marketplaces.

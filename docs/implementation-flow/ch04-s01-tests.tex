@@ -46,7 +46,7 @@ evaluated solely, by group, by file, or fully (\cref{img:fs-test-explorer}).
 
 \img{prototyping/test-explorer}{Test Explorer in Visual Studio Code}{img:fs-test-explorer}
 
-As a first step, we would start from covering implemented Account Recalculation flow:
+\noindent As a first step, we would start from covering the implemented Account Recalculation flow:
 
 \begin{lstlisting}
 // test/unit/_classes/data/account_recalculation_test.dart 
@@ -157,7 +157,7 @@ At the beginning it was covering \q{Add}-button as an incremental trigger for th
 
 \begin{lstlisting}
 void main() {
-  testWidgets('Counter increments smoke test', (WidgetTester tester) async {
+  testWidgets('Counter increments', (WidgetTester tester) async {
     // Build our app and trigger a frame.
     await tester.pumpWidget(const MyApp());
     // Verify that our counter starts at 0.
@@ -200,8 +200,8 @@ void main() {
 }
 \end{lstlisting}
 
-Here we are, by \q{tap} and \q{expect} the flow of the whole application can be checked. Such type of tests are named as 
-Widget tests that's emphasized by specially named \q{testWidgets}-function.
+\noindent Here we are, by \q{tap} and \q{expect} the flow of the whole application can be checked. Such type of tests 
+are named as Widget tests that's emphasized by specially named \q{testWidgets}-function.
 
 Initially, it would be better to concentrate mostly on Business Logic check (by unit tests) than on a draft state of 
 our pages and their flow. Nonetheless, the current one will check that the application can be started without errors, 
@@ -260,10 +260,10 @@ void main() {
 }
 \end{lstlisting}
 
-Almost done... failing since \q{account\_recalculation\_test.mocks.dart}-file is missing. To resolve that we have to use 
-additional library \q{build\_runner} (\q{flutter pub add build\_runner --dev}) that will generate \q{*.mocks.dart}-files
-for us. But that makes our work harder since before each \q{flutter test} we have to run \q{flutter run build\_runner build}.
-Let's cover that by Grinder task (\ref{a-grinder}):
+\noindent Almost done... failing since \q{account\_recalculation\_test.mocks.dart}-file is missing. To resolve that we 
+have to use additional library \q{build\_runner} (\q{flutter pub add build\_runner --dev}) that will generate 
+\q{*.mocks.dart}-files for us. But that makes our work harder since before each \q{flutter test} we have to run 
+\q{flutter run build\_runner build}. Let's cover that by Grinder task (\ref{a-grinder}):
 
 \begin{lstlisting}
 // ./tool/grind.dart
@@ -352,7 +352,7 @@ targets:
 builders:
   wrapper_generator: # Builder name
     # Builder file location
-    import: "package:app_finance/_classes/gen/wrapper_generator.dart"
+    import: package:app_finance/_classes/gen/wrapper_generator.dart
     # Method name that is used as a factory
     builder_factories: ["wrapperGenerator"]
     build_extensions: {".dart": [".wrapper.dart"]}
@@ -404,9 +404,10 @@ class WrapperGenerator extends Generator {
       }
     }
     return result.toString();
-  }(*@ \stopnumber @*)
+  }
 }
-  
+\end{lstlisting}
+\begin{lstlisting}
 // ./lib/_classes/gen/wrapper_visitor.dart
 class WrapperVisitor {
   StringBuffer buffer = StringBuffer();
@@ -500,11 +501,11 @@ test('Demo', () {
 
 \subsubsection{Adding Behavioral Tests (Gherkin)} \label{t-gherkin}
 
-Improvement cycles are never ends. Previously (\ref{widget-tests}), we've discussed approach to test widgets and applied 
-\q{When ... Given ... Then ...}-notation. That notation is a part of Behavior-Driven Development (BDD) -- the process
-of approaching the desired outcome on first place before the code. But we've used that notation as a comment that is 
-useless without any interpreter (since it can be written one flow but tested totally different; or, it's been just
-forgotten to update the comment through the time of a project evolution).
+Improvement cycles are never ends. Previously (\ref{widget-tests}), we've discussed the approach to test widgets and 
+applied \q{When ... Given ... Then ...}-notation. That notation is a part of Behavior-Driven Development (BDD) -- the 
+process of approaching the desired outcome on first place before the code. But we've used that notation as a comment 
+that is useless without any interpreter (since it can be written one flow but tested totally different; or, it's been 
+just forgotten to update the comment through the time of a project evolution).
 
 Cucumber (\href{https://docs.cucumber.io}{https://docs.cucumber.io}) is a practical standard, by being widely used, 
 and testing framework for Behavior Driven Development approach. Gherkin 

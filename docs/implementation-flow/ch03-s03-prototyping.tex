@@ -4,9 +4,9 @@
 \subsection{Creating Skeleton}
 \markboth{Prototyping}{Creating Skeleton}
 
-In case of a valuable uncertainties scope, the problem resolution is started from a prototype creation with "no 
-architecture" approach and sometimes even with "no code" solution. Designers and Researches (Business Analysts) 
-collaborate together to form initial conditions by interpreting users' paint points into features.
+In case of uncertainties, the problem resolution is started from a prototype creation with "no architecture" approach 
+and sometimes even with "no code" solution. Those first steps are mostly done by Designers and Researches (Business 
+Analysts) that collaborate together to form initial conditions by interpreting users' paint points into features.
 
 As an example, Dropbox founder Drew Houston explained that a demo video was released during Dropbox's early days
 and has helped to form a partnership with Arash Ferdowsi to proceed with its farther creation, "it was easy to explain 
@@ -20,8 +20,8 @@ the code.
 Let's begin by identifying preferences and priorities from our fillings, focusing on what holds the utmost significance 
 for us on the initial screen, and a secondary information within the "one-click" vicinity. We should avoid being overly 
 influenced by existing applications, as doing so could lead us down the path of mimicry (term, "create own black-jack"), 
-or potentially stifle our initial impulse and creative drive (term, "re-implement the wheel"). But will return to their 
-analysis right after a first working solution creation (minimum viable product).
+or potentially stifle our initial impulse and creative drive (term, "re-implement the wheel"). But we will return to 
+their analysis right after a first working solution creation (minimum viable product).
 
 A \q{financial accounting application} should display our current balance (particularly essential in cases of 
 multi-banking), budget limits for various expense categories, a history of expenses (especially for a shared mode of 
@@ -30,22 +30,27 @@ using the application. Secondly, it's important to view and analyze income and e
 into our financial patterns. 
 
 Once we've formulated an idea of \q{what} to showcase but find ourselves challenged in understanding \q{how} to 
-represent it, let's take a peek at "Rally" in Flutter Gallery 
-(\href{https://gallery.flutter.dev/\#/rally}{https://gallery.flutter.dev/\#/rally}, \cref{img:proto-rally}). A brief 
-overview has given us insights: a vertical bar is a good choice to indicate how much money remains in the budget 
-category, headers can be used not only as grouping containers but also to display summary, and the use of colors and 
-fonts to differentiate and interconnect information (as linking  by color Bill with Category, and Bill with Account). 
-That has helped us to construct our application from two main blocks as \q{BaseWidget} (header with a list) and 
-\q{BaseLineWidget} (a single line from it) \issue{2}{}.
+represent it, let's take a peek at any of existing apps, as "Rally" in Flutter Gallery 
+(\href{https://gallery.flutter.dev/\#/rally}{https://gallery.flutter.dev/\#/rally}, \cref{img:proto-rally}).
+The insightful overview revealed several key design considerations. It highlighted the effectiveness of using a 
+vertical bar to visually represent the remaining budget within a category. Furthermore, it showcased the versatility of 
+headers, not only for grouping content but also for summarizing information. Additionally, the strategic use of colors 
+and fonts facilitated the connection of data points, such as linking bills with their corresponding budget categories. 
+
+That has helped us to formalize that the core interface can be effectively constructed using only two essential 
+components: "Title" and "Item". In our context, the \q{BaseWidget} is designed to combine a header with a list of items, 
+while the \q{BaseLineWidget} serves to represent individual items as lines \issue{2}{}.
 
 \img{prototyping/rally-app}{Rally application from Flutter Gallery}{img:proto-rally}
 
 
 \subsubsection{Assembling Blocks}
 
-To use the most of the available screen real estate in both height and width, it's essential to leverage the 
-\q{LayoutBuilder}-widget. This widget grants access to the constraints of its parent widget, allowing us to ascertain 
-the maximum height available for its child widgets:
+First and foremost, it's crucial to comprehend how to make the most efficient use of the available screen real estate.
+
+To maximize the utilization of the available screen space in terms of both height and width, it is vital to make use of 
+the \q{LayoutBuilder}-widget. This widget provides access to the constraints of its parent widget, enabling us to 
+determine the maximum available height for its child widgets:
 
 \begin{lstlisting}
 LayoutBuilder(
@@ -160,8 +165,7 @@ class BaseLineWidget extends StatelessWidget {
           // Spread apart Description and Amount on different sides
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            // Left Side Section (Info)
-            Row(
+            Row( // Left Side Section (Info)
               children: [
                 BarVerticalSingle(
                   value: progress, 
@@ -172,34 +176,29 @@ class BaseLineWidget extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     // The main information
-                    Text(
-                      title,
+                    Text(title,
                       style: TextStyle(fontSize: 16, 
                           fontWeight: FontWeight.bold),
                     ),
                     // Additional info
-                    Text(
-                      description,
+                    Text(description,
                       style: TextStyle(fontSize: 12),
                     ),
                   ],
                 ),
               ],
             ),
-            // Right-Side Block (Amount)
-            Padding(
+            Padding( // Right-Side Block (Amount)
               padding: const EdgeInsets.all(8.0),
               child: Text(details),
             ),
           ],
         ),
         Divider(), // To plot a horizontal line
-      ],
-    );
-  }
+      ]);
+  }(*@ \stopnumber @*)
 }
-\end{lstlisting}
-\begin{lstlisting}
+
 // ./lib/charts/barVerticalSingle.dart
 class BarVerticalSingle extends StatelessWidget {
   /* ... properties declaration */
@@ -218,8 +217,9 @@ class BarVerticalSingle extends StatelessWidget {
 // .. closing brackets
 \end{lstlisting}
 
-\noindent As a note, the rotation can be improved by the usage of \q{RotatedBox}-widget.\\
-\\
+\noindent As a note, the rotation can be improved by the \q{RotatedBox}-widget usage.
+
+\img{prototyping/prototype-v1}{The first outcome from our implementation}{img:prototype}
 
 \begin{lstlisting}
 // ./lib/routes/home/baseWidget.dart
@@ -259,13 +259,12 @@ class BaseWidget extends StatelessWidget {
 // ... closing tags
 \end{lstlisting}
 
-\noindent As it might be noticed, we've injected our data into components. This helps to focus on a design 
-(\cref{img:prototype}) rather than on a data structure that is still unknown. However, preserving the data 
-injection per each component could also be counterproductive, as it would necessitate extra efforts to cleanup the 
-components later. That's why we should separate representation and data layers on the early stages independently of 
-understanding the context of a data structure \issue{10}{}.
+\noindent As it might be noticed, that we've injected our data into components. This helps to concentrate on design 
+aspects (\cref{img:prototype}) rather than getting bogged down (by formulating) in an unfamiliar data structure. 
 
-\img{prototyping/prototype-v1}{The first outcome from our implementation}{img:prototype}
+However, preserving the data injection per each component could also be counterproductive, as it would necessitate 
+extra efforts to cleanup the components later. That's why we should separate representation and data layers on the 
+early stages independently of understanding the context of a data structure \issue{10}{}:
 
 \begin{lstlisting}[caption=Mock Structure of a Financial Data, label=code:app-data]
 // ./lib/data.dart
@@ -294,6 +293,7 @@ class AppData {
   };
 
   Map<String, dynamic> get state => _data;
+
 
   void set(String property, dynamic value) {
     if (_data.containsKey(property)) {
@@ -394,6 +394,7 @@ const String accountEditRoute = '/app/finance/account/uuid:/edit';
 
 // ./lib/main.dart
 void main() => runApp(const MyApp());
+
 class MyApp extends StatefulWidget {
   const MyApp({super.key});
 
@@ -443,15 +444,14 @@ it's more practical to work with additional parameters instead of \q{RegExp} tra
 MaterialPageRoute? getDynamicRouter(RouteSettings settings) {
   final args = settings.arguments as Map<String, String>?;
   final uuid = args?['uuid'] ?? '';
-  final route = settings.name ?? '';
+  final route = settings.name ?? '';(*@ \stopnumber @*)
   // ...
 // To call the route with parameters
-Navigator.pushNamed(context, routes.accountViewRoute,
-    arguments: {'uuid': '1'});
+Navigator.pushNamed(context, routeName, arguments: {'uuid': '1'});
 \end{lstlisting}
 
 \noindent Additionally, it's worth considering removing the \q{routes}-attribute from the \q{MaterialApp}-widget. This 
-enables the usage of dynamic construction for all routes, unifying the control over route management.
+enables the usage of dynamic construction for all routes, unifying the control over the route management.
 
 \begin{lstlisting}
 final routes = <String, WidgetBuilder>{
@@ -462,9 +462,10 @@ final routes = <String, WidgetBuilder>{
 return routes[route] ?? (context) => const HomePage();
 \end{lstlisting}
 
-\noindent With the routing declaration completed, let's move on with creating a navigation. To add a button to the 
-\q{AppBar}-widget, we can use the \q{actions}-property and provide a list of widgets that represent the buttons that 
-we want to see on the right side, for the left corner -- the \q{leading}-property should be used:
+\noindent With the routing declaration now finalized, it's time to proceed with the creation of a navigation menu. To 
+add buttons to the \q{AppBar}-widget, we may use the \q{actions}-property, which allows us to supply a list of 
+widgets representing the buttons that we'd like to place on the right side, and the \q{leading}-property, to utilize 
+the left corner space:
 
 \begin{lstlisting}
 Scaffold(
@@ -547,7 +548,7 @@ appearance:
 Drawer(
   // Remove the elevation (shadow) of the drawer
   elevation: 0,
-  // Set a border without any width
+  // Disable rounded corners
   shape: Border.all(width: 0), 
   child: Container(
     // Set the background color
@@ -584,14 +585,14 @@ class MyDrawer extends StatelessWidget {
 
 \subsubsection{Configuring Inputs}
 
-Going further, the defined setter in our fake data storage (Listing \ref{code:app-data}) would help to implement 
-\q{Add}-form(s) \issue{16}{bed81f5} (\cref{img:proto-form}). Flutter provides a set of widgets to display all basic 
-inputs as \q{TextFormField} (for input), \q{DropdownButton} / \q{DropdownMenuItem} and \q{SearchAnchor} (for selector), 
-\q{Switch} (toggler), and others. Additionally, it can be used Package Manager (\q{pub}) to apply additional components, 
-as \q{Icon}-picker (\q{flutter\_iconpicker}-package), \q{Color}-selector (\q{flutter\_colorpicker}-package), and 
-others. However, after combining dozens of different widgets from various libraries, we might encounter a stylistic 
+Going further, the defined setter in our fake data storage (\cref{code:app-data}) would help to implement 
+\q{Add} and \q{Edit} forms \issue{16}{bed81f5} (\cref{img:proto-form}). Flutter provides a set of widgets to display all 
+basic inputs as \q{TextFormField} (for input), \q{DropdownButton} / \q{DropdownMenuItem} and \q{SearchAnchor} (for 
+selector), \q{Switch} (toggler), and others. Additionally, it can be used Package Manager (\q{pub}) to apply additional
+components, as \q{Icon}-picker (\q{flutter\_iconpicker}-package), \q{Color}-selector (\q{flutter\_colorpicker}-package),
+and others. However, after combining dozens of different widgets from various libraries, we might encounter a stylistic 
 inconsistency between these widgets (term, "UX Hell") and end up having to make compromises or even remove some of them
-by wrapping the original components (\issue{149}{}, \issue{200}{}, \issue{204}{}, \issue{207}{}, \issue{329}{}).
+by the original components afterwards (\issue{149}{}, \issue{200}{}, \issue{204}{}, \issue{207}{}, \issue{329}{}).
 
 That's why it's important to highlight that all the inputs (we've used on the form) have been encapsulated within 
 their own widget (\q{SimpleInput}, \q{MonthYearInput}, \q{IconSelector}, etc.). This approach facilitates a seamless 
@@ -650,7 +651,7 @@ TextFormField(
 
 \noindent And, for the case of forbidding everything, we may use the boolean \q{readOnly}-property. 
 
-It's important to note that the changes in the field's value are managed and monitored through \q{TextEditingController}. 
+It's important to mention that the changes in the field's value are managed and monitored through \q{TextEditingController}. 
 That component allows bidirectional communication with text input widgets. It not only enables retrieving the current 
 value of a text field but also provides a capability to programmatically change the content (whether a real-time 
 validation, or respond to user inputs):
@@ -688,11 +689,7 @@ class CurrencySelector extends StatelessWidget {
               onSelect: (Currency currency) => callback(currency),
             ),
           child: const Icon(Icons.arrow_drop_down),
-        ),
-      ),
-    );
-  }
-}
+// ... closing tags
 \end{lstlisting}
 
 \noindent In this code, we set the key property of the \q{TextFormField} to \q{ValueKey(value)} to ensure that when the 
@@ -746,6 +743,7 @@ threshold.
 \begin{lstlisting}
 final minHeightThreshold = 640;
 final minWidthThreshold = 480;
+
 LayoutBuilder(
   builder: (BuildContext context, BoxConstraints constraints) {
     double screenHeight = MediaQuery.of(context).size.height;
@@ -763,14 +761,16 @@ LayoutBuilder(
 \end{lstlisting}
 
 \noindent This approach allows us to conditionally render the widget based on the screen height, providing a responsive
-and adaptable user interface (UI). Furthermore, \q{MediaQuery} helps to identify not only the size of the screen, but
+and adaptable user interface (UI). Furthermore, \q{MediaQuery} helps to identify not only sizes of the screen, but
 an orientation of it:
 
 \begin{lstlisting}
 MediaQuery.of(context).orientation == Orientation.landscape
 \end{lstlisting}
 
-\noindent As for the text, it can be truncated with an ellipsis (...) if it overflows the defined container constraints:
+\noindent As for the text, it can be truncated with an ellipsis (...) if it overflows the defined container 
+constraints:\\
+\\
 
 \begin{lstlisting}
 Container(

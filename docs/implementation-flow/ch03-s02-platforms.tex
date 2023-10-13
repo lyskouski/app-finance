@@ -1,6 +1,7 @@
 % Copyright 2023 The terCAD team. All rights reserved.
 % Use of this content is governed by a CC BY-NC-ND 4.0 license that can be found in the LICENSE file.
 
+\newpage
 \subsection{Unlocking Multi-Platform}
 \markboth{Prototyping}{Unlocking Multi-Platform}
 
@@ -16,4 +17,17 @@ import 'package:file_picker_web/file_picker_web.dart' if (dart.library.io) 'pack
 export 'src/connector_none.dart' // Stub implementation
   if (dart.library.io) 'src/connector_io.dart' // dart:io
   if (dart.library.html) 'src/connector_html.dart'; // dart:html
+\end{lstlisting}
+
+\noindent Platform channels is used as a communicational bridge to inject a platform-specific code, like Swift/Obj-C 
+for iOS or Java/Kotlin for Android:
+
+\begin{lstlisting}
+// To create a Flutter Method Channel
+const platform = MethodChannel('channel_name');
+// To call the native code
+try {
+  final result = await platform.invokeMethod('method_name', arguments);
+  // ... handle the result
+} on PlatformException catch (e) { /* handle errors */ }
 \end{lstlisting}
