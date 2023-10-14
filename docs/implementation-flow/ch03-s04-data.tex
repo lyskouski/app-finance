@@ -41,12 +41,10 @@ class TransactionLog {
     }
     return file;
   }
-
   static void save(dynamic content) async {
     // Under the hood "content.toString()" is evaluated
     (await _logFle).writeAsString("$content\n", mode: FileMode.append);
   }
-
   static Future<bool> load(AppData store) async {
     Stream<String> lines = (await _logFle).openRead()
         .transform(utf8.decoder)
@@ -151,7 +149,6 @@ static void save(dynamic content) async {
     (await _logFle).writeAsString("$line\n", mode: FileMode.append);
   }
 }
-
 static Stream<String> _loadWeb() async* {
   // Some transactions might be lost or deleted
   int attempts = 0;
@@ -196,7 +193,6 @@ class AppData {
   int? prop1;
   int? prop2;
 }
-
 void main() {
   AppData data = AppData();
   Map<String, dynamic> properties = {'prop1': 1, 'prop2': 2};

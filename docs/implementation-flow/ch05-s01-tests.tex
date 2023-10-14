@@ -39,8 +39,8 @@ execution on a physical device or platform:
 IntegrationTestWidgetsFlutterBinding.ensureInitialized();
 \end{lstlisting}
 
-\q{Firebase Test Lab} and \q{BrowserStack} stand as a cloud-powered testing platforms, and enable the integration tests
-evaluation across an extensive spectrum of devices and configurations.
+\noindent \q{Firebase Test Lab} and \q{BrowserStack} stand as a cloud-powered testing platforms, and enable the 
+integration tests evaluation across an extensive spectrum of devices and configurations.
 
 It's essential to note that Just-In-Time (JIT) and Ahead-of-Time (AOT) compilers (\ref{dart}) may yield different 
 results. What works flawlessly in development mode (JIT) might encounter issues in release mode (AOT), as 
@@ -94,11 +94,12 @@ flutter drive \
   --profile
 \end{lstlisting}
 
-The \q{--profile}-option enables the application compilation in "profile mode" that helps the benchmark results to be
-closer to what will be experienced by end users. By running on a mobile device or emulator it's proposed to use 
-\q{--no-dds}-parameter in addition, that will disable unaccessible Dart Development Service (DDS). The \q{--target} 
-declares the scope of test executions while \q{--driver}-option does track the outcomes. The driver configuration can be
-taken from \href{https://docs.flutter.dev/cookbook/testing/integration/profiling}{https://docs.flutter.dev/cookbook/testing/integration/profiling}:
+\noindent The \q{--profile}-option enables the application compilation in "profile mode" that helps the benchmark 
+results to be closer to what will be experienced by end users. By running on a mobile device or emulator it's proposed 
+to use \q{--no-dds}-parameter in addition, that will disable unaccessible Dart Development Service (DDS). The 
+\q{--target} declares the scope of test executions while \q{--driver}-option does track the outcomes. The driver 
+configuration can be taken from 
+\href{https://docs.flutter.dev/cookbook/testing/integration/profiling}{https://docs.flutter.dev/cookbook/testing/integration/profiling}:
 
 \begin{lstlisting}
 // ./test_driver/perf_driver.dart
@@ -219,21 +220,24 @@ Their pre-compilation strategy mitigates the compilation-related disruptions dur
 frames per second rendering. To run the app with \q{--cache-sksl} turned on to capture shaders in SkSL:
 
 \begin{lstlisting}[language=terminal]
-flutter run --profile --cache-sksl --purge-persistent-cache
+$ flutter run --profile --cache-sksl --purge-persistent-cache
 \end{lstlisting}
 
 \noindent Warm-up shaders in Skia Shader Language (SkSL) format for an application build:
 
 \begin{lstlisting}[language=terminal]
 # Capture shaders in Skia Shader Language (SkSL) format into a file
-flutter drive --profile --cache-sksl --write-sksl-on-exit sksl.json -t test_driver/warm_up.dart
+$ flutter drive --profile --cache-sksl \
+  --write-sksl-on-exit sksl.json \
+  -t test_driver/warm_up.dart
 # Build app with SkSL warm-up
-flutter build ios --bundle-sksl-path sksl.json
+$ flutter build ios --bundle-sksl-path sksl.json
 \end{lstlisting}
 
 \begin{lstlisting}
 // ./test_driver/warm_up.dart
 import 'package:integration_test/integration_test_driver.dart';
+
 Future<void> main() {
   return integrationDriver();(*@ \stopnumber @*)
 }
@@ -278,31 +282,20 @@ the merit of this approach becomes evident. Through this, the need for rebuildin
 by function callbacks) from scratch in a single frame is circumvented:
 
 \begin{lstlisting}
-// Bad practice
+// Not recommended
 ListView.builder(
   itemCount: 5000,
   itemBuilder: (BuildContext context, int index) {
     return _getMyWidget(); // Function call
   }),
-// Good choice
+// Better option
 ListView.builder(
   itemCount: 5000,
-  itemBuilder: (BuildContext context, int index) {
-    return const MyWidget();
-  }),
+  itemBuilder: (context, int index) => const MyWidget();
 \end{lstlisting}
 
-\noindent Contrary, it can be still used methods (or static properties) in case of constants usage:
-
-\begin{lstlisting}
-@override
-Widget buildButton(BuildContext context, BoxConstraints constraints) {
-  return const SizedBox();
-}
-\end{lstlisting}
-
-Optimizing the utilization of \q{StatefulWidget} holds the potential to enhance performance, primarily due to the 
-reduced number of Widgets controlling the lifecycle. This streamlined approach translates to swifter response times.
+\noindent Optimizing the utilization of \q{StatefulWidget} holds the potential to enhance performance, primarily due to 
+the reduced number of Widgets controlling the lifecycle. This streamlined approach translates to swifter response times.
 
 \q{RepaintBoundary}-widget can be used for a render decoupling (isolate parts that need to be repainted from the rest 
 of the tree), the child widget will be rendered independently of its parent widget. For example, constantly animated 
@@ -325,14 +318,14 @@ And not obvious but acknowledgeable, Flutter upgrade procedure (by example, Flut
 change \q{FlutterViews} background color to a non-nil value \cite{Chis23}). Contrary, the upgrade itself can lead to 
 the outage by broken dependencies and missed packages support:
 
-\begin{lstlisting}
+\begin{lstlisting}[language=terminal]
 [!] CocoaPods could not find compatible versions for 
-    pod "flutter_webrtc"
+  pod "flutter_webrtc"
 
 [!] `<XCBuildConfiguration name=`Debug` UUID=`...`>` attempted to 
-    initialize an object with an unknown UUID `...` for attribute: 
-    `base_configuration_reference`. This can be the result of a 
-    merge and the unknown UUID is being discarded.
+  initialize an object with an unknown UUID `...` for attribute: 
+  `base_configuration_reference`. This can be the result of a 
+  merge and the unknown UUID is being discarded.
 \end{lstlisting}
 
 
@@ -509,14 +502,14 @@ final btn = find.byTooltip(name);
 await FileRunner.tester.ensureVisible(btn);
 expectSync(btn, findsOneWidget);
 await FileRunner.tester.tap(btn);
-await FileRunner.tester.pumpAndSettle(const Duration(milliseconds: 400));
+await FileRunner.tester.pumpAndSettle(Duration(milliseconds: 400));
 \end{lstlisting}
 
 \noindent As a side effect of that case investigation, it's been noticed a couple of problems. One of them is relevant
 to a missed first record from transaction logs during initialization process:
 
 \begin{lstlisting}[language=terminal]
-flutter: [FormatException: Invalid length, must be multiple of four (at character 84)
+FormatException: Invalid length, must be multiple of four
 \end{lstlisting}
 
 The problem here is that the \q{transaction log}-file was created with a BOM as a first symbol in a line, that's why 
@@ -524,16 +517,17 @@ encryption is failing. Good catch! Let's add a new line at a moment of the file 
 raised a problem with \q{FloatingActionButton}-buttons:
 
 \begin{lstlisting}[language=terminal]
-flutter: The following assertion was thrown during a scheduler callback:
-flutter: There are multiple heroes that share the same tag within a subtree.
-flutter: Within each subtree for which heroes are to be animated (i.e. a PageRoute subtree), each Hero must
-flutter: have a unique non-null tag.
-flutter: In this case, multiple heroes had the following tag: <default FloatingActionButton tag>
+The following assertion was thrown during a scheduler callback:
+  There are multiple heroes that share the same tag within a subtree.
+  Within each subtree for which heroes are to be animated (i.e. a 
+  PageRoute subtree), each Hero must have a unique non-null tag.
+  In this case, multiple heroes had the following tag: 
+    <default FloatingActionButton tag>
 \end{lstlisting}
 
-The error indicates that we have multiple \q{Hero} widgets (\q{FloatingActionButton}-buttons in our case) with the 
-same tag within a subtree. Heroes in Flutter are used to create smooth animations when transitioning between screens or 
-widgets. Each Hero widget must have a unique non-null tag to properly manage the animation between the source 
+\noindent The error indicates that we have multiple \q{Hero} widgets (\q{FloatingActionButton}-buttons in our case) 
+with the same tag within a subtree. Heroes in Flutter are used to create smooth animations when transitioning between 
+screens or widgets. Each Hero widget must have a unique non-null tag to properly manage the animation between the source 
 and destination widgets. So, we have to make them unique by adding \q{heroTag}-property per each \issue{130}{b4369fc}.
 
 Lastly, the outcomes gleaned from our exhaustive endurance testing have illuminated the presence of memory 

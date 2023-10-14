@@ -158,8 +158,9 @@ GitHub Pages notation:
 https://<account-name>.github.io/<repository-name>/
 \end{lstlisting}
 
-Additionally, we may buy a domain name and configure GitHub Pages to be viewed there (detailed instructions provided by
-GitHub: \href{https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site/managing-a-custom-domain-for-your-github-pages-site}{https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site/managing-a-custom-domain-for-your-github-pages-site}).
+\noindent Additionally, we may buy a domain name and configure GitHub Pages to be viewed there (detailed instructions 
+provided by GitHub: 
+\href{https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site/managing-a-custom-domain-for-your-github-pages-site}{https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site/managing-a-custom-domain-for-your-github-pages-site}.
 
 
 \subsubsection{Preparing Releases}
@@ -174,6 +175,7 @@ on:
   push:
     tags:
       - 'v*' # Filter by pattern
+
 # Run jobs
 jobs:
   release:

@@ -267,17 +267,14 @@ early stages independently of understanding the context of a data structure \iss
 // ./lib/data.dart
 class AppData {
   final _data = {
-    'goals': [
-      (
-        title: 'Implement new functionality to reach the goal',
-        startDate: '2022-01-01 00:00',
-        endDate: '2024-09-01 00:00',
-      )
-    ],
+    'goals': [(
+      title: 'Implement new functionality to reach the goal',
+      startDate: '2022-01-01 00:00',
+      endDate: '2024-09-01 00:00',
+    )],
     'bills': {
       'total': 123456.789,
-      'list': [
-        (
+      'list': [(
           details: 12345789.098,
           // Approach to split String into several chunks
           title: 'Description with a long explanation'
@@ -285,19 +282,12 @@ class AppData {
           description: '2023-06-17',
           progress: 0.5,
           color: Colors.red,
-        ),
-    // .. other sections and data
+        ), // .. other sections and data
   };
-
   Map<String, dynamic> get state => _data;
-
-
   void set(String property, dynamic value) {
-    if (_data.containsKey(property)) {
-      _data[property] = value;
-    } else {
-      throw ArgumentError('Invalid property: $property');
-    }
+    if (!_data.containsKey(property)) throw ArgumentError('...');
+    _data[property] = value;
   }
 }
 \end{lstlisting}
@@ -388,6 +378,7 @@ state of widgets that are either expensive to rebuild, or come in and out of the
 \begin{lstlisting}
 class KeepAliveWrapper extends StatefulWidget {
   final Widget child;
+
   const KeepAliveWrapper({super.key, required this.child});
 
   @override
@@ -425,14 +416,12 @@ void main() => runApp(const MyApp());
 
 class MyApp extends StatefulWidget {
   const MyApp({super.key});
-
   @override
   _MyAppState createState() => _MyAppState();
 }
 
 class _MyAppState extends State<MyApp> {
   final AppData state = AppData();
-
   MaterialPageRoute? getDynamicRouter(settings) {
     final String route = settings.name!;
     final regex = RegExp(r'\/uuid:([\w-]+)');
@@ -450,7 +439,6 @@ class _MyAppState extends State<MyApp> {
     }
     return null;
   }
-
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -500,9 +488,7 @@ Scaffold(
   appBar: AppBar(
     title: Text('AppBar with Button'),
     actions: [
-      IconButton(
-        icon: Icon(Icons.settings),
-        onPressed: () { /* ... */ }, 
+      IconButton(icon: Icon(Icons.settings), onPressed: /*...*/), 
 \end{lstlisting}
 
 \noindent We may additionally customize the appearance and behavior of buttons by using their different types, as 

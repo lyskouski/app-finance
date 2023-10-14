@@ -18,6 +18,12 @@ used \q{[BF]}-prefix in a title for created bug-reports [issues] and used it as 
 extracts the date part from each line and delegate sorting to \q{sort}-command by the extracted dates. Finally, 
 \q{uniq -c}-command counts the occurrences of each unique date. And the same operation we'll do for the \q{fix}-keyword.
 
+In the resulting \cref{graph:errors}, the data is presented as follows:
+\q{Time} -- indicates the number of hours that were allocated to resolving identified issues during an Iteration (as a 
+note, the total allocated time per iteration was 28 hours);
+\q{Bug} -- represents the number of identified bugs within the project;
+\q{Fixes} -- corresponds to the number of mentioned fixes made from our Git history.
+
 \begin{figure}[h]
   \begin{center}
     \begin{tikzpicture}
@@ -29,13 +35,10 @@ extracts the date part from each line and delegate sorting to \q{sort}-command b
       \legend{Bugs, Fixes, Time}; \end{axis} 
     \end{tikzpicture} 
   \end{center}
-  \caption{Counting made mistakes per each Iteration}\label{im-errors}
+  \caption{Counting made mistakes per each Iteration}\label{graph:errors}
 \end{figure}
 
-\noindent \q{Time} -- how many hours was spent to fix identified issues (where 28 hours - allocated time per Iteration);
-\q{Bug} and \q{Fixes} -- counters, retrieved from our git history.\\
-\\
-
+\newpage
 Current project was spearheaded by a lone developer, while additional team members could potentially increase 
 the needed efforts \cite{Alm21} to maintain the application stability. Returning back to our chart, it shows us 
 that up to a third of the allotted time was spent on fixing bugs -- by adhering to the principle of zero 

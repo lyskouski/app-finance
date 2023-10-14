@@ -16,7 +16,6 @@ class Page3 extends StatelessWidget { /* ... */ }
 
 class MyApp extends StatelessWidget {
   final _pageController = PageController(initialPage: 0);
-
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -86,6 +85,7 @@ class MyApp extends StatelessWidget {
 class MyApp extends StatelessWidget with TickerProviderStateMixin {
   final int tabCount = 3;
   int tabIndex = 1;
+
   PageController? pageController;
   TabController? tabController;
 
@@ -217,6 +217,7 @@ existing external components (adding them to the page as widgets) or by customiz
 // ./lib/widgets/_wrappers/dots_indicator_decoration.dart
 class DotsIndicatorDecoration extends Decoration {
   // ... properties and constructor definition
+
   @override
   BoxPainter createBoxPainter([VoidCallback? onChanged]) {
     return _CustomTabIndicatorPainter(
