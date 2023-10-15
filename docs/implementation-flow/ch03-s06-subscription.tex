@@ -60,19 +60,25 @@ the "Store Presence" section) would costs us 25 Euro at once, Apple Store Develo
 configure the in-app purchase settings) -- roughly 100 Euro per year. Don't forget about other marketplaces as 
 Galaxy and Huawei Store.
 
-There would be a couple of steps to verify your identity, add bank account, sign documents (tax forms) and agreements.
-As an example, for Apple Store (as a remark, enroll 
-"\href{https://developer.apple.com/app-store/small-business-program/enroll/}{small-business support}"
-to minimize marketplace deductions):
+There would be a couple of steps to verify our identity, add bank account, sign documents (tax forms) and agreements.
+As an example, for Apple Store:
 \begin{enumerate}
-  \item Activate paid apps on page: \href{https://appstoreconnect.apple.com/agreements}{https://appstoreconnect.apple.com/agreements}
-  \item Register Bundle ID: 
+  \item Activate paid apps on page:\\
+  \href{https://appstoreconnect.apple.com/agreements}{https://appstoreconnect.apple.com/agreements}
+  \item Register Bundle ID:\\
   \href{https://developer.apple.com/account/resources/identifiers/bundleId/add/bundle}{https://developer.apple.com/.../add/bundle}
-  \item Fulfill app definition: 
+  \item Fulfill app definition:\\
   \href{https://appstoreconnect.apple.com/apps}{https://appstoreconnect.apple.com/apps}
   \item Via "Features" $\rightarrow$ "In-App Purchases" [Create] and "Subscriptions" [Create] declare costs
 \end{enumerate}
 
-In-app purchases are differentiated by their applicability: consumables (applicable multiple times), non-consumables 
-(once), subscriptions (interval payments). And three different ways to integrate them into Flutter application:
-\q{in\_app\_purchase}, \q{flutter\_inapp\_purchase}, \q{purchases\_flutter}.
+\noindent As a remark, we might enroll "Small-Business Support" to minimize marketplace deductions:
+\href{https://developer.apple.com/app-store/small-business-program/enroll/}{https://developer.apple.com/app-store/small-business-program/enroll/}.
+
+In-app purchases are classified based on their usage: consumables (can be used multiple times), non-consumables 
+(one-time use), and subscriptions (recurring payments). And three different ways to integrate them into Flutter 
+application: \q{in\_app\_purchase}, \q{flutter\_inapp\_purchase}, \q{purchases\_flutter}. \issue{100}{}\\
+\\
+
+
+\noindent \q{[TBD] results of subscription page implementation as images}

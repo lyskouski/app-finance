@@ -203,7 +203,9 @@ jobs:
       - name: Prepare Release Notes
         run: |
           # Approach to handle multiline content 
-          dart run grinder release-notes --tag=v${{ steps.tag.outputs.name }} --output=release_notes.log
+          dart run grinder release-notes \
+            --tag=v${{ steps.tag.outputs.name }} \
+            --output=release_notes.log
           echo "RELEASE_NOTES<<EOF" >> $GITHUB_ENV
           while IFS= read -r line; do
             echo "$line" >> $GITHUB_ENV
@@ -237,8 +239,7 @@ page. Let's do that and generate desktop runners for Macos, Linux, and Windows:
 
 \begin{lstlisting}[language=yaml]
 jobs:
-  release:
-    # ... shown earlier
+  release: # ... shown earlier
   build:
     name: Create ${{ matrix.target }} build
     runs-on: ${{ matrix.os }}
@@ -276,7 +277,9 @@ jobs:
         if: matrix.target == 'Windows'
         run: |
           flutter config --enable-windows-desktop
-          flutter build -v windows --build-name=${{ needs.release.outputs.version }} --build-number=${{ needs.release.outputs.build_number }} --release
+          flutter build -v windows --release \
+            --build-name=${{ needs.release.outputs.version }} \
+            --build-number=${{ needs.release.outputs.build_number }}
 
       - name: Compress Windows Package
         if: matrix.target == 'Windows'

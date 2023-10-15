@@ -1,6 +1,7 @@
 % Copyright 2023 The terCAD team. All rights reserved.
 % Use of this content is governed by a CC BY-NC-ND 4.0 license that can be found in the LICENSE file.
 
+\newpage
 \subsection{Automating Conditions}
 \markboth{Gating}{Automating Conditions}
 
@@ -10,7 +11,7 @@ Flutter provides a couple of commands to check the code itself:
 
 \begin{itemize}
   \item flutter analyze -- static analysis;
-  \item dart format -- apply rules from \q{analysis\_options.yaml}, described on the page:
+  \item dart format -- apply rules from \q{analysis\_options.yaml}, described on the page
   \href{https://dart.dev/effective-dart/style\#formatting}{https://dart.dev/effective-dart/style\#formatting};
   \item dart fix -- check points of an improvement and optimization.
 \end{itemize}
@@ -50,9 +51,7 @@ exit $status
 
 \begin{lstlisting}
 // ./tool/grind.dart
-import 'dart:io';
 import 'package:path/path.dart' as path;
-import 'package:grinder/grinder.dart';
 
 main(args) => grind(args);
 
@@ -158,10 +157,6 @@ sortTranslations() {
 }
 
 // ./tool/localization.dart
-import 'dart:convert';
-import 'dart:io';
-import 'package:grinder/grinder.dart';
-
 bool sortArbKeys(String path) {
   log('Checking $path'); // Add to console output the text
   final arbDir = Directory(path);
@@ -195,16 +190,13 @@ bool sortArbFileKeys(File file) {
     final aKey = a.key.startsWith('@') ? a.key.substring(1) : a.key;
     final bKey = b.key.startsWith('@') ? b.key.substring(1) : b.key;
     if (aKey == bKey) {
-      if (a.key.startsWith('@')) {
-        return 1;
-      }
-      if (b.key.startsWith('@')) {
-        return -1;
-      }
+      if (a.key.startsWith('@')) { return 1; }
+      if (b.key.startsWith('@')) { return -1; }
     }
     return aKey.compareTo(bKey);
   });
   final sortedArbMap = Map.fromEntries(entries);
+
   // Write back to the file with preserved indentation
   const encoder = JsonEncoder.withIndent('    ');
   var jsonOutputContent = encoder.convert(sortedArbMap);
@@ -215,39 +207,43 @@ bool sortArbFileKeys(File file) {
 
 \noindent Grinder tasks can be also made a part of IDE short-commands (VS Code sample, \cref{img:vsc-task}):
 
-% tbd: json
+\img{prototyping/vscode-automation}{Custom task visual representation in VS Code}{img:vsc-task}
+
 \begin{lstlisting}[language=bash]
 # ./.vscode/tasks.json
 {
   "version": "2.0.0",
-  "tasks": [{
-    "label": "Generate Mocks",
-    "command": "dart",
-    "args": ["run", "grinder", "mock"],
-    "options": {
-      "cwd": "${workspaceFolder}"
-    },
-    "type": "shell"
-  }]
+  "tasks": [
+    {
+      "label": "Generate Mocks",
+      "command": "dart",
+      "args": ["run", "grinder", "mock"],
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "type": "shell"
+    }
+  ]
 }
 \end{lstlisting}
+\newpage
 \begin{lstlisting}[language=bash]
 # ./.vscode/launch.json
 {
   "version": "0.2.0",
-  "configurations": [{
-    "name": "Grinder",
-    "request": "launch",
-    "type": "dart",
-    "codeLens": {
-      "for": ["run-test", "run-test-file"]
-    },
-    "preLaunchTask": "Generate Mocks"
-  }]
+  "configurations": [
+    {
+      "name": "Grinder",
+      "request": "launch",
+      "type": "dart",
+      "codeLens": {
+        "for": ["run-test", "run-test-file"]
+      },
+      "preLaunchTask": "Generate Mocks"
+    }
+  ]
 }
 \end{lstlisting}
-
-\img{prototyping/vscode-automation}{Custom task visual representation in VS Code}{img:vsc-task}
 
 
 \subsubsection{Running GitHub Workflows}

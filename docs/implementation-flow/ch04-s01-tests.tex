@@ -302,13 +302,9 @@ files and then proceed with \q{flutter test}-command):
 
 \begin{lstlisting}[language=terminal]
 $ dart run grinder test
-grinder running test
-
-test
   [INFO] Generating build script...
   ...
-  [INFO] Succeeded after 51ms with 0 outputs (0 actions)
-
+  [INFO] Succeeded after 51ms
   00:00 +0: AccountRecalculation updateGoals (getDelta: 0.0, ...
   ...
   00:01 +7: All tests passed!
@@ -337,14 +333,12 @@ annotations (we've seen already - \q{@GenerateNiceMocks}). Firstly, our custom b
 
 \begin{lstlisting}[language=yaml]
 ## ./build.yaml
-# Force to activate our generator
-targets:
+targets: # Force to activate our generator
   $default:
     builders: 
       # Combination of application name and builder definition
       app_finance|wrapper_generator:
         enabled: true # Activate its usage
-
 builders:
   wrapper_generator: # Builder name
     # Builder file location
@@ -361,9 +355,10 @@ builders:
 // ./lib/_classes/gen/generate_with_method_setters.dart
 class GenerateWithMethodSetters {
   final List<Type> classes;
-  const GenerateWithMethodSetters([this.classes = const []]);(*@ \stopnumber @*)
+  const GenerateWithMethodSetters([this.classes = const []]);
 }
-
+\end{lstlisting}
+\begin{lstlisting}
 // ./lib/_classes/gen/wrapper_generator.dart
 Builder wrapperGenerator(BuilderOptions options) => LibraryBuilder(
       WrapperGenerator(),
@@ -387,7 +382,6 @@ class WrapperGenerator extends Generator {
     }
     return result.toString();
   }
-
   @override
   String generate(LibraryReader library, BuildStep buildStep) {
     final result = StringBuffer();
@@ -408,7 +402,6 @@ class WrapperVisitor {
   StringBuffer buffer = StringBuffer();
   ClassElement element;
   WrapperVisitor(this.element);
-
   void addImports() {
     final mainClass = element.enclosingElement.library;
     addImport(mainClass);
@@ -455,9 +448,7 @@ class WrapperVisitor {
     }
   }
 
-  void finalize() {
-    buffer.writeln('}');
-  }
+  void finalize() => buffer.writeln('}');
 
   @override
   String toString() {
@@ -509,8 +500,8 @@ test runner for Flutter and Dart, would be used by us to convert When / Given / 
 In Cucumber-JVM (as well as in Gherkin) calling steps from step definitions is not supported; this is by design. 
 That "by design" limitation is made to not create a mess, with an assumption, that this may lead to an explosion of step 
 definitions, code duplication, and high maintenance costs. We won't argue with them (recalling the repercussions of an 
-architectural mistake, \ref{quality}), since a community has already tried, and take all the risks to our own, 
-since testing is a variation of an art where a common sense is a mantra to succeed. Furthermore, this approach is 
+architectural mistake, \ref{quality}), since a community has already tried, and we'll take all the risks to our own, 
+since the testing is a variation of an art where a common sense is a mantra to succeed. Furthermore, this approach is 
 already utilized by Robot Framework (\href{https://robotframework.org}{https://robotframework.org}) where a high-level 
 scenarios creation on top of others signifies the declaration of a new layer of abstractions.
 
@@ -580,9 +571,7 @@ void main() {
   late Iterable<File> scope = Directory('./test/e2e')
       .listSync(recursive: true)
       .where((entity) => entity is File && 
-              entity.path.endsWith('.feature'))
-      .cast<File>();
-
+              entity.path.endsWith('.feature')).cast<File>();
   group('Behavioral Tests', () {
     for (var file in scope) {
       testWidgets(file.path, (WidgetTester tester) async {   
@@ -727,7 +716,9 @@ only upon failure. We can override the behavior of the \q{printMessageLine} and 
 # Success
 Shell: Running scenario: Creating different Account types Examples: (1) # :3
 Shell:    V Given Opened Account Form # :4 took 524ms
-
+\end{lstlisting}
+\newpage
+\begin{lstlisting}[language=terminal]
 # Failure
 Shell: Running scenario: Creating different Account types Examples: (1) # :3
 Shell: Running scenario: Opened Account Form # :4
@@ -750,11 +741,11 @@ its assertion are clear, the absence of visual cues makes it difficult to pinpoi
 \begin{lstlisting}
 // ./test/pump_main.dart
 import 'dart:ui' as ui;
+
 class PumpMain {
   // Will be used to take back the context of item
   static GlobalKey id = GlobalKey();
-  // Increment for images
-  static int step = 0;
+  static int step = 0; // Increment for images
 
   static Future<void> takeScreenshot(String name) async {
     int currentStep = step++;
@@ -766,14 +757,13 @@ class PumpMain {
         format: ui.ImageByteFormat.png);
     Uint8List imageData = bytes!.buffer.asUint8List();
     File file = File('${Directory.current.absolute.path}/coverage/${currentStep.toString().padLeft(8, '0')}_$name.png');
-    // Sync is needed to avoid an infinite freeze for the test execution
+    // "Sync" to avoid an infinite freeze during a test execution
     if (file.existsSync()) {
       file.deleteSync();
     }
     file.createSync(recursive: true, exclusive: false);
     file.writeAsBytesSync(imageData);
   }
-
   Future<void> initMain(WidgetTester tester, bool isIntegration) async {
     await tester.pumpWidget(MultiProvider(
       providers: [
@@ -852,6 +842,7 @@ testWidgets('Foreground Chart', (WidgetTester tester) async {
 \end{lstlisting}
 
 \img{prototyping/golden-images}{Golden Image generation assert}{img:t-images}
+\img{prototyping/build-assert}{Sample of inconsistency between environments}{img:t-assert}
 
 \noindent The absence of fonts discernible from the captured image earlier (\cref{img:bdd-visualization}), since 
 \q{Foo}-font family is used by default in tests. To address this, we might use \q{FontLoader}-class to preload all 
@@ -871,5 +862,3 @@ to preempt errors, -- \cref{img:t-assert}), or alternatively, introduce a permis
 or \href{https://stackoverflow.com/questions/62551504/flutter-golden-image-tests-diff-threshold}{https://stackoverflow.com/questions/62551504/}
 and implemented in \issue{179}{c620a79}). This strategic flexibility ensures a balanced approach between stringent 
 conformity and the inherent variability of UI rendering across different environments.
-
-\img{prototyping/build-assert}{Sample of inconsistency between environments}{img:t-assert}

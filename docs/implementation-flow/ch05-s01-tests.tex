@@ -131,6 +131,7 @@ usage of \q{traceAction}-method to store time-based metrics:
 // ./test/performance/load/creation_test.dart
 void main() {
   final binding = IntegrationTestWidgetsFlutterBinding.ensureInitialized();
+
   testWidgets('Cover Starting Page', (WidgetTester tester) async {
     await binding.traceAction(() async {
         // ... other steps
@@ -161,7 +162,6 @@ void main() {
 
 \noindent The \q{timeline.timeline\_summary.json}-file, by being a native \q{JSON}-file, can be opened in IDE for a 
 manual check, but it's mostly used in CI/CD to fail the build if any of defined parameter is out of the boundaries. 
-
 By example, the value of \q{average\_frame\_build\_time\_millis}-parameter is recommended to be below 16 milliseconds to 
 ensure that the app runs at 60 frames per second without glitches. Other parameters are widely described on the page
 \href{https://api.flutter.dev/flutter/flutter\_driver/TimelineSummary/summaryJson.html}{https://api.flutter.dev/flutter/flutter\_driver/TimelineSummary}.
@@ -223,45 +223,35 @@ frames per second rendering. To run the app with \q{--cache-sksl} turned on to c
 $ flutter run --profile --cache-sksl --purge-persistent-cache
 \end{lstlisting}
 
-\noindent Warm-up shaders in Skia Shader Language (SkSL) format for an application build:
+\noindent Warm-up shaders in Skia Shader Language (SkSL) format during the build:
 
 \begin{lstlisting}[language=terminal]
 # Capture shaders in Skia Shader Language (SkSL) format into a file
 $ flutter drive --profile --cache-sksl \
-  --write-sksl-on-exit sksl.json \
-  -t test_driver/warm_up.dart
+  --write-sksl-on-exit sksl.json -t test_driver/warm_up.dart
 # Build app with SkSL warm-up
 $ flutter build ios --bundle-sksl-path sksl.json
 \end{lstlisting}
 
 \begin{lstlisting}
 // ./test_driver/warm_up.dart
-import 'package:integration_test/integration_test_driver.dart';
-
-Future<void> main() {
-  return integrationDriver();(*@ \stopnumber @*)
-}
+Future<void> main() => integrationDriver();(*@ \stopnumber @*)
 
 // ./test_driver/warm_up_test.dart
 Future<void> main() async {
   IntegrationTestWidgetsFlutterBinding.ensureInitialized();
-  SharedPreferencesMixin.pref = await SharedPreferences.getInstance();
-
+  SharedPreferencesMixin.pref=await SharedPreferences.getInstance();
   testWidgets('Warm-up', (WidgetTester tester) async {
     await tester.pumpWidget(MultiProvider(
       providers: [
-        ChangeNotifierProvider<AppData>(
-          create: (_) => AppData(),
-        ),
+        ChangeNotifierProvider<AppData>(create: (_) => AppData()),
         ChangeNotifierProvider<AppTheme>(
           create: (_) => AppTheme(ThemeMode.system),
-        ),
-      ],
+        )],
       child: const MyApp(),
     ));
     await tester.pumpAndSettle(const Duration(seconds: 3));
   });
-}
 \end{lstlisting}
 
 \noindent Simply by SkSL caching we've taken \q{56 FPS (average)} as an outcome, but there are many other points for 
@@ -287,11 +277,13 @@ ListView.builder(
   itemCount: 5000,
   itemBuilder: (BuildContext context, int index) {
     return _getMyWidget(); // Function call
-  }),
+  }
+);
 // Better option
 ListView.builder(
   itemCount: 5000,
-  itemBuilder: (context, int index) => const MyWidget();
+  itemBuilder: (context, int index) => const MyWidget()
+);
 \end{lstlisting}
 
 \noindent Optimizing the utilization of \q{StatefulWidget} holds the potential to enhance performance, primarily due to 
@@ -330,25 +322,29 @@ the outage by broken dependencies and missed packages support:
 
 
 \subsubsection{Anticipating Churn Rate}
-\paragraph{Volume Testing}
-Check initial load (a time before the enabled interaction) with a huge transaction log history (32Mb, 128Mb, 
-512Mb, 2Gb).
 
-In the context of the current test, our primary objective is to ascertain the time required for the main page to 
-become accessible. To achieve this goal, we will monitor the disappearance of the "Project Initialization" header. 
-Subsequently, we will contrast this elapsed time with a size of the transactions' log history.
+\paragraph{Volume Testing} Check initial load (a time before the enabled interaction) with a huge transaction log 
+history (32Mb, 128Mb, 512Mb, 2Gb).
+
+In this specific test context, our primary objective is to precisely measure the time it takes for the main page to
+become fully accessible to users. We might achieve this goal by continuously monitoring the state of the application, 
+particularly focusing on the disappearance of the "Project Initialization" header. This monitoring process allows us 
+to capture the moment the application becomes responsive and ready for user interaction. 
+
+To gain a comprehensive perspective, we complement this elapsed time measurement with an analysis of the transaction 
+log history. By correlating the loading time with the log's size, we can identify any potential performance bottlenecks 
+or issues related to the application's initialization process:
 
 \begin{lstlisting}
 // ./integration_test/stress/initialization_test.dart
 testWidgets('Cover Initial Page', (WidgetTester tester) async {
-  // Start app by using 'pumpWidget'
-  await _init(tester);
+  await _init(tester); // Start app by using 'pumpWidget'
   FileRunner.tester = tester;
-  // Trigger step to verify that data is loaded
-  await FirstRun().executeStep();
-  // Change test execution timeout (*@ \stopnumber @*)
+  await FirstRun().executeStep(); // verify that data is loaded
+  // Change test execution timeout
 }, timeout: const Timeout(Duration(minutes: 30)));
-
+\end{lstlisting}
+\begin{lstlisting}
 // ./test/e2e/_steps/given/first_run.dart
 class FirstRun extends Given with SharedPreferencesMixin {
   @override
@@ -487,8 +483,8 @@ Running scenario: Create new Bill # :2
   V And I tap on 0 index of "ListBudgetSelector" fields # :7 took 465ms
   V And I tap on 0 index of "BaseLineWidget" fields # :8 took 350ms
   V And I enter "10" to "Set Amount" text field # :9 took 266ms
-  V And I enter "Bill #8" to "Set Expense Details" text field # :10 took 266ms
-Exception: RangeError (index): Invalid value: Valid value range is empty: -1
+  V And I enter "Bill #8" to "Set Expense Details" text field
+RangeError (index): Invalid value: Valid value range is empty: -1
 \end{lstlisting}
 
 \noindent The problem is linked to a guarded function conflict (first method had not yet finished executing at the time 
@@ -512,9 +508,9 @@ to a missed first record from transaction logs during initialization process:
 FormatException: Invalid length, must be multiple of four
 \end{lstlisting}
 
-The problem here is that the \q{transaction log}-file was created with a BOM as a first symbol in a line, that's why 
-encryption is failing. Good catch! Let's add a new line at a moment of the file creation, and go further. Additionally,
-raised a problem with \q{FloatingActionButton}-buttons:
+\noindent The problem here is that the \q{transaction log}-file was created with a BOM as a first symbol in a line, 
+that's why encryption is failing. Good catch! Let's add a new line at a moment of the file creation, and go further. 
+Additionally, raised a problem with \q{FloatingActionButton}-buttons:
 
 \begin{lstlisting}[language=terminal]
 The following assertion was thrown during a scheduler callback:

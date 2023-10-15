@@ -62,12 +62,12 @@ extension DoubleExt on double {
 }
 \end{lstlisting}
 
-\noindent Collections are represented by \q{List}, \q{Map}, \q{Set}, and \q{Queue}. Where \q{List} is an ordered 
-collection of objects; \q{Map}, as a collection of key/value pairs, is used to retrieve a value by its associated key 
-with a maintained key uniqueness; as well as \q{Set} -- to control uniqueness of variables. \q{Queue} implements both 
-stack and queue behavior (where, ListQueue -- keeps a cyclic buffer of elements, DoubleLinkedQueue -- to guarantee 
-constant time on 'add', 'remove-at-ends' and 'peek'-operations). As a distinctive feature of collections, their 
-iterativeness is declared by a subtype:
+\noindent Collections are represented by \q{List}, \q{Map}, \q{Set}, \q{Records}, and \q{Queue}. Where \q{List} is an 
+ordered collection of objects; \q{Map}, as a collection of key/value pairs, is used to retrieve a value by its 
+associated key with a maintained key uniqueness; as well as \q{Set} -- to control uniqueness of variables. \q{Queue} 
+implements both stack and queue behavior (where, ListQueue -- keeps a cyclic buffer of elements, DoubleLinkedQueue -- 
+to guarantee constant time on 'add', 'remove-at-ends' and 'peek'-operations). As a distinctive feature of collections, 
+their iterativeness is declared by a subtype:
 
 \begin{itemize}
   \item \q{HashMap} and \q{HashSet}, unordered, both provide an access to items (by key) in (potentially) amortized 
@@ -81,8 +81,60 @@ iterativeness is declared by a subtype:
 List<int> data = [1, 2, 3]; // data.last; // 3
 Set<String> scope = {'a', 'b', 'a'}; // scope.length; // 2
 HashMap<String, int> hash = {'test': 123}; // hash.values; // [123]
-// Immutable Map - not iterable, with an object-based access
+// Records - immutable, not iterable, with an object-based access
 var map = (text: 'sample', at: 123); // map.text; // 'sample'
+\end{lstlisting}
+
+
+\subsubsection{Extracting Patterns}
+
+Pattern matching in programming involves comparing data structures against predefined patterns, which enables 
+conditional execution based on the match:
+
+\begin{lstlisting}
+const a = 'a';
+const b = 'b';
+final obj = [a, b];
+
+if (obj.length == 2 && obj[0] == a && obj[1] == b) {
+  print('$a, $b');
+}
+// Or, it can be transformed into:
+switch (obj) {
+  case [a, b]:
+    print('$a, $b');
+    break;
+  // ... other conditions
+}
+\end{lstlisting}
+
+\noindent Destructuring, on the other hand, offers a means to extract individual elements from complex data structures 
+like arrays or objects and assign them to variables. This technique is especially valuable when dealing with complex 
+objects, allowing you to fetch their properties efficiently:
+
+\begin{lstlisting}
+// Operation with basics
+final users = ['User 1', 'User 2', 'User 3'];
+final [adminName, userName, guestName] = users;
+
+// To declare new variables from a nested structure
+var (name, [code, type]) = ('User 1', [123, true]);
+
+// Object extraction
+class Transaction { 
+  String description;
+  String category;
+  double amount;
+}
+
+const scope = [
+  Transaction('Buy groceries', 'Groceries', 50.0),
+  // ... others
+];
+
+for (final Transaction(:category, :amount) in scope) {
+  print('$category: $amount');
+}
 \end{lstlisting}
 
 

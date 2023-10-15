@@ -66,17 +66,11 @@ class MyApp extends StatelessWidget {
                 Tab(text: 'Page 1'),
                 Tab(text: 'Page 2'),
                 Tab(text: 'Page 3'),
-              ],
-            ),
+              ]),
           ),
           body: TabBarView(
             children: [Page1(), Page2(), Page3()],
           ),
-        ),
-      ),
-    );
-  }
-}
 \end{lstlisting}
 
 \noindent It's a time to combine both solutions into one:
@@ -167,6 +161,7 @@ void switchTab(int newIndex) {
   if (newIndex < 0 || newIndex >= widget.tabCount) {
     return;
   }
+
   setState(() {
     const delay = 300;
     // Saving current state for the check after 
@@ -178,7 +173,8 @@ void switchTab(int newIndex) {
       duration: const Duration(milliseconds: delay),
       curve: Curves.ease,
     );
-    // Verify that the difference is more than one
+  
+    // Ensure that the disparity exceeds one
     if ((currIndex - newIndex).abs() > 1) {
       delaySwitchTab(delay, newIndex);
     }

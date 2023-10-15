@@ -17,11 +17,10 @@ capabilities, which smooth out edges and lines to create visually pleasing graph
 with the platform-specific code to interact with device hardware. It bridges the gap between the Flutter framework, 
 written in Dart, and the platform-specific code, allowing Flutter apps to access device features and services.
 
-\paragraph{Engine Embedder}
-
-The Flutter Engine is window toolkit agnostic, meaning a capability to build Flutter embedders on one of the platforms 
-not supported out of the box. That enables creation of custom solutions with the power and flexibility of Flutter for 
-a distribution to anywhere, including smart devices, cars, and more (as \q{raspi-flutter} for \q{Raspberry Pi}).
+\paragraph{Embedder} The Flutter Engine is window toolkit agnostic, meaning a capability to build Flutter embedders on 
+one of the platforms not supported out of the box. That enables creation of custom solutions with the power and 
+flexibility of Flutter for a distribution to anywhere, including smart devices, cars, and more (as \q{raspi-flutter} 
+for \q{Raspberry Pi}).
 
 \paragraph{Platform Channels} Device-specific features and APIs are accessible through what are known as platform channels, 
 which facilitate the integration of a native functionality. Platform Channels enables bi-directional asynchronous 
@@ -30,9 +29,10 @@ from either the Dart or native side (for example, a native method to access the 
 communication is covered by a data serialization and deserialization process that ensures that it is in a format that 
 both can understand.
 
-\paragraph{Plugins} Flutter plugins provide a way to encapsulate and interact with platform-specific code, by using 
-\q{Dart}-language as a bridge between Flutter and the native code, accessing hardware features, third-party libraries, 
-and platform-specific APIs.
+\paragraph{Framework} The Flutter Framework includes Material and Cupertino, which provide a wide range of user interface 
+components. Cupertino widgets mimic the iOS look and feel. Material Design is characterized by its use of material 
+surfaces and responsive animations.
+
 
 \subsubsection{Considering Diversity}
 
@@ -121,6 +121,44 @@ class LoadingWidgetState extends State<LoadingWidget>
 \end{lstlisting}
 
 
+\subsubsection{Exploring Widget Lifecycles}
+
+Similar to the app lifecycle, Flutter widgets also possess lifecycle methods:
+
+\begin{itemize}
+  \item \q{initState} This method is invoked when the widget is inserted into the widget tree. It runs only once per 
+  State object and is where you can initialize variables specific to the widget, such as an AnimationController.
+
+  \item \q{didChangeDependencies} This method is triggered immediately after initState and when a State object's 
+  dependencies change through InheritedWidget.
+
+  \item \q{didUpdateWidget} When the widget configuration changes, this method is called. An example is when a 
+  parent widget passes data to a child widget through the constructor.
+
+  \item \q{build} The build method is called whenever the widget needs to be rebuilt. This can happen after the 
+  initState method, didChangeDependencies, didUpdateWidget, or when the state changes through setState.
+
+  \item \q{deactivate} This method is called when the widget is removed from the widget tree, but not permanently. 
+  It can be activated again later.
+
+  \item \q{dispose} The dispose method is called when the widget is removed from the widget tree permanently. 
+  In this method, you should release any resources held by the widget, such as stopping animations.
+\end{itemize}
+
+\noindent These lifecycle methods allow to manage the behavior and state of widgets throughout their existence in the 
+widget tree. The list can be extended by specialized widgets' methods, such as those used for handling animations or 
+state management: 
+
+\begin{itemize}
+  \item \q{AnimationController}: forward (start the animation), reverse.
+  \item \q{StreamBuilder}: stream (to retrieve the stream), snapshot (the most recent snapshot of the data).
+  \item \q{FutureBuilder}: future (to access the future), snapshot.
+  \item \q{ChangeNotifierProvider}: updateShouldNotify (method for deciding if the associated ChangeNotifier has 
+  changed), updateShouldNotifyWith (control over when to notify descendants of changes).
+\end{itemize}
+
+
+\newpage
 \subsubsection{Differentiating Keys}
 
 Keys, in the context of Flutter, are indispensable. They act as distinct identifiers for widgets and wield significant 
@@ -174,6 +212,57 @@ myWidget.doSomething();
 widgets. This approach is useful in scenarios where the key of the parent widget already serves the identification and 
 differentiation purposes. It promotes a code reusability and keeps the codebase cleaner and better maintainable.
 
+
+\newpage
+\subsubsection{Processing in Parallel}
+
+In Flutter, we have two powerful methods for managing parallel processing: \q{Isolate} and \q{Compute}. These 
+mechanisms are essential for efficiently executing tasks concurrently, enhancing the performance and responsiveness. 
+Isolates are like separate threads that run in parallel, while Compute simplifies parallelism by offloading 
+computations to a background isolate, allowing the main thread to remain responsive to user interactions.
+
+\q{Isolate}s are not limited to just one instance; we may create and oversee multiple of them concurrently. This 
+flexibility allows to distribute workloads efficiently and utilize the full potential of parallel processing:
+
+\begin{lstlisting}
+class ClientData { /* ... */ }
+
+void main() async {
+  List<ClientData> clients = [
+    ClientData('John', 35000), 
+    // ... others
+  ];
+  final receiver = ReceivePort();
+  // Spawn a new isolate for each client
+  for (var client in clients) {
+    await Isolate.spawn(_runIsolate,
+        (client: client, port: receiver.sendPort));
+  }
+  receiver.listen(print);
+}
+
+void _runIsolate(dynamic message) {
+  // ... a financial calculation, e.g., tax projection
+  double taxProjection = calculateTax(message.client);
+  message.port.send(taxProjection);
+}
+\end{lstlisting}
+
+\noindent \q{Compute} streamlines the process by automatically setting up an isolate for parallel execution of the 
+given function, reducing the need for extensive communication with the main isolate:
+
+\begin{lstlisting}
+final storage = await compute(_processTransactions, filePath);
+\end{lstlisting}
+
+\noindent The main difference between \q{Isolate} and \q{Compute} is in control and complexity. While Compute suits 
+for straightforward tasks without intermediate communication; Isolate offers fine-grained control, ideal for complex 
+tasks with extensive communication between isolates or those requiring multiple isolates. As a tip, we may employ the 
+\q{Future.wait}-method to execute a list of \q{Future}-objects concurrently:
+
+\begin{lstlisting}
+final results = await Future.wait([dataFromApi(), dataFromFile()]);
+\end{lstlisting}
 
 \newpage
 \subsubsection{Asserting in Tests}

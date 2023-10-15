@@ -87,8 +87,8 @@ and user settings across all platforms:
 $ flutter pub add shared_preferences
 \end{lstlisting}
 
-To interact with preferences efficiently, we might employ mixins, which offer a powerful mechanism for reusing code 
-across multiple classes. A mixin is defined by using the \q{mixin}-keyword followed by its name and a set of members, 
+\noindent To interact with preferences efficiently, we might employ mixins, which offer a powerful mechanism for reusing 
+code across multiple classes. A mixin is defined by using the \q{mixin}-keyword followed by its name and a set of members, 
 such as properties, methods, and getters/setters. It cannot be instantiated on its own; instead, it is meant to be mixed 
 into other classes by using the \q{with}-keyword (it inherits all the members from the mixin). That allows the class 
 to access and use the properties and methods defined in the mixin as if they were a part of its own implementation:
@@ -117,16 +117,16 @@ class ExpensesTabState<T extends ExpensesTab> extends State<T>
   // ... properties and constructor
   (*@ \startnumber{10} @*)
   @override
-  void initState() { // We cannot make \q{initState} async
+  void initState() { // We cannot make "initState" async
     account = widget.account;
     super.initState();
-    // Waiting for the value, then apply via \q{setState}
+    // Wait for the value, then apply it via "setState"
     getPreference('account')
         .then((value) => setState(() => account ??= value));
   }
 
   void updateStorage() {
-    // On \q{save}-action store preferences
+    // On "save"-action store preferences
     setPreference(prefAccount, account ?? '');
 // ... other code
 \end{lstlisting}
@@ -299,7 +299,6 @@ class AppTheme extends ValueNotifier<ThemeMode> with SharedPreferencesMixin {
       }
     });
   }
-
   _set(String val) {
     int? idx = int.tryParse(val);
     if (idx != null) {
@@ -308,7 +307,6 @@ class AppTheme extends ValueNotifier<ThemeMode> with SharedPreferencesMixin {
       notifyListeners();
     }
   }
-
   updateState(String value) {
     setPreference(prefTheme, value).then((_) {
       _set(value);
@@ -358,13 +356,13 @@ User I/Choreographer( 4431): Skipped 244 frames!
   The application may be doing too much work on its main thread.
 \end{lstlisting}
 
-\noindent Now that we've understood this, we can easily fix the problem by initializing the preferences' object only 
-once during the application start:
+\noindent With this understanding, we can effortlessly resolve the issue by initializing the preferences object only 
+once during the application's startup:
 
 \begin{lstlisting}
 // ./lib/main.dart
 void main() async {
-  SharedPreferencesMixin.pref = await SharedPreferences.getInstance();(*@ \stopnumber @*)
+SharedPreferencesMixin.pref = await SharedPreferences.getInstance();(*@ \stopnumber @*)
 
 // ./lib/_mixins/shared_preferences_mixin.dart
 mixin SharedPreferencesMixin {
