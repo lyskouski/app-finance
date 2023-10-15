@@ -4,6 +4,7 @@
 import 'package:app_finance/_classes/herald/app_locale.dart';
 import 'package:app_finance/_configs/theme_helper.dart';
 import 'package:app_finance/pages/abstract_page_state.dart';
+import 'package:app_finance/pages/subscription/widgets/apple_widget.dart';
 import 'package:app_finance/pages/subscription/widgets/other_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/foundation.dart';
@@ -34,9 +35,11 @@ class SubscriptionPageState extends AbstractPageState<SubscriptionPage> {
           Text(AppLocale.labels.subscription),
           const Divider(),
           Expanded(
-            child: defaultTargetPlatform == TargetPlatform.iOS || defaultTargetPlatform == TargetPlatform.macOS
-                ? ThemeHelper.emptyBox
-                : const OtherWidget(),
+            child: switch (defaultTargetPlatform) {
+              TargetPlatform.iOS || TargetPlatform.macOS => const AppleWidget(),
+              TargetPlatform.android => ThemeHelper.emptyBox,
+              _ => const OtherWidget(),
+            },
           ),
           ThemeHelper.hIndent,
         ],
