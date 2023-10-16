@@ -7644,6 +7644,10 @@ SOFTWARE.
 flutter_lints
 flutter_markdown
 flutter_plugin_android_lifecycle
+in_app_purchase
+in_app_purchase_android
+in_app_purchase_platform_interface
+in_app_purchase_storekit
 path_provider
 path_provider_android
 path_provider_foundation
