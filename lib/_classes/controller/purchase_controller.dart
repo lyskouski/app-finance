@@ -54,6 +54,7 @@ class PurchaseController {
       pSubApple,
       pSubGoogle,
     });
+    iap.restorePurchases();
     return response.productDetails;
   }
 
