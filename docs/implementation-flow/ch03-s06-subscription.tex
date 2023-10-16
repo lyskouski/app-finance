@@ -83,3 +83,22 @@ As for the first one, the CodeLabs provides a step-by-step manual in details:
 \href{https://codelabs.developers.google.com/codelabs/flutter-in-app-purchases}{https://codelabs.developers.google.com/codelabs/flutter-in-app-purchases}.
 
 \img{first-steps/subscription}{Apple TestFlight -- Subscription check \issue{100}{}}{img:d-apple-review}
+
+\noindent The potential downside of using the \q{in\_app\_purchase}-package is that it might result in build failures 
+for \q{macOS}. This could occur due to the requirement for a minimum macOS version of 10.15 for deployment:
+
+\begin{lstlisting}
+// ./macos/Runner.xcodeproj/project.pbxproj
+\end{lstlisting}
+{
+\xpretocmd{\lstlisting}{\vspace{-12pt}}{}{}
+\begin{lstlisting}[firstnumber=2, backgroundcolor=\color{backred}]
+(*@\kdiff{-}@*)   MACOSX_DEPLOYMENT_TARGET = <any other version>;
+\end{lstlisting}
+\begin{lstlisting}[firstnumber=2, backgroundcolor=\color{backgreen}]
+(*@\kdiff{+}@*)   MACOSX_DEPLOYMENT_TARGET = 10.15;
+\end{lstlisting}
+}
+
+\noindent And, it still won't work without \q{./macos/Podfile}-file defined, hopefully with a universal content 
+\issue{100}{05329b3}.
