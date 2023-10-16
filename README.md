@@ -33,6 +33,7 @@
   - Google Play: [[on hold]](https://github.com/lyskouski/app-finance/issues/129)
   - Galaxy Store: [[pending]](https://github.com/lyskouski/app-finance/issues/284)
   - Huawei Gallery: [[pending]](https://github.com/lyskouski/app-finance/issues/286)
+  - [Release](https://github.com/lyskouski/app-finance/releases/latest)/fingrom_Android.aab
 
 ## Functionality
 - Accounting (Account Type, Currency/Cryptocurrency)
