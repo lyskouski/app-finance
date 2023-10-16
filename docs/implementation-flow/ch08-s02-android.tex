@@ -1,0 +1,91 @@
+% Copyright 2023 The terCAD team. All rights reserved.
+% Use of this content is governed by a CC BY-NC-ND 4.0 license that can be found in the LICENSE file.
+
+\subsection{Google Play}
+\markboth{Distributing}{Google Play}
+
+The process is started from Play Console (\href{https://play.google.com/console}{https://play.google.com/console}) 
+via "Select All apps", then by clicking on "Create app". We begin by selecting a default language and typing a 
+title of our application. This title is how it will be known to users on the Google Play Store. As a tip, it can be 
+updated later if inspiration strikes. The choice between "game" or "app" affect the categorization, also changeable 
+afterwards.
+
+We need our release build to be signed (\emph{\q{keytool}-command might not be recognized, it's a part of Java SDK; so,
+use the full path of its location instead of a simple command}):
+
+\begin{lstlisting}[language=terminal]
+# For Linux and macOS
+keytool -genkey -v -keystore ~/key.jks -keyalg RSA -keysize 2048 \
+    -validity 10000 -alias key
+
+# For Windows
+keytool -genkey -v -keystore c:\Users\USER_NAME\key.jks -storetype \
+    JKS -keyalg RSA -keysize 2048 -validity 10000 -alias key
+\end{lstlisting}
+
+\noindent From "App signing preferences" in Google Play Console we have to download a public key with Play encrypt 
+private key (PEPK) tool to generate and upload \q{.zip}-file:
+
+\begin{lstlisting}[language=terminal]
+$ java -jar pepk.jar --keystore=key.jks --alias=key \
+    --output=google-play_output.zip --include-cert \
+    --rsa-aes-encryption \
+    --encryption-key-path=./google-play_public_key.pem 
+
+Enter password for store 'key.jks':
+Enter password for key 'key':
+\end{lstlisting}
+
+\noindent Then, it's a time to sign the bundle by adding keychain preferences (as a warning, \q{key.properties}-file 
+should never be a part of the repository):
+
+\begin{lstlisting}
+// ./android/key.properties
+key.password=/* key.jks password */
+key.file=/* location of key.jks */
+\end{lstlisting}
+
+\noindent And adjust the android build-config of our application:\\
+
+{
+\xpretocmd{\lstlisting}{\vspace{-12pt}}{}{}
+\begin{lstlisting}
+// ./android/app/build.gradle
+def localProperties = new Properties()
+\end{lstlisting}
+\begin{lstlisting}[firstnumber=3, backgroundcolor=\color{backgreen}]
+(*@\kdiff{+}@*)
+(*@\kdiff{+}@*)def store = rootProject.file('key.properties')
+(*@\kdiff{+}@*)if (store.exists()) {
+(*@\kdiff{+}@*)  store.withReader("UTF-8"){reader -> localProperties.load(reader)}
+(*@\kdiff{+}@*)}
+(*@\kdiff{+}@*)
+\end{lstlisting}
+\begin{lstlisting}[firstnumber=9]
+// ... other code
+\end{lstlisting}
+\begin{lstlisting}[firstnumber=63, backgroundcolor=\color{backgreen}]
+(*@\kdiff{+}@*)signingConfigs {
+(*@\kdiff{+}@*) release {
+(*@\kdiff{+}@*)  keyAlias 'key'
+(*@\kdiff{+}@*)  keyPassword localProperties.getProperty('key.password')
+(*@\kdiff{+}@*)  storeFile file(localProperties.getProperty('key.file'))
+(*@\kdiff{+}@*)  storePassword localProperties.getProperty('key.password')
+(*@\kdiff{+}@*) }
+(*@\kdiff{+}@*)}
+\end{lstlisting}
+\begin{lstlisting}[firstnumber=71]
+buildTypes {
+  release {
+\end{lstlisting}
+\begin{lstlisting}[firstnumber=73, backgroundcolor=\color{backred}]
+(*@\kdiff{-}@*)    signingConfig signingConfigs.debug
+\end{lstlisting}
+\begin{lstlisting}[firstnumber=73, backgroundcolor=\color{backgreen}]
+(*@\kdiff{+}@*)    signingConfig signingConfigs.release
+\end{lstlisting}
+\begin{lstlisting}[firstnumber=74]
+  }
+}
+\end{lstlisting}
+}

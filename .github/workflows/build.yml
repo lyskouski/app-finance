@@ -65,7 +65,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        target: [macOS, iOS, Windows, Linux]
+        target: [macOS, iOS, Windows, Linux, Android]
         include:
           - os: macos-latest
             target: macOS
@@ -87,6 +87,11 @@ jobs:
             build_path: build/linux/x64/release/bundle
             asset_extension: .tar.gz
             asset_content_type: application/gzip
+          - os: ubuntu-latest
+            target: Android
+            build_path: build/app/outputs/bundle/release/
+            asset_extension: .aab
+            asset_content_type: application/zip
 
     steps:
       - uses: actions/checkout@v3
@@ -120,6 +125,7 @@ jobs:
           compress-archive -Path * -DestinationPath ${env:GITHUB_WORKSPACE}/fingrom_${{ matrix.target }}${{ matrix.asset_extension }}
         working-directory: ${{ matrix.build_path }}
 
+
       - name: Run Linux Build
         if: matrix.target == 'Linux'
         run: |
@@ -131,6 +137,23 @@ jobs:
         if: matrix.target == 'Linux'          
         run: tar czf $GITHUB_WORKSPACE/fingrom_${{ matrix.target }}${{ matrix.asset_extension }} *
         working-directory: ${{ matrix.build_path }}
+
+
+      - name: Apply Android Keychain
+        if: matrix.target == 'Android'
+        env:
+          ANDROID_JKS: ${{ secrets.ANDROID_JKS }}
+          ANDROID_KEY: ${{ secrets.ANDROID_KEY }}
+        run: |
+          mkdir -p ~/private_keys
+          echo -n "$ANDROID_JKS" | base64 --decode --output ~/private_keys/key.jks
+          echo -n "$ANDROID_KEY" | base64 --decode --output $GITHUB_WORKSPACE/android/key.properties
+
+      - name: Run Android Build
+        if: matrix.target == 'Android'
+        run: |
+          flutter build appbundle --build-name=${{ needs.release.outputs.version }} --build-number=${{ needs.release.outputs.build_number }} --release --no-tree-shake-icons --obfuscate --split-debug-info=build/app/symbols
+          mv ${{ matrix.build_path }}/app-release.aab $GITHUB_WORKSPACE/fingrom_${{ matrix.target }}.aab
 
 
       - name: Import Distribution Certificate

@@ -3,6 +3,7 @@
 
 import 'package:app_finance/_classes/herald/app_locale.dart';
 import 'package:app_finance/_classes/herald/app_palette.dart';
+import 'package:app_finance/_classes/herald/app_purchase.dart';
 import 'package:app_finance/_classes/herald/app_sync.dart';
 import 'package:app_finance/_classes/herald/app_theme.dart';
 import 'package:app_finance/_classes/herald/app_zoom.dart';
@@ -84,6 +85,9 @@ void main() async {
         ),
         ChangeNotifierProvider<AppPalette>(
           create: (_) => AppPalette(),
+        ),
+        ChangeNotifierProvider<AppPurchase>(
+          create: (_) => AppPurchase(),
         ),
       ],
       child: MyApp(platform: platform),

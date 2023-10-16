@@ -5,12 +5,12 @@ import 'package:app_finance/_configs/theme_helper.dart';
 import 'package:flutter/material.dart';
 
 class NotificationBar {
-  static void showSnackBar(BuildContext context, String message) {
+  static void showSnackBar(BuildContext context, String message, [bool asError = false]) {
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(
         content: Row(
           children: [
-            const Icon(Icons.check, color: Colors.green),
+            asError ? const Icon(Icons.error_outline, color: Colors.red) : const Icon(Icons.check, color: Colors.green),
             ThemeHelper.wIndent,
             Text(message),
           ],

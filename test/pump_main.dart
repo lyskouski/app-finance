@@ -2,6 +2,7 @@
 // Use of this source code is governed by a CC BY-NC-ND 4.0 license that can be found in the LICENSE file.
 
 import 'dart:io' as io;
+import 'package:app_finance/_classes/herald/app_purchase.dart';
 import 'package:app_finance/_configs/custom_text_theme.dart';
 import 'package:file/file.dart';
 import 'package:file/local.dart';
@@ -148,6 +149,9 @@ class PumpMain {
         ),
         ChangeNotifierProvider<AppPalette>(
           create: (_) => AppPalette(),
+        ),
+        ChangeNotifierProvider<AppPurchase>(
+          create: (_) => AppPurchase(),
         ),
       ],
       child: RepaintBoundary(
