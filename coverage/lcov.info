@@ -1485,12 +1485,13 @@ DA:53,0
 DA:54,0
 DA:55,0
 DA:57,0
-DA:60,0
+DA:58,0
 DA:61,0
 DA:62,0
 DA:63,0
-DA:65,0
-LF:30
+DA:64,0
+DA:66,0
+LF:31
 LH:0
 end_of_record
 SF:lib/_configs/custom_color_scheme.dart
