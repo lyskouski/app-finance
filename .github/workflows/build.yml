@@ -207,6 +207,7 @@ jobs:
         if: matrix.target == 'macOS'
         run: |
           flutter config --enable-macos-desktop
+          export MACOSX_DEPLOYMENT_TARGET=10.15
           flutter build -v macos --build-name=${{ needs.release.outputs.version }} --build-number=${{ needs.release.outputs.build_number }} --release --no-tree-shake-icons
 
       - name: Compress macOS Package
