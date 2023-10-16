@@ -146,7 +146,7 @@ jobs:
           ANDROID_KEY: ${{ secrets.ANDROID_KEY }}
         run: |
           mkdir -p ~/private_keys
-          echo -n "$ANDROID_JKS" | base64 -d > ~/private_keys/key.jks
+          echo -n "$ANDROID_JKS" | base64 -d > $GITHUB_WORKSPACE/android/key.jks
           echo -n "$ANDROID_KEY" | base64 -d > $GITHUB_WORKSPACE/android/key.properties
 
       - name: Run Android Build
