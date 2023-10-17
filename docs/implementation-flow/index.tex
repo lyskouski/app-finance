@@ -44,6 +44,7 @@
 \usepackage{tabularx}
 \usepackage{dirtree}
 \renewcommand\DTstyle{\rmfamily}
+\usepackage{wallpaper}
 
 \usepackage{_lib/customization}
 \usepackage{_lib/code-style}
@@ -70,25 +71,16 @@
 
 \begin{document}
 
-%\put(-30,-556)
-%\put(-55,-565)
-%\thiswatermark{\centering%
-%\put(-50,-560){\includegraphics[scale=1.55]{./img/book_begin.jpg}}%
-%}
+%\maketitle
+\thispagestyle{empty}
+\ThisCenterWallPaper{1}{_cover/main.png}
+~
+\newpage
 
-%~
-%\thispagestyle{empty}
-%\newpage
-
-\maketitle
 
 %\include{info}
 
 \tableofcontents
-
-%\listoffigures
-
-%\listoftables
 
 \newpage
 \section*{Introducing}
@@ -167,6 +159,9 @@
 \addcontentsline{toc}{section}{References}
 \markboth{References}{References}
 \input{links}
+\newpage
+\listoffigures
+\listoftables
 
 \newpage
 \addcontentsline{toc}{section}{Bibliography}
