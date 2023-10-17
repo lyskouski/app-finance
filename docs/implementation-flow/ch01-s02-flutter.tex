@@ -10,12 +10,12 @@ tools for building UIs, handling user input, and accessing device features. Flut
 that are the building blocks of Flutter apps, and everything, from a simple button to a complex layout, is a widget
 (including animations and layout controls).
 
-\paragraph{Engine} At the core of Flutter is the C/C++ engine, known as Skia (open-source 2D-graphics library, developed 
-and maintained by Google), that provides a set of low-level APIs for rendering graphics (support for both vector and 
-bitmap graphics to draw shapes, text, and images) and low-level platform services. Skia includes anti-aliasing 
-capabilities, which smooth out edges and lines to create visually pleasing graphics. This engine provides interfaces 
-with the platform-specific code to interact with device hardware. It bridges the gap between the Flutter framework, 
-written in Dart, and the platform-specific code, allowing Flutter apps to access device features and services.
+\paragraph{Engine} At the core of Flutter is the C/C++ engine, known as \q{Skia} (open-source 2D-graphics library, 
+developed and maintained by Google), that provides a set of low-level APIs for rendering graphics (support for both 
+vector and bitmap graphics to draw shapes, text, and images) and low-level platform services. Skia includes 
+anti-aliasing capabilities, which smooth out edges and lines to create visually pleasing graphics. This engine provides 
+interfaces with the platform-specific code to interact with device hardware. \q{Impeller} is an additional renderer 
+within Flutter's engine (default for iOS), enabling new experiences such as 3D support.
 
 \paragraph{Embedder} The Flutter Engine is window toolkit agnostic, meaning a capability to build Flutter embedders on 
 one of the platforms not supported out of the box. That enables creation of custom solutions with the power and 
@@ -75,7 +75,7 @@ components from scratch.
 
 
 \newpage
-\subsubsection{Distinguishing Stateless and Stateful} \label{flutter-state}
+\subsubsection{Distinguishing States} \label{flutter-state}
 
 A \q{StatelessWidget} in Flutter represents interfaces with an immutable state (once created), requiring a new instance 
 for updates; providing suitability for static content like text, icons, or images; and performance advantages due to 
@@ -121,6 +121,54 @@ class LoadingWidgetState extends State<LoadingWidget>
 \end{lstlisting}
 
 
+\subsubsection{Sharing Data}
+
+Inherited Widgets are a way to propagate data down the widget tree from a parent widget to its descendants. The key 
+feature is that they automatically rebuild their descendants when the data they provide changes:
+
+\begin{lstlisting}
+class AppInheritedWidget extends InheritedWidget {
+  final String data;
+
+  AppInheritedWidget({
+    Key key,
+    @required this.data,
+    @required Widget child,
+  }) : super(key: key, child: child);
+
+  @override
+  bool updateShouldNotify(covariant InheritedWidget oldWidget) {
+    // Set if the data has changed and descendants should rebuild
+    return data != (oldWidget as MyInheritedWidget).data;
+  }
+}
+\end{lstlisting}
+
+\noindent To use an Inherited Widget, we should wrap our root widget (e.g., MaterialApp or CupertinoApp) with the custom 
+Inherited Widget:
+
+\begin{lstlisting}
+runApp(
+  AppInheritedWidget(
+    data: 'Shared Data',
+    child: MyApp(),
+  ),
+);
+\end{lstlisting}
+
+\noindent Descendant widgets can access the shared data using the context:
+
+\begin{lstlisting}
+final data = AppInheritedWidget.of(context).data;
+\end{lstlisting}
+
+\noindent Inherited Widgets can be used to pass data down the widget tree without manually passing it as constructor 
+parameters through multiple levels of widgets. This can greatly simplify the code and reduce the need for callback 
+functions to communicate between widgets. Also, they minimize unnecessary rebuilds and updates by only rebuilding the 
+widget subtree that depends on the data that changed.
+
+
+\newpage
 \subsubsection{Exploring Widget Lifecycles}
 
 Similar to the app lifecycle, Flutter widgets also possess lifecycle methods:

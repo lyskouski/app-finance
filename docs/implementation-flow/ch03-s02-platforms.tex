@@ -12,11 +12,12 @@ ways to brake that limitation:
 \begin{lstlisting}
 // Conditional Imports
 import 'package:file_picker_web/file_picker_web.dart' if (dart.library.io) 'package:file_picker/file_picker.dart';
-
 // ... and Exports
 export 'src/connector_none.dart' // Stub implementation
   if (dart.library.io) 'src/connector_io.dart' // dart:io
   if (dart.library.html) 'src/connector_html.dart'; // dart:html
+// By using postponed initialization: await heavy.loadLibrary();
+import 'package:{heavy}/{heavy}.dart' deferred as heavy;
 \end{lstlisting}
 
 \noindent Platform channels is used as a communicational bridge to inject a platform-specific code, like Swift/Obj-C 

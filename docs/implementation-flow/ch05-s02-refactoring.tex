@@ -1,7 +1,7 @@
 % Copyright 2023 The terCAD team. All rights reserved.
 % Use of this content is governed by a CC BY-NC-ND 4.0 license that can be found in the LICENSE file.
 
-\subsection{Refactoring by Principles}
+\subsection{Refactoring by Principles} \label{refactoring}
 \markboth{Unleashing}{Refactoring by Principles}
 
 Having scrutinized the application's "skeleton" encompassing scalability and fault tolerance (\ref{benchmark}), it's 
@@ -58,6 +58,10 @@ principles.\\
 won't discuss made changes \issue{159}{} \issue{217}{}, by reminding only the semaphore approach (\ref{ut-fail}) that 
 declares refactoring only after a significant code coverage. Refactoring as a process of rearchitecting \cite{Chec23} 
 previously made decisions, to restate, revise and improve them by visualizing in a clean code. 
+
+As a note, it's worth noting that approaches can be mixed, such as combining design patterns like VIPER (View, 
+Presenter, Interactor, Router, Entity), MVVM (Model, View, ViewModel), or others, to represent business layer, with 
+Atomic Design \cite{Kama22} methodology, or other, for the presentation layer.
 
 In the context of extreme programming, the methodology includes a provision for pair programming \cite{Ligu19}. This 
 involves two programmers collaborating closely at a single workstation, communicating actively throughout the process 

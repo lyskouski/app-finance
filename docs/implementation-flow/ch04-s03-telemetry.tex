@@ -1,14 +1,20 @@
 % Copyright 2023 The terCAD team. All rights reserved.
 % Use of this content is governed by a CC BY-NC-ND 4.0 license that can be found in the LICENSE file.
 
-\subsection{Adding Telemetry}
+\subsection{Adding Telemetry} \label{telemetry}
 \markboth{Gating}{Adding Telemetry}
+
+The application telemetry provide insights (a data-driven decision-making) into user interactions with different app 
+features, illuminating areas requiring enhancements or the introduction of new features. Essentially, it serves as a 
+compass guiding an app's ongoing development, ensuring that decisions are based on empirical data rather than 
+assumptions. Analytics help pinpoint bottlenecks, crashes, and areas that hinder our app's seamless operation. 
+
 
 \subsubsection{Activating Google Analytics}
 
-To understand how users behave (user experience), where are they from (to prioritize localization), what's the scope of
-troubles they're facing with (exception handling); we might use any external analytical instruments. One of them is 
-Google Analytics.
+To understand user behavior (user experience), their geographical locations (for localization prioritization), and the 
+nature of issues they encounter (exception handling), external analytical tools are often employed. Google Analytics 
+is a prominent example of such tools (without neglecting other options, as Amplitude, Flurry, Mixpanel, etc.).
 
 The process is started from creating a Firebase account and a new project there (by clicking on the relative 
 button and proceeding with obvious steps; just don't forget to enable Google Analytics while creating the project): 

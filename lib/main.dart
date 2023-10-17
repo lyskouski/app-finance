@@ -55,12 +55,15 @@ void main() async {
     );
     FirebaseAnalytics.instance.logAppOpen();
     PlatformDispatcher.instance.onError = (error, stack) {
-      FirebaseAnalytics.instance.logSelectContent(contentType: error.toString(), itemId: 'platform-error');
+      FirebaseAnalytics.instance.logEvent(
+        name: 'platform-error',
+        parameters: {'error': error.toString(), 'trace': stack.toString()},
+      );
       return true;
     };
     FlutterError.onError = (details) {
       FlutterError.presentError(details);
-      FirebaseAnalytics.instance.logSelectContent(contentType: details.toString(), itemId: 'flutter-error');
+      FirebaseAnalytics.instance.logEvent(name: 'flutter-error', parameters: {'error': details.toString()});
     };
   }
   AppPreferences.pref = await SharedPreferences.getInstance();
