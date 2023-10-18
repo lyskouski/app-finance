@@ -1,7 +1,182 @@
 % Copyright 2023 The terCAD team. All rights reserved.
 % Use of this content is governed by a CC BY-NC-ND 4.0 license that can be found in the LICENSE file.
 
-\subsection{[WIP] Visualizing Data}
+\subsection{Visualizing Data}
 \markboth{Unleashing}{Visualizing Data}
 
-[TBD]
+With countless transactions, revenue streams, expenditures, and budgetary considerations, it's essential to have a 
+system in place that simplifies the intricacies. The traditional reliance on spreadsheets and numerical reports to 
+handle this complexity often results in a daunting and overwhelming experience, especially as data volumes continue 
+to grow.  This challenge necessitates solutions for visualizing and interpreting data effectively. Our financial 
+accounting application may employ the data visualization in various use cases:
+
+\begin{itemize}
+  \item Cash Flow Analysis -- predicts financial trends, manage liquidity, and ensure operational continuity.
+
+  \item Budget Monitoring -- helps to stay on track and avoid overspending.
+
+  \item Financial Reporting -- provides summary reports, including annual reports, income statements, and balance 
+  sheets, offering a snapshot of transactions within a defined period.
+
+  \item Risk Management -- visualizes risk factors and their impact to make proactive decisions in mitigating financial 
+  threats.
+
+  \item Portfolio Management -- assess the performance of assets for informed investment decisions.
+\end{itemize}
+
+\noindent While these categories can encompass a wide range of tools and techniques, our initial focus is on delivering 
+high-impact features shortly (since the full scope might take months). As we move forward, we'll progressively enhance 
+the application by introducing a broader scope of options.
+
+Let's kick things off by introducing a first chart for managing budget categories: Forecast Chart. 
+This chart provides a visual representation of historical data while also forecasting the future based on mathematical 
+models. These models can vary depending on the specific field and the type of data being analyzed. We'll take the 
+simplest one -- Monte-Carlo Simulation, a computational technique used to approximate the behavior of complex systems 
+or processes through random sampling. This simulation method is particularly valuable when dealing with systems that 
+involve many variables and intricate relationships. By simulating numerous scenarios through random sampling, Monte 
+Carlo simulations provide a way to explore a wide range of possibilities and assess the likelihood of different 
+financial scenarios:
+
+\begin{lstlisting}
+// ./lib/_classes/math/monte_carlo_simulation.dart
+class MonteCarloSimulation {
+  final Random rnd = Random();
+  final int cycles;
+  final double coercion;
+  MonteCarloSimulation({this.cycles = 30, this.coercion = 1});
+  List<Offset> generate(List<Offset> data, num step, num max) {
+    final List<List<double>> distribution = [];
+    // Loop through the scope (provided data points)
+    for (int i = 0; i < data.length; i++) {
+      final state = mcNormal(data[i].dy, coercion, cycles);
+      // Loop through the states generated for each data point
+      for (int j = 0; j < state.length; j++) {
+        if (j >= distribution.length)
+          distribution.add([]);
+        distribution[j].add(state[j]);
+      }
+    }
+    double posX = data.last.dx + step;
+    List<Offset> result = [];
+    int idx = 0;
+    // Generate simulated data points for the forecast
+    while (posX <= max) {
+      result.add(Offset(
+        posX, 
+        distribution[idx][
+          distribution[idx].length * rnd.nextDouble() ~/ 1],
+          // where '~/ 1' is equal to '.toInt()'
+      ));
+      posX += step;
+      idx++;
+    }
+    return result;
+  }
+  // To generate a list of random values using the simulation
+  List<double> mcNormal(double mean, double stdDev, int samples) {
+    List<double> results = [];
+    // Perform the Monte Carlo simulation 
+    // for the specified number of samples
+    for (int i = 0; i < samples; i++) {
+      results.add(_normalRandom(mean, stdDev));
+    }
+    return results;
+  }
+  // A random value based on a normal distribution
+  double _normalRandom(double mean, double stdDev) {
+    double u1 = rnd.nextDouble();
+    double u2 = rnd.nextDouble();
+    double z0 = sqrt(-2.0 * log(u1)) * cos(2 * pi * u2);
+    return mean + stdDev * z0;
+  }
+}
+\end{lstlisting}
+
+\noindent It's left to generate the chart itself \issue{4}{}, which can be achieved using the \q{CustomPaint}-widget. 
+The advantage of using this widget is that it allows us to separate the chart's line (\q{painter}-property) from a
+secondary data like axes and background colors (\q{foregroundPainter}-property):
+
+\begin{lstlisting}
+// ./lib/charts/forecast_chart.dart
+final xMin = DateTime(now.year, now.month);
+final xMax = DateTime(now.year, now.month + 1);
+final bg = ForegroundChartPainter(
+  yMin: 0.0,
+  yMax: 140,
+  xMin: xMin.millisecondsSinceEpoch.toDouble(),
+  xMax: xMax.millisecondsSinceEpoch.toDouble(),
+  yArea: [80, 120], // green area as a threshold
+);
+return SizedBox(
+  height: size.height,
+  width: size.width,
+  child: CustomPaint(
+    size: size,
+    painter: ForecastChartPainter(
+      data: data,
+      yMax: yMax * bg.yMax / 100,
+      xMin: xMin.millisecondsSinceEpoch.toDouble(),
+      xMax: xMax.millisecondsSinceEpoch.toDouble(),
+    ),
+    foregroundPainter: bg,
+    willChange: false, // to avoid re-build
+    child: Padding(
+      padding: EdgeInsets.only(top: indent / 4),
+      child: Text(tooltip),
+    ),
+  ),
+);
+\end{lstlisting}
+
+\noindent We have created our own painters, named \q{ForegroundChartPainter} (gonna be used for all other charts) and 
+\q{ForecastChartPainter}. These classes are responsible for plotting a graphical information on the \q{Canvas}:
+
+\begin{lstlisting}
+// ./lib/charts/painter/forecast_chart_painter.dart
+class ForecastChartPainter extends CustomPainter {
+  // ... properties declaration
+  ForecastChartPainter({ /* ... */ });
+
+  @override
+  void paint(Canvas canvas, Size size) {
+    for (final scope in data) {
+      // Plot historical data
+      _paint(canvas, scope.data, size, scope.color);
+      final dx = scope.data.last.dx;
+      final total = _sumY(scope.data);
+      if (scope.data.length > 2 && dx < xMax && total < yMax) {
+        final cycles = (xMax - dx) ~/ msDay;
+        final forecast = [Offset(scope.data.last.dx, total)];
+        forecast.addAll(MonteCarloSimulation(cycles: cycles).generate(scope.data, msDay, xMax - 2 * msDay));
+        // Draw forecast line
+        _paint(canvas, forecast, size, scope.color.withBlue(200).withOpacity(0.4));
+      }
+    }
+  }
+
+// ... other stuff
+
+  // Draw point to reflect data
+  void _paintDot(Canvas canvas, Offset point, Color color) {
+    final dot = Paint()..color = color;
+    canvas.drawCircle(point, 2.2, dot);
+  }
+  // Draw a curve using four points
+  _paintCurve(Canvas canvas, Offset p0, Offset k1, Offset k2, Offset p1, Color color) {
+    final line = Paint()
+      ..color = color
+      ..style = PaintingStyle.stroke
+      ..strokeWidth = 2;
+    final path = Path()..moveTo(p0.dx, p0.dy);
+    path.cubicTo(k1.dx, k1.dy, k2.dx, k2.dy, p1.dx, p1.dy);
+    canvas.drawPath(path, line);
+  }
+}
+\end{lstlisting}
+
+\noindent That's a wrap! Following the implementation of various charts, including radial bar \issue{128}{}, column 
+and bar race charts \issue{147}{}, OHLC (open, high, low, close) chart \issue{148}{}, gauge chart \issue{160}{} 
+\issue{180}{}, pie chart \issue{179}{}, currency trades \issue{182}{};, we've curated a set of valuable metrics. 
+These metrics (\cref{img:f-charts}) empower users to gain deeper insights into their financial situations.
+
+\img{features/charts}{Visualization of Charts}{img:f-charts}
