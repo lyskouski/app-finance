@@ -1,7 +1,111 @@
 % Copyright 2023 The terCAD team. All rights reserved.
 % Use of this content is governed by a CC BY-NC-ND 4.0 license that can be found in the LICENSE file.
 
-\subsection{[TBD] Behaving as Internet of Things (IoT)}
-\markboth{Unleashing}{Behaving as Internet of Things (IoT)}
+\subsection{Replicating Data}
+\markboth{Unleashing}{Replicating Data}
 
-[TBD]
+Our implementation prioritizes data security and privacy by exclusively relying on in-app communication, which keeps 
+a user data within the app's controlled environment. However, this approach, while enhancing security, can introduce 
+some complexity in the process of synchronizing data between devices. 
+
+However, a practical approach for enabling data transfer between devices involves leveraging Peer-To-Peer (P2P) 
+connections \issue{123}{}. In P2P connections, devices communicate directly with one another, bypassing the need for a 
+central server. This decentralized approach offers several benefits, including data sharing, synchronization, and 
+collaboration. It also places a strong emphasis on user data control, as there is no involvement of a central server. 
+This privacy and security aspect is especially crucial for sensitive applications, such as personal finance tracking.
+
+P2P networks are capable of enabling data synchronization even when devices are offline or lack an internet connection. 
+When these devices regain connectivity, they can seamlessly exchange data, making this feature valuable for applications 
+intended for low-connectivity or remote environments. That's why P2P connections are well-suited for maintaining data 
+consistency across multiple devices, ensuring that any modifications made on one device are swiftly replicated on others:
+
+\begin{lstlisting}
+// ./lib/_classes/herald/app_sync.dart
+import 'package:peerdart/peerdart.dart';
+
+class AppSync extends ChangeNotifier {
+  /* ... properties declaration */
+  AppSync() : super() {
+    final id = getUuid();
+    // Check if P2P enabled
+    if (id != null && id.isNotEmpty) {
+      enable(id);
+      connect();
+    }
+  }
+  // Get a white list of pears
+  List<String> _get() {/* get list of accepted pears */ }
+  // Verify connectivity
+  void connect() {
+    List<String> peers = _get();
+    for (int i = 0; i < peers.length; i++) {
+      trace(peers[i]);
+    }
+  }
+  // Check connection to the pear by its UUID
+  void trace(String id) {
+    if (!peer.open) {
+      peer.reconnect();
+    }
+    if (_status[id] == null) {
+      _status[id] = SyncPeer(id, peer.connect(id));
+    } else if (!_status[id]!.connection.open) {
+      peer.removeConnection(_status[id]!.connection);
+      _status[id]!.connection = peer.connect(id);
+    }
+    _status[id]!.connection.once('open').then((v) {
+      _status[id]!.status = true;
+      notifyListeners();
+    });
+    _status[id]!.connection.once('close').then((v) {
+      _status[id]!.status = false;
+      notifyListeners();
+    });
+  }
+  // Registry new connection
+  void add(String uuid) {
+    List<String> peers = _get();
+    peers.add(uuid);
+  }
+  // Remove pear from the white list
+  void del(String uuid) {
+    _status[uuid]!.connection.dispose();
+    _status.remove(uuid);
+  }
+  // Registry callback for actions
+  _listen(DataConnection conn) {
+    conn.on('data').listen((data) {
+      _cb.forEach((_, callback) => callback(data));
+    });
+    conn.on('binary').listen((data) {
+      _cbBin.forEach((_, callback) => callback(data));
+    });
+  }
+  // Send data to all registered pears
+  send(String data, [String? uuid]) {
+    if (uuid != null) {
+      if (_status[uuid] != null && _status[uuid]!.status == true) {
+        _status[uuid]!.connection.send(data);
+      }
+    } else {
+      final keyList = _status.keys.toList();
+      for (int i = 0; i < keyList.length; i++) {
+        if (_status[keyList[i]]!.status == true && _status[keyList[i]]!.connection.open) {
+          _status[keyList[i]]!.connection.send(data);
+        } else {
+          // .. postpone the message till the next 'online'-status
+        }
+      }
+    }
+  }
+// .. other stuff
+\end{lstlisting}
+
+\img{features/p2p}{Configure Pear-To-Pear Connection}{img:f-p2p}
+
+Overall, P2P connections offer an efficient way to sync data between devices, enabling real-time, secure, and 
+collaborative experiences across various applications. Their decentralized nature provides users with greater 
+control over their data, making them an appealing choice for many modern applications. In addition, generating and 
+scanning \q{QR}-codes can facilitate an information sharing \issue{220}{} for a small chunks of data (3KB, 7,089 
+numeric characters or 4,269 alphanumeric ones). As well as Near Field Communication (NFC), Wi-Fi Direct, or Bluetooth 
+connection enables short-range communication between devices.
