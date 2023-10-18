@@ -368,12 +368,13 @@ class CurrencySelector {
 }
 \end{lstlisting}
 
-\noindent Once the function is declared with \q{void}-result, it becomes extensible via \q{VoidCallback} (\ref{dart-prim}).
+\noindent Once the function is declared with a \q{void}-result, it can be extended through an extension of
+\q{VoidCallback}.
 
 
 \subsubsection{Casting Dynamic Structures}
 
-For a specific cases it might be useful to post-pone the type declaration:
+Generics can be useful in specific cases, serving as a deferred type declaration:
 
 \begin{lstlisting}
 extension StringExt on String {
@@ -387,7 +388,7 @@ extension StringExt on String {
 }
 \end{lstlisting}
 
-\noindent Or, use \q{dynamic} to cover different types simultaneously:
+\noindent Alternatively, \q{dynamic} can be employed to accommodate various types:
 
 \begin{lstlisting}
 extension StringExt on String {
@@ -397,7 +398,7 @@ extension StringExt on String {
 }
 \end{lstlisting}
 
-\noindent And, cast to type by using \q{is} or \q{as}:
+\noindent Furthermore, we may perform type casting using \q{is} or \q{as}:
 
 \begin{lstlisting}
 (val as double).toInt();
@@ -551,35 +552,29 @@ predefined set of constant values. As an example, to validate function arguments
 
 \begin{lstlisting}
 enum Status { active, inactive, pending }
-
 void processStatus(Status status) {
   switch (status) {
-    case Status.active:
-      // Perform actions for active status
-      break;
-    case Status.inactive:
-      // Perform actions for inactive status
-      break;
-    case Status.pending:
-      // Perform actions for pending status
-      break;
+    case Status.active:   /* ... */ break;
+    case Status.inactive: /* ... */ break;
+    case Status.pending:  /* ... */ break;
   }
 }
-
 void main() => processStatus(Status.active);
 \end{lstlisting}
 
-\noindent By using enums in function parameters, we may can enforce valid enum values and provide clear validation and 
-handling for each possible value within the function. In addition, it's possible to convert \q{enum} to \q{String} and
-back:
+\noindent Using enums in function parameters enforces valid enum values, ensuring that only acceptable options are used 
+as inputs. Enums also facilitate seamless conversion between enum values and strings, and enable associating additional 
+information with enum values (of any data type):
 
 \begin{lstlisting}
 enum AppAccountType { type1, type2, type3 }
-// Convert to string
+// Convert to string, and back
 String type = AppAccountType.type1.toString();
-// Back to enum value
 AppAccountType? accountType = AppAccountType.values
     .where((v) => v.toString() == type).firstOrNull;
+// 'enum' with values
+enum AppCardType { debit('Debit Card'), credit('Credit Card') }
+print(AppCardType.debit.value); // Debit Card
 \end{lstlisting}
 
 \noindent Sealed classes may be used in the same way as \q{enum} by defining a union class to leverage a pattern matching.

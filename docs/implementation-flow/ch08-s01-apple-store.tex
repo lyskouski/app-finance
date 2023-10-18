@@ -4,6 +4,8 @@
 \subsection{Apple Store}
 \markboth{Distributing}{Apple Store}
 
+\subsubsection{iOS Build}
+
 Preliminaries from \href{https://docs.flutter.dev/deployment/ios}{https://docs.flutter.dev/deployment/ios} emphasize 
 the necessity of Xcode but what if we do not have any device running macOS to follow this guide, but yet aspire to 
 publish the app to Apple Store. In that case we can proceed with our CI/CD pipelines on GitHub:
@@ -259,8 +261,8 @@ $ flutter build ipa --build-name=${{ version }} \
 to be sent to \q{controle@ssi.gouv.fr} with a title "[formalités] {organization} - {app name}", and attached the approval 
 of it during the processing of "Export Compliance Information" form in "Apple Store Connect". Mentioned 
 \q{ITSAppEncryptionExportComplianceCode}-code can be taken from 
-\href{https://appstoreconnect.apple.com/apps}{https://appstoreconnect.apple.com/apps/\q{id}/features/encryption}
-(\cref{img:d-apple-compliance})
+\href{https://appstoreconnect.apple.com/apps}{appstoreconnect.apple.com/apps/\q{id}/features/encryption}
+(\cref{img:d-apple-compliance}).
 
 \img{distributing/app-store-compliance}{Apple Store Connect: App Services -- Encryption}{img:d-apple-compliance}
 
@@ -270,3 +272,112 @@ the \q{TestFlight}-tab on the page of our application, and submit the build for 
 After those two steps (and taken approval), we'll be able to enable external access by using \q{Enable Public Link}.
 
 \img{distributing/app-store-review}{Apple Store Connect: App Services -- Encryption}{img:d-apple-review}
+
+
+\subsubsection{macOS Build}
+
+The process of creating \q{macOS}-package for a distribution \issue{287}{} is almost the same as for \q{iOS} with a few 
+deviations.
+
+As previously shown, the provisioning profile can be installed on the device as a whole, but the practice is to embed 
+the profile within the application itself (iOS expects to find the profile at \q{MyApp.app/embedded.mobileprovision}, 
+macOS expects to find the profile at \q{MyApp.app/Contents/embedded.provisionprofile}; \q{.provisionprofile}-file can 
+be obtained from selecting Mac App Store in 
+\href{https://developer.apple.com/account/resources/profiles/add}{https://developer.apple.com/account/resources/profiles/add}):
+
+\begin{lstlisting}[language=yaml]
+- name: Run macOS Build
+  run: flutter build -v macos --release
+
+- name: Add the Provisioning Profile
+  env:
+    PROVISIONING_MAC_BASE64: ${{ secrets.APPLE_MAC_PROFILE }}
+  run: |
+    PP_PATH=$RUNNER_TEMP/Fingrom_macOS.provisionprofile
+    echo -n "$PROVISIONING_MAC_BASE64" | base64 --decode \
+        --output $PP_PATH
+    CONTENT=build/macos/Build/Products/Release/Fingrom.app/Contents
+    cp $PP_PATH $CONTENT/embedded.provisionprofile
+\end{lstlisting}
+
+
+\noindent As a note, the distribution certificate "3rd Party Mac Developer Application" comes from selecting Mac App 
+Distribution in
+\href{https://developer.apple.com/account/resources/certificates/add}{https://developer.apple.com/account/resources/certificates/add}.
+The certificate "3rd Party Mac Developer Installer" can be taken by selecting Mac Installer Distribution from the same 
+page. And the application has to signed by using both of them:
+
+\begin{lstlisting}[language=yaml]
+- name: Import macOS Distribution Certificate
+  if: matrix.target == 'macOS'
+  uses: apple-actions/import-codesign-certs@v2
+  with: 
+    keychain: signing_distr
+    p12-file-base64: ${{ secrets.APPLE_MAC_P12 }}
+    p12-password: ${{ secrets.APPLE_P12_KEY }}
+
+- name: Sign macOS Package
+  if: matrix.target == 'macOS'
+  run: |
+    # Sign ID is taken from a certificate (Developer ID)
+    codesign --deep --force -s "8PVKPQ758L" --entitlements \
+      macos/Runner/Release.entitlements "Fingrom.app"
+  # build_path: build/macos/Build/Products/Release
+  working-directory: ${{ matrix.build_path }}
+
+- name: Import macOS Install Certificate
+  uses: apple-actions/import-codesign-certs@v2
+  with: 
+    keychain: signing_distr
+    p12-file-base64: ${{ secrets.APPLE_MAC_INSTALLER }}
+    p12-password: ${{ secrets.APPLE_P12_KEY }}
+
+- name: Upload macOS Package to Apple Store
+  run: |
+    xcrun productbuild --component Fingrom.app \
+        /Applications/ unsigned.pkg
+    xcrun productsign --sign "8PVKPQ758L" unsigned.pkg Fingrom.pkg
+    # Validate package
+    xcrun altool --validate-app --type macos -f Fingrom.pkg \
+      --apiKey ${{ secrets.APPLE_API_KEY }} \
+      --apiIssuer ${{ secrets.APPLE_API_ISSUE }}
+    # Upload package
+    xcrun altool --upload-app --type macos -f Fingrom.pkg \
+      --apiKey ${{ secrets.APPLE_API_KEY }} \
+      --apiIssuer ${{ secrets.APPLE_API_ISSUE }}
+  working-directory: ${{ matrix.build_path }}
+\end{lstlisting}
+
+\img{distributing/app-store-macos}{Apple Store Connect: macOS Release}{img:d-apple-macos}
+
+\noindent The submission might fail because of the next error:
+
+\begin{lstlisting}[language=terminal]
+Error: Asset validation failed App sandbox not enabled. 
+  The following executables must include the 
+  "com.apple.security.app-sandbox" entitlement with a 
+  Boolean value of true in the entitlements property list
+\end{lstlisting}
+
+\noindent While \q{app-sandbox} is enabled by default for both compilations (Debug and Release), the problem is in a 
+missed \q{com.apple.security.inherit}. To enable sandbox inheritance, a child target must use exactly two App Sandbox 
+entitlement keys:
+
+\begin{lstlisting}[language=xml]
+<!-- ./macos/Runner/Release.entitlements -->
+<dict>
+  <key>com.apple.security.app-sandbox</key>
+  <true/>
+\end{lstlisting}
+{
+\xpretocmd{\lstlisting}{\vspace{-14pt}}{}{}
+\begin{lstlisting}[firstnumber=5, language=xml, backgroundcolor=\color{backgreen}]
+(*@\kdiff{+}@*) <key>com.apple.security.inherit</key>
+(*@\kdiff{+}@*) <true/>
+\end{lstlisting}
+}
+
+\noindent It's important to note that the end-of-line (EOL) character for the \q{macos/Runner/Release.entitlements}-file 
+should be set to "LF" (Line Feed). Using "LF" as the EOL character is a common practice in macOS development, and 
+any other formatting might lead to a not recognized entitlements list.
+

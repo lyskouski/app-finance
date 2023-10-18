@@ -9,13 +9,14 @@
 
 **Fingrom** - Open-sourced cross-platform financial accounting application without Ads and limitations.
 
+[!] **Release to Marketplaces is scheduled for November 1st.**
+
 #### Web App 
 - https://lyskouski.github.io/app-finance/
 
 #### Desktop Apps
 - **Macos**:
-  - Apple Store: __postponed till 1st November__
-  - [TestFlight](https://developer.apple.com/testflight/): [[pending]](https://github.com/lyskouski/app-finance/issues/287)
+  - Apple Store: __
   - [Release](https://github.com/lyskouski/app-finance/releases/latest)/fingrom_macOS.zip
 - **Linux**:
   - Snap Store: [[pending]](https://github.com/lyskouski/app-finance/issues/209)
@@ -26,7 +27,7 @@
 
 #### Mobile Apps
 - **iOS**
-  - Apple Store: __postponed till 1st November__
+  - Apple Store: __
   - [TestFlight](https://developer.apple.com/testflight/): [**early access**](https://testflight.apple.com/join/93ECy9ZB)
   - [Release](https://github.com/lyskouski/app-finance/releases/latest)/fingrom_iOS.ipa
 - **Android**
