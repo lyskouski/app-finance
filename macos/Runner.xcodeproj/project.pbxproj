@@ -232,10 +232,14 @@
 				TargetAttributes = {
 					331C80D4294CF70F00263BE5 = {
 						CreatedOnToolsVersion = 14.0;
+						DevelopmentTeam = 8PVKPQ758L;
+						provisioningProfile = "Fingrom macOS";
 						TestTargetID = 33CC10EC2044A3C60003C045;
 					};
 					33CC10EC2044A3C60003C045 = {
 						CreatedOnToolsVersion = 9.2;
+						DevelopmentTeam = 8PVKPQ758L;
+						provisioningProfile = "Fingrom macOS";
 						LastSwiftMigration = 1100;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
@@ -246,6 +250,8 @@
 					};
 					33CC111A2044C6BA0003C045 = {
 						CreatedOnToolsVersion = 9.2;
+						DevelopmentTeam = 8PVKPQ758L;
+						provisioningProfile = "Fingrom macOS";
 						ProvisioningStyle = Manual;
 					};
 				};
@@ -634,6 +640,9 @@
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				PRODUCT_BUNDLE_IDENTIFIER = com.tercad.fingrom;
+				DEVELOPMENT_TEAM = 8PVKPQ758L;
+				PROVISIONING_PROFILE_SPECIFIER = "Fingrom macOS";
 			};
 			name = Release;
 		};
@@ -649,9 +658,13 @@
 		33CC111D2044C6BA0003C045 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = Runner/Release.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				PRODUCT_BUNDLE_IDENTIFIER = com.tercad.fingrom;
+				DEVELOPMENT_TEAM = 8PVKPQ758L;
+				PROVISIONING_PROFILE_SPECIFIER = "Fingrom macOS";
 			};
 			name = Release;
 		};
