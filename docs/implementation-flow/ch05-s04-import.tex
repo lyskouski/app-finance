@@ -127,15 +127,58 @@ XmlDocument.parse(content);
 \end{lstlisting}
 
 
-\subsubsection{[TBD] Supporting Banking Protocols}
+\subsubsection{Supporting Banking Protocols}
 
-Financial Transaction Services (FinTS) protocol, previously recognized as HBCI (Home Banking Computer Interface), stands 
-as a testament to technological advancement in the realm of digital finance. FinTS emerges as a bank-independent 
-interface, meticulously crafted to cater to the distinct needs of German banking institutions and their clientele;
-enabling them to seamlessly engage in statement downloads, initiate bank transfers, and facilitate direct debits.
+Financial Transaction Services (FinTS) protocol \issue{314}{}, previously recognized as HBCI (Home Banking Computer 
+Interface), stands as a testament to technological advancement in the realm of digital finance. FinTS emerges as a 
+bank-independent interface, meticulously crafted to cater to the distinct needs of German banking institutions and 
+their clientele; enabling them to seamlessly engage in statement downloads, initiate bank transfers, and facilitate 
+direct debits. 
 
-[TBD]
+In addition to the pure protocol implementation, we may also utilize simplified solutions like Account Information 
+Service (AIS) platforms, such as TryPay in Poland \issue{252}{}, to retrieve a financial data from bank accounts. And, 
+there is nothing specific to the Flutter usage other then the implementation in accordance with an API specification.
 
-\subsubsection{[TBD] Parsing Notifications (Android)}
 
-[TBD]
+\subsubsection{Parsing Notifications (Android)}
+
+As an alternative (or simultaneous solution) to directly implementing financial protocols for integration with banks, 
+we could consider creating a parser for incoming notifications. As a note, this approach is available for Android but 
+restricted on iOS due to the platform limitations. 
+
+To access notifications from other applications, it's essential to have the necessary permissions registered in 
+the \q{AndroidManifest.xml}-file:
+
+\begin{lstlisting}[language=xml]
+<service
+    android:name=".MyNotificationListenerService"
+    android:label="Notification Listener"
+    android:permission="android.permission.BIND_NOTIFICATION_LISTENER_SERVICE">
+    <intent-filter>
+        <action android:name="android.service.notification.NotificationListenerService" />
+    </intent-filter>
+</service>
+\end{lstlisting}
+
+\noindent We may request this permission through the application and then listen for incoming messages by utilizing the 
+\q{notification\_listener\_service}-package \issue{120}{}. This package allows our application to interact with incoming 
+notifications and process them accordingly:
+
+\begin{lstlisting}
+// Check if notification permission is enabled
+final bool status = await NotificationListenerService.isPermissionGranted();
+
+// Request notification permission
+final bool status = await NotificationListenerService.requestPermission();
+
+// stream the incoming notification events
+NotificationListenerService.notificationsStream.listen((event) {
+  log("Current notification: $event");
+});
+\end{lstlisting}
+
+\noindent By aggregating messages and utilizing a context menu through the \q{contextMenuBuilder} for the 
+\q{TextField}-widget (\cref{img:f-selection}), we can equip the app with a valuable tool for a partial data 
+recognition, which sections of the message identify as inputs for Bill, Income, or Transfer. 
+
+\img{features/selection-context-menu}{Context Menu on the text selection}{img:f-selection}
