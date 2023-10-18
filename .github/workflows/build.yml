@@ -183,7 +183,7 @@ jobs:
           cp $PP_PATH ~/Library/MobileDevice/Provisioning\ Profiles
                 
       - name: Store API key
-        if: matrix.target == 'iOS'
+        if: matrix.target == 'iOS' || matrix.target == 'macOS'
         env:
           API_CERTIFICATE_BASE64: ${{ secrets.APPLE_API_P8 }}
         run: |
@@ -207,11 +207,56 @@ jobs:
         if: matrix.target == 'macOS'
         run: |
           flutter config --enable-macos-desktop
-          flutter build -v macos --build-name=${{ needs.release.outputs.version }} --build-number=${{ needs.release.outputs.build_number }} --release --no-tree-shake-icons
+          flutter build -v macos --build-name=${{ needs.release.outputs.version }} --build-number=${{ needs.release.outputs.build_number }} --release --obfuscate --split-debug-info=build/macos/symbols --no-tree-shake-icons
+
+      - name: Add the Provisioning Profile
+        if: matrix.target == 'macOS'
+        env:
+          PROVISIONING_MAC_BASE64: ${{ secrets.APPLE_MAC_PROFILE }}
+        run: |
+          PP_PATH=$RUNNER_TEMP/Fingrom_macOS.provisionprofile
+          echo -n "$PROVISIONING_MAC_BASE64" | base64 --decode --output $PP_PATH
+          cp $PP_PATH ${{ matrix.build_path }}/Fingrom.app/Contents/embedded.provisionprofile
 
       - name: Compress macOS Package
         if: matrix.target == 'macOS'
         run: ditto -c -k --sequesterRsrc --keepParent Fingrom.app $GITHUB_WORKSPACE/fingrom_${{ matrix.target }}${{ matrix.asset_extension }}
+        working-directory: ${{ matrix.build_path }}
+
+      - name: Import macOS Distribution Certificate
+        if: matrix.target == 'macOS'
+        uses: apple-actions/import-codesign-certs@v2
+        with: 
+          keychain: signing_distr
+          p12-file-base64: ${{ secrets.APPLE_MAC_P12 }}
+          p12-password: ${{ secrets.APPLE_P12_KEY }}
+
+      - name: Sign macOS Package
+        if: matrix.target == 'macOS'
+        run: |
+          codesign --deep --force -s "8PVKPQ758L" --entitlements $GITHUB_WORKSPACE/macos/Runner/Release.entitlements "Fingrom.app"
+        working-directory: ${{ matrix.build_path }}
+
+      - name: Import macOS Installer Certificate
+        if: matrix.target == 'macOS'
+        uses: apple-actions/import-codesign-certs@v2
+        with: 
+          keychain: signing_installer
+          p12-file-base64: ${{ secrets.APPLE_MAC_INSTALLER }}
+          p12-password: ${{ secrets.APPLE_P12_KEY }}
+
+      - name: Create macOS Package for Apple Store
+        if: matrix.target == 'macOS'
+        run: |
+          xcrun productbuild --component Fingrom.app /Applications/ unsigned.pkg
+          xcrun productsign --sign "8PVKPQ758L" unsigned.pkg Fingrom.pkg
+        working-directory: ${{ matrix.build_path }}
+
+      - name: Upload macOS Package to Apple Store
+        if: matrix.target == 'macOS'
+        run: |   
+          xcrun altool --validate-app --type macos -f Fingrom.pkg --apiKey ${{ secrets.APPLE_API_KEY }} --apiIssuer ${{ secrets.APPLE_API_ISSUE }}
+          xcrun altool --upload-app --type macos -f Fingrom.pkg --apiKey ${{ secrets.APPLE_API_KEY }} --apiIssuer ${{ secrets.APPLE_API_ISSUE }}
         working-directory: ${{ matrix.build_path }}
 
 
