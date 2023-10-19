@@ -3,6 +3,7 @@
 
 import 'package:app_finance/_classes/herald/app_locale.dart';
 import 'package:app_finance/_classes/structure/navigation/app_route.dart';
+import 'package:app_finance/_ext/build_context_ext.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/semantics.dart';
 
@@ -33,6 +34,8 @@ class TapWidget extends StatelessWidget {
       child: Tooltip(
         message: tooltip ?? AppLocale.labels.homeTooltip,
         child: InkWell(
+          focusColor: context.colorScheme.onBackground.withOpacity(0.08),
+          hoverColor: context.colorScheme.onBackground.withOpacity(0.04),
           onTap: () {
             if (onTap != null) {
               onTap!();

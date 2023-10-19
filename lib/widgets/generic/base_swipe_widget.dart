@@ -49,6 +49,7 @@ class BaseSwipeWidget extends StatelessWidget {
         visible: !appState.getByUuid(uuid)?.hidden,
         child: SwipeActionCell(
           key: ValueKey(key),
+          backgroundColor: Colors.transparent,
           trailingActions: [
             SwipeAction(
               nestedAction: SwipeNestedAction(

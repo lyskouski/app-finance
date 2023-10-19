@@ -62,7 +62,6 @@ class BillPageState extends AbstractPageState<BillPage> {
       if (timer.isAfter(item.createdAt)) {
         timer = DateTime(item.createdAt.year, item.createdAt.month, item.createdAt.day);
         itemsShown.add(SliverPersistentHeader(
-          pinned: true,
           floating: true,
           delegate: HeaderDelegate(
             timer.yMEd(),
@@ -148,7 +147,7 @@ class BillPageState extends AbstractPageState<BillPage> {
             pinned: true,
             floating: true,
             delegate: HeaderDelegate(
-              title.lastOrNull ?? '',
+              title.lastOrNull ?? timer.yMEd(),
               callback: (_) => _update(null),
             ),
           ),
