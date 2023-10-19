@@ -108,30 +108,16 @@ abstract class AbstractPageState<T extends StatefulWidget> extends State<T> {
             ),
           ),
         ),
-      PopupMenuButton(
-        itemBuilder: (BuildContext context) {
-          return AppMenu.get().map((menuItem) {
-            return PopupMenuItem(
-              value: menuItem.route,
-              child: Row(
-                children: [
-                  Icon(menuItem.icon),
-                  ThemeHelper.wIndent,
-                  Text(menuItem.name),
-                ],
-              ),
-            );
-          }).toList();
-        },
-        onSelected: (value) => nav.pushNamed(value),
-        child: ToolbarButtonWidget(
-          child: Padding(
-            padding: EdgeInsets.all(ThemeHelper.getIndent()),
-            child: Icon(
+      Builder(
+        builder: (context) => ToolbarButtonWidget(
+          child: IconButton(
+            hoverColor: Colors.transparent,
+            icon: const Icon(
               Icons.menu,
-              semanticLabel: AppLocale.labels.navigationTooltip,
               color: Colors.white70,
             ),
+            tooltip: AppLocale.labels.navigationTooltip,
+            onPressed: () => Scaffold.of(context).openDrawer(),
           ),
         ),
       ),

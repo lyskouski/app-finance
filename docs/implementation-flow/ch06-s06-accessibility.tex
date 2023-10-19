@@ -1,9 +1,63 @@
 % Copyright 2023 The terCAD team. All rights reserved.
 % Use of this content is governed by a CC BY-NC-ND 4.0 license that can be found in the LICENSE file.
 
-\subsection{[TBD] Supporting Accessibility}
+\subsection{Supporting Accessibility}
 \markboth{Optimizing}{Supporting Accessibility}
 
-[TBD]
+Before delving into Flutter's accessibility capabilities, it's valuable to comprehend the significance of accessibility. 
+Accessibility involves the design and development of applications that are usable by all individuals, including those 
+with disabilities such as visual, auditory, motor, or cognitive impairments. Providing equal access to information 
+and services for all users is a matter of ethical and social responsibility. By ensuring that our app is accessible, 
+we broaden its user base to include a more diverse audience. Lastly, accessibility often constitutes as a legal 
+obligation in many regions.
 
-\newpage
+The \q{Semantics} and \q{Tooltip} widgets serve as the initial building blocks for enhancing accessibility. They play a 
+critical role in assisting screen readers by providing context to users with visual impairments. It can be implemented 
+in a way of wrapping button by duplicating a written title to a label of it (some elements, as \q{FloatingActionButton} 
+contains the label in a scope of properties):
+
+\begin{lstlisting}
+// ./lib/widgets/wrapper/elevate_button_widget.dart
+class ElevatedButtonWidget extends StatelessWidget {
+  Widget build(BuildContext context) {
+    final colorScheme = context.colorScheme;
+    return Semantics(
+      label: text,
+      child: SizedBox(
+        width: double.infinity,
+        child: ElevatedButton(
+          style: ButtonStyle(
+            shape: MaterialStateProperty.resolveWith((states) => 
+                const ContinuousRectangleBorder()),
+            // Respond to user actions, such as mouse hover
+            backgroundColor: 
+              MaterialStateProperty.resolveWith<Color>((states) {
+                if (states.contains(MaterialState.hovered)) {
+                  return hoveredColor ?? 
+                      colorScheme.onSecondaryContainer;
+                }
+                return backgroundColor ?? colorScheme.secondary;
+              },
+            )),
+          onPressed: onPressed,
+          child: Text(
+            text,
+            style: TextStyle(
+            color: textColor ?? colorScheme.inversePrimary,
+            shadows: const [],
+// ... closing brackets
+\end{lstlisting}
+
+\noindent Regardless of its role as a canvas for creating user interfaces, Flutter excels in ensuring the accessibility 
+of widgets, allowing them to seamlessly interact with screen readers like TalkBack on Android and VoiceOver on iOS. In 
+this context, the semantic tree in Flutter closely aligns with the widget tree. Flutter integrates with the 
+accessibility APIs of the underlying platforms, which means it can effectively communicate with screen readers, 
+ensuring a cohesive and inclusive experience for all users. This emphasis on accessibility isn't limited solely to text 
+recognition, by extending experience to effectively manage the focus for users who navigate through the app using 
+keyboards or voice commands.
+
+Basic navigation can be further enhanced with keyboard shortcuts provided through the use of the \q{Listener}-widget. 
+This feature is particularly valuable for users who rely on keyboard navigation (either for accessibility, or from 
+desktop usage perspective). This not only adheres to accessibility guidelines but also makes our application more 
+inclusive and user-friendly:
+
