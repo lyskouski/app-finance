@@ -7,6 +7,7 @@ import 'package:app_finance/_classes/storage/app_data.dart';
 import 'package:app_finance/_classes/storage/history_data.dart';
 import 'package:app_finance/_classes/structure/account_app_data.dart';
 import 'package:app_finance/_classes/structure/bill_app_data.dart';
+import 'package:app_finance/_classes/structure/invoice_app_data.dart';
 import 'package:app_finance/_configs/theme_helper.dart';
 import 'package:app_finance/_classes/structure/navigation/app_route.dart';
 import 'package:app_finance/_ext/date_time_ext.dart';
@@ -69,25 +70,39 @@ class AccountViewPageState extends AbstractPageState<AccountViewPage> {
     );
   }
 
+  String _getTitle(dynamic item) {
+    String prefix = '';
+    if (item is InvoiceAppData && item.accountFrom != null) {
+      if (item.accountFrom == widget.uuid) {
+        final obj = state.getByUuid(item.account) as AccountAppData;
+        prefix = "[${AppLocale.labels.transferHeadline} ${AppLocale.labels.to} '${obj.title}'] ";
+      } else {
+        final obj = state.getByUuid(item.accountFrom!) as AccountAppData;
+        prefix = "[${AppLocale.labels.transferHeadline} ${AppLocale.labels.from} '${obj.title}'] ";
+      }
+    }
+    return item != null ? '$prefix${item.title}' : '';
+  }
+
   Widget buildLogWidget(item, BuildContext context) {
     final obj = state.getByUuid(item.ref ?? '');
     return BaseLineWidget(
-      uuid: '',
-      title: obj?.title ?? '',
+      uuid: obj?.uuid ?? '',
+      title: _getTitle(obj),
       description: (item.timestamp as DateTime).yMEd(),
       progress: 1.0,
       details: (item.delta as double).toCurrency(currency: item.currency, withPattern: false),
       color: obj?.color ?? Colors.transparent,
       icon: obj?.icon ?? Icons.radio_button_unchecked_sharp,
       width: width,
-      route: item is BillAppData ? AppRoute.billViewRoute : '',
+      route: obj is BillAppData ? AppRoute.billViewRoute : '',
     );
   }
 
   Widget buildLineWidget(item, BuildContext context) {
     return BaseLineWidget(
       uuid: item.uuid ?? '',
-      title: item.title ?? '',
+      title: _getTitle(item),
       description: item.description ?? '',
       details: item.detailsFormatted,
       progress: item.progress,
