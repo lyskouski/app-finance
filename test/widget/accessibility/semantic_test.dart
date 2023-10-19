@@ -11,7 +11,7 @@ import '../../pump_main.dart';
 void main() {
   setUpAll(() {
     TestWidgetsFlutterBinding.ensureInitialized();
-    ScreenCapture.enableScreenCapture();
+    ScreenCapture.enableScreenCapture(false);
   });
 
   testWidgets('Semantics of Headers', (WidgetTester tester) async {

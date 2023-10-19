@@ -18,9 +18,11 @@ class ScreenCapture {
     return _id;
   }
 
-  static void enableScreenCapture() {
+  static void enableScreenCapture([bool cleanup = true]) {
     _saveScreen = true;
-    dropImages();
+    if (cleanup) {
+      dropImages();
+    }
   }
 
   static Future<void> seize(String name) async {
