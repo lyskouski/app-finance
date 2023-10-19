@@ -1,11 +1,11 @@
 % Copyright 2023 The terCAD team. All rights reserved.
 % Use of this content is governed by a CC BY-NC-ND 4.0 license that can be found in the LICENSE file.
 
-\subsection{Asserting User Experience}
-\markboth{Optimizing}{Asserting User Experience}
+\subsection{Anticipating Experience}
+\markboth{Optimizing}{Anticipating Experience}
 
-Users have a distinct expectation regarding how an application should behave in general (summarized "know-how"), and 
-covering these expectations might be beneficial by asserting that applications is aligned with user needs. That approach
+Users have a distinct expectation regarding how the application should behave in general (summarized "know-how"), and 
+covering these expectations might be beneficial by asserting that application is aligned with user needs. That approach
 is mostly known as User-Centric Design (UCD) \cite{Stil16}. It entails understanding the needs, goals, and pain points 
 of the target audience by conducting user research, creating user personas, and gathering feedback. 
 
@@ -62,8 +62,8 @@ FutureBuilder(
     './assets/l10n/$fileName.md'
   ),
   builder: (context, AsyncSnapshot<String> snapshot) =>
-      snapshot.hasData ? Markdown(data: snapshot.data!) : Container();
-)
+    snapshot.hasData ? Markdown(data: snapshot.data!) : Container(),
+);
 \end{lstlisting}
 
 \noindent Localization encompasses more than just translating a text \cite{Hofs03}; it involves adapting content 
@@ -84,11 +84,9 @@ apps don't use hamburger or kebab symbols for the "menu"-button), it's needed to
 universal meanings and can be understood differently.
 
 Color choices can vary widely, with Europeans favoring colder colors, Latin Americans preferring warmer hues, and Asian 
-cultures embracing vibrant and diverse color palettes. \\
-\\
+cultures embracing vibrant and diverse color palettes.
 
-\noindent \q{[TBD] Sample images} \\
-\\
+\img{uiux/fb-localized}{Facebook Registation Page Deviations}{img:ui-facebook}
 
 \noindent These details \cite{Rein14} enhance the user experience for diverse audiences.
 

@@ -27,7 +27,8 @@ solution may require a unique approach:
 await route.completed;
 
 // Deactivate inactive routes to be remained in memory
-MaterialPageRoute(maintainState: false, ... // or contrary, has to be "true"
+MaterialPageRoute(maintainState: false, ... 
+      // or contrary, has to be "true"
 
 // Wrap lists content and declare scrolling
 ListView.builder(
@@ -39,8 +40,13 @@ ListView.builder(
 external components. We may either create an issue 
 (\href{https://github.com/flutter/flutter/issues/134408}{https://github.com/flutter/flutter/issues/134408}) 
 with an assumption that it will be taken into account and fixed sometime, or create a patch by our own 
-\href{https://github.com/flutter/flutter/pull/134409}{https://github.com/flutter/flutter/pull/134409}. In cases, when 
+(\href{https://github.com/flutter/flutter/pull/134409}{https://github.com/flutter/flutter/pull/134409}). In cases, when 
 the fix is not universal (or we do not have a time for) and relevant only for us, external component should be forked 
-\href{https://github.com/lyskouski/flutter}{https://github.com/lyskouski/flutter} and re-targeted for the application
-via \q{pubspec.yaml}, or, in case of Flutter itself, by a local binding -- 
-\href{https://docs.flutter.dev/get-started/install/linux#install-flutter-manually}{https://docs.flutter.dev/get-started/install/linux\#install-flutter-manually}.
+(\href{https://github.com/lyskouski/flutter}{https://github.com/lyskouski/flutter}) and re-targeted for the application
+via \q{pubspec.yaml}, or, in case of Flutter itself, by a local binding (as for Linux -- 
+\href{https://docs.flutter.dev/get-started/install/linux#install-flutter-manually}{https://docs.flutter.dev/get-started/install/linux\#install-flutter-manually}).\\
+\\
+
+\noindent The main idea is not to let the problem take its course. Neither users, nor superiors would care that the 
+problem falls outside the scope of our application or responsibilities. The provided impetus have to reach the 
+target with our full assistance every step of the way.
