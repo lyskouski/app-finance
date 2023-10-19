@@ -81,6 +81,14 @@ void main() {
       }
     });
 
+    test('getDelta (initial.amount: 10, initial.amountLimit: 0, change.amountLimit: 20, result: 0.5)', () {
+      object.initial!.amount = 10.0;
+      object.initial!.amountLimit = 0.0;
+      object.initial!.progress = 0.0;
+      object.change.amountLimit = 20.0;
+      expect(object.getDelta(), 0.5);
+    });
+
     test('updateBudget (change.progress: 0.5)', () {
       final obj = WrapperBudgetRecalculation(initial: object.initial, change: object.change);
       double result = 0.5;
