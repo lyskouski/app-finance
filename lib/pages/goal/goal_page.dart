@@ -5,6 +5,7 @@ import 'package:app_finance/_classes/storage/app_data.dart';
 import 'package:app_finance/_classes/herald/app_locale.dart';
 import 'package:app_finance/_classes/structure/currency/exchange.dart';
 import 'package:app_finance/_classes/structure/goal_app_data.dart';
+import 'package:app_finance/_classes/structure/invoice_app_data.dart';
 import 'package:app_finance/_configs/custom_text_theme.dart';
 import 'package:app_finance/_configs/theme_helper.dart';
 import 'package:app_finance/_classes/structure/navigation/app_route.dart';
@@ -62,6 +63,7 @@ class GoalPageState extends AbstractPageState<GoalPage> {
     return super
         .state
         .getActualList(type)
+        .where((v) => type != AppDataType.invoice || (v as InvoiceAppData).accountFrom == null)
         .fold(0.0, (prev, e) => prev + exchange.reform(e.details, e.currency, Exchange.defaultCurrency));
   }
 
