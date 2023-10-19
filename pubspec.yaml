@@ -102,6 +102,7 @@ msix_config:
   identity_name: terCAD.FingromMSIX
   logo_path: web/icons/Icon-512.png
   capabilities: internetClient
+  store: true
 
 # Commands and their dependencies
 scripts:
