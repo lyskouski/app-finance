@@ -7,6 +7,7 @@ import 'package:app_finance/_ext/build_context_ext.dart';
 import 'package:app_finance/widgets/form/abstract_input.dart';
 import 'package:app_finance/widgets/wrapper/text_wrapper.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/semantics.dart';
 
 typedef OnPressedFunction = void Function();
 
@@ -33,30 +34,36 @@ class FullSizedButtonWidget extends AbstractInput {
     final bool isKeyboardVisible = ThemeHelper.isKeyboardVisible(context) || isBottom;
     final colorScheme = context.colorScheme;
     final width = constraints != null ? constraints!.maxWidth - ThemeHelper.getIndent(4) - 2 : double.infinity;
-    return SizedBox(
-      width: isKeyboardVisible ? null : width,
-      child: FloatingActionButton(
-        heroTag: heroTag,
-        onPressed: setState,
-        hoverColor: colorScheme.primary,
-        tooltip: title,
-        focusNode: FocusController.getFocusNode(),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Icon(
-              icon,
-              semanticLabel: title,
-              size: 32,
-              color: colorScheme.onSecondary.withOpacity(0.8),
-            ),
-            if (!isKeyboardVisible)
-              Container(
-                padding: EdgeInsets.only(left: ThemeHelper.getIndent()),
-                constraints: BoxConstraints(maxWidth: width - 34),
-                child: TextWrapper(title, style: context.textTheme.bodyLarge?.copyWith(color: colorScheme.onSecondary)),
+    return Semantics(
+      attributedLabel: AttributedString(title),
+      child: SizedBox(
+        width: isKeyboardVisible ? null : width,
+        child: FloatingActionButton(
+          heroTag: heroTag,
+          onPressed: setState,
+          hoverColor: colorScheme.primary,
+          tooltip: title,
+          focusNode: FocusController.getFocusNode(),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Icon(
+                icon,
+                semanticLabel: title,
+                size: 32,
+                color: colorScheme.onSecondary.withOpacity(0.8),
               ),
-          ],
+              if (!isKeyboardVisible)
+                Container(
+                  padding: EdgeInsets.only(left: ThemeHelper.getIndent()),
+                  constraints: BoxConstraints(maxWidth: width - 34),
+                  child: TextWrapper(
+                    title,
+                    style: context.textTheme.bodyLarge?.copyWith(color: colorScheme.onSecondary),
+                  ),
+                ),
+            ],
+          ),
         ),
       ),
     );

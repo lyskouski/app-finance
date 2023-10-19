@@ -4,6 +4,7 @@
 import 'package:app_finance/_classes/herald/app_locale.dart';
 import 'package:app_finance/_classes/structure/navigation/app_route.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/semantics.dart';
 
 class TapWidget extends StatelessWidget {
   final Widget child;
@@ -27,17 +28,20 @@ class TapWidget extends StatelessWidget {
       return child;
     }
     NavigatorState nav = Navigator.of(context);
-    return Tooltip(
-      message: tooltip ?? AppLocale.labels.homeTooltip,
-      child: InkWell(
-        onTap: () {
-          if (onTap != null) {
-            onTap!();
-          } else if (route?.name != '') {
-            nav.pushNamed(route?.name ?? AppRoute.homeRoute, arguments: route?.arguments);
-          }
-        },
-        child: child,
+    return Semantics(
+      attributedHint: AttributedString(tooltip ?? AppLocale.labels.tapToOpen),
+      child: Tooltip(
+        message: tooltip ?? AppLocale.labels.homeTooltip,
+        child: InkWell(
+          onTap: () {
+            if (onTap != null) {
+              onTap!();
+            } else if (route?.name != '') {
+              nav.pushNamed(route?.name ?? AppRoute.homeRoute, arguments: route?.arguments);
+            }
+          },
+          child: child,
+        ),
       ),
     );
   }
