@@ -12,10 +12,12 @@ import 'package:app_finance/_configs/theme_helper.dart';
 import 'package:app_finance/_ext/build_context_ext.dart';
 import 'package:app_finance/_ext/color_ext.dart';
 import 'package:app_finance/l10n/index.dart';
+import 'package:app_finance/widgets/button/link_widget.dart';
 import 'package:app_finance/widgets/form/color_selector.dart';
 import 'package:app_finance/widgets/form/currency_selector.dart';
 import 'package:app_finance/widgets/form/list_selector.dart';
 import 'package:app_finance/pages/start/widgets/abstract_tab.dart';
+import 'package:app_finance/widgets/wrapper/row_widget.dart';
 import 'package:app_finance/widgets/wrapper/table_widget.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -113,8 +115,9 @@ class SettingTabState<T extends SettingTab> extends AbstractTabState<T> {
     zoom = Provider.of<AppZoom>(context, listen: false);
     palette = Provider.of<AppPalette>(context, listen: false);
     locale = Provider.of<AppLocale>(context, listen: false);
-    final TextTheme textTheme = context.textTheme;
-    double indent = ThemeHelper.getIndent(2);
+    final textTheme = context.textTheme;
+    final indent = ThemeHelper.getIndent(2);
+    final width = ThemeHelper.getMaxWidth(context, constraints) - 2 * indent;
     if (currency == null) {
       WidgetsBinding.instance.addPostFrameCallback((_) => initCurrencyFromLocale(AppLocale.code));
     }
@@ -196,7 +199,7 @@ class SettingTabState<T extends SettingTab> extends AbstractTabState<T> {
           ThemeHelper.hIndent2x,
           if (colorMode == AppColors.colorUser) ...[
             TableWidget(
-              width: constraints.maxWidth - 2 * indent,
+              width: width,
               shadowColor: context.colorScheme.onBackground.withOpacity(0.05),
               chunk: const [120, null, null],
               data: [
@@ -303,9 +306,24 @@ class SettingTabState<T extends SettingTab> extends AbstractTabState<T> {
             ),
             ThemeHelper.hIndent4x,
           ],
-          Text(
-            AppLocale.labels.zoomState,
-            style: textTheme.bodyLarge,
+          RowWidget(
+            indent: indent,
+            maxWidth: width,
+            chunk: [null, indent + ThemeHelper.getTextWidth(Text(AppLocale.labels.reset))],
+            children: [
+              [
+                Text(
+                  AppLocale.labels.zoomState,
+                  style: textTheme.bodyLarge,
+                ),
+              ],
+              [
+                Align(
+                  alignment: Alignment.centerRight,
+                  child: LinkWidget(AppLocale.labels.reset, onTap: () => zoom.set(1)),
+                ),
+              ],
+            ],
           ),
           Container(
             color: context.colorScheme.fieldBackground,

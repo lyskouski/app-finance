@@ -14,8 +14,8 @@ class HeaderDelegate extends SliverPersistentHeaderDelegate {
 
   HeaderDelegate(
     this.title, {
-    this.closedHeight = 20,
-    this.openHeight = 20,
+    this.closedHeight = 30,
+    this.openHeight = 30,
     required this.callback,
   });
 
@@ -42,7 +42,10 @@ class HeaderDelegate extends SliverPersistentHeaderDelegate {
           ),
         ),
       ),
-      child: Text(title, style: context.textTheme.labelMedium),
+      child: Align(
+        alignment: Alignment.centerLeft,
+        child: Text(title, style: context.textTheme.bodySmall),
+      ),
     );
   }
 

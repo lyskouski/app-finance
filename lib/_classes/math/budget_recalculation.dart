@@ -15,7 +15,9 @@ class BudgetRecalculation extends AbstractRecalculation {
 
   @override
   double getDelta() {
-    if (!change.hidden && initial != null && !initial!.hidden && change.amountLimit > 0) {
+    if (initial != null && initial!.amountLimit == 0 && change.amountLimit > 0) {
+      return (initial?.amount ?? 0.0) / change.amountLimit;
+    } else if (!change.hidden && initial != null && !initial!.hidden && change.amountLimit > 0) {
       return initial!.amountLimit * initial!.progress / change.amountLimit;
     } else {
       return 0.0;

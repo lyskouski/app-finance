@@ -47,6 +47,7 @@ class AppDefaultColors {
         'background': background.value,
         'primary': primary.value,
         'inversePrimary': inversePrimary.value,
+        'inverseSurface': inversePrimary.value,
         'onSecondary': onSecondary.value,
         'onInverseSurface': onInverseSurface.value,
         'onSecondaryContainer': onSecondaryContainer.value,

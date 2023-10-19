@@ -24,6 +24,12 @@ class MenuWidget extends StatelessWidget {
     nav.pushNamed(routeName);
   }
 
+  void _onHover(bool isHovered) {
+    if (isHovered) {
+      setState();
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     final ColorScheme colorScheme = context.colorScheme;
@@ -32,29 +38,34 @@ class MenuWidget extends StatelessWidget {
     AppMenuItem menu = AppMenu.getByIndex(index);
     NavigatorState nav = Navigator.of(context);
 
-    return InkWell(
-      child: ListTile(
-        leading: Icon(
-          menu.icon,
-          color: color,
-        ),
-        title: MouseRegion(
-          cursor: SystemMouseCursors.click,
-          child: TextWrapper(
-            menu.name,
-            style: textTheme.bodyMedium?.copyWith(color: color),
+    return Focus(
+      includeSemantics: true,
+      autofocus: selectedIndex == index,
+      focusNode: FocusNode(),
+      onFocusChange: _onHover,
+      child: InkWell(
+        autofocus: selectedIndex == index,
+        focusColor: colorScheme.inversePrimary,
+        canRequestFocus: true,
+        onTap: () {
+          setState();
+          _navigateToPage(nav, menu.route);
+        },
+        onHover: _onHover,
+        child: ListTile(
+          leading: Icon(
+            menu.icon,
+            color: color,
+          ),
+          title: MouseRegion(
+            cursor: SystemMouseCursors.click,
+            child: TextWrapper(
+              menu.name,
+              style: textTheme.bodyMedium?.copyWith(color: color),
+            ),
           ),
         ),
       ),
-      onTap: () {
-        setState();
-        _navigateToPage(nav, menu.route);
-      },
-      onHover: (isHovered) {
-        if (isHovered) {
-          setState();
-        }
-      },
     );
   }
 }

@@ -14,7 +14,10 @@ class DelayedCall {
   void run(VoidCallback action) {
     _timer?.cancel();
     _action = action;
-    _timer = Timer(Duration(milliseconds: delay), action);
+    _timer = Timer(Duration(milliseconds: delay), () {
+      _action?.call();
+      _action = null;
+    });
   }
 
   void cancel() {

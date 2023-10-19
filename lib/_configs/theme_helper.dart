@@ -5,7 +5,7 @@ import 'dart:math';
 
 import 'package:adaptive_breakpoints/adaptive_breakpoints.dart';
 import 'package:app_finance/_classes/herald/app_zoom.dart';
-import 'package:app_finance/pages/abstract_page_state.dart';
+import 'package:app_finance/pages/_interface/abstract_page_state.dart';
 import 'package:flutter/material.dart';
 
 class _Sizes {
@@ -30,12 +30,18 @@ class ThemeHelper {
 
   static double getIndent([double multiply = 1]) => _Sizes.normal / AppZoom.state * multiply;
 
+  static double _env(BuildContext context, BoxConstraints? constraints) =>
+      (constraints != null && isNavRight(context, constraints) && !isWearable ? AbstractPageState.barHeight : 0) -
+      (constraints != null && isWideScreen(constraints) ? AbstractPageState.menuWidth : 0);
+
+  static double getMaxWidth(BuildContext context, BoxConstraints constraints) =>
+      constraints.maxWidth - _env(context, constraints);
+
   static double getWidth(BuildContext context,
           [double multiply = 4, BoxConstraints? constraints, bool withZoom = true]) =>
       MediaQuery.sizeOf(context).width / (withZoom ? AppZoom.state : 1) -
       getIndent(multiply) -
-      (constraints != null && isNavRight(context, constraints) && !isWearable ? AbstractPageState.barHeight : 0) -
-      (constraints != null && isWideScreen(constraints) ? AbstractPageState.menuWidth : 0);
+      _env(context, constraints);
 
   static double getHeight(BuildContext context, [double multiply = 2]) =>
       MediaQuery.sizeOf(context).height / AppZoom.state - getIndent(multiply);

@@ -8,11 +8,11 @@ import 'package:app_finance/_classes/storage/app_data.dart';
 import 'package:app_finance/_classes/controller/focus_controller.dart';
 import 'package:app_finance/_configs/theme_helper.dart';
 import 'package:app_finance/_ext/build_context_ext.dart';
-import 'package:app_finance/widgets/generic/menu_widget.dart';
+import 'package:app_finance/pages/_interface/widgets/menu_widget.dart';
 import 'package:app_finance/widgets/wrapper/input_controller_wrapper.dart';
 import 'package:app_finance/widgets/wrapper/row_widget.dart';
 import 'package:app_finance/widgets/wrapper/text_wrapper.dart';
-import 'package:app_finance/widgets/wrapper/toolbar_button_widget.dart';
+import 'package:app_finance/widgets/button/toolbar_button_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_markdown/flutter_markdown.dart';
 import 'package:provider/provider.dart';
@@ -20,6 +20,7 @@ import 'package:provider/provider.dart';
 abstract class AbstractPageState<T extends StatefulWidget> extends State<T> {
   static const barHeight = 40.0;
   static const menuWidth = 200.0;
+  static final drawerKey = GlobalKey();
   late AppData state;
 
   int selectedMenu = 0;
@@ -108,30 +109,16 @@ abstract class AbstractPageState<T extends StatefulWidget> extends State<T> {
             ),
           ),
         ),
-      PopupMenuButton(
-        itemBuilder: (BuildContext context) {
-          return AppMenu.get().map((menuItem) {
-            return PopupMenuItem(
-              value: menuItem.route,
-              child: Row(
-                children: [
-                  Icon(menuItem.icon),
-                  ThemeHelper.wIndent,
-                  Text(menuItem.name),
-                ],
-              ),
-            );
-          }).toList();
-        },
-        onSelected: (value) => nav.pushNamed(value),
-        child: ToolbarButtonWidget(
-          child: Padding(
-            padding: EdgeInsets.all(ThemeHelper.getIndent()),
-            child: Icon(
+      Builder(
+        builder: (context) => ToolbarButtonWidget(
+          child: IconButton(
+            hoverColor: Colors.transparent,
+            icon: const Icon(
               Icons.menu,
-              semanticLabel: AppLocale.labels.navigationTooltip,
               color: Colors.white70,
             ),
+            tooltip: AppLocale.labels.navigationTooltip,
+            onPressed: () => Scaffold.of(context).openDrawer(),
           ),
         ),
       ),
@@ -243,16 +230,18 @@ abstract class AbstractPageState<T extends StatefulWidget> extends State<T> {
 
   Widget buildNavigation() {
     double indent = ThemeHelper.getIndent();
-    return ListView.separated(
-      scrollDirection: Axis.vertical,
-      shrinkWrap: true,
-      padding: EdgeInsets.symmetric(vertical: indent * 4),
-      separatorBuilder: (context, index) => ThemeHelper.hIndent2x,
-      itemCount: AppMenu.get().length,
-      itemBuilder: (context, index) => MenuWidget(
-        index: index,
-        setState: () => setState(() => selectedMenu = index),
-        selectedIndex: selectedMenu,
+    return FocusScope(
+      child: ListView.separated(
+        scrollDirection: Axis.vertical,
+        shrinkWrap: true,
+        padding: EdgeInsets.symmetric(vertical: indent * 4),
+        separatorBuilder: (context, index) => ThemeHelper.hIndent2x,
+        itemCount: AppMenu.get().length,
+        itemBuilder: (context, index) => MenuWidget(
+          index: index,
+          setState: () => setState(() => selectedMenu = index),
+          selectedIndex: selectedMenu,
+        ),
       ),
     );
   }
@@ -260,11 +249,14 @@ abstract class AbstractPageState<T extends StatefulWidget> extends State<T> {
   Drawer? buildDrawer() {
     final ColorScheme colorScheme = context.colorScheme;
     return Drawer(
+      key: drawerKey,
       elevation: 0,
       shape: Border.all(width: 0),
-      child: Container(
-        color: colorScheme.background,
-        child: buildNavigation(),
+      child: InputControllerWrapper(
+        child: Container(
+          color: colorScheme.background,
+          child: buildNavigation(),
+        ),
       ),
     );
   }

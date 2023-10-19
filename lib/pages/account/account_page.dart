@@ -6,7 +6,7 @@ import 'package:app_finance/_classes/herald/app_locale.dart';
 import 'package:app_finance/_classes/structure/currency/exchange.dart';
 import 'package:app_finance/_configs/theme_helper.dart';
 import 'package:app_finance/_classes/structure/navigation/app_route.dart';
-import 'package:app_finance/pages/abstract_page_state.dart';
+import 'package:app_finance/pages/_interface/abstract_page_state.dart';
 import 'package:app_finance/pages/home/widgets/account_widget.dart';
 import 'package:flutter/material.dart';
 

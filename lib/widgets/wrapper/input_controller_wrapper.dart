@@ -2,6 +2,8 @@
 // Use of this source code is governed by a CC BY-NC-ND 4.0 license that can be found in the LICENSE file.
 
 import 'package:app_finance/_classes/herald/app_zoom.dart';
+import 'package:app_finance/_classes/structure/navigation/app_route.dart';
+import 'package:app_finance/pages/_interface/abstract_page_state.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -11,6 +13,8 @@ enum AppEvents {
   zoomIn,
   zoomOut,
   zoomReset,
+  tipDrawer,
+  newBill,
 }
 
 class InputControllerWrapper extends StatefulWidget {
@@ -53,6 +57,17 @@ class InputControllerWrapperState extends State<InputControllerWrapper> {
       case AppEvents.zoomReset:
         zoom.set(1.0);
         break;
+      case AppEvents.tipDrawer:
+        final render = AbstractPageState.drawerKey.currentContext?.findRenderObject();
+        if (render != null) {
+          Scaffold.of(context).closeDrawer();
+        } else {
+          Scaffold.of(context).openDrawer();
+        }
+        break;
+      case AppEvents.newBill:
+        Navigator.of(context).pushNamed(AppRoute.billAddRoute);
+        break;
     }
   }
 
@@ -60,11 +75,20 @@ class InputControllerWrapperState extends State<InputControllerWrapper> {
     if (event is RawKeyDownEvent) {
       if (event.isControlPressed) {
         if (event.logicalKey == LogicalKeyboardKey.minus) {
-          handleEvent(AppEvents.zoomOut);
-        } else if (event.logicalKey == LogicalKeyboardKey.equal) {
-          handleEvent(AppEvents.zoomIn);
-        } else if (event.logicalKey == LogicalKeyboardKey.digit0) {
-          handleEvent(AppEvents.zoomReset);
+          return handleEvent(AppEvents.zoomOut);
+        }
+        if (event.logicalKey == LogicalKeyboardKey.equal) {
+          return handleEvent(AppEvents.zoomIn);
+        }
+        if (event.logicalKey == LogicalKeyboardKey.digit0) {
+          return handleEvent(AppEvents.zoomReset);
+        }
+        if (event.isKeyPressed(LogicalKeyboardKey.keyN)) {
+          return handleEvent(AppEvents.newBill);
+        }
+      } else if (event.isShiftPressed) {
+        if (event.isKeyPressed(LogicalKeyboardKey.enter)) {
+          return handleEvent(AppEvents.tipDrawer);
         }
       }
     }
