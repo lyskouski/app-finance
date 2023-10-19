@@ -33,18 +33,20 @@ class TapWidget extends StatelessWidget {
       attributedHint: AttributedString(tooltip ?? AppLocale.labels.tapToOpen),
       child: Tooltip(
         message: tooltip ?? AppLocale.labels.homeTooltip,
-        child: InkWell(
-          focusColor: context.colorScheme.onBackground.withOpacity(0.08),
-          hoverColor: context.colorScheme.onBackground.withOpacity(0.04),
-          onTap: () {
-            if (onTap != null) {
-              onTap!();
-            } else if (route?.name != '') {
-              nav.pushNamed(route?.name ?? AppRoute.homeRoute, arguments: route?.arguments);
-            }
-          },
-          child: child,
-        ),
+        child: onTap != null || route?.name != ''
+            ? InkWell(
+                focusColor: context.colorScheme.onBackground.withOpacity(0.08),
+                hoverColor: context.colorScheme.onBackground.withOpacity(0.04),
+                onTap: () {
+                  if (onTap != null) {
+                    onTap!();
+                  } else if (route?.name != '') {
+                    nav.pushNamed(route?.name ?? AppRoute.homeRoute, arguments: route?.arguments);
+                  }
+                },
+                child: child,
+              )
+            : child,
       ),
     );
   }

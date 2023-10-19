@@ -23,6 +23,7 @@ class BudgetLineWidget extends StatelessWidget {
   final double width;
   final String route;
   final bool hidden;
+  final bool showDivider;
 
   const BudgetLineWidget({
     super.key,
@@ -36,6 +37,7 @@ class BudgetLineWidget extends StatelessWidget {
     this.hidden = false,
     this.progress = 1,
     this.route = '',
+    this.showDivider = true,
   });
 
   @override
@@ -91,9 +93,11 @@ class BudgetLineWidget extends StatelessWidget {
               ]
             ],
           ),
-          ThemeHelper.hIndent05,
-          BarHorizontalSingle(value: progress, width: width, color: color),
-          ThemeHelper.hIndent05,
+          if (showDivider) ...[
+            ThemeHelper.hIndent05,
+            BarHorizontalSingle(value: progress, width: width, color: color),
+            ThemeHelper.hIndent05,
+          ],
         ],
       ),
     );
