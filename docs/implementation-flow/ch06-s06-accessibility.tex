@@ -61,3 +61,44 @@ This feature is particularly valuable for users who rely on keyboard navigation 
 desktop usage perspective). This not only adheres to accessibility guidelines but also makes our application more 
 inclusive and user-friendly:
 
+\begin{table}[h!]
+  \begin{tabular}{ |p{9cm}||l|  }
+    \hline
+    Description & Shortcut\\
+    \hline
+    Open / Close the Navigation Drawer &  \key{Shift} + \key{Enter} \\
+    Navigate Up                        &  \key{up} \\
+    Navigate Down                      &  \key{down} \\
+    Open Selected                      &  \key{Enter} \\
+    Zoom In                            &  \key{Ctrl} + \key{+} \\
+    Zoom In (with mouse)               &  \key{Ctrl} + \key{scroll down} \\
+    Zoom Out                           &  \key{Ctrl} + \key{-} \\
+    Zoom Out (with mouse)              &  \key{Ctrl} + \key{scroll up} \\
+    Reset Zoom                         &  \key{Ctrl} + \key{0} \\
+    Add new Transaction                &  \key{Ctrl} + \key{N} \\
+    \hline
+  \end{tabular}
+  \caption{Shortcuts in the application} \label{tb:shortcuts}
+\end{table}
+
+\begin{lstlisting}
+// ./lib/widgets/wrapper/input_controller_wrapper.dart
+class InputControllerWrapper extends StatefulWidget { 
+  /* ... */
+}
+class InputControllerWrapperState extends State<InputControllerWrapper> {
+  @override
+  Widget build(BuildContext context) {
+    // Obtain the current zoom value from 'AppZoom'-provider
+    zoom = Provider.of<AppZoom>(context, listen: false);
+    // Wrap the widget with listeners
+    return Listener(
+      onPointerSignal: _onPointerSignal, // Listen for mouse input
+      child: RawKeyboardListener(
+        focusNode: focus,
+        onKey: _onKeyPressed, // Listen for keyboard input
+        child: widget.child,
+      ),
+    );
+// ... other stuff
+\end{lstlisting}

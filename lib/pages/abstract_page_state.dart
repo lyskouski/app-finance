@@ -20,6 +20,7 @@ import 'package:provider/provider.dart';
 abstract class AbstractPageState<T extends StatefulWidget> extends State<T> {
   static const barHeight = 40.0;
   static const menuWidth = 200.0;
+  static final drawerKey = GlobalKey();
   late AppData state;
 
   int selectedMenu = 0;
@@ -229,16 +230,18 @@ abstract class AbstractPageState<T extends StatefulWidget> extends State<T> {
 
   Widget buildNavigation() {
     double indent = ThemeHelper.getIndent();
-    return ListView.separated(
-      scrollDirection: Axis.vertical,
-      shrinkWrap: true,
-      padding: EdgeInsets.symmetric(vertical: indent * 4),
-      separatorBuilder: (context, index) => ThemeHelper.hIndent2x,
-      itemCount: AppMenu.get().length,
-      itemBuilder: (context, index) => MenuWidget(
-        index: index,
-        setState: () => setState(() => selectedMenu = index),
-        selectedIndex: selectedMenu,
+    return FocusScope(
+      child: ListView.separated(
+        scrollDirection: Axis.vertical,
+        shrinkWrap: true,
+        padding: EdgeInsets.symmetric(vertical: indent * 4),
+        separatorBuilder: (context, index) => ThemeHelper.hIndent2x,
+        itemCount: AppMenu.get().length,
+        itemBuilder: (context, index) => MenuWidget(
+          index: index,
+          setState: () => setState(() => selectedMenu = index),
+          selectedIndex: selectedMenu,
+        ),
       ),
     );
   }
@@ -246,11 +249,14 @@ abstract class AbstractPageState<T extends StatefulWidget> extends State<T> {
   Drawer? buildDrawer() {
     final ColorScheme colorScheme = context.colorScheme;
     return Drawer(
+      key: drawerKey,
       elevation: 0,
       shape: Border.all(width: 0),
-      child: Container(
-        color: colorScheme.background,
-        child: buildNavigation(),
+      child: InputControllerWrapper(
+        child: Container(
+          color: colorScheme.background,
+          child: buildNavigation(),
+        ),
       ),
     );
   }
