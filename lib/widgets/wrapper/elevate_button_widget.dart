@@ -28,39 +28,42 @@ class ElevatedButtonWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final colorScheme = context.colorScheme;
-    return SizedBox(
-      width: double.infinity,
-      child: ElevatedButton(
-        style: ButtonStyle(
-          shape: MaterialStateProperty.resolveWith((states) => const ContinuousRectangleBorder()),
-          backgroundColor: MaterialStateProperty.resolveWith<Color>(
-            (states) {
-              if (states.contains(MaterialState.hovered)) {
-                return hoveredColor ?? colorScheme.onSecondaryContainer;
-              }
-              return backgroundColor ?? colorScheme.secondary;
-            },
-          ),
-        ),
-        onPressed: onPressed,
-        child: Row(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            if (icon != null) ...[
-              Icon(
-                icon,
-                color: textColor ?? colorScheme.inversePrimary,
-              ),
-              ThemeHelper.wIndent,
-            ],
-            Text(
-              text,
-              style: TextStyle(
-                color: textColor ?? colorScheme.inversePrimary,
-                shadows: const [],
-              ),
+    return Semantics(
+      label: text,
+      child: SizedBox(
+        width: double.infinity,
+        child: ElevatedButton(
+          style: ButtonStyle(
+            shape: MaterialStateProperty.resolveWith((states) => const ContinuousRectangleBorder()),
+            backgroundColor: MaterialStateProperty.resolveWith<Color>(
+              (states) {
+                if (states.contains(MaterialState.hovered)) {
+                  return hoveredColor ?? colorScheme.onSecondaryContainer;
+                }
+                return backgroundColor ?? colorScheme.secondary;
+              },
             ),
-          ],
+          ),
+          onPressed: onPressed,
+          child: Row(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              if (icon != null) ...[
+                Icon(
+                  icon,
+                  color: textColor ?? colorScheme.inversePrimary,
+                ),
+                ThemeHelper.wIndent,
+              ],
+              Text(
+                text,
+                style: TextStyle(
+                  color: textColor ?? colorScheme.inversePrimary,
+                  shadows: const [],
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );
