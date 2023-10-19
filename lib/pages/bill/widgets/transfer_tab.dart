@@ -12,7 +12,7 @@ import 'package:app_finance/_ext/build_context_ext.dart';
 import 'package:app_finance/pages/_interface/abstract_page_state.dart';
 import 'package:app_finance/widgets/form/currency_exchange_input.dart';
 import 'package:app_finance/widgets/form/date_time_input.dart';
-import 'package:app_finance/widgets/wrapper/full_sized_button_widget.dart';
+import 'package:app_finance/widgets/button/full_sized_button_widget.dart';
 import 'package:app_finance/widgets/wrapper/required_widget.dart';
 import 'package:app_finance/widgets/wrapper/row_widget.dart';
 import 'package:app_finance/widgets/form/currency_selector.dart';

@@ -4,7 +4,7 @@
 import 'package:app_finance/_classes/herald/app_locale.dart';
 import 'package:app_finance/_configs/theme_helper.dart';
 import 'package:app_finance/_mixins/launcher_mixin.dart';
-import 'package:app_finance/widgets/wrapper/full_sized_button_widget.dart';
+import 'package:app_finance/widgets/button/full_sized_button_widget.dart';
 import 'package:flutter/material.dart';
 
 class OtherWidget extends StatelessWidget with LauncherMixin {

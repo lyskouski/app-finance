@@ -11,7 +11,7 @@ import 'package:app_finance/_ext/build_context_ext.dart';
 import 'package:app_finance/pages/_interface/abstract_add_page.dart';
 import 'package:app_finance/widgets/form/color_selector.dart';
 import 'package:app_finance/widgets/form/currency_selector.dart';
-import 'package:app_finance/widgets/wrapper/full_sized_button_widget.dart';
+import 'package:app_finance/widgets/button/full_sized_button_widget.dart';
 import 'package:app_finance/widgets/form/icon_selector.dart';
 import 'package:app_finance/widgets/form/simple_input.dart';
 import 'package:app_finance/widgets/wrapper/required_widget.dart';

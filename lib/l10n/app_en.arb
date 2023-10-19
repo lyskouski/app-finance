@@ -295,6 +295,7 @@
     "recoveryHeadline": "Recovery",
     "recoveryTooltip": "Recover From",
     "releases": "Releases",
+    "reset": "reset",
     "roadmap": "Roadmap",
     "saveNotification": "Changes saved!",
     "saveSettingsTooltip": "Save",
