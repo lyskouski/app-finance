@@ -125,6 +125,11 @@ jobs:
           compress-archive -Path * -DestinationPath ${env:GITHUB_WORKSPACE}/fingrom_${{ matrix.target }}${{ matrix.asset_extension }}
         working-directory: ${{ matrix.build_path }}
 
+      - name: Generate Windows MSIX-Package
+        if: matrix.target == 'Windows'
+        run: |
+          dart run msix:create
+
 
       - name: Run Linux Build
         if: matrix.target == 'Linux'

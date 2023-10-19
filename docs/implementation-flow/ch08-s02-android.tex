@@ -15,11 +15,11 @@ use the full path of its location instead of a simple command}):
 
 \begin{lstlisting}[language=terminal]
 # For Linux and macOS
-keytool -genkey -v -keystore ~/key.jks -keyalg RSA -keysize 2048 \
+$ keytool -genkey -v -keystore ~/key.jks -keyalg RSA -keysize 2048 \
     -validity 10000 -alias key
 
 # For Windows
-keytool -genkey -v -keystore c:\Users\USER_NAME\key.jks -storetype \
+$ keytool -genkey -v -keystore c:\Users\USER_NAME\key.jks -storetype \
     JKS -keyalg RSA -keysize 2048 -validity 10000 -alias key
 \end{lstlisting}
 

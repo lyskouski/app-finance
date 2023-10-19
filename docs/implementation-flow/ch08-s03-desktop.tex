@@ -1,0 +1,24 @@
+% Copyright 2023 The terCAD team. All rights reserved.
+% Use of this content is governed by a CC BY-NC-ND 4.0 license that can be found in the LICENSE file.
+
+\subsection{Microsoft Store}
+\markboth{Distributing}{Microsoft Store}
+
+A distribution page to Windows Marketplace: 
+\href{https://partner.microsoft.com/en-us/dashboard/home}{https://partner.microsoft.com/en-us/dashboard/home}.
+
+Firstly, we do have to proceed with a registration form (as for the business case
+\href{https://partner.microsoft.com/en-us/dashboard/registration/AccountInfo}{https://partner.microsoft.com/en-us/dashboard/registration/AccountInfo})
+and pay the initial fee (roughly 80 Euro with TAX).
+
+The easiest way to create an MSIX distribution for the project is to use \q{msix}-package and store generated installer 
+on \q{Release}-page since from a configuration page the link to the package is required (\cref{})
+
+\begin{lstlisting}[language=terminal]
+# Install package
+$ flutter pub add --dev msix
+
+# To generate the MSIX-installer
+$ dart run msix:create
+\end{lstlisting}
+
