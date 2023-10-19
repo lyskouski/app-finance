@@ -34,30 +34,32 @@ class BillAddPageState extends State<BillAddPage> {
       child: Consumer<AppData>(builder: (context, appState, _) {
         return LayoutBuilder(builder: (context, constraints) {
           isLeft ??= ThemeHelper.getHeight(context) < 520;
-          return TabWidget(
-            type: TabType.secondary,
-            hasIndent: false,
-            isLeft: isLeft!,
-            focus: 1,
-            tabs: [
-              Tab(
-                icon: const Icon(Icons.insert_invitation),
-                text: AppLocale.labels.incomeHeadline,
-              ),
-              Tab(
-                icon: const Icon(Icons.money_off),
-                text: AppLocale.labels.expenseHeadline,
-              ),
-              Tab(
-                icon: const Icon(Icons.transform),
-                text: AppLocale.labels.transferHeadline,
-              ),
-            ],
-            children: [
-              IncomeTab(state: appState, isLeft: isLeft!),
-              ExpensesTab(state: appState, isLeft: isLeft!),
-              TransferTab(state: appState, isLeft: isLeft!),
-            ],
+          return FocusScope(
+            child: TabWidget(
+              type: TabType.secondary,
+              hasIndent: false,
+              isLeft: isLeft!,
+              focus: 1,
+              tabs: [
+                Tab(
+                  icon: const Icon(Icons.insert_invitation),
+                  text: AppLocale.labels.incomeHeadline,
+                ),
+                Tab(
+                  icon: const Icon(Icons.money_off),
+                  text: AppLocale.labels.expenseHeadline,
+                ),
+                Tab(
+                  icon: const Icon(Icons.transform),
+                  text: AppLocale.labels.transferHeadline,
+                ),
+              ],
+              children: [
+                IncomeTab(state: appState, isLeft: isLeft!),
+                ExpensesTab(state: appState, isLeft: isLeft!),
+                TransferTab(state: appState, isLeft: isLeft!),
+              ],
+            ),
           );
         });
       }),

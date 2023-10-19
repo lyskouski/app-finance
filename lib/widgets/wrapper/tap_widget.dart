@@ -12,6 +12,7 @@ class TapWidget extends StatelessWidget {
   final String? tooltip;
   final RouteSettings? route;
   final Function? onTap;
+  final Function(bool)? onFocusChange;
   final bool toWrap;
 
   const TapWidget({
@@ -20,6 +21,7 @@ class TapWidget extends StatelessWidget {
     this.tooltip,
     this.route,
     this.onTap,
+    this.onFocusChange,
     this.toWrap = true,
   });
 
@@ -37,6 +39,7 @@ class TapWidget extends StatelessWidget {
             ? InkWell(
                 focusColor: context.colorScheme.onBackground.withOpacity(0.08),
                 hoverColor: context.colorScheme.onBackground.withOpacity(0.04),
+                onFocusChange: onFocusChange,
                 onTap: () {
                   if (onTap != null) {
                     onTap!();

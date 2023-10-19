@@ -84,6 +84,7 @@ class ListSelectorState<T extends ListSelector, K extends ListSelectorItem> exte
       headerHintStyle: hintStyle,
       builder: (context, controller) => TapWidget(
         onTap: () => onTap(null),
+        onFocusChange: (v) => v ? FocusController.scrollToFocusedElement(widget.focusOrder) : null,
         child: Container(
           width: double.infinity,
           color: context.colorScheme.fieldBackground,

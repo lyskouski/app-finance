@@ -42,6 +42,7 @@ class FullSizedButtonWidget extends AbstractInput {
           heroTag: heroTag,
           onPressed: setState,
           hoverColor: colorScheme.primary,
+          focusColor: colorScheme.primary.withOpacity(0.8),
           tooltip: title,
           focusNode: FocusController.getFocusNode(),
           child: Row(

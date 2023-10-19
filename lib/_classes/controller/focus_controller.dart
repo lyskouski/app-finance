@@ -67,21 +67,23 @@ class FocusController {
     int idx = focus;
     if (idx >= 0 && idx < _shift.length - 1) {
       nodes[idx].requestFocus();
-      _delay.run(() => _scrollToFocusedElement(idx));
+      _delay.run(() => scrollToFocusedElement(idx));
     }
   }
 
-  static void _scrollToFocusedElement(int idx) {
+  static void scrollToFocusedElement(int idx) {
     if (!_isControllerActive()) {
       return;
     }
     if (_shift.isNotEmpty) {
       double lowest = _shift.values.reduce((current, next) => current < next ? current : next);
-      _controller[_activeClass]?.animateTo(
-        _shift[idx]! - lowest,
-        duration: const Duration(milliseconds: 300),
-        curve: Curves.easeInOut,
-      );
+      if (_shift[idx] != null) {
+        _controller[_activeClass]?.animateTo(
+          _shift[idx]! - lowest,
+          duration: const Duration(milliseconds: 300),
+          curve: Curves.easeInOut,
+        );
+      }
     }
   }
 
