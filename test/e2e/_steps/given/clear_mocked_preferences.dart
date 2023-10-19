@@ -3,6 +3,7 @@
 
 import 'package:app_finance/_classes/gen/generate_with_method_setters.dart';
 import 'package:app_finance/_classes/storage/app_preferences.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 // ignore: depend_on_referenced_packages
 import 'package:gherkin/gherkin.dart';
@@ -25,6 +26,9 @@ class ClearMockedPreferences extends Given {
     final pref = WrapperMockSharedPreferences();
     pref.mockGetString = (value) => null;
     AppPreferences.pref = pref;
+    await FileRunner.tester.pumpAndSettle();
+    final ScaffoldState scafState = FileRunner.tester.firstState(find.byType(Scaffold));
+    scafState.openDrawer();
     await FileRunner.tester.pumpAndSettle();
   }
 }

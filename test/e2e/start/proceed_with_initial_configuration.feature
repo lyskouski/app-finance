@@ -3,7 +3,6 @@ Feature: Verify Initial Flow
 
     Scenario: Applying basic configuration through the start pages
         Given I clear my preferences at the start
-        And I am on "Home" page
         Then I can see "Initial Setup" component
         When I tap "Save (Go Next)" button
         Then I can see "Acknowledge (Go Next)" button
