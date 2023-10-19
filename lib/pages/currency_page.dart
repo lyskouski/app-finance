@@ -8,7 +8,7 @@ import 'package:app_finance/_classes/storage/app_data.dart';
 import 'package:app_finance/_configs/theme_helper.dart';
 import 'package:app_finance/_ext/build_context_ext.dart';
 import 'package:app_finance/charts/trade_chart.dart';
-import 'package:app_finance/pages/abstract_page_state.dart';
+import 'package:app_finance/pages/_interface/abstract_page_state.dart';
 import 'package:app_finance/widgets/generic/notification_bar.dart';
 import 'package:app_finance/widgets/form/simple_input.dart';
 import 'package:app_finance/widgets/wrapper/row_widget.dart';

@@ -8,7 +8,7 @@ import 'package:app_finance/_classes/storage/app_data.dart';
 import 'package:app_finance/_classes/controller/focus_controller.dart';
 import 'package:app_finance/_configs/theme_helper.dart';
 import 'package:app_finance/_ext/build_context_ext.dart';
-import 'package:app_finance/widgets/generic/menu_widget.dart';
+import 'package:app_finance/pages/_interface/widgets/menu_widget.dart';
 import 'package:app_finance/widgets/wrapper/input_controller_wrapper.dart';
 import 'package:app_finance/widgets/wrapper/row_widget.dart';
 import 'package:app_finance/widgets/wrapper/text_wrapper.dart';

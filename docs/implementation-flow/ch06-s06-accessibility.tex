@@ -7,9 +7,9 @@
 Before delving into Flutter's accessibility capabilities, it's valuable to comprehend the significance of accessibility. 
 Accessibility involves the design and development of applications that are usable by all individuals, including those 
 with disabilities such as visual, auditory, motor, or cognitive impairments. Providing equal access to information 
-and services for all users is a matter of ethical and social responsibility. By ensuring that our app is accessible, 
-we broaden its user base to include a more diverse audience. Lastly, accessibility often constitutes as a legal 
-obligation in many regions.
+and services for all users is a matter of ethical and social responsibility. By ensuring that our app is 
+accessible \issue{34}{}, we broaden its user base to include a more diverse audience. Lastly, accessibility often 
+constitutes as a legal obligation in many regions.
 
 The \q{Semantics} and \q{Tooltip} widgets serve as the initial building blocks for enhancing accessibility. They play a 
 critical role in assisting screen readers by providing context to users with visual impairments. It can be implemented 
@@ -51,18 +51,64 @@ class ElevatedButtonWidget extends StatelessWidget {
 \noindent Regardless of its role as a canvas for creating user interfaces, Flutter excels in ensuring the accessibility 
 of widgets, allowing them to seamlessly interact with screen readers like TalkBack on Android and VoiceOver on iOS. In 
 this context, the semantic tree in Flutter closely aligns with the widget tree. Flutter integrates with the 
-accessibility APIs of the underlying platforms, which means it can effectively communicate with screen readers, 
-ensuring a cohesive and inclusive experience for all users. This emphasis on accessibility isn't limited solely to text 
-recognition, by extending experience to effectively manage the focus for users who navigate through the app using 
-keyboards or voice commands.
+accessibility APIs of the underlying platforms, which means it can effectively communicate with screen readers. 
+Semantics actions act as intermediaries between the operating system's accessibility APIs and the semantics nodes. 
+That enables various interactions, including tapping, long-pressing, scrolling, accessibility focus transitions, and a 
+range of other actions, thereby ensuring an accessible user experience.
 
-Basic navigation can be further enhanced with keyboard shortcuts provided through the use of the \q{Listener}-widget. 
-This feature is particularly valuable for users who rely on keyboard navigation (either for accessibility, or from 
-desktop usage perspective). This not only adheres to accessibility guidelines but also makes our application more 
-inclusive and user-friendly:
+To validate that our application complies with semantic assertions and provides the expected accessibility, we may 
+employ the \q{SemanticsOwner} for testing. That enables us to conduct programmatically-driven tests on 
+the behavior of the application's semantics tree:
+
+\begin{lstlisting}
+testWidgets('Test semantics actions', (WidgetTester tester) async {
+  await tester.pumpWidget(App());
+  final semantics = tester.getSemantics(find.text('Home'));
+  final owner = tester.binding.pipelineOwner.semanticsOwner;
+  owner.performAction(semantics.id,
+      SemanticsAction.didGainAccessibilityFocus);
+  owner.performAction(semantics.id, SemanticsAction.tap);
+});
+testWidgets('Test alternative inputs', (WidgetTester tester) async {
+  await tester.pumpWidget(App());
+  await tester.sendKeyDownEvent(LogicalKeyboardKey.control);
+  await tester.sendKeyEvent(LogicalKeyboardKey.keyN);
+  await tester.sendKeyUpEvent(LogicalKeyboardKey.control);
+  await tester.pumpAndSettle(const Duration(seconds: 1));
+  expect(find.text('Create new Transaction'), findsOneWidget);
+});
+\end{lstlisting}
+
+\noindent The accessibility isn't limited solely to the text interpretation, by extending experience to effectively 
+manage the focus for users who navigate through the app using keyboards or voice commands. As a navigation can be 
+enhanced with keyboard shortcuts provided through the use of the \q{Listener}-widget. This feature is particularly 
+valuable for users who rely on keyboard navigation (either for accessibility, or from desktop usage perspective). This 
+not only adheres to accessibility guidelines but also makes our application more inclusive and user-friendly:
+
+\begin{lstlisting}
+// ./lib/widgets/wrapper/input_controller_wrapper.dart
+class InputControllerWrapper extends StatefulWidget {/* ... */}
+
+class InputControllerWrapperState 
+    extends State<InputControllerWrapper> {
+  @override
+  Widget build(BuildContext context) {
+    // Obtain the current zoom value from 'AppZoom'-provider
+    zoom = Provider.of<AppZoom>(context, listen: false);
+    // Wrap the widget with listeners
+    return Listener(
+      onPointerSignal: _onPointerSignal, // Listen for mouse input
+      child: RawKeyboardListener(
+        focusNode: focus,
+        onKey: _onKeyPressed, // Listen for keyboard input
+        child: widget.child,
+      ),
+    );
+// ... other stuff
+\end{lstlisting}
 
 \begin{table}[h!]
-  \begin{tabular}{ |p{9cm}||l|  }
+  \begin{tabular}{ |p{7.8cm}||l|  }
     \hline
     Description & Shortcut\\
     \hline
@@ -80,25 +126,3 @@ inclusive and user-friendly:
   \end{tabular}
   \caption{Shortcuts in the application} \label{tb:shortcuts}
 \end{table}
-
-\begin{lstlisting}
-// ./lib/widgets/wrapper/input_controller_wrapper.dart
-class InputControllerWrapper extends StatefulWidget { 
-  /* ... */
-}
-class InputControllerWrapperState extends State<InputControllerWrapper> {
-  @override
-  Widget build(BuildContext context) {
-    // Obtain the current zoom value from 'AppZoom'-provider
-    zoom = Provider.of<AppZoom>(context, listen: false);
-    // Wrap the widget with listeners
-    return Listener(
-      onPointerSignal: _onPointerSignal, // Listen for mouse input
-      child: RawKeyboardListener(
-        focusNode: focus,
-        onKey: _onKeyPressed, // Listen for keyboard input
-        child: widget.child,
-      ),
-    );
-// ... other stuff
-\end{lstlisting}

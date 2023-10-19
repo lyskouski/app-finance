@@ -9,7 +9,7 @@ import 'package:app_finance/_classes/controller/focus_controller.dart';
 import 'package:app_finance/_classes/storage/app_data.dart';
 import 'package:app_finance/_configs/theme_helper.dart';
 import 'package:app_finance/_ext/build_context_ext.dart';
-import 'package:app_finance/pages/abstract_page_state.dart';
+import 'package:app_finance/pages/_interface/abstract_page_state.dart';
 import 'package:app_finance/widgets/form/currency_exchange_input.dart';
 import 'package:app_finance/widgets/form/date_time_input.dart';
 import 'package:app_finance/widgets/wrapper/full_sized_button_widget.dart';

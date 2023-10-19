@@ -4,7 +4,7 @@
 import 'package:app_finance/_classes/herald/app_locale.dart';
 import 'package:app_finance/_classes/structure/navigation/app_route.dart';
 import 'package:app_finance/_configs/theme_helper.dart';
-import 'package:app_finance/pages/abstract_page_state.dart';
+import 'package:app_finance/pages/_interface/abstract_page_state.dart';
 import 'package:app_finance/widgets/wrapper/full_sized_button_widget.dart';
 import 'package:app_finance/widgets/wrapper/tab_widget.dart';
 import 'package:app_finance/pages/start/widgets/account_tab.dart';

@@ -8,7 +8,7 @@ import 'package:app_finance/_classes/storage/app_preferences.dart';
 import 'package:app_finance/_configs/theme_helper.dart';
 import 'package:app_finance/_classes/structure/navigation/app_route.dart';
 import 'package:app_finance/components/components_builder.dart';
-import 'package:app_finance/pages/abstract_page_state.dart';
+import 'package:app_finance/pages/_interface/abstract_page_state.dart';
 import 'package:app_finance/pages/home/home_edit_page.dart';
 import 'package:app_finance/pages/start/start_page.dart';
 import 'package:app_finance/widgets/wrapper/grid_layer.dart';

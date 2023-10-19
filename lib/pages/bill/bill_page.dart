@@ -9,7 +9,7 @@ import 'package:app_finance/_classes/structure/bill_app_data.dart';
 import 'package:app_finance/_configs/theme_helper.dart';
 import 'package:app_finance/_classes/structure/navigation/app_route.dart';
 import 'package:app_finance/_ext/date_time_ext.dart';
-import 'package:app_finance/pages/abstract_page_state.dart';
+import 'package:app_finance/pages/_interface/abstract_page_state.dart';
 import 'package:app_finance/pages/bill/widgets/bill_line_widget.dart';
 import 'package:app_finance/pages/bill/widgets/header_delegate.dart';
 import 'package:app_finance/widgets/generic/base_swipe_widget.dart';
