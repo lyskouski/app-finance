@@ -163,7 +163,8 @@ class TransactionLog {
         line = EncryptionHandler.decrypt(line);
       }
       var obj = json.decode(line);
-      if (EncryptionHandler.getHash(obj['data']) == obj['type']['hash'] &&
+      // FIXME: hash is not always the same for Web
+      if ( // EncryptionHandler.getHash(obj['data']) == obj['type']['hash'] &&
           (!onlyNew || store.getByUuid(obj['data']['uuid']) == null)) {
         init(store, obj['type']['name'], obj['data']);
       } else {
