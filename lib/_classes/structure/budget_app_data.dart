@@ -76,7 +76,7 @@ class BudgetAppData extends AbstractAppData with StorageMixin {
 
   @override
   Map<String, dynamic> toJson() => {
-        ...super.toJson(),
+        ...super.toJson()..remove('description'),
         'amountLimit': amountLimit,
         'amountSet': amountSet.toString(),
       };
