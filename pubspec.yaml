@@ -71,6 +71,7 @@ dev_dependencies:
   flutter_gherkin: ^2.0.0
   file: ^6.1.4
   platform: ^3.1.0
+  msix: ^3.16.4
 
 flutter:
   generate: true
@@ -93,6 +94,15 @@ flutter:
     - family: RobotoCondensed-Regular
       fonts:
         - asset: assets/fonts/RobotoCondensed-Regular.ttf
+
+msix_config:
+  display_name: Fingrom MSIX
+  publisher: CN=78144012-EC6A-4BE8-97BF-A392EF55482E
+  publisher_display_name: terCAD
+  identity_name: terCAD.FingromMSIX
+  logo_path: web/icons/Icon-512.png
+  capabilities: internetClient
+  store: true
 
 # Commands and their dependencies
 scripts:

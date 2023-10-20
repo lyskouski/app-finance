@@ -116,14 +116,27 @@ jobs:
           flutter config --enable-windows-desktop
           flutter build -v windows --build-name=${{ needs.release.outputs.version }} --build-number=${{ needs.release.outputs.build_number }} --release
 
-      - name: Compress Windows Package
+      - name: Copy Additional DLLs
         if: matrix.target == 'Windows'
         run: |   
           Copy-Item (vswhere -latest -find 'VC\Redist\MSVC\*\x64\*\msvcp140.dll') .
           Copy-Item (vswhere -latest -find 'VC\Redist\MSVC\*\x64\*\vcruntime140.dll') .
           Copy-Item (vswhere -latest -find 'VC\Redist\MSVC\*\x64\*\vcruntime140_1.dll') .
-          compress-archive -Path * -DestinationPath ${env:GITHUB_WORKSPACE}/fingrom_${{ matrix.target }}${{ matrix.asset_extension }}
         working-directory: ${{ matrix.build_path }}
+
+      - name: Generate MSIX-package
+        if: matrix.target == 'Windows'
+        run: dart run msix:create --version 0.0.0.0	--output-path ${{ matrix.build_path }} --output_name Fingrom --build-windows false
+
+      - name: Compress Windows Package
+        if: matrix.target == 'Windows'
+        run: compress-archive -Path * -DestinationPath ${env:GITHUB_WORKSPACE}/fingrom_${{ matrix.target }}${{ matrix.asset_extension }}
+        working-directory: ${{ matrix.build_path }}
+
+      - name: Generate Windows MSIX-Package
+        if: matrix.target == 'Windows'
+        run: |
+          dart run msix:create
 
 
       - name: Run Linux Build

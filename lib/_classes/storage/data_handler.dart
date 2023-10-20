@@ -42,6 +42,9 @@ class DataHandler {
     final currency = exchange.getDefaultCurrency();
     for (final item in scope) {
       final actual = fn(item);
+      if (actual == -1) {
+        continue;
+      }
       if (data[actual] == null) {
         data[actual] = [];
       }

@@ -68,7 +68,7 @@ class BudgetAppData extends AbstractAppData with StorageMixin {
       currency: CurrencyProvider.find(json['currency']),
       updatedAt: DateTime.parse(json['updatedAt']),
       createdAt: DateTime.parse(json['createdAt']),
-      amountLimit: json['amountLimit'],
+      amountLimit: 0.0 + json['amountLimit'],
       amountSet: json['amountSet'] != null ? json['amountSet'].toString().toMap<int, double>() : {},
       hidden: json['hidden'],
     );
@@ -76,7 +76,7 @@ class BudgetAppData extends AbstractAppData with StorageMixin {
 
   @override
   Map<String, dynamic> toJson() => {
-        ...super.toJson(),
+        ...super.toJson()..remove('description'),
         'amountLimit': amountLimit,
         'amountSet': amountSet.toString(),
       };
