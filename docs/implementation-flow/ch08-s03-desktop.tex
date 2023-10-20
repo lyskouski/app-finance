@@ -4,21 +4,70 @@
 \subsection{Microsoft Store}
 \markboth{Distributing}{Microsoft Store}
 
-A distribution page to Windows Marketplace: 
-\href{https://partner.microsoft.com/en-us/dashboard/home}{https://partner.microsoft.com/en-us/dashboard/home}.
+To distribute a Windows app through the Microsoft Store, we should create a Microsoft Partner Center account
+(\href{https://partner.microsoft.com}{https://partner.microsoft.com}). By going through the registration form, it 
+would be needed to pay the initial fee (roughly 80 Euro with TAX). The registration would be a prerequisite for 
+creating the distributable MSIX-build, since a few properties should be aligned with the information in our Partner 
+Center (\cref{img:d-windows}). 
 
-Firstly, we do have to proceed with a registration form (as for the business case
-\href{https://partner.microsoft.com/en-us/dashboard/registration/AccountInfo}{https://partner.microsoft.com/en-us/dashboard/registration/AccountInfo})
-and pay the initial fee (roughly 80 Euro with TAX).
+\img{distributing/win-store}{Microsoft Store -- Product Identity}{img:d-windows}
 
-The easiest way to create an MSIX distribution for the project is to use \q{msix}-package and store generated installer 
-on \q{Release}-page since from a configuration page the link to the package is required (\cref{})
+\noindent The most straightforward method for generating an MSIX-installer for our project is by utilizing the 
+\q{msix}-package \issue{209}{}:
 
 \begin{lstlisting}[language=terminal]
-# Install package
 $ flutter pub add --dev msix
-
-# To generate the MSIX-installer
-$ dart run msix:create
 \end{lstlisting}
 
+\begin{lstlisting}[language=yaml]
+# ./pubspec.yaml
+msix_config:
+  display_name: Fingrom MSIX
+  publisher: CN=78144012-EC6A-4BE8-97BF-A392EF55482E
+  publisher_display_name: terCAD
+  identity_name: terCAD.FingromMSIX
+  logo_path: web/icons/Icon-512.png
+  capabilities: internetClient # permissions
+  store: true # distributable package
+\end{lstlisting}
+
+\noindent As a tip, MS Store requires to use all zeros for the version definition:
+
+\begin{lstlisting}[language=terminal]
+[X] Package acceptance validation error: Apps are not allowed
+ to have a Version with a revision number other than zero 
+ specified in the app manifest.
+\end{lstlisting}
+
+\begin{lstlisting}[language=terminal]
+# Prepare Windows release
+$ flutter config --enable-windows-desktop
+$ flutter build -v windows \
+  --build-name=${{ version }} \
+  --build-number=${{ build_number }} \
+  --release
+
+# Generate the MSIX-installer
+$ dart run msix:create \
+  --version 0.0.0.0	\
+  --output-path ${{ matrix.build_path }} \
+  --build-windows false \
+  --capabilities internetClient
+\end{lstlisting}
+
+\noindent MSIX installers should be signed with a certificate, to ensure that app installs and updates come from 
+trustworthy sources. But in case of publishing to the Microsoft Store, the installation package will be signed 
+automatically by the store. In addition, we may utilize App Center (\href{https://appcenter.ms}{https://appcenter.ms}) 
+as an early access platform for the users; it contains own Analytics and Crashes that can be used across multiple 
+platforms.
+
+To automate the distribution \issue{209}{}, it can be used MS Store CLI (command line interface) -- . It uses the 
+Microsoft Store submission API for publishing a Windows app to Microsoft Store. To use this integration, we have to
+link our Microsoft Partner Center account to the Azure AD application and store as secrets the necessary information 
+(Tenant Name, Tenant ID, Client ID, and Client Secret).
+
+
+\subsection{[TBD] Linux Snap Store}
+\markboth{Distributing}{[TBD] Linux Snap Store}
+
+[TBD]
