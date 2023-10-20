@@ -7,7 +7,7 @@
 [![Widget Tests Coverage](https://lyskouski.github.io/app-finance/coverage/widget_coverage_badge.svg)](https://github.com/lyskouski/app-finance/tree/main/test/widget)
 [![End-To-End Coverage](https://lyskouski.github.io/app-finance/coverage/e2e_coverage_badge.svg)](https://github.com/lyskouski/app-finance/tree/main/test/e2e)
 
-**Fingrom** - Open-sourced cross-platform financial accounting application without Ads and limitations.
+**Fingrom** -- Open-source cross-platform financial accounting application. Use for free without Ads and limitations.
 
 [!] **Release to Marketplaces is scheduled for November 1st.**
 
@@ -16,24 +16,25 @@
 
 #### Desktop Apps
 - **Macos**:
-  - Apple Store: __
+  - Apple Store: _(released, postponed availability)_
   - [Release](https://github.com/lyskouski/app-finance/releases/latest)/fingrom_macOS.zip
 - **Linux**:
   - Snap Store: [[pending]](https://github.com/lyskouski/app-finance/issues/209)
   - [Release](https://github.com/lyskouski/app-finance/releases/latest)/fingrom_Linux.tar.gz
 - **Windows**: 
-  - Windows Apps: [[pending]](https://github.com/lyskouski/app-finance/issues/209)
+  - Windows Apps: _(released, postponed availability)_
+  - [App Center](https://appcenter.ms/): [**early access**](https://appcenter.ms/orgs/terCAD/apps/Fingrom)
   - [Release](https://github.com/lyskouski/app-finance/releases/latest)/fingrom_Windows.zip
 
 #### Mobile Apps
 - **iOS**
-  - Apple Store: __
+  - Apple Store: _(released, postponed availability)_
   - [TestFlight](https://developer.apple.com/testflight/): [**early access**](https://testflight.apple.com/join/93ECy9ZB)
   - [Release](https://github.com/lyskouski/app-finance/releases/latest)/fingrom_iOS.ipa
 - **Android**
   - Google Play: [[on hold]](https://github.com/lyskouski/app-finance/issues/129)
-  - Galaxy Store: [[pending]](https://github.com/lyskouski/app-finance/issues/284)
-  - Huawei Gallery: [[pending]](https://github.com/lyskouski/app-finance/issues/286)
+  - Galaxy Store: [[on hold]](https://github.com/lyskouski/app-finance/issues/284)
+  - Huawei Gallery: _(released, postponed availability)_
   - [Release](https://github.com/lyskouski/app-finance/releases/latest)/fingrom_Android.aab
 
 ## Functionality

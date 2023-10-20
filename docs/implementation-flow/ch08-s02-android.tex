@@ -106,10 +106,36 @@ from a multiple options, one of them -- via Apple Store
 That request might take up to 5 business days to receive the number from D\&B (\href{https://dnb.com}{https://dnb.com}). 
 
 
-\subsection{[TBD] Huawei Gallery}
+\subsection{Huawei Gallery}
 \markboth{Distributing}{Huawei Gallery}
 
 The marketplace link for distribution is \href{https://developer.huawei.com/}{https://developer.huawei.com/}.
-We may proceed with registration either as individuals, or business 
+We may proceed with a registration either as individuals, or business 
 (\href{https://developer.huawei.com/consumer/en/verified/company}{https://developer.huawei.com/consumer/en/verified/company}).
 The identity verification will be completed within 1 to 2 working days.
+
+It would also be needed to upload the signature key (that we've created for Google Play earlier) with a 
+personal encryption key (can be taken from the "App Signature" page):
+
+\begin{lstlisting}[language=terminal]
+$ java -jar pepk.jar --keystore key.jks --alias key \
+  --output sign.zip --encryptionkey {from "App Signing" page} \
+  --include-cert
+\end{lstlisting}
+
+\img{distributing/huawei-gallery-new}{Huawei Gallery -- New App Creation}{img:d-huawei}
+
+\noindent Huawei Gallery does not provide any mechanics to upload the package automatically. So, we should navigate to 
+"My App" in the Huawei Developer Console, and choose the application we've created. Then fill out the mandatory fields, 
+including compatibility, localization, and categorization, on the "App Information" screen. Afterward, we should click 
+the "Next"-button and proceed to the "Version Information"-step. On the "Version Information"-screen, we provide details 
+for various fields such as Country/Region for release, Open testing, Payment information, In-app purchases, Content 
+rating, Privacy statement, Privacy tags, Copyright information, For reviewer, and Release. Then, we upload the apk or 
+app bundle of our project to the app version \issue{286}{}. With these steps completed, our app is now prepared for 
+submission to Huawei AppGallery (\cref{img:d-huawei-review}).
+
+\img{distributing/huawei-gallery-review}{Huawei Gallery -- App Distribution}{img:d-huawei-review}
+
+\noindent To distribute payable applications we have to fulfil merchant information (as bank account details, TAX ID, 
+and sales tax registration status [for Canada]):
+\href{https://developer.huawei.com/consumer/en/console/setting/merchant}{https://developer.huawei.com/consumer/en/console/setting/merchant}.
