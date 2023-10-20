@@ -7,12 +7,10 @@
 To distribute a Windows app through the Microsoft Store, we should create a Microsoft Partner Center account
 (\href{https://partner.microsoft.com}{https://partner.microsoft.com}). By going through the registration form, it 
 would be needed to pay the initial fee (roughly 80 Euro with TAX). The registration would be a prerequisite for 
-creating the distributable MSIX-build, since a few properties should be aligned with the information in our Partner 
-Center (\cref{img:d-windows}). 
+creating the distributable MSIX-build, since a few properties for the build should be aligned with the information on 
+our Partner Center (\cref{img:d-windows}). 
 
-\img{distributing/win-store}{Microsoft Store -- Product Identity}{img:d-windows}
-
-\noindent The most straightforward method for generating an MSIX-installer for our project is by utilizing the 
+The most straightforward method for generating an MSIX-installer for our project is by utilizing the 
 \q{msix}-package \issue{209}{}:
 
 \begin{lstlisting}[language=terminal]
@@ -30,6 +28,8 @@ msix_config:
   capabilities: internetClient # permissions
   store: true # distributable package
 \end{lstlisting}
+
+\img{distributing/win-store}{Microsoft Store -- Product Identity}{img:d-windows}
 
 \noindent As a tip, MS Store requires to use all zeros for the version definition:
 
@@ -61,10 +61,21 @@ automatically by the store. In addition, we may utilize App Center (\href{https:
 as an early access platform for the users; it contains own Analytics and Crashes that can be used across multiple 
 platforms.
 
-To automate the distribution \issue{209}{}, it can be used MS Store CLI (command line interface) -- . It uses the 
-Microsoft Store submission API for publishing a Windows app to Microsoft Store. To use this integration, we have to
-link our Microsoft Partner Center account to the Azure AD application and store as secrets the necessary information 
-(Tenant Name, Tenant ID, Client ID, and Client Secret).
+To streamline the distribution process, we might use MS Store CLI (command line interface), a tool designed to 
+interface with the Microsoft Store submission API for publishing Windows apps to the Microsoft Store. To get started 
+with this integration, we'll need to establish a connection between our Microsoft Partner Center account and an Azure 
+AD application. We have to retrieve essential information like Tenant Name, Tenant ID, Client ID, and Client Secret. 
+
+We would start from creating a new tenant at 
+\href{https://partner.microsoft.com/en-us/dashboard/account/v3/tenantmanagement}{https://partner.microsoft.com/en-us/dashboard/account/v3/tenantmanagement},
+by clicking on "Create", and completing the necessary information. Next, we'll access our Azure AD account using the 
+new tenant credentials via \href{https://entra.microsoft.com}{https://entra.microsoft.com}. Within Azure AD, by 
+navigating to "Applications", we'll proceed with a new registration (as a note, the "Redirect URI"-field might be blank).
+Under the "Certificates \& secrets" tab, we can generate a new certificate. This certificate will be utilized by our 
+CI/CD pipeline, especially "Value"-field within this certificate represents our "Client Secret" for the CLI. To finalize 
+the configuration, we'll visit the User Management 
+(\href{https://partner.microsoft.com/en-us/dashboard/account/v3/usermanagement}{https://partner.microsoft.com/en-us/dashboard/account/v3/usermanagement})
+to associate the created "MS Entra application", and grant a "Development" access to enable package uploads. 
 
 
 \subsection{[TBD] Linux Snap Store}
