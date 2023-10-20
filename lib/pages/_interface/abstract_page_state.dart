@@ -199,7 +199,7 @@ abstract class AbstractPageState<T extends StatefulWidget> extends State<T> {
           [getBarLeading(nav) ?? ThemeHelper.emptyBox],
           [
             Center(
-              heightFactor: 2,
+              heightFactor: 1.9,
               child: getBarTitle(context, true),
             ),
           ],
