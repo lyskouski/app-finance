@@ -1,7 +1,7 @@
 % Copyright 2023 The terCAD team. All rights reserved.
 % Use of this content is governed by a CC BY-NC-ND 4.0 license that can be found in the LICENSE file.
 
-\subsection{Microsoft Store}
+\subsection{[WIP] Microsoft Store}
 \markboth{Distributing}{Microsoft Store}
 
 To distribute a Windows app through the Microsoft Store, we should create a Microsoft Partner Center account
@@ -78,8 +78,8 @@ the configuration, we'll visit the User Management
 to associate the created "MS Entra application", and grant a "Development" access to enable package uploads. 
 
 
-\subsection{[TBD] Linux Snap Store}
-\markboth{Distributing}{[TBD] Linux Snap Store}
+\subsection{Linux Snap Store}
+\markboth{Distributing}{Linux Snap Store}
 
 While the world of Linux distributions can appear complex due to the sheer variety available, there is a unified 
 solution to simplify the process: snaps. A snap is essentially a bundled package containing one or more applications 
@@ -89,15 +89,14 @@ installable from the Snap Store (\href{https://snapcraft.io}{https://snapcraft.i
 
 To get started, we should visit the page \href{https://snapcraft.io/snaps}{https://snapcraft.io/snaps} to register 
 our application by simply clicking the "Register a snap name" button, with options to choose between "private" or 
-"public" application availability. A valuable feature to highlight is available on the page at 
-\href{https://snapcraft.io/fingrom/builds}{https://snapcraft.io/fingrom/builds} to link our GitHub account. 
-This integration allows for the building and distribution of our application directly from this page, 
-streamlining the deployment process. 
-If it's needed a control over the application's distribution, whether through Github Actions or manual processes, we may
-refer to the instructions on configuring and building Flutter projects provided at 
+"public" application availability. A notable feature is the integration of Snap Store with GitHub account at 
+\href{https://snapcraft.io/fingrom/builds}{https://snapcraft.io/fingrom/builds} to simplify the build and deploy 
+procedures (both can be done directly from that page). If it's needed a control over the application's distribution, 
+whether through Github Actions or manual processes, we may refer to the instructions on configuring and building 
+Flutter projects provided at 
 \href{https://snapcraft.io/docs/flutter-applications}{https://snapcraft.io/docs/flutter-applications}.
-So, we will utilize the \q{snapcraft}-application (it can be installed and used on various systems, including different 
-Linux distributions, macOS, and Windows):
+in that case, we will utilize the \q{snapcraft}-application (it can be installed and used on various systems, including 
+different Linux distributions, macOS, and Windows):
 
 \begin{lstlisting}[language=terminal]
 # For Linux with snap-support
@@ -138,7 +137,7 @@ $ sudo snap install my-snap-name_0.1_amd64.snap --devmode
 $ snapcraft release
 \end{lstlisting}
 
-\noindent The configuration file for the Snapcraft tool, which provides instructions on how to build the Snap package:
+\noindent The configuration file for the Snapcraft tool, which provides instructions on how to build the \q{snap}-package:
 
 \begin{lstlisting}[language=yaml]
 # ./snapcraft.yaml
@@ -163,12 +162,12 @@ parts:
     build-packages: [libgtk-3-dev, ninja-build]
 \end{lstlisting}
 
-\noindent \q{Parts}-section defines the parts that make up our Snap package. In our case, there's only one part called 
-app-finance. It specifies the source code location (in this directory), the plugin to use (in this case, the Flutter 
-plugin), the target for building your Flutter app (usually the main Dart file), and any additional build packages or 
-dependencies required.
+\noindent \q{Parts}-section defines the parts that make up our \q{snap}-package. In our case, there's only one part 
+called app-finance. It specifies the source code location (in this directory), the plugin to use (in this case, the 
+Flutter plugin), the target for building your Flutter app (usually the main Dart file), and any additional build 
+packages or dependencies required.
 
-Finally, the pipeline for \q{snap}-packages distribution would be the next:
+Finally, the pipeline for the \q{snap}-package build and distribution would be the next \issue{209}{}:
 
 \begin{lstlisting}[language=yaml]
 # ./snapcraft.yaml
@@ -186,6 +185,7 @@ Finally, the pipeline for \q{snap}-packages distribution would be the next:
   if: matrix.target == 'Linux'
   env:
     SNAPCRAFT_STORE_CREDENTIALS: ${{ secrets.CREDENTIALS }}
-    run: |
-      sudo --preserve-env=SNAPCRAFT_STORE_CREDENTIALS snapcraft upload *.snap --release=latest/stable
+    # Trick with root-access to propagate credentials
+    # Otherwise, error: Cannot login with 'SNA...' set.
+    run: sudo --preserve-env=SNAPCRAFT_STORE_CREDENTIALS snapcraft upload *.snap --release=latest/stable
 \end{lstlisting}
