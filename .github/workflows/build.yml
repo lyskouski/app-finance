@@ -65,7 +65,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        target: [macOS, iOS, Windows, Linux, Android]
+        target: [macOS, iOS, Windows, Linux, LinuxSnap, Android]
         include:
           - os: macos-latest
             target: macOS
@@ -86,6 +86,11 @@ jobs:
             target: Linux
             build_path: build/linux/x64/release/bundle
             asset_extension: .tar.gz
+            asset_content_type: application/gzip
+          - os: ubuntu-latest
+            target: LinuxSnap
+            build_path: ./
+            asset_extension: .snap
             asset_content_type: application/gzip
           - os: ubuntu-latest
             target: Android
@@ -150,6 +155,25 @@ jobs:
         if: matrix.target == 'Linux'          
         run: tar czf $GITHUB_WORKSPACE/fingrom_${{ matrix.target }}${{ matrix.asset_extension }} *
         working-directory: ${{ matrix.build_path }}
+
+
+      - name: Install Snapcraft
+        if: matrix.target == 'LinuxSnap'
+        uses: canonical/setup-lxd@v0.1.1
+
+      - name: Build Snap
+        if: matrix.target == 'LinuxSnap'
+        run: |
+          sudo snap install snapcraft --classic
+          snapcraft --verbose
+          cp fingrom_${{ needs.release.outputs.version }}+${{ needs.release.outputs.build_number }}_amd64.snap fingrom_${{ matrix.target }}.snap
+
+      - name: Publish Snap
+        if: matrix.target == 'LinuxSnap'
+        env:
+          SNAPCRAFT_STORE_CREDENTIALS: ${{ secrets.SNAPCRAFT_CREDENTIALS }}
+        run: |
+          sudo --preserve-env=SNAPCRAFT_STORE_CREDENTIALS snapcraft upload fingrom_${{ matrix.target }}.snap --release=latest/stable
 
 
       - name: Apply Android Keychain
