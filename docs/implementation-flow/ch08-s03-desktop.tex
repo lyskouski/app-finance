@@ -81,4 +81,111 @@ to associate the created "MS Entra application", and grant a "Development" acces
 \subsection{[TBD] Linux Snap Store}
 \markboth{Distributing}{[TBD] Linux Snap Store}
 
-[TBD]
+While the world of Linux distributions can appear complex due to the sheer variety available, there is a unified 
+solution to simplify the process: snaps. A snap is essentially a bundled package containing one or more applications 
+along with all their dependencies. What's remarkable about snaps is their ability to run consistently across a wide 
+array of Linux distributions, without requiring any modifications. These snaps are conveniently discoverable and 
+installable from the Snap Store (\href{https://snapcraft.io}{https://snapcraft.io}).
+
+To get started, we should visit the page \href{https://snapcraft.io/snaps}{https://snapcraft.io/snaps} to register 
+our application by simply clicking the "Register a snap name" button, with options to choose between "private" or 
+"public" application availability. A valuable feature to highlight is available on the page at 
+\href{https://snapcraft.io/fingrom/builds}{https://snapcraft.io/fingrom/builds} to link our GitHub account. 
+This integration allows for the building and distribution of our application directly from this page, 
+streamlining the deployment process. 
+If it's needed a control over the application's distribution, whether through Github Actions or manual processes, we may
+refer to the instructions on configuring and building Flutter projects provided at 
+\href{https://snapcraft.io/docs/flutter-applications}{https://snapcraft.io/docs/flutter-applications}.
+So, we will utilize the \q{snapcraft}-application (it can be installed and used on various systems, including different 
+Linux distributions, macOS, and Windows):
+
+\begin{lstlisting}[language=terminal]
+# For Linux with snap-support
+$ sudo snap install snapcraft --classic 
+
+## Install Virtual Machine Manager
+# For Github Actions "uses: canonical/setup-lxd"
+$ sudo snap install lxd # required by snapcraft
+$ sudo adduser $USER lxd # grant permissions
+$ newgrp lxd # apply changes
+$ sudo lxd waitready # revise state
+$ sudo lxd init --auto # set up the LXD server
+
+# Login to Snap Store
+$ snapcraft login
+Enter your Ubuntu One e-mail address and password.
+Email: ...
+Password: ...
+Login successful 
+
+# Retrieve Developer ID
+$ snapcraft whoami
+id: ...
+
+## Export credentials for CI/CD
+$ snapcraft export-login --snaps=fingrom --acls package_access,package_push,package_update,package_release credentials.txt
+
+# Generate snapcraft.yaml
+$ snapcraft init
+
+## Build Package
+$ snapcraft
+
+# Test generated package
+$ sudo snap install my-snap-name_0.1_amd64.snap --devmode
+
+## Release Package
+$ snapcraft release
+\end{lstlisting}
+
+\noindent The configuration file for the Snapcraft tool, which provides instructions on how to build the Snap package:
+
+\begin{lstlisting}[language=yaml]
+# ./snapcraft.yaml
+name: fingrom
+base: core22 # span, based on Ubuntu 22.04 
+version: 1.0.0+1 # to be replaced by CI/CD
+summary: Platform-agnostic financial accounting app
+description: |
+  ... description details ...
+
+# Type of the build
+grade: stable # a stable version
+confinement: strict # enforces strict isolation
+
+parts:
+  app-finance:
+    source: .
+    # To trigger: 'flutter linux' build
+    plugin: flutter
+    flutter-target: lib/main.dart
+    # Dependencies to external packages
+    build-packages: [libgtk-3-dev, ninja-build]
+\end{lstlisting}
+
+\noindent \q{Parts}-section defines the parts that make up our Snap package. In our case, there's only one part called 
+app-finance. It specifies the source code location (in this directory), the plugin to use (in this case, the Flutter 
+plugin), the target for building your Flutter app (usually the main Dart file), and any additional build packages or 
+dependencies required.
+
+Finally, the pipeline for \q{snap}-packages distribution would be the next:
+
+\begin{lstlisting}[language=yaml]
+# ./snapcraft.yaml
+- name: Install LXD
+  if: matrix.target == 'Linux'
+  uses: canonical/setup-lxd@v0.1.1
+
+- name: Build Snap
+  if: matrix.target == 'Linux'
+  run: |
+    sudo snap install snapcraft --classic
+    snapcraft --verbose
+
+- name: Publish Snap
+  if: matrix.target == 'Linux'
+  env:
+    SNAPCRAFT_STORE_CREDENTIALS: ${{ secrets.CREDENTIALS }}
+    run: |
+      sudo --preserve-env=SNAPCRAFT_STORE_CREDENTIALS snapcraft upload *.snap --release=latest/stable
+\end{lstlisting}
