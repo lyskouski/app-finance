@@ -131,15 +131,16 @@ releaseNotes() {
 
 @Task('Patch PubSpec')
 pubspecUpdate() {
+  final dir = Directory('./');
   TaskArgs args = context.invocation.arguments;
   String build = args.getOption('build-name') ?? '0.0.0';
   String number = args.getOption('build-number') ?? '0';
 
-  final currDir = Directory('./');
-  final file = File(path.join(currDir.absolute.path, 'pubspec.yaml'));
-  final content = file.readAsStringSync().replaceFirst('version: 1.0.0+1', 'version: $build+$number');
+  final spec = File(path.join(dir.absolute.path, 'pubspec.yaml'));
+  spec.writeAsStringSync(spec.readAsStringSync().replaceFirst('version: 1.0.0+1', 'version: $build+$number'));
 
-  file.writeAsStringSync(content);
+  final snap = File(path.join(dir.absolute.path, 'snapcraft.yaml'));
+  snap.writeAsStringSync(snap.readAsStringSync().replaceFirst('version: 1.0.0+1', 'version: $build+$number'));
 }
 
 @Task('Export Translations')
