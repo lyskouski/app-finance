@@ -6,10 +6,10 @@
 
 After a series of experiments aimed at modifying the content visualization, through repeated adjustments involving 
 forms' inputs categorized as prioritized, required, and optional data, it became increasingly clear what information is 
-truly relevant for each item within our application \issue{17}{}. But here is the trick! In the context of a financial 
-application, we only need to store a single item -- the transaction. All other structures (as bills, accounts, 
-budgets, currencies rate, invoices, transfers, etc.) are derived from this core item and will be used at run-time only
-as a representation layer of transactions.
+truly relevant for each item within our application \issue{17}{}. Here's the trick! In our approach, we store the user 
+input exactly as it is, especially in the context of financial applications, such as transactions. All structures 
+(as bills, accounts, budgets, currencies rate, invoices, transfers, etc.) are derived from this core item and will be 
+used at run-time only as a representation layer of those "transactions".
 
 To answer on a possible questions "what's for", we should dive into the world of finances. Transactions are the 
 foundation of financial record-keeping. Their immutability (cannot be adjusted or deleted) is dictated by a regulated 
@@ -27,7 +27,7 @@ the data manipulations. It's all about preserving data integrity and ensuring a 
 \subsubsection{Streaming Big Files}
 
 Since our transaction log can be counted in millions of millions, the better way to restore data structures from a file
-is to use streaming approach.
+is to use the streaming approach:
 
 \begin{lstlisting}
 // ./lib/_classes/data/transaction_log.dart
