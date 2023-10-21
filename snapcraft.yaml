@@ -10,5 +10,8 @@ grade: stable
 confinement: strict
 
 parts:
-  my-part:
-    plugin: nil
+  app-finance:
+    source: .
+    plugin: flutter
+    build-packages: [libgtk-3-dev, ninja-build]
+    flutter-target: lib/main.dart
