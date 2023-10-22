@@ -119,7 +119,7 @@ jobs:
         if: matrix.target == 'Windows'
         run: |
           flutter config --enable-windows-desktop
-          flutter build -v windows --build-name=${{ needs.release.outputs.version }} --build-number=${{ needs.release.outputs.build_number }} --release
+          flutter build -v windows --build-name=${{ needs.release.outputs.version }} --build-number=${{ needs.release.outputs.build_number }} --release --obfuscate --split-debug-info=build/windows/symbols
 
       - name: Copy Additional DLLs
         if: matrix.target == 'Windows'
@@ -129,19 +129,24 @@ jobs:
           Copy-Item (vswhere -latest -find 'VC\Redist\MSVC\*\x64\*\vcruntime140_1.dll') .
         working-directory: ${{ matrix.build_path }}
 
-      - name: Generate MSIX-package
+      - name: Generate Windows MSIX-package
         if: matrix.target == 'Windows'
-        run: dart run msix:create --version 0.0.0.0	--output-path ${{ matrix.build_path }} --output_name Fingrom --build-windows false
+        run: dart run msix:create --version 0.0.0.0	--output-path ${{ matrix.build_path }} --output-name Fingrom --build-windows false
 
       - name: Compress Windows Package
         if: matrix.target == 'Windows'
         run: compress-archive -Path * -DestinationPath ${env:GITHUB_WORKSPACE}/fingrom_${{ matrix.target }}${{ matrix.asset_extension }}
         working-directory: ${{ matrix.build_path }}
 
-      - name: Generate Windows MSIX-Package
+      - name: Setup MS Store CLI
+        if: matrix.target == 'Windows'
+        uses: microsoft/setup-msstore-cli@ec39acd1144351ab7a9d8d25e12bf6fd1ba03150
+
+      - name: Publish MSIX to the Microsoft Store
         if: matrix.target == 'Windows'
         run: |
-          dart run msix:create
+          msstore reconfigure --tenantId ${{ secrets.WINDOWS_TENANT_ID }} --clientId ${{ secrets.WINDOWS_CLIENT_ID }} --clientSecret ${{ secrets.WINDOWS_SECRET }} --sellerId ${{ secrets.WINDOWS_SELLER_ID }}
+          msstore publish -i ${{ matrix.build_path }}
 
 
       - name: Run Linux Build
@@ -152,7 +157,7 @@ jobs:
           flutter build -v linux --build-name=${{ needs.release.outputs.version }} --build-number=${{ needs.release.outputs.build_number }} --release
 
       - name: Compress Linux Package
-        if: matrix.target == 'Linux'          
+        if: matrix.target == 'Linux'
         run: tar czf $GITHUB_WORKSPACE/fingrom_${{ matrix.target }}${{ matrix.asset_extension }} *
         working-directory: ${{ matrix.build_path }}
 
