@@ -137,7 +137,10 @@ pubspecUpdate() {
   String number = args.getOption('build-number') ?? '0';
 
   final spec = File(path.join(dir.absolute.path, 'pubspec.yaml'));
-  spec.writeAsStringSync(spec.readAsStringSync().replaceFirst('version: 1.0.0+1', 'version: $build+$number'));
+  spec.writeAsStringSync(spec
+      .readAsStringSync()
+      .replaceFirst('version: 1.0.0+1', 'version: $build+$number')
+      .replaceFirst('msix_version: 1.0.0.1', 'msix_version: $build.$number'));
 
   final snap = File(path.join(dir.absolute.path, 'snapcraft.yaml'));
   snap.writeAsStringSync(snap.readAsStringSync().replaceFirst('version: 1.0.0+1', 'version: $build+$number'));
