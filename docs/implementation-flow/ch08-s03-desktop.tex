@@ -1,7 +1,7 @@
 % Copyright 2023 The terCAD team. All rights reserved.
 % Use of this content is governed by a CC BY-NC-ND 4.0 license that can be found in the LICENSE file.
 
-\subsection{[WIP] Microsoft Store}
+\subsection{Microsoft Store}
 \markboth{Distributing}{Microsoft Store}
 
 To distribute a Windows app through the Microsoft Store, we should create a Microsoft Partner Center account
@@ -45,7 +45,8 @@ $ flutter config --enable-windows-desktop
 $ flutter build -v windows \
   --build-name=${{ version }} \
   --build-number=${{ build_number }} \
-  --release
+  --release --obfuscate \
+  --split-debug-info=build/windows/symbols
 
 # Generate the MSIX-installer
 $ dart run msix:create \
@@ -65,17 +66,79 @@ To streamline the distribution process, we might use MS Store CLI (command line 
 interface with the Microsoft Store submission API for publishing Windows apps to the Microsoft Store. To get started 
 with this integration, we'll need to establish a connection between our Microsoft Partner Center account and an Azure 
 AD application. We have to retrieve essential information like Tenant Name, Tenant ID, Client ID, and Client Secret. 
-
 We would start from creating a new tenant at 
-\href{https://partner.microsoft.com/en-us/dashboard/account/v3/tenantmanagement}{https://partner.microsoft.com/en-us/dashboard/account/v3/tenantmanagement},
-by clicking on "Create", and completing the necessary information. Next, we'll access our Azure AD account using the 
-new tenant credentials via \href{https://entra.microsoft.com}{https://entra.microsoft.com}. Within Azure AD, by 
-navigating to "Applications", we'll proceed with a new registration (as a note, the "Redirect URI"-field might be blank).
-Under the "Certificates \& secrets" tab, we can generate a new certificate. This certificate will be utilized by our 
-CI/CD pipeline, especially "Value"-field within this certificate represents our "Client Secret" for the CLI. To finalize 
-the configuration, we'll visit the User Management 
+\href{https://partner.microsoft.com/en-us/dashboard/account/v3/tenantmanagement}{partner.microsoft.com/dashboard/account/v3/tenantmanagement}
+page by clicking on "Create", and completing the necessary information (\q{Tenant ID}). Next, we'll access our Azure AD 
+account using the new tenant credentials via \href{https://entra.microsoft.com}{https://entra.microsoft.com}. Within 
+Azure AD, by navigating to "Applications", we'll proceed with a new registration (as a note, the "Redirect URI"-field 
+might be blank). Under the "Certificates \& secrets" tab, we can generate a new certificate. This certificate will be 
+utilized by our CI/CD pipeline, especially "Value"-field within this certificate represents our \q{Client Secret} for 
+the CLI. To finalize the configuration, we'll visit the User Management 
 (\href{https://partner.microsoft.com/en-us/dashboard/account/v3/usermanagement}{https://partner.microsoft.com/en-us/dashboard/account/v3/usermanagement})
-to associate the created "MS Entra application", and grant a "Development" access to enable package uploads. 
+to associate the created "MS Entra application", and grant a "Development" access to enable package uploads 
+(\cref{img:d-win-store}).
+
+\begin{lstlisting}[language=terminal]
+# Tenant ID  
+https://partner.microsoft.com/en-us/dashboard/account/v3/tenantmanagement
+# CLient ID & Client Secret
+https://partner.microsoft.com/en-us/dashboard/account/v3/usermanagement
+# Seller ID 
+https://partner.microsoft.com/en-us/dashboard/account/v3/organization/legalinfo
+\end{lstlisting}
+
+\img{distributing/win-store-key}{Microsoft Partner Center: Credentials for MS Store CLI}{img:d-win-store}
+
+\noindent With all of that credentials taken we may activate the distribution pipeline:
+
+\begin{lstlisting}[language=yaml]
+- name: Setup MS Store CLI
+  uses: microsoft/setup-msstore-cli@v1
+
+- name: Publish MSIX to the Microsoft Store
+  run: |
+    msstore reconfigure --tenantId ${{ secrets.WINDOWS_TENANT_ID }} --clientId ${{ secrets.WINDOWS_CLIENT_ID }} --clientSecret ${{ secrets.WINDOWS_SECRET }} --sellerId ${{ secrets.WINDOWS_SELLER_ID }}
+    msstore publish -v "${{ matrix.build_path }}"
+\end{lstlisting}
+
+\noindent Important to notice that it should not be the first submission of an application by using \q{msstore}, 
+otherwise the build will fail with an error message:
+
+\begin{lstlisting}[language=terminal]
+Unhandled exception: System.NotSupportedException: 
+  Cannot show selection prompt since the current 
+  terminal isn`t interactive.
+\end{lstlisting}
+
+\noindent To address this error, we'll need to install \q{msstore} on our local machine 
+(\href{https://learn.microsoft.com/en-us/windows/apps/publish/msstore-dev-cli/install}{https://learn.microsoft.com/en-us/windows/apps/publish/msstore-dev-cli/install})
+and complete the necessary prompts for the same scope of commands. The first semiautomated submission is done 
+(\cref{img:d-win-upload}):
+
+\begin{lstlisting}[language=terminal]
+# Connect
+$ msstore reconfigure --tenantId ...
+Configuration saved!
+Awesome! It seems to be working!
+
+# Is needed to set "msstore_appId" for the config
+$ msstore init --publisherDisplayName terCAD
+Ok! Found your apps!                    
+This seems to be a Flutter project.
+Let`s set it up for you!
+
+$ msstore publish -v
+Please enter the following information: ...
+# Category
+# Available Languages
+Uploading Bundle to Azure blob --------- 100%
+Press Enter to open the browser at this page:
+  https://partner.microsoft.com/dashboard/...
+info: Microsoft.Hosting.Lifetime[0] Application is shutting down...
+\end{lstlisting}
+
+
+\img{distributing/win-upload}{Microsoft Partner Center: Results of submission}{img:d-win-upload}
 
 
 \subsection{Linux Snap Store}
@@ -167,7 +230,7 @@ called app-finance. It specifies the source code location (in this directory), t
 Flutter plugin), the target for building your Flutter app (usually the main Dart file), and any additional build 
 packages or dependencies required.
 
-Finally, the pipeline for the \q{snap}-package build and distribution would be the next \issue{209}{}:
+Finally, the pipeline for the \q{snap}-package build and distribution would be the next \issue{209}{} (\cref{img:d-snap}):
 
 \begin{lstlisting}[language=yaml]
 # ./snapcraft.yaml
@@ -189,3 +252,5 @@ Finally, the pipeline for the \q{snap}-package build and distribution would be t
     # Otherwise, error: Cannot login with 'SNA...' set.
     run: sudo --preserve-env=SNAPCRAFT_STORE_CREDENTIALS snapcraft upload *.snap --release=latest/stable
 \end{lstlisting}
+
+\img{distributing/linux-discover}{KDE Neon - Discover: Search for our application}{img:d-snap}
