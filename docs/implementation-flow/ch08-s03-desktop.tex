@@ -31,7 +31,7 @@ msix_config:
 
 \img{distributing/win-store}{Microsoft Store -- Product Identity}{img:d-windows}
 
-\noindent As a tip, MS Store requires to use all zeros for the version definition:
+\noindent As a tip, MS Store requires to use all zeros for the version definition in case of a manual upload:
 
 \begin{lstlisting}[language=terminal]
 [X] Package acceptance validation error: Apps are not allowed
@@ -253,4 +253,4 @@ Finally, the pipeline for the \q{snap}-package build and distribution would be t
     run: sudo --preserve-env=SNAPCRAFT_STORE_CREDENTIALS snapcraft upload *.snap --release=latest/stable
 \end{lstlisting}
 
-\img{distributing/linux-discover}{KDE Neon - Discover: Search for our application}{img:d-snap}
+\img{distributing/linux-discover}{KDE Neon - Discover: Availability check}{img:d-snap}
