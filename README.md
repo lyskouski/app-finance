@@ -78,8 +78,21 @@
   - Auto-scroll to the focused element on Form
   - Expand / Collapse sections on Main Page
   - Swipe for a quick access to Edit and Delete actions
-  - Zoom in/out (from 60% up to 200%) via "Settings" or by `Ctrl`+`+`(in), `-`(out), `0`(reset), or `Ctrl`+mouse wheel,
-    <s>or by two-finger touch pinch / spread operation</s>
+  - Zoom in/out (from 60% up to 200%) via "Settings"
+  - Shortcuts
+
+| Description                         | Shortcut                       |
+| ----------------------------------- | ------------------------------ |
+| Open / Close the Navigation Drawer  | `Shift` + `Enter`              |
+| Navigate Up                         | `up`                           |
+| Navigate Down                       | `down`                         |
+| Open Selected                       | `Enter`                        |
+| Zoom In                             | `Ctrl` + `+`                   |
+| Zoom In (with mouse)                | `Ctrl` + `scroll down`         |
+| Zoom Out                            | `Ctrl` + `-`                   |
+| Zoom Out (with mouse)               | `Ctrl` + `scroll up`           |
+| Reset Zoom                          | `Ctrl` + `0`                   |
+| Add new Transaction                 | `Ctrl` + `N`                   |
 
 ## Support (Sponsorship)
 

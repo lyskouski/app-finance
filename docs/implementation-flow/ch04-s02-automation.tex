@@ -255,9 +255,8 @@ With our local automation in place, it's time to take the next step and establis
 
 \begin{lstlisting}[language=yaml]
 ## ./.github/workflows/dart.yml
-# Name would be shown in Actions-tab
 name: Flutter/Dart Quality Gates
-# Trigger options
+# Criteria for taking action
 on:
   push: # Trigger after a merge
     branches: [ "main" ] # limit to main-branch
@@ -280,7 +279,6 @@ jobs:
 
       - name: Verify Formatting
         run: dart format --output=none --set-exit-if-changed .
-
       - name: Check Localizations ordering
         run: dart run grinder sort-translations
 

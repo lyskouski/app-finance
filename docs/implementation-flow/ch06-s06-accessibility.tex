@@ -79,6 +79,26 @@ testWidgets('Test alternative inputs', (WidgetTester tester) async {
 });
 \end{lstlisting}
 
+\begin{table}[h!]
+  \begin{tabular}{ |p{7.8cm}||l|  }
+    \hline
+    Description & Shortcut\\
+    \hline
+    Open / Close the Navigation Drawer &  \key{Shift} + \key{Enter} \\
+    Navigate Up                        &  \key{up} \\
+    Navigate Down                      &  \key{down} \\
+    Open Selected                      &  \key{Enter} \\
+    Zoom In                            &  \key{Ctrl} + \key{+} \\
+    Zoom In (with mouse)               &  \key{Ctrl} + \key{scroll down} \\
+    Zoom Out                           &  \key{Ctrl} + \key{-} \\
+    Zoom Out (with mouse)              &  \key{Ctrl} + \key{scroll up} \\
+    Reset Zoom                         &  \key{Ctrl} + \key{0} \\
+    Add new Transaction                &  \key{Ctrl} + \key{N} \\
+    \hline
+  \end{tabular}
+  \caption{Shortcuts in the application} \label{tb:shortcuts}
+\end{table}
+
 \noindent The accessibility isn't limited solely to the text interpretation, by extending experience to effectively 
 manage the focus for users who navigate through the app using keyboards or voice commands. As a navigation can be 
 enhanced with keyboard shortcuts provided through the use of the \q{Listener}-widget. This feature is particularly 
@@ -101,28 +121,4 @@ class InputControllerWrapperState
       child: RawKeyboardListener(
         focusNode: focus,
         onKey: _onKeyPressed, // Listen for keyboard input
-        child: widget.child,
-      ),
-    );
-// ... other stuff
 \end{lstlisting}
-
-\begin{table}[h!]
-  \begin{tabular}{ |p{7.8cm}||l|  }
-    \hline
-    Description & Shortcut\\
-    \hline
-    Open / Close the Navigation Drawer &  \key{Shift} + \key{Enter} \\
-    Navigate Up                        &  \key{up} \\
-    Navigate Down                      &  \key{down} \\
-    Open Selected                      &  \key{Enter} \\
-    Zoom In                            &  \key{Ctrl} + \key{+} \\
-    Zoom In (with mouse)               &  \key{Ctrl} + \key{scroll down} \\
-    Zoom Out                           &  \key{Ctrl} + \key{-} \\
-    Zoom Out (with mouse)              &  \key{Ctrl} + \key{scroll up} \\
-    Reset Zoom                         &  \key{Ctrl} + \key{0} \\
-    Add new Transaction                &  \key{Ctrl} + \key{N} \\
-    \hline
-  \end{tabular}
-  \caption{Shortcuts in the application} \label{tb:shortcuts}
-\end{table}

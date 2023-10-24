@@ -133,14 +133,17 @@ class FocusController {
     final firstNode = nodes[0].context?.findRenderObject();
     // Check that controller is attached to a scroll view
     bool isAttached = _controller?.hasClients ?? false;
-    if (isAttached && focusedNode is RenderBox && firstNode is RenderBox) {
+    if (isAttached && 
+        focusedNode is RenderBox && 
+        firstNode is RenderBox) {
       _controller?.animateTo(
         // Get Y-axis positions and apply as a delta for animation
         focusedNode.localToGlobal(Offset.zero).dy -
             firstNode.localToGlobal(Offset.zero).dy,
         // Duration of animation
         duration: const Duration(milliseconds: 300),
-        // Start animation slowly, accelerates in the middle, and slows down at the end
+        // Start animation slowly, accelerates in the middle, 
+        // ... and slows down at the end
         curve: Curves.easeInOut,
       );
     }
@@ -154,7 +157,8 @@ class FocusController {
   static bool isFocused(int idx, dynamic value) {
     if ((value == null || value == '') && // not set
         idx != DEFAULT && // not equal '-1'
-        (focus == DEFAULT || focus == idx)) { // focus not set or equal to target
+        // focus not set or equal to the target
+        (focus == DEFAULT || focus == idx)) { 
       focus = idx;
       requestFocus();
       return true;
@@ -174,7 +178,7 @@ class FocusController {
 }
 \end{lstlisting}
 
-One of the problem that we might face with is an inability to open dropdowns anymore since 
+\noindent One of the problem that we might face with is an inability to open dropdowns anymore since 
 \q{FocusScope.of(context).requestFocus} leads to re-build by any changed focus action. The problem is relevant to the
 fact that we've been using \q{BuildContext} of our Form whereas it should be taken context from \q{DropdownButton}-element:
 
@@ -233,9 +237,9 @@ class FocusController {
   }
 \end{lstlisting}
 
-We're continuing bravely fix errors that producing by our own, and the next might be nor obvious, nor trivial till 
-the fact how exactly \q{setState}-method should be used. While we've been testing our application in build OC mode, an 
-error is appeared on Android. The Flutter team tells us that everything will be cross-functional through all devices
+\noindent We're continuing bravely fix errors that producing by our own, and the next might be nor obvious, nor trivial 
+till the fact how exactly \q{setState}-method should be used. While we've been testing our application in build OC mode, 
+an error is appeared on Android. The Flutter team tells us that everything will be cross-functional through all devices
 and systems but it's only in the case when we're using a functionality as it's been expected from their side. And 
 the error is relevant to a lost state of values that's been defined inside \q{StatefulWidget} class of our 
 component that updated via \q{setState}-method inside \q{State}-extended class.

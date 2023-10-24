@@ -34,9 +34,10 @@ mixin FormatterMixin {
     } else {
       const String fontFamily = 'MaterialIcons';
       return IconData(icon, fontFamily: fontFamily);
-    }(*@ \stopnumber @*)
+    }
   }
-
+\end{lstlisting}
+\begin{lstlisting}
 // ./lib/_classes/data/goal_app_data.dart
 factory GoalAppData.fromJson(Map<String, dynamic> json) {
   return GoalAppData(
@@ -83,27 +84,27 @@ to adjust the JSON conversion process:
 
 \begin{lstlisting}
 // ./lib/_classes/data/abstract_app_data.dart
-  Map<String, Map<String, dynamic>> toFile() {
-    var data = {...toJson()};
-    return {
-      'type': {
+Map<String, Map<String, dynamic>> toFile() {
+  var data = {...toJson()};
+  return {
+    'type': {
 \end{lstlisting}
 {
 \xpretocmd{\lstlisting}{\vspace{-12pt}}{}{}
 \begin{lstlisting}[firstnumber=6, backgroundcolor=\color{backred}]
-(*@\kdiff{-}@*)        'name': runtimeType.toString(),
+(*@\kdiff{-}@*)      'name': runtimeType.toString(),
 \end{lstlisting}
 \begin{lstlisting}[firstnumber=6, backgroundcolor=\color{backgreen}]
-(*@\kdiff{+}@*)        'name': getClassName(),
+(*@\kdiff{+}@*)      'name': getClassName(),
 \end{lstlisting}
 \begin{lstlisting}[firstnumber=7]
-        'hash': TransactionLog.getHash(data),
-      },
-      'data': data,
-    };
-  }
-  // Abstract, has to be implemented by each class
-  String getClassName();
+      'hash': TransactionLog.getHash(data),
+    },
+    'data': data,
+  };
+}
+// Abstract, has to be implemented by each class
+String getClassName();
 \end{lstlisting}
 }
 
@@ -112,16 +113,15 @@ to adjust the JSON conversion process:
 From now, we can't afford to ignore the "Incorrect use of ParentDataWidget" notification anymore, especially for the 
 production build, as it could result in a grayed-out output instead of rendering the widgets (\cref{img:compilation-err}).
 
-Regarding the deployment procedure, while we are following a Serverless approach, which means there is no any dedicated 
-server to deploy into, we can improve usage of our GitHub Pages (\ref{a-badges}):
+Regarding the deployment procedure, while we are following a "no-server"-approach, which means there is no any dedicated 
+server to deploy into, we can improve the usage of our GitHub Pages (\ref{a-badges}):
 
 \begin{lstlisting}[language=yaml]
 name: Web Deployment
 
 on:
   push:
-    branches:
-      - main
+    branches: main
 
 jobs:
   build:
@@ -165,8 +165,8 @@ provided by GitHub:
 
 \subsubsection{Preparing Releases}
 
-Things, that can be automated, has to be automated, and Release generation is not an exception. Let's generate Release
-page by setting a new tag (as an example, \q{git tag v1.0.1}, \q{git push origin v1.0.1}):
+Anything that can be automated should be automated, and the generation of releases is no exception. Let's generate 
+"Release"-page by setting a new tag (as an example, \q{git tag v1.0.1}, \q{git push origin v1.0.1}):
 
 \begin{lstlisting}[language=yaml]
 name: Project Release Artifacts
@@ -231,7 +231,6 @@ jobs:
           prerelease: false
 \end{lstlisting}
 
-
 \subsubsection{Generating Artifacts}
 
 We've prepared a release page, but what can be done in addition, is to generate artifacts and attach them to our release
@@ -239,7 +238,9 @@ page. Let's do that and generate desktop runners for Macos, Linux, and Windows:
 
 \begin{lstlisting}[language=yaml]
 jobs:
-  release: # ... shown earlier
+  release: 
+    # ... shown earlier
+
   build:
     name: Create ${{ matrix.target }} build
     runs-on: ${{ matrix.os }}
@@ -254,11 +255,13 @@ jobs:
             build_path: build/macos/Build/Products/Release
             asset_extension: .zip
             asset_content_type: application/zip
+
           - os: windows-latest
             target: Windows
             build_path: build/windows/runner/Release
             asset_extension: .zip
             asset_content_type: application/zip
+
           - os: ubuntu-latest
             target: Linux
             build_path: build/linux/x64/release/bundle
@@ -283,8 +286,7 @@ jobs:
 
       - name: Compress Windows Package
         if: matrix.target == 'Windows'
-        run: |
-          compress-archive -Path * -DestinationPath ${env:GITHUB_WORKSPACE}/fingrom_${{ matrix.target }}${{ matrix.asset_extension }}
+        run: compress-archive -Path * -DestinationPath ${env:GITHUB_WORKSPACE}/fingrom_${{ matrix.target }}${{ matrix.asset_extension }}
         working-directory: ${{ matrix.build_path }}
 
 # ... the same steps for Linux '-v linux' and Macos '-v macos'
@@ -300,3 +302,8 @@ jobs:
           asset_name: fingrom_${{ matrix.target }}${{ matrix.asset_extension }}
           asset_content_type: ${{ matrix.asset_content_type }}
 \end{lstlisting}
+
+\noindent The \q{strategy}-section defines a matrix that enables to run the build job on different operating systems 
+(macOS, Windows, and Linux). It specifies the operating system to be used, the path where the build results are 
+expected, and the file extension with its content type of the generated artifact.
+

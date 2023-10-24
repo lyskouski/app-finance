@@ -158,7 +158,6 @@ rotate it vertically (-90$^{\circ}$, counter-clockwise) by using the a \q{Transf
 class BaseLineWidget extends StatelessWidget {
   /* ... properties declaration */
   const BaseLineWidget({super.key, required this.title, /*...*/ });
-
   @override
   Widget build(BuildContext context) {
     return Column( // To group content with a divider at the end
@@ -217,7 +216,7 @@ class BarVerticalSingle extends StatelessWidget {
 
 \noindent As a note, the rotation can be improved by the \q{RotatedBox}-widget usage.
 
-\img{prototyping/prototype-v1}{The first outcome from our implementation}{img:prototype}
+\img{prototyping/prototype-v1}{The initial result stemming from our implementation}{img:prototype}
 
 \begin{lstlisting}
 // ./lib/routes/home/baseWidget.dart
@@ -260,7 +259,6 @@ class BaseWidget extends StatelessWidget {
 
 \noindent As it might be noticed, that we've injected our data into components. This helps to concentrate on design 
 aspects (\cref{img:prototype}) rather than getting bogged down (by formulating) in an unfamiliar data structure. 
-
 However, preserving the data injection per each component could also be counterproductive, as it would necessitate 
 extra efforts to cleanup the components later. That's why we should separate representation and data layers on the 
 early stages independently of understanding the context of a data structure \issue{10}{}:
@@ -379,9 +377,7 @@ state of widgets that are either expensive to rebuild, or come in and out of the
 \begin{lstlisting}
 class KeepAliveWrapper extends StatefulWidget {
   final Widget child;
-
   const KeepAliveWrapper({super.key, required this.child});
-
   @override
   KeepAliveWrapperState createState() => KeepAliveWrapperState();
 }
@@ -390,7 +386,6 @@ class KeepAliveWrapperState extends State<KeepAliveWrapper>
     with AutomaticKeepAliveClientMixin {
   @override
   bool get wantKeepAlive => true;
-
   @override
   Widget build(BuildContext context) {
     super.build(context); // required by mixin
@@ -417,12 +412,14 @@ void main() => runApp(const MyApp());
 
 class MyApp extends StatefulWidget {
   const MyApp({super.key});
+
   @override
   _MyAppState createState() => _MyAppState();
 }
 
 class _MyAppState extends State<MyApp> {
   final AppData state = AppData();
+
   MaterialPageRoute? getDynamicRouter(settings) {
     final String route = settings.name!;
     final regex = RegExp(r'\/uuid:([\w-]+)');
@@ -440,6 +437,7 @@ class _MyAppState extends State<MyApp> {
     }
     return null;
   }
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -526,8 +524,6 @@ class MyApp extends StatelessWidget {
     // Navigate to the specified route
     Navigator.pushNamed(context, routeName); 
   }
-
-
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -543,8 +539,7 @@ class MyApp extends StatelessWidget {
                 child: Text(
                   'Navigation Menu',
                   style: TextStyle(fontSize:24, color:Colors.white),
-                ),
-              ),
+                )),
               ListTile(
                 leading: Icon(Icons.home),
                 title: Text('Home'),
@@ -596,6 +591,7 @@ class MyDrawer extends StatelessWidget {
 \noindent \q{InkWell}-widget might be an alternative to the \q{MouseRegion}-widget usage.
 
 
+\newpage
 \subsubsection{Configuring Inputs}
 
 Going further, the defined setter in our fake data storage (\cref{code:app-data}) would help to implement 

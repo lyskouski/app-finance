@@ -7,16 +7,15 @@
 After a series of experiments aimed at modifying the content visualization, through repeated adjustments involving 
 forms' inputs categorized as prioritized, required, and optional data, it became increasingly clear what information is 
 truly relevant for each item within our application \issue{17}{}. Here's the trick! In our approach, we store the user 
-input exactly as it is, especially in the context of financial applications, such as transactions. All structures 
-(as bills, accounts, budgets, currencies rate, invoices, transfers, etc.) are derived from this core item and will be 
-used at run-time only as a representation layer of those "transactions".
+input exactly as it is. All structures (as bills, accounts, budgets, currencies rate, invoices, transfers, etc.) are 
+derived from this core item and will be used at run-time only as a representation layer of those "transactions".
 
 To answer on a possible questions "what's for", we should dive into the world of finances. Transactions are the 
 foundation of financial record-keeping. Their immutability (cannot be adjusted or deleted) is dictated by a regulated 
 environment of the banking industry (historical transaction data can be trusted and is compliant with regulatory 
 standards), and helps maintain a data integrity by minimizing the risk of its manipulation or loss.
 
-We might not be a bank, but the immutability of transactions provides us with a powerful built-in fault tolerance 
+\noindent We might not be a bank, but the immutability of transactions provides a powerful built-in fault tolerance 
 mechanism. This immutability ensures that every user entry is preserved exactly as it was entered. When an edit action 
 is performed, what's happening behind the scenes is the creation of a new transaction. This approach safeguards against 
 any computational errors in our code. In case of any error, the next patch (application upgrade) automatically 
@@ -224,6 +223,7 @@ extension ObjectExtension on Object {
 class MyClass {
   String name;
   DateTime timestamp;
+
   MyClass(this.timestamp, this.name);
   // Props to simple built-in types (String, double, int, bool)
   Map<String, dynamic> toJson() => {

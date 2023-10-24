@@ -101,7 +101,7 @@ void main() {
 }
 \end{lstlisting}
 
-\noindent By typing \q{flutter test} in the command line we would see something like that:
+\noindent By typing \q{flutter test} in the command line we would see something like:
 
 \begin{lstlisting}
 [V] Given Main page When tap on Create Then opened BillAddPage
@@ -400,8 +400,11 @@ class WrapperGenerator extends Generator {
 // ./lib/_classes/gen/wrapper_visitor.dart
 class WrapperVisitor {
   StringBuffer buffer = StringBuffer();
+
   ClassElement element;
+
   WrapperVisitor(this.element);
+
   void addImports() {
     final mainClass = element.enclosingElement.library;
     addImport(mainClass);
@@ -664,7 +667,8 @@ class OnDefinedPage extends Given1<String> {
   }
 }(*@ \stopnumber @*)
 
-// ... other classes implementation: TapDefinedButton, TapDefinedHeader, CanSeeDefinedComponent
+// ... other classes implementation: 
+// TapDefinedButton, TapDefinedHeader, CanSeeDefinedComponent
 \end{lstlisting}
 
 \noindent What can be noticed (line 19-22 for \q{executable\_step\_iterator.dart}-file), is that we have to declare all 
@@ -703,7 +707,7 @@ Shell: Running scenario: Opened Account Form # :4
 Shell:    V Given I am on "Home" page # :5 took 313ms
 Shell:    V When I tap "Accounts, total" header # :6 took 77ms
 Shell:    V And I tap "Add Account" button # :7 took 184ms
-Shell:    V Then I can see "Create new Account" component # :8 took 1ms
+Shell:    V Then I can see "Create new Account" component # :8 ...
 Shell: PASSED: Scenario Opened Account Form # :4
 Shell:    V Given Opened Account Form # :4 took 584ms
 \end{lstlisting}
