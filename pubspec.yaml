@@ -24,7 +24,6 @@ dependencies:
 
   # CupertinoIcons class for iOS style icons
   cupertino_icons: ^1.0.2
-
   adaptive_breakpoints: ^0.1.6
   google_fonts: ^5.0.0
   intl: ^0.18.1
@@ -35,7 +34,9 @@ dependencies:
   shared_preferences: ^2.2.0
   path_provider: ^2.0.15
   crypto: ^3.0.3
-  encrypt: ^5.0.1
+  # Freeze encrypt and flutter_webrtc
+  encrypt: 5.0.1
+  # flutter_webrtc: "0.9.42+hotfix.1"
   firebase_core: ^2.15.1
   firebase_analytics: ^10.4.5
   flutter_markdown: ^0.6.17
