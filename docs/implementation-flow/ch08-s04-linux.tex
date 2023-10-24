@@ -74,6 +74,16 @@ description: |
 grade: stable # a stable version
 confinement: strict # enforces strict isolation
 
+# To recognize from a command line
+apps:
+  fingrom:
+    command: fingrom
+    # Grant access to the application
+    # From: https://snapcraft.io/docs/supported-interfaces
+    plugs: [home, network, network-bind, removable-media]
+    # Use basic libraries (alternative to 'stage-packages') 
+    extensions: [gnome]
+
 parts:
   app-finance:
     source: .
@@ -82,6 +92,7 @@ parts:
     flutter-target: lib/main.dart
     # Dependencies to external packages
     build-packages: [libgtk-3-dev, ninja-build]
+    stage-packages: [libgtk-3-0]
 \end{lstlisting}
 
 \noindent \q{Parts}-section defines the parts that make up our \q{snap}-package. In our case, there's only one part 

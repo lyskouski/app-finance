@@ -93,7 +93,6 @@ https://partner.microsoft.com/en-us/dashboard/account/v3/organization/legalinfo
 \begin{lstlisting}[language=yaml]
 - name: Setup MS Store CLI
   uses: microsoft/setup-msstore-cli@v1
-
 - name: Publish MSIX to the Microsoft Store
   run: |
     msstore reconfigure --tenantId ${{ secrets.WINDOWS_TENANT_ID }} --clientId ${{ secrets.WINDOWS_CLIENT_ID }} --clientSecret ${{ secrets.WINDOWS_SECRET }} --sellerId ${{ secrets.WINDOWS_SELLER_ID }}
@@ -119,21 +118,15 @@ and complete the necessary prompts for the same scope of commands. The first sem
 $ msstore reconfigure --tenantId ...
 Configuration saved!
 Awesome! It seems to be working!
-
-# Is needed to set "msstore_appId" for the config
+# Init to set "msstore_appId" for the config
 $ msstore init --publisherDisplayName terCAD
 Ok! Found your apps!                    
 This seems to be a Flutter project.
 Let`s set it up for you!
-
+# Send to Microsoft Partner Center
 $ msstore publish -v
-Please enter the following information: ...
-# Category
-# Available Languages
+Please enter the following information: ... # Category, Languages
 Uploading Bundle to Azure blob --------- 100%
-Press Enter to open the browser at this page:
-  https://partner.microsoft.com/dashboard/...
-info: Microsoft.Hosting.Lifetime[0] Application is shutting down...
 \end{lstlisting}
 
 \img{distributing/win-upload}{Microsoft Partner Center: Results of submission}{img:d-win-upload}
