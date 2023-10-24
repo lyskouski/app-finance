@@ -14,8 +14,11 @@ This book is diving deep into the core mechanisms of Flutter to implement a plat
 > Remarks of [Fingrom](https://github.com/lyskouski/app-finance) development process.
 
 **NOTE:** To compile the project
-1. Install LaTeX: https://miktex.org/download
-2. Run command ```pdflatex -halt-on-error -aux-directory=build -output-directory=build index.tex``` from current directory
+1. Install [LaTeX](https://miktex.org/download)
+2. Run command (from current directory):
+2.1. PDF: `pdflatex -halt-on-error -aux-directory=build -output-directory=build index.tex` 
+2.2. EPUB: `pandoc --from=latex index.tex --to=epub -o index.epub`
+2.3. MOBI: `tex4ebook -f mobi -l -r 640 index.tex`
 
 ## Contributions
 
