@@ -19,7 +19,7 @@
   - Apple Store: _(released, postponed availability)_
   - [Release](https://github.com/lyskouski/app-finance/releases/latest)/fingrom_macOS.zip
 - **Linux**:
-  - Snap Store: [**early access**](https://snapcraft.io/fingrom)
+  - Snap Store: [![fingrom](https://snapcraft.io/fingrom/badge.svg)](https://snapcraft.io/fingrom)
   - [Release](https://github.com/lyskouski/app-finance/releases/latest)/fingrom_Linux.tar.gz
 - **Windows**: 
   - Windows Apps: _(released, postponed availability)_
