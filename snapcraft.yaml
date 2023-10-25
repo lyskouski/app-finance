@@ -12,7 +12,7 @@ confinement: strict
 apps:
   fingrom:
     command: fingrom
-    plugs: [home, desktop, desktop-launch, desktop-legacy, network, network-bind, opengl, personal-files, x11]
+    plugs: [home, desktop, desktop-legacy, network, network-bind, opengl, x11]
     extensions: [gnome]
 
 parts:
