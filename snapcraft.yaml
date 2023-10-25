@@ -15,8 +15,14 @@ apps:
     plugs: [home, desktop, desktop-legacy, network, network-bind, opengl, x11]
     extensions: [gnome]
 
-parts:
+parts:  
+  zenity:
+    plugin: nil
+    stage-packages:
+      - zenity
   app-finance:
+    after:
+      - zenity
     source: .
     plugin: flutter
     build-packages: [libgtk-3-dev, ninja-build]
