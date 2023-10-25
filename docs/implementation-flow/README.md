@@ -2,10 +2,11 @@
 
 [![License: CC BY-NC-ND 4.0](https://img.shields.io/badge/License-CC_BY--NC--ND_4.0-lightgrey.svg)](https://creativecommons.org/licenses/by-nc-nd/4.0/) 
 
-**Status:** [Work In Progress] 30%
 
-**Amazon Books**: (postponed till 1st November)
-**Google Books**: (postponed till 1st November)
+**Amazon Books**:
+- Kindle eBook: https://www.amazon.com/dp/B0CLLKNXQR (ASIN: B0CLLKNXQR)
+- Paperback: _Scheduled for November 1, 2023_
+- Hardcover: _Scheduled for November 1, 2023_ (ASIN: B0CLNT8GPC)
 
 ## Sampling on Financial Accounting App Life-Cycles
 
@@ -16,9 +17,9 @@ This book is diving deep into the core mechanisms of Flutter to implement a plat
 **NOTE:** To compile the project
 1. Install [LaTeX](https://miktex.org/download)
 2. Run command (from current directory):
-2.1. PDF: `pdflatex -halt-on-error -aux-directory=build -output-directory=build index.tex` 
-2.2. EPUB: `pandoc --from=latex index.tex --to=epub -o index.epub`
-2.3. MOBI: `tex4ebook -f mobi -l -r 640 index.tex`
+  - PDF: `pdflatex -halt-on-error -aux-directory=build -output-directory=build index.tex` 
+  - EPUB: `pandoc --from=latex index.tex --to=epub -o index.epub`
+  - MOBI: `tex4ebook -f mobi -l -r 640 index.tex`
 
 ## Contributions
 
