@@ -2,11 +2,24 @@
 
 [![License: CC BY-NC-ND 4.0](https://img.shields.io/badge/License-CC_BY--NC--ND_4.0-lightgrey.svg)](https://creativecommons.org/licenses/by-nc-nd/4.0/) 
 
+## Availability
 
-**Amazon Books**:
-- Kindle eBook: https://www.amazon.com/dp/B0CLLKNXQR (ASIN: B0CLLKNXQR)
-- Paperback: _Scheduled for November 1, 2023_
-- Hardcover: _Scheduled for November 1, 2023_ (ASIN: B0CLNT8GPC)
+Scheduled to 1st November 2023
+
+- **Amazon Books**:
+  - Kindle eBook: https://www.amazon.com/dp/B0CLLKNXQR (ASIN: B0CLLKNXQR)
+  - Paperback: _[On Review], Scheduled for November 1, 2023_
+  - Hardcover: _Scheduled for November 1, 2023_ (ASIN: B0CLNT8GPC)
+- **Apple Books**
+  - https://books.apple.com/us/book/from-zero-to-market-with-flutter/id6470395934
+- **Lulu**
+  - [On Review]
+- **Smashwords**
+  - https://www.smashwords.com/books/view/1471129 (choose your price)
+- **SCRIBD**
+  - (mobile version) https://www.scribd.com/document/679977335/From-Zero-to-Market-with-Flutter-Mobile-Version
+  - https://www.scribd.com/document/679976744/From-Zero-to-Market-with-Flutter
+
 
 ## Sampling on Financial Accounting App Life-Cycles
 
@@ -19,7 +32,10 @@ This book is diving deep into the core mechanisms of Flutter to implement a plat
 2. Run command (from current directory):
   - PDF: `pdflatex -halt-on-error -aux-directory=build -output-directory=build index.tex` 
   - EPUB: `pandoc --from=latex index.tex --to=epub -o index.epub`
+    - https://github.com/lyskouski/cli-tex2epub
   - MOBI: `tex4ebook -f mobi -l -r 640 index.tex`
+  - TXT: `pdftotext -enc ASCII7 -nopgbrk -layout index.pdf`
+  - HTML: `mk4ht htlatex index.tex "html,mathplayer,info"`
 
 ## Contributions
 
