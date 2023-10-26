@@ -16,6 +16,7 @@ import 'package:app_finance/widgets/form/icon_selector.dart';
 import 'package:app_finance/widgets/form/simple_input.dart';
 import 'package:app_finance/widgets/wrapper/required_widget.dart';
 import 'package:app_finance/widgets/wrapper/row_widget.dart';
+import 'package:app_finance/widgets/wrapper/single_scroll_wrapper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_currency_picker/flutter_currency_picker.dart';
@@ -42,6 +43,7 @@ class BudgetAddPage extends AbstractAddPage {
 }
 
 class BudgetAddPageState<T extends BudgetAddPage> extends AbstractAddPageState<BudgetAddPage> {
+  final focus = FocusController();
   late TextEditingController title;
   late TextEditingController budgetLimit;
   IconData? icon;
@@ -58,6 +60,14 @@ class BudgetAddPageState<T extends BudgetAddPage> extends AbstractAddPageState<B
     final currencyId = AppPreferences.get(AppPreferences.prefCurrency);
     currency = widget.currency ?? CurrencyProvider.find(currencyId);
     super.initState();
+  }
+
+  @override
+  void dispose() {
+    focus.dispose();
+    title.dispose();
+    budgetLimit.dispose();
+    super.dispose();
   }
 
   @override
@@ -93,6 +103,7 @@ class BudgetAddPageState<T extends BudgetAddPage> extends AbstractAddPageState<B
     NavigatorState nav = Navigator.of(context);
     return FullSizedButtonWidget(
       constraints: constraints,
+      controller: focus,
       setState: () => triggerActionButton(nav),
       title: getButtonName(),
       icon: Icons.save,
@@ -105,8 +116,8 @@ class BudgetAddPageState<T extends BudgetAddPage> extends AbstractAddPageState<B
     double indent = ThemeHelper.getIndent(2);
     double width = ThemeHelper.getWidth(context, 6);
 
-    return SingleChildScrollView(
-      controller: FocusController.getController(runtimeType),
+    return SingleScrollWrapper(
+      controller: focus,
       child: Container(
         margin: EdgeInsets.fromLTRB(indent, indent, indent, 240),
         child: Column(

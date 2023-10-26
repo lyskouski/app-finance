@@ -1,6 +1,7 @@
 // Copyright 2023 The terCAD team. All rights reserved.
 // Use of this source code is governed by a CC BY-NC-ND 4.0 license that can be found in the LICENSE file.
 
+import 'package:app_finance/_classes/controller/exchange_controller.dart';
 import 'package:app_finance/_classes/herald/app_locale.dart';
 import 'package:app_finance/_classes/structure/currency/exchange.dart';
 import 'package:app_finance/_classes/structure/navigation/app_route.dart';
@@ -21,6 +22,7 @@ import 'package:app_finance/widgets/form/list_budget_selector.dart';
 import 'package:app_finance/widgets/form/simple_input.dart';
 import 'package:app_finance/widgets/wrapper/required_widget.dart';
 import 'package:app_finance/widgets/wrapper/row_widget.dart';
+import 'package:app_finance/widgets/wrapper/single_scroll_wrapper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_currency_picker/flutter_currency_picker.dart';
 
@@ -51,11 +53,15 @@ class ExpensesTab<T> extends StatefulWidget {
 }
 
 class ExpensesTabState<T extends ExpensesTab> extends AbstractPageState<T> {
+  final focus = FocusController();
   String? account;
+  Currency? accountCurrency;
   String? budget;
+  Currency? budgetCurrency;
   Currency? currency;
   late TextEditingController bill;
   late TextEditingController description;
+  late ExchangeController exchange;
   DateTime? createdAt;
   bool hasErrors = false;
   bool isPushed = false;
@@ -72,14 +78,20 @@ class ExpensesTabState<T extends ExpensesTab> extends AbstractPageState<T> {
     bill = TextEditingController(text: widget.bill != null ? widget.bill.toString() : '');
     description = TextEditingController(text: widget.description);
     createdAt = widget.createdAt;
+    accountCurrency = widget.state.getByUuid(account ?? '')?.currency;
+    budgetCurrency = widget.state.getByUuid(budget ?? '')?.currency;
+    exchange = ExchangeController({},
+        store: widget.state, targetController: bill, target: currency, source: [accountCurrency, budgetCurrency]);
     super.initState();
   }
 
   @override
   dispose() {
     isPushed = false;
-    bill.dispose();
     description.dispose();
+    exchange.dispose();
+    bill.dispose();
+    focus.dispose();
     super.dispose();
   }
 
@@ -94,6 +106,7 @@ class ExpensesTabState<T extends ExpensesTab> extends AbstractPageState<T> {
   void updateStorage() {
     AppPreferences.set(AppPreferences.prefAccount, account ?? '');
     AppPreferences.set(AppPreferences.prefBudget, budget ?? '');
+    exchange.save();
     widget.state.add(BillAppData(
       account: account ?? '',
       category: budget ?? '',
@@ -112,6 +125,7 @@ class ExpensesTabState<T extends ExpensesTab> extends AbstractPageState<T> {
     NavigatorState nav = Navigator.of(context);
     return FullSizedButtonWidget(
       constraints: constraints,
+      controller: focus,
       setState: () => {
         setState(() {
           if (hasFormErrors()) {
@@ -134,8 +148,9 @@ class ExpensesTabState<T extends ExpensesTab> extends AbstractPageState<T> {
     if (widget.isLeft) {
       width -= AbstractPageState.barHeight;
     }
-    return SingleChildScrollView(
-      controller: FocusController.getController(runtimeType),
+
+    return SingleScrollWrapper(
+      controller: focus,
       child: Container(
         margin: EdgeInsets.fromLTRB(indent, indent, indent, 240),
         child: Column(
@@ -156,7 +171,8 @@ class ExpensesTabState<T extends ExpensesTab> extends AbstractPageState<T> {
                   .toList(),
               setState: (value) => setState(() {
                 account = value;
-                currency = widget.state.getByUuid(value).currency;
+                accountCurrency = widget.state.getByUuid(value).currency;
+                currency = accountCurrency;
               }),
               width: width,
             ),
@@ -171,8 +187,8 @@ class ExpensesTabState<T extends ExpensesTab> extends AbstractPageState<T> {
               state: widget.state,
               setState: (value) => setState(() {
                 budget = value;
-                var bdgCurrency = widget.state.getByUuid(value).currency;
-                currency ??= bdgCurrency;
+                budgetCurrency = widget.state.getByUuid(value).currency;
+                currency ??= budgetCurrency;
               }),
               width: width,
             ),
@@ -213,12 +229,8 @@ class ExpensesTabState<T extends ExpensesTab> extends AbstractPageState<T> {
               width: width + indent,
               indent: indent,
               target: currency,
-              state: widget.state,
-              targetController: bill,
-              source: [
-                account != null ? widget.state.getByUuid(account!).currency : null,
-                budget != null ? widget.state.getByUuid(budget!).currency : null,
-              ].cast<Currency?>(),
+              controller: exchange,
+              source: [accountCurrency, budgetCurrency],
             ),
             Text(
               AppLocale.labels.description,

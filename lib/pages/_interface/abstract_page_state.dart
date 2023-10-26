@@ -5,7 +5,6 @@ import 'package:app_finance/_classes/herald/app_locale.dart';
 import 'package:app_finance/_classes/herald/app_zoom.dart';
 import 'package:app_finance/_classes/structure/navigation/app_menu.dart';
 import 'package:app_finance/_classes/storage/app_data.dart';
-import 'package:app_finance/_classes/controller/focus_controller.dart';
 import 'package:app_finance/_configs/theme_helper.dart';
 import 'package:app_finance/_ext/build_context_ext.dart';
 import 'package:app_finance/pages/_interface/widgets/menu_widget.dart';
@@ -263,7 +262,6 @@ abstract class AbstractPageState<T extends StatefulWidget> extends State<T> {
 
   @override
   Widget build(BuildContext context) {
-    FocusController.init();
     final scale = context.watch<AppZoom>().value;
     return Consumer<AppData>(builder: (context, appState, _) {
       state = appState;

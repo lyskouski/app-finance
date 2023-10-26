@@ -127,14 +127,13 @@ Inherited Widgets are a way to propagate data down the widget tree from a parent
 feature is that they automatically rebuild their descendants when the data they provide changes:
 
 \begin{lstlisting}
-class AppInheritedWidget extends InheritedWidget {
+class AppWrapper extends InheritedWidget {
   final String data;
 
-  AppInheritedWidget({
-    Key key,
-    @required this.data,
-    @required Widget child,
-  }) : super(key: key, child: child);
+  AppWrapper({super.key, this.data, super.child});
+
+  static AppWrapper of(BuildContext context) =>
+    context.dependOnInheritedWidgetOfExactType<AppWrapper>();
 
   @override
   bool updateShouldNotify(covariant InheritedWidget oldWidget) {
@@ -149,17 +148,14 @@ Inherited Widget:
 
 \begin{lstlisting}
 runApp(
-  AppInheritedWidget(
-    data: 'Shared Data',
-    child: MyApp(),
-  ),
+  AppWrapper(data: 'Shared Data', child: MyApp())
 );
 \end{lstlisting}
 
 \noindent Descendant widgets can access the shared data using the context:
 
 \begin{lstlisting}
-final data = AppInheritedWidget.of(context).data;
+final data = AppWrapper.of(context).data;
 \end{lstlisting}
 
 \noindent Inherited Widgets can be used to pass data down the widget tree without manually passing it as constructor 

@@ -261,6 +261,7 @@ class AppData extends ChangeNotifier {
   }
 
   dynamic getByUuid(String uuid, [bool isClone = true]) {
+    if (uuid == '') return null;
     var obj = isClone ? _hashTable[uuid]?.clone() : _hashTable[uuid];
     if (obj is BillAppData || obj is BudgetAppData) {
       obj.setState(this);

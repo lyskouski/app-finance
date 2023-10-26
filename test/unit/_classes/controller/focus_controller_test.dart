@@ -2,60 +2,54 @@
 // Use of this source code is governed by a CC BY-NC-ND 4.0 license that can be found in the LICENSE file.
 
 import 'package:app_finance/_classes/controller/focus_controller.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:mockito/annotations.dart';
+
+@GenerateNiceMocks([MockSpec<BuildContext>()])
+import 'focus_controller_test.mocks.dart';
 
 void main() {
   group('FocusController', () {
-    setUp(() {
-      FocusController.dispose();
-      FocusController.getController(FocusController);
-    });
-
     group('onEditingComplete', () {
       final testCases = [
         (
           fnCalls: 1,
-          resultCursor: 0,
           editComplete: 0,
-          focus: -1,
-          checkFocus: 0,
+          focus: 0,
           value: null,
           result: true,
-          isLast: true,
+          action: TextInputAction.done,
         ),
         (
           fnCalls: 10,
-          resultCursor: 9,
           editComplete: 5,
           focus: 6,
-          checkFocus: 6,
           value: null,
           result: true,
-          isLast: false,
+          action: TextInputAction.next,
         ),
         (
           fnCalls: 10,
-          resultCursor: 9,
           editComplete: 5,
           focus: 6,
-          checkFocus: 6,
           value: 'test',
           result: false,
-          isLast: false,
+          action: TextInputAction.next,
         ),
       ];
 
       for (var v in testCases) {
-        test('$v', () {
-          expect(FocusController.current, FocusController.DEFAULT);
+        test('$v', () async {
+          final controller = FocusController();
+          expect(controller.focus, null);
           for (int i = 0; i < v.fnCalls; i++) {
-            FocusController.getFocusNode();
+            controller.bind(i, context: MockBuildContext(), value: v.value);
           }
-          expect(FocusController.current, v.resultCursor);
-          FocusController.onEditingComplete(v.editComplete);
-          expect(FocusController.focus, v.focus);
-          expect(FocusController.isFocused(v.checkFocus, v.value), v.result);
-          expect(FocusController.isLast(), v.isLast);
+          await Future.delayed(const Duration(seconds: 1));
+          controller.onEditingComplete(v.editComplete);
+          expect(controller.isFocused(v.focus), v.result);
+          expect(controller.getAction(v.focus), v.action);
         });
       }
     });

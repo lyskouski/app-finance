@@ -1,7 +1,6 @@
 // Copyright 2023 The terCAD team. All rights reserved.
 // Use of this source code is governed by a CC BY-NC-ND 4.0 license that can be found in the LICENSE file.
 
-import 'package:app_finance/_classes/controller/focus_controller.dart';
 import 'package:app_finance/_classes/structure/def/list_selector_item.dart';
 import 'package:app_finance/_configs/custom_color_scheme.dart';
 import 'package:app_finance/_configs/custom_text_theme.dart';
@@ -18,14 +17,14 @@ class ListSelector<K extends ListSelectorItem> extends AbstractSelector {
   final String? hintText;
   final TextStyle? hintStyle;
 
-  ListSelector({
+  const ListSelector({
     super.key,
     required this.options,
     required this.setState,
     required this.hintText,
     this.hintStyle,
     super.value,
-  }) : super();
+  });
 
   @override
   ListSelectorState createState() => ListSelectorState();
@@ -42,12 +41,12 @@ class ListSelectorState<T extends ListSelector, K extends ListSelectorItem> exte
   void onChange(K value) {
     textController.closeView(null);
     widget.setState(value.id);
-    FocusController.onEditingComplete(widget.focusOrder);
+    focusController.onEditingComplete(this);
   }
 
   @override
   void onTap(BuildContext? context) {
-    FocusController.onFocus(widget.focusOrder);
+    focusController.onFocus(this);
     if (!textController.isOpen) {
       textController.openView();
     }
@@ -84,7 +83,7 @@ class ListSelectorState<T extends ListSelector, K extends ListSelectorItem> exte
       headerHintStyle: hintStyle,
       builder: (context, controller) => TapWidget(
         onTap: () => onTap(null),
-        onFocusChange: (v) => v ? FocusController.scrollToFocusedElement(widget.focusOrder) : null,
+        onFocusChange: (v) => v ? focusController.scrollToFocusedElement(this) : null,
         child: Container(
           width: double.infinity,
           color: context.colorScheme.fieldBackground,

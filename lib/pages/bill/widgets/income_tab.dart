@@ -1,6 +1,7 @@
 // Copyright 2023 The terCAD team. All rights reserved.
 // Use of this source code is governed by a CC BY-NC-ND 4.0 license that can be found in the LICENSE file.
 
+import 'package:app_finance/_classes/controller/exchange_controller.dart';
 import 'package:app_finance/_classes/herald/app_locale.dart';
 import 'package:app_finance/_classes/structure/currency/exchange.dart';
 import 'package:app_finance/_classes/structure/invoice_app_data.dart';
@@ -19,6 +20,7 @@ import 'package:app_finance/widgets/form/list_account_selector.dart';
 import 'package:app_finance/widgets/form/simple_input.dart';
 import 'package:app_finance/widgets/wrapper/required_widget.dart';
 import 'package:app_finance/widgets/wrapper/row_widget.dart';
+import 'package:app_finance/widgets/wrapper/single_scroll_wrapper.dart';
 import 'package:app_finance/widgets/wrapper/text_wrapper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_currency_picker/flutter_currency_picker.dart';
@@ -48,10 +50,13 @@ class IncomeTab extends StatefulWidget {
 }
 
 class IncomeTabState extends AbstractPageState<IncomeTab> {
+  final focus = FocusController();
   String? account;
+  Currency? accountCurrency;
   Currency? currency;
   late TextEditingController amount;
   late TextEditingController description;
+  late ExchangeController exchange;
   late DateTime createdAt;
   bool hasErrors = false;
 
@@ -64,13 +69,18 @@ class IncomeTabState extends AbstractPageState<IncomeTab> {
     createdAt = widget.createdAt ?? DateTime.now();
     amount = TextEditingController(text: widget.amount != null ? widget.amount.toString() : '');
     description = TextEditingController(text: widget.description);
+    accountCurrency = widget.state.getByUuid(account ?? '')?.currency;
+    exchange = ExchangeController({},
+        store: widget.state, targetController: amount, target: currency, source: [accountCurrency]);
     super.initState();
   }
 
   @override
   dispose() {
-    amount.dispose();
     description.dispose();
+    exchange.dispose();
+    amount.dispose();
+    focus.dispose();
     super.dispose();
   }
 
@@ -85,6 +95,7 @@ class IncomeTabState extends AbstractPageState<IncomeTab> {
   void updateStorage() {
     String uuid = account ?? '';
     AppPreferences.set(AppPreferences.prefAccount, uuid);
+    exchange.save();
     widget.state.add(InvoiceAppData(
       title: description.text,
       color: widget.state.getByUuid(uuid)?.color,
@@ -103,6 +114,7 @@ class IncomeTabState extends AbstractPageState<IncomeTab> {
     NavigatorState nav = Navigator.of(context);
     return FullSizedButtonWidget(
       constraints: constraints,
+      controller: focus,
       setState: () => {
         setState(() {
           if (hasFormErrors()) {
@@ -126,8 +138,8 @@ class IncomeTabState extends AbstractPageState<IncomeTab> {
       width -= AbstractPageState.barHeight;
     }
 
-    return SingleChildScrollView(
-      controller: FocusController.getController(runtimeType),
+    return SingleScrollWrapper(
+      controller: focus,
       child: Container(
         margin: EdgeInsets.fromLTRB(indent, indent, indent, 240),
         width: width,
@@ -145,6 +157,7 @@ class IncomeTabState extends AbstractPageState<IncomeTab> {
               setState: (value) => setState(() {
                 account = value;
                 currency = widget.state.getByUuid(value).currency;
+                accountCurrency = currency;
               }),
               width: width,
             ),
@@ -187,11 +200,8 @@ class IncomeTabState extends AbstractPageState<IncomeTab> {
               width: width + indent,
               indent: indent,
               target: currency,
-              state: widget.state,
-              targetController: amount,
-              source: <Currency?>[
-                account != null ? widget.state.getByUuid(account!).currency : null,
-              ],
+              controller: exchange,
+              source: [accountCurrency],
             ),
             Text(
               AppLocale.labels.description,

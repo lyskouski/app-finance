@@ -18,6 +18,7 @@ import 'package:app_finance/widgets/form/icon_selector.dart';
 import 'package:app_finance/widgets/form/simple_input.dart';
 import 'package:app_finance/widgets/wrapper/required_widget.dart';
 import 'package:app_finance/widgets/wrapper/row_widget.dart';
+import 'package:app_finance/widgets/wrapper/single_scroll_wrapper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_currency_picker/flutter_currency_picker.dart';
 
@@ -44,11 +45,12 @@ class GoalAddPage extends StatefulWidget {
 }
 
 class GoalAddPageState<T extends GoalAddPage> extends AbstractPageState<GoalAddPage> {
+  final focus = FocusController();
   late TextEditingController title;
+  late TextEditingController details;
   IconData? icon;
   MaterialColor? color;
   Currency? currency;
-  late TextEditingController details;
   DateTime? closedAt;
   bool hasError = false;
 
@@ -65,9 +67,15 @@ class GoalAddPageState<T extends GoalAddPage> extends AbstractPageState<GoalAddP
   }
 
   @override
-  String getTitle() {
-    return AppLocale.labels.createGoalHeader;
+  void dispose() {
+    focus.dispose();
+    title.dispose();
+    details.dispose();
+    super.dispose();
   }
+
+  @override
+  String getTitle() => AppLocale.labels.createGoalHeader;
 
   bool hasFormErrors() {
     setState(() => hasError = title.text.isEmpty || closedAt == null);
@@ -97,6 +105,7 @@ class GoalAddPageState<T extends GoalAddPage> extends AbstractPageState<GoalAddP
     NavigatorState nav = Navigator.of(context);
     return FullSizedButtonWidget(
       constraints: constraints,
+      controller: focus,
       setState: () => {
         setState(() {
           if (hasFormErrors()) {
@@ -118,8 +127,8 @@ class GoalAddPageState<T extends GoalAddPage> extends AbstractPageState<GoalAddP
     double indent = ThemeHelper.getIndent(2);
     double width = ThemeHelper.getWidth(context, 6);
 
-    return SingleChildScrollView(
-      controller: FocusController.getController(runtimeType),
+    return SingleScrollWrapper(
+      controller: focus,
       child: Container(
         margin: EdgeInsets.fromLTRB(indent, indent, indent, 240),
         child: Column(

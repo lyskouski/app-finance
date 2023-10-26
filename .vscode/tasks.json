@@ -13,7 +13,7 @@
       {
         "label": "Generate Mock",
         "command": "dart",
-        "args": ["run", "build_runner", "build", "--delete-conflicting-outputs", "--build-filter=\"${file}/../*.dart\""],
+        "args": ["run", "build_runner", "build", "--build-filter=\"${file}/../*.dart\""],
         "options": {
           "cwd": "${workspaceFolder}"
         },

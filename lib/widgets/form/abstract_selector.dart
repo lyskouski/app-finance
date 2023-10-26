@@ -3,25 +3,19 @@
 
 import 'package:app_finance/_classes/controller/delayed_call.dart';
 import 'package:app_finance/_classes/controller/focus_controller.dart';
+import 'package:app_finance/widgets/wrapper/focus_wrapper.dart';
 import 'package:flutter/material.dart';
 
 abstract class AbstractSelector extends StatefulWidget {
   final dynamic value;
-  late final FocusNode focus;
-  late final int focusOrder;
 
-  AbstractSelector({
-    super.key,
-    this.value,
-  }) {
-    focus = FocusController.getFocusNode(value);
-    focusOrder = FocusController.current;
-  }
+  const AbstractSelector({super.key, this.value});
 }
 
 abstract class AbstractSelectorState<T extends AbstractSelector> extends State<T> {
-  bool isFocused = false;
   bool wasOpened = false;
+  late FocusNode focus;
+  late FocusController focusController;
 
   final delay = DelayedCall(300);
   final textController = SearchController();
@@ -38,9 +32,9 @@ abstract class AbstractSelectorState<T extends AbstractSelector> extends State<T
 
   @override
   Widget build(BuildContext context) {
-    isFocused = FocusController.isFocused(widget.focusOrder, widget.value);
-    FocusController.recordPosition(context, widget.focusOrder);
-    if (mounted && !widget.focus.hasFocus && isFocused && widget.value == null) {
+    focusController = FocusWrapper.of(context) ?? FocusController();
+    focus = focusController.bind(this, context: context, value: widget.value);
+    if (mounted && !wasOpened && focusController.isFocused(this) && widget.value == null) {
       delay.run(() => WidgetsBinding.instance.addPostFrameCallback((_) {
             if (mounted && widget.value == null && !wasOpened) {
               setState(() => wasOpened = true);

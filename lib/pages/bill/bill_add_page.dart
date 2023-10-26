@@ -2,7 +2,6 @@
 // Use of this source code is governed by a CC BY-NC-ND 4.0 license that can be found in the LICENSE file.
 
 import 'package:app_finance/_classes/herald/app_locale.dart';
-import 'package:app_finance/_classes/controller/focus_controller.dart';
 import 'package:app_finance/_classes/storage/app_data.dart';
 import 'package:app_finance/_configs/theme_helper.dart';
 import 'package:app_finance/pages/bill/widgets/expenses_tab.dart';
@@ -21,12 +20,6 @@ class BillAddPage extends StatefulWidget {
 
 class BillAddPageState extends State<BillAddPage> {
   bool? isLeft;
-
-  @override
-  void dispose() {
-    FocusController.dispose();
-    super.dispose();
-  }
 
   @override
   Widget build(BuildContext context) {
