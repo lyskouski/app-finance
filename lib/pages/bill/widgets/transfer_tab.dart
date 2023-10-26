@@ -1,6 +1,7 @@
 // Copyright 2023 The terCAD team. All rights reserved.
 // Use of this source code is governed by a CC BY-NC-ND 4.0 license that can be found in the LICENSE file.
 
+import 'package:app_finance/_classes/controller/exchange_controller.dart';
 import 'package:app_finance/_classes/herald/app_locale.dart';
 import 'package:app_finance/_classes/structure/currency/exchange.dart';
 import 'package:app_finance/_classes/structure/invoice_app_data.dart';
@@ -51,8 +52,11 @@ class TransferTab extends StatefulWidget {
 class TransferTabState extends AbstractPageState<TransferTab> {
   String? accountFrom;
   String? accountTo;
+  Currency? accountFromCurrency;
+  Currency? accountToCurrency;
   late TextEditingController amount;
   late TextEditingController description;
+  late ExchangeController exchange;
   late DateTime createdAt;
   Currency? currency;
   bool hasErrors = false;
@@ -66,6 +70,7 @@ class TransferTabState extends AbstractPageState<TransferTab> {
     amount = TextEditingController(text: widget.amount != null ? widget.amount.toString() : '');
     description = TextEditingController(text: widget.description);
     currency = widget.currency ?? Exchange.defaultCurrency;
+    exchange = ExchangeController({}, store: widget.state, targetController: amount, target: currency, source: []);
     super.initState();
   }
 
@@ -144,7 +149,11 @@ class TransferTabState extends AbstractPageState<TransferTab> {
               value: accountFrom,
               hintText: AppLocale.labels.accountFrom,
               state: widget.state,
-              setState: (value) => setState(() => accountFrom = value),
+              setState: (value) => setState(() {
+                accountFrom = value;
+                accountFromCurrency = widget.state.getByUuid(accountFrom!)?.currency;
+                currency ??= accountFromCurrency;
+              }),
               width: width,
             ),
             ThemeHelper.hIndent2x,
@@ -158,7 +167,8 @@ class TransferTabState extends AbstractPageState<TransferTab> {
               state: widget.state,
               setState: (value) => setState(() {
                 accountTo = value;
-                currency = widget.state.getByUuid(value)?.currency;
+                accountToCurrency = widget.state.getByUuid(value)?.currency;
+                currency = accountToCurrency;
               }),
               width: width,
             ),
@@ -199,12 +209,8 @@ class TransferTabState extends AbstractPageState<TransferTab> {
               width: width + indent,
               indent: indent,
               target: currency,
-              state: widget.state,
-              targetController: amount,
-              source: <Currency?>[
-                accountFrom != null ? widget.state.getByUuid(accountFrom!)?.currency : null,
-                accountTo != null ? widget.state.getByUuid(accountTo!)?.currency : null,
-              ],
+              controller: exchange,
+              source: [accountFromCurrency, accountToCurrency],
             ),
             Text(
               AppLocale.labels.description,
