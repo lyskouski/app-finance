@@ -13,12 +13,9 @@ Scheduled to 1st November 2023
 - **Apple Books**
   - https://books.apple.com/us/book/from-zero-to-market-with-flutter/id6470395934
 - **Lulu**
-  - [On Review]
+  - [Scheduled]
 - **Smashwords**
   - https://www.smashwords.com/books/view/1471129 (choose your price)
-- **SCRIBD**
-  - (mobile version) https://www.scribd.com/document/679977335/From-Zero-to-Market-with-Flutter-Mobile-Version
-  - https://www.scribd.com/document/679976744/From-Zero-to-Market-with-Flutter
 
 
 ## Sampling on Financial Accounting App Life-Cycles

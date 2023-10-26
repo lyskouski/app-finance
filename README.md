@@ -20,6 +20,7 @@
   - [Release](https://github.com/lyskouski/app-finance/releases/latest)/fingrom_macOS.zip
 - **Linux**:
   - Snap Store: [![fingrom](https://snapcraft.io/fingrom/badge.svg)](https://snapcraft.io/fingrom)
+  - Flathub: [[pending]](https://github.com/lyskouski/app-finance/issues/350)
   - [Release](https://github.com/lyskouski/app-finance/releases/latest)/fingrom_Linux.tar.gz
 - **Windows**: 
   - Windows Apps: _(released, postponed availability)_
