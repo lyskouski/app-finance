@@ -22,6 +22,7 @@ import 'package:app_finance/widgets/form/list_budget_selector.dart';
 import 'package:app_finance/widgets/form/simple_input.dart';
 import 'package:app_finance/widgets/wrapper/required_widget.dart';
 import 'package:app_finance/widgets/wrapper/row_widget.dart';
+import 'package:app_finance/widgets/wrapper/single_scroll_wrapper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_currency_picker/flutter_currency_picker.dart';
 
@@ -52,6 +53,7 @@ class ExpensesTab<T> extends StatefulWidget {
 }
 
 class ExpensesTabState<T extends ExpensesTab> extends AbstractPageState<T> {
+  final focus = FocusController();
   String? account;
   Currency? accountCurrency;
   String? budget;
@@ -89,6 +91,7 @@ class ExpensesTabState<T extends ExpensesTab> extends AbstractPageState<T> {
     description.dispose();
     exchange.dispose();
     bill.dispose();
+    focus.dispose();
     super.dispose();
   }
 
@@ -122,6 +125,7 @@ class ExpensesTabState<T extends ExpensesTab> extends AbstractPageState<T> {
     NavigatorState nav = Navigator.of(context);
     return FullSizedButtonWidget(
       constraints: constraints,
+      controller: focus,
       setState: () => {
         setState(() {
           if (hasFormErrors()) {
@@ -144,8 +148,9 @@ class ExpensesTabState<T extends ExpensesTab> extends AbstractPageState<T> {
     if (widget.isLeft) {
       width -= AbstractPageState.barHeight;
     }
-    return SingleChildScrollView(
-      controller: FocusController.getController(runtimeType),
+
+    return SingleScrollWrapper(
+      controller: focus,
       child: Container(
         margin: EdgeInsets.fromLTRB(indent, indent, indent, 240),
         child: Column(

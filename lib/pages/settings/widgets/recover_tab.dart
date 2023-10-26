@@ -10,6 +10,7 @@ import 'package:app_finance/pages/settings/widgets/recover_tab/nav_button_widget
 import 'package:app_finance/pages/settings/widgets/recover_tab/recover_file_form.dart';
 import 'package:app_finance/pages/settings/widgets/recover_tab/recover_webdav_form.dart';
 import 'package:app_finance/pages/settings/widgets/recover_tab/recovery_type.dart';
+import 'package:app_finance/widgets/wrapper/single_scroll_wrapper.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -21,10 +22,17 @@ class RecoverTab extends StatefulWidget {
 }
 
 class SyncTabState extends State<RecoverTab> {
+  final focus = FocusController();
   late AppData state;
   String message = '';
   bool inProgress = false;
   RecoveryType type = RecoveryType.none;
+
+  @override
+  void dispose() {
+    focus.dispose();
+    super.dispose();
+  }
 
   void cbType(RecoveryType value) => setState(() {
         type = value;
@@ -37,64 +45,63 @@ class SyncTabState extends State<RecoverTab> {
 
   @override
   Widget build(BuildContext context) {
-    FocusController.init();
     double indent = ThemeHelper.getIndent(2);
-    Widget form;
+    Function form;
     if (inProgress) {
-      form = Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          SizedBox(height: ThemeHelper.getIndent(12)),
-          LoadingWidget(isLoading: inProgress),
-        ],
-      );
+      form = () => Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              SizedBox(height: ThemeHelper.getIndent(12)),
+              LoadingWidget(isLoading: inProgress),
+            ],
+          );
     } else {
       switch (type) {
         case RecoveryType.webdav:
-          form = RecoverWebdavForm(
-            cbFinal: state.flush,
-            cbMessage: cbMessage,
-            cbProgress: cbProgress,
-            cbType: cbType,
-            message: message,
-          );
+          form = () => RecoverWebdavForm(
+                cbFinal: state.flush,
+                cbMessage: cbMessage,
+                cbProgress: cbProgress,
+                cbType: cbType,
+                message: message,
+              );
           break;
         case RecoveryType.file:
-          form = RecoverFileForm(
-            cbFinal: state.flush,
-            cbMessage: cbMessage,
-            cbProgress: cbProgress,
-            cbType: cbType,
-            message: message,
-          );
+          form = () => RecoverFileForm(
+                cbFinal: state.flush,
+                cbMessage: cbMessage,
+                cbProgress: cbProgress,
+                cbType: cbType,
+                message: message,
+              );
           break;
         default:
-          form = Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              ThemeHelper.hIndent2x,
-              NavButtonWidget(
-                name: AppLocale.labels.webDav,
-                nav: RecoveryType.webdav,
-                callback: cbType,
-              ),
-              ThemeHelper.hIndent2x,
-              NavButtonWidget(
-                name: AppLocale.labels.transactionFile,
-                nav: RecoveryType.file,
-                callback: cbType,
-              ),
-            ],
-          );
+          form = () => Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  ThemeHelper.hIndent2x,
+                  NavButtonWidget(
+                    name: AppLocale.labels.webDav,
+                    nav: RecoveryType.webdav,
+                    callback: cbType,
+                  ),
+                  ThemeHelper.hIndent2x,
+                  NavButtonWidget(
+                    name: AppLocale.labels.transactionFile,
+                    nav: RecoveryType.file,
+                    callback: cbType,
+                  ),
+                ],
+              );
       }
     }
     return Consumer<AppData>(builder: (context, appState, _) {
       state = appState;
-      return SingleChildScrollView(
-        controller: FocusController.getController(runtimeType),
+      return SingleScrollWrapper(
+        controller: focus,
         child: Padding(
           padding: EdgeInsets.all(indent),
-          child: form,
+          child: form(),
         ),
       );
     });

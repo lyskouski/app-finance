@@ -20,6 +20,7 @@ import 'package:app_finance/widgets/form/list_selector.dart';
 import 'package:app_finance/widgets/form/simple_input.dart';
 import 'package:app_finance/widgets/generic/loading_widget.dart';
 import 'package:app_finance/pages/settings/widgets/recover_tab/date_time_helper_widget.dart';
+import 'package:app_finance/widgets/wrapper/single_scroll_wrapper.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -33,12 +34,20 @@ class ImportTab extends StatefulWidget {
 }
 
 class ImportTabState extends State<ImportTab> {
+  final focus = FocusController();
   late AppData state;
   List<List<dynamic>>? fileContent;
   StringBuffer errorMessage = StringBuffer();
   List<String> columnMap = [];
   bool isLoading = false;
   final dateFormat = TextEditingController(text: 'M/d/yyyy HH:mm');
+
+  @override
+  void dispose() {
+    focus.dispose();
+    dateFormat.dispose();
+    super.dispose();
+  }
 
   late Map<String, String?> attrValue = {
     FileParser.attrAccountName: AppPreferences.get(AppPreferences.prefAccount),
@@ -118,12 +127,11 @@ class ImportTabState extends State<ImportTab> {
     final width = ThemeHelper.getWidth(context, 12);
     final textTheme = context.textTheme;
     final ColorScheme colorScheme = context.colorScheme;
-    FocusController.init();
 
     return Consumer<AppData>(builder: (context, appState, _) {
       state = appState;
-      return SingleChildScrollView(
-        controller: FocusController.getController(runtimeType),
+      return SingleScrollWrapper(
+        controller: focus,
         child: Padding(
           padding: EdgeInsets.all(indent),
           child: Column(

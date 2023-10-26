@@ -16,6 +16,7 @@ class FullSizedButtonWidget extends AbstractInput {
   final String title;
   final IconData icon;
   final BoxConstraints? constraints;
+  final FocusController? controller;
   late final String heroTag;
 
   FullSizedButtonWidget({
@@ -24,6 +25,7 @@ class FullSizedButtonWidget extends AbstractInput {
     required this.title,
     required this.icon,
     this.constraints,
+    this.controller,
   }) : super(value: null) {
     heroTag = 'fz_button_${UniqueKey()}';
   }
@@ -44,7 +46,7 @@ class FullSizedButtonWidget extends AbstractInput {
           hoverColor: colorScheme.primary,
           focusColor: colorScheme.primary.withOpacity(0.8),
           tooltip: title,
-          focusNode: FocusController.getFocusNode(),
+          focusNode: controller?.bind(this, context: context),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [

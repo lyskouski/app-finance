@@ -1,7 +1,6 @@
 // Copyright 2023 The terCAD team. All rights reserved.
 // Use of this source code is governed by a CC BY-NC-ND 4.0 license that can be found in the LICENSE file.
 
-import 'package:app_finance/_classes/controller/focus_controller.dart';
 import 'package:app_finance/_classes/herald/app_locale.dart';
 import 'package:app_finance/_classes/structure/def/list_selector_item.dart';
 import 'package:app_finance/_configs/custom_text_theme.dart';
@@ -62,7 +61,7 @@ class IconSelectorState extends ListSelectorState<IconSelector, IconSelectorItem
   void onChange(IconSelectorItem value) {
     widget.setState(value.value);
     textController.closeView(null);
-    FocusController.onEditingComplete(widget.focusOrder);
+    focusController.onEditingComplete(this);
   }
 
   @override

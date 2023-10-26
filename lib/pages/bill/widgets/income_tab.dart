@@ -20,6 +20,7 @@ import 'package:app_finance/widgets/form/list_account_selector.dart';
 import 'package:app_finance/widgets/form/simple_input.dart';
 import 'package:app_finance/widgets/wrapper/required_widget.dart';
 import 'package:app_finance/widgets/wrapper/row_widget.dart';
+import 'package:app_finance/widgets/wrapper/single_scroll_wrapper.dart';
 import 'package:app_finance/widgets/wrapper/text_wrapper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_currency_picker/flutter_currency_picker.dart';
@@ -49,6 +50,7 @@ class IncomeTab extends StatefulWidget {
 }
 
 class IncomeTabState extends AbstractPageState<IncomeTab> {
+  final focus = FocusController();
   String? account;
   Currency? accountCurrency;
   Currency? currency;
@@ -78,6 +80,7 @@ class IncomeTabState extends AbstractPageState<IncomeTab> {
     description.dispose();
     exchange.dispose();
     amount.dispose();
+    focus.dispose();
     super.dispose();
   }
 
@@ -111,6 +114,7 @@ class IncomeTabState extends AbstractPageState<IncomeTab> {
     NavigatorState nav = Navigator.of(context);
     return FullSizedButtonWidget(
       constraints: constraints,
+      controller: focus,
       setState: () => {
         setState(() {
           if (hasFormErrors()) {
@@ -134,8 +138,8 @@ class IncomeTabState extends AbstractPageState<IncomeTab> {
       width -= AbstractPageState.barHeight;
     }
 
-    return SingleChildScrollView(
-      controller: FocusController.getController(runtimeType),
+    return SingleScrollWrapper(
+      controller: focus,
       child: Container(
         margin: EdgeInsets.fromLTRB(indent, indent, indent, 240),
         width: width,

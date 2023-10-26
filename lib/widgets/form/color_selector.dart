@@ -2,7 +2,6 @@
 // Use of this source code is governed by a CC BY-NC-ND 4.0 license that can be found in the LICENSE file.
 
 import 'package:app_finance/_classes/herald/app_locale.dart';
-import 'package:app_finance/_classes/controller/focus_controller.dart';
 import 'package:app_finance/_configs/custom_color_scheme.dart';
 import 'package:app_finance/_ext/build_context_ext.dart';
 import 'package:app_finance/_ext/color_ext.dart';
@@ -16,7 +15,7 @@ class ColorSelector extends AbstractSelector {
   // ignore: overridden_fields
   final MaterialColor? value;
 
-  ColorSelector({
+  const ColorSelector({
     super.key,
     required this.setState,
     this.value,
@@ -51,7 +50,7 @@ class ColorSelectorState extends AbstractSelectorState<ColorSelector> {
               pickerColor: value,
               onColorChanged: (color) {
                 setState(() => value = color.toMaterialColor);
-                FocusController.onEditingComplete(widget.focusOrder);
+                focusController.onEditingComplete(this);
               },
             ),
           ),
@@ -60,7 +59,7 @@ class ColorSelectorState extends AbstractSelectorState<ColorSelector> {
               onPressed: () {
                 nav.pop();
                 widget.setState(value);
-                FocusController.onEditingComplete(widget.focusOrder);
+                focusController.onEditingComplete(this);
               },
               child: Text(AppLocale.labels.ok),
             ),

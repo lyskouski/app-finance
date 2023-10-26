@@ -18,4 +18,9 @@
     },
     "dart.previewFlutterUiGuidesCustomTracking": true,
     "dart.previewFlutterUiGuides": true,
+    "cSpell.words": [
+      "autofocus",
+      "LTRB",
+      "unfocus"
+    ],
 }

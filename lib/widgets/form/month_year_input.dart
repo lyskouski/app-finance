@@ -1,7 +1,6 @@
 // Copyright 2023 The terCAD team. All rights reserved.
 // Use of this source code is governed by a CC BY-NC-ND 4.0 license that can be found in the LICENSE file.
 
-import 'package:app_finance/_classes/controller/focus_controller.dart';
 import 'package:app_finance/_classes/herald/app_locale.dart';
 import 'package:app_finance/_configs/custom_color_scheme.dart';
 import 'package:app_finance/_configs/custom_text_theme.dart';
@@ -17,11 +16,11 @@ class MonthYearInput extends AbstractSelector {
   // ignore: overridden_fields
   final DateTime? value;
 
-  MonthYearInput({
+  const MonthYearInput({
     super.key,
     required this.setState,
     required this.value,
-  }) : super();
+  });
 
   @override
   MonthYearInputState createState() => MonthYearInputState();
@@ -42,7 +41,7 @@ class MonthYearInputState extends AbstractSelectorState<MonthYearInput> {
     );
     if (selectedDate != null) {
       widget.setState(selectedDate);
-      FocusController.onEditingComplete(widget.focusOrder);
+      focusController.onEditingComplete(this);
     }
   }
 

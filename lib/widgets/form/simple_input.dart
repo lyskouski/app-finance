@@ -1,7 +1,6 @@
 // Copyright 2023 The terCAD team. All rights reserved.
 // Use of this source code is governed by a CC BY-NC-ND 4.0 license that can be found in the LICENSE file.
 
-import 'package:app_finance/_classes/controller/focus_controller.dart';
 import 'package:app_finance/_configs/custom_color_scheme.dart';
 import 'package:app_finance/_configs/custom_text_theme.dart';
 import 'package:app_finance/_ext/build_context_ext.dart';
@@ -50,10 +49,10 @@ class SimpleInput extends AbstractInput {
       obscuringCharacter: '*',
       keyboardType: type,
       focusNode: focus,
-      textInputAction: FocusController.getAction(),
-      onTap: () => FocusController.onFocus(focusOrder),
-      onEditingComplete: () => FocusController.onEditingComplete(focusOrder),
-      autofocus: isFocused,
+      textInputAction: focusController!.getAction(this),
+      onTap: () => focusController!.onFocus(this),
+      onEditingComplete: () => focusController!.onEditingComplete(this),
+      autofocus: focusController!.isFocused(this),
       decoration: InputDecoration(
         filled: true,
         border: InputBorder.none,

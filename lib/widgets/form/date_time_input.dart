@@ -1,7 +1,6 @@
 // Copyright 2023 The terCAD team. All rights reserved.
 // Use of this source code is governed by a CC BY-NC-ND 4.0 license that can be found in the LICENSE file.
 
-import 'package:app_finance/_classes/controller/focus_controller.dart';
 import 'package:app_finance/_classes/herald/app_locale.dart';
 import 'package:app_finance/_configs/custom_color_scheme.dart';
 import 'package:app_finance/_configs/custom_text_theme.dart';
@@ -20,7 +19,7 @@ class DateTimeInput extends AbstractSelector {
   final DateTime value;
   final double? width;
 
-  DateTimeInput({
+  const DateTimeInput({
     super.key,
     required this.setState,
     required this.value,
@@ -41,7 +40,7 @@ class DateTimeInputState extends AbstractSelectorState<DateTimeInput> {
     );
     if (time != null) {
       widget.setState(DateTime(widget.value.year, widget.value.month, widget.value.day, time.hour, time.minute));
-      FocusController.onEditingComplete(widget.focusOrder);
+      focusController.onEditingComplete(this);
     }
   }
 
@@ -67,8 +66,8 @@ class DateTimeInputState extends AbstractSelectorState<DateTimeInput> {
           Container(
             color: context.colorScheme.fieldBackground,
             child: ListTile(
-              focusNode: widget.focus,
-              autofocus: isFocused,
+              focusNode: focus,
+              autofocus: focusController.isFocused(this),
               title: Text(
                 formatterTime.format(widget.value),
                 overflow: TextOverflow.ellipsis,

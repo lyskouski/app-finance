@@ -1,6 +1,7 @@
 // Copyright 2023 The terCAD team. All rights reserved.
 // Use of this source code is governed by a CC BY-NC-ND 4.0 license that can be found in the LICENSE file.
 
+import 'package:app_finance/_classes/controller/focus_controller.dart';
 import 'package:app_finance/_classes/herald/app_locale.dart';
 import 'package:app_finance/_classes/herald/app_palette.dart';
 import 'package:app_finance/_classes/herald/app_theme.dart';
@@ -18,6 +19,7 @@ import 'package:app_finance/widgets/form/currency_selector.dart';
 import 'package:app_finance/widgets/form/list_selector.dart';
 import 'package:app_finance/pages/start/widgets/abstract_tab.dart';
 import 'package:app_finance/widgets/wrapper/row_widget.dart';
+import 'package:app_finance/widgets/wrapper/single_scroll_wrapper.dart';
 import 'package:app_finance/widgets/wrapper/table_widget.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -37,6 +39,7 @@ class SettingTab extends AbstractTab {
 }
 
 class SettingTabState<T extends SettingTab> extends AbstractTabState<T> {
+  final controller = FocusController();
   late AppTheme theme;
   late AppZoom zoom;
   late AppPalette palette;
@@ -61,6 +64,12 @@ class SettingTabState<T extends SettingTab> extends AbstractTabState<T> {
     AppPreferences.set(AppPreferences.prefDoEncrypt, isEncrypted ? 'true' : 'false');
     brightness = AppPreferences.get(AppPreferences.prefTheme) ?? brightness;
     colorMode = AppPreferences.get(AppPreferences.prefColor) ?? colorMode;
+  }
+
+  @override
+  void dispose() {
+    controller.dispose();
+    super.dispose();
   }
 
   void saveEncryption(newValue) {
@@ -121,7 +130,8 @@ class SettingTabState<T extends SettingTab> extends AbstractTabState<T> {
     if (currency == null) {
       WidgetsBinding.instance.addPostFrameCallback((_) => initCurrencyFromLocale(AppLocale.code));
     }
-    return SingleChildScrollView(
+    return SingleScrollWrapper(
+      controller: controller,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [

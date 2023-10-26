@@ -100,7 +100,9 @@ class ExchangeController extends ValueNotifier<ExchangeMap> {
 
   void _updateSum(String uuid) {
     List<TextEditingController> pair = value[uuid]!;
-    rate[uuid]!.details = double.tryParse(pair[0].text);
+    if (pair[0].text != '') {
+      rate[uuid]!.details = double.tryParse(pair[0].text);
+    }
     final amount = _getAmount(uuid);
     final current = double.tryParse(pair[1].text);
     if (amount != current) {
@@ -114,7 +116,9 @@ class ExchangeController extends ValueNotifier<ExchangeMap> {
     final sum = _getRate(uuid, double.tryParse(pair[1].text));
     final current = double.tryParse(pair[0].text);
     if (sum != current) {
-      rate[uuid]!.details = sum;
+      if (sum != null) {
+        rate[uuid]!.details = sum;
+      }
       pair[0].text = (sum ?? '').toString();
       pair[0].notifyListeners();
     }

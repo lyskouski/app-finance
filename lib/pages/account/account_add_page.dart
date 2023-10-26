@@ -19,6 +19,7 @@ import 'package:app_finance/widgets/form/month_year_input.dart';
 import 'package:app_finance/widgets/form/simple_input.dart';
 import 'package:app_finance/widgets/wrapper/required_widget.dart';
 import 'package:app_finance/widgets/wrapper/row_widget.dart';
+import 'package:app_finance/widgets/wrapper/single_scroll_wrapper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_currency_picker/flutter_currency_picker.dart';
 
@@ -49,6 +50,7 @@ class AccountAddPage extends AbstractAddPage {
 }
 
 class AccountAddPageState<T extends AccountAddPage> extends AbstractAddPageState<AccountAddPage> {
+  final focus = FocusController();
   late TextEditingController title;
   late TextEditingController description;
   String? type;
@@ -74,9 +76,15 @@ class AccountAddPageState<T extends AccountAddPage> extends AbstractAddPageState
   }
 
   @override
-  String getTitle() {
-    return AppLocale.labels.createAccountHeader;
+  void dispose() {
+    title.dispose();
+    description.dispose();
+    focus.dispose();
+    super.dispose();
   }
+
+  @override
+  String getTitle() => AppLocale.labels.createAccountHeader;
 
   @override
   bool hasFormErrors() {
@@ -109,6 +117,7 @@ class AccountAddPageState<T extends AccountAddPage> extends AbstractAddPageState
     NavigatorState nav = Navigator.of(context);
     return FullSizedButtonWidget(
       constraints: constraints,
+      controller: focus,
       setState: () => triggerActionButton(nav),
       title: getButtonName(),
       icon: Icons.save,
@@ -120,10 +129,9 @@ class AccountAddPageState<T extends AccountAddPage> extends AbstractAddPageState
     final TextTheme textTheme = context.textTheme;
     double indent = ThemeHelper.getIndent(2);
     double width = ThemeHelper.getWidth(context, 6);
-    FocusController.init();
 
-    return SingleChildScrollView(
-      controller: FocusController.getController(runtimeType),
+    return SingleScrollWrapper(
+      controller: focus,
       child: Container(
         margin: EdgeInsets.fromLTRB(indent, indent, indent, 240),
         child: Column(

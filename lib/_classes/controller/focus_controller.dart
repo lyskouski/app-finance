@@ -1,126 +1,106 @@
 // Copyright 2023 The terCAD team. All rights reserved.
 // Use of this source code is governed by a CC BY-NC-ND 4.0 license that can be found in the LICENSE file.
 
+import 'dart:collection';
+import 'dart:math';
+
 import 'package:app_finance/_classes/controller/delayed_call.dart';
 import 'package:flutter/material.dart';
 
 class FocusController {
-  static const DEFAULT = -1;
+  final DelayedCall _scrollTo = DelayedCall(300);
+  final DelayedCall _focus = DelayedCall(300);
+  final _controller = ScrollController();
 
-  static List<FocusNode> nodes = [];
-  static List<dynamic> values = [];
-  static int _idx = DEFAULT;
-  static int focus = DEFAULT;
-  static final Map<Type, ScrollController?> _controller = {};
-  static final Map<int, double> _shift = {};
-  static Type? _activeClass;
-  static final DelayedCall _delay = DelayedCall(600);
+  final scope = <int?, FocusNode>{};
+  final values = <int?, dynamic>{};
+  final order = SplayTreeMap<int, int?>();
+  int? focus;
 
-  static void init() {
-    focus = DEFAULT;
-    values = values.map((e) => null).cast<dynamic>().toList();
-    _shift.clear();
-    _idx = DEFAULT;
+  FocusController();
+
+  ScrollController get controller {
+    order.clear();
+    return _controller;
   }
 
-  static int get current => _idx;
+  int key(dynamic item) => item?.hashCode ?? 0;
 
-  static FocusNode getFocusNode([dynamic value]) {
-    _idx++;
-    if (_idx >= values.length) {
-      values.add(value);
-      nodes.add(FocusNode());
+  FocusNode bind(dynamic item, {required BuildContext context, dynamic value}) {
+    final id = key(item);
+    if (!order.containsValue(id)) {
+      order[order.length] = id;
     }
-    return nodes[_idx];
+    scope[id] ??= FocusNode();
+    values[id] = value;
+    _focus.run(onEditingComplete);
+    return scope[id]!;
   }
 
-  static bool _isControllerActive() {
-    return _controller[_activeClass]?.hasClients ?? false;
-  }
+  bool _isControllerActive() => _controller.hasClients;
 
-  static void recordPosition(BuildContext context, int position) {
+  double _getPosition(BuildContext context) {
     RenderObject? obj = context.findRenderObject();
-    if (obj is RenderBox && _isControllerActive()) {
-      _shift[position] = _controller[_activeClass]!.offset + obj.localToGlobal(Offset.zero).dy;
-    }
+    return obj is RenderBox ? obj.localToGlobal(Offset.zero).dy : 0;
   }
 
-  static ScrollController getController(Type name) {
-    if (_controller[name] != null && _controller[name]!.hasClients) {
-      _controller[name]!.dispose();
-      _controller[name] = null;
-    }
-    _controller[name] ??= ScrollController();
-    _activeClass = name;
-    return _controller[name]!;
-  }
+  double _getMinPosition() => order.values
+      .map((id) => scope[id]?.context)
+      .where((element) => element != null)
+      .map((e) => _getPosition(e!))
+      .reduce(min);
 
-  static bool isLast() {
-    return focus + 1 == nodes.length;
-  }
+  bool _isLast(int? idx) => idx == order[order.lastKey()];
 
-  static TextInputAction getAction() {
-    return isLast() ? TextInputAction.done : TextInputAction.next;
-  }
+  TextInputAction getAction(dynamic item) => _isLast(key(item)) ? TextInputAction.done : TextInputAction.next;
 
-  static void requestFocus() {
-    int idx = focus;
-    if (idx >= 0 && idx < _shift.length - 1) {
-      nodes[idx].requestFocus();
-      _delay.run(() => scrollToFocusedElement(idx));
-    }
-  }
-
-  static void scrollToFocusedElement(int idx) {
-    if (!_isControllerActive()) {
+  void scrollToFocusedElement(dynamic item, [int? idx]) {
+    idx ??= key(item!);
+    if (!_isControllerActive() || scope.isEmpty) {
       return;
     }
-    if (_shift.isNotEmpty) {
-      double lowest = _shift.values.reduce((current, next) => current < next ? current : next);
-      if (_shift[idx] != null) {
-        _controller[_activeClass]?.animateTo(
-          _shift[idx]! - lowest,
-          duration: const Duration(milliseconds: 300),
-          curve: Curves.easeInOut,
-        );
-      }
+    if (order.containsValue(idx) && scope[idx]!.context != null) {
+      _controller.animateTo(
+        _getPosition(scope[idx]!.context!) - _getMinPosition(),
+        duration: const Duration(milliseconds: 600),
+        curve: Curves.easeInOut,
+      );
     }
   }
 
-  static void onEditingComplete(index) {
-    focus = DEFAULT;
-    if (index >= 0) {
-      values.fillRange(0, index + 1, true);
-    }
-    for (int idx = 0; idx < nodes.length; idx++) {
-      if (isFocused(idx, values[idx])) {
-        break;
+  void onEditingComplete([dynamic item]) {
+    int? targetKey = item == null ? focus ?? order.values.firstOrNull : null;
+    final idx = item == null ? null : key(item);
+    order.forEach((_, value) {
+      if (targetKey != null && (values[value] == '' || values[value] == null)) {
+        onFocus(null, value);
+        targetKey = null;
       }
-    }
+      if (value == idx) {
+        targetKey = value;
+      }
+    });
   }
 
-  static void onFocus(idx) {
+  bool isFocused(dynamic item) => key(item) == focus;
+
+  void _blur() => scope.forEach((_, value) => value.unfocus());
+
+  void onFocus(dynamic item, [int? idx]) {
+    idx ??= key(item!);
     focus = idx;
-    requestFocus();
+    _blur();
+    if (order.containsValue(idx) && scope[idx]?.context != null) {
+      scope[idx]!.requestFocus();
+      _scrollTo.run(() => scrollToFocusedElement(item, idx));
+    }
   }
 
-  static bool isFocused(int idx, dynamic value) {
-    bool isFocused = false;
-    if ((value == null || value == '') && idx != DEFAULT && (focus == DEFAULT || focus == idx)) {
-      isFocused = true;
-      onFocus(idx);
-    }
-    return isFocused;
-  }
-
-  static void dispose() {
-    List<FocusNode> nodesCopy = List.of(nodes);
-    for (FocusNode node in nodesCopy) {
-      node.dispose();
-      nodes.remove(node);
-    }
-    values.removeWhere((value) => true);
-    focus = DEFAULT;
-    _idx = DEFAULT;
+  void dispose() {
+    scope.forEach((_, node) => node.dispose());
+    scope.clear();
+    values.clear();
+    _controller.dispose();
+    focus = null;
   }
 }
