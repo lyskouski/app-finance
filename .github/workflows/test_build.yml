@@ -1,0 +1,80 @@
+name: Project Release Artifacts
+
+on:
+  pull_request:
+
+jobs:
+  release:
+    name: Create Release Page
+    runs-on: ubuntu-latest
+    outputs:
+      version: ${{ steps.tag.outputs.name }}
+      build_number: ${{ steps.build_number.outputs.build_number }}
+    steps:
+      - name: Get Tag Name
+        id: tag
+        run: echo "name=3.2.0" >> $GITHUB_OUTPUT
+          
+      - name: Set Build Number
+        id: build_number
+        run: echo "build_number=1149" >> $GITHUB_OUTPUT
+
+  build:
+    name: Create ${{ matrix.target }} build
+    runs-on: ${{ matrix.os }}
+    needs: release
+    strategy:
+      fail-fast: false
+      matrix:
+        target: [LinuxSnap]
+        include:
+          - os: ubuntu-latest
+            target: LinuxSnap
+            build_path: ./
+            asset_extension: .snap
+            asset_content_type: application/gzip
+
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-java@v3
+        with:
+          distribution: 'temurin'
+          java-version: '17'
+          cache: 'gradle'
+      - uses: subosito/flutter-action@v2
+        with:
+          channel: 'stable'
+          cache: true
+      - run: flutter pub get
+
+      - name: Patch PubSpec
+        run: dart run grinder pubspec-update --build-name=${{ needs.release.outputs.version }} --build-number=${{ needs.release.outputs.build_number }}
+
+
+      - name: Install Snapcraft
+        if: matrix.target == 'LinuxSnap'
+        uses: canonical/setup-lxd@v0.1.1
+
+      - name: Build Snap
+        if: matrix.target == 'LinuxSnap'
+        run: |
+          sudo snap install snapcraft --classic
+          snapcraft --verbose
+          cp fingrom_${{ needs.release.outputs.version }}+${{ needs.release.outputs.build_number }}_amd64.snap fingrom_${{ matrix.target }}.snap
+
+      - name: Publish Snap
+        if: matrix.target == 'LinuxSnap'
+        env:
+          SNAPCRAFT_STORE_CREDENTIALS: ${{ secrets.SNAPCRAFT_CREDENTIALS }}
+        run: |
+          sudo --preserve-env=SNAPCRAFT_STORE_CREDENTIALS snapcraft upload fingrom_${{ matrix.target }}.snap --release=latest/stable
+
+
+      - name: Store Tests Artifacts
+        if: always()
+        uses: actions/upload-artifact@v3
+        with:
+          name: build--${{ matrix.os }}
+          path: |
+            /home/runner/.local/state/snapcraft/log
+            fingrom_${{ matrix.target }}.snap
