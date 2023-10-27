@@ -13,6 +13,7 @@ class ExpensesEditTab extends ExpensesTab {
     super.key,
     required this.uuid,
     required super.state,
+    required super.callback,
     String? account,
     String? budget,
     Currency? currency,

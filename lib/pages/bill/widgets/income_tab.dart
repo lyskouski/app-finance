@@ -9,9 +9,11 @@ import 'package:app_finance/_classes/structure/navigation/app_route.dart';
 import 'package:app_finance/_classes/controller/focus_controller.dart';
 import 'package:app_finance/_classes/storage/app_preferences.dart';
 import 'package:app_finance/_classes/storage/app_data.dart';
+import 'package:app_finance/_configs/display_helper.dart';
 import 'package:app_finance/_configs/theme_helper.dart';
 import 'package:app_finance/_ext/build_context_ext.dart';
 import 'package:app_finance/pages/_interface/abstract_page_state.dart';
+import 'package:app_finance/pages/bill/widgets/interface_bill_page_inject.dart';
 import 'package:app_finance/widgets/form/currency_exchange_input.dart';
 import 'package:app_finance/widgets/form/currency_selector.dart';
 import 'package:app_finance/widgets/form/date_time_input.dart';
@@ -33,10 +35,12 @@ class IncomeTab extends StatefulWidget {
   final DateTime? createdAt;
   final AppData state;
   final bool isLeft;
+  final FnBillPageCallback callback;
 
   const IncomeTab({
     super.key,
     required this.state,
+    required this.callback,
     this.account,
     this.description,
     this.currency,
@@ -49,7 +53,7 @@ class IncomeTab extends StatefulWidget {
   IncomeTabState createState() => IncomeTabState();
 }
 
-class IncomeTabState extends AbstractPageState<IncomeTab> {
+class IncomeTabState extends State<IncomeTab> {
   final focus = FocusController();
   String? account;
   Currency? accountCurrency;
@@ -72,6 +76,12 @@ class IncomeTabState extends AbstractPageState<IncomeTab> {
     accountCurrency = widget.state.getByUuid(account ?? '')?.currency;
     exchange = ExchangeController({},
         store: widget.state, targetController: amount, target: currency, source: [accountCurrency]);
+
+    widget.callback((
+      buildButton: buildButton,
+      buttonName: getButtonName(),
+      title: getTitle(),
+    ));
     super.initState();
   }
 
@@ -84,7 +94,6 @@ class IncomeTabState extends AbstractPageState<IncomeTab> {
     super.dispose();
   }
 
-  @override
   String getTitle() => AppLocale.labels.createBillHeader;
 
   bool hasFormErrors() {
@@ -106,10 +115,8 @@ class IncomeTabState extends AbstractPageState<IncomeTab> {
     ));
   }
 
-  @override
   String getButtonName() => AppLocale.labels.createIncomeTooltip;
 
-  @override
   Widget buildButton(BuildContext context, BoxConstraints constraints) {
     NavigatorState nav = Navigator.of(context);
     return FullSizedButtonWidget(
@@ -130,10 +137,10 @@ class IncomeTabState extends AbstractPageState<IncomeTab> {
   }
 
   @override
-  Widget buildContent(BuildContext context, BoxConstraints constraints) {
+  Widget build(BuildContext context) {
     final textTheme = context.textTheme;
     final indent = ThemeHelper.getIndent(2);
-    double width = ThemeHelper.getWidth(context, 6, constraints);
+    double width = DisplayHelper.state().width - indent * 3;
     if (widget.isLeft) {
       width -= AbstractPageState.barHeight;
     }

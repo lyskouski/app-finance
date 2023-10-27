@@ -8,9 +8,11 @@ import 'package:app_finance/_classes/structure/invoice_app_data.dart';
 import 'package:app_finance/_classes/structure/navigation/app_route.dart';
 import 'package:app_finance/_classes/controller/focus_controller.dart';
 import 'package:app_finance/_classes/storage/app_data.dart';
+import 'package:app_finance/_configs/display_helper.dart';
 import 'package:app_finance/_configs/theme_helper.dart';
 import 'package:app_finance/_ext/build_context_ext.dart';
 import 'package:app_finance/pages/_interface/abstract_page_state.dart';
+import 'package:app_finance/pages/bill/widgets/interface_bill_page_inject.dart';
 import 'package:app_finance/widgets/form/currency_exchange_input.dart';
 import 'package:app_finance/widgets/form/date_time_input.dart';
 import 'package:app_finance/widgets/button/full_sized_button_widget.dart';
@@ -33,10 +35,12 @@ class TransferTab extends StatefulWidget {
   final DateTime? createdAt;
   final AppData state;
   final bool isLeft;
+  final FnBillPageCallback callback;
 
   const TransferTab({
     super.key,
     required this.state,
+    required this.callback,
     this.accountFrom,
     this.accountTo,
     this.amount,
@@ -50,7 +54,7 @@ class TransferTab extends StatefulWidget {
   TransferTabState createState() => TransferTabState();
 }
 
-class TransferTabState extends AbstractPageState<TransferTab> {
+class TransferTabState extends State<TransferTab> {
   final focus = FocusController();
   String? accountFrom;
   String? accountTo;
@@ -73,6 +77,12 @@ class TransferTabState extends AbstractPageState<TransferTab> {
     description = TextEditingController(text: widget.description);
     currency = widget.currency ?? Exchange.defaultCurrency;
     exchange = ExchangeController({}, store: widget.state, targetController: amount, target: currency, source: []);
+
+    widget.callback((
+      buildButton: buildButton,
+      buttonName: getButtonName(),
+      title: getTitle(),
+    ));
     super.initState();
   }
 
@@ -90,7 +100,6 @@ class TransferTabState extends AbstractPageState<TransferTab> {
     return hasErrors;
   }
 
-  @override
   String getTitle() => AppLocale.labels.createBillHeader;
 
   void updateStorage() {
@@ -106,10 +115,8 @@ class TransferTabState extends AbstractPageState<TransferTab> {
     ));
   }
 
-  @override
   String getButtonName() => AppLocale.labels.createTransferTooltip;
 
-  @override
   Widget buildButton(BuildContext context, BoxConstraints constraints) {
     final nav = Navigator.of(context);
     return FullSizedButtonWidget(
@@ -130,10 +137,10 @@ class TransferTabState extends AbstractPageState<TransferTab> {
   }
 
   @override
-  Widget buildContent(BuildContext context, BoxConstraints constraints) {
+  Widget build(BuildContext context) {
     final textTheme = context.textTheme;
     final indent = ThemeHelper.getIndent(2);
-    double width = ThemeHelper.getWidth(context, 6, constraints);
+    double width = DisplayHelper.state().width - indent * 3;
     if (widget.isLeft) {
       width -= AbstractPageState.barHeight;
     }

@@ -9,6 +9,9 @@ typedef DisplayHelperState = ({
   bool isBottom,
   bool isWearable,
   bool isRight,
+  bool isLeftBar,
+  double height,
+  double width,
 });
 
 class DisplayHelper {
@@ -17,6 +20,7 @@ class DisplayHelper {
   bool isBottom = false;
   bool isWearable = false;
   bool isRight = false;
+  bool isLeftBar = false;
   double height = 0;
   double width = 0;
 
@@ -30,6 +34,7 @@ class DisplayHelper {
     isBottom = ThemeHelper.isNavBottom(constraints);
     isWearable = ThemeHelper.isWearableMode(context, constraints);
     isRight = !isWearable && ThemeHelper.isNavRight(context, constraints);
+    isLeftBar = ThemeHelper.getHeight(context) < 520;
     height = ThemeHelper.getHeight(context);
     width = ThemeHelper.getWidth(context, 0, constraints);
   }
@@ -39,6 +44,9 @@ class DisplayHelper {
         isBottom: _instance!.isBottom,
         isWearable: _instance!.isWearable,
         isRight: _instance!.isRight,
+        isLeftBar: _instance!.isLeftBar,
+        height: _instance!.height,
+        width: _instance!.width,
       );
 
   static DisplayHelperState getInstance(BuildContext context, BoxConstraints constraints) {
