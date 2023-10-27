@@ -105,7 +105,19 @@ That request might take up to 5 business days to receive the number from D\&B (\
 (and up to 15 days in case of the data inconsistency, as missed address -- 
 \href{https://support.dnb.com/?CUST=APPLEDEV}{https://support.dnb.com/?CUST=APPLEDEV}). 
 
-Then we would need to follow instructions \issue{284}{} from 
+Export to Store already generated \q{key.jks}-signing key with their tool and public key:
+
+\begin{lstlisting}[language=terminal]
+java -jar samsung_pepk.jar --keystore key.jks --alias key \
+  --output samsung_sign.zip \
+  --include-cert \
+  --rsa-aes-encryption \
+  --encryption-key-path=samsung_public_key.pem
+\end{lstlisting}
+
+\noindent Samsung Galaxy Store supports staging as a pre-release verification for a smaller group of invited users.
+
+So, in general, we would need to follow instructions \issue{284}{} from 
 \href{https://developer.samsung.com/galaxy-store/galaxy-store-developer-api.html}{https://developer.samsung.com/galaxy-store/galaxy-store-developer-api.html}.
 Also, we might encounter the error "The registered binaries do not meet the category conditions for Galaxy Specials" 
 after submitting, it's needed to update \q{manifest.xml}-file by adding the appropriate permission:
@@ -113,6 +125,7 @@ after submitting, it's needed to update \q{manifest.xml}-file by adding the appr
 \begin{lstlisting}[language=xml]
 <uses-permission android:name="com.samsung.android.providers.context.permission.WRITE_USE_APP_FEATURE_SURVEY"/>
 \end{lstlisting}
+
 
 \subsubsection{Huawei Gallery}
 
