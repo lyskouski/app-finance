@@ -9,34 +9,20 @@
 
 **Fingrom** -- Open-source cross-platform financial accounting application. Use for free without Ads and limitations.
 
-[!] **Release to Marketplaces is scheduled for November 1st.**
+[!] **Release to Marketplaces is scheduled for November 1st** __(but may be slightly changed since a longer review process for Windows)__
 
-#### Web App 
-- https://lyskouski.github.io/app-finance/
+| Type                     | Alpha Version         | Pre-Release                   | Release                       |
+| ------------------------ | ----------------------| ----------------------------- | ----------------------------- |
+| ![Apple](https://github.com/lyskouski/app-finance/blob/main/docs/mockups/icons/apple.png) iOS (Apple Store)        | [fingrom_iOS.ipa](https://github.com/lyskouski/app-finance/releases/latest) | [TestFlight: Fingrom](https://testflight.apple.com/join/93ECy9ZB) | _(postponed availability)_ |
+| ![Apple](https://github.com/lyskouski/app-finance/blob/main/docs/mockups/icons/apple.png) macOS (Apple Store)      | [fingrom_macOS.zip](https://github.com/lyskouski/app-finance/releases/latest) | Not available for testing | _(postponed availability)_ |
+| ![Android](https://github.com/lyskouski/app-finance/blob/main/docs/mockups/icons/android.png) Android (Google Play)    | [fingrom_Android.aab](https://github.com/lyskouski/app-finance/releases/latest) | [[on hold]](https://github.com/lyskouski/app-finance/issues/129) | [[on hold]](https://github.com/lyskouski/app-finance/issues/129) |
+| ![Android](https://github.com/lyskouski/app-finance/blob/main/docs/mockups/icons/android.png) Android (Galaxy Store)   | [fingrom_Android.aab](https://github.com/lyskouski/app-finance/releases/latest) | [[in progress]](https://github.com/lyskouski/app-finance/issues/284) | [[in progress]](https://github.com/lyskouski/app-finance/issues/284) |
+| ![Android](https://github.com/lyskouski/app-finance/blob/main/docs/mockups/icons/android.png) Android (Huawei Gallery) | [fingrom_Android.aab](https://github.com/lyskouski/app-finance/releases/latest) | ? | _(postponed availability)_ |
+| ![Linux](https://github.com/lyskouski/app-finance/blob/main/docs/mockups/icons/linux.png) Linux (Snap Store)       | [fingrom_LinuxSnap.snap](https://github.com/lyskouski/app-finance/releases/latest) | [![Fingrom](https://snapcraft.io/fingrom/badge.svg)](https://snapcraft.io/fingrom) | [![Fingrom](https://snapcraft.io/fingrom/badge.svg)](https://snapcraft.io/fingrom) |
+| ![Linux](https://github.com/lyskouski/app-finance/blob/main/docs/mockups/icons/linux.png) Linux (Flathub)          | [[pending]](https://github.com/lyskouski/app-finance/issues/350) | [[pending]](https://github.com/lyskouski/app-finance/issues/350) | [[pending]](https://github.com/lyskouski/app-finance/issues/350) |
+| ![Windows](https://github.com/lyskouski/app-finance/blob/main/docs/mockups/icons/windows.png) Windows (Partner Center) | [fingrom_Windows.zip](https://github.com/lyskouski/app-finance/releases/latest) | [App Center: Fingrom](https://appcenter.ms/orgs/terCAD/apps/Fingrom) | _(postponed availability)_ |
+| ![Web Browsers](https://github.com/lyskouski/app-finance/blob/main/docs/mockups/icons/web.png) Web                      | [Fingrom](https://lyskouski.github.io/app-finance/) | [pending] | _(postponed availability)_ |
 
-#### Desktop Apps
-- **Macos**:
-  - Apple Store: _(released, postponed availability)_
-  - [Release](https://github.com/lyskouski/app-finance/releases/latest)/fingrom_macOS.zip
-- **Linux**:
-  - Snap Store: [![fingrom](https://snapcraft.io/fingrom/badge.svg)](https://snapcraft.io/fingrom)
-  - Flathub: [[pending]](https://github.com/lyskouski/app-finance/issues/350)
-  - [Release](https://github.com/lyskouski/app-finance/releases/latest)/fingrom_Linux.tar.gz
-- **Windows**: 
-  - Windows Apps: _(released, postponed availability)_
-  - [App Center](https://appcenter.ms/): [**early access**](https://appcenter.ms/orgs/terCAD/apps/Fingrom)
-  - [Release](https://github.com/lyskouski/app-finance/releases/latest)/fingrom_Windows.zip
-
-#### Mobile Apps
-- **iOS**
-  - Apple Store: _(released, postponed availability)_
-  - [TestFlight](https://developer.apple.com/testflight/): [**early access**](https://testflight.apple.com/join/93ECy9ZB)
-  - [Release](https://github.com/lyskouski/app-finance/releases/latest)/fingrom_iOS.ipa
-- **Android**
-  - Google Play: [[on hold]](https://github.com/lyskouski/app-finance/issues/129)
-  - Galaxy Store: [[on hold]](https://github.com/lyskouski/app-finance/issues/284)
-  - Huawei Gallery: _(released, postponed availability)_
-  - [Release](https://github.com/lyskouski/app-finance/releases/latest)/fingrom_Android.aab
 
 ## Functionality
 - Accounting (Account Type, Currency/Cryptocurrency)
