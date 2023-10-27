@@ -4,7 +4,7 @@
 import 'package:app_finance/_configs/custom_color_scheme.dart';
 import 'package:app_finance/_configs/custom_text_theme.dart';
 import 'package:app_finance/_ext/build_context_ext.dart';
-import 'package:app_finance/widgets/form/abstract_input.dart';
+import 'package:app_finance/widgets/wrapper/focus_wrapper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
@@ -13,7 +13,7 @@ abstract class SimpleInputFormatter {
   static get filterInt => FilteringTextInputFormatter.allow(RegExp(r'\d+'));
 }
 
-class SimpleInput extends AbstractInput {
+class SimpleInput extends StatelessWidget {
   final Function? setState;
   final String? tooltip;
   final TextInputType type;
@@ -31,15 +31,16 @@ class SimpleInput extends AbstractInput {
     this.type = TextInputType.text,
     this.obscure = false,
     this.withLabel = false,
-  }) : super(value: controller.text) {
+  }) {
     if (setState != null) {
       controller.addListener(() => setState!(controller.text));
     }
   }
 
   @override
-  Widget buildContent(BuildContext context) {
+  Widget build(BuildContext context) {
     final textTheme = context.textTheme;
+    final focusController = FocusWrapper.of(context)!;
     return TextFormField(
       controller: controller,
       inputFormatters: formatter,
@@ -48,11 +49,11 @@ class SimpleInput extends AbstractInput {
       obscureText: obscure,
       obscuringCharacter: '*',
       keyboardType: type,
-      focusNode: focus,
-      textInputAction: focusController!.getAction(this),
-      onTap: () => focusController!.onFocus(this),
-      onEditingComplete: () => focusController!.onEditingComplete(this),
-      autofocus: focusController!.isFocused(this),
+      focusNode: focusController.bind(this, context: context, value: controller.text),
+      textInputAction: focusController.getAction(this),
+      onTap: () => focusController.onFocus(this),
+      onEditingComplete: () => focusController.onEditingComplete(this),
+      autofocus: focusController.isFocused(this),
       decoration: InputDecoration(
         filled: true,
         border: InputBorder.none,

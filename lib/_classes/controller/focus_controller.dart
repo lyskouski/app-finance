@@ -71,6 +71,7 @@ class FocusController {
   void onEditingComplete([dynamic item]) {
     int? targetKey = item == null ? focus ?? order.values.firstOrNull : null;
     final idx = item == null ? null : key(item);
+    values[idx] = true;
     order.forEach((_, value) {
       if (targetKey != null && (values[value] == '' || values[value] == null)) {
         onFocus(null, value);

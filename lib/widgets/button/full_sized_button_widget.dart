@@ -4,14 +4,13 @@
 import 'package:app_finance/_classes/controller/focus_controller.dart';
 import 'package:app_finance/_configs/theme_helper.dart';
 import 'package:app_finance/_ext/build_context_ext.dart';
-import 'package:app_finance/widgets/form/abstract_input.dart';
 import 'package:app_finance/widgets/wrapper/text_wrapper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/semantics.dart';
 
 typedef OnPressedFunction = void Function();
 
-class FullSizedButtonWidget extends AbstractInput {
+class FullSizedButtonWidget extends StatelessWidget {
   final OnPressedFunction setState;
   final String title;
   final IconData icon;
@@ -26,12 +25,10 @@ class FullSizedButtonWidget extends AbstractInput {
     required this.icon,
     this.constraints,
     this.controller,
-  }) : super(value: null) {
-    heroTag = 'fz_button_${UniqueKey()}';
-  }
+  }) : heroTag = 'fz_button_${UniqueKey()}';
 
   @override
-  Widget buildContent(BuildContext context) {
+  Widget build(BuildContext context) {
     final isBottom = constraints != null ? ThemeHelper.isNavBottom(constraints!) : false;
     final bool isKeyboardVisible = ThemeHelper.isKeyboardVisible(context) || isBottom;
     final colorScheme = context.colorScheme;
