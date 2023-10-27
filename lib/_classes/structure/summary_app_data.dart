@@ -17,6 +17,8 @@ class SummaryAppData {
     this.list = list;
   }
 
+  SplayTreeMap<double, String> get origin => _scope;
+
   List<String> get list => _scope.values.toList().reversed.toList();
 
   List<String> get listActual => _actual.values.toList().reversed.toList();
