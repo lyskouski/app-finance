@@ -3,23 +3,40 @@
 
 import 'dart:collection';
 
-abstract interface class InterfaceIterator<T, K> {
+abstract interface class InterfaceIterator<T extends num, K, M> {
   void reset();
-  K? get next;
+  bool get isFirst;
+  bool get isFinished;
+  bool get isEmpty;
+  M? get next;
   void jumpTo(T key);
-  Iterable<K?> loop();
-  List<K> chunk(int length);
+  Iterable<M?> loop();
+  List<M> chunk(int length);
 }
 
-class IteratorController<T, K> implements InterfaceIterator<T, K> {
+class IteratorController<T extends num, K, M> implements InterfaceIterator<T, K, M> {
   SplayTreeMap<T, K> data;
+  T? boundary;
+  Function? filter;
   late List<T> keys = data.keys.toList();
   int pointer = 0;
+  // ignore: prefer_final_fields
+  int _pointer = 0;
+  Function transform;
 
-  IteratorController(this.data);
+  IteratorController(this.data, {required this.transform, this.boundary, this.filter});
 
   @override
   void reset() => pointer = 0;
+
+  @override
+  bool get isEmpty => data.isEmpty;
+
+  @override
+  bool get isFirst => _pointer == pointer;
+
+  @override
+  bool get isFinished => keys.length == pointer;
 
   @override
   void jumpTo(T key) {
@@ -28,31 +45,42 @@ class IteratorController<T, K> implements InterfaceIterator<T, K> {
   }
 
   @override
-  Iterable<K?> loop() sync* {
+  Iterable<M?> loop() sync* {
     while (pointer < keys.length) {
       final index = keys.elementAt(pointer++);
-      yield data[index];
+      if (boundary != null && boundary! < index) {
+        break;
+      }
+      M? value = transform(data[index] ?? '');
+      if (filter?.call(value) == true) {
+        continue;
+      }
+      yield value;
     }
   }
 
   @override
-  K? get next {
+  M? get next {
     final iterator = loop().iterator;
-    return iterator.moveNext() ? iterator.current as K : null;
+    return iterator.moveNext() ? iterator.current as M : null;
   }
 
   @override
-  List<K> chunk(int length) {
+  List<M> chunk(int length) {
     final result = List.generate(length, (_) => next);
     result.removeWhere((e) => e == null);
-    return result.cast<K>();
+    return result.cast<M>();
   }
 }
 
-class IteratorReverseController<T, K> extends IteratorController<T, K> {
-  IteratorReverseController(super.data) {
+class IteratorReverseController<T extends num, K, M> extends IteratorController<T, K, M> {
+  IteratorReverseController(super.data, {required super.transform, super.boundary, super.filter}) {
     pointer = data.keys.length - 1;
+    _pointer = pointer;
   }
+
+  @override
+  bool get isFinished => pointer < 0;
 
   @override
   void reset() => data.keys.length - 1;
@@ -64,10 +92,17 @@ class IteratorReverseController<T, K> extends IteratorController<T, K> {
   }
 
   @override
-  Iterable<K?> loop() sync* {
+  Iterable<M?> loop() sync* {
     while (pointer >= 0) {
       final index = keys.elementAt(pointer--);
-      yield data[index];
+      if (boundary != null && boundary! > index) {
+        break;
+      }
+      M? value = transform(data[index] ?? '');
+      if (filter?.call(value) == true) {
+        continue;
+      }
+      yield value;
     }
   }
 }

@@ -15,6 +15,9 @@ enum AppEvents {
   zoomReset,
   tipDrawer,
   newBill,
+  edit,
+  delete,
+  back,
 }
 
 class InputControllerWrapper extends StatefulWidget {
@@ -68,6 +71,13 @@ class InputControllerWrapperState extends State<InputControllerWrapper> {
       case AppEvents.newBill:
         Navigator.of(context).pushNamed(AppRoute.billAddRoute);
         break;
+      case AppEvents.back:
+        Navigator.of(context).pop();
+        break;
+      case AppEvents.edit:
+      case AppEvents.delete:
+        // TBD: FocusScope.of(context).focusedChild);
+        break;
     }
   }
 
@@ -85,6 +95,15 @@ class InputControllerWrapperState extends State<InputControllerWrapper> {
         }
         if (event.isKeyPressed(LogicalKeyboardKey.keyN)) {
           return handleEvent(AppEvents.newBill);
+        }
+        if (event.isKeyPressed(LogicalKeyboardKey.keyE)) {
+          return handleEvent(AppEvents.edit);
+        }
+        if (event.isKeyPressed(LogicalKeyboardKey.keyD)) {
+          return handleEvent(AppEvents.delete);
+        }
+        if (event.isKeyPressed(LogicalKeyboardKey.backspace)) {
+          return handleEvent(AppEvents.back);
         }
       } else if (event.isShiftPressed) {
         if (event.isKeyPressed(LogicalKeyboardKey.enter)) {

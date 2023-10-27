@@ -36,6 +36,7 @@ enum AppDataType {
 typedef AppDataGetter = ({
   List<dynamic> list,
   double total,
+  InterfaceIterator stream,
 });
 
 class AppData extends ChangeNotifier {
@@ -241,6 +242,7 @@ class AppData extends ChangeNotifier {
     return (
       list: getList(property),
       total: getTotal(property),
+      stream: getStream<InterfaceAppData>(property),
     );
   }
 
@@ -251,8 +253,9 @@ class AppData extends ChangeNotifier {
         .toList();
   }
 
-  InterfaceIterator getStream<T extends InterfaceAppData>(AppDataType property, {bool inverse = true}) =>
-      _data[property]!.origin.toStream(inverse);
+  InterfaceIterator getStream<T extends InterfaceAppData>(AppDataType property,
+          {bool inverse = true, double? boundary, Function? filter}) =>
+      _data[property]!.origin.toStream(inverse, transform: getByUuid, boundary: boundary, filter: filter);
 
   List<dynamic> getActualList(AppDataType property, [bool isClone = true]) {
     return (_data[property]?.listActual ?? [])

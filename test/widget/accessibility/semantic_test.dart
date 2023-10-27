@@ -23,6 +23,7 @@ void main() {
     );
     final semantics = tester.getSemantics(widget);
     expect(semantics.attributedHint.string, "Open Accounts\nButton");
+    ScreenCapture.seize('AccessibilitySemantics');
 
     final owner = tester.binding.pipelineOwner.semanticsOwner;
     owner!.performAction(semantics.id, SemanticsAction.didGainAccessibilityFocus);

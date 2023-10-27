@@ -5,7 +5,9 @@ import 'dart:collection';
 
 import 'package:app_finance/_classes/controller/iterator_controller.dart';
 
-extension TreeExt<T, K> on SplayTreeMap<T, K> {
-  InterfaceIterator<T, K> toStream(bool inverse) =>
-      inverse ? IteratorReverseController<T, K>(this) : IteratorController<T, K>(this);
+extension TreeExt<T extends num, K> on SplayTreeMap<T, K> {
+  InterfaceIterator<T, K, M> toStream<M>(bool inverse, {required Function transform, T? boundary, Function? filter}) =>
+      inverse
+          ? IteratorReverseController<T, K, M>(this, transform: transform, boundary: boundary, filter: filter)
+          : IteratorController<T, K, M>(this, transform: transform, boundary: boundary, filter: filter);
 }

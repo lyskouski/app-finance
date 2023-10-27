@@ -1,6 +1,8 @@
 // Copyright 2023 The terCAD team. All rights reserved.
 // Use of this source code is governed by a CC BY-NC-ND 4.0 license that can be found in the LICENSE file.
 
+import 'package:app_finance/_classes/controller/iterator_controller.dart';
+import 'package:app_finance/_classes/storage/app_data.dart';
 import 'package:app_finance/_classes/storage/app_preferences.dart';
 import 'package:app_finance/_configs/custom_text_theme.dart';
 import 'package:app_finance/_configs/theme_helper.dart';
@@ -18,7 +20,7 @@ class BaseWidget extends StatelessWidget {
   final String title;
   final double width;
   final int? limit;
-  final dynamic state;
+  final AppDataGetter state;
   final String? tooltip;
   final String? route;
   final String routeList;
@@ -91,7 +93,7 @@ class BaseWidget extends StatelessWidget {
           Text(title),
           ThemeHelper.hIndent,
           Text(
-            (state.total as double).toCurrency(withPattern: false),
+            state.total.toCurrency(withPattern: false),
             style: context.textTheme.numberMedium,
           ),
         ],
@@ -105,7 +107,7 @@ class BaseWidget extends StatelessWidget {
       child: BaseHeaderWidget(
         route: route,
         width: width,
-        state: state,
+        total: state.total,
         title: title,
         tooltip: tooltip,
         hasExpand: hasExpand,
@@ -125,7 +127,7 @@ class BaseWidget extends StatelessWidget {
             BaseHeaderWidget(
               route: route,
               width: width,
-              state: state,
+              total: state.total,
               title: title,
               tooltip: tooltip,
               hasExpand: hasExpand,
@@ -143,7 +145,7 @@ class BaseWidget extends StatelessWidget {
                       buildListWidget: buildListWidget,
                     )
                   : BaseListInfiniteWidget(
-                      state: state.list,
+                      stream: state.stream as IteratorReverseController,
                       width: width,
                       buildListWidget: buildListWidget,
                     ),
