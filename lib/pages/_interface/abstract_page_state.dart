@@ -5,6 +5,7 @@ import 'package:app_finance/_classes/herald/app_locale.dart';
 import 'package:app_finance/_classes/herald/app_zoom.dart';
 import 'package:app_finance/_classes/structure/navigation/app_menu.dart';
 import 'package:app_finance/_classes/storage/app_data.dart';
+import 'package:app_finance/_configs/display_helper.dart';
 import 'package:app_finance/_configs/theme_helper.dart';
 import 'package:app_finance/_ext/build_context_ext.dart';
 import 'package:app_finance/pages/_interface/widgets/menu_widget.dart';
@@ -263,68 +264,68 @@ abstract class AbstractPageState<T extends StatefulWidget> extends State<T> {
   @override
   Widget build(BuildContext context) {
     final scale = context.watch<AppZoom>().value;
-    return Consumer<AppData>(builder: (context, appState, _) {
-      state = appState;
-      return LayoutBuilder(builder: (context, constraints) {
-        final isWide = ThemeHelper.isWideScreen(constraints);
-        final isBottom = ThemeHelper.isNavBottom(constraints);
-        final isWearable = ThemeHelper.isWearableMode(context, constraints);
-        final isRight = !isWearable && ThemeHelper.isNavRight(context, constraints);
-        final hasShift = isBottom && !isWearable && !isRight;
-        final height = constraints.maxHeight / scale - (hasShift ? barHeight + ThemeHelper.getIndent() : 0);
-        double width = constraints.maxWidth / scale;
-        Widget? rightBar;
-        if (isRight && !isWearable) {
-          rightBar = buildRightBar(context, constraints);
-          if (rightBar != null) {
-            width -= barHeight;
+    return Scaffold(
+      resizeToAvoidBottomInset: true,
+      body: Consumer<AppData>(builder: (context, appState, _) {
+        state = appState;
+        return LayoutBuilder(builder: (context, constraints) {
+          final display = DisplayHelper.getInstance(context, constraints);
+          final hasShift = display.isBottom && !display.isWearable && !display.isRight;
+          final height = constraints.maxHeight / scale - (hasShift ? barHeight + ThemeHelper.getIndent() : 0);
+          double width = constraints.maxWidth / scale;
+          Widget? rightBar;
+          if (display.isRight && !display.isWearable) {
+            rightBar = buildRightBar(context, constraints);
+            if (rightBar != null) {
+              width -= barHeight;
+            }
+          } else if (display.isWide) {
+            width -= menuWidth;
           }
-        } else if (isWide) {
-          width -= menuWidth;
-        }
-        final dx = (constraints.maxWidth - constraints.maxWidth / scale) / 2;
-        final dy = (constraints.maxHeight - constraints.maxHeight / scale) / 2;
-        return Scaffold(
-          appBar: isBottom ? null : buildBar(context, constraints),
-          bottomNavigationBar: isBottom ? buildBottomBar(context, constraints) : null,
-          drawer: buildDrawer(),
-          body: SafeArea(
-            child: InputControllerWrapper(
-              child: Stack(
-                children: [
-                  if (isWide)
+          final dx = (constraints.maxWidth - constraints.maxWidth / scale) / 2;
+          final dy = (constraints.maxHeight - constraints.maxHeight / scale) / 2;
+          return Scaffold(
+            appBar: display.isBottom ? null : buildBar(context, constraints),
+            bottomNavigationBar: display.isBottom ? buildBottomBar(context, constraints) : null,
+            drawer: buildDrawer(),
+            floatingActionButtonLocation: hasShift ? FloatingActionButtonLocation.centerDocked : null,
+            floatingActionButton: buildButton(context, constraints),
+            body: SafeArea(
+              child: InputControllerWrapper(
+                child: Stack(
+                  children: [
+                    if (display.isWide)
+                      Container(
+                        color: context.colorScheme.inversePrimary.withOpacity(0.2),
+                        width: menuWidth,
+                        height: double.infinity,
+                        child: buildNavigation(),
+                      ),
                     Container(
-                      color: context.colorScheme.inversePrimary.withOpacity(0.2),
-                      width: menuWidth,
-                      height: double.infinity,
-                      child: buildNavigation(),
-                    ),
-                  Container(
-                    margin: isWide ? const EdgeInsets.only(left: menuWidth) : EdgeInsets.zero,
-                    child: OverflowBox(
-                      alignment: Alignment.topLeft,
-                      minWidth: width,
-                      maxWidth: width,
-                      minHeight: height,
-                      maxHeight: height,
-                      child: Transform.translate(
-                        offset: Offset(dx, dy),
-                        child: Transform.scale(
-                          scale: scale,
-                          child: buildContent(context, constraints),
+                      margin: display.isWide ? const EdgeInsets.only(left: menuWidth) : EdgeInsets.zero,
+                      child: OverflowBox(
+                        alignment: Alignment.topLeft,
+                        minWidth: width,
+                        maxWidth: width,
+                        minHeight: height,
+                        maxHeight: height,
+                        child: Transform.translate(
+                          offset: Offset(dx, dy),
+                          child: Transform.scale(
+                            scale: scale,
+                            child: buildContent(context, constraints),
+                          ),
                         ),
                       ),
                     ),
-                  ),
-                  if (rightBar != null) rightBar,
-                ],
+                    if (rightBar != null) rightBar,
+                  ],
+                ),
               ),
             ),
-          ),
-          floatingActionButtonLocation: hasShift ? FloatingActionButtonLocation.centerDocked : null,
-          floatingActionButton: buildButton(context, constraints),
-        );
-      });
-    });
+          );
+        });
+      }),
+    );
   }
 }
