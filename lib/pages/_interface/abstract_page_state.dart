@@ -290,6 +290,7 @@ abstract class AbstractPageState<T extends StatefulWidget> extends State<T> {
             drawer: buildDrawer(),
             floatingActionButtonLocation: hasShift ? FloatingActionButtonLocation.centerDocked : null,
             floatingActionButton: buildButton(context, constraints),
+            resizeToAvoidBottomInset: true,
             body: SafeArea(
               child: InputControllerWrapper(
                 child: Stack(
