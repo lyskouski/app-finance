@@ -14,7 +14,7 @@ class ListBudgetSelectorItem extends ListAccountSelectorItem {
 }
 
 class ListBudgetSelector extends ListAccountSelector<ListBudgetSelectorItem> {
-  ListBudgetSelector({
+  const ListBudgetSelector({
     super.key,
     required super.state,
     required super.setState,

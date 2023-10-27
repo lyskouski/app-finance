@@ -27,7 +27,7 @@ class ListAccountSelector<K extends ListAccountSelectorItem> extends ListSelecto
   final AppData state;
   final double width;
 
-  ListAccountSelector({
+  const ListAccountSelector({
     super.key,
     required this.state,
     required super.setState,
@@ -76,7 +76,7 @@ class ListAccountSelectorState<K extends ListAccountSelectorItem> extends ListSe
       color: item.item?.color ?? Colors.transparent,
       icon: item.item?.icon ?? Icons.radio_button_unchecked_sharp,
       hidden: item.item?.hidden ?? false,
-      width: widget.width - 34,
+      width: widget.width - 40,
       showDivider: false,
     );
   }
