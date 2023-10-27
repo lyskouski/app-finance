@@ -23,6 +23,7 @@ class DisplayHelper {
   bool isLeftBar = false;
   double height = 0;
   double width = 0;
+  double originWidth = 0;
 
   @protected
   DisplayHelper(BuildContext context, BoxConstraints constraints) {
@@ -36,6 +37,7 @@ class DisplayHelper {
     isRight = !isWearable && ThemeHelper.isNavRight(context, constraints);
     isLeftBar = ThemeHelper.getHeight(context) < 520;
     height = ThemeHelper.getHeight(context);
+    originWidth = ThemeHelper.getWidth(context);
     width = ThemeHelper.getWidth(context, 0, constraints);
   }
 
@@ -52,7 +54,7 @@ class DisplayHelper {
   static DisplayHelperState getInstance(BuildContext context, BoxConstraints constraints) {
     _instance ??= DisplayHelper(context, constraints);
     if (_instance!.height != ThemeHelper.getHeight(context) &&
-        _instance!.width != ThemeHelper.getWidth(context, 0, constraints)) {
+        _instance!.originWidth != ThemeHelper.getWidth(context)) {
       _instance!.init(context, constraints);
     }
     return state();
