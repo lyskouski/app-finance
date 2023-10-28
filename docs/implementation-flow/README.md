@@ -29,7 +29,7 @@ This book is diving deep into the core mechanisms of Flutter to implement a plat
 2. Run command (from current directory):
   - PDF: `pdflatex -halt-on-error -aux-directory=build -output-directory=build index.tex` 
   - EPUB: `pandoc --from=latex index.tex --to=epub -o index.epub`
-    - https://github.com/lyskouski/cli-tex2epub
+    - https://gist.github.com/lyskouski/9cc9abbc2dbf1589af4f26133a517d4c
   - MOBI: `tex4ebook -f mobi -l -r 640 index.tex`
   - TXT: `pdftotext -enc ASCII7 -nopgbrk -layout index.pdf`
   - HTML: `mk4ht htlatex index.tex "html,mathplayer,info"`
