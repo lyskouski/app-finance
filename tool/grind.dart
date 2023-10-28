@@ -48,5 +48,5 @@ sortTranslations() => l.sortTranslations();
 @Task('Export Translations\n    To limit the scope use: --filter={language}\n    Sample: --filter="en|be"')
 exportTranslations() => l.exportTranslations();
 
-@Task('Import Translations')
+@Task('Import Translations\n    Required: --file="{path}"')
 importTranslations() => l.importTranslations();

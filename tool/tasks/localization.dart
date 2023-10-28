@@ -20,5 +20,11 @@ exportTranslations() {
 }
 
 importTranslations() {
-  log('TBD: Localized files generated successfully');
+  TaskArgs args = context.invocation.arguments;
+  String? path = args.getOption('file');
+  if (path == null) {
+    log('Error: `--file` argument is missing');
+    return;
+  }
+  locale.csv2arb('./lib/l10n', path);
 }

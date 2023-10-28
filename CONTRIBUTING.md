@@ -30,7 +30,7 @@ Localization
 -----------------------
 
 Native speakers (and translators) are welcomed to improve our translations since most of them 
-are done by automation tools.
+are done by automation tools. Check [Localization Details](./lib/l10n/README.md).
 
 Outreach
 -----------------------
