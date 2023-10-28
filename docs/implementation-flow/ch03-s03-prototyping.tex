@@ -82,7 +82,7 @@ That helps us to dynamically calculate and assign the maximum height to the nest
 available space within their parent widget. And... that leads to our first error: 
 
 \begin{lstlisting}[language=terminal]
-The following assertion was thrown during performLayout\(\):\\
+The following assertion was thrown during performLayout():
   BoxConstraints forces an infinite width.
 
   RenderFlex children have non-zero flex but incoming width 
@@ -257,7 +257,7 @@ class BaseWidget extends StatelessWidget {
 // ... closing brackets
 \end{lstlisting}
 
-\noindent As it might be noticed, that we've injected our data into components. This helps to concentrate on design 
+\noindent As it might be noticed, we've injected our data into components. This helps to concentrate on design 
 aspects (\cref{img:prototype}) rather than getting bogged down (by formulating) in an unfamiliar data structure. 
 However, preserving the data injection per each component could also be counterproductive, as it would necessitate 
 extra efforts to cleanup the components later. That's why we should separate representation and data layers on the 
@@ -600,7 +600,7 @@ basic inputs as \q{TextFormField} (for input), \q{DropdownButton} / \q{DropdownM
 selector), \q{Switch} (toggler), and others. Additionally, it can be used Package Manager (\q{pub}) to apply additional
 components, as \q{Icon}-picker (\q{flutter\_iconpicker}-package), \q{Color}-selector (\q{flutter\_colorpicker}-package),
 and others. However, after combining dozens of different widgets from various libraries, we might encounter a stylistic 
-inconsistency between these widgets (term, "UX Hell") and end up having to make compromises or even remove some of them
+inconsistency between these widgets (term, "UX Hell") and end up having to make compromises or even replace some of them
 by the original components afterwards (\issue{149}{}, \issue{200}{}, \issue{204}{}, \issue{207}{}, \issue{329}{}).
 
 That's why it's important to highlight that all the inputs (we've used on the form) have been encapsulated within 
@@ -612,7 +612,7 @@ with various databases. By abstracting the underlying complexities of different 
 streamline the process of database access and data manipulation, making it easier for developers to work with diverse 
 database platforms in a generalized manner.}.
 
-When starting with a basic input field, it's essential to ensure that the input matches our expectations, such as 
+By starting with a basic input field, it's essential to ensure that the input matches our expectations, such as 
 expecting numbers for numeric fields. To prevent users from typing anything outside the defined \q{TextInputType}, 
 we should create a custom \q{TextInputFormatter} and attach it to the \q{inputFormatters}-property:
 
