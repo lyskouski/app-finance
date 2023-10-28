@@ -4,7 +4,6 @@
 import 'package:grinder/grinder.dart';
 import '../_classes/localization.dart' as locale;
 
-@Task('Update Translations by sorting values alphabetically')
 sortTranslations() {
   TaskArgs args = context.invocation.arguments;
   bool isQuiet = args.getFlag('quiet');
@@ -15,7 +14,9 @@ sortTranslations() {
 }
 
 exportTranslations() {
-  log('TBD: Messages extracted successfully');
+  TaskArgs args = context.invocation.arguments;
+  String? filter = args.getOption('filter');
+  locale.arb2csv('./lib/l10n', filter != null ? RegExp(filter) : null);
 }
 
 importTranslations() {

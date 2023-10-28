@@ -4,6 +4,43 @@
 import 'dart:convert';
 import 'dart:io';
 import 'package:grinder/grinder.dart';
+import 'package:yaml/yaml.dart';
+import 'package:csv/csv.dart';
+
+void arb2csv(String path, RegExp? filter) {
+  final arbDir = Directory(path);
+  if (!arbDir.existsSync()) {
+    log('Error: Directory not found');
+    return;
+  }
+  List<List<String>> data = [
+    ['key']
+  ];
+  for (var file in arbDir.listSync()) {
+    if (file is File && file.path.endsWith('.arb') && (filter == null || file.path.contains(filter))) {
+      log('- ${file.path}');
+      final regex = RegExp(r'app_(.*?)\.arb');
+      data[0].add(regex.firstMatch(file.path)!.group(1).toString());
+      int i = 1;
+      final scope = loadYaml(file.readAsStringSync()) as Map;
+      for (var pair in scope.entries) {
+        if (pair.key.toString().contains('@')) {
+          continue;
+        }
+        if (data.length <= i) {
+          data.add([pair.key]);
+        }
+        data[i].add(pair.value);
+        i++;
+      }
+    }
+  }
+  ProcessResult hash = Process.runSync('git', ['log', '-n', '1', '--pretty=format:"%H"'], runInShell: true);
+  final csvPath = 'localization_${hash.stdout.toString().replaceAll('"', '')}.csv';
+  final csv = File('./$csvPath');
+  csv.writeAsStringSync(const ListToCsvConverter().convert(data));
+  log('Done, `$csvPath`!');
+}
 
 bool sortArbKeys(String path) {
   log('Checking $path');

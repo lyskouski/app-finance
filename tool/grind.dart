@@ -45,7 +45,7 @@ pubspecUpdate() => r.pubspecUpdate();
 @Task('Update Translations by sorting values alphabetically')
 sortTranslations() => l.sortTranslations();
 
-@Task('Export Translations')
+@Task('Export Translations\n    To limit the scope use: --filter={language}\n    Sample: --filter="en|be"')
 exportTranslations() => l.exportTranslations();
 
 @Task('Import Translations')
