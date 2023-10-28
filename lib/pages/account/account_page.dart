@@ -25,13 +25,14 @@ class AccountPage extends StatefulWidget {
 class AccountPageState extends AbstractPageState<AccountPage> {
   late AppDataGetter items;
 
-  dynamic _getItems() {
+  AppDataGetter _getItems() {
     if (widget.search != null) {
       final scope = state.getList(AppDataType.accounts).where((e) => e.title.toString().startsWith(widget.search!));
       final ex = Exchange(store: super.state);
       return (
         total: scope.fold(0.0, (v, e) => v + ex.reform(e.details, e.currency, ex.getDefaultCurrency())),
-        list: scope.toList()
+        list: scope.toList(),
+        stream: state.getStream(AppDataType.accounts, filter: (e) => !e.title.toString().startsWith(widget.search!))
       );
     }
     return state.get(AppDataType.accounts);

@@ -43,7 +43,7 @@ class BaseGroupWidget extends StatelessWidget {
         ['${AppLocale.labels.title}: "${item.title}"\n', '${AppLocale.labels.details}: ${item.detailsFormatted}']);
     return TapWidget(
       tooltip: tooltip.toString(),
-      route: RouteSettings(name: route, arguments: {routeArguments.uuid: item.uuid}),
+      route: RouteSettings(name: '$route/view', arguments: {routeArguments.uuid: item.uuid}),
       child: toSwap
           ? Column(
               children: [
@@ -84,7 +84,7 @@ class BaseGroupWidget extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         TapWidget(
-          route: RouteSettings(name: route, arguments: {routeArguments.search: title}),
+          route: RouteSettings(name: '$route/search', arguments: {routeArguments.search: title}),
           tooltip: AppLocale.labels.search(title),
           child: RowWidget(
             indent: indent,

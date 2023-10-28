@@ -116,7 +116,7 @@ class MyAppState extends State<MyApp> {
         itemId: arguments != null ? 'dynamic' : 'static',
       );
     }
-    final args = arguments as Map<String, String>?;
+    final args = arguments as Map<String, dynamic>?;
     final String key = args?['uuid'] ?? args?['search'] ?? '';
 
     final routes = <String, WidgetBuilder>{

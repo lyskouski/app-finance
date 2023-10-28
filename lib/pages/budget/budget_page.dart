@@ -1,9 +1,6 @@
 // Copyright 2023 The terCAD team. All rights reserved.
 // Use of this source code is governed by a CC BY-NC-ND 4.0 license that can be found in the LICENSE file.
 
-import 'dart:collection';
-
-import 'package:app_finance/_classes/controller/iterator_controller.dart';
 import 'package:app_finance/_classes/storage/app_data.dart';
 import 'package:app_finance/_classes/herald/app_locale.dart';
 import 'package:app_finance/_classes/structure/currency/exchange.dart';
@@ -35,7 +32,7 @@ class BudgetPageState extends AbstractPageState<BudgetPage> {
       return (
         total: scope.fold(0.0, (v, e) => v + ex.reform(e.details, e.currency, ex.getDefaultCurrency())),
         list: scope,
-        stream: IteratorController(SplayTreeMap<num, dynamic>(), transform: (_) => null),
+        stream: state.getStream(AppDataType.budgets, filter: (e) => !e.title.toString().startsWith(widget.search!)),
       );
     }
     return state.get(AppDataType.budgets);

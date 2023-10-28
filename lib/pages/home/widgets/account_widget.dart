@@ -98,7 +98,7 @@ class AccountWidget extends BaseWidget {
       color: scope.map((e) => e.color).cast<Color>().toList(),
       width: width - ThemeHelper.getIndent() / 2,
       items: scope,
-      route: AppRoute.accountSearchRoute,
+      route: AppRoute.accountRoute,
     );
   }
 
