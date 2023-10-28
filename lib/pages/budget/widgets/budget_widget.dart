@@ -16,7 +16,7 @@ class BudgetWidget extends home.BudgetWidget {
 
   @override
   Widget buildSingleListWidget(item, BuildContext context) {
-    item = item.first;
+    item = item is List ? item.first : item;
     return BudgetLineWidget(
       uuid: item.uuid,
       title: item.title,

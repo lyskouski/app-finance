@@ -3,8 +3,10 @@
 
 import 'dart:collection';
 
+import 'package:app_finance/_classes/controller/iterator_controller.dart';
 import 'package:app_finance/_classes/structure/interface_app_data.dart';
 import 'package:app_finance/_classes/structure/transaction_log_data.dart';
+import 'package:app_finance/_ext/iterable_ext.dart';
 
 class HistoryData {
   static final _history = HashMap<String, SplayTreeMap<int, TransactionLogData>>();
@@ -28,6 +30,9 @@ class HistoryData {
   static List<TransactionLogData>? getLog(String uuid) {
     return _history[uuid]?.values.map((e) => e.clone()).toList();
   }
+
+  static InterfaceIterator<int, dynamic, TransactionLogData>? getStream(String uuid) =>
+      _history[uuid]?.toStream<TransactionLogData>(false, transform: (e) => e.clone());
 
   static List<List<TransactionLogData>?> getMultiLog(List<InterfaceAppData> scope) {
     return scope.map((e) => getLog(e.uuid!)).toList();

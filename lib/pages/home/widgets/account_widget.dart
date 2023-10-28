@@ -1,6 +1,7 @@
 // Copyright 2023 The terCAD team. All rights reserved.
 // Use of this source code is governed by a CC BY-NC-ND 4.0 license that can be found in the LICENSE file.
 
+import 'package:app_finance/_classes/storage/app_data.dart';
 import 'package:app_finance/_classes/structure/navigation/app_route.dart';
 import 'package:app_finance/_classes/structure/account_app_data.dart';
 import 'package:app_finance/_classes/structure/currency/exchange.dart';
@@ -23,7 +24,7 @@ class AccountWidget extends BaseWidget {
     required super.title,
     required super.margin,
     required super.width,
-    super.state,
+    required super.state,
     super.limit,
     super.tooltip,
     super.route,
@@ -36,7 +37,7 @@ class AccountWidget extends BaseWidget {
         );
 
   @override
-  dynamic get state {
+  AppDataGetter get state {
     Map<String, List<dynamic>> pile = {};
     for (dynamic item in super.state.list) {
       String name = getName(item);
@@ -52,6 +53,7 @@ class AccountWidget extends BaseWidget {
     return (
       list: pile.entries.map((e) => e.value).toList(),
       total: super.state.total,
+      stream: super.state.stream,
     );
   }
 
@@ -71,7 +73,9 @@ class AccountWidget extends BaseWidget {
 
   @override
   Widget buildListWidget(item, BuildContext context) {
-    return item.length == 1 ? buildSingleListWidget(item, context) : buildGroupedListWidget(item, context);
+    return item is List && item.length > 1
+        ? buildGroupedListWidget(item, context)
+        : buildSingleListWidget(item, context);
   }
 
   List<dynamic> updateItems(items, summaryItem) {
@@ -99,7 +103,7 @@ class AccountWidget extends BaseWidget {
   }
 
   Widget buildSingleListWidget(item, BuildContext context) {
-    item = item.first;
+    item = item is List ? item.first : item;
     return BaseSwipeWidget(
       routePath: AppRoute.accountEditRoute,
       uuid: item.uuid,

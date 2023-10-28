@@ -80,6 +80,9 @@
 | Zoom Out (with mouse)               | `Ctrl` + `scroll up`           |
 | Reset Zoom                          | `Ctrl` + `0`                   |
 | Add new Transaction                 | `Ctrl` + `N`                   |
+| Return Back                         | `Ctrl` + `Backspace`           |
+[//]: # ( | Edit Selected Item                  | `Ctrl` + `E`                   | )
+[//]: # ( | Delete Selected Item                | `Ctrl` + `D`                   | )
 
 ## Support (Sponsorship)
 

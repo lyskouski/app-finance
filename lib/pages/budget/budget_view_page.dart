@@ -104,6 +104,7 @@ class BudgetViewPageState extends AbstractPageState<BudgetViewPage> with TickerP
     if (isLeft) {
       width -= AbstractPageState.barHeight;
     }
+    final boundary = DateTime(DateTime.now().year, DateTime.now().month).millisecondsSinceEpoch + 0.0;
     return Padding(
       padding: EdgeInsets.only(top: indent),
       child: Column(
@@ -121,12 +122,13 @@ class BudgetViewPageState extends AbstractPageState<BudgetViewPage> with TickerP
               ],
               children: [
                 BaseListInfiniteWidget(
-                  state: state.getActualList(AppDataType.bills).where((o) => o.category == widget.uuid).toList(),
+                  stream:
+                      state.getStream(AppDataType.bills, boundary: boundary, filter: (o) => o.category != widget.uuid),
                   width: width,
                   buildListWidget: buildLineWidget,
                 ),
                 BaseListInfiniteWidget(
-                  state: HistoryData.getLog(widget.uuid),
+                  stream: HistoryData.getStream(widget.uuid),
                   width: width,
                   buildListWidget: buildListWidget,
                 ),

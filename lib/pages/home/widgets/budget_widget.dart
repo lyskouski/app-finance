@@ -61,7 +61,7 @@ class BudgetWidget extends AccountWidget {
 
   @override
   Widget buildSingleListWidget(item, BuildContext context) {
-    item = item.first;
+    item = item is List ? item.first : item;
     return BaseSwipeWidget(
       routePath: AppRoute.budgetEditRoute,
       uuid: item.uuid,

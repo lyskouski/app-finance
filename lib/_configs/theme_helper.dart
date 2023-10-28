@@ -19,7 +19,7 @@ class _Sizes {
 class ThemeHelper {
   static late bool isWearable;
   static const emptyBox = SizedBox();
-  static const formEndBox = SizedBox(height: 70);
+  static const formEndBox = SizedBox(height: 110);
   static const hIndent = SizedBox(height: _Sizes.normal);
   static const hIndent2x = SizedBox(height: _Sizes.double);
   static const hIndent3x = SizedBox(height: _Sizes.triple);

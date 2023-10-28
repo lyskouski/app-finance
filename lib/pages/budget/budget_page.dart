@@ -1,6 +1,9 @@
 // Copyright 2023 The terCAD team. All rights reserved.
 // Use of this source code is governed by a CC BY-NC-ND 4.0 license that can be found in the LICENSE file.
 
+import 'dart:collection';
+
+import 'package:app_finance/_classes/controller/iterator_controller.dart';
 import 'package:app_finance/_classes/storage/app_data.dart';
 import 'package:app_finance/_classes/herald/app_locale.dart';
 import 'package:app_finance/_classes/structure/currency/exchange.dart';
@@ -22,7 +25,7 @@ class BudgetPage extends StatefulWidget {
 }
 
 class BudgetPageState extends AbstractPageState<BudgetPage> {
-  late AppDataGetter items;
+  late AppDataGetter items = _getItems();
 
   AppDataGetter _getItems() {
     if (widget.search != null) {
@@ -31,7 +34,8 @@ class BudgetPageState extends AbstractPageState<BudgetPage> {
       final ex = Exchange(store: super.state);
       return (
         total: scope.fold(0.0, (v, e) => v + ex.reform(e.details, e.currency, ex.getDefaultCurrency())),
-        list: scope
+        list: scope,
+        stream: IteratorController(SplayTreeMap<num, dynamic>(), transform: (_) => null),
       );
     }
     return state.get(AppDataType.budgets);
@@ -61,7 +65,6 @@ class BudgetPageState extends AbstractPageState<BudgetPage> {
 
   @override
   Widget buildContent(BuildContext context, BoxConstraints constraints) {
-    items = _getItems();
     return Column(
       children: [
         BudgetWidget(

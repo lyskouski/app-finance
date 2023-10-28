@@ -2,6 +2,7 @@
 // Use of this source code is governed by a CC BY-NC-ND 4.0 license that can be found in the LICENSE file.
 
 import 'dart:collection';
+import 'package:app_finance/_classes/controller/iterator_controller.dart';
 import 'package:app_finance/_classes/herald/app_sync.dart';
 import 'package:app_finance/_classes/math/goal_recalculation.dart';
 import 'package:app_finance/_classes/math/invoice_recalculation.dart';
@@ -19,6 +20,7 @@ import 'package:app_finance/_classes/structure/invoice_app_data.dart';
 import 'package:app_finance/_classes/structure/summary_app_data.dart';
 import 'package:app_finance/_classes/math/total_recalculation.dart';
 import 'package:app_finance/_classes/storage/transaction_log.dart';
+import 'package:app_finance/_ext/iterable_ext.dart';
 import 'package:flutter/material.dart';
 import 'package:uuid/uuid.dart';
 
@@ -34,13 +36,14 @@ enum AppDataType {
 typedef AppDataGetter = ({
   List<dynamic> list,
   double total,
+  InterfaceIterator stream,
 });
 
 class AppData extends ChangeNotifier {
   final AppSync appSync;
   bool isLoading = false;
   final _hashTable = HashMap<String, dynamic>();
-  final _data = {};
+  final _data = <AppDataType, SummaryAppData>{};
 
   AppData(this.appSync) : super() {
     isLoading = true;
@@ -239,6 +242,7 @@ class AppData extends ChangeNotifier {
     return (
       list: getList(property),
       total: getTotal(property),
+      stream: getStream<InterfaceAppData>(property),
     );
   }
 
@@ -248,6 +252,10 @@ class AppData extends ChangeNotifier {
         .where((element) => !element.hidden)
         .toList();
   }
+
+  InterfaceIterator getStream<T extends InterfaceAppData>(AppDataType property,
+          {bool inverse = true, double? boundary, Function? filter}) =>
+      _data[property]!.origin.toStream(inverse, transform: getByUuid, boundary: boundary, filter: filter);
 
   List<dynamic> getActualList(AppDataType property, [bool isClone = true]) {
     return (_data[property]?.listActual ?? [])

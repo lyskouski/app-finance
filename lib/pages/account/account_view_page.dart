@@ -139,17 +139,17 @@ class AccountViewPageState extends AbstractPageState<AccountViewPage> {
               ],
               children: [
                 BaseListInfiniteWidget(
-                  state: HistoryData.getLog(widget.uuid),
+                  stream: HistoryData.getStream(widget.uuid),
                   width: width,
                   buildListWidget: buildLogWidget,
                 ),
                 BaseListInfiniteWidget(
-                  state: state.getList(AppDataType.bills).where((o) => o.account == widget.uuid).toList(),
+                  stream: state.getStream(AppDataType.bills, filter: (o) => o.account != widget.uuid),
                   width: width,
                   buildListWidget: buildLineWidget,
                 ),
                 BaseListInfiniteWidget(
-                  state: state.getList(AppDataType.invoice).where((o) => o.account == widget.uuid).toList(),
+                  stream: state.getStream(AppDataType.invoice, filter: (o) => o.account != widget.uuid),
                   width: width,
                   buildListWidget: buildLineWidget,
                 ),

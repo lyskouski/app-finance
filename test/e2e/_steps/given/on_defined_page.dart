@@ -20,6 +20,7 @@ class OnDefinedPage extends Given1<String> {
     scafState.openDrawer();
     await FileRunner.tester.pumpAndSettle();
     final header = find.text(route);
+    ScreenCapture.seize(runtimeType.toString());
     expectSync(header, findsOneWidget);
     await FileRunner.tester.tap(header);
     await FileRunner.tester.pumpAndSettle();

@@ -20,7 +20,7 @@ class BaseHeaderWidget extends StatelessWidget {
   final String? route;
   final String title;
   final double width;
-  final dynamic state;
+  final double total;
   final bool hasExpand;
   final bool toExpand;
   final Function? expand;
@@ -30,7 +30,7 @@ class BaseHeaderWidget extends StatelessWidget {
     required this.tooltip,
     required this.route,
     required this.title,
-    required this.state,
+    required this.total,
     required this.width,
     this.hasExpand = false,
     this.toExpand = true,
@@ -70,7 +70,7 @@ class BaseHeaderWidget extends StatelessWidget {
               start: const Size(0, 1),
               end: const Size(1, 2),
               child: TextWrapper(
-                (state.total as double).toCurrency(withPattern: false),
+                total.toCurrency(withPattern: false),
                 style: isWide ? textTheme.numberSmall : textTheme.numberLarge,
               ),
             ),
