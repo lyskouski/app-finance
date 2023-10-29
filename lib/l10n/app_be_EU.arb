@@ -16,12 +16,17 @@
     "addGoalTooltip": "Dadać Novuju Metu",
     "addMainTooltip": "Dadać Ček , Prybytak abo Pieravod",
     "appBuild": "Zborka: {build}",
+    "@appBuild": {
+        "build": {
+            "type": "String"
+        }
+    },
     "appInitHeadline": "Inicyjalizacyja Prajektu",
     "appStartHeadline": "Pačatkovaja Nalada",
     "appTitle": "Fingrom",
     "appVersion": "Viersija: {version}",
     "@appVersion": {
-        "build": {
+        "version": {
             "type": "String"
         }
     },
@@ -100,6 +105,11 @@
     "confirmTooltip": "Vy ŭpeŭnieny? Heta dziejańnie nieĺha admianić.",
     "conversion": "Kanviersija",
     "conversionMessage": "Uziata ŭ {currency}",
+    "@conversionMessage": {
+        "currency": {
+            "type": "String"
+        }
+    },
     "createAccountHeader": "Stvaryć Rachunak",
     "createAccountTooltip": "Stvaryć Rachunak",
     "createBillHeader": "Dadać Tranzakcyju",

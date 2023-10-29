@@ -19,6 +19,7 @@ coverage/
 *.wrapper.dart
 *.list.dart
 *.generic.dart
+localization*.csv
 
 # IntelliJ related
 *.iml
@@ -53,4 +54,4 @@ app.*.map.json
 /android/app/debug
 /android/app/profile
 /android/app/release
-android/key.properties
+/android/key.properties

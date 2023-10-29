@@ -1,0 +1,363 @@
+{
+    "a": "RUN `dart run grinder sort-translations --quiet` FOR ORDERING",
+    "aboutHeadline": "O aplikacji",
+    "account": "Konto",
+    "accountFrom": "Od konta",
+    "accountHeadline": "Konta",
+    "accountTo": "Do konta",
+    "accountTooltip": "Otwarte konta",
+    "accountType": "Typ konta",
+    "accountTypeTooltip": "Wybierz typ konta",
+    "acknowledgeTooltip": "Potwierdź",
+    "activate": "Aktywuj",
+    "actualData": "Dane historyczne",
+    "addAccountTooltip": "Dodaj konto",
+    "addBudgetTooltip": "Dodaj nową kategorię budżetu",
+    "addGoalTooltip": "Dodaj nowy cel",
+    "addMainTooltip": "Dodaj rachunek, dochód lub przelew",
+    "appBuild": "Utwórz: {build}",
+    "@appBuild": {
+        "build": {
+            "type": "String"
+        }
+    },
+    "appInitHeadline": "Inicjalizacja projektu",
+    "appStartHeadline": "Konfiguracja początkowa",
+    "appTitle": "Fingrom",
+    "appVersion": "Wersja: {version}",
+    "@appVersion": {
+        "version": {
+            "type": "String"
+        }
+    },
+    "automationHeadline": "Automatyzacja",
+    "backTooltip": "Powrót",
+    "balance": "Rzeczywiste saldo",
+    "balanceDate": "Data aktualizacji salda",
+    "balanceDateTooltip": "Wyniki i przychody sprzed tej daty nie wpłyną na saldo.",
+    "balanceTooltip": "Ustaw saldo",
+    "bankAccount": "Konto bankowe",
+    "bill": "Rachunek",
+    "billHeadline": "Rachunki",
+    "billSetTooltip": "Ustaw kwotę",
+    "billSum": "Rachunki: {value}",
+    "@billSum": {
+        "value": {
+            "type": "String"
+        }
+    },
+    "billTooltip": "Otwarte rachunki",
+    "billTypeTooltip": "[Typ] Rachunek, Przychód lub Przelew",
+    "brightnessTheme": "Motyw jasności",
+    "btnAdd": "Dodaj",
+    "btnCancel": "Anuluj",
+    "btnConfirm": "Potwierdź",
+    "btnMore": "Więcej",
+    "budget": "Kategoria Budżet",
+    "budgetHeadline": "Budżety",
+    "budgetLimit": "Limit na miesiąc",
+    "budgetLimitHeadline": "Korekty limitu",
+    "budgetRelativeLimit": "Współczynnik względny na miesiąc",
+    "budgetTooltip": "Typy otwartych budżetów",
+    "cash": "Gotówka",
+    "chartBarRace": "Wyścig słupkowy dla kategorii",
+    "chartForecast": "Wykres prognozy",
+    "chartOHLC": "Wykres świecowy (OHLC)",
+    "chartYtdExpense": "Wydatki narastająco",
+    "closeTooltip": "Zamknięcie",
+    "closedAt": "Zakończone do daty",
+    "cmpRecent": "Ostatnie pozycje",
+    "cmpRecentCount": "Rozmiar listy",
+    "coef": "wsp.",
+    "collapse": "Zwiń (Przywróć) sekcję",
+    "color": "Kolor",
+    "colorApp": "Niestandardowy",
+    "colorBackground": "Tło",
+    "colorDark": "Ciemny",
+    "colorInversePrimary": "Odwrócona powierzchnia podstawowa",
+    "colorInverseSurface": "Odwrócona powierzchnia",
+    "colorLight": "Jasny",
+    "colorOnInverseSurface": "Na powierzchni odwróconej",
+    "colorOnSecondary": "Na powierzchni dodatkowej",
+    "colorOnSecondaryContainer": "Na pojemniku",
+    "colorPrimary": "Podstawowa",
+    "colorRestore": "Zresetuj paletę",
+    "colorSecondary": "Wtórny",
+    "colorSystem": "Domyślny",
+    "colorTheme": "Paleta",
+    "colorTooltip": "Wybierz kolor",
+    "colorType": "Typ koloru",
+    "colorUser": "Osobisty",
+    "columnMap": "Mapowanie dla kolumny '{value}'",
+    "@columnMap": {
+        "value": {
+            "type": "String"
+        }
+    },
+    "columnMapTooltip": "'{value}' - Wybierz mapowanie kolumny",
+    "@columnMapTooltip": {
+        "value": {
+            "type": "String"
+        }
+    },
+    "completeGoalTooltip": "Ukończ cel",
+    "confirmHeader": "Potwierdź działanie",
+    "confirmTooltip": "Czy na pewno? Tej akcji nie można cofnąć.",
+    "conversion": "Konwersja",
+    "conversionMessage": "Wykonano w {currency}",
+    "@conversionMessage": {
+        "currency": {
+            "type": "String"
+        }
+    },
+    "createAccountHeader": "Utwórz nowe konto",
+    "createAccountTooltip": "Utwórz nowe konto",
+    "createBillHeader": "Utwórz nową transakcję",
+    "createBillTooltip": "Dodaj nowy rachunek",
+    "createBudgetHeader": "Nowa kategoria budżetu",
+    "createBudgetTooltip": "Utwórz nową kategorię budżetu",
+    "createGoalHeader": "Utwórz cel",
+    "createGoalTooltip": "Dodaj nowy cel",
+    "createIncomeTooltip": "Dodaj nowy Dochód",
+    "createTransferTooltip": "Utwórz przelew",
+    "credit": "Kredyt",
+    "creditCard": "Karta kredytowa",
+    "currency": "Waluta",
+    "currencyDefault": "Domyślna waluta",
+    "currencyDistribution": "Dystrybucja",
+    "currencyExchange": "Wymiana walut: {from} -> {to}",
+    "@currencyExchange": {
+        "from": {
+            "type": "String"
+        },
+        "to": {
+            "type": "String"
+        }
+    },
+    "currencyHeadline": "Waluty",
+    "currencyIn": "W {value}",
+    "@currencyIn": {
+        "value": {
+            "type": "String"
+        }
+    },
+    "currencyShort": "Wal.",
+    "currencyTooltip": "Typ waluty (kod)",
+    "currencyUpdateTooltip": "Zaktualizuj kurs walut",
+    "currentDate": "Wskaźnik bieżącej daty",
+    "customAddTooltip": "Dodaj widżet",
+    "customDeleteTooltip": "Usuń dostosowanie",
+    "customSaveTooltip": "Zapisz personalizację",
+    "customizeTooltip": "Dostosowywanie strony",
+    "darkMode": "Ciemny",
+    "dateFormat": "Format daty",
+    "dateTooltip": "Wybierz datę",
+    "debitCard": "Karta debetowa",
+    "def": "Wartość domyślna dla '{value}'",
+    "@def": {
+        "value": {
+            "type": "String"
+        }
+    },
+    "deleteAccountTooltip": "Dezaktywuj konto",
+    "deleteBillTooltip": "Usuń rachunek",
+    "deleteBudgetTooltip": "Dezaktywuj kategorię budżetu",
+    "deleteGoalTooltip": "Usuń cel",
+    "deleteTooltip": "Usuń",
+    "deposit": "Wpłata",
+    "description": "Opis",
+    "descriptionTooltip": "Ustawianie szczegółów wydatków",
+    "details": "Szczegóły",
+    "detailsTooltip": "****2345 - ostatnie 4 cyfry numeru",
+    "dtAm": "am",
+    "dtAmPm": "godzina w am/pm (0~11)",
+    "dtDay": "dzień w miesiącu",
+    "dtEscape": "escape dla tekstu",
+    "dtHalfHour": "godzina w am/pm (1~12)",
+    "dtHour": "godzina w dniu (0~23)",
+    "dtMinute": "minuta w godzinie",
+    "dtMonth": "miesiąc w roku",
+    "dtNamedDay": "dzień tygodnia",
+    "dtPm": "pm",
+    "dtQuote": "pojedynczy cudzysłów",
+    "dtSecond": "sekunda w minucie",
+    "dtYear": "rok",
+    "editAccountHeader": "Zaktualizuj konto",
+    "editAccountTooltip": "Edytuj konto",
+    "editBillHeader": "Zaktualizuj rachunek",
+    "editBillTooltip": "Edytuj rachunek",
+    "editBudgetHeader": "Aktualizacja kategorii budżetu",
+    "editBudgetTooltip": "Edytuj kategorię budżetu",
+    "editGoalHeader": "Aktualizuj cel",
+    "editGoalTooltip": "Edytuj cel",
+    "editTooltip": "Edytuj",
+    "encryptionMode": "Szyfrowanie danych",
+    "error": "Błąd: {value}",
+    "@error": {
+        "value": {
+            "type": "String"
+        }
+    },
+    "errorNegative": "Nie może być ujemna! Proszę, napraw ten błąd",
+    "example": "Przykład",
+    "expand": "Rozwiń sekcję",
+    "expense": "Kwota wydatków",
+    "expenseDateTime": "Rozliczone na",
+    "expenseHeadline": "Wydatek",
+    "expenseTransfer": "Kwota przelewu",
+    "failData": "Kwota odliczenia",
+    "flowTypeInvoice": "Faktura",
+    "flowTypeTooltip": "Typ kwoty: Rachunek, Faktura",
+    "forecastData": "Prognoza",
+    "from": "od",
+    "goNextTooltip": "Przejdź dalej",
+    "goalHeadline": "Cele",
+    "goalProfit": "Cele docelowe: {value}",
+    "@goalProfit": {
+        "value": {
+            "type": "String"
+        }
+    },
+    "goalProfitTooltip": "Zysk vs cel bramki",
+    "goalTooltip": "Otwarte cele",
+    "hasEncrypted": "Po ustawieniu nie można ich zmienić",
+    "helpTooltip": "[Pomoc] Pokaż opis tej strony",
+    "homeHeadline": "Strona główna",
+    "homeTooltip": "Powrót do strony głównej",
+    "icon": "Ikona",
+    "iconTooltip": "Wybierz ikonę",
+    "ignoreTooltip": "Ignoruj",
+    "importHeadline": "Importuj",
+    "income": "Kwota dochodu",
+    "incomeHeadline": "Dochód",
+    "incomeHealth": "Radar stanu dochodów",
+    "incomeTooltip": "Ustawianie szczegółów dochodu",
+    "invoiceHeadline": "Faktury",
+    "invoiceSum": "Faktury: {value}",
+    "@invoiceSum": {
+        "value": {
+            "type": "String"
+        }
+    },
+    "isEncrypted": "Plik jest szyfrowany (domyślnie)",
+    "isRequired": "wymagany",
+    "language": "Język",
+    "left": "lewy",
+    "lightMode": "Światło",
+    "link": "Jednolity lokalizator zasobów (URL)",
+    "meaning": "Znaczenie",
+    "metricsHeadline": "Metryka",
+    "metricsTooltip": "Metryki",
+    "milestones": "Kamienie milowe",
+    "missingContent": "Plik nie może zostać przetworzony (anulowany)",
+    "navigationTooltip": "Otwórz menu główne",
+    "netProfit": "Zysk: {value}",
+    "@netProfit": {
+        "value": {
+            "type": "String"
+        }
+    },
+    "noChartData": "Brakuje danych (lub jest ich za mało) do wyświetlenia",
+    "notifyHeadline": "Parser powiadomień",
+    "ok": "OK",
+    "outputFile": "Miejsce docelowe dla pliku",
+    "parseFile": "Parsuj plik .csv",
+    "password": "Hasło",
+    "path": "Nazwa pliku (do zapisania lub wczytania)",
+    "pearDisabled": "-- wyłączone --",
+    "pearLoading": "W toku...",
+    "peerAccept": "akceptuj",
+    "peerAction": "Działanie",
+    "peerClosed": "zakończone",
+    "peerConnect": "Podłącz urządzenie",
+    "peerConnectBtn": "połączenie",
+    "peerDelete": "usuwanie",
+    "peerDevice": "Połączone urządzenia",
+    "peerId": "Identyfikator urządzenia dla połączenia",
+    "peerOffline": "nieaktywny",
+    "peerOnline": "połączony",
+    "peerOtherId": "Identyfikator urządzenia dla połączenia",
+    "peerPending": "w toku",
+    "peerPing": "ping",
+    "peerSent": "Dane są przesyłane do połączonych urządzeń",
+    "peerStatus": "Status",
+    "peerSync": "Przesyłanie danych",
+    "pickFile": "Pobrano plik .{value}",
+    "@pickFile": {
+        "value": {
+            "type": "String"
+        }
+    },
+    "pongStatus": "Odebrano żądanie od {uuid}",
+    "@pongStatus": {
+        "uuid": {
+            "type": "String"
+        }
+    },
+    "processIsFinished": "Zakończono!",
+    "progress": "Postęp: {value}%",
+    "@progress": {
+        "value": {
+            "type": "double"
+        }
+    },
+    "raiseData": "Dodanie kwoty",
+    "recoveryHeadline": "Odzyskiwanie",
+    "recoveryTooltip": "Odzyskiwanie z",
+    "releases": "Zwolnienia",
+    "reset": "reset",
+    "roadmap": "Mapa drogowa",
+    "saveNotification": "Zmiany zostały zapisane!",
+    "saveSettingsTooltip": "Zapisz",
+    "saveTooltip": "Zapisz do",
+    "search": "Pokaż według wzorca '{value}'",
+    "@search": {
+        "value": {
+            "type": "String"
+        }
+    },
+    "settingsBaseHeadline": "Podstawy",
+    "settingsHeadline": "Ustawienia",
+    "skipTooltip": "Pomiń kroki",
+    "spent": "zużyty",
+    "splitCancelTooltip": "Anuluj podział na miesiąc",
+    "splitTooltip": "Deklarowanie limitów na miesiąc",
+    "subscription": "Jako projekt open-source, subskrypcja nie odblokuje żadnych dodatkowych funkcji. Będzie to jednak inwestycja w ciągłą ewolucję i ulepszanie aplikacji oraz zachowanie jej dostępności.",
+    "subscriptionCoffee": "Kup kawę",
+    "subscriptionDinner": "Podaruj na kolację",
+    "subscriptionDonorbox": "Subskrybuj przez Donorbox",
+    "subscriptionGithub": "Subskrybuj przez GitHub",
+    "subscriptionHeadline": "Subskrypcja",
+    "subscriptionInactive": "Usługa zakupu niedostępna",
+    "subscriptionPatreon": "Subskrybuj przez Patreon",
+    "subscriptionPaypal": "Kup kawę (PayPal)",
+    "subscriptionTiny": "Początkowy sponsoring",
+    "subscriptionTooltip": "Aktywuj subskrypcję",
+    "success": "Udało się",
+    "summary": "Podsumowanie",
+    "symbol": "Godło",
+    "syncHeadline": "Synchronizacja urządzeń",
+    "systemMode": "Systemowy",
+    "tapToOpen": "Naciśnij, aby otworzyć",
+    "targetAmount": "Kwota docelowa",
+    "title": "Tytuł",
+    "titleAccountTooltip": "Wprowadź identyfikator konta",
+    "titleBudgetTooltip": "Wprowadź nazwę kategorii budżetu",
+    "titleGoal": "Cel",
+    "titleGoalTooltip": "Zdefiniuj opis celu",
+    "to": "do",
+    "total": "całkowity",
+    "transactionFile": "Plik dziennika transakcji Fingrom (.log)",
+    "transferHeadline": "Przelew",
+    "transferTooltip": "Ustaw szczegóły transferu",
+    "typeButton": "Przycisk",
+    "updateAccountTooltip": "Zaktualizuj rachunek",
+    "updateBillTooltip": "Zaktualizuj rachunek",
+    "updateBudgetTooltip": "Zaktualizuj kategorię budżetu",
+    "updateGoalTooltip": "Zaktualizuj cel",
+    "username": "Nazwa użytkownika (konto)",
+    "uuid": "Unikalny identyfikator transakcji",
+    "validTillDate": "Ważny termin płatności",
+    "webDav": "Rozproszone tworzenie i wersjonowanie przez Internet (WebDav)",
+    "zoomState": "Powiększanie / pomniejszanie"
+}
