@@ -255,9 +255,9 @@ class AppData extends ChangeNotifier {
         .toList();
   }
 
-  InterfaceIterator getStream<T extends InterfaceAppData>(AppDataType property,
+  InterfaceIterator getStream<M extends InterfaceAppData>(AppDataType property,
           {bool inverse = true, double? boundary, Function? filter}) =>
-      _data[property]!.origin.toStream(inverse, transform: getByUuid, boundary: boundary, filter: filter);
+      _data[property]!.origin.toStream<M>(inverse, transform: getByUuid, boundary: boundary, filter: filter);
 
   List<dynamic> getActualList(AppDataType property, [bool isClone = true]) {
     return (_data[property]?.listActual ?? [])

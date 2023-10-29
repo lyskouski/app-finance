@@ -3,6 +3,7 @@
 
 import 'dart:collection';
 
+import 'package:app_finance/_classes/controller/iterator_controller.dart';
 import 'package:app_finance/_classes/storage/app_data.dart';
 import 'package:app_finance/_classes/herald/app_locale.dart';
 import 'package:app_finance/_classes/structure/bill_app_data.dart';
@@ -23,13 +24,12 @@ class BillPage extends StatefulWidget {
 }
 
 class BillPageState extends AbstractPageState<BillPage> {
-  List<dynamic>? items;
+  InterfaceIterator? stream;
   List<Widget> itemsShown = [];
-  DateTime timer = DateTime.now();
+  DateTime timer = DateTime(DateTime.now().year, DateTime.now().month, DateTime.now().day);
   Queue<String> title = Queue();
   final _scrollController = ScrollController();
   bool isLoading = false;
-  int currentPage = 0;
   final batch = 25;
   bool isTop = true;
   late double width;
@@ -44,54 +44,68 @@ class BillPageState extends AbstractPageState<BillPage> {
       } else if (isTop) {
         setState(() => isTop = false);
       }
-      if (_scrollController.position.extentAfter < 200 && !isLoading && currentPage + batch < items!.length) {
-        currentPage += batch;
+      if (_scrollController.position.extentAfter < 200 && !isLoading && !stream!.isFinished) {
         setState(() => _addItems());
       }
     });
   }
 
   void _addItems() {
-    int endIndex = currentPage + batch;
-    if (endIndex > items!.length) {
-      endIndex = items!.length;
+    if (stream!.isFinished) {
+      return;
     }
+    String marker = '';
+    List<BillAppData> items = [];
+    do {
+      marker = timer.yMEd();
+      items = stream!.getTill(0.0 + timer.millisecondsSinceEpoch) as List<BillAppData>;
+      timer = timer.add(const Duration(days: -1));
+    } while (items.isEmpty && !stream!.isFinished);
 
-    for (final item in items!.sublist(currentPage, endIndex)) {
-      item as BillAppData;
-      if (timer.isAfter(item.createdAt)) {
-        timer = DateTime(item.createdAt.year, item.createdAt.month, item.createdAt.day);
-        itemsShown.add(SliverPersistentHeader(
-          floating: true,
-          delegate: HeaderDelegate(
-            timer.yMEd(),
-            callback: _update,
+    itemsShown.add(
+      SliverMainAxisGroup(
+        slivers: [
+          SliverPersistentHeader(
+            pinned: true,
+            delegate: HeaderDelegate(marker),
           ),
-        ));
+          SliverPadding(
+            padding: EdgeInsets.symmetric(vertical: ThemeHelper.getIndent(0.5)),
+            sliver: SliverList.builder(
+              itemCount: items.length,
+              itemBuilder: (_, int index) {
+                final item = items[index];
+                final account = state.getByUuid(item.account);
+                final budget = state.getByUuid(item.category);
+                return BaseSwipeWidget(
+                  routePath: AppRoute.billEditRoute,
+                  uuid: item.uuid!,
+                  child: BillLineWidget(
+                    uuid: item.uuid!,
+                    title: item.title,
+                    description: account != null ? '${account.title} (${account.description})' : '',
+                    descriptionColor: account?.color ?? Colors.transparent,
+                    details: item.detailsFormatted,
+                    progress: item.progress,
+                    color: budget?.color ?? Colors.transparent,
+                    icon: budget?.icon ?? Icons.radio_button_unchecked_sharp,
+                    iconTooltip: budget?.title ?? '?',
+                    hidden: item.hidden,
+                    width: width,
+                    route: AppRoute.billViewRoute,
+                  ),
+                );
+              },
+            ),
+          ),
+        ],
+      ),
+    );
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      if (_scrollController.position.maxScrollExtent == 0) {
+        setState(() => _addItems());
       }
-      final account = state.getByUuid(item.account);
-      final budget = state.getByUuid(item.category);
-      itemsShown.add(SliverToBoxAdapter(
-        child: BaseSwipeWidget(
-          routePath: AppRoute.billEditRoute,
-          uuid: item.uuid!,
-          child: BillLineWidget(
-            uuid: item.uuid!,
-            title: item.title,
-            description: account != null ? '${account.title} (${account.description})' : '',
-            descriptionColor: account?.color ?? Colors.transparent,
-            details: item.detailsFormatted,
-            progress: item.progress,
-            color: budget?.color ?? Colors.transparent,
-            icon: budget?.icon ?? Icons.radio_button_unchecked_sharp,
-            iconTooltip: budget?.title ?? '?',
-            hidden: item.hidden,
-            width: width,
-            route: AppRoute.billViewRoute,
-          ),
-        ),
-      ));
-    }
+    });
   }
 
   @override
@@ -132,25 +146,17 @@ class BillPageState extends AbstractPageState<BillPage> {
   @override
   Widget buildContent(BuildContext context, BoxConstraints constraints) {
     width = ThemeHelper.getWidth(context, 2, constraints);
-    if (items == null) {
-      WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {
-            items = super.state.getList(AppDataType.bills).cast();
-            _addItems();
-          }));
-      return ThemeHelper.emptyBox;
+    if (stream == null) {
+      WidgetsBinding.instance.addPostFrameCallback(
+        (_) => setState(() {
+          stream = state.getStream<BillAppData>(AppDataType.bills);
+          _addItems();
+        }),
+      );
     }
     return CustomScrollView(
       controller: _scrollController,
       slivers: <Widget>[
-        if (!isTop)
-          SliverPersistentHeader(
-            pinned: true,
-            floating: true,
-            delegate: HeaderDelegate(
-              title.lastOrNull ?? timer.yMEd(),
-              callback: (_) => _update(null),
-            ),
-          ),
         ...itemsShown,
       ],
     );

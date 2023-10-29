@@ -10,13 +10,13 @@ class HeaderDelegate extends SliverPersistentHeaderDelegate {
   double closedHeight;
   double openHeight;
   String title;
-  Function callback;
+  Function? callback;
 
   HeaderDelegate(
     this.title, {
     this.closedHeight = 30,
     this.openHeight = 30,
-    required this.callback,
+    this.callback,
   });
 
   @override
@@ -24,7 +24,7 @@ class HeaderDelegate extends SliverPersistentHeaderDelegate {
     final tmp = key.currentContext;
     try {
       if (tmp != null && tmp.mounted && tmp.findRenderObject() is RenderBox) {
-        callback(title);
+        callback?.call(title);
       }
     } catch (e) {
       // .. ignore inactive state
