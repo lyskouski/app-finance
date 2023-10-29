@@ -25,10 +25,7 @@ class BillViewPage extends StatefulWidget {
 
 class BillViewPageState extends AbstractPageState<BillViewPage> {
   @override
-  String getTitle() {
-    final item = super.state.getByUuid(widget.uuid) as BillAppData;
-    return item.title;
-  }
+  String getTitle() => (state.getByUuid(widget.uuid) as BillAppData).title;
 
   @override
   String getButtonName() => '';

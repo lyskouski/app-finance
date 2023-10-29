@@ -12,6 +12,7 @@ abstract interface class InterfaceIterator<T extends num, K, M> {
   void jumpTo(T key);
   Iterable<M?> loop();
   List<M> chunk(int length);
+  List<M> getTill(T boundary);
 }
 
 class IteratorController<T extends num, K, M> implements InterfaceIterator<T, K, M> {
@@ -71,6 +72,19 @@ class IteratorController<T extends num, K, M> implements InterfaceIterator<T, K,
     result.removeWhere((e) => e == null);
     return result.cast<M>();
   }
+
+  @override
+  List<M> getTill(T boundary) {
+    final result = <M>[];
+    while (!isFinished && boundary > keys[pointer]) {
+      final value = next;
+      if (value == null) {
+        break;
+      }
+      result.add(value);
+    }
+    return result;
+  }
 }
 
 class IteratorReverseController<T extends num, K, M> extends IteratorController<T, K, M> {
@@ -104,5 +118,18 @@ class IteratorReverseController<T extends num, K, M> extends IteratorController<
       }
       yield value;
     }
+  }
+
+  @override
+  List<M> getTill(T boundary) {
+    final result = <M>[];
+    while (!isFinished && boundary < keys[pointer]) {
+      final value = next;
+      if (value == null) {
+        break;
+      }
+      result.add(value);
+    }
+    return result;
   }
 }
