@@ -1,8 +1,6 @@
 // Copyright 2023 The terCAD team. All rights reserved.
 // Use of this source code is governed by a CC BY-NC-ND 4.0 license that can be found in the LICENSE file.
 
-import 'dart:collection';
-
 import 'package:app_finance/_classes/controller/iterator_controller.dart';
 import 'package:app_finance/_classes/storage/app_data.dart';
 import 'package:app_finance/_classes/herald/app_locale.dart';
@@ -27,27 +25,24 @@ class BillPageState extends AbstractPageState<BillPage> {
   InterfaceIterator? stream;
   List<Widget> itemsShown = [];
   DateTime timer = DateTime(DateTime.now().year, DateTime.now().month, DateTime.now().day);
-  Queue<String> title = Queue();
   final _scrollController = ScrollController();
-  bool isLoading = false;
   final batch = 25;
-  bool isTop = true;
   late double width;
 
   @override
   void initState() {
     super.initState();
     _scrollController.addListener(() {
-      if (_scrollController.position.pixels < 10) {
-        _update(null);
-        setState(() => isTop = true);
-      } else if (isTop) {
-        setState(() => isTop = false);
-      }
-      if (_scrollController.position.extentAfter < 200 && !isLoading && !stream!.isFinished) {
+      if (_scrollController.position.extentAfter < 200 && !stream!.isFinished) {
         setState(() => _addItems());
       }
     });
+  }
+
+  @override
+  void dispose() {
+    _scrollController.dispose();
+    super.dispose();
   }
 
   void _addItems() {
@@ -109,25 +104,7 @@ class BillPageState extends AbstractPageState<BillPage> {
   }
 
   @override
-  void dispose() {
-    _scrollController.dispose();
-    super.dispose();
-  }
-
-  void _update(String? value) => WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {
-        if (value == null) {
-          title.clear();
-        } else if (title.isNotEmpty && title.last == value) {
-          title.removeLast();
-        } else {
-          title.addLast(value);
-        }
-      }));
-
-  @override
-  String getTitle() {
-    return AppLocale.labels.billHeadline;
-  }
+  String getTitle() => AppLocale.labels.billHeadline;
 
   @override
   String getButtonName() => AppLocale.labels.addMainTooltip;
@@ -156,9 +133,7 @@ class BillPageState extends AbstractPageState<BillPage> {
     }
     return CustomScrollView(
       controller: _scrollController,
-      slivers: <Widget>[
-        ...itemsShown,
-      ],
+      slivers: itemsShown,
     );
   }
 }
