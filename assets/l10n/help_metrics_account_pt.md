@@ -12,8 +12,8 @@ avaliar o bem-estar financeiro com base na quantidade de renda restante após to
 Um gráfico de velas visualiza os movimentos do dinheiro ao longo do tempo. Cada vela no gráfico representa 
 um período de uma semana com os estados seguintes:
 - **Aberto (O)**: Montante inicial (topo de uma caixa).
-- Alto (H)**: Valor mais alto (ponto superior de uma linha).
-- Baixo (L)**: Valor mais baixo (ponto inferior de uma linha).
+- **Alto (H)**: Valor mais alto (ponto superior de uma linha).
+- **Baixo (L)**: Valor mais baixo (ponto inferior de uma linha).
 - **Fechar (C)**: Valor final (fundo de uma caixa).
 
 A vela positiva (em azul) mostra um aumento, enquanto a negativa (em vermelho) mostra uma mostra uma diminuição no 
