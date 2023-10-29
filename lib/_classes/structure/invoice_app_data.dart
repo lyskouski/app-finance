@@ -5,11 +5,12 @@ import 'package:app_finance/_classes/herald/app_locale.dart';
 import 'package:app_finance/_classes/storage/app_data.dart';
 import 'package:app_finance/_classes/structure/abstract_app_data.dart';
 import 'package:app_finance/_ext/int_ext.dart';
+import 'package:app_finance/_mixins/storage_mixin.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_currency_picker/flutter_currency_picker.dart';
 import 'package:intl/intl.dart';
 
-class InvoiceAppData extends AbstractAppData {
+class InvoiceAppData extends AbstractAppData with StorageMixin {
   String account;
   String? accountFrom;
 
@@ -83,4 +84,11 @@ class InvoiceAppData extends AbstractAppData {
 
   @override
   String get description => DateFormat.MMMMd(AppLocale.code).format(super.createdAt);
+
+  @override
+  IconData? get icon => getState().getByUuid(account).icon;
+
+  String get accountNamed => getState().getByUuid(account).title;
+
+  String? get accountFromNamed => accountFrom != null ? getState().getByUuid(accountFrom!).title : null;
 }

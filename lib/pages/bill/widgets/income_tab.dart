@@ -27,7 +27,7 @@ import 'package:app_finance/widgets/wrapper/text_wrapper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_currency_picker/flutter_currency_picker.dart';
 
-class IncomeTab extends StatefulWidget {
+class IncomeTab<T> extends StatefulWidget {
   final String? account;
   final String? description;
   final Currency? currency;
@@ -53,7 +53,7 @@ class IncomeTab extends StatefulWidget {
   IncomeTabState createState() => IncomeTabState();
 }
 
-class IncomeTabState extends State<IncomeTab> {
+class IncomeTabState<T extends IncomeTab> extends State<IncomeTab> {
   final focus = FocusController();
   String? account;
   Currency? accountCurrency;

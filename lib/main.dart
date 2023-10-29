@@ -34,6 +34,8 @@ import 'package:app_finance/pages/goal/goal_edit_page.dart';
 import 'package:app_finance/pages/goal/goal_page.dart';
 import 'package:app_finance/pages/goal/goal_view_page.dart';
 import 'package:app_finance/pages/home/home_page.dart';
+import 'package:app_finance/pages/invoice/invoice_edit_page.dart';
+import 'package:app_finance/pages/invoice/invoice_view_page.dart';
 import 'package:app_finance/pages/metrics/metrics_page.dart';
 import 'package:app_finance/pages/settings/settings_page.dart';
 import 'package:app_finance/pages/start/start_page.dart';
@@ -120,30 +122,32 @@ class MyAppState extends State<MyApp> {
     final String key = args?['uuid'] ?? args?['search'] ?? '';
 
     final routes = <String, WidgetBuilder>{
+      AppRoute.aboutRoute: (context) => const AboutPage(),
+      AppRoute.accountRoute: (context) => const AccountPage(),
+      AppRoute.accountAddRoute: (context) => const AccountAddPage(),
       AppRoute.accountViewRoute: (context) => AccountViewPage(uuid: key),
       AppRoute.accountSearchRoute: (context) => AccountPage(search: key),
       AppRoute.accountEditRoute: (context) => AccountEditPage(uuid: key),
-      AppRoute.budgetViewRoute: (context) => BudgetViewPage(uuid: key),
-      AppRoute.budgetEditRoute: (context) => BudgetEditPage(uuid: key),
-      AppRoute.budgetSearchRoute: (context) => BudgetPage(search: key),
+      AppRoute.automationRoute: (context) => const AutomationPage(),
+      AppRoute.billRoute: (context) => const BillPage(),
+      AppRoute.billAddRoute: (context) => const BillAddPage(),
       AppRoute.billViewRoute: (context) => BillViewPage(uuid: key),
       AppRoute.billEditRoute: (context) => BillEditPage(uuid: key),
+      AppRoute.budgetRoute: (context) => const BudgetPage(),
+      AppRoute.budgetAddRoute: (context) => const BudgetAddPage(),
+      AppRoute.budgetViewRoute: (context) => BudgetViewPage(uuid: key),
+      AppRoute.budgetSearchRoute: (context) => BudgetPage(search: key),
+      AppRoute.budgetEditRoute: (context) => BudgetEditPage(uuid: key),
+      AppRoute.currencyRoute: (context) => const CurrencyPage(),
+      AppRoute.goalRoute: (context) => const GoalPage(),
+      AppRoute.goalAddRoute: (context) => const GoalAddPage(),
       AppRoute.goalViewRoute: (context) => GoalViewPage(uuid: key),
       AppRoute.goalEditRoute: (context) => GoalEditPage(uuid: key),
-      AppRoute.metricsSearchRoute: (context) => MetricsPage(search: key),
-      AppRoute.aboutRoute: (context) => const AboutPage(),
-      AppRoute.accountAddRoute: (context) => const AccountAddPage(),
-      AppRoute.accountRoute: (context) => const AccountPage(),
-      AppRoute.automationRoute: (context) => const AutomationPage(),
-      AppRoute.billAddRoute: (context) => const BillAddPage(),
-      AppRoute.billRoute: (context) => const BillPage(),
-      AppRoute.budgetAddRoute: (context) => const BudgetAddPage(),
-      AppRoute.budgetRoute: (context) => const BudgetPage(),
-      AppRoute.currencyRoute: (context) => const CurrencyPage(),
-      AppRoute.goalAddRoute: (context) => const GoalAddPage(),
-      AppRoute.goalRoute: (context) => const GoalPage(),
+      AppRoute.invoiceViewRoute: (context) => InvoiceViewPage(uuid: key),
+      AppRoute.invoiceEditRoute: (context) => InvoiceEditPage(uuid: key),
       AppRoute.homeRoute: (context) => const HomePage(),
       AppRoute.metricsRoute: (context) => const MetricsPage(),
+      AppRoute.metricsSearchRoute: (context) => MetricsPage(search: key),
       AppRoute.settingsRoute: (context) => const SettingsPage(),
       AppRoute.startRoute: (context) => const StartPage(),
       AppRoute.subscriptionRoute: (context) => const SubscriptionPage(),

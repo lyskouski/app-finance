@@ -13,7 +13,7 @@ import 'package:provider/provider.dart';
 
 class BaseSwipeWidget extends StatelessWidget {
   final String uuid;
-  final String routePath;
+  final String? routePath;
   final Widget child;
   final double height;
 
@@ -43,6 +43,9 @@ class BaseSwipeWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    if (routePath == null || routePath == '') {
+      return child;
+    }
     NavigatorState nav = Navigator.of(context);
     return Consumer<AppData>(builder: (context, appState, _) {
       return Visibility(
@@ -82,7 +85,7 @@ class BaseSwipeWidget extends StatelessWidget {
             SwipeAction(
               color: Colors.transparent,
               closeOnTap: true,
-              onTap: (_) => nav.pushNamed(routePath, arguments: {routeArguments.uuid: uuid}),
+              onTap: (_) => nav.pushNamed(routePath!, arguments: {routeArguments.uuid: uuid}),
               content: _getIcon(Icons.edit, Colors.grey, Colors.white, AppLocale.labels.editTooltip),
             ),
           ],

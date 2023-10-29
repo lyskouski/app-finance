@@ -26,7 +26,7 @@ import 'package:app_finance/widgets/wrapper/text_wrapper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_currency_picker/flutter_currency_picker.dart';
 
-class TransferTab extends StatefulWidget {
+class TransferTab<T> extends StatefulWidget {
   final String? accountFrom;
   final String? accountTo;
   final double? amount;
@@ -54,7 +54,7 @@ class TransferTab extends StatefulWidget {
   TransferTabState createState() => TransferTabState();
 }
 
-class TransferTabState extends State<TransferTab> {
+class TransferTabState<T extends TransferTab> extends State<T> {
   final focus = FocusController();
   String? accountFrom;
   String? accountTo;

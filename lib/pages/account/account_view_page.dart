@@ -84,6 +84,12 @@ class AccountViewPageState extends AbstractPageState<AccountViewPage> {
     return item != null ? '$prefix${item.title}' : '';
   }
 
+  String _getRoute(dynamic item) => switch (item.runtimeType) {
+        BillAppData => AppRoute.billViewRoute,
+        InvoiceAppData => AppRoute.invoiceViewRoute,
+        _ => '',
+      };
+
   Widget buildLogWidget(item, BuildContext context) {
     final obj = state.getByUuid(item.ref ?? '');
     return BaseLineWidget(
@@ -95,7 +101,7 @@ class AccountViewPageState extends AbstractPageState<AccountViewPage> {
       color: obj?.color ?? Colors.transparent,
       icon: obj?.icon ?? Icons.radio_button_unchecked_sharp,
       width: width,
-      route: obj is BillAppData ? AppRoute.billViewRoute : '',
+      route: _getRoute(obj),
     );
   }
 
@@ -110,7 +116,7 @@ class AccountViewPageState extends AbstractPageState<AccountViewPage> {
       icon: item.icon ?? Icons.radio_button_unchecked_sharp,
       hidden: item.hidden,
       width: width,
-      route: item is BillAppData ? AppRoute.billViewRoute : '',
+      route: _getRoute(item),
     );
   }
 
