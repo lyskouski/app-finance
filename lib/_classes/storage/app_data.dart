@@ -135,7 +135,8 @@ class AppData extends ChangeNotifier {
         _updateBill(initial as BillAppData?, change);
         break;
       case AppDataType.budgets:
-        _updateBudget(initial as BudgetAppData?, change as BudgetAppData);
+        (change as BudgetAppData).setState(this);
+        _updateBudget(initial as BudgetAppData?, change);
         break;
       case AppDataType.goals:
         _updateGoal(initial as GoalAppData?, change as GoalAppData);
@@ -144,7 +145,8 @@ class AppData extends ChangeNotifier {
         _updateCurrency(initial as CurrencyAppData?, change as CurrencyAppData);
         break;
       case AppDataType.invoice:
-        _updateInvoice(initial as InvoiceAppData?, change as InvoiceAppData);
+        (change as InvoiceAppData).setState(this);
+        _updateInvoice(initial as InvoiceAppData?, change);
         break;
     }
   }
@@ -271,7 +273,7 @@ class AppData extends ChangeNotifier {
   dynamic getByUuid(String uuid, [bool isClone = true]) {
     if (uuid == '') return null;
     var obj = isClone ? _hashTable[uuid]?.clone() : _hashTable[uuid];
-    if (obj is BillAppData || obj is BudgetAppData) {
+    if (obj is BillAppData || obj is BudgetAppData || obj is InvoiceAppData) {
       obj.setState(this);
     }
     return obj;

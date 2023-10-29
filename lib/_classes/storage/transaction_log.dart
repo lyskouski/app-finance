@@ -25,7 +25,7 @@ extension DataExt on String {
         'BillAppData' => BillAppData.fromJson(data)..setState(store),
         'BudgetAppData' => BudgetAppData.fromJson(data)..setState(store),
         'CurrencyAppData' => CurrencyAppData.fromJson(data),
-        'InvoiceAppData' => InvoiceAppData.fromJson(data),
+        'InvoiceAppData' => InvoiceAppData.fromJson(data)..setState(store),
         _ => null,
       };
 }
