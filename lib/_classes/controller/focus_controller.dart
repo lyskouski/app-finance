@@ -60,8 +60,12 @@ class FocusController {
       return;
     }
     if (order.containsValue(idx) && scope[idx]!.context != null) {
+      double position = _getPosition(scope[idx]!.context!) - _getMinPosition() - 40;
+      if (position < 0) {
+        position = 0;
+      }
       _controller.animateTo(
-        _getPosition(scope[idx]!.context!) - _getMinPosition(),
+        position,
         duration: const Duration(milliseconds: 600),
         curve: Curves.easeInOut,
       );
