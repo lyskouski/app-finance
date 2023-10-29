@@ -23,6 +23,7 @@ void main() {
 
     setUp(() {
       AppPreferences.pref = MockSharedPreferences();
+      CurrencyDefaults.cache = MockSharedPreferences();
       object = Exchange(store: WrapperMockAppData());
     });
 

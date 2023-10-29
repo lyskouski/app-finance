@@ -31,7 +31,7 @@ dependencies:
   uuid: ^3.0.4
   provider: ^6.0.5
   month_picker_dialog: ^2.0.2
-  shared_preferences: ^2.2.0
+  shared_preferences: ^2.2.2
   path_provider: ^2.0.15
   crypto: ^3.0.3
   # Freeze encrypt and flutter_webrtc
@@ -51,7 +51,7 @@ dependencies:
   flutter_grid_layout: ^1.0.0
   flutter_svg: ^2.0.7
   flutter_swipe_action_cell: ^3.1.2
-  flutter_currency_picker: ^1.0.2
+  flutter_currency_picker: ^1.1.5
   in_app_purchase: ^3.1.11
 
 dev_dependencies:

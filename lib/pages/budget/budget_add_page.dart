@@ -83,6 +83,9 @@ class BudgetAddPageState<T extends BudgetAddPage> extends AbstractAddPageState<B
 
   @override
   void updateStorage() {
+    if (currency != null) {
+      CurrencyProvider.pin(currency!);
+    }
     super.state.add(BudgetAppData(
           title: title.text,
           amountLimit: double.tryParse(budgetLimit.text) ?? 0.0,

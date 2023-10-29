@@ -8,8 +8,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_currency_picker/flutter_currency_picker.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/annotations.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
-@GenerateNiceMocks([MockSpec<AppData>()])
+@GenerateNiceMocks([MockSpec<SharedPreferences>(), MockSpec<AppData>()])
 import 'exchange_controller_test.mocks.dart';
 
 @GenerateWithMethodSetters([MockAppData])
@@ -17,6 +18,8 @@ import 'exchange_controller_test.wrapper.dart';
 
 void main() {
   group('ExchangeController', () {
+    setUp(() => CurrencyDefaults.cache = MockSharedPreferences());
+
     test('_updateSum | _updateRate', () {
       final editor = TextEditingController(text: '10');
       final controller = ExchangeController(

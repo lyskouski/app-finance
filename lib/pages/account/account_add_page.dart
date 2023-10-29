@@ -94,6 +94,9 @@ class AccountAddPageState<T extends AccountAddPage> extends AbstractAddPageState
 
   @override
   void updateStorage() {
+    if (currency != null) {
+      CurrencyProvider.pin(currency!);
+    }
     super.state.add(AccountAppData(
           title: title.text,
           type: type ?? AppAccountType.cash.toString(),

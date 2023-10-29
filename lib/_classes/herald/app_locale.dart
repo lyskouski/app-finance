@@ -39,6 +39,7 @@ class AppLocale extends ValueNotifier<Locale?> {
   void updateState(BuildContext context) {
     final value = Localizations.localeOf(context).toString();
     labels = AppLocalizations.of(context)!;
+    CurrencyProvider.initFromContext(context, locale: super.value);
     set(value);
   }
 }
