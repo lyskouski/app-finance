@@ -115,6 +115,9 @@ class ExpensesTabState<T extends ExpensesTab> extends State<T> {
   void updateStorage() {
     AppPreferences.set(AppPreferences.prefAccount, account ?? '');
     AppPreferences.set(AppPreferences.prefBudget, budget ?? '');
+    if (currency != null) {
+      CurrencyProvider.pin(currency!);
+    }
     exchange.save();
     widget.state.add(BillAppData(
       account: account ?? '',
