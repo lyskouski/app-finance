@@ -16,12 +16,17 @@
     "addGoalTooltip": "Add new Goal",
     "addMainTooltip": "Add Bill , Income or Transfer",
     "appBuild": "Build: {build}",
+    "@appBuild": {
+        "build": {
+            "type": "String"
+        }
+    },
     "appInitHeadline": "Project Initialization",
     "appStartHeadline": "Initial Setup",
     "appTitle": "Fingrom",
     "appVersion": "Version: {version}",
     "@appVersion": {
-        "build": {
+        "version": {
             "type": "String"
         }
     },
@@ -100,6 +105,11 @@
     "confirmTooltip": "Are you sure? This action cannot be undone.",
     "conversion": "Conversion",
     "conversionMessage": "Taken in {currency}",
+    "@conversionMessage": {
+        "currency": {
+            "type": "String"
+        }
+    },
     "createAccountHeader": "Create new Account",
     "createAccountTooltip": "Create new Account",
     "createBillHeader": "Create new Transaction",

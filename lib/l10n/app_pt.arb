@@ -15,13 +15,18 @@
     "addBudgetTooltip": "Adicionar nova categoria de orçamento",
     "addGoalTooltip": "Adicionar novo objetivo",
     "addMainTooltip": "Adicionar fatura, rendimento ou transferência",
-    "appBuild": "Criar: {construir}",
+    "appBuild": "Criar: {build}",
+    "@appBuild": {
+        "build": {
+            "type": "String"
+        }
+    },
     "appInitHeadline": "Inicialização do projeto",
     "appStartHeadline": "Configuração inicial",
     "appTitle": "Financiamento",
     "appVersion": "Versão: {version}",
     "@appVersion": {
-        "build": {
+        "version": {
             "type": "String"
         }
     },
@@ -100,6 +105,11 @@
     "confirmTooltip": "Tem a certeza? Esta ação não pode ser anulada.",
     "conversion": "Conversão",
     "conversionMessage": "Efectuada em {currency}",
+    "@conversionMessage": {
+        "currency": {
+            "type": "String"
+        }
+    },
     "createAccountHeader": "Criar nova conta",
     "createAccountTooltip": "Criar nova conta",
     "createBillHeader": "Criar nova transação",

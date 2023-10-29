@@ -16,12 +16,17 @@
     "addGoalTooltip": "Дадаць мэту",
     "addMainTooltip": "Дадаць чэк , прыбытак або перавод",
     "appBuild": "Зборка: {build}",
+    "@appBuild": {
+        "build": {
+            "type": "String"
+        }
+    },
     "appInitHeadline": "Ініцыялізацыя праекту",
     "appStartHeadline": "Пачатковая налада",
     "appTitle": "Fingrom",
     "appVersion": "Версія: {version}",
     "@appVersion": {
-        "build": {
+        "version": {
             "type": "String"
         }
     },
@@ -100,6 +105,11 @@
     "confirmTooltip": "Вы ўпэўнены? Гэта дзеяньне нельга адмяніць.",
     "conversion": "Канверсія",
     "conversionMessage": "Узята ў {currency}",
+    "@conversionMessage": {
+        "currency": {
+            "type": "String"
+        }
+    },
     "createAccountHeader": "Стварыць рахунак",
     "createAccountTooltip": "Стварыць рахунак",
     "createBillHeader": "Дадаць транзакцыю",

@@ -16,12 +16,17 @@
     "addGoalTooltip": "Dodaj nowy cel",
     "addMainTooltip": "Dodaj rachunek, dochód lub przelew",
     "appBuild": "Utwórz: {build}",
+    "@appBuild": {
+        "build": {
+            "type": "String"
+        }
+    },
     "appInitHeadline": "Inicjalizacja projektu",
     "appStartHeadline": "Konfiguracja początkowa",
     "appTitle": "Fingrom",
     "appVersion": "Wersja: {version}",
     "@appVersion": {
-        "build": {
+        "version": {
             "type": "String"
         }
     },
@@ -100,6 +105,11 @@
     "confirmTooltip": "Czy na pewno? Tej akcji nie można cofnąć.",
     "conversion": "Konwersja",
     "conversionMessage": "Wykonano w {currency}",
+    "@conversionMessage": {
+        "currency": {
+            "type": "String"
+        }
+    },
     "createAccountHeader": "Utwórz nowe konto",
     "createAccountTooltip": "Utwórz nowe konto",
     "createBillHeader": "Utwórz nową transakcję",
