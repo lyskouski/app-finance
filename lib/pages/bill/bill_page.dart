@@ -5,14 +5,17 @@ import 'package:app_finance/_classes/controller/iterator_controller.dart';
 import 'package:app_finance/_classes/storage/app_data.dart';
 import 'package:app_finance/_classes/herald/app_locale.dart';
 import 'package:app_finance/_classes/structure/bill_app_data.dart';
+import 'package:app_finance/_configs/display_helper.dart';
 import 'package:app_finance/_configs/theme_helper.dart';
 import 'package:app_finance/_classes/structure/navigation/app_route.dart';
 import 'package:app_finance/_ext/date_time_ext.dart';
 import 'package:app_finance/pages/_interface/abstract_page_state.dart';
 import 'package:app_finance/pages/bill/widgets/bill_line_widget.dart';
-import 'package:app_finance/pages/bill/widgets/header_delegate.dart';
+import 'package:app_finance/pages/bill/widgets/sliver_header_delegate.dart';
+import 'package:app_finance/widgets/generic/base_header_widget.dart';
 import 'package:app_finance/widgets/generic/base_swipe_widget.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 
 class BillPage extends StatefulWidget {
   const BillPage({super.key});
@@ -27,7 +30,6 @@ class BillPageState extends AbstractPageState<BillPage> {
   DateTime timer = DateTime(DateTime.now().year, DateTime.now().month, DateTime.now().day);
   final _scrollController = ScrollController();
   final batch = 25;
-  late double width;
 
   @override
   void initState() {
@@ -46,6 +48,20 @@ class BillPageState extends AbstractPageState<BillPage> {
   }
 
   void _addItems() {
+    final width = DisplayHelper.state().width - ThemeHelper.getIndent(4);
+    if (itemsShown.isEmpty) {
+      itemsShown.add(
+        SliverToBoxAdapter(
+          child: BaseHeaderWidget(
+            route: AppRoute.homeRoute,
+            tooltip: AppLocale.labels.homeTooltip,
+            width: width,
+            total: state.getTotal(AppDataType.bills),
+            title: '${AppLocale.labels.billHeadline}, ${DateFormat.MMMM(AppLocale.code).format(DateTime.now())}',
+          ),
+        ),
+      );
+    }
     if (stream!.isFinished) {
       return;
     }
@@ -62,7 +78,7 @@ class BillPageState extends AbstractPageState<BillPage> {
         slivers: [
           SliverPersistentHeader(
             pinned: true,
-            delegate: HeaderDelegate(marker),
+            delegate: SliverHeaderDelegate(marker),
           ),
           SliverPadding(
             padding: EdgeInsets.symmetric(vertical: ThemeHelper.getIndent(0.5)),
@@ -122,7 +138,6 @@ class BillPageState extends AbstractPageState<BillPage> {
 
   @override
   Widget buildContent(BuildContext context, BoxConstraints constraints) {
-    width = ThemeHelper.getWidth(context, 2, constraints);
     if (stream == null) {
       WidgetsBinding.instance.addPostFrameCallback(
         (_) => setState(() {
@@ -131,9 +146,12 @@ class BillPageState extends AbstractPageState<BillPage> {
         }),
       );
     }
-    return CustomScrollView(
-      controller: _scrollController,
-      slivers: itemsShown,
+    return Padding(
+      padding: EdgeInsets.all(ThemeHelper.getIndent()),
+      child: CustomScrollView(
+        controller: _scrollController,
+        slivers: itemsShown,
+      ),
     );
   }
 }
