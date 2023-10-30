@@ -55,7 +55,7 @@
 - Recovery via WebDav or a direct File
 - Import from `CSV`, `QIF`, `OFX` files for Bills and Invoices
 - Data encryption
-- Localization: 2 languages
+- Localization: 7 languages
 - User Experience
   - Configurable Main Page (multiple configurations per `width x height` set)
   - Responsive & Adaptive Design

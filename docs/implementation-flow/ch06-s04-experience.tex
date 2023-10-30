@@ -53,6 +53,18 @@ Widget build(BuildContext context) => MaterialApp(
 );
 \end{lstlisting}
 
+\noindent In the context of \q{Apple}-based applications, it's necessary to include a localization section in 
+\q{Runner/Info.plist}-files:
+
+\begin{lstlisting}[language=xml]
+<dict>
+  <key>CFBundleLocalizations</key>
+  <array>
+    <string>en</string>
+    <!-- other languages -->
+  </array>
+\end{lstlisting}
+
 \noindent Rich text can be stored in \q{assets}-folder as \q{.md}-files and integrated back into an application by using 
 \q{flutter\_markdown}-package:
 

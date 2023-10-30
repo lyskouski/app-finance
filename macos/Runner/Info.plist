@@ -20,6 +20,17 @@
 	<string>$(FLUTTER_BUILD_NAME)</string>
 	<key>CFBundleVersion</key>
 	<string>$(FLUTTER_BUILD_NUMBER)</string>
+  <key>CFBundleLocalizations</key>
+  <array>
+    <string>en</string>
+    <string>be</string>
+    <string>uk</string>
+    <string>pl</string>
+    <string>pt</string>
+    <string>pt_BR</string>
+    <string>fr</string>
+    <string>de</string>
+  </array>
 	<key>LSMinimumSystemVersion</key>
 	<string>$(MACOSX_DEPLOYMENT_TARGET)</string>
 	<key>NSHumanReadableCopyright</key>

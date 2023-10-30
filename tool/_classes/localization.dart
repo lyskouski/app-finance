@@ -59,8 +59,8 @@ void csv2arb(String path, String file) {
     String content = arb.readAsStringSync();
     for (final label in locale.value.entries) {
       content = content.replaceFirst(
-        RegExp('"${label.key}": "(.*?)",'),
-        '"${label.key}": "${label.value.replaceAll('"', '\\"')}",',
+        RegExp('"${label.key}": "(.*?)"'),
+        '"${label.key}": "${label.value.replaceAll('"', '\\"')}"',
       );
       log('- [${locale.key}] ${label.key}: ${label.value}');
     }

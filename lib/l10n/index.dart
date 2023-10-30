@@ -10,7 +10,10 @@ const languageList = <LanguageDef>[
   (id: 'be', name: 'Тарашкевица (BE)'),
   (id: 'be_EU', name: 'Latsinka (BE)'),
   (id: 'en', name: 'English (EN-US)'),
+  (id: 'fr', name: 'Français (FR)'),
+  (id: 'de', name: 'Deutsch (DE)'),
   (id: 'pl', name: 'Polski (PL)'),
   (id: 'pt', name: 'Português Europeu (PT)'),
   (id: 'pt_BR', name: 'Português Brasileiro (PTB)'),
+  (id: 'uk', name: 'Українська (UK-UA)'),
 ];
