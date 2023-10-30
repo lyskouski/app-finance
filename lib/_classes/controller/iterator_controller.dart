@@ -14,6 +14,7 @@ abstract interface class InterfaceIterator<T extends num, K, M> {
   Iterable<M?> loop();
   List<M> chunk(int length);
   List<M> getTill(T boundary);
+  List<M> toList();
 }
 
 class IteratorController<T extends num, K, M> implements InterfaceIterator<T, K, M> {
@@ -76,6 +77,9 @@ class IteratorController<T extends num, K, M> implements InterfaceIterator<T, K,
     result.removeWhere((e) => e == null);
     return result.cast<M>();
   }
+
+  @override
+  List<M> toList() => [...loop()].cast();
 
   @override
   List<M> getTill(T boundary) {

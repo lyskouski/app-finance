@@ -1,6 +1,7 @@
 // Copyright 2023 The terCAD team. All rights reserved.
 // Use of this source code is governed by a CC BY-NC-ND 4.0 license that can be found in the LICENSE file.
 
+import 'package:app_finance/_classes/controller/focus_controller.dart';
 import 'package:app_finance/_classes/herald/app_locale.dart';
 import 'package:app_finance/_classes/storage/history_data.dart';
 import 'package:app_finance/_classes/structure/currency_app_data.dart';
@@ -11,7 +12,9 @@ import 'package:app_finance/charts/trade_chart.dart';
 import 'package:app_finance/pages/_interface/abstract_page_state.dart';
 import 'package:app_finance/widgets/generic/notification_bar.dart';
 import 'package:app_finance/widgets/form/simple_input.dart';
+import 'package:app_finance/widgets/wrapper/focus_wrapper.dart';
 import 'package:app_finance/widgets/wrapper/row_widget.dart';
+import 'package:app_finance/widgets/wrapper/single_scroll_wrapper.dart';
 import 'package:flutter/material.dart';
 
 class CurrencyPage extends StatefulWidget {
@@ -22,12 +25,17 @@ class CurrencyPage extends StatefulWidget {
 }
 
 class CurrencyPageState extends AbstractPageState<CurrencyPage> {
+  final focus = FocusController();
   List<dynamic>? scope;
 
   @override
-  String getTitle() {
-    return AppLocale.labels.currencyHeadline;
+  void dispose() {
+    focus.dispose();
+    super.dispose();
   }
+
+  @override
+  String getTitle() => AppLocale.labels.currencyHeadline;
 
   @override
   String getButtonName() => AppLocale.labels.currencyUpdateTooltip;
@@ -42,14 +50,16 @@ class CurrencyPageState extends AbstractPageState<CurrencyPage> {
     );
   }
 
-  void updateAllRates(context) {
+  void updateAllRates(BuildContext context) {
     for (CurrencyAppData rate in scope!) {
-      super.state.update(rate.uuid, rate);
+      if ((state.getByUuid(rate.uuid) as CurrencyAppData).details != rate.details) {
+        state.update(rate.uuid, rate);
+      }
     }
     NotificationBar.showSnackBar(context, AppLocale.labels.saveNotification);
   }
 
-  void updateRate(CurrencyAppData initial, double? value) {
+  void changeRate(CurrencyAppData initial, double? value) {
     if (value != null) {
       initial.details = value;
     }
@@ -72,57 +82,60 @@ class CurrencyPageState extends AbstractPageState<CurrencyPage> {
           }));
       return ThemeHelper.emptyBox;
     }
-    return ListView.builder(
-        scrollDirection: Axis.vertical,
-        shrinkWrap: true,
-        itemCount: scope?.length,
-        itemBuilder: (context, index) {
-          final item = scope![index];
-          final history = HistoryData.getLog(item.uuid)?.where((e) => e.timestamp.isAfter(cutDate)).toList();
-          return Padding(
-            padding: EdgeInsets.all(indent),
-            child: RowWidget(
-              indent: indent,
-              maxWidth: ThemeHelper.getWidth(context, 4, constraints),
-              chunk: const [85, null, 100],
-              children: [
-                [
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        item.uuid,
-                        style: textTheme.bodyMedium,
-                        overflow: TextOverflow.ellipsis,
-                      ),
-                      Text(
-                        item.updatedAtFormatted,
-                        style: textTheme.bodySmall,
-                        overflow: TextOverflow.ellipsis,
-                      ),
-                    ],
-                  ),
-                ],
-                [
-                  SimpleInput(
-                    controller: TextEditingController(text: item.details.toString()),
-                    type: TextInputType.number,
-                    setState: (value) => updateRate(item, double.tryParse(value)),
-                  )
-                ],
-                [
-                  Padding(
-                    padding: EdgeInsets.only(top: indent),
-                    child: TradeChart(
-                      data: history ?? [],
-                      width: 100,
-                      height: 40,
+    return FocusWrapper(
+      controller: focus,
+      child: ListView.builder(
+          scrollDirection: Axis.vertical,
+          shrinkWrap: true,
+          itemCount: scope?.length,
+          itemBuilder: (context, index) {
+            final item = scope![index];
+            final history = HistoryData.getStream(item.uuid, filter: (e) => e.timestamp.isBefore(cutDate))?.toList();
+            return Padding(
+              padding: EdgeInsets.all(indent),
+              child: RowWidget(
+                indent: indent,
+                maxWidth: ThemeHelper.getWidth(context, 4, constraints),
+                chunk: const [85, null, 100],
+                children: [
+                  [
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          item.uuid,
+                          style: textTheme.bodyMedium,
+                          overflow: TextOverflow.ellipsis,
+                        ),
+                        Text(
+                          item.updatedAtFormatted,
+                          style: textTheme.bodySmall,
+                          overflow: TextOverflow.ellipsis,
+                        ),
+                      ],
                     ),
-                  ),
+                  ],
+                  [
+                    SimpleInput(
+                      controller: TextEditingController(text: item.details.toString()),
+                      type: TextInputType.number,
+                      setState: (value) => changeRate(item, double.tryParse(value)),
+                    )
+                  ],
+                  [
+                    Padding(
+                      padding: EdgeInsets.only(top: indent),
+                      child: TradeChart(
+                        data: history ?? [],
+                        width: 100,
+                        height: 40,
+                      ),
+                    ),
+                  ],
                 ],
-              ],
-            ),
-          );
-        });
+              ),
+            );
+          }),
+    );
   }
 }

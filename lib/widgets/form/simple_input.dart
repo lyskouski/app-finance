@@ -1,6 +1,7 @@
 // Copyright 2023 The terCAD team. All rights reserved.
 // Use of this source code is governed by a CC BY-NC-ND 4.0 license that can be found in the LICENSE file.
 
+import 'package:app_finance/_classes/controller/focus_controller.dart';
 import 'package:app_finance/_configs/custom_color_scheme.dart';
 import 'package:app_finance/_configs/custom_text_theme.dart';
 import 'package:app_finance/_ext/build_context_ext.dart';
@@ -17,6 +18,7 @@ class SimpleInput extends StatelessWidget {
   final Function? setState;
   final String? tooltip;
   final TextInputType type;
+  final FocusController? focusController;
   final List<TextInputFormatter>? formatter;
   final TextEditingController controller;
   final bool obscure;
@@ -25,6 +27,7 @@ class SimpleInput extends StatelessWidget {
   SimpleInput({
     super.key,
     required this.controller,
+    this.focusController,
     this.setState,
     this.tooltip,
     this.formatter,
@@ -40,7 +43,7 @@ class SimpleInput extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final textTheme = context.textTheme;
-    final focusController = FocusWrapper.of(context)!;
+    final focusController = FocusWrapper.of(context) ?? this.focusController;
     return TextFormField(
       controller: controller,
       inputFormatters: formatter,
@@ -49,11 +52,11 @@ class SimpleInput extends StatelessWidget {
       obscureText: obscure,
       obscuringCharacter: '*',
       keyboardType: type,
-      focusNode: focusController.bind(this, context: context, value: controller.text),
-      textInputAction: focusController.getAction(this),
-      onTap: () => focusController.onFocus(this),
-      onEditingComplete: () => focusController.onEditingComplete(this),
-      autofocus: focusController.isFocused(this),
+      focusNode: focusController?.bind(this, context: context, value: controller.text),
+      textInputAction: focusController?.getAction(this),
+      onTap: () => focusController?.onFocus(this),
+      onEditingComplete: () => focusController?.onEditingComplete(this),
+      autofocus: focusController?.isFocused(this) ?? false,
       decoration: InputDecoration(
         filled: true,
         border: InputBorder.none,

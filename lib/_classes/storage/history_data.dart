@@ -31,8 +31,8 @@ class HistoryData {
     return _history[uuid]?.values.map((e) => e.clone()).toList();
   }
 
-  static InterfaceIterator<int, dynamic, TransactionLogData>? getStream(String uuid) =>
-      _history[uuid]?.toStream<TransactionLogData>(false, transform: (e) => e.clone());
+  static InterfaceIterator<int, dynamic, TransactionLogData>? getStream(String uuid, {Function? filter}) =>
+      _history[uuid]?.toStream<TransactionLogData>(false, filter: filter, transform: (e) => e.clone());
 
   static List<List<TransactionLogData>?> getMultiLog(List<InterfaceAppData> scope) {
     return scope.map((e) => getLog(e.uuid!)).toList();
