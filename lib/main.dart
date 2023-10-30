@@ -111,9 +111,8 @@ class MyApp extends StatefulWidget {
 }
 
 class MyAppState extends State<MyApp> {
-  String route = AppRoute.homeRoute;
-
   WidgetBuilder? getPage(String route, Object? arguments) {
+    AppRoute.current = route;
     if (widget.platform != null) {
       FirebaseAnalytics.instance.logSelectContent(
         contentType: route,

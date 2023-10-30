@@ -7,6 +7,7 @@ const routeArguments = (
 );
 
 abstract class AppRoute {
+  static String current = homeRoute;
   static const String aboutRoute = '/app/finance/about';
   static const String accountRoute = '/app/finance/account';
   static const String accountAddRoute = '/app/finance/account/add';

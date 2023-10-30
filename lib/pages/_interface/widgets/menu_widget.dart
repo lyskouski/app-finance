@@ -3,6 +3,7 @@
 
 import 'package:app_finance/_classes/structure/navigation/app_menu.dart';
 import 'package:app_finance/_classes/structure/navigation/app_menu_item.dart';
+import 'package:app_finance/_classes/structure/navigation/app_route.dart';
 import 'package:app_finance/_ext/build_context_ext.dart';
 import 'package:app_finance/widgets/wrapper/text_wrapper.dart';
 import 'package:flutter/material.dart';
@@ -43,25 +44,29 @@ class MenuWidget extends StatelessWidget {
       autofocus: selectedIndex == index,
       focusNode: FocusNode(),
       onFocusChange: _onHover,
-      child: InkWell(
-        autofocus: selectedIndex == index,
-        focusColor: colorScheme.inversePrimary,
-        canRequestFocus: true,
-        onTap: () {
-          setState();
-          _navigateToPage(nav, menu.route);
-        },
-        onHover: _onHover,
-        child: ListTile(
-          leading: Icon(
-            menu.icon,
-            color: color,
-          ),
-          title: MouseRegion(
-            cursor: SystemMouseCursors.click,
-            child: TextWrapper(
-              menu.name,
-              style: textTheme.bodyMedium?.copyWith(color: color),
+      child: Container(
+        color: AppRoute.current == menu.route ? colorScheme.background : null,
+        child: InkWell(
+          autofocus: selectedIndex == index,
+          focusColor: colorScheme.inversePrimary,
+          highlightColor: colorScheme.background,
+          canRequestFocus: true,
+          onTap: () {
+            setState();
+            _navigateToPage(nav, menu.route);
+          },
+          onHover: _onHover,
+          child: ListTile(
+            leading: Icon(
+              menu.icon,
+              color: color,
+            ),
+            title: MouseRegion(
+              cursor: SystemMouseCursors.click,
+              child: TextWrapper(
+                menu.name,
+                style: textTheme.bodyMedium?.copyWith(color: color),
+              ),
             ),
           ),
         ),
