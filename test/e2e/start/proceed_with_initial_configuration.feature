@@ -8,6 +8,8 @@ Feature: Verify Initial Flow
         Then I can see "Acknowledge (Go Next)" button
         When I tap "Acknowledge (Go Next)" button
         Given preferences are updated (actually, mocked)
+        Then I can see "Acknowledge (Go Next)" button
+        When I tap "Acknowledge (Go Next)" button
         Then I can see "Create new Account" button
         When I tap on 0 index of "ListSelector" fields
         And I tap "Bank Account" element
