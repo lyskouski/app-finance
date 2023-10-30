@@ -1,7 +1,5 @@
 {
     "a": "RUN `dart run grinder sort-translations --quiet` FOR ORDERING",
-    "termPrivacy": "Palityka Pryvatnaści",
-    "termUse": "Umovy Vykarystańnia",
     "aboutHeadline": "Ab Dadatku",
     "account": "Rachunak",
     "accountFrom": "Z Rachunku",
@@ -346,6 +344,8 @@
     "systemMode": "Sistemny",
     "tapToOpen": "Naciśnicie, kab Adkryć",
     "targetAmount": "Metavaja Suma",
+    "termPrivacy": "Palityka Pryvatnaści",
+    "termUse": "Umovy Vykarystańnia",
     "title": "Nazva",
     "titleAccountTooltip": "Uviad́zicie Identyfikatar Rachunka",
     "titleBudgetTooltip": "Uviad́zicie nazvu katehoryi biudžetu",

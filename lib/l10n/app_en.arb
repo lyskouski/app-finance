@@ -1,7 +1,5 @@
 {
     "a": "RUN `dart run grinder sort-translations --quiet` FOR ORDERING",
-    "termPrivacy": "Privacy Policy",
-    "termUse": "Terms of Use",
     "aboutHeadline": "About",
     "account": "Account",
     "accountFrom": "From Account",
@@ -346,6 +344,8 @@
     "systemMode": "System",
     "tapToOpen": "Tap to Open",
     "targetAmount": "Target Amount",
+    "termPrivacy": "Privacy Policy",
+    "termUse": "Terms of Use",
     "title": "Title",
     "titleAccountTooltip": "Enter Account Identifier",
     "titleBudgetTooltip": "Enter Budget Category Name",

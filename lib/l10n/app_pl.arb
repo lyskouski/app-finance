@@ -1,7 +1,5 @@
 {
     "a": "RUN `dart run grinder sort-translations --quiet` FOR ORDERING",
-    "termPrivacy": "Polityka prywatności",
-    "termUse": "Warunki użytkowania",
     "aboutHeadline": "O aplikacji",
     "account": "Konto",
     "accountFrom": "Od konta",
@@ -346,6 +344,8 @@
     "systemMode": "Systemowy",
     "tapToOpen": "Naciśnij, aby otworzyć",
     "targetAmount": "Kwota docelowa",
+    "termPrivacy": "Polityka prywatności",
+    "termUse": "Warunki użytkowania",
     "title": "Tytuł",
     "titleAccountTooltip": "Wprowadź identyfikator konta",
     "titleBudgetTooltip": "Wprowadź nazwę kategorii budżetu",

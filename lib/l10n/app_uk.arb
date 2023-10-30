@@ -1,7 +1,5 @@
 {
     "a": "RUN `dart run grinder sort-translations --quiet` FOR ORDERING",
-    "termPrivacy": "Політика приватності",
-    "termUse": "Умови використання",
     "aboutHeadline": "Про додаток",
     "account": "Рахунок",
     "accountFrom": "З рахунку",
@@ -341,6 +339,8 @@
     "systemMode": "Системний",
     "tapToOpen": "Натисніть, щоб відкрити",
     "targetAmount": "Цільова сума",
+    "termPrivacy": "Політика приватності",
+    "termUse": "Умови використання",
     "title": "Назва",
     "titleAccountTooltip": "Введіть ідентифікатор рахунку",
     "titleBudgetTooltip": "Введіть назву категорії бюджету",

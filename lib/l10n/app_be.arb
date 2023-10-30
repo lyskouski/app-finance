@@ -1,7 +1,5 @@
 {
     "a": "RUN `dart run grinder sort-translations --quiet` FOR ORDERING",
-    "termPrivacy": "Палітыка прыватнасьці",
-    "termUse": "Умовы выкарыстаньня",
     "aboutHeadline": "Аб дадатку",
     "account": "Рахунак",
     "accountFrom": "З рахунку",
@@ -346,6 +344,8 @@
     "systemMode": "Сістэмны",
     "tapToOpen": "Націсьніце, каб адкрыць",
     "targetAmount": "Мэтавая сума",
+    "termPrivacy": "Палітыка прыватнасьці",
+    "termUse": "Умовы выкарыстаньня",
     "title": "Назва",
     "titleAccountTooltip": "Увядьзіце ідэнтыфікатар рахунка",
     "titleBudgetTooltip": "Увядьзіце назву катэгорыі бюджэту",
