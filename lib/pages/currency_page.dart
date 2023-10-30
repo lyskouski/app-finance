@@ -14,7 +14,6 @@ import 'package:app_finance/widgets/generic/notification_bar.dart';
 import 'package:app_finance/widgets/form/simple_input.dart';
 import 'package:app_finance/widgets/wrapper/focus_wrapper.dart';
 import 'package:app_finance/widgets/wrapper/row_widget.dart';
-import 'package:app_finance/widgets/wrapper/single_scroll_wrapper.dart';
 import 'package:flutter/material.dart';
 
 class CurrencyPage extends StatefulWidget {
@@ -82,60 +81,60 @@ class CurrencyPageState extends AbstractPageState<CurrencyPage> {
           }));
       return ThemeHelper.emptyBox;
     }
+    final crossAxisCount = ThemeHelper.getWidthCount(null, context);
     return FocusWrapper(
       controller: focus,
-      child: ListView.builder(
-          scrollDirection: Axis.vertical,
-          shrinkWrap: true,
-          itemCount: scope?.length,
-          itemBuilder: (context, index) {
-            final item = scope![index];
+      child: Padding(
+        padding: EdgeInsets.all(indent),
+        child: Wrap(
+          spacing: indent,
+          runSpacing: indent * 2,
+          children: scope!.map((item) {
             final history = HistoryData.getStream(item.uuid, filter: (e) => e.timestamp.isBefore(cutDate))?.toList();
-            return Padding(
-              padding: EdgeInsets.all(indent),
-              child: RowWidget(
-                indent: indent,
-                maxWidth: ThemeHelper.getWidth(context, 4, constraints),
-                chunk: const [85, null, 100],
-                children: [
-                  [
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          item.uuid,
-                          style: textTheme.bodyMedium,
-                          overflow: TextOverflow.ellipsis,
-                        ),
-                        Text(
-                          item.updatedAtFormatted,
-                          style: textTheme.bodySmall,
-                          overflow: TextOverflow.ellipsis,
-                        ),
-                      ],
-                    ),
-                  ],
-                  [
-                    SimpleInput(
-                      controller: TextEditingController(text: item.details.toString()),
-                      type: TextInputType.number,
-                      setState: (value) => changeRate(item, double.tryParse(value)),
-                    )
-                  ],
-                  [
-                    Padding(
-                      padding: EdgeInsets.only(top: indent),
-                      child: TradeChart(
-                        data: history ?? [],
-                        width: 100,
-                        height: 40,
+            return RowWidget(
+              indent: indent,
+              maxWidth: ThemeHelper.getWidth(context, 4, constraints) / crossAxisCount,
+              chunk: const [85, null, 100],
+              children: [
+                [
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        item.uuid,
+                        style: textTheme.bodyMedium,
+                        overflow: TextOverflow.ellipsis,
                       ),
-                    ),
-                  ],
+                      Text(
+                        item.updatedAtFormatted,
+                        style: textTheme.bodySmall,
+                        overflow: TextOverflow.ellipsis,
+                      ),
+                    ],
+                  ),
                 ],
-              ),
+                [
+                  SimpleInput(
+                    controller: TextEditingController(text: item.details.toString()),
+                    type: TextInputType.number,
+                    setState: (value) => changeRate(item, double.tryParse(value)),
+                  )
+                ],
+                [
+                  Padding(
+                    padding: EdgeInsets.only(top: indent),
+                    child: TradeChart(
+                      data: history ?? [],
+                      width: 100,
+                      height: 40,
+                    ),
+                  ),
+                ],
+              ],
             );
-          }),
+          }).toList(),
+        ),
+      ),
     );
   }
 }
