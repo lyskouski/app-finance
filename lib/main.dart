@@ -123,7 +123,7 @@ class MyAppState extends State<MyApp> {
     final String key = args?['uuid'] ?? args?['search'] ?? '';
 
     final routes = <String, WidgetBuilder>{
-      AppRoute.aboutRoute: (context) => const AboutPage(),
+      AppRoute.aboutRoute: (context) => AboutPage(search: key),
       AppRoute.accountRoute: (context) => const AccountPage(),
       AppRoute.accountAddRoute: (context) => const AccountAddPage(),
       AppRoute.accountViewRoute: (context) => AccountViewPage(uuid: key),

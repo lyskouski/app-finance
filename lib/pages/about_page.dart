@@ -14,7 +14,9 @@ import 'package:flutter_markdown/flutter_markdown.dart';
 import 'package:package_info_plus/package_info_plus.dart';
 
 class AboutPage extends StatefulWidget {
-  const AboutPage({super.key});
+  final String? search;
+
+  const AboutPage({super.key, this.search});
 
   @override
   AboutPageState createState() => AboutPageState();
@@ -104,14 +106,14 @@ class AboutPageState extends AbstractPageState<AboutPage> with LauncherMixin {
               [
                 ElevatedButton(
                   onPressed: () => openURL('https://github.com/lyskouski/app-finance/releases'),
-                  child: Text(AppLocale.labels.releases, overflow: TextOverflow.ellipsis),
+                  child: TextWrapper(AppLocale.labels.releases),
                 ),
               ],
               [
                 Center(
                   child: ElevatedButton(
                     onPressed: () => openURL('https://github.com/users/lyskouski/projects/2/views/1'),
-                    child: Text(AppLocale.labels.roadmap, overflow: TextOverflow.ellipsis),
+                    child: TextWrapper(AppLocale.labels.roadmap),
                   ),
                 ),
               ],
@@ -120,7 +122,7 @@ class AboutPageState extends AbstractPageState<AboutPage> with LauncherMixin {
                   alignment: Alignment.centerRight,
                   child: ElevatedButton(
                     onPressed: () => openURL('https://github.com/lyskouski/app-finance/milestones'),
-                    child: Text(AppLocale.labels.milestones, overflow: TextOverflow.ellipsis),
+                    child: TextWrapper(AppLocale.labels.milestones),
                   ),
                 ),
               ],
@@ -130,6 +132,7 @@ class AboutPageState extends AbstractPageState<AboutPage> with LauncherMixin {
           Expanded(
             child: TabWidget(
               type: TabType.secondary,
+              focus: double.tryParse(widget.search ?? '0')?.toInt() ?? 0,
               tabs: [
                 Tab(text: AppLocale.labels.termPrivacy),
                 Tab(text: AppLocale.labels.termUse),
