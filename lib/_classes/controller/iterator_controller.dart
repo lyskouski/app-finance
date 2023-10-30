@@ -5,6 +5,7 @@ import 'dart:collection';
 
 abstract interface class InterfaceIterator<T extends num, K, M> {
   void reset();
+  int get length;
   bool get isFirst;
   bool get isFinished;
   bool get isEmpty;
@@ -26,6 +27,9 @@ class IteratorController<T extends num, K, M> implements InterfaceIterator<T, K,
   Function transform;
 
   IteratorController(this.data, {required this.transform, this.boundary, this.filter});
+
+  @override
+  int get length => data.length;
 
   @override
   void reset() => pointer = 0;

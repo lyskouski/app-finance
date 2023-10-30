@@ -12,11 +12,11 @@ import 'package:app_finance/_configs/theme_helper.dart';
 import 'package:app_finance/widgets/wrapper/text_wrapper.dart';
 import 'package:flutter/material.dart';
 
-class AccountHeaderWidget extends StatelessWidget {
+class AccountLineWidget extends StatelessWidget {
   final AccountAppData item;
   final double width;
 
-  const AccountHeaderWidget({
+  const AccountLineWidget({
     super.key,
     required this.item,
     required this.width,

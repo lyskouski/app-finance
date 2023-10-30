@@ -3,11 +3,15 @@
 
 import 'package:app_finance/_classes/storage/app_data.dart';
 import 'package:app_finance/_classes/herald/app_locale.dart';
+import 'package:app_finance/_classes/structure/account_app_data.dart';
 import 'package:app_finance/_classes/structure/currency/exchange.dart';
 import 'package:app_finance/_configs/theme_helper.dart';
 import 'package:app_finance/_classes/structure/navigation/app_route.dart';
 import 'package:app_finance/pages/_interface/abstract_page_state.dart';
-import 'package:app_finance/pages/home/widgets/account_widget.dart';
+import 'package:app_finance/pages/account/widgets/account_line_widget.dart';
+import 'package:app_finance/widgets/generic/base_header_widget.dart';
+import 'package:app_finance/widgets/generic/base_swipe_widget.dart';
+import 'package:app_finance/widgets/wrapper/tap_widget.dart';
 import 'package:flutter/material.dart';
 
 class AccountPage extends StatefulWidget {
@@ -23,8 +27,6 @@ class AccountPage extends StatefulWidget {
 }
 
 class AccountPageState extends AbstractPageState<AccountPage> {
-  late AppDataGetter items;
-
   AppDataGetter _getItems() {
     if (widget.search != null) {
       final scope = state.getList(AppDataType.accounts).where((e) => e.title.toString().startsWith(widget.search!));
@@ -62,16 +64,38 @@ class AccountPageState extends AbstractPageState<AccountPage> {
 
   @override
   Widget buildContent(BuildContext context, BoxConstraints constraints) {
-    items = _getItems();
-    return Column(
-      children: [
-        AccountWidget(
-          margin: EdgeInsets.all(ThemeHelper.getIndent()),
-          title: AppLocale.labels.accountHeadline,
-          state: items,
-          width: ThemeHelper.getWidth(context, 3, constraints),
-        )
-      ],
+    final items = _getItems();
+    final width = ThemeHelper.getWidth(context, 4, constraints);
+    return ListView.separated(
+      padding: EdgeInsets.all(ThemeHelper.getIndent()),
+      scrollDirection: Axis.vertical,
+      shrinkWrap: true,
+      itemCount: items.stream.length + 2,
+      separatorBuilder: (_, index) => index > 0 ? const Divider() : ThemeHelper.hIndent,
+      itemBuilder: (BuildContext context, index) {
+        if (index == 0) {
+          return BaseHeaderWidget(
+            route: AppRoute.homeRoute,
+            tooltip: AppLocale.labels.homeTooltip,
+            width: width,
+            total: items.total,
+            title: '${AppLocale.labels.accountHeadline}, ${AppLocale.labels.total}',
+          );
+        }
+        AccountAppData? item = items.stream.next;
+        if (item == null) {
+          return ThemeHelper.formEndBox;
+        }
+        return BaseSwipeWidget(
+          routePath: AppRoute.accountEditRoute,
+          uuid: item.uuid!,
+          child: TapWidget(
+            tooltip: '',
+            route: RouteSettings(name: AppRoute.accountViewRoute, arguments: {routeArguments.uuid: item.uuid}),
+            child: AccountLineWidget(item: item, width: width),
+          ),
+        );
+      },
     );
   }
 }
