@@ -5,6 +5,7 @@ import 'dart:math';
 
 import 'package:adaptive_breakpoints/adaptive_breakpoints.dart';
 import 'package:app_finance/_classes/herald/app_zoom.dart';
+import 'package:app_finance/_configs/display_helper.dart';
 import 'package:app_finance/pages/_interface/abstract_page_state.dart';
 import 'package:flutter/material.dart';
 
@@ -31,8 +32,12 @@ class ThemeHelper {
   static double getIndent([double multiply = 1]) => _Sizes.normal / AppZoom.state * multiply;
 
   static double _env(BuildContext context, BoxConstraints? constraints) =>
-      (constraints != null && isNavRight(context, constraints) && !isWearable ? AbstractPageState.barHeight : 0) -
-      (constraints != null && isWideScreen(constraints) ? AbstractPageState.menuWidth : 0);
+      (constraints != null && isNavRight(context, constraints) && !isWearable || DisplayHelper.state().isRight
+          ? AbstractPageState.barHeight
+          : 0) +
+      (constraints != null && isWideScreen(constraints) || DisplayHelper.state().isWide
+          ? AbstractPageState.menuWidth
+          : 0);
 
   static double getMaxWidth(BuildContext context, BoxConstraints constraints) =>
       constraints.maxWidth - _env(context, constraints);
@@ -107,7 +112,7 @@ class ThemeHelper {
       isNavBottom(constraints) && getHeightCount(context, constraints) <= 2;
 
   static int getWidthCount(BoxConstraints? constraints, [BuildContext? context]) {
-    final width = constraints?.maxWidth ?? getWidth(context!);
+    double width = context != null ? getWidth(context, 0, constraints) : constraints?.maxWidth ?? 0;
     final matrix = {
       AdaptiveWindowType.xlarge: width >= 1440, // AdaptiveWindowType.xlarge.widthRangeValues.start,
       AdaptiveWindowType.large: width >= 1024, // AdaptiveWindowType.large.widthRangeValues.start,

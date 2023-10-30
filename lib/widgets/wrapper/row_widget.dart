@@ -55,17 +55,18 @@ class RowWidget extends StatelessWidget {
         mainAxisAlignment: alignment,
         // mainAxisAlignment: MainAxisAlignment.start,
         children: List<Widget>.generate(2 * chunk.length - 1, (index) {
+          final idx = index ~/ 2;
           if (index % 2 == 1) {
             return SizedBox(width: indent);
-          } else if (chunk[index ~/ 2] > 0) {
+          } else if (chunk[idx] > 0) {
             return Container(
               constraints: BoxConstraints(
-                maxWidth: chunk[index ~/ 2],
-                minWidth: chunk[index ~/ 2],
+                maxWidth: chunk[idx],
+                minWidth: chunk[idx],
               ),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
-                children: children[index ~/ 2],
+                children: children[idx],
               ),
             );
           } else {

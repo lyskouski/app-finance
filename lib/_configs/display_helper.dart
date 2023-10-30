@@ -41,15 +41,25 @@ class DisplayHelper {
     width = ThemeHelper.getWidth(context, 0, constraints);
   }
 
-  static DisplayHelperState state() => (
-        isWide: _instance!.isWide,
-        isBottom: _instance!.isBottom,
-        isWearable: _instance!.isWearable,
-        isRight: _instance!.isRight,
-        isLeftBar: _instance!.isLeftBar,
-        height: _instance!.height,
-        width: _instance!.width,
-      );
+  static DisplayHelperState state() => _instance == null
+      ? (
+          isWide: false,
+          isBottom: false,
+          isWearable: false,
+          isRight: false,
+          isLeftBar: false,
+          height: 0,
+          width: 0,
+        )
+      : (
+          isWide: _instance!.isWide,
+          isBottom: _instance!.isBottom,
+          isWearable: _instance!.isWearable,
+          isRight: _instance!.isRight,
+          isLeftBar: _instance!.isLeftBar,
+          height: _instance!.height,
+          width: _instance!.width,
+        );
 
   static DisplayHelperState getInstance(BuildContext context, BoxConstraints constraints) {
     _instance ??= DisplayHelper(context, constraints);

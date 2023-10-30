@@ -31,7 +31,7 @@ class GridLayer extends StatelessWidget {
           ? RowWidget(
               indent: padding,
               maxWidth: width ?? ThemeHelper.getWidth(context, 2),
-              chunk: List.filled(crossAxisCount, null),
+              chunk: List.generate(crossAxisCount, (_) => null),
               children: fnList(strategy).cast<List<Widget>>().toList(),
             )
           : Column(
