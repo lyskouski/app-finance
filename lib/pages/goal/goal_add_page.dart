@@ -19,6 +19,7 @@ import 'package:app_finance/widgets/form/simple_input.dart';
 import 'package:app_finance/widgets/wrapper/required_widget.dart';
 import 'package:app_finance/widgets/wrapper/row_widget.dart';
 import 'package:app_finance/widgets/wrapper/single_scroll_wrapper.dart';
+import 'package:app_finance/widgets/wrapper/text_wrapper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_currency_picker/flutter_currency_picker.dart';
 
@@ -83,6 +84,9 @@ class GoalAddPageState<T extends GoalAddPage> extends AbstractPageState<GoalAddP
   }
 
   void updateStorage() {
+    if (currency != null) {
+      CurrencyProvider.pin(currency!);
+    }
     super.state.add(GoalAppData(
           title: title.text,
           initial: Exchange(store: super.state)
@@ -125,7 +129,7 @@ class GoalAddPageState<T extends GoalAddPage> extends AbstractPageState<GoalAddP
   Widget buildContent(BuildContext context, BoxConstraints constraints) {
     final TextTheme textTheme = context.textTheme;
     double indent = ThemeHelper.getIndent(2);
-    double width = ThemeHelper.getWidth(context, 6);
+    double width = ThemeHelper.getWidth(context, 6, constraints);
 
     return SingleScrollWrapper(
       controller: focus,
@@ -147,7 +151,7 @@ class GoalAddPageState<T extends GoalAddPage> extends AbstractPageState<GoalAddP
               chunk: const [null, null],
               children: [
                 [
-                  Text(
+                  TextWrapper(
                     AppLocale.labels.icon,
                     style: textTheme.bodyLarge,
                   ),
@@ -157,7 +161,7 @@ class GoalAddPageState<T extends GoalAddPage> extends AbstractPageState<GoalAddP
                   ),
                 ],
                 [
-                  Text(
+                  TextWrapper(
                     AppLocale.labels.color,
                     style: textTheme.bodyLarge,
                   ),
@@ -173,10 +177,10 @@ class GoalAddPageState<T extends GoalAddPage> extends AbstractPageState<GoalAddP
               indent: indent,
               maxWidth: width + indent,
               alignment: MainAxisAlignment.start,
-              chunk: const [120, null],
+              chunk: const [90, null],
               children: [
                 [
-                  Text(
+                  TextWrapper(
                     AppLocale.labels.currency,
                     style: textTheme.bodyLarge,
                   ),
@@ -188,7 +192,7 @@ class GoalAddPageState<T extends GoalAddPage> extends AbstractPageState<GoalAddP
                   ),
                 ],
                 [
-                  Text(
+                  TextWrapper(
                     AppLocale.labels.targetAmount,
                     style: textTheme.bodyLarge,
                   ),
