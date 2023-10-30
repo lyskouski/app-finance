@@ -27,7 +27,7 @@ class ClearMockedPreferences extends Given {
     pref.mockGetString = (value) => null;
     AppPreferences.pref = pref;
     await FileRunner.tester.pumpAndSettle();
-    final ScaffoldState scafState = FileRunner.tester.firstState(find.byType(Scaffold).at(1));
+    final ScaffoldState scafState = FileRunner.tester.firstState(find.byType(Scaffold).at(0));
     scafState.openDrawer();
     await FileRunner.tester.pumpAndSettle();
   }

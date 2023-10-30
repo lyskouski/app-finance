@@ -53,8 +53,7 @@ class DisplayHelper {
 
   static DisplayHelperState getInstance(BuildContext context, BoxConstraints constraints) {
     _instance ??= DisplayHelper(context, constraints);
-    if (_instance!.height != ThemeHelper.getHeight(context) &&
-        _instance!.originWidth != ThemeHelper.getWidth(context)) {
+    if (_instance!.originWidth != ThemeHelper.getWidth(context)) {
       _instance!.init(context, constraints);
     }
     return state();

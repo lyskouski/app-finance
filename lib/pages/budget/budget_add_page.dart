@@ -117,7 +117,7 @@ class BudgetAddPageState<T extends BudgetAddPage> extends AbstractAddPageState<B
   Widget buildContent(BuildContext context, BoxConstraints constraints) {
     final textTheme = context.textTheme;
     double indent = ThemeHelper.getIndent(2);
-    double width = ThemeHelper.getWidth(context, 6);
+    double width = ThemeHelper.getWidth(context, 6, constraints);
 
     return SingleScrollWrapper(
       controller: focus,

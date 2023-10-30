@@ -162,6 +162,9 @@ class MyAppState extends State<MyApp> {
     final palette = context.watch<AppPalette>().value;
     final text = Theme.of(context).textTheme.withCustom(palette, Brightness.light);
     final textDark = Theme.of(context).textTheme.withCustom(palette, Brightness.dark);
+    final sheet = Theme.of(context).bottomSheetTheme.copyWith(
+          constraints: const BoxConstraints(maxWidth: double.infinity),
+        );
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       localizationsDelegates: AppLocalizations.localizationsDelegates,
@@ -175,6 +178,7 @@ class MyAppState extends State<MyApp> {
         datePickerTheme: DatePickerTheme.of(context).withCustom(palette, text, Brightness.light),
         timePickerTheme: TimePickerTheme.of(context).withCustom(palette, text, Brightness.light),
         dividerTheme: CustomDividerTheme(palette, Brightness.light),
+        bottomSheetTheme: sheet,
         useMaterial3: true,
       ),
       darkTheme: ThemeData(
@@ -185,6 +189,7 @@ class MyAppState extends State<MyApp> {
         datePickerTheme: DatePickerTheme.of(context).withCustom(palette, textDark, Brightness.dark),
         timePickerTheme: TimePickerTheme.of(context).withCustom(palette, textDark, Brightness.dark),
         dividerTheme: CustomDividerTheme(palette, Brightness.dark),
+        bottomSheetTheme: sheet,
         useMaterial3: true,
       ),
       themeMode: context.watch<AppTheme>().value,

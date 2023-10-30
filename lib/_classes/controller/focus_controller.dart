@@ -16,6 +16,7 @@ class FocusController {
   final values = <int?, dynamic>{};
   final order = SplayTreeMap<int, int?>();
   int? focus;
+  static bool force = false;
 
   FocusController();
 
@@ -33,7 +34,9 @@ class FocusController {
     }
     scope[id] ??= FocusNode();
     values[id] = value;
-    _focus.run(onEditingComplete);
+    if (!force) {
+      _focus.run(onEditingComplete);
+    }
     return scope[id]!;
   }
 
@@ -60,8 +63,12 @@ class FocusController {
       return;
     }
     if (order.containsValue(idx) && scope[idx]!.context != null) {
+      double position = _getPosition(scope[idx]!.context!) - _getMinPosition() - 40;
+      if (position < 0) {
+        position = 0;
+      }
       _controller.animateTo(
-        _getPosition(scope[idx]!.context!) - _getMinPosition(),
+        position,
         duration: const Duration(milliseconds: 600),
         curve: Curves.easeInOut,
       );
@@ -71,13 +78,14 @@ class FocusController {
   void onEditingComplete([dynamic item]) {
     int? targetKey = item == null ? focus ?? order.values.firstOrNull : null;
     int? idx;
+    force = false;
     if (item != null) {
       idx = key(item);
       values[idx] = true;
     }
     order.forEach((_, value) {
       if (targetKey != null && (values[value] == '' || values[value] == null)) {
-        onFocus(null, value);
+        onFocus(null, value, false);
         targetKey = null;
       }
       if (value == idx) {
@@ -90,7 +98,7 @@ class FocusController {
 
   void _blur() => scope.forEach((_, value) => value.unfocus());
 
-  void onFocus(dynamic item, [int? idx]) {
+  void onFocus(dynamic item, [int? idx, bool isForced = true]) {
     idx ??= key(item!);
     focus = idx;
     _blur();
@@ -98,6 +106,7 @@ class FocusController {
       scope[idx]!.requestFocus();
       _scrollTo.run(() => scrollToFocusedElement(item, idx));
     }
+    force = isForced;
   }
 
   void dispose() {
