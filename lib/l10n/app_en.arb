@@ -1,5 +1,7 @@
 {
     "a": "RUN `dart run grinder sort-translations --quiet` FOR ORDERING",
+    "termPrivacy": "Privacy Policy",
+    "termUse": "Terms of Use",
     "aboutHeadline": "About",
     "account": "Account",
     "accountFrom": "From Account",

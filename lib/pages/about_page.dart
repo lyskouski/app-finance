@@ -7,6 +7,7 @@ import 'package:app_finance/_ext/build_context_ext.dart';
 import 'package:app_finance/_mixins/launcher_mixin.dart';
 import 'package:app_finance/pages/_interface/abstract_page_state.dart';
 import 'package:app_finance/widgets/wrapper/row_widget.dart';
+import 'package:app_finance/widgets/wrapper/tab_widget.dart';
 import 'package:app_finance/widgets/wrapper/text_wrapper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_markdown/flutter_markdown.dart';
@@ -45,6 +46,18 @@ class AboutPageState extends AbstractPageState<AboutPage> with LauncherMixin {
   @override
   Widget buildButton(BuildContext context, BoxConstraints constraints) {
     return ThemeHelper.emptyBox;
+  }
+
+  Widget buildMarkdown(String name) {
+    return FutureBuilder(
+      future: DefaultAssetBundle.of(context).loadString('./assets/l10n/$name.md'),
+      builder: (context, snapshot) {
+        if (snapshot.hasData) {
+          return Markdown(data: snapshot.data ?? '');
+        }
+        return Container();
+      },
+    );
   }
 
   @override
@@ -115,14 +128,16 @@ class AboutPageState extends AbstractPageState<AboutPage> with LauncherMixin {
           ),
           const Divider(),
           Expanded(
-            child: FutureBuilder(
-              future: DefaultAssetBundle.of(context).loadString('./assets/l10n/privacy_policy_$locale.md'),
-              builder: (context, snapshot) {
-                if (snapshot.hasData) {
-                  return Markdown(data: snapshot.data ?? '');
-                }
-                return Container();
-              },
+            child: TabWidget(
+              type: TabType.secondary,
+              tabs: [
+                Tab(text: AppLocale.labels.termPrivacy),
+                Tab(text: AppLocale.labels.termUse),
+              ],
+              children: [
+                buildMarkdown('privacy_policy_$locale'),
+                buildMarkdown('terms_of_use_$locale'),
+              ],
             ),
           ),
         ],

@@ -5,6 +5,7 @@ import 'package:app_finance/_classes/herald/app_locale.dart';
 import 'package:app_finance/_classes/structure/navigation/app_route.dart';
 import 'package:app_finance/_configs/theme_helper.dart';
 import 'package:app_finance/pages/_interface/abstract_page_state.dart';
+import 'package:app_finance/pages/start/widgets/usage_tab.dart';
 import 'package:app_finance/widgets/button/full_sized_button_widget.dart';
 import 'package:app_finance/widgets/wrapper/tab_widget.dart';
 import 'package:app_finance/pages/start/widgets/account_tab.dart';
@@ -48,7 +49,7 @@ class StartPageState extends AbstractPageState<StartPage> {
         button = btn;
         buttonName = (btn as FullSizedButtonWidget).title;
       });
-    } else if (currentStep > 2) {
+    } else if (currentStep > 3) {
       nav.popAndPushNamed(AppRoute.homeRoute);
     } else {
       setState(() {
@@ -86,7 +87,8 @@ class StartPageState extends AbstractPageState<StartPage> {
         children: [
           SettingTab(setState: fn, isFirstBoot: currentStep < 1 && isEmpty),
           PrivacyTab(setState: fn, isFirstBoot: currentStep < 2 && isEmpty),
-          AccountTab(setState: fn, isFirstBoot: currentStep < 3 && isEmpty),
+          UsageTab(setState: fn, isFirstBoot: currentStep < 3 && isEmpty),
+          AccountTab(setState: fn, isFirstBoot: currentStep < 4 && isEmpty),
           BudgetTab(setState: fn, isFirstBoot: isEmpty),
         ],
       ),
