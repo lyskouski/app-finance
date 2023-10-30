@@ -9,8 +9,6 @@
 
 **Fingrom** -- Open-source cross-platform financial accounting application. Use for free without Ads and limitations.
 
-[!] **Release to Marketplaces is scheduled for November 1st** __(but may be slightly changed since a longer review process for Windows)__
-
 | Type                     | Alpha Version         | Pre-Release                   | Release                       |
 | ------------------------ | ----------------------| ----------------------------- | ----------------------------- |
 | ![Apple](https://github.com/lyskouski/app-finance/blob/main/docs/mockups/icons/apple.png) iOS (Apple Store)        | [fingrom_iOS.ipa](https://github.com/lyskouski/app-finance/releases/latest) | [TestFlight: Fingrom](https://testflight.apple.com/join/93ECy9ZB) | _(postponed availability)_ |
