@@ -62,6 +62,7 @@ class BillTab extends StatelessWidget {
       }
     }
     final budgets = store.getList(AppDataType.budgets);
+    final year = DateTime.now().year;
     return SingleChildScrollView(
       child: Padding(
         padding: EdgeInsets.all(indent * 2),
@@ -78,6 +79,19 @@ class BillTab extends StatelessWidget {
               indent: indent,
               data: data,
               yMax: yMax * 1.2,
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text(
+                  year.toString(),
+                  style: textTheme.bodySmall!.copyWith(color: Colors.blue),
+                ),
+                Text(
+                  (year - 1).toString(),
+                  style: textTheme.bodySmall!.copyWith(color: Colors.grey),
+                ),
+              ],
             ),
             ThemeHelper.hIndent,
             Text(

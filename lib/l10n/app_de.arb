@@ -1,0 +1,367 @@
+{
+    "a": "RUN `dart run grinder sort-translations --quiet` FOR ORDERING",
+    "aboutHeadline": "Über",
+    "account": "Account",
+    "accountFrom": "Von Konto",
+    "accountHeadline": "Konten",
+    "accountTo": "Nach Konto",
+    "accountTooltip": "Offene Konten",
+    "accountType": "Kontoart",
+    "accountTypeTooltip": "Kontotyp wählen",
+    "acknowledgeTooltip": "Bestätigen Sie",
+    "activate": "Aktivieren Sie",
+    "actualData": "Historische Daten",
+    "addAccountTooltip": "Konto hinzufügen",
+    "addBudgetTooltip": "Neue Budgetkategorie hinzufügen",
+    "addGoalTooltip": "Neues Ziel hinzufügen",
+    "addMainTooltip": "Rechnung, Einkommen oder Überweisung hinzufügen",
+    "appBuild": "Erstellen: {build}",
+    "@appBuild": {
+        "build": {
+            "type": "String"
+        }
+    },
+    "appInitHeadline": "Projekt-Initialisierung",
+    "appStartHeadline": "Ersteinrichtung",
+    "appTitle": "Fingrom",
+    "appVersion": "Version: {version}",
+    "@appVersion": {
+        "version": {
+            "type": "String"
+        }
+    },
+    "automationHeadline": "Automatisierung",
+    "backTooltip": "Rückgabe",
+    "balance": "Aktueller Saldo",
+    "balanceDate": "Datum der Aktualisierung des Saldos",
+    "balanceDateTooltip": "Ausgaben und Einnahmen vor diesem Datum haben keinen Einfluss auf den Saldo",
+    "balanceTooltip": "Saldo festlegen",
+    "bankAccount": "Bankkonto",
+    "bill": "Rechnung",
+    "billHeadline": "Rechnungen",
+    "billSetTooltip": "Betrag einstellen",
+    "billSum": "Rechnungen: {value}",
+    "@billSum": {
+        "value": {
+            "type": "String"
+        }
+    },
+    "billTooltip": "Offene Rechnungen",
+    "billTypeTooltip": "[Typ] Rechnung, Einkommen oder Überweisung",
+    "brightnessTheme": "Helligkeit Thema",
+    "btnAdd": "Hinzufügen",
+    "btnCancel": "Abbrechen",
+    "btnConfirm": "Bestätigen",
+    "btnMore": "Mehr",
+    "budget": "Kategorie Budget",
+    "budgetHeadline": "Budgets",
+    "budgetLimit": "Limit pro Monat",
+    "budgetLimitHeadline": "Limit-Anpassungen",
+    "budgetRelativeLimit": "Relativer Koeffizient pro Monat",
+    "budgetTooltip": "Offene Budgetarten",
+    "cash": "Bargeld",
+    "chartBarRace": "Balkenrennen für Kategorien",
+    "chartForecast": "Vorhersage-Chart",
+    "chartOHLC": "Candlestick (OHLC) Diagramm",
+    "chartYtdExpense": "YTD-Ausgaben",
+    "closeTooltip": "Schließen",
+    "closedAt": "Abgeschlossen bis Datum",
+    "cmpRecent": "Neueste Positionen",
+    "cmpRecentCount": "Liste Größe",
+    "coef": "Koeff.",
+    "collapse": "Ausschnitt komprimieren (wiederherstellen)",
+    "color": "Farbe",
+    "colorApp": "Benutzerdefiniert",
+    "colorBackground": "Hintergrund",
+    "colorDark": "Dunkel",
+    "colorInversePrimary": "Invers Primär",
+    "colorInverseSurface": "Inverse Oberfläche",
+    "colorLight": "Hell",
+    "colorOnInverseSurface": "Auf Inverser Oberfläche",
+    "colorOnSecondary": "Auf Sekundär",
+    "colorOnSecondaryContainer": "Auf Behälter",
+    "colorPrimary": "Primär",
+    "colorRestore": "Palette zurücksetzen",
+    "colorSecondary": "Sekundär",
+    "colorSystem": "Standard",
+    "colorTheme": "Palette",
+    "colorTooltip": "Wählen Sie eine Farbe",
+    "colorType": "Farbe Typ",
+    "colorUser": "Persönlich",
+    "columnMap": "Mapping für Spalte '{value}'",
+    "@columnMap": {
+        "value": {
+            "type": "String"
+        }
+    },
+    "columnMapTooltip": "'{value}' - Spaltenzuordnung auswählen",
+    "@columnMapTooltip": {
+        "value": {
+            "type": "String"
+        }
+    },
+    "completeGoalTooltip": "Ziel abschließen",
+    "confirmHeader": "Aktion bestätigen",
+    "confirmTooltip": "Sind Sie sicher? Diese Aktion kann nicht rückgängig gemacht werden.",
+    "conversion": "Umrechnung",
+    "conversionMessage": "Umgerechnet in {currency}",
+    "@conversionMessage": {
+        "currency": {
+            "type": "String"
+        }
+    },
+    "createAccountHeader": "Neues Konto erstellen",
+    "createAccountTooltip": "Neues Konto erstellen",
+    "createBillHeader": "Neue Transaktion erstellen",
+    "createBillTooltip": "Neue Rechnung hinzufügen",
+    "createBudgetHeader": "Neue Budgetkategorie",
+    "createBudgetTooltip": "Neue Budgetkategorie erstellen",
+    "createGoalHeader": "Neues Ziel erstellen",
+    "createGoalTooltip": "Neues Ziel hinzufügen",
+    "createIncomeTooltip": "Neue Einnahme hinzufügen",
+    "createTransferTooltip": "Übertragung erstellen",
+    "credit": "Kredit",
+    "creditCard": "Kreditkarte",
+    "currency": "Währung",
+    "currencyDefault": "Standardwährung",
+    "currencyDistribution": "Vertrieb",
+    "currencyExchange": "Währungsumtausch: {from} -> {to}",
+    "@currencyExchange": {
+        "from": {
+            "type": "String"
+        },
+        "to": {
+            "type": "String"
+        }
+    },
+    "currencyHeadline": "Währungen",
+    "currencyIn": "In {value}",
+    "@currencyIn": {
+        "value": {
+            "type": "String"
+        }
+    },
+    "currencyShort": "Währungen.",
+    "currencyTooltip": "Währungstyp (Code)",
+    "currencyUpdateTooltip": "Währungskurs aktualisieren",
+    "currentDate": "Aktuelles Datum Zeiger",
+    "customAddTooltip": "Widget hinzufügen",
+    "customDeleteTooltip": "Anpassung löschen",
+    "customSaveTooltip": "Anpassung speichern",
+    "customizeTooltip": "Seite anpassen",
+    "darkMode": "Dunkel",
+    "dateFormat": "Datumsformat",
+    "dateTooltip": "Datum auswählen",
+    "debitCard": "Debitkarte",
+    "def": "Standardwert für '{value}'",
+    "@def": {
+        "value": {
+            "type": "String"
+        }
+    },
+    "deleteAccountTooltip": "Konto deaktivieren",
+    "deleteBillTooltip": "Rechnung löschen",
+    "deleteBudgetTooltip": "Budgetkategorie deaktivieren",
+    "deleteGoalTooltip": "Ziel löschen",
+    "deleteInvoiceTooltip": "Rechnung löschen",
+    "deleteTooltip": "löschen",
+    "deleteTransferTooltip": "Überweisung löschen",
+    "deposit": "Einzahlen",
+    "description": "Beschreibung",
+    "descriptionTooltip": "Ausgabendetails festlegen",
+    "details": "Einzelheiten",
+    "detailsTooltip": "****2345 - letzte 4 Ziffern der Nummer",
+    "dtAm": "am",
+    "dtAmPm": "Stunde in am/pm (0~11)",
+    "dtDay": "Tag im Monat",
+    "dtEscape": "Escape für Text",
+    "dtHalfHour": "Stunde in am/pm (1~12)",
+    "dtHour": "Stunde in Tag (0~23)",
+    "dtMinute": "Minute in Stunde",
+    "dtMonth": "Monat im Jahr",
+    "dtNamedDay": "Tag der Woche",
+    "dtPm": "pm",
+    "dtQuote": "einfaches Anführungszeichen",
+    "dtSecond": "Sekunde in Minute",
+    "dtYear": "Jahr",
+    "editAccountHeader": "Konto aktualisieren",
+    "editAccountTooltip": "Konto bearbeiten",
+    "editBillHeader": "Rechnung aktualisieren",
+    "editBillTooltip": "Rechnung bearbeiten",
+    "editBudgetHeader": "Budgetkategorie aktualisieren",
+    "editBudgetTooltip": "Budgetkategorie bearbeiten",
+    "editGoalHeader": "Ziel aktualisieren",
+    "editGoalTooltip": "Ziel bearbeiten",
+    "editInvoiceTooltip": "Rechnung bearbeiten",
+    "editTooltip": "bearbeiten",
+    "editTransferTooltip": "Überweisung bearbeiten",
+    "encryptionMode": "Daten verschlüsseln",
+    "error": "Fehler: {value}",
+    "@error": {
+        "value": {
+            "type": "String"
+        }
+    },
+    "errorNegative": "Kann nicht negativ sein! Bitte beheben Sie den Fehler",
+    "example": "Beispiel",
+    "expand": "Abschnitt erweitern",
+    "expense": "Betrag der Ausgaben",
+    "expenseDateTime": "Abgerechnet zu",
+    "expenseHeadline": "Aufwand",
+    "expenseTransfer": "Betrag der Übertragung",
+    "failData": "Abgezogener Betrag",
+    "flowTypeInvoice": "Rechnung",
+    "flowTypeTooltip": "Betragsart: Rechnung, Fakturierung",
+    "forecastData": "Vorhersage",
+    "from": "von",
+    "goNextTooltip": "Weiter",
+    "goalHeadline": "Ziele",
+    "goalProfit": "Zielvorgabe: {value}",
+    "@goalProfit": {
+        "value": {
+            "type": "String"
+        }
+    },
+    "goalProfitTooltip": "Gewinn vs. Zielvorgabe",
+    "goalTooltip": "Offene Ziele",
+    "hasEncrypted": "Einmal gesetzt, kann nicht geändert werden",
+    "helpTooltip": "[Hilfe] Beschreibung der Seite anzeigen",
+    "homeHeadline": "Startseite",
+    "homeTooltip": "Zurück zur Hauptseite",
+    "icon": "Icon",
+    "iconTooltip": "Icon auswählen",
+    "ignoreTooltip": "Ignorieren",
+    "importHeadline": "importieren",
+    "income": "Betrag des Einkommens",
+    "incomeHeadline": "Einkommen",
+    "incomeHealth": "Einkommens-Gesundheitsradar",
+    "incomeTooltip": "Einkommensdetails festlegen",
+    "invoiceHeadline": "Rechnungen",
+    "invoiceSum": "Rechnungen: {value}",
+    "@invoiceSum": {
+        "value": {
+            "type": "String"
+        }
+    },
+    "isEncrypted": "Datei ist verschlüsselt (standardmäßig)",
+    "isRequired": "erforderlich",
+    "language": "Sprache",
+    "left": "links",
+    "lightMode": "Leicht",
+    "link": "Uniform Resource Locator (URL)",
+    "meaning": "Bedeutung",
+    "metricsHeadline": "Metriken",
+    "metricsTooltip": "Metriken",
+    "milestones": "Meilensteine",
+    "missingContent": "Datei kann nicht verarbeitet werden (entweder abgebrochen)",
+    "navigationTooltip": "Hauptmenü öffnen",
+    "netProfit": "Gewinn: {value}",
+    "@netProfit": {
+        "value": {
+            "type": "String"
+        }
+    },
+    "noChartData": "Daten fehlen (oder sind nicht ausreichend) um angezeigt zu werden",
+    "notifyHeadline": "Benachrichtigungen Parser",
+    "ok": "OK",
+    "outputFile": "Ziel für die Datei",
+    "parseFile": "Parse .csv-Datei",
+    "password": "Kennwort",
+    "path": "Dateiname (zum Speichern oder Laden von)",
+    "pearDisabled": "-- deaktiviert --",
+    "pearLoading": "In Bearbeitung...",
+    "peerAccept": "akzeptieren",
+    "peerAction": "Aktion",
+    "peerClosed": "abgebrochen",
+    "peerConnect": "Gerät verbinden",
+    "peerConnectBtn": "verbinden",
+    "peerDelete": "löschen",
+    "peerDevice": "Verbundene Geräte",
+    "peerId": "Ihre Gerätekennung für die Verbindung",
+    "peerOffline": "offline",
+    "peerOnline": "verbunden",
+    "peerOtherId": "Gerätekennung für Verbindung",
+    "peerPending": "ausstehend",
+    "peerPing": "ping",
+    "peerSent": "Daten werden an verbundene Geräte übertragen",
+    "peerStatus": "Status",
+    "peerSync": "Daten übertragen",
+    "pickFile": "Pick .{value}-Datei",
+    "@pickFile": {
+        "value": {
+            "type": "String"
+        }
+    },
+    "pongStatus": "Anfrage von {uuid} entgegengenommen",
+    "@pongStatus": {
+        "uuid": {
+            "type": "String"
+        }
+    },
+    "processIsFinished": "Beendet!",
+    "progress": "Fortschritt: {value}%",
+    "@progress": {
+        "value": {
+            "type": "double"
+        }
+    },
+    "raiseData": "Betragsaddition",
+    "recoveryHeadline": "Wiederherstellung",
+    "recoveryTooltip": "Wiederherstellen von",
+    "releases": "Freigaben",
+    "reset": "zurücksetzen",
+    "roadmap": "Fahrplan",
+    "saveNotification": "Änderungen gespeichert!",
+    "saveSettingsTooltip": "Speichern",
+    "saveTooltip": "Speichern in",
+    "search": "Nach '{value}'-Muster anzeigen",
+    "@search": {
+        "value": {
+            "type": "String"
+        }
+    },
+    "settingsBaseHeadline": "Grundlagen",
+    "settingsHeadline": "Einstellungen",
+    "skipTooltip": "Schritt(e) überspringen",
+    "spent": "ausgegeben",
+    "splitCancelTooltip": "Aufteilung pro Monat aufheben",
+    "splitTooltip": "Limits pro Monat deklarieren",
+    "subscription": "Da es sich um ein Open-Source-Projekt handelt, werden durch ein Abonnement keine zusätzlichen Funktionen freigeschaltet. Es ist jedoch eine Investition in die kontinuierliche Weiterentwicklung und Verbesserung der Anwendung und in die Erhaltung ihrer Verfügbarkeit.",
+    "subscriptionCoffee": "Einen Kaffee kaufen",
+    "subscriptionDinner": "Zum Essen einladen",
+    "subscriptionDonorbox": "Über Donorbox abonnieren",
+    "subscriptionGithub": "Über GitHub abonnieren",
+    "subscriptionHeadline": "Abonnement",
+    "subscriptionInactive": "Kaufservice nicht verfügbar",
+    "subscriptionPatreon": "Über Patreon abonnieren",
+    "subscriptionPaypal": "Einen Kaffee kaufen (PayPal)",
+    "subscriptionTiny": "Initiale Patenschaft",
+    "subscriptionTooltip": "Aktivieren Sie das Abonnement",
+    "success": "Erfolgreich",
+    "summary": "Zusammenfassung",
+    "symbol": "Symbol",
+    "syncHeadline": "Sync-Geräte",
+    "systemMode": "System",
+    "tapToOpen": "Tippen zum Öffnen",
+    "targetAmount": "Zielbetrag",
+    "title": "Titel",
+    "titleAccountTooltip": "Konto-Identifikator eingeben",
+    "titleBudgetTooltip": "Name der Budgetkategorie eingeben",
+    "titleGoal": "Ziel",
+    "titleGoalTooltip": "Beschreibung des Ziels definieren",
+    "to": "an",
+    "total": "gesamt",
+    "transactionFile": "Fingrom-Transaktionsprotokolldatei (.log)",
+    "transferHeadline": "Übertragen",
+    "transferTooltip": "Übertragungsdetails festlegen",
+    "typeButton": "Schaltfläche",
+    "updateAccountTooltip": "Konto aktualisieren",
+    "updateBillTooltip": "Rechnung aktualisieren",
+    "updateBudgetTooltip": "Budgetkategorie aktualisieren",
+    "updateGoalTooltip": "Ziel aktualisieren",
+    "username": "Benutzername (Konto)",
+    "uuid": "Eindeutiger Transaktionsbezeichner",
+    "validTillDate": "Gültig bis",
+    "webDav": "Verteilte Autorisierung und Versionierung im Web (WebDav)",
+    "zoomState": "Vergrößern / Verkleinern"
+}
