@@ -66,36 +66,43 @@ class AccountPageState extends AbstractPageState<AccountPage> {
   Widget buildContent(BuildContext context, BoxConstraints constraints) {
     final items = _getItems();
     final width = ThemeHelper.getWidth(context, 4, constraints);
-    return ListView.separated(
+    return Padding(
       padding: EdgeInsets.all(ThemeHelper.getIndent()),
-      scrollDirection: Axis.vertical,
-      shrinkWrap: true,
-      itemCount: items.stream.length + 2,
-      separatorBuilder: (_, index) => index > 0 ? const Divider() : ThemeHelper.hIndent,
-      itemBuilder: (BuildContext context, index) {
-        if (index == 0) {
-          return BaseHeaderWidget(
+      child: Column(
+        children: [
+          BaseHeaderWidget(
             route: AppRoute.homeRoute,
             tooltip: AppLocale.labels.homeTooltip,
             width: width,
             total: items.total,
             title: '${AppLocale.labels.accountHeadline}, ${AppLocale.labels.total}',
-          );
-        }
-        AccountAppData? item = items.stream.next;
-        if (item == null) {
-          return ThemeHelper.formEndBox;
-        }
-        return BaseSwipeWidget(
-          routePath: AppRoute.accountEditRoute,
-          uuid: item.uuid!,
-          child: TapWidget(
-            tooltip: '',
-            route: RouteSettings(name: AppRoute.accountViewRoute, arguments: {routeArguments.uuid: item.uuid}),
-            child: AccountLineWidget(item: item, width: width),
           ),
-        );
-      },
+          ThemeHelper.hIndent,
+          Expanded(
+            child: ListView.separated(
+              scrollDirection: Axis.vertical,
+              shrinkWrap: true,
+              itemCount: items.list.length + 1,
+              separatorBuilder: (_, index) => const Divider(),
+              itemBuilder: (BuildContext context, index) {
+                if (index >= items.list.length) {
+                  return ThemeHelper.formEndBox;
+                }
+                AccountAppData item = items.list[index];
+                return BaseSwipeWidget(
+                  routePath: AppRoute.accountEditRoute,
+                  uuid: item.uuid!,
+                  child: TapWidget(
+                    tooltip: '',
+                    route: RouteSettings(name: AppRoute.accountViewRoute, arguments: {routeArguments.uuid: item.uuid}),
+                    child: AccountLineWidget(item: item, width: width),
+                  ),
+                );
+              },
+            ),
+          ),
+        ],
+      ),
     );
   }
 }
