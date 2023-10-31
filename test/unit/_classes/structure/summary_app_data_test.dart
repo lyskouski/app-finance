@@ -16,7 +16,7 @@ void main() {
       final current = DateTime.now();
       final testCases = [
         (item: '1', date: DateTime(current.year, current.month, current.day), listLength: 2, activeLength: 1),
-        (item: '1', date: DateTime(current.year, current.month - 1, current.day), listLength: 2, activeLength: 0),
+        (item: '1', date: DateTime(current.year, current.month - 1, 1), listLength: 2, activeLength: 0),
       ];
 
       for (var v in testCases) {
