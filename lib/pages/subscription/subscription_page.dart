@@ -4,12 +4,12 @@
 import 'package:app_finance/_classes/herald/app_locale.dart';
 import 'package:app_finance/_classes/structure/navigation/app_route.dart';
 import 'package:app_finance/_configs/theme_helper.dart';
-import 'package:app_finance/pages/_interface/abstract_page_state.dart';
+import 'package:app_finance/pages/_interfaces/abstract_page_state.dart';
 import 'package:app_finance/pages/subscription/widgets/apple_widget.dart';
 import 'package:app_finance/pages/subscription/widgets/google_widget.dart';
 import 'package:app_finance/pages/subscription/widgets/other_widget.dart';
-import 'package:app_finance/widgets/wrapper/row_widget.dart';
-import 'package:app_finance/widgets/wrapper/text_wrapper.dart';
+import 'package:app_finance/pages/_widgets/wrapper/row_widget.dart';
+import 'package:app_finance/pages/_widgets/wrapper/text_wrapper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/foundation.dart';
 

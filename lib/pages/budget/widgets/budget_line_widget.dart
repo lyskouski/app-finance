@@ -6,11 +6,11 @@ import 'package:app_finance/_configs/custom_text_theme.dart';
 import 'package:app_finance/_configs/theme_helper.dart';
 import 'package:app_finance/_ext/build_context_ext.dart';
 import 'package:app_finance/charts/bar_horizontal_single.dart';
-import 'package:app_finance/widgets/generic/base_swipe_widget.dart';
-import 'package:app_finance/widgets/wrapper/number_wrapper.dart';
-import 'package:app_finance/widgets/wrapper/row_widget.dart';
-import 'package:app_finance/widgets/wrapper/tap_widget.dart';
-import 'package:app_finance/widgets/wrapper/text_wrapper.dart';
+import 'package:app_finance/pages/_widgets/generic/base_swipe_widget.dart';
+import 'package:app_finance/pages/_widgets/wrapper/number_wrapper.dart';
+import 'package:app_finance/pages/_widgets/wrapper/row_widget.dart';
+import 'package:app_finance/pages/_widgets/wrapper/tap_widget.dart';
+import 'package:app_finance/pages/_widgets/wrapper/text_wrapper.dart';
 import 'package:flutter/material.dart';
 
 class BudgetLineWidget extends StatelessWidget {

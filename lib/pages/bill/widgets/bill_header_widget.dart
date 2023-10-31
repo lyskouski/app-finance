@@ -6,10 +6,10 @@ import 'package:app_finance/_classes/structure/bill_app_data.dart';
 import 'package:app_finance/_ext/build_context_ext.dart';
 import 'package:app_finance/_configs/custom_text_theme.dart';
 import 'package:app_finance/_ext/date_time_ext.dart';
-import 'package:app_finance/widgets/wrapper/number_wrapper.dart';
-import 'package:app_finance/widgets/wrapper/row_widget.dart';
+import 'package:app_finance/pages/_widgets/wrapper/number_wrapper.dart';
+import 'package:app_finance/pages/_widgets/wrapper/row_widget.dart';
 import 'package:app_finance/_configs/theme_helper.dart';
-import 'package:app_finance/widgets/wrapper/text_wrapper.dart';
+import 'package:app_finance/pages/_widgets/wrapper/text_wrapper.dart';
 import 'package:flutter/material.dart';
 
 class BillHeaderWidget extends StatelessWidget {

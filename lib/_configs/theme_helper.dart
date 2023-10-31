@@ -6,7 +6,7 @@ import 'dart:math';
 import 'package:adaptive_breakpoints/adaptive_breakpoints.dart';
 import 'package:app_finance/_classes/herald/app_zoom.dart';
 import 'package:app_finance/_configs/display_helper.dart';
-import 'package:app_finance/pages/_interface/abstract_page_state.dart';
+import 'package:app_finance/pages/_interfaces/abstract_page_state.dart';
 import 'package:flutter/material.dart';
 
 class _Sizes {

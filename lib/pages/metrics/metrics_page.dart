@@ -3,8 +3,8 @@
 
 import 'package:app_finance/_classes/herald/app_locale.dart';
 import 'package:app_finance/_configs/theme_helper.dart';
-import 'package:app_finance/pages/_interface/abstract_page_state.dart';
-import 'package:app_finance/widgets/wrapper/tab_widget.dart';
+import 'package:app_finance/pages/_interfaces/abstract_page_state.dart';
+import 'package:app_finance/pages/_widgets/wrapper/tab_widget.dart';
 import 'package:app_finance/pages/metrics/widgets/account_tab.dart';
 import 'package:app_finance/pages/metrics/widgets/bill_tab.dart';
 import 'package:app_finance/pages/metrics/widgets/budget_tab.dart';

@@ -4,12 +4,12 @@
 import 'package:app_finance/_classes/herald/app_locale.dart';
 import 'package:app_finance/_configs/display_helper.dart';
 import 'package:app_finance/_configs/theme_helper.dart';
-import 'package:app_finance/pages/_interface/abstract_page_state.dart';
+import 'package:app_finance/pages/_interfaces/abstract_page_state.dart';
 import 'package:app_finance/pages/bill/widgets/expenses_tab.dart';
 import 'package:app_finance/pages/bill/widgets/income_tab.dart';
 import 'package:app_finance/pages/bill/widgets/interface_bill_page_inject.dart';
 import 'package:app_finance/pages/bill/widgets/transfer_tab.dart';
-import 'package:app_finance/widgets/wrapper/tab_widget.dart';
+import 'package:app_finance/pages/_widgets/wrapper/tab_widget.dart';
 import 'package:flutter/material.dart';
 
 class BillAddPage extends StatefulWidget {

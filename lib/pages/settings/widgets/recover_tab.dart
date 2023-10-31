@@ -5,12 +5,12 @@ import 'package:app_finance/_classes/herald/app_locale.dart';
 import 'package:app_finance/_classes/controller/focus_controller.dart';
 import 'package:app_finance/_classes/storage/app_data.dart';
 import 'package:app_finance/_configs/theme_helper.dart';
-import 'package:app_finance/widgets/generic/loading_widget.dart';
+import 'package:app_finance/pages/_widgets/generic/loading_widget.dart';
 import 'package:app_finance/pages/settings/widgets/recover_tab/nav_button_widget.dart';
 import 'package:app_finance/pages/settings/widgets/recover_tab/recover_file_form.dart';
 import 'package:app_finance/pages/settings/widgets/recover_tab/recover_webdav_form.dart';
 import 'package:app_finance/pages/settings/widgets/recover_tab/recovery_type.dart';
-import 'package:app_finance/widgets/wrapper/single_scroll_wrapper.dart';
+import 'package:app_finance/pages/_widgets/wrapper/single_scroll_wrapper.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 

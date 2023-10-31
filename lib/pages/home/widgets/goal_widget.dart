@@ -5,10 +5,10 @@ import 'package:app_finance/_classes/herald/app_locale.dart';
 import 'package:app_finance/_classes/structure/navigation/app_route.dart';
 import 'package:app_finance/_configs/theme_helper.dart';
 import 'package:app_finance/_ext/build_context_ext.dart';
-import 'package:app_finance/widgets/button/toolbar_button_widget.dart';
-import 'package:app_finance/widgets/wrapper/tab_widget.dart';
+import 'package:app_finance/pages/_widgets/button/toolbar_button_widget.dart';
+import 'package:app_finance/pages/_widgets/wrapper/tab_widget.dart';
 import 'package:app_finance/pages/home/widgets/goal_line_widget.dart';
-import 'package:app_finance/widgets/wrapper/tap_widget.dart';
+import 'package:app_finance/pages/_widgets/wrapper/tap_widget.dart';
 import 'package:flutter/material.dart';
 
 class GoalWidget extends StatelessWidget {

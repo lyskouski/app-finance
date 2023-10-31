@@ -6,7 +6,7 @@ import 'package:app_finance/_classes/structure/navigation/app_route.dart';
 import 'package:app_finance/_classes/structure/goal_app_data.dart';
 import 'package:app_finance/_configs/custom_text_theme.dart';
 import 'package:app_finance/_ext/build_context_ext.dart';
-import 'package:app_finance/widgets/wrapper/tap_widget.dart';
+import 'package:app_finance/pages/_widgets/wrapper/tap_widget.dart';
 import 'package:app_finance/_configs/theme_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_grid_layout/flutter_grid_layout.dart';
