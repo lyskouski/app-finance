@@ -5,7 +5,7 @@ import 'package:app_finance/_ext/build_context_ext.dart';
 import 'package:app_finance/charts/interface/chart_data.dart';
 import 'package:app_finance/charts/painter/forecast_chart_painter.dart';
 import 'package:app_finance/charts/painter/foreground_chart_painter.dart';
-import 'package:app_finance/pages/_widgets/generic/empty_widget.dart';
+import 'package:app_finance/design/generic/empty_widget.dart';
 import 'package:flutter/material.dart';
 
 class ForecastChart extends StatelessWidget {

@@ -3,8 +3,8 @@
 
 import 'package:app_finance/_classes/storage/app_data.dart';
 import 'package:app_finance/_classes/structure/def/list_selector_item.dart';
-import 'package:app_finance/pages/_widgets/form/list_selector.dart';
-import 'package:app_finance/pages/_widgets/generic/base_line_widget.dart';
+import 'package:app_finance/design/form/list_selector.dart';
+import 'package:app_finance/design/generic/base_line_widget.dart';
 import 'package:flutter/material.dart';
 
 class ListAccountSelectorItem extends ListSelectorItem {

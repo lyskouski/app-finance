@@ -5,7 +5,7 @@ import 'package:app_finance/_classes/controller/focus_controller.dart';
 import 'package:app_finance/_configs/custom_color_scheme.dart';
 import 'package:app_finance/_configs/custom_text_theme.dart';
 import 'package:app_finance/_ext/build_context_ext.dart';
-import 'package:app_finance/pages/_widgets/wrapper/focus_wrapper.dart';
+import 'package:app_finance/design/wrapper/focus_wrapper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 

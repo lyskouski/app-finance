@@ -9,8 +9,8 @@ import 'package:app_finance/_ext/build_context_ext.dart';
 import 'package:app_finance/components/_core/components_builder.dart';
 import 'package:app_finance/components/_core/component_data.dart';
 import 'package:app_finance/components/_core/list_component_registry.dart';
-import 'package:app_finance/pages/_widgets/wrapper/confirmation_wrapper.dart';
-import 'package:app_finance/pages/_widgets/button/toolbar_button_widget.dart';
+import 'package:app_finance/design/wrapper/confirmation_wrapper.dart';
+import 'package:app_finance/design/button/toolbar_button_widget.dart';
 import 'package:flutter/material.dart';
 
 class HomeEditPage extends StatefulWidget {

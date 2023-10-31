@@ -3,7 +3,7 @@
 
 import 'package:app_finance/_classes/herald/app_locale.dart';
 import 'package:app_finance/_classes/structure/def/list_selector_item.dart';
-import 'package:app_finance/pages/_widgets/form/list_selector.dart';
+import 'package:app_finance/design/form/list_selector.dart';
 
 enum ComponentRegistry {
   recent,

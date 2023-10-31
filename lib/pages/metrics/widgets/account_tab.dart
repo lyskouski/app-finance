@@ -15,10 +15,10 @@ import 'package:app_finance/charts/interface/chart_value.dart';
 import 'package:app_finance/charts/interface/ohlc_data.dart';
 import 'package:app_finance/charts/ohlc_chart.dart';
 import 'package:app_finance/charts/pie_radius_chart.dart';
-import 'package:app_finance/pages/_widgets/generic/text_widget.dart';
-import 'package:app_finance/pages/_widgets/wrapper/row_widget.dart';
-import 'package:app_finance/pages/_widgets/wrapper/table_widget.dart';
-import 'package:app_finance/pages/_widgets/wrapper/text_wrapper.dart';
+import 'package:app_finance/design/generic/text_widget.dart';
+import 'package:app_finance/design/wrapper/row_widget.dart';
+import 'package:app_finance/design/wrapper/table_widget.dart';
+import 'package:app_finance/design/wrapper/text_wrapper.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 

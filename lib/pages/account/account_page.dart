@@ -9,9 +9,9 @@ import 'package:app_finance/_configs/theme_helper.dart';
 import 'package:app_finance/_classes/structure/navigation/app_route.dart';
 import 'package:app_finance/pages/_interfaces/abstract_page_state.dart';
 import 'package:app_finance/pages/account/widgets/account_line_widget.dart';
-import 'package:app_finance/pages/_widgets/generic/base_header_widget.dart';
-import 'package:app_finance/pages/_widgets/generic/base_swipe_widget.dart';
-import 'package:app_finance/pages/_widgets/wrapper/tap_widget.dart';
+import 'package:app_finance/design/generic/base_header_widget.dart';
+import 'package:app_finance/design/generic/base_swipe_widget.dart';
+import 'package:app_finance/design/wrapper/tap_widget.dart';
 import 'package:flutter/material.dart';
 
 class AccountPage extends StatefulWidget {

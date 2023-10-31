@@ -5,10 +5,10 @@ import 'package:app_finance/_classes/structure/currency/exchange.dart';
 import 'package:app_finance/_classes/structure/navigation/app_route.dart';
 import 'package:app_finance/_classes/structure/budget_app_data.dart';
 import 'package:app_finance/_configs/theme_helper.dart';
-import 'package:app_finance/pages/_widgets/generic/base_swipe_widget.dart';
+import 'package:app_finance/design/generic/base_swipe_widget.dart';
 import 'package:app_finance/pages/home/widgets/account_widget.dart';
-import 'package:app_finance/pages/_widgets/generic/base_group_widget.dart';
-import 'package:app_finance/pages/_widgets/generic/base_line_widget.dart';
+import 'package:app_finance/design/generic/base_group_widget.dart';
+import 'package:app_finance/design/generic/base_line_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_currency_picker/flutter_currency_picker.dart';
 

@@ -10,10 +10,10 @@ import 'package:app_finance/_configs/theme_helper.dart';
 import 'package:app_finance/_ext/build_context_ext.dart';
 import 'package:app_finance/charts/trade_chart.dart';
 import 'package:app_finance/pages/_interfaces/abstract_page_state.dart';
-import 'package:app_finance/pages/_widgets/generic/notification_bar.dart';
-import 'package:app_finance/pages/_widgets/form/simple_input.dart';
-import 'package:app_finance/pages/_widgets/wrapper/focus_wrapper.dart';
-import 'package:app_finance/pages/_widgets/wrapper/row_widget.dart';
+import 'package:app_finance/design/generic/notification_bar.dart';
+import 'package:app_finance/design/form/simple_input.dart';
+import 'package:app_finance/design/wrapper/focus_wrapper.dart';
+import 'package:app_finance/design/wrapper/row_widget.dart';
 import 'package:flutter/material.dart';
 
 class CurrencyPage extends StatefulWidget {

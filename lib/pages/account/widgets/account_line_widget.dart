@@ -6,10 +6,10 @@ import 'package:app_finance/_classes/structure/account_app_data.dart';
 import 'package:app_finance/_configs/account_type.dart';
 import 'package:app_finance/_ext/build_context_ext.dart';
 import 'package:app_finance/_configs/custom_text_theme.dart';
-import 'package:app_finance/pages/_widgets/wrapper/number_wrapper.dart';
-import 'package:app_finance/pages/_widgets/wrapper/row_widget.dart';
+import 'package:app_finance/design/wrapper/number_wrapper.dart';
+import 'package:app_finance/design/wrapper/row_widget.dart';
 import 'package:app_finance/_configs/theme_helper.dart';
-import 'package:app_finance/pages/_widgets/wrapper/text_wrapper.dart';
+import 'package:app_finance/design/wrapper/text_wrapper.dart';
 import 'package:flutter/material.dart';
 
 class AccountLineWidget extends StatelessWidget {

@@ -6,9 +6,9 @@ import 'package:app_finance/_configs/custom_color_scheme.dart';
 import 'package:app_finance/_configs/custom_text_theme.dart';
 import 'package:app_finance/_configs/theme_helper.dart';
 import 'package:app_finance/_ext/build_context_ext.dart';
-import 'package:app_finance/pages/_widgets/form/abstract_selector.dart';
-import 'package:app_finance/pages/_widgets/form/date_input.dart';
-import 'package:app_finance/pages/_widgets/wrapper/row_widget.dart';
+import 'package:app_finance/design/form/abstract_selector.dart';
+import 'package:app_finance/design/form/date_input.dart';
+import 'package:app_finance/design/wrapper/row_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 

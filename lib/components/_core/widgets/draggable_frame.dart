@@ -6,8 +6,8 @@ import 'package:app_finance/_ext/build_context_ext.dart';
 import 'package:app_finance/components/_core/components_builder_form.dart';
 import 'package:app_finance/components/_core/component_data.dart';
 import 'package:app_finance/components/_core/widgets/draggable_pointer.dart';
-import 'package:app_finance/pages/_widgets/wrapper/confirmation_wrapper.dart';
-import 'package:app_finance/pages/_widgets/wrapper/tap_widget.dart';
+import 'package:app_finance/design/wrapper/confirmation_wrapper.dart';
+import 'package:app_finance/design/wrapper/tap_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_grid_layout/flutter_grid_layout.dart';
 

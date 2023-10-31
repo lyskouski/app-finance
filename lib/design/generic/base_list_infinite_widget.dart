@@ -3,7 +3,7 @@
 
 import 'package:app_finance/_classes/controller/iterator_controller.dart';
 import 'package:app_finance/_configs/theme_helper.dart';
-import 'package:app_finance/pages/_widgets/wrapper/keep_alive_wrapper.dart';
+import 'package:app_finance/design/wrapper/keep_alive_wrapper.dart';
 import 'package:flutter/material.dart';
 
 typedef FnListWidget = Widget Function(dynamic item, BuildContext context);

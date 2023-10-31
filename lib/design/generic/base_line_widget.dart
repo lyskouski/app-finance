@@ -5,11 +5,11 @@ import 'package:app_finance/_classes/structure/navigation/app_route.dart';
 import 'package:app_finance/_ext/build_context_ext.dart';
 import 'package:app_finance/charts/bar_vertical_single.dart';
 import 'package:app_finance/_configs/custom_text_theme.dart';
-import 'package:app_finance/pages/_widgets/wrapper/number_wrapper.dart';
-import 'package:app_finance/pages/_widgets/wrapper/row_widget.dart';
-import 'package:app_finance/pages/_widgets/wrapper/tap_widget.dart';
+import 'package:app_finance/design/wrapper/number_wrapper.dart';
+import 'package:app_finance/design/wrapper/row_widget.dart';
+import 'package:app_finance/design/wrapper/tap_widget.dart';
 import 'package:app_finance/_configs/theme_helper.dart';
-import 'package:app_finance/pages/_widgets/wrapper/text_wrapper.dart';
+import 'package:app_finance/design/wrapper/text_wrapper.dart';
 import 'package:flutter/material.dart';
 
 class BaseLineWidget extends StatelessWidget {

@@ -9,7 +9,7 @@ import 'package:app_finance/pages/bill/widgets/expenses_tab.dart';
 import 'package:app_finance/pages/bill/widgets/income_tab.dart';
 import 'package:app_finance/pages/bill/widgets/interface_bill_page_inject.dart';
 import 'package:app_finance/pages/bill/widgets/transfer_tab.dart';
-import 'package:app_finance/pages/_widgets/wrapper/tab_widget.dart';
+import 'package:app_finance/design/wrapper/tab_widget.dart';
 import 'package:flutter/material.dart';
 
 class BillAddPage extends StatefulWidget {

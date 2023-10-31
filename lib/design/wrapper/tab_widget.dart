@@ -4,8 +4,8 @@
 import 'package:app_finance/_configs/theme_helper.dart';
 import 'package:app_finance/_ext/build_context_ext.dart';
 import 'package:app_finance/pages/_interfaces/abstract_page_state.dart';
-import 'package:app_finance/pages/_widgets/wrapper/dots_tab_bar_widget.dart';
-import 'package:app_finance/pages/_widgets/wrapper/text_wrapper.dart';
+import 'package:app_finance/design/wrapper/dots_tab_bar_widget.dart';
+import 'package:app_finance/design/wrapper/text_wrapper.dart';
 import 'package:flutter/material.dart';
 
 enum TabType {

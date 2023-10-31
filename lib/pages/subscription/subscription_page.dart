@@ -8,8 +8,8 @@ import 'package:app_finance/pages/_interfaces/abstract_page_state.dart';
 import 'package:app_finance/pages/subscription/widgets/apple_widget.dart';
 import 'package:app_finance/pages/subscription/widgets/google_widget.dart';
 import 'package:app_finance/pages/subscription/widgets/other_widget.dart';
-import 'package:app_finance/pages/_widgets/wrapper/row_widget.dart';
-import 'package:app_finance/pages/_widgets/wrapper/text_wrapper.dart';
+import 'package:app_finance/design/wrapper/row_widget.dart';
+import 'package:app_finance/design/wrapper/text_wrapper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/foundation.dart';
 

@@ -3,7 +3,7 @@
 
 import 'package:app_finance/_classes/herald/app_locale.dart';
 import 'package:app_finance/_configs/theme_helper.dart';
-import 'package:app_finance/pages/_widgets/button/full_sized_button_widget.dart';
+import 'package:app_finance/design/button/full_sized_button_widget.dart';
 import 'package:flutter/material.dart';
 
 abstract class AbstractTab<T> extends StatefulWidget {

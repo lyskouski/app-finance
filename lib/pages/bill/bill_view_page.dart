@@ -8,7 +8,7 @@ import 'package:app_finance/_configs/theme_helper.dart';
 import 'package:app_finance/_classes/structure/navigation/app_route.dart';
 import 'package:app_finance/pages/_interfaces/abstract_page_state.dart';
 import 'package:app_finance/pages/bill/widgets/bill_header_widget.dart';
-import 'package:app_finance/pages/_widgets/wrapper/confirmation_wrapper.dart';
+import 'package:app_finance/design/wrapper/confirmation_wrapper.dart';
 import 'package:flutter/material.dart';
 
 class BillViewPage extends StatefulWidget {

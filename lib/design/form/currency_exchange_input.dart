@@ -5,8 +5,8 @@ import 'package:app_finance/_classes/controller/exchange_controller.dart';
 import 'package:app_finance/_classes/herald/app_locale.dart';
 import 'package:app_finance/_configs/theme_helper.dart';
 import 'package:app_finance/_ext/build_context_ext.dart';
-import 'package:app_finance/pages/_widgets/form/simple_input.dart';
-import 'package:app_finance/pages/_widgets/wrapper/row_widget.dart';
+import 'package:app_finance/design/form/simple_input.dart';
+import 'package:app_finance/design/wrapper/row_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_currency_picker/flutter_currency_picker.dart';
 

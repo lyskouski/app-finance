@@ -7,11 +7,11 @@ import 'package:app_finance/_classes/storage/app_preferences.dart';
 import 'package:app_finance/_configs/custom_text_theme.dart';
 import 'package:app_finance/_configs/theme_helper.dart';
 import 'package:app_finance/_ext/build_context_ext.dart';
-import 'package:app_finance/pages/_widgets/generic/base_header_widget.dart';
-import 'package:app_finance/pages/_widgets/generic/base_line_widget.dart';
-import 'package:app_finance/pages/_widgets/generic/base_list_infinite_widget.dart';
-import 'package:app_finance/pages/_widgets/generic/base_list_limited_widget.dart';
-import 'package:app_finance/pages/_widgets/generic/base_swipe_widget.dart';
+import 'package:app_finance/design/generic/base_header_widget.dart';
+import 'package:app_finance/design/generic/base_line_widget.dart';
+import 'package:app_finance/design/generic/base_list_infinite_widget.dart';
+import 'package:app_finance/design/generic/base_list_limited_widget.dart';
+import 'package:app_finance/design/generic/base_swipe_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_currency_picker/flutter_currency_picker.dart';
 

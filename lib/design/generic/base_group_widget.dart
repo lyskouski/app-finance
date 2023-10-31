@@ -10,8 +10,8 @@ import 'package:app_finance/charts/bar_vertical_group.dart';
 import 'package:app_finance/charts/bar_vertical_single.dart';
 import 'package:app_finance/charts/radial_bar_chart.dart';
 import 'package:app_finance/_configs/theme_helper.dart';
-import 'package:app_finance/pages/_widgets/wrapper/row_widget.dart';
-import 'package:app_finance/pages/_widgets/wrapper/tap_widget.dart';
+import 'package:app_finance/design/wrapper/row_widget.dart';
+import 'package:app_finance/design/wrapper/tap_widget.dart';
 import 'package:flutter/material.dart';
 
 class BaseGroupWidget extends StatelessWidget {

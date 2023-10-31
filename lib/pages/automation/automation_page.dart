@@ -5,7 +5,7 @@ import 'package:app_finance/_classes/herald/app_locale.dart';
 import 'package:app_finance/_configs/theme_helper.dart';
 import 'package:app_finance/pages/_interfaces/abstract_page_state.dart';
 import 'package:app_finance/pages/automation/widgets/sync_tab.dart';
-import 'package:app_finance/pages/_widgets/wrapper/tab_widget.dart';
+import 'package:app_finance/design/wrapper/tab_widget.dart';
 //import 'package:app_finance/pages/automation/widgets/notification_tab.dart';
 import 'package:flutter/material.dart';
 

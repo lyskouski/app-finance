@@ -3,8 +3,8 @@
 
 import 'package:app_finance/_configs/theme_helper.dart';
 import 'package:app_finance/_ext/build_context_ext.dart';
-import 'package:app_finance/pages/_widgets/wrapper/tap_widget.dart';
-import 'package:app_finance/pages/_widgets/button/toolbar_button_widget.dart';
+import 'package:app_finance/design/wrapper/tap_widget.dart';
+import 'package:app_finance/design/button/toolbar_button_widget.dart';
 import 'package:app_finance/pages/settings/widgets/recover_tab/recovery_type.dart';
 import 'package:flutter/material.dart';
 

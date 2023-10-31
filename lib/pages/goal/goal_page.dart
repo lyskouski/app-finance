@@ -12,9 +12,9 @@ import 'package:app_finance/_classes/structure/navigation/app_route.dart';
 import 'package:app_finance/_ext/build_context_ext.dart';
 import 'package:app_finance/charts/gauge_chart.dart';
 import 'package:app_finance/pages/_interfaces/abstract_page_state.dart';
-import 'package:app_finance/pages/_widgets/wrapper/text_wrapper.dart';
+import 'package:app_finance/design/wrapper/text_wrapper.dart';
 import 'package:app_finance/pages/budget/widgets/budget_line_widget.dart';
-import 'package:app_finance/pages/_widgets/wrapper/row_widget.dart';
+import 'package:app_finance/design/wrapper/row_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_currency_picker/flutter_currency_picker.dart';
 
