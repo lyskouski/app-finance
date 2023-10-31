@@ -1,4 +1,4 @@
-# ![Fingrom Logo](https://github.com/lyskouski/app-finance/blob/main/docs/mockups/logo/main.svg) Financial Accounting Application
+# ![Fingrom Logo](./docs/mockups/logo/main.svg) Financial Accounting Application
 [![License: CC BY-NC-ND 4.0](https://img.shields.io/badge/License-CC_BY--NC--ND_4.0-lightgrey.svg)](https://creativecommons.org/licenses/by-nc-nd/4.0/) 
 [![Check Status](https://github.com/lyskouski/app-finance/actions/workflows/push_to_main.yml/badge.svg?branch=main)](https://github.com/lyskouski/app-finance/actions/workflows/push_to_main.yml)
 [![Build Status](https://github.com/lyskouski/app-finance/actions/workflows/build.yml/badge.svg)](https://github.com/lyskouski/app-finance/actions/workflows/build.yml)
@@ -7,19 +7,22 @@
 [![Widget Tests Coverage](https://lyskouski.github.io/app-finance/coverage/widget_coverage_badge.svg)](https://github.com/lyskouski/app-finance/tree/main/test/widget)
 [![End-To-End Coverage](https://lyskouski.github.io/app-finance/coverage/e2e_coverage_badge.svg)](https://github.com/lyskouski/app-finance/tree/main/test/e2e)
 
-**Fingrom** -- Open-source cross-platform financial accounting application. Use for free without Ads and limitations.
+**Fingrom** -- open-source cross-platform financial accounting application without Ads and limitations.
+The goal of the solution is to create a financial accounting application that is intuitive, efficient, and inclusive. 
+That empowers users to effortlessly manage their finances while ensuring that no one is left behind.
+
 
 | Type                     | Alpha Version         | Pre-Release                   | Release                       |
 | ------------------------ | ----------------------| ----------------------------- | ----------------------------- |
-| ![Apple](https://github.com/lyskouski/app-finance/blob/main/docs/mockups/icons/apple.png) iOS (Apple Store)        | [fingrom_iOS.ipa](https://github.com/lyskouski/app-finance/releases/latest) | [TestFlight: Fingrom](https://testflight.apple.com/join/93ECy9ZB) | _(In Release)_ |
-| ![Apple](https://github.com/lyskouski/app-finance/blob/main/docs/mockups/icons/apple.png) macOS (Apple Store)      | [fingrom_macOS.zip](https://github.com/lyskouski/app-finance/releases/latest) | Not available for testing | _(In Release)_ |
-| ![Android](https://github.com/lyskouski/app-finance/blob/main/docs/mockups/icons/android.png) Android (Google Play)    | [fingrom_Android.aab](https://github.com/lyskouski/app-finance/releases/latest) | [[on hold]](https://github.com/lyskouski/app-finance/issues/129) | [[on hold]](https://github.com/lyskouski/app-finance/issues/129) |
-| ![Android](https://github.com/lyskouski/app-finance/blob/main/docs/mockups/icons/android.png) Android (Galaxy Store)   | [fingrom_Android.aab](https://github.com/lyskouski/app-finance/releases/latest) | [Galaxy Store](https://galaxystore.samsung.com/detail/com.tercad.fingrom) | [Galaxy Store](https://galaxystore.samsung.com/detail/com.tercad.fingrom) |
-| ![Android](https://github.com/lyskouski/app-finance/blob/main/docs/mockups/icons/android.png) Android (Huawei Gallery) | [fingrom_Android.aab](https://github.com/lyskouski/app-finance/releases/latest) | [App Gallery](https://appgallery.huawei.com/#/app/C109437079) | [App Gallery](https://appgallery.huawei.com/#/app/C109437079) |
-| ![Linux](https://github.com/lyskouski/app-finance/blob/main/docs/mockups/icons/linux.png) Linux (Snap Store)       | [fingrom_LinuxSnap.snap](https://github.com/lyskouski/app-finance/releases/latest) | [![Fingrom](https://snapcraft.io/fingrom/badge.svg)](https://snapcraft.io/fingrom) | [![Fingrom](https://snapcraft.io/fingrom/badge.svg)](https://snapcraft.io/fingrom) |
-| ![Linux](https://github.com/lyskouski/app-finance/blob/main/docs/mockups/icons/linux.png) Linux (Flathub)          | [[pending]](https://github.com/lyskouski/app-finance/issues/350) | [[pending]](https://github.com/lyskouski/app-finance/issues/350) | [[pending]](https://github.com/lyskouski/app-finance/issues/350) |
-| ![Windows](https://github.com/lyskouski/app-finance/blob/main/docs/mockups/icons/windows.png) Windows (Partner Center) | [fingrom_Windows.zip](https://github.com/lyskouski/app-finance/releases/latest) | [App Center: Fingrom](https://appcenter.ms/orgs/terCAD/apps/Fingrom) | _(In Release)_ |
-| ![Web Browsers](https://github.com/lyskouski/app-finance/blob/main/docs/mockups/icons/web.png) Web                      | [Fingrom](https://lyskouski.github.io/app-finance/) | [pending] | _(postponed availability)_ |
+| ![Apple](./docs/mockups/icons/apple.png) iOS (Apple Store)        | [fingrom_iOS.ipa](https://github.com/lyskouski/app-finance/releases/latest) | [TestFlight: Fingrom](https://testflight.apple.com/join/93ECy9ZB) | _(In Release)_ |
+| ![Apple](./docs/mockups/icons/apple.png) macOS (Apple Store)      | [fingrom_macOS.zip](https://github.com/lyskouski/app-finance/releases/latest) | Not available for testing | _(In Release)_ |
+| ![Android](./docs/mockups/icons/android.png) Android (Google Play)    | [fingrom_Android.aab](https://github.com/lyskouski/app-finance/releases/latest) | [[on hold]](https://github.com/lyskouski/app-finance/issues/129) | [[on hold]](https://github.com/lyskouski/app-finance/issues/129) |
+| ![Android](./docs/mockups/icons/android.png) Android (Galaxy Store)   | [fingrom_Android.aab](https://github.com/lyskouski/app-finance/releases/latest) | [Galaxy Store](https://galaxystore.samsung.com/detail/com.tercad.fingrom) | [![Fingrom](./docs/mockups/badges/galaxy-store.png)](https://galaxy.store/apFinance) |
+| ![Android](./docs/mockups/icons/android.png) Android (Huawei Gallery) | [fingrom_Android.aab](https://github.com/lyskouski/app-finance/releases/latest) | [App Gallery](https://appgallery.huawei.com/#/app/C109437079) | [App Gallery](https://appgallery.huawei.com/#/app/C109437079) |
+| ![Linux](./docs/mockups/icons/linux.png) Linux (Snap Store)       | [fingrom_LinuxSnap.snap](https://github.com/lyskouski/app-finance/releases/latest) | [![Fingrom](https://snapcraft.io/fingrom/badge.svg)](https://snapcraft.io/fingrom) | [![Fingrom](./docs/mockups/badges/snap-store.svg)](https://snapcraft.io/fingrom) |
+| ![Linux](./docs/mockups/icons/linux.png) Linux (Flathub)          | [[pending]](https://github.com/lyskouski/app-finance/issues/350) | [[pending]](https://github.com/lyskouski/app-finance/issues/350) | [[pending]](https://github.com/lyskouski/app-finance/issues/350) |
+| ![Windows](./docs/mockups/icons/windows.png) Windows (Partner Center) | [fingrom_Windows.zip](https://github.com/lyskouski/app-finance/releases/latest) | [App Center: Fingrom](https://appcenter.ms/orgs/terCAD/apps/Fingrom) | _(In Release)_ |
+| ![Web Browsers](./docs/mockups/icons/web.png) Web                      | [Fingrom](https://lyskouski.github.io/app-finance/) | [pending] | _(In Release)_ |
 
 
 ## Functionality
@@ -83,6 +86,7 @@
 | Edit Selected Item                  | `Ctrl` + `E`                   |
 | Delete Selected Item                | `Ctrl` + `D`                   |
 -->
+
 ## Support (Sponsorship)
 
 As an open-source project, subscribing will not unlock any additional features in the app. However, it would serve as 
@@ -98,8 +102,8 @@ Or, [treat me to :coffee:](https://www.buymeacoffee.com/lyskouski).
 
 ## Contributions
 
-Any made contribution **is greatly appreciated** (also, by mentioning in `Contributors` section and `Release` notes
-as a gratitude), check [Contribution Section](./CONTRIBUTING.md) for more details.
+Any made contribution **is greatly appreciated** (also, by mentioning in `Contributors` section, `Release` notes, and 
+in the app `About` - `Contributors` as a gratitude), check [Contribution Section](./CONTRIBUTING.md) for more details.
 
 However, if it's been chosen a contribution (not just typo corrections) to this repo, you agree that you're giving
 me a non-exclusive license to use that content, as I (and my possible team) deem appropriate. You probably guessed 
