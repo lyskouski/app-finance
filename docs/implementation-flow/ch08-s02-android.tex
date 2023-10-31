@@ -119,12 +119,6 @@ java -jar samsung_pepk.jar --keystore key.jks --alias key \
 
 So, in general, we would need to follow instructions \issue{284}{} from 
 \href{https://developer.samsung.com/galaxy-store/galaxy-store-developer-api.html}{https://developer.samsung.com/galaxy-store/galaxy-store-developer-api.html}.
-Also, we might encounter the error "The registered binaries do not meet the category conditions for Galaxy Specials" 
-after submitting, it's needed to update \q{manifest.xml}-file by adding the appropriate permission:
-
-\begin{lstlisting}[language=xml]
-<uses-permission android:name="com.samsung.android.providers.context.permission.WRITE_USE_APP_FEATURE_SURVEY"/>
-\end{lstlisting}
 
 
 \subsubsection{Huawei Gallery}
