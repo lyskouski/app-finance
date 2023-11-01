@@ -36,8 +36,8 @@ class AppleWidget extends StatelessWidget {
         PurchaseWidget(
           'assets/images/sub_tiny.png',
           title: AppLocale.labels.subscriptionTiny,
-          product: purchases.product[PurchaseController.pSubApple],
-          purchase: purchases.purchase[PurchaseController.pSubApple],
+          product: purchases.product[PurchaseController.pInitial],
+          purchase: purchases.purchase[PurchaseController.pInitial],
         ),
       ],
     );

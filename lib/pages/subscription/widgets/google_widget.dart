@@ -36,8 +36,8 @@ class GoogleWidget extends StatelessWidget {
         PurchaseWidget(
           'assets/images/sub_tiny.png',
           title: AppLocale.labels.subscriptionTiny,
-          product: purchases.product[PurchaseController.pSubGoogle],
-          purchase: purchases.purchase[PurchaseController.pSubGoogle],
+          product: purchases.product[PurchaseController.pInitial],
+          purchase: purchases.purchase[PurchaseController.pInitial],
         ),
       ],
     );
