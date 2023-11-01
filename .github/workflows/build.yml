@@ -146,7 +146,7 @@ jobs:
         if: matrix.target == 'Windows'
         run: |
           msstore reconfigure --tenantId ${{ secrets.WINDOWS_TENANT_ID }} --clientId ${{ secrets.WINDOWS_CLIENT_ID }} --clientSecret ${{ secrets.WINDOWS_SECRET }} --sellerId ${{ secrets.WINDOWS_SELLER_ID }}
-          msstore publish -i ${{ matrix.build_path }}
+          msstore publish -i ${{ matrix.build_path }}  || echo "Publishing failed since replaced build in review state."
 
 
       - name: Run Linux Build
