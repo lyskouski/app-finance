@@ -7,15 +7,19 @@
 Scheduled to 1st November 2023
 
 - **Amazon Books**:
-  - Kindle eBook: https://www.amazon.com/dp/B0CLLKNXQR (ASIN: B0CLLKNXQR)
-  - Paperback: _[On Review], Scheduled for November 1, 2023_
-  - Hardcover: _Scheduled for November 1, 2023_ (ASIN: B0CLNT8GPC)
+  - Kindle eBook (ASIN: B0CLLKNXQR): https://www.amazon.com/dp/B0CLLKNXQR
+  - Paperback (ASIN: B0CLP5JQJC): https://www.amazon.com/Zero-Market-Flutter-Desktop-Distribution/dp/B0CLP5JQJC/
+  - Hardcover (ASIN: B0CLNT8GPC): https://www.amazon.com/Zero-Market-Flutter-Desktop-Distribution/dp/B0CLNT8GPC/
 - **Apple Books**
   - https://books.apple.com/us/book/from-zero-to-market-with-flutter/id6470395934
 - **Lulu**
   - [Scheduled]
 - **Smashwords**
   - https://www.smashwords.com/books/view/1471129 (choose your price)
+- **Barnes & Noble(R)**
+  - https://www.barnesandnoble.com/w/from-zero-to-market-with-flutter-viachaslau-lyskouski/1144274308
+- **bol.**
+  - https://www.bol.com/be/nl/p/from-zero-to-market-with-flutter/9300000165265465/
 
 
 ## Sampling on Financial Accounting App Life-Cycles
