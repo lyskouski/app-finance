@@ -8,8 +8,9 @@ import 'package:in_app_purchase/in_app_purchase.dart';
 class PurchaseController {
   static const pCoffee = 'fin_consumable_coffee';
   static const pDinner = 'fin_consumable_dinner';
-  static const pSubApple = 'fin_subscription_tiny';
-  static const pSubGoogle = 'fin-subscription-tiny';
+  static const pInitial = 'fin_consumable_init';
+  // static const pSubApple = 'fin_subscription_tiny'; Restricted without extended functionality
+  // static const pSubGoogle = 'fin-subscription-tiny';
 
   static InAppPurchase iap = InAppPurchase.instance;
   late StreamSubscription<List<PurchaseDetails>> _subscription;
@@ -51,8 +52,9 @@ class PurchaseController {
     final response = await iap.queryProductDetails(<String>{
       pCoffee,
       pDinner,
-      pSubApple,
-      pSubGoogle,
+      pInitial,
+      // pSubApple,
+      // pSubGoogle,
     });
     iap.restorePurchases();
     return response.productDetails;
