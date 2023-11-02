@@ -20,6 +20,7 @@ coverage/
 *.list.dart
 *.generic.dart
 localization*.csv
+*.mp4
 
 # IntelliJ related
 *.iml

@@ -117,7 +117,6 @@ class GoalAddPageState<T extends GoalAddPage> extends AbstractPageState<GoalAddP
           }
           updateStorage();
           nav.pop();
-          nav.pop();
         })
       },
       title: getButtonName(),
