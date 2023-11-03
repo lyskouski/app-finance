@@ -46,33 +46,31 @@ class BaseHeaderWidget extends StatelessWidget {
     final isWide = Provider.of<AppZoom>(context, listen: false).value > 1.5;
     final bnShift = Offset(-4, isWide ? -8 : 0);
     final metrics = AppMenu.metrics(route);
+    final subStyle = isWide ? textTheme.bodySmall : textTheme.headlineSmall;
+    final subHeight = ThemeHelper.getTextHeight(Text(title, style: subStyle));
+    final numStyle = isWide ? textTheme.numberSmall : textTheme.numberLarge;
+    final numHeight = ThemeHelper.getTextHeight(Text(total.toString(), style: numStyle));
     return TapWidget(
       tooltip: tooltip,
       route: RouteSettings(name: route),
       child: Container(
         padding: EdgeInsets.all(indent / 2),
-        height: isWide ? 32 : 60,
+        height: numHeight + subHeight + indent,
         width: double.infinity,
         color: colorScheme.inverseSurface.withOpacity(0.1),
         child: GridContainer(
           rows: [null, 40, if (hasExpand) 40],
-          columns: const [13, null],
+          columns: [subHeight, null],
           children: [
             GridItem(
               start: const Size(0, 0),
               end: const Size(1, 1),
-              child: TextWrapper(
-                title,
-                style: isWide ? textTheme.bodySmall : textTheme.headlineSmall,
-              ),
+              child: TextWrapper(title, style: subStyle),
             ),
             GridItem(
               start: const Size(0, 1),
               end: const Size(1, 2),
-              child: TextWrapper(
-                total.toCurrency(withPattern: false),
-                style: isWide ? textTheme.numberSmall : textTheme.numberLarge,
-              ),
+              child: TextWrapper(total.toCurrency(withPattern: false), style: numStyle),
             ),
             GridItem(
               start: const Size(1, 0),
