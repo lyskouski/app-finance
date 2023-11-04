@@ -16,7 +16,7 @@ class OnDefinedPage extends Given1<String> {
   @override
   Future<void> executeStep(String route) async {
     ScreenCapture.seize(runtimeType.toString());
-    final ScaffoldState scafState = FileRunner.tester.firstState(find.byType(Scaffold).at(0));
+    final ScaffoldState scafState = FileRunner.tester.firstState(find.byType(Scaffold).at(1));
     scafState.openDrawer();
     await FileRunner.tester.pumpAndSettle();
     final header = find.text(route);
