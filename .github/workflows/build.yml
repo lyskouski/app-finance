@@ -315,3 +315,47 @@ jobs:
           asset_path: ./fingrom_${{ matrix.target }}${{ matrix.asset_extension }}
           asset_name: fingrom_${{ matrix.target }}${{ matrix.asset_extension }}
           asset_content_type: ${{ matrix.asset_content_type }}
+
+
+  build-flatpak:
+    name: Create Linux Flatpak build
+    needs:
+      - release
+      - build
+    runs-on: ubuntu-latest
+    container:
+      image: bilelmoussaoui/flatpak-github-actions:gnome-45
+      options: --privileged
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Patch Manifest
+        run: |
+          ASSET_URL="https://github.com/lyskouski/app-finance/releases/download/v${{ needs.release.outputs.version }}/fingrom_Linux.tar.gz"
+          curl -vLJO -H 'Accept: application/octet-stream' $ASSET_URL
+          sh patch.sh -i ${{ github.sha }} -v "${{ needs.release.outputs.version }}" -s $(sha256sum fingrom_Linux.tar.gz | gawk '{ print $1 }')
+        working-directory: linux-flatpak
+
+      - name: Build Linux Flatpak
+        uses: bilelmoussaoui/flatpak-github-actions/flatpak-builder@v5
+        with:
+          bundle: fingrom_LinuxFlatpak.flatpak
+          manifest-path: linux-flatpak/com.tercad.fingrom.yml
+
+      - name: Store Configs for github.com/flathub
+        if: always()
+        uses: actions/upload-artifact@v3
+        with:
+          name: flatpak-configs
+          path: linux-flatpak
+
+      - name: Upload ${{ matrix.target }} Artifact
+        id: upload_release_asset
+        uses: actions/upload-release-asset@latest
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ needs.release.outputs.upload_url }}
+          asset_path: ./fingrom_LinuxFlatpak.flatpak
+          asset_name: fingrom_LinuxFlatpak.flatpak
+          asset_content_type: application/zip
