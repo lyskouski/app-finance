@@ -124,3 +124,40 @@ Finally, the pipeline for the \q{snap}-package build and distribution would be t
 \end{lstlisting}
 
 \img{distributing/linux-discover}{KDE Neon - Discover: Availability check}{img:d-snap}
+
+
+\subsubsection{Linux Flatpak Store}
+
+Flatpak (\href{https://flathub.org}{https://flathub.org}). is an attractive solution for distributing applications 
+because of its distribution-agnostic nature (it works seamlessly across different distributions with their 
+forward-compatibility by handling a dependency resolution problems).
+
+We may define a runtime that contains all the common libraries our application needs \issue{350}{}. Then, we build our 
+Flatpak on top of this runtime. What's powerful about this approach is that this same runtime is consistently used 
+across all distributions. Runtimes are reusable across multiple applications. In essence, the runtime acts as a 
+shared foundation for various applications, making it a practical solution for developers and users alike. 
+
+\begin{lstlisting}[language=terminal]
+# Install builder
+$ sudo apt install flatpak-builder
+# 'runtime' definition
+$ flatpak search org.freedesktop.Platform
+$ flatpak install flathub org.freedesktop.Platform//23.08 org.freedesktop.Sdk//23.08
+# ... or 'gnome', or 'kde'
+$ flatpak search org.gnome.Platform
+$ flatpak install flathub org.gnome.Platform//45 org.gnome.Sdk//45
+# Build project from the manifest
+$ flatpak-builder build-dir com.tercad.fingrom.yml --force-clean
+# Install application (clean if exists)
+$ flatpak-builder --user --install --force-clean build-dir com.tercad.fingrom.yml
+# Run application
+$ flatpak run com.tercad.fingrom
+\end{lstlisting}
+
+\noindent Build and installation is controlled by definitions from \q{com.tercad.fingrom.yml}-file
+(\href{https://docs.flatpak.org/en/latest/manifests.html}{https://docs.flatpak.org/en/latest/manifests.html}).
+
+
+\subsubsection{[TBD] Linux AppImage}
+
+...
