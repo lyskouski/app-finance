@@ -158,7 +158,10 @@ jobs:
 
       - name: Compress Linux Package
         if: matrix.target == 'Linux'
-        run: tar czf $GITHUB_WORKSPACE/fingrom_${{ matrix.target }}${{ matrix.asset_extension }} *
+        run: |
+          cp $GITHUB_WORKSPACE/com.tercad.fingrom.desktop ./
+          cp $GITHUB_WORKSPACE/com.tercad.fingrom.svg ./
+          tar czf $GITHUB_WORKSPACE/fingrom_${{ matrix.target }}${{ matrix.asset_extension }} *
         working-directory: ${{ matrix.build_path }}
 
 
