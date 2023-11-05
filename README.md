@@ -14,7 +14,7 @@ That empowers users to effortlessly manage their finances while ensuring that no
 
 | Type                     | Alpha Version         | Pre-Release                   | Release                       |
 | ------------------------ | ----------------------| ----------------------------- | ----------------------------- |
-| ![Apple](./docs/mockups/icons/apple.png) iOS (Apple Store)        | [fingrom_iOS.ipa](https://github.com/lyskouski/app-finance/releases/latest) | [TestFlight: Fingrom](https://testflight.apple.com/join/93ECy9ZB) | _(In Release)_ |
+| ![Apple](./docs/mockups/icons/apple.png) iOS (Apple Store)        | [fingrom_iOS.ipa](https://github.com/lyskouski/app-finance/releases/latest) | [TestFlight: Fingrom](https://testflight.apple.com/join/93ECy9ZB) | [![iOS Apple Store](./docs/mockups/icons/ios.png)](https://apps.apple.com/us/app/fingrom/id6463955600?platform=ipad) |
 | ![Apple](./docs/mockups/icons/apple.png) macOS (Apple Store)      | [fingrom_macOS.zip](https://github.com/lyskouski/app-finance/releases/latest) | Not available for testing | _(In Release)_ |
 | ![Android](./docs/mockups/icons/android.png) Android (Google Play)    | [fingrom_Android.aab](https://github.com/lyskouski/app-finance/releases/latest) | [[on hold]](https://github.com/lyskouski/app-finance/issues/129) | [[on hold]](https://github.com/lyskouski/app-finance/issues/129) |
 | ![Android](./docs/mockups/icons/android.png) Android (Galaxy Store)   | [fingrom_Android.aab](https://github.com/lyskouski/app-finance/releases/latest) | [Galaxy Store](https://galaxystore.samsung.com/detail/com.tercad.fingrom) | [![Fingrom](./docs/mockups/badges/galaxy-store.png)](https://galaxy.store/apFinance) |
