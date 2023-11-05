@@ -131,7 +131,7 @@ jobs:
 
       - name: Generate Windows MSIX-package
         if: matrix.target == 'Windows'
-        run: dart run msix:create --version ${{ needs.release.outputs.version }}.${{ needs.release.outputs.build_number }}	--output-path ${{ matrix.build_path }} --output-name Fingrom --build-windows false
+        run: dart run msix:create --version ${{ needs.release.outputs.version }}.0	--output-path ${{ matrix.build_path }} --output-name Fingrom --build-windows false
 
       - name: Compress Windows Package
         if: matrix.target == 'Windows'
