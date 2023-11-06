@@ -50,8 +50,8 @@ jobs:
       - name: Build Web Package
         run: |
           BUILD=$(git rev-list --count HEAD)
-          VERSION=$(git describe --abbrev=0 | cut -c2-)
-          dart run grinder pubspec-update --build-name=$VERSION --build-number=$BUILD
+          TAG=$(git describe --tags `git rev-list --tags --max-count=1` | cut -c 2-)
+          dart run grinder pubspec-update --build-name=$TAG --build-number=$BUILD
           flutter build -v web --profile --no-tree-shake-icons --base-href="/app-finance/"
 
       - name: Add Coverage Report to the Package
