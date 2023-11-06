@@ -25,7 +25,7 @@ That empowers users to effortlessly manage their finances while ensuring that no
 | ![Linux](./docs/mockups/icons/linux.png) Linux (Flathub)          | [fingrom_LinuxFlatpak.flatpak](https://github.com/lyskouski/app-finance/releases/latest)  | Not available | [ ![Flathub: Fingrom](./docs/mockups/badges/flathub.png) ](https://flathub.org/apps/com.tercad.fingrom) |
 | ![Linux](./docs/mockups/icons/linux.png) Linux (AppImage)         | [pending] | [pending] | [pending] |
 | ![Windows](./docs/mockups/icons/windows.png) Windows (Partner Center) | [fingrom_Windows.zip](https://github.com/lyskouski/app-finance/releases/latest) | [App Center: Fingrom](https://appcenter.ms/orgs/terCAD/apps/Fingrom) | [![Microsoft Store](./docs/mockups/badges/windows.png)](https://apps.microsoft.com/detail/fingrom/9NNPDJ2ST0HV) |
-| ![Web Browsers](./docs/mockups/icons/web.png) Web                      | [Fingrom](https://lyskouski.github.io/app-finance/) | [pending] | _(In Release)_ |
+| ![Web Browsers](./docs/mockups/icons/web.png) Web                      | [fingrom_Web.tar.gz](https://github.com/lyskouski/app-finance/releases/latest) | [GitHub Pages: Fingrom](https://lyskouski.github.io/app-finance/) | [terCAD: Fingrom](https://tercad.com/app/finance/) |
 
 
 ## Functionality
