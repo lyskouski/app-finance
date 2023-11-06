@@ -1,6 +1,6 @@
 # Book: From Zero to Market with Flutter
 
-[![License: CC BY-NC-ND 4.0](https://img.shields.io/badge/License-CC_BY--NC--ND_4.0-lightgrey.svg)](https://creativecommons.org/licenses/by-nc-nd/4.0/) 
+[![License: CC BY-NC-ND 4.0](https://img.shields.io/badge/License-CC_BY--NC--ND_4.0-lightgrey.svg)](https://creativecommons.org/licenses/by-nc-nd/4.0/) <a href="https://www.buymeacoffee.com/app/lyskouski"><img height="20" src="https://img.buymeacoffee.com/button-api/?text=Buy me a coffee&emoji=&slug=lyskouski&button_colour=FFDD00&font_colour=000000&font_family=Cookie&outline_colour=000000&coffee_colour=ffffff" /></a>
 
 ## Availability
 
@@ -48,6 +48,17 @@ by adding your name into "Contributors"-section as a gratitude).
 However, if you choose to contribute content (not just typo corrections) to this repo, you agree that you're giving
 me a non-exclusive license to use that content for the book, as I (and my possible publisher) deem appropriate. 
 You probably guessed that already, but I just wanted to be extra clear on that.
+
+## Support (Sponsorship)
+
+If you'd like to contribute financially towards the efforts, please consider these options:
+
+* [Github Sponsorship](https://github.com/users/lyskouski/sponsorship)
+* [Paypal](https://www.paypal.me/terCAD)
+* [Patreon](https://www.patreon.com/terCAD)
+* [Donorbox](https://donorbox.org/tercad)
+
+Or, [treat me to :coffee:](https://www.buymeacoffee.com/lyskouski).
 
 ## License & Copyright
 
