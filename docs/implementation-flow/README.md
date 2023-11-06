@@ -12,8 +12,8 @@ Scheduled to 1st November 2023
   - Hardcover (ASIN: B0CLNT8GPC): https://www.amazon.com/Zero-Market-Flutter-Desktop-Distribution/dp/B0CLNT8GPC/
 - **Apple Books**
   - https://books.apple.com/us/book/from-zero-to-market-with-flutter/id6470395934
-- **Lulu**
-  - [Scheduled]
+- **Google Books**
+  - https://books.google.pl/books/about?id=j4XhEAAAQBAJ
 - **Smashwords**
   - https://www.smashwords.com/books/view/1471129 (choose your price)
 - **Barnes & Noble(R)**
