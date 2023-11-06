@@ -243,6 +243,7 @@
             "type": "String"
         }
     },
+    "isCreated": "Bereits erstellt, folgen Sie den nächsten Schritten!",
     "isEncrypted": "Datei ist verschlüsselt (standardmäßig)",
     "isRequired": "erforderlich",
     "language": "Sprache",

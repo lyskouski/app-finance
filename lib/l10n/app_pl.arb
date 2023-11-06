@@ -243,6 +243,7 @@
             "type": "String"
         }
     },
+    "isCreated": "Już utworzony, wykonaj kolejne kroki!",
     "isEncrypted": "Plik jest szyfrowany (domyślnie)",
     "isRequired": "wymagany",
     "language": "Język",

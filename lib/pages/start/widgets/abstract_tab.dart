@@ -8,11 +8,13 @@ import 'package:flutter/material.dart';
 
 abstract class AbstractTab<T> extends StatefulWidget {
   final bool isFirstBoot;
-  final Function([Widget? btn]) setState;
+  final Function() setState;
+  final Function(Widget btn) setButton;
 
   const AbstractTab({
     super.key,
     required this.setState,
+    required this.setButton,
     required this.isFirstBoot,
   });
 }
@@ -22,9 +24,7 @@ abstract class AbstractTabState<T extends AbstractTab> extends State<T> {
 
   Widget buildContent(BuildContext context, BoxConstraints constraints);
 
-  void updateState() {
-    widget.setState();
-  }
+  void updateState() => widget.setState();
 
   Widget buildButton(BuildContext context, BoxConstraints constraints) {
     return FullSizedButtonWidget(
@@ -41,7 +41,7 @@ abstract class AbstractTabState<T extends AbstractTab> extends State<T> {
     return LayoutBuilder(builder: (context, constraints) {
       if (widget.isFirstBoot) {
         WidgetsBinding.instance.addPostFrameCallback((_) {
-          widget.setState(buildButton(context, constraints));
+          widget.setButton(buildButton(context, constraints));
         });
         return ThemeHelper.emptyBox;
       }

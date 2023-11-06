@@ -8,15 +8,19 @@ class DelayedCall {
   final int delay;
   Timer? _timer;
   VoidCallback? _action;
+  bool preserveFirst;
 
-  DelayedCall(this.delay);
+  DelayedCall(this.delay, {this.preserveFirst = false});
 
   void run(VoidCallback action) {
     _timer?.cancel();
-    _action = action;
+    if (!preserveFirst || _action == null) {
+      _action = action;
+    }
     _timer = Timer(Duration(milliseconds: delay), () {
-      _action?.call();
+      final v = _action;
       _action = null;
+      v?.call();
     });
   }
 

@@ -24,6 +24,8 @@ class StartPage extends StatefulWidget {
 
 class StartPageState extends AbstractPageState<StartPage> {
   int currentStep = 0;
+  static const acknowledgeTaken = 1;
+  static const finalStep = 4;
   Widget button = ThemeHelper.emptyBox;
   List<Widget> barActions = [];
   String buttonName = AppLocale.labels.goNextTooltip;
@@ -43,19 +45,10 @@ class StartPageState extends AbstractPageState<StartPage> {
   @override
   Widget? getBarLeading(NavigatorState nav) => null;
 
-  void updateState(Widget? btn, NavigatorState nav) {
-    if (btn != null) {
-      setState(() {
+  void _setButton(Widget btn, NavigatorState nav) => setState(() {
         button = btn;
         buttonName = (btn as FullSizedButtonWidget).title;
-      });
-    } else if (currentStep > 3) {
-      nav.popAndPushNamed(AppRoute.homeRoute);
-    } else {
-      setState(() {
-        button = ThemeHelper.emptyBox;
-        currentStep += 1;
-        if (barActions.isEmpty && currentStep > 1) {
+        if (barActions.isEmpty && currentStep > acknowledgeTaken) {
           barActions = [
             ToolbarButtonWidget(
               child: IconButton(
@@ -71,25 +64,52 @@ class StartPageState extends AbstractPageState<StartPage> {
           ];
         }
       });
-    }
-  }
+
+  void _goNext(int step) => setState(() {
+        button = ThemeHelper.emptyBox;
+        currentStep = step + 1;
+      });
+
+  void _finalize(NavigatorState nav) => nav.popAndPushNamed(AppRoute.homeRoute);
 
   @override
   Widget buildContent(BuildContext context, BoxConstraints constraints) {
     NavigatorState nav = Navigator.of(context);
-    fn([Widget? btn]) => updateState(btn, nav);
+    fn(Widget btn) => _setButton(btn, nav);
     final isEmpty = button == ThemeHelper.emptyBox;
+    int i = 0;
     return Padding(
       padding: const EdgeInsets.only(top: 4.0),
       child: TabWidget(
         type: TabType.dots,
+        callback: (i) => _goNext(--i),
         focus: currentStep,
         children: [
-          SettingTab(setState: fn, isFirstBoot: currentStep < 1 && isEmpty),
-          PrivacyTab(setState: fn, isFirstBoot: currentStep < 2 && isEmpty),
-          UsageTab(setState: fn, isFirstBoot: currentStep < 3 && isEmpty),
-          AccountTab(setState: fn, isFirstBoot: currentStep < 4 && isEmpty),
-          BudgetTab(setState: fn, isFirstBoot: isEmpty),
+          SettingTab(
+            setButton: fn,
+            setState: () => _goNext(0),
+            isFirstBoot: currentStep == i++ && isEmpty,
+          ),
+          PrivacyTab(
+            setButton: fn,
+            setState: () => _goNext(1),
+            isFirstBoot: currentStep == i++ && isEmpty,
+          ),
+          UsageTab(
+            setButton: fn,
+            setState: () => _goNext(2),
+            isFirstBoot: currentStep == i++ && isEmpty,
+          ),
+          AccountTab(
+            setButton: fn,
+            setState: () => _goNext(3),
+            isFirstBoot: currentStep == i++ && isEmpty,
+          ),
+          BudgetTab(
+            setButton: fn,
+            setState: () => _finalize(nav),
+            isFirstBoot: currentStep == i++ && isEmpty,
+          ),
         ],
       ),
     );

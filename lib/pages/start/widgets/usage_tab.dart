@@ -10,6 +10,7 @@ class UsageTab extends AbstractTab {
   const UsageTab({
     super.key,
     required super.setState,
+    required super.setButton,
     required super.isFirstBoot,
   });
 

@@ -243,6 +243,7 @@
             "type": "String"
         }
     },
+    "isCreated": "Já criado, siga as próximas etapas!",
     "isEncrypted": "O arquivo é criptografado (por padrão)",
     "isRequired": "obrigatório",
     "language": "Idioma",
