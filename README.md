@@ -11,6 +11,8 @@
 The goal of the solution is to create a financial accounting application that is intuitive, efficient, and inclusive. 
 That empowers users to effortlessly manage their finances while ensuring that no one is left behind.
 
+[![Watch the video](./docs/marketing-flow/presentation_fin.png)](https://youtu.be/sNTbpILLsOw)
+
 
 | Type                     | Alpha Version         | Pre-Release                   | Release                       |
 | ------------------------ | ----------------------| ----------------------------- | ----------------------------- |
