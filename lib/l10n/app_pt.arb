@@ -243,6 +243,7 @@
             "type": "String"
         }
     },
+    "isCreated": "Já criado, siga os passos seguintes!",
     "isEncrypted": "O ficheiro é encriptado (por predefinição)",
     "isRequired": "necessário",
     "language": "Língua",

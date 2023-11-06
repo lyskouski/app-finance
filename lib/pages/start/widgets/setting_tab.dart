@@ -31,6 +31,7 @@ class SettingTab extends AbstractTab {
   const SettingTab({
     super.key,
     required super.setState,
+    required super.setButton,
     super.isFirstBoot = true,
   });
 

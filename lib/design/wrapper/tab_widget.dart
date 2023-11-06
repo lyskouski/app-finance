@@ -1,6 +1,7 @@
 // Copyright 2023 The terCAD team. All rights reserved.
 // Use of this source code is governed by a CC BY-NC-ND 4.0 license that can be found in the LICENSE file.
 
+import 'package:app_finance/_classes/controller/delayed_call.dart';
 import 'package:app_finance/_configs/theme_helper.dart';
 import 'package:app_finance/_ext/build_context_ext.dart';
 import 'package:app_finance/pages/_interfaces/abstract_page_state.dart';
@@ -52,6 +53,7 @@ abstract class BasicTabWidgetState extends State<TabWidget> with TickerProviderS
   late int tabIndex;
   late int initIndex;
   late bool hasIcons = widget.tabs?.first.icon != null;
+  final timer = DelayedCall(500, preserveFirst: true);
 
   PreferredSizeWidget? getAppBar(BuildContext context);
 
@@ -82,38 +84,29 @@ abstract class BasicTabWidgetState extends State<TabWidget> with TickerProviderS
     super.dispose();
   }
 
-  Future<void> delaySwitchTab(int delay, int newIndex) async {
-    await Future.delayed(Duration(milliseconds: delay));
-    switchTab(newIndex);
-  }
-
   void switchTab(int newIndex) {
-    if (newIndex < 0 || newIndex >= tabCount) {
+    if (newIndex < 0 || newIndex >= tabCount || tabIndex == newIndex) {
       return;
     }
     setState(() {
-      const delay = 300;
-      final currIndex = tabIndex;
       tabController.animateTo(newIndex);
       if (pageController.hasClients) {
+        tabIndex += newIndex > tabIndex ? 1 : -1;
         pageController.animateToPage(
-          newIndex,
-          duration: const Duration(milliseconds: delay),
+          tabIndex,
+          duration: const Duration(milliseconds: 300),
           curve: Curves.ease,
         );
-        if ((currIndex - newIndex).abs() > 1) {
-          delaySwitchTab(delay, newIndex);
-        } else {
-          tabIndex = newIndex;
-          if (widget.callback != null) {
-            widget.callback!(newIndex);
-          }
-        }
-      } else {
-        tabIndex = newIndex;
-        if (widget.callback != null) {
+        if (tabIndex == newIndex && widget.callback != null) {
           widget.callback!(newIndex);
+        } else {
+          timer.run(() {
+            switchTab(newIndex);
+          });
         }
+      } else if (widget.callback != null) {
+        tabIndex = newIndex;
+        widget.callback!(newIndex);
       }
     });
   }

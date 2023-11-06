@@ -8,7 +8,7 @@ import 'package:flutter/material.dart';
 fn([Widget? _]) => null;
 
 class SettingTab extends start.SettingTab {
-  const SettingTab({super.key, super.setState = fn, super.isFirstBoot = false});
+  const SettingTab({super.key, super.setState = fn, super.setButton = fn, super.isFirstBoot = false});
 
   @override
   SettingTabState createState() => SettingTabState();
