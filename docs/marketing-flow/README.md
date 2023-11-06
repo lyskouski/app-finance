@@ -2,30 +2,30 @@
 
 ## Statistics
 
-| Date       | Type                           | Stats       |
-|------------|--------------------------------|-------------|
-| 2023-11-06 | Contributors                   | 1           |
-|      14:00 | Repository Stars               | 6           |
-|            | Repository Visitors            | 51 (163)    |
-|            | Rep. Unique Clones             | 84          |
-|            | Average interaction, seconds   | 88          |
-|            | Application Installs (Reviews) |             |
-|            | - Windows                      | 8 (1)       |
-|            | - Linux                        | 7           |
-|            | - macOS                        | 2           |
-|            | - iOS Mobile                   | 35          |
-|            | - iOS Tablet                   | 13          |
-|            | - Android Mobile               | 38 (1)      |
-|            | - Android Tablet               | 1           |
-|            | - Web                          | 25          |
-|            | Publications                   |             |
-|            | - Books KENP Read (Sells)      | 420         |
-|            | - Medium Views (Claps)         | 2           |
-|            | - LinkedIn Views (Likes)       | 2375 (27)   |
-|            | Videos View (Likes)            | 17 (3)      |
-|            | - Subscriptions                | +1          | 
-|            | - Average view duration        | 1:42        | 
-|------------|--------------------------------|-------------|
+| Type                           | 2023-11-06  | 2023-11-13 |
+|--------------------------------|-------------|------------|
+| Contributors                   | 1           | |
+| Repository Stars               | 6           | |
+| Repository Visitors            | 51 (163)    | |
+| Rep. Unique Clones             | 84          | |
+| Average interaction, seconds   | 88          | |
+| Application Installs (Reviews) |             | |
+| - Windows                      | 8 (1)       | |
+| - Linux                        | 7           | |
+| - macOS                        | 2           | |
+| - iOS Mobile                   | 35          | |
+| - iOS Tablet                   | 13          | |
+| - Android Mobile               | 38 (1)      | |
+| - Android Tablet               | 1           | |
+| - Web                          | 25          | |
+| Publications                   | 2           | |
+| - Books KENP Read (Sells)      | 420         | |
+| - Medium Views (Claps)         | 2           | |
+| - LinkedIn Views (Likes)       | 2375 (27)   | |
+| Videos                         | 1           | |
+| - View (Likes)                 | 17 (3)      | |
+| - Subscriptions                | +1          | |
+| - Average view duration        | 1:42        | |
 
 
 ## Timeline
