@@ -19,6 +19,7 @@ import 'package:app_finance/pages/home/widgets/account_widget.dart';
 import 'package:app_finance/pages/home/widgets/bill_widget.dart';
 import 'package:app_finance/pages/home/widgets/budget_widget.dart';
 import 'package:app_finance/pages/home/widgets/goal_widget.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:intl/intl.dart';
@@ -83,16 +84,17 @@ class HomePageState extends AbstractPageState<HomePage> {
           onPressed: () => setState(() => isEditMode = true),
         ),
       ),
-      ToolbarButtonWidget(
-        child: IconButton(
-          icon: const Icon(
-            Icons.switch_access_shortcut_add_outlined,
-            color: Colors.white70,
+      if (![TargetPlatform.iOS, TargetPlatform.macOS, TargetPlatform.android].contains(defaultTargetPlatform))
+        ToolbarButtonWidget(
+          child: IconButton(
+            icon: const Icon(
+              Icons.switch_access_shortcut_add_outlined,
+              color: Colors.white70,
+            ),
+            tooltip: AppLocale.labels.subscriptionTooltip,
+            onPressed: () => nav.pushNamed(AppRoute.subscriptionRoute),
           ),
-          tooltip: AppLocale.labels.subscriptionTooltip,
-          onPressed: () => nav.pushNamed(AppRoute.subscriptionRoute),
         ),
-      ),
     ];
   }
 

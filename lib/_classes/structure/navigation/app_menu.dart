@@ -4,6 +4,7 @@
 import 'package:app_finance/_classes/herald/app_locale.dart';
 import 'package:app_finance/_classes/structure/navigation/app_menu_item.dart';
 import 'package:app_finance/_classes/structure/navigation/app_route.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 class AppMenu {
@@ -67,11 +68,12 @@ class AppMenu {
         icon: Icons.settings,
         route: AppRoute.settingsRoute,
       ),
-      AppMenuItem(
-        name: AppLocale.labels.subscriptionHeadline,
-        icon: Icons.switch_access_shortcut_add_outlined,
-        route: AppRoute.subscriptionRoute,
-      ),
+      if (![TargetPlatform.iOS, TargetPlatform.macOS, TargetPlatform.android].contains(defaultTargetPlatform))
+        AppMenuItem(
+          name: AppLocale.labels.subscriptionHeadline,
+          icon: Icons.switch_access_shortcut_add_outlined,
+          route: AppRoute.subscriptionRoute,
+        ),
       AppMenuItem(
         name: AppLocale.labels.aboutHeadline,
         icon: Icons.question_answer_outlined,
