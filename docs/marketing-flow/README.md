@@ -22,6 +22,8 @@
 | - Books KENP Read (Sells)      | 420         | |
 | - Medium Views (Claps)         | 2           | |
 | - LinkedIn Views (Likes)       | 2375 (27)   | |
+| - Twitter Views (Retweets)     |             | |
+| - Facebook Actions             |             | |
 | Videos                         | 1           | |
 | - View (Likes)                 | 17 (3)      | |
 | - Subscriptions                | +1          | |
@@ -32,7 +34,8 @@
 
 ### 2023-11-07: [Oeuvre] Fingrom Acrostic
 - [Twitter Post](https://x.com/TheFieryCat/status/1721751900641509508)
-- [LindedIn Post]()
+- [LindedIn Post](https://www.linkedin.com/feed/update/urn:li:activity:7127580446900563968/)
+- [Facebook](https://www.facebook.com/vlyskouski/posts/pfbid02wMANkPSWoXAD4oEHZr9wMY7pud1rhHqMU5wMFpNXehAAYjPscBRDPBKQ6QmmomNcl)
 
 ### 2023-11-06: [Paper] Flutter CI/CD: Distribution Flow
 - [LindedIn Post](https://www.linkedin.com/feed/update/urn:li:activity:7127253298914410496)
