@@ -7,7 +7,7 @@ typedef LanguageDef = ({
 });
 
 const languageList = <LanguageDef>[
-  (id: 'be', name: 'Тарашкевица (BE)'),
+  (id: 'be', name: 'Тарашкевіца (BE)'),
   (id: 'be_EU', name: 'Latsinka (BE)'),
   (id: 'en', name: 'English (EN-US)'),
   (id: 'fr', name: 'Français (FR)'),

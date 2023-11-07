@@ -30,6 +30,10 @@
 
 ## Timeline
 
+### 2023-11-07: [Oeuvre] Fingrom Acrostic
+- [Twitter Post](https://x.com/TheFieryCat/status/1721751900641509508)
+- [LindedIn Post]()
+
 ### 2023-11-06: [Paper] Flutter CI/CD: Distribution Flow
 - [LindedIn Post](https://www.linkedin.com/feed/update/urn:li:activity:7127253298914410496)
 - https://medium.com/p/599c6ca5e809
