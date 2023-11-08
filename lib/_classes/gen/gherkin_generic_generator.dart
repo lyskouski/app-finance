@@ -23,9 +23,10 @@ class GherkinGenericGenerator extends Generator {
     final scope = StringBuffer();
     for (final annotation in annotations) {
       final note = annotation.getField('folders');
+      final extension = annotation.getField('extension');
       final parts = node.source?.uri.toString().split(RegExp(r'[\\/]', unicode: true));
       final dir = parts?.sublist(1, parts.length - 1).join('/');
-      if (note!.isNull || dir!.isEmpty) {
+      if (note == null || note.isNull || dir == null || dir.isEmpty || extension == null || extension.isNull) {
         continue;
       }
       final templateFile = await File('$dir/${parts?.last}').readAsString();
@@ -36,7 +37,7 @@ class GherkinGenericGenerator extends Generator {
       for (final name in note.toListValue()!) {
         Iterable<File> files = Directory('$dir/${name.toStringValue()}')
             .listSync(recursive: true)
-            .where((entity) => entity is File && entity.path.endsWith('.resource'))
+            .where((entity) => entity is File && entity.path.endsWith(extension.toStringValue()!))
             .cast<File>();
         for (final file in files) {
           String content = await file.readAsString();
@@ -48,7 +49,7 @@ class GherkinGenericGenerator extends Generator {
             final name = scenarios[index + 1].split(RegExp('(\n|\r)')).first.trim();
             scope.writeln('class ${name.replaceAll(' ', '')}$template'
                 .replaceAll('%step%', name)
-                .replaceAll('%feature%', '${scenarios[0]}\n$scenario${scenarios[index + 1]}'));
+                .replaceAll('%feature%', '${scenarios[0]}\n$scenario${scenarios[index + 1]}'.replaceAll('\$', '\\\$')));
           });
         }
       }
