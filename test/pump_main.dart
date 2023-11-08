@@ -40,6 +40,7 @@ class PumpMain {
   static Future<void> init(WidgetTester tester, [bool isIntegration = false]) async {
     final pumpMain = PumpMain();
     wrapProvider(tester, 'plugins.flutter.io/path_provider', '$path/${UniqueKey()}');
+    await initFonts();
     await initPref(isIntegration);
     await pumpMain.initMain(tester, isIntegration);
   }
@@ -47,15 +48,17 @@ class PumpMain {
   static Future<void> initFonts() async {
     await _initFont('Abel-Regular');
     await _initFont('RobotoCondensed-Regular');
-    // await _initFont('MaterialIcons');
+    // await _initFont('MaterialIcons-Regular');
   }
 
   static Future<void> _initFont(String name) async {
     final root = fs.directory(platform.environment['FLUTTER_ROOT']).path.replaceAll('\\', '/');
-    final path = switch (name) {
-      'MaterialIcons' => '$root/bin/cache/artifacts/material_fonts/MaterialIcons-Regular.otf',
-      _ => 'assets/fonts/$name.ttf',
-    };
+    final scope = [
+      'assets/fonts/$name.ttf',
+      'assets/fonts/$name.otf',
+      '$root/bin/cache/artifacts/material_fonts/$name.otf',
+    ];
+    final path = scope.firstWhere((path) => io.File(path).existsSync());
     final Future<ByteData> fontData = rootBundle.load(path);
     final FontLoader fontLoader = FontLoader(name)..addFont(fontData);
     await fontLoader.load();

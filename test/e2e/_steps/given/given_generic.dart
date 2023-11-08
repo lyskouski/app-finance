@@ -18,9 +18,7 @@ class GivenGeneric extends Given {
   @override
   Future<void> executeStep() async {
     final reporter = FileReporter();
-    final step = await FileReader().getFromString('''
-    %feature%
-    ''', reporter);
+    final step = await FileReader().getFromString('''%feature%''', reporter);
     final result = await FileRunner(FileRunner.tester, reporter).run(step);
     if (!result) {
       reporter.publish();

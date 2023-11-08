@@ -91,6 +91,7 @@ class CurrencyExchangeInputState extends State<CurrencyExchangeInput> {
                           ),
                           SimpleInput(
                             controller: scope.rate,
+                            tooltip: '${scope.to} ${AppLocale.labels.conversion}',
                             type: const TextInputType.numberWithOptions(decimal: true),
                           )
                         ],
@@ -101,6 +102,7 @@ class CurrencyExchangeInputState extends State<CurrencyExchangeInput> {
                           ),
                           SimpleInput(
                             controller: scope.sum,
+                            tooltip: '${scope.from} ${AppLocale.labels.conversionMessage(scope.to)}',
                             type: const TextInputType.numberWithOptions(decimal: true),
                           ),
                         ],

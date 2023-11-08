@@ -3,5 +3,6 @@
 
 class GenerateGherkinResources {
   final List<String> folders;
-  const GenerateGherkinResources([this.folders = const []]);
+  final String extension;
+  const GenerateGherkinResources([this.folders = const [], this.extension = '.resource.feature']);
 }

@@ -13,7 +13,7 @@ import 'package:gherkin/gherkin.dart';
 import '../file_runner.dart';
 import '../screen_capture.dart';
 
-class TapOnNuOfDefinedField extends When2WithWorld<int, String, World> {
+class TapOnNumOfDefinedField extends When2WithWorld<int, String, World> {
   @override
   RegExp get pattern => RegExp(r"I tap on {int} index of {string} fields");
 
@@ -26,6 +26,9 @@ class TapOnNuOfDefinedField extends When2WithWorld<int, String, World> {
       'ListBudgetSelector' => find.byType(ListBudgetSelector),
       'BaseLineWidget' => find.byType(BaseLineWidget),
       'CurrencySelector' => find.byType(BaseCurrencySelector),
+      'CodeCurrencySelector' => find.byType(CodeCurrencySelector),
+      'AccountSelector' => find.byType(ListAccountSelector),
+      'BudgetSelector' => find.byType(ListBudgetSelector),
       'CodeCurrencySelector' => find.byType(CodeCurrencySelector),
       _ => throw Exception('Not defined'),
     };
