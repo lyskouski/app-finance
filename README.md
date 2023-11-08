@@ -127,6 +127,9 @@ that already, but I just wanted to be extra clear on that.
 
 ## License & Copyright
 
-The content herein are all &copy; 2023 **terCAD Team** (Viachaslau Lyskouski).
+The content herein are all &copy; 2023 **terCAD** Team (Viachaslau Lyskouski).
 
-<a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-nd/4.0/88x31.png" /></a><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/4.0/">Creative Commons Attribution-NonCommercial-NoDerivs 4.0 Unported License</a>.
+<a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-nd/4.0/88x31.png" /></a><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/4.0/">Creative Commons Attribution-NonCommercial-NoDerivs 4.0 Unported License</a>:
+- **Attribution**: provide a link to the license, and indicate if changes were made
+- **NonCommercial**: cannot be used for commercial purposes
+- **NoDerivatives**: any modification (remix, transform, or build upon the material) cannot be distributed by your own. Push it back to the main repository (https://github.com/lyskouski/app-finance) to unblock the change distribution.
