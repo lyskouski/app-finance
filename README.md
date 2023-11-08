@@ -24,7 +24,7 @@ gantt
     ML Integration          : dis8, 2024-01-01, 1M
 ```
 
-[![Watch the video](./docs/marketing-flow/presentation_en.png)](https://youtu.be/sNTbpILLsOw)
+[![Watch the video](./docs/marketing-flow/presentation_video.png)](https://youtu.be/sNTbpILLsOw)
 
 
 | Type                     | Alpha Version         | Pre-Release                   | Release                       |
