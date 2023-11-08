@@ -34,7 +34,7 @@ class DisplayHelper {
     isWide = ThemeHelper.isWideScreen(constraints);
     isBottom = ThemeHelper.isNavBottom(constraints);
     isWearable = ThemeHelper.isWearableMode(context, constraints);
-    isRight = !isWearable && ThemeHelper.isNavRight(context, constraints);
+    isRight = ThemeHelper.isNavRight(context, constraints);
     isLeftBar = ThemeHelper.getHeight(context) < 520;
     height = ThemeHelper.getHeight(context);
     originWidth = ThemeHelper.getWidth(context);

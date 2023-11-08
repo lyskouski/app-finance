@@ -172,10 +172,7 @@ abstract class AbstractPageState<T extends StatefulWidget> extends State<T> {
     );
   }
 
-  BottomAppBar? buildBottomBar(BuildContext context, BoxConstraints constraints) {
-    if (ThemeHelper.isNavRight(context, constraints)) {
-      return null;
-    }
+  Widget buildBottomBar(BuildContext context, BoxConstraints constraints) {
     final theme = Theme.of(context);
     final nav = Navigator.of(context);
     final actions = getBarActions(nav);
@@ -184,11 +181,9 @@ abstract class AbstractPageState<T extends StatefulWidget> extends State<T> {
     final hasTooltip = getButtonName().isNotEmpty;
     final showTooltip = hasTooltip && (constraints.maxWidth - titleWidth - btnWidth - 50 > 125);
 
-    return BottomAppBar(
+    return Container(
       padding: EdgeInsets.zero,
-      notchMargin: CircularProgressIndicator.strokeAlignCenter,
       clipBehavior: Clip.none,
-      elevation: 0.0,
       height: barHeight,
       color: theme.colorScheme.primary,
       child: RowWidget(
@@ -263,67 +258,76 @@ abstract class AbstractPageState<T extends StatefulWidget> extends State<T> {
 
   @override
   Widget build(BuildContext context) {
+    final height = MediaQuery.sizeOf(context).height;
     final scale = context.watch<AppZoom>().value;
-    return Consumer<AppData>(builder: (context, appState, _) {
-      state = appState;
-      return LayoutBuilder(builder: (context, constraints) {
-        final display = DisplayHelper.getInstance(context, constraints);
-        final hasShift = display.isBottom && !display.isWearable && !display.isRight;
-        final height = constraints.maxHeight / scale - (hasShift ? barHeight + ThemeHelper.getIndent() : 0);
-        double width = constraints.maxWidth / scale;
-        Widget? rightBar;
-        if (display.isRight && !display.isWearable) {
-          rightBar = buildRightBar(context, constraints);
-          if (rightBar != null) {
-            width -= barHeight;
-          }
-        } else if (display.isWide) {
-          width -= menuWidth;
-        }
-        final dx = (constraints.maxWidth - constraints.maxWidth / scale) / 2;
-        final dy = (constraints.maxHeight - constraints.maxHeight / scale) / 2;
-        return Scaffold(
-          appBar: display.isBottom ? null : buildBar(context, constraints),
-          bottomSheet: display.isBottom ? buildBottomBar(context, constraints) : null,
-          drawer: buildDrawer(),
-          floatingActionButtonLocation: hasShift ? FloatingActionButtonLocation.centerDocked : null,
-          floatingActionButton: buildButton(context, constraints),
-          resizeToAvoidBottomInset: true,
-          body: SafeArea(
-            child: InputControllerWrapper(
-              child: Stack(
-                children: [
-                  if (display.isWide)
-                    Container(
-                      color: context.colorScheme.inversePrimary.withOpacity(0.2),
-                      width: menuWidth,
-                      height: double.infinity,
-                      child: buildNavigation(),
-                    ),
-                  Container(
-                    margin: display.isWide ? const EdgeInsets.only(left: menuWidth) : EdgeInsets.zero,
-                    child: OverflowBox(
-                      alignment: Alignment.topLeft,
-                      minWidth: width,
-                      maxWidth: width,
-                      minHeight: height,
-                      maxHeight: height,
-                      child: Transform.translate(
-                        offset: Offset(dx, dy),
-                        child: Transform.scale(
-                          scale: scale,
-                          child: buildContent(context, constraints),
+    return Flex(direction: Axis.vertical, children: [
+      Expanded(
+        child: Consumer<AppData>(builder: (context, appState, _) {
+          state = appState;
+          return LayoutBuilder(builder: (context, constraints) {
+            final display = DisplayHelper.getInstance(context, constraints);
+            final hasShift = display.isBottom && !display.isWearable && !display.isRight;
+            final blockHeight = height / scale - (hasShift ? barHeight + ThemeHelper.getIndent() : 0);
+            double width = constraints.maxWidth / scale;
+            Widget? rightBar;
+            if (display.isRight) {
+              rightBar = buildRightBar(context, constraints);
+              if (rightBar != null) {
+                width -= barHeight;
+              }
+            } else if (display.isWide) {
+              width -= menuWidth;
+            }
+            final dx = (constraints.maxWidth - constraints.maxWidth / scale) / 2;
+            final dy = (constraints.maxHeight - constraints.maxHeight / scale) / 2;
+            return Scaffold(
+              appBar: display.isBottom ? null : buildBar(context, constraints),
+              drawer: buildDrawer(),
+              floatingActionButtonLocation: hasShift ? FloatingActionButtonLocation.centerDocked : null,
+              floatingActionButton: buildButton(context, constraints),
+              resizeToAvoidBottomInset: true,
+              body: SafeArea(
+                child: InputControllerWrapper(
+                  child: Stack(
+                    children: [
+                      if (display.isWide)
+                        Container(
+                          color: context.colorScheme.inversePrimary.withOpacity(0.2),
+                          width: menuWidth,
+                          height: double.infinity,
+                          child: buildNavigation(),
+                        ),
+                      Container(
+                        margin: display.isWide ? const EdgeInsets.only(left: menuWidth) : EdgeInsets.zero,
+                        child: OverflowBox(
+                          alignment: Alignment.topLeft,
+                          minWidth: width,
+                          maxWidth: width,
+                          minHeight: blockHeight,
+                          maxHeight: blockHeight,
+                          child: Transform.translate(
+                            offset: Offset(dx, dy),
+                            child: Transform.scale(
+                              scale: scale,
+                              child: buildContent(context, constraints),
+                            ),
+                          ),
                         ),
                       ),
-                    ),
+                      if (rightBar != null) rightBar,
+                      if (rightBar == null && display.isBottom)
+                        Container(
+                          margin: EdgeInsets.only(top: height - barHeight),
+                          child: buildBottomBar(context, constraints),
+                        ),
+                    ],
                   ),
-                  if (rightBar != null) rightBar,
-                ],
+                ),
               ),
-            ),
-          ),
-        );
-      });
-    });
+            );
+          });
+        }),
+      ),
+    ]);
   }
 }

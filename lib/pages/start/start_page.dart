@@ -24,7 +24,7 @@ class StartPage extends StatefulWidget {
 
 class StartPageState extends AbstractPageState<StartPage> {
   int currentStep = 0;
-  static const acknowledgeTaken = 1;
+  static const acknowledgeTaken = 2;
   static const finalStep = 4;
   Widget button = ThemeHelper.emptyBox;
   List<Widget> barActions = [];

@@ -48,8 +48,13 @@ class HomePageState extends AbstractPageState<HomePage> {
   }
 
   @override
-  BottomAppBar? buildBottomBar(BuildContext context, BoxConstraints constraints) {
-    return ThemeHelper.isWearable ? null : super.buildBottomBar(context, constraints);
+  Widget buildBottomBar(BuildContext context, BoxConstraints constraints) {
+    return ThemeHelper.isWearable ? ThemeHelper.emptyBox : super.buildBottomBar(context, constraints);
+  }
+
+  @override
+  Widget? buildRightBar(BuildContext context, BoxConstraints constraints) {
+    return ThemeHelper.isWearable ? null : super.buildRightBar(context, constraints);
   }
 
   @override
