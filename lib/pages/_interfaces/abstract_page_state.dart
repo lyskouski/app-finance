@@ -134,7 +134,7 @@ abstract class AbstractPageState<T extends StatefulWidget> extends State<T> {
 
   AppBar? buildBar(BuildContext context, BoxConstraints constraints) {
     final nav = Navigator.of(context);
-    final isWide = ThemeHelper.isWideScreen(constraints);
+    final isWide = DisplayHelper.state().isWide;
     return AppBar(
       title: Center(child: getBarTitle(context)),
       toolbarHeight: barHeight,
@@ -223,7 +223,7 @@ abstract class AbstractPageState<T extends StatefulWidget> extends State<T> {
     );
   }
 
-  Widget buildNavigation() {
+  Widget? buildNavigation() {
     double indent = ThemeHelper.getIndent();
     return FocusScope(
       child: ListView.separated(
@@ -270,13 +270,17 @@ abstract class AbstractPageState<T extends StatefulWidget> extends State<T> {
             final blockHeight = height / scale - (hasShift ? barHeight + ThemeHelper.getIndent() : 0);
             double width = constraints.maxWidth / scale;
             Widget? rightBar;
+            Widget? leftBar;
             if (display.isRight) {
               rightBar = buildRightBar(context, constraints);
               if (rightBar != null) {
                 width -= barHeight;
               }
             } else if (display.isWide) {
-              width -= menuWidth;
+              leftBar = buildNavigation();
+              if (leftBar != null) {
+                width -= menuWidth;
+              }
             }
             final dx = (constraints.maxWidth - constraints.maxWidth / scale) / 2;
             final dy = (constraints.maxHeight - constraints.maxHeight / scale) / 2;
@@ -290,7 +294,7 @@ abstract class AbstractPageState<T extends StatefulWidget> extends State<T> {
                 child: InputControllerWrapper(
                   child: Stack(
                     children: [
-                      if (display.isWide)
+                      if (leftBar != null)
                         Container(
                           color: context.colorScheme.inversePrimary.withOpacity(0.2),
                           width: menuWidth,
@@ -298,7 +302,7 @@ abstract class AbstractPageState<T extends StatefulWidget> extends State<T> {
                           child: buildNavigation(),
                         ),
                       Container(
-                        margin: display.isWide ? const EdgeInsets.only(left: menuWidth) : EdgeInsets.zero,
+                        margin: leftBar != null ? const EdgeInsets.only(left: menuWidth) : EdgeInsets.zero,
                         child: OverflowBox(
                           alignment: Alignment.topLeft,
                           minWidth: width,

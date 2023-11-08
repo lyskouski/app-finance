@@ -43,7 +43,10 @@ class StartPageState extends AbstractPageState<StartPage> {
   List<Widget> getBarActions(NavigatorState nav) => barActions;
 
   @override
-  Widget? getBarLeading(NavigatorState nav) => null;
+  Widget? buildNavigation() => null;
+
+  @override
+  Widget? getBarLeading(NavigatorState nav) => ThemeHelper.emptyBox;
 
   void _setButton(Widget btn, NavigatorState nav) => setState(() {
         button = btn;
