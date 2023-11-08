@@ -11,14 +11,17 @@ import 'package:app_finance/_ext/build_context_ext.dart';
 import 'package:app_finance/charts/bar_race_chart.dart';
 import 'package:app_finance/charts/column_chart.dart';
 import 'package:app_finance/charts/interface/chart_data.dart';
+import 'package:app_finance/design/wrapper/row_widget.dart';
 import 'package:flutter/material.dart';
 
 class BillTab extends StatelessWidget {
   final AppData store;
+  final double? width;
 
   const BillTab({
     super.key,
     required this.store,
+    this.width,
   });
 
   List<ChartData> getData() {
@@ -51,7 +54,7 @@ class BillTab extends StatelessWidget {
   Widget build(BuildContext context) {
     final TextTheme textTheme = context.textTheme;
     double indent = ThemeHelper.getIndent();
-    final width = ThemeHelper.getWidth(context, 4);
+    final width = this.width ?? ThemeHelper.getWidth(context, 6);
     final data = getData();
     double yMax = 0;
     if (data.isNotEmpty && data.first.data.isNotEmpty) {
@@ -65,7 +68,7 @@ class BillTab extends StatelessWidget {
     final year = DateTime.now().year;
     return SingleChildScrollView(
       child: Padding(
-        padding: EdgeInsets.all(indent * 2),
+        padding: this.width != null ? EdgeInsets.zero : EdgeInsets.all(indent * 2),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -80,25 +83,34 @@ class BillTab extends StatelessWidget {
               data: data,
               yMax: yMax * 1.2,
             ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            RowWidget(
+              maxWidth: width,
+              indent: indent,
+              chunk: [indent * 2, null, null],
               children: [
-                Text(
-                  year.toString(),
-                  style: textTheme.bodySmall!.copyWith(color: Colors.blue),
-                ),
-                Text(
-                  (year - 1).toString(),
-                  style: textTheme.bodySmall!.copyWith(color: Colors.grey),
-                ),
+                const [ThemeHelper.emptyBox],
+                [
+                  Text(
+                    year.toString(),
+                    style: textTheme.bodySmall!.copyWith(color: Colors.blue),
+                  ),
+                ],
+                [
+                  Align(
+                    alignment: Alignment.centerRight,
+                    child: Text(
+                      (year - 1).toString(),
+                      style: textTheme.bodySmall!.copyWith(color: Colors.grey),
+                    ),
+                  ),
+                ],
               ],
             ),
-            ThemeHelper.hIndent,
+            ThemeHelper.hIndent2x,
             Text(
               AppLocale.labels.chartBarRace,
               style: textTheme.bodyLarge,
             ),
-            ThemeHelper.hIndent,
             BarRaceChart(
               width: width,
               indent: indent,
@@ -109,6 +121,7 @@ class BillTab extends StatelessWidget {
                 exchange: Exchange(store: store),
               ),
             ),
+            ThemeHelper.formEndBox,
           ],
         ),
       ),

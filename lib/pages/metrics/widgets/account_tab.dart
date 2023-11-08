@@ -24,10 +24,12 @@ import 'package:intl/intl.dart';
 
 class AccountTab extends StatelessWidget {
   final AppData store;
+  final double? width;
 
   const AccountTab({
     super.key,
     required this.store,
+    this.width,
   });
 
   List<OhlcData> _getData(List<AccountAppData> accounts, DateTime xMin) {
@@ -93,7 +95,8 @@ class AccountTab extends StatelessWidget {
   Widget build(BuildContext context) {
     final TextTheme textTheme = context.textTheme;
     double indent = ThemeHelper.getIndent();
-    double width = ThemeHelper.getWidth(context, 4);
+    double width = this.width ?? ThemeHelper.getWidth(context, 8);
+    double pieWidth = width > 600 ? 280 : width * 0.4;
     final now = DateTime.now();
     final xMin = DateTime(now.year, now.month - 5);
     final accountList = store.getList(AppDataType.accounts).cast<AccountAppData>();
@@ -101,7 +104,7 @@ class AccountTab extends StatelessWidget {
     final currency = _getCurrencyDistribution(accountList);
     return SingleChildScrollView(
       child: Padding(
-        padding: EdgeInsets.all(indent * 2),
+        padding: this.width != null ? EdgeInsets.zero : EdgeInsets.all(indent * 2),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -125,45 +128,50 @@ class AccountTab extends StatelessWidget {
               xMin: xMin,
               data: data,
             ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            RowWidget(
+              maxWidth: width,
+              indent: indent,
+              chunk: [indent * 2, null, null],
               children: [
-                TextWrapper(
-                  AppLocale.labels.raiseData,
-                  style: textTheme.bodySmall!.copyWith(color: Colors.blue),
-                ),
-                TextWrapper(
-                  AppLocale.labels.failData,
-                  style: textTheme.bodySmall!.copyWith(color: Colors.red),
-                ),
+                const [ThemeHelper.emptyBox],
+                [
+                  TextWrapper(
+                    AppLocale.labels.raiseData,
+                    style: textTheme.bodySmall!.copyWith(color: Colors.blue),
+                  ),
+                ],
+                [
+                  Align(
+                    alignment: Alignment.centerRight,
+                    child: TextWrapper(
+                      AppLocale.labels.failData,
+                      style: textTheme.bodySmall!.copyWith(color: Colors.red),
+                    ),
+                  ),
+                ],
               ],
             ),
             ThemeHelper.hIndent3x,
-            SizedBox(
-              child: LayoutBuilder(builder: (context, constraints) {
-                double pieWidth = constraints.maxWidth > 600 ? 280 : constraints.maxWidth * 0.4;
-                return RowWidget(
-                  maxWidth: constraints.maxWidth,
-                  indent: indent,
-                  chunk: [null, pieWidth],
-                  children: [
-                    [
-                      TableWidget(
-                        shadowColor: context.colorScheme.onBackground.withOpacity(0.1),
-                        width: constraints.maxWidth - pieWidth - 2 * indent,
-                        chunk: const [8, 34, null, null],
-                        data: _generateCurrencyTable(currency),
-                      ),
-                    ],
-                    [
-                      PieRadiusChart(
-                        data: currency,
-                        width: pieWidth,
-                      ),
-                    ]
-                  ],
-                );
-              }),
+            RowWidget(
+              maxWidth: width,
+              indent: indent,
+              chunk: [null, pieWidth],
+              children: [
+                [
+                  TableWidget(
+                    shadowColor: context.colorScheme.onBackground.withOpacity(0.1),
+                    width: width - pieWidth - 2 * indent,
+                    chunk: const [8, 34, null, null],
+                    data: _generateCurrencyTable(currency),
+                  ),
+                ],
+                [
+                  PieRadiusChart(
+                    data: currency,
+                    width: pieWidth,
+                  ),
+                ]
+              ],
             ),
             ThemeHelper.formEndBox,
           ],

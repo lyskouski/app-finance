@@ -37,6 +37,7 @@ abstract class AbstractPageState<T extends StatefulWidget> extends State<T> {
 
   Widget? getBarLeading(NavigatorState nav) {
     return ToolbarButtonWidget(
+      isWide: DisplayHelper.state().isWide,
       child: IconButton(
         hoverColor: Colors.transparent,
         tooltip: AppLocale.labels.backTooltip,
@@ -91,9 +92,11 @@ abstract class AbstractPageState<T extends StatefulWidget> extends State<T> {
   }
 
   List<Widget> getBarActions(NavigatorState nav) {
+    final isWide = DisplayHelper.state().isWide;
     return [
       if (getHelperName() != null)
         ToolbarButtonWidget(
+          isWide: isWide,
           child: IconButton(
             hoverColor: Colors.transparent,
             tooltip: AppLocale.labels.helpTooltip,
@@ -109,19 +112,20 @@ abstract class AbstractPageState<T extends StatefulWidget> extends State<T> {
             ),
           ),
         ),
-      Builder(
-        builder: (context) => ToolbarButtonWidget(
-          child: IconButton(
-            hoverColor: Colors.transparent,
-            icon: const Icon(
-              Icons.menu,
-              color: Colors.white70,
+      if (!isWide)
+        Builder(
+          builder: (context) => ToolbarButtonWidget(
+            child: IconButton(
+              hoverColor: Colors.transparent,
+              icon: const Icon(
+                Icons.menu,
+                color: Colors.white70,
+              ),
+              tooltip: AppLocale.labels.navigationTooltip,
+              onPressed: () => Scaffold.of(context).openDrawer(),
             ),
-            tooltip: AppLocale.labels.navigationTooltip,
-            onPressed: () => Scaffold.of(context).openDrawer(),
           ),
         ),
-      ),
     ];
   }
 
@@ -146,6 +150,7 @@ abstract class AbstractPageState<T extends StatefulWidget> extends State<T> {
           : null,
       backgroundColor: isWide ? context.colorScheme.inverseSurface.withOpacity(0.4) : context.colorScheme.primary,
       leading: getBarLeading(nav),
+      leadingWidth: isWide ? menuWidth : null,
       actions: getBarActions(nav),
     );
   }

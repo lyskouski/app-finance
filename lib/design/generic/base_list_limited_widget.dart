@@ -62,7 +62,7 @@ class BaseListLimitedWidget extends StatelessWidget {
             return Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                buildButton(context, route ?? AppRoute.homeRoute, AppLocale.labels.btnMore),
+                if (route != null) buildButton(context, route!, AppLocale.labels.btnMore),
                 addButton,
               ],
             );

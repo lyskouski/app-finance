@@ -11,24 +11,28 @@ import 'package:app_finance/_ext/build_context_ext.dart';
 import 'package:app_finance/charts/forecast_chart.dart';
 import 'package:app_finance/_configs/theme_helper.dart';
 import 'package:app_finance/charts/interface/chart_data.dart';
+import 'package:app_finance/design/wrapper/row_widget.dart';
 import 'package:flutter/material.dart';
 
 class BudgetTab extends StatelessWidget {
   final AppData store;
+  final double? width;
 
   const BudgetTab({
     super.key,
     required this.store,
+    this.width,
   });
 
   @override
   Widget build(BuildContext context) {
+    final width = this.width ?? ThemeHelper.getWidth(context, 6);
     final TextTheme textTheme = context.textTheme;
     double indent = ThemeHelper.getIndent();
     final exchange = Exchange(store: store);
     return SingleChildScrollView(
       child: Padding(
-        padding: EdgeInsets.all(indent * 2),
+        padding: this.width != null ? EdgeInsets.zero : EdgeInsets.all(indent * 2),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -37,7 +41,7 @@ class BudgetTab extends StatelessWidget {
               style: textTheme.bodyLarge,
             ),
             ForecastChart(
-              width: ThemeHelper.getWidth(context, 4),
+              width: width,
               height: 200,
               indent: indent,
               data: [
@@ -51,19 +55,30 @@ class BudgetTab extends StatelessWidget {
                 exchange: exchange,
               ),
             ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            RowWidget(
+              maxWidth: width,
+              indent: indent,
+              chunk: [indent * 2, null, null],
               children: [
-                Text(
-                  AppLocale.labels.actualData,
-                  style: textTheme.bodySmall!.copyWith(color: Colors.red),
-                ),
-                Text(
-                  AppLocale.labels.forecastData,
-                  style: textTheme.bodySmall!.copyWith(color: Colors.red.withBlue(200)),
-                ),
+                const [ThemeHelper.emptyBox],
+                [
+                  Text(
+                    AppLocale.labels.actualData,
+                    style: textTheme.bodySmall!.copyWith(color: Colors.red),
+                  ),
+                ],
+                [
+                  Align(
+                    alignment: Alignment.centerRight,
+                    child: Text(
+                      AppLocale.labels.forecastData,
+                      style: textTheme.bodySmall!.copyWith(color: Colors.red.withBlue(200)),
+                    ),
+                  ),
+                ],
               ],
             ),
+            ThemeHelper.formEndBox,
           ],
         ),
       ),
