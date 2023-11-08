@@ -16,9 +16,15 @@ class EnterTextField extends When2WithWorld<String, String, World> {
   @override
   Future<void> executeStep(String value, String tooltip) async {
     ScreenCapture.seize(runtimeType.toString());
-    final field = find.byWidgetPredicate((widget) {
-      return widget is TextField && widget.decoration?.hintText == tooltip;
-    });
+    Finder field = find.bySemanticsLabel(RegExp(tooltip));
+    // Cover SearchAnchor inputs
+    try {
+      expectSync(field, findsOneWidget);
+    } catch (_) {
+      field = find.byWidgetPredicate((widget) {
+        return widget is TextField && widget.decoration?.hintText == tooltip;
+      });
+    }
     expectSync(field, findsOneWidget);
     await FileRunner.tester.ensureVisible(field);
     await FileRunner.tester.tap(field, warnIfMissed: false);

@@ -32,6 +32,7 @@ class TapWidget extends StatelessWidget {
     }
     NavigatorState nav = Navigator.of(context);
     return Semantics(
+      container: true,
       attributedHint: AttributedString(tooltip ?? AppLocale.labels.tapToOpen),
       child: Tooltip(
         message: tooltip ?? AppLocale.labels.homeTooltip,

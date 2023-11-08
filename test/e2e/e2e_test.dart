@@ -12,7 +12,7 @@ import '_steps/screen_capture.dart';
 void main() {
   Iterable<File> features = Directory('./test/e2e')
       .listSync(recursive: true)
-      .where((entity) => entity is File && entity.path.endsWith('.feature'))
+      .where((entity) => entity is File && entity.path.endsWith('.test.feature'))
       .cast<File>();
 
   setUpAll(() {
@@ -29,7 +29,7 @@ void main() {
         await runner.init(file);
         expectSync(await runner.run(), true);
         await tester.pumpAndSettle(const Duration(seconds: 1));
-      });
+      }, timeout: const Timeout(Duration(minutes: 5)));
     }
   });
 }

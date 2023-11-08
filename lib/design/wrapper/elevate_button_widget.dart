@@ -4,6 +4,7 @@
 import 'package:app_finance/_configs/theme_helper.dart';
 import 'package:app_finance/_ext/build_context_ext.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/semantics.dart';
 
 typedef OnPressedFunction = Function();
 
@@ -29,7 +30,9 @@ class ElevatedButtonWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     final colorScheme = context.colorScheme;
     return Semantics(
+      button: true,
       label: text,
+      attributedHint: AttributedString(text),
       child: SizedBox(
         width: double.infinity,
         child: ElevatedButton(
