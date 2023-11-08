@@ -24,7 +24,7 @@ class FileRunner {
     // ignore: prefer_initializing_formals
     FileRunner.tester = tester;
     runner = FeatureFileRunner(
-      FlutterTestConfiguration(),
+      FlutterTestConfiguration()..defaultTimeout = const Duration(minutes: 5),
       TagExpressionEvaluator(),
       ExecutableStepIterator().aggregate(),
       reporter ?? ProgressReporter(),
