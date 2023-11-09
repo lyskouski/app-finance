@@ -7,11 +7,13 @@ import 'package:app_finance/_classes/structure/account_app_data.dart';
 import 'package:app_finance/_classes/structure/currency/exchange.dart';
 import 'package:app_finance/_configs/theme_helper.dart';
 import 'package:app_finance/_classes/structure/navigation/app_route.dart';
+import 'package:app_finance/design/wrapper/background_wrapper.dart';
 import 'package:app_finance/pages/_interfaces/abstract_page_state.dart';
 import 'package:app_finance/pages/account/widgets/account_line_widget.dart';
 import 'package:app_finance/design/generic/base_header_widget.dart';
 import 'package:app_finance/design/generic/base_swipe_widget.dart';
 import 'package:app_finance/design/wrapper/tap_widget.dart';
+import 'package:app_finance/pages/account/widgets/header_widget.dart';
 import 'package:flutter/material.dart';
 
 class AccountPage extends StatefulWidget {
@@ -66,8 +68,10 @@ class AccountPageState extends AbstractPageState<AccountPage> {
   Widget buildContent(BuildContext context, BoxConstraints constraints) {
     final items = _getItems();
     final width = ThemeHelper.getWidth(context, 4, constraints);
+    final indent = ThemeHelper.getIndent();
+    final widthCount = ThemeHelper.getWidthCount(constraints, context);
     return Padding(
-      padding: EdgeInsets.all(ThemeHelper.getIndent()),
+      padding: EdgeInsets.all(indent),
       child: Column(
         children: [
           BaseHeaderWidget(
@@ -78,24 +82,33 @@ class AccountPageState extends AbstractPageState<AccountPage> {
             title: '${AppLocale.labels.accountHeadline}, ${AppLocale.labels.total}',
           ),
           ThemeHelper.hIndent,
+          if (widthCount > 2) HeaderWidget(count: widthCount, width: width),
           Expanded(
             child: ListView.separated(
               scrollDirection: Axis.vertical,
               shrinkWrap: true,
               itemCount: items.list.length + 1,
-              separatorBuilder: (_, index) => const Divider(),
+              separatorBuilder: (_, index) => Divider(height: indent),
               itemBuilder: (BuildContext context, index) {
                 if (index >= items.list.length) {
                   return ThemeHelper.formEndBox;
                 }
                 AccountAppData item = items.list[index];
-                return BaseSwipeWidget(
-                  routePath: AppRoute.accountEditRoute,
-                  uuid: item.uuid!,
-                  child: TapWidget(
-                    tooltip: '',
-                    route: RouteSettings(name: AppRoute.accountViewRoute, arguments: {routeArguments.uuid: item.uuid}),
-                    child: AccountLineWidget(item: item, width: width),
+                return BackgroundWrapper(
+                  index: index,
+                  child: BaseSwipeWidget(
+                    routePath: AppRoute.accountEditRoute,
+                    uuid: item.uuid!,
+                    child: TapWidget(
+                      tooltip: '',
+                      route:
+                          RouteSettings(name: AppRoute.accountViewRoute, arguments: {routeArguments.uuid: item.uuid}),
+                      child: AccountLineWidget(
+                        item: item,
+                        width: width,
+                        count: widthCount,
+                      ),
+                    ),
                   ),
                 );
               },

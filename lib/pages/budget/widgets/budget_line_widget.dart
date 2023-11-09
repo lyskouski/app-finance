@@ -19,12 +19,14 @@ class BudgetLineWidget extends StatelessWidget {
   final String details;
   final String description;
   final double progress;
+  final String amount;
   final Color color;
   final IconData icon;
   final double width;
   final String route;
   final bool hidden;
   final bool showDivider;
+  final int count;
 
   const BudgetLineWidget({
     super.key,
@@ -33,8 +35,10 @@ class BudgetLineWidget extends StatelessWidget {
     required this.details,
     required this.description,
     required this.color,
+    required this.amount,
     required this.icon,
     required this.width,
+    this.count = 1,
     this.hidden = false,
     this.progress = 1,
     this.route = '',
@@ -58,45 +62,78 @@ class BudgetLineWidget extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            RowWidget(
-              chunk: [
-                iconSize,
-                null,
-                ThemeHelper.getTextWidth(Text(
-                  details,
-                  maxLines: 1,
-                  style: textTheme.numberMedium,
-                  overflow: TextOverflow.ellipsis,
-                )),
-              ],
-              indent: indent,
-              maxWidth: width + indent,
-              children: [
-                [
-                  Icon(icon, color: color, size: iconSize),
-                ],
-                if (description != '')
-                  [
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
+            count > 2
+                ? Padding(
+                    padding: EdgeInsets.symmetric(vertical: indent),
+                    child: RowWidget(
+                      chunk: const [20, null, 0.3, 0.15, 0.1],
+                      indent: indent,
+                      maxWidth: width,
                       children: [
-                        TextWrapper(title, style: textTheme.bodyMedium),
-                        TextWrapper(description, style: textTheme.numberSmall),
+                        [
+                          Icon(icon, color: color, size: iconSize),
+                        ],
+                        [
+                          TextWrapper(title, style: textTheme.bodyMedium),
+                        ],
+                        [
+                          Align(
+                            alignment: Alignment.centerRight,
+                            child: TextWrapper(description, style: textTheme.numberMedium),
+                          ),
+                        ],
+                        [
+                          Align(
+                            alignment: Alignment.centerRight,
+                            child:
+                                NumberWidget(amount, colorScheme: context.colorScheme, style: textTheme.numberMedium),
+                          ),
+                        ],
+                        [
+                          Container(
+                            alignment: Alignment.centerRight,
+                            padding: EdgeInsets.only(right: indent * 2),
+                            child:
+                                NumberWidget(details, colorScheme: context.colorScheme, style: textTheme.numberMedium),
+                          ),
+                        ],
                       ],
                     ),
-                  ]
-                else
-                  [
-                    Padding(
-                      padding: EdgeInsets.fromLTRB(0, indent - 1, 0, indent - 1),
-                      child: TextWrapper(title, style: textTheme.bodyMedium),
-                    ),
-                  ],
-                [
-                  NumberWidget(details, colorScheme: context.colorScheme, style: textTheme.numberMedium),
-                ]
-              ],
-            ),
+                  )
+                : RowWidget(
+                    chunk: [
+                      iconSize,
+                      null,
+                      ThemeHelper.getTextWidth(Text(details, style: textTheme.numberMedium)),
+                    ],
+                    indent: indent,
+                    maxWidth: width + indent,
+                    children: [
+                      [
+                        Icon(icon, color: color, size: iconSize),
+                      ],
+                      if (description != '')
+                        [
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              TextWrapper(title, style: textTheme.bodyMedium),
+                              TextWrapper(description, style: textTheme.numberSmall),
+                            ],
+                          ),
+                        ]
+                      else
+                        [
+                          Padding(
+                            padding: EdgeInsets.fromLTRB(0, indent - 1, 0, indent - 1),
+                            child: TextWrapper(title, style: textTheme.bodyMedium),
+                          ),
+                        ],
+                      [
+                        NumberWidget(details, colorScheme: context.colorScheme, style: textTheme.numberMedium),
+                      ]
+                    ],
+                  ),
             if (showDivider) ...[
               ThemeHelper.hIndent05,
               BarHorizontalSingle(value: progress, width: width, color: color),

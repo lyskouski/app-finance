@@ -5,8 +5,7 @@ import 'dart:math';
 
 import 'package:adaptive_breakpoints/adaptive_breakpoints.dart';
 import 'package:app_finance/_classes/herald/app_zoom.dart';
-import 'package:app_finance/_configs/display_helper.dart';
-import 'package:app_finance/pages/_interfaces/abstract_page_state.dart';
+import 'package:app_finance/_configs/screen_helper.dart';
 import 'package:flutter/material.dart';
 
 class _Sizes {
@@ -18,6 +17,8 @@ class _Sizes {
 }
 
 class ThemeHelper {
+  static const barHeight = 40.0;
+  static const menuWidth = 200.0;
   static late bool isWearable;
   static const emptyBox = SizedBox();
   static const formEndBox = SizedBox(height: 110);
@@ -32,12 +33,10 @@ class ThemeHelper {
   static double getIndent([double multiply = 1]) => _Sizes.normal / AppZoom.state * multiply;
 
   static double _env(BuildContext context, BoxConstraints? constraints) =>
-      (constraints != null && isNavRight(context, constraints) && !isWearable || DisplayHelper.state().isRight
-          ? AbstractPageState.barHeight
+      (constraints != null && isNavRight(context, constraints) && !isWearable || ScreenHelper.state().isRight
+          ? barHeight
           : 0) +
-      (constraints != null && isWideScreen(constraints) || DisplayHelper.state().isWide
-          ? AbstractPageState.menuWidth
-          : 0);
+      (constraints != null && isWideScreen(constraints) || ScreenHelper.state().isWide ? menuWidth : 0);
 
   static double getMaxWidth(BuildContext context, BoxConstraints constraints) =>
       constraints.maxWidth - _env(context, constraints);

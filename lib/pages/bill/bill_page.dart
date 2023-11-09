@@ -5,10 +5,11 @@ import 'package:app_finance/_classes/controller/iterator_controller.dart';
 import 'package:app_finance/_classes/storage/app_data.dart';
 import 'package:app_finance/_classes/herald/app_locale.dart';
 import 'package:app_finance/_classes/structure/bill_app_data.dart';
-import 'package:app_finance/_configs/display_helper.dart';
+import 'package:app_finance/_configs/screen_helper.dart';
 import 'package:app_finance/_configs/theme_helper.dart';
 import 'package:app_finance/_classes/structure/navigation/app_route.dart';
 import 'package:app_finance/_ext/date_time_ext.dart';
+import 'package:app_finance/design/wrapper/background_wrapper.dart';
 import 'package:app_finance/pages/_interfaces/abstract_page_state.dart';
 import 'package:app_finance/pages/bill/widgets/bill_line_widget.dart';
 import 'package:app_finance/pages/bill/widgets/sliver_header_delegate.dart';
@@ -48,7 +49,7 @@ class BillPageState extends AbstractPageState<BillPage> {
   }
 
   void _addItems() {
-    final width = DisplayHelper.state().width - ThemeHelper.getIndent(4);
+    final width = ScreenHelper.state().width - ThemeHelper.getIndent(4);
     if (itemsShown.isEmpty) {
       itemsShown.add(
         SliverToBoxAdapter(
@@ -84,26 +85,31 @@ class BillPageState extends AbstractPageState<BillPage> {
             padding: EdgeInsets.symmetric(vertical: ThemeHelper.getIndent(0.5)),
             sliver: SliverList.builder(
               itemCount: items.length,
-              itemBuilder: (_, int index) {
+              itemBuilder: (context, int index) {
                 final item = items[index];
                 final account = state.getByUuid(item.account);
                 final budget = state.getByUuid(item.category);
-                return BaseSwipeWidget(
-                  routePath: AppRoute.billEditRoute,
-                  uuid: item.uuid!,
-                  child: BillLineWidget(
+                final countWidth = ThemeHelper.getWidthCount(null, context);
+                return BackgroundWrapper(
+                  index: index,
+                  child: BaseSwipeWidget(
+                    routePath: AppRoute.billEditRoute,
                     uuid: item.uuid!,
-                    title: item.title,
-                    description: account != null ? '${account.title} (${account.description})' : '',
-                    descriptionColor: account?.color ?? Colors.transparent,
-                    details: item.detailsFormatted,
-                    progress: item.progress,
-                    color: budget?.color ?? Colors.transparent,
-                    icon: budget?.icon ?? Icons.radio_button_unchecked_sharp,
-                    iconTooltip: budget?.title ?? '?',
-                    hidden: item.hidden,
-                    width: width,
-                    route: AppRoute.billViewRoute,
+                    child: BillLineWidget(
+                      uuid: item.uuid!,
+                      count: countWidth,
+                      title: item.title,
+                      description: account != null ? '${account.title} (${account.description})' : '',
+                      descriptionColor: account?.color ?? Colors.transparent,
+                      details: item.detailsFormatted,
+                      progress: item.progress,
+                      color: budget?.color ?? Colors.transparent,
+                      icon: budget?.icon ?? Icons.radio_button_unchecked_sharp,
+                      iconTooltip: budget?.title ?? '?',
+                      hidden: item.hidden,
+                      width: width,
+                      route: AppRoute.billViewRoute,
+                    ),
                   ),
                 );
               },

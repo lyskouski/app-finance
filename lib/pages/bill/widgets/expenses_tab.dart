@@ -10,10 +10,9 @@ import 'package:app_finance/_classes/controller/focus_controller.dart';
 import 'package:app_finance/_classes/storage/app_preferences.dart';
 import 'package:app_finance/_classes/storage/app_data.dart';
 import 'package:app_finance/_configs/account_type.dart';
-import 'package:app_finance/_configs/display_helper.dart';
+import 'package:app_finance/_configs/screen_helper.dart';
 import 'package:app_finance/_configs/theme_helper.dart';
 import 'package:app_finance/_ext/build_context_ext.dart';
-import 'package:app_finance/pages/_interfaces/abstract_page_state.dart';
 import 'package:app_finance/pages/bill/widgets/interface_bill_page_inject.dart';
 import 'package:app_finance/design/form/currency_exchange_input.dart';
 import 'package:app_finance/design/form/currency_selector.dart';
@@ -154,9 +153,9 @@ class ExpensesTabState<T extends ExpensesTab> extends State<T> {
   Widget build(BuildContext context) {
     final textTheme = context.textTheme;
     final indent = ThemeHelper.getIndent(2);
-    double width = DisplayHelper.state().width - indent * 3;
+    double width = ScreenHelper.state().width - indent * 3;
     if (widget.isLeft) {
-      width -= AbstractPageState.barHeight;
+      width -= ThemeHelper.barHeight;
     }
 
     return SingleScrollWrapper(

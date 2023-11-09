@@ -7,7 +7,6 @@ import 'package:app_finance/_classes/storage/app_data.dart';
 import 'package:app_finance/_configs/custom_color_scheme.dart';
 import 'package:app_finance/_configs/theme_helper.dart';
 import 'package:app_finance/_ext/build_context_ext.dart';
-import 'package:app_finance/pages/_interfaces/abstract_page_state.dart';
 import 'package:app_finance/design/form/simple_input.dart';
 import 'package:app_finance/design/wrapper/row_widget.dart';
 import 'package:app_finance/design/wrapper/table_widget.dart';
@@ -75,7 +74,7 @@ class SyncTabState extends State<SyncTab> {
       return LayoutBuilder(builder: (context, constraints) {
         double width = ThemeHelper.getWidth(context, 4, constraints);
         if (ThemeHelper.isNavRight(context, constraints)) {
-          width -= AbstractPageState.barHeight;
+          width -= ThemeHelper.barHeight;
         }
         return SingleChildScrollView(
           controller: _scroll,

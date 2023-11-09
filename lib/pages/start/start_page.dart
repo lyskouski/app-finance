@@ -24,7 +24,7 @@ class StartPage extends StatefulWidget {
 
 class StartPageState extends AbstractPageState<StartPage> {
   int currentStep = 0;
-  static const acknowledgeTaken = 1;
+  static const acknowledgeTaken = 2;
   static const finalStep = 4;
   Widget button = ThemeHelper.emptyBox;
   List<Widget> barActions = [];
@@ -43,7 +43,10 @@ class StartPageState extends AbstractPageState<StartPage> {
   List<Widget> getBarActions(NavigatorState nav) => barActions;
 
   @override
-  Widget? getBarLeading(NavigatorState nav) => null;
+  Widget? buildNavigation() => null;
+
+  @override
+  Widget? getBarLeading(NavigatorState nav) => ThemeHelper.emptyBox;
 
   void _setButton(Widget btn, NavigatorState nav) => setState(() {
         button = btn;

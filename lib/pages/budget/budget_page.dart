@@ -3,12 +3,19 @@
 
 import 'package:app_finance/_classes/storage/app_data.dart';
 import 'package:app_finance/_classes/herald/app_locale.dart';
+import 'package:app_finance/_classes/structure/budget_app_data.dart';
 import 'package:app_finance/_classes/structure/currency/exchange.dart';
 import 'package:app_finance/_configs/theme_helper.dart';
 import 'package:app_finance/_classes/structure/navigation/app_route.dart';
+import 'package:app_finance/design/generic/base_header_widget.dart';
+import 'package:app_finance/design/generic/base_swipe_widget.dart';
+import 'package:app_finance/design/wrapper/background_wrapper.dart';
+import 'package:app_finance/design/wrapper/tap_widget.dart';
 import 'package:app_finance/pages/_interfaces/abstract_page_state.dart';
-import 'package:app_finance/pages/budget/widgets/budget_widget.dart';
+import 'package:app_finance/pages/budget/widgets/budget_line_widget.dart';
+import 'package:app_finance/pages/budget/widgets/header_widget.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_currency_picker/flutter_currency_picker.dart';
 
 class BudgetPage extends StatefulWidget {
   final String? search;
@@ -22,8 +29,6 @@ class BudgetPage extends StatefulWidget {
 }
 
 class BudgetPageState extends AbstractPageState<BudgetPage> {
-  late AppDataGetter items = _getItems();
-
   AppDataGetter _getItems() {
     if (widget.search != null) {
       final scope =
@@ -62,15 +67,60 @@ class BudgetPageState extends AbstractPageState<BudgetPage> {
 
   @override
   Widget buildContent(BuildContext context, BoxConstraints constraints) {
-    return Column(
-      children: [
-        BudgetWidget(
-          margin: EdgeInsets.all(ThemeHelper.getIndent()),
-          title: AppLocale.labels.budgetHeadline,
-          state: items,
-          width: ThemeHelper.getWidth(context, 4, constraints),
-        )
-      ],
+    final items = _getItems();
+    final width = ThemeHelper.getWidth(context, 4, constraints);
+    final indent = ThemeHelper.getIndent();
+    final widthCount = ThemeHelper.getWidthCount(constraints, context);
+    return Padding(
+      padding: EdgeInsets.all(indent),
+      child: Column(
+        children: [
+          BaseHeaderWidget(
+            route: AppRoute.homeRoute,
+            tooltip: AppLocale.labels.homeTooltip,
+            width: width,
+            total: items.total,
+            title: '${AppLocale.labels.budgetHeadline}, ${AppLocale.labels.left}',
+          ),
+          ThemeHelper.hIndent,
+          if (widthCount > 2) HeaderWidget(count: widthCount, width: width),
+          Expanded(
+            child: ListView.builder(
+              scrollDirection: Axis.vertical,
+              shrinkWrap: true,
+              itemCount: items.list.length + 1,
+              itemBuilder: (BuildContext context, index) {
+                if (index >= items.list.length) {
+                  return ThemeHelper.formEndBox;
+                }
+                BudgetAppData item = items.list[index];
+                return BackgroundWrapper(
+                  index: index,
+                  child: BaseSwipeWidget(
+                    routePath: AppRoute.budgetEditRoute,
+                    uuid: item.uuid!,
+                    child: TapWidget(
+                      tooltip: '',
+                      route: RouteSettings(name: AppRoute.budgetViewRoute, arguments: {routeArguments.uuid: item.uuid}),
+                      child: BudgetLineWidget(
+                        width: width,
+                        count: widthCount,
+                        uuid: item.uuid ?? '',
+                        title: item.title,
+                        amount: item.amount.toCurrency(currency: item.currency, withPattern: false),
+                        details: item.detailsFormatted,
+                        description: item.description,
+                        color: item.color ?? Colors.transparent,
+                        icon: item.icon ?? Icons.question_mark,
+                      ),
+                    ),
+                  ),
+                );
+              },
+            ),
+          ),
+        ],
+      ),
     );
   }
 }

@@ -22,6 +22,7 @@ class BudgetWidget extends home.BudgetWidget {
       title: item.title,
       description: item.description ?? '',
       icon: item.icon ?? Icons.question_mark,
+      amount: item.amount,
       details: item.detailsFormatted,
       progress: item.progressLeft,
       color: item.color ?? Colors.transparent,

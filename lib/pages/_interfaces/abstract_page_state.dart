@@ -5,7 +5,7 @@ import 'package:app_finance/_classes/herald/app_locale.dart';
 import 'package:app_finance/_classes/herald/app_zoom.dart';
 import 'package:app_finance/_classes/structure/navigation/app_menu.dart';
 import 'package:app_finance/_classes/storage/app_data.dart';
-import 'package:app_finance/_configs/display_helper.dart';
+import 'package:app_finance/_configs/screen_helper.dart';
 import 'package:app_finance/_configs/theme_helper.dart';
 import 'package:app_finance/_ext/build_context_ext.dart';
 import 'package:app_finance/pages/_interfaces/widgets/menu_widget.dart';
@@ -18,8 +18,6 @@ import 'package:flutter_markdown/flutter_markdown.dart';
 import 'package:provider/provider.dart';
 
 abstract class AbstractPageState<T extends StatefulWidget> extends State<T> {
-  static const barHeight = 40.0;
-  static const menuWidth = 200.0;
   static final drawerKey = GlobalKey();
   late AppData state;
 
@@ -37,6 +35,7 @@ abstract class AbstractPageState<T extends StatefulWidget> extends State<T> {
 
   Widget? getBarLeading(NavigatorState nav) {
     return ToolbarButtonWidget(
+      isWide: ScreenHelper.state().isWide,
       child: IconButton(
         hoverColor: Colors.transparent,
         tooltip: AppLocale.labels.backTooltip,
@@ -91,9 +90,11 @@ abstract class AbstractPageState<T extends StatefulWidget> extends State<T> {
   }
 
   List<Widget> getBarActions(NavigatorState nav) {
+    final isWide = ScreenHelper.state().isWide;
     return [
       if (getHelperName() != null)
         ToolbarButtonWidget(
+          isWide: isWide,
           child: IconButton(
             hoverColor: Colors.transparent,
             tooltip: AppLocale.labels.helpTooltip,
@@ -109,19 +110,20 @@ abstract class AbstractPageState<T extends StatefulWidget> extends State<T> {
             ),
           ),
         ),
-      Builder(
-        builder: (context) => ToolbarButtonWidget(
-          child: IconButton(
-            hoverColor: Colors.transparent,
-            icon: const Icon(
-              Icons.menu,
-              color: Colors.white70,
+      if (!isWide)
+        Builder(
+          builder: (context) => ToolbarButtonWidget(
+            child: IconButton(
+              hoverColor: Colors.transparent,
+              icon: const Icon(
+                Icons.menu,
+                color: Colors.white70,
+              ),
+              tooltip: AppLocale.labels.navigationTooltip,
+              onPressed: () => Scaffold.of(context).openDrawer(),
             ),
-            tooltip: AppLocale.labels.navigationTooltip,
-            onPressed: () => Scaffold.of(context).openDrawer(),
           ),
         ),
-      ),
     ];
   }
 
@@ -134,10 +136,10 @@ abstract class AbstractPageState<T extends StatefulWidget> extends State<T> {
 
   AppBar? buildBar(BuildContext context, BoxConstraints constraints) {
     final nav = Navigator.of(context);
-    final isWide = ThemeHelper.isWideScreen(constraints);
+    final isWide = ScreenHelper.state().isWide;
     return AppBar(
       title: Center(child: getBarTitle(context)),
-      toolbarHeight: barHeight,
+      toolbarHeight: ThemeHelper.barHeight,
       shape: isWide
           ? UnderlineInputBorder(
               borderSide: BorderSide(color: context.colorScheme.primary),
@@ -146,6 +148,7 @@ abstract class AbstractPageState<T extends StatefulWidget> extends State<T> {
           : null,
       backgroundColor: isWide ? context.colorScheme.inverseSurface.withOpacity(0.4) : context.colorScheme.primary,
       leading: getBarLeading(nav),
+      leadingWidth: isWide ? ThemeHelper.menuWidth : null,
       actions: getBarActions(nav),
     );
   }
@@ -156,7 +159,7 @@ abstract class AbstractPageState<T extends StatefulWidget> extends State<T> {
       alignment: Alignment.topRight,
       child: Container(
         color: context.colorScheme.primary,
-        width: barHeight,
+        width: ThemeHelper.barHeight,
         child: Column(
           children: [
             getBarLeading(nav) ?? ThemeHelper.emptyBox,
@@ -172,10 +175,7 @@ abstract class AbstractPageState<T extends StatefulWidget> extends State<T> {
     );
   }
 
-  BottomAppBar? buildBottomBar(BuildContext context, BoxConstraints constraints) {
-    if (ThemeHelper.isNavRight(context, constraints)) {
-      return null;
-    }
+  Widget buildBottomBar(BuildContext context, BoxConstraints constraints) {
     final theme = Theme.of(context);
     final nav = Navigator.of(context);
     final actions = getBarActions(nav);
@@ -184,12 +184,10 @@ abstract class AbstractPageState<T extends StatefulWidget> extends State<T> {
     final hasTooltip = getButtonName().isNotEmpty;
     final showTooltip = hasTooltip && (constraints.maxWidth - titleWidth - btnWidth - 50 > 125);
 
-    return BottomAppBar(
+    return Container(
       padding: EdgeInsets.zero,
-      notchMargin: CircularProgressIndicator.strokeAlignCenter,
       clipBehavior: Clip.none,
-      elevation: 0.0,
-      height: barHeight,
+      height: ThemeHelper.barHeight,
       color: theme.colorScheme.primary,
       child: RowWidget(
         maxWidth: constraints.maxWidth,
@@ -228,22 +226,22 @@ abstract class AbstractPageState<T extends StatefulWidget> extends State<T> {
     );
   }
 
-  Widget buildNavigation() {
-    double indent = ThemeHelper.getIndent();
-    return FocusScope(
-      child: ListView.separated(
-        scrollDirection: Axis.vertical,
-        shrinkWrap: true,
-        padding: EdgeInsets.symmetric(vertical: indent * 4),
-        separatorBuilder: (context, index) => ThemeHelper.hIndent2x,
-        itemCount: AppMenu.get().length,
-        itemBuilder: (context, index) => MenuWidget(
-          index: index,
-          setState: () => setState(() => selectedMenu = index),
-          selectedIndex: selectedMenu,
-        ),
+  Widget? buildNavigation() {
+    final indent = ThemeHelper.getIndent();
+    final isWide = ScreenHelper.state().isWide;
+    final list = ListView.separated(
+      scrollDirection: Axis.vertical,
+      shrinkWrap: true,
+      padding: EdgeInsets.symmetric(vertical: indent * 4),
+      separatorBuilder: (context, index) => ThemeHelper.hIndent2x,
+      itemCount: AppMenu.get().length,
+      itemBuilder: (context, index) => MenuWidget(
+        index: index,
+        setState: () => setState(() => selectedMenu = index),
+        selectedIndex: selectedMenu,
       ),
     );
+    return isWide ? list : FocusScope(child: list);
   }
 
   Drawer? buildDrawer() {
@@ -252,78 +250,96 @@ abstract class AbstractPageState<T extends StatefulWidget> extends State<T> {
       key: drawerKey,
       elevation: 0,
       shape: Border.all(width: 0),
-      child: InputControllerWrapper(
-        child: Container(
-          color: colorScheme.background,
-          child: buildNavigation(),
-        ),
-      ),
+      child: ScreenHelper.state().isWide
+          ? buildNavigation()
+          : InputControllerWrapper(
+              child: Container(
+                color: colorScheme.background,
+                child: buildNavigation(),
+              ),
+            ),
     );
   }
 
   @override
   Widget build(BuildContext context) {
+    final height = MediaQuery.sizeOf(context).height;
     final scale = context.watch<AppZoom>().value;
-    return Consumer<AppData>(builder: (context, appState, _) {
-      state = appState;
-      return LayoutBuilder(builder: (context, constraints) {
-        final display = DisplayHelper.getInstance(context, constraints);
-        final hasShift = display.isBottom && !display.isWearable && !display.isRight;
-        final height = constraints.maxHeight / scale - (hasShift ? barHeight + ThemeHelper.getIndent() : 0);
-        double width = constraints.maxWidth / scale;
-        Widget? rightBar;
-        if (display.isRight && !display.isWearable) {
-          rightBar = buildRightBar(context, constraints);
-          if (rightBar != null) {
-            width -= barHeight;
-          }
-        } else if (display.isWide) {
-          width -= menuWidth;
-        }
-        final dx = (constraints.maxWidth - constraints.maxWidth / scale) / 2;
-        final dy = (constraints.maxHeight - constraints.maxHeight / scale) / 2;
-        return Scaffold(
-          appBar: display.isBottom ? null : buildBar(context, constraints),
-          bottomSheet: display.isBottom ? buildBottomBar(context, constraints) : null,
-          drawer: buildDrawer(),
-          floatingActionButtonLocation: hasShift ? FloatingActionButtonLocation.centerDocked : null,
-          floatingActionButton: buildButton(context, constraints),
-          resizeToAvoidBottomInset: true,
-          body: SafeArea(
-            child: InputControllerWrapper(
-              child: Stack(
-                children: [
-                  if (display.isWide)
-                    Container(
-                      color: context.colorScheme.inversePrimary.withOpacity(0.2),
-                      width: menuWidth,
-                      height: double.infinity,
-                      child: buildNavigation(),
-                    ),
-                  Container(
-                    margin: display.isWide ? const EdgeInsets.only(left: menuWidth) : EdgeInsets.zero,
-                    child: OverflowBox(
-                      alignment: Alignment.topLeft,
-                      minWidth: width,
-                      maxWidth: width,
-                      minHeight: height,
-                      maxHeight: height,
-                      child: Transform.translate(
-                        offset: Offset(dx, dy),
-                        child: Transform.scale(
-                          scale: scale,
-                          child: buildContent(context, constraints),
+    return Flex(direction: Axis.vertical, children: [
+      Expanded(
+        child: Consumer<AppData>(builder: (context, appState, _) {
+          state = appState;
+          return LayoutBuilder(builder: (context, constraints) {
+            final display = ScreenHelper.getInstance(context, constraints);
+            final hasShift = display.isBottom && !display.isWearable && !display.isRight;
+            final blockHeight = height / scale - (hasShift ? ThemeHelper.barHeight + ThemeHelper.getIndent() : 0);
+            double width = constraints.maxWidth / scale;
+            Widget? rightBar;
+            Widget? leftBar;
+            if (display.isRight) {
+              rightBar = buildRightBar(context, constraints);
+              if (rightBar != null) {
+                width -= ThemeHelper.barHeight;
+              }
+            } else if (display.isWide) {
+              leftBar = buildNavigation();
+              if (leftBar != null) {
+                width -= ThemeHelper.menuWidth;
+              }
+            }
+            if (width < 0) {
+              width = 0;
+            }
+            final dx = (constraints.maxWidth - constraints.maxWidth / scale) / 2;
+            final dy = (constraints.maxHeight - constraints.maxHeight / scale) / 2;
+            return Scaffold(
+              appBar: display.isBottom ? null : buildBar(context, constraints),
+              drawer: buildDrawer(),
+              floatingActionButtonLocation: hasShift ? FloatingActionButtonLocation.centerDocked : null,
+              floatingActionButton: buildButton(context, constraints),
+              resizeToAvoidBottomInset: true,
+              body: SafeArea(
+                child: InputControllerWrapper(
+                  child: Stack(
+                    children: [
+                      if (leftBar != null)
+                        Container(
+                          color: context.colorScheme.inversePrimary.withOpacity(0.2),
+                          width: ThemeHelper.menuWidth,
+                          height: double.infinity,
+                          child: buildNavigation(),
+                        ),
+                      Container(
+                        margin: leftBar != null ? const EdgeInsets.only(left: ThemeHelper.menuWidth) : EdgeInsets.zero,
+                        child: OverflowBox(
+                          alignment: Alignment.topLeft,
+                          minWidth: width,
+                          maxWidth: width,
+                          minHeight: blockHeight,
+                          maxHeight: blockHeight,
+                          child: Transform.translate(
+                            offset: Offset(dx, dy),
+                            child: Transform.scale(
+                              scale: scale,
+                              child: buildContent(context, constraints),
+                            ),
+                          ),
                         ),
                       ),
-                    ),
+                      if (rightBar != null) rightBar,
+                      if (rightBar == null && display.isBottom)
+                        Container(
+                          margin: EdgeInsets.only(top: height - ThemeHelper.barHeight),
+                          child: buildBottomBar(context, constraints),
+                        ),
+                    ],
                   ),
-                  if (rightBar != null) rightBar,
-                ],
+                ),
               ),
-            ),
-          ),
-        );
-      });
-    });
+            );
+          });
+        }),
+      ),
+    ]);
   }
 }

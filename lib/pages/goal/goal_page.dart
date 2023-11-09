@@ -3,20 +3,15 @@
 
 import 'package:app_finance/_classes/storage/app_data.dart';
 import 'package:app_finance/_classes/herald/app_locale.dart';
-import 'package:app_finance/_classes/structure/currency/exchange.dart';
 import 'package:app_finance/_classes/structure/goal_app_data.dart';
-import 'package:app_finance/_classes/structure/invoice_app_data.dart';
-import 'package:app_finance/_configs/custom_text_theme.dart';
 import 'package:app_finance/_configs/theme_helper.dart';
 import 'package:app_finance/_classes/structure/navigation/app_route.dart';
-import 'package:app_finance/_ext/build_context_ext.dart';
-import 'package:app_finance/charts/gauge_chart.dart';
+import 'package:app_finance/design/wrapper/background_wrapper.dart';
 import 'package:app_finance/pages/_interfaces/abstract_page_state.dart';
-import 'package:app_finance/design/wrapper/text_wrapper.dart';
-import 'package:app_finance/pages/budget/widgets/budget_line_widget.dart';
-import 'package:app_finance/design/wrapper/row_widget.dart';
+import 'package:app_finance/pages/goal/widgets/goal_line_widget.dart';
+import 'package:app_finance/pages/goal/widgets/header_widget.dart';
+import 'package:app_finance/pages/goal/widgets/profit_widget.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_currency_picker/flutter_currency_picker.dart';
 
 class GoalPage extends StatefulWidget {
   const GoalPage({super.key});
@@ -45,103 +40,55 @@ class GoalPageState extends AbstractPageState<GoalPage> {
     );
   }
 
-  double _getMaxValue(List<GoalAppData> goals) {
-    final exchange = Exchange(store: super.state);
-    final now = DateTime.now();
-    return goals.fold(0.0, (prev, e) {
-      double left = e.closedAt.difference(now).inDays / 30;
-      if (left < 1) {
-        left = 1;
-      }
-      double value = (1 - e.progress) * exchange.reform(e.details, e.currency, Exchange.defaultCurrency);
-      return prev + value / left;
-    });
-  }
-
-  double _getValue(AppDataType type) {
-    final exchange = Exchange(store: super.state);
-    return super
-        .state
-        .getActualList(type)
-        .where((v) => type != AppDataType.invoice || (v as InvoiceAppData).accountFrom == null)
-        .fold(0.0, (prev, e) => prev + exchange.reform(e.details, e.currency, Exchange.defaultCurrency));
-  }
-
   @override
   Widget buildContent(BuildContext context, BoxConstraints constraints) {
-    final indent = ThemeHelper.getIndent();
     final width = ThemeHelper.getWidth(context, 4, constraints);
-    final goals = super.state.getList(AppDataType.goals);
-    final maxValue = _getMaxValue(goals.cast<GoalAppData>());
-    final valInvoice = _getValue(AppDataType.invoice);
-    final valBill = _getValue(AppDataType.bills);
-    final value = valInvoice - valBill;
-    final textStyle = context.textTheme.numberSmall;
+    final goals = state.getStream(AppDataType.goals);
+    final widthCount = ThemeHelper.getWidthCount(constraints, context);
 
-    return SingleChildScrollView(
-      child: Padding(
-        padding: EdgeInsets.all(ThemeHelper.getIndent()),
-        child: Column(
-          children: [
-            ThemeHelper.hIndent,
-            RowWidget(
-              alignment: MainAxisAlignment.start,
-              indent: indent,
-              maxWidth: width,
-              chunk: const [null, null],
-              children: [
-                [
-                  TextWrapper(AppLocale.labels.goalProfitTooltip, style: context.textTheme.bodyLarge),
-                  TextWrapper(
-                    AppLocale.labels.goalProfit(maxValue.toCurrency(withPattern: false)),
-                    style: textStyle,
-                    maxLines: 2,
-                  ),
-                  TextWrapper(
-                    AppLocale.labels.invoiceSum(valInvoice.toCurrency(withPattern: false)),
-                    style: textStyle,
-                    maxLines: 2,
-                  ),
-                  TextWrapper(
-                    AppLocale.labels.billSum(valBill.toCurrency(withPattern: false)),
-                    style: textStyle,
-                    maxLines: 2,
-                  ),
-                  TextWrapper(
-                    AppLocale.labels.netProfit(value.toCurrency(withPattern: false)),
-                    style: textStyle,
-                    maxLines: 2,
-                  ),
-                  ThemeHelper.hIndent,
-                ],
-                [
-                  GaugeChart(
-                    value: value,
-                    valueMax: maxValue * 2.2,
-                    width: width > 200 ? 200 : width,
-                    height: 100,
-                  ),
-                ]
-              ],
+    return Padding(
+      padding: EdgeInsets.all(ThemeHelper.getIndent()),
+      child: Column(
+        children: [
+          ThemeHelper.hIndent,
+          Align(
+            alignment: Alignment.centerRight,
+            child: ProfitWidget(store: state, width: width / widthCount),
+          ),
+          ThemeHelper.hIndent,
+          if (widthCount > 1)
+            HeaderWidget(
+              count: widthCount,
+              width: width,
             ),
-            ThemeHelper.hIndent,
-            const Divider(),
-            ...goals.map((goal) {
-              return BudgetLineWidget(
-                title: goal.title ?? '',
-                width: width,
-                uuid: goal.uuid,
-                details: (goal.details as double).toCurrency(currency: goal.currency, withPattern: false),
-                description: AppLocale.labels.goalProfit(goal.closedAtFormatted),
-                color: goal.color ?? Colors.green.shade700,
-                icon: goal.icon ?? Icons.star,
-                hidden: goal.hidden,
-                progress: goal.progress,
-                route: AppRoute.goalViewRoute,
-              );
-            }).toList()
-          ],
-        ),
+          Expanded(
+            child: ListView.builder(
+              scrollDirection: Axis.vertical,
+              shrinkWrap: true,
+              itemCount: goals.length,
+              itemBuilder: (_, int index) {
+                final goal = goals.next as GoalAppData;
+                return BackgroundWrapper(
+                  index: index,
+                  child: GoalLineWidget(
+                    title: goal.title,
+                    width: width,
+                    count: widthCount,
+                    uuid: goal.uuid ?? '',
+                    details: goal.details,
+                    currency: goal.currency,
+                    description: goal.closedAtFormatted,
+                    color: goal.color ?? Colors.green.shade700,
+                    icon: goal.icon ?? Icons.star,
+                    hidden: goal.hidden,
+                    progress: goal.progress,
+                    route: AppRoute.goalViewRoute,
+                  ),
+                );
+              },
+            ),
+          ),
+        ],
       ),
     );
   }

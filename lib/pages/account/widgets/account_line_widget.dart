@@ -15,11 +15,13 @@ import 'package:flutter/material.dart';
 class AccountLineWidget extends StatelessWidget {
   final AccountAppData item;
   final double width;
+  final int count;
 
   const AccountLineWidget({
     super.key,
     required this.item,
     required this.width,
+    required this.count,
   });
 
   @override
@@ -31,25 +33,57 @@ class AccountLineWidget extends StatelessWidget {
     final typeWidth = ThemeHelper.getTextWidth(Text(AccountType.getLabel(item.type), style: textTheme.bodySmall));
     final dateWidth = ThemeHelper.getTextWidth(Text(item.closedAtFormatted, style: textTheme.numberSmall));
     final showValidDate = !AccountType.contains(item.type, [AppAccountType.account, AppAccountType.cash]);
+    if (count > 2) {
+      return Padding(
+        padding: EdgeInsets.symmetric(vertical: indent),
+        child: RowWidget(
+          indent: indent,
+          alignment: MainAxisAlignment.start,
+          maxWidth: width,
+          chunk: const [20, null, 0.3, 0.15, 0.1],
+          children: [
+            [
+              Icon(item.icon, color: item.color, size: 20),
+            ],
+            [
+              TextWrapper(item.title, style: textTheme.bodyMedium),
+            ],
+            [
+              NumberWidget(item.description ?? '', colorScheme: context.colorScheme, style: textTheme.bodyMedium),
+            ],
+            [
+              TextWrapper(AccountType.getLabel(item.type), style: textTheme.bodyMedium),
+            ],
+            [
+              Row(mainAxisAlignment: MainAxisAlignment.end, children: [
+                Align(
+                  alignment: Alignment.centerRight,
+                  child: NumberWidget(
+                    item.detailsFormatted,
+                    colorScheme: context.colorScheme,
+                    style: textTheme.numberMedium,
+                  ),
+                ),
+                if (item.error != null) item.error!,
+              ]),
+            ],
+          ],
+        ),
+      );
+    }
     return Column(
       children: [
         RowWidget(
           indent: indent,
           alignment: MainAxisAlignment.start,
           maxWidth: width,
-          chunk: [null, txtWidth + 2 * indent, if (item.error != null) 22],
+          chunk: [20, null, txtWidth + 2 * indent, if (item.error != null) 22],
           children: [
             [
-              Row(
-                children: [
-                  Icon(item.icon, color: item.color, size: 20),
-                  ThemeHelper.wIndent,
-                  TextWrapper(
-                    item.title,
-                    style: textTheme.bodyMedium,
-                  ),
-                ],
-              ),
+              Icon(item.icon, color: item.color, size: 20),
+            ],
+            [
+              TextWrapper(item.title, style: textTheme.bodyMedium),
             ],
             [
               Align(

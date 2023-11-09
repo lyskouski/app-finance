@@ -5,11 +5,16 @@ import 'package:app_finance/_classes/storage/app_data.dart';
 import 'package:app_finance/_classes/herald/app_locale.dart';
 import 'package:app_finance/_classes/structure/currency/exchange.dart';
 import 'package:app_finance/_classes/storage/app_preferences.dart';
+import 'package:app_finance/_configs/screen_helper.dart';
 import 'package:app_finance/_configs/theme_helper.dart';
 import 'package:app_finance/_classes/structure/navigation/app_route.dart';
 import 'package:app_finance/components/_core/components_builder.dart';
+import 'package:app_finance/components/component_recent.dart';
 import 'package:app_finance/pages/_interfaces/abstract_page_state.dart';
 import 'package:app_finance/pages/home/home_edit_page.dart';
+import 'package:app_finance/pages/metrics/widgets/account_tab.dart';
+import 'package:app_finance/pages/metrics/widgets/bill_tab.dart';
+import 'package:app_finance/pages/metrics/widgets/budget_tab.dart';
 import 'package:app_finance/pages/start/start_page.dart';
 import 'package:app_finance/design/wrapper/grid_layer.dart';
 import 'package:app_finance/pages/home/widgets/init_tab.dart';
@@ -48,12 +53,20 @@ class HomePageState extends AbstractPageState<HomePage> {
   }
 
   @override
-  BottomAppBar? buildBottomBar(BuildContext context, BoxConstraints constraints) {
-    return ThemeHelper.isWearable ? null : super.buildBottomBar(context, constraints);
+  Widget buildBottomBar(BuildContext context, BoxConstraints constraints) {
+    return ThemeHelper.isWearable ? ThemeHelper.emptyBox : super.buildBottomBar(context, constraints);
+  }
+
+  @override
+  Widget? buildRightBar(BuildContext context, BoxConstraints constraints) {
+    return ThemeHelper.isWearable ? null : super.buildRightBar(context, constraints);
   }
 
   @override
   Widget? getBarLeading(NavigatorState nav) {
+    if (ScreenHelper.state().isWide) {
+      return ThemeHelper.emptyBox;
+    }
     return Builder(
       builder: (BuildContext context) {
         return ToolbarButtonWidget(
@@ -73,8 +86,10 @@ class HomePageState extends AbstractPageState<HomePage> {
 
   @override
   List<Widget> getBarActions(NavigatorState nav) {
+    final isWide = ScreenHelper.state().isWide;
     return [
       ToolbarButtonWidget(
+        isWide: isWide,
         child: IconButton(
           icon: const Icon(
             Icons.app_registration_outlined,
@@ -86,6 +101,7 @@ class HomePageState extends AbstractPageState<HomePage> {
       ),
       if (![TargetPlatform.iOS, TargetPlatform.macOS, TargetPlatform.android].contains(defaultTargetPlatform))
         ToolbarButtonWidget(
+          isWide: isWide,
           child: IconButton(
             icon: const Icon(
               Icons.switch_access_shortcut_add_outlined,
@@ -152,6 +168,7 @@ class HomePageState extends AbstractPageState<HomePage> {
     final countWidth = ThemeHelper.getWidthCount(constraints);
     final countHeight = ThemeHelper.getHeightCount(context, constraints);
     bool isVertical = countWidth == 1 && !ThemeHelper.isWearable;
+    bool isWide = ScreenHelper.state().isWide;
     double width = ThemeHelper.getWidth(context, 3, constraints);
     double partWidth = width / countWidth - indent * (countWidth - 1);
 
@@ -198,10 +215,10 @@ class HomePageState extends AbstractPageState<HomePage> {
       crossAxisCount: countWidth,
       strategy: switch (countWidth) {
         4 => [
-            [2],
-            [3],
-            [1],
-            [0]
+            [0, 6],
+            [2, 5],
+            [3, 4],
+            [1, 7]
           ],
         3 => [
             [2],
@@ -232,14 +249,27 @@ class HomePageState extends AbstractPageState<HomePage> {
           ThemeHelper.emptyBox,
         ] else ...[
           countHeight > 3
-              ? GoalWidget(
-                  width: isVertical ? width : partWidth,
-                  state: super.state.getList(AppDataType.goals),
-                )
+              ? isWide
+                  ? Expanded(
+                      child: Padding(
+                        padding: EdgeInsets.only(top: indent / 2),
+                        child: const ComponentRecent({'type': ComponentRecentType.goals, 'count': 7}),
+                      ),
+                    )
+                  : GoalWidget(
+                      width: isVertical ? width : partWidth,
+                      state: super.state.getList(AppDataType.goals),
+                    )
               : ThemeHelper.emptyBox,
           billWidget,
           accountWidget,
           budgetWidget,
+          () => Expanded(child: AccountTab(store: state, width: partWidth)),
+          () => Expanded(child: BudgetTab(store: state, width: partWidth)),
+          () => Expanded(child: BillTab(store: state, width: partWidth)),
+          () => const Expanded(
+                child: ComponentRecent({'type': ComponentRecentType.invoice, 'count': 7}),
+              ),
         ]
       ],
     );
