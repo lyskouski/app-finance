@@ -36,7 +36,6 @@ class ListBudgetSelectorState extends ListAccountSelectorState<ListBudgetSelecto
   Widget itemBuilder(context, item) {
     return BudgetLineWidget(
       uuid: item.item?.uuid ?? '',
-      count: 1,
       title: item.item?.title ?? '',
       description: item.item?.description ?? '',
       details: item.item?.detailsFormatted ?? '',

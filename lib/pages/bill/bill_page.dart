@@ -85,10 +85,11 @@ class BillPageState extends AbstractPageState<BillPage> {
             padding: EdgeInsets.symmetric(vertical: ThemeHelper.getIndent(0.5)),
             sliver: SliverList.builder(
               itemCount: items.length,
-              itemBuilder: (_, int index) {
+              itemBuilder: (context, int index) {
                 final item = items[index];
                 final account = state.getByUuid(item.account);
                 final budget = state.getByUuid(item.category);
+                final countWidth = ThemeHelper.getWidthCount(null, context);
                 return BackgroundWrapper(
                   index: index,
                   child: BaseSwipeWidget(
@@ -96,6 +97,7 @@ class BillPageState extends AbstractPageState<BillPage> {
                     uuid: item.uuid!,
                     child: BillLineWidget(
                       uuid: item.uuid!,
+                      count: countWidth,
                       title: item.title,
                       description: account != null ? '${account.title} (${account.description})' : '',
                       descriptionColor: account?.color ?? Colors.transparent,

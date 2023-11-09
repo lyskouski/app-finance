@@ -38,7 +38,7 @@ class BudgetLineWidget extends StatelessWidget {
     required this.amount,
     required this.icon,
     required this.width,
-    required this.count,
+    this.count = 1,
     this.hidden = false,
     this.progress = 1,
     this.route = '',

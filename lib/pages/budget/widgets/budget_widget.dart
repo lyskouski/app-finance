@@ -28,7 +28,6 @@ class BudgetWidget extends home.BudgetWidget {
       color: item.color ?? Colors.transparent,
       hidden: item.hidden,
       width: width,
-      count: 1,
       route: routeList,
     );
   }
