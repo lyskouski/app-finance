@@ -41,5 +41,9 @@
 	<string>NSApplication</string>
 	<key>LSApplicationCategoryType</key>
 	<string>public.app-category.finance</string>
+  <key>ITSAppUsesNonExemptEncryption</key>
+  <true/>
+  <key>ITSAppEncryptionExportComplianceCode</key>
+  <string>e1ee37ee-6a3c-4b65-848f-55bfe01178da</string>
 </dict>
 </plist>
