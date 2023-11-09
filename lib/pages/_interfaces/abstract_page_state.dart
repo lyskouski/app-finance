@@ -287,6 +287,9 @@ abstract class AbstractPageState<T extends StatefulWidget> extends State<T> {
                 width -= ThemeHelper.menuWidth;
               }
             }
+            if (width < 0) {
+              width = 0;
+            }
             final dx = (constraints.maxWidth - constraints.maxWidth / scale) / 2;
             final dy = (constraints.maxHeight - constraints.maxHeight / scale) / 2;
             return Scaffold(

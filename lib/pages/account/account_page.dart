@@ -13,6 +13,7 @@ import 'package:app_finance/pages/account/widgets/account_line_widget.dart';
 import 'package:app_finance/design/generic/base_header_widget.dart';
 import 'package:app_finance/design/generic/base_swipe_widget.dart';
 import 'package:app_finance/design/wrapper/tap_widget.dart';
+import 'package:app_finance/pages/account/widgets/header_widget.dart';
 import 'package:flutter/material.dart';
 
 class AccountPage extends StatefulWidget {
@@ -68,6 +69,7 @@ class AccountPageState extends AbstractPageState<AccountPage> {
     final items = _getItems();
     final width = ThemeHelper.getWidth(context, 4, constraints);
     final indent = ThemeHelper.getIndent();
+    final widthCount = ThemeHelper.getWidthCount(constraints, context);
     return Padding(
       padding: EdgeInsets.all(indent),
       child: Column(
@@ -80,6 +82,7 @@ class AccountPageState extends AbstractPageState<AccountPage> {
             title: '${AppLocale.labels.accountHeadline}, ${AppLocale.labels.total}',
           ),
           ThemeHelper.hIndent,
+          if (widthCount > 2) HeaderWidget(count: widthCount, width: width),
           Expanded(
             child: ListView.separated(
               scrollDirection: Axis.vertical,
@@ -100,7 +103,11 @@ class AccountPageState extends AbstractPageState<AccountPage> {
                       tooltip: '',
                       route:
                           RouteSettings(name: AppRoute.accountViewRoute, arguments: {routeArguments.uuid: item.uuid}),
-                      child: AccountLineWidget(item: item, width: width),
+                      child: AccountLineWidget(
+                        item: item,
+                        width: width,
+                        count: widthCount,
+                      ),
                     ),
                   ),
                 );
