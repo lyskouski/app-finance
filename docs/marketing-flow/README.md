@@ -32,6 +32,9 @@
 
 ## Timeline
 
+### 2023-11-08: [Community: Jardeson Márcio] Como instalar o app de contabilidade Fingrom no Linux!
+- https://sempreupdate.com.br/como-instalar-o-app-de-contabilidade-fingrom-no-linux/
+
 ### 2023-11-07: [Oeuvre] Fingrom Acrostic
 - [Twitter Post](https://x.com/TheFieryCat/status/1721751900641509508)
 - [LindedIn Post](https://www.linkedin.com/feed/update/urn:li:activity:7127580446900563968/)
