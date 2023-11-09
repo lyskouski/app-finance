@@ -9,7 +9,7 @@ import 'package:app_finance/_classes/structure/navigation/app_route.dart';
 import 'package:app_finance/_ext/build_context_ext.dart';
 import 'package:app_finance/pages/_interfaces/abstract_page_state.dart';
 import 'package:app_finance/pages/goal/widgets/goal_line_widget.dart';
-import 'package:app_finance/pages/goal/widgets/goals_header_delegate.dart';
+import 'package:app_finance/pages/goal/widgets/header_widget.dart';
 import 'package:app_finance/pages/goal/widgets/profit_widget.dart';
 import 'package:flutter/material.dart';
 
@@ -57,43 +57,37 @@ class GoalPageState extends AbstractPageState<GoalPage> {
             child: ProfitWidget(store: state, width: width / widthCount),
           ),
           ThemeHelper.hIndent,
+          if (widthCount > 1)
+            HeaderWidget(
+              count: widthCount,
+              width: width,
+            ),
           Expanded(
-            child: CustomScrollView(
-              slivers: [
-                SliverMainAxisGroup(
-                  slivers: [
-                    if (widthCount > 1)
-                      SliverPersistentHeader(
-                        pinned: true,
-                        delegate: GoalsHeaderDelegate(count: widthCount, width: width),
-                      ),
-                    SliverList.builder(
-                      itemCount: goals.length,
-                      itemBuilder: (_, int index) {
-                        final goal = goals.next as GoalAppData;
-                        return Container(
-                          color: index % 2 == 0 ? context.colorScheme.onBackground.withOpacity(0.015) : null,
-                          padding: EdgeInsets.only(top: indent),
-                          child: GoalLineWidget(
-                            title: goal.title,
-                            width: width,
-                            count: widthCount,
-                            uuid: goal.uuid ?? '',
-                            details: goal.details,
-                            currency: goal.currency,
-                            description: goal.closedAtFormatted,
-                            color: goal.color ?? Colors.green.shade700,
-                            icon: goal.icon ?? Icons.star,
-                            hidden: goal.hidden,
-                            progress: goal.progress,
-                            route: AppRoute.goalViewRoute,
-                          ),
-                        );
-                      },
-                    ),
-                  ],
-                ),
-              ],
+            child: ListView.builder(
+              scrollDirection: Axis.vertical,
+              shrinkWrap: true,
+              itemCount: goals.length,
+              itemBuilder: (_, int index) {
+                final goal = goals.next as GoalAppData;
+                return Container(
+                  color: index % 2 == 0 ? context.colorScheme.onBackground.withOpacity(0.015) : null,
+                  padding: EdgeInsets.only(top: indent),
+                  child: GoalLineWidget(
+                    title: goal.title,
+                    width: width,
+                    count: widthCount,
+                    uuid: goal.uuid ?? '',
+                    details: goal.details,
+                    currency: goal.currency,
+                    description: goal.closedAtFormatted,
+                    color: goal.color ?? Colors.green.shade700,
+                    icon: goal.icon ?? Icons.star,
+                    hidden: goal.hidden,
+                    progress: goal.progress,
+                    route: AppRoute.goalViewRoute,
+                  ),
+                );
+              },
             ),
           ),
         ],

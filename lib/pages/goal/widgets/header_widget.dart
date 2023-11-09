@@ -8,49 +8,29 @@ import 'package:app_finance/design/wrapper/row_widget.dart';
 import 'package:app_finance/design/wrapper/text_wrapper.dart';
 import 'package:flutter/material.dart';
 
-class GoalsHeaderDelegate extends SliverPersistentHeaderDelegate {
-  final key = GlobalKey();
+class HeaderWidget extends StatelessWidget {
   final int count;
   final double width;
-  double closedHeight;
-  double openHeight;
 
-  GoalsHeaderDelegate({
+  const HeaderWidget({
+    super.key,
     required this.count,
     required this.width,
-    this.closedHeight = 29,
-    this.openHeight = 30,
   });
 
   @override
-  double get maxExtent => openHeight;
-
-  @override
-  double get minExtent => closedHeight;
-
-  @override
-  bool shouldRebuild(oldDelegate) => true;
-
-  @override
-  Widget build(BuildContext context, double shrinkOffset, bool overlapsContent) {
+  Widget build(BuildContext context) {
     final indent = ThemeHelper.getIndent();
-    final isPinned = shrinkOffset == maxExtent;
     final textStyle = context.textTheme.headlineSmall?.copyWith(color: context.colorScheme.primary);
     return Container(
       padding: EdgeInsets.fromLTRB(0, indent / 2, 0, 0),
-      key: key,
-      height: openHeight,
+      height: 30,
       decoration: BoxDecoration(
-        color: isPinned
-            ? Color.alphaBlend(context.colorScheme.inverseSurface.withOpacity(0.1), context.colorScheme.background)
-            : context.colorScheme.background,
-        border: isPinned
-            ? null
-            : Border(
-                bottom: BorderSide(
-                  color: context.colorScheme.secondary.withOpacity(0.2),
-                ),
-              ),
+        border: Border(
+          bottom: BorderSide(
+            color: context.colorScheme.secondary.withOpacity(0.2),
+          ),
+        ),
       ),
       child: RowWidget(
         indent: ThemeHelper.getIndent(),
