@@ -37,38 +37,32 @@ class HeaderWidget extends StatelessWidget {
         maxWidth: width,
         chunk: [
           null,
-          ...(count > 2 ? [0.2, 0.15, 0.1, 0.1] : [0, 0, 0, null])
+          ...(count > 2 ? [0.3, 0.15, 0.1] : [0, 0, null])
         ],
         children: [
           [
             Padding(
               padding: EdgeInsets.only(left: indent * 3),
-              child: TextWrapper(AppLocale.labels.titleGoal, style: textStyle),
+              child: TextWrapper(AppLocale.labels.title, style: textStyle),
             ),
           ],
           [
             Align(
               alignment: Alignment.centerRight,
-              child: TextWrapper(AppLocale.labels.validTillDate, style: textStyle),
+              child: TextWrapper(AppLocale.labels.budgetLimit, style: textStyle),
             ),
           ],
           [
             Align(
               alignment: Alignment.centerRight,
-              child: TextWrapper(AppLocale.labels.netProfit(AppLocale.labels.currency), style: textStyle),
-            ),
-          ],
-          [
-            Align(
-              alignment: Alignment.centerRight,
-              child: TextWrapper(AppLocale.labels.netProfit('%'), style: textStyle),
+              child: TextWrapper(AppLocale.labels.expense, style: textStyle),
             ),
           ],
           [
             Container(
               alignment: Alignment.centerRight,
-              padding: EdgeInsets.only(right: indent / 2),
-              child: TextWrapper(AppLocale.labels.targetAmount, style: textStyle),
+              padding: EdgeInsets.only(right: indent),
+              child: TextWrapper(AppLocale.labels.balance, style: textStyle),
             ),
           ],
         ],
