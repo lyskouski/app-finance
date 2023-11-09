@@ -6,7 +6,7 @@ import 'package:app_finance/_classes/herald/app_locale.dart';
 import 'package:app_finance/_classes/structure/goal_app_data.dart';
 import 'package:app_finance/_configs/theme_helper.dart';
 import 'package:app_finance/_classes/structure/navigation/app_route.dart';
-import 'package:app_finance/_ext/build_context_ext.dart';
+import 'package:app_finance/design/wrapper/background_wrapper.dart';
 import 'package:app_finance/pages/_interfaces/abstract_page_state.dart';
 import 'package:app_finance/pages/goal/widgets/goal_line_widget.dart';
 import 'package:app_finance/pages/goal/widgets/header_widget.dart';
@@ -43,7 +43,6 @@ class GoalPageState extends AbstractPageState<GoalPage> {
   @override
   Widget buildContent(BuildContext context, BoxConstraints constraints) {
     final width = ThemeHelper.getWidth(context, 4, constraints);
-    final indent = ThemeHelper.getIndent();
     final goals = state.getStream(AppDataType.goals);
     final widthCount = ThemeHelper.getWidthCount(constraints, context);
 
@@ -69,9 +68,8 @@ class GoalPageState extends AbstractPageState<GoalPage> {
               itemCount: goals.length,
               itemBuilder: (_, int index) {
                 final goal = goals.next as GoalAppData;
-                return Container(
-                  color: index % 2 == 0 ? context.colorScheme.onBackground.withOpacity(0.015) : null,
-                  padding: EdgeInsets.only(top: indent),
+                return BackgroundWrapper(
+                  index: index,
                   child: GoalLineWidget(
                     title: goal.title,
                     width: width,
