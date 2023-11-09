@@ -5,7 +5,7 @@ import 'package:app_finance/_classes/herald/app_locale.dart';
 import 'package:app_finance/_classes/herald/app_zoom.dart';
 import 'package:app_finance/_classes/structure/navigation/app_menu.dart';
 import 'package:app_finance/_classes/storage/app_data.dart';
-import 'package:app_finance/_configs/display_helper.dart';
+import 'package:app_finance/_configs/screen_helper.dart';
 import 'package:app_finance/_configs/theme_helper.dart';
 import 'package:app_finance/_ext/build_context_ext.dart';
 import 'package:app_finance/pages/_interfaces/widgets/menu_widget.dart';
@@ -18,8 +18,6 @@ import 'package:flutter_markdown/flutter_markdown.dart';
 import 'package:provider/provider.dart';
 
 abstract class AbstractPageState<T extends StatefulWidget> extends State<T> {
-  static const barHeight = 40.0;
-  static const menuWidth = 200.0;
   static final drawerKey = GlobalKey();
   late AppData state;
 
@@ -37,7 +35,7 @@ abstract class AbstractPageState<T extends StatefulWidget> extends State<T> {
 
   Widget? getBarLeading(NavigatorState nav) {
     return ToolbarButtonWidget(
-      isWide: DisplayHelper.state().isWide,
+      isWide: ScreenHelper.state().isWide,
       child: IconButton(
         hoverColor: Colors.transparent,
         tooltip: AppLocale.labels.backTooltip,
@@ -92,7 +90,7 @@ abstract class AbstractPageState<T extends StatefulWidget> extends State<T> {
   }
 
   List<Widget> getBarActions(NavigatorState nav) {
-    final isWide = DisplayHelper.state().isWide;
+    final isWide = ScreenHelper.state().isWide;
     return [
       if (getHelperName() != null)
         ToolbarButtonWidget(
@@ -138,10 +136,10 @@ abstract class AbstractPageState<T extends StatefulWidget> extends State<T> {
 
   AppBar? buildBar(BuildContext context, BoxConstraints constraints) {
     final nav = Navigator.of(context);
-    final isWide = DisplayHelper.state().isWide;
+    final isWide = ScreenHelper.state().isWide;
     return AppBar(
       title: Center(child: getBarTitle(context)),
-      toolbarHeight: barHeight,
+      toolbarHeight: ThemeHelper.barHeight,
       shape: isWide
           ? UnderlineInputBorder(
               borderSide: BorderSide(color: context.colorScheme.primary),
@@ -150,7 +148,7 @@ abstract class AbstractPageState<T extends StatefulWidget> extends State<T> {
           : null,
       backgroundColor: isWide ? context.colorScheme.inverseSurface.withOpacity(0.4) : context.colorScheme.primary,
       leading: getBarLeading(nav),
-      leadingWidth: isWide ? menuWidth : null,
+      leadingWidth: isWide ? ThemeHelper.menuWidth : null,
       actions: getBarActions(nav),
     );
   }
@@ -161,7 +159,7 @@ abstract class AbstractPageState<T extends StatefulWidget> extends State<T> {
       alignment: Alignment.topRight,
       child: Container(
         color: context.colorScheme.primary,
-        width: barHeight,
+        width: ThemeHelper.barHeight,
         child: Column(
           children: [
             getBarLeading(nav) ?? ThemeHelper.emptyBox,
@@ -189,7 +187,7 @@ abstract class AbstractPageState<T extends StatefulWidget> extends State<T> {
     return Container(
       padding: EdgeInsets.zero,
       clipBehavior: Clip.none,
-      height: barHeight,
+      height: ThemeHelper.barHeight,
       color: theme.colorScheme.primary,
       child: RowWidget(
         maxWidth: constraints.maxWidth,
@@ -229,21 +227,21 @@ abstract class AbstractPageState<T extends StatefulWidget> extends State<T> {
   }
 
   Widget? buildNavigation() {
-    double indent = ThemeHelper.getIndent();
-    return FocusScope(
-      child: ListView.separated(
-        scrollDirection: Axis.vertical,
-        shrinkWrap: true,
-        padding: EdgeInsets.symmetric(vertical: indent * 4),
-        separatorBuilder: (context, index) => ThemeHelper.hIndent2x,
-        itemCount: AppMenu.get().length,
-        itemBuilder: (context, index) => MenuWidget(
-          index: index,
-          setState: () => setState(() => selectedMenu = index),
-          selectedIndex: selectedMenu,
-        ),
+    final indent = ThemeHelper.getIndent();
+    final isWide = ScreenHelper.state().isWide;
+    final list = ListView.separated(
+      scrollDirection: Axis.vertical,
+      shrinkWrap: true,
+      padding: EdgeInsets.symmetric(vertical: indent * 4),
+      separatorBuilder: (context, index) => ThemeHelper.hIndent2x,
+      itemCount: AppMenu.get().length,
+      itemBuilder: (context, index) => MenuWidget(
+        index: index,
+        setState: () => setState(() => selectedMenu = index),
+        selectedIndex: selectedMenu,
       ),
     );
+    return isWide ? list : FocusScope(child: list);
   }
 
   Drawer? buildDrawer() {
@@ -252,7 +250,7 @@ abstract class AbstractPageState<T extends StatefulWidget> extends State<T> {
       key: drawerKey,
       elevation: 0,
       shape: Border.all(width: 0),
-      child: DisplayHelper.state().isWide
+      child: ScreenHelper.state().isWide
           ? buildNavigation()
           : InputControllerWrapper(
               child: Container(
@@ -272,21 +270,21 @@ abstract class AbstractPageState<T extends StatefulWidget> extends State<T> {
         child: Consumer<AppData>(builder: (context, appState, _) {
           state = appState;
           return LayoutBuilder(builder: (context, constraints) {
-            final display = DisplayHelper.getInstance(context, constraints);
+            final display = ScreenHelper.getInstance(context, constraints);
             final hasShift = display.isBottom && !display.isWearable && !display.isRight;
-            final blockHeight = height / scale - (hasShift ? barHeight + ThemeHelper.getIndent() : 0);
+            final blockHeight = height / scale - (hasShift ? ThemeHelper.barHeight + ThemeHelper.getIndent() : 0);
             double width = constraints.maxWidth / scale;
             Widget? rightBar;
             Widget? leftBar;
             if (display.isRight) {
               rightBar = buildRightBar(context, constraints);
               if (rightBar != null) {
-                width -= barHeight;
+                width -= ThemeHelper.barHeight;
               }
             } else if (display.isWide) {
               leftBar = buildNavigation();
               if (leftBar != null) {
-                width -= menuWidth;
+                width -= ThemeHelper.menuWidth;
               }
             }
             final dx = (constraints.maxWidth - constraints.maxWidth / scale) / 2;
@@ -304,12 +302,12 @@ abstract class AbstractPageState<T extends StatefulWidget> extends State<T> {
                       if (leftBar != null)
                         Container(
                           color: context.colorScheme.inversePrimary.withOpacity(0.2),
-                          width: menuWidth,
+                          width: ThemeHelper.menuWidth,
                           height: double.infinity,
                           child: buildNavigation(),
                         ),
                       Container(
-                        margin: leftBar != null ? const EdgeInsets.only(left: menuWidth) : EdgeInsets.zero,
+                        margin: leftBar != null ? const EdgeInsets.only(left: ThemeHelper.menuWidth) : EdgeInsets.zero,
                         child: OverflowBox(
                           alignment: Alignment.topLeft,
                           minWidth: width,
@@ -328,7 +326,7 @@ abstract class AbstractPageState<T extends StatefulWidget> extends State<T> {
                       if (rightBar != null) rightBar,
                       if (rightBar == null && display.isBottom)
                         Container(
-                          margin: EdgeInsets.only(top: height - barHeight),
+                          margin: EdgeInsets.only(top: height - ThemeHelper.barHeight),
                           child: buildBottomBar(context, constraints),
                         ),
                     ],

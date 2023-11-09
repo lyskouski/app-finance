@@ -4,7 +4,7 @@
 import 'package:app_finance/_configs/theme_helper.dart';
 import 'package:flutter/material.dart';
 
-typedef DisplayHelperState = ({
+typedef ScreenHelperState = ({
   bool isWide,
   bool isBottom,
   bool isWearable,
@@ -14,8 +14,8 @@ typedef DisplayHelperState = ({
   double width,
 });
 
-class DisplayHelper {
-  static DisplayHelper? _instance;
+class ScreenHelper {
+  static ScreenHelper? _instance;
   bool isWide = false;
   bool isBottom = false;
   bool isWearable = false;
@@ -26,7 +26,7 @@ class DisplayHelper {
   double originWidth = 0;
 
   @protected
-  DisplayHelper(BuildContext context, BoxConstraints constraints) {
+  ScreenHelper(BuildContext context, BoxConstraints constraints) {
     init(context, constraints);
   }
 
@@ -41,7 +41,7 @@ class DisplayHelper {
     width = ThemeHelper.getWidth(context, 0, constraints);
   }
 
-  static DisplayHelperState state() => _instance == null
+  static ScreenHelperState state() => _instance == null
       ? (
           isWide: false,
           isBottom: false,
@@ -61,8 +61,8 @@ class DisplayHelper {
           width: _instance!.width,
         );
 
-  static DisplayHelperState getInstance(BuildContext context, BoxConstraints constraints) {
-    _instance ??= DisplayHelper(context, constraints);
+  static ScreenHelperState getInstance(BuildContext context, BoxConstraints constraints) {
+    _instance ??= ScreenHelper(context, constraints);
     if (_instance!.originWidth != ThemeHelper.getWidth(context)) {
       _instance!.init(context, constraints);
     }

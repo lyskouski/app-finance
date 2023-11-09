@@ -62,10 +62,11 @@ class GoalPageState extends AbstractPageState<GoalPage> {
               slivers: [
                 SliverMainAxisGroup(
                   slivers: [
-                    SliverPersistentHeader(
-                      pinned: true,
-                      delegate: GoalsHeaderDelegate(count: widthCount, width: width),
-                    ),
+                    if (widthCount > 1)
+                      SliverPersistentHeader(
+                        pinned: true,
+                        delegate: GoalsHeaderDelegate(count: widthCount, width: width),
+                      ),
                     SliverList.builder(
                       itemCount: goals.length,
                       itemBuilder: (_, int index) {

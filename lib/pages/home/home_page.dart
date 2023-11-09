@@ -5,7 +5,7 @@ import 'package:app_finance/_classes/storage/app_data.dart';
 import 'package:app_finance/_classes/herald/app_locale.dart';
 import 'package:app_finance/_classes/structure/currency/exchange.dart';
 import 'package:app_finance/_classes/storage/app_preferences.dart';
-import 'package:app_finance/_configs/display_helper.dart';
+import 'package:app_finance/_configs/screen_helper.dart';
 import 'package:app_finance/_configs/theme_helper.dart';
 import 'package:app_finance/_classes/structure/navigation/app_route.dart';
 import 'package:app_finance/components/_core/components_builder.dart';
@@ -64,7 +64,7 @@ class HomePageState extends AbstractPageState<HomePage> {
 
   @override
   Widget? getBarLeading(NavigatorState nav) {
-    if (DisplayHelper.state().isWide) {
+    if (ScreenHelper.state().isWide) {
       return ThemeHelper.emptyBox;
     }
     return Builder(
@@ -86,7 +86,7 @@ class HomePageState extends AbstractPageState<HomePage> {
 
   @override
   List<Widget> getBarActions(NavigatorState nav) {
-    final isWide = DisplayHelper.state().isWide;
+    final isWide = ScreenHelper.state().isWide;
     return [
       ToolbarButtonWidget(
         isWide: isWide,
@@ -168,7 +168,7 @@ class HomePageState extends AbstractPageState<HomePage> {
     final countWidth = ThemeHelper.getWidthCount(constraints);
     final countHeight = ThemeHelper.getHeightCount(context, constraints);
     bool isVertical = countWidth == 1 && !ThemeHelper.isWearable;
-    bool isWide = DisplayHelper.state().isWide;
+    bool isWide = ScreenHelper.state().isWide;
     double width = ThemeHelper.getWidth(context, 3, constraints);
     double partWidth = width / countWidth - indent * (countWidth - 1);
 

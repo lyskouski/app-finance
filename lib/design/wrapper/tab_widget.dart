@@ -4,7 +4,6 @@
 import 'package:app_finance/_classes/controller/delayed_call.dart';
 import 'package:app_finance/_configs/theme_helper.dart';
 import 'package:app_finance/_ext/build_context_ext.dart';
-import 'package:app_finance/pages/_interfaces/abstract_page_state.dart';
 import 'package:app_finance/design/wrapper/dots_tab_bar_widget.dart';
 import 'package:app_finance/design/wrapper/text_wrapper.dart';
 import 'package:flutter/material.dart';
@@ -142,7 +141,7 @@ abstract class BasicTabWidgetState extends State<TabWidget> with TickerProviderS
     final selected = context.textTheme.bodySmall!.copyWith(color: color);
     final style = context.textTheme.bodySmall!.copyWith(color: color.withOpacity(0.6));
     return SizedBox(
-      width: AbstractPageState.barHeight,
+      width: ThemeHelper.barHeight,
       child: NavigationRail(
         selectedIndex: tabIndex,
         onDestinationSelected: switchTab,
@@ -152,8 +151,8 @@ abstract class BasicTabWidgetState extends State<TabWidget> with TickerProviderS
         selectedLabelTextStyle: selected,
         unselectedLabelTextStyle: style,
         indicatorShape: InputBorder.none,
-        minWidth: AbstractPageState.barHeight,
-        minExtendedWidth: AbstractPageState.barHeight,
+        minWidth: ThemeHelper.barHeight,
+        minExtendedWidth: ThemeHelper.barHeight,
         groupAlignment: BorderSide.strokeAlignCenter,
         destinations: widget.tabs!
             .asMap()

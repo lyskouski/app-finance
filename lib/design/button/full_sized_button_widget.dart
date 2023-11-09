@@ -2,6 +2,7 @@
 // Use of this source code is governed by a CC BY-NC-ND 4.0 license that can be found in the LICENSE file.
 
 import 'package:app_finance/_classes/controller/focus_controller.dart';
+import 'package:app_finance/_configs/screen_helper.dart';
 import 'package:app_finance/_configs/theme_helper.dart';
 import 'package:app_finance/_ext/build_context_ext.dart';
 import 'package:app_finance/design/wrapper/text_wrapper.dart';
@@ -32,10 +33,13 @@ class FullSizedButtonWidget extends StatelessWidget {
     final isBottom = constraints != null ? ThemeHelper.isNavBottom(constraints!) : false;
     final bool isKeyboardVisible = ThemeHelper.isKeyboardVisible(context) || isBottom;
     final colorScheme = context.colorScheme;
-    final width = constraints != null ? constraints!.maxWidth - ThemeHelper.getIndent(4) - 2 : double.infinity;
+    final indent = ThemeHelper.getIndent(4);
+    final width = constraints != null ? constraints!.maxWidth - indent - 2 : double.infinity;
+    final isWide = ScreenHelper.state().isWide;
     return Semantics(
       attributedLabel: AttributedString(title),
-      child: SizedBox(
+      child: Container(
+        margin: isWide ? EdgeInsets.only(left: ThemeHelper.menuWidth + indent) : EdgeInsets.zero,
         width: isKeyboardVisible ? null : width,
         child: FloatingActionButton(
           heroTag: heroTag,

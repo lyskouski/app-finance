@@ -125,7 +125,7 @@ class AccountViewPageState extends AbstractPageState<AccountViewPage> {
     width = ThemeHelper.getWidth(context, 4, constraints);
     bool isLeft = ThemeHelper.isNavRight(context, constraints);
     if (isLeft) {
-      width -= AbstractPageState.barHeight;
+      width -= ThemeHelper.barHeight;
     }
     return Padding(
       padding: EdgeInsets.only(top: ThemeHelper.getIndent()),

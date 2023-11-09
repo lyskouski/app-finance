@@ -87,18 +87,17 @@ class GoalAddPageState<T extends GoalAddPage> extends AbstractPageState<GoalAddP
     if (currency != null) {
       CurrencyProvider.pin(currency!);
     }
-    super.state.add(GoalAppData(
-          title: title.text,
-          initial: Exchange(store: super.state)
-              .reform(super.state.getTotal(AppDataType.accounts), Exchange.defaultCurrency, currency),
-          progress: 0.0,
-          color: color,
-          hidden: false,
-          currency: currency,
-          icon: icon,
-          details: double.tryParse(details.text) ?? 0.0,
-          closedAt: closedAt,
-        ));
+    state.add(GoalAppData(
+      title: title.text,
+      initial: Exchange(store: state).reform(state.getTotal(AppDataType.accounts), Exchange.defaultCurrency, currency),
+      progress: 0.0,
+      color: color,
+      hidden: false,
+      currency: currency,
+      icon: icon,
+      details: double.tryParse(details.text) ?? 0.0,
+      closedAt: closedAt,
+    ));
   }
 
   @override

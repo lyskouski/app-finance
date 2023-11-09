@@ -102,7 +102,7 @@ class BudgetViewPageState extends AbstractPageState<BudgetViewPage> with TickerP
     width = pageWidth - indent;
     bool isLeft = ThemeHelper.isNavRight(context, constraints);
     if (isLeft) {
-      width -= AbstractPageState.barHeight;
+      width -= ThemeHelper.barHeight;
     }
     final boundary = DateTime(DateTime.now().year, DateTime.now().month).millisecondsSinceEpoch + 0.0;
     return Padding(

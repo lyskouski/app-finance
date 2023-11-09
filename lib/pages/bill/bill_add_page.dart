@@ -2,7 +2,7 @@
 // Use of this source code is governed by a CC BY-NC-ND 4.0 license that can be found in the LICENSE file.
 
 import 'package:app_finance/_classes/herald/app_locale.dart';
-import 'package:app_finance/_configs/display_helper.dart';
+import 'package:app_finance/_configs/screen_helper.dart';
 import 'package:app_finance/_configs/theme_helper.dart';
 import 'package:app_finance/pages/_interfaces/abstract_page_state.dart';
 import 'package:app_finance/pages/bill/widgets/expenses_tab.dart';
@@ -40,7 +40,7 @@ class BillAddPageState<T extends BillAddPage> extends AbstractPageState<T> {
 
   @override
   Widget buildContent(BuildContext context, BoxConstraints constraints) {
-    final isLeft = DisplayHelper.state().isLeftBar;
+    final isLeft = ScreenHelper.state().isLeftBar;
     return TabWidget(
       type: TabType.secondary,
       hasIndent: false,
