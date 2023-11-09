@@ -252,12 +252,14 @@ abstract class AbstractPageState<T extends StatefulWidget> extends State<T> {
       key: drawerKey,
       elevation: 0,
       shape: Border.all(width: 0),
-      child: InputControllerWrapper(
-        child: Container(
-          color: colorScheme.background,
-          child: buildNavigation(),
-        ),
-      ),
+      child: DisplayHelper.state().isWide
+          ? buildNavigation()
+          : InputControllerWrapper(
+              child: Container(
+                color: colorScheme.background,
+                child: buildNavigation(),
+              ),
+            ),
     );
   }
 

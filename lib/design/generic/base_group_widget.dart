@@ -23,6 +23,7 @@ class BaseGroupWidget extends StatelessWidget {
   final double width;
   final double total;
   final String route;
+  static const double size = 32;
 
   const BaseGroupWidget({
     super.key,
@@ -47,15 +48,19 @@ class BaseGroupWidget extends StatelessWidget {
       child: toSwap
           ? Column(
               children: [
-                Icon(item.icon, size: 16.0, color: item.color),
+                Icon(item.icon, size: size / 2, color: item.color),
                 const SizedBox(height: 6.0),
                 BarVerticalSingle(value: item.progress, height: 14.0, color: item.color ?? Colors.transparent),
               ],
             )
-          : RadialBarChart(
-              color: item.color,
-              icon: item.icon,
-              progress: progress[index],
+          : SizedBox(
+              height: size,
+              width: size,
+              child: RadialBarChart(
+                color: item.color,
+                icon: item.icon,
+                progress: progress[index],
+              ),
             ),
     );
   }
@@ -78,7 +83,7 @@ class BaseGroupWidget extends StatelessWidget {
     if (titleWidth > width / 2) {
       titleWidth = width / 2;
     }
-    final toSwap = items.length * 36 + items.length * indent * 2 > width - titleWidth - indent * 3;
+    final toSwap = items.length * size + items.length * indent * 2 > width - titleWidth - indent * 3;
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
