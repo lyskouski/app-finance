@@ -3,11 +3,6 @@ DA:6,1
 LF:1
 LH:1
 end_of_record
-SF:lib/_classes/gen/generate_with_method_setters.dart
-DA:6,3
-LF:1
-LH:1
-end_of_record
 SF:lib/_classes/storage/app_preferences.dart
 DA:22,1
 DA:24,1
