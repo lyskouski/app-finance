@@ -82,7 +82,7 @@ class StartPageState extends AbstractPageState<StartPage> {
     final isEmpty = button == ThemeHelper.emptyBox;
     int i = 0;
     return Padding(
-      padding: const EdgeInsets.only(top: 4.0),
+      padding: EdgeInsets.only(top: ThemeHelper.getIndent(0.5)),
       child: TabWidget(
         type: TabType.dots,
         callback: (i) => _goNext(--i),

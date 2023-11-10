@@ -249,7 +249,7 @@ $ flutter build ipa --build-name=${{ version }} \
 \begin{lstlisting}[language=xml]
 <key>ITSAppUsesNonExemptEncryption</key>
 <true/>
-<key>ITSAppEncryptionExportComplianceCode</key>
+<key>ITSEncryptionExportComplianceCode</key>
 <string>NNNNNNNNNNNNNNNN</string>
 \end{lstlisting}
 
@@ -257,7 +257,7 @@ $ flutter build ipa --build-name=${{ version }} \
 \href{https://www.ssi.gouv.fr/en/regulation/cryptology/how-to-submit-an-application/}{https://www.ssi.gouv.fr/en/regulation/cryptology/how-to-submit-an-application/}
 to be sent to \q{controle@ssi.gouv.fr} with a title "[formalités] {organization} - {app name}", and attached the approval 
 of it during the processing of "Export Compliance Information" form in "Apple Store Connect". Mentioned 
-\q{ITSAppEncryptionExportComplianceCode}-code can be taken from 
+\q{ITSEncryptionExportComplianceCode}-code can be taken from 
 \href{https://appstoreconnect.apple.com/apps}{appstoreconnect.apple.com/apps/\q{id}/features/encryption}
 (\cref{img:d-apple-compliance}).
 

@@ -14,6 +14,7 @@ import 'package:app_finance/design/wrapper/row_widget.dart';
 import 'package:app_finance/design/wrapper/text_wrapper.dart';
 import 'package:app_finance/design/button/toolbar_button_widget.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_grid_layout/flutter_grid_layout.dart';
 import 'package:flutter_markdown/flutter_markdown.dart';
 import 'package:provider/provider.dart';
 
@@ -263,7 +264,6 @@ abstract class AbstractPageState<T extends StatefulWidget> extends State<T> {
 
   @override
   Widget build(BuildContext context) {
-    final height = MediaQuery.sizeOf(context).height;
     final scale = context.watch<AppZoom>().value;
     return Flex(direction: Axis.vertical, children: [
       Expanded(
@@ -271,7 +271,8 @@ abstract class AbstractPageState<T extends StatefulWidget> extends State<T> {
           state = appState;
           return LayoutBuilder(builder: (context, constraints) {
             final display = ScreenHelper.getInstance(context, constraints);
-            final hasShift = display.isBottom && !display.isWearable && !display.isRight;
+            final hasShift = display.isBottom && !display.isRight;
+            final height = constraints.maxHeight;
             final blockHeight = height / scale - (hasShift ? ThemeHelper.barHeight + ThemeHelper.getIndent() : 0);
             double width = constraints.maxWidth / scale;
             Widget? rightBar;
@@ -291,49 +292,71 @@ abstract class AbstractPageState<T extends StatefulWidget> extends State<T> {
               width = 0;
             }
             final dx = (constraints.maxWidth - constraints.maxWidth / scale) / 2;
-            final dy = (constraints.maxHeight - constraints.maxHeight / scale) / 2;
+            final dy = (height - height / scale) / 2;
             return Scaffold(
-              appBar: display.isBottom ? null : buildBar(context, constraints),
+              appBar: display.isBottom
+                  ? AppBar(backgroundColor: context.colorScheme.primary, toolbarHeight: 0)
+                  : buildBar(context, constraints),
               drawer: buildDrawer(),
               floatingActionButtonLocation: hasShift ? FloatingActionButtonLocation.centerDocked : null,
-              floatingActionButton: buildButton(context, constraints),
+              floatingActionButton: hasShift
+                  ? Container(
+                      margin: EdgeInsets.only(bottom: ThemeHelper.getIndent()),
+                      child: buildButton(context, constraints),
+                    )
+                  : buildButton(context, constraints),
               resizeToAvoidBottomInset: true,
-              body: SafeArea(
-                child: InputControllerWrapper(
-                  child: Stack(
-                    children: [
-                      if (leftBar != null)
-                        Container(
+              body: InputControllerWrapper(
+                child: GridContainer(
+                  rows: const [ThemeHelper.menuWidth, null, ThemeHelper.barHeight],
+                  columns: const [null, ThemeHelper.barHeight],
+                  children: [
+                    if (leftBar != null)
+                      GridItem(
+                        order: 2,
+                        start: const Size(0, 0),
+                        end: const Size(1, 2),
+                        child: Container(
                           color: context.colorScheme.inversePrimary.withOpacity(0.2),
                           width: ThemeHelper.menuWidth,
                           height: double.infinity,
                           child: buildNavigation(),
                         ),
-                      Container(
-                        margin: leftBar != null ? const EdgeInsets.only(left: ThemeHelper.menuWidth) : EdgeInsets.zero,
-                        child: OverflowBox(
-                          alignment: Alignment.topLeft,
-                          minWidth: width,
-                          maxWidth: width,
-                          minHeight: blockHeight,
-                          maxHeight: blockHeight,
-                          child: Transform.translate(
-                            offset: Offset(dx, dy),
-                            child: Transform.scale(
-                              scale: scale,
-                              child: buildContent(context, constraints),
-                            ),
+                      ),
+                    GridItem(
+                      order: 1,
+                      start: Size(leftBar != null ? 1 : 0, 0),
+                      end: Size(rightBar != null ? 2 : 3, rightBar == null && display.isBottom ? 1 : 2),
+                      child: OverflowBox(
+                        alignment: Alignment.topLeft,
+                        minWidth: width,
+                        maxWidth: width,
+                        minHeight: blockHeight,
+                        maxHeight: blockHeight,
+                        child: Transform.translate(
+                          offset: Offset(dx, dy),
+                          child: Transform.scale(
+                            scale: scale,
+                            child: buildContent(context, constraints),
                           ),
                         ),
                       ),
-                      if (rightBar != null) rightBar,
-                      if (rightBar == null && display.isBottom)
-                        Container(
-                          margin: EdgeInsets.only(top: height - ThemeHelper.barHeight),
-                          child: buildBottomBar(context, constraints),
-                        ),
-                    ],
-                  ),
+                    ),
+                    if (rightBar != null)
+                      GridItem(
+                        order: 2,
+                        start: const Size(2, 0),
+                        end: const Size(3, 2),
+                        child: rightBar,
+                      ),
+                    if (rightBar == null && display.isBottom)
+                      GridItem(
+                        order: 2,
+                        start: const Size(0, 1),
+                        end: const Size(3, 2),
+                        child: buildBottomBar(context, constraints),
+                      ),
+                  ],
                 ),
               ),
             );
