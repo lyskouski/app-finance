@@ -4,6 +4,7 @@
 import 'dart:io' as io;
 import 'package:app_finance/_classes/herald/app_purchase.dart';
 import 'package:app_finance/_configs/custom_text_theme.dart';
+import 'package:dart_class_wrapper/dart_class_wrapper.dart';
 import 'package:file/file.dart';
 import 'package:file/local.dart';
 
@@ -13,7 +14,6 @@ import 'package:app_finance/_classes/herald/app_zoom.dart';
 import 'package:app_finance/_classes/storage/app_data.dart';
 import 'package:app_finance/_classes/herald/app_locale.dart';
 import 'package:app_finance/_classes/herald/app_theme.dart';
-import 'package:app_finance/_classes/gen/generate_with_method_setters.dart';
 import 'package:app_finance/_classes/storage/app_preferences.dart';
 import 'package:app_finance/main.dart';
 import 'package:flutter/material.dart';

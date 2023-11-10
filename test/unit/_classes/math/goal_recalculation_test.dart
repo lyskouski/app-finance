@@ -3,7 +3,7 @@
 
 import 'package:app_finance/_classes/structure/goal_app_data.dart';
 import 'package:app_finance/_classes/math/goal_recalculation.dart';
-import 'package:app_finance/_classes/gen/generate_with_method_setters.dart';
+import 'package:dart_class_wrapper/dart_class_wrapper.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 @GenerateWithMethodSetters([GoalRecalculation])

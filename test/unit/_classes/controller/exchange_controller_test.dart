@@ -2,8 +2,8 @@
 // Use of this source code is governed by a CC BY-NC-ND 4.0 license that can be found in the LICENSE file.
 
 import 'package:app_finance/_classes/controller/exchange_controller.dart';
-import 'package:app_finance/_classes/gen/generate_with_method_setters.dart';
 import 'package:app_finance/_classes/storage/app_data.dart';
+import 'package:dart_class_wrapper/dart_class_wrapper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_currency_picker/flutter_currency_picker.dart';
 import 'package:flutter_test/flutter_test.dart';

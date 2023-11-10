@@ -4,9 +4,9 @@
 import 'package:app_finance/_classes/math/invoice_recalculation.dart';
 import 'package:app_finance/_classes/structure/account_app_data.dart';
 import 'package:app_finance/_classes/structure/currency/exchange.dart';
-import 'package:app_finance/_classes/gen/generate_with_method_setters.dart';
 import 'package:app_finance/_classes/storage/app_data.dart';
 import 'package:app_finance/_classes/structure/invoice_app_data.dart';
+import 'package:dart_class_wrapper/dart_class_wrapper.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/annotations.dart';
 
