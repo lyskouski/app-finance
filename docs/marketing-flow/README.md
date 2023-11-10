@@ -32,6 +32,10 @@
 
 ## Timeline
 
+### 2023-11-09: [Community: Paul] Alternatives to Fingrom
+- https://alternativeto.net/software/fingrom/
+- https://alternativeto.net/software/fingrom/about/
+
 ### 2023-11-08: [Community: Jardeson Márcio] Como instalar o app de contabilidade Fingrom no Linux!
 - https://sempreupdate.com.br/como-instalar-o-app-de-contabilidade-fingrom-no-linux/
 
