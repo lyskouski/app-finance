@@ -3,11 +3,15 @@
 
 import 'dart:io';
 
+import 'package:flutter_gherkin_generator/gen/generate_list_of_classes.dart';
+import 'package:flutter_gherkin_wrapper/flutter_gherkin_wrapper.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 import '../pump_main.dart';
-import '_steps/file_runner.dart';
-import '_steps/screen_capture.dart';
+import '../screen_capture.dart';
+
+@GenerateListOfClasses(['_steps'])
+import 'e2e_test.list.dart';
 
 void main() {
   Iterable<File> features = Directory('./test/e2e')
@@ -18,6 +22,7 @@ void main() {
   setUpAll(() {
     TestWidgetsFlutterBinding.ensureInitialized();
     ScreenCapture.enableScreenCapture();
+    ExecutableStepIterator.inject(classList);
     PumpMain.cleanUpData();
   });
 

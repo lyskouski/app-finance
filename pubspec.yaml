@@ -68,13 +68,14 @@ dev_dependencies:
   test_cov_console: ^0.2.2
   mockito: ^5.4.2
   build_runner: ^2.4.6
-  source_gen: ^1.4.0
   flutter_gherkin: ^2.0.0
   file: ^6.1.4
   platform: ^3.1.0
   msix: ^3.16.4
   yaml: ^3.1.2
   dart_class_wrapper: ^1.0.1
+  flutter_gherkin_generator: ^1.0.3
+  flutter_gherkin_wrapper: ^1.0.3
 
 flutter:
   generate: true

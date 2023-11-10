@@ -5,7 +5,7 @@ import 'package:flutter_test/flutter_test.dart';
 // ignore: depend_on_referenced_packages
 import 'package:gherkin/gherkin.dart';
 
-import '../screen_capture.dart';
+import '../../../screen_capture.dart';
 
 class CanSeeDefinedComponent extends Then1WithWorld<String, World> {
   @override

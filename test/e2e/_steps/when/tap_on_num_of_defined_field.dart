@@ -6,12 +6,12 @@ import 'package:app_finance/design/form/list_account_selector.dart';
 import 'package:app_finance/design/form/list_budget_selector.dart';
 import 'package:app_finance/design/form/list_selector.dart';
 import 'package:app_finance/design/generic/base_line_widget.dart';
+import 'package:flutter_gherkin_wrapper/flutter_gherkin_wrapper.dart';
 import 'package:flutter_test/flutter_test.dart';
 // ignore: depend_on_referenced_packages
 import 'package:gherkin/gherkin.dart';
 
-import '../file_runner.dart';
-import '../screen_capture.dart';
+import '../../../screen_capture.dart';
 
 class TapOnNumOfDefinedField extends When2WithWorld<int, String, World> {
   @override

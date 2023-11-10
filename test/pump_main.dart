@@ -25,7 +25,7 @@ import 'package:provider/provider.dart';
 import 'package:platform/platform.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-import 'e2e/_steps/screen_capture.dart';
+import 'screen_capture.dart';
 
 @GenerateNiceMocks([MockSpec<SharedPreferences>()])
 import 'pump_main.mocks.dart';

@@ -5,8 +5,8 @@ import 'package:app_finance/design/wrapper/tap_widget.dart';
 import 'package:flutter/semantics.dart';
 import 'package:flutter_test/flutter_test.dart';
 
-import '../../e2e/_steps/screen_capture.dart';
 import '../../pump_main.dart';
+import '../../screen_capture.dart';
 
 void main() {
   setUpAll(() {
