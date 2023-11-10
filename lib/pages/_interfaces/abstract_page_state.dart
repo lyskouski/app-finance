@@ -294,7 +294,9 @@ abstract class AbstractPageState<T extends StatefulWidget> extends State<T> {
             final dx = (constraints.maxWidth - constraints.maxWidth / scale) / 2;
             final dy = (height - height / scale) / 2;
             return Scaffold(
-              appBar: display.isBottom ? null : buildBar(context, constraints),
+              appBar: display.isBottom
+                  ? AppBar(backgroundColor: context.colorScheme.primary, toolbarHeight: 0)
+                  : buildBar(context, constraints),
               drawer: buildDrawer(),
               floatingActionButtonLocation: hasShift ? FloatingActionButtonLocation.centerDocked : null,
               floatingActionButton: hasShift
