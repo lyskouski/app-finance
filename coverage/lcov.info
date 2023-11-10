@@ -1,8 +1,3 @@
-SF:lib/_classes/gen/generate_list_of_classes.dart
-DA:6,1
-LF:1
-LH:1
-end_of_record
 SF:lib/_classes/storage/app_preferences.dart
 DA:22,1
 DA:24,1
@@ -13,11 +8,6 @@ DA:32,1
 DA:33,2
 LF:7
 LH:5
-end_of_record
-SF:lib/_classes/gen/generate_gherkin_resources.dart
-DA:7,2
-LF:1
-LH:1
 end_of_record
 SF:lib/design/form/currency_selector.dart
 DA:12,1

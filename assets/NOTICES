@@ -5957,6 +5957,8 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 --------------------------------------------------------------------------------
 dart_class_wrapper
 flutter_currency_picker
+flutter_gherkin_generator
+flutter_gherkin_wrapper
 flutter_grid_layout
 
 MIT License
