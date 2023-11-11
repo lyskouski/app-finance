@@ -387,30 +387,22 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.0"
-  flutter_gherkin:
-    dependency: "direct dev"
-    description:
-      name: flutter_gherkin
-      sha256: bacda3ef810e116bd66582d59ba58457e51e64977df0c1821e1a4f689bdf0186
-      url: "https://pub.dev"
-    source: hosted
-    version: "2.0.0"
   flutter_gherkin_generator:
     dependency: "direct dev"
     description:
       name: flutter_gherkin_generator
-      sha256: ad942a8ffa9908ef1f520bf866534d945850198ba510724e1606e2b3ca0a7c48
+      sha256: "91553e6ed5327bda7a147318a9266f65025d91fcc2b02eb3841c90fbe41b98b5"
       url: "https://pub.dev"
     source: hosted
-    version: "1.0.3"
+    version: "1.0.4"
   flutter_gherkin_wrapper:
     dependency: "direct dev"
     description:
       name: flutter_gherkin_wrapper
-      sha256: "51a3be70a27647e608f4630f8fef71bb5d611db066d0622eccdde7e7dc57b2a2"
+      sha256: "63cdaa90cd4f6a5055b450dbba74737796f2497f6ab26727c8a5f4f37d185057"
       url: "https://pub.dev"
     source: hosted
-    version: "1.0.3"
+    version: "1.0.4"
   flutter_grid_layout:
     dependency: "direct main"
     description:
