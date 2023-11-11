@@ -110,3 +110,38 @@ for \q{macOS}. This could occur due to the requirement for a minimum macOS versi
 
 \noindent And, it still won't work without \q{./macos/Podfile}-file defined, hopefully with a universal content 
 \issue{100}{05329b3}.
+
+However, it's not enough to just add the package and subscription functionality. Each of items must be explicitly 
+specified in the configuration file per each environment (iOS, macOS, and Android). Otherwise, the app will be rejected 
+at the validation stage:
+
+\begin{lstlisting}[language=terminal]
+App Store Connect App Review 
+Guideline 2.1 - Performance - App Completeness
+  We are unable to complete the review of your app because one 
+  or more of your in-app purchase products have not been 
+  submitted for review.
+\end{lstlisting}
+
+\noindent For iOS/macOS, we should update the \q{Runner/Info.plist}-file by adding the following lines (or, by using 
+Xcode's Capabilities panel to turn on Apple Pay, and select the merchant IDs we want to use; this sets the 
+\q{com.apple.developer.in-app-payments} key, the value for this key is an array of merchant IDs):
+
+\begin{lstlisting}[language=xml]
+<key>SKStoreProductParameterOfferID</key>
+<string>{identifier}</string>
+\end{lstlisting}
+
+\noindent And for Android, the change in the \q{android/app/build.gradle}-file would be:
+
+\begin{lstlisting}
+release {
+  signingConfig signingConfigs.release
+\end{lstlisting}
+{
+\xpretocmd{\lstlisting}{\vspace{-12pt}}{}{}
+\begin{lstlisting}[firstnumber=2, backgroundcolor=\color{backgreen}]
+(*@\kdiff{+}@*)  resValue "string", "play_billing_key", '{Billing Key}'
+(*@\kdiff{+}@*)  resValue "string", "play_billing_key_public", '{Billing Public Key}'
+\end{lstlisting}
+}
