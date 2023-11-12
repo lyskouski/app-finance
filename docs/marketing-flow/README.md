@@ -32,6 +32,10 @@
 
 ## Timeline
 
+### 2023-11-12: [Paper] 
+- https://medium.com/@vlyskouski/flutter-bdd-testing-on-steroids-with-gherkin-50b0b762da7c
+- [LinkedId Post](https://www.linkedin.com/posts/v-lyskouski_flutter-bdd-testing-on-steroids-with-gherkin-activity-7129214717285326848-Rhwt)
+
 ### 2023-11-09: [Community: Paul] Alternatives to Fingrom
 - https://alternativeto.net/software/fingrom/
 - https://alternativeto.net/software/fingrom/about/
