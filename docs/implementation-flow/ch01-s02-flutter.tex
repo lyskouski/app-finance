@@ -203,6 +203,42 @@ state management:
 
 
 \newpage
+\subsubsection{Explaining Build Context}
+
+\q{BuildContext} is an identifier for a particular widget in the hierarchy and provides access to information about its 
+position in the UI structure. Through it, widgets can access data from inherited widgets like \q{Theme}, \q{MediaQuery}, 
+\q{Navigator}, etc., without having direct references. Widgets use \q{BuildContext} to determine when to rebuild. 
+Inherited widgets like themes or languages are accessed through \q{BuildContext}, enabling widgets to inherit values 
+from their ancestors.
+
+Understanding \q{RenderObjects} is pivotal in Flutter, as they work in tandem with widgets to manage the drawing logic.
+\q{RenderObjects} undertake tasks like computing sizes, handling translations, managing colors, and essentially 
+performing the bulk of the rendering process. This implies that widgets extending a RenderObjectWidget can directly 
+paint elements, not merely compose them.
+
+In this context, while widgets remain immutable, the \q{build}-method is frequently called, generating numerous widgets 
+each second. Upon the initial creation and insertion of your widget into the widget tree, it initiates the creation of 
+an \q{Element} through its \q{createElement}-method. During subsequent rebuilds, the framework assesses whether the 
+widget returned by the \q{build}-method can update the existing element at that specific position within the tree. 
+However, it's the \q{RenderObjects} that handle the actual rendering of elements on the screen.
+
+So, it's vital to optimize \q{build}-method for efficiency since it might be invoked up to 120 times a second, depending 
+on the device's refresh rate, based on the state change of our application. We should avoid using network calls, 
+database operations, or other data handling operations in the \q{build}-method. Failing to deliver results within this 
+timeframe can cause dropped frames and, consequently, UI interruptions, leading to a poor user experience.
+
+In summary, developers operate with a hierarchy of widgets that describe the UI. Flutter takes the widget tree and 
+generates an element tree. When there are changes in the widget tree (due to state changes, user interactions, etc.), 
+Flutter performs a reconciliation process. It compares the new widget tree with the previous one to identify differences 
+and determine what elements need updating. Based on the element tree, Flutter generates corresponding Render Objects.
+They handle the positioning, size, and appearance of UI elements. After layout, the render objects execute the painting 
+process, which involves filling pixels on the screen with the appropriate colors and graphics according to the visual 
+representation of the UI. The Render Object Tree gets translated into commands for the graphics pipeline, ultimately 
+rendering the UI on the device's screen.
+
+
+
+\newpage
 \subsubsection{Differentiating Keys}
 
 Keys, in the context of Flutter, are indispensable. They act as distinct identifiers for widgets and wield significant 
