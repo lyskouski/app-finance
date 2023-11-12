@@ -308,6 +308,55 @@ tasks with extensive communication between isolates or those requiring multiple 
 final results = await Future.wait([dataFromApi(), dataFromFile()]);
 \end{lstlisting}
 
+
+\newpage
+\subsubsection{Managing SDK Versions}
+
+Flutter Version Manager (FVM) streamlines the process of managing diverse Flutter versions across multiple projects, 
+including the task of downgrading to an earlier SDK version. It serves as a command-line interface that efficiently 
+handles multiple Flutter SDK versions:
+
+\begin{lstlisting}[language=terminal]
+# Install FVM 
+$ dart pub global activate fvm
+
+# Set Flutter SDK version
+$ fvm use {version}
+
+# Show all installed versions:
+$ fvm list
+
+# List of all available releases: 
+$ fvm releases
+\end{lstlisting}
+
+\noindent Once the \q{fvm use}-command is executed, it generates a \q{.fvm}-directory within the project. This directory 
+contains a relative symlink connected to the cache of the chosen Flutter SDK version. Therefore, every command needs to 
+be prefixed with \q{fvm}:
+
+\begin{lstlisting}[language=terminal]
+$ fvm flutter {command}
+$ fvm dart {command}
+\end{lstlisting}
+
+\noindent In addition, it's widely used "flavors". It's a set of configurations that allow to build different versions
+of the same app, each with different settings, and behavior. Flavors enable to have multiple versions of an app within 
+a single codebase. Each flavor can have its own set of resources, API endpoints, or specific configurations. This is 
+helpful in scenarios where the same app is targeted for different environments but needs to maintain individual 
+characteristics for each:
+
+\begin{lstlisting}[language=terminal]
+# Install Flavor
+$ fvm use {version} --flavor {flavor_name}
+
+# Activate Flavor
+$ fvm flavor {flavor_name}
+\end{lstlisting}
+
+\noindent By using flavors, we may streamline the process of building, testing, and deploying different versions of 
+our application without having to manage separate codebases or repositories for each environment.
+
+
 \newpage
 \subsubsection{Asserting in Tests}
 

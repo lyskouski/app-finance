@@ -194,27 +194,27 @@ Dart provides a wide range of built-in functions and libraries to cover various 
 
 \begin{lstlisting}
 double num1 = 10.0; double num2 = 3.0; double? num3;
-var result = num1 + num2; // Addition: 13.0
-result = num1 - num2; // Subtraction: 7.0
-result = num1 * num2; // Multiplication: 30.0
-result = num1 / num2; // Division: 3.3333333333333335
+// Addition '+' and subtraction '-'
+// Multiplication '*' and division '/'
 // '~/' Integer Division (Floor Division)
 result = num1 ~/ num2; // 3 (int)
 // '%' Modulus (Remainder)
 result = num1 % num2; // 1.0
 // '??' null-check statement
 num3 ?? num1; // return 'num1' if 'num3' is null
-num3 = 2.0;
+num3 ??= 2.0; // set 'num3' if it's null
+// Tilde (Bitwise NOT)
+int result = ~(-1); // 0
+// Bitwise AND '&', OR '|', XOR '^'
+int resultAND = 5 & 3; // 1
+// Left '<<' and Right '>>' Shift
+int resultLeft = 8 << 2; // 32
+int resultRight = 8 >> 1; // 4
 // 'sqrt' Square Root
 result = sqrt(num3); // 1.4142135623730951
 // 'pow' Exponentiation
 result = pow(num3, 3); // 8.0
-// 'sin' Sine
-result = sin(num3); // 0.9092974268256817
-// 'cos' Cosine
-result = cos(num3); // -0.4161468365471424
-// 'tan' Tangent
-result = tan(num3); // -2.185039863261519
+// 'sin' Sine, 'cos' Cosine, 'tan' Tangent
 // 'log' Natural Logarithm
 result = log(num3); // 0.6931471805599453
 // 'log10' Base-10 Logarithm
