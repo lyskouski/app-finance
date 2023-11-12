@@ -123,16 +123,50 @@ Guideline 2.1 - Performance - App Completeness
   submitted for review.
 \end{lstlisting}
 
-\noindent For iOS/macOS, we should update the \q{Runner/Info.plist}-file by adding the following lines (or, by using 
-Xcode's Capabilities panel to turn on Apple Pay, and select the merchant IDs we want to use; this sets the 
-\q{com.apple.developer.in-app-payments} key, the value for this key is an array of merchant IDs):
+\noindent For iOS/macOS, by using Xcode's Capabilities panel, turn on In-App Purchases, and select the IDs we want to 
+use. This creates the \q{Runner/Release.entitlements}-file:
 
 \begin{lstlisting}[language=xml]
-<key>SKStoreProductParameterOfferID</key>
-<string>{identifier}</string>
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>com.apple.developer.in-app-purchase</key>
+    <true/>
+</dict>
+</plist>  
 \end{lstlisting}
 
-\noindent And for Android, the change in the \q{android/app/build.gradle}-file would be:
+\noindent And, the \q{Runner/Info.plist}-file is adjusted by new lines:
+
+\begin{lstlisting}[language=xml]
+<key>SKAdNetworkItems</key>
+<array>
+  <dict>
+    <key>SKAdNetworkIdentifier</key>
+    <string>com.example.adnetwork1</string>
+  </dict>
+</array>
+<key>SKStoreProductParameterOfferID</key>
+<string>com.tercad.fingrom.{purchase ID}</string>
+\end{lstlisting}
+
+\noindent As a note, the \q{.entitlements}-file has to be mentioned in the build settings, 
+\q{Runner.xcodeproj/project.pbxproj}-file:
+
+\begin{lstlisting}
+buildSettings = {
+\end{lstlisting}
+{
+\xpretocmd{\lstlisting}{\vspace{-12pt}}{}{}
+\begin{lstlisting}[firstnumber=20, backgroundcolor=\color{backgreen}]
+(*@\kdiff{+}@*)	CODE_SIGN_ENTITLEMENTS = Runner/Release.entitlements;
+\end{lstlisting}
+}
+
+~
+
+\noindent As for Android, the change in the \q{android/app/build.gradle} would be:
 
 \begin{lstlisting}
 release {
