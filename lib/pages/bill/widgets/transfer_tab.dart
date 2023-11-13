@@ -11,17 +11,14 @@ import 'package:app_finance/_classes/storage/app_data.dart';
 import 'package:app_finance/_configs/screen_helper.dart';
 import 'package:app_finance/_configs/theme_helper.dart';
 import 'package:app_finance/_ext/build_context_ext.dart';
+import 'package:app_finance/design/wrapper/input_wrapper.dart';
 import 'package:app_finance/pages/bill/widgets/interface_bill_page_inject.dart';
 import 'package:app_finance/design/form/currency_exchange_input.dart';
 import 'package:app_finance/design/form/date_time_input.dart';
 import 'package:app_finance/design/button/full_sized_button_widget.dart';
-import 'package:app_finance/design/wrapper/required_widget.dart';
 import 'package:app_finance/design/wrapper/row_widget.dart';
-import 'package:app_finance/design/form/currency_selector.dart';
-import 'package:app_finance/design/form/list_account_selector.dart';
 import 'package:app_finance/design/form/simple_input.dart';
 import 'package:app_finance/design/wrapper/single_scroll_wrapper.dart';
-import 'package:app_finance/design/wrapper/text_wrapper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_currency_picker/flutter_currency_picker.dart';
 
@@ -151,70 +148,60 @@ class TransferTabState<T extends TransferTab> extends State<T> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            RequiredWidget(
+            InputWrapper(
+              type: NamedInputType.accountSelector,
+              isRequired: true,
+              value: accountFrom,
               title: AppLocale.labels.accountFrom,
               showError: hasErrors && accountFrom == null,
-            ),
-            ListAccountSelector(
-              value: accountFrom,
-              hintText: AppLocale.labels.accountFrom,
               state: widget.state,
-              setState: (value) => setState(() {
+              onChange: (value) => setState(() {
                 accountFrom = value;
                 accountFromCurrency = widget.state.getByUuid(accountFrom!)?.currency;
                 currency ??= accountFromCurrency;
               }),
               width: width,
             ),
-            ThemeHelper.hIndent2x,
-            RequiredWidget(
+            InputWrapper(
+              type: NamedInputType.accountSelector,
+              isRequired: true,
+              value: accountTo,
               title: AppLocale.labels.accountTo,
               showError: hasErrors && accountTo == null,
-            ),
-            ListAccountSelector(
-              value: accountTo,
-              hintText: AppLocale.labels.accountTo,
               state: widget.state,
-              setState: (value) => setState(() {
+              onChange: (value) => setState(() {
                 accountTo = value;
                 accountToCurrency = widget.state.getByUuid(value)?.currency;
                 currency = accountToCurrency;
               }),
               width: width,
             ),
-            ThemeHelper.hIndent2x,
             RowWidget(
               indent: indent,
               maxWidth: width + indent,
               chunk: const [125, null],
               children: [
                 [
-                  Text(
-                    AppLocale.labels.currency,
-                    style: textTheme.bodyLarge,
-                  ),
-                  CodeCurrencySelector(
+                  InputWrapper.currency(
+                    type: NamedInputType.currencyShort,
                     value: currency?.code,
-                    textTheme: textTheme,
-                    colorScheme: context.colorScheme,
-                    update: (value) => setState(() => currency = value),
+                    title: AppLocale.labels.currency,
+                    onChange: (value) => setState(() => currency = value),
                   ),
                 ],
                 [
-                  TextWrapper(
-                    AppLocale.labels.expenseTransfer,
-                    style: textTheme.bodyLarge,
-                  ),
-                  SimpleInput(
-                    controller: amount,
-                    type: const TextInputType.numberWithOptions(decimal: true),
+                  InputWrapper.text(
+                    title: AppLocale.labels.expenseTransfer,
                     tooltip: AppLocale.labels.billSetTooltip,
-                    formatter: [SimpleInputFormatter.filterDouble],
+                    controller: amount,
+                    inputType: const TextInputType.numberWithOptions(decimal: true),
+                    formatter: [
+                      SimpleInputFormatter.filterDouble,
+                    ],
                   ),
                 ],
               ],
             ),
-            ThemeHelper.hIndent2x,
             CurrencyExchangeInput(
               width: width + indent,
               indent: indent,
@@ -222,15 +209,11 @@ class TransferTabState<T extends TransferTab> extends State<T> {
               controller: exchange,
               source: [accountFromCurrency, accountToCurrency],
             ),
-            Text(
-              AppLocale.labels.description,
-              style: textTheme.bodyLarge,
-            ),
-            SimpleInput(
-              controller: description,
+            InputWrapper.text(
+              title: AppLocale.labels.description,
               tooltip: AppLocale.labels.transferTooltip,
+              controller: description,
             ),
-            ThemeHelper.hIndent2x,
             Text(
               AppLocale.labels.balanceDate,
               style: textTheme.bodyLarge,

@@ -179,6 +179,7 @@ class BudgetAddPageState<T extends BudgetAddPage> extends AbstractAddPageState<B
               ],
             ),
             SimpleInput(
+              key: ValueKey(AppLocale.labels.budgetLimit),
               controller: budgetLimit,
               type: const TextInputType.numberWithOptions(decimal: true),
               tooltip: AppLocale.labels.balanceTooltip,

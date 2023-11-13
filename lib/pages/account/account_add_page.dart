@@ -197,6 +197,7 @@ class AccountAddPageState<T extends AccountAddPage> extends AbstractAddPageState
               title: AppLocale.labels.balance,
               tooltip: AppLocale.labels.balanceTooltip,
               controller: balance,
+              inputType: const TextInputType.numberWithOptions(decimal: true),
               formatter: [
                 SimpleInputFormatter.filterDouble,
               ],

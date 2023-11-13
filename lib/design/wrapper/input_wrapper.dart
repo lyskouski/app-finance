@@ -2,6 +2,7 @@
 // Use of this source code is governed by a CC BY-NC-ND 4.0 license that can be found in the LICENSE file.
 
 import 'package:app_finance/_classes/herald/app_locale.dart';
+import 'package:app_finance/_classes/storage/app_data.dart';
 import 'package:app_finance/_classes/structure/def/list_selector_item.dart';
 import 'package:app_finance/_configs/screen_helper.dart';
 import 'package:app_finance/_configs/theme_helper.dart';
@@ -9,6 +10,8 @@ import 'package:app_finance/_ext/build_context_ext.dart';
 import 'package:app_finance/design/form/color_selector.dart';
 import 'package:app_finance/design/form/currency_selector.dart';
 import 'package:app_finance/design/form/icon_selector.dart';
+import 'package:app_finance/design/form/list_account_selector.dart';
+import 'package:app_finance/design/form/list_budget_selector.dart';
 import 'package:app_finance/design/form/list_selector.dart';
 import 'package:app_finance/design/form/month_year_input.dart';
 import 'package:app_finance/design/form/simple_input.dart';
@@ -18,11 +21,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 enum NamedInputType {
-  textInput,
-  listSelector,
-  iconSelector,
+  accountSelector,
+  budgetSelector,
   colorSelector,
   currencySelector,
+  currencyShort,
+  iconSelector,
+  listSelector,
+  textInput,
   ymSelector,
 }
 
@@ -37,6 +43,9 @@ class InputWrapper extends StatelessWidget {
   final TextEditingController? controller;
   final dynamic value;
   final List<TextInputFormatter>? formatter;
+  final AppData? state;
+  final double? width;
+  final TextInputType? inputType;
 
   @override
   Key? get key => ValueKey(title);
@@ -53,6 +62,9 @@ class InputWrapper extends StatelessWidget {
     this.formatter,
     this.isRequired = false,
     this.showError = false,
+    this.state,
+    this.width,
+    this.inputType,
   });
 
   const InputWrapper.text({
@@ -67,6 +79,9 @@ class InputWrapper extends StatelessWidget {
     this.options,
     this.value,
     this.formatter,
+    this.state,
+    this.width,
+    this.inputType,
   });
 
   const InputWrapper.select({
@@ -81,6 +96,9 @@ class InputWrapper extends StatelessWidget {
     this.showError = false,
     this.controller,
     this.formatter,
+    this.state,
+    this.width,
+    this.inputType,
   });
 
   const InputWrapper.icon({
@@ -95,6 +113,9 @@ class InputWrapper extends StatelessWidget {
     this.options,
     this.value,
     this.formatter,
+    this.state,
+    this.width,
+    this.inputType,
   });
 
   const InputWrapper.color({
@@ -109,6 +130,9 @@ class InputWrapper extends StatelessWidget {
     this.options,
     this.value,
     this.formatter,
+    this.state,
+    this.width,
+    this.inputType,
   });
 
   const InputWrapper.currency({
@@ -123,6 +147,9 @@ class InputWrapper extends StatelessWidget {
     this.showError = false,
     this.options,
     this.formatter,
+    this.state,
+    this.width,
+    this.inputType,
   });
 
   @override
@@ -153,6 +180,7 @@ class InputWrapper extends StatelessWidget {
               withLabel: min,
               hintColor: hintColor,
               formatter: formatter,
+              type: inputType ?? TextInputType.text,
             ),
           NamedInputType.listSelector => ListSelector(
               value: value,
@@ -182,13 +210,39 @@ class InputWrapper extends StatelessWidget {
               withLabel: min,
               labelText: title,
             ),
+          NamedInputType.currencyShort => CodeCurrencySelector(
+              value: value,
+              textTheme: context.textTheme,
+              colorScheme: context.colorScheme,
+              update: onChange!,
+              withLabel: min,
+              labelText: title,
+            ),
           NamedInputType.ymSelector => MonthYearInput(
               value: value,
               setState: onChange!,
               withLabel: min,
               labelText: title,
             ),
-          _ => ThemeHelper.emptyBox,
+          NamedInputType.accountSelector => ListAccountSelector(
+              value: value,
+              hintText: hint,
+              tooltip: tooltip,
+              state: state!,
+              setState: onChange!,
+              width: width!,
+              withLabel: min,
+              options: options?.cast() ?? [],
+            ),
+          NamedInputType.budgetSelector => ListBudgetSelector(
+              value: value,
+              hintText: hint,
+              tooltip: tooltip,
+              state: state!,
+              setState: onChange!,
+              width: width!,
+              withLabel: min,
+            ),
         },
         ThemeHelper.hIndent2x,
       ],

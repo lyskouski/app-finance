@@ -35,6 +35,8 @@ class ListAccountSelector<K extends ListAccountSelectorItem> extends ListSelecto
     required super.hintText,
     super.options = const [],
     super.value,
+    super.tooltip,
+    super.withLabel,
   }) : super();
 
   @override
