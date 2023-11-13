@@ -2,33 +2,34 @@
 
 ## Statistics
 
-| Type                           | 2023-11-06  | 2023-11-13 |
-|--------------------------------|-------------|------------|
-| Contributors                   | 1           | |
-| Repository Stars               | 6           | |
-| Repository Visitors            | 51 (163)    | |
-| Rep. Unique Clones             | 84          | |
-| Average interaction, seconds   | 88          | |
-| Application Usage (Reviews)    |             | |
-| - Windows                      | 8 (1)       | |
-| - Linux                        | 7           | |
-| - macOS                        | 2           | |
-| - iOS Mobile                   | 35          | |
-| - iOS Tablet                   | 13          | |
-| - Android Mobile               | 38 (1)      | |
-| - Android Tablet               | 1           | |
-| - Web                          | 25          | |
-| Publications                   | 2           | |
-| - Books KENP Read (Sells)      | 420         | |
-| - Medium Views (Claps)         | 2           | |
-| - Medium Followers             |             | |
-| - LinkedIn Views (Likes)       | 2375 (27)   | |
-| - Twitter Views (Retweets)     |             | |
-| - Facebook Actions             |             | |
-| Videos                         | 1           | |
-| - View (Likes)                 | 17 (3)      | |
-| - Subscriptions                | 1           | |
-| - Average view duration        | 1:42        | |
+| Type                           | 2023-11-06 | 2023-11-13 | 2023-11-20 |
+|--------------------------------|------------|------------|------------|
+| Contributors                   |    1       |    1       | |
+| Repository Stars               |    6       |    6       | |
+| Repository Visitors            |   51 (163) |  115 (483) | |
+| Rep. Unique Clones             |   84       |   78       | |
+| Average interaction, seconds   |   88       |  183       | |
+| Precise impressions (Huawei)   |    -       |  200       | |
+| Application Usage (Reviews)    |            |            | |
+| - Windows                      |    8 (1)   |   16       | |
+| - Linux                        |    7       |  133       | |
+| - macOS                        |    2       |    6       | |
+| - iOS Mobile                   |   35       |   54       | |
+| - iOS Tablet                   |   13       |   19       | |
+| - Android Mobile               |   38 (1)   |   89       | |
+| - Android Tablet               |    1       |    3       | |
+| - Web                          |   25       |   45       | |
+| Publications                   |    2       |    3       | |
+| - Books KENP Read (Sells)      |  420       |  426 (1)   | |
+| - Medium Views (Claps)         |    2       |   45 (10)  | |
+| - Medium Followers             |    0       |    2       | |
+| - LinkedIn Views (Likes)       | 2375 (27)  | 1937 (48)  | |
+| - Twitter Views (Retweets)     |    -       |   45       | |
+| - Facebook Actions             |    -       |    9       | |
+| Videos                         |    1       |    1       | |
+| - View (Likes)                 |   17 (3)   |   44 (4)   | |
+| - Subscriptions                |    1       |    2       | |
+| - Average view duration        | 1:42       | 1:30       | |
 
 
 ## Timeline
