@@ -65,12 +65,16 @@ class BaseCurrencySelector<T extends CurrencySelectorItem> extends CurrencySelec
   @override
   Color? get tileColor => _tileColor;
 
+  late final TextStyle? _labelStyle;
+  @override
+  TextStyle? get labelStyle => _labelStyle;
+
   @override
   EdgeInsets get indent => EdgeInsets.fromLTRB(
         ThemeHelper.getIndent(),
-        ThemeHelper.getIndent(1.6),
+        withLabel && value != null ? 1 : ThemeHelper.getIndent(1.6),
         0,
-        ThemeHelper.getIndent(1.6),
+        withLabel && value != null ? ThemeHelper.getIndent() : ThemeHelper.getIndent(1.6),
       );
 
   BaseCurrencySelector({
@@ -79,15 +83,13 @@ class BaseCurrencySelector<T extends CurrencySelectorItem> extends CurrencySelec
     required TextTheme textTheme,
     required ColorScheme colorScheme,
     super.value,
+    super.labelText,
+    super.withLabel,
   }) {
     CurrencyItemRegistry.list[CodeCurrencySelectorItem] = CodeCurrencySelectorItem.fromCurrency;
-    _hintStyle = textTheme.numberMedium.copyWith(
-      color: textTheme.headlineSmall?.color!.withOpacity(0.4),
-      overflow: TextOverflow.ellipsis,
-    );
-    _textStyle = textTheme.numberMedium.copyWith(
-      overflow: TextOverflow.ellipsis,
-    );
+    _hintStyle = textTheme.tooltipMedium.copyWith(overflow: TextOverflow.ellipsis);
+    _textStyle = textTheme.numberMedium.copyWith(overflow: TextOverflow.ellipsis);
+    _labelStyle = textTheme.tooltipSmall.copyWith(overflow: TextOverflow.ellipsis);
     _fieldBackground = colorScheme.fieldBackground;
     _tileColor = colorScheme.primary;
   }
@@ -100,6 +102,8 @@ class CodeCurrencySelector extends BaseCurrencySelector<CodeCurrencySelectorItem
     required TextTheme textTheme,
     required ColorScheme colorScheme,
     super.value,
+    super.labelText,
+    super.withLabel,
   }) : super(
           textTheme: textTheme,
           colorScheme: colorScheme,

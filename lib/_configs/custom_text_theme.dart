@@ -84,18 +84,34 @@ extension CustomTextTheme on TextTheme {
     );
   }
 
+  TextStyle get tooltipSmall => GoogleFonts.robotoCondensed(
+        fontSize: 12,
+        fontWeight: FontWeight.w400,
+        color: titleLarge?.color?.withOpacity(0.4),
+        letterSpacing: letterSpacingOrNone(0.5),
+      );
+
+  TextStyle get tooltipMedium => GoogleFonts.robotoCondensed(
+        fontSize: 16,
+        fontWeight: FontWeight.w400,
+        color: titleLarge?.color?.withOpacity(0.4),
+        letterSpacing: letterSpacingOrNone(0.5),
+      );
+
   TextStyle get numberLarge => GoogleFonts.robotoCondensed(
         fontSize: 32,
         fontWeight: FontWeight.w400,
         color: titleLarge?.color,
         letterSpacing: letterSpacingOrNone(0.5),
       );
+
   TextStyle get numberMedium => GoogleFonts.robotoCondensed(
         fontSize: 16,
         fontWeight: FontWeight.w400,
         color: titleLarge?.color,
         letterSpacing: letterSpacingOrNone(0.5),
       );
+
   TextStyle get numberSmall => GoogleFonts.robotoCondensed(
         fontSize: 10,
         fontWeight: FontWeight.w400,

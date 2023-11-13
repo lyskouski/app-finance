@@ -15,15 +15,21 @@ class ListSelector<K extends ListSelectorItem> extends AbstractSelector {
   final List<K> options;
   final Function setState;
   final String? hintText;
+  final String? tooltip;
   final TextStyle? hintStyle;
+  final Color? hintColor;
+  final bool withLabel;
 
   const ListSelector({
     super.key,
     required this.options,
     required this.setState,
-    required this.hintText,
+    this.hintText,
+    this.tooltip,
     this.hintStyle,
+    this.hintColor,
     super.value,
+    this.withLabel = false,
   });
 
   @override
@@ -70,18 +76,17 @@ class ListSelectorState<T extends ListSelector, K extends ListSelectorItem> exte
 
   @override
   Widget buildContent(BuildContext context) {
-    final indent = ThemeHelper.getIndent();
-    final hintStyle = context.textTheme.numberMedium.copyWith(
-      color: context.textTheme.headlineSmall?.color!.withOpacity(0.4),
-      overflow: TextOverflow.ellipsis,
-    );
+    final indent = ThemeHelper.getIndent(1.5);
+    final hintStyle = context.textTheme.tooltipMedium.copyWith(overflow: TextOverflow.ellipsis);
+    final labelStyle = context.textTheme.tooltipSmall;
     K? item = widget.value != null ? widget.options.cast().where((e) => e.equal(widget.value)).firstOrNull : null;
     return SearchAnchor(
       isFullScreen: true,
       searchController: textController,
-      viewHintText: widget.hintText,
+      viewHintText: widget.tooltip ?? widget.hintText,
       headerHintStyle: hintStyle,
       builder: (context, controller) => TapWidget(
+        tooltip: widget.tooltip ?? '',
         onTap: () => onTap(null),
         onFocusChange: (v) => v ? focusController.scrollToFocusedElement(this) : null,
         child: Container(
@@ -92,9 +97,23 @@ class ListSelectorState<T extends ListSelector, K extends ListSelectorItem> exte
             children: [
               Expanded(
                 child: Padding(
-                  padding: EdgeInsets.fromLTRB(indent, indent * 3 / 2, 0, indent * 3 / 2),
+                  padding: EdgeInsets.fromLTRB(
+                    indent / 1.5,
+                    widget.withLabel && item != null ? 1 : indent,
+                    0,
+                    widget.withLabel && item != null ? indent / 2 : indent,
+                  ),
                   child: item != null
-                      ? selectorBuilder(context, item)
+                      ? widget.withLabel
+                          ? Column(
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                TextWrapper(widget.hintText ?? '...', style: labelStyle),
+                                selectorBuilder(context, item),
+                              ],
+                            )
+                          : selectorBuilder(context, item)
                       : Text(
                           widget.hintText ?? '...',
                           style: widget.hintStyle ?? hintStyle,

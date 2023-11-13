@@ -4,6 +4,7 @@
 import 'package:app_finance/_classes/controller/focus_controller.dart';
 import 'package:app_finance/_configs/custom_color_scheme.dart';
 import 'package:app_finance/_configs/custom_text_theme.dart';
+import 'package:app_finance/_configs/theme_helper.dart';
 import 'package:app_finance/_ext/build_context_ext.dart';
 import 'package:app_finance/design/wrapper/focus_wrapper.dart';
 import 'package:flutter/material.dart';
@@ -24,6 +25,7 @@ class SimpleInput extends StatelessWidget {
   final TextEditingController controller;
   final bool obscure;
   final bool withLabel;
+  final Color? hintColor;
 
   SimpleInput({
     super.key,
@@ -32,6 +34,7 @@ class SimpleInput extends StatelessWidget {
     this.setState,
     this.tooltip,
     this.formatter,
+    this.hintColor,
     this.type = TextInputType.text,
     this.obscure = false,
     this.withLabel = false,
@@ -43,9 +46,9 @@ class SimpleInput extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final indent = ThemeHelper.getIndent(1.5);
     final textTheme = context.textTheme;
     final focusController = FocusWrapper.of(context) ?? this.focusController;
-    final hintColor = textTheme.headlineSmall?.color!.withOpacity(0.4);
     return Semantics(
       container: true,
       textField: true,
@@ -68,10 +71,11 @@ class SimpleInput extends StatelessWidget {
           filled: true,
           border: InputBorder.none,
           fillColor: context.colorScheme.fieldBackground,
+          contentPadding: EdgeInsets.fromLTRB(indent / 1.5, withLabel ? 1 : indent, 0, indent),
           hintText: withLabel ? null : tooltip,
-          hintStyle: textTheme.numberMedium.copyWith(color: hintColor),
+          hintStyle: textTheme.tooltipMedium,
           labelText: withLabel ? tooltip : null,
-          labelStyle: textTheme.bodyMedium!.copyWith(color: hintColor),
+          labelStyle: textTheme.tooltipMedium,
         ),
       ),
     );

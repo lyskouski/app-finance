@@ -29,8 +29,14 @@ class IconSelector extends ListSelector {
     super.key,
     required super.setState,
     this.value,
+    super.withLabel,
     super.options = const [],
-  }) : super(value: value.toString(), hintText: AppLocale.labels.iconTooltip);
+    String? hintText,
+  }) : super(
+          value: value.toString(),
+          hintText: hintText ?? AppLocale.labels.iconTooltip,
+          tooltip: AppLocale.labels.iconTooltip,
+        );
 
   @override
   List<IconSelectorItem> get options => IconsExt.getAll()
