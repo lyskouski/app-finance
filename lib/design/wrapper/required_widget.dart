@@ -18,15 +18,28 @@ class RequiredWidget extends StatelessWidget {
     required this.showError,
   });
 
+  Widget _requiredText(TextTheme textTheme, ColorScheme colorScheme) => RichText(
+        maxLines: 1,
+        overflow: TextOverflow.ellipsis,
+        text: TextSpan(
+          style: textTheme.bodyLarge,
+          children: [
+            TextSpan(text: title),
+            TextSpan(
+              text: '*',
+              semanticsLabel: AppLocale.labels.isRequired,
+              style: textTheme.bodyLarge?.copyWith(color: colorScheme.primary),
+            )
+          ],
+        ),
+      );
+
   @override
   Widget build(BuildContext context) {
     final textTheme = context.textTheme;
     final colorScheme = context.colorScheme;
     if (!showError) {
-      return TextWrapper(
-        '$title*',
-        style: textTheme.bodyLarge,
-      );
+      return _requiredText(textTheme, colorScheme);
     }
     return LayoutBuilder(builder: (context, constraints) {
       final indent = ThemeHelper.getIndent();
@@ -37,16 +50,17 @@ class RequiredWidget extends StatelessWidget {
         chunk: [null, ThemeHelper.getTextWidth(Text(AppLocale.labels.isRequired)), 12],
         children: [
           [
-            TextWrapper(
-              '$title*',
-              style: textTheme.bodyLarge,
-            ),
+            _requiredText(textTheme, colorScheme),
           ],
           [
-            TextWrapper(
-              AppLocale.labels.isRequired,
-              style: TextStyle(
-                color: colorScheme.error,
+            Container(
+              alignment: Alignment.centerRight,
+              padding: const EdgeInsets.only(top: 2),
+              child: TextWrapper(
+                AppLocale.labels.isRequired,
+                style: TextStyle(
+                  color: colorScheme.error,
+                ),
               ),
             ),
           ],
