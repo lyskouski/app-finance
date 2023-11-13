@@ -9,7 +9,7 @@
 | Repository Visitors            | 51 (163)    | |
 | Rep. Unique Clones             | 84          | |
 | Average interaction, seconds   | 88          | |
-| Application Installs (Reviews) |             | |
+| Application Usage (Reviews)    |             | |
 | - Windows                      | 8 (1)       | |
 | - Linux                        | 7           | |
 | - macOS                        | 2           | |
@@ -21,18 +21,23 @@
 | Publications                   | 2           | |
 | - Books KENP Read (Sells)      | 420         | |
 | - Medium Views (Claps)         | 2           | |
+| - Medium Followers             |             | |
 | - LinkedIn Views (Likes)       | 2375 (27)   | |
 | - Twitter Views (Retweets)     |             | |
 | - Facebook Actions             |             | |
 | Videos                         | 1           | |
 | - View (Likes)                 | 17 (3)      | |
-| - Subscriptions                | +1          | |
+| - Subscriptions                | 1           | |
 | - Average view duration        | 1:42        | |
 
 
 ## Timeline
 
-### 2023-11-12: [Paper] 
+### 2023-11-13 [Community: Alexey Alter-Pesotskiy] Mobile Automation Newsletter 
+- https://testableapple.com/newsletter/19/
+- [LinkedIn Post](https://www.linkedin.com/feed/update/urn:li:activity:7129545454538625025/)
+
+### 2023-11-12: [Paper] Flutter: BDD testing on steroids with Gherkin
 - https://medium.com/@vlyskouski/flutter-bdd-testing-on-steroids-with-gherkin-50b0b762da7c
 - [LinkedId Post](https://www.linkedin.com/posts/v-lyskouski_flutter-bdd-testing-on-steroids-with-gherkin-activity-7129214717285326848-Rhwt)
 
