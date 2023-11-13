@@ -32,6 +32,7 @@ class BudgetViewPage extends StatefulWidget {
 
 class BudgetViewPageState extends AbstractPageState<BudgetViewPage> with TickerProviderStateMixin {
   late double width;
+  int focus = 0;
 
   @override
   String getTitle() {
@@ -116,6 +117,8 @@ class BudgetViewPageState extends AbstractPageState<BudgetViewPage> with TickerP
             child: TabWidget(
               type: TabType.secondary,
               isLeft: isLeft,
+              focus: focus,
+              callback: (data) => setState(() => focus = data),
               tabs: [
                 Tab(text: AppLocale.labels.billHeadline),
                 Tab(text: AppLocale.labels.budgetLimitHeadline),

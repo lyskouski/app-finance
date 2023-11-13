@@ -34,6 +34,7 @@ class AccountViewPage extends StatefulWidget {
 
 class AccountViewPageState extends AbstractPageState<AccountViewPage> {
   late double width;
+  int focus = 0;
 
   @override
   String getTitle() {
@@ -138,6 +139,8 @@ class AccountViewPageState extends AbstractPageState<AccountViewPage> {
             child: TabWidget(
               type: TabType.secondary,
               isLeft: isLeft,
+              focus: focus,
+              callback: (data) => setState(() => focus = data),
               tabs: [
                 Tab(text: AppLocale.labels.summary),
                 Tab(text: AppLocale.labels.billHeadline),
