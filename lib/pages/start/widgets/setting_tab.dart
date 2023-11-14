@@ -6,7 +6,9 @@ import 'package:app_finance/_classes/herald/app_locale.dart';
 import 'package:app_finance/_classes/herald/app_palette.dart';
 import 'package:app_finance/_classes/herald/app_theme.dart';
 import 'package:app_finance/_classes/herald/app_zoom.dart';
+import 'package:app_finance/_classes/storage/app_data.dart';
 import 'package:app_finance/_classes/storage/app_preferences.dart';
+import 'package:app_finance/_classes/structure/currency/exchange.dart';
 import 'package:app_finance/_classes/structure/def/list_selector_item.dart';
 import 'package:app_finance/_configs/custom_color_scheme.dart';
 import 'package:app_finance/_configs/theme_helper.dart';
@@ -45,6 +47,7 @@ class SettingTabState<T extends SettingTab> extends AbstractTabState<T> {
   late AppZoom zoom;
   late AppPalette palette;
   late AppLocale locale;
+  late AppData state;
   Currency? currency;
   bool isEncrypted = false;
   bool hasEncrypted = false;
@@ -83,6 +86,9 @@ class SettingTabState<T extends SettingTab> extends AbstractTabState<T> {
 
   Future<void> saveCurrency(Currency? value) async {
     await AppPreferences.set(AppPreferences.prefCurrency, value!.code);
+    Exchange.defaultCurrency = value;
+    CurrencyDefaults.defaultCurrency = value;
+    await state.restate();
     setState(() => currency = value);
   }
 
@@ -125,6 +131,7 @@ class SettingTabState<T extends SettingTab> extends AbstractTabState<T> {
     zoom = Provider.of<AppZoom>(context, listen: false);
     palette = Provider.of<AppPalette>(context, listen: false);
     locale = Provider.of<AppLocale>(context, listen: false);
+    state = Provider.of<AppData>(context, listen: true);
     final textTheme = context.textTheme;
     final indent = ThemeHelper.getIndent(2);
     final width = ThemeHelper.getMaxWidth(context, constraints) - 2 * indent;
