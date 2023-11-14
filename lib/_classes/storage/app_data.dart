@@ -100,14 +100,12 @@ class AppData extends ChangeNotifier {
 
   dynamic add(InterfaceAppData value, [String? uuid]) {
     value.uuid = uuid ?? const Uuid().v4();
-    HistoryData.addLog(value.uuid, value, 0.0, value.details);
     _update(null, value);
     return getByUuid(value.uuid!);
   }
 
-  void update(String uuid, dynamic value, [bool createIfMissing = false]) {
+  void update(String uuid, InterfaceAppData value, [bool createIfMissing = false]) {
     var initial = getByUuid(uuid, false);
-    HistoryData.addLog(uuid, value, initial?.details ?? 0.0, value.details);
     if (initial != null || createIfMissing) {
       _update(initial, value);
     }
@@ -129,6 +127,7 @@ class AppData extends ChangeNotifier {
     switch (change.getType()) {
       case AppDataType.accounts:
         _updateAccount(initial as AccountAppData?, change as AccountAppData);
+        HistoryData.addLog(change.uuid, change, initial?.details ?? 0.0, change.details);
         break;
       case AppDataType.bills:
         (change as BillAppData).setState(this);
@@ -137,12 +136,14 @@ class AppData extends ChangeNotifier {
       case AppDataType.budgets:
         (change as BudgetAppData).setState(this);
         _updateBudget(initial as BudgetAppData?, change);
+        HistoryData.addLog(change.uuid, change, initial?.amountLimit ?? 0.0, change.amountLimit);
         break;
       case AppDataType.goals:
         _updateGoal(initial as GoalAppData?, change as GoalAppData);
         break;
       case AppDataType.currencies:
         _updateCurrency(initial as CurrencyAppData?, change as CurrencyAppData);
+        HistoryData.addLog(change.uuid, change, initial?.details ?? 0.0, change.details);
         break;
       case AppDataType.invoice:
         (change as InvoiceAppData).setState(this);
@@ -257,7 +258,12 @@ class AppData extends ChangeNotifier {
 
   InterfaceIterator getStream<M extends InterfaceAppData>(AppDataType property,
           {bool inverse = true, double? boundary, Function? filter}) =>
-      _data[property]!.origin.toStream<M>(inverse, transform: getByUuid, boundary: boundary, filter: filter);
+      _data[property]!.origin.toStream<M>(
+            inverse,
+            transform: getByUuid,
+            boundary: boundary,
+            filter: (M v) => v.hidden || filter?.call(v) == true,
+          );
 
   List<dynamic> getActualList(AppDataType property, [bool isClone = true]) {
     return (_data[property]?.listActual ?? [])

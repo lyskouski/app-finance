@@ -202,6 +202,7 @@
             "type": "String"
         }
     },
+    "errorExpired": "Termin d́ziejańnia Karty skončyŭsia",
     "errorNegative": "Nia moža być admoŭnym! Kali laska, vypraŭcie pamylku",
     "example": "Pryklad",
     "expand": "Razharnuć Razd́ziel",

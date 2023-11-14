@@ -202,6 +202,7 @@
             "type": "String"
         }
     },
+    "errorExpired": "Card expired",
     "errorNegative": "Cannot be negative! Please, fix the error",
     "example": "Example",
     "expand": "Expand Section",

@@ -17,6 +17,7 @@ abstract class AbstractAppData implements InterfaceAppData {
   @override
   String title;
   double progress;
+  @override
   bool hidden;
   String? description;
   @override

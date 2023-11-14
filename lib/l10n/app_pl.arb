@@ -202,6 +202,7 @@
             "type": "String"
         }
     },
+    "errorExpired": "Karta wygasła",
     "errorNegative": "Nie może być ujemna! Proszę, napraw ten błąd",
     "example": "Przykład",
     "expand": "Rozwiń sekcję",

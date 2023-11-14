@@ -90,11 +90,21 @@ class AccountAppData extends AbstractAppData {
   String get detailsFormatted => (super.details as double).toCurrency(currency: currency, withPattern: false);
 
   @override
-  Widget? get error =>
-      details < 0 && ![AppAccountType.credit.toString(), AppAccountType.creditCard.toString()].contains(type)
-          ? Tooltip(
-              message: AppLocale.labels.errorNegative,
-              child: Icon(Icons.warning, semanticLabel: AppLocale.labels.errorNegative),
-            )
-          : null;
+  Widget? get error {
+    String? error;
+    final isCredit = [AppAccountType.credit.toString(), AppAccountType.creditCard.toString()].contains(type);
+    final isCard = [AppAccountType.debitCard.toString(), AppAccountType.creditCard.toString()].contains(type);
+    if (details < 0 && !isCredit) {
+      error = AppLocale.labels.errorNegative;
+    } else if (isCard && closedAt.isBefore(DateTime.now())) {
+      error = AppLocale.labels.errorExpired;
+    }
+
+    return error == null
+        ? null
+        : Tooltip(
+            message: error,
+            child: Icon(Icons.warning, semanticLabel: error),
+          );
+  }
 }
