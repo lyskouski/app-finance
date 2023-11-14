@@ -10,6 +10,7 @@ abstract interface class InterfaceAppData {
   Currency? currency;
   IconData? icon;
   MaterialColor? color;
+  bool hidden = false;
 
   String get title;
 
