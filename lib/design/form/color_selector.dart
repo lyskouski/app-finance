@@ -3,6 +3,7 @@
 
 import 'package:app_finance/_classes/herald/app_locale.dart';
 import 'package:app_finance/_configs/custom_color_scheme.dart';
+import 'package:app_finance/_configs/custom_text_theme.dart';
 import 'package:app_finance/_ext/build_context_ext.dart';
 import 'package:app_finance/_ext/color_ext.dart';
 import 'package:app_finance/design/form/abstract_selector.dart';
@@ -14,11 +15,13 @@ class ColorSelector extends AbstractSelector {
   @override
   // ignore: overridden_fields
   final MaterialColor? value;
+  final bool withLabel;
 
   const ColorSelector({
     super.key,
     required this.setState,
     this.value,
+    this.withLabel = false,
   }) : super(value: value);
 
   @override
@@ -78,6 +81,8 @@ class ColorSelectorState extends AbstractSelectorState<ColorSelector> {
         filled: true,
         border: InputBorder.none,
         fillColor: widget.value ?? context.colorScheme.fieldBackground,
+        hintText: widget.withLabel ? AppLocale.labels.color : null,
+        hintStyle: context.textTheme.tooltipMedium,
         suffixIcon: GestureDetector(
           child: const Icon(Icons.color_lens),
         ),

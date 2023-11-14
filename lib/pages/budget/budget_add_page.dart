@@ -8,13 +8,11 @@ import 'package:app_finance/_classes/storage/app_preferences.dart';
 import 'package:app_finance/_configs/custom_color_scheme.dart';
 import 'package:app_finance/_configs/theme_helper.dart';
 import 'package:app_finance/_ext/build_context_ext.dart';
+import 'package:app_finance/design/wrapper/input_wrapper.dart';
+import 'package:app_finance/design/wrapper/text_wrapper.dart';
 import 'package:app_finance/pages/_interfaces/abstract_add_page.dart';
-import 'package:app_finance/design/form/color_selector.dart';
-import 'package:app_finance/design/form/currency_selector.dart';
 import 'package:app_finance/design/button/full_sized_button_widget.dart';
-import 'package:app_finance/design/form/icon_selector.dart';
 import 'package:app_finance/design/form/simple_input.dart';
-import 'package:app_finance/design/wrapper/required_widget.dart';
 import 'package:app_finance/design/wrapper/row_widget.dart';
 import 'package:app_finance/design/wrapper/single_scroll_wrapper.dart';
 import 'package:flutter/material.dart';
@@ -126,44 +124,38 @@ class BudgetAddPageState<T extends BudgetAddPage> extends AbstractAddPageState<B
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            RequiredWidget(title: AppLocale.labels.title, showError: hasError && title.text.isEmpty),
-            SimpleInput(
+            InputWrapper.text(
+              isRequired: true,
               controller: title,
+              title: AppLocale.labels.title,
               tooltip: AppLocale.labels.titleBudgetTooltip,
+              showError: hasError && title.text.isEmpty,
             ),
-            ThemeHelper.hIndent2x,
             RowWidget(
               indent: indent,
               maxWidth: width + indent,
               chunk: const [0.5, 0.5],
               children: [
                 [
-                  Text(
-                    AppLocale.labels.icon,
-                    style: textTheme.bodyLarge,
-                  ),
-                  IconSelector(
+                  InputWrapper.icon(
                     value: icon,
-                    setState: (value) => setState(() => icon = value),
+                    title: AppLocale.labels.icon,
+                    onChange: (value) => setState(() => icon = value),
                   ),
                 ],
                 [
-                  Text(
-                    AppLocale.labels.color,
-                    style: textTheme.bodyLarge,
-                  ),
-                  ColorSelector(
+                  InputWrapper.color(
                     value: color,
-                    setState: (value) => setState(() => color = value),
+                    title: AppLocale.labels.color,
+                    onChange: (value) => setState(() => color = value),
                   ),
                 ],
               ],
             ),
-            ThemeHelper.hIndent,
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Text(
+                TextWrapper(
                   AppLocale.labels.budgetLimit,
                   style: textTheme.bodyLarge,
                 ),
@@ -187,6 +179,7 @@ class BudgetAddPageState<T extends BudgetAddPage> extends AbstractAddPageState<B
               ],
             ),
             SimpleInput(
+              key: ValueKey(AppLocale.labels.budgetLimit),
               controller: budgetLimit,
               type: const TextInputType.numberWithOptions(decimal: true),
               tooltip: AppLocale.labels.balanceTooltip,
@@ -230,17 +223,11 @@ class BudgetAddPageState<T extends BudgetAddPage> extends AbstractAddPageState<B
               }),
               ThemeHelper.hIndent2x,
             ],
-            Text(
-              AppLocale.labels.currency,
-              style: textTheme.bodyLarge,
-            ),
-            BaseCurrencySelector(
+            InputWrapper.currency(
               value: currency?.code,
-              textTheme: context.textTheme,
-              colorScheme: context.colorScheme,
-              update: (value) => setState(() => currency = value),
+              title: AppLocale.labels.currency,
+              onChange: (value) => setState(() => currency = value),
             ),
-            ThemeHelper.hIndent2x,
           ],
         ),
       ),

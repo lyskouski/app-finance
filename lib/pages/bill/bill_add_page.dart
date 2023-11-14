@@ -21,6 +21,7 @@ class BillAddPage extends StatefulWidget {
 
 class BillAddPageState<T extends BillAddPage> extends AbstractPageState<T> {
   BillPageInject? inject;
+  int focus = 1;
 
   @override
   Widget buildButton(BuildContext context, BoxConstraints constraints) =>
@@ -45,7 +46,8 @@ class BillAddPageState<T extends BillAddPage> extends AbstractPageState<T> {
       type: TabType.secondary,
       hasIndent: false,
       isLeft: isLeft,
-      focus: 1,
+      focus: focus,
+      callback: (data) => setState(() => focus = data),
       tabs: [
         Tab(
           icon: const Icon(Icons.insert_invitation),

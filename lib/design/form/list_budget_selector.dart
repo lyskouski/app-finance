@@ -21,6 +21,8 @@ class ListBudgetSelector extends ListAccountSelector<ListBudgetSelectorItem> {
     required super.width,
     required super.hintText,
     super.value,
+    super.tooltip,
+    super.withLabel,
   }) : super();
 
   @override

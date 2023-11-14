@@ -6,6 +6,7 @@ import 'package:app_finance/_classes/herald/app_locale.dart';
 import 'package:app_finance/_configs/theme_helper.dart';
 import 'package:app_finance/_ext/build_context_ext.dart';
 import 'package:app_finance/design/form/simple_input.dart';
+import 'package:app_finance/design/wrapper/input_wrapper.dart';
 import 'package:app_finance/design/wrapper/row_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_currency_picker/flutter_currency_picker.dart';
@@ -78,32 +79,28 @@ class CurrencyExchangeInputState extends State<CurrencyExchangeInput> {
                         color: context.colorScheme.primary,
                       )),
                   Padding(
-                    padding: EdgeInsets.fromLTRB(widget.indent, 0, widget.indent, widget.indent),
+                    padding: EdgeInsets.fromLTRB(widget.indent, 0, widget.indent, 0),
                     child: RowWidget(
                       indent: widget.indent,
                       maxWidth: widget.width - 2 * widget.indent - 2,
                       chunk: const [0.5, null],
                       children: [
                         [
-                          Text(
-                            AppLocale.labels.conversion,
-                            style: textTheme.bodyLarge,
-                          ),
-                          SimpleInput(
+                          InputWrapper.text(
+                            title: AppLocale.labels.conversion,
                             controller: scope.rate,
                             tooltip: '${scope.to} ${AppLocale.labels.conversion}',
-                            type: const TextInputType.numberWithOptions(decimal: true),
-                          )
+                            inputType: const TextInputType.numberWithOptions(decimal: true),
+                            formatter: [SimpleInputFormatter.filterDouble],
+                          ),
                         ],
                         [
-                          Text(
-                            AppLocale.labels.conversionMessage(scope.to),
-                            style: textTheme.bodyLarge,
-                          ),
-                          SimpleInput(
+                          InputWrapper.text(
+                            title: AppLocale.labels.conversionMessage(scope.to),
                             controller: scope.sum,
                             tooltip: '${scope.from} ${AppLocale.labels.conversionMessage(scope.to)}',
-                            type: const TextInputType.numberWithOptions(decimal: true),
+                            inputType: const TextInputType.numberWithOptions(decimal: true),
+                            formatter: [SimpleInputFormatter.filterDouble],
                           ),
                         ],
                       ],

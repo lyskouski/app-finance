@@ -13,15 +13,13 @@ import 'package:app_finance/_configs/account_type.dart';
 import 'package:app_finance/_configs/screen_helper.dart';
 import 'package:app_finance/_configs/theme_helper.dart';
 import 'package:app_finance/_ext/build_context_ext.dart';
+import 'package:app_finance/design/wrapper/input_wrapper.dart';
 import 'package:app_finance/pages/bill/widgets/interface_bill_page_inject.dart';
 import 'package:app_finance/design/form/currency_exchange_input.dart';
-import 'package:app_finance/design/form/currency_selector.dart';
 import 'package:app_finance/design/form/date_time_input.dart';
 import 'package:app_finance/design/button/full_sized_button_widget.dart';
 import 'package:app_finance/design/form/list_account_selector.dart';
-import 'package:app_finance/design/form/list_budget_selector.dart';
 import 'package:app_finance/design/form/simple_input.dart';
-import 'package:app_finance/design/wrapper/required_widget.dart';
 import 'package:app_finance/design/wrapper/row_widget.dart';
 import 'package:app_finance/design/wrapper/single_scroll_wrapper.dart';
 import 'package:flutter/material.dart';
@@ -68,6 +66,11 @@ class ExpensesTabState<T extends ExpensesTab> extends State<T> {
   DateTime? createdAt;
   bool hasErrors = false;
   bool isPushed = false;
+  late List<ListAccountSelectorItem> accountList = widget.state
+      .getList(AppDataType.accounts)
+      .where((e) => ![AppAccountType.deposit.toString(), AppAccountType.credit.toString()].contains(e.type))
+      .map((item) => ListAccountSelectorItem(item: item))
+      .toList();
 
   @override
   void initState() {
@@ -165,75 +168,63 @@ class ExpensesTabState<T extends ExpensesTab> extends State<T> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            RequiredWidget(
-              title: AppLocale.labels.account,
-              showError: hasErrors && account == null,
-            ),
-            ListAccountSelector(
+            InputWrapper(
+              type: NamedInputType.accountSelector,
+              isRequired: true,
               value: account,
-              hintText: AppLocale.labels.titleAccountTooltip,
+              title: AppLocale.labels.account,
+              tooltip: AppLocale.labels.titleAccountTooltip,
+              showError: hasErrors && account == null,
               state: widget.state,
-              options: widget.state
-                  .getList(AppDataType.accounts)
-                  .where((e) => ![AppAccountType.deposit.toString(), AppAccountType.credit.toString()].contains(e.type))
-                  .map((item) => ListAccountSelectorItem(item: item))
-                  .toList(),
-              setState: (value) => setState(() {
+              options: accountList,
+              onChange: (value) => setState(() {
                 account = value;
                 accountCurrency = widget.state.getByUuid(value).currency;
                 currency = accountCurrency;
               }),
               width: width,
             ),
-            ThemeHelper.hIndent2x,
-            RequiredWidget(
+            InputWrapper(
+              type: NamedInputType.budgetSelector,
+              isRequired: true,
+              value: budget,
               title: AppLocale.labels.budget,
               showError: hasErrors && budget == null,
-            ),
-            ListBudgetSelector(
-              value: budget,
-              hintText: AppLocale.labels.titleBudgetTooltip,
+              tooltip: AppLocale.labels.titleBudgetTooltip,
               state: widget.state,
-              setState: (value) => setState(() {
+              onChange: (value) => setState(() {
                 budget = value;
                 budgetCurrency = widget.state.getByUuid(value).currency;
                 currency ??= budgetCurrency;
               }),
               width: width,
             ),
-            ThemeHelper.hIndent2x,
             RowWidget(
               indent: indent,
               maxWidth: width + indent,
               chunk: const [125, null],
               children: [
                 [
-                  Text(
-                    AppLocale.labels.currency,
-                    style: textTheme.bodyLarge,
-                  ),
-                  CodeCurrencySelector(
+                  InputWrapper.currency(
+                    type: NamedInputType.currencyShort,
                     value: currency?.code,
-                    textTheme: textTheme,
-                    colorScheme: context.colorScheme,
-                    update: (value) => setState(() => currency = value),
+                    title: AppLocale.labels.currency,
+                    onChange: (value) => setState(() => currency = value),
                   ),
                 ],
                 [
-                  RequiredWidget(
+                  InputWrapper.text(
                     title: AppLocale.labels.expense,
-                    showError: hasErrors && bill.text.isEmpty,
-                  ),
-                  SimpleInput(
+                    isRequired: true,
                     controller: bill,
-                    type: const TextInputType.numberWithOptions(decimal: true),
+                    showError: hasErrors && bill.text.isEmpty,
                     tooltip: AppLocale.labels.billSetTooltip,
+                    inputType: const TextInputType.numberWithOptions(decimal: true),
                     formatter: [SimpleInputFormatter.filterDouble],
                   ),
                 ],
               ],
             ),
-            ThemeHelper.hIndent2x,
             CurrencyExchangeInput(
               width: width + indent,
               indent: indent,
@@ -241,15 +232,11 @@ class ExpensesTabState<T extends ExpensesTab> extends State<T> {
               controller: exchange,
               source: [accountCurrency, budgetCurrency],
             ),
-            Text(
-              AppLocale.labels.description,
-              style: textTheme.bodyLarge,
-            ),
-            SimpleInput(
+            InputWrapper.text(
+              title: AppLocale.labels.description,
               controller: description,
               tooltip: AppLocale.labels.descriptionTooltip,
             ),
-            ThemeHelper.hIndent2x,
             Text(
               AppLocale.labels.expenseDateTime,
               style: textTheme.bodyLarge,

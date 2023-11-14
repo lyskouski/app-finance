@@ -8,16 +8,12 @@ import 'package:app_finance/_classes/controller/focus_controller.dart';
 import 'package:app_finance/_classes/storage/app_preferences.dart';
 import 'package:app_finance/_configs/theme_helper.dart';
 import 'package:app_finance/_ext/build_context_ext.dart';
+import 'package:app_finance/design/wrapper/input_wrapper.dart';
+import 'package:app_finance/design/wrapper/text_wrapper.dart';
 import 'package:app_finance/pages/_interfaces/abstract_add_page.dart';
-import 'package:app_finance/design/form/color_selector.dart';
-import 'package:app_finance/design/form/currency_selector.dart';
 import 'package:app_finance/design/form/date_time_input.dart';
 import 'package:app_finance/design/button/full_sized_button_widget.dart';
-import 'package:app_finance/design/form/icon_selector.dart';
-import 'package:app_finance/design/form/list_selector.dart';
-import 'package:app_finance/design/form/month_year_input.dart';
 import 'package:app_finance/design/form/simple_input.dart';
-import 'package:app_finance/design/wrapper/required_widget.dart';
 import 'package:app_finance/design/wrapper/row_widget.dart';
 import 'package:app_finance/design/wrapper/single_scroll_wrapper.dart';
 import 'package:flutter/material.dart';
@@ -97,19 +93,19 @@ class AccountAddPageState<T extends AccountAddPage> extends AbstractAddPageState
     if (currency != null) {
       CurrencyProvider.pin(currency!);
     }
-    super.state.add(AccountAppData(
-          title: title.text,
-          type: type ?? AppAccountType.cash.toString(),
-          description: description.text,
-          details: double.tryParse(balance.text) ?? 0.0,
-          progress: 1.0,
-          color: color ?? Colors.red,
-          currency: currency,
-          hidden: false,
-          icon: icon,
-          closedAt: validTillDate,
-          createdAt: balanceUpdateDate,
-        ));
+    state.add(AccountAppData(
+      title: title.text,
+      type: type ?? AppAccountType.cash.toString(),
+      description: description.text,
+      details: double.tryParse(balance.text) ?? 0.0,
+      progress: 1.0,
+      color: color ?? Colors.red,
+      currency: currency,
+      hidden: false,
+      icon: icon,
+      closedAt: validTillDate,
+      createdAt: balanceUpdateDate,
+    ));
   }
 
   @override
@@ -140,103 +136,76 @@ class AccountAddPageState<T extends AccountAddPage> extends AbstractAddPageState
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            RequiredWidget(
-              title: AppLocale.labels.accountType,
-              showError: hasError && type == null,
-            ),
-            ListSelector(
+            InputWrapper.select(
+              isRequired: true,
               value: type,
-              hintText: AppLocale.labels.accountTypeTooltip,
+              title: AppLocale.labels.accountType,
+              tooltip: AppLocale.labels.accountTypeTooltip,
+              showError: hasError && type == null,
               options: AccountType.getList(),
-              setState: (value) => setState(() => type = value),
+              onChange: (value) => setState(() => type = value),
             ),
-            ThemeHelper.hIndent2x,
-            RequiredWidget(
+            InputWrapper.text(
+              isRequired: true,
+              controller: title,
               title: AppLocale.labels.title,
+              tooltip: AppLocale.labels.titleAccountTooltip,
               showError: hasError && title.text.isEmpty,
             ),
-            SimpleInput(
-              controller: title,
-              tooltip: AppLocale.labels.titleAccountTooltip,
-            ),
-            ThemeHelper.hIndent2x,
             RowWidget(
               indent: indent,
               maxWidth: width + indent,
               chunk: const [80, 80, null],
               children: [
                 [
-                  Text(
-                    AppLocale.labels.icon,
-                    style: textTheme.bodyLarge,
-                  ),
-                  IconSelector(
+                  InputWrapper.icon(
                     value: icon,
-                    setState: (value) => setState(() => icon = value),
+                    title: AppLocale.labels.icon,
+                    onChange: (value) => setState(() => icon = value),
                   ),
                 ],
                 [
-                  Text(
-                    AppLocale.labels.color,
-                    style: textTheme.bodyLarge,
-                  ),
-                  ColorSelector(
+                  InputWrapper.color(
                     value: color,
-                    setState: (value) => setState(() => color = value),
+                    title: AppLocale.labels.color,
+                    onChange: (value) => setState(() => color = value),
                   ),
                 ],
                 [
-                  Text(
-                    AppLocale.labels.details,
-                    style: textTheme.bodyLarge,
-                  ),
-                  SimpleInput(
+                  InputWrapper.text(
                     controller: description,
+                    title: AppLocale.labels.details,
                     tooltip: AppLocale.labels.detailsTooltip,
                   ),
                 ],
               ],
             ),
-            ThemeHelper.hIndent2x,
-            Text(
-              AppLocale.labels.currency,
-              style: textTheme.bodyLarge,
-            ),
-            BaseCurrencySelector(
+            InputWrapper.currency(
               value: currency?.code,
-              textTheme: context.textTheme,
-              colorScheme: context.colorScheme,
-              update: (value) => setState(() => currency = value),
+              title: AppLocale.labels.currency,
+              tooltip: AppLocale.labels.currencyTooltip,
+              onChange: (value) => setState(() => currency = value),
             ),
-            ThemeHelper.hIndent2x,
-            if (!AccountType.contains(type ?? '', [AppAccountType.account, AppAccountType.cash])) ...[
-              Text(
-                AppLocale.labels.validTillDate,
-                style: textTheme.bodyLarge,
-              ),
-              MonthYearInput(
+            if (!AccountType.contains(type ?? '', [AppAccountType.account, AppAccountType.cash]))
+              InputWrapper(
+                type: NamedInputType.ymSelector,
+                title: AppLocale.labels.validTillDate,
                 value: validTillDate,
-                setState: (value) => setState(() => validTillDate = value),
+                onChange: (value) => setState(() => validTillDate = value),
               ),
-              ThemeHelper.hIndent2x,
-            ],
-            Text(
-              AppLocale.labels.balance,
-              style: textTheme.bodyLarge,
-            ),
-            SimpleInput(
-              controller: balance,
-              type: const TextInputType.numberWithOptions(decimal: true),
+            InputWrapper.text(
+              title: AppLocale.labels.balance,
               tooltip: AppLocale.labels.balanceTooltip,
+              controller: balance,
+              inputType: const TextInputType.numberWithOptions(decimal: true),
               formatter: [
                 SimpleInputFormatter.filterDouble,
               ],
             ),
-            ThemeHelper.hIndent2x,
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Text(
+                TextWrapper(
                   AppLocale.labels.balanceDate,
                   style: textTheme.bodyLarge,
                 ),

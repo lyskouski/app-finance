@@ -4,8 +4,10 @@
 import 'package:app_finance/_classes/herald/app_locale.dart';
 import 'package:app_finance/_configs/custom_color_scheme.dart';
 import 'package:app_finance/_configs/custom_text_theme.dart';
+import 'package:app_finance/_configs/theme_helper.dart';
 import 'package:app_finance/_ext/build_context_ext.dart';
 import 'package:app_finance/design/form/abstract_selector.dart';
+import 'package:app_finance/design/wrapper/text_wrapper.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:month_picker_dialog/month_picker_dialog.dart';
@@ -15,11 +17,15 @@ class MonthYearInput extends AbstractSelector {
   @override
   // ignore: overridden_fields
   final DateTime? value;
+  final bool withLabel;
+  final String? labelText;
 
   const MonthYearInput({
     super.key,
     required this.setState,
     required this.value,
+    this.withLabel = false,
+    this.labelText,
   });
 
   @override
@@ -47,19 +53,38 @@ class MonthYearInputState extends AbstractSelectorState<MonthYearInput> {
 
   @override
   Widget buildContent(BuildContext context) {
-    final style = context.textTheme.numberMedium;
+    final indent = ThemeHelper.getIndent();
+    Widget title = widget.value != null
+        ? TextWrapper(
+            DateFormat.yM(AppLocale.code).format(widget.value!),
+            style: context.textTheme.numberMedium,
+          )
+        : TextWrapper(
+            AppLocale.labels.dateTooltip,
+            style: context.textTheme.tooltipMedium,
+          );
     return Container(
       color: context.colorScheme.fieldBackground,
       child: ListTile(
+        minVerticalPadding: 0,
+        contentPadding: EdgeInsets.fromLTRB(
+          indent,
+          widget.value != null && widget.withLabel ? 0 : 1,
+          0,
+          widget.value != null && widget.withLabel ? 2 : 1,
+        ),
         title: widget.value != null
-            ? Text(
-                DateFormat.yM(AppLocale.code).format(widget.value!),
-                style: style,
-              )
-            : Text(
-                AppLocale.labels.dateTooltip,
-                style: style.copyWith(color: style.color?.withOpacity(0.4)),
-              ),
+            ? widget.withLabel
+                ? Column(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      TextWrapper(widget.labelText ?? '...', style: context.textTheme.tooltipSmall),
+                      title,
+                    ],
+                  )
+                : title
+            : title,
         onTap: () => onTap(context),
       ),
     );
