@@ -202,6 +202,7 @@
             "type": "String"
         }
     },
+    "errorExpired": "Carte expirée",
     "errorNegative": "Ne peut être négatif ! Veuillez corriger l'erreur",
     "example": "Exemple",
     "expand": "Développer la section",
