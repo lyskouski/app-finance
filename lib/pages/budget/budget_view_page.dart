@@ -70,12 +70,13 @@ class BudgetViewPageState extends AbstractPageState<BudgetViewPage> with TickerP
   }
 
   Widget buildListWidget(item, BuildContext context) {
+    final value = (item.delta as double).toCurrency(currency: item.currency, withPattern: false);
     return BaseLineWidget(
       uuid: '',
       title: '',
       description: (item.timestamp as DateTime).yMEd(),
       progress: 1.0,
-      details: (item.delta as double).toCurrency(currency: item.currency, withPattern: false),
+      details: item.delta > 0 ? '+$value' : value,
       color: Colors.transparent,
       width: width,
     );
