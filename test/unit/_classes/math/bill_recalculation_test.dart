@@ -9,11 +9,13 @@ import 'package:app_finance/_classes/structure/budget_app_data.dart';
 import 'package:app_finance/_classes/structure/currency/exchange.dart';
 import 'package:app_finance/_classes/storage/app_data.dart';
 import 'package:dart_class_wrapper/gen/generate_with_method_setters.dart';
+import 'package:flutter_currency_picker/flutter_currency_picker.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/annotations.dart';
 
-@GenerateWithMethodSetters([BillRecalculation])
+@GenerateWithMethodSetters([BillRecalculation, Exchange])
 import 'bill_recalculation_test.wrapper.dart';
+
 @GenerateNiceMocks([MockSpec<AppData>()])
 import 'bill_recalculation_test.mocks.dart';
 
@@ -32,7 +34,7 @@ void main() {
         initial: billMock.clone(),
         change: billMock.clone(),
       );
-      object.exchange = Exchange(store: MockAppData());
+      object.exchange = WrapperExchange(store: MockAppData());
     });
 
     test('getDelta (UnimplementedError)', () {
@@ -212,6 +214,42 @@ void main() {
           expect(change.progress, v.result.changeBudgetProgress);
         });
       }
+    });
+
+    test('updateBudget with Currency change', () {
+      object.initial!.details = 100.0;
+      object.initial!.currency = (
+        code: 'USD',
+        name: CurrencyDefaults.labels.currencyUSD,
+        symbol: '\$',
+        flag: '🇺🇸',
+        decimalDigits: 2,
+        thousandsSeparator: ',',
+        decimalSeparator: '.',
+        hasSpace: false,
+        symbolOnLeft: true,
+      );
+      object.change.details = 100.0;
+      object.change.currency = (
+        code: 'EUR',
+        name: CurrencyDefaults.labels.currencyEUR,
+        symbol: '€',
+        flag: '🇪🇺',
+        decimalDigits: 2,
+        thousandsSeparator: ' ',
+        decimalSeparator: ',',
+        hasSpace: true,
+        symbolOnLeft: false,
+      );
+      final mock = WrapperBillRecalculation(
+        initial: object.initial,
+        change: object.change,
+      )..exchange = object.exchange;
+      (object.exchange as WrapperExchange).mockReform =
+          (amount, Currency? from, Currency? to) => (amount ?? 0.0) * (from?.code == 'USD' ? 2 : 1);
+      final budget = BudgetAppData(title: '', amount: 100);
+      mock.updateBudget(budget, budget);
+      expect(budget.amount, 0);
     });
   });
 }
