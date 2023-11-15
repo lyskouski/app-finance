@@ -1,6 +1,8 @@
 // Copyright 2023 The terCAD team. All rights reserved.
 // Use of this source code is governed by a CC BY-NC-ND 4.0 license that can be found in the LICENSE file.
 
+import 'dart:async';
+
 import 'package:app_finance/_classes/herald/app_locale.dart';
 import 'package:app_finance/_classes/herald/app_palette.dart';
 import 'package:app_finance/_classes/herald/app_purchase.dart';
@@ -42,6 +44,7 @@ import 'package:app_finance/pages/start/start_page.dart';
 import 'package:app_finance/pages/subscription/subscription_page.dart';
 import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_currency_picker/flutter_currency_picker.dart';
@@ -50,56 +53,57 @@ import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 void main() async {
-  WidgetsFlutterBinding.ensureInitialized();
   final platform = DefaultFirebaseOptions.currentPlatform;
-  if (platform != null) {
-    await Firebase.initializeApp(
-      options: DefaultFirebaseOptions.currentPlatform,
+  runZonedGuarded<Future<void>>(() async {
+    WidgetsFlutterBinding.ensureInitialized();
+    if (platform != null) {
+      await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
+      FirebaseAnalytics.instance.logAppOpen();
+      PlatformDispatcher.instance.onError = (error, stack) {
+        FirebaseAnalytics.instance.logEvent(
+          name: 'platform-error',
+          parameters: {'error': error.toString(), 'trace': stack.toString()},
+        );
+        return true;
+      };
+      FlutterError.onError = FirebaseCrashlytics.instance.recordFlutterFatalError;
+    }
+    AppPreferences.pref = await SharedPreferences.getInstance();
+    CurrencyDefaults.cache = AppPreferences.pref;
+    final appSync = AppSync();
+    runApp(
+      MultiProvider(
+        providers: [
+          ChangeNotifierProvider<AppSync>(
+            create: (_) => appSync,
+          ),
+          ChangeNotifierProvider<AppData>(
+            create: (_) => AppData(appSync),
+          ),
+          ChangeNotifierProvider<AppTheme>(
+            create: (_) => AppTheme(ThemeMode.system),
+          ),
+          ChangeNotifierProvider<AppLocale>(
+            create: (_) => AppLocale(),
+          ),
+          ChangeNotifierProvider<AppZoom>(
+            create: (_) => AppZoom(),
+          ),
+          ChangeNotifierProvider<AppPalette>(
+            create: (_) => AppPalette(),
+          ),
+          ChangeNotifierProvider<AppPurchase>(
+            create: (_) => AppPurchase(),
+          ),
+        ],
+        child: MyApp(platform: platform),
+      ),
     );
-    FirebaseAnalytics.instance.logAppOpen();
-    PlatformDispatcher.instance.onError = (error, stack) {
-      FirebaseAnalytics.instance.logEvent(
-        name: 'platform-error',
-        parameters: {'error': error.toString(), 'trace': stack.toString()},
-      );
-      return true;
-    };
-    FlutterError.onError = (details) {
-      FlutterError.presentError(details);
-      FirebaseAnalytics.instance.logEvent(name: 'flutter-error', parameters: {'error': details.toString()});
-    };
-  }
-  AppPreferences.pref = await SharedPreferences.getInstance();
-  CurrencyDefaults.cache = AppPreferences.pref;
-  final appSync = AppSync();
-  runApp(
-    MultiProvider(
-      providers: [
-        ChangeNotifierProvider<AppSync>(
-          create: (_) => appSync,
-        ),
-        ChangeNotifierProvider<AppData>(
-          create: (_) => AppData(appSync),
-        ),
-        ChangeNotifierProvider<AppTheme>(
-          create: (_) => AppTheme(ThemeMode.system),
-        ),
-        ChangeNotifierProvider<AppLocale>(
-          create: (_) => AppLocale(),
-        ),
-        ChangeNotifierProvider<AppZoom>(
-          create: (_) => AppZoom(),
-        ),
-        ChangeNotifierProvider<AppPalette>(
-          create: (_) => AppPalette(),
-        ),
-        ChangeNotifierProvider<AppPurchase>(
-          create: (_) => AppPurchase(),
-        ),
-      ],
-      child: MyApp(platform: platform),
-    ),
-  );
+  }, (error, stack) {
+    if (platform != null) {
+      FirebaseCrashlytics.instance.recordError(error, stack, fatal: true);
+    }
+  });
 }
 
 class MyApp extends StatefulWidget {

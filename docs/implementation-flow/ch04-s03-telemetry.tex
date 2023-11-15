@@ -26,7 +26,12 @@ FlutterFire CLI  via \q{dart pub global activate flutterfire\_cli} and \q{npm in
 notifications like that (add \q{bin}-folder to PATH global variable, \cref{img:fs-windows-path}):
 
 \begin{lstlisting}[language=terminal]
+# Notification for Windows
 Warning: Pub installs executables into C:\Users\...\AppData\Local\Pub\Cache\bin, which is not on your path.
+# For Linux
+Warning: Pub installs executables into $HOME/.pub-cache/bin, which is not on your path.
+You can fix that by adding this to your shell's config file (.bashrc, .bash_profile, etc.):
+  export PATH="$PATH":"$HOME/.pub-cache/bin"
 \end{lstlisting}
 
 \noindent By triggering sequence of \q{firebase login} and \q{flutterfire configure} from a command line 
@@ -185,3 +190,21 @@ dependencies {
 }
 \end{lstlisting}
 }
+
+\noindent In addition to monitoring usage statistics, the system can also track and log errors that occur during the 
+operation or execution of a program. This includes capturing information about the type and source of errors, 
+allowing for effective debugging and troubleshooting. Error tracking provides valuable insights into potential issues, 
+aiding developers in identifying and addressing problems. It can be enabled via \q{firebase\_crashlytics}-package:
+
+\begin{lstlisting}
+void main() async {
+  runZonedGuarded<Future<void>>(() async {
+    await Firebase.initializeApp();
+    FlutterError.onError =
+      FirebaseCrashlytics.instance.recordFlutterFatalError;
+    // ... other stuff
+  }, (error, stack) =>
+    FirebaseCrashlytics.instance.recordError(error,stack,fatal:true)
+  );
+}
+\end{lstlisting}

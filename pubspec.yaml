@@ -53,6 +53,7 @@ dependencies:
   flutter_swipe_action_cell: ^3.1.2
   flutter_currency_picker: ^1.1.7
   in_app_purchase: ^3.1.11
+  firebase_crashlytics: ^3.4.4
 
 dev_dependencies:
   flutter_test:

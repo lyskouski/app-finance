@@ -39,6 +39,7 @@ class DefaultFirebaseOptions {
     projectId: 'fingrom',
     authDomain: 'fingrom.firebaseapp.com',
     storageBucket: 'fingrom.appspot.com',
+    measurementId: 'G-ZLKVBF1H4V',
   );
 
   static const FirebaseOptions android = FirebaseOptions(
