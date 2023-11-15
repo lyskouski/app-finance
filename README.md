@@ -1,3 +1,5 @@
+[English] [[Deutsch]](./README_de.md)
+
 # ![Fingrom Logo](./docs/design-flow/logo/main.svg) Financial Accounting Application
 [![License: CC BY-NC-ND 4.0](https://img.shields.io/badge/License-CC_BY--NC--ND_4.0-lightgrey.svg)](https://creativecommons.org/licenses/by-nc-nd/4.0/) 
 [![Check Status](https://github.com/lyskouski/app-finance/actions/workflows/push_to_main.yml/badge.svg?branch=main)](https://github.com/lyskouski/app-finance/actions/workflows/push_to_main.yml)
@@ -132,4 +134,6 @@ The content herein are all &copy; 2023 **terCAD** Team (Viachaslau Lyskouski).
 <a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-nd/4.0/88x31.png" /></a><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/4.0/">Creative Commons Attribution-NonCommercial-NoDerivs 4.0 Unported License</a>:
 - **Attribution**: provide a link to the license, and indicate if changes were made
 - **NonCommercial**: cannot be used for commercial purposes
-- **NoDerivatives**: any modification (remix, transform, or build upon the material) cannot be distributed by your own. Push it back to the main repository (https://github.com/lyskouski/app-finance) to unblock the distribution for made changes.
+- **NoDerivatives**: any modification (remix, transform, or build upon the material) cannot be distributed by your own. 
+  Push it back to the main repository (https://github.com/lyskouski/app-finance) to unblock the distribution for made 
+  changes.

@@ -3523,9 +3523,507 @@ application that offers a user-centric approach to managing finances&lt;/content
   <track hide="audio" producer="playlist4"/>
   <track hide="audio" producer="playlist5"/>
  </tractor>
- <playlist id="playlist6"/>
+ <producer id="producer3" in="00:00:00.000" out="00:00:54.667">
+  <property name="length">821</property>
+  <property name="eof">pause</property>
+  <property name="resource">3.250000:00_intro_de.mp4</property>
+  <property name="aspect_ratio">1</property>
+  <property name="meta.media.nb_streams">1</property>
+  <property name="meta.media.0.stream.type">video</property>
+  <property name="meta.media.0.stream.frame_rate">15</property>
+  <property name="meta.media.0.stream.sample_aspect_ratio">1</property>
+  <property name="meta.media.0.codec.width">1284</property>
+  <property name="meta.media.0.codec.height">722</property>
+  <property name="meta.media.0.codec.rotate">0</property>
+  <property name="meta.media.0.codec.pix_fmt">yuv444p</property>
+  <property name="meta.media.0.codec.sample_aspect_ratio">1</property>
+  <property name="meta.media.0.codec.colorspace">709</property>
+  <property name="meta.media.0.codec.color_trc">1</property>
+  <property name="meta.media.0.codec.name">h264</property>
+  <property name="meta.media.0.codec.long_name">H.264 / AVC / MPEG-4 AVC / MPEG-4 part 10</property>
+  <property name="meta.media.0.codec.bit_rate">513708</property>
+  <property name="meta.attr.0.stream.creation_time.markup">2023-11-15T14:00:21.000000Z</property>
+  <property name="meta.attr.0.stream.handler_name.markup">VideoHandler</property>
+  <property name="meta.attr.0.stream.vendor_id.markup">[0][0][0][0]</property>
+  <property name="meta.attr.major_brand.markup">mp42</property>
+  <property name="meta.attr.minor_version.markup">0</property>
+  <property name="meta.attr.compatible_brands.markup">mp42mp41isomiso2</property>
+  <property name="meta.attr.creation_time.markup">2023-11-15T14:00:21.000000Z</property>
+  <property name="meta.attr.encoder.markup">x264</property>
+  <property name="seekable">1</property>
+  <property name="meta.media.sample_aspect_num">1</property>
+  <property name="meta.media.sample_aspect_den">1</property>
+  <property name="audio_index">-1</property>
+  <property name="video_index">0</property>
+  <property name="warp_speed">3.25</property>
+  <property name="warp_resource">00_intro_de.mp4</property>
+  <property name="mlt_service">timewarp</property>
+  <property name="vstream">0</property>
+  <property name="astream">-1</property>
+  <property name="set.test_audio">1</property>
+  <property name="set.test_image">0</property>
+  <property name="kdenlive:id">102</property>
+  <property name="warp_pitch">0</property>
+  <property name="meta.media.frame_rate_num">15</property>
+  <property name="meta.media.frame_rate_den">1</property>
+  <property name="meta.media.colorspace">709</property>
+  <property name="meta.media.color_trc">1</property>
+  <property name="meta.media.has_b_frames">0</property>
+  <property name="meta.media.width">1284</property>
+  <property name="meta.media.height">722</property>
+  <property name="meta.media.color_range">mpeg</property>
+  <property name="meta.media.top_field_first">0</property>
+  <property name="meta.media.progressive">1</property>
+ </producer>
+ <producer id="producer4" in="00:00:00.000" out="00:00:12.067">
+  <property name="length">183</property>
+  <property name="eof">pause</property>
+  <property name="resource">2.000000:01_account_de.mp4</property>
+  <property name="aspect_ratio">1</property>
+  <property name="meta.media.nb_streams">1</property>
+  <property name="meta.media.0.stream.type">video</property>
+  <property name="meta.media.0.stream.frame_rate">15</property>
+  <property name="meta.media.0.stream.sample_aspect_ratio">1</property>
+  <property name="meta.media.0.codec.width">1284</property>
+  <property name="meta.media.0.codec.height">722</property>
+  <property name="meta.media.0.codec.rotate">0</property>
+  <property name="meta.media.0.codec.pix_fmt">yuv444p</property>
+  <property name="meta.media.0.codec.sample_aspect_ratio">1</property>
+  <property name="meta.media.0.codec.colorspace">709</property>
+  <property name="meta.media.0.codec.color_trc">1</property>
+  <property name="meta.media.0.codec.name">h264</property>
+  <property name="meta.media.0.codec.long_name">H.264 / AVC / MPEG-4 AVC / MPEG-4 part 10</property>
+  <property name="meta.media.0.codec.bit_rate">447950</property>
+  <property name="meta.attr.0.stream.creation_time.markup">2023-11-15T14:10:17.000000Z</property>
+  <property name="meta.attr.0.stream.handler_name.markup">VideoHandler</property>
+  <property name="meta.attr.0.stream.vendor_id.markup">[0][0][0][0]</property>
+  <property name="meta.attr.major_brand.markup">mp42</property>
+  <property name="meta.attr.minor_version.markup">0</property>
+  <property name="meta.attr.compatible_brands.markup">mp42mp41isomiso2</property>
+  <property name="meta.attr.creation_time.markup">2023-11-15T14:10:17.000000Z</property>
+  <property name="meta.attr.encoder.markup">x264</property>
+  <property name="seekable">1</property>
+  <property name="meta.media.sample_aspect_num">1</property>
+  <property name="meta.media.sample_aspect_den">1</property>
+  <property name="audio_index">-1</property>
+  <property name="video_index">0</property>
+  <property name="warp_speed">2</property>
+  <property name="warp_resource">01_account_de.mp4</property>
+  <property name="mlt_service">timewarp</property>
+  <property name="vstream">0</property>
+  <property name="astream">-1</property>
+  <property name="set.test_audio">1</property>
+  <property name="set.test_image">0</property>
+  <property name="kdenlive:id">103</property>
+  <property name="warp_pitch">0</property>
+  <property name="meta.media.frame_rate_num">15</property>
+  <property name="meta.media.frame_rate_den">1</property>
+  <property name="meta.media.colorspace">709</property>
+  <property name="meta.media.color_trc">1</property>
+  <property name="meta.media.has_b_frames">0</property>
+  <property name="meta.media.width">1284</property>
+  <property name="meta.media.height">722</property>
+  <property name="meta.media.color_range">mpeg</property>
+  <property name="meta.media.top_field_first">0</property>
+  <property name="meta.media.progressive">1</property>
+ </producer>
+ <producer id="producer5" in="00:00:00.000" out="00:00:16.400">
+  <property name="length">247</property>
+  <property name="eof">pause</property>
+  <property name="resource">2.800000:02_budget_de.mp4</property>
+  <property name="aspect_ratio">1</property>
+  <property name="meta.media.nb_streams">1</property>
+  <property name="meta.media.0.stream.type">video</property>
+  <property name="meta.media.0.stream.frame_rate">15</property>
+  <property name="meta.media.0.stream.sample_aspect_ratio">1</property>
+  <property name="meta.media.0.codec.width">1284</property>
+  <property name="meta.media.0.codec.height">722</property>
+  <property name="meta.media.0.codec.rotate">0</property>
+  <property name="meta.media.0.codec.pix_fmt">yuv444p</property>
+  <property name="meta.media.0.codec.sample_aspect_ratio">1</property>
+  <property name="meta.media.0.codec.colorspace">709</property>
+  <property name="meta.media.0.codec.color_trc">1</property>
+  <property name="meta.media.0.codec.name">h264</property>
+  <property name="meta.media.0.codec.long_name">H.264 / AVC / MPEG-4 AVC / MPEG-4 part 10</property>
+  <property name="meta.media.0.codec.bit_rate">150565</property>
+  <property name="meta.attr.0.stream.creation_time.markup">2023-11-15T14:13:14.000000Z</property>
+  <property name="meta.attr.0.stream.handler_name.markup">VideoHandler</property>
+  <property name="meta.attr.0.stream.vendor_id.markup">[0][0][0][0]</property>
+  <property name="meta.attr.major_brand.markup">mp42</property>
+  <property name="meta.attr.minor_version.markup">0</property>
+  <property name="meta.attr.compatible_brands.markup">mp42mp41isomiso2</property>
+  <property name="meta.attr.creation_time.markup">2023-11-15T14:13:14.000000Z</property>
+  <property name="meta.attr.encoder.markup">x264</property>
+  <property name="seekable">1</property>
+  <property name="meta.media.sample_aspect_num">1</property>
+  <property name="meta.media.sample_aspect_den">1</property>
+  <property name="audio_index">-1</property>
+  <property name="video_index">0</property>
+  <property name="warp_speed">2.8</property>
+  <property name="warp_resource">02_budget_de.mp4</property>
+  <property name="mlt_service">timewarp</property>
+  <property name="vstream">0</property>
+  <property name="astream">-1</property>
+  <property name="set.test_audio">1</property>
+  <property name="set.test_image">0</property>
+  <property name="kdenlive:id">104</property>
+  <property name="warp_pitch">0</property>
+  <property name="meta.media.frame_rate_num">15</property>
+  <property name="meta.media.frame_rate_den">1</property>
+  <property name="meta.media.colorspace">709</property>
+  <property name="meta.media.color_trc">1</property>
+  <property name="meta.media.has_b_frames">0</property>
+  <property name="meta.media.width">1284</property>
+  <property name="meta.media.height">722</property>
+  <property name="meta.media.color_range">mpeg</property>
+  <property name="meta.media.top_field_first">0</property>
+  <property name="meta.media.progressive">1</property>
+ </producer>
+ <producer id="producer6" in="00:00:00.000" out="00:00:18.400">
+  <property name="length">277</property>
+  <property name="eof">pause</property>
+  <property name="resource">3.500000:03_bills_de.mp4</property>
+  <property name="aspect_ratio">1</property>
+  <property name="meta.media.nb_streams">1</property>
+  <property name="meta.media.0.stream.type">video</property>
+  <property name="meta.media.0.stream.frame_rate">15</property>
+  <property name="meta.media.0.stream.sample_aspect_ratio">1</property>
+  <property name="meta.media.0.codec.width">1284</property>
+  <property name="meta.media.0.codec.height">722</property>
+  <property name="meta.media.0.codec.rotate">0</property>
+  <property name="meta.media.0.codec.pix_fmt">yuv444p</property>
+  <property name="meta.media.0.codec.sample_aspect_ratio">1</property>
+  <property name="meta.media.0.codec.colorspace">709</property>
+  <property name="meta.media.0.codec.color_trc">1</property>
+  <property name="meta.media.0.codec.name">h264</property>
+  <property name="meta.media.0.codec.long_name">H.264 / AVC / MPEG-4 AVC / MPEG-4 part 10</property>
+  <property name="meta.media.0.codec.bit_rate">285295</property>
+  <property name="meta.attr.0.stream.creation_time.markup">2023-11-15T14:17:43.000000Z</property>
+  <property name="meta.attr.0.stream.handler_name.markup">VideoHandler</property>
+  <property name="meta.attr.0.stream.vendor_id.markup">[0][0][0][0]</property>
+  <property name="meta.attr.major_brand.markup">mp42</property>
+  <property name="meta.attr.minor_version.markup">0</property>
+  <property name="meta.attr.compatible_brands.markup">mp42mp41isomiso2</property>
+  <property name="meta.attr.creation_time.markup">2023-11-15T14:17:43.000000Z</property>
+  <property name="meta.attr.encoder.markup">x264</property>
+  <property name="seekable">1</property>
+  <property name="meta.media.sample_aspect_num">1</property>
+  <property name="meta.media.sample_aspect_den">1</property>
+  <property name="audio_index">-1</property>
+  <property name="video_index">0</property>
+  <property name="warp_speed">3.5</property>
+  <property name="warp_resource">03_bills_de.mp4</property>
+  <property name="mlt_service">timewarp</property>
+  <property name="vstream">0</property>
+  <property name="astream">-1</property>
+  <property name="set.test_audio">1</property>
+  <property name="set.test_image">0</property>
+  <property name="kdenlive:id">106</property>
+  <property name="warp_pitch">0</property>
+  <property name="meta.media.frame_rate_num">15</property>
+  <property name="meta.media.frame_rate_den">1</property>
+  <property name="meta.media.colorspace">709</property>
+  <property name="meta.media.color_trc">1</property>
+  <property name="meta.media.has_b_frames">0</property>
+  <property name="meta.media.width">1284</property>
+  <property name="meta.media.height">722</property>
+  <property name="meta.media.color_range">mpeg</property>
+  <property name="meta.media.top_field_first">0</property>
+  <property name="meta.media.progressive">1</property>
+ </producer>
+ <producer id="producer7" in="00:00:00.000" out="00:00:09.467">
+  <property name="length">143</property>
+  <property name="eof">pause</property>
+  <property name="resource">3.500000:04_exchange_de.mp4</property>
+  <property name="aspect_ratio">1</property>
+  <property name="meta.media.nb_streams">1</property>
+  <property name="meta.media.0.stream.type">video</property>
+  <property name="meta.media.0.stream.frame_rate">15</property>
+  <property name="meta.media.0.stream.sample_aspect_ratio">1</property>
+  <property name="meta.media.0.codec.width">1284</property>
+  <property name="meta.media.0.codec.height">722</property>
+  <property name="meta.media.0.codec.rotate">0</property>
+  <property name="meta.media.0.codec.pix_fmt">yuv444p</property>
+  <property name="meta.media.0.codec.sample_aspect_ratio">1</property>
+  <property name="meta.media.0.codec.colorspace">709</property>
+  <property name="meta.media.0.codec.color_trc">1</property>
+  <property name="meta.media.0.codec.name">h264</property>
+  <property name="meta.media.0.codec.long_name">H.264 / AVC / MPEG-4 AVC / MPEG-4 part 10</property>
+  <property name="meta.media.0.codec.bit_rate">332019</property>
+  <property name="meta.attr.0.stream.creation_time.markup">2023-11-15T14:20:58.000000Z</property>
+  <property name="meta.attr.0.stream.handler_name.markup">VideoHandler</property>
+  <property name="meta.attr.0.stream.vendor_id.markup">[0][0][0][0]</property>
+  <property name="meta.attr.major_brand.markup">mp42</property>
+  <property name="meta.attr.minor_version.markup">0</property>
+  <property name="meta.attr.compatible_brands.markup">mp42mp41isomiso2</property>
+  <property name="meta.attr.creation_time.markup">2023-11-15T14:20:58.000000Z</property>
+  <property name="meta.attr.encoder.markup">x264</property>
+  <property name="seekable">1</property>
+  <property name="meta.media.sample_aspect_num">1</property>
+  <property name="meta.media.sample_aspect_den">1</property>
+  <property name="audio_index">-1</property>
+  <property name="video_index">0</property>
+  <property name="warp_speed">3.5</property>
+  <property name="warp_resource">04_exchange_de.mp4</property>
+  <property name="mlt_service">timewarp</property>
+  <property name="vstream">0</property>
+  <property name="astream">-1</property>
+  <property name="set.test_audio">1</property>
+  <property name="set.test_image">0</property>
+  <property name="kdenlive:id">107</property>
+  <property name="warp_pitch">0</property>
+  <property name="meta.media.frame_rate_num">15</property>
+  <property name="meta.media.frame_rate_den">1</property>
+  <property name="meta.media.colorspace">709</property>
+  <property name="meta.media.color_trc">1</property>
+  <property name="meta.media.has_b_frames">0</property>
+  <property name="meta.media.width">1284</property>
+  <property name="meta.media.height">722</property>
+  <property name="meta.media.color_range">mpeg</property>
+  <property name="meta.media.top_field_first">0</property>
+  <property name="meta.media.progressive">1</property>
+ </producer>
+ <chain id="chain20" out="00:00:22.800">
+  <property name="length">343</property>
+  <property name="eof">pause</property>
+  <property name="resource">05_metrics_de.mp4</property>
+  <property name="mlt_service">avformat-novalidate</property>
+  <property name="seekable">1</property>
+  <property name="audio_index">-1</property>
+  <property name="video_index">0</property>
+  <property name="vstream">0</property>
+  <property name="kdenlive:folderid">-1</property>
+  <property name="kdenlive:id">108</property>
+  <property name="mute_on_pause">0</property>
+  <property name="kdenlive:clip_type">2</property>
+  <property name="kdenlive:file_size">738107</property>
+  <property name="kdenlive:file_hash">34568617dda768d380b9defbc969dc8b</property>
+  <property name="meta.media.nb_streams">1</property>
+  <property name="meta.media.0.stream.type">video</property>
+  <property name="meta.media.0.stream.frame_rate">15</property>
+  <property name="meta.media.0.stream.sample_aspect_ratio">1</property>
+  <property name="meta.media.0.codec.width">1284</property>
+  <property name="meta.media.0.codec.height">722</property>
+  <property name="meta.media.0.codec.rotate">0</property>
+  <property name="meta.media.0.codec.pix_fmt">yuv444p</property>
+  <property name="meta.media.0.codec.sample_aspect_ratio">1</property>
+  <property name="meta.media.0.codec.colorspace">709</property>
+  <property name="meta.media.0.codec.color_trc">1</property>
+  <property name="meta.media.0.codec.name">h264</property>
+  <property name="meta.media.0.codec.long_name">H.264 / AVC / MPEG-4 AVC / MPEG-4 part 10</property>
+  <property name="meta.media.0.codec.bit_rate">257424</property>
+  <property name="meta.attr.0.stream.creation_time.markup">2023-11-15T14:25:02.000000Z</property>
+  <property name="meta.attr.0.stream.handler_name.markup">VideoHandler</property>
+  <property name="meta.attr.0.stream.vendor_id.markup">[0][0][0][0]</property>
+  <property name="meta.attr.major_brand.markup">mp42</property>
+  <property name="meta.attr.minor_version.markup">0</property>
+  <property name="meta.attr.compatible_brands.markup">mp42mp41isomiso2</property>
+  <property name="meta.attr.creation_time.markup">2023-11-15T14:25:02.000000Z</property>
+  <property name="meta.attr.encoder.markup">x264</property>
+  <property name="meta.media.sample_aspect_num">1</property>
+  <property name="meta.media.sample_aspect_den">1</property>
+  <property name="meta.media.frame_rate_num">15</property>
+  <property name="meta.media.frame_rate_den">1</property>
+  <property name="meta.media.colorspace">709</property>
+  <property name="meta.media.color_trc">1</property>
+  <property name="meta.media.has_b_frames">0</property>
+  <property name="meta.media.width">1284</property>
+  <property name="meta.media.height">722</property>
+  <property name="meta.media.color_range">mpeg</property>
+  <property name="xml">was here</property>
+  <property name="meta.media.top_field_first">0</property>
+  <property name="meta.media.progressive">1</property>
+  <property name="set.test_audio">1</property>
+  <property name="set.test_image">0</property>
+ </chain>
+ <producer id="producer8" in="00:00:00.000" out="00:01:54.267">
+  <property name="length">1715</property>
+  <property name="eof">pause</property>
+  <property name="resource">0.200000:05_metrics_de.mp4</property>
+  <property name="aspect_ratio">1</property>
+  <property name="meta.media.nb_streams">1</property>
+  <property name="meta.media.0.stream.type">video</property>
+  <property name="meta.media.0.stream.frame_rate">15</property>
+  <property name="meta.media.0.stream.sample_aspect_ratio">1</property>
+  <property name="meta.media.0.codec.width">1284</property>
+  <property name="meta.media.0.codec.height">722</property>
+  <property name="meta.media.0.codec.rotate">0</property>
+  <property name="meta.media.0.codec.pix_fmt">yuv444p</property>
+  <property name="meta.media.0.codec.sample_aspect_ratio">1</property>
+  <property name="meta.media.0.codec.colorspace">709</property>
+  <property name="meta.media.0.codec.color_trc">1</property>
+  <property name="meta.media.0.codec.name">h264</property>
+  <property name="meta.media.0.codec.long_name">H.264 / AVC / MPEG-4 AVC / MPEG-4 part 10</property>
+  <property name="meta.media.0.codec.bit_rate">257424</property>
+  <property name="meta.attr.0.stream.creation_time.markup">2023-11-15T14:25:02.000000Z</property>
+  <property name="meta.attr.0.stream.handler_name.markup">VideoHandler</property>
+  <property name="meta.attr.0.stream.vendor_id.markup">[0][0][0][0]</property>
+  <property name="meta.attr.major_brand.markup">mp42</property>
+  <property name="meta.attr.minor_version.markup">0</property>
+  <property name="meta.attr.compatible_brands.markup">mp42mp41isomiso2</property>
+  <property name="meta.attr.creation_time.markup">2023-11-15T14:25:02.000000Z</property>
+  <property name="meta.attr.encoder.markup">x264</property>
+  <property name="seekable">1</property>
+  <property name="meta.media.sample_aspect_num">1</property>
+  <property name="meta.media.sample_aspect_den">1</property>
+  <property name="audio_index">-1</property>
+  <property name="video_index">0</property>
+  <property name="warp_speed">0.2</property>
+  <property name="warp_resource">05_metrics_de.mp4</property>
+  <property name="mlt_service">timewarp</property>
+  <property name="vstream">0</property>
+  <property name="astream">-1</property>
+  <property name="set.test_audio">1</property>
+  <property name="set.test_image">0</property>
+  <property name="kdenlive:id">108</property>
+  <property name="warp_pitch">0</property>
+  <property name="meta.media.frame_rate_num">15</property>
+  <property name="meta.media.frame_rate_den">1</property>
+  <property name="meta.media.colorspace">709</property>
+  <property name="meta.media.color_trc">1</property>
+  <property name="meta.media.has_b_frames">0</property>
+  <property name="meta.media.width">1284</property>
+  <property name="meta.media.height">722</property>
+  <property name="meta.media.color_range">mpeg</property>
+  <property name="meta.media.top_field_first">0</property>
+  <property name="meta.media.progressive">1</property>
+ </producer>
+ <playlist id="playlist6">
+  <blank length="00:00:21.400"/>
+  <entry producer="producer3" in="00:00:00.000" out="00:00:54.600">
+   <property name="kdenlive:id">102</property>
+   <filter id="filter18">
+    <property name="version">0.1</property>
+    <property name="mlt_service">frei0r.scale0tilt</property>
+    <property name="kdenlive_id">frei0r.scale0tilt</property>
+    <property name="Clip left">00:00:00.000=0</property>
+    <property name="Clip right">00:00:00.000=0</property>
+    <property name="Clip top">00:00:00.000=0</property>
+    <property name="Clip bottom">00:00:00.000=0</property>
+    <property name="Scale X">00:00:00.000=0.4</property>
+    <property name="Scale Y">00:00:00.000=0.4</property>
+    <property name="Tilt X">00:00:00.000=0.507519</property>
+    <property name="Tilt Y">00:00:00.000=0.581655</property>
+    <property name="kdenlive:collapsed">0</property>
+   </filter>
+  </entry>
+  <entry producer="producer4" in="00:00:00.000" out="00:00:11.200">
+   <property name="kdenlive:id">103</property>
+   <filter id="filter19">
+    <property name="version">0.1</property>
+    <property name="mlt_service">frei0r.scale0tilt</property>
+    <property name="kdenlive_id">frei0r.scale0tilt</property>
+    <property name="Clip left">00:00:00.000=0</property>
+    <property name="Clip right">00:00:00.000=0</property>
+    <property name="Clip top">00:00:00.000=0</property>
+    <property name="Clip bottom">00:00:00.000=0</property>
+    <property name="Scale X">00:00:00.000=0.4</property>
+    <property name="Scale Y">00:00:00.000=0.4</property>
+    <property name="Tilt X">00:00:00.000=0.507519</property>
+    <property name="Tilt Y">00:00:00.000=0.581655</property>
+    <property name="kdenlive:collapsed">0</property>
+   </filter>
+  </entry>
+  <entry producer="producer5" in="00:00:00.000" out="00:00:15.533">
+   <property name="kdenlive:id">104</property>
+   <filter id="filter20">
+    <property name="version">0.1</property>
+    <property name="mlt_service">frei0r.scale0tilt</property>
+    <property name="kdenlive_id">frei0r.scale0tilt</property>
+    <property name="Clip left">00:00:00.000=0</property>
+    <property name="Clip right">00:00:00.000=0</property>
+    <property name="Clip top">00:00:00.000=0</property>
+    <property name="Clip bottom">00:00:00.000=0</property>
+    <property name="Scale X">00:00:00.000=0.4</property>
+    <property name="Scale Y">00:00:00.000=0.4</property>
+    <property name="Tilt X">00:00:00.000=0.507519</property>
+    <property name="Tilt Y">00:00:00.000=0.581655</property>
+    <property name="kdenlive:collapsed">0</property>
+   </filter>
+  </entry>
+  <entry producer="producer6" in="00:00:00.000" out="00:00:18.400">
+   <property name="kdenlive:id">106</property>
+   <filter id="filter21">
+    <property name="version">0.1</property>
+    <property name="mlt_service">frei0r.scale0tilt</property>
+    <property name="kdenlive_id">frei0r.scale0tilt</property>
+    <property name="Clip left">00:00:00.000=0</property>
+    <property name="Clip right">00:00:00.000=0</property>
+    <property name="Clip top">00:00:00.000=0</property>
+    <property name="Clip bottom">00:00:00.000=0</property>
+    <property name="Scale X">00:00:00.000=0.4</property>
+    <property name="Scale Y">00:00:00.000=0.4</property>
+    <property name="Tilt X">00:00:00.000=0.507519</property>
+    <property name="Tilt Y">00:00:00.000=0.581655</property>
+    <property name="kdenlive:collapsed">0</property>
+   </filter>
+  </entry>
+  <entry producer="producer7" in="00:00:00.000" out="00:00:09.467">
+   <property name="kdenlive:id">107</property>
+   <filter id="filter22">
+    <property name="version">0.1</property>
+    <property name="mlt_service">frei0r.scale0tilt</property>
+    <property name="kdenlive_id">frei0r.scale0tilt</property>
+    <property name="Clip left">00:00:00.000=0</property>
+    <property name="Clip right">00:00:00.000=0</property>
+    <property name="Clip top">00:00:00.000=0</property>
+    <property name="Clip bottom">00:00:00.000=0</property>
+    <property name="Scale X">00:00:00.000=0.4</property>
+    <property name="Scale Y">00:00:00.000=0.4</property>
+    <property name="Tilt X">00:00:00.000=0.507519</property>
+    <property name="Tilt Y">00:00:00.000=0.581655</property>
+    <property name="kdenlive:collapsed">0</property>
+   </filter>
+  </entry>
+  <entry producer="chain20" in="00:00:00.000" out="00:00:21.133">
+   <property name="kdenlive:id">108</property>
+   <filter id="filter23">
+    <property name="version">0.1</property>
+    <property name="mlt_service">frei0r.scale0tilt</property>
+    <property name="kdenlive_id">frei0r.scale0tilt</property>
+    <property name="Clip left">00:00:00.000=0</property>
+    <property name="Clip right">00:00:00.000=0</property>
+    <property name="Clip top">00:00:00.000=0</property>
+    <property name="Clip bottom">00:00:00.000=0</property>
+    <property name="Scale X">00:00:00.000=0.4</property>
+    <property name="Scale Y">00:00:00.000=0.4</property>
+    <property name="Tilt X">00:00:00.000=0.507519</property>
+    <property name="Tilt Y">00:00:00.000=0.581655</property>
+    <property name="kdenlive:collapsed">0</property>
+   </filter>
+  </entry>
+  <entry producer="producer8" in="00:01:46.000" out="00:01:53.933">
+   <property name="kdenlive:id">108</property>
+   <property name="kdenlive:activeeffect">1</property>
+   <filter id="filter24">
+    <property name="version">0.1</property>
+    <property name="mlt_service">frei0r.scale0tilt</property>
+    <property name="kdenlive_id">frei0r.scale0tilt</property>
+    <property name="Clip left">00:01:46.000=0</property>
+    <property name="Clip right">00:01:46.000=0</property>
+    <property name="Clip top">00:01:46.000=0</property>
+    <property name="Clip bottom">00:01:46.000=0</property>
+    <property name="Scale X">00:01:46.000=0.4</property>
+    <property name="Scale Y">00:01:46.000=0.4</property>
+    <property name="Tilt X">00:01:46.000=0.507519</property>
+    <property name="Tilt Y">00:01:46.000=0.581655</property>
+    <property name="kdenlive:collapsed">0</property>
+   </filter>
+   <filter id="filter25">
+    <property name="version">0.9</property>
+    <property name="mlt_service">frei0r.transparency</property>
+    <property name="kdenlive_id">frei0r.transparency</property>
+    <property name="0">00:01:46.000=1;00:01:48.733=0.333333;00:01:51.933=0.031746</property>
+    <property name="kdenlive:collapsed">0</property>
+   </filter>
+  </entry>
+  <blank length="00:00:03.000"/>
+  <entry producer="producer20" in="00:00:00.000" out="00:00:01.867">
+   <property name="kdenlive:id">48</property>
+  </entry>
+ </playlist>
  <playlist id="playlist7"/>
- <tractor id="tractor3" in="00:00:00.000">
+ <tractor id="tractor3" in="00:00:00.000" out="00:02:45.000">
   <property name="kdenlive:trackheight">67</property>
   <property name="kdenlive:timeline_active">0</property>
   <property name="kdenlive:collapsed">0</property>
@@ -3535,7 +4033,7 @@ application that offers a user-centric approach to managing finances&lt;/content
   <track hide="audio" producer="playlist6"/>
   <track hide="audio" producer="playlist7"/>
  </tractor>
- <producer id="producer3" in="00:00:00.000" out="00:00:10.200">
+ <producer id="producer9" in="00:00:00.000" out="00:00:10.200">
   <property name="length">154</property>
   <property name="eof">pause</property>
   <property name="resource"/>
@@ -3566,7 +4064,7 @@ application that offers a user-centric approach to managing finances&lt;/content
   <property name="meta.media.width">1596</property>
   <property name="meta.media.height">894</property>
  </producer>
- <producer id="producer4" in="00:00:00.000" out="00:00:10.200">
+ <producer id="producer10" in="00:00:00.000" out="00:00:10.200">
   <property name="length">154</property>
   <property name="eof">pause</property>
   <property name="resource"/>
@@ -3598,7 +4096,7 @@ application that offers a user-centric approach to managing finances&lt;/content
   <property name="meta.media.width">1596</property>
   <property name="meta.media.height">894</property>
  </producer>
- <producer id="producer5" in="00:00:00.000" out="00:00:11.000">
+ <producer id="producer11" in="00:00:00.000" out="00:00:11.000">
   <property name="length">166</property>
   <property name="eof">pause</property>
   <property name="resource"/>
@@ -3630,7 +4128,7 @@ befassen, die viele Menschen mit herkömmlichen Finanzbuchhaltungsanwendungen ha
   <property name="meta.media.width">1596</property>
   <property name="meta.media.height">894</property>
  </producer>
- <producer id="producer6" in="00:00:00.000" out="00:00:10.733">
+ <producer id="producer12" in="00:00:00.000" out="00:00:10.733">
   <property name="length">162</property>
   <property name="eof">pause</property>
   <property name="resource"/>
@@ -3664,7 +4162,7 @@ geführt, dass die Nutzer nach einer besseren Lösung suchen.
   <property name="meta.media.width">1596</property>
   <property name="meta.media.height">894</property>
  </producer>
- <producer id="producer7" in="00:00:00.000" out="00:00:10.733">
+ <producer id="producer13" in="00:00:00.000" out="00:00:10.733">
   <property name="length">162</property>
   <property name="eof">pause</property>
   <property name="resource"/>
@@ -3698,7 +4196,7 @@ Finanzmanagement-Tool anzubieten, das wirklich nutzerzentriert ist.
   <property name="meta.media.width">1596</property>
   <property name="meta.media.height">894</property>
  </producer>
- <producer id="producer8" in="00:00:00.000" out="00:00:11.333">
+ <producer id="producer14" in="00:00:00.000" out="00:00:11.333">
   <property name="length">171</property>
   <property name="eof">pause</property>
   <property name="resource"/>
@@ -3730,7 +4228,7 @@ Kontotypen und Unterstützung für mehrere Währungen und Kryptowährungen.&lt;/
   <property name="meta.media.width">1596</property>
   <property name="meta.media.height">894</property>
  </producer>
- <producer id="producer9" in="00:00:00.000" out="00:00:12.667">
+ <producer id="producer15" in="00:00:00.000" out="00:00:12.667">
   <property name="length">191</property>
   <property name="eof">pause</property>
   <property name="resource"/>
@@ -3762,7 +4260,7 @@ die monatlich erneuert werden oder auf Ihrem relativen Einkommen basieren.&lt;/c
   <property name="meta.media.width">1596</property>
   <property name="meta.media.height">894</property>
  </producer>
- <producer id="producer10" in="00:00:00.000" out="00:00:12.667">
+ <producer id="producer16" in="00:00:00.000" out="00:00:12.667">
   <property name="length">191</property>
   <property name="eof">pause</property>
   <property name="resource"/>
@@ -3795,7 +4293,7 @@ die monatlich erneuert werden oder auf Ihrem relativen Einkommen basieren.&lt;/c
   <property name="meta.media.width">1596</property>
   <property name="meta.media.height">894</property>
  </producer>
- <producer id="producer11" in="00:00:00.000" out="00:00:12.667">
+ <producer id="producer17" in="00:00:00.000" out="00:00:12.667">
   <property name="length">191</property>
   <property name="eof">pause</property>
   <property name="resource"/>
@@ -3827,7 +4325,7 @@ nicht aus den Augen zu verlieren.&lt;/content>
   <property name="meta.media.width">1596</property>
   <property name="meta.media.height">894</property>
  </producer>
- <producer id="producer12" in="00:00:00.000" out="00:00:12.667">
+ <producer id="producer18" in="00:00:00.000" out="00:00:12.667">
   <property name="length">191</property>
   <property name="eof">pause</property>
   <property name="resource"/>
@@ -3861,7 +4359,7 @@ Standardwährung, um eine umfassende Finanzübersicht zu erhalten.
   <property name="meta.media.width">1596</property>
   <property name="meta.media.height">894</property>
  </producer>
- <producer id="producer13" in="00:00:00.000" out="00:00:12.667">
+ <producer id="producer19" in="00:00:00.000" out="00:00:12.667">
   <property name="length">191</property>
   <property name="eof">pause</property>
   <property name="resource"/>
@@ -3892,7 +4390,7 @@ Standardwährung, um eine umfassende Finanzübersicht zu erhalten.
   <property name="meta.media.width">1596</property>
   <property name="meta.media.height">894</property>
  </producer>
- <producer id="producer14" in="00:00:00.000" out="00:00:12.667">
+ <producer id="producer39" in="00:00:00.000" out="00:00:12.667">
   <property name="length">191</property>
   <property name="eof">pause</property>
   <property name="resource"/>
@@ -3923,7 +4421,7 @@ Standardwährung, um eine umfassende Finanzübersicht zu erhalten.
   <property name="meta.media.width">1596</property>
   <property name="meta.media.height">894</property>
  </producer>
- <producer id="producer15" in="00:00:00.000" out="00:00:12.667">
+ <producer id="producer40" in="00:00:00.000" out="00:00:12.667">
   <property name="length">191</property>
   <property name="eof">pause</property>
   <property name="resource"/>
@@ -3955,7 +4453,7 @@ Balkenrennen für Kategorien und mehr.&lt;/content>
   <property name="meta.media.width">1596</property>
   <property name="meta.media.height">894</property>
  </producer>
- <producer id="producer16" in="00:00:00.000" out="00:00:12.667">
+ <producer id="producer41" in="00:00:00.000" out="00:00:12.667">
   <property name="length">191</property>
   <property name="eof">pause</property>
   <property name="resource"/>
@@ -3993,55 +4491,55 @@ und fundierte Entscheidungen zu treffen.&lt;/content>
    <property name="kdenlive:id">50</property>
   </entry>
   <blank length="00:00:00.467"/>
-  <entry producer="producer3" in="00:00:00.000" out="00:00:04.200">
+  <entry producer="producer9" in="00:00:00.000" out="00:00:04.200">
    <property name="kdenlive:id">88</property>
   </entry>
   <blank length="00:00:00.267"/>
-  <entry producer="producer4" in="00:00:00.000" out="00:00:10.200">
+  <entry producer="producer10" in="00:00:00.000" out="00:00:10.200">
    <property name="kdenlive:id">87</property>
   </entry>
   <blank length="00:00:02.400"/>
-  <entry producer="producer5" in="00:00:00.000" out="00:00:11.000">
+  <entry producer="producer11" in="00:00:00.000" out="00:00:11.000">
    <property name="kdenlive:id">89</property>
   </entry>
   <blank length="00:00:01.333"/>
-  <entry producer="producer6" in="00:00:00.000" out="00:00:09.800">
+  <entry producer="producer12" in="00:00:00.000" out="00:00:09.800">
    <property name="kdenlive:id">90</property>
   </entry>
   <blank length="00:00:01.067"/>
-  <entry producer="producer7" in="00:00:00.000" out="00:00:09.667">
+  <entry producer="producer13" in="00:00:00.000" out="00:00:09.667">
    <property name="kdenlive:id">91</property>
   </entry>
   <blank length="00:00:00.867"/>
-  <entry producer="producer8" in="00:00:00.000" out="00:00:10.400">
+  <entry producer="producer14" in="00:00:00.000" out="00:00:10.400">
    <property name="kdenlive:id">92</property>
   </entry>
   <blank length="00:00:01.400"/>
-  <entry producer="producer9" in="00:00:00.000" out="00:00:12.267">
+  <entry producer="producer15" in="00:00:00.000" out="00:00:12.267">
    <property name="kdenlive:id">93</property>
   </entry>
   <blank length="00:00:02.400"/>
-  <entry producer="producer10" in="00:00:00.000" out="00:00:05.733">
+  <entry producer="producer16" in="00:00:00.000" out="00:00:05.733">
    <property name="kdenlive:id">94</property>
   </entry>
-  <entry producer="producer11" in="00:00:00.000" out="00:00:08.800">
+  <entry producer="producer17" in="00:00:00.000" out="00:00:08.800">
    <property name="kdenlive:id">95</property>
   </entry>
   <blank length="00:00:02.400"/>
-  <entry producer="producer12" in="00:00:00.000" out="00:00:09.467">
+  <entry producer="producer18" in="00:00:00.000" out="00:00:09.467">
    <property name="kdenlive:id">96</property>
   </entry>
-  <entry producer="producer13" in="00:00:00.000" out="00:00:04.200">
+  <entry producer="producer19" in="00:00:00.000" out="00:00:04.200">
    <property name="kdenlive:id">97</property>
   </entry>
-  <entry producer="producer14" in="00:00:00.000" out="00:00:05.600">
+  <entry producer="producer39" in="00:00:00.000" out="00:00:05.600">
    <property name="kdenlive:id">98</property>
   </entry>
-  <entry producer="producer15" in="00:00:00.000" out="00:00:09.933">
+  <entry producer="producer40" in="00:00:00.000" out="00:00:09.933">
    <property name="kdenlive:id">99</property>
   </entry>
   <blank length="00:00:00.467"/>
-  <entry producer="producer16" in="00:00:00.000" out="00:00:08.067">
+  <entry producer="producer41" in="00:00:00.000" out="00:00:08.067">
    <property name="kdenlive:id">101</property>
   </entry>
  </playlist>
@@ -4056,7 +4554,7 @@ und fundierte Entscheidungen zu treffen.&lt;/content>
   <track hide="audio" producer="playlist8"/>
   <track hide="audio" producer="playlist9"/>
  </tractor>
- <tractor id="tractor5" in="00:00:00.000" out="00:36:05.067">
+ <tractor id="tractor5" in="00:00:00.000" out="00:02:45.000">
   <property name="kdenlive:duration">00:02:45:01</property>
   <property name="kdenlive:maxduration">2476</property>
   <property name="kdenlive:clipname">Sequence 1</property>
@@ -4067,21 +4565,21 @@ und fundierte Entscheidungen zu treffen.&lt;/content>
   <property name="kdenlive:clip_type">0</property>
   <property name="kdenlive:file_hash">5a19ad36812dc33d8b2067cf5ef8c1c3</property>
   <property name="kdenlive:folderid">2</property>
-  <property name="kdenlive:sequenceproperties.activeTrack">4</property>
+  <property name="kdenlive:sequenceproperties.activeTrack">3</property>
   <property name="kdenlive:sequenceproperties.audioTarget">1</property>
   <property name="kdenlive:sequenceproperties.disablepreview">0</property>
   <property name="kdenlive:sequenceproperties.documentuuid">{ff20d2f2-8ff5-4477-ab01-973293a4bf18}</property>
   <property name="kdenlive:sequenceproperties.hasAudio">1</property>
   <property name="kdenlive:sequenceproperties.hasVideo">1</property>
   <property name="kdenlive:sequenceproperties.position">2475</property>
-  <property name="kdenlive:sequenceproperties.scrollPos">523</property>
+  <property name="kdenlive:sequenceproperties.scrollPos">223</property>
   <property name="kdenlive:sequenceproperties.tracks">4</property>
   <property name="kdenlive:sequenceproperties.tracksCount">5</property>
   <property name="kdenlive:sequenceproperties.verticalzoom">1</property>
   <property name="kdenlive:sequenceproperties.videoTarget">2</property>
   <property name="kdenlive:sequenceproperties.zonein">0</property>
   <property name="kdenlive:sequenceproperties.zoneout">75</property>
-  <property name="kdenlive:sequenceproperties.zoom">9</property>
+  <property name="kdenlive:sequenceproperties.zoom">8</property>
   <property name="kdenlive:sequenceproperties.groups">[
 ]
 </property>
@@ -4159,7 +4657,7 @@ und fundierte Entscheidungen zu treffen.&lt;/content>
    <property name="disable">1</property>
   </filter>
  </tractor>
- <chain id="chain20" out="00:04:16.533">
+ <chain id="chain21" out="00:04:16.533">
   <property name="length">3849</property>
   <property name="eof">pause</property>
   <property name="resource">background_de.mp4</property>
@@ -4209,7 +4707,7 @@ und fundierte Entscheidungen zu treffen.&lt;/content>
   <property name="kdenlive:file_size">13644259</property>
   <property name="kdenlive:file_hash">93a7b81b3a3150eed1b112c4c4aeceb2</property>
  </chain>
- <chain id="chain21" out="00:00:03.067">
+ <chain id="chain22" out="00:00:03.067">
   <property name="length">47</property>
   <property name="eof">pause</property>
   <property name="resource">ch08-s03-thanks_de.m4a</property>
@@ -4243,7 +4741,7 @@ und fundierte Entscheidungen zu treffen.&lt;/content>
   <property name="kdenlive:file_hash">eb2948a5c1df9fecd63a23c80a944a96</property>
   <property name="kdenlive:audio_max0">114</property>
  </chain>
- <chain id="chain22" out="00:00:08.400">
+ <chain id="chain23" out="00:00:08.400">
   <property name="length">127</property>
   <property name="eof">pause</property>
   <property name="resource">ch05-s03-insights_de.m4a</property>
@@ -4277,7 +4775,7 @@ und fundierte Entscheidungen zu treffen.&lt;/content>
   <property name="kdenlive:file_hash">58b0d167588da49a7d210d817fd33523</property>
   <property name="kdenlive:audio_max0">135</property>
  </chain>
- <chain id="chain23" out="00:00:04.267">
+ <chain id="chain24" out="00:00:04.267">
   <property name="length">65</property>
   <property name="eof">pause</property>
   <property name="resource">ch05-s02-list3_de.m4a</property>
@@ -4311,7 +4809,7 @@ und fundierte Entscheidungen zu treffen.&lt;/content>
   <property name="kdenlive:file_hash">5cc509134202625ca390aee3f9c6e3f0</property>
   <property name="kdenlive:audio_max0">114</property>
  </chain>
- <chain id="chain24" out="00:00:04.733">
+ <chain id="chain25" out="00:00:04.733">
   <property name="length">72</property>
   <property name="eof">pause</property>
   <property name="resource">ch05-s01-metrics_de.m4a</property>
@@ -4345,7 +4843,7 @@ und fundierte Entscheidungen zu treffen.&lt;/content>
   <property name="kdenlive:file_hash">19b37048b0b505183fc7ce2dffa66906</property>
   <property name="kdenlive:audio_max0">134</property>
  </chain>
- <chain id="chain25" out="00:00:06.933">
+ <chain id="chain26" out="00:00:06.933">
   <property name="length">105</property>
   <property name="eof">pause</property>
   <property name="resource">ch05-s02-list2_de.m4a</property>
@@ -4379,7 +4877,7 @@ und fundierte Entscheidungen zu treffen.&lt;/content>
   <property name="kdenlive:file_hash">7c124f515d3df5fcbd0c5002f39f19e1</property>
   <property name="kdenlive:audio_max0">133</property>
  </chain>
- <chain id="chain26" out="00:00:06.267">
+ <chain id="chain27" out="00:00:06.267">
   <property name="length">95</property>
   <property name="eof">pause</property>
   <property name="resource">ch05-s02-list1_de.m4a</property>
@@ -4413,7 +4911,7 @@ und fundierte Entscheidungen zu treffen.&lt;/content>
   <property name="kdenlive:file_hash">f2edc0029dde90364cf4455bd6dcd41a</property>
   <property name="kdenlive:audio_max0">130</property>
  </chain>
- <chain id="chain27" out="00:00:09.467">
+ <chain id="chain72" out="00:00:09.467">
   <property name="length">143</property>
   <property name="eof">pause</property>
   <property name="resource">ch05-s01-exchange_de.m4a</property>
@@ -4447,7 +4945,7 @@ und fundierte Entscheidungen zu treffen.&lt;/content>
   <property name="kdenlive:file_hash">303e03f23b2090864ea389e9f96c9846</property>
   <property name="kdenlive:audio_max0">109</property>
  </chain>
- <chain id="chain72" out="00:00:07.133">
+ <chain id="chain73" out="00:00:07.133">
   <property name="length">108</property>
   <property name="eof">pause</property>
   <property name="resource">ch03-s01-bills_de.m4a</property>
@@ -4481,7 +4979,7 @@ und fundierte Entscheidungen zu treffen.&lt;/content>
   <property name="kdenlive:file_hash">fd86f66be2c2a07e1bef92cfa51b9d22</property>
   <property name="kdenlive:audio_max0">121</property>
  </chain>
- <chain id="chain73" out="00:00:07.600">
+ <chain id="chain74" out="00:00:07.600">
   <property name="length">115</property>
   <property name="eof">pause</property>
   <property name="resource">ch04-s01-goals_de.m4a</property>
@@ -4515,7 +5013,7 @@ und fundierte Entscheidungen zu treffen.&lt;/content>
   <property name="kdenlive:file_hash">a63b0641661c4c44603f584c2b4bf4f4</property>
   <property name="kdenlive:audio_max0">133</property>
  </chain>
- <chain id="chain74" out="00:00:04.867">
+ <chain id="chain75" out="00:00:04.867">
   <property name="length">74</property>
   <property name="eof">pause</property>
   <property name="resource">ch02-s03-categories2_de.m4a</property>
@@ -4549,7 +5047,7 @@ und fundierte Entscheidungen zu treffen.&lt;/content>
   <property name="kdenlive:file_hash">590539ee76c27e9c226f964ea38c696d</property>
   <property name="kdenlive:audio_max0">149</property>
  </chain>
- <chain id="chain75" out="00:00:06.133">
+ <chain id="chain76" out="00:00:06.133">
   <property name="length">93</property>
   <property name="eof">pause</property>
   <property name="resource">ch02-s03-categories1_de.m4a</property>
@@ -4583,7 +5081,7 @@ und fundierte Entscheidungen zu treffen.&lt;/content>
   <property name="kdenlive:file_hash">7c73574293e7371a4125c42cceb16753</property>
   <property name="kdenlive:audio_max0">109</property>
  </chain>
- <chain id="chain76" out="00:00:10.467">
+ <chain id="chain77" out="00:00:10.467">
   <property name="length">158</property>
   <property name="eof">pause</property>
   <property name="resource">ch02-s01-accounts_de.m4a</property>
@@ -4617,7 +5115,7 @@ und fundierte Entscheidungen zu treffen.&lt;/content>
   <property name="kdenlive:file_hash">c1a0ba51bae5e791d34d3375ccabab4b</property>
   <property name="kdenlive:audio_max0">153</property>
  </chain>
- <chain id="chain77" out="00:00:09.867">
+ <chain id="chain78" out="00:00:09.867">
   <property name="length">149</property>
   <property name="eof">pause</property>
   <property name="resource">ch01-s03-centric_de.m4a</property>
@@ -4651,7 +5149,7 @@ und fundierte Entscheidungen zu treffen.&lt;/content>
   <property name="kdenlive:file_hash">429cec058879126dd937f22cbacfc3e4</property>
   <property name="kdenlive:audio_max0">157</property>
  </chain>
- <chain id="chain78" out="00:00:09.467">
+ <chain id="chain79" out="00:00:09.467">
   <property name="length">143</property>
   <property name="eof">pause</property>
   <property name="resource">ch01-s02-complex_de.m4a</property>
@@ -4685,7 +5183,7 @@ und fundierte Entscheidungen zu treffen.&lt;/content>
   <property name="kdenlive:file_hash">2f636a323af714d35e1fa448ea42c94a</property>
   <property name="kdenlive:audio_max0">145</property>
  </chain>
- <chain id="chain79" out="00:00:11.333">
+ <chain id="chain80" out="00:00:11.333">
   <property name="length">171</property>
   <property name="eof">pause</property>
   <property name="resource">ch01-s01-challenges_de.m4a</property>
@@ -4719,7 +5217,7 @@ und fundierte Entscheidungen zu treffen.&lt;/content>
   <property name="kdenlive:file_hash">4cc5d3a96de2c508d73501c496ad5083</property>
   <property name="kdenlive:audio_max0">171</property>
  </chain>
- <chain id="chain80" out="00:00:10.667">
+ <chain id="chain81" out="00:00:10.667">
   <property name="length">161</property>
   <property name="eof">pause</property>
   <property name="resource">ch00-s03-journey_de.m4a</property>
@@ -4753,7 +5251,7 @@ und fundierte Entscheidungen zu treffen.&lt;/content>
   <property name="kdenlive:file_hash">488a8325630459d8eb9bd19c22199590</property>
   <property name="kdenlive:audio_max0">155</property>
  </chain>
- <chain id="chain81" out="00:00:12.067">
+ <chain id="chain82" out="00:00:12.067">
   <property name="length">182</property>
   <property name="eof">pause</property>
   <property name="resource">ch00-s02-inclusive_de.m4a</property>
@@ -4787,7 +5285,7 @@ und fundierte Entscheidungen zu treffen.&lt;/content>
   <property name="kdenlive:file_hash">8edbd103bd229977d8d2163b3c938b3a</property>
   <property name="kdenlive:audio_max0">168</property>
  </chain>
- <chain id="chain82" out="00:00:12.000">
+ <chain id="chain83" out="00:00:12.000">
   <property name="length">181</property>
   <property name="eof">pause</property>
   <property name="resource">ch00-s01-welcome_de.m4a</property>
@@ -4821,7 +5319,7 @@ und fundierte Entscheidungen zu treffen.&lt;/content>
   <property name="kdenlive:file_hash">817a524003f0465503116a20007cb583</property>
   <property name="kdenlive:audio_max0">149</property>
  </chain>
- <producer id="producer17" in="00:00:00.000" out="00:00:12.667">
+ <producer id="producer42" in="00:00:00.000" out="00:00:12.667">
   <property name="length">191</property>
   <property name="eof">pause</property>
   <property name="resource"/>
@@ -4853,6 +5351,306 @@ Balkenrennen für Kategorien und mehr.&lt;/content>
   <property name="meta.media.width">1596</property>
   <property name="meta.media.height">894</property>
  </producer>
+ <chain id="chain84" out="00:02:57.733">
+  <property name="length">2667</property>
+  <property name="eof">pause</property>
+  <property name="resource">00_intro_de.mp4</property>
+  <property name="mlt_service">avformat-novalidate</property>
+  <property name="meta.media.nb_streams">1</property>
+  <property name="meta.media.0.stream.type">video</property>
+  <property name="meta.media.0.stream.frame_rate">15</property>
+  <property name="meta.media.0.stream.sample_aspect_ratio">1</property>
+  <property name="meta.media.0.codec.width">1284</property>
+  <property name="meta.media.0.codec.height">722</property>
+  <property name="meta.media.0.codec.rotate">0</property>
+  <property name="meta.media.0.codec.pix_fmt">yuv444p</property>
+  <property name="meta.media.0.codec.sample_aspect_ratio">1</property>
+  <property name="meta.media.0.codec.colorspace">709</property>
+  <property name="meta.media.0.codec.color_trc">1</property>
+  <property name="meta.media.0.codec.name">h264</property>
+  <property name="meta.media.0.codec.long_name">H.264 / AVC / MPEG-4 AVC / MPEG-4 part 10</property>
+  <property name="meta.media.0.codec.bit_rate">513708</property>
+  <property name="meta.attr.0.stream.creation_time.markup">2023-11-15T14:00:21.000000Z</property>
+  <property name="meta.attr.0.stream.handler_name.markup">VideoHandler</property>
+  <property name="meta.attr.0.stream.vendor_id.markup">[0][0][0][0]</property>
+  <property name="meta.attr.major_brand.markup">mp42</property>
+  <property name="meta.attr.minor_version.markup">0</property>
+  <property name="meta.attr.compatible_brands.markup">mp42mp41isomiso2</property>
+  <property name="meta.attr.creation_time.markup">2023-11-15T14:00:21.000000Z</property>
+  <property name="meta.attr.encoder.markup">x264</property>
+  <property name="seekable">1</property>
+  <property name="meta.media.sample_aspect_num">1</property>
+  <property name="meta.media.sample_aspect_den">1</property>
+  <property name="audio_index">-1</property>
+  <property name="video_index">0</property>
+  <property name="vstream">0</property>
+  <property name="meta.media.frame_rate_num">15</property>
+  <property name="meta.media.frame_rate_den">1</property>
+  <property name="meta.media.colorspace">709</property>
+  <property name="meta.media.color_trc">1</property>
+  <property name="meta.media.has_b_frames">0</property>
+  <property name="meta.media.width">1284</property>
+  <property name="meta.media.height">722</property>
+  <property name="meta.media.color_range">mpeg</property>
+  <property name="meta.media.top_field_first">0</property>
+  <property name="meta.media.progressive">1</property>
+  <property name="kdenlive:folderid">-1</property>
+  <property name="kdenlive:id">102</property>
+  <property name="mute_on_pause">0</property>
+  <property name="kdenlive:clip_type">2</property>
+  <property name="kdenlive:file_size">11428830</property>
+  <property name="kdenlive:file_hash">8da70a47be3a6c6fcf01bc6c2da30327</property>
+ </chain>
+ <chain id="chain85" out="00:00:24.267">
+  <property name="length">365</property>
+  <property name="eof">pause</property>
+  <property name="resource">01_account_de.mp4</property>
+  <property name="mlt_service">avformat-novalidate</property>
+  <property name="meta.media.nb_streams">1</property>
+  <property name="meta.media.0.stream.type">video</property>
+  <property name="meta.media.0.stream.frame_rate">15</property>
+  <property name="meta.media.0.stream.sample_aspect_ratio">1</property>
+  <property name="meta.media.0.codec.width">1284</property>
+  <property name="meta.media.0.codec.height">722</property>
+  <property name="meta.media.0.codec.rotate">0</property>
+  <property name="meta.media.0.codec.pix_fmt">yuv444p</property>
+  <property name="meta.media.0.codec.sample_aspect_ratio">1</property>
+  <property name="meta.media.0.codec.colorspace">709</property>
+  <property name="meta.media.0.codec.color_trc">1</property>
+  <property name="meta.media.0.codec.name">h264</property>
+  <property name="meta.media.0.codec.long_name">H.264 / AVC / MPEG-4 AVC / MPEG-4 part 10</property>
+  <property name="meta.media.0.codec.bit_rate">447950</property>
+  <property name="meta.attr.0.stream.creation_time.markup">2023-11-15T14:10:17.000000Z</property>
+  <property name="meta.attr.0.stream.handler_name.markup">VideoHandler</property>
+  <property name="meta.attr.0.stream.vendor_id.markup">[0][0][0][0]</property>
+  <property name="meta.attr.major_brand.markup">mp42</property>
+  <property name="meta.attr.minor_version.markup">0</property>
+  <property name="meta.attr.compatible_brands.markup">mp42mp41isomiso2</property>
+  <property name="meta.attr.creation_time.markup">2023-11-15T14:10:17.000000Z</property>
+  <property name="meta.attr.encoder.markup">x264</property>
+  <property name="seekable">1</property>
+  <property name="meta.media.sample_aspect_num">1</property>
+  <property name="meta.media.sample_aspect_den">1</property>
+  <property name="audio_index">-1</property>
+  <property name="video_index">0</property>
+  <property name="vstream">0</property>
+  <property name="meta.media.frame_rate_num">15</property>
+  <property name="meta.media.frame_rate_den">1</property>
+  <property name="meta.media.colorspace">709</property>
+  <property name="meta.media.color_trc">1</property>
+  <property name="meta.media.has_b_frames">0</property>
+  <property name="meta.media.width">1284</property>
+  <property name="meta.media.height">722</property>
+  <property name="meta.media.color_range">mpeg</property>
+  <property name="meta.media.top_field_first">0</property>
+  <property name="meta.media.progressive">1</property>
+  <property name="kdenlive:folderid">-1</property>
+  <property name="kdenlive:id">103</property>
+  <property name="mute_on_pause">0</property>
+  <property name="kdenlive:clip_type">2</property>
+  <property name="kdenlive:file_size">1364905</property>
+  <property name="kdenlive:file_hash">5f3188e9e36ac36f399ce9b80c370fe0</property>
+ </chain>
+ <chain id="chain86" out="00:00:46.000">
+  <property name="length">691</property>
+  <property name="eof">pause</property>
+  <property name="resource">02_budget_de.mp4</property>
+  <property name="mlt_service">avformat-novalidate</property>
+  <property name="meta.media.nb_streams">1</property>
+  <property name="meta.media.0.stream.type">video</property>
+  <property name="meta.media.0.stream.frame_rate">15</property>
+  <property name="meta.media.0.stream.sample_aspect_ratio">1</property>
+  <property name="meta.media.0.codec.width">1284</property>
+  <property name="meta.media.0.codec.height">722</property>
+  <property name="meta.media.0.codec.rotate">0</property>
+  <property name="meta.media.0.codec.pix_fmt">yuv444p</property>
+  <property name="meta.media.0.codec.sample_aspect_ratio">1</property>
+  <property name="meta.media.0.codec.colorspace">709</property>
+  <property name="meta.media.0.codec.color_trc">1</property>
+  <property name="meta.media.0.codec.name">h264</property>
+  <property name="meta.media.0.codec.long_name">H.264 / AVC / MPEG-4 AVC / MPEG-4 part 10</property>
+  <property name="meta.media.0.codec.bit_rate">150565</property>
+  <property name="meta.attr.0.stream.creation_time.markup">2023-11-15T14:13:14.000000Z</property>
+  <property name="meta.attr.0.stream.handler_name.markup">VideoHandler</property>
+  <property name="meta.attr.0.stream.vendor_id.markup">[0][0][0][0]</property>
+  <property name="meta.attr.major_brand.markup">mp42</property>
+  <property name="meta.attr.minor_version.markup">0</property>
+  <property name="meta.attr.compatible_brands.markup">mp42mp41isomiso2</property>
+  <property name="meta.attr.creation_time.markup">2023-11-15T14:13:14.000000Z</property>
+  <property name="meta.attr.encoder.markup">x264</property>
+  <property name="seekable">1</property>
+  <property name="meta.media.sample_aspect_num">1</property>
+  <property name="meta.media.sample_aspect_den">1</property>
+  <property name="audio_index">-1</property>
+  <property name="video_index">0</property>
+  <property name="vstream">0</property>
+  <property name="meta.media.frame_rate_num">15</property>
+  <property name="meta.media.frame_rate_den">1</property>
+  <property name="meta.media.colorspace">709</property>
+  <property name="meta.media.color_trc">1</property>
+  <property name="meta.media.has_b_frames">0</property>
+  <property name="meta.media.width">1284</property>
+  <property name="meta.media.height">722</property>
+  <property name="meta.media.color_range">mpeg</property>
+  <property name="meta.media.top_field_first">0</property>
+  <property name="meta.media.progressive">1</property>
+  <property name="kdenlive:folderid">-1</property>
+  <property name="kdenlive:id">104</property>
+  <property name="mute_on_pause">0</property>
+  <property name="kdenlive:clip_type">2</property>
+  <property name="kdenlive:file_size">870710</property>
+  <property name="kdenlive:file_hash">bb52f0b89083385180a328072d604d35</property>
+ </chain>
+ <chain id="chain87" out="00:01:04.600">
+  <property name="length">970</property>
+  <property name="eof">pause</property>
+  <property name="resource">03_bills_de.mp4</property>
+  <property name="mlt_service">avformat-novalidate</property>
+  <property name="meta.media.nb_streams">1</property>
+  <property name="meta.media.0.stream.type">video</property>
+  <property name="meta.media.0.stream.frame_rate">15</property>
+  <property name="meta.media.0.stream.sample_aspect_ratio">1</property>
+  <property name="meta.media.0.codec.width">1284</property>
+  <property name="meta.media.0.codec.height">722</property>
+  <property name="meta.media.0.codec.rotate">0</property>
+  <property name="meta.media.0.codec.pix_fmt">yuv444p</property>
+  <property name="meta.media.0.codec.sample_aspect_ratio">1</property>
+  <property name="meta.media.0.codec.colorspace">709</property>
+  <property name="meta.media.0.codec.color_trc">1</property>
+  <property name="meta.media.0.codec.name">h264</property>
+  <property name="meta.media.0.codec.long_name">H.264 / AVC / MPEG-4 AVC / MPEG-4 part 10</property>
+  <property name="meta.media.0.codec.bit_rate">285295</property>
+  <property name="meta.attr.0.stream.creation_time.markup">2023-11-15T14:17:43.000000Z</property>
+  <property name="meta.attr.0.stream.handler_name.markup">VideoHandler</property>
+  <property name="meta.attr.0.stream.vendor_id.markup">[0][0][0][0]</property>
+  <property name="meta.attr.major_brand.markup">mp42</property>
+  <property name="meta.attr.minor_version.markup">0</property>
+  <property name="meta.attr.compatible_brands.markup">mp42mp41isomiso2</property>
+  <property name="meta.attr.creation_time.markup">2023-11-15T14:17:43.000000Z</property>
+  <property name="meta.attr.encoder.markup">x264</property>
+  <property name="seekable">1</property>
+  <property name="meta.media.sample_aspect_num">1</property>
+  <property name="meta.media.sample_aspect_den">1</property>
+  <property name="audio_index">-1</property>
+  <property name="video_index">0</property>
+  <property name="vstream">0</property>
+  <property name="meta.media.frame_rate_num">15</property>
+  <property name="meta.media.frame_rate_den">1</property>
+  <property name="meta.media.colorspace">709</property>
+  <property name="meta.media.color_trc">1</property>
+  <property name="meta.media.has_b_frames">0</property>
+  <property name="meta.media.width">1284</property>
+  <property name="meta.media.height">722</property>
+  <property name="meta.media.color_range">mpeg</property>
+  <property name="meta.media.top_field_first">0</property>
+  <property name="meta.media.progressive">1</property>
+  <property name="kdenlive:folderid">-1</property>
+  <property name="kdenlive:id">106</property>
+  <property name="mute_on_pause">0</property>
+  <property name="kdenlive:clip_type">2</property>
+  <property name="kdenlive:file_size">2310967</property>
+  <property name="kdenlive:file_hash">e571ce8f760e611a5eaa7ebec0192c49</property>
+ </chain>
+ <chain id="chain88" out="00:00:33.400">
+  <property name="length">502</property>
+  <property name="eof">pause</property>
+  <property name="resource">04_exchange_de.mp4</property>
+  <property name="mlt_service">avformat-novalidate</property>
+  <property name="meta.media.nb_streams">1</property>
+  <property name="meta.media.0.stream.type">video</property>
+  <property name="meta.media.0.stream.frame_rate">15</property>
+  <property name="meta.media.0.stream.sample_aspect_ratio">1</property>
+  <property name="meta.media.0.codec.width">1284</property>
+  <property name="meta.media.0.codec.height">722</property>
+  <property name="meta.media.0.codec.rotate">0</property>
+  <property name="meta.media.0.codec.pix_fmt">yuv444p</property>
+  <property name="meta.media.0.codec.sample_aspect_ratio">1</property>
+  <property name="meta.media.0.codec.colorspace">709</property>
+  <property name="meta.media.0.codec.color_trc">1</property>
+  <property name="meta.media.0.codec.name">h264</property>
+  <property name="meta.media.0.codec.long_name">H.264 / AVC / MPEG-4 AVC / MPEG-4 part 10</property>
+  <property name="meta.media.0.codec.bit_rate">332019</property>
+  <property name="meta.attr.0.stream.creation_time.markup">2023-11-15T14:20:58.000000Z</property>
+  <property name="meta.attr.0.stream.handler_name.markup">VideoHandler</property>
+  <property name="meta.attr.0.stream.vendor_id.markup">[0][0][0][0]</property>
+  <property name="meta.attr.major_brand.markup">mp42</property>
+  <property name="meta.attr.minor_version.markup">0</property>
+  <property name="meta.attr.compatible_brands.markup">mp42mp41isomiso2</property>
+  <property name="meta.attr.creation_time.markup">2023-11-15T14:20:58.000000Z</property>
+  <property name="meta.attr.encoder.markup">x264</property>
+  <property name="seekable">1</property>
+  <property name="meta.media.sample_aspect_num">1</property>
+  <property name="meta.media.sample_aspect_den">1</property>
+  <property name="audio_index">-1</property>
+  <property name="video_index">0</property>
+  <property name="vstream">0</property>
+  <property name="meta.media.frame_rate_num">15</property>
+  <property name="meta.media.frame_rate_den">1</property>
+  <property name="meta.media.colorspace">709</property>
+  <property name="meta.media.color_trc">1</property>
+  <property name="meta.media.has_b_frames">0</property>
+  <property name="meta.media.width">1284</property>
+  <property name="meta.media.height">722</property>
+  <property name="meta.media.color_range">mpeg</property>
+  <property name="meta.media.top_field_first">0</property>
+  <property name="meta.media.progressive">1</property>
+  <property name="kdenlive:folderid">-1</property>
+  <property name="kdenlive:id">107</property>
+  <property name="mute_on_pause">0</property>
+  <property name="kdenlive:clip_type">2</property>
+  <property name="kdenlive:file_size">1391892</property>
+  <property name="kdenlive:file_hash">3361d20192ddb562cfce8252b4604e91</property>
+ </chain>
+ <chain id="chain89" out="00:00:22.800">
+  <property name="length">343</property>
+  <property name="eof">pause</property>
+  <property name="resource">05_metrics_de.mp4</property>
+  <property name="mlt_service">avformat-novalidate</property>
+  <property name="meta.media.nb_streams">1</property>
+  <property name="meta.media.0.stream.type">video</property>
+  <property name="meta.media.0.stream.frame_rate">15</property>
+  <property name="meta.media.0.stream.sample_aspect_ratio">1</property>
+  <property name="meta.media.0.codec.width">1284</property>
+  <property name="meta.media.0.codec.height">722</property>
+  <property name="meta.media.0.codec.rotate">0</property>
+  <property name="meta.media.0.codec.pix_fmt">yuv444p</property>
+  <property name="meta.media.0.codec.sample_aspect_ratio">1</property>
+  <property name="meta.media.0.codec.colorspace">709</property>
+  <property name="meta.media.0.codec.color_trc">1</property>
+  <property name="meta.media.0.codec.name">h264</property>
+  <property name="meta.media.0.codec.long_name">H.264 / AVC / MPEG-4 AVC / MPEG-4 part 10</property>
+  <property name="meta.media.0.codec.bit_rate">257424</property>
+  <property name="meta.attr.0.stream.creation_time.markup">2023-11-15T14:25:02.000000Z</property>
+  <property name="meta.attr.0.stream.handler_name.markup">VideoHandler</property>
+  <property name="meta.attr.0.stream.vendor_id.markup">[0][0][0][0]</property>
+  <property name="meta.attr.major_brand.markup">mp42</property>
+  <property name="meta.attr.minor_version.markup">0</property>
+  <property name="meta.attr.compatible_brands.markup">mp42mp41isomiso2</property>
+  <property name="meta.attr.creation_time.markup">2023-11-15T14:25:02.000000Z</property>
+  <property name="meta.attr.encoder.markup">x264</property>
+  <property name="seekable">1</property>
+  <property name="meta.media.sample_aspect_num">1</property>
+  <property name="meta.media.sample_aspect_den">1</property>
+  <property name="audio_index">-1</property>
+  <property name="video_index">0</property>
+  <property name="vstream">0</property>
+  <property name="meta.media.frame_rate_num">15</property>
+  <property name="meta.media.frame_rate_den">1</property>
+  <property name="meta.media.colorspace">709</property>
+  <property name="meta.media.color_trc">1</property>
+  <property name="meta.media.has_b_frames">0</property>
+  <property name="meta.media.width">1284</property>
+  <property name="meta.media.height">722</property>
+  <property name="meta.media.color_range">mpeg</property>
+  <property name="meta.media.top_field_first">0</property>
+  <property name="meta.media.progressive">1</property>
+  <property name="kdenlive:folderid">-1</property>
+  <property name="kdenlive:id">108</property>
+  <property name="mute_on_pause">0</property>
+  <property name="kdenlive:clip_type">2</property>
+  <property name="kdenlive:file_size">738107</property>
+  <property name="kdenlive:file_hash">34568617dda768d380b9defbc969dc8b</property>
+ </chain>
  <playlist id="main_bin">
   <property name="kdenlive:folder.-1.2">Sequences</property>
   <property name="kdenlive:folder.-1.54">Pasted clips</property>
@@ -4943,7 +5741,7 @@ Balkenrennen für Kategorien und mehr.&lt;/content>
   <property name="kdenlive:docproperties.rendertcoverlay">0</property>
   <property name="kdenlive:docproperties.rendertctype">-1</property>
   <property name="kdenlive:docproperties.rendertwopass">0</property>
-  <property name="kdenlive:docproperties.renderurl">/home/vlyskouski/Videos/index.mp4</property>
+  <property name="kdenlive:docproperties.renderurl">/home/vlyskouski/Videos/index_de.mp4</property>
   <property name="kdenlive:docproperties.seekOffset">30000</property>
   <property name="kdenlive:docproperties.uuid">{ff20d2f2-8ff5-4477-ab01-973293a4bf18}</property>
   <property name="kdenlive:docproperties.version">1.1</property>
@@ -5015,43 +5813,49 @@ Balkenrennen für Kategorien und mehr.&lt;/content>
   <entry producer="producer36" in="00:00:00.000" out="00:00:08.467"/>
   <entry producer="producer37" in="00:00:00.000" out="00:00:08.600"/>
   <entry producer="tractor5" in="00:00:00.000" out="00:02:46.000"/>
-  <entry producer="chain20" in="00:00:00.000" out="00:04:16.533"/>
-  <entry producer="chain21" in="00:00:00.000" out="00:00:03.067"/>
-  <entry producer="chain22" in="00:00:00.000" out="00:00:08.400"/>
-  <entry producer="chain23" in="00:00:00.000" out="00:00:04.267"/>
-  <entry producer="chain24" in="00:00:00.000" out="00:00:04.733"/>
-  <entry producer="chain25" in="00:00:00.000" out="00:00:06.933"/>
-  <entry producer="chain26" in="00:00:00.000" out="00:00:06.267"/>
-  <entry producer="chain27" in="00:00:00.000" out="00:00:09.467"/>
-  <entry producer="chain72" in="00:00:00.000" out="00:00:07.133"/>
-  <entry producer="chain73" in="00:00:00.000" out="00:00:07.600"/>
-  <entry producer="chain74" in="00:00:00.000" out="00:00:04.867"/>
-  <entry producer="chain75" in="00:00:00.000" out="00:00:06.133"/>
-  <entry producer="chain76" in="00:00:00.000" out="00:00:10.467"/>
-  <entry producer="chain77" in="00:00:00.000" out="00:00:09.867"/>
-  <entry producer="chain78" in="00:00:00.000" out="00:00:09.467"/>
-  <entry producer="chain79" in="00:00:00.000" out="00:00:11.333"/>
-  <entry producer="chain80" in="00:00:00.000" out="00:00:10.667"/>
-  <entry producer="chain81" in="00:00:00.000" out="00:00:12.067"/>
-  <entry producer="chain82" in="00:00:00.000" out="00:00:12.000"/>
-  <entry producer="producer4" in="00:00:00.000" out="00:00:08.467"/>
-  <entry producer="producer3" in="00:00:00.000" out="00:00:10.200"/>
-  <entry producer="producer5" in="00:00:00.000" out="00:00:10.200"/>
-  <entry producer="producer6" in="00:00:00.000" out="00:00:10.200"/>
-  <entry producer="producer7" in="00:00:00.000" out="00:00:10.733"/>
-  <entry producer="producer8" in="00:00:00.000" out="00:00:10.733"/>
-  <entry producer="producer9" in="00:00:00.000" out="00:00:11.333"/>
-  <entry producer="producer10" in="00:00:00.000" out="00:00:12.667"/>
-  <entry producer="producer11" in="00:00:00.000" out="00:00:12.667"/>
-  <entry producer="producer12" in="00:00:00.000" out="00:00:12.667"/>
-  <entry producer="producer13" in="00:00:00.000" out="00:00:12.667"/>
-  <entry producer="producer14" in="00:00:00.000" out="00:00:12.667"/>
-  <entry producer="producer15" in="00:00:00.000" out="00:00:12.667"/>
-  <entry producer="producer17" in="00:00:00.000" out="00:00:12.667"/>
+  <entry producer="chain21" in="00:00:00.000" out="00:04:16.533"/>
+  <entry producer="chain22" in="00:00:00.000" out="00:00:03.067"/>
+  <entry producer="chain23" in="00:00:00.000" out="00:00:08.400"/>
+  <entry producer="chain24" in="00:00:00.000" out="00:00:04.267"/>
+  <entry producer="chain25" in="00:00:00.000" out="00:00:04.733"/>
+  <entry producer="chain26" in="00:00:00.000" out="00:00:06.933"/>
+  <entry producer="chain27" in="00:00:00.000" out="00:00:06.267"/>
+  <entry producer="chain72" in="00:00:00.000" out="00:00:09.467"/>
+  <entry producer="chain73" in="00:00:00.000" out="00:00:07.133"/>
+  <entry producer="chain74" in="00:00:00.000" out="00:00:07.600"/>
+  <entry producer="chain75" in="00:00:00.000" out="00:00:04.867"/>
+  <entry producer="chain76" in="00:00:00.000" out="00:00:06.133"/>
+  <entry producer="chain77" in="00:00:00.000" out="00:00:10.467"/>
+  <entry producer="chain78" in="00:00:00.000" out="00:00:09.867"/>
+  <entry producer="chain79" in="00:00:00.000" out="00:00:09.467"/>
+  <entry producer="chain80" in="00:00:00.000" out="00:00:11.333"/>
+  <entry producer="chain81" in="00:00:00.000" out="00:00:10.667"/>
+  <entry producer="chain82" in="00:00:00.000" out="00:00:12.067"/>
+  <entry producer="chain83" in="00:00:00.000" out="00:00:12.000"/>
+  <entry producer="producer10" in="00:00:00.000" out="00:00:08.467"/>
+  <entry producer="producer9" in="00:00:00.000" out="00:00:10.200"/>
+  <entry producer="producer11" in="00:00:00.000" out="00:00:10.200"/>
+  <entry producer="producer12" in="00:00:00.000" out="00:00:10.200"/>
+  <entry producer="producer13" in="00:00:00.000" out="00:00:10.733"/>
+  <entry producer="producer14" in="00:00:00.000" out="00:00:10.733"/>
+  <entry producer="producer15" in="00:00:00.000" out="00:00:11.333"/>
   <entry producer="producer16" in="00:00:00.000" out="00:00:12.667"/>
+  <entry producer="producer17" in="00:00:00.000" out="00:00:12.667"/>
+  <entry producer="producer18" in="00:00:00.000" out="00:00:12.667"/>
+  <entry producer="producer19" in="00:00:00.000" out="00:00:12.667"/>
+  <entry producer="producer39" in="00:00:00.000" out="00:00:12.667"/>
+  <entry producer="producer40" in="00:00:00.000" out="00:00:12.667"/>
+  <entry producer="producer42" in="00:00:00.000" out="00:00:12.667"/>
+  <entry producer="producer41" in="00:00:00.000" out="00:00:12.667"/>
+  <entry producer="chain84" in="00:00:00.000" out="00:02:57.733"/>
+  <entry producer="chain85" in="00:00:00.000" out="00:00:24.267"/>
+  <entry producer="chain86" in="00:00:00.000" out="00:00:46.000"/>
+  <entry producer="chain87" in="00:00:00.000" out="00:01:04.600"/>
+  <entry producer="chain88" in="00:00:00.000" out="00:00:33.400"/>
+  <entry producer="chain89" in="00:00:00.000" out="00:00:22.800"/>
  </playlist>
- <tractor id="tractor6" in="00:00:00.000" out="00:02:45.067">
+ <tractor id="tractor6" in="00:00:00.000" out="00:02:45.000">
   <property name="kdenlive:projectTractor">1</property>
-  <track producer="tractor5" in="00:00:00.000" out="00:02:45.067"/>
+  <track producer="tractor5" in="00:00:00.000" out="00:02:45.000"/>
  </tractor>
 </mlt>
