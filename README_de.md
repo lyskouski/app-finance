@@ -33,7 +33,7 @@ gantt
 | Typ                      | Alpha-Version         | Vorabversion                  | Freigabe                      |
 | ------------------------ | ----------------------| ----------------------------- | ----------------------------- |
 | ![Apple](./docs/design-flow/icons/apple.png) iOS (Apple Store)        | [fingrom_iOS.ipa](https://github.com/lyskouski/app-finance/releases/latest) | [TestFlight: Fingrom](https://testflight.apple.com/join/93ECy9ZB) | [![iOS Apple Store](./docs/design-flow/badges/ios.png)](https://apps.apple.com/us/app/fingrom/id6463955600) |
-| ![Apple](./docs/design-flow/icons/apple.png) macOS (Apple Store)      | [fingrom_macOS.zip](https://github.com/lyskouski/app-finance/releases/latest) | Not available for testing | [![macOS Apple Store](./docs/design-flow/badges/macos.png)](https://apps.apple.com/us/app/fingrom/id6463955600) |
+| ![Apple](./docs/design-flow/icons/apple.png) macOS (Apple Store)      | [fingrom_macOS.zip](https://github.com/lyskouski/app-finance/releases/latest) | Nicht verfügbar für Tests | [![macOS Apple Store](./docs/design-flow/badges/macos.png)](https://apps.apple.com/us/app/fingrom/id6463955600) |
 | ![Android](./docs/design-flow/icons/android.png) Android (Google Play)    | [fingrom_Android.aab](https://github.com/lyskouski/app-finance/releases/latest) | [[in Wartestellung]](https://github.com/lyskouski/app-finance/issues/129) | [[in Wartestellung]](https://github.com/lyskouski/app-finance/issues/129) |
 | ![Android](./docs/design-flow/icons/android.png) Android (Galaxy Store)   | [fingrom_Android.aab](https://github.com/lyskouski/app-finance/releases/latest) | [Galaxy Store](https://galaxystore.samsung.com/detail/com.tercad.fingrom) | [![Fingrom](./docs/design-flow/badges/galaxy-store.png)](https://galaxy.store/apFinance) |
 | ![Android](./docs/design-flow/icons/android.png) Android (Huawei Gallery) | [fingrom_Android.aab](https://github.com/lyskouski/app-finance/releases/latest) | [App Gallery](https://appgallery.huawei.com/#/app/C109437079) | [![App Gallery](./docs/design-flow/badges/huawei.png)](https://appgallery.huawei.com/#/app/C109437079) |
@@ -71,7 +71,7 @@ gantt
     - Balkenrennen für Kategorien
   - Ziele-Gauge-Diagramm
   - Historisches Währungsdiagramm
-- Synchronisation zwischen Geräten (P2P) 
+- Synchronisation zwischen Geräten (P2P)  [[demo]](https://youtu.be/RccQ8JpfJs4)
 - Wiederherstellung über WebDav oder eine direkte Datei
 - Import von `CSV`, `QIF`, `OFX` Dateien für Rechnungen und Abrechnungen
 - Verschlüsselung der Daten

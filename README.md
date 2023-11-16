@@ -70,7 +70,7 @@ gantt
     - Bar Race for Categories
   - Goals Gauge Chart
   - Currency Historical Chart
-- Synchronization between devices (P2P) 
+- Synchronization between devices (P2P) [[demo]](https://youtu.be/RccQ8JpfJs4)
 - Recovery via WebDav or a direct File
 - Import from `CSV`, `QIF`, `OFX` files for Bills and Invoices
 - Data encryption
