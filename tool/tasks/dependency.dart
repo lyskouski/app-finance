@@ -16,8 +16,8 @@ dependencyGraph() {
     '  node [shape=record, width=.1, height=.1];',
     '  ranksep=.75;',
     '  edge [penwidth=1.3];',
-    //  '  compound=true;',
-    '  concentrate=true;',
+    // '  compound=true;',
+    // '  concentrate=true;',
     '  nodesep=.05;',
     '  rankdir=LR;',
     '',
@@ -30,7 +30,7 @@ dependencyGraph() {
     if (structure[key] == null) {
       structure[key] = {};
     }
-    final path = convertPath(filePath).split(':');
+    final path = convertPath(filePath, false).split(':');
     final sub = path[0];
     if (structure[key]![sub] == null) {
       structure[key]![sub] = [];
@@ -63,20 +63,22 @@ dependencyGraph() {
     }
   }
 
+  final dependencies = <String>{};
   for (final from in files) {
     final file = File(path.join(Directory.current.path, 'lib/$from'));
     final content = file.readAsStringSync();
     final search = RegExp("import 'package:app_finance/(.*?).dart';");
     for (final to in search.allMatches(content).where((v) => v.groupCount > 0).map((v) => v.group(1)!).toList()) {
-      graph.writeln('  ${convertPath(to)} -> ${convertPath(from)} [color=${getColor(from)}];');
+      dependencies.add('  ${convertPath(from)} -> ${convertPath(to)} [color="${getColor(from)}"];');
     }
   }
+  graph.writeln(dependencies.toList().join(eol));
 
   graph.writeln('}');
   File(path.join(Directory.current.path, 'coverage/dependencies.dot')).writeAsStringSync(graph.toString());
 }
 
-String convertPath(String filePath) {
+String convertPath(String filePath, [bool isShort = true]) {
   if (filePath.startsWith('/')) {
     filePath = filePath.replaceFirst('/', '');
   }
@@ -88,7 +90,7 @@ String convertPath(String filePath) {
   if (sub.isEmpty) {
     sub = '${parts.first}_';
   }
-  return '$sub:${parts.last.replaceAll('.dart', '')}';
+  return isShort ? sub : '$sub:${parts.last.replaceAll('.dart', '')}';
 }
 
 String getColor(String filePath) => switch (filePath.split('/')[1]) {
@@ -97,7 +99,7 @@ String getColor(String filePath) => switch (filePath.split('/')[1]) {
       '_ext' => 'green',
       '_mixins' => 'green',
       'charts' => 'red',
-      'components' => 'red',
-      'design' => 'maroon',
-      _ => 'silver',
+      'components' => '#FF00FF50',
+      'design' => '#0000FF50',
+      _ => '#F0F0F050',
     };
