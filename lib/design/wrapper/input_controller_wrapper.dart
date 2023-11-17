@@ -3,7 +3,7 @@
 
 import 'package:app_finance/_classes/herald/app_zoom.dart';
 import 'package:app_finance/_classes/structure/navigation/app_route.dart';
-import 'package:app_finance/pages/_interfaces/abstract_page_state.dart';
+// import 'package:app_finance/pages/_interfaces/abstract_page_state.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -21,6 +21,7 @@ enum AppEvents {
 }
 
 class InputControllerWrapper extends StatefulWidget {
+  static final drawerKey = GlobalKey();
   final Widget child;
 
   const InputControllerWrapper({
@@ -61,7 +62,7 @@ class InputControllerWrapperState extends State<InputControllerWrapper> {
         zoom.set(1.0);
         break;
       case AppEvents.tipDrawer:
-        final render = AbstractPageState.drawerKey.currentContext?.findRenderObject();
+        final render = InputControllerWrapper.drawerKey.currentContext?.findRenderObject();
         if (render != null) {
           Scaffold.of(context).closeDrawer();
         } else {

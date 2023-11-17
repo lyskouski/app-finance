@@ -19,7 +19,6 @@ import 'package:flutter_markdown/flutter_markdown.dart';
 import 'package:provider/provider.dart';
 
 abstract class AbstractPageState<T extends StatefulWidget> extends State<T> {
-  static final drawerKey = GlobalKey();
   late AppData state;
 
   int selectedMenu = 0;
@@ -248,7 +247,7 @@ abstract class AbstractPageState<T extends StatefulWidget> extends State<T> {
   Drawer? buildDrawer() {
     final ColorScheme colorScheme = context.colorScheme;
     return Drawer(
-      key: drawerKey,
+      key: InputControllerWrapper.drawerKey,
       elevation: 0,
       shape: Border.all(width: 0),
       child: ScreenHelper.state().isWide
