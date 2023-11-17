@@ -8,6 +8,7 @@ import './tasks/coverage.dart' as c;
 import './tasks/hook.dart' as h;
 import './tasks/release.dart' as r;
 import './tasks/localization.dart' as l;
+import './tasks/dependency.dart' as d;
 
 main(args) => grind(args);
 
@@ -32,6 +33,9 @@ fullCoverage() => c.fullCoverage();
 
 @Task('Generate Coverage Badge for README.md file')
 coverageBadge() => c.coverageBadge();
+
+@Task('Generate Dependency Graph')
+dependencyGraph() => d.dependencyGraph();
 
 @Task('Install Git Hooks')
 installGitHooks() => h.installGitHooks();

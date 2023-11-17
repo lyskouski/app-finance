@@ -3,7 +3,7 @@
 
 import 'dart:io';
 import 'package:grinder/grinder.dart';
-import '../_classes/coverage.dart' as coverage;
+import '../_classes/dir.dart' as coverage;
 
 mock() {
   Process.runSync('dart', [
@@ -25,7 +25,7 @@ mock() {
 
 fixMock() {
   final rootFolder = Directory('${Directory.current.path}/test');
-  List<String> files = coverage.scanDirectory(rootFolder, rootFolder, '*.*.dart').map((path) => 'test$path').toList();
+  List<String> files = coverage.scanDirectory(rootFolder, '*.*.dart').map((path) => 'test$path').toList();
 
   Process.runSync('dart', ['format', '-l', '120', ...files]);
 }
