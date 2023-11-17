@@ -46,6 +46,13 @@ jobs:
         if: ${{ failure() }}
         run: flutter test --update-goldens test/widget
 
+      - name: Create Dependency Graph
+        if: matrix.os == 'ubuntu-latest'
+        run: |
+          dart pub global activate lakos
+          lakos -o coverage/dependencies.dot -m ./lib
+          dot -Tsvg coverage/dependencies.dot -o coverage/dependencies.svg
+
       - name: Store Tests Artifacts
         if: always()
         uses: actions/upload-artifact@v3
