@@ -76,7 +76,6 @@ dev_dependencies:
   dart_class_wrapper: ^1.0.1
   flutter_gherkin_generator: ^1.0.4
   flutter_gherkin_wrapper: ^1.0.4
-  lakos: ^2.0.1
 
 flutter:
   generate: true

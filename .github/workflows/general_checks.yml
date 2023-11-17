@@ -49,6 +49,7 @@ jobs:
       - name: Create Dependency Graph
         if: matrix.os == 'ubuntu-latest'
         run: |
+          sudo apt-get install -y graphviz
           dart pub global activate lakos
           dart run grinder dependency-graph
           dot -Tsvg coverage/dependencies.dot -o coverage/dependencies.svg
