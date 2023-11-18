@@ -4,23 +4,25 @@
 
 | Type                           | 2023-11-06 | 2023-11-13 | 2023-11-20 |
 |--------------------------------|------------|------------|------------|
+| **Repository**                 |            |            | |
 | Contributors                   |    1       |    1       | |
 | Repository Stars               |    6       |    6       | |
 | Repository Visitors            |   51 (163) |  115 (483) | |
 | Rep. Unique Clones             |   84       |   78       | |
+| **Application Analytics**      |            |            | |
 | Average interaction, seconds   |   88       |  183       | |
 | Precise impressions (Huawei)   |    -       |  200       | |
-| Application Usage (Reviews)    |            |            | |
-| - Windows                      |    8 (1)   |   16       | |
+| **Application Usage (Reviews)**|            |            | |
+| - Windows {Installs}           |    8 (1)   |   16       | |
 | - Linux Snap                   |    7       |    9       | |
-| - Linux Flathub                |    -       |  124       | |
+| - Linux Flathub {Installs}     |    -       |  124       | |
 | - macOS                        |    2       |    6       | |
 | - iOS Mobile                   |   35       |   54       | |
 | - iOS Tablet                   |   13       |   19       | |
 | - Android Mobile               |   38 (1)   |   89       | |
 | - Android Tablet               |    1       |    3       | |
 | - Web                          |   25       |   45       | |
-| Publications                   |    2       |    3       | |
+| **Publications**               |    2       |    3       | |
 | - Books KENP Read (Sells)      |  420       |  426 (1)   | |
 | - Medium Views (Claps)         |    2       |   45 (10)  | |
 | - Medium Followers             |    0       |    2       | |
@@ -28,7 +30,7 @@
 | - Twitter Views (Retweets)     |    -       |   45       | |
 | - Reddit Views (Upvotes)       |    -       |    -       | |
 | - Facebook Actions             |    -       |    9       | |
-| Videos                         |    1       |    1       | |
+| **Videos**                     |    1       |    1       | |
 | - View (Likes)                 |   17 (3)   |   44 (4)   | |
 | - Subscriptions                |    1       |    2       | |
 | - Average view duration        | 1:42       | 1:30       | |
