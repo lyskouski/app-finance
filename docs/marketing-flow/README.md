@@ -37,6 +37,10 @@
 ### 2023-11-18 [Post] Presentation of book, app, video, and articles 
 - https://www.reddit.com/r/FlutterDev/comments/17y1equ/from_zero_to_market_with_flutter/
 
+### 2023-11-16 [Video] [DE] Fingrom (Einführung): Anwendung der Finanzbuchhaltung
+- https://youtu.be/7hVGHYNzlQU
+- [LinkedIn Post](https://www.linkedin.com/posts/v-lyskouski_de-fingrom-einf%C3%BChrung-anwendung-der-activity-7130569448888877056-jKHg)
+
 ### 2023-11-13 [Community: Alexey Alter-Pesotskiy] Mobile Automation Newsletter 
 - https://testableapple.com/newsletter/19/
 - [LinkedIn Post](https://www.linkedin.com/feed/update/urn:li:activity:7129545454538625025/)
