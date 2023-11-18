@@ -5,7 +5,11 @@ import 'dart:io';
 import 'package:path/path.dart' as path;
 import '../_classes/dir.dart' as dir;
 
-dependencyGraph() {
+createClassGraph() {
+  Process.runSync('dot', ['-Tsvg', 'coverage/dependencies.dot', '-o', 'coverage/dependencies.svg'], runInShell: true);
+}
+
+generateClassGraph() {
   final rootFolder = Directory('${Directory.current.path}/lib');
   List<String> files = dir.scanDirectory(rootFolder).where((v) => !(v.contains('l10n/') || '/main.dart' == v)).toList();
   const eol = '\n';
@@ -16,8 +20,6 @@ dependencyGraph() {
     '  node [shape=record, width=.1, height=.1];',
     '  ranksep=.75;',
     '  edge [penwidth=1.3];',
-    // '  compound=true;',
-    // '  concentrate=true;',
     '  nodesep=.05;',
     '  rankdir=LR;',
     '',
@@ -54,7 +56,7 @@ dependencyGraph() {
         '  {',
         '    rank = same; "${entry.key}";',
         '    ${sub.key.replaceAll('/', '_')} ['
-            'label="${sub.key.replaceAll('/', ' / ').toUpperCase()}|${sub.value.map((e) => '<$e>$e').join('|')}| ",'
+            'label="<0>${sub.key.replaceAll('/', ' / ').toUpperCase()}|${sub.value.map((e) => '<$e>$e').join('|')}| ",'
             'fillcolor="silver:white", gradientangle=240, style="filled"'
             '];',
         '  }',

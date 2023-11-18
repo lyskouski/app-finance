@@ -50,8 +50,7 @@ jobs:
         if: matrix.os == 'ubuntu-latest'
         run: |
           sudo apt-get install -y graphviz
-          dart run grinder dependency-graph
-          dot -Tsvg coverage/dependencies.dot -o coverage/dependencies.svg
+          dart run grinder create-class-graph
 
       - name: Store Tests Artifacts
         if: always()

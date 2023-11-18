@@ -35,7 +35,11 @@ fullCoverage() => c.fullCoverage();
 coverageBadge() => c.coverageBadge();
 
 @Task('Generate Dependency Graph')
-dependencyGraph() => d.dependencyGraph();
+generateClassGraph() => d.generateClassGraph();
+
+@Task('Create Dependency Graph')
+@Depends(generateClassGraph)
+createClassGraph() => d.createClassGraph();
 
 @Task('Install Git Hooks')
 installGitHooks() => h.installGitHooks();
