@@ -12,7 +12,8 @@
 | Precise impressions (Huawei)   |    -       |  200       | |
 | Application Usage (Reviews)    |            |            | |
 | - Windows                      |    8 (1)   |   16       | |
-| - Linux                        |    7       |  133       | |
+| - Linux Snap                   |    7       |    9       | |
+| - Linux Flathub                |    -       |  124       | |
 | - macOS                        |    2       |    6       | |
 | - iOS Mobile                   |   35       |   54       | |
 | - iOS Tablet                   |   13       |   19       | |
@@ -25,6 +26,7 @@
 | - Medium Followers             |    0       |    2       | |
 | - LinkedIn Views (Likes)       | 2375 (27)  | 1937 (48)  | |
 | - Twitter Views (Retweets)     |    -       |   45       | |
+| - Reddit Views (Upvotes)       |    -       |    -       | |
 | - Facebook Actions             |    -       |    9       | |
 | Videos                         |    1       |    1       | |
 | - View (Likes)                 |   17 (3)   |   44 (4)   | |
