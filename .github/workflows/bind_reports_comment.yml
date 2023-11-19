@@ -1,0 +1,40 @@
+name: Bind Reports to Pull-Request
+
+on:
+  workflow_run:
+    workflows: [Generate Reports]
+    types: [completed]
+
+permissions:
+  pull-requests: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
+    steps:
+      - name: Get Artifacts Link
+        env:
+        env:
+          WORKFLOW_RUN_EVENT_OBJ: ${{ toJSON(github.event.workflow_run) }}
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          PREVIOUS_JOB_ID=$(jq -r '.id' <<< "$WORKFLOW_RUN_EVENT_OBJ")
+          ARTIFACT_URL=$(gh api "/repos/${{ github.repository }}/actions/artifacts" \
+            --jq ".artifacts.[] |
+            select(.workflow_run.id==${PREVIOUS_JOB_ID}) |
+            .archive_download_url")
+          echo "ARTIFACT_URL=$ARTIFACT_URL" >> "$GITHUB_ENV" 
+
+      - uses: actions/github-script@v6
+        with:
+          script: |
+            github.rest.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: 'Build artifacts:\n\n' +
+              '| Name | Link |\n' +
+              '|------|------|\n' +
+              '| Dependencies Graph | ${{ env.ARTIFACT_URL }} |\n'
+            })
