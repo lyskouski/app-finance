@@ -9,6 +9,7 @@ import 'package:app_finance/pages/_interfaces/abstract_page_state.dart';
 import 'package:app_finance/design/wrapper/row_widget.dart';
 import 'package:app_finance/design/wrapper/tab_widget.dart';
 import 'package:app_finance/design/wrapper/text_wrapper.dart';
+import 'package:app_finance/pages/about/widgets/members_tab.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_markdown/flutter_markdown.dart';
 import 'package:package_info_plus/package_info_plus.dart';
@@ -136,10 +137,12 @@ class AboutPageState extends AbstractPageState<AboutPage> with LauncherMixin {
               tabs: [
                 Tab(text: AppLocale.labels.termPrivacy),
                 Tab(text: AppLocale.labels.termUse),
+                Tab(text: AppLocale.labels.contributors),
               ],
               children: [
                 buildMarkdown('privacy_policy_$locale'),
                 buildMarkdown('terms_of_use_$locale'),
+                const MembersTab(),
               ],
             ),
           ),
