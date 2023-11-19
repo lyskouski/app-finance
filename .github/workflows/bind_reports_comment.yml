@@ -15,7 +15,6 @@ jobs:
     steps:
       - name: Get Artifacts Link
         env:
-        env:
           WORKFLOW_RUN_EVENT_OBJ: ${{ toJSON(github.event.workflow_run) }}
           GH_TOKEN: ${{ github.token }}
         run: |
