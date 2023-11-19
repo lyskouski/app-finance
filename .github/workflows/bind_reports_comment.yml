@@ -19,11 +19,12 @@ jobs:
           GH_TOKEN: ${{ github.token }}
         run: |
           PREVIOUS_JOB_ID=$(jq -r '.id' <<< "$WORKFLOW_RUN_EVENT_OBJ")
-          ARTIFACT_URL=$(gh api "/repos/${{ github.repository }}/actions/artifacts" \
+          SUITE_ID=$(jq -r '.check_suite_id' <<< "$WORKFLOW_RUN_EVENT_OBJ")
+          ARTIFACT_ID=$(gh api "/repos/${{ github.repository }}/actions/artifacts" \
             --jq ".artifacts.[] |
             select(.workflow_run.id==${PREVIOUS_JOB_ID}) |
-            .archive_download_url")
-          echo "ARTIFACT_URL=$ARTIFACT_URL" >> $GITHUB_ENV
+            .id")
+          echo "ARTIFACT_URL=https://github.com/${{ github.repository }}/suites/${SUITE_ID}/artifacts/${ARTIFACT_ID}" >> $GITHUB_ENV
           PR_NUMBER=$(jq -r '.pull_requests[0].number' <<< "$WORKFLOW_RUN_EVENT_OBJ")
           echo "PR_NUMBER=${PR_NUMBER}" >> $GITHUB_ENV
 
