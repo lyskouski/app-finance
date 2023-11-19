@@ -1,5 +1,10 @@
 {
     "a": "RUN `dart run grinder sort-translations --quiet` FOR ORDERING",
+    "contributors": "Contributors",
+    "coPromoter": "promoter",
+    "coAuthor": "author",
+    "coTranslator": "translator",
+    "coDeveloper": "developer",
     "aboutHeadline": "About",
     "account": "Account",
     "accountFrom": "From Account",
