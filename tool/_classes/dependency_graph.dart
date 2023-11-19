@@ -35,15 +35,16 @@ class DependencyGraph {
     ], eol);
   }
 
-  void bind(List<String> files, [String color = 'silver:white']) {
+  void bind(List<String> files, [String postfix = '', String color = 'silver:white']) {
     final structure = _convert(files);
     for (var entry in structure.entries) {
       for (var sub in entry.value.entries) {
         graph.writeAll([
           '  {',
           '    rank = same; "${entry.key}";',
-          '    ${sub.key.replaceAll('/', '_')} ['
-              'label="<0>${sub.key.replaceAll('/', ' / ').toUpperCase()}|${sub.value.map((e) => '<$e>$e').join('|')}| ",'
+          '    ${sub.key.replaceAll('/', '_')}$postfix ['
+              'label="<0>${sub.key.replaceAll('/', ' / ').toUpperCase()}$postfix'
+              '|${sub.value.map((e) => '<$e>$e').join('|')}",'
               'fillcolor="$color", gradientangle=240, style="filled"'
               '];',
           '  }',
@@ -53,21 +54,30 @@ class DependencyGraph {
     }
   }
 
-  void connect(List<String> files, [String? color]) {
+  void connect(List<String> files, [String postfix = '', String? color]) {
     for (final from in files) {
       final file = File(path.join(Directory.current.path, 'lib/$from'));
-      parse(file.readAsStringSync(), from, color ?? _getColor(from));
+      parse(file.readAsStringSync(), from, postfix, color ?? _getColor(from));
     }
   }
 
-  void parse(String content, String from, String color) {
+  void parse(String content, String from, String postfix, String color) {
     final dependencies = <String>{};
     final search = RegExp("import 'package:app_finance/(.*?).dart';");
     for (final to in search.allMatches(content).where((v) => v.groupCount > 0).map((v) => v.group(1)!).toList()) {
-      dependencies.add('  ${_convertPath(from)} -> ${_convertPath(to)} [color="$color"];');
+      if (postfix.isNotEmpty && _contains(to, postfix)) {
+        dependencies.add('  ${_convertPath(from, postfix.isEmpty, postfix)}'
+            ' -> ${_convertPath(to, postfix.isEmpty, postfix)} [color="$color"];');
+      } else {
+        dependencies.add('  ${_convertPath(from, postfix.isEmpty, postfix)}'
+            ' -> ${_convertPath(to, postfix.isEmpty)} [color="$color"];');
+      }
     }
     graph.writeln(dependencies.toList().join(eol));
   }
+
+  bool _contains(String path, String postfix) =>
+      graph.toString().contains(RegExp(_convertPath(path, false, postfix).replaceAll(':', '(.*?)')));
 
   @override
   String toString() => '${graph.toString()}}';
@@ -76,6 +86,9 @@ class DependencyGraph {
     final FilesStructure structure = {};
     for (final filePath in files) {
       final parts = filePath.split('/');
+      if (parts.length <= 1) {
+        continue;
+      }
       final key = parts[1];
       if (structure[key] == null) {
         structure[key] = {};
@@ -90,7 +103,7 @@ class DependencyGraph {
     return structure;
   }
 
-  String _convertPath(String filePath, [bool isShort = true]) {
+  String _convertPath(String filePath, [bool isShort = true, String postfix = '']) {
     if (filePath.startsWith('/')) {
       filePath = filePath.replaceFirst('/', '');
     }
@@ -102,10 +115,10 @@ class DependencyGraph {
     if (sub.isEmpty) {
       sub = '${parts.first}_';
     }
-    return isShort ? sub : '$sub:${parts.last.replaceAll('.dart', '')}';
+    return isShort ? sub : '$sub$postfix:${parts.last.replaceAll('.dart', '')}';
   }
 
-  String _getColor(String filePath) => switch (filePath.split('/')[1]) {
+  String _getColor(String filePath) => switch (filePath.replaceAll(RegExp('^/'), '').split('/')[0]) {
         '_classes' => 'green',
         '_configs' => 'green',
         '_ext' => 'green',
