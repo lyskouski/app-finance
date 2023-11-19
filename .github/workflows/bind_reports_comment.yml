@@ -24,6 +24,8 @@ jobs:
             select(.workflow_run.id==${PREVIOUS_JOB_ID}) |
             .archive_download_url")
           echo "ARTIFACT_URL=$ARTIFACT_URL" >> $GITHUB_ENV
+          PR_NUMBER=$(jq -r '.pull_requests[0].number' <<< "$WORKFLOW_RUN_EVENT_OBJ")
+          echo "PR_NUMBER=${PR_NUMBER}" >> $GITHUB_ENV
 
       - uses: actions/github-script@v6
         env:
@@ -32,14 +34,13 @@ jobs:
             Build artifacts:
             | Name | Link |
             |------|------|
-            | Dependencies Graph | [dependencies.svg](${ARTIFACT_URL}) |
+            | Dependencies Graph | [dependencies.svg](${{ env.ARTIFACT_URL }}) |
         with:
           script: |
-            PR_NUMBER=$(jq -r '.pull_requests[0].number' <<< "$WORKFLOW_RUN_EVENT_OBJ")
             github.rest.issues.createComment({
-              issue_number: PR_NUMBER,
+              issue_number: env.PR_NUMBER,
               owner: context.repo.owner,
               repo: context.repo.repo,
-              body: "$PR_NOTES"
+              body: env.PR_NOTES
             })
 
