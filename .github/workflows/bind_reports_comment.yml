@@ -29,7 +29,7 @@ jobs:
 
       - uses: actions/github-script@v6
         env:
-          WORKFLOW_RUN_EVENT_OBJ: ${{ toJSON(github.event.workflow_run) }}
+          PR_NUMBER: ${{ env.PR_NUMBER }}
           PR_NOTES: |
             Build artifacts:
             | Name | Link |
@@ -38,9 +38,9 @@ jobs:
         with:
           script: |
             github.rest.issues.createComment({
-              issue_number: env.PR_NUMBER,
+              issue_number: inputs.PR_NUMBER,
               owner: context.repo.owner,
               repo: context.repo.repo,
-              body: env.PR_NOTES
+              body: inputs.PR_NOTES
             })
 
