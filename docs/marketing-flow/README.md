@@ -12,13 +12,17 @@
 | **Application Analytics**      |            |            | |
 | Average interaction, seconds   |   88       |  183       | |
 | Precise impressions (Huawei)   |    -       |  200       | |
+| **Installations**              |            |            | |
+| - Windows                      |    8       |   16       | |
+| - Linux Flathub                |    -       |  124       | |
+| - Android (Samsung)            |    1       |    2       | |
+| - Android (Huawei)             |    0       |    2       | |
 | **Application Usage (Reviews)**|            |            | |
-| - Windows {Installs}           |    8 (1)   |   16       | |
+| - Windows                      |    8 (1)   |   16       | |
 | - Linux Snap                   |    7       |    9       | |
-| - Linux Flathub {Installs}     |    -       |  124       | |
 | - macOS                        |    2       |    6       | |
 | - iOS Mobile                   |   35       |   54       | |
-| - iOS Tablet                   |   13       |   19       | |
+| - iOS Tablet                   |   13       |   19 (1)   | |
 | - Android Mobile               |   38 (1)   |   89       | |
 | - Android Tablet               |    1       |    3       | |
 | - Web                          |   25       |   45       | |
