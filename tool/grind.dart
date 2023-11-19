@@ -37,9 +37,15 @@ coverageBadge() => c.coverageBadge();
 @Task('Generate Dependency Graph')
 generateClassGraph() => d.generateClassGraph();
 
-@Task('Create Dependency Graph')
+@Task('Create Dependency Graph\n'
+    '    To show the diff on pull-request use: --diff --from=hash --to=hash\n'
+    '    Sample: --diff --from=\${{ github.event.pull_request.base.sha }}'
+    ' --to=\${{ github.event.pull_request.head.sha }}')
 @Depends(generateClassGraph)
 createClassGraph() => d.createClassGraph();
+
+@Task('Create Dependency Graph from existing .dot-file\n    Required: --file="{path}"')
+createClassGraphFromDot() => d.createClassGraphFromDot();
 
 @Task('Install Git Hooks')
 installGitHooks() => h.installGitHooks();

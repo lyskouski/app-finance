@@ -2,106 +2,62 @@
 // Use of this source code is governed by a CC BY-NC-ND 4.0 license that can be found in the LICENSE file.
 
 import 'dart:io';
+import 'package:grinder/grinder.dart';
 import 'package:path/path.dart' as path;
+import '../_classes/dependency_graph.dart';
 import '../_classes/dir.dart' as dir;
 
-createClassGraph() {
-  Process.runSync('dot', ['-Tsvg', 'coverage/dependencies.dot', '-o', 'coverage/dependencies.svg'], runInShell: true);
+createClassGraph([String? from, String? to]) {
+  final out = Process.runSync(
+      'dot', ['-Tsvg', from ?? 'coverage/dependencies.dot', '-o', to ?? 'coverage/dependencies.svg'],
+      runInShell: true);
+  log(out.stderr);
+}
+
+createClassGraphFromDot() {
+  TaskArgs args = context.invocation.arguments;
+  String? file = args.getOption('file');
+  createClassGraph(file!, '${file.replaceAll('.dot', '')}.svg');
 }
 
 generateClassGraph() {
   final rootFolder = Directory('${Directory.current.path}/lib');
-  List<String> files = dir.scanDirectory(rootFolder).where((v) => !(v.contains('l10n/') || '/main.dart' == v)).toList();
-  const eol = '\n';
+  List<String> files = dir.scanDirectory(rootFolder).where(_excludeScope).toList();
 
-  final graph = StringBuffer();
-  graph.writeAll([
-    'digraph G {',
-    '  node [shape=record, width=.1, height=.1];',
-    '  ranksep=.75;',
-    '  edge [penwidth=1.3];',
-    '  nodesep=.05;',
-    '  rankdir=LR;',
-    '',
-  ], eol);
-
-  final structure = <String, Map<String, List<String>>>{};
-  for (final filePath in files) {
-    final parts = filePath.split('/');
-    final key = parts[1];
-    if (structure[key] == null) {
-      structure[key] = {};
+  TaskArgs args = context.invocation.arguments;
+  bool showDiff = args.getFlag('diff');
+  String? from = args.getOption('from');
+  String? to = args.getOption('to');
+  final graph = DependencyGraph();
+  graph.init(files);
+  if (showDiff) {
+    final added = _getDiff('AM', from!, to!);
+    graph.bind(files.where((v) => !added.contains(v)).toList());
+    graph.bind(added, '_ADD', 'green:white');
+    for (final path in added) {
+      graph.parse(_getChanges(path, from, to), path, '_ADD', 'green');
     }
-    final path = convertPath(filePath, false).split(':');
-    final sub = path[0];
-    if (structure[key]![sub] == null) {
-      structure[key]![sub] = [];
+    final removed = _getDiff('D', from, to);
+    graph.bind(removed, '_DEL', 'maroon:white');
+    for (final path in removed) {
+      graph.parse(_getChanges(path, from, to), path, '_DEL', 'black');
     }
-    structure[key]![sub]!.add(path[1]);
+  } else {
+    graph.bind(files);
+    graph.connect(files);
   }
-
-  final groundList = structure.keys.toList();
-  groundList.sort();
-  graph.writeAll([
-    '  {',
-    '    node [shape=plaintext, fontsize=16];',
-    '    past -> ${groundList.map((e) => '"$e" -> ').join()} "future";',
-    '  }',
-    '',
-  ], eol);
-
-  for (var entry in structure.entries) {
-    for (var sub in entry.value.entries) {
-      graph.writeAll([
-        '  {',
-        '    rank = same; "${entry.key}";',
-        '    ${sub.key.replaceAll('/', '_')} ['
-            'label="<0>${sub.key.replaceAll('/', ' / ').toUpperCase()}|${sub.value.map((e) => '<$e>$e').join('|')}| ",'
-            'fillcolor="silver:white", gradientangle=240, style="filled"'
-            '];',
-        '  }',
-        '',
-      ], eol);
-    }
-  }
-
-  final dependencies = <String>{};
-  for (final from in files) {
-    final file = File(path.join(Directory.current.path, 'lib/$from'));
-    final content = file.readAsStringSync();
-    final search = RegExp("import 'package:app_finance/(.*?).dart';");
-    for (final to in search.allMatches(content).where((v) => v.groupCount > 0).map((v) => v.group(1)!).toList()) {
-      dependencies.add('  ${convertPath(from)} -> ${convertPath(to)} [color="${getColor(from)}"];');
-    }
-  }
-  graph.writeln(dependencies.toList().join(eol));
-
-  graph.writeln('}');
-  File(path.join(Directory.current.path, 'coverage/dependencies.dot')).writeAsStringSync(graph.toString());
+  File(path.join(Directory.current.path, 'coverage/dependencies.dot'))
+    ..createSync(recursive: true)
+    ..writeAsStringSync(graph.toString());
 }
 
-String convertPath(String filePath, [bool isShort = true]) {
-  if (filePath.startsWith('/')) {
-    filePath = filePath.replaceFirst('/', '');
-  }
-  final parts = filePath.split('/');
-  String sub = '';
-  if (parts.length > 1) {
-    sub = parts.sublist(1, parts.length - 1).join('_');
-  }
-  if (sub.isEmpty) {
-    sub = '${parts.first}_';
-  }
-  return isShort ? sub : '$sub:${parts.last.replaceAll('.dart', '')}';
+List<String> _getDiff(String type, String from, String to) {
+  final out = Process.runSync('git', ['diff', '--name-only', '--diff-filter=$type', from, to], runInShell: true);
+  final result = out.stdout.split('\n').where((v) => v.contains('.dart') && v.contains('lib/') && _excludeScope(v));
+  return result.map((v) => v.replaceFirst('lib', '')).cast<String>().toList();
 }
 
-String getColor(String filePath) => switch (filePath.split('/')[1]) {
-      '_classes' => 'green',
-      '_configs' => 'green',
-      '_ext' => 'green',
-      '_mixins' => 'green',
-      'charts' => 'red',
-      'components' => '#FF00FF50',
-      'design' => '#0000FF50',
-      _ => '#F0F0F050',
-    };
+String _getChanges(String path, String from, String to) =>
+    Process.runSync('git', ['diff', to, from, '--word-diff', '--unified=0', 'lib/$path'], runInShell: true).stdout;
+
+bool _excludeScope(String v) => !(v.contains('l10n/') || v.trim().endsWith('main.dart'));
