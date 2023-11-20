@@ -218,3 +218,14 @@ void main() async {
   );
 }
 \end{lstlisting}
+
+\noindent Crashlytics might return an error for iOS integration as "Crashlytics has detected a missing dSYM for version".
+That would require additional adjustments for the \q{Run Script} build phase:
+
+\begin{lstlisting}[language=terminal]
+# Run Script: 
+${PODS_ROOT}/FirebaseCrashlytics/run
+
+# Input Files: 
+$(SRCROOT)/$(BUILT_PRODUCTS_DIR)/$(INFOPLIST_PATH)
+\end{lstlisting}
