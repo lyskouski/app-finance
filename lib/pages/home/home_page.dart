@@ -9,11 +9,11 @@ import 'package:app_finance/_configs/screen_helper.dart';
 import 'package:app_finance/_configs/theme_helper.dart';
 import 'package:app_finance/_classes/structure/navigation/app_route.dart';
 import 'package:app_finance/components/_core/components_builder.dart';
+import 'package:app_finance/components/component_account_flow.dart';
 import 'package:app_finance/components/component_recent.dart';
 import 'package:app_finance/components/component_ytd_expense.dart';
 import 'package:app_finance/pages/_interfaces/abstract_page_state.dart';
 import 'package:app_finance/pages/home/home_edit_page.dart';
-import 'package:app_finance/pages/metrics/widgets/account_tab.dart';
 import 'package:app_finance/pages/metrics/widgets/budget_tab.dart';
 import 'package:app_finance/pages/start/start_page.dart';
 import 'package:app_finance/design/wrapper/grid_layer.dart';
@@ -264,7 +264,15 @@ class HomePageState extends AbstractPageState<HomePage> {
           billWidget,
           accountWidget,
           budgetWidget,
-          () => Expanded(child: AccountTab(store: state, width: partWidth)),
+          () => const Expanded(
+                child: Column(
+                  children: [
+                    Expanded(child: ThemeHelper.emptyBox),
+                    ComponentAccountFlow(),
+                    ThemeHelper.hIndent6x,
+                  ],
+                ),
+              ),
           () => Expanded(
                 child: Column(
                   children: [
