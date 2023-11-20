@@ -102,7 +102,7 @@ flutter:
 msix_config:
   msix_version: 1.0.0.1
   msstore_appId: 9NNPDJ2ST0HV
-  display_name: Fingrom MSIX
+  display_name: Fingrom
   publisher: CN=78144012-EC6A-4BE8-97BF-A392EF55482E
   publisher_display_name: terCAD
   identity_name: terCAD.FingromMSIX
