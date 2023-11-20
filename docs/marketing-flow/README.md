@@ -10,8 +10,9 @@
 | Repository Visitors (Views)    |   51 (163) |  115 (483) |  254 (1067)| | | |
 | Rep. Unique Clones             |   84       |   78       |   72       | | | |
 | **Application Analytics**      |            |            |            | | | |
-| Average interaction, seconds   |   88       |  183       |  143       | | | |
-| Precise impressions (Huawei)   |    -       |  200       |  217       | | | |
+| Average interaction, GA {sec.} |   88       |  183       |  143       | | | |
+| Precise impressions, Huawei    |    -       |  200       |  217       | | | |
+| Acquisition funnel, Windows    |    -       |    -       |  15.38%    | | | |
 | **Installations**              |            |            |            | | | |
 | - Windows                      |    8       |   16       |   19       | | | |
 | - Linux Flathub                |    -       |  124       |  202       | | | |
