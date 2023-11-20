@@ -66,7 +66,14 @@ void main() async {
         );
         return true;
       };
-      FlutterError.onError = FirebaseCrashlytics.instance.recordFlutterFatalError;
+      if (kIsWeb) {
+        FlutterError.onError = (details) {
+          FlutterError.presentError(details);
+          FirebaseAnalytics.instance.logEvent(name: 'flutter-error', parameters: {'error': details.toString()});
+        };
+      } else {
+        FlutterError.onError = FirebaseCrashlytics.instance.recordFlutterFatalError;
+      }
     }
     AppPreferences.pref = await SharedPreferences.getInstance();
     CurrencyDefaults.cache = AppPreferences.pref;

@@ -200,8 +200,18 @@ aiding developers in identifying and addressing problems. It can be enabled via 
 void main() async {
   runZonedGuarded<Future<void>>(() async {
     await Firebase.initializeApp();
-    FlutterError.onError =
-      FirebaseCrashlytics.instance.recordFlutterFatalError;
+    if (kIsWeb) {
+      FlutterError.onError = (details) {
+        FlutterError.presentError(details);
+        FirebaseAnalytics.instance.logEvent(
+          name: 'flutter-error', 
+          parameters: {'error': details.toString()},
+        );
+      };
+    } else {
+      FlutterError.onError =
+        FirebaseCrashlytics.instance.recordFlutterFatalError;
+    }
     // ... other stuff
   }, (error, stack) =>
     FirebaseCrashlytics.instance.recordError(error,stack,fatal:true)

@@ -180,10 +180,9 @@ abstract class AbstractPageState<T extends StatefulWidget> extends State<T> {
     final nav = Navigator.of(context);
     final actions = getBarActions(nav);
     final btnWidth = 50.0 * actions.length;
-    final titleWidth = ThemeHelper.getWidth(context, 0, constraints, false) / 2 - 100;
+    final titleWidth = ThemeHelper.getWidth(context, 0, null, false) / 2 - 100;
     final hasTooltip = getButtonName().isNotEmpty;
     final showTooltip = hasTooltip && (constraints.maxWidth - titleWidth - btnWidth - 50 > 125);
-
     return Container(
       padding: EdgeInsets.zero,
       clipBehavior: Clip.none,
@@ -270,9 +269,11 @@ abstract class AbstractPageState<T extends StatefulWidget> extends State<T> {
           state = appState;
           return LayoutBuilder(builder: (context, constraints) {
             final display = ScreenHelper.getInstance(context, constraints);
-            final hasShift = display.isBottom && !display.isRight;
+            final isBottom = display.isBottom && !display.isRight;
+            final hasKeyboard = ThemeHelper.isKeyboardVisible(context, constraints);
             final height = constraints.maxHeight;
-            final blockHeight = height / scale - (hasShift ? ThemeHelper.barHeight + ThemeHelper.getIndent() : 0);
+            final blockHeight =
+                height / scale - (isBottom && !hasKeyboard ? ThemeHelper.barHeight + ThemeHelper.getIndent() : 0);
             double width = constraints.maxWidth / scale;
             Widget? rightBar;
             Widget? leftBar;
@@ -297,12 +298,20 @@ abstract class AbstractPageState<T extends StatefulWidget> extends State<T> {
                   ? AppBar(backgroundColor: context.colorScheme.primary, toolbarHeight: 0)
                   : buildBar(context, constraints),
               drawer: buildDrawer(),
-              floatingActionButtonLocation: hasShift ? FloatingActionButtonLocation.centerDocked : null,
-              floatingActionButton: hasShift
-                  ? Container(
-                      margin: EdgeInsets.only(bottom: ThemeHelper.getIndent()),
-                      child: buildButton(context, constraints),
-                    )
+              floatingActionButtonLocation: isBottom ? FloatingActionButtonLocation.centerDocked : null,
+              floatingActionButton: isBottom
+                  ? hasKeyboard
+                      ? Transform.translate(
+                          offset: const Offset(0, 12),
+                          child: SizedBox(
+                            height: ThemeHelper.barHeight * 1.2,
+                            child: buildButton(context, constraints),
+                          ),
+                        )
+                      : Container(
+                          margin: EdgeInsets.only(bottom: ThemeHelper.getIndent()),
+                          child: buildButton(context, constraints),
+                        )
                   : buildButton(context, constraints),
               resizeToAvoidBottomInset: true,
               body: InputControllerWrapper(

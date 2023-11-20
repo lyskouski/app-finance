@@ -55,7 +55,9 @@ class ThemeHelper {
   static double getMinHeight(BuildContext context, [BoxConstraints? constraints]) =>
       [ThemeHelper.getHeight(context), constraints?.maxHeight ?? double.infinity].reduce(min);
 
-  static bool isKeyboardVisible(BuildContext context) => MediaQuery.of(context).viewInsets.bottom > 0;
+  static bool isKeyboardVisible(BuildContext context, [BoxConstraints? constraints]) =>
+      MediaQuery.of(context).viewInsets.bottom > 0 ||
+      constraints != null && ScreenHelper.state().height - 100 > constraints.maxHeight;
 
   static double getMaxHeight(List<dynamic> scope) {
     double height = 0;
