@@ -81,7 +81,6 @@ class BudgetTab extends StatelessWidget {
                 ],
               ],
             ),
-            ThemeHelper.formEndBox,
           ],
         ),
       ),

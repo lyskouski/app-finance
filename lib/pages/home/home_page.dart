@@ -10,10 +10,10 @@ import 'package:app_finance/_configs/theme_helper.dart';
 import 'package:app_finance/_classes/structure/navigation/app_route.dart';
 import 'package:app_finance/components/_core/components_builder.dart';
 import 'package:app_finance/components/component_recent.dart';
+import 'package:app_finance/components/component_ytd_expense.dart';
 import 'package:app_finance/pages/_interfaces/abstract_page_state.dart';
 import 'package:app_finance/pages/home/home_edit_page.dart';
 import 'package:app_finance/pages/metrics/widgets/account_tab.dart';
-import 'package:app_finance/pages/metrics/widgets/bill_tab.dart';
 import 'package:app_finance/pages/metrics/widgets/budget_tab.dart';
 import 'package:app_finance/pages/start/start_page.dart';
 import 'package:app_finance/design/wrapper/grid_layer.dart';
@@ -265,8 +265,24 @@ class HomePageState extends AbstractPageState<HomePage> {
           accountWidget,
           budgetWidget,
           () => Expanded(child: AccountTab(store: state, width: partWidth)),
-          () => Expanded(child: BudgetTab(store: state, width: partWidth)),
-          () => Expanded(child: BillTab(store: state, width: partWidth)),
+          () => Expanded(
+                child: Column(
+                  children: [
+                    const Expanded(child: ThemeHelper.emptyBox),
+                    BudgetTab(store: state, width: partWidth),
+                    ThemeHelper.hIndent6x,
+                  ],
+                ),
+              ),
+          () => const Expanded(
+                child: Column(
+                  children: [
+                    Expanded(child: ThemeHelper.emptyBox),
+                    ComponentYtdExpense(),
+                    ThemeHelper.hIndent6x,
+                  ],
+                ),
+              ),
           () => const Expanded(
                 child: ComponentRecent({'type': ComponentRecentType.invoice, 'count': 7}),
               ),

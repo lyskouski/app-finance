@@ -4,15 +4,11 @@
 import 'package:app_finance/_classes/storage/app_data.dart';
 import 'package:app_finance/_classes/herald/app_locale.dart';
 import 'package:app_finance/charts/data/data_handler.dart';
-import 'package:app_finance/_classes/structure/bill_app_data.dart';
 import 'package:app_finance/_classes/structure/currency/exchange.dart';
 import 'package:app_finance/_configs/theme_helper.dart';
 import 'package:app_finance/_ext/build_context_ext.dart';
 import 'package:app_finance/charts/bar_race_chart.dart';
-import 'package:app_finance/charts/column_chart.dart';
-import 'package:app_finance/charts/interface/chart_data.dart';
-import 'package:app_finance/design/wrapper/row_widget.dart';
-import 'package:app_finance/design/wrapper/text_wrapper.dart';
+import 'package:app_finance/components/component_ytd_expense.dart';
 import 'package:flutter/material.dart';
 
 class BillTab extends StatelessWidget {
@@ -25,90 +21,19 @@ class BillTab extends StatelessWidget {
     this.width,
   });
 
-  List<ChartData> getData() {
-    final currentYear = DateTime(DateTime.now().year);
-    final prevYear = DateTime(currentYear.year - 1);
-    final scope = store.getList(AppDataType.bills).cast<BillAppData>().where((e) => e.createdAt.isAfter(prevYear));
-    final exchange = Exchange(store: store);
-    return [
-      ChartData(
-        DataHandler.getAmountGroupedByMonth(
-          scope.where((e) => e.createdAt.isAfter(currentYear)).toList(),
-          exchange: exchange,
-        ),
-        color: Colors.blue,
-      ),
-      ChartData(
-        DataHandler.getAmountGroupedByMonth(
-          scope.where((e) => e.createdAt.isBefore(currentYear)).map((e) {
-            e.createdAt = e.createdAt.add(const Duration(days: 365));
-            return e;
-          }).toList(),
-          exchange: exchange,
-        ),
-        color: Colors.grey,
-      ),
-    ];
-  }
-
   @override
   Widget build(BuildContext context) {
     final TextTheme textTheme = context.textTheme;
     double indent = ThemeHelper.getIndent();
     final width = this.width ?? ThemeHelper.getWidth(context, 6);
-    final data = getData();
-    double yMax = 0;
-    if (data.isNotEmpty && data.first.data.isNotEmpty) {
-      yMax = data.first.data.reduce((max, current) => current.dy > max.dy ? current : max).dy;
-      if (data.last.data.isNotEmpty) {
-        double yPrevMax = data.last.data.reduce((max, current) => current.dy > max.dy ? current : max).dy;
-        yMax = yMax > yPrevMax ? yMax : yPrevMax;
-      }
-    }
     final budgets = store.getList(AppDataType.budgets);
-    final year = DateTime.now().year;
     return SingleChildScrollView(
       child: Padding(
         padding: this.width != null ? EdgeInsets.zero : EdgeInsets.all(indent * 2),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text(
-              AppLocale.labels.chartYtdExpense,
-              style: textTheme.bodyLarge,
-            ),
-            ColumnChart(
-              width: width,
-              height: 200,
-              indent: indent,
-              data: data,
-              yMax: yMax * 1.2,
-            ),
-            RowWidget(
-              maxWidth: width,
-              indent: indent,
-              chunk: const [null, null],
-              children: [
-                [
-                  Padding(
-                    padding: EdgeInsets.only(left: indent * 2),
-                    child: TextWrapper(
-                      year.toString(),
-                      style: textTheme.bodySmall!.copyWith(color: Colors.blue),
-                    ),
-                  ),
-                ],
-                [
-                  Align(
-                    alignment: Alignment.centerRight,
-                    child: TextWrapper(
-                      (year - 1).toString(),
-                      style: textTheme.bodySmall!.copyWith(color: Colors.grey),
-                    ),
-                  ),
-                ],
-              ],
-            ),
+            const ComponentYtdExpense(),
             ThemeHelper.hIndent2x,
             Text(
               AppLocale.labels.chartBarRace,
