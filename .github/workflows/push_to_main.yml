@@ -46,6 +46,12 @@ jobs:
         run: |
           dart run grinder full-coverage --path="" --type=e2e
           dart run grinder test --coverage --path=test/e2e
+      
+      - name: Create Dependency Graph
+        if: matrix.os == 'ubuntu-latest'
+        run: |
+          sudo apt-get install -y graphviz
+          dart run grinder create-class-graph
 
       - name: Build Web Package
         run: |
