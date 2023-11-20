@@ -135,14 +135,14 @@ class AboutPageState extends AbstractPageState<AboutPage> with LauncherMixin {
               type: TabType.secondary,
               focus: double.tryParse(widget.search ?? '0')?.toInt() ?? 0,
               tabs: [
+                Tab(text: AppLocale.labels.contributors),
                 Tab(text: AppLocale.labels.termPrivacy),
                 Tab(text: AppLocale.labels.termUse),
-                Tab(text: AppLocale.labels.contributors),
               ],
               children: [
+                const MembersTab(),
                 buildMarkdown('privacy_policy_$locale'),
                 buildMarkdown('terms_of_use_$locale'),
-                const MembersTab(),
               ],
             ),
           ),
