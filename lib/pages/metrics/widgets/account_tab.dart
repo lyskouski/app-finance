@@ -131,13 +131,15 @@ class AccountTab extends StatelessWidget {
             RowWidget(
               maxWidth: width,
               indent: indent,
-              chunk: [indent * 2, null, null],
+              chunk: const [null, null],
               children: [
-                const [ThemeHelper.emptyBox],
                 [
-                  TextWrapper(
-                    AppLocale.labels.raiseData,
-                    style: textTheme.bodySmall!.copyWith(color: Colors.blue),
+                  Padding(
+                    padding: EdgeInsets.only(left: indent * 2),
+                    child: TextWrapper(
+                      AppLocale.labels.raiseData,
+                      style: textTheme.bodySmall!.copyWith(color: Colors.blue),
+                    ),
                   ),
                 ],
                 [

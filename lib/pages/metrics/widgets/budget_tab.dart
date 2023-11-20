@@ -12,6 +12,7 @@ import 'package:app_finance/charts/forecast_chart.dart';
 import 'package:app_finance/_configs/theme_helper.dart';
 import 'package:app_finance/charts/interface/chart_data.dart';
 import 'package:app_finance/design/wrapper/row_widget.dart';
+import 'package:app_finance/design/wrapper/text_wrapper.dart';
 import 'package:flutter/material.dart';
 
 class BudgetTab extends StatelessWidget {
@@ -58,19 +59,21 @@ class BudgetTab extends StatelessWidget {
             RowWidget(
               maxWidth: width,
               indent: indent,
-              chunk: [indent * 2, null, null],
+              chunk: const [null, null],
               children: [
-                const [ThemeHelper.emptyBox],
                 [
-                  Text(
-                    AppLocale.labels.actualData,
-                    style: textTheme.bodySmall!.copyWith(color: Colors.red),
+                  Padding(
+                    padding: EdgeInsets.only(left: indent * 2),
+                    child: TextWrapper(
+                      AppLocale.labels.actualData,
+                      style: textTheme.bodySmall!.copyWith(color: Colors.red),
+                    ),
                   ),
                 ],
                 [
                   Align(
                     alignment: Alignment.centerRight,
-                    child: Text(
+                    child: TextWrapper(
                       AppLocale.labels.forecastData,
                       style: textTheme.bodySmall!.copyWith(color: Colors.red.withBlue(200)),
                     ),

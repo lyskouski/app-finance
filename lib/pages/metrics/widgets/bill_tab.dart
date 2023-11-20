@@ -12,6 +12,7 @@ import 'package:app_finance/charts/bar_race_chart.dart';
 import 'package:app_finance/charts/column_chart.dart';
 import 'package:app_finance/charts/interface/chart_data.dart';
 import 'package:app_finance/design/wrapper/row_widget.dart';
+import 'package:app_finance/design/wrapper/text_wrapper.dart';
 import 'package:flutter/material.dart';
 
 class BillTab extends StatelessWidget {
@@ -86,19 +87,21 @@ class BillTab extends StatelessWidget {
             RowWidget(
               maxWidth: width,
               indent: indent,
-              chunk: [indent * 2, null, null],
+              chunk: const [null, null],
               children: [
-                const [ThemeHelper.emptyBox],
                 [
-                  Text(
-                    year.toString(),
-                    style: textTheme.bodySmall!.copyWith(color: Colors.blue),
+                  Padding(
+                    padding: EdgeInsets.only(left: indent * 2),
+                    child: TextWrapper(
+                      year.toString(),
+                      style: textTheme.bodySmall!.copyWith(color: Colors.blue),
+                    ),
                   ),
                 ],
                 [
                   Align(
                     alignment: Alignment.centerRight,
-                    child: Text(
+                    child: TextWrapper(
                       (year - 1).toString(),
                       style: textTheme.bodySmall!.copyWith(color: Colors.grey),
                     ),
