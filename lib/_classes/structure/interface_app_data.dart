@@ -15,6 +15,7 @@ abstract interface class InterfaceAppData {
   String get title;
 
   DateTime get createdAt;
+  set createdAt(DateTime value);
 
   dynamic get details;
 

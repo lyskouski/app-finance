@@ -23,19 +23,19 @@ class MetricsPage extends StatefulWidget {
 }
 
 class MetricsPageState extends AbstractPageState<MetricsPage> {
-  late int index;
+  late int tab = int.tryParse(widget.search ?? '') ?? 0;
 
   @override
-  void initState() {
-    index = int.tryParse(widget.search ?? '') ?? 0;
-    super.initState();
-  }
+  String getTitle() => AppLocale.labels.metricsTooltip;
+
+  @override
+  Widget buildButton(BuildContext context, BoxConstraints constraints) => ThemeHelper.emptyBox;
 
   @override
   String getButtonName() => '';
 
   @override
-  String? getHelperName() => switch (index) {
+  String? getHelperName() => switch (tab) {
         0 => 'help_metrics_budget',
         1 => 'help_metrics_account',
         2 => 'help_metrics_bill',
@@ -43,17 +43,12 @@ class MetricsPageState extends AbstractPageState<MetricsPage> {
       };
 
   @override
-  Widget buildButton(BuildContext context, BoxConstraints constraints) {
-    return ThemeHelper.emptyBox;
-  }
-
-  @override
   Widget buildContent(BuildContext context, BoxConstraints constraints) {
     return TabWidget(
-      focus: index,
+      focus: tab,
       type: TabType.secondary,
       isLeft: ThemeHelper.isNavRight(context, constraints),
-      callback: (idx) => setState(() => index = idx),
+      callback: (idx) => setState(() => tab = idx),
       tabs: [
         Tab(
           icon: const Icon(Icons.graphic_eq),
@@ -74,10 +69,5 @@ class MetricsPageState extends AbstractPageState<MetricsPage> {
         BillTab(store: super.state),
       ],
     );
-  }
-
-  @override
-  String getTitle() {
-    return AppLocale.labels.metricsTooltip;
   }
 }

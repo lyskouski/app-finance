@@ -14,6 +14,7 @@ class _Sizes {
   static const double = 16.0;
   static const triple = 24.0;
   static const quatre = 32.0;
+  static const sixfold = 48.0;
 }
 
 class ThemeHelper {
@@ -26,6 +27,7 @@ class ThemeHelper {
   static const hIndent2x = SizedBox(height: _Sizes.double);
   static const hIndent3x = SizedBox(height: _Sizes.triple);
   static const hIndent4x = SizedBox(height: _Sizes.quatre);
+  static const hIndent6x = SizedBox(height: _Sizes.sixfold);
   static const hIndent05 = SizedBox(height: _Sizes.half);
   static const wIndent = SizedBox(width: _Sizes.normal);
   static const wIndent2x = SizedBox(width: _Sizes.double);
