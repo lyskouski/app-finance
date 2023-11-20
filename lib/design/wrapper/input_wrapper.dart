@@ -175,6 +175,7 @@ class InputWrapper extends StatelessWidget {
               : TextWrapper(title, style: context.textTheme.bodyLarge),
         switch (type) {
           NamedInputType.textInput => SimpleInput(
+              key: key,
               controller: controller!,
               tooltip: hint,
               withLabel: min,
@@ -183,6 +184,7 @@ class InputWrapper extends StatelessWidget {
               type: inputType ?? TextInputType.text,
             ),
           NamedInputType.listSelector => ListSelector(
+              key: key,
               value: value,
               tooltip: tooltip,
               hintText: hint,
@@ -192,17 +194,20 @@ class InputWrapper extends StatelessWidget {
               withLabel: min,
             ),
           NamedInputType.iconSelector => IconSelector(
+              key: key,
               value: value,
               setState: onChange!,
               hintText: hint,
               withLabel: min,
             ),
           NamedInputType.colorSelector => ColorSelector(
+              key: key,
               value: value,
               setState: onChange!,
               withLabel: min,
             ),
           NamedInputType.currencySelector => BaseCurrencySelector(
+              key: key,
               value: value,
               textTheme: context.textTheme,
               colorScheme: context.colorScheme,
@@ -211,6 +216,7 @@ class InputWrapper extends StatelessWidget {
               labelText: title,
             ),
           NamedInputType.currencyShort => CodeCurrencySelector(
+              key: key,
               value: value,
               textTheme: context.textTheme,
               colorScheme: context.colorScheme,
@@ -219,12 +225,14 @@ class InputWrapper extends StatelessWidget {
               labelText: title,
             ),
           NamedInputType.ymSelector => MonthYearInput(
+              key: key,
               value: value,
               setState: onChange!,
               withLabel: min,
               labelText: title,
             ),
           NamedInputType.accountSelector => ListAccountSelector(
+              key: key,
               value: value,
               hintText: hint,
               tooltip: tooltip,
@@ -235,6 +243,7 @@ class InputWrapper extends StatelessWidget {
               options: options?.cast() ?? [],
             ),
           NamedInputType.budgetSelector => ListBudgetSelector(
+              key: key,
               value: value,
               hintText: hint,
               tooltip: tooltip,
