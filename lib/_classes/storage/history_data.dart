@@ -16,8 +16,8 @@ class HistoryData {
       _history[uuid] = SplayTreeMap<int, TransactionLogData>();
     }
     if (initialValue != value) {
-      _history[uuid]![-initial.updatedAt.millisecondsSinceEpoch] = TransactionLogData(
-        timestamp: initial.updatedAt,
+      _history[uuid]![-initial.createdAt.millisecondsSinceEpoch] = TransactionLogData(
+        timestamp: initial.createdAt,
         ref: ref,
         currency: initial.currency,
         name: 'details',

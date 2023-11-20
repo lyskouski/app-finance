@@ -124,10 +124,12 @@ class AppData extends ChangeNotifier {
   }
 
   void _update(InterfaceAppData? initial, InterfaceAppData change) {
+    if (change.getType() != AppDataType.budgets) {
+      HistoryData.addLog(change.uuid, change, initial?.details ?? 0.0, change.details);
+    }
     switch (change.getType()) {
       case AppDataType.accounts:
         _updateAccount(initial as AccountAppData?, change as AccountAppData);
-        HistoryData.addLog(change.uuid, change, initial?.details ?? 0.0, change.details);
         break;
       case AppDataType.bills:
         (change as BillAppData).setState(this);
@@ -143,7 +145,6 @@ class AppData extends ChangeNotifier {
         break;
       case AppDataType.currencies:
         _updateCurrency(initial as CurrencyAppData?, change as CurrencyAppData);
-        HistoryData.addLog(change.uuid, change, initial?.details ?? 0.0, change.details);
         break;
       case AppDataType.invoice:
         (change as InvoiceAppData).setState(this);
