@@ -28,6 +28,7 @@
 | - Web                          |   25       |   45       |   46       | | | |
 | **Publications**               |    2       |    3       |    4       | | | |
 | - Books KENP Read (Sells)      |  420       |  426 (1)   |  426 (2)   | | | |
+| - Amazon Impressions           |    -       |  240       |  715       | | | |
 | - Medium Views (Claps)         |    2       |   45 (10)  |  142 (10)  | | | |
 | - Medium Followers             |    0       |    2       |    2       | | | |
 | - Medium Read Ratio            |    -       |    -       |   49%      | | | |
