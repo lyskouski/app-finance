@@ -42,7 +42,7 @@ class AppSync extends ChangeNotifier {
   }
 
   void del(String uuid) {
-    _status[uuid]!.connection.dispose();
+    _status[uuid]?.connection.dispose();
     _status.remove(uuid);
     AppPreferences.set(AppPreferences.prefP2P, (_get()..remove(uuid)).join(',')).then((_) => notifyListeners());
   }
@@ -115,13 +115,13 @@ class AppSync extends ChangeNotifier {
 
   send(String data, [String? uuid]) {
     if (uuid != null) {
-      if (_status[uuid] != null && _status[uuid]!.status == true) {
+      if (_status[uuid]?.status == true) {
         _status[uuid]!.connection.send(data);
       }
     } else {
       final keyList = _status.keys.toList();
       for (int i = 0; i < keyList.length; i++) {
-        if (_status[keyList[i]]!.status == true && _status[keyList[i]]!.connection.open) {
+        if (_status[keyList[i]]?.status == true && _status[keyList[i]]!.connection.open) {
           _status[keyList[i]]!.connection.send(data);
         } else {
           // .. postpone message
@@ -131,8 +131,8 @@ class AppSync extends ChangeNotifier {
   }
 
   ping(String uuid) {
-    if (_status[uuid] != null && _status[uuid]!.status == true) {
-      _status[uuid]!.connection.sendBinary(Uint8List.fromList(getUuid()!.codeUnits));
+    if (_status[uuid]?.status == true) {
+      _status[uuid]!.connection.sendBinary(Uint8List.fromList(getUuid()?.codeUnits ?? [0]));
     }
   }
 

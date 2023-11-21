@@ -138,8 +138,8 @@ abstract class BasicTabWidgetState extends State<TabWidget> with TickerProviderS
 
   Widget getLeftAppBar(BuildContext context) {
     final color = context.colorScheme.onInverseSurface;
-    final selected = context.textTheme.bodySmall!.copyWith(color: color);
-    final style = context.textTheme.bodySmall!.copyWith(color: color.withOpacity(0.6));
+    final selected = context.textTheme.bodySmall?.copyWith(color: color);
+    final style = context.textTheme.bodySmall?.copyWith(color: color.withOpacity(0.6));
     return SizedBox(
       width: ThemeHelper.barHeight,
       child: NavigationRail(

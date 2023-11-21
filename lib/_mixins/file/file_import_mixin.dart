@@ -19,7 +19,7 @@ mixin FileImportMixin {
       if (fileBytes != null) {
         content = String.fromCharCodes(fileBytes);
       } else {
-        final file = File(result.paths.first!.toString());
+        final file = File(result.paths.first.toString());
         content = file.readAsStringSync();
       }
     }

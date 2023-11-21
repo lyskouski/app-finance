@@ -31,8 +31,8 @@ extension MapExt on String {
     if (contains('{')) {
       RegExp pattern = RegExp(r"(\w+):\s*([\w\.\- ]+)");
       return replaceAllMapped(pattern, (match) {
-        String key = match.group(1)!;
-        String value = match.group(2)!.trim();
+        String key = match.group(1) ?? '_';
+        String value = match.group(2)?.trim() ?? '';
         return '"$key": ${num.tryParse(value) ?? '"$value"'}';
       });
     }

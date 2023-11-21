@@ -62,7 +62,7 @@ class FocusController {
     if (!_isControllerActive() || scope.isEmpty) {
       return;
     }
-    if (order.containsValue(idx) && scope[idx]!.context != null) {
+    if (order.containsValue(idx) && scope[idx]?.context != null) {
       double position = _getPosition(scope[idx]!.context!) - _getMinPosition() - 40;
       if (position < 0) {
         position = 0;

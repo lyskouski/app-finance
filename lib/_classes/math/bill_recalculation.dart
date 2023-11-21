@@ -17,21 +17,19 @@ class BillRecalculation extends AbstractRecalculation {
   });
 
   @override
-  double getDelta() {
-    throw UnimplementedError();
-  }
+  double getDelta() => throw UnimplementedError();
+
+  double getPrevDelta() => initial?.hidden == true ? 0.0 : initial?.details;
 
   double getStateDelta(dynamic prev, dynamic curr) {
     double initialDetails = exchange.reform(initial?.details ?? 0.0, initial?.currency, change.currency);
     double delta = change.hidden ? 0.0 : change.details;
     if (initial != null && prev?.uuid == curr?.uuid) {
-      delta = change.hidden ? -initialDetails : (initial!.hidden ? change.details : change.details - initialDetails);
+      delta = change.hidden
+          ? -initialDetails
+          : (initial?.hidden == true ? change.details : change.details - initialDetails);
     }
     return delta;
-  }
-
-  double getPrevDelta() {
-    return initial!.hidden ? 0.0 : initial?.details;
   }
 
   BillRecalculation updateAccount(AccountAppData accountChange, AccountAppData? accountInitial) {
@@ -42,8 +40,8 @@ class BillRecalculation extends AbstractRecalculation {
     }
     double delta = getStateDelta(accountInitial, accountChange);
     HistoryData.addLog(accountChange.uuid!, change, 0.0, -delta, change.uuid);
-    if (diffDelta != null && accountInitial!.createdAt.isBefore(initial!.createdAt)) {
-      accountInitial.details += exchange.reform(diffDelta, initial?.currency, accountInitial.currency);
+    if (diffDelta != null && accountInitial?.createdAt.isBefore(initial?.createdAt ?? DateTime.now()) == true) {
+      accountInitial!.details += exchange.reform(diffDelta, initial?.currency, accountInitial.currency);
     }
     if (accountChange.createdAt.isBefore(change.createdAt)) {
       accountChange.details -= exchange.reform(delta, change.currency, accountChange.currency);

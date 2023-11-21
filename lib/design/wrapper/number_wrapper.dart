@@ -18,7 +18,7 @@ class NumberWidget extends TextWrapper {
   }) : super();
 
   @override
-  TextStyle? get style => super.style!.copyWith(
+  TextStyle? get style => super.style?.copyWith(
         color: text.characters.firstOrNull == '-' || text.contains(AppLocale.labels.spent)
             ? Color.alphaBlend(Colors.red.withOpacity(0.4), colorScheme.secondary)
             : null,

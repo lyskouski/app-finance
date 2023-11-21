@@ -84,7 +84,7 @@ class AccountAddPageState<T extends AccountAddPage> extends AbstractAddPageState
 
   @override
   bool hasFormErrors() {
-    setState(() => hasError = type == null || type!.isEmpty || title.text.isEmpty);
+    setState(() => hasError = type == null || type?.isEmpty == true || title.text.isEmpty);
     return hasError;
   }
 

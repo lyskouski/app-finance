@@ -48,12 +48,13 @@ class ForegroundChartPainter extends AbstractPainter {
   }) {
     _setTextArea();
     shift = textArea * coercion;
-    yDiv = yDivider * size!.height ~/ 400;
-    xDiv = xDivider * size!.width ~/ 640;
+    final tmp = size ?? const Size(0, 0);
+    yDiv = yDivider * tmp.height ~/ 400;
+    xDiv = xDivider * tmp.width ~/ 640;
   }
 
   void _setTextArea() {
-    double tmp = size!.width / 20;
+    double tmp = (size?.width ?? 0) / 20;
     if (tmp > 32) {
       textArea = 32.0;
     } else if (tmp < 20) {

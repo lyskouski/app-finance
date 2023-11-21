@@ -91,7 +91,7 @@ class ComponentYtdExpense extends StatelessWidget {
                     padding: EdgeInsets.only(left: indent * 2),
                     child: TextWrapper(
                       year.toString(),
-                      style: textTheme.bodySmall!.copyWith(color: Colors.blue),
+                      style: textTheme.bodySmall?.copyWith(color: Colors.blue),
                     ),
                   ),
                 ],
@@ -100,7 +100,7 @@ class ComponentYtdExpense extends StatelessWidget {
                     alignment: Alignment.centerRight,
                     child: TextWrapper(
                       (year - 1).toString(),
-                      style: textTheme.bodySmall!.copyWith(color: Colors.grey),
+                      style: textTheme.bodySmall?.copyWith(color: Colors.grey),
                     ),
                   ),
                 ],

@@ -13,13 +13,9 @@ class InvoiceRecalculation extends AbstractRecalculation {
   InvoiceRecalculation(this.change, [this.initial]);
 
   @override
-  double getDelta() {
-    throw UnimplementedError();
-  }
+  double getDelta() => throw UnimplementedError();
 
-  double getPrevDelta() {
-    return initial!.hidden ? 0.0 : initial?.details;
-  }
+  double getPrevDelta() => initial?.hidden == true ? 0.0 : initial?.details;
 
   double getStateDelta(dynamic prev, dynamic curr) {
     double delta = change.hidden ? 0.0 : change.details;
@@ -39,8 +35,8 @@ class InvoiceRecalculation extends AbstractRecalculation {
     }
     double delta = getStateDelta(accountInitial, accountChange);
     HistoryData.addLog(accountChange.uuid!, change, 0.0, delta * plex, change.uuid);
-    if (diffDelta != null && accountInitial!.createdAt.isBefore(initial!.createdAt)) {
-      accountInitial.details -= plex * super.exchange.reform(diffDelta, initial?.currency, accountInitial.currency);
+    if (diffDelta != null && accountInitial?.createdAt.isBefore(initial?.createdAt ?? DateTime.now()) == true) {
+      accountInitial!.details -= plex * super.exchange.reform(diffDelta, initial?.currency, accountInitial.currency);
     }
     if (accountChange.createdAt.isBefore(change.createdAt)) {
       accountChange.details += plex * super.exchange.reform(delta, change.currency, accountChange.currency);

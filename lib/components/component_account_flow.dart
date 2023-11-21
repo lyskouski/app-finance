@@ -64,7 +64,7 @@ class ComponentAccountFlow extends StatelessWidget {
                     padding: EdgeInsets.only(left: indent * 2),
                     child: TextWrapper(
                       AppLocale.labels.raiseData,
-                      style: textTheme.bodySmall!.copyWith(color: Colors.blue),
+                      style: textTheme.bodySmall?.copyWith(color: Colors.blue),
                     ),
                   ),
                 ],
@@ -73,7 +73,7 @@ class ComponentAccountFlow extends StatelessWidget {
                     alignment: Alignment.centerRight,
                     child: TextWrapper(
                       AppLocale.labels.failData,
-                      style: textTheme.bodySmall!.copyWith(color: Colors.red),
+                      style: textTheme.bodySmall?.copyWith(color: Colors.red),
                     ),
                   ),
                 ],

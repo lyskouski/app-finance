@@ -80,10 +80,10 @@ class BaseListInfiniteWidgetState extends State<BaseListInfiniteWidget> {
 
   @override
   Widget build(BuildContext context) {
-    if (widget.stream!.isEmpty) {
+    if (widget.stream?.isEmpty == true) {
       return ThemeHelper.emptyBox;
     }
-    if (widget.stream != null && widget.stream!.isFirst) {
+    if (widget.stream?.isFirst == true) {
       WidgetsBinding.instance.addPostFrameCallback((_) => clearState());
     }
     return ListView.builder(

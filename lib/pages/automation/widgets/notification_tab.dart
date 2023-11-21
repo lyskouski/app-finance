@@ -30,7 +30,7 @@ class NotificationTabState extends State<NotificationTab> {
   void startListening() {
     _notifications = Notifications();
     try {
-      _subscription = _notifications!.notificationStream!.listen(onData);
+      _subscription = _notifications?.notificationStream?.listen(onData);
       // ignore: unused_catch_clause
     } on NotificationException catch (exception) {
       // print(exception);

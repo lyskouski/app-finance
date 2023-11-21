@@ -87,7 +87,7 @@ class TransactionLog {
     try {
       if (kIsWeb) {
         AppPreferences.set('log$increment', line);
-      } else {
+      } else if (_logFile != null) {
         _logFile!.writeAsStringSync("$line\n", mode: FileMode.append);
       }
       _isLocked = false;

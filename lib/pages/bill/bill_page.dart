@@ -63,7 +63,7 @@ class BillPageState extends AbstractPageState<BillPage> {
         ),
       );
     }
-    if (stream!.isFinished) {
+    if (stream == null || stream?.isFinished == true) {
       return;
     }
     String marker = '';

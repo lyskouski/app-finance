@@ -85,11 +85,13 @@ class SettingTabState<T extends SettingTab> extends AbstractTabState<T> {
   }
 
   Future<void> saveCurrency(Currency? value) async {
-    await AppPreferences.set(AppPreferences.prefCurrency, value!.code);
-    Exchange.defaultCurrency = value;
-    CurrencyDefaults.defaultCurrency = value;
-    await state.restate();
-    setState(() => currency = value);
+    if (value != null) {
+      await AppPreferences.set(AppPreferences.prefCurrency, value.code);
+      Exchange.defaultCurrency = value;
+      CurrencyDefaults.defaultCurrency = value;
+      await state.restate();
+      setState(() => currency = value);
+    }
   }
 
   Future<void> saveTheme(String value) async {

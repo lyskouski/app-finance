@@ -63,8 +63,8 @@ class ScreenHelper {
 
   static ScreenHelperState getInstance(BuildContext context, BoxConstraints constraints) {
     _instance ??= ScreenHelper(context, constraints);
-    if (_instance!.originWidth != ThemeHelper.getWidth(context)) {
-      _instance!.init(context, constraints);
+    if (_instance?.originWidth != ThemeHelper.getWidth(context)) {
+      _instance?.init(context, constraints);
     }
     return state();
   }

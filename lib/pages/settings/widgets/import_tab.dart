@@ -97,7 +97,7 @@ class ImportTabState extends State<ImportTab> {
         newItem = state.add(newItem, newItem.uuid);
         TransactionLog.save(newItem);
       } catch (e) {
-        setState(() => errorMessage.writeln('[$i / ${fileContent!.length}] ${e.toString()}.'));
+        setState(() => errorMessage.writeln('[$i / ${fileContent?.length}] ${e.toString()}.'));
       }
     }
     await state.restate();

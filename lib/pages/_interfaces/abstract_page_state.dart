@@ -208,7 +208,7 @@ abstract class AbstractPageState<T extends StatefulWidget> extends State<T> {
                   getButtonName(),
                   maxLines: 2,
                   style:
-                      theme.textTheme.bodySmall!.copyWith(color: theme.colorScheme.onInverseSurface.withOpacity(0.6)),
+                      theme.textTheme.bodySmall?.copyWith(color: theme.colorScheme.onInverseSurface.withOpacity(0.6)),
                 ),
               ),
           ],

@@ -258,13 +258,17 @@ class AppData extends ChangeNotifier {
   }
 
   InterfaceIterator getStream<M extends InterfaceAppData>(AppDataType property,
-          {bool inverse = true, double? boundary, Function? filter}) =>
-      _data[property]!.origin.toStream<M>(
-            inverse,
-            transform: getByUuid,
-            boundary: boundary,
-            filter: (M v) => v.hidden || filter?.call(v) == true,
-          );
+      {bool inverse = true, double? boundary, Function? filter}) {
+    if (_data[property] == null) {
+      return IteratorController<num, dynamic, M>(SplayTreeMap<num, dynamic>(), transform: getByUuid);
+    }
+    return _data[property]!.origin.toStream<M>(
+          inverse,
+          transform: getByUuid,
+          boundary: boundary,
+          filter: (M v) => v.hidden || filter?.call(v) == true,
+        );
+  }
 
   List<dynamic> getActualList(AppDataType property, [bool isClone = true]) {
     return (_data[property]?.listActual ?? [])

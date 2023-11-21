@@ -59,10 +59,10 @@ class DataHandler {
       {required Exchange exchange, DateTime? cut}) {
     final data = scope.firstOrNull;
     for (int i = 1; i < scope.length; i++) {
-      if (scope[i] == null) {
+      if (scope[i] == null || data == null) {
         continue;
       }
-      data!.addAll(scope[i]!.where((e) => cut == null || e.timestamp.isAfter(cut)));
+      data.addAll(scope[i]!.where((e) => cut == null || e.timestamp.isAfter(cut)));
     }
     if (data != null && data.isNotEmpty) {
       data.sort((a, b) => a.timestamp.compareTo(b.timestamp));

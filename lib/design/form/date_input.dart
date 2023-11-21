@@ -42,9 +42,9 @@ class DateInputState extends AbstractSelectorState<DateInput> {
     if (selectedDate != null) {
       if (widget.value != null) {
         selectedDate = selectedDate.add(Duration(
-          hours: widget.value!.hour,
-          minutes: widget.value!.minute,
-          seconds: widget.value!.second,
+          hours: widget.value?.hour ?? 0,
+          minutes: widget.value?.minute ?? 0,
+          seconds: widget.value?.second ?? 0,
         ));
       }
       widget.setState(selectedDate);
