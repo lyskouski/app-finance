@@ -9,7 +9,7 @@
 [![Widget Tests Coverage](https://lyskouski.github.io/app-finance/coverage/widget_coverage_badge.svg)](https://github.com/lyskouski/app-finance/tree/main/test/widget)
 [![End-To-End Coverage](https://lyskouski.github.io/app-finance/coverage/e2e_coverage_badge.svg)](https://github.com/lyskouski/app-finance/tree/main/test/e2e)
 
-**Fingrom** -- 无广告、无限制的开源跨平台财务会计应用程序。该解决方案的目标是创建一个直观、高效、包容的财务会计应用程序。 
+**Fingrom** (金融雷击) -- 无广告、无限制的开源跨平台财务会计应用程序。该解决方案的目标是创建一个直观、高效、包容的财务会计应用程序。 
 它能让用户毫不费力地管理自己的财务，同时确保没有人掉队。
 
 ```mermaid

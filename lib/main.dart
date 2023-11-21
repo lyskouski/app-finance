@@ -3,6 +3,7 @@
 
 import 'dart:async';
 
+import 'package:app_finance/_classes/controller/fallback_localization_delegate.dart';
 import 'package:app_finance/_classes/herald/app_locale.dart';
 import 'package:app_finance/_classes/herald/app_palette.dart';
 import 'package:app_finance/_classes/herald/app_purchase.dart';
@@ -177,7 +178,10 @@ class MyAppState extends State<MyApp> {
         );
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      localizationsDelegates: AppLocalizations.localizationsDelegates,
+      localizationsDelegates: [
+        ...AppLocalizations.localizationsDelegates,
+        FallbackLocalizationDelegate(),
+      ],
       supportedLocales: AppLocalizations.supportedLocales,
       locale: context.watch<AppLocale>().value,
       theme: ThemeData(
