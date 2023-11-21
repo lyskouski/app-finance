@@ -86,7 +86,7 @@ digraph G {
   }
   {
     rank = same; "_classes";
-    controller [label="<0>CONTROLLER|<encryption_handler>encryption_handler|<delayed_call>delayed_call|<flow_state_machine>flow_state_machine|<exchange_controller>exchange_controller|<purchase_controller>purchase_controller|<iterator_controller>iterator_controller|<focus_controller>focus_controller",fillcolor="silver:white", gradientangle=240, style="filled"];
+    controller [label="<0>CONTROLLER|<encryption_handler>encryption_handler|<fallback_localization_delegate>fallback_localization_delegate|<delayed_call>delayed_call|<flow_state_machine>flow_state_machine|<exchange_controller>exchange_controller|<purchase_controller>purchase_controller|<iterator_controller>iterator_controller|<focus_controller>focus_controller",fillcolor="silver:white", gradientangle=240, style="filled"];
   }
   {
     rank = same; "_classes";
@@ -452,7 +452,7 @@ digraph G {
   structure -> structure [color="green"];
   structure -> _ext_ [color="green"];
   structure -> _mixins_ [color="green"];
-
+  structure_def -> herald [color="green"];
   structure -> storage [color="green"];
   structure -> structure [color="green"];
   structure -> storage [color="green"];
@@ -519,6 +519,7 @@ digraph G {
   herald -> storage [color="green"];
   herald -> storage [color="green"];
   controller -> storage [color="green"];
+
 
   controller -> storage [color="green"];
   controller -> structure [color="green"];
