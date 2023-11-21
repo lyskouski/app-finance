@@ -28,7 +28,7 @@ gantt
 [![观看英语视频](./docs/marketing-flow/presentation_video.png)](https://youtu.be/sNTbpILLsOw)
 
 
-| Type                     | Alpha Version         | Pre-Release                   | Release                       |
+| 类型                      | 阿尔法版本             | 预发布                         | 发布                           |
 | ------------------------ | ----------------------| ----------------------------- | ----------------------------- |
 | ![Apple](./docs/design-flow/icons/apple.png) iOS (Apple Store)        | [fingrom_iOS.ipa](https://github.com/lyskouski/app-finance/releases/latest) | [TestFlight: Fingrom](https://testflight.apple.com/join/93ECy9ZB) | [![iOS Apple Store](./docs/design-flow/badges/ios.png)](https://apps.apple.com/us/app/fingrom/id6463955600) |
 | ![Apple](./docs/design-flow/icons/apple.png) macOS (Apple Store)      | [fingrom_macOS.zip](https://github.com/lyskouski/app-finance/releases/latest) | 无法进行测试 | [![macOS Apple Store](./docs/design-flow/badges/macos.png)](https://apps.apple.com/us/app/fingrom/id6463955600) |
@@ -39,7 +39,7 @@ gantt
 | ![Linux](./docs/design-flow/icons/linux.png) Linux (Flathub)          | [fingrom_LinuxFlatpak.flatpak](https://github.com/lyskouski/app-finance/releases/latest)  | 无法进行测试 | [ ![Flathub: Fingrom](./docs/design-flow/badges/flathub.png) ](https://flathub.org/apps/com.tercad.fingrom) |
 | ![Linux](./docs/design-flow/icons/linux.png) Linux (AppImage)         | [未决] | [未决] | [未决] |
 | ![Windows](./docs/design-flow/icons/windows.png) Windows (Partner Center) | [fingrom_Windows.zip](https://github.com/lyskouski/app-finance/releases/latest) | [App Center: Fingrom](https://appcenter.ms/orgs/terCAD/apps/Fingrom) | [![Microsoft Store](./docs/design-flow/badges/windows.png)](https://apps.microsoft.com/detail/fingrom/9NNPDJ2ST0HV) |
-| ![Web Browsers](./docs/design-flow/icons/web.png) Web                      | [fingrom_Web.tar.gz](https://github.com/lyskouski/app-finance/releases/latest) | [GitHub Pages: Fingrom](https://lyskouski.github.io/app-finance/) | [terCAD: Fingrom](https://tercad.com/app/finance/index.html) |
+| ![Web Browsers](./docs/design-flow/icons/web.png) Web 浏览器           | [fingrom_Web.tar.gz](https://github.com/lyskouski/app-finance/releases/latest) | [GitHub Pages: Fingrom](https://lyskouski.github.io/app-finance/) | [terCAD: Fingrom](https://tercad.com/app/finance/index.html) |
 
 
 ## 功能
