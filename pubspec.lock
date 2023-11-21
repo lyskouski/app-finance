@@ -233,6 +233,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.0.1"
+  dart_intl_search:
+    dependency: "direct main"
+    description:
+      name: dart_intl_search
+      sha256: "9c809c7dedaaa7f537e7d2311f3ab8861541d99a02b7e8835c99a092b586af46"
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.0.1"
   dart_style:
     dependency: transitive
     description:
@@ -394,10 +402,10 @@ packages:
     dependency: "direct main"
     description:
       name: flutter_currency_picker
-      sha256: "39bdfc5985a78269a3ebb5dd797e5daa89aff51cbb6b18a69033b5b945f37a25"
+      sha256: "504747f5d9c3d54543b27857ad556997fae40d5063895656041429bd327b85fa"
       url: "https://pub.dev"
     source: hosted
-    version: "1.1.8"
+    version: "1.2.0"
   flutter_driver:
     dependency: "direct dev"
     description: flutter

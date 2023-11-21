@@ -153,6 +153,7 @@ class TransferTabState<T extends TransferTab> extends State<T> {
               isRequired: true,
               value: accountFrom,
               title: AppLocale.labels.accountFrom,
+              tooltip: '${AppLocale.labels.titleAccountTooltip} (${AppLocale.labels.accountFrom})',
               showError: hasErrors && accountFrom == null,
               state: widget.state,
               onChange: (value) => setState(() {
@@ -167,6 +168,7 @@ class TransferTabState<T extends TransferTab> extends State<T> {
               isRequired: true,
               value: accountTo,
               title: AppLocale.labels.accountTo,
+              tooltip: '${AppLocale.labels.titleAccountTooltip} (${AppLocale.labels.accountTo})',
               showError: hasErrors && accountTo == null,
               state: widget.state,
               onChange: (value) => setState(() {
