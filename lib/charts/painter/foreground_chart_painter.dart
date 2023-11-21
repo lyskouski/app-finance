@@ -80,6 +80,9 @@ class ForegroundChartPainter extends AbstractPainter {
     final line = Paint()
       ..color = areaColor
       ..strokeWidth = 1;
+    if (yMax == 0 || yDiv == 0) {
+      return;
+    }
     double y = _shiftStep(size.height, textArea, yDiv, (yPos - yMin) / (yMax / yDiv));
     canvas.drawLine(Offset(shift, y), Offset(size.width, y), line);
   }
@@ -88,6 +91,9 @@ class ForegroundChartPainter extends AbstractPainter {
     final background = Paint()
       ..color = areaColor.withOpacity(0.1)
       ..style = PaintingStyle.fill;
+    if (yMax == 0 || yDiv == 0) {
+      return;
+    }
     canvas.drawRect(
       Rect.fromPoints(
         Offset(shift, _shiftStep(size.height, textArea, yDiv, ((yArea[0] - yMin) / (yMax / yDiv)).round())),
