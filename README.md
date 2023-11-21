@@ -1,4 +1,4 @@
-[ English | [Deutsch](./README_de.md) ]
+[ English | [Deutsch](./README_de.md) | [简体中文](./README_zh-CN.md) ]
 
 # ![Fingrom Logo](./docs/design-flow/logo/main.svg) Financial Accounting Application
 [![License: CC BY-NC-ND 4.0](https://img.shields.io/badge/License-CC_BY--NC--ND_4.0-lightgrey.svg)](https://creativecommons.org/licenses/by-nc-nd/4.0/) 
@@ -70,11 +70,11 @@ gantt
     - Bar Race for Categories
   - Goals Gauge Chart
   - Currency Historical Chart
-- Synchronization between devices (P2P) [[demo]](https://youtu.be/RccQ8JpfJs4)
+- [[demo]](https://youtu.be/RccQ8JpfJs4) Synchronization between devices (P2P) 
 - Recovery via WebDav or a direct File
 - Import from `CSV`, `QIF`, `OFX` files for Bills and Invoices
 - Data encryption
-- Localization: 7 languages
+- Localization: 8 languages
 - User Experience
   - Configurable Main Page (multiple configurations per `width x height` set)
   - Responsive & Adaptive Design

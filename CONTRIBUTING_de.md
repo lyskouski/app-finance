@@ -1,7 +1,6 @@
-[ [English](./CONTRIBUTING.md) | Deutsch ]
+[ [English](./CONTRIBUTING.md) | Deutsch | [简体中文](./CONTRIBUTING_zh-CN.md) ]
 
-Beitrag zu Fingrom (app-finance)
-=======================
+# Beitrag zu Fingrom (app-finance)
 
 Jede Hilfe ist immer willkommen!
 
@@ -10,19 +9,17 @@ die Hilfe bei der bei der Sichtung, Reproduktion oder Behebung von Fehlern, die 
 andere Weise zu helfen.
 
 
-Qualitätssicherung
------------------------
+## Qualitätssicherung
 
 Das Erstellen von Tests ist ein wirklich wertvoller Beitrag zu Open-Source-Projekten. Aber bewahren Sie einen gesunden 
 Menschenverstand, indem Sie einen neuen Bereich. Sie sollten nicht zum Zweck der Abdeckung geschrieben werden. Tests 
 sollten die Geschäftslogik verifizieren und die Entwickler vor Fehlern schützen.
 
 
-Entwicklung
------------------------
+## Entwicklung
 
-Die Anwendung wurde in der Sprache "Dart" unter Verwendung des "Flutter"-Frameworks geschrieben. Falls Sie weder das 
-eine weder das eine noch das andere kennen, lesen Sie mein Buch: 
+Die Anwendung wurde in der Sprache "Dart" unter Verwendung des "Flutter"-Frameworks geschrieben. Falls dies eine neue 
+Technologie für Sie ist, lesen Sie mein Buch:
 [From Zero to Market with Flutter](./docs/implementation-flow/README.md).
 
 Ein sauberer Code, der durch automatisierte Tests abgedeckt ist, ist das Beste, was man tun kann und wird sehr geschätzt.
@@ -37,8 +34,7 @@ Große Regeln:
 - automatische Tests schreiben (manuelle QA vernachlässigen)
 
 
-Lokalisierung
------------------------
+## Lokalisierung
 
 Muttersprachler (und Übersetzer) sind willkommen, um unsere Übersetzungen zu verbessern, da die meisten von einem 
 "Ausländer" gemacht werden mit Hilfe von Automatisierungstools ([DeepL](https://www.deepl.com/translator), 
@@ -46,14 +42,12 @@ Muttersprachler (und Übersetzer) sind willkommen, um unsere Übersetzungen zu v
 
 Prüfen Sie [Lokalisierungsdetails](./lib/l10n/README.md).
 
-Einsätze
------------------------
+## Einsätze
 
 Das Schreiben von Beiträgen über das Projekt in allen sozialen Netzwerken ist ein Schlüsselfaktor, um es am Leben zu 
 erhalten und nachgefragt zu werden.
 
-Veröffentlichungen
------------------------
+## Veröffentlichungen
 
 Das Schreiben von Versionshinweisen und Blogeinträgen sowie das Erstellen von Begleitmaterial (Video, Dokumentation) 
 wird respektiert.

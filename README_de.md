@@ -1,4 +1,4 @@
-[ [English](./README.md) | Deutsch ]
+[ [English](./README.md) | Deutsch | [简体中文](./README_zh-CN.md) ]
 
 # ![Fingrom Logo](./docs/design-flow/logo/main.svg) Anwendung Finanzbuchhaltung
 [![License: CC BY-NC-ND 4.0](https://img.shields.io/badge/License-CC_BY--NC--ND_4.0-lightgrey.svg)](https://creativecommons.org/licenses/by-nc-nd/4.0/) 
@@ -71,11 +71,11 @@ gantt
     - Balkenrennen für Kategorien
   - Ziele-Gauge-Diagramm
   - Historisches Währungsdiagramm
-- Synchronisation zwischen Geräten (P2P)  [[demo]](https://youtu.be/RccQ8JpfJs4)
+- [[demo]](https://youtu.be/RccQ8JpfJs4) Synchronisation zwischen Geräten (P2P)
 - Wiederherstellung über WebDav oder eine direkte Datei
 - Import von `CSV`, `QIF`, `OFX` Dateien für Rechnungen und Abrechnungen
 - Verschlüsselung der Daten
-- Lokalisierung: 7 Sprachen
+- Lokalisierung: 8 Sprachen
 - Benutzerfreundlichkeit
   - Konfigurierbare Hauptseite (mehrere Konfigurationen pro `Breite x Höhe` eingestellt)
   - Reaktionsfähiges & adaptives Design

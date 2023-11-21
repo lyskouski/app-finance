@@ -1,6 +1,10 @@
+[ English | [Deutsch](./SECURITY_de.md) | [简体中文](./SECURITY_zh-CN.md) ]
+
 # Security Policy
 
-Any found fulnerability can be reported directly to 
-[GitHub Issues](https://github.com/lyskouski/app-finance/issues)
+Any issue can be reported directly to [Fingrom Issues](https://github.com/lyskouski/app-finance/issues):
+- vulnerability will be considered the highest priority for fixing as soon as possible,
+- bug would go to the top of the implementation backlog, as we put quality above everything else. 
 
-Depending on the criticality, SLA may vary (from a month to a couple of hours).
+If you have any concerns about the confidentiality of the information that will be shared with the identified issue, 
+please use the email: [support@tercad.pl](mailto:support@tercad.pl)

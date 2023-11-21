@@ -90,17 +90,53 @@ Asian cultures often lean towards vibrant layouts, emphasizing the importance of
 elements. In contrast, Western cultures tend to prefer minimalistic and concise designs, typically incorporating a 
 limited color palette while placing primary emphasis on key objects or elements.
 
+This contrast stems from the fundamental difference between collectivism and individualism in cultural norms 
+\cite{Wall23}. Individualist cultures prioritize autonomy, valuing personal goals highly, whereas collectivist cultures 
+emphasize interdependence, prioritizing community goals over personal objectives. This cultural distinction is 
+manifested in the design of digital products. For instance, Canadian apps exhibit minimalist design and a lack of social 
+features, while Indian apps often incorporate social support functions.
+
 Icons are like visual metaphors representing user actions, and their interpretation can vary significantly across 
 different cultures. When using icons for purposes such as indicating currencies, locations, or navigation (as Chinese 
 apps don't use hamburger or kebab symbols for the "menu"-button), it's needed to be mindful that symbols may not have 
-universal meanings and can be understood differently.
+universal meanings and can be understood differently. Western user interfaces usually highlight a singular call to 
+action, whereas Asian user interfaces tend to feature multiple calls to action. Indicating that collective cultures
+incorporate a greater number of visual and interactive elements compared to individualist cultures.
 
 Color choices can vary widely, with Europeans favoring colder colors, Latin Americans preferring warmer hues, and Asian 
 cultures embracing vibrant and diverse color palettes.
 
 \img{uiux/fb-localized}{Facebook Registation Page Deviations}{img:ui-facebook}
 
-\noindent These details \cite{Rein14} enhance the user experience for diverse audiences.
+\noindent These details \cite{Rein14} contribute to an improved user experience for diverse audiences, underscoring the 
+importance of localization in collectivist regions. Neglecting localization in such areas could result in a higher 
+churn rate.
+
+There is an unresolved issue in Flutter: not all locales are supported, even those listed as supported 
+(\href{https://api.flutter.dev/flutter/flutter\_localizations/GlobalMaterialLocalizations-class.html}{https://api.flutter.dev/flutter/flutter\_localizations/GlobalMaterialLocalizations-class.html}), 
+such as Chinese [\q{ch}] (see \href{https://github.com/flutter/flutter/issues/138797}{https://github.com/flutter/flutter/issues/138797}). 
+To address this problem, a possible solution involves using a fallback delegate that returns true for any locale, 
+regardless of its support by the SDK:
+
+\begin{lstlisting}
+class FallbackLocalizationDelegate extends LocalizationsDelegate<MaterialLocalizations> {
+  @override
+  bool isSupported(Locale locale) => true;
+  
+  @override
+  Future<MaterialLocalizations> load(Locale locale) async => const DefaultMaterialLocalizations();
+
+  @override
+  bool shouldReload(old) => false;
+}
+
+// main.dart
+MaterialApp(
+  localizationsDelegates: [
+    ...AppLocalizations.localizationsDelegates,
+    FallbackLocalizationDelegate(),
+  ],
+\end{lstlisting}
 
 
 \subsubsection{Creating Navigational Clarity} 
