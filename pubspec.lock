@@ -237,10 +237,10 @@ packages:
     dependency: "direct main"
     description:
       name: dart_intl_search
-      sha256: "9c809c7dedaaa7f537e7d2311f3ab8861541d99a02b7e8835c99a092b586af46"
+      sha256: "05407465e3d67db89e5d9e014a5856495c13efa02990f3d3b29157d2b72f99ff"
       url: "https://pub.dev"
     source: hosted
-    version: "1.0.1"
+    version: "1.0.2"
   dart_style:
     dependency: transitive
     description:
