@@ -278,6 +278,10 @@ class ExpensesTabState extends State<ExpensesTab> {
 }
 \end{lstlisting}
 
-And finally, let's refactor taken solution to make it reliable, by storing positions during components initialization
-and making a delta scroll by their deduction (positions of the current element and the first one) -- \issue{164}{}, 
-\issue{265}{172eb11}.
+\noindent And finally, let's refactor taken solution to make it reliable, by storing positions during components 
+initialization and making a delta scroll by their deduction (positions of the current element and the first one) -- 
+\issue{164}{}, \issue{265}{172eb11}. An important tip is to assign a unique identifier (\q{id}-property) to each input 
+element. Otherwise, after a compilation, all objects created from the same widget-class may be identified as one 
+(\cref{img:u-grid}) due to a similar \q{hashCode}-property \issue{127}{} \issue{408}{29ac970}.
+
+\img{uiux/focus-issue}{Visualization of a simulaneous focus on multiple fields}{img:u-focus}
