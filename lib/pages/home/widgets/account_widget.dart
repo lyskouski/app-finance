@@ -81,7 +81,11 @@ class AccountWidget extends BaseWidget {
   List<dynamic> updateItems(items, summaryItem) {
     return items.map((o) {
       if (o is AccountAppData) {
-        o.progress = exchange.reform(o.details, o.currency, exchange.getDefaultCurrency()) / summaryItem.details;
+        if (summaryItem.details == 0) {
+          o.progress = 0;
+        } else {
+          o.progress = exchange.reform(o.details, o.currency, exchange.getDefaultCurrency()) / summaryItem.details;
+        }
       }
       return o;
     }).toList();
