@@ -17,12 +17,6 @@ abstract class AbstractSelectorState<T extends AbstractSelector> extends State<T
   late SearchController textController;
 
   @override
-  void initState() {
-    textController = SearchController();
-    super.initState();
-  }
-
-  @override
   void dispose() {
     textController.dispose();
     super.dispose();
@@ -36,6 +30,7 @@ abstract class AbstractSelectorState<T extends AbstractSelector> extends State<T
   Widget build(BuildContext context) {
     focusController = FocusWrapper.of(context) ?? FocusController();
     focus = focusController.bind(this, context: context, value: widget.value);
+    textController = SearchController();
     return Focus(
       autofocus: mounted && focusController.isFocused(this) && widget.value == null,
       child: buildContent(context),

@@ -44,7 +44,7 @@ class ListSelectorState<T extends ListSelector, K extends ListSelectorItem> exte
 
   Widget itemBuilder(BuildContext context, K item) => selectorBuilder(context, item);
 
-  void onChange(K value, [NavigatorState? nav]) {
+  void onChange(K value) {
     textController.closeView(null);
     widget.setState(value.id);
     focusController.onEditingComplete(this);
@@ -60,7 +60,7 @@ class ListSelectorState<T extends ListSelector, K extends ListSelectorItem> exte
 
   Widget Function(Iterable<Widget>)? getViewBuilder(BuildContext context) => null;
 
-  List<Widget> buildSuggestions(BuildContext context, SearchController controller, [NavigatorState? nav]) {
+  List<Widget> buildSuggestions(BuildContext context, SearchController controller) {
     final result = <Widget>[];
     final scope = widget.options.cast().where((e) => e.match(controller.text));
     scope.toList().asMap().forEach((index, e) {
@@ -68,7 +68,7 @@ class ListSelectorState<T extends ListSelector, K extends ListSelectorItem> exte
         title: itemBuilder(context, e),
         tileColor: index % 2 == 0 ? context.colorScheme.primary.withOpacity(0.05) : null,
         hoverColor: context.colorScheme.primary.withOpacity(0.15),
-        onTap: () => onChange(e, nav),
+        onTap: () => onChange(e),
       ));
     });
     return result;
@@ -80,7 +80,6 @@ class ListSelectorState<T extends ListSelector, K extends ListSelectorItem> exte
     final hintStyle = context.textTheme.tooltipMedium.copyWith(overflow: TextOverflow.ellipsis);
     final labelStyle = context.textTheme.tooltipSmall;
     K? item = widget.value != null ? widget.options.cast().where((e) => e.equal(widget.value)).firstOrNull : null;
-    final nav = Navigator.of(context);
     return SearchAnchor(
       isFullScreen: true,
       searchController: textController,
@@ -130,7 +129,7 @@ class ListSelectorState<T extends ListSelector, K extends ListSelectorItem> exte
         ),
       ),
       viewBuilder: getViewBuilder(context),
-      suggestionsBuilder: (context, controller) => buildSuggestions(context, controller, nav),
+      suggestionsBuilder: (context, controller) => buildSuggestions(context, controller),
     );
   }
 }
