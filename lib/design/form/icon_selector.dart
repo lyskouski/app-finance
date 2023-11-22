@@ -105,7 +105,7 @@ class IconSelectorState extends ListSelectorState<IconSelector, IconSelectorItem
       );
 
   @override
-  List<Widget> buildSuggestions(BuildContext context, SearchController controller) {
+  List<Widget> buildSuggestions(BuildContext context, SearchController controller, [NavigatorState? nav]) {
     final result = <Widget>[];
     final scope = widget.options.cast().where((e) => e.match(controller.text));
     scope.toList().asMap().forEach((index, e) {
@@ -115,7 +115,7 @@ class IconSelectorState extends ListSelectorState<IconSelector, IconSelectorItem
         title: itemBuilder(context, e),
         tileColor: highlight ? context.colorScheme.primary.withOpacity(0.05) : null,
         hoverColor: context.colorScheme.primary.withOpacity(0.15),
-        onTap: () => onChange(e),
+        onTap: () => onChange(e, nav),
       ));
     });
     return result;

@@ -49,7 +49,11 @@ class ListSelectorState<T extends ListSelector, K extends ListSelectorItem> exte
     try {
       textController.closeView(null);
     } catch (_) {
-      nav?.pop();
+      if (nav?.canPop() == true) {
+        nav?.pop();
+      } else {
+        rethrow;
+      }
     }
     widget.setState(value.id);
     focusController.onEditingComplete(this);
@@ -65,10 +69,9 @@ class ListSelectorState<T extends ListSelector, K extends ListSelectorItem> exte
 
   Widget Function(Iterable<Widget>)? getViewBuilder(BuildContext context) => null;
 
-  List<Widget> buildSuggestions(BuildContext context, SearchController controller) {
+  List<Widget> buildSuggestions(BuildContext context, SearchController controller, [NavigatorState? nav]) {
     final result = <Widget>[];
     final scope = widget.options.cast().where((e) => e.match(controller.text));
-    final nav = Navigator.of(context, rootNavigator: true);
     scope.toList().asMap().forEach((index, e) {
       result.add(ListTile(
         title: itemBuilder(context, e),
@@ -86,6 +89,7 @@ class ListSelectorState<T extends ListSelector, K extends ListSelectorItem> exte
     final hintStyle = context.textTheme.tooltipMedium.copyWith(overflow: TextOverflow.ellipsis);
     final labelStyle = context.textTheme.tooltipSmall;
     K? item = widget.value != null ? widget.options.cast().where((e) => e.equal(widget.value)).firstOrNull : null;
+    final nav = Navigator.of(context, rootNavigator: true);
     return SearchAnchor(
       isFullScreen: true,
       searchController: textController,
@@ -135,7 +139,7 @@ class ListSelectorState<T extends ListSelector, K extends ListSelectorItem> exte
         ),
       ),
       viewBuilder: getViewBuilder(context),
-      suggestionsBuilder: buildSuggestions,
+      suggestionsBuilder: (context, controller) => buildSuggestions(context, controller, nav),
     );
   }
 }
