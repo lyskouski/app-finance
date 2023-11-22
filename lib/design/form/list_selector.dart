@@ -45,16 +45,7 @@ class ListSelectorState<T extends ListSelector, K extends ListSelectorItem> exte
   Widget itemBuilder(BuildContext context, K item) => selectorBuilder(context, item);
 
   void onChange(K value, [NavigatorState? nav]) {
-    // https://github.com/flutter/flutter/issues/138880
-    try {
-      textController.closeView(null);
-    } catch (_) {
-      if (nav?.canPop() == true) {
-        nav?.pop();
-      } else {
-        rethrow;
-      }
-    }
+    textController.closeView(null);
     widget.setState(value.id);
     focusController.onEditingComplete(this);
   }

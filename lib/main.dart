@@ -116,6 +116,7 @@ void main() async {
       }
     }
     FlutterError.presentError(FlutterErrorDetails(exception: error, stack: stack));
+    // SystemNavigator.pop();
   });
 }
 
