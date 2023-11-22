@@ -141,6 +141,8 @@ jobs:
 
       - name: Build Web Package
         run: flutter build -v web --release --no-tree-shake-icons --base-href="/app-finance/"
+        ## To compile into Web Assembly (Wasm):
+        # flutter build -v web --wasm ...
 
       - name: Add Coverage Report to the Package
         run: cp -R ./coverage ./build/web/coverage
