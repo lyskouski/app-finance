@@ -89,7 +89,7 @@ class ListSelectorState<T extends ListSelector, K extends ListSelectorItem> exte
     final hintStyle = context.textTheme.tooltipMedium.copyWith(overflow: TextOverflow.ellipsis);
     final labelStyle = context.textTheme.tooltipSmall;
     K? item = widget.value != null ? widget.options.cast().where((e) => e.equal(widget.value)).firstOrNull : null;
-    final nav = Navigator.of(context, rootNavigator: true);
+    final nav = Navigator.of(context);
     return SearchAnchor(
       isFullScreen: true,
       searchController: textController,
