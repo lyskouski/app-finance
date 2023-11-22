@@ -14,7 +14,7 @@ abstract class AbstractSelector extends StatefulWidget {
 abstract class AbstractSelectorState<T extends AbstractSelector> extends State<T> {
   late FocusNode focus;
   late FocusController focusController;
-  late SearchController textController;
+  late SearchController textController = SearchController();
 
   @override
   void dispose() {
@@ -30,7 +30,6 @@ abstract class AbstractSelectorState<T extends AbstractSelector> extends State<T
   Widget build(BuildContext context) {
     focusController = FocusWrapper.of(context) ?? FocusController();
     focus = focusController.bind(this, context: context, value: widget.value);
-    textController = SearchController();
     return Focus(
       autofocus: mounted && focusController.isFocused(this) && widget.value == null,
       child: buildContent(context),

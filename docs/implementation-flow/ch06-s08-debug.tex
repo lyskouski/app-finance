@@ -68,3 +68,16 @@ main header to access the configuration settings and make the necessary adjustme
 \href{https://github.com/flutter/flutter/issues/138880}{https://github.com/flutter/flutter/issues/138880}):
 
 \img{features/crash-stacktrace-details}{Google Chrome: Failure detection}{img:o-error-details}
+
+\noindent The encountered problem surfaced exclusively in the context of Progressive Web App (PWA) development, 
+specifically tied to the corruption of transliterations. This issue arises (in Flutter 3.16.0 with Dart 3.2.0) because 
+the Dart code undergoes a two-step compilation process: first, it is compiled to optimized JavaScript for deployment, 
+and subsequently, this JavaScript is JIT-compiled (Just-In-Time) by the web platform to a native code while the 
+application is in runtime. The complexity of this compilation pipeline introduces a potential source of errors as above.
+
+Previously, there was a brief mention of the option to build with Web Assembly (\ref{deploy-web}). Web Assembly is a 
+low-level format that resides closer to the abstraction level of machine code compared to JavaScript. This proximity 
+results in enhanced startup times and a more predictable execution flow. Opting for Web Assembly eliminates the need 
+for the two-step compilation process, making it a potential solution amidst various uncertainties. However, it's worth 
+noting that Web Assembly, introduced in 2020, remains experimental and introduces its set of considerations and 
+potential trade-offs.
