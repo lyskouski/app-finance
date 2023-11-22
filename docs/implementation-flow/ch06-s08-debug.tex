@@ -1,0 +1,70 @@
+% Copyright 2023 The terCAD team. All rights reserved.
+% Use of this content is governed by a CC BY-NC-ND 4.0 license that can be found in the LICENSE file.
+
+\subsection{Debugging}
+\markboth{Optimizing}{Debugging}
+
+Any application may encounter bugs and issues during the development process that might be hardly understandable 
+(\cref{img:o-error}, \issue{421}{}).
+
+\img{features/crash-stacktrace}{Firebase Chrashlytics: Failure report}{img:o-error}
+
+\noindent One of the simplest yet effective methods for debugging in Flutter is logging. By strategically placing logger 
+statements in our code, we may trace the flow of execution and monitor variable changes. For the case of distributed 
+applications, it should be used loggers with external (to application) storage, as Sentry
+(\href{https://pub.dev/packages/sentry\_flutter}{https://pub.dev/packages/sentry\_flutter}):
+
+\begin{lstlisting}
+// Initialization
+runZonedGuarded(() async {
+  Future<void> main() async {
+    await SentryFlutter.init(
+      (o) => o.dsn = 'https://{NAME}@sentry.io/{DSN}'
+    );
+  }
+  runApp(MyApp());
+}, (ex, trace) async {
+  await Sentry.captureException(ex, stackTrace: trace);
+});
+// ... in the code
+Sentry.captureMessage(
+  'A message with some info',
+  withScope: (scope) {
+    scope.setTag('variable', 'state');
+  },
+);
+\end{lstlisting}
+
+\noindent Once the issue has been successfully replicated locally, we can strategically place breakpoints in our code 
+to halt execution at specific points. By default, when executing the \q{flutter run}-command, the application runs in 
+debug mode. This enables us to scrutinize variables and navigate through the code step by step, facilitating a more 
+granular inspection of the codebase.
+
+In the case of utilizing a web distribution, it becomes necessary to find a means to examine Web Progressive Applications 
+(WPA). The majority of mobile browsers facilitate remote debugging through their developer tools. For instance, 
+in Chrome, we may use \href{chrome://inspect\#devices}{chrome://inspect\#devices} to enable access to a phone that is 
+connected via a USB. Underneath is would be shown a list of recognized devices (\cref{img:o-devtool}). By clicking on 
+the respective device, the inspect panel is activated, allowing for detailed examination and debugging.
+
+\img{features/devtool-devices}{Google Chrome: Devices Inspector}{img:o-devtool}
+
+\noindent The phone might not be recognized after being connected. In that case we should turn on the "USB debugging".
+As for Android, those options are available on \q{Developer options} from \q{Settings}-menu after clicking 7 times 
+on \q{Build Number} (from "About phone"-submenu).
+
+For the case of "\emph{Pending authentication: please accept debugging session on the device}", consider experimenting 
+with various USB cables or connecting to different ports on a machine. Additionally, we should attempt a sequence of 
+command prompts to manage the Android Debug Bridge (ADB): start from \q{adb kill-server}, followed by 
+\q{adb start-server}, and finally \q{adb devices} to verify and check the status of connections. This sequence might 
+help resolve authentication-related issues during the debugging session.
+
+An additional tip is to modify the USB connection type to \q{MIDI} instead of file transfers. Simply slide down the 
+main header to access the configuration settings and make the necessary adjustment.
+
+~
+
+\noindent All of those things were needed to transform our initial error (\cref{img:o-error}) into a more clear trace 
+(\cref{img:o-error-details}, 
+\href{https://github.com/flutter/flutter/issues/138880}{https://github.com/flutter/flutter/issues/138880}):
+
+\img{features/crash-stacktrace-details}{Google Chrome: Failure detection}{img:o-error-details}
