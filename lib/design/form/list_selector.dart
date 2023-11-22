@@ -44,8 +44,13 @@ class ListSelectorState<T extends ListSelector, K extends ListSelectorItem> exte
 
   Widget itemBuilder(BuildContext context, K item) => selectorBuilder(context, item);
 
-  void onChange(K value) {
-    textController.closeView(null);
+  void onChange(K value, [NavigatorState? nav]) {
+    // https://github.com/flutter/flutter/issues/138880
+    try {
+      textController.closeView(null);
+    } catch (_) {
+      nav?.pop();
+    }
     widget.setState(value.id);
     focusController.onEditingComplete(this);
   }
@@ -63,12 +68,13 @@ class ListSelectorState<T extends ListSelector, K extends ListSelectorItem> exte
   List<Widget> buildSuggestions(BuildContext context, SearchController controller) {
     final result = <Widget>[];
     final scope = widget.options.cast().where((e) => e.match(controller.text));
+    final nav = Navigator.of(context, rootNavigator: true);
     scope.toList().asMap().forEach((index, e) {
       result.add(ListTile(
         title: itemBuilder(context, e),
         tileColor: index % 2 == 0 ? context.colorScheme.primary.withOpacity(0.05) : null,
         hoverColor: context.colorScheme.primary.withOpacity(0.15),
-        onTap: () => onChange(e),
+        onTap: () => onChange(e, nav),
       ));
     });
     return result;

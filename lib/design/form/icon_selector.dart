@@ -64,7 +64,7 @@ class IconSelectorState extends ListSelectorState<IconSelector, IconSelectorItem
   }
 
   @override
-  void onChange(IconSelectorItem value) {
+  void onChange(IconSelectorItem value, [NavigatorState? nav]) {
     widget.setState(value.value);
     textController.closeView(null);
     focusController.onEditingComplete(this);
