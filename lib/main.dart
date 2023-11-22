@@ -109,8 +109,13 @@ void main() async {
     );
   }, (error, stack) {
     if (platform != null) {
-      FirebaseCrashlytics.instance.recordError(error, stack, fatal: true);
+      if (kIsWeb) {
+        FirebaseAnalytics.instance.logEvent(name: 'flutter-error', parameters: {'error': error.toString()});
+      } else {
+        FirebaseCrashlytics.instance.recordError(error, stack, fatal: true);
+      }
     }
+    FlutterError.presentError(FlutterErrorDetails(exception: error, stack: stack));
   });
 }
 
