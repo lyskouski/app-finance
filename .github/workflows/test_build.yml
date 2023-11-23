@@ -1,0 +1,32 @@
+name: Project Release Artifacts
+
+on:
+  pull_request:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+      - uses: subosito/flutter-action@v2
+        with:
+          flutter-version: 3.13.9
+          cache: true
+      - run: flutter --version
+      - run: flutter pub get
+
+      - name: Build Web Package
+        run: |
+          BUILD=$(git rev-list --count HEAD)
+          TAG=$(git describe --tags `git rev-list --tags --max-count=1` | cut -c 2-)
+          dart run grinder pubspec-update --build-name=$TAG --build-number=$BUILD
+          flutter build -v web --profile --no-tree-shake-icons --base-href="/app-finance/"
+
+      - name: Update GitHub Pages 
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./build/web
