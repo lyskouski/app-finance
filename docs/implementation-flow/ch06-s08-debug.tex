@@ -55,8 +55,9 @@ on \q{Build Number} (from "About phone"-submenu).
 For the case of "\emph{Pending authentication: please accept debugging session on the device}", consider experimenting 
 with various USB cables or connecting to different ports on a machine. Additionally, we should attempt a sequence of 
 command prompts to manage the Android Debug Bridge (ADB): start from \q{adb kill-server}, followed by 
-\q{adb start-server}, and finally \q{adb devices} to verify and check the status of connections. This sequence might 
-help resolve authentication-related issues during the debugging session.
+\q{adb start-server}, and finally \q{adb devices} to verify and check the status of connections, and retick the 
+"Discover network targets"-checkbox. This sequence might help resolve authentication-related issues during the debugging 
+session.
 
 An additional tip is to modify the USB connection type to \q{MIDI} instead of file transfers. Simply slide down the 
 main header to access the configuration settings and make the necessary adjustment.
@@ -81,3 +82,49 @@ results in enhanced startup times and a more predictable execution flow. Opting 
 for the two-step compilation process, making it a potential solution amidst various uncertainties. However, it's worth 
 noting that Web Assembly, introduced in 2020, remains experimental and introduces its set of considerations and 
 potential trade-offs.
+
+Occasionally, when an urgent solution is required, the quickest remedy may involve reverting \issue{424}{} the made 
+changes. In our context, this entails downgrading Flutter to a previous version (that can be retrieved from CI/CD). 
+The rollback can be achieved through FVM (\ref{sdk}) or directly by following a step-by-step process:
+
+\begin{lstlisting}[language=terminal]
+# Check the current state
+$ flutter doctor
+[V] Flutter (Channel stable, 3.16.0, on ...)
+# Identify the SDK location
+$ which flutter
+/home/vlyskouski/Programs/flutter/flutter/bin//flutter
+$ cd /home/vlyskouski/Programs/flutter/flutter/bin
+$ git fetch --tags
+$ git checkout 3.13.9
+$ flutter doctor
+# Update metadata
+$ cd ~/project
+$ flutter create .
+\end{lstlisting}
+
+\noindent And from here on out, we need to nail down the SDK version in all of our CI/CD processes:
+
+\begin{lstlisting}[language=yaml]
+- uses: subosito/flutter-action@v2
+  with:
+\end{lstlisting}
+{
+\xpretocmd{\lstlisting}{\vspace{-12pt}}{}{}
+\begin{lstlisting}[firstnumber=2, backgroundcolor=\color{backred}]
+(*@\kdiff{-}@*)      channel: 'stable'
+\end{lstlisting}
+\begin{lstlisting}[firstnumber=2, backgroundcolor=\color{backgreen}]
+(*@\kdiff{+}@*)      flutter-version: 3.13.9
+\end{lstlisting}
+\begin{lstlisting}
+    cache: true
+\end{lstlisting}
+}
+
+\noindent To restore back the state:
+
+\begin{lstlisting}[language=terminal]
+$ flutter channel stable
+$ flutter upgrade
+\end{lstlisting}

@@ -14,7 +14,7 @@ abstract class AbstractSelector extends StatefulWidget {
 abstract class AbstractSelectorState<T extends AbstractSelector> extends State<T> {
   late FocusNode focus;
   late FocusController focusController;
-  late SearchController textController = SearchController();
+  final textController = SearchController();
 
   @override
   void dispose() {
