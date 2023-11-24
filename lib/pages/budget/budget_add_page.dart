@@ -224,7 +224,7 @@ class BudgetAddPageState<T extends BudgetAddPage> extends AbstractAddPageState<B
               ThemeHelper.hIndent2x,
             ],
             InputWrapper.currency(
-              value: currency?.code,
+              value: currency,
               title: AppLocale.labels.currency,
               onChange: (value) => setState(() => currency = value),
             ),

@@ -34,7 +34,7 @@ class IconSelectorItem extends ListSelectorItem {
   IconSelectorItem({required this.value, required super.name}) : super(id: value.toString());
 }
 
-class IconSelector extends ListSelector {
+class IconSelector extends ListSelector<IconSelectorItem> {
   @override
   // ignore: overridden_fields
   final IconData? value;
@@ -65,40 +65,30 @@ class IconSelector extends ListSelector {
 }
 
 class IconSelectorState extends ListSelectorState<IconSelector, IconSelectorItem> {
-  late List<IconSelectorItem> fullScope = widget.options;
-  late List<IconSelectorItem> options = widget.options;
   late int crossAxisCount;
 
   @override
-  void setState(VoidCallback fn) {
-    textController.addListener(() => setState(() {
-          options = fullScope.where((e) => e.name.contains(textController.text)).toList();
-        }));
-    super.setState(fn);
+  Widget build(BuildContext context) {
+    crossAxisCount = ThemeHelper.getWidthCount(null, context) * 4;
+    return super.build(context);
   }
 
   @override
-  FntSelectorCallback getItemBuilder() =>
-      (List<ListSelectorItem> options, List<ValueNotifier<bool>> show, nav) => GridView.builder(
-            gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-              crossAxisCount: crossAxisCount,
-            ),
-            itemCount: options.length,
-            itemBuilder: (BuildContext context, int index) => ValueListenableBuilder<bool>(
-              valueListenable: show[index],
-              builder: (context, value, child) {
-                bool oddRow = (index ~/ crossAxisCount) % 2 == 0;
-                bool highlight = index % 2 == 0 && oddRow || index % 2 != 0 && !oddRow;
-                return Visibility(
-                  visible: value,
-                  child: ListTile(
-                    tileColor: highlight ? context.colorScheme.primary.withOpacity(0.05) : null,
-                    hoverColor: context.colorScheme.primary.withOpacity(0.15),
-                    title: widget.options[index].suggest(context),
-                    onTap: () => nav.pop<IconSelectorItem>(widget.options[index]),
-                  ),
-                );
-              },
-            ),
+  FntSelectorCallback getItemBuilder() => (List<ListSelectorItem> options, nav) => GridView.builder(
+        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+          crossAxisCount: crossAxisCount,
+        ),
+        itemCount: options.length,
+        shrinkWrap: true,
+        itemBuilder: (BuildContext context, int index) {
+          bool oddRow = (index ~/ crossAxisCount) % 2 == 0;
+          bool highlight = index % 2 == 0 && oddRow || index % 2 != 0 && !oddRow;
+          return ListTile(
+            tileColor: highlight ? context.colorScheme.primary.withOpacity(0.05) : null,
+            hoverColor: context.colorScheme.primary.withOpacity(0.15),
+            title: options[index].suggest(context),
+            onTap: () => nav.pop<IconSelectorItem?>(options[index] as IconSelectorItem?),
           );
+        },
+      );
 }

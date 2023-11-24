@@ -12,7 +12,6 @@ import 'package:provider/provider.dart';
 
 typedef FntSelectorCallback = Widget Function(
   List<ListSelectorItem> options,
-  List<ValueNotifier<bool>> show,
   NavigatorState nav,
 );
 
@@ -39,12 +38,20 @@ class ListSelectorPageState<T extends Object?> extends State<ListSelectorPage> {
   late NavigatorState nav;
   List<ValueNotifier<bool>> show = [];
   dynamic result; // !ERR (T? result): A value of type 'Object?' can't be assigned to a variable of type 'T?'
+  List<ListSelectorItem> options = [];
 
   @override
   void initState() {
     result = widget.result;
+    options = widget.options;
     show = List.generate(widget.options.length, (index) => ValueNotifier<bool>(true));
-    controller.addListener(() => filter(controller.text));
+    if (widget.itemBuilder == null) {
+      controller.addListener(() => filter(controller.text));
+    } else {
+      controller.addListener(
+        () => setState(() => options = widget.options.where((e) => e.match(controller.text)).toList()),
+      );
+    }
     super.initState();
   }
 
@@ -61,8 +68,8 @@ class ListSelectorPageState<T extends Object?> extends State<ListSelectorPage> {
     }
   }
 
-  Widget itemBuilder() =>
-      widget.itemBuilder?.call(widget.options, show, nav) ??
+  Widget itemBuilder(List<ListSelectorItem> options) =>
+      widget.itemBuilder?.call(options, nav) ??
       ListView.builder(
         itemCount: widget.options.length,
         itemBuilder: (BuildContext context, int index) {
@@ -150,7 +157,7 @@ class ListSelectorPageState<T extends Object?> extends State<ListSelectorPage> {
                     child: IconButton(
                       tooltip: AppLocale.labels.a,
                       icon: const Icon(Icons.rotate_left_rounded),
-                      onPressed: () => nav.pop<T>(result as T),
+                      onPressed: () => nav.pop<T?>(result as T?),
                     ),
                   ),
                 ],
@@ -164,7 +171,7 @@ class ListSelectorPageState<T extends Object?> extends State<ListSelectorPage> {
               title: widget.options.where((e) => e.equal(result)).firstOrNull?.build(context) ?? ThemeHelper.emptyBox,
               onTap: () => nav.pop<T>(result as T),
             ),
-          Expanded(child: Padding(padding: EdgeInsets.all(indent), child: itemBuilder())),
+          Expanded(child: Padding(padding: EdgeInsets.all(indent), child: itemBuilder(options))),
         ],
       ),
     );

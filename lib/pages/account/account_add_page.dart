@@ -181,7 +181,7 @@ class AccountAddPageState<T extends AccountAddPage> extends AbstractAddPageState
               ],
             ),
             InputWrapper.currency(
-              value: currency?.code,
+              value: currency,
               title: AppLocale.labels.currency,
               tooltip: AppLocale.labels.currencyTooltip,
               onChange: (value) => setState(() => currency = value),

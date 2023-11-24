@@ -12,8 +12,6 @@ import 'package:app_finance/_classes/storage/app_data.dart';
 import 'package:app_finance/_configs/screen_helper.dart';
 import 'package:app_finance/_configs/theme_helper.dart';
 import 'package:app_finance/_ext/build_context_ext.dart';
-import 'package:app_finance/design/form/currency_selector_code.dart';
-import 'package:app_finance/design/form/list_account_selector.dart';
 import 'package:app_finance/design/wrapper/input_wrapper.dart';
 import 'package:app_finance/pages/bill/widgets/interface_bill_page_inject.dart';
 import 'package:app_finance/design/form/currency_exchange_input.dart';
@@ -159,8 +157,8 @@ class IncomeTabState<T extends IncomeTab> extends State<IncomeTab> {
               tooltip: AppLocale.labels.titleAccountTooltip,
               showError: hasErrors && account == null,
               state: widget.state,
-              onChange: (ListAccountSelectorItem? value) => setState(() {
-                account = value?.id;
+              onChange: (value) => setState(() {
+                account = value;
                 if (account != null) {
                   currency = widget.state.getByUuid(account!).currency;
                   accountCurrency = currency;
@@ -178,7 +176,7 @@ class IncomeTabState<T extends IncomeTab> extends State<IncomeTab> {
                     type: NamedInputType.currencyShort,
                     value: currency,
                     title: AppLocale.labels.currency,
-                    onChange: (CodeCurrencySelectorItem? value) => setState(() => currency = value?.item),
+                    onChange: (value) => setState(() => currency = value),
                   ),
                 ],
                 [

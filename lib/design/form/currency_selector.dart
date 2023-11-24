@@ -13,6 +13,15 @@ class BaseListSelectorItem extends ListSelectorItem {
   Widget build(BuildContext context) => Row(
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
+          SizedBox(width: 32, child: item.flag != null ? Text(item.flag!) : null),
+          Align(alignment: Alignment.centerLeft, child: Text('${item.symbol} | ${item.name} (${item.code})')),
+        ],
+      );
+
+  @override
+  Widget suggest(BuildContext context) => Row(
+        mainAxisAlignment: MainAxisAlignment.start,
+        children: [
           SizedBox(
             width: 42,
             child: item.flag != null ? Text(item.flag!) : null,

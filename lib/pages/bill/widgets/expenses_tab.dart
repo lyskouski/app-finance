@@ -13,8 +13,6 @@ import 'package:app_finance/_configs/account_type.dart';
 import 'package:app_finance/_configs/screen_helper.dart';
 import 'package:app_finance/_configs/theme_helper.dart';
 import 'package:app_finance/_ext/build_context_ext.dart';
-import 'package:app_finance/design/form/currency_selector_code.dart';
-import 'package:app_finance/design/form/list_budget_selector.dart';
 import 'package:app_finance/design/wrapper/input_wrapper.dart';
 import 'package:app_finance/pages/bill/widgets/interface_bill_page_inject.dart';
 import 'package:app_finance/design/form/currency_exchange_input.dart';
@@ -179,8 +177,8 @@ class ExpensesTabState<T extends ExpensesTab> extends State<T> {
               showError: hasErrors && account == null,
               state: widget.state,
               options: accountList,
-              onChange: (ListAccountSelectorItem? value) => setState(() {
-                account = value?.id;
+              onChange: (value) => setState(() {
+                account = value;
                 if (account != null) {
                   accountCurrency = widget.state.getByUuid(account!).currency;
                   currency = accountCurrency;
@@ -196,8 +194,8 @@ class ExpensesTabState<T extends ExpensesTab> extends State<T> {
               showError: hasErrors && budget == null,
               tooltip: AppLocale.labels.titleBudgetTooltip,
               state: widget.state,
-              onChange: (ListBudgetSelectorItem? value) => setState(() {
-                budget = value?.id;
+              onChange: (value) => setState(() {
+                budget = value;
                 if (budget != null) {
                   budgetCurrency = widget.state.getByUuid(budget!).currency;
                   currency ??= budgetCurrency;
@@ -215,7 +213,7 @@ class ExpensesTabState<T extends ExpensesTab> extends State<T> {
                     type: NamedInputType.currencyShort,
                     value: currency,
                     title: AppLocale.labels.currency,
-                    onChange: (CodeCurrencySelectorItem? value) => setState(() => currency = value?.item),
+                    onChange: (value) => setState(() => currency = value),
                   ),
                 ],
                 [

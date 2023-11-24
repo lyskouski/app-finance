@@ -8,7 +8,10 @@ import 'package:flutter_currency_picker/flutter_currency_picker.dart';
 
 class CodeCurrencySelectorItem extends BaseListSelectorItem {
   @override
-  Widget build(BuildContext context) => Center(child: Text(item.code));
+  Widget build(BuildContext context) => Padding(
+        padding: const EdgeInsets.all(2),
+        child: Text(item.code),
+      );
 
   @override
   Widget suggest(BuildContext context) {

@@ -155,7 +155,7 @@ class GoalAddPageState<T extends GoalAddPage> extends AbstractPageState<GoalAddP
                   ),
                   IconSelector(
                     value: icon,
-                    setState: (value) => setState(() => icon = value),
+                    setState: (IconSelectorItem? v) => setState(() => icon = v?.value),
                   ),
                 ],
                 [
@@ -184,7 +184,8 @@ class GoalAddPageState<T extends GoalAddPage> extends AbstractPageState<GoalAddP
                   ),
                   CodeCurrencySelector(
                     value: currency,
-                    setState: (value) => setState(() => currency = value),
+                    tooltip: AppLocale.labels.currencyTooltip,
+                    setState: (CodeCurrencySelectorItem? v) => setState(() => currency = v?.item),
                   ),
                 ],
                 [

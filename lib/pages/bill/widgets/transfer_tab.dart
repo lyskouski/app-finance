@@ -175,8 +175,8 @@ class TransferTabState<T extends TransferTab> extends State<T> {
               tooltip: '${AppLocale.labels.titleAccountTooltip} (${AppLocale.labels.accountTo})',
               showError: hasErrors && accountTo == null,
               state: widget.state,
-              onChange: (ListAccountSelectorItem? value) => setState(() {
-                accountTo = value?.id;
+              onChange: (value) => setState(() {
+                accountTo = value;
                 if (accountTo != null) {
                   accountToCurrency = widget.state.getByUuid(accountTo!)?.currency;
                   currency = accountToCurrency;
@@ -192,7 +192,7 @@ class TransferTabState<T extends TransferTab> extends State<T> {
                 [
                   InputWrapper.currency(
                     type: NamedInputType.currencyShort,
-                    value: currency?.code,
+                    value: currency,
                     title: AppLocale.labels.currency,
                     onChange: (CodeCurrencySelectorItem? value) => setState(() => currency = value?.item),
                   ),
