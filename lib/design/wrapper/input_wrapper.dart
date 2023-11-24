@@ -3,6 +3,7 @@
 
 import 'package:app_finance/_classes/herald/app_locale.dart';
 import 'package:app_finance/_classes/storage/app_data.dart';
+import 'package:app_finance/design/form/currency_selector_code.dart';
 import 'package:app_finance/design/form/list_selector_item.dart';
 import 'package:app_finance/_configs/screen_helper.dart';
 import 'package:app_finance/_configs/theme_helper.dart';
@@ -209,20 +210,16 @@ class InputWrapper extends StatelessWidget {
           NamedInputType.currencySelector => BaseCurrencySelector(
               key: key,
               value: value,
-              textTheme: context.textTheme,
-              colorScheme: context.colorScheme,
-              update: onChange!,
+              setState: onChange!,
               withLabel: min,
-              labelText: title,
+              tooltip: title,
             ),
           NamedInputType.currencyShort => CodeCurrencySelector(
               key: key,
               value: value,
-              textTheme: context.textTheme,
-              colorScheme: context.colorScheme,
-              update: onChange!,
+              setState: onChange!,
               withLabel: min,
-              labelText: title,
+              tooltip: title,
             ),
           NamedInputType.ymSelector => MonthYearInput(
               key: key,

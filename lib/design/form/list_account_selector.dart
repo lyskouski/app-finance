@@ -21,7 +21,7 @@ class ListAccountSelectorItem extends ListSelectorItem {
         color: item.color ?? Colors.transparent,
         icon: item.icon ?? Icons.radio_button_unchecked_sharp,
         hidden: item.hidden ?? false,
-        width: ThemeHelper.getWidth(context, 7),
+        width: ThemeHelper.getWidth(context, 12),
         showDivider: false,
       );
 

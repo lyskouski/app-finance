@@ -9,9 +9,9 @@ import 'package:app_finance/_classes/storage/app_data.dart';
 import 'package:app_finance/_configs/theme_helper.dart';
 import 'package:app_finance/_classes/storage/app_preferences.dart';
 import 'package:app_finance/_ext/build_context_ext.dart';
+import 'package:app_finance/design/form/currency_selector_code.dart';
 import 'package:app_finance/pages/_interfaces/abstract_page_state.dart';
 import 'package:app_finance/design/form/color_selector.dart';
-import 'package:app_finance/design/form/currency_selector.dart';
 import 'package:app_finance/design/form/date_input.dart';
 import 'package:app_finance/design/button/full_sized_button_widget.dart';
 import 'package:app_finance/design/form/icon_selector.dart';
@@ -183,10 +183,8 @@ class GoalAddPageState<T extends GoalAddPage> extends AbstractPageState<GoalAddP
                     style: textTheme.bodyLarge,
                   ),
                   CodeCurrencySelector(
-                    value: currency?.code,
-                    textTheme: context.textTheme,
-                    colorScheme: context.colorScheme,
-                    update: (value) => setState(() => currency = value),
+                    value: currency,
+                    setState: (value) => setState(() => currency = value),
                   ),
                 ],
                 [

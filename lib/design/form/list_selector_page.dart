@@ -138,10 +138,11 @@ class ListSelectorPageState<T extends Object?> extends State<ListSelectorPage> {
                       tooltip: AppLocale.labels.a,
                       style: ButtonStyle(
                         backgroundColor: MaterialStateProperty.all<Color>(
-                            context.colorScheme.background.mesh(context.colorScheme.primary.withOpacity(1), 0.1)),
+                          context.colorScheme.background.mesh(context.colorScheme.primary.withOpacity(1), 0.1),
+                        ),
                       ),
                       icon: const Icon(Icons.clear),
-                      onPressed: () => nav.pop<T>(null),
+                      onPressed: () => nav.pop<T?>(null),
                     ),
                   ),
                   Transform.translate(
@@ -156,7 +157,13 @@ class ListSelectorPageState<T extends Object?> extends State<ListSelectorPage> {
               ),
             ),
           ),
-          if (result != null) Text('ffffff'),
+          if (result != null)
+            ListTile(
+              tileColor: context.colorScheme.primary.withOpacity(0.15),
+              hoverColor: context.colorScheme.primary.withOpacity(0.20),
+              title: widget.options.where((e) => e.equal(result)).firstOrNull?.build(context) ?? ThemeHelper.emptyBox,
+              onTap: () => nav.pop<T>(result as T),
+            ),
           Expanded(child: Padding(padding: EdgeInsets.all(indent), child: itemBuilder())),
         ],
       ),

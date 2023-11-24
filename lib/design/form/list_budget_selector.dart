@@ -11,18 +11,18 @@ import 'package:flutter/material.dart';
 
 class ListBudgetSelectorItem extends ListAccountSelectorItem {
   @override
-  Widget build(context) {
+  Widget suggest(context) {
     return BudgetLineWidget(
-      uuid: item.item?.uuid ?? '',
-      title: item.item?.title ?? '',
-      description: item.item?.description ?? '',
-      details: item.item?.detailsFormatted ?? '',
-      amount: item.item?.amount.toString() ?? '',
+      uuid: item.uuid ?? '',
+      title: item.title ?? '',
+      description: item.description ?? '',
+      details: item.detailsFormatted ?? '',
+      amount: item.amount.toString(),
       progress: 1.0,
-      color: item.item?.color ?? Colors.transparent,
-      icon: item.item?.icon ?? Icons.radio_button_unchecked_sharp,
-      hidden: item.item?.hidden ?? false,
-      width: ThemeHelper.getWidth(context),
+      color: item.color ?? Colors.transparent,
+      icon: item.icon ?? Icons.radio_button_unchecked_sharp,
+      hidden: item.hidden ?? false,
+      width: ThemeHelper.getWidth(context, 12),
       showDivider: false,
     );
   }

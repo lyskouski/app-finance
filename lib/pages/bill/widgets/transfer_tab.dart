@@ -11,6 +11,8 @@ import 'package:app_finance/_classes/storage/app_data.dart';
 import 'package:app_finance/_configs/screen_helper.dart';
 import 'package:app_finance/_configs/theme_helper.dart';
 import 'package:app_finance/_ext/build_context_ext.dart';
+import 'package:app_finance/design/form/currency_selector_code.dart';
+import 'package:app_finance/design/form/list_account_selector.dart';
 import 'package:app_finance/design/wrapper/input_wrapper.dart';
 import 'package:app_finance/pages/bill/widgets/interface_bill_page_inject.dart';
 import 'package:app_finance/design/form/currency_exchange_input.dart';
@@ -156,10 +158,12 @@ class TransferTabState<T extends TransferTab> extends State<T> {
               tooltip: '${AppLocale.labels.titleAccountTooltip} (${AppLocale.labels.accountFrom})',
               showError: hasErrors && accountFrom == null,
               state: widget.state,
-              onChange: (value) => setState(() {
-                accountFrom = value;
-                accountFromCurrency = widget.state.getByUuid(accountFrom!)?.currency;
-                currency ??= accountFromCurrency;
+              onChange: (ListAccountSelectorItem? value) => setState(() {
+                accountFrom = value?.id;
+                if (accountFrom != null) {
+                  accountFromCurrency = widget.state.getByUuid(accountFrom!)?.currency;
+                  currency ??= accountFromCurrency;
+                }
               }),
               width: width,
             ),
@@ -171,10 +175,12 @@ class TransferTabState<T extends TransferTab> extends State<T> {
               tooltip: '${AppLocale.labels.titleAccountTooltip} (${AppLocale.labels.accountTo})',
               showError: hasErrors && accountTo == null,
               state: widget.state,
-              onChange: (value) => setState(() {
-                accountTo = value;
-                accountToCurrency = widget.state.getByUuid(value)?.currency;
-                currency = accountToCurrency;
+              onChange: (ListAccountSelectorItem? value) => setState(() {
+                accountTo = value?.id;
+                if (accountTo != null) {
+                  accountToCurrency = widget.state.getByUuid(accountTo!)?.currency;
+                  currency = accountToCurrency;
+                }
               }),
               width: width,
             ),
@@ -188,7 +194,7 @@ class TransferTabState<T extends TransferTab> extends State<T> {
                     type: NamedInputType.currencyShort,
                     value: currency?.code,
                     title: AppLocale.labels.currency,
-                    onChange: (value) => setState(() => currency = value),
+                    onChange: (CodeCurrencySelectorItem? value) => setState(() => currency = value?.item),
                   ),
                 ],
                 [

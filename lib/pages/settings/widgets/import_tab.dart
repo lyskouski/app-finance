@@ -22,6 +22,7 @@ import 'package:app_finance/design/generic/loading_widget.dart';
 import 'package:app_finance/pages/settings/widgets/recover_tab/date_time_helper_widget.dart';
 import 'package:app_finance/design/wrapper/single_scroll_wrapper.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_currency_picker/flutter_currency_picker.dart';
 import 'package:provider/provider.dart';
 
 class ImportTab extends StatefulWidget {
@@ -220,10 +221,8 @@ class ImportTabState extends State<ImportTab> {
                     style: textTheme.bodyLarge,
                   ),
                   BaseCurrencySelector(
-                    value: attrValue[FileParser.attrBillCurrency],
-                    textTheme: context.textTheme,
-                    colorScheme: context.colorScheme,
-                    update: (value) => setState(() => attrValue[FileParser.attrBillCurrency] = value.code),
+                    value: CurrencyProvider.find(attrValue[FileParser.attrBillCurrency]),
+                    setState: (value) => setState(() => attrValue[FileParser.attrBillCurrency] = value.code),
                   ),
                 ],
                 Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
