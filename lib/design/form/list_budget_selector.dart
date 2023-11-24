@@ -3,11 +3,30 @@
 
 import 'package:app_finance/_classes/structure/budget_app_data.dart';
 import 'package:app_finance/_classes/storage/app_data.dart';
+import 'package:app_finance/_configs/theme_helper.dart';
+import 'package:app_finance/design/form/list_selector.dart';
 import 'package:app_finance/pages/budget/widgets/budget_line_widget.dart';
 import 'package:app_finance/design/form/list_account_selector.dart';
 import 'package:flutter/material.dart';
 
 class ListBudgetSelectorItem extends ListAccountSelectorItem {
+  @override
+  Widget build(context) {
+    return BudgetLineWidget(
+      uuid: item.item?.uuid ?? '',
+      title: item.item?.title ?? '',
+      description: item.item?.description ?? '',
+      details: item.item?.detailsFormatted ?? '',
+      amount: item.item?.amount.toString() ?? '',
+      progress: 1.0,
+      color: item.item?.color ?? Colors.transparent,
+      icon: item.item?.icon ?? Icons.radio_button_unchecked_sharp,
+      hidden: item.item?.hidden ?? false,
+      width: ThemeHelper.getWidth(context),
+      showDivider: false,
+    );
+  }
+
   ListBudgetSelectorItem({
     required BudgetAppData item,
   }) : super(item: item);
@@ -30,24 +49,5 @@ class ListBudgetSelector extends ListAccountSelector<ListBudgetSelectorItem> {
       state.getList(AppDataType.budgets).map((item) => ListBudgetSelectorItem(item: item)).toList();
 
   @override
-  ListBudgetSelectorState createState() => ListBudgetSelectorState();
-}
-
-class ListBudgetSelectorState extends ListAccountSelectorState<ListBudgetSelectorItem> {
-  @override
-  Widget itemBuilder(context, item) {
-    return BudgetLineWidget(
-      uuid: item.item?.uuid ?? '',
-      title: item.item?.title ?? '',
-      description: item.item?.description ?? '',
-      details: item.item?.detailsFormatted ?? '',
-      amount: item.item?.amount.toString() ?? '',
-      progress: 1.0,
-      color: item.item?.color ?? Colors.transparent,
-      icon: item.item?.icon ?? Icons.radio_button_unchecked_sharp,
-      hidden: item.item?.hidden ?? false,
-      width: widget.width,
-      showDivider: false,
-    );
-  }
+  ListSelectorState createState() => ListSelectorState<ListBudgetSelector, ListBudgetSelectorItem>();
 }

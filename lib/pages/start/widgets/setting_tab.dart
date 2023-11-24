@@ -9,7 +9,7 @@ import 'package:app_finance/_classes/herald/app_zoom.dart';
 import 'package:app_finance/_classes/storage/app_data.dart';
 import 'package:app_finance/_classes/storage/app_preferences.dart';
 import 'package:app_finance/_classes/structure/currency/exchange.dart';
-import 'package:app_finance/_classes/structure/def/list_selector_item.dart';
+import 'package:app_finance/design/form/list_selector_item.dart';
 import 'package:app_finance/_configs/custom_color_scheme.dart';
 import 'package:app_finance/_configs/theme_helper.dart';
 import 'package:app_finance/_ext/build_context_ext.dart';

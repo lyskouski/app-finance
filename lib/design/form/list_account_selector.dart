@@ -2,13 +2,42 @@
 // Use of this source code is governed by a CC BY-NC-ND 4.0 license that can be found in the LICENSE file.
 
 import 'package:app_finance/_classes/storage/app_data.dart';
-import 'package:app_finance/_classes/structure/def/list_selector_item.dart';
+import 'package:app_finance/_configs/theme_helper.dart';
+import 'package:app_finance/design/form/list_selector_item.dart';
 import 'package:app_finance/design/form/list_selector.dart';
 import 'package:app_finance/design/generic/base_line_widget.dart';
 import 'package:flutter/material.dart';
 
 class ListAccountSelectorItem extends ListSelectorItem {
   dynamic item;
+
+  @override
+  Widget build(context) => BaseLineWidget(
+        uuid: item.uuid ?? '',
+        title: item.title ?? '',
+        description: item.description ?? '',
+        details: item.detailsFormatted ?? '',
+        progress: 1.0,
+        color: item.color ?? Colors.transparent,
+        icon: item.icon ?? Icons.radio_button_unchecked_sharp,
+        hidden: item.hidden ?? false,
+        width: ThemeHelper.getWidth(context, 7),
+        showDivider: false,
+      );
+
+  @override
+  Widget suggest(context) => BaseLineWidget(
+        uuid: item.uuid ?? '',
+        title: item.title ?? '',
+        description: item.description ?? '',
+        details: item.detailsFormatted ?? '',
+        progress: item.progress ?? 0.0,
+        color: item.color ?? Colors.transparent,
+        icon: item.icon ?? Icons.radio_button_unchecked_sharp,
+        hidden: item.hidden ?? false,
+        width: ThemeHelper.getWidth(context, 7),
+        showDivider: false,
+      );
 
   @override
   String get id => item.uuid;
@@ -47,39 +76,5 @@ class ListAccountSelector<K extends ListAccountSelectorItem> extends ListSelecto
   }
 
   @override
-  ListAccountSelectorState createState() => ListAccountSelectorState();
-}
-
-class ListAccountSelectorState<K extends ListAccountSelectorItem> extends ListSelectorState<ListAccountSelector, K> {
-  @override
-  Widget itemBuilder(context, item) {
-    return BaseLineWidget(
-      uuid: item.item?.uuid ?? '',
-      title: item.item?.title ?? '',
-      description: item.item?.description ?? '',
-      details: item.item?.detailsFormatted ?? '',
-      progress: 1.0,
-      color: item.item?.color ?? Colors.transparent,
-      icon: item.item?.icon ?? Icons.radio_button_unchecked_sharp,
-      hidden: item.item?.hidden ?? false,
-      width: widget.width,
-      showDivider: false,
-    );
-  }
-
-  @override
-  Widget selectorBuilder(context, item) {
-    return BaseLineWidget(
-      uuid: item.item?.uuid ?? '',
-      title: item.item?.title ?? '',
-      description: item.item?.description ?? '',
-      details: item.item?.detailsFormatted ?? '',
-      progress: item.item?.progress ?? 0.0,
-      color: item.item?.color ?? Colors.transparent,
-      icon: item.item?.icon ?? Icons.radio_button_unchecked_sharp,
-      hidden: item.item?.hidden ?? false,
-      width: widget.width - 40,
-      showDivider: false,
-    );
-  }
+  ListSelectorState createState() => ListSelectorState<ListAccountSelector, ListAccountSelectorItem>();
 }
