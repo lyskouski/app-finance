@@ -4,43 +4,42 @@
 
 | Type                           | 2023-11-06 | 2023-11-13 | 2023-11-20 | 2023-11-27 | 2023-12-04 |
 |--------------------------------|------------|------------|------------|------------|------------|
-| **Repository**                 |            |            |            |  | |
-| Contributors                   |    1       |    1       |    1       |  | |
-| Repository Stars               |    6       |    6       |   10       |  | |
-| Repository Visitors (Views)    |   51 (163) |  115 (483) |  254 (1067)|  | |
-| Rep. Unique Clones             |   84       |   78       |   72       |  | |
-| **Application Analytics**      |            |            |            |  | |
-| Average interaction, GA {sec.} |   88       |  183       |  143       |  | |
-| Precise impressions, Huawei    |    -       |  200       |  217       |  | |
-| Acquisition funnel, Windows    |    -       |    -       |  15.38%    |  | |
-| **Installations**              |            |            |            |  | |
-| - Windows                      |    8       |   16       |   19       |  | |
-| - Linux Flathub                |    -       |  124       |  202       |  | |
-| - Android Samsung              |    1       |    2       |  130       |  | |
-| - Android Huawei (uninstalls)  |    0       |    2       |    4 (2)   |  | |
-| **Application Usage (Reviews)**|            |            |            |  | |
-| - Windows                      |    8 (1)   |   16       |   10       |  | |
-| - Linux Snap                   |    7       |    9       |   11       |  | |
-| - macOS                        |    2       |    6       |    7       |  | |
-| - iOS Mobile                   |   35       |   54       |   66       |  | |
-| - iOS Tablet                   |   13       |   19 (1)   |   22       |  | |
-| - Android Mobile               |   38 (1)   |   89       |  172       |  | |
-| - Android Tablet               |    1       |    3       |    4       |  | |
-| - Web                          |   25       |   45       |   46       |  | |
-| **Publications**               |    2       |    3       |    4       |  | |
-| - Books KENP Read (Sells)      |  420       |  426 (1)   |  426 (2)   |  | |
-| - Amazon Impressions           |    -       |  240       |  715       |  | |
-| - Medium Views (Claps)         |    2       |   45 (10)  |  142 (10)  |  | |
-| - Medium Followers             |    0       |    2       |    2       |  | |
-| - Medium Read Ratio            |    -       |    -       |   49%      |  | |
-| - LinkedIn Views (Likes)       | 2375 (27)  | 1937 (48)  | 1150 (59)  |  | |
-| - Twitter Views (Retweets)     |    -       |   45       |   48       |  | |
-| - Reddit Views (Upvotes)       |    -       |    -       | 14.1k (8)  |  | |
-| - Facebook Actions             |    -       |    9       |    -       |  | |
-| **Videos**                     |    1       |    1       |    3       |  | |
-| - View (Likes)                 |   17 (3)   |   44 (4)   |  135 (7)   |  | |
-| - Subscriptions                |    1       |    2       |    2       |  | |
-| - Average view duration        |    -       |    -       | 54.8%      |  | |
+| **Repository**                 |            |            |            |            | |
+| Contributors                   |    1       |    1       |    1       |  1         | |
+| Repository Stars               |    6       |    6       |   10       |  12        | |
+| Repository Visitors (Views)    |   51 (163) |  115 (483) |  254 (1067)|  355 (1566)| |
+| Rep. Unique Clones             |   84       |   78       |   72       |  90        | |
+| **Application Analytics**      |            |            |            |            | |
+| Average interaction, GA {sec.} |   88       |  183       |  143       |  225       | |
+| Precise impressions, Huawei    |    -       |  200       |  217       |            | |
+| Acquisition funnel, Windows    |    -       |    -       |  15.38%    |            | |
+| **Installations**              |            |            |            |            | |
+| - Windows                      |    8       |   16       |   19       | 21         | |
+| - Linux Flathub                |    -       |  124       |  202       | 244        | |
+| - Android Samsung              |    1       |    2       |  130       | 361        | |
+| - Android Huawei (uninstalls)  |    0       |    2       |    4 (2)   | 4 (2)      | |
+| **Application Usage (Reviews)**|            |            |            |            | |
+| - Windows                      |    8 (1)   |   16       |   10       | 18         | |
+| - Linux Snap                   |    7       |    9       |   11       | 8          | |
+| - macOS                        |    2       |    6       |    7       | 14         | |
+| - iOS Mobile                   |   35       |   54       |   66       | 87         | |
+| - iOS Tablet                   |   13       |   19 (1)   |   22       | 24         | |
+| - Android Mobile               |   38 (1)   |   89       |  172       | 316        | |
+| - Android Tablet               |    1       |    3       |    4       | 7          | |
+| - Web                          |   25       |   45       |   46       | 69         | |
+| **Publications**               |    2       |    3       |    4       | 5          | |
+| - Books KENP Read (Sells)      |  420       |  426 (1)   |  426 (2)   | 756 (6)    | |
+| - Amazon Impressions           |    -       |  240       |  715       | 1571       | |
+| - Medium Views (Claps)         |    2       |   45 (10)  |  142 (10)  | 186 (15)   | |
+| - Medium Followers             |    0       |    2       |    2       | 3          | |
+| - Medium Read Ratio            |    -       |    -       |   49%      | 47.75%     | |
+| - LinkedIn Views (Likes)       | 2375 (27)  | 1937 (48)  | 1150 (59)  | 973 (74)   | |
+| - Twitter Views (Retweets)     |    -       |   45       |   48       | 48         | |
+| - Reddit Views (Upvotes)       |    -       |    -       | 14.1k (8)  | 15.1k (8)  | |
+| **Videos**                     |    1       |    1       |    3       |  3         | |
+| - View (Likes)                 |   17 (3)   |   44 (4)   |  135 (7)   |  300 (8)   | |
+| - Subscriptions                |    1       |    2       |    2       |  3         | |
+| - Average view duration        |    -       |    -       | 54.8%      |  42.8%     | |
 
 
 ## Timeline
