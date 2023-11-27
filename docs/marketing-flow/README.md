@@ -11,8 +11,8 @@
 | Rep. Unique Clones             |   84       |   78       |   72       |  90        | |
 | **Application Analytics**      |            |            |            |            | |
 | Average interaction, GA {sec.} |   88       |  183       |  143       |  225       | |
-| Precise impressions, Huawei    |    -       |  200       |  217       |            | |
-| Acquisition funnel, Windows    |    -       |    -       |  15.38%    |            | |
+| Precise impressions, Huawei    |    -       |  200       |  217       |  141       | |
+| Acquisition funnel, Windows    |    -       |    -       |  15.38%    |  15.38%    | |
 | **Installations**              |            |            |            |            | |
 | - Windows                      |    8       |   16       |   19       | 21         | |
 | - Linux Flathub                |    -       |  124       |  202       | 244        | |
