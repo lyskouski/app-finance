@@ -1,8 +1,8 @@
 % Copyright 2023 The terCAD team. All rights reserved.
 % Use of this content is governed by a CC BY-NC-ND 4.0 license that can be found in the LICENSE file.
 
-\subsection{Debugging}
-\markboth{Optimizing}{Debugging}
+\subsection{Debugging Issue}
+\markboth{Optimizing}{Debugging Issue}
 
 Any application may encounter bugs and issues during the development process that might be hardly understandable 
 (\cref{img:o-error}, \issue{421}{}).
@@ -35,16 +35,17 @@ Sentry.captureMessage(
 );
 \end{lstlisting}
 
-\noindent Once the issue has been successfully replicated locally, we can strategically place breakpoints in our code 
-to halt execution at specific points. By default, when executing the \q{flutter run}-command, the application runs in 
+\noindent Once the issue has been successfully replicated locally, we might place breakpoints in our code to halt 
+execution at specific points. By default, when executing the \q{flutter run}-command, the application runs in a
 debug mode. This enables us to scrutinize variables and navigate through the code step by step, facilitating a more 
-granular inspection of the codebase.
+granular inspection of the codebase. But let's avoid that, since the debugging process (either local or production) 
+should have a unified approach -- logs.
 
 In the case of utilizing a web distribution, it becomes necessary to find a means to examine Web Progressive Applications 
-(WPA). The majority of mobile browsers facilitate remote debugging through their developer tools. For instance, 
+(WPA). The majority of mobile browsers facilitate a remote debugging through their developer tools. For instance, 
 in Chrome, we may use \href{chrome://inspect\#devices}{chrome://inspect\#devices} to enable access to a phone that is 
-connected via a USB. Underneath is would be shown a list of recognized devices (\cref{img:o-devtool}). By clicking on 
-the respective device, the inspect panel is activated, allowing for detailed examination and debugging.
+connected via a USB. Underneath it would be shown a list of recognized devices (\cref{img:o-devtool}). By clicking on 
+the respective device, the inspect panel is activated, enabling the detailed examination and debugging.
 
 \img{features/devtool-devices}{Google Chrome: Devices Inspector}{img:o-devtool}
 
@@ -70,11 +71,11 @@ main header to access the configuration settings and make the necessary adjustme
 
 \img{features/crash-stacktrace-details}{Google Chrome: Failure detection}{img:o-error-details}
 
-\noindent The encountered problem surfaced exclusively in the context of Progressive Web App (PWA) development, 
-specifically tied to the corruption of transliterations. This issue arises (in Flutter 3.16.0 with Dart 3.2.0) because 
-the Dart code undergoes a two-step compilation process: first, it is compiled to optimized JavaScript for deployment, 
-and subsequently, this JavaScript is JIT-compiled (Just-In-Time) by the web platform to a native code while the 
-application is in runtime. The complexity of this compilation pipeline introduces a potential source of errors as above.
+\noindent The issue at hand is exclusive to Progressive Web App (PWA) development, particularly linked to transliteration 
+corruption. This problem emerges \emph{(in Flutter 3.16.0 with Dart 3.2.0)} due to the two-step compilation process 
+that Dart code undergoes. Initially, it is compiled into optimized JavaScript for deployment, and then this JavaScript 
+undergoes Just-In-Time (JIT) compilation by the web platform into a native code during runtime. The intricacies of this 
+compilation pipeline introduce a potential source of errors, as observed in the described scenario.
 
 Previously, there was a brief mention of the option to build with Web Assembly (\ref{deploy-web}). Web Assembly is a 
 low-level format that resides closer to the abstraction level of machine code compared to JavaScript. This proximity 
@@ -93,8 +94,8 @@ $ flutter doctor
 [V] Flutter (Channel stable, 3.16.0, on ...)
 # Identify the SDK location
 $ which flutter
-/home/vlyskouski/Programs/flutter/flutter/bin//flutter
-$ cd /home/vlyskouski/Programs/flutter/flutter/bin
+/home/Programs/flutter/flutter/bin//flutter
+$ cd /home/Programs/flutter/flutter/bin
 $ git fetch --tags
 $ git checkout 3.13.9
 $ flutter doctor
@@ -128,3 +129,49 @@ $ flutter create .
 $ flutter channel stable
 $ flutter upgrade
 \end{lstlisting}
+
+\noindent However, addressing the original issue remains elusive as it extends beyond our sphere of influence. Even if 
+we were to revert all changes made between two releases of the application, the error would persist (even by reverting 
+further and further till the "Hello, Wolrd!" state). This is because we have control over the initial compilation of the 
+web application but lack control over the Just-In-Time (JIT) transformation that occurs on a mobile device as a 
+Progressive Web App (PWA).
+
+Interestingly, this challenge led us to an unmanageable error state, necessitating the prompt action due to freezes 
+associated with each opened selector (for everyone who is using the app as PWA). Throughout the re-implementation 
+process of the component, we discovered an essential capability: the seamless transfer of data between pages.
+
+\begin{lstlisting}
+// ./lib/design/form/list_selector.dart
+void onTap(BuildContext context) async {
+  focusController.onFocus(this);
+  final result = await Navigator.push(
+    context,
+    MaterialPageRoute(
+      builder: (context) => ListSelectorPage(
+        options: options,
+        result: value,
+        tooltip: tooltip,
+        itemBuilder: getItemBuilder(),
+      ),
+    ),
+  );
+  widget.setState(result); (*@ \stopnumber @*)
+}
+
+// ./lib/design/form/list_selector_page.dart
+onPressed: () => nav.pop<T?>(result as T?),
+\end{lstlisting}
+
+\noindent We have successfully extended our capabilities by not only transmitting a raw data, but also encapsulating a 
+representation state within a function. Moreover, we have enhanced our component by introducing a clear-state button 
+and adding functionality to automatically select the first element by pressing Enter \issue{424}{}. We can proudly 
+commend ourselves for navigating challenges and enhancing our systems, much like adept problem solvers.
+
+From Web Development I've taken a practice to revise myself on the weakest browser (that generates the highest variety
+of errors). And for the Flutter it's a Progressive Web App (PWA) application usage.
+
+As a note, we have refrained from utilizing breakpoints to debug our application step by step through the IDE. 
+Let's avoid the vicious practices of modern programming that leads to inadvertent complications in the realm of 
+concurrency and parallelism, where a breakpoint might influence the app's flow in a manner that could lead to even 
+greater confusion. And, when we reach the point of feeling unable to comprehend the code, the problem might not be 
+there.
