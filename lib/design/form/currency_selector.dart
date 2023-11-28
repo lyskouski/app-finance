@@ -10,12 +10,15 @@ class BaseListSelectorItem extends ListSelectorItem {
   Currency item;
 
   @override
-  Widget build(BuildContext context) => Row(
-        mainAxisAlignment: MainAxisAlignment.start,
-        children: [
-          SizedBox(width: 32, child: item.flag != null ? Text(item.flag!) : null),
-          Align(alignment: Alignment.centerLeft, child: Text('${item.symbol} | ${item.name} (${item.code})')),
-        ],
+  Widget build(BuildContext context) => Padding(
+        padding: const EdgeInsets.all(2),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.start,
+          children: [
+            SizedBox(width: 32, child: item.flag != null ? Text(item.flag!) : null),
+            Align(alignment: Alignment.centerLeft, child: Text('${item.symbol} | ${item.name} (${item.code})')),
+          ],
+        ),
       );
 
   @override
@@ -55,7 +58,7 @@ class BaseListSelectorItem extends ListSelectorItem {
   bool match(String search) => '$item'.contains(search);
 
   @override
-  bool equal(val) => item.code == val.code;
+  bool equal(val) => val is String ? item.code == val : item.code == (val as BaseListSelectorItem).id;
 
   @override
   String get id => item.code;
@@ -67,18 +70,17 @@ class BaseListSelectorItem extends ListSelectorItem {
 }
 
 class BaseCurrencySelector extends ListSelector<BaseListSelectorItem> {
-  @override
-  // ignore: overridden_fields
-  final Currency? value;
-
   BaseCurrencySelector({
     super.key,
     required super.setState,
-    this.value,
+    Currency? value,
     super.withLabel,
     super.hintColor,
     super.hintStyle,
     super.hintText,
     super.tooltip,
-  }) : super(options: CurrencyProvider.getAll().map((e) => BaseListSelectorItem(e)).toList());
+  }) : super(
+          options: CurrencyProvider.getAll().map((e) => BaseListSelectorItem(e)).toList(),
+          value: value != null ? BaseListSelectorItem(value) : null,
+        );
 }

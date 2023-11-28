@@ -31,34 +31,25 @@ class IconSelectorItem extends ListSelectorItem {
   @override
   bool equal(val) => value == val;
 
-  IconSelectorItem({required this.value, required super.name}) : super(id: value.toString());
+  IconSelectorItem(this.value, {required super.name}) : super(id: value.toString());
 }
 
 class IconSelector extends ListSelector<IconSelectorItem> {
-  @override
-  // ignore: overridden_fields
-  final IconData? value;
-
   IconSelector({
     super.key,
     required super.setState,
-    this.value,
+    IconData? value,
     super.withLabel,
     super.options = const [],
     String? hintText,
   }) : super(
-          value: value,
+          value: value != null ? IconSelectorItem(value, name: '') : null,
           hintText: hintText ?? AppLocale.labels.iconTooltip,
           tooltip: AppLocale.labels.iconTooltip,
         );
 
   @override
-  List<IconSelectorItem> get options => IconsExt.getAll()
-      .map((e) => IconSelectorItem(
-            value: e.value,
-            name: e.key,
-          ))
-      .toList();
+  List<IconSelectorItem> get options => IconsExt.getAll().map((e) => IconSelectorItem(e.value, name: e.key)).toList();
 
   @override
   IconSelectorState createState() => IconSelectorState();

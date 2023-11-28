@@ -4,7 +4,7 @@
 \subsection{Debugging Issue}
 \markboth{Optimizing}{Debugging Issue}
 
-Any application may encounter bugs and issues during the development process that might be hardly understandable 
+Any application may encounter bugs and issues during after being released that might be hardly understandable 
 (\cref{img:o-error}, \issue{421}{}).
 
 \img{features/crash-stacktrace}{Firebase Chrashlytics: Failure report}{img:o-error}
@@ -131,10 +131,9 @@ $ flutter upgrade
 \end{lstlisting}
 
 \noindent However, addressing the original issue remains elusive as it extends beyond our sphere of influence. Even if 
-we were to revert all changes made between two releases of the application, the error would persist (even by reverting 
-further and further till the "Hello, Wolrd!" state). This is because we have control over the initial compilation of the 
-web application but lack control over the Just-In-Time (JIT) transformation that occurs on a mobile device as a 
-Progressive Web App (PWA).
+we will revert almost all the changes made between two releases of the application... even by going further to primordial, 
+the error would persist. This is because we have the control over the initial compilation of the web application but lack 
+control over the Just-In-Time (JIT) transformation that occurs on a mobile device as a Progressive Web App (PWA).
 
 Interestingly, this challenge led us to an unmanageable error state, necessitating the prompt action due to freezes 
 associated with each opened selector (for everyone who is using the app as PWA). Throughout the re-implementation 

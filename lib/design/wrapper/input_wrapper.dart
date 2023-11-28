@@ -4,6 +4,7 @@
 import 'package:app_finance/_classes/herald/app_locale.dart';
 import 'package:app_finance/_classes/storage/app_data.dart';
 import 'package:app_finance/design/form/currency_selector_code.dart';
+import 'package:app_finance/design/form/date_input.dart';
 import 'package:app_finance/design/form/list_selector_item.dart';
 import 'package:app_finance/_configs/screen_helper.dart';
 import 'package:app_finance/_configs/theme_helper.dart';
@@ -31,6 +32,7 @@ enum NamedInputType {
   listSelector,
   textInput,
   ymSelector,
+  dateSelector,
 }
 
 class InputWrapper extends StatelessWidget {
@@ -184,7 +186,7 @@ class InputWrapper extends StatelessWidget {
               formatter: formatter,
               type: inputType ?? TextInputType.text,
             ),
-          NamedInputType.listSelector => ListSelector(
+          NamedInputType.listSelector => ListSelector<ListSelectorItem>(
               key: key,
               value: value,
               tooltip: tooltip,
@@ -213,6 +215,7 @@ class InputWrapper extends StatelessWidget {
               setState: (BaseListSelectorItem v) => onChange?.call(v.item),
               withLabel: min,
               tooltip: title,
+              hintText: title,
             ),
           NamedInputType.currencyShort => CodeCurrencySelector(
               key: key,
@@ -220,6 +223,7 @@ class InputWrapper extends StatelessWidget {
               setState: (CodeCurrencySelectorItem v) => onChange?.call(v.item),
               withLabel: min,
               tooltip: title,
+              hintText: title,
             ),
           NamedInputType.ymSelector => MonthYearInput(
               key: key,
@@ -227,6 +231,11 @@ class InputWrapper extends StatelessWidget {
               setState: onChange!,
               withLabel: min,
               labelText: title,
+            ),
+          NamedInputType.dateSelector => DateInput(
+              value: value,
+              setState: onChange!,
+              withLabel: min,
             ),
           NamedInputType.accountSelector => ListAccountSelector(
               key: key,

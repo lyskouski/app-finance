@@ -14,10 +14,10 @@ import 'package:app_finance/_configs/custom_color_scheme.dart';
 import 'package:app_finance/_configs/theme_helper.dart';
 import 'package:app_finance/_ext/build_context_ext.dart';
 import 'package:app_finance/_ext/color_ext.dart';
+import 'package:app_finance/design/wrapper/input_wrapper.dart';
 import 'package:app_finance/l10n/index.dart';
 import 'package:app_finance/design/button/link_widget.dart';
 import 'package:app_finance/design/form/color_selector.dart';
-import 'package:app_finance/design/form/currency_selector.dart';
 import 'package:app_finance/design/form/list_selector.dart';
 import 'package:app_finance/pages/start/widgets/abstract_tab.dart';
 import 'package:app_finance/design/wrapper/row_widget.dart';
@@ -150,20 +150,17 @@ class SettingTabState<T extends SettingTab> extends AbstractTabState<T> {
             AppLocale.labels.language,
             style: textTheme.bodyLarge,
           ),
-          ListSelector(
-            value: AppLocale.code,
+          ListSelector<ListSelectorItem>(
+            value: ListSelectorItem(id: AppLocale.code, name: ''),
             hintText: AppLocale.labels.language,
             options: languages,
             setState: saveLocale,
           ),
           ThemeHelper.hIndent2x,
-          Text(
-            AppLocale.labels.currencyDefault,
-            style: textTheme.bodyLarge,
-          ),
-          BaseCurrencySelector(
+          InputWrapper.currency(
+            title: AppLocale.labels.currencyDefault,
             value: currency,
-            setState: saveCurrency,
+            onChange: saveCurrency,
           ),
           ThemeHelper.hIndent2x,
           if (kDebugMode) ...[
@@ -189,8 +186,8 @@ class SettingTabState<T extends SettingTab> extends AbstractTabState<T> {
             AppLocale.labels.brightnessTheme,
             style: textTheme.bodyLarge,
           ),
-          ListSelector(
-            value: brightness,
+          ListSelector<ListSelectorItem>(
+            value: ListSelectorItem(id: brightness, name: ''),
             hintText: AppLocale.labels.brightnessTheme,
             options: [
               ListSelectorItem(id: '0', name: AppLocale.labels.systemMode),
@@ -204,8 +201,8 @@ class SettingTabState<T extends SettingTab> extends AbstractTabState<T> {
             AppLocale.labels.colorTheme,
             style: textTheme.bodyLarge,
           ),
-          ListSelector(
-            value: colorMode,
+          ListSelector<ListSelectorItem>(
+            value: ListSelectorItem(id: colorMode, name: ''),
             hintText: AppLocale.labels.colorTheme,
             options: [
               ListSelectorItem(id: AppColors.colorApp, name: AppLocale.labels.colorApp),

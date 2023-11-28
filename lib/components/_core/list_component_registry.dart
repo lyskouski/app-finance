@@ -21,7 +21,7 @@ class ListComponentRegistry extends ListSelector {
     required super.hintText,
     required super.hintStyle,
     super.options = const [],
-    super.value = '',
+    super.value,
   }) : super();
 
   @override

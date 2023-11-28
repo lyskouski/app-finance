@@ -7,15 +7,15 @@ import 'package:app_finance/_configs/custom_color_scheme.dart';
 import 'package:app_finance/_configs/custom_text_theme.dart';
 import 'package:app_finance/_configs/theme_helper.dart';
 import 'package:app_finance/_ext/build_context_ext.dart';
-import 'package:app_finance/design/form/abstract_selector.dart';
 import 'package:app_finance/design/form/list_selector_page.dart';
 import 'package:app_finance/design/wrapper/focus_wrapper.dart';
 import 'package:app_finance/design/wrapper/tap_widget.dart';
 import 'package:app_finance/design/wrapper/text_wrapper.dart';
 import 'package:flutter/material.dart';
 
-class ListSelector<K extends ListSelectorItem> extends AbstractSelector {
+class ListSelector<K extends ListSelectorItem> extends StatefulWidget {
   final List<K> options;
+  final K? value;
   final Function setState;
   final String? hintText;
   final String? tooltip;
@@ -31,7 +31,7 @@ class ListSelector<K extends ListSelectorItem> extends AbstractSelector {
     this.tooltip,
     this.hintStyle,
     this.hintColor,
-    super.value,
+    this.value,
     this.withLabel = false,
   });
 
@@ -39,10 +39,11 @@ class ListSelector<K extends ListSelectorItem> extends AbstractSelector {
   ListSelectorState createState() => ListSelectorState();
 }
 
-class ListSelectorState<T extends ListSelector, K extends ListSelectorItem> extends AbstractSelectorState<T> {
+class ListSelectorState<T extends ListSelector, K extends ListSelectorItem> extends State<T> {
+  final textController = SearchController();
+  late FocusController focusController;
   FntSelectorCallback? getItemBuilder() => null;
 
-  @override
   void onTap(BuildContext context) async {
     focusController.onFocus(this);
     final result = await Navigator.push(
@@ -61,15 +62,12 @@ class ListSelectorState<T extends ListSelector, K extends ListSelectorItem> exte
   }
 
   @override
-  Widget buildContent(BuildContext context) => ThemeHelper.emptyBox;
-
-  @override
   Widget build(BuildContext context) {
     focusController = FocusWrapper.of(context) ?? FocusController();
     final indent = ThemeHelper.getIndent(1.5);
     final hintStyle = context.textTheme.tooltipMedium.copyWith(overflow: TextOverflow.ellipsis);
     final labelStyle = context.textTheme.tooltipSmall;
-    K? item = widget.value != null ? widget.options.cast().where((e) => e.equal(widget.value)).firstOrNull : null;
+    K? item = widget.value != null ? widget.options.cast().where((e) => e.equal(widget.value?.id)).firstOrNull : null;
 
     return InkWell(
       autofocus: focusController.isFocused(this),

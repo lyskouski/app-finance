@@ -20,7 +20,7 @@ class ListSelectorItem {
 
   bool match(String search) => search.isPartOf(name, Locale(AppLocale.code));
 
-  bool equal(val) => id == val;
+  bool equal(dynamic val) => id == val;
 
   @override
   toString() => name;

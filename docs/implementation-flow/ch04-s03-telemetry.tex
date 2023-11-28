@@ -191,10 +191,13 @@ dependencies {
 \end{lstlisting}
 }
 
-\noindent In addition to monitoring usage statistics, the system can also track and log errors that occur during the 
-operation or execution of a program. This includes capturing information about the type and source of errors, 
-allowing for effective debugging and troubleshooting. Error tracking provides valuable insights into potential issues, 
-aiding developers in identifying and addressing problems. It can be enabled via \q{firebase\_crashlytics}-package:
+
+\subsubsection{Enabling Crashlytics Reports}
+
+In addition to overseeing usage statistics, the system has the capability to monitor and log errors that may arise 
+during a program execution. This entails capturing details about the nature and origin of errors, facilitating efficient 
+debugging and troubleshooting. By enabling error tracking through the \q{firebase\_crashlytics}-package, developers gain 
+valuable insights into potential issues, enabling them to identify and address problems effectively:
 
 \begin{lstlisting}
 void main() async {
@@ -229,3 +232,9 @@ ${PODS_ROOT}/FirebaseCrashlytics/run
 # Input Files: 
 $(SRCROOT)/$(BUILT_PRODUCTS_DIR)/$(INFOPLIST_PATH)
 \end{lstlisting}
+
+\noindent Crash-free metrics stand as the sole measure to gauge the stability of our application (\cref{img:g-crash}), 
+and it is imperative that we proactively maintain it at a minimum of 100\% (and there's no mistake about the number 
+here, the app should work with the precision of an atomic clock if we're talking about a user-centric design).
+
+\img{prototyping/crashlytics-report}{Google Firebase: Crash-free users report}{img:g-crash}

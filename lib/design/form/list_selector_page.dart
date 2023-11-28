@@ -37,7 +37,7 @@ class ListSelectorPageState<T extends Object?> extends State<ListSelectorPage> {
   final controller = TextEditingController();
   late NavigatorState nav;
   List<ValueNotifier<bool>> show = [];
-  dynamic result; // !ERR (T? result): A value of type 'Object?' can't be assigned to a variable of type 'T?'
+  dynamic result;
   List<ListSelectorItem> options = [];
 
   @override

@@ -14,11 +14,10 @@ import 'package:app_finance/_classes/storage/app_preferences.dart';
 import 'package:app_finance/_configs/theme_helper.dart';
 import 'package:app_finance/_ext/build_context_ext.dart';
 import 'package:app_finance/design/form/currency_selector.dart';
-import 'package:app_finance/design/form/list_account_selector.dart';
-import 'package:app_finance/design/form/list_budget_selector.dart';
 import 'package:app_finance/design/form/list_selector.dart';
 import 'package:app_finance/design/form/simple_input.dart';
 import 'package:app_finance/design/generic/loading_widget.dart';
+import 'package:app_finance/design/wrapper/input_wrapper.dart';
 import 'package:app_finance/pages/settings/widgets/recover_tab/date_time_helper_widget.dart';
 import 'package:app_finance/design/wrapper/single_scroll_wrapper.dart';
 import 'package:flutter/material.dart';
@@ -154,9 +153,9 @@ class ImportTabState extends State<ImportTab> {
                         AppLocale.labels.columnMap(fileContent!.first[index]),
                         style: textTheme.bodyLarge,
                       ),
-                      ListSelector(
+                      ListSelector<ListSelectorItem>(
                         options: FileParser.getMappingTypes(),
-                        value: columnMap[index],
+                        value: ListSelectorItem(id: columnMap[index], name: ''),
                         hintText: AppLocale.labels.columnMapTooltip(fileContent!.first[index]),
                         setState: (value) => setState(() {
                           columnMap[index] = value;
@@ -172,30 +171,26 @@ class ImportTabState extends State<ImportTab> {
                 const Divider(),
                 if (!columnMap.contains(FileParser.attrAccountName)) ...[
                   ThemeHelper.hIndent2x,
-                  Text(
-                    AppLocale.labels.def('${AppLocale.labels.account}: ${AppLocale.labels.title}'),
-                    style: textTheme.bodyLarge,
-                  ),
-                  ListAccountSelector(
-                    state: state,
-                    hintText: AppLocale.labels.titleAccountTooltip,
+                  InputWrapper(
+                    type: NamedInputType.accountSelector,
+                    title: AppLocale.labels.def('${AppLocale.labels.account}: ${AppLocale.labels.title}'),
+                    tooltip: AppLocale.labels.titleAccountTooltip,
                     value: attrValue[FileParser.attrAccountName],
-                    setState: (value) => setState(() => attrValue[FileParser.attrAccountName] = value),
+                    onChange: (value) => setState(() => attrValue[FileParser.attrAccountName] = value),
                     width: width,
+                    state: state,
                   ),
                 ],
                 if (!columnMap.contains(FileParser.attrCategoryName)) ...[
                   ThemeHelper.hIndent2x,
-                  Text(
-                    AppLocale.labels.def('${AppLocale.labels.budget}: ${AppLocale.labels.title}'),
-                    style: textTheme.bodyLarge,
-                  ),
-                  ListBudgetSelector(
-                    state: state,
-                    hintText: AppLocale.labels.titleBudgetTooltip,
+                  InputWrapper(
+                    type: NamedInputType.budgetSelector,
+                    title: AppLocale.labels.def('${AppLocale.labels.budget}: ${AppLocale.labels.title}'),
+                    tooltip: AppLocale.labels.titleBudgetTooltip,
                     value: attrValue[FileParser.attrCategoryName],
-                    setState: (value) => setState(() => attrValue[FileParser.attrCategoryName] = value),
+                    onChange: (value) => setState(() => attrValue[FileParser.attrCategoryName] = value),
                     width: width,
+                    state: state,
                   ),
                 ],
                 if (!columnMap.contains(FileParser.attrBillType)) ...[
@@ -204,8 +199,10 @@ class ImportTabState extends State<ImportTab> {
                     AppLocale.labels.def('${AppLocale.labels.bill}: ${AppLocale.labels.billTypeTooltip}'),
                     style: textTheme.bodyLarge,
                   ),
-                  ListSelector(
-                    value: attrValue[FileParser.attrBillType],
+                  ListSelector<ListSelectorItem>(
+                    value: attrValue[FileParser.attrBillType] != null
+                        ? ListSelectorItem(id: attrValue[FileParser.attrBillType]!, name: '')
+                        : null,
                     hintText: AppLocale.labels.billTypeTooltip,
                     options: [
                       ListSelectorItem(id: AppLocale.labels.bill, name: AppLocale.labels.bill),

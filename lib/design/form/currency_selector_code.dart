@@ -42,18 +42,17 @@ class CodeCurrencySelectorItem extends BaseListSelectorItem {
 }
 
 class CodeCurrencySelector extends ListSelector<CodeCurrencySelectorItem> {
-  @override
-  // ignore: overridden_fields
-  final Currency? value;
-
   CodeCurrencySelector({
     super.key,
     required super.setState,
-    this.value,
+    Currency? value,
     super.withLabel,
     super.hintColor,
     super.hintStyle,
     super.hintText,
     super.tooltip,
-  }) : super(options: CurrencyProvider.getAll().map((e) => CodeCurrencySelectorItem(e)).toList());
+  }) : super(
+          options: CurrencyProvider.getAll().map((e) => CodeCurrencySelectorItem(e)).toList(),
+          value: value != null ? CodeCurrencySelectorItem(value) : null,
+        );
 }
