@@ -73,14 +73,11 @@ class BaseCurrencySelector extends ListSelector<BaseListSelectorItem> {
   BaseCurrencySelector({
     super.key,
     required super.setState,
-    Currency? value,
+    super.value,
     super.withLabel,
     super.hintColor,
     super.hintStyle,
     super.hintText,
     super.tooltip,
-  }) : super(
-          options: CurrencyProvider.getAll().map((e) => BaseListSelectorItem(e)).toList(),
-          value: value != null ? BaseListSelectorItem(value) : null,
-        );
+  }) : super(options: CurrencyProvider.getAll().map((e) => BaseListSelectorItem(e)).toList());
 }

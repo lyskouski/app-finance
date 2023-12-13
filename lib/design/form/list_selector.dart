@@ -103,7 +103,7 @@ class ListSelectorState<T extends ListSelector, K extends ListSelectorItem> exte
                               ],
                             )
                           : item.build(context)
-                      : Text(
+                      : TextWrapper(
                           widget.hintText ?? '...',
                           style: widget.hintStyle ?? hintStyle,
                         ),

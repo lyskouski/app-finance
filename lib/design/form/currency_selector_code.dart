@@ -45,14 +45,11 @@ class CodeCurrencySelector extends ListSelector<CodeCurrencySelectorItem> {
   CodeCurrencySelector({
     super.key,
     required super.setState,
-    Currency? value,
+    super.value,
     super.withLabel,
     super.hintColor,
     super.hintStyle,
     super.hintText,
     super.tooltip,
-  }) : super(
-          options: CurrencyProvider.getAll().map((e) => CodeCurrencySelectorItem(e)).toList(),
-          value: value != null ? CodeCurrencySelectorItem(value) : null,
-        );
+  }) : super(options: CurrencyProvider.getAll().map((e) => CodeCurrencySelectorItem(e)).toList());
 }

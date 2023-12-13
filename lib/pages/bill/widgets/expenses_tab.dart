@@ -213,6 +213,7 @@ class ExpensesTabState<T extends ExpensesTab> extends State<T> {
                     type: NamedInputType.currencyShort,
                     value: currency,
                     title: AppLocale.labels.currency,
+                    tooltip: AppLocale.labels.currencyTooltip,
                     onChange: (value) => setState(() => currency = value),
                   ),
                 ],

@@ -176,6 +176,7 @@ class IncomeTabState<T extends IncomeTab> extends State<IncomeTab> {
                     type: NamedInputType.currencyShort,
                     value: currency,
                     title: AppLocale.labels.currency,
+                    tooltip: AppLocale.labels.currencyTooltip,
                     onChange: (value) => setState(() => currency = value),
                   ),
                 ],

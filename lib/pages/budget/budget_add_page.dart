@@ -226,6 +226,7 @@ class BudgetAddPageState<T extends BudgetAddPage> extends AbstractAddPageState<B
             InputWrapper.currency(
               value: currency,
               title: AppLocale.labels.currency,
+              tooltip: AppLocale.labels.currencyTooltip,
               onChange: (value) => setState(() => currency = value),
             ),
           ],

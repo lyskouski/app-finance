@@ -13,7 +13,6 @@ import 'package:app_finance/_configs/date_format_helper.dart';
 import 'package:app_finance/_classes/storage/app_preferences.dart';
 import 'package:app_finance/_configs/theme_helper.dart';
 import 'package:app_finance/_ext/build_context_ext.dart';
-import 'package:app_finance/design/form/currency_selector.dart';
 import 'package:app_finance/design/form/list_selector.dart';
 import 'package:app_finance/design/form/simple_input.dart';
 import 'package:app_finance/design/generic/loading_widget.dart';
@@ -213,13 +212,10 @@ class ImportTabState extends State<ImportTab> {
                 ],
                 if (!columnMap.contains(FileParser.attrBillCurrency)) ...[
                   ThemeHelper.hIndent2x,
-                  Text(
-                    AppLocale.labels.def('${AppLocale.labels.bill}: ${AppLocale.labels.currency}'),
-                    style: textTheme.bodyLarge,
-                  ),
-                  BaseCurrencySelector(
+                  InputWrapper.currency(
+                    title: AppLocale.labels.def('${AppLocale.labels.bill}: ${AppLocale.labels.currency}'),
                     value: CurrencyProvider.find(attrValue[FileParser.attrBillCurrency]),
-                    setState: (value) => setState(() => attrValue[FileParser.attrBillCurrency] = value?.id),
+                    onChange: (value) => setState(() => attrValue[FileParser.attrBillCurrency] = value?.id),
                   ),
                 ],
                 Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
