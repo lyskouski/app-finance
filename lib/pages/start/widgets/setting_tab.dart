@@ -9,15 +9,15 @@ import 'package:app_finance/_classes/herald/app_zoom.dart';
 import 'package:app_finance/_classes/storage/app_data.dart';
 import 'package:app_finance/_classes/storage/app_preferences.dart';
 import 'package:app_finance/_classes/structure/currency/exchange.dart';
-import 'package:app_finance/_classes/structure/def/list_selector_item.dart';
+import 'package:app_finance/design/form/list_selector_item.dart';
 import 'package:app_finance/_configs/custom_color_scheme.dart';
 import 'package:app_finance/_configs/theme_helper.dart';
 import 'package:app_finance/_ext/build_context_ext.dart';
 import 'package:app_finance/_ext/color_ext.dart';
+import 'package:app_finance/design/wrapper/input_wrapper.dart';
 import 'package:app_finance/l10n/index.dart';
 import 'package:app_finance/design/button/link_widget.dart';
 import 'package:app_finance/design/form/color_selector.dart';
-import 'package:app_finance/design/form/currency_selector.dart';
 import 'package:app_finance/design/form/list_selector.dart';
 import 'package:app_finance/pages/start/widgets/abstract_tab.dart';
 import 'package:app_finance/design/wrapper/row_widget.dart';
@@ -118,8 +118,8 @@ class SettingTabState<T extends SettingTab> extends AbstractTabState<T> {
     final format = NumberFormat.simpleCurrency(locale: locale);
     String? code = AppPreferences.get(AppPreferences.prefCurrency);
     if (code == null && format.currencyName != null) {
-      await AppPreferences.set(AppPreferences.prefCurrency, format.currencyName!);
-      code = format.currencyName!;
+      code = format.currencyName ?? 'EUR';
+      await AppPreferences.set(AppPreferences.prefCurrency, code);
     }
     setState(() => currency = CurrencyProvider.find(code));
   }
@@ -139,6 +139,7 @@ class SettingTabState<T extends SettingTab> extends AbstractTabState<T> {
     final width = ThemeHelper.getMaxWidth(context, constraints) - 2 * indent;
     if (currency == null) {
       WidgetsBinding.instance.addPostFrameCallback((_) => initCurrencyFromLocale(AppLocale.code));
+      return ThemeHelper.emptyBox;
     }
     return SingleScrollWrapper(
       controller: controller,
@@ -150,22 +151,17 @@ class SettingTabState<T extends SettingTab> extends AbstractTabState<T> {
             AppLocale.labels.language,
             style: textTheme.bodyLarge,
           ),
-          ListSelector(
-            value: AppLocale.code,
+          ListSelector<ListSelectorItem>(
+            value: ListSelectorItem(id: AppLocale.code, name: ''),
             hintText: AppLocale.labels.language,
             options: languages,
-            setState: saveLocale,
+            setState: (v) => saveLocale(v?.id ?? AppLocale.code),
           ),
           ThemeHelper.hIndent2x,
-          Text(
-            AppLocale.labels.currencyDefault,
-            style: textTheme.bodyLarge,
-          ),
-          BaseCurrencySelector(
-            value: currency?.code,
-            textTheme: context.textTheme,
-            colorScheme: context.colorScheme,
-            update: saveCurrency,
+          InputWrapper.currency(
+            title: AppLocale.labels.currencyDefault,
+            value: currency,
+            onChange: saveCurrency,
           ),
           ThemeHelper.hIndent2x,
           if (kDebugMode) ...[
@@ -191,30 +187,30 @@ class SettingTabState<T extends SettingTab> extends AbstractTabState<T> {
             AppLocale.labels.brightnessTheme,
             style: textTheme.bodyLarge,
           ),
-          ListSelector(
-            value: brightness,
+          ListSelector<ListSelectorItem>(
+            value: ListSelectorItem(id: brightness, name: ''),
             hintText: AppLocale.labels.brightnessTheme,
             options: [
               ListSelectorItem(id: '0', name: AppLocale.labels.systemMode),
               ListSelectorItem(id: '1', name: AppLocale.labels.lightMode),
               ListSelectorItem(id: '2', name: AppLocale.labels.darkMode),
             ],
-            setState: saveTheme,
+            setState: (v) => saveTheme(v?.id ?? '0'),
           ),
           ThemeHelper.hIndent2x,
           Text(
             AppLocale.labels.colorTheme,
             style: textTheme.bodyLarge,
           ),
-          ListSelector(
-            value: colorMode,
+          ListSelector<ListSelectorItem>(
+            value: ListSelectorItem(id: colorMode, name: ''),
             hintText: AppLocale.labels.colorTheme,
             options: [
               ListSelectorItem(id: AppColors.colorApp, name: AppLocale.labels.colorApp),
               ListSelectorItem(id: AppColors.colorSystem, name: AppLocale.labels.colorSystem),
               ListSelectorItem(id: AppColors.colorUser, name: AppLocale.labels.colorUser),
             ],
-            setState: saveColor,
+            setState: (v) => saveColor(v?.id ?? AppColors.colorApp),
           ),
           ThemeHelper.hIndent2x,
           if (colorMode == AppColors.colorUser) ...[

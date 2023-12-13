@@ -8,18 +8,12 @@ import 'package:app_finance/_classes/controller/focus_controller.dart';
 import 'package:app_finance/_classes/storage/app_data.dart';
 import 'package:app_finance/_configs/theme_helper.dart';
 import 'package:app_finance/_classes/storage/app_preferences.dart';
-import 'package:app_finance/_ext/build_context_ext.dart';
+import 'package:app_finance/design/wrapper/input_wrapper.dart';
 import 'package:app_finance/pages/_interfaces/abstract_page_state.dart';
-import 'package:app_finance/design/form/color_selector.dart';
-import 'package:app_finance/design/form/currency_selector.dart';
-import 'package:app_finance/design/form/date_input.dart';
 import 'package:app_finance/design/button/full_sized_button_widget.dart';
-import 'package:app_finance/design/form/icon_selector.dart';
 import 'package:app_finance/design/form/simple_input.dart';
-import 'package:app_finance/design/wrapper/required_widget.dart';
 import 'package:app_finance/design/wrapper/row_widget.dart';
 import 'package:app_finance/design/wrapper/single_scroll_wrapper.dart';
-import 'package:app_finance/design/wrapper/text_wrapper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_currency_picker/flutter_currency_picker.dart';
 
@@ -125,7 +119,6 @@ class GoalAddPageState<T extends GoalAddPage> extends AbstractPageState<GoalAddP
 
   @override
   Widget buildContent(BuildContext context, BoxConstraints constraints) {
-    final TextTheme textTheme = context.textTheme;
     double indent = ThemeHelper.getIndent(2);
     double width = ThemeHelper.getWidth(context, 6, constraints);
 
@@ -136,12 +129,13 @@ class GoalAddPageState<T extends GoalAddPage> extends AbstractPageState<GoalAddP
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            RequiredWidget(title: AppLocale.labels.titleGoal, showError: hasError && title.text.isEmpty),
-            SimpleInput(
+            InputWrapper.text(
+              title: AppLocale.labels.titleGoal,
+              showError: hasError && title.text.isEmpty,
               controller: title,
+              isRequired: true,
               tooltip: AppLocale.labels.titleGoalTooltip,
             ),
-            ThemeHelper.hIndent2x,
             RowWidget(
               indent: indent,
               maxWidth: width + indent,
@@ -149,28 +143,21 @@ class GoalAddPageState<T extends GoalAddPage> extends AbstractPageState<GoalAddP
               chunk: const [null, null],
               children: [
                 [
-                  TextWrapper(
-                    AppLocale.labels.icon,
-                    style: textTheme.bodyLarge,
-                  ),
-                  IconSelector(
+                  InputWrapper.icon(
+                    title: AppLocale.labels.icon,
                     value: icon,
-                    setState: (value) => setState(() => icon = value),
+                    onChange: (value) => setState(() => icon = value),
                   ),
                 ],
                 [
-                  TextWrapper(
-                    AppLocale.labels.color,
-                    style: textTheme.bodyLarge,
-                  ),
-                  ColorSelector(
+                  InputWrapper.color(
+                    title: AppLocale.labels.color,
                     value: color,
-                    setState: (value) => setState(() => color = value),
+                    onChange: (value) => setState(() => color = value),
                   ),
                 ],
               ],
             ),
-            ThemeHelper.hIndent2x,
             RowWidget(
               indent: indent,
               maxWidth: width + indent,
@@ -178,25 +165,19 @@ class GoalAddPageState<T extends GoalAddPage> extends AbstractPageState<GoalAddP
               chunk: const [90, null],
               children: [
                 [
-                  TextWrapper(
-                    AppLocale.labels.currency,
-                    style: textTheme.bodyLarge,
-                  ),
-                  CodeCurrencySelector(
-                    value: currency?.code,
-                    textTheme: context.textTheme,
-                    colorScheme: context.colorScheme,
-                    update: (value) => setState(() => currency = value),
+                  InputWrapper.currency(
+                    title: AppLocale.labels.currency,
+                    type: NamedInputType.currencyShort,
+                    value: currency,
+                    tooltip: AppLocale.labels.currencyTooltip,
+                    onChange: (value) => setState(() => currency = value),
                   ),
                 ],
                 [
-                  TextWrapper(
-                    AppLocale.labels.targetAmount,
-                    style: textTheme.bodyLarge,
-                  ),
-                  SimpleInput(
+                  InputWrapper.text(
+                    title: AppLocale.labels.targetAmount,
                     controller: details,
-                    type: const TextInputType.numberWithOptions(decimal: true),
+                    inputType: const TextInputType.numberWithOptions(decimal: true),
                     tooltip: AppLocale.labels.billSetTooltip,
                     formatter: [
                       SimpleInputFormatter.filterDouble,
@@ -205,11 +186,12 @@ class GoalAddPageState<T extends GoalAddPage> extends AbstractPageState<GoalAddP
                 ],
               ],
             ),
-            ThemeHelper.hIndent2x,
-            RequiredWidget(title: AppLocale.labels.closedAt, showError: hasError && closedAt == null),
-            DateInput(
+            InputWrapper(
+              title: AppLocale.labels.closedAt,
+              type: NamedInputType.dateSelector,
+              showError: hasError && closedAt == null,
               value: closedAt,
-              setState: (value) => setState(() => closedAt = value),
+              onChange: (value) => setState(() => closedAt = value),
             ),
           ],
         ),

@@ -23,4 +23,7 @@ extension ColorExt on Color {
   static MaterialColor getRandomMaterialColor() {
     return getRandom().toMaterialColor;
   }
+
+  Color mesh(Color color, double percent) =>
+      HSLColor.lerp(HSLColor.fromColor(this), HSLColor.fromColor(color), percent)!.toColor();
 }

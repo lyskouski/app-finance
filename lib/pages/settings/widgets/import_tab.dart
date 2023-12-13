@@ -7,21 +7,20 @@ import 'package:app_finance/_classes/storage/file_parser.dart';
 import 'package:app_finance/_classes/storage/file_picker.dart';
 import 'package:app_finance/_classes/storage/transaction_log.dart';
 import 'package:app_finance/_classes/controller/focus_controller.dart';
-import 'package:app_finance/_classes/structure/def/list_selector_item.dart';
+import 'package:app_finance/design/form/list_selector_item.dart';
 import 'package:app_finance/_classes/structure/interface_app_data.dart';
 import 'package:app_finance/_configs/date_format_helper.dart';
 import 'package:app_finance/_classes/storage/app_preferences.dart';
 import 'package:app_finance/_configs/theme_helper.dart';
 import 'package:app_finance/_ext/build_context_ext.dart';
-import 'package:app_finance/design/form/currency_selector.dart';
-import 'package:app_finance/design/form/list_account_selector.dart';
-import 'package:app_finance/design/form/list_budget_selector.dart';
 import 'package:app_finance/design/form/list_selector.dart';
 import 'package:app_finance/design/form/simple_input.dart';
 import 'package:app_finance/design/generic/loading_widget.dart';
+import 'package:app_finance/design/wrapper/input_wrapper.dart';
 import 'package:app_finance/pages/settings/widgets/recover_tab/date_time_helper_widget.dart';
 import 'package:app_finance/design/wrapper/single_scroll_wrapper.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_currency_picker/flutter_currency_picker.dart';
 import 'package:provider/provider.dart';
 
 class ImportTab extends StatefulWidget {
@@ -153,13 +152,13 @@ class ImportTabState extends State<ImportTab> {
                         AppLocale.labels.columnMap(fileContent!.first[index]),
                         style: textTheme.bodyLarge,
                       ),
-                      ListSelector(
+                      ListSelector<ListSelectorItem>(
                         options: FileParser.getMappingTypes(),
-                        value: columnMap[index],
+                        value: ListSelectorItem(id: columnMap[index], name: ''),
                         hintText: AppLocale.labels.columnMapTooltip(fileContent!.first[index]),
                         setState: (value) => setState(() {
-                          columnMap[index] = value;
-                          if (value == FileParser.attrBillDate) {
+                          columnMap[index] = value?.id ?? '';
+                          if (columnMap[index] == FileParser.attrBillDate) {
                             dateFormat.text =
                                 DateFormatHelper().detectFormat([fileContent!.last[index]], AppLocale.code);
                           }
@@ -171,30 +170,26 @@ class ImportTabState extends State<ImportTab> {
                 const Divider(),
                 if (!columnMap.contains(FileParser.attrAccountName)) ...[
                   ThemeHelper.hIndent2x,
-                  Text(
-                    AppLocale.labels.def('${AppLocale.labels.account}: ${AppLocale.labels.title}'),
-                    style: textTheme.bodyLarge,
-                  ),
-                  ListAccountSelector(
-                    state: state,
-                    hintText: AppLocale.labels.titleAccountTooltip,
-                    value: attrValue[FileParser.attrAccountName],
-                    setState: (value) => setState(() => attrValue[FileParser.attrAccountName] = value),
+                  InputWrapper(
+                    type: NamedInputType.accountSelector,
+                    title: AppLocale.labels.def('${AppLocale.labels.account}: ${AppLocale.labels.title}'),
+                    tooltip: AppLocale.labels.titleAccountTooltip,
+                    value: state.getByUuid(attrValue[FileParser.attrAccountName] ?? ''),
+                    onChange: (value) => setState(() => attrValue[FileParser.attrAccountName] = value?.id),
                     width: width,
+                    state: state,
                   ),
                 ],
                 if (!columnMap.contains(FileParser.attrCategoryName)) ...[
                   ThemeHelper.hIndent2x,
-                  Text(
-                    AppLocale.labels.def('${AppLocale.labels.budget}: ${AppLocale.labels.title}'),
-                    style: textTheme.bodyLarge,
-                  ),
-                  ListBudgetSelector(
-                    state: state,
-                    hintText: AppLocale.labels.titleBudgetTooltip,
-                    value: attrValue[FileParser.attrCategoryName],
-                    setState: (value) => setState(() => attrValue[FileParser.attrCategoryName] = value),
+                  InputWrapper(
+                    type: NamedInputType.budgetSelector,
+                    title: AppLocale.labels.def('${AppLocale.labels.budget}: ${AppLocale.labels.title}'),
+                    tooltip: AppLocale.labels.titleBudgetTooltip,
+                    value: state.getByUuid(attrValue[FileParser.attrCategoryName] ?? ''),
+                    onChange: (value) => setState(() => attrValue[FileParser.attrCategoryName] = value?.id),
                     width: width,
+                    state: state,
                   ),
                 ],
                 if (!columnMap.contains(FileParser.attrBillType)) ...[
@@ -203,27 +198,24 @@ class ImportTabState extends State<ImportTab> {
                     AppLocale.labels.def('${AppLocale.labels.bill}: ${AppLocale.labels.billTypeTooltip}'),
                     style: textTheme.bodyLarge,
                   ),
-                  ListSelector(
-                    value: attrValue[FileParser.attrBillType],
+                  ListSelector<ListSelectorItem>(
+                    value: attrValue[FileParser.attrBillType] != null
+                        ? ListSelectorItem(id: attrValue[FileParser.attrBillType]!, name: '')
+                        : null,
                     hintText: AppLocale.labels.billTypeTooltip,
                     options: [
                       ListSelectorItem(id: AppLocale.labels.bill, name: AppLocale.labels.bill),
                       ListSelectorItem(id: AppLocale.labels.flowTypeInvoice, name: AppLocale.labels.flowTypeInvoice),
                     ],
-                    setState: (value) => setState(() => attrValue[FileParser.attrBillType] = value),
+                    setState: (value) => setState(() => attrValue[FileParser.attrBillType] = value?.id),
                   ),
                 ],
                 if (!columnMap.contains(FileParser.attrBillCurrency)) ...[
                   ThemeHelper.hIndent2x,
-                  Text(
-                    AppLocale.labels.def('${AppLocale.labels.bill}: ${AppLocale.labels.currency}'),
-                    style: textTheme.bodyLarge,
-                  ),
-                  BaseCurrencySelector(
-                    value: attrValue[FileParser.attrBillCurrency],
-                    textTheme: context.textTheme,
-                    colorScheme: context.colorScheme,
-                    update: (value) => setState(() => attrValue[FileParser.attrBillCurrency] = value.code),
+                  InputWrapper.currency(
+                    title: AppLocale.labels.def('${AppLocale.labels.bill}: ${AppLocale.labels.currency}'),
+                    value: CurrencyProvider.find(attrValue[FileParser.attrBillCurrency]),
+                    onChange: (value) => setState(() => attrValue[FileParser.attrBillCurrency] = value?.id),
                   ),
                 ],
                 Column(crossAxisAlignment: CrossAxisAlignment.start, children: [

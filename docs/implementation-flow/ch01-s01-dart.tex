@@ -455,20 +455,17 @@ raised an error that defined property is not accessible:
 // AccountEditPage <- AccountAddPage <- AbstractPage
 // AccountEditPageState <- AccountAddPageState <- AbstractPageState
 
-class AccountEditPage extends AccountAddPage {
-  String uuid;
-
-  AccountEditPage({required this.uuid}) : super();
-
-  @override
-  AccountEditPageState createState() => AccountEditPageState();
+abstract class AbstractPage<T> extends StatefulWidget {
+  int selectedMenu = 0;
+  // Be accurate with "UniqueKey"-method usage for nested widgets
+  // That will trigger "initState" each time of store updates 
+  AbstractPage() : super(key: UniqueKey());
 }
 
-class AccountEditPageState extends 
-      AccountAddPageState<AccountEditPage> {
-  // ERROR: The getter 'uuid' isn't defined for 'AccountAddPage'
-  String get uuid => widget.uuid; 
-  // FIX: (widget as AccountEditPage).uuid
+abstract class AbstractPageState<T extends AbstractPage> 
+      extends State<T> {
+  @override
+  Widget build(BuildContext context) => Text('test');
 }
 
 class AccountAddPage extends AbstractPage {
@@ -484,17 +481,20 @@ class AccountAddPageState<T extends AccountAddPage> extends AbstractPageState<Ac
   String? get title => widget.title; // OK
 }
 
-abstract class AbstractPage<T> extends StatefulWidget {
-  int selectedMenu = 0;
-  // Be accurate with "UniqueKey"-method usage for nested widgets
-  // That will trigger "initState" each time of store updates 
-  AbstractPage() : super(key: UniqueKey());
+class AccountEditPage extends AccountAddPage {
+  String uuid;
+
+  AccountEditPage({required this.uuid}) : super();
+
+  @override
+  AccountEditPageState createState() => AccountEditPageState();
 }
 
-abstract class AbstractPageState<T extends AbstractPage> 
-      extends State<T> {
-  @override
-  Widget build(BuildContext context) => Text('test');
+class AccountEditPageState extends 
+      AccountAddPageState<AccountEditPage> {
+  // ERROR: The getter 'uuid' isn't defined for 'AccountAddPage'
+  String get uuid => widget.uuid; 
+  // FIX: (widget as AccountEditPage).uuid
 }
 \end{lstlisting}
 

@@ -4,7 +4,7 @@
 import 'package:app_finance/_classes/herald/app_locale.dart';
 import 'package:app_finance/_classes/storage/app_data.dart';
 import 'package:app_finance/_classes/structure/currency/exchange.dart';
-import 'package:app_finance/_classes/structure/def/list_selector_item.dart';
+import 'package:app_finance/design/form/list_selector_item.dart';
 import 'package:app_finance/_classes/structure/navigation/app_route.dart';
 import 'package:app_finance/_configs/theme_helper.dart';
 import 'package:app_finance/_ext/build_context_ext.dart';
@@ -150,11 +150,11 @@ class ComponentRecentFormState extends State<ComponentRecentForm> {
             ThemeHelper.hIndent3x,
             ListSelector<ListSelectorItem>(
               setState: (value) {
-                setState(() => _option = value);
+                setState(() => _option = value?.id);
                 widget.adjust(widget.data[componentData.order], {...widget.data, ComponentRecent.type: value});
               },
               hintText: AppLocale.labels.cmpRecent,
-              value: _option,
+              value: _option != null ? ListSelectorItem(id: _option!, name: '') : null,
               options: [
                 ListSelectorItem(id: ComponentRecentType.account.toString(), name: AppLocale.labels.accountHeadline),
                 ListSelectorItem(id: ComponentRecentType.bill.toString(), name: AppLocale.labels.billHeadline),

@@ -105,7 +105,7 @@ class HomeEditPageState extends State<HomeEditPage> {
             width: 140,
             padding: EdgeInsets.all(ThemeHelper.getIndent(0.5)),
             child: ListComponentRegistry(
-              setState: add,
+              setState: (v) => add(v?.id ?? ''),
               hintText: AppLocale.labels.customAddTooltip,
               hintStyle: context.textTheme.numberSmall.copyWith(color: Colors.white70),
             ),

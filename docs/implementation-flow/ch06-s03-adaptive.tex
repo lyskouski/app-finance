@@ -158,8 +158,6 @@ RowWidget(
 )
 \end{lstlisting}
 
-~
-
 \noindent On other hand, \q{GridLayer} manages \issue{158}{} different strategies of a widgets' composition: 
 
 \begin{lstlisting}
@@ -194,9 +192,10 @@ GridLayer(
     billWidget,
     accountWidget,
     budgetWidget,
-  ],(*@ \stopnumber @*)
+  ],
 );
-
+\end{lstlisting}
+\begin{lstlisting}
 // ./lib/widgets/_wrappers/grid_layer.dart
 class GridLayer extends StatelessWidget {
   // Indent between sections

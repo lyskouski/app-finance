@@ -23,7 +23,6 @@ by overriding valuable for us colors:
 // ./lib/main.dart
 final palette = context.watch<AppPalette>().value;
 final text = CustomTextTheme.textTheme(Theme.of(context));
-
 return MaterialApp(
   theme: ThemeData(
     colorScheme: const ColorScheme.light().withCustom(),
@@ -78,11 +77,13 @@ class AppColors {
   }
 }
 
+
 // Light mode
 class AppDefaultColors {
   Color get primary => const Color(0xff912391);
   // ... other options
 }
+
 // Dark mode
 class AppDarkColors implements AppDefaultColors {
   // ... other options
@@ -127,7 +128,7 @@ extension MyTextTheme on TextTheme {
 
 \noindent In addition, it might be used \q{copyWith}-method to update only a few properties (as a font size) while 
 keeping others intact: 
-
+\newpage
 \begin{lstlisting}
 Theme.of(context).textTheme.copyWith(
   headline1: baseTheme.headline1!.copyWith(fontSize: 32),

@@ -2,6 +2,7 @@
 // Use of this source code is governed by a CC BY-NC-ND 4.0 license that can be found in the LICENSE file.
 
 import 'package:app_finance/design/form/currency_selector.dart';
+import 'package:app_finance/design/form/currency_selector_code.dart';
 import 'package:app_finance/design/form/list_account_selector.dart';
 import 'package:app_finance/design/form/list_budget_selector.dart';
 import 'package:app_finance/design/form/list_selector.dart';
@@ -29,7 +30,6 @@ class TapOnNumOfDefinedField extends When2WithWorld<int, String, World> {
       'CodeCurrencySelector' => find.byType(CodeCurrencySelector),
       'AccountSelector' => find.byType(ListAccountSelector),
       'BudgetSelector' => find.byType(ListBudgetSelector),
-      'CodeCurrencySelector' => find.byType(CodeCurrencySelector),
       _ => throw Exception('Not defined'),
     };
     expectSync(list, findsWidgets);

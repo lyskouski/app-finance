@@ -13,7 +13,7 @@ class DateTimeHelperWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TableWidget(
-      width: ThemeHelper.getWidth(context),
+      width: ThemeHelper.getWidth(context, 6),
       chunk: const [64, null, null],
       shadowColor: context.colorScheme.onBackground.withOpacity(0.1),
       data: [

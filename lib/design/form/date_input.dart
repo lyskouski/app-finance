@@ -6,6 +6,7 @@ import 'package:app_finance/_configs/custom_color_scheme.dart';
 import 'package:app_finance/_configs/custom_text_theme.dart';
 import 'package:app_finance/_ext/build_context_ext.dart';
 import 'package:app_finance/design/form/abstract_selector.dart';
+import 'package:app_finance/design/wrapper/text_wrapper.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
@@ -14,11 +15,13 @@ class DateInput extends AbstractSelector {
   @override
   // ignore: overridden_fields
   final DateTime? value;
+  final bool withLabel;
 
   const DateInput({
     super.key,
     required this.setState,
     required this.value,
+    this.withLabel = false,
   }) : super(value: value);
 
   @override
@@ -56,18 +59,23 @@ class DateInputState extends AbstractSelectorState<DateInput> {
   Widget buildContent(BuildContext context) {
     final style = context.textTheme.numberMedium;
     final DateFormat formatterDate = DateFormat.yMd(AppLocale.code);
+    final labelStyle = context.textTheme.tooltipSmall.copyWith(color: style.color?.withOpacity(0.4));
+    final hintStyle = context.textTheme.tooltipMedium.copyWith(overflow: TextOverflow.ellipsis);
     return Container(
       color: context.colorScheme.fieldBackground,
       child: ListTile(
         title: widget.value != null
-            ? Text(
-                formatterDate.format(widget.value!),
-                style: style,
-              )
-            : Text(
-                AppLocale.labels.dateTooltip,
-                style: style.copyWith(color: style.color?.withOpacity(0.4)),
-              ),
+            ? widget.withLabel
+                ? Column(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      TextWrapper(AppLocale.labels.dateTooltip, style: labelStyle),
+                      TextWrapper(formatterDate.format(widget.value!), style: style),
+                    ],
+                  )
+                : TextWrapper(formatterDate.format(widget.value!), style: style)
+            : TextWrapper(AppLocale.labels.dateTooltip, style: hintStyle),
         focusNode: focus,
         autofocus: focusController.isFocused(this),
         onTap: () => onTap(context),

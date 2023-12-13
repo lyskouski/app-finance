@@ -22,7 +22,8 @@ class EnterTextField extends When2WithWorld<String, String, World> {
       expectSync(field, findsOneWidget);
     } catch (_) {
       field = find.byWidgetPredicate((widget) {
-        return widget is TextField && widget.decoration?.hintText == tooltip;
+        return widget is TextField &&
+            (widget.decoration?.hintText == tooltip || widget.decoration?.labelText == tooltip);
       });
     }
     expectSync(field, findsOneWidget);

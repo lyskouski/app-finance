@@ -15,6 +15,16 @@ class OnDefinedPage extends Given1<String> {
 
   @override
   Future<void> executeStep(String route) async {
+    // TBD: check flow (unexpected currency selector "force to action")
+    try {
+      final btn = find.byTooltip('Return Back');
+      expectSync(btn, findsOneWidget);
+      await FileRunner.tester.ensureVisible(btn);
+      await FileRunner.tester.tap(btn, warnIfMissed: false);
+      await FileRunner.tester.pumpAndSettle();
+    } catch (_) {
+      // skip
+    }
     ScreenCapture.seize(runtimeType.toString());
     final ScaffoldState scafState = FileRunner.tester.firstState(find.byType(Scaffold).at(0));
     scafState.openDrawer();

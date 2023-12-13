@@ -171,31 +171,35 @@ class ExpensesTabState<T extends ExpensesTab> extends State<T> {
             InputWrapper(
               type: NamedInputType.accountSelector,
               isRequired: true,
-              value: account,
+              value: account != null ? widget.state.getByUuid(account!) : null,
               title: AppLocale.labels.account,
               tooltip: AppLocale.labels.titleAccountTooltip,
               showError: hasErrors && account == null,
               state: widget.state,
               options: accountList,
               onChange: (value) => setState(() {
-                account = value;
-                accountCurrency = widget.state.getByUuid(value).currency;
-                currency = accountCurrency;
+                account = value?.uuid;
+                if (value != null) {
+                  accountCurrency = value.currency;
+                  currency = accountCurrency;
+                }
               }),
               width: width,
             ),
             InputWrapper(
               type: NamedInputType.budgetSelector,
               isRequired: true,
-              value: budget,
+              value: budget != null ? widget.state.getByUuid(budget!) : null,
               title: AppLocale.labels.budget,
               showError: hasErrors && budget == null,
               tooltip: AppLocale.labels.titleBudgetTooltip,
               state: widget.state,
               onChange: (value) => setState(() {
-                budget = value;
-                budgetCurrency = widget.state.getByUuid(value).currency;
-                currency ??= budgetCurrency;
+                budget = value?.uuid;
+                if (value != null) {
+                  budgetCurrency = value.currency;
+                  currency ??= budgetCurrency;
+                }
               }),
               width: width,
             ),
@@ -207,8 +211,9 @@ class ExpensesTabState<T extends ExpensesTab> extends State<T> {
                 [
                   InputWrapper.currency(
                     type: NamedInputType.currencyShort,
-                    value: currency?.code,
+                    value: currency,
                     title: AppLocale.labels.currency,
+                    tooltip: AppLocale.labels.currencyTooltip,
                     onChange: (value) => setState(() => currency = value),
                   ),
                 ],

@@ -25,11 +25,14 @@ class SimpleInput extends StatelessWidget {
   final TextEditingController controller;
   final bool obscure;
   final bool withLabel;
+  final bool forceFocus;
   final Color? hintColor;
+  final Function(String)? onFieldSubmitted;
 
   SimpleInput({
     super.key,
     required this.controller,
+    this.onFieldSubmitted,
     this.focusController,
     this.setState,
     this.tooltip,
@@ -38,6 +41,7 @@ class SimpleInput extends StatelessWidget {
     this.type = TextInputType.text,
     this.obscure = false,
     this.withLabel = false,
+    this.forceFocus = false,
   }) {
     if (setState != null) {
       controller.addListener(() => setState!(controller.text));
@@ -66,7 +70,8 @@ class SimpleInput extends StatelessWidget {
         textInputAction: focusController?.getAction(this),
         onTap: () => focusController?.onFocus(this),
         onEditingComplete: () => focusController?.onEditingComplete(this),
-        autofocus: focusController?.isFocused(this) ?? false,
+        onFieldSubmitted: onFieldSubmitted,
+        autofocus: forceFocus ? forceFocus : focusController?.isFocused(this) ?? false,
         decoration: InputDecoration(
           filled: true,
           border: InputBorder.none,

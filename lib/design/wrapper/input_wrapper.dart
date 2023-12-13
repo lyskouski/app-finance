@@ -3,7 +3,9 @@
 
 import 'package:app_finance/_classes/herald/app_locale.dart';
 import 'package:app_finance/_classes/storage/app_data.dart';
-import 'package:app_finance/_classes/structure/def/list_selector_item.dart';
+import 'package:app_finance/design/form/currency_selector_code.dart';
+import 'package:app_finance/design/form/date_input.dart';
+import 'package:app_finance/design/form/list_selector_item.dart';
 import 'package:app_finance/_configs/screen_helper.dart';
 import 'package:app_finance/_configs/theme_helper.dart';
 import 'package:app_finance/_ext/build_context_ext.dart';
@@ -30,6 +32,7 @@ enum NamedInputType {
   listSelector,
   textInput,
   ymSelector,
+  dateSelector,
 }
 
 class InputWrapper extends StatelessWidget {
@@ -154,7 +157,8 @@ class InputWrapper extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final min = ScreenHelper.state().isRight;
+    final screenState = ScreenHelper.state();
+    final min = screenState.isRight || screenState.isWearable;
     String? hint = min ? title : tooltip;
     Color? hintColor;
     if (isRequired && min) {
@@ -183,46 +187,44 @@ class InputWrapper extends StatelessWidget {
               formatter: formatter,
               type: inputType ?? TextInputType.text,
             ),
-          NamedInputType.listSelector => ListSelector(
+          NamedInputType.listSelector => ListSelector<ListSelectorItem>(
               key: key,
-              value: value,
+              value: value != null ? ListSelectorItem(id: value, name: '') : null,
               tooltip: tooltip,
               hintText: hint,
               hintColor: hintColor,
               options: options as List<ListSelectorItem>,
-              setState: onChange!,
+              setState: (ListSelectorItem? v) => onChange?.call(v?.id),
               withLabel: min,
             ),
           NamedInputType.iconSelector => IconSelector(
               key: key,
-              value: value,
-              setState: onChange!,
+              value: value != null ? IconSelectorItem(value, name: value.toString()) : null,
+              setState: (v) => onChange?.call((v as IconSelectorItem?)?.value),
               hintText: hint,
               withLabel: min,
             ),
           NamedInputType.colorSelector => ColorSelector(
               key: key,
               value: value,
-              setState: onChange!,
+              setState: (v) => onChange?.call(v),
               withLabel: min,
             ),
           NamedInputType.currencySelector => BaseCurrencySelector(
               key: key,
-              value: value,
-              textTheme: context.textTheme,
-              colorScheme: context.colorScheme,
-              update: onChange!,
+              value: value != null ? BaseListSelectorItem(value) : null,
+              setState: (v) => onChange?.call((v as BaseListSelectorItem?)?.item),
               withLabel: min,
-              labelText: title,
+              tooltip: tooltip,
+              hintText: tooltip,
             ),
           NamedInputType.currencyShort => CodeCurrencySelector(
               key: key,
-              value: value,
-              textTheme: context.textTheme,
-              colorScheme: context.colorScheme,
-              update: onChange!,
+              value: value != null ? CodeCurrencySelectorItem(value) : null,
+              setState: (v) => onChange?.call((v as CodeCurrencySelectorItem?)?.item),
               withLabel: min,
-              labelText: title,
+              tooltip: tooltip,
+              hintText: tooltip,
             ),
           NamedInputType.ymSelector => MonthYearInput(
               key: key,
@@ -231,24 +233,29 @@ class InputWrapper extends StatelessWidget {
               withLabel: min,
               labelText: title,
             ),
+          NamedInputType.dateSelector => DateInput(
+              value: value,
+              setState: onChange!,
+              withLabel: min,
+            ),
           NamedInputType.accountSelector => ListAccountSelector(
               key: key,
-              value: value,
+              value: value != null ? ListAccountSelectorItem(item: value) : null,
               hintText: hint,
               tooltip: tooltip,
               state: state!,
-              setState: onChange!,
+              setState: (v) => onChange?.call((v as ListAccountSelectorItem?)?.item),
               width: width!,
               withLabel: min,
               options: options?.cast() ?? [],
             ),
           NamedInputType.budgetSelector => ListBudgetSelector(
               key: key,
-              value: value,
+              value: value != null ? ListBudgetSelectorItem(item: value) : null,
               hintText: hint,
               tooltip: tooltip,
               state: state!,
-              setState: onChange!,
+              setState: (v) => onChange?.call((v as ListBudgetSelectorItem?)?.item),
               width: width!,
               withLabel: min,
             ),

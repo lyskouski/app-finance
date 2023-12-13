@@ -151,30 +151,34 @@ class TransferTabState<T extends TransferTab> extends State<T> {
             InputWrapper(
               type: NamedInputType.accountSelector,
               isRequired: true,
-              value: accountFrom,
+              value: accountFrom != null ? widget.state.getByUuid(accountFrom!) : null,
               title: AppLocale.labels.accountFrom,
               tooltip: '${AppLocale.labels.titleAccountTooltip} (${AppLocale.labels.accountFrom})',
               showError: hasErrors && accountFrom == null,
               state: widget.state,
               onChange: (value) => setState(() {
-                accountFrom = value;
-                accountFromCurrency = widget.state.getByUuid(accountFrom!)?.currency;
-                currency ??= accountFromCurrency;
+                accountFrom = value?.uuid;
+                if (value != null) {
+                  accountFromCurrency = value.currency;
+                  currency ??= accountFromCurrency;
+                }
               }),
               width: width,
             ),
             InputWrapper(
               type: NamedInputType.accountSelector,
               isRequired: true,
-              value: accountTo,
+              value: accountTo != null ? widget.state.getByUuid(accountTo!) : null,
               title: AppLocale.labels.accountTo,
               tooltip: '${AppLocale.labels.titleAccountTooltip} (${AppLocale.labels.accountTo})',
               showError: hasErrors && accountTo == null,
               state: widget.state,
               onChange: (value) => setState(() {
-                accountTo = value;
-                accountToCurrency = widget.state.getByUuid(value)?.currency;
-                currency = accountToCurrency;
+                accountTo = value?.uuid;
+                if (value != null) {
+                  accountToCurrency = value.currency;
+                  currency = accountToCurrency;
+                }
               }),
               width: width,
             ),
@@ -186,8 +190,9 @@ class TransferTabState<T extends TransferTab> extends State<T> {
                 [
                   InputWrapper.currency(
                     type: NamedInputType.currencyShort,
-                    value: currency?.code,
+                    value: currency,
                     title: AppLocale.labels.currency,
+                    tooltip: AppLocale.labels.currencyTooltip,
                     onChange: (value) => setState(() => currency = value),
                   ),
                 ],
