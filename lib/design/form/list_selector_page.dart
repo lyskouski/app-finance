@@ -142,7 +142,7 @@ class ListSelectorPageState<T extends Object?> extends State<ListSelectorPage> {
                   Transform.translate(
                     offset: const Offset(-ThemeHelper.barHeight / 2, 0),
                     child: IconButton(
-                      tooltip: AppLocale.labels.a,
+                      tooltip: AppLocale.labels.clear,
                       style: ButtonStyle(
                         backgroundColor: MaterialStateProperty.all<Color>(
                           context.colorScheme.background.mesh(context.colorScheme.primary.withOpacity(1), 0.1),
@@ -155,7 +155,7 @@ class ListSelectorPageState<T extends Object?> extends State<ListSelectorPage> {
                   Transform.translate(
                     offset: Offset(-indent, 0),
                     child: IconButton(
-                      tooltip: AppLocale.labels.a,
+                      tooltip: AppLocale.labels.returnBack,
                       icon: const Icon(Icons.rotate_left_rounded),
                       onPressed: () => nav.pop<T?>(result as T?),
                     ),

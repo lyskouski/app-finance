@@ -118,8 +118,8 @@ class SettingTabState<T extends SettingTab> extends AbstractTabState<T> {
     final format = NumberFormat.simpleCurrency(locale: locale);
     String? code = AppPreferences.get(AppPreferences.prefCurrency);
     if (code == null && format.currencyName != null) {
-      await AppPreferences.set(AppPreferences.prefCurrency, format.currencyName!);
-      code = format.currencyName!;
+      code = format.currencyName ?? 'EUR';
+      await AppPreferences.set(AppPreferences.prefCurrency, code);
     }
     setState(() => currency = CurrencyProvider.find(code));
   }
@@ -139,6 +139,7 @@ class SettingTabState<T extends SettingTab> extends AbstractTabState<T> {
     final width = ThemeHelper.getMaxWidth(context, constraints) - 2 * indent;
     if (currency == null) {
       WidgetsBinding.instance.addPostFrameCallback((_) => initCurrencyFromLocale(AppLocale.code));
+      return ThemeHelper.emptyBox;
     }
     return SingleScrollWrapper(
       controller: controller,
