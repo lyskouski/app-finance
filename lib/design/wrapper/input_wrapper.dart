@@ -157,7 +157,8 @@ class InputWrapper extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final min = ScreenHelper.state().isRight;
+    final screenState = ScreenHelper.state();
+    final min = screenState.isRight || screenState.isWearable;
     String? hint = min ? title : tooltip;
     Color? hintColor;
     if (isRequired && min) {
@@ -188,7 +189,7 @@ class InputWrapper extends StatelessWidget {
             ),
           NamedInputType.listSelector => ListSelector<ListSelectorItem>(
               key: key,
-              value: value,
+              value: value != null ? ListSelectorItem(id: value, name: '') : null,
               tooltip: tooltip,
               hintText: hint,
               hintColor: hintColor,
@@ -198,8 +199,8 @@ class InputWrapper extends StatelessWidget {
             ),
           NamedInputType.iconSelector => IconSelector(
               key: key,
-              value: value,
-              setState: (IconSelectorItem? v) => onChange?.call(v?.value),
+              value: value != null ? IconSelectorItem(value, name: value.toString()) : null,
+              setState: (v) => onChange?.call((v as IconSelectorItem?)?.value),
               hintText: hint,
               withLabel: min,
             ),
@@ -212,7 +213,7 @@ class InputWrapper extends StatelessWidget {
           NamedInputType.currencySelector => BaseCurrencySelector(
               key: key,
               value: value,
-              setState: (BaseListSelectorItem v) => onChange?.call(v.item),
+              setState: (v) => onChange?.call((v as BaseListSelectorItem?)?.item),
               withLabel: min,
               tooltip: title,
               hintText: title,
@@ -220,7 +221,7 @@ class InputWrapper extends StatelessWidget {
           NamedInputType.currencyShort => CodeCurrencySelector(
               key: key,
               value: value,
-              setState: (CodeCurrencySelectorItem v) => onChange?.call(v.item),
+              setState: (v) => onChange?.call((v as CodeCurrencySelectorItem?)?.item),
               withLabel: min,
               tooltip: title,
               hintText: title,
@@ -239,22 +240,22 @@ class InputWrapper extends StatelessWidget {
             ),
           NamedInputType.accountSelector => ListAccountSelector(
               key: key,
-              value: value,
+              value: value != null ? ListAccountSelectorItem(item: value) : null,
               hintText: hint,
               tooltip: tooltip,
               state: state!,
-              setState: (ListAccountSelectorItem v) => onChange?.call(v.item),
+              setState: (v) => onChange?.call((v as ListAccountSelectorItem?)?.item),
               width: width!,
               withLabel: min,
               options: options?.cast() ?? [],
             ),
           NamedInputType.budgetSelector => ListBudgetSelector(
               key: key,
-              value: value,
+              value: value != null ? ListBudgetSelectorItem(item: value) : null,
               hintText: hint,
               tooltip: tooltip,
               state: state!,
-              setState: (ListBudgetSelectorItem v) => onChange?.call(v.item),
+              setState: (v) => onChange?.call((v as ListBudgetSelectorItem?)?.item),
               width: width!,
               withLabel: min,
             ),

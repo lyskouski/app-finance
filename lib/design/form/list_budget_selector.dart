@@ -28,7 +28,7 @@ class ListBudgetSelectorItem extends ListAccountSelectorItem {
   }
 
   ListBudgetSelectorItem({
-    required BudgetAppData item,
+    required BudgetAppData? item,
   }) : super(item: item);
 }
 

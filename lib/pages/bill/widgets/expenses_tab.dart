@@ -171,16 +171,16 @@ class ExpensesTabState<T extends ExpensesTab> extends State<T> {
             InputWrapper(
               type: NamedInputType.accountSelector,
               isRequired: true,
-              value: account,
+              value: account != null ? widget.state.getByUuid(account!) : null,
               title: AppLocale.labels.account,
               tooltip: AppLocale.labels.titleAccountTooltip,
               showError: hasErrors && account == null,
               state: widget.state,
               options: accountList,
               onChange: (value) => setState(() {
-                account = value;
-                if (account != null) {
-                  accountCurrency = widget.state.getByUuid(account!).currency;
+                account = value?.uuid;
+                if (value != null) {
+                  accountCurrency = value.currency;
                   currency = accountCurrency;
                 }
               }),
@@ -189,15 +189,15 @@ class ExpensesTabState<T extends ExpensesTab> extends State<T> {
             InputWrapper(
               type: NamedInputType.budgetSelector,
               isRequired: true,
-              value: budget,
+              value: budget != null ? widget.state.getByUuid(budget!) : null,
               title: AppLocale.labels.budget,
               showError: hasErrors && budget == null,
               tooltip: AppLocale.labels.titleBudgetTooltip,
               state: widget.state,
               onChange: (value) => setState(() {
-                budget = value;
-                if (budget != null) {
-                  budgetCurrency = widget.state.getByUuid(budget!).currency;
+                budget = value?.uuid;
+                if (value != null) {
+                  budgetCurrency = value.currency;
                   currency ??= budgetCurrency;
                 }
               }),

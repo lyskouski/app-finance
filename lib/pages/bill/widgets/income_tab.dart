@@ -152,15 +152,15 @@ class IncomeTabState<T extends IncomeTab> extends State<IncomeTab> {
             InputWrapper(
               type: NamedInputType.accountSelector,
               isRequired: true,
-              value: account,
+              value: account != null ? widget.state.getByUuid(account!) : null,
               title: AppLocale.labels.account,
               tooltip: AppLocale.labels.titleAccountTooltip,
               showError: hasErrors && account == null,
               state: widget.state,
               onChange: (value) => setState(() {
-                account = value;
-                if (account != null) {
-                  currency = widget.state.getByUuid(account!).currency;
+                account = value?.uuid;
+                if (value != null) {
+                  currency = value.currency;
                   accountCurrency = currency;
                 }
               }),

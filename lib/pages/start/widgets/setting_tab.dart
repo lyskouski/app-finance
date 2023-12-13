@@ -154,7 +154,7 @@ class SettingTabState<T extends SettingTab> extends AbstractTabState<T> {
             value: ListSelectorItem(id: AppLocale.code, name: ''),
             hintText: AppLocale.labels.language,
             options: languages,
-            setState: saveLocale,
+            setState: (v) => saveLocale(v?.id ?? AppLocale.code),
           ),
           ThemeHelper.hIndent2x,
           InputWrapper.currency(
@@ -194,7 +194,7 @@ class SettingTabState<T extends SettingTab> extends AbstractTabState<T> {
               ListSelectorItem(id: '1', name: AppLocale.labels.lightMode),
               ListSelectorItem(id: '2', name: AppLocale.labels.darkMode),
             ],
-            setState: saveTheme,
+            setState: (v) => saveTheme(v?.id ?? '0'),
           ),
           ThemeHelper.hIndent2x,
           Text(
@@ -209,7 +209,7 @@ class SettingTabState<T extends SettingTab> extends AbstractTabState<T> {
               ListSelectorItem(id: AppColors.colorSystem, name: AppLocale.labels.colorSystem),
               ListSelectorItem(id: AppColors.colorUser, name: AppLocale.labels.colorUser),
             ],
-            setState: saveColor,
+            setState: (v) => saveColor(v?.id ?? AppColors.colorApp),
           ),
           ThemeHelper.hIndent2x,
           if (colorMode == AppColors.colorUser) ...[

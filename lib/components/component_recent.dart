@@ -150,7 +150,7 @@ class ComponentRecentFormState extends State<ComponentRecentForm> {
             ThemeHelper.hIndent3x,
             ListSelector<ListSelectorItem>(
               setState: (value) {
-                setState(() => _option = value);
+                setState(() => _option = value?.id);
                 widget.adjust(widget.data[componentData.order], {...widget.data, ComponentRecent.type: value});
               },
               hintText: AppLocale.labels.cmpRecent,

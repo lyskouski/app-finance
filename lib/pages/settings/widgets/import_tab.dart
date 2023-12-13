@@ -158,8 +158,8 @@ class ImportTabState extends State<ImportTab> {
                         value: ListSelectorItem(id: columnMap[index], name: ''),
                         hintText: AppLocale.labels.columnMapTooltip(fileContent!.first[index]),
                         setState: (value) => setState(() {
-                          columnMap[index] = value;
-                          if (value == FileParser.attrBillDate) {
+                          columnMap[index] = value?.id ?? '';
+                          if (columnMap[index] == FileParser.attrBillDate) {
                             dateFormat.text =
                                 DateFormatHelper().detectFormat([fileContent!.last[index]], AppLocale.code);
                           }
@@ -175,8 +175,8 @@ class ImportTabState extends State<ImportTab> {
                     type: NamedInputType.accountSelector,
                     title: AppLocale.labels.def('${AppLocale.labels.account}: ${AppLocale.labels.title}'),
                     tooltip: AppLocale.labels.titleAccountTooltip,
-                    value: attrValue[FileParser.attrAccountName],
-                    onChange: (value) => setState(() => attrValue[FileParser.attrAccountName] = value),
+                    value: state.getByUuid(attrValue[FileParser.attrAccountName] ?? ''),
+                    onChange: (value) => setState(() => attrValue[FileParser.attrAccountName] = value?.id),
                     width: width,
                     state: state,
                   ),
@@ -187,8 +187,8 @@ class ImportTabState extends State<ImportTab> {
                     type: NamedInputType.budgetSelector,
                     title: AppLocale.labels.def('${AppLocale.labels.budget}: ${AppLocale.labels.title}'),
                     tooltip: AppLocale.labels.titleBudgetTooltip,
-                    value: attrValue[FileParser.attrCategoryName],
-                    onChange: (value) => setState(() => attrValue[FileParser.attrCategoryName] = value),
+                    value: state.getByUuid(attrValue[FileParser.attrCategoryName] ?? ''),
+                    onChange: (value) => setState(() => attrValue[FileParser.attrCategoryName] = value?.id),
                     width: width,
                     state: state,
                   ),
@@ -208,7 +208,7 @@ class ImportTabState extends State<ImportTab> {
                       ListSelectorItem(id: AppLocale.labels.bill, name: AppLocale.labels.bill),
                       ListSelectorItem(id: AppLocale.labels.flowTypeInvoice, name: AppLocale.labels.flowTypeInvoice),
                     ],
-                    setState: (value) => setState(() => attrValue[FileParser.attrBillType] = value),
+                    setState: (value) => setState(() => attrValue[FileParser.attrBillType] = value?.id),
                   ),
                 ],
                 if (!columnMap.contains(FileParser.attrBillCurrency)) ...[
@@ -219,7 +219,7 @@ class ImportTabState extends State<ImportTab> {
                   ),
                   BaseCurrencySelector(
                     value: CurrencyProvider.find(attrValue[FileParser.attrBillCurrency]),
-                    setState: (value) => setState(() => attrValue[FileParser.attrBillCurrency] = value.code),
+                    setState: (value) => setState(() => attrValue[FileParser.attrBillCurrency] = value?.id),
                   ),
                 ],
                 Column(crossAxisAlignment: CrossAxisAlignment.start, children: [

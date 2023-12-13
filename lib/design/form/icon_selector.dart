@@ -29,7 +29,7 @@ class IconSelectorItem extends ListSelectorItem {
       );
 
   @override
-  bool equal(val) => value == val;
+  bool equal(val) => value.toString() == val.toString();
 
   IconSelectorItem(this.value, {required super.name}) : super(id: value.toString());
 }
@@ -38,12 +38,11 @@ class IconSelector extends ListSelector<IconSelectorItem> {
   IconSelector({
     super.key,
     required super.setState,
-    IconData? value,
+    super.value,
     super.withLabel,
     super.options = const [],
     String? hintText,
   }) : super(
-          value: value != null ? IconSelectorItem(value, name: '') : null,
           hintText: hintText ?? AppLocale.labels.iconTooltip,
           tooltip: AppLocale.labels.iconTooltip,
         );

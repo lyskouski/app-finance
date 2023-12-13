@@ -13,10 +13,12 @@ import 'package:app_finance/design/wrapper/tap_widget.dart';
 import 'package:app_finance/design/wrapper/text_wrapper.dart';
 import 'package:flutter/material.dart';
 
+typedef FnState = Function(ListSelectorItem? value);
+
 class ListSelector<K extends ListSelectorItem> extends StatefulWidget {
   final List<K> options;
   final K? value;
-  final Function setState;
+  final FnState setState;
   final String? hintText;
   final String? tooltip;
   final TextStyle? hintStyle;

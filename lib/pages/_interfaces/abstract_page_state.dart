@@ -272,8 +272,7 @@ abstract class AbstractPageState<T extends StatefulWidget> extends State<T> {
             final isBottom = display.isBottom && !display.isRight;
             final hasKeyboard = ThemeHelper.isKeyboardVisible(context, constraints);
             final height = constraints.maxHeight;
-            final blockHeight =
-                height / scale - (isBottom && !hasKeyboard ? ThemeHelper.barHeight + ThemeHelper.getIndent() : 0);
+            final blockHeight = height / scale - ThemeHelper.barHeight - ThemeHelper.getIndent();
             double width = constraints.maxWidth / scale;
             Widget? rightBar;
             Widget? leftBar;
