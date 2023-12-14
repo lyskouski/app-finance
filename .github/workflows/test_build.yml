@@ -1,0 +1,36 @@
+name: Test Project Release Artifacts
+
+on:
+  pull_request:
+
+jobs:
+# Linux Flatpak
+  build-flatpak:
+    name: Create Linux Flatpak build
+    runs-on: ubuntu-latest
+    container:
+      image: bilelmoussaoui/flatpak-github-actions:gnome-45
+      options: --privileged
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Patch Manifest
+        run: |
+          ASSET_URL="https://github.com/lyskouski/app-finance/releases/download/v5.1.6/fingrom_Linux.tar.gz"
+          curl -vLJO -H 'Accept: application/octet-stream' $ASSET_URL
+          sh patch.sh -i dde6a95f4f7b88fa82f8adfa7909ebd0365b43db -v "5.1.6" -s $(sha256sum fingrom_Linux.tar.gz | gawk '{ print $1 }')
+          sudo chown $(whoami) fingrom_Linux.tar.gz
+        working-directory: linux-flatpak
+
+      - name: Build Linux Flatpak
+        uses: bilelmoussaoui/flatpak-github-actions/flatpak-builder@v6
+        with:
+          bundle: fingrom_LinuxFlatpak.flatpak
+          manifest-path: linux-flatpak/com.tercad.fingrom.yml
+
+      - name: Store Configs for github.com/flathub
+        uses: actions/upload-artifact@v3
+        with:
+          name: flatpak-configs
+          path: linux-flatpak
+
