@@ -231,6 +231,7 @@ class ExpensesTabState<T extends ExpensesTab> extends State<T> {
               ],
             ),
             CurrencyExchangeInput(
+              key: ValueKey('expense${currency?.code}${accountCurrency?.code}${budgetCurrency?.code}'),
               width: width + indent,
               indent: indent,
               target: currency,
