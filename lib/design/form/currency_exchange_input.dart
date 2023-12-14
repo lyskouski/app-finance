@@ -47,9 +47,11 @@ class CurrencyExchangeInputState extends State<CurrencyExchangeInput> {
     widget.controller.restate(source, target);
   }
 
+  String _convert(List<Currency?> val) => val.map((e) => e?.code ?? '-').join('');
+
   @override
   Widget build(BuildContext context) {
-    if (target != widget.target || source != widget.source) {
+    if (target?.code != widget.target?.code || _convert(source) != _convert(widget.source)) {
       WidgetsBinding.instance.addPostFrameCallback((_) => setState(_update));
       return ThemeHelper.emptyBox;
     }
@@ -60,7 +62,7 @@ class CurrencyExchangeInputState extends State<CurrencyExchangeInput> {
     return Column(
       children: List<Widget>.generate(widget.source.length, (index) {
         final scope = widget.controller.get(index);
-        if (widget.source[index] == null || scope.from == scope.to) {
+        if (source[index] == null || scope.from == scope.to) {
           return ThemeHelper.emptyBox;
         }
         return Column(
