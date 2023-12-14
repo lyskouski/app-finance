@@ -201,7 +201,7 @@ void main() {
 \end{lstlisting}
 
 \noindent Here we are, by \q{tap} and \q{expect} the flow of the whole application can be checked. Such type of tests 
-are named as Widget tests that's emphasized by specially named \q{testWidgets}-function.
+is called as Widget tests that's emphasized by specially named \q{testWidgets}-function.
 
 Initially, it would be better to concentrate mostly on Business Logic check (by unit tests) than on a draft state of 
 our pages and their flow. Nonetheless, the current one will check that the application can be started without errors, 
@@ -310,7 +310,7 @@ $ dart run grinder test
   00:01 +7: All tests passed!
 \end{lstlisting}
 
-\noindent The first test with mocks is passing, but not actually evaluate the original method as we might assume, 
+\noindent The first test with mocks passed, but not actually evaluated the original method as we might assume, 
 everything is mocked! To achieve a capability of a partial mocking we would need to implement a wrapper around the 
 original class. By using \q{mockGetDelta}-method it would be possible to override (mock) behavior of any method. 
 

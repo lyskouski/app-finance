@@ -397,7 +397,7 @@ class KeepAliveWrapperState extends State<KeepAliveWrapper>
 
 \subsubsection{Separating Context}
 
-\noindent While the main page is ready, let's discuss a routing in Flutter \issue{14}{}:
+\noindent While the main page is ready, let's discuss routing in Flutter \issue{14}{}:
 
 \begin{lstlisting}
 // ./lib/routes.dart
@@ -597,7 +597,7 @@ class MyDrawer extends StatelessWidget {
 Going further, the defined setter in our fake data storage (\cref{code:app-data}) would help to implement 
 \q{Add} and \q{Edit} forms \issue{16}{bed81f5} (\cref{img:proto-form}). Flutter provides a set of widgets to display all 
 basic inputs as \q{TextFormField} (for input), \q{DropdownButton} / \q{DropdownMenuItem} and \q{SearchAnchor} (for 
-selector), \q{Switch} (toggler), and others. Additionally, it can be used Package Manager (\q{pub}) to apply additional
+selector), \q{Switch} (toggler), and others. Additionally, Package Manager (\q{pub}) can be used to apply additional
 components, as \q{Icon}-picker (\q{flutter\_iconpicker}-package), \q{Color}-selector (\q{flutter\_colorpicker}-package),
 and others. However, after combining dozens of different widgets from various libraries, we might encounter a stylistic 
 inconsistency between these widgets (term, "UX Hell") and end up having to make compromises or even replace some of them
@@ -661,8 +661,8 @@ TextFormField(
 \noindent And, for the case of forbidding everything, we may use the boolean \q{readOnly}-property. 
 
 It's important to mention that the changes in the field's value are managed and monitored through \q{TextEditingController}. 
-That component allows bidirectional communication with text input widgets. It not only enables retrieving the current 
-value of a text field but also provides a capability to programmatically change the content (whether a real-time 
+That component allows bidirectional communication with text input widgets. It does not only enable retrieving the 
+current value of a text field but also provides a capability to programmatically change the content (whether a real-time 
 validation, or respond to user inputs):
 
 \begin{lstlisting}
@@ -705,8 +705,8 @@ class CurrencySelector extends StatelessWidget {
 state changes and the \q{CurrencySelector} is rebuilt, the \q{TextFormField} will receive a new key based on the updated 
 value, -- force the \q{TextFormField} to re-render.
 
-For the \q{Color}-picker it might be added a tiny improvement as a color preset (randomly taken 
-via \q{Color.getRandomMaterialColor()}-call):
+For the \q{Color}-picker might be added a tiny improvement as a color preset (randomly taken via 
+\q{Color.getRandomMaterialColor()}-call):
 
 \begin{lstlisting}
 // ./lib/_ext/color_ext.dart

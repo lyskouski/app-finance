@@ -73,7 +73,7 @@ class MyApp extends StatelessWidget {
           ),
 \end{lstlisting}
 
-\noindent It's a time to combine both solutions into one:
+\noindent It's time to combine both solutions into one:
 
 \begin{lstlisting}
 class MyApp extends StatelessWidget with TickerProviderStateMixin {
@@ -182,9 +182,8 @@ void switchTab(int newIndex) {
 }
 \end{lstlisting}
 
-\noindent As we might be thinking, this solution might seem overly complex for the seemingly simple task of supporting 
-both swiping and tapping for tabs. And we would be right in our doubts, the whole implementation can be replaced by 
-\q{TabBarView}-widget:
+\noindent This solution might seem overly complex for the seemingly simple task of supporting both swiping and tapping 
+for tabs. And we would be right in our doubts, the whole implementation can be replaced by \q{TabBarView}-widget:
 
 \begin{lstlisting}
 Column(
