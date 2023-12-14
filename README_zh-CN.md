@@ -134,6 +134,6 @@ gantt
 <a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-nd/4.0/88x31.png" /></a><br />本作品采用以下许可协议进行许可 <a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/4.0/">Creative Commons Attribution-NonCommercial-NoDerivs 4.0 Unported License</a>:
 
 - **署名**：提供许可证链接，并说明是否进行了修改
-- **非商业**：不得用于商业目的
+- **非商业**：不能作为商业解决方案的一部分使用
 - **禁止衍生**：任何修改（混音、转换或在材料基础上构建）均不得自行发布。将其推回主资源库 ( https://github.com/lyskouski/app-finance )，
   以解除对所做修改的发布限制。

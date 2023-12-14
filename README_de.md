@@ -136,7 +136,7 @@ Die hierin enthaltenen Inhalte sind alle &copy; 2023 **terCAD** Team (Viachaslau
 
 <a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-nd/4.0/88x31.png" /></a><br />Dieses Werk ist lizenziert unter einer <a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/4.0/">Creative Commons Attribution-NonCommercial-NoDerivs 4.0 Unported License</a>:
 - **Attribution**: Geben Sie einen Link zur Lizenz an, und geben Sie an, ob Änderungen vorgenommen wurden
-- **NonCommercial**: darf nicht für kommerzielle Zwecke verwendet werden
+- **NonCommercial**: kann nicht als Teil einer kommerziellen Lösung verwendet werden
 - **NoDerivatives**: Jede Modifikation (Remix, Transformation oder Aufbau auf dem Material) darf nicht selbst 
   weitergegeben werden. Pushen Sie es zurück in das Hauptrepository (https://github.com/lyskouski/app-finance), um die 
   Verteilung für vorgenommene Änderungen freizugeben.
