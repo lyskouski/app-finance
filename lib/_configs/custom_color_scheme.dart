@@ -132,11 +132,8 @@ extension CustomTimePickerTheme on TimePickerThemeData {
     if (paletteType == AppColors.colorSystem) {
       return null;
     }
-    final palette = AppColors(paletteType, brightness).palette;
     return copyWith(
       shape: Border.all(width: 0.2),
-      backgroundColor: palette.onSecondary,
-      dialBackgroundColor: palette.onSecondary,
       hourMinuteTextStyle: text?.numberLarge,
     );
   }
@@ -148,9 +145,17 @@ extension CustomDatePickerThemeData on DatePickerThemeData {
       return null;
     }
     final palette = AppColors(paletteType, brightness).palette;
+    final txtStyle = TextStyle(color: palette.secondary);
     return copyWith(
       shape: Border.all(width: 0.2),
-      backgroundColor: palette.onSecondary,
+      inputDecorationTheme: InputDecorationTheme(
+        labelStyle: txtStyle,
+        fillColor: palette.onSecondaryContainer,
+        counterStyle: txtStyle,
+      ),
+      rangePickerHeaderHelpStyle: txtStyle,
+      rangePickerHeaderHeadlineStyle: txtStyle,
+      rangePickerBackgroundColor: palette.primary,
       dayStyle: text?.numberMedium,
       yearStyle: text?.numberMedium,
     );
