@@ -210,6 +210,7 @@ class TransferTabState<T extends TransferTab> extends State<T> {
               ],
             ),
             CurrencyExchangeInput(
+              key: ValueKey('transfer${currency?.code}${accountFromCurrency?.code}${accountToCurrency?.code}'),
               width: width + indent,
               indent: indent,
               target: currency,

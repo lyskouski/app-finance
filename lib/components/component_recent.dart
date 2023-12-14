@@ -151,7 +151,7 @@ class ComponentRecentFormState extends State<ComponentRecentForm> {
             ListSelector<ListSelectorItem>(
               setState: (value) {
                 setState(() => _option = value?.id);
-                widget.adjust(widget.data[componentData.order], {...widget.data, ComponentRecent.type: value});
+                widget.adjust(widget.data[componentData.order], {...widget.data, ComponentRecent.type: value?.id});
               },
               hintText: AppLocale.labels.cmpRecent,
               value: _option != null ? ListSelectorItem(id: _option!, name: '') : null,

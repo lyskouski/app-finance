@@ -49,11 +49,11 @@ class CurrencyExchangeInputState extends State<CurrencyExchangeInput> {
 
   @override
   Widget build(BuildContext context) {
-    if (widget.source.isEmpty) {
-      return ThemeHelper.emptyBox;
-    }
     if (target != widget.target || source != widget.source) {
       WidgetsBinding.instance.addPostFrameCallback((_) => setState(_update));
+      return ThemeHelper.emptyBox;
+    }
+    if (target == null || source.isEmpty || source.where((v) => v != null).isEmpty) {
       return ThemeHelper.emptyBox;
     }
     final TextTheme textTheme = context.textTheme;

@@ -5,9 +5,9 @@
 \subsection{Assessing of Ignorance} \label{ut-fail}
 \markboth{Gating}{Assessing of Ignorance}
 
-Initially we've declared importance of having tests and ecosystem for their automation but there were not written any 
-valuable amount of them (10\% coverage, \ref{a-badges}). That was done to show a consequence of such a decision -- not 
-to write tests. So, let's measure made mistakes during our Increment (four Iterations, two weeks each):
+Initially, we emphasized the significance of having tests and an ecosystem for their automation. However, it was not 
+written any to validate the repercussions of neglecting them. Let's assess the errors made during our Increment (four 
+Iterations, two weeks each):
 
 \begin{lstlisting}[language=terminal]
 git log --format="%ad %s" --grep="\[BF\]" --date=iso | awk -F ' ' '{print $1}' | sort | uniq -c
@@ -33,7 +33,7 @@ extracts the date part from each line and delegate sorting to \q{sort}-command b
   \caption{Counting made mistakes per each Iteration}\label{graph:errors}
 \end{figure}
 
-In the resulting \cref{graph:errors}, the data is presented as follows:
+\noindent In the resulting \cref{graph:errors}, the data is presented as follows:
 \q{Time} -- indicates the number of hours that were allocated to resolving identified issues during an Iteration (as a 
 note, the total allocated time per iteration was 28 hours);
 \q{Bug} -- represents the number of identified bugs within the project;
@@ -55,6 +55,8 @@ outcomes, a widely adopted strategy involves instigating a technical iteration, 
 at the close of a calendar year, for dedicated bug-related work. As a testament to robust processes, the fundamental 
 principle of quality permeates all stages and serves as a cultural cornerstone. Non-functional requirements, serving 
 as a tool to ensure quality throughout every phase, can find a practical application here \cite{Sam17}, \cite{Suz12}. 
+The strength of a system is determined by the resilience of its most vulnerable component. That's why we should always 
+bet on tests automation, it won't be regretted.
 
 Test-Driven Development approach is known from 1999 year as Extreme Programming flow, but for unknown reasons 
 not widely spread. Argumentation that "we do not have a time to write tests" is the same as "we won't use a car since 

@@ -194,6 +194,7 @@ class IncomeTabState<T extends IncomeTab> extends State<IncomeTab> {
               ],
             ),
             CurrencyExchangeInput(
+              key: ValueKey('income${currency?.code}${accountCurrency?.code}'),
               width: width + indent,
               indent: indent,
               target: currency,

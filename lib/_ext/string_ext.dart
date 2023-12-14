@@ -48,9 +48,7 @@ extension MapExt on String {
     return result;
   }
 
-  T toEnum<T>(List<T> values) {
-    return values.firstWhere((e) => e.toString() == this);
-  }
+  T toEnum<T>(List<T> values) => values.firstWhere((e) => e.toString() == this);
 
   int toInt() => int.parse(this);
 }

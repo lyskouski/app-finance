@@ -46,13 +46,13 @@ int counter = 123; // counter.toDouble() => 123.0
 double pi = 3.141592; // pi.clamp(0, 3) => 3.0
 bool isVisible = true; // true.toString() => 'true'
 String text = 'Some content'; // text.codeUnits // List<int>
-dynamic tmp = 1; tmp = 'test'; tmp = false; // ...
+dynamic tmp = 1; tmp = 'test'; tmp = false; // Changeable type
 // 'StringBuffer' as a way to construct strings sequentially
-final spread = StringBuffer();
+var spread = StringBuffer(); // Postponed type set. Err: spread='';
 spread.write('some text...'); // concatenate
-spread.writeln('... another content'); // add indentation at the end
+spread.writeln('... another content'); // add line break at the end
 // But long text can be also broken and implicitly spliced back
-String test = 'some long text...'
+final String test = 'some long text...'
   '...continuation';
 // Convert other types to String by interpolation (via '$' sign)
 String sample = '$counter $isVisible';
