@@ -9,10 +9,10 @@ import 'package:app_finance/_classes/storage/app_data.dart';
 import 'package:app_finance/_configs/theme_helper.dart';
 import 'package:app_finance/_ext/build_context_ext.dart';
 import 'package:app_finance/charts/trade_chart.dart';
+import 'package:app_finance/design/wrapper/single_scroll_wrapper.dart';
 import 'package:app_finance/pages/_interfaces/abstract_page_state.dart';
 import 'package:app_finance/design/generic/notification_bar.dart';
 import 'package:app_finance/design/form/simple_input.dart';
-import 'package:app_finance/design/wrapper/focus_wrapper.dart';
 import 'package:app_finance/design/wrapper/row_widget.dart';
 import 'package:flutter/material.dart';
 
@@ -74,7 +74,11 @@ class CurrencyPageState extends AbstractPageState<CurrencyPage> {
       WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {
             var tmp = state
                 .getList(AppDataType.currencies)
-                .where((v) => v.currencyFrom != null && v.currency != null && v.currency.code != v.currencyFrom.code)
+                .where((v) =>
+                    v.currencyFrom != null &&
+                    v.currency != null &&
+                    v.currency.code != v.currencyFrom.code &&
+                    v.details != 1.0)
                 .toList();
             tmp.sort((a, b) => a.currencyFrom.code.toString().compareTo(b.currencyFrom.code));
             scope = tmp;
@@ -82,7 +86,7 @@ class CurrencyPageState extends AbstractPageState<CurrencyPage> {
       return ThemeHelper.emptyBox;
     }
     final crossAxisCount = ThemeHelper.getWidthCount(null, context);
-    return FocusWrapper(
+    return SingleScrollWrapper(
       controller: focus,
       child: Padding(
         padding: EdgeInsets.all(indent),
