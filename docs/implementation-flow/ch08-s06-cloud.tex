@@ -31,13 +31,13 @@ jobs:
         AWS_S3_BUCKET: ${{ secrets.AWS_S3_BUCKET }}
 
     - name: Compile
-      run: flutter build -v web --release --no-tree-shake-icons
+      run: flutter build -v web --release
 
     - name: Deploy
       run: aws s3 sync ./build/web s3://${{ secrets.AWS_S3_BUCKET }} --delete
 \end{lstlisting}
 
-\noindent With a configured DNS record with the provided \q{AWS S3}-URL, alike:
+\noindent Upon configuring a DNS record with the provided \q{AWS S3}-URL, resembling the following:
 
 \begin{lstlisting}[language=terminal]
 [Type]	 [Host]        [Value]

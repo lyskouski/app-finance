@@ -158,6 +158,18 @@ $ flatpak run com.tercad.fingrom
 (\href{https://docs.flatpak.org/en/latest/manifests.html}{https://docs.flatpak.org/en/latest/manifests.html}).
 
 
-\subsubsection{[TBD] Linux AppImage}
+\subsubsection{Linux AppImage}
 
-...
+AppImage serves as a platform-independent format for distributing software applications, distinguishing itself from 
+traditional package management systems by eliminating the need for installation. Users can effortlessly download the 
+\q{AppImage}-file, designate it as executable, and initiate it.
+
+The process of crafting an AppImage is overseen by a YAML file, and a sample YAML file can be referenced at 
+\href{https://appimage-builder.readthedocs.io}{https://appimage-builder.readthedocs.io}.
+
+\begin{lstlisting}[language=terminal]
+# Generate configuration file
+$ appimage-builder --generate
+# Pack application
+$ appimage-builder --recipe AppImageBuilder.yml
+\end{lstlisting}
