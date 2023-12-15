@@ -50,6 +50,7 @@ void main() {
     await tester.sendKeyDownEvent(LogicalKeyboardKey.control);
     await tester.sendKeyEvent(LogicalKeyboardKey.keyN);
     await tester.sendKeyUpEvent(LogicalKeyboardKey.control);
+    await tester.pumpAndSettle();
     await tester.pumpAndSettle(const Duration(seconds: 1));
     ScreenCapture.seize('AccessibilityFormOpen');
     expect(find.text('Create new Transaction'), findsOneWidget);
