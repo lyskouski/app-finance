@@ -63,3 +63,47 @@ mindmap
       [Complete]
         Show that the goal is completed 
 ```
+
+## User Flows
+
+A user flow encompasses any conceivable path a customer might traverse within a website or application. Additionally, 
+the term "user flow" can extend to denote a visualization or map illustrating this journey, often referred to as a 
+flowchart or UX flow.
+
+### Add new Bill
+```mermaid
+flowchart LR
+    a[Open App] --> 
+    b[Tap on Add New] -->
+    b1[Select Account] -->
+    b2[Select Budget Category] -->
+    c[Enter Amount] -->
+    d[Enter Description] -->
+    e[Tap Save] -->
+    z[Close App]
+
+    b --> c
+    b1 --> c
+    c --> e
+```
+
+### Add new Budget Category
+```mermaid
+flowchart LR
+    a[Open App] --> 
+    b[Tap on Menu] -->
+    c[Tap on Budgets] -->
+    d[Tap on Add New] -->
+    e[Enter Category Name] -->
+    f[Enter Limit > 1] -->
+    g[Tap Save] -->
+    z[Close App]
+
+    f1[Enter Limit > 0 .. < 1]
+
+    a --> c
+    a --> d
+    e --> g
+    e --> f1
+    f1 --> g
+```
