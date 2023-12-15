@@ -15,7 +15,8 @@ reputation. So, a financial institution or application that demonstrates strong 
 competitive advantage.
 
 To achieve information security, applications must implement robust cybersecurity measures, including encryption, 
-access controls, and regular security audits.
+access controls, and regular security audits. Ensuring the app security is a continuous endeavor that requires a 
+proactive approach.
 
 
 \subsubsection{Storing API keys}
@@ -36,6 +37,16 @@ flutter build --dart-define==KEY=SECRET \
 
 \begin{lstlisting}
 String? apiKey = String.fromEnvironment('KEY', defaultValue: null);
+\end{lstlisting}
+
+\noindent For handling dynamic values, consider employing the \q{flutter\_secure\_storage}-package to securely store 
+sensitive data through encrypted shared preferences (\emph{Keychain for iOS and macOS, AES encryption for Android and 
+Windows, libsecret for Linux, and WebCrypto for Web}):
+
+\begin{lstlisting}
+final storage = new FlutterSecureStorage();
+await storage.write(key: key, value: value);
+String value = await storage.read(key: key);
 \end{lstlisting}
 
 
