@@ -668,7 +668,6 @@ class OnDefinedPage extends Given1<String> {
     // ... test step implementation
   }
 }(*@ \stopnumber @*)
-
 // ... other classes implementation: 
 // TapDefinedButton, TapDefinedHeader, CanSeeDefinedComponent
 \end{lstlisting}
@@ -718,15 +717,14 @@ Shell:    V Given Opened Account Form # :4 took 584ms
 only upon failure. We can override the behavior of the \q{printMessageLine} and \q{printMessage}-functions using a 
 \q{StringBuffer}-object to control the flow.
 
-\begin{lstlisting}[language=terminal]
-# Success
-Shell: Running scenario: Creating different Account types Examples: (1) # :3
-Shell:    V Given Opened Account Form # :4 took 524ms
-\end{lstlisting}
 \newpage
 \begin{lstlisting}[language=terminal]
+# Success
+Shell: Running scenario: Creating different Account types Examples
+Shell:    V Given Opened Account Form # :4 took 524ms
+
 # Failure
-Shell: Running scenario: Creating different Account types Examples: (1) # :3
+Shell: Running scenario: Creating different Account types Examples
 Shell: Running scenario: Opened Account Form # :4
 Shell:    V Given I am on "Home" page # :5 took 261ms
 Shell:    V When I tap "Accounts, total" header # :6 took 65ms

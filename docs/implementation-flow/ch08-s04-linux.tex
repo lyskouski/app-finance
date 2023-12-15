@@ -164,12 +164,12 @@ AppImage serves as a platform-independent format for distributing software appli
 traditional package management systems by eliminating the need for installation. Users can effortlessly download the 
 \q{AppImage}-file, designate it as executable, and initiate it.
 
-The process of crafting an AppImage is overseen by a YAML file, and a sample YAML file can be referenced at 
+The process of crafting an AppImage is overseen by a \q{.yml}-file (YAML), and a sample can be referenced at 
 \href{https://appimage-builder.readthedocs.io}{https://appimage-builder.readthedocs.io}.
 
 \begin{lstlisting}[language=terminal]
 # Generate configuration file
-$ appimage-builder --generate
+$ appimage-builder --generate .
 # Pack application
 $ appimage-builder --recipe AppImageBuilder.yml
 \end{lstlisting}

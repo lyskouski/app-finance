@@ -119,7 +119,7 @@ importance of localization in collectivist regions. Neglecting localization in s
 churn rate.
 
 There is an unresolved issue in Flutter: not all locales are supported, even those listed as supported 
-(\href{https://api.flutter.dev/flutter/flutter\_localizations/GlobalMaterialLocalizations-class.html}{https://api.flutter.dev/flutter/flutter\_localizations/GlobalMaterialLocalizations-class.html}), 
+(\href{https://api.flutter.dev/flutter/flutter\_localizations/GlobalMaterialLocalizations-class.html}{GlobalMaterialLocalizations-class}), 
 such as Chinese [\q{ch}] (see \href{https://github.com/flutter/flutter/issues/138797}{https://github.com/flutter/flutter/issues/138797}). 
 To address this problem, a possible solution involves using a fallback delegate that returns true for any locale, 
 regardless of its support by the SDK:
@@ -133,7 +133,7 @@ class FallbackLocalizationDelegate extends LocalizationsDelegate<MaterialLocaliz
   Future<MaterialLocalizations> load(Locale locale) async => const DefaultMaterialLocalizations();
 
   @override
-  bool shouldReload(old) => false;
+  bool shouldReload(old) => false;(*@ \stopnumber @*)
 }
 
 // main.dart
