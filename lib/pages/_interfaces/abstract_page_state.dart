@@ -13,6 +13,7 @@ import 'package:app_finance/design/wrapper/input_controller_wrapper.dart';
 import 'package:app_finance/design/wrapper/row_widget.dart';
 import 'package:app_finance/design/wrapper/text_wrapper.dart';
 import 'package:app_finance/design/button/toolbar_button_widget.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_grid_layout/flutter_grid_layout.dart';
 import 'package:flutter_markdown/flutter_markdown.dart';
@@ -308,10 +309,12 @@ abstract class AbstractPageState<T extends StatefulWidget> extends State<T> {
                             child: buildButton(context, constraints),
                           ),
                         )
-                      : Container(
-                          margin: EdgeInsets.only(bottom: ThemeHelper.getIndent()),
-                          child: buildButton(context, constraints),
-                        )
+                      : defaultTargetPlatform == TargetPlatform.iOS
+                          ? buildButton(context, constraints)
+                          : Container(
+                              margin: EdgeInsets.only(bottom: ThemeHelper.getIndent()),
+                              child: buildButton(context, constraints),
+                            )
                   : buildButton(context, constraints),
               resizeToAvoidBottomInset: true,
               body: InputControllerWrapper(
