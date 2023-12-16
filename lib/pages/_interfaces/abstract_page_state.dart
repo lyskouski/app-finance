@@ -37,15 +37,10 @@ abstract class AbstractPageState<T extends StatefulWidget> extends State<T> {
   Widget? getBarLeading(NavigatorState nav) {
     return ToolbarButtonWidget(
       isWide: ScreenHelper.state().isWide,
-      child: IconButton(
-        hoverColor: Colors.transparent,
-        tooltip: AppLocale.labels.backTooltip,
-        onPressed: () => nav.pop(),
-        icon: const Icon(
-          Icons.arrow_back,
-          color: Colors.white70,
-        ),
-      ),
+      tooltip: AppLocale.labels.backTooltip,
+      onPressed: () => nav.pop(),
+      icon: Icons.arrow_back,
+      color: Colors.white70,
     );
   }
 
@@ -96,33 +91,23 @@ abstract class AbstractPageState<T extends StatefulWidget> extends State<T> {
       if (getHelperName() != null)
         ToolbarButtonWidget(
           isWide: isWide,
-          child: IconButton(
-            hoverColor: Colors.transparent,
-            tooltip: AppLocale.labels.helpTooltip,
-            onPressed: () => showModalBottomSheet(
-              context: context,
-              backgroundColor: context.colorScheme.background,
-              builder: buildHelper,
-            ),
-            icon: Icon(
-              Icons.contact_support_outlined,
-              color: Colors.white70,
-              semanticLabel: AppLocale.labels.helpTooltip,
-            ),
+          tooltip: AppLocale.labels.helpTooltip,
+          onPressed: () => showModalBottomSheet(
+            context: context,
+            backgroundColor: context.colorScheme.background,
+            builder: buildHelper,
           ),
+          icon: Icons.contact_support_outlined,
+          color: Colors.white70,
+          semanticLabel: AppLocale.labels.helpTooltip,
         ),
       if (!isWide)
         Builder(
           builder: (context) => ToolbarButtonWidget(
-            child: IconButton(
-              hoverColor: Colors.transparent,
-              icon: const Icon(
-                Icons.menu,
-                color: Colors.white70,
-              ),
-              tooltip: AppLocale.labels.navigationTooltip,
-              onPressed: () => Scaffold.of(context).openDrawer(),
-            ),
+            icon: Icons.menu,
+            color: Colors.white70,
+            tooltip: AppLocale.labels.navigationTooltip,
+            onPressed: () => Scaffold.of(context).openDrawer(),
           ),
         ),
     ];

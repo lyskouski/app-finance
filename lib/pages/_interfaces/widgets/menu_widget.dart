@@ -4,6 +4,7 @@
 import 'package:app_finance/_classes/structure/navigation/app_menu.dart';
 import 'package:app_finance/_classes/structure/navigation/app_menu_item.dart';
 import 'package:app_finance/_classes/structure/navigation/app_route.dart';
+import 'package:app_finance/_configs/screen_helper.dart';
 import 'package:app_finance/_ext/build_context_ext.dart';
 import 'package:app_finance/design/wrapper/text_wrapper.dart';
 import 'package:flutter/material.dart';
@@ -33,6 +34,7 @@ class MenuWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final isWide = ScreenHelper.state().isWide;
     final ColorScheme colorScheme = context.colorScheme;
     final TextTheme textTheme = context.textTheme;
     Color color = selectedIndex == index ? colorScheme.inversePrimary : colorScheme.secondary;
@@ -41,9 +43,9 @@ class MenuWidget extends StatelessWidget {
 
     return Focus(
       includeSemantics: true,
-      autofocus: selectedIndex == index,
+      autofocus: isWide ? false : selectedIndex == index,
       focusNode: FocusNode(),
-      onFocusChange: _onHover,
+      onFocusChange: isWide ? null : _onHover,
       child: Container(
         color: AppRoute.current == menu.route ? colorScheme.background : null,
         child: InkWell(
@@ -55,7 +57,7 @@ class MenuWidget extends StatelessWidget {
             setState();
             _navigateToPage(nav, menu.route);
           },
-          onHover: _onHover,
+          onHover: isWide ? null : _onHover,
           child: ListTile(
             leading: Icon(
               menu.icon,

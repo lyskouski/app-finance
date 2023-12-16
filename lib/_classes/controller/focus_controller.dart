@@ -5,6 +5,7 @@ import 'dart:collection';
 import 'dart:math';
 
 import 'package:app_finance/_classes/controller/delayed_call.dart';
+import 'package:app_finance/_configs/theme_helper.dart';
 import 'package:flutter/material.dart';
 
 class FocusController {
@@ -70,8 +71,8 @@ class FocusController {
     if (!_isControllerActive() || scope.isEmpty) {
       return;
     }
-    if (order.containsValue(idx) && scope[idx]?.context != null) {
-      double position = _getPosition(scope[idx]!.context!) - _getMinPosition() - 40;
+    if (order.containsValue(idx) && scope[idx] != null && scope[idx]!.context != null) {
+      double position = _getPosition(scope[idx]!.context!) - _getMinPosition() - ThemeHelper.barHeight;
       if (position < 0) {
         position = 0;
       }
@@ -108,11 +109,14 @@ class FocusController {
   void _blur() => scope.forEach((_, value) => value.unfocus());
 
   void onFocus(dynamic item, [int? idx, bool isForced = true]) {
-    idx ??= key(item!);
+    if (item == null) {
+      return;
+    }
+    idx ??= key(item);
     focus = idx;
     _blur();
-    if ((order.containsValue(idx) || idx == idButton) && scope[idx]?.context != null) {
-      scope[idx]!.requestFocus();
+    if ((order.containsValue(idx) || idx == idButton) && scope[idx] != null && scope[idx]!.context != null) {
+      scope[idx]?.requestFocus();
       _scrollTo.run(() => scrollToFocusedElement(item, idx));
     }
     force = isForced;

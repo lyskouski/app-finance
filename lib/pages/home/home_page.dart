@@ -70,15 +70,10 @@ class HomePageState extends AbstractPageState<HomePage> {
     return Builder(
       builder: (BuildContext context) {
         return ToolbarButtonWidget(
-          child: IconButton(
-            hoverColor: Colors.transparent,
-            icon: const Icon(
-              Icons.menu,
-              color: Colors.white70,
-            ),
-            tooltip: AppLocale.labels.navigationTooltip,
-            onPressed: () => Scaffold.of(context).openDrawer(),
-          ),
+          icon: Icons.menu,
+          color: Colors.white70,
+          tooltip: AppLocale.labels.navigationTooltip,
+          onPressed: () => Scaffold.of(context).openDrawer(),
         );
       },
     );
@@ -90,26 +85,18 @@ class HomePageState extends AbstractPageState<HomePage> {
     return [
       ToolbarButtonWidget(
         isWide: isWide,
-        child: IconButton(
-          icon: const Icon(
-            Icons.app_registration_outlined,
-            color: Colors.white70,
-          ),
-          tooltip: AppLocale.labels.customizeTooltip,
-          onPressed: () => setState(() => isEditMode = true),
-        ),
+        icon: Icons.app_registration_outlined,
+        color: Colors.white70,
+        tooltip: AppLocale.labels.customizeTooltip,
+        onPressed: () => setState(() => isEditMode = true),
       ),
       if (![TargetPlatform.iOS, TargetPlatform.macOS, TargetPlatform.android].contains(defaultTargetPlatform))
         ToolbarButtonWidget(
           isWide: isWide,
-          child: IconButton(
-            icon: const Icon(
-              Icons.switch_access_shortcut_add_outlined,
-              color: Colors.white70,
-            ),
-            tooltip: AppLocale.labels.subscriptionTooltip,
-            onPressed: () => nav.pushNamed(AppRoute.subscriptionRoute),
-          ),
+          icon: Icons.switch_access_shortcut_add_outlined,
+          color: Colors.white70,
+          tooltip: AppLocale.labels.subscriptionTooltip,
+          onPressed: () => nav.pushNamed(AppRoute.subscriptionRoute),
         ),
     ];
   }

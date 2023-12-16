@@ -77,26 +77,16 @@ class HomeEditPageState extends State<HomeEditPage> {
         leading: Row(
           children: [
             ToolbarButtonWidget(
-              child: IconButton(
-                hoverColor: Colors.transparent,
-                icon: const Icon(
-                  Icons.save,
-                  color: Colors.white70,
-                ),
-                tooltip: AppLocale.labels.customSaveTooltip,
-                onPressed: save,
-              ),
+              icon: Icons.save,
+              color: Colors.white70,
+              tooltip: AppLocale.labels.customSaveTooltip,
+              onPressed: save,
             ),
             ToolbarButtonWidget(
-              child: IconButton(
-                hoverColor: Colors.transparent,
-                icon: const Icon(
-                  Icons.cancel,
-                  color: Colors.white70,
-                ),
-                tooltip: AppLocale.labels.customDeleteTooltip,
-                onPressed: () => ConfirmationWrapper.show(context, drop),
-              ),
+              icon: Icons.cancel,
+              color: Colors.white70,
+              tooltip: AppLocale.labels.customDeleteTooltip,
+              onPressed: () => ConfirmationWrapper.show(context, drop),
             ),
           ],
         ),

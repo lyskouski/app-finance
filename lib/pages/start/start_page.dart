@@ -54,16 +54,11 @@ class StartPageState extends AbstractPageState<StartPage> {
         if (barActions.isEmpty && currentStep > acknowledgeTaken) {
           barActions = [
             ToolbarButtonWidget(
-              child: IconButton(
-                hoverColor: Colors.transparent,
-                icon: const Icon(
-                  Icons.skip_next,
-                  color: Colors.white70,
-                ),
-                tooltip: AppLocale.labels.skipTooltip,
-                onPressed: () => nav.pushNamed(AppRoute.homeRoute),
-              ),
-            )
+              icon: Icons.skip_next,
+              color: Colors.white70,
+              tooltip: AppLocale.labels.skipTooltip,
+              onPressed: () => nav.pushNamed(AppRoute.homeRoute),
+            ),
           ];
         }
       });
