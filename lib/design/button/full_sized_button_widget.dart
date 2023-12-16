@@ -47,7 +47,7 @@ class FullSizedButtonWidget extends StatelessWidget {
           hoverColor: colorScheme.primary,
           focusColor: colorScheme.primary.withOpacity(0.8),
           tooltip: title,
-          focusNode: controller?.bind(this, context: context),
+          focusNode: controller?.last(this),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
