@@ -255,7 +255,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "/bin/sh \"$FLUTTER_ROOT/packages/flutter_tools/bin/xcode_backend.sh\" build; /bin/sh \"${PODS_ROOT}/FirebaseCrashlytics/run\"";
+			shellScript = "/bin/sh \"$FLUTTER_ROOT/packages/flutter_tools/bin/xcode_backend.sh\" build; ${PODS_ROOT}/FirebaseCrashlytics/run";
 		};
 /* End PBXShellScriptBuildPhase section */
 
