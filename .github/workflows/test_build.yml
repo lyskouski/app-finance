@@ -1,0 +1,309 @@
+name: Project Release Artifacts
+
+on:
+  pull_request:
+
+jobs:
+  release:
+    name: Create Release Page
+    runs-on: ubuntu-latest
+    outputs:
+      version: ${{ steps.tag.outputs.name }}
+      upload_url: ${{ steps.create_release.outputs.upload_url }}
+      build_number: ${{ steps.build_number.outputs.build_number }}
+    steps:
+      - name: Get Tag Name
+        id: tag
+        run: echo "name=5.1.6" >> $GITHUB_OUTPUT
+          
+      - name: Set Build Number
+        id: build_number
+        run: echo "build_number=1474" >> $GITHUB_OUTPUT
+
+
+  build:
+    name: Create ${{ matrix.target }} build
+    runs-on: ${{ matrix.os }}
+    needs: release
+    strategy:
+      fail-fast: false
+      matrix:
+        target: [iOS]
+        include:
+          - os: macos-latest
+            target: iOS
+            build_path: build/ios/ipa
+            asset_extension: .ipa
+            asset_content_type: application/zip
+
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-java@v3
+        with:
+          distribution: 'temurin'
+          java-version: '17'
+          cache: 'gradle'
+      - uses: subosito/flutter-action@v2
+        with:
+          channel: 'stable'
+          cache: true
+      - run: flutter pub get
+
+      - name: Patch PubSpec
+        run: dart run grinder pubspec-update --build-name=${{ needs.release.outputs.version }} --build-number=${{ needs.release.outputs.build_number }}
+
+# Web
+      - name: Build Web Package
+        if: matrix.target == 'Web'
+        run: flutter build -v web --release --no-tree-shake-icons --base-href="/app/finance/"
+              
+      - name: Compress Web Package
+        if: matrix.target == 'Web'
+        run: tar czf $GITHUB_WORKSPACE/fingrom_${{ matrix.target }}${{ matrix.asset_extension }} *
+        working-directory: ${{ matrix.build_path }}
+
+# Windows
+      - name: Run Windows Build 
+        if: matrix.target == 'Windows'
+        run: |
+          flutter config --enable-windows-desktop
+          flutter build -v windows --build-name=${{ needs.release.outputs.version }} --build-number=${{ needs.release.outputs.build_number }} --release --obfuscate --split-debug-info=build/windows/symbols
+
+      - name: Copy Additional DLLs
+        if: matrix.target == 'Windows'
+        run: |   
+          Copy-Item (vswhere -latest -find 'VC\Redist\MSVC\*\x64\*\msvcp140.dll') .
+          Copy-Item (vswhere -latest -find 'VC\Redist\MSVC\*\x64\*\vcruntime140.dll') .
+          Copy-Item (vswhere -latest -find 'VC\Redist\MSVC\*\x64\*\vcruntime140_1.dll') .
+        working-directory: ${{ matrix.build_path }}
+
+      - name: Generate Windows MSIX-package
+        if: matrix.target == 'Windows'
+        run: dart run msix:create --version ${{ needs.release.outputs.version }}.0	--output-path ${{ matrix.build_path }} --output-name Fingrom --build-windows false
+
+      - name: Compress Windows Package
+        if: matrix.target == 'Windows'
+        run: compress-archive -Path * -DestinationPath ${env:GITHUB_WORKSPACE}/fingrom_${{ matrix.target }}${{ matrix.asset_extension }}
+        working-directory: ${{ matrix.build_path }}
+
+      - name: Setup MS Store CLI
+        if: matrix.target == 'Windows'
+        uses: microsoft/setup-msstore-cli@ec39acd1144351ab7a9d8d25e12bf6fd1ba03150
+
+      - name: Publish MSIX to the Microsoft Store
+        if: matrix.target == 'Windows'
+        run: |
+          msstore reconfigure --tenantId ${{ secrets.WINDOWS_TENANT_ID }} --clientId ${{ secrets.WINDOWS_CLIENT_ID }} --clientSecret ${{ secrets.WINDOWS_SECRET }} --sellerId ${{ secrets.WINDOWS_SELLER_ID }}
+          msstore publish -i ${{ matrix.build_path }}  || echo "Publishing failed since replaced build in review state."
+
+# Linux
+      - name: Run Linux Build
+        if: matrix.target == 'Linux'
+        run: |
+          sudo apt-get install -y libgtk-3-dev ninja-build
+          flutter config --enable-linux-desktop
+          flutter build -v linux --build-name=${{ needs.release.outputs.version }} --build-number=${{ needs.release.outputs.build_number }} --release
+
+      - name: Compress Linux Package
+        if: matrix.target == 'Linux'
+        run: |
+          cp $GITHUB_WORKSPACE/com.tercad.fingrom.desktop ./
+          cp $GITHUB_WORKSPACE/com.tercad.fingrom.svg ./
+          tar czf $GITHUB_WORKSPACE/fingrom_${{ matrix.target }}${{ matrix.asset_extension }} *
+        working-directory: ${{ matrix.build_path }}
+
+# Linux Snap
+      - name: Install Snapcraft
+        if: matrix.target == 'LinuxSnap'
+        uses: canonical/setup-lxd@v0.1.1
+
+      - name: Build Snap
+        if: matrix.target == 'LinuxSnap'
+        run: |
+          sudo snap install snapcraft --classic
+          snapcraft --verbose
+          cp fingrom_${{ needs.release.outputs.version }}+${{ needs.release.outputs.build_number }}_amd64.snap fingrom_${{ matrix.target }}.snap
+
+      - name: Publish Snap
+        if: matrix.target == 'LinuxSnap'
+        env:
+          SNAPCRAFT_STORE_CREDENTIALS: ${{ secrets.SNAPCRAFT_CREDENTIALS }}
+        run: |
+          sudo --preserve-env=SNAPCRAFT_STORE_CREDENTIALS snapcraft upload fingrom_${{ matrix.target }}.snap --release=latest/stable
+
+# Android
+      - name: Apply Android Keychain
+        if: matrix.target == 'Android'
+        env:
+          ANDROID_JKS: ${{ secrets.ANDROID_JKS }}
+          ANDROID_KEY: ${{ secrets.ANDROID_KEY }}
+        run: |
+          mkdir -p ~/private_keys
+          echo -n "$ANDROID_JKS" | base64 -d > $GITHUB_WORKSPACE/android/app/key.jks
+          echo -n "$ANDROID_KEY" | base64 -d > $GITHUB_WORKSPACE/android/key.properties
+
+      - name: Run Android Build
+        if: matrix.target == 'Android'
+        run: |
+          flutter build appbundle --build-name=${{ needs.release.outputs.version }} --build-number=${{ needs.release.outputs.build_number }} --release --no-tree-shake-icons --obfuscate --split-debug-info=build/app/symbols
+          mv ${{ matrix.build_path }}/app-release.aab $GITHUB_WORKSPACE/fingrom_${{ matrix.target }}.aab
+
+# iOS
+      - name: Import Distribution Certificate
+        if: matrix.target == 'iOS'
+        uses: apple-actions/import-codesign-certs@v2
+        with: 
+          keychain: signing_distr
+          p12-file-base64: ${{ secrets.APPLE_P12 }}
+          p12-password: ${{ secrets.APPLE_P12_KEY }}
+
+#      - name: Import Development Certificate
+#        if: matrix.target == 'iOS'
+#        uses: apple-actions/import-codesign-certs@v2
+#        with: 
+#          keychain: signing_dev
+#          p12-file-base64: ${{ secrets.APPLE_DEV_P12 }}
+#          p12-password: ${{ secrets.APPLE_DEV_P12_KEY }}
+
+      - name: Install the Provisioning Profile
+        if: matrix.target == 'iOS'
+        env:
+          PROVISIONING_CERTIFICATE_BASE64: ${{ secrets.APPLE_IOS_PROFILE }}
+        run: |
+          PP_PATH=$RUNNER_TEMP/Fingrom_iOS.mobileprovision
+          echo -n "$PROVISIONING_CERTIFICATE_BASE64" | base64 --decode --output $PP_PATH
+          mkdir -p ~/Library/MobileDevice/Provisioning\ Profiles
+          cp $PP_PATH ~/Library/MobileDevice/Provisioning\ Profiles
+                
+      - name: Store API key
+        if: matrix.target == 'iOS' || matrix.target == 'macOS'
+        env:
+          API_CERTIFICATE_BASE64: ${{ secrets.APPLE_API_P8 }}
+        run: |
+          mkdir -p ~/private_keys
+          echo -n "$API_CERTIFICATE_BASE64" | base64 --decode --output ~/private_keys/AuthKey_${{ secrets.APPLE_API_KEY }}.p8
+
+      - name: Run iOS Build
+        if: matrix.target == 'iOS'
+        run: |
+          flutter build ipa --build-name=${{ needs.release.outputs.version }} --build-number=${{ needs.release.outputs.build_number }} --release --obfuscate --split-debug-info=build/ios/symbols --no-tree-shake-icons --export-options-plist ./ios/ExportOptions.plist
+          mv ${{ matrix.build_path }}/fingrom.ipa fingrom_${{ matrix.target }}.ipa
+
+      - name: Upload iOS Package to Apple Store
+        if: matrix.target == 'iOS'
+        run: |
+          xcrun altool --validate-app --type ios -f fingrom_${{ matrix.target }}.ipa --apiKey ${{ secrets.APPLE_API_KEY }} --apiIssuer ${{ secrets.APPLE_API_ISSUE }}
+          xcrun altool --upload-app --type ios -f fingrom_${{ matrix.target }}.ipa --apiKey ${{ secrets.APPLE_API_KEY }} --apiIssuer ${{ secrets.APPLE_API_ISSUE }}
+
+# macOS
+      - name: Run macOS Build
+        if: matrix.target == 'macOS'
+        run: |
+          flutter config --enable-macos-desktop
+          flutter build -v macos --build-name=${{ needs.release.outputs.version }} --build-number=${{ needs.release.outputs.build_number }} --release --obfuscate --split-debug-info=build/macos/symbols --no-tree-shake-icons
+
+      - name: Add the Provisioning Profile
+        if: matrix.target == 'macOS'
+        env:
+          PROVISIONING_MAC_BASE64: ${{ secrets.APPLE_MAC_PROFILE }}
+        run: |
+          PP_PATH=$RUNNER_TEMP/Fingrom_macOS.provisionprofile
+          echo -n "$PROVISIONING_MAC_BASE64" | base64 --decode --output $PP_PATH
+          cp $PP_PATH ${{ matrix.build_path }}/Fingrom.app/Contents/embedded.provisionprofile
+
+      - name: Compress macOS Package
+        if: matrix.target == 'macOS'
+        run: ditto -c -k --sequesterRsrc --keepParent Fingrom.app $GITHUB_WORKSPACE/fingrom_${{ matrix.target }}${{ matrix.asset_extension }}
+        working-directory: ${{ matrix.build_path }}
+
+      - name: Import macOS Distribution Certificate
+        if: matrix.target == 'macOS'
+        uses: apple-actions/import-codesign-certs@v2
+        with: 
+          keychain: signing_distr
+          p12-file-base64: ${{ secrets.APPLE_MAC_P12 }}
+          p12-password: ${{ secrets.APPLE_P12_KEY }}
+
+      - name: Sign macOS Package
+        if: matrix.target == 'macOS'
+        run: |
+          codesign --deep --force -s "8PVKPQ758L" --entitlements $GITHUB_WORKSPACE/macos/Runner/Release.entitlements "Fingrom.app"
+        working-directory: ${{ matrix.build_path }}
+
+      - name: Import macOS Installer Certificate
+        if: matrix.target == 'macOS'
+        uses: apple-actions/import-codesign-certs@v2
+        with: 
+          keychain: signing_installer
+          p12-file-base64: ${{ secrets.APPLE_MAC_INSTALLER }}
+          p12-password: ${{ secrets.APPLE_P12_KEY }}
+
+      - name: Create macOS Package for Apple Store
+        if: matrix.target == 'macOS'
+        run: |
+          xcrun productbuild --component Fingrom.app /Applications/ unsigned.pkg
+          xcrun productsign --sign "8PVKPQ758L" unsigned.pkg Fingrom.pkg
+        working-directory: ${{ matrix.build_path }}
+
+      - name: Upload macOS Package to Apple Store
+        if: matrix.target == 'macOS'
+        run: |   
+          xcrun altool --validate-app --type macos -f Fingrom.pkg --apiKey ${{ secrets.APPLE_API_KEY }} --apiIssuer ${{ secrets.APPLE_API_ISSUE }}
+          xcrun altool --upload-app --type macos -f Fingrom.pkg --apiKey ${{ secrets.APPLE_API_KEY }} --apiIssuer ${{ secrets.APPLE_API_ISSUE }}
+        working-directory: ${{ matrix.build_path }}
+
+#
+      - name: Upload ${{ matrix.target }} Artifact
+        id: upload_release_asset
+        uses: actions/upload-release-asset@latest
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ needs.release.outputs.upload_url }}
+          asset_path: ./fingrom_${{ matrix.target }}${{ matrix.asset_extension }}
+          asset_name: fingrom_${{ matrix.target }}${{ matrix.asset_extension }}
+          asset_content_type: ${{ matrix.asset_content_type }}
+
+# Linux Flatpak
+  build-flatpak:
+    name: Create Linux Flatpak build
+    needs:
+      - release
+      - build
+    runs-on: ubuntu-latest
+    container:
+      image: bilelmoussaoui/flatpak-github-actions:gnome-45
+      options: --privileged
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Patch Manifest
+        run: |
+          ASSET_URL="https://github.com/lyskouski/app-finance/releases/download/v${{ needs.release.outputs.version }}/fingrom_Linux.tar.gz"
+          curl -vLJO -H 'Accept: application/octet-stream' $ASSET_URL
+          sh patch.sh -i ${{ github.sha }} -v "${{ needs.release.outputs.version }}" -s $(sha256sum fingrom_Linux.tar.gz | gawk '{ print $1 }')
+        working-directory: linux-flatpak
+
+      - name: Build Linux Flatpak
+        uses: bilelmoussaoui/flatpak-github-actions/flatpak-builder@v5
+        with:
+          bundle: fingrom_LinuxFlatpak.flatpak
+          manifest-path: linux-flatpak/com.tercad.fingrom.yml
+
+      - name: Store Configs for github.com/flathub
+        if: always()
+        uses: actions/upload-artifact@v3
+        with:
+          name: flatpak-configs
+          path: linux-flatpak
+
+      - name: Upload ${{ matrix.target }} Artifact
+        id: upload_release_asset
+        uses: actions/upload-release-asset@latest
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ needs.release.outputs.upload_url }}
+          asset_path: ./fingrom_LinuxFlatpak.flatpak
+          asset_name: fingrom_LinuxFlatpak.flatpak
+          asset_content_type: application/zip
