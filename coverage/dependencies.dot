@@ -586,7 +586,6 @@ digraph G {
   home_widgets -> structure_navigation [color="#F0F0F050"];
   home_widgets -> _configs_ [color="#F0F0F050"];
   home_widgets -> _ext_ [color="#F0F0F050"];
-  home_widgets -> button [color="#F0F0F050"];
   home_widgets -> wrapper [color="#F0F0F050"];
   home_widgets -> home_widgets [color="#F0F0F050"];
   home_widgets -> herald [color="#F0F0F050"];
@@ -630,6 +629,7 @@ digraph G {
   _interfaces -> wrapper [color="#F0F0F050"];
   _interfaces -> button [color="#F0F0F050"];
   _interfaces_widgets -> structure_navigation [color="#F0F0F050"];
+  _interfaces_widgets -> _configs_ [color="#F0F0F050"];
   _interfaces_widgets -> _ext_ [color="#F0F0F050"];
   _interfaces_widgets -> wrapper [color="#F0F0F050"];
   metrics -> herald [color="#F0F0F050"];
@@ -923,6 +923,7 @@ digraph G {
   button -> herald [color="#0000FF50"];
   button -> _configs_ [color="#0000FF50"];
   button -> _ext_ [color="#0000FF50"];
+  button -> wrapper [color="#0000FF50"];
   form -> form [color="#0000FF50"];
   form -> herald [color="#0000FF50"];
   form -> _configs_ [color="#0000FF50"];
@@ -1050,6 +1051,7 @@ digraph G {
   controller -> structure [color="green"];
 
   controller -> controller [color="green"];
+  controller -> _configs_ [color="green"];
 
   controller -> storage [color="green"];
   controller -> structure [color="green"];
