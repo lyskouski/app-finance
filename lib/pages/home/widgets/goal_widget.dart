@@ -5,7 +5,6 @@ import 'package:app_finance/_classes/herald/app_locale.dart';
 import 'package:app_finance/_classes/structure/navigation/app_route.dart';
 import 'package:app_finance/_configs/theme_helper.dart';
 import 'package:app_finance/_ext/build_context_ext.dart';
-import 'package:app_finance/design/button/toolbar_button_widget.dart';
 import 'package:app_finance/design/wrapper/tab_widget.dart';
 import 'package:app_finance/pages/home/widgets/goal_line_widget.dart';
 import 'package:app_finance/design/wrapper/tap_widget.dart';
@@ -30,10 +29,12 @@ class GoalWidget extends StatelessWidget {
         child: Container(
           width: double.infinity,
           padding: EdgeInsets.only(top: ThemeHelper.getIndent()),
-          child: ToolbarButtonWidget(
-            borderColor: context.colorScheme.inverseSurface.withOpacity(0.1),
-            backgroundColor: context.colorScheme.primary.withOpacity(0.2),
-            margin: EdgeInsets.zero,
+          child: Container(
+            decoration: BoxDecoration(
+              shape: BoxShape.rectangle,
+              color: context.colorScheme.primary.withOpacity(0.2),
+              border: Border.all(color: context.colorScheme.inverseSurface.withOpacity(0.1), width: 1),
+            ),
             child: Padding(
               padding: const EdgeInsets.only(top: 6),
               child: Center(

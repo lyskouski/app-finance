@@ -59,7 +59,7 @@ class BaseHeaderWidget extends StatelessWidget {
         width: double.infinity,
         color: colorScheme.inverseSurface.withOpacity(0.1),
         child: GridContainer(
-          rows: [null, 40, if (hasExpand) 40],
+          rows: [null, ThemeHelper.barHeight, if (hasExpand) ThemeHelper.barHeight],
           columns: [subHeight, null],
           children: [
             GridItem(
@@ -78,16 +78,11 @@ class BaseHeaderWidget extends StatelessWidget {
               child: ToolbarButtonWidget(
                 borderColor: context.colorScheme.onSecondaryContainer.withOpacity(0.3),
                 offset: bnShift,
-                margin: const EdgeInsets.only(left: 4),
-                child: IconButton(
-                  hoverColor: Colors.transparent,
-                  icon: Icon(
-                    Icons.stacked_bar_chart,
-                    color: context.colorScheme.onSecondaryContainer,
-                  ),
-                  tooltip: AppLocale.labels.metricsTooltip,
-                  onPressed: () => nav.pushNamed(metrics.name!, arguments: metrics.arguments),
-                ),
+                icon: Icons.stacked_bar_chart,
+                color: context.colorScheme.onSecondaryContainer,
+                tooltip: AppLocale.labels.metricsTooltip,
+                onPressed: () => nav.pushNamed(metrics.name!, arguments: metrics.arguments),
+                backgroundColor: context.colorScheme.background.withOpacity(0.3),
               ),
             ),
             if (hasExpand)
@@ -97,21 +92,14 @@ class BaseHeaderWidget extends StatelessWidget {
                 child: ToolbarButtonWidget(
                   borderColor: context.colorScheme.onSecondaryContainer.withOpacity(0.3),
                   offset: bnShift,
-                  margin: const EdgeInsets.only(left: 4),
-                  child: IconButton(
-                    hoverColor: Colors.transparent,
-                    selectedIcon: Icon(
-                      Icons.expand,
-                      color: context.colorScheme.onSecondaryContainer,
-                    ),
-                    icon: Icon(
-                      Icons.expand_less,
-                      color: context.colorScheme.primary.withOpacity(0.6),
-                    ),
-                    tooltip: toExpand ? AppLocale.labels.expand : AppLocale.labels.collapse,
-                    onPressed: () => expand!(),
-                    isSelected: toExpand,
-                  ),
+                  selectedIcon: Icons.expand,
+                  selectedColor: context.colorScheme.onSecondaryContainer,
+                  backgroundColor: context.colorScheme.background.withOpacity(0.3),
+                  icon: Icons.expand_less,
+                  color: context.colorScheme.primary.withOpacity(0.6),
+                  tooltip: toExpand ? AppLocale.labels.expand : AppLocale.labels.collapse,
+                  onPressed: () => expand!(),
+                  isSelected: toExpand,
                 ),
               ),
           ],

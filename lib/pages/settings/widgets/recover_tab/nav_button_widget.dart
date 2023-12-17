@@ -35,11 +35,10 @@ class NavButtonWidget extends StatelessWidget {
           ToolbarButtonWidget(
             offset: offset,
             borderColor: context.colorScheme.inversePrimary,
-            child: IconButton(
-              hoverColor: Colors.transparent,
-              icon: Icon(icon),
-              onPressed: () => callback(nav),
-            ),
+            icon: icon,
+            onPressed: () => callback(nav),
+            tooltip: name,
+            color: Colors.white30,
           ),
           ThemeHelper.hIndent2x,
           Expanded(

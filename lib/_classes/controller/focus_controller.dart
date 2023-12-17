@@ -5,6 +5,7 @@ import 'dart:collection';
 import 'dart:math';
 
 import 'package:app_finance/_classes/controller/delayed_call.dart';
+import 'package:app_finance/_configs/theme_helper.dart';
 import 'package:flutter/material.dart';
 
 class FocusController {
@@ -16,16 +17,24 @@ class FocusController {
   final values = <int?, dynamic>{};
   final order = SplayTreeMap<int, int?>();
   int? focus;
+  int? idButton;
   static bool force = false;
 
   FocusController();
 
   ScrollController get controller {
     order.clear();
+    values.clear();
     return _controller;
   }
 
   int key(dynamic item) => item?.hashCode ?? 0;
+
+  FocusNode last(dynamic item) {
+    idButton = key(item);
+    scope[idButton] ??= FocusNode();
+    return scope[idButton]!;
+  }
 
   FocusNode bind(dynamic item, {required BuildContext context, dynamic value}) {
     final id = key(item);
@@ -62,8 +71,8 @@ class FocusController {
     if (!_isControllerActive() || scope.isEmpty) {
       return;
     }
-    if (order.containsValue(idx) && scope[idx]?.context != null) {
-      double position = _getPosition(scope[idx]!.context!) - _getMinPosition() - 40;
+    if (order.containsValue(idx) && scope[idx] != null && scope[idx]!.context != null) {
+      double position = _getPosition(scope[idx]!.context!) - _getMinPosition() - ThemeHelper.barHeight;
       if (position < 0) {
         position = 0;
       }
@@ -83,15 +92,20 @@ class FocusController {
       idx = key(item);
       values[idx] = true;
     }
-    order.forEach((_, value) {
-      if (targetKey != null && (values[value] == '' || values[value] == null)) {
-        onFocus(null, value, false);
+    List<int?> check = order.values.toList();
+    if (idButton != null) {
+      values[idButton] = null;
+      check.add(idButton);
+    }
+    for (int? key in check) {
+      if (targetKey != null && key != targetKey && (values[key] == '' || values[key] == null)) {
+        onFocus(null, key, false);
         targetKey = null;
       }
-      if (value == idx) {
-        targetKey = value;
+      if (key == idx) {
+        targetKey = key;
       }
-    });
+    }
   }
 
   bool isFocused(dynamic item) => key(item) == focus;
@@ -99,12 +113,14 @@ class FocusController {
   void _blur() => scope.forEach((_, value) => value.unfocus());
 
   void onFocus(dynamic item, [int? idx, bool isForced = true]) {
-    idx ??= key(item!);
+    idx ??= key(item);
     focus = idx;
     _blur();
-    if (order.containsValue(idx) && scope[idx]?.context != null) {
-      scope[idx]!.requestFocus();
-      _scrollTo.run(() => scrollToFocusedElement(item, idx));
+    if ((order.containsValue(idx) || idx == idButton) && scope[idx] != null && scope[idx]!.context != null) {
+      scope[idx]?.requestFocus();
+      if (item != null) {
+        _scrollTo.run(() => scrollToFocusedElement(item, idx));
+      }
     }
     force = isForced;
   }

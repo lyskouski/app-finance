@@ -39,14 +39,6 @@ class InputControllerWrapperState extends State<InputControllerWrapper> {
   final focus = FocusNode();
 
   @override
-  initState() {
-    WidgetsBinding.instance.addPostFrameCallback((_) {
-      if (mounted) focus.requestFocus();
-    });
-    super.initState();
-  }
-
-  @override
   void dispose() {
     focus.dispose();
     super.dispose();
@@ -73,7 +65,9 @@ class InputControllerWrapperState extends State<InputControllerWrapper> {
         Navigator.of(context).pushNamed(AppRoute.billAddRoute);
         break;
       case AppEvents.back:
-        Navigator.of(context).pop();
+        if (Navigator.of(context).canPop()) {
+          Navigator.of(context).pop();
+        }
         break;
       case AppEvents.edit:
       case AppEvents.delete:
@@ -134,7 +128,7 @@ class InputControllerWrapperState extends State<InputControllerWrapper> {
     return Listener(
       onPointerSignal: onPointerSignal,
       child: RawKeyboardListener(
-        focusNode: focus,
+        focusNode: focus..requestFocus(),
         onKey: onKeyPressed,
         //child: GestureDetector(
         //  onScaleUpdate: onScaleUpdate,

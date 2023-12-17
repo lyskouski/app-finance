@@ -4,24 +4,39 @@
 import 'package:app_finance/_classes/herald/app_locale.dart';
 import 'package:app_finance/_configs/theme_helper.dart';
 import 'package:app_finance/_ext/build_context_ext.dart';
+import 'package:app_finance/design/wrapper/text_wrapper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/semantics.dart';
 
+typedef FnCall = void Function();
+
 class ToolbarButtonWidget extends StatefulWidget {
-  final Widget child;
+  final Color color;
   final Color? borderColor;
   final Color? backgroundColor;
+  final Color? selectedColor;
   final Offset? offset;
-  final EdgeInsets margin;
   final bool isWide;
+  final FnCall onPressed;
+  final String tooltip;
+  final String? semanticLabel;
+  final IconData icon;
+  final IconData? selectedIcon;
+  final bool? isSelected;
 
   const ToolbarButtonWidget({
     super.key,
-    required this.child,
+    required this.onPressed,
+    required this.tooltip,
+    required this.color,
+    required this.icon,
+    this.selectedIcon,
+    this.selectedColor,
+    this.semanticLabel,
+    this.isSelected,
     this.borderColor,
     this.backgroundColor,
     this.offset,
-    this.margin = const EdgeInsets.all(4.0),
     this.isWide = false,
   });
 
@@ -30,50 +45,75 @@ class ToolbarButtonWidget extends StatefulWidget {
 }
 
 class ToolbarButtonWidgetState extends State<ToolbarButtonWidget> {
-  late Color color = widget.backgroundColor ?? Colors.transparent;
+  late Color initColor;
+  late Color color = widget.color;
+  bool isHover = false;
+
+  _onEnter(_) => setState(() {
+        color = Colors.white54;
+        isHover = true;
+      });
+
+  _onExit(_) => setState(() {
+        color = widget.color;
+        isHover = false;
+      });
 
   @override
   Widget build(BuildContext context) {
     final indent = ThemeHelper.getIndent();
+    initColor = widget.backgroundColor ?? context.colorScheme.background.withOpacity(0.1);
     return Semantics(
       attributedHint: AttributedString(AppLocale.labels.typeButton),
-      textDirection: TextDirection.ltr,
+      attributedLabel: AttributedString(widget.semanticLabel ?? widget.tooltip),
       child: MouseRegion(
-        onEnter: (_) => setState(() => color = Colors.black26),
-        onExit: (_) => setState(() => color = widget.backgroundColor ?? Colors.transparent),
+        onEnter: _onEnter,
+        onExit: _onExit,
         child: Container(
-          margin: widget.margin,
-          padding: EdgeInsets.zero,
-          height: 32,
+          margin: const EdgeInsets.all(2.0),
+          padding: const EdgeInsets.all(1.0),
+          height: 42,
           decoration: BoxDecoration(
             shape: BoxShape.rectangle,
-            color: color,
+            color: isHover ? Colors.black54 : initColor,
             border: Border.all(color: widget.borderColor ?? Colors.white30, width: 1),
           ),
-          child: LayoutBuilder(builder: (context, constraints) {
-            return Transform.translate(
-              offset: widget.offset ?? Offset(constraints.maxWidth > 30 ? 0 : -4, -4),
-              child: Material(
-                elevation: 0,
-                color: Colors.transparent,
-                borderRadius: BorderRadius.zero,
-                child: widget.isWide
-                    ? Row(
+          child: Material(
+            elevation: 0,
+            color: Colors.transparent,
+            borderRadius: BorderRadius.zero,
+            child: Center(
+              child: widget.isWide
+                  ? InkWell(
+                      onTap: widget.onPressed,
+                      child: Row(
                         children: [
-                          widget.child,
+                          Icon(widget.icon, color: color),
                           Padding(
                             padding: EdgeInsets.fromLTRB(indent, indent, indent, 0),
-                            child: Text(
-                              (widget.child as IconButton).tooltip!,
-                              style: context.textTheme.headlineSmall?.copyWith(color: Colors.white70),
+                            child: TextWrapper(
+                              widget.tooltip,
+                              style: context.textTheme.headlineSmall?.copyWith(color: color),
                             ),
                           ),
                         ],
-                      )
-                    : widget.child,
-              ),
-            );
-          }),
+                      ),
+                    )
+                  : IconButton(
+                      tooltip: widget.tooltip,
+                      onPressed: widget.onPressed,
+                      isSelected: widget.isSelected,
+                      hoverColor: Colors.transparent,
+                      icon: Icon(widget.icon, color: color),
+                      selectedIcon: widget.selectedIcon != null
+                          ? Icon(
+                              widget.selectedIcon,
+                              color: isHover ? color : widget.selectedColor,
+                            )
+                          : null,
+                    ),
+            ),
+          ),
         ),
       ),
     );

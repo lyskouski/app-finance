@@ -14,9 +14,7 @@ class ScreenCapture {
   static final String _imgLocation = '${Directory.current.absolute.path}/coverage/images';
   static bool _saveScreen = false;
 
-  static GlobalKey getKey() {
-    return _id;
-  }
+  static GlobalKey getKey() => _id;
 
   static void enableScreenCapture([bool cleanup = true]) {
     _saveScreen = true;

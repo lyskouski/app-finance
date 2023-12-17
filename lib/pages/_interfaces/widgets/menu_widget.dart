@@ -3,7 +3,8 @@
 
 import 'package:app_finance/_classes/structure/navigation/app_menu.dart';
 import 'package:app_finance/_classes/structure/navigation/app_menu_item.dart';
-import 'package:app_finance/_classes/structure/navigation/app_route.dart';
+import 'package:app_finance/_configs/screen_helper.dart';
+import 'package:app_finance/_configs/theme_helper.dart';
 import 'package:app_finance/_ext/build_context_ext.dart';
 import 'package:app_finance/design/wrapper/text_wrapper.dart';
 import 'package:flutter/material.dart';
@@ -12,8 +13,9 @@ class MenuWidget extends StatelessWidget {
   final int index;
   final int selectedIndex;
   final Function setState;
+  final FocusNode focus = FocusNode();
 
-  const MenuWidget({
+  MenuWidget({
     super.key,
     required this.index,
     required this.selectedIndex,
@@ -33,42 +35,41 @@ class MenuWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final indent = ThemeHelper.getIndent();
+    final isWide = ScreenHelper.state().isWide;
     final ColorScheme colorScheme = context.colorScheme;
     final TextTheme textTheme = context.textTheme;
-    Color color = selectedIndex == index ? colorScheme.inversePrimary : colorScheme.secondary;
+    final isSelected = selectedIndex == index;
+    Color color = isSelected ? colorScheme.primary : colorScheme.secondary;
     AppMenuItem menu = AppMenu.getByIndex(index);
     NavigatorState nav = Navigator.of(context);
 
-    return Focus(
-      includeSemantics: true,
-      autofocus: selectedIndex == index,
-      focusNode: FocusNode(),
-      onFocusChange: _onHover,
+    return InkWell(
+      onTap: () {
+        setState();
+        _navigateToPage(nav, menu.route);
+      },
+      focusNode: isSelected && !isWide ? (focus..requestFocus()) : focus,
+      onHover: _onHover,
       child: Container(
-        color: AppRoute.current == menu.route ? colorScheme.background : null,
-        child: InkWell(
-          autofocus: selectedIndex == index,
-          focusColor: colorScheme.inversePrimary,
-          highlightColor: colorScheme.background,
-          canRequestFocus: true,
-          onTap: () {
-            setState();
-            _navigateToPage(nav, menu.route);
-          },
-          onHover: _onHover,
-          child: ListTile(
-            leading: Icon(
-              menu.icon,
-              color: color,
-            ),
-            title: MouseRegion(
-              cursor: SystemMouseCursors.click,
+        padding: EdgeInsets.all(indent),
+        color: isSelected
+            ? isWide
+                ? colorScheme.background
+                : colorScheme.secondary.withOpacity(0.1)
+            : null,
+        child: Row(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            Icon(menu.icon, color: color),
+            Padding(
+              padding: EdgeInsets.only(left: indent),
               child: TextWrapper(
                 menu.name,
-                style: textTheme.bodyMedium?.copyWith(color: color),
+                style: textTheme.headlineMedium?.copyWith(color: color),
               ),
             ),
-          ),
+          ],
         ),
       ),
     );

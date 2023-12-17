@@ -76,7 +76,7 @@ class BillAppData extends AbstractAppData with StorageMixin {
     return super.createdAt.monthDay() + (type != null ? ' (${type.title})' : '');
   }
 
-  String get accountNamed => getState().getByUuid(account).title;
+  String get accountNamed => getState().getByUuid(account)?.title ?? '?';
 
   @override
   MaterialColor? get color {

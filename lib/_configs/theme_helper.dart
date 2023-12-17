@@ -18,7 +18,7 @@ class _Sizes {
 }
 
 class ThemeHelper {
-  static const barHeight = 40.0;
+  static const barHeight = 48.0;
   static const menuWidth = 200.0;
   static late bool isWearable;
   static const emptyBox = SizedBox();

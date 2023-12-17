@@ -1,7 +1,7 @@
 // Copyright 2023 The terCAD team. All rights reserved.
 // Use of this source code is governed by a CC BY-NC-ND 4.0 license that can be found in the LICENSE file.
 
-import 'package:app_finance/design/wrapper/text_wrapper.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_test/flutter_test.dart';
 
@@ -25,17 +25,15 @@ void main() {
     ScreenCapture.seize('AccessibilityDrawerOpen');
     expect(find.text('Home'), findsOneWidget);
 
-    final outer = tester.element(find.text('Goals')).findAncestorWidgetOfExactType<TextWrapper>();
-    final color = outer?.style?.color;
+    final outer = tester.element(find.text('Goals')).findAncestorWidgetOfExactType<InkWell>();
+    final selection = outer?.focusNode?.hasFocus;
 
-    await tester.sendKeyEvent(LogicalKeyboardKey.arrowDown);
-    await tester.pumpAndSettle();
     await tester.sendKeyEvent(LogicalKeyboardKey.arrowDown);
     await tester.pumpAndSettle();
     ScreenCapture.seize('AccessibilityDrawerNext');
 
-    final text = tester.element(find.text('Goals')).findAncestorWidgetOfExactType<TextWrapper>();
-    expect(text?.style?.color, isNot(equals(color)));
+    final outer2 = tester.element(find.text('Goals')).findAncestorWidgetOfExactType<InkWell>();
+    expect(outer2?.focusNode?.hasFocus, isNot(equals(selection)));
 
     await tester.sendKeyEvent(LogicalKeyboardKey.enter);
     await tester.pumpAndSettle();

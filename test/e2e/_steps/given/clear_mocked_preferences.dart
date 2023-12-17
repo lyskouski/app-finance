@@ -30,5 +30,8 @@ class ClearMockedPreferences extends Given {
     final ScaffoldState scafState = FileRunner.tester.firstState(find.byType(Scaffold).at(1));
     scafState.openDrawer();
     await FileRunner.tester.pumpAndSettle();
+    final header = find.text('Home');
+    await FileRunner.tester.tap(header);
+    await FileRunner.tester.pumpAndSettle();
   }
 }
