@@ -246,6 +246,7 @@
 			alwaysOutOfDate = 1;
 			buildActionMask = 2147483647;
 			files = (
+        "$(SRCROOT)/$(BUILT_PRODUCTS_DIR)/$(INFOPLIST_PATH)",
 			);
 			inputPaths = (
 			);
@@ -254,7 +255,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "/bin/sh \"$FLUTTER_ROOT/packages/flutter_tools/bin/xcode_backend.sh\" build";
+			shellScript = "/bin/sh \"$FLUTTER_ROOT/packages/flutter_tools/bin/xcode_backend.sh\" build; /bin/sh \"${PODS_ROOT}/FirebaseCrashlytics/run\"";
 		};
 /* End PBXShellScriptBuildPhase section */
 
