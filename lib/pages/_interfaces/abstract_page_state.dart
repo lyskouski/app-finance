@@ -15,6 +15,7 @@ import 'package:app_finance/design/wrapper/text_wrapper.dart';
 import 'package:app_finance/design/button/toolbar_button_widget.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_grid_layout/flutter_grid_layout.dart';
 import 'package:flutter_markdown/flutter_markdown.dart';
 import 'package:provider/provider.dart';
@@ -212,12 +213,10 @@ abstract class AbstractPageState<T extends StatefulWidget> extends State<T> {
   }
 
   Widget? buildNavigation() {
-    final indent = ThemeHelper.getIndent();
-    final isWide = ScreenHelper.state().isWide;
-    final list = ListView.separated(
+    return ListView.separated(
       scrollDirection: Axis.vertical,
-      shrinkWrap: true,
-      padding: EdgeInsets.symmetric(vertical: indent * 4),
+      addSemanticIndexes: true,
+      padding: EdgeInsets.symmetric(vertical: ThemeHelper.getIndent(4)),
       separatorBuilder: (context, index) => ThemeHelper.hIndent2x,
       itemCount: AppMenu.get().length,
       itemBuilder: (context, index) => MenuWidget(
@@ -226,11 +225,9 @@ abstract class AbstractPageState<T extends StatefulWidget> extends State<T> {
         selectedIndex: selectedMenu,
       ),
     );
-    return isWide ? list : FocusScope(child: list);
   }
 
   Drawer? buildDrawer() {
-    final ColorScheme colorScheme = context.colorScheme;
     return Drawer(
       key: InputControllerWrapper.drawerKey,
       elevation: 0,
@@ -238,10 +235,7 @@ abstract class AbstractPageState<T extends StatefulWidget> extends State<T> {
       child: ScreenHelper.state().isWide
           ? buildNavigation()
           : InputControllerWrapper(
-              child: Container(
-                color: colorScheme.background,
-                child: buildNavigation(),
-              ),
+              child: buildNavigation() ?? ThemeHelper.emptyBox,
             ),
     );
   }

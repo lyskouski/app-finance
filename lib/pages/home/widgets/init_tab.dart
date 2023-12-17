@@ -16,9 +16,7 @@ class InitTab extends StatefulWidget {
 
 class InitTabState extends AbstractPageState<InitTab> {
   @override
-  Drawer? buildDrawer() {
-    return null;
-  }
+  Drawer? buildDrawer() => null;
 
   @override
   List<Widget> getBarActions(NavigatorState nav) => [];
@@ -30,17 +28,12 @@ class InitTabState extends AbstractPageState<InitTab> {
   String getButtonName() => '';
 
   @override
-  Widget buildButton(BuildContext context, BoxConstraints constraints) {
-    return ThemeHelper.emptyBox;
-  }
+  Widget buildButton(BuildContext context, BoxConstraints constraints) => ThemeHelper.emptyBox;
 
   @override
-  Widget buildContent(BuildContext context, BoxConstraints constraints) {
-    return LoadingWidget(isLoading: super.state.isLoading);
-  }
+  Widget buildContent(BuildContext context, BoxConstraints constraints) =>
+      LoadingWidget(isLoading: super.state.isLoading);
 
   @override
-  String getTitle() {
-    return AppLocale.labels.appInitHeadline;
-  }
+  String getTitle() => AppLocale.labels.appInitHeadline;
 }

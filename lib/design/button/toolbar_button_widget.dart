@@ -4,6 +4,7 @@
 import 'package:app_finance/_classes/herald/app_locale.dart';
 import 'package:app_finance/_configs/theme_helper.dart';
 import 'package:app_finance/_ext/build_context_ext.dart';
+import 'package:app_finance/design/wrapper/text_wrapper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/semantics.dart';
 
@@ -90,7 +91,7 @@ class ToolbarButtonWidgetState extends State<ToolbarButtonWidget> {
                           Icon(widget.icon, color: color),
                           Padding(
                             padding: EdgeInsets.fromLTRB(indent, indent, indent, 0),
-                            child: Text(
+                            child: TextWrapper(
                               widget.tooltip,
                               style: context.textTheme.headlineSmall?.copyWith(color: color),
                             ),
