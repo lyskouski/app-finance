@@ -18,7 +18,7 @@ void main() {
           editComplete: 0,
           focus: 0,
           value: null,
-          result: true,
+          result: false,
           action: TextInputAction.done,
         ),
         (

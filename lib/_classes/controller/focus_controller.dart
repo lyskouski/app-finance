@@ -92,8 +92,12 @@ class FocusController {
       idx = key(item);
       values[idx] = true;
     }
-    values[idButton] = null;
-    for (int? key in [...order.values, idButton]) {
+    List<int?> check = order.values.toList();
+    if (idButton != null) {
+      values[idButton] = null;
+      check.add(idButton);
+    }
+    for (int? key in check) {
       if (targetKey != null && key != targetKey && (values[key] == '' || values[key] == null)) {
         onFocus(null, key, false);
         targetKey = null;
@@ -109,15 +113,14 @@ class FocusController {
   void _blur() => scope.forEach((_, value) => value.unfocus());
 
   void onFocus(dynamic item, [int? idx, bool isForced = true]) {
-    if (item == null) {
-      return;
-    }
     idx ??= key(item);
     focus = idx;
     _blur();
     if ((order.containsValue(idx) || idx == idButton) && scope[idx] != null && scope[idx]!.context != null) {
       scope[idx]?.requestFocus();
-      _scrollTo.run(() => scrollToFocusedElement(item, idx));
+      if (item != null) {
+        _scrollTo.run(() => scrollToFocusedElement(item, idx));
+      }
     }
     force = isForced;
   }
