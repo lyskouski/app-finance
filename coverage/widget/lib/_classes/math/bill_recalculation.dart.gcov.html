@@ -1,0 +1,143 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<html lang="en">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>LCOV - lcov.info - lib/_classes/math/bill_recalculation.dart</title>
+  <link rel="stylesheet" type="text/css" href="../../../gcov.css">
+</head>
+
+<body>
+
+  <table width="100%" border=0 cellspacing=0 cellpadding=0>
+    <tr><td class="title">LCOV - code coverage report</td></tr>
+    <tr><td class="ruler"><img src="../../../glass.png" width=3 height=3 alt=""></td></tr>
+
+    <tr>
+      <td width="100%">
+        <table cellpadding=1 border=0 width="100%">
+          <tr>
+            <td width="10%" class="headerItem">Current view:</td>
+            <td width="35%" class="headerValue"><a href="../../../index.html">top level</a> - <a href="index.html">lib/_classes/math</a> - bill_recalculation.dart<span style="font-size: 80%;"> (source / <a href="bill_recalculation.dart.func-sort-c.html">functions</a>)</span></td>
+            <td width="5%"></td>
+            <td width="15%"></td>
+            <td width="10%" class="headerCovTableHead">Hit</td>
+            <td width="10%" class="headerCovTableHead">Total</td>
+            <td width="15%" class="headerCovTableHead">Coverage</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Test:</td>
+            <td class="headerValue">lcov.info</td>
+            <td></td>
+            <td class="headerItem">Lines:</td>
+            <td class="headerCovTableEntry">0</td>
+            <td class="headerCovTableEntry">31</td>
+            <td class="headerCovTableEntryLo">0.0 %</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Date:</td>
+            <td class="headerValue">2023-12-18 09:11:16</td>
+            <td></td>
+            <td class="headerItem">Functions:</td>
+            <td class="headerCovTableEntry">0</td>
+            <td class="headerCovTableEntry">0</td>
+            <td class="headerCovTableEntryHi">-</td>
+          </tr>
+          <tr><td><img src="../../../glass.png" width=3 height=3 alt=""></td></tr>
+        </table>
+      </td>
+    </tr>
+
+    <tr><td class="ruler"><img src="../../../glass.png" width=3 height=3 alt=""></td></tr>
+  </table>
+
+  <table cellpadding=0 cellspacing=0 border=0>
+    <tr>
+      <td><br></td>
+    </tr>
+    <tr>
+      <td>
+<pre class="sourceHeading">          Line data    Source code</pre>
+<pre class="source">
+<a name="1"><span class="lineNum">       1 </span>            : // Copyright 2023 The terCAD team. All rights reserved.</a>
+<a name="2"><span class="lineNum">       2 </span>            : // Use of this source code is governed by a CC BY-NC-ND 4.0 license that can be found in the LICENSE file.</a>
+<a name="3"><span class="lineNum">       3 </span>            : </a>
+<a name="4"><span class="lineNum">       4 </span>            : import 'package:app_finance/_classes/math/abstract_recalculation.dart';</a>
+<a name="5"><span class="lineNum">       5 </span>            : import 'package:app_finance/_classes/storage/history_data.dart';</a>
+<a name="6"><span class="lineNum">       6 </span>            : import 'package:app_finance/_classes/structure/account_app_data.dart';</a>
+<a name="7"><span class="lineNum">       7 </span>            : import 'package:app_finance/_classes/structure/bill_app_data.dart';</a>
+<a name="8"><span class="lineNum">       8 </span>            : import 'package:app_finance/_classes/structure/budget_app_data.dart';</a>
+<a name="9"><span class="lineNum">       9 </span>            : </a>
+<a name="10"><span class="lineNum">      10 </span>            : class BillRecalculation extends AbstractRecalculation {</a>
+<a name="11"><span class="lineNum">      11 </span>            :   BillAppData change;</a>
+<a name="12"><span class="lineNum">      12 </span>            :   BillAppData? initial;</a>
+<a name="13"><span class="lineNum">      13 </span>            : </a>
+<a name="14"><span class="lineNum">      14 </span><span class="lineNoCov">          0 :   BillRecalculation({</span></a>
+<a name="15"><span class="lineNum">      15 </span>            :     required this.change,</a>
+<a name="16"><span class="lineNum">      16 </span>            :     this.initial,</a>
+<a name="17"><span class="lineNum">      17 </span>            :   });</a>
+<a name="18"><span class="lineNum">      18 </span>            : </a>
+<a name="19"><span class="lineNum">      19 </span><span class="lineNoCov">          0 :   @override</span></a>
+<a name="20"><span class="lineNum">      20 </span><span class="lineNoCov">          0 :   double getDelta() =&gt; throw UnimplementedError();</span></a>
+<a name="21"><span class="lineNum">      21 </span>            : </a>
+<a name="22"><span class="lineNum">      22 </span><span class="lineNoCov">          0 :   double getPrevDelta() =&gt; initial?.hidden == true ? 0.0 : initial?.details;</span></a>
+<a name="23"><span class="lineNum">      23 </span>            : </a>
+<a name="24"><span class="lineNum">      24 </span><span class="lineNoCov">          0 :   double getStateDelta(dynamic prev, dynamic curr) {</span></a>
+<a name="25"><span class="lineNum">      25 </span><span class="lineNoCov">          0 :     double initialDetails = exchange.reform(initial?.details ?? 0.0, initial?.currency, change.currency);</span></a>
+<a name="26"><span class="lineNum">      26 </span><span class="lineNoCov">          0 :     double delta = change.hidden ? 0.0 : change.details;</span></a>
+<a name="27"><span class="lineNum">      27 </span><span class="lineNoCov">          0 :     if (initial != null &amp;&amp; prev?.uuid == curr?.uuid) {</span></a>
+<a name="28"><span class="lineNum">      28 </span><span class="lineNoCov">          0 :       delta = change.hidden</span></a>
+<a name="29"><span class="lineNum">      29 </span><span class="lineNoCov">          0 :           ? -initialDetails</span></a>
+<a name="30"><span class="lineNum">      30 </span><span class="lineNoCov">          0 :           : (initial?.hidden == true ? change.details : change.details - initialDetails);</span></a>
+<a name="31"><span class="lineNum">      31 </span>            :     }</a>
+<a name="32"><span class="lineNum">      32 </span>            :     return delta;</a>
+<a name="33"><span class="lineNum">      33 </span>            :   }</a>
+<a name="34"><span class="lineNum">      34 </span>            : </a>
+<a name="35"><span class="lineNum">      35 </span><span class="lineNoCov">          0 :   BillRecalculation updateAccount(AccountAppData accountChange, AccountAppData? accountInitial) {</span></a>
+<a name="36"><span class="lineNum">      36 </span>            :     double? diffDelta;</a>
+<a name="37"><span class="lineNum">      37 </span><span class="lineNoCov">          0 :     if (accountInitial != null &amp;&amp; initial != null &amp;&amp; accountChange.uuid != accountInitial.uuid) {</span></a>
+<a name="38"><span class="lineNum">      38 </span><span class="lineNoCov">          0 :       diffDelta = getPrevDelta();</span></a>
+<a name="39"><span class="lineNum">      39 </span><span class="lineNoCov">          0 :       HistoryData.addLog(accountInitial.uuid!, initial, 0.0, diffDelta, initial!.uuid);</span></a>
+<a name="40"><span class="lineNum">      40 </span>            :     }</a>
+<a name="41"><span class="lineNum">      41 </span><span class="lineNoCov">          0 :     double delta = getStateDelta(accountInitial, accountChange);</span></a>
+<a name="42"><span class="lineNum">      42 </span><span class="lineNoCov">          0 :     HistoryData.addLog(accountChange.uuid!, change, 0.0, -delta, change.uuid);</span></a>
+<a name="43"><span class="lineNum">      43 </span><span class="lineNoCov">          0 :     if (diffDelta != null &amp;&amp; accountInitial?.createdAt.isBefore(initial?.createdAt ?? DateTime.now()) == true) {</span></a>
+<a name="44"><span class="lineNum">      44 </span><span class="lineNoCov">          0 :       accountInitial!.details += exchange.reform(diffDelta, initial?.currency, accountInitial.currency);</span></a>
+<a name="45"><span class="lineNum">      45 </span>            :     }</a>
+<a name="46"><span class="lineNum">      46 </span><span class="lineNoCov">          0 :     if (accountChange.createdAt.isBefore(change.createdAt)) {</span></a>
+<a name="47"><span class="lineNum">      47 </span><span class="lineNoCov">          0 :       accountChange.details -= exchange.reform(delta, change.currency, accountChange.currency);</span></a>
+<a name="48"><span class="lineNum">      48 </span>            :     }</a>
+<a name="49"><span class="lineNum">      49 </span>            :     return this;</a>
+<a name="50"><span class="lineNum">      50 </span>            :   }</a>
+<a name="51"><span class="lineNum">      51 </span>            : </a>
+<a name="52"><span class="lineNum">      52 </span><span class="lineNoCov">          0 :   BillRecalculation updateBudget(BudgetAppData budgetChange, BudgetAppData? budgetInitial) {</span></a>
+<a name="53"><span class="lineNum">      53 </span><span class="lineNoCov">          0 :     DateTime now = DateTime.now();</span></a>
+<a name="54"><span class="lineNum">      54 </span><span class="lineNoCov">          0 :     if (DateTime(now.year, now.month).isAfter(change.createdAt)) {</span></a>
+<a name="55"><span class="lineNum">      55 </span>            :       return this;</a>
+<a name="56"><span class="lineNum">      56 </span>            :     }</a>
+<a name="57"><span class="lineNum">      57 </span><span class="lineNoCov">          0 :     if (budgetInitial != null &amp;&amp; budgetChange.uuid != budgetInitial.uuid) {</span></a>
+<a name="58"><span class="lineNum">      58 </span><span class="lineNoCov">          0 :       double prevDelta = exchange.reform(getPrevDelta(), initial?.currency, budgetInitial.currency);</span></a>
+<a name="59"><span class="lineNum">      59 </span><span class="lineNoCov">          0 :       budgetInitial.progress = getProgress(budgetInitial.amountLimit, budgetInitial.progress, -prevDelta);</span></a>
+<a name="60"><span class="lineNum">      60 </span><span class="lineNoCov">          0 :       budgetInitial.amount -= prevDelta;</span></a>
+<a name="61"><span class="lineNum">      61 </span>            :     }</a>
+<a name="62"><span class="lineNum">      62 </span><span class="lineNoCov">          0 :     double delta = exchange.reform(getStateDelta(budgetInitial, budgetChange), change.currency, budgetChange.currency);</span></a>
+<a name="63"><span class="lineNum">      63 </span><span class="lineNoCov">          0 :     budgetChange.progress = getProgress(budgetChange.amountLimit, budgetChange.progress, delta);</span></a>
+<a name="64"><span class="lineNum">      64 </span><span class="lineNoCov">          0 :     budgetChange.amount += delta;</span></a>
+<a name="65"><span class="lineNum">      65 </span>            :     return this;</a>
+<a name="66"><span class="lineNum">      66 </span>            :   }</a>
+<a name="67"><span class="lineNum">      67 </span>            : }</a>
+</pre>
+      </td>
+    </tr>
+  </table>
+  <br>
+
+  <table width="100%" border=0 cellspacing=0 cellpadding=0>
+    <tr><td class="ruler"><img src="../../../glass.png" width=3 height=3 alt=""></td></tr>
+    <tr><td class="versionInfo">Generated by: <a href="http://ltp.sourceforge.net/coverage/lcov.php" target="_parent">LCOV version 1.14</a></td></tr>
+  </table>
+  <br>
+
+</body>
+</html>
