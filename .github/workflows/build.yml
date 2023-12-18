@@ -7,7 +7,7 @@ on:
 
 jobs:
   release:
-    uses: ./.github/workflows/lib/create_release_page.yml
+    uses: ./.github/workflows/create_release_page.yml
     secrets: inherit
     with:
       draft: false
