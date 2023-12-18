@@ -1,13 +1,13 @@
 [ [English](./README.md) | [Deutsch](./README_de.md) | 简体中文 ]
 
 # ![Fingrom Logo](./docs/design-flow/logo/main.svg) 财务会计应用
-[![License: CC BY-NC-ND 4.0](https://img.shields.io/badge/License-CC_BY--NC--ND_4.0-lightgrey.svg)](https://creativecommons.org/licenses/by-nc-nd/4.0/) 
-[![Check Status](https://github.com/lyskouski/app-finance/actions/workflows/push_to_main.yml/badge.svg?branch=main)](https://github.com/lyskouski/app-finance/actions/workflows/push_to_main.yml)
-[![Build Status](https://github.com/lyskouski/app-finance/actions/workflows/build.yml/badge.svg)](https://github.com/lyskouski/app-finance/actions/workflows/build.yml)
+[![许可证 : CC BY-NC-ND 4.0](https://img.shields.io/badge/License-CC_BY--NC--ND_4.0-lightgrey.svg)](https://creativecommons.org/licenses/by-nc-nd/4.0/) 
+[![检查状态](https://github.com/lyskouski/app-finance/actions/workflows/push_to_main.yml/badge.svg?branch=main)](https://github.com/lyskouski/app-finance/actions/workflows/push_to_main.yml)
+[![构建状态](https://github.com/lyskouski/app-finance/actions/workflows/build.yml/badge.svg)](https://github.com/lyskouski/app-finance/actions/workflows/build.yml)
 
-[![Unit Tests Coverage](https://lyskouski.github.io/app-finance/coverage/unit_coverage_badge.svg)](https://github.com/lyskouski/app-finance/tree/main/test/unit/)
-[![Widget Tests Coverage](https://lyskouski.github.io/app-finance/coverage/widget_coverage_badge.svg)](https://github.com/lyskouski/app-finance/tree/main/test/widget)
-[![End-To-End Coverage](https://lyskouski.github.io/app-finance/coverage/e2e_coverage_badge.svg)](https://github.com/lyskouski/app-finance/tree/main/test/e2e)
+[![单元测试覆盖率](https://lyskouski.github.io/app-finance/coverage/unit_coverage_badge.svg)](https://lyskouski.github.io/app-finance/coverage/unit/index.html)
+[![小工具测试覆盖率](https://lyskouski.github.io/app-finance/coverage/widget_coverage_badge.svg)](https://lyskouski.github.io/app-finance/coverage/widget/index.html)
+[![端到端覆盖率](https://lyskouski.github.io/app-finance/coverage/e2e_coverage_badge.svg)](https://lyskouski.github.io/app-finance/coverage/e2e/index.html)
 
 **Fingrom** (金融雷击) -- 无广告、无限制的开源跨平台财务会计应用程序。该解决方案的目标是创建一个直观、高效、包容的财务会计应用程序。 
 它能让用户毫不费力地管理自己的财务，同时确保没有人掉队。

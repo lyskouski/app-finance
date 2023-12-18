@@ -1,13 +1,13 @@
 [ [English](./README.md) | Deutsch | [简体中文](./README_zh-CN.md) ]
 
 # ![Fingrom Logo](./docs/design-flow/logo/main.svg) Anwendung Finanzbuchhaltung
-[![License: CC BY-NC-ND 4.0](https://img.shields.io/badge/License-CC_BY--NC--ND_4.0-lightgrey.svg)](https://creativecommons.org/licenses/by-nc-nd/4.0/) 
-[![Check Status](https://github.com/lyskouski/app-finance/actions/workflows/push_to_main.yml/badge.svg?branch=main)](https://github.com/lyskouski/app-finance/actions/workflows/push_to_main.yml)
-[![Build Status](https://github.com/lyskouski/app-finance/actions/workflows/build.yml/badge.svg)](https://github.com/lyskouski/app-finance/actions/workflows/build.yml)
+[![Lizenz: CC BY-NC-ND 4.0](https://img.shields.io/badge/License-CC_BY--NC--ND_4.0-lightgrey.svg)](https://creativecommons.org/licenses/by-nc-nd/4.0/) 
+[![Status prüfen](https://github.com/lyskouski/app-finance/actions/workflows/push_to_main.yml/badge.svg?branch=main)](https://github.com/lyskouski/app-finance/actions/workflows/push_to_main.yml)
+[![Status erstellen](https://github.com/lyskouski/app-finance/actions/workflows/build.yml/badge.svg)](https://github.com/lyskouski/app-finance/actions/workflows/build.yml)
 
-[![Unit Tests Coverage](https://lyskouski.github.io/app-finance/coverage/unit_coverage_badge.svg)](https://github.com/lyskouski/app-finance/tree/main/test/unit/)
-[![Widget Tests Coverage](https://lyskouski.github.io/app-finance/coverage/widget_coverage_badge.svg)](https://github.com/lyskouski/app-finance/tree/main/test/widget)
-[![End-To-End Coverage](https://lyskouski.github.io/app-finance/coverage/e2e_coverage_badge.svg)](https://github.com/lyskouski/app-finance/tree/main/test/e2e)
+[![Abdeckung der Unit-Tests](https://lyskouski.github.io/app-finance/coverage/unit_coverage_badge.svg)](https://lyskouski.github.io/app-finance/coverage/unit/index.html)
+[![Abdeckung der Widget-Tests](https://lyskouski.github.io/app-finance/coverage/widget_coverage_badge.svg)](https://lyskouski.github.io/app-finance/coverage/widget/index.html)
+[![End-To-End-Abdeckung](https://lyskouski.github.io/app-finance/coverage/e2e_coverage_badge.svg)](https://lyskouski.github.io/app-finance/coverage/e2e/index.html)
 
 **Fingrom** -- plattformübergreifende Open-Source-Anwendung für die Finanzbuchhaltung ohne Ads und Einschränkungen. Das 
 Ziel der Lösung ist es, eine Finanzbuchhaltungsanwendung zu schaffen, die intuitiv, effizient und umfassend ist. Sie 
