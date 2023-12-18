@@ -17,6 +17,7 @@ jobs:
         with:
           channel: 'stable'
           cache: true
+      - run: sudo apt-get install -y lcov
       - run: flutter --version
 
       - name: Install Dependencies
@@ -36,16 +37,22 @@ jobs:
         run: |
           dart run grinder full-coverage --path="/_classes" --type=unit
           dart run grinder test --coverage --path=test/unit
+          genhtml coverage/lcov.info -o coverage/unit
+          cp -R ./coverage/lcov.info ./coverage/unit
 
       - name: Run Widget Tests
         run: |
           dart run grinder full-coverage --path="" --type=widget
           dart run grinder test --coverage --path=test/widget
+          genhtml coverage/lcov.info -o coverage/widget
+          cp -R ./coverage/lcov.info ./coverage/widget
 
       - name: Run End-To-End Tests
         run: |
           dart run grinder full-coverage --path="" --type=e2e
           dart run grinder test --coverage --path=test/e2e
+          genhtml coverage/lcov.info -o coverage/e2e
+          cp -R ./coverage/lcov.info ./coverage/e2e
       
       - name: Create Dependency Graph
         run: |

@@ -3,7 +3,7 @@ name: Flutter/Dart Quality Gates (Pull-Request, Branches)
 on:
   push:
     branches-ignore:
-      - master
+      - main
   pull_request:
 
 permissions: read-all
@@ -40,7 +40,9 @@ jobs:
       #  run: flutter analyze
 
       - name: Run All Tests
-        run: dart run grinder test > test_execution.log
+        run: | 
+          dart run grinder test --coverage > test_execution.log
+          dart run test_cov_console --file="./coverage/lcov.info" --total > coverage/test_total.log
         
       - name: Generate Golden Images
         if: ${{ failure() }}
