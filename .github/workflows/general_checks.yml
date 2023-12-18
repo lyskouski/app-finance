@@ -3,7 +3,7 @@ name: Flutter/Dart Quality Gates (Pull-Request, Branches)
 on:
   push:
     branches-ignore:
-      - master
+      - main
   pull_request:
 
 permissions: read-all
