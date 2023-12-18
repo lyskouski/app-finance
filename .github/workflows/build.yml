@@ -7,7 +7,7 @@ on:
 
 jobs:
   release:
-    uses: lyskouski/app-finance/.github/workflows/lib/create_release_page.yml@main
+    uses: ./.github/workflows/lib/create_release_page.yml
     secrets: inherit
     with:
       draft: false
