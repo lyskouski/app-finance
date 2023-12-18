@@ -40,7 +40,9 @@ jobs:
       #  run: flutter analyze
 
       - name: Run All Tests
-        run: dart run grinder test > test_execution.log
+        run: | 
+          dart run grinder test --coverage > coverage/test_execution.log
+          dart run test_cov_console --file="./coverage/lcov.info" --total > coverage/test_total.log
         
       - name: Generate Golden Images
         if: ${{ failure() }}
@@ -54,4 +56,3 @@ jobs:
           path: |
             coverage
             test/widget
-            test_execution.log
