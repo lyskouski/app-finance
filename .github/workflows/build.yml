@@ -7,56 +7,10 @@ on:
 
 jobs:
   release:
-    name: Create Release Page
-    runs-on: ubuntu-latest
-    outputs:
-      version: ${{ steps.tag.outputs.name }}
-      upload_url: ${{ steps.create_release.outputs.upload_url }}
-      build_number: ${{ steps.build_number.outputs.build_number }}
-    steps:
-      - uses: actions/checkout@v3
-        with:
-          fetch-depth: 0
-      - uses: actions/setup-java@v3
-        with:
-          distribution: 'temurin'
-          java-version: '17'
-          cache: 'gradle'
-      - uses: subosito/flutter-action@v2
-        with:
-          channel: 'stable'
-          cache: true
-      - run: flutter pub get
-
-      - name: Get Tag Name
-        id: tag
-        run: echo "name=${GITHUB_REF#refs/tags/v}" >> $GITHUB_OUTPUT
-
-      - name: Prepare Release Notes
-        run: |
-          dart run grinder release-notes --tag=v${{ steps.tag.outputs.name }} --output=release_notes.log
-          echo "RELEASE_NOTES<<EOF" >> $GITHUB_ENV
-          while IFS= read -r line; do
-            echo "$line" >> $GITHUB_ENV
-          done < "release_notes.log"
-          echo "EOF" >> $GITHUB_ENV
-          rm release_notes.log
-          
-      - name: Set Build Number
-        id: build_number
-        run: echo "build_number=$(git rev-list --count HEAD)" >> $GITHUB_OUTPUT
-
-      - name: Create Release Page
-        id: create_release
-        uses: actions/create-release@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          tag_name: v${{ steps.tag.outputs.name }}
-          release_name: Release ${{ steps.tag.outputs.name }}
-          body: ${{ env.RELEASE_NOTES }}
-          draft: true
-          prerelease: false
+    uses: lyskouski/app-finance/.github/workflows/lib/create_release_page.yml
+    secrets: inherit
+    with:
+      draft: false
 
   build:
     name: Create ${{ matrix.target }} build
