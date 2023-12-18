@@ -41,7 +41,7 @@ jobs:
 
       - name: Run All Tests
         run: | 
-          dart run grinder test --coverage > coverage/test_execution.log
+          dart run grinder test --coverage > test_execution.log
           dart run test_cov_console --file="./coverage/lcov.info" --total > coverage/test_total.log
         
       - name: Generate Golden Images
@@ -56,3 +56,4 @@ jobs:
           path: |
             coverage
             test/widget
+            test_execution.log
