@@ -287,10 +287,10 @@ jobs:
 
 # Linux Flatpak
   build-flatpak:
+    uses: ./.github/workflows/build_package_flatpack.yml
     needs:
       - release
       - build
-    uses: ./.github/workflows/build_package_flatpack.yml
     secrets: inherit
     with:
       version: ${{ needs.release.outputs.version }}
