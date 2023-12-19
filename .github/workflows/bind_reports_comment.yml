@@ -38,9 +38,11 @@ jobs:
         run: |
           flutter pub get
           dart run grinder test --coverage
-          COVERAGE=$(dart run test_cov_console --file="./coverage/lcov.info" --total)
+          COVERAGE=$(dart run test_cov_console --file="./coverage/lcov.info" --total | tr -d '[:space:]')
           curl -vLJO -H 'Accept: application/octet-stream' "https://lyskouski.github.io/app-finance/coverage/test_total.log"
-          MAIN_COVERAGE=$(cat test_total.log)
+          MAIN_COVERAGE=$(cat test_total.log | tr -d '[:space:]')
+          echo "Main branch coverage: $MAIN_COVERAGE %"
+          echo "Current branch coverage: $COVERAGE %"
           DELTA=$(echo "$COVERAGE - $MAIN_COVERAGE" | bc)
           echo "DELTA_COVERAGE=${DELTA}" >> $GITHUB_ENV
 
@@ -53,7 +55,7 @@ jobs:
             |------|------|
             | Dependencies Graph | [dependencies.svg](${{ env.ARTIFACT_URL }}) |
             
-            Coverage: ${{ env.DELTA_COVERAGE }}%
+            Coverage delta: ${{ env.DELTA_COVERAGE }}%
         with:
           script: |
             github.rest.issues.createComment({
