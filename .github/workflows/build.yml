@@ -287,13 +287,15 @@ jobs:
 
 # Linux Flatpak
   build-flatpak:
-    uses: ./.github/workflows/build_package_flatpack.yml
+    runs-on: ubuntu-latest
     needs:
       - release
       - build
-    secrets: inherit
-    with:
-      version: ${{ needs.release.outputs.version }}
-      sha: ${{ github.sha }}
-      upload_url: ${{ needs.release.outputs.upload_url }}
-      is_release: true
+    steps:
+      - name: Build Flatpak
+        uses: ./.github/workflows/build_package_flatpak.yml
+        with:
+          version: ${{ needs.release.outputs.version }}
+          sha: ${{ github.sha }}
+          upload_url: ${{ needs.release.outputs.upload_url }}
+          is_release: true
