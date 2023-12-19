@@ -1,0 +1,74 @@
+name: Create Release Page
+
+on:
+  workflow_call:
+    inputs:
+      upload_url:
+        description: "Release page URL"
+        type: string
+      version:
+        description: "Latest tag name"
+        type: string
+      sha:
+        description: "Current git commit"
+        type: string
+      is_release:
+        description: "Attach artifacts to Release"
+        default: false
+        type: boolean
+      is_build:
+        description: "Attach artifacts to Build"
+        default: false
+        type: boolean
+
+jobs:
+  build:
+    name: Create Linux Flatpak build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Patch Manifest
+        run: |
+          ASSET_URL="https://github.com/lyskouski/app-finance/releases/download/v${{ inputs.version }}/fingrom_Linux.tar.gz"
+          curl -vLJO -H 'Accept: application/octet-stream' $ASSET_URL
+          sh patch.sh -i ${{ inputs.sha }} -v "${{ inputs.version }}" -s $(sha256sum fingrom_Linux.tar.gz | gawk '{ print $1 }')
+        working-directory: linux-flatpak
+
+      - name: Build Linux Flatpak
+        run: |
+          sudo apt-get install -y flatpak flatpak-builder
+          flatpak install flathub org.gnome.Platform//45 org.gnome.Sdk//45
+          sudo flatpak-builder --install build-dir com.tercad.fingrom.yml
+          flatpak build-bundle /var/lib/flatpak/repo fingrom_LinuxFlatpak.flatpak com.tercad.fingrom
+        working-directory: linux-flatpak
+
+        with:
+          bundle: fingrom_LinuxFlatpak.flatpak
+          manifest-path: linux-flatpak/com.tercad.fingrom.yml
+
+      - name: Store Configs for github.com/flathub
+        uses: actions/upload-artifact@v3
+        with:
+          name: flatpak-configs
+          path: |
+            linux-flatpak/com.tercad.fingrom.metainfo.xml
+            linux-flatpak/com.tercad.fingrom.yml
+
+      - name: Add Flatpak Artifact to Build
+        if: inputs.is_build
+        uses: actions/upload-artifact@v3
+        with:
+          name: fingrom_LinuxFlatpak
+          path: linux-flatpak/fingrom_LinuxFlatpak.flatpak
+
+      - name: Add Flatpak Artifact to Release
+        if: inputs.is_release
+        uses: actions/upload-release-asset@latest
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ inputs.upload_url }}
+          asset_path: linux-flatpak/fingrom_LinuxFlatpak.flatpak
+          asset_name: fingrom_LinuxFlatpak.flatpak
+          asset_content_type: application/zip
