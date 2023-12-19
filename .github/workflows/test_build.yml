@@ -1,0 +1,13 @@
+name: Test
+
+on:
+  pull_request:
+
+jobs:
+  build:
+    uses: ./.github/workflows/build_package_flatpack.yml
+    with:
+      version: ${{ needs.release.outputs.version }}
+      sha: ${{ github.sha }}
+      upload_url: ${{ needs.release.outputs.upload_url }}
+      is_release: true
