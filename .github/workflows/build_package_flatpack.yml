@@ -1,4 +1,4 @@
-name: Create Release Page
+name: Build Flatpak Package
 
 on:
   workflow_call:
