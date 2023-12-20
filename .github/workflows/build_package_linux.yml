@@ -1,4 +1,4 @@
-name: Build Flatpak Package
+name: Build Linux Package
 
 on:
   workflow_call:
