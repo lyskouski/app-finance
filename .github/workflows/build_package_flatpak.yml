@@ -43,10 +43,6 @@ jobs:
           flatpak build-bundle /var/lib/flatpak/repo fingrom_LinuxFlatpak.flatpak com.tercad.fingrom
         working-directory: linux-flatpak
 
-        with:
-          bundle: fingrom_LinuxFlatpak.flatpak
-          manifest-path: linux-flatpak/com.tercad.fingrom.yml
-
       - name: Store Configs for github.com/flathub
         uses: actions/upload-artifact@v3
         with:
