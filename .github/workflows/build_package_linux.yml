@@ -1,0 +1,85 @@
+name: Build Flatpak Package
+
+on:
+  workflow_call:
+    inputs:
+      upload_url:
+        description: "Release page URL"
+        type: string
+      version:
+        description: "Latest tag name"
+        type: string
+      build_number:
+        description: "Build Number (count commits)"
+        type: string
+      is_release:
+        description: "Attach artifacts to Release"
+        default: false
+        type: boolean
+      is_build:
+        description: "Attach artifacts to Build"
+        default: false
+        type: boolean
+      target:
+        description: "Artifact postfix"
+        default: Linux
+        type: string
+      build_path:
+        description: "Artifact compilation path"
+        default: build/linux/x64/release/bundle
+        type: string
+      asset_extension: 
+        description: "Artifact extension"
+        default: .tar.gz
+        type: string
+      asset_content_type: 
+        description: "Artifact type"
+        default: application/gzip
+        type: string
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+      - uses: subosito/flutter-action@v2
+        with:
+          channel: 'stable'
+          cache: true
+      - run: flutter pub get
+
+      - name: Patch PubSpec
+        run: dart run grinder pubspec-update --build-name=${{ inputs.version }} --build-number=${{ inputs.build_number }}
+
+      - name: Run Linux Build
+        run: |
+          sudo apt-get install -y libgtk-3-dev ninja-build
+          flutter config --enable-linux-desktop
+          flutter build -v linux --build-name=${{ inputs.version }} --build-number=${{ inputs.build_number }} --release
+
+      - name: Compress Linux Package
+        run: |
+          cp $GITHUB_WORKSPACE/com.tercad.fingrom.desktop ./
+          cp $GITHUB_WORKSPACE/com.tercad.fingrom.svg ./
+          tar czf $GITHUB_WORKSPACE/fingrom_${{ inputs.target }}${{ inputs.asset_extension }} *
+        working-directory: ${{ inputs.build_path }}
+
+      - name: Add Linux Artifact to Build
+        if: inputs.is_build
+        uses: actions/upload-artifact@v3
+        with:
+          name: fingrom_${{ inputs.target }}${{ inputs.asset_extension }}
+          path: ./fingrom_${{ inputs.target }}${{ inputs.asset_extension }}
+
+      - name: Upload ${{ inputs.target }} Artifact
+        if: inputs.is_release
+        id: upload_release_asset
+        uses: actions/upload-release-asset@latest
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ inputs.upload_url }}
+          asset_path: ./fingrom_${{ inputs.target }}${{ inputs.asset_extension }}
+          asset_name: fingrom_${{ inputs.target }}${{ inputs.asset_extension }}
+          asset_content_type: ${{ inputs.asset_content_type }}

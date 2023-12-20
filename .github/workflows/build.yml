@@ -19,7 +19,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        target: [macOS, iOS, Windows, Linux, LinuxSnap, Android, Web]
+        target: [macOS, iOS, Windows, LinuxSnap, Android, Web]
         include:
           - os: macos-latest
             target: macOS
@@ -36,11 +36,6 @@ jobs:
             build_path: build/windows/x64/runner/Release
             asset_extension: .zip
             asset_content_type: application/zip
-          - os: ubuntu-latest
-            target: Linux
-            build_path: build/linux/x64/release/bundle
-            asset_extension: .tar.gz
-            asset_content_type: application/gzip
           - os: ubuntu-latest
             target: LinuxSnap
             build_path: ./
@@ -116,22 +111,6 @@ jobs:
         run: |
           msstore reconfigure --tenantId ${{ secrets.WINDOWS_TENANT_ID }} --clientId ${{ secrets.WINDOWS_CLIENT_ID }} --clientSecret ${{ secrets.WINDOWS_SECRET }} --sellerId ${{ secrets.WINDOWS_SELLER_ID }}
           msstore publish -i ${{ matrix.build_path }}  || echo "Publishing failed since replaced build in review state."
-
-# Linux
-      - name: Run Linux Build
-        if: matrix.target == 'Linux'
-        run: |
-          sudo apt-get install -y libgtk-3-dev ninja-build
-          flutter config --enable-linux-desktop
-          flutter build -v linux --build-name=${{ needs.release.outputs.version }} --build-number=${{ needs.release.outputs.build_number }} --release
-
-      - name: Compress Linux Package
-        if: matrix.target == 'Linux'
-        run: |
-          cp $GITHUB_WORKSPACE/com.tercad.fingrom.desktop ./
-          cp $GITHUB_WORKSPACE/com.tercad.fingrom.svg ./
-          tar czf $GITHUB_WORKSPACE/fingrom_${{ matrix.target }}${{ matrix.asset_extension }} *
-        working-directory: ${{ matrix.build_path }}
 
 # Linux Snap
       - name: Install Snapcraft
@@ -285,12 +264,25 @@ jobs:
           asset_name: fingrom_${{ matrix.target }}${{ matrix.asset_extension }}
           asset_content_type: ${{ matrix.asset_content_type }}
 
+# Linux
+  build-linux:
+    uses: ./.github/workflows/build_package_linux.yml
+    if: success()
+    needs:
+      - release
+    with:
+      version: ${{ needs.release.outputs.version }}
+      build_number: ${{ needs.release.outputs.build_number }}
+      upload_url: ${{ needs.release.outputs.upload_url }}
+      is_release: true
+
 # Linux Flatpak
   build-flatpak:
     uses: ./.github/workflows/build_package_flatpak.yml
+    if: success()
     needs:
       - release
-      - build
+      - build-linux
     secrets: inherit
     with:
       version: ${{ needs.release.outputs.version }}
