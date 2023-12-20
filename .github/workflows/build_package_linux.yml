@@ -39,6 +39,7 @@ on:
 
 jobs:
   build:
+    name: Create Linux Build
     runs-on: ubuntu-latest
 
     steps:
