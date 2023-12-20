@@ -38,10 +38,10 @@ jobs:
       - name: Build Linux Flatpak
         run: |
           sudo apt-get install -y flatpak flatpak-builder
-          flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
-          flatpak install flathub org.gnome.Platform//45 org.gnome.Sdk//45
+          sudo flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+          sudo flatpak install flathub org.gnome.Platform//45 org.gnome.Sdk//45
           sudo flatpak-builder --install build-dir com.tercad.fingrom.yml
-          flatpak build-bundle /var/lib/flatpak/repo fingrom_LinuxFlatpak.flatpak com.tercad.fingrom
+          sudo flatpak build-bundle /var/lib/flatpak/repo fingrom_LinuxFlatpak.flatpak com.tercad.fingrom
         working-directory: linux-flatpak
 
       - name: Store Configs for github.com/flathub
