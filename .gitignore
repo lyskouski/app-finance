@@ -24,6 +24,7 @@ localization*.csv
 assets/fonts/MaterialIcons-Regular.otf
 assets/fonts/MaterialIcons-Regular.ttf
 .github/workflows/test_build.yml
+linux-flatpak/.flatpak-builder
 
 # IntelliJ related
 *.iml

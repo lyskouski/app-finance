@@ -39,8 +39,8 @@ jobs:
         run: |
           sudo apt-get install -y flatpak flatpak-builder
           sudo flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
-          sudo flatpak install flathub org.gnome.Platform//45 org.gnome.Sdk//45
-          sudo flatpak-builder --install build-dir com.tercad.fingrom.yml -y
+          sudo flatpak install flathub org.gnome.Platform//45 org.gnome.Sdk//45 -y
+          sudo flatpak-builder --install build-dir com.tercad.fingrom.yml
           sudo flatpak build-bundle /var/lib/flatpak/repo fingrom_LinuxFlatpak.flatpak com.tercad.fingrom
         working-directory: linux-flatpak
 
