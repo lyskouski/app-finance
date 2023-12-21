@@ -18,7 +18,6 @@ import 'package:app_finance/design/wrapper/input_wrapper.dart';
 import 'package:app_finance/l10n/index.dart';
 import 'package:app_finance/design/button/link_widget.dart';
 import 'package:app_finance/design/form/color_selector.dart';
-import 'package:app_finance/design/form/list_selector.dart';
 import 'package:app_finance/pages/start/widgets/abstract_tab.dart';
 import 'package:app_finance/design/wrapper/row_widget.dart';
 import 'package:app_finance/design/wrapper/single_scroll_wrapper.dart';
@@ -68,6 +67,7 @@ class SettingTabState<T extends SettingTab> extends AbstractTabState<T> {
     AppPreferences.set(AppPreferences.prefDoEncrypt, isEncrypted ? 'true' : 'false');
     brightness = AppPreferences.get(AppPreferences.prefTheme) ?? brightness;
     colorMode = AppPreferences.get(AppPreferences.prefColor) ?? colorMode;
+    currency = CurrencyProvider.find(AppPreferences.get(AppPreferences.prefCurrency) ?? 'EUR');
   }
 
   @override

@@ -1,7 +1,6 @@
 // Copyright 2023 The terCAD team. All rights reserved.
 // Use of this source code is governed by a CC BY-NC-ND 4.0 license that can be found in the LICENSE file.
 
-import 'package:app_finance/_classes/controller/focus_controller.dart';
 import 'package:app_finance/_classes/herald/app_locale.dart';
 import 'package:app_finance/design/form/list_selector_item.dart';
 import 'package:app_finance/_configs/theme_helper.dart';
@@ -9,7 +8,6 @@ import 'package:app_finance/_ext/build_context_ext.dart';
 import 'package:app_finance/_ext/color_ext.dart';
 import 'package:app_finance/design/form/simple_input.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 
 typedef FntSelectorCallback = Widget Function(
   List<ListSelectorItem> options,
@@ -36,66 +34,46 @@ class ListSelectorPage<T extends Object?> extends StatefulWidget {
 
 class ListSelectorPageState<T extends Object?> extends State<ListSelectorPage> {
   final controller = TextEditingController();
-  final focusController = FocusController();
   late NavigatorState nav;
-  List<ValueNotifier<bool>> show = [];
   dynamic result;
   List<ListSelectorItem> options = [];
+  String value = '';
 
   @override
   void initState() {
     result = widget.result;
     options = widget.options;
-    show = List.generate(widget.options.length, (index) => ValueNotifier<bool>(true));
-    if (widget.itemBuilder == null) {
-      controller.addListener(() => filter(controller.text));
-    } else {
-      controller.addListener(
-        () => setState(() => options = widget.options.where((e) => e.match(controller.text)).toList()),
-      );
-    }
+    controller.addListener(() => controller.text.isEmpty && value.isEmpty ? () {} : setState(filter));
     super.initState();
   }
 
   @override
   void dispose() {
     controller.dispose();
-    focusController.dispose();
-    show.clear();
     super.dispose();
   }
 
-  void filter(String value) {
-    for (int i = widget.options.length - 1; i >= 0; i--) {
-      show[i].value = widget.options[i].match(value);
-    }
+  void filter() {
+    value = controller.text;
+    options = widget.options.where((e) => e.match(value)).toList();
   }
 
   Widget itemBuilder(List<ListSelectorItem> options) =>
       widget.itemBuilder?.call(options, nav) ??
       ListView.builder(
-        itemCount: widget.options.length,
+        itemCount: options.length,
         itemBuilder: (BuildContext context, int index) {
-          return ValueListenableBuilder<bool>(
-            valueListenable: show[index],
-            builder: (context, value, child) {
-              return Visibility(
-                visible: value,
-                child: ListTile(
-                  tileColor: index % 2 == 0 ? context.colorScheme.primary.withOpacity(0.05) : null,
-                  hoverColor: context.colorScheme.primary.withOpacity(0.15),
-                  title: widget.options[index].suggest(context),
-                  onTap: () => nav.pop<T>(widget.options[index] as T),
-                ),
-              );
-            },
+          return ListTile(
+            tileColor: index % 2 == 0 ? context.colorScheme.primary.withOpacity(0.05) : null,
+            hoverColor: context.colorScheme.primary.withOpacity(0.15),
+            title: options[index].suggest(context),
+            onTap: () => nav.pop<T>(options[index] as T),
           );
         },
       );
 
   @override
   Widget build(BuildContext context) {
-    Provider.of<AppLocale>(context, listen: false).updateState(context);
     final indent = ThemeHelper.getIndent();
     nav = Navigator.of(context);
     return Scaffold(
@@ -137,7 +115,6 @@ class ListSelectorPageState<T extends Object?> extends State<ListSelectorPage> {
                     child: SimpleInput(
                       controller: controller,
                       tooltip: widget.tooltip,
-                      focusController: focusController,
                       withLabel: true,
                       forceFocus: true,
                       onFieldSubmitted: (String value) =>

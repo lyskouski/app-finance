@@ -1,6 +1,7 @@
 // Copyright 2023 The terCAD team. All rights reserved.
 // Use of this source code is governed by a CC BY-NC-ND 4.0 license that can be found in the LICENSE file.
 
+import 'package:app_finance/_classes/controller/focus_controller.dart';
 import 'package:app_finance/_classes/herald/app_zoom.dart';
 import 'package:app_finance/_classes/structure/navigation/app_route.dart';
 // import 'package:app_finance/pages/_interfaces/abstract_page_state.dart';
@@ -128,7 +129,7 @@ class InputControllerWrapperState extends State<InputControllerWrapper> {
     return Listener(
       onPointerSignal: onPointerSignal,
       child: RawKeyboardListener(
-        focusNode: focus..requestFocus(),
+        focusNode: FocusController.force ? focus : (focus..requestFocus()),
         onKey: onKeyPressed,
         //child: GestureDetector(
         //  onScaleUpdate: onScaleUpdate,
