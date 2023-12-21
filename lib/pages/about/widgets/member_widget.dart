@@ -19,6 +19,7 @@ class MemberWidget extends StatelessWidget {
     AppLocale.labels.coDeveloper: Colors.indigo.withOpacity(0.2),
     AppLocale.labels.coTranslator: Colors.pink.withOpacity(0.2),
     AppLocale.labels.coPromoter: Colors.purple.withOpacity(0.2),
+    AppLocale.labels.coConsult: Colors.cyan.withOpacity(0.2),
   };
 
   final MemberData member;

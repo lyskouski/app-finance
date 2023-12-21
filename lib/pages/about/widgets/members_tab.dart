@@ -10,15 +10,11 @@ import 'package:flutter/material.dart';
 
 class MembersTab extends StatelessWidget with LauncherMixin {
   static late final members = [
-    (
-      name: 'Viachaslau Lyskouski',
-      badge: [
-        AppLocale.labels.coAuthor,
-        AppLocale.labels.coTranslator,
-        AppLocale.labels.coDeveloper,
-      ]
-    ),
+    (name: 'Viachaslau Lyskouski', badge: [AppLocale.labels.coAuthor]),
     (name: 'Iryna Shepetovetska', badge: [AppLocale.labels.coTranslator]),
+    (name: 'Andrei Tarasevich', badge: [AppLocale.labels.coConsult]),
+    (name: 'Halina Gulevich', badge: [AppLocale.labels.coConsult]),
+    (name: 'Edivaldo Brito', badge: [AppLocale.labels.coPromoter]),
     (name: 'Jardeson Márcio', badge: [AppLocale.labels.coPromoter]),
     (name: 'Paul', badge: [AppLocale.labels.coPromoter]),
     (name: 'Alexey Alter-Pesotskiy', badge: [AppLocale.labels.coPromoter]),

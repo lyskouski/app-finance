@@ -11,6 +11,7 @@ Editing and Mixing: previewed.app, Kdenlive
   [en] Welcome to a comprehensive overview of "Fingrom", an open-source cross-platform financial accounting application that redefines the way you manage your finances.
   [de] Willkommen zu einem umfassenden Überblick über "Fingrom", eine plattformübergreifende Open-Source-Finanzbuchhaltungsanwendung, die Ihre Finanzverwaltung neu definiert.
   [uk] Ласкаво просимо до детального огляду "Fingrom", крос-платформної програми фінансового обліку з відкритим вихідним кодом, яка змінює спосіб управління вашими фінансами.
+  [fr] Bonjour et bienvenue à tous les utilisateurs de Fingrom. Bienvenue dans cette présentation complète de "Fingrom", une application de comptabilité financière multiplateforme à code source ouvert qui redéfinit la manière dont vous gérez vos finances.
 
 - ch00-s02-inclusive
   [en] In this video, we'll explore the key features and capabilities of Fingrom, designed to make financial accounting intuitive, efficient, and inclusive.
