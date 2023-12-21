@@ -115,8 +115,11 @@ class FocusController {
   void onFocus(dynamic item, [int? idx, bool isForced = true]) {
     idx ??= key(item);
     focus = idx;
-    _blur();
-    if ((order.containsValue(idx) || idx == idButton) && scope[idx] != null && scope[idx]!.context != null) {
+    if ((order.containsValue(idx) || idx == idButton) &&
+        scope[idx] != null &&
+        scope[idx]!.context != null &&
+        scope[idx]!.context!.mounted) {
+      _blur();
       scope[idx]?.requestFocus();
       if (item != null) {
         _scrollTo.run(() => scrollToFocusedElement(item, idx));

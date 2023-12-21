@@ -18,7 +18,8 @@ class ListSelectorItem {
 
   Widget suggest(BuildContext context) => build(context);
 
-  bool match(String search) => search.isPartOf(name, Locale(AppLocale.code));
+  bool match(String search) =>
+      search.isPartOf(name, Locale(AppLocale.code)) || name.toLowerCase().contains(search.toLowerCase());
 
   bool equal(dynamic val) => val is ListSelectorItem ? id == val.id : id == val;
 

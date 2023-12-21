@@ -47,7 +47,7 @@ class ListSelectorState<T extends ListSelector, K extends ListSelectorItem> exte
   FntSelectorCallback? getItemBuilder() => null;
 
   void onTap(BuildContext context) async {
-    focusController.onFocus(this);
+    FocusController.force = true;
     final result = await Navigator.push(
       context,
       MaterialPageRoute(
@@ -59,6 +59,7 @@ class ListSelectorState<T extends ListSelector, K extends ListSelectorItem> exte
         ),
       ),
     );
+    FocusController.force = false;
     widget.setState(result);
     WidgetsBinding.instance.addPostFrameCallback((_) => focusController.onEditingComplete(this));
   }

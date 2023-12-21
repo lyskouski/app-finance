@@ -52,7 +52,7 @@ class SimpleInput extends StatelessWidget {
   Widget build(BuildContext context) {
     final indent = ThemeHelper.getIndent(1.5);
     final textTheme = context.textTheme;
-    final focusController = FocusWrapper.of(context) ?? this.focusController;
+    final focusController = this.focusController ?? FocusWrapper.of(context);
     return Semantics(
       container: true,
       textField: true,

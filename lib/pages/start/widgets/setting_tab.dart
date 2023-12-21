@@ -147,23 +147,19 @@ class SettingTabState<T extends SettingTab> extends AbstractTabState<T> {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           ThemeHelper.hIndent2x,
-          Text(
-            AppLocale.labels.language,
-            style: textTheme.bodyLarge,
-          ),
-          ListSelector<ListSelectorItem>(
-            value: ListSelectorItem(id: AppLocale.code, name: ''),
-            hintText: AppLocale.labels.language,
+          InputWrapper.select(
+            title: AppLocale.labels.language,
+            tooltip: AppLocale.labels.language,
+            value: AppLocale.code,
             options: languages,
-            setState: (v) => saveLocale(v?.id ?? AppLocale.code),
+            onChange: (v) => saveLocale(v ?? AppLocale.code),
           ),
-          ThemeHelper.hIndent2x,
           InputWrapper.currency(
             title: AppLocale.labels.currencyDefault,
+            tooltip: AppLocale.labels.currencyDefault,
             value: currency,
             onChange: saveCurrency,
           ),
-          ThemeHelper.hIndent2x,
           if (kDebugMode) ...[
             Row(
               mainAxisAlignment: MainAxisAlignment.start,
@@ -183,36 +179,28 @@ class SettingTabState<T extends SettingTab> extends AbstractTabState<T> {
             ),
             ThemeHelper.hIndent2x,
           ],
-          Text(
-            AppLocale.labels.brightnessTheme,
-            style: textTheme.bodyLarge,
-          ),
-          ListSelector<ListSelectorItem>(
-            value: ListSelectorItem(id: brightness, name: ''),
-            hintText: AppLocale.labels.brightnessTheme,
+          InputWrapper.select(
+            title: AppLocale.labels.brightnessTheme,
+            value: brightness,
+            tooltip: AppLocale.labels.brightnessTheme,
             options: [
               ListSelectorItem(id: '0', name: AppLocale.labels.systemMode),
               ListSelectorItem(id: '1', name: AppLocale.labels.lightMode),
               ListSelectorItem(id: '2', name: AppLocale.labels.darkMode),
-            ],
-            setState: (v) => saveTheme(v?.id ?? '0'),
+            ].cast<ListSelectorItem>(),
+            onChange: (v) => saveTheme(v ?? '0'),
           ),
-          ThemeHelper.hIndent2x,
-          Text(
-            AppLocale.labels.colorTheme,
-            style: textTheme.bodyLarge,
-          ),
-          ListSelector<ListSelectorItem>(
-            value: ListSelectorItem(id: colorMode, name: ''),
-            hintText: AppLocale.labels.colorTheme,
+          InputWrapper.select(
+            title: AppLocale.labels.colorTheme,
+            value: colorMode,
+            tooltip: AppLocale.labels.colorTheme,
             options: [
               ListSelectorItem(id: AppColors.colorApp, name: AppLocale.labels.colorApp),
               ListSelectorItem(id: AppColors.colorSystem, name: AppLocale.labels.colorSystem),
               ListSelectorItem(id: AppColors.colorUser, name: AppLocale.labels.colorUser),
-            ],
-            setState: (v) => saveColor(v?.id ?? AppColors.colorApp),
+            ].cast<ListSelectorItem>(),
+            onChange: (v) => saveColor(v ?? AppColors.colorApp),
           ),
-          ThemeHelper.hIndent2x,
           if (colorMode == AppColors.colorUser) ...[
             TableWidget(
               width: width,

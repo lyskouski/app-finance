@@ -1,6 +1,7 @@
 // Copyright 2023 The terCAD team. All rights reserved.
 // Use of this source code is governed by a CC BY-NC-ND 4.0 license that can be found in the LICENSE file.
 
+import 'package:app_finance/_classes/controller/focus_controller.dart';
 import 'package:app_finance/_classes/herald/app_locale.dart';
 import 'package:app_finance/design/form/list_selector_item.dart';
 import 'package:app_finance/_configs/theme_helper.dart';
@@ -35,6 +36,7 @@ class ListSelectorPage<T extends Object?> extends StatefulWidget {
 
 class ListSelectorPageState<T extends Object?> extends State<ListSelectorPage> {
   final controller = TextEditingController();
+  final focusController = FocusController();
   late NavigatorState nav;
   List<ValueNotifier<bool>> show = [];
   dynamic result;
@@ -58,6 +60,7 @@ class ListSelectorPageState<T extends Object?> extends State<ListSelectorPage> {
   @override
   void dispose() {
     controller.dispose();
+    focusController.dispose();
     show.clear();
     super.dispose();
   }
@@ -95,8 +98,9 @@ class ListSelectorPageState<T extends Object?> extends State<ListSelectorPage> {
     Provider.of<AppLocale>(context, listen: false).updateState(context);
     final indent = ThemeHelper.getIndent();
     nav = Navigator.of(context);
-    return Material(
-      child: Column(
+    return Scaffold(
+      appBar: AppBar(backgroundColor: context.colorScheme.primary, toolbarHeight: 0),
+      body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
@@ -133,6 +137,7 @@ class ListSelectorPageState<T extends Object?> extends State<ListSelectorPage> {
                     child: SimpleInput(
                       controller: controller,
                       tooltip: widget.tooltip,
+                      focusController: focusController,
                       withLabel: true,
                       forceFocus: true,
                       onFieldSubmitted: (String value) =>
