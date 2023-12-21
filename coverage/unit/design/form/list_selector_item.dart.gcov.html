@@ -32,12 +32,12 @@
             <td></td>
             <td class="headerItem">Lines:</td>
             <td class="headerCovTableEntry">0</td>
-            <td class="headerCovTableEntry">9</td>
+            <td class="headerCovTableEntry">10</td>
             <td class="headerCovTableEntryLo">0.0 %</td>
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2023-12-20 10:24:24</td>
+            <td class="headerValue">2023-12-21 13:00:13</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">0</td>
@@ -80,15 +80,16 @@
 <a name="18"><span class="lineNum">      18 </span>            : </a>
 <a name="19"><span class="lineNum">      19 </span><span class="lineNoCov">          0 :   Widget suggest(BuildContext context) =&gt; build(context);</span></a>
 <a name="20"><span class="lineNum">      20 </span>            : </a>
-<a name="21"><span class="lineNum">      21 </span><span class="lineNoCov">          0 :   bool match(String search) =&gt; search.isPartOf(name, Locale(AppLocale.code));</span></a>
-<a name="22"><span class="lineNum">      22 </span>            : </a>
-<a name="23"><span class="lineNum">      23 </span><span class="lineNoCov">          0 :   bool equal(dynamic val) =&gt; val is ListSelectorItem ? id == val.id : id == val;</span></a>
-<a name="24"><span class="lineNum">      24 </span>            : </a>
-<a name="25"><span class="lineNum">      25 </span><span class="lineNoCov">          0 :   @override</span></a>
-<a name="26"><span class="lineNum">      26 </span><span class="lineNoCov">          0 :   toString() =&gt; name;</span></a>
-<a name="27"><span class="lineNum">      27 </span>            : </a>
-<a name="28"><span class="lineNum">      28 </span><span class="lineNoCov">          0 :   ListSelectorItem({required this.id, required this.name});</span></a>
-<a name="29"><span class="lineNum">      29 </span>            : }</a>
+<a name="21"><span class="lineNum">      21 </span><span class="lineNoCov">          0 :   bool match(String search) =&gt;</span></a>
+<a name="22"><span class="lineNum">      22 </span><span class="lineNoCov">          0 :       search.isPartOf(name, Locale(AppLocale.code)) || name.toLowerCase().contains(search.toLowerCase());</span></a>
+<a name="23"><span class="lineNum">      23 </span>            : </a>
+<a name="24"><span class="lineNum">      24 </span><span class="lineNoCov">          0 :   bool equal(dynamic val) =&gt; val is ListSelectorItem ? id == val.id : id == val;</span></a>
+<a name="25"><span class="lineNum">      25 </span>            : </a>
+<a name="26"><span class="lineNum">      26 </span><span class="lineNoCov">          0 :   @override</span></a>
+<a name="27"><span class="lineNum">      27 </span><span class="lineNoCov">          0 :   toString() =&gt; name;</span></a>
+<a name="28"><span class="lineNum">      28 </span>            : </a>
+<a name="29"><span class="lineNum">      29 </span><span class="lineNoCov">          0 :   ListSelectorItem({required this.id, required this.name});</span></a>
+<a name="30"><span class="lineNum">      30 </span>            : }</a>
 </pre>
       </td>
     </tr>

@@ -836,6 +836,7 @@ digraph G {
   _configs_ -> _configs_ [color="green"];
 
   wrapper -> herald [color="#0000FF50"];
+  wrapper -> controller [color="#0000FF50"];
   wrapper -> herald [color="#0000FF50"];
   wrapper -> structure_navigation [color="#0000FF50"];
   wrapper -> _interfaces [color="#0000FF50"];

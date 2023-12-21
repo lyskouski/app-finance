@@ -31,13 +31,13 @@
             <td class="headerValue">lcov.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntry">62</td>
-            <td class="headerCovTableEntry">63</td>
-            <td class="headerCovTableEntryHi">98.4 %</td>
+            <td class="headerCovTableEntry">65</td>
+            <td class="headerCovTableEntry">66</td>
+            <td class="headerCovTableEntryHi">98.5 %</td>
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2023-12-20 10:28:12</td>
+            <td class="headerValue">2023-12-21 13:04:07</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">0</td>
@@ -177,24 +177,27 @@
 <a name="115"><span class="lineNum">     115 </span><span class="lineCov">          1 :   void onFocus(dynamic item, [int? idx, bool isForced = true]) {</span></a>
 <a name="116"><span class="lineNum">     116 </span><span class="lineCov">          1 :     idx ??= key(item);</span></a>
 <a name="117"><span class="lineNum">     117 </span><span class="lineCov">          1 :     focus = idx;</span></a>
-<a name="118"><span class="lineNum">     118 </span><span class="lineCov">          1 :     _blur();</span></a>
-<a name="119"><span class="lineNum">     119 </span><span class="lineCov">          9 :     if ((order.containsValue(idx) || idx == idButton) &amp;&amp; scope[idx] != null &amp;&amp; scope[idx]!.context != null) {</span></a>
-<a name="120"><span class="lineNum">     120 </span><span class="lineCov">          3 :       scope[idx]?.requestFocus();</span></a>
-<a name="121"><span class="lineNum">     121 </span>            :       if (item != null) {</a>
-<a name="122"><span class="lineNum">     122 </span><span class="lineCov">          4 :         _scrollTo.run(() =&gt; scrollToFocusedElement(item, idx));</span></a>
-<a name="123"><span class="lineNum">     123 </span>            :       }</a>
-<a name="124"><span class="lineNum">     124 </span>            :     }</a>
-<a name="125"><span class="lineNum">     125 </span>            :     force = isForced;</a>
-<a name="126"><span class="lineNum">     126 </span>            :   }</a>
-<a name="127"><span class="lineNum">     127 </span>            : </a>
-<a name="128"><span class="lineNum">     128 </span><span class="lineCov">          1 :   void dispose() {</span></a>
-<a name="129"><span class="lineNum">     129 </span><span class="lineCov">          4 :     scope.forEach((_, node) =&gt; node.dispose());</span></a>
-<a name="130"><span class="lineNum">     130 </span><span class="lineCov">          2 :     scope.clear();</span></a>
-<a name="131"><span class="lineNum">     131 </span><span class="lineCov">          2 :     values.clear();</span></a>
-<a name="132"><span class="lineNum">     132 </span><span class="lineCov">          2 :     _controller.dispose();</span></a>
-<a name="133"><span class="lineNum">     133 </span><span class="lineCov">          1 :     focus = null;</span></a>
-<a name="134"><span class="lineNum">     134 </span>            :   }</a>
-<a name="135"><span class="lineNum">     135 </span>            : }</a>
+<a name="118"><span class="lineNum">     118 </span><span class="lineCov">          4 :     if ((order.containsValue(idx) || idx == idButton) &amp;&amp;</span></a>
+<a name="119"><span class="lineNum">     119 </span><span class="lineCov">          2 :         scope[idx] != null &amp;&amp;</span></a>
+<a name="120"><span class="lineNum">     120 </span><span class="lineCov">          3 :         scope[idx]!.context != null &amp;&amp;</span></a>
+<a name="121"><span class="lineNum">     121 </span><span class="lineCov">          4 :         scope[idx]!.context!.mounted) {</span></a>
+<a name="122"><span class="lineNum">     122 </span><span class="lineCov">          1 :       _blur();</span></a>
+<a name="123"><span class="lineNum">     123 </span><span class="lineCov">          3 :       scope[idx]?.requestFocus();</span></a>
+<a name="124"><span class="lineNum">     124 </span>            :       if (item != null) {</a>
+<a name="125"><span class="lineNum">     125 </span><span class="lineCov">          4 :         _scrollTo.run(() =&gt; scrollToFocusedElement(item, idx));</span></a>
+<a name="126"><span class="lineNum">     126 </span>            :       }</a>
+<a name="127"><span class="lineNum">     127 </span>            :     }</a>
+<a name="128"><span class="lineNum">     128 </span>            :     force = isForced;</a>
+<a name="129"><span class="lineNum">     129 </span>            :   }</a>
+<a name="130"><span class="lineNum">     130 </span>            : </a>
+<a name="131"><span class="lineNum">     131 </span><span class="lineCov">          1 :   void dispose() {</span></a>
+<a name="132"><span class="lineNum">     132 </span><span class="lineCov">          4 :     scope.forEach((_, node) =&gt; node.dispose());</span></a>
+<a name="133"><span class="lineNum">     133 </span><span class="lineCov">          2 :     scope.clear();</span></a>
+<a name="134"><span class="lineNum">     134 </span><span class="lineCov">          2 :     values.clear();</span></a>
+<a name="135"><span class="lineNum">     135 </span><span class="lineCov">          2 :     _controller.dispose();</span></a>
+<a name="136"><span class="lineNum">     136 </span><span class="lineCov">          1 :     focus = null;</span></a>
+<a name="137"><span class="lineNum">     137 </span>            :   }</a>
+<a name="138"><span class="lineNum">     138 </span>            : }</a>
 </pre>
       </td>
     </tr>
