@@ -113,6 +113,11 @@
     "contributors": "Учасники",
     "conversion": "Конверсія",
     "conversionMessage": "Взята у {currency}",
+    "@conversionMessage": {
+        "currency": {
+            "type": "String"
+        }
+    },
     "createAccountHeader": "Створити новий рахунок",
     "createAccountTooltip": "Створити рахунок",
     "createBillHeader": "Додати нову транзакцію",
