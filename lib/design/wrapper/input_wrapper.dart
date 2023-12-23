@@ -50,8 +50,7 @@ class InputWrapper extends StatelessWidget {
   final double? width;
   final TextInputType? inputType;
 
-  @override
-  Key? get key => ValueKey(title);
+  Key getKey() => ValueKey(key?.hashCode ?? '$title $tooltip');
 
   const InputWrapper({
     super.key,
@@ -179,7 +178,7 @@ class InputWrapper extends StatelessWidget {
               : TextWrapper(title, style: context.textTheme.bodyLarge),
         switch (type) {
           NamedInputType.textInput => SimpleInput(
-              key: key,
+              key: getKey(),
               controller: controller!,
               tooltip: hint,
               withLabel: min,
@@ -188,7 +187,7 @@ class InputWrapper extends StatelessWidget {
               type: inputType ?? TextInputType.text,
             ),
           NamedInputType.listSelector => ListSelector<ListSelectorItem>(
-              key: key,
+              key: getKey(),
               value: value != null ? ListSelectorItem(id: value, name: '') : null,
               tooltip: tooltip,
               hintText: hint,
@@ -198,20 +197,20 @@ class InputWrapper extends StatelessWidget {
               withLabel: min,
             ),
           NamedInputType.iconSelector => IconSelector(
-              key: key,
+              key: getKey(),
               value: value != null ? IconSelectorItem(value, name: value.toString()) : null,
               setState: (v) => onChange?.call((v as IconSelectorItem?)?.value),
               hintText: hint,
               withLabel: min,
             ),
           NamedInputType.colorSelector => ColorSelector(
-              key: key,
+              key: getKey(),
               value: value,
               setState: (v) => onChange?.call(v),
               withLabel: min,
             ),
           NamedInputType.currencySelector => BaseCurrencySelector(
-              key: key,
+              key: getKey(),
               value: value != null ? BaseListSelectorItem(value) : null,
               setState: (v) => onChange?.call((v as BaseListSelectorItem?)?.item),
               withLabel: min,
@@ -219,7 +218,7 @@ class InputWrapper extends StatelessWidget {
               hintText: tooltip,
             ),
           NamedInputType.currencyShort => CodeCurrencySelector(
-              key: key,
+              key: getKey(),
               value: value != null ? CodeCurrencySelectorItem(value) : null,
               setState: (v) => onChange?.call((v as CodeCurrencySelectorItem?)?.item),
               withLabel: min,
@@ -227,7 +226,7 @@ class InputWrapper extends StatelessWidget {
               hintText: tooltip,
             ),
           NamedInputType.ymSelector => MonthYearInput(
-              key: key,
+              key: getKey(),
               value: value,
               setState: onChange!,
               withLabel: min,
@@ -239,7 +238,7 @@ class InputWrapper extends StatelessWidget {
               withLabel: min,
             ),
           NamedInputType.accountSelector => ListAccountSelector(
-              key: key,
+              key: getKey(),
               value: value != null ? ListAccountSelectorItem(item: value) : null,
               hintText: hint,
               tooltip: tooltip,
@@ -250,7 +249,7 @@ class InputWrapper extends StatelessWidget {
               options: options?.cast() ?? [],
             ),
           NamedInputType.budgetSelector => ListBudgetSelector(
-              key: key,
+              key: getKey(),
               value: value != null ? ListBudgetSelectorItem(item: value) : null,
               hintText: hint,
               tooltip: tooltip,
