@@ -4,6 +4,7 @@
   <name>Fingrom</name>
   <lowercaseAppName>fingrom</lowercaseAppName>
   <githubReleaseOrganization>lyskouski</githubReleaseOrganization>
+  <developer_name>lyskouski</developer_name>
   <githubReleaseProject>app-finance</githubReleaseProject>
   <tag>v{VERSION}</tag>
   <commit>{COMMIT}</commit>
@@ -15,7 +16,9 @@
     <control>keyboard</control>
     <control>touch</control>
   </recommends>
-  <developer_name>lyskouski</developer_name>
+  <categories>
+    <category>Finances</category>
+  </categories>
   <url type="homepage">https://github.com/lyskouski/app-finance</url>
   <url type="bugtracker">https://github.com/lyskouski/app-finance/issues</url>
   <url type="translate">https://github.com/lyskouski/app-finance/tree/main/lib/l10n</url>
@@ -36,10 +39,11 @@
         <li>Recovery via WebDav or a direct File</li>
         <li>Import from CSV, QIF, OFX files for Bills and Invoices</li>
         <li>Data encryption</li>
-        <li>Localization</li>
+        <li>Localizations: EN, BE, PL, PT, FR, DE, UK, ZH, HI, UZ</li>
         <li>Responsive and Adaptive Design</li>
         <li>Shortcuts</li>
     </ul>
+    <p>If you would like to come with suggestions, report bugs, translate the app, or contribute otherwise, feel free to reach out!</p>
     <p>
         This is the "open-source code" application that welcomes and values contributions from the community. 
         However, there are some limitations when it comes to making external modifications and distributions, 
@@ -55,11 +59,21 @@
       <image type="source">https://raw.githubusercontent.com/lyskouski/app-finance/main/docs/marketing-flow/screenshots/desktop-bill-metrics.png</image>
       <image type="source">https://raw.githubusercontent.com/lyskouski/app-finance/main/docs/marketing-flow/screenshots/desktop-account-metrics.png</image>
       <image type="source">https://raw.githubusercontent.com/lyskouski/app-finance/main/docs/marketing-flow/screenshots/widescreen-currencies.png</image>
+      <image type="source">https://raw.githubusercontent.com/lyskouski/app-finance/main/docs/marketing-flow/screenshots/widescreen-bill-page.png</image>
+      <image type="source">https://raw.githubusercontent.com/lyskouski/app-finance/main/docs/marketing-flow/screenshots/widescreen-budget-page.png</image>
+      <image type="source">https://raw.githubusercontent.com/lyskouski/app-finance/main/docs/marketing-flow/screenshots/widescreen-account-page.png</image>
     </screenshot>
   </screenshots>
   <launchable type="desktop-id">com.tercad.fingrom.desktop</launchable>
   <releases>
-    <release version="{VERSION}" date="{DATE}"/>
+    <release version="{VERSION}" date="{DATE}">
+      <description translatable="no">
+        <p>Release changes:</p>
+        <ul>
+          <li>{CHANGE}</li>
+        </ul>
+      </description>
+    </release>
   </releases>
   <content_rating type="oars-1.1">
   </content_rating>
