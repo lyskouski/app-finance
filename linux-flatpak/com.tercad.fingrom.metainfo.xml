@@ -17,6 +17,7 @@
     <control>touch</control>
   </recommends>
   <categories>
+    <category>Office</category>
     <category>Finances</category>
   </categories>
   <url type="homepage">https://github.com/lyskouski/app-finance</url>
@@ -43,7 +44,10 @@
         <li>Responsive and Adaptive Design</li>
         <li>Shortcuts</li>
     </ul>
-    <p>If you would like to come with suggestions, report bugs, translate the app, or contribute otherwise, feel free to reach out!</p>
+    <p>
+      If you would like to come with suggestions, report bugs, translate the app, or contribute otherwise, 
+      feel free to reach out!
+    </p>
     <p>
         This is the "open-source code" application that welcomes and values contributions from the community. 
         However, there are some limitations when it comes to making external modifications and distributions, 

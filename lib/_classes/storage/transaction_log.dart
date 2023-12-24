@@ -39,31 +39,38 @@ class TransactionLog {
 
   static const _filePath = '.terCAD/app-finance.log';
 
-  static Future<File> _get(Directory path) async {
-    File file = File('${path.absolute.path}/$_filePath');
-    if (!file.existsSync()) {
-      file.createSync(recursive: true);
-      file.writeAsString("\n", mode: FileMode.append);
-    }
-    return file;
-  }
-
   static Future<File> get logFle async {
     if (_logFile != null) {
       return Future.value(_logFile);
     }
-    File? file;
-    try {
-      final dir = await getApplicationDocumentsDirectory();
-      file = await _get(dir);
-    } catch (e) {
-      File tmp = File('${Directory.systemTemp.absolute.path}/$_filePath');
-      if (tmp.existsSync()) {
-        file = await _get(Directory.systemTemp);
-      } else {
-        final dir = await getApplicationSupportDirectory();
-        file = await _get(dir);
-      }
+    List<File> scope = [
+      await getApplicationDocumentsDirectory(),
+      await getApplicationSupportDirectory(),
+      Directory.systemTemp,
+      await getTemporaryDirectory(),
+    ].map((dir) => File('${dir.absolute.path}/$_filePath')).toList();
+    File? file = scope.where((f) => f.existsSync()).firstOrNull;
+    if (file == null) {
+      int i = 0;
+      do {
+        try {
+          File tmp = scope[i];
+          if (!tmp.existsSync()) {
+            tmp.createSync(recursive: true);
+            tmp.writeAsString("\n", mode: FileMode.append);
+          }
+          if (tmp.lengthSync() > 0) {
+            file = tmp;
+          } else {
+            i++;
+          }
+        } catch (e) {
+          i++;
+        }
+      } while (i < scope.length && file == null);
+    }
+    if (file == null) {
+      throw Exception('Write access denied for: $scope.');
     }
     return _logFile = file;
   }
