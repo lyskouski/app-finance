@@ -39,7 +39,9 @@ class PumpMain {
 
   static Future<void> init(WidgetTester tester, [bool isIntegration = false]) async {
     final pumpMain = PumpMain();
-    wrapProvider(tester, 'plugins.flutter.io/path_provider', '$path/${UniqueKey()}');
+    final subfolder = '$path/${UniqueKey()}';
+    wrapProvider(tester, 'plugins.flutter.io/path_provider', subfolder);
+    io.Directory(subfolder).createSync(recursive: true);
     await initFonts();
     await initPref(isIntegration);
     await pumpMain.initMain(tester, isIntegration);
