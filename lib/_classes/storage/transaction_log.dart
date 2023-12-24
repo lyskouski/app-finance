@@ -37,8 +37,10 @@ class TransactionLog {
 
   static File? _logFile;
 
+  static const _filePath = '.terCAD/app-finance.log';
+
   static Future<File> _get(Directory path) async {
-    File file = File('${path.absolute.path}/.terCAD/app-finance.log');
+    File file = File('${path.absolute.path}/$_filePath');
     if (!file.existsSync()) {
       file.createSync(recursive: true);
       file.writeAsString("\n", mode: FileMode.append);
@@ -55,7 +57,13 @@ class TransactionLog {
       final dir = await getApplicationDocumentsDirectory();
       file = await _get(dir);
     } catch (e) {
-      file = await _get(Directory.systemTemp);
+      File tmp = File('${Directory.systemTemp.absolute.path}/$_filePath');
+      if (tmp.existsSync()) {
+        file = await _get(Directory.systemTemp);
+      } else {
+        final dir = await getApplicationSupportDirectory();
+        file = await _get(dir);
+      }
     }
     return _logFile = file;
   }
