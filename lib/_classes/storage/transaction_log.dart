@@ -37,7 +37,7 @@ class TransactionLog {
 
   static File? _logFile;
 
-  static const _filePath = '.terCAD/app-finance.log';
+  static const filePath = '.terCAD/app-finance.log';
 
   static Future<File> get logFle async {
     if (_logFile != null) {
@@ -48,7 +48,7 @@ class TransactionLog {
       await getApplicationSupportDirectory(),
       Directory.systemTemp,
       await getTemporaryDirectory(),
-    ].map((dir) => File('${dir.absolute.path}/$_filePath')).toList();
+    ].map((dir) => File('${dir.absolute.path}/$filePath')).toList();
     File? file = scope.where((f) => f.existsSync()).firstOrNull;
     if (file == null) {
       int i = 0;

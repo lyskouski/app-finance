@@ -3,6 +3,7 @@
 
 import 'dart:io' as io;
 import 'package:app_finance/_classes/herald/app_purchase.dart';
+import 'package:app_finance/_classes/storage/transaction_log.dart';
 import 'package:app_finance/_configs/custom_text_theme.dart';
 import 'package:dart_class_wrapper/dart_class_wrapper.dart';
 import 'package:file/file.dart';
@@ -39,9 +40,9 @@ class PumpMain {
 
   static Future<void> init(WidgetTester tester, [bool isIntegration = false]) async {
     final pumpMain = PumpMain();
-    final subfolder = '$path/${UniqueKey()}';
-    wrapProvider(tester, 'plugins.flutter.io/path_provider', subfolder);
-    io.Directory(subfolder).createSync(recursive: true);
+    final tmp = '$path/${UniqueKey()}';
+    wrapProvider(tester, 'plugins.flutter.io/path_provider', tmp);
+    io.File('$tmp/${TransactionLog.filePath}').createSync(recursive: true);
     await initFonts();
     await initPref(isIntegration);
     await pumpMain.initMain(tester, isIntegration);
