@@ -128,6 +128,7 @@ class PumpMain {
             AppPreferences.prefCurrency => 'USD',
             AppPreferences.prefLocale => 'en',
             AppPreferences.prefPrivacyPolicy => '',
+            AppPreferences.prefVersion => '1.0',
             _ => null,
           };
       AppPreferences.pref = pref;

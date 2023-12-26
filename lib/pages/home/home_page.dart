@@ -26,8 +26,10 @@ import 'package:app_finance/pages/home/widgets/budget_widget.dart';
 import 'package:app_finance/pages/home/widgets/goal_widget.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_markdown/flutter_markdown.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:intl/intl.dart';
+import 'package:package_info_plus/package_info_plus.dart';
 import 'package:provider/provider.dart';
 
 class HomePage extends StatefulWidget {
@@ -40,17 +42,41 @@ class HomePage extends StatefulWidget {
 class HomePageState extends AbstractPageState<HomePage> {
   String? toExpand;
   bool isEditMode = false;
+  late String version;
 
   @override
   initState() {
     super.initState();
     toExpand = AppPreferences.get(AppPreferences.prefExpand);
+    version = AppPreferences.get(AppPreferences.prefVersion) ?? '';
+    PackageInfo.fromPlatform().then((PackageInfo value) {
+      if (version != value.version) {
+        WidgetsBinding.instance.addPostFrameCallback((_) => showModalBottomSheet(
+              context: context,
+              builder: (BuildContext context) => buildReleaseHelper(context, value.version),
+            ));
+        AppPreferences.set(AppPreferences.prefVersion, value.version);
+      }
+    });
   }
 
+  Widget buildReleaseHelper(BuildContext context, String version) => buildHelper(
+        context,
+        type: 'upgrade',
+        builder: (context, snapshot) {
+          if (snapshot.hasData) {
+            String data = snapshot.data!;
+            if (version.isNotEmpty) {
+              data = data.split('### $version')[0];
+            }
+            return Markdown(data: data);
+          }
+          return Container();
+        },
+      );
+
   @override
-  String getTitle() {
-    return AppLocale.labels.appTitle;
-  }
+  String getTitle() => AppLocale.labels.appTitle;
 
   @override
   Widget buildBottomBar(BuildContext context, BoxConstraints constraints) {

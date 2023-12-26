@@ -45,9 +45,10 @@ abstract class AbstractPageState<T extends StatefulWidget> extends State<T> {
     );
   }
 
-  Widget buildHelper(BuildContext context) {
+  Widget buildHelper(BuildContext context,
+      {String? type, Widget Function(BuildContext, AsyncSnapshot<String>)? builder}) {
     final locale = AppLocale.labels.localeName;
-    final type = getHelperName();
+    type ??= getHelperName();
     return Container(
       width: double.infinity,
       color: context.colorScheme.background,
@@ -73,12 +74,13 @@ abstract class AbstractPageState<T extends StatefulWidget> extends State<T> {
           Expanded(
             child: FutureBuilder(
               future: DefaultAssetBundle.of(context).loadString('./assets/l10n/${type}_$locale.md'),
-              builder: (context, snapshot) {
-                if (snapshot.hasData) {
-                  return Markdown(data: snapshot.data!);
-                }
-                return Container();
-              },
+              builder: builder ??
+                  (BuildContext context, AsyncSnapshot<String> snapshot) {
+                    if (snapshot.hasData) {
+                      return Markdown(data: snapshot.data!);
+                    }
+                    return Container();
+                  },
             ),
           ),
         ],
