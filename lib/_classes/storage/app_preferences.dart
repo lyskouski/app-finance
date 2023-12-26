@@ -18,6 +18,7 @@ class AppPreferences {
   static const String prefColor = 'color';
   static const String prefPalette = 'palette';
   static const String prefPaletteDark = 'palette_dark';
+  static const String prefVersion = 'version';
 
   static late SharedPreferences pref;
 
