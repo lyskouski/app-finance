@@ -39,17 +39,16 @@ class AboutPageState extends AbstractPageState<AboutPage> with LauncherMixin {
   }
 
   @override
-  String getTitle() {
-    return AppLocale.labels.aboutHeadline;
-  }
+  String? getHelperName() => 'upgrade';
+
+  @override
+  String getTitle() => AppLocale.labels.aboutHeadline;
 
   @override
   String getButtonName() => '';
 
   @override
-  Widget buildButton(BuildContext context, BoxConstraints constraints) {
-    return ThemeHelper.emptyBox;
-  }
+  Widget buildButton(BuildContext context, BoxConstraints constraints) => ThemeHelper.emptyBox;
 
   Widget buildMarkdown(String name) {
     return FutureBuilder(
@@ -135,9 +134,9 @@ class AboutPageState extends AbstractPageState<AboutPage> with LauncherMixin {
               type: TabType.secondary,
               focus: double.tryParse(widget.search ?? '0')?.toInt() ?? 0,
               tabs: [
-                Tab(text: AppLocale.labels.contributors),
-                Tab(text: AppLocale.labels.termPrivacy),
-                Tab(text: AppLocale.labels.termUse),
+                Tab(text: AppLocale.labels.contributors, icon: const Icon(Icons.people)),
+                Tab(text: AppLocale.labels.termPrivacy, icon: const Icon(Icons.privacy_tip)),
+                Tab(text: AppLocale.labels.termUse, icon: const Icon(Icons.data_usage)),
               ],
               children: [
                 const MembersTab(),
