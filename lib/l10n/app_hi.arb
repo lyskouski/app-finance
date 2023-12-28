@@ -1,5 +1,10 @@
 {
     "a": "RUN `dart run grinder sort-translations --quiet` FOR ORDERING",
+    "design": "डिज़ाइन मोड (संस्कृति विशिष्ट)",
+    "designGlobal": "वैश्विक",
+    "designAsiaGeneral": "एशिया जनरल",
+    "designRtlGeneral": "दाएं से बाएं अक्षरांकन",
+    "designGermany": "जर्मनी",
     "aboutHeadline": "के बारे में",
     "account": "खाता",
     "accountFrom": "अकाउंट से",

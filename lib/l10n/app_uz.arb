@@ -1,5 +1,10 @@
 {
     "a": "RUN `dart run grinder sort-translations --quiet` FOR ORDERING",
+    "design": "Dizayn rejimi (Madaniyatga xos)",
+    "designGlobal": "Global",
+    "designAsiaGeneral": "Umumiy Osiyo",
+    "designRtlGeneral": "O'ngdan chapga harflar",
+    "designGermany": "Germaniya",
     "aboutHeadline": "Haqida",
     "account": "Hisob",
     "accountFrom": "Hisobdan",

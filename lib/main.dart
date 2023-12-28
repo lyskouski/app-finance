@@ -4,6 +4,7 @@
 import 'dart:async';
 
 import 'package:app_finance/_classes/controller/fallback_localization_delegate.dart';
+import 'package:app_finance/_classes/herald/app_design.dart';
 import 'package:app_finance/_classes/herald/app_locale.dart';
 import 'package:app_finance/_classes/herald/app_palette.dart';
 import 'package:app_finance/_classes/herald/app_purchase.dart';
@@ -93,6 +94,9 @@ void main() async {
           ),
           ChangeNotifierProvider<AppLocale>(
             create: (_) => AppLocale(),
+          ),
+          ChangeNotifierProvider<AppDesign>(
+            create: (_) => AppDesign(),
           ),
           ChangeNotifierProvider<AppZoom>(
             create: (_) => AppZoom(),

@@ -1,5 +1,10 @@
 {
     "a": "RUN `dart run grinder sort-translations --quiet` FOR ORDERING",
+    "design": "Mode de conception (spécifique à la culture)",
+    "designGlobal": "Monde",
+    "designAsiaGeneral": "Asie - Général",
+    "designRtlGeneral": "Lettrage de droite à gauche",
+    "designGermany": "Allemagne",
     "aboutHeadline": "A propos de",
     "account": "Compte",
     "accountFrom": "Du compte",

@@ -1,5 +1,10 @@
 {
     "a": "RUN `dart run grinder sort-translations --quiet` FOR ORDERING",
+    "design": "Рэжым дызайну (у залежнасьці ад культуры)",
+    "designGlobal": "Глабальны",
+    "designAsiaGeneral": "Азія Агульна",
+    "designRtlGeneral": "Напісаньне справа налева",
+    "designGermany": "Нямеччына",
     "aboutHeadline": "Аб дадатку",
     "account": "Рахунак",
     "accountFrom": "З рахунку",

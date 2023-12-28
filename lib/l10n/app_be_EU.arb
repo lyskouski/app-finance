@@ -1,5 +1,10 @@
 {
     "a": "RUN `dart run grinder sort-translations --quiet` FOR ORDERING",
+    "design": "Režym Dyzajnu (u zaliežnaści ad Kuĺtury)",
+    "designGlobal": "Hlabaĺny",
+    "designAsiaGeneral": "Azija Ahuĺna",
+    "designRtlGeneral": "Napisańnie Sprava Nalieva",
+    "designGermany": "Niamieččyna",
     "aboutHeadline": "Ab Dadatku",
     "account": "Rachunak",
     "accountFrom": "Z Rachunku",

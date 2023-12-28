@@ -11,6 +11,7 @@ class AppPreferences {
   static const String prefCurrency = 'currency';
   static const String prefTheme = 'themeMode';
   static const String prefLocale = 'localeMode';
+  static const String prefDesign = 'localeDesign';
   static const String prefExpand = 'expand';
   static const String prefPeer = 'p2p_host';
   static const String prefP2P = 'p2p_spot';
