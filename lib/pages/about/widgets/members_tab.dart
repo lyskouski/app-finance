@@ -14,6 +14,7 @@ class MembersTab extends StatelessWidget with LauncherMixin {
     (name: 'Iryna Shepetovetska', badge: [AppLocale.labels.coTranslator]),
     (name: 'Andrei Tarasevich', badge: [AppLocale.labels.coConsult]),
     (name: 'Halina Gulevich', badge: [AppLocale.labels.coConsult]),
+    (name: 'Muhammadyusuf Kurbonov', badge: [AppLocale.labels.coDeveloper]),
     (name: 'Edivaldo Brito', badge: [AppLocale.labels.coPromoter]),
     (name: 'Jardeson Márcio', badge: [AppLocale.labels.coPromoter]),
     (name: 'Paul', badge: [AppLocale.labels.coPromoter]),
