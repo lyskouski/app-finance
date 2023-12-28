@@ -12,7 +12,7 @@ import 'package:app_finance/components/_core/components_builder.dart';
 import 'package:app_finance/components/component_account_flow.dart';
 import 'package:app_finance/components/component_budget_forecast.dart';
 import 'package:app_finance/components/component_recent.dart';
-import 'package:app_finance/components/component_ytd_expense.dart';
+import 'package:app_finance/components/component_bill_ytd.dart';
 import 'package:app_finance/pages/_interfaces/abstract_page_state.dart';
 import 'package:app_finance/pages/home/home_edit_page.dart';
 import 'package:app_finance/pages/start/start_page.dart';
@@ -299,7 +299,7 @@ class HomePageState extends AbstractPageState<HomePage> {
                 child: Column(
                   children: [
                     Expanded(child: ThemeHelper.emptyBox),
-                    ComponentYtdExpense(),
+                    ComponentBillYtd(),
                     ThemeHelper.hIndent6x,
                   ],
                 ),
