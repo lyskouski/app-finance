@@ -45,6 +45,7 @@ class ForecastChart extends StatelessWidget {
       yMax: 140,
       yArea: [80, 120],
       xType: DateTime,
+      yType: Percentage,
       xMin: xMin.millisecondsSinceEpoch.toDouble(),
       xMax: xMax.millisecondsSinceEpoch.toDouble(),
     );

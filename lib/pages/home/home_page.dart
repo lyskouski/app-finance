@@ -10,11 +10,11 @@ import 'package:app_finance/_configs/theme_helper.dart';
 import 'package:app_finance/_classes/structure/navigation/app_route.dart';
 import 'package:app_finance/components/_core/components_builder.dart';
 import 'package:app_finance/components/component_account_flow.dart';
+import 'package:app_finance/components/component_budget_forecast.dart';
 import 'package:app_finance/components/component_recent.dart';
-import 'package:app_finance/components/component_ytd_expense.dart';
+import 'package:app_finance/components/component_bill_ytd.dart';
 import 'package:app_finance/pages/_interfaces/abstract_page_state.dart';
 import 'package:app_finance/pages/home/home_edit_page.dart';
-import 'package:app_finance/pages/metrics/widgets/budget_tab.dart';
 import 'package:app_finance/pages/start/start_page.dart';
 import 'package:app_finance/design/wrapper/grid_layer.dart';
 import 'package:app_finance/pages/home/widgets/init_tab.dart';
@@ -286,11 +286,11 @@ class HomePageState extends AbstractPageState<HomePage> {
                   ],
                 ),
               ),
-          () => Expanded(
+          () => const Expanded(
                 child: Column(
                   children: [
-                    const Expanded(child: ThemeHelper.emptyBox),
-                    BudgetTab(store: state, width: partWidth),
+                    Expanded(child: ThemeHelper.emptyBox),
+                    ComponentBudgetForecast(),
                     ThemeHelper.hIndent6x,
                   ],
                 ),
@@ -299,7 +299,7 @@ class HomePageState extends AbstractPageState<HomePage> {
                 child: Column(
                   children: [
                     Expanded(child: ThemeHelper.emptyBox),
-                    ComponentYtdExpense(),
+                    ComponentBillYtd(),
                     ThemeHelper.hIndent6x,
                   ],
                 ),

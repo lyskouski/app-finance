@@ -3,9 +3,10 @@
 
 import 'package:app_finance/_classes/herald/app_locale.dart';
 import 'package:app_finance/_classes/storage/app_data.dart';
+import 'package:app_finance/_classes/storage/history_data.dart';
 import 'package:app_finance/_classes/structure/bill_app_data.dart';
+import 'package:app_finance/_classes/structure/budget_app_data.dart';
 import 'package:app_finance/_classes/structure/currency/exchange.dart';
-import 'package:app_finance/_classes/structure/interface_app_data.dart';
 import 'package:app_finance/_configs/theme_helper.dart';
 import 'package:app_finance/_ext/build_context_ext.dart';
 import 'package:app_finance/charts/column_chart.dart';
@@ -16,32 +17,47 @@ import 'package:app_finance/design/wrapper/text_wrapper.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-class ComponentYtdExpense extends StatelessWidget {
-  const ComponentYtdExpense({super.key});
+class ComponentBudgetYtd extends StatelessWidget {
+  const ComponentBudgetYtd({super.key});
+
+  List<BudgetAppData> getBudgetHistory(AppData store) {
+    final current = DateTime(DateTime.now().year, DateTime.now().month);
+    final endLastYear = DateTime(current.year - 1, 12, 31);
+    final budgets = store.getList(AppDataType.budgets).cast<BudgetAppData>();
+    final exchange = Exchange(store: store);
+    final budgetsAmount =
+        budgets.fold(0.0, (v, e) => v + exchange.reform(e.amountLimit, e.currency, exchange.getDefaultCurrency()));
+    final budgetHistory = HistoryData.getMultiLog(budgets).expand((e) => e!).toList();
+    final budgetList = [];
+    for (DateTime date = DateTime(current.year, current.month + 1);
+        date.isAfter(endLastYear);
+        date = DateTime(date.year, date.month - 1)) {
+      final delta =
+          budgetHistory.where((e) => e.timestamp.isAfter(date)).fold(0.0, (v, e) => v - e.changedTo + e.changedFrom);
+      budgetList.add(BudgetAppData(title: '', createdAt: date, amountLimit: budgetsAmount + delta));
+    }
+    return budgetList.cast();
+  }
 
   List<ChartData> getData(AppData store) {
     final currentYear = DateTime(DateTime.now().year);
     final prevYear = DateTime(currentYear.year - 1);
-    final scope = store.getStream<BillAppData>(AppDataType.bills, filter: (e) => e.createdAt.isBefore(prevYear));
-
+    final bills = store.getStream<BillAppData>(AppDataType.bills, filter: (e) => e.createdAt.isBefore(prevYear));
     final exchange = Exchange(store: store);
     return [
       ChartData(
         DataHandler.getAmountGroupedByMonth(
-          scope.getTill(0.0 + currentYear.millisecondsSinceEpoch).cast(),
+          getBudgetHistory(store),
           exchange: exchange,
         ),
         color: Colors.blue,
       ),
       ChartData(
         DataHandler.getAmountGroupedByMonth(
-          scope.toList().cast<InterfaceAppData>().map((e) {
-            e.createdAt = e.createdAt.add(const Duration(days: 365));
-            return e;
-          }).toList(),
+          bills.getTill(0.0 + currentYear.millisecondsSinceEpoch).cast(),
           exchange: exchange,
         ),
-        color: Colors.grey,
+        color: Colors.red,
       ),
     ];
   }
@@ -62,7 +78,6 @@ class ComponentYtdExpense extends StatelessWidget {
   Widget build(BuildContext context) {
     final TextTheme textTheme = context.textTheme;
     final indent = ThemeHelper.getIndent();
-    final year = DateTime.now().year;
     return Consumer<AppData>(builder: (context, appState, _) {
       final data = getData(appState);
       return LayoutBuilder(builder: (context, constraints) {
@@ -71,7 +86,7 @@ class ComponentYtdExpense extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              AppLocale.labels.chartYtdExpense,
+              '${AppLocale.labels.budgetHeadline} ${AppLocale.labels.budgetLimit}, ${Exchange.defaultCurrency?.code}',
               style: textTheme.bodyLarge,
             ),
             ColumnChart(
@@ -90,7 +105,7 @@ class ComponentYtdExpense extends StatelessWidget {
                   Padding(
                     padding: EdgeInsets.only(left: indent * 2),
                     child: TextWrapper(
-                      year.toString(),
+                      AppLocale.labels.budgetHeadline,
                       style: textTheme.bodySmall?.copyWith(color: Colors.blue),
                     ),
                   ),
@@ -99,8 +114,8 @@ class ComponentYtdExpense extends StatelessWidget {
                   Align(
                     alignment: Alignment.centerRight,
                     child: TextWrapper(
-                      (year - 1).toString(),
-                      style: textTheme.bodySmall?.copyWith(color: Colors.grey),
+                      AppLocale.labels.billHeadline,
+                      style: textTheme.bodySmall?.copyWith(color: Colors.red),
                     ),
                   ),
                 ],

@@ -6,6 +6,8 @@ import 'package:app_finance/charts/painter/abstract_painter.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart' as intl;
 
+typedef Percentage = int;
+
 class ForegroundChartPainter extends AbstractPainter {
   final Color color;
   final Color lineColor;
@@ -150,12 +152,19 @@ class ForegroundChartPainter extends AbstractPainter {
       if (yType != null || i == 0) {
         canvas.drawLine(Offset(shift, y), Offset(size.width, y), lineColor);
       }
-      if (yType == double) {
-        final formatter = yTpl ?? intl.NumberFormat.decimalPatternDigits(decimalDigits: 2, locale: AppLocale.code);
-        _paintText(canvas, textArea, y - textArea / 3, formatter.format(yMin + delta));
-      } else if (yType == IconData) {
-        final code = i >= yMap.length ? null : yMap[i];
-        _paintIcon(canvas, textArea, y - textArea, code);
+      switch (yType) {
+        case double:
+          final formatter = yTpl ?? intl.NumberFormat.decimalPatternDigits(decimalDigits: 2, locale: AppLocale.code);
+          _paintText(canvas, textArea, y - textArea / 3, formatter.format(yMin + delta));
+          break;
+        case IconData:
+          final code = i >= yMap.length ? null : yMap[i];
+          _paintIcon(canvas, textArea, y - textArea, code);
+          break;
+        case Percentage:
+          final formatter = yTpl ?? intl.NumberFormat.decimalPatternDigits(decimalDigits: 0, locale: AppLocale.code);
+          _paintText(canvas, textArea, y - textArea / 3, formatter.format(yMin + delta) + ' %');
+          break;
       }
     }
   }
@@ -171,12 +180,10 @@ class ForegroundChartPainter extends AbstractPainter {
     final background = Paint()
       ..color = this.background.withOpacity(0.05)
       ..style = PaintingStyle.fill;
-    double? step;
-    if (xType == DateTime) {
-      step = (xMax - xMin - 1) / xDiv;
-    } else {
-      step = (xMax - xMin) / xDiv;
-    }
+    double step = switch (xType) {
+      DateTime => (xMax - xMin - 1) / xDiv,
+      _ => (xMax - xMin) / xDiv,
+    };
     double height = size.height - textArea;
     for (int i = 0; i <= xDiv; i++) {
       double delta = step * (xDiv - i);
