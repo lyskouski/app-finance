@@ -1,6 +1,7 @@
 // Copyright 2023 The terCAD team. All rights reserved.
 // Use of this source code is governed by a CC BY-NC-ND 4.0 license that can be found in the LICENSE file.
 
+import 'package:app_finance/_classes/herald/app_design.dart';
 import 'package:app_finance/_classes/storage/app_preferences.dart';
 import 'package:app_finance/_configs/theme_helper.dart';
 import 'package:app_finance/_ext/build_context_ext.dart';
@@ -59,6 +60,7 @@ class ComponentsBuilder extends StatelessWidget {
     final rowsCount = (isVertical ? 6 : 12);
     final columnsCount = (isVertical ? 12 : 6);
     return GridContainer(
+      alignment: AppDesign.getAlignment<MainAxisAlignment>(),
       rows: List.filled(rowsCount, null),
       columns: List.filled(columnsCount, null),
       children: editMode

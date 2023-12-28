@@ -1,6 +1,7 @@
 // Copyright 2023 The terCAD team. All rights reserved.
 // Use of this source code is governed by a CC BY-NC-ND 4.0 license that can be found in the LICENSE file.
 
+import 'package:app_finance/_classes/herald/app_design.dart';
 import 'package:app_finance/_classes/herald/app_locale.dart';
 import 'package:app_finance/_classes/structure/navigation/app_route.dart';
 import 'package:app_finance/_classes/structure/goal_app_data.dart';
@@ -8,6 +9,7 @@ import 'package:app_finance/_configs/custom_text_theme.dart';
 import 'package:app_finance/_ext/build_context_ext.dart';
 import 'package:app_finance/design/wrapper/tap_widget.dart';
 import 'package:app_finance/_configs/theme_helper.dart';
+import 'package:app_finance/design/wrapper/text_wrapper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_grid_layout/flutter_grid_layout.dart';
 
@@ -34,6 +36,7 @@ class GoalLineWidget extends StatelessWidget {
         color: colorScheme.inversePrimary,
         height: 20,
         child: GridContainer(
+          alignment: AppDesign.getAlignment<MainAxisAlignment>(),
           rows: [indent, null, null, indent],
           columns: [indent, 18, 24, indent, indent, indent / 2],
           children: [
@@ -44,14 +47,14 @@ class GoalLineWidget extends StatelessWidget {
                 order: 3,
                 child: Banner(
                   message: AppLocale.labels.processIsFinished,
-                  location: BannerLocation.topEnd,
+                  location: AppDesign.isRightToLeft() ? BannerLocation.topStart : BannerLocation.topEnd,
                   textStyle: textTheme.numberSmall,
                 ),
               ),
             GridItem(
               start: const Size(1, 1),
               end: const Size(2, 2),
-              child: Text(
+              child: TextWrapper(
                 AppLocale.labels.goalHeadline,
                 style: textTheme.headlineSmall,
               ),
@@ -59,10 +62,9 @@ class GoalLineWidget extends StatelessWidget {
             GridItem(
               start: const Size(1, 2),
               end: const Size(3, 3),
-              child: Text(
+              child: TextWrapper(
                 goal.title,
                 style: textTheme.headlineMedium,
-                overflow: TextOverflow.ellipsis,
               ),
             ),
             GridItem(
@@ -73,7 +75,7 @@ class GoalLineWidget extends StatelessWidget {
                 child: Text(
                   goal.closedAtFormatted,
                   style: textTheme.headlineSmall,
-                  textAlign: TextAlign.right,
+                  textAlign: AppDesign.isRightToLeft() ? TextAlign.left : TextAlign.right,
                   overflow: TextOverflow.ellipsis,
                 ),
               ),

@@ -10,6 +10,7 @@ import 'package:app_finance/_configs/theme_helper.dart';
 import 'package:app_finance/_ext/build_context_ext.dart';
 import 'package:app_finance/design/form/list_selector_page.dart';
 import 'package:app_finance/design/wrapper/focus_wrapper.dart';
+import 'package:app_finance/design/wrapper/row_widget.dart';
 import 'package:app_finance/design/wrapper/tap_widget.dart';
 import 'package:app_finance/design/wrapper/text_wrapper.dart';
 import 'package:flutter/material.dart';
@@ -83,43 +84,53 @@ class ListSelectorState<T extends ListSelector, K extends ListSelectorItem> exte
         child: Container(
           width: double.infinity,
           color: context.colorScheme.fieldBackground,
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Expanded(
-                child: Padding(
-                  padding: EdgeInsets.fromLTRB(
-                    indent / 1.5,
-                    widget.withLabel && item != null ? 1 : indent,
-                    0,
-                    widget.withLabel && item != null ? indent / 2 : indent,
+          child: LayoutBuilder(builder: (_, constraints) {
+            return RowWidget(
+              chunk: [null, ThemeHelper.barHeight - ThemeHelper.getIndent()],
+              maxWidth: constraints.maxWidth,
+              indent: 0.0,
+              children: [
+                [
+                  Container(
+                    padding: EdgeInsets.fromLTRB(
+                      indent / 1.5,
+                      widget.withLabel && item != null ? 1 : indent,
+                      AppDesign.isRightToLeft() ? ThemeHelper.getIndent() : 0,
+                      widget.withLabel && item != null ? indent / 2 : indent,
+                    ),
+                    constraints: BoxConstraints(maxWidth: constraints.maxWidth - ThemeHelper.barHeight),
+                    child: item != null
+                        ? widget.withLabel
+                            ? Column(
+                                mainAxisAlignment: AppDesign.getAlignment<MainAxisAlignment>(),
+                                crossAxisAlignment: AppDesign.getAlignment(),
+                                children: [
+                                  TextWrapper(widget.hintText ?? '...', style: labelStyle),
+                                  item.build(context),
+                                ],
+                              )
+                            : item.build(context)
+                        : TextWrapper(
+                            widget.hintText ?? '...',
+                            style: widget.hintStyle ?? hintStyle,
+                          ),
                   ),
-                  child: item != null
-                      ? widget.withLabel
-                          ? Column(
-                              mainAxisAlignment: AppDesign.getAlignment<MainAxisAlignment>(),
-                              crossAxisAlignment: AppDesign.getAlignment(),
-                              children: [
-                                TextWrapper(widget.hintText ?? '...', style: labelStyle),
-                                item.build(context),
-                              ],
-                            )
-                          : item.build(context)
-                      : TextWrapper(
-                          widget.hintText ?? '...',
-                          style: widget.hintStyle ?? hintStyle,
-                        ),
-                ),
-              ),
-              ExcludeFocus(
-                child: IconButton(
-                  tooltip: widget.hintText ?? '...',
-                  icon: Icon(Icons.arrow_drop_down, color: widget.hintStyle?.color),
-                  onPressed: () => onTap(context),
-                ),
-              ),
-            ],
-          ),
+                ],
+                [
+                  Padding(
+                    padding: EdgeInsets.only(top: indent / 3),
+                    child: ExcludeFocus(
+                      child: IconButton(
+                        tooltip: widget.hintText ?? '...',
+                        icon: Icon(Icons.arrow_drop_down, color: widget.hintStyle?.color),
+                        onPressed: () => onTap(context),
+                      ),
+                    ),
+                  ),
+                ],
+              ],
+            );
+          }),
         ),
       ),
     );

@@ -57,7 +57,7 @@ class AccountLineWidget extends StatelessWidget {
             ],
             [
               Row(
-                mainAxisAlignment: AppDesign.getInverseAlignment<MainAxisAlignment>(),
+                mainAxisAlignment: MainAxisAlignment.end,
                 children: [
                   Align(
                     alignment: Alignment.centerRight,
@@ -135,7 +135,7 @@ class AccountLineWidget extends StatelessWidget {
                 TextWrapper(
                   item.closedAtFormatted,
                   style: textTheme.numberSmall,
-                )
+                ),
               ],
             ]
           ],

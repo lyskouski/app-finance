@@ -1,6 +1,7 @@
 // Copyright 2023 The terCAD team. All rights reserved.
 // Use of this source code is governed by a CC BY-NC-ND 4.0 license that can be found in the LICENSE file.
 
+import 'package:app_finance/_classes/herald/app_design.dart';
 import 'package:app_finance/_configs/theme_helper.dart';
 import 'package:app_finance/_ext/build_context_ext.dart';
 import 'package:flutter/material.dart';
@@ -57,7 +58,7 @@ class SliverHeaderDelegate extends SliverPersistentHeaderDelegate {
               ),
       ),
       child: Align(
-        alignment: Alignment.centerLeft,
+        alignment: AppDesign.isRightToLeft() ? Alignment.centerRight : Alignment.centerLeft,
         child: Text(title, style: context.textTheme.bodySmall),
       ),
     );
