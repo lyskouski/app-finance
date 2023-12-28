@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2023-12-28 09:15:32</td>
+            <td class="headerValue">2023-12-28 15:23:25</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">0</td>
@@ -79,7 +79,7 @@
 <a name="17"><span class="lineNum">      17 </span>            : import 'package:provider/provider.dart';</a>
 <a name="18"><span class="lineNum">      18 </span>            : </a>
 <a name="19"><span class="lineNum">      19 </span>            : class ComponentAccountFlow extends StatelessWidget {</a>
-<a name="20"><span class="lineNum">      20 </span><span class="lineCov">         10 :   const ComponentAccountFlow({super.key});</span></a>
+<a name="20"><span class="lineNum">      20 </span><span class="lineCov">         15 :   const ComponentAccountFlow({super.key});</span></a>
 <a name="21"><span class="lineNum">      21 </span>            : </a>
 <a name="22"><span class="lineNum">      22 </span><span class="lineNoCov">          0 :   List&lt;OhlcData&gt; getData(AppData store, List&lt;AccountAppData&gt; accounts, DateTime xMin) {</span></a>
 <a name="23"><span class="lineNum">      23 </span><span class="lineNoCov">          0 :     final exchange = Exchange(store: store);</span></a>
@@ -106,7 +106,7 @@
 <a name="44"><span class="lineNum">      44 </span>            :           crossAxisAlignment: CrossAxisAlignment.start,</a>
 <a name="45"><span class="lineNum">      45 </span><span class="lineNoCov">          0 :           children: [</span></a>
 <a name="46"><span class="lineNum">      46 </span><span class="lineNoCov">          0 :             TextWrapper(</span></a>
-<a name="47"><span class="lineNum">      47 </span><span class="lineNoCov">          0 :               AppLocale.labels.chartOHLC,</span></a>
+<a name="47"><span class="lineNum">      47 </span><span class="lineNoCov">          0 :               '${AppLocale.labels.chartOHLC}, ${Exchange.defaultCurrency?.code}',</span></a>
 <a name="48"><span class="lineNum">      48 </span><span class="lineNoCov">          0 :               style: textTheme.bodyLarge,</span></a>
 <a name="49"><span class="lineNum">      49 </span>            :             ),</a>
 <a name="50"><span class="lineNum">      50 </span><span class="lineNoCov">          0 :             OhlcChart(</span></a>
