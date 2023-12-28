@@ -2,6 +2,7 @@
 // Use of this source code is governed by a CC BY-NC-ND 4.0 license that can be found in the LICENSE file.
 
 import 'package:app_finance/_classes/controller/exchange_controller.dart';
+import 'package:app_finance/_classes/herald/app_design.dart';
 import 'package:app_finance/_classes/herald/app_locale.dart';
 import 'package:app_finance/_classes/structure/currency/exchange.dart';
 import 'package:app_finance/_classes/structure/invoice_app_data.dart';
@@ -146,7 +147,7 @@ class TransferTabState<T extends TransferTab> extends State<T> {
         margin: EdgeInsets.fromLTRB(indent, indent, indent, 240),
         width: width,
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
+          crossAxisAlignment: AppDesign.getAlignment(),
           children: [
             InputWrapper(
               type: NamedInputType.accountSelector,

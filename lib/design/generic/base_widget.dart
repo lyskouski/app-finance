@@ -2,6 +2,7 @@
 // Use of this source code is governed by a CC BY-NC-ND 4.0 license that can be found in the LICENSE file.
 
 import 'package:app_finance/_classes/controller/iterator_controller.dart';
+import 'package:app_finance/_classes/herald/app_design.dart';
 import 'package:app_finance/_classes/storage/app_data.dart';
 import 'package:app_finance/_classes/storage/app_preferences.dart';
 import 'package:app_finance/_configs/custom_text_theme.dart';
@@ -122,7 +123,7 @@ class BaseWidget extends StatelessWidget {
       child: Container(
         margin: margin,
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
+          crossAxisAlignment: AppDesign.getAlignment(),
           children: [
             BaseHeaderWidget(
               route: route,

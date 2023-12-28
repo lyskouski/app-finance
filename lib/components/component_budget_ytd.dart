@@ -1,6 +1,7 @@
 // Copyright 2023 The terCAD team. All rights reserved.
 // Use of this source code is governed by a CC BY-NC-ND 4.0 license that can be found in the LICENSE file.
 
+import 'package:app_finance/_classes/herald/app_design.dart';
 import 'package:app_finance/_classes/herald/app_locale.dart';
 import 'package:app_finance/_classes/storage/app_data.dart';
 import 'package:app_finance/_classes/storage/history_data.dart';
@@ -83,7 +84,7 @@ class ComponentBudgetYtd extends StatelessWidget {
       return LayoutBuilder(builder: (context, constraints) {
         final width = constraints.maxWidth - indent * 2;
         return Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
+          crossAxisAlignment: AppDesign.getAlignment(),
           children: [
             Text(
               '${AppLocale.labels.budgetHeadline} ${AppLocale.labels.budgetLimit}, ${Exchange.defaultCurrency?.code}',

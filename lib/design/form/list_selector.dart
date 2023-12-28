@@ -2,6 +2,7 @@
 // Use of this source code is governed by a CC BY-NC-ND 4.0 license that can be found in the LICENSE file.
 
 import 'package:app_finance/_classes/controller/focus_controller.dart';
+import 'package:app_finance/_classes/herald/app_design.dart';
 import 'package:app_finance/design/form/list_selector_item.dart';
 import 'package:app_finance/_configs/custom_color_scheme.dart';
 import 'package:app_finance/_configs/custom_text_theme.dart';
@@ -96,8 +97,8 @@ class ListSelectorState<T extends ListSelector, K extends ListSelectorItem> exte
                   child: item != null
                       ? widget.withLabel
                           ? Column(
-                              mainAxisAlignment: MainAxisAlignment.start,
-                              crossAxisAlignment: CrossAxisAlignment.start,
+                              mainAxisAlignment: AppDesign.getAlignment<MainAxisAlignment>(),
+                              crossAxisAlignment: AppDesign.getAlignment(),
                               children: [
                                 TextWrapper(widget.hintText ?? '...', style: labelStyle),
                                 item.build(context),

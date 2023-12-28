@@ -1,6 +1,7 @@
 // Copyright 2023 The terCAD team. All rights reserved.
 // Use of this source code is governed by a CC BY-NC-ND 4.0 license that can be found in the LICENSE file.
 
+import 'package:app_finance/_classes/herald/app_design.dart';
 import 'package:app_finance/_classes/structure/navigation/app_route.dart';
 import 'package:app_finance/_ext/build_context_ext.dart';
 import 'package:app_finance/charts/bar_vertical_single.dart';
@@ -56,11 +57,11 @@ class BaseLineWidget extends StatelessWidget {
       toWrap: route != '',
       route: RouteSettings(name: route, arguments: {routeArguments.uuid: uuid}),
       child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
+        crossAxisAlignment: AppDesign.getAlignment(),
         children: [
           RowWidget(
             indent: indent,
-            alignment: MainAxisAlignment.start,
+            alignment: AppDesign.getAlignment<MainAxisAlignment>(),
             maxWidth: width,
             chunk: [ThemeHelper.isWearable ? 0 : indent * 1.5, null, txtWidth + 2 * indent, if (error != null) 22],
             children: [
@@ -77,7 +78,7 @@ class BaseLineWidget extends StatelessWidget {
                         child: Icon(icon, color: color),
                       )
                     : Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
+                        crossAxisAlignment: AppDesign.getAlignment(),
                         children: [
                           TextWrapper(
                             title,

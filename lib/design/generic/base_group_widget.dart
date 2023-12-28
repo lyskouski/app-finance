@@ -3,6 +3,7 @@
 
 import 'dart:math';
 
+import 'package:app_finance/_classes/herald/app_design.dart';
 import 'package:app_finance/_classes/herald/app_locale.dart';
 import 'package:app_finance/_classes/structure/navigation/app_route.dart';
 import 'package:app_finance/_ext/build_context_ext.dart';
@@ -86,14 +87,14 @@ class BaseGroupWidget extends StatelessWidget {
     final toSwap = items.length * size + items.length * indent * 2 > width - titleWidth - indent * 3;
 
     return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
+      crossAxisAlignment: AppDesign.getAlignment(),
       children: [
         TapWidget(
           route: RouteSettings(name: '$route/search', arguments: {routeArguments.search: title}),
           tooltip: AppLocale.labels.search(title),
           child: RowWidget(
             indent: indent,
-            alignment: MainAxisAlignment.start,
+            alignment: AppDesign.getAlignment<MainAxisAlignment>(),
             maxWidth: width + indent,
             chunk: [indent * 1.5, titleWidth, null],
             children: [
@@ -105,14 +106,14 @@ class BaseGroupWidget extends StatelessWidget {
               ],
               [
                 Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
+                  crossAxisAlignment: AppDesign.getAlignment(),
                   children: [titleText, subTitle],
                 ),
               ],
               [
                 Row(
-                  crossAxisAlignment: CrossAxisAlignment.end,
-                  mainAxisAlignment: MainAxisAlignment.end,
+                  crossAxisAlignment: AppDesign.getInverseAlignment(),
+                  mainAxisAlignment: AppDesign.getInverseAlignment<MainAxisAlignment>(),
                   children: List.generate(
                     items.length * 2,
                     (index) {

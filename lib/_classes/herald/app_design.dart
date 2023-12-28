@@ -14,9 +14,11 @@ enum AppDesignType {
 }
 
 class AppDesign extends ValueNotifier<AppDesignType> {
+  static AppDesignType _state = find(AppPreferences.get(AppPreferences.prefDesign)) ?? AppDesignType.global;
+
   AppDesign() : super(get());
 
-  static AppDesignType get() => find(AppPreferences.get(AppPreferences.prefDesign)) ?? AppDesignType.global;
+  static AppDesignType get() => _state;
 
   static AppDesignType? find(String? name) => AppDesignType.values.where((e) => e.name == name).firstOrNull;
 
@@ -27,12 +29,23 @@ class AppDesign extends ValueNotifier<AppDesignType> {
         _ => AppDesignType.global.name,
       };
 
-  TextDirection getTextDirection() => value == AppDesignType.rtlGeneral ? TextDirection.rtl : TextDirection.ltr;
+  static TextDirection getTextDirection() => get() == AppDesignType.rtlGeneral ? TextDirection.rtl : TextDirection.ltr;
+
+  static getAlignment<T extends Enum>() => switch (T) {
+        MainAxisAlignment => get() == AppDesignType.rtlGeneral ? MainAxisAlignment.end : MainAxisAlignment.start,
+        _ => get() == AppDesignType.rtlGeneral ? CrossAxisAlignment.end : CrossAxisAlignment.start,
+      };
+
+  static getInverseAlignment<T extends Enum>() => switch (T) {
+        MainAxisAlignment => get() == AppDesignType.rtlGeneral ? MainAxisAlignment.start : MainAxisAlignment.end,
+        _ => get() == AppDesignType.rtlGeneral ? CrossAxisAlignment.start : CrossAxisAlignment.end,
+      };
 
   Future<void> set(String newValue, [Function? callback]) async {
     final change = find(newValue);
     if (change != null && change != value) {
       value = change;
+      _state = change;
       await AppPreferences.set(AppPreferences.prefDesign, newValue);
       if (callback != null) {
         callback();

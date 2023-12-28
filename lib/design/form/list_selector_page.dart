@@ -1,6 +1,7 @@
 // Copyright 2023 The terCAD team. All rights reserved.
 // Use of this source code is governed by a CC BY-NC-ND 4.0 license that can be found in the LICENSE file.
 
+import 'package:app_finance/_classes/herald/app_design.dart';
 import 'package:app_finance/_classes/herald/app_locale.dart';
 import 'package:app_finance/design/form/list_selector_item.dart';
 import 'package:app_finance/_configs/theme_helper.dart';
@@ -79,8 +80,8 @@ class ListSelectorPageState<T extends Object?> extends State<ListSelectorPage> {
     return Scaffold(
       appBar: AppBar(backgroundColor: context.colorScheme.primary, toolbarHeight: 0),
       body: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        mainAxisAlignment: MainAxisAlignment.start,
+        crossAxisAlignment: AppDesign.getAlignment(),
+        mainAxisAlignment: AppDesign.getAlignment<MainAxisAlignment>(),
         children: [
           Container(
             padding: EdgeInsets.all(ThemeHelper.getIndent()),

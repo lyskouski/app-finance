@@ -2,6 +2,7 @@
 // Use of this source code is governed by a CC BY-NC-ND 4.0 license that can be found in the LICENSE file.
 
 import 'package:app_finance/_classes/controller/exchange_controller.dart';
+import 'package:app_finance/_classes/herald/app_design.dart';
 import 'package:app_finance/_classes/herald/app_locale.dart';
 import 'package:app_finance/_configs/theme_helper.dart';
 import 'package:app_finance/_ext/build_context_ext.dart';
@@ -66,7 +67,7 @@ class CurrencyExchangeInputState extends State<CurrencyExchangeInput> {
           return ThemeHelper.emptyBox;
         }
         return Column(
-          mainAxisAlignment: MainAxisAlignment.start,
+          mainAxisAlignment: AppDesign.getAlignment<MainAxisAlignment>(),
           children: [
             Container(
               width: widget.width,
@@ -74,7 +75,7 @@ class CurrencyExchangeInputState extends State<CurrencyExchangeInput> {
                 border: Border.all(color: context.colorScheme.inversePrimary.withOpacity(0.6)),
               ),
               child: Column(
-                mainAxisAlignment: MainAxisAlignment.start,
+                mainAxisAlignment: AppDesign.getAlignment<MainAxisAlignment>(),
                 children: [
                   Text(AppLocale.labels.currencyExchange(scope.from, scope.to),
                       style: textTheme.bodyLarge?.copyWith(

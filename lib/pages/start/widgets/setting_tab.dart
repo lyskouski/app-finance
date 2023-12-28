@@ -164,7 +164,7 @@ class SettingTabState<T extends SettingTab> extends AbstractTabState<T> {
     return SingleScrollWrapper(
       controller: controller,
       child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
+        crossAxisAlignment: AppDesign.getAlignment(),
         children: [
           ThemeHelper.hIndent2x,
           InputWrapper.select(
@@ -189,7 +189,7 @@ class SettingTabState<T extends SettingTab> extends AbstractTabState<T> {
           ),
           if (kDebugMode) ...[
             Row(
-              mainAxisAlignment: MainAxisAlignment.start,
+              mainAxisAlignment: AppDesign.getAlignment<MainAxisAlignment>(),
               children: [
                 Text(
                   AppLocale.labels.encryptionMode,

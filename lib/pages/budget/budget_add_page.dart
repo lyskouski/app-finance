@@ -1,6 +1,7 @@
 // Copyright 2023 The terCAD team. All rights reserved.
 // Use of this source code is governed by a CC BY-NC-ND 4.0 license that can be found in the LICENSE file.
 
+import 'package:app_finance/_classes/herald/app_design.dart';
 import 'package:app_finance/_classes/herald/app_locale.dart';
 import 'package:app_finance/_classes/structure/budget_app_data.dart';
 import 'package:app_finance/_classes/controller/focus_controller.dart';
@@ -122,7 +123,7 @@ class BudgetAddPageState<T extends BudgetAddPage> extends AbstractAddPageState<B
       child: Container(
         margin: EdgeInsets.fromLTRB(indent, indent, indent, 240),
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
+          crossAxisAlignment: AppDesign.getAlignment(),
           children: [
             InputWrapper.text(
               isRequired: true,

@@ -1,6 +1,7 @@
 // Copyright 2023 The terCAD team. All rights reserved.
 // Use of this source code is governed by a CC BY-NC-ND 4.0 license that can be found in the LICENSE file.
 
+import 'package:app_finance/_classes/herald/app_design.dart';
 import 'package:app_finance/_configs/theme_helper.dart';
 import 'package:app_finance/design/wrapper/row_widget.dart';
 import 'package:flutter/material.dart';
@@ -32,7 +33,7 @@ class TableWidget extends StatelessWidget {
           color: idx > 0 && idx % 2 == 0 ? shadowColor : Colors.transparent,
           child: RowWidget(
             chunk: chunk,
-            alignment: MainAxisAlignment.end,
+            alignment: AppDesign.getInverseAlignment<MainAxisAlignment>(),
             indent: ThemeHelper.getIndent(),
             maxWidth: width,
             children: data[idx].map((o) => [o]).toList(),
