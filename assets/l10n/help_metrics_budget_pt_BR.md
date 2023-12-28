@@ -1,4 +1,4 @@
-# Gráfico de previsão
+### Gráfico de previsão
 
 No eixo Y, o valor `100%` significa a alocação total das categorias orçamentárias, e no eixo X, os dias do mês atual. 
 O gráfico é dividido em duas seções:

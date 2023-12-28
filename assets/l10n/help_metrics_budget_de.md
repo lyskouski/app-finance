@@ -1,4 +1,4 @@
-# Vorhersage-Diagramm
+### Vorhersage-Diagramm
 
 Auf der Y-Achse bedeutet der Wert "100 %" die volle Zuweisung der Budgetkategorien, die X-Achse die Tage im laufenden 
 Monat. Das Diagramm ist in zwei Abschnitte unterteilt:
