@@ -53,6 +53,11 @@ jobs:
           dart run grinder test --coverage --path=test/e2e
           genhtml coverage/lcov.info -o coverage/e2e
           cp -R ./coverage/lcov.info ./coverage/e2e
+
+      - name: Get Full Coverage
+        run: |
+          flutter test --coverage
+          dart run test_cov_console --file="./coverage/lcov.info" --total | tr -d '[:space:]' > ./coverage/test_total.log
       
       - name: Create Dependency Graph
         run: |
