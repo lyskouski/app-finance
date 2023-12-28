@@ -44,7 +44,7 @@ class ComponentAccountFlow extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             TextWrapper(
-              AppLocale.labels.chartOHLC,
+              '${AppLocale.labels.chartOHLC}, ${Exchange.defaultCurrency?.code}',
               style: textTheme.bodyLarge,
             ),
             OhlcChart(

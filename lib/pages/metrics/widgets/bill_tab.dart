@@ -9,6 +9,7 @@ import 'package:app_finance/_configs/theme_helper.dart';
 import 'package:app_finance/_ext/build_context_ext.dart';
 import 'package:app_finance/charts/bar_race_chart.dart';
 import 'package:app_finance/components/component_bill_ytd.dart';
+import 'package:app_finance/design/wrapper/text_wrapper.dart';
 import 'package:flutter/material.dart';
 
 class BillTab extends StatelessWidget {
@@ -35,8 +36,8 @@ class BillTab extends StatelessWidget {
           children: [
             const ComponentBillYtd(),
             ThemeHelper.hIndent2x,
-            Text(
-              AppLocale.labels.chartBarRace,
+            TextWrapper(
+              '${AppLocale.labels.chartBarRace}, ${Exchange.defaultCurrency?.code}',
               style: textTheme.bodyLarge,
             ),
             BarRaceChart(

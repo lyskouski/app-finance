@@ -24,17 +24,17 @@ class ColumnChartPainter extends AbstractPainter {
     }
     size = this.size ?? size;
     for (int i = 0; i < data.length; i++) {
-      _draw(canvas, size, data[i]);
+      _draw(canvas, size, data[i], i);
     }
   }
 
-  void _draw(Canvas canvas, Size size, ChartData scope) {
+  void _draw(Canvas canvas, Size size, ChartData scope, int shift) {
     for (int i = 0; i < scope.data.length; i++) {
-      _drawRectangle(canvas, size, scope.data[i], i, scope.color, scope.strokeWidth);
+      _drawRectangle(canvas, size, scope.data[i], i - shift * 1.1, scope.color, scope.strokeWidth);
     }
   }
 
-  void _drawRectangle(Canvas canvas, Size size, Offset value, int shift, Color color, double stroke) {
+  void _drawRectangle(Canvas canvas, Size size, Offset value, double shift, Color color, double stroke) {
     final paint = Paint()
       ..color = color
       ..style = PaintingStyle.fill
