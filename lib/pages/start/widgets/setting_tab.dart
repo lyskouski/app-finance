@@ -176,7 +176,7 @@ class SettingTabState<T extends SettingTab> extends AbstractTabState<T> {
               ListSelectorItem(id: AppDesignType.asiaGeneral.name, name: AppLocale.labels.designAsiaGeneral),
               ListSelectorItem(id: AppDesignType.rtlGeneral.name, name: AppLocale.labels.designRtlGeneral),
               ListSelectorItem(id: AppDesignType.germany.name, name: AppLocale.labels.designGermany),
-            ],
+            ].cast<ListSelectorItem>(),
             onChange: (v) => saveDesign(AppDesign.find(v)?.name ?? AppDesignType.global.name),
           ),
           InputWrapper.currency(
