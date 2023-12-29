@@ -17,5 +17,5 @@ class TextWidget extends Text {
   TextOverflow get overflow => TextOverflow.ellipsis;
 
   @override
-  TextDirection get textDirection => AppDesign.getTextDirection();
+  TextDirection get textDirection => AppDesign.getAlignment<TextDirection>();
 }

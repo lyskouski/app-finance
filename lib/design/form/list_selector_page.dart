@@ -9,6 +9,7 @@ import 'package:app_finance/_ext/build_context_ext.dart';
 import 'package:app_finance/_ext/color_ext.dart';
 import 'package:app_finance/design/form/simple_input.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_grid_layout/flutter_grid_layout.dart';
 
 typedef FntSelectorCallback = Widget Function(
   List<ListSelectorItem> options,
@@ -77,85 +78,99 @@ class ListSelectorPageState<T extends Object?> extends State<ListSelectorPage> {
   Widget build(BuildContext context) {
     final indent = ThemeHelper.getIndent();
     nav = Navigator.of(context);
-    return Scaffold(
-      appBar: AppBar(backgroundColor: context.colorScheme.primary, toolbarHeight: 0),
-      body: Column(
-        crossAxisAlignment: AppDesign.getAlignment(),
-        mainAxisAlignment: AppDesign.getAlignment<MainAxisAlignment>(),
-        children: [
-          Container(
-            padding: EdgeInsets.all(ThemeHelper.getIndent()),
-            width: double.infinity,
-            decoration: BoxDecoration(
-              color: context.colorScheme.background,
-              boxShadow: [
-                BoxShadow(
-                  color: context.colorScheme.onBackground.withOpacity(0.1),
-                  offset: const Offset(0, 1),
-                  blurRadius: 3,
-                  spreadRadius: 1,
-                ),
-                BoxShadow(
-                  color: context.colorScheme.background,
-                  offset: const Offset(0, 3),
-                  blurRadius: 0,
-                  spreadRadius: 0,
-                ),
-              ],
-              border: Border(bottom: BorderSide(width: 4, color: context.colorScheme.background.withOpacity(0.2))),
-            ),
-            child: Container(
+    return Directionality(
+      textDirection: TextDirection.ltr,
+      child: Scaffold(
+        appBar: AppBar(backgroundColor: context.colorScheme.primary, toolbarHeight: 0),
+        body: Column(
+          crossAxisAlignment: AppDesign.getAlignment(),
+          mainAxisAlignment: AppDesign.getAlignment<MainAxisAlignment>(),
+          children: [
+            Container(
+              padding: EdgeInsets.all(ThemeHelper.getIndent()),
+              width: double.infinity,
               decoration: BoxDecoration(
                 color: context.colorScheme.background,
-                border: Border.all(color: context.colorScheme.onBackground.withOpacity(0.1)),
-                borderRadius: BorderRadius.all(Radius.circular(indent / 2)),
-              ),
-              child: Row(
-                children: [
-                  Expanded(
-                    child: SimpleInput(
-                      controller: controller,
-                      tooltip: widget.tooltip,
-                      withLabel: true,
-                      forceFocus: true,
-                      onFieldSubmitted: (String value) =>
-                          nav.pop<T>(widget.options.where((e) => e.match(value)).firstOrNull as T?),
-                    ),
+                boxShadow: [
+                  BoxShadow(
+                    color: context.colorScheme.onBackground.withOpacity(0.1),
+                    offset: const Offset(0, 1),
+                    blurRadius: 3,
+                    spreadRadius: 1,
                   ),
-                  Transform.translate(
-                    offset: const Offset(-ThemeHelper.barHeight / 2, 0),
-                    child: IconButton(
-                      tooltip: AppLocale.labels.clear,
-                      style: ButtonStyle(
-                        backgroundColor: MaterialStateProperty.all<Color>(
-                          context.colorScheme.background.mesh(context.colorScheme.primary.withOpacity(1), 0.1),
-                        ),
-                      ),
-                      icon: const Icon(Icons.clear),
-                      onPressed: () => nav.pop<T?>(null),
-                    ),
-                  ),
-                  Transform.translate(
-                    offset: Offset(-indent, 0),
-                    child: IconButton(
-                      tooltip: AppLocale.labels.returnBack,
-                      icon: const Icon(Icons.rotate_left_rounded),
-                      onPressed: () => nav.pop<T?>(result as T?),
-                    ),
+                  BoxShadow(
+                    color: context.colorScheme.background,
+                    offset: const Offset(0, 3),
+                    blurRadius: 0,
+                    spreadRadius: 0,
                   ),
                 ],
+                border: Border(bottom: BorderSide(width: 4, color: context.colorScheme.background.withOpacity(0.2))),
+              ),
+              child: Container(
+                decoration: BoxDecoration(
+                  color: context.colorScheme.background,
+                  border: Border.all(color: context.colorScheme.onBackground.withOpacity(0.1)),
+                  borderRadius: BorderRadius.all(Radius.circular(indent / 2)),
+                ),
+                height: ThemeHelper.barHeight + indent,
+                width: double.infinity,
+                padding: EdgeInsets.all(indent / 2),
+                child: GridContainer(
+                  alignment: AppDesign.getAlignment<MainAxisAlignment>(),
+                  rows: [null, ThemeHelper.barHeight / 2, ThemeHelper.barHeight / 2, ThemeHelper.barHeight, indent],
+                  // ignore: prefer_const_literals_to_create_immutables
+                  columns: [ThemeHelper.barHeight],
+                  children: [
+                    GridItem(
+                      start: const Size(0, 0),
+                      end: const Size(2, 1),
+                      child: SimpleInput(
+                        controller: controller,
+                        tooltip: widget.tooltip,
+                        withLabel: true,
+                        forceFocus: true,
+                        onFieldSubmitted: (String value) =>
+                            nav.pop<T>(widget.options.where((e) => e.match(value)).firstOrNull as T?),
+                      ),
+                    ),
+                    GridItem(
+                      start: const Size(1, 0),
+                      end: const Size(3, 1),
+                      child: IconButton(
+                        tooltip: AppLocale.labels.clear,
+                        style: ButtonStyle(
+                          backgroundColor: MaterialStateProperty.all<Color>(
+                            context.colorScheme.background.mesh(context.colorScheme.primary.withOpacity(1), 0.1),
+                          ),
+                        ),
+                        icon: const Icon(Icons.clear),
+                        onPressed: () => nav.pop<T?>(null),
+                      ),
+                    ),
+                    GridItem(
+                      start: const Size(3, 0),
+                      end: const Size(4, 1),
+                      child: IconButton(
+                        tooltip: AppLocale.labels.returnBack,
+                        icon: const Icon(Icons.rotate_left_rounded),
+                        onPressed: () => nav.pop<T?>(result as T?),
+                      ),
+                    ),
+                  ],
+                ),
               ),
             ),
-          ),
-          if (result != null)
-            ListTile(
-              tileColor: context.colorScheme.primary.withOpacity(0.15),
-              hoverColor: context.colorScheme.primary.withOpacity(0.20),
-              title: widget.options.where((e) => e.equal(result)).firstOrNull?.build(context) ?? ThemeHelper.emptyBox,
-              onTap: () => nav.pop<T>(result as T),
-            ),
-          Expanded(child: Padding(padding: EdgeInsets.all(indent), child: itemBuilder(options))),
-        ],
+            if (result != null)
+              ListTile(
+                tileColor: context.colorScheme.primary.withOpacity(0.15),
+                hoverColor: context.colorScheme.primary.withOpacity(0.20),
+                title: widget.options.where((e) => e.equal(result)).firstOrNull?.build(context) ?? ThemeHelper.emptyBox,
+                onTap: () => nav.pop<T>(result as T),
+              ),
+            Expanded(child: Padding(padding: EdgeInsets.all(indent), child: itemBuilder(options))),
+          ],
+        ),
       ),
     );
   }

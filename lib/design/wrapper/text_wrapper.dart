@@ -31,7 +31,7 @@ class TextWrapper extends StatelessWidget {
               style: style,
               maxLines: maxLines,
               overflow: TextOverflow.ellipsis,
-              textDirection: AppDesign.getTextDirection(),
+              textDirection: AppDesign.getAlignment<TextDirection>(),
             ),
           );
         } else {
@@ -40,7 +40,7 @@ class TextWrapper extends StatelessWidget {
             style: style,
             maxLines: maxLines,
             overflow: TextOverflow.ellipsis,
-            textDirection: AppDesign.getTextDirection(),
+            textDirection: AppDesign.getAlignment<TextDirection>(),
           );
         }
       },
