@@ -64,13 +64,6 @@ class SettingTabState<T extends SettingTab> extends AbstractTabState<T> {
 
   final languages = languageList.map((e) => ListSelectorItem(id: e.id, name: e.name)).toList();
 
-  final designList = [
-    ListSelectorItem(id: AppDesignType.global.name, name: AppLocale.labels.designGlobal),
-    ListSelectorItem(id: AppDesignType.asiaGeneral.name, name: AppLocale.labels.designAsiaGeneral),
-    ListSelectorItem(id: AppDesignType.rtlGeneral.name, name: AppLocale.labels.designRtlGeneral),
-    ListSelectorItem(id: AppDesignType.germany.name, name: AppLocale.labels.designGermany),
-  ];
-
   @override
   void initState() {
     super.initState();
@@ -152,8 +145,8 @@ class SettingTabState<T extends SettingTab> extends AbstractTabState<T> {
     zoom = Provider.of<AppZoom>(context, listen: false);
     palette = Provider.of<AppPalette>(context, listen: false);
     locale = Provider.of<AppLocale>(context, listen: false);
+    design = Provider.of<AppDesign>(context, listen: false);
     state = Provider.of<AppData>(context, listen: true);
-    design = Provider.of<AppDesign>(context, listen: true);
     final textTheme = context.textTheme;
     final indent = ThemeHelper.getIndent(2);
     final width = ThemeHelper.getMaxWidth(context, constraints) - 2 * indent;
@@ -178,7 +171,12 @@ class SettingTabState<T extends SettingTab> extends AbstractTabState<T> {
             title: AppLocale.labels.design,
             tooltip: AppLocale.labels.design,
             value: AppDesign.get().name,
-            options: designList,
+            options: [
+              ListSelectorItem(id: AppDesignType.global.name, name: AppLocale.labels.designGlobal),
+              ListSelectorItem(id: AppDesignType.asiaGeneral.name, name: AppLocale.labels.designAsiaGeneral),
+              ListSelectorItem(id: AppDesignType.rtlGeneral.name, name: AppLocale.labels.designRtlGeneral),
+              ListSelectorItem(id: AppDesignType.germany.name, name: AppLocale.labels.designGermany),
+            ],
             onChange: (v) => saveDesign(AppDesign.find(v)?.name ?? AppDesignType.global.name),
           ),
           InputWrapper.currency(
