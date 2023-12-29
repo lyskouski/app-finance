@@ -1,5 +1,13 @@
 ## Latest Changes
 
+_The full list of updates can be viewed via the "About" navigation item on the "Hints" button._
+
+### 5.3.0
+- Adding Persian localization
+
+### 5.2.6
+- Resolving Linux Flatpak storage
+
 ### 5.2.6
 - Resolving Linux Flatpak storage
 

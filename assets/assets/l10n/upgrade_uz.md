@@ -1,5 +1,10 @@
 ## So'nggi o'zgarishlar
 
+_Yangilanishlarning toʻliq roʻyxatini “Maslahat” tugmasidagi “Haqida” navigatsiya bandi orqali koʻrish mumkin._
+
+### 5.3.0
+- Forscha mahalliylashtirishni qo'shish
+
 ### 5.2.6
 - Linux Flatpak xotirasini hal qilish
 

@@ -1,5 +1,10 @@
 ## Najnowsze zmiany
 
+Pełną listę aktualizacji można wyświetlić za pomocą elementu nawigacyjnego "O aplikacji" na przycisku "Wskazówki".
+
+### 5.3.0
+- Dodanie perskiej lokalizacji. 
+
 ### 5.2.6
 - Resolving Linux Flatpak storage
 
