@@ -1,4 +1,4 @@
-# Wykres prognozy
+### Wykres prognozy
 
 Na osi Y wartość `100%` oznacza pełną alokację kategorii budżetowych, oś X - dni w bieżącym miesiącu. Wykres jest p
 odzielony na dwie sekcje:

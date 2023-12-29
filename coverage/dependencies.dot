@@ -198,7 +198,7 @@ digraph G {
   }
   {
     rank = same; "_classes";
-    herald [label="<0>HERALD|<app_palette>app_palette|<app_theme>app_theme|<app_purchase>app_purchase|<app_zoom>app_zoom|<app_locale>app_locale|<app_sync>app_sync",fillcolor="silver:white", gradientangle=240, style="filled"];
+    herald [label="<0>HERALD|<app_palette>app_palette|<app_theme>app_theme|<app_purchase>app_purchase|<app_design>app_design|<app_zoom>app_zoom|<app_locale>app_locale|<app_sync>app_sync",fillcolor="silver:white", gradientangle=240, style="filled"];
   }
   {
     rank = same; "_classes";
@@ -284,6 +284,7 @@ digraph G {
   components_ -> data [color="#FF00FF50"];
   components_ -> interface [color="#FF00FF50"];
   components_ -> wrapper [color="#FF00FF50"];
+  _core -> herald [color="#FF00FF50"];
   _core -> storage [color="#FF00FF50"];
   _core -> _configs_ [color="#FF00FF50"];
   _core -> _ext_ [color="#FF00FF50"];
@@ -395,10 +396,12 @@ digraph G {
   budget_widgets -> _configs_ [color="#F0F0F050"];
   budget_widgets -> _ext_ [color="#F0F0F050"];
   budget_widgets -> wrapper [color="#F0F0F050"];
+  budget_widgets -> herald [color="#F0F0F050"];
   budget_widgets -> structure [color="#F0F0F050"];
   budget_widgets -> _ext_ [color="#F0F0F050"];
   budget_widgets -> _configs_ [color="#F0F0F050"];
   budget_widgets -> wrapper [color="#F0F0F050"];
+  budget_widgets -> herald [color="#F0F0F050"];
   budget_widgets -> structure_navigation [color="#F0F0F050"];
   budget_widgets -> _configs_ [color="#F0F0F050"];
   budget_widgets -> _ext_ [color="#F0F0F050"];
@@ -447,8 +450,8 @@ digraph G {
   settings -> _interfaces [color="#F0F0F050"];
   settings -> wrapper [color="#F0F0F050"];
   settings -> settings_widgets [color="#F0F0F050"];
-  settings_widgets -> storage [color="#F0F0F050"];
   settings_widgets -> herald [color="#F0F0F050"];
+  settings_widgets -> storage [color="#F0F0F050"];
   settings_widgets -> controller [color="#F0F0F050"];
   settings_widgets -> form [color="#F0F0F050"];
   settings_widgets -> structure [color="#F0F0F050"];
@@ -657,8 +660,8 @@ digraph G {
   metrics -> _interfaces [color="#F0F0F050"];
   metrics -> wrapper [color="#F0F0F050"];
   metrics -> metrics_widgets [color="#F0F0F050"];
-  metrics_widgets -> storage [color="#F0F0F050"];
   metrics_widgets -> herald [color="#F0F0F050"];
+  metrics_widgets -> storage [color="#F0F0F050"];
   metrics_widgets -> data [color="#F0F0F050"];
   metrics_widgets -> structure_currency [color="#F0F0F050"];
   metrics_widgets -> _configs_ [color="#F0F0F050"];
@@ -677,6 +680,7 @@ digraph G {
   metrics_widgets -> components_ [color="#F0F0F050"];
   metrics_widgets -> generic [color="#F0F0F050"];
   metrics_widgets -> wrapper [color="#F0F0F050"];
+  metrics_widgets -> herald [color="#F0F0F050"];
   metrics_widgets -> _configs_ [color="#F0F0F050"];
   metrics_widgets -> components_ [color="#F0F0F050"];
   subscription -> herald [color="#F0F0F050"];
@@ -775,6 +779,7 @@ digraph G {
   bill_widgets -> herald [color="#F0F0F050"];
   bill_widgets -> structure [color="#F0F0F050"];
   bill_widgets -> bill_widgets [color="#F0F0F050"];
+  bill_widgets -> herald [color="#F0F0F050"];
   bill_widgets -> _configs_ [color="#F0F0F050"];
   bill_widgets -> _ext_ [color="#F0F0F050"];
   bill_widgets -> controller [color="#F0F0F050"];
@@ -855,6 +860,7 @@ digraph G {
   wrapper -> _interfaces [color="#0000FF50"];
   wrapper -> _configs_ [color="#0000FF50"];
   wrapper -> wrapper [color="#0000FF50"];
+  wrapper -> herald [color="#0000FF50"];
   wrapper -> _configs_ [color="#0000FF50"];
   wrapper -> herald [color="#0000FF50"];
   wrapper -> storage [color="#0000FF50"];
@@ -864,6 +870,7 @@ digraph G {
   wrapper -> wrapper [color="#0000FF50"];
   wrapper -> herald [color="#0000FF50"];
   wrapper -> wrapper [color="#0000FF50"];
+  wrapper -> herald [color="#0000FF50"];
   wrapper -> _configs_ [color="#0000FF50"];
   wrapper -> _configs_ [color="#0000FF50"];
   wrapper -> _ext_ [color="#0000FF50"];
@@ -874,6 +881,7 @@ digraph G {
   wrapper -> _ext_ [color="#0000FF50"];
   wrapper -> wrapper [color="#0000FF50"];
   wrapper -> _ext_ [color="#0000FF50"];
+  wrapper -> herald [color="#0000FF50"];
   wrapper -> _configs_ [color="#0000FF50"];
   wrapper -> wrapper [color="#0000FF50"];
 
@@ -915,14 +923,16 @@ digraph G {
   generic -> herald [color="#0000FF50"];
   generic -> structure_navigation [color="#0000FF50"];
   generic -> _configs_ [color="#0000FF50"];
-
+  generic -> herald [color="#0000FF50"];
   generic -> _ext_ [color="#0000FF50"];
+  generic -> herald [color="#0000FF50"];
   generic -> structure_navigation [color="#0000FF50"];
   generic -> _ext_ [color="#0000FF50"];
   generic -> charts_ [color="#0000FF50"];
   generic -> _configs_ [color="#0000FF50"];
   generic -> wrapper [color="#0000FF50"];
   generic -> controller [color="#0000FF50"];
+  generic -> herald [color="#0000FF50"];
   generic -> storage [color="#0000FF50"];
   generic -> _configs_ [color="#0000FF50"];
   generic -> _ext_ [color="#0000FF50"];
@@ -938,6 +948,7 @@ digraph G {
   button -> _configs_ [color="#0000FF50"];
   button -> _ext_ [color="#0000FF50"];
   button -> wrapper [color="#0000FF50"];
+  form -> herald [color="#0000FF50"];
   form -> form [color="#0000FF50"];
   form -> herald [color="#0000FF50"];
   form -> _configs_ [color="#0000FF50"];
@@ -948,7 +959,10 @@ digraph G {
   form -> _ext_ [color="#0000FF50"];
   form -> form [color="#0000FF50"];
   form -> wrapper [color="#0000FF50"];
+  form -> herald [color="#0000FF50"];
+  form -> _configs_ [color="#0000FF50"];
   form -> form [color="#0000FF50"];
+  form -> wrapper [color="#0000FF50"];
   form -> herald [color="#0000FF50"];
   form -> form [color="#0000FF50"];
   form -> _configs_ [color="#0000FF50"];
@@ -965,6 +979,7 @@ digraph G {
   form -> form [color="#0000FF50"];
   form -> wrapper [color="#0000FF50"];
   form -> controller [color="#0000FF50"];
+  form -> herald [color="#0000FF50"];
   form -> form [color="#0000FF50"];
   form -> _configs_ [color="#0000FF50"];
   form -> _ext_ [color="#0000FF50"];
@@ -975,6 +990,7 @@ digraph G {
   form -> form [color="#0000FF50"];
   form -> wrapper [color="#0000FF50"];
   form -> controller [color="#0000FF50"];
+  form -> herald [color="#0000FF50"];
   form -> _configs_ [color="#0000FF50"];
   form -> _ext_ [color="#0000FF50"];
   form -> wrapper [color="#0000FF50"];
@@ -1073,6 +1089,7 @@ digraph G {
   herald -> _configs_ [color="green"];
   herald -> storage [color="green"];
   herald -> controller [color="green"];
+  herald -> storage [color="green"];
   herald -> storage [color="green"];
   herald -> storage [color="green"];
   herald -> storage [color="green"];
