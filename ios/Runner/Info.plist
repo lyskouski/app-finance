@@ -33,6 +33,9 @@
     <string>fr</string>
     <string>de</string>
     <string>zh</string>
+    <string>hi</string>
+    <string>uz</string>
+    <string>fa</string>
   </array>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>

@@ -1,6 +1,7 @@
 // Copyright 2023 The terCAD team. All rights reserved.
 // Use of this source code is governed by a CC BY-NC-ND 4.0 license that can be found in the LICENSE file.
 
+import 'package:app_finance/_classes/herald/app_design.dart';
 import 'package:app_finance/_classes/herald/app_locale.dart';
 import 'package:app_finance/_configs/custom_color_scheme.dart';
 import 'package:app_finance/_configs/custom_text_theme.dart';
@@ -76,8 +77,8 @@ class MonthYearInputState extends AbstractSelectorState<MonthYearInput> {
         title: widget.value != null
             ? widget.withLabel
                 ? Column(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisAlignment: AppDesign.getAlignment<MainAxisAlignment>(),
+                    crossAxisAlignment: AppDesign.getAlignment(),
                     children: [
                       TextWrapper(widget.labelText ?? '...', style: context.textTheme.tooltipSmall),
                       title,

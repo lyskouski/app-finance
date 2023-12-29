@@ -1,6 +1,7 @@
 // Copyright 2023 The terCAD team. All rights reserved.
 // Use of this source code is governed by a CC BY-NC-ND 4.0 license that can be found in the LICENSE file.
 
+import 'package:app_finance/_classes/herald/app_design.dart';
 import 'package:app_finance/_classes/storage/app_data.dart';
 import 'package:app_finance/_classes/herald/app_locale.dart';
 import 'package:app_finance/_classes/storage/file_parser.dart';
@@ -134,7 +135,7 @@ class ImportTabState extends State<ImportTab> {
         child: Padding(
           padding: EdgeInsets.all(indent),
           child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
+            crossAxisAlignment: AppDesign.getAlignment(),
             children: [
               ThemeHelper.hIndent2x,
               if (errorMessage.toString() != '')
@@ -145,7 +146,7 @@ class ImportTabState extends State<ImportTab> {
               ] else if (fileContent != null) ...[
                 ...List<Widget>.generate(fileContent!.first.length, (index) {
                   return Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
+                    crossAxisAlignment: AppDesign.getAlignment(),
                     children: [
                       ThemeHelper.hIndent2x,
                       Text(
@@ -218,7 +219,7 @@ class ImportTabState extends State<ImportTab> {
                     onChange: (value) => setState(() => attrValue[FileParser.attrBillCurrency] = value?.id),
                   ),
                 ],
-                Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+                Column(crossAxisAlignment: AppDesign.getAlignment(), children: [
                   ThemeHelper.hIndent4x,
                   Text(
                     AppLocale.labels.dateFormat,

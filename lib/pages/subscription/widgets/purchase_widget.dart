@@ -2,6 +2,7 @@
 // Use of this source code is governed by a CC BY-NC-ND 4.0 license that can be found in the LICENSE file.
 
 import 'package:app_finance/_classes/controller/purchase_controller.dart';
+import 'package:app_finance/_classes/herald/app_design.dart';
 import 'package:app_finance/_classes/herald/app_locale.dart';
 import 'package:app_finance/_configs/custom_text_theme.dart';
 import 'package:app_finance/_configs/theme_helper.dart';
@@ -67,6 +68,7 @@ class PurchaseWidgetState extends State<PurchaseWidget> {
         child: isLoading
             ? LoadingWidget(isLoading: isLoading, size: Size(widget.size, widget.size))
             : GridContainer(
+                alignment: AppDesign.getAlignment<MainAxisAlignment>(),
                 rows: const [40, null, 40],
                 columns: const [40, null, 34],
                 children: [

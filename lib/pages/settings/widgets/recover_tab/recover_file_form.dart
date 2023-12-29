@@ -1,6 +1,7 @@
 // Copyright 2023 The terCAD team. All rights reserved.
 // Use of this source code is governed by a CC BY-NC-ND 4.0 license that can be found in the LICENSE file.
 
+import 'package:app_finance/_classes/herald/app_design.dart';
 import 'package:app_finance/_classes/herald/app_locale.dart';
 import 'package:app_finance/_classes/storage/transaction_log/file_protocol.dart';
 import 'package:app_finance/_configs/theme_helper.dart';
@@ -47,7 +48,7 @@ class RecoverFileFormState extends State<RecoverFileForm> {
     double indent = ThemeHelper.getIndent(2);
     final textTheme = context.textTheme;
     return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
+      crossAxisAlignment: AppDesign.getAlignment(),
       children: [
         ThemeHelper.hIndent2x,
         NavButtonWidget(

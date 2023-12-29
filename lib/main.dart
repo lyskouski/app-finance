@@ -4,6 +4,7 @@
 import 'dart:async';
 
 import 'package:app_finance/_classes/controller/fallback_localization_delegate.dart';
+import 'package:app_finance/_classes/herald/app_design.dart';
 import 'package:app_finance/_classes/herald/app_locale.dart';
 import 'package:app_finance/_classes/herald/app_palette.dart';
 import 'package:app_finance/_classes/herald/app_purchase.dart';
@@ -94,6 +95,9 @@ void main() async {
           ChangeNotifierProvider<AppLocale>(
             create: (_) => AppLocale(),
           ),
+          ChangeNotifierProvider<AppDesign>(
+            create: (_) => AppDesign(),
+          ),
           ChangeNotifierProvider<AppZoom>(
             create: (_) => AppZoom(),
           ),
@@ -140,38 +144,42 @@ class MyAppState extends State<MyApp> {
     final args = arguments as Map<String, dynamic>?;
     final String key = args?['uuid'] ?? args?['search'] ?? '';
 
-    final routes = <String, WidgetBuilder>{
-      AppRoute.aboutRoute: (context) => AboutPage(search: key),
-      AppRoute.accountRoute: (context) => const AccountPage(),
-      AppRoute.accountAddRoute: (context) => const AccountAddPage(),
-      AppRoute.accountViewRoute: (context) => AccountViewPage(uuid: key),
-      AppRoute.accountSearchRoute: (context) => AccountPage(search: key),
-      AppRoute.accountEditRoute: (context) => AccountEditPage(uuid: key),
-      AppRoute.automationRoute: (context) => const AutomationPage(),
-      AppRoute.billRoute: (context) => const BillPage(),
-      AppRoute.billAddRoute: (context) => const BillAddPage(),
-      AppRoute.billViewRoute: (context) => BillViewPage(uuid: key),
-      AppRoute.billEditRoute: (context) => BillEditPage(uuid: key),
-      AppRoute.budgetRoute: (context) => const BudgetPage(),
-      AppRoute.budgetAddRoute: (context) => const BudgetAddPage(),
-      AppRoute.budgetViewRoute: (context) => BudgetViewPage(uuid: key),
-      AppRoute.budgetSearchRoute: (context) => BudgetPage(search: key),
-      AppRoute.budgetEditRoute: (context) => BudgetEditPage(uuid: key),
-      AppRoute.currencyRoute: (context) => const CurrencyPage(),
-      AppRoute.goalRoute: (context) => const GoalPage(),
-      AppRoute.goalAddRoute: (context) => const GoalAddPage(),
-      AppRoute.goalViewRoute: (context) => GoalViewPage(uuid: key),
-      AppRoute.goalEditRoute: (context) => GoalEditPage(uuid: key),
-      AppRoute.invoiceViewRoute: (context) => InvoiceViewPage(uuid: key),
-      AppRoute.invoiceEditRoute: (context) => InvoiceEditPage(uuid: key),
-      AppRoute.homeRoute: (context) => const HomePage(),
-      AppRoute.metricsRoute: (context) => const MetricsPage(),
-      AppRoute.metricsSearchRoute: (context) => MetricsPage(search: key),
-      AppRoute.settingsRoute: (context) => const SettingsPage(),
-      AppRoute.startRoute: (context) => const StartPage(),
-      AppRoute.subscriptionRoute: (context) => const SubscriptionPage(),
-    };
-    return routes[route] ?? (context) => const HomePage();
+    Widget router(String route) => switch (route) {
+          AppRoute.aboutRoute => AboutPage(search: key),
+          AppRoute.accountRoute => const AccountPage(),
+          AppRoute.accountAddRoute => const AccountAddPage(),
+          AppRoute.accountViewRoute => AccountViewPage(uuid: key),
+          AppRoute.accountSearchRoute => AccountPage(search: key),
+          AppRoute.accountEditRoute => AccountEditPage(uuid: key),
+          AppRoute.automationRoute => const AutomationPage(),
+          AppRoute.billRoute => const BillPage(),
+          AppRoute.billAddRoute => const BillAddPage(),
+          AppRoute.billViewRoute => BillViewPage(uuid: key),
+          AppRoute.billEditRoute => BillEditPage(uuid: key),
+          AppRoute.budgetRoute => const BudgetPage(),
+          AppRoute.budgetAddRoute => const BudgetAddPage(),
+          AppRoute.budgetViewRoute => BudgetViewPage(uuid: key),
+          AppRoute.budgetSearchRoute => BudgetPage(search: key),
+          AppRoute.budgetEditRoute => BudgetEditPage(uuid: key),
+          AppRoute.currencyRoute => const CurrencyPage(),
+          AppRoute.goalRoute => const GoalPage(),
+          AppRoute.goalAddRoute => const GoalAddPage(),
+          AppRoute.goalViewRoute => GoalViewPage(uuid: key),
+          AppRoute.goalEditRoute => GoalEditPage(uuid: key),
+          AppRoute.invoiceViewRoute => InvoiceViewPage(uuid: key),
+          AppRoute.invoiceEditRoute => InvoiceEditPage(uuid: key),
+          AppRoute.homeRoute => const HomePage(),
+          AppRoute.metricsRoute => const MetricsPage(),
+          AppRoute.metricsSearchRoute => MetricsPage(search: key),
+          AppRoute.settingsRoute => const SettingsPage(),
+          AppRoute.startRoute => const StartPage(),
+          AppRoute.subscriptionRoute => const SubscriptionPage(),
+          _ => const HomePage(),
+        };
+    return (_) => Directionality(
+          textDirection: TextDirection.ltr,
+          child: router(route),
+        );
   }
 
   @override
@@ -213,7 +221,10 @@ class MyAppState extends State<MyApp> {
         useMaterial3: true,
       ),
       themeMode: context.watch<AppTheme>().value,
-      home: const HomePage(),
+      home: const Directionality(
+        textDirection: TextDirection.ltr,
+        child: HomePage(),
+      ),
       onGenerateRoute: (settings) => AppPageRoute(builder: getPage(settings.name ?? '', settings.arguments)!),
     );
   }

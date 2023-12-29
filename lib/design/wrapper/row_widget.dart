@@ -1,6 +1,7 @@
 // Copyright 2023 The terCAD team. All rights reserved.
 // Use of this source code is governed by a CC BY-NC-ND 4.0 license that can be found in the LICENSE file.
 
+import 'package:app_finance/_classes/herald/app_design.dart';
 import 'package:app_finance/_configs/theme_helper.dart';
 import 'package:flutter/material.dart';
 
@@ -49,23 +50,24 @@ class RowWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final size = 2 * chunk.length - 1;
     return SizedBox(
       width: maxWidth,
       child: Row(
-        crossAxisAlignment: CrossAxisAlignment.start,
+        crossAxisAlignment: AppDesign.getAlignment(),
         verticalDirection: VerticalDirection.down,
         mainAxisAlignment: alignment,
-        // mainAxisAlignment: MainAxisAlignment.start,
-        children: List<Widget>.generate(2 * chunk.length - 1, (index) {
-          final idx = index ~/ 2;
+        // mainAxisAlignment: AppDesign.getAlignment<MainAxisAlignment>(),
+        children: List<Widget>.generate(size, (index) {
+          final idx = AppDesign.getAlignment() == CrossAxisAlignment.start ? index ~/ 2 : (size - index) ~/ 2;
           if (index % 2 == 1) {
             return SizedBox(width: indent);
           } else if (chunk[idx] > 0) {
             return SizedBox(
               width: chunk[idx],
               child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                mainAxisAlignment: MainAxisAlignment.start,
+                crossAxisAlignment: AppDesign.getAlignment(),
+                mainAxisAlignment: AppDesign.getAlignment<MainAxisAlignment>(),
                 verticalDirection: VerticalDirection.down,
                 children: children[idx],
               ),

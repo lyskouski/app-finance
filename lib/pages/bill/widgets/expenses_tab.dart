@@ -2,6 +2,7 @@
 // Use of this source code is governed by a CC BY-NC-ND 4.0 license that can be found in the LICENSE file.
 
 import 'package:app_finance/_classes/controller/exchange_controller.dart';
+import 'package:app_finance/_classes/herald/app_design.dart';
 import 'package:app_finance/_classes/herald/app_locale.dart';
 import 'package:app_finance/_classes/structure/currency/exchange.dart';
 import 'package:app_finance/_classes/structure/navigation/app_route.dart';
@@ -166,7 +167,7 @@ class ExpensesTabState<T extends ExpensesTab> extends State<T> {
       child: Container(
         margin: EdgeInsets.fromLTRB(indent, indent, indent, 240),
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
+          crossAxisAlignment: AppDesign.getAlignment(),
           children: [
             InputWrapper(
               type: NamedInputType.accountSelector,

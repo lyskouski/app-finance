@@ -1,6 +1,7 @@
 // Copyright 2023 The terCAD team. All rights reserved.
 // Use of this source code is governed by a CC BY-NC-ND 4.0 license that can be found in the LICENSE file.
 
+import 'package:app_finance/_classes/herald/app_design.dart';
 import 'package:app_finance/_classes/herald/app_locale.dart';
 import 'package:app_finance/_classes/storage/transaction_log/web_dav_data.dart';
 import 'package:app_finance/_classes/storage/transaction_log/web_dav_protocol.dart';
@@ -51,7 +52,7 @@ class RecoverWebdavFormState extends State<RecoverWebdavForm> {
     double indent = ThemeHelper.getIndent(2);
     final textTheme = context.textTheme;
     return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
+      crossAxisAlignment: AppDesign.getAlignment(),
       children: [
         ThemeHelper.hIndent2x,
         NavButtonWidget(

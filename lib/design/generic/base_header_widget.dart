@@ -1,6 +1,7 @@
 // Copyright 2023 The terCAD team. All rights reserved.
 // Use of this source code is governed by a CC BY-NC-ND 4.0 license that can be found in the LICENSE file.
 
+import 'package:app_finance/_classes/herald/app_design.dart';
 import 'package:app_finance/_classes/herald/app_locale.dart';
 import 'package:app_finance/_classes/herald/app_zoom.dart';
 import 'package:app_finance/_classes/structure/navigation/app_menu.dart';
@@ -59,6 +60,7 @@ class BaseHeaderWidget extends StatelessWidget {
         width: double.infinity,
         color: colorScheme.inverseSurface.withOpacity(0.1),
         child: GridContainer(
+          alignment: AppDesign.getAlignment<MainAxisAlignment>(),
           rows: [null, ThemeHelper.barHeight, if (hasExpand) ThemeHelper.barHeight],
           columns: [subHeight, null],
           children: [

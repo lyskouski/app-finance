@@ -1,6 +1,7 @@
 // Copyright 2023 The terCAD team. All rights reserved.
 // Use of this source code is governed by a CC BY-NC-ND 4.0 license that can be found in the LICENSE file.
 
+import 'package:app_finance/_classes/herald/app_design.dart';
 import 'package:app_finance/_classes/herald/app_locale.dart';
 import 'package:app_finance/_classes/structure/account_app_data.dart';
 import 'package:app_finance/_configs/account_type.dart';
@@ -38,7 +39,7 @@ class AccountLineWidget extends StatelessWidget {
         padding: EdgeInsets.symmetric(vertical: indent),
         child: RowWidget(
           indent: indent,
-          alignment: MainAxisAlignment.start,
+          alignment: AppDesign.getAlignment<MainAxisAlignment>(),
           maxWidth: width,
           chunk: const [20, null, 0.3, 0.15, 0.1],
           children: [
@@ -55,17 +56,20 @@ class AccountLineWidget extends StatelessWidget {
               TextWrapper(AccountType.getLabel(item.type), style: textTheme.bodyMedium),
             ],
             [
-              Row(mainAxisAlignment: MainAxisAlignment.end, children: [
-                Align(
-                  alignment: Alignment.centerRight,
-                  child: NumberWidget(
-                    item.detailsFormatted,
-                    colorScheme: context.colorScheme,
-                    style: textTheme.numberMedium,
+              Row(
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: [
+                  Align(
+                    alignment: Alignment.centerRight,
+                    child: NumberWidget(
+                      item.detailsFormatted,
+                      colorScheme: context.colorScheme,
+                      style: textTheme.numberMedium,
+                    ),
                   ),
-                ),
-                if (item.error != null) item.error!,
-              ]),
+                  if (item.error != null) item.error!,
+                ],
+              ),
             ],
           ],
         ),
@@ -75,7 +79,7 @@ class AccountLineWidget extends StatelessWidget {
       children: [
         RowWidget(
           indent: indent,
-          alignment: MainAxisAlignment.start,
+          alignment: AppDesign.getAlignment<MainAxisAlignment>(),
           maxWidth: width,
           chunk: [20, null, txtWidth + 2 * indent, if (item.error != null) 22],
           children: [
@@ -100,7 +104,7 @@ class AccountLineWidget extends StatelessWidget {
         ),
         RowWidget(
           indent: indent,
-          alignment: MainAxisAlignment.start,
+          alignment: AppDesign.getAlignment<MainAxisAlignment>(),
           maxWidth: width,
           chunk: [
             typeWidth + indent / 2,
@@ -131,7 +135,7 @@ class AccountLineWidget extends StatelessWidget {
                 TextWrapper(
                   item.closedAtFormatted,
                   style: textTheme.numberSmall,
-                )
+                ),
               ],
             ]
           ],

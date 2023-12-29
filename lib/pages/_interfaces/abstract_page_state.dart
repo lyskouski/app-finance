@@ -1,6 +1,7 @@
 // Copyright 2023 The terCAD team. All rights reserved.
 // Use of this source code is governed by a CC BY-NC-ND 4.0 license that can be found in the LICENSE file.
 
+import 'package:app_finance/_classes/herald/app_design.dart';
 import 'package:app_finance/_classes/herald/app_locale.dart';
 import 'package:app_finance/_classes/herald/app_zoom.dart';
 import 'package:app_finance/_classes/structure/navigation/app_menu.dart';
@@ -169,7 +170,7 @@ abstract class AbstractPageState<T extends StatefulWidget> extends State<T> {
     final nav = Navigator.of(context);
     final actions = getBarActions(nav);
     final btnWidth = 50.0 * actions.length;
-    final titleWidth = ThemeHelper.getWidth(context, 0, null, false) / 2 - 100;
+    final titleWidth = ThemeHelper.getWidth(context, 0, null, false) / 2 - 80;
     final hasTooltip = getButtonName().isNotEmpty;
     final showTooltip = hasTooltip && (constraints.maxWidth - titleWidth - btnWidth - 50 > 125);
     return Container(
@@ -180,7 +181,7 @@ abstract class AbstractPageState<T extends StatefulWidget> extends State<T> {
       child: RowWidget(
         maxWidth: constraints.maxWidth,
         indent: 0,
-        chunk: [50, hasTooltip ? titleWidth : null, hasTooltip ? null : 0, btnWidth],
+        chunk: [50, hasTooltip ? titleWidth : null, hasTooltip ? 64 : 0, hasTooltip ? null : 0, btnWidth],
         children: [
           [getBarLeading(nav) ?? ThemeHelper.emptyBox],
           [
@@ -189,10 +190,11 @@ abstract class AbstractPageState<T extends StatefulWidget> extends State<T> {
               child: getBarTitle(context, true),
             ),
           ],
+          const [ThemeHelper.emptyBox],
           [
             if (showTooltip)
               Padding(
-                padding: EdgeInsets.only(left: 84, top: ThemeHelper.getIndent(0.5)),
+                padding: EdgeInsets.only(top: ThemeHelper.getIndent(0.5)),
                 child: TextWrapper(
                   getButtonName(),
                   maxLines: 2,
@@ -297,6 +299,7 @@ abstract class AbstractPageState<T extends StatefulWidget> extends State<T> {
             resizeToAvoidBottomInset: true,
             body: InputControllerWrapper(
               child: GridContainer(
+                alignment: AppDesign.getAlignment<MainAxisAlignment>(),
                 rows: const [ThemeHelper.menuWidth, null, ThemeHelper.barHeight],
                 columns: const [null, ThemeHelper.barHeight],
                 children: [

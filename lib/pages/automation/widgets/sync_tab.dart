@@ -1,6 +1,7 @@
 // Copyright 2023 The terCAD team. All rights reserved.
 // Use of this source code is governed by a CC BY-NC-ND 4.0 license that can be found in the LICENSE file.
 
+import 'package:app_finance/_classes/herald/app_design.dart';
 import 'package:app_finance/_classes/herald/app_locale.dart';
 import 'package:app_finance/_classes/herald/app_sync.dart';
 import 'package:app_finance/_classes/storage/app_data.dart';
@@ -81,7 +82,7 @@ class SyncTabState extends State<SyncTab> {
           child: Padding(
             padding: EdgeInsets.all(indent),
             child: Column(
-              mainAxisAlignment: MainAxisAlignment.start,
+              mainAxisAlignment: AppDesign.getAlignment<MainAxisAlignment>(),
               children: [
                 RowWidget(
                   maxWidth: width,

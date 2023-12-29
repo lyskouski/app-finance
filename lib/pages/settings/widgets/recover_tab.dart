@@ -1,6 +1,7 @@
 // Copyright 2023 The terCAD team. All rights reserved.
 // Use of this source code is governed by a CC BY-NC-ND 4.0 license that can be found in the LICENSE file.
 
+import 'package:app_finance/_classes/herald/app_design.dart';
 import 'package:app_finance/_classes/herald/app_locale.dart';
 import 'package:app_finance/_classes/controller/focus_controller.dart';
 import 'package:app_finance/_classes/storage/app_data.dart';
@@ -49,7 +50,7 @@ class SyncTabState extends State<RecoverTab> {
     Function form;
     if (inProgress) {
       form = () => Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
+            crossAxisAlignment: AppDesign.getAlignment(),
             children: [
               SizedBox(height: ThemeHelper.getIndent(12)),
               LoadingWidget(isLoading: inProgress),
@@ -77,7 +78,7 @@ class SyncTabState extends State<RecoverTab> {
           break;
         default:
           form = () => Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
+                crossAxisAlignment: AppDesign.getAlignment(),
                 children: [
                   ThemeHelper.hIndent2x,
                   NavButtonWidget(

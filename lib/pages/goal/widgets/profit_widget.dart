@@ -1,6 +1,7 @@
 // Copyright 2023 The terCAD team. All rights reserved.
 // Use of this source code is governed by a CC BY-NC-ND 4.0 license that can be found in the LICENSE file.
 
+import 'package:app_finance/_classes/herald/app_design.dart';
 import 'package:app_finance/_classes/herald/app_locale.dart';
 import 'package:app_finance/_classes/storage/app_data.dart';
 import 'package:app_finance/_classes/structure/currency/exchange.dart';
@@ -61,7 +62,7 @@ class ProfitWidget extends StatelessWidget {
     final textStyle = context.textTheme.numberSmall;
     final value = valInvoice - valBill;
     return RowWidget(
-      alignment: MainAxisAlignment.start,
+      alignment: AppDesign.getAlignment<MainAxisAlignment>(),
       indent: indent,
       maxWidth: width,
       chunk: const [null, null],

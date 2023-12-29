@@ -1,4 +1,4 @@
-# Dyjahrama Prahnozu 
+### Dyjahrama Prahnozu 
 
 Pa **Y**-vosi značeńnie "100%" aznačaje poŭnaje razmierkavańnie biudžetnych katehoryj, pa **X**-vosi
  -- dni miesiacu. Dyjahrama pad́zieliena na d́źvie častki: 

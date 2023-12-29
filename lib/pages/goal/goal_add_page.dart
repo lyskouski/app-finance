@@ -1,6 +1,7 @@
 // Copyright 2023 The terCAD team. All rights reserved.
 // Use of this source code is governed by a CC BY-NC-ND 4.0 license that can be found in the LICENSE file.
 
+import 'package:app_finance/_classes/herald/app_design.dart';
 import 'package:app_finance/_classes/herald/app_locale.dart';
 import 'package:app_finance/_classes/structure/currency/exchange.dart';
 import 'package:app_finance/_classes/structure/goal_app_data.dart';
@@ -127,7 +128,7 @@ class GoalAddPageState<T extends GoalAddPage> extends AbstractPageState<GoalAddP
       child: Container(
         margin: EdgeInsets.fromLTRB(indent, indent, indent, 240),
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
+          crossAxisAlignment: AppDesign.getAlignment(),
           children: [
             InputWrapper.text(
               title: AppLocale.labels.titleGoal,
@@ -139,7 +140,7 @@ class GoalAddPageState<T extends GoalAddPage> extends AbstractPageState<GoalAddP
             RowWidget(
               indent: indent,
               maxWidth: width + indent,
-              alignment: MainAxisAlignment.start,
+              alignment: AppDesign.getAlignment<MainAxisAlignment>(),
               chunk: const [null, null],
               children: [
                 [
@@ -161,7 +162,7 @@ class GoalAddPageState<T extends GoalAddPage> extends AbstractPageState<GoalAddP
             RowWidget(
               indent: indent,
               maxWidth: width + indent,
-              alignment: MainAxisAlignment.start,
+              alignment: AppDesign.getAlignment<MainAxisAlignment>(),
               chunk: const [90, null],
               children: [
                 [

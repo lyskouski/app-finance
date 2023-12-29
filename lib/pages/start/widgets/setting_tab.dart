@@ -2,6 +2,7 @@
 // Use of this source code is governed by a CC BY-NC-ND 4.0 license that can be found in the LICENSE file.
 
 import 'package:app_finance/_classes/controller/focus_controller.dart';
+import 'package:app_finance/_classes/herald/app_design.dart';
 import 'package:app_finance/_classes/herald/app_locale.dart';
 import 'package:app_finance/_classes/herald/app_palette.dart';
 import 'package:app_finance/_classes/herald/app_theme.dart';
@@ -42,21 +43,33 @@ class SettingTab extends AbstractTab {
 
 class SettingTabState<T extends SettingTab> extends AbstractTabState<T> {
   final controller = FocusController();
+
   late AppTheme theme;
   late AppZoom zoom;
   late AppPalette palette;
   late AppLocale locale;
+  late AppDesign design;
   late AppData state;
+
   Currency? currency;
   bool isEncrypted = false;
   bool hasEncrypted = false;
   String brightness = '0';
   String colorMode = AppPalette.state;
+
   var paletteState = (
     light: AppDefaultColors.fromString(AppPalette.light),
     dark: AppDefaultColors.fromString(AppPalette.dark),
   );
+
   final languages = languageList.map((e) => ListSelectorItem(id: e.id, name: e.name)).toList();
+
+  final designList = [
+    ListSelectorItem(id: AppDesignType.global.name, name: AppLocale.labels.designGlobal),
+    ListSelectorItem(id: AppDesignType.asiaGeneral.name, name: AppLocale.labels.designAsiaGeneral),
+    ListSelectorItem(id: AppDesignType.rtlGeneral.name, name: AppLocale.labels.designRtlGeneral),
+    ListSelectorItem(id: AppDesignType.germany.name, name: AppLocale.labels.designGermany),
+  ];
 
   @override
   void initState() {
@@ -106,6 +119,12 @@ class SettingTabState<T extends SettingTab> extends AbstractTabState<T> {
 
   Future<void> saveLocale(String value) async {
     await locale.set(value);
+    await design.set(AppDesign.fromLocale(AppLocale.fromCode(value)));
+    setState(() {});
+  }
+
+  Future<void> saveDesign(String value) async {
+    await design.set(value);
     setState(() {});
   }
 
@@ -134,6 +153,7 @@ class SettingTabState<T extends SettingTab> extends AbstractTabState<T> {
     palette = Provider.of<AppPalette>(context, listen: false);
     locale = Provider.of<AppLocale>(context, listen: false);
     state = Provider.of<AppData>(context, listen: true);
+    design = Provider.of<AppDesign>(context, listen: true);
     final textTheme = context.textTheme;
     final indent = ThemeHelper.getIndent(2);
     final width = ThemeHelper.getMaxWidth(context, constraints) - 2 * indent;
@@ -144,7 +164,7 @@ class SettingTabState<T extends SettingTab> extends AbstractTabState<T> {
     return SingleScrollWrapper(
       controller: controller,
       child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
+        crossAxisAlignment: AppDesign.getAlignment(),
         children: [
           ThemeHelper.hIndent2x,
           InputWrapper.select(
@@ -154,6 +174,13 @@ class SettingTabState<T extends SettingTab> extends AbstractTabState<T> {
             options: languages,
             onChange: (v) => saveLocale(v ?? AppLocale.code),
           ),
+          InputWrapper.select(
+            title: AppLocale.labels.design,
+            tooltip: AppLocale.labels.design,
+            value: AppDesign.get().name,
+            options: designList,
+            onChange: (v) => saveDesign(AppDesign.find(v)?.name ?? AppDesignType.global.name),
+          ),
           InputWrapper.currency(
             title: AppLocale.labels.currencyDefault,
             tooltip: AppLocale.labels.currencyDefault,
@@ -162,7 +189,7 @@ class SettingTabState<T extends SettingTab> extends AbstractTabState<T> {
           ),
           if (kDebugMode) ...[
             Row(
-              mainAxisAlignment: MainAxisAlignment.start,
+              mainAxisAlignment: AppDesign.getAlignment<MainAxisAlignment>(),
               children: [
                 Text(
                   AppLocale.labels.encryptionMode,
