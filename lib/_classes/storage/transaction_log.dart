@@ -50,24 +50,18 @@ class TransactionLog {
       await getTemporaryDirectory(),
     ].map((dir) => File('${dir.absolute.path}/$filePath')).toList();
     File? file = scope.where((f) => f.existsSync()).firstOrNull;
-    if (file == null) {
-      int i = 0;
-      do {
-        try {
-          File tmp = scope[i];
-          if (!tmp.existsSync()) {
-            tmp.createSync(recursive: true);
-            tmp.writeAsString("\n", mode: FileMode.append);
-          }
-          if (tmp.lengthSync() > 0) {
-            file = tmp;
-          } else {
-            i++;
-          }
-        } catch (e) {
-          i++;
+    int i = 0;
+    while (i < scope.length && file == null) {
+      try {
+        File tmp = scope[i];
+        if (!tmp.existsSync()) {
+          tmp.createSync(recursive: true);
+          tmp.writeAsString("\n", mode: FileMode.append);
         }
-      } while (i < scope.length && file == null);
+        file = tmp;
+      } catch (e) {
+        i++;
+      }
     }
     if (file == null) {
       throw Exception('Write access denied for: $scope.');
