@@ -101,6 +101,7 @@ class TransferTabState<T extends TransferTab> extends State<T> {
 
   void updateStorage() {
     final uuid = accountFrom ?? '';
+    exchange.save();
     widget.state.add(InvoiceAppData(
       title: description.text,
       color: widget.state.getByUuid(uuid)?.color,
