@@ -1,6 +1,6 @@
 {
     "a": "RUN `dart run grinder sort-translations --quiet` FOR ORDERING",
-    "aboutHeadline": "A propos de",
+    "aboutHeadline": "À propos",
     "account": "Compte",
     "accountFrom": "Du compte",
     "accountHeadline": "Comptes",

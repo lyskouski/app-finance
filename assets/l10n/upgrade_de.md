@@ -1,5 +1,10 @@
 ## Letzte Änderungen
 
+_Die vollständige Liste der Updates kann über den Navigationspunkt "Über" auf der Schaltfläche "Hinweise" eingesehen werden._
+
+### 5.3.0
+- Hinzufügen der persischen Lokalisierung.  
+
 ### 5.2.6
 - Auflösen des Linux Flatpak-Speichers
 

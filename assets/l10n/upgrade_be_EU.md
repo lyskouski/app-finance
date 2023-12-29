@@ -1,5 +1,10 @@
 ## Apošnija zmieny 
 
+_Poŭny spis abnaŭlieńniaŭ možna prahliadzieć u navihacyjnym punkcie «Ab Dadatku» na knopcy «Padkazki»._ 
+
+### 5.3.0 
+- Dadańnie piersidskaj lakalizacyi
+
 ### 5.2.6 
 - Rašeńnie schovišča Linux Flatpak 
 

@@ -1,5 +1,10 @@
 ## Últimas alterações
 
+_A lista completa de actualizações pode ser consultada através do item de navegação "Acerca" no botão "Sugestões".
+
+### 5.3.0
+- Adição da localização em persa. 
+
 ### 5.2.6
 - Resolvendo o armazenamento do Linux Flatpak
 

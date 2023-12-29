@@ -1,5 +1,10 @@
 ## Derniers changements
 
+_La liste complète des mises à jour peut être consultée via l'élément de navigation "À propos" du bouton "Conseils"._
+
+### 5.3.0
+- Ajout de la localisation en persan. 
+
 ### 5.2.6
 - Résolution du stockage Linux Flatpak
 
