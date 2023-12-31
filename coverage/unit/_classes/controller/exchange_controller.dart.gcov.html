@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2023-12-29 15:43:58</td>
+            <td class="headerValue">2023-12-31 09:42:03</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">0</td>
@@ -123,7 +123,7 @@
 <a name="61"><span class="lineNum">      61 </span>            : </a>
 <a name="62"><span class="lineNum">      62 </span><span class="lineNoCov">          0 :   void save() {</span></a>
 <a name="63"><span class="lineNum">      63 </span><span class="lineNoCov">          0 :     for (var uuid in pairs) {</span></a>
-<a name="64"><span class="lineNum">      64 </span><span class="lineNoCov">          0 :       if (rate[uuid] == null) {</span></a>
+<a name="64"><span class="lineNum">      64 </span><span class="lineNoCov">          0 :       if (rate[uuid] == null || rate[uuid]?.details == 1.0) {</span></a>
 <a name="65"><span class="lineNum">      65 </span>            :         continue;</a>
 <a name="66"><span class="lineNum">      66 </span>            :       }</a>
 <a name="67"><span class="lineNum">      67 </span><span class="lineNoCov">          0 :       store.update(uuid, rate[uuid]!, true);</span></a>
