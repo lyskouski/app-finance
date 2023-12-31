@@ -73,7 +73,7 @@ class SettingTabState<T extends SettingTab> extends AbstractTabState<T> {
     AppPreferences.set(AppPreferences.prefDoEncrypt, isEncrypted ? 'true' : 'false');
     brightness = AppPreferences.get(AppPreferences.prefTheme) ?? brightness;
     colorMode = AppPreferences.get(AppPreferences.prefColor) ?? colorMode;
-    currency = CurrencyProvider.find(AppPreferences.get(AppPreferences.prefCurrency) ?? 'EUR');
+    currency = CurrencyProvider.find(AppPreferences.get(AppPreferences.prefCurrency) ?? '');
   }
 
   @override
@@ -128,12 +128,11 @@ class SettingTabState<T extends SettingTab> extends AbstractTabState<T> {
 
   Future<void> initCurrencyFromLocale(String locale) async {
     final format = NumberFormat.simpleCurrency(locale: locale);
-    String? code = AppPreferences.get(AppPreferences.prefCurrency);
-    if (code == null && format.currencyName != null) {
-      code = format.currencyName ?? 'EUR';
-      await AppPreferences.set(AppPreferences.prefCurrency, code);
-    }
+    final code = format.currencyName ?? 'EUR';
+    await AppPreferences.set(AppPreferences.prefCurrency, code);
     setState(() => currency = CurrencyProvider.find(code));
+    Exchange.defaultCurrency = currency;
+    CurrencyDefaults.defaultCurrency = currency;
   }
 
   @override

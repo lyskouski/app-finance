@@ -61,7 +61,7 @@ class ExchangeController extends ValueNotifier<ExchangeMap> {
 
   void save() {
     for (var uuid in pairs) {
-      if (rate[uuid] == null) {
+      if (rate[uuid] == null || rate[uuid]?.details == 1.0) {
         continue;
       }
       store.update(uuid, rate[uuid]!, true);
