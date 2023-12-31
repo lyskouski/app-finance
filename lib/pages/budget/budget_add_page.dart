@@ -76,7 +76,7 @@ class BudgetAddPageState<T extends BudgetAddPage> extends AbstractAddPageState<B
 
   @override
   bool hasFormErrors() {
-    setState(() => hasError = title.text.isEmpty);
+    setState(() => hasError = title.text.isEmpty || currency == null);
     return hasError;
   }
 
@@ -225,6 +225,8 @@ class BudgetAddPageState<T extends BudgetAddPage> extends AbstractAddPageState<B
               ThemeHelper.hIndent2x,
             ],
             InputWrapper.currency(
+              isRequired: true,
+              showError: hasError && currency == null,
               value: currency,
               title: AppLocale.labels.currency,
               tooltip: AppLocale.labels.currencyTooltip,

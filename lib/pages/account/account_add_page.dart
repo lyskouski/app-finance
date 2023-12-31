@@ -85,7 +85,7 @@ class AccountAddPageState<T extends AccountAddPage> extends AbstractAddPageState
 
   @override
   bool hasFormErrors() {
-    setState(() => hasError = type == null || type?.isEmpty == true || title.text.isEmpty);
+    setState(() => hasError = type == null || type?.isEmpty == true || title.text.isEmpty || currency == null);
     return hasError;
   }
 
@@ -182,6 +182,8 @@ class AccountAddPageState<T extends AccountAddPage> extends AbstractAddPageState
               ],
             ),
             InputWrapper.currency(
+              isRequired: true,
+              showError: hasError && currency == null,
               value: currency,
               title: AppLocale.labels.currency,
               tooltip: AppLocale.labels.currencyTooltip,
