@@ -31,13 +31,13 @@
             <td class="headerValue">lcov.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntry">87</td>
-            <td class="headerCovTableEntry">116</td>
-            <td class="headerCovTableEntryMed">75.0 %</td>
+            <td class="headerCovTableEntry">88</td>
+            <td class="headerCovTableEntry">117</td>
+            <td class="headerCovTableEntryMed">75.2 %</td>
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2023-12-31 09:45:52</td>
+            <td class="headerValue">2024-01-02 08:48:15</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">0</td>
@@ -138,7 +138,7 @@
 <a name="76"><span class="lineNum">      76 </span>            : </a>
 <a name="77"><span class="lineNum">      77 </span><span class="lineCov">          1 :   @override</span></a>
 <a name="78"><span class="lineNum">      78 </span>            :   bool hasFormErrors() {</a>
-<a name="79"><span class="lineNum">      79 </span><span class="lineCov">          6 :     setState(() =&gt; hasError = title.text.isEmpty);</span></a>
+<a name="79"><span class="lineNum">      79 </span><span class="lineCov">          7 :     setState(() =&gt; hasError = title.text.isEmpty || currency == null);</span></a>
 <a name="80"><span class="lineNum">      80 </span><span class="lineCov">          1 :     return hasError;</span></a>
 <a name="81"><span class="lineNum">      81 </span>            :   }</a>
 <a name="82"><span class="lineNum">      82 </span>            : </a>
@@ -287,17 +287,19 @@
 <a name="225"><span class="lineNum">     225 </span><span class="lineNoCov">          0 :               ThemeHelper.hIndent2x,</span></a>
 <a name="226"><span class="lineNum">     226 </span>            :             ],</a>
 <a name="227"><span class="lineNum">     227 </span><span class="lineCov">          1 :             InputWrapper.currency(</span></a>
-<a name="228"><span class="lineNum">     228 </span><span class="lineCov">          1 :               value: currency,</span></a>
-<a name="229"><span class="lineNum">     229 </span><span class="lineCov">          2 :               title: AppLocale.labels.currency,</span></a>
-<a name="230"><span class="lineNum">     230 </span><span class="lineCov">          2 :               tooltip: AppLocale.labels.currencyTooltip,</span></a>
-<a name="231"><span class="lineNum">     231 </span><span class="lineCov">          4 :               onChange: (value) =&gt; setState(() =&gt; currency = value),</span></a>
-<a name="232"><span class="lineNum">     232 </span>            :             ),</a>
-<a name="233"><span class="lineNum">     233 </span>            :           ],</a>
-<a name="234"><span class="lineNum">     234 </span>            :         ),</a>
-<a name="235"><span class="lineNum">     235 </span>            :       ),</a>
-<a name="236"><span class="lineNum">     236 </span>            :     );</a>
-<a name="237"><span class="lineNum">     237 </span>            :   }</a>
-<a name="238"><span class="lineNum">     238 </span>            : }</a>
+<a name="228"><span class="lineNum">     228 </span>            :               isRequired: true,</a>
+<a name="229"><span class="lineNum">     229 </span><span class="lineCov">          1 :               showError: hasError &amp;&amp; currency == null,</span></a>
+<a name="230"><span class="lineNum">     230 </span><span class="lineCov">          1 :               value: currency,</span></a>
+<a name="231"><span class="lineNum">     231 </span><span class="lineCov">          2 :               title: AppLocale.labels.currency,</span></a>
+<a name="232"><span class="lineNum">     232 </span><span class="lineCov">          2 :               tooltip: AppLocale.labels.currencyTooltip,</span></a>
+<a name="233"><span class="lineNum">     233 </span><span class="lineCov">          4 :               onChange: (value) =&gt; setState(() =&gt; currency = value),</span></a>
+<a name="234"><span class="lineNum">     234 </span>            :             ),</a>
+<a name="235"><span class="lineNum">     235 </span>            :           ],</a>
+<a name="236"><span class="lineNum">     236 </span>            :         ),</a>
+<a name="237"><span class="lineNum">     237 </span>            :       ),</a>
+<a name="238"><span class="lineNum">     238 </span>            :     );</a>
+<a name="239"><span class="lineNum">     239 </span>            :   }</a>
+<a name="240"><span class="lineNum">     240 </span>            : }</a>
 </pre>
       </td>
     </tr>
