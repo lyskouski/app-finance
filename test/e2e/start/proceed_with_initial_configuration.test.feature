@@ -14,10 +14,12 @@ Feature: Verify Initial Flow
      When I tap on 0 index of "ListSelector" fields
       And I tap "Bank Account" element
       And I enter "Starting Page Account" to "Enter Account Identifier" text field
+      And I select "USD" from "CurrencySelector" with "Currency Type (Code)" tooltip
       And I enter "1000" to "Set Balance" text field
       And I tap "Create new Account" button
      Then I can see "Create new Budget Category" button
      When I enter "Starting Page Budget" to "Enter Budget Category Name" text field
+      And I select "EUR" from "CurrencySelector" with "Currency Type (Code)" tooltip
       And I enter "1000" to "Set Balance" text field
      When I tap "Create new Budget Category" button
      Then I can see "Accounts, total" component

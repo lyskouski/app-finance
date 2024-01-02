@@ -6,7 +6,7 @@ Feature: Verify Account Functionality
      When I tap on 0 index of "ListSelector" fields
       And I tap "<type>" element
       And I enter "<type>" to "Enter Account Identifier" text field
-      And I enter "<amount>" to "Set Balance" text field       
+      And I enter "<amount>" to "Set Balance" text field
       And I select "<currency>" from "CurrencySelector" with "Currency Type (Code)" tooltip
       And I tap "Create new Account" button
      Then I can see "Accounts, total" component
