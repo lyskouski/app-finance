@@ -110,7 +110,7 @@ class FocusController {
 
   bool isFocused(dynamic item) => key(item) == focus;
 
-  void _blur() => scope.forEach((_, value) => value.unfocus());
+  void blur() => scope.forEach((_, value) => value.unfocus());
 
   void onFocus(dynamic item, [int? idx, bool isForced = true]) {
     idx ??= key(item);
@@ -119,7 +119,7 @@ class FocusController {
         scope[idx] != null &&
         scope[idx]!.context != null &&
         scope[idx]!.context!.mounted) {
-      _blur();
+      blur();
       scope[idx]?.requestFocus();
       if (item != null) {
         _scrollTo.run(() => scrollToFocusedElement(item, idx));

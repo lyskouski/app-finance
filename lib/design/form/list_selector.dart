@@ -49,6 +49,7 @@ class ListSelectorState<T extends ListSelector, K extends ListSelectorItem> exte
   FntSelectorCallback? getItemBuilder() => null;
 
   void onTap(BuildContext context) async {
+    focusController.blur();
     FocusController.force = true;
     final result = await Navigator.push(
       context,
