@@ -32,12 +32,12 @@
             <td></td>
             <td class="headerItem">Lines:</td>
             <td class="headerCovTableEntry">41</td>
-            <td class="headerCovTableEntry">61</td>
-            <td class="headerCovTableEntryLo">67.2 %</td>
+            <td class="headerCovTableEntry">62</td>
+            <td class="headerCovTableEntryLo">66.1 %</td>
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2024-01-02 08:45:28</td>
+            <td class="headerValue">2024-01-03 11:31:36</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">0</td>
@@ -111,93 +111,94 @@
 <a name="49"><span class="lineNum">      49 </span><span class="lineNoCov">          0 :   FntSelectorCallback? getItemBuilder() =&gt; null;</span></a>
 <a name="50"><span class="lineNum">      50 </span>            : </a>
 <a name="51"><span class="lineNum">      51 </span><span class="lineNoCov">          0 :   void onTap(BuildContext context) async {</span></a>
-<a name="52"><span class="lineNum">      52 </span>            :     FocusController.force = true;</a>
-<a name="53"><span class="lineNum">      53 </span><span class="lineNoCov">          0 :     final result = await Navigator.push(</span></a>
-<a name="54"><span class="lineNum">      54 </span>            :       context,</a>
-<a name="55"><span class="lineNum">      55 </span><span class="lineNoCov">          0 :       MaterialPageRoute(</span></a>
-<a name="56"><span class="lineNum">      56 </span><span class="lineNoCov">          0 :         builder: (context) =&gt; ListSelectorPage(</span></a>
-<a name="57"><span class="lineNum">      57 </span><span class="lineNoCov">          0 :           options: widget.options,</span></a>
-<a name="58"><span class="lineNum">      58 </span><span class="lineNoCov">          0 :           result: widget.value,</span></a>
-<a name="59"><span class="lineNum">      59 </span><span class="lineNoCov">          0 :           tooltip: widget.tooltip ?? widget.hintText ?? '...',</span></a>
-<a name="60"><span class="lineNum">      60 </span><span class="lineNoCov">          0 :           itemBuilder: getItemBuilder(),</span></a>
-<a name="61"><span class="lineNum">      61 </span>            :         ),</a>
-<a name="62"><span class="lineNum">      62 </span>            :       ),</a>
-<a name="63"><span class="lineNum">      63 </span>            :     );</a>
-<a name="64"><span class="lineNum">      64 </span>            :     FocusController.force = false;</a>
-<a name="65"><span class="lineNum">      65 </span><span class="lineNoCov">          0 :     widget.setState(result);</span></a>
-<a name="66"><span class="lineNum">      66 </span><span class="lineNoCov">          0 :     WidgetsBinding.instance.addPostFrameCallback((_) =&gt; focusController.onEditingComplete(this));</span></a>
-<a name="67"><span class="lineNum">      67 </span>            :   }</a>
-<a name="68"><span class="lineNum">      68 </span>            : </a>
-<a name="69"><span class="lineNum">      69 </span><span class="lineCov">          2 :   @override</span></a>
-<a name="70"><span class="lineNum">      70 </span>            :   Widget build(BuildContext context) {</a>
-<a name="71"><span class="lineNum">      71 </span><span class="lineCov">          4 :     focusController = FocusWrapper.of(context) ?? FocusController();</span></a>
-<a name="72"><span class="lineNum">      72 </span><span class="lineCov">          2 :     final indent = ThemeHelper.getIndent(1.5);</span></a>
-<a name="73"><span class="lineNum">      73 </span><span class="lineCov">          6 :     final hintStyle = context.textTheme.tooltipMedium.copyWith(overflow: TextOverflow.ellipsis);</span></a>
-<a name="74"><span class="lineNum">      74 </span><span class="lineCov">          4 :     final labelStyle = context.textTheme.tooltipSmall;</span></a>
-<a name="75"><span class="lineNum">      75 </span><span class="lineCov">         24 :     K? item = widget.value != null ? widget.options.cast().where((e) =&gt; e.equal(widget.value?.id)).firstOrNull : null;</span></a>
-<a name="76"><span class="lineNum">      76 </span>            : </a>
-<a name="77"><span class="lineNum">      77 </span><span class="lineCov">          2 :     return InkWell(</span></a>
-<a name="78"><span class="lineNum">      78 </span><span class="lineCov">          4 :       autofocus: focusController.isFocused(this),</span></a>
-<a name="79"><span class="lineNum">      79 </span><span class="lineCov">          8 :       focusNode: focusController.bind(this, context: context, value: widget.value),</span></a>
-<a name="80"><span class="lineNum">      80 </span><span class="lineCov">          2 :       child: TapWidget(</span></a>
-<a name="81"><span class="lineNum">      81 </span><span class="lineCov">          4 :         tooltip: widget.tooltip ?? '',</span></a>
-<a name="82"><span class="lineNum">      82 </span><span class="lineNoCov">          0 :         onTap: () =&gt; onTap(context),</span></a>
-<a name="83"><span class="lineNum">      83 </span><span class="lineNoCov">          0 :         onFocusChange: (v) =&gt; v ? focusController.scrollToFocusedElement(this) : null,</span></a>
-<a name="84"><span class="lineNum">      84 </span><span class="lineCov">          2 :         child: Container(</span></a>
-<a name="85"><span class="lineNum">      85 </span>            :           width: double.infinity,</a>
-<a name="86"><span class="lineNum">      86 </span><span class="lineCov">          4 :           color: context.colorScheme.fieldBackground,</span></a>
-<a name="87"><span class="lineNum">      87 </span><span class="lineCov">          4 :           child: LayoutBuilder(builder: (_, constraints) {</span></a>
-<a name="88"><span class="lineNum">      88 </span><span class="lineCov">          2 :             return RowWidget(</span></a>
-<a name="89"><span class="lineNum">      89 </span><span class="lineCov">          6 :               chunk: [null, ThemeHelper.barHeight - ThemeHelper.getIndent()],</span></a>
-<a name="90"><span class="lineNum">      90 </span><span class="lineCov">          2 :               maxWidth: constraints.maxWidth,</span></a>
-<a name="91"><span class="lineNum">      91 </span>            :               indent: 0.0,</a>
-<a name="92"><span class="lineNum">      92 </span><span class="lineCov">          2 :               children: [</span></a>
-<a name="93"><span class="lineNum">      93 </span><span class="lineCov">          2 :                 [</span></a>
-<a name="94"><span class="lineNum">      94 </span><span class="lineCov">          2 :                   Container(</span></a>
-<a name="95"><span class="lineNum">      95 </span><span class="lineCov">          2 :                     padding: EdgeInsets.fromLTRB(</span></a>
-<a name="96"><span class="lineNum">      96 </span><span class="lineCov">          2 :                       indent / 1.5,</span></a>
-<a name="97"><span class="lineNum">      97 </span><span class="lineCov">          4 :                       widget.withLabel &amp;&amp; item != null ? 1 : indent,</span></a>
-<a name="98"><span class="lineNum">      98 </span><span class="lineCov">          2 :                       AppDesign.isRightToLeft() ? ThemeHelper.getIndent() : 0,</span></a>
-<a name="99"><span class="lineNum">      99 </span><span class="lineCov">          4 :                       widget.withLabel &amp;&amp; item != null ? indent / 2 : indent,</span></a>
-<a name="100"><span class="lineNum">     100 </span>            :                     ),</a>
-<a name="101"><span class="lineNum">     101 </span><span class="lineCov">          6 :                     constraints: BoxConstraints(maxWidth: constraints.maxWidth - ThemeHelper.barHeight),</span></a>
-<a name="102"><span class="lineNum">     102 </span>            :                     child: item != null</a>
-<a name="103"><span class="lineNum">     103 </span><span class="lineCov">          4 :                         ? widget.withLabel</span></a>
-<a name="104"><span class="lineNum">     104 </span><span class="lineNoCov">          0 :                             ? Column(</span></a>
-<a name="105"><span class="lineNum">     105 </span><span class="lineNoCov">          0 :                                 mainAxisAlignment: AppDesign.getAlignment&lt;MainAxisAlignment&gt;(),</span></a>
-<a name="106"><span class="lineNum">     106 </span><span class="lineNoCov">          0 :                                 crossAxisAlignment: AppDesign.getAlignment(),</span></a>
-<a name="107"><span class="lineNum">     107 </span><span class="lineNoCov">          0 :                                 children: [</span></a>
-<a name="108"><span class="lineNum">     108 </span><span class="lineNoCov">          0 :                                   TextWrapper(widget.hintText ?? '...', style: labelStyle),</span></a>
-<a name="109"><span class="lineNum">     109 </span><span class="lineNoCov">          0 :                                   item.build(context),</span></a>
-<a name="110"><span class="lineNum">     110 </span>            :                                 ],</a>
-<a name="111"><span class="lineNum">     111 </span>            :                               )</a>
-<a name="112"><span class="lineNum">     112 </span><span class="lineCov">          2 :                             : item.build(context)</span></a>
-<a name="113"><span class="lineNum">     113 </span><span class="lineCov">          2 :                         : TextWrapper(</span></a>
-<a name="114"><span class="lineNum">     114 </span><span class="lineCov">          4 :                             widget.hintText ?? '...',</span></a>
-<a name="115"><span class="lineNum">     115 </span><span class="lineCov">          4 :                             style: widget.hintStyle ?? hintStyle,</span></a>
-<a name="116"><span class="lineNum">     116 </span>            :                           ),</a>
-<a name="117"><span class="lineNum">     117 </span>            :                   ),</a>
-<a name="118"><span class="lineNum">     118 </span>            :                 ],</a>
-<a name="119"><span class="lineNum">     119 </span><span class="lineCov">          2 :                 [</span></a>
-<a name="120"><span class="lineNum">     120 </span><span class="lineCov">          2 :                   Padding(</span></a>
-<a name="121"><span class="lineNum">     121 </span><span class="lineCov">          4 :                     padding: EdgeInsets.only(top: indent / 3),</span></a>
-<a name="122"><span class="lineNum">     122 </span><span class="lineCov">          2 :                     child: ExcludeFocus(</span></a>
-<a name="123"><span class="lineNum">     123 </span><span class="lineCov">          2 :                       child: IconButton(</span></a>
-<a name="124"><span class="lineNum">     124 </span><span class="lineCov">          4 :                         tooltip: widget.hintText ?? '...',</span></a>
-<a name="125"><span class="lineNum">     125 </span><span class="lineCov">          6 :                         icon: Icon(Icons.arrow_drop_down, color: widget.hintStyle?.color),</span></a>
-<a name="126"><span class="lineNum">     126 </span><span class="lineNoCov">          0 :                         onPressed: () =&gt; onTap(context),</span></a>
-<a name="127"><span class="lineNum">     127 </span>            :                       ),</a>
-<a name="128"><span class="lineNum">     128 </span>            :                     ),</a>
-<a name="129"><span class="lineNum">     129 </span>            :                   ),</a>
-<a name="130"><span class="lineNum">     130 </span>            :                 ],</a>
-<a name="131"><span class="lineNum">     131 </span>            :               ],</a>
-<a name="132"><span class="lineNum">     132 </span>            :             );</a>
-<a name="133"><span class="lineNum">     133 </span>            :           }),</a>
-<a name="134"><span class="lineNum">     134 </span>            :         ),</a>
-<a name="135"><span class="lineNum">     135 </span>            :       ),</a>
-<a name="136"><span class="lineNum">     136 </span>            :     );</a>
-<a name="137"><span class="lineNum">     137 </span>            :   }</a>
-<a name="138"><span class="lineNum">     138 </span>            : }</a>
+<a name="52"><span class="lineNum">      52 </span><span class="lineNoCov">          0 :     focusController.blur();</span></a>
+<a name="53"><span class="lineNum">      53 </span>            :     FocusController.force = true;</a>
+<a name="54"><span class="lineNum">      54 </span><span class="lineNoCov">          0 :     final result = await Navigator.push(</span></a>
+<a name="55"><span class="lineNum">      55 </span>            :       context,</a>
+<a name="56"><span class="lineNum">      56 </span><span class="lineNoCov">          0 :       MaterialPageRoute(</span></a>
+<a name="57"><span class="lineNum">      57 </span><span class="lineNoCov">          0 :         builder: (context) =&gt; ListSelectorPage(</span></a>
+<a name="58"><span class="lineNum">      58 </span><span class="lineNoCov">          0 :           options: widget.options,</span></a>
+<a name="59"><span class="lineNum">      59 </span><span class="lineNoCov">          0 :           result: widget.value,</span></a>
+<a name="60"><span class="lineNum">      60 </span><span class="lineNoCov">          0 :           tooltip: widget.tooltip ?? widget.hintText ?? '...',</span></a>
+<a name="61"><span class="lineNum">      61 </span><span class="lineNoCov">          0 :           itemBuilder: getItemBuilder(),</span></a>
+<a name="62"><span class="lineNum">      62 </span>            :         ),</a>
+<a name="63"><span class="lineNum">      63 </span>            :       ),</a>
+<a name="64"><span class="lineNum">      64 </span>            :     );</a>
+<a name="65"><span class="lineNum">      65 </span>            :     FocusController.force = false;</a>
+<a name="66"><span class="lineNum">      66 </span><span class="lineNoCov">          0 :     widget.setState(result);</span></a>
+<a name="67"><span class="lineNum">      67 </span><span class="lineNoCov">          0 :     WidgetsBinding.instance.addPostFrameCallback((_) =&gt; focusController.onEditingComplete(this));</span></a>
+<a name="68"><span class="lineNum">      68 </span>            :   }</a>
+<a name="69"><span class="lineNum">      69 </span>            : </a>
+<a name="70"><span class="lineNum">      70 </span><span class="lineCov">          2 :   @override</span></a>
+<a name="71"><span class="lineNum">      71 </span>            :   Widget build(BuildContext context) {</a>
+<a name="72"><span class="lineNum">      72 </span><span class="lineCov">          4 :     focusController = FocusWrapper.of(context) ?? FocusController();</span></a>
+<a name="73"><span class="lineNum">      73 </span><span class="lineCov">          2 :     final indent = ThemeHelper.getIndent(1.5);</span></a>
+<a name="74"><span class="lineNum">      74 </span><span class="lineCov">          6 :     final hintStyle = context.textTheme.tooltipMedium.copyWith(overflow: TextOverflow.ellipsis);</span></a>
+<a name="75"><span class="lineNum">      75 </span><span class="lineCov">          4 :     final labelStyle = context.textTheme.tooltipSmall;</span></a>
+<a name="76"><span class="lineNum">      76 </span><span class="lineCov">         24 :     K? item = widget.value != null ? widget.options.cast().where((e) =&gt; e.equal(widget.value?.id)).firstOrNull : null;</span></a>
+<a name="77"><span class="lineNum">      77 </span>            : </a>
+<a name="78"><span class="lineNum">      78 </span><span class="lineCov">          2 :     return InkWell(</span></a>
+<a name="79"><span class="lineNum">      79 </span><span class="lineCov">          4 :       autofocus: focusController.isFocused(this),</span></a>
+<a name="80"><span class="lineNum">      80 </span><span class="lineCov">          8 :       focusNode: focusController.bind(this, context: context, value: widget.value),</span></a>
+<a name="81"><span class="lineNum">      81 </span><span class="lineCov">          2 :       child: TapWidget(</span></a>
+<a name="82"><span class="lineNum">      82 </span><span class="lineCov">          4 :         tooltip: widget.tooltip ?? '',</span></a>
+<a name="83"><span class="lineNum">      83 </span><span class="lineNoCov">          0 :         onTap: () =&gt; onTap(context),</span></a>
+<a name="84"><span class="lineNum">      84 </span><span class="lineNoCov">          0 :         onFocusChange: (v) =&gt; v ? focusController.scrollToFocusedElement(this) : null,</span></a>
+<a name="85"><span class="lineNum">      85 </span><span class="lineCov">          2 :         child: Container(</span></a>
+<a name="86"><span class="lineNum">      86 </span>            :           width: double.infinity,</a>
+<a name="87"><span class="lineNum">      87 </span><span class="lineCov">          4 :           color: context.colorScheme.fieldBackground,</span></a>
+<a name="88"><span class="lineNum">      88 </span><span class="lineCov">          4 :           child: LayoutBuilder(builder: (_, constraints) {</span></a>
+<a name="89"><span class="lineNum">      89 </span><span class="lineCov">          2 :             return RowWidget(</span></a>
+<a name="90"><span class="lineNum">      90 </span><span class="lineCov">          6 :               chunk: [null, ThemeHelper.barHeight - ThemeHelper.getIndent()],</span></a>
+<a name="91"><span class="lineNum">      91 </span><span class="lineCov">          2 :               maxWidth: constraints.maxWidth,</span></a>
+<a name="92"><span class="lineNum">      92 </span>            :               indent: 0.0,</a>
+<a name="93"><span class="lineNum">      93 </span><span class="lineCov">          2 :               children: [</span></a>
+<a name="94"><span class="lineNum">      94 </span><span class="lineCov">          2 :                 [</span></a>
+<a name="95"><span class="lineNum">      95 </span><span class="lineCov">          2 :                   Container(</span></a>
+<a name="96"><span class="lineNum">      96 </span><span class="lineCov">          2 :                     padding: EdgeInsets.fromLTRB(</span></a>
+<a name="97"><span class="lineNum">      97 </span><span class="lineCov">          2 :                       indent / 1.5,</span></a>
+<a name="98"><span class="lineNum">      98 </span><span class="lineCov">          4 :                       widget.withLabel &amp;&amp; item != null ? 1 : indent,</span></a>
+<a name="99"><span class="lineNum">      99 </span><span class="lineCov">          2 :                       AppDesign.isRightToLeft() ? ThemeHelper.getIndent() : 0,</span></a>
+<a name="100"><span class="lineNum">     100 </span><span class="lineCov">          4 :                       widget.withLabel &amp;&amp; item != null ? indent / 2 : indent,</span></a>
+<a name="101"><span class="lineNum">     101 </span>            :                     ),</a>
+<a name="102"><span class="lineNum">     102 </span><span class="lineCov">          6 :                     constraints: BoxConstraints(maxWidth: constraints.maxWidth - ThemeHelper.barHeight),</span></a>
+<a name="103"><span class="lineNum">     103 </span>            :                     child: item != null</a>
+<a name="104"><span class="lineNum">     104 </span><span class="lineCov">          4 :                         ? widget.withLabel</span></a>
+<a name="105"><span class="lineNum">     105 </span><span class="lineNoCov">          0 :                             ? Column(</span></a>
+<a name="106"><span class="lineNum">     106 </span><span class="lineNoCov">          0 :                                 mainAxisAlignment: AppDesign.getAlignment&lt;MainAxisAlignment&gt;(),</span></a>
+<a name="107"><span class="lineNum">     107 </span><span class="lineNoCov">          0 :                                 crossAxisAlignment: AppDesign.getAlignment(),</span></a>
+<a name="108"><span class="lineNum">     108 </span><span class="lineNoCov">          0 :                                 children: [</span></a>
+<a name="109"><span class="lineNum">     109 </span><span class="lineNoCov">          0 :                                   TextWrapper(widget.hintText ?? '...', style: labelStyle),</span></a>
+<a name="110"><span class="lineNum">     110 </span><span class="lineNoCov">          0 :                                   item.build(context),</span></a>
+<a name="111"><span class="lineNum">     111 </span>            :                                 ],</a>
+<a name="112"><span class="lineNum">     112 </span>            :                               )</a>
+<a name="113"><span class="lineNum">     113 </span><span class="lineCov">          2 :                             : item.build(context)</span></a>
+<a name="114"><span class="lineNum">     114 </span><span class="lineCov">          2 :                         : TextWrapper(</span></a>
+<a name="115"><span class="lineNum">     115 </span><span class="lineCov">          4 :                             widget.hintText ?? '...',</span></a>
+<a name="116"><span class="lineNum">     116 </span><span class="lineCov">          4 :                             style: widget.hintStyle ?? hintStyle,</span></a>
+<a name="117"><span class="lineNum">     117 </span>            :                           ),</a>
+<a name="118"><span class="lineNum">     118 </span>            :                   ),</a>
+<a name="119"><span class="lineNum">     119 </span>            :                 ],</a>
+<a name="120"><span class="lineNum">     120 </span><span class="lineCov">          2 :                 [</span></a>
+<a name="121"><span class="lineNum">     121 </span><span class="lineCov">          2 :                   Padding(</span></a>
+<a name="122"><span class="lineNum">     122 </span><span class="lineCov">          4 :                     padding: EdgeInsets.only(top: indent / 3),</span></a>
+<a name="123"><span class="lineNum">     123 </span><span class="lineCov">          2 :                     child: ExcludeFocus(</span></a>
+<a name="124"><span class="lineNum">     124 </span><span class="lineCov">          2 :                       child: IconButton(</span></a>
+<a name="125"><span class="lineNum">     125 </span><span class="lineCov">          4 :                         tooltip: widget.hintText ?? '...',</span></a>
+<a name="126"><span class="lineNum">     126 </span><span class="lineCov">          6 :                         icon: Icon(Icons.arrow_drop_down, color: widget.hintStyle?.color),</span></a>
+<a name="127"><span class="lineNum">     127 </span><span class="lineNoCov">          0 :                         onPressed: () =&gt; onTap(context),</span></a>
+<a name="128"><span class="lineNum">     128 </span>            :                       ),</a>
+<a name="129"><span class="lineNum">     129 </span>            :                     ),</a>
+<a name="130"><span class="lineNum">     130 </span>            :                   ),</a>
+<a name="131"><span class="lineNum">     131 </span>            :                 ],</a>
+<a name="132"><span class="lineNum">     132 </span>            :               ],</a>
+<a name="133"><span class="lineNum">     133 </span>            :             );</a>
+<a name="134"><span class="lineNum">     134 </span>            :           }),</a>
+<a name="135"><span class="lineNum">     135 </span>            :         ),</a>
+<a name="136"><span class="lineNum">     136 </span>            :       ),</a>
+<a name="137"><span class="lineNum">     137 </span>            :     );</a>
+<a name="138"><span class="lineNum">     138 </span>            :   }</a>
+<a name="139"><span class="lineNum">     139 </span>            : }</a>
 </pre>
       </td>
     </tr>
