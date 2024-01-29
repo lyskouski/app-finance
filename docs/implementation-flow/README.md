@@ -6,8 +6,6 @@
 
 Scheduled to 1st November 2023
 
-_[Unpublished eBook] To remain eligible for KDP Select, enrolled titles must be sold exclusively on the Kindle Store throughout the 90-day enrollment period._
-
 - **Amazon Books**:
   - Kindle eBook (ASIN: B0CLLKNXQR): https://www.amazon.com/dp/B0CLLKNXQR
   - Paperback (ASIN: B0CLP5JQJC): https://www.amazon.com/Zero-Market-Flutter-Desktop-Distribution/dp/B0CLP5JQJC/
