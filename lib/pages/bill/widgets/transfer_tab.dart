@@ -120,7 +120,7 @@ class TransferTabState<T extends TransferTab> extends State<T> {
     return FullSizedButtonWidget(
       constraints: constraints,
       controller: focus,
-      setState: () => {
+      onPressed: () => {
         setState(() {
           if (hasFormErrors()) {
             return;

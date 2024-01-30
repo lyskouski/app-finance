@@ -42,7 +42,7 @@ class AccountTabState extends AccountAddPageState<AccountTab> {
   Widget _nextButton(BuildContext context, BoxConstraints constraints) => FullSizedButtonWidget(
         constraints: constraints,
         controller: focus,
-        setState: () => (widget as AccountTab).setState(),
+        onPressed: () => (widget as AccountTab).setState(),
         title: AppLocale.labels.goNextTooltip,
         icon: Icons.exit_to_app_rounded,
       );

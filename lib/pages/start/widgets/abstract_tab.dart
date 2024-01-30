@@ -29,7 +29,7 @@ abstract class AbstractTabState<T extends AbstractTab> extends State<T> {
   Widget buildButton(BuildContext context, BoxConstraints constraints) {
     return FullSizedButtonWidget(
       constraints: constraints,
-      setState: updateState,
+      onPressed: updateState,
       title: '${getButtonTitle()} (${AppLocale.labels.goNextTooltip})',
       icon: Icons.exit_to_app_rounded,
     );

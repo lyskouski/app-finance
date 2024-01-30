@@ -104,7 +104,7 @@ class GoalAddPageState<T extends GoalAddPage> extends AbstractPageState<GoalAddP
     return FullSizedButtonWidget(
       constraints: constraints,
       controller: focus,
-      setState: () => {
+      onPressed: () => {
         setState(() {
           if (hasFormErrors()) {
             return;

@@ -42,7 +42,7 @@ class BudgetTabState extends BudgetAddPageState<BudgetTab> {
   Widget _nextButton(BuildContext context, BoxConstraints constraints) => FullSizedButtonWidget(
         constraints: constraints,
         controller: focus,
-        setState: () => (widget as BudgetTab).setState(),
+        onPressed: () => (widget as BudgetTab).setState(),
         title: AppLocale.labels.goNextTooltip,
         icon: Icons.exit_to_app_rounded,
       );
