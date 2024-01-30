@@ -2,6 +2,15 @@
 
 Pełną listę aktualizacji można wyświetlić za pomocą elementu nawigacyjnego "O aplikacji" na przycisku "Wskazówki".
 
+### 5.3.3
+- Poprawa stylistyki przycisków
+
+### 5.3.2
+- Naprawianie utraty wymiany walut
+
+### 5.3.1
+- Poprawa lokalizacji w języku perskim
+
 ### 5.3.0
 - Dodanie perskiej lokalizacji. 
 

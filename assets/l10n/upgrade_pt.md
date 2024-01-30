@@ -2,6 +2,15 @@
 
 _A lista completa de actualizações pode ser consultada através do item de navegação "Acerca" no botão "Sugestões".
 
+### 5.3.3
+- Melhorar a estilística dos botões
+
+### 5.3.2
+- Corrigir a perda de câmbio de moeda
+
+### 5.3.1
+- Melhorar a localização em persa
+
 ### 5.3.0
 - Adição da localização em persa. 
 
