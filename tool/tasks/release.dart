@@ -34,6 +34,6 @@ pubspecUpdate() {
   final snap = File(path.join(dir.absolute.path, 'snapcraft.yaml'));
   snap.writeAsStringSync(snap.readAsStringSync().replaceFirst('version: 1.0.0+1', 'version: $build+$number'));
 
-  final desktop = File(path.join(dir.absolute.path, 'com.tercad.fingrom.desktop'));
-  desktop.writeAsStringSync(desktop.readAsStringSync().replaceFirst('Version=1.0.0', 'Version=$build'));
+  // final desktop = File(path.join(dir.absolute.path, 'com.tercad.fingrom.desktop'));
+  // desktop.writeAsStringSync(desktop.readAsStringSync().replaceFirst('Version=1.0.0', 'Version=$build'));
 }
