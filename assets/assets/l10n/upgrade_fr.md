@@ -2,6 +2,15 @@
 
 _La liste complète des mises à jour peut être consultée via l'élément de navigation "À propos" du bouton "Conseils"._
 
+### 5.3.3
+- Améliorer la stylistique des boutons
+
+### 5.3.2
+- Correction des pertes de change
+
+### 5.3.1
+- Amélioration de la localisation en persan
+
 ### 5.3.0
 - Ajout de la localisation en persan. 
 

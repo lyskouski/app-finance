@@ -2,6 +2,15 @@
 
 _A lista completa de atualizações pode ser visualizada no item de navegação "Sobre" no botão "Dicas".
 
+### 5.3.3
+- Melhorar a estilística dos botões
+
+### 5.3.2
+- Correção de perda de câmbio
+
+### 5.3.1
+- Aprimoramento da localização em persa
+
 ### 5.3.0
 - Adição da localização em persa. 
 

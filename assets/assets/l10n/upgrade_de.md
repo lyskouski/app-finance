@@ -2,6 +2,15 @@
 
 _Die vollständige Liste der Updates kann über den Navigationspunkt "Über" auf der Schaltfläche "Hinweise" eingesehen werden._
 
+### 5.3.3
+- Verbesserung der Stilistik von Schaltflächen
+
+### 5.3.2
+- Währungsumrechnungsverluste beheben
+
+### 5.3.1
+- Verbesserung der persischen Lokalisierung
+
 ### 5.3.0
 - Hinzufügen der persischen Lokalisierung.  
 

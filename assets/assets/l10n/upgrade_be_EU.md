@@ -2,6 +2,15 @@
 
 _Poŭny spis abnaŭlieńniaŭ možna prahliadzieć u navihacyjnym punkcie «Ab Dadatku» na knopcy «Padkazki»._ 
 
+### 5.3.3 
+- Paliapšeńnie stylistyki knopak 
+
+### 5.3.2 
+- Fiksacyja strat ad abmienu valiuty 
+
+### 5.3.1 
+- Paliapšeńnie piersidskaj lakalizacyi
+
 ### 5.3.0 
 - Dadańnie piersidskaj lakalizacyi
 

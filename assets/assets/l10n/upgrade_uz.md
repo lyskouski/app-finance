@@ -2,6 +2,15 @@
 
 _Yangilanishlarning toʻliq roʻyxatini “Maslahat” tugmasidagi “Haqida” navigatsiya bandi orqali koʻrish mumkin._
 
+### 5.3.3
+- Tugmalar uslubini takomillashtirish
+
+### 5.3.2
+- Belgilangan valyuta ayirboshlash zararlari
+
+### 5.3.1
+- Forscha mahalliylashtirish yaxshilandi
+
 ### 5.3.0
 - Forscha mahalliylashtirishni qo'shish
 
