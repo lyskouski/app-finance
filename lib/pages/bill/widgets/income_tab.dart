@@ -119,7 +119,7 @@ class IncomeTabState<T extends IncomeTab> extends State<IncomeTab> {
     return FullSizedButtonWidget(
       constraints: constraints,
       controller: focus,
-      setState: () => {
+      onPressed: () => {
         setState(() {
           if (hasFormErrors()) {
             return;

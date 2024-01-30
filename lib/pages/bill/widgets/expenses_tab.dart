@@ -139,7 +139,7 @@ class ExpensesTabState<T extends ExpensesTab> extends State<T> {
     return FullSizedButtonWidget(
       constraints: constraints,
       controller: focus,
-      setState: () => {
+      onPressed: () => {
         setState(() {
           if (hasFormErrors()) {
             return;

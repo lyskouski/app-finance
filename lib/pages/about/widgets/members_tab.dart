@@ -43,7 +43,7 @@ class MembersTab extends StatelessWidget with LauncherMixin {
             ? Padding(
                 padding: EdgeInsets.only(right: indent, top: indent),
                 child: FullSizedButtonWidget(
-                  setState: () => openURL('https://github.com/lyskouski/app-finance/blob/main/CONTRIBUTING.md'),
+                  onPressed: () => openURL('https://github.com/lyskouski/app-finance/blob/main/CONTRIBUTING.md'),
                   title: AppLocale.labels.coNew,
                   icon: Icons.add,
                 ),

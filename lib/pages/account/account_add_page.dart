@@ -118,7 +118,7 @@ class AccountAddPageState<T extends AccountAddPage> extends AbstractAddPageState
     return FullSizedButtonWidget(
       constraints: constraints,
       controller: focus,
-      setState: () => triggerActionButton(nav),
+      onPressed: () => triggerActionButton(nav),
       title: getButtonName(),
       icon: Icons.save,
     );

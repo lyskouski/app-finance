@@ -106,7 +106,7 @@ class BudgetAddPageState<T extends BudgetAddPage> extends AbstractAddPageState<B
     return FullSizedButtonWidget(
       constraints: constraints,
       controller: focus,
-      setState: () => triggerActionButton(nav),
+      onPressed: () => triggerActionButton(nav),
       title: getButtonName(),
       icon: Icons.save,
     );
