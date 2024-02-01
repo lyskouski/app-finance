@@ -2,6 +2,12 @@
 
 _A lista completa de actualizações pode ser consultada através do item de navegação "Acerca" no botão "Sugestões".
 
+### 5.3.5
+- Correção de uma fase inicial para itens com valores sem partes fraccionárias
+
+### 5.3.4
+- Resolvendo a compilação do Linux Flathub
+
 ### 5.3.3
 - Melhorar a estilística dos botões
 

@@ -2,6 +2,12 @@
 
 _Poŭny spis abnaŭlieńniaŭ možna prahliadzieć u navihacyjnym punkcie «Ab Dadatku» na knopcy «Padkazki»._ 
 
+### 5.3.5
+- Vypraŭlieńnie pačatkovaj fazy dlia eliemientaŭ sa značeńniami biez drobavych častak 
+
+### 5.3.4
+- Rašeńnie zborki Linux Flathub
+
 ### 5.3.3 
 - Paliapšeńnie stylistyki knopak 
 
