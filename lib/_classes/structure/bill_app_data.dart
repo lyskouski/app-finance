@@ -53,7 +53,7 @@ class BillAppData extends AbstractAppData with StorageMixin {
       account: json['account'],
       category: json['category'],
       title: json['title'],
-      details: json['details'],
+      details: 0.0 + json['details'],
       currency: CurrencyProvider.find(json['currency']),
       updatedAt: DateTime.parse(json['updatedAt']),
       createdAt: DateTime.parse(json['createdAt']),

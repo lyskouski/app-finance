@@ -61,7 +61,7 @@ class AccountAppData extends AbstractAppData {
       uuid: json['uuid'],
       title: json['title'],
       type: json['type'],
-      details: json['details'],
+      details: 0.0 + json['details'],
       progress: 0.0 + json['progress'],
       description: json['description'],
       color: json['color'] != null ? MaterialColor(json['color'], const <int, Color>{}) : null,
