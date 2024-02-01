@@ -61,7 +61,7 @@ class InvoiceAppData extends AbstractAppData with StorageMixin {
       title: json['title'],
       account: json['account'],
       accountFrom: json['accountFrom'],
-      details: json['details'],
+      details: 0.0 + json['details'],
       progress: 0.0 + json['progress'],
       description: json['description'],
       color: json['color'] != null ? MaterialColor(json['color'], const <int, Color>{}) : null,

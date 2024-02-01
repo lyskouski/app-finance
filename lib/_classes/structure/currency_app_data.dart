@@ -45,7 +45,7 @@ class CurrencyAppData extends AbstractAppData {
     return CurrencyAppData(
       title: json['title'],
       uuid: json['uuid'],
-      details: json['details'],
+      details: 0.0 + json['details'],
       updatedAt: DateTime.parse(json['updatedAt']),
       createdAt: DateTime.parse(json['createdAt']),
       currency: CurrencyProvider.find(json['currency']),
