@@ -2,6 +2,12 @@
 
 _Yangilanishlarning toʻliq roʻyxatini “Maslahat” tugmasidagi “Haqida” navigatsiya bandi orqali koʻrish mumkin._
 
+### 5.3.5
+- Kasr qismlari bo'lmagan qiymatlari bo'lgan elementlar uchun boshlang'ich bosqichni aniqlash
+
+### 5.3.4
+- Linux Flathub tuzilishini hal qilish
+
 ### 5.3.3
 - Tugmalar uslubini takomillashtirish
 

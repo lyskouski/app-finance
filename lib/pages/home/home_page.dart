@@ -53,7 +53,7 @@ class HomePageState extends AbstractPageState<HomePage> {
       if (version != value.version) {
         WidgetsBinding.instance.addPostFrameCallback((_) => showModalBottomSheet(
               context: context,
-              builder: (BuildContext context) => buildReleaseHelper(context, value.version),
+              builder: (BuildContext context) => buildReleaseHelper(context, version),
             ));
         AppPreferences.set(AppPreferences.prefVersion, value.version);
       }

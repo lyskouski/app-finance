@@ -2,6 +2,12 @@
 
 _La liste complète des mises à jour peut être consultée via l'élément de navigation "À propos" du bouton "Conseils"._
 
+### 5.3.5
+- Correction d'une phase initiale pour les articles avec des valeurs sans parties fractionnaires
+
+### 5.3.4
+- Résolution de la construction de Linux Flathub
+
 ### 5.3.3
 - Améliorer la stylistique des boutons
 

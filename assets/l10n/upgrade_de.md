@@ -2,6 +2,12 @@
 
 _Die vollständige Liste der Updates kann über den Navigationspunkt "Über" auf der Schaltfläche "Hinweise" eingesehen werden._
 
+### 5.3.5
+- Fixierung einer Anfangsphase für Artikel mit Werten ohne Bruchteile
+
+### 5.3.4
+- Behebung des Linux Flathub Builds
+
 ### 5.3.3
 - Verbesserung der Stilistik von Schaltflächen
 

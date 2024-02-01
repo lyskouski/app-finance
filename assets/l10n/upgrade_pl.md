@@ -2,6 +2,12 @@
 
 Pełną listę aktualizacji można wyświetlić za pomocą elementu nawigacyjnego "O aplikacji" na przycisku "Wskazówki".
 
+### 5.3.5
+- Naprawiono fazę początkową dla elementów z wartościami bez części ułamkowych
+
+### 5.3.4
+- Rozwiązywanie problemów z kompilacją Linux Flathub
+
 ### 5.3.3
 - Poprawa stylistyki przycisków
 

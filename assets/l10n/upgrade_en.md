@@ -2,6 +2,12 @@
 
 _The full list of updates can be viewed via the "About" navigation item on the "Hints" button._
 
+### 5.3.5
+- Fixing an initial phase for items with values without fractional parts
+
+### 5.3.4
+- Resolving Linux Flathub build
+
 ### 5.3.3
 - Improving buttons' stylistics
 
