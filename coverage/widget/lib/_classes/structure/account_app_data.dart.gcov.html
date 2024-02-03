@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2024-02-01 11:04:12</td>
+            <td class="headerValue">2024-02-03 19:22:11</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">0</td>
@@ -127,7 +127,7 @@
 <a name="65"><span class="lineNum">      65 </span><span class="lineNoCov">          0 :       progress: 0.0 + json['progress'],</span></a>
 <a name="66"><span class="lineNum">      66 </span><span class="lineNoCov">          0 :       description: json['description'],</span></a>
 <a name="67"><span class="lineNum">      67 </span><span class="lineNoCov">          0 :       color: json['color'] != null ? MaterialColor(json['color'], const &lt;int, Color&gt;{}) : null,</span></a>
-<a name="68"><span class="lineNum">      68 </span><span class="lineNoCov">          0 :       icon: json['icon'] != null ? (json['icon'] as int).toIcon() : null,</span></a>
+<a name="68"><span class="lineNum">      68 </span><span class="lineNoCov">          0 :       icon: (json['icon'] as int?)?.toIcon(),</span></a>
 <a name="69"><span class="lineNum">      69 </span><span class="lineNoCov">          0 :       currency: CurrencyProvider.find(json['currency']),</span></a>
 <a name="70"><span class="lineNum">      70 </span><span class="lineNoCov">          0 :       createdAt: DateTime.parse(json['createdAt']),</span></a>
 <a name="71"><span class="lineNum">      71 </span><span class="lineNoCov">          0 :       updatedAt: DateTime.parse(json['updatedAt']),</span></a>
