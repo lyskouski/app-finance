@@ -64,7 +64,7 @@ class BudgetAppData extends AbstractAppData with StorageMixin {
       uuid: json['uuid'],
       progress: 0.0 + json['progress'],
       color: json['color'] != null ? MaterialColor(json['color'], const <int, Color>{}) : null,
-      icon: json['icon'] != null ? (json['icon'] as int).toIcon() : null,
+      icon: (json['icon'] as int?)?.toIcon(),
       currency: CurrencyProvider.find(json['currency']),
       updatedAt: DateTime.parse(json['updatedAt']),
       createdAt: DateTime.parse(json['createdAt']),

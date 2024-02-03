@@ -65,7 +65,7 @@ class AccountAppData extends AbstractAppData {
       progress: 0.0 + json['progress'],
       description: json['description'],
       color: json['color'] != null ? MaterialColor(json['color'], const <int, Color>{}) : null,
-      icon: json['icon'] != null ? (json['icon'] as int).toIcon() : null,
+      icon: (json['icon'] as int?)?.toIcon(),
       currency: CurrencyProvider.find(json['currency']),
       createdAt: DateTime.parse(json['createdAt']),
       updatedAt: DateTime.parse(json['updatedAt']),

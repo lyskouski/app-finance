@@ -4,6 +4,7 @@
 import 'package:app_finance/_classes/herald/app_locale.dart';
 import 'package:app_finance/_classes/storage/app_data.dart';
 import 'package:app_finance/_classes/structure/abstract_app_data.dart';
+// ignore: unused_import
 import 'package:app_finance/_ext/int_ext.dart';
 import 'package:app_finance/_mixins/storage_mixin.dart';
 import 'package:flutter/material.dart';
@@ -20,10 +21,8 @@ class InvoiceAppData extends AbstractAppData with StorageMixin {
     this.accountFrom,
     super.uuid,
     super.details,
-    super.progress = 0.0,
     super.description,
     super.color,
-    super.icon,
     super.currency,
     super.updatedAt,
     super.createdAt,
@@ -45,10 +44,8 @@ class InvoiceAppData extends AbstractAppData with StorageMixin {
       uuid: super.uuid,
       title: super.title,
       details: super.details,
-      progress: super.progress,
       description: super.description,
       color: super.color,
-      icon: super.icon,
       currency: super.currency,
       createdAt: super.createdAt,
       hidden: super.hidden,
@@ -61,11 +58,9 @@ class InvoiceAppData extends AbstractAppData with StorageMixin {
       title: json['title'],
       account: json['account'],
       accountFrom: json['accountFrom'],
-      details: 0.0 + json['details'],
-      progress: 0.0 + json['progress'],
+      details: 0.0 + (json['details'] ?? 0),
       description: json['description'],
       color: json['color'] != null ? MaterialColor(json['color'], const <int, Color>{}) : null,
-      icon: json['icon'] != null ? int.tryParse(json['icon'])?.toIcon() : null,
       currency: CurrencyProvider.find(json['currency']),
       createdAt: DateTime.parse(json['createdAt']),
       updatedAt: DateTime.parse(json['updatedAt']),
