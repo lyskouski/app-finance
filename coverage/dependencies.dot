@@ -759,7 +759,6 @@ digraph G {
   structure -> herald [color="green"];
   structure -> storage [color="green"];
   structure -> structure [color="green"];
-  structure -> _ext_ [color="green"];
   structure -> _mixins_ [color="green"];
   structure -> storage [color="green"];
   structure -> herald [color="green"];
