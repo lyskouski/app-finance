@@ -2,6 +2,12 @@
 
 _Yangilanishlarning toʻliq roʻyxatini “Maslahat” tugmasidagi “Haqida” navigatsiya bandi orqali koʻrish mumkin._
 
+### 5.3.7
+- Qayta tiklash jarayoni uchun "tozalash" variantini qo'shish
+
+### 5.3.6
+- Hisob-fakturalar uchun piktogrammalarni hal qilish
+
 ### 5.3.5
 - Kasr qismlari bo'lmagan qiymatlari bo'lgan elementlar uchun boshlang'ich bosqichni aniqlash
 

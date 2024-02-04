@@ -2,6 +2,12 @@
 
 _A lista completa de actualizações pode ser consultada através do item de navegação "Acerca" no botão "Sugestões".
 
+### 5.3.7
+- Adicionando a opção "clean-up" para um procedimento de restauração  
+
+### 5.3.6
+- Resolução de ícones para facturas
+
 ### 5.3.5
 - Correção de uma fase inicial para itens com valores sem partes fraccionárias
 

@@ -2,6 +2,12 @@
 
 _Poŭny spis abnaŭlieńniaŭ možna prahliadzieć u navihacyjnym punkcie «Ab Dadatku» na knopcy «Padkazki»._ 
 
+### 5.3.7 
+- Dadańnie opcyi "ačystki" dlia pracedury adnaŭlieńnia 
+
+### 5.3.6 
+- Rašeńnie značkoŭ dlia rachunkaŭ
+
 ### 5.3.5
 - Vypraŭlieńnie pačatkovaj fazy dlia eliemientaŭ sa značeńniami biez drobavych častak 
 
