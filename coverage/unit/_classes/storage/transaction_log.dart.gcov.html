@@ -32,12 +32,12 @@
             <td></td>
             <td class="headerItem">Lines:</td>
             <td class="headerCovTableEntry">0</td>
-            <td class="headerCovTableEntry">67</td>
+            <td class="headerCovTableEntry">73</td>
             <td class="headerCovTableEntryLo">0.0 %</td>
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2024-02-04 10:10:58</td>
+            <td class="headerValue">2024-02-04 13:36:25</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">0</td>
@@ -215,40 +215,52 @@
 <a name="153"><span class="lineNum">     153 </span>            :     }</a>
 <a name="154"><span class="lineNum">     154 </span>            :   }</a>
 <a name="155"><span class="lineNum">     155 </span>            : </a>
-<a name="156"><span class="lineNum">     156 </span><span class="lineNoCov">          0 :   static Future&lt;bool&gt; load(AppData store) async {</span></a>
-<a name="157"><span class="lineNum">     157 </span><span class="lineNoCov">          0 :     bool isEncrypted = EncryptionHandler.doEncrypt();</span></a>
-<a name="158"><span class="lineNum">     158 </span>            :     bool isOK = true;</a>
-<a name="159"><span class="lineNum">     159 </span><span class="lineNoCov">          0 :     await for (var line in read()) {</span></a>
-<a name="160"><span class="lineNum">     160 </span><span class="lineNoCov">          0 :       isOK &amp;= add(store, line, isEncrypted);</span></a>
-<a name="161"><span class="lineNum">     161 </span>            :     }</a>
-<a name="162"><span class="lineNum">     162 </span>            :     return isOK;</a>
-<a name="163"><span class="lineNum">     163 </span>            :   }</a>
-<a name="164"><span class="lineNum">     164 </span>            : </a>
-<a name="165"><span class="lineNum">     165 </span><span class="lineNoCov">          0 :   static bool add(AppData store, String line, bool isEncrypted, [bool onlyNew = false]) {</span></a>
-<a name="166"><span class="lineNum">     166 </span>            :     bool isOK = true;</a>
-<a name="167"><span class="lineNum">     167 </span><span class="lineNoCov">          0 :     if (line == '') {</span></a>
-<a name="168"><span class="lineNum">     168 </span>            :       return isOK;</a>
-<a name="169"><span class="lineNum">     169 </span>            :     }</a>
-<a name="170"><span class="lineNum">     170 </span>            :     try {</a>
-<a name="171"><span class="lineNum">     171 </span>            :       if (isEncrypted) {</a>
-<a name="172"><span class="lineNum">     172 </span><span class="lineNoCov">          0 :         line = EncryptionHandler.decrypt(line);</span></a>
-<a name="173"><span class="lineNum">     173 </span>            :       }</a>
-<a name="174"><span class="lineNum">     174 </span><span class="lineNoCov">          0 :       var obj = json.decode(line);</span></a>
-<a name="175"><span class="lineNum">     175 </span>            :       // FIXME: hash is not always the same for Web</a>
-<a name="176"><span class="lineNum">     176 </span>            :       if ( // EncryptionHandler.getHash(obj['data']) == obj['type']['hash'] &amp;&amp;</a>
-<a name="177"><span class="lineNum">     177 </span><span class="lineNoCov">          0 :           (!onlyNew || store.getByUuid(obj['data']['uuid']) == null)) {</span></a>
-<a name="178"><span class="lineNum">     178 </span><span class="lineNoCov">          0 :         init(store, obj['type']['name'], obj['data']);</span></a>
-<a name="179"><span class="lineNum">     179 </span>            :       } else {</a>
-<a name="180"><span class="lineNum">     180 </span>            :         // Corrupted data... skip</a>
-<a name="181"><span class="lineNum">     181 </span>            :       }</a>
-<a name="182"><span class="lineNum">     182 </span>            :       // ignore: unused_catch_stack</a>
-<a name="183"><span class="lineNum">     183 </span>            :     } catch (e, stackTrace) {</a>
-<a name="184"><span class="lineNum">     184 </span>            :       // print([e, stackTrace]);</a>
-<a name="185"><span class="lineNum">     185 </span>            :       isOK = false;</a>
-<a name="186"><span class="lineNum">     186 </span>            :     }</a>
-<a name="187"><span class="lineNum">     187 </span>            :     return isOK;</a>
-<a name="188"><span class="lineNum">     188 </span>            :   }</a>
-<a name="189"><span class="lineNum">     189 </span>            : }</a>
+<a name="156"><span class="lineNum">     156 </span><span class="lineNoCov">          0 :   static clear() {</span></a>
+<a name="157"><span class="lineNum">     157 </span>            :     if (kIsWeb) {</a>
+<a name="158"><span class="lineNum">     158 </span><span class="lineNoCov">          0 :       while (increment &gt; 0) {</span></a>
+<a name="159"><span class="lineNum">     159 </span><span class="lineNoCov">          0 :         AppPreferences.clear('log$increment');</span></a>
+<a name="160"><span class="lineNum">     160 </span><span class="lineNoCov">          0 :         increment--;</span></a>
+<a name="161"><span class="lineNum">     161 </span>            :       }</a>
+<a name="162"><span class="lineNum">     162 </span>            :     } else {</a>
+<a name="163"><span class="lineNum">     163 </span><span class="lineNoCov">          0 :       _logFile?.deleteSync();</span></a>
+<a name="164"><span class="lineNum">     164 </span><span class="lineNoCov">          0 :       _logFile?.createSync();</span></a>
+<a name="165"><span class="lineNum">     165 </span>            :     }</a>
+<a name="166"><span class="lineNum">     166 </span>            :   }</a>
+<a name="167"><span class="lineNum">     167 </span>            : </a>
+<a name="168"><span class="lineNum">     168 </span><span class="lineNoCov">          0 :   static Future&lt;bool&gt; load(AppData store) async {</span></a>
+<a name="169"><span class="lineNum">     169 </span><span class="lineNoCov">          0 :     bool isEncrypted = EncryptionHandler.doEncrypt();</span></a>
+<a name="170"><span class="lineNum">     170 </span>            :     bool isOK = true;</a>
+<a name="171"><span class="lineNum">     171 </span><span class="lineNoCov">          0 :     await for (var line in read()) {</span></a>
+<a name="172"><span class="lineNum">     172 </span><span class="lineNoCov">          0 :       isOK &amp;= add(store, line, isEncrypted);</span></a>
+<a name="173"><span class="lineNum">     173 </span>            :     }</a>
+<a name="174"><span class="lineNum">     174 </span>            :     return isOK;</a>
+<a name="175"><span class="lineNum">     175 </span>            :   }</a>
+<a name="176"><span class="lineNum">     176 </span>            : </a>
+<a name="177"><span class="lineNum">     177 </span><span class="lineNoCov">          0 :   static bool add(AppData store, String line, bool isEncrypted, [bool onlyNew = false]) {</span></a>
+<a name="178"><span class="lineNum">     178 </span>            :     bool isOK = true;</a>
+<a name="179"><span class="lineNum">     179 </span><span class="lineNoCov">          0 :     if (line == '') {</span></a>
+<a name="180"><span class="lineNum">     180 </span>            :       return isOK;</a>
+<a name="181"><span class="lineNum">     181 </span>            :     }</a>
+<a name="182"><span class="lineNum">     182 </span>            :     try {</a>
+<a name="183"><span class="lineNum">     183 </span>            :       if (isEncrypted) {</a>
+<a name="184"><span class="lineNum">     184 </span><span class="lineNoCov">          0 :         line = EncryptionHandler.decrypt(line);</span></a>
+<a name="185"><span class="lineNum">     185 </span>            :       }</a>
+<a name="186"><span class="lineNum">     186 </span><span class="lineNoCov">          0 :       var obj = json.decode(line);</span></a>
+<a name="187"><span class="lineNum">     187 </span>            :       // FIXME: hash is not always the same for Web</a>
+<a name="188"><span class="lineNum">     188 </span>            :       if ( // EncryptionHandler.getHash(obj['data']) == obj['type']['hash'] &amp;&amp;</a>
+<a name="189"><span class="lineNum">     189 </span><span class="lineNoCov">          0 :           (!onlyNew || store.getByUuid(obj['data']['uuid']) == null)) {</span></a>
+<a name="190"><span class="lineNum">     190 </span><span class="lineNoCov">          0 :         init(store, obj['type']['name'], obj['data']);</span></a>
+<a name="191"><span class="lineNum">     191 </span>            :       } else {</a>
+<a name="192"><span class="lineNum">     192 </span>            :         // Corrupted data... skip</a>
+<a name="193"><span class="lineNum">     193 </span>            :       }</a>
+<a name="194"><span class="lineNum">     194 </span>            :       // ignore: unused_catch_stack</a>
+<a name="195"><span class="lineNum">     195 </span>            :     } catch (e, stackTrace) {</a>
+<a name="196"><span class="lineNum">     196 </span>            :       // print([e, stackTrace]);</a>
+<a name="197"><span class="lineNum">     197 </span>            :       isOK = false;</a>
+<a name="198"><span class="lineNum">     198 </span>            :     }</a>
+<a name="199"><span class="lineNum">     199 </span>            :     return isOK;</a>
+<a name="200"><span class="lineNum">     200 </span>            :   }</a>
+<a name="201"><span class="lineNum">     201 </span>            : }</a>
 </pre>
       </td>
     </tr>
