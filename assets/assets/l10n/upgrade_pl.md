@@ -2,6 +2,12 @@
 
 Pełną listę aktualizacji można wyświetlić za pomocą elementu nawigacyjnego "O aplikacji" na przycisku "Wskazówki".
 
+### 5.3.7
+- Dodanie opcji "czyszczenie" dla procedury przywracania  
+
+### 5.3.6
+- Rozwiązywanie ikon dla faktur
+
 ### 5.3.5
 - Naprawiono fazę początkową dla elementów z wartościami bez części ułamkowych
 

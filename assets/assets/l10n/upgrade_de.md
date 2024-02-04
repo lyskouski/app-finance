@@ -2,6 +2,12 @@
 
 _Die vollständige Liste der Updates kann über den Navigationspunkt "Über" auf der Schaltfläche "Hinweise" eingesehen werden._
 
+### 5.3.7
+- Hinzufügen der "clean-up"-Option für eine Wiederherstellungsprozedur  
+
+### 5.3.6
+- Auflösen von Symbolen für Rechnungen
+
 ### 5.3.5
 - Fixierung einer Anfangsphase für Artikel mit Werten ohne Bruchteile
 

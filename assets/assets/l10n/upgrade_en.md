@@ -2,6 +2,12 @@
 
 _The full list of updates can be viewed via the "About" navigation item on the "Hints" button._
 
+### 5.3.7
+- Adding "clean-up"-option for a restoring procedure  
+
+### 5.3.6
+- Resolving icons for Invoices
+
 ### 5.3.5
 - Fixing an initial phase for items with values without fractional parts
 

@@ -2,6 +2,12 @@
 
 _La liste complète des mises à jour peut être consultée via l'élément de navigation "À propos" du bouton "Conseils"._
 
+### 5.3.7
+- Ajout de l'option "clean-up" pour une procédure de restauration  
+
+### 5.3.6
+- Résolution des icônes pour les factures
+
 ### 5.3.5
 - Correction d'une phase initiale pour les articles avec des valeurs sans parties fractionnaires
 
