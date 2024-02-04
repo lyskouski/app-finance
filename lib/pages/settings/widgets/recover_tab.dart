@@ -23,11 +23,17 @@ class RecoverTab extends StatefulWidget {
 }
 
 class SyncTabState extends State<RecoverTab> {
-  final focus = FocusController();
+  late FocusController focus;
   late AppData state;
   String message = '';
   bool inProgress = false;
   RecoveryType type = RecoveryType.none;
+
+  @override
+  void initState() {
+    focus = FocusController();
+    super.initState();
+  }
 
   @override
   void dispose() {
@@ -57,27 +63,22 @@ class SyncTabState extends State<RecoverTab> {
             ],
           );
     } else {
-      switch (type) {
-        case RecoveryType.webdav:
-          form = () => RecoverWebdavForm(
+      form = () => switch (type) {
+            RecoveryType.webdav => RecoverWebdavForm(
                 cbFinal: state.flush,
                 cbMessage: cbMessage,
                 cbProgress: cbProgress,
                 cbType: cbType,
                 message: message,
-              );
-          break;
-        case RecoveryType.file:
-          form = () => RecoverFileForm(
+              ),
+            RecoveryType.file => RecoverFileForm(
                 cbFinal: state.flush,
                 cbMessage: cbMessage,
                 cbProgress: cbProgress,
                 cbType: cbType,
                 message: message,
-              );
-          break;
-        default:
-          form = () => Column(
+              ),
+            _ => Column(
                 crossAxisAlignment: AppDesign.getAlignment(),
                 children: [
                   ThemeHelper.hIndent2x,
@@ -93,8 +94,8 @@ class SyncTabState extends State<RecoverTab> {
                     callback: cbType,
                   ),
                 ],
-              );
-      }
+              ),
+          };
     }
     return Consumer<AppData>(builder: (context, appState, _) {
       state = appState;

@@ -55,7 +55,7 @@ class ExpensesTab<T> extends StatefulWidget {
 }
 
 class ExpensesTabState<T extends ExpensesTab> extends State<T> {
-  final focus = FocusController();
+  late FocusController focus;
   String? account;
   Currency? accountCurrency;
   String? budget;
@@ -75,6 +75,7 @@ class ExpensesTabState<T extends ExpensesTab> extends State<T> {
 
   @override
   void initState() {
+    focus = FocusController();
     final accountId = AppPreferences.get(AppPreferences.prefAccount);
     final objAccount = widget.state.getByUuid(accountId ?? '');
     final budgetId = AppPreferences.get(AppPreferences.prefBudget);

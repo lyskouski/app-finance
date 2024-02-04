@@ -41,7 +41,7 @@ class GoalAddPage extends StatefulWidget {
 }
 
 class GoalAddPageState<T extends GoalAddPage> extends AbstractPageState<GoalAddPage> {
-  final focus = FocusController();
+  late FocusController focus;
   late TextEditingController title;
   late TextEditingController details;
   IconData? icon;
@@ -52,6 +52,7 @@ class GoalAddPageState<T extends GoalAddPage> extends AbstractPageState<GoalAddP
 
   @override
   void initState() {
+    focus = FocusController();
     title = TextEditingController(text: widget.title);
     icon = widget.icon;
     color = widget.color;

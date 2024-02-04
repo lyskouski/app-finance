@@ -34,13 +34,19 @@ class ImportTab extends StatefulWidget {
 }
 
 class ImportTabState extends State<ImportTab> {
-  final focus = FocusController();
+  late FocusController focus;
   late AppData state;
   List<List<dynamic>>? fileContent;
   StringBuffer errorMessage = StringBuffer();
   List<String> columnMap = [];
   bool isLoading = false;
   final dateFormat = TextEditingController(text: 'M/d/yyyy HH:mm');
+
+  @override
+  void initState() {
+    focus = FocusController();
+    super.initState();
+  }
 
   @override
   void dispose() {

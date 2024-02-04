@@ -25,8 +25,14 @@ class CurrencyPage extends StatefulWidget {
 }
 
 class CurrencyPageState extends AbstractPageState<CurrencyPage> {
-  final focus = FocusController();
+  late FocusController focus;
   List<dynamic>? scope;
+
+  @override
+  void initState() {
+    focus = FocusController();
+    super.initState();
+  }
 
   @override
   void dispose() {

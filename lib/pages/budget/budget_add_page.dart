@@ -42,7 +42,7 @@ class BudgetAddPage extends AbstractAddPage {
 }
 
 class BudgetAddPageState<T extends BudgetAddPage> extends AbstractAddPageState<BudgetAddPage> {
-  final focus = FocusController();
+  late FocusController focus;
   late TextEditingController title;
   late TextEditingController budgetLimit;
   IconData? icon;
@@ -52,6 +52,7 @@ class BudgetAddPageState<T extends BudgetAddPage> extends AbstractAddPageState<B
 
   @override
   void initState() {
+    focus = FocusController();
     title = TextEditingController(text: widget.title);
     budgetLimit = TextEditingController(text: widget.budgetLimit != null ? widget.budgetLimit.toString() : '');
     icon = widget.icon;

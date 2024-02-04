@@ -51,7 +51,7 @@ class IncomeTab<T> extends StatefulWidget {
 }
 
 class IncomeTabState<T extends IncomeTab> extends State<IncomeTab> {
-  final focus = FocusController();
+  late FocusController focus;
   String? account;
   Currency? accountCurrency;
   Currency? currency;
@@ -63,6 +63,7 @@ class IncomeTabState<T extends IncomeTab> extends State<IncomeTab> {
 
   @override
   void initState() {
+    focus = FocusController();
     final value = AppPreferences.get(AppPreferences.prefAccount);
     final obj = widget.state.getByUuid(value ?? '');
     account = widget.account ?? obj?.uuid;

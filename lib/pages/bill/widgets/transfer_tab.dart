@@ -52,7 +52,7 @@ class TransferTab<T> extends StatefulWidget {
 }
 
 class TransferTabState<T extends TransferTab> extends State<T> {
-  final focus = FocusController();
+  late FocusController focus;
   String? accountFrom;
   String? accountTo;
   Currency? accountFromCurrency;
@@ -67,6 +67,7 @@ class TransferTabState<T extends TransferTab> extends State<T> {
 
   @override
   void initState() {
+    focus = FocusController();
     accountFrom = widget.accountFrom;
     accountTo = widget.accountTo;
     createdAt = widget.createdAt ?? DateTime.now();

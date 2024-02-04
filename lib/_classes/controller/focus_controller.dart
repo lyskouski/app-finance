@@ -132,6 +132,7 @@ class FocusController {
     scope.forEach((_, node) => node.dispose());
     scope.clear();
     values.clear();
+    order.clear();
     _controller.dispose();
     focus = null;
   }
