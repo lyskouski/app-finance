@@ -148,7 +148,8 @@ class AccountViewPageState extends AbstractPageState<AccountViewPage> {
               ],
               children: [
                 BaseListInfiniteWidget(
-                  stream: HistoryData.getStream(widget.uuid, filter: (e) => state.getByUuid(e.ref)?.hidden == true),
+                  stream:
+                      HistoryData.getStream(widget.uuid, filter: (e) => state.getByUuid(e.ref ?? '')?.hidden == true),
                   width: width,
                   buildListWidget: buildLogWidget,
                 ),
