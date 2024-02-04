@@ -257,6 +257,7 @@
             "type": "String"
         }
     },
+    "isCleaned": "Vydalić isnujučyja danyja",
     "isCreated": "Užo stvorana, vykonvajcie nastupnyja kroki!",
     "isEncrypted": "Fajl Zašyfravany (Biezumoŭna)",
     "isRequired": "abaviazkovy",

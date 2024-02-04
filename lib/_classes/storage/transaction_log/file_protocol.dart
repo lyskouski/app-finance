@@ -35,10 +35,13 @@ class FileProtocol extends AbstractProtocol with FileImportMixin, FileExportMixi
   }
 
   @override
-  Future<void> load(dynamic data, [bool isEncrypted = true]) async {
+  Future<void> load(dynamic data, [bool isEncrypted = true, bool isCleaned = false]) async {
     callbackProgress(inProgress = true);
     final content = await importFile(['log']);
     if (content != null) {
+      if (isCleaned) {
+        clearTransactions();
+      }
       importTransactions(content.codeUnits, isEncrypted);
       callbackMessage(message = AppLocale.labels.success);
     } else {

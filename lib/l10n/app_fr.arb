@@ -257,6 +257,7 @@
             "type": "String"
         }
     },
+    "isCleaned": "Supprimer les données existantes",
     "isCreated": "Déjà créé, suivez les étapes suivantes !",
     "isEncrypted": "Le fichier est crypté (par défaut)",
     "isRequired": "requis",

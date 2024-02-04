@@ -8,6 +8,7 @@ import 'package:app_finance/_configs/theme_helper.dart';
 import 'package:app_finance/_ext/build_context_ext.dart';
 import 'package:app_finance/design/form/simple_input.dart';
 import 'package:app_finance/design/wrapper/required_widget.dart';
+import 'package:app_finance/design/wrapper/text_wrapper.dart';
 import 'package:app_finance/pages/settings/widgets/recover_tab/nav_button_widget.dart';
 import 'package:app_finance/pages/settings/widgets/recover_tab/recovery_type.dart';
 import 'package:flutter/material.dart';
@@ -35,6 +36,7 @@ class RecoverFileForm extends StatefulWidget {
 class RecoverFileFormState extends State<RecoverFileForm> {
   final path = TextEditingController(text: 'tmp.log');
   bool isEncrypted = true;
+  bool isCleaned = false;
   late final FileProtocol file;
 
   @override
@@ -45,7 +47,6 @@ class RecoverFileFormState extends State<RecoverFileForm> {
 
   @override
   Widget build(BuildContext context) {
-    double indent = ThemeHelper.getIndent(2);
     final textTheme = context.textTheme;
     return Column(
       crossAxisAlignment: AppDesign.getAlignment(),
@@ -68,12 +69,6 @@ class RecoverFileFormState extends State<RecoverFileForm> {
         SimpleInput(
           controller: path,
         ),
-        Row(
-          children: [
-            Checkbox(value: isEncrypted, onChanged: (value) => setState(() => isEncrypted = value!)),
-            Text(AppLocale.labels.isEncrypted),
-          ],
-        ),
         ThemeHelper.hIndent4x,
         SizedBox(
           width: double.infinity,
@@ -84,12 +79,26 @@ class RecoverFileFormState extends State<RecoverFileForm> {
             child: Text(AppLocale.labels.saveTooltip),
           ),
         ),
-        SizedBox(height: indent * 4),
+        ThemeHelper.hIndent4x,
+        Row(
+          children: [
+            Checkbox(value: isEncrypted, onChanged: (value) => setState(() => isEncrypted = value!)),
+            TextWrapper(AppLocale.labels.isEncrypted),
+          ],
+        ),
+        ThemeHelper.hIndent,
+        Row(
+          children: [
+            Checkbox(value: isCleaned, onChanged: (value) => setState(() => isCleaned = value!)),
+            TextWrapper(AppLocale.labels.isCleaned),
+          ],
+        ),
+        ThemeHelper.hIndent2x,
         SizedBox(
           width: double.infinity,
           child: FloatingActionButton(
             heroTag: 'recover_tab_recover',
-            onPressed: () => file.load(path.text, isEncrypted).then((_) => widget.cbFinal()),
+            onPressed: () => file.load(path.text, isEncrypted, isCleaned).then((_) => widget.cbFinal()),
             tooltip: AppLocale.labels.recoveryTooltip,
             child: Text(AppLocale.labels.recoveryTooltip),
           ),

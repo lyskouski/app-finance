@@ -257,6 +257,7 @@
             "type": "String"
         }
     },
+    "isCleaned": "Mavjud ma'lumotlarni olib tashlang",
     "isCreated": "Allaqachon yaratilgan, keyingi bosqichlarni bajaring!",
     "isEncrypted": "Fayl shifrlangan (sukut bo'yicha)",
     "isRequired": "talab qilinadi",
