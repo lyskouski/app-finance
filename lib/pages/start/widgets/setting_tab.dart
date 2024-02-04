@@ -42,7 +42,7 @@ class SettingTab extends AbstractTab {
 }
 
 class SettingTabState<T extends SettingTab> extends AbstractTabState<T> {
-  final controller = FocusController();
+  late FocusController controller;
 
   late AppTheme theme;
   late AppZoom zoom;
@@ -67,6 +67,7 @@ class SettingTabState<T extends SettingTab> extends AbstractTabState<T> {
   @override
   void initState() {
     super.initState();
+    controller = FocusController();
     final doEncrypt = AppPreferences.get(AppPreferences.prefDoEncrypt);
     hasEncrypted = doEncrypt != null;
     isEncrypted = doEncrypt == 'true' || doEncrypt == null;

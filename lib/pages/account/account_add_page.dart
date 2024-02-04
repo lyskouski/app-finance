@@ -47,7 +47,7 @@ class AccountAddPage extends AbstractAddPage {
 }
 
 class AccountAddPageState<T extends AccountAddPage> extends AbstractAddPageState<AccountAddPage> {
-  final focus = FocusController();
+  late FocusController focus;
   late TextEditingController title;
   late TextEditingController description;
   String? type;
@@ -60,6 +60,7 @@ class AccountAddPageState<T extends AccountAddPage> extends AbstractAddPageState
 
   @override
   void initState() {
+    focus = FocusController();
     title = TextEditingController(text: widget.title);
     description = TextEditingController(text: widget.description);
     type = widget.type;
@@ -76,6 +77,7 @@ class AccountAddPageState<T extends AccountAddPage> extends AbstractAddPageState
   void dispose() {
     title.dispose();
     description.dispose();
+    balance.dispose();
     focus.dispose();
     super.dispose();
   }
