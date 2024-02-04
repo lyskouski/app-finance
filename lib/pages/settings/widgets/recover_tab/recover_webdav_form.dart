@@ -9,6 +9,7 @@ import 'package:app_finance/_configs/theme_helper.dart';
 import 'package:app_finance/_ext/build_context_ext.dart';
 import 'package:app_finance/design/form/simple_input.dart';
 import 'package:app_finance/design/wrapper/required_widget.dart';
+import 'package:app_finance/design/wrapper/text_wrapper.dart';
 import 'package:app_finance/pages/settings/widgets/recover_tab/nav_button_widget.dart';
 import 'package:app_finance/pages/settings/widgets/recover_tab/recovery_type.dart';
 import 'package:flutter/material.dart';
@@ -40,6 +41,7 @@ class RecoverWebdavFormState extends State<RecoverWebdavForm> {
   final link = TextEditingController();
   final path = TextEditingController(text: 'tmp.log');
   bool isEncrypted = true;
+  bool isCleaned = false;
 
   @override
   void initState() {
@@ -49,7 +51,6 @@ class RecoverWebdavFormState extends State<RecoverWebdavForm> {
 
   @override
   Widget build(BuildContext context) {
-    double indent = ThemeHelper.getIndent(2);
     final textTheme = context.textTheme;
     return Column(
       crossAxisAlignment: AppDesign.getAlignment(),
@@ -99,12 +100,6 @@ class RecoverWebdavFormState extends State<RecoverWebdavForm> {
         SimpleInput(
           controller: path,
         ),
-        Row(
-          children: [
-            Checkbox(value: isEncrypted, onChanged: (value) => setState(() => isEncrypted = value!)),
-            Text(AppLocale.labels.isEncrypted),
-          ],
-        ),
         ThemeHelper.hIndent4x,
         SizedBox(
           width: double.infinity,
@@ -120,7 +115,21 @@ class RecoverWebdavFormState extends State<RecoverWebdavForm> {
             child: Text(AppLocale.labels.saveTooltip),
           ),
         ),
-        SizedBox(height: indent * 4),
+        ThemeHelper.hIndent4x,
+        Row(
+          children: [
+            Checkbox(value: isEncrypted, onChanged: (value) => setState(() => isEncrypted = value!)),
+            TextWrapper(AppLocale.labels.isEncrypted),
+          ],
+        ),
+        ThemeHelper.hIndent,
+        Row(
+          children: [
+            Checkbox(value: isCleaned, onChanged: (value) => setState(() => isCleaned = value!)),
+            TextWrapper(AppLocale.labels.isCleaned),
+          ],
+        ),
+        ThemeHelper.hIndent2x,
         SizedBox(
           width: double.infinity,
           child: FloatingActionButton(
@@ -134,6 +143,7 @@ class RecoverWebdavFormState extends State<RecoverWebdavForm> {
                     path: path.text,
                   ),
                   isEncrypted,
+                  isCleaned,
                 )
                 .then((_) => widget.cbFinal()),
             tooltip: AppLocale.labels.recoveryTooltip,

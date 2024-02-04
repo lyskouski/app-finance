@@ -153,6 +153,18 @@ class TransactionLog {
     }
   }
 
+  static clear() {
+    if (kIsWeb) {
+      while (increment > 0) {
+        AppPreferences.clear('log$increment');
+        increment--;
+      }
+    } else {
+      _logFile?.deleteSync();
+      _logFile?.createSync();
+    }
+  }
+
   static Future<bool> load(AppData store) async {
     bool isEncrypted = EncryptionHandler.doEncrypt();
     bool isOK = true;

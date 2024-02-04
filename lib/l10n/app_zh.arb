@@ -257,6 +257,7 @@
             "type": "String"
         }
     },
+    "isCleaned": "删除现有数据",
     "isCreated": "已创建，请执行下一步！",
     "isEncrypted": "文件已加密（默认情况下）",
     "isRequired": "需要",

@@ -257,6 +257,7 @@
             "type": "String"
         }
     },
+    "isCleaned": "Usuń istniejące dane",
     "isCreated": "Już utworzony, wykonaj kolejne kroki!",
     "isEncrypted": "Plik jest szyfrowany (domyślnie)",
     "isRequired": "wymagany",

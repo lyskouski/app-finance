@@ -14,6 +14,8 @@ abstract class AbstractProtocol {
     return codeUnits;
   }
 
+  void clearTransactions() => TransactionLog.clear();
+
   void importTransactions(List<int> codeUnits, [bool isEncrypted = true]) {
     List<String> lines = String.fromCharCodes(codeUnits).split('\n');
     for (String line in lines) {
