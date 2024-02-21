@@ -77,7 +77,6 @@ class ImportTabState extends State<ImportTab> {
       });
     } catch (e) {
       setState(() => errorMessage.writeln(e.toString()));
-      rethrow;
     }
   }
 
