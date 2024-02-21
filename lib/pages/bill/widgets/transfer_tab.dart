@@ -163,7 +163,7 @@ class TransferTabState<T extends TransferTab> extends State<T> {
                 accountFrom = value?.uuid;
                 if (value != null) {
                   accountFromCurrency = value.currency;
-                  currency ??= accountFromCurrency;
+                  currency = accountFromCurrency;
                 }
               }),
               width: width,
@@ -180,7 +180,7 @@ class TransferTabState<T extends TransferTab> extends State<T> {
                 accountTo = value?.uuid;
                 if (value != null) {
                   accountToCurrency = value.currency;
-                  currency = accountToCurrency;
+                  currency ??= accountToCurrency;
                 }
               }),
               width: width,
