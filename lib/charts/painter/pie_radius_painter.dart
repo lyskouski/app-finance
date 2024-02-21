@@ -35,14 +35,20 @@ class PieRadiusPainter extends AbstractPainter {
   }
 
   double _drawArc(Canvas canvas, Size size, double startPoint, int step) {
-    final shift = 7 * (step + 1);
     final paint = Paint()
       ..color = data[step].color
-      ..strokeWidth = size.width / 2 - shift
+      ..strokeWidth = size.width / 2
+      ..style = PaintingStyle.stroke;
+    final paintBorder = Paint()
+      ..strokeWidth = size.width * 1.1 / 2
+      ..color = data[step].color.withOpacity(0.3)
       ..style = PaintingStyle.stroke;
     const full = 2 * pi;
+    final shift = indent * full;
     double endPoint = (data[step].value / max) * full;
-    canvas.drawArc(Rect.fromCircle(center: center, radius: radius - shift / 2), startPoint, endPoint, false, paint);
-    return startPoint + endPoint + indent * full;
+    final arc = Rect.fromCircle(center: center, radius: radius);
+    canvas.drawArc(arc, startPoint - shift / 2, endPoint + shift, false, paintBorder);
+    canvas.drawArc(arc, startPoint, endPoint, false, paint);
+    return startPoint + endPoint + shift;
   }
 }

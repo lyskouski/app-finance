@@ -7,6 +7,7 @@ import 'package:flutter/material.dart';
 
 class ColumnChartPainter extends AbstractPainter {
   final List<ChartData> data;
+  late Canvas canvas;
 
   ColumnChartPainter({
     required super.indent,
@@ -22,27 +23,28 @@ class ColumnChartPainter extends AbstractPainter {
     if (data.isEmpty) {
       return;
     }
-    size = this.size ?? size;
+    this.size ??= size;
+    this.canvas = canvas;
     for (int i = 0; i < data.length; i++) {
-      _draw(canvas, size, data[i], i);
+      _draw(data[i], i / data.length);
     }
   }
 
-  void _draw(Canvas canvas, Size size, ChartData scope, int shift) {
+  void _draw(ChartData scope, double shift) {
     for (int i = 0; i < scope.data.length; i++) {
-      _drawRectangle(canvas, size, scope.data[i], i - shift * 1.1, scope.color, scope.strokeWidth);
+      _drawRectangle(scope.data[i], i - shift - 1, scope.color, scope.strokeWidth);
     }
   }
 
-  void _drawRectangle(Canvas canvas, Size size, Offset value, double shift, Color color, double stroke) {
+  void _drawRectangle(Offset value, double shift, Color color, double stroke) {
     final paint = Paint()
       ..color = color
       ..style = PaintingStyle.fill
       ..strokeWidth = 1;
     final time = value.dx.toDouble();
     final rect = Rect.fromPoints(
-      getValue(Offset(time - msDay * shift * 3 * stroke, value.dy), size),
-      getValue(Offset(time - msDay * (shift + 1) * 3 * stroke, 0.0), size),
+      getValue(Offset(time - msDay * shift * 3 * stroke, value.dy), size!),
+      getValue(Offset(time - msDay * (shift + 1) * 3 * stroke, 0.0), size!),
     );
     canvas.drawRect(rect, paint);
   }

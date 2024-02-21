@@ -3,6 +3,7 @@
 
 import 'package:app_finance/_classes/herald/app_locale.dart';
 import 'package:app_finance/_classes/structure/bill_app_data.dart';
+import 'package:app_finance/_ext/double_ext.dart';
 import 'package:app_finance/pages/bill/widgets/expenses_tab.dart';
 import 'package:flutter_currency_picker/flutter_currency_picker.dart';
 
@@ -44,7 +45,7 @@ class ExpensesEditTabState extends ExpensesTabState<ExpensesEditTab> {
           category: budget ?? '',
           currency: currency,
           title: description.text,
-          details: double.tryParse(bill.text) ?? 0.0,
+          details: double.tryParse(bill.text)?.toFixed(currency?.decimalDigits) ?? 0.0,
           createdAt: createdAt,
         ));
   }

@@ -32,11 +32,14 @@ void main() {
       expect(controller.get(0).from, 'EUR');
       expect(controller.get(0).to, 'USD');
       editor.text = '123.02';
+      controller.delay.cancel();
       expect(controller.get(0).rate.text, '1.0');
       expect(controller.get(0).sum.text, '123.02');
       controller.get(0).rate.text = '2.0';
+      controller.delay.cancel();
       expect(controller.get(0).sum.text, '246.04');
       controller.get(0).sum.text = '62.51';
+      controller.delay.cancel();
       expect(double.parse(controller.get(0).rate.text).toStringAsFixed(1), '0.5');
     });
   });

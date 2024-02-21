@@ -3,6 +3,7 @@
 
 import 'package:app_finance/_classes/herald/app_locale.dart';
 import 'package:app_finance/_classes/structure/invoice_app_data.dart';
+import 'package:app_finance/_ext/double_ext.dart';
 import 'package:app_finance/pages/bill/widgets/income_tab.dart';
 
 class IncomeEditTab extends IncomeTab {
@@ -36,7 +37,7 @@ class IncomeEditTabState extends IncomeTabState<IncomeEditTab> {
           title: description.text,
           color: widget.state.getByUuid(uuid)?.color,
           account: uuid,
-          details: double.tryParse(amount.text),
+          details: double.tryParse(amount.text)?.toFixed(currency?.decimalDigits) ?? 0.0,
           currency: currency,
           createdAt: createdAt,
         ));

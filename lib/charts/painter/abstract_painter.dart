@@ -6,11 +6,11 @@ import 'package:flutter/material.dart';
 
 abstract class AbstractPainter extends CustomPainter {
   final double indent;
-  final Size? size;
   final double xMax;
   final double xMin;
   final double yMin;
   final double yMax;
+  Size? size;
 
   final double msDay = 86400000;
 
@@ -24,9 +24,7 @@ abstract class AbstractPainter extends CustomPainter {
   });
 
   @override
-  bool shouldRepaint(CustomPainter oldDelegate) {
-    return false;
-  }
+  bool shouldRepaint(CustomPainter oldDelegate) => false;
 
   Offset getValue(Offset point, Size size, [double dy = 0]) {
     double x = (point.dx - xMin) / (xMax - xMin) * size.width + indent;

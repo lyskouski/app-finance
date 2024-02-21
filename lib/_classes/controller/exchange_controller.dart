@@ -1,8 +1,10 @@
 // Copyright 2023 The terCAD team. All rights reserved.
 // Use of this source code is governed by a CC BY-NC-ND 4.0 license that can be found in the LICENSE file.
 
+import 'package:app_finance/_classes/controller/delayed_call.dart';
 import 'package:app_finance/_classes/storage/app_data.dart';
 import 'package:app_finance/_classes/structure/currency_app_data.dart';
+import 'package:app_finance/_ext/double_ext.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_currency_picker/flutter_currency_picker.dart';
 
@@ -22,6 +24,7 @@ class ExchangeController extends ValueNotifier<ExchangeMap> {
   final TextEditingController targetController;
   List<Currency?> source;
   Currency? target;
+  DelayedCall delay = DelayedCall(600);
 
   ExchangeController(
     super.value, {
@@ -106,11 +109,13 @@ class ExchangeController extends ValueNotifier<ExchangeMap> {
     if (pair[0].text != '' && rate[uuid] != null) {
       rate[uuid]!.details = double.tryParse(pair[0].text);
     }
-    final amount = _getAmount(uuid);
+    final amount = _getAmount(uuid)?.toFixed(CurrencyProvider.find(uuid.split('-')[1])?.decimalDigits);
     final current = double.tryParse(pair[1].text);
     if (amount != current) {
-      pair[1].text = (amount ?? '').toString();
-      pair[1].notifyListeners();
+      delay.run(() {
+        pair[1].text = (amount ?? '').toString();
+        pair[1].notifyListeners();
+      });
     }
   }
 
@@ -122,16 +127,18 @@ class ExchangeController extends ValueNotifier<ExchangeMap> {
       if (sum != null && rate[uuid] != null) {
         rate[uuid]!.details = sum;
       }
-      pair[0].text = (sum ?? '').toString();
-      pair[0].notifyListeners();
+      delay.run(() {
+        pair[0].text = (sum ?? '').toString();
+        pair[0].notifyListeners();
+      });
     }
   }
 
   double? _getRate(String uuid, double? amount) {
     if (amount == null) return null;
-    double? targetAmount = double.tryParse(targetController.text);
+    double targetAmount = double.tryParse(targetController.text) ?? 0;
     final index = pairs.indexOf(uuid);
-    final prev = index > 0 ? double.tryParse(value[pairs[index - 1]]?[1].text ?? '0') ?? 0 : targetAmount ?? 0;
+    double prev = index > 0 ? double.tryParse(value[pairs[index - 1]]?[1].text ?? '0') ?? 0 : targetAmount;
     return prev > 0 ? amount / prev : null;
   }
 
@@ -140,7 +147,7 @@ class ExchangeController extends ValueNotifier<ExchangeMap> {
     double? input = double.tryParse(targetController.text);
     if (result != null && input != null) {
       final index = pairs.indexOf(uuid);
-      final amount = index > 0 ? double.tryParse(value[pairs[index - 1]]![1].text) ?? 0 : input;
+      double amount = index > 0 ? double.tryParse(value[pairs[index - 1]]?[1].text ?? '0') ?? 0 : input;
       result *= amount;
     } else {
       result = null;

@@ -49,7 +49,7 @@ class BaseSwipeWidget extends StatelessWidget {
     NavigatorState nav = Navigator.of(context);
     return Consumer<AppData>(builder: (context, appState, _) {
       return Visibility(
-        visible: !appState.getByUuid(uuid)?.hidden,
+        visible: appState.getByUuid(uuid)?.hidden == false,
         child: SwipeActionCell(
           key: ValueKey(key),
           backgroundColor: Colors.transparent,
