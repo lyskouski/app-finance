@@ -12,6 +12,7 @@ import 'package:app_finance/_classes/storage/app_data.dart';
 import 'package:app_finance/_configs/screen_helper.dart';
 import 'package:app_finance/_configs/theme_helper.dart';
 import 'package:app_finance/_ext/build_context_ext.dart';
+import 'package:app_finance/_ext/double_ext.dart';
 import 'package:app_finance/design/wrapper/input_wrapper.dart';
 import 'package:app_finance/pages/bill/widgets/interface_bill_page_inject.dart';
 import 'package:app_finance/design/form/currency_exchange_input.dart';
@@ -108,7 +109,7 @@ class TransferTabState<T extends TransferTab> extends State<T> {
       color: widget.state.getByUuid(uuid)?.color,
       account: accountTo ?? '',
       accountFrom: uuid,
-      details: double.tryParse(amount.text),
+      details: double.tryParse(amount.text)?.toFixed(currency?.decimalDigits) ?? 0.0,
       currency: currency,
       createdAt: createdAt,
     ));

@@ -3,6 +3,7 @@
 
 import 'package:app_finance/_classes/herald/app_locale.dart';
 import 'package:app_finance/_classes/structure/invoice_app_data.dart';
+import 'package:app_finance/_ext/double_ext.dart';
 import 'package:app_finance/pages/bill/widgets/transfer_tab.dart';
 
 class TransferEditTab extends TransferTab {
@@ -39,7 +40,7 @@ class TransferEditTabState extends TransferTabState<TransferEditTab> {
           color: widget.state.getByUuid(accountTo!)?.color,
           account: accountTo!,
           accountFrom: accountFrom,
-          details: double.tryParse(amount.text),
+          details: double.tryParse(amount.text)?.toFixed(currency?.decimalDigits) ?? 0.0,
           currency: currency,
           createdAt: createdAt,
         ));
