@@ -32,12 +32,12 @@
             <td></td>
             <td class="headerItem">Lines:</td>
             <td class="headerCovTableEntry">0</td>
-            <td class="headerCovTableEntry">19</td>
+            <td class="headerCovTableEntry">25</td>
             <td class="headerCovTableEntryLo">0.0 %</td>
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2024-02-21 10:35:57</td>
+            <td class="headerValue">2024-02-21 13:12:40</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">0</td>
@@ -97,17 +97,23 @@
 <a name="35"><span class="lineNum">      35 </span>            :   }</a>
 <a name="36"><span class="lineNum">      36 </span>            : </a>
 <a name="37"><span class="lineNum">      37 </span><span class="lineNoCov">          0 :   double _drawArc(Canvas canvas, Size size, double startPoint, int step) {</span></a>
-<a name="38"><span class="lineNum">      38 </span><span class="lineNoCov">          0 :     final shift = 7 * (step + 1);</span></a>
-<a name="39"><span class="lineNum">      39 </span><span class="lineNoCov">          0 :     final paint = Paint()</span></a>
-<a name="40"><span class="lineNum">      40 </span><span class="lineNoCov">          0 :       ..color = data[step].color</span></a>
-<a name="41"><span class="lineNum">      41 </span><span class="lineNoCov">          0 :       ..strokeWidth = size.width / 2 - shift</span></a>
-<a name="42"><span class="lineNum">      42 </span><span class="lineNoCov">          0 :       ..style = PaintingStyle.stroke;</span></a>
-<a name="43"><span class="lineNum">      43 </span>            :     const full = 2 * pi;</a>
-<a name="44"><span class="lineNum">      44 </span><span class="lineNoCov">          0 :     double endPoint = (data[step].value / max) * full;</span></a>
-<a name="45"><span class="lineNum">      45 </span><span class="lineNoCov">          0 :     canvas.drawArc(Rect.fromCircle(center: center, radius: radius - shift / 2), startPoint, endPoint, false, paint);</span></a>
-<a name="46"><span class="lineNum">      46 </span><span class="lineNoCov">          0 :     return startPoint + endPoint + indent * full;</span></a>
-<a name="47"><span class="lineNum">      47 </span>            :   }</a>
-<a name="48"><span class="lineNum">      48 </span>            : }</a>
+<a name="38"><span class="lineNum">      38 </span><span class="lineNoCov">          0 :     final paint = Paint()</span></a>
+<a name="39"><span class="lineNum">      39 </span><span class="lineNoCov">          0 :       ..color = data[step].color</span></a>
+<a name="40"><span class="lineNum">      40 </span><span class="lineNoCov">          0 :       ..strokeWidth = size.width / 2</span></a>
+<a name="41"><span class="lineNum">      41 </span><span class="lineNoCov">          0 :       ..style = PaintingStyle.stroke;</span></a>
+<a name="42"><span class="lineNum">      42 </span><span class="lineNoCov">          0 :     final paintBorder = Paint()</span></a>
+<a name="43"><span class="lineNum">      43 </span><span class="lineNoCov">          0 :       ..strokeWidth = size.width * 1.1 / 2</span></a>
+<a name="44"><span class="lineNum">      44 </span><span class="lineNoCov">          0 :       ..color = data[step].color.withOpacity(0.3)</span></a>
+<a name="45"><span class="lineNum">      45 </span><span class="lineNoCov">          0 :       ..style = PaintingStyle.stroke;</span></a>
+<a name="46"><span class="lineNum">      46 </span>            :     const full = 2 * pi;</a>
+<a name="47"><span class="lineNum">      47 </span><span class="lineNoCov">          0 :     final shift = indent * full;</span></a>
+<a name="48"><span class="lineNum">      48 </span><span class="lineNoCov">          0 :     double endPoint = (data[step].value / max) * full;</span></a>
+<a name="49"><span class="lineNum">      49 </span><span class="lineNoCov">          0 :     final arc = Rect.fromCircle(center: center, radius: radius);</span></a>
+<a name="50"><span class="lineNum">      50 </span><span class="lineNoCov">          0 :     canvas.drawArc(arc, startPoint - shift / 2, endPoint + shift, false, paintBorder);</span></a>
+<a name="51"><span class="lineNum">      51 </span><span class="lineNoCov">          0 :     canvas.drawArc(arc, startPoint, endPoint, false, paint);</span></a>
+<a name="52"><span class="lineNum">      52 </span><span class="lineNoCov">          0 :     return startPoint + endPoint + shift;</span></a>
+<a name="53"><span class="lineNum">      53 </span>            :   }</a>
+<a name="54"><span class="lineNum">      54 </span>            : }</a>
 </pre>
       </td>
     </tr>

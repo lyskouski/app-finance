@@ -210,7 +210,7 @@ digraph G {
   }
   {
     rank = same; "_ext";
-    _ext_ [label="<0>_EXT_|<build_context_ext>build_context_ext|<iterable_ext>iterable_ext|<string_ext>string_ext|<int_ext>int_ext|<date_time_ext>date_time_ext|<color_ext>color_ext|<icons_ext>icons_ext",fillcolor="silver:white", gradientangle=240, style="filled"];
+    _ext_ [label="<0>_EXT_|<build_context_ext>build_context_ext|<iterable_ext>iterable_ext|<double_ext>double_ext|<string_ext>string_ext|<int_ext>int_ext|<date_time_ext>date_time_ext|<color_ext>color_ext|<icons_ext>icons_ext",fillcolor="silver:white", gradientangle=240, style="filled"];
   }
   currency -> controller [color="#F0F0F050"];
   currency -> herald [color="#F0F0F050"];
@@ -628,12 +628,14 @@ digraph G {
   bill -> wrapper [color="#F0F0F050"];
   bill_widgets -> herald [color="#F0F0F050"];
   bill_widgets -> structure [color="#F0F0F050"];
+  bill_widgets -> _ext_ [color="#F0F0F050"];
   bill_widgets -> bill_widgets [color="#F0F0F050"];
   bill_widgets -> herald [color="#F0F0F050"];
   bill_widgets -> _configs_ [color="#F0F0F050"];
   bill_widgets -> _ext_ [color="#F0F0F050"];
   bill_widgets -> herald [color="#F0F0F050"];
   bill_widgets -> structure [color="#F0F0F050"];
+  bill_widgets -> _ext_ [color="#F0F0F050"];
   bill_widgets -> bill_widgets [color="#F0F0F050"];
   bill_widgets -> controller [color="#F0F0F050"];
   bill_widgets -> herald [color="#F0F0F050"];
@@ -673,6 +675,7 @@ digraph G {
 
   bill_widgets -> herald [color="#F0F0F050"];
   bill_widgets -> structure [color="#F0F0F050"];
+  bill_widgets -> _ext_ [color="#F0F0F050"];
   bill_widgets -> bill_widgets [color="#F0F0F050"];
   bill_widgets -> controller [color="#F0F0F050"];
   bill_widgets -> herald [color="#F0F0F050"];
@@ -1076,8 +1079,10 @@ digraph G {
   herald -> storage [color="green"];
   controller -> storage [color="green"];
   controller -> structure [color="green"];
+  controller -> controller [color="green"];
   controller -> storage [color="green"];
   controller -> structure [color="green"];
+  controller -> _ext_ [color="green"];
   controller -> controller [color="green"];
   controller -> _configs_ [color="green"];
 
@@ -1125,6 +1130,7 @@ digraph G {
   structure -> _ext_ [color="green"];
 
   _ext_ -> controller [color="green"];
+
 
 
   _ext_ -> herald [color="green"];
