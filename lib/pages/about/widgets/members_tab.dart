@@ -12,6 +12,9 @@ class MembersTab extends StatelessWidget with LauncherMixin {
   static late final members = [
     (name: 'Viachaslau Lyskouski', badge: [AppLocale.labels.coAuthor]),
     (name: 'Iryna Shepetovetska', badge: [AppLocale.labels.coTranslator]),
+    (name: 'Carolina Murazik', badge: [AppLocale.labels.coPromoter]),
+    (name: 'Zbymal', badge: [AppLocale.labels.coPromoter]),
+    (name: 'Hazem', badge: [AppLocale.labels.coPromoter]),
     (name: 'Andrei Tarasevich', badge: [AppLocale.labels.coConsult]),
     (name: 'Halina Gulevich', badge: [AppLocale.labels.coConsult]),
     (name: 'Muhammadyusuf Kurbonov', badge: [AppLocale.labels.coDeveloper]),
