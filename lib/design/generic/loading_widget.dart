@@ -49,12 +49,13 @@ class LoadingWidgetState extends State<LoadingWidget> with TickerProviderStateMi
           child: Stack(
             alignment: Alignment.center,
             children: [
-              Transform.scale(
-                scale: size / 25,
+              SizedBox(
+                height: size,
+                width: size,
                 child: CircularProgressIndicator(
                   value: _controller.value,
                   color: context.colorScheme.inversePrimary,
-                  strokeWidth: 32 / size,
+                  strokeWidth: 8,
                 ),
               ),
               Image.asset(
