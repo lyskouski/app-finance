@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2024-02-21 13:09:01</td>
+            <td class="headerValue">2024-02-23 08:40:54</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">0</td>
@@ -72,23 +72,23 @@
 <a name="10"><span class="lineNum">      10 </span>            :   VoidCallback? _action;</a>
 <a name="11"><span class="lineNum">      11 </span>            :   bool preserveFirst;</a>
 <a name="12"><span class="lineNum">      12 </span>            : </a>
-<a name="13"><span class="lineNum">      13 </span><span class="lineCov">          3 :   DelayedCall(this.delay, {this.preserveFirst = false});</span></a>
+<a name="13"><span class="lineNum">      13 </span><span class="lineCov">          2 :   DelayedCall(this.delay, {this.preserveFirst = false});</span></a>
 <a name="14"><span class="lineNum">      14 </span>            : </a>
-<a name="15"><span class="lineNum">      15 </span><span class="lineCov">          3 :   void run(VoidCallback action) {</span></a>
-<a name="16"><span class="lineNum">      16 </span><span class="lineCov">          6 :     _timer?.cancel();</span></a>
-<a name="17"><span class="lineNum">      17 </span><span class="lineCov">          3 :     if (!preserveFirst || _action == null) {</span></a>
-<a name="18"><span class="lineNum">      18 </span><span class="lineCov">          3 :       _action = action;</span></a>
+<a name="15"><span class="lineNum">      15 </span><span class="lineCov">          2 :   void run(VoidCallback action) {</span></a>
+<a name="16"><span class="lineNum">      16 </span><span class="lineCov">          4 :     _timer?.cancel();</span></a>
+<a name="17"><span class="lineNum">      17 </span><span class="lineCov">          2 :     if (!preserveFirst || _action == null) {</span></a>
+<a name="18"><span class="lineNum">      18 </span><span class="lineCov">          2 :       _action = action;</span></a>
 <a name="19"><span class="lineNum">      19 </span>            :     }</a>
-<a name="20"><span class="lineNum">      20 </span><span class="lineCov">         14 :     _timer = Timer(Duration(milliseconds: delay), () {</span></a>
+<a name="20"><span class="lineNum">      20 </span><span class="lineCov">         10 :     _timer = Timer(Duration(milliseconds: delay), () {</span></a>
 <a name="21"><span class="lineNum">      21 </span><span class="lineCov">          2 :       final v = _action;</span></a>
 <a name="22"><span class="lineNum">      22 </span><span class="lineCov">          2 :       _action = null;</span></a>
 <a name="23"><span class="lineNum">      23 </span><span class="lineCov">          2 :       v?.call();</span></a>
 <a name="24"><span class="lineNum">      24 </span>            :     });</a>
 <a name="25"><span class="lineNum">      25 </span>            :   }</a>
 <a name="26"><span class="lineNum">      26 </span>            : </a>
-<a name="27"><span class="lineNum">      27 </span><span class="lineCov">          2 :   void cancel() {</span></a>
-<a name="28"><span class="lineNum">      28 </span><span class="lineCov">          4 :     _action?.call();</span></a>
-<a name="29"><span class="lineNum">      29 </span><span class="lineCov">          4 :     _timer?.cancel();</span></a>
+<a name="27"><span class="lineNum">      27 </span><span class="lineCov">          1 :   void cancel() {</span></a>
+<a name="28"><span class="lineNum">      28 </span><span class="lineCov">          2 :     _action?.call();</span></a>
+<a name="29"><span class="lineNum">      29 </span><span class="lineCov">          2 :     _timer?.cancel();</span></a>
 <a name="30"><span class="lineNum">      30 </span>            :   }</a>
 <a name="31"><span class="lineNum">      31 </span>            : }</a>
 </pre>
