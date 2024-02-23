@@ -24,7 +24,6 @@ class ExchangeController extends ValueNotifier<ExchangeMap> {
   final TextEditingController targetController;
   List<Currency?> source;
   Currency? target;
-  DelayedCall delay = DelayedCall(600);
 
   ExchangeController(
     super.value, {
@@ -112,10 +111,8 @@ class ExchangeController extends ValueNotifier<ExchangeMap> {
     final amount = _getAmount(uuid)?.toFixed(CurrencyProvider.find(uuid.split('-')[1])?.decimalDigits);
     final current = double.tryParse(pair[1].text);
     if (amount != current) {
-      delay.run(() {
-        pair[1].text = (amount ?? '').toString();
-        pair[1].notifyListeners();
-      });
+      pair[1].text = (amount ?? '').toString();
+      pair[1].notifyListeners();
     }
   }
 
@@ -127,10 +124,8 @@ class ExchangeController extends ValueNotifier<ExchangeMap> {
       if (sum != null && rate[uuid] != null) {
         rate[uuid]!.details = sum;
       }
-      delay.run(() {
-        pair[0].text = (sum ?? '').toString();
-        pair[0].notifyListeners();
-      });
+      pair[0].text = (sum ?? '').toString();
+      pair[0].notifyListeners();
     }
   }
 
