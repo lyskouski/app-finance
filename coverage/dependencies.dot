@@ -134,7 +134,7 @@ digraph G {
   }
   {
     rank = same; "_configs";
-    _configs_ [label="<0>_CONFIGS_|<custom_text_theme>custom_text_theme|<firebase_options>firebase_options|<account_type>account_type|<screen_helper>screen_helper|<theme_helper>theme_helper|<date_format_helper>date_format_helper|<custom_color_scheme>custom_color_scheme",fillcolor="silver:white", gradientangle=240, style="filled"];
+    _configs_ [label="<0>_CONFIGS_|<custom_text_theme>custom_text_theme|<firebase_options>firebase_options|<account_type>account_type|<screen_helper>screen_helper|<theme_helper>theme_helper|<date_format_helper>date_format_helper|<design_type>design_type|<custom_color_scheme>custom_color_scheme",fillcolor="silver:white", gradientangle=240, style="filled"];
   }
   {
     rank = same; "design";
@@ -382,8 +382,8 @@ digraph G {
   start_widgets -> herald [color="#F0F0F050"];
   start_widgets -> storage [color="#F0F0F050"];
   start_widgets -> structure_currency [color="#F0F0F050"];
-  start_widgets -> form [color="#F0F0F050"];
   start_widgets -> _configs_ [color="#F0F0F050"];
+  start_widgets -> form [color="#F0F0F050"];
   start_widgets -> _ext_ [color="#F0F0F050"];
   start_widgets -> wrapper [color="#F0F0F050"];
   start_widgets -> l10n_ [color="#F0F0F050"];
@@ -792,6 +792,7 @@ digraph G {
   _configs_ -> herald [color="green"];
   _configs_ -> _configs_ [color="green"];
   _configs_ -> herald [color="green"];
+
   _configs_ -> herald [color="green"];
   _configs_ -> _configs_ [color="green"];
   button -> controller [color="#0000FF50"];
@@ -1072,6 +1073,8 @@ digraph G {
   herald -> storage [color="green"];
   herald -> _configs_ [color="green"];
   herald -> storage [color="green"];
+  herald -> _configs_ [color="green"];
+  herald -> l10n_ [color="green"];
   herald -> storage [color="green"];
   herald -> storage [color="green"];
   herald -> controller [color="green"];
