@@ -1,12 +1,15 @@
 // Copyright 2023 The terCAD team. All rights reserved.
 // Use of this source code is governed by a CC BY-NC-ND 4.0 license that can be found in the LICENSE file.
 
+import 'package:app_finance/_configs/design_type.dart';
+
 typedef LanguageDef = ({
   String id,
   String name,
 });
 
 const languageList = <LanguageDef>[
+  (id: 'ar', name: 'اللغة العربية (AR)'),
   (id: 'be', name: 'Тарашкевіца (BE)'),
   (id: 'be_EU', name: 'Latsinka (BE)'),
   (id: 'zh', name: '简体中文 (ZH-CN)'),
@@ -21,3 +24,11 @@ const languageList = <LanguageDef>[
   (id: 'uk', name: 'Українська (UK-UA)'),
   (id: 'uz', name: 'O\'zbek (UZ)'),
 ];
+
+String languageDesign(String? value) => switch (value) {
+      'ar' => AppDesignType.rtlGeneral.name,
+      'ge' => AppDesignType.germany.name,
+      'zh' => AppDesignType.asiaGeneral.name,
+      'fa' => AppDesignType.rtlGeneral.name,
+      _ => AppDesignType.global.name,
+    };

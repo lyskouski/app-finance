@@ -2,16 +2,9 @@
 // Use of this source code is governed by a CC BY-NC-ND 4.0 license that can be found in the LICENSE file.
 
 import 'package:app_finance/_classes/storage/app_preferences.dart';
+import 'package:app_finance/_configs/design_type.dart';
+import 'package:app_finance/l10n/index.dart';
 import 'package:flutter/material.dart';
-
-enum AppDesignType {
-  global,
-  // Area specific
-  asiaGeneral, // interface complexity
-  rtlGeneral, // right-to-left notation
-  // Location specific
-  germany, // alphabetical order in lists, detailed descriptions
-}
 
 class AppDesign extends ValueNotifier<AppDesignType> {
   static AppDesignType _state = find(AppPreferences.get(AppPreferences.prefDesign)) ?? AppDesignType.global;
@@ -22,12 +15,7 @@ class AppDesign extends ValueNotifier<AppDesignType> {
 
   static AppDesignType? find(String? name) => AppDesignType.values.where((e) => e.name == name).firstOrNull;
 
-  static String fromLocale(Locale? value) => switch (value?.languageCode) {
-        'ge' => AppDesignType.germany.name,
-        'zh' => AppDesignType.asiaGeneral.name,
-        'fa' => AppDesignType.rtlGeneral.name,
-        _ => AppDesignType.global.name,
-      };
+  static String fromLocale(Locale? value) => languageDesign(value?.languageCode);
 
   static bool isRightToLeft() => get() == AppDesignType.rtlGeneral;
 
