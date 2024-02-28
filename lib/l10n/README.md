@@ -1,8 +1,10 @@
 # Localization
 
 - `l10n.yaml` -- base registry (for auto-detection)
-- `lib/l10n` -- labels
-- `lib/l10n/index.dart` -- registry
+  - `macos/Runner/Info.plist`
+  - `ios/Runner/Info.plist`
+- `lib/l10n/app_*.arb` -- labels
+- `lib/l10n/index.dart` -- registry, and mapping with design type
 - `assets/l10n` -- descriptions
 
 
