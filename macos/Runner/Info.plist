@@ -35,6 +35,7 @@
     <string>uz</string>
     <string>fa</string>
     <string>ar</string>
+    <string>az</string>
   </array>
 	<key>LSMinimumSystemVersion</key>
 	<string>$(MACOSX_DEPLOYMENT_TARGET)</string>

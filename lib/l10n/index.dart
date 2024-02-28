@@ -10,6 +10,7 @@ typedef LanguageDef = ({
 
 const languageList = <LanguageDef>[
   (id: 'ar', name: 'اللغة العربية (AR)'),
+  (id: 'az', name: 'Azərbaycanlı (AZ)'),
   (id: 'be', name: 'Тарашкевіца (BE)'),
   (id: 'be_EU', name: 'Latsinka (BE)'),
   (id: 'zh', name: '简体中文 (ZH-CN)'),
