@@ -32,14 +32,14 @@ class AppDesign extends ValueNotifier<AppDesignType> {
   static bool isRightToLeft() => get() == AppDesignType.rtlGeneral;
 
   static getAlignment<T extends Enum>() => switch (T) {
-        MainAxisAlignment => isRightToLeft() ? MainAxisAlignment.end : MainAxisAlignment.start,
-        TextDirection => isRightToLeft() ? TextDirection.rtl : TextDirection.ltr,
+        const (MainAxisAlignment) => isRightToLeft() ? MainAxisAlignment.end : MainAxisAlignment.start,
+        const (TextDirection) => isRightToLeft() ? TextDirection.rtl : TextDirection.ltr,
         _ => isRightToLeft() ? CrossAxisAlignment.end : CrossAxisAlignment.start,
       };
 
   static getInverseAlignment<T extends Enum>() => switch (T) {
-        MainAxisAlignment => isRightToLeft() ? MainAxisAlignment.start : MainAxisAlignment.end,
-        TextDirection => isRightToLeft() ? TextDirection.ltr : TextDirection.rtl,
+        const (MainAxisAlignment) => isRightToLeft() ? MainAxisAlignment.start : MainAxisAlignment.end,
+        const (TextDirection) => isRightToLeft() ? TextDirection.ltr : TextDirection.rtl,
         _ => isRightToLeft() ? CrossAxisAlignment.start : CrossAxisAlignment.end,
       };
 
