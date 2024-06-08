@@ -26,25 +26,25 @@ dependencies:
   cupertino_icons: ^1.0.2
   adaptive_breakpoints: ^0.1.6
   google_fonts: ^6.1.0
-  intl: ^0.18.1
+  intl: ^0.19.0
   flutter_colorpicker: ^1.0.3
   uuid: ^3.0.7
   provider: ^6.0.5
-  month_picker_dialog: ^2.0.2
+  month_picker_dialog: ^4.0.0
   shared_preferences: ^2.2.2
   path_provider: ^2.0.15
   crypto: ^3.0.3
   # Freeze encrypt and flutter_webrtc
   encrypt: 5.0.1
   # flutter_webrtc: "0.9.42+hotfix.1"
-  firebase_core: ^2.15.1
-  firebase_analytics: ^10.4.5
-  flutter_markdown: ^0.6.17
-  package_info_plus: ^4.0.2
+  firebase_core: ^3.0.0
+  firebase_analytics: ^11.0.0
+  flutter_markdown: ^0.7.1
+  package_info_plus: ^8.0.0
   url_launcher: ^6.1.12
   webdav_client: ^1.2.1
-  file_picker: ^6.1.1
-  csv: ^5.0.2
+  file_picker: ^8.0.3
+  csv: ^6.0.0
   xml: ^6.3.0
   notifications: ^3.0.0
   peerdart: ^0.5.3
@@ -53,7 +53,7 @@ dependencies:
   flutter_swipe_action_cell: ^3.1.2
   flutter_currency_picker: ^1.4.1
   in_app_purchase: ^3.1.11
-  firebase_crashlytics: ^3.4.4
+  firebase_crashlytics: ^4.0.0
   dart_intl_search: ^1.2.3
 
 dev_dependencies:
@@ -64,7 +64,7 @@ dev_dependencies:
   flutter_driver:
     sdk: flutter
   # Lints to encourage good coding practices, `analysis_options.yaml`
-  flutter_lints: ^3.0.1
+  flutter_lints: ^4.0.0
   grinder: ^0.9.4
   path: ^1.8.3
   test_cov_console: ^0.2.2

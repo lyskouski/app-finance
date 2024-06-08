@@ -12,18 +12,6 @@
 **Fingrom** (金融雷击) -- 无广告、无限制的开源跨平台财务会计应用程序。该解决方案的目标是创建一个直观、高效、包容的财务会计应用程序。 
 它能让用户毫不费力地管理自己的财务，同时确保没有人掉队。
 
-```mermaid
-gantt
-    section 路线图
-    初始 :done, dis1, 2023-06-15, 15d
-    原型 :done, dis2, 2023-07-01, 1M
-    市场震动功能 :done, dis3, 2023-08-01, 1M
-    用户界面/用户体验流程 :done, dis4, 2023-09-01, 1M
-    生产就绪阶段 :done, dis5, 2023-10-01, 1M
-    用户反馈 :active, dis6, 2023-11-01, 1M
-    组件库 : dis7, 2023-12-01, 1M
-    多语言集成 : dis8, 2024-01-01, 1M
-```
 
 [![观看英语视频](./docs/marketing-flow/presentation_video.png)](https://youtu.be/sNTbpILLsOw)
 

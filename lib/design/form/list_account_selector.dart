@@ -2,7 +2,6 @@
 // Use of this source code is governed by a CC BY-NC-ND 4.0 license that can be found in the LICENSE file.
 
 import 'package:app_finance/_classes/storage/app_data.dart';
-import 'package:app_finance/_configs/theme_helper.dart';
 import 'package:app_finance/design/form/list_selector_item.dart';
 import 'package:app_finance/design/form/list_selector.dart';
 import 'package:app_finance/design/generic/base_line_widget.dart';
@@ -12,32 +11,36 @@ class ListAccountSelectorItem extends ListSelectorItem {
   dynamic item;
 
   @override
-  Widget build(context) => BaseLineWidget(
-        uuid: item.uuid ?? '',
-        title: item.title ?? '',
-        description: item.description ?? '',
-        details: item.detailsFormatted ?? '',
-        progress: 1.0,
-        color: item.color ?? Colors.transparent,
-        icon: item.icon ?? Icons.radio_button_unchecked_sharp,
-        hidden: item.hidden ?? false,
-        width: ThemeHelper.getWidth(context, 12),
-        showDivider: false,
-      );
+  Widget build(context) => LayoutBuilder(builder: (_, constraints) {
+        return BaseLineWidget(
+          uuid: item.uuid ?? '',
+          title: item.title ?? '',
+          description: item.description ?? '',
+          details: item.detailsFormatted ?? '',
+          progress: 1.0,
+          color: item.color ?? Colors.transparent,
+          icon: item.icon ?? Icons.radio_button_unchecked_sharp,
+          hidden: item.hidden ?? false,
+          width: constraints.maxWidth,
+          showDivider: false,
+        );
+      });
 
   @override
-  Widget suggest(context) => BaseLineWidget(
-        uuid: item.uuid ?? '',
-        title: item.title ?? '',
-        description: item.description ?? '',
-        details: item.detailsFormatted ?? '',
-        progress: item.progress ?? 0.0,
-        color: item.color ?? Colors.transparent,
-        icon: item.icon ?? Icons.radio_button_unchecked_sharp,
-        hidden: item.hidden ?? false,
-        width: ThemeHelper.getWidth(context, 7),
-        showDivider: false,
-      );
+  Widget suggest(context) => LayoutBuilder(builder: (_, constraints) {
+        return BaseLineWidget(
+          uuid: item.uuid ?? '',
+          title: item.title ?? '',
+          description: item.description ?? '',
+          details: item.detailsFormatted ?? '',
+          progress: item.progress ?? 0.0,
+          color: item.color ?? Colors.transparent,
+          icon: item.icon ?? Icons.radio_button_unchecked_sharp,
+          hidden: item.hidden ?? false,
+          width: constraints.maxWidth,
+          showDivider: false,
+        );
+      });
 
   @override
   String get id => item.uuid;

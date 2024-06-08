@@ -3,6 +3,7 @@
 
 import 'package:app_finance/_configs/theme_helper.dart';
 import 'package:app_finance/_ext/string_ext.dart';
+import 'package:app_finance/components/component_chart.dart';
 import 'package:app_finance/components/component_recent.dart';
 import 'package:app_finance/components/_core/component_data.dart';
 import 'package:app_finance/components/_core/list_component_registry.dart';
@@ -20,6 +21,7 @@ class ComponentsBuilderItem extends StatelessWidget {
       padding: EdgeInsets.all(ThemeHelper.getIndent(0.5)),
       child: switch (key) {
         ComponentRegistry.recent => ComponentRecent(data),
+        ComponentRegistry.chart => ComponentChart(data),
       },
     );
   }
