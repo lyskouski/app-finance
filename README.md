@@ -13,18 +13,6 @@
 The goal of the solution is to create a financial accounting application that is intuitive, efficient, and inclusive. 
 That empowers users to effortlessly manage their finances while ensuring that no one is left behind.
 
-```mermaid
-gantt
-    section Roadmap
-    Initial                 :done, dis1, 2023-06-15, 15d
-    Prototype               :done, dis2, 2023-07-01, 1M
-    Market Shake Features   :done, dis3, 2023-08-01, 1M
-    UI / UX Flow            :done, dis4, 2023-09-01, 1M
-    Production Ready Stage  :done, dis5, 2023-10-01, 1M
-    User Feedback           :active, dis6, 2023-11-01, 3M
-    Components Library      : dis7, 2024-02-01, 1M
-    ML Integration          : dis8, 2024-03-01, 1M
-```
 
 [![Watch the video](./docs/marketing-flow/presentation_video.png)](https://youtu.be/sNTbpILLsOw)
 

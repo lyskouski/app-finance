@@ -14,18 +14,6 @@ Ziel der Lösung ist es, eine Finanzbuchhaltungsanwendung zu schaffen, die intui
 ermöglicht es den Nutzern, ihre Finanzen mühelos zu verwalten und gleichzeitig sicherzustellen, dass niemand 
 zurückgelassen wird.
 
-```mermaid
-gantt
-    section Fahrplan
-    Anfänglich                 :done, dis1, 2023-06-15, 15d
-    Prototyp                :done, dis2, 2023-07-01, 1M
-    Market Shake Funktionen :done, dis3, 2023-08-01, 1M
-    UI / UX Ablauf          :done, dis4, 2023-09-01, 1M
-    Produktionsfertige Phase:done, dis5, 2023-10-01, 1M
-    Benutzer-Feedback       :active, dis6, 2023-11-01, 1M
-    Komponenten-Bibliothek  : dis7, 2023-12-01, 1M
-    ML-Einbindung           : dis8, 2024-01-01, 1M
-```
 
 [![Watch the video](./docs/marketing-flow/presentation_video.png)](https://youtu.be/7hVGHYNzlQU)
 
