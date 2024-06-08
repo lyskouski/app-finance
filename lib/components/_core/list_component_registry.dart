@@ -7,6 +7,7 @@ import 'package:app_finance/design/form/list_selector.dart';
 
 enum ComponentRegistry {
   recent,
+  chart,
 }
 
 class ListComponentRegistryItem extends ListSelectorItem {
@@ -28,6 +29,7 @@ class ListComponentRegistry extends ListSelector {
   List<ListComponentRegistryItem> get options {
     return [
       ListComponentRegistryItem(key: ComponentRegistry.recent, name: AppLocale.labels.cmpRecent),
+      ListComponentRegistryItem(key: ComponentRegistry.chart, name: AppLocale.labels.cmpChart),
     ];
   }
 }

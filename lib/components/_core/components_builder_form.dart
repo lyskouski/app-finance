@@ -2,6 +2,7 @@
 // Use of this source code is governed by a CC BY-NC-ND 4.0 license that can be found in the LICENSE file.
 
 import 'package:app_finance/_ext/string_ext.dart';
+import 'package:app_finance/components/component_chart.dart';
 import 'package:app_finance/components/component_recent.dart';
 import 'package:app_finance/components/_core/component_data.dart';
 import 'package:app_finance/components/_core/list_component_registry.dart';
@@ -18,6 +19,7 @@ class ComponentsBuilderForm extends StatelessWidget {
     final key = (data[componentData.key] as String).toEnum(ComponentRegistry.values);
     return switch (key) {
       ComponentRegistry.recent => ComponentRecentForm(data, adjust: adjust),
+      ComponentRegistry.chart => ComponentChartForm(data, adjust: adjust),
     };
   }
 }

@@ -1,6 +1,8 @@
 // Copyright 2023 The terCAD team. All rights reserved.
 // Use of this source code is governed by a CC BY-NC-ND 4.0 license that can be found in the LICENSE file.
 
+import 'dart:math';
+
 import 'package:app_finance/_classes/herald/app_design.dart';
 import 'package:app_finance/_classes/herald/app_locale.dart';
 import 'package:app_finance/_classes/storage/app_data.dart';
@@ -77,7 +79,7 @@ class ComponentBillYtd extends StatelessWidget {
             ),
             ColumnChart(
               width: width,
-              height: 200,
+              height: [constraints.maxHeight - 6 * indent, 200].reduce(min).toDouble(),
               indent: indent,
               data: data,
               yMax: getMax(data) * 1.2,
