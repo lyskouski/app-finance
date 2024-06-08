@@ -18,7 +18,6 @@ import 'package:app_finance/pages/home/home_edit_page.dart';
 import 'package:app_finance/pages/start/start_page.dart';
 import 'package:app_finance/design/wrapper/grid_layer.dart';
 import 'package:app_finance/pages/home/widgets/init_tab.dart';
-import 'package:app_finance/design/wrapper/tab_widget.dart';
 import 'package:app_finance/design/button/toolbar_button_widget.dart';
 import 'package:app_finance/pages/home/widgets/account_widget.dart';
 import 'package:app_finance/pages/home/widgets/bill_widget.dart';
@@ -247,67 +246,52 @@ class HomePageState extends AbstractPageState<HomePage> {
           ]
       },
       children: [
-        if (ThemeHelper.isWearable) ...[
-          Container(
-            height: constraints.maxHeight - indent,
-            margin: EdgeInsets.only(top: indent),
-            child: TabWidget(
-              type: TabType.dots,
-              maxWidth: width,
-              children: [budgetWidget, accountWidget, billWidget],
+        countHeight > 3
+            ? isWide
+                ? Expanded(
+                    child: Padding(
+                      padding: EdgeInsets.only(top: indent / 2),
+                      child: const ComponentRecent({'type': ComponentRecentType.goals, 'count': 7}),
+                    ),
+                  )
+                : GoalWidget(
+                    width: isVertical ? width : partWidth,
+                    state: super.state.getList(AppDataType.goals),
+                  )
+            : ThemeHelper.emptyBox,
+        billWidget,
+        accountWidget,
+        budgetWidget,
+        () => const Expanded(
+              child: Column(
+                children: [
+                  Expanded(child: ThemeHelper.emptyBox),
+                  ComponentAccountFlow(),
+                  ThemeHelper.hIndent6x,
+                ],
+              ),
             ),
-          ),
-          ThemeHelper.emptyBox,
-          ThemeHelper.emptyBox,
-          ThemeHelper.emptyBox,
-        ] else ...[
-          countHeight > 3
-              ? isWide
-                  ? Expanded(
-                      child: Padding(
-                        padding: EdgeInsets.only(top: indent / 2),
-                        child: const ComponentRecent({'type': ComponentRecentType.goals, 'count': 7}),
-                      ),
-                    )
-                  : GoalWidget(
-                      width: isVertical ? width : partWidth,
-                      state: super.state.getList(AppDataType.goals),
-                    )
-              : ThemeHelper.emptyBox,
-          billWidget,
-          accountWidget,
-          budgetWidget,
-          () => const Expanded(
-                child: Column(
-                  children: [
-                    Expanded(child: ThemeHelper.emptyBox),
-                    ComponentAccountFlow(),
-                    ThemeHelper.hIndent6x,
-                  ],
-                ),
+        () => const Expanded(
+              child: Column(
+                children: [
+                  Expanded(child: ThemeHelper.emptyBox),
+                  ComponentBudgetForecast(),
+                  ThemeHelper.hIndent6x,
+                ],
               ),
-          () => const Expanded(
-                child: Column(
-                  children: [
-                    Expanded(child: ThemeHelper.emptyBox),
-                    ComponentBudgetForecast(),
-                    ThemeHelper.hIndent6x,
-                  ],
-                ),
+            ),
+        () => const Expanded(
+              child: Column(
+                children: [
+                  Expanded(child: ThemeHelper.emptyBox),
+                  ComponentBillYtd(),
+                  ThemeHelper.hIndent6x,
+                ],
               ),
-          () => const Expanded(
-                child: Column(
-                  children: [
-                    Expanded(child: ThemeHelper.emptyBox),
-                    ComponentBillYtd(),
-                    ThemeHelper.hIndent6x,
-                  ],
-                ),
-              ),
-          () => const Expanded(
-                child: ComponentRecent({'type': ComponentRecentType.invoice, 'count': 7}),
-              ),
-        ]
+            ),
+        () => const Expanded(
+              child: ComponentRecent({'type': ComponentRecentType.invoice, 'count': 7}),
+            ),
       ],
     );
   }
