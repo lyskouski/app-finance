@@ -189,23 +189,6 @@ class ExpensesTabState<T extends ExpensesTab> extends State<T> {
               }),
               width: width,
             ),
-            InputWrapper(
-              type: NamedInputType.budgetSelector,
-              isRequired: true,
-              value: budget != null ? widget.state.getByUuid(budget!) : null,
-              title: AppLocale.labels.budget,
-              showError: hasErrors && budget == null,
-              tooltip: AppLocale.labels.titleBudgetTooltip,
-              state: widget.state,
-              onChange: (value) => setState(() {
-                budget = value?.uuid;
-                if (value != null) {
-                  budgetCurrency = value.currency;
-                  currency ??= budgetCurrency;
-                }
-              }),
-              width: width,
-            ),
             RowWidget(
               indent: indent,
               maxWidth: width + indent,
@@ -245,6 +228,23 @@ class ExpensesTabState<T extends ExpensesTab> extends State<T> {
               title: AppLocale.labels.description,
               controller: description,
               tooltip: AppLocale.labels.descriptionTooltip,
+            ),
+            InputWrapper(
+              type: NamedInputType.budgetSelector,
+              isRequired: true,
+              value: budget != null ? widget.state.getByUuid(budget!) : null,
+              title: AppLocale.labels.budget,
+              showError: hasErrors && budget == null,
+              tooltip: AppLocale.labels.titleBudgetTooltip,
+              state: widget.state,
+              onChange: (value) => setState(() {
+                budget = value?.uuid;
+                if (value != null) {
+                  budgetCurrency = value.currency;
+                  currency ??= budgetCurrency;
+                }
+              }),
+              width: width,
             ),
             Text(
               AppLocale.labels.expenseDateTime,
