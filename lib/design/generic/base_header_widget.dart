@@ -72,7 +72,11 @@ class BaseHeaderWidget extends StatelessWidget {
             GridItem(
               start: const Size(0, 1),
               end: const Size(1, 2),
-              child: TextWrapper(total.toCurrency(withPattern: false), style: numStyle),
+              child: FittedBox(
+                fit: BoxFit.scaleDown,
+                alignment: AppDesign.isRightToLeft() ? Alignment.centerRight : Alignment.centerLeft,
+                child: TextWrapper(total.toCurrency(withPattern: false), style: numStyle),
+              ),
             ),
             GridItem(
               start: const Size(1, 0),
