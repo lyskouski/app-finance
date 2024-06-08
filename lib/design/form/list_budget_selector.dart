@@ -11,21 +11,21 @@ import 'package:flutter/material.dart';
 
 class ListBudgetSelectorItem extends ListAccountSelectorItem {
   @override
-  Widget suggest(context) {
-    return BudgetLineWidget(
-      uuid: item.uuid ?? '',
-      title: item.title ?? '',
-      description: item.description ?? '',
-      details: item.detailsFormatted ?? '',
-      amount: item.amount.toString(),
-      progress: 1.0,
-      color: item.color ?? Colors.transparent,
-      icon: item.icon ?? Icons.radio_button_unchecked_sharp,
-      hidden: item.hidden ?? false,
-      width: ThemeHelper.getWidth(context, 12),
-      showDivider: false,
-    );
-  }
+  Widget suggest(context) => LayoutBuilder(builder: (_, constraints) {
+        return BudgetLineWidget(
+          uuid: item.uuid ?? '',
+          title: item.title ?? '',
+          description: item.description ?? '',
+          details: item.detailsFormatted ?? '',
+          amount: item.amount.toString(),
+          progress: 1.0,
+          color: item.color ?? Colors.transparent,
+          icon: item.icon ?? Icons.radio_button_unchecked_sharp,
+          hidden: item.hidden ?? false,
+          width: constraints.maxWidth - ThemeHelper.getIndent(),
+          showDivider: false,
+        );
+      });
 
   ListBudgetSelectorItem({
     required BudgetAppData? item,

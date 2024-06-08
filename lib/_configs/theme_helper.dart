@@ -35,7 +35,9 @@ class ThemeHelper {
   static double getIndent([double multiply = 1]) => _Sizes.normal / AppZoom.state * multiply;
 
   static double _env(BuildContext context, BoxConstraints? constraints) =>
-      (constraints != null && isNavRight(context, constraints) && !isWearable || ScreenHelper.state().isRight
+      (constraints != null &&
+              (isNavRight(context, constraints) || ScreenHelper.state().isRight) &&
+              !(isWearable || ScreenHelper.state().isWearable)
           ? barHeight
           : 0) +
       (constraints != null && isWideScreen(constraints) || ScreenHelper.state().isWide ? menuWidth : 0);
