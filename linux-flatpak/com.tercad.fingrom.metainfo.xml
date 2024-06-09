@@ -2,13 +2,8 @@
 <component type="desktop-application">
   <id>com.tercad.fingrom</id>
   <name>Fingrom</name>
-  <lowercaseAppName>fingrom</lowercaseAppName>
-  <githubReleaseOrganization>lyskouski</githubReleaseOrganization>
   <developer_name>lyskouski</developer_name>
-  <githubReleaseProject>app-finance</githubReleaseProject>
-  <tag>v{VERSION}</tag>
-  <commit>{COMMIT}</commit>
-  <summary>Platform-agnostic financial accounting application</summary>
+  <summary>Platform-agnostic financial accounting app</summary>
   <metadata_license>CC0-1.0</metadata_license>
   <project_license>CC-BY-NC-ND-4.0</project_license>
   <recommends>
@@ -18,14 +13,13 @@
   </recommends>
   <categories>
     <category>Office</category>
-    <category>Finances</category>
   </categories>
   <url type="homepage">https://github.com/lyskouski/app-finance</url>
   <url type="bugtracker">https://github.com/lyskouski/app-finance/issues</url>
   <url type="translate">https://github.com/lyskouski/app-finance/tree/main/lib/l10n</url>
   <description>
     <p>
-        The goal of the solution is to create a financial accounting application that is intuitive, efficient, and inclusive. 
+        The goal of the solution is to create a financial accounting application that is intuitive, efficient, and inclusive.
         That empowers users to effortlessly manage their finances while ensuring that no one is left behind.
     </p>
     <p>Features</p>
@@ -45,27 +39,49 @@
         <li>Shortcuts</li>
     </ul>
     <p>
-      If you would like to come with suggestions, report bugs, translate the app, or contribute otherwise, 
+      If you would like to come with suggestions, report bugs, translate the app, or contribute otherwise,
       feel free to reach out!
     </p>
     <p>
-        This is the "open-source code" application that welcomes and values contributions from the community. 
-        However, there are some limitations when it comes to making external modifications and distributions, 
-        as it follows the CC-BY-NC-ND-4.0 license. As the project's author, I am committed to upholding the 
-        "Terms of Use" and "Privacy Policy" to ensure the well-being and satisfaction of all users across 
+        This is the "open-source code" application that welcomes and values contributions from the community.
+        However, there are some limitations when it comes to making external modifications and distributions,
+        as it follows the CC-BY-NC-ND-4.0 license. As the project's author, I am committed to upholding the
+        "Terms of Use" and "Privacy Policy" to ensure the well-being and satisfaction of all users across
         all platforms (desktop, mobile, and web).
     </p>
   </description>
   <screenshots>
-    <screenshot>
+    <screenshot type="default">
       <image type="source">https://raw.githubusercontent.com/lyskouski/app-finance/main/docs/marketing-flow/screenshots/desktop-main-page.png</image>
+      <caption>Desktop: Home Page</caption>
+    </screenshot>
+    <screenshot>
       <image type="source">https://raw.githubusercontent.com/lyskouski/app-finance/main/docs/marketing-flow/screenshots/desktop-bill-form.png</image>
+      <caption>Desktop: Bill Form</caption>
+    </screenshot>
+    <screenshot>
       <image type="source">https://raw.githubusercontent.com/lyskouski/app-finance/main/docs/marketing-flow/screenshots/desktop-bill-metrics.png</image>
+      <caption>Desktop: Bill Metrics Page</caption>
+    </screenshot>
+    <screenshot>
       <image type="source">https://raw.githubusercontent.com/lyskouski/app-finance/main/docs/marketing-flow/screenshots/desktop-account-metrics.png</image>
+      <caption>Desktop: Account Metrics Page</caption>
+    </screenshot>
+    <screenshot>
       <image type="source">https://raw.githubusercontent.com/lyskouski/app-finance/main/docs/marketing-flow/screenshots/widescreen-currencies.png</image>
+      <caption>Widescreen: Currencies Page</caption>
+    </screenshot>
+    <screenshot>
       <image type="source">https://raw.githubusercontent.com/lyskouski/app-finance/main/docs/marketing-flow/screenshots/widescreen-bill-page.png</image>
+      <caption>Widescreen: Bill Page</caption>
+    </screenshot>
+    <screenshot>
       <image type="source">https://raw.githubusercontent.com/lyskouski/app-finance/main/docs/marketing-flow/screenshots/widescreen-budget-page.png</image>
+      <caption>Widescreen: Budget Page</caption>
+    </screenshot>
+    <screenshot>
       <image type="source">https://raw.githubusercontent.com/lyskouski/app-finance/main/docs/marketing-flow/screenshots/widescreen-account-page.png</image>
+      <caption>Widescreen: Account Page</caption>
     </screenshot>
   </screenshots>
   <launchable type="desktop-id">com.tercad.fingrom.desktop</launchable>

@@ -15,5 +15,4 @@ sed -i s/{VERSION}/$version/g com.tercad.fingrom.yml
 sed -i s/{SHA256}/$hash/g com.tercad.fingrom.yml
 
 sed -i s/{VERSION}/$version/g com.tercad.fingrom.metainfo.xml
-sed -i s/{COMMIT}/$id/g com.tercad.fingrom.metainfo.xml
 sed -i s/{DATE}/$date/g com.tercad.fingrom.metainfo.xml
