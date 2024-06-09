@@ -2,6 +2,10 @@
 
 Pełną listę aktualizacji można wyświetlić za pomocą elementu nawigacyjnego "O aplikacji" na przycisku "Wskazówki".
 
+### 5.5.0
+- Ulepszenie samodzielnie skonfigurowanej tablicy poprzez dodanie wykresów
+- Dodanie języków arabskiego (AR) i azerskiego (AZ)
+
 ### 5.3.7
 - Dodanie opcji "czyszczenie" dla procedury przywracania  
 

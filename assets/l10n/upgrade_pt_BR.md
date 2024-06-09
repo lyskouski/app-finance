@@ -2,6 +2,10 @@
 
 _A lista completa de atualizações pode ser visualizada no item de navegação "Sobre" no botão "Dicas".
 
+### 5.5.0
+- Aprimoramento do quadro autoconfigurado com a adição de gráficos
+- Adição dos idiomas árabe (AR) e azerbaijão (AZ)
+
 ### 5.3.7
 - Adição da opção "clean-up" para um procedimento de restauração  
 

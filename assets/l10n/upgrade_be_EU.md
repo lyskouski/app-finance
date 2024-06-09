@@ -2,6 +2,10 @@
 
 _Poŭny spis abnaŭlieńniaŭ možna prahliadzieć u navihacyjnym punkcie «Ab Dadatku» na knopcy «Padkazki»._ 
 
+### 5.5.0
+- Paliepšana karystackaja doška dadańniem dyjahram
+- Dadańnie arabskaj (AR) i azierbajdžanskaj (AZ) moŭ
+
 ### 5.3.7 
 - Dadańnie opcyi "ačystki" dlia pracedury adnaŭlieńnia 
 
