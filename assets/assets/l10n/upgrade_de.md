@@ -2,6 +2,10 @@
 
 _Die vollständige Liste der Updates kann über den Navigationspunkt "Über" auf der Schaltfläche "Hinweise" eingesehen werden._
 
+### 5.5.0
+- Verbesserung der selbstkonfigurierten Tafel durch Hinzufügen von Diagrammen
+- Hinzufügen der Sprachen Arabisch (AR) und Aserbaidschan (AZ)
+
 ### 5.3.7
 - Hinzufügen der "clean-up"-Option für eine Wiederherstellungsprozedur  
 

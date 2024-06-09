@@ -2,6 +2,10 @@
 
 _Yeniləmələrin tam siyahısına "İpucu" düyməsindəki "Haqqında" naviqasiya elementi vasitəsilə baxmaq olar._
 
+### 5.5.0
+- Diaqramlar əlavə edərək, özünü konfiqurasiya edən lövhənin təkmilləşdirilməsi
+- Ərəb (AR) və Azərbaycan (AZ) dillərinin əlavə edilməsi
+
 ### 5.3.7
 - Bərpa proseduru üçün "təmizləmə" seçiminin əlavə edilməsi
 

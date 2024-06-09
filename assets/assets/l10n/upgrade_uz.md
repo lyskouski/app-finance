@@ -2,6 +2,10 @@
 
 _Yangilanishlarning toʻliq roʻyxatini “Maslahat” tugmasidagi “Haqida” navigatsiya bandi orqali koʻrish mumkin._
 
+### 5.5.0
+- Diagrammalarni qo'shish orqali o'z-o'zidan tuzilgan taxtani yaxshilash
+- Arab (AR) va Ozarbayjon (AZ) tillarini qo'shish
+
 ### 5.3.7
 - Qayta tiklash jarayoni uchun "tozalash" variantini qo'shish
 

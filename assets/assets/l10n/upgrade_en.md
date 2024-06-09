@@ -2,6 +2,10 @@
 
 _The full list of updates can be viewed via the "About" navigation item on the "Hints" button._
 
+### 5.5.0
+- Improving self-configured board by adding charts
+- Adding Arabic (AR) and Azerbaijan (AZ) languages
+
 ### 5.3.7
 - Adding "clean-up"-option for a restoring procedure  
 
