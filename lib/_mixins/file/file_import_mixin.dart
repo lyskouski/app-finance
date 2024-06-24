@@ -8,11 +8,20 @@ import 'package:flutter/foundation.dart';
 
 mixin FileImportMixin {
   Future<String?> importFile(List<String> ext) async {
-    FilePickerResult? result = await FilePicker.platform.pickFiles(
-      type: FileType.custom,
-      allowedExtensions: ext,
-      withData: true,
-    );
+    FilePickerResult? result;
+    if (defaultTargetPlatform == TargetPlatform.android) {
+      result = await FilePicker.platform.pickFiles(
+        type: FileType.any,
+        withData: true,
+      );
+    } else {
+      result = await FilePicker.platform.pickFiles(
+        type: FileType.custom,
+        allowedExtensions: ext,
+        withData: true,
+      );
+    }
+
     String? content;
     if (result != null) {
       Uint8List? fileBytes = result.files.first.bytes;
