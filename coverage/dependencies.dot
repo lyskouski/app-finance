@@ -9,20 +9,128 @@ digraph G {
     past -> "_classes" -> "_configs" -> "_ext" -> "_mixins" -> "charts" -> "components" -> "design" -> "pages" ->  "future";
   }
   {
-    rank = same; "charts";
-    data [label="<0>DATA|<data_handler>data_handler|<monte_carlo_simulation>monte_carlo_simulation",fillcolor="silver:white", gradientangle=240, style="filled"];
+    rank = same; "_ext";
+    _ext_ [label="<0>_EXT_|<color_ext>color_ext|<build_context_ext>build_context_ext|<date_time_ext>date_time_ext|<iterable_ext>iterable_ext|<icons_ext>icons_ext|<int_ext>int_ext|<double_ext>double_ext|<string_ext>string_ext",fillcolor="silver:white", gradientangle=240, style="filled"];
+  }
+  {
+    rank = same; "_mixins";
+    _mixins_ [label="<0>_MIXINS_|<launcher_mixin>launcher_mixin|<storage_mixin>storage_mixin",fillcolor="silver:white", gradientangle=240, style="filled"];
+  }
+  {
+    rank = same; "_mixins";
+    file [label="<0>FILE|<file_export_mixin_web>file_export_mixin_web|<file_export_mixin>file_export_mixin|<file_import_mixin>file_import_mixin",fillcolor="silver:white", gradientangle=240, style="filled"];
+  }
+  {
+    rank = same; "components";
+    components_ [label="<0>COMPONENTS_|<component_budget_forecast>component_budget_forecast|<component_account_health>component_account_health|<component_recent>component_recent|<component_bill_ytd>component_bill_ytd|<component_account_flow>component_account_flow|<component_budget_ytd>component_budget_ytd|<component_chart>component_chart",fillcolor="silver:white", gradientangle=240, style="filled"];
+  }
+  {
+    rank = same; "components";
+    _core_widgets [label="<0>_CORE_WIDGETS|<draggable_frame>draggable_frame|<draggable_pointer>draggable_pointer",fillcolor="silver:white", gradientangle=240, style="filled"];
+  }
+  {
+    rank = same; "components";
+    _core [label="<0>_CORE|<components_builder_item>components_builder_item|<list_component_registry>list_component_registry|<components_builder>components_builder|<component_data>component_data|<components_builder_form>components_builder_form",fillcolor="silver:white", gradientangle=240, style="filled"];
   }
   {
     rank = same; "charts";
-    charts_ [label="<0>CHARTS_|<forecast_chart>forecast_chart|<trade_chart>trade_chart|<gauge_linear_chart>gauge_linear_chart|<pie_radius_chart>pie_radius_chart|<bar_race_chart>bar_race_chart|<radial_bar_chart>radial_bar_chart|<bar_vertical_group>bar_vertical_group|<column_chart>column_chart|<bar_horizontal_single>bar_horizontal_single|<ohlc_chart>ohlc_chart|<gauge_chart>gauge_chart|<bar_vertical_single>bar_vertical_single",fillcolor="silver:white", gradientangle=240, style="filled"];
+    charts_ [label="<0>CHARTS_|<radial_bar_chart>radial_bar_chart|<bar_vertical_group>bar_vertical_group|<forecast_chart>forecast_chart|<pie_radius_chart>pie_radius_chart|<trade_chart>trade_chart|<bar_race_chart>bar_race_chart|<bar_horizontal_single>bar_horizontal_single|<column_chart>column_chart|<gauge_chart>gauge_chart|<bar_vertical_single>bar_vertical_single|<gauge_linear_chart>gauge_linear_chart|<ohlc_chart>ohlc_chart",fillcolor="silver:white", gradientangle=240, style="filled"];
   }
   {
     rank = same; "charts";
-    interface [label="<0>INTERFACE|<data_scope>data_scope|<ohlc_data>ohlc_data|<chart_data>chart_data|<chart_value>chart_value",fillcolor="silver:white", gradientangle=240, style="filled"];
+    data [label="<0>DATA|<monte_carlo_simulation>monte_carlo_simulation|<data_handler>data_handler",fillcolor="silver:white", gradientangle=240, style="filled"];
   }
   {
     rank = same; "charts";
-    painter [label="<0>PAINTER|<column_chart_painter>column_chart_painter|<line_chart_painter>line_chart_painter|<bar_chart_painter>bar_chart_painter|<gauge_linear_painter>gauge_linear_painter|<pie_radius_painter>pie_radius_painter|<forecast_chart_painter>forecast_chart_painter|<foreground_chart_painter>foreground_chart_painter|<gauge_painter>gauge_painter|<ohlc_chart_painter>ohlc_chart_painter|<abstract_painter>abstract_painter",fillcolor="silver:white", gradientangle=240, style="filled"];
+    painter [label="<0>PAINTER|<gauge_painter>gauge_painter|<gauge_linear_painter>gauge_linear_painter|<abstract_painter>abstract_painter|<column_chart_painter>column_chart_painter|<ohlc_chart_painter>ohlc_chart_painter|<line_chart_painter>line_chart_painter|<pie_radius_painter>pie_radius_painter|<bar_chart_painter>bar_chart_painter|<forecast_chart_painter>forecast_chart_painter|<foreground_chart_painter>foreground_chart_painter",fillcolor="silver:white", gradientangle=240, style="filled"];
+  }
+  {
+    rank = same; "charts";
+    interface [label="<0>INTERFACE|<chart_data>chart_data|<data_scope>data_scope|<ohlc_data>ohlc_data|<chart_value>chart_value",fillcolor="silver:white", gradientangle=240, style="filled"];
+  }
+  {
+    rank = same; "_configs";
+    _configs_ [label="<0>_CONFIGS_|<custom_color_scheme>custom_color_scheme|<screen_helper>screen_helper|<theme_helper>theme_helper|<custom_text_theme>custom_text_theme|<design_type>design_type|<account_type>account_type|<firebase_options>firebase_options|<date_format_helper>date_format_helper",fillcolor="silver:white", gradientangle=240, style="filled"];
+  }
+  {
+    rank = same; "_classes";
+    storage [label="<0>STORAGE|<history_data>history_data|<file_picker>file_picker|<app_preferences>app_preferences|<app_data>app_data|<file_parser>file_parser|<transaction_log>transaction_log",fillcolor="silver:white", gradientangle=240, style="filled"];
+  }
+  {
+    rank = same; "_classes";
+    storage_transaction_log [label="<0>STORAGE_TRANSACTION_LOG|<file_protocol>file_protocol|<interface_protocol>interface_protocol|<web_dav_data>web_dav_data|<abstract_protocol>abstract_protocol|<web_dav_protocol>web_dav_protocol",fillcolor="silver:white", gradientangle=240, style="filled"];
+  }
+  {
+    rank = same; "_classes";
+    controller [label="<0>CONTROLLER|<delayed_call>delayed_call|<purchase_controller>purchase_controller|<exchange_controller>exchange_controller|<focus_controller>focus_controller|<fallback_localization_delegate>fallback_localization_delegate|<flow_state_machine>flow_state_machine|<iterator_controller>iterator_controller|<encryption_handler>encryption_handler",fillcolor="silver:white", gradientangle=240, style="filled"];
+  }
+  {
+    rank = same; "_classes";
+    math [label="<0>MATH|<bill_recalculation>bill_recalculation|<goal_recalculation>goal_recalculation|<abstract_recalculation>abstract_recalculation|<invoice_recalculation>invoice_recalculation|<account_recalculation>account_recalculation|<budget_recalculation>budget_recalculation|<total_recalculation>total_recalculation",fillcolor="silver:white", gradientangle=240, style="filled"];
+  }
+  {
+    rank = same; "_classes";
+    herald [label="<0>HERALD|<app_zoom>app_zoom|<app_palette>app_palette|<app_locale>app_locale|<app_sync>app_sync|<app_theme>app_theme|<app_design>app_design|<app_purchase>app_purchase",fillcolor="silver:white", gradientangle=240, style="filled"];
+  }
+  {
+    rank = same; "_classes";
+    structure [label="<0>STRUCTURE|<invoice_app_data>invoice_app_data|<budget_app_data>budget_app_data|<transaction_log_data>transaction_log_data|<abstract_app_data>abstract_app_data|<interface_app_data>interface_app_data|<summary_app_data>summary_app_data|<account_app_data>account_app_data|<bill_app_data>bill_app_data|<goal_app_data>goal_app_data|<currency_app_data>currency_app_data",fillcolor="silver:white", gradientangle=240, style="filled"];
+  }
+  {
+    rank = same; "_classes";
+    structure_navigation [label="<0>STRUCTURE_NAVIGATION|<app_page_route>app_page_route|<app_menu_item>app_menu_item|<app_menu>app_menu|<app_route>app_route",fillcolor="silver:white", gradientangle=240, style="filled"];
+  }
+  {
+    rank = same; "_classes";
+    structure_currency [label="<0>STRUCTURE_CURRENCY|<exchange>exchange",fillcolor="silver:white", gradientangle=240, style="filled"];
+  }
+  {
+    rank = same; "design";
+    generic [label="<0>GENERIC|<notification_bar>notification_bar|<loading_widget>loading_widget|<text_widget>text_widget|<base_line_widget>base_line_widget|<base_swipe_widget>base_swipe_widget|<base_header_widget>base_header_widget|<base_list_limited_widget>base_list_limited_widget|<base_list_infinite_widget>base_list_infinite_widget|<base_group_widget>base_group_widget|<base_widget>base_widget|<empty_widget>empty_widget",fillcolor="silver:white", gradientangle=240, style="filled"];
+  }
+  {
+    rank = same; "design";
+    button [label="<0>BUTTON|<full_sized_button_widget>full_sized_button_widget|<link_widget>link_widget|<toolbar_button_widget>toolbar_button_widget",fillcolor="silver:white", gradientangle=240, style="filled"];
+  }
+  {
+    rank = same; "design";
+    form [label="<0>FORM|<currency_selector>currency_selector|<color_selector>color_selector|<list_budget_selector>list_budget_selector|<currency_exchange_input>currency_exchange_input|<list_selector_page>list_selector_page|<date_input>date_input|<abstract_selector>abstract_selector|<list_account_selector>list_account_selector|<icon_selector>icon_selector|<list_selector_item>list_selector_item|<month_year_input>month_year_input|<date_time_input>date_time_input|<simple_input>simple_input|<list_selector>list_selector|<currency_selector_code>currency_selector_code",fillcolor="silver:white", gradientangle=240, style="filled"];
+  }
+  {
+    rank = same; "design";
+    wrapper [label="<0>WRAPPER|<tap_widget>tap_widget|<row_widget>row_widget|<confirmation_wrapper>confirmation_wrapper|<input_controller_wrapper>input_controller_wrapper|<text_wrapper>text_wrapper|<tab_widget>tab_widget|<required_widget>required_widget|<grid_layer>grid_layer|<focus_wrapper>focus_wrapper|<dots_indicator_decoration>dots_indicator_decoration|<single_scroll_wrapper>single_scroll_wrapper|<background_wrapper>background_wrapper|<dots_tab_bar_widget>dots_tab_bar_widget|<table_widget>table_widget|<number_wrapper>number_wrapper|<elevate_button_widget>elevate_button_widget|<input_wrapper>input_wrapper|<keep_alive_wrapper>keep_alive_wrapper",fillcolor="silver:white", gradientangle=240, style="filled"];
+  }
+  {
+    rank = same; "pages";
+    budget [label="<0>BUDGET|<budget_edit_page>budget_edit_page|<budget_add_page>budget_add_page|<budget_view_page>budget_view_page|<budget_page>budget_page",fillcolor="silver:white", gradientangle=240, style="filled"];
+  }
+  {
+    rank = same; "pages";
+    budget_widgets [label="<0>BUDGET_WIDGETS|<budget_line_widget>budget_line_widget|<budget_header_widget>budget_header_widget|<budget_widget>budget_widget|<header_widget>header_widget",fillcolor="silver:white", gradientangle=240, style="filled"];
+  }
+  {
+    rank = same; "pages";
+    metrics_widgets [label="<0>METRICS_WIDGETS|<account_tab>account_tab|<bill_tab>bill_tab|<budget_tab>budget_tab",fillcolor="silver:white", gradientangle=240, style="filled"];
+  }
+  {
+    rank = same; "pages";
+    metrics [label="<0>METRICS|<metrics_page>metrics_page",fillcolor="silver:white", gradientangle=240, style="filled"];
+  }
+  {
+    rank = same; "pages";
+    start_widgets [label="<0>START_WIDGETS|<account_tab>account_tab|<privacy_tab>privacy_tab|<usage_tab>usage_tab|<setting_tab>setting_tab|<budget_tab>budget_tab|<abstract_tab>abstract_tab",fillcolor="silver:white", gradientangle=240, style="filled"];
+  }
+  {
+    rank = same; "pages";
+    start [label="<0>START|<start_page>start_page",fillcolor="silver:white", gradientangle=240, style="filled"];
+  }
+  {
+    rank = same; "pages";
+    account [label="<0>ACCOUNT|<account_add_page>account_add_page|<account_view_page>account_view_page|<account_page>account_page|<account_edit_page>account_edit_page",fillcolor="silver:white", gradientangle=240, style="filled"];
+  }
+  {
+    rank = same; "pages";
+    account_widgets [label="<0>ACCOUNT_WIDGETS|<account_line_widget>account_line_widget|<header_widget>header_widget",fillcolor="silver:white", gradientangle=240, style="filled"];
   }
   {
     rank = same; "pages";
@@ -34,31 +142,23 @@ digraph G {
   }
   {
     rank = same; "pages";
-    currency [label="<0>CURRENCY|<currency_page>currency_page",fillcolor="silver:white", gradientangle=240, style="filled"];
+    goal_widgets [label="<0>GOAL_WIDGETS|<goal_line_widget>goal_line_widget|<profit_widget>profit_widget|<header_widget>header_widget",fillcolor="silver:white", gradientangle=240, style="filled"];
   }
   {
     rank = same; "pages";
-    budget [label="<0>BUDGET|<budget_view_page>budget_view_page|<budget_page>budget_page|<budget_edit_page>budget_edit_page|<budget_add_page>budget_add_page",fillcolor="silver:white", gradientangle=240, style="filled"];
+    goal [label="<0>GOAL|<goal_edit_page>goal_edit_page|<goal_page>goal_page|<goal_view_page>goal_view_page|<goal_add_page>goal_add_page",fillcolor="silver:white", gradientangle=240, style="filled"];
   }
   {
     rank = same; "pages";
-    budget_widgets [label="<0>BUDGET_WIDGETS|<budget_header_widget>budget_header_widget|<header_widget>header_widget|<budget_line_widget>budget_line_widget|<budget_widget>budget_widget",fillcolor="silver:white", gradientangle=240, style="filled"];
+    home_widgets [label="<0>HOME_WIDGETS|<init_tab>init_tab|<goal_line_widget>goal_line_widget|<account_widget>account_widget|<goal_widget>goal_widget|<budget_widget>budget_widget|<bill_widget>bill_widget",fillcolor="silver:white", gradientangle=240, style="filled"];
   }
   {
     rank = same; "pages";
-    account [label="<0>ACCOUNT|<account_add_page>account_add_page|<account_edit_page>account_edit_page|<account_view_page>account_view_page|<account_page>account_page",fillcolor="silver:white", gradientangle=240, style="filled"];
+    home [label="<0>HOME|<home_page>home_page|<home_edit_page>home_edit_page",fillcolor="silver:white", gradientangle=240, style="filled"];
   }
   {
     rank = same; "pages";
-    account_widgets [label="<0>ACCOUNT_WIDGETS|<header_widget>header_widget|<account_line_widget>account_line_widget",fillcolor="silver:white", gradientangle=240, style="filled"];
-  }
-  {
-    rank = same; "pages";
-    goal_widgets [label="<0>GOAL_WIDGETS|<header_widget>header_widget|<goal_line_widget>goal_line_widget|<profit_widget>profit_widget",fillcolor="silver:white", gradientangle=240, style="filled"];
-  }
-  {
-    rank = same; "pages";
-    goal [label="<0>GOAL|<goal_view_page>goal_view_page|<goal_edit_page>goal_edit_page|<goal_add_page>goal_add_page|<goal_page>goal_page",fillcolor="silver:white", gradientangle=240, style="filled"];
+    about_widgets [label="<0>ABOUT_WIDGETS|<members_tab>members_tab|<member_widget>member_widget",fillcolor="silver:white", gradientangle=240, style="filled"];
   }
   {
     rank = same; "pages";
@@ -66,43 +166,7 @@ digraph G {
   }
   {
     rank = same; "pages";
-    about_widgets [label="<0>ABOUT_WIDGETS|<member_widget>member_widget|<members_tab>members_tab",fillcolor="silver:white", gradientangle=240, style="filled"];
-  }
-  {
-    rank = same; "pages";
-    metrics_widgets [label="<0>METRICS_WIDGETS|<account_tab>account_tab|<budget_tab>budget_tab|<bill_tab>bill_tab",fillcolor="silver:white", gradientangle=240, style="filled"];
-  }
-  {
-    rank = same; "pages";
-    metrics [label="<0>METRICS|<metrics_page>metrics_page",fillcolor="silver:white", gradientangle=240, style="filled"];
-  }
-  {
-    rank = same; "pages";
-    start [label="<0>START|<start_page>start_page",fillcolor="silver:white", gradientangle=240, style="filled"];
-  }
-  {
-    rank = same; "pages";
-    start_widgets [label="<0>START_WIDGETS|<usage_tab>usage_tab|<account_tab>account_tab|<budget_tab>budget_tab|<setting_tab>setting_tab|<privacy_tab>privacy_tab|<abstract_tab>abstract_tab",fillcolor="silver:white", gradientangle=240, style="filled"];
-  }
-  {
-    rank = same; "pages";
-    _interfaces_widgets [label="<0>_INTERFACES_WIDGETS|<menu_widget>menu_widget",fillcolor="silver:white", gradientangle=240, style="filled"];
-  }
-  {
-    rank = same; "pages";
-    _interfaces [label="<0>_INTERFACES|<abstract_add_page>abstract_add_page|<abstract_page_state>abstract_page_state",fillcolor="silver:white", gradientangle=240, style="filled"];
-  }
-  {
-    rank = same; "pages";
-    bill [label="<0>BILL|<bill_page>bill_page|<bill_add_page>bill_add_page|<bill_edit_page>bill_edit_page|<bill_view_page>bill_view_page",fillcolor="silver:white", gradientangle=240, style="filled"];
-  }
-  {
-    rank = same; "pages";
-    bill_widgets [label="<0>BILL_WIDGETS|<bill_line_widget>bill_line_widget|<transfer_edit_tab>transfer_edit_tab|<income_edit_tab>income_edit_tab|<income_tab>income_tab|<expenses_edit_tab>expenses_edit_tab|<bill_header_widget>bill_header_widget|<sliver_header_delegate>sliver_header_delegate|<sliver_bar_delegate>sliver_bar_delegate|<interface_bill_page_inject>interface_bill_page_inject|<expenses_tab>expenses_tab|<transfer_tab>transfer_tab",fillcolor="silver:white", gradientangle=240, style="filled"];
-  }
-  {
-    rank = same; "pages";
-    subscription_widgets [label="<0>SUBSCRIPTION_WIDGETS|<purchase_widget>purchase_widget|<apple_widget>apple_widget|<other_widget>other_widget|<google_widget>google_widget",fillcolor="silver:white", gradientangle=240, style="filled"];
+    subscription_widgets [label="<0>SUBSCRIPTION_WIDGETS|<apple_widget>apple_widget|<other_widget>other_widget|<purchase_widget>purchase_widget|<google_widget>google_widget",fillcolor="silver:white", gradientangle=240, style="filled"];
   }
   {
     rank = same; "pages";
@@ -110,11 +174,23 @@ digraph G {
   }
   {
     rank = same; "pages";
-    invoice_widgets [label="<0>INVOICE_WIDGETS|<invoice_header_widget>invoice_header_widget",fillcolor="silver:white", gradientangle=240, style="filled"];
+    currency [label="<0>CURRENCY|<currency_page>currency_page",fillcolor="silver:white", gradientangle=240, style="filled"];
   }
   {
     rank = same; "pages";
-    invoice [label="<0>INVOICE|<invoice_view_page>invoice_view_page|<invoice_edit_page>invoice_edit_page",fillcolor="silver:white", gradientangle=240, style="filled"];
+    bill_widgets [label="<0>BILL_WIDGETS|<transfer_edit_tab>transfer_edit_tab|<interface_bill_page_inject>interface_bill_page_inject|<expenses_tab>expenses_tab|<bill_header_widget>bill_header_widget|<income_tab>income_tab|<income_edit_tab>income_edit_tab|<sliver_bar_delegate>sliver_bar_delegate|<bill_line_widget>bill_line_widget|<transfer_tab>transfer_tab|<sliver_header_delegate>sliver_header_delegate|<expenses_edit_tab>expenses_edit_tab",fillcolor="silver:white", gradientangle=240, style="filled"];
+  }
+  {
+    rank = same; "pages";
+    bill [label="<0>BILL|<bill_page>bill_page|<bill_add_page>bill_add_page|<bill_edit_page>bill_edit_page|<bill_view_page>bill_view_page",fillcolor="silver:white", gradientangle=240, style="filled"];
+  }
+  {
+    rank = same; "pages";
+    settings_widgets [label="<0>SETTINGS_WIDGETS|<recover_tab>recover_tab|<import_tab>import_tab|<setting_tab>setting_tab",fillcolor="silver:white", gradientangle=240, style="filled"];
+  }
+  {
+    rank = same; "pages";
+    settings_widgets_recover_tab [label="<0>SETTINGS_WIDGETS_RECOVER_TAB|<date_time_helper_widget>date_time_helper_widget|<recover_webdav_form>recover_webdav_form|<recover_file_form>recover_file_form|<nav_button_widget>nav_button_widget|<recovery_type>recovery_type",fillcolor="silver:white", gradientangle=240, style="filled"];
   }
   {
     rank = same; "pages";
@@ -122,651 +198,44 @@ digraph G {
   }
   {
     rank = same; "pages";
-    settings_widgets [label="<0>SETTINGS_WIDGETS|<import_tab>import_tab|<recover_tab>recover_tab|<setting_tab>setting_tab",fillcolor="silver:white", gradientangle=240, style="filled"];
+    _interfaces [label="<0>_INTERFACES|<abstract_add_page>abstract_add_page|<abstract_page_state>abstract_page_state",fillcolor="silver:white", gradientangle=240, style="filled"];
   }
   {
     rank = same; "pages";
-    settings_widgets_recover_tab [label="<0>SETTINGS_WIDGETS_RECOVER_TAB|<nav_button_widget>nav_button_widget|<recover_file_form>recover_file_form|<recovery_type>recovery_type|<date_time_helper_widget>date_time_helper_widget|<recover_webdav_form>recover_webdav_form",fillcolor="silver:white", gradientangle=240, style="filled"];
+    _interfaces_widgets [label="<0>_INTERFACES_WIDGETS|<menu_widget>menu_widget",fillcolor="silver:white", gradientangle=240, style="filled"];
   }
   {
     rank = same; "pages";
-    home [label="<0>HOME|<home_edit_page>home_edit_page|<home_page>home_page",fillcolor="silver:white", gradientangle=240, style="filled"];
+    invoice_widgets [label="<0>INVOICE_WIDGETS|<invoice_header_widget>invoice_header_widget",fillcolor="silver:white", gradientangle=240, style="filled"];
   }
   {
     rank = same; "pages";
-    home_widgets [label="<0>HOME_WIDGETS|<goal_widget>goal_widget|<init_tab>init_tab|<account_widget>account_widget|<budget_widget>budget_widget|<goal_line_widget>goal_line_widget|<bill_widget>bill_widget",fillcolor="silver:white", gradientangle=240, style="filled"];
+    invoice [label="<0>INVOICE|<invoice_edit_page>invoice_edit_page|<invoice_view_page>invoice_view_page",fillcolor="silver:white", gradientangle=240, style="filled"];
   }
-  {
-    rank = same; "components";
-    _core [label="<0>_CORE|<list_component_registry>list_component_registry|<components_builder_form>components_builder_form|<components_builder>components_builder|<component_data>component_data|<components_builder_item>components_builder_item",fillcolor="silver:white", gradientangle=240, style="filled"];
-  }
-  {
-    rank = same; "components";
-    _core_widgets [label="<0>_CORE_WIDGETS|<draggable_frame>draggable_frame|<draggable_pointer>draggable_pointer",fillcolor="silver:white", gradientangle=240, style="filled"];
-  }
-  {
-    rank = same; "components";
-    components_ [label="<0>COMPONENTS_|<component_chart>component_chart|<component_account_health>component_account_health|<component_recent>component_recent|<component_account_flow>component_account_flow|<component_budget_forecast>component_budget_forecast|<component_budget_ytd>component_budget_ytd|<component_bill_ytd>component_bill_ytd",fillcolor="silver:white", gradientangle=240, style="filled"];
-  }
-  {
-    rank = same; "_configs";
-    _configs_ [label="<0>_CONFIGS_|<firebase_options>firebase_options|<account_type>account_type|<screen_helper>screen_helper|<theme_helper>theme_helper|<design_type>design_type|<custom_color_scheme>custom_color_scheme|<custom_text_theme>custom_text_theme|<date_format_helper>date_format_helper",fillcolor="silver:white", gradientangle=240, style="filled"];
-  }
-  {
-    rank = same; "_mixins";
-    file [label="<0>FILE|<file_export_mixin_web>file_export_mixin_web|<file_import_mixin>file_import_mixin|<file_export_mixin>file_export_mixin",fillcolor="silver:white", gradientangle=240, style="filled"];
-  }
-  {
-    rank = same; "_mixins";
-    _mixins_ [label="<0>_MIXINS_|<launcher_mixin>launcher_mixin|<storage_mixin>storage_mixin",fillcolor="silver:white", gradientangle=240, style="filled"];
-  }
-  {
-    rank = same; "_ext";
-    _ext_ [label="<0>_EXT_|<build_context_ext>build_context_ext|<string_ext>string_ext|<iterable_ext>iterable_ext|<icons_ext>icons_ext|<date_time_ext>date_time_ext|<int_ext>int_ext|<double_ext>double_ext|<color_ext>color_ext",fillcolor="silver:white", gradientangle=240, style="filled"];
-  }
-  {
-    rank = same; "design";
-    generic [label="<0>GENERIC|<base_group_widget>base_group_widget|<base_line_widget>base_line_widget|<base_list_limited_widget>base_list_limited_widget|<base_list_infinite_widget>base_list_infinite_widget|<base_header_widget>base_header_widget|<loading_widget>loading_widget|<empty_widget>empty_widget|<base_widget>base_widget|<notification_bar>notification_bar|<base_swipe_widget>base_swipe_widget|<text_widget>text_widget",fillcolor="silver:white", gradientangle=240, style="filled"];
-  }
-  {
-    rank = same; "design";
-    wrapper [label="<0>WRAPPER|<tab_widget>tab_widget|<input_controller_wrapper>input_controller_wrapper|<row_widget>row_widget|<background_wrapper>background_wrapper|<text_wrapper>text_wrapper|<number_wrapper>number_wrapper|<focus_wrapper>focus_wrapper|<elevate_button_widget>elevate_button_widget|<single_scroll_wrapper>single_scroll_wrapper|<grid_layer>grid_layer|<input_wrapper>input_wrapper|<tap_widget>tap_widget|<dots_indicator_decoration>dots_indicator_decoration|<table_widget>table_widget|<keep_alive_wrapper>keep_alive_wrapper|<confirmation_wrapper>confirmation_wrapper|<required_widget>required_widget|<dots_tab_bar_widget>dots_tab_bar_widget",fillcolor="silver:white", gradientangle=240, style="filled"];
-  }
-  {
-    rank = same; "design";
-    button [label="<0>BUTTON|<toolbar_button_widget>toolbar_button_widget|<full_sized_button_widget>full_sized_button_widget|<link_widget>link_widget",fillcolor="silver:white", gradientangle=240, style="filled"];
-  }
-  {
-    rank = same; "design";
-    form [label="<0>FORM|<list_selector>list_selector|<icon_selector>icon_selector|<list_account_selector>list_account_selector|<list_selector_item>list_selector_item|<currency_exchange_input>currency_exchange_input|<color_selector>color_selector|<simple_input>simple_input|<currency_selector_code>currency_selector_code|<month_year_input>month_year_input|<date_time_input>date_time_input|<abstract_selector>abstract_selector|<date_input>date_input|<currency_selector>currency_selector|<list_selector_page>list_selector_page|<list_budget_selector>list_budget_selector",fillcolor="silver:white", gradientangle=240, style="filled"];
-  }
-  {
-    rank = same; "_classes";
-    controller [label="<0>CONTROLLER|<purchase_controller>purchase_controller|<delayed_call>delayed_call|<encryption_handler>encryption_handler|<exchange_controller>exchange_controller|<iterator_controller>iterator_controller|<flow_state_machine>flow_state_machine|<focus_controller>focus_controller|<fallback_localization_delegate>fallback_localization_delegate",fillcolor="silver:white", gradientangle=240, style="filled"];
-  }
-  {
-    rank = same; "_classes";
-    math [label="<0>MATH|<total_recalculation>total_recalculation|<budget_recalculation>budget_recalculation|<account_recalculation>account_recalculation|<invoice_recalculation>invoice_recalculation|<goal_recalculation>goal_recalculation|<abstract_recalculation>abstract_recalculation|<bill_recalculation>bill_recalculation",fillcolor="silver:white", gradientangle=240, style="filled"];
-  }
-  {
-    rank = same; "_classes";
-    storage [label="<0>STORAGE|<transaction_log>transaction_log|<app_data>app_data|<app_preferences>app_preferences|<history_data>history_data|<file_picker>file_picker|<file_parser>file_parser",fillcolor="silver:white", gradientangle=240, style="filled"];
-  }
-  {
-    rank = same; "_classes";
-    storage_transaction_log [label="<0>STORAGE_TRANSACTION_LOG|<abstract_protocol>abstract_protocol|<file_protocol>file_protocol|<web_dav_data>web_dav_data|<interface_protocol>interface_protocol|<web_dav_protocol>web_dav_protocol",fillcolor="silver:white", gradientangle=240, style="filled"];
-  }
-  {
-    rank = same; "_classes";
-    structure [label="<0>STRUCTURE|<summary_app_data>summary_app_data|<bill_app_data>bill_app_data|<currency_app_data>currency_app_data|<goal_app_data>goal_app_data|<invoice_app_data>invoice_app_data|<transaction_log_data>transaction_log_data|<account_app_data>account_app_data|<abstract_app_data>abstract_app_data|<interface_app_data>interface_app_data|<budget_app_data>budget_app_data",fillcolor="silver:white", gradientangle=240, style="filled"];
-  }
-  {
-    rank = same; "_classes";
-    structure_currency [label="<0>STRUCTURE_CURRENCY|<exchange>exchange",fillcolor="silver:white", gradientangle=240, style="filled"];
-  }
-  {
-    rank = same; "_classes";
-    structure_navigation [label="<0>STRUCTURE_NAVIGATION|<app_route>app_route|<app_menu>app_menu|<app_menu_item>app_menu_item|<app_page_route>app_page_route",fillcolor="silver:white", gradientangle=240, style="filled"];
-  }
-  {
-    rank = same; "_classes";
-    herald [label="<0>HERALD|<app_locale>app_locale|<app_zoom>app_zoom|<app_sync>app_sync|<app_theme>app_theme|<app_design>app_design|<app_purchase>app_purchase|<app_palette>app_palette",fillcolor="silver:white", gradientangle=240, style="filled"];
-  }
-  data -> structure [color="red"];
-  data -> structure_currency [color="red"];
-  data -> interface [color="red"];
 
-  charts_ -> _ext_ [color="red"];
-  charts_ -> interface [color="red"];
-  charts_ -> painter [color="red"];
-  charts_ -> generic [color="red"];
-  charts_ -> herald [color="red"];
-  charts_ -> structure [color="red"];
-  charts_ -> _ext_ [color="red"];
-  charts_ -> interface [color="red"];
-  charts_ -> painter [color="red"];
-  interface -> interface [color="red"];
+
+  _ext_ -> herald [color="green"];
+  _ext_ -> controller [color="green"];
 
 
 
-  charts_ -> _ext_ [color="red"];
-  charts_ -> charts_ [color="red"];
-  charts_ -> painter [color="red"];
-  charts_ -> interface [color="red"];
-  charts_ -> painter [color="red"];
-  charts_ -> herald [color="red"];
-  charts_ -> structure [color="red"];
-  charts_ -> _ext_ [color="red"];
-  charts_ -> interface [color="red"];
-  charts_ -> painter [color="red"];
-  charts_ -> generic [color="red"];
 
 
-  charts_ -> herald [color="red"];
-  charts_ -> _ext_ [color="red"];
-  charts_ -> interface [color="red"];
-  charts_ -> painter [color="red"];
-  charts_ -> generic [color="red"];
-  painter -> interface [color="red"];
-  painter -> painter [color="red"];
-  painter -> interface [color="red"];
-  painter -> painter [color="red"];
-  painter -> interface [color="red"];
-  painter -> painter [color="red"];
-  painter -> painter [color="red"];
-  painter -> interface [color="red"];
-  painter -> painter [color="red"];
-  painter -> data [color="red"];
-  painter -> interface [color="red"];
-  painter -> painter [color="red"];
-  painter -> herald [color="red"];
-  painter -> painter [color="red"];
-  painter -> herald [color="red"];
-  painter -> interface [color="red"];
-  painter -> painter [color="red"];
-  painter -> painter [color="red"];
+  _mixins_ -> storage [color="green"];
 
-  charts_ -> herald [color="red"];
-  charts_ -> _ext_ [color="red"];
-  charts_ -> interface [color="red"];
-  charts_ -> painter [color="red"];
-  charts_ -> generic [color="red"];
-  charts_ -> _ext_ [color="red"];
-  charts_ -> painter [color="red"];
-  charts_ -> charts_ [color="red"];
-  automation_widgets -> herald [color="#F0F0F050"];
-  automation_widgets -> storage [color="#F0F0F050"];
-  automation_widgets -> _configs_ [color="#F0F0F050"];
-  automation_widgets -> _ext_ [color="#F0F0F050"];
-  automation_widgets -> form [color="#F0F0F050"];
-  automation_widgets -> wrapper [color="#F0F0F050"];
-  automation_widgets -> generic [color="#F0F0F050"];
+  file -> herald [color="green"];
 
-  automation -> herald [color="#F0F0F050"];
-  automation -> _configs_ [color="#F0F0F050"];
-  automation -> _interfaces [color="#F0F0F050"];
-  automation -> automation_widgets [color="#F0F0F050"];
-  automation -> wrapper [color="#F0F0F050"];
-  currency -> controller [color="#F0F0F050"];
-  currency -> herald [color="#F0F0F050"];
-  currency -> storage [color="#F0F0F050"];
-  currency -> structure [color="#F0F0F050"];
-  currency -> _configs_ [color="#F0F0F050"];
-  currency -> _ext_ [color="#F0F0F050"];
-  currency -> charts_ [color="#F0F0F050"];
-  currency -> wrapper [color="#F0F0F050"];
-  currency -> _interfaces [color="#F0F0F050"];
-  currency -> generic [color="#F0F0F050"];
-  currency -> form [color="#F0F0F050"];
-  budget -> herald [color="#F0F0F050"];
-  budget -> controller [color="#F0F0F050"];
-  budget -> storage [color="#F0F0F050"];
-  budget -> structure [color="#F0F0F050"];
-  budget -> _configs_ [color="#F0F0F050"];
-  budget -> structure_navigation [color="#F0F0F050"];
-  budget -> _ext_ [color="#F0F0F050"];
-  budget -> _interfaces [color="#F0F0F050"];
-  budget -> budget_widgets [color="#F0F0F050"];
-  budget -> generic [color="#F0F0F050"];
-  budget -> wrapper [color="#F0F0F050"];
-  budget -> storage [color="#F0F0F050"];
-  budget -> herald [color="#F0F0F050"];
-  budget -> structure [color="#F0F0F050"];
-  budget -> structure_currency [color="#F0F0F050"];
-  budget -> _configs_ [color="#F0F0F050"];
-  budget -> structure_navigation [color="#F0F0F050"];
-  budget -> generic [color="#F0F0F050"];
-  budget -> wrapper [color="#F0F0F050"];
-  budget -> _interfaces [color="#F0F0F050"];
-  budget -> budget_widgets [color="#F0F0F050"];
-  budget_widgets -> herald [color="#F0F0F050"];
-  budget_widgets -> structure [color="#F0F0F050"];
-  budget_widgets -> _ext_ [color="#F0F0F050"];
-  budget_widgets -> _configs_ [color="#F0F0F050"];
-  budget_widgets -> wrapper [color="#F0F0F050"];
-  budget_widgets -> herald [color="#F0F0F050"];
-  budget_widgets -> _configs_ [color="#F0F0F050"];
-  budget_widgets -> _ext_ [color="#F0F0F050"];
-  budget_widgets -> wrapper [color="#F0F0F050"];
-  budget_widgets -> herald [color="#F0F0F050"];
-  budget_widgets -> structure_navigation [color="#F0F0F050"];
-  budget_widgets -> _configs_ [color="#F0F0F050"];
-  budget_widgets -> _ext_ [color="#F0F0F050"];
-  budget_widgets -> charts_ [color="#F0F0F050"];
-  budget_widgets -> generic [color="#F0F0F050"];
-  budget_widgets -> wrapper [color="#F0F0F050"];
-  budget_widgets -> budget_widgets [color="#F0F0F050"];
-  budget -> herald [color="#F0F0F050"];
-  budget -> structure [color="#F0F0F050"];
-  budget -> budget [color="#F0F0F050"];
-  budget -> herald [color="#F0F0F050"];
-  budget -> structure [color="#F0F0F050"];
-  budget -> controller [color="#F0F0F050"];
-  budget -> storage [color="#F0F0F050"];
-  budget -> _configs_ [color="#F0F0F050"];
-  budget -> _ext_ [color="#F0F0F050"];
-  budget -> wrapper [color="#F0F0F050"];
-  budget -> _interfaces [color="#F0F0F050"];
-  budget -> button [color="#F0F0F050"];
-  budget -> form [color="#F0F0F050"];
-  account -> herald [color="#F0F0F050"];
-  account -> structure [color="#F0F0F050"];
-  account -> _configs_ [color="#F0F0F050"];
-  account -> controller [color="#F0F0F050"];
-  account -> storage [color="#F0F0F050"];
-  account -> _ext_ [color="#F0F0F050"];
-  account -> wrapper [color="#F0F0F050"];
-  account -> _interfaces [color="#F0F0F050"];
-  account -> form [color="#F0F0F050"];
-  account -> button [color="#F0F0F050"];
-  account_widgets -> herald [color="#F0F0F050"];
-  account_widgets -> _configs_ [color="#F0F0F050"];
-  account_widgets -> _ext_ [color="#F0F0F050"];
-  account_widgets -> wrapper [color="#F0F0F050"];
-  account_widgets -> herald [color="#F0F0F050"];
-  account_widgets -> structure [color="#F0F0F050"];
-  account_widgets -> _configs_ [color="#F0F0F050"];
-  account_widgets -> _ext_ [color="#F0F0F050"];
-  account_widgets -> wrapper [color="#F0F0F050"];
-  account -> herald [color="#F0F0F050"];
-  account -> structure [color="#F0F0F050"];
-  account -> _configs_ [color="#F0F0F050"];
-  account -> account [color="#F0F0F050"];
-  account -> herald [color="#F0F0F050"];
-  account -> controller [color="#F0F0F050"];
-  account -> storage [color="#F0F0F050"];
-  account -> structure [color="#F0F0F050"];
-  account -> _configs_ [color="#F0F0F050"];
-  account -> structure_navigation [color="#F0F0F050"];
-  account -> _ext_ [color="#F0F0F050"];
-  account -> _interfaces [color="#F0F0F050"];
-  account -> account_widgets [color="#F0F0F050"];
-  account -> generic [color="#F0F0F050"];
-  account -> wrapper [color="#F0F0F050"];
-  account -> storage [color="#F0F0F050"];
-  account -> herald [color="#F0F0F050"];
-  account -> structure [color="#F0F0F050"];
-  account -> structure_currency [color="#F0F0F050"];
-  account -> _configs_ [color="#F0F0F050"];
-  account -> structure_navigation [color="#F0F0F050"];
-  account -> wrapper [color="#F0F0F050"];
-  account -> _interfaces [color="#F0F0F050"];
-  account -> account_widgets [color="#F0F0F050"];
-  account -> generic [color="#F0F0F050"];
-  goal_widgets -> herald [color="#F0F0F050"];
-  goal_widgets -> _configs_ [color="#F0F0F050"];
-  goal_widgets -> _ext_ [color="#F0F0F050"];
-  goal_widgets -> wrapper [color="#F0F0F050"];
-  goal_widgets -> herald [color="#F0F0F050"];
-  goal_widgets -> structure_navigation [color="#F0F0F050"];
-  goal_widgets -> _configs_ [color="#F0F0F050"];
-  goal_widgets -> _ext_ [color="#F0F0F050"];
-  goal_widgets -> charts_ [color="#F0F0F050"];
-  goal_widgets -> generic [color="#F0F0F050"];
-  goal_widgets -> wrapper [color="#F0F0F050"];
-  goal_widgets -> herald [color="#F0F0F050"];
-  goal_widgets -> storage [color="#F0F0F050"];
-  goal_widgets -> structure_currency [color="#F0F0F050"];
-  goal_widgets -> structure [color="#F0F0F050"];
-  goal_widgets -> _configs_ [color="#F0F0F050"];
-  goal_widgets -> _ext_ [color="#F0F0F050"];
-  goal_widgets -> charts_ [color="#F0F0F050"];
-  goal_widgets -> wrapper [color="#F0F0F050"];
-  goal -> herald [color="#F0F0F050"];
-  goal -> controller [color="#F0F0F050"];
-  goal -> structure [color="#F0F0F050"];
-  goal -> storage [color="#F0F0F050"];
-  goal -> _configs_ [color="#F0F0F050"];
-  goal -> structure_navigation [color="#F0F0F050"];
-  goal -> _interfaces [color="#F0F0F050"];
-  goal -> generic [color="#F0F0F050"];
-  goal -> wrapper [color="#F0F0F050"];
-  goal -> herald [color="#F0F0F050"];
-  goal -> structure [color="#F0F0F050"];
-  goal -> goal [color="#F0F0F050"];
-  goal -> herald [color="#F0F0F050"];
-  goal -> structure_currency [color="#F0F0F050"];
-  goal -> structure [color="#F0F0F050"];
-  goal -> controller [color="#F0F0F050"];
-  goal -> storage [color="#F0F0F050"];
-  goal -> _configs_ [color="#F0F0F050"];
-  goal -> wrapper [color="#F0F0F050"];
-  goal -> _interfaces [color="#F0F0F050"];
-  goal -> button [color="#F0F0F050"];
-  goal -> form [color="#F0F0F050"];
-  goal -> storage [color="#F0F0F050"];
-  goal -> herald [color="#F0F0F050"];
-  goal -> structure [color="#F0F0F050"];
-  goal -> _configs_ [color="#F0F0F050"];
-  goal -> structure_navigation [color="#F0F0F050"];
-  goal -> wrapper [color="#F0F0F050"];
-  goal -> _interfaces [color="#F0F0F050"];
-  goal -> goal_widgets [color="#F0F0F050"];
-  about -> herald [color="#F0F0F050"];
-  about -> _configs_ [color="#F0F0F050"];
-  about -> _ext_ [color="#F0F0F050"];
-  about -> _mixins_ [color="#F0F0F050"];
-  about -> _interfaces [color="#F0F0F050"];
-  about -> wrapper [color="#F0F0F050"];
-  about -> about_widgets [color="#F0F0F050"];
-  about_widgets -> herald [color="#F0F0F050"];
-  about_widgets -> _configs_ [color="#F0F0F050"];
-  about_widgets -> _ext_ [color="#F0F0F050"];
-  about_widgets -> wrapper [color="#F0F0F050"];
-  about_widgets -> herald [color="#F0F0F050"];
-  about_widgets -> _configs_ [color="#F0F0F050"];
-  about_widgets -> _mixins_ [color="#F0F0F050"];
-  about_widgets -> button [color="#F0F0F050"];
-  about_widgets -> about_widgets [color="#F0F0F050"];
-  metrics_widgets -> herald [color="#F0F0F050"];
-  metrics_widgets -> storage [color="#F0F0F050"];
-  metrics_widgets -> structure [color="#F0F0F050"];
-  metrics_widgets -> structure_currency [color="#F0F0F050"];
-  metrics_widgets -> _configs_ [color="#F0F0F050"];
-  metrics_widgets -> _ext_ [color="#F0F0F050"];
-  metrics_widgets -> charts_ [color="#F0F0F050"];
-  metrics_widgets -> interface [color="#F0F0F050"];
-  metrics_widgets -> components_ [color="#F0F0F050"];
-  metrics_widgets -> generic [color="#F0F0F050"];
-  metrics_widgets -> wrapper [color="#F0F0F050"];
-  metrics_widgets -> herald [color="#F0F0F050"];
-  metrics_widgets -> _configs_ [color="#F0F0F050"];
-  metrics_widgets -> components_ [color="#F0F0F050"];
-  metrics_widgets -> herald [color="#F0F0F050"];
-  metrics_widgets -> storage [color="#F0F0F050"];
-  metrics_widgets -> data [color="#F0F0F050"];
-  metrics_widgets -> structure_currency [color="#F0F0F050"];
-  metrics_widgets -> _configs_ [color="#F0F0F050"];
-  metrics_widgets -> _ext_ [color="#F0F0F050"];
-  metrics_widgets -> charts_ [color="#F0F0F050"];
-  metrics_widgets -> components_ [color="#F0F0F050"];
-  metrics_widgets -> wrapper [color="#F0F0F050"];
-  metrics -> herald [color="#F0F0F050"];
-  metrics -> _configs_ [color="#F0F0F050"];
-  metrics -> _interfaces [color="#F0F0F050"];
-  metrics -> wrapper [color="#F0F0F050"];
-  metrics -> metrics_widgets [color="#F0F0F050"];
-  start -> herald [color="#F0F0F050"];
-  start -> structure_navigation [color="#F0F0F050"];
-  start -> _configs_ [color="#F0F0F050"];
-  start -> _interfaces [color="#F0F0F050"];
-  start -> start_widgets [color="#F0F0F050"];
-  start -> button [color="#F0F0F050"];
-  start -> wrapper [color="#F0F0F050"];
-  start_widgets -> herald [color="#F0F0F050"];
-  start_widgets -> start_widgets [color="#F0F0F050"];
-  start_widgets -> herald [color="#F0F0F050"];
-  start_widgets -> storage [color="#F0F0F050"];
-  start_widgets -> _configs_ [color="#F0F0F050"];
-  start_widgets -> button [color="#F0F0F050"];
-  start_widgets -> account [color="#F0F0F050"];
-  start_widgets -> herald [color="#F0F0F050"];
-  start_widgets -> storage [color="#F0F0F050"];
-  start_widgets -> _configs_ [color="#F0F0F050"];
-  start_widgets -> button [color="#F0F0F050"];
-  start_widgets -> budget [color="#F0F0F050"];
-  start_widgets -> controller [color="#F0F0F050"];
-  start_widgets -> herald [color="#F0F0F050"];
-  start_widgets -> storage [color="#F0F0F050"];
-  start_widgets -> structure_currency [color="#F0F0F050"];
-  start_widgets -> _configs_ [color="#F0F0F050"];
-  start_widgets -> form [color="#F0F0F050"];
-  start_widgets -> _ext_ [color="#F0F0F050"];
-  start_widgets -> wrapper [color="#F0F0F050"];
-  start_widgets -> l10n_ [color="#F0F0F050"];
-  start_widgets -> button [color="#F0F0F050"];
-  start_widgets -> start_widgets [color="#F0F0F050"];
-  start_widgets -> herald [color="#F0F0F050"];
-  start_widgets -> storage [color="#F0F0F050"];
-  start_widgets -> start_widgets [color="#F0F0F050"];
-  start_widgets -> herald [color="#F0F0F050"];
-  start_widgets -> _configs_ [color="#F0F0F050"];
-  start_widgets -> button [color="#F0F0F050"];
-  _interfaces_widgets -> structure_navigation [color="#F0F0F050"];
-  _interfaces_widgets -> _configs_ [color="#F0F0F050"];
-  _interfaces_widgets -> _ext_ [color="#F0F0F050"];
-  _interfaces_widgets -> wrapper [color="#F0F0F050"];
-  _interfaces -> _interfaces [color="#F0F0F050"];
-  _interfaces -> herald [color="#F0F0F050"];
-  _interfaces -> structure_navigation [color="#F0F0F050"];
-  _interfaces -> storage [color="#F0F0F050"];
-  _interfaces -> _configs_ [color="#F0F0F050"];
-  _interfaces -> _ext_ [color="#F0F0F050"];
-  _interfaces -> _interfaces_widgets [color="#F0F0F050"];
-  _interfaces -> wrapper [color="#F0F0F050"];
-  _interfaces -> button [color="#F0F0F050"];
-  bill -> controller [color="#F0F0F050"];
-  bill -> storage [color="#F0F0F050"];
-  bill -> herald [color="#F0F0F050"];
-  bill -> structure [color="#F0F0F050"];
-  bill -> _configs_ [color="#F0F0F050"];
-  bill -> structure_navigation [color="#F0F0F050"];
-  bill -> _ext_ [color="#F0F0F050"];
-  bill -> wrapper [color="#F0F0F050"];
-  bill -> _interfaces [color="#F0F0F050"];
-  bill -> bill_widgets [color="#F0F0F050"];
-  bill -> generic [color="#F0F0F050"];
-  bill -> herald [color="#F0F0F050"];
-  bill -> _configs_ [color="#F0F0F050"];
-  bill -> _interfaces [color="#F0F0F050"];
-  bill -> bill_widgets [color="#F0F0F050"];
-  bill -> wrapper [color="#F0F0F050"];
-  bill_widgets -> herald [color="#F0F0F050"];
-  bill_widgets -> structure_navigation [color="#F0F0F050"];
-  bill_widgets -> _configs_ [color="#F0F0F050"];
-  bill_widgets -> _ext_ [color="#F0F0F050"];
-  bill_widgets -> wrapper [color="#F0F0F050"];
-  bill_widgets -> herald [color="#F0F0F050"];
-  bill_widgets -> structure [color="#F0F0F050"];
-  bill_widgets -> _ext_ [color="#F0F0F050"];
-  bill_widgets -> bill_widgets [color="#F0F0F050"];
-  bill_widgets -> herald [color="#F0F0F050"];
-  bill_widgets -> structure [color="#F0F0F050"];
-  bill_widgets -> _ext_ [color="#F0F0F050"];
-  bill_widgets -> bill_widgets [color="#F0F0F050"];
-  bill_widgets -> controller [color="#F0F0F050"];
-  bill_widgets -> herald [color="#F0F0F050"];
-  bill_widgets -> structure_currency [color="#F0F0F050"];
-  bill_widgets -> structure [color="#F0F0F050"];
-  bill_widgets -> structure_navigation [color="#F0F0F050"];
-  bill_widgets -> storage [color="#F0F0F050"];
-  bill_widgets -> _configs_ [color="#F0F0F050"];
-  bill_widgets -> _ext_ [color="#F0F0F050"];
-  bill_widgets -> wrapper [color="#F0F0F050"];
-  bill_widgets -> bill_widgets [color="#F0F0F050"];
-  bill_widgets -> form [color="#F0F0F050"];
-  bill_widgets -> button [color="#F0F0F050"];
-  bill_widgets -> herald [color="#F0F0F050"];
-  bill_widgets -> structure [color="#F0F0F050"];
-  bill_widgets -> _ext_ [color="#F0F0F050"];
-  bill_widgets -> bill_widgets [color="#F0F0F050"];
-  bill_widgets -> herald [color="#F0F0F050"];
-  bill_widgets -> structure [color="#F0F0F050"];
-  bill_widgets -> _ext_ [color="#F0F0F050"];
-  bill_widgets -> _configs_ [color="#F0F0F050"];
-  bill_widgets -> wrapper [color="#F0F0F050"];
-  bill_widgets -> herald [color="#F0F0F050"];
-  bill_widgets -> _configs_ [color="#F0F0F050"];
-  bill_widgets -> _ext_ [color="#F0F0F050"];
-
-
-  bill_widgets -> controller [color="#F0F0F050"];
-  bill_widgets -> herald [color="#F0F0F050"];
-  bill_widgets -> structure_currency [color="#F0F0F050"];
-  bill_widgets -> structure_navigation [color="#F0F0F050"];
-  bill_widgets -> structure [color="#F0F0F050"];
-  bill_widgets -> storage [color="#F0F0F050"];
-  bill_widgets -> _configs_ [color="#F0F0F050"];
-  bill_widgets -> _ext_ [color="#F0F0F050"];
-  bill_widgets -> wrapper [color="#F0F0F050"];
-  bill_widgets -> bill_widgets [color="#F0F0F050"];
-  bill_widgets -> form [color="#F0F0F050"];
-  bill_widgets -> button [color="#F0F0F050"];
-  bill_widgets -> controller [color="#F0F0F050"];
-  bill_widgets -> herald [color="#F0F0F050"];
-  bill_widgets -> structure_currency [color="#F0F0F050"];
-  bill_widgets -> structure [color="#F0F0F050"];
-  bill_widgets -> structure_navigation [color="#F0F0F050"];
-  bill_widgets -> storage [color="#F0F0F050"];
-  bill_widgets -> _configs_ [color="#F0F0F050"];
-  bill_widgets -> _ext_ [color="#F0F0F050"];
-  bill_widgets -> wrapper [color="#F0F0F050"];
-  bill_widgets -> bill_widgets [color="#F0F0F050"];
-  bill_widgets -> form [color="#F0F0F050"];
-  bill_widgets -> button [color="#F0F0F050"];
-  bill -> structure [color="#F0F0F050"];
-  bill -> bill [color="#F0F0F050"];
-  bill -> bill_widgets [color="#F0F0F050"];
-  bill -> herald [color="#F0F0F050"];
-  bill -> controller [color="#F0F0F050"];
-  bill -> structure [color="#F0F0F050"];
-  bill -> _configs_ [color="#F0F0F050"];
-  bill -> structure_navigation [color="#F0F0F050"];
-  bill -> _interfaces [color="#F0F0F050"];
-  bill -> bill_widgets [color="#F0F0F050"];
-  bill -> wrapper [color="#F0F0F050"];
-  subscription_widgets -> controller [color="#F0F0F050"];
-  subscription_widgets -> herald [color="#F0F0F050"];
-  subscription_widgets -> _configs_ [color="#F0F0F050"];
-  subscription_widgets -> _ext_ [color="#F0F0F050"];
-  subscription_widgets -> generic [color="#F0F0F050"];
-  subscription_widgets -> wrapper [color="#F0F0F050"];
-  subscription_widgets -> controller [color="#F0F0F050"];
-  subscription_widgets -> herald [color="#F0F0F050"];
-  subscription_widgets -> _configs_ [color="#F0F0F050"];
-  subscription_widgets -> subscription_widgets [color="#F0F0F050"];
-  subscription_widgets -> herald [color="#F0F0F050"];
-  subscription_widgets -> _configs_ [color="#F0F0F050"];
-  subscription_widgets -> _mixins_ [color="#F0F0F050"];
-  subscription_widgets -> button [color="#F0F0F050"];
-  subscription_widgets -> controller [color="#F0F0F050"];
-  subscription_widgets -> herald [color="#F0F0F050"];
-  subscription_widgets -> _configs_ [color="#F0F0F050"];
-  subscription_widgets -> subscription_widgets [color="#F0F0F050"];
-  subscription -> herald [color="#F0F0F050"];
-  subscription -> structure_navigation [color="#F0F0F050"];
-  subscription -> _configs_ [color="#F0F0F050"];
-  subscription -> _interfaces [color="#F0F0F050"];
-  subscription -> subscription_widgets [color="#F0F0F050"];
-  subscription -> wrapper [color="#F0F0F050"];
-  invoice_widgets -> herald [color="#F0F0F050"];
-  invoice_widgets -> structure [color="#F0F0F050"];
-  invoice_widgets -> _ext_ [color="#F0F0F050"];
-  invoice_widgets -> _configs_ [color="#F0F0F050"];
-  invoice_widgets -> wrapper [color="#F0F0F050"];
-  invoice -> herald [color="#F0F0F050"];
-  invoice -> controller [color="#F0F0F050"];
-  invoice -> structure [color="#F0F0F050"];
-  invoice -> _configs_ [color="#F0F0F050"];
-  invoice -> structure_navigation [color="#F0F0F050"];
-  invoice -> _interfaces [color="#F0F0F050"];
-  invoice -> invoice_widgets [color="#F0F0F050"];
-  invoice -> wrapper [color="#F0F0F050"];
-  invoice -> structure [color="#F0F0F050"];
-  invoice -> bill [color="#F0F0F050"];
-  invoice -> bill_widgets [color="#F0F0F050"];
-  settings -> herald [color="#F0F0F050"];
-  settings -> _configs_ [color="#F0F0F050"];
-  settings -> _interfaces [color="#F0F0F050"];
-  settings -> wrapper [color="#F0F0F050"];
-  settings -> settings_widgets [color="#F0F0F050"];
-  settings_widgets -> herald [color="#F0F0F050"];
-  settings_widgets -> storage [color="#F0F0F050"];
-  settings_widgets -> controller [color="#F0F0F050"];
-  settings_widgets -> form [color="#F0F0F050"];
-  settings_widgets -> structure [color="#F0F0F050"];
-  settings_widgets -> _configs_ [color="#F0F0F050"];
-  settings_widgets -> _ext_ [color="#F0F0F050"];
-  settings_widgets -> generic [color="#F0F0F050"];
-  settings_widgets -> wrapper [color="#F0F0F050"];
-  settings_widgets -> settings_widgets_recover_tab [color="#F0F0F050"];
-  settings_widgets -> herald [color="#F0F0F050"];
-  settings_widgets -> controller [color="#F0F0F050"];
-  settings_widgets -> storage [color="#F0F0F050"];
-  settings_widgets -> _configs_ [color="#F0F0F050"];
-  settings_widgets -> generic [color="#F0F0F050"];
-  settings_widgets -> settings_widgets_recover_tab [color="#F0F0F050"];
-  settings_widgets -> wrapper [color="#F0F0F050"];
-  settings_widgets -> _configs_ [color="#F0F0F050"];
-  settings_widgets_recover_tab -> _configs_ [color="#F0F0F050"];
-  settings_widgets_recover_tab -> _ext_ [color="#F0F0F050"];
-  settings_widgets_recover_tab -> wrapper [color="#F0F0F050"];
-  settings_widgets_recover_tab -> button [color="#F0F0F050"];
-  settings_widgets_recover_tab -> settings_widgets_recover_tab [color="#F0F0F050"];
-  settings_widgets_recover_tab -> herald [color="#F0F0F050"];
-  settings_widgets_recover_tab -> storage_transaction_log [color="#F0F0F050"];
-  settings_widgets_recover_tab -> _configs_ [color="#F0F0F050"];
-  settings_widgets_recover_tab -> _ext_ [color="#F0F0F050"];
-  settings_widgets_recover_tab -> form [color="#F0F0F050"];
-  settings_widgets_recover_tab -> wrapper [color="#F0F0F050"];
-  settings_widgets_recover_tab -> settings_widgets_recover_tab [color="#F0F0F050"];
-
-  settings_widgets_recover_tab -> herald [color="#F0F0F050"];
-  settings_widgets_recover_tab -> _configs_ [color="#F0F0F050"];
-  settings_widgets_recover_tab -> _ext_ [color="#F0F0F050"];
-  settings_widgets_recover_tab -> wrapper [color="#F0F0F050"];
-  settings_widgets_recover_tab -> herald [color="#F0F0F050"];
-  settings_widgets_recover_tab -> storage_transaction_log [color="#F0F0F050"];
-  settings_widgets_recover_tab -> _configs_ [color="#F0F0F050"];
-  settings_widgets_recover_tab -> _ext_ [color="#F0F0F050"];
-  settings_widgets_recover_tab -> form [color="#F0F0F050"];
-  settings_widgets_recover_tab -> wrapper [color="#F0F0F050"];
-  settings_widgets_recover_tab -> settings_widgets_recover_tab [color="#F0F0F050"];
-  home -> herald [color="#F0F0F050"];
-  home -> storage [color="#F0F0F050"];
-  home -> _configs_ [color="#F0F0F050"];
-  home -> _ext_ [color="#F0F0F050"];
-  home -> _core [color="#F0F0F050"];
-  home -> wrapper [color="#F0F0F050"];
-  home -> button [color="#F0F0F050"];
-  home_widgets -> herald [color="#F0F0F050"];
-  home_widgets -> structure_navigation [color="#F0F0F050"];
-  home_widgets -> _configs_ [color="#F0F0F050"];
-  home_widgets -> _ext_ [color="#F0F0F050"];
-  home_widgets -> wrapper [color="#F0F0F050"];
-  home_widgets -> home_widgets [color="#F0F0F050"];
-  home_widgets -> herald [color="#F0F0F050"];
-  home_widgets -> _configs_ [color="#F0F0F050"];
-  home_widgets -> _interfaces [color="#F0F0F050"];
-  home_widgets -> generic [color="#F0F0F050"];
-  home_widgets -> storage [color="#F0F0F050"];
-  home_widgets -> structure_navigation [color="#F0F0F050"];
-  home_widgets -> structure [color="#F0F0F050"];
-  home_widgets -> structure_currency [color="#F0F0F050"];
-  home_widgets -> _configs_ [color="#F0F0F050"];
-  home_widgets -> generic [color="#F0F0F050"];
-  home_widgets -> structure_currency [color="#F0F0F050"];
-  home_widgets -> structure_navigation [color="#F0F0F050"];
-  home_widgets -> structure [color="#F0F0F050"];
-  home_widgets -> _configs_ [color="#F0F0F050"];
-  home_widgets -> generic [color="#F0F0F050"];
-  home_widgets -> home_widgets [color="#F0F0F050"];
-  home_widgets -> herald [color="#F0F0F050"];
-  home_widgets -> structure_navigation [color="#F0F0F050"];
-  home_widgets -> structure [color="#F0F0F050"];
-  home_widgets -> _configs_ [color="#F0F0F050"];
-  home_widgets -> _ext_ [color="#F0F0F050"];
-  home_widgets -> wrapper [color="#F0F0F050"];
-  home_widgets -> structure_navigation [color="#F0F0F050"];
-  home_widgets -> generic [color="#F0F0F050"];
-  home -> storage [color="#F0F0F050"];
-  home -> herald [color="#F0F0F050"];
-  home -> structure_currency [color="#F0F0F050"];
-  home -> _configs_ [color="#F0F0F050"];
-  home -> structure_navigation [color="#F0F0F050"];
-  home -> _core [color="#F0F0F050"];
-  home -> components_ [color="#F0F0F050"];
-  home -> _interfaces [color="#F0F0F050"];
-  home -> home [color="#F0F0F050"];
-  home -> start [color="#F0F0F050"];
-  home -> wrapper [color="#F0F0F050"];
-  home -> home_widgets [color="#F0F0F050"];
-  home -> button [color="#F0F0F050"];
-  _core -> herald [color="#FF00FF50"];
-  _core -> form [color="#FF00FF50"];
-  _core -> _ext_ [color="#FF00FF50"];
-  _core -> components_ [color="#FF00FF50"];
-  _core -> _core [color="#FF00FF50"];
+  components_ -> herald [color="#FF00FF50"];
+  components_ -> storage [color="#FF00FF50"];
+  components_ -> structure [color="#FF00FF50"];
+  components_ -> structure_currency [color="#FF00FF50"];
+  components_ -> _configs_ [color="#FF00FF50"];
+  components_ -> _ext_ [color="#FF00FF50"];
+  components_ -> data [color="#FF00FF50"];
+  components_ -> charts_ [color="#FF00FF50"];
+  components_ -> interface [color="#FF00FF50"];
+  components_ -> components_ [color="#FF00FF50"];
+  components_ -> wrapper [color="#FF00FF50"];
   _core_widgets -> herald [color="#FF00FF50"];
   _core_widgets -> _ext_ [color="#FF00FF50"];
   _core_widgets -> _core [color="#FF00FF50"];
@@ -775,6 +244,12 @@ digraph G {
   _core_widgets -> _configs_ [color="#FF00FF50"];
   _core_widgets -> _ext_ [color="#FF00FF50"];
   _core_widgets -> _core [color="#FF00FF50"];
+  _core -> _configs_ [color="#FF00FF50"];
+  _core -> _ext_ [color="#FF00FF50"];
+  _core -> components_ [color="#FF00FF50"];
+  _core -> _core [color="#FF00FF50"];
+  _core -> herald [color="#FF00FF50"];
+  _core -> form [color="#FF00FF50"];
   _core -> herald [color="#FF00FF50"];
   _core -> storage [color="#FF00FF50"];
   _core -> _configs_ [color="#FF00FF50"];
@@ -782,16 +257,9 @@ digraph G {
   _core -> _core [color="#FF00FF50"];
   _core -> _core_widgets [color="#FF00FF50"];
 
-  _core -> _configs_ [color="#FF00FF50"];
   _core -> _ext_ [color="#FF00FF50"];
   _core -> components_ [color="#FF00FF50"];
   _core -> _core [color="#FF00FF50"];
-  components_ -> herald [color="#FF00FF50"];
-  components_ -> components_ [color="#FF00FF50"];
-  components_ -> form [color="#FF00FF50"];
-  components_ -> _configs_ [color="#FF00FF50"];
-  components_ -> _ext_ [color="#FF00FF50"];
-  components_ -> _core [color="#FF00FF50"];
   components_ -> herald [color="#FF00FF50"];
   components_ -> storage [color="#FF00FF50"];
   components_ -> structure [color="#FF00FF50"];
@@ -817,6 +285,16 @@ digraph G {
   components_ -> structure_currency [color="#FF00FF50"];
   components_ -> _configs_ [color="#FF00FF50"];
   components_ -> _ext_ [color="#FF00FF50"];
+  components_ -> charts_ [color="#FF00FF50"];
+  components_ -> data [color="#FF00FF50"];
+  components_ -> interface [color="#FF00FF50"];
+  components_ -> wrapper [color="#FF00FF50"];
+  components_ -> herald [color="#FF00FF50"];
+  components_ -> storage [color="#FF00FF50"];
+  components_ -> structure [color="#FF00FF50"];
+  components_ -> structure_currency [color="#FF00FF50"];
+  components_ -> _configs_ [color="#FF00FF50"];
+  components_ -> _ext_ [color="#FF00FF50"];
   components_ -> data [color="#FF00FF50"];
   components_ -> interface [color="#FF00FF50"];
   components_ -> charts_ [color="#FF00FF50"];
@@ -827,71 +305,210 @@ digraph G {
   components_ -> structure_currency [color="#FF00FF50"];
   components_ -> _configs_ [color="#FF00FF50"];
   components_ -> _ext_ [color="#FF00FF50"];
-  components_ -> data [color="#FF00FF50"];
   components_ -> charts_ [color="#FF00FF50"];
+  components_ -> data [color="#FF00FF50"];
   components_ -> interface [color="#FF00FF50"];
+  components_ -> wrapper [color="#FF00FF50"];
+  components_ -> herald [color="#FF00FF50"];
   components_ -> components_ [color="#FF00FF50"];
-  components_ -> wrapper [color="#FF00FF50"];
-  components_ -> herald [color="#FF00FF50"];
-  components_ -> storage [color="#FF00FF50"];
-  components_ -> structure [color="#FF00FF50"];
-  components_ -> structure_currency [color="#FF00FF50"];
+  components_ -> form [color="#FF00FF50"];
   components_ -> _configs_ [color="#FF00FF50"];
   components_ -> _ext_ [color="#FF00FF50"];
-  components_ -> charts_ [color="#FF00FF50"];
-  components_ -> data [color="#FF00FF50"];
-  components_ -> interface [color="#FF00FF50"];
-  components_ -> wrapper [color="#FF00FF50"];
-  components_ -> herald [color="#FF00FF50"];
-  components_ -> storage [color="#FF00FF50"];
-  components_ -> structure [color="#FF00FF50"];
-  components_ -> structure_currency [color="#FF00FF50"];
-  components_ -> _configs_ [color="#FF00FF50"];
-  components_ -> _ext_ [color="#FF00FF50"];
-  components_ -> charts_ [color="#FF00FF50"];
-  components_ -> data [color="#FF00FF50"];
-  components_ -> interface [color="#FF00FF50"];
-  components_ -> wrapper [color="#FF00FF50"];
+  components_ -> _core [color="#FF00FF50"];
+
+
+  charts_ -> _ext_ [color="red"];
+  charts_ -> interface [color="red"];
+  charts_ -> painter [color="red"];
+  charts_ -> generic [color="red"];
+  charts_ -> interface [color="red"];
+  charts_ -> painter [color="red"];
+  charts_ -> herald [color="red"];
+  charts_ -> structure [color="red"];
+  charts_ -> _ext_ [color="red"];
+  charts_ -> interface [color="red"];
+  charts_ -> painter [color="red"];
+
+  data -> structure [color="red"];
+  data -> structure_currency [color="red"];
+  data -> interface [color="red"];
+  charts_ -> herald [color="red"];
+  charts_ -> structure [color="red"];
+  charts_ -> _ext_ [color="red"];
+  charts_ -> interface [color="red"];
+  charts_ -> painter [color="red"];
+  charts_ -> generic [color="red"];
+
+  painter -> herald [color="red"];
+  painter -> painter [color="red"];
+  painter -> painter [color="red"];
+  painter -> interface [color="red"];
+  painter -> painter [color="red"];
+  painter -> interface [color="red"];
+  painter -> painter [color="red"];
+  painter -> interface [color="red"];
+  painter -> painter [color="red"];
+  painter -> interface [color="red"];
+  painter -> painter [color="red"];
+  painter -> interface [color="red"];
+  painter -> painter [color="red"];
+  painter -> data [color="red"];
+  painter -> interface [color="red"];
+  painter -> painter [color="red"];
+  painter -> herald [color="red"];
+  painter -> painter [color="red"];
+  charts_ -> herald [color="red"];
+  charts_ -> _ext_ [color="red"];
+  charts_ -> interface [color="red"];
+  charts_ -> painter [color="red"];
+  charts_ -> generic [color="red"];
+  charts_ -> _ext_ [color="red"];
+  charts_ -> painter [color="red"];
+  charts_ -> charts_ [color="red"];
+  charts_ -> _ext_ [color="red"];
+  charts_ -> charts_ [color="red"];
+  charts_ -> painter [color="red"];
+  charts_ -> herald [color="red"];
+  charts_ -> _ext_ [color="red"];
+  charts_ -> interface [color="red"];
+  charts_ -> painter [color="red"];
+  charts_ -> generic [color="red"];
+
+  interface -> interface [color="red"];
+
+
+  _configs_ -> herald [color="green"];
+  _configs_ -> _configs_ [color="green"];
+  _configs_ -> _configs_ [color="green"];
+  _configs_ -> herald [color="green"];
+  _configs_ -> _configs_ [color="green"];
+  _configs_ -> _configs_ [color="green"];
 
   _configs_ -> herald [color="green"];
   _configs_ -> form [color="green"];
-  _configs_ -> _configs_ [color="green"];
-  _configs_ -> herald [color="green"];
-  _configs_ -> _configs_ [color="green"];
 
   _configs_ -> herald [color="green"];
-  _configs_ -> _configs_ [color="green"];
-  _configs_ -> _configs_ [color="green"];
-  _configs_ -> herald [color="green"];
+  storage -> controller [color="green"];
+  storage -> structure [color="green"];
+  storage -> _ext_ [color="green"];
+  storage -> herald [color="green"];
+  storage -> storage [color="green"];
+  storage -> file [color="green"];
+
+  storage -> controller [color="green"];
+  storage -> herald [color="green"];
+  storage -> math [color="green"];
+  storage -> storage [color="green"];
+  storage -> structure [color="green"];
+  storage -> structure_currency [color="green"];
+  storage -> _ext_ [color="green"];
+  storage -> herald [color="green"];
+  storage -> storage [color="green"];
+  storage -> structure [color="green"];
+  storage -> form [color="green"];
+  storage -> _configs_ [color="green"];
+  storage_transaction_log -> herald [color="green"];
+  storage_transaction_log -> storage_transaction_log [color="green"];
+  storage_transaction_log -> file [color="green"];
 
 
-  file -> herald [color="green"];
-
-  _mixins_ -> storage [color="green"];
-
-
-  _ext_ -> controller [color="green"];
-
-  _ext_ -> herald [color="green"];
-
+  storage_transaction_log -> controller [color="green"];
+  storage_transaction_log -> storage [color="green"];
+  storage_transaction_log -> herald [color="green"];
+  storage_transaction_log -> storage_transaction_log [color="green"];
+  storage -> controller [color="green"];
+  storage -> storage [color="green"];
+  storage -> structure [color="green"];
 
 
+  controller -> storage [color="green"];
+  controller -> structure [color="green"];
+  controller -> _ext_ [color="green"];
+  controller -> controller [color="green"];
+  controller -> _configs_ [color="green"];
+
+  controller -> storage [color="green"];
+  controller -> structure [color="green"];
+
+  controller -> storage [color="green"];
+  math -> math [color="green"];
+  math -> storage [color="green"];
+  math -> structure [color="green"];
+  math -> math [color="green"];
+  math -> structure [color="green"];
+  math -> structure_currency [color="green"];
+  math -> math [color="green"];
+  math -> storage [color="green"];
+  math -> structure [color="green"];
+  math -> math [color="green"];
+  math -> structure [color="green"];
+  math -> math [color="green"];
+  math -> structure [color="green"];
+  math -> storage [color="green"];
+  math -> math [color="green"];
+  math -> structure_currency [color="green"];
+  math -> structure [color="green"];
+  herald -> storage [color="green"];
+  herald -> storage [color="green"];
+  herald -> _configs_ [color="green"];
+  herald -> storage [color="green"];
+  herald -> storage [color="green"];
+  herald -> storage [color="green"];
+  herald -> storage [color="green"];
+  herald -> _configs_ [color="green"];
+  herald -> l10n_ [color="green"];
+  herald -> controller [color="green"];
+  structure -> herald [color="green"];
+  structure -> storage [color="green"];
+  structure -> structure [color="green"];
+  structure -> _mixins_ [color="green"];
+
+
+  structure_navigation -> herald [color="green"];
+  structure_navigation -> structure_navigation [color="green"];
+
+  structure -> herald [color="green"];
+  structure -> structure [color="green"];
+  structure -> storage [color="green"];
+  structure -> structure_currency [color="green"];
+  structure -> _ext_ [color="green"];
+  structure -> _mixins_ [color="green"];
+
+  structure -> controller [color="green"];
+  structure -> structure [color="green"];
+  structure -> _ext_ [color="green"];
+  structure -> storage [color="green"];
+
+  structure -> herald [color="green"];
+  structure -> structure [color="green"];
+  structure -> storage [color="green"];
+  structure -> _configs_ [color="green"];
+  structure -> _ext_ [color="green"];
+  structure_currency -> structure [color="green"];
+  structure_currency -> storage [color="green"];
+  structure -> structure [color="green"];
+  structure -> storage [color="green"];
+  structure -> _ext_ [color="green"];
+  structure -> _mixins_ [color="green"];
+  structure -> structure [color="green"];
+  structure -> storage [color="green"];
+  structure -> _ext_ [color="green"];
+  structure -> structure [color="green"];
+  structure -> storage [color="green"];
+  structure -> _ext_ [color="green"];
+  generic -> _configs_ [color="#0000FF50"];
+  generic -> _ext_ [color="#0000FF50"];
+  generic -> herald [color="#0000FF50"];
   generic -> herald [color="#0000FF50"];
   generic -> structure_navigation [color="#0000FF50"];
   generic -> _ext_ [color="#0000FF50"];
   generic -> charts_ [color="#0000FF50"];
   generic -> _configs_ [color="#0000FF50"];
   generic -> wrapper [color="#0000FF50"];
-  generic -> herald [color="#0000FF50"];
-  generic -> structure_navigation [color="#0000FF50"];
-  generic -> _ext_ [color="#0000FF50"];
-  generic -> charts_ [color="#0000FF50"];
-  generic -> _configs_ [color="#0000FF50"];
-  generic -> wrapper [color="#0000FF50"];
-  generic -> herald [color="#0000FF50"];
-  generic -> structure_navigation [color="#0000FF50"];
-  generic -> _configs_ [color="#0000FF50"];
   generic -> controller [color="#0000FF50"];
+  generic -> herald [color="#0000FF50"];
+  generic -> storage [color="#0000FF50"];
+  generic -> structure_navigation [color="#0000FF50"];
   generic -> _configs_ [color="#0000FF50"];
   generic -> wrapper [color="#0000FF50"];
   generic -> herald [color="#0000FF50"];
@@ -900,70 +517,26 @@ digraph G {
   generic -> _ext_ [color="#0000FF50"];
   generic -> wrapper [color="#0000FF50"];
   generic -> button [color="#0000FF50"];
-  generic -> _ext_ [color="#0000FF50"];
   generic -> herald [color="#0000FF50"];
+  generic -> structure_navigation [color="#0000FF50"];
+  generic -> _configs_ [color="#0000FF50"];
+  generic -> controller [color="#0000FF50"];
+  generic -> _configs_ [color="#0000FF50"];
+  generic -> wrapper [color="#0000FF50"];
+  generic -> herald [color="#0000FF50"];
+  generic -> structure_navigation [color="#0000FF50"];
   generic -> _ext_ [color="#0000FF50"];
+  generic -> charts_ [color="#0000FF50"];
+  generic -> _configs_ [color="#0000FF50"];
+  generic -> wrapper [color="#0000FF50"];
   generic -> controller [color="#0000FF50"];
   generic -> herald [color="#0000FF50"];
   generic -> storage [color="#0000FF50"];
   generic -> _configs_ [color="#0000FF50"];
   generic -> _ext_ [color="#0000FF50"];
   generic -> generic [color="#0000FF50"];
-  generic -> _configs_ [color="#0000FF50"];
-  generic -> controller [color="#0000FF50"];
   generic -> herald [color="#0000FF50"];
-  generic -> storage [color="#0000FF50"];
-  generic -> structure_navigation [color="#0000FF50"];
-  generic -> _configs_ [color="#0000FF50"];
-  generic -> wrapper [color="#0000FF50"];
-  generic -> herald [color="#0000FF50"];
-  wrapper -> controller [color="#0000FF50"];
-  wrapper -> _configs_ [color="#0000FF50"];
-  wrapper -> _ext_ [color="#0000FF50"];
-  wrapper -> wrapper [color="#0000FF50"];
-  wrapper -> controller [color="#0000FF50"];
-  wrapper -> herald [color="#0000FF50"];
-  wrapper -> structure_navigation [color="#0000FF50"];
-  wrapper -> _interfaces [color="#0000FF50"];
-  wrapper -> herald [color="#0000FF50"];
-  wrapper -> _configs_ [color="#0000FF50"];
-  wrapper -> _ext_ [color="#0000FF50"];
-  wrapper -> herald [color="#0000FF50"];
-  wrapper -> _configs_ [color="#0000FF50"];
-  wrapper -> herald [color="#0000FF50"];
-  wrapper -> wrapper [color="#0000FF50"];
-  wrapper -> controller [color="#0000FF50"];
-  wrapper -> _configs_ [color="#0000FF50"];
-  wrapper -> _ext_ [color="#0000FF50"];
-  wrapper -> controller [color="#0000FF50"];
-  wrapper -> wrapper [color="#0000FF50"];
-  wrapper -> _configs_ [color="#0000FF50"];
-  wrapper -> wrapper [color="#0000FF50"];
-  wrapper -> herald [color="#0000FF50"];
-  wrapper -> storage [color="#0000FF50"];
-  wrapper -> form [color="#0000FF50"];
-  wrapper -> _configs_ [color="#0000FF50"];
-  wrapper -> _ext_ [color="#0000FF50"];
-  wrapper -> wrapper [color="#0000FF50"];
-  wrapper -> herald [color="#0000FF50"];
-  wrapper -> structure_navigation [color="#0000FF50"];
-  wrapper -> _ext_ [color="#0000FF50"];
-
-  wrapper -> herald [color="#0000FF50"];
-  wrapper -> _configs_ [color="#0000FF50"];
-  wrapper -> wrapper [color="#0000FF50"];
-
-  wrapper -> herald [color="#0000FF50"];
-  wrapper -> herald [color="#0000FF50"];
-  wrapper -> _configs_ [color="#0000FF50"];
-  wrapper -> _ext_ [color="#0000FF50"];
-  wrapper -> wrapper [color="#0000FF50"];
-  wrapper -> _configs_ [color="#0000FF50"];
-  wrapper -> wrapper [color="#0000FF50"];
-  button -> herald [color="#0000FF50"];
-  button -> _configs_ [color="#0000FF50"];
-  button -> _ext_ [color="#0000FF50"];
-  button -> wrapper [color="#0000FF50"];
+  generic -> _ext_ [color="#0000FF50"];
   button -> controller [color="#0000FF50"];
   button -> _configs_ [color="#0000FF50"];
   button -> _ext_ [color="#0000FF50"];
@@ -971,176 +544,603 @@ digraph G {
   button -> herald [color="#0000FF50"];
   button -> _ext_ [color="#0000FF50"];
   button -> wrapper [color="#0000FF50"];
-  form -> controller [color="#0000FF50"];
-  form -> herald [color="#0000FF50"];
-  form -> form [color="#0000FF50"];
-  form -> _configs_ [color="#0000FF50"];
-  form -> _ext_ [color="#0000FF50"];
-  form -> wrapper [color="#0000FF50"];
-  form -> herald [color="#0000FF50"];
-  form -> form [color="#0000FF50"];
-  form -> _configs_ [color="#0000FF50"];
-  form -> _ext_ [color="#0000FF50"];
-  form -> wrapper [color="#0000FF50"];
-  form -> storage [color="#0000FF50"];
-  form -> form [color="#0000FF50"];
-  form -> generic [color="#0000FF50"];
+  button -> herald [color="#0000FF50"];
+  button -> _configs_ [color="#0000FF50"];
+  button -> _ext_ [color="#0000FF50"];
+  button -> wrapper [color="#0000FF50"];
   form -> herald [color="#0000FF50"];
   form -> _configs_ [color="#0000FF50"];
-  form -> wrapper [color="#0000FF50"];
-  form -> controller [color="#0000FF50"];
-  form -> herald [color="#0000FF50"];
-  form -> _configs_ [color="#0000FF50"];
-  form -> _ext_ [color="#0000FF50"];
   form -> form [color="#0000FF50"];
   form -> wrapper [color="#0000FF50"];
   form -> herald [color="#0000FF50"];
   form -> _configs_ [color="#0000FF50"];
   form -> _ext_ [color="#0000FF50"];
   form -> form [color="#0000FF50"];
-  form -> controller [color="#0000FF50"];
-  form -> herald [color="#0000FF50"];
-  form -> _configs_ [color="#0000FF50"];
-  form -> _ext_ [color="#0000FF50"];
-  form -> wrapper [color="#0000FF50"];
-  form -> herald [color="#0000FF50"];
-  form -> form [color="#0000FF50"];
-  form -> herald [color="#0000FF50"];
-  form -> _configs_ [color="#0000FF50"];
-  form -> _ext_ [color="#0000FF50"];
-  form -> form [color="#0000FF50"];
-  form -> wrapper [color="#0000FF50"];
-  form -> herald [color="#0000FF50"];
-  form -> _configs_ [color="#0000FF50"];
-  form -> _ext_ [color="#0000FF50"];
-  form -> form [color="#0000FF50"];
-  form -> wrapper [color="#0000FF50"];
-  form -> controller [color="#0000FF50"];
-  form -> wrapper [color="#0000FF50"];
-  form -> herald [color="#0000FF50"];
-  form -> _configs_ [color="#0000FF50"];
-  form -> _ext_ [color="#0000FF50"];
-  form -> form [color="#0000FF50"];
-  form -> wrapper [color="#0000FF50"];
-  form -> herald [color="#0000FF50"];
-  form -> _configs_ [color="#0000FF50"];
-  form -> form [color="#0000FF50"];
-  form -> wrapper [color="#0000FF50"];
-  form -> herald [color="#0000FF50"];
-  form -> form [color="#0000FF50"];
-  form -> _configs_ [color="#0000FF50"];
-  form -> _ext_ [color="#0000FF50"];
   form -> structure [color="#0000FF50"];
   form -> storage [color="#0000FF50"];
   form -> _configs_ [color="#0000FF50"];
   form -> form [color="#0000FF50"];
   form -> budget_widgets [color="#0000FF50"];
+  form -> controller [color="#0000FF50"];
+  form -> herald [color="#0000FF50"];
+  form -> _configs_ [color="#0000FF50"];
+  form -> _ext_ [color="#0000FF50"];
+  form -> form [color="#0000FF50"];
+  form -> wrapper [color="#0000FF50"];
+  form -> herald [color="#0000FF50"];
+  form -> form [color="#0000FF50"];
+  form -> _configs_ [color="#0000FF50"];
+  form -> _ext_ [color="#0000FF50"];
+  form -> herald [color="#0000FF50"];
+  form -> _configs_ [color="#0000FF50"];
+  form -> _ext_ [color="#0000FF50"];
+  form -> form [color="#0000FF50"];
+  form -> wrapper [color="#0000FF50"];
+  form -> controller [color="#0000FF50"];
+  form -> wrapper [color="#0000FF50"];
+  form -> storage [color="#0000FF50"];
+  form -> form [color="#0000FF50"];
+  form -> generic [color="#0000FF50"];
+  form -> herald [color="#0000FF50"];
+  form -> form [color="#0000FF50"];
+  form -> _configs_ [color="#0000FF50"];
+  form -> _ext_ [color="#0000FF50"];
+  form -> wrapper [color="#0000FF50"];
+  form -> herald [color="#0000FF50"];
+  form -> _configs_ [color="#0000FF50"];
+  form -> wrapper [color="#0000FF50"];
+  form -> herald [color="#0000FF50"];
+  form -> _configs_ [color="#0000FF50"];
+  form -> _ext_ [color="#0000FF50"];
+  form -> form [color="#0000FF50"];
+  form -> wrapper [color="#0000FF50"];
+  form -> herald [color="#0000FF50"];
+  form -> _configs_ [color="#0000FF50"];
+  form -> _ext_ [color="#0000FF50"];
+  form -> form [color="#0000FF50"];
+  form -> wrapper [color="#0000FF50"];
+  form -> controller [color="#0000FF50"];
+  form -> herald [color="#0000FF50"];
+  form -> _configs_ [color="#0000FF50"];
+  form -> _ext_ [color="#0000FF50"];
+  form -> wrapper [color="#0000FF50"];
+  form -> controller [color="#0000FF50"];
+  form -> herald [color="#0000FF50"];
+  form -> form [color="#0000FF50"];
+  form -> _configs_ [color="#0000FF50"];
+  form -> _ext_ [color="#0000FF50"];
+  form -> wrapper [color="#0000FF50"];
+  form -> herald [color="#0000FF50"];
+  form -> form [color="#0000FF50"];
+  wrapper -> herald [color="#0000FF50"];
+  wrapper -> structure_navigation [color="#0000FF50"];
+  wrapper -> _ext_ [color="#0000FF50"];
+  wrapper -> herald [color="#0000FF50"];
+  wrapper -> _configs_ [color="#0000FF50"];
+  wrapper -> herald [color="#0000FF50"];
+  wrapper -> controller [color="#0000FF50"];
+  wrapper -> herald [color="#0000FF50"];
+  wrapper -> structure_navigation [color="#0000FF50"];
+  wrapper -> _interfaces [color="#0000FF50"];
+  wrapper -> herald [color="#0000FF50"];
+  wrapper -> _configs_ [color="#0000FF50"];
+  wrapper -> controller [color="#0000FF50"];
+  wrapper -> _configs_ [color="#0000FF50"];
+  wrapper -> _ext_ [color="#0000FF50"];
+  wrapper -> wrapper [color="#0000FF50"];
+  wrapper -> herald [color="#0000FF50"];
+  wrapper -> _configs_ [color="#0000FF50"];
+  wrapper -> _ext_ [color="#0000FF50"];
+  wrapper -> wrapper [color="#0000FF50"];
+  wrapper -> _configs_ [color="#0000FF50"];
+  wrapper -> wrapper [color="#0000FF50"];
+  wrapper -> controller [color="#0000FF50"];
 
+  wrapper -> controller [color="#0000FF50"];
+  wrapper -> wrapper [color="#0000FF50"];
+  wrapper -> _ext_ [color="#0000FF50"];
+  wrapper -> _configs_ [color="#0000FF50"];
+  wrapper -> wrapper [color="#0000FF50"];
+  wrapper -> herald [color="#0000FF50"];
+  wrapper -> _configs_ [color="#0000FF50"];
+  wrapper -> wrapper [color="#0000FF50"];
+  wrapper -> herald [color="#0000FF50"];
+  wrapper -> wrapper [color="#0000FF50"];
+  wrapper -> _configs_ [color="#0000FF50"];
+  wrapper -> _ext_ [color="#0000FF50"];
+  wrapper -> herald [color="#0000FF50"];
+  wrapper -> storage [color="#0000FF50"];
+  wrapper -> form [color="#0000FF50"];
+  wrapper -> _configs_ [color="#0000FF50"];
+  wrapper -> _ext_ [color="#0000FF50"];
+  wrapper -> wrapper [color="#0000FF50"];
 
-  controller -> storage [color="green"];
-  controller -> storage [color="green"];
-  controller -> structure [color="green"];
-  controller -> _ext_ [color="green"];
+  budget -> herald [color="#F0F0F050"];
+  budget -> structure [color="#F0F0F050"];
+  budget -> budget [color="#F0F0F050"];
+  budget_widgets -> herald [color="#F0F0F050"];
+  budget_widgets -> structure_navigation [color="#F0F0F050"];
+  budget_widgets -> _configs_ [color="#F0F0F050"];
+  budget_widgets -> _ext_ [color="#F0F0F050"];
+  budget_widgets -> charts_ [color="#F0F0F050"];
+  budget_widgets -> generic [color="#F0F0F050"];
+  budget_widgets -> wrapper [color="#F0F0F050"];
+  budget_widgets -> herald [color="#F0F0F050"];
+  budget_widgets -> structure [color="#F0F0F050"];
+  budget_widgets -> _ext_ [color="#F0F0F050"];
+  budget_widgets -> _configs_ [color="#F0F0F050"];
+  budget_widgets -> wrapper [color="#F0F0F050"];
+  budget_widgets -> budget_widgets [color="#F0F0F050"];
+  budget_widgets -> herald [color="#F0F0F050"];
+  budget_widgets -> _configs_ [color="#F0F0F050"];
+  budget_widgets -> _ext_ [color="#F0F0F050"];
+  budget_widgets -> wrapper [color="#F0F0F050"];
+  budget -> herald [color="#F0F0F050"];
+  budget -> structure [color="#F0F0F050"];
+  budget -> controller [color="#F0F0F050"];
+  budget -> storage [color="#F0F0F050"];
+  budget -> _configs_ [color="#F0F0F050"];
+  budget -> _ext_ [color="#F0F0F050"];
+  budget -> wrapper [color="#F0F0F050"];
+  budget -> _interfaces [color="#F0F0F050"];
+  budget -> button [color="#F0F0F050"];
+  budget -> form [color="#F0F0F050"];
+  budget -> herald [color="#F0F0F050"];
+  budget -> controller [color="#F0F0F050"];
+  budget -> storage [color="#F0F0F050"];
+  budget -> structure [color="#F0F0F050"];
+  budget -> _configs_ [color="#F0F0F050"];
+  budget -> structure_navigation [color="#F0F0F050"];
+  budget -> _ext_ [color="#F0F0F050"];
+  budget -> _interfaces [color="#F0F0F050"];
+  budget -> budget_widgets [color="#F0F0F050"];
+  budget -> generic [color="#F0F0F050"];
+  budget -> wrapper [color="#F0F0F050"];
+  budget -> storage [color="#F0F0F050"];
+  budget -> herald [color="#F0F0F050"];
+  budget -> structure [color="#F0F0F050"];
+  budget -> structure_currency [color="#F0F0F050"];
+  budget -> _configs_ [color="#F0F0F050"];
+  budget -> structure_navigation [color="#F0F0F050"];
+  budget -> generic [color="#F0F0F050"];
+  budget -> wrapper [color="#F0F0F050"];
+  budget -> _interfaces [color="#F0F0F050"];
+  budget -> budget_widgets [color="#F0F0F050"];
+  metrics_widgets -> herald [color="#F0F0F050"];
+  metrics_widgets -> storage [color="#F0F0F050"];
+  metrics_widgets -> structure [color="#F0F0F050"];
+  metrics_widgets -> structure_currency [color="#F0F0F050"];
+  metrics_widgets -> _configs_ [color="#F0F0F050"];
+  metrics_widgets -> _ext_ [color="#F0F0F050"];
+  metrics_widgets -> charts_ [color="#F0F0F050"];
+  metrics_widgets -> interface [color="#F0F0F050"];
+  metrics_widgets -> components_ [color="#F0F0F050"];
+  metrics_widgets -> generic [color="#F0F0F050"];
+  metrics_widgets -> wrapper [color="#F0F0F050"];
+  metrics_widgets -> herald [color="#F0F0F050"];
+  metrics_widgets -> storage [color="#F0F0F050"];
+  metrics_widgets -> data [color="#F0F0F050"];
+  metrics_widgets -> structure_currency [color="#F0F0F050"];
+  metrics_widgets -> _configs_ [color="#F0F0F050"];
+  metrics_widgets -> _ext_ [color="#F0F0F050"];
+  metrics_widgets -> charts_ [color="#F0F0F050"];
+  metrics_widgets -> components_ [color="#F0F0F050"];
+  metrics_widgets -> wrapper [color="#F0F0F050"];
+  metrics_widgets -> herald [color="#F0F0F050"];
+  metrics_widgets -> _configs_ [color="#F0F0F050"];
+  metrics_widgets -> components_ [color="#F0F0F050"];
+  metrics -> herald [color="#F0F0F050"];
+  metrics -> _configs_ [color="#F0F0F050"];
+  metrics -> _interfaces [color="#F0F0F050"];
+  metrics -> wrapper [color="#F0F0F050"];
+  metrics -> metrics_widgets [color="#F0F0F050"];
+  start_widgets -> herald [color="#F0F0F050"];
+  start_widgets -> storage [color="#F0F0F050"];
+  start_widgets -> _configs_ [color="#F0F0F050"];
+  start_widgets -> button [color="#F0F0F050"];
+  start_widgets -> account [color="#F0F0F050"];
+  start_widgets -> herald [color="#F0F0F050"];
+  start_widgets -> storage [color="#F0F0F050"];
+  start_widgets -> start_widgets [color="#F0F0F050"];
+  start_widgets -> herald [color="#F0F0F050"];
+  start_widgets -> start_widgets [color="#F0F0F050"];
+  start_widgets -> controller [color="#F0F0F050"];
+  start_widgets -> herald [color="#F0F0F050"];
+  start_widgets -> storage [color="#F0F0F050"];
+  start_widgets -> structure_currency [color="#F0F0F050"];
+  start_widgets -> _configs_ [color="#F0F0F050"];
+  start_widgets -> form [color="#F0F0F050"];
+  start_widgets -> _ext_ [color="#F0F0F050"];
+  start_widgets -> wrapper [color="#F0F0F050"];
+  start_widgets -> l10n_ [color="#F0F0F050"];
+  start_widgets -> button [color="#F0F0F050"];
+  start_widgets -> start_widgets [color="#F0F0F050"];
+  start_widgets -> herald [color="#F0F0F050"];
+  start_widgets -> storage [color="#F0F0F050"];
+  start_widgets -> _configs_ [color="#F0F0F050"];
+  start_widgets -> button [color="#F0F0F050"];
+  start_widgets -> budget [color="#F0F0F050"];
+  start_widgets -> herald [color="#F0F0F050"];
+  start_widgets -> _configs_ [color="#F0F0F050"];
+  start_widgets -> button [color="#F0F0F050"];
+  start -> herald [color="#F0F0F050"];
+  start -> structure_navigation [color="#F0F0F050"];
+  start -> _configs_ [color="#F0F0F050"];
+  start -> _interfaces [color="#F0F0F050"];
+  start -> start_widgets [color="#F0F0F050"];
+  start -> button [color="#F0F0F050"];
+  start -> wrapper [color="#F0F0F050"];
+  account -> herald [color="#F0F0F050"];
+  account -> structure [color="#F0F0F050"];
+  account -> _configs_ [color="#F0F0F050"];
+  account -> controller [color="#F0F0F050"];
+  account -> storage [color="#F0F0F050"];
+  account -> _ext_ [color="#F0F0F050"];
+  account -> wrapper [color="#F0F0F050"];
+  account -> _interfaces [color="#F0F0F050"];
+  account -> form [color="#F0F0F050"];
+  account -> button [color="#F0F0F050"];
+  account_widgets -> herald [color="#F0F0F050"];
+  account_widgets -> structure [color="#F0F0F050"];
+  account_widgets -> _configs_ [color="#F0F0F050"];
+  account_widgets -> _ext_ [color="#F0F0F050"];
+  account_widgets -> wrapper [color="#F0F0F050"];
+  account_widgets -> herald [color="#F0F0F050"];
+  account_widgets -> _configs_ [color="#F0F0F050"];
+  account_widgets -> _ext_ [color="#F0F0F050"];
+  account_widgets -> wrapper [color="#F0F0F050"];
+  account -> herald [color="#F0F0F050"];
+  account -> controller [color="#F0F0F050"];
+  account -> storage [color="#F0F0F050"];
+  account -> structure [color="#F0F0F050"];
+  account -> _configs_ [color="#F0F0F050"];
+  account -> structure_navigation [color="#F0F0F050"];
+  account -> _ext_ [color="#F0F0F050"];
+  account -> _interfaces [color="#F0F0F050"];
+  account -> account_widgets [color="#F0F0F050"];
+  account -> generic [color="#F0F0F050"];
+  account -> wrapper [color="#F0F0F050"];
+  account -> storage [color="#F0F0F050"];
+  account -> herald [color="#F0F0F050"];
+  account -> structure [color="#F0F0F050"];
+  account -> structure_currency [color="#F0F0F050"];
+  account -> _configs_ [color="#F0F0F050"];
+  account -> structure_navigation [color="#F0F0F050"];
+  account -> wrapper [color="#F0F0F050"];
+  account -> _interfaces [color="#F0F0F050"];
+  account -> account_widgets [color="#F0F0F050"];
+  account -> generic [color="#F0F0F050"];
+  account -> herald [color="#F0F0F050"];
+  account -> structure [color="#F0F0F050"];
+  account -> _configs_ [color="#F0F0F050"];
+  account -> account [color="#F0F0F050"];
+  automation_widgets -> herald [color="#F0F0F050"];
+  automation_widgets -> storage [color="#F0F0F050"];
+  automation_widgets -> _configs_ [color="#F0F0F050"];
+  automation_widgets -> _ext_ [color="#F0F0F050"];
+  automation_widgets -> form [color="#F0F0F050"];
+  automation_widgets -> wrapper [color="#F0F0F050"];
+  automation_widgets -> generic [color="#F0F0F050"];
 
-  controller -> storage [color="green"];
-  controller -> structure [color="green"];
-  controller -> controller [color="green"];
-  controller -> _configs_ [color="green"];
+  automation -> herald [color="#F0F0F050"];
+  automation -> _configs_ [color="#F0F0F050"];
+  automation -> _interfaces [color="#F0F0F050"];
+  automation -> automation_widgets [color="#F0F0F050"];
+  automation -> wrapper [color="#F0F0F050"];
+  goal_widgets -> herald [color="#F0F0F050"];
+  goal_widgets -> structure_navigation [color="#F0F0F050"];
+  goal_widgets -> _configs_ [color="#F0F0F050"];
+  goal_widgets -> _ext_ [color="#F0F0F050"];
+  goal_widgets -> charts_ [color="#F0F0F050"];
+  goal_widgets -> generic [color="#F0F0F050"];
+  goal_widgets -> wrapper [color="#F0F0F050"];
+  goal_widgets -> herald [color="#F0F0F050"];
+  goal_widgets -> storage [color="#F0F0F050"];
+  goal_widgets -> structure_currency [color="#F0F0F050"];
+  goal_widgets -> structure [color="#F0F0F050"];
+  goal_widgets -> _configs_ [color="#F0F0F050"];
+  goal_widgets -> _ext_ [color="#F0F0F050"];
+  goal_widgets -> charts_ [color="#F0F0F050"];
+  goal_widgets -> wrapper [color="#F0F0F050"];
+  goal_widgets -> herald [color="#F0F0F050"];
+  goal_widgets -> _configs_ [color="#F0F0F050"];
+  goal_widgets -> _ext_ [color="#F0F0F050"];
+  goal_widgets -> wrapper [color="#F0F0F050"];
+  goal -> herald [color="#F0F0F050"];
+  goal -> structure [color="#F0F0F050"];
+  goal -> goal [color="#F0F0F050"];
+  goal -> storage [color="#F0F0F050"];
+  goal -> herald [color="#F0F0F050"];
+  goal -> structure [color="#F0F0F050"];
+  goal -> _configs_ [color="#F0F0F050"];
+  goal -> structure_navigation [color="#F0F0F050"];
+  goal -> wrapper [color="#F0F0F050"];
+  goal -> _interfaces [color="#F0F0F050"];
+  goal -> goal_widgets [color="#F0F0F050"];
+  goal -> herald [color="#F0F0F050"];
+  goal -> controller [color="#F0F0F050"];
+  goal -> structure [color="#F0F0F050"];
+  goal -> storage [color="#F0F0F050"];
+  goal -> _configs_ [color="#F0F0F050"];
+  goal -> structure_navigation [color="#F0F0F050"];
+  goal -> _interfaces [color="#F0F0F050"];
+  goal -> generic [color="#F0F0F050"];
+  goal -> wrapper [color="#F0F0F050"];
+  goal -> herald [color="#F0F0F050"];
+  goal -> structure_currency [color="#F0F0F050"];
+  goal -> structure [color="#F0F0F050"];
+  goal -> controller [color="#F0F0F050"];
+  goal -> storage [color="#F0F0F050"];
+  goal -> _configs_ [color="#F0F0F050"];
+  goal -> wrapper [color="#F0F0F050"];
+  goal -> _interfaces [color="#F0F0F050"];
+  goal -> button [color="#F0F0F050"];
+  goal -> form [color="#F0F0F050"];
+  home_widgets -> herald [color="#F0F0F050"];
+  home_widgets -> _configs_ [color="#F0F0F050"];
+  home_widgets -> _interfaces [color="#F0F0F050"];
+  home_widgets -> generic [color="#F0F0F050"];
+  home_widgets -> herald [color="#F0F0F050"];
+  home_widgets -> structure_navigation [color="#F0F0F050"];
+  home_widgets -> structure [color="#F0F0F050"];
+  home_widgets -> _configs_ [color="#F0F0F050"];
+  home_widgets -> _ext_ [color="#F0F0F050"];
+  home_widgets -> wrapper [color="#F0F0F050"];
+  home_widgets -> storage [color="#F0F0F050"];
+  home_widgets -> structure_navigation [color="#F0F0F050"];
+  home_widgets -> structure [color="#F0F0F050"];
+  home_widgets -> structure_currency [color="#F0F0F050"];
+  home_widgets -> _configs_ [color="#F0F0F050"];
+  home_widgets -> generic [color="#F0F0F050"];
+  home_widgets -> herald [color="#F0F0F050"];
+  home_widgets -> structure_navigation [color="#F0F0F050"];
+  home_widgets -> _configs_ [color="#F0F0F050"];
+  home_widgets -> _ext_ [color="#F0F0F050"];
+  home_widgets -> wrapper [color="#F0F0F050"];
+  home_widgets -> home_widgets [color="#F0F0F050"];
+  home_widgets -> structure_currency [color="#F0F0F050"];
+  home_widgets -> structure_navigation [color="#F0F0F050"];
+  home_widgets -> structure [color="#F0F0F050"];
+  home_widgets -> _configs_ [color="#F0F0F050"];
+  home_widgets -> generic [color="#F0F0F050"];
+  home_widgets -> home_widgets [color="#F0F0F050"];
+  home_widgets -> structure_navigation [color="#F0F0F050"];
+  home_widgets -> generic [color="#F0F0F050"];
+  home -> storage [color="#F0F0F050"];
+  home -> herald [color="#F0F0F050"];
+  home -> structure_currency [color="#F0F0F050"];
+  home -> _configs_ [color="#F0F0F050"];
+  home -> structure_navigation [color="#F0F0F050"];
+  home -> _core [color="#F0F0F050"];
+  home -> components_ [color="#F0F0F050"];
+  home -> _interfaces [color="#F0F0F050"];
+  home -> home [color="#F0F0F050"];
+  home -> start [color="#F0F0F050"];
+  home -> wrapper [color="#F0F0F050"];
+  home -> home_widgets [color="#F0F0F050"];
+  home -> button [color="#F0F0F050"];
+  home -> herald [color="#F0F0F050"];
+  home -> storage [color="#F0F0F050"];
+  home -> _configs_ [color="#F0F0F050"];
+  home -> _ext_ [color="#F0F0F050"];
+  home -> _core [color="#F0F0F050"];
+  home -> wrapper [color="#F0F0F050"];
+  home -> button [color="#F0F0F050"];
+  about_widgets -> herald [color="#F0F0F050"];
+  about_widgets -> _configs_ [color="#F0F0F050"];
+  about_widgets -> _mixins_ [color="#F0F0F050"];
+  about_widgets -> button [color="#F0F0F050"];
+  about_widgets -> about_widgets [color="#F0F0F050"];
+  about_widgets -> herald [color="#F0F0F050"];
+  about_widgets -> _configs_ [color="#F0F0F050"];
+  about_widgets -> _ext_ [color="#F0F0F050"];
+  about_widgets -> wrapper [color="#F0F0F050"];
+  about -> herald [color="#F0F0F050"];
+  about -> _configs_ [color="#F0F0F050"];
+  about -> _ext_ [color="#F0F0F050"];
+  about -> _mixins_ [color="#F0F0F050"];
+  about -> _interfaces [color="#F0F0F050"];
+  about -> wrapper [color="#F0F0F050"];
+  about -> about_widgets [color="#F0F0F050"];
+  subscription_widgets -> controller [color="#F0F0F050"];
+  subscription_widgets -> herald [color="#F0F0F050"];
+  subscription_widgets -> _configs_ [color="#F0F0F050"];
+  subscription_widgets -> subscription_widgets [color="#F0F0F050"];
+  subscription_widgets -> herald [color="#F0F0F050"];
+  subscription_widgets -> _configs_ [color="#F0F0F050"];
+  subscription_widgets -> _mixins_ [color="#F0F0F050"];
+  subscription_widgets -> button [color="#F0F0F050"];
+  subscription_widgets -> controller [color="#F0F0F050"];
+  subscription_widgets -> herald [color="#F0F0F050"];
+  subscription_widgets -> _configs_ [color="#F0F0F050"];
+  subscription_widgets -> _ext_ [color="#F0F0F050"];
+  subscription_widgets -> generic [color="#F0F0F050"];
+  subscription_widgets -> wrapper [color="#F0F0F050"];
+  subscription_widgets -> controller [color="#F0F0F050"];
+  subscription_widgets -> herald [color="#F0F0F050"];
+  subscription_widgets -> _configs_ [color="#F0F0F050"];
+  subscription_widgets -> subscription_widgets [color="#F0F0F050"];
+  subscription -> herald [color="#F0F0F050"];
+  subscription -> structure_navigation [color="#F0F0F050"];
+  subscription -> _configs_ [color="#F0F0F050"];
+  subscription -> _interfaces [color="#F0F0F050"];
+  subscription -> subscription_widgets [color="#F0F0F050"];
+  subscription -> wrapper [color="#F0F0F050"];
+  currency -> controller [color="#F0F0F050"];
+  currency -> herald [color="#F0F0F050"];
+  currency -> storage [color="#F0F0F050"];
+  currency -> structure [color="#F0F0F050"];
+  currency -> _configs_ [color="#F0F0F050"];
+  currency -> _ext_ [color="#F0F0F050"];
+  currency -> charts_ [color="#F0F0F050"];
+  currency -> wrapper [color="#F0F0F050"];
+  currency -> _interfaces [color="#F0F0F050"];
+  currency -> generic [color="#F0F0F050"];
+  currency -> form [color="#F0F0F050"];
+  bill_widgets -> herald [color="#F0F0F050"];
+  bill_widgets -> structure [color="#F0F0F050"];
+  bill_widgets -> _ext_ [color="#F0F0F050"];
+  bill_widgets -> bill_widgets [color="#F0F0F050"];
 
-  math -> storage [color="green"];
-  math -> math [color="green"];
-  math -> structure_currency [color="green"];
-  math -> structure [color="green"];
-  math -> math [color="green"];
-  math -> structure [color="green"];
-  math -> math [color="green"];
-  math -> structure [color="green"];
-  math -> math [color="green"];
-  math -> storage [color="green"];
-  math -> structure [color="green"];
-  math -> math [color="green"];
-  math -> structure [color="green"];
-  math -> structure_currency [color="green"];
-  math -> math [color="green"];
-  math -> storage [color="green"];
-  math -> structure [color="green"];
-  storage -> controller [color="green"];
-  storage -> storage [color="green"];
-  storage -> structure [color="green"];
-  storage -> controller [color="green"];
-  storage -> herald [color="green"];
-  storage -> math [color="green"];
-  storage -> storage [color="green"];
-  storage -> structure [color="green"];
-  storage -> structure_currency [color="green"];
-  storage -> _ext_ [color="green"];
-  storage_transaction_log -> controller [color="green"];
-  storage_transaction_log -> storage [color="green"];
-  storage_transaction_log -> herald [color="green"];
-  storage_transaction_log -> storage_transaction_log [color="green"];
-  storage_transaction_log -> file [color="green"];
+  bill_widgets -> controller [color="#F0F0F050"];
+  bill_widgets -> herald [color="#F0F0F050"];
+  bill_widgets -> structure_currency [color="#F0F0F050"];
+  bill_widgets -> structure_navigation [color="#F0F0F050"];
+  bill_widgets -> structure [color="#F0F0F050"];
+  bill_widgets -> storage [color="#F0F0F050"];
+  bill_widgets -> _configs_ [color="#F0F0F050"];
+  bill_widgets -> _ext_ [color="#F0F0F050"];
+  bill_widgets -> wrapper [color="#F0F0F050"];
+  bill_widgets -> bill_widgets [color="#F0F0F050"];
+  bill_widgets -> form [color="#F0F0F050"];
+  bill_widgets -> button [color="#F0F0F050"];
+  bill_widgets -> herald [color="#F0F0F050"];
+  bill_widgets -> structure [color="#F0F0F050"];
+  bill_widgets -> _ext_ [color="#F0F0F050"];
+  bill_widgets -> _configs_ [color="#F0F0F050"];
+  bill_widgets -> wrapper [color="#F0F0F050"];
+  bill_widgets -> controller [color="#F0F0F050"];
+  bill_widgets -> herald [color="#F0F0F050"];
+  bill_widgets -> structure_currency [color="#F0F0F050"];
+  bill_widgets -> structure [color="#F0F0F050"];
+  bill_widgets -> structure_navigation [color="#F0F0F050"];
+  bill_widgets -> storage [color="#F0F0F050"];
+  bill_widgets -> _configs_ [color="#F0F0F050"];
+  bill_widgets -> _ext_ [color="#F0F0F050"];
+  bill_widgets -> wrapper [color="#F0F0F050"];
+  bill_widgets -> bill_widgets [color="#F0F0F050"];
+  bill_widgets -> form [color="#F0F0F050"];
+  bill_widgets -> button [color="#F0F0F050"];
+  bill_widgets -> herald [color="#F0F0F050"];
+  bill_widgets -> structure [color="#F0F0F050"];
+  bill_widgets -> _ext_ [color="#F0F0F050"];
+  bill_widgets -> bill_widgets [color="#F0F0F050"];
 
+  bill_widgets -> herald [color="#F0F0F050"];
+  bill_widgets -> structure_navigation [color="#F0F0F050"];
+  bill_widgets -> _configs_ [color="#F0F0F050"];
+  bill_widgets -> _ext_ [color="#F0F0F050"];
+  bill_widgets -> wrapper [color="#F0F0F050"];
+  bill_widgets -> controller [color="#F0F0F050"];
+  bill_widgets -> herald [color="#F0F0F050"];
+  bill_widgets -> structure_currency [color="#F0F0F050"];
+  bill_widgets -> structure [color="#F0F0F050"];
+  bill_widgets -> structure_navigation [color="#F0F0F050"];
+  bill_widgets -> storage [color="#F0F0F050"];
+  bill_widgets -> _configs_ [color="#F0F0F050"];
+  bill_widgets -> _ext_ [color="#F0F0F050"];
+  bill_widgets -> wrapper [color="#F0F0F050"];
+  bill_widgets -> bill_widgets [color="#F0F0F050"];
+  bill_widgets -> form [color="#F0F0F050"];
+  bill_widgets -> button [color="#F0F0F050"];
+  bill_widgets -> herald [color="#F0F0F050"];
+  bill_widgets -> _configs_ [color="#F0F0F050"];
+  bill_widgets -> _ext_ [color="#F0F0F050"];
+  bill_widgets -> herald [color="#F0F0F050"];
+  bill_widgets -> structure [color="#F0F0F050"];
+  bill_widgets -> _ext_ [color="#F0F0F050"];
+  bill_widgets -> bill_widgets [color="#F0F0F050"];
+  bill -> controller [color="#F0F0F050"];
+  bill -> storage [color="#F0F0F050"];
+  bill -> herald [color="#F0F0F050"];
+  bill -> structure [color="#F0F0F050"];
+  bill -> _configs_ [color="#F0F0F050"];
+  bill -> structure_navigation [color="#F0F0F050"];
+  bill -> _ext_ [color="#F0F0F050"];
+  bill -> wrapper [color="#F0F0F050"];
+  bill -> _interfaces [color="#F0F0F050"];
+  bill -> bill_widgets [color="#F0F0F050"];
+  bill -> generic [color="#F0F0F050"];
+  bill -> herald [color="#F0F0F050"];
+  bill -> _configs_ [color="#F0F0F050"];
+  bill -> _interfaces [color="#F0F0F050"];
+  bill -> bill_widgets [color="#F0F0F050"];
+  bill -> wrapper [color="#F0F0F050"];
+  bill -> structure [color="#F0F0F050"];
+  bill -> bill [color="#F0F0F050"];
+  bill -> bill_widgets [color="#F0F0F050"];
+  bill -> herald [color="#F0F0F050"];
+  bill -> controller [color="#F0F0F050"];
+  bill -> structure [color="#F0F0F050"];
+  bill -> _configs_ [color="#F0F0F050"];
+  bill -> structure_navigation [color="#F0F0F050"];
+  bill -> _interfaces [color="#F0F0F050"];
+  bill -> bill_widgets [color="#F0F0F050"];
+  bill -> wrapper [color="#F0F0F050"];
+  settings_widgets -> herald [color="#F0F0F050"];
+  settings_widgets -> controller [color="#F0F0F050"];
+  settings_widgets -> storage [color="#F0F0F050"];
+  settings_widgets -> _configs_ [color="#F0F0F050"];
+  settings_widgets -> generic [color="#F0F0F050"];
+  settings_widgets -> settings_widgets_recover_tab [color="#F0F0F050"];
+  settings_widgets -> wrapper [color="#F0F0F050"];
+  settings_widgets -> herald [color="#F0F0F050"];
+  settings_widgets -> storage [color="#F0F0F050"];
+  settings_widgets -> controller [color="#F0F0F050"];
+  settings_widgets -> form [color="#F0F0F050"];
+  settings_widgets -> structure [color="#F0F0F050"];
+  settings_widgets -> _configs_ [color="#F0F0F050"];
+  settings_widgets -> _ext_ [color="#F0F0F050"];
+  settings_widgets -> generic [color="#F0F0F050"];
+  settings_widgets -> wrapper [color="#F0F0F050"];
+  settings_widgets -> settings_widgets_recover_tab [color="#F0F0F050"];
+  settings_widgets_recover_tab -> herald [color="#F0F0F050"];
+  settings_widgets_recover_tab -> _configs_ [color="#F0F0F050"];
+  settings_widgets_recover_tab -> _ext_ [color="#F0F0F050"];
+  settings_widgets_recover_tab -> wrapper [color="#F0F0F050"];
+  settings_widgets_recover_tab -> herald [color="#F0F0F050"];
+  settings_widgets_recover_tab -> storage_transaction_log [color="#F0F0F050"];
+  settings_widgets_recover_tab -> _configs_ [color="#F0F0F050"];
+  settings_widgets_recover_tab -> _ext_ [color="#F0F0F050"];
+  settings_widgets_recover_tab -> form [color="#F0F0F050"];
+  settings_widgets_recover_tab -> wrapper [color="#F0F0F050"];
+  settings_widgets_recover_tab -> settings_widgets_recover_tab [color="#F0F0F050"];
+  settings_widgets_recover_tab -> herald [color="#F0F0F050"];
+  settings_widgets_recover_tab -> storage_transaction_log [color="#F0F0F050"];
+  settings_widgets_recover_tab -> _configs_ [color="#F0F0F050"];
+  settings_widgets_recover_tab -> _ext_ [color="#F0F0F050"];
+  settings_widgets_recover_tab -> form [color="#F0F0F050"];
+  settings_widgets_recover_tab -> wrapper [color="#F0F0F050"];
+  settings_widgets_recover_tab -> settings_widgets_recover_tab [color="#F0F0F050"];
+  settings_widgets_recover_tab -> _configs_ [color="#F0F0F050"];
+  settings_widgets_recover_tab -> _ext_ [color="#F0F0F050"];
+  settings_widgets_recover_tab -> wrapper [color="#F0F0F050"];
+  settings_widgets_recover_tab -> button [color="#F0F0F050"];
+  settings_widgets_recover_tab -> settings_widgets_recover_tab [color="#F0F0F050"];
 
-  storage_transaction_log -> herald [color="green"];
-  storage_transaction_log -> storage_transaction_log [color="green"];
-
-  storage -> controller [color="green"];
-  storage -> structure [color="green"];
-  storage -> _ext_ [color="green"];
-  storage -> herald [color="green"];
-  storage -> storage [color="green"];
-  storage -> file [color="green"];
-  storage -> herald [color="green"];
-  storage -> storage [color="green"];
-  storage -> structure [color="green"];
-  storage -> form [color="green"];
-  storage -> _configs_ [color="green"];
-
-  structure -> structure [color="green"];
-  structure -> storage [color="green"];
-  structure -> _ext_ [color="green"];
-  structure -> _mixins_ [color="green"];
-  structure -> structure [color="green"];
-  structure -> storage [color="green"];
-  structure -> _ext_ [color="green"];
-  structure -> structure [color="green"];
-  structure -> storage [color="green"];
-  structure -> _ext_ [color="green"];
-  structure_currency -> structure [color="green"];
-  structure_currency -> storage [color="green"];
-  structure -> herald [color="green"];
-  structure -> storage [color="green"];
-  structure -> structure [color="green"];
-  structure -> _mixins_ [color="green"];
-
-  structure -> herald [color="green"];
-  structure -> structure [color="green"];
-  structure -> storage [color="green"];
-  structure -> _configs_ [color="green"];
-  structure -> _ext_ [color="green"];
-  structure -> controller [color="green"];
-  structure -> structure [color="green"];
-  structure -> _ext_ [color="green"];
-  structure -> storage [color="green"];
-
-  structure_navigation -> herald [color="green"];
-  structure_navigation -> structure_navigation [color="green"];
-
-
-  structure -> herald [color="green"];
-  structure -> structure [color="green"];
-  structure -> storage [color="green"];
-  structure -> structure_currency [color="green"];
-  structure -> _ext_ [color="green"];
-  structure -> _mixins_ [color="green"];
-  herald -> storage [color="green"];
-  herald -> storage [color="green"];
-  herald -> storage [color="green"];
-  herald -> storage [color="green"];
-  herald -> storage [color="green"];
-  herald -> _configs_ [color="green"];
-  herald -> l10n_ [color="green"];
-  herald -> controller [color="green"];
-  herald -> storage [color="green"];
-  herald -> _configs_ [color="green"];
+  settings_widgets -> _configs_ [color="#F0F0F050"];
+  settings -> herald [color="#F0F0F050"];
+  settings -> _configs_ [color="#F0F0F050"];
+  settings -> _interfaces [color="#F0F0F050"];
+  settings -> wrapper [color="#F0F0F050"];
+  settings -> settings_widgets [color="#F0F0F050"];
+  _interfaces -> _interfaces [color="#F0F0F050"];
+  _interfaces_widgets -> structure_navigation [color="#F0F0F050"];
+  _interfaces_widgets -> _configs_ [color="#F0F0F050"];
+  _interfaces_widgets -> _ext_ [color="#F0F0F050"];
+  _interfaces_widgets -> wrapper [color="#F0F0F050"];
+  _interfaces -> herald [color="#F0F0F050"];
+  _interfaces -> structure_navigation [color="#F0F0F050"];
+  _interfaces -> storage [color="#F0F0F050"];
+  _interfaces -> _configs_ [color="#F0F0F050"];
+  _interfaces -> _ext_ [color="#F0F0F050"];
+  _interfaces -> _interfaces_widgets [color="#F0F0F050"];
+  _interfaces -> wrapper [color="#F0F0F050"];
+  _interfaces -> button [color="#F0F0F050"];
+  invoice_widgets -> herald [color="#F0F0F050"];
+  invoice_widgets -> structure [color="#F0F0F050"];
+  invoice_widgets -> _ext_ [color="#F0F0F050"];
+  invoice_widgets -> _configs_ [color="#F0F0F050"];
+  invoice_widgets -> wrapper [color="#F0F0F050"];
+  invoice -> structure [color="#F0F0F050"];
+  invoice -> bill [color="#F0F0F050"];
+  invoice -> bill_widgets [color="#F0F0F050"];
+  invoice -> herald [color="#F0F0F050"];
+  invoice -> controller [color="#F0F0F050"];
+  invoice -> structure [color="#F0F0F050"];
+  invoice -> _configs_ [color="#F0F0F050"];
+  invoice -> structure_navigation [color="#F0F0F050"];
+  invoice -> _interfaces [color="#F0F0F050"];
+  invoice -> invoice_widgets [color="#F0F0F050"];
+  invoice -> wrapper [color="#F0F0F050"];
 }
