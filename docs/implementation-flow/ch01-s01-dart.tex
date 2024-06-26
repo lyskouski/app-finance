@@ -440,63 +440,14 @@ mixin FileImportMixin {
   \item \q{abstract} -- prevents instantiation, allows methods definition without their implementation;
   \item \q{base} -- disallows implementation (\q{implements}), only inheritance (\q{extends});
   \item \q{interface} -- guarantees interface implementation, but not inheritance;
-  \item \q{final} -- subtyping is forbidden from that class;
+  \item \q{final} -- prohibits subtyping from this class;
+  \item \q{macro} -- declares macro (implements ClassDeclarationsMacro); 
   \item \q{sealed} -- provides enumerable set of subtypes (to be used in \q{switch});
-  \item \q{@immutable}-notation -- force all properties to be \q{final}.
+  \item \q{@immutable}-notation -- forces all properties to be \q{final}.
 \end{itemize}
 
 \noindent With a few restrictions (cannot be combined): \q{abstract} with \q{sealed}; \q{interface}, \q{final} or 
 \q{sealed} with \q{mixin}.
-
-\noindent By using \q{extends}-operand (especially for \q{StatefullWidget}s pairs, \ref{flutter-state}), it might be 
-raised an error that defined property is not accessible:
-
-\begin{lstlisting}
-// AccountEditPage <- AccountAddPage <- AbstractPage
-// AccountEditPageState <- AccountAddPageState <- AbstractPageState
-
-abstract class AbstractPage<T> extends StatefulWidget {
-  int selectedMenu = 0;
-  // Be accurate with "UniqueKey"-method usage for nested widgets
-  // That will trigger "initState" each time of store updates 
-  AbstractPage() : super(key: UniqueKey());
-}
-
-abstract class AbstractPageState<T extends AbstractPage> 
-      extends State<T> {
-  @override
-  Widget build(BuildContext context) => Text('test');
-}
-
-class AccountAddPage extends AbstractPage {
-  String? title;
-
-  AccountAddPage({this.title}) : super();
-
-  @override
-  AccountAddPageState createState() => AccountAddPageState();
-}
-
-class AccountAddPageState<T extends AccountAddPage> extends AbstractPageState<AccountAddPage> {
-  String? get title => widget.title; // OK
-}
-
-class AccountEditPage extends AccountAddPage {
-  String uuid;
-
-  AccountEditPage({required this.uuid}) : super();
-
-  @override
-  AccountEditPageState createState() => AccountEditPageState();
-}
-
-class AccountEditPageState extends 
-      AccountAddPageState<AccountEditPage> {
-  // ERROR: The getter 'uuid' isn't defined for 'AccountAddPage'
-  String get uuid => widget.uuid; 
-  // FIX: (widget as AccountEditPage).uuid
-}
-\end{lstlisting}
 
 
 \subsubsection{Differentiating Constructors}
@@ -655,6 +606,51 @@ sets of libraries:
 \begin{lstlisting}
 import 'package:file_picker_web/file_picker_web.dart' 
   if (dart.library.io) 'package:file_picker/file_picker.dart';
+\end{lstlisting}
+
+
+\newpage
+\subsubsection{Using Macros}
+
+Macros are code that generates additional code. Unlike traditional code generation, Dart's macro system is integrated 
+directly into the language, providing real-time code generation. Out of the box, Dart provides a macro called 
+\href{https://dart.dev/go/json-codable}{JsonCodable} that automatically generates \q{toJson()} and \q{fromJson} methods:
+
+\begin{lstlisting}
+@JsonCodable()
+class TransactionLogData<T> {
+  final String name;
+  final T changedFrom;
+  final T changedTo;
+  final String? ref;
+  final Currency? currency;
+
+  TransactionLogData({
+    required this.name,
+    required this.changedFrom,
+    required this.changedTo,
+    this.ref,
+    this.currency,
+  })
+// ... other code
+}
+
+TransactionLogData<String> data = ...;
+print(data.toJson());
+\end{lstlisting}
+
+This code leverages Dart's new feature called augmentation, that allows to modify a class or function by adding new 
+members or replacing existing bodies from outside the original definition:
+
+\begin{lstlisting}
+// "Uninitialized" error occurs unless a constructor is provided
+class InvoiceAppData {
+  final String account; 
+}
+
+augment class InvoiceAppData {
+  InvoiceAppData(this.account);
+}
 \end{lstlisting}
 
 
