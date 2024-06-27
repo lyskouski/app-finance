@@ -22,21 +22,22 @@
 	<string>$(FLUTTER_BUILD_NUMBER)</string>
   <key>CFBundleLocalizations</key>
   <array>
-    <string>en</string>
+    <string>ar</string>
+    <string>az</string>
     <string>be</string>
-    <string>uk</string>
-    <string>pl</string>
-    <string>pt</string>
-    <string>pt_BR</string>
+    <string>zh</string>
+    <string>en</string>
     <string>fr</string>
     <string>de</string>
     <string>ja</string>
-    <string>zh</string>
     <string>hi</string>
-    <string>uz</string>
     <string>fa</string>
-    <string>ar</string>
-    <string>az</string>
+    <string>pl</string>
+    <string>pt</string>
+    <string>pt_BR</string>
+    <string>es</string>
+    <string>uk</string>
+    <string>uz</string>
   </array>
 	<key>LSMinimumSystemVersion</key>
 	<string>$(MACOSX_DEPLOYMENT_TARGET)</string>
