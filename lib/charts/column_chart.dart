@@ -30,7 +30,7 @@ class ColumnChart extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    if (data.isEmpty || data.first.data.isEmpty) {
+    if (data.isEmpty || data.last.data.isEmpty) {
       return const EmptyWidget();
     }
     final now = DateTime.now();
