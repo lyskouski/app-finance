@@ -407,6 +407,59 @@ if (val is Function) val();
 \end{lstlisting}
 
 
+\subsubsection{Operating Asynchronously}
+
+Asynchronous operations allow to perform other tasks while waiting for an operation to complete, such as fetching data 
+from a network, writing to a database, or reading from a file. The \q{async}-keyword is used to mark a function as 
+asynchronous (with a return statement marked as \q{Future}), while the \q{await}-keyword pauses execution until a 
+specific asynchronous operation is completed.
+
+\begin{lstlisting}
+Future<String> createOrder() async {
+  // Parallelize execution of 'fetchData' and 'createOrder'
+  fetchData(access).then(processData).catchError(handleError);
+  // Wait till the data is taken
+  var access = await fetchCredentials();
+}
+\end{lstlisting}
+
+\noindent A \q{Stream} represents asynchronous sequential events by notifying when a new event is available.
+
+\begin{lstlisting}
+Stream<String> readFile() async* {
+  var lines = File(filePath).openRead()
+      .transform(const LineSplitter());
+  await for (var line in lines) {
+    yield line;
+  }
+}
+\end{lstlisting}
+
+\noindent Additionally, a \q{Completer} is an object that aids in managing asynchronous operations by providing a means 
+to manually produce and complete a \q{Future}.
+
+\begin{lstlisting}
+void mainFunction() {
+  var state = Completer<String>();
+  asyncOperation(state);
+  state.future.then((value) {
+    // .... handle results
+  }).catchError((error) {
+    // .... address errors
+  });
+}
+
+void asyncOperation(Completer<String> state) async {
+  // ... other stuff
+  state.complete('some value');
+}
+\end{lstlisting}
+
+\noindent For a large computation that could drop frames or freeze the app if run in the main isolate, it can be 
+created additional isolates using one of two functions: \q{Isolate.spawn()} or \q{Compute()}. This approach, known as 
+parallelism, allows for parallel code execution across multiple processor cores.
+
+
 \subsubsection{Initializating Classes}
 
 Every object is an instance of a class, and all classes (except \q{null}) inherit from the \q{Object}-class. While each 
