@@ -50,6 +50,7 @@ zurückgelassen wird.
 - Metriken: 
   - Budget:
     - Vorhersage (mit Monte-Carlo-Simulation)
+    - Budgetgrenze und Ausgaben pro Monat
   - Konto:
     - Candlestick (OHLC) Diagramm
     - Einkommensgesundheits-Radar
@@ -63,7 +64,7 @@ zurückgelassen wird.
 - Wiederherstellung über WebDav oder eine direkte Datei
 - Import von `CSV`, `QIF`, `OFX` Dateien für Rechnungen und Abrechnungen
 - Verschlüsselung der Daten
-- Lokalisierung: 8 Sprachen
+- Lokalisierung
 - Benutzerfreundlichkeit
   - Konfigurierbare Hauptseite (mehrere Konfigurationen pro `Breite x Höhe` eingestellt)
   - Reaktionsfähiges & adaptives Design

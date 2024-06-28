@@ -49,6 +49,7 @@ That empowers users to effortlessly manage their finances while ensuring that no
 - Metrics: 
   - Budget:
     - Forecast (with Monte Carlo simulation)
+    - Budget limit and expenses per month
   - Account:
     - Candlestick (OHLC) Chart
     - Income Health Radar
@@ -62,7 +63,7 @@ That empowers users to effortlessly manage their finances while ensuring that no
 - Recovery via WebDav or a direct File
 - Import from `CSV`, `QIF`, `OFX` files for Bills and Invoices
 - Data encryption
-- Localization: 8 languages
+- Localization
 - User Experience
   - Configurable Main Page (multiple configurations per `width x height` set)
   - Responsive & Adaptive Design
