@@ -2,6 +2,10 @@
 
 _A lista completa de actualizações pode ser consultada através do item de navegação "Acerca" no botão "Sugestões".
 
+### 5.5.1
+- Correção da recuperação a partir de um ficheiro .log para Android
+- Adição dos idiomas japonês (JA) e espanhol (ES) 
+
 ### 5.5.0
 - Melhoria do quadro auto-configurado através da adição de gráficos
 - Adição das línguas árabe (AR) e do Azerbaijão (AZ)

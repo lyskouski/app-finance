@@ -2,6 +2,10 @@
 
 _La lista completa de actualizaciones puede consultarse en el menú "Acerca de" del botón "Sugerencias"._
 
+### 5.5.1
+- Corrección de la recuperación desde un archivo .log para Android
+- Adición de los idiomas japonés (JA) y español (ES) 
+
 ### 5.5.0
 - Mejora del tablero autoconfigurable añadiendo gráficos
 - Adición de los idiomas árabe (AR) y azerbaiyano (AZ)
