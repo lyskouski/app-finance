@@ -2,6 +2,10 @@
 
 _Yangilanishlarning toʻliq roʻyxatini “Maslahat” tugmasidagi “Haqida” navigatsiya bandi orqali koʻrish mumkin._
 
+### 5.5.1
+- Android uchun .log-fayldan tiklashni tuzatish
+- Yapon (JA) va ispan (ES) tillarini qo'shish
+
 ### 5.5.0
 - Diagrammalarni qo'shish orqali o'z-o'zidan tuzilgan taxtani yaxshilash
 - Arab (AR) va Ozarbayjon (AZ) tillarini qo'shish

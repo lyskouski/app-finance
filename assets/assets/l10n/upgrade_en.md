@@ -2,6 +2,10 @@
 
 _The full list of updates can be viewed via the "About" navigation item on the "Hints" button._
 
+### 5.5.1
+- Fixing recovery from a .log-file for Android
+- Adding Japanese (JA) and Spanish (ES) languages 
+
 ### 5.5.0
 - Improving self-configured board by adding charts
 - Adding Arabic (AR) and Azerbaijan (AZ) languages

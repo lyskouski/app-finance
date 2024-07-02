@@ -2,6 +2,10 @@
 
 _Yeniləmələrin tam siyahısına "İpucu" düyməsindəki "Haqqında" naviqasiya elementi vasitəsilə baxmaq olar._
 
+### 5.5.1
+- Android üçün .log-faylından bərpanın düzəldilməsi
+- Yapon (JA) və İspan (ES) dillərinin əlavə edilməsi
+
 ### 5.5.0
 - Diaqramlar əlavə edərək, özünü konfiqurasiya edən lövhənin təkmilləşdirilməsi
 - Ərəb (AR) və Azərbaycan (AZ) dillərinin əlavə edilməsi

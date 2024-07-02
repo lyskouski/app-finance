@@ -2,6 +2,10 @@
 
 _Die vollständige Liste der Updates kann über den Navigationspunkt "Über" auf der Schaltfläche "Hinweise" eingesehen werden._
 
+### 5.5.1
+- Korrektur der Wiederherstellung aus einer .log-Datei für Android
+- Hinzufügen der Sprachen Japanisch (JA) und Spanisch (ES) 
+
 ### 5.5.0
 - Verbesserung der selbstkonfigurierten Tafel durch Hinzufügen von Diagrammen
 - Hinzufügen der Sprachen Arabisch (AR) und Aserbaidschan (AZ)

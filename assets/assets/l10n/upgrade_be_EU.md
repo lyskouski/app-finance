@@ -2,6 +2,10 @@
 
 _Poŭny spis abnaŭlieńniaŭ možna prahliadzieć u navihacyjnym punkcie «Ab Dadatku» na knopcy «Padkazki»._ 
 
+### 5.5.1
+- Vypraŭlieńnie adnaŭlieńnia z .log-fajla dlia Android
+- Dadańnie japonskaj (JA) i ispanskaj (ES) moŭ
+
 ### 5.5.0
 - Paliepšana karystackaja doška dadańniem dyjahram
 - Dadańnie arabskaj (AR) i azierbajdžanskaj (AZ) moŭ

@@ -2,6 +2,10 @@
 
 _La liste complète des mises à jour peut être consultée via l'élément de navigation "À propos" du bouton "Conseils"._
 
+### 5.5.1
+- Correction de la récupération à partir d'un fichier .log pour Android
+- Ajout des langues japonaise (JA) et espagnole (ES) 
+
 ### 5.5.0
 - Amélioration du tableau auto-configuré par l'ajout de graphiques
 - Ajout des langues arabe (AR) et azerbaïdjanaise (AZ)
