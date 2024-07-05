@@ -1,0 +1,61 @@
+name: Build AppImage Package
+
+on:
+  workflow_call:
+    inputs:
+      upload_url:
+        description: "Release page URL"
+        type: string
+      version:
+        description: "Latest tag name"
+        type: string
+      is_release:
+        description: "Attach artifacts to Release"
+        default: false
+        type: boolean
+      is_build:
+        description: "Attach artifacts to Build"
+        default: false
+        type: boolean
+
+jobs:
+  build:
+    name: Create Linux AppImage Build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Patch Manifest
+        run: |
+          ASSET_URL="https://github.com/lyskouski/app-finance/releases/download/v${{ inputs.version }}/fingrom_Linux.tar.gz"
+          curl -vLJO -H 'Accept: application/octet-stream' $ASSET_URL
+          tar -xzf fingrom_Linux.tar.gz -C AppDir
+          mv AppDir/lib/ AppDir/usr/
+          sh patch.sh -v "${{ inputs.version }}"
+        working-directory: linux-appimage
+
+      - name: Build Linux AppImage
+        run: |
+          sudo apt-get install -y libfuse2
+          wget -O appimage-builder-x86_64.AppImage https://github.com/AppImageCrafters/appimage-builder/releases/download/v1.1.0/appimage-builder-1.1.0-x86_64.AppImage
+          chmod +x appimage-builder-x86_64.AppImage
+          appimage-builder-x86_64.AppImage --recipe AppImageBuilder.yml
+        working-directory: linux-appimage
+
+      - name: Add AppImage Artifact to Build
+        if: inputs.is_build
+        uses: actions/upload-artifact@v3
+        with:
+          name: fingrom_Linux
+          path: linux-appimage/Fingrom-${{ inputs.version }}-x86_64.AppImage
+
+      - name: Add AppImage Artifact to Release
+        if: inputs.is_release
+        uses: actions/upload-release-asset@latest
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ inputs.upload_url }}
+          asset_path: linux-appimage/Fingrom-${{ inputs.version }}-x86_64.AppImage
+          asset_name: fingrom_Linux.AppImage
+          asset_content_type: application/zip
