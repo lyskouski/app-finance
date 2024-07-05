@@ -138,19 +138,24 @@ across all distributions. Runtimes are reusable across multiple applications. In
 shared foundation for various applications, making it a practical solution for developers and users alike. 
 
 \begin{lstlisting}[language=terminal]
-# Install builder
+## Install builder
 $ sudo apt install flatpak-builder
-# 'runtime' definition
+
+## 'runtime' definition
 $ flatpak search org.freedesktop.Platform
 $ flatpak install flathub org.freedesktop.Platform//23.08 org.freedesktop.Sdk//23.08
-# ... or 'gnome', or 'kde'
+
+## ... or 'gnome', or 'kde'
 $ flatpak search org.gnome.Platform
 $ flatpak install flathub org.gnome.Platform//45 org.gnome.Sdk//45
-# Build project from the manifest
+
+## Build project from the manifest
 $ flatpak-builder build-dir com.tercad.fingrom.yml --force-clean
-# Install application (clean if exists)
+
+## Install application (clean if exists)
 $ flatpak-builder --user --install --force-clean build-dir com.tercad.fingrom.yml
-# Run application
+
+## Run application
 $ flatpak run com.tercad.fingrom
 \end{lstlisting}
 
@@ -168,8 +173,33 @@ The process of crafting an AppImage is overseen by a \q{.yml}-file (YAML), and a
 \href{https://appimage-builder.readthedocs.io}{https://appimage-builder.readthedocs.io}.
 
 \begin{lstlisting}[language=terminal]
-# Generate configuration file
-$ appimage-builder --generate .
-# Pack application
+## Install AppImage builder
+$ wget -O appimage-builder-x86_64.AppImage https://github.com/AppImageCrafters/appimage-builder/releases/download/v1.1.0/appimage-builder-1.1.0-x86_64.AppImage
+$ chmod +x appimage-builder-x86_64.AppImage
+$ sudo mv appimage-builder-x86_64.AppImage /usr/local/bin/appimage-builder
+
+## Install dependencies
+$ sudo apt install libfuse2
+
+## Copy linux build
+$ cp build/linux/x64/release/bundle linux-appimage/AppDir
+$ cd linux-appimage
+
+## Move app icon to a proper location
+$ cp AppDir/com.tercad.fingrom.svg AppDir/usr/share/icons
+
+## Generate configuration file
+$ appimage-builder --generate
+INFO:Generator:Searching AppDir
+? ID [Eg: com.example.app]: com.tercad.fingrom
+? Application Name: Fingrom
+? Icon: com.tercad.fingrom.svg
+? Executable path: fingrom
+? Arguments [Default: $@]: $@
+? Version [Eg: 1.0.0]: 5.5.1
+? Update Information [Default: guess]: guess
+? Architecture: x86_64
+
+## Pack application
 $ appimage-builder --recipe AppImageBuilder.yml
 \end{lstlisting}
