@@ -289,3 +289,16 @@ jobs:
       sha: ${{ github.sha }}
       upload_url: ${{ needs.release.outputs.upload_url }}
       is_release: true
+
+# Linux AppImage
+  build-appimage:
+    uses: ./.github/workflows/build_package_appimage.yml
+    if: success()
+    needs:
+      - release
+      - build-linux
+    secrets: inherit
+    with:
+      version: ${{ needs.release.outputs.version }}
+      upload_url: ${{ needs.release.outputs.upload_url }}
+      is_release: true

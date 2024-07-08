@@ -25,6 +25,10 @@ assets/fonts/MaterialIcons-Regular.otf
 assets/fonts/MaterialIcons-Regular.ttf
 .github/workflows/test_build.yml
 linux-flatpak/.flatpak-builder
+linux-appimage/AppDir
+linux-appimage/appimage-build
+linux-appimage/*.AppImage
+linux-appimage/*.zsync
 
 # IntelliJ related
 *.iml
