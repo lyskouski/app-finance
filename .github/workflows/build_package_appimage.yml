@@ -30,7 +30,6 @@ jobs:
           ASSET_URL="https://github.com/lyskouski/app-finance/releases/download/v${{ inputs.version }}/fingrom_Linux.tar.gz"
           curl -vLJO -H 'Accept: application/octet-stream' $ASSET_URL
           tar -xzf fingrom_Linux.tar.gz -C AppDir
-          mv AppDir/lib/ AppDir/usr/
           sh patch.sh -v "${{ inputs.version }}"
         working-directory: linux-appimage
 
@@ -39,7 +38,7 @@ jobs:
           sudo apt-get install -y libfuse2
           wget -O appimage-builder-x86_64.AppImage https://github.com/AppImageCrafters/appimage-builder/releases/download/v1.1.0/appimage-builder-1.1.0-x86_64.AppImage
           chmod +x appimage-builder-x86_64.AppImage
-          appimage-builder-x86_64.AppImage --recipe AppImageBuilder.yml
+          ./appimage-builder-x86_64.AppImage --recipe AppImageBuilder.yml
         working-directory: linux-appimage
 
       - name: Add AppImage Artifact to Build

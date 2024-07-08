@@ -179,7 +179,7 @@ $ chmod +x appimage-builder-x86_64.AppImage
 $ sudo mv appimage-builder-x86_64.AppImage /usr/local/bin/appimage-builder
 
 ## Install dependencies
-$ sudo apt install libfuse2
+$ sudo apt-get install -y libfuse2
 
 ## Copy linux build
 $ cp build/linux/x64/release/bundle linux-appimage/AppDir
@@ -202,6 +202,19 @@ INFO:Generator:Searching AppDir
 
 ## Pack application
 $ appimage-builder --recipe AppImageBuilder.yml
+\end{lstlisting}
+
+\noindent A valuable change \issue{460}{} to be done is to exclude icons packages from \q{AppImageBuilder.yml} before 
+the build to avoid an error \emph{"Unable to load image-loading module: libpixbufloader-svg.so"}:
+
+\begin{lstlisting}[language=terminal]
+AppDir:
+  apt:
+    exclude:
+    - humanity-icon-theme
+    - hicolor-icon-theme
+    - adwaita-icon-theme
+    - ubuntu-mono
 \end{lstlisting}
 
 \noindent Then it's left to open \href{https://www.pling.com/product/add}{https://www.pling.com/product/add}
