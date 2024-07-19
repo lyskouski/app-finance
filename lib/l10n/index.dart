@@ -25,6 +25,7 @@ const languageList = <LanguageDef>[
   (id: 'pt', name: 'Português Europeu (PT)'),
   (id: 'pt_BR', name: 'Português Brasileiro (PTB)'),
   (id: 'es', name: 'Español (ES)'),
+  (id: 'tr', name: 'Türk dili (TR)'),
   (id: 'uk', name: 'Українська (UK-UA)'),
   (id: 'uz', name: 'O\'zbek (UZ)'),
 ];
