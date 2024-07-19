@@ -34,7 +34,7 @@
         <li>Recovery via WebDav or a direct File</li>
         <li>Import from CSV, QIF, OFX files for Bills and Invoices</li>
         <li>Data encryption</li>
-        <li>Localizations: EN, BE, PL, PT, FR, DE, UK, ZH, HI, UZ, FA, AR, AZ</li>
+        <li>Localizations: EN, BE, PL, PT, FR, DE, UK, ZH, HI, UZ, FA, AR, AZ, JA, ES, IT, TR</li>
         <li>Responsive and Adaptive Design</li>
         <li>Shortcuts</li>
     </ul>
@@ -88,7 +88,6 @@
   <releases>
     <release version="{VERSION}" date="{DATE}">
       <description translatable="no">
-        <p>Release changes:</p>
         <ul>
           <li>{CHANGE}</li>
         </ul>
