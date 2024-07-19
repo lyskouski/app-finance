@@ -32,7 +32,7 @@ class GaugeChart extends StatelessWidget {
       child: CustomPaint(
         painter: GaugePainter(
           value: data.clamp(0, 1),
-          color: context.colorScheme.onBackground,
+          color: context.colorScheme.onSurface,
           max: valueMax,
           min: valueMin,
         ),

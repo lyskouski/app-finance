@@ -47,8 +47,8 @@ class SliverHeaderDelegate extends SliverPersistentHeaderDelegate {
       height: openHeight,
       decoration: BoxDecoration(
         color: isPinned
-            ? Color.alphaBlend(context.colorScheme.inverseSurface.withOpacity(0.1), context.colorScheme.background)
-            : context.colorScheme.background,
+            ? Color.alphaBlend(context.colorScheme.inverseSurface.withOpacity(0.1), context.colorScheme.surface)
+            : context.colorScheme.surface,
         border: isPinned
             ? null
             : Border(

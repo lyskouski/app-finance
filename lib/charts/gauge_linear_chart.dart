@@ -26,7 +26,7 @@ class GaugeLinearChart extends GaugeChart {
       child: CustomPaint(
         painter: GaugeLinearPainter(
           value: data.clamp(0, 1),
-          color: context.colorScheme.onBackground,
+          color: context.colorScheme.onSurface,
           max: valueMax,
           min: valueMin,
         ),

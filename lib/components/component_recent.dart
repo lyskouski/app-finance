@@ -141,7 +141,7 @@ class ComponentRecentFormState extends State<ComponentRecentForm> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: context.colorScheme.background,
+      color: context.colorScheme.surface,
       padding: EdgeInsets.only(left: ThemeHelper.getIndent(2), right: ThemeHelper.getIndent()),
       height: double.infinity,
       child: SingleChildScrollView(

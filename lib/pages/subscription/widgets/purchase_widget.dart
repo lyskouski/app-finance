@@ -54,7 +54,7 @@ class PurchaseWidgetState extends State<PurchaseWidget> {
         height: widget.size,
         margin: EdgeInsets.all(indent),
         decoration: BoxDecoration(
-          color: context.colorScheme.background,
+          color: context.colorScheme.surface,
           borderRadius: BorderRadius.circular(3),
           boxShadow: [
             BoxShadow(
@@ -99,7 +99,7 @@ class PurchaseWidgetState extends State<PurchaseWidget> {
                     end: const Size(3, 3),
                     order: 2,
                     child: Container(
-                        color: context.colorScheme.background.withOpacity(0.9),
+                        color: context.colorScheme.surface.withOpacity(0.9),
                         padding: EdgeInsets.all(indent),
                         child: RowWidget(
                           chunk: [null, costWidth],

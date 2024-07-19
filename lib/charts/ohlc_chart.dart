@@ -42,7 +42,7 @@ class OhlcChart extends StatelessWidget {
     yMax *= 1.25;
     final now = DateTime.now();
     final size = Size(width, height);
-    final bgColor = context.colorScheme.onBackground;
+    final bgColor = context.colorScheme.onSurface;
     final xMax = DateTime(now.year, now.month + 1);
     final bg = ForegroundChartPainter(
       size: size,

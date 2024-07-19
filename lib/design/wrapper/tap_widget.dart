@@ -38,8 +38,8 @@ class TapWidget extends StatelessWidget {
         message: tooltip ?? AppLocale.labels.homeTooltip,
         child: onTap != null || route?.name != ''
             ? InkWell(
-                focusColor: context.colorScheme.onBackground.withOpacity(0.08),
-                hoverColor: context.colorScheme.onBackground.withOpacity(0.04),
+                focusColor: context.colorScheme.onSurface.withOpacity(0.08),
+                hoverColor: context.colorScheme.onSurface.withOpacity(0.04),
                 onFocusChange: onFocusChange,
                 onTap: () {
                   if (onTap != null) {

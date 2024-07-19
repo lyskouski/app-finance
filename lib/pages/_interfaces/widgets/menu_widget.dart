@@ -55,7 +55,7 @@ class MenuWidget extends StatelessWidget {
         padding: EdgeInsets.all(indent),
         color: isSelected
             ? isWide
-                ? colorScheme.background
+                ? colorScheme.surface
                 : colorScheme.secondary.withOpacity(0.1)
             : null,
         child: Row(

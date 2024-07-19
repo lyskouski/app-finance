@@ -50,7 +50,7 @@ class BarRaceChart extends StatelessWidget {
     if (data.isEmpty) {
       return const EmptyWidget();
     }
-    final bgColor = context.colorScheme.onBackground;
+    final bgColor = context.colorScheme.onSurface;
     final xMax = data.reduce((max, item) => item.dy > max.dy ? item : max).dy;
     final plot = _getData();
     final size = Size(width, 36.0 * (1 + plot.length));

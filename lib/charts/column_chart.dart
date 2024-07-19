@@ -35,7 +35,7 @@ class ColumnChart extends StatelessWidget {
     }
     final now = DateTime.now();
     final size = Size(width, height);
-    final bgColor = context.colorScheme.onBackground;
+    final bgColor = context.colorScheme.onSurface;
     final xMin = DateTime(now.year);
     final xMax = DateTime(now.year + 1);
     final bg = ForegroundChartPainter(
