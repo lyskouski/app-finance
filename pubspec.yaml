@@ -37,8 +37,8 @@ dependencies:
   # Freeze encrypt and flutter_webrtc
   encrypt: 5.0.1
   flutter_webrtc: "0.9.42+hotfix.1"
-  firebase_core: ^3.0.0
-  firebase_analytics: ^11.0.0
+  firebase_core: ^3.2.0
+  firebase_analytics: ^11.2.0
   flutter_markdown: ^0.7.1
   package_info_plus: ^8.0.0
   url_launcher: ^6.1.12
