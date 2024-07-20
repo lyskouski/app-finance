@@ -17,7 +17,7 @@ class BackgroundWrapper extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: index % 2 == 0 ? context.colorScheme.onBackground.withOpacity(0.015) : null,
+      color: index % 2 == 0 ? context.colorScheme.onSurface.withOpacity(0.015) : null,
       child: child,
     );
   }

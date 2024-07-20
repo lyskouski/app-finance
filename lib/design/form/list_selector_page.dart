@@ -90,27 +90,27 @@ class ListSelectorPageState<T extends Object?> extends State<ListSelectorPage> {
               padding: EdgeInsets.all(ThemeHelper.getIndent()),
               width: double.infinity,
               decoration: BoxDecoration(
-                color: context.colorScheme.background,
+                color: context.colorScheme.surface,
                 boxShadow: [
                   BoxShadow(
-                    color: context.colorScheme.onBackground.withOpacity(0.1),
+                    color: context.colorScheme.onSurface.withOpacity(0.1),
                     offset: const Offset(0, 1),
                     blurRadius: 3,
                     spreadRadius: 1,
                   ),
                   BoxShadow(
-                    color: context.colorScheme.background,
+                    color: context.colorScheme.surface,
                     offset: const Offset(0, 3),
                     blurRadius: 0,
                     spreadRadius: 0,
                   ),
                 ],
-                border: Border(bottom: BorderSide(width: 4, color: context.colorScheme.background.withOpacity(0.2))),
+                border: Border(bottom: BorderSide(width: 4, color: context.colorScheme.surface.withOpacity(0.2))),
               ),
               child: Container(
                 decoration: BoxDecoration(
-                  color: context.colorScheme.background,
-                  border: Border.all(color: context.colorScheme.onBackground.withOpacity(0.1)),
+                  color: context.colorScheme.surface,
+                  border: Border.all(color: context.colorScheme.onSurface.withOpacity(0.1)),
                   borderRadius: BorderRadius.all(Radius.circular(indent / 2)),
                 ),
                 height: ThemeHelper.barHeight + indent,
@@ -141,7 +141,7 @@ class ListSelectorPageState<T extends Object?> extends State<ListSelectorPage> {
                         tooltip: AppLocale.labels.clear,
                         style: ButtonStyle(
                           backgroundColor: MaterialStateProperty.all<Color>(
-                            context.colorScheme.background.mesh(context.colorScheme.primary.withOpacity(1), 0.1),
+                            context.colorScheme.surface.mesh(context.colorScheme.primary.withOpacity(1), 0.1),
                           ),
                         ),
                         icon: const Icon(Icons.clear),

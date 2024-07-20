@@ -70,7 +70,7 @@ class TradeChart extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final size = Size(width, height);
-    final bgColor = context.colorScheme.onBackground;
+    final bgColor = context.colorScheme.onSurface;
     final scope = _prepareData();
 
     final bg = ForegroundChartPainter(

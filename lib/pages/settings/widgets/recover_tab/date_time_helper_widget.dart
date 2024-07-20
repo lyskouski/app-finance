@@ -15,7 +15,7 @@ class DateTimeHelperWidget extends StatelessWidget {
     return TableWidget(
       width: ThemeHelper.getWidth(context, 6),
       chunk: const [64, null, null],
-      shadowColor: context.colorScheme.onBackground.withOpacity(0.1),
+      shadowColor: context.colorScheme.onSurface.withOpacity(0.1),
       data: [
         [Text(AppLocale.labels.symbol), Text(AppLocale.labels.meaning), Text(AppLocale.labels.example)],
         [const Text('y'), Text(AppLocale.labels.dtYear), const Text('2023')],

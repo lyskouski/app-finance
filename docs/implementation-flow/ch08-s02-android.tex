@@ -54,7 +54,7 @@ def localProperties = new Properties()
 \end{lstlisting}
 \begin{lstlisting}[firstnumber=3, backgroundcolor=\color{backgreen}]
 (*@\kdiff{+}@*)
-(*@\kdiff{+}@*)def store = rootProject.file('key.properties')
+(*@\kdiff{+}@*)def store = rootProject.file("key.properties")
 (*@\kdiff{+}@*)if (store.exists()) {
 (*@\kdiff{+}@*)  store.withReader("UTF-8"){reader -> localProperties.load(reader)}
 (*@\kdiff{+}@*)}
@@ -66,10 +66,10 @@ def localProperties = new Properties()
 \begin{lstlisting}[firstnumber=63, backgroundcolor=\color{backgreen}]
 (*@\kdiff{+}@*)signingConfigs {
 (*@\kdiff{+}@*) release {
-(*@\kdiff{+}@*)  keyAlias 'key'
-(*@\kdiff{+}@*)  keyPassword localProperties.getProperty('key.password')
-(*@\kdiff{+}@*)  storeFile file(localProperties.getProperty('key.file'))
-(*@\kdiff{+}@*)  storePassword localProperties.getProperty('key.password')
+(*@\kdiff{+}@*)  keyAlias = 'key'
+(*@\kdiff{+}@*)  keyPassword = localProperties.getProperty('key.password')
+(*@\kdiff{+}@*)  storeFile = file(localProperties.getProperty('key.file'))
+(*@\kdiff{+}@*)  storePassword = localProperties.getProperty('key.password')
 (*@\kdiff{+}@*) }
 (*@\kdiff{+}@*)}
 \end{lstlisting}
@@ -78,10 +78,10 @@ buildTypes {
   release {
 \end{lstlisting}
 \begin{lstlisting}[firstnumber=73, backgroundcolor=\color{backred}]
-(*@\kdiff{-}@*)    signingConfig signingConfigs.debug
+(*@\kdiff{-}@*)    signingConfig = signingConfigs.debug
 \end{lstlisting}
 \begin{lstlisting}[firstnumber=73, backgroundcolor=\color{backgreen}]
-(*@\kdiff{+}@*)    signingConfig signingConfigs.release
+(*@\kdiff{+}@*)    signingConfig = signingConfigs.release
 \end{lstlisting}
 \begin{lstlisting}[firstnumber=74]
   }

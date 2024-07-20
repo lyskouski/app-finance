@@ -36,7 +36,7 @@ class MemberWidget extends StatelessWidget {
       margin: EdgeInsets.only(top: indent, right: indent),
       decoration: BoxDecoration(
         border: Border(top: border, bottom: border, left: border, right: border),
-        color: context.colorScheme.background,
+        color: context.colorScheme.surface,
         boxShadow: [
           BoxShadow(
             color: context.colorScheme.secondary.withOpacity(0.08),

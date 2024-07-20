@@ -52,7 +52,7 @@ abstract class AbstractPageState<T extends StatefulWidget> extends State<T> {
     type ??= getHelperName();
     return Container(
       width: double.infinity,
-      color: context.colorScheme.background,
+      color: context.colorScheme.surface,
       child: Column(
         children: [
           Transform.translate(
@@ -98,7 +98,7 @@ abstract class AbstractPageState<T extends StatefulWidget> extends State<T> {
           tooltip: AppLocale.labels.helpTooltip,
           onPressed: () => showModalBottomSheet(
             context: context,
-            backgroundColor: context.colorScheme.background,
+            backgroundColor: context.colorScheme.surface,
             builder: buildHelper,
           ),
           icon: Icons.contact_support_outlined,

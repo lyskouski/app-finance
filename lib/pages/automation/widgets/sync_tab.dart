@@ -141,7 +141,7 @@ class SyncTabState extends State<SyncTab> {
                 ThemeHelper.hIndent4x,
                 TableWidget(
                   width: width,
-                  shadowColor: context.colorScheme.onBackground.withOpacity(0.1),
+                  shadowColor: context.colorScheme.onSurface.withOpacity(0.1),
                   chunk: const [80, null, 80, 90],
                   data: [
                     [

@@ -88,7 +88,7 @@ class BaseHeaderWidget extends StatelessWidget {
                 color: context.colorScheme.onSecondaryContainer,
                 tooltip: AppLocale.labels.metricsTooltip,
                 onPressed: () => nav.pushNamed(metrics.name!, arguments: metrics.arguments),
-                backgroundColor: context.colorScheme.background.withOpacity(0.3),
+                backgroundColor: context.colorScheme.surface.withOpacity(0.3),
               ),
             ),
             if (hasExpand)
@@ -100,7 +100,7 @@ class BaseHeaderWidget extends StatelessWidget {
                   offset: bnShift,
                   selectedIcon: Icons.expand,
                   selectedColor: context.colorScheme.onSecondaryContainer,
-                  backgroundColor: context.colorScheme.background.withOpacity(0.3),
+                  backgroundColor: context.colorScheme.surface.withOpacity(0.3),
                   icon: Icons.expand_less,
                   color: context.colorScheme.primary.withOpacity(0.6),
                   tooltip: toExpand ? AppLocale.labels.expand : AppLocale.labels.collapse,

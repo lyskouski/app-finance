@@ -99,16 +99,16 @@ extension CustomColorScheme on ColorScheme {
     }
     final palette = AppColors(paletteType, brightness).palette;
     return copyWith(
-      background: palette.background,
+      surface: palette.background,
       primary: palette.primary,
       onPrimary: palette.secondary,
       inversePrimary: palette.inversePrimary,
       inverseSurface: palette.inverseSurface,
       secondary: palette.secondary,
+      onInverseSurface: palette.onInverseSurface,
       onSecondary: palette.onSecondary,
       onSecondaryContainer: palette.onSecondaryContainer,
       onSurface: palette.secondary,
-      onInverseSurface: palette.onInverseSurface,
       onSurfaceVariant: palette.secondary,
     );
   }

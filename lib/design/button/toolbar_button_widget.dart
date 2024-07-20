@@ -62,7 +62,7 @@ class ToolbarButtonWidgetState extends State<ToolbarButtonWidget> {
   @override
   Widget build(BuildContext context) {
     final indent = ThemeHelper.getIndent();
-    initColor = widget.backgroundColor ?? context.colorScheme.background.withOpacity(0.1);
+    initColor = widget.backgroundColor ?? context.colorScheme.surface.withOpacity(0.1);
     return Semantics(
       attributedHint: AttributedString(AppLocale.labels.typeButton),
       attributedLabel: AttributedString(widget.semanticLabel ?? widget.tooltip),

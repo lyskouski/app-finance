@@ -33,7 +33,7 @@ class ForecastChart extends StatelessWidget {
     }
     final now = DateTime.now();
     final size = Size(width, height);
-    final bgColor = context.colorScheme.onBackground;
+    final bgColor = context.colorScheme.onSurface;
     final xMin = DateTime(now.year, now.month);
     final xMax = DateTime(now.year, now.month + 1);
     final bg = ForegroundChartPainter(
