@@ -150,7 +150,7 @@
             "type": "String"
         }
     },
-    "currencyShort": "Curr.",
+    "currencyShort": "para",
     "currencyTooltip": "Para Birimi Türü (Kod)",
     "currencyUpdateTooltip": "Para Birimi Oranını Güncelle",
     "currentDate": "Geçerli Tarih İşaretçisi",

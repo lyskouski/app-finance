@@ -150,7 +150,7 @@
             "type": "String"
         }
     },
-    "currencyShort": "Valuta",
+    "currencyShort": "Val.",
     "currencyTooltip": "Tipo di valuta (codice)",
     "currencyUpdateTooltip": "Aggiorna tasso di valuta",
     "currentDate": "Puntatore alla data corrente",
