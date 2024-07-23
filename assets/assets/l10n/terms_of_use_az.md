@@ -7,7 +7,7 @@ Maliyyə uçotu proqramımıza ("Tətbiq") xoş gəlmisiniz. Tətbiq "Viachaslau
 siz bu İstifadə Şərtləri (“Şərtlər”) ilə bağlı olmağa razılaşırsınız. Bu Şərtlərlə razı deyilsinizsə, lütfən, Tətbiqdən 
 istifadə etməyin.
 
-## Lisenziya
+### Lisenziya
 
 Biz sizə bu Şərtlərə uyğun olaraq və bütün qüvvədə olan qanun və qaydalara uyğun olaraq Tətbiqdən şəxsi və ya işgüzar 
 məqsədləriniz üçün istifadə etmək üçün məhdud, qeyri-eksklüziv, qeyri-köçürülməyən və ləğv edilə bilən lisenziya veririk. 

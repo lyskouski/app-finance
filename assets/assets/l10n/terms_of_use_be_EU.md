@@ -8,7 +8,7 @@ zhadžajeciesia z hetymi Umovami vykarystańnia ("Umovy"). Kali vy nie zhodnyja 
 Dadatak. 
 
 
-## Licenzija 
+### Licenzija 
 
 My dajem vam abmiežavanuju, nievykliučnuju licenziju biez mahčymasci pieradačy i adklikańnia na vykarystańnie 
 Prykladańnia ŭ asabistych ci d́zielavych metach u adpaviednaści z hetymi Umovami i ŭ adpaviednaści z usimi d́ziejučymi 

@@ -7,7 +7,7 @@ Lyskouski (terCAD)” (la “Società”, “noi”, “ci” o “nostro”). A
 vincolato dalle presenti Condizioni d'uso (le “Condizioni”). Se non si accettano le presenti Condizioni, si prega di 
 non utilizzare l'App.
 
-## Licenza
+### Licenza
 
 Vi concediamo una licenza limitata, non esclusiva, non trasferibile e revocabile per l'utilizzo dell'App per scopi 
 personali o aziendali, nel rispetto delle presenti Condizioni e di tutte le leggi e i regolamenti applicabili. 

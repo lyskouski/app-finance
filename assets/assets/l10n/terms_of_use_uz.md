@@ -8,7 +8,7 @@ Foydalanish shartlariga ("Shartlar") rioya qilishga rozilik bildirasiz. Agar siz
 Ilovadan foydalanmang.
 
 
-## Litsenziya
+### Litsenziya
 
 Biz sizga ushbu Shartlar va amaldagi barcha qonun va qoidalarga rioya qilgan holda shaxsiy yoki biznes maqsadlaringiz 
 uchun ilovadan foydalanish uchun cheklangan, eksklyuziv boʻlmagan, oʻtkazib boʻlmaydigan va qaytarib olinadigan 

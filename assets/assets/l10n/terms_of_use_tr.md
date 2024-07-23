@@ -7,7 +7,7 @@ Finansal muhasebe uygulamamıza (“Uygulama”) hoş geldiniz. Uygulama, “Via
 Kullanım Koşullarına (“Koşullar”) tabi olmayı kabul edersiniz. Bu Şartları kabul etmiyorsanız, lütfen Uygulamayı 
 kullanmayın.
 
-## Lisans
+### Lisans
 
 Size, Uygulamayı kişisel veya ticari amaçlarınız için, bu Koşullara tabi olarak ve yürürlükteki tüm yasa ve 
 yönetmeliklere uygun olarak kullanmanız için sınırlı, münhasır olmayan, devredilemez ve geri alınabilir bir lisans 
