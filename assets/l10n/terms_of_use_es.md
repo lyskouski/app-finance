@@ -7,7 +7,7 @@ Bienvenido a nuestra aplicación de contabilidad financiera (la "App"). La App e
 usted acepta las presentes Condiciones de Uso (las "Condiciones"). Si no está de acuerdo con estas Condiciones, le 
 rogamos que no utilice la Aplicación.
 
-## Licencia
+### Licencia
 
 Le concedemos una licencia limitada, no exclusiva, intransferible y revocable para utilizar la Aplicación con fines 
 personales o comerciales, con sujeción a las presentes Condiciones y de conformidad con todas las leyes y reglamentos 

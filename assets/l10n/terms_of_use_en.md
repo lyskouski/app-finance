@@ -6,7 +6,7 @@ Welcome to our financial accounting application (the "App"). The App is owned an
 (terCAD)" (the "Company", "we", "us", or "our"). By accessing or using the App, you agree to be bound by these Terms of 
 Use (the "Terms"). If you do not agree with these Terms, please do not use the App.
 
-## License
+### License
 
 We grant you a limited, non-exclusive, non-transferable, and revocable license to use the App for your personal or 
 business purposes, subject to these Terms and in compliance with all applicable laws and regulations. You may not copy, 
