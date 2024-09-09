@@ -5,6 +5,7 @@ import 'package:app_finance/_classes/herald/app_locale.dart';
 import 'package:app_finance/_classes/structure/navigation/app_route.dart';
 import 'package:app_finance/_configs/theme_helper.dart';
 import 'package:app_finance/pages/_interfaces/abstract_page_state.dart';
+import 'package:app_finance/pages/start/widgets/about_tab.dart';
 import 'package:app_finance/pages/start/widgets/usage_tab.dart';
 import 'package:app_finance/design/button/full_sized_button_widget.dart';
 import 'package:app_finance/design/wrapper/tab_widget.dart';
@@ -24,7 +25,7 @@ class StartPage extends StatefulWidget {
 
 class StartPageState extends AbstractPageState<StartPage> {
   int currentStep = 0;
-  static const acknowledgeTaken = 2;
+  static const acknowledgeTaken = 3;
   static const finalStep = 4;
   Widget button = ThemeHelper.emptyBox;
   List<Widget> barActions = [];
@@ -83,24 +84,29 @@ class StartPageState extends AbstractPageState<StartPage> {
         callback: (i) => _goNext(--i),
         focus: currentStep,
         children: [
-          SettingTab(
+          AboutTab(
             setButton: fn,
             setState: () => _goNext(0),
             isFirstBoot: currentStep == i++ && isEmpty,
           ),
-          PrivacyTab(
+          SettingTab(
             setButton: fn,
             setState: () => _goNext(1),
             isFirstBoot: currentStep == i++ && isEmpty,
           ),
-          UsageTab(
+          PrivacyTab(
             setButton: fn,
             setState: () => _goNext(2),
             isFirstBoot: currentStep == i++ && isEmpty,
           ),
-          AccountTab(
+          UsageTab(
             setButton: fn,
             setState: () => _goNext(3),
+            isFirstBoot: currentStep == i++ && isEmpty,
+          ),
+          AccountTab(
+            setButton: fn,
+            setState: () => _goNext(4),
             isFirstBoot: currentStep == i++ && isEmpty,
           ),
           BudgetTab(
