@@ -28,7 +28,7 @@ zastaniecca ŭ baku.
 
 [![Hliadzieć videa](../images/presentation_en.png)](https://youtu.be/sNTbpILLsOw)
 
-## Funkcyjanaĺnasć 
+### Funkcyjanaĺnasć 
 - Buchhaltarski ŭlik (typ rachunku, valiuta/kryptavaliuta) 
   - Prostaja hrupoŭka praz `/`-simval (u nazvie) dlia haloŭnaj staronki 
   - Časopis tranzakcyj 

@@ -27,7 +27,7 @@ Dzięki temu użytkownicy mogą bez wysiłku zarządzać swoimi finansami, jedno
 
 [![Obejrzyj wideo](../images/presentation_en.png)](https://youtu.be/sNTbpILLsOw)
 
-## Funkcjonalność
+### Funkcjonalność
 - Księgowość (typ konta, waluta/kryptowaluta)
   - Proste grupowanie za pomocą symbolu `/` (w nazwie) dla strony głównej
   - Dziennik transakcji

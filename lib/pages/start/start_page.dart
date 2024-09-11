@@ -6,6 +6,8 @@ import 'package:app_finance/_classes/structure/navigation/app_route.dart';
 import 'package:app_finance/_configs/theme_helper.dart';
 import 'package:app_finance/pages/_interfaces/abstract_page_state.dart';
 import 'package:app_finance/pages/start/widgets/about_tab.dart';
+import 'package:app_finance/pages/start/widgets/account_about_tab.dart';
+import 'package:app_finance/pages/start/widgets/budget_about_tab.dart';
 import 'package:app_finance/pages/start/widgets/usage_tab.dart';
 import 'package:app_finance/design/button/full_sized_button_widget.dart';
 import 'package:app_finance/design/wrapper/tab_widget.dart';
@@ -89,24 +91,34 @@ class StartPageState extends AbstractPageState<StartPage> {
             setState: () => _goNext(0),
             isFirstBoot: currentStep == i++ && isEmpty,
           ),
-          SettingTab(
+          PrivacyTab(
             setButton: fn,
             setState: () => _goNext(1),
             isFirstBoot: currentStep == i++ && isEmpty,
           ),
-          PrivacyTab(
+          UsageTab(
             setButton: fn,
             setState: () => _goNext(2),
             isFirstBoot: currentStep == i++ && isEmpty,
           ),
-          UsageTab(
+          SettingTab(
             setButton: fn,
             setState: () => _goNext(3),
             isFirstBoot: currentStep == i++ && isEmpty,
           ),
-          AccountTab(
+          AccountAboutTab(
             setButton: fn,
             setState: () => _goNext(4),
+            isFirstBoot: currentStep == i++ && isEmpty,
+          ),
+          AccountTab(
+            setButton: fn,
+            setState: () => _goNext(5),
+            isFirstBoot: currentStep == i++ && isEmpty,
+          ),
+          BudgetAboutTab(
+            setButton: fn,
+            setState: () => _goNext(6),
             isFirstBoot: currentStep == i++ && isEmpty,
           ),
           BudgetTab(

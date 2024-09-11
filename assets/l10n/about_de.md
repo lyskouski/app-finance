@@ -28,7 +28,7 @@ zurückgelassen wird.
 
 [![Das Video ansehen](../images/presentation_de.png)](https://youtu.be/7hVGHYNzlQU)
 
-## Funktionalität
+### Funktionalität
 - Buchhaltung (Kontotyp, Währung/Kryptowährung)
   - Einfache Gruppierung über `/`-Symbol (im Namen) für die Hauptseite
   - Transaktionsprotokoll

@@ -27,7 +27,7 @@ Bu, kullanıcıların mali durumlarını zahmetsizce yönetmelerini sağlarken k
 
 [![Videoyu izleyin](../images/presentation_en.png)](https://youtu.be/sNTbpILLsOw)
 
-## İşlevsellik
+### İşlevsellik
 - Muhasebe (Hesap Türü, Para Birimi/Kripto Para)
   - Ana sayfa için `/` sembolü (isimde) aracılığıyla basit gruplama
   - İşlem günlüğü

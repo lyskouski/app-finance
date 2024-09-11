@@ -27,7 +27,7 @@
 
 [![观看视频](../images/presentation_en.png)](https://youtu.be/sNTbpILLsOw)
 
-## 功能
+### 功能
 - 会计（账户类型、货币/加密货币）
   - 通过“/”符号（在名称中）对主页进行简单分组
   - 交易日志

@@ -40,7 +40,7 @@ class AboutTabState<T extends AboutTab> extends AbstractTabState<T> with Launche
   }
 
   @override
-  String getButtonTitle() => AppLocale.labels.saveSettingsTooltip;
+  String getButtonTitle() => '';
 
   @override
   Widget buildContent(BuildContext context, BoxConstraints constraints) {

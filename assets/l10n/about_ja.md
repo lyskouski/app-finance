@@ -27,7 +27,7 @@
 
 [![ビデオを見る](../images/presentation_en.png)](https://youtu.be/sNTbpILLsOw)
 
-## 機能
+### 機能
 - 会計（口座タイプ、通貨/暗号通貨）
   - メインページの`/`シンボル(名前)によるシンプルなグループ化
   - 取引ログ

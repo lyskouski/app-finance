@@ -27,7 +27,7 @@
 
 [![觀看影片](../images/presentation_en.png)](https://youtu.be/sNTbpILLsOw)
 
-## 功能
+### 功能
 - 會計（帳戶類型、貨幣/加密貨幣）
   - 透過`/`符號（在名稱中）對主頁進行簡單的分類
   - 交易記錄

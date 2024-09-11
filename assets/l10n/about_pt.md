@@ -27,7 +27,7 @@ Isto permite aos utilizadores gerir as suas finanças sem esforço, garantindo q
 
 [![Ver o vídeo](../images/presentation_en.png)](https://youtu.be/sNTbpILLsOw)
 
-## Funcionalidade
+### Funcionalidade
 - Contabilidade (tipo de conta, moeda/criptomoeda)
   - Agrupamento simples através do símbolo `/` (no nome) para a página principal
   - Registo de transacções

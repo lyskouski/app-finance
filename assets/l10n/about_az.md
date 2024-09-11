@@ -27,7 +27,7 @@ Bu, istifadəçilərə heç kimin geridə qalmamasını təmin etməklə öz mal
 
 [![Videoya baxın](../images/presentation_en.png)](https://youtu.be/sNTbpILLsOw)
 
-## Funksionallıq
+### Funksionallıq
 - Mühasibat uçotu (Hesab növü, valyuta/kriptovalyuta)
   - Əsas səhifə üçün `/`-simvol (adda) vasitəsilə sadə qruplaşdırma
   - Əməliyyatlar jurnalı

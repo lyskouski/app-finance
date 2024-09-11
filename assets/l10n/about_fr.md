@@ -27,7 +27,7 @@ Elle permet aux utilisateurs de gérer leurs finances sans effort, tout en veill
 
 [![Voir la vidéo](../images/presentation_en.png)](https://youtu.be/sNTbpILLsOw)
 
-## Fonctionnalité
+### Fonctionnalité
 - Comptabilité (Type de compte, Devise/Cryptocurrency)
   - Regroupement simple via le symbole `/` (dans le nom) pour la page principale
   - Journal des transactions

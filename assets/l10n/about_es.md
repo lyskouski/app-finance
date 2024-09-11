@@ -27,7 +27,7 @@ Que permita a los usuarios gestionar sus finanzas sin esfuerzo, garantizando al 
 
 [![Ver el vídeo](../images/presentation_en.png)](https://youtu.be/sNTbpILLsOw)
 
-## Funcionalidad
+### Funcionalidad
 - Contabilidad (tipo de cuenta, divisa/criptodivisa)
   - Agrupación sencilla mediante el símbolo `/` (en el nombre) para la página principal
   - Registro de transacciones

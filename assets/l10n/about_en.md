@@ -27,7 +27,7 @@ That empowers users to effortlessly manage their finances while ensuring that no
 
 [![Watch the video](../images/presentation_en.png)](https://youtu.be/sNTbpILLsOw)
 
-## Functionality
+### Functionality
 - Accounting (Account Type, Currency/Cryptocurrency)
   - Simple grouping via `/`-symbol (in name) for the main page
   - Transactions log

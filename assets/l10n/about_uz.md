@@ -27,7 +27,7 @@ Bu foydalanuvchilarga o'z mablag'larini osonlikcha boshqarish imkoniyatini berad
 
 [![Videoni tomosha qiling](../images/presentation_en.png)](https://youtu.be/sNTbpILLsOw)
 
-## Funktsionallik
+### Funktsionallik
 - Buxgalteriya hisobi (hisob turi, valyuta/kriptovalyuta)
   - Asosiy sahifa uchun `/`-belgi (nomi) orqali oddiy guruhlash
   - Tranzaktsiyalar jurnali
