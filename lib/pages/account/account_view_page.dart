@@ -1,16 +1,24 @@
 // Copyright 2023 The terCAD team. All rights reserved.
 // Use of this source code is governed by a CC BY-NC-ND 4.0 license that can be found in the LICENSE file.
 
+import 'dart:collection';
+
+import 'package:app_finance/_classes/controller/iterator_controller.dart';
+import 'package:app_finance/_classes/herald/app_design.dart';
 import 'package:app_finance/_classes/herald/app_locale.dart';
 import 'package:app_finance/_classes/controller/flow_state_machine.dart';
 import 'package:app_finance/_classes/storage/app_data.dart';
-import 'package:app_finance/_classes/storage/history_data.dart';
 import 'package:app_finance/_classes/structure/account_app_data.dart';
+import 'package:app_finance/_classes/structure/account_summary_data.dart';
 import 'package:app_finance/_classes/structure/bill_app_data.dart';
+import 'package:app_finance/_classes/structure/currency/exchange.dart';
 import 'package:app_finance/_classes/structure/invoice_app_data.dart';
+import 'package:app_finance/_configs/custom_text_theme.dart';
 import 'package:app_finance/_configs/theme_helper.dart';
 import 'package:app_finance/_classes/structure/navigation/app_route.dart';
-import 'package:app_finance/_ext/date_time_ext.dart';
+import 'package:app_finance/_ext/build_context_ext.dart';
+import 'package:app_finance/design/wrapper/row_widget.dart';
+import 'package:app_finance/design/wrapper/text_wrapper.dart';
 import 'package:app_finance/pages/_interfaces/abstract_page_state.dart';
 import 'package:app_finance/pages/account/widgets/account_line_widget.dart';
 import 'package:app_finance/design/generic/base_line_widget.dart';
@@ -19,6 +27,7 @@ import 'package:app_finance/design/wrapper/confirmation_wrapper.dart';
 import 'package:app_finance/design/wrapper/tab_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_currency_picker/flutter_currency_picker.dart';
+import 'package:intl/intl.dart' as intl;
 
 class AccountViewPage extends StatefulWidget {
   final String uuid;
@@ -91,18 +100,82 @@ class AccountViewPageState extends AbstractPageState<AccountViewPage> {
         _ => '',
       };
 
-  Widget buildLogWidget(item, BuildContext context) {
-    final obj = state.getByUuid(item.ref ?? '');
-    return BaseLineWidget(
-      uuid: obj?.uuid ?? '',
-      title: _getTitle(obj),
-      description: (item.timestamp as DateTime).yMEd(),
-      progress: 1.0,
-      details: (item.delta as double).toCurrency(currency: item.currency, withPattern: false),
-      color: obj?.color ?? Colors.transparent,
-      icon: obj?.icon ?? Icons.radio_button_unchecked_sharp,
-      width: width,
-      route: _getRoute(obj),
+  InterfaceIterator<num, dynamic, dynamic> _getSummary() {
+    var exchange = Exchange(store: state);
+    var account = super.state.getByUuid(widget.uuid) as AccountAppData;
+    var bills = state.getStream(AppDataType.bills, filter: (o) => o.account != widget.uuid);
+    var inv = state.getStream(AppDataType.invoice, filter: (o) => o.account != widget.uuid || o.accountFrom != null);
+    DateTime now = DateTime.now();
+    DateTime curr = DateTime(now.year, now.month, 1);
+    var data = SplayTreeMap<num, AccountSummaryData>();
+    int increment = 0;
+    while (true) {
+      var boundary = curr.millisecondsSinceEpoch.toDouble();
+      var billList = bills.getTill(boundary);
+      var invList = inv.getTill(boundary);
+      if (bills.isFinished && inv.isFinished) {
+        break;
+      }
+      data[increment] = AccountSummaryData(
+        title: intl.DateFormat.MMMM().format(curr),
+        description: curr.year.toString(),
+        currency: account.currency,
+        invoices: invList.fold(0.0, (v, e) => v + exchange.reform(e.details ?? 0.0, e.currency, account.currency)),
+        bills: billList.fold(0.0, (v, e) => v + exchange.reform(e.details ?? 0.0, e.currency, account.currency)),
+      );
+      increment++;
+      curr = DateTime(now.year, now.month - increment, 1);
+    }
+    return IteratorController(data, transform: (v) => v);
+  }
+
+  Widget buildSummaryWidget(item, BuildContext context) {
+    final textTheme = context.textTheme;
+    final indent = ThemeHelper.getIndent();
+    final alignment = AppDesign.isRightToLeft() ? Alignment.centerLeft : Alignment.centerRight;
+    return RowWidget(
+      indent: indent,
+      alignment: AppDesign.getAlignment<MainAxisAlignment>(),
+      maxWidth: width,
+      chunk: [indent, null, null, null, indent],
+      children: [
+        const [ThemeHelper.emptyBox],
+        [
+          Column(
+            crossAxisAlignment: AppDesign.getAlignment(),
+            children: [
+              TextWrapper(
+                item.title,
+                style: textTheme.bodyMedium,
+              ),
+              TextWrapper(
+                item.description,
+                style: textTheme.bodySmall,
+              ),
+              ThemeHelper.hIndent
+            ],
+          ),
+        ],
+        [
+          Align(
+            alignment: alignment,
+            child: TextWrapper(
+              (item.bills as double).toCurrency(currency: item.currency, withPattern: true),
+              style: textTheme.numberMedium,
+            ),
+          ),
+        ],
+        [
+          Align(
+            alignment: alignment,
+            child: TextWrapper(
+              (item.invoices as double).toCurrency(currency: item.currency, withPattern: true),
+              style: textTheme.numberMedium,
+            ),
+          ),
+        ],
+        const [ThemeHelper.emptyBox],
+      ],
     );
   }
 
@@ -148,10 +221,9 @@ class AccountViewPageState extends AbstractPageState<AccountViewPage> {
               ],
               children: [
                 BaseListInfiniteWidget(
-                  stream:
-                      HistoryData.getStream(widget.uuid, filter: (e) => state.getByUuid(e.ref ?? '')?.hidden == true),
+                  stream: _getSummary(),
                   width: width,
-                  buildListWidget: buildLogWidget,
+                  buildListWidget: buildSummaryWidget,
                 ),
                 BaseListInfiniteWidget(
                   stream: state.getStream(AppDataType.bills, filter: (o) => o.account != widget.uuid),
