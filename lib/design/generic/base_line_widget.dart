@@ -54,7 +54,7 @@ class BaseLineWidget extends StatelessWidget {
 
     return TapWidget(
       tooltip: '',
-      toWrap: route != '',
+      toWrap: route != '' && uuid != '',
       route: RouteSettings(name: route, arguments: {routeArguments.uuid: uuid}),
       child: Column(
         crossAxisAlignment: AppDesign.getAlignment(),
