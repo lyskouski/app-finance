@@ -2,11 +2,11 @@
 // Use of this source code is governed by a CC BY-NC-ND 4.0 license that can be found in the LICENSE file.
 
 import 'package:app_finance/_classes/herald/app_locale.dart';
-import 'package:app_finance/components/component_account_flow.dart';
-import 'package:app_finance/components/component_account_health.dart';
-import 'package:app_finance/components/component_bill_ytd.dart';
-import 'package:app_finance/components/component_budget_forecast.dart';
-import 'package:app_finance/components/component_budget_ytd.dart';
+import 'package:app_finance/components/widgets/chart_account_flow.dart';
+import 'package:app_finance/components/widgets/chart_account_health.dart';
+import 'package:app_finance/components/widgets/chart_bill_ytd.dart';
+import 'package:app_finance/components/widgets/chart_budget_forecast.dart';
+import 'package:app_finance/components/widgets/chart_budget_ytd.dart';
 import 'package:app_finance/design/form/list_selector_item.dart';
 import 'package:app_finance/_configs/theme_helper.dart';
 import 'package:app_finance/_ext/build_context_ext.dart';
@@ -36,11 +36,11 @@ class ComponentChart extends StatelessWidget {
     return Container(
       padding: EdgeInsets.all(ThemeHelper.getIndent()),
       child: switch (widgetType) {
-        ComponentChartType.accountFlow => const ComponentAccountFlow(),
-        ComponentChartType.accountHealth => const ComponentAccountHealth(),
-        ComponentChartType.billYtd => const ComponentBillYtd(),
-        ComponentChartType.budgetForecast => const ComponentBudgetForecast(),
-        ComponentChartType.budgetYtd => const ComponentBudgetYtd(),
+        ComponentChartType.accountFlow => const ChartAccountFlow(),
+        ComponentChartType.accountHealth => const ChartAccountHealth(),
+        ComponentChartType.billYtd => const ChartBillYtd(),
+        ComponentChartType.budgetForecast => const ChartBudgetForecast(),
+        ComponentChartType.budgetYtd => const ChartBudgetYtd(),
         _ => ThemeHelper.emptyBox,
       },
     );

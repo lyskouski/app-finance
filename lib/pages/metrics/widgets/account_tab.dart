@@ -11,8 +11,8 @@ import 'package:app_finance/_ext/build_context_ext.dart';
 import 'package:app_finance/charts/bar_vertical_single.dart';
 import 'package:app_finance/charts/interface/chart_value.dart';
 import 'package:app_finance/charts/pie_radius_chart.dart';
-import 'package:app_finance/components/component_account_flow.dart';
-import 'package:app_finance/components/component_account_health.dart';
+import 'package:app_finance/components/widgets/chart_account_flow.dart';
+import 'package:app_finance/components/widgets/chart_account_health.dart';
 import 'package:app_finance/design/generic/text_widget.dart';
 import 'package:app_finance/design/wrapper/row_widget.dart';
 import 'package:app_finance/design/wrapper/table_widget.dart';
@@ -84,9 +84,9 @@ class AccountTab extends StatelessWidget {
         child: Column(
           crossAxisAlignment: AppDesign.getAlignment(),
           children: [
-            const ComponentAccountHealth(),
+            const ChartAccountHealth(),
             ThemeHelper.hIndent2x,
-            const ComponentAccountFlow(),
+            const ChartAccountFlow(),
             ThemeHelper.hIndent3x,
             RowWidget(
               maxWidth: width,

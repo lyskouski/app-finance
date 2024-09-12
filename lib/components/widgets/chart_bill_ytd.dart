@@ -19,8 +19,8 @@ import 'package:app_finance/design/wrapper/text_wrapper.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-class ComponentBillYtd extends StatelessWidget {
-  const ComponentBillYtd({super.key});
+class ChartBillYtd extends StatelessWidget {
+  const ChartBillYtd({super.key});
 
   List<ChartData> getData(AppData store) {
     final currentYear = DateTime(DateTime.now().year);

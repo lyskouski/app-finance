@@ -20,8 +20,8 @@ import 'package:app_finance/design/wrapper/text_wrapper.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-class ComponentBudgetYtd extends StatelessWidget {
-  const ComponentBudgetYtd({super.key});
+class ChartBudgetYtd extends StatelessWidget {
+  const ChartBudgetYtd({super.key});
 
   List<BudgetAppData> getBudgetHistory(AppData store) {
     final current = DateTime(DateTime.now().year, DateTime.now().month);

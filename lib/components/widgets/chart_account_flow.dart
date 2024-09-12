@@ -6,52 +6,56 @@ import 'dart:math';
 import 'package:app_finance/_classes/herald/app_design.dart';
 import 'package:app_finance/_classes/herald/app_locale.dart';
 import 'package:app_finance/_classes/storage/app_data.dart';
-import 'package:app_finance/_classes/structure/bill_app_data.dart';
-import 'package:app_finance/_classes/structure/budget_app_data.dart';
+import 'package:app_finance/_classes/storage/history_data.dart';
+import 'package:app_finance/_classes/structure/account_app_data.dart';
 import 'package:app_finance/_classes/structure/currency/exchange.dart';
 import 'package:app_finance/_configs/theme_helper.dart';
 import 'package:app_finance/_ext/build_context_ext.dart';
 import 'package:app_finance/charts/data/data_handler.dart';
-import 'package:app_finance/charts/forecast_chart.dart';
-import 'package:app_finance/charts/interface/chart_data.dart';
-import 'package:app_finance/components/component_account_flow.dart';
+import 'package:app_finance/charts/interface/ohlc_data.dart';
+import 'package:app_finance/charts/ohlc_chart.dart';
 import 'package:app_finance/design/wrapper/row_widget.dart';
 import 'package:app_finance/design/wrapper/text_wrapper.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-class ComponentBudgetForecast extends ComponentAccountFlow {
-  const ComponentBudgetForecast({super.key});
+class ChartAccountFlow extends StatelessWidget {
+  const ChartAccountFlow({super.key});
+
+  List<OhlcData> getData(AppData store, List<AccountAppData> accounts, DateTime xMin) {
+    final exchange = Exchange(store: store);
+    return DataHandler.generateOhlcSummary(
+      HistoryData.getMultiLog(accounts),
+      exchange: exchange,
+      cut: xMin,
+    );
+  }
+
+  DateTime getMin() => DateTime(DateTime.now().year, DateTime.now().month - 5);
 
   @override
   Widget build(BuildContext context) {
-    double indent = ThemeHelper.getIndent();
     final TextTheme textTheme = context.textTheme;
+    double indent = ThemeHelper.getIndent();
     return Consumer<AppData>(builder: (context, appState, _) {
-      final exchange = Exchange(store: appState);
+      final accountList = appState.getList(AppDataType.accounts).cast<AccountAppData>();
+      final xMin = getMin();
+      final data = getData(appState, accountList, xMin);
       return LayoutBuilder(builder: (context, constraints) {
         final width = constraints.maxWidth - indent * 2;
         return Column(
           crossAxisAlignment: AppDesign.getAlignment(),
           children: [
             TextWrapper(
-              AppLocale.labels.chartForecast,
+              '${AppLocale.labels.chartOHLC}, ${Exchange.defaultCurrency?.code}',
               style: textTheme.bodyLarge,
             ),
-            ForecastChart(
+            OhlcChart(
               width: width,
               height: [constraints.maxHeight - 6 * indent, 200].reduce(min).toDouble(),
               indent: indent,
-              data: [
-                ChartData(DataHandler.getAmountGroupedByDate(
-                  appState.getActualList(AppDataType.bills).cast<BillAppData>(),
-                  exchange: exchange,
-                )),
-              ],
-              yMax: DataHandler.countBudgetTotal(
-                appState.getList(AppDataType.budgets).cast<BudgetAppData>(),
-                exchange: exchange,
-              ),
+              xMin: xMin,
+              data: data,
             ),
             RowWidget(
               maxWidth: width,
@@ -62,8 +66,8 @@ class ComponentBudgetForecast extends ComponentAccountFlow {
                   Padding(
                     padding: EdgeInsets.only(left: indent * 2),
                     child: TextWrapper(
-                      AppLocale.labels.actualData,
-                      style: textTheme.bodySmall!.copyWith(color: Colors.red),
+                      AppLocale.labels.raiseData,
+                      style: textTheme.bodySmall?.copyWith(color: Colors.blue),
                     ),
                   ),
                 ],
@@ -71,8 +75,8 @@ class ComponentBudgetForecast extends ComponentAccountFlow {
                   Align(
                     alignment: Alignment.centerRight,
                     child: TextWrapper(
-                      AppLocale.labels.forecastData,
-                      style: textTheme.bodySmall!.copyWith(color: Colors.red.withBlue(200)),
+                      AppLocale.labels.failData,
+                      style: textTheme.bodySmall?.copyWith(color: Colors.red),
                     ),
                   ),
                 ],

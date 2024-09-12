@@ -9,10 +9,10 @@ import 'package:app_finance/_configs/screen_helper.dart';
 import 'package:app_finance/_configs/theme_helper.dart';
 import 'package:app_finance/_classes/structure/navigation/app_route.dart';
 import 'package:app_finance/components/_core/components_builder.dart';
-import 'package:app_finance/components/component_account_flow.dart';
-import 'package:app_finance/components/component_budget_forecast.dart';
+import 'package:app_finance/components/widgets/chart_account_flow.dart';
+import 'package:app_finance/components/widgets/chart_budget_forecast.dart';
 import 'package:app_finance/components/component_recent.dart';
-import 'package:app_finance/components/component_bill_ytd.dart';
+import 'package:app_finance/components/widgets/chart_bill_ytd.dart';
 import 'package:app_finance/pages/_interfaces/abstract_page_state.dart';
 import 'package:app_finance/pages/home/home_edit_page.dart';
 import 'package:app_finance/pages/start/start_page.dart';
@@ -266,7 +266,7 @@ class HomePageState extends AbstractPageState<HomePage> {
               child: Column(
                 children: [
                   Expanded(child: ThemeHelper.emptyBox),
-                  ComponentAccountFlow(),
+                  ChartAccountFlow(),
                   ThemeHelper.hIndent6x,
                 ],
               ),
@@ -275,7 +275,7 @@ class HomePageState extends AbstractPageState<HomePage> {
               child: Column(
                 children: [
                   Expanded(child: ThemeHelper.emptyBox),
-                  ComponentBudgetForecast(),
+                  ChartBudgetForecast(),
                   ThemeHelper.hIndent6x,
                 ],
               ),
@@ -284,7 +284,7 @@ class HomePageState extends AbstractPageState<HomePage> {
               child: Column(
                 children: [
                   Expanded(child: ThemeHelper.emptyBox),
-                  ComponentBillYtd(),
+                  ChartBillYtd(),
                   ThemeHelper.hIndent6x,
                 ],
               ),
