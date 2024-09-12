@@ -144,7 +144,7 @@ class ImportTabState extends State<ImportTab> {
             children: [
               ThemeHelper.hIndent2x,
               if (errorMessage.toString() != '')
-                Text(errorMessage.toString(), style: textTheme.bodyMedium?.copyWith(color: colorScheme.error)),
+                Text(errorMessage.toString(), style: textTheme.headlineMedium?.copyWith(color: colorScheme.error)),
               if (isLoading) ...[
                 SizedBox(height: indent * 6),
                 LoadingWidget(isLoading: isLoading),

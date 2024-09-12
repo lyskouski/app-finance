@@ -50,7 +50,7 @@ class MemberWidget extends StatelessWidget {
         mainAxisAlignment: AppDesign.getAlignment<MainAxisAlignment>(),
         crossAxisAlignment: AppDesign.getAlignment(),
         children: [
-          TextWrapper(member.name, style: context.textTheme.bodyMedium),
+          TextWrapper(member.name, style: context.textTheme.headlineMedium),
           Expanded(
             child: ListView.builder(
               scrollDirection: Axis.horizontal,

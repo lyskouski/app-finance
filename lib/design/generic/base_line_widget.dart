@@ -82,7 +82,7 @@ class BaseLineWidget extends StatelessWidget {
                         children: [
                           TextWrapper(
                             title,
-                            style: textTheme.bodyMedium,
+                            style: textTheme.headlineMedium,
                           ),
                           TextWrapper(
                             description,

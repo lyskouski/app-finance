@@ -72,14 +72,14 @@ class BillLineWidget extends StatelessWidget {
                   [
                     Padding(
                       padding: EdgeInsets.only(top: indent),
-                      child: TextWrapper(title, style: textTheme.bodyMedium),
+                      child: TextWrapper(title, style: textTheme.headlineMedium),
                     ),
                   ],
                   [
                     TextWrapper(AppLocale.labels.account, style: textTheme.bodySmall),
                     TextWrapper(
                       description,
-                      style: textTheme.bodyMedium?.copyWith(
+                      style: textTheme.headlineMedium?.copyWith(
                         color: Color.alphaBlend(descriptionColor.withOpacity(0.4), context.colorScheme.secondary),
                       ),
                     ),
@@ -88,7 +88,7 @@ class BillLineWidget extends StatelessWidget {
                     TextWrapper(AppLocale.labels.budget, style: textTheme.bodySmall),
                     TextWrapper(
                       iconTooltip,
-                      style: textTheme.bodyMedium?.copyWith(
+                      style: textTheme.headlineMedium?.copyWith(
                         color: Color.alphaBlend(color.withOpacity(0.4), context.colorScheme.secondary),
                       ),
                     ),
@@ -126,7 +126,7 @@ class BillLineWidget extends StatelessWidget {
                     Column(
                       crossAxisAlignment: AppDesign.getAlignment(),
                       children: [
-                        TextWrapper(title, style: textTheme.bodyMedium),
+                        TextWrapper(title, style: textTheme.headlineMedium),
                         TextWrapper(
                           description,
                           style: textTheme.numberSmall.copyWith(

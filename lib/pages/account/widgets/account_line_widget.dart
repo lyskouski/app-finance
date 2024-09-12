@@ -47,13 +47,13 @@ class AccountLineWidget extends StatelessWidget {
               Icon(item.icon, color: item.color, size: 20),
             ],
             [
-              TextWrapper(item.title, style: textTheme.bodyMedium),
+              TextWrapper(item.title, style: textTheme.headlineMedium),
             ],
             [
-              NumberWidget(item.description ?? '', colorScheme: context.colorScheme, style: textTheme.bodyMedium),
+              NumberWidget(item.description ?? '', colorScheme: context.colorScheme, style: textTheme.headlineMedium),
             ],
             [
-              TextWrapper(AccountType.getLabel(item.type), style: textTheme.bodyMedium),
+              TextWrapper(AccountType.getLabel(item.type), style: textTheme.headlineMedium),
             ],
             [
               Row(
@@ -87,7 +87,7 @@ class AccountLineWidget extends StatelessWidget {
               Icon(item.icon, color: item.color, size: 20),
             ],
             [
-              TextWrapper(item.title, style: textTheme.bodyMedium),
+              TextWrapper(item.title, style: textTheme.headlineMedium),
             ],
             [
               Align(

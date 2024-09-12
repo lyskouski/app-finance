@@ -113,7 +113,7 @@ class CurrencyPageState extends AbstractPageState<CurrencyPage> {
                     children: [
                       Text(
                         item.uuid,
-                        style: textTheme.bodyMedium,
+                        style: textTheme.headlineMedium,
                         overflow: TextOverflow.ellipsis,
                       ),
                       Text(

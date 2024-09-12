@@ -14,7 +14,5 @@ class WebDavData {
     this.path = 'tmp.log',
   });
 
-  bool isEmpty() {
-    return username.isEmpty || link.isEmpty || password.isEmpty || path.isEmpty;
-  }
+  bool isEmpty() => username.isEmpty || link.isEmpty || password.isEmpty || path.isEmpty;
 }

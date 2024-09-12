@@ -146,7 +146,7 @@ class AccountViewPageState extends AbstractPageState<AccountViewPage> {
             children: [
               TextWrapper(
                 item.title,
-                style: textTheme.bodyMedium,
+                style: textTheme.headlineMedium,
               ),
               TextWrapper(
                 item.description,

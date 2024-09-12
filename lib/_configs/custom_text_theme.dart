@@ -55,7 +55,7 @@ extension CustomTextTheme on TextTheme {
       ),
       bodyMedium: GoogleFonts.abel(
         fontSize: 14,
-        fontWeight: FontWeight.w600,
+        fontWeight: FontWeight.w400,
         letterSpacing: letterSpacingOrNone(1.2),
       ),
       bodySmall: GoogleFonts.abel(

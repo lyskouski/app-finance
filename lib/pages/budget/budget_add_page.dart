@@ -204,7 +204,7 @@ class BudgetAddPageState<T extends BudgetAddPage> extends AbstractAddPageState<B
                     [
                       Text(
                         DateFormat.MMMM(AppLocale.code).format(DateTime(DateTime.now().year, e.key)),
-                        style: textTheme.bodyMedium,
+                        style: textTheme.headlineMedium,
                       ),
                     ],
                     [

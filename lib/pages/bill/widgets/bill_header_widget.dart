@@ -42,7 +42,7 @@ class BillHeaderWidget extends StatelessWidget {
                   ThemeHelper.wIndent,
                   TextWrapper(
                     item.title,
-                    style: textTheme.bodyMedium,
+                    style: textTheme.headlineMedium,
                   ),
                 ],
               ),
