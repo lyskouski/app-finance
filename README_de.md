@@ -1,4 +1,4 @@
-[ [English](./README.md) | Deutsch | [简体中文](./README_zh-CN.md) ]
+[ [English](./README.md) | Deutsch | [简体中文](./README_zh-CN.md) | [...](./assets/l10n/about_de.md) ]
 
 # ![Fingrom Logo](./docs/design-flow/logo/main.svg) Anwendung Finanzbuchhaltung
 [![Lizenz: CC BY-NC-ND 4.0](https://img.shields.io/badge/License-CC_BY--NC--ND_4.0-lightgrey.svg)](https://creativecommons.org/licenses/by-nc-nd/4.0/) 

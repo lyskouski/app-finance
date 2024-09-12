@@ -45,15 +45,18 @@ void main() {
         Scenario: Applying basic configuration through the start pages
           Given I am firstly opened the app
           Then I can see "Initial Setup" component
-          When I tap "Save (Go Next)" button
+          When I tap "Go Next" button
           Then I can see "Acknowledge (Go Next)" button
           When I tap "Acknowledge (Go Next)" button
+          And I tap "Save (Go Next)" button
+          And I tap "Go Next" button
           Then I can see "Create new Account" button
           When I tap on 0 index of "ListSelector" fields
           And I tap "Bank Account" element
           And I enter "Init Account" to "Enter Account Identifier" text field
           And I enter "10000" to "Set Balance" text field
           And I tap "Create new Account" button
+          And I tap "Go Next" button
           Then I can see "Create new Budget Category" button
           When I enter "Init Budget" to "Enter Budget Category Name" text field
           And I enter "1000" to "Set Balance" text field

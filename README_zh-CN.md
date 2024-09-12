@@ -1,4 +1,4 @@
-[ [English](./README.md) | [Deutsch](./README_de.md) | 简体中文 ]
+[ [English](./README.md) | [Deutsch](./README_de.md) | 简体中文 | [...](./assets/l10n/about_zh.md) ]
 
 # ![Fingrom Logo](./docs/design-flow/logo/main.svg) 财务会计应用
 [![许可证 : CC BY-NC-ND 4.0](https://img.shields.io/badge/License-CC_BY--NC--ND_4.0-lightgrey.svg)](https://creativecommons.org/licenses/by-nc-nd/4.0/) 
