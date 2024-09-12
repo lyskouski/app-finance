@@ -1,10 +1,12 @@
 // Copyright 2023 The terCAD team. All rights reserved.
 // Use of this source code is governed by a CC BY-NC-ND 4.0 license that can be found in the LICENSE file.
 
+import 'package:app_finance/_classes/herald/app_design.dart';
 import 'package:app_finance/_classes/storage/app_data.dart';
 import 'package:app_finance/_classes/herald/app_locale.dart';
 import 'package:app_finance/_classes/structure/account_app_data.dart';
 import 'package:app_finance/_classes/structure/currency/exchange.dart';
+import 'package:app_finance/_configs/design_type.dart';
 import 'package:app_finance/_configs/theme_helper.dart';
 import 'package:app_finance/_classes/structure/navigation/app_route.dart';
 import 'package:app_finance/design/wrapper/background_wrapper.dart';
@@ -15,6 +17,7 @@ import 'package:app_finance/design/generic/base_swipe_widget.dart';
 import 'package:app_finance/design/wrapper/tap_widget.dart';
 import 'package:app_finance/pages/account/widgets/header_widget.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class AccountPage extends StatefulWidget {
   final String? search;
@@ -67,6 +70,10 @@ class AccountPageState extends AbstractPageState<AccountPage> {
   @override
   Widget buildContent(BuildContext context, BoxConstraints constraints) {
     final items = _getItems();
+    final design = Provider.of<AppDesign>(context, listen: false);
+    if (design.value == AppDesignType.germany) {
+      items.list.sort((a, b) => a.title.compareTo(b.title));
+    }
     final width = ThemeHelper.getWidth(context, 4, constraints);
     final indent = ThemeHelper.getIndent();
     final widthCount = ThemeHelper.getWidthCount(constraints, context);
