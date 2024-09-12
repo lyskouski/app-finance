@@ -7,51 +7,82 @@ import 'package:app_finance/_classes/herald/app_design.dart';
 import 'package:app_finance/_classes/herald/app_locale.dart';
 import 'package:app_finance/_classes/storage/app_data.dart';
 import 'package:app_finance/_classes/structure/bill_app_data.dart';
-import 'package:app_finance/_classes/structure/budget_app_data.dart';
 import 'package:app_finance/_classes/structure/currency/exchange.dart';
+import 'package:app_finance/_classes/structure/interface_app_data.dart';
 import 'package:app_finance/_configs/theme_helper.dart';
 import 'package:app_finance/_ext/build_context_ext.dart';
+import 'package:app_finance/charts/column_chart.dart';
 import 'package:app_finance/charts/data/data_handler.dart';
-import 'package:app_finance/charts/forecast_chart.dart';
 import 'package:app_finance/charts/interface/chart_data.dart';
-import 'package:app_finance/components/widgets/chart_account_flow.dart';
 import 'package:app_finance/design/wrapper/row_widget.dart';
 import 'package:app_finance/design/wrapper/text_wrapper.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-class ChartBudgetForecast extends ChartAccountFlow {
-  const ChartBudgetForecast({super.key});
+class BillYtdChart extends StatelessWidget {
+  const BillYtdChart({super.key});
+
+  List<ChartData> getData(AppData store) {
+    final currentYear = DateTime(DateTime.now().year);
+    final prevYear = DateTime(currentYear.year - 1);
+    final scope = store.getStream<BillAppData>(AppDataType.bills, filter: (e) => e.createdAt.isBefore(prevYear));
+
+    final exchange = Exchange(store: store);
+    return [
+      ChartData(
+        DataHandler.getAmountGroupedByMonth(
+          scope.getTill(0.0 + currentYear.millisecondsSinceEpoch).cast(),
+          exchange: exchange,
+        ),
+        color: Colors.blue,
+      ),
+      ChartData(
+        DataHandler.getAmountGroupedByMonth(
+          scope.toList().cast<InterfaceAppData>().map((e) {
+            e.createdAt = e.createdAt.add(const Duration(days: 365));
+            return e;
+          }).toList(),
+          exchange: exchange,
+        ),
+        color: Colors.grey,
+      ),
+    ];
+  }
+
+  double getMax(List<ChartData> data) {
+    double yMax = 0;
+    if (data.isNotEmpty && data.first.data.isNotEmpty) {
+      yMax = data.first.data.reduce((max, current) => current.dy > max.dy ? current : max).dy;
+      if (data.last.data.isNotEmpty) {
+        double yPrevMax = data.last.data.reduce((max, current) => current.dy > max.dy ? current : max).dy;
+        yMax = yMax > yPrevMax ? yMax : yPrevMax;
+      }
+    }
+    return yMax;
+  }
 
   @override
   Widget build(BuildContext context) {
-    double indent = ThemeHelper.getIndent();
     final TextTheme textTheme = context.textTheme;
+    final indent = ThemeHelper.getIndent();
+    final year = DateTime.now().year;
     return Consumer<AppData>(builder: (context, appState, _) {
-      final exchange = Exchange(store: appState);
+      final data = getData(appState);
       return LayoutBuilder(builder: (context, constraints) {
         final width = constraints.maxWidth - indent * 2;
         return Column(
           crossAxisAlignment: AppDesign.getAlignment(),
           children: [
             TextWrapper(
-              AppLocale.labels.chartForecast,
+              '${AppLocale.labels.chartYtdExpense}, ${Exchange.defaultCurrency?.code}',
               style: textTheme.bodyLarge,
             ),
-            ForecastChart(
+            ColumnChart(
               width: width,
               height: [constraints.maxHeight - 6 * indent, 200].reduce(min).toDouble(),
               indent: indent,
-              data: [
-                ChartData(DataHandler.getAmountGroupedByDate(
-                  appState.getActualList(AppDataType.bills).cast<BillAppData>(),
-                  exchange: exchange,
-                )),
-              ],
-              yMax: DataHandler.countBudgetTotal(
-                appState.getList(AppDataType.budgets).cast<BudgetAppData>(),
-                exchange: exchange,
-              ),
+              data: data,
+              yMax: getMax(data) * 1.2,
             ),
             RowWidget(
               maxWidth: width,
@@ -62,8 +93,8 @@ class ChartBudgetForecast extends ChartAccountFlow {
                   Padding(
                     padding: EdgeInsets.only(left: indent * 2),
                     child: TextWrapper(
-                      AppLocale.labels.actualData,
-                      style: textTheme.bodySmall!.copyWith(color: Colors.red),
+                      year.toString(),
+                      style: textTheme.bodySmall?.copyWith(color: Colors.blue),
                     ),
                   ),
                 ],
@@ -71,8 +102,8 @@ class ChartBudgetForecast extends ChartAccountFlow {
                   Align(
                     alignment: Alignment.centerRight,
                     child: TextWrapper(
-                      AppLocale.labels.forecastData,
-                      style: textTheme.bodySmall!.copyWith(color: Colors.red.withBlue(200)),
+                      (year - 1).toString(),
+                      style: textTheme.bodySmall?.copyWith(color: Colors.grey),
                     ),
                   ),
                 ],

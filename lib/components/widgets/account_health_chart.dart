@@ -9,13 +9,13 @@ import 'package:app_finance/_configs/theme_helper.dart';
 import 'package:app_finance/_ext/build_context_ext.dart';
 import 'package:app_finance/charts/gauge_linear_chart.dart';
 import 'package:app_finance/charts/interface/ohlc_data.dart';
-import 'package:app_finance/components/widgets/chart_account_flow.dart';
+import 'package:app_finance/components/widgets/account_flow_chart.dart';
 import 'package:app_finance/design/wrapper/text_wrapper.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-class ChartAccountHealth extends ChartAccountFlow {
-  const ChartAccountHealth({super.key});
+class AccountHealthChart extends AccountFlowChart {
+  const AccountHealthChart({super.key});
 
   double getHealthData(List<OhlcData> data) {
     double health = 0;

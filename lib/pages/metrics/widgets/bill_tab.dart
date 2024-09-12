@@ -9,7 +9,7 @@ import 'package:app_finance/_classes/structure/currency/exchange.dart';
 import 'package:app_finance/_configs/theme_helper.dart';
 import 'package:app_finance/_ext/build_context_ext.dart';
 import 'package:app_finance/charts/bar_race_chart.dart';
-import 'package:app_finance/components/widgets/chart_bill_ytd.dart';
+import 'package:app_finance/components/widgets/bill_ytd_chart.dart';
 import 'package:app_finance/design/wrapper/text_wrapper.dart';
 import 'package:flutter/material.dart';
 
@@ -35,7 +35,7 @@ class BillTab extends StatelessWidget {
         child: Column(
           crossAxisAlignment: AppDesign.getAlignment(),
           children: [
-            const ChartBillYtd(),
+            const BillYtdChart(),
             ThemeHelper.hIndent2x,
             TextWrapper(
               '${AppLocale.labels.chartBarRace}, ${Exchange.defaultCurrency?.code}',
