@@ -23,6 +23,9 @@ class UsageTabState extends AbstractTabState<UsageTab> {
   String getButtonTitle() => AppLocale.labels.acknowledgeTooltip;
 
   @override
+  IconData getButtonIcon() => Icons.library_add_check;
+
+  @override
   Widget buildContent(BuildContext context, BoxConstraints constraints) {
     final locale = AppLocale.labels.localeName;
     return FutureBuilder(

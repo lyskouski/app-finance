@@ -24,6 +24,9 @@ class PrivacyTabState extends AbstractTabState<PrivacyTab> {
   String getButtonTitle() => AppLocale.labels.acknowledgeTooltip;
 
   @override
+  IconData getButtonIcon() => Icons.library_add_check;
+
+  @override
   void updateState() {
     AppPreferences.set(AppPreferences.prefPrivacyPolicy, 'true');
     super.updateState();
