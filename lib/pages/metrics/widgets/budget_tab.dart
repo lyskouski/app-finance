@@ -3,8 +3,8 @@
 
 import 'package:app_finance/_classes/herald/app_design.dart';
 import 'package:app_finance/_configs/theme_helper.dart';
-import 'package:app_finance/components/component_budget_forecast.dart';
-import 'package:app_finance/components/component_budget_ytd.dart';
+import 'package:app_finance/components/widgets/budget_forecast_chart.dart';
+import 'package:app_finance/components/widgets/budget_ytd_chart.dart';
 import 'package:flutter/material.dart';
 
 class BudgetTab extends StatelessWidget {
@@ -23,9 +23,9 @@ class BudgetTab extends StatelessWidget {
         child: Column(
           crossAxisAlignment: AppDesign.getAlignment(),
           children: const [
-            ComponentBudgetForecast(),
+            BudgetForecastChart(),
             ThemeHelper.hIndent4x,
-            ComponentBudgetYtd(),
+            BudgetYtdChart(),
           ],
         ),
       ),

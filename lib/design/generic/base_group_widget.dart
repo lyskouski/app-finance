@@ -72,7 +72,7 @@ class BaseGroupWidget extends StatelessWidget {
     final textTheme = context.textTheme;
     final titleText = Text(
       title,
-      style: textTheme.bodyMedium,
+      style: textTheme.headlineMedium,
       overflow: TextOverflow.ellipsis,
     );
     final subTitle = Text(

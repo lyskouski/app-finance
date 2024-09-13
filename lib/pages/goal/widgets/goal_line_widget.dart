@@ -84,7 +84,7 @@ class GoalLineWidget extends StatelessWidget {
                     Column(
                       crossAxisAlignment: AppDesign.getAlignment(),
                       children: [
-                        TextWrapper(title, style: textTheme.bodyMedium),
+                        TextWrapper(title, style: textTheme.headlineMedium),
                         TextWrapper(AppLocale.labels.goalProfit(description), style: textTheme.numberSmall),
                       ],
                     ),
@@ -93,7 +93,7 @@ class GoalLineWidget extends StatelessWidget {
                   [
                     Padding(
                       padding: EdgeInsets.fromLTRB(0, indent - 1, 0, indent - 1),
-                      child: TextWrapper(title, style: textTheme.bodyMedium),
+                      child: TextWrapper(title, style: textTheme.headlineMedium),
                     ),
                   ],
                 [

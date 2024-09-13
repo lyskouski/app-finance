@@ -3,6 +3,7 @@
 
 import 'package:app_finance/_classes/herald/app_design.dart';
 import 'package:app_finance/_classes/herald/app_locale.dart';
+import 'package:app_finance/_configs/design_type.dart';
 import 'package:app_finance/design/form/list_selector_item.dart';
 import 'package:app_finance/_configs/theme_helper.dart';
 import 'package:app_finance/_ext/build_context_ext.dart';
@@ -10,6 +11,7 @@ import 'package:app_finance/_ext/color_ext.dart';
 import 'package:app_finance/design/form/simple_input.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_grid_layout/flutter_grid_layout.dart';
+import 'package:provider/provider.dart';
 
 typedef FntSelectorCallback = Widget Function(
   List<ListSelectorItem> options,
@@ -76,6 +78,10 @@ class ListSelectorPageState<T extends Object?> extends State<ListSelectorPage> {
 
   @override
   Widget build(BuildContext context) {
+    final design = Provider.of<AppDesign>(context, listen: false);
+    if (design.value == AppDesignType.germany) {
+      options.sort((a, b) => a.name.compareTo(b.name));
+    }
     final indent = ThemeHelper.getIndent();
     nav = Navigator.of(context);
     return Directionality(
@@ -140,7 +146,7 @@ class ListSelectorPageState<T extends Object?> extends State<ListSelectorPage> {
                       child: IconButton(
                         tooltip: AppLocale.labels.clear,
                         style: ButtonStyle(
-                          backgroundColor: MaterialStateProperty.all<Color>(
+                          backgroundColor: WidgetStateProperty.all<Color>(
                             context.colorScheme.surface.mesh(context.colorScheme.primary.withOpacity(1), 0.1),
                           ),
                         ),

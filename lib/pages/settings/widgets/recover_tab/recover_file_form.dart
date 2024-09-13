@@ -60,7 +60,7 @@ class RecoverFileFormState extends State<RecoverFileForm> {
         ),
         Text(
           widget.message,
-          style: textTheme.bodyMedium?.copyWith(color: context.colorScheme.inversePrimary),
+          style: textTheme.headlineMedium?.copyWith(color: context.colorScheme.inversePrimary),
         ),
         RequiredWidget(
           title: AppLocale.labels.path,

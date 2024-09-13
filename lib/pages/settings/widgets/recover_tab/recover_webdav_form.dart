@@ -64,7 +64,7 @@ class RecoverWebdavFormState extends State<RecoverWebdavForm> {
         ),
         Text(
           widget.message,
-          style: textTheme.bodyMedium?.copyWith(color: context.colorScheme.inversePrimary),
+          style: textTheme.headlineMedium?.copyWith(color: context.colorScheme.inversePrimary),
         ),
         RequiredWidget(
           title: AppLocale.labels.link,

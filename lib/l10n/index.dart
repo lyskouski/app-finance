@@ -33,7 +33,7 @@ const languageList = <LanguageDef>[
 
 String languageDesign(String? value) => switch (value) {
       'ar' => AppDesignType.rtlGeneral.name,
-      'ge' => AppDesignType.germany.name,
+      'de' => AppDesignType.germany.name,
       'zh' => AppDesignType.asiaGeneral.name,
       'fa' => AppDesignType.rtlGeneral.name,
       _ => AppDesignType.global.name,

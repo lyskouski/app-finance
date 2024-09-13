@@ -75,7 +75,7 @@ class BudgetLineWidget extends StatelessWidget {
                           Icon(icon, color: color, size: iconSize),
                         ],
                         [
-                          TextWrapper(title, style: textTheme.bodyMedium),
+                          TextWrapper(title, style: textTheme.headlineMedium),
                         ],
                         [
                           Align(
@@ -118,7 +118,7 @@ class BudgetLineWidget extends StatelessWidget {
                           Column(
                             crossAxisAlignment: AppDesign.getAlignment(),
                             children: [
-                              TextWrapper(title, style: textTheme.bodyMedium),
+                              TextWrapper(title, style: textTheme.headlineMedium),
                               TextWrapper(description, style: textTheme.numberSmall),
                             ],
                           ),
@@ -127,7 +127,7 @@ class BudgetLineWidget extends StatelessWidget {
                         [
                           Padding(
                             padding: EdgeInsets.fromLTRB(0, indent - 1, 0, indent - 1),
-                            child: TextWrapper(title, style: textTheme.bodyMedium),
+                            child: TextWrapper(title, style: textTheme.headlineMedium),
                           ),
                         ],
                       [

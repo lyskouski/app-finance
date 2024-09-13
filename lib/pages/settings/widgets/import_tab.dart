@@ -10,7 +10,7 @@ import 'package:app_finance/_classes/storage/transaction_log.dart';
 import 'package:app_finance/_classes/controller/focus_controller.dart';
 import 'package:app_finance/design/form/list_selector_item.dart';
 import 'package:app_finance/_classes/structure/interface_app_data.dart';
-import 'package:app_finance/_configs/date_format_helper.dart';
+import 'package:app_finance/_classes/controller/date_format_helper.dart';
 import 'package:app_finance/_classes/storage/app_preferences.dart';
 import 'package:app_finance/_configs/theme_helper.dart';
 import 'package:app_finance/_ext/build_context_ext.dart';
@@ -144,7 +144,7 @@ class ImportTabState extends State<ImportTab> {
             children: [
               ThemeHelper.hIndent2x,
               if (errorMessage.toString() != '')
-                Text(errorMessage.toString(), style: textTheme.bodyMedium?.copyWith(color: colorScheme.error)),
+                Text(errorMessage.toString(), style: textTheme.headlineMedium?.copyWith(color: colorScheme.error)),
               if (isLoading) ...[
                 SizedBox(height: indent * 6),
                 LoadingWidget(isLoading: isLoading),

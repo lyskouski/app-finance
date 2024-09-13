@@ -26,6 +26,8 @@ abstract class AbstractTabState<T extends AbstractTab> extends State<T> {
 
   void updateState() => widget.setState();
 
+  IconData getButtonIcon() => Icons.navigate_next;
+
   Widget buildButton(BuildContext context, BoxConstraints constraints) {
     return FullSizedButtonWidget(
       constraints: constraints,
@@ -33,7 +35,7 @@ abstract class AbstractTabState<T extends AbstractTab> extends State<T> {
       title: getButtonTitle() != ''
           ? '${getButtonTitle()} (${AppLocale.labels.goNextTooltip})'
           : AppLocale.labels.goNextTooltip,
-      icon: Icons.exit_to_app_rounded,
+      icon: getButtonIcon(),
     );
   }
 
