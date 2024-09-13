@@ -10,7 +10,11 @@ digraph G {
   }
   {
     rank = same; "components";
-    components_ [label="<0>COMPONENTS_|<component_bill_ytd>component_bill_ytd|<component_account_flow>component_account_flow|<component_budget_forecast>component_budget_forecast|<component_account_health>component_account_health|<component_recent>component_recent|<component_budget_ytd>component_budget_ytd|<component_chart>component_chart",fillcolor="silver:white", gradientangle=240, style="filled"];
+    widgets [label="<0>WIDGETS|<bill_ytd_chart>bill_ytd_chart|<budget_ytd_chart>budget_ytd_chart|<budget_forecast_chart>budget_forecast_chart|<account_flow_chart>account_flow_chart|<account_widget>account_widget|<budget_widget>budget_widget|<account_health_chart>account_health_chart|<bill_widget>bill_widget",fillcolor="silver:white", gradientangle=240, style="filled"];
+  }
+  {
+    rank = same; "components";
+    components_ [label="<0>COMPONENTS_|<component_recent>component_recent|<component_chart>component_chart",fillcolor="silver:white", gradientangle=240, style="filled"];
   }
   {
     rank = same; "components";
@@ -74,7 +78,7 @@ digraph G {
   }
   {
     rank = same; "_classes";
-    controller [label="<0>CONTROLLER|<focus_controller>focus_controller|<encryption_handler>encryption_handler|<delayed_call>delayed_call|<fallback_localization_delegate>fallback_localization_delegate|<flow_state_machine>flow_state_machine|<iterator_controller>iterator_controller|<exchange_controller>exchange_controller|<purchase_controller>purchase_controller",fillcolor="silver:white", gradientangle=240, style="filled"];
+    controller [label="<0>CONTROLLER|<date_format_helper>date_format_helper|<focus_controller>focus_controller|<encryption_handler>encryption_handler|<delayed_call>delayed_call|<fallback_localization_delegate>fallback_localization_delegate|<flow_state_machine>flow_state_machine|<iterator_controller>iterator_controller|<exchange_controller>exchange_controller|<purchase_controller>purchase_controller",fillcolor="silver:white", gradientangle=240, style="filled"];
   }
   {
     rank = same; "_classes";
@@ -86,11 +90,11 @@ digraph G {
   }
   {
     rank = same; "_configs";
-    _configs_ [label="<0>_CONFIGS_|<date_format_helper>date_format_helper|<theme_helper>theme_helper|<design_type>design_type|<custom_text_theme>custom_text_theme|<custom_color_scheme>custom_color_scheme|<screen_helper>screen_helper|<firebase_options>firebase_options|<account_type>account_type",fillcolor="silver:white", gradientangle=240, style="filled"];
+    _configs_ [label="<0>_CONFIGS_|<theme_helper>theme_helper|<design_type>design_type|<custom_text_theme>custom_text_theme|<custom_color_scheme>custom_color_scheme|<screen_helper>screen_helper|<firebase_options>firebase_options|<account_type>account_type",fillcolor="silver:white", gradientangle=240, style="filled"];
   }
   {
     rank = same; "_ext";
-    _ext_ [label="<0>_EXT_|<build_context_ext>build_context_ext|<string_ext>string_ext|<iterable_ext>iterable_ext|<color_ext>color_ext|<double_ext>double_ext|<date_time_ext>date_time_ext|<icons_ext>icons_ext|<int_ext>int_ext",fillcolor="silver:white", gradientangle=240, style="filled"];
+    _ext_ [label="<0>_EXT_|<build_context_ext>build_context_ext|<string_ext>string_ext|<iterable_ext>iterable_ext|<color_ext>color_ext|<double_ext>double_ext|<date_time_ext>date_time_ext|<icons_ext>icons_ext|<int_ext>int_ext|<data_ext>data_ext",fillcolor="silver:white", gradientangle=240, style="filled"];
   }
   {
     rank = same; "_mixins";
@@ -162,7 +166,7 @@ digraph G {
   }
   {
     rank = same; "pages";
-    home_widgets [label="<0>HOME_WIDGETS|<goal_line_widget>goal_line_widget|<init_tab>init_tab|<goal_widget>goal_widget|<account_widget>account_widget|<budget_widget>budget_widget|<bill_widget>bill_widget",fillcolor="silver:white", gradientangle=240, style="filled"];
+    home_widgets [label="<0>HOME_WIDGETS|<goal_line_widget>goal_line_widget|<init_tab>init_tab|<goal_widget>goal_widget",fillcolor="silver:white", gradientangle=240, style="filled"];
   }
   {
     rank = same; "pages";
@@ -212,68 +216,82 @@ digraph G {
     rank = same; "pages";
     metrics [label="<0>METRICS|<metrics_page>metrics_page",fillcolor="silver:white", gradientangle=240, style="filled"];
   }
+  widgets -> herald [color="#FF00FF50"];
+  widgets -> storage [color="#FF00FF50"];
+  widgets -> structure [color="#FF00FF50"];
+  widgets -> structure_currency [color="#FF00FF50"];
+  widgets -> _configs_ [color="#FF00FF50"];
+  widgets -> _ext_ [color="#FF00FF50"];
+  widgets -> charts_ [color="#FF00FF50"];
+  widgets -> data [color="#FF00FF50"];
+  widgets -> interface [color="#FF00FF50"];
+  widgets -> wrapper [color="#FF00FF50"];
+  widgets -> herald [color="#FF00FF50"];
+  widgets -> storage [color="#FF00FF50"];
+  widgets -> structure [color="#FF00FF50"];
+  widgets -> structure_currency [color="#FF00FF50"];
+  widgets -> _configs_ [color="#FF00FF50"];
+  widgets -> _ext_ [color="#FF00FF50"];
+  widgets -> charts_ [color="#FF00FF50"];
+  widgets -> data [color="#FF00FF50"];
+  widgets -> interface [color="#FF00FF50"];
+  widgets -> wrapper [color="#FF00FF50"];
+  widgets -> herald [color="#FF00FF50"];
+  widgets -> storage [color="#FF00FF50"];
+  widgets -> structure [color="#FF00FF50"];
+  widgets -> structure_currency [color="#FF00FF50"];
+  widgets -> _configs_ [color="#FF00FF50"];
+  widgets -> _ext_ [color="#FF00FF50"];
+  widgets -> data [color="#FF00FF50"];
+  widgets -> charts_ [color="#FF00FF50"];
+  widgets -> interface [color="#FF00FF50"];
+  widgets -> widgets [color="#FF00FF50"];
+  widgets -> wrapper [color="#FF00FF50"];
+  widgets -> herald [color="#FF00FF50"];
+  widgets -> storage [color="#FF00FF50"];
+  widgets -> structure [color="#FF00FF50"];
+  widgets -> structure_currency [color="#FF00FF50"];
+  widgets -> _configs_ [color="#FF00FF50"];
+  widgets -> _ext_ [color="#FF00FF50"];
+  widgets -> data [color="#FF00FF50"];
+  widgets -> interface [color="#FF00FF50"];
+  widgets -> charts_ [color="#FF00FF50"];
+  widgets -> wrapper [color="#FF00FF50"];
+  widgets -> storage [color="#FF00FF50"];
+  widgets -> structure_navigation [color="#FF00FF50"];
+  widgets -> structure [color="#FF00FF50"];
+  widgets -> structure_currency [color="#FF00FF50"];
+  widgets -> _configs_ [color="#FF00FF50"];
+  widgets -> generic [color="#FF00FF50"];
+  widgets -> structure_currency [color="#FF00FF50"];
+  widgets -> structure_navigation [color="#FF00FF50"];
+  widgets -> structure [color="#FF00FF50"];
+  widgets -> _configs_ [color="#FF00FF50"];
+  widgets -> generic [color="#FF00FF50"];
+  widgets -> widgets [color="#FF00FF50"];
+  widgets -> herald [color="#FF00FF50"];
+  widgets -> storage [color="#FF00FF50"];
+  widgets -> structure [color="#FF00FF50"];
+  widgets -> _configs_ [color="#FF00FF50"];
+  widgets -> _ext_ [color="#FF00FF50"];
+  widgets -> charts_ [color="#FF00FF50"];
+  widgets -> interface [color="#FF00FF50"];
+  widgets -> widgets [color="#FF00FF50"];
+  widgets -> wrapper [color="#FF00FF50"];
+  widgets -> structure_navigation [color="#FF00FF50"];
+  widgets -> generic [color="#FF00FF50"];
   components_ -> herald [color="#FF00FF50"];
   components_ -> storage [color="#FF00FF50"];
-  components_ -> structure [color="#FF00FF50"];
   components_ -> structure_currency [color="#FF00FF50"];
-  components_ -> _configs_ [color="#FF00FF50"];
-  components_ -> _ext_ [color="#FF00FF50"];
-  components_ -> charts_ [color="#FF00FF50"];
-  components_ -> data [color="#FF00FF50"];
-  components_ -> interface [color="#FF00FF50"];
-  components_ -> wrapper [color="#FF00FF50"];
-  components_ -> herald [color="#FF00FF50"];
-  components_ -> storage [color="#FF00FF50"];
-  components_ -> structure [color="#FF00FF50"];
-  components_ -> structure_currency [color="#FF00FF50"];
-  components_ -> _configs_ [color="#FF00FF50"];
-  components_ -> _ext_ [color="#FF00FF50"];
-  components_ -> data [color="#FF00FF50"];
-  components_ -> interface [color="#FF00FF50"];
-  components_ -> charts_ [color="#FF00FF50"];
-  components_ -> wrapper [color="#FF00FF50"];
-  components_ -> herald [color="#FF00FF50"];
-  components_ -> storage [color="#FF00FF50"];
-  components_ -> structure [color="#FF00FF50"];
-  components_ -> structure_currency [color="#FF00FF50"];
-  components_ -> _configs_ [color="#FF00FF50"];
-  components_ -> _ext_ [color="#FF00FF50"];
-  components_ -> data [color="#FF00FF50"];
-  components_ -> charts_ [color="#FF00FF50"];
-  components_ -> interface [color="#FF00FF50"];
-  components_ -> components_ [color="#FF00FF50"];
-  components_ -> wrapper [color="#FF00FF50"];
-  components_ -> herald [color="#FF00FF50"];
-  components_ -> storage [color="#FF00FF50"];
-  components_ -> structure [color="#FF00FF50"];
-  components_ -> _configs_ [color="#FF00FF50"];
-  components_ -> _ext_ [color="#FF00FF50"];
-  components_ -> charts_ [color="#FF00FF50"];
-  components_ -> interface [color="#FF00FF50"];
-  components_ -> components_ [color="#FF00FF50"];
-  components_ -> wrapper [color="#FF00FF50"];
-  components_ -> herald [color="#FF00FF50"];
-  components_ -> storage [color="#FF00FF50"];
-  components_ -> structure_currency [color="#FF00FF50"];
-  components_ -> form [color="#FF00FF50"];
   components_ -> structure_navigation [color="#FF00FF50"];
   components_ -> _configs_ [color="#FF00FF50"];
   components_ -> _ext_ [color="#FF00FF50"];
   components_ -> _core [color="#FF00FF50"];
-  components_ -> home_widgets [color="#FF00FF50"];
+  components_ -> widgets [color="#FF00FF50"];
+  components_ -> form [color="#FF00FF50"];
   components_ -> generic [color="#FF00FF50"];
   components_ -> herald [color="#FF00FF50"];
-  components_ -> storage [color="#FF00FF50"];
-  components_ -> structure [color="#FF00FF50"];
-  components_ -> structure_currency [color="#FF00FF50"];
-  components_ -> _configs_ [color="#FF00FF50"];
-  components_ -> _ext_ [color="#FF00FF50"];
-  components_ -> charts_ [color="#FF00FF50"];
-  components_ -> data [color="#FF00FF50"];
-  components_ -> interface [color="#FF00FF50"];
-  components_ -> wrapper [color="#FF00FF50"];
-  components_ -> herald [color="#FF00FF50"];
-  components_ -> components_ [color="#FF00FF50"];
+  components_ -> widgets [color="#FF00FF50"];
   components_ -> form [color="#FF00FF50"];
   components_ -> _configs_ [color="#FF00FF50"];
   components_ -> _ext_ [color="#FF00FF50"];
@@ -415,8 +433,8 @@ digraph G {
   form -> _ext_ [color="#0000FF50"];
   form -> form [color="#0000FF50"];
   form -> herald [color="#0000FF50"];
-  form -> form [color="#0000FF50"];
   form -> _configs_ [color="#0000FF50"];
+  form -> form [color="#0000FF50"];
   form -> _ext_ [color="#0000FF50"];
   form -> herald [color="#0000FF50"];
   form -> _configs_ [color="#0000FF50"];
@@ -589,6 +607,7 @@ digraph G {
   math -> math [color="green"];
   math -> storage [color="green"];
   math -> structure [color="green"];
+  controller -> herald [color="green"];
   controller -> controller [color="green"];
   controller -> _configs_ [color="green"];
   controller -> storage [color="green"];
@@ -621,7 +640,7 @@ digraph G {
   storage_transaction_log -> storage [color="green"];
   storage -> controller [color="green"];
   storage -> storage [color="green"];
-  storage -> structure [color="green"];
+  storage -> _ext_ [color="green"];
   storage -> controller [color="green"];
   storage -> herald [color="green"];
   storage -> math [color="green"];
@@ -632,7 +651,6 @@ digraph G {
   storage -> herald [color="green"];
   storage -> storage [color="green"];
   storage -> file [color="green"];
-  _configs_ -> herald [color="green"];
   _configs_ -> herald [color="green"];
   _configs_ -> _configs_ [color="green"];
 
@@ -651,6 +669,8 @@ digraph G {
   _ext_ -> herald [color="green"];
 
 
+  _ext_ -> storage [color="green"];
+  _ext_ -> structure [color="green"];
 
 
   file -> herald [color="green"];
@@ -729,8 +749,8 @@ digraph G {
   _interfaces -> _interfaces_widgets [color="#F0F0F050"];
   _interfaces -> wrapper [color="#F0F0F050"];
   _interfaces -> button [color="#F0F0F050"];
-  budget -> storage [color="#F0F0F050"];
   budget -> herald [color="#F0F0F050"];
+  budget -> storage [color="#F0F0F050"];
   budget -> structure [color="#F0F0F050"];
   budget -> structure_currency [color="#F0F0F050"];
   budget -> _configs_ [color="#F0F0F050"];
@@ -940,20 +960,6 @@ digraph G {
   home_widgets -> _ext_ [color="#F0F0F050"];
   home_widgets -> wrapper [color="#F0F0F050"];
   home_widgets -> home_widgets [color="#F0F0F050"];
-  home_widgets -> storage [color="#F0F0F050"];
-  home_widgets -> structure_navigation [color="#F0F0F050"];
-  home_widgets -> structure [color="#F0F0F050"];
-  home_widgets -> structure_currency [color="#F0F0F050"];
-  home_widgets -> _configs_ [color="#F0F0F050"];
-  home_widgets -> generic [color="#F0F0F050"];
-  home_widgets -> structure_currency [color="#F0F0F050"];
-  home_widgets -> structure_navigation [color="#F0F0F050"];
-  home_widgets -> structure [color="#F0F0F050"];
-  home_widgets -> _configs_ [color="#F0F0F050"];
-  home_widgets -> generic [color="#F0F0F050"];
-  home_widgets -> home_widgets [color="#F0F0F050"];
-  home_widgets -> structure_navigation [color="#F0F0F050"];
-  home_widgets -> generic [color="#F0F0F050"];
   home -> herald [color="#F0F0F050"];
   home -> storage [color="#F0F0F050"];
   home -> _configs_ [color="#F0F0F050"];
@@ -967,6 +973,7 @@ digraph G {
   home -> _configs_ [color="#F0F0F050"];
   home -> structure_navigation [color="#F0F0F050"];
   home -> _core [color="#F0F0F050"];
+  home -> widgets [color="#F0F0F050"];
   home -> components_ [color="#F0F0F050"];
   home -> _interfaces [color="#F0F0F050"];
   home -> home [color="#F0F0F050"];
@@ -1034,8 +1041,8 @@ digraph G {
   account -> _interfaces [color="#F0F0F050"];
   account -> form [color="#F0F0F050"];
   account -> button [color="#F0F0F050"];
-  account -> storage [color="#F0F0F050"];
   account -> herald [color="#F0F0F050"];
+  account -> storage [color="#F0F0F050"];
   account -> structure [color="#F0F0F050"];
   account -> structure_currency [color="#F0F0F050"];
   account -> _configs_ [color="#F0F0F050"];
@@ -1139,7 +1146,7 @@ digraph G {
   metrics_widgets -> _configs_ [color="#F0F0F050"];
   metrics_widgets -> _ext_ [color="#F0F0F050"];
   metrics_widgets -> charts_ [color="#F0F0F050"];
-  metrics_widgets -> components_ [color="#F0F0F050"];
+  metrics_widgets -> widgets [color="#F0F0F050"];
   metrics_widgets -> wrapper [color="#F0F0F050"];
   metrics_widgets -> herald [color="#F0F0F050"];
   metrics_widgets -> storage [color="#F0F0F050"];
@@ -1149,12 +1156,12 @@ digraph G {
   metrics_widgets -> _ext_ [color="#F0F0F050"];
   metrics_widgets -> charts_ [color="#F0F0F050"];
   metrics_widgets -> interface [color="#F0F0F050"];
-  metrics_widgets -> components_ [color="#F0F0F050"];
+  metrics_widgets -> widgets [color="#F0F0F050"];
   metrics_widgets -> generic [color="#F0F0F050"];
   metrics_widgets -> wrapper [color="#F0F0F050"];
   metrics_widgets -> herald [color="#F0F0F050"];
   metrics_widgets -> _configs_ [color="#F0F0F050"];
-  metrics_widgets -> components_ [color="#F0F0F050"];
+  metrics_widgets -> widgets [color="#F0F0F050"];
   metrics -> herald [color="#F0F0F050"];
   metrics -> _configs_ [color="#F0F0F050"];
   metrics -> _interfaces [color="#F0F0F050"];

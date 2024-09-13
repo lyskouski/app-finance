@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2024-09-12 12:34:24</td>
+            <td class="headerValue">2024-09-13 08:25:47</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">0</td>
@@ -72,7 +72,7 @@
 <a name="10"><span class="lineNum">      10 </span>            : import 'package:app_finance/_classes/controller/focus_controller.dart';</a>
 <a name="11"><span class="lineNum">      11 </span>            : import 'package:app_finance/design/form/list_selector_item.dart';</a>
 <a name="12"><span class="lineNum">      12 </span>            : import 'package:app_finance/_classes/structure/interface_app_data.dart';</a>
-<a name="13"><span class="lineNum">      13 </span>            : import 'package:app_finance/_configs/date_format_helper.dart';</a>
+<a name="13"><span class="lineNum">      13 </span>            : import 'package:app_finance/_classes/controller/date_format_helper.dart';</a>
 <a name="14"><span class="lineNum">      14 </span>            : import 'package:app_finance/_classes/storage/app_preferences.dart';</a>
 <a name="15"><span class="lineNum">      15 </span>            : import 'package:app_finance/_configs/theme_helper.dart';</a>
 <a name="16"><span class="lineNum">      16 </span>            : import 'package:app_finance/_ext/build_context_ext.dart';</a>
@@ -206,7 +206,7 @@
 <a name="144"><span class="lineNum">     144 </span><span class="lineNoCov">          0 :             children: [</span></a>
 <a name="145"><span class="lineNum">     145 </span>            :               ThemeHelper.hIndent2x,</a>
 <a name="146"><span class="lineNum">     146 </span><span class="lineNoCov">          0 :               if (errorMessage.toString() != '')</span></a>
-<a name="147"><span class="lineNum">     147 </span><span class="lineNoCov">          0 :                 Text(errorMessage.toString(), style: textTheme.bodyMedium?.copyWith(color: colorScheme.error)),</span></a>
+<a name="147"><span class="lineNum">     147 </span><span class="lineNoCov">          0 :                 Text(errorMessage.toString(), style: textTheme.headlineMedium?.copyWith(color: colorScheme.error)),</span></a>
 <a name="148"><span class="lineNum">     148 </span><span class="lineNoCov">          0 :               if (isLoading) ...[</span></a>
 <a name="149"><span class="lineNum">     149 </span><span class="lineNoCov">          0 :                 SizedBox(height: indent * 6),</span></a>
 <a name="150"><span class="lineNum">     150 </span><span class="lineNoCov">          0 :                 LoadingWidget(isLoading: isLoading),</span></a>

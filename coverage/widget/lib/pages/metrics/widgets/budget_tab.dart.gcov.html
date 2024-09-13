@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2024-09-12 12:34:24</td>
+            <td class="headerValue">2024-09-13 08:25:47</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">0</td>
@@ -65,8 +65,8 @@
 <a name="3"><span class="lineNum">       3 </span>            : </a>
 <a name="4"><span class="lineNum">       4 </span>            : import 'package:app_finance/_classes/herald/app_design.dart';</a>
 <a name="5"><span class="lineNum">       5 </span>            : import 'package:app_finance/_configs/theme_helper.dart';</a>
-<a name="6"><span class="lineNum">       6 </span>            : import 'package:app_finance/components/component_budget_forecast.dart';</a>
-<a name="7"><span class="lineNum">       7 </span>            : import 'package:app_finance/components/component_budget_ytd.dart';</a>
+<a name="6"><span class="lineNum">       6 </span>            : import 'package:app_finance/components/widgets/budget_forecast_chart.dart';</a>
+<a name="7"><span class="lineNum">       7 </span>            : import 'package:app_finance/components/widgets/budget_ytd_chart.dart';</a>
 <a name="8"><span class="lineNum">       8 </span>            : import 'package:flutter/material.dart';</a>
 <a name="9"><span class="lineNum">       9 </span>            : </a>
 <a name="10"><span class="lineNum">      10 </span>            : class BudgetTab extends StatelessWidget {</a>
@@ -85,9 +85,9 @@
 <a name="23"><span class="lineNum">      23 </span><span class="lineNoCov">          0 :         child: Column(</span></a>
 <a name="24"><span class="lineNum">      24 </span><span class="lineNoCov">          0 :           crossAxisAlignment: AppDesign.getAlignment(),</span></a>
 <a name="25"><span class="lineNum">      25 </span>            :           children: const [</a>
-<a name="26"><span class="lineNum">      26 </span>            :             ComponentBudgetForecast(),</a>
+<a name="26"><span class="lineNum">      26 </span>            :             BudgetForecastChart(),</a>
 <a name="27"><span class="lineNum">      27 </span>            :             ThemeHelper.hIndent4x,</a>
-<a name="28"><span class="lineNum">      28 </span>            :             ComponentBudgetYtd(),</a>
+<a name="28"><span class="lineNum">      28 </span>            :             BudgetYtdChart(),</a>
 <a name="29"><span class="lineNum">      29 </span>            :           ],</a>
 <a name="30"><span class="lineNum">      30 </span>            :         ),</a>
 <a name="31"><span class="lineNum">      31 </span>            :       ),</a>
