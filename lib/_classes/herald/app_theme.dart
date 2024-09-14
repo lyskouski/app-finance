@@ -5,7 +5,7 @@ import 'package:app_finance/_classes/storage/app_preferences.dart';
 import 'package:flutter/material.dart';
 
 class AppTheme extends ValueNotifier<ThemeMode> {
-  AppTheme(ThemeMode value) : super(value) {
+  AppTheme(super.value) {
     final val = AppPreferences.get(AppPreferences.prefTheme);
     if (val != null) {
       _set(val);
