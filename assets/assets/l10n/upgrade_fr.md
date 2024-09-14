@@ -2,6 +2,11 @@
 
 _La liste complète des mises à jour peut être consultée via l'élément de navigation "À propos" du bouton "Conseils"._
 
+### 5.6.0
+- Amélioration des pages d'introduction
+- Introduction de l'onglet Résumé des comptes et des budgets
+- Ajout des langues italienne (IT) et turque (TR)
+
 ### 5.5.1
 - Correction de la récupération à partir d'un fichier .log pour Android
 - Ajout des langues japonaise (JA) et espagnole (ES) 

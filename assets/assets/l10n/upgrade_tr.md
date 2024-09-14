@@ -2,6 +2,11 @@
 
 _Güncellemelerin tam listesi “İpuçları” düğmesindeki “Hakkında” gezinti öğesi aracılığıyla görüntülenebilir._
 
+### 5.6.0
+- Giriş sayfalarının iyileştirilmesi
+- Hesaplar ve Bütçeler Özet sekmesinin tanıtımı
+- İtalyanca (IT) ve Türkçe (TR) dillerinin eklenmesi
+
 ### 5.5.1
 - Android için bir .log dosyasından kurtarmayı düzeltme
 - Japonca (JA) ve İspanyolca (ES) dillerinin eklenmesi 

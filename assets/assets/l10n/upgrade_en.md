@@ -2,6 +2,11 @@
 
 _The full list of updates can be viewed via the "About" navigation item on the "Hints" button._
 
+### 5.6.0
+- Enhancing introductory pages
+- Introducing Accounts and Budgets Summary tab
+- Adding Italian (IT) and Turkish (TR) languages
+
 ### 5.5.1
 - Fixing recovery from a .log-file for Android
 - Adding Japanese (JA) and Spanish (ES) languages 

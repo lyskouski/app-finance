@@ -2,6 +2,11 @@
 
 _Yangilanishlarning toʻliq roʻyxatini “Maslahat” tugmasidagi “Haqida” navigatsiya bandi orqali koʻrish mumkin._
 
+### 5.6.0
+- Kirish sahifalarini yaxshilash
+- Hisoblar va byudjetlar sarhisobi yorlig'i bilan tanishish
+- Italiya (IT) va turk (TR) tillarini qo'shish
+
 ### 5.5.1
 - Android uchun .log-fayldan tiklashni tuzatish
 - Yapon (JA) va ispan (ES) tillarini qo'shish

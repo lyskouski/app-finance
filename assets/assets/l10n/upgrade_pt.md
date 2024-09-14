@@ -2,6 +2,11 @@
 
 _A lista completa de actualizações pode ser consultada através do item de navegação "Acerca" no botão "Sugestões".
 
+### 5.6.0
+- Melhoria das páginas introdutórias
+- Introdução do separador Resumo das contas e dos orçamentos
+- Adição dos idiomas italiano (IT) e turco (TR)
+
 ### 5.5.1
 - Correção da recuperação a partir de um ficheiro .log para Android
 - Adição dos idiomas japonês (JA) e espanhol (ES) 

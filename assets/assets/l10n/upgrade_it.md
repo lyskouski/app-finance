@@ -3,6 +3,11 @@
 _L'elenco completo degli aggiornamenti può essere consultato tramite la voce di navigazione “Informazioni” del 
 pulsante “Suggerimenti”._
 
+### 5.6.0
+- Miglioramento delle pagine introduttive
+- Introduzione della scheda Riepilogo conti e bilanci
+- Aggiunta delle lingue italiano (IT) e turco (TR)
+
 ### 5.5.1
 - Correzione del ripristino da un file .log per Android
 - Aggiunta delle lingue giapponese (JA) e spagnola (ES)

@@ -2,6 +2,11 @@
 
 _Poŭny spis abnaŭlieńniaŭ možna prahliadzieć u navihacyjnym punkcie «Ab Dadatku» na knopcy «Padkazki»._ 
 
+### 5.6.0 
+- Paliapšeńnie ŭstupnych staronak 
+- Znajomstva z ukladkaj «Zvodka ŭlikovych zapisaŭ i biudžetaŭ»
+- Dadannie itaĺjanskaj (IT) i tureckaj (TR) moŭ
+
 ### 5.5.1
 - Vypraŭlieńnie adnaŭlieńnia z .log-fajla dlia Android
 - Dadańnie japonskaj (JA) i ispanskaj (ES) moŭ
