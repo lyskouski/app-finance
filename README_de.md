@@ -107,7 +107,7 @@ in Betracht ziehen:
 * [Patreon](https://www.patreon.com/terCAD)
 * [Donorbox](https://donorbox.org/tercad)
 
-Or, [mich zum :coffee: einladen](https://www.buymeacoffee.com/lyskouski).
+Or, [kauf mir einen :coffee:](https://www.buymeacoffee.com/lyskouski).
 
 ## Beiträge
 
