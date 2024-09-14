@@ -2,6 +2,11 @@
 
 _Yeniləmələrin tam siyahısına "İpucu" düyməsindəki "Haqqında" naviqasiya elementi vasitəsilə baxmaq olar._
 
+### 5.6.0
+- Giriş səhifələrinin təkmilləşdirilməsi
+- Hesablar və Büdcələrin Xülasə nişanı ilə tanış olun
+- İtalyan (IT) və Türk (TR) dillərinin əlavə edilməsi
+
 ### 5.5.1
 - Android üçün .log-faylından bərpanın düzəldilməsi
 - Yapon (JA) və İspan (ES) dillərinin əlavə edilməsi

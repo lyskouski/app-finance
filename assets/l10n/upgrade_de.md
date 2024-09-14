@@ -2,6 +2,11 @@
 
 _Die vollständige Liste der Updates kann über den Navigationspunkt "Über" auf der Schaltfläche "Hinweise" eingesehen werden._
 
+### 5.6.0
+- Verbesserung der Einführungsseiten
+- Einführung der Registerkarte Konten- und Budgetzusammenfassung
+- Hinzufügen der Sprachen Italienisch (IT) und Türkisch (TR)
+
 ### 5.5.1
 - Korrektur der Wiederherstellung aus einer .log-Datei für Android
 - Hinzufügen der Sprachen Japanisch (JA) und Spanisch (ES) 
