@@ -105,7 +105,7 @@ financially towards the efforts, please consider these options:
 * [Patreon](https://www.patreon.com/terCAD)
 * [Donorbox](https://donorbox.org/tercad)
 
-Or, [treat me to :coffee:](https://www.buymeacoffee.com/lyskouski).
+Or, [buy a :coffee:](https://www.buymeacoffee.com/lyskouski).
 
 ## Contributions
 
