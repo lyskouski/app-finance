@@ -222,7 +222,7 @@ jobs:
         with: 
           keychain: signing_distr
           p12-file-base64: ${{ secrets.APPLE_MAC_P12 }}
-          p12-password: ${{ secrets.APPLE_P12_KEY }}
+          p12-password: ${{ secrets.APPLE_MAC_P12_KEY }}
 
       - name: Sign macOS Package
         if: matrix.target == 'macOS'
@@ -236,7 +236,7 @@ jobs:
         with: 
           keychain: signing_installer
           p12-file-base64: ${{ secrets.APPLE_MAC_INSTALLER }}
-          p12-password: ${{ secrets.APPLE_P12_KEY }}
+          p12-password: ${{ secrets.APPLE_MAC_P12_KEY }}
 
       - name: Create macOS Package for Apple Store
         if: matrix.target == 'macOS'
