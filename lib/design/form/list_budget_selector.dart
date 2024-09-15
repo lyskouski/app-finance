@@ -28,8 +28,8 @@ class ListBudgetSelectorItem extends ListAccountSelectorItem {
       });
 
   ListBudgetSelectorItem({
-    required BudgetAppData? item,
-  }) : super(item: item);
+    required BudgetAppData? super.item,
+  });
 }
 
 class ListBudgetSelector extends ListAccountSelector<ListBudgetSelectorItem> {

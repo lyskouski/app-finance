@@ -99,6 +99,7 @@ abstract class AbstractAppData implements InterfaceAppData {
   // ignore: unnecessary_getters_setters
   @override
   DateTime get createdAt => _createdAt;
+  @override
   set createdAt(DateTime value) => _createdAt = value;
   String get createdAtFormatted => _createdAt.yMEd();
   set createdAtFormatted(String value) => _createdAt = DateTime.parse(value);

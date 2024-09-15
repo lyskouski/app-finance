@@ -37,10 +37,10 @@ class ElevatedButtonWidget extends StatelessWidget {
         width: double.infinity,
         child: ElevatedButton(
           style: ButtonStyle(
-            shape: MaterialStateProperty.resolveWith((states) => const ContinuousRectangleBorder()),
-            backgroundColor: MaterialStateProperty.resolveWith<Color>(
+            shape: WidgetStateProperty.resolveWith((states) => const ContinuousRectangleBorder()),
+            backgroundColor: WidgetStateProperty.resolveWith<Color>(
               (states) {
-                if (states.contains(MaterialState.hovered)) {
+                if (states.contains(WidgetState.hovered)) {
                   return hoveredColor ?? colorScheme.onSecondaryContainer;
                 }
                 return backgroundColor ?? colorScheme.secondary;

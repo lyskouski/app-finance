@@ -10,8 +10,8 @@ class FocusWrapper extends InheritedWidget {
   const FocusWrapper({
     super.key,
     required this.controller,
-    required Widget child,
-  }) : super(child: child);
+    required super.child,
+  });
 
   static FocusController? of(BuildContext context) =>
       context.dependOnInheritedWidgetOfExactType<FocusWrapper>()?.controller;

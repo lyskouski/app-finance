@@ -22,13 +22,11 @@ class BudgetWidget extends AccountWidget {
     super.tooltip,
     super.limit,
     super.route,
-    String routeList = AppRoute.budgetViewRoute,
+    super.routeList = AppRoute.budgetViewRoute,
     super.hasExpand,
     super.toExpand,
     super.callback,
-  }) : super(
-          routeList: routeList,
-        );
+  });
 
   @override
   Widget buildGroupedListWidget(List<dynamic> items, BuildContext context) {
