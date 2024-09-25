@@ -32,12 +32,12 @@
             <td></td>
             <td class="headerItem">Lines:</td>
             <td class="headerCovTableEntry">0</td>
-            <td class="headerCovTableEntry">32</td>
+            <td class="headerCovTableEntry">27</td>
             <td class="headerCovTableEntryLo">0.0 %</td>
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2024-09-15 16:50:22</td>
+            <td class="headerValue">2024-09-25 09:54:22</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">0</td>
@@ -70,10 +70,10 @@
 <a name="8"><span class="lineNum">       8 </span>            : import 'package:app_finance/design/form/list_selector_item.dart';</a>
 <a name="9"><span class="lineNum">       9 </span>            : import 'package:app_finance/_configs/theme_helper.dart';</a>
 <a name="10"><span class="lineNum">      10 </span>            : import 'package:app_finance/design/wrapper/input_wrapper.dart';</a>
-<a name="11"><span class="lineNum">      11 </span>            : import 'package:app_finance/l10n/index.dart';</a>
-<a name="12"><span class="lineNum">      12 </span>            : import 'package:app_finance/pages/start/widgets/abstract_tab.dart';</a>
-<a name="13"><span class="lineNum">      13 </span>            : import 'package:flutter/material.dart';</a>
-<a name="14"><span class="lineNum">      14 </span>            : import 'package:flutter_markdown/flutter_markdown.dart';</a>
+<a name="11"><span class="lineNum">      11 </span>            : import 'package:app_finance/design/wrapper/markdown_builder_wrapper.dart';</a>
+<a name="12"><span class="lineNum">      12 </span>            : import 'package:app_finance/l10n/index.dart';</a>
+<a name="13"><span class="lineNum">      13 </span>            : import 'package:app_finance/pages/start/widgets/abstract_tab.dart';</a>
+<a name="14"><span class="lineNum">      14 </span>            : import 'package:flutter/material.dart';</a>
 <a name="15"><span class="lineNum">      15 </span>            : import 'package:provider/provider.dart';</a>
 <a name="16"><span class="lineNum">      16 </span>            : </a>
 <a name="17"><span class="lineNum">      17 </span>            : class AboutTab extends AbstractTab {</a>
@@ -122,24 +122,17 @@
 <a name="60"><span class="lineNum">      60 </span><span class="lineNoCov">          0 :           onChange: (v) =&gt; saveLocale(v ?? AppLocale.code),</span></a>
 <a name="61"><span class="lineNum">      61 </span>            :         ),</a>
 <a name="62"><span class="lineNum">      62 </span><span class="lineNoCov">          0 :         Expanded(</span></a>
-<a name="63"><span class="lineNum">      63 </span><span class="lineNoCov">          0 :           child: FutureBuilder(</span></a>
-<a name="64"><span class="lineNum">      64 </span><span class="lineNoCov">          0 :             future: DefaultAssetBundle.of(context).loadString('./assets/l10n/about_${locale.value!}.md'),</span></a>
-<a name="65"><span class="lineNum">      65 </span><span class="lineNoCov">          0 :             builder: (BuildContext context, AsyncSnapshot&lt;String&gt; snapshot) {</span></a>
-<a name="66"><span class="lineNum">      66 </span><span class="lineNoCov">          0 :               if (snapshot.hasData) {</span></a>
-<a name="67"><span class="lineNum">      67 </span><span class="lineNoCov">          0 :                 return Markdown(</span></a>
-<a name="68"><span class="lineNum">      68 </span><span class="lineNoCov">          0 :                     data: snapshot.data!.replaceAll('../images', 'resource:assets/images'),</span></a>
-<a name="69"><span class="lineNum">      69 </span><span class="lineNoCov">          0 :                     onTapLink: (_, link, __) =&gt; link != null &amp;&amp; link.contains('youtu.be')</span></a>
-<a name="70"><span class="lineNum">      70 </span><span class="lineNoCov">          0 :                         ? openURL(link)</span></a>
-<a name="71"><span class="lineNum">      71 </span><span class="lineNoCov">          0 :                         : saveLocale(link?.replaceFirst('./about_', '').replaceFirst('.md', '') ?? AppLocale.code));</span></a>
-<a name="72"><span class="lineNum">      72 </span>            :               }</a>
-<a name="73"><span class="lineNum">      73 </span><span class="lineNoCov">          0 :               return Container();</span></a>
-<a name="74"><span class="lineNum">      74 </span>            :             },</a>
-<a name="75"><span class="lineNum">      75 </span>            :           ),</a>
-<a name="76"><span class="lineNum">      76 </span>            :         ),</a>
-<a name="77"><span class="lineNum">      77 </span>            :       ],</a>
-<a name="78"><span class="lineNum">      78 </span>            :     );</a>
-<a name="79"><span class="lineNum">      79 </span>            :   }</a>
-<a name="80"><span class="lineNum">      80 </span>            : }</a>
+<a name="63"><span class="lineNum">      63 </span><span class="lineNoCov">          0 :           child: MarkdownBuilderWrapper(</span></a>
+<a name="64"><span class="lineNum">      64 </span><span class="lineNoCov">          0 :             url: './assets/l10n/about_${locale.value!}.md',</span></a>
+<a name="65"><span class="lineNum">      65 </span><span class="lineNoCov">          0 :             onTapLink: (_, link, __) =&gt; link != null &amp;&amp; link.contains('https://')</span></a>
+<a name="66"><span class="lineNum">      66 </span><span class="lineNoCov">          0 :                 ? openURL(link)</span></a>
+<a name="67"><span class="lineNum">      67 </span><span class="lineNoCov">          0 :                 : saveLocale(link?.replaceFirst('./about_', '').replaceFirst('.md', '') ?? AppLocale.code),</span></a>
+<a name="68"><span class="lineNum">      68 </span>            :           ),</a>
+<a name="69"><span class="lineNum">      69 </span>            :         ),</a>
+<a name="70"><span class="lineNum">      70 </span>            :       ],</a>
+<a name="71"><span class="lineNum">      71 </span>            :     );</a>
+<a name="72"><span class="lineNum">      72 </span>            :   }</a>
+<a name="73"><span class="lineNum">      73 </span>            : }</a>
 </pre>
       </td>
     </tr>

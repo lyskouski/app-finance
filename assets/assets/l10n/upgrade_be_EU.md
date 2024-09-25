@@ -2,6 +2,9 @@
 
 _Poŭny spis abnaŭlieńniaŭ možna prahliadzieć u navihacyjnym punkcie «Ab Dadatku» na knopcy «Padkazki»._ 
 
+### 5.6.1 
+- Vypraŭlieńnie aryjentacyi tekstu dlia lakalizacyi sprava nalieva
+
 ### 5.6.0 
 - Paliapšeńnie ŭstupnych staronak 
 - Znajomstva z ukladkaj «Zvodka ŭlikovych zapisaŭ i biudžetaŭ»
