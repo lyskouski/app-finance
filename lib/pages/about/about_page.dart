@@ -5,13 +5,13 @@ import 'package:app_finance/_classes/herald/app_locale.dart';
 import 'package:app_finance/_configs/theme_helper.dart';
 import 'package:app_finance/_ext/build_context_ext.dart';
 import 'package:app_finance/_mixins/launcher_mixin.dart';
+import 'package:app_finance/design/wrapper/markdown_builder_wrapper.dart';
 import 'package:app_finance/pages/_interfaces/abstract_page_state.dart';
 import 'package:app_finance/design/wrapper/row_widget.dart';
 import 'package:app_finance/design/wrapper/tab_widget.dart';
 import 'package:app_finance/design/wrapper/text_wrapper.dart';
 import 'package:app_finance/pages/about/widgets/members_tab.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_markdown/flutter_markdown.dart';
 import 'package:package_info_plus/package_info_plus.dart';
 
 class AboutPage extends StatefulWidget {
@@ -50,17 +50,7 @@ class AboutPageState extends AbstractPageState<AboutPage> with LauncherMixin {
   @override
   Widget buildButton(BuildContext context, BoxConstraints constraints) => ThemeHelper.emptyBox;
 
-  Widget buildMarkdown(String name) {
-    return FutureBuilder(
-      future: DefaultAssetBundle.of(context).loadString('./assets/l10n/$name.md'),
-      builder: (context, snapshot) {
-        if (snapshot.hasData) {
-          return Markdown(data: snapshot.data ?? '');
-        }
-        return Container();
-      },
-    );
-  }
+  Widget buildMarkdown(String name) => MarkdownBuilderWrapper(url: './assets/l10n/$name.md');
 
   @override
   Widget buildContent(BuildContext context, BoxConstraints constraints) {

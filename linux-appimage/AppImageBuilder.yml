@@ -45,9 +45,9 @@ AppDir:
     - usr/share/doc/*/NEWS.*
     - usr/share/doc/*/TODO.*
   test:
-    fedora-30:
-      image: appimagecrafters/tests-env:fedora-30
-      command: ./AppRun
+#    fedora-30:
+#      image: appimagecrafters/tests-env:fedora-30
+#      command: ./AppRun
     debian-stable:
       image: appimagecrafters/tests-env:debian-stable
       command: ./AppRun

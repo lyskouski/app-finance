@@ -8,10 +8,10 @@ import 'package:app_finance/_mixins/launcher_mixin.dart';
 import 'package:app_finance/design/form/list_selector_item.dart';
 import 'package:app_finance/_configs/theme_helper.dart';
 import 'package:app_finance/design/wrapper/input_wrapper.dart';
+import 'package:app_finance/design/wrapper/markdown_builder_wrapper.dart';
 import 'package:app_finance/l10n/index.dart';
 import 'package:app_finance/pages/start/widgets/abstract_tab.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_markdown/flutter_markdown.dart';
 import 'package:provider/provider.dart';
 
 class AboutTab extends AbstractTab {
@@ -60,18 +60,11 @@ class AboutTabState<T extends AboutTab> extends AbstractTabState<T> with Launche
           onChange: (v) => saveLocale(v ?? AppLocale.code),
         ),
         Expanded(
-          child: FutureBuilder(
-            future: DefaultAssetBundle.of(context).loadString('./assets/l10n/about_${locale.value!}.md'),
-            builder: (BuildContext context, AsyncSnapshot<String> snapshot) {
-              if (snapshot.hasData) {
-                return Markdown(
-                    data: snapshot.data!.replaceAll('../images', 'resource:assets/images'),
-                    onTapLink: (_, link, __) => link != null && link.contains('youtu.be')
-                        ? openURL(link)
-                        : saveLocale(link?.replaceFirst('./about_', '').replaceFirst('.md', '') ?? AppLocale.code));
-              }
-              return Container();
-            },
+          child: MarkdownBuilderWrapper(
+            url: './assets/l10n/about_${locale.value!}.md',
+            onTapLink: (_, link, __) => link != null && link.contains('https://')
+                ? openURL(link)
+                : saveLocale(link?.replaceFirst('./about_', '').replaceFirst('.md', '') ?? AppLocale.code),
           ),
         ),
       ],

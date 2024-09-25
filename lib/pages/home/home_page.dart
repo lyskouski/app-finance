@@ -1,6 +1,7 @@
 // Copyright 2023 The terCAD team. All rights reserved.
 // Use of this source code is governed by a CC BY-NC-ND 4.0 license that can be found in the LICENSE file.
 
+import 'package:app_finance/_classes/herald/app_design.dart';
 import 'package:app_finance/_classes/storage/app_data.dart';
 import 'package:app_finance/_classes/herald/app_locale.dart';
 import 'package:app_finance/_classes/structure/currency/exchange.dart';
@@ -27,7 +28,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_markdown/flutter_markdown.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:intl/intl.dart';
+import 'package:intl/intl.dart' as intl;
 import 'package:package_info_plus/package_info_plus.dart';
 import 'package:provider/provider.dart';
 
@@ -68,7 +69,10 @@ class HomePageState extends AbstractPageState<HomePage> {
             if (version.isNotEmpty) {
               data = data.split('### $version')[0];
             }
-            return Markdown(data: data);
+            return Directionality(
+              textDirection: AppDesign.getAlignment<TextDirection>(),
+              child: Markdown(data: data),
+            );
           }
           return Container();
         },
@@ -186,7 +190,7 @@ class HomePageState extends AbstractPageState<HomePage> {
 
     final billWidget = BillWidget(
       margin: margin,
-      title: '${AppLocale.labels.billHeadline}, ${DateFormat.MMMM(AppLocale.code).format(DateTime.now())}',
+      title: '${AppLocale.labels.billHeadline}, ${intl.DateFormat.MMMM(AppLocale.code).format(DateTime.now())}',
       state: state.get(AppDataType.bills),
       limit: 7,
       route: AppRoute.billRoute,

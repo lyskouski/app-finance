@@ -2,6 +2,9 @@
 
 _La lista completa de actualizaciones puede consultarse en el menú "Acerca de" del botón "Sugerencias"._
 
+### 5.6.1
+- Corrección de la orientación del texto en localizaciones orientadas de derecha a izquierda 
+
 ### 5.6.0
 - Mejora de las páginas introductorias
 - Introducción de la pestaña Resumen de cuentas y presupuestos

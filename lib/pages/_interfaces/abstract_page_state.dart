@@ -9,6 +9,7 @@ import 'package:app_finance/_classes/storage/app_data.dart';
 import 'package:app_finance/_configs/screen_helper.dart';
 import 'package:app_finance/_configs/theme_helper.dart';
 import 'package:app_finance/_ext/build_context_ext.dart';
+import 'package:app_finance/design/wrapper/markdown_builder_wrapper.dart';
 import 'package:app_finance/pages/_interfaces/widgets/menu_widget.dart';
 import 'package:app_finance/design/wrapper/input_controller_wrapper.dart';
 import 'package:app_finance/design/wrapper/row_widget.dart';
@@ -16,9 +17,7 @@ import 'package:app_finance/design/wrapper/text_wrapper.dart';
 import 'package:app_finance/design/button/toolbar_button_widget.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_grid_layout/flutter_grid_layout.dart';
-import 'package:flutter_markdown/flutter_markdown.dart';
 import 'package:provider/provider.dart';
 
 abstract class AbstractPageState<T extends StatefulWidget> extends State<T> {
@@ -73,15 +72,9 @@ abstract class AbstractPageState<T extends StatefulWidget> extends State<T> {
             ),
           ),
           Expanded(
-            child: FutureBuilder(
-              future: DefaultAssetBundle.of(context).loadString('./assets/l10n/${type}_$locale.md'),
-              builder: builder ??
-                  (BuildContext context, AsyncSnapshot<String> snapshot) {
-                    if (snapshot.hasData) {
-                      return Markdown(data: snapshot.data!);
-                    }
-                    return Container();
-                  },
+            child: MarkdownBuilderWrapper(
+              url: './assets/l10n/${type}_$locale.md',
+              builder: builder,
             ),
           ),
         ],

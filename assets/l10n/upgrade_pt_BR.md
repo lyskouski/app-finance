@@ -2,6 +2,9 @@
 
 _A lista completa de atualizações pode ser visualizada no item de navegação "Sobre" no botão "Dicas".
 
+### 5.6.1
+- Correção da orientação do texto para localizações orientadas da direita para a esquerda 
+
 ### 5.6.0
 - Aprimoramento das páginas introdutórias
 - Introdução da guia Resumo de contas e orçamentos

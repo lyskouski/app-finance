@@ -3,9 +3,9 @@
 
 import 'package:app_finance/_classes/herald/app_locale.dart';
 import 'package:app_finance/_classes/storage/app_preferences.dart';
+import 'package:app_finance/design/wrapper/markdown_builder_wrapper.dart';
 import 'package:app_finance/pages/start/widgets/abstract_tab.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_markdown/flutter_markdown.dart';
 
 class PrivacyTab extends AbstractTab {
   const PrivacyTab({
@@ -35,14 +35,6 @@ class PrivacyTabState extends AbstractTabState<PrivacyTab> {
   @override
   Widget buildContent(BuildContext context, BoxConstraints constraints) {
     final locale = AppLocale.labels.localeName;
-    return FutureBuilder(
-      future: DefaultAssetBundle.of(context).loadString('./assets/l10n/privacy_policy_$locale.md'),
-      builder: (context, snapshot) {
-        if (snapshot.hasData) {
-          return Markdown(data: snapshot.data ?? '');
-        }
-        return Container();
-      },
-    );
+    return MarkdownBuilderWrapper(url: './assets/l10n/privacy_policy_$locale.md');
   }
 }

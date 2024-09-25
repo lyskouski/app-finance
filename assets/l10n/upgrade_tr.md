@@ -2,6 +2,9 @@
 
 _Güncellemelerin tam listesi “İpuçları” düğmesindeki “Hakkında” gezinti öğesi aracılığıyla görüntülenebilir._
 
+### 5.6.1
+- Sağdan sola yönlendirilmiş yerelleştirmeler için metin yönlendirmesi düzeltildi 
+
 ### 5.6.0
 - Giriş sayfalarının iyileştirilmesi
 - Hesaplar ve Bütçeler Özet sekmesinin tanıtımı
