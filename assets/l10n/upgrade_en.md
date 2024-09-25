@@ -2,6 +2,9 @@
 
 _The full list of updates can be viewed via the "About" navigation item on the "Hints" button._
 
+### 5.6.1
+- Remedying text orientation for right-to-left oriented localizations 
+
 ### 5.6.0
 - Enhancing introductory pages
 - Introducing Accounts and Budgets Summary tab

@@ -2,6 +2,9 @@
 
 _Die vollständige Liste der Updates kann über den Navigationspunkt "Über" auf der Schaltfläche "Hinweise" eingesehen werden._
 
+### 5.6.1
+- Behebung der Textausrichtung für rechts-nach-links orientierte Lokalisierungen 
+
 ### 5.6.0
 - Verbesserung der Einführungsseiten
 - Einführung der Registerkarte Konten- und Budgetzusammenfassung

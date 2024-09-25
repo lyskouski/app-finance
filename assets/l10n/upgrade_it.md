@@ -3,6 +3,9 @@
 _L'elenco completo degli aggiornamenti può essere consultato tramite la voce di navigazione “Informazioni” del 
 pulsante “Suggerimenti”._
 
+### 5.6.1
+- Correzione dell'orientamento del testo per le localizzazioni orientate da destra a sinistra 
+
 ### 5.6.0
 - Miglioramento delle pagine introduttive
 - Introduzione della scheda Riepilogo conti e bilanci

@@ -2,6 +2,9 @@
 
 Pełną listę aktualizacji można wyświetlić za pomocą elementu nawigacyjnego "O aplikacji" na przycisku "Wskazówki".
 
+### 5.6.1
+- Naprawiono orientację tekstu w lokalizacjach od prawej do lewej
+
 ### 5.6.0
 - Ulepszenie stron wprowadzających
 - Wprowadzenie zakładki podsumowania kont i budżetów
@@ -37,7 +40,7 @@ Pełną listę aktualizacji można wyświetlić za pomocą elementu nawigacyjneg
 - Poprawa lokalizacji w języku perskim
 
 ### 5.3.0
-- Dodanie perskiej lokalizacji. 
+- Dodanie perskiej lokalizacji
 
 ### 5.2.6
 - Resolving Linux Flatpak storage

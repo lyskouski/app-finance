@@ -2,6 +2,9 @@
 
 _Yeniləmələrin tam siyahısına "İpucu" düyməsindəki "Haqqında" naviqasiya elementi vasitəsilə baxmaq olar._
 
+### 5.6.1
+- Sağdan sola yönümlü lokalizasiyalar üçün mətn oriyentasiyasının düzəldilməsi
+
 ### 5.6.0
 - Giriş səhifələrinin təkmilləşdirilməsi
 - Hesablar və Büdcələrin Xülasə nişanı ilə tanış olun
