@@ -1,6 +1,7 @@
 // Copyright 2023 The terCAD team. All rights reserved.
 // Use of this source code is governed by a CC BY-NC-ND 4.0 license that can be found in the LICENSE file.
 
+import 'package:app_finance/_classes/herald/app_design.dart';
 import 'package:app_finance/_classes/storage/app_preferences.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_currency_picker/flutter_currency_picker.dart';
@@ -28,6 +29,9 @@ class AppLocale extends ValueNotifier<Locale?> {
       value = loc;
       code = value.toString();
       await AppPreferences.set(AppPreferences.prefLocale, newValue);
+      if (AppPreferences.get(AppPreferences.prefDesign) == null) {
+        await AppPreferences.set(AppPreferences.prefDesign, AppDesign.fromLocale(loc));
+      }
       CurrencyDefaults.defaultLocale = loc;
       if (callback != null) {
         callback();
