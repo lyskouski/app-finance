@@ -309,6 +309,7 @@ digraph G {
   herald -> storage [color="green"];
   herald -> storage [color="green"];
   herald -> _configs_ [color="green"];
+  herald -> herald [color="green"];
   herald -> storage [color="green"];
   herald -> controller [color="green"];
   herald -> storage [color="green"];

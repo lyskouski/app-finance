@@ -2,6 +2,9 @@
 
 _La lista completa de actualizaciones puede consultarse en el menú "Acerca de" del botón "Sugerencias"._
 
+### 5.6.2
+- Corrección de los cálculos de las pestañas Resumen de Cuentas y Presupuestos.
+
 ### 5.6.1
 - Corrección de la orientación del texto en localizaciones orientadas de derecha a izquierda 
 
