@@ -2,6 +2,9 @@
 
 _Yeniləmələrin tam siyahısına "İpucu" düyməsindəki "Haqqında" naviqasiya elementi vasitəsilə baxmaq olar._
 
+### 5.6.2
+- Hesablamalar və Büdcələr Xülasə nişanları hesablamalarının düzəldilməsi
+
 ### 5.6.1
 - Sağdan sola yönümlü lokalizasiyalar üçün mətn oriyentasiyasının düzəldilməsi
 

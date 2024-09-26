@@ -2,6 +2,9 @@
 
 Pełną listę aktualizacji można wyświetlić za pomocą elementu nawigacyjnego "O aplikacji" na przycisku "Wskazówki".
 
+### 5.6.2
+- Naprawiono obliczenia na kartach podsumowania kont i budżetów
+
 ### 5.6.1
 - Naprawiono orientację tekstu w lokalizacjach od prawej do lewej
 

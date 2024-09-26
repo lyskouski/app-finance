@@ -2,6 +2,9 @@
 
 _Yangilanishlarning toʻliq roʻyxatini “Maslahat” tugmasidagi “Haqida” navigatsiya bandi orqali koʻrish mumkin._
 
+### 5.6.2
+- Hisob va byudjetlarni tuzatish Xulosa yorliqlari hisob-kitoblari
+
 ### 5.6.1
 - O'ngdan chapga yo'naltirilgan lokalizatsiya uchun matn yo'nalishini tuzatish
 

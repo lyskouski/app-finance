@@ -2,6 +2,9 @@
 
 _The full list of updates can be viewed via the "About" navigation item on the "Hints" button._
 
+### 5.6.2
+- Fixing Accounts and Budgets Summary tabs calculations
+
 ### 5.6.1
 - Remedying text orientation for right-to-left oriented localizations 
 

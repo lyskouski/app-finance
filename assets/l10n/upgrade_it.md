@@ -3,6 +3,9 @@
 _L'elenco completo degli aggiornamenti può essere consultato tramite la voce di navigazione “Informazioni” del 
 pulsante “Suggerimenti”._
 
+### 5.6.2
+- Correzione dei calcoli delle schede di riepilogo dei conti e dei bilanci
+
 ### 5.6.1
 - Correzione dell'orientamento del testo per le localizzazioni orientate da destra a sinistra 
 
