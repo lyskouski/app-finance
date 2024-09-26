@@ -109,13 +109,10 @@ class AccountViewPageState extends AbstractPageState<AccountViewPage> {
     DateTime curr = DateTime(now.year, now.month, 1);
     var data = SplayTreeMap<num, AccountSummaryData>();
     int increment = 0;
-    while (true) {
+    while (!(bills.isFinished && inv.isFinished)) {
       var boundary = curr.millisecondsSinceEpoch.toDouble();
       var billList = bills.getTill(boundary);
       var invList = inv.getTill(boundary);
-      if (bills.isFinished && inv.isFinished) {
-        break;
-      }
       data[increment] = AccountSummaryData(
         title: intl.DateFormat.MMMM().format(curr),
         description: curr.year.toString(),

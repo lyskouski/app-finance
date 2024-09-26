@@ -86,6 +86,10 @@ class IteratorController<T extends num, K, M> implements InterfaceIterator<T, K,
     final result = <M>[];
     while (!isFinished && boundary > keys[pointer]) {
       final value = next;
+      if (boundary <= keys[pointer - 1]) {
+        pointer--;
+        break;
+      }
       if (value == null) {
         break;
       }
@@ -133,6 +137,10 @@ class IteratorReverseController<T extends num, K, M> extends IteratorController<
     final result = <M>[];
     while (!isFinished && boundary < keys[pointer]) {
       final value = next;
+      if (boundary >= keys[pointer + 1]) {
+        pointer++;
+        break;
+      }
       if (value == null) {
         break;
       }
