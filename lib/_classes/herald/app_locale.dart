@@ -29,9 +29,6 @@ class AppLocale extends ValueNotifier<Locale?> {
       value = loc;
       code = value.toString();
       await AppPreferences.set(AppPreferences.prefLocale, newValue);
-      if (AppPreferences.get(AppPreferences.prefDesign) == null) {
-        await AppPreferences.set(AppPreferences.prefDesign, AppDesign.fromLocale(loc));
-      }
       CurrencyDefaults.defaultLocale = loc;
       if (callback != null) {
         callback();
@@ -44,6 +41,9 @@ class AppLocale extends ValueNotifier<Locale?> {
     final value = Localizations.localeOf(context).toString();
     labels = AppLocalizations.of(context) ?? AppLocalizationsEn();
     CurrencyProvider.initFromContext(context, locale: super.value);
+    if (AppPreferences.get(AppPreferences.prefDesign) == null) {
+      AppPreferences.set(AppPreferences.prefDesign, AppDesign.fromLocale(fromCode(value)));
+    }
     set(value);
   }
 }
