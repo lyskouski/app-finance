@@ -32,6 +32,7 @@ import 'package:app_finance/pages/budget/budget_page.dart';
 import 'package:app_finance/pages/budget/budget_add_page.dart';
 import 'package:app_finance/pages/budget/budget_edit_page.dart';
 import 'package:app_finance/pages/budget/budget_view_page.dart';
+import 'package:app_finance/pages/currency/currency_add_page.dart';
 import 'package:app_finance/pages/currency/currency_page.dart';
 import 'package:app_finance/pages/goal/goal_add_page.dart';
 import 'package:app_finance/pages/goal/goal_edit_page.dart';
@@ -162,6 +163,7 @@ class MyAppState extends State<MyApp> {
           AppRoute.budgetSearchRoute => BudgetPage(search: key),
           AppRoute.budgetEditRoute => BudgetEditPage(uuid: key),
           AppRoute.currencyRoute => const CurrencyPage(),
+          AppRoute.currencyAddRoute => const CurrencyAddPage(),
           AppRoute.goalRoute => const GoalPage(),
           AppRoute.goalAddRoute => const GoalAddPage(),
           AppRoute.goalViewRoute => GoalViewPage(uuid: key),

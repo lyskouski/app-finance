@@ -132,6 +132,8 @@
     "credit": "Credit",
     "creditCard": "Credit Card",
     "currency": "Currency",
+    "currencyAddHeadline": "Currency Exchange",
+    "currencyAddTooltip": "Add Currency Exchange Rate",
     "currencyDefault": "Default Currency",
     "currencyDistribution": "Distribution",
     "currencyExchange": "Currency Exchange: {from} -> {to}",

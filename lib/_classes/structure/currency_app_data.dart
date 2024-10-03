@@ -65,8 +65,8 @@ class CurrencyAppData extends AbstractAppData {
   String get descriptionFormatted => DateTime.parse(super.description ?? '').yMEd();
 
   @override
-  String get title => '${currencyFrom?.code} -> ${currency?.code}';
+  String get title => '${currencyFrom?.code ?? '?'} -> ${currency?.code ?? '?'}';
 
   @override
-  String get uuid => '${currencyFrom?.code}-${currency?.code}';
+  String get uuid => '${currencyFrom?.code ?? '?'}-${currency?.code ?? '?'}';
 }

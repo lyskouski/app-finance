@@ -25,6 +25,7 @@ abstract class AppRoute {
   static const String budgetSearchRoute = '/app/finance/budget/search';
   static const String budgetEditRoute = '/app/finance/budget/edit';
   static const String currencyRoute = '/app/finance/currency';
+  static const String currencyAddRoute = '/app/finance/currency/add';
   static const String goalRoute = '/app/finance/goal';
   static const String goalAddRoute = '/app/finance/goal/add';
   static const String goalViewRoute = '/app/finance/goal/view';

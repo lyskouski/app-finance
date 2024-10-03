@@ -132,6 +132,8 @@
     "credit": "اعتبار",
     "creditCard": "کارت اعتباری",
     "currency": "واحد پول",
+    "currencyAddHeadline": "مبادله ارز",
+    "currencyAddTooltip": "اضافه کردن نرخ تبدیل ارز",
     "currencyDefault": "ارز پیش فرض",
     "currencyDistribution": "توزیع",
     "currencyExchange": "مبادله ارز: {from} -> {to}",

@@ -132,6 +132,8 @@
     "credit": "Крэдыт",
     "creditCard": "Крэдытная картка",
     "currency": "Валюта",
+    "currencyAddHeadline": "Абмен валюты",
+    "currencyAddTooltip": "Дадаць курс абмену валюты",
     "currencyDefault": "Безумоўная валюта",
     "currencyDistribution": "Размеркаваньне",
     "currencyExchange": "Абмен валюты: {from} -> {to}",

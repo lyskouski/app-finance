@@ -7,9 +7,12 @@ import 'package:app_finance/_classes/herald/app_locale.dart';
 import 'package:app_finance/_classes/storage/history_data.dart';
 import 'package:app_finance/_classes/structure/currency_app_data.dart';
 import 'package:app_finance/_classes/storage/app_data.dart';
+import 'package:app_finance/_classes/structure/navigation/app_route.dart';
+import 'package:app_finance/_configs/screen_helper.dart';
 import 'package:app_finance/_configs/theme_helper.dart';
 import 'package:app_finance/_ext/build_context_ext.dart';
 import 'package:app_finance/charts/trade_chart.dart';
+import 'package:app_finance/design/button/toolbar_button_widget.dart';
 import 'package:app_finance/design/wrapper/single_scroll_wrapper.dart';
 import 'package:app_finance/pages/_interfaces/abstract_page_state.dart';
 import 'package:app_finance/design/generic/notification_bar.dart';
@@ -56,6 +59,32 @@ class CurrencyPageState extends AbstractPageState<CurrencyPage> {
     );
   }
 
+  @override
+  List<Widget> getBarActions(NavigatorState nav) {
+    return [
+      ToolbarButtonWidget(
+        isWide: ScreenHelper.state().isWide,
+        tooltip: AppLocale.labels.currencyAddTooltip,
+        onPressed: () => nav.pushNamed(AppRoute.currencyAddRoute),
+        icon: Icons.add,
+        color: Colors.white70,
+        semanticLabel: AppLocale.labels.currencyAddTooltip,
+      ),
+      ...super.getBarActions(nav)
+    ];
+  }
+
+  List<CurrencyAppData>? _getItems() {
+    List<CurrencyAppData>? tmp = state
+        .getList(AppDataType.currencies)
+        .where((v) =>
+            v.currencyFrom != null && v.currency != null && v.currency.code != v.currencyFrom.code && v.details != 1.0)
+        .toList()
+        .cast();
+    tmp.sort((a, b) => a.uuid.compareTo(b.uuid));
+    return tmp;
+  }
+
   void updateAllRates(BuildContext context) {
     for (CurrencyAppData rate in scope!) {
       if ((state.getByUuid(rate.uuid) as CurrencyAppData).details != rate.details) {
@@ -73,25 +102,15 @@ class CurrencyPageState extends AbstractPageState<CurrencyPage> {
 
   @override
   Widget buildContent(BuildContext context, BoxConstraints constraints) {
+    final tmp = _getItems();
+    if (tmp?.length != scope?.length) {
+      WidgetsBinding.instance.addPostFrameCallback((_) => setState(() => scope = tmp));
+      return ThemeHelper.emptyBox;
+    }
     final TextTheme textTheme = context.textTheme;
     final indent = ThemeHelper.getIndent();
     final now = DateTime.now();
     final cutDate = DateTime(now.year, now.month - 2);
-    if (scope == null) {
-      WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {
-            var tmp = state
-                .getList(AppDataType.currencies)
-                .where((v) =>
-                    v.currencyFrom != null &&
-                    v.currency != null &&
-                    v.currency.code != v.currencyFrom.code &&
-                    v.details != 1.0)
-                .toList();
-            tmp.sort((a, b) => a.currencyFrom.code.toString().compareTo(b.currencyFrom.code));
-            scope = tmp;
-          }));
-      return ThemeHelper.emptyBox;
-    }
     final crossAxisCount = ThemeHelper.getWidthCount(null, context);
     return SingleScrollWrapper(
       controller: focus,

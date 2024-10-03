@@ -132,6 +132,8 @@
     "credit": "ائتمان",
     "creditCard": "بطاقة ائتمان",
     "currency": "عملة",
+    "currencyAddHeadline": "صرف العملات",
+    "currencyAddTooltip": "إضافة سعر صرف العملة",
     "currencyDefault": "العملة الافتراضية",
     "currencyDistribution": "التوزيع",
     "currencyExchange": "صرف العملات: {from} -> {to}",

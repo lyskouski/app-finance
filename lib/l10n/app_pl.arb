@@ -132,6 +132,8 @@
     "credit": "Kredyt",
     "creditCard": "Karta kredytowa",
     "currency": "Waluta",
+    "currencyAddHeadline": "Wymiana walut",
+    "currencyAddTooltip": "Dodaj kurs wymiany walut",
     "currencyDefault": "Domyślna waluta",
     "currencyDistribution": "Dystrybucja",
     "currencyExchange": "Wymiana walut: {from} -> {to}",

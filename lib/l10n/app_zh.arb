@@ -132,6 +132,8 @@
     "credit": "信用",
     "creditCard": "信用卡",
     "currency": "货币",
+    "currencyAddHeadline": "货币兑换",
+    "currencyAddTooltip": "添加货币汇率",
     "currencyDefault": "默认货币",
     "currencyDistribution": "分配",
     "currencyExchange": "货币兑换：{from} -> {to}",

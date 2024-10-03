@@ -132,6 +132,8 @@
     "credit": "Кредит",
     "creditCard": "Кредитна картка",
     "currency": "Валюта",
+    "currencyAddHeadline": "Обмін валют",
+    "currencyAddTooltip": "Додати курс обміну валюти",
     "currencyDefault": "Безумовна валюта",
     "currencyDistribution": "Розподіл",
     "currencyExchange": "Обмін валюти: {from} -> {to}",
