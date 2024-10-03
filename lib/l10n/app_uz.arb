@@ -132,6 +132,8 @@
     "credit": "Credit",
     "creditCard": "Kredit kartasi",
     "currency": "Valyuta",
+    "currencyAddHeadline": "Valyuta ayirboshlash",
+    "currencyAddTooltip": "Valyuta kursini qo'shing",
     "currencyDefault": "Standart valyuta",
     "currencyDistribution": "Tarqatish",
     "currencyExchange": "Valyuta almashinuvi: {from} -> {to}",

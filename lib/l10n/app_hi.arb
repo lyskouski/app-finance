@@ -132,6 +132,8 @@
     "credit": "श्रेय",
     "creditCard": "क्रेडिट कार्ड",
     "currency": "मुद्रा",
+    "currencyAddHeadline": "मुद्रा विनिमय",
+    "currencyAddTooltip": "मुद्रा विनिमय दर जोड़ें",
     "currencyDefault": "डिफ़ॉल्ट मुद्रा",
     "currencyDistribution": "वितरण",
     "currencyExchange": "मुद्रा विनिमय: {from} -> {to}",

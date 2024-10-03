@@ -132,6 +132,8 @@
     "credit": "Credit",
     "creditCard": "Kredit kartı",
     "currency": "Currency",
+    "currencyAddHeadline": "Valyuta mübadiləsi",
+    "currencyAddTooltip": "Valyuta məzənnəsini əlavə edin",
     "currencyDefault": "Defolt Valyuta",
     "currencyDistribution": "Paylanma",
     "currencyExchange": "Valyuta mübadiləsi: {from} -> {to}",

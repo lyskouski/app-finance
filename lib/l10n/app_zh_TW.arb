@@ -132,6 +132,8 @@
     "credit": "信貸",
     "creditCard": "信用卡",
     "currency": "貨幣",
+    "currencyAddHeadline": "貨幣兌換",
+    "currencyAddTooltip": "加入貨幣匯率",
     "currencyDefault": "預設貨幣",
     "currencyDistribution": "分佈",
     "currencyExchange": "貨幣兌換： {from} -> {to}",

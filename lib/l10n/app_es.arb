@@ -132,6 +132,8 @@
     "credit": "Credit",
     "creditCard": "Tarjeta de crédito",
     "currency": "Moneda",
+    "currencyAddHeadline": "Cambio de divisas",
+    "currencyAddTooltip": "Añadir tipo de cambio",
     "currencyDefault": "Moneda por defecto",
     "currencyDistribution": "Distribución",
     "currencyExchange": "Cambio de divisas: {from} -> {to}",

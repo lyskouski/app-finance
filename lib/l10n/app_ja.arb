@@ -132,6 +132,8 @@
     "credit": "クレジット",
     "creditCard": "クレジットカード",
     "currency": "通貨",
+    "currencyAddHeadline": "両替",
+    "currencyAddTooltip": "為替レートを追加する",
     "currencyDefault": "デフォルト通貨",
     "currencyDistribution": "配布",
     "currencyExchange": "通貨交換： {from} → {to}",

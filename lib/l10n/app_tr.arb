@@ -132,6 +132,8 @@
     "credit": "Kredi",
     "creditCard": "Kredi Kartı",
     "currency": "Para Birimi",
+    "currencyAddHeadline": "Döviz Bozdurma",
+    "currencyAddTooltip": "Döviz Kuru Ekle",
     "currencyDefault": "Varsayılan Para Birimi",
     "currencyDistribution": "Dağıtım",
     "currencyExchange": "Para Birimi Değişimi: {from} -> {to}",
