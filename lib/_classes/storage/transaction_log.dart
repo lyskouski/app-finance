@@ -4,11 +4,11 @@
 import 'dart:io';
 import 'dart:convert';
 import 'dart:async';
-import 'dart:math';
 import 'package:app_finance/_classes/controller/encryption_handler.dart';
 import 'package:app_finance/_classes/storage/app_data.dart';
 import 'package:app_finance/_classes/storage/app_preferences.dart';
 import 'package:app_finance/_ext/data_ext.dart';
+import 'package:app_finance/_ext/int_ext.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:flutter/foundation.dart' show kIsWeb;
 
@@ -51,13 +51,6 @@ class TransactionLog {
     return _logFile = file;
   }
 
-  static String _formatBytes(int bytes) {
-    const sizes = ['B', 'KB', 'MB', 'GB', 'TB'];
-    if (bytes == 0) return '0 B';
-    final i = (log(bytes) / log(1024)).floor();
-    return '${(bytes / pow(1024, i)).toStringAsFixed(2)} ${sizes[i]}';
-  }
-
   static Future<String> getSize() async {
     int? size;
     if (kIsWeb) {
@@ -65,7 +58,7 @@ class TransactionLog {
     } else {
       size = (await logFle).lengthSync();
     }
-    return _formatBytes(size);
+    return size.toByteSize();
   }
 
   static void saveRaw(String line) {
