@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2024-09-26 12:46:48</td>
+            <td class="headerValue">2024-10-03 12:06:37</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">0</td>
@@ -127,10 +127,10 @@
 <a name="65"><span class="lineNum">      65 </span><span class="lineNoCov">          0 :   String get descriptionFormatted =&gt; DateTime.parse(super.description ?? '').yMEd();</span></a>
 <a name="66"><span class="lineNum">      66 </span>            : </a>
 <a name="67"><span class="lineNum">      67 </span><span class="lineNoCov">          0 :   @override</span></a>
-<a name="68"><span class="lineNum">      68 </span><span class="lineNoCov">          0 :   String get title =&gt; '${currencyFrom?.code} -&gt; ${currency?.code}';</span></a>
+<a name="68"><span class="lineNum">      68 </span><span class="lineNoCov">          0 :   String get title =&gt; '${currencyFrom?.code ?? '?'} -&gt; ${currency?.code ?? '?'}';</span></a>
 <a name="69"><span class="lineNum">      69 </span>            : </a>
 <a name="70"><span class="lineNum">      70 </span><span class="lineNoCov">          0 :   @override</span></a>
-<a name="71"><span class="lineNum">      71 </span><span class="lineNoCov">          0 :   String get uuid =&gt; '${currencyFrom?.code}-${currency?.code}';</span></a>
+<a name="71"><span class="lineNum">      71 </span><span class="lineNoCov">          0 :   String get uuid =&gt; '${currencyFrom?.code ?? '?'}-${currency?.code ?? '?'}';</span></a>
 <a name="72"><span class="lineNum">      72 </span>            : }</a>
 </pre>
       </td>

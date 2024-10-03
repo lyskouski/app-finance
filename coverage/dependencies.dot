@@ -158,7 +158,7 @@ digraph G {
   }
   {
     rank = same; "pages";
-    currency [label="<0>CURRENCY|<currency_page>currency_page",fillcolor="silver:white", gradientangle=240, style="filled"];
+    currency [label="<0>CURRENCY|<currency_page>currency_page|<currency_add_page>currency_add_page",fillcolor="silver:white", gradientangle=240, style="filled"];
   }
   {
     rank = same; "pages";
@@ -835,13 +835,22 @@ digraph G {
   currency -> herald [color="#F0F0F050"];
   currency -> storage [color="#F0F0F050"];
   currency -> structure [color="#F0F0F050"];
+  currency -> structure_navigation [color="#F0F0F050"];
   currency -> _configs_ [color="#F0F0F050"];
   currency -> _ext_ [color="#F0F0F050"];
   currency -> charts_ [color="#F0F0F050"];
+  currency -> button [color="#F0F0F050"];
   currency -> wrapper [color="#F0F0F050"];
   currency -> _interfaces [color="#F0F0F050"];
   currency -> generic [color="#F0F0F050"];
   currency -> form [color="#F0F0F050"];
+  currency -> controller [color="#F0F0F050"];
+  currency -> herald [color="#F0F0F050"];
+  currency -> structure [color="#F0F0F050"];
+  currency -> _configs_ [color="#F0F0F050"];
+  currency -> form [color="#F0F0F050"];
+  currency -> wrapper [color="#F0F0F050"];
+  currency -> _interfaces [color="#F0F0F050"];
   _interfaces_widgets -> structure_navigation [color="#F0F0F050"];
   _interfaces_widgets -> _configs_ [color="#F0F0F050"];
   _interfaces_widgets -> _ext_ [color="#F0F0F050"];
