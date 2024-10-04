@@ -30,7 +30,7 @@ digraph G {
   }
   {
     rank = same; "_classes";
-    storage_transaction_log [label="<0>STORAGE_TRANSACTION_LOG|<abstract_protocol>abstract_protocol|<file_protocol>file_protocol|<web_dav_data>web_dav_data|<interface_protocol>interface_protocol|<web_dav_protocol>web_dav_protocol",fillcolor="silver:white", gradientangle=240, style="filled"];
+    storage_transaction_log [label="<0>STORAGE_TRANSACTION_LOG|<abstract_protocol>abstract_protocol|<abstract_storage_web>abstract_storage_web|<file_protocol>file_protocol|<web_dav_data>web_dav_data|<abstract_storage>abstract_storage|<interface_protocol>interface_protocol|<web_dav_protocol>web_dav_protocol|<interface_storage>interface_storage",fillcolor="silver:white", gradientangle=240, style="filled"];
   }
   {
     rank = same; "_classes";
@@ -258,16 +258,23 @@ digraph G {
   storage -> _configs_ [color="green"];
   storage -> controller [color="green"];
   storage -> storage [color="green"];
+  storage -> storage_transaction_log [color="green"];
   storage -> _ext_ [color="green"];
   storage_transaction_log -> controller [color="green"];
   storage_transaction_log -> storage [color="green"];
+  storage_transaction_log -> storage [color="green"];
+  storage_transaction_log -> storage_transaction_log [color="green"];
+  storage_transaction_log -> _ext_ [color="green"];
   storage_transaction_log -> herald [color="green"];
   storage_transaction_log -> storage_transaction_log [color="green"];
   storage_transaction_log -> file [color="green"];
 
+  storage_transaction_log -> storage_transaction_log [color="green"];
+  storage_transaction_log -> _ext_ [color="green"];
 
   storage_transaction_log -> herald [color="green"];
   storage_transaction_log -> storage_transaction_log [color="green"];
+
 
   storage -> herald [color="green"];
   storage -> storage [color="green"];

@@ -32,12 +32,12 @@
             <td></td>
             <td class="headerItem">Lines:</td>
             <td class="headerCovTableEntry">4</td>
-            <td class="headerCovTableEntry">5</td>
-            <td class="headerCovTableEntryMed">80.0 %</td>
+            <td class="headerCovTableEntry">9</td>
+            <td class="headerCovTableEntryLo">44.4 %</td>
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2024-10-03 12:06:37</td>
+            <td class="headerValue">2024-10-04 11:08:31</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">0</td>
@@ -63,20 +63,29 @@
 <a name="1"><span class="lineNum">       1 </span>            : // Copyright 2023 The terCAD team. All rights reserved.</a>
 <a name="2"><span class="lineNum">       2 </span>            : // Use of this source code is governed by a CC BY-NC-ND 4.0 license that can be found in the LICENSE file.</a>
 <a name="3"><span class="lineNum">       3 </span>            : </a>
-<a name="4"><span class="lineNum">       4 </span>            : import 'package:flutter/material.dart';</a>
+<a name="4"><span class="lineNum">       4 </span>            : import 'dart:math';</a>
 <a name="5"><span class="lineNum">       5 </span>            : </a>
-<a name="6"><span class="lineNum">       6 </span>            : extension IntExt on int {</a>
-<a name="7"><span class="lineNum">       7 </span><span class="lineCov">          3 :   static final Map&lt;String, IconData&gt; _cache = {};</span></a>
-<a name="8"><span class="lineNum">       8 </span>            : </a>
-<a name="9"><span class="lineNum">       9 </span><span class="lineCov">          1 :   IconData toIcon() {</span></a>
-<a name="10"><span class="lineNum">      10 </span><span class="lineCov">          2 :     if (_cache.containsKey(this)) {</span></a>
-<a name="11"><span class="lineNum">      11 </span><span class="lineNoCov">          0 :       return _cache[this]!;</span></a>
-<a name="12"><span class="lineNum">      12 </span>            :     } else {</a>
-<a name="13"><span class="lineNum">      13 </span>            :       const String fontFamily = 'MaterialIcons';</a>
-<a name="14"><span class="lineNum">      14 </span><span class="lineCov">          1 :       return IconData(this, fontFamily: fontFamily);</span></a>
-<a name="15"><span class="lineNum">      15 </span>            :     }</a>
-<a name="16"><span class="lineNum">      16 </span>            :   }</a>
-<a name="17"><span class="lineNum">      17 </span>            : }</a>
+<a name="6"><span class="lineNum">       6 </span>            : import 'package:flutter/material.dart';</a>
+<a name="7"><span class="lineNum">       7 </span>            : </a>
+<a name="8"><span class="lineNum">       8 </span>            : extension IntExt on int {</a>
+<a name="9"><span class="lineNum">       9 </span><span class="lineCov">          3 :   static final Map&lt;String, IconData&gt; _cache = {};</span></a>
+<a name="10"><span class="lineNum">      10 </span>            : </a>
+<a name="11"><span class="lineNum">      11 </span><span class="lineCov">          1 :   IconData toIcon() {</span></a>
+<a name="12"><span class="lineNum">      12 </span><span class="lineCov">          2 :     if (_cache.containsKey(this)) {</span></a>
+<a name="13"><span class="lineNum">      13 </span><span class="lineNoCov">          0 :       return _cache[this]!;</span></a>
+<a name="14"><span class="lineNum">      14 </span>            :     } else {</a>
+<a name="15"><span class="lineNum">      15 </span>            :       const String fontFamily = 'MaterialIcons';</a>
+<a name="16"><span class="lineNum">      16 </span><span class="lineCov">          1 :       return IconData(this, fontFamily: fontFamily);</span></a>
+<a name="17"><span class="lineNum">      17 </span>            :     }</a>
+<a name="18"><span class="lineNum">      18 </span>            :   }</a>
+<a name="19"><span class="lineNum">      19 </span>            : </a>
+<a name="20"><span class="lineNum">      20 </span><span class="lineNoCov">          0 :   String toByteSize() {</span></a>
+<a name="21"><span class="lineNum">      21 </span>            :     const sizes = ['B', 'KB', 'MB', 'GB', 'TB'];</a>
+<a name="22"><span class="lineNum">      22 </span><span class="lineNoCov">          0 :     if (this == 0) return '0 B';</span></a>
+<a name="23"><span class="lineNum">      23 </span><span class="lineNoCov">          0 :     final i = (log(this) / log(1024)).floor();</span></a>
+<a name="24"><span class="lineNum">      24 </span><span class="lineNoCov">          0 :     return '${(this / pow(1024, i)).toStringAsFixed(2)} ${sizes[i]}';</span></a>
+<a name="25"><span class="lineNum">      25 </span>            :   }</a>
+<a name="26"><span class="lineNum">      26 </span>            : }</a>
 </pre>
       </td>
     </tr>
