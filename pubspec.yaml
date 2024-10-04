@@ -55,6 +55,7 @@ dependencies:
   in_app_purchase: ^3.1.11
   firebase_crashlytics: ^4.0.0
   dart_intl_search: ^1.2.3
+  idb_shim: ^2.6.1+7
 
 dev_dependencies:
   flutter_test:

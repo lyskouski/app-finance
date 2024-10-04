@@ -45,7 +45,7 @@ void main() {
     final endTime = DateTime.now();
     final duration = endTime.difference(startTime);
     file.writeAsString(
-      "${duration.inMilliseconds} ms | ${await TransactionLog.getSize()} | ${TransactionLog.increment}\n",
+      "${duration.inMilliseconds} ms | ${await TransactionLog.getSize()} | ${TransactionLog.amount}\n",
       mode: FileMode.append,
     );
   }, timeout: const Timeout(Duration(minutes: 30)));

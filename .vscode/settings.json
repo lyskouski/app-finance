@@ -23,6 +23,7 @@
       "curr",
       "lerp",
       "LTRB",
+      "readwrite",
       "sublist",
       "unfocus",
       "writeln"
