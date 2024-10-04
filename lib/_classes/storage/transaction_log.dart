@@ -1,85 +1,25 @@
 // Copyright 2023 The terCAD team. All rights reserved.
 // Use of this source code is governed by a CC BY-NC-ND 4.0 license that can be found in the LICENSE file.
 
-import 'dart:io';
 import 'dart:convert';
 import 'dart:async';
 import 'package:app_finance/_classes/controller/encryption_handler.dart';
 import 'package:app_finance/_classes/storage/app_data.dart';
-import 'package:app_finance/_classes/storage/app_preferences.dart';
+import 'package:app_finance/_classes/storage/transaction_log/abstract_storage_web.dart'
+    if (dart.library.io) 'package:app_finance/_classes/storage/transaction_log/abstract_storage.dart';
+import 'package:app_finance/_classes/storage/transaction_log/interface_storage.dart';
 import 'package:app_finance/_ext/data_ext.dart';
-import 'package:app_finance/_ext/int_ext.dart';
-import 'package:path_provider/path_provider.dart';
-import 'package:flutter/foundation.dart' show kIsWeb;
 
-class TransactionLog {
-  static int increment = 0;
+class TransactionLog extends AbstractStorage implements InterfaceStorage {
+  static int amount = 0;
 
-  static bool _isLocked = false;
+  static Future<String> getSize() => AbstractStorage.getSize();
 
-  static File? _logFile;
+  static void clear() => AbstractStorage.clear();
 
-  static const filePath = '.terCAD/app-finance.log';
+  static Stream<String> read() => AbstractStorage.read();
 
-  static Future<File> get logFle async {
-    if (_logFile != null) {
-      return Future.value(_logFile);
-    }
-    List<File> scope = [
-      await getApplicationDocumentsDirectory(),
-      await getApplicationSupportDirectory(),
-      Directory.systemTemp,
-      await getTemporaryDirectory(),
-    ].map((dir) => File('${dir.absolute.path}/$filePath')).toList();
-    File? file = scope.where((f) => f.existsSync()).firstOrNull;
-    int i = 0;
-    while (i < scope.length && file == null) {
-      try {
-        File tmp = scope[i];
-        if (!tmp.existsSync()) {
-          tmp.createSync(recursive: true);
-          tmp.writeAsString("\n", mode: FileMode.append);
-        }
-        file = tmp;
-      } catch (e) {
-        i++;
-      }
-    }
-    if (file == null) {
-      throw Exception('Write access denied for: $scope.');
-    }
-    return _logFile = file;
-  }
-
-  static Future<String> getSize() async {
-    int? size;
-    if (kIsWeb) {
-      size = increment * 256;
-    } else {
-      size = (await logFle).lengthSync();
-    }
-    return size.toByteSize();
-  }
-
-  static void saveRaw(String line) {
-    int retrial = 1;
-    while (_isLocked && retrial < 1000) {
-      sleep(Duration(microseconds: retrial * 10));
-      retrial++;
-    }
-    _isLocked = true;
-    try {
-      if (kIsWeb) {
-        AppPreferences.set('log$increment', line);
-      } else if (_logFile != null) {
-        _logFile!.writeAsStringSync("$line\n", mode: FileMode.append);
-      }
-      _isLocked = false;
-    } catch (e) {
-      _isLocked = false;
-      rethrow;
-    }
-  }
+  static void saveRaw(String line) => AbstractStorage.saveRaw(line);
 
   static void save(dynamic content) {
     String line = content.toString();
@@ -87,7 +27,7 @@ class TransactionLog {
       line = EncryptionHandler.encrypt(line);
     }
     saveRaw(line);
-    increment++;
+    amount++;
   }
 
   static void init(AppData store, String type, Map<String, dynamic> data) {
@@ -97,54 +37,13 @@ class TransactionLog {
     }
   }
 
-  static Stream<String> _loadWeb() async* {
-    int attempts = 0;
-    do {
-      int i = increment + attempts;
-      var line = AppPreferences.get('log$i');
-      if (line == null) {
-        attempts++;
-      } else {
-        increment += attempts + 1;
-        attempts = 0;
-      }
-      yield line ?? '';
-    } while (attempts < 10);
-  }
-
-  static Stream<String> read() async* {
-    Stream<String> lines;
-    increment = 0;
-    if (kIsWeb) {
-      lines = _loadWeb();
-    } else {
-      lines = (await logFle).openRead().transform(utf8.decoder).transform(const LineSplitter());
-    }
-    await for (var line in lines) {
-      if (!kIsWeb) {
-        increment++;
-      }
-      yield line;
-    }
-  }
-
-  static clear() {
-    if (kIsWeb) {
-      while (increment > 0) {
-        AppPreferences.clear('log$increment');
-        increment--;
-      }
-    } else {
-      _logFile?.deleteSync();
-      _logFile?.createSync();
-    }
-  }
-
   static Future<bool> load(AppData store) async {
     bool isEncrypted = EncryptionHandler.doEncrypt();
     bool isOK = true;
+    amount = 0;
     await for (var line in read()) {
       isOK &= add(store, line, isEncrypted);
+      amount++;
     }
     return isOK;
   }
