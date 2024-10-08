@@ -22,6 +22,7 @@ const languageList = <LanguageDef>[
   (id: 'it', name: 'Italiano (IT)'),
   (id: 'ja', name: '日本語 (JA)'),
   (id: 'fa', name: 'فارسی (FA)'),
+  (id: 'ko', name: '한국어 (KO)'),
   (id: 'pl', name: 'Polski (PL)'),
   (id: 'pt', name: 'Português Europeu (PT)'),
   (id: 'pt_BR', name: 'Português Brasileiro (PTB)'),

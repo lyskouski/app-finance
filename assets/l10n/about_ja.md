@@ -11,6 +11,7 @@
 [Italiano (IT)](./about_it.md) |
 日本語 (JA) |
 [فارسی (FA)](./about_fa.md) |
+[한국어 (KO)](./about_ko.md) |
 [Polski (PL)](./about_pl.md) |
 [Português Europeu (PT)](./about_pt.md) |
 [Português Brasileiro (PTB)](./about_pt_BR.md) |
