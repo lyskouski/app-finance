@@ -2,6 +2,10 @@
 
 _De volledige lijst met updates kan worden bekeken via het navigatie-item “Over” op de knop “Hints”._
 
+### 5.7.0
+- Verbeterde opslag voor webversie
+- Nederlandse (NL) en Koreaanse (KO) talen toegevoegd
+
 ### 5.6.2
 - Tabbladen Rekeningen en Budgetten berekenen gerepareerd
 

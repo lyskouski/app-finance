@@ -2,6 +2,10 @@
 
 _Güncellemelerin tam listesi “İpuçları” düğmesindeki “Hakkında” gezinti öğesi aracılığıyla görüntülenebilir._
 
+### 5.7.0
+- Web sürümü için depolama alanının iyileştirilmesi
+- Hollandaca (NL) ve Korece (KO) dillerinin eklenmesi
+
 ### 5.6.2
 - Hesaplar ve Bütçeler Özet sekmeleri hesaplamalarının düzeltilmesi
 
