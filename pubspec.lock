@@ -418,10 +418,10 @@ packages:
     dependency: "direct main"
     description:
       name: flutter_currency_picker
-      sha256: cdd6e1c1e51d5b2a7713b81f882e310464cf7c583c201909567e306c715447af
+      sha256: "20e15b187dbd4ba678ba70097948f17e302ac7c07cbc7a7f9990c1bff3042344"
       url: "https://pub.dev"
     source: hosted
-    version: "1.5.2"
+    version: "1.6.0"
   flutter_driver:
     dependency: "direct dev"
     description: flutter

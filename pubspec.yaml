@@ -51,7 +51,7 @@ dependencies:
   flutter_grid_layout: ^1.1.1
   flutter_svg: ^2.0.7
   flutter_swipe_action_cell: ^3.1.2
-  flutter_currency_picker: ^1.5.2
+  flutter_currency_picker: ^1.6.0
   in_app_purchase: ^3.1.11
   firebase_crashlytics: ^4.0.0
   dart_intl_search: ^1.2.3
