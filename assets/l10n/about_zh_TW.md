@@ -4,6 +4,7 @@
 [Latsinka (BE)](./about_be_EU.md) |
 [简体中文 (ZH-CN)](./about_zh.md) |
 繁體中文 (ZH-TW) |
+[Nederlandse (NL)](./about_nl.md) |
 [English (EN-US)](./about_en.md) |
 [Français (FR)](./about_fr.md) |
 [Deutsch (DE)](./about_de.md) |
