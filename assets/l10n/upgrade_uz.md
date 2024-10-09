@@ -2,6 +2,10 @@
 
 _Yangilanishlarning toʻliq roʻyxatini “Maslahat” tugmasidagi “Haqida” navigatsiya bandi orqali koʻrish mumkin._
 
+### 5.7.0
+- Veb-versiya uchun saqlashni yaxshilash
+- Golland (NL) va koreys (KO) tillarini qo'shish
+
 ### 5.6.2
 - Hisob va byudjetlarni tuzatish Xulosa yorliqlari hisob-kitoblari
 

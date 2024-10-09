@@ -2,6 +2,10 @@
 
 _Die vollständige Liste der Updates kann über den Navigationspunkt "Über" auf der Schaltfläche "Hinweise" eingesehen werden._
 
+### 5.7.0
+- Verbesserte Speicherung für die Web-Version
+- Hinzufügen der Sprachen Niederländisch (NL) und Koreanisch (KO)
+
 ### 5.6.2
 - Korrektur der Berechnungen auf den Registerkarten Konten und Budgets Zusammenfassung
 

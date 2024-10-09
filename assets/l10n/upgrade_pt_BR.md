@@ -2,6 +2,10 @@
 
 _A lista completa de atualizações pode ser visualizada no item de navegação "Sobre" no botão "Dicas".
 
+### 5.7.0
+- Aprimoramento do armazenamento da versão da Web
+- Adição dos idiomas holandês (NL) e coreano (KO)
+
 ### 5.6.2
 - Correção dos cálculos das guias Resumo de contas e orçamentos
 

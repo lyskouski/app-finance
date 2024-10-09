@@ -2,6 +2,10 @@
 
 _La liste complète des mises à jour peut être consultée via l'élément de navigation "À propos" du bouton "Conseils"._
 
+### 5.7.0
+- Amélioration du stockage pour la version Web
+- Ajout des langues néerlandaise (NL) et coréenne (KO)
+
 ### 5.6.2
 - Correction des calculs des onglets Résumé des comptes et des budgets
 

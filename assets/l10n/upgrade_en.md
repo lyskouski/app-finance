@@ -2,6 +2,10 @@
 
 _The full list of updates can be viewed via the "About" navigation item on the "Hints" button._
 
+### 5.7.0
+- Improving storage for Web-version
+- Adding Dutch (NL) and Korean (KO) languages
+
 ### 5.6.2
 - Fixing Accounts and Budgets Summary tabs calculations
 

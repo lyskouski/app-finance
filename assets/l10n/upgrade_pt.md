@@ -2,6 +2,10 @@
 
 _A lista completa de actualizações pode ser consultada através do item de navegação "Acerca" no botão "Sugestões".
 
+### 5.7.0
+- Melhorar o armazenamento da versão Web
+- Adição dos idiomas holandês (NL) e coreano (KO)
+
 ### 5.6.2
 - Correção dos cálculos dos separadores Resumo de contas e orçamentos
 

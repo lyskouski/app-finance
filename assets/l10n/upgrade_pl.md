@@ -2,6 +2,10 @@
 
 Pełną listę aktualizacji można wyświetlić za pomocą elementu nawigacyjnego "O aplikacji" na przycisku "Wskazówki".
 
+### 5.7.0
+- Ulepszenie pamięci masowej dla wersji internetowej
+- Dodanie języków holenderskiego (NL) i koreańskiego (KO)
+
 ### 5.6.2
 - Naprawiono obliczenia na kartach podsumowania kont i budżetów
 

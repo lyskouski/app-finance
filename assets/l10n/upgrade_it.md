@@ -3,6 +3,10 @@
 _L'elenco completo degli aggiornamenti può essere consultato tramite la voce di navigazione “Informazioni” del 
 pulsante “Suggerimenti”._
 
+### 5.7.0
+- Miglioramento dell'archiviazione per la versione Web
+- Aggiunta delle lingue olandese (NL) e coreana (KO)
+
 ### 5.6.2
 - Correzione dei calcoli delle schede di riepilogo dei conti e dei bilanci
 
