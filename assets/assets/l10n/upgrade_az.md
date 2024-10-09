@@ -2,6 +2,10 @@
 
 _Yeniləmələrin tam siyahısına "İpucu" düyməsindəki "Haqqında" naviqasiya elementi vasitəsilə baxmaq olar._
 
+### 5.7.0
+- Veb versiyası üçün yaddaşın təkmilləşdirilməsi
+- Holland (NL) və Koreya (KO) dillərinin əlavə edilməsi
+
 ### 5.6.2
 - Hesablamalar və Büdcələr Xülasə nişanları hesablamalarının düzəldilməsi
 

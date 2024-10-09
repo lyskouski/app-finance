@@ -2,6 +2,10 @@
 
 _Poŭny spis abnaŭlieńniaŭ možna prahliadzieć u navihacyjnym punkcie «Ab Dadatku» na knopcy «Padkazki»._ 
 
+### 5.7.0
+- Paliapšeńnie zachoŭvańnia dlia Web-viersii
+- Dadańnie halandskaj (NL) i karejskaj (KO) moŭ
+
 ### 5.6.2
 - Vypraŭlieńnie razlikaŭ ulikovych zapisaŭ i biudžetaŭ
 

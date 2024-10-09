@@ -2,6 +2,10 @@
 
 _La lista completa de actualizaciones puede consultarse en el menú "Acerca de" del botón "Sugerencias"._
 
+### 5.7.0
+- Mejora del almacenamiento de la versión web
+- Incorporación de los idiomas neerlandés (NL) y coreano (KO)
+
 ### 5.6.2
 - Corrección de los cálculos de las pestañas Resumen de Cuentas y Presupuestos.
 

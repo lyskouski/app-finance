@@ -4,6 +4,7 @@ Azərbaycanlı (AZ) |
 [Latsinka (BE)](./about_be_EU.md) |
 [简体中文 (ZH-CN)](./about_zh.md) |
 [繁體中文 (ZH-TW)](./about_zh_TW.md) |
+[Nederlandse (NL)](./about_nl.md) |
 [English (EN-US)](./about_en.md) |
 [Français (FR)](./about_fr.md) |
 [Deutsch (DE)](./about_de.md) |
@@ -11,6 +12,7 @@ Azərbaycanlı (AZ) |
 [Italiano (IT)](./about_it.md) |
 [日本語 (JA)](./about_ja.md) |
 [فارسی (FA)](./about_fa.md) |
+[한국어 (KO)](./about_ko.md) |
 [Polski (PL)](./about_pl.md) |
 [Português Europeu (PT)](./about_pt.md) |
 [Português Brasileiro (PTB)](./about_pt_BR.md) |
