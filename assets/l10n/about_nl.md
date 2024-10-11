@@ -27,7 +27,7 @@ Nederlandse (NL) |
 Het doel van de oplossing is om een financiële boekhoudapplicatie te maken die intuïtief, efficiënt en inclusief is. 
 Dat stelt gebruikers in staat om moeiteloos hun financiën te beheren en zorgt ervoor dat niemand achterblijft.
 
-[Bekijk de video](../images/presentation_en.png)](https://youtu.be/sNTbpILLsOw)
+[![Bekijk de video](../images/presentation_en.png)](https://youtu.be/sNTbpILLsOw)
 
 ### Functionaliteit
 - Boekhouding (Rekeningtype, Valuta/Cryptocurrency)
