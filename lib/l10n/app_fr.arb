@@ -168,6 +168,7 @@
     "dateFormat": "Format de la date",
     "dateTooltip": "Sélectionner la date",
     "dayMonday": "Lundi",
+    "dayStartOfMonth": "Début du mois",
     "dayStartOfWeek": "Début de la semaine",
     "daySunday": "Dimanche",
     "debitCard": "Carte de débit",

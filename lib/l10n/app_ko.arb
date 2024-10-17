@@ -168,6 +168,7 @@
     "dateFormat": "날짜 형식",
     "dateTooltip": "날짜 선택",
     "dayMonday": "월요일",
+    "dayStartOfMonth": "이달의 시작",
     "dayStartOfWeek": "주 시작",
     "daySunday": "일요일",
     "debitCard": "직불 카드",

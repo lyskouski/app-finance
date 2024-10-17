@@ -168,6 +168,7 @@
     "dateFormat": "日付フォーマット",
     "dateTooltip": "日付選択",
     "dayMonday": "月曜日",
+    "dayStartOfMonth": "月初",
     "dayStartOfWeek": "週の始まり",
     "daySunday": "日曜日",
     "debitCard": "デビットカード",

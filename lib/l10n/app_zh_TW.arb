@@ -168,6 +168,7 @@
     "dateFormat": "Date Format",
     "dateTooltip": "選擇日期",
     "dayMonday": "星期一",
+    "dayStartOfMonth": "本月開始",
     "dayStartOfWeek": "本週開始",
     "daySunday": "星期日",
     "debitCard": "借記卡",
