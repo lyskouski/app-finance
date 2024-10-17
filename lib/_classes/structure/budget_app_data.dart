@@ -2,10 +2,14 @@
 // Use of this source code is governed by a CC BY-NC-ND 4.0 license that can be found in the LICENSE file.
 
 import 'package:app_finance/_classes/herald/app_locale.dart';
+import 'package:app_finance/_classes/herald/app_start_of_month.dart';
+import 'package:app_finance/_classes/storage/app_preferences.dart';
 import 'package:app_finance/_classes/structure/abstract_app_data.dart';
 import 'package:app_finance/_classes/storage/app_data.dart';
 import 'package:app_finance/_classes/structure/currency/exchange.dart';
 import 'package:app_finance/_classes/structure/invoice_app_data.dart';
+import 'package:app_finance/_configs/budget_type.dart';
+import 'package:app_finance/_ext/date_time_ext.dart';
 import 'package:app_finance/_ext/int_ext.dart';
 import 'package:app_finance/_ext/string_ext.dart';
 import 'package:app_finance/_mixins/storage_mixin.dart';
@@ -15,6 +19,7 @@ import 'package:flutter_currency_picker/flutter_currency_picker.dart';
 class BudgetAppData extends AbstractAppData with StorageMixin {
   double amount;
   Map<int, double> amountSet;
+  String type;
   final int _month = DateTime.now().month;
 
   BudgetAppData({
@@ -30,6 +35,7 @@ class BudgetAppData extends AbstractAppData with StorageMixin {
     amountLimit = 0.0,
     this.amountSet = const {},
     this.amount = 0.0,
+    this.type = '',
     super.hidden,
   }) : super(
           details: amountLimit,
@@ -45,6 +51,7 @@ class BudgetAppData extends AbstractAppData with StorageMixin {
   BudgetAppData clone() {
     return BudgetAppData(
       title: super.title,
+      type: type,
       uuid: super.uuid,
       progress: super.progress,
       color: super.color,
@@ -61,6 +68,7 @@ class BudgetAppData extends AbstractAppData with StorageMixin {
   factory BudgetAppData.fromJson(Map<String, dynamic> json) {
     return BudgetAppData(
       title: json['title'],
+      type: json['type'] ?? AppBudgetType.month.name,
       uuid: json['uuid'],
       progress: 0.0 + json['progress'],
       color: json['color'] != null ? MaterialColor(json['color'], const <int, Color>{}) : null,
@@ -79,6 +87,7 @@ class BudgetAppData extends AbstractAppData with StorageMixin {
         ...super.toJson()..remove('description'),
         'amountLimit': amountLimit,
         'amountSet': amountSet.toString(),
+        'type': type,
       };
 
   @override
@@ -106,17 +115,20 @@ class BudgetAppData extends AbstractAppData with StorageMixin {
   }
 
   String _description() {
+    String description = '';
     if (super.details > 0 && super.details < 1) {
       final percents = (amountLimit * 100).toStringAsFixed(2);
-      return '${(amount).toCurrency(currency: currency, withPattern: false)} /'
+      description = '${(amount).toCurrency(currency: currency, withPattern: false)} /'
           ' ${_relativeAmountLimit().toCurrency(currency: currency, withPattern: false)} ($percents%)';
     } else if (super.details > 0) {
-      return '${(amountLimit * progress).toCurrency(currency: currency, withPattern: false)} /'
+      description = '${(amountLimit * progress).toCurrency(currency: currency, withPattern: false)} /'
           ' ${(amountLimit).toCurrency(currency: currency, withPattern: false)}'
           '${multiplication > 1 ? ' (${multiplication.toStringAsFixed(2)} ${AppLocale.labels.coef})' : ''}';
-    } else {
-      return '';
     }
+    if (type == AppBudgetType.year.name || type == AppBudgetType.week.name) {
+      description += ', ${BudgetType.getLabel(type)}';
+    }
+    return description;
   }
 
   double get progressLeft => progress < 1 ? 1 - progress : 0.0;
@@ -126,11 +138,25 @@ class BudgetAppData extends AbstractAppData with StorageMixin {
   double get amountLimit => super.details * multiplication;
   set amountLimit(double value) => super.details = value;
 
+  DateTime getDateBoundary() {
+    DateTime boundary = DateTime.now();
+    if (type == AppBudgetType.year.name) {
+      boundary = DateTime(boundary.year);
+    } else if (type == AppBudgetType.week.name) {
+      String day = AppPreferences.get(AppPreferences.prefWeekStartDay) ?? '1';
+      boundary = boundary.getPreviousDay(day == '1' ? DateTime.monday : DateTime.sunday);
+    } else {
+      boundary = boundary.getStartingDay(AppStartOfMonth.get());
+    }
+    return boundary;
+  }
+
   double _relativeAmountLimit() {
-    final ex = Exchange(store: super.getState());
+    final ex = Exchange(store: getState());
     return amountLimit *
         getState()
-            .getActualList(AppDataType.invoice)
+            .getStream(AppDataType.invoice)
+            .getTill(getDateBoundary().millisecondsSinceEpoch)
             .cast<InvoiceAppData>()
             .where((e) => e.accountFrom == null)
             .fold(0.0, (v, e) => v + ex.reform(e.details, e.currency, currency));

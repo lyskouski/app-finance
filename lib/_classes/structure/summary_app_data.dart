@@ -4,14 +4,18 @@
 import 'dart:collection';
 import 'dart:math';
 
+import 'package:app_finance/_ext/date_time_ext.dart';
+
 class SummaryAppData {
   final _scope = SplayTreeMap<double, String>();
   final _actual = SplayTreeMap<double, String>();
   final _hash = HashMap<String, double>();
   double total;
+  int startingDay;
 
   SummaryAppData({
     this.total = 0,
+    this.startingDay = 1,
     List<String> list = const [],
   }) {
     this.list = list;
@@ -40,7 +44,7 @@ class SummaryAppData {
     double key = (id ?? updatedAt.millisecondsSinceEpoch).toDouble() + Random().nextDouble();
     _scope[key] = value;
     _hash[value] = key;
-    if (key >= DateTime(current.year, current.month).millisecondsSinceEpoch) {
+    if (key >= current.getStartingDay(startingDay).millisecondsSinceEpoch) {
       _actual[key] = value;
     }
   }

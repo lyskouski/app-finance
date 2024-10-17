@@ -2,6 +2,7 @@
 // Use of this source code is governed by a CC BY-NC-ND 4.0 license that can be
 // found in the LICENSE file.
 
+import 'package:app_finance/_classes/storage/app_preferences.dart';
 import 'package:app_finance/_classes/structure/account_app_data.dart';
 import 'package:app_finance/_classes/structure/bill_app_data.dart';
 import 'package:app_finance/_classes/math/bill_recalculation.dart';
@@ -12,14 +13,19 @@ import 'package:dart_class_wrapper/gen/generate_with_method_setters.dart';
 import 'package:flutter_currency_picker/flutter_currency_picker.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/annotations.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 @GenerateWithMethodSetters([BillRecalculation, Exchange])
 import 'bill_recalculation_test.wrapper.dart';
 
-@GenerateNiceMocks([MockSpec<AppData>()])
+@GenerateNiceMocks([MockSpec<AppData>(), MockSpec<SharedPreferences>()])
 import 'bill_recalculation_test.mocks.dart';
 
 void main() {
+  setUp(() {
+    AppPreferences.pref = MockSharedPreferences();
+  });
+
   group('BillRecalculation', () {
     late BillRecalculation object;
 

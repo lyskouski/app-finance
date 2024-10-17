@@ -7,11 +7,9 @@ import 'package:app_finance/pages/budget/budget_add_page.dart';
 import 'package:flutter/material.dart';
 
 class BudgetEditPage extends BudgetAddPage {
-  final String uuid;
-
   const BudgetEditPage({
     super.key,
-    required this.uuid,
+    required super.uuid,
   });
 
   @override
@@ -24,7 +22,7 @@ class BudgetEditPageState extends BudgetAddPageState<BudgetEditPage> {
 
   @override
   void initState() {
-    uuid = (widget as BudgetEditPage).uuid;
+    uuid = widget.uuid!;
     super.initState();
   }
 
@@ -36,6 +34,7 @@ class BudgetEditPageState extends BudgetAddPageState<BudgetEditPage> {
       isFirstRun = false;
       final form = super.state.getByUuid(uuid) as BudgetAppData;
       title.text = form.title;
+      type = form.type;
       budgetLimit.text = form.amountLimit.toString();
       amountSet = form.amountSet;
       color = form.color;
@@ -63,9 +62,7 @@ class BudgetEditPageState extends BudgetAddPageState<BudgetEditPage> {
   }
 
   @override
-  String getButtonName() {
-    return AppLocale.labels.updateBudgetTooltip;
-  }
+  String getButtonName() => AppLocale.labels.updateBudgetTooltip;
 
   @override
   Widget buildContent(BuildContext context, BoxConstraints constraints) {

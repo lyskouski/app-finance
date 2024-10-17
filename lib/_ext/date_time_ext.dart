@@ -5,6 +5,33 @@ import 'package:app_finance/_classes/herald/app_locale.dart';
 import 'package:intl/intl.dart';
 
 extension DateTimeExt on DateTime {
+  DateTime getPreviousDay([int day = DateTime.monday]) {
+    int daysToSubtract = weekday - day;
+    if (daysToSubtract < 0) {
+      daysToSubtract += 7;
+    }
+    return subtract(Duration(
+      days: daysToSubtract,
+      hours: hour,
+      minutes: minute,
+      seconds: second,
+      milliseconds: millisecond,
+      microseconds: microsecond,
+    ));
+  }
+
+  DateTime getStartingDay([int startingDay = 1]) {
+    if (startingDay <= day) {
+      return DateTime(year, month, startingDay);
+    } else {
+      DateTime previousMonth = DateTime(year, month - 1);
+      if (month == 1) {
+        previousMonth = DateTime(year - 1, 12);
+      }
+      return DateTime(previousMonth.year, previousMonth.month, startingDay);
+    }
+  }
+
   String yMEd() {
     DateFormat formatterDate;
     try {

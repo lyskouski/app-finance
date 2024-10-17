@@ -3,6 +3,7 @@
 
 import 'dart:collection';
 import 'package:app_finance/_classes/controller/iterator_controller.dart';
+import 'package:app_finance/_classes/herald/app_start_of_month.dart';
 import 'package:app_finance/_classes/herald/app_sync.dart';
 import 'package:app_finance/_classes/math/goal_recalculation.dart';
 import 'package:app_finance/_classes/math/invoice_recalculation.dart';
@@ -47,8 +48,9 @@ class AppData extends ChangeNotifier {
 
   AppData(this.appSync) : super() {
     isLoading = true;
+    int startingDay = AppStartOfMonth.get();
     for (var key in AppDataType.values) {
-      _data[key] = SummaryAppData();
+      _data[key] = SummaryAppData(startingDay: startingDay);
     }
     Exchange(store: this).getDefaultCurrency();
     TransactionLog.load(this).then((_) async => await restate()).then((_) => appSync.follow(AppData, _stream));
@@ -70,8 +72,9 @@ class AppData extends ChangeNotifier {
 
   Future<void> flush() async {
     isLoading = true;
+    int startingDay = AppStartOfMonth.get();
     _hashTable.clear();
-    _data.updateAll((key, value) => SummaryAppData(total: 0, list: []));
+    _data.updateAll((key, value) => SummaryAppData(startingDay: startingDay));
     await TransactionLog.load(this);
     await restate();
   }

@@ -6,6 +6,7 @@ import 'package:app_finance/_classes/herald/app_locale.dart';
 import 'package:app_finance/_classes/structure/budget_app_data.dart';
 import 'package:app_finance/_classes/controller/focus_controller.dart';
 import 'package:app_finance/_classes/storage/app_preferences.dart';
+import 'package:app_finance/_configs/budget_type.dart';
 import 'package:app_finance/_configs/custom_color_scheme.dart';
 import 'package:app_finance/_configs/theme_helper.dart';
 import 'package:app_finance/_ext/build_context_ext.dart';
@@ -22,7 +23,9 @@ import 'package:flutter_currency_picker/flutter_currency_picker.dart';
 import 'package:intl/intl.dart';
 
 class BudgetAddPage extends AbstractAddPage {
+  final String? uuid;
   final String? title;
+  final String? type;
   final double? budgetLimit;
   final IconData? icon;
   final MaterialColor? color;
@@ -30,7 +33,9 @@ class BudgetAddPage extends AbstractAddPage {
 
   const BudgetAddPage({
     super.key,
+    this.uuid,
     this.title,
+    this.type,
     this.budgetLimit,
     this.icon,
     this.color,
@@ -41,9 +46,10 @@ class BudgetAddPage extends AbstractAddPage {
   BudgetAddPageState createState() => BudgetAddPageState();
 }
 
-class BudgetAddPageState<T extends BudgetAddPage> extends AbstractAddPageState<BudgetAddPage> {
+class BudgetAddPageState<T extends BudgetAddPage> extends AbstractAddPageState<T> {
   late FocusController focus;
   late TextEditingController title;
+  late String? type;
   late TextEditingController budgetLimit;
   IconData? icon;
   MaterialColor? color;
@@ -54,6 +60,7 @@ class BudgetAddPageState<T extends BudgetAddPage> extends AbstractAddPageState<B
   void initState() {
     focus = FocusController();
     title = TextEditingController(text: widget.title);
+    type = widget.type ?? AppBudgetType.month.name;
     budgetLimit = TextEditingController(text: widget.budgetLimit != null ? widget.budgetLimit.toString() : '');
     icon = widget.icon;
     color = widget.color;
@@ -71,9 +78,7 @@ class BudgetAddPageState<T extends BudgetAddPage> extends AbstractAddPageState<B
   }
 
   @override
-  String getTitle() {
-    return AppLocale.labels.createBudgetHeader;
-  }
+  String getTitle() => AppLocale.labels.createBudgetHeader;
 
   @override
   bool hasFormErrors() {
@@ -88,6 +93,7 @@ class BudgetAddPageState<T extends BudgetAddPage> extends AbstractAddPageState<B
     }
     super.state.add(BudgetAppData(
           title: title.text,
+          type: type ?? AppBudgetType.month.name,
           amountLimit: double.tryParse(budgetLimit.text) ?? 0.0,
           amountSet: amountSet,
           progress: 0.0,
@@ -132,6 +138,16 @@ class BudgetAddPageState<T extends BudgetAddPage> extends AbstractAddPageState<B
               title: AppLocale.labels.title,
               tooltip: AppLocale.labels.titleBudgetTooltip,
               showError: hasError && title.text.isEmpty,
+            ),
+            InputWrapper.select(
+              isRequired: true,
+              isDisabled: widget.uuid != null,
+              value: type,
+              title: AppLocale.labels.budgetType,
+              tooltip: AppLocale.labels.budgetType,
+              showError: hasError && type == null,
+              options: BudgetType.getList(),
+              onChange: (value) => setState(() => type = value),
             ),
             RowWidget(
               indent: indent,

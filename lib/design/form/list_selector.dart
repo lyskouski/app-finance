@@ -26,6 +26,7 @@ class ListSelector<K extends ListSelectorItem> extends StatefulWidget {
   final TextStyle? hintStyle;
   final Color? hintColor;
   final bool withLabel;
+  final bool isDisabled;
 
   const ListSelector({
     super.key,
@@ -37,6 +38,7 @@ class ListSelector<K extends ListSelectorItem> extends StatefulWidget {
     this.hintColor,
     this.value,
     this.withLabel = false,
+    this.isDisabled = false,
   });
 
   @override
@@ -80,11 +82,12 @@ class ListSelectorState<T extends ListSelector, K extends ListSelectorItem> exte
       focusNode: focusController.bind(this, context: context, value: widget.value),
       child: TapWidget(
         tooltip: widget.tooltip ?? '',
-        onTap: () => onTap(context),
+        onTap: () => widget.isDisabled ? null : onTap(context),
         onFocusChange: (v) => v ? focusController.scrollToFocusedElement(this) : null,
         child: Container(
           width: double.infinity,
-          color: context.colorScheme.fieldBackground,
+          color:
+              widget.isDisabled ? context.colorScheme.onSurface.withOpacity(0.1) : context.colorScheme.fieldBackground,
           child: LayoutBuilder(builder: (_, constraints) {
             return RowWidget(
               chunk: [null, ThemeHelper.barHeight - ThemeHelper.getIndent()],
@@ -121,11 +124,13 @@ class ListSelectorState<T extends ListSelector, K extends ListSelectorItem> exte
                   Padding(
                     padding: EdgeInsets.only(top: indent / 3),
                     child: ExcludeFocus(
-                      child: IconButton(
-                        tooltip: widget.hintText ?? '...',
-                        icon: Icon(Icons.arrow_drop_down, color: widget.hintStyle?.color),
-                        onPressed: () => onTap(context),
-                      ),
+                      child: widget.isDisabled
+                          ? ThemeHelper.emptyBox
+                          : IconButton(
+                              tooltip: widget.hintText ?? '...',
+                              icon: Icon(Icons.arrow_drop_down, color: widget.hintStyle?.color),
+                              onPressed: () => onTap(context),
+                            ),
                     ),
                   ),
                 ],

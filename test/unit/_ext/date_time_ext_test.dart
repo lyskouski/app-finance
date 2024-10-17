@@ -6,6 +6,38 @@ import 'package:flutter_test/flutter_test.dart';
 
 void main() {
   group('DateTimeExt', () {
+    group('getPreviousDay', () {
+      final testCases = [
+        (date: [2024, 10, 14], day: DateTime.monday, result: 'Mon, 10/14/2024'),
+        (date: [2024, 10, 16], day: DateTime.monday, result: 'Mon, 10/14/2024'),
+        (date: [2024, 10, 20], day: DateTime.monday, result: 'Mon, 10/14/2024'),
+        (date: [2024, 10, 13], day: DateTime.monday, result: 'Mon, 10/7/2024'),
+        (date: [2024, 10, 13], day: DateTime.sunday, result: 'Sun, 10/13/2024'),
+      ];
+
+      for (var v in testCases) {
+        test('$v', () {
+          final date = DateTime(v.date[0], v.date[1], v.date[2]);
+          expect(date.getPreviousDay(v.day).yMEd(), v.result);
+        });
+      }
+    });
+
+    group('getStartingDay', () {
+      final testCases = [
+        (date: [2024, 10, 17], day: 20, result: [2024, 9, 20]),
+        (date: [2024, 1, 17], day: 20, result: [2023, 12, 20]),
+        (date: [2024, 1, 17], day: 10, result: [2024, 1, 10]),
+      ];
+
+      for (var v in testCases) {
+        test('$v', () {
+          final date = DateTime(v.date[0], v.date[1], v.date[2]);
+          expect(date.getStartingDay(v.day), DateTime(v.result[0], v.result[1], v.result[2]));
+        });
+      }
+    });
+
     group('yMEd', () {
       final testCases = [
         (date: [2023, 8, 13], locale: null, result: 'Sun, 8/13/2023'),

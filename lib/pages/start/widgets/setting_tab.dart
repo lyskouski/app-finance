@@ -5,7 +5,9 @@ import 'package:app_finance/_classes/controller/focus_controller.dart';
 import 'package:app_finance/_classes/herald/app_design.dart';
 import 'package:app_finance/_classes/herald/app_locale.dart';
 import 'package:app_finance/_classes/herald/app_palette.dart';
+import 'package:app_finance/_classes/herald/app_start_of_month.dart';
 import 'package:app_finance/_classes/herald/app_theme.dart';
+import 'package:app_finance/_classes/herald/app_start_of_week.dart';
 import 'package:app_finance/_classes/herald/app_zoom.dart';
 import 'package:app_finance/_classes/storage/app_data.dart';
 import 'package:app_finance/_classes/storage/app_preferences.dart';
@@ -16,6 +18,7 @@ import 'package:app_finance/_configs/custom_color_scheme.dart';
 import 'package:app_finance/_configs/theme_helper.dart';
 import 'package:app_finance/_ext/build_context_ext.dart';
 import 'package:app_finance/_ext/color_ext.dart';
+import 'package:app_finance/design/form/simple_input.dart';
 import 'package:app_finance/design/wrapper/input_wrapper.dart';
 import 'package:app_finance/l10n/index.dart';
 import 'package:app_finance/design/button/link_widget.dart';
@@ -44,9 +47,11 @@ class SettingTab extends AbstractTab {
 
 class SettingTabState<T extends SettingTab> extends AbstractTabState<T> {
   late FocusController controller;
+  late TextEditingController startOfMonth;
 
   late AppTheme theme;
   late AppZoom zoom;
+  late AppStartOfWeek startOfWeek;
   late AppPalette palette;
   late AppLocale locale;
   late AppDesign design;
@@ -76,6 +81,8 @@ class SettingTabState<T extends SettingTab> extends AbstractTabState<T> {
     brightness = AppPreferences.get(AppPreferences.prefTheme) ?? brightness;
     colorMode = AppPreferences.get(AppPreferences.prefColor) ?? colorMode;
     currency = CurrencyProvider.find(AppPreferences.get(AppPreferences.prefCurrency) ?? '');
+    startOfMonth = TextEditingController(text: AppStartOfMonth.get().toString());
+    startOfMonth.addListener(() => AppPreferences.set(AppPreferences.prefMonthStartDay, startOfMonth.text));
   }
 
   @override
@@ -144,6 +151,7 @@ class SettingTabState<T extends SettingTab> extends AbstractTabState<T> {
   Widget buildContent(BuildContext context, BoxConstraints constraints) {
     theme = Provider.of<AppTheme>(context, listen: false);
     zoom = Provider.of<AppZoom>(context, listen: false);
+    startOfWeek = Provider.of<AppStartOfWeek>(context, listen: true);
     palette = Provider.of<AppPalette>(context, listen: false);
     locale = Provider.of<AppLocale>(context, listen: false);
     design = Provider.of<AppDesign>(context, listen: false);
@@ -185,6 +193,22 @@ class SettingTabState<T extends SettingTab> extends AbstractTabState<T> {
             tooltip: AppLocale.labels.currencyDefault,
             value: currency,
             onChange: saveCurrency,
+          ),
+          InputWrapper.select(
+            title: AppLocale.labels.dayStartOfWeek,
+            tooltip: AppLocale.labels.dayStartOfWeek,
+            value: startOfWeek.value.toString(),
+            options: [
+              ListSelectorItem(id: '0', name: AppLocale.labels.daySunday),
+              ListSelectorItem(id: '1', name: AppLocale.labels.dayMonday),
+            ].cast<ListSelectorItem>(),
+            onChange: (v) => startOfWeek.set(int.tryParse(v) ?? 1),
+          ),
+          InputWrapper.text(
+            title: AppLocale.labels.dayStartOfMonth,
+            controller: startOfMonth,
+            inputType: const TextInputType.numberWithOptions(decimal: false),
+            formatter: [SimpleInputFormatter.filterInt],
           ),
           if (kDebugMode) ...[
             Row(
