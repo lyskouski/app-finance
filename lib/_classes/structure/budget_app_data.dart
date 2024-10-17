@@ -6,6 +6,8 @@ import 'package:app_finance/_classes/structure/abstract_app_data.dart';
 import 'package:app_finance/_classes/storage/app_data.dart';
 import 'package:app_finance/_classes/structure/currency/exchange.dart';
 import 'package:app_finance/_classes/structure/invoice_app_data.dart';
+import 'package:app_finance/_configs/budget_type.dart';
+import 'package:app_finance/_ext/date_time_ext.dart';
 import 'package:app_finance/_ext/int_ext.dart';
 import 'package:app_finance/_ext/string_ext.dart';
 import 'package:app_finance/_mixins/storage_mixin.dart';
@@ -15,6 +17,7 @@ import 'package:flutter_currency_picker/flutter_currency_picker.dart';
 class BudgetAppData extends AbstractAppData with StorageMixin {
   double amount;
   Map<int, double> amountSet;
+  String type;
   final int _month = DateTime.now().month;
 
   BudgetAppData({
@@ -30,6 +33,7 @@ class BudgetAppData extends AbstractAppData with StorageMixin {
     amountLimit = 0.0,
     this.amountSet = const {},
     this.amount = 0.0,
+    this.type = '',
     super.hidden,
   }) : super(
           details: amountLimit,
@@ -45,6 +49,7 @@ class BudgetAppData extends AbstractAppData with StorageMixin {
   BudgetAppData clone() {
     return BudgetAppData(
       title: super.title,
+      type: type,
       uuid: super.uuid,
       progress: super.progress,
       color: super.color,
@@ -61,6 +66,7 @@ class BudgetAppData extends AbstractAppData with StorageMixin {
   factory BudgetAppData.fromJson(Map<String, dynamic> json) {
     return BudgetAppData(
       title: json['title'],
+      type: json['type'] ?? AppBudgetType.month.name,
       uuid: json['uuid'],
       progress: 0.0 + json['progress'],
       color: json['color'] != null ? MaterialColor(json['color'], const <int, Color>{}) : null,
@@ -79,6 +85,7 @@ class BudgetAppData extends AbstractAppData with StorageMixin {
         ...super.toJson()..remove('description'),
         'amountLimit': amountLimit,
         'amountSet': amountSet.toString(),
+        'type': type,
       };
 
   @override
@@ -126,11 +133,24 @@ class BudgetAppData extends AbstractAppData with StorageMixin {
   double get amountLimit => super.details * multiplication;
   set amountLimit(double value) => super.details = value;
 
+  DateTime getDateBoundary() {
+    DateTime boundary = DateTime.now();
+    if (type == AppBudgetType.year.name) {
+      boundary = DateTime(boundary.year);
+    } else if (type == AppBudgetType.week.name) {
+      boundary = DateTime.now().getPreviousDay(day: DateTime.monday);
+    } else {
+      boundary = DateTime(boundary.year, boundary.month);
+    }
+    return boundary;
+  }
+
   double _relativeAmountLimit() {
-    final ex = Exchange(store: super.getState());
+    final ex = Exchange(store: getState());
     return amountLimit *
         getState()
-            .getActualList(AppDataType.invoice)
+            .getStream(AppDataType.invoice)
+            .getTill(getDateBoundary().millisecondsSinceEpoch)
             .cast<InvoiceAppData>()
             .where((e) => e.accountFrom == null)
             .fold(0.0, (v, e) => v + ex.reform(e.details, e.currency, currency));

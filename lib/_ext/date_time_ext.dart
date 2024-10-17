@@ -5,6 +5,14 @@ import 'package:app_finance/_classes/herald/app_locale.dart';
 import 'package:intl/intl.dart';
 
 extension DateTimeExt on DateTime {
+  DateTime getPreviousDay({int day = DateTime.monday}) {
+    int daysToSubtract = weekday - day;
+    if (daysToSubtract < 0) {
+      daysToSubtract += 7;
+    }
+    return subtract(Duration(days: daysToSubtract));
+  }
+
   String yMEd() {
     DateFormat formatterDate;
     try {

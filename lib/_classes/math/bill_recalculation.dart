@@ -50,8 +50,7 @@ class BillRecalculation extends AbstractRecalculation {
   }
 
   BillRecalculation updateBudget(BudgetAppData budgetChange, BudgetAppData? budgetInitial) {
-    DateTime now = DateTime.now();
-    if (DateTime(now.year, now.month).isAfter(change.createdAt)) {
+    if (budgetChange.getDateBoundary().isAfter(change.createdAt)) {
       return this;
     }
     if (budgetInitial != null && budgetChange.uuid != budgetInitial.uuid) {
