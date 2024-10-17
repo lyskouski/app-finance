@@ -143,7 +143,7 @@ class BudgetAppData extends AbstractAppData with StorageMixin {
       boundary = DateTime(boundary.year);
     } else if (type == AppBudgetType.week.name) {
       var day = AppPreferences.get(AppPreferences.prefWeekStartDay);
-      boundary = DateTime.now().getPreviousDay(day: day == '1' ? DateTime.monday : DateTime.sunday);
+      boundary = DateTime.now().getPreviousDay(day == '1' ? DateTime.monday : DateTime.sunday);
     } else {
       boundary = DateTime(boundary.year, boundary.month);
     }

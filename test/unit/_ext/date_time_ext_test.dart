@@ -18,7 +18,7 @@ void main() {
       for (var v in testCases) {
         test('$v', () {
           final date = DateTime(v.date[0], v.date[1], v.date[2]);
-          expect(date.getPreviousDay(day: v.day).yMEd(), v.result);
+          expect(date.getPreviousDay(v.day).yMEd(), v.result);
         });
       }
     });
