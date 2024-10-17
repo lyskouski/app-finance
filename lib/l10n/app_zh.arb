@@ -167,6 +167,9 @@
     "darkMode": "暗",
     "dateFormat": "日期格式",
     "dateTooltip": "选择日期",
+    "dayMonday": "星期一",
+    "dayStartOfWeek": "周初",
+    "daySunday": "周日",
     "debitCard": "借记卡",
     "def": "'{value}' 的默认值",
     "@def": {

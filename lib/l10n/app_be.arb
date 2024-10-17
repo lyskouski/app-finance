@@ -167,6 +167,9 @@
     "darkMode": "Цёмны",
     "dateFormat": "Фармат даты",
     "dateTooltip": "Абярыце дату",
+    "dayMonday": "Панядзелак",
+    "dayStartOfWeek": "Пачатак тыдня",
+    "daySunday": "Нядзеля",
     "debitCard": "Дэбетавая картка",
     "def": "Безумоўнае значэньне для '{value}'",
     "@def": {

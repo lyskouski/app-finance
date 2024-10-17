@@ -167,6 +167,9 @@
     "darkMode": "تاریک",
     "dateFormat": "فرمت تاریخ",
     "dateTooltip": "تاریخ را انتخاب کنید",
+    "dayMonday": "دوشنبه",
+    "dayStartOfWeek": "شروع هفته",
+    "daySunday": "یکشنبه",
     "debitCard": "کارت اعتباری",
     "def": "مقدار پیش‌فرض برای '{value}'",
     "@def": {

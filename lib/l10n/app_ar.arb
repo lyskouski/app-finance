@@ -167,6 +167,9 @@
     "darkMode": "داكن",
     "dateFormat": "تنسيق التاريخ",
     "dateTooltip": "تحديد التاريخ",
+    "dayMonday": "الإثنين",
+    "dayStartOfWeek": "بداية الأسبوع",
+    "daySunday": "الأحد",
     "debitCard": "بطاقة الخصم",
     "def": "القيمة الافتراضية لـ '{value}'",
     "@def": {

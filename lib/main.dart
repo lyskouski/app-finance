@@ -10,6 +10,7 @@ import 'package:app_finance/_classes/herald/app_palette.dart';
 import 'package:app_finance/_classes/herald/app_purchase.dart';
 import 'package:app_finance/_classes/herald/app_sync.dart';
 import 'package:app_finance/_classes/herald/app_theme.dart';
+import 'package:app_finance/_classes/herald/app_start_of_week.dart';
 import 'package:app_finance/_classes/herald/app_zoom.dart';
 import 'package:app_finance/_classes/storage/app_preferences.dart';
 import 'package:app_finance/_classes/structure/navigation/app_page_route.dart';
@@ -107,6 +108,9 @@ void main() async {
           ),
           ChangeNotifierProvider<AppPurchase>(
             create: (_) => AppPurchase(),
+          ),
+          ChangeNotifierProvider<AppStartOfWeek>(
+            create: (_) => AppStartOfWeek(),
           ),
         ],
         child: MyApp(platform: platform),

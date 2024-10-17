@@ -167,6 +167,9 @@
     "darkMode": "Escuro",
     "dateFormat": "Formato da data",
     "dateTooltip": "Selecionar data",
+    "dayMonday": "Segunda-feira",
+    "dayStartOfWeek": "Início da semana",
+    "daySunday": "Domingo",
     "debitCard": "Cartão de débito",
     "def": "Valor predefinido para '{value}'",
     "@def": {

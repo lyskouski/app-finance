@@ -167,6 +167,9 @@
     "darkMode": "Karanlık",
     "dateFormat": "Tarih Formatı",
     "dateTooltip": "Tarih Seçiniz",
+    "dayMonday": "Pazartesi",
+    "dayStartOfWeek": "Hafta başı",
+    "daySunday": "Pazar",
     "debitCard": "Banka Kartı",
     "def": "'{value}' için Varsayılan Değer",
     "@def": {

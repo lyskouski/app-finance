@@ -167,6 +167,9 @@
     "darkMode": "Qaranlıq",
     "dateFormat": "Tarix formatı",
     "dateTooltip": "Tarixi seçin",
+    "dayMonday": "bazar ertəsi",
+    "dayStartOfWeek": "Həftənin başlanğıcı",
+    "daySunday": "bazar günü",
     "debitCard": "Debet kartı",
     "def": "'{value}' üçün Defolt Dəyər",
     "@def": {

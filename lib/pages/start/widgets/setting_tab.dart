@@ -6,6 +6,7 @@ import 'package:app_finance/_classes/herald/app_design.dart';
 import 'package:app_finance/_classes/herald/app_locale.dart';
 import 'package:app_finance/_classes/herald/app_palette.dart';
 import 'package:app_finance/_classes/herald/app_theme.dart';
+import 'package:app_finance/_classes/herald/app_start_of_week.dart';
 import 'package:app_finance/_classes/herald/app_zoom.dart';
 import 'package:app_finance/_classes/storage/app_data.dart';
 import 'package:app_finance/_classes/storage/app_preferences.dart';
@@ -47,6 +48,7 @@ class SettingTabState<T extends SettingTab> extends AbstractTabState<T> {
 
   late AppTheme theme;
   late AppZoom zoom;
+  late AppStartOfWeek startOfWeek;
   late AppPalette palette;
   late AppLocale locale;
   late AppDesign design;
@@ -144,6 +146,7 @@ class SettingTabState<T extends SettingTab> extends AbstractTabState<T> {
   Widget buildContent(BuildContext context, BoxConstraints constraints) {
     theme = Provider.of<AppTheme>(context, listen: false);
     zoom = Provider.of<AppZoom>(context, listen: false);
+    startOfWeek = Provider.of<AppStartOfWeek>(context, listen: true);
     palette = Provider.of<AppPalette>(context, listen: false);
     locale = Provider.of<AppLocale>(context, listen: false);
     design = Provider.of<AppDesign>(context, listen: false);
@@ -185,6 +188,16 @@ class SettingTabState<T extends SettingTab> extends AbstractTabState<T> {
             tooltip: AppLocale.labels.currencyDefault,
             value: currency,
             onChange: saveCurrency,
+          ),
+          InputWrapper.select(
+            title: AppLocale.labels.dayStartOfWeek,
+            tooltip: AppLocale.labels.dayStartOfWeek,
+            value: startOfWeek.value.toString(),
+            options: [
+              ListSelectorItem(id: '0', name: AppLocale.labels.daySunday),
+              ListSelectorItem(id: '1', name: AppLocale.labels.dayMonday),
+            ].cast<ListSelectorItem>(),
+            onChange: (v) => startOfWeek.set(int.tryParse(v) ?? 1),
           ),
           if (kDebugMode) ...[
             Row(

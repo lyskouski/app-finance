@@ -167,6 +167,9 @@
     "darkMode": "어둡게",
     "dateFormat": "날짜 형식",
     "dateTooltip": "날짜 선택",
+    "dayMonday": "월요일",
+    "dayStartOfWeek": "주 시작",
+    "daySunday": "일요일",
     "debitCard": "직불 카드",
     "def": "'{value}'의 기본값",
     "@def": {

@@ -10,7 +10,14 @@ extension DateTimeExt on DateTime {
     if (daysToSubtract < 0) {
       daysToSubtract += 7;
     }
-    return subtract(Duration(days: daysToSubtract));
+    return subtract(Duration(
+      days: daysToSubtract,
+      hours: hour,
+      minutes: minute,
+      seconds: second,
+      milliseconds: millisecond,
+      microseconds: microsecond,
+    ));
   }
 
   String yMEd() {

@@ -20,6 +20,7 @@ class AppPreferences {
   static const String prefPalette = 'palette';
   static const String prefPaletteDark = 'palette_dark';
   static const String prefVersion = 'version';
+  static const String prefWeekStartDay = 'weekStartDay';
 
   static late SharedPreferences pref;
 

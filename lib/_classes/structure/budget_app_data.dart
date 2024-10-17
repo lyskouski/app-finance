@@ -2,6 +2,7 @@
 // Use of this source code is governed by a CC BY-NC-ND 4.0 license that can be found in the LICENSE file.
 
 import 'package:app_finance/_classes/herald/app_locale.dart';
+import 'package:app_finance/_classes/storage/app_preferences.dart';
 import 'package:app_finance/_classes/structure/abstract_app_data.dart';
 import 'package:app_finance/_classes/storage/app_data.dart';
 import 'package:app_finance/_classes/structure/currency/exchange.dart';
@@ -141,7 +142,8 @@ class BudgetAppData extends AbstractAppData with StorageMixin {
     if (type == AppBudgetType.year.name) {
       boundary = DateTime(boundary.year);
     } else if (type == AppBudgetType.week.name) {
-      boundary = DateTime.now().getPreviousDay(day: DateTime.monday);
+      var day = AppPreferences.get(AppPreferences.prefWeekStartDay);
+      boundary = DateTime.now().getPreviousDay(day: day == '1' ? DateTime.monday : DateTime.sunday);
     } else {
       boundary = DateTime(boundary.year, boundary.month);
     }

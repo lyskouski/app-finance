@@ -167,6 +167,9 @@
     "darkMode": "Ciomny",
     "dateFormat": "Farmat Daty",
     "dateTooltip": "Abiarycie Datu",
+    "dayMonday": "Paniadzielak",
+    "dayStartOfWeek": "Pačatak Tydnia",
+    "daySunday": "Niadzielia",
     "debitCard": "Debietavaja Kartka",
     "def": "Biezumoŭnaje Značeńnie dlia '{value}'",
     "@def": {

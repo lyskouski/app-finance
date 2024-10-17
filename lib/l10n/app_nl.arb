@@ -167,6 +167,9 @@
     "darkMode": "Donker",
     "dateFormat": "Datum Formaat",
     "dateTooltip": "Datum selecteren",
+    "dayMonday": "Maandag",
+    "dayStartOfWeek": "Begin van de week",
+    "daySunday": "Zondag",
     "debitCard": "Debetkaart",
     "def": "Standaardwaarde voor '{value}'",
     "@def": {

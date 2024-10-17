@@ -167,6 +167,9 @@
     "darkMode": "Qorong'i",
     "dateFormat": "Sana formati",
     "dateTooltip": "Sana-ni tanlang",
+    "dayMonday": "Dushanba",
+    "dayStartOfWeek": "Hafta boshi",
+    "daySunday": "Yakshanba",
     "debitCard": "Debit karta",
     "def": "“{value}” uchun birlamchi qiymat",
     "@def": {
