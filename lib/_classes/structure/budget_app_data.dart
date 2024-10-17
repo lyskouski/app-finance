@@ -113,17 +113,20 @@ class BudgetAppData extends AbstractAppData with StorageMixin {
   }
 
   String _description() {
+    String description = '';
     if (super.details > 0 && super.details < 1) {
       final percents = (amountLimit * 100).toStringAsFixed(2);
-      return '${(amount).toCurrency(currency: currency, withPattern: false)} /'
+      description = '${(amount).toCurrency(currency: currency, withPattern: false)} /'
           ' ${_relativeAmountLimit().toCurrency(currency: currency, withPattern: false)} ($percents%)';
     } else if (super.details > 0) {
-      return '${(amountLimit * progress).toCurrency(currency: currency, withPattern: false)} /'
+      description = '${(amountLimit * progress).toCurrency(currency: currency, withPattern: false)} /'
           ' ${(amountLimit).toCurrency(currency: currency, withPattern: false)}'
           '${multiplication > 1 ? ' (${multiplication.toStringAsFixed(2)} ${AppLocale.labels.coef})' : ''}';
-    } else {
-      return '';
     }
+    if (type == AppBudgetType.year.name || type == AppBudgetType.week.name) {
+      description += ', ${BudgetType.getLabel(type)}';
+    }
+    return description;
   }
 
   double get progressLeft => progress < 1 ? 1 - progress : 0.0;

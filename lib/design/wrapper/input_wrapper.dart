@@ -39,6 +39,7 @@ enum NamedInputType {
 class InputWrapper extends StatelessWidget {
   final NamedInputType type;
   final bool isRequired;
+  final bool isDisabled;
   final bool showError;
   final String title;
   final List<dynamic>? options;
@@ -64,6 +65,7 @@ class InputWrapper extends StatelessWidget {
     this.value,
     this.formatter,
     this.isRequired = false,
+    this.isDisabled = false,
     this.showError = false,
     this.state,
     this.width,
@@ -77,6 +79,7 @@ class InputWrapper extends StatelessWidget {
     required this.controller,
     this.tooltip,
     this.isRequired = false,
+    this.isDisabled = false,
     this.showError = false,
     this.onChange,
     this.options,
@@ -96,6 +99,7 @@ class InputWrapper extends StatelessWidget {
     required this.value,
     this.tooltip,
     this.isRequired = false,
+    this.isDisabled = false,
     this.showError = false,
     this.controller,
     this.formatter,
@@ -112,6 +116,7 @@ class InputWrapper extends StatelessWidget {
     this.controller,
     this.tooltip,
     this.isRequired = false,
+    this.isDisabled = false,
     this.showError = false,
     this.options,
     this.value,
@@ -129,6 +134,7 @@ class InputWrapper extends StatelessWidget {
     this.controller,
     this.tooltip,
     this.isRequired = false,
+    this.isDisabled = false,
     this.showError = false,
     this.options,
     this.value,
@@ -147,6 +153,7 @@ class InputWrapper extends StatelessWidget {
     this.controller,
     this.tooltip,
     this.isRequired = false,
+    this.isDisabled = false,
     this.showError = false,
     this.options,
     this.formatter,
@@ -196,6 +203,7 @@ class InputWrapper extends StatelessWidget {
               options: options as List<ListSelectorItem>,
               setState: (ListSelectorItem? v) => onChange?.call(v?.id),
               withLabel: min,
+              isDisabled: isDisabled,
             ),
           NamedInputType.iconSelector => IconSelector(
               key: getKey(),

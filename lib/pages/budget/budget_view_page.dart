@@ -152,12 +152,13 @@ class BudgetViewPageState extends AbstractPageState<BudgetViewPage> with TickerP
     if (isLeft) {
       width -= ThemeHelper.barHeight;
     }
-    final boundary = DateTime(DateTime.now().year, DateTime.now().month).millisecondsSinceEpoch + 0.0;
+    var category = state.getByUuid(widget.uuid) as BudgetAppData;
+    final boundary = category.getDateBoundary().millisecondsSinceEpoch + 0.0;
     return Padding(
       padding: EdgeInsets.only(top: indent),
       child: Column(
         children: [
-          BudgetHeaderWidget(item: state.getByUuid(widget.uuid) as BudgetAppData, width: pageWidth),
+          BudgetHeaderWidget(item: category, width: pageWidth),
           ThemeHelper.hIndent05,
           const Divider(height: 2),
           Expanded(
