@@ -61,7 +61,7 @@ class TradeChart extends StatelessWidget {
         if (scope.isNotEmpty)
           ChartData([
             scope.first,
-            Offset(DateTime.now().millisecondsSinceEpoch.toDouble(), scope.first.dy),
+            Offset(xMax, scope.first.dy),
           ], color: Colors.grey, strokeWidth: 1)
       ],
     );

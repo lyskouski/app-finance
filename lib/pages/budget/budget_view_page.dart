@@ -6,6 +6,7 @@ import 'dart:collection';
 import 'package:app_finance/_classes/controller/iterator_controller.dart';
 import 'package:app_finance/_classes/herald/app_locale.dart';
 import 'package:app_finance/_classes/controller/flow_state_machine.dart';
+import 'package:app_finance/_classes/herald/app_start_of_month.dart';
 import 'package:app_finance/_classes/storage/app_data.dart';
 import 'package:app_finance/_classes/storage/history_data.dart';
 import 'package:app_finance/_classes/structure/account_app_data.dart';
@@ -110,7 +111,8 @@ class BudgetViewPageState extends AbstractPageState<BudgetViewPage> with TickerP
     var category = super.state.getByUuid(widget.uuid) as BudgetAppData;
     var bills = state.getStream(AppDataType.bills, filter: (o) => o.category != widget.uuid);
     DateTime now = DateTime.now();
-    DateTime curr = DateTime(now.year, now.month, 1);
+    int startingDay = AppStartOfMonth.get();
+    DateTime curr = now.getStartingDay(startingDay);
     int iteration = 0;
     BillAppData? item;
     AccountAppData summary = AccountAppData(
@@ -132,7 +134,7 @@ class BudgetViewPageState extends AbstractPageState<BudgetViewPage> with TickerP
           break;
         }
         iteration++;
-        curr = DateTime(now.year, now.month - iteration, 1);
+        curr = DateTime(now.year, now.month - iteration, startingDay);
         summary.details = 0.0;
         summary.color = null;
         summary.title = DateFormat.MMMM().format(curr);

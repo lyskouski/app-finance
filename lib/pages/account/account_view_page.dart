@@ -7,6 +7,7 @@ import 'package:app_finance/_classes/controller/iterator_controller.dart';
 import 'package:app_finance/_classes/herald/app_design.dart';
 import 'package:app_finance/_classes/herald/app_locale.dart';
 import 'package:app_finance/_classes/controller/flow_state_machine.dart';
+import 'package:app_finance/_classes/herald/app_start_of_month.dart';
 import 'package:app_finance/_classes/storage/app_data.dart';
 import 'package:app_finance/_classes/structure/account_app_data.dart';
 import 'package:app_finance/_classes/structure/account_summary_data.dart';
@@ -17,6 +18,7 @@ import 'package:app_finance/_configs/custom_text_theme.dart';
 import 'package:app_finance/_configs/theme_helper.dart';
 import 'package:app_finance/_classes/structure/navigation/app_route.dart';
 import 'package:app_finance/_ext/build_context_ext.dart';
+import 'package:app_finance/_ext/date_time_ext.dart';
 import 'package:app_finance/design/wrapper/row_widget.dart';
 import 'package:app_finance/design/wrapper/text_wrapper.dart';
 import 'package:app_finance/pages/_interfaces/abstract_page_state.dart';
@@ -106,7 +108,8 @@ class AccountViewPageState extends AbstractPageState<AccountViewPage> {
     var bills = state.getStream(AppDataType.bills, filter: (o) => o.account != widget.uuid);
     var inv = state.getStream(AppDataType.invoice, filter: (o) => o.account != widget.uuid || o.accountFrom != null);
     DateTime now = DateTime.now();
-    DateTime curr = DateTime(now.year, now.month, 1);
+    int startingDay = AppStartOfMonth.get();
+    DateTime curr = now.getStartingDay(startingDay);
     var data = SplayTreeMap<num, AccountSummaryData>();
     int increment = 0;
     while (!(bills.isFinished && inv.isFinished)) {
@@ -121,7 +124,7 @@ class AccountViewPageState extends AbstractPageState<AccountViewPage> {
         bills: billList.fold(0.0, (v, e) => v + exchange.reform(e.details ?? 0.0, e.currency, account.currency)),
       );
       increment++;
-      curr = DateTime(now.year, now.month - increment, 1);
+      curr = DateTime(now.year, now.month - increment, startingDay);
     }
     return IteratorController(data, transform: (v) => v);
   }

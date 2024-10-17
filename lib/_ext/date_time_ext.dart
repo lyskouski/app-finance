@@ -20,6 +20,18 @@ extension DateTimeExt on DateTime {
     ));
   }
 
+  DateTime getStartingDay([int startingDay = 1]) {
+    if (startingDay <= day) {
+      return DateTime(year, month, startingDay);
+    } else {
+      DateTime previousMonth = DateTime(year, month - 1);
+      if (month == 1) {
+        previousMonth = DateTime(year - 1, 12);
+      }
+      return DateTime(previousMonth.year, previousMonth.month, startingDay);
+    }
+  }
+
   String yMEd() {
     DateFormat formatterDate;
     try {

@@ -2,11 +2,13 @@
 // Use of this source code is governed by a CC BY-NC-ND 4.0 license that can be found in the LICENSE file.
 
 import 'package:app_finance/_classes/herald/app_locale.dart';
+import 'package:app_finance/_classes/herald/app_start_of_month.dart';
 import 'package:app_finance/_classes/storage/app_data.dart';
 import 'package:app_finance/_classes/structure/currency/exchange.dart';
 import 'package:app_finance/_classes/structure/navigation/app_route.dart';
 import 'package:app_finance/_configs/theme_helper.dart';
 import 'package:app_finance/_ext/build_context_ext.dart';
+import 'package:app_finance/_ext/date_time_ext.dart';
 import 'package:app_finance/_ext/string_ext.dart';
 import 'package:app_finance/components/_core/component_data.dart';
 import 'package:app_finance/components/widgets/account_widget.dart';
@@ -47,6 +49,7 @@ class ComponentRecent extends StatelessWidget {
       int => data[count],
       _ => 7,
     };
+    DateTime startingDay = DateTime.now().getStartingDay(AppStartOfMonth.get());
     return Consumer<AppData>(builder: (context, appState, _) {
       final exchange = Exchange(store: appState);
       return LayoutBuilder(builder: (context, constraints) {
@@ -75,7 +78,7 @@ class ComponentRecent extends StatelessWidget {
                 )..exchange = exchange,
               ComponentRecentType.bill => BillWidget(
                   margin: margin,
-                  title: '${AppLocale.labels.billHeadline}, ${DateFormat.MMMM(AppLocale.code).format(DateTime.now())}',
+                  title: '${AppLocale.labels.billHeadline}, ${DateFormat.MMMM(AppLocale.code).format(startingDay)}',
                   state: appState.get(AppDataType.bills),
                   limit: limit,
                   route: AppRoute.billRoute,

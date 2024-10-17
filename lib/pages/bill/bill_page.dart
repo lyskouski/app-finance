@@ -2,6 +2,7 @@
 // Use of this source code is governed by a CC BY-NC-ND 4.0 license that can be found in the LICENSE file.
 
 import 'package:app_finance/_classes/controller/iterator_controller.dart';
+import 'package:app_finance/_classes/herald/app_start_of_month.dart';
 import 'package:app_finance/_classes/storage/app_data.dart';
 import 'package:app_finance/_classes/herald/app_locale.dart';
 import 'package:app_finance/_classes/structure/bill_app_data.dart';
@@ -50,6 +51,7 @@ class BillPageState extends AbstractPageState<BillPage> {
 
   void _addItems() {
     final width = ScreenHelper.state().width - ThemeHelper.getIndent(4);
+    DateTime startingDay = DateTime.now().getStartingDay(AppStartOfMonth.get());
     if (itemsShown.isEmpty) {
       itemsShown.add(
         SliverToBoxAdapter(
@@ -58,7 +60,7 @@ class BillPageState extends AbstractPageState<BillPage> {
             tooltip: AppLocale.labels.homeTooltip,
             width: width,
             total: state.getTotal(AppDataType.bills),
-            title: '${AppLocale.labels.billHeadline}, ${DateFormat.MMMM(AppLocale.code).format(DateTime.now())}',
+            title: '${AppLocale.labels.billHeadline}, ${DateFormat.MMMM(AppLocale.code).format(startingDay)}',
           ),
         ),
       );

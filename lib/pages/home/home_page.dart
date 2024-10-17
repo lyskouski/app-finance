@@ -2,6 +2,7 @@
 // Use of this source code is governed by a CC BY-NC-ND 4.0 license that can be found in the LICENSE file.
 
 import 'package:app_finance/_classes/herald/app_design.dart';
+import 'package:app_finance/_classes/herald/app_start_of_month.dart';
 import 'package:app_finance/_classes/storage/app_data.dart';
 import 'package:app_finance/_classes/herald/app_locale.dart';
 import 'package:app_finance/_classes/structure/currency/exchange.dart';
@@ -9,6 +10,7 @@ import 'package:app_finance/_classes/storage/app_preferences.dart';
 import 'package:app_finance/_configs/screen_helper.dart';
 import 'package:app_finance/_configs/theme_helper.dart';
 import 'package:app_finance/_classes/structure/navigation/app_route.dart';
+import 'package:app_finance/_ext/date_time_ext.dart';
 import 'package:app_finance/components/_core/components_builder.dart';
 import 'package:app_finance/components/widgets/account_flow_chart.dart';
 import 'package:app_finance/components/widgets/budget_forecast_chart.dart';
@@ -187,10 +189,11 @@ class HomePageState extends AbstractPageState<HomePage> {
     bool isWide = ScreenHelper.state().isWide;
     double width = ThemeHelper.getWidth(context, 3, constraints);
     double partWidth = width / countWidth - indent * (countWidth - 1);
+    DateTime curr = DateTime.now().getStartingDay(AppStartOfMonth.get());
 
     final billWidget = BillWidget(
       margin: margin,
-      title: '${AppLocale.labels.billHeadline}, ${intl.DateFormat.MMMM(AppLocale.code).format(DateTime.now())}',
+      title: '${AppLocale.labels.billHeadline}, ${intl.DateFormat.MMMM(AppLocale.code).format(curr)}',
       state: state.get(AppDataType.bills),
       limit: 7,
       route: AppRoute.billRoute,
