@@ -14,7 +14,7 @@ digraph G {
   }
   {
     rank = same; "_classes";
-    herald [label="<0>HERALD|<app_sync>app_sync|<app_palette>app_palette|<app_zoom>app_zoom|<app_purchase>app_purchase|<app_theme>app_theme|<app_locale>app_locale|<app_design>app_design",fillcolor="silver:white", gradientangle=240, style="filled"];
+    herald [label="<0>HERALD|<app_start_of_week>app_start_of_week|<app_start_of_month>app_start_of_month|<app_sync>app_sync|<app_palette>app_palette|<app_zoom>app_zoom|<app_purchase>app_purchase|<app_theme>app_theme|<app_locale>app_locale|<app_design>app_design",fillcolor="silver:white", gradientangle=240, style="filled"];
   }
   {
     rank = same; "_classes";
@@ -206,7 +206,7 @@ digraph G {
   }
   {
     rank = same; "_configs";
-    _configs_ [label="<0>_CONFIGS_|<custom_color_scheme>custom_color_scheme|<account_type>account_type|<screen_helper>screen_helper|<firebase_options>firebase_options|<design_type>design_type|<custom_text_theme>custom_text_theme|<theme_helper>theme_helper",fillcolor="silver:white", gradientangle=240, style="filled"];
+    _configs_ [label="<0>_CONFIGS_|<custom_color_scheme>custom_color_scheme|<account_type>account_type|<screen_helper>screen_helper|<firebase_options>firebase_options|<budget_type>budget_type|<design_type>design_type|<custom_text_theme>custom_text_theme|<theme_helper>theme_helper",fillcolor="silver:white", gradientangle=240, style="filled"];
   }
   {
     rank = same; "_mixins";
@@ -233,6 +233,8 @@ digraph G {
   math -> structure [color="green"];
   math -> math [color="green"];
   math -> structure [color="green"];
+  herald -> storage [color="green"];
+  herald -> storage [color="green"];
   herald -> storage [color="green"];
   herald -> storage [color="green"];
   herald -> _configs_ [color="green"];
@@ -303,16 +305,17 @@ digraph G {
 
 
   structure -> herald [color="green"];
-  structure -> structure [color="green"];
   structure -> storage [color="green"];
+  structure -> structure [color="green"];
   structure -> structure_currency [color="green"];
+  structure -> _configs_ [color="green"];
   structure -> _ext_ [color="green"];
   structure -> _mixins_ [color="green"];
   structure -> structure [color="green"];
   structure -> storage [color="green"];
   structure -> _ext_ [color="green"];
   structure -> _mixins_ [color="green"];
-
+  structure -> _ext_ [color="green"];
   structure -> controller [color="green"];
   structure -> structure [color="green"];
   structure -> _ext_ [color="green"];
@@ -814,6 +817,7 @@ digraph G {
   home -> structure_currency [color="#F0F0F050"];
   home -> _configs_ [color="#F0F0F050"];
   home -> structure_navigation [color="#F0F0F050"];
+  home -> _ext_ [color="#F0F0F050"];
   home -> _core [color="#F0F0F050"];
   home -> widgets [color="#F0F0F050"];
   home -> components_ [color="#F0F0F050"];
@@ -936,8 +940,8 @@ digraph G {
   bill -> bill_widgets [color="#F0F0F050"];
   bill -> wrapper [color="#F0F0F050"];
   bill -> controller [color="#F0F0F050"];
-  bill -> storage [color="#F0F0F050"];
   bill -> herald [color="#F0F0F050"];
+  bill -> storage [color="#F0F0F050"];
   bill -> structure [color="#F0F0F050"];
   bill -> _configs_ [color="#F0F0F050"];
   bill -> structure_navigation [color="#F0F0F050"];
@@ -1181,6 +1185,8 @@ digraph G {
   _configs_ -> form [color="green"];
   _configs_ -> _configs_ [color="green"];
 
+  _configs_ -> herald [color="green"];
+  _configs_ -> form [color="green"];
 
   _configs_ -> _configs_ [color="green"];
   _configs_ -> herald [color="green"];
