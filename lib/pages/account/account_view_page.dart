@@ -124,7 +124,7 @@ class AccountViewPageState extends AbstractPageState<AccountViewPage> {
         bills: billList.fold(0.0, (v, e) => v + exchange.reform(e.details ?? 0.0, e.currency, account.currency)),
       );
       increment++;
-      curr = DateTime(now.year, now.month - increment, startingDay);
+      curr = DateTime(now.year, now.month - increment).getStartingDay(startingDay);
     }
     return IteratorController(data, transform: (v) => v);
   }
