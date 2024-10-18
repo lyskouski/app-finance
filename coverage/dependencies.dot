@@ -1173,6 +1173,7 @@ digraph G {
   charts_ -> interface [color="red"];
   charts_ -> painter [color="red"];
 
+  charts_ -> herald [color="red"];
   charts_ -> _ext_ [color="red"];
   charts_ -> interface [color="red"];
   charts_ -> painter [color="red"];
