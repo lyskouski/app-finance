@@ -134,7 +134,7 @@ class BudgetViewPageState extends AbstractPageState<BudgetViewPage> with TickerP
           break;
         }
         iteration++;
-        curr = DateTime(now.year, now.month - iteration, startingDay);
+        curr = DateTime(now.year, now.month - iteration).getStartingDay(startingDay);
         summary.details = 0.0;
         summary.color = null;
         summary.title = DateFormat.MMMM().format(curr);
