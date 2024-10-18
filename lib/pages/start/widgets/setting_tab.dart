@@ -18,7 +18,6 @@ import 'package:app_finance/_configs/custom_color_scheme.dart';
 import 'package:app_finance/_configs/theme_helper.dart';
 import 'package:app_finance/_ext/build_context_ext.dart';
 import 'package:app_finance/_ext/color_ext.dart';
-import 'package:app_finance/design/form/simple_input.dart';
 import 'package:app_finance/design/wrapper/input_wrapper.dart';
 import 'package:app_finance/l10n/index.dart';
 import 'package:app_finance/design/button/link_widget.dart';
@@ -47,11 +46,11 @@ class SettingTab extends AbstractTab {
 
 class SettingTabState<T extends SettingTab> extends AbstractTabState<T> {
   late FocusController controller;
-  late TextEditingController startOfMonth;
 
   late AppTheme theme;
   late AppZoom zoom;
   late AppStartOfWeek startOfWeek;
+  late AppStartOfMonth startOfMonth;
   late AppPalette palette;
   late AppLocale locale;
   late AppDesign design;
@@ -81,8 +80,6 @@ class SettingTabState<T extends SettingTab> extends AbstractTabState<T> {
     brightness = AppPreferences.get(AppPreferences.prefTheme) ?? brightness;
     colorMode = AppPreferences.get(AppPreferences.prefColor) ?? colorMode;
     currency = CurrencyProvider.find(AppPreferences.get(AppPreferences.prefCurrency) ?? '');
-    startOfMonth = TextEditingController(text: AppStartOfMonth.get().toString());
-    startOfMonth.addListener(() => AppPreferences.set(AppPreferences.prefMonthStartDay, startOfMonth.text));
   }
 
   @override
@@ -106,6 +103,14 @@ class SettingTabState<T extends SettingTab> extends AbstractTabState<T> {
       CurrencyDefaults.defaultCurrency = value;
       await state.restate();
       setState(() => currency = value);
+    }
+  }
+
+  Future<void> saveStartOfMonth(String? value) async {
+    if (value != null) {
+      await startOfMonth.set(int.tryParse(value) ?? 1);
+      await state.restate();
+      setState(() => {});
     }
   }
 
@@ -152,6 +157,7 @@ class SettingTabState<T extends SettingTab> extends AbstractTabState<T> {
     theme = Provider.of<AppTheme>(context, listen: false);
     zoom = Provider.of<AppZoom>(context, listen: false);
     startOfWeek = Provider.of<AppStartOfWeek>(context, listen: true);
+    startOfMonth = Provider.of<AppStartOfMonth>(context, listen: true);
     palette = Provider.of<AppPalette>(context, listen: false);
     locale = Provider.of<AppLocale>(context, listen: false);
     design = Provider.of<AppDesign>(context, listen: false);
@@ -204,11 +210,15 @@ class SettingTabState<T extends SettingTab> extends AbstractTabState<T> {
             ].cast<ListSelectorItem>(),
             onChange: (v) => startOfWeek.set(int.tryParse(v) ?? 1),
           ),
-          InputWrapper.text(
+          InputWrapper.select(
             title: AppLocale.labels.dayStartOfMonth,
-            controller: startOfMonth,
-            inputType: const TextInputType.numberWithOptions(decimal: false),
-            formatter: [SimpleInputFormatter.filterInt],
+            tooltip: AppLocale.labels.dayStartOfMonth,
+            value: startOfMonth.value.toString(),
+            options: List.generate(31, (index) {
+              String key = (index + 1).toString();
+              return ListSelectorItem(id: key, name: key);
+            }).cast<ListSelectorItem>(),
+            onChange: saveStartOfMonth,
           ),
           if (kDebugMode) ...[
             Row(
