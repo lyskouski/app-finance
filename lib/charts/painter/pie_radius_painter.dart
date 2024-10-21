@@ -9,8 +9,6 @@ import 'dart:math';
 class PieRadiusPainter extends AbstractPainter {
   final List<ChartValue> data;
   late final double max;
-  double radius = 0;
-  Offset center = const Offset(0, 0);
 
   PieRadiusPainter({
     required this.data,
@@ -25,9 +23,6 @@ class PieRadiusPainter extends AbstractPainter {
 
   @override
   void paint(Canvas canvas, Size size) {
-    center = Offset(size.width, size.height * 3 / 4);
-    radius = size.width / 2;
-
     double startPoint = pi / 2;
     for (int i = 0; i < data.length; i++) {
       startPoint = _drawArc(canvas, size, startPoint, i);
@@ -35,17 +30,22 @@ class PieRadiusPainter extends AbstractPainter {
   }
 
   double _drawArc(Canvas canvas, Size size, double startPoint, int step) {
+    final strokeWidth = size.width / 4;
     final paint = Paint()
       ..color = data[step].color
-      ..strokeWidth = size.width / 2
+      ..strokeWidth = strokeWidth
       ..style = PaintingStyle.stroke;
     final paintBorder = Paint()
-      ..strokeWidth = size.width * 1.1 / 2
+      ..strokeWidth = strokeWidth * 1.1
       ..color = data[step].color.withOpacity(0.3)
       ..style = PaintingStyle.stroke;
     const full = 2 * pi;
     final shift = indent * full;
     double endPoint = (data[step].value / max) * full;
+
+    var center = Offset(size.width / 2, size.height / 2);
+    var radius = [size.width, size.height].reduce(min) / 4;
+
     final arc = Rect.fromCircle(center: center, radius: radius);
     canvas.drawArc(arc, startPoint - shift / 2, endPoint + shift, false, paintBorder);
     canvas.drawArc(arc, startPoint, endPoint, false, paint);

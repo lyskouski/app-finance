@@ -21,12 +21,10 @@ import 'package:intl/intl.dart';
 
 class AccountTab extends StatelessWidget {
   final AppData store;
-  final double? width;
 
   const AccountTab({
     super.key,
     required this.store,
-    this.width,
   });
 
   List<ChartValue> _getCurrencyDistribution(List<AccountAppData> accounts) {
@@ -74,44 +72,46 @@ class AccountTab extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     double indent = ThemeHelper.getIndent();
-    double width = this.width ?? ThemeHelper.getWidth(context, 8);
-    double pieWidth = width > 600 ? 280 : width * 0.4;
     final accountList = store.getList(AppDataType.accounts).cast<AccountAppData>();
     final currency = _getCurrencyDistribution(accountList);
     return SingleChildScrollView(
       child: Padding(
-        padding: this.width != null ? EdgeInsets.zero : EdgeInsets.all(indent * 2),
-        child: Column(
-          crossAxisAlignment: AppDesign.getAlignment(),
-          children: [
-            const AccountHealthChart(),
-            ThemeHelper.hIndent2x,
-            const AccountFlowChart(),
-            ThemeHelper.hIndent3x,
-            RowWidget(
-              maxWidth: width,
-              indent: indent,
-              chunk: [null, pieWidth],
-              children: [
-                [
-                  TableWidget(
-                    shadowColor: context.colorScheme.onSurface.withOpacity(0.1),
-                    width: width - pieWidth - 2 * indent,
-                    chunk: const [8, 34, null, null],
-                    data: _generateCurrencyTable(currency),
-                  ),
+        padding: EdgeInsets.all(indent * 2),
+        child: LayoutBuilder(builder: (context, constraints) {
+          final width = constraints.maxWidth;
+          double pieWidth = width > 600 ? 280 : width * 0.4;
+          return Column(
+            crossAxisAlignment: AppDesign.getAlignment(),
+            children: [
+              const AccountHealthChart(),
+              ThemeHelper.hIndent2x,
+              const AccountFlowChart(),
+              ThemeHelper.hIndent3x,
+              RowWidget(
+                maxWidth: width,
+                indent: indent,
+                chunk: [null, pieWidth],
+                children: [
+                  [
+                    TableWidget(
+                      shadowColor: context.colorScheme.onSurface.withOpacity(0.1),
+                      width: width - pieWidth - 2 * indent,
+                      chunk: const [8, 34, null, null],
+                      data: _generateCurrencyTable(currency),
+                    ),
+                  ],
+                  [
+                    PieRadiusChart(
+                      data: currency,
+                      width: pieWidth,
+                    ),
+                  ]
                 ],
-                [
-                  PieRadiusChart(
-                    data: currency,
-                    width: pieWidth,
-                  ),
-                ]
-              ],
-            ),
-            ThemeHelper.formEndBox,
-          ],
-        ),
+              ),
+              ThemeHelper.formEndBox,
+            ],
+          );
+        }),
       ),
     );
   }
