@@ -21,8 +21,8 @@ class PieRadiusChart extends StatelessWidget {
   Widget build(BuildContext context) {
     data.sort((a, b) => b.value.compareTo(a.value));
     return SizedBox(
-      width: width / 2,
-      height: width / 2,
+      width: width,
+      height: width,
       child: CustomPaint(
         painter: PieRadiusPainter(
           indent: 0.015,
