@@ -352,6 +352,7 @@
     },
     "settingsBaseHeadline": "基本設定",
     "settingsHeadline": "設定",
+    "skipFromTotals": "合計から除外する",
     "skipTooltip": "ステップをスキップする",
     "spent": "使用済み",
     "splitCancelTooltip": "月ごとの分割を取り消す",

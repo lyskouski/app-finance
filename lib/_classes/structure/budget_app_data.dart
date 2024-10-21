@@ -37,6 +37,7 @@ class BudgetAppData extends AbstractAppData with StorageMixin {
     this.amount = 0.0,
     this.type = '',
     super.hidden,
+    super.skip,
   }) : super(
           details: amountLimit,
         );
@@ -62,6 +63,7 @@ class BudgetAppData extends AbstractAppData with StorageMixin {
       amountSet: amountSet,
       amount: amount,
       hidden: super.hidden,
+      skip: super.skip,
     );
   }
 
@@ -79,6 +81,7 @@ class BudgetAppData extends AbstractAppData with StorageMixin {
       amountLimit: 0.0 + json['amountLimit'],
       amountSet: json['amountSet'] != null ? json['amountSet'].toString().toMap<int, double>() : {},
       hidden: json['hidden'],
+      skip: json['skip'] ?? false,
     );
   }
 

@@ -21,6 +21,7 @@ class ListAccountSelectorItem extends ListSelectorItem {
           color: item.color ?? Colors.transparent,
           icon: item.icon ?? Icons.radio_button_unchecked_sharp,
           hidden: item.hidden ?? false,
+          skip: item.skip ?? false,
           width: constraints.maxWidth,
           showDivider: false,
         );
@@ -37,6 +38,7 @@ class ListAccountSelectorItem extends ListSelectorItem {
           color: item.color ?? Colors.transparent,
           icon: item.icon ?? Icons.radio_button_unchecked_sharp,
           hidden: item.hidden ?? false,
+          skip: item.skip ?? false,
           width: constraints.maxWidth,
           showDivider: false,
         );

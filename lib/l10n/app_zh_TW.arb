@@ -352,6 +352,7 @@
     },
     "settingsBaseHeadline": "基本知識",
     "settingsHeadline": "設定",
+    "skipFromTotals": "總計不包括",
     "skipTooltip": "跳過步驟",
     "spent": "花費",
     "splitCancelTooltip": "取消每月分割",

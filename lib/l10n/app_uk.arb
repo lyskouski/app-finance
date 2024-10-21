@@ -352,6 +352,7 @@
     },
     "settingsBaseHeadline": "Основи",
     "settingsHeadline": "Налаштування",
+    "skipFromTotals": "Виключити із загальної кількості",
     "skipTooltip": "Пропустити крок(і)",
     "spent": "патр.",
     "splitCancelTooltip": "Скасувати розподіл на місяць",

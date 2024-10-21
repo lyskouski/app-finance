@@ -352,6 +352,7 @@
     },
     "settingsBaseHeadline": "Principes de base",
     "settingsHeadline": "Paramètres",
+    "skipFromTotals": "Exclure des totaux",
     "skipTooltip": "Sauter étape(s)",
     "spent": "dépensé",
     "splitCancelTooltip": "Annuler le fractionnement par mois",

@@ -352,6 +352,7 @@
     },
     "settingsBaseHeadline": "Basis",
     "settingsHeadline": "Instellingen",
+    "skipFromTotals": "Niet opnemen in totalen",
     "skipTooltip": "Stap(pen) overslaan",
     "spent": "uitgegeven",
     "splitCancelTooltip": "Splitsen per maand annuleren",

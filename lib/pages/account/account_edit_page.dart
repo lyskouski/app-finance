@@ -44,13 +44,9 @@ class AccountEditPageState extends AccountAddPageState<AccountEditPage> {
       currency = form.currency;
       icon = form.icon;
       validTillDate = form.closedAt;
+      skip = form.skip;
       balanceUpdateDate = DateTime.now();
     });
-  }
-
-  @override
-  String getTitle() {
-    return AppLocale.labels.editAccountHeader;
   }
 
   @override
@@ -67,11 +63,15 @@ class AccountEditPageState extends AccountAddPageState<AccountEditPage> {
           color: color ?? Colors.red,
           currency: currency,
           hidden: false,
+          skip: skip,
           icon: icon,
           closedAt: validTillDate,
           createdAt: balanceUpdateDate,
         ));
   }
+
+  @override
+  String getTitle() => AppLocale.labels.editAccountHeader;
 
   @override
   String getButtonName() => AppLocale.labels.updateAccountTooltip;

@@ -24,6 +24,7 @@ class BaseLineWidget extends StatelessWidget {
   final double width;
   final String route;
   final bool hidden;
+  final bool skip;
   final bool showDivider;
   final Widget? error;
 
@@ -38,6 +39,7 @@ class BaseLineWidget extends StatelessWidget {
     this.icon = Icons.question_mark,
     this.error,
     this.hidden = false,
+    this.skip = false,
     this.progress = 1,
     this.route = '',
     this.showDivider = true,
@@ -82,7 +84,9 @@ class BaseLineWidget extends StatelessWidget {
                         children: [
                           TextWrapper(
                             title,
-                            style: textTheme.headlineMedium,
+                            style: textTheme.headlineMedium?.copyWith(
+                              fontStyle: skip ? FontStyle.italic : FontStyle.normal,
+                            ),
                           ),
                           TextWrapper(
                             description,

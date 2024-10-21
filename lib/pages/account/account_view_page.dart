@@ -189,6 +189,7 @@ class AccountViewPageState extends AbstractPageState<AccountViewPage> {
       color: item.color ?? Colors.transparent,
       icon: item.icon ?? Icons.radio_button_unchecked_sharp,
       hidden: item.hidden,
+      skip: item.skip,
       width: width,
       route: _getRoute(item),
     );

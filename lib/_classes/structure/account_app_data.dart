@@ -30,6 +30,7 @@ class AccountAppData extends AbstractAppData {
     DateTime? closedAt,
     String? closedAtFormatted,
     super.hidden,
+    super.skip,
   }) : _closedAt = closedAt ?? (closedAtFormatted != null ? DateTime.parse(closedAtFormatted) : DateTime.now());
 
   @override
@@ -53,6 +54,7 @@ class AccountAppData extends AbstractAppData {
       createdAt: super.createdAt,
       closedAt: closedAt,
       hidden: super.hidden,
+      skip: super.skip,
     );
   }
 
@@ -71,6 +73,7 @@ class AccountAppData extends AbstractAppData {
       updatedAt: DateTime.parse(json['updatedAt']),
       closedAt: DateTime.parse(json['closedAt']),
       hidden: json['hidden'],
+      skip: json['skip'] ?? false,
     );
   }
 

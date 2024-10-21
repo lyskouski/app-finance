@@ -352,6 +352,7 @@
     },
     "settingsBaseHeadline": "基础知识",
     "settingsHeadline": "设置",
+    "skipFromTotals": "不计入总数",
     "skipTooltip": "跳过步骤",
     "spent": "已花费",
     "splitCancelTooltip": "取消每月拆分",

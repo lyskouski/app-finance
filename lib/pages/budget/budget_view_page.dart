@@ -101,6 +101,7 @@ class BudgetViewPageState extends AbstractPageState<BudgetViewPage> with TickerP
       color: item.color ?? Colors.transparent,
       icon: item.icon ?? Icons.radio_button_unchecked_sharp,
       hidden: item.hidden,
+      skip: item.skip,
       width: width,
       route: AppRoute.billViewRoute,
     );

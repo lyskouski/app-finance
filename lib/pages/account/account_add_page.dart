@@ -57,6 +57,7 @@ class AccountAddPageState<T extends AccountAddPage> extends AbstractAddPageState
   late TextEditingController balance;
   IconData? icon;
   MaterialColor? color;
+  bool skip = false;
 
   @override
   void initState() {
@@ -108,6 +109,7 @@ class AccountAddPageState<T extends AccountAddPage> extends AbstractAddPageState
       icon: icon,
       closedAt: validTillDate,
       createdAt: balanceUpdateDate,
+      skip: skip,
     ));
   }
 
@@ -207,17 +209,33 @@ class AccountAddPageState<T extends AccountAddPage> extends AbstractAddPageState
                 SimpleInputFormatter.filterDouble,
               ],
             ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            RowWidget(
+              indent: indent,
+              maxWidth: width + indent,
+              chunk: const [20, null],
               children: [
-                TextWrapper(
-                  AppLocale.labels.balanceDate,
-                  style: textTheme.bodyLarge,
-                ),
-                Tooltip(
-                  message: AppLocale.labels.balanceDateTooltip,
-                  child: const Icon(Icons.info_outline),
-                ),
+                [Checkbox(value: skip, onChanged: (value) => setState(() => skip = value!))],
+                [TextWrapper(AppLocale.labels.skipFromTotals)],
+              ],
+            ),
+            ThemeHelper.hIndent2x,
+            RowWidget(
+              indent: indent,
+              maxWidth: width + indent,
+              chunk: const [null, 20],
+              children: [
+                [
+                  TextWrapper(
+                    AppLocale.labels.balanceDate,
+                    style: textTheme.bodyLarge,
+                  ),
+                ],
+                [
+                  Tooltip(
+                    message: AppLocale.labels.balanceDateTooltip,
+                    child: const Icon(Icons.info_outline),
+                  ),
+                ]
               ],
             ),
             DateTimeInput(

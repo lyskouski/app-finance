@@ -352,6 +352,7 @@
     },
     "settingsBaseHeadline": "Basics",
     "settingsHeadline": "Settings",
+    "skipFromTotals": "Exclude from Totals",
     "skipTooltip": "Skip Step(s)",
     "spent": "spent",
     "splitCancelTooltip": "Cancel Split per Month",

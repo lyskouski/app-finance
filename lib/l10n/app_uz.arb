@@ -352,6 +352,7 @@
     },
     "settingsBaseHeadline": "Asoslar",
     "settingsHeadline": "Sozlamalar",
+    "skipFromTotals": "Jami hisobdan chiqarib tashlang",
     "skipTooltip": "Qadam(lar)ni o‘tkazib yuborish",
     "spent": "sarflangan",
     "splitCancelTooltip": "Oyiga Splitni bekor qilish",

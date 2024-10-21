@@ -11,6 +11,7 @@ abstract interface class InterfaceAppData {
   IconData? icon;
   MaterialColor? color;
   bool hidden = false;
+  bool skip = false;
 
   String get title;
 

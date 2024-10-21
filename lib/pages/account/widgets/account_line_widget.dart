@@ -47,7 +47,12 @@ class AccountLineWidget extends StatelessWidget {
               Icon(item.icon, color: item.color, size: 20),
             ],
             [
-              TextWrapper(item.title, style: textTheme.headlineMedium),
+              TextWrapper(
+                item.title,
+                style: textTheme.headlineMedium?.copyWith(
+                  fontStyle: item.skip ? FontStyle.italic : FontStyle.normal,
+                ),
+              ),
             ],
             [
               NumberWidget(item.description ?? '', colorScheme: context.colorScheme, style: textTheme.headlineMedium),
@@ -87,7 +92,12 @@ class AccountLineWidget extends StatelessWidget {
               Icon(item.icon, color: item.color, size: 20),
             ],
             [
-              TextWrapper(item.title, style: textTheme.headlineMedium),
+              TextWrapper(
+                item.title,
+                style: textTheme.headlineMedium?.copyWith(
+                  fontStyle: item.skip ? FontStyle.italic : FontStyle.normal,
+                ),
+              ),
             ],
             [
               Align(

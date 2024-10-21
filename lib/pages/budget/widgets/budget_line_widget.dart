@@ -28,6 +28,7 @@ class BudgetLineWidget extends StatelessWidget {
   final bool hidden;
   final bool showDivider;
   final int count;
+  final bool skip;
 
   const BudgetLineWidget({
     super.key,
@@ -41,6 +42,7 @@ class BudgetLineWidget extends StatelessWidget {
     required this.width,
     this.count = 1,
     this.hidden = false,
+    this.skip = false,
     this.progress = 1,
     this.route = '',
     this.showDivider = true,
@@ -75,7 +77,12 @@ class BudgetLineWidget extends StatelessWidget {
                           Icon(icon, color: color, size: iconSize),
                         ],
                         [
-                          TextWrapper(title, style: textTheme.headlineMedium),
+                          TextWrapper(
+                            title,
+                            style: textTheme.headlineMedium?.copyWith(
+                              fontStyle: skip ? FontStyle.italic : FontStyle.normal,
+                            ),
+                          ),
                         ],
                         [
                           Align(
@@ -118,7 +125,12 @@ class BudgetLineWidget extends StatelessWidget {
                           Column(
                             crossAxisAlignment: AppDesign.getAlignment(),
                             children: [
-                              TextWrapper(title, style: textTheme.headlineMedium),
+                              TextWrapper(
+                                title,
+                                style: textTheme.headlineMedium?.copyWith(
+                                  fontStyle: skip ? FontStyle.italic : FontStyle.normal,
+                                ),
+                              ),
                               TextWrapper(description, style: textTheme.numberSmall),
                             ],
                           ),
