@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2024-10-18 10:13:50</td>
+            <td class="headerValue">2024-10-21 08:26:28</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">0</td>
@@ -86,7 +86,7 @@
 <a name="24"><span class="lineNum">      24 </span>            : </a>
 <a name="25"><span class="lineNum">      25 </span><span class="lineNoCov">          0 :   double updateTotalMap(AppDataType type, String uuid, HashMap&lt;String, dynamic&gt; hashTable) {</span></a>
 <a name="26"><span class="lineNum">      26 </span><span class="lineNoCov">          0 :     final item = hashTable[uuid];</span></a>
-<a name="27"><span class="lineNum">      27 </span><span class="lineNoCov">          0 :     if (item == null || item.hidden) {</span></a>
+<a name="27"><span class="lineNum">      27 </span><span class="lineNoCov">          0 :     if (item == null || item.hidden || item.skip) {</span></a>
 <a name="28"><span class="lineNum">      28 </span>            :       return 0.0;</a>
 <a name="29"><span class="lineNum">      29 </span>            :     }</a>
 <a name="30"><span class="lineNum">      30 </span><span class="lineNoCov">          0 :     double total = exchange.reform(item.details, item.currency, Exchange.defaultCurrency);</span></a>
