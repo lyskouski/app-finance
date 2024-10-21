@@ -352,6 +352,7 @@
     },
     "settingsBaseHeadline": "Nozioni di base",
     "settingsHeadline": "Impostazioni",
+    "skipFromTotals": "Escludere dai totali",
     "skipTooltip": "Salta i passi",
     "spent": "speso",
     "splitCancelTooltip": "Annullare la suddivisione per mese",

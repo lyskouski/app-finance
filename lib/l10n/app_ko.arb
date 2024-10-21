@@ -352,6 +352,7 @@
     },
     "settingsBaseHeadline": "기본 사항",
     "settingsHeadline": "설정",
+    "skipFromTotals": "합계에서 제외",
     "skipTooltip": "단계 건너뛰기",
     "spent": "지출",
     "splitCancelTooltip": "월별 분할 취소",

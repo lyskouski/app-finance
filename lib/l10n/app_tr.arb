@@ -352,6 +352,7 @@
     },
     "settingsBaseHeadline": "Temel Bilgiler",
     "settingsHeadline": "Ayarlar",
+    "skipFromTotals": "Toplamlardan hariç tut",
     "skipTooltip": "Adım(lar)ı Atla",
     "spent": "harcandı",
     "splitCancelTooltip": "Ay Başına Bölünmeyi İptal Et",

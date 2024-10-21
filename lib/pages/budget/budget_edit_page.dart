@@ -40,6 +40,7 @@ class BudgetEditPageState extends BudgetAddPageState<BudgetEditPage> {
       color = form.color;
       icon = form.icon;
       currency = form.currency;
+      skip = form.skip;
     });
   }
 
@@ -58,6 +59,7 @@ class BudgetEditPageState extends BudgetAddPageState<BudgetEditPage> {
     data.amountLimit = double.tryParse(budgetLimit.text) ?? 0.0;
     data.currency = currency;
     data.createdAt = DateTime.now();
+    data.skip = skip;
     state.update(uuid, data);
   }
 

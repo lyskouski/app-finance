@@ -352,6 +352,7 @@
     },
     "settingsBaseHeadline": "Grundlagen",
     "settingsHeadline": "Einstellungen",
+    "skipFromTotals": "Aus den Gesamtwerten ausschließen",
     "skipTooltip": "Schritt(e) überspringen",
     "spent": "ausgegeben",
     "splitCancelTooltip": "Aufteilung pro Monat aufheben",

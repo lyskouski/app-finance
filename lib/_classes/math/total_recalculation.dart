@@ -24,7 +24,7 @@ class TotalRecalculation extends AbstractRecalculation {
 
   double updateTotalMap(AppDataType type, String uuid, HashMap<String, dynamic> hashTable) {
     final item = hashTable[uuid];
-    if (item == null || item.hidden) {
+    if (item == null || item.hidden || item.skip) {
       return 0.0;
     }
     double total = exchange.reform(item.details, item.currency, Exchange.defaultCurrency);

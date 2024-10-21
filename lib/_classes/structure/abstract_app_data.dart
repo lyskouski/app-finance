@@ -19,6 +19,8 @@ abstract class AbstractAppData implements InterfaceAppData {
   double progress;
   @override
   bool hidden;
+  @override
+  bool skip;
   String? description;
   @override
   MaterialColor? color;
@@ -40,6 +42,7 @@ abstract class AbstractAppData implements InterfaceAppData {
     details = 0.0,
     this.progress = 1.0,
     this.hidden = false,
+    this.skip = false,
   })  : _createdAt = createdAt ?? (createdAtFormatted != null ? DateTime.parse(createdAtFormatted) : DateTime.now()),
         _updatedAt = updatedAt ?? DateTime.now(),
         _amount = 0.0 + (details ?? 0.0);
@@ -65,6 +68,7 @@ abstract class AbstractAppData implements InterfaceAppData {
         'details': details,
         'progress': progress,
         'hidden': hidden,
+        'skip': skip,
       };
 
   Map<String, Map<String, dynamic>> toFile() {

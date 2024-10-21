@@ -55,6 +55,7 @@ class BudgetAddPageState<T extends BudgetAddPage> extends AbstractAddPageState<T
   MaterialColor? color;
   Currency? currency;
   Map<int, double> amountSet = {};
+  bool skip = false;
 
   @override
   void initState() {
@@ -101,6 +102,7 @@ class BudgetAddPageState<T extends BudgetAddPage> extends AbstractAddPageState<T
           hidden: false,
           currency: currency,
           icon: icon,
+          skip: skip,
         )..setState(state));
   }
 
@@ -249,6 +251,16 @@ class BudgetAddPageState<T extends BudgetAddPage> extends AbstractAddPageState<T
               tooltip: AppLocale.labels.currencyTooltip,
               onChange: (value) => setState(() => currency = value),
             ),
+            RowWidget(
+              indent: indent,
+              maxWidth: width + indent,
+              chunk: const [20, null],
+              children: [
+                [Checkbox(value: skip, onChanged: (value) => setState(() => skip = value!))],
+                [TextWrapper(AppLocale.labels.skipFromTotals)],
+              ],
+            ),
+            ThemeHelper.hIndent2x,
           ],
         ),
       ),

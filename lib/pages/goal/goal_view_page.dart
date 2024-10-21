@@ -107,6 +107,7 @@ class GoalViewPageState extends AbstractPageState<GoalViewPage> {
             color: item.color ?? Colors.green.shade700,
             icon: item.icon ?? Icons.radio_button_unchecked_sharp,
             hidden: item.hidden,
+            skip: item.skip,
             progress: item.progress,
           )
         ],

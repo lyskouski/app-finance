@@ -119,6 +119,7 @@ class BudgetPageState extends AbstractPageState<BudgetPage> {
                         description: item.description,
                         color: item.color ?? Colors.transparent,
                         icon: item.icon ?? Icons.question_mark,
+                        skip: item.skip,
                       ),
                     ),
                   ),
