@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2024-10-22 08:47:12</td>
+            <td class="headerValue">2024-10-22 08:49:10</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">0</td>
@@ -186,7 +186,7 @@
 <a name="124"><span class="lineNum">     124 </span><span class="lineNoCov">          0 :         bills: billList.fold(0.0, (v, e) =&gt; v + exchange.reform(e.details ?? 0.0, e.currency, account.currency)),</span></a>
 <a name="125"><span class="lineNum">     125 </span>            :       );</a>
 <a name="126"><span class="lineNum">     126 </span><span class="lineNoCov">          0 :       increment++;</span></a>
-<a name="127"><span class="lineNum">     127 </span><span class="lineNoCov">          0 :       curr = DateTime(now.year, now.month - increment).getStartingDay(startingDay);</span></a>
+<a name="127"><span class="lineNum">     127 </span><span class="lineNoCov">          0 :       curr = DateTime(now.year, now.month - increment, now.day).getStartingDay(startingDay);</span></a>
 <a name="128"><span class="lineNum">     128 </span>            :     }</a>
 <a name="129"><span class="lineNum">     129 </span><span class="lineNoCov">          0 :     return IteratorController(data, transform: (v) =&gt; v);</span></a>
 <a name="130"><span class="lineNum">     130 </span>            :   }</a>
