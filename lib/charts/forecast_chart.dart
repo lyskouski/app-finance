@@ -38,7 +38,8 @@ class ForecastChart extends StatelessWidget {
     final bgColor = context.colorScheme.onSurface;
     final startingDay = AppStartOfMonth.get();
     final xMin = now.getStartingDay(startingDay).millisecondsSinceEpoch.toDouble();
-    final xMax = DateTime(now.year, now.month + 1).getStartingDay(startingDay).millisecondsSinceEpoch.toDouble();
+    final xMax =
+        DateTime(now.year, now.month + 1, now.day).getStartingDay(startingDay).millisecondsSinceEpoch.toDouble();
     final bg = ForegroundChartPainter(
       size: size,
       color: bgColor,
