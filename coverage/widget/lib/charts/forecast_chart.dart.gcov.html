@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2024-10-21 12:42:16</td>
+            <td class="headerValue">2024-10-22 08:47:12</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">0</td>
@@ -100,43 +100,44 @@
 <a name="38"><span class="lineNum">      38 </span><span class="lineNoCov">          0 :     final bgColor = context.colorScheme.onSurface;</span></a>
 <a name="39"><span class="lineNum">      39 </span><span class="lineNoCov">          0 :     final startingDay = AppStartOfMonth.get();</span></a>
 <a name="40"><span class="lineNum">      40 </span><span class="lineNoCov">          0 :     final xMin = now.getStartingDay(startingDay).millisecondsSinceEpoch.toDouble();</span></a>
-<a name="41"><span class="lineNum">      41 </span><span class="lineNoCov">          0 :     final xMax = DateTime(now.year, now.month + 1).getStartingDay(startingDay).millisecondsSinceEpoch.toDouble();</span></a>
-<a name="42"><span class="lineNum">      42 </span><span class="lineNoCov">          0 :     final bg = ForegroundChartPainter(</span></a>
-<a name="43"><span class="lineNum">      43 </span>            :       size: size,</a>
-<a name="44"><span class="lineNum">      44 </span>            :       color: bgColor,</a>
-<a name="45"><span class="lineNum">      45 </span>            :       lineColor: bgColor,</a>
-<a name="46"><span class="lineNum">      46 </span><span class="lineNoCov">          0 :       background: bgColor.withOpacity(0.1),</span></a>
-<a name="47"><span class="lineNum">      47 </span>            :       yMin: 0.0,</a>
-<a name="48"><span class="lineNum">      48 </span>            :       yMax: 140,</a>
-<a name="49"><span class="lineNum">      49 </span><span class="lineNoCov">          0 :       yArea: [80, 120],</span></a>
-<a name="50"><span class="lineNum">      50 </span>            :       xType: DateTime,</a>
-<a name="51"><span class="lineNum">      51 </span>            :       yType: Percentage,</a>
-<a name="52"><span class="lineNum">      52 </span>            :       xMin: xMin,</a>
-<a name="53"><span class="lineNum">      53 </span>            :       xMax: xMax,</a>
-<a name="54"><span class="lineNum">      54 </span>            :     );</a>
-<a name="55"><span class="lineNum">      55 </span><span class="lineNoCov">          0 :     return SizedBox(</span></a>
-<a name="56"><span class="lineNum">      56 </span><span class="lineNoCov">          0 :       height: size.height,</span></a>
-<a name="57"><span class="lineNum">      57 </span><span class="lineNoCov">          0 :       width: size.width,</span></a>
-<a name="58"><span class="lineNum">      58 </span><span class="lineNoCov">          0 :       child: CustomPaint(</span></a>
-<a name="59"><span class="lineNum">      59 </span>            :         size: size,</a>
-<a name="60"><span class="lineNum">      60 </span><span class="lineNoCov">          0 :         painter: ForecastChartPainter(</span></a>
-<a name="61"><span class="lineNum">      61 </span><span class="lineNoCov">          0 :           indent: bg.shift,</span></a>
-<a name="62"><span class="lineNum">      62 </span>            :           size: size,</a>
-<a name="63"><span class="lineNum">      63 </span><span class="lineNoCov">          0 :           data: data,</span></a>
-<a name="64"><span class="lineNum">      64 </span><span class="lineNoCov">          0 :           yMax: yMax * bg.yMax / 100,</span></a>
-<a name="65"><span class="lineNum">      65 </span>            :           xMin: xMin,</a>
-<a name="66"><span class="lineNum">      66 </span>            :           xMax: xMax,</a>
-<a name="67"><span class="lineNum">      67 </span>            :         ),</a>
-<a name="68"><span class="lineNum">      68 </span>            :         foregroundPainter: bg,</a>
-<a name="69"><span class="lineNum">      69 </span>            :         willChange: false,</a>
-<a name="70"><span class="lineNum">      70 </span><span class="lineNoCov">          0 :         child: Padding(</span></a>
-<a name="71"><span class="lineNum">      71 </span><span class="lineNoCov">          0 :           padding: EdgeInsets.only(top: indent / 4),</span></a>
-<a name="72"><span class="lineNum">      72 </span><span class="lineNoCov">          0 :           child: Text(tooltip),</span></a>
-<a name="73"><span class="lineNum">      73 </span>            :         ),</a>
-<a name="74"><span class="lineNum">      74 </span>            :       ),</a>
-<a name="75"><span class="lineNum">      75 </span>            :     );</a>
-<a name="76"><span class="lineNum">      76 </span>            :   }</a>
-<a name="77"><span class="lineNum">      77 </span>            : }</a>
+<a name="41"><span class="lineNum">      41 </span>            :     final xMax =</a>
+<a name="42"><span class="lineNum">      42 </span><span class="lineNoCov">          0 :         DateTime(now.year, now.month + 1, now.day).getStartingDay(startingDay).millisecondsSinceEpoch.toDouble();</span></a>
+<a name="43"><span class="lineNum">      43 </span><span class="lineNoCov">          0 :     final bg = ForegroundChartPainter(</span></a>
+<a name="44"><span class="lineNum">      44 </span>            :       size: size,</a>
+<a name="45"><span class="lineNum">      45 </span>            :       color: bgColor,</a>
+<a name="46"><span class="lineNum">      46 </span>            :       lineColor: bgColor,</a>
+<a name="47"><span class="lineNum">      47 </span><span class="lineNoCov">          0 :       background: bgColor.withOpacity(0.1),</span></a>
+<a name="48"><span class="lineNum">      48 </span>            :       yMin: 0.0,</a>
+<a name="49"><span class="lineNum">      49 </span>            :       yMax: 140,</a>
+<a name="50"><span class="lineNum">      50 </span><span class="lineNoCov">          0 :       yArea: [80, 120],</span></a>
+<a name="51"><span class="lineNum">      51 </span>            :       xType: DateTime,</a>
+<a name="52"><span class="lineNum">      52 </span>            :       yType: Percentage,</a>
+<a name="53"><span class="lineNum">      53 </span>            :       xMin: xMin,</a>
+<a name="54"><span class="lineNum">      54 </span>            :       xMax: xMax,</a>
+<a name="55"><span class="lineNum">      55 </span>            :     );</a>
+<a name="56"><span class="lineNum">      56 </span><span class="lineNoCov">          0 :     return SizedBox(</span></a>
+<a name="57"><span class="lineNum">      57 </span><span class="lineNoCov">          0 :       height: size.height,</span></a>
+<a name="58"><span class="lineNum">      58 </span><span class="lineNoCov">          0 :       width: size.width,</span></a>
+<a name="59"><span class="lineNum">      59 </span><span class="lineNoCov">          0 :       child: CustomPaint(</span></a>
+<a name="60"><span class="lineNum">      60 </span>            :         size: size,</a>
+<a name="61"><span class="lineNum">      61 </span><span class="lineNoCov">          0 :         painter: ForecastChartPainter(</span></a>
+<a name="62"><span class="lineNum">      62 </span><span class="lineNoCov">          0 :           indent: bg.shift,</span></a>
+<a name="63"><span class="lineNum">      63 </span>            :           size: size,</a>
+<a name="64"><span class="lineNum">      64 </span><span class="lineNoCov">          0 :           data: data,</span></a>
+<a name="65"><span class="lineNum">      65 </span><span class="lineNoCov">          0 :           yMax: yMax * bg.yMax / 100,</span></a>
+<a name="66"><span class="lineNum">      66 </span>            :           xMin: xMin,</a>
+<a name="67"><span class="lineNum">      67 </span>            :           xMax: xMax,</a>
+<a name="68"><span class="lineNum">      68 </span>            :         ),</a>
+<a name="69"><span class="lineNum">      69 </span>            :         foregroundPainter: bg,</a>
+<a name="70"><span class="lineNum">      70 </span>            :         willChange: false,</a>
+<a name="71"><span class="lineNum">      71 </span><span class="lineNoCov">          0 :         child: Padding(</span></a>
+<a name="72"><span class="lineNum">      72 </span><span class="lineNoCov">          0 :           padding: EdgeInsets.only(top: indent / 4),</span></a>
+<a name="73"><span class="lineNum">      73 </span><span class="lineNoCov">          0 :           child: Text(tooltip),</span></a>
+<a name="74"><span class="lineNum">      74 </span>            :         ),</a>
+<a name="75"><span class="lineNum">      75 </span>            :       ),</a>
+<a name="76"><span class="lineNum">      76 </span>            :     );</a>
+<a name="77"><span class="lineNum">      77 </span>            :   }</a>
+<a name="78"><span class="lineNum">      78 </span>            : }</a>
 </pre>
       </td>
     </tr>
