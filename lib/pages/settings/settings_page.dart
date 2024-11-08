@@ -19,6 +19,8 @@ class SettingsPage extends StatefulWidget {
 }
 
 class SettingsPageState extends AbstractPageState<SettingsPage> {
+  int tab = 0;
+
   @override
   String getTitle() => AppLocale.labels.settingsHeadline;
 
@@ -32,7 +34,8 @@ class SettingsPageState extends AbstractPageState<SettingsPage> {
   Widget buildContent(BuildContext context, BoxConstraints constraints) {
     final isLeft = ScreenHelper.state().isLeftBar;
     return TabWidget(
-      focus: 0,
+      focus: tab,
+      callback: (idx) => setState(() => tab = idx),
       type: TabType.secondary,
       isLeft: isLeft,
       tabs: [
@@ -45,7 +48,7 @@ class SettingsPageState extends AbstractPageState<SettingsPage> {
           text: AppLocale.labels.recoveryHeadline,
         ),
         Tab(
-          icon: const Icon(Icons.imagesearch_roller_sharp),
+          icon: const Icon(Icons.import_export),
           text: AppLocale.labels.importHeadline,
         ),
       ],
