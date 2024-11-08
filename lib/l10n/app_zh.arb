@@ -234,6 +234,12 @@
     "expenseDateTime": "账单",
     "expenseHeadline": "支出",
     "expenseTransfer": "转账金额",
+    "exportFile": "导出为 .{value} 文件",
+    "@exportFile": {
+        "value": {
+            "type": "String"
+        }
+    },
     "failData": "扣除金额",
     "flowTypeInvoice": "发票",
     "flowTypeTooltip": "金额类型： 账单、发票",

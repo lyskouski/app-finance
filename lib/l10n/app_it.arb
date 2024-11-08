@@ -234,6 +234,12 @@
     "expenseDateTime": "Fatturato a",
     "expenseHeadline": "Spese",
     "expenseTransfer": "Importo del trasferimento",
+    "exportFile": "Esportazione come file .{value}",
+    "@exportFile": {
+        "value": {
+            "type": "String"
+        }
+    },
     "failData": "Importo Detrazione",
     "flowTypeInvoice": "Fattura",
     "flowTypeTooltip": "Tipo di importo: Bolletta, Fattura",

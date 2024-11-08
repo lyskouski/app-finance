@@ -234,6 +234,12 @@
     "expenseDateTime": "تمت المحاسبة على",
     "expenseHeadline": "المصاريف",
     "expenseTransfer": "مبلغ التحويل",
+    "exportFile": "التصدير كملف .{value}-ملف",
+    "@exportFile": {
+        "value": {
+            "type": "String"
+        }
+    },
     "failData": "المبلغ المستقطع",
     "flowTypeInvoice": "الفاتورة",
     "flowTypeTooltip": "نوع المبلغ فاتورة، فاتورة",

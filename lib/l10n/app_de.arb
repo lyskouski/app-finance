@@ -234,6 +234,12 @@
     "expenseDateTime": "Abgerechnet zu",
     "expenseHeadline": "Aufwand",
     "expenseTransfer": "Betrag der Übertragung",
+    "exportFile": "Exportieren als .{value}-Datei",
+    "@exportFile": {
+        "value": {
+            "type": "String"
+        }
+    },
     "failData": "Abgezogener Betrag",
     "flowTypeInvoice": "Rechnung",
     "flowTypeTooltip": "Betragsart: Rechnung, Fakturierung",

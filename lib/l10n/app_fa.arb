@@ -234,6 +234,12 @@
     "expenseDateTime": "صورتحساب در",
     "expenseHeadline": "هزینه",
     "expenseTransfer": "مبلغ انتقال",
+    "exportFile": "صادر کردن به عنوان .{value}-فایل",
+    "@exportFile": {
+        "value": {
+            "type": "String"
+        }
+    },
     "failData": "کسر مبلغ",
     "flowTypeInvoice": "صورتحساب",
     "flowTypeTooltip": "نوع مبلغ: قبض، فاکتور",

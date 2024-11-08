@@ -234,6 +234,12 @@
     "expenseDateTime": "Rozliczone na",
     "expenseHeadline": "Wydatek",
     "expenseTransfer": "Kwota przelewu",
+    "exportFile": "Eksportuj jako plik .{value}",
+    "@exportFile": {
+        "value": {
+            "type": "String"
+        }
+    },
     "failData": "Kwota odliczenia",
     "flowTypeInvoice": "Faktura",
     "flowTypeTooltip": "Typ kwoty: Rachunek, Faktura",

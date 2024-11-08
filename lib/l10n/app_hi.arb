@@ -234,6 +234,12 @@
     "expenseDateTime": "पर बिल किया गया",
     "expenseHeadline": "व्यय",
     "expenseTransfer": "स्थानांतरण की राशि",
+    "exportFile": ".{value} फ़ाइल के रूप में निर्यात करें",
+    "@exportFile": {
+        "value": {
+            "type": "String"
+        }
+    },
     "failData": "राशि कटौती",
     "flowTypeInvoice": "चालान",
     "flowTypeTooltip": "राशि का प्रकार: बिल, चालान",

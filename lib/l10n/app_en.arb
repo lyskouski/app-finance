@@ -234,6 +234,12 @@
     "expenseDateTime": "Billed At",
     "expenseHeadline": "Expense",
     "expenseTransfer": "Amount of Transfer",
+    "exportFile": "Export as .{value}-file",
+    "@exportFile": {
+        "value": {
+            "type": "String"
+        }
+    },
     "failData": "Amount Deduction",
     "flowTypeInvoice": "Invoice",
     "flowTypeTooltip": "Amount Type: Bill, Invoice",

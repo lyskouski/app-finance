@@ -234,6 +234,12 @@
     "expenseDateTime": "請求額",
     "expenseHeadline": "経費",
     "expenseTransfer": "振込金額",
+    "exportFile": ".{value}-ファイルとしてエクスポート",
+    "@exportFile": {
+        "value": {
+            "type": "String"
+        }
+    },
     "failData": "控除額",
     "flowTypeInvoice": "請求書",
     "flowTypeTooltip": "金額の種類 請求書",

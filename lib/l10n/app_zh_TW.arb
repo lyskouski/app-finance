@@ -234,6 +234,12 @@
     "expenseDateTime": "帳單",
     "expenseHeadline": "費用",
     "expenseTransfer": "轉帳金額",
+    "exportFile": "匯出為 .{value} 檔案",
+    "@exportFile": {
+        "value": {
+            "type": "String"
+        }
+    },
     "failData": "扣除金額",
     "flowTypeInvoice": "發票",
     "flowTypeTooltip": "金額類型： 帳單、發票",

@@ -234,6 +234,12 @@
     "expenseDateTime": "Faturalandırma",
     "expenseHeadline": "Giderler",
     "expenseTransfer": "Transfer Tutarı",
+    "exportFile": ".{value} dosyası olarak dışa aktar",
+    "@exportFile": {
+        "value": {
+            "type": "String"
+        }
+    },
     "failData": "Tutar Kesintisi",
     "flowTypeInvoice": "Invoice",
     "flowTypeTooltip": "Tutar Türü: Fatura, Fatura",

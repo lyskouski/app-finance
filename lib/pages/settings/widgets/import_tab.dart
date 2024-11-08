@@ -109,6 +109,14 @@ class ImportTabState extends State<ImportTab> {
     setState(() => fileContent = null);
   }
 
+  Future<void> exportFile() async {
+    try {
+      // ... @TODO
+    } catch (e) {
+      setState(() => errorMessage.writeln(e.toString()));
+    }
+  }
+
   Future<void> wrapCall(Function callback) async {
     setState(() {
       isLoading = true;
@@ -245,7 +253,7 @@ class ImportTabState extends State<ImportTab> {
                     ),
                   ),
                 ]),
-              ] else
+              ] else ...[
                 ...List<Widget>.generate(FilePicker.fileFormats.length * 2, (index) {
                   if (index % 2 == 0) {
                     return ThemeHelper.hIndent2x;
@@ -263,7 +271,22 @@ class ImportTabState extends State<ImportTab> {
                       ),
                     );
                   }
-                })
+                }),
+                ThemeHelper.hIndent2x,
+                const Divider(),
+                ThemeHelper.hIndent2x,
+                SizedBox(
+                  width: double.infinity,
+                  child: FloatingActionButton(
+                    heroTag: 'export_tab_pick_xlsx',
+                    onPressed: () => wrapCall(() => exportFile()),
+                    tooltip: AppLocale.labels.exportFile('xlsx'),
+                    child: Text(
+                      AppLocale.labels.exportFile('xlsx'),
+                    ),
+                  ),
+                ),
+              ]
             ],
           ),
         ),

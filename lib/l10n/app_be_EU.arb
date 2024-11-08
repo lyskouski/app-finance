@@ -234,6 +234,12 @@
     "expenseDateTime": "Vystaŭlieny",
     "expenseHeadline": "Vydatak",
     "expenseTransfer": "Suma Pieravodu",
+    "exportFile": "Ekspartavać jak .{value}-fajl",
+    "@exportFile": {
+        "value": {
+            "type": "String"
+        }
+    },
     "failData": "Suma vyliku",
     "flowTypeInvoice": "Prybytak",
     "flowTypeTooltip": "Typ sumy: Ček, Prybytak",

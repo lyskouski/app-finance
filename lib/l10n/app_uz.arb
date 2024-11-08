@@ -234,6 +234,12 @@
     "expenseDateTime": "Hisoblangan",
     "expenseHeadline": "Xarajat",
     "expenseTransfer": "Transfer summasi",
+    "exportFile": ".{value} fayl sifatida eksport qiling",
+    "@exportFile": {
+        "value": {
+            "type": "String"
+        }
+    },
     "failData": "Chegirma miqdori",
     "flowTypeInvoice": "Hisob-faktura",
     "flowTypeTooltip": "Miqdor turi: hisob-faktura, hisob-faktura",
