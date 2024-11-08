@@ -14,6 +14,7 @@ import 'package:app_finance/_classes/structure/bill_app_data.dart';
 import 'package:app_finance/_classes/structure/budget_app_data.dart';
 import 'package:app_finance/_classes/structure/currency/exchange.dart';
 import 'package:app_finance/_configs/account_type.dart';
+import 'package:app_finance/_configs/screen_helper.dart';
 import 'package:app_finance/_configs/theme_helper.dart';
 import 'package:app_finance/_classes/structure/navigation/app_route.dart';
 import 'package:app_finance/_ext/date_time_ext.dart';
@@ -151,7 +152,7 @@ class BudgetViewPageState extends AbstractPageState<BudgetViewPage> with TickerP
     final indent = ThemeHelper.getIndent();
     final pageWidth = ThemeHelper.getWidth(context, 3, constraints);
     width = pageWidth - indent;
-    bool isLeft = ThemeHelper.isNavRight(context, constraints);
+    final isLeft = ScreenHelper.state().isLeftBar;
     if (isLeft) {
       width -= ThemeHelper.barHeight;
     }

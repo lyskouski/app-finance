@@ -2,6 +2,7 @@
 // Use of this source code is governed by a CC BY-NC-ND 4.0 license that can be found in the LICENSE file.
 
 import 'package:app_finance/_classes/herald/app_locale.dart';
+import 'package:app_finance/_configs/screen_helper.dart';
 import 'package:app_finance/_configs/theme_helper.dart';
 import 'package:app_finance/pages/_interfaces/abstract_page_state.dart';
 import 'package:app_finance/design/wrapper/tab_widget.dart';
@@ -29,10 +30,11 @@ class SettingsPageState extends AbstractPageState<SettingsPage> {
 
   @override
   Widget buildContent(BuildContext context, BoxConstraints constraints) {
+    final isLeft = ScreenHelper.state().isLeftBar;
     return TabWidget(
       focus: 0,
       type: TabType.secondary,
-      isLeft: ThemeHelper.isNavRight(context, constraints),
+      isLeft: isLeft,
       tabs: [
         Tab(
           icon: const Icon(Icons.settings),
