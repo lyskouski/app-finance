@@ -47,7 +47,7 @@ class SubscriptionPageState extends AbstractPageState<SubscriptionPage> {
             children: [
               [
                 ElevatedButton(
-                  onPressed: () => nav.pushNamed(AppRoute.aboutRoute, arguments: {'search': '0'}),
+                  onPressed: () => nav.pushNamed(AppRoute.aboutRoute, arguments: {'search': '1'}),
                   child: TextWrapper(AppLocale.labels.termPrivacy),
                 ),
               ],
@@ -55,7 +55,7 @@ class SubscriptionPageState extends AbstractPageState<SubscriptionPage> {
                 Align(
                   alignment: Alignment.centerRight,
                   child: ElevatedButton(
-                    onPressed: () => nav.pushNamed(AppRoute.aboutRoute, arguments: {'search': '1'}),
+                    onPressed: () => nav.pushNamed(AppRoute.aboutRoute, arguments: {'search': '2'}),
                     child: TextWrapper(AppLocale.labels.termUse),
                   ),
                 ),
