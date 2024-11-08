@@ -256,7 +256,7 @@
     "icon": "아이콘",
     "iconTooltip": "아이콘 선택",
     "ignoreTooltip": "무시",
-    "importHeadline": "수입",
+    "importHeadline": "가져오기/내보내기",
     "income": "수입 금액",
     "incomeHeadline": "수입",
     "incomeHealth": "소득 건강 레이더",
