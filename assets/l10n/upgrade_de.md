@@ -2,6 +2,11 @@
 
 _Die vollständige Liste der Updates kann über den Navigationspunkt "Über" auf der Schaltfläche "Hinweise" eingesehen werden._
 
+### 5.8.0
+- Exportieren in die Excel-Datei `XLSX`
+- Verschiedene Zeitleisten: wöchentlich, monatlich, vorzeitig
+- Anpassbarer Starttag der Woche und des Monats
+
 ### 5.7.0
 - Verbesserte Speicherung für die Web-Version
 - Hinzufügen der Sprachen Niederländisch (NL) und Koreanisch (KO)

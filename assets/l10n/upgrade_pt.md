@@ -2,6 +2,11 @@
 
 _A lista completa de actualizações pode ser consultada através do item de navegação "Acerca" no botão "Sugestões".
 
+### 5.8.0
+- Exportar para ficheiro Excel `XLSX`
+- Horário diferente: semanal, mensal, anual
+- Dia de início da semana e mês personalizável
+
 ### 5.7.0
 - Melhorar o armazenamento da versão Web
 - Adição dos idiomas holandês (NL) e coreano (KO)

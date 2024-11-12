@@ -2,6 +2,11 @@
 
 _La liste complète des mises à jour peut être consultée via l'élément de navigation "À propos" du bouton "Conseils"._
 
+### 5.8.0
+- Export vers un fichier Excel `XLSX`
+- Différents calendriers : hebdomadaire, mensuel, annuel
+- Jour de début de la semaine et du mois personnalisable
+
 ### 5.7.0
 - Amélioration du stockage pour la version Web
 - Ajout des langues néerlandaise (NL) et coréenne (KO)

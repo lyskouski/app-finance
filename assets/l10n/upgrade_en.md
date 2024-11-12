@@ -2,6 +2,11 @@
 
 _The full list of updates can be viewed via the "About" navigation item on the "Hints" button._
 
+### 5.8.0
+- Export to Excel `XLSX` file
+- Different timeline: weekly, monthly, yearly
+- Customizable start day of the week and month
+
 ### 5.7.0
 - Improving storage for Web-version
 - Adding Dutch (NL) and Korean (KO) languages

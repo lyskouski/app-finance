@@ -3,6 +3,11 @@
 _L'elenco completo degli aggiornamenti può essere consultato tramite la voce di navigazione “Informazioni” del 
 pulsante “Suggerimenti”._
 
+### 5.8.0
+- Esportazione in file Excel `XLSX`
+- Cronologia diversa: settimanale, mensile, annuale
+- Giorno di inizio della settimana e del mese personalizzabili
+
 ### 5.7.0
 - Miglioramento dell'archiviazione per la versione Web
 - Aggiunta delle lingue olandese (NL) e coreana (KO)

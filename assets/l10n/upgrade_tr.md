@@ -2,6 +2,11 @@
 
 _Güncellemelerin tam listesi “İpuçları” düğmesindeki “Hakkında” gezinti öğesi aracılığıyla görüntülenebilir._
 
+### 5.8.0
+- Excel `XLSX` dosyasına aktarın
+- Farklı zaman çizelgesi: haftalık, aylık, yıllık
+- Haftanın ve ayın özelleştirilebilir başlangıç ​​günü
+
 ### 5.7.0
 - Web sürümü için depolama alanının iyileştirilmesi
 - Hollandaca (NL) ve Korece (KO) dillerinin eklenmesi

@@ -2,6 +2,11 @@
 
 _A lista completa de atualizações pode ser visualizada no item de navegação "Sobre" no botão "Dicas".
 
+### 5.8.0
+- Exportar para arquivo Excel `XLSX`
+- Cronograma diferente: semanal, mensal, anual
+- Dia de início da semana e mês personalizáveis
+
 ### 5.7.0
 - Aprimoramento do armazenamento da versão da Web
 - Adição dos idiomas holandês (NL) e coreano (KO)
