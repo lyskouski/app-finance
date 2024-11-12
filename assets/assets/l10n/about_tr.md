@@ -41,6 +41,8 @@ Bu, kullanıcıların mali durumlarını zahmetsizce yönetmelerini sağlarken k
     - Aylık yapılandırılabilir limitler
     - Gelire Akrabalar (0.0 ... 1.0)
   - Veya harcanan miktarı göstererek sınırlama olmaksızın
+  - Farklı zaman çizelgesi: haftalık, aylık, yıllık
+  - Haftanın ve ayın özelleştirilebilir başlangıç ​​günü
 - Faturalar, Transferler, Gelirler (Faturalar)
 - Hedefler Tanım
 - Döviz kurları, Özet için Varsayılan Para Birimi
@@ -60,6 +62,7 @@ Bu, kullanıcıların mali durumlarını zahmetsizce yönetmelerini sağlarken k
 - Cihazlar arasında senkronizasyon (P2P) 
 - WebDav veya doğrudan bir Dosya aracılığıyla kurtarma
 - Faturalar için `CSV`, `QIF`, `OFX` dosyalarından içe aktarma
+- Excel `XLSX` dosyasına aktarın
 - Veri şifreleme
 - Yerelleştirme
 - Kullanıcı Deneyimi

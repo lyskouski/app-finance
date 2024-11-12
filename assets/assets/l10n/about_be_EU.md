@@ -41,6 +41,8 @@ zastaniecca ŭ baku.
     - Naladžvaĺnyja limity ŭ miesiac 
     - Adnosna (0,0 ... 1,0) da dachodu 
   - Abo biez abmiežavanniaŭ, pakazaŭšy vydatkavanuju sumu 
+  - Rozny hrafik: štotydzień, štomiesiac, štohod
+  - Naladžvaĺny dzień pačatku tydnia i miesiaca
 - Rachunki, pieraklady, dachody (rachunki-faktury) 
 - Vyznačeńnie metaŭ - Kursy valiut, valiuta pa zmaŭčańni dlia zvodki 
 - Mietryki: 
@@ -59,6 +61,7 @@ zastaniecca ŭ baku.
 - Sinchranizacyja pamiž pryladami (P2P) 
 - Adnaŭlieńnie praz WebDav abo fajl 
 - Impart z fajlaŭ `CSV`, `QIF`, `OFX` dlia rachunkaŭ i rachunkaŭ-faktur 
+- Ekspart u fajl Excel `XLSX`
 - Šyfravańnie dadzienych 
 - Lakalizacyja 
 - Vopyt karystaĺnika 

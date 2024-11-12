@@ -41,6 +41,8 @@ Isto permite aos utilizadores gerir as suas finanças sem esforço, garantindo q
     - Limites configuráveis por mês
     - Relativos (0.0 ... 1.0) ao Rendimento
   - Ou, sem limites, mostrando um montante gasto
+  - Horário diferente: semanal, mensal, anual
+  - Dia de início da semana e mês personalizável
 - Contas, Transferências, Rendimentos (Facturas)
 - Definição de objectivos
 - Taxas de câmbio, Moeda por defeito para o Resumo
@@ -60,6 +62,7 @@ Isto permite aos utilizadores gerir as suas finanças sem esforço, garantindo q
 - Sincronização entre dispositivos (P2P) 
 - Recuperação via WebDav ou ficheiro direto
 - Importação a partir de ficheiros `CSV`, `QIF`, `OFX` para facturas e notas fiscais
+- Exportar para ficheiro Excel `XLSX`
 - Encriptação de dados
 - Localização
 - Experiência do utilizador

@@ -22,7 +22,7 @@ digraph G {
   }
   {
     rank = same; "_classes";
-    storage_transaction_log [label="<0>STORAGE_TRANSACTION_LOG|<file_protocol>file_protocol|<abstract_storage_web>abstract_storage_web|<abstract_storage>abstract_storage|<web_dav_protocol>web_dav_protocol|<web_dav_data>web_dav_data|<interface_protocol>interface_protocol|<abstract_protocol>abstract_protocol|<interface_storage>interface_storage",fillcolor="silver:white", gradientangle=240, style="filled"];
+    storage_transaction_log [label="<0>STORAGE_TRANSACTION_LOG|<file_protocol>file_protocol|<abstract_storage_web>abstract_storage_web|<export_excel>export_excel|<abstract_storage>abstract_storage|<web_dav_protocol>web_dav_protocol|<web_dav_data>web_dav_data|<interface_protocol>interface_protocol|<abstract_protocol>abstract_protocol|<interface_storage>interface_storage",fillcolor="silver:white", gradientangle=240, style="filled"];
   }
   {
     rank = same; "_classes";
@@ -267,6 +267,11 @@ digraph G {
   storage_transaction_log -> file [color="green"];
   storage_transaction_log -> storage [color="green"];
   storage_transaction_log -> storage_transaction_log [color="green"];
+  storage_transaction_log -> _ext_ [color="green"];
+  storage_transaction_log -> herald [color="green"];
+  storage_transaction_log -> storage [color="green"];
+  storage_transaction_log -> structure [color="green"];
+  storage_transaction_log -> structure_currency [color="green"];
   storage_transaction_log -> _ext_ [color="green"];
   storage_transaction_log -> storage_transaction_log [color="green"];
   storage_transaction_log -> _ext_ [color="green"];
@@ -773,6 +778,7 @@ digraph G {
   settings_widgets -> herald [color="#F0F0F050"];
   settings_widgets -> storage [color="#F0F0F050"];
   settings_widgets -> controller [color="#F0F0F050"];
+  settings_widgets -> storage_transaction_log [color="#F0F0F050"];
   settings_widgets -> form [color="#F0F0F050"];
   settings_widgets -> structure [color="#F0F0F050"];
   settings_widgets -> _configs_ [color="#F0F0F050"];

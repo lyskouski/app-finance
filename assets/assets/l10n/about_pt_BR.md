@@ -41,6 +41,8 @@ Isso permite que os usuários gerenciem suas finanças sem esforço, garantindo 
     - Limites configuráveis por mês
     - Relativos (0,0 ... 1,0) à renda
   - Ou, sem limitações, mostrando um valor gasto
+  - Cronograma diferente: semanal, mensal, anual
+  - Dia de início da semana e mês personalizáveis
 - Contas, transferências, receitas (faturas)
 - Definição de metas
 - Taxas de câmbio, moeda padrão para resumo
@@ -60,6 +62,7 @@ Isso permite que os usuários gerenciem suas finanças sem esforço, garantindo 
 - Sincronização entre dispositivos (P2P) 
 - Recuperação via WebDav ou um arquivo direto
 - Importação de arquivos `CSV`, `QIF`, `OFX` para contas e faturas
+- Exportar para arquivo Excel `XLSX`
 - Criptografia de dados
 - Localização
 - Experiência do usuário
