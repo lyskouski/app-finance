@@ -15,6 +15,7 @@ import 'package:app_finance/_classes/structure/bill_app_data.dart';
 import 'package:app_finance/_classes/structure/currency/exchange.dart';
 import 'package:app_finance/_classes/structure/invoice_app_data.dart';
 import 'package:app_finance/_configs/custom_text_theme.dart';
+import 'package:app_finance/_configs/screen_helper.dart';
 import 'package:app_finance/_configs/theme_helper.dart';
 import 'package:app_finance/_classes/structure/navigation/app_route.dart';
 import 'package:app_finance/_ext/build_context_ext.dart';
@@ -198,7 +199,7 @@ class AccountViewPageState extends AbstractPageState<AccountViewPage> {
   @override
   Widget buildContent(BuildContext context, BoxConstraints constraints) {
     width = ThemeHelper.getWidth(context, 4, constraints);
-    bool isLeft = ThemeHelper.isNavRight(context, constraints);
+    final isLeft = ScreenHelper.state().isLeftBar;
     if (isLeft) {
       width -= ThemeHelper.barHeight;
     }

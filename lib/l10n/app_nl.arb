@@ -234,6 +234,12 @@
     "expenseDateTime": "Gefactureerd bij",
     "expenseHeadline": "Uitgaven",
     "expenseTransfer": "Bedrag overboeking",
+    "exportFile": "Exporteren als .{value}-bestand",
+    "@exportFile": {
+        "value": {
+            "type": "String"
+        }
+    },
     "failData": "Bedrag Aftrek",
     "flowTypeInvoice": "Factuur",
     "flowTypeTooltip": "Type bedrag: Factuur",
@@ -256,7 +262,7 @@
     "icon": "Icoon",
     "iconTooltip": "Selecteer Pictogram",
     "ignoreTooltip": "Negeren",
-    "importHeadline": "Importeren",
+    "importHeadline": "Importeren / Exporteren",
     "income": "Bedrag inkomen",
     "incomeHeadline": "Inkomen",
     "incomeHealth": "Inkomen gezondheidsradar",

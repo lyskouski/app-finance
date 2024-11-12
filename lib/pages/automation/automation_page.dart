@@ -2,6 +2,7 @@
 // Use of this source code is governed by a CC BY-NC-ND 4.0 license that can be found in the LICENSE file.
 
 import 'package:app_finance/_classes/herald/app_locale.dart';
+import 'package:app_finance/_configs/screen_helper.dart';
 import 'package:app_finance/_configs/theme_helper.dart';
 import 'package:app_finance/pages/_interfaces/abstract_page_state.dart';
 import 'package:app_finance/pages/automation/widgets/sync_tab.dart';
@@ -27,7 +28,7 @@ class AutomationPageState extends AbstractPageState<AutomationPage> with TickerP
 
   @override
   Widget buildContent(BuildContext context, BoxConstraints constraints) {
-    bool isLeft = ThemeHelper.isNavRight(context, constraints);
+    final isLeft = ScreenHelper.state().isLeftBar;
     return Column(
       children: [
         Expanded(

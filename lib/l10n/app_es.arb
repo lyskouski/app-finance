@@ -234,6 +234,12 @@
     "expenseDateTime": "Facturados en",
     "expenseHeadline": "Gasto",
     "expenseTransfer": "Importe de la transferencia",
+    "exportFile": "Exportar como archivo .{value}",
+    "@exportFile": {
+        "value": {
+            "type": "String"
+        }
+    },
     "failData": "Importe Deducción",
     "flowTypeInvoice": "Factura",
     "flowTypeTooltip": "Tipo de Importe Albarán, Factura",
@@ -256,7 +262,7 @@
     "icon": "Icono",
     "iconTooltip": "Seleccionar icono",
     "ignoreTooltip": "Ignore",
-    "importHeadline": "Import",
+    "importHeadline": "Importar / Exportar",
     "income": "Importe de los ingresos",
     "incomeHeadline": "Ingresos",
     "incomeHealth": "Radar de salud de ingresos",

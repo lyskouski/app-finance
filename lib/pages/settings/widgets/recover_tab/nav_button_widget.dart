@@ -38,7 +38,7 @@ class NavButtonWidget extends StatelessWidget {
             icon: icon,
             onPressed: () => callback(nav),
             tooltip: name,
-            color: Colors.white30,
+            color: context.colorScheme.inversePrimary,
           ),
           ThemeHelper.hIndent2x,
           Expanded(

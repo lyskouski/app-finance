@@ -41,6 +41,8 @@ Che permetta agli utenti di gestire le proprie finanze senza sforzo, garantendo 
     - Limiti configurabili per mese
     - Parenti (0,0 ... 1,0) al reddito
   - Oppure, senza limiti, mostrando un importo speso
+  - Cronologia diversa: settimanale, mensile, annuale
+  - Giorno di inizio della settimana e del mese personalizzabili
 - Bollette, trasferimenti, entrate (fatture)
 - Definizione degli obiettivi
 - Tassi di cambio, Valuta predefinita per il riepilogo
@@ -60,6 +62,7 @@ Che permetta agli utenti di gestire le proprie finanze senza sforzo, garantendo 
 - Sincronizzazione tra dispositivi (P2P) 
 - Recupero tramite WebDav o file diretto
 - Importazione da file `CSV`, `QIF`, `OFX` per fatture e bollette
+- Esportazione in file Excel `XLSX`
 - Cifratura dei dati
 - Localizzazione
 - Esperienza utente

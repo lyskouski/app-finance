@@ -234,6 +234,12 @@
     "expenseDateTime": "Vystaŭlieny",
     "expenseHeadline": "Vydatak",
     "expenseTransfer": "Suma Pieravodu",
+    "exportFile": "Ekspartavać jak .{value}-fajl",
+    "@exportFile": {
+        "value": {
+            "type": "String"
+        }
+    },
     "failData": "Suma vyliku",
     "flowTypeInvoice": "Prybytak",
     "flowTypeTooltip": "Typ sumy: Ček, Prybytak",
@@ -256,7 +262,7 @@
     "icon": "Značok",
     "iconTooltip": "Abiarycie Značok",
     "ignoreTooltip": "Ihnaravać",
-    "importHeadline": "Impart",
+    "importHeadline": "Impart / Ekspart",
     "income": "Suma Prybytku",
     "incomeHeadline": "Dachod",
     "incomeHealth": "Radar Zdaroŭja Dachodaŭ",

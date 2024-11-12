@@ -40,7 +40,9 @@ Bu, istifadəçilərə heç kimin geridə qalmamasını təmin etməklə öz mal
   - Hər ayın əvvəlində yenilənir
   - Ayda konfiqurasiya edilə bilən məhdudiyyətlər
   - Gəlirlərə qohumlar (0,0 ... 1,0).
-  - Və ya xərclənmiş məbləği göstərərək məhdudiyyətsiz
+  - Və ya xərclənmiş məbləği göstərməklə məhdudiyyətsiz
+  - Fərqli qrafik: həftəlik, aylıq, illik
+  - Həftənin və ayın fərdiləşdirilə bilən başlanğıc günü
 - Hesablar, köçürmələr, gəlirlər (qaimə-fakturalar)
 - Məqsədlərin Tərifi
 - Valyuta məzənnələri, Xülasə üçün Defolt Valyuta
@@ -60,6 +62,7 @@ Bu, istifadəçilərə heç kimin geridə qalmamasını təmin etməklə öz mal
 - Cihazlar arasında sinxronizasiya (P2P)
 - WebDav və ya birbaşa Fayl vasitəsilə bərpa
 - Hesablar və Fakturalar üçün `CSV`, `QIF`, `OFX` fayllarından idxal edin
+- Excel `XLSX` faylına ixrac edin
 - Məlumatların şifrələnməsi
 - Lokallaşdırma
 - İstifadəçi təcrübəsi

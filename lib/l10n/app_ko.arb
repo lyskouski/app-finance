@@ -234,6 +234,12 @@
     "expenseDateTime": "청구지",
     "expenseHeadline": "비용",
     "expenseTransfer": "이체 금액",
+    "exportFile": ".{value} 파일로 내보내기",
+    "@exportFile": {
+        "value": {
+            "type": "String"
+        }
+    },
     "failData": "금액 공제",
     "flowTypeInvoice": "인보이스",
     "flowTypeTooltip": "금액 유형: 청구서, 송장",
@@ -256,7 +262,7 @@
     "icon": "아이콘",
     "iconTooltip": "아이콘 선택",
     "ignoreTooltip": "무시",
-    "importHeadline": "수입",
+    "importHeadline": "가져오기/내보내기",
     "income": "수입 금액",
     "incomeHeadline": "수입",
     "incomeHealth": "소득 건강 레이더",

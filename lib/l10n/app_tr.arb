@@ -234,6 +234,12 @@
     "expenseDateTime": "Faturalandırma",
     "expenseHeadline": "Giderler",
     "expenseTransfer": "Transfer Tutarı",
+    "exportFile": ".{value} dosyası olarak dışa aktar",
+    "@exportFile": {
+        "value": {
+            "type": "String"
+        }
+    },
     "failData": "Tutar Kesintisi",
     "flowTypeInvoice": "Invoice",
     "flowTypeTooltip": "Tutar Türü: Fatura, Fatura",
@@ -256,7 +262,7 @@
     "icon": "Simge",
     "iconTooltip": "Simge Seçin",
     "ignoreTooltip": "Görmezden gel",
-    "importHeadline": "İthalat",
+    "importHeadline": "İthalat / İhracat",
     "income": "Gelir Miktarı",
     "incomeHeadline": "Gelir",
     "incomeHealth": "Gelir Sağlığı Radarı",

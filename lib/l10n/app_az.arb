@@ -234,6 +234,12 @@
     "expenseDateTime": "Billed At",
     "expenseHeadline": "Xərc",
     "expenseTransfer": "Köçürmə məbləği",
+    "exportFile": ".{value}-fayl kimi ixrac edin",
+    "@exportFile": {
+        "value": {
+            "type": "String"
+        }
+    },
     "failData": "Məbləğin tutulması",
     "flowTypeInvoice": "Invoice",
     "flowTypeTooltip": "Məbləğ növü: faktura, faktura",
@@ -256,7 +262,7 @@
     "icon": "İkon",
     "iconTooltip": "İkonu seçin",
     "ignoreTooltip": "Məhəl qoyma",
-    "importHeadline": "İdxal",
+    "importHeadline": "İdxal / İxrac",
     "income": "Gəlir məbləği",
     "incomeHeadline": "Gəlir",
     "incomeHealth": "Gəlir Sağlamlığı Radarı",

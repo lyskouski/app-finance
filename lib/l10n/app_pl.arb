@@ -234,6 +234,12 @@
     "expenseDateTime": "Rozliczone na",
     "expenseHeadline": "Wydatek",
     "expenseTransfer": "Kwota przelewu",
+    "exportFile": "Eksportuj jako plik .{value}",
+    "@exportFile": {
+        "value": {
+            "type": "String"
+        }
+    },
     "failData": "Kwota odliczenia",
     "flowTypeInvoice": "Faktura",
     "flowTypeTooltip": "Typ kwoty: Rachunek, Faktura",
@@ -256,7 +262,7 @@
     "icon": "Ikona",
     "iconTooltip": "Wybierz ikonę",
     "ignoreTooltip": "Ignoruj",
-    "importHeadline": "Importuj",
+    "importHeadline": "Import / Eksport",
     "income": "Kwota dochodu",
     "incomeHeadline": "Dochód",
     "incomeHealth": "Radar stanu dochodów",

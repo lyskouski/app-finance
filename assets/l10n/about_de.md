@@ -34,7 +34,7 @@ zurückgelassen wird.
 - Buchhaltung (Kontotyp, Währung/Kryptowährung)
   - Einfache Gruppierung über `/`-Symbol (im Namen) für die Hauptseite
   - Transaktionsprotokoll
-  - Einfrieren von Beträgen nach Aktualisierungsdatum (um frühere Historie zu importieren)
+  - Einfrieren von Beträgen nach Aktualisierungsdatum (um frühere Historien zu importieren)
 - Budget-Kategorien
   - Einfache Gruppierung über das `/`-Symbol (im Namen) für die Hauptseite
   - Mit Limits wiederherstellen:
@@ -42,6 +42,8 @@ zurückgelassen wird.
     - Konfigurierbare Limits pro Monat
     - Relativ (0.0 ... 1.0) zum Einkommen
   - Oder ohne Einschränkungen durch Anzeige eines ausgegebenen Betrags
+  - Verschiedene Zeitleisten: wöchentlich, monatlich, vorzeitig
+  - Anpassbarer Starttag der Woche und des Monats
 - Rechnungen, Überweisungen, Einkünfte (Rechnungen)
 - Ziele Definition
 - Wechselkurse, Standardwährung für Zusammenfassung
@@ -61,6 +63,7 @@ zurückgelassen wird.
 - Synchronisierung zwischen Geräten (P2P) 
 - Wiederherstellung über WebDav oder eine direkte Datei
 - Import von `CSV`, `QIF`, `OFX` Dateien für Rechnungen und Rechnungen
+- Exportieren in die Excel-Datei `XLSX`
 - Verschlüsselung der Daten
 - Lokalisierung
 - Benutzerfreundlichkeit

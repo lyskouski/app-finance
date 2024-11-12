@@ -2,6 +2,11 @@
 
 _De volledige lijst met updates kan worden bekeken via het navigatie-item “Over” op de knop “Hints”._
 
+### 5.8.0
+- Exporteren naar Excel `XLSX`-bestand
+- Verschillende tijdlijn: wekelijks, maandelijks, jaarlijks
+- Aanpasbare startdag van de week en maand
+
 ### 5.7.0
 - Verbeterde opslag voor webversie
 - Nederlandse (NL) en Koreaanse (KO) talen toegevoegd

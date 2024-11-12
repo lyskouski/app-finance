@@ -41,6 +41,8 @@ Dzięki temu użytkownicy mogą bez wysiłku zarządzać swoimi finansami, jedno
     - Konfigurowalne limity na miesiąc
     - Stosunek (0,0 ... 1,0) do dochodu
   - Lub bez ograniczeń, pokazując wydaną kwotę
+  - Różne harmonogramy: tygodniowy, miesięczny, roczny
+  - Możliwość dostosowania dnia rozpoczęcia tygodnia i miesiąca
 - Rachunki, przelewy, dochody (faktury)
 - Definicja celów
 - Kursy wymiany, domyślna waluta dla podsumowania
@@ -60,6 +62,7 @@ Dzięki temu użytkownicy mogą bez wysiłku zarządzać swoimi finansami, jedno
 - Synchronizacja między urządzeniami (P2P) 
 - Odzyskiwanie poprzez WebDav lub bezpośredni plik
 - Import z plików `CSV`, `QIF`, `OFX` dla rachunków i faktur
+- Eksport do pliku Excel `XLSX`
 - Szyfrowanie danych
 - Lokalizacja
 - Doświadczenie użytkownika

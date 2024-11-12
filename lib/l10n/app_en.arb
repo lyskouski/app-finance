@@ -234,6 +234,12 @@
     "expenseDateTime": "Billed At",
     "expenseHeadline": "Expense",
     "expenseTransfer": "Amount of Transfer",
+    "exportFile": "Export as .{value}-file",
+    "@exportFile": {
+        "value": {
+            "type": "String"
+        }
+    },
     "failData": "Amount Deduction",
     "flowTypeInvoice": "Invoice",
     "flowTypeTooltip": "Amount Type: Bill, Invoice",
@@ -256,7 +262,7 @@
     "icon": "Icon",
     "iconTooltip": "Select Icon",
     "ignoreTooltip": "Ignore",
-    "importHeadline": "Import",
+    "importHeadline": "Import / Export",
     "income": "Amount of Income",
     "incomeHeadline": "Income",
     "incomeHealth": "Income Health Radar",

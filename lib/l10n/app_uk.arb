@@ -234,6 +234,12 @@
     "expenseDateTime": "Виставлений",
     "expenseHeadline": "Витрати",
     "expenseTransfer": "Сума переводу",
+    "exportFile": "Експортувати як .{value}-файл",
+    "@exportFile": {
+        "value": {
+            "type": "String"
+        }
+    },
     "failData": "Сума відрахування",
     "flowTypeInvoice": "Прибуток",
     "flowTypeTooltip": "Тип суми: Чек, Прибуток",
@@ -256,7 +262,7 @@
     "icon": "Значок",
     "iconTooltip": "Оберіть значок",
     "ignoreTooltip": "Ігнорувати",
-    "importHeadline": "Імпорт",
+    "importHeadline": "Імпорт / Експорт",
     "income": "Сума прибутку",
     "incomeHeadline": "Дохід",
     "incomeHealth": "Радар здоров'я доходів",

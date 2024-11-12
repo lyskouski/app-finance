@@ -234,6 +234,12 @@
     "expenseDateTime": "Abgerechnet zu",
     "expenseHeadline": "Aufwand",
     "expenseTransfer": "Betrag der Übertragung",
+    "exportFile": "Exportieren als .{value}-Datei",
+    "@exportFile": {
+        "value": {
+            "type": "String"
+        }
+    },
     "failData": "Abgezogener Betrag",
     "flowTypeInvoice": "Rechnung",
     "flowTypeTooltip": "Betragsart: Rechnung, Fakturierung",
@@ -256,7 +262,7 @@
     "icon": "Icon",
     "iconTooltip": "Icon auswählen",
     "ignoreTooltip": "Ignorieren",
-    "importHeadline": "importieren",
+    "importHeadline": "Einfuhr/Ausfuhr",
     "income": "Betrag des Einkommens",
     "incomeHeadline": "Einkommen",
     "incomeHealth": "Einkommens-Gesundheitsradar",

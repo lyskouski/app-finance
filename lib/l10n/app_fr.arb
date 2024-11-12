@@ -234,6 +234,12 @@
     "expenseDateTime": "facturés à",
     "expenseHeadline": "Dépenses",
     "expenseTransfer": "Montant du transfert",
+    "exportFile": "Exporter comme fichier .{value}",
+    "@exportFile": {
+        "value": {
+            "type": "String"
+        }
+    },
     "failData": "Montant de la déduction",
     "flowTypeInvoice": "Facture",
     "flowTypeTooltip": "Type de montant : Facture",
@@ -256,7 +262,7 @@
     "icon": "Icône",
     "iconTooltip": "Sélectionner l'icône",
     "ignoreTooltip": "Ignorer",
-    "importHeadline": "Importer",
+    "importHeadline": "Importation / Exportation",
     "income": "Montant du revenu",
     "incomeHeadline": "Revenu",
     "incomeHealth": "Radar de santé du revenu",

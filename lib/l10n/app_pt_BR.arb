@@ -234,6 +234,12 @@
     "expenseDateTime": "Faturadas em",
     "expenseHeadline": "Despesa",
     "expenseTransfer": "Valor da transferência",
+    "exportFile": "Exportar como arquivo .{value}",
+    "@exportFile": {
+        "value": {
+            "type": "String"
+        }
+    },
     "failData": "Dedução do valor",
     "flowTypeInvoice": "Fatura",
     "flowTypeTooltip": "Tipo de valor: Nota Fiscal, Fatura",
@@ -256,7 +262,7 @@
     "icon": "Ícone",
     "iconTooltip": "Selecionar ícone",
     "ignoreTooltip": "Ignorar",
-    "importHeadline": "Importar",
+    "importHeadline": "Importação / Exportação",
     "income": "Valor do rendimento",
     "incomeHeadline": "Renda",
     "incomeHealth": "Radar de saúde do rendimento",

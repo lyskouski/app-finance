@@ -41,6 +41,8 @@ That empowers users to effortlessly manage their finances while ensuring that no
     - Configurable limits per month
     - Relatives (0.0 ... 1.0) to Income
   - Or, without limitations by showing a spent amount
+  - Different timeline: weekly, monthly, yearly
+  - Customizable start day of the week and month
 - Bills, Transfers, Incomes (Invoices)
 - Goals Definition
 - Exchange rates, Default Currency for Summary
@@ -60,6 +62,7 @@ That empowers users to effortlessly manage their finances while ensuring that no
 - Synchronization between devices (P2P) 
 - Recovery via WebDav or a direct File
 - Import from `CSV`, `QIF`, `OFX` files for Bills and Invoices
+- Export to Excel `XLSX` file
 - Data encryption
 - Localization
 - User Experience

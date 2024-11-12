@@ -2,6 +2,11 @@
 
 Pełną listę aktualizacji można wyświetlić za pomocą elementu nawigacyjnego "O aplikacji" na przycisku "Wskazówki".
 
+### 5.8.0
+- Eksport do pliku Excel `XLSX`
+- Różne harmonogramy: tygodniowy, miesięczny, roczny
+- Możliwość dostosowania dnia rozpoczęcia tygodnia i miesiąca
+
 ### 5.7.0
 - Ulepszenie pamięci masowej dla wersji internetowej
 - Dodanie języków holenderskiego (NL) i koreańskiego (KO)

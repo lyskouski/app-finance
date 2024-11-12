@@ -2,6 +2,11 @@
 
 _Yangilanishlarning toʻliq roʻyxatini “Maslahat” tugmasidagi “Haqida” navigatsiya bandi orqali koʻrish mumkin._
 
+### 5.8.0
+- Excel `XLSX` fayliga eksport qiling
+- Turli vaqt jadvallari: haftalik, oylik, yillik
+- Hafta va oyning moslashtirilgan boshlanish kuni
+
 ### 5.7.0
 - Veb-versiya uchun saqlashni yaxshilash
 - Golland (NL) va koreys (KO) tillarini qo'shish

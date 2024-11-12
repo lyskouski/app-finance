@@ -215,7 +215,7 @@ class AccountAddPageState<T extends AccountAddPage> extends AbstractAddPageState
               chunk: const [20, null],
               children: [
                 [Checkbox(value: skip, onChanged: (value) => setState(() => skip = value!))],
-                [TextWrapper(AppLocale.labels.skipFromTotals)],
+                [ThemeHelper.hIndent05, TextWrapper(AppLocale.labels.skipFromTotals)],
               ],
             ),
             ThemeHelper.hIndent2x,

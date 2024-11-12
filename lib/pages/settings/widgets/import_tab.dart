@@ -8,6 +8,7 @@ import 'package:app_finance/_classes/storage/file_parser.dart';
 import 'package:app_finance/_classes/storage/file_picker.dart';
 import 'package:app_finance/_classes/storage/transaction_log.dart';
 import 'package:app_finance/_classes/controller/focus_controller.dart';
+import 'package:app_finance/_classes/storage/transaction_log/export_excel.dart';
 import 'package:app_finance/design/form/list_selector_item.dart';
 import 'package:app_finance/_classes/structure/interface_app_data.dart';
 import 'package:app_finance/_classes/controller/date_format_helper.dart';
@@ -107,6 +108,15 @@ class ImportTabState extends State<ImportTab> {
     }
     await state.restate();
     setState(() => fileContent = null);
+  }
+
+  Future<void> exportFile() async {
+    try {
+      final file = ExportExcel(state);
+      await file.exportAll();
+    } catch (e) {
+      setState(() => errorMessage.writeln(e.toString()));
+    }
   }
 
   Future<void> wrapCall(Function callback) async {
@@ -245,7 +255,7 @@ class ImportTabState extends State<ImportTab> {
                     ),
                   ),
                 ]),
-              ] else
+              ] else ...[
                 ...List<Widget>.generate(FilePicker.fileFormats.length * 2, (index) {
                   if (index % 2 == 0) {
                     return ThemeHelper.hIndent2x;
@@ -263,7 +273,22 @@ class ImportTabState extends State<ImportTab> {
                       ),
                     );
                   }
-                })
+                }),
+                ThemeHelper.hIndent2x,
+                const Divider(),
+                ThemeHelper.hIndent2x,
+                SizedBox(
+                  width: double.infinity,
+                  child: FloatingActionButton(
+                    heroTag: 'export_tab_pick_xlsx',
+                    onPressed: () => wrapCall(() => exportFile()),
+                    tooltip: AppLocale.labels.exportFile('xlsx'),
+                    child: Text(
+                      AppLocale.labels.exportFile('xlsx'),
+                    ),
+                  ),
+                ),
+              ]
             ],
           ),
         ),

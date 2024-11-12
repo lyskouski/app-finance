@@ -257,7 +257,7 @@ class BudgetAddPageState<T extends BudgetAddPage> extends AbstractAddPageState<T
               chunk: const [20, null],
               children: [
                 [Checkbox(value: skip, onChanged: (value) => setState(() => skip = value!))],
-                [TextWrapper(AppLocale.labels.skipFromTotals)],
+                [ThemeHelper.hIndent05, TextWrapper(AppLocale.labels.skipFromTotals)],
               ],
             ),
             ThemeHelper.hIndent2x,
