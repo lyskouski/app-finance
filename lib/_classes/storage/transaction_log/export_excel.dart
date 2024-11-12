@@ -54,6 +54,7 @@ class ExportExcel with FileExportMixin {
   _addHeader(String name) {
     final sheet = excel[name];
     sheet.appendRow([
+      TextCellValue(AppLocale.labels.uuid),
       TextCellValue(AppLocale.labels.balanceDate),
       TextCellValue(AppLocale.labels.flowTypeTooltip),
       TextCellValue(AppLocale.labels.title),
@@ -75,11 +76,13 @@ class ExportExcel with FileExportMixin {
     sheet.cell(CellIndex.indexByString("F1")).cellStyle = cellStyle;
     sheet.cell(CellIndex.indexByString("G1")).cellStyle = cellStyle;
     sheet.cell(CellIndex.indexByString("H1")).cellStyle = cellStyle;
+    sheet.cell(CellIndex.indexByString("I1")).cellStyle = cellStyle;
   }
 
   void _addInvoiceRow(String name, InvoiceAppData data) {
     final sheet = excel[name];
     sheet.appendRow([
+      TextCellValue(data.uuid ?? '?'),
       DateTimeCellValue.fromDateTime(data.createdAt),
       TextCellValue(AppLocale.labels.flowTypeInvoice),
       TextCellValue(data.title),
@@ -94,11 +97,12 @@ class ExportExcel with FileExportMixin {
   void _addBillRow(String name, BillAppData data) {
     final sheet = excel[name];
     sheet.appendRow([
+      TextCellValue(data.uuid ?? '?'),
       DateTimeCellValue.fromDateTime(data.createdAt),
       TextCellValue(AppLocale.labels.bill),
       TextCellValue(data.title),
       TextCellValue(data.accountNamed),
-      TextCellValue(state.getByUuid(data.category)?.title),
+      TextCellValue(state.getByUuid(data.category)?.title ?? '?'),
       TextCellValue(data.currency?.code ?? '?'),
       DoubleCellValue(data.details),
       DoubleCellValue(exchange.reform(data.details ?? 0.0, data.currency, exchange.getDefaultCurrency())),
