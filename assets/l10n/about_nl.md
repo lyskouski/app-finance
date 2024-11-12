@@ -41,6 +41,8 @@ Dat stelt gebruikers in staat om moeiteloos hun financiën te beheren en zorgt e
     - Configureerbare limieten per maand
     - Relaties (0,0 ... 1,0) tot Inkomen
   - Of, zonder beperkingen door een uitgegeven bedrag te tonen
+  - Verschillende tijdlijn: wekelijks, maandelijks, jaarlijks
+  - Aanpasbare startdag van de week en maand
 - Rekeningen, overschrijvingen, inkomsten (facturen)
 - Doelen definiëren
 - Wisselkoersen, standaardvaluta voor overzicht
@@ -60,6 +62,7 @@ Dat stelt gebruikers in staat om moeiteloos hun financiën te beheren en zorgt e
 - Synchronisatie tussen apparaten (P2P) 
 - Herstel via WebDav of een direct bestand
 - Importeren uit `CSV`, `QIF`, `OFX` bestanden voor rekeningen en facturen
+- Exporteren naar Excel `XLSX`-bestand
 - Gegevensencryptie
 - Lokalisatie
 - Gebruikerservaring

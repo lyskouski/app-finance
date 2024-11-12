@@ -41,6 +41,8 @@ Elle permet aux utilisateurs de gérer leurs finances sans effort, tout en veill
     - Limites configurables par mois
     - Relatives (0.0 ... 1.0) au revenu
   - Ou, sans limites en affichant un montant dépensé
+  - Différents calendriers : hebdomadaire, mensuel, annuel
+  - Jour de début de la semaine et du mois personnalisable
 - Factures, transferts, revenus (factures)
 - Définition des objectifs
 - Taux de change, devise par défaut pour le résumé
@@ -59,7 +61,8 @@ Elle permet aux utilisateurs de gérer leurs finances sans effort, tout en veill
   - Graphique historique des devises
 - Synchronisation entre appareils (P2P) 
 - Récupération via WebDav ou un fichier direct
-- Importation à partir de fichiers CSV, QIF, OFX pour les factures.
+- Importation à partir de fichiers CSV, QIF, OFX pour les factures
+- Export vers un fichier Excel `XLSX`
 - Cryptage des données
 - Localisation des données
 - Expérience utilisateur

@@ -33,8 +33,9 @@
         <li>Synchronization between devices (P2P) </li>
         <li>Recovery via WebDav or a direct File</li>
         <li>Import from CSV, QIF, OFX files for Bills and Invoices</li>
+        <li>Export to Excel (XLSX) file</li>
         <li>Data encryption</li>
-        <li>Localizations: EN, BE, PL, PT, FR, DE, UK, ZH, HI, UZ, FA, AR, AZ, JA, ES, IT, TR</li>
+        <li>Localizations: EN, BE, PL, PT, FR, DE, UK, ZH, HI, UZ, FA, AR, AZ, JA, ES, IT, TR, KO, NL</li>
         <li>Responsive and Adaptive Design</li>
         <li>Shortcuts</li>
     </ul>

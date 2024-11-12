@@ -41,6 +41,8 @@ Que permita a los usuarios gestionar sus finanzas sin esfuerzo, garantizando al 
     - Límites configurables por mes
     - Relativos (0.0 ... 1.0) a los Ingresos
   - O, sin limitaciones mostrando un importe gastado
+  - Diferentes cronogramas: semanal, mensual, anual
+  - Día de inicio de la semana y del mes personalizable
 - Facturas, Transferencias, Ingresos (Facturas)
 - Definición de Metas
 - Tipos de cambio, Moneda por defecto para el resumen
@@ -60,6 +62,7 @@ Que permita a los usuarios gestionar sus finanzas sin esfuerzo, garantizando al 
 - Sincronización entre dispositivos (P2P) 
 - Recuperación mediante WebDav o un archivo directo
 - Importación desde archivos `CSV`, `QIF`, `OFX` para recibos y facturas
+- Exportación a archivo Excel `XLSX`
 - Encriptación de datos
 - Localización
 - Experiencia de usuario

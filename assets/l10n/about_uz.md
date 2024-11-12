@@ -41,6 +41,8 @@ Bu foydalanuvchilarga o'z mablag'larini osonlikcha boshqarish imkoniyatini berad
     - Oyiga sozlanishi mumkin bo'lgan chegaralar
     - Qarindoshlar (0,0 ... 1,0) Daromadga
   - Yoki, sarflangan miqdorni ko'rsatish orqali cheklovlarsiz
+  - Turli vaqt jadvallari: haftalik, oylik, yillik
+  - Hafta va oyning moslashtirilgan boshlanish kuni
 - Hisob-kitoblar, o'tkazmalar, daromadlar (hisob-kitoblar)
 - Maqsadlarni aniqlash
 - Valyuta kurslari, Xulosa uchun standart valyuta
@@ -60,6 +62,7 @@ Bu foydalanuvchilarga o'z mablag'larini osonlikcha boshqarish imkoniyatini berad
 - Qurilmalar o'rtasida sinxronizatsiya (P2P)
 - WebDav yoki to'g'ridan-to'g'ri fayl orqali tiklash
 - Hisob va hisob-fakturalar uchun `CSV`, `QIF`, `OFX` fayllaridan import qilish
+- Excel `XLSX` fayliga eksport qiling
 - Ma'lumotlarni shifrlash
 - Mahalliylashtirish
 - Foydalanuvchi tajribasi

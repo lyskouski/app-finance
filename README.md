@@ -34,16 +34,18 @@ That empowers users to effortlessly manage their finances while ensuring that no
 
 ## Functionality
 - Accounting (Account Type, Currency/Cryptocurrency)
-  - Simple grouping via `/` (in name) for the main page
+  - Simple grouping via `/`-symbol (in name) for the main page
   - Transactions log
   - Freeze amount by Update date (to import previous history)
 - Budget Categories
-  - Simple grouping via `/` (in name) for the main page
+  - Simple grouping via `/`-symbol (in name) for the main page
   - With limits restate:
     - Renewed at the beginning of each month
     - Configurable limits per month
     - Relatives (0.0 ... 1.0) to Income
   - Or, without limitations by showing a spent amount
+  - Different timeline: weekly, monthly, yearly
+  - Customizable start day of the week and month
 - Bills, Transfers, Incomes (Invoices)
 - Goals Definition
 - Exchange rates, Default Currency for Summary
@@ -63,6 +65,7 @@ That empowers users to effortlessly manage their finances while ensuring that no
 - [[demo]](https://youtu.be/RccQ8JpfJs4) Synchronization between devices (P2P) 
 - Recovery via WebDav or a direct File
 - Import from `CSV`, `QIF`, `OFX` files for Bills and Invoices
+- Export to Excel `XLSX` file
 - Data encryption
 - Localization
 - User Experience
