@@ -303,6 +303,7 @@
     "parseFile": "Parse .csv-Datei",
     "password": "Kennwort",
     "path": "Dateiname (zum Speichern oder Laden von)",
+    "paymentsHeadline": "Wiederkehrende Zahlungen",
     "pearDisabled": "-- deaktiviert --",
     "pearLoading": "In Bearbeitung...",
     "peerAccept": "akzeptieren",

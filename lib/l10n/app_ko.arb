@@ -303,6 +303,7 @@
     "parseFile": ".csv 파일 구문 분석",
     "password": "비밀번호",
     "path": "파일 이름(저장 또는 로드할 파일 이름)",
+    "paymentsHeadline": "정기 결제",
     "pearDisabled": "-- 비활성화됨 --",
     "pearLoading": "진행 중...",
     "peerAccept": "수락",

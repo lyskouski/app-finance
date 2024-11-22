@@ -303,6 +303,7 @@
     "parseFile": ".csv-bestand parsen",
     "password": "Wachtwoord",
     "path": "Bestandsnaam (om in op te slaan of om uit te laden)",
+    "paymentsHeadline": "Terugkerende betalingen",
     "pearDisabled": "`-- uitgeschakeld --",
     "pearLoading": "In uitvoering...",
     "peerAccept": "accepteren",

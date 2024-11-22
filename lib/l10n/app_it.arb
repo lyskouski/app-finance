@@ -303,6 +303,7 @@
     "parseFile": "Analizza il file .csv",
     "password": "Password",
     "path": "Nome del file (da salvare o caricare)",
+    "paymentsHeadline": "Pagamenti ricorrenti",
     "pearDisabled": "-- disabilitato --",
     "pearLoading": "In corso...",
     "peerAccept": "accettare",

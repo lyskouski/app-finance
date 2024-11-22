@@ -303,6 +303,7 @@
     "parseFile": ".csv faylini tahlil qilish",
     "password": "Parol",
     "path": "Fayl nomi (saqlash yoki undan yuklash uchun)",
+    "paymentsHeadline": "Takroriy to'lovlar",
     "pearDisabled": "-- nogiron --",
     "pearLoading": "Jarayonda...",
     "peerAccept": "qabul qilish",

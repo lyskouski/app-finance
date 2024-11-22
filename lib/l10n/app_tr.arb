@@ -303,6 +303,7 @@
     "parseFile": ".csv dosyasını ayrıştır",
     "password": "Şifre",
     "path": "Dosya Adı (içine kaydetmek veya içinden yüklemek için)",
+    "paymentsHeadline": "Yinelenen Ödemeler",
     "pearDisabled": "-- devre dışı --",
     "pearLoading": "Devam Ediyor...",
     "peerAccept": "kabul et",

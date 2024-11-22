@@ -303,6 +303,7 @@
     "parseFile": ".csvファイルの解析",
     "password": "パスワード",
     "path": "ファイル名（保存先、読み込み元）",
+    "paymentsHeadline": "定期的な支払い",
     "pearDisabled": "無効",
     "pearLoading": "進行中",
     "peerAccept": "受け付ける",

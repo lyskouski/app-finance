@@ -303,6 +303,7 @@
     "parseFile": ".csv faylını təhlil edin",
     "password": "parol",
     "path": "Fayl adı (saxlamaq və ya yükləmək üçün)",
+    "paymentsHeadline": "Təkrarlanan ödənişlər",
     "pearDisabled": "-- əlil --",
     "pearLoading": "Davam edir...",
     "peerAccept": "qəbul et",

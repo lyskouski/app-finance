@@ -303,6 +303,7 @@
     "parseFile": "解析 .csv 檔案",
     "password": "密碼",
     "path": "檔案名稱 (儲存至檔案，或從檔案載入)",
+    "paymentsHeadline": "循環付款",
     "pearDisabled": "-- 已停用 --",
     "pearLoading": "進行中...",
     "peerAccept": "接受",

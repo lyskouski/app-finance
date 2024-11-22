@@ -303,6 +303,7 @@
     "parseFile": "Розібрати .csv-файл",
     "password": "Пароль",
     "path": "Ім'я файла (щоб зберегти або завантажити з)",
+    "paymentsHeadline": "Періодичні платежі",
     "pearDisabled": "-- відключений --",
     "pearLoading": "У процесі...",
     "peerAccept": "прийняти",

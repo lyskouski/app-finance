@@ -303,6 +303,7 @@
     "parseFile": "فایل csv. را تجزیه کنید",
     "password": "کلمه عبور",
     "path": "نام فایل (برای ذخیره یا بارگیری از)",
+    "paymentsHeadline": "پرداخت های مکرر",
     "pearDisabled": "-- معلول --",
     "pearLoading": "در حال پیش رفت...",
     "peerAccept": "تایید کنید",

@@ -13,13 +13,17 @@ import 'package:app_finance/design/wrapper/row_widget.dart';
 import 'package:app_finance/design/wrapper/table_widget.dart';
 import 'package:app_finance/design/wrapper/text_wrapper.dart';
 import 'package:app_finance/design/generic/loading_widget.dart';
+import 'package:app_finance/pages/_interfaces/interface_page_inject.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 class SyncTab extends StatefulWidget {
+  final FnPageCallback callback;
+
   const SyncTab({
     super.key,
+    required this.callback,
   });
 
   @override
@@ -33,6 +37,16 @@ class SyncTabState extends State<SyncTab> {
   late AppData dataProvider;
   List<String> request = [];
   bool loading = false;
+
+  @override
+  void initState() {
+    widget.callback((
+      buildButton: (_, __) => ThemeHelper.emptyBox,
+      buttonName: '',
+      title: AppLocale.labels.syncHeadline,
+    ));
+    super.initState();
+  }
 
   @override
   void dispose() {
