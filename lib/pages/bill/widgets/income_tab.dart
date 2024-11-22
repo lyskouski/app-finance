@@ -15,7 +15,7 @@ import 'package:app_finance/_configs/theme_helper.dart';
 import 'package:app_finance/_ext/build_context_ext.dart';
 import 'package:app_finance/_ext/double_ext.dart';
 import 'package:app_finance/design/wrapper/input_wrapper.dart';
-import 'package:app_finance/pages/bill/widgets/interface_bill_page_inject.dart';
+import 'package:app_finance/pages/_interfaces/interface_page_inject.dart';
 import 'package:app_finance/design/form/currency_exchange_input.dart';
 import 'package:app_finance/design/form/date_time_input.dart';
 import 'package:app_finance/design/button/full_sized_button_widget.dart';
@@ -33,7 +33,7 @@ class IncomeTab<T> extends StatefulWidget {
   final DateTime? createdAt;
   final AppData state;
   final bool isLeft;
-  final FnBillPageCallback callback;
+  final FnPageCallback callback;
 
   const IncomeTab({
     super.key,
