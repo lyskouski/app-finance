@@ -4,6 +4,7 @@
 import 'package:app_finance/_classes/controller/focus_controller.dart';
 import 'package:app_finance/_classes/herald/app_design.dart';
 import 'package:app_finance/_classes/herald/app_locale.dart';
+import 'package:app_finance/_classes/structure/payment_app_data.dart';
 import 'package:app_finance/_configs/budget_type.dart';
 import 'package:app_finance/_configs/payment_type.dart';
 import 'package:app_finance/_configs/screen_helper.dart';
@@ -30,8 +31,8 @@ class PaymentAddPageState extends AbstractAddPageState<PaymentAddPage> {
   String? itemType;
   String? intervalType;
   final GlobalKey<ExpensesTabState> _expensesTabKey = GlobalKey();
-  final GlobalKey<ExpensesTabState> _incomeTabKey = GlobalKey();
-  final GlobalKey<ExpensesTabState> _transferTabKey = GlobalKey();
+  final GlobalKey<IncomeTabState> _incomeTabKey = GlobalKey();
+  final GlobalKey<TransferTabState> _transferTabKey = GlobalKey();
 
   @override
   void initState() {
@@ -64,6 +65,17 @@ class PaymentAddPageState extends AbstractAddPageState<PaymentAddPage> {
   String getTitle() => AppLocale.labels.paymentsHeadline;
 
   @override
+  void triggerActionButton(NavigatorState nav) {
+    setState(() {
+      if (hasFormErrors()) {
+        return;
+      }
+      updateStorage();
+      nav.pop();
+    });
+  }
+
+  @override
   bool hasFormErrors() {
     setState(() => hasErrors = itemType == null || intervalType == null);
     return hasErrors;
@@ -81,6 +93,12 @@ class PaymentAddPageState extends AbstractAddPageState<PaymentAddPage> {
     if (itemType == AppPaymentType.transfer.name) {
       values = _transferTabKey.currentState?.getValues();
     }
+    values?.setState(state);
+    state.add(PaymentAppData(
+      title: intervalType ?? AppBudgetType.month.name,
+      data: values.toFile(),
+      updatedAt: values.createdAt,
+    ));
   }
 
   @override

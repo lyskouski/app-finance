@@ -18,6 +18,7 @@ import 'package:app_finance/_classes/structure/currency/exchange.dart';
 import 'package:app_finance/_classes/structure/goal_app_data.dart';
 import 'package:app_finance/_classes/structure/interface_app_data.dart';
 import 'package:app_finance/_classes/structure/invoice_app_data.dart';
+import 'package:app_finance/_classes/structure/payment_app_data.dart';
 import 'package:app_finance/_classes/structure/summary_app_data.dart';
 import 'package:app_finance/_classes/math/total_recalculation.dart';
 import 'package:app_finance/_classes/storage/transaction_log.dart';
@@ -32,6 +33,7 @@ enum AppDataType {
   budgets,
   currencies,
   invoice,
+  payments,
 }
 
 typedef AppDataGetter = ({
@@ -153,6 +155,9 @@ class AppData extends ChangeNotifier {
         (change as InvoiceAppData).setState(this);
         _updateInvoice(initial as InvoiceAppData?, change);
         break;
+      case AppDataType.payments:
+        _updatePayment(initial as PaymentAppData?, change as PaymentAppData);
+        break;
     }
   }
 
@@ -243,6 +248,10 @@ class AppData extends ChangeNotifier {
     if (!isLoading) {
       updateTotals(AppDataType.values).then(_notify);
     }
+  }
+
+  void _updatePayment(PaymentAppData? initial, PaymentAppData change) {
+    _set(AppDataType.payments, change);
   }
 
   AppDataGetter get(AppDataType property) {
