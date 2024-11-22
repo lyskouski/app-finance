@@ -304,6 +304,7 @@
     "parseFile": "Analyser le fichier .csv",
     "password": "Mot de passe",
     "path": "Nom du fichier (à enregistrer ou à charger)",
+    "paymentType": "Intervalle de paiement",
     "paymentsHeadline": "Paiements récurrents",
     "pearDisabled": "-- désactivé --",
     "pearLoading": "En cours...",

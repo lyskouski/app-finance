@@ -304,6 +304,7 @@
     "parseFile": "Parse .csv-file",
     "password": "Password",
     "path": "File Name (to save into, or load from)",
+    "paymentType": "Payment Interval",
     "paymentsHeadline": "Recurring Payments",
     "pearDisabled": "-- disabled --",
     "pearLoading": "In Progress...",

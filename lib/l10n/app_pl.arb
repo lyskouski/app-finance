@@ -304,6 +304,7 @@
     "parseFile": "Parsuj plik .csv",
     "password": "Hasło",
     "path": "Nazwa pliku (do zapisania lub wczytania)",
+    "paymentType": "Przedział płatności",
     "paymentsHeadline": "Płatności cykliczne",
     "pearDisabled": "-- wyłączone --",
     "pearLoading": "W toku...",

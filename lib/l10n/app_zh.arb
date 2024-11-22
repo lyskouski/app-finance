@@ -304,6 +304,7 @@
     "parseFile": "解析 .csv 文件",
     "password": "密码",
     "path": "文件名（保存到其中或从其中加载）",
+    "paymentType": "付款间隔",
     "paymentsHeadline": "经常性付款",
     "pearDisabled": "-- 禁用",
     "pearLoading": "进行中...",

@@ -304,6 +304,7 @@
     "parseFile": "पार्स .csv फ़ाइल",
     "password": "पासवर्ड",
     "path": "फ़ाइल नाम (सेव करने या लोड करने के लिए)",
+    "paymentType": "भुगतान अंतराल",
     "paymentsHeadline": "आवर्ती भुगतान",
     "pearDisabled": "-- अक्षम --",
     "pearLoading": "प्रगति पर है...",

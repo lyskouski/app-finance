@@ -189,33 +189,35 @@ class ExpensesTabState<T extends ExpensesTab> extends State<T> {
               }),
               width: width,
             ),
-            RowWidget(
-              indent: indent,
-              maxWidth: width + indent,
-              chunk: const [125, null],
-              children: [
-                [
-                  InputWrapper.currency(
-                    type: NamedInputType.currencyShort,
-                    value: currency,
-                    title: AppLocale.labels.currency,
-                    tooltip: AppLocale.labels.currencyTooltip,
-                    onChange: (value) => setState(() => currency = value),
-                  ),
+            LayoutBuilder(builder: (context, constraints) {
+              return RowWidget(
+                indent: indent,
+                maxWidth: constraints.maxWidth,
+                chunk: const [125, null],
+                children: [
+                  [
+                    InputWrapper.currency(
+                      type: NamedInputType.currencyShort,
+                      value: currency,
+                      title: AppLocale.labels.currency,
+                      tooltip: AppLocale.labels.currencyTooltip,
+                      onChange: (value) => setState(() => currency = value),
+                    ),
+                  ],
+                  [
+                    InputWrapper.text(
+                      title: AppLocale.labels.expense,
+                      isRequired: true,
+                      controller: bill,
+                      showError: hasErrors && bill.text.isEmpty,
+                      tooltip: AppLocale.labels.billSetTooltip,
+                      inputType: const TextInputType.numberWithOptions(decimal: true),
+                      formatter: [SimpleInputFormatter.filterDouble],
+                    ),
+                  ],
                 ],
-                [
-                  InputWrapper.text(
-                    title: AppLocale.labels.expense,
-                    isRequired: true,
-                    controller: bill,
-                    showError: hasErrors && bill.text.isEmpty,
-                    tooltip: AppLocale.labels.billSetTooltip,
-                    inputType: const TextInputType.numberWithOptions(decimal: true),
-                    formatter: [SimpleInputFormatter.filterDouble],
-                  ),
-                ],
-              ],
-            ),
+              );
+            }),
             CurrencyExchangeInput(
               key: ValueKey('expense${currency?.code}${accountCurrency?.code}${budgetCurrency?.code}'),
               width: width + indent,
@@ -250,11 +252,13 @@ class ExpensesTabState<T extends ExpensesTab> extends State<T> {
               AppLocale.labels.expenseDateTime,
               style: textTheme.bodyLarge,
             ),
-            DateTimeInput(
-              width: width,
-              value: createdAt ?? DateTime.now(),
-              setState: (value) => setState(() => createdAt = value),
-            ),
+            LayoutBuilder(builder: (context, constraints) {
+              return DateTimeInput(
+                width: constraints.maxWidth - indent,
+                value: createdAt ?? DateTime.now(),
+                setState: (value) => setState(() => createdAt = value),
+              );
+            }),
             ThemeHelper.formEndBox,
           ],
         ),

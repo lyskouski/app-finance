@@ -304,6 +304,7 @@
     "parseFile": ".csv faylini tahlil qilish",
     "password": "Parol",
     "path": "Fayl nomi (saqlash yoki undan yuklash uchun)",
+    "paymentType": "To'lov oralig'i",
     "paymentsHeadline": "Takroriy to'lovlar",
     "pearDisabled": "-- nogiron --",
     "pearLoading": "Jarayonda...",

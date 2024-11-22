@@ -186,33 +186,35 @@ class TransferTabState<T extends TransferTab> extends State<T> {
               }),
               width: width,
             ),
-            RowWidget(
-              indent: indent,
-              maxWidth: width + indent,
-              chunk: const [125, null],
-              children: [
-                [
-                  InputWrapper.currency(
-                    type: NamedInputType.currencyShort,
-                    value: currency,
-                    title: AppLocale.labels.currency,
-                    tooltip: AppLocale.labels.currencyTooltip,
-                    onChange: (value) => setState(() => currency = value),
-                  ),
+            LayoutBuilder(builder: (context, constraints) {
+              return RowWidget(
+                indent: indent,
+                maxWidth: constraints.maxWidth,
+                chunk: const [125, null],
+                children: [
+                  [
+                    InputWrapper.currency(
+                      type: NamedInputType.currencyShort,
+                      value: currency,
+                      title: AppLocale.labels.currency,
+                      tooltip: AppLocale.labels.currencyTooltip,
+                      onChange: (value) => setState(() => currency = value),
+                    ),
+                  ],
+                  [
+                    InputWrapper.text(
+                      title: AppLocale.labels.expenseTransfer,
+                      tooltip: AppLocale.labels.billSetTooltip,
+                      controller: amount,
+                      inputType: const TextInputType.numberWithOptions(decimal: true),
+                      formatter: [
+                        SimpleInputFormatter.filterDouble,
+                      ],
+                    ),
+                  ],
                 ],
-                [
-                  InputWrapper.text(
-                    title: AppLocale.labels.expenseTransfer,
-                    tooltip: AppLocale.labels.billSetTooltip,
-                    controller: amount,
-                    inputType: const TextInputType.numberWithOptions(decimal: true),
-                    formatter: [
-                      SimpleInputFormatter.filterDouble,
-                    ],
-                  ),
-                ],
-              ],
-            ),
+              );
+            }),
             CurrencyExchangeInput(
               key: ValueKey('transfer${currency?.code}${accountFromCurrency?.code}${accountToCurrency?.code}'),
               width: width + indent,
@@ -230,11 +232,13 @@ class TransferTabState<T extends TransferTab> extends State<T> {
               AppLocale.labels.balanceDate,
               style: textTheme.bodyLarge,
             ),
-            DateTimeInput(
-              width: width,
-              value: createdAt,
-              setState: (value) => setState(() => createdAt = value),
-            ),
+            LayoutBuilder(builder: (context, constraints) {
+              return DateTimeInput(
+                width: constraints.maxWidth - indent,
+                value: createdAt,
+                setState: (value) => setState(() => createdAt = value),
+              );
+            }),
             ThemeHelper.formEndBox,
           ],
         ),

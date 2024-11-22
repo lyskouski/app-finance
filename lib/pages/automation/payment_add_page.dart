@@ -4,14 +4,16 @@
 import 'package:app_finance/_classes/controller/focus_controller.dart';
 import 'package:app_finance/_classes/herald/app_design.dart';
 import 'package:app_finance/_classes/herald/app_locale.dart';
+import 'package:app_finance/_configs/budget_type.dart';
 import 'package:app_finance/_configs/payment_type.dart';
 import 'package:app_finance/_configs/theme_helper.dart';
-import 'package:app_finance/_ext/build_context_ext.dart';
 import 'package:app_finance/design/button/full_sized_button_widget.dart';
-import 'package:app_finance/design/form/list_selector.dart';
-import 'package:app_finance/design/form/list_selector_item.dart';
+import 'package:app_finance/design/wrapper/input_wrapper.dart';
 import 'package:app_finance/design/wrapper/single_scroll_wrapper.dart';
 import 'package:app_finance/pages/_interfaces/abstract_add_page.dart';
+import 'package:app_finance/pages/bill/widgets/expenses_tab.dart';
+import 'package:app_finance/pages/bill/widgets/income_tab.dart';
+import 'package:app_finance/pages/bill/widgets/transfer_tab.dart';
 import 'package:flutter/material.dart';
 
 class PaymentAddPage extends AbstractAddPage {
@@ -24,6 +26,7 @@ class PaymentAddPage extends AbstractAddPage {
 class PaymentAddPageState extends AbstractAddPageState<PaymentAddPage> {
   late FocusController focus;
   String? itemType;
+  String? intervalType;
 
   @override
   void initState() {
@@ -69,24 +72,35 @@ class PaymentAddPageState extends AbstractAddPageState<PaymentAddPage> {
   @override
   Widget buildContent(BuildContext context, BoxConstraints constraints) {
     double indent = ThemeHelper.getIndent(2);
-    final textTheme = context.textTheme;
     return SingleScrollWrapper(
       controller: focus,
       child: Container(
-        margin: EdgeInsets.fromLTRB(indent, indent, indent, 240),
+        margin: EdgeInsets.fromLTRB(indent, indent, indent, indent),
         child: Column(
           crossAxisAlignment: AppDesign.getAlignment(),
           children: [
-            Text(
-              AppLocale.labels.billTypeTooltip,
-              style: textTheme.bodyLarge,
-            ),
-            ListSelector<ListSelectorItem>(
-              value: itemType != null ? ListSelectorItem(id: itemType!, name: '') : null,
-              hintText: AppLocale.labels.billTypeTooltip,
+            InputWrapper.select(
+              isRequired: true,
+              value: itemType,
+              title: AppLocale.labels.billTypeTooltip,
+              tooltip: AppLocale.labels.billTypeTooltip,
+              showError: hasError && itemType == null,
               options: PaymentType.getList(),
-              setState: (value) => setState(() => itemType = value?.id),
+              onChange: (value) => setState(() => itemType = value),
             ),
+            InputWrapper.select(
+              isRequired: true,
+              value: intervalType,
+              title: AppLocale.labels.paymentType,
+              tooltip: AppLocale.labels.paymentType,
+              showError: hasError && intervalType == null,
+              options: BudgetType.getList(),
+              onChange: (value) => setState(() => intervalType = value),
+            ),
+            const Divider(),
+            if (itemType == AppPaymentType.bill.name) ExpensesTab(state: state, callback: (_) => null),
+            if (itemType == AppPaymentType.invoice.name) IncomeTab(state: state, callback: (_) => null),
+            if (itemType == AppPaymentType.transfer.name) TransferTab(state: state, callback: (_) => null),
           ],
         ),
       ),

@@ -304,6 +304,7 @@
     "parseFile": "فایل csv. را تجزیه کنید",
     "password": "کلمه عبور",
     "path": "نام فایل (برای ذخیره یا بارگیری از)",
+    "paymentType": "فاصله پرداخت",
     "paymentsHeadline": "پرداخت های مکرر",
     "pearDisabled": "-- معلول --",
     "pearLoading": "در حال پیش رفت...",

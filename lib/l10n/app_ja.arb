@@ -304,6 +304,7 @@
     "parseFile": ".csvファイルの解析",
     "password": "パスワード",
     "path": "ファイル名（保存先、読み込み元）",
+    "paymentType": "支払い間隔",
     "paymentsHeadline": "定期的な支払い",
     "pearDisabled": "無効",
     "pearLoading": "進行中",
