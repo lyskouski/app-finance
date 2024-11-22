@@ -101,18 +101,19 @@ class IncomeTabState<T extends IncomeTab> extends State<IncomeTab> {
   }
 
   void updateStorage() {
-    String uuid = account ?? '';
-    AppPreferences.set(AppPreferences.prefAccount, uuid);
+    AppPreferences.set(AppPreferences.prefAccount, account ?? '');
     exchange.save();
-    widget.state.add(InvoiceAppData(
-      title: description.text,
-      color: widget.state.getByUuid(uuid)?.color,
-      account: uuid,
-      details: double.tryParse(amount.text)?.toFixed(currency?.decimalDigits) ?? 0.0,
-      currency: currency,
-      createdAt: createdAt,
-    ));
+    widget.state.add(getValues());
   }
+
+  InvoiceAppData getValues() => InvoiceAppData(
+        title: description.text,
+        color: widget.state.getByUuid(account ?? '')?.color,
+        account: account ?? '',
+        details: double.tryParse(amount.text)?.toFixed(currency?.decimalDigits) ?? 0.0,
+        currency: currency,
+        createdAt: createdAt,
+      );
 
   String getButtonName() => AppLocale.labels.createIncomeTooltip;
 

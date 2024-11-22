@@ -102,18 +102,19 @@ class TransferTabState<T extends TransferTab> extends State<T> {
   String getTitle() => AppLocale.labels.createBillHeader;
 
   void updateStorage() {
-    final uuid = accountFrom ?? '';
     exchange.save();
-    widget.state.add(InvoiceAppData(
-      title: description.text,
-      color: widget.state.getByUuid(uuid)?.color,
-      account: accountTo ?? '',
-      accountFrom: uuid,
-      details: double.tryParse(amount.text)?.toFixed(currency?.decimalDigits) ?? 0.0,
-      currency: currency,
-      createdAt: createdAt,
-    ));
+    widget.state.add(getValues());
   }
+
+  InvoiceAppData getValues() => InvoiceAppData(
+        title: description.text,
+        color: widget.state.getByUuid(accountFrom ?? '')?.color,
+        account: accountTo ?? '',
+        accountFrom: accountFrom ?? '',
+        details: double.tryParse(amount.text)?.toFixed(currency?.decimalDigits) ?? 0.0,
+        currency: currency,
+        createdAt: createdAt,
+      );
 
   String getButtonName() => AppLocale.labels.createTransferTooltip;
 

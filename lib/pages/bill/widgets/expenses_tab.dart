@@ -124,10 +124,10 @@ class ExpensesTabState<T extends ExpensesTab> extends State<T> {
       CurrencyProvider.pin(currency!);
     }
     exchange.save();
-    widget.state.add(getState());
+    widget.state.add(getValues());
   }
 
-  BillAppData getState() => BillAppData(
+  BillAppData getValues() => BillAppData(
         account: account ?? '',
         category: budget ?? '',
         currency: currency,

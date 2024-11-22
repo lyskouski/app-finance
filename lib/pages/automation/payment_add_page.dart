@@ -26,6 +26,7 @@ class PaymentAddPage extends AbstractAddPage {
 
 class PaymentAddPageState extends AbstractAddPageState<PaymentAddPage> {
   late FocusController focus;
+  bool hasErrors = false;
   String? itemType;
   String? intervalType;
   final GlobalKey<ExpensesTabState> _expensesTabKey = GlobalKey();
@@ -64,13 +65,22 @@ class PaymentAddPageState extends AbstractAddPageState<PaymentAddPage> {
 
   @override
   bool hasFormErrors() {
-    return false;
+    setState(() => hasErrors = itemType == null || intervalType == null);
+    return hasErrors;
   }
 
   @override
   void updateStorage() {
-    // TODO: implement updateStorage
-    final values = _expensesTabKey.currentState?.getState();
+    dynamic values;
+    if (itemType == AppPaymentType.bill.name) {
+      values = _expensesTabKey.currentState?.getValues();
+    }
+    if (itemType == AppPaymentType.invoice.name) {
+      values = _incomeTabKey.currentState?.getValues();
+    }
+    if (itemType == AppPaymentType.transfer.name) {
+      values = _transferTabKey.currentState?.getValues();
+    }
   }
 
   @override
@@ -89,7 +99,7 @@ class PaymentAddPageState extends AbstractAddPageState<PaymentAddPage> {
               value: itemType,
               title: AppLocale.labels.billTypeTooltip,
               tooltip: AppLocale.labels.billTypeTooltip,
-              showError: hasError && itemType == null,
+              showError: hasErrors && itemType == null,
               options: PaymentType.getList(),
               onChange: (value) => setState(() => itemType = value),
             ),
@@ -98,7 +108,7 @@ class PaymentAddPageState extends AbstractAddPageState<PaymentAddPage> {
               value: intervalType,
               title: AppLocale.labels.paymentType,
               tooltip: AppLocale.labels.paymentType,
-              showError: hasError && intervalType == null,
+              showError: hasErrors && intervalType == null,
               options: BudgetType.getList(),
               onChange: (value) => setState(() => intervalType = value),
             ),
