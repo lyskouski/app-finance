@@ -30,13 +30,13 @@ class PaymentsTabState extends State<PaymentsTab> {
     super.initState();
   }
 
-  String getButtonName() => AppLocale.labels.createIncomeTooltip;
+  String getButtonName() => AppLocale.labels.createPaymentTooltip;
 
   Widget buildButton(BuildContext context, BoxConstraints constraints) {
     NavigatorState nav = Navigator.of(context);
     return FullSizedButtonWidget(
       constraints: constraints,
-      onPressed: () => nav.pushNamed(AppRoute.homeRoute),
+      onPressed: () => nav.pushNamed(AppRoute.automationPaymentRoute),
       title: getButtonName(),
       icon: Icons.add_alert_sharp,
     );

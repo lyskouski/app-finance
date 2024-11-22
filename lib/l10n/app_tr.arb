@@ -132,6 +132,7 @@
     "createGoalHeader": "Hedef Oluştur",
     "createGoalTooltip": "Yeni Hedef Ekle",
     "createIncomeTooltip": "Yeni Gelir Ekleme",
+    "createPaymentTooltip": "Yeni Ödeme Ekle",
     "createTransferTooltip": "Transfer Oluştur",
     "credit": "Kredi",
     "creditCard": "Kredi Kartı",

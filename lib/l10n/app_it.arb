@@ -132,6 +132,7 @@
     "createGoalHeader": "Crea obiettivo",
     "createGoalTooltip": "Aggiungi un nuovo obiettivo",
     "createIncomeTooltip": "Aggiungi nuove entrate",
+    "createPaymentTooltip": "Aggiungere un nuovo pagamento",
     "createTransferTooltip": "Crea trasferimento",
     "credit": "Credito",
     "creditCard": "Carta di credito",

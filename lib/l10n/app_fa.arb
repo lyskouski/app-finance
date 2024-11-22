@@ -132,6 +132,7 @@
     "createGoalHeader": "ایجاد هدف",
     "createGoalTooltip": "افزودن هدف جدید",
     "createIncomeTooltip": "افزودن درآمد جدید",
+    "createPaymentTooltip": "افزودن پرداخت جدید",
     "createTransferTooltip": "ایجاد انتقال",
     "credit": "اعتبار",
     "creditCard": "کارت اعتباری",

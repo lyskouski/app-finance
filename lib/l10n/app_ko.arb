@@ -132,6 +132,7 @@
     "createGoalHeader": "목표 만들기",
     "createGoalTooltip": "새 목표 추가",
     "createIncomeTooltip": "새 수입 추가",
+    "createPaymentTooltip": "새 결제 추가",
     "createTransferTooltip": "이체 생성",
     "credit": "크레딧",
     "creditCard": "신용 카드",

@@ -132,6 +132,7 @@
     "createGoalHeader": "Maqsad yaratish",
     "createGoalTooltip": "Yangi maqsad qo'shing",
     "createIncomeTooltip": "Yangi daromad qo'shing",
+    "createPaymentTooltip": "Yangi toʻlovni qoʻshish",
     "createTransferTooltip": "Transfer yaratish",
     "credit": "Credit",
     "creditCard": "Kredit kartasi",

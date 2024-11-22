@@ -132,6 +132,7 @@
     "createGoalHeader": "目標の作成",
     "createGoalTooltip": "新しい目標を追加する",
     "createIncomeTooltip": "新しい収入を追加する",
+    "createPaymentTooltip": "新規支払の追加",
     "createTransferTooltip": "譲渡",
     "credit": "クレジット",
     "creditCard": "クレジットカード",

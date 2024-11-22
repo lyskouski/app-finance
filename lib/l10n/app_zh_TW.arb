@@ -132,6 +132,7 @@
     "createGoalHeader": "建立目標",
     "createGoalTooltip": "新增目標",
     "createIncomeTooltip": "新增收入",
+    "createPaymentTooltip": "新增付款",
     "createTransferTooltip": "建立轉帳",
     "credit": "信貸",
     "creditCard": "信用卡",

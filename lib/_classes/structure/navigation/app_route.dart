@@ -15,6 +15,7 @@ abstract class AppRoute {
   static const String accountSearchRoute = '/app/finance/account/search';
   static const String accountEditRoute = '/app/finance/account/edit';
   static const String automationRoute = '/app/finance/automation';
+  static const String automationPaymentRoute = '/app/finance/automation/payment';
   static const String billRoute = '/app/finance/bill';
   static const String billAddRoute = '/app/finance/bill/add';
   static const String billViewRoute = '/app/finance/bill/view';

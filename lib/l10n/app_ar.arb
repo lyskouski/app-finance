@@ -132,6 +132,7 @@
     "createGoalHeader": "إنشاء هدف جديد",
     "createGoalTooltip": "إضافة هدف جديد",
     "createIncomeTooltip": "إضافة دخل جديد",
+    "createPaymentTooltip": "إضافة دفعة جديدة",
     "createTransferTooltip": "إنشاء تحويل",
     "credit": "ائتمان",
     "creditCard": "بطاقة ائتمان",
