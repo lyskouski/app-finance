@@ -6,6 +6,7 @@ import 'package:app_finance/_classes/herald/app_design.dart';
 import 'package:app_finance/_classes/herald/app_locale.dart';
 import 'package:app_finance/_configs/budget_type.dart';
 import 'package:app_finance/_configs/payment_type.dart';
+import 'package:app_finance/_configs/screen_helper.dart';
 import 'package:app_finance/_configs/theme_helper.dart';
 import 'package:app_finance/design/button/full_sized_button_widget.dart';
 import 'package:app_finance/design/wrapper/input_wrapper.dart';
@@ -27,6 +28,9 @@ class PaymentAddPageState extends AbstractAddPageState<PaymentAddPage> {
   late FocusController focus;
   String? itemType;
   String? intervalType;
+  final GlobalKey<ExpensesTabState> _expensesTabKey = GlobalKey();
+  final GlobalKey<ExpensesTabState> _incomeTabKey = GlobalKey();
+  final GlobalKey<ExpensesTabState> _transferTabKey = GlobalKey();
 
   @override
   void initState() {
@@ -60,18 +64,19 @@ class PaymentAddPageState extends AbstractAddPageState<PaymentAddPage> {
 
   @override
   bool hasFormErrors() {
-    // TODO: implement hasFormErrors
-    throw UnimplementedError();
+    return false;
   }
 
   @override
   void updateStorage() {
     // TODO: implement updateStorage
+    final values = _expensesTabKey.currentState?.getState();
   }
 
   @override
   Widget buildContent(BuildContext context, BoxConstraints constraints) {
     double indent = ThemeHelper.getIndent(2);
+    final isLeft = ScreenHelper.state().isLeftBar;
     return SingleScrollWrapper(
       controller: focus,
       child: Container(
@@ -98,9 +103,27 @@ class PaymentAddPageState extends AbstractAddPageState<PaymentAddPage> {
               onChange: (value) => setState(() => intervalType = value),
             ),
             const Divider(),
-            if (itemType == AppPaymentType.bill.name) ExpensesTab(state: state, callback: (_) => null),
-            if (itemType == AppPaymentType.invoice.name) IncomeTab(state: state, callback: (_) => null),
-            if (itemType == AppPaymentType.transfer.name) TransferTab(state: state, callback: (_) => null),
+            if (itemType == AppPaymentType.bill.name)
+              ExpensesTab(
+                key: _expensesTabKey,
+                state: state,
+                isLeft: isLeft,
+                callback: (_) => null,
+              ),
+            if (itemType == AppPaymentType.invoice.name)
+              IncomeTab(
+                key: _incomeTabKey,
+                state: state,
+                isLeft: isLeft,
+                callback: (_) => null,
+              ),
+            if (itemType == AppPaymentType.transfer.name)
+              TransferTab(
+                key: _transferTabKey,
+                state: state,
+                isLeft: isLeft,
+                callback: (_) => null,
+              ),
           ],
         ),
       ),

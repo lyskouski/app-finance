@@ -124,15 +124,17 @@ class ExpensesTabState<T extends ExpensesTab> extends State<T> {
       CurrencyProvider.pin(currency!);
     }
     exchange.save();
-    widget.state.add(BillAppData(
-      account: account ?? '',
-      category: budget ?? '',
-      currency: currency,
-      title: description.text,
-      details: double.tryParse(bill.text)?.toFixed(currency?.decimalDigits) ?? 0.0,
-      createdAt: createdAt ?? DateTime.now(),
-    ));
+    widget.state.add(getState());
   }
+
+  BillAppData getState() => BillAppData(
+        account: account ?? '',
+        category: budget ?? '',
+        currency: currency,
+        title: description.text,
+        details: double.tryParse(bill.text)?.toFixed(currency?.decimalDigits) ?? 0.0,
+        createdAt: createdAt ?? DateTime.now(),
+      );
 
   String getButtonName() => AppLocale.labels.createBillTooltip;
 
