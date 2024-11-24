@@ -54,7 +54,7 @@ class AutomationPageState extends AbstractPageState<AutomationPage> with TickerP
               // Tab(icon: const Icon(Icons.message), text: AppLocale.labels.notifyHeadline),
             ],
             children: [
-              PaymentsTab(callback: update),
+              PaymentsTab(callback: update, state: state),
               SyncTab(callback: update),
               //if (Platform.isAndroid) NotificationTab(),
             ],

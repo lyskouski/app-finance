@@ -1,10 +1,9 @@
 // Copyright 2024 The terCAD team. All rights reserved.
 // Use of this source code is governed by a CC BY-NC-ND 4.0 license that can be found in the LICENSE file.
 
-import 'package:app_finance/_classes/herald/app_locale.dart';
 import 'package:app_finance/_classes/structure/abstract_app_data.dart';
 import 'package:app_finance/_classes/storage/app_data.dart';
-import 'package:app_finance/_configs/payment_type.dart';
+import 'package:app_finance/_configs/budget_type.dart';
 
 class PaymentAppData extends AbstractAppData {
   Map<String, dynamic> data;
@@ -50,5 +49,5 @@ class PaymentAppData extends AbstractAppData {
       };
 
   @override
-  String get description => '${AppLocale.labels.paymentType}: ${PaymentType.getLabel(title)}';
+  String get description => BudgetType.getLabel(title);
 }
