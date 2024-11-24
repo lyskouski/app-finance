@@ -401,6 +401,7 @@
     "updateBillTooltip": "Змяніць чэк",
     "updateBudgetTooltip": "Змяніць катэгорыю бюджэту",
     "updateGoalTooltip": "Змяніць мэту",
+    "updatePaymentTooltip": "Абнавіць аплату",
     "username": "Карыстальнік (уліковы запіс)",
     "uuid": "Унікальны ідэнтыфікатар транзакцыі",
     "validTillDate": "Дьзейнічае да",

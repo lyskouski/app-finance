@@ -401,6 +401,7 @@
     "updateBillTooltip": "Actualizar factura",
     "updateBudgetTooltip": "Actualizar categoría presupuestaria",
     "updateGoalTooltip": "Actualizar objetivo",
+    "updatePaymentTooltip": "Actualizar pago",
     "username": "Nombre de usuario (cuenta)",
     "uuid": "Identificador único de transacción",
     "validTillDate": "Fecha de validez",

@@ -401,6 +401,7 @@
     "updateBillTooltip": "बिल अद्यतन करें",
     "updateBudgetTooltip": "बजट श्रेणी अद्यतन करें",
     "updateGoalTooltip": "लक्ष्य अद्यतन करें",
+    "updatePaymentTooltip": "भुगतान अपडेट करें",
     "username": "उपयोगकर्ता नाम (खाता)",
     "uuid": "अद्वितीय लेनदेन पहचानकर्ता",
     "validTillDate": "तक मान्य",

@@ -25,14 +25,16 @@ class PaymentAddPage extends AbstractAddPage {
   PaymentAddPageState createState() => PaymentAddPageState();
 }
 
-class PaymentAddPageState extends AbstractAddPageState<PaymentAddPage> {
+class PaymentAddPageState<T extends PaymentAddPage> extends AbstractAddPageState<T> {
   late FocusController focus;
   bool hasErrors = false;
   String? itemType;
   String? intervalType;
-  final GlobalKey<ExpensesTabState> _expensesTabKey = GlobalKey();
-  final GlobalKey<IncomeTabState> _incomeTabKey = GlobalKey();
-  final GlobalKey<TransferTabState> _transferTabKey = GlobalKey();
+  dynamic item;
+  DateTime? updatedAt;
+  final GlobalKey<ExpensesTabState> expensesTabKey = GlobalKey();
+  final GlobalKey<IncomeTabState> incomeTabKey = GlobalKey();
+  final GlobalKey<TransferTabState> transferTabKey = GlobalKey();
 
   @override
   void initState() {
@@ -81,19 +83,23 @@ class PaymentAddPageState extends AbstractAddPageState<PaymentAddPage> {
     return hasErrors;
   }
 
-  @override
-  void updateStorage() {
+  dynamic getValues() {
     dynamic values;
     if (itemType == AppPaymentType.bill.name) {
-      values = _expensesTabKey.currentState?.getValues();
+      values = expensesTabKey.currentState?.getValues();
     }
     if (itemType == AppPaymentType.invoice.name) {
-      values = _incomeTabKey.currentState?.getValues();
+      values = incomeTabKey.currentState?.getValues();
     }
     if (itemType == AppPaymentType.transfer.name) {
-      values = _transferTabKey.currentState?.getValues();
+      values = transferTabKey.currentState?.getValues();
     }
     values?.setState(state);
+  }
+
+  @override
+  void updateStorage() {
+    final values = getValues();
     state.add(PaymentAppData(
       title: intervalType ?? AppBudgetType.month.name,
       data: values.toFile(),
@@ -133,24 +139,41 @@ class PaymentAddPageState extends AbstractAddPageState<PaymentAddPage> {
             const Divider(),
             if (itemType == AppPaymentType.bill.name)
               ExpensesTab(
-                key: _expensesTabKey,
+                key: expensesTabKey,
                 state: state,
                 isLeft: isLeft,
                 callback: (_) => null,
+                account: item?.account,
+                budget: item?.category,
+                currency: item?.currency,
+                bill: item?.details,
+                description: item?.title,
+                createdAt: updatedAt,
               ),
             if (itemType == AppPaymentType.invoice.name)
               IncomeTab(
-                key: _incomeTabKey,
+                key: incomeTabKey,
                 state: state,
                 isLeft: isLeft,
                 callback: (_) => null,
+                account: item?.account,
+                amount: item?.details,
+                currency: item?.currency,
+                description: item?.description,
+                createdAt: updatedAt,
               ),
             if (itemType == AppPaymentType.transfer.name)
               TransferTab(
-                key: _transferTabKey,
+                key: transferTabKey,
                 state: state,
                 isLeft: isLeft,
                 callback: (_) => null,
+                accountTo: item?.account,
+                accountFrom: item?.accountFrom,
+                amount: item?.details,
+                currency: item?.currency,
+                description: item?.description,
+                createdAt: updatedAt,
               ),
           ],
         ),

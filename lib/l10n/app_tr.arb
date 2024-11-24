@@ -401,6 +401,7 @@
     "updateBillTooltip": "Bill'i Güncelle",
     "updateBudgetTooltip": "Bütçe Kategorisini Güncelle",
     "updateGoalTooltip": "Hedefi Güncelle",
+    "updatePaymentTooltip": "Ödeme Güncelleme",
     "username": "Kullanıcı Adı (Hesap)",
     "uuid": "Benzersiz İşlem Tanımlayıcısı",
     "validTillDate": "Geçerlilik Süresi",

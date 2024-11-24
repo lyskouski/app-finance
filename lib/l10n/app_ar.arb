@@ -401,6 +401,7 @@
     "updateBillTooltip": "تحديث الفاتورة",
     "updateBudgetTooltip": "تحديث فئة الميزانية",
     "updateGoalTooltip": "تحديث الهدف",
+    "updatePaymentTooltip": "تحديث الدفع",
     "username": "اسم المستخدم (الحساب)",
     "uuid": "معرّف المعاملة الفريد",
     "validTillDate": "حتى تاريخ الصلاحية",

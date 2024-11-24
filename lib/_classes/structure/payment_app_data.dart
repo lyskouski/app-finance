@@ -13,6 +13,7 @@ class PaymentAppData extends AbstractAppData {
     required this.data,
     super.uuid,
     super.updatedAt,
+    super.hidden,
   });
 
   @override
@@ -27,6 +28,7 @@ class PaymentAppData extends AbstractAppData {
       title: super.title,
       uuid: super.uuid,
       updatedAt: super.updatedAt,
+      hidden: super.hidden,
       data: data,
     );
   }
@@ -36,6 +38,7 @@ class PaymentAppData extends AbstractAppData {
       title: json['title'],
       uuid: json['uuid'],
       updatedAt: DateTime.parse(json['updatedAt']),
+      hidden: json['hidden'],
       data: json['data'],
     );
   }
@@ -45,6 +48,7 @@ class PaymentAppData extends AbstractAppData {
         'uuid': uuid,
         'title': title,
         'updatedAt': updatedAt.toIso8601String(),
+        'hidden': hidden,
         'data': data,
       };
 

@@ -401,6 +401,7 @@
     "updateBillTooltip": "請求書の更新",
     "updateBudgetTooltip": "予算カテゴリーの更新",
     "updateGoalTooltip": "目標の更新",
+    "updatePaymentTooltip": "更新支払",
     "username": "ユーザー名（アカウント）",
     "uuid": "一意の取引識別子",
     "validTillDate": "有効期限",

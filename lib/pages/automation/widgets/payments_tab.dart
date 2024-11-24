@@ -10,6 +10,7 @@ import 'package:app_finance/_classes/structure/payment_app_data.dart';
 import 'package:app_finance/_configs/screen_helper.dart';
 import 'package:app_finance/_configs/theme_helper.dart';
 import 'package:app_finance/_ext/data_ext.dart';
+import 'package:app_finance/_ext/date_time_ext.dart';
 import 'package:app_finance/design/button/full_sized_button_widget.dart';
 import 'package:app_finance/design/generic/base_line_widget.dart';
 import 'package:app_finance/design/generic/base_swipe_widget.dart';
@@ -77,26 +78,29 @@ class PaymentsTabState extends State<PaymentsTab> {
           final value = data[index].data;
           dynamic item = (value['type']['name'] as String).toDataObject(value['data'], widget.state);
           String type = AppLocale.labels.flowTypeInvoice;
+          String symbol = '+';
           if (item is BillAppData) {
             type = AppLocale.labels.bill;
+            symbol = '-';
           } else if (item is InvoiceAppData && item.accountFrom != null) {
             type = AppLocale.labels.transferHeadline;
+            symbol = '';
           }
           return BaseSwipeWidget(
-            routePath: 'todo: edit',
+            routePath: AppRoute.automationPaymentEditRoute,
             uuid: uuid,
             child: BaseLineWidget(
               uuid: uuid,
               title: '$type: ${item.title}',
-              description: '${data[index].description}, ${item.description}',
-              details: item.detailsFormatted,
+              description: '${data[index].description}, ${data[index].updatedAt.monthDay()}',
+              details: '$symbol${item.detailsFormatted}',
               progress: 1.0,
               color: item.color ?? Colors.transparent,
               icon: item.icon ?? Icons.radio_button_unchecked_sharp,
               hidden: item.hidden,
               skip: item.skip,
               width: width,
-              route: 'todo: view',
+              route: AppRoute.automationPaymentEditRoute,
             ),
           );
         },

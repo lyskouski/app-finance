@@ -401,6 +401,7 @@
     "updateBillTooltip": "청구서 업데이트",
     "updateBudgetTooltip": "예산 카테고리 업데이트",
     "updateGoalTooltip": "목표 업데이트",
+    "updatePaymentTooltip": "결제 업데이트",
     "username": "사용자 이름(계정)",
     "uuid": "고유 거래 식별자",
     "validTillDate": "유효 기간",

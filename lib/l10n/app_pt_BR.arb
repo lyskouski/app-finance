@@ -401,6 +401,7 @@
     "updateBillTooltip": "Update Bill (Atualizar conta)",
     "updateBudgetTooltip": "Update Budget Category (Atualizar categoria orçamentária)",
     "updateGoalTooltip": "Atualizar meta",
+    "updatePaymentTooltip": "Atualizar pagamento",
     "username": "Nome de usuário (conta)",
     "uuid": "Identificador exclusivo de transação",
     "validTillDate": "Valid Till",

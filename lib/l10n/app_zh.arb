@@ -401,6 +401,7 @@
     "updateBillTooltip": "更新账单",
     "updateBudgetTooltip": "更新预算类别",
     "updateGoalTooltip": "更新目标",
+    "updatePaymentTooltip": "更新付款",
     "username": "用户名（账户）",
     "uuid": "唯一交易标识符",
     "validTillDate": "有效提单",

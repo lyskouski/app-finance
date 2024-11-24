@@ -129,7 +129,7 @@ class AppData extends ChangeNotifier {
   }
 
   void _update(InterfaceAppData? initial, InterfaceAppData change) {
-    if (change.getType() != AppDataType.budgets) {
+    if (change.getType() != AppDataType.budgets && change.getType() != AppDataType.payments) {
       HistoryData.addLog(change.uuid, change, initial?.details ?? 0.0, change.details);
     }
     switch (change.getType()) {

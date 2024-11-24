@@ -401,6 +401,7 @@
     "updateBillTooltip": "Billni yangilash",
     "updateBudgetTooltip": "Byudjet toifasini yangilash",
     "updateGoalTooltip": "Maqsadni yangilash",
+    "updatePaymentTooltip": "To'lovni yangilash",
     "username": "Foydalanuvchi nomi (hisob qaydnomasi)",
     "uuid": "Tranzaksiyaning noyob identifikatori",
     "validTillDate": "Qachon amal qiladi",

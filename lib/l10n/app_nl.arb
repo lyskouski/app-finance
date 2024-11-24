@@ -401,6 +401,7 @@
     "updateBillTooltip": "Rekening bijwerken",
     "updateBudgetTooltip": "Budgetcategorie bijwerken",
     "updateGoalTooltip": "Doel bijwerken",
+    "updatePaymentTooltip": "Betaling bijwerken",
     "username": "Gebruikersnaam (rekening)",
     "uuid": "Unieke transactie-identificatiecode",
     "validTillDate": "Geldig tot",

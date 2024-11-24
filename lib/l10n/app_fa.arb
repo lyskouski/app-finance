@@ -401,6 +401,7 @@
     "updateBillTooltip": "به روز رسانی بیل",
     "updateBudgetTooltip": "به روز رسانی رده بودجه",
     "updateGoalTooltip": "به روز رسانی هدف",
+    "updatePaymentTooltip": "به روز رسانی پرداخت",
     "username": "نام کاربری (حساب)",
     "uuid": "شناسه تراکنش منحصر به فرد",
     "validTillDate": "معتبر تا",
