@@ -52,7 +52,7 @@ class PaymentViewPageState extends AbstractPageState<PaymentViewPage> {
           heroTag: 'payment_view_page_edit',
           onPressed: () =>
               nav.pushNamed(AppRoute.automationPaymentEditRoute, arguments: {routeArguments.uuid: widget.uuid}),
-          tooltip: AppLocale.labels.editBillTooltip,
+          tooltip: AppLocale.labels.editPaymentTooltip,
           child: const Icon(Icons.edit),
         ),
         FloatingActionButton(
@@ -61,7 +61,7 @@ class PaymentViewPageState extends AbstractPageState<PaymentViewPage> {
             context,
             () => FlowStateMachine.deactivate(nav, store: super.state, uuid: widget.uuid),
           ),
-          tooltip: AppLocale.labels.deleteBillTooltip,
+          tooltip: AppLocale.labels.deletePaymentTooltip,
           child: const Icon(Icons.delete),
         ),
       ]),
