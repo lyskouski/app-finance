@@ -15,7 +15,7 @@ import 'package:app_finance/_configs/theme_helper.dart';
 import 'package:app_finance/_ext/build_context_ext.dart';
 import 'package:app_finance/_ext/double_ext.dart';
 import 'package:app_finance/design/wrapper/input_wrapper.dart';
-import 'package:app_finance/pages/bill/widgets/interface_bill_page_inject.dart';
+import 'package:app_finance/pages/_interfaces/interface_page_inject.dart';
 import 'package:app_finance/design/form/currency_exchange_input.dart';
 import 'package:app_finance/design/form/date_time_input.dart';
 import 'package:app_finance/design/button/full_sized_button_widget.dart';
@@ -33,7 +33,7 @@ class IncomeTab<T> extends StatefulWidget {
   final DateTime? createdAt;
   final AppData state;
   final bool isLeft;
-  final FnBillPageCallback callback;
+  final FnPageCallback callback;
 
   const IncomeTab({
     super.key,
@@ -101,18 +101,19 @@ class IncomeTabState<T extends IncomeTab> extends State<IncomeTab> {
   }
 
   void updateStorage() {
-    String uuid = account ?? '';
-    AppPreferences.set(AppPreferences.prefAccount, uuid);
+    AppPreferences.set(AppPreferences.prefAccount, account ?? '');
     exchange.save();
-    widget.state.add(InvoiceAppData(
-      title: description.text,
-      color: widget.state.getByUuid(uuid)?.color,
-      account: uuid,
-      details: double.tryParse(amount.text)?.toFixed(currency?.decimalDigits) ?? 0.0,
-      currency: currency,
-      createdAt: createdAt,
-    ));
+    widget.state.add(getValues());
   }
+
+  InvoiceAppData getValues() => InvoiceAppData(
+        title: description.text,
+        color: widget.state.getByUuid(account ?? '')?.color,
+        account: account ?? '',
+        details: double.tryParse(amount.text)?.toFixed(currency?.decimalDigits) ?? 0.0,
+        currency: currency,
+        createdAt: createdAt,
+      );
 
   String getButtonName() => AppLocale.labels.createIncomeTooltip;
 
@@ -169,33 +170,35 @@ class IncomeTabState<T extends IncomeTab> extends State<IncomeTab> {
               }),
               width: width,
             ),
-            RowWidget(
-              indent: indent,
-              maxWidth: width + indent,
-              chunk: const [125, null],
-              children: [
-                [
-                  InputWrapper.currency(
-                    type: NamedInputType.currencyShort,
-                    value: currency,
-                    title: AppLocale.labels.currency,
-                    tooltip: AppLocale.labels.currencyTooltip,
-                    onChange: (value) => setState(() => currency = value),
-                  ),
+            LayoutBuilder(builder: (context, constraints) {
+              return RowWidget(
+                indent: indent,
+                maxWidth: constraints.maxWidth,
+                chunk: const [125, null],
+                children: [
+                  [
+                    InputWrapper.currency(
+                      type: NamedInputType.currencyShort,
+                      value: currency,
+                      title: AppLocale.labels.currency,
+                      tooltip: AppLocale.labels.currencyTooltip,
+                      onChange: (value) => setState(() => currency = value),
+                    ),
+                  ],
+                  [
+                    InputWrapper.text(
+                      title: AppLocale.labels.income,
+                      tooltip: AppLocale.labels.billSetTooltip,
+                      controller: amount,
+                      inputType: const TextInputType.numberWithOptions(decimal: true),
+                      formatter: [
+                        SimpleInputFormatter.filterDouble,
+                      ],
+                    ),
+                  ],
                 ],
-                [
-                  InputWrapper.text(
-                    title: AppLocale.labels.income,
-                    tooltip: AppLocale.labels.billSetTooltip,
-                    controller: amount,
-                    inputType: const TextInputType.numberWithOptions(decimal: true),
-                    formatter: [
-                      SimpleInputFormatter.filterDouble,
-                    ],
-                  ),
-                ],
-              ],
-            ),
+              );
+            }),
             CurrencyExchangeInput(
               key: ValueKey('income${currency?.code}${accountCurrency?.code}'),
               width: width + indent,
@@ -213,11 +216,13 @@ class IncomeTabState<T extends IncomeTab> extends State<IncomeTab> {
               AppLocale.labels.balanceDate,
               style: textTheme.bodyLarge,
             ),
-            DateTimeInput(
-              width: width,
-              value: createdAt,
-              setState: (value) => setState(() => createdAt = value),
-            ),
+            LayoutBuilder(builder: (context, constraints) {
+              return DateTimeInput(
+                width: constraints.maxWidth - indent,
+                value: createdAt,
+                setState: (value) => setState(() => createdAt = value),
+              );
+            }),
             ThemeHelper.formEndBox,
           ],
         ),

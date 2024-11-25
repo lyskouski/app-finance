@@ -32,6 +32,10 @@ extension DateTimeExt on DateTime {
     }
   }
 
+  DateTime getNextMonth() => DateTime(year, month + 1, day, hour, minute, second);
+
+  DateTime getNextYear() => DateTime(year + 1, month, day, hour, minute, second);
+
   String yMEd() {
     DateFormat formatterDate;
     try {
@@ -58,6 +62,16 @@ extension DateTimeExt on DateTime {
       formatterDate = DateFormat.MMMMd(AppLocale.code);
     } catch (e) {
       formatterDate = DateFormat.MMMMd('en_US');
+    }
+    return formatterDate.format(this);
+  }
+
+  String fullMonth() {
+    DateFormat formatterDate;
+    try {
+      formatterDate = DateFormat.MMMM(AppLocale.code);
+    } catch (e) {
+      formatterDate = DateFormat.MMMM('en_US');
     }
     return formatterDate.format(this);
   }

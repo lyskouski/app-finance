@@ -17,7 +17,6 @@ import 'package:app_finance/pages/bill/widgets/sliver_header_delegate.dart';
 import 'package:app_finance/design/generic/base_header_widget.dart';
 import 'package:app_finance/design/generic/base_swipe_widget.dart';
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
 
 class BillPage extends StatefulWidget {
   const BillPage({super.key});
@@ -60,7 +59,7 @@ class BillPageState extends AbstractPageState<BillPage> {
             tooltip: AppLocale.labels.homeTooltip,
             width: width,
             total: state.getTotal(AppDataType.bills),
-            title: '${AppLocale.labels.billHeadline}, ${DateFormat.MMMM(AppLocale.code).format(startingDay)}',
+            title: '${AppLocale.labels.billHeadline}, ${startingDay.fullMonth()}',
           ),
         ),
       );

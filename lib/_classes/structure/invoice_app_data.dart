@@ -26,6 +26,7 @@ class InvoiceAppData extends AbstractAppData with StorageMixin {
     super.createdAt,
     super.createdAtFormatted,
     super.hidden,
+    super.payment,
   });
 
   @override
@@ -47,6 +48,7 @@ class InvoiceAppData extends AbstractAppData with StorageMixin {
       currency: super.currency,
       createdAt: super.createdAt,
       hidden: super.hidden,
+      payment: super.payment,
     );
   }
 
@@ -63,6 +65,7 @@ class InvoiceAppData extends AbstractAppData with StorageMixin {
       createdAt: DateTime.parse(json['createdAt']),
       updatedAt: DateTime.parse(json['updatedAt']),
       hidden: json['hidden'],
+      payment: json['payment'],
     );
   }
 

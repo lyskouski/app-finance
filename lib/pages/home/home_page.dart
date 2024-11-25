@@ -1,6 +1,7 @@
 // Copyright 2023 The terCAD team. All rights reserved.
 // Use of this source code is governed by a CC BY-NC-ND 4.0 license that can be found in the LICENSE file.
 
+import 'package:app_finance/_classes/controller/payments_controller.dart';
 import 'package:app_finance/_classes/herald/app_design.dart';
 import 'package:app_finance/_classes/herald/app_start_of_month.dart';
 import 'package:app_finance/_classes/storage/app_data.dart';
@@ -30,7 +31,6 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_markdown/flutter_markdown.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:intl/intl.dart' as intl;
 import 'package:package_info_plus/package_info_plus.dart';
 import 'package:provider/provider.dart';
 
@@ -171,6 +171,7 @@ class HomePageState extends AbstractPageState<HomePage> {
       if (appState.isLoading) {
         return const InitTab();
       }
+      WidgetsBinding.instance.addPostFrameCallback((_) => PaymentsController(state));
       return super.build(context);
     });
   }
@@ -193,7 +194,7 @@ class HomePageState extends AbstractPageState<HomePage> {
 
     final billWidget = BillWidget(
       margin: margin,
-      title: '${AppLocale.labels.billHeadline}, ${intl.DateFormat.MMMM(AppLocale.code).format(curr)}',
+      title: '${AppLocale.labels.billHeadline}, ${curr.fullMonth()}',
       state: state.get(AppDataType.bills),
       limit: 7,
       route: AppRoute.billRoute,

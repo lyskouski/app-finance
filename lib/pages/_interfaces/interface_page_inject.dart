@@ -5,9 +5,9 @@ import 'package:flutter/material.dart';
 
 typedef FnBuildButton = Widget Function(BuildContext context, BoxConstraints constraints);
 
-typedef FnBillPageCallback = Function(BillPageInject data);
+typedef FnPageCallback = Function(PageInject data);
 
-typedef BillPageInject = ({
+typedef PageInject = ({
   FnBuildButton buildButton,
   String buttonName,
   String title,

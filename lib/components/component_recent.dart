@@ -14,12 +14,12 @@ import 'package:app_finance/components/_core/component_data.dart';
 import 'package:app_finance/components/widgets/account_widget.dart';
 import 'package:app_finance/components/widgets/bill_widget.dart';
 import 'package:app_finance/components/widgets/budget_widget.dart';
+import 'package:app_finance/components/widgets/payment_widget.dart';
 import 'package:app_finance/design/form/list_selector_item.dart';
 import 'package:app_finance/design/form/list_selector.dart';
 import 'package:app_finance/design/form/simple_input.dart';
 import 'package:app_finance/design/generic/base_widget.dart';
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 
 enum ComponentRecentType {
@@ -28,6 +28,7 @@ enum ComponentRecentType {
   bill,
   invoice,
   goals,
+  payment,
 }
 
 class ComponentRecent extends StatelessWidget {
@@ -78,7 +79,7 @@ class ComponentRecent extends StatelessWidget {
                 )..exchange = exchange,
               ComponentRecentType.bill => BillWidget(
                   margin: margin,
-                  title: '${AppLocale.labels.billHeadline}, ${DateFormat.MMMM(AppLocale.code).format(startingDay)}',
+                  title: '${AppLocale.labels.billHeadline}, ${startingDay.fullMonth()}',
                   state: appState.get(AppDataType.bills),
                   limit: limit,
                   route: AppRoute.billRoute,
@@ -103,6 +104,12 @@ class ComponentRecent extends StatelessWidget {
                   routeList: AppRoute.invoiceViewRoute,
                   route: null,
                   tooltip: AppLocale.labels.invoiceHeadline,
+                  width: width,
+                ),
+              ComponentRecentType.payment => PaymentWidget(
+                  data: appState.getList(AppDataType.payments).cast(),
+                  state: appState,
+                  margin: margin,
                   width: width,
                 ),
               _ => ThemeHelper.emptyBox,
@@ -160,10 +167,11 @@ class ComponentRecentFormState extends State<ComponentRecentForm> {
               value: _option != null ? ListSelectorItem(id: _option!, name: '') : null,
               options: [
                 ListSelectorItem(id: ComponentRecentType.account.toString(), name: AppLocale.labels.accountHeadline),
-                ListSelectorItem(id: ComponentRecentType.bill.toString(), name: AppLocale.labels.billHeadline),
                 ListSelectorItem(id: ComponentRecentType.budget.toString(), name: AppLocale.labels.budgetHeadline),
-                ListSelectorItem(id: ComponentRecentType.goals.toString(), name: AppLocale.labels.goalHeadline),
+                ListSelectorItem(id: ComponentRecentType.bill.toString(), name: AppLocale.labels.billHeadline),
                 ListSelectorItem(id: ComponentRecentType.invoice.toString(), name: AppLocale.labels.invoiceHeadline),
+                ListSelectorItem(id: ComponentRecentType.payment.toString(), name: AppLocale.labels.paymentsHeadline),
+                ListSelectorItem(id: ComponentRecentType.goals.toString(), name: AppLocale.labels.goalHeadline),
               ],
             ),
             ThemeHelper.hIndent,

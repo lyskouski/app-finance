@@ -7,7 +7,7 @@ import 'package:app_finance/_configs/theme_helper.dart';
 import 'package:app_finance/pages/_interfaces/abstract_page_state.dart';
 import 'package:app_finance/pages/bill/widgets/expenses_tab.dart';
 import 'package:app_finance/pages/bill/widgets/income_tab.dart';
-import 'package:app_finance/pages/bill/widgets/interface_bill_page_inject.dart';
+import 'package:app_finance/pages/_interfaces/interface_page_inject.dart';
 import 'package:app_finance/pages/bill/widgets/transfer_tab.dart';
 import 'package:app_finance/design/wrapper/tab_widget.dart';
 import 'package:flutter/material.dart';
@@ -20,7 +20,7 @@ class BillAddPage extends StatefulWidget {
 }
 
 class BillAddPageState<T extends BillAddPage> extends AbstractPageState<T> {
-  BillPageInject? inject;
+  PageInject? inject;
   int focus = 1;
 
   @override
@@ -33,7 +33,7 @@ class BillAddPageState<T extends BillAddPage> extends AbstractPageState<T> {
   @override
   String getTitle() => inject?.title ?? '';
 
-  void update(BillPageInject data) {
+  void update(PageInject data) {
     if (data != inject) {
       WidgetsBinding.instance.addPostFrameCallback((_) => setState(() => inject = data));
     }

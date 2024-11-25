@@ -9,6 +9,7 @@ import 'package:app_finance/_classes/structure/budget_app_data.dart';
 import 'package:app_finance/_classes/structure/currency_app_data.dart';
 import 'package:app_finance/_classes/structure/goal_app_data.dart';
 import 'package:app_finance/_classes/structure/invoice_app_data.dart';
+import 'package:app_finance/_classes/structure/payment_app_data.dart';
 
 extension DataExt on String {
   AbstractAppData? toDataObject(Map<String, dynamic> data, AppData store) => switch (this) {
@@ -18,6 +19,13 @@ extension DataExt on String {
         'BudgetAppData' => BudgetAppData.fromJson(data)..setState(store),
         'CurrencyAppData' => CurrencyAppData.fromJson(data),
         'InvoiceAppData' => InvoiceAppData.fromJson(data)..setState(store),
+        'PaymentAppData' => PaymentAppData.fromJson(data),
         _ => null,
       };
+}
+
+extension MapDataExt on Map<String, dynamic> {
+  AbstractAppData? toDataObject(AppData store) {
+    return (this['type']['name'] as String).toDataObject(this['data'], store);
+  }
 }

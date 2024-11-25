@@ -5,6 +5,8 @@ import 'package:app_finance/_classes/herald/app_locale.dart';
 import 'package:app_finance/_configs/screen_helper.dart';
 import 'package:app_finance/_configs/theme_helper.dart';
 import 'package:app_finance/pages/_interfaces/abstract_page_state.dart';
+import 'package:app_finance/pages/_interfaces/interface_page_inject.dart';
+import 'package:app_finance/pages/automation/widgets/payments_tab.dart';
 import 'package:app_finance/pages/automation/widgets/sync_tab.dart';
 import 'package:app_finance/design/wrapper/tab_widget.dart';
 //import 'package:app_finance/pages/automation/widgets/notification_tab.dart';
@@ -18,12 +20,22 @@ class AutomationPage extends StatefulWidget {
 }
 
 class AutomationPageState extends AbstractPageState<AutomationPage> with TickerProviderStateMixin {
-  @override
-  String getButtonName() => '';
+  PageInject? inject;
 
   @override
-  Widget buildButton(BuildContext context, BoxConstraints constraints) {
-    return ThemeHelper.emptyBox;
+  String getTitle() => inject?.title ?? AppLocale.labels.automationHeadline;
+
+  @override
+  String getButtonName() => inject?.buttonName ?? '';
+
+  @override
+  Widget buildButton(BuildContext context, BoxConstraints constraints) =>
+      inject?.buildButton(context, constraints) ?? ThemeHelper.emptyBox;
+
+  void update(PageInject data) {
+    if (data != inject) {
+      WidgetsBinding.instance.addPostFrameCallback((_) => setState(() => inject = data));
+    }
   }
 
   @override
@@ -36,24 +48,19 @@ class AutomationPageState extends AbstractPageState<AutomationPage> with TickerP
             type: TabType.secondary,
             isLeft: isLeft,
             tabs: [
+              Tab(icon: const Icon(Icons.free_cancellation_rounded), text: AppLocale.labels.paymentsHeadline),
               Tab(icon: const Icon(Icons.sync), text: AppLocale.labels.syncHeadline),
               // if (Platform.isAndroid)
               // Tab(icon: const Icon(Icons.message), text: AppLocale.labels.notifyHeadline),
-              const Tab(text: ''), // ERR: 'destinations.length >= 2': is not true
             ],
-            children: const [
-              SyncTab(),
+            children: [
+              PaymentsTab(callback: update, state: state),
+              SyncTab(callback: update),
               //if (Platform.isAndroid) NotificationTab(),
-              ThemeHelper.emptyBox,
             ],
           ),
         ),
       ],
     );
-  }
-
-  @override
-  String getTitle() {
-    return AppLocale.labels.automationHeadline;
   }
 }
