@@ -23,3 +23,9 @@ extension DataExt on String {
         _ => null,
       };
 }
+
+extension MapDataExt on Map<String, dynamic> {
+  AbstractAppData? toDataObject(AppData store) {
+    return (this['type']['name'] as String).toDataObject(this['data'], store);
+  }
+}

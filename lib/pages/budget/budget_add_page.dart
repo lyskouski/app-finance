@@ -10,6 +10,7 @@ import 'package:app_finance/_configs/budget_type.dart';
 import 'package:app_finance/_configs/custom_color_scheme.dart';
 import 'package:app_finance/_configs/theme_helper.dart';
 import 'package:app_finance/_ext/build_context_ext.dart';
+import 'package:app_finance/_ext/date_time_ext.dart';
 import 'package:app_finance/design/wrapper/input_wrapper.dart';
 import 'package:app_finance/design/wrapper/text_wrapper.dart';
 import 'package:app_finance/pages/_interfaces/abstract_add_page.dart';
@@ -20,7 +21,6 @@ import 'package:app_finance/design/wrapper/single_scroll_wrapper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_currency_picker/flutter_currency_picker.dart';
-import 'package:intl/intl.dart';
 
 class BudgetAddPage extends AbstractAddPage {
   final String? uuid;
@@ -221,7 +221,7 @@ class BudgetAddPageState<T extends BudgetAddPage> extends AbstractAddPageState<T
                   children: [
                     [
                       Text(
-                        DateFormat.MMMM(AppLocale.code).format(DateTime(DateTime.now().year, e.key)),
+                        DateTime(DateTime.now().year, e.key).fullMonth(),
                         style: textTheme.headlineMedium,
                       ),
                     ],

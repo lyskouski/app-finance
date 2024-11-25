@@ -95,6 +95,7 @@ class PaymentAddPageState<T extends PaymentAddPage> extends AbstractAddPageState
       values = transferTabKey.currentState?.getValues();
     }
     values?.setState(state);
+    return values;
   }
 
   @override

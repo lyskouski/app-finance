@@ -30,7 +30,6 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_markdown/flutter_markdown.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:intl/intl.dart' as intl;
 import 'package:package_info_plus/package_info_plus.dart';
 import 'package:provider/provider.dart';
 
@@ -193,7 +192,7 @@ class HomePageState extends AbstractPageState<HomePage> {
 
     final billWidget = BillWidget(
       margin: margin,
-      title: '${AppLocale.labels.billHeadline}, ${intl.DateFormat.MMMM(AppLocale.code).format(curr)}',
+      title: '${AppLocale.labels.billHeadline}, ${curr.fullMonth()}',
       state: state.get(AppDataType.bills),
       limit: 7,
       route: AppRoute.billRoute,

@@ -44,7 +44,7 @@ class PaymentEditPageState extends PaymentAddPageState<PaymentEditPage> {
   Widget buildContent(BuildContext context, BoxConstraints constraints) {
     if (intervalType == null) {
       final payment = state.getByUuid(widget.uuid) as PaymentAppData;
-      item = (payment.data['type']['name'] as String).toDataObject(payment.data['data'], state);
+      item = payment.data.toDataObject(state);
       WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {
             intervalType = payment.title;
             itemType = AppPaymentType.bill.name;
