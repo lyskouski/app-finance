@@ -49,7 +49,7 @@ class PaymentListWidget extends StatelessWidget {
       icon: obj.icon ?? Icons.radio_button_unchecked_sharp,
       hidden: obj.hidden,
       skip: obj.skip,
-      width: width ?? constraints?.maxWidth ?? double.infinity,
+      width: width ?? constraints!.maxWidth,
       route: AppRoute.automationPaymentViewRoute,
     );
   }

@@ -1,6 +1,7 @@
 // Copyright 2023 The terCAD team. All rights reserved.
 // Use of this source code is governed by a CC BY-NC-ND 4.0 license that can be found in the LICENSE file.
 
+import 'package:app_finance/_classes/controller/payments_controller.dart';
 import 'package:app_finance/_classes/herald/app_design.dart';
 import 'package:app_finance/_classes/herald/app_start_of_month.dart';
 import 'package:app_finance/_classes/storage/app_data.dart';
@@ -170,6 +171,7 @@ class HomePageState extends AbstractPageState<HomePage> {
       if (appState.isLoading) {
         return const InitTab();
       }
+      WidgetsBinding.instance.addPostFrameCallback((_) => PaymentsController(state));
       return super.build(context);
     });
   }
