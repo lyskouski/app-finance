@@ -26,7 +26,7 @@ digraph G {
   }
   {
     rank = same; "_classes";
-    controller [label="<0>CONTROLLER|<delayed_call>delayed_call|<iterator_controller>iterator_controller|<encryption_handler>encryption_handler|<exchange_controller>exchange_controller|<fallback_localization_delegate>fallback_localization_delegate|<flow_state_machine>flow_state_machine|<focus_controller>focus_controller|<purchase_controller>purchase_controller|<date_format_helper>date_format_helper",fillcolor="silver:white", gradientangle=240, style="filled"];
+    controller [label="<0>CONTROLLER|<delayed_call>delayed_call|<iterator_controller>iterator_controller|<encryption_handler>encryption_handler|<payments_controller>payments_controller|<exchange_controller>exchange_controller|<fallback_localization_delegate>fallback_localization_delegate|<flow_state_machine>flow_state_machine|<focus_controller>focus_controller|<purchase_controller>purchase_controller|<date_format_helper>date_format_helper",fillcolor="silver:white", gradientangle=240, style="filled"];
   }
   {
     rank = same; "_classes";
@@ -34,7 +34,7 @@ digraph G {
   }
   {
     rank = same; "_classes";
-    structure [label="<0>STRUCTURE|<currency_app_data>currency_app_data|<account_summary_data>account_summary_data|<transaction_log_data>transaction_log_data|<budget_app_data>budget_app_data|<bill_app_data>bill_app_data|<summary_app_data>summary_app_data|<abstract_app_data>abstract_app_data|<invoice_app_data>invoice_app_data|<goal_app_data>goal_app_data|<account_app_data>account_app_data|<interface_app_data>interface_app_data",fillcolor="silver:white", gradientangle=240, style="filled"];
+    structure [label="<0>STRUCTURE|<payment_app_data>payment_app_data|<currency_app_data>currency_app_data|<account_summary_data>account_summary_data|<transaction_log_data>transaction_log_data|<budget_app_data>budget_app_data|<bill_app_data>bill_app_data|<summary_app_data>summary_app_data|<abstract_app_data>abstract_app_data|<invoice_app_data>invoice_app_data|<goal_app_data>goal_app_data|<account_app_data>account_app_data|<interface_app_data>interface_app_data",fillcolor="silver:white", gradientangle=240, style="filled"];
   }
   {
     rank = same; "_classes";
@@ -66,7 +66,7 @@ digraph G {
   }
   {
     rank = same; "components";
-    widgets [label="<0>WIDGETS|<budget_widget>budget_widget|<bill_widget>bill_widget|<bill_ytd_chart>bill_ytd_chart|<budget_forecast_chart>budget_forecast_chart|<budget_ytd_chart>budget_ytd_chart|<account_health_chart>account_health_chart|<account_flow_chart>account_flow_chart|<account_widget>account_widget",fillcolor="silver:white", gradientangle=240, style="filled"];
+    widgets [label="<0>WIDGETS|<payment_list_widget>payment_list_widget|<payment_widget>payment_widget|<budget_widget>budget_widget|<bill_widget>bill_widget|<bill_ytd_chart>bill_ytd_chart|<budget_forecast_chart>budget_forecast_chart|<budget_ytd_chart>budget_ytd_chart|<account_health_chart>account_health_chart|<account_flow_chart>account_flow_chart|<account_widget>account_widget",fillcolor="silver:white", gradientangle=240, style="filled"];
   }
   {
     rank = same; "components";
@@ -94,11 +94,11 @@ digraph G {
   }
   {
     rank = same; "pages";
-    automation_widgets [label="<0>AUTOMATION_WIDGETS|<sync_tab>sync_tab|<notification_tab>notification_tab",fillcolor="silver:white", gradientangle=240, style="filled"];
+    automation [label="<0>AUTOMATION|<payment_edit_page>payment_edit_page|<payment_add_page>payment_add_page|<payment_view_page>payment_view_page|<automation_page>automation_page",fillcolor="silver:white", gradientangle=240, style="filled"];
   }
   {
     rank = same; "pages";
-    automation [label="<0>AUTOMATION|<automation_page>automation_page",fillcolor="silver:white", gradientangle=240, style="filled"];
+    automation_widgets [label="<0>AUTOMATION_WIDGETS|<sync_tab>sync_tab|<notification_tab>notification_tab|<payments_tab>payments_tab",fillcolor="silver:white", gradientangle=240, style="filled"];
   }
   {
     rank = same; "pages";
@@ -150,7 +150,7 @@ digraph G {
   }
   {
     rank = same; "pages";
-    _interfaces [label="<0>_INTERFACES|<abstract_page_state>abstract_page_state|<abstract_add_page>abstract_add_page",fillcolor="silver:white", gradientangle=240, style="filled"];
+    _interfaces [label="<0>_INTERFACES|<abstract_page_state>abstract_page_state|<abstract_add_page>abstract_add_page|<interface_page_inject>interface_page_inject",fillcolor="silver:white", gradientangle=240, style="filled"];
   }
   {
     rank = same; "pages";
@@ -170,7 +170,7 @@ digraph G {
   }
   {
     rank = same; "pages";
-    bill_widgets [label="<0>BILL_WIDGETS|<transfer_edit_tab>transfer_edit_tab|<income_tab>income_tab|<expenses_tab>expenses_tab|<sliver_header_delegate>sliver_header_delegate|<transfer_tab>transfer_tab|<income_edit_tab>income_edit_tab|<expenses_edit_tab>expenses_edit_tab|<sliver_bar_delegate>sliver_bar_delegate|<bill_line_widget>bill_line_widget|<interface_bill_page_inject>interface_bill_page_inject|<bill_header_widget>bill_header_widget",fillcolor="silver:white", gradientangle=240, style="filled"];
+    bill_widgets [label="<0>BILL_WIDGETS|<transfer_edit_tab>transfer_edit_tab|<income_tab>income_tab|<expenses_tab>expenses_tab|<sliver_header_delegate>sliver_header_delegate|<transfer_tab>transfer_tab|<income_edit_tab>income_edit_tab|<expenses_edit_tab>expenses_edit_tab|<sliver_bar_delegate>sliver_bar_delegate|<bill_line_widget>bill_line_widget|<bill_header_widget>bill_header_widget",fillcolor="silver:white", gradientangle=240, style="filled"];
   }
   {
     rank = same; "pages";
@@ -206,7 +206,7 @@ digraph G {
   }
   {
     rank = same; "_configs";
-    _configs_ [label="<0>_CONFIGS_|<custom_color_scheme>custom_color_scheme|<account_type>account_type|<screen_helper>screen_helper|<firebase_options>firebase_options|<budget_type>budget_type|<design_type>design_type|<custom_text_theme>custom_text_theme|<theme_helper>theme_helper",fillcolor="silver:white", gradientangle=240, style="filled"];
+    _configs_ [label="<0>_CONFIGS_|<custom_color_scheme>custom_color_scheme|<account_type>account_type|<payment_type>payment_type|<screen_helper>screen_helper|<firebase_options>firebase_options|<budget_type>budget_type|<design_type>design_type|<custom_text_theme>custom_text_theme|<theme_helper>theme_helper",fillcolor="silver:white", gradientangle=240, style="filled"];
   }
   {
     rank = same; "_mixins";
@@ -294,6 +294,10 @@ digraph G {
   controller -> storage [color="green"];
   controller -> storage [color="green"];
   controller -> structure [color="green"];
+  controller -> _configs_ [color="green"];
+  controller -> _ext_ [color="green"];
+  controller -> storage [color="green"];
+  controller -> structure [color="green"];
   controller -> _ext_ [color="green"];
 
   controller -> storage [color="green"];
@@ -304,6 +308,9 @@ digraph G {
   controller -> herald [color="green"];
   structure_currency -> structure [color="green"];
   structure_currency -> storage [color="green"];
+  structure -> structure [color="green"];
+  structure -> storage [color="green"];
+  structure -> _configs_ [color="green"];
   structure -> structure [color="green"];
   structure -> storage [color="green"];
   structure -> _ext_ [color="green"];
@@ -523,6 +530,20 @@ digraph G {
   components_ -> widgets [color="#FF00FF50"];
   components_ -> form [color="#FF00FF50"];
   components_ -> generic [color="#FF00FF50"];
+  widgets -> herald [color="#FF00FF50"];
+  widgets -> storage [color="#FF00FF50"];
+  widgets -> structure [color="#FF00FF50"];
+  widgets -> structure_navigation [color="#FF00FF50"];
+  widgets -> _ext_ [color="#FF00FF50"];
+  widgets -> generic [color="#FF00FF50"];
+  widgets -> herald [color="#FF00FF50"];
+  widgets -> storage [color="#FF00FF50"];
+  widgets -> structure [color="#FF00FF50"];
+  widgets -> structure_navigation [color="#FF00FF50"];
+  widgets -> _configs_ [color="#FF00FF50"];
+  widgets -> _ext_ [color="#FF00FF50"];
+  widgets -> widgets [color="#FF00FF50"];
+  widgets -> generic [color="#FF00FF50"];
   widgets -> structure_currency [color="#FF00FF50"];
   widgets -> structure_navigation [color="#FF00FF50"];
   widgets -> structure [color="#FF00FF50"];
@@ -690,6 +711,30 @@ digraph G {
   metrics_widgets -> herald [color="#F0F0F050"];
   metrics_widgets -> _configs_ [color="#F0F0F050"];
   metrics_widgets -> widgets [color="#F0F0F050"];
+  automation -> herald [color="#F0F0F050"];
+  automation -> structure [color="#F0F0F050"];
+  automation -> _configs_ [color="#F0F0F050"];
+  automation -> _ext_ [color="#F0F0F050"];
+  automation -> automation [color="#F0F0F050"];
+  automation -> controller [color="#F0F0F050"];
+  automation -> herald [color="#F0F0F050"];
+  automation -> structure [color="#F0F0F050"];
+  automation -> _configs_ [color="#F0F0F050"];
+  automation -> button [color="#F0F0F050"];
+  automation -> wrapper [color="#F0F0F050"];
+  automation -> _interfaces [color="#F0F0F050"];
+  automation -> bill_widgets [color="#F0F0F050"];
+  automation -> controller [color="#F0F0F050"];
+  automation -> herald [color="#F0F0F050"];
+  automation -> storage [color="#F0F0F050"];
+  automation -> structure [color="#F0F0F050"];
+  automation -> structure_navigation [color="#F0F0F050"];
+  automation -> _configs_ [color="#F0F0F050"];
+  automation -> _ext_ [color="#F0F0F050"];
+  automation -> widgets [color="#F0F0F050"];
+  automation -> generic [color="#F0F0F050"];
+  automation -> wrapper [color="#F0F0F050"];
+  automation -> _interfaces [color="#F0F0F050"];
   automation_widgets -> herald [color="#F0F0F050"];
   automation_widgets -> storage [color="#F0F0F050"];
   automation_widgets -> _configs_ [color="#F0F0F050"];
@@ -697,7 +742,15 @@ digraph G {
   automation_widgets -> form [color="#F0F0F050"];
   automation_widgets -> wrapper [color="#F0F0F050"];
   automation_widgets -> generic [color="#F0F0F050"];
+  automation_widgets -> _interfaces [color="#F0F0F050"];
 
+  automation_widgets -> herald [color="#F0F0F050"];
+  automation_widgets -> storage [color="#F0F0F050"];
+  automation_widgets -> structure_navigation [color="#F0F0F050"];
+  automation_widgets -> _configs_ [color="#F0F0F050"];
+  automation_widgets -> widgets [color="#F0F0F050"];
+  automation_widgets -> button [color="#F0F0F050"];
+  automation_widgets -> _interfaces [color="#F0F0F050"];
   automation -> herald [color="#F0F0F050"];
   automation -> _configs_ [color="#F0F0F050"];
   automation -> _interfaces [color="#F0F0F050"];
@@ -818,6 +871,7 @@ digraph G {
   home -> _core [color="#F0F0F050"];
   home -> wrapper [color="#F0F0F050"];
   home -> button [color="#F0F0F050"];
+  home -> controller [color="#F0F0F050"];
   home -> herald [color="#F0F0F050"];
   home -> storage [color="#F0F0F050"];
   home -> structure_currency [color="#F0F0F050"];
@@ -916,6 +970,7 @@ digraph G {
   _interfaces_widgets -> _configs_ [color="#F0F0F050"];
   _interfaces_widgets -> _ext_ [color="#F0F0F050"];
   _interfaces_widgets -> wrapper [color="#F0F0F050"];
+
   invoice -> herald [color="#F0F0F050"];
   invoice -> controller [color="#F0F0F050"];
   invoice -> structure [color="#F0F0F050"];
@@ -969,7 +1024,7 @@ digraph G {
   bill_widgets -> _configs_ [color="#F0F0F050"];
   bill_widgets -> _ext_ [color="#F0F0F050"];
   bill_widgets -> wrapper [color="#F0F0F050"];
-  bill_widgets -> bill_widgets [color="#F0F0F050"];
+  bill_widgets -> _interfaces [color="#F0F0F050"];
   bill_widgets -> form [color="#F0F0F050"];
   bill_widgets -> button [color="#F0F0F050"];
   bill_widgets -> controller [color="#F0F0F050"];
@@ -981,7 +1036,7 @@ digraph G {
   bill_widgets -> _configs_ [color="#F0F0F050"];
   bill_widgets -> _ext_ [color="#F0F0F050"];
   bill_widgets -> wrapper [color="#F0F0F050"];
-  bill_widgets -> bill_widgets [color="#F0F0F050"];
+  bill_widgets -> _interfaces [color="#F0F0F050"];
   bill_widgets -> form [color="#F0F0F050"];
   bill_widgets -> button [color="#F0F0F050"];
   bill_widgets -> herald [color="#F0F0F050"];
@@ -996,7 +1051,7 @@ digraph G {
   bill_widgets -> _configs_ [color="#F0F0F050"];
   bill_widgets -> _ext_ [color="#F0F0F050"];
   bill_widgets -> wrapper [color="#F0F0F050"];
-  bill_widgets -> bill_widgets [color="#F0F0F050"];
+  bill_widgets -> _interfaces [color="#F0F0F050"];
   bill_widgets -> form [color="#F0F0F050"];
   bill_widgets -> button [color="#F0F0F050"];
   bill_widgets -> herald [color="#F0F0F050"];
@@ -1013,7 +1068,6 @@ digraph G {
   bill_widgets -> _configs_ [color="#F0F0F050"];
   bill_widgets -> _ext_ [color="#F0F0F050"];
   bill_widgets -> wrapper [color="#F0F0F050"];
-
   bill_widgets -> herald [color="#F0F0F050"];
   bill_widgets -> structure [color="#F0F0F050"];
   bill_widgets -> _ext_ [color="#F0F0F050"];
@@ -1188,6 +1242,8 @@ digraph G {
 
   _configs_ -> herald [color="green"];
   _configs_ -> _configs_ [color="green"];
+  _configs_ -> herald [color="green"];
+  _configs_ -> form [color="green"];
   _configs_ -> herald [color="green"];
   _configs_ -> form [color="green"];
   _configs_ -> _configs_ [color="green"];

@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2024-11-12 11:19:59</td>
+            <td class="headerValue">2024-11-25 14:28:48</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">0</td>
@@ -72,17 +72,17 @@
 <a name="10"><span class="lineNum">      10 </span>            : import 'package:app_finance/_configs/custom_color_scheme.dart';</a>
 <a name="11"><span class="lineNum">      11 </span>            : import 'package:app_finance/_configs/theme_helper.dart';</a>
 <a name="12"><span class="lineNum">      12 </span>            : import 'package:app_finance/_ext/build_context_ext.dart';</a>
-<a name="13"><span class="lineNum">      13 </span>            : import 'package:app_finance/design/wrapper/input_wrapper.dart';</a>
-<a name="14"><span class="lineNum">      14 </span>            : import 'package:app_finance/design/wrapper/text_wrapper.dart';</a>
-<a name="15"><span class="lineNum">      15 </span>            : import 'package:app_finance/pages/_interfaces/abstract_add_page.dart';</a>
-<a name="16"><span class="lineNum">      16 </span>            : import 'package:app_finance/design/button/full_sized_button_widget.dart';</a>
-<a name="17"><span class="lineNum">      17 </span>            : import 'package:app_finance/design/form/simple_input.dart';</a>
-<a name="18"><span class="lineNum">      18 </span>            : import 'package:app_finance/design/wrapper/row_widget.dart';</a>
-<a name="19"><span class="lineNum">      19 </span>            : import 'package:app_finance/design/wrapper/single_scroll_wrapper.dart';</a>
-<a name="20"><span class="lineNum">      20 </span>            : import 'package:flutter/material.dart';</a>
-<a name="21"><span class="lineNum">      21 </span>            : import 'package:flutter/services.dart';</a>
-<a name="22"><span class="lineNum">      22 </span>            : import 'package:flutter_currency_picker/flutter_currency_picker.dart';</a>
-<a name="23"><span class="lineNum">      23 </span>            : import 'package:intl/intl.dart';</a>
+<a name="13"><span class="lineNum">      13 </span>            : import 'package:app_finance/_ext/date_time_ext.dart';</a>
+<a name="14"><span class="lineNum">      14 </span>            : import 'package:app_finance/design/wrapper/input_wrapper.dart';</a>
+<a name="15"><span class="lineNum">      15 </span>            : import 'package:app_finance/design/wrapper/text_wrapper.dart';</a>
+<a name="16"><span class="lineNum">      16 </span>            : import 'package:app_finance/pages/_interfaces/abstract_add_page.dart';</a>
+<a name="17"><span class="lineNum">      17 </span>            : import 'package:app_finance/design/button/full_sized_button_widget.dart';</a>
+<a name="18"><span class="lineNum">      18 </span>            : import 'package:app_finance/design/form/simple_input.dart';</a>
+<a name="19"><span class="lineNum">      19 </span>            : import 'package:app_finance/design/wrapper/row_widget.dart';</a>
+<a name="20"><span class="lineNum">      20 </span>            : import 'package:app_finance/design/wrapper/single_scroll_wrapper.dart';</a>
+<a name="21"><span class="lineNum">      21 </span>            : import 'package:flutter/material.dart';</a>
+<a name="22"><span class="lineNum">      22 </span>            : import 'package:flutter/services.dart';</a>
+<a name="23"><span class="lineNum">      23 </span>            : import 'package:flutter_currency_picker/flutter_currency_picker.dart';</a>
 <a name="24"><span class="lineNum">      24 </span>            : </a>
 <a name="25"><span class="lineNum">      25 </span>            : class BudgetAddPage extends AbstractAddPage {</a>
 <a name="26"><span class="lineNum">      26 </span>            :   final String? uuid;</a>
@@ -283,7 +283,7 @@
 <a name="221"><span class="lineNum">     221 </span><span class="lineNoCov">          0 :                   children: [</span></a>
 <a name="222"><span class="lineNum">     222 </span><span class="lineNoCov">          0 :                     [</span></a>
 <a name="223"><span class="lineNum">     223 </span><span class="lineNoCov">          0 :                       Text(</span></a>
-<a name="224"><span class="lineNum">     224 </span><span class="lineNoCov">          0 :                         DateFormat.MMMM(AppLocale.code).format(DateTime(DateTime.now().year, e.key)),</span></a>
+<a name="224"><span class="lineNum">     224 </span><span class="lineNoCov">          0 :                         DateTime(DateTime.now().year, e.key).fullMonth(),</span></a>
 <a name="225"><span class="lineNum">     225 </span><span class="lineNoCov">          0 :                         style: textTheme.headlineMedium,</span></a>
 <a name="226"><span class="lineNum">     226 </span>            :                       ),</a>
 <a name="227"><span class="lineNum">     227 </span>            :                     ],</a>
