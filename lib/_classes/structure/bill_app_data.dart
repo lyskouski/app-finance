@@ -25,6 +25,7 @@ class BillAppData extends AbstractAppData with StorageMixin {
     super.createdAt,
     super.createdAtFormatted,
     super.hidden,
+    super.payment,
   });
 
   @override
@@ -44,6 +45,7 @@ class BillAppData extends AbstractAppData with StorageMixin {
       currency: super.currency,
       createdAt: super.createdAt,
       hidden: super.hidden,
+      payment: super.payment,
     );
   }
 
@@ -58,6 +60,7 @@ class BillAppData extends AbstractAppData with StorageMixin {
       updatedAt: DateTime.parse(json['updatedAt']),
       createdAt: DateTime.parse(json['createdAt']),
       hidden: json['hidden'],
+      payment: json['payment'],
     );
   }
 

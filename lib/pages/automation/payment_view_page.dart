@@ -1,0 +1,119 @@
+// Copyright 2024 The terCAD team. All rights reserved.
+// Use of this source code is governed by a CC BY-NC-ND 4.0 license that can be found in the LICENSE file.
+
+import 'package:app_finance/_classes/controller/flow_state_machine.dart';
+import 'package:app_finance/_classes/herald/app_design.dart';
+import 'package:app_finance/_classes/herald/app_locale.dart';
+import 'package:app_finance/_classes/storage/app_data.dart';
+import 'package:app_finance/_classes/structure/bill_app_data.dart';
+import 'package:app_finance/_classes/structure/navigation/app_route.dart';
+import 'package:app_finance/_classes/structure/payment_app_data.dart';
+import 'package:app_finance/_configs/budget_type.dart';
+import 'package:app_finance/_configs/theme_helper.dart';
+import 'package:app_finance/components/widgets/payment_list_widget.dart';
+import 'package:app_finance/design/generic/base_line_widget.dart';
+import 'package:app_finance/design/generic/base_list_infinite_widget.dart';
+import 'package:app_finance/design/generic/base_swipe_widget.dart';
+import 'package:app_finance/design/wrapper/confirmation_wrapper.dart';
+import 'package:app_finance/pages/_interfaces/abstract_page_state.dart';
+import 'package:flutter/material.dart';
+
+class PaymentViewPage extends StatefulWidget {
+  final String uuid;
+
+  const PaymentViewPage({
+    super.key,
+    required this.uuid,
+  });
+
+  @override
+  PaymentViewPageState createState() => PaymentViewPageState();
+}
+
+class PaymentViewPageState extends AbstractPageState<PaymentViewPage> {
+  @override
+  String getButtonName() => '';
+
+  @override
+  String getTitle() => BudgetType.getLabel((state.getByUuid(widget.uuid) as PaymentAppData).title);
+
+  @override
+  Widget buildButton(BuildContext context, BoxConstraints constraints) {
+    double indent = ThemeHelper.getIndent(4);
+    NavigatorState nav = Navigator.of(context);
+    return Container(
+      margin: EdgeInsets.only(left: 2 * indent, right: 2 * indent),
+      child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
+        FloatingActionButton(
+          heroTag: 'payment_view_page_edit',
+          onPressed: () =>
+              nav.pushNamed(AppRoute.automationPaymentEditRoute, arguments: {routeArguments.uuid: widget.uuid}),
+          tooltip: AppLocale.labels.editBillTooltip,
+          child: const Icon(Icons.edit),
+        ),
+        FloatingActionButton(
+          heroTag: 'payment_view_page_deactivate',
+          onPressed: () => ConfirmationWrapper.show(
+            context,
+            () => FlowStateMachine.deactivate(nav, store: super.state, uuid: widget.uuid),
+          ),
+          tooltip: AppLocale.labels.deleteBillTooltip,
+          child: const Icon(Icons.delete),
+        ),
+      ]),
+    );
+  }
+
+  Widget buildListWidget(item, BuildContext context) {
+    String routeList = item is BillAppData ? AppRoute.billViewRoute : AppRoute.invoiceViewRoute;
+    return BaseSwipeWidget(
+      routePath: routeList.replaceAll('/view', '/edit'),
+      uuid: item.uuid,
+      child: BaseLineWidget(
+        uuid: item.uuid ?? '',
+        title: item.title,
+        description: item.description ?? '',
+        details: item.detailsFormatted,
+        progress: item.progress,
+        color: item.color ?? Colors.transparent,
+        icon: item.icon ?? Icons.radio_button_unchecked_sharp,
+        hidden: item.hidden,
+        skip: item.skip,
+        width: double.infinity,
+        route: routeList,
+      ),
+    );
+  }
+
+  @override
+  Widget buildContent(BuildContext context, BoxConstraints constraints) {
+    final item = state.getByUuid(widget.uuid) as PaymentAppData;
+    return Column(
+      crossAxisAlignment: AppDesign.getAlignment(),
+      children: [
+        Container(
+          padding: EdgeInsets.fromLTRB(0, ThemeHelper.getIndent(1.5), 0, ThemeHelper.barHeight),
+          child: PaymentListWidget(item: item, state: state, constraints: constraints),
+        ),
+        ThemeHelper.hIndent,
+        Expanded(
+          child: Column(
+            crossAxisAlignment: AppDesign.getAlignment(),
+            children: [
+              BaseListInfiniteWidget(
+                stream: state.getStream(AppDataType.bills, filter: (item) => item.payment != widget.uuid),
+                width: constraints.maxWidth,
+                buildListWidget: buildListWidget,
+              ),
+              BaseListInfiniteWidget(
+                stream: state.getStream(AppDataType.invoice, filter: (item) => item.payment != widget.uuid),
+                width: constraints.maxWidth,
+                buildListWidget: buildListWidget,
+              ),
+            ],
+          ),
+        ),
+      ],
+    );
+  }
+}

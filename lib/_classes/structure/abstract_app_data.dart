@@ -28,6 +28,7 @@ abstract class AbstractAppData implements InterfaceAppData {
   IconData? icon;
   @override
   Currency? currency;
+  String? payment;
 
   AbstractAppData({
     required this.title,
@@ -43,6 +44,7 @@ abstract class AbstractAppData implements InterfaceAppData {
     this.progress = 1.0,
     this.hidden = false,
     this.skip = false,
+    this.payment,
   })  : _createdAt = createdAt ?? (createdAtFormatted != null ? DateTime.parse(createdAtFormatted) : DateTime.now()),
         _updatedAt = updatedAt ?? DateTime.now(),
         _amount = 0.0 + (details ?? 0.0);
@@ -69,6 +71,7 @@ abstract class AbstractAppData implements InterfaceAppData {
         'progress': progress,
         'hidden': hidden,
         'skip': skip,
+        'payment': payment,
       };
 
   Map<String, Map<String, dynamic>> toFile() {

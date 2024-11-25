@@ -28,6 +28,7 @@ import 'package:app_finance/pages/account/account_page.dart';
 import 'package:app_finance/pages/automation/automation_page.dart';
 import 'package:app_finance/pages/automation/payment_add_page.dart';
 import 'package:app_finance/pages/automation/payment_edit_page.dart';
+import 'package:app_finance/pages/automation/payment_view_page.dart';
 import 'package:app_finance/pages/bill/bill_add_page.dart';
 import 'package:app_finance/pages/bill/bill_edit_page.dart';
 import 'package:app_finance/pages/bill/bill_page.dart';
@@ -164,6 +165,7 @@ class MyAppState extends State<MyApp> {
           AppRoute.accountEditRoute => AccountEditPage(uuid: key),
           AppRoute.automationRoute => const AutomationPage(),
           AppRoute.automationPaymentRoute => const PaymentAddPage(),
+          AppRoute.automationPaymentViewRoute => PaymentViewPage(uuid: key),
           AppRoute.automationPaymentEditRoute => PaymentEditPage(uuid: key),
           AppRoute.billRoute => const BillPage(),
           AppRoute.billAddRoute => const BillAddPage(),

@@ -12,8 +12,8 @@ import 'package:app_finance/_configs/budget_type.dart';
 import 'package:app_finance/_configs/theme_helper.dart';
 import 'package:app_finance/_ext/data_ext.dart';
 import 'package:app_finance/_ext/date_time_ext.dart';
+import 'package:app_finance/components/widgets/payment_list_widget.dart';
 import 'package:app_finance/design/generic/base_header_widget.dart';
-import 'package:app_finance/design/generic/base_line_widget.dart';
 import 'package:app_finance/design/generic/base_swipe_widget.dart';
 import 'package:flutter/material.dart';
 
@@ -59,33 +59,10 @@ class PaymentWidget extends StatelessWidget {
   }
 
   Widget buildListWidget(PaymentAppData item, BuildContext context, BoxConstraints constraints) {
-    final uuid = item.uuid ?? '';
-    dynamic obj = item.data.toDataObject(state);
-    String type = AppLocale.labels.flowTypeInvoice;
-    String symbol = '+';
-    if (obj is BillAppData) {
-      type = AppLocale.labels.bill;
-      symbol = '-';
-    } else if (obj is InvoiceAppData && obj.accountFrom != null) {
-      type = AppLocale.labels.transferHeadline;
-      symbol = '';
-    }
     return BaseSwipeWidget(
       routePath: AppRoute.automationPaymentEditRoute,
-      uuid: uuid,
-      child: BaseLineWidget(
-        uuid: uuid,
-        title: '$type: ${obj.title}',
-        description: '${item.description}, ${item.updatedAt.monthDay()}',
-        details: '$symbol${obj.detailsFormatted}',
-        progress: 1.0,
-        color: obj.color ?? Colors.transparent,
-        icon: obj.icon ?? Icons.radio_button_unchecked_sharp,
-        hidden: obj.hidden,
-        skip: obj.skip,
-        width: width ?? constraints.maxWidth,
-        route: AppRoute.automationPaymentEditRoute,
-      ),
+      uuid: item.uuid ?? '',
+      child: PaymentListWidget(item: item, state: state, width: width, constraints: constraints),
     );
   }
 
