@@ -22,6 +22,7 @@ class FilePicker with FileImportMixin {
     FileParser.attrCategoryName,
     FileParser.attrBillDate,
     FileParser.attrBillType,
+    FileParser.attrBillCurrency,
   ];
   final header = [
     AppLocale.labels.uuid,
@@ -30,6 +31,7 @@ class FilePicker with FileImportMixin {
     AppLocale.labels.budget,
     AppLocale.labels.balanceDate,
     AppLocale.labels.flowTypeTooltip,
+    AppLocale.labels.currency,
   ];
 
   FilePicker(this.ext);
@@ -82,7 +84,6 @@ class FilePicker with FileImportMixin {
 
   FileScope _parseOfx(String content) {
     FileScope result = [header];
-    final xmlData = XmlDocument.parse(content);
     int amountType = 1;
     int dateType = 4;
     int billType = 5;
@@ -91,23 +92,28 @@ class FilePicker with FileImportMixin {
       'TRNAMT': amountType, // Amount
       'NAME': 2, // Description
       'DTPOSTED': dateType, // Date
+      'CURDEF': 6,
     };
-    for (XmlElement node in xmlData.findAllElements('STMTTRN')) {
-      final tmp = List<dynamic>.filled(6, null);
-      for (XmlElement element in node.childElements) {
-        int? pos = mapping[element.name.toString()];
-        String value = element.innerText;
-        if (pos != null) {
+
+    final data = content.split('<STMTTRN>');
+    for (int i = 1; i < data.length; i++) {
+      final tmp = List<dynamic>.filled(7, null);
+      for (var key in mapping.keys) {
+        final regexp = RegExp(r'(?<=<' + key + r'>)(.*?)(?=<)');
+        final match = regexp.firstMatch(data[i]);
+        if (match != null) {
+          int pos = mapping[key]!;
+          tmp[pos] = match.group(0)!;
           if (pos == dateType) {
-            List<String> date = value.split('');
-            date.insert(8, 'T');
-            tmp[pos] = date.join('');
+            List<String> date = tmp[pos].split('');
+            if (date.length > 8) {
+              date.insert(8, 'T');
+              tmp[pos] = date.join('');
+            }
           } else if (pos == amountType) {
-            double nm = double.tryParse(value) ?? 0.0;
+            double nm = double.tryParse(tmp[pos]) ?? 0.0;
             tmp[pos] = nm.abs().toString();
-            tmp[billType] = nm > 0 ? AppLocale.labels.flowTypeInvoice : '';
-          } else {
-            tmp[pos] = value;
+            tmp[billType] = nm > 0 ? AppLocale.labels.flowTypeInvoice : AppLocale.labels.bill;
           }
         }
       }
