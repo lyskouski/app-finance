@@ -45,7 +45,6 @@ dependencies:
   webdav_client: ^1.2.1
   file_picker: ^8.0.3
   csv: ^6.0.0
-  xml: ^6.3.0
   notifications: ^3.0.0
   peerdart: ^0.5.3
   flutter_grid_layout: ^1.1.1

@@ -5,7 +5,6 @@ import 'package:app_finance/_classes/herald/app_locale.dart';
 import 'package:app_finance/_classes/storage/file_parser.dart';
 import 'package:app_finance/_mixins/file/file_import_mixin.dart';
 import 'package:csv/csv.dart';
-import 'package:xml/xml.dart';
 
 typedef FileScope = List<List<dynamic>>;
 
