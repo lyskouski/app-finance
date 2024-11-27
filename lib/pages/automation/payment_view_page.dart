@@ -10,6 +10,7 @@ import 'package:app_finance/_classes/structure/invoice_app_data.dart';
 import 'package:app_finance/_classes/structure/navigation/app_route.dart';
 import 'package:app_finance/_classes/structure/payment_app_data.dart';
 import 'package:app_finance/_configs/budget_type.dart';
+import 'package:app_finance/_configs/screen_helper.dart';
 import 'package:app_finance/_configs/theme_helper.dart';
 import 'package:app_finance/_ext/data_ext.dart';
 import 'package:app_finance/components/widgets/payment_list_widget.dart';
@@ -91,27 +92,28 @@ class PaymentViewPageState extends AbstractPageState<PaymentViewPage> {
 
   @override
   Widget buildContent(BuildContext context, BoxConstraints constraints) {
-    width = constraints.maxWidth;
+    width = ThemeHelper.getWidth(context, 2);
+    final isLeft = ScreenHelper.state().isLeftBar;
+    if (isLeft) {
+      width -= ThemeHelper.barHeight;
+    }
     final indent = ThemeHelper.getIndent();
     final item = state.getByUuid(widget.uuid) as PaymentAppData;
     final obj = item.data.toDataObject(state);
     return Container(
-      padding: EdgeInsets.fromLTRB(0, indent * 1.5, 0, ThemeHelper.barHeight),
+      padding: EdgeInsets.fromLTRB(0, indent * 1.5, 0, indent),
       child: Column(
         crossAxisAlignment: AppDesign.getAlignment(),
         children: [
-          PaymentListWidget(item: item, state: state, width: constraints.maxWidth),
-          Padding(
-            padding: EdgeInsets.fromLTRB(indent, 0, indent, 0),
-            child: Expanded(
-              child: BaseListInfiniteWidget(
-                stream: state.getStream(
-                  obj is InvoiceAppData ? AppDataType.invoice : AppDataType.bills,
-                  filter: (item) => item.payment != widget.uuid,
-                ),
-                width: constraints.maxWidth,
-                buildListWidget: buildListWidget,
+          PaymentListWidget(item: item, state: state, width: width),
+          Expanded(
+            child: BaseListInfiniteWidget(
+              stream: state.getStream(
+                obj is InvoiceAppData ? AppDataType.invoice : AppDataType.bills,
+                filter: (item) => item.payment != widget.uuid,
               ),
+              width: width,
+              buildListWidget: buildListWidget,
             ),
           ),
         ],

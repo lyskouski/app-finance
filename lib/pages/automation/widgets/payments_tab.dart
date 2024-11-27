@@ -49,10 +49,11 @@ class PaymentsTabState extends State<PaymentsTab> {
 
   @override
   Widget build(BuildContext context) {
+    final indent = ThemeHelper.getIndent();
     return PaymentWidget(
       data: widget.state.getList(AppDataType.payments).cast(),
       state: widget.state,
-      margin: EdgeInsets.fromLTRB(0, ThemeHelper.getIndent(), 0, ThemeHelper.barHeight),
+      margin: EdgeInsets.fromLTRB(0, indent, 0, indent),
     );
   }
 }
