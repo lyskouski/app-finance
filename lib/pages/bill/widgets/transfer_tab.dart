@@ -9,7 +9,6 @@ import 'package:app_finance/_classes/structure/invoice_app_data.dart';
 import 'package:app_finance/_classes/structure/navigation/app_route.dart';
 import 'package:app_finance/_classes/controller/focus_controller.dart';
 import 'package:app_finance/_classes/storage/app_data.dart';
-import 'package:app_finance/_configs/screen_helper.dart';
 import 'package:app_finance/_configs/theme_helper.dart';
 import 'package:app_finance/_ext/build_context_ext.dart';
 import 'package:app_finance/_ext/double_ext.dart';
@@ -141,56 +140,52 @@ class TransferTabState<T extends TransferTab> extends State<T> {
   Widget build(BuildContext context) {
     final textTheme = context.textTheme;
     final indent = ThemeHelper.getIndent(2);
-    double width = ScreenHelper.state().width - indent * 3;
-    if (widget.isLeft) {
-      width -= ThemeHelper.barHeight;
-    }
     return SingleScrollWrapper(
       controller: focus,
       child: Container(
         margin: EdgeInsets.fromLTRB(indent, indent, indent, 240),
-        width: width,
-        child: Column(
-          crossAxisAlignment: AppDesign.getAlignment(),
-          children: [
-            InputWrapper(
-              type: NamedInputType.accountSelector,
-              isRequired: true,
-              value: accountFrom != null ? widget.state.getByUuid(accountFrom!) : null,
-              title: AppLocale.labels.accountFrom,
-              tooltip: '${AppLocale.labels.titleAccountTooltip} (${AppLocale.labels.accountFrom})',
-              showError: hasErrors && accountFrom == null,
-              state: widget.state,
-              onChange: (value) => setState(() {
-                accountFrom = value?.uuid;
-                if (value != null) {
-                  accountFromCurrency = value.currency;
-                  currency = accountFromCurrency;
-                }
-              }),
-              width: width,
-            ),
-            InputWrapper(
-              type: NamedInputType.accountSelector,
-              isRequired: true,
-              value: accountTo != null ? widget.state.getByUuid(accountTo!) : null,
-              title: AppLocale.labels.accountTo,
-              tooltip: '${AppLocale.labels.titleAccountTooltip} (${AppLocale.labels.accountTo})',
-              showError: hasErrors && accountTo == null,
-              state: widget.state,
-              onChange: (value) => setState(() {
-                accountTo = value?.uuid;
-                if (value != null) {
-                  accountToCurrency = value.currency;
-                  currency ??= accountToCurrency;
-                }
-              }),
-              width: width,
-            ),
-            LayoutBuilder(builder: (context, constraints) {
-              return RowWidget(
+        child: LayoutBuilder(builder: (context, constraints) {
+          double width = constraints.maxWidth;
+          return Column(
+            crossAxisAlignment: AppDesign.getAlignment(),
+            children: [
+              InputWrapper(
+                type: NamedInputType.accountSelector,
+                isRequired: true,
+                value: accountFrom != null ? widget.state.getByUuid(accountFrom!) : null,
+                title: AppLocale.labels.accountFrom,
+                tooltip: '${AppLocale.labels.titleAccountTooltip} (${AppLocale.labels.accountFrom})',
+                showError: hasErrors && accountFrom == null,
+                state: widget.state,
+                onChange: (value) => setState(() {
+                  accountFrom = value?.uuid;
+                  if (value != null) {
+                    accountFromCurrency = value.currency;
+                    currency = accountFromCurrency;
+                  }
+                }),
+                width: width,
+              ),
+              InputWrapper(
+                type: NamedInputType.accountSelector,
+                isRequired: true,
+                value: accountTo != null ? widget.state.getByUuid(accountTo!) : null,
+                title: AppLocale.labels.accountTo,
+                tooltip: '${AppLocale.labels.titleAccountTooltip} (${AppLocale.labels.accountTo})',
+                showError: hasErrors && accountTo == null,
+                state: widget.state,
+                onChange: (value) => setState(() {
+                  accountTo = value?.uuid;
+                  if (value != null) {
+                    accountToCurrency = value.currency;
+                    currency ??= accountToCurrency;
+                  }
+                }),
+                width: width,
+              ),
+              RowWidget(
                 indent: indent,
-                maxWidth: constraints.maxWidth,
+                maxWidth: width,
                 chunk: const [125, null],
                 children: [
                   [
@@ -214,35 +209,33 @@ class TransferTabState<T extends TransferTab> extends State<T> {
                     ),
                   ],
                 ],
-              );
-            }),
-            CurrencyExchangeInput(
-              key: ValueKey('transfer${currency?.code}${accountFromCurrency?.code}${accountToCurrency?.code}'),
-              width: width + indent,
-              indent: indent,
-              target: currency,
-              controller: exchange,
-              source: [accountFromCurrency, accountToCurrency],
-            ),
-            InputWrapper.text(
-              title: AppLocale.labels.description,
-              tooltip: AppLocale.labels.transferTooltip,
-              controller: description,
-            ),
-            Text(
-              AppLocale.labels.balanceDate,
-              style: textTheme.bodyLarge,
-            ),
-            LayoutBuilder(builder: (context, constraints) {
-              return DateTimeInput(
-                width: constraints.maxWidth - indent,
+              ),
+              CurrencyExchangeInput(
+                key: ValueKey('transfer${currency?.code}${accountFromCurrency?.code}${accountToCurrency?.code}'),
+                width: width + indent,
+                indent: indent,
+                target: currency,
+                controller: exchange,
+                source: [accountFromCurrency, accountToCurrency],
+              ),
+              InputWrapper.text(
+                title: AppLocale.labels.description,
+                tooltip: AppLocale.labels.transferTooltip,
+                controller: description,
+              ),
+              Text(
+                AppLocale.labels.balanceDate,
+                style: textTheme.bodyLarge,
+              ),
+              DateTimeInput(
+                width: width - indent,
                 value: createdAt,
                 setState: (value) => setState(() => createdAt = value),
-              );
-            }),
-            ThemeHelper.formEndBox,
-          ],
-        ),
+              ),
+              ThemeHelper.formEndBox,
+            ],
+          );
+        }),
       ),
     );
   }
