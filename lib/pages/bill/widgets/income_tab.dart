@@ -10,7 +10,6 @@ import 'package:app_finance/_classes/structure/navigation/app_route.dart';
 import 'package:app_finance/_classes/controller/focus_controller.dart';
 import 'package:app_finance/_classes/storage/app_preferences.dart';
 import 'package:app_finance/_classes/storage/app_data.dart';
-import 'package:app_finance/_configs/screen_helper.dart';
 import 'package:app_finance/_configs/theme_helper.dart';
 import 'package:app_finance/_ext/build_context_ext.dart';
 import 'package:app_finance/_ext/double_ext.dart';
@@ -140,40 +139,35 @@ class IncomeTabState<T extends IncomeTab> extends State<IncomeTab> {
   Widget build(BuildContext context) {
     final textTheme = context.textTheme;
     final indent = ThemeHelper.getIndent(2);
-    double width = ScreenHelper.state().width - indent * 3;
-    if (widget.isLeft) {
-      width -= ThemeHelper.barHeight;
-    }
-
     return SingleScrollWrapper(
       controller: focus,
       child: Container(
         margin: EdgeInsets.fromLTRB(indent, indent, indent, 240),
-        width: width,
-        child: Column(
-          crossAxisAlignment: AppDesign.getAlignment(),
-          children: [
-            InputWrapper(
-              type: NamedInputType.accountSelector,
-              isRequired: true,
-              value: account != null ? widget.state.getByUuid(account!) : null,
-              title: AppLocale.labels.account,
-              tooltip: AppLocale.labels.titleAccountTooltip,
-              showError: hasErrors && account == null,
-              state: widget.state,
-              onChange: (value) => setState(() {
-                account = value?.uuid;
-                if (value != null) {
-                  currency = value.currency;
-                  accountCurrency = currency;
-                }
-              }),
-              width: width,
-            ),
-            LayoutBuilder(builder: (context, constraints) {
-              return RowWidget(
+        child: LayoutBuilder(builder: (context, constraints) {
+          double width = constraints.maxWidth;
+          return Column(
+            crossAxisAlignment: AppDesign.getAlignment(),
+            children: [
+              InputWrapper(
+                type: NamedInputType.accountSelector,
+                isRequired: true,
+                value: account != null ? widget.state.getByUuid(account!) : null,
+                title: AppLocale.labels.account,
+                tooltip: AppLocale.labels.titleAccountTooltip,
+                showError: hasErrors && account == null,
+                state: widget.state,
+                onChange: (value) => setState(() {
+                  account = value?.uuid;
+                  if (value != null) {
+                    currency = value.currency;
+                    accountCurrency = currency;
+                  }
+                }),
+                width: width,
+              ),
+              RowWidget(
                 indent: indent,
-                maxWidth: constraints.maxWidth,
+                maxWidth: width,
                 chunk: const [125, null],
                 children: [
                   [
@@ -197,35 +191,33 @@ class IncomeTabState<T extends IncomeTab> extends State<IncomeTab> {
                     ),
                   ],
                 ],
-              );
-            }),
-            CurrencyExchangeInput(
-              key: ValueKey('income${currency?.code}${accountCurrency?.code}'),
-              width: width + indent,
-              indent: indent,
-              target: currency,
-              controller: exchange,
-              source: [accountCurrency],
-            ),
-            InputWrapper.text(
-              title: AppLocale.labels.description,
-              tooltip: AppLocale.labels.incomeTooltip,
-              controller: description,
-            ),
-            Text(
-              AppLocale.labels.balanceDate,
-              style: textTheme.bodyLarge,
-            ),
-            LayoutBuilder(builder: (context, constraints) {
-              return DateTimeInput(
-                width: constraints.maxWidth - indent,
+              ),
+              CurrencyExchangeInput(
+                key: ValueKey('income${currency?.code}${accountCurrency?.code}'),
+                width: width + indent,
+                indent: indent,
+                target: currency,
+                controller: exchange,
+                source: [accountCurrency],
+              ),
+              InputWrapper.text(
+                title: AppLocale.labels.description,
+                tooltip: AppLocale.labels.incomeTooltip,
+                controller: description,
+              ),
+              Text(
+                AppLocale.labels.balanceDate,
+                style: textTheme.bodyLarge,
+              ),
+              DateTimeInput(
+                width: width - indent,
                 value: createdAt,
                 setState: (value) => setState(() => createdAt = value),
-              );
-            }),
-            ThemeHelper.formEndBox,
-          ],
-        ),
+              ),
+              ThemeHelper.formEndBox,
+            ],
+          );
+        }),
       ),
     );
   }

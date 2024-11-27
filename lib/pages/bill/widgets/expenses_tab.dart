@@ -11,7 +11,6 @@ import 'package:app_finance/_classes/controller/focus_controller.dart';
 import 'package:app_finance/_classes/storage/app_preferences.dart';
 import 'package:app_finance/_classes/storage/app_data.dart';
 import 'package:app_finance/_configs/account_type.dart';
-import 'package:app_finance/_configs/screen_helper.dart';
 import 'package:app_finance/_configs/theme_helper.dart';
 import 'package:app_finance/_ext/build_context_ext.dart';
 import 'package:app_finance/_ext/double_ext.dart';
@@ -161,40 +160,37 @@ class ExpensesTabState<T extends ExpensesTab> extends State<T> {
   Widget build(BuildContext context) {
     final textTheme = context.textTheme;
     final indent = ThemeHelper.getIndent(2);
-    double width = ScreenHelper.state().width - indent * 3;
-    if (widget.isLeft) {
-      width -= ThemeHelper.barHeight;
-    }
 
     return SingleScrollWrapper(
       controller: focus,
       child: Container(
         margin: EdgeInsets.fromLTRB(indent, indent, indent, 240),
-        child: Column(
-          crossAxisAlignment: AppDesign.getAlignment(),
-          children: [
-            InputWrapper(
-              type: NamedInputType.accountSelector,
-              isRequired: true,
-              value: account != null ? widget.state.getByUuid(account!) : null,
-              title: AppLocale.labels.account,
-              tooltip: AppLocale.labels.titleAccountTooltip,
-              showError: hasErrors && account == null,
-              state: widget.state,
-              options: accountList,
-              onChange: (value) => setState(() {
-                account = value?.uuid;
-                if (value != null) {
-                  accountCurrency = value.currency;
-                  currency = accountCurrency;
-                }
-              }),
-              width: width,
-            ),
-            LayoutBuilder(builder: (context, constraints) {
-              return RowWidget(
+        child: LayoutBuilder(builder: (context, constraints) {
+          double width = constraints.maxWidth;
+          return Column(
+            crossAxisAlignment: AppDesign.getAlignment(),
+            children: [
+              InputWrapper(
+                type: NamedInputType.accountSelector,
+                isRequired: true,
+                value: account != null ? widget.state.getByUuid(account!) : null,
+                title: AppLocale.labels.account,
+                tooltip: AppLocale.labels.titleAccountTooltip,
+                showError: hasErrors && account == null,
+                state: widget.state,
+                options: accountList,
+                onChange: (value) => setState(() {
+                  account = value?.uuid;
+                  if (value != null) {
+                    accountCurrency = value.currency;
+                    currency = accountCurrency;
+                  }
+                }),
+                width: width,
+              ),
+              RowWidget(
                 indent: indent,
-                maxWidth: constraints.maxWidth,
+                maxWidth: width,
                 chunk: const [125, null],
                 children: [
                   [
@@ -218,52 +214,50 @@ class ExpensesTabState<T extends ExpensesTab> extends State<T> {
                     ),
                   ],
                 ],
-              );
-            }),
-            CurrencyExchangeInput(
-              key: ValueKey('expense${currency?.code}${accountCurrency?.code}${budgetCurrency?.code}'),
-              width: width + indent,
-              indent: indent,
-              target: currency,
-              controller: exchange,
-              source: [accountCurrency, budgetCurrency],
-            ),
-            InputWrapper.text(
-              title: AppLocale.labels.description,
-              controller: description,
-              tooltip: AppLocale.labels.descriptionTooltip,
-            ),
-            InputWrapper(
-              type: NamedInputType.budgetSelector,
-              isRequired: true,
-              value: budget != null ? widget.state.getByUuid(budget!) : null,
-              title: AppLocale.labels.budget,
-              showError: hasErrors && budget == null,
-              tooltip: AppLocale.labels.titleBudgetTooltip,
-              state: widget.state,
-              onChange: (value) => setState(() {
-                budget = value?.uuid;
-                if (value != null) {
-                  budgetCurrency = value.currency;
-                  currency ??= budgetCurrency;
-                }
-              }),
-              width: width,
-            ),
-            Text(
-              AppLocale.labels.expenseDateTime,
-              style: textTheme.bodyLarge,
-            ),
-            LayoutBuilder(builder: (context, constraints) {
-              return DateTimeInput(
-                width: constraints.maxWidth - indent,
+              ),
+              CurrencyExchangeInput(
+                key: ValueKey('expense${currency?.code}${accountCurrency?.code}${budgetCurrency?.code}'),
+                width: width + indent,
+                indent: indent,
+                target: currency,
+                controller: exchange,
+                source: [accountCurrency, budgetCurrency],
+              ),
+              InputWrapper.text(
+                title: AppLocale.labels.description,
+                controller: description,
+                tooltip: AppLocale.labels.descriptionTooltip,
+              ),
+              InputWrapper(
+                type: NamedInputType.budgetSelector,
+                isRequired: true,
+                value: budget != null ? widget.state.getByUuid(budget!) : null,
+                title: AppLocale.labels.budget,
+                showError: hasErrors && budget == null,
+                tooltip: AppLocale.labels.titleBudgetTooltip,
+                state: widget.state,
+                onChange: (value) => setState(() {
+                  budget = value?.uuid;
+                  if (value != null) {
+                    budgetCurrency = value.currency;
+                    currency ??= budgetCurrency;
+                  }
+                }),
+                width: width,
+              ),
+              Text(
+                AppLocale.labels.expenseDateTime,
+                style: textTheme.bodyLarge,
+              ),
+              DateTimeInput(
+                width: width - indent,
                 value: createdAt ?? DateTime.now(),
                 setState: (value) => setState(() => createdAt = value),
-              );
-            }),
-            ThemeHelper.formEndBox,
-          ],
-        ),
+              ),
+              ThemeHelper.formEndBox,
+            ],
+          );
+        }),
       ),
     );
   }

@@ -83,31 +83,33 @@ class CurrencyExchangeInputState extends State<CurrencyExchangeInput> {
                       )),
                   Padding(
                     padding: EdgeInsets.fromLTRB(widget.indent, 0, widget.indent, 0),
-                    child: RowWidget(
-                      indent: widget.indent,
-                      maxWidth: widget.width - 2 * widget.indent - 2,
-                      chunk: const [0.5, null],
-                      children: [
-                        [
-                          InputWrapper.text(
-                            title: AppLocale.labels.conversion,
-                            controller: scope.rate,
-                            tooltip: '${scope.to} ${AppLocale.labels.conversion}',
-                            inputType: const TextInputType.numberWithOptions(decimal: true),
-                            formatter: [SimpleInputFormatter.filterDouble],
-                          ),
+                    child: LayoutBuilder(builder: (context, constraints) {
+                      return RowWidget(
+                        indent: widget.indent,
+                        maxWidth: constraints.maxWidth,
+                        chunk: const [0.5, null],
+                        children: [
+                          [
+                            InputWrapper.text(
+                              title: AppLocale.labels.conversion,
+                              controller: scope.rate,
+                              tooltip: '${scope.to} ${AppLocale.labels.conversion}',
+                              inputType: const TextInputType.numberWithOptions(decimal: true),
+                              formatter: [SimpleInputFormatter.filterDouble],
+                            ),
+                          ],
+                          [
+                            InputWrapper.text(
+                              title: AppLocale.labels.conversionMessage(scope.to),
+                              controller: scope.sum,
+                              tooltip: '${scope.from} ${AppLocale.labels.conversionMessage(scope.to)}',
+                              inputType: const TextInputType.numberWithOptions(decimal: true),
+                              formatter: [SimpleInputFormatter.filterDouble],
+                            ),
+                          ],
                         ],
-                        [
-                          InputWrapper.text(
-                            title: AppLocale.labels.conversionMessage(scope.to),
-                            controller: scope.sum,
-                            tooltip: '${scope.from} ${AppLocale.labels.conversionMessage(scope.to)}',
-                            inputType: const TextInputType.numberWithOptions(decimal: true),
-                            formatter: [SimpleInputFormatter.filterDouble],
-                          ),
-                        ],
-                      ],
-                    ),
+                      );
+                    }),
                   ),
                 ],
               ),
