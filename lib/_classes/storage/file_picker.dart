@@ -23,7 +23,7 @@ class FilePicker with FileImportMixin {
     FileParser.attrBillType,
     FileParser.attrBillCurrency,
   ];
-  final header = [
+  final List<String> header = [
     AppLocale.labels.uuid,
     AppLocale.labels.expense,
     AppLocale.labels.description,
@@ -131,7 +131,7 @@ class FilePicker with FileImportMixin {
         case qifFormat:
           return _parseQif(content, splitter);
         case ofxFormat:
-          return _parseOfx(content);
+          return _parseOfx(content.replaceAll(splitter, ''));
       }
     } else {
       throw Exception(AppLocale.labels.missingContent);
