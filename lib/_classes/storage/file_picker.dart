@@ -21,7 +21,6 @@ class FilePicker with FileImportMixin {
     FileParser.attrCategoryName,
     FileParser.attrBillDate,
     FileParser.attrBillType,
-    FileParser.attrBillCurrency,
   ];
   final List<String> header = [
     AppLocale.labels.uuid,
@@ -30,7 +29,6 @@ class FilePicker with FileImportMixin {
     AppLocale.labels.budget,
     AppLocale.labels.balanceDate,
     AppLocale.labels.flowTypeTooltip,
-    AppLocale.labels.currency,
   ];
 
   FilePicker(this.ext);
@@ -91,7 +89,6 @@ class FilePicker with FileImportMixin {
       'TRNAMT': amountType, // Amount
       'NAME': 2, // Description
       'DTPOSTED': dateType, // Date
-      'CURDEF': 6,
     };
 
     final data = content.split('<STMTTRN>');
