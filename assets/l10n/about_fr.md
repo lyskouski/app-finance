@@ -74,7 +74,7 @@ Elle permet aux utilisateurs de gérer leurs finances sans effort, tout en veill
   - Défilement automatique vers l'élément focalisé sur le formulaire
   - Développer / Réduire les sections sur la page principale
   - Glissement pour un accès rapide aux actions de modification et de suppression
-  - Zoom avant/arrière (de 60 % à 200 %) via « Paramètres ».
+  - Zoom avant/arrière (de 60 % à 200 %) via « Paramètres »
   - Raccourcis
 
 | Description                              | Raccourci                      |

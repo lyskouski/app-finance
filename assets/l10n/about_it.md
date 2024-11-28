@@ -74,7 +74,7 @@ Che permetta agli utenti di gestire le proprie finanze senza sforzo, garantendo 
   - Scorrimento automatico verso l'elemento focalizzato nel modulo
   - Espansione/riduzione delle sezioni nella pagina principale
   - Scorrimento per un accesso rapido alle azioni di Modifica e Cancellazione
-  - Zoom in/out (dal 60% al 200%) tramite “Impostazioni”.
+  - Zoom in/out (dal 60% al 200%) tramite “Impostazioni”
   - Scorciatoie
 
 | Descrizione                              | Scorciatoia                    |

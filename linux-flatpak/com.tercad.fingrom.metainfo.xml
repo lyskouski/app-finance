@@ -29,6 +29,7 @@
         <li>Bills, Transfers, Incomes (Invoices)</li>
         <li>Goals Definition</li>
         <li>Exchange rates</li>
+        <li>Recurring Payments</li>
         <li>Metrics</li>
         <li>Synchronization between devices (P2P) </li>
         <li>Recovery via WebDav or a direct File</li>

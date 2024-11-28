@@ -74,7 +74,7 @@ Dat stelt gebruikers in staat om moeiteloos hun financiën te beheren en zorgt e
   - Automatisch bladeren naar het gefocuste element op Formulier
   - Secties uitvouwen/vouwen op hoofdpagina
   - Vegen voor snelle toegang tot Bewerken en Verwijderen
-  - In-/uitzoomen (van 60% tot 200%) via “Instellingen”.
+  - In-/uitzoomen (van 60% tot 200%) via “Instellingen”
   - Snelkoppelingen
 
 | Beschrijving                        | Snelkoppeling                  |
