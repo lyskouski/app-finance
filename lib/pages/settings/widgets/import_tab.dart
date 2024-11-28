@@ -191,7 +191,7 @@ class ImportTabState extends State<ImportTab> {
                     title: AppLocale.labels.def('${AppLocale.labels.account}: ${AppLocale.labels.title}'),
                     tooltip: AppLocale.labels.titleAccountTooltip,
                     value: state.getByUuid(attrValue[FileParser.attrAccountName] ?? ''),
-                    onChange: (value) => setState(() => attrValue[FileParser.attrAccountName] = value?.id),
+                    onChange: (value) => setState(() => attrValue[FileParser.attrAccountName] = value?.uuid),
                     width: width,
                     state: state,
                   ),
@@ -203,7 +203,7 @@ class ImportTabState extends State<ImportTab> {
                     title: AppLocale.labels.def('${AppLocale.labels.budget}: ${AppLocale.labels.title}'),
                     tooltip: AppLocale.labels.titleBudgetTooltip,
                     value: state.getByUuid(attrValue[FileParser.attrCategoryName] ?? ''),
-                    onChange: (value) => setState(() => attrValue[FileParser.attrCategoryName] = value?.id),
+                    onChange: (value) => setState(() => attrValue[FileParser.attrCategoryName] = value?.uuid),
                     width: width,
                     state: state,
                   ),
@@ -231,7 +231,7 @@ class ImportTabState extends State<ImportTab> {
                   InputWrapper.currency(
                     title: AppLocale.labels.def('${AppLocale.labels.bill}: ${AppLocale.labels.currency}'),
                     value: CurrencyProvider.find(attrValue[FileParser.attrBillCurrency]),
-                    onChange: (value) => setState(() => attrValue[FileParser.attrBillCurrency] = value?.id),
+                    onChange: (value) => setState(() => attrValue[FileParser.attrBillCurrency] = value?.code),
                   ),
                 ],
                 Column(crossAxisAlignment: AppDesign.getAlignment(), children: [
