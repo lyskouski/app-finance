@@ -2,6 +2,10 @@
 
 _La liste complète des mises à jour peut être consultée via l'élément de navigation "À propos" du bouton "Conseils"._
 
+### 5.9.0
+- Ajout de paiements récurrents
+- Amélioration de l'importation OFX
+
 ### 5.8.0
 - Export vers un fichier Excel `XLSX`
 - Différents calendriers : hebdomadaire, mensuel, annuel

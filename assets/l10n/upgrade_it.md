@@ -3,6 +3,10 @@
 _L'elenco completo degli aggiornamenti può essere consultato tramite la voce di navigazione “Informazioni” del 
 pulsante “Suggerimenti”._
 
+### 5.9.0
+- Aggiunta di pagamenti ricorrenti
+- Miglioramento dell'importazione OFX
+
 ### 5.8.0
 - Esportazione in file Excel `XLSX`
 - Cronologia diversa: settimanale, mensile, annuale

@@ -2,6 +2,10 @@
 
 _The full list of updates can be viewed via the "About" navigation item on the "Hints" button._
 
+### 5.9.0
+- Adding Recurring Payments
+- Improving OFX import
+
 ### 5.8.0
 - Export to Excel `XLSX` file
 - Different timeline: weekly, monthly, yearly

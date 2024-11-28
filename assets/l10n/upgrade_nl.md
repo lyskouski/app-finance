@@ -2,6 +2,10 @@
 
 _De volledige lijst met updates kan worden bekeken via het navigatie-item “Over” op de knop “Hints”._
 
+### 5.9.0
+- Terugkerende betalingen toevoegen
+- OFX import verbeteren
+
 ### 5.8.0
 - Exporteren naar Excel `XLSX`-bestand
 - Verschillende tijdlijn: wekelijks, maandelijks, jaarlijks

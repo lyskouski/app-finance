@@ -2,6 +2,10 @@
 
 _Yeniləmələrin tam siyahısına "İpucu" düyməsindəki "Haqqında" naviqasiya elementi vasitəsilə baxmaq olar._
 
+### 5.9.0
+- Təkrarlanan ödənişlərin əlavə edilməsi
+- OFX idxalının təkmilləşdirilməsi
+
 ### 5.8.0
 - Excel `XLSX` faylına ixrac edin
 - Fərqli qrafik: həftəlik, aylıq, illik

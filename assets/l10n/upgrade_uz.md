@@ -2,6 +2,10 @@
 
 _Yangilanishlarning toʻliq roʻyxatini “Maslahat” tugmasidagi “Haqida” navigatsiya bandi orqali koʻrish mumkin._
 
+### 5.9.0
+- Takroriy to'lovlarni qo'shish
+- OFX importini yaxshilash
+
 ### 5.8.0
 - Excel `XLSX` fayliga eksport qiling
 - Turli vaqt jadvallari: haftalik, oylik, yillik
