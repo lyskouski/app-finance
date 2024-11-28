@@ -303,7 +303,7 @@
     "orderPin": "Önceliklendirilmiş sıra",
     "orderUnpin": "Genelleştirilmiş düzen",
     "outputFile": "Dosya için hedef",
-    "parseFile": ".csv dosyasını ayrıştır",
+    "parseFile": "Dosyayı Ayrıştırma",
     "password": "Şifre",
     "path": "Dosya Adı (içine kaydetmek veya içinden yüklemek için)",
     "paymentType": "Ödeme Aralığı",

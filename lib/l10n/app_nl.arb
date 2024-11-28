@@ -303,7 +303,7 @@
     "orderPin": "Geprioriteerde volgorde",
     "orderUnpin": "Algemene volgorde",
     "outputFile": "Bestemming voor het bestand",
-    "parseFile": ".csv-bestand parsen",
+    "parseFile": "Bestand parseren",
     "password": "Wachtwoord",
     "path": "Bestandsnaam (om in op te slaan of om uit te laden)",
     "paymentType": "Betalingsinterval",

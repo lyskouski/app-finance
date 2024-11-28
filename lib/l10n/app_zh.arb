@@ -303,7 +303,7 @@
     "orderPin": "优先顺序",
     "orderUnpin": "通用顺序",
     "outputFile": "文件目的地",
-    "parseFile": "解析 .csv 文件",
+    "parseFile": "解析文件",
     "password": "密码",
     "path": "文件名（保存到其中或从其中加载）",
     "paymentType": "付款间隔",

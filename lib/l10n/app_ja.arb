@@ -303,7 +303,7 @@
     "orderPin": "優先順位",
     "orderUnpin": "一般化された順序",
     "outputFile": "ファイルの保存先",
-    "parseFile": ".csvファイルの解析",
+    "parseFile": "ファイルを解析",
     "password": "パスワード",
     "path": "ファイル名（保存先、読み込み元）",
     "paymentType": "支払い間隔",

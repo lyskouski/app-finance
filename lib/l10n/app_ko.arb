@@ -303,7 +303,7 @@
     "orderPin": "우선순위가 지정된 주문",
     "orderUnpin": "일반 순서",
     "outputFile": "파일 대상",
-    "parseFile": ".csv 파일 구문 분석",
+    "parseFile": "파일 분석",
     "password": "비밀번호",
     "path": "파일 이름(저장 또는 로드할 파일 이름)",
     "paymentType": "결제 간격",

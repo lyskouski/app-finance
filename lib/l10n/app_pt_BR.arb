@@ -303,7 +303,7 @@
     "orderPin": "Ordem priorizada",
     "orderUnpin": "Ordem generalizada",
     "outputFile": "Destino do arquivo",
-    "parseFile": "Analisar arquivo .csv",
+    "parseFile": "Analisar arquivo",
     "password": "Senha",
     "path": "Nome do arquivo (para salvar ou carregar)",
     "paymentType": "Intervalo de pagamento",

@@ -303,7 +303,7 @@
     "orderPin": "Prioritized order",
     "orderUnpin": "Generalized order",
     "outputFile": "Destination for the file",
-    "parseFile": "Parse .csv-file",
+    "parseFile": "Parse File",
     "password": "Password",
     "path": "File Name (to save into, or load from)",
     "paymentType": "Payment Interval",

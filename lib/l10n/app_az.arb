@@ -303,7 +303,7 @@
     "orderPin": "Prioritet sifariş",
     "orderUnpin": "Ümumiləşdirilmiş sifariş",
     "outputFile": "Fayl üçün təyinat",
-    "parseFile": ".csv faylını təhlil edin",
+    "parseFile": "Faylı təhlil edin",
     "password": "parol",
     "path": "Fayl adı (saxlamaq və ya yükləmək üçün)",
     "paymentType": "Ödəniş intervalı",

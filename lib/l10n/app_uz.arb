@@ -303,7 +303,7 @@
     "orderPin": "Ustuvor buyurtma",
     "orderUnpin": "Umumiy tartib",
     "outputFile": "Fayl uchun maqsad",
-    "parseFile": ".csv faylini tahlil qilish",
+    "parseFile": "Faylni tahlil qilish",
     "password": "Parol",
     "path": "Fayl nomi (saqlash yoki undan yuklash uchun)",
     "paymentType": "To'lov oralig'i",
