@@ -2,6 +2,10 @@
 
 _La lista completa de actualizaciones puede consultarse en el menú "Acerca de" del botón "Sugerencias"._
 
+### 5.9.0
+- Adición de pagos periódicos
+- Mejora de la importación OFX
+
 ### 5.8.0
 - Exportación a archivo Excel `XLSX`
 - Diferentes cronogramas: semanal, mensual, anual

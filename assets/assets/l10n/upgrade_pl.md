@@ -2,6 +2,10 @@
 
 Pełną listę aktualizacji można wyświetlić za pomocą elementu nawigacyjnego "O aplikacji" na przycisku "Wskazówki".
 
+### 5.9.0
+- Dodawanie płatności cyklicznych
+- Ulepszenie importu OFX
+
 ### 5.8.0
 - Eksport do pliku Excel `XLSX`
 - Różne harmonogramy: tygodniowy, miesięczny, roczny

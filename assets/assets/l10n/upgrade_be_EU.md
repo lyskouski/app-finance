@@ -2,6 +2,10 @@
 
 _Poŭny spis abnaŭlieńniaŭ možna prahliadzieć u navihacyjnym punkcie «Ab Dadatku» na knopcy «Padkazki»._ 
 
+### 5.9.0
+- Dadańnie pieryjadyčnych placiažoŭ
+- Paliapšeńnie impartu OFX
+
 ### 5.8.0
 - Ekspart u fajl Excel `XLSX`
 - Rozny hrafik: štotydzień, štomiesiac, štohod

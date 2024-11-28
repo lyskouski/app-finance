@@ -2,6 +2,10 @@
 
 _A lista completa de actualizações pode ser consultada através do item de navegação "Acerca" no botão "Sugestões".
 
+### 5.9.0
+- Adição de pagamentos recorrentes
+- Melhorar a importação OFX
+
 ### 5.8.0
 - Exportar para ficheiro Excel `XLSX`
 - Horário diferente: semanal, mensal, anual

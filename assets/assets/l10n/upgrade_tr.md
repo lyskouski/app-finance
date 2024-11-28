@@ -2,6 +2,10 @@
 
 _Güncellemelerin tam listesi “İpuçları” düğmesindeki “Hakkında” gezinti öğesi aracılığıyla görüntülenebilir._
 
+### 5.9.0
+- Yinelenen Ödemeler Ekleme
+- OFX içe aktarımını iyileştirme
+
 ### 5.8.0
 - Excel `XLSX` dosyasına aktarın
 - Farklı zaman çizelgesi: haftalık, aylık, yıllık

@@ -2,6 +2,10 @@
 
 _Die vollständige Liste der Updates kann über den Navigationspunkt "Über" auf der Schaltfläche "Hinweise" eingesehen werden._
 
+### 5.9.0
+- Hinzufügen von wiederkehrenden Zahlungen
+- Verbesserung des OFX-Imports
+
 ### 5.8.0
 - Exportieren in die Excel-Datei `XLSX`
 - Verschiedene Zeitleisten: wöchentlich, monatlich, vorzeitig
