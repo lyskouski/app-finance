@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2024-11-28 08:30:27</td>
+            <td class="headerValue">2024-11-28 11:03:43</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">0</td>
@@ -253,7 +253,7 @@
 <a name="191"><span class="lineNum">     191 </span><span class="lineNoCov">          0 :                     title: AppLocale.labels.def('${AppLocale.labels.account}: ${AppLocale.labels.title}'),</span></a>
 <a name="192"><span class="lineNum">     192 </span><span class="lineNoCov">          0 :                     tooltip: AppLocale.labels.titleAccountTooltip,</span></a>
 <a name="193"><span class="lineNum">     193 </span><span class="lineNoCov">          0 :                     value: state.getByUuid(attrValue[FileParser.attrAccountName] ?? ''),</span></a>
-<a name="194"><span class="lineNum">     194 </span><span class="lineNoCov">          0 :                     onChange: (value) =&gt; setState(() =&gt; attrValue[FileParser.attrAccountName] = value?.id),</span></a>
+<a name="194"><span class="lineNum">     194 </span><span class="lineNoCov">          0 :                     onChange: (value) =&gt; setState(() =&gt; attrValue[FileParser.attrAccountName] = value?.uuid),</span></a>
 <a name="195"><span class="lineNum">     195 </span>            :                     width: width,</a>
 <a name="196"><span class="lineNum">     196 </span><span class="lineNoCov">          0 :                     state: state,</span></a>
 <a name="197"><span class="lineNum">     197 </span>            :                   ),</a>
@@ -265,7 +265,7 @@
 <a name="203"><span class="lineNum">     203 </span><span class="lineNoCov">          0 :                     title: AppLocale.labels.def('${AppLocale.labels.budget}: ${AppLocale.labels.title}'),</span></a>
 <a name="204"><span class="lineNum">     204 </span><span class="lineNoCov">          0 :                     tooltip: AppLocale.labels.titleBudgetTooltip,</span></a>
 <a name="205"><span class="lineNum">     205 </span><span class="lineNoCov">          0 :                     value: state.getByUuid(attrValue[FileParser.attrCategoryName] ?? ''),</span></a>
-<a name="206"><span class="lineNum">     206 </span><span class="lineNoCov">          0 :                     onChange: (value) =&gt; setState(() =&gt; attrValue[FileParser.attrCategoryName] = value?.id),</span></a>
+<a name="206"><span class="lineNum">     206 </span><span class="lineNoCov">          0 :                     onChange: (value) =&gt; setState(() =&gt; attrValue[FileParser.attrCategoryName] = value?.uuid),</span></a>
 <a name="207"><span class="lineNum">     207 </span>            :                     width: width,</a>
 <a name="208"><span class="lineNum">     208 </span><span class="lineNoCov">          0 :                     state: state,</span></a>
 <a name="209"><span class="lineNum">     209 </span>            :                   ),</a>
@@ -293,7 +293,7 @@
 <a name="231"><span class="lineNum">     231 </span><span class="lineNoCov">          0 :                   InputWrapper.currency(</span></a>
 <a name="232"><span class="lineNum">     232 </span><span class="lineNoCov">          0 :                     title: AppLocale.labels.def('${AppLocale.labels.bill}: ${AppLocale.labels.currency}'),</span></a>
 <a name="233"><span class="lineNum">     233 </span><span class="lineNoCov">          0 :                     value: CurrencyProvider.find(attrValue[FileParser.attrBillCurrency]),</span></a>
-<a name="234"><span class="lineNum">     234 </span><span class="lineNoCov">          0 :                     onChange: (value) =&gt; setState(() =&gt; attrValue[FileParser.attrBillCurrency] = value?.id),</span></a>
+<a name="234"><span class="lineNum">     234 </span><span class="lineNoCov">          0 :                     onChange: (value) =&gt; setState(() =&gt; attrValue[FileParser.attrBillCurrency] = value?.code),</span></a>
 <a name="235"><span class="lineNum">     235 </span>            :                   ),</a>
 <a name="236"><span class="lineNum">     236 </span>            :                 ],</a>
 <a name="237"><span class="lineNum">     237 </span><span class="lineNoCov">          0 :                 Column(crossAxisAlignment: AppDesign.getAlignment(), children: [</span></a>
