@@ -74,7 +74,7 @@ Que permita a los usuarios gestionar sus finanzas sin esfuerzo, garantizando al 
   - Desplazamiento automático al elemento seleccionado en el formulario
   - Expandir / contraer secciones en la página principal
   - Deslizar para un acceso rápido a las acciones Editar y Eliminar
-  - Ampliar/reducir (del 60% al 200%) a través de «Configuración».
+  - Ampliar/reducir (del 60% al 200%) a través de «Configuración»
   - Accesos directos
 
 | Descripción                         | Atajo                          |
