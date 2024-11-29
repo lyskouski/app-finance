@@ -174,6 +174,7 @@ class BudgetAddPageState<T extends BudgetAddPage> extends AbstractAddPageState<T
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              textDirection: AppDesign.getAlignment<TextDirection>(),
               children: [
                 TextWrapper(
                   AppLocale.labels.budgetLimit,

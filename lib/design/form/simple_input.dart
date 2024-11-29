@@ -51,7 +51,7 @@ class SimpleInput extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final indent = ThemeHelper.getIndent(1.5);
+    final indent = ThemeHelper.getIndent(1.8);
     final textTheme = context.textTheme;
     final focusController = this.focusController ?? FocusWrapper.of(context);
     return Directionality(
