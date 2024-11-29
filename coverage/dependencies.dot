@@ -709,8 +709,14 @@ digraph G {
   metrics_widgets -> widgets [color="#F0F0F050"];
   metrics_widgets -> wrapper [color="#F0F0F050"];
   metrics_widgets -> herald [color="#F0F0F050"];
+  metrics_widgets -> storage [color="#F0F0F050"];
+  metrics_widgets -> structure [color="#F0F0F050"];
+  metrics_widgets -> structure_currency [color="#F0F0F050"];
   metrics_widgets -> _configs_ [color="#F0F0F050"];
+  metrics_widgets -> _ext_ [color="#F0F0F050"];
   metrics_widgets -> widgets [color="#F0F0F050"];
+  metrics_widgets -> generic [color="#F0F0F050"];
+  metrics_widgets -> wrapper [color="#F0F0F050"];
   automation -> herald [color="#F0F0F050"];
   automation -> structure [color="#F0F0F050"];
   automation -> _configs_ [color="#F0F0F050"];
