@@ -13,7 +13,7 @@ import 'package:flutter/semantics.dart';
 import 'package:flutter/services.dart';
 
 abstract class SimpleInputFormatter {
-  static get filterDouble => FilteringTextInputFormatter.allow(RegExp(r'^\d+\.?\d{0,4}'));
+  static get filterDouble => FilteringTextInputFormatter.allow(RegExp(r'^\d+\.?(\d+)?'));
   static get filterInt => FilteringTextInputFormatter.allow(RegExp(r'\d+'));
 }
 

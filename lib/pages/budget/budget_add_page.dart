@@ -204,7 +204,7 @@ class BudgetAddPageState<T extends BudgetAddPage> extends AbstractAddPageState<T
               type: const TextInputType.numberWithOptions(decimal: true),
               tooltip: AppLocale.labels.balanceTooltip,
               formatter: [
-                FilteringTextInputFormatter.allow(RegExp(r'^\d+\.?\d{0,4}')),
+                SimpleInputFormatter.filterDouble,
               ],
             ),
             ThemeHelper.hIndent2x,
