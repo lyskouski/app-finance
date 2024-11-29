@@ -35,7 +35,8 @@ class BarRaceChart extends StatelessWidget {
     final rnd = Random();
     for (int i = 0; i < data.length; i++) {
       final key = data[i].dy + rnd.nextDouble();
-      plot[key] = ChartData([data[i]], color: categories[i].color ?? Colors.grey, helper: categories[i]);
+      final id = data[i].dx.toInt();
+      plot[key] = ChartData([data[i]], color: categories[id].color ?? Colors.grey, helper: categories[id]);
     }
     int idx = plot.values.length;
     return plot.values.map((e) {
