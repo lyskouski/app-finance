@@ -2,6 +2,12 @@
 
 _De volledige lijst met updates kan worden bekeken via het navigatie-item “Over” op de knop “Hints”._
 
+### 5.9.2
+- Grafieken corrigeren: bar race categorie, budget ytd
+
+### 5.9.1
+- Formulier voor OFX import repareren
+
 ### 5.9.0
 - Terugkerende betalingen toevoegen
 - OFX import verbeteren

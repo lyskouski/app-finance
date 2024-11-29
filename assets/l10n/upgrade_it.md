@@ -3,6 +3,12 @@
 _L'elenco completo degli aggiornamenti può essere consultato tramite la voce di navigazione “Informazioni” del 
 pulsante “Suggerimenti”._
 
+### 5.9.2
+- Correzione dei grafici: categoria di gara a barre, bilancio annuale
+
+### 5.9.1
+- Correzione del modulo per l'importazione di OFX
+
 ### 5.9.0
 - Aggiunta di pagamenti ricorrenti
 - Miglioramento dell'importazione OFX

@@ -2,6 +2,12 @@
 
 _Die vollständige Liste der Updates kann über den Navigationspunkt "Über" auf der Schaltfläche "Hinweise" eingesehen werden._
 
+### 5.9.2
+- Korrektur der Diagramme: Balken Rennen Kategorie, Budget ytd
+
+### 5.9.1
+- Korrektur des Formulars für OFX-Import
+
 ### 5.9.0
 - Hinzufügen von wiederkehrenden Zahlungen
 - Verbesserung des OFX-Imports
