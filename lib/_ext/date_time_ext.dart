@@ -34,6 +34,8 @@ extension DateTimeExt on DateTime {
 
   DateTime getNextMonth() => DateTime(year, month + 1, day, hour, minute, second);
 
+  DateTime getPreviousMonth(int monthDelta) => DateTime(year, month - monthDelta, day, hour, minute, second);
+
   DateTime getNextYear() => DateTime(year + 1, month, day, hour, minute, second);
 
   String yMEd() {

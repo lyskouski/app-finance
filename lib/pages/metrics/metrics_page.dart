@@ -66,7 +66,7 @@ class MetricsPageState extends AbstractPageState<MetricsPage> {
         ),
       ],
       children: [
-        const BudgetTab(),
+        BudgetTab(store: super.state, width: constraints.maxWidth),
         AccountTab(store: super.state),
         BillTab(store: super.state),
       ],
