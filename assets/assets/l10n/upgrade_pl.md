@@ -2,6 +2,12 @@
 
 Pełną listę aktualizacji można wyświetlić za pomocą elementu nawigacyjnego "O aplikacji" na przycisku "Wskazówki".
 
+### 5.9.2
+- Poprawianie wykresów: kategoria wyścigu słupkowego, budżet od początku roku
+
+### 5.9.1
+- Poprawki formularza dla importu OFX
+
 ### 5.9.0
 - Dodawanie płatności cyklicznych
 - Ulepszenie importu OFX

@@ -2,6 +2,12 @@
 
 _A lista completa de atualizações pode ser visualizada no item de navegação "Sobre" no botão "Dicas".
 
+### 5.9.2
+- Correção de gráficos: categoria de corrida de barras, orçamento anual
+
+### 5.9.1
+- Correção do formulário para importação OFX
+
 ### 5.9.0
 - Adição de pagamentos recorrentes
 - Aprimoramento da importação OFX

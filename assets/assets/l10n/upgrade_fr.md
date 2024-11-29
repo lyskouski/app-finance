@@ -2,6 +2,12 @@
 
 _La liste complète des mises à jour peut être consultée via l'élément de navigation "À propos" du bouton "Conseils"._
 
+### 5.9.2
+- Correction des graphiques : bar race category, budget ytd
+
+### 5.9.1
+- Correction du formulaire pour l'importation OFX
+
 ### 5.9.0
 - Ajout de paiements récurrents
 - Amélioration de l'importation OFX

@@ -1197,8 +1197,10 @@ digraph G {
   painter -> painter [color="red"];
   charts_ -> _ext_ [color="red"];
   charts_ -> painter [color="red"];
+  data -> herald [color="red"];
   data -> structure [color="red"];
   data -> structure_currency [color="red"];
+  data -> _ext_ [color="red"];
   data -> interface [color="red"];
 
 

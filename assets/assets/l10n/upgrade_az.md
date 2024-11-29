@@ -2,6 +2,12 @@
 
 _Yeniləmələrin tam siyahısına "İpucu" düyməsindəki "Haqqında" naviqasiya elementi vasitəsilə baxmaq olar._
 
+### 5.9.2
+- Düzəliş qrafikləri: bar irqi kateqoriyası, büdcə ytd
+
+### 5.9.1
+- OFX idxalı üçün düzəliş forması
+
 ### 5.9.0
 - Təkrarlanan ödənişlərin əlavə edilməsi
 - OFX idxalının təkmilləşdirilməsi
