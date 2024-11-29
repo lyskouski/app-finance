@@ -10,7 +10,7 @@ financial goals.
 
 **"Limit per month"** is a valuable asset for categorization. It can be of three types depending on the value entered:
 - 0 (zero) -- no limit is set, just spending is recorded.
-- 0.0 to 0.9(9) -- the percentage of spending relative to the profit earned that month.
+- between 0.0 an 1.0 -- the percentage of spending relative to the profit earned that month.
 - greater than 1 -- a fixed amount of the limit.
 
 Here’s examples of common budget categories:

@@ -18,6 +18,7 @@ import 'package:app_finance/design/button/full_sized_button_widget.dart';
 import 'package:app_finance/design/form/simple_input.dart';
 import 'package:app_finance/design/wrapper/row_widget.dart';
 import 'package:app_finance/design/wrapper/single_scroll_wrapper.dart';
+import 'package:app_finance/pages/budget/widgets/budget_type_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_currency_picker/flutter_currency_picker.dart';
@@ -208,6 +209,7 @@ class BudgetAddPageState<T extends BudgetAddPage> extends AbstractAddPageState<T
                 SimpleInputFormatter.filterDouble,
               ],
             ),
+            BudgetTypeWidget(controller: budgetLimit),
             ThemeHelper.hIndent2x,
             if (amountSet.isNotEmpty) ...[
               Text(
