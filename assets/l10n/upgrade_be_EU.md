@@ -2,6 +2,12 @@
 
 _Poŭny spis abnaŭlieńniaŭ možna prahliadzieć u navihacyjnym punkcie «Ab Dadatku» na knopcy «Padkazki»._ 
 
+### 5.9.2
+- Karekciroŭka hrafikaŭ: katehoryja bar honki, biudžet ytd
+
+### 5.9.1
+- Vypraŭlieńnie formy dlia impartu OFX
+
 ### 5.9.0
 - Dadańnie pieryjadyčnych placiažoŭ
 - Paliapšeńnie impartu OFX

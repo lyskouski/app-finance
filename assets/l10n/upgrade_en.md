@@ -2,6 +2,12 @@
 
 _The full list of updates can be viewed via the "About" navigation item on the "Hints" button._
 
+### 5.9.2
+- Correcting charts: bar race category, budget ytd
+
+### 5.9.1
+- Fixing form for OFX import
+
 ### 5.9.0
 - Adding Recurring Payments
 - Improving OFX import

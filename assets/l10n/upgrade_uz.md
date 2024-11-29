@@ -2,6 +2,12 @@
 
 _Yangilanishlarning toʻliq roʻyxatini “Maslahat” tugmasidagi “Haqida” navigatsiya bandi orqali koʻrish mumkin._
 
+### 5.9.2
+- Tuzatish jadvallari: bar poygasi toifasi, byudjet ytd
+
+### 5.9.1
+- OFX importi uchun tuzatish shakli
+
 ### 5.9.0
 - Takroriy to'lovlarni qo'shish
 - OFX importini yaxshilash

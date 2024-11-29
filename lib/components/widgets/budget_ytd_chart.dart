@@ -5,6 +5,7 @@ import 'dart:math';
 
 import 'package:app_finance/_classes/herald/app_design.dart';
 import 'package:app_finance/_classes/herald/app_locale.dart';
+import 'package:app_finance/_classes/herald/app_start_of_month.dart';
 import 'package:app_finance/_classes/storage/app_data.dart';
 import 'package:app_finance/_classes/storage/history_data.dart';
 import 'package:app_finance/_classes/structure/bill_app_data.dart';
@@ -12,6 +13,7 @@ import 'package:app_finance/_classes/structure/budget_app_data.dart';
 import 'package:app_finance/_classes/structure/currency/exchange.dart';
 import 'package:app_finance/_configs/theme_helper.dart';
 import 'package:app_finance/_ext/build_context_ext.dart';
+import 'package:app_finance/_ext/date_time_ext.dart';
 import 'package:app_finance/charts/column_chart.dart';
 import 'package:app_finance/charts/data/data_handler.dart';
 import 'package:app_finance/charts/interface/chart_data.dart';
@@ -24,27 +26,29 @@ class BudgetYtdChart extends StatelessWidget {
   const BudgetYtdChart({super.key});
 
   List<BudgetAppData> getBudgetHistory(AppData store) {
-    final current = DateTime(DateTime.now().year, DateTime.now().month);
-    final endLastYear = DateTime(current.year - 1, 12, 31);
+    final day = AppStartOfMonth.get();
+    final current = DateTime.now().getStartingDay(day);
+    final endLastYear = DateTime(current.year, current.month - 12, day);
     final budgets = store.getList(AppDataType.budgets).cast<BudgetAppData>();
     final exchange = Exchange(store: store);
     final budgetsAmount =
         budgets.fold(0.0, (v, e) => v + exchange.reform(e.amountLimit, e.currency, exchange.getDefaultCurrency()));
     final budgetHistory = HistoryData.getMultiLog(budgets).expand((e) => e!).toList();
     final budgetList = [];
-    for (DateTime date = DateTime(current.year, current.month + 1);
+    for (DateTime date = DateTime(current.year, current.month + 1, day);
         date.isAfter(endLastYear);
-        date = DateTime(date.year, date.month - 1)) {
-      final delta =
-          budgetHistory.where((e) => e.timestamp.isAfter(date)).fold(0.0, (v, e) => v - e.changedTo + e.changedFrom);
+        date = DateTime(date.year, date.month - 1, day)) {
+      final delta = budgetHistory.where((e) => e.timestamp.isAfter(date)).fold(
+          0.0, (v, e) => v - exchange.reform(e.changedTo - e.changedFrom, e.currency, exchange.getDefaultCurrency()));
       budgetList.add(BudgetAppData(title: '', createdAt: date, amountLimit: budgetsAmount + delta));
     }
     return budgetList.cast();
   }
 
   List<ChartData> getData(AppData store) {
-    final currentYear = DateTime(DateTime.now().year);
-    final prevYear = DateTime(currentYear.year - 1);
+    final day = AppStartOfMonth.get();
+    final currentYear = DateTime(DateTime.now().year).getStartingDay(day);
+    final prevYear = DateTime(currentYear.year - 1).getStartingDay(day);
     final bills = store.getStream<BillAppData>(AppDataType.bills, filter: (e) => e.createdAt.isBefore(prevYear));
     final exchange = Exchange(store: store);
     return [

@@ -3,11 +3,13 @@
 
 import 'dart:collection';
 
+import 'package:app_finance/_classes/herald/app_start_of_month.dart';
 import 'package:app_finance/_classes/structure/bill_app_data.dart';
 import 'package:app_finance/_classes/structure/budget_app_data.dart';
 import 'package:app_finance/_classes/structure/currency/exchange.dart';
 import 'package:app_finance/_classes/structure/interface_app_data.dart';
 import 'package:app_finance/_classes/structure/transaction_log_data.dart';
+import 'package:app_finance/_ext/date_time_ext.dart';
 import 'package:app_finance/charts/interface/ohlc_data.dart';
 import 'package:flutter/material.dart';
 
@@ -27,7 +29,7 @@ class DataHandler {
   }
 
   static List<Offset> getAmountGroupedByMonth(List<InterfaceAppData> scope, {required Exchange exchange}) {
-    fn(item) => DateTime(item.createdAt.year, item.createdAt.month).millisecondsSinceEpoch.toDouble();
+    fn(item) => (item.createdAt as DateTime).getStartingDay(AppStartOfMonth.get()).millisecondsSinceEpoch.toDouble();
     return _getGroupedAmount(scope, fn, exchange: exchange);
   }
 

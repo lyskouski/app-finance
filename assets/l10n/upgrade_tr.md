@@ -2,6 +2,12 @@
 
 _Güncellemelerin tam listesi “İpuçları” düğmesindeki “Hakkında” gezinti öğesi aracılığıyla görüntülenebilir._
 
+### 5.9.2
+- Düzeltme grafikleri: çubuk yarış kategorisi, bütçe ytd
+
+### 5.9.1
+- OFX içe aktarma için form düzeltme
+
 ### 5.9.0
 - Yinelenen Ödemeler Ekleme
 - OFX içe aktarımını iyileştirme

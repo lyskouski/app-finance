@@ -2,6 +2,12 @@
 
 _La lista completa de actualizaciones puede consultarse en el menú "Acerca de" del botón "Sugerencias"._
 
+### 5.9.2
+- Corrección de gráficos: categoría de carrera de barras, presupuesto ytd
+
+### 5.9.1
+- Corrección de formulario para importación OFX
+
 ### 5.9.0
 - Adición de pagos periódicos
 - Mejora de la importación OFX
