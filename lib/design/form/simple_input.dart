@@ -13,7 +13,7 @@ import 'package:flutter/semantics.dart';
 import 'package:flutter/services.dart';
 
 abstract class SimpleInputFormatter {
-  static get filterDouble => FilteringTextInputFormatter.allow(RegExp(r'^\d+\.?\d{0,4}'));
+  static get filterDouble => FilteringTextInputFormatter.allow(RegExp(r'^\d+\.?(\d+)?'));
   static get filterInt => FilteringTextInputFormatter.allow(RegExp(r'\d+'));
 }
 
@@ -51,7 +51,7 @@ class SimpleInput extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final indent = ThemeHelper.getIndent(1.5);
+    final indent = ThemeHelper.getIndent(1.8);
     final textTheme = context.textTheme;
     final focusController = this.focusController ?? FocusWrapper.of(context);
     return Directionality(

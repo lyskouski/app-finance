@@ -5,7 +5,7 @@ import 'package:app_finance/_classes/herald/app_design.dart';
 import 'package:flutter/material.dart';
 
 class TextWidget extends Text {
-  const TextWidget(super.data, {super.key});
+  const TextWidget(super.data, {super.key, super.style});
 
   @override
   String? get semanticsLabel => super.data;

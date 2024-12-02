@@ -4,6 +4,7 @@
 import 'package:app_finance/_classes/herald/app_locale.dart';
 import 'package:app_finance/_configs/custom_color_scheme.dart';
 import 'package:app_finance/_configs/custom_text_theme.dart';
+import 'package:app_finance/_configs/theme_helper.dart';
 import 'package:app_finance/_ext/build_context_ext.dart';
 import 'package:app_finance/_ext/color_ext.dart';
 import 'package:app_finance/design/form/abstract_selector.dart';
@@ -74,6 +75,7 @@ class ColorSelectorState extends AbstractSelectorState<ColorSelector> {
 
   @override
   Widget buildContent(context) {
+    final indent = ThemeHelper.getIndent(1.8);
     return TextFormField(
       readOnly: true,
       onTap: () => onTap(context),
@@ -83,6 +85,7 @@ class ColorSelectorState extends AbstractSelectorState<ColorSelector> {
         fillColor: widget.value ?? context.colorScheme.fieldBackground,
         hintText: widget.withLabel ? AppLocale.labels.color : null,
         hintStyle: context.textTheme.tooltipMedium,
+        contentPadding: EdgeInsets.fromLTRB(indent / 1.5, widget.withLabel ? 1 : indent, 0, indent),
         suffixIcon: GestureDetector(
           child: const Icon(Icons.color_lens),
         ),

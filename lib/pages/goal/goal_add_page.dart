@@ -164,7 +164,7 @@ class GoalAddPageState<T extends GoalAddPage> extends AbstractPageState<GoalAddP
               indent: indent,
               maxWidth: width + indent,
               alignment: AppDesign.getAlignment<MainAxisAlignment>(),
-              chunk: const [90, null],
+              chunk: const [100, null],
               children: [
                 [
                   InputWrapper.currency(

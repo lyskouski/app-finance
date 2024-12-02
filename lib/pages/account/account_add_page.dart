@@ -9,6 +9,7 @@ import 'package:app_finance/_classes/controller/focus_controller.dart';
 import 'package:app_finance/_classes/storage/app_preferences.dart';
 import 'package:app_finance/_configs/theme_helper.dart';
 import 'package:app_finance/_ext/build_context_ext.dart';
+import 'package:app_finance/_ext/double_ext.dart';
 import 'package:app_finance/design/wrapper/input_wrapper.dart';
 import 'package:app_finance/design/wrapper/text_wrapper.dart';
 import 'package:app_finance/pages/_interfaces/abstract_add_page.dart';
@@ -66,11 +67,12 @@ class AccountAddPageState<T extends AccountAddPage> extends AbstractAddPageState
     description = TextEditingController(text: widget.description);
     type = widget.type;
     validTillDate = widget.validTillDate;
-    balance = TextEditingController(text: widget.balance != null ? widget.balance.toString() : '');
-    icon = widget.icon;
-    color = widget.color;
     final currencyId = AppPreferences.get(AppPreferences.prefCurrency);
     currency = widget.currency ?? CurrencyProvider.find(currencyId);
+    balance = TextEditingController(
+        text: widget.balance != null ? widget.balance!.toFixed(currency?.decimalDigits).toString() : '');
+    icon = widget.icon;
+    color = widget.color;
     super.initState();
   }
 
