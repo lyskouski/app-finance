@@ -159,7 +159,7 @@ class BudgetAppData extends AbstractAppData with StorageMixin {
     return amountLimit *
         getState()
             .getStream(AppDataType.invoice)
-            .getTill(getDateBoundary().millisecondsSinceEpoch)
+            .getTill(getDateBoundary().millisecondsSinceEpoch.toDouble())
             .cast<InvoiceAppData>()
             .where((e) => e.accountFrom == null)
             .fold(0.0, (v, e) => v + ex.reform(e.details, e.currency, currency));
