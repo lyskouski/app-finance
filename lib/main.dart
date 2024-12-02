@@ -147,14 +147,14 @@ class MyApp extends StatefulWidget {
 class MyAppState extends State<MyApp> {
   WidgetBuilder? getPage(String route, Object? arguments) {
     AppRoute.current = route;
-    if (widget.platform != null) {
-      FirebaseAnalytics.instance.logSelectContent(
-        contentType: route,
-        itemId: arguments != null ? 'dynamic' : 'static',
-      );
-    }
     final args = arguments as Map<String, dynamic>?;
     final String key = args?['uuid'] ?? args?['search'] ?? '';
+    if (widget.platform != null) {
+      FirebaseAnalytics.instance.logScreenView(
+        screenName: route,
+        parameters: args?.cast(),
+      );
+    }
 
     Widget router(String route) => switch (route) {
           AppRoute.aboutRoute => AboutPage(search: key),
