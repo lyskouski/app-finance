@@ -1,7 +1,6 @@
 // Copyright 2023 The terCAD team. All rights reserved.
 // Use of this source code is governed by a CC BY-NC-ND 4.0 license that can be found in the LICENSE file.
 
-import 'package:app_finance/_classes/structure/currency/exchange.dart';
 import 'package:app_finance/_classes/structure/navigation/app_route.dart';
 import 'package:app_finance/_classes/structure/budget_app_data.dart';
 import 'package:app_finance/_configs/theme_helper.dart';
@@ -31,11 +30,15 @@ class BudgetWidget extends AccountWidget {
   @override
   Widget buildGroupedListWidget(List<dynamic> items, BuildContext context) {
     final item = wrapBySingleEntity(items);
+    double total = items.fold(0.0, (value, e) => value + e.progressLeft);
+    if (total == 0) {
+      total = 1;
+    }
     return BaseGroupWidget(
       title: item.title,
       total: item.details,
       description: item.description,
-      progress: items.map((e) => e.progressLeft).cast<double>().toList(),
+      progress: items.map((e) => item.progressLeft * e.progressLeft / total).cast<double>().toList(),
       color: items.map((e) => e.color ?? Colors.transparent).cast<Color>().toList(),
       width: width - ThemeHelper.getIndent() / 2,
       items: items,
@@ -45,7 +48,7 @@ class BudgetWidget extends AccountWidget {
 
   @override
   dynamic wrapBySingleEntity(List<dynamic> items) {
-    Currency? def = Exchange.defaultCurrency;
+    Currency? def = exchange.getDefaultCurrency();
     double amountLimit = items.fold(0.0, (value, e) => value + exchange.reform(e.amountLimit, e.currency, def));
     double amountSpent = items.fold(0.0, (value, e) => value + exchange.reform(e.amount, e.currency, def));
     double progress = amountLimit > 0 ? 1 - (amountLimit - amountSpent) / amountLimit : 0.0;
