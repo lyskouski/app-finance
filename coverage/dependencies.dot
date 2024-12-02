@@ -544,7 +544,6 @@ digraph G {
   widgets -> _ext_ [color="#FF00FF50"];
   widgets -> widgets [color="#FF00FF50"];
   widgets -> generic [color="#FF00FF50"];
-  widgets -> structure_currency [color="#FF00FF50"];
   widgets -> structure_navigation [color="#FF00FF50"];
   widgets -> structure [color="#FF00FF50"];
   widgets -> _configs_ [color="#FF00FF50"];
