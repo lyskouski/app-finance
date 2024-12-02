@@ -7,6 +7,8 @@ import 'package:app_finance/_configs/theme_helper.dart';
 import 'package:app_finance/design/generic/text_widget.dart';
 import 'package:flutter/material.dart';
 
+enum BudgetValueType { unlimited, relative, fixed }
+
 class BudgetTypeWidget extends StatefulWidget {
   final TextEditingController controller;
 
@@ -20,16 +22,23 @@ class BudgetTypeWidget extends StatefulWidget {
 }
 
 class BudgetTypeWidgetState extends State<BudgetTypeWidget> {
-  double value = 0.0;
+  BudgetValueType value = BudgetValueType.unlimited;
 
   @override
   void initState() {
     widget.controller.addListener(listener);
+    WidgetsBinding.instance.addPostFrameCallback((_) => listener());
     super.initState();
   }
 
   listener() {
-    double newValue = double.tryParse(widget.controller.text) ?? 0.0;
+    double amount = double.tryParse(widget.controller.text) ?? 0.0;
+    BudgetValueType newValue = BudgetValueType.unlimited;
+    if (amount > 0 && amount < 1) {
+      newValue = BudgetValueType.relative;
+    } else if (amount >= 1) {
+      newValue = BudgetValueType.fixed;
+    }
     if (newValue != value) {
       setState(() => value = newValue);
     }
@@ -43,19 +52,19 @@ class BudgetTypeWidgetState extends State<BudgetTypeWidget> {
       children: [
         TextWidget(
           AppLocale.labels.budgetTypeAsIs,
-          style: value == 0 ? style : null,
+          style: value == BudgetValueType.unlimited ? style : null,
         ),
         const TextWidget(' (0) '),
         ThemeHelper.wIndent,
         TextWidget(
           AppLocale.labels.budgetTypeRelative,
-          style: value > 0 && value < 1 ? style : null,
+          style: value == BudgetValueType.relative ? style : null,
         ),
         const TextWidget(' (0 ... 1) '),
         ThemeHelper.wIndent,
         TextWidget(
           AppLocale.labels.budgetTypeFixed,
-          style: value >= 1 ? style : null,
+          style: value == BudgetValueType.fixed ? style : null,
         ),
         const TextWidget(' (>= 1) '),
       ],
