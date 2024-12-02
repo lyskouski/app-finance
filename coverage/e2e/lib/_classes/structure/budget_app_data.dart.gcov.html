@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2024-11-29 13:09:23</td>
+            <td class="headerValue">2024-12-02 08:53:51</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">0</td>
@@ -221,7 +221,7 @@
 <a name="159"><span class="lineNum">     159 </span><span class="lineNoCov">          0 :     return amountLimit *</span></a>
 <a name="160"><span class="lineNum">     160 </span><span class="lineNoCov">          0 :         getState()</span></a>
 <a name="161"><span class="lineNum">     161 </span><span class="lineNoCov">          0 :             .getStream(AppDataType.invoice)</span></a>
-<a name="162"><span class="lineNum">     162 </span><span class="lineNoCov">          0 :             .getTill(getDateBoundary().millisecondsSinceEpoch)</span></a>
+<a name="162"><span class="lineNum">     162 </span><span class="lineNoCov">          0 :             .getTill(getDateBoundary().millisecondsSinceEpoch.toDouble())</span></a>
 <a name="163"><span class="lineNum">     163 </span><span class="lineNoCov">          0 :             .cast&lt;InvoiceAppData&gt;()</span></a>
 <a name="164"><span class="lineNum">     164 </span><span class="lineNoCov">          0 :             .where((e) =&gt; e.accountFrom == null)</span></a>
 <a name="165"><span class="lineNum">     165 </span><span class="lineNoCov">          0 :             .fold(0.0, (v, e) =&gt; v + ex.reform(e.details, e.currency, currency));</span></a>

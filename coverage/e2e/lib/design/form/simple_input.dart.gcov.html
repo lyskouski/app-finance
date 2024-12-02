@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2024-11-29 13:09:23</td>
+            <td class="headerValue">2024-12-02 08:53:51</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">0</td>
@@ -75,7 +75,7 @@
 <a name="13"><span class="lineNum">      13 </span>            : import 'package:flutter/services.dart';</a>
 <a name="14"><span class="lineNum">      14 </span>            : </a>
 <a name="15"><span class="lineNum">      15 </span>            : abstract class SimpleInputFormatter {</a>
-<a name="16"><span class="lineNum">      16 </span><span class="lineCov">          3 :   static get filterDouble =&gt; FilteringTextInputFormatter.allow(RegExp(r'^\d+\.?\d{0,4}'));</span></a>
+<a name="16"><span class="lineNum">      16 </span><span class="lineCov">          3 :   static get filterDouble =&gt; FilteringTextInputFormatter.allow(RegExp(r'^\d+\.?(\d+)?'));</span></a>
 <a name="17"><span class="lineNum">      17 </span><span class="lineNoCov">          0 :   static get filterInt =&gt; FilteringTextInputFormatter.allow(RegExp(r'\d+'));</span></a>
 <a name="18"><span class="lineNum">      18 </span>            : }</a>
 <a name="19"><span class="lineNum">      19 </span>            : </a>
@@ -113,7 +113,7 @@
 <a name="51"><span class="lineNum">      51 </span>            : </a>
 <a name="52"><span class="lineNum">      52 </span><span class="lineCov">          1 :   @override</span></a>
 <a name="53"><span class="lineNum">      53 </span>            :   Widget build(BuildContext context) {</a>
-<a name="54"><span class="lineNum">      54 </span><span class="lineCov">          1 :     final indent = ThemeHelper.getIndent(1.5);</span></a>
+<a name="54"><span class="lineNum">      54 </span><span class="lineCov">          1 :     final indent = ThemeHelper.getIndent(1.8);</span></a>
 <a name="55"><span class="lineNum">      55 </span><span class="lineCov">          1 :     final textTheme = context.textTheme;</span></a>
 <a name="56"><span class="lineNum">      56 </span><span class="lineCov">          2 :     final focusController = this.focusController ?? FocusWrapper.of(context);</span></a>
 <a name="57"><span class="lineNum">      57 </span><span class="lineCov">          1 :     return Directionality(</span></a>

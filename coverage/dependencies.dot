@@ -186,7 +186,7 @@ digraph G {
   }
   {
     rank = same; "pages";
-    budget_widgets [label="<0>BUDGET_WIDGETS|<budget_widget>budget_widget|<header_widget>header_widget|<budget_header_widget>budget_header_widget|<budget_line_widget>budget_line_widget",fillcolor="silver:white", gradientangle=240, style="filled"];
+    budget_widgets [label="<0>BUDGET_WIDGETS|<budget_widget>budget_widget|<header_widget>header_widget|<budget_header_widget>budget_header_widget|<budget_type_widget>budget_type_widget|<budget_line_widget>budget_line_widget",fillcolor="silver:white", gradientangle=240, style="filled"];
   }
   {
     rank = same; "charts";
@@ -1141,6 +1141,7 @@ digraph G {
   budget -> _interfaces [color="#F0F0F050"];
   budget -> button [color="#F0F0F050"];
   budget -> form [color="#F0F0F050"];
+  budget -> budget_widgets [color="#F0F0F050"];
   budget -> controller [color="#F0F0F050"];
   budget -> herald [color="#F0F0F050"];
   budget -> storage [color="#F0F0F050"];
@@ -1166,6 +1167,9 @@ digraph G {
   budget_widgets -> _ext_ [color="#F0F0F050"];
   budget_widgets -> _configs_ [color="#F0F0F050"];
   budget_widgets -> wrapper [color="#F0F0F050"];
+  budget_widgets -> herald [color="#F0F0F050"];
+  budget_widgets -> _configs_ [color="#F0F0F050"];
+  budget_widgets -> generic [color="#F0F0F050"];
   budget_widgets -> herald [color="#F0F0F050"];
   budget_widgets -> structure_navigation [color="#F0F0F050"];
   budget_widgets -> _configs_ [color="#F0F0F050"];
