@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<appwidget-provider xmlns:android="http://schemas.android.com/apk/res/android"
+    android:description="@string/app_widget_description"
+    android:initialKeyguardLayout="@layout/payments_app_widget"
+    android:initialLayout="@layout/payments_app_widget"
+    android:minWidth="180dp"
+    android:minHeight="110dp"
+    android:previewImage="@drawable/example_appwidget_preview"
+    android:resizeMode="horizontal|vertical"
+    android:updatePeriodMillis="360000"
+    android:widgetCategory="home_screen" />
