@@ -32,12 +32,12 @@
             <td></td>
             <td class="headerItem">Lines:</td>
             <td class="headerCovTableEntry">53</td>
-            <td class="headerCovTableEntry">110</td>
-            <td class="headerCovTableEntryLo">48.2 %</td>
+            <td class="headerCovTableEntry">111</td>
+            <td class="headerCovTableEntryLo">47.7 %</td>
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2024-12-02 09:51:31</td>
+            <td class="headerValue">2024-12-02 10:48:33</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">0</td>
@@ -209,14 +209,14 @@
 <a name="147"><span class="lineNum">     147 </span>            : class MyAppState extends State&lt;MyApp&gt; {</a>
 <a name="148"><span class="lineNum">     148 </span><span class="lineCov">          3 :   WidgetBuilder? getPage(String route, Object? arguments) {</span></a>
 <a name="149"><span class="lineNum">     149 </span>            :     AppRoute.current = route;</a>
-<a name="150"><span class="lineNum">     150 </span><span class="lineCov">          6 :     if (widget.platform != null) {</span></a>
-<a name="151"><span class="lineNum">     151 </span><span class="lineNoCov">          0 :       FirebaseAnalytics.instance.logSelectContent(</span></a>
-<a name="152"><span class="lineNum">     152 </span>            :         contentType: route,</a>
-<a name="153"><span class="lineNum">     153 </span>            :         itemId: arguments != null ? 'dynamic' : 'static',</a>
-<a name="154"><span class="lineNum">     154 </span>            :       );</a>
-<a name="155"><span class="lineNum">     155 </span>            :     }</a>
-<a name="156"><span class="lineNum">     156 </span>            :     final args = arguments as Map&lt;String, dynamic&gt;?;</a>
-<a name="157"><span class="lineNum">     157 </span><span class="lineNoCov">          0 :     final String key = args?['uuid'] ?? args?['search'] ?? '';</span></a>
+<a name="150"><span class="lineNum">     150 </span>            :     final args = arguments as Map&lt;String, dynamic&gt;?;</a>
+<a name="151"><span class="lineNum">     151 </span><span class="lineNoCov">          0 :     final String key = args?['uuid'] ?? args?['search'] ?? '';</span></a>
+<a name="152"><span class="lineNum">     152 </span><span class="lineCov">          6 :     if (widget.platform != null) {</span></a>
+<a name="153"><span class="lineNum">     153 </span><span class="lineNoCov">          0 :       FirebaseAnalytics.instance.logScreenView(</span></a>
+<a name="154"><span class="lineNum">     154 </span>            :         screenName: route,</a>
+<a name="155"><span class="lineNum">     155 </span><span class="lineNoCov">          0 :         parameters: args?.cast(),</span></a>
+<a name="156"><span class="lineNum">     156 </span>            :       );</a>
+<a name="157"><span class="lineNum">     157 </span>            :     }</a>
 <a name="158"><span class="lineNum">     158 </span>            : </a>
 <a name="159"><span class="lineNum">     159 </span><span class="lineCov">          3 :     Widget router(String route) =&gt; switch (route) {</span></a>
 <a name="160"><span class="lineNum">     160 </span><span class="lineCov">          3 :           AppRoute.aboutRoute =&gt; AboutPage(search: key),</span></a>
