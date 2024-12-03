@@ -4,16 +4,19 @@
     android:layout_height="match_parent"
     android:theme="@style/Theme.Android.AppWidgetContainer">
 
+    <!-- ListView to show payment items dynamically -->
+    <ListView
+        android:id="@+id/list_view"
+        android:layout_width="0dp"
+        android:layout_height="0dp" />
+
+    <!-- Empty view when there are no items to display -->
     <TextView
-        android:id="@+id/appwidget_text"
-        style="@style/Widget.Android.AppWidget.InnerView"
+        android:id="@+id/empty_view"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
-        android:layout_margin="8dp"
-        android:contentDescription="@string/appwidget_text"
-        android:text="@string/appwidget_text"
-        android:textSize="24sp"
-        android:textStyle="bold|italic" />
+        android:text="No items to display"
+        android:visibility="gone"
+        android:textColor="@android:color/black" />
+
 </RelativeLayout>

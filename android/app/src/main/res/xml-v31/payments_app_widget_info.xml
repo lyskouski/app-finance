@@ -5,7 +5,7 @@
     android:initialLayout="@layout/payments_app_widget"
     android:minWidth="180dp"
     android:minHeight="110dp"
-    android:previewImage="@drawable/example_appwidget_preview"
+    android:previewImage="@drawable/payments_appwidget_preview"
     android:previewLayout="@layout/payments_app_widget"
     android:resizeMode="horizontal|vertical"
     android:targetCellWidth="3"

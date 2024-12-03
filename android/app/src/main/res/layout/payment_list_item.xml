@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <!-- Color bar for each item -->
+    <View
+        android:id="@+id/color_bar"
+        android:layout_width="match_parent"
+        android:layout_height="10dp" />
+
+    <!-- Title of the payment item (Bill/Invoice) -->
+    <TextView
+        android:id="@+id/item_type"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Bill:"
+        android:textColor="@android:color/black"
+        android:layout_marginTop="5dp"
+        android:layout_below="@id/color_bar" />
+
+    <!-- Amount for the payment item -->
+    <TextView
+        android:id="@+id/item_amount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="-$100.00"
+        android:textColor="@android:color/black"
+        android:layout_marginTop="5dp"
+        android:layout_below="@id/item_type" />
+
+    <!-- Interval for the payment item (monthly/weekly) -->
+    <TextView
+        android:id="@+id/item_interval"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="monthly"
+        android:textColor="@android:color/black"
+        android:layout_marginTop="5dp"
+        android:layout_below="@id/item_amount" />
+
+</RelativeLayout>

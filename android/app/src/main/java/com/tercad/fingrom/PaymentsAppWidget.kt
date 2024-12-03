@@ -3,7 +3,9 @@ package com.tercad.fingrom
 import android.appwidget.AppWidgetManager
 import android.appwidget.AppWidgetProvider
 import android.content.Context
+import android.content.Intent
 import android.widget.RemoteViews
+import android.widget.AdapterView
 
 /**
  * Implementation of App Widget functionality.
@@ -14,9 +16,18 @@ class PaymentsAppWidget : AppWidgetProvider() {
         appWidgetManager: AppWidgetManager,
         appWidgetIds: IntArray
     ) {
-        // There may be multiple widgets active, so update all of them
         for (appWidgetId in appWidgetIds) {
-            updateAppWidget(context, appWidgetManager, appWidgetId)
+            val intent = Intent(context, PaymentsWidgetService::class.java)
+            val remoteViews = RemoteViews(context.packageName, R.layout.payments_app_widget)
+
+            // Set the adapter for the list view
+            remoteViews.setRemoteAdapter(R.id.list_view, intent)
+
+            // Set the empty view if no data is available
+            remoteViews.setEmptyView(R.id.list_view, R.id.empty_view)
+
+            // Update the widget
+            appWidgetManager.updateAppWidget(appWidgetId, remoteViews)
         }
     }
 
@@ -27,18 +38,4 @@ class PaymentsAppWidget : AppWidgetProvider() {
     override fun onDisabled(context: Context) {
         // Enter relevant functionality for when the last widget is disabled
     }
-}
-
-internal fun updateAppWidget(
-    context: Context,
-    appWidgetManager: AppWidgetManager,
-    appWidgetId: Int
-) {
-    val widgetText = context.getString(R.string.appwidget_text)
-    // Construct the RemoteViews object
-    val views = RemoteViews(context.packageName, R.layout.payments_app_widget)
-    views.setTextViewText(R.id.appwidget_text, widgetText)
-
-    // Instruct the widget manager to update the widget
-    appWidgetManager.updateAppWidget(appWidgetId, views)
 }
