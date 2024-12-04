@@ -18,16 +18,13 @@ class PaymentsAppWidget : AppWidgetProvider() {
     ) {
         for (appWidgetId in appWidgetIds) {
             val intent = Intent(context, PaymentsWidgetService::class.java)
-            val remoteViews = RemoteViews(context.packageName, R.layout.payments_app_widget)
+            intent.putExtra(AppWidgetManager.EXTRA_APPWIDGET_ID, appWidgetId)
 
-            // Set the adapter for the list view
-            remoteViews.setRemoteAdapter(R.id.list_view, intent)
+            val views = RemoteViews(context.packageName, R.layout.payments_app_widget)
+            views.setRemoteAdapter(R.id.list_view, intent)
+            views.setEmptyView(R.id.list_view, R.id.empty_view)
 
-            // Set the empty view if no data is available
-            remoteViews.setEmptyView(R.id.list_view, R.id.empty_view)
-
-            // Update the widget
-            appWidgetManager.updateAppWidget(appWidgetId, remoteViews)
+            appWidgetManager.updateAppWidget(appWidgetId, views)
         }
     }
 

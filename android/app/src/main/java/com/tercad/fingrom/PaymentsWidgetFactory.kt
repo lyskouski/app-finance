@@ -12,9 +12,10 @@ class PaymentsWidgetFactory(private val context: Context) : RemoteViewsService.R
 
     override fun onCreate() {
         // Initial data, including color in hex format
-        items.add(PaymentItem("Bill:", "-$100.00", "monthly", "#FFD700")) // Yellow for Bill
+        items.add(PaymentItem("Bill: first", "-$100.00", "monthly", "#FFD700")) // Yellow for Bill
         items.add(PaymentItem("Invoice:", "+$50.00", "weekly", "#FF0000")) // Red for Invoice
-        items.add(PaymentItem("Bill:", "-$20.00", "monthly", "#0000FF")) // Blue for Bill
+        items.add(PaymentItem("Bill: second", "-$20.00", "monthly", "#0000FF")) // Blue for Bill
+        items.add(PaymentItem("Bill: third", "-$20.00", "monthly", "#0000FF")) // Blue for Bill
     }
 
     override fun onDataSetChanged() {

@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Permission for using RemoteViewsService -->
+    <uses-permission android:name="android.permission.BIND_REMOTEVIEWS" />
 
     <!--
      Required to query activities that can process text, see:
@@ -24,7 +26,7 @@
         android:roundIcon="@mipmap/ic_launcher_round">
         <receiver
             android:name=".PaymentsAppWidget"
-            android:exported="false">
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
             </intent-filter>
@@ -33,6 +35,10 @@
                 android:name="android.appwidget.provider"
                 android:resource="@xml/payments_app_widget_info" />
         </receiver>
+
+        <service
+            android:name=".PaymentsWidgetService"
+            android:permission="android.permission.BIND_REMOTEVIEWS" />
 
         <activity
             android:name=".MainActivity"
