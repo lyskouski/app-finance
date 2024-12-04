@@ -1,11 +1,15 @@
 // Copyright 2024 The terCAD team. All rights reserved.
 // Use of this source code is governed by a CC BY-NC-ND 4.0 license that can be found in the LICENSE file.
 
+import 'dart:io';
+import 'dart:math';
+
 import 'package:app_finance/_classes/storage/app_data.dart';
 import 'package:app_finance/_classes/structure/payment_app_data.dart';
 import 'package:app_finance/_configs/budget_type.dart';
 import 'package:app_finance/_ext/data_ext.dart';
 import 'package:app_finance/_ext/date_time_ext.dart';
+import 'package:home_widget/home_widget.dart';
 
 class PaymentsController {
   final AppData state;
@@ -34,6 +38,25 @@ class PaymentsController {
       if (needUpdate) {
         state.update(item.uuid!, item);
       }
+    }
+    // TODO: create iOS Widget
+    if (Platform.isAndroid) {
+      //  updateWidget();
+    }
+  }
+
+  Future<void> updateWidget() async {
+    var data = 'TEST_DATA ${Random().nextInt(100)}';
+    print(['updateWidget', data]);
+    await HomeWidget.saveWidgetData<String>('payments_widget_data', data);
+    await HomeWidget.updateWidget(
+      name: 'PaymentsWidgetProvider',
+      //  iOSName: 'PaymentsWidget',
+    );
+    if (Platform.isAndroid) {
+      await HomeWidget.updateWidget(
+        qualifiedAndroidName: 'com.tercad.fingrom.PaymentsWidgetService',
+      );
     }
   }
 }

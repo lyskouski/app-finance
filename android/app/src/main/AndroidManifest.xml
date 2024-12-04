@@ -25,7 +25,7 @@
         android:label="Fingrom"
         android:roundIcon="@mipmap/ic_launcher_round">
         <receiver
-            android:name=".PaymentsAppWidget"
+            android:name=".PaymentsWidgetProvider"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />

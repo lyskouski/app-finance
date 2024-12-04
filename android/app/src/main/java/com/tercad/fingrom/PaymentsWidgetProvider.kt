@@ -1,17 +1,21 @@
 package com.tercad.fingrom
 
+import android.app.AlarmManager
+import android.app.PendingIntent
 import android.appwidget.AppWidgetManager
 import android.appwidget.AppWidgetProvider
+import android.content.ComponentName
 import android.content.Context
 import android.content.Intent
 import android.net.Uri
+import android.os.SystemClock
 import android.widget.RemoteViews
 import android.widget.AdapterView
 
 /**
  * Implementation of App Widget functionality.
  */
-class PaymentsAppWidget : AppWidgetProvider() {
+class PaymentsWidgetProvider : AppWidgetProvider() {
     override fun onUpdate(
         context: Context,
         appWidgetManager: AppWidgetManager,

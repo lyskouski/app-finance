@@ -7,5 +7,5 @@
     android:minHeight="110dp"
     android:previewImage="@drawable/payments_appwidget_preview"
     android:resizeMode="horizontal|vertical"
-    android:updatePeriodMillis="360000"
+    android:updatePeriodMillis="10000"
     android:widgetCategory="home_screen" />

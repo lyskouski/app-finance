@@ -7,19 +7,24 @@ import android.widget.RemoteViewsService
 import androidx.core.graphics.ColorUtils
 import android.graphics.Color
 
+import es.antonborri.home_widget.HomeWidgetPlugin
+
 class PaymentsWidgetFactory(private val context: Context, intent: Intent) : RemoteViewsService.RemoteViewsFactory {
 
     private val items = mutableListOf<PaymentItem>()
 
     override fun onCreate() {
-        items.add(PaymentItem("Bill: first", "-$100.00", "monthly"))
+        items.clear()
+        val widgetData = HomeWidgetPlugin.getData(context)
+        val store = widgetData.getString("payments_widget_data", null)
+        items.add(PaymentItem(store ?: "Not found", "-$100.00", "monthly"))
         items.add(PaymentItem("Invoice:", "+$50.00", "weekly"))
         items.add(PaymentItem("Bill: second", "-$20.00", "monthly"))
         items.add(PaymentItem("Bill: second", "-$20.00", "monthly"))
     }
 
     override fun onDataSetChanged() {
-        // Called when the widget data is updated.
+        onCreate()
     }
 
     override fun getCount(): Int = items.size
