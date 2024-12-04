@@ -5,6 +5,6 @@ import android.widget.RemoteViewsService
 
 class PaymentsWidgetService : RemoteViewsService() {
     override fun onGetViewFactory(intent: Intent): RemoteViewsFactory {
-        return PaymentsWidgetFactory(applicationContext)
+        return PaymentsWidgetFactory(applicationContext, intent)
     }
 }

@@ -3,12 +3,6 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
-    <!-- Color bar for each item -->
-    <View
-        android:id="@+id/color_bar"
-        android:layout_width="match_parent"
-        android:layout_height="10dp" />
-
     <!-- Title of the payment item (Bill/Invoice) -->
     <TextView
         android:id="@+id/item_type"
@@ -16,8 +10,7 @@
         android:layout_height="wrap_content"
         android:text="Bill:"
         android:textColor="@android:color/black"
-        android:layout_marginTop="5dp"
-        android:layout_below="@id/color_bar" />
+        android:layout_marginTop="5dp" />
 
     <!-- Amount for the payment item -->
     <TextView
