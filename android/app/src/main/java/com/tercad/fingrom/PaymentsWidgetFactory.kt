@@ -6,8 +6,13 @@ import android.widget.RemoteViews
 import android.widget.RemoteViewsService
 import androidx.core.graphics.ColorUtils
 import android.graphics.Color
-
 import es.antonborri.home_widget.HomeWidgetPlugin
+import kotlinx.serialization.decodeFromString
+import kotlinx.serialization.json.Json
+import kotlinx.serialization.json.JsonObject
+import kotlinx.serialization.json.JsonArray
+import kotlinx.serialization.json.jsonObject
+import kotlinx.serialization.json.jsonPrimitive
 
 class PaymentsWidgetFactory(private val context: Context, intent: Intent) : RemoteViewsService.RemoteViewsFactory {
 
@@ -17,10 +22,14 @@ class PaymentsWidgetFactory(private val context: Context, intent: Intent) : Remo
         items.clear()
         val widgetData = HomeWidgetPlugin.getData(context)
         val store = widgetData.getString("payments_widget_data", null)
-        items.add(PaymentItem(store ?: "Not found", "-$100.00", "monthly"))
-        items.add(PaymentItem("Invoice:", "+$50.00", "weekly"))
-        items.add(PaymentItem("Bill: second", "-$20.00", "monthly"))
-        items.add(PaymentItem("Bill: second", "-$20.00", "monthly"))
+        val scope: JsonArray = Json.decodeFromString<JsonArray>(store ?: "[]")
+        scope.forEach { jsonElement ->
+            val jsonObject = jsonElement.jsonObject
+            val title = jsonObject["title"]?.jsonPrimitive?.content ?: ""
+            val description = jsonObject["description"]?.jsonPrimitive?.content ?: ""
+            val details = jsonObject["details"]?.jsonPrimitive?.content ?: ""
+            items.add(PaymentItem(title, details, description))
+        }
     }
 
     override fun onDataSetChanged() {
@@ -32,9 +41,9 @@ class PaymentsWidgetFactory(private val context: Context, intent: Intent) : Remo
     override fun getViewAt(position: Int): RemoteViews {
         val item = items[position]
         val rv = RemoteViews(context.packageName, R.layout.payment_list_item).apply {
-            setTextViewText(R.id.item_type, item.type)
-            setTextViewText(R.id.item_amount, item.amount)
-            setTextViewText(R.id.item_interval, item.interval)
+            setTextViewText(R.id.item_title, item.title)
+            setTextViewText(R.id.item_details, item.details)
+            setTextViewText(R.id.item_description, item.description)
         }
         return rv
     }

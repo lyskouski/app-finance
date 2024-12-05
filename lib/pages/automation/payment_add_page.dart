@@ -121,21 +121,21 @@ class PaymentAddPageState<T extends PaymentAddPage> extends AbstractAddPageState
           children: [
             InputWrapper.select(
               isRequired: true,
-              value: itemType,
-              title: AppLocale.labels.billTypeTooltip,
-              tooltip: AppLocale.labels.billTypeTooltip,
-              showError: hasErrors && itemType == null,
-              options: PaymentType.getList(),
-              onChange: (value) => setState(() => itemType = value),
-            ),
-            InputWrapper.select(
-              isRequired: true,
               value: intervalType,
               title: AppLocale.labels.paymentType,
               tooltip: AppLocale.labels.paymentType,
               showError: hasErrors && intervalType == null,
               options: BudgetType.getList(),
               onChange: (value) => setState(() => intervalType = value),
+            ),
+            InputWrapper.select(
+              isRequired: true,
+              value: itemType,
+              title: AppLocale.labels.billTypeTooltip,
+              tooltip: AppLocale.labels.billTypeTooltip,
+              showError: hasErrors && itemType == null,
+              options: PaymentType.getList(),
+              onChange: (value) => setState(() => itemType = value),
             ),
             const Divider(),
             if (itemType == AppPaymentType.bill.name)

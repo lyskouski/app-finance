@@ -2,9 +2,11 @@
 // Use of this source code is governed by a CC BY-NC-ND 4.0 license that can be found in the LICENSE file.
 
 import 'dart:io';
-import 'dart:math';
 
+import 'package:app_finance/_classes/herald/app_locale.dart';
 import 'package:app_finance/_classes/storage/app_data.dart';
+import 'package:app_finance/_classes/structure/bill_app_data.dart';
+import 'package:app_finance/_classes/structure/invoice_app_data.dart';
 import 'package:app_finance/_classes/structure/payment_app_data.dart';
 import 'package:app_finance/_configs/budget_type.dart';
 import 'package:app_finance/_ext/data_ext.dart';
@@ -41,14 +43,36 @@ class PaymentsController {
     }
     // TODO: create iOS Widget
     if (Platform.isAndroid) {
-      //  updateWidget();
+      _updateWidget();
     }
   }
 
-  Future<void> updateWidget() async {
-    var data = 'TEST_DATA ${Random().nextInt(100)}';
-    print(['updateWidget', data]);
-    await HomeWidget.saveWidgetData<String>('payments_widget_data', data);
+  String _prepareData() {
+    List<Map<String, String>> result = [];
+    List<PaymentAppData> data = state.getList(AppDataType.payments).cast();
+    data.sort((a, b) => a.updatedAt.compareTo(b.updatedAt));
+    for (PaymentAppData item in data) {
+      dynamic obj = item.data.toDataObject(state);
+      String type = AppLocale.labels.flowTypeInvoice;
+      String symbol = '+';
+      if (obj is BillAppData) {
+        type = AppLocale.labels.bill;
+        symbol = '-';
+      } else if (obj is InvoiceAppData && obj.accountFrom != null) {
+        type = AppLocale.labels.transferHeadline;
+        symbol = '';
+      }
+      result.add({
+        '"title"': '"$type: ${obj.title.replaceAll('"', "'")}"',
+        '"description"': '"${item.description.replaceAll('"', "'")}, ${item.updatedAt.monthDay()}"',
+        '"details"': '"$symbol${obj.detailsFormatted}"',
+      });
+    }
+    return result.toString();
+  }
+
+  Future<void> _updateWidget() async {
+    await HomeWidget.saveWidgetData<String>('payments_widget_data', _prepareData());
     await HomeWidget.updateWidget(
       name: 'PaymentsWidgetProvider',
       //  iOSName: 'PaymentsWidget',

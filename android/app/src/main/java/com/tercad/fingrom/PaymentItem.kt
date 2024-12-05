@@ -1,7 +1,7 @@
 package com.tercad.fingrom
 
 data class PaymentItem(
-    val type: String,
-    val amount: String,
-    val interval: String
+    val title: String,
+    val details: String,
+    val description: String
 )
