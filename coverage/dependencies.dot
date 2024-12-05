@@ -292,6 +292,7 @@ digraph G {
 
 
   controller -> storage [color="green"];
+  controller -> herald [color="green"];
   controller -> storage [color="green"];
   controller -> structure [color="green"];
   controller -> _configs_ [color="green"];

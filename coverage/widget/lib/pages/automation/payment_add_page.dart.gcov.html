@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2024-12-02 10:48:33</td>
+            <td class="headerValue">2024-12-05 12:30:42</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">0</td>
@@ -183,21 +183,21 @@
 <a name="121"><span class="lineNum">     121 </span><span class="lineNoCov">          0 :           children: [</span></a>
 <a name="122"><span class="lineNum">     122 </span><span class="lineNoCov">          0 :             InputWrapper.select(</span></a>
 <a name="123"><span class="lineNum">     123 </span>            :               isRequired: true,</a>
-<a name="124"><span class="lineNum">     124 </span><span class="lineNoCov">          0 :               value: itemType,</span></a>
-<a name="125"><span class="lineNum">     125 </span><span class="lineNoCov">          0 :               title: AppLocale.labels.billTypeTooltip,</span></a>
-<a name="126"><span class="lineNum">     126 </span><span class="lineNoCov">          0 :               tooltip: AppLocale.labels.billTypeTooltip,</span></a>
-<a name="127"><span class="lineNum">     127 </span><span class="lineNoCov">          0 :               showError: hasErrors &amp;&amp; itemType == null,</span></a>
-<a name="128"><span class="lineNum">     128 </span><span class="lineNoCov">          0 :               options: PaymentType.getList(),</span></a>
-<a name="129"><span class="lineNum">     129 </span><span class="lineNoCov">          0 :               onChange: (value) =&gt; setState(() =&gt; itemType = value),</span></a>
+<a name="124"><span class="lineNum">     124 </span><span class="lineNoCov">          0 :               value: intervalType,</span></a>
+<a name="125"><span class="lineNum">     125 </span><span class="lineNoCov">          0 :               title: AppLocale.labels.paymentType,</span></a>
+<a name="126"><span class="lineNum">     126 </span><span class="lineNoCov">          0 :               tooltip: AppLocale.labels.paymentType,</span></a>
+<a name="127"><span class="lineNum">     127 </span><span class="lineNoCov">          0 :               showError: hasErrors &amp;&amp; intervalType == null,</span></a>
+<a name="128"><span class="lineNum">     128 </span><span class="lineNoCov">          0 :               options: BudgetType.getList(),</span></a>
+<a name="129"><span class="lineNum">     129 </span><span class="lineNoCov">          0 :               onChange: (value) =&gt; setState(() =&gt; intervalType = value),</span></a>
 <a name="130"><span class="lineNum">     130 </span>            :             ),</a>
 <a name="131"><span class="lineNum">     131 </span><span class="lineNoCov">          0 :             InputWrapper.select(</span></a>
 <a name="132"><span class="lineNum">     132 </span>            :               isRequired: true,</a>
-<a name="133"><span class="lineNum">     133 </span><span class="lineNoCov">          0 :               value: intervalType,</span></a>
-<a name="134"><span class="lineNum">     134 </span><span class="lineNoCov">          0 :               title: AppLocale.labels.paymentType,</span></a>
-<a name="135"><span class="lineNum">     135 </span><span class="lineNoCov">          0 :               tooltip: AppLocale.labels.paymentType,</span></a>
-<a name="136"><span class="lineNum">     136 </span><span class="lineNoCov">          0 :               showError: hasErrors &amp;&amp; intervalType == null,</span></a>
-<a name="137"><span class="lineNum">     137 </span><span class="lineNoCov">          0 :               options: BudgetType.getList(),</span></a>
-<a name="138"><span class="lineNum">     138 </span><span class="lineNoCov">          0 :               onChange: (value) =&gt; setState(() =&gt; intervalType = value),</span></a>
+<a name="133"><span class="lineNum">     133 </span><span class="lineNoCov">          0 :               value: itemType,</span></a>
+<a name="134"><span class="lineNum">     134 </span><span class="lineNoCov">          0 :               title: AppLocale.labels.billTypeTooltip,</span></a>
+<a name="135"><span class="lineNum">     135 </span><span class="lineNoCov">          0 :               tooltip: AppLocale.labels.billTypeTooltip,</span></a>
+<a name="136"><span class="lineNum">     136 </span><span class="lineNoCov">          0 :               showError: hasErrors &amp;&amp; itemType == null,</span></a>
+<a name="137"><span class="lineNum">     137 </span><span class="lineNoCov">          0 :               options: PaymentType.getList(),</span></a>
+<a name="138"><span class="lineNum">     138 </span><span class="lineNoCov">          0 :               onChange: (value) =&gt; setState(() =&gt; itemType = value),</span></a>
 <a name="139"><span class="lineNum">     139 </span>            :             ),</a>
 <a name="140"><span class="lineNum">     140 </span>            :             const Divider(),</a>
 <a name="141"><span class="lineNum">     141 </span><span class="lineNoCov">          0 :             if (itemType == AppPaymentType.bill.name)</span></a>
