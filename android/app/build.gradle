@@ -1,8 +1,13 @@
 plugins {
     id "com.android.application"
+    // START: FlutterFire Configuration
+    id 'com.google.gms.google-services'
+    id 'com.google.firebase.crashlytics'
+    // END: FlutterFire Configuration
     id "kotlin-android"
     // The Flutter Gradle Plugin must be applied after the Android and Kotlin Gradle plugins.
     id "dev.flutter.flutter-gradle-plugin"
+    id "kotlinx-serialization"
 }
 
 def localProperties = new Properties()
@@ -63,6 +68,15 @@ android {
             signingConfig = signingConfigs.release
         }
     }
+    buildFeatures {
+        viewBinding true
+    }
+}
+
+dependencies {
+    implementation "org.jetbrains.kotlinx:kotlinx-serialization-json:1.5.0"
+    implementation platform('com.google.firebase:firebase-bom:30.0.0')
+    implementation 'com.google.firebase:firebase-analytics'
 }
 
 flutter {

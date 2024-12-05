@@ -37,8 +37,9 @@ dependencies:
   # Freeze encrypt and flutter_webrtc
   encrypt: 5.0.1
   flutter_webrtc: "0.9.42+hotfix.1"
-  firebase_core: ^3.2.0
-  firebase_analytics: ^11.2.0
+  firebase_core: ^3.8.1
+  firebase_analytics: ^11.3.6
+  firebase_crashlytics: ^4.2.0
   flutter_markdown: ^0.7.1
   package_info_plus: ^8.0.0
   url_launcher: ^6.1.12
@@ -52,10 +53,10 @@ dependencies:
   flutter_swipe_action_cell: ^3.1.2
   flutter_currency_picker: ^1.6.0
   in_app_purchase: ^3.1.11
-  firebase_crashlytics: ^4.0.0
   dart_intl_search: ^1.2.3
   idb_shim: ^2.6.1+7
   excel: ^4.0.6
+  home_widget: ^0.7.0
 
 dev_dependencies:
   flutter_test:

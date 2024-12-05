@@ -1,0 +1,24 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/Widget.Android.AppWidget.Container"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:theme="@style/Theme.Android.AppWidgetContainer">
+
+    <!-- ListView to show payment items dynamically -->
+    <ListView
+        android:id="@+id/list_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:divider="#f1f1f1"
+        android:dividerHeight="1dp" />
+
+    <!-- Empty view when there are no items to display -->
+    <TextView
+        android:id="@+id/empty_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="No recurring payments to display ..."
+        android:visibility="gone"
+        android:textColor="@android:color/black" />
+
+</RelativeLayout>
