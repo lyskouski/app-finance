@@ -2,6 +2,10 @@
 
 _La lista completa de actualizaciones puede consultarse en el menú "Acerca de" del botón "Sugerencias"._
 
+### 6.0.0
+- Adición de pantalla / widget de inicio para Android
+- Mejora de los presupuestos relativos
+
 ### 5.9.2
 - Corrección de gráficos: categoría de carrera de barras, presupuesto ytd
 

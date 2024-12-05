@@ -3,6 +3,10 @@
 _L'elenco completo degli aggiornamenti può essere consultato tramite la voce di navigazione “Informazioni” del 
 pulsante “Suggerimenti”._
 
+### 6.0.0
+- Aggiunta di un widget per lo schermo / la casa per Android
+- Miglioramento dei bilanci relativi
+
 ### 5.9.2
 - Correzione dei grafici: categoria di gara a barre, bilancio annuale
 

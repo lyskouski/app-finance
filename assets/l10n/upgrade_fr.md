@@ -2,6 +2,10 @@
 
 _La liste complète des mises à jour peut être consultée via l'élément de navigation "À propos" du bouton "Conseils"._
 
+### 6.0.0
+- Ajout d'un widget écran / maison pour Android
+- Amélioration des budgets relatifs
+
 ### 5.9.2
 - Correction des graphiques : bar race category, budget ytd
 

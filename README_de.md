@@ -48,6 +48,7 @@ zurückgelassen wird.
   - Verschiedene Zeitleisten: wöchentlich, monatlich, vorzeitig
   - Anpassbarer Starttag der Woche und des Monats
 - Rechnungen, Überweisungen, Einkünfte (Rechnungen)
+  - Wiederkehrende Zahlungen (mit einem Home-Widget für Android)
 - Ziele Definition
 - Wechselkurse, Standardwährung für Zusammenfassung
 - Metriken: 

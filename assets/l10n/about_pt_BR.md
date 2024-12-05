@@ -44,6 +44,7 @@ Isso permite que os usuários gerenciem suas finanças sem esforço, garantindo 
   - Cronograma diferente: semanal, mensal, anual
   - Dia de início da semana e mês personalizáveis
 - Contas, transferências, receitas (faturas)
+  - Pagamentos recorrentes (com um widget inicial para Android)
 - Definição de metas
 - Taxas de câmbio, moeda padrão para resumo
 - Métricas: 

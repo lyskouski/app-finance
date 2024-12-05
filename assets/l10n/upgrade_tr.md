@@ -2,6 +2,10 @@
 
 _Güncellemelerin tam listesi “İpuçları” düğmesindeki “Hakkında” gezinti öğesi aracılığıyla görüntülenebilir._
 
+### 6.0.0
+- Android için ekran / ana sayfa widget'ı ekleme
+- Göreceli bütçelerin iyileştirilmesi
+
 ### 5.9.2
 - Düzeltme grafikleri: çubuk yarış kategorisi, bütçe ytd
 

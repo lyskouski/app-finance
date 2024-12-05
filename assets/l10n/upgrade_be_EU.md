@@ -2,6 +2,10 @@
 
 _Poŭny spis abnaŭlieńniaŭ možna prahliadzieć u navihacyjnym punkcie «Ab Dadatku» na knopcy «Padkazki»._ 
 
+### 6.0.0
+- Dadańnie vidžeta ekrana / doma dlia Android
+- Paliapšeńnie adnosnych biudžetaŭ
+
 ### 5.9.2
 - Karekciroŭka hrafikaŭ: katehoryja bar honki, biudžet ytd
 
