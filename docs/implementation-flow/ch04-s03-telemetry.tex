@@ -89,7 +89,7 @@ void main() async {
 }
 \end{lstlisting}
 
-\noindent That might be the case for web, android, ios, and macos; but we have additionally linux and windows that are 
+\noindent That might be the case for web, android, ios, macos, and windows; but we have additionally linux that is 
 not supported by now, so, let's patch \q{firebase\_options.dart}-file to return null instead of throwing an exception:
 
 \begin{lstlisting}
@@ -100,13 +100,7 @@ class DefaultFirebaseOptions {
       return web;
     }
     switch (defaultTargetPlatform) {
-      case TargetPlatform.android:
-        return android;
-      case TargetPlatform.iOS:
-        return ios;
-      case TargetPlatform.macOS:
-        return macos;
-      case TargetPlatform.windows:
+      /* ... other cases ... */
       case TargetPlatform.linux:
       default:
         return null;
@@ -148,45 +142,48 @@ android {
 
 \noindent It's not yet completed unless we follow additional instructions from  
 \href{https://firebase.google.com/docs/guides/}{https://firebase.google.com/docs/guides/} to configure
-Firebase Analytics per each thread (Android, iOS, Macos, Web); as for Android:
+Firebase Analytics per each thread (Android, iOS, Web); as for Android:
 
 \begin{lstlisting}[language=yaml]
+## ./android/settings.gradle
+plugins {
+\end{lstlisting}
+{
+\xpretocmd{\lstlisting}{\vspace{-12pt}}{}{}
+\begin{lstlisting}[firstnumber=3, language=yaml, backgroundcolor=\color{backgreen}]
+    id 'com.google.gms.google-services' version '4.3.15' apply false
+\end{lstlisting}
+\begin{lstlisting}[firstnumber=4, language=yaml]
+}(*@ \stopnumber @*)
+
 ## ./android/build.gradle
 buildscript {
   repositories {
 \end{lstlisting}
-{
-\xpretocmd{\lstlisting}{\vspace{-12pt}}{}{}
 \begin{lstlisting}[firstnumber=4, language=yaml, backgroundcolor=\color{backgreen}]
-      google()
+    google()
 \end{lstlisting}
 \begin{lstlisting}[firstnumber=5, language=yaml]
-      # ... other settings
+    mavenCentral()
   }
   dependencies {
     # ... other settings
 \end{lstlisting}
 \begin{lstlisting}[firstnumber=9, language=yaml, backgroundcolor=\color{backgreen}]
-    classpath 'com.google.gms:google-services:4.3.3'
+    classpath 'com.google.gms:google-services:4.3.15'
 \end{lstlisting}
 \begin{lstlisting}[firstnumber=10, language=yaml]
-  }(*@ \stopnumber @*)
-}
+  }
+}(*@ \stopnumber @*)
 
 ## ./android/app/build.gradle
-\end{lstlisting}
-\begin{lstlisting}[firstnumber=2, language=yaml, backgroundcolor=\color{backgreen}]
-apply plugin: 'com.google.gms.google-services'
-\end{lstlisting}
-\begin{lstlisting}[firstnumber=3, language=yaml]
-# ... other settings
-dependencies {
+plugins {
   # ... other settings
 \end{lstlisting}
-\begin{lstlisting}[firstnumber=6, language=yaml, backgroundcolor=\color{backgreen}]
-  implementation 'com.google.firebase:firebase-analytics:17.4.1'
+\begin{lstlisting}[firstnumber=4, language=yaml, backgroundcolor=\color{backgreen}]
+  id 'com.google.gms.google-services'
 \end{lstlisting}
-\begin{lstlisting}[firstnumber=7, language=yaml]
+\begin{lstlisting}[firstnumber=5, language=yaml]
 }
 \end{lstlisting}
 }
