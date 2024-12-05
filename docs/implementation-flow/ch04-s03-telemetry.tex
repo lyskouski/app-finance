@@ -89,8 +89,9 @@ void main() async {
 }
 \end{lstlisting}
 
-\noindent That might be the case for web, android, ios, macos, and windows; but we have additionally linux that is 
-not supported by now, so, let's patch \q{firebase\_options.dart}-file to return null instead of throwing an exception:
+\noindent That might be the case for web, android, ios, macos, and windows (the last is not yet supported by 
+\q{firebase\_analytics} version 11.3.6); but we have additionally linux that is not supported by now, so, let's patch 
+\q{firebase\_options.dart}-file to return null instead of throwing an exception:
 
 \begin{lstlisting}
 // ./lib/firebase_options.dart

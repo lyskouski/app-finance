@@ -26,7 +26,7 @@ class DefaultFirebaseOptions {
       case TargetPlatform.macOS:
         return macos;
       case TargetPlatform.windows:
-        return windows;
+      // return windows;
       case TargetPlatform.linux:
       default:
         return null;
