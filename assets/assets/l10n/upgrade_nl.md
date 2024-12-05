@@ -2,6 +2,10 @@
 
 _De volledige lijst met updates kan worden bekeken via het navigatie-item “Over” op de knop “Hints”._
 
+### 6.0.0
+- Scherm / thuiswidget voor Android toevoegen
+- Relatieve budgetten verbeteren
+
 ### 5.9.2
 - Grafieken corrigeren: bar race categorie, budget ytd
 

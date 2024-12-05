@@ -1,6 +1,10 @@
 ## Najnowsze zmiany
 
-Pełną listę aktualizacji można wyświetlić za pomocą elementu nawigacyjnego "O aplikacji" na przycisku "Wskazówki".
+_Pełną listę aktualizacji można wyświetlić za pomocą elementu nawigacyjnego "O aplikacji" na przycisku "Wskazówki"._
+
+### 6.0.0
+- Dodanie ekranu / widżetu domowego dla systemu Android
+- Poprawa budżetów względnych
 
 ### 5.9.2
 - Poprawianie wykresów: kategoria wyścigu słupkowego, budżet od początku roku

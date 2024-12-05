@@ -2,6 +2,10 @@
 
 _Yeniləmələrin tam siyahısına "İpucu" düyməsindəki "Haqqında" naviqasiya elementi vasitəsilə baxmaq olar._
 
+### 6.0.0
+- Android üçün ekran / ev vidjetinin əlavə edilməsi
+- Nisbi büdcələrin təkmilləşdirilməsi
+
 ### 5.9.2
 - Düzəliş qrafikləri: bar irqi kateqoriyası, büdcə ytd
 

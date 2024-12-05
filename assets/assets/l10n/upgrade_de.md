@@ -2,6 +2,10 @@
 
 _Die vollständige Liste der Updates kann über den Navigationspunkt "Über" auf der Schaltfläche "Hinweise" eingesehen werden._
 
+### 6.0.0
+- Hinzufügen von Bildschirm-/Home-Widgets für Android
+- Verbesserung der relativen Budgets
+
 ### 5.9.2
 - Korrektur der Diagramme: Balken Rennen Kategorie, Budget ytd
 

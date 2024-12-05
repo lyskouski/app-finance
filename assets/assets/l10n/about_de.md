@@ -28,7 +28,7 @@ Das Ziel der Lösung ist es, eine Finanzbuchhaltungsanwendung zu schaffen, die i
 Sie ermöglicht es den Nutzern, ihre Finanzen mühelos zu verwalten und gleichzeitig sicherzustellen, dass niemand 
 zurückgelassen wird.
 
-[![Das Video ansehen](../images/presentation_de.png)](https://youtu.be/7hVGHYNzlQU)
+[![Das Video ansehen](../images/presentation_en.png)](https://youtu.be/7hVGHYNzlQU)
 
 ### Funktionalität
 - Buchhaltung (Kontotyp, Währung/Kryptowährung)
@@ -45,6 +45,7 @@ zurückgelassen wird.
   - Verschiedene Zeitleisten: wöchentlich, monatlich, vorzeitig
   - Anpassbarer Starttag der Woche und des Monats
 - Rechnungen, Überweisungen, Einkünfte (Rechnungen)
+  - Wiederkehrende Zahlungen (mit einem Home-Widget für Android)
 - Ziele Definition
 - Wechselkurse, Standardwährung für Zusammenfassung
 - Metriken: 

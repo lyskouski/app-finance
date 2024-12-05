@@ -1,6 +1,10 @@
 ## Últimas alterações
 
-_A lista completa de actualizações pode ser consultada através do item de navegação "Acerca" no botão "Sugestões".
+_A lista completa de actualizações pode ser consultada através do item de navegação "Acerca" no botão "Sugestões"._
+
+### 6.0.0
+- Adicionar widget de ecrã / casa para Android
+- Melhorar os orçamentos relativos
 
 ### 5.9.2
 - Correção de gráficos: categoria de corrida de barras, orçamento anual

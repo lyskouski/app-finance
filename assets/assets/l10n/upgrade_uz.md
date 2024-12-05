@@ -2,6 +2,10 @@
 
 _Yangilanishlarning toʻliq roʻyxatini “Maslahat” tugmasidagi “Haqida” navigatsiya bandi orqali koʻrish mumkin._
 
+### 6.0.0
+- Android uchun ekran / uy vidjetini qo'shish
+- Nisbiy byudjetlarni yaxshilash
+
 ### 5.9.2
 - Tuzatish jadvallari: bar poygasi toifasi, byudjet ytd
 
