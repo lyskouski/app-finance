@@ -38,9 +38,7 @@ class TotalRecalculation extends AbstractRecalculation {
     if (summary == null) {
       return [];
     }
-    return [AppDataType.bills, AppDataType.budgets, AppDataType.invoice].contains(type)
-        ? summary.listActual
-        : summary.list;
+    return [AppDataType.bills, AppDataType.invoice].contains(type) ? summary.listActual : summary.list;
   }
 
   Future<void> updateTotal(AppDataType type, SummaryAppData? summary, HashMap<String, dynamic> hashTable) async {

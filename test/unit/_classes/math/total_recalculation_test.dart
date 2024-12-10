@@ -57,7 +57,8 @@ void main() {
       final testCases = [
         (type: AppDataType.accounts, isActualList: false),
         (type: AppDataType.bills, isActualList: true),
-        (type: AppDataType.budgets, isActualList: true),
+        (type: AppDataType.budgets, isActualList: false),
+        (type: AppDataType.invoice, isActualList: true),
         (type: AppDataType.currencies, isActualList: false),
         (type: AppDataType.goals, isActualList: false),
       ];
