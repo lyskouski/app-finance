@@ -102,14 +102,27 @@ class ExchangeController extends ValueNotifier<ExchangeMap> {
     }
   }
 
+  int? _getDecimals(String uuid) {
+    int? decimals = CurrencyProvider.find(uuid.split('-')[1])?.decimalDigits;
+    if (rate[uuid]!.details != null) {
+      final rateString = rate[uuid]!.details.toString();
+      final rateDecimals = rateString.contains('.') ? rateString.split('.')[1].length : 0;
+      if (rateDecimals > (decimals ?? 0)) {
+        decimals = rateDecimals;
+      }
+    }
+    return decimals;
+  }
+
   void _updateSum(String uuid) {
     List<TextEditingController> pair = value[uuid]!;
     if (pair[0].text != '' && rate[uuid] != null) {
       rate[uuid]!.details = double.tryParse(pair[0].text);
     }
-    final amount = _getAmount(uuid)?.toFixed(CurrencyProvider.find(uuid.split('-')[1])?.decimalDigits);
+    final amount = _getAmount(uuid);
     final current = double.tryParse(pair[1].text);
-    if (amount != current) {
+    final decimals = _getDecimals(uuid);
+    if (amount?.toFixed(decimals) != current?.toFixed(decimals)) {
       pair[1].text = (amount ?? '').toString();
       pair[1].notifyListeners();
     }
@@ -119,7 +132,8 @@ class ExchangeController extends ValueNotifier<ExchangeMap> {
     List<TextEditingController> pair = value[uuid]!;
     final sum = _getRate(uuid, double.tryParse(pair[1].text));
     final current = double.tryParse(pair[0].text);
-    if (sum != current) {
+    final decimals = _getDecimals(uuid);
+    if (sum?.toFixed(decimals) != current?.toFixed(decimals)) {
       if (sum != null && rate[uuid] != null) {
         rate[uuid]!.details = sum;
       }
