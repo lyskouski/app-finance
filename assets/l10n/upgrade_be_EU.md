@@ -2,6 +2,9 @@
 
 _Poŭny spis abnaŭlieńniaŭ možna prahliadzieć u navihacyjnym punkcie «Ab Dadatku» na knopcy «Padkazki»._ 
 
+### 6.0.1
+- Dazvalieńnie abmienu na valiuty nižej dziesiatkovych drobaŭ
+
 ### 6.0.0
 - Dadańnie vidžeta ekrana / doma dlia Android
 - Paliapšeńnie adnosnych biudžetaŭ
