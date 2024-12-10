@@ -37,6 +37,7 @@ class ExpensesEditTab extends ExpensesTab {
 class ExpensesEditTabState extends ExpensesTabState<ExpensesEditTab> {
   @override
   void updateStorage() {
+    exchange.save();
     widget.state.update(
         widget.uuid,
         BillAppData(
