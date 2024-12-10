@@ -8582,11 +8582,12 @@ DA:46,0
 DA:47,0
 DA:48,0
 DA:49,0
-DA:53,0
+DA:50,0
 DA:54,0
-DA:56,0
+DA:55,0
 DA:57,0
-LF:19
+DA:58,0
+LF:20
 LH:0
 end_of_record
 SF:lib/pages/bill/widgets/bill_line_widget.dart
