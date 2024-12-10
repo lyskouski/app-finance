@@ -2,6 +2,9 @@
 
 _The full list of updates can be viewed via the "About" navigation item on the "Hints" button._
 
+### 6.0.1
+- Allowing exchanges for currencies below decimal fractions
+
 ### 6.0.0
 - Adding screen / home widget for Android
 - Improving relative budgets

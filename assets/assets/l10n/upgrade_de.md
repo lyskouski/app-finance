@@ -2,6 +2,9 @@
 
 _Die vollständige Liste der Updates kann über den Navigationspunkt "Über" auf der Schaltfläche "Hinweise" eingesehen werden._
 
+### 6.0.1
+- Erlaubt den Umtausch von Währungen unterhalb von Dezimalbrüchen
+
 ### 6.0.0
 - Hinzufügen von Bildschirm-/Home-Widgets für Android
 - Verbesserung der relativen Budgets

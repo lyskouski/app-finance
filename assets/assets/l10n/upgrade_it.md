@@ -3,6 +3,9 @@
 _L'elenco completo degli aggiornamenti può essere consultato tramite la voce di navigazione “Informazioni” del 
 pulsante “Suggerimenti”._
 
+### 6.0.1
+- Permettere gli scambi per le valute al di sotto delle frazioni decimali
+
 ### 6.0.0
 - Aggiunta di un widget per lo schermo / la casa per Android
 - Miglioramento dei bilanci relativi

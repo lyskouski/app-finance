@@ -2,6 +2,9 @@
 
 _La lista completa de actualizaciones puede consultarse en el menú "Acerca de" del botón "Sugerencias"._
 
+### 6.0.1
+- Permitir cambios de divisas por debajo de fracciones decimales
+
 ### 6.0.0
 - Adición de pantalla / widget de inicio para Android
 - Mejora de los presupuestos relativos
