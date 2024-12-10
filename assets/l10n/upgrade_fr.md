@@ -2,6 +2,9 @@
 
 _La liste complète des mises à jour peut être consultée via l'élément de navigation "À propos" du bouton "Conseils"._
 
+### 6.0.1
+- Permettre les échanges pour les monnaies en dessous des fractions décimales
+
 ### 6.0.0
 - Ajout d'un widget écran / maison pour Android
 - Amélioration des budgets relatifs

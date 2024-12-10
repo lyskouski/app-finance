@@ -2,6 +2,9 @@
 
 _Yangilanishlarning toʻliq roʻyxatini “Maslahat” tugmasidagi “Haqida” navigatsiya bandi orqali koʻrish mumkin._
 
+### 6.0.1
+- O'nlik kasrdan past bo'lgan valyutalarni almashtirishga ruxsat berish
+
 ### 6.0.0
 - Android uchun ekran / uy vidjetini qo'shish
 - Nisbiy byudjetlarni yaxshilash

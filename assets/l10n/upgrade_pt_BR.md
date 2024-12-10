@@ -2,6 +2,9 @@
 
 _A lista completa de atualizações pode ser visualizada no item de navegação "Sobre" no botão "Dicas"._
 
+### 6.0.1
+- Permitir trocas de moedas abaixo de frações decimais
+
 ### 6.0.0
 - Adição de widget de tela / home para Android
 - Aprimoramento dos orçamentos relativos

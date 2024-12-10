@@ -2,6 +2,9 @@
 
 _Pełną listę aktualizacji można wyświetlić za pomocą elementu nawigacyjnego "O aplikacji" na przycisku "Wskazówki"._
 
+### 6.0.1
+- Umożliwienie wymiany walut poniżej ułamków dziesiętnych
+
 ### 6.0.0
 - Dodanie ekranu / widżetu domowego dla systemu Android
 - Poprawa budżetów względnych

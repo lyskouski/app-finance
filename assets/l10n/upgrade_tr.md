@@ -2,6 +2,9 @@
 
 _Güncellemelerin tam listesi “İpuçları” düğmesindeki “Hakkında” gezinti öğesi aracılığıyla görüntülenebilir._
 
+### 6.0.1
+- Ondalık kesirlerin altındaki para birimleri için değişimlere izin verilmesi
+
 ### 6.0.0
 - Android için ekran / ana sayfa widget'ı ekleme
 - Göreceli bütçelerin iyileştirilmesi
