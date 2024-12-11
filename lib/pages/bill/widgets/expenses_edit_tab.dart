@@ -5,7 +5,6 @@ import 'package:app_finance/_classes/herald/app_locale.dart';
 import 'package:app_finance/_classes/structure/bill_app_data.dart';
 import 'package:app_finance/_ext/double_ext.dart';
 import 'package:app_finance/pages/bill/widgets/expenses_tab.dart';
-import 'package:flutter_currency_picker/flutter_currency_picker.dart';
 
 class ExpensesEditTab extends ExpensesTab {
   final String uuid;
@@ -15,20 +14,13 @@ class ExpensesEditTab extends ExpensesTab {
     required this.uuid,
     required super.state,
     required super.callback,
-    String? account,
-    String? budget,
-    Currency? currency,
-    double? bill,
-    String? description,
-    DateTime? createdAt,
-  }) : super(
-          account: account,
-          budget: budget,
-          currency: currency,
-          bill: bill,
-          description: description,
-          createdAt: createdAt,
-        );
+    super.account,
+    super.budget,
+    super.currency,
+    super.bill,
+    super.description,
+    super.createdAt,
+  });
 
   @override
   ExpensesEditTabState createState() => ExpensesEditTabState();

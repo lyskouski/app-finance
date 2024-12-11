@@ -5,7 +5,6 @@ import 'package:app_finance/_classes/controller/exchange_controller.dart';
 import 'package:app_finance/_classes/herald/app_design.dart';
 import 'package:app_finance/_classes/herald/app_locale.dart';
 import 'package:app_finance/_classes/structure/currency/exchange.dart';
-import 'package:app_finance/_classes/structure/navigation/app_route.dart';
 import 'package:app_finance/_classes/structure/bill_app_data.dart';
 import 'package:app_finance/_classes/controller/focus_controller.dart';
 import 'package:app_finance/_classes/storage/app_preferences.dart';
@@ -148,7 +147,7 @@ class ExpensesTabState<T extends ExpensesTab> extends State<T> {
             return;
           }
           updateStorage();
-          nav.popAndPushNamed(AppRoute.homeRoute);
+          nav.pop();
         })
       },
       title: getButtonName(),
