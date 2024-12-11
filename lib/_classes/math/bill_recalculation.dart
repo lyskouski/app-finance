@@ -21,13 +21,18 @@ class BillRecalculation extends AbstractRecalculation {
 
   double getPrevDelta() => initial?.hidden == true ? 0.0 : initial?.details;
 
-  double getStateDelta(dynamic prev, dynamic curr) {
-    double initialDetails = exchange.reform(initial?.details ?? 0.0, initial?.currency, change.currency);
+  double getStateDelta(dynamic prev, dynamic curr, [bool isBudget = true]) {
+    double initialDetails = initial?.details ?? 0.0;
     double delta = change.hidden ? 0.0 : change.details;
+    if (isBudget) {
+      initialDetails *= initial?.exchangeCategory ?? 1.0;
+      delta *= change.exchangeCategory;
+    } else {
+      initialDetails *= initial?.exchangeAccount ?? 1.0;
+      delta *= change.exchangeAccount;
+    }
     if (initial != null && prev?.uuid == curr?.uuid) {
-      delta = change.hidden
-          ? -initialDetails
-          : (initial?.hidden == true ? change.details : change.details - initialDetails);
+      delta = initial?.hidden == true ? delta : delta - initialDetails;
     }
     return delta;
   }
@@ -38,13 +43,13 @@ class BillRecalculation extends AbstractRecalculation {
       diffDelta = getPrevDelta();
       HistoryData.addLog(accountInitial.uuid!, initial, 0.0, diffDelta, initial!.uuid);
     }
-    double delta = getStateDelta(accountInitial, accountChange);
+    double delta = getStateDelta(accountInitial, accountChange, false);
     HistoryData.addLog(accountChange.uuid!, change, 0.0, -delta, change.uuid);
     if (diffDelta != null && accountInitial?.createdAt.isBefore(initial?.createdAt ?? DateTime.now()) == true) {
       accountInitial!.details += exchange.reform(diffDelta, initial?.currency, accountInitial.currency);
     }
     if (accountChange.createdAt.isBefore(change.createdAt)) {
-      accountChange.details -= exchange.reform(delta, change.currency, accountChange.currency);
+      accountChange.details -= delta;
     }
     return this;
   }
@@ -58,7 +63,7 @@ class BillRecalculation extends AbstractRecalculation {
       budgetInitial.progress = getProgress(budgetInitial.amountLimit, budgetInitial.progress, -prevDelta);
       budgetInitial.amount -= prevDelta;
     }
-    double delta = exchange.reform(getStateDelta(budgetInitial, budgetChange), change.currency, budgetChange.currency);
+    double delta = getStateDelta(budgetInitial, budgetChange, true);
     budgetChange.progress = getProgress(budgetChange.amountLimit, budgetChange.progress, delta);
     budgetChange.amount += delta;
     return this;

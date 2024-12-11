@@ -13,6 +13,8 @@ import 'package:flutter_currency_picker/flutter_currency_picker.dart';
 class BillAppData extends AbstractAppData with StorageMixin {
   String account;
   String category;
+  double exchangeAccount;
+  double exchangeCategory;
 
   BillAppData({
     required this.account,
@@ -26,6 +28,8 @@ class BillAppData extends AbstractAppData with StorageMixin {
     super.createdAtFormatted,
     super.hidden,
     super.payment,
+    this.exchangeAccount = 1.0,
+    this.exchangeCategory = 1.0,
   });
 
   @override
@@ -46,6 +50,8 @@ class BillAppData extends AbstractAppData with StorageMixin {
       createdAt: super.createdAt,
       hidden: super.hidden,
       payment: super.payment,
+      exchangeAccount: exchangeAccount,
+      exchangeCategory: exchangeCategory,
     );
   }
 

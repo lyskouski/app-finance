@@ -167,7 +167,7 @@ void main() {
             change: object.change,
           );
           mock.exchange = object.exchange;
-          mock.mockGetStateDelta = (a, b) => v.getStateDelta;
+          mock.mockGetStateDelta = (a, b, [c = true]) => v.getStateDelta;
           mock.mockGetPrevDelta = () => v.getPrevDelta;
           final initial = AccountAppData(title: '', type: '')
             ..uuid = v.initialAccount.uuid
@@ -207,7 +207,7 @@ void main() {
             change: object.change,
           );
           mock.exchange = object.exchange;
-          mock.mockGetStateDelta = (a, b) => v.getStateDelta;
+          mock.mockGetStateDelta = (a, b, [c = true]) => v.getStateDelta;
           mock.mockGetPrevDelta = () => v.getPrevDelta;
           final initial = BudgetAppData(title: '', amountLimit: v.initialBudget.amountLimit)
             ..uuid = v.initialBudget.uuid
@@ -235,6 +235,7 @@ void main() {
         hasSpace: false,
         symbolOnLeft: true,
       );
+      object.initial!.exchangeCategory = 2;
       object.change.details = 100.0;
       object.change.currency = (
         code: 'EUR',
@@ -247,6 +248,7 @@ void main() {
         hasSpace: true,
         symbolOnLeft: false,
       );
+      object.change.exchangeCategory = 1;
       final mock = WrapperBillRecalculation(
         initial: object.initial,
         change: object.change,

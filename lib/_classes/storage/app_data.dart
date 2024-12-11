@@ -198,6 +198,9 @@ class AppData extends ChangeNotifier {
     AccountAppData? prevAccount;
     BudgetAppData? currBudget = getByUuid(change.category, false);
     BudgetAppData? prevBudget;
+    final exchange = Exchange(store: this);
+    change.exchangeAccount = exchange.reform(1.0, change.currency, currAccount?.currency);
+    change.exchangeCategory = exchange.reform(1.0, change.currency, currBudget?.currency);
     if (initial != null) {
       prevAccount = getByUuid(initial.account, false);
       if (prevAccount != null) {
@@ -208,7 +211,7 @@ class AppData extends ChangeNotifier {
         _data[AppDataType.budgets]?.add(initial.category);
       }
     }
-    final rec = BillRecalculation(change: change, initial: initial)..exchange = Exchange(store: this);
+    final rec = BillRecalculation(change: change, initial: initial)..exchange = exchange;
     if (currAccount != null) {
       rec.updateAccount(currAccount, prevAccount);
       _data[AppDataType.accounts]?.add(change.account);
