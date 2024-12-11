@@ -23,6 +23,7 @@ class MenuWidget extends StatelessWidget {
   });
 
   void _navigateToPage(NavigatorState nav, String routeName) {
+    setState();
     nav.pop();
     nav.pushNamed(routeName);
   }
@@ -45,10 +46,7 @@ class MenuWidget extends StatelessWidget {
     NavigatorState nav = Navigator.of(context);
 
     return InkWell(
-      onTap: () {
-        setState();
-        _navigateToPage(nav, menu.route);
-      },
+      onTap: () => _navigateToPage(nav, menu.route),
       focusNode: isSelected && !isWide ? (focus..requestFocus()) : focus,
       onHover: _onHover,
       child: Container(
