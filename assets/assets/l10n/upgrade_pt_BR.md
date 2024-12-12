@@ -2,6 +2,12 @@
 
 _A lista completa de atualizações pode ser visualizada no item de navegação "Sobre" no botão "Dicas"._
 
+### 6.0.3
+- Alteração da navegação ao adicionar itens (para a página anterior em vez da página inicial) 
+
+### 6.0.2
+- Correção do modo de edição de despesas com câmbio
+
 ### 6.0.1
 - Permitir trocas de moedas abaixo de frações decimais
 

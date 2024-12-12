@@ -2,6 +2,12 @@
 
 _Yeniləmələrin tam siyahısına "İpucu" düyməsindəki "Haqqında" naviqasiya elementi vasitəsilə baxmaq olar._
 
+### 6.0.3
+- Elementlər əlavə edərkən naviqasiyanın dəyişdirilməsi (ev əvəzinə əvvəlki səhifəyə)
+
+### 6.0.2
+- Mübadilə ilə xərc redaktə rejiminin düzəldilməsi
+
 ### 6.0.1
 - Onluq fraksiyalardan aşağı olan valyutalar üçün mübadilələrə icazə verilir
 

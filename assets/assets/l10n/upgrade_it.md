@@ -3,6 +3,12 @@
 _L'elenco completo degli aggiornamenti può essere consultato tramite la voce di navigazione “Informazioni” del 
 pulsante “Suggerimenti”._
 
+### 6.0.3
+- Modifica della navigazione quando si aggiungono elementi (alla pagina precedente invece che alla home) 
+
+### 6.0.2
+- Correzione della modalità di modifica delle spese con lo scambio
+
 ### 6.0.1
 - Permettere gli scambi per le valute al di sotto delle frazioni decimali
 

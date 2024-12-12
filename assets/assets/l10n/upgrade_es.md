@@ -2,6 +2,12 @@
 
 _La lista completa de actualizaciones puede consultarse en el menú "Acerca de" del botón "Sugerencias"._
 
+### 6.0.3
+- Cambiar la navegación al añadir elementos (a la página anterior en lugar de home) 
+
+### 6.0.2
+- Arreglar el modo de edición de gastos con intercambio
+
 ### 6.0.1
 - Permitir cambios de divisas por debajo de fracciones decimales
 

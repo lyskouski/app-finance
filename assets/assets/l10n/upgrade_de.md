@@ -2,6 +2,12 @@
 
 _Die vollständige Liste der Updates kann über den Navigationspunkt "Über" auf der Schaltfläche "Hinweise" eingesehen werden._
 
+### 6.0.3
+- Ändern der Navigation beim Hinzufügen von Artikeln (zur vorherigen Seite statt zur Startseite) 
+
+### 6.0.2
+- Korrektur des Bearbeitungsmodus für Ausgaben mit Austausch
+
 ### 6.0.1
 - Erlaubt den Umtausch von Währungen unterhalb von Dezimalbrüchen
 

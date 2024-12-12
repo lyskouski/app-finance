@@ -2,6 +2,12 @@
 
 _Güncellemelerin tam listesi “İpuçları” düğmesindeki “Hakkında” gezinti öğesi aracılığıyla görüntülenebilir._
 
+### 6.0.3
+- Öğeler eklenirken gezinmenin değiştirilmesi (ana sayfa yerine önceki sayfaya) 
+
+### 6.0.2
+- Exchange ile gider düzenleme modu düzeltildi
+
 ### 6.0.1
 - Ondalık kesirlerin altındaki para birimleri için değişimlere izin verilmesi
 

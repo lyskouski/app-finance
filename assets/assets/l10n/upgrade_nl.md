@@ -2,6 +2,12 @@
 
 _De volledige lijst met updates kan worden bekeken via het navigatie-item “Over” op de knop “Hints”._
 
+### 6.0.3
+- De navigatie bij het toevoegen van items wijzigen (naar de vorige pagina in plaats van home) 
+
+### 6.0.2
+- Onkostenbewerkingsmodus met uitwisseling repareren
+
 ### 6.0.1
 - Inwisselen van valuta onder decimale fracties toestaan
 

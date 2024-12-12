@@ -2,6 +2,12 @@
 
 _Poŭny spis abnaŭlieńniaŭ možna prahliadzieć u navihacyjnym punkcie «Ab Dadatku» na knopcy «Padkazki»._ 
 
+### 6.0.3
+- Zmiena navihacyi pry dadańni eliemientaŭ (na papiaredniuju staronku zamiest chatniaj) 
+
+### 6.0.2
+- Vypraŭlieńnie režymu redahavańnia raschodaŭ z abmienam
+
 ### 6.0.1
 - Dazvalieńnie abmienu na valiuty nižej dziesiatkovych drobaŭ
 
