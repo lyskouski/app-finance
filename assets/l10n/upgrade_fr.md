@@ -2,6 +2,12 @@
 
 _La liste complète des mises à jour peut être consultée via l'élément de navigation "À propos" du bouton "Conseils"._
 
+### 6.0.3
+- Modification de la navigation lors de l'ajout d'éléments (vers la page précédente au lieu de la page d'accueil) 
+
+### 6.0.2
+- Correction du mode d'édition des dépenses avec l'échange
+
 ### 6.0.1
 - Permettre les échanges pour les monnaies en dessous des fractions décimales
 

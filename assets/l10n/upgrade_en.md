@@ -2,6 +2,12 @@
 
 _The full list of updates can be viewed via the "About" navigation item on the "Hints" button._
 
+### 6.0.3
+- Changing the navigation when adding items (to the previous page instead of home) 
+
+### 6.0.2
+- Fixing expense edit mode with exchange
+
 ### 6.0.1
 - Allowing exchanges for currencies below decimal fractions
 

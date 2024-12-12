@@ -2,6 +2,12 @@
 
 _Yangilanishlarning toʻliq roʻyxatini “Maslahat” tugmasidagi “Haqida” navigatsiya bandi orqali koʻrish mumkin._
 
+### 6.0.3
+- Elementlarni qo'shishda navigatsiyani o'zgartirish (uy o'rniga oldingi sahifaga)
+
+### 6.0.2
+- Ayirboshlash bilan xarajatlarni tahrirlash rejimini tuzatish
+
 ### 6.0.1
 - O'nlik kasrdan past bo'lgan valyutalarni almashtirishga ruxsat berish
 
