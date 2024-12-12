@@ -67,17 +67,6 @@ class PaymentAddPageState<T extends PaymentAddPage> extends AbstractAddPageState
   String getTitle() => AppLocale.labels.paymentsHeadline;
 
   @override
-  void triggerActionButton(NavigatorState nav) {
-    setState(() {
-      if (hasFormErrors()) {
-        return;
-      }
-      updateStorage();
-      nav.pop();
-    });
-  }
-
-  @override
   bool hasFormErrors() {
     setState(() => hasErrors = itemType == null || intervalType == null);
     return hasErrors;

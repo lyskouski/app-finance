@@ -10,7 +10,7 @@ import 'package:app_finance/_classes/storage/app_data.dart';
 import 'package:app_finance/_configs/theme_helper.dart';
 import 'package:app_finance/_classes/storage/app_preferences.dart';
 import 'package:app_finance/design/wrapper/input_wrapper.dart';
-import 'package:app_finance/pages/_interfaces/abstract_page_state.dart';
+import 'package:app_finance/pages/_interfaces/abstract_add_page.dart';
 import 'package:app_finance/design/button/full_sized_button_widget.dart';
 import 'package:app_finance/design/form/simple_input.dart';
 import 'package:app_finance/design/wrapper/row_widget.dart';
@@ -18,7 +18,7 @@ import 'package:app_finance/design/wrapper/single_scroll_wrapper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_currency_picker/flutter_currency_picker.dart';
 
-class GoalAddPage extends StatefulWidget {
+class GoalAddPage extends AbstractAddPage {
   final String? title;
   final IconData? icon;
   final MaterialColor? color;
@@ -40,7 +40,7 @@ class GoalAddPage extends StatefulWidget {
   GoalAddPageState createState() => GoalAddPageState();
 }
 
-class GoalAddPageState<T extends GoalAddPage> extends AbstractPageState<GoalAddPage> {
+class GoalAddPageState<T extends GoalAddPage> extends AbstractAddPageState<GoalAddPage> {
   late FocusController focus;
   late TextEditingController title;
   late TextEditingController details;
@@ -48,7 +48,6 @@ class GoalAddPageState<T extends GoalAddPage> extends AbstractPageState<GoalAddP
   MaterialColor? color;
   Currency? currency;
   DateTime? closedAt;
-  bool hasError = false;
 
   @override
   void initState() {
@@ -74,11 +73,13 @@ class GoalAddPageState<T extends GoalAddPage> extends AbstractPageState<GoalAddP
   @override
   String getTitle() => AppLocale.labels.createGoalHeader;
 
+  @override
   bool hasFormErrors() {
     setState(() => hasError = title.text.isEmpty || closedAt == null);
     return hasError;
   }
 
+  @override
   void updateStorage() {
     if (currency != null) {
       CurrencyProvider.pin(currency!);
@@ -105,15 +106,7 @@ class GoalAddPageState<T extends GoalAddPage> extends AbstractPageState<GoalAddP
     return FullSizedButtonWidget(
       constraints: constraints,
       controller: focus,
-      onPressed: () => {
-        setState(() {
-          if (hasFormErrors()) {
-            return;
-          }
-          updateStorage();
-          nav.pop();
-        })
-      },
+      onPressed: () => triggerActionButton(nav),
       title: getButtonName(),
       icon: Icons.save,
     );

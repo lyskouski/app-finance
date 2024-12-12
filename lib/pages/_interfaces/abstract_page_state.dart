@@ -100,13 +100,16 @@ abstract class AbstractPageState<T extends StatefulWidget> extends State<T> {
         ),
       if (!isWide)
         Builder(
-          builder: (context) => ToolbarButtonWidget(
-            icon: Icons.menu,
-            color: Colors.white70,
-            tooltip: AppLocale.labels.navigationTooltip,
-            onPressed: () => Scaffold.of(context).openDrawer(),
-          ),
-        ),
+          builder: (context) {
+            final scaffold = Scaffold.of(context);
+            return ToolbarButtonWidget(
+              icon: Icons.menu,
+              color: Colors.white70,
+              tooltip: AppLocale.labels.navigationTooltip,
+              onPressed: () => AppDesign.isRightToLeft() ? scaffold.openEndDrawer() : scaffold.openDrawer(),
+            );
+          },
+        )
     ];
   }
 
@@ -272,6 +275,7 @@ abstract class AbstractPageState<T extends StatefulWidget> extends State<T> {
           return Scaffold(
             appBar: display.isBottom ? null : buildBar(context, constraints),
             drawer: buildDrawer(),
+            endDrawer: buildDrawer(),
             floatingActionButtonLocation: isBottom ? FloatingActionButtonLocation.centerDocked : null,
             floatingActionButton: isBottom
                 ? hasKeyboard

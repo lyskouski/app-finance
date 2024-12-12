@@ -100,11 +100,12 @@ class HomePageState extends AbstractPageState<HomePage> {
     }
     return Builder(
       builder: (BuildContext context) {
+        final scaffold = Scaffold.of(context);
         return ToolbarButtonWidget(
           icon: Icons.menu,
           color: Colors.white70,
           tooltip: AppLocale.labels.navigationTooltip,
-          onPressed: () => Scaffold.of(context).openDrawer(),
+          onPressed: () => AppDesign.isRightToLeft() ? scaffold.openEndDrawer() : scaffold.openDrawer(),
         );
       },
     );

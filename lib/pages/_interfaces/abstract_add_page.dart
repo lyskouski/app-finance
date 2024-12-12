@@ -22,7 +22,6 @@ abstract class AbstractAddPageState<T extends AbstractAddPage> extends AbstractP
       }
       updateStorage();
       nav.pop();
-      nav.pop();
     });
   }
 }

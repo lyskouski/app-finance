@@ -11,6 +11,7 @@ import 'package:app_finance/_classes/structure/payment_app_data.dart';
 import 'package:app_finance/_configs/budget_type.dart';
 import 'package:app_finance/_ext/data_ext.dart';
 import 'package:app_finance/_ext/date_time_ext.dart';
+import 'package:flutter/foundation.dart';
 import 'package:home_widget/home_widget.dart';
 
 class PaymentsController {
@@ -42,8 +43,10 @@ class PaymentsController {
       }
     }
     // TODO: create iOS Widget
-    if (Platform.isAndroid) {
-      _updateWidget();
+    if (!kIsWeb) {
+      if (Platform.isAndroid) {
+        _updateWidget();
+      }
     }
   }
 

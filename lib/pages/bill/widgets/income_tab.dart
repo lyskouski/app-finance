@@ -6,7 +6,6 @@ import 'package:app_finance/_classes/herald/app_design.dart';
 import 'package:app_finance/_classes/herald/app_locale.dart';
 import 'package:app_finance/_classes/structure/currency/exchange.dart';
 import 'package:app_finance/_classes/structure/invoice_app_data.dart';
-import 'package:app_finance/_classes/structure/navigation/app_route.dart';
 import 'package:app_finance/_classes/controller/focus_controller.dart';
 import 'package:app_finance/_classes/storage/app_preferences.dart';
 import 'package:app_finance/_classes/storage/app_data.dart';
@@ -127,7 +126,7 @@ class IncomeTabState<T extends IncomeTab> extends State<IncomeTab> {
             return;
           }
           updateStorage();
-          nav.popAndPushNamed(AppRoute.homeRoute);
+          nav.pop();
         })
       },
       title: getButtonName(),

@@ -67,17 +67,6 @@ class CurrencyAddPageState extends AbstractAddPageState<CurrencyAddPage> {
   }
 
   @override
-  void triggerActionButton(NavigatorState nav) {
-    setState(() {
-      if (hasFormErrors()) {
-        return;
-      }
-      updateStorage();
-      nav.pop();
-    });
-  }
-
-  @override
   Widget buildButton(BuildContext context, BoxConstraints constraints) {
     NavigatorState nav = Navigator.of(context);
     return FloatingActionButton(

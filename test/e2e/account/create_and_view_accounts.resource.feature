@@ -9,6 +9,7 @@ Feature: Verify Account Functionality
       And I enter "<amount>" to "Set Balance" text field
       And I select "<currency>" from "CurrencySelector" with "Currency Type (Code)" tooltip
       And I tap "Create new Account" button
+    Given I am on "Home" page
      Then I can see "Accounts, total" component
       And I can see "<type>" component
       And I can see "<result>" component

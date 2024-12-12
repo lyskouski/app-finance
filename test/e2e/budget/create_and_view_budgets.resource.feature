@@ -7,6 +7,7 @@ Feature: Verify Budget Functionality
       And I enter "<amount>" to "Set Balance" text field
       And I select "<currency>" from "CurrencySelector" with "Currency Type (Code)" tooltip
       And I tap "Create new Budget Category" button
+    Given I am on "Home" page
      Then I can see "Budgets, left" component
       And I can see "<name_result>" component
       And I can see "<result>" component

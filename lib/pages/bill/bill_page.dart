@@ -145,6 +145,12 @@ class BillPageState extends AbstractPageState<BillPage> {
 
   @override
   Widget buildContent(BuildContext context, BoxConstraints constraints) {
+    state.addListener(() {
+      itemsShown = [];
+      final now = DateTime.now();
+      timer = DateTime(now.year, now.month, now.day);
+      stream = null;
+    });
     if (stream == null) {
       WidgetsBinding.instance.addPostFrameCallback(
         (_) => setState(() {
