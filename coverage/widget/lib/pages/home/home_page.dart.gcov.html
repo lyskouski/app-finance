@@ -31,13 +31,13 @@
             <td class="headerValue">lcov.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntry">80</td>
-            <td class="headerCovTableEntry">126</td>
-            <td class="headerCovTableEntryLo">63.5 %</td>
+            <td class="headerCovTableEntry">81</td>
+            <td class="headerCovTableEntry">127</td>
+            <td class="headerCovTableEntryLo">63.8 %</td>
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2024-12-11 20:27:47</td>
+            <td class="headerValue">2024-12-12 13:08:24</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">0</td>
@@ -162,210 +162,211 @@
 <a name="100"><span class="lineNum">     100 </span>            :     }</a>
 <a name="101"><span class="lineNum">     101 </span><span class="lineCov">          3 :     return Builder(</span></a>
 <a name="102"><span class="lineNum">     102 </span><span class="lineCov">          3 :       builder: (BuildContext context) {</span></a>
-<a name="103"><span class="lineNum">     103 </span><span class="lineCov">          3 :         return ToolbarButtonWidget(</span></a>
-<a name="104"><span class="lineNum">     104 </span>            :           icon: Icons.menu,</a>
-<a name="105"><span class="lineNum">     105 </span>            :           color: Colors.white70,</a>
-<a name="106"><span class="lineNum">     106 </span><span class="lineCov">          6 :           tooltip: AppLocale.labels.navigationTooltip,</span></a>
-<a name="107"><span class="lineNum">     107 </span><span class="lineNoCov">          0 :           onPressed: () =&gt; Scaffold.of(context).openDrawer(),</span></a>
-<a name="108"><span class="lineNum">     108 </span>            :         );</a>
-<a name="109"><span class="lineNum">     109 </span>            :       },</a>
-<a name="110"><span class="lineNum">     110 </span>            :     );</a>
-<a name="111"><span class="lineNum">     111 </span>            :   }</a>
-<a name="112"><span class="lineNum">     112 </span>            : </a>
-<a name="113"><span class="lineNum">     113 </span><span class="lineCov">          3 :   @override</span></a>
-<a name="114"><span class="lineNum">     114 </span>            :   List&lt;Widget&gt; getBarActions(NavigatorState nav) {</a>
-<a name="115"><span class="lineNum">     115 </span><span class="lineCov">          3 :     final isWide = ScreenHelper.state().isWide;</span></a>
-<a name="116"><span class="lineNum">     116 </span><span class="lineCov">          3 :     return [</span></a>
-<a name="117"><span class="lineNum">     117 </span><span class="lineCov">          3 :       ToolbarButtonWidget(</span></a>
-<a name="118"><span class="lineNum">     118 </span>            :         isWide: isWide,</a>
-<a name="119"><span class="lineNum">     119 </span>            :         icon: Icons.app_registration_outlined,</a>
-<a name="120"><span class="lineNum">     120 </span>            :         color: Colors.white70,</a>
-<a name="121"><span class="lineNum">     121 </span><span class="lineCov">          6 :         tooltip: AppLocale.labels.customizeTooltip,</span></a>
-<a name="122"><span class="lineNum">     122 </span><span class="lineNoCov">          0 :         onPressed: () =&gt; setState(() =&gt; isEditMode = true),</span></a>
-<a name="123"><span class="lineNum">     123 </span>            :       ),</a>
-<a name="124"><span class="lineNum">     124 </span><span class="lineCov">          9 :       if (![TargetPlatform.iOS, TargetPlatform.macOS, TargetPlatform.android].contains(defaultTargetPlatform))</span></a>
-<a name="125"><span class="lineNum">     125 </span><span class="lineNoCov">          0 :         ToolbarButtonWidget(</span></a>
-<a name="126"><span class="lineNum">     126 </span>            :           isWide: isWide,</a>
-<a name="127"><span class="lineNum">     127 </span>            :           icon: Icons.switch_access_shortcut_add_outlined,</a>
-<a name="128"><span class="lineNum">     128 </span>            :           color: Colors.white70,</a>
-<a name="129"><span class="lineNum">     129 </span><span class="lineNoCov">          0 :           tooltip: AppLocale.labels.subscriptionTooltip,</span></a>
-<a name="130"><span class="lineNum">     130 </span><span class="lineNoCov">          0 :           onPressed: () =&gt; nav.pushNamed(AppRoute.subscriptionRoute),</span></a>
-<a name="131"><span class="lineNum">     131 </span>            :         ),</a>
-<a name="132"><span class="lineNum">     132 </span>            :     ];</a>
-<a name="133"><span class="lineNum">     133 </span>            :   }</a>
-<a name="134"><span class="lineNum">     134 </span>            : </a>
-<a name="135"><span class="lineNum">     135 </span><span class="lineCov">          3 :   @override</span></a>
-<a name="136"><span class="lineNum">     136 </span>            :   Widget getBarTitle(BuildContext context, [bool isBottom = false]) {</a>
-<a name="137"><span class="lineNum">     137 </span><span class="lineCov">          3 :     return SvgPicture.asset(</span></a>
-<a name="138"><span class="lineNum">     138 </span>            :       'assets/images/fingrom.svg',</a>
-<a name="139"><span class="lineNum">     139 </span>            :       height: isBottom ? 20 : 40,</a>
-<a name="140"><span class="lineNum">     140 </span>            :       alignment: Alignment.centerLeft,</a>
-<a name="141"><span class="lineNum">     141 </span><span class="lineCov">          6 :       semanticsLabel: AppLocale.labels.appTitle,</span></a>
-<a name="142"><span class="lineNum">     142 </span>            :     );</a>
-<a name="143"><span class="lineNum">     143 </span>            :   }</a>
-<a name="144"><span class="lineNum">     144 </span>            : </a>
-<a name="145"><span class="lineNum">     145 </span><span class="lineCov">          3 :   @override</span></a>
-<a name="146"><span class="lineNum">     146 </span><span class="lineCov">          6 :   String getButtonName() =&gt; AppLocale.labels.addMainTooltip;</span></a>
-<a name="147"><span class="lineNum">     147 </span>            : </a>
-<a name="148"><span class="lineNum">     148 </span><span class="lineCov">          3 :   @override</span></a>
-<a name="149"><span class="lineNum">     149 </span>            :   Widget buildButton(BuildContext context, BoxConstraints constraints) {</a>
-<a name="150"><span class="lineNum">     150 </span><span class="lineCov">          3 :     NavigatorState nav = Navigator.of(context);</span></a>
-<a name="151"><span class="lineNum">     151 </span><span class="lineCov">          3 :     return FloatingActionButton(</span></a>
-<a name="152"><span class="lineNum">     152 </span>            :       heroTag: 'home_page',</a>
-<a name="153"><span class="lineNum">     153 </span><span class="lineCov">          3 :       mini: ThemeHelper.isWearable,</span></a>
-<a name="154"><span class="lineNum">     154 </span><span class="lineCov">          2 :       onPressed: () =&gt; nav.pushNamed(AppRoute.billAddRoute),</span></a>
-<a name="155"><span class="lineNum">     155 </span><span class="lineCov">          3 :       tooltip: getButtonName(),</span></a>
-<a name="156"><span class="lineNum">     156 </span>            :       child: const Icon(Icons.add),</a>
-<a name="157"><span class="lineNum">     157 </span>            :     );</a>
-<a name="158"><span class="lineNum">     158 </span>            :   }</a>
-<a name="159"><span class="lineNum">     159 </span>            : </a>
-<a name="160"><span class="lineNum">     160 </span><span class="lineCov">          3 :   @override</span></a>
-<a name="161"><span class="lineNum">     161 </span>            :   Widget build(BuildContext context) {</a>
-<a name="162"><span class="lineNum">     162 </span><span class="lineCov">          6 :     Provider.of&lt;AppLocale&gt;(context, listen: false).updateState(context);</span></a>
-<a name="163"><span class="lineNum">     163 </span><span class="lineCov">          3 :     if (isEditMode) {</span></a>
-<a name="164"><span class="lineNum">     164 </span><span class="lineNoCov">          0 :       return HomeEditPage(callback: () =&gt; setState(() =&gt; isEditMode = false));</span></a>
-<a name="165"><span class="lineNum">     165 </span>            :     }</a>
-<a name="166"><span class="lineNum">     166 </span><span class="lineCov">          3 :     if (AppPreferences.get(AppPreferences.prefPrivacyPolicy) == null) {</span></a>
-<a name="167"><span class="lineNum">     167 </span>            :       return const StartPage();</a>
-<a name="168"><span class="lineNum">     168 </span>            :     }</a>
-<a name="169"><span class="lineNum">     169 </span><span class="lineCov">          6 :     return Consumer&lt;AppData&gt;(builder: (context, appState, _) {</span></a>
-<a name="170"><span class="lineNum">     170 </span><span class="lineCov">          3 :       state = appState;</span></a>
-<a name="171"><span class="lineNum">     171 </span><span class="lineCov">          3 :       if (appState.isLoading) {</span></a>
-<a name="172"><span class="lineNum">     172 </span>            :         return const InitTab();</a>
-<a name="173"><span class="lineNum">     173 </span>            :       }</a>
-<a name="174"><span class="lineNum">     174 </span><span class="lineCov">         15 :       WidgetsBinding.instance.addPostFrameCallback((_) =&gt; PaymentsController(state));</span></a>
-<a name="175"><span class="lineNum">     175 </span><span class="lineCov">          3 :       return super.build(context);</span></a>
-<a name="176"><span class="lineNum">     176 </span>            :     });</a>
-<a name="177"><span class="lineNum">     177 </span>            :   }</a>
-<a name="178"><span class="lineNum">     178 </span>            : </a>
-<a name="179"><span class="lineNum">     179 </span><span class="lineCov">          3 :   @override</span></a>
-<a name="180"><span class="lineNum">     180 </span>            :   Widget buildContent(BuildContext context, BoxConstraints constraints) {</a>
-<a name="181"><span class="lineNum">     181 </span><span class="lineCov">          3 :     final data = ComponentsBuilder.getData(context);</span></a>
-<a name="182"><span class="lineNum">     182 </span><span class="lineNoCov">          0 :     if (data != null &amp;&amp; data.isNotEmpty) {</span></a>
-<a name="183"><span class="lineNum">     183 </span><span class="lineNoCov">          0 :       return ComponentsBuilder(data);</span></a>
-<a name="184"><span class="lineNum">     184 </span>            :     }</a>
-<a name="185"><span class="lineNum">     185 </span><span class="lineCov">          3 :     double indent = ThemeHelper.getIndent();</span></a>
-<a name="186"><span class="lineNum">     186 </span><span class="lineCov">          3 :     EdgeInsets margin = EdgeInsets.only(top: indent);</span></a>
-<a name="187"><span class="lineNum">     187 </span><span class="lineCov">          3 :     final countWidth = ThemeHelper.getWidthCount(constraints);</span></a>
-<a name="188"><span class="lineNum">     188 </span><span class="lineCov">          3 :     final countHeight = ThemeHelper.getHeightCount(context, constraints);</span></a>
-<a name="189"><span class="lineNum">     189 </span><span class="lineCov">          3 :     bool isVertical = countWidth == 1 &amp;&amp; !ThemeHelper.isWearable;</span></a>
-<a name="190"><span class="lineNum">     190 </span><span class="lineCov">          3 :     bool isWide = ScreenHelper.state().isWide;</span></a>
-<a name="191"><span class="lineNum">     191 </span><span class="lineCov">          3 :     double width = ThemeHelper.getWidth(context, 3, constraints);</span></a>
-<a name="192"><span class="lineNum">     192 </span><span class="lineCov">         12 :     double partWidth = width / countWidth - indent * (countWidth - 1);</span></a>
-<a name="193"><span class="lineNum">     193 </span><span class="lineCov">          9 :     DateTime curr = DateTime.now().getStartingDay(AppStartOfMonth.get());</span></a>
-<a name="194"><span class="lineNum">     194 </span>            : </a>
-<a name="195"><span class="lineNum">     195 </span><span class="lineCov">          3 :     final billWidget = BillWidget(</span></a>
-<a name="196"><span class="lineNum">     196 </span>            :       margin: margin,</a>
-<a name="197"><span class="lineNum">     197 </span><span class="lineCov">         12 :       title: '${AppLocale.labels.billHeadline}, ${curr.fullMonth()}',</span></a>
-<a name="198"><span class="lineNum">     198 </span><span class="lineCov">          6 :       state: state.get(AppDataType.bills),</span></a>
-<a name="199"><span class="lineNum">     199 </span>            :       limit: 7,</a>
-<a name="200"><span class="lineNum">     200 </span>            :       route: AppRoute.billRoute,</a>
-<a name="201"><span class="lineNum">     201 </span><span class="lineCov">          6 :       tooltip: AppLocale.labels.billTooltip,</span></a>
-<a name="202"><span class="lineNum">     202 </span>            :       width: isVertical ? width : partWidth,</a>
-<a name="203"><span class="lineNum">     203 </span>            :       hasExpand: isVertical,</a>
-<a name="204"><span class="lineNum">     204 </span><span class="lineCov">          3 :       toExpand: toExpand,</span></a>
-<a name="205"><span class="lineNum">     205 </span><span class="lineNoCov">          0 :       callback: (v) =&gt; setState(() =&gt; toExpand = v),</span></a>
-<a name="206"><span class="lineNum">     206 </span>            :     );</a>
-<a name="207"><span class="lineNum">     207 </span><span class="lineCov">          3 :     final accountWidget = AccountWidget(</span></a>
-<a name="208"><span class="lineNum">     208 </span>            :       margin: margin,</a>
-<a name="209"><span class="lineNum">     209 </span><span class="lineCov">         15 :       title: '${AppLocale.labels.accountHeadline}, ${AppLocale.labels.total}',</span></a>
-<a name="210"><span class="lineNum">     210 </span><span class="lineCov">          6 :       state: state.get(AppDataType.accounts),</span></a>
-<a name="211"><span class="lineNum">     211 </span>            :       limit: 7,</a>
-<a name="212"><span class="lineNum">     212 </span>            :       route: AppRoute.accountRoute,</a>
-<a name="213"><span class="lineNum">     213 </span><span class="lineCov">          6 :       tooltip: AppLocale.labels.accountTooltip,</span></a>
-<a name="214"><span class="lineNum">     214 </span>            :       width: isVertical ? width : partWidth,</a>
-<a name="215"><span class="lineNum">     215 </span>            :       hasExpand: isVertical,</a>
-<a name="216"><span class="lineNum">     216 </span><span class="lineCov">          3 :       toExpand: toExpand,</span></a>
-<a name="217"><span class="lineNum">     217 </span><span class="lineNoCov">          0 :       callback: (v) =&gt; setState(() =&gt; toExpand = v),</span></a>
-<a name="218"><span class="lineNum">     218 </span><span class="lineCov">          9 :     )..exchange = Exchange(store: super.state);</span></a>
-<a name="219"><span class="lineNum">     219 </span><span class="lineCov">          3 :     final budgetWidget = BudgetWidget(</span></a>
-<a name="220"><span class="lineNum">     220 </span>            :       margin: margin,</a>
-<a name="221"><span class="lineNum">     221 </span><span class="lineCov">         15 :       title: '${AppLocale.labels.budgetHeadline}, ${AppLocale.labels.left}',</span></a>
-<a name="222"><span class="lineNum">     222 </span><span class="lineCov">          6 :       state: state.get(AppDataType.budgets),</span></a>
-<a name="223"><span class="lineNum">     223 </span>            :       limit: 7,</a>
-<a name="224"><span class="lineNum">     224 </span>            :       route: AppRoute.budgetRoute,</a>
-<a name="225"><span class="lineNum">     225 </span><span class="lineCov">          6 :       tooltip: AppLocale.labels.budgetTooltip,</span></a>
-<a name="226"><span class="lineNum">     226 </span>            :       width: isVertical ? width : partWidth,</a>
-<a name="227"><span class="lineNum">     227 </span>            :       hasExpand: isVertical,</a>
-<a name="228"><span class="lineNum">     228 </span><span class="lineCov">          3 :       toExpand: toExpand,</span></a>
-<a name="229"><span class="lineNum">     229 </span><span class="lineNoCov">          0 :       callback: (v) =&gt; setState(() =&gt; toExpand = v),</span></a>
-<a name="230"><span class="lineNum">     230 </span><span class="lineCov">          9 :     )..exchange = Exchange(store: super.state);</span></a>
-<a name="231"><span class="lineNum">     231 </span>            : </a>
-<a name="232"><span class="lineNum">     232 </span><span class="lineCov">          3 :     return GridLayer(</span></a>
-<a name="233"><span class="lineNum">     233 </span>            :       padding: indent,</a>
-<a name="234"><span class="lineNum">     234 </span>            :       width: width,</a>
-<a name="235"><span class="lineNum">     235 </span>            :       crossAxisCount: countWidth,</a>
-<a name="236"><span class="lineNum">     236 </span>            :       strategy: switch (countWidth) {</a>
-<a name="237"><span class="lineNum">     237 </span><span class="lineCov">          3 :         4 =&gt; [</span></a>
-<a name="238"><span class="lineNum">     238 </span><span class="lineNoCov">          0 :             [0, 6],</span></a>
-<a name="239"><span class="lineNum">     239 </span><span class="lineNoCov">          0 :             [2, 5],</span></a>
-<a name="240"><span class="lineNum">     240 </span><span class="lineNoCov">          0 :             [3, 4],</span></a>
-<a name="241"><span class="lineNum">     241 </span><span class="lineNoCov">          0 :             [1, 7]</span></a>
-<a name="242"><span class="lineNum">     242 </span>            :           ],</a>
-<a name="243"><span class="lineNum">     243 </span><span class="lineCov">          3 :         3 =&gt; [</span></a>
-<a name="244"><span class="lineNum">     244 </span><span class="lineNoCov">          0 :             [2],</span></a>
-<a name="245"><span class="lineNum">     245 </span><span class="lineNoCov">          0 :             [3],</span></a>
-<a name="246"><span class="lineNum">     246 </span><span class="lineNoCov">          0 :             [0, 1]</span></a>
-<a name="247"><span class="lineNum">     247 </span>            :           ],</a>
-<a name="248"><span class="lineNum">     248 </span><span class="lineCov">          6 :         2 =&gt; [</span></a>
-<a name="249"><span class="lineNum">     249 </span><span class="lineCov">          3 :             [2, 3],</span></a>
-<a name="250"><span class="lineNum">     250 </span><span class="lineCov">          3 :             [0, 1]</span></a>
-<a name="251"><span class="lineNum">     251 </span>            :           ],</a>
-<a name="252"><span class="lineNum">     252 </span><span class="lineNoCov">          0 :         _ =&gt; [</span></a>
-<a name="253"><span class="lineNum">     253 </span><span class="lineNoCov">          0 :             [0, 1, 2, 3]</span></a>
-<a name="254"><span class="lineNum">     254 </span>            :           ]</a>
-<a name="255"><span class="lineNum">     255 </span>            :       },</a>
-<a name="256"><span class="lineNum">     256 </span><span class="lineCov">          3 :       children: [</span></a>
-<a name="257"><span class="lineNum">     257 </span><span class="lineCov">          3 :         countHeight &gt; 3</span></a>
-<a name="258"><span class="lineNum">     258 </span>            :             ? isWide</a>
-<a name="259"><span class="lineNum">     259 </span><span class="lineNoCov">          0 :                 ? Expanded(</span></a>
-<a name="260"><span class="lineNum">     260 </span><span class="lineNoCov">          0 :                     child: Padding(</span></a>
-<a name="261"><span class="lineNum">     261 </span><span class="lineNoCov">          0 :                       padding: EdgeInsets.only(top: indent / 2),</span></a>
-<a name="262"><span class="lineNum">     262 </span>            :                       child: const ComponentRecent({'type': ComponentRecentType.goals, 'count': 7}),</a>
-<a name="263"><span class="lineNum">     263 </span>            :                     ),</a>
-<a name="264"><span class="lineNum">     264 </span>            :                   )</a>
-<a name="265"><span class="lineNum">     265 </span><span class="lineCov">          3 :                 : GoalWidget(</span></a>
-<a name="266"><span class="lineNum">     266 </span>            :                     width: isVertical ? width : partWidth,</a>
-<a name="267"><span class="lineNum">     267 </span><span class="lineCov">          6 :                     state: super.state.getList(AppDataType.goals),</span></a>
-<a name="268"><span class="lineNum">     268 </span>            :                   )</a>
-<a name="269"><span class="lineNum">     269 </span>            :             : ThemeHelper.emptyBox,</a>
-<a name="270"><span class="lineNum">     270 </span>            :         billWidget,</a>
-<a name="271"><span class="lineNum">     271 </span>            :         accountWidget,</a>
-<a name="272"><span class="lineNum">     272 </span>            :         budgetWidget,</a>
-<a name="273"><span class="lineNum">     273 </span><span class="lineNoCov">          0 :         () =&gt; const Expanded(</span></a>
-<a name="274"><span class="lineNum">     274 </span>            :               child: Column(</a>
-<a name="275"><span class="lineNum">     275 </span>            :                 children: [</a>
-<a name="276"><span class="lineNum">     276 </span>            :                   Expanded(child: ThemeHelper.emptyBox),</a>
-<a name="277"><span class="lineNum">     277 </span>            :                   AccountFlowChart(),</a>
-<a name="278"><span class="lineNum">     278 </span>            :                   ThemeHelper.hIndent6x,</a>
-<a name="279"><span class="lineNum">     279 </span>            :                 ],</a>
-<a name="280"><span class="lineNum">     280 </span>            :               ),</a>
-<a name="281"><span class="lineNum">     281 </span>            :             ),</a>
-<a name="282"><span class="lineNum">     282 </span><span class="lineNoCov">          0 :         () =&gt; const Expanded(</span></a>
-<a name="283"><span class="lineNum">     283 </span>            :               child: Column(</a>
-<a name="284"><span class="lineNum">     284 </span>            :                 children: [</a>
-<a name="285"><span class="lineNum">     285 </span>            :                   Expanded(child: ThemeHelper.emptyBox),</a>
-<a name="286"><span class="lineNum">     286 </span>            :                   BudgetForecastChart(),</a>
-<a name="287"><span class="lineNum">     287 </span>            :                   ThemeHelper.hIndent6x,</a>
-<a name="288"><span class="lineNum">     288 </span>            :                 ],</a>
-<a name="289"><span class="lineNum">     289 </span>            :               ),</a>
-<a name="290"><span class="lineNum">     290 </span>            :             ),</a>
-<a name="291"><span class="lineNum">     291 </span><span class="lineNoCov">          0 :         () =&gt; const Expanded(</span></a>
-<a name="292"><span class="lineNum">     292 </span>            :               child: Column(</a>
-<a name="293"><span class="lineNum">     293 </span>            :                 children: [</a>
-<a name="294"><span class="lineNum">     294 </span>            :                   Expanded(child: ThemeHelper.emptyBox),</a>
-<a name="295"><span class="lineNum">     295 </span>            :                   BillYtdChart(),</a>
-<a name="296"><span class="lineNum">     296 </span>            :                   ThemeHelper.hIndent6x,</a>
-<a name="297"><span class="lineNum">     297 </span>            :                 ],</a>
-<a name="298"><span class="lineNum">     298 </span>            :               ),</a>
-<a name="299"><span class="lineNum">     299 </span>            :             ),</a>
-<a name="300"><span class="lineNum">     300 </span><span class="lineNoCov">          0 :         () =&gt; const Expanded(</span></a>
-<a name="301"><span class="lineNum">     301 </span>            :               child: ComponentRecent({'type': ComponentRecentType.invoice, 'count': 7}),</a>
-<a name="302"><span class="lineNum">     302 </span>            :             ),</a>
-<a name="303"><span class="lineNum">     303 </span>            :       ],</a>
-<a name="304"><span class="lineNum">     304 </span>            :     );</a>
-<a name="305"><span class="lineNum">     305 </span>            :   }</a>
-<a name="306"><span class="lineNum">     306 </span>            : }</a>
+<a name="103"><span class="lineNum">     103 </span><span class="lineCov">          3 :         final scaffold = Scaffold.of(context);</span></a>
+<a name="104"><span class="lineNum">     104 </span><span class="lineCov">          3 :         return ToolbarButtonWidget(</span></a>
+<a name="105"><span class="lineNum">     105 </span>            :           icon: Icons.menu,</a>
+<a name="106"><span class="lineNum">     106 </span>            :           color: Colors.white70,</a>
+<a name="107"><span class="lineNum">     107 </span><span class="lineCov">          6 :           tooltip: AppLocale.labels.navigationTooltip,</span></a>
+<a name="108"><span class="lineNum">     108 </span><span class="lineNoCov">          0 :           onPressed: () =&gt; AppDesign.isRightToLeft() ? scaffold.openEndDrawer() : scaffold.openDrawer(),</span></a>
+<a name="109"><span class="lineNum">     109 </span>            :         );</a>
+<a name="110"><span class="lineNum">     110 </span>            :       },</a>
+<a name="111"><span class="lineNum">     111 </span>            :     );</a>
+<a name="112"><span class="lineNum">     112 </span>            :   }</a>
+<a name="113"><span class="lineNum">     113 </span>            : </a>
+<a name="114"><span class="lineNum">     114 </span><span class="lineCov">          3 :   @override</span></a>
+<a name="115"><span class="lineNum">     115 </span>            :   List&lt;Widget&gt; getBarActions(NavigatorState nav) {</a>
+<a name="116"><span class="lineNum">     116 </span><span class="lineCov">          3 :     final isWide = ScreenHelper.state().isWide;</span></a>
+<a name="117"><span class="lineNum">     117 </span><span class="lineCov">          3 :     return [</span></a>
+<a name="118"><span class="lineNum">     118 </span><span class="lineCov">          3 :       ToolbarButtonWidget(</span></a>
+<a name="119"><span class="lineNum">     119 </span>            :         isWide: isWide,</a>
+<a name="120"><span class="lineNum">     120 </span>            :         icon: Icons.app_registration_outlined,</a>
+<a name="121"><span class="lineNum">     121 </span>            :         color: Colors.white70,</a>
+<a name="122"><span class="lineNum">     122 </span><span class="lineCov">          6 :         tooltip: AppLocale.labels.customizeTooltip,</span></a>
+<a name="123"><span class="lineNum">     123 </span><span class="lineNoCov">          0 :         onPressed: () =&gt; setState(() =&gt; isEditMode = true),</span></a>
+<a name="124"><span class="lineNum">     124 </span>            :       ),</a>
+<a name="125"><span class="lineNum">     125 </span><span class="lineCov">          9 :       if (![TargetPlatform.iOS, TargetPlatform.macOS, TargetPlatform.android].contains(defaultTargetPlatform))</span></a>
+<a name="126"><span class="lineNum">     126 </span><span class="lineNoCov">          0 :         ToolbarButtonWidget(</span></a>
+<a name="127"><span class="lineNum">     127 </span>            :           isWide: isWide,</a>
+<a name="128"><span class="lineNum">     128 </span>            :           icon: Icons.switch_access_shortcut_add_outlined,</a>
+<a name="129"><span class="lineNum">     129 </span>            :           color: Colors.white70,</a>
+<a name="130"><span class="lineNum">     130 </span><span class="lineNoCov">          0 :           tooltip: AppLocale.labels.subscriptionTooltip,</span></a>
+<a name="131"><span class="lineNum">     131 </span><span class="lineNoCov">          0 :           onPressed: () =&gt; nav.pushNamed(AppRoute.subscriptionRoute),</span></a>
+<a name="132"><span class="lineNum">     132 </span>            :         ),</a>
+<a name="133"><span class="lineNum">     133 </span>            :     ];</a>
+<a name="134"><span class="lineNum">     134 </span>            :   }</a>
+<a name="135"><span class="lineNum">     135 </span>            : </a>
+<a name="136"><span class="lineNum">     136 </span><span class="lineCov">          3 :   @override</span></a>
+<a name="137"><span class="lineNum">     137 </span>            :   Widget getBarTitle(BuildContext context, [bool isBottom = false]) {</a>
+<a name="138"><span class="lineNum">     138 </span><span class="lineCov">          3 :     return SvgPicture.asset(</span></a>
+<a name="139"><span class="lineNum">     139 </span>            :       'assets/images/fingrom.svg',</a>
+<a name="140"><span class="lineNum">     140 </span>            :       height: isBottom ? 20 : 40,</a>
+<a name="141"><span class="lineNum">     141 </span>            :       alignment: Alignment.centerLeft,</a>
+<a name="142"><span class="lineNum">     142 </span><span class="lineCov">          6 :       semanticsLabel: AppLocale.labels.appTitle,</span></a>
+<a name="143"><span class="lineNum">     143 </span>            :     );</a>
+<a name="144"><span class="lineNum">     144 </span>            :   }</a>
+<a name="145"><span class="lineNum">     145 </span>            : </a>
+<a name="146"><span class="lineNum">     146 </span><span class="lineCov">          3 :   @override</span></a>
+<a name="147"><span class="lineNum">     147 </span><span class="lineCov">          6 :   String getButtonName() =&gt; AppLocale.labels.addMainTooltip;</span></a>
+<a name="148"><span class="lineNum">     148 </span>            : </a>
+<a name="149"><span class="lineNum">     149 </span><span class="lineCov">          3 :   @override</span></a>
+<a name="150"><span class="lineNum">     150 </span>            :   Widget buildButton(BuildContext context, BoxConstraints constraints) {</a>
+<a name="151"><span class="lineNum">     151 </span><span class="lineCov">          3 :     NavigatorState nav = Navigator.of(context);</span></a>
+<a name="152"><span class="lineNum">     152 </span><span class="lineCov">          3 :     return FloatingActionButton(</span></a>
+<a name="153"><span class="lineNum">     153 </span>            :       heroTag: 'home_page',</a>
+<a name="154"><span class="lineNum">     154 </span><span class="lineCov">          3 :       mini: ThemeHelper.isWearable,</span></a>
+<a name="155"><span class="lineNum">     155 </span><span class="lineCov">          2 :       onPressed: () =&gt; nav.pushNamed(AppRoute.billAddRoute),</span></a>
+<a name="156"><span class="lineNum">     156 </span><span class="lineCov">          3 :       tooltip: getButtonName(),</span></a>
+<a name="157"><span class="lineNum">     157 </span>            :       child: const Icon(Icons.add),</a>
+<a name="158"><span class="lineNum">     158 </span>            :     );</a>
+<a name="159"><span class="lineNum">     159 </span>            :   }</a>
+<a name="160"><span class="lineNum">     160 </span>            : </a>
+<a name="161"><span class="lineNum">     161 </span><span class="lineCov">          3 :   @override</span></a>
+<a name="162"><span class="lineNum">     162 </span>            :   Widget build(BuildContext context) {</a>
+<a name="163"><span class="lineNum">     163 </span><span class="lineCov">          6 :     Provider.of&lt;AppLocale&gt;(context, listen: false).updateState(context);</span></a>
+<a name="164"><span class="lineNum">     164 </span><span class="lineCov">          3 :     if (isEditMode) {</span></a>
+<a name="165"><span class="lineNum">     165 </span><span class="lineNoCov">          0 :       return HomeEditPage(callback: () =&gt; setState(() =&gt; isEditMode = false));</span></a>
+<a name="166"><span class="lineNum">     166 </span>            :     }</a>
+<a name="167"><span class="lineNum">     167 </span><span class="lineCov">          3 :     if (AppPreferences.get(AppPreferences.prefPrivacyPolicy) == null) {</span></a>
+<a name="168"><span class="lineNum">     168 </span>            :       return const StartPage();</a>
+<a name="169"><span class="lineNum">     169 </span>            :     }</a>
+<a name="170"><span class="lineNum">     170 </span><span class="lineCov">          6 :     return Consumer&lt;AppData&gt;(builder: (context, appState, _) {</span></a>
+<a name="171"><span class="lineNum">     171 </span><span class="lineCov">          3 :       state = appState;</span></a>
+<a name="172"><span class="lineNum">     172 </span><span class="lineCov">          3 :       if (appState.isLoading) {</span></a>
+<a name="173"><span class="lineNum">     173 </span>            :         return const InitTab();</a>
+<a name="174"><span class="lineNum">     174 </span>            :       }</a>
+<a name="175"><span class="lineNum">     175 </span><span class="lineCov">         15 :       WidgetsBinding.instance.addPostFrameCallback((_) =&gt; PaymentsController(state));</span></a>
+<a name="176"><span class="lineNum">     176 </span><span class="lineCov">          3 :       return super.build(context);</span></a>
+<a name="177"><span class="lineNum">     177 </span>            :     });</a>
+<a name="178"><span class="lineNum">     178 </span>            :   }</a>
+<a name="179"><span class="lineNum">     179 </span>            : </a>
+<a name="180"><span class="lineNum">     180 </span><span class="lineCov">          3 :   @override</span></a>
+<a name="181"><span class="lineNum">     181 </span>            :   Widget buildContent(BuildContext context, BoxConstraints constraints) {</a>
+<a name="182"><span class="lineNum">     182 </span><span class="lineCov">          3 :     final data = ComponentsBuilder.getData(context);</span></a>
+<a name="183"><span class="lineNum">     183 </span><span class="lineNoCov">          0 :     if (data != null &amp;&amp; data.isNotEmpty) {</span></a>
+<a name="184"><span class="lineNum">     184 </span><span class="lineNoCov">          0 :       return ComponentsBuilder(data);</span></a>
+<a name="185"><span class="lineNum">     185 </span>            :     }</a>
+<a name="186"><span class="lineNum">     186 </span><span class="lineCov">          3 :     double indent = ThemeHelper.getIndent();</span></a>
+<a name="187"><span class="lineNum">     187 </span><span class="lineCov">          3 :     EdgeInsets margin = EdgeInsets.only(top: indent);</span></a>
+<a name="188"><span class="lineNum">     188 </span><span class="lineCov">          3 :     final countWidth = ThemeHelper.getWidthCount(constraints);</span></a>
+<a name="189"><span class="lineNum">     189 </span><span class="lineCov">          3 :     final countHeight = ThemeHelper.getHeightCount(context, constraints);</span></a>
+<a name="190"><span class="lineNum">     190 </span><span class="lineCov">          3 :     bool isVertical = countWidth == 1 &amp;&amp; !ThemeHelper.isWearable;</span></a>
+<a name="191"><span class="lineNum">     191 </span><span class="lineCov">          3 :     bool isWide = ScreenHelper.state().isWide;</span></a>
+<a name="192"><span class="lineNum">     192 </span><span class="lineCov">          3 :     double width = ThemeHelper.getWidth(context, 3, constraints);</span></a>
+<a name="193"><span class="lineNum">     193 </span><span class="lineCov">         12 :     double partWidth = width / countWidth - indent * (countWidth - 1);</span></a>
+<a name="194"><span class="lineNum">     194 </span><span class="lineCov">          9 :     DateTime curr = DateTime.now().getStartingDay(AppStartOfMonth.get());</span></a>
+<a name="195"><span class="lineNum">     195 </span>            : </a>
+<a name="196"><span class="lineNum">     196 </span><span class="lineCov">          3 :     final billWidget = BillWidget(</span></a>
+<a name="197"><span class="lineNum">     197 </span>            :       margin: margin,</a>
+<a name="198"><span class="lineNum">     198 </span><span class="lineCov">         12 :       title: '${AppLocale.labels.billHeadline}, ${curr.fullMonth()}',</span></a>
+<a name="199"><span class="lineNum">     199 </span><span class="lineCov">          6 :       state: state.get(AppDataType.bills),</span></a>
+<a name="200"><span class="lineNum">     200 </span>            :       limit: 7,</a>
+<a name="201"><span class="lineNum">     201 </span>            :       route: AppRoute.billRoute,</a>
+<a name="202"><span class="lineNum">     202 </span><span class="lineCov">          6 :       tooltip: AppLocale.labels.billTooltip,</span></a>
+<a name="203"><span class="lineNum">     203 </span>            :       width: isVertical ? width : partWidth,</a>
+<a name="204"><span class="lineNum">     204 </span>            :       hasExpand: isVertical,</a>
+<a name="205"><span class="lineNum">     205 </span><span class="lineCov">          3 :       toExpand: toExpand,</span></a>
+<a name="206"><span class="lineNum">     206 </span><span class="lineNoCov">          0 :       callback: (v) =&gt; setState(() =&gt; toExpand = v),</span></a>
+<a name="207"><span class="lineNum">     207 </span>            :     );</a>
+<a name="208"><span class="lineNum">     208 </span><span class="lineCov">          3 :     final accountWidget = AccountWidget(</span></a>
+<a name="209"><span class="lineNum">     209 </span>            :       margin: margin,</a>
+<a name="210"><span class="lineNum">     210 </span><span class="lineCov">         15 :       title: '${AppLocale.labels.accountHeadline}, ${AppLocale.labels.total}',</span></a>
+<a name="211"><span class="lineNum">     211 </span><span class="lineCov">          6 :       state: state.get(AppDataType.accounts),</span></a>
+<a name="212"><span class="lineNum">     212 </span>            :       limit: 7,</a>
+<a name="213"><span class="lineNum">     213 </span>            :       route: AppRoute.accountRoute,</a>
+<a name="214"><span class="lineNum">     214 </span><span class="lineCov">          6 :       tooltip: AppLocale.labels.accountTooltip,</span></a>
+<a name="215"><span class="lineNum">     215 </span>            :       width: isVertical ? width : partWidth,</a>
+<a name="216"><span class="lineNum">     216 </span>            :       hasExpand: isVertical,</a>
+<a name="217"><span class="lineNum">     217 </span><span class="lineCov">          3 :       toExpand: toExpand,</span></a>
+<a name="218"><span class="lineNum">     218 </span><span class="lineNoCov">          0 :       callback: (v) =&gt; setState(() =&gt; toExpand = v),</span></a>
+<a name="219"><span class="lineNum">     219 </span><span class="lineCov">          9 :     )..exchange = Exchange(store: super.state);</span></a>
+<a name="220"><span class="lineNum">     220 </span><span class="lineCov">          3 :     final budgetWidget = BudgetWidget(</span></a>
+<a name="221"><span class="lineNum">     221 </span>            :       margin: margin,</a>
+<a name="222"><span class="lineNum">     222 </span><span class="lineCov">         15 :       title: '${AppLocale.labels.budgetHeadline}, ${AppLocale.labels.left}',</span></a>
+<a name="223"><span class="lineNum">     223 </span><span class="lineCov">          6 :       state: state.get(AppDataType.budgets),</span></a>
+<a name="224"><span class="lineNum">     224 </span>            :       limit: 7,</a>
+<a name="225"><span class="lineNum">     225 </span>            :       route: AppRoute.budgetRoute,</a>
+<a name="226"><span class="lineNum">     226 </span><span class="lineCov">          6 :       tooltip: AppLocale.labels.budgetTooltip,</span></a>
+<a name="227"><span class="lineNum">     227 </span>            :       width: isVertical ? width : partWidth,</a>
+<a name="228"><span class="lineNum">     228 </span>            :       hasExpand: isVertical,</a>
+<a name="229"><span class="lineNum">     229 </span><span class="lineCov">          3 :       toExpand: toExpand,</span></a>
+<a name="230"><span class="lineNum">     230 </span><span class="lineNoCov">          0 :       callback: (v) =&gt; setState(() =&gt; toExpand = v),</span></a>
+<a name="231"><span class="lineNum">     231 </span><span class="lineCov">          9 :     )..exchange = Exchange(store: super.state);</span></a>
+<a name="232"><span class="lineNum">     232 </span>            : </a>
+<a name="233"><span class="lineNum">     233 </span><span class="lineCov">          3 :     return GridLayer(</span></a>
+<a name="234"><span class="lineNum">     234 </span>            :       padding: indent,</a>
+<a name="235"><span class="lineNum">     235 </span>            :       width: width,</a>
+<a name="236"><span class="lineNum">     236 </span>            :       crossAxisCount: countWidth,</a>
+<a name="237"><span class="lineNum">     237 </span>            :       strategy: switch (countWidth) {</a>
+<a name="238"><span class="lineNum">     238 </span><span class="lineCov">          3 :         4 =&gt; [</span></a>
+<a name="239"><span class="lineNum">     239 </span><span class="lineNoCov">          0 :             [0, 6],</span></a>
+<a name="240"><span class="lineNum">     240 </span><span class="lineNoCov">          0 :             [2, 5],</span></a>
+<a name="241"><span class="lineNum">     241 </span><span class="lineNoCov">          0 :             [3, 4],</span></a>
+<a name="242"><span class="lineNum">     242 </span><span class="lineNoCov">          0 :             [1, 7]</span></a>
+<a name="243"><span class="lineNum">     243 </span>            :           ],</a>
+<a name="244"><span class="lineNum">     244 </span><span class="lineCov">          3 :         3 =&gt; [</span></a>
+<a name="245"><span class="lineNum">     245 </span><span class="lineNoCov">          0 :             [2],</span></a>
+<a name="246"><span class="lineNum">     246 </span><span class="lineNoCov">          0 :             [3],</span></a>
+<a name="247"><span class="lineNum">     247 </span><span class="lineNoCov">          0 :             [0, 1]</span></a>
+<a name="248"><span class="lineNum">     248 </span>            :           ],</a>
+<a name="249"><span class="lineNum">     249 </span><span class="lineCov">          6 :         2 =&gt; [</span></a>
+<a name="250"><span class="lineNum">     250 </span><span class="lineCov">          3 :             [2, 3],</span></a>
+<a name="251"><span class="lineNum">     251 </span><span class="lineCov">          3 :             [0, 1]</span></a>
+<a name="252"><span class="lineNum">     252 </span>            :           ],</a>
+<a name="253"><span class="lineNum">     253 </span><span class="lineNoCov">          0 :         _ =&gt; [</span></a>
+<a name="254"><span class="lineNum">     254 </span><span class="lineNoCov">          0 :             [0, 1, 2, 3]</span></a>
+<a name="255"><span class="lineNum">     255 </span>            :           ]</a>
+<a name="256"><span class="lineNum">     256 </span>            :       },</a>
+<a name="257"><span class="lineNum">     257 </span><span class="lineCov">          3 :       children: [</span></a>
+<a name="258"><span class="lineNum">     258 </span><span class="lineCov">          3 :         countHeight &gt; 3</span></a>
+<a name="259"><span class="lineNum">     259 </span>            :             ? isWide</a>
+<a name="260"><span class="lineNum">     260 </span><span class="lineNoCov">          0 :                 ? Expanded(</span></a>
+<a name="261"><span class="lineNum">     261 </span><span class="lineNoCov">          0 :                     child: Padding(</span></a>
+<a name="262"><span class="lineNum">     262 </span><span class="lineNoCov">          0 :                       padding: EdgeInsets.only(top: indent / 2),</span></a>
+<a name="263"><span class="lineNum">     263 </span>            :                       child: const ComponentRecent({'type': ComponentRecentType.goals, 'count': 7}),</a>
+<a name="264"><span class="lineNum">     264 </span>            :                     ),</a>
+<a name="265"><span class="lineNum">     265 </span>            :                   )</a>
+<a name="266"><span class="lineNum">     266 </span><span class="lineCov">          3 :                 : GoalWidget(</span></a>
+<a name="267"><span class="lineNum">     267 </span>            :                     width: isVertical ? width : partWidth,</a>
+<a name="268"><span class="lineNum">     268 </span><span class="lineCov">          6 :                     state: super.state.getList(AppDataType.goals),</span></a>
+<a name="269"><span class="lineNum">     269 </span>            :                   )</a>
+<a name="270"><span class="lineNum">     270 </span>            :             : ThemeHelper.emptyBox,</a>
+<a name="271"><span class="lineNum">     271 </span>            :         billWidget,</a>
+<a name="272"><span class="lineNum">     272 </span>            :         accountWidget,</a>
+<a name="273"><span class="lineNum">     273 </span>            :         budgetWidget,</a>
+<a name="274"><span class="lineNum">     274 </span><span class="lineNoCov">          0 :         () =&gt; const Expanded(</span></a>
+<a name="275"><span class="lineNum">     275 </span>            :               child: Column(</a>
+<a name="276"><span class="lineNum">     276 </span>            :                 children: [</a>
+<a name="277"><span class="lineNum">     277 </span>            :                   Expanded(child: ThemeHelper.emptyBox),</a>
+<a name="278"><span class="lineNum">     278 </span>            :                   AccountFlowChart(),</a>
+<a name="279"><span class="lineNum">     279 </span>            :                   ThemeHelper.hIndent6x,</a>
+<a name="280"><span class="lineNum">     280 </span>            :                 ],</a>
+<a name="281"><span class="lineNum">     281 </span>            :               ),</a>
+<a name="282"><span class="lineNum">     282 </span>            :             ),</a>
+<a name="283"><span class="lineNum">     283 </span><span class="lineNoCov">          0 :         () =&gt; const Expanded(</span></a>
+<a name="284"><span class="lineNum">     284 </span>            :               child: Column(</a>
+<a name="285"><span class="lineNum">     285 </span>            :                 children: [</a>
+<a name="286"><span class="lineNum">     286 </span>            :                   Expanded(child: ThemeHelper.emptyBox),</a>
+<a name="287"><span class="lineNum">     287 </span>            :                   BudgetForecastChart(),</a>
+<a name="288"><span class="lineNum">     288 </span>            :                   ThemeHelper.hIndent6x,</a>
+<a name="289"><span class="lineNum">     289 </span>            :                 ],</a>
+<a name="290"><span class="lineNum">     290 </span>            :               ),</a>
+<a name="291"><span class="lineNum">     291 </span>            :             ),</a>
+<a name="292"><span class="lineNum">     292 </span><span class="lineNoCov">          0 :         () =&gt; const Expanded(</span></a>
+<a name="293"><span class="lineNum">     293 </span>            :               child: Column(</a>
+<a name="294"><span class="lineNum">     294 </span>            :                 children: [</a>
+<a name="295"><span class="lineNum">     295 </span>            :                   Expanded(child: ThemeHelper.emptyBox),</a>
+<a name="296"><span class="lineNum">     296 </span>            :                   BillYtdChart(),</a>
+<a name="297"><span class="lineNum">     297 </span>            :                   ThemeHelper.hIndent6x,</a>
+<a name="298"><span class="lineNum">     298 </span>            :                 ],</a>
+<a name="299"><span class="lineNum">     299 </span>            :               ),</a>
+<a name="300"><span class="lineNum">     300 </span>            :             ),</a>
+<a name="301"><span class="lineNum">     301 </span><span class="lineNoCov">          0 :         () =&gt; const Expanded(</span></a>
+<a name="302"><span class="lineNum">     302 </span>            :               child: ComponentRecent({'type': ComponentRecentType.invoice, 'count': 7}),</a>
+<a name="303"><span class="lineNum">     303 </span>            :             ),</a>
+<a name="304"><span class="lineNum">     304 </span>            :       ],</a>
+<a name="305"><span class="lineNum">     305 </span>            :     );</a>
+<a name="306"><span class="lineNum">     306 </span>            :   }</a>
+<a name="307"><span class="lineNum">     307 </span>            : }</a>
 </pre>
       </td>
     </tr>

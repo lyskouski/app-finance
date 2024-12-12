@@ -972,6 +972,7 @@ digraph G {
   _interfaces -> _interfaces_widgets [color="#F0F0F050"];
   _interfaces -> button [color="#F0F0F050"];
   _interfaces -> _interfaces [color="#F0F0F050"];
+  _interfaces_widgets -> herald [color="#F0F0F050"];
   _interfaces_widgets -> structure_navigation [color="#F0F0F050"];
   _interfaces_widgets -> _configs_ [color="#F0F0F050"];
   _interfaces_widgets -> _ext_ [color="#F0F0F050"];
@@ -1025,7 +1026,6 @@ digraph G {
   bill_widgets -> herald [color="#F0F0F050"];
   bill_widgets -> structure_currency [color="#F0F0F050"];
   bill_widgets -> structure [color="#F0F0F050"];
-  bill_widgets -> structure_navigation [color="#F0F0F050"];
   bill_widgets -> storage [color="#F0F0F050"];
   bill_widgets -> _configs_ [color="#F0F0F050"];
   bill_widgets -> _ext_ [color="#F0F0F050"];
@@ -1036,7 +1036,6 @@ digraph G {
   bill_widgets -> controller [color="#F0F0F050"];
   bill_widgets -> herald [color="#F0F0F050"];
   bill_widgets -> structure_currency [color="#F0F0F050"];
-  bill_widgets -> structure_navigation [color="#F0F0F050"];
   bill_widgets -> structure [color="#F0F0F050"];
   bill_widgets -> storage [color="#F0F0F050"];
   bill_widgets -> _configs_ [color="#F0F0F050"];
@@ -1052,7 +1051,6 @@ digraph G {
   bill_widgets -> herald [color="#F0F0F050"];
   bill_widgets -> structure_currency [color="#F0F0F050"];
   bill_widgets -> structure [color="#F0F0F050"];
-  bill_widgets -> structure_navigation [color="#F0F0F050"];
   bill_widgets -> storage [color="#F0F0F050"];
   bill_widgets -> _configs_ [color="#F0F0F050"];
   bill_widgets -> _ext_ [color="#F0F0F050"];

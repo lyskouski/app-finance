@@ -32,12 +32,12 @@
             <td></td>
             <td class="headerItem">Lines:</td>
             <td class="headerCovTableEntry">1</td>
-            <td class="headerCovTableEntry">78</td>
-            <td class="headerCovTableEntryLo">1.3 %</td>
+            <td class="headerCovTableEntry">83</td>
+            <td class="headerCovTableEntryLo">1.2 %</td>
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2024-12-11 20:30:32</td>
+            <td class="headerValue">2024-12-12 13:11:16</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">0</td>
@@ -207,23 +207,29 @@
 <a name="145"><span class="lineNum">     145 </span>            : </a>
 <a name="146"><span class="lineNum">     146 </span><span class="lineNoCov">          0 :   @override</span></a>
 <a name="147"><span class="lineNum">     147 </span>            :   Widget buildContent(BuildContext context, BoxConstraints constraints) {</a>
-<a name="148"><span class="lineNum">     148 </span><span class="lineNoCov">          0 :     if (stream == null) {</span></a>
-<a name="149"><span class="lineNum">     149 </span><span class="lineNoCov">          0 :       WidgetsBinding.instance.addPostFrameCallback(</span></a>
-<a name="150"><span class="lineNum">     150 </span><span class="lineNoCov">          0 :         (_) =&gt; setState(() {</span></a>
-<a name="151"><span class="lineNum">     151 </span><span class="lineNoCov">          0 :           stream = state.getStream&lt;BillAppData&gt;(AppDataType.bills);</span></a>
-<a name="152"><span class="lineNum">     152 </span><span class="lineNoCov">          0 :           _addItems();</span></a>
-<a name="153"><span class="lineNum">     153 </span>            :         }),</a>
-<a name="154"><span class="lineNum">     154 </span>            :       );</a>
-<a name="155"><span class="lineNum">     155 </span>            :     }</a>
-<a name="156"><span class="lineNum">     156 </span><span class="lineNoCov">          0 :     return Padding(</span></a>
-<a name="157"><span class="lineNum">     157 </span><span class="lineNoCov">          0 :       padding: EdgeInsets.all(ThemeHelper.getIndent()),</span></a>
-<a name="158"><span class="lineNum">     158 </span><span class="lineNoCov">          0 :       child: CustomScrollView(</span></a>
-<a name="159"><span class="lineNum">     159 </span><span class="lineNoCov">          0 :         controller: _scrollController,</span></a>
-<a name="160"><span class="lineNum">     160 </span><span class="lineNoCov">          0 :         slivers: itemsShown,</span></a>
-<a name="161"><span class="lineNum">     161 </span>            :       ),</a>
-<a name="162"><span class="lineNum">     162 </span>            :     );</a>
-<a name="163"><span class="lineNum">     163 </span>            :   }</a>
-<a name="164"><span class="lineNum">     164 </span>            : }</a>
+<a name="148"><span class="lineNum">     148 </span><span class="lineNoCov">          0 :     state.addListener(() {</span></a>
+<a name="149"><span class="lineNum">     149 </span><span class="lineNoCov">          0 :       itemsShown = [];</span></a>
+<a name="150"><span class="lineNum">     150 </span><span class="lineNoCov">          0 :       final now = DateTime.now();</span></a>
+<a name="151"><span class="lineNum">     151 </span><span class="lineNoCov">          0 :       timer = DateTime(now.year, now.month, now.day);</span></a>
+<a name="152"><span class="lineNum">     152 </span><span class="lineNoCov">          0 :       stream = null;</span></a>
+<a name="153"><span class="lineNum">     153 </span>            :     });</a>
+<a name="154"><span class="lineNum">     154 </span><span class="lineNoCov">          0 :     if (stream == null) {</span></a>
+<a name="155"><span class="lineNum">     155 </span><span class="lineNoCov">          0 :       WidgetsBinding.instance.addPostFrameCallback(</span></a>
+<a name="156"><span class="lineNum">     156 </span><span class="lineNoCov">          0 :         (_) =&gt; setState(() {</span></a>
+<a name="157"><span class="lineNum">     157 </span><span class="lineNoCov">          0 :           stream = state.getStream&lt;BillAppData&gt;(AppDataType.bills);</span></a>
+<a name="158"><span class="lineNum">     158 </span><span class="lineNoCov">          0 :           _addItems();</span></a>
+<a name="159"><span class="lineNum">     159 </span>            :         }),</a>
+<a name="160"><span class="lineNum">     160 </span>            :       );</a>
+<a name="161"><span class="lineNum">     161 </span>            :     }</a>
+<a name="162"><span class="lineNum">     162 </span><span class="lineNoCov">          0 :     return Padding(</span></a>
+<a name="163"><span class="lineNum">     163 </span><span class="lineNoCov">          0 :       padding: EdgeInsets.all(ThemeHelper.getIndent()),</span></a>
+<a name="164"><span class="lineNum">     164 </span><span class="lineNoCov">          0 :       child: CustomScrollView(</span></a>
+<a name="165"><span class="lineNum">     165 </span><span class="lineNoCov">          0 :         controller: _scrollController,</span></a>
+<a name="166"><span class="lineNum">     166 </span><span class="lineNoCov">          0 :         slivers: itemsShown,</span></a>
+<a name="167"><span class="lineNum">     167 </span>            :       ),</a>
+<a name="168"><span class="lineNum">     168 </span>            :     );</a>
+<a name="169"><span class="lineNum">     169 </span>            :   }</a>
+<a name="170"><span class="lineNum">     170 </span>            : }</a>
 </pre>
       </td>
     </tr>
