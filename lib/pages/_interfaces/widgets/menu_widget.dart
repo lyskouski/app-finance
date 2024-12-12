@@ -1,6 +1,7 @@
 // Copyright 2023 The terCAD team. All rights reserved.
 // Use of this source code is governed by a CC BY-NC-ND 4.0 license that can be found in the LICENSE file.
 
+import 'package:app_finance/_classes/herald/app_design.dart';
 import 'package:app_finance/_classes/structure/navigation/app_menu.dart';
 import 'package:app_finance/_classes/structure/navigation/app_menu_item.dart';
 import 'package:app_finance/_configs/screen_helper.dart';
@@ -58,10 +59,11 @@ class MenuWidget extends StatelessWidget {
             : null,
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.center,
+          textDirection: AppDesign.getAlignment<TextDirection>(),
           children: [
             Icon(menu.icon, color: color),
             Padding(
-              padding: EdgeInsets.only(left: indent),
+              padding: EdgeInsets.only(left: indent, right: indent),
               child: TextWrapper(
                 menu.name,
                 style: textTheme.headlineMedium?.copyWith(color: color),
