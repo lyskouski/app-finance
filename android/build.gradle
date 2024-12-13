@@ -9,12 +9,24 @@ buildscript {
         classpath "org.jetbrains.kotlin:kotlin-serialization:$kotlin_version"
         classpath "com.google.gms:google-services:4.3.15"
         classpath "com.google.firebase:firebase-crashlytics-gradle:2.9.2"
+        // classpath "com.android.tools.build:gradle:7.4.2"
     }
 }
 allprojects {
     repositories {
         google()
         mavenCentral()
+    }
+    subprojects {
+        afterEvaluate { project ->
+            if (project.hasProperty('android')) {
+                project.android {
+                    if (namespace == null) {
+                        namespace project.group
+                    }
+                }
+            }
+        }
     }
 }
 

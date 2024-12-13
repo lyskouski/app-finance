@@ -44,7 +44,8 @@ dependencies:
   package_info_plus: ^8.0.0
   url_launcher: ^6.1.12
   webdav_client: ^1.2.1
-  file_picker: ^8.0.3
+  # Freeze file_picker, 8.1.5 is failing for Android
+  file_picker: 8.1.4
   csv: ^6.0.0
   notifications: ^3.0.0
   peerdart: ^0.5.3
