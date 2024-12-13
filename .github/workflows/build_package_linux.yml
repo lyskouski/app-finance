@@ -55,6 +55,7 @@ jobs:
 
       - name: Run Linux Build
         run: |
+          sudo apt-get update
           sudo apt-get install -y libgtk-3-dev ninja-build
           flutter config --enable-linux-desktop
           flutter build -v linux --build-name=${{ inputs.version }} --build-number=${{ inputs.build_number }} --release
