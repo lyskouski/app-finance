@@ -38,7 +38,7 @@ class ExchangeController extends ValueNotifier<ExchangeMap> {
   void restate(List<Currency?> source, Currency? target) {
     this.source = source;
     this.target = target;
-    pairs.clear();
+    clear();
     if (source.isEmpty) {
       return;
     }
@@ -62,15 +62,14 @@ class ExchangeController extends ValueNotifier<ExchangeMap> {
 
   void save() {
     for (var uuid in pairs) {
-      if (rate[uuid] == null || rate[uuid]?.details == 1.0) {
+      if (rate[uuid] == null || rate[uuid]!.details == 1.0) {
         continue;
       }
       store.update(uuid, rate[uuid]!, true);
     }
   }
 
-  @override
-  void dispose() {
+  void clear() {
     for (var scope in value.values) {
       for (int i = 0; i < source.length - 1; i++) {
         scope[i].dispose();
@@ -79,6 +78,11 @@ class ExchangeController extends ValueNotifier<ExchangeMap> {
     value.clear();
     rate.clear();
     pairs.clear();
+  }
+
+  @override
+  void dispose() {
+    clear();
     super.dispose();
   }
 

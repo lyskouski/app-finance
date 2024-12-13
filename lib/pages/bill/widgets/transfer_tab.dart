@@ -88,6 +88,7 @@ class TransferTabState<T extends TransferTab> extends State<T> {
     isPushed = false;
     amount.dispose();
     description.dispose();
+    exchange.dispose();
     focus.dispose();
     super.dispose();
   }
