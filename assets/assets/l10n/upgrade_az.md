@@ -2,6 +2,9 @@
 
 _Yeniləmələrin tam siyahısına "İpucu" düyməsindəki "Haqqında" naviqasiya elementi vasitəsilə baxmaq olar._
 
+### 6.0.4
+- Valyuta məzənnələrinin formalarının təkmilləşdirilməsi
+
 ### 6.0.3
 - Elementlər əlavə edərkən naviqasiyanın dəyişdirilməsi (ev əvəzinə əvvəlki səhifəyə)
 

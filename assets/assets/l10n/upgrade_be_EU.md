@@ -2,6 +2,9 @@
 
 _Poŭny spis abnaŭlieńniaŭ možna prahliadzieć u navihacyjnym punkcie «Ab Dadatku» na knopcy «Padkazki»._ 
 
+### 6.0.4
+- Udaskanalieńnie formaŭ abmiennych kursaŭ
+
 ### 6.0.3
 - Zmiena navihacyi pry dadańni eliemientaŭ (na papiaredniuju staronku zamiest chatniaj) 
 

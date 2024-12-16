@@ -31,13 +31,13 @@
             <td class="headerValue">lcov.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntry">34</td>
+            <td class="headerCovTableEntry">32</td>
             <td class="headerCovTableEntry">153</td>
-            <td class="headerCovTableEntryLo">22.2 %</td>
+            <td class="headerCovTableEntryLo">20.9 %</td>
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2024-12-13 14:32:40</td>
+            <td class="headerValue">2024-12-16 12:54:58</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">0</td>
@@ -360,8 +360,8 @@
 <a name="298"><span class="lineNum">     298 </span>            : </a>
 <a name="299"><span class="lineNum">     299 </span><span class="lineCov">          2 :   dynamic getByUuid(String uuid, [bool isClone = true]) {</span></a>
 <a name="300"><span class="lineNum">     300 </span><span class="lineCov">          2 :     if (uuid == '') return null;</span></a>
-<a name="301"><span class="lineNum">     301 </span><span class="lineCov">          4 :     var obj = isClone ? _hashTable[uuid]?.clone() : _hashTable[uuid];</span></a>
-<a name="302"><span class="lineNum">     302 </span><span class="lineCov">          6 :     if (obj is BillAppData || obj is BudgetAppData || obj is InvoiceAppData) {</span></a>
+<a name="301"><span class="lineNum">     301 </span><span class="lineNoCov">          0 :     var obj = isClone ? _hashTable[uuid]?.clone() : _hashTable[uuid];</span></a>
+<a name="302"><span class="lineNum">     302 </span><span class="lineNoCov">          0 :     if (obj is BillAppData || obj is BudgetAppData || obj is InvoiceAppData) {</span></a>
 <a name="303"><span class="lineNum">     303 </span><span class="lineNoCov">          0 :       obj.setState(this);</span></a>
 <a name="304"><span class="lineNum">     304 </span>            :     }</a>
 <a name="305"><span class="lineNum">     305 </span>            :     return obj;</a>

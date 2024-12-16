@@ -2,6 +2,9 @@
 
 _La lista completa de actualizaciones puede consultarse en el menú "Acerca de" del botón "Sugerencias"._
 
+### 6.0.4
+- Mejora de las formas de los tipos de cambio
+
 ### 6.0.3
 - Cambiar la navegación al añadir elementos (a la página anterior en lugar de home) 
 

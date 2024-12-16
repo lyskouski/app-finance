@@ -2,6 +2,9 @@
 
 _Güncellemelerin tam listesi “İpuçları” düğmesindeki “Hakkında” gezinti öğesi aracılığıyla görüntülenebilir._
 
+### 6.0.4
+- Döviz kurlarının formlarının iyileştirilmesi
+
 ### 6.0.3
 - Öğeler eklenirken gezinmenin değiştirilmesi (ana sayfa yerine önceki sayfaya) 
 

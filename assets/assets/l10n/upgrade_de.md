@@ -2,6 +2,9 @@
 
 _Die vollständige Liste der Updates kann über den Navigationspunkt "Über" auf der Schaltfläche "Hinweise" eingesehen werden._
 
+### 6.0.4
+- Verbesserung der Formulare für die Wechselkurse
+
 ### 6.0.3
 - Ändern der Navigation beim Hinzufügen von Artikeln (zur vorherigen Seite statt zur Startseite) 
 

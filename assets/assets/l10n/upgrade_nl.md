@@ -2,6 +2,9 @@
 
 _De volledige lijst met updates kan worden bekeken via het navigatie-item “Over” op de knop “Hints”._
 
+### 6.0.4
+- Formulieren voor wisselkoersen verbeteren
+
 ### 6.0.3
 - De navigatie bij het toevoegen van items wijzigen (naar de vorige pagina in plaats van home) 
 

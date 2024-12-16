@@ -2,6 +2,9 @@
 
 _A lista completa de actualizações pode ser consultada através do item de navegação "Acerca" no botão "Sugestões"._
 
+### 6.0.4
+- Melhorar as formas das taxas de câmbio
+
 ### 6.0.3
 - Alterar a navegação ao adicionar itens (para a página anterior em vez da página inicial) 
 

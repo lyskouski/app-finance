@@ -2,6 +2,9 @@
 
 _The full list of updates can be viewed via the "About" navigation item on the "Hints" button._
 
+### 6.0.4
+- Improving exchange rates' forms
+
 ### 6.0.3
 - Changing the navigation when adding items (to the previous page instead of home) 
 
