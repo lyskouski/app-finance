@@ -35,14 +35,14 @@ class BudgetTabState extends BudgetAddPageState<BudgetTab> {
       }
       updateStorage();
       AppPreferences.set(AppPreferences.prefBudget, super.state.getList(AppDataType.budgets).first?.uuid);
-      (widget as BudgetTab).setState();
+      widget.setState();
     });
   }
 
   Widget _nextButton(BuildContext context, BoxConstraints constraints) => FullSizedButtonWidget(
         constraints: constraints,
         controller: focus,
-        onPressed: () => (widget as BudgetTab).setState(),
+        onPressed: () => widget.setState(),
         title: AppLocale.labels.goNextTooltip,
         icon: Icons.exit_to_app_rounded,
       );
@@ -55,9 +55,9 @@ class BudgetTabState extends BudgetAddPageState<BudgetTab> {
       return Padding(
         padding: EdgeInsets.only(top: ThemeHelper.getIndent(2)),
         child: LayoutBuilder(builder: (context, constraints) {
-          if ((widget as BudgetTab).isFirstBoot) {
+          if (widget.isFirstBoot) {
             WidgetsBinding.instance.addPostFrameCallback((_) {
-              (widget as BudgetTab).setButton(
+              widget.setButton(
                 isCreated ? _nextButton(context, constraints) : buildButton(context, constraints),
               );
             });

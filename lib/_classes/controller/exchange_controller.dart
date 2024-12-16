@@ -7,22 +7,21 @@ import 'package:app_finance/_ext/double_ext.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_currency_picker/flutter_currency_picker.dart';
 
-typedef ExchangeMap = Map<String, List<TextEditingController>>;
-
 typedef ExchangeScope = ({
   String from,
   String to,
+  CurrencyAppData currency,
   TextEditingController rate,
   TextEditingController sum,
 });
 
+typedef ExchangeMap = Map<String, ExchangeScope>;
+
 class ExchangeController extends ValueNotifier<ExchangeMap> {
-  final Map<String, CurrencyAppData> rate = {};
-  final List<String> pairs = [];
   final AppData store;
   final TextEditingController targetController;
-  List<Currency?> source;
   Currency? target;
+  List<Currency?> source;
 
   ExchangeController(
     super.value, {
@@ -35,50 +34,7 @@ class ExchangeController extends ValueNotifier<ExchangeMap> {
     targetController.addListener(_updateAll);
   }
 
-  void restate(List<Currency?> source, Currency? target) {
-    this.source = source;
-    this.target = target;
-    clear();
-    if (source.isEmpty) {
-      return;
-    }
-    _add(target?.code, source.first?.code);
-    for (int i = 0; i < source.length - 1; i++) {
-      _add(source[i]?.code, source[i + 1]?.code);
-    }
-    notifyListeners();
-  }
-
-  ExchangeScope get(int index) {
-    final uuid = pairs[index];
-    final keys = uuid.split('-');
-    return (
-      from: keys[0],
-      to: keys[1],
-      rate: value[uuid]![0],
-      sum: value[uuid]![1],
-    );
-  }
-
-  void save() {
-    for (var uuid in pairs) {
-      if (rate[uuid] == null || rate[uuid]!.details == 1.0) {
-        continue;
-      }
-      store.update(uuid, rate[uuid]!, true);
-    }
-  }
-
-  void clear() {
-    for (var scope in value.values) {
-      for (int i = 0; i < source.length - 1; i++) {
-        scope[i].dispose();
-      }
-    }
-    value.clear();
-    rate.clear();
-    pairs.clear();
-  }
+  int get length => value.length;
 
   @override
   void dispose() {
@@ -86,84 +42,96 @@ class ExchangeController extends ValueNotifier<ExchangeMap> {
     super.dispose();
   }
 
-  void _add(String? from, String? to) {
-    final uuid = [from, to].map((v) => v ?? '?').toList().join('-');
-    pairs.add(uuid);
-    rate[uuid] ??= store.getByUuid(uuid) ??
-        CurrencyAppData(
-          currency: CurrencyProvider.find(to),
-          currencyFrom: CurrencyProvider.find(from),
-        );
-    value[uuid] ??= [
-      TextEditingController(text: rate[uuid]!.details.toString())..addListener(() => _updateSum(uuid)),
-      TextEditingController(text: _getAmount(uuid)?.toString())..addListener(() => _updateRate(uuid)),
-    ];
+  void clear() {
+    for (var scope in value.values) {
+      scope.rate.dispose();
+      scope.sum.dispose();
+    }
+    value.clear();
+  }
+
+  void restate(List<Currency?> source, Currency? target) {
+    this.source = source;
+    this.target = target;
+    clear();
+
+    if (source.isEmpty) {
+      return;
+    }
+
+    for (int i = 0; i < source.length; i++) {
+      final uuid = [target, source[i]].map((v) => v?.code ?? '?').toList().join('-');
+      if (target == null || source[i] == null || target.code == source[i]!.code || value[uuid] != null) {
+        continue;
+      }
+      final currency = store.getByUuid(uuid) ?? CurrencyAppData(currency: target, currencyFrom: source[i]);
+      final amount = (double.tryParse(targetController.text) ?? 0.0) * currency.details;
+      value[uuid] = (
+        from: target.code,
+        to: source[i]!.code,
+        currency: currency,
+        rate: TextEditingController(text: currency.details.toString())..addListener(() => _updateSum(uuid)),
+        sum: TextEditingController(text: amount.toString())..addListener(() => _updateRate(uuid)),
+      );
+    }
+    notifyListeners();
+  }
+
+  ExchangeScope get(int index) => value.values.elementAt(index);
+
+  void save() {
+    for (var item in value.values) {
+      double rate = double.tryParse(item.rate.text) ?? 0.0;
+      item.currency.details = rate;
+      store.update(item.currency.uuid, item.currency, true);
+    }
   }
 
   void _updateAll() {
-    for (String uuid in pairs) {
+    for (var uuid in value.keys) {
       _updateSum(uuid);
     }
   }
 
+  int _findDecimals(String? value) {
+    return (value ?? '').contains('.') ? value!.split('.')[1].length : 0;
+  }
+
   int? _getDecimals(String uuid) {
-    int? decimals = CurrencyProvider.find(uuid.split('-')[1])?.decimalDigits;
-    if (rate[uuid]!.details != null) {
-      final rateString = rate[uuid]!.details.toString();
-      final rateDecimals = rateString.contains('.') ? rateString.split('.')[1].length : 0;
-      if (rateDecimals > (decimals ?? 0)) {
-        decimals = rateDecimals;
-      }
+    int decimals = CurrencyProvider.find(uuid.split('-')[1])?.decimalDigits ?? 0;
+    final rateDecimals = _findDecimals(value[uuid]?.rate.text);
+    if (rateDecimals > decimals) {
+      decimals = rateDecimals;
+    }
+    final sumDecimals = _findDecimals(value[uuid]?.sum.text);
+    if (sumDecimals > decimals) {
+      decimals = sumDecimals;
     }
     return decimals;
   }
 
   void _updateSum(String uuid) {
-    List<TextEditingController> pair = value[uuid]!;
-    if (pair[0].text != '' && rate[uuid] != null) {
-      rate[uuid]!.details = double.tryParse(pair[0].text);
-    }
-    final amount = _getAmount(uuid);
-    final current = double.tryParse(pair[1].text);
+    ExchangeScope pair = value[uuid]!;
+    double rate = double.tryParse(pair.rate.text) ?? 0.0;
+    double amount = (double.tryParse(targetController.text) ?? 0.0) * rate;
+    double? current = double.tryParse(pair.sum.text);
     final decimals = _getDecimals(uuid);
-    if (amount?.toFixed(decimals) != current?.toFixed(decimals)) {
-      pair[1].text = (amount ?? '').toString();
-      pair[1].notifyListeners();
+    if (targetController.text != '' && amount.toFixed(decimals).isNotEqual(current?.toFixed(decimals))) {
+      pair.sum.text = amount.toString();
+      // pair.sum.notifyListeners();
     }
   }
 
   void _updateRate(String uuid) {
-    List<TextEditingController> pair = value[uuid]!;
-    final sum = _getRate(uuid, double.tryParse(pair[1].text));
-    final current = double.tryParse(pair[0].text);
+    ExchangeScope pair = value[uuid]!;
+    double rate = double.tryParse(pair.rate.text) ?? 0.0;
+    double val = double.tryParse(targetController.text) ?? 0.0;
+    double amount = double.tryParse(pair.sum.text) ?? 0.0;
+    double newRate = val > 0 ? amount / val : 0.0;
     final decimals = _getDecimals(uuid);
-    if (sum?.toFixed(decimals) != current?.toFixed(decimals)) {
-      if (sum != null && rate[uuid] != null) {
-        rate[uuid]!.details = sum;
-      }
-      pair[0].text = (sum ?? '').toString();
-      pair[0].notifyListeners();
+    if (targetController.text != '' && rate.toFixed(decimals).isNotEqual(newRate.toFixed(decimals))) {
+      pair.rate.text = newRate.toString();
+      // pair.rate.notifyListeners();
     }
-  }
-
-  double? _getRate(String uuid, double? amount) {
-    if (amount == null) return null;
-    double targetAmount = double.tryParse(targetController.text) ?? 0;
-    final index = pairs.indexOf(uuid);
-    double prev = index > 0 ? double.tryParse(value[pairs[index - 1]]?[1].text ?? '0') ?? 0 : targetAmount;
-    return prev > 0 ? amount / prev : null;
-  }
-
-  double? _getAmount(String uuid) {
-    double? result = rate[uuid]?.details;
-    double? input = double.tryParse(targetController.text);
-    if (result != null && input != null) {
-      final index = pairs.indexOf(uuid);
-      double amount = index > 0 ? double.tryParse(value[pairs[index - 1]]?[1].text ?? '0') ?? 0 : input;
-      result *= amount;
-    } else {
-      result = null;
-    }
-    return result;
   }
 }

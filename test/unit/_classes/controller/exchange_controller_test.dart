@@ -21,17 +21,17 @@ void main() {
     setUp(() => CurrencyDefaults.cache = MockSharedPreferences());
 
     test('_updateSum | _updateRate', () {
-      final editor = TextEditingController(text: '10');
+      final editor = TextEditingController(text: '123.02');
       final controller = ExchangeController(
         {},
         store: WrapperMockAppData(),
-        source: [CurrencyProvider.find('USD')],
+        source: [CurrencyProvider.find('USD'), CurrencyProvider.find('EUR')],
         target: CurrencyProvider.find('EUR'),
         targetController: editor,
       );
+      expect(controller.length, 1);
       expect(controller.get(0).from, 'EUR');
       expect(controller.get(0).to, 'USD');
-      editor.text = '123.02';
       expect(controller.get(0).rate.text, '1.0');
       expect(controller.get(0).sum.text, '123.02');
       controller.get(0).rate.text = '2.0';

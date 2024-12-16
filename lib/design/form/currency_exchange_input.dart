@@ -61,11 +61,8 @@ class CurrencyExchangeInputState extends State<CurrencyExchangeInput> {
     }
     final TextTheme textTheme = context.textTheme;
     return Column(
-      children: List<Widget>.generate(widget.source.length, (index) {
+      children: List<Widget>.generate(widget.controller.length, (index) {
         final scope = widget.controller.get(index);
-        if (source[index] == null || scope.from == scope.to) {
-          return ThemeHelper.emptyBox;
-        }
         return Column(
           mainAxisAlignment: AppDesign.getAlignment<MainAxisAlignment>(),
           children: [
