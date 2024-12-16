@@ -64,7 +64,7 @@ class ExchangeController extends ValueNotifier<ExchangeMap> {
       if (target == null || source[i] == null || target.code == source[i]!.code || value[uuid] != null) {
         continue;
       }
-      final currency = store.getByUuid(uuid) ?? CurrencyAppData(currency: target, currencyFrom: source[i]);
+      final currency = store.getByUuid(uuid) ?? CurrencyAppData(currency: source[i], currencyFrom: target);
       final amount = (double.tryParse(targetController.text) ?? 0.0) * currency.details;
       value[uuid] = (
         from: target.code,
