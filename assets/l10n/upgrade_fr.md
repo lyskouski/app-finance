@@ -2,6 +2,9 @@
 
 _La liste complète des mises à jour peut être consultée via l'élément de navigation "À propos" du bouton "Conseils"._
 
+### 6.0.4
+- Amélioration des formulaires de taux de change
+
 ### 6.0.3
 - Modification de la navigation lors de l'ajout d'éléments (vers la page précédente au lieu de la page d'accueil) 
 

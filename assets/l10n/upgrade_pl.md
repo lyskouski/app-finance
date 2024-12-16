@@ -2,6 +2,9 @@
 
 _Pełną listę aktualizacji można wyświetlić za pomocą elementu nawigacyjnego "O aplikacji" na przycisku "Wskazówki"._
 
+### 6.0.4
+- Ulepszanie formularzy kursów wymiany
+
 ### 6.0.3
 - Zmiana nawigacji podczas dodawania elementów (do poprzedniej strony zamiast głównej) 
 

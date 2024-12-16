@@ -3,6 +3,9 @@
 _L'elenco completo degli aggiornamenti può essere consultato tramite la voce di navigazione “Informazioni” del 
 pulsante “Suggerimenti”._
 
+### 6.0.4
+- Miglioramento dei moduli dei tassi di cambio
+
 ### 6.0.3
 - Modifica della navigazione quando si aggiungono elementi (alla pagina precedente invece che alla home) 
 

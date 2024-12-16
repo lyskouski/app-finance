@@ -2,6 +2,9 @@
 
 _Yangilanishlarning toʻliq roʻyxatini “Maslahat” tugmasidagi “Haqida” navigatsiya bandi orqali koʻrish mumkin._
 
+### 6.0.4
+- Valyuta kurslari shakllarini takomillashtirish
+
 ### 6.0.3
 - Elementlarni qo'shishda navigatsiyani o'zgartirish (uy o'rniga oldingi sahifaga)
 
