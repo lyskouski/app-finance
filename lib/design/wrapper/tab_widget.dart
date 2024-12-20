@@ -289,7 +289,7 @@ class TabSecondaryWidgetState extends BasicTabWidgetState {
   PreferredSizeWidget? getAppBar(BuildContext context) {
     return TabBar.secondary(
       controller: tabController,
-      // onTap: switchTab,
+      onTap: (idx) => widget.callback != null ? widget.callback!(idx) : null,
       tabs: widget.tabs!,
     );
   }
