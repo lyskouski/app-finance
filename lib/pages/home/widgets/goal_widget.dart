@@ -32,8 +32,8 @@ class GoalWidget extends StatelessWidget {
           child: Container(
             decoration: BoxDecoration(
               shape: BoxShape.rectangle,
-              color: context.colorScheme.primary.withOpacity(0.2),
-              border: Border.all(color: context.colorScheme.inverseSurface.withOpacity(0.1), width: 1),
+              color: context.colorScheme.primary.withValues(alpha: 0.2),
+              border: Border.all(color: context.colorScheme.inverseSurface.withValues(alpha: 0.1), width: 1),
             ),
             child: Padding(
               padding: const EdgeInsets.only(top: 6),

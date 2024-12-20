@@ -76,7 +76,7 @@ class ComponentsBuilder extends StatelessWidget {
                     onAccept: (change) => resize(change, start),
                     builder: (context, candidateData, rejectedData) => Container(
                       decoration: BoxDecoration(
-                        border: Border.all(color: context.colorScheme.secondary.withOpacity(0.1)),
+                        border: Border.all(color: context.colorScheme.secondary.withValues(alpha: 0.1)),
                         color: candidateData.isEmpty ? null : Colors.green.shade200,
                       ),
                     ),

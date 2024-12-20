@@ -62,7 +62,7 @@ class GaugePainter extends CustomPainter {
       text: TextSpan(
         text: text,
         style: TextStyle(
-          color: color.withOpacity(0.8),
+          color: color.withValues(alpha: 0.8),
           fontSize: size.width > threshold * 2 ? fontSize : 9,
         ),
       ),
@@ -74,7 +74,7 @@ class GaugePainter extends CustomPainter {
 
   void _drawValue(Canvas canvas, Size size, double radius, Offset center, double pos) {
     final line = Paint()
-      ..color = color.withOpacity(0.5)
+      ..color = color.withValues(alpha: 0.5)
       ..strokeWidth = 1
       ..style = PaintingStyle.fill;
     final position = _getTip(radius, center, pos, 15);

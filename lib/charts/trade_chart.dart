@@ -77,7 +77,7 @@ class TradeChart extends StatelessWidget {
       size: size,
       color: bgColor,
       lineColor: bgColor,
-      background: Colors.white.withOpacity(0.0),
+      background: Colors.white.withValues(alpha: 0.0),
       yMin: scope.yMin,
       yMax: scope.yMax,
       xType: DateTime,

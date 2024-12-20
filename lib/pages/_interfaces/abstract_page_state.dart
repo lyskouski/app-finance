@@ -116,7 +116,7 @@ abstract class AbstractPageState<T extends StatefulWidget> extends State<T> {
   Widget getBarTitle(BuildContext context, [bool isBottom = false]) {
     return TextWrapper(
       getTitle(),
-      style: TextStyle(color: context.colorScheme.onInverseSurface.withOpacity(0.8)),
+      style: TextStyle(color: context.colorScheme.onInverseSurface.withValues(alpha: 0.8)),
     );
   }
 
@@ -132,7 +132,7 @@ abstract class AbstractPageState<T extends StatefulWidget> extends State<T> {
               borderRadius: BorderRadius.zero,
             )
           : null,
-      backgroundColor: isWide ? context.colorScheme.inverseSurface.withOpacity(0.4) : context.colorScheme.primary,
+      backgroundColor: isWide ? context.colorScheme.inverseSurface.withValues(alpha: 0.4) : context.colorScheme.primary,
       leading: getBarLeading(nav),
       leadingWidth: isWide ? ThemeHelper.menuWidth : null,
       actions: getBarActions(nav),
@@ -194,8 +194,8 @@ abstract class AbstractPageState<T extends StatefulWidget> extends State<T> {
                 child: TextWrapper(
                   getButtonName(),
                   maxLines: 2,
-                  style:
-                      theme.textTheme.bodySmall?.copyWith(color: theme.colorScheme.onInverseSurface.withOpacity(0.6)),
+                  style: theme.textTheme.bodySmall
+                      ?.copyWith(color: theme.colorScheme.onInverseSurface.withValues(alpha: 0.6)),
                 ),
               ),
           ],
@@ -306,7 +306,7 @@ abstract class AbstractPageState<T extends StatefulWidget> extends State<T> {
                       start: const Size(0, 0),
                       end: const Size(1, 2),
                       child: Container(
-                        color: context.colorScheme.inversePrimary.withOpacity(0.2),
+                        color: context.colorScheme.inversePrimary.withValues(alpha: 0.2),
                         width: ThemeHelper.menuWidth,
                         height: double.infinity,
                         child: buildNavigation(),

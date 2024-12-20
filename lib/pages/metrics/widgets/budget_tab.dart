@@ -47,7 +47,7 @@ class BudgetTab extends StatelessWidget {
     }
     return Container(
       alignment: Alignment.centerRight,
-      color: color?.withOpacity(0.2),
+      color: color?.withValues(alpha: 0.2),
       child: TextWidget(text),
     );
   }
@@ -105,7 +105,7 @@ class BudgetTab extends StatelessWidget {
             const BudgetYtdChart(),
             ThemeHelper.hIndent4x,
             TableWidget(
-              shadowColor: context.colorScheme.onSurface.withOpacity(0.1),
+              shadowColor: context.colorScheme.onSurface.withValues(alpha: 0.1),
               width: width - space,
               chunk: const [20, 72, null, null, null],
               data: _generateTable(),

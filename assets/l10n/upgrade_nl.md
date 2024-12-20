@@ -2,6 +2,9 @@
 
 _De volledige lijst met updates kan worden bekeken via het navigatie-item “Over” op de knop “Hints”._
 
+### 6.1.0
+- Tsjechisch (CS) en Roemeens (RO) toegevoegd
+
 ### 6.0.4
 - Formulieren voor wisselkoersen verbeteren
 

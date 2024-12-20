@@ -28,7 +28,7 @@ class HeaderWidget extends StatelessWidget {
       decoration: BoxDecoration(
         border: Border(
           bottom: BorderSide(
-            color: context.colorScheme.secondary.withOpacity(0.2),
+            color: context.colorScheme.secondary.withValues(alpha: 0.2),
           ),
         ),
       ),

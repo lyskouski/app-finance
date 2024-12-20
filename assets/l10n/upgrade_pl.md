@@ -2,6 +2,9 @@
 
 _Pełną listę aktualizacji można wyświetlić za pomocą elementu nawigacyjnego "O aplikacji" na przycisku "Wskazówki"._
 
+### 6.1.0
+- Dodanie języków czeskiego (CS) i rumuńskiego (RO)
+
 ### 6.0.4
 - Ulepszanie formularzy kursów wymiany
 

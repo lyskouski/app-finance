@@ -87,14 +87,14 @@ extension CustomTextTheme on TextTheme {
   TextStyle get tooltipSmall => GoogleFonts.robotoCondensed(
         fontSize: 12,
         fontWeight: FontWeight.w400,
-        color: titleLarge?.color?.withOpacity(0.4),
+        color: titleLarge?.color?.withValues(alpha: 0.4),
         letterSpacing: letterSpacingOrNone(0.5),
       );
 
   TextStyle get tooltipMedium => GoogleFonts.robotoCondensed(
         fontSize: 16,
         fontWeight: FontWeight.w400,
-        color: titleLarge?.color?.withOpacity(0.4),
+        color: titleLarge?.color?.withValues(alpha: 0.4),
         letterSpacing: letterSpacingOrNone(0.5),
       );
 

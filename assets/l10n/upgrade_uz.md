@@ -2,6 +2,9 @@
 
 _Yangilanishlarning toʻliq roʻyxatini “Maslahat” tugmasidagi “Haqida” navigatsiya bandi orqali koʻrish mumkin._
 
+### 6.1.0
+- Chex (CS) va Ruminiya (RO) tillarini qo'shish
+
 ### 6.0.4
 - Valyuta kurslari shakllarini takomillashtirish
 

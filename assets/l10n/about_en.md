@@ -4,6 +4,7 @@
 [Latsinka (BE)](./about_be_EU.md) |
 [简体中文 (ZH-CN)](./about_zh.md) |
 [繁體中文 (ZH-TW)](./about_zh_TW.md) |
+[Čeština (CS)](./about_cs.md) |
 [Nederlandse (NL)](./about_nl.md) |
 English (EN-US) |
 [Français (FR)](./about_fr.md) |
@@ -16,6 +17,7 @@ English (EN-US) |
 [Polski (PL)](./about_pl.md) |
 [Português Europeu (PT)](./about_pt.md) |
 [Português Brasileiro (PTB)](./about_pt_BR.md) |
+[Limba română (RO)](./about_ro.md) |
 [Español (ES)](./about_es.md) |
 [Türk dili (TR)](./about_tr.md) |
 [Українська (UK-UA)](./about_uk.md) |

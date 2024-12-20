@@ -86,7 +86,7 @@ class BaseWidget extends StatelessWidget {
       alignment: Alignment.center,
       decoration: BoxDecoration(
         shape: BoxShape.circle,
-        color: context.colorScheme.inverseSurface.withOpacity(0.1),
+        color: context.colorScheme.inverseSurface.withValues(alpha: 0.1),
       ),
       height: ThemeHelper.getHeight(context),
       child: Column(

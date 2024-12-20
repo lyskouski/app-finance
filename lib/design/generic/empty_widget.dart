@@ -11,7 +11,7 @@ class EmptyWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: context.colorScheme.onSurface.withOpacity(0.1),
+      color: context.colorScheme.onSurface.withValues(alpha: 0.1),
       child: Center(
         child: Text(
           AppLocale.labels.noChartData,

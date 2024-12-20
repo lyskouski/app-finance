@@ -40,10 +40,10 @@ class DraggableFrameState extends State<DraggableFrame> {
     final colorScheme = context.colorScheme;
     final frameLine = MouseRegion(
       cursor: SystemMouseCursors.move,
-      onEnter: (_) => setState(() => color = colorScheme.primary.withOpacity(0.5)),
+      onEnter: (_) => setState(() => color = colorScheme.primary.withValues(alpha: 0.5)),
       onExit: (_) => setState(() => color = null),
       child: Container(
-        color: color ?? colorScheme.secondary.withOpacity(0.2),
+        color: color ?? colorScheme.secondary.withValues(alpha: 0.2),
       ),
     );
     onDragStarted() => setState(() => isDrag = true);

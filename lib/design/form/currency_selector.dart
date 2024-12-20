@@ -8,6 +8,7 @@ import 'package:app_finance/design/form/list_selector.dart';
 import 'package:app_finance/design/form/list_selector_item.dart';
 import 'package:app_finance/design/wrapper/row_widget.dart';
 import 'package:app_finance/design/wrapper/text_wrapper.dart';
+import 'package:dart_intl_search/dart_intl_search.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_currency_picker/flutter_currency_picker.dart';
 
@@ -82,7 +83,7 @@ class BaseListSelectorItem extends ListSelectorItem {
               onTap: () => pinItem(context, item),
               child: Icon(
                 CurrencyProvider.isPinned(item) ? Icons.star : Icons.star_border,
-                color: Theme.of(context).colorScheme.primary.withOpacity(0.5),
+                color: Theme.of(context).colorScheme.primary.withValues(alpha: 0.5),
               ),
             ),
           ),
@@ -90,7 +91,8 @@ class BaseListSelectorItem extends ListSelectorItem {
       );
 
   @override
-  bool match(String search) => '$item'.contains(search);
+  bool match(String search) =>
+      search.isPartOf('$item', Locale(AppLocale.code)) || '$item'.toLowerCase().contains(search.toLowerCase());
 
   @override
   bool equal(val) => val is String ? item.code == val : item.code == (val as BaseListSelectorItem).id;

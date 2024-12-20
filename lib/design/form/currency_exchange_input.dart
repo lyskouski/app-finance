@@ -69,7 +69,7 @@ class CurrencyExchangeInputState extends State<CurrencyExchangeInput> {
             Container(
               width: widget.width,
               decoration: BoxDecoration(
-                border: Border.all(color: context.colorScheme.inversePrimary.withOpacity(0.6)),
+                border: Border.all(color: context.colorScheme.inversePrimary.withValues(alpha: 0.6)),
               ),
               child: Column(
                 mainAxisAlignment: AppDesign.getAlignment<MainAxisAlignment>(),
