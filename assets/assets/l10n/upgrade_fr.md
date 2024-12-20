@@ -2,6 +2,9 @@
 
 _La liste complète des mises à jour peut être consultée via l'élément de navigation "À propos" du bouton "Conseils"._
 
+### 6.1.0
+- Ajout des langues tchèque (CS) et roumaine (RO)
+
 ### 6.0.4
 - Amélioration des formulaires de taux de change
 

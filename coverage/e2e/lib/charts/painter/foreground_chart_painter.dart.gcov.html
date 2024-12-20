@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2024-12-16 12:57:54</td>
+            <td class="headerValue">2024-12-20 17:29:15</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">0</td>
@@ -154,7 +154,7 @@
 <a name="92"><span class="lineNum">      92 </span>            : </a>
 <a name="93"><span class="lineNum">      93 </span><span class="lineNoCov">          0 :   void _plotAssert(Canvas canvas, Size size) {</span></a>
 <a name="94"><span class="lineNum">      94 </span><span class="lineNoCov">          0 :     final background = Paint()</span></a>
-<a name="95"><span class="lineNum">      95 </span><span class="lineNoCov">          0 :       ..color = areaColor.withOpacity(0.1)</span></a>
+<a name="95"><span class="lineNum">      95 </span><span class="lineNoCov">          0 :       ..color = areaColor.withValues(alpha: 0.1)</span></a>
 <a name="96"><span class="lineNum">      96 </span><span class="lineNoCov">          0 :       ..style = PaintingStyle.fill;</span></a>
 <a name="97"><span class="lineNum">      97 </span><span class="lineNoCov">          0 :     if (yMax == 0 || yDiv == 0) {</span></a>
 <a name="98"><span class="lineNum">      98 </span>            :       return;</a>
@@ -205,7 +205,7 @@
 <a name="143"><span class="lineNum">     143 </span>            : </a>
 <a name="144"><span class="lineNum">     144 </span><span class="lineCov">          1 :   void _paintAxisY(Canvas canvas, Size size) {</span></a>
 <a name="145"><span class="lineNum">     145 </span><span class="lineCov">          1 :     final lineColor = Paint()</span></a>
-<a name="146"><span class="lineNum">     146 </span><span class="lineCov">          3 :       ..color = this.lineColor.withOpacity(0.4)</span></a>
+<a name="146"><span class="lineNum">     146 </span><span class="lineCov">          3 :       ..color = this.lineColor.withValues(alpha: 0.4)</span></a>
 <a name="147"><span class="lineNum">     147 </span><span class="lineCov">          1 :       ..strokeWidth = 0.5;</span></a>
 <a name="148"><span class="lineNum">     148 </span><span class="lineCov">          5 :     double step = (yMax - yMin) / yDiv;</span></a>
 <a name="149"><span class="lineNum">     149 </span><span class="lineCov">          3 :     for (int i = 0; i &lt; yDiv; i++) {</span></a>
@@ -237,10 +237,10 @@
 <a name="175"><span class="lineNum">     175 </span>            : </a>
 <a name="176"><span class="lineNum">     176 </span><span class="lineCov">          1 :   void _paintAxisX(Canvas canvas, Size size) {</span></a>
 <a name="177"><span class="lineNum">     177 </span><span class="lineCov">          1 :     final lineColor = Paint()</span></a>
-<a name="178"><span class="lineNum">     178 </span><span class="lineCov">          3 :       ..color = this.lineColor.withOpacity(0.4)</span></a>
+<a name="178"><span class="lineNum">     178 </span><span class="lineCov">          3 :       ..color = this.lineColor.withValues(alpha: 0.4)</span></a>
 <a name="179"><span class="lineNum">     179 </span><span class="lineCov">          1 :       ..strokeWidth = 0.5;</span></a>
 <a name="180"><span class="lineNum">     180 </span><span class="lineCov">          1 :     final background = Paint()</span></a>
-<a name="181"><span class="lineNum">     181 </span><span class="lineCov">          3 :       ..color = this.background.withOpacity(0.05)</span></a>
+<a name="181"><span class="lineNum">     181 </span><span class="lineCov">          3 :       ..color = this.background.withValues(alpha: 0.05)</span></a>
 <a name="182"><span class="lineNum">     182 </span><span class="lineCov">          1 :       ..style = PaintingStyle.fill;</span></a>
 <a name="183"><span class="lineNum">     183 </span><span class="lineCov">          1 :     double step = switch (xType) {</span></a>
 <a name="184"><span class="lineNum">     184 </span><span class="lineCov">          7 :       DateTime =&gt; (xMax - xMin - 1) / xDiv,</span></a>

@@ -2,6 +2,9 @@
 
 _La lista completa de actualizaciones puede consultarse en el menú "Acerca de" del botón "Sugerencias"._
 
+### 6.1.0
+- Adición de los idiomas checo (CS) y rumano (RO)
+
 ### 6.0.4
 - Mejora de las formas de los tipos de cambio
 

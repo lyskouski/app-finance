@@ -2,6 +2,9 @@
 
 _Güncellemelerin tam listesi “İpuçları” düğmesindeki “Hakkında” gezinti öğesi aracılığıyla görüntülenebilir._
 
+### 6.1.0
+- Çekçe (CS) ve Romence (RO) dillerinin eklenmesi
+
 ### 6.0.4
 - Döviz kurlarının formlarının iyileştirilmesi
 

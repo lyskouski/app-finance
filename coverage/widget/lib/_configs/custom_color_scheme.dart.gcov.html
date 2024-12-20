@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2024-12-16 12:54:58</td>
+            <td class="headerValue">2024-12-20 17:26:23</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">0</td>
@@ -95,7 +95,7 @@
 <a name="33"><span class="lineNum">      33 </span>            :   Color inverseSurface = Colors.black;</a>
 <a name="34"><span class="lineNum">      34 </span>            :   Color onSecondary = Colors.white;</a>
 <a name="35"><span class="lineNum">      35 </span>            :   Color onInverseSurface = Colors.white;</a>
-<a name="36"><span class="lineNum">      36 </span>            :   Color onSecondaryContainer = Colors.grey.withOpacity(0.7);</a>
+<a name="36"><span class="lineNum">      36 </span>            :   Color onSecondaryContainer = Colors.grey.withValues(alpha: 0.7);</a>
 <a name="37"><span class="lineNum">      37 </span>            :   Color secondary = Colors.black;</a>
 <a name="38"><span class="lineNum">      38 </span>            : </a>
 <a name="39"><span class="lineNum">      39 </span><span class="lineCov">          4 :   AppDefaultColors();</span></a>
@@ -153,7 +153,7 @@
 <a name="91"><span class="lineNum">      91 </span>            : }</a>
 <a name="92"><span class="lineNum">      92 </span>            : </a>
 <a name="93"><span class="lineNum">      93 </span>            : extension CustomColorScheme on ColorScheme {</a>
-<a name="94"><span class="lineNum">      94 </span><span class="lineCov">          6 :   Color get fieldBackground =&gt; inversePrimary.withOpacity(0.3);</span></a>
+<a name="94"><span class="lineNum">      94 </span><span class="lineCov">          6 :   Color get fieldBackground =&gt; inversePrimary.withValues(alpha: 0.3);</span></a>
 <a name="95"><span class="lineNum">      95 </span>            : </a>
 <a name="96"><span class="lineNum">      96 </span><span class="lineCov">          3 :   ColorScheme? withCustom(String paletteType) {</span></a>
 <a name="97"><span class="lineNum">      97 </span><span class="lineCov">          3 :     if (paletteType == AppColors.colorSystem) {</span></a>
@@ -241,7 +241,7 @@
 <a name="179"><span class="lineNum">     179 </span>            :   }) {</a>
 <a name="180"><span class="lineNum">     180 </span><span class="lineCov">          3 :     if (paletteType != AppColors.colorSystem) {</span></a>
 <a name="181"><span class="lineNum">     181 </span><span class="lineCov">          6 :       final palette = AppColors(paletteType, brightness).palette;</span></a>
-<a name="182"><span class="lineNum">     182 </span><span class="lineCov">          9 :       _color = palette.secondary.withOpacity(0.2);</span></a>
+<a name="182"><span class="lineNum">     182 </span><span class="lineCov">          9 :       _color = palette.secondary.withValues(alpha: 0.2);</span></a>
 <a name="183"><span class="lineNum">     183 </span>            :     } else {</a>
 <a name="184"><span class="lineNum">     184 </span><span class="lineNoCov">          0 :       _color = null;</span></a>
 <a name="185"><span class="lineNum">     185 </span>            :     }</a>

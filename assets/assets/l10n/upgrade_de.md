@@ -2,6 +2,9 @@
 
 _Die vollständige Liste der Updates kann über den Navigationspunkt "Über" auf der Schaltfläche "Hinweise" eingesehen werden._
 
+### 6.1.0
+- Hinzufügen der Sprachen Tschechisch (CS) und Rumänisch (RO)
+
 ### 6.0.4
 - Verbesserung der Formulare für die Wechselkurse
 

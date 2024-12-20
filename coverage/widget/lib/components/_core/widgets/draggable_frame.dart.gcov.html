@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2024-12-16 12:54:58</td>
+            <td class="headerValue">2024-12-20 17:26:23</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">0</td>
@@ -102,10 +102,10 @@
 <a name="40"><span class="lineNum">      40 </span><span class="lineNoCov">          0 :     final colorScheme = context.colorScheme;</span></a>
 <a name="41"><span class="lineNum">      41 </span><span class="lineNoCov">          0 :     final frameLine = MouseRegion(</span></a>
 <a name="42"><span class="lineNum">      42 </span>            :       cursor: SystemMouseCursors.move,</a>
-<a name="43"><span class="lineNum">      43 </span><span class="lineNoCov">          0 :       onEnter: (_) =&gt; setState(() =&gt; color = colorScheme.primary.withOpacity(0.5)),</span></a>
+<a name="43"><span class="lineNum">      43 </span><span class="lineNoCov">          0 :       onEnter: (_) =&gt; setState(() =&gt; color = colorScheme.primary.withValues(alpha: 0.5)),</span></a>
 <a name="44"><span class="lineNum">      44 </span><span class="lineNoCov">          0 :       onExit: (_) =&gt; setState(() =&gt; color = null),</span></a>
 <a name="45"><span class="lineNum">      45 </span><span class="lineNoCov">          0 :       child: Container(</span></a>
-<a name="46"><span class="lineNum">      46 </span><span class="lineNoCov">          0 :         color: color ?? colorScheme.secondary.withOpacity(0.2),</span></a>
+<a name="46"><span class="lineNum">      46 </span><span class="lineNoCov">          0 :         color: color ?? colorScheme.secondary.withValues(alpha: 0.2),</span></a>
 <a name="47"><span class="lineNum">      47 </span>            :       ),</a>
 <a name="48"><span class="lineNum">      48 </span>            :     );</a>
 <a name="49"><span class="lineNum">      49 </span><span class="lineNoCov">          0 :     onDragStarted() =&gt; setState(() =&gt; isDrag = true);</span></a>

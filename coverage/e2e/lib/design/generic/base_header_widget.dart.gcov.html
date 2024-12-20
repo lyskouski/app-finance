@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2024-12-16 12:57:54</td>
+            <td class="headerValue">2024-12-20 17:29:15</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">0</td>
@@ -120,7 +120,7 @@
 <a name="58"><span class="lineNum">      58 </span><span class="lineCov">          2 :         padding: EdgeInsets.all(indent / 2),</span></a>
 <a name="59"><span class="lineNum">      59 </span><span class="lineCov">          2 :         height: numHeight + subHeight + indent,</span></a>
 <a name="60"><span class="lineNum">      60 </span>            :         width: double.infinity,</a>
-<a name="61"><span class="lineNum">      61 </span><span class="lineCov">          2 :         color: colorScheme.inverseSurface.withOpacity(0.1),</span></a>
+<a name="61"><span class="lineNum">      61 </span><span class="lineCov">          2 :         color: colorScheme.inverseSurface.withValues(alpha: 0.1),</span></a>
 <a name="62"><span class="lineNum">      62 </span><span class="lineCov">          1 :         child: GridContainer(</span></a>
 <a name="63"><span class="lineNum">      63 </span><span class="lineCov">          1 :           alignment: AppDesign.getAlignment&lt;MainAxisAlignment&gt;(),</span></a>
 <a name="64"><span class="lineNum">      64 </span><span class="lineCov">          2 :           rows: [null, ThemeHelper.barHeight, if (hasExpand) ThemeHelper.barHeight],</span></a>
@@ -144,13 +144,13 @@
 <a name="82"><span class="lineNum">      82 </span>            :               start: const Size(1, 0),</a>
 <a name="83"><span class="lineNum">      83 </span>            :               end: const Size(2, 2),</a>
 <a name="84"><span class="lineNum">      84 </span><span class="lineCov">          1 :               child: ToolbarButtonWidget(</span></a>
-<a name="85"><span class="lineNum">      85 </span><span class="lineCov">          3 :                 borderColor: context.colorScheme.onSecondaryContainer.withOpacity(0.3),</span></a>
+<a name="85"><span class="lineNum">      85 </span><span class="lineCov">          3 :                 borderColor: context.colorScheme.onSecondaryContainer.withValues(alpha: 0.3),</span></a>
 <a name="86"><span class="lineNum">      86 </span>            :                 offset: bnShift,</a>
 <a name="87"><span class="lineNum">      87 </span>            :                 icon: Icons.stacked_bar_chart,</a>
 <a name="88"><span class="lineNum">      88 </span><span class="lineCov">          2 :                 color: context.colorScheme.onSecondaryContainer,</span></a>
 <a name="89"><span class="lineNum">      89 </span><span class="lineCov">          2 :                 tooltip: AppLocale.labels.metricsTooltip,</span></a>
 <a name="90"><span class="lineNum">      90 </span><span class="lineNoCov">          0 :                 onPressed: () =&gt; nav.pushNamed(metrics.name!, arguments: metrics.arguments),</span></a>
-<a name="91"><span class="lineNum">      91 </span><span class="lineCov">          3 :                 backgroundColor: context.colorScheme.surface.withOpacity(0.3),</span></a>
+<a name="91"><span class="lineNum">      91 </span><span class="lineCov">          3 :                 backgroundColor: context.colorScheme.surface.withValues(alpha: 0.3),</span></a>
 <a name="92"><span class="lineNum">      92 </span>            :               ),</a>
 <a name="93"><span class="lineNum">      93 </span>            :             ),</a>
 <a name="94"><span class="lineNum">      94 </span><span class="lineCov">          1 :             if (hasExpand)</span></a>
@@ -158,13 +158,13 @@
 <a name="96"><span class="lineNum">      96 </span>            :                 start: const Size(2, 0),</a>
 <a name="97"><span class="lineNum">      97 </span>            :                 end: const Size(3, 2),</a>
 <a name="98"><span class="lineNum">      98 </span><span class="lineNoCov">          0 :                 child: ToolbarButtonWidget(</span></a>
-<a name="99"><span class="lineNum">      99 </span><span class="lineNoCov">          0 :                   borderColor: context.colorScheme.onSecondaryContainer.withOpacity(0.3),</span></a>
+<a name="99"><span class="lineNum">      99 </span><span class="lineNoCov">          0 :                   borderColor: context.colorScheme.onSecondaryContainer.withValues(alpha: 0.3),</span></a>
 <a name="100"><span class="lineNum">     100 </span>            :                   offset: bnShift,</a>
 <a name="101"><span class="lineNum">     101 </span>            :                   selectedIcon: Icons.expand,</a>
 <a name="102"><span class="lineNum">     102 </span><span class="lineNoCov">          0 :                   selectedColor: context.colorScheme.onSecondaryContainer,</span></a>
-<a name="103"><span class="lineNum">     103 </span><span class="lineNoCov">          0 :                   backgroundColor: context.colorScheme.surface.withOpacity(0.3),</span></a>
+<a name="103"><span class="lineNum">     103 </span><span class="lineNoCov">          0 :                   backgroundColor: context.colorScheme.surface.withValues(alpha: 0.3),</span></a>
 <a name="104"><span class="lineNum">     104 </span>            :                   icon: Icons.expand_less,</a>
-<a name="105"><span class="lineNum">     105 </span><span class="lineNoCov">          0 :                   color: context.colorScheme.primary.withOpacity(0.6),</span></a>
+<a name="105"><span class="lineNum">     105 </span><span class="lineNoCov">          0 :                   color: context.colorScheme.primary.withValues(alpha: 0.6),</span></a>
 <a name="106"><span class="lineNum">     106 </span><span class="lineNoCov">          0 :                   tooltip: toExpand ? AppLocale.labels.expand : AppLocale.labels.collapse,</span></a>
 <a name="107"><span class="lineNum">     107 </span><span class="lineNoCov">          0 :                   onPressed: () =&gt; expand!(),</span></a>
 <a name="108"><span class="lineNum">     108 </span><span class="lineNoCov">          0 :                   isSelected: toExpand,</span></a>

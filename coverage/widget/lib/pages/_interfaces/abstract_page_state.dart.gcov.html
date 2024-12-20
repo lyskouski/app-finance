@@ -31,13 +31,13 @@
             <td class="headerValue">lcov.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntry">97</td>
-            <td class="headerCovTableEntry">162</td>
-            <td class="headerCovTableEntryLo">59.9 %</td>
+            <td class="headerCovTableEntry">98</td>
+            <td class="headerCovTableEntry">163</td>
+            <td class="headerCovTableEntryLo">60.1 %</td>
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2024-12-16 12:54:58</td>
+            <td class="headerValue">2024-12-20 17:26:23</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">0</td>
@@ -178,7 +178,7 @@
 <a name="116"><span class="lineNum">     116 </span><span class="lineCov">          3 :   Widget getBarTitle(BuildContext context, [bool isBottom = false]) {</span></a>
 <a name="117"><span class="lineNum">     117 </span><span class="lineCov">          3 :     return TextWrapper(</span></a>
 <a name="118"><span class="lineNum">     118 </span><span class="lineCov">          3 :       getTitle(),</span></a>
-<a name="119"><span class="lineNum">     119 </span><span class="lineCov">         12 :       style: TextStyle(color: context.colorScheme.onInverseSurface.withOpacity(0.8)),</span></a>
+<a name="119"><span class="lineNum">     119 </span><span class="lineCov">         12 :       style: TextStyle(color: context.colorScheme.onInverseSurface.withValues(alpha: 0.8)),</span></a>
 <a name="120"><span class="lineNum">     120 </span>            :     );</a>
 <a name="121"><span class="lineNum">     121 </span>            :   }</a>
 <a name="122"><span class="lineNum">     122 </span>            : </a>
@@ -194,7 +194,7 @@
 <a name="132"><span class="lineNum">     132 </span>            :               borderRadius: BorderRadius.zero,</a>
 <a name="133"><span class="lineNum">     133 </span>            :             )</a>
 <a name="134"><span class="lineNum">     134 </span>            :           : null,</a>
-<a name="135"><span class="lineNum">     135 </span><span class="lineNoCov">          0 :       backgroundColor: isWide ? context.colorScheme.inverseSurface.withOpacity(0.4) : context.colorScheme.primary,</span></a>
+<a name="135"><span class="lineNum">     135 </span><span class="lineNoCov">          0 :       backgroundColor: isWide ? context.colorScheme.inverseSurface.withValues(alpha: 0.4) : context.colorScheme.primary,</span></a>
 <a name="136"><span class="lineNum">     136 </span><span class="lineNoCov">          0 :       leading: getBarLeading(nav),</span></a>
 <a name="137"><span class="lineNum">     137 </span>            :       leadingWidth: isWide ? ThemeHelper.menuWidth : null,</a>
 <a name="138"><span class="lineNum">     138 </span><span class="lineNoCov">          0 :       actions: getBarActions(nav),</span></a>
@@ -256,8 +256,8 @@
 <a name="194"><span class="lineNum">     194 </span><span class="lineCov">          3 :                 child: TextWrapper(</span></a>
 <a name="195"><span class="lineNum">     195 </span><span class="lineCov">          3 :                   getButtonName(),</span></a>
 <a name="196"><span class="lineNum">     196 </span>            :                   maxLines: 2,</a>
-<a name="197"><span class="lineNum">     197 </span>            :                   style:</a>
-<a name="198"><span class="lineNum">     198 </span><span class="lineCov">         18 :                       theme.textTheme.bodySmall?.copyWith(color: theme.colorScheme.onInverseSurface.withOpacity(0.6)),</span></a>
+<a name="197"><span class="lineNum">     197 </span><span class="lineCov">          6 :                   style: theme.textTheme.bodySmall</span></a>
+<a name="198"><span class="lineNum">     198 </span><span class="lineCov">         12 :                       ?.copyWith(color: theme.colorScheme.onInverseSurface.withValues(alpha: 0.6)),</span></a>
 <a name="199"><span class="lineNum">     199 </span>            :                 ),</a>
 <a name="200"><span class="lineNum">     200 </span>            :               ),</a>
 <a name="201"><span class="lineNum">     201 </span>            :           ],</a>
@@ -368,7 +368,7 @@
 <a name="306"><span class="lineNum">     306 </span>            :                       start: const Size(0, 0),</a>
 <a name="307"><span class="lineNum">     307 </span>            :                       end: const Size(1, 2),</a>
 <a name="308"><span class="lineNum">     308 </span><span class="lineNoCov">          0 :                       child: Container(</span></a>
-<a name="309"><span class="lineNum">     309 </span><span class="lineNoCov">          0 :                         color: context.colorScheme.inversePrimary.withOpacity(0.2),</span></a>
+<a name="309"><span class="lineNum">     309 </span><span class="lineNoCov">          0 :                         color: context.colorScheme.inversePrimary.withValues(alpha: 0.2),</span></a>
 <a name="310"><span class="lineNum">     310 </span>            :                         width: ThemeHelper.menuWidth,</a>
 <a name="311"><span class="lineNum">     311 </span>            :                         height: double.infinity,</a>
 <a name="312"><span class="lineNum">     312 </span><span class="lineNoCov">          0 :                         child: buildNavigation(),</span></a>
