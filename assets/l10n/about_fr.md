@@ -17,6 +17,7 @@ Français (FR) |
 [Polski (PL)](./about_pl.md) |
 [Português Europeu (PT)](./about_pt.md) |
 [Português Brasileiro (PTB)](./about_pt_BR.md) |
+[Limba română (RO)](./about_ro.md) |
 [Español (ES)](./about_es.md) |
 [Türk dili (TR)](./about_tr.md) |
 [Українська (UK-UA)](./about_uk.md) |
