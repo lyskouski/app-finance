@@ -139,7 +139,7 @@ abstract class BasicTabWidgetState extends State<TabWidget> with TickerProviderS
   Widget getLeftAppBar(BuildContext context) {
     final color = context.colorScheme.onInverseSurface;
     final selected = context.textTheme.bodySmall?.copyWith(color: color);
-    final style = context.textTheme.bodySmall?.copyWith(color: color.withOpacity(0.6));
+    final style = context.textTheme.bodySmall?.copyWith(color: color.withValues(alpha: 0.6));
     return SizedBox(
       width: ThemeHelper.barHeight,
       child: NavigationRail(
@@ -172,7 +172,7 @@ abstract class BasicTabWidgetState extends State<TabWidget> with TickerProviderS
                           child: e.value.icon != null
                               ? Icon(
                                   (e.value.icon as Icon).icon,
-                                  color: tabIndex == e.key ? color : color.withOpacity(0.6),
+                                  color: tabIndex == e.key ? color : color.withValues(alpha: 0.6),
                                 )
                               : null,
                         ),
@@ -185,7 +185,7 @@ abstract class BasicTabWidgetState extends State<TabWidget> with TickerProviderS
                             decoration: ShapeDecoration(
                               shape: UnderlineInputBorder(
                                 borderSide: BorderSide(
-                                  color: color.withOpacity(tabIndex == e.key ? 1 : 0.2),
+                                  color: color.withValues(alpha: tabIndex == e.key ? 1 : 0.2),
                                   width: 2,
                                 ),
                               ),

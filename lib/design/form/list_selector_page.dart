@@ -68,8 +68,8 @@ class ListSelectorPageState<T extends Object?> extends State<ListSelectorPage> {
         itemCount: options.length,
         itemBuilder: (BuildContext context, int index) {
           return ListTile(
-            tileColor: index % 2 == 0 ? context.colorScheme.primary.withOpacity(0.05) : null,
-            hoverColor: context.colorScheme.primary.withOpacity(0.15),
+            tileColor: index % 2 == 0 ? context.colorScheme.primary.withValues(alpha: 0.05) : null,
+            hoverColor: context.colorScheme.primary.withValues(alpha: 0.15),
             title: options[index].suggest(context),
             onTap: () => nav.pop<T>(options[index] as T),
           );
@@ -99,7 +99,7 @@ class ListSelectorPageState<T extends Object?> extends State<ListSelectorPage> {
                 color: context.colorScheme.surface,
                 boxShadow: [
                   BoxShadow(
-                    color: context.colorScheme.onSurface.withOpacity(0.1),
+                    color: context.colorScheme.onSurface.withValues(alpha: 0.1),
                     offset: const Offset(0, 1),
                     blurRadius: 3,
                     spreadRadius: 1,
@@ -111,12 +111,12 @@ class ListSelectorPageState<T extends Object?> extends State<ListSelectorPage> {
                     spreadRadius: 0,
                   ),
                 ],
-                border: Border(bottom: BorderSide(width: 4, color: context.colorScheme.surface.withOpacity(0.2))),
+                border: Border(bottom: BorderSide(width: 4, color: context.colorScheme.surface.withValues(alpha: 0.2))),
               ),
               child: Container(
                 decoration: BoxDecoration(
                   color: context.colorScheme.surface,
-                  border: Border.all(color: context.colorScheme.onSurface.withOpacity(0.1)),
+                  border: Border.all(color: context.colorScheme.onSurface.withValues(alpha: 0.1)),
                   borderRadius: BorderRadius.all(Radius.circular(indent / 2)),
                 ),
                 height: ThemeHelper.barHeight + indent,
@@ -147,7 +147,7 @@ class ListSelectorPageState<T extends Object?> extends State<ListSelectorPage> {
                         tooltip: AppLocale.labels.clear,
                         style: ButtonStyle(
                           backgroundColor: WidgetStateProperty.all<Color>(
-                            context.colorScheme.surface.mesh(context.colorScheme.primary.withOpacity(1), 0.1),
+                            context.colorScheme.surface.mesh(context.colorScheme.primary.withValues(alpha: 1), 0.1),
                           ),
                         ),
                         icon: const Icon(Icons.clear),
@@ -169,8 +169,8 @@ class ListSelectorPageState<T extends Object?> extends State<ListSelectorPage> {
             ),
             if (result != null)
               ListTile(
-                tileColor: context.colorScheme.primary.withOpacity(0.15),
-                hoverColor: context.colorScheme.primary.withOpacity(0.20),
+                tileColor: context.colorScheme.primary.withValues(alpha: 0.15),
+                hoverColor: context.colorScheme.primary.withValues(alpha: 0.20),
                 title: widget.options.where((e) => e.equal(result)).firstOrNull?.build(context) ?? ThemeHelper.emptyBox,
                 onTap: () => nav.pop<T>(result as T),
               ),

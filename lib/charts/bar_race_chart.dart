@@ -59,7 +59,7 @@ class BarRaceChart extends StatelessWidget {
       size: size,
       color: bgColor,
       lineColor: bgColor,
-      background: bgColor.withOpacity(0.1),
+      background: bgColor.withValues(alpha: 0.1),
       yMin: 0.0,
       yMax: 1.0 + plot.length,
       yType: null,

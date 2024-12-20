@@ -57,12 +57,12 @@ class DraggablePointerState extends State<DraggablePointer> {
         ),
         child: MouseRegion(
           cursor: SystemMouseCursors.resizeDownRight,
-          onEnter: (_) => setState(() => color = colorScheme.primary.withOpacity(0.5)),
+          onEnter: (_) => setState(() => color = colorScheme.primary.withValues(alpha: 0.5)),
           onExit: (_) => setState(() => color = null),
           child: Container(
             decoration: BoxDecoration(
               shape: BoxShape.circle,
-              color: color ?? context.colorScheme.secondary.withOpacity(0.4),
+              color: color ?? context.colorScheme.secondary.withValues(alpha: 0.4),
             ),
           ),
         ),

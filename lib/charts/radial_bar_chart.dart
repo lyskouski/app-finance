@@ -24,7 +24,7 @@ class RadialBarChart extends StatelessWidget {
           value: progress,
           strokeWidth: 4,
           color: color,
-          backgroundColor: Colors.grey.withOpacity(0.5),
+          backgroundColor: Colors.grey.withValues(alpha: 0.5),
         ),
         Icon(
           icon,

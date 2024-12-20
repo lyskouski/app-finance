@@ -58,7 +58,7 @@ class PurchaseWidgetState extends State<PurchaseWidget> {
           borderRadius: BorderRadius.circular(3),
           boxShadow: [
             BoxShadow(
-              color: context.colorScheme.secondary.withOpacity(0.1),
+              color: context.colorScheme.secondary.withValues(alpha: 0.1),
               spreadRadius: indent / 2,
               blurRadius: indent,
               offset: Offset(0, indent / 2),
@@ -91,7 +91,7 @@ class PurchaseWidgetState extends State<PurchaseWidget> {
                         PurchaseStatus.pending => Icons.pending,
                         _ => Icons.add
                       },
-                      color: context.colorScheme.secondary.withOpacity(0.3),
+                      color: context.colorScheme.secondary.withValues(alpha: 0.3),
                     ),
                   ),
                   GridItem(
@@ -99,7 +99,7 @@ class PurchaseWidgetState extends State<PurchaseWidget> {
                     end: const Size(3, 3),
                     order: 2,
                     child: Container(
-                        color: context.colorScheme.surface.withOpacity(0.9),
+                        color: context.colorScheme.surface.withValues(alpha: 0.9),
                         padding: EdgeInsets.all(indent),
                         child: RowWidget(
                           chunk: [null, costWidth],

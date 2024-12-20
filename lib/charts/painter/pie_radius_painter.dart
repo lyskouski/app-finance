@@ -37,7 +37,7 @@ class PieRadiusPainter extends AbstractPainter {
       ..style = PaintingStyle.stroke;
     final paintBorder = Paint()
       ..strokeWidth = strokeWidth * 1.1
-      ..color = data[step].color.withOpacity(0.3)
+      ..color = data[step].color.withValues(alpha: 0.3)
       ..style = PaintingStyle.stroke;
     const full = 2 * pi;
     final shift = indent * full;

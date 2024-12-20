@@ -33,7 +33,7 @@ class AppDefaultColors {
   Color inverseSurface = Colors.black;
   Color onSecondary = Colors.white;
   Color onInverseSurface = Colors.white;
-  Color onSecondaryContainer = Colors.grey.withOpacity(0.7);
+  Color onSecondaryContainer = Colors.grey.withValues(alpha: 0.7);
   Color secondary = Colors.black;
 
   AppDefaultColors();
@@ -91,7 +91,7 @@ class AppDarkColors extends AppDefaultColors {
 }
 
 extension CustomColorScheme on ColorScheme {
-  Color get fieldBackground => inversePrimary.withOpacity(0.3);
+  Color get fieldBackground => inversePrimary.withValues(alpha: 0.3);
 
   ColorScheme? withCustom(String paletteType) {
     if (paletteType == AppColors.colorSystem) {
@@ -179,7 +179,7 @@ class CustomDividerTheme extends DividerThemeData {
   }) {
     if (paletteType != AppColors.colorSystem) {
       final palette = AppColors(paletteType, brightness).palette;
-      _color = palette.secondary.withOpacity(0.2);
+      _color = palette.secondary.withValues(alpha: 0.2);
     } else {
       _color = null;
     }

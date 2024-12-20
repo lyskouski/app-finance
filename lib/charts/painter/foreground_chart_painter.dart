@@ -92,7 +92,7 @@ class ForegroundChartPainter extends AbstractPainter {
 
   void _plotAssert(Canvas canvas, Size size) {
     final background = Paint()
-      ..color = areaColor.withOpacity(0.1)
+      ..color = areaColor.withValues(alpha: 0.1)
       ..style = PaintingStyle.fill;
     if (yMax == 0 || yDiv == 0) {
       return;
@@ -143,7 +143,7 @@ class ForegroundChartPainter extends AbstractPainter {
 
   void _paintAxisY(Canvas canvas, Size size) {
     final lineColor = Paint()
-      ..color = this.lineColor.withOpacity(0.4)
+      ..color = this.lineColor.withValues(alpha: 0.4)
       ..strokeWidth = 0.5;
     double step = (yMax - yMin) / yDiv;
     for (int i = 0; i < yDiv; i++) {
@@ -175,10 +175,10 @@ class ForegroundChartPainter extends AbstractPainter {
 
   void _paintAxisX(Canvas canvas, Size size) {
     final lineColor = Paint()
-      ..color = this.lineColor.withOpacity(0.4)
+      ..color = this.lineColor.withValues(alpha: 0.4)
       ..strokeWidth = 0.5;
     final background = Paint()
-      ..color = this.background.withOpacity(0.05)
+      ..color = this.background.withValues(alpha: 0.05)
       ..style = PaintingStyle.fill;
     double step = switch (xType) {
       DateTime => (xMax - xMin - 1) / xDiv,

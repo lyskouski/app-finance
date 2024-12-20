@@ -85,7 +85,7 @@ class GoalLineWidget extends StatelessWidget {
               end: const Size(3, 4),
               child: LinearProgressIndicator(
                 value: goal.progress,
-                backgroundColor: colorScheme.primary.withOpacity(0.3),
+                backgroundColor: colorScheme.primary.withValues(alpha: 0.3),
                 valueColor: AlwaysStoppedAnimation<Color>(colorScheme.onPrimaryContainer),
               ),
             ),

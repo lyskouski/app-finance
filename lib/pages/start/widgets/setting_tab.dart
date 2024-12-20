@@ -264,7 +264,7 @@ class SettingTabState<T extends SettingTab> extends AbstractTabState<T> {
           if (colorMode == AppColors.colorUser) ...[
             TableWidget(
               width: width,
-              shadowColor: context.colorScheme.onSurface.withOpacity(0.05),
+              shadowColor: context.colorScheme.onSurface.withValues(alpha: 0.05),
               chunk: const [120, null, null],
               data: [
                 [

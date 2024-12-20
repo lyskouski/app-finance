@@ -54,7 +54,7 @@ class FullSizedButtonWidget extends StatelessWidget {
                 heroTag: heroTag,
                 onPressed: onPressed,
                 hoverColor: colorScheme.primary,
-                focusColor: colorScheme.primary.withOpacity(0.8),
+                focusColor: colorScheme.primary.withValues(alpha: 0.8),
                 tooltip: title,
                 focusNode: controller?.last(this),
                 child: Row(

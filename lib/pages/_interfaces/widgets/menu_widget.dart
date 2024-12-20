@@ -55,7 +55,7 @@ class MenuWidget extends StatelessWidget {
         color: isSelected
             ? isWide
                 ? colorScheme.surface
-                : colorScheme.secondary.withOpacity(0.1)
+                : colorScheme.secondary.withValues(alpha: 0.1)
             : null,
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.center,

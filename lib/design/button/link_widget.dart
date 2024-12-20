@@ -26,7 +26,7 @@ class LinkWidget extends StatelessWidget {
             style: TextStyle(
               color: context.colorScheme.primary,
               decoration: TextDecoration.underline,
-              decorationColor: context.colorScheme.primary.withOpacity(0.8),
+              decorationColor: context.colorScheme.primary.withValues(alpha: 0.8),
             ),
           ),
         ),

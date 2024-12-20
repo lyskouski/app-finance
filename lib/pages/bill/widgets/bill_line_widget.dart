@@ -80,7 +80,7 @@ class BillLineWidget extends StatelessWidget {
                     TextWrapper(
                       description,
                       style: textTheme.headlineMedium?.copyWith(
-                        color: Color.alphaBlend(descriptionColor.withOpacity(0.4), context.colorScheme.secondary),
+                        color: Color.alphaBlend(descriptionColor.withValues(alpha: 0.4), context.colorScheme.secondary),
                       ),
                     ),
                   ],
@@ -89,7 +89,7 @@ class BillLineWidget extends StatelessWidget {
                     TextWrapper(
                       iconTooltip,
                       style: textTheme.headlineMedium?.copyWith(
-                        color: Color.alphaBlend(color.withOpacity(0.4), context.colorScheme.secondary),
+                        color: Color.alphaBlend(color.withValues(alpha: 0.4), context.colorScheme.secondary),
                       ),
                     ),
                   ],
@@ -130,7 +130,8 @@ class BillLineWidget extends StatelessWidget {
                         TextWrapper(
                           description,
                           style: textTheme.numberSmall.copyWith(
-                            color: Color.alphaBlend(descriptionColor.withOpacity(0.4), context.colorScheme.secondary),
+                            color: Color.alphaBlend(
+                                descriptionColor.withValues(alpha: 0.4), context.colorScheme.secondary),
                           ),
                         ),
                       ],

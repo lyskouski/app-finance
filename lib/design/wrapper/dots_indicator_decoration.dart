@@ -54,7 +54,7 @@ class _CustomTabIndicatorPainter extends BoxPainter {
     }
     final activeIndex = controller.page?.round() ?? controller.initialPage;
     final active = Paint()..color = color;
-    final inactive = Paint()..color = color.withOpacity(0.3);
+    final inactive = Paint()..color = color.withValues(alpha: 0.3);
     for (int i = 0; i < itemCount; i++) {
       double xPos = spacing + i * (dotSize + spacing);
       double yPos = spacing * 0.6;

@@ -94,7 +94,7 @@ class AccountTab extends StatelessWidget {
                 children: [
                   [
                     TableWidget(
-                      shadowColor: context.colorScheme.onSurface.withOpacity(0.1),
+                      shadowColor: context.colorScheme.onSurface.withValues(alpha: 0.1),
                       width: width - pieWidth - 2 * indent,
                       chunk: const [8, 34, null, null],
                       data: _generateCurrencyTable(currency),

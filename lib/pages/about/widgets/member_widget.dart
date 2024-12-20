@@ -16,11 +16,11 @@ typedef MemberData = ({
 
 class MemberWidget extends StatelessWidget {
   static final colors = {
-    AppLocale.labels.coAuthor: Colors.amber.withOpacity(0.2),
-    AppLocale.labels.coDeveloper: Colors.indigo.withOpacity(0.2),
-    AppLocale.labels.coTranslator: Colors.pink.withOpacity(0.2),
-    AppLocale.labels.coPromoter: Colors.purple.withOpacity(0.2),
-    AppLocale.labels.coConsult: Colors.cyan.withOpacity(0.2),
+    AppLocale.labels.coAuthor: Colors.amber.withValues(alpha: 0.2),
+    AppLocale.labels.coDeveloper: Colors.indigo.withValues(alpha: 0.2),
+    AppLocale.labels.coTranslator: Colors.pink.withValues(alpha: 0.2),
+    AppLocale.labels.coPromoter: Colors.purple.withValues(alpha: 0.2),
+    AppLocale.labels.coConsult: Colors.cyan.withValues(alpha: 0.2),
   };
 
   final MemberData member;
@@ -30,7 +30,7 @@ class MemberWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final indent = ThemeHelper.getIndent();
-    final border = BorderSide(width: 1, color: context.colorScheme.primary.withOpacity(0.1));
+    final border = BorderSide(width: 1, color: context.colorScheme.primary.withValues(alpha: 0.1));
     return Container(
       padding: EdgeInsets.all(indent),
       margin: EdgeInsets.only(top: indent, right: indent),
@@ -39,7 +39,7 @@ class MemberWidget extends StatelessWidget {
         color: context.colorScheme.surface,
         boxShadow: [
           BoxShadow(
-            color: context.colorScheme.secondary.withOpacity(0.08),
+            color: context.colorScheme.secondary.withValues(alpha: 0.08),
             spreadRadius: 1,
             blurRadius: 2,
             offset: const Offset(2, 2),

@@ -74,8 +74,8 @@ class IconSelectorState extends ListSelectorState<IconSelector, IconSelectorItem
           bool oddRow = (index ~/ crossAxisCount) % 2 == 0;
           bool highlight = index % 2 == 0 && oddRow || index % 2 != 0 && !oddRow;
           return ListTile(
-            tileColor: highlight ? context.colorScheme.primary.withOpacity(0.05) : null,
-            hoverColor: context.colorScheme.primary.withOpacity(0.15),
+            tileColor: highlight ? context.colorScheme.primary.withValues(alpha: 0.05) : null,
+            hoverColor: context.colorScheme.primary.withValues(alpha: 0.15),
             title: options[index].suggest(context),
             onTap: () => nav.pop<IconSelectorItem?>(options[index] as IconSelectorItem?),
           );

@@ -44,7 +44,7 @@ class ForecastChart extends StatelessWidget {
       size: size,
       color: bgColor,
       lineColor: bgColor,
-      background: bgColor.withOpacity(0.1),
+      background: bgColor.withValues(alpha: 0.1),
       yMin: 0.0,
       yMax: 140,
       yArea: [80, 120],

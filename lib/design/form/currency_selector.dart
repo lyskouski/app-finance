@@ -82,7 +82,7 @@ class BaseListSelectorItem extends ListSelectorItem {
               onTap: () => pinItem(context, item),
               child: Icon(
                 CurrencyProvider.isPinned(item) ? Icons.star : Icons.star_border,
-                color: Theme.of(context).colorScheme.primary.withOpacity(0.5),
+                color: Theme.of(context).colorScheme.primary.withValues(alpha: 0.5),
               ),
             ),
           ),

@@ -60,7 +60,7 @@ class DateInputState extends AbstractSelectorState<DateInput> {
   Widget buildContent(BuildContext context) {
     final style = context.textTheme.numberMedium;
     final DateFormat formatterDate = DateFormat.yMd(AppLocale.code);
-    final labelStyle = context.textTheme.tooltipSmall.copyWith(color: style.color?.withOpacity(0.4));
+    final labelStyle = context.textTheme.tooltipSmall.copyWith(color: style.color?.withValues(alpha: 0.4));
     final hintStyle = context.textTheme.tooltipMedium.copyWith(overflow: TextOverflow.ellipsis);
     return Container(
       color: context.colorScheme.fieldBackground,

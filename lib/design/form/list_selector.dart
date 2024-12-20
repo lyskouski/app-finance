@@ -86,8 +86,9 @@ class ListSelectorState<T extends ListSelector, K extends ListSelectorItem> exte
         onFocusChange: (v) => v ? focusController.scrollToFocusedElement(this) : null,
         child: Container(
           width: double.infinity,
-          color:
-              widget.isDisabled ? context.colorScheme.onSurface.withOpacity(0.1) : context.colorScheme.fieldBackground,
+          color: widget.isDisabled
+              ? context.colorScheme.onSurface.withValues(alpha: 0.1)
+              : context.colorScheme.fieldBackground,
           child: LayoutBuilder(builder: (_, constraints) {
             return RowWidget(
               chunk: [null, ThemeHelper.barHeight - ThemeHelper.getIndent()],
