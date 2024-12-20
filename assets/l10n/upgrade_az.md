@@ -2,6 +2,9 @@
 
 _Yeniləmələrin tam siyahısına "İpucu" düyməsindəki "Haqqında" naviqasiya elementi vasitəsilə baxmaq olar._
 
+### 6.1.0
+- Çex (CS) və Rumıniya (RO) dillərinin əlavə edilməsi
+
 ### 6.0.4
 - Valyuta məzənnələrinin formalarının təkmilləşdirilməsi
 

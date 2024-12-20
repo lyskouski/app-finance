@@ -18,6 +18,9 @@ _Úplný seznam aktualizací si můžete prohlédnout v navigační položce „
 - Přidání widgetu na obrazovku / domů pro Android
 - Zlepšení relativních rozpočtů
 
+### 6.1.0
+- Přidání češtiny (CS) a rumunštiny (RO)
+
 ### 5.9.2
 - Oprava grafů: kategorie sloupcových závodů, rozpočet od roku do roku
 
