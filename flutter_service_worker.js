@@ -62,7 +62,7 @@ const RESOURCES = {"flutter.js": "4b2350e14c6650ba82871f60906437ea",
 "assets/assets/l10n/help_metrics_budget_az.md": "71dd74331c3d34ac11b500d1ffca2a9e",
 "assets/assets/l10n/about_account_fa.md": "433b6a50dbcd481b8e87057ba804678f",
 "assets/assets/l10n/terms_of_use_es.md": "09e05d95eb4d3cc3e05dbb41f91158fc",
-"assets/assets/l10n/upgrade_cs.md": "89a7a2b700ff2d6198efe17253f429a1",
+"assets/assets/l10n/upgrade_cs.md": "60ba6c936f5c55891964b38d02a3c9df",
 "assets/assets/l10n/about_account_es.md": "158a1b8f233b6f73e63bf3f050a2154b",
 "assets/assets/l10n/about_budget_pt_BR.md": "5d022ac6a5db22ff473f3532e131de5f",
 "assets/assets/l10n/about_budget_de.md": "31e2b7246dc8f4b6f38d77763e474c28",
@@ -258,8 +258,8 @@ const RESOURCES = {"flutter.js": "4b2350e14c6650ba82871f60906437ea",
 "icons/Icon-512_fz.png": "04dae777b7599834ee94fa0abbcb3291",
 "icons/Icon-maskable-512.png": "7d1365a199f68916503a15ecc4c8f5a0",
 "favicon.png": "6eb0f694702967bb15c471e8c8d3cb12",
-"version.json": "726b2c1e02536e6a0a5f225e28697d36",
-"flutter_bootstrap.js": "5f212859a0d8e1e1f4f39bee8c8b4bbb"};
+"version.json": "62d0501ada3e0c3f4ff35f99d39ee78d",
+"flutter_bootstrap.js": "5e8ae604ca9010a0b851012a51eae660"};
 // The application shell files that are downloaded before a service worker can
 // start.
 const CORE = ["main.dart.js",

@@ -2,6 +2,9 @@
 
 _Úplný seznam aktualizací si můžete prohlédnout v navigační položce „O aplikaci“ na tlačítku „Tipy“._
 
+### 6.1.0
+- Přidání češtiny (CS) a rumunštiny (RO)
+
 ### 6.0.4
 - Vylepšení formulářů směnných kurzů
 
