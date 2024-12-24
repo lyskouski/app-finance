@@ -46,7 +46,7 @@ Bu foydalanuvchilarga o'z mablag'larini osonlikcha boshqarish imkoniyatini berad
   - Turli vaqt jadvallari: haftalik, oylik, yillik
   - Hafta va oyning moslashtirilgan boshlanish kuni
 - Hisob-kitoblar, o'tkazmalar, daromadlar (hisob-kitoblar)
-  - Takroriy to'lovlar (Android uchun uy vidjeti bilan)
+  - Takroriy to'lovlar (uy vidjeti bilan)
 - Maqsadlarni aniqlash
 - Valyuta kurslari, Xulosa uchun standart valyuta
 - Ko'rsatkichlar:

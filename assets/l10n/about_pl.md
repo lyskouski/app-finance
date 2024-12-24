@@ -46,7 +46,7 @@ Dzięki temu użytkownicy mogą bez wysiłku zarządzać swoimi finansami, jedno
   - Różne harmonogramy: tygodniowy, miesięczny, roczny
   - Możliwość dostosowania dnia rozpoczęcia tygodnia i miesiąca
 - Rachunki, przelewy, dochody (faktury)
-  - Płatności cykliczne (z widżetem domowym dla systemu Android)
+  - Płatności cykliczne (z widżetem domowym)
 - Definicja celów
 - Kursy wymiany, domyślna waluta dla podsumowania
 - Metryki: 

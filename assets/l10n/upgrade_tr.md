@@ -18,7 +18,7 @@ _Güncellemelerin tam listesi “İpuçları” düğmesindeki “Hakkında” g
 - Ondalık kesirlerin altındaki para birimleri için değişimlere izin verilmesi
 
 ### 6.0.0
-- Android için ekran / ana sayfa widget'ı ekleme
+- Ekran / ana sayfa widget'ı ekleme
 - Göreceli bütçelerin iyileştirilmesi
 
 ### 5.9.2

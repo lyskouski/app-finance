@@ -19,7 +19,7 @@ pulsante “Suggerimenti”._
 - Permettere gli scambi per le valute al di sotto delle frazioni decimali
 
 ### 6.0.0
-- Aggiunta di un widget per lo schermo / la casa per Android
+- Aggiunta di un widget per lo schermo / la casa
 - Miglioramento dei bilanci relativi
 
 ### 5.9.2

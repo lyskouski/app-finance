@@ -18,7 +18,7 @@ _A lista completa de actualizações pode ser consultada através do item de nav
 - Permitir trocas para moedas abaixo das fracções decimais
 
 ### 6.0.0
-- Adicionar widget de ecrã / casa para Android
+- Adicionar widget de ecrã / casa
 - Melhorar os orçamentos relativos
 
 ### 5.9.2

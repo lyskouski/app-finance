@@ -46,7 +46,7 @@ Care permite utilizatorilor să își gestioneze finanțele fără efort, asigur
   - Cronologie diferită: săptămânală, lunară, anuală
   - Zi de început a săptămânii și a lunii personalizabilă
 - Facturi, transferuri, venituri (facturi)
-  - Plăți recurente (cu un widget de acasă pentru Android)
+  - Plăți recurente (cu un widget de pornire)
 - Definirea obiectivelor
 - Ratele de schimb, Moneda implicită pentru rezumat
 - Metrici: 

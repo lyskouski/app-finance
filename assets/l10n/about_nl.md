@@ -46,7 +46,7 @@ Dat stelt gebruikers in staat om moeiteloos hun financiën te beheren en zorgt e
   - Verschillende tijdlijn: wekelijks, maandelijks, jaarlijks
   - Aanpasbare startdag van de week en maand
 - Rekeningen, overschrijvingen, inkomsten (facturen)
-  - Terugkerende betalingen (met een widget voor Android)
+  - Terugkerende betalingen (met een widget)
 - Doelen definiëren
 - Wisselkoersen, standaardvaluta voor overzicht
 - Metriek: 

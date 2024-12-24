@@ -18,7 +18,7 @@ _Úplný seznam aktualizací si můžete prohlédnout v navigační položce „
 - Povolení směn pro měny pod desetinnými zlomky
 
 ### 6.0.0
-- Přidání widgetu na obrazovku / domů pro Android
+- Přidání widgetu na obrazovku / domů
 - Zlepšení relativních rozpočtů
 
 ### 6.1.0

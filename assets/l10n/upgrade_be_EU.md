@@ -18,7 +18,7 @@ _Poŭny spis abnaŭlieńniaŭ možna prahliadzieć u navihacyjnym punkcie «Ab D
 - Dazvalieńnie abmienu na valiuty nižej dziesiatkovych drobaŭ
 
 ### 6.0.0
-- Dadańnie vidžeta ekrana / doma dlia Android
+- Dadańnie vidžeta ekrana / doma
 - Paliapšeńnie adnosnych biudžetaŭ
 
 ### 5.9.2

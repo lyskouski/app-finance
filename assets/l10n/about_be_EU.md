@@ -46,7 +46,7 @@ zastaniecca ŭ baku.
   - Rozny hrafik: štotydzień, štomiesiac, štohod
   - Naladžvaĺny dzień pačatku tydnia i miesiaca
 - Rachunki, pieraklady, dachody (faktury) 
-  - Pieryjadyčnyja placiažy (z chatnim vidžetam dlia Android)
+  - Pieryjadyčnyja placiažy (z chatnim vidžetam)
 - Vyznačeńnie metaŭ - Kursy valiut, valiuta pa zmaŭčańni dlia zvodki 
 - Mietryki: 
   - Biudžet: 
