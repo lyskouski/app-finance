@@ -18,7 +18,7 @@ _De volledige lijst met updates kan worden bekeken via het navigatie-item “Ove
 - Inwisselen van valuta onder decimale fracties toestaan
 
 ### 6.0.0
-- Scherm / thuiswidget voor Android toevoegen
+- Scherm / thuiswidget toevoegen
 - Relatieve budgetten verbeteren
 
 ### 5.9.2

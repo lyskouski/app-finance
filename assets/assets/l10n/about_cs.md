@@ -46,7 +46,7 @@ Která uživatelům umožní bez námahy spravovat své finance a zároveň zaji
   - Různé časové osy: týdenní, měsíční, roční
   - Přizpůsobitelný počáteční den týdne a měsíce
 - Účty, převody, příjmy (faktury)
-  - Opakující se platby (s widgetem na domovské obrazovce pro Android)
+  - Opakující se platby (s widgetem na domovské obrazovce)
 - Definice cílů
 - Směnné kurzy, výchozí měna pro shrnutí
 - Metriky: 

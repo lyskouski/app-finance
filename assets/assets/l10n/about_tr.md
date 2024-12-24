@@ -46,7 +46,7 @@ Bu, kullanıcıların mali durumlarını zahmetsizce yönetmelerini sağlarken k
   - Farklı zaman çizelgesi: haftalık, aylık, yıllık
   - Haftanın ve ayın özelleştirilebilir başlangıç ​​günü
 - Faturalar, Transferler, Gelirler (Faturalar)
-  - Yinelenen Ödemeler (Android için bir ana widget ile)
+  - Yinelenen Ödemeler (ana sayfa widget'ı ile)
 - Hedefler Tanım
 - Döviz kurları, Özet için Varsayılan Para Birimi
 - Metrikler: 

@@ -18,7 +18,7 @@ _Yeniləmələrin tam siyahısına "İpucu" düyməsindəki "Haqqında" naviqasi
 - Onluq fraksiyalardan aşağı olan valyutalar üçün mübadilələrə icazə verilir
 
 ### 6.0.0
-- Android üçün ekran / ev vidjetinin əlavə edilməsi
+- Ekran / ev vidjetinin əlavə edilməsi
 - Nisbi büdcələrin təkmilləşdirilməsi
 
 ### 5.9.2

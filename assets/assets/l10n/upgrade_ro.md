@@ -18,7 +18,7 @@ _Lista completă a actualizărilor poate fi vizualizată prin intermediul elemen
 - Permiterea schimburilor pentru monede sub fracții zecimale
 
 ### 6.0.0
-- Adăugarea ecranului / widgetului de acasă pentru Android
+- Adăugarea ecranului / widgetului de pornire
 - Îmbunătățirea bugetelor relative
 
 ### 5.9.2

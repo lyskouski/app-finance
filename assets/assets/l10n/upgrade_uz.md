@@ -18,7 +18,7 @@ _Yangilanishlarning toʻliq roʻyxatini “Maslahat” tugmasidagi “Haqida” 
 - O'nlik kasrdan past bo'lgan valyutalarni almashtirishga ruxsat berish
 
 ### 6.0.0
-- Android uchun ekran / uy vidjetini qo'shish
+- Ekran / uy vidjeti qo'shilmoqda
 - Nisbiy byudjetlarni yaxshilash
 
 ### 5.9.2

@@ -18,7 +18,7 @@ _Pełną listę aktualizacji można wyświetlić za pomocą elementu nawigacyjne
 - Umożliwienie wymiany walut poniżej ułamków dziesiętnych
 
 ### 6.0.0
-- Dodanie ekranu / widżetu domowego dla systemu Android
+- Dodanie ekranu / widżetu domowego
 - Poprawa budżetów względnych
 
 ### 5.9.2

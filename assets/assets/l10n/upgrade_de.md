@@ -18,7 +18,7 @@ _Die vollständige Liste der Updates kann über den Navigationspunkt "Über" auf
 - Erlaubt den Umtausch von Währungen unterhalb von Dezimalbrüchen
 
 ### 6.0.0
-- Hinzufügen von Bildschirm-/Home-Widgets für Android
+- Hinzufügen von Bildschirm-/Home-Widgets
 - Verbesserung der relativen Budgets
 
 ### 5.9.2

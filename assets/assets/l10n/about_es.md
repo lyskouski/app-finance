@@ -46,7 +46,7 @@ Que permita a los usuarios gestionar sus finanzas sin esfuerzo, garantizando al 
   - Diferentes cronogramas: semanal, mensual, anual
   - Día de inicio de la semana y del mes personalizable
 - Facturas, Transferencias, Ingresos (Facturas)
-  - Pagos periódicos (con un widget de inicio para Android)
+  - Pagos periódicos (con un widget de inicio)
 - Definición de Metas
 - Tipos de cambio, Moneda por defecto para el resumen
 - Métricas: 

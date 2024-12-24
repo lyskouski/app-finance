@@ -46,7 +46,7 @@ Isto permite aos utilizadores gerir as suas finanças sem esforço, garantindo q
   - Horário diferente: semanal, mensal, anual
   - Dia de início da semana e mês personalizável
 - Contas, Transferências, Rendimentos (Facturas)
-  - Pagamentos recorrentes (com um widget de início para Android)
+  - Pagamentos recorrentes (com um widget de início)
 - Definição de objectivos
 - Taxas de câmbio, Moeda por defeito para o Resumo
 - Métricas: 

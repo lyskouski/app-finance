@@ -18,7 +18,7 @@ _La liste complète des mises à jour peut être consultée via l'élément de n
 - Permettre les échanges pour les monnaies en dessous des fractions décimales
 
 ### 6.0.0
-- Ajout d'un widget écran / maison pour Android
+- Ajout d'un widget écran / maison
 - Amélioration des budgets relatifs
 
 ### 5.9.2

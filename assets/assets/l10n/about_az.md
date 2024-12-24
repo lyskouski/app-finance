@@ -46,7 +46,7 @@ Bu, istifadəçilərə heç kimin geridə qalmamasını təmin etməklə öz mal
   - Fərqli qrafik: həftəlik, aylıq, illik
   - Həftənin və ayın fərdiləşdirilə bilən başlanğıc günü
 - Hesablar, köçürmələr, gəlirlər (qaimə-fakturalar)
-  - Təkrarlanan ödənişlər (Android üçün ev widgetı ilə)
+  - Təkrarlanan ödənişlər (ev vidceti ilə)
 - Məqsədlərin Tərifi
 - Valyuta məzənnələri, Xülasə üçün Defolt Valyuta
 - Metriklər:

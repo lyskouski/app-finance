@@ -46,7 +46,7 @@ Che permetta agli utenti di gestire le proprie finanze senza sforzo, garantendo 
   - Cronologia diversa: settimanale, mensile, annuale
   - Giorno di inizio della settimana e del mese personalizzabili
 - Bollette, trasferimenti, entrate (fatture)
-  - Pagamenti ricorrenti (con un widget per Android)
+  - Pagamenti ricorrenti (con un widget)
 - Definizione degli obiettivi
 - Tassi di cambio, Valuta predefinita per il riepilogo
 - Metriche: 
