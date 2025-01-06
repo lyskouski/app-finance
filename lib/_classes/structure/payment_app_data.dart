@@ -3,7 +3,7 @@
 
 import 'package:app_finance/_classes/structure/abstract_app_data.dart';
 import 'package:app_finance/_classes/storage/app_data.dart';
-import 'package:app_finance/_configs/budget_type.dart';
+import 'package:app_finance/_configs/automation_type.dart';
 
 class PaymentAppData extends AbstractAppData {
   Map<String, dynamic> data;
@@ -53,5 +53,5 @@ class PaymentAppData extends AbstractAppData {
       };
 
   @override
-  String get description => BudgetType.getLabel(title);
+  String get description => AutomationType.getLabel(title);
 }

@@ -31,6 +31,7 @@
         }
     },
     "automationHeadline": "Automation",
+    "automationTypeDays": "after some days",
     "backTooltip": "Return back",
     "balance": "Actual Balance",
     "balanceDate": "Balance Date Update",

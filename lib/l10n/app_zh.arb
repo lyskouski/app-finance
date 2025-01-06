@@ -31,6 +31,7 @@
         }
     },
     "automationHeadline": "自动化",
+    "automationTypeDays": "过些日子",
     "backTooltip": "返回",
     "balance": "实际余额",
     "balanceDate": "余额日期更新",

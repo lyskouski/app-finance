@@ -5,7 +5,7 @@ import 'package:app_finance/_classes/controller/focus_controller.dart';
 import 'package:app_finance/_classes/herald/app_design.dart';
 import 'package:app_finance/_classes/herald/app_locale.dart';
 import 'package:app_finance/_classes/structure/payment_app_data.dart';
-import 'package:app_finance/_configs/budget_type.dart';
+import 'package:app_finance/_configs/automation_type.dart';
 import 'package:app_finance/_configs/payment_type.dart';
 import 'package:app_finance/_configs/screen_helper.dart';
 import 'package:app_finance/_configs/theme_helper.dart';
@@ -91,7 +91,7 @@ class PaymentAddPageState<T extends PaymentAddPage> extends AbstractAddPageState
   void updateStorage() {
     final values = getValues();
     state.add(PaymentAppData(
-      title: intervalType ?? AppBudgetType.month.name,
+      title: intervalType ?? AppAutomationType.month.name,
       data: values.toFile(),
       updatedAt: values.createdAt,
     ));
@@ -114,7 +114,7 @@ class PaymentAddPageState<T extends PaymentAddPage> extends AbstractAddPageState
               title: AppLocale.labels.paymentType,
               tooltip: AppLocale.labels.paymentType,
               showError: hasErrors && intervalType == null,
-              options: BudgetType.getList(),
+              options: AutomationType.getList(),
               onChange: (value) => setState(() => intervalType = value),
             ),
             InputWrapper.select(

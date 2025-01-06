@@ -31,6 +31,7 @@
         }
     },
     "automationHeadline": "Avtomatlashtirish",
+    "automationTypeDays": "bir necha kundan keyin",
     "backTooltip": "Orqaga qayt",
     "balance": "Haqiqiy balans",
     "balanceDate": "Balans sanasini yangilash",

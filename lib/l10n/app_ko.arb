@@ -31,6 +31,7 @@
         }
     },
     "automationHeadline": "자동화",
+    "automationTypeDays": "며칠 후",
     "backTooltip": "뒤로 돌아가기",
     "balance": "실제 잔액",
     "balanceDate": "잔액 날짜 업데이트",

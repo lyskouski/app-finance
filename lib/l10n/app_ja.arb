@@ -31,6 +31,7 @@
         }
     },
     "automationHeadline": "オートメーション",
+    "automationTypeDays": "何日かして",
     "backTooltip": "戻る",
     "balance": "実際の残高",
     "balanceDate": "残高更新日",

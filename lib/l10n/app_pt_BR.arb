@@ -31,6 +31,7 @@
         }
     },
     "automationHeadline": "Automação",
+    "automationTypeDays": "depois de alguns dias",
     "backTooltip": "Retorno",
     "balance": "Saldo real",
     "balanceDate": "Atualização da data do saldo",

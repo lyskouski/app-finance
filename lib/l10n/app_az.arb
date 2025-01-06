@@ -31,6 +31,7 @@
         }
     },
     "automationHeadline": "Avtomatlaşdırma",
+    "automationTypeDays": "bir neçə gündən sonra",
     "backTooltip": "Geri qayıt",
     "balance": "Faktiki Balans",
     "balanceDate": "Balans Tarixi Yeniləmə",

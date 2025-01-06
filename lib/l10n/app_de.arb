@@ -31,6 +31,7 @@
         }
     },
     "automationHeadline": "Automatisierung",
+    "automationTypeDays": "nach einigen Tagen",
     "backTooltip": "Rückgabe",
     "balance": "Aktueller Saldo",
     "balanceDate": "Datum der Aktualisierung des Saldos",
