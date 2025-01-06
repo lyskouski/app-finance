@@ -87,8 +87,13 @@ class ExpensesTabState<T extends ExpensesTab> extends State<T> {
     createdAt = widget.createdAt;
     accountCurrency = widget.state.getByUuid(account ?? '')?.currency;
     budgetCurrency = widget.state.getByUuid(budget ?? '')?.currency;
-    exchange = ExchangeController({},
-        store: widget.state, targetController: bill, target: currency, source: [accountCurrency, budgetCurrency]);
+    exchange = ExchangeController(
+      {},
+      store: widget.state,
+      targetController: bill,
+      target: currency,
+      source: [accountCurrency, budgetCurrency, Exchange.defaultCurrency],
+    );
 
     widget.callback((
       buildButton: buildButton,
@@ -220,7 +225,7 @@ class ExpensesTabState<T extends ExpensesTab> extends State<T> {
                 indent: indent,
                 target: currency,
                 controller: exchange,
-                source: [accountCurrency, budgetCurrency],
+                source: [accountCurrency, budgetCurrency, Exchange.defaultCurrency],
               ),
               InputWrapper.text(
                 title: AppLocale.labels.description,

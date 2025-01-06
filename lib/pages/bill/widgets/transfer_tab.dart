@@ -216,7 +216,7 @@ class TransferTabState<T extends TransferTab> extends State<T> {
                 indent: indent,
                 target: currency,
                 controller: exchange,
-                source: [accountFromCurrency, accountToCurrency],
+                source: [accountFromCurrency, accountToCurrency, Exchange.defaultCurrency],
               ),
               InputWrapper.text(
                 title: AppLocale.labels.description,
