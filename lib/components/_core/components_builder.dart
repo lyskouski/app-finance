@@ -72,8 +72,8 @@ class ComponentsBuilder extends StatelessWidget {
                   end: Size(start.width + 1, start.height + 1),
                   order: 0,
                   child: DragTarget<ComponentData>(
-                    onWillAccept: (_) => true,
-                    onAccept: (change) => resize(change, start),
+                    onWillAcceptWithDetails: (_) => true,
+                    onAcceptWithDetails: (change) => resize(change.data, start),
                     builder: (context, candidateData, rejectedData) => Container(
                       decoration: BoxDecoration(
                         border: Border.all(color: context.colorScheme.secondary.withValues(alpha: 0.1)),
