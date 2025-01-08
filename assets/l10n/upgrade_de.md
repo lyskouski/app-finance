@@ -2,6 +2,9 @@
 
 _Die vollständige Liste der Updates kann über den Navigationspunkt "Über" auf der Schaltfläche "Hinweise" eingesehen werden._
 
+### 6.2.0
+- Wiederkehrende Zahlungen nach Benutzerintervall verlängern
+
 ### 6.1.0
 - Hinzufügen der Sprachen Tschechisch (CS) und Rumänisch (RO)
 

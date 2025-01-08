@@ -2,6 +2,9 @@
 
 _A lista completa de actualizações pode ser consultada através do item de navegação "Acerca" no botão "Sugestões"._
 
+### 6.2.0
+- Extensão dos pagamentos recorrentes por intervalo de utilizador
+
 ### 6.1.0
 - Adição dos idiomas checo (CS) e romeno (RO)
 

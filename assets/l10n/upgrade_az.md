@@ -2,6 +2,9 @@
 
 _Yeniləmələrin tam siyahısına "İpucu" düyməsindəki "Haqqında" naviqasiya elementi vasitəsilə baxmaq olar._
 
+### 6.2.0
+- İstifadəçi intervalı ilə təkrarlanan ödənişlərin uzadılması
+
 ### 6.1.0
 - Çex (CS) və Rumıniya (RO) dillərinin əlavə edilməsi
 

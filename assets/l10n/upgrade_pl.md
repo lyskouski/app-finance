@@ -2,6 +2,9 @@
 
 _Pełną listę aktualizacji można wyświetlić za pomocą elementu nawigacyjnego "O aplikacji" na przycisku "Wskazówki"._
 
+### 6.2.0
+- Rozszerzenie płatności cyklicznych o interwał użytkownika
+
 ### 6.1.0
 - Dodanie języków czeskiego (CS) i rumuńskiego (RO)
 
