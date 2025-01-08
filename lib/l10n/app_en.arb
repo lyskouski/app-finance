@@ -15,6 +15,12 @@
     "addBudgetTooltip": "Add new Budget Category",
     "addGoalTooltip": "Add new Goal",
     "addMainTooltip": "Add Bill , Income or Transfer",
+    "afterNDays": "after {value} days",
+    "@afterNDays": {
+        "value": {
+            "type": "int"
+        }
+    },
     "appBuild": "Build: {build}",
     "@appBuild": {
         "build": {

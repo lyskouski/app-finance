@@ -15,6 +15,12 @@
     "addBudgetTooltip": "Ajouter une nouvelle catégorie budgétaire",
     "addGoalTooltip": "Ajouter un nouvel objectif",
     "addMainTooltip": "Ajouter une facture, un revenu ou un transfert",
+    "afterNDays": "après {value} jours",
+    "@afterNDays": {
+        "value": {
+            "type": "int"
+        }
+    },
     "appBuild": "Construire : {build}",
     "@appBuild": {
         "build": {

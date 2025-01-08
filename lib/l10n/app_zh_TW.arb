@@ -15,6 +15,12 @@
     "addBudgetTooltip": "新增預算類別",
     "addGoalTooltip": "新增目標",
     "addMainTooltip": "新增帳單、收入或轉帳",
+    "afterNDays": "{value}天後",
+    "@afterNDays": {
+        "value": {
+            "type": "int"
+        }
+    },
     "appBuild": "建立：{build}",
     "@appBuild": {
         "build": {

@@ -15,6 +15,12 @@
     "addBudgetTooltip": "नई बजट श्रेणी जोड़ें",
     "addGoalTooltip": "नया लक्ष्य जोड़ें",
     "addMainTooltip": "बिल, आय या स्थानांतरण जोड़ें",
+    "afterNDays": "{value} दिनों के बाद",
+    "@afterNDays": {
+        "value": {
+            "type": "int"
+        }
+    },
     "appBuild": "निर्माण: {build}",
     "@appBuild": {
         "build": {

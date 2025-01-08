@@ -15,6 +15,12 @@
     "addBudgetTooltip": "새 예산 카테고리 추가",
     "addGoalTooltip": "새 목표 추가",
     "addMainTooltip": "청구서, 수입 또는 이체 추가",
+    "afterNDays": "{value}일 후",
+    "@afterNDays": {
+        "value": {
+            "type": "int"
+        }
+    },
     "appBuild": "빌드: {build}",
     "@appBuild": {
         "build": {

@@ -30,7 +30,9 @@ class PaymentsController {
         obj.updatedAt = item.updatedAt;
         obj.payment = item.uuid;
         state.add(obj);
-        if (item.title == AppAutomationType.week.name) {
+        if (item.title == AppAutomationType.days.name) {
+          item.updatedAt = item.updatedAt.add(Duration(days: item.days > 0 ? item.days : 1));
+        } else if (item.title == AppAutomationType.week.name) {
           item.updatedAt = item.updatedAt.add(const Duration(days: 7));
         } else if (item.title == AppAutomationType.year.name) {
           item.updatedAt = item.updatedAt.getNextYear();

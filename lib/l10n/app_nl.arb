@@ -15,6 +15,12 @@
     "addBudgetTooltip": "Nieuwe budgetcategorie toevoegen",
     "addGoalTooltip": "Nieuw doel toevoegen",
     "addMainTooltip": "Rekening, inkomsten of overboeking toevoegen",
+    "afterNDays": "na {value} dagen",
+    "@afterNDays": {
+        "value": {
+            "type": "int"
+        }
+    },
     "appBuild": "Samenstellen: {build}",
     "@appBuild": {
         "build": {

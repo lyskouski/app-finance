@@ -15,6 +15,12 @@
     "addBudgetTooltip": "إضافة فئة ميزانية جديدة",
     "addGoalTooltip": "إضافة هدف جديد",
     "addMainTooltip": "إضافة فاتورة أو دخل أو تحويل",
+    "afterNDays": "بعد {value} أيام",
+    "@afterNDays": {
+        "value": {
+            "type": "int"
+        }
+    },
     "appBuild": "بناء {build}",
     "@appBuild": {
         "build": {

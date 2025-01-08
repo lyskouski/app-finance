@@ -15,6 +15,12 @@
     "addBudgetTooltip": "Yangi byudjet toifasini qo'shing",
     "addGoalTooltip": "Yangi maqsad qo'shing",
     "addMainTooltip": "Hisob-kitob, daromad yoki pul o'tkazmasini qo'shing",
+    "afterNDays": "{value} kundan keyin",
+    "@afterNDays": {
+        "value": {
+            "type": "int"
+        }
+    },
     "appBuild": "Qurilish: {build}",
     "@appBuild": {
         "build": {

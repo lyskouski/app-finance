@@ -15,6 +15,12 @@
     "addBudgetTooltip": "添加新的预算类别",
     "addGoalTooltip": "添加新目标",
     "addMainTooltip": "添加账单,收入或转账",
+    "afterNDays": "{value}天后",
+    "@afterNDays": {
+        "value": {
+            "type": "int"
+        }
+    },
     "appBuild": "构建: {build}",
     "@appBuild": {
         "build": {

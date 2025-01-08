@@ -15,6 +15,12 @@
     "addBudgetTooltip": "Yeni Büdcə Kateqoriyası əlavə edin",
     "addGoalTooltip": "Yeni Məqsəd əlavə edin",
     "addMainTooltip": "Fatural, gəlir və ya köçürmə əlavə edin",
+    "afterNDays": "{value} gündən sonra",
+    "@afterNDays": {
+        "value": {
+            "type": "int"
+        }
+    },
     "appBuild": "Qurmaq: {build}",
     "@appBuild": {
         "build": {

@@ -10,6 +10,7 @@ import 'package:app_finance/_configs/payment_type.dart';
 import 'package:app_finance/_configs/screen_helper.dart';
 import 'package:app_finance/_configs/theme_helper.dart';
 import 'package:app_finance/design/button/full_sized_button_widget.dart';
+import 'package:app_finance/design/form/simple_input.dart';
 import 'package:app_finance/design/wrapper/input_wrapper.dart';
 import 'package:app_finance/design/wrapper/single_scroll_wrapper.dart';
 import 'package:app_finance/pages/_interfaces/abstract_add_page.dart';
@@ -30,6 +31,7 @@ class PaymentAddPageState<T extends PaymentAddPage> extends AbstractAddPageState
   bool hasErrors = false;
   String? itemType;
   String? intervalType;
+  late TextEditingController days;
   dynamic item;
   DateTime? updatedAt;
   final GlobalKey<ExpensesTabState> expensesTabKey = GlobalKey();
@@ -39,12 +41,14 @@ class PaymentAddPageState<T extends PaymentAddPage> extends AbstractAddPageState
   @override
   void initState() {
     focus = FocusController();
+    days = TextEditingController();
     super.initState();
   }
 
   @override
   void dispose() {
     focus.dispose();
+    days.dispose();
     super.dispose();
   }
 
@@ -68,7 +72,9 @@ class PaymentAddPageState<T extends PaymentAddPage> extends AbstractAddPageState
 
   @override
   bool hasFormErrors() {
-    setState(() => hasErrors = itemType == null || intervalType == null);
+    setState(() => hasErrors = itemType == null ||
+        intervalType == null ||
+        (intervalType == AppAutomationType.days.name && (days.text.isEmpty || days.text == '0')));
     return hasErrors;
   }
 
@@ -93,6 +99,7 @@ class PaymentAddPageState<T extends PaymentAddPage> extends AbstractAddPageState
     state.add(PaymentAppData(
       title: intervalType ?? AppAutomationType.month.name,
       data: values.toFile(),
+      days: int.tryParse(days.text) ?? 1,
       updatedAt: values.createdAt,
     ));
   }
@@ -117,6 +124,16 @@ class PaymentAddPageState<T extends PaymentAddPage> extends AbstractAddPageState
               options: AutomationType.getList(),
               onChange: (value) => setState(() => intervalType = value),
             ),
+            if (intervalType == AppAutomationType.days.name)
+              InputWrapper.text(
+                isRequired: true,
+                controller: days,
+                title: AppLocale.labels.automationTypeDays,
+                tooltip: AppLocale.labels.automationTypeDays,
+                showError: hasErrors && (days.text.isEmpty || days.text == '0'),
+                inputType: const TextInputType.numberWithOptions(),
+                formatter: [SimpleInputFormatter.filterInt],
+              ),
             InputWrapper.select(
               isRequired: true,
               value: itemType,

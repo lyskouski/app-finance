@@ -15,6 +15,12 @@
     "addBudgetTooltip": "Adăugați o nouă categorie bugetară",
     "addGoalTooltip": "Adăugați un nou obiectiv",
     "addMainTooltip": "Adaugă factură , venit sau transfer",
+    "afterNDays": "după {value} zile",
+    "@afterNDays": {
+        "value": {
+            "type": "int"
+        }
+    },
     "appBuild": "Construiește: {build}",
     "@appBuild": {
         "build": {

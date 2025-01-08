@@ -15,6 +15,12 @@
     "addBudgetTooltip": "Dadać Katehoryju Biudžetu",
     "addGoalTooltip": "Dadać Novuju Metu",
     "addMainTooltip": "Dadać Ček , Prybytak abo Pieravod",
+    "afterNDays": "praz {value} dzion",
+    "@afterNDays": {
+        "value": {
+            "type": "int"
+        }
+    },
     "appBuild": "Zborka: {build}",
     "@appBuild": {
         "build": {
