@@ -2,6 +2,9 @@
 
 _Poŭny spis abnaŭlieńniaŭ možna prahliadzieć u navihacyjnym punkcie «Ab Dadatku» na knopcy «Padkazki»._ 
 
+### 6.2.0
+- Pašyreńnie pieryjadyčnych placiažoŭ pa intervalach karystaĺnikaŭ
+
 ### 6.1.0
 - Dadańnie češskaj (CS) i rumynskaj (RO) moŭ
 

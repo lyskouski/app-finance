@@ -206,7 +206,7 @@ digraph G {
   }
   {
     rank = same; "_configs";
-    _configs_ [label="<0>_CONFIGS_|<custom_color_scheme>custom_color_scheme|<account_type>account_type|<payment_type>payment_type|<screen_helper>screen_helper|<firebase_options>firebase_options|<budget_type>budget_type|<design_type>design_type|<custom_text_theme>custom_text_theme|<theme_helper>theme_helper",fillcolor="silver:white", gradientangle=240, style="filled"];
+    _configs_ [label="<0>_CONFIGS_|<custom_color_scheme>custom_color_scheme|<account_type>account_type|<payment_type>payment_type|<screen_helper>screen_helper|<firebase_options>firebase_options|<budget_type>budget_type|<design_type>design_type|<custom_text_theme>custom_text_theme|<theme_helper>theme_helper|<automation_type>automation_type",fillcolor="silver:white", gradientangle=240, style="filled"];
   }
   {
     rank = same; "_mixins";
@@ -309,6 +309,7 @@ digraph G {
   controller -> herald [color="green"];
   structure_currency -> structure [color="green"];
   structure_currency -> storage [color="green"];
+  structure -> herald [color="green"];
   structure -> structure [color="green"];
   structure -> storage [color="green"];
   structure -> _configs_ [color="green"];
@@ -727,6 +728,7 @@ digraph G {
   automation -> structure [color="#F0F0F050"];
   automation -> _configs_ [color="#F0F0F050"];
   automation -> button [color="#F0F0F050"];
+  automation -> form [color="#F0F0F050"];
   automation -> wrapper [color="#F0F0F050"];
   automation -> _interfaces [color="#F0F0F050"];
   automation -> bill_widgets [color="#F0F0F050"];
@@ -1264,6 +1266,8 @@ digraph G {
   _configs_ -> _configs_ [color="green"];
   _configs_ -> herald [color="green"];
   _configs_ -> _configs_ [color="green"];
+  _configs_ -> herald [color="green"];
+  _configs_ -> form [color="green"];
   _mixins_ -> storage [color="green"];
 
   file -> herald [color="green"];

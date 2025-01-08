@@ -2,6 +2,9 @@
 
 _A lista completa de atualizações pode ser visualizada no item de navegação "Sobre" no botão "Dicas"._
 
+### 6.2.0
+- Extensão de pagamentos recorrentes por intervalo de usuário
+
 ### 6.1.0
 - Adição dos idiomas tcheco (CS) e romeno (RO)
 

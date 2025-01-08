@@ -2,6 +2,9 @@
 
 _La liste complète des mises à jour peut être consultée via l'élément de navigation "À propos" du bouton "Conseils"._
 
+### 6.2.0
+- Extension des paiements récurrents par intervalle d'utilisateur
+
 ### 6.1.0
 - Ajout des langues tchèque (CS) et roumaine (RO)
 
