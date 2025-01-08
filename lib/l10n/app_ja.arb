@@ -15,6 +15,12 @@
     "addBudgetTooltip": "新しい予算カテゴリーを追加する",
     "addGoalTooltip": "新しい目標の追加",
     "addMainTooltip": "請求書、収入または送金を追加する",
+    "afterNDays": "{value}日後",
+    "@afterNDays": {
+        "value": {
+            "type": "int"
+        }
+    },
     "appBuild": "ビルドする {build}",
     "@appBuild": {
         "build": {
@@ -31,6 +37,7 @@
         }
     },
     "automationHeadline": "オートメーション",
+    "automationTypeDays": "何日かして",
     "backTooltip": "戻る",
     "balance": "実際の残高",
     "balanceDate": "残高更新日",

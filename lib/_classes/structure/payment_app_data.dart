@@ -1,12 +1,14 @@
 // Copyright 2024 The terCAD team. All rights reserved.
 // Use of this source code is governed by a CC BY-NC-ND 4.0 license that can be found in the LICENSE file.
 
+import 'package:app_finance/_classes/herald/app_locale.dart';
 import 'package:app_finance/_classes/structure/abstract_app_data.dart';
 import 'package:app_finance/_classes/storage/app_data.dart';
-import 'package:app_finance/_configs/budget_type.dart';
+import 'package:app_finance/_configs/automation_type.dart';
 
 class PaymentAppData extends AbstractAppData {
   Map<String, dynamic> data;
+  int days;
 
   PaymentAppData({
     required super.title,
@@ -14,6 +16,7 @@ class PaymentAppData extends AbstractAppData {
     super.uuid,
     super.updatedAt,
     super.hidden,
+    this.days = 1,
   });
 
   @override
@@ -30,6 +33,7 @@ class PaymentAppData extends AbstractAppData {
       updatedAt: super.updatedAt,
       hidden: super.hidden,
       data: data,
+      days: days,
     );
   }
 
@@ -40,6 +44,7 @@ class PaymentAppData extends AbstractAppData {
       updatedAt: DateTime.parse(json['updatedAt']),
       hidden: json['hidden'],
       data: json['data'],
+      days: json['days'] ?? 1,
     );
   }
 
@@ -50,8 +55,10 @@ class PaymentAppData extends AbstractAppData {
         'updatedAt': updatedAt.toIso8601String(),
         'hidden': hidden,
         'data': data,
+        'days': days,
       };
 
   @override
-  String get description => BudgetType.getLabel(title);
+  String get description =>
+      title == AppAutomationType.days.name ? AppLocale.labels.afterNDays(days) : AutomationType.getLabel(title);
 }

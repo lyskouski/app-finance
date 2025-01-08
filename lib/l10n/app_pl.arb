@@ -15,6 +15,12 @@
     "addBudgetTooltip": "Dodaj nową kategorię budżetu",
     "addGoalTooltip": "Dodaj nowy cel",
     "addMainTooltip": "Dodaj rachunek, dochód lub przelew",
+    "afterNDays": "po {value} dniach",
+    "@afterNDays": {
+        "value": {
+            "type": "int"
+        }
+    },
     "appBuild": "Utwórz: {build}",
     "@appBuild": {
         "build": {
@@ -31,6 +37,7 @@
         }
     },
     "automationHeadline": "Automatyzacja",
+    "automationTypeDays": "po kilku dniach",
     "backTooltip": "Powrót",
     "balance": "Rzeczywiste saldo",
     "balanceDate": "Data aktualizacji salda",

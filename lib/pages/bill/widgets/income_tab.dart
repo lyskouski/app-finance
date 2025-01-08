@@ -71,8 +71,13 @@ class IncomeTabState<T extends IncomeTab> extends State<IncomeTab> {
     amount = TextEditingController(text: widget.amount != null ? widget.amount.toString() : '');
     description = TextEditingController(text: widget.description);
     accountCurrency = widget.state.getByUuid(account ?? '')?.currency;
-    exchange = ExchangeController({},
-        store: widget.state, targetController: amount, target: currency, source: [accountCurrency]);
+    exchange = ExchangeController(
+      {},
+      store: widget.state,
+      targetController: amount,
+      target: currency,
+      source: [accountCurrency, Exchange.defaultCurrency],
+    );
 
     widget.callback((
       buildButton: buildButton,
@@ -197,7 +202,7 @@ class IncomeTabState<T extends IncomeTab> extends State<IncomeTab> {
                 indent: indent,
                 target: currency,
                 controller: exchange,
-                source: [accountCurrency],
+                source: [accountCurrency, Exchange.defaultCurrency],
               ),
               InputWrapper.text(
                 title: AppLocale.labels.description,

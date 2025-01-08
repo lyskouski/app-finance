@@ -9,7 +9,7 @@ import 'package:app_finance/_classes/structure/bill_app_data.dart';
 import 'package:app_finance/_classes/structure/invoice_app_data.dart';
 import 'package:app_finance/_classes/structure/navigation/app_route.dart';
 import 'package:app_finance/_classes/structure/payment_app_data.dart';
-import 'package:app_finance/_configs/budget_type.dart';
+import 'package:app_finance/_configs/automation_type.dart';
 import 'package:app_finance/_configs/screen_helper.dart';
 import 'package:app_finance/_configs/theme_helper.dart';
 import 'package:app_finance/_ext/data_ext.dart';
@@ -40,7 +40,7 @@ class PaymentViewPageState extends AbstractPageState<PaymentViewPage> {
   String getButtonName() => '';
 
   @override
-  String getTitle() => BudgetType.getLabel((state.getByUuid(widget.uuid) as PaymentAppData).title);
+  String getTitle() => AutomationType.getLabel((state.getByUuid(widget.uuid) as PaymentAppData).title);
 
   @override
   Widget buildButton(BuildContext context, BoxConstraints constraints) {

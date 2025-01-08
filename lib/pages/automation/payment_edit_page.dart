@@ -35,6 +35,7 @@ class PaymentEditPageState extends PaymentAddPageState<PaymentEditPage> {
         uuid: widget.uuid,
         title: intervalType ?? AppBudgetType.month.name,
         data: values.toFile(),
+        days: int.tryParse(days.text) ?? 1,
         updatedAt: values.createdAt,
       ),
     );
@@ -49,6 +50,7 @@ class PaymentEditPageState extends PaymentAddPageState<PaymentEditPage> {
             intervalType = payment.title;
             itemType = AppPaymentType.bill.name;
             updatedAt = payment.updatedAt;
+            days.text = payment.days.toString();
             if (item is InvoiceAppData) {
               itemType = (item as InvoiceAppData).accountFrom == null
                   ? AppPaymentType.invoice.name

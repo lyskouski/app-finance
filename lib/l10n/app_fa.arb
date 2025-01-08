@@ -15,6 +15,12 @@
     "addBudgetTooltip": "اضافه کردن دسته بودجه جدید",
     "addGoalTooltip": "افزودن هدف جدید",
     "addMainTooltip": "صورتحساب، درآمد یا انتقال را اضافه کنید",
+    "afterNDays": "پس از {value} روز",
+    "@afterNDays": {
+        "value": {
+            "type": "int"
+        }
+    },
     "appBuild": "ساخت: {build}",
     "@appBuild": {
         "build": {
@@ -31,6 +37,7 @@
         }
     },
     "automationHeadline": "اتوماسیون",
+    "automationTypeDays": "بعد از چند روز",
     "backTooltip": "برگرد",
     "balance": "تراز واقعی",
     "balanceDate": "به روز رسانی تاریخ موجودی",

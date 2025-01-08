@@ -8,7 +8,7 @@ import 'package:app_finance/_classes/storage/app_data.dart';
 import 'package:app_finance/_classes/structure/bill_app_data.dart';
 import 'package:app_finance/_classes/structure/invoice_app_data.dart';
 import 'package:app_finance/_classes/structure/payment_app_data.dart';
-import 'package:app_finance/_configs/budget_type.dart';
+import 'package:app_finance/_configs/automation_type.dart';
 import 'package:app_finance/_ext/data_ext.dart';
 import 'package:app_finance/_ext/date_time_ext.dart';
 import 'package:flutter/foundation.dart';
@@ -30,9 +30,11 @@ class PaymentsController {
         obj.updatedAt = item.updatedAt;
         obj.payment = item.uuid;
         state.add(obj);
-        if (item.title == AppBudgetType.week.name) {
+        if (item.title == AppAutomationType.days.name) {
+          item.updatedAt = item.updatedAt.add(Duration(days: item.days > 0 ? item.days : 1));
+        } else if (item.title == AppAutomationType.week.name) {
           item.updatedAt = item.updatedAt.add(const Duration(days: 7));
-        } else if (item.title == AppBudgetType.year.name) {
+        } else if (item.title == AppAutomationType.year.name) {
           item.updatedAt = item.updatedAt.getNextYear();
         } else {
           item.updatedAt = item.updatedAt.getNextMonth();

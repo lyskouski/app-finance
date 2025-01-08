@@ -15,6 +15,12 @@
     "addBudgetTooltip": "Дадаць катэгорыю бюджэту",
     "addGoalTooltip": "Дадаць мэту",
     "addMainTooltip": "Дадаць чэк , прыбытак або перавод",
+    "afterNDays": "праз {value} дзён",
+    "@afterNDays": {
+        "value": {
+            "type": "int"
+        }
+    },
     "appBuild": "Зборка: {build}",
     "@appBuild": {
         "build": {
@@ -31,6 +37,7 @@
         }
     },
     "automationHeadline": "Аўтаматызацыя",
+    "automationTypeDays": "праз некалькі дзён",
     "backTooltip": "Павярнуцца",
     "balance": "Фактычны баланс",
     "balanceDate": "Дата аднаўленьня балансу",

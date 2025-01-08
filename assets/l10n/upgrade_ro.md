@@ -2,6 +2,9 @@
 
 _Lista completă a actualizărilor poate fi vizualizată prin intermediul elementului de navigare „Despre” de pe butonul „Sugestii”._
 
+### 6.2.0
+- Extinderea plăților recurente în funcție de intervalul utilizatorului
+
 ### 6.1.0
 - Adăugarea limbilor cehă (CS) și română (RO)
 

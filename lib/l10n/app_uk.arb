@@ -15,6 +15,12 @@
     "addBudgetTooltip": "Додати категорію бюджету",
     "addGoalTooltip": "Додати мету",
     "addMainTooltip": "Додати чек, прибуток чи переказ",
+    "afterNDays": "через {value} днів",
+    "@afterNDays": {
+        "value": {
+            "type": "int"
+        }
+    },
     "appBuild": "Збірка: {build}",
     "@appBuild": {
         "build": {
@@ -31,6 +37,7 @@
         }
     },
     "automationHeadline": "Автоматизація",
+    "automationTypeDays": "через кілька днів",
     "backTooltip": "Повернутися",
     "balance": "Фактичний баланс",
     "balanceDate": "Дата оновлення балансу",

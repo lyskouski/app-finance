@@ -15,6 +15,12 @@
     "addBudgetTooltip": "Yeni Bütçe Kategorisi Ekleme",
     "addGoalTooltip": "Yeni Hedef Ekle",
     "addMainTooltip": "Fatura, Gelir veya Transfer Ekle",
+    "afterNDays": "{value} gün sonra",
+    "@afterNDays": {
+        "value": {
+            "type": "int"
+        }
+    },
     "appBuild": "İnşa et: {build}",
     "@appBuild": {
         "build": {
@@ -31,6 +37,7 @@
         }
     },
     "automationHeadline": "Otomasyon",
+    "automationTypeDays": "birkaç gün sonra",
     "backTooltip": "Geri dön",
     "balance": "Gerçekleşen Bakiye",
     "balanceDate": "Denge Tarihi Güncellemesi",

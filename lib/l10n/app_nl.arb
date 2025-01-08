@@ -15,6 +15,12 @@
     "addBudgetTooltip": "Nieuwe budgetcategorie toevoegen",
     "addGoalTooltip": "Nieuw doel toevoegen",
     "addMainTooltip": "Rekening, inkomsten of overboeking toevoegen",
+    "afterNDays": "na {value} dagen",
+    "@afterNDays": {
+        "value": {
+            "type": "int"
+        }
+    },
     "appBuild": "Samenstellen: {build}",
     "@appBuild": {
         "build": {
@@ -31,6 +37,7 @@
         }
     },
     "automationHeadline": "Automatisering",
+    "automationTypeDays": "na enkele dagen",
     "backTooltip": "Terugkeren",
     "balance": "Werkelijk Saldo",
     "balanceDate": "Saldo Datum Bijwerken",

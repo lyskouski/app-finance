@@ -2,6 +2,9 @@
 
 _The full list of updates can be viewed via the "About" navigation item on the "Hints" button._
 
+### 6.2.0
+- Extending recurring payments by user interval
+
 ### 6.1.0
 - Adding Czech (CS) and Romanian (RO) languages
 

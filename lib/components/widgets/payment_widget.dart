@@ -8,7 +8,7 @@ import 'package:app_finance/_classes/structure/bill_app_data.dart';
 import 'package:app_finance/_classes/structure/invoice_app_data.dart';
 import 'package:app_finance/_classes/structure/navigation/app_route.dart';
 import 'package:app_finance/_classes/structure/payment_app_data.dart';
-import 'package:app_finance/_configs/budget_type.dart';
+import 'package:app_finance/_configs/automation_type.dart';
 import 'package:app_finance/_configs/theme_helper.dart';
 import 'package:app_finance/_ext/data_ext.dart';
 import 'package:app_finance/_ext/date_time_ext.dart';
@@ -46,9 +46,11 @@ class PaymentWidget extends StatelessWidget {
         } else if (obj is InvoiceAppData && obj.accountFrom == null) {
           amount += obj.details;
         }
-        if (item.title == AppBudgetType.week.name) {
+        if (item.title == AppAutomationType.days.name) {
+          item.updatedAt = item.updatedAt.add(Duration(days: item.days > 0 ? item.days : 1));
+        } else if (item.title == AppAutomationType.week.name) {
           item.updatedAt = item.updatedAt.add(const Duration(days: 7));
-        } else if (item.title == AppBudgetType.year.name) {
+        } else if (item.title == AppAutomationType.year.name) {
           item.updatedAt = item.updatedAt.getNextYear();
         } else {
           item.updatedAt = item.updatedAt.getNextMonth();

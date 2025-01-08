@@ -15,6 +15,12 @@
     "addBudgetTooltip": "Přidat novou rozpočtovou kategorii",
     "addGoalTooltip": "Přidat nový cíl",
     "addMainTooltip": "Přidat účet , příjem nebo převod",
+    "afterNDays": "po {value} dnech",
+    "@afterNDays": {
+        "value": {
+            "type": "int"
+        }
+    },
     "appBuild": "Sestavit: {build}",
     "@appBuild": {
         "build": {
@@ -31,6 +37,7 @@
         }
     },
     "automationHeadline": "Automatizace",
+    "automationTypeDays": "po několika dnech",
     "backTooltip": "Vrátit zpět",
     "balance": "Aktuální zůstatek",
     "balanceDate": "Datum aktualizace zůstatku",

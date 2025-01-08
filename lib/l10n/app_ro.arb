@@ -15,6 +15,12 @@
     "addBudgetTooltip": "Adăugați o nouă categorie bugetară",
     "addGoalTooltip": "Adăugați un nou obiectiv",
     "addMainTooltip": "Adaugă factură , venit sau transfer",
+    "afterNDays": "după {value} zile",
+    "@afterNDays": {
+        "value": {
+            "type": "int"
+        }
+    },
     "appBuild": "Construiește: {build}",
     "@appBuild": {
         "build": {
@@ -31,6 +37,7 @@
         }
     },
     "automationHeadline": "Automatizare",
+    "automationTypeDays": "după câteva zile",
     "backTooltip": "Revenire înapoi",
     "balance": "Sold real",
     "balanceDate": "Data actualizării soldului",

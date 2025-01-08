@@ -15,6 +15,12 @@
     "addBudgetTooltip": "새 예산 카테고리 추가",
     "addGoalTooltip": "새 목표 추가",
     "addMainTooltip": "청구서, 수입 또는 이체 추가",
+    "afterNDays": "{value}일 후",
+    "@afterNDays": {
+        "value": {
+            "type": "int"
+        }
+    },
     "appBuild": "빌드: {build}",
     "@appBuild": {
         "build": {
@@ -31,6 +37,7 @@
         }
     },
     "automationHeadline": "자동화",
+    "automationTypeDays": "며칠 후",
     "backTooltip": "뒤로 돌아가기",
     "balance": "실제 잔액",
     "balanceDate": "잔액 날짜 업데이트",

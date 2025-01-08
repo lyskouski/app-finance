@@ -15,6 +15,12 @@
     "addBudgetTooltip": "Aggiungere una nuova categoria di bilancio",
     "addGoalTooltip": "Aggiungere un nuovo obiettivo",
     "addMainTooltip": "Aggiungi fattura, reddito o trasferimento",
+    "afterNDays": "dopo {value} giorni",
+    "@afterNDays": {
+        "value": {
+            "type": "int"
+        }
+    },
     "appBuild": "Costruire: {build}",
     "@appBuild": {
         "build": {
@@ -31,6 +37,7 @@
         }
     },
     "automationHeadline": "Automazione",
+    "automationTypeDays": "dopo alcuni giorni",
     "backTooltip": "Ritorno",
     "balance": "Saldo effettivo",
     "balanceDate": "Aggiornamento della data del saldo",
