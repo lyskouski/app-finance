@@ -1,0 +1,142 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<html lang="en">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>LCOV - lcov.info - lib/pages/bill/widgets/lib/pages/bill/widgets/sliver_header_delegate.dart</title>
+  <link rel="stylesheet" type="text/css" href="../../../../../../../../gcov.css">
+</head>
+
+<body>
+
+          <table width="100%" border=0 cellspacing=0 cellpadding=0>
+            <tr><td class="title">LCOV - code coverage report</td></tr>
+            <tr><td class="ruler"><img src="../../../../../../../../glass.png" width=3 height=3 alt=""></td></tr>
+
+            <tr>
+              <td width="100%">
+                <table cellpadding=1 border=0 width="100%">
+          <tr>
+            <td width="10%" class="headerItem">Current view:</td>
+            <td width="10%" class="headerValue"><a href="../../../../../../../../index.html">top level</a> - <a href="index.html">lib/pages/bill/widgets/lib/pages/bill/widgets</a> - sliver_header_delegate.dart<span style="font-size: 80%;"> (source / <a href="sliver_header_delegate.dart.func-c.html">functions</a>)</span></td>
+            <td width="5%"></td>
+            <td width="5%"></td>
+            <td width="5%" class="headerCovTableHead">Coverage</td>
+            <td width="5%" class="headerCovTableHead" title="Covered + Uncovered code">Total</td>
+            <td width="5%" class="headerCovTableHead" title="Exercised code only">Hit</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Test:</td>
+            <td class="headerValue">lcov.info</td>
+            <td></td>
+            <td class="headerItem">Lines:</td>
+            <td class="headerCovTableEntryLo">0.0&nbsp;%</td>
+            <td class="headerCovTableEntry">25</td>
+            <td class="headerCovTableEntry">0</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Test Date:</td>
+            <td class="headerValue">2025-02-12 08:41:47</td>
+            <td></td>
+            <td class="headerItem">Functions:</td>
+            <td class="headerCovTableEntryHi">-</td>
+            <td class="headerCovTableEntry">0</td>
+            <td class="headerCovTableEntry">0</td>
+          </tr>
+                  <tr><td><img src="../../../../../../../../glass.png" width=3 height=3 alt=""></td></tr>
+                </table>
+              </td>
+            </tr>
+
+            <tr><td class="ruler"><img src="../../../../../../../../glass.png" width=3 height=3 alt=""></td></tr>
+          </table>
+
+          <table cellpadding=0 cellspacing=0 border=0>
+            <tr>
+              <td><br></td>
+            </tr>
+            <tr>
+              <td>
+<pre class="sourceHeading">            Line data    Source code</pre>
+<pre class="source">
+<span id="L1"><span class="lineNum">       1</span>              : // Copyright 2023 The terCAD team. All rights reserved.</span>
+<span id="L2"><span class="lineNum">       2</span>              : // Use of this source code is governed by a CC BY-NC-ND 4.0 license that can be found in the LICENSE file.</span>
+<span id="L3"><span class="lineNum">       3</span>              : </span>
+<span id="L4"><span class="lineNum">       4</span>              : import 'package:app_finance/_classes/herald/app_design.dart';</span>
+<span id="L5"><span class="lineNum">       5</span>              : import 'package:app_finance/_configs/theme_helper.dart';</span>
+<span id="L6"><span class="lineNum">       6</span>              : import 'package:app_finance/_ext/build_context_ext.dart';</span>
+<span id="L7"><span class="lineNum">       7</span>              : import 'package:flutter/material.dart';</span>
+<span id="L8"><span class="lineNum">       8</span>              : </span>
+<span id="L9"><span class="lineNum">       9</span>              : class SliverHeaderDelegate extends SliverPersistentHeaderDelegate {</span>
+<span id="L10"><span class="lineNum">      10</span>              :   final key = GlobalKey();</span>
+<span id="L11"><span class="lineNum">      11</span>              :   double closedHeight;</span>
+<span id="L12"><span class="lineNum">      12</span>              :   double openHeight;</span>
+<span id="L13"><span class="lineNum">      13</span>              :   String title;</span>
+<span id="L14"><span class="lineNum">      14</span>              :   Function? callback;</span>
+<span id="L15"><span class="lineNum">      15</span>              : </span>
+<span id="L16"><span class="lineNum">      16</span> <span class="tlaUNC tlaBgUNC">           0 :   SliverHeaderDelegate(</span></span>
+<span id="L17"><span class="lineNum">      17</span>              :     this.title, {</span>
+<span id="L18"><span class="lineNum">      18</span>              :     this.closedHeight = 29,</span>
+<span id="L19"><span class="lineNum">      19</span>              :     this.openHeight = 30,</span>
+<span id="L20"><span class="lineNum">      20</span>              :     this.callback,</span>
+<span id="L21"><span class="lineNum">      21</span>              :   });</span>
+<span id="L22"><span class="lineNum">      22</span>              : </span>
+<span id="L23"><span class="lineNum">      23</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L24"><span class="lineNum">      24</span> <span class="tlaUNC">           0 :   double get maxExtent =&gt; openHeight;</span></span>
+<span id="L25"><span class="lineNum">      25</span>              : </span>
+<span id="L26"><span class="lineNum">      26</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L27"><span class="lineNum">      27</span> <span class="tlaUNC">           0 :   double get minExtent =&gt; closedHeight;</span></span>
+<span id="L28"><span class="lineNum">      28</span>              : </span>
+<span id="L29"><span class="lineNum">      29</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L30"><span class="lineNum">      30</span>              :   bool shouldRebuild(oldDelegate) =&gt; true;</span>
+<span id="L31"><span class="lineNum">      31</span>              : </span>
+<span id="L32"><span class="lineNum">      32</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L33"><span class="lineNum">      33</span>              :   Widget build(BuildContext context, double shrinkOffset, bool overlapsContent) {</span>
+<span id="L34"><span class="lineNum">      34</span> <span class="tlaUNC">           0 :     final tmp = key.currentContext;</span></span>
+<span id="L35"><span class="lineNum">      35</span>              :     try {</span>
+<span id="L36"><span class="lineNum">      36</span> <span class="tlaUNC">           0 :       if (tmp != null &amp;&amp; tmp.mounted &amp;&amp; tmp.findRenderObject() is RenderBox) {</span></span>
+<span id="L37"><span class="lineNum">      37</span> <span class="tlaUNC">           0 :         callback?.call(title);</span></span>
+<span id="L38"><span class="lineNum">      38</span>              :       }</span>
+<span id="L39"><span class="lineNum">      39</span>              :     } catch (e) {</span>
+<span id="L40"><span class="lineNum">      40</span>              :       // .. ignore inactive state</span>
+<span id="L41"><span class="lineNum">      41</span>              :     }</span>
+<span id="L42"><span class="lineNum">      42</span> <span class="tlaUNC">           0 :     final indent = ThemeHelper.getIndent();</span></span>
+<span id="L43"><span class="lineNum">      43</span> <span class="tlaUNC">           0 :     final isPinned = shrinkOffset == maxExtent;</span></span>
+<span id="L44"><span class="lineNum">      44</span> <span class="tlaUNC">           0 :     return Container(</span></span>
+<span id="L45"><span class="lineNum">      45</span> <span class="tlaUNC">           0 :       padding: EdgeInsets.fromLTRB(indent, indent / 2, 0, 0),</span></span>
+<span id="L46"><span class="lineNum">      46</span> <span class="tlaUNC">           0 :       key: key,</span></span>
+<span id="L47"><span class="lineNum">      47</span> <span class="tlaUNC">           0 :       height: openHeight,</span></span>
+<span id="L48"><span class="lineNum">      48</span> <span class="tlaUNC">           0 :       decoration: BoxDecoration(</span></span>
+<span id="L49"><span class="lineNum">      49</span>              :         color: isPinned</span>
+<span id="L50"><span class="lineNum">      50</span> <span class="tlaUNC">           0 :             ? Color.alphaBlend(context.colorScheme.inverseSurface.withValues(alpha: 0.1), context.colorScheme.surface)</span></span>
+<span id="L51"><span class="lineNum">      51</span> <span class="tlaUNC">           0 :             : context.colorScheme.surface,</span></span>
+<span id="L52"><span class="lineNum">      52</span>              :         border: isPinned</span>
+<span id="L53"><span class="lineNum">      53</span>              :             ? null</span>
+<span id="L54"><span class="lineNum">      54</span> <span class="tlaUNC">           0 :             : Border(</span></span>
+<span id="L55"><span class="lineNum">      55</span> <span class="tlaUNC">           0 :                 bottom: BorderSide(</span></span>
+<span id="L56"><span class="lineNum">      56</span> <span class="tlaUNC">           0 :                   color: context.colorScheme.secondary.withValues(alpha: 0.2),</span></span>
+<span id="L57"><span class="lineNum">      57</span>              :                 ),</span>
+<span id="L58"><span class="lineNum">      58</span>              :               ),</span>
+<span id="L59"><span class="lineNum">      59</span>              :       ),</span>
+<span id="L60"><span class="lineNum">      60</span> <span class="tlaUNC">           0 :       child: Align(</span></span>
+<span id="L61"><span class="lineNum">      61</span> <span class="tlaUNC">           0 :         alignment: AppDesign.isRightToLeft() ? Alignment.centerRight : Alignment.centerLeft,</span></span>
+<span id="L62"><span class="lineNum">      62</span> <span class="tlaUNC">           0 :         child: Text(title, style: context.textTheme.bodySmall),</span></span>
+<span id="L63"><span class="lineNum">      63</span>              :       ),</span>
+<span id="L64"><span class="lineNum">      64</span>              :     );</span>
+<span id="L65"><span class="lineNum">      65</span>              :   }</span>
+<span id="L66"><span class="lineNum">      66</span>              : }</span>
+        </pre>
+              </td>
+            </tr>
+          </table>
+          <br>
+
+          <table width="100%" border=0 cellspacing=0 cellpadding=0>
+            <tr><td class="ruler"><img src="../../../../../../../../glass.png" width=3 height=3 alt=""></td></tr>
+            <tr><td class="versionInfo">Generated by: <a href="https://github.com//linux-test-project/lcov" target="_parent">LCOV version 2.0-1</a></td></tr>
+          </table>
+          <br>
+
+</body>
+</html>
