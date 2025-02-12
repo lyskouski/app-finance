@@ -4,8 +4,8 @@
 \subsection{Refactoring by Principles} \label{refactoring}
 \markboth{Unleashing}{Refactoring by Principles}
 
-Having scrutinized the application's "skeleton" encompassing scalability and fault tolerance (\ref{benchmark}), it's 
-now an opportune juncture to delve into its "nervous system" -- ensuring alignment with architectural and code style 
+Having scrutinized the application's "skeleton", which includes scalability and fault tolerance (\ref{benchmark}), 
+it's now an opportune time to delve into its "nervous system" -- ensuring alignment with architectural and code style 
 principles.\\
 \\
 
@@ -54,17 +54,17 @@ principles.\\
   Open-Closed, Liskov Substitution, Interface Segregation, and Dependency Inversion.
 \end{itemize}
 
-\noindent We'll not dive into details of architectural and code style principles (check references above), and even 
-won't discuss made changes \issue{159}{} \issue{217}{}, by reminding only the semaphore approach (\ref{ut-fail}) that 
-declares refactoring only after a significant code coverage. Refactoring as a process of rearchitecting \cite{Chec23} 
-previously made decisions, to restate, revise and improve them by visualizing in a clean code. 
+\noindent We won't dive into details of architectural and code style principles (see references above), and even won't 
+discuss changes made \issue{159}{} \issue{217}{}, only recalling the semaphore approach (\ref{ut-fail}) that to declare 
+refactoring only after significant code coverage. Refactoring as a process of rearchitecture \cite{Chec23} previously 
+made decisions to restate, revise, and improve them by visualizing them in clean code. 
 
-As a note, it's worth noting that approaches can be mixed, such as combining design patterns like VIPER (View, 
-Presenter, Interactor, Router, Entity), MVVM (Model, View, ViewModel), or others, to represent business layer, with 
-Atomic Design \cite{Kama22} methodology, or other, for the presentation layer.
+As a note, it's worth noting that approaches can be mixed, such as combining design patterns like VIPER (View, Presenter, 
+Interactor, Router, Entity), MVVM (Model, View, ViewModel), or others to represent the business layer, with Atomic Design 
+\cite{Kama22} methodology, or others, for the presentation layer.
 
 In the context of extreme programming, the methodology includes a provision for pair programming \cite{Ligu19}. This 
-involves two programmers collaborating closely at a single workstation, communicating actively throughout the process 
-of writing each line of code. Delighting to restate and extremize that practice to next flow: the first developer 
-composing tests, followed by the second developer undertaking the implementation, and the third developer 
-performing an ultimate refactoring; and they're changing those "hats" \cite{Bono17} continuously.
+involves two programmers working closely together at a single workstation, actively communicating throughout the process 
+of writing of writing each line of code. Pleasure to restate and extreme this practice to the next flow: the first 
+developer tests, followed by the second developer doing the implementation, and the third developer doing a final 
+refactoring. does a final refactoring; and they keep changing these "hats" \cite{Bono17}.

@@ -77,12 +77,12 @@ class _MyFormState extends State<MyForm> {
 }
 \end{lstlisting}
 
-Proposal above might become overcomplicated for complex forms, so, we might take into account the usage of a state 
-machine, also known as a finite-state machine (FSM). It's a conceptual model that is used to describe the behavior of a 
-system in discrete states, transitions between those states, and actions associated with each state or transition.
+\noindent The above suggestion might become too complicated for complex forms, so we might consider using a state machine, 
+also known as a finite-state machine (FSM). It's a conceptual model used to describe the behavior of a system in terms 
+of discrete states, transitions between those states, and actions associated with each state or transition.
 
-For our case it should provide a scope of Focus Nodes and determine transition between them; to propagate it across
-multiple widgets we'll use static class.
+For our case, it should provide a set of focus nodes and determine the transition between them; to propagate it across 
+multiple widgets, we'll use the static class.
 
 \begin{lstlisting}
 class FocusController {
@@ -178,22 +178,22 @@ class FocusController {
 }
 \end{lstlisting}
 
-\noindent One of the problem that we might face with is an inability to open dropdowns anymore since 
-\q{FocusScope.of(context).requestFocus} leads to re-build by any changed focus action. The problem is relevant to the
-fact that we've been using \q{BuildContext} of our Form whereas it should be taken context from \q{DropdownButton}-element:
+\noindent One of the problems we might face is an inability to open dropdowns anymore since 
+\q{FocusScope.of(context).requestFocus} leads to rebuilding by any changed focus action. The problem is relevant to the 
+fact that we've been using \q{BuildContext} of our form, whereas it should be taken context from \q{DropdownButton}-element:
 
 \begin{lstlisting}
 Form(build 'context1') -> Widget(build 'context2') -> ... -> Widget(build 'context3') -> TextFormField.
 \end{lstlisting}
 
-\noindent We should trigger \q{FocusController.setContext(context);} directly for \q{context3}, otherwise re-render will 
-block any additional interactions. But the right fix is to use context from our FocusNode:
+\noindent We should trigger \q{FocusController.setContext(context)} directly for \q{context3}, otherwise re-rendering 
+will block any additional interaction. But the correct solution is to use the context of our \q{FocusNode}:
 
 \begin{lstlisting}
 FocusScope.of(nodes[focus].context!).requestFocus(nodes[focus]);
 \end{lstlisting}
 
-\noindent That also gives us capability to change \q{setContext}-method in order to store index of current element 
+\noindent This also gives us the ability to change the \q{setContext}-method to store the index of the current element 
 and its value:
 
 \begin{lstlisting}
@@ -237,16 +237,16 @@ class FocusController {
   }
 \end{lstlisting}
 
-\noindent We're continuing bravely fix errors that producing by our own, and the next might be nor obvious, nor trivial 
-till the fact how exactly \q{setState}-method should be used. While we've been testing our application in build OC mode, 
-an error is appeared on Android. The Flutter team tells us that everything will be cross-functional through all devices
-and systems but it's only in the case when we're using a functionality as it's been expected from their side. And 
-the error is relevant to a lost state of values that's been defined inside \q{StatefulWidget} class of our 
-component that updated via \q{setState}-method inside \q{State}-extended class.
+\noindent We're continuing to bravely fix errors that produce by our own, and the next might be neither obvious, nor 
+trivial until the fact how exactly \q{setState}-method should be used. While we're testing our application in build OC 
+mode, an error appears on Android. The Flutter team tells us that everything will be cross-functional through all devices 
+and systems, but it's only in case when we use a functionality as it was expected from their side. And the bug is relevant 
+to a lost state of values that's defined inside the \q{StatefulWidget} class of our component that was updated via the 
+\q{setState}-method inside the \q{State} extended class.
 
-In our code, the issue with losing the form values state is related to the fact, that by assigning default values 
-directly to the fields, those values will not be preserved when the widget is rebuilt. To maintain the form values 
-state, we have to use the \q{initState}-method to initialize fields by provided values.
+In our code, the problem with losing the state of the form values is related to the fact that by assigning default values 
+directly to the fields, these values are not preserved when the widget is rebuilt. To preserve the form values state, 
+we need to use the \q{initState}-method to initialize the fields with the provided values.
 
 \begin{lstlisting}
 class ExpensesTab extends StatefulWidget {
@@ -279,9 +279,9 @@ class ExpensesTabState extends State<ExpensesTab> {
 \end{lstlisting}
 
 \noindent And finally, let's refactor taken solution to make it reliable, by storing positions during components 
-initialization and making a delta scroll by their deduction (positions of the current element and the first one) -- 
+initialization and do a delta scroll by deducting them (positions of the current element and the first one) -- 
 \issue{164}{}, \issue{265}{172eb11}. An important tip is to assign a unique identifier (\q{id}-property) to each input 
-element. Otherwise, after a compilation, all objects created from the same widget-class may be identified as one 
+element. Otherwise, after a compilation, all objects created from the same widget class may be identified as one 
 (\cref{img:u-grid}) due to a similar \q{hashCode}-property \issue{127}{} \issue{408}{29ac970}.
 
 \img{uiux/focus-issue}{Visualization of a simulaneous focus on multiple fields}{img:u-focus}
