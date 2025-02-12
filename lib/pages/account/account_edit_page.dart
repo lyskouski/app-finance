@@ -20,14 +20,7 @@ class AccountEditPage extends AccountAddPage {
 }
 
 class AccountEditPageState extends AccountAddPageState<AccountEditPage> {
-  late String uuid;
   bool isFirstRun = true;
-
-  @override
-  void initState() {
-    uuid = (widget as AccountEditPage).uuid;
-    super.initState();
-  }
 
   void bindState() {
     if (!isFirstRun) {
@@ -35,7 +28,7 @@ class AccountEditPageState extends AccountAddPageState<AccountEditPage> {
     }
     setState(() {
       isFirstRun = false;
-      final form = state.getByUuid(uuid) as AccountAppData;
+      final form = state.getByUuid(widget.uuid) as AccountAppData;
       title.text = form.title;
       description.text = form.description ?? '';
       type = form.type;
@@ -52,9 +45,9 @@ class AccountEditPageState extends AccountAddPageState<AccountEditPage> {
   @override
   void updateStorage() {
     super.state.update(
-        uuid,
+        widget.uuid,
         AccountAppData(
-          uuid: uuid,
+          uuid: widget.uuid,
           title: title.text,
           type: type ?? AppAccountType.cash.toString(),
           description: description.text,

@@ -35,14 +35,14 @@ class AccountTabState extends AccountAddPageState<AccountTab> {
       }
       updateStorage();
       AppPreferences.set(AppPreferences.prefAccount, super.state.getList(AppDataType.accounts).first?.uuid);
-      (widget as AccountTab).setState();
+      widget.setState();
     });
   }
 
   Widget _nextButton(BuildContext context, BoxConstraints constraints) => FullSizedButtonWidget(
         constraints: constraints,
         controller: focus,
-        onPressed: () => (widget as AccountTab).setState(),
+        onPressed: () => widget.setState(),
         title: AppLocale.labels.goNextTooltip,
         icon: Icons.exit_to_app_rounded,
       );
@@ -55,9 +55,9 @@ class AccountTabState extends AccountAddPageState<AccountTab> {
       return Padding(
         padding: EdgeInsets.only(top: ThemeHelper.getIndent(2)),
         child: LayoutBuilder(builder: (context, constraints) {
-          if ((widget as AccountTab).isFirstBoot) {
+          if (widget.isFirstBoot) {
             WidgetsBinding.instance.addPostFrameCallback((_) {
-              (widget as AccountTab).setButton(
+              widget.setButton(
                 isCreated ? _nextButton(context, constraints) : buildButton(context, constraints),
               );
             });

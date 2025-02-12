@@ -47,7 +47,7 @@ class AccountAddPage extends AbstractAddPage {
   AccountAddPageState createState() => AccountAddPageState();
 }
 
-class AccountAddPageState<T extends AccountAddPage> extends AbstractAddPageState<AccountAddPage> {
+class AccountAddPageState<T extends AccountAddPage> extends AbstractAddPageState<T> {
   late FocusController focus;
   late TextEditingController title;
   late TextEditingController description;

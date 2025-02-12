@@ -19,14 +19,7 @@ class GoalEditPage extends GoalAddPage {
 }
 
 class GoalEditPageState extends GoalAddPageState<GoalEditPage> {
-  late String uuid;
   bool isFirstRun = true;
-
-  @override
-  void initState() {
-    uuid = (widget as GoalEditPage).uuid;
-    super.initState();
-  }
 
   @override
   String getTitle() {
@@ -35,14 +28,14 @@ class GoalEditPageState extends GoalAddPageState<GoalEditPage> {
 
   @override
   void updateStorage() {
-    var data = state.getByUuid(uuid) as GoalAppData;
+    var data = state.getByUuid(widget.uuid) as GoalAppData;
     data.title = title.text;
     data.color = color;
     data.icon = icon;
     data.details = double.tryParse(details.text) ?? 0.0;
     data.closedAt = closedAt ?? DateTime.now();
     data.currency = currency;
-    state.update(uuid, data);
+    state.update(widget.uuid, data);
   }
 
   void bindState() {
@@ -51,7 +44,7 @@ class GoalEditPageState extends GoalAddPageState<GoalEditPage> {
     }
     setState(() {
       isFirstRun = false;
-      var form = super.state.getByUuid(uuid) as GoalAppData;
+      var form = super.state.getByUuid(widget.uuid) as GoalAppData;
       super.title.text = form.title;
       super.details.text = form.details != null ? form.details.toString() : '';
       super.color = form.color;

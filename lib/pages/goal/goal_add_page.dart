@@ -40,7 +40,7 @@ class GoalAddPage extends AbstractAddPage {
   GoalAddPageState createState() => GoalAddPageState();
 }
 
-class GoalAddPageState<T extends GoalAddPage> extends AbstractAddPageState<GoalAddPage> {
+class GoalAddPageState<T extends GoalAddPage> extends AbstractAddPageState<T> {
   late FocusController focus;
   late TextEditingController title;
   late TextEditingController details;
