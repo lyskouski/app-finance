@@ -237,7 +237,6 @@ representation of the UI. The Render Object Tree gets translated into commands f
 rendering the UI on the device's screen.
 
 
-
 \newpage
 \subsubsection{Differentiating Keys}
 
@@ -391,6 +390,33 @@ $ fvm flavor {flavor_name}
 
 \noindent By using flavors, we may streamline the process of building, testing, and deploying different versions of 
 our application without having to manage separate codebases or repositories for each environment.
+
+
+\newpage
+\subsubsection{Debugging User Interface}
+
+The \q{SemanticsDebugger}-widget provides a way to visualize and debug the semantics tree (\cref{img:bc-widget})
+in your app (\cref{img:bc-widget-off}). It overlays a graphical representation of the semantics tree on top of the UI, 
+displaying rectangles and labels corresponding to semantic nodes. This helps identify which elements are accessible and 
+what information they convey, highlighting key accessibility properties like labels, actions, and roles.
+
+\begin{lstlisting}
+SemanticsDebugger(
+  child: MyApp(),
+);
+\end{lstlisting}
+
+\noindent This widget offers several key features:
+
+\begin{itemize}
+  \item Each semantic node is outlined with a colored box, indicating its area on the screen.
+  \item Inside these boxes, text displays the node's labels, roles, and actions.
+  \item The debugger visualizes how touch interactions, such as taps and swipes, correspond to these nodes.
+  \item Different colors help distinguish overlapping or nested nodes, making the structure easier to understand.
+\end{itemize}
+
+\img{bootcamp/debugging-widget-off}{Application visualization}{img:bc-widget-off}
+\img{bootcamp/debugging-widget}{Application visualization with SemanticsDebugger widget}{img:bc-widget}
 
 
 \newpage
