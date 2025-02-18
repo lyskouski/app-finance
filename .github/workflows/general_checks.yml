@@ -50,7 +50,7 @@ jobs:
 
       - name: Store Tests Artifacts
         if: always()
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: testing_logs--${{ matrix.os }}
           path: |

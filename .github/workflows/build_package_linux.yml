@@ -69,7 +69,7 @@ jobs:
 
       - name: Add Linux Artifact to Build
         if: inputs.is_build
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: fingrom_${{ inputs.target }}${{ inputs.asset_extension }}
           path: ./fingrom_${{ inputs.target }}${{ inputs.asset_extension }}

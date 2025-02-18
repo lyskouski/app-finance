@@ -28,15 +28,14 @@ dependencies:
   google_fonts: ^6.1.0
   intl: ^0.19.0
   flutter_colorpicker: ^1.0.3
-  uuid: ^3.0.7
+  uuid: ^4.5.1
   provider: ^6.0.5
-  month_picker_dialog: ^4.0.0
+  month_picker_dialog: ^6.0.3
   shared_preferences: ^2.2.2
   path_provider: ^2.0.15
   crypto: ^3.0.3
-  # Freeze encrypt and flutter_webrtc
+  # Freeze encrypt
   encrypt: 5.0.1
-  flutter_webrtc: "0.9.42+hotfix.1"
   firebase_core: ^3.8.1
   firebase_analytics: ^11.3.6
   firebase_crashlytics: ^4.2.0
@@ -44,11 +43,9 @@ dependencies:
   package_info_plus: ^8.0.0
   url_launcher: ^6.1.12
   webdav_client: ^1.2.1
-  # Freeze file_picker, 8.1.5 is failing for Android
-  file_picker: 8.1.4
+  file_picker: ^9.0.0
   csv: ^6.0.0
-  notifications: ^3.0.0
-  peerdart: ^0.5.3
+  peerdart: ^0.5.6
   flutter_grid_layout: ^1.1.1
   flutter_svg: ^2.0.7
   flutter_swipe_action_cell: ^3.1.2
@@ -59,6 +56,9 @@ dependencies:
   excel: ^4.0.6
   home_widget: ^0.7.0
 
+dependency_overrides:
+  flutter_webrtc: 0.12.10
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
@@ -67,13 +67,13 @@ dev_dependencies:
   flutter_driver:
     sdk: flutter
   # Lints to encourage good coding practices, `analysis_options.yaml`
-  flutter_lints: ^4.0.0
+  flutter_lints: ^5.0.0
   grinder: ^0.9.4
   path: ^1.8.3
   test_cov_console: ^0.2.2
   mockito: ^5.4.2
   build_runner: ^2.4.6
-  file: 7.0.0
+  file: 7.0.1
   platform: ^3.1.0
   msix: ^3.16.4
   yaml: ^3.1.2
