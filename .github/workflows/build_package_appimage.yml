@@ -43,7 +43,7 @@ jobs:
 
       - name: Add AppImage Artifact to Build
         if: inputs.is_build
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: fingrom_Linux
           path: linux-appimage/Fingrom-${{ inputs.version }}-x86_64.AppImage

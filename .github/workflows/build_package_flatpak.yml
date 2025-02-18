@@ -45,7 +45,7 @@ jobs:
         working-directory: linux-flatpak
 
       - name: Store Configs for github.com/flathub
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: flatpak-configs
           path: |
@@ -54,7 +54,7 @@ jobs:
 
       - name: Add Flatpak Artifact to Build
         if: inputs.is_build
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: fingrom_LinuxFlatpak
           path: linux-flatpak/fingrom_LinuxFlatpak.flatpak
