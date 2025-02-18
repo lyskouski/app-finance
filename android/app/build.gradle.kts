@@ -32,7 +32,8 @@ if (keystoreFile.exists()) {
 android {
     namespace = "com.tercad.fingrom"
     compileSdk = flutter.compileSdkVersion
-    ndkVersion = flutter.ndkVersion
+    // ndkVersion = flutter.ndkVersion
+    ndkVersion = "27.0.12077973"
 
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_11
@@ -55,7 +56,9 @@ android {
         create("release") {
             keyAlias = "key"
             keyPassword = localProperties.getProperty("key.password")
-            storeFile = file(localProperties.getProperty("key.file"))
+            if (localProperties.getProperty("key.file") != null) {
+              storeFile = file(localProperties.getProperty("key.file"))
+            }
             storePassword = localProperties.getProperty("key.password")
         }
     }
