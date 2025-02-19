@@ -31,13 +31,13 @@
             <td class="headerValue">lcov.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntryLo">60.1&nbsp;%</td>
-            <td class="headerCovTableEntry">163</td>
-            <td class="headerCovTableEntry">98</td>
+            <td class="headerCovTableEntryLo">59.9&nbsp;%</td>
+            <td class="headerCovTableEntry">162</td>
+            <td class="headerCovTableEntry">97</td>
           </tr>
           <tr>
             <td class="headerItem">Test Date:</td>
-            <td class="headerValue">2025-02-18 11:59:17</td>
+            <td class="headerValue">2025-02-19 14:02:28</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntryHi">-</td>
@@ -291,131 +291,130 @@
 <span id="L229"><span class="lineNum">     229</span>              : </span>
 <span id="L230"><span class="lineNum">     230</span> <span class="tlaGNC">           3 :   Drawer? buildDrawer() {</span></span>
 <span id="L231"><span class="lineNum">     231</span> <span class="tlaGNC">           3 :     return Drawer(</span></span>
-<span id="L232"><span class="lineNum">     232</span> <span class="tlaGNC">           3 :       key: InputControllerWrapper.drawerKey,</span></span>
-<span id="L233"><span class="lineNum">     233</span>              :       elevation: 0,</span>
-<span id="L234"><span class="lineNum">     234</span> <span class="tlaGNC">           3 :       shape: Border.all(width: 0),</span></span>
-<span id="L235"><span class="lineNum">     235</span> <span class="tlaGNC">           3 :       child: ScreenHelper.state().isWide</span></span>
-<span id="L236"><span class="lineNum">     236</span> <span class="tlaUNC tlaBgUNC">           0 :           ? buildNavigation()</span></span>
-<span id="L237"><span class="lineNum">     237</span> <span class="tlaGNC tlaBgGNC">           3 :           : InputControllerWrapper(</span></span>
-<span id="L238"><span class="lineNum">     238</span> <span class="tlaGNC">           3 :               child: buildNavigation() ?? ThemeHelper.emptyBox,</span></span>
-<span id="L239"><span class="lineNum">     239</span>              :             ),</span>
-<span id="L240"><span class="lineNum">     240</span>              :     );</span>
-<span id="L241"><span class="lineNum">     241</span>              :   }</span>
-<span id="L242"><span class="lineNum">     242</span>              : </span>
-<span id="L243"><span class="lineNum">     243</span> <span class="tlaGNC">           3 :   @override</span></span>
-<span id="L244"><span class="lineNum">     244</span>              :   Widget build(BuildContext context) {</span>
-<span id="L245"><span class="lineNum">     245</span> <span class="tlaGNC">           6 :     final scale = context.watch&lt;AppZoom&gt;().value;</span></span>
-<span id="L246"><span class="lineNum">     246</span> <span class="tlaGNC">           3 :     return Scaffold(</span></span>
-<span id="L247"><span class="lineNum">     247</span> <span class="tlaGNC">           9 :       appBar: AppBar(backgroundColor: context.colorScheme.primary, toolbarHeight: 0),</span></span>
-<span id="L248"><span class="lineNum">     248</span> <span class="tlaGNC">           6 :       body: Consumer&lt;AppData&gt;(builder: (context, appState, _) {</span></span>
-<span id="L249"><span class="lineNum">     249</span> <span class="tlaGNC">           3 :         state = appState;</span></span>
-<span id="L250"><span class="lineNum">     250</span> <span class="tlaGNC">           6 :         return LayoutBuilder(builder: (context, constraints) {</span></span>
-<span id="L251"><span class="lineNum">     251</span> <span class="tlaGNC">           3 :           final display = ScreenHelper.getInstance(context, constraints);</span></span>
-<span id="L252"><span class="lineNum">     252</span>              :           final isBottom = display.isBottom &amp;&amp; !display.isRight;</span>
-<span id="L253"><span class="lineNum">     253</span> <span class="tlaGNC">           3 :           final hasKeyboard = ThemeHelper.isKeyboardVisible(context, constraints);</span></span>
-<span id="L254"><span class="lineNum">     254</span> <span class="tlaGNC">           3 :           final height = constraints.maxHeight;</span></span>
-<span id="L255"><span class="lineNum">     255</span> <span class="tlaGNC">          12 :           final blockHeight = height / scale - (display.isRight ? 0 : ThemeHelper.barHeight + ThemeHelper.getIndent());</span></span>
-<span id="L256"><span class="lineNum">     256</span> <span class="tlaGNC">           6 :           double width = constraints.maxWidth / scale;</span></span>
-<span id="L257"><span class="lineNum">     257</span>              :           Widget? rightBar;</span>
-<span id="L258"><span class="lineNum">     258</span>              :           Widget? leftBar;</span>
-<span id="L259"><span class="lineNum">     259</span>              :           if (display.isRight) {</span>
-<span id="L260"><span class="lineNum">     260</span> <span class="tlaUNC tlaBgUNC">           0 :             rightBar = buildRightBar(context, constraints);</span></span>
-<span id="L261"><span class="lineNum">     261</span>              :             if (rightBar != null) {</span>
-<span id="L262"><span class="lineNum">     262</span> <span class="tlaUNC">           0 :               width -= ThemeHelper.barHeight;</span></span>
-<span id="L263"><span class="lineNum">     263</span>              :             }</span>
-<span id="L264"><span class="lineNum">     264</span>              :           } else if (display.isWide) {</span>
-<span id="L265"><span class="lineNum">     265</span> <span class="tlaUNC">           0 :             leftBar = buildNavigation();</span></span>
-<span id="L266"><span class="lineNum">     266</span>              :             if (leftBar != null) {</span>
-<span id="L267"><span class="lineNum">     267</span> <span class="tlaUNC">           0 :               width -= ThemeHelper.menuWidth;</span></span>
-<span id="L268"><span class="lineNum">     268</span>              :             }</span>
-<span id="L269"><span class="lineNum">     269</span>              :           }</span>
-<span id="L270"><span class="lineNum">     270</span> <span class="tlaGNC tlaBgGNC">           3 :           if (width &lt; 0) {</span></span>
-<span id="L271"><span class="lineNum">     271</span>              :             width = 0;</span>
-<span id="L272"><span class="lineNum">     272</span>              :           }</span>
-<span id="L273"><span class="lineNum">     273</span> <span class="tlaGNC">          15 :           final dx = (constraints.maxWidth - constraints.maxWidth / scale) / 2;</span></span>
-<span id="L274"><span class="lineNum">     274</span> <span class="tlaGNC">           9 :           final dy = (height - height / scale) / 2;</span></span>
-<span id="L275"><span class="lineNum">     275</span> <span class="tlaGNC">           3 :           return Scaffold(</span></span>
-<span id="L276"><span class="lineNum">     276</span> <span class="tlaUNC tlaBgUNC">           0 :             appBar: display.isBottom ? null : buildBar(context, constraints),</span></span>
-<span id="L277"><span class="lineNum">     277</span> <span class="tlaGNC tlaBgGNC">           3 :             drawer: buildDrawer(),</span></span>
-<span id="L278"><span class="lineNum">     278</span> <span class="tlaGNC">           3 :             endDrawer: buildDrawer(),</span></span>
-<span id="L279"><span class="lineNum">     279</span>              :             floatingActionButtonLocation: isBottom ? FloatingActionButtonLocation.centerDocked : null,</span>
-<span id="L280"><span class="lineNum">     280</span>              :             floatingActionButton: isBottom</span>
-<span id="L281"><span class="lineNum">     281</span>              :                 ? hasKeyboard</span>
-<span id="L282"><span class="lineNum">     282</span> <span class="tlaUNC tlaBgUNC">           0 :                     ? Transform.translate(</span></span>
-<span id="L283"><span class="lineNum">     283</span>              :                         offset: const Offset(0, 12),</span>
-<span id="L284"><span class="lineNum">     284</span> <span class="tlaUNC">           0 :                         child: SizedBox(</span></span>
-<span id="L285"><span class="lineNum">     285</span> <span class="tlaUNC">           0 :                           height: ThemeHelper.barHeight * 1.2,</span></span>
-<span id="L286"><span class="lineNum">     286</span> <span class="tlaUNC">           0 :                           child: buildButton(context, constraints),</span></span>
-<span id="L287"><span class="lineNum">     287</span>              :                         ),</span>
-<span id="L288"><span class="lineNum">     288</span>              :                       )</span>
-<span id="L289"><span class="lineNum">     289</span> <span class="tlaGNC tlaBgGNC">           6 :                     : defaultTargetPlatform == TargetPlatform.iOS</span></span>
-<span id="L290"><span class="lineNum">     290</span> <span class="tlaUNC tlaBgUNC">           0 :                         ? buildButton(context, constraints)</span></span>
-<span id="L291"><span class="lineNum">     291</span> <span class="tlaGNC tlaBgGNC">           3 :                         : Container(</span></span>
-<span id="L292"><span class="lineNum">     292</span> <span class="tlaGNC">           6 :                             margin: EdgeInsets.only(bottom: ThemeHelper.getIndent()),</span></span>
-<span id="L293"><span class="lineNum">     293</span> <span class="tlaGNC">           3 :                             child: buildButton(context, constraints),</span></span>
-<span id="L294"><span class="lineNum">     294</span>              :                           )</span>
-<span id="L295"><span class="lineNum">     295</span> <span class="tlaUNC tlaBgUNC">           0 :                 : buildButton(context, constraints),</span></span>
-<span id="L296"><span class="lineNum">     296</span>              :             resizeToAvoidBottomInset: true,</span>
-<span id="L297"><span class="lineNum">     297</span> <span class="tlaGNC tlaBgGNC">           3 :             body: InputControllerWrapper(</span></span>
-<span id="L298"><span class="lineNum">     298</span> <span class="tlaGNC">           3 :               child: GridContainer(</span></span>
-<span id="L299"><span class="lineNum">     299</span> <span class="tlaGNC">           3 :                 alignment: AppDesign.getAlignment&lt;MainAxisAlignment&gt;(),</span></span>
-<span id="L300"><span class="lineNum">     300</span>              :                 rows: const [ThemeHelper.menuWidth, null, ThemeHelper.barHeight],</span>
-<span id="L301"><span class="lineNum">     301</span>              :                 columns: const [null, ThemeHelper.barHeight],</span>
-<span id="L302"><span class="lineNum">     302</span> <span class="tlaGNC">           3 :                 children: [</span></span>
-<span id="L303"><span class="lineNum">     303</span>              :                   if (leftBar != null)</span>
-<span id="L304"><span class="lineNum">     304</span> <span class="tlaUNC tlaBgUNC">           0 :                     GridItem(</span></span>
-<span id="L305"><span class="lineNum">     305</span>              :                       order: 2,</span>
-<span id="L306"><span class="lineNum">     306</span>              :                       start: const Size(0, 0),</span>
-<span id="L307"><span class="lineNum">     307</span>              :                       end: const Size(1, 2),</span>
-<span id="L308"><span class="lineNum">     308</span> <span class="tlaUNC">           0 :                       child: Container(</span></span>
-<span id="L309"><span class="lineNum">     309</span> <span class="tlaUNC">           0 :                         color: context.colorScheme.inversePrimary.withValues(alpha: 0.2),</span></span>
-<span id="L310"><span class="lineNum">     310</span>              :                         width: ThemeHelper.menuWidth,</span>
-<span id="L311"><span class="lineNum">     311</span>              :                         height: double.infinity,</span>
-<span id="L312"><span class="lineNum">     312</span> <span class="tlaUNC">           0 :                         child: buildNavigation(),</span></span>
-<span id="L313"><span class="lineNum">     313</span>              :                       ),</span>
-<span id="L314"><span class="lineNum">     314</span>              :                     ),</span>
-<span id="L315"><span class="lineNum">     315</span> <span class="tlaGNC tlaBgGNC">           3 :                   GridItem(</span></span>
-<span id="L316"><span class="lineNum">     316</span>              :                     order: 1,</span>
-<span id="L317"><span class="lineNum">     317</span> <span class="tlaGNC">           3 :                     start: Size(leftBar != null ? 1 : 0, 0),</span></span>
-<span id="L318"><span class="lineNum">     318</span> <span class="tlaGNC">           3 :                     end: Size(rightBar != null ? 2 : 3, rightBar == null &amp;&amp; display.isBottom ? 1 : 2),</span></span>
-<span id="L319"><span class="lineNum">     319</span> <span class="tlaGNC">           3 :                     child: OverflowBox(</span></span>
-<span id="L320"><span class="lineNum">     320</span>              :                       alignment: Alignment.topLeft,</span>
-<span id="L321"><span class="lineNum">     321</span>              :                       minWidth: width,</span>
-<span id="L322"><span class="lineNum">     322</span>              :                       maxWidth: width,</span>
-<span id="L323"><span class="lineNum">     323</span>              :                       minHeight: blockHeight,</span>
-<span id="L324"><span class="lineNum">     324</span>              :                       maxHeight: blockHeight,</span>
-<span id="L325"><span class="lineNum">     325</span> <span class="tlaGNC">           3 :                       child: Transform.translate(</span></span>
-<span id="L326"><span class="lineNum">     326</span> <span class="tlaGNC">           3 :                         offset: Offset(dx, dy),</span></span>
-<span id="L327"><span class="lineNum">     327</span> <span class="tlaGNC">           3 :                         child: Transform.scale(</span></span>
-<span id="L328"><span class="lineNum">     328</span>              :                           scale: scale,</span>
-<span id="L329"><span class="lineNum">     329</span> <span class="tlaGNC">           3 :                           child: buildContent(context, constraints),</span></span>
-<span id="L330"><span class="lineNum">     330</span>              :                         ),</span>
-<span id="L331"><span class="lineNum">     331</span>              :                       ),</span>
-<span id="L332"><span class="lineNum">     332</span>              :                     ),</span>
-<span id="L333"><span class="lineNum">     333</span>              :                   ),</span>
-<span id="L334"><span class="lineNum">     334</span>              :                   if (rightBar != null)</span>
-<span id="L335"><span class="lineNum">     335</span> <span class="tlaUNC tlaBgUNC">           0 :                     GridItem(</span></span>
-<span id="L336"><span class="lineNum">     336</span>              :                       order: 2,</span>
-<span id="L337"><span class="lineNum">     337</span>              :                       start: const Size(2, 0),</span>
-<span id="L338"><span class="lineNum">     338</span>              :                       end: const Size(3, 2),</span>
-<span id="L339"><span class="lineNum">     339</span>              :                       child: rightBar,</span>
-<span id="L340"><span class="lineNum">     340</span>              :                     ),</span>
-<span id="L341"><span class="lineNum">     341</span>              :                   if (rightBar == null &amp;&amp; display.isBottom)</span>
-<span id="L342"><span class="lineNum">     342</span> <span class="tlaGNC tlaBgGNC">           3 :                     GridItem(</span></span>
-<span id="L343"><span class="lineNum">     343</span>              :                       order: 2,</span>
-<span id="L344"><span class="lineNum">     344</span>              :                       start: const Size(0, 1),</span>
-<span id="L345"><span class="lineNum">     345</span>              :                       end: const Size(3, 2),</span>
-<span id="L346"><span class="lineNum">     346</span> <span class="tlaGNC">           3 :                       child: buildBottomBar(context, constraints),</span></span>
-<span id="L347"><span class="lineNum">     347</span>              :                     ),</span>
-<span id="L348"><span class="lineNum">     348</span>              :                 ],</span>
-<span id="L349"><span class="lineNum">     349</span>              :               ),</span>
-<span id="L350"><span class="lineNum">     350</span>              :             ),</span>
-<span id="L351"><span class="lineNum">     351</span>              :           );</span>
-<span id="L352"><span class="lineNum">     352</span>              :         });</span>
-<span id="L353"><span class="lineNum">     353</span>              :       }),</span>
-<span id="L354"><span class="lineNum">     354</span>              :     );</span>
-<span id="L355"><span class="lineNum">     355</span>              :   }</span>
-<span id="L356"><span class="lineNum">     356</span>              : }</span>
+<span id="L232"><span class="lineNum">     232</span>              :       elevation: 0,</span>
+<span id="L233"><span class="lineNum">     233</span> <span class="tlaGNC">           3 :       shape: Border.all(width: 0),</span></span>
+<span id="L234"><span class="lineNum">     234</span> <span class="tlaGNC">           3 :       child: ScreenHelper.state().isWide</span></span>
+<span id="L235"><span class="lineNum">     235</span> <span class="tlaUNC tlaBgUNC">           0 :           ? buildNavigation()</span></span>
+<span id="L236"><span class="lineNum">     236</span> <span class="tlaGNC tlaBgGNC">           3 :           : InputControllerWrapper(</span></span>
+<span id="L237"><span class="lineNum">     237</span> <span class="tlaGNC">           3 :               child: buildNavigation() ?? ThemeHelper.emptyBox,</span></span>
+<span id="L238"><span class="lineNum">     238</span>              :             ),</span>
+<span id="L239"><span class="lineNum">     239</span>              :     );</span>
+<span id="L240"><span class="lineNum">     240</span>              :   }</span>
+<span id="L241"><span class="lineNum">     241</span>              : </span>
+<span id="L242"><span class="lineNum">     242</span> <span class="tlaGNC">           3 :   @override</span></span>
+<span id="L243"><span class="lineNum">     243</span>              :   Widget build(BuildContext context) {</span>
+<span id="L244"><span class="lineNum">     244</span> <span class="tlaGNC">           6 :     final scale = context.watch&lt;AppZoom&gt;().value;</span></span>
+<span id="L245"><span class="lineNum">     245</span> <span class="tlaGNC">           3 :     return Scaffold(</span></span>
+<span id="L246"><span class="lineNum">     246</span> <span class="tlaGNC">           9 :       appBar: AppBar(backgroundColor: context.colorScheme.primary, toolbarHeight: 0),</span></span>
+<span id="L247"><span class="lineNum">     247</span> <span class="tlaGNC">           6 :       body: Consumer&lt;AppData&gt;(builder: (context, appState, _) {</span></span>
+<span id="L248"><span class="lineNum">     248</span> <span class="tlaGNC">           3 :         state = appState;</span></span>
+<span id="L249"><span class="lineNum">     249</span> <span class="tlaGNC">           6 :         return LayoutBuilder(builder: (context, constraints) {</span></span>
+<span id="L250"><span class="lineNum">     250</span> <span class="tlaGNC">           3 :           final display = ScreenHelper.getInstance(context, constraints);</span></span>
+<span id="L251"><span class="lineNum">     251</span>              :           final isBottom = display.isBottom &amp;&amp; !display.isRight;</span>
+<span id="L252"><span class="lineNum">     252</span> <span class="tlaGNC">           3 :           final hasKeyboard = ThemeHelper.isKeyboardVisible(context, constraints);</span></span>
+<span id="L253"><span class="lineNum">     253</span> <span class="tlaGNC">           3 :           final height = constraints.maxHeight;</span></span>
+<span id="L254"><span class="lineNum">     254</span> <span class="tlaGNC">          12 :           final blockHeight = height / scale - (display.isRight ? 0 : ThemeHelper.barHeight + ThemeHelper.getIndent());</span></span>
+<span id="L255"><span class="lineNum">     255</span> <span class="tlaGNC">           6 :           double width = constraints.maxWidth / scale;</span></span>
+<span id="L256"><span class="lineNum">     256</span>              :           Widget? rightBar;</span>
+<span id="L257"><span class="lineNum">     257</span>              :           Widget? leftBar;</span>
+<span id="L258"><span class="lineNum">     258</span>              :           if (display.isRight) {</span>
+<span id="L259"><span class="lineNum">     259</span> <span class="tlaUNC tlaBgUNC">           0 :             rightBar = buildRightBar(context, constraints);</span></span>
+<span id="L260"><span class="lineNum">     260</span>              :             if (rightBar != null) {</span>
+<span id="L261"><span class="lineNum">     261</span> <span class="tlaUNC">           0 :               width -= ThemeHelper.barHeight;</span></span>
+<span id="L262"><span class="lineNum">     262</span>              :             }</span>
+<span id="L263"><span class="lineNum">     263</span>              :           } else if (display.isWide) {</span>
+<span id="L264"><span class="lineNum">     264</span> <span class="tlaUNC">           0 :             leftBar = buildNavigation();</span></span>
+<span id="L265"><span class="lineNum">     265</span>              :             if (leftBar != null) {</span>
+<span id="L266"><span class="lineNum">     266</span> <span class="tlaUNC">           0 :               width -= ThemeHelper.menuWidth;</span></span>
+<span id="L267"><span class="lineNum">     267</span>              :             }</span>
+<span id="L268"><span class="lineNum">     268</span>              :           }</span>
+<span id="L269"><span class="lineNum">     269</span> <span class="tlaGNC tlaBgGNC">           3 :           if (width &lt; 0) {</span></span>
+<span id="L270"><span class="lineNum">     270</span>              :             width = 0;</span>
+<span id="L271"><span class="lineNum">     271</span>              :           }</span>
+<span id="L272"><span class="lineNum">     272</span> <span class="tlaGNC">          15 :           final dx = (constraints.maxWidth - constraints.maxWidth / scale) / 2;</span></span>
+<span id="L273"><span class="lineNum">     273</span> <span class="tlaGNC">           9 :           final dy = (height - height / scale) / 2;</span></span>
+<span id="L274"><span class="lineNum">     274</span> <span class="tlaGNC">           3 :           return Scaffold(</span></span>
+<span id="L275"><span class="lineNum">     275</span> <span class="tlaUNC tlaBgUNC">           0 :             appBar: display.isBottom ? null : buildBar(context, constraints),</span></span>
+<span id="L276"><span class="lineNum">     276</span> <span class="tlaGNC tlaBgGNC">           3 :             drawer: buildDrawer(),</span></span>
+<span id="L277"><span class="lineNum">     277</span> <span class="tlaGNC">           3 :             endDrawer: buildDrawer(),</span></span>
+<span id="L278"><span class="lineNum">     278</span>              :             floatingActionButtonLocation: isBottom ? FloatingActionButtonLocation.centerDocked : null,</span>
+<span id="L279"><span class="lineNum">     279</span>              :             floatingActionButton: isBottom</span>
+<span id="L280"><span class="lineNum">     280</span>              :                 ? hasKeyboard</span>
+<span id="L281"><span class="lineNum">     281</span> <span class="tlaUNC tlaBgUNC">           0 :                     ? Transform.translate(</span></span>
+<span id="L282"><span class="lineNum">     282</span>              :                         offset: const Offset(0, 12),</span>
+<span id="L283"><span class="lineNum">     283</span> <span class="tlaUNC">           0 :                         child: SizedBox(</span></span>
+<span id="L284"><span class="lineNum">     284</span> <span class="tlaUNC">           0 :                           height: ThemeHelper.barHeight * 1.2,</span></span>
+<span id="L285"><span class="lineNum">     285</span> <span class="tlaUNC">           0 :                           child: buildButton(context, constraints),</span></span>
+<span id="L286"><span class="lineNum">     286</span>              :                         ),</span>
+<span id="L287"><span class="lineNum">     287</span>              :                       )</span>
+<span id="L288"><span class="lineNum">     288</span> <span class="tlaGNC tlaBgGNC">           6 :                     : defaultTargetPlatform == TargetPlatform.iOS</span></span>
+<span id="L289"><span class="lineNum">     289</span> <span class="tlaUNC tlaBgUNC">           0 :                         ? buildButton(context, constraints)</span></span>
+<span id="L290"><span class="lineNum">     290</span> <span class="tlaGNC tlaBgGNC">           3 :                         : Container(</span></span>
+<span id="L291"><span class="lineNum">     291</span> <span class="tlaGNC">           6 :                             margin: EdgeInsets.only(bottom: ThemeHelper.getIndent()),</span></span>
+<span id="L292"><span class="lineNum">     292</span> <span class="tlaGNC">           3 :                             child: buildButton(context, constraints),</span></span>
+<span id="L293"><span class="lineNum">     293</span>              :                           )</span>
+<span id="L294"><span class="lineNum">     294</span> <span class="tlaUNC tlaBgUNC">           0 :                 : buildButton(context, constraints),</span></span>
+<span id="L295"><span class="lineNum">     295</span>              :             resizeToAvoidBottomInset: true,</span>
+<span id="L296"><span class="lineNum">     296</span> <span class="tlaGNC tlaBgGNC">           3 :             body: InputControllerWrapper(</span></span>
+<span id="L297"><span class="lineNum">     297</span> <span class="tlaGNC">           3 :               child: GridContainer(</span></span>
+<span id="L298"><span class="lineNum">     298</span> <span class="tlaGNC">           3 :                 alignment: AppDesign.getAlignment&lt;MainAxisAlignment&gt;(),</span></span>
+<span id="L299"><span class="lineNum">     299</span>              :                 rows: const [ThemeHelper.menuWidth, null, ThemeHelper.barHeight],</span>
+<span id="L300"><span class="lineNum">     300</span>              :                 columns: const [null, ThemeHelper.barHeight],</span>
+<span id="L301"><span class="lineNum">     301</span> <span class="tlaGNC">           3 :                 children: [</span></span>
+<span id="L302"><span class="lineNum">     302</span>              :                   if (leftBar != null)</span>
+<span id="L303"><span class="lineNum">     303</span> <span class="tlaUNC tlaBgUNC">           0 :                     GridItem(</span></span>
+<span id="L304"><span class="lineNum">     304</span>              :                       order: 2,</span>
+<span id="L305"><span class="lineNum">     305</span>              :                       start: const Size(0, 0),</span>
+<span id="L306"><span class="lineNum">     306</span>              :                       end: const Size(1, 2),</span>
+<span id="L307"><span class="lineNum">     307</span> <span class="tlaUNC">           0 :                       child: Container(</span></span>
+<span id="L308"><span class="lineNum">     308</span> <span class="tlaUNC">           0 :                         color: context.colorScheme.inversePrimary.withValues(alpha: 0.2),</span></span>
+<span id="L309"><span class="lineNum">     309</span>              :                         width: ThemeHelper.menuWidth,</span>
+<span id="L310"><span class="lineNum">     310</span>              :                         height: double.infinity,</span>
+<span id="L311"><span class="lineNum">     311</span> <span class="tlaUNC">           0 :                         child: buildNavigation(),</span></span>
+<span id="L312"><span class="lineNum">     312</span>              :                       ),</span>
+<span id="L313"><span class="lineNum">     313</span>              :                     ),</span>
+<span id="L314"><span class="lineNum">     314</span> <span class="tlaGNC tlaBgGNC">           3 :                   GridItem(</span></span>
+<span id="L315"><span class="lineNum">     315</span>              :                     order: 1,</span>
+<span id="L316"><span class="lineNum">     316</span> <span class="tlaGNC">           3 :                     start: Size(leftBar != null ? 1 : 0, 0),</span></span>
+<span id="L317"><span class="lineNum">     317</span> <span class="tlaGNC">           3 :                     end: Size(rightBar != null ? 2 : 3, rightBar == null &amp;&amp; display.isBottom ? 1 : 2),</span></span>
+<span id="L318"><span class="lineNum">     318</span> <span class="tlaGNC">           3 :                     child: OverflowBox(</span></span>
+<span id="L319"><span class="lineNum">     319</span>              :                       alignment: Alignment.topLeft,</span>
+<span id="L320"><span class="lineNum">     320</span>              :                       minWidth: width,</span>
+<span id="L321"><span class="lineNum">     321</span>              :                       maxWidth: width,</span>
+<span id="L322"><span class="lineNum">     322</span>              :                       minHeight: blockHeight,</span>
+<span id="L323"><span class="lineNum">     323</span>              :                       maxHeight: blockHeight,</span>
+<span id="L324"><span class="lineNum">     324</span> <span class="tlaGNC">           3 :                       child: Transform.translate(</span></span>
+<span id="L325"><span class="lineNum">     325</span> <span class="tlaGNC">           3 :                         offset: Offset(dx, dy),</span></span>
+<span id="L326"><span class="lineNum">     326</span> <span class="tlaGNC">           3 :                         child: Transform.scale(</span></span>
+<span id="L327"><span class="lineNum">     327</span>              :                           scale: scale,</span>
+<span id="L328"><span class="lineNum">     328</span> <span class="tlaGNC">           3 :                           child: buildContent(context, constraints),</span></span>
+<span id="L329"><span class="lineNum">     329</span>              :                         ),</span>
+<span id="L330"><span class="lineNum">     330</span>              :                       ),</span>
+<span id="L331"><span class="lineNum">     331</span>              :                     ),</span>
+<span id="L332"><span class="lineNum">     332</span>              :                   ),</span>
+<span id="L333"><span class="lineNum">     333</span>              :                   if (rightBar != null)</span>
+<span id="L334"><span class="lineNum">     334</span> <span class="tlaUNC tlaBgUNC">           0 :                     GridItem(</span></span>
+<span id="L335"><span class="lineNum">     335</span>              :                       order: 2,</span>
+<span id="L336"><span class="lineNum">     336</span>              :                       start: const Size(2, 0),</span>
+<span id="L337"><span class="lineNum">     337</span>              :                       end: const Size(3, 2),</span>
+<span id="L338"><span class="lineNum">     338</span>              :                       child: rightBar,</span>
+<span id="L339"><span class="lineNum">     339</span>              :                     ),</span>
+<span id="L340"><span class="lineNum">     340</span>              :                   if (rightBar == null &amp;&amp; display.isBottom)</span>
+<span id="L341"><span class="lineNum">     341</span> <span class="tlaGNC tlaBgGNC">           3 :                     GridItem(</span></span>
+<span id="L342"><span class="lineNum">     342</span>              :                       order: 2,</span>
+<span id="L343"><span class="lineNum">     343</span>              :                       start: const Size(0, 1),</span>
+<span id="L344"><span class="lineNum">     344</span>              :                       end: const Size(3, 2),</span>
+<span id="L345"><span class="lineNum">     345</span> <span class="tlaGNC">           3 :                       child: buildBottomBar(context, constraints),</span></span>
+<span id="L346"><span class="lineNum">     346</span>              :                     ),</span>
+<span id="L347"><span class="lineNum">     347</span>              :                 ],</span>
+<span id="L348"><span class="lineNum">     348</span>              :               ),</span>
+<span id="L349"><span class="lineNum">     349</span>              :             ),</span>
+<span id="L350"><span class="lineNum">     350</span>              :           );</span>
+<span id="L351"><span class="lineNum">     351</span>              :         });</span>
+<span id="L352"><span class="lineNum">     352</span>              :       }),</span>
+<span id="L353"><span class="lineNum">     353</span>              :     );</span>
+<span id="L354"><span class="lineNum">     354</span>              :   }</span>
+<span id="L355"><span class="lineNum">     355</span>              : }</span>
         </pre>
               </td>
             </tr>
