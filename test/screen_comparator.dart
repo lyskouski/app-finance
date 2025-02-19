@@ -6,9 +6,7 @@ import 'package:flutter_test/flutter_test.dart';
 class ScreenComparator extends LocalFileComparator {
   final double threshold;
 
-  ScreenComparator(Uri testFile, this.threshold)
-      : assert(threshold >= 0 && threshold <= 1),
-        super(testFile);
+  ScreenComparator(super.testFile, this.threshold) : assert(threshold >= 0 && threshold <= 1);
 
   @override
   Future<bool> compare(Uint8List imageBytes, Uri golden) async {

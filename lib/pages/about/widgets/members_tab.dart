@@ -9,7 +9,7 @@ import 'package:app_finance/pages/about/widgets/member_widget.dart';
 import 'package:flutter/material.dart';
 
 class MembersTab extends StatelessWidget with LauncherMixin {
-  static late final members = [
+  static final members = [
     (name: 'Viachaslau Lyskouski', badge: [AppLocale.labels.coAuthor]),
     (name: 'Iryna Shepetovetska', badge: [AppLocale.labels.coTranslator]),
     (name: 'Raj Jani', badge: [AppLocale.labels.coPromoter]),
