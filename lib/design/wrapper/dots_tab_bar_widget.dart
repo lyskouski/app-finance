@@ -21,11 +21,10 @@ class DotsTabBarWidget extends TabBar {
     required this.indent,
     required this.width,
     required this.color,
-    onTap,
+    super.onTap,
   }) : super(
           controller: tabController,
           mouseCursor: SystemMouseCursors.click,
-          onTap: onTap,
           tabs: tabList,
           dividerColor: Colors.transparent,
         );

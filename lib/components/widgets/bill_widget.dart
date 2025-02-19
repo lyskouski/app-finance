@@ -3,30 +3,20 @@
 
 import 'package:app_finance/_classes/structure/navigation/app_route.dart';
 import 'package:app_finance/design/generic/base_widget.dart';
-import 'package:flutter/material.dart';
 
 class BillWidget extends BaseWidget {
   const BillWidget({
     super.key,
-    required String title,
-    required double width,
-    String? tooltip,
-    required EdgeInsetsGeometry margin,
-    required dynamic state,
-    int? limit,
-    String? route,
-    String routeList = AppRoute.billViewRoute,
+    required super.title,
+    required super.width,
+    super.tooltip,
+    required super.margin,
+    required super.state,
+    super.limit,
+    super.route,
+    super.routeList = AppRoute.billViewRoute,
     super.hasExpand,
     super.toExpand,
     super.callback,
-  }) : super(
-          margin: margin,
-          width: width,
-          title: title,
-          state: state,
-          limit: limit,
-          tooltip: tooltip,
-          route: route,
-          routeList: routeList,
-        );
+  });
 }

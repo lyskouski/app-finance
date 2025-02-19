@@ -28,13 +28,11 @@ class AccountWidget extends BaseWidget {
     super.limit,
     super.tooltip,
     super.route,
-    String routeList = AppRoute.accountViewRoute,
+    super.routeList = AppRoute.accountViewRoute,
     super.hasExpand,
     super.toExpand,
     super.callback,
-  }) : super(
-          routeList: routeList,
-        );
+  });
 
   @override
   AppDataGetter get state {

@@ -30,7 +30,7 @@ class BaseWidget extends StatelessWidget {
   final Function? callback;
 
   const BaseWidget({
-    Key? key,
+    super.key,
     required this.margin,
     required this.title,
     required this.state,
@@ -42,7 +42,7 @@ class BaseWidget extends StatelessWidget {
     this.hasExpand = false,
     this.toExpand = '',
     this.callback,
-  }) : super(key: key);
+  });
 
   Widget buildListWidget(item, BuildContext context) {
     return BaseSwipeWidget(

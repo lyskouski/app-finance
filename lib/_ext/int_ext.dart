@@ -6,16 +6,7 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 
 extension IntExt on int {
-  static final Map<String, IconData> _cache = {};
-
-  IconData toIcon() {
-    if (_cache.containsKey(this)) {
-      return _cache[this]!;
-    } else {
-      const String fontFamily = 'MaterialIcons';
-      return IconData(this, fontFamily: fontFamily);
-    }
-  }
+  IconData toIcon() => IconData(this, fontFamily: 'MaterialIcons');
 
   String toByteSize() {
     const sizes = ['B', 'KB', 'MB', 'GB', 'TB'];
