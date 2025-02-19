@@ -62,7 +62,7 @@ abstract class AbstractAppData implements InterfaceAppData {
         'uuid': uuid,
         'title': title,
         'description': description,
-        'color': color?.value,
+        'color': color?.toARGB32(),
         'icon': icon?.codePoint,
         'currency': currency?.code,
         'createdAt': createdAt.toIso8601String(),

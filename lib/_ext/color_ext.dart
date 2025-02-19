@@ -9,9 +9,9 @@ extension ColorExt on Color {
   MaterialColor get toMaterialColor {
     final Map<int, Color> colorMap = {};
     for (int i = 50; i <= 900; i += 100) {
-      colorMap[i] = Color.fromRGBO(red, green, blue, i / 1000.0);
+      colorMap[i] = withValues(alpha: i / 1000.0);
     }
-    return MaterialColor(value, colorMap);
+    return MaterialColor(toARGB32(), colorMap);
   }
 
   static Color getRandom() {

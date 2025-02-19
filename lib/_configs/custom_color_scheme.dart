@@ -44,14 +44,14 @@ class AppDefaultColors {
   }
 
   Map<String, dynamic> toJson() => {
-        'background': background.value,
-        'primary': primary.value,
-        'inversePrimary': inversePrimary.value,
-        'inverseSurface': inversePrimary.value,
-        'onSecondary': onSecondary.value,
-        'onInverseSurface': onInverseSurface.value,
-        'onSecondaryContainer': onSecondaryContainer.value,
-        'secondary': secondary.value,
+        'background': background.toARGB32(),
+        'primary': primary.toARGB32(),
+        'inversePrimary': inversePrimary.toARGB32(),
+        'inverseSurface': inversePrimary.toARGB32(),
+        'onSecondary': onSecondary.toARGB32(),
+        'onInverseSurface': onInverseSurface.toARGB32(),
+        'onSecondaryContainer': onSecondaryContainer.toARGB32(),
+        'secondary': secondary.toARGB32(),
       };
 
   factory AppDefaultColors.fromString(String data) {
