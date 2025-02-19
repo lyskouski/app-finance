@@ -22,7 +22,6 @@ enum AppEvents {
 }
 
 class InputControllerWrapper extends StatefulWidget {
-  static final drawerKey = GlobalKey();
   final Widget child;
 
   const InputControllerWrapper({
@@ -45,82 +44,62 @@ class InputControllerWrapperState extends State<InputControllerWrapper> {
     super.dispose();
   }
 
-  void handleEvent(AppEvents event) {
-    switch (event) {
-      case AppEvents.zoomOut:
-        return onScaleUpdate(ScaleUpdateDetails(scale: 0.9));
-      case AppEvents.zoomIn:
-        return onScaleUpdate(ScaleUpdateDetails(scale: 1.1));
-      case AppEvents.zoomReset:
-        zoom.set(1.0);
-        break;
-      case AppEvents.tipDrawer:
-        final render = InputControllerWrapper.drawerKey.currentContext?.findRenderObject();
-        if (render != null) {
-          Scaffold.of(context).closeDrawer();
-        } else {
-          Scaffold.of(context).openDrawer();
-        }
-        break;
-      case AppEvents.newBill:
-        Navigator.of(context).pushNamed(AppRoute.billAddRoute);
-        break;
-      case AppEvents.back:
-        if (Navigator.of(context).canPop()) {
-          Navigator.of(context).pop();
-        }
-        break;
-      case AppEvents.edit:
-      case AppEvents.delete:
-        // TBD: FocusScope.of(context).focusedChild);
-        break;
+  void _onScaleUpdate(double step) => zoom.set(zoom.value + step);
+
+  void _onScaleReset() => zoom.set(1.0);
+
+  void _toggleDrawer() {
+    if (Scaffold.of(context).isDrawerOpen) {
+      Scaffold.of(context).closeDrawer();
+    } else {
+      Scaffold.of(context).openDrawer();
     }
   }
 
-  void onKeyPressed(RawKeyEvent event) {
-    if (event is RawKeyDownEvent) {
-      if (event.isControlPressed) {
-        if (event.logicalKey == LogicalKeyboardKey.minus) {
-          return handleEvent(AppEvents.zoomOut);
-        }
-        if (event.logicalKey == LogicalKeyboardKey.equal) {
-          return handleEvent(AppEvents.zoomIn);
-        }
-        if (event.logicalKey == LogicalKeyboardKey.digit0) {
-          return handleEvent(AppEvents.zoomReset);
-        }
-        if (event.isKeyPressed(LogicalKeyboardKey.keyN)) {
-          return handleEvent(AppEvents.newBill);
-        }
-        if (event.isKeyPressed(LogicalKeyboardKey.keyE)) {
-          return handleEvent(AppEvents.edit);
-        }
-        if (event.isKeyPressed(LogicalKeyboardKey.keyD)) {
-          return handleEvent(AppEvents.delete);
-        }
-        if (event.isKeyPressed(LogicalKeyboardKey.backspace)) {
-          return handleEvent(AppEvents.back);
-        }
-      } else if (event.isShiftPressed) {
-        if (event.isKeyPressed(LogicalKeyboardKey.enter)) {
-          return handleEvent(AppEvents.tipDrawer);
-        }
+  void _pop() {
+    if (Navigator.of(context).canPop()) {
+      Navigator.of(context).pop();
+    }
+  }
+
+  void onKeyEvent(KeyEvent event) {
+    var isControlPressed = HardwareKeyboard.instance.isControlPressed;
+    var isShiftPressed = HardwareKeyboard.instance.isShiftPressed;
+    if (isControlPressed) {
+      if (HardwareKeyboard.instance.isLogicalKeyPressed(LogicalKeyboardKey.minus)) {
+        return _onScaleUpdate(-0.1);
       }
+      if (HardwareKeyboard.instance.isLogicalKeyPressed(LogicalKeyboardKey.equal)) {
+        return _onScaleUpdate(0.1);
+      }
+      if (HardwareKeyboard.instance.isLogicalKeyPressed(LogicalKeyboardKey.digit0)) {
+        return _onScaleReset();
+      }
+      if (HardwareKeyboard.instance.isLogicalKeyPressed(LogicalKeyboardKey.keyN)) {
+        Navigator.of(context).pushNamed(AppRoute.billAddRoute);
+        return;
+      }
+      if (HardwareKeyboard.instance.isLogicalKeyPressed(LogicalKeyboardKey.keyE)) {
+        return; // TBD: edit item
+      }
+      if (HardwareKeyboard.instance.isLogicalKeyPressed(LogicalKeyboardKey.keyD)) {
+        return; // TBD: delete item
+      }
+      if (HardwareKeyboard.instance.isLogicalKeyPressed(LogicalKeyboardKey.backspace)) {
+        return _pop();
+      }
+    } else if (isShiftPressed && HardwareKeyboard.instance.isLogicalKeyPressed(LogicalKeyboardKey.enter)) {
+      return _toggleDrawer();
     }
     if (event.logicalKey == LogicalKeyboardKey.controlLeft || event.logicalKey == LogicalKeyboardKey.controlRight) {
-      setState(() => _ctrlPressed = event is RawKeyDownEvent);
+      setState(() => _ctrlPressed = isControlPressed);
     }
   }
 
   void onPointerSignal(PointerSignalEvent event) {
     if (_ctrlPressed && event is PointerScrollEvent) {
-      handleEvent(event.scrollDelta.dy > 0 ? AppEvents.zoomOut : AppEvents.zoomIn);
+      _onScaleUpdate(event.scrollDelta.dy > 0 ? -0.1 : 0.1);
     }
-  }
-
-  void onScaleUpdate(ScaleUpdateDetails details) {
-    const step = 0.1;
-    zoom.set(zoom.value + (details.scale > 1 ? step : -step));
   }
 
   @override
@@ -128,13 +107,10 @@ class InputControllerWrapperState extends State<InputControllerWrapper> {
     zoom = Provider.of<AppZoom>(context, listen: false);
     return Listener(
       onPointerSignal: onPointerSignal,
-      child: RawKeyboardListener(
+      child: KeyboardListener(
         focusNode: FocusController.force ? focus : (focus..requestFocus()),
-        onKey: onKeyPressed,
-        //child: GestureDetector(
-        //  onScaleUpdate: onScaleUpdate,
+        onKeyEvent: onKeyEvent,
         child: widget.child,
-        //),
       ),
     );
   }

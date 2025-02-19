@@ -229,7 +229,6 @@ abstract class AbstractPageState<T extends StatefulWidget> extends State<T> {
 
   Drawer? buildDrawer() {
     return Drawer(
-      key: InputControllerWrapper.drawerKey,
       elevation: 0,
       shape: Border.all(width: 0),
       child: ScreenHelper.state().isWide
