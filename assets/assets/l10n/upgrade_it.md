@@ -3,6 +3,9 @@
 _L'elenco completo degli aggiornamenti può essere consultato tramite la voce di navigazione “Informazioni” del 
 pulsante “Suggerimenti”._
 
+### 6.3.0
+- Aggiunta delle pagine Redditi e Transazioni
+
 ### 6.2.0
 - Estensione dei pagamenti ricorrenti per intervallo di tempo dell'utente
 

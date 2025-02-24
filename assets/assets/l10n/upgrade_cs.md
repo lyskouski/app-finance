@@ -2,6 +2,9 @@
 
 _Úplný seznam aktualizací si můžete prohlédnout v navigační položce „O aplikaci“ na tlačítku „Tipy“._
 
+### 6.3.0
+- Přidání stránek příjmů a transakcí
+
 ### 6.2.0
 - Rozšíření opakovaných plateb o intervaly mezi uživateli
 

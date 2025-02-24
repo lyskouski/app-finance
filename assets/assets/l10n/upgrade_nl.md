@@ -2,6 +2,9 @@
 
 _De volledige lijst met updates kan worden bekeken via het navigatie-item “Over” op de knop “Hints”._
 
+### 6.3.0
+- Inkomsten- en transactiepagina's toevoegen
+
 ### 6.2.0
 - Terugkerende betalingen uitbreiden met gebruikersinterval
 

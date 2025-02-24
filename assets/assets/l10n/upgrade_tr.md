@@ -2,6 +2,9 @@
 
 _Güncellemelerin tam listesi “İpuçları” düğmesindeki “Hakkında” gezinti öğesi aracılığıyla görüntülenebilir._
 
+### 6.3.0
+- Gelir ve İşlem sayfaları ekleme
+
 ### 6.2.0
 - Yinelenen ödemeleri kullanıcı aralığına göre genişletme
 

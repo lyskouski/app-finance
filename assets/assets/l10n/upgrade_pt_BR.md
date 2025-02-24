@@ -2,6 +2,9 @@
 
 _A lista completa de atualizações pode ser visualizada no item de navegação "Sobre" no botão "Dicas"._
 
+### 6.3.0
+- Adição de páginas de renda e transação
+
 ### 6.2.0
 - Extensão de pagamentos recorrentes por intervalo de usuário
 
