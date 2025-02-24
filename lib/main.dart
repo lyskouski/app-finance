@@ -151,6 +151,7 @@ class MyAppState extends State<MyApp> {
     AppRoute.current = route;
     final args = arguments as Map<String, dynamic>?;
     final String key = args?['uuid'] ?? args?['search'] ?? '';
+    final int focus = args?['focus'] ?? 1;
     if (widget.platform != null) {
       FirebaseAnalytics.instance.logScreenView(
         screenName: route,
@@ -170,7 +171,7 @@ class MyAppState extends State<MyApp> {
           AppRoute.automationPaymentViewRoute => PaymentViewPage(uuid: key),
           AppRoute.automationPaymentEditRoute => PaymentEditPage(uuid: key),
           AppRoute.billRoute => const BillPage(),
-          AppRoute.billAddRoute => const BillAddPage(),
+          AppRoute.billAddRoute => BillAddPage(focus: focus),
           AppRoute.billViewRoute => BillViewPage(uuid: key),
           AppRoute.billEditRoute => BillEditPage(uuid: key),
           AppRoute.budgetRoute => const BudgetPage(),

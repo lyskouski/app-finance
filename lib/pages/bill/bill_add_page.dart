@@ -13,7 +13,12 @@ import 'package:app_finance/design/wrapper/tab_widget.dart';
 import 'package:flutter/material.dart';
 
 class BillAddPage extends StatefulWidget {
-  const BillAddPage({super.key});
+  final int focus;
+
+  const BillAddPage({
+    super.key,
+    this.focus = 1,
+  });
 
   @override
   BillAddPageState createState() => BillAddPageState();
@@ -22,6 +27,12 @@ class BillAddPage extends StatefulWidget {
 class BillAddPageState<T extends BillAddPage> extends AbstractPageState<T> {
   PageInject? inject;
   int focus = 1;
+
+  @override
+  void initState() {
+    focus = widget.focus;
+    super.initState();
+  }
 
   @override
   Widget buildButton(BuildContext context, BoxConstraints constraints) =>

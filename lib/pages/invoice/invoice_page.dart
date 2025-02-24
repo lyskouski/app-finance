@@ -62,6 +62,17 @@ class InvoicePageState<T extends StatefulWidget> extends BillPageState<T> {
   }
 
   @override
+  Widget buildButton(BuildContext context, BoxConstraints constraints) {
+    NavigatorState nav = Navigator.of(context);
+    return FloatingActionButton(
+      heroTag: 'invoice_page',
+      onPressed: () => nav.pushNamed(AppRoute.billAddRoute, arguments: {'focus': 0}),
+      tooltip: getButtonName(),
+      child: const Icon(Icons.add),
+    );
+  }
+
+  @override
   String getTitle() => AppLocale.labels.invoiceHeadline;
 
   bool getContentFilter(InvoiceAppData o) => o.accountFrom != null;

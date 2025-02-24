@@ -20,6 +20,17 @@ class InvoiceTransferPage extends StatefulWidget {
 
 class InvoiceTransferPageState extends InvoicePageState<InvoiceTransferPage> {
   @override
+  Widget buildButton(BuildContext context, BoxConstraints constraints) {
+    NavigatorState nav = Navigator.of(context);
+    return FloatingActionButton(
+      heroTag: 'invoice_transfer_page',
+      onPressed: () => nav.pushNamed(AppRoute.billAddRoute, arguments: {'focus': 2}),
+      tooltip: getButtonName(),
+      child: const Icon(Icons.add),
+    );
+  }
+
+  @override
   String getTitle() => AppLocale.labels.transfersHeadline;
 
   @override
