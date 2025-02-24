@@ -2,6 +2,9 @@
 
 _Poŭny spis abnaŭlieńniaŭ možna prahliadzieć u navihacyjnym punkcie «Ab Dadatku» na knopcy «Padkazki»._ 
 
+### 6.3.0
+- Dadańnie staronak dachodaŭ i tranzakcyj
+
 ### 6.2.0
 - Pašyreńnie pieryjadyčnych placiažoŭ pa intervalach karystaĺnikaŭ
 

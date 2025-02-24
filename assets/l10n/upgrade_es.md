@@ -2,6 +2,9 @@
 
 _La lista completa de actualizaciones puede consultarse en el menú "Acerca de" del botón "Sugerencias"._
 
+### 6.3.0
+- Añadir páginas de ingresos y transacciones
+
 ### 6.2.0
 - Ampliación de pagos recurrentes por intervalo de usuario
 

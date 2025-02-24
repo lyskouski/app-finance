@@ -2,6 +2,9 @@
 
 _Yeniləmələrin tam siyahısına "İpucu" düyməsindəki "Haqqında" naviqasiya elementi vasitəsilə baxmaq olar._
 
+### 6.3.0
+- Gəlir və Əməliyyat səhifələrinin əlavə edilməsi
+
 ### 6.2.0
 - İstifadəçi intervalı ilə təkrarlanan ödənişlərin uzadılması
 

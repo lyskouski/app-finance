@@ -2,6 +2,9 @@
 
 _Die vollständige Liste der Updates kann über den Navigationspunkt "Über" auf der Schaltfläche "Hinweise" eingesehen werden._
 
+### 6.3.0
+- Hinzufügen von Einkommens- und Transaktionsseiten
+
 ### 6.2.0
 - Wiederkehrende Zahlungen nach Benutzerintervall verlängern
 

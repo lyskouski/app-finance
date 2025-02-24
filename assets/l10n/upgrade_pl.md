@@ -2,6 +2,9 @@
 
 _Pełną listę aktualizacji można wyświetlić za pomocą elementu nawigacyjnego "O aplikacji" na przycisku "Wskazówki"._
 
+### 6.3.0
+- Dodawanie stron dochodu i transakcji
+
 ### 6.2.0
 - Rozszerzenie płatności cyklicznych o interwał użytkownika
 

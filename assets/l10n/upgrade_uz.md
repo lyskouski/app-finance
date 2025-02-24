@@ -2,6 +2,9 @@
 
 _Yangilanishlarning toʻliq roʻyxatini “Maslahat” tugmasidagi “Haqida” navigatsiya bandi orqali koʻrish mumkin._
 
+### 6.3.0
+- Daromad va tranzaksiya sahifalarini qo'shish
+
 ### 6.2.0
 - Takroriy to'lovlarni foydalanuvchi oralig'i bo'yicha uzaytirish
 
