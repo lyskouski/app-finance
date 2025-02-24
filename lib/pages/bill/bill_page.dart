@@ -25,7 +25,7 @@ class BillPage extends StatefulWidget {
   BillPageState createState() => BillPageState();
 }
 
-class BillPageState extends AbstractPageState<BillPage> {
+class BillPageState<T extends StatefulWidget> extends AbstractPageState<T> {
   InterfaceIterator? stream;
   List<Widget> itemsShown = [];
   DateTime timer = DateTime(DateTime.now().year, DateTime.now().month, DateTime.now().day);
@@ -48,30 +48,58 @@ class BillPageState extends AbstractPageState<BillPage> {
     super.dispose();
   }
 
-  void _addItems() {
+  Widget addHeaderWidget() {
     final width = ScreenHelper.state().width - ThemeHelper.getIndent(4);
     DateTime startingDay = DateTime.now().getStartingDay(AppStartOfMonth.get());
+    return SliverToBoxAdapter(
+      child: BaseHeaderWidget(
+        route: AppRoute.homeRoute,
+        tooltip: AppLocale.labels.homeTooltip,
+        width: width,
+        total: state.getTotal(AppDataType.bills),
+        title: '${AppLocale.labels.billHeadline}, ${startingDay.fullMonth()}',
+      ),
+    );
+  }
+
+  Widget addLineWidget(dynamic item) {
+    final width = ScreenHelper.state().width - ThemeHelper.getIndent(4);
+    final account = state.getByUuid(item.account);
+    final budget = state.getByUuid(item.category);
+    final countWidth = ThemeHelper.getWidthCount(null, context);
+    return BaseSwipeWidget(
+      routePath: AppRoute.billEditRoute,
+      uuid: item.uuid!,
+      child: BillLineWidget(
+        uuid: item.uuid!,
+        count: countWidth,
+        title: item.title,
+        description: account != null ? '${account.title} (${account.description})' : '',
+        descriptionColor: account?.color ?? Colors.transparent,
+        details: item.detailsFormatted,
+        progress: item.progress,
+        color: budget?.color ?? Colors.transparent,
+        icon: budget?.icon ?? Icons.radio_button_unchecked_sharp,
+        iconTooltip: budget?.title ?? '?',
+        hidden: item.hidden,
+        width: width,
+        route: AppRoute.billViewRoute,
+      ),
+    );
+  }
+
+  void _addItems() {
     if (itemsShown.isEmpty) {
-      itemsShown.add(
-        SliverToBoxAdapter(
-          child: BaseHeaderWidget(
-            route: AppRoute.homeRoute,
-            tooltip: AppLocale.labels.homeTooltip,
-            width: width,
-            total: state.getTotal(AppDataType.bills),
-            title: '${AppLocale.labels.billHeadline}, ${startingDay.fullMonth()}',
-          ),
-        ),
-      );
+      itemsShown.add(addHeaderWidget());
     }
     if (stream == null || stream?.isFinished == true) {
       return;
     }
     String marker = '';
-    List<BillAppData> items = [];
+    List<dynamic> items = [];
     do {
       marker = timer.yMEd();
-      items = stream!.getTill(0.0 + timer.millisecondsSinceEpoch) as List<BillAppData>;
+      items = stream!.getTill(0.0 + timer.millisecondsSinceEpoch);
       timer = timer.add(const Duration(days: -1));
     } while (items.isEmpty && !stream!.isFinished);
 
@@ -88,30 +116,9 @@ class BillPageState extends AbstractPageState<BillPage> {
               itemCount: items.length,
               itemBuilder: (context, int index) {
                 final item = items[index];
-                final account = state.getByUuid(item.account);
-                final budget = state.getByUuid(item.category);
-                final countWidth = ThemeHelper.getWidthCount(null, context);
                 return BackgroundWrapper(
                   index: index,
-                  child: BaseSwipeWidget(
-                    routePath: AppRoute.billEditRoute,
-                    uuid: item.uuid!,
-                    child: BillLineWidget(
-                      uuid: item.uuid!,
-                      count: countWidth,
-                      title: item.title,
-                      description: account != null ? '${account.title} (${account.description})' : '',
-                      descriptionColor: account?.color ?? Colors.transparent,
-                      details: item.detailsFormatted,
-                      progress: item.progress,
-                      color: budget?.color ?? Colors.transparent,
-                      icon: budget?.icon ?? Icons.radio_button_unchecked_sharp,
-                      iconTooltip: budget?.title ?? '?',
-                      hidden: item.hidden,
-                      width: width,
-                      route: AppRoute.billViewRoute,
-                    ),
-                  ),
+                  child: addLineWidget(item),
                 );
               },
             ),
@@ -143,6 +150,8 @@ class BillPageState extends AbstractPageState<BillPage> {
     );
   }
 
+  InterfaceIterator getContentStream() => state.getStream<BillAppData>(AppDataType.bills);
+
   @override
   Widget buildContent(BuildContext context, BoxConstraints constraints) {
     state.addListener(() {
@@ -154,7 +163,7 @@ class BillPageState extends AbstractPageState<BillPage> {
     if (stream == null) {
       WidgetsBinding.instance.addPostFrameCallback(
         (_) => setState(() {
-          stream = state.getStream<BillAppData>(AppDataType.bills);
+          stream = getContentStream();
           _addItems();
         }),
       );

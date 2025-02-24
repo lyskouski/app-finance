@@ -11,9 +11,7 @@ import 'package:app_finance/_configs/theme_helper.dart';
 import 'package:app_finance/_classes/structure/navigation/app_route.dart';
 import 'package:app_finance/_ext/date_time_ext.dart';
 import 'package:app_finance/design/generic/base_line_widget.dart';
-import 'package:app_finance/design/wrapper/background_wrapper.dart';
-import 'package:app_finance/pages/_interfaces/abstract_page_state.dart';
-import 'package:app_finance/pages/bill/widgets/sliver_header_delegate.dart';
+import 'package:app_finance/pages/bill/bill_page.dart';
 import 'package:app_finance/design/generic/base_header_widget.dart';
 import 'package:app_finance/design/generic/base_swipe_widget.dart';
 import 'package:flutter/material.dart';
@@ -25,29 +23,8 @@ class InvoicePage extends StatefulWidget {
   InvoicePageState createState() => InvoicePageState();
 }
 
-class InvoicePageState<T extends StatefulWidget> extends AbstractPageState<T> {
-  InterfaceIterator? stream;
-  List<Widget> itemsShown = [];
-  DateTime timer = DateTime(DateTime.now().year, DateTime.now().month, DateTime.now().day);
-  final _scrollController = ScrollController();
-  final batch = 25;
-
+class InvoicePageState<T extends StatefulWidget> extends BillPageState<T> {
   @override
-  void initState() {
-    super.initState();
-    _scrollController.addListener(() {
-      if (_scrollController.position.extentAfter < 200 && !stream!.isFinished) {
-        setState(() => _addItems());
-      }
-    });
-  }
-
-  @override
-  void dispose() {
-    _scrollController.dispose();
-    super.dispose();
-  }
-
   Widget addHeaderWidget() {
     final width = ScreenHelper.state().width - ThemeHelper.getIndent(4);
     DateTime startingDay = DateTime.now().getStartingDay(AppStartOfMonth.get());
@@ -62,6 +39,7 @@ class InvoicePageState<T extends StatefulWidget> extends AbstractPageState<T> {
     );
   }
 
+  @override
   Widget addLineWidget(dynamic item) {
     final width = ScreenHelper.state().width - ThemeHelper.getIndent(4);
     final account = state.getByUuid(item.account);
@@ -83,92 +61,12 @@ class InvoicePageState<T extends StatefulWidget> extends AbstractPageState<T> {
     );
   }
 
-  void _addItems() {
-    if (itemsShown.isEmpty) {
-      itemsShown.add(addHeaderWidget());
-    }
-    if (stream == null || stream?.isFinished == true) {
-      return;
-    }
-    String marker = '';
-    List<InvoiceAppData> items = [];
-    do {
-      marker = timer.yMEd();
-      items = stream!.getTill(0.0 + timer.millisecondsSinceEpoch) as List<InvoiceAppData>;
-      timer = timer.add(const Duration(days: -1));
-    } while (items.isEmpty && !stream!.isFinished);
-
-    itemsShown.add(
-      SliverMainAxisGroup(
-        slivers: [
-          SliverPersistentHeader(
-            pinned: true,
-            delegate: SliverHeaderDelegate(marker),
-          ),
-          SliverPadding(
-            padding: EdgeInsets.symmetric(vertical: ThemeHelper.getIndent(0.5)),
-            sliver: SliverList.builder(
-              itemCount: items.length,
-              itemBuilder: (context, int index) {
-                final item = items[index];
-                return BackgroundWrapper(
-                  index: index,
-                  child: addLineWidget(item),
-                );
-              },
-            ),
-          ),
-        ],
-      ),
-    );
-    WidgetsBinding.instance.addPostFrameCallback((_) {
-      if (_scrollController.position.maxScrollExtent == 0) {
-        setState(() => _addItems());
-      }
-    });
-  }
-
   @override
   String getTitle() => AppLocale.labels.invoiceHeadline;
-
-  @override
-  String getButtonName() => AppLocale.labels.addMainTooltip;
-
-  @override
-  Widget buildButton(BuildContext context, BoxConstraints constraints) {
-    NavigatorState nav = Navigator.of(context);
-    return FloatingActionButton(
-      heroTag: 'invoice_page',
-      onPressed: () => nav.pushNamed(AppRoute.billAddRoute),
-      tooltip: getButtonName(),
-      child: const Icon(Icons.add),
-    );
-  }
 
   bool getContentFilter(InvoiceAppData o) => o.accountFrom != null;
 
   @override
-  Widget buildContent(BuildContext context, BoxConstraints constraints) {
-    state.addListener(() {
-      itemsShown = [];
-      final now = DateTime.now();
-      timer = DateTime(now.year, now.month, now.day);
-      stream = null;
-    });
-    if (stream == null) {
-      WidgetsBinding.instance.addPostFrameCallback(
-        (_) => setState(() {
-          stream = state.getStream<InvoiceAppData>(AppDataType.invoice, filter: getContentFilter);
-          _addItems();
-        }),
-      );
-    }
-    return Padding(
-      padding: EdgeInsets.all(ThemeHelper.getIndent()),
-      child: CustomScrollView(
-        controller: _scrollController,
-        slivers: itemsShown,
-      ),
-    );
-  }
+  InterfaceIterator getContentStream() =>
+      state.getStream<InvoiceAppData>(AppDataType.invoice, filter: getContentFilter);
 }
