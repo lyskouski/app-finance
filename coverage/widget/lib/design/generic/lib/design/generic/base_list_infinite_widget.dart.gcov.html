@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Test Date:</td>
-            <td class="headerValue">2025-02-19 14:02:28</td>
+            <td class="headerValue">2025-02-24 12:04:47</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntryHi">-</td>
@@ -133,11 +133,11 @@
 <span id="L71"><span class="lineNum">      71</span>              :   }</span>
 <span id="L72"><span class="lineNum">      72</span>              : </span>
 <span id="L73"><span class="lineNum">      73</span> <span class="tlaUNC">           0 :   void clearState() {</span></span>
-<span id="L74"><span class="lineNum">      74</span> <span class="tlaUNC">           0 :     setState(() {</span></span>
+<span id="L74"><span class="lineNum">      74</span> <span class="tlaUNC">           0 :     if (scrollController.hasClients) {</span></span>
 <span id="L75"><span class="lineNum">      75</span> <span class="tlaUNC">           0 :       scrollController.jumpTo(0);</span></span>
 <span id="L76"><span class="lineNum">      76</span> <span class="tlaUNC">           0 :       items.clear();</span></span>
-<span id="L77"><span class="lineNum">      77</span> <span class="tlaUNC">           0 :       _addItems();</span></span>
-<span id="L78"><span class="lineNum">      78</span>              :     });</span>
+<span id="L77"><span class="lineNum">      77</span> <span class="tlaUNC">           0 :       setState(_addItems);</span></span>
+<span id="L78"><span class="lineNum">      78</span>              :     }</span>
 <span id="L79"><span class="lineNum">      79</span>              :   }</span>
 <span id="L80"><span class="lineNum">      80</span>              : </span>
 <span id="L81"><span class="lineNum">      81</span> <span class="tlaUNC">           0 :   @override</span></span>

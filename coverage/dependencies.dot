@@ -22,7 +22,7 @@ digraph G {
   }
   {
     rank = same; "pages";
-    invoice [label="<0>INVOICE|<invoice_edit_page>invoice_edit_page|<invoice_view_page>invoice_view_page",fillcolor="silver:white", gradientangle=240, style="filled"];
+    invoice [label="<0>INVOICE|<invoice_edit_page>invoice_edit_page|<invoice_transfer_page>invoice_transfer_page|<invoice_view_page>invoice_view_page|<invoice_page>invoice_page",fillcolor="silver:white", gradientangle=240, style="filled"];
   }
   {
     rank = same; "pages";
@@ -266,6 +266,12 @@ digraph G {
   invoice -> bill [color="#F0F0F050"];
   invoice -> bill_widgets [color="#F0F0F050"];
   invoice -> herald [color="#F0F0F050"];
+  invoice -> structure [color="#F0F0F050"];
+  invoice -> structure_navigation [color="#F0F0F050"];
+  invoice -> _configs_ [color="#F0F0F050"];
+  invoice -> generic [color="#F0F0F050"];
+  invoice -> invoice [color="#F0F0F050"];
+  invoice -> herald [color="#F0F0F050"];
   invoice -> controller [color="#F0F0F050"];
   invoice -> structure [color="#F0F0F050"];
   invoice -> _configs_ [color="#F0F0F050"];
@@ -273,6 +279,15 @@ digraph G {
   invoice -> _interfaces [color="#F0F0F050"];
   invoice -> invoice_widgets [color="#F0F0F050"];
   invoice -> wrapper [color="#F0F0F050"];
+  invoice -> controller [color="#F0F0F050"];
+  invoice -> herald [color="#F0F0F050"];
+  invoice -> storage [color="#F0F0F050"];
+  invoice -> structure [color="#F0F0F050"];
+  invoice -> _configs_ [color="#F0F0F050"];
+  invoice -> structure_navigation [color="#F0F0F050"];
+  invoice -> _ext_ [color="#F0F0F050"];
+  invoice -> generic [color="#F0F0F050"];
+  invoice -> bill [color="#F0F0F050"];
   invoice_widgets -> herald [color="#F0F0F050"];
   invoice_widgets -> structure [color="#F0F0F050"];
   invoice_widgets -> _ext_ [color="#F0F0F050"];
