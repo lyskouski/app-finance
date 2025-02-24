@@ -196,6 +196,23 @@ class AccountViewPageState extends AbstractPageState<AccountViewPage> {
     );
   }
 
+  Widget buildLineTransferWidget(item, BuildContext context) {
+    final account = state.getByUuid(item?.accountFrom ?? '');
+    return BaseLineWidget(
+      uuid: item.uuid ?? '',
+      title: _getTitle(item),
+      description: item.description ?? '',
+      details: item.detailsFormatted,
+      progress: item.progress,
+      color: account?.color ?? Colors.transparent,
+      icon: account?.icon ?? Icons.radio_button_unchecked_sharp,
+      hidden: item.hidden,
+      skip: item.skip,
+      width: width,
+      route: _getRoute(item),
+    );
+  }
+
   @override
   Widget buildContent(BuildContext context, BoxConstraints constraints) {
     width = ThemeHelper.getWidth(context, 4, constraints);
@@ -220,6 +237,7 @@ class AccountViewPageState extends AbstractPageState<AccountViewPage> {
                 Tab(text: AppLocale.labels.summary),
                 Tab(text: AppLocale.labels.billHeadline),
                 Tab(text: AppLocale.labels.invoiceHeadline),
+                Tab(text: AppLocale.labels.transfersHeadline),
               ],
               children: [
                 BaseListInfiniteWidget(
@@ -233,9 +251,20 @@ class AccountViewPageState extends AbstractPageState<AccountViewPage> {
                   buildListWidget: buildLineWidget,
                 ),
                 BaseListInfiniteWidget(
-                  stream: state.getStream(AppDataType.invoice, filter: (o) => o.account != widget.uuid),
+                  stream: state.getStream(
+                    AppDataType.invoice,
+                    filter: (o) => o.account != widget.uuid || o.accountFrom != null,
+                  ),
                   width: width,
                   buildListWidget: buildLineWidget,
+                ),
+                BaseListInfiniteWidget(
+                  stream: state.getStream(
+                    AppDataType.invoice,
+                    filter: (o) => o.account != widget.uuid && o.accountFrom != widget.uuid || o.accountFrom == null,
+                  ),
+                  width: width,
+                  buildListWidget: buildLineTransferWidget,
                 ),
               ],
             ),

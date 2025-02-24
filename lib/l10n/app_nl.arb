@@ -408,6 +408,7 @@
     "transactionFile": "Logbestand Fingrom-transacties (.log)",
     "transferHeadline": "Overdracht",
     "transferTooltip": "Details overdracht instellen",
+    "transfersHeadline": "Overschrijvingen",
     "typeButton": "Knop",
     "updateAccountTooltip": "Rekening bijwerken",
     "updateBillTooltip": "Rekening bijwerken",

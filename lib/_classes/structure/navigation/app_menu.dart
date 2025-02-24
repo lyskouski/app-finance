@@ -49,6 +49,16 @@ class AppMenu {
         route: AppRoute.billRoute,
       ),
       AppMenuItem(
+        name: AppLocale.labels.invoiceHeadline,
+        icon: Icons.attach_money,
+        route: AppRoute.invoiceRoute,
+      ),
+      AppMenuItem(
+        name: AppLocale.labels.transfersHeadline,
+        icon: Icons.transform,
+        route: AppRoute.invoiceTransferRoute,
+      ),
+      AppMenuItem(
         name: AppLocale.labels.currencyHeadline,
         icon: Icons.currency_exchange,
         route: AppRoute.currencyRoute,

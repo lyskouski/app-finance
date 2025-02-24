@@ -408,6 +408,7 @@
     "transactionFile": "ملف سجل المعاملات المالية (.log)",
     "transferHeadline": "التحويل",
     "transferTooltip": "تعيين تفاصيل التحويل",
+    "transfersHeadline": "التحويلات",
     "typeButton": "الزر",
     "updateAccountTooltip": "تحديث الحساب",
     "updateBillTooltip": "تحديث الفاتورة",

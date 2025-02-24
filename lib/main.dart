@@ -45,6 +45,8 @@ import 'package:app_finance/pages/goal/goal_page.dart';
 import 'package:app_finance/pages/goal/goal_view_page.dart';
 import 'package:app_finance/pages/home/home_page.dart';
 import 'package:app_finance/pages/invoice/invoice_edit_page.dart';
+import 'package:app_finance/pages/invoice/invoice_page.dart';
+import 'package:app_finance/pages/invoice/invoice_transfer_page.dart';
 import 'package:app_finance/pages/invoice/invoice_view_page.dart';
 import 'package:app_finance/pages/metrics/metrics_page.dart';
 import 'package:app_finance/pages/settings/settings_page.dart';
@@ -149,6 +151,7 @@ class MyAppState extends State<MyApp> {
     AppRoute.current = route;
     final args = arguments as Map<String, dynamic>?;
     final String key = args?['uuid'] ?? args?['search'] ?? '';
+    final int focus = args?['focus'] ?? 1;
     if (widget.platform != null) {
       FirebaseAnalytics.instance.logScreenView(
         screenName: route,
@@ -168,7 +171,7 @@ class MyAppState extends State<MyApp> {
           AppRoute.automationPaymentViewRoute => PaymentViewPage(uuid: key),
           AppRoute.automationPaymentEditRoute => PaymentEditPage(uuid: key),
           AppRoute.billRoute => const BillPage(),
-          AppRoute.billAddRoute => const BillAddPage(),
+          AppRoute.billAddRoute => BillAddPage(focus: focus),
           AppRoute.billViewRoute => BillViewPage(uuid: key),
           AppRoute.billEditRoute => BillEditPage(uuid: key),
           AppRoute.budgetRoute => const BudgetPage(),
@@ -182,8 +185,10 @@ class MyAppState extends State<MyApp> {
           AppRoute.goalAddRoute => const GoalAddPage(),
           AppRoute.goalViewRoute => GoalViewPage(uuid: key),
           AppRoute.goalEditRoute => GoalEditPage(uuid: key),
+          AppRoute.invoiceRoute => InvoicePage(),
           AppRoute.invoiceViewRoute => InvoiceViewPage(uuid: key),
           AppRoute.invoiceEditRoute => InvoiceEditPage(uuid: key),
+          AppRoute.invoiceTransferRoute => InvoiceTransferPage(),
           AppRoute.homeRoute => const HomePage(),
           AppRoute.metricsRoute => const MetricsPage(),
           AppRoute.metricsSearchRoute => MetricsPage(search: key),

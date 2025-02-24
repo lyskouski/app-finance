@@ -408,6 +408,7 @@
     "transactionFile": "Fingrom 交易記錄檔 (.log)",
     "transferHeadline": "傳輸",
     "transferTooltip": "設定傳輸詳細資料",
+    "transfersHeadline": "轉移",
     "typeButton": "按鈕",
     "updateAccountTooltip": "更新帳戶",
     "updateBillTooltip": "更新帳單",

@@ -408,6 +408,7 @@
     "transactionFile": "Fingrom Fajl Žurnala Tranzakcyj (.log)",
     "transferHeadline": "Pieradača",
     "transferTooltip": "Ustaliujcie Zviestki Pieradačy",
+    "transfersHeadline": "Transfiery",
     "typeButton": "Knopka",
     "updateAccountTooltip": "Zmianić Rachunak",
     "updateBillTooltip": "Zmianić Ček",

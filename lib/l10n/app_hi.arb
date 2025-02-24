@@ -408,6 +408,7 @@
     "transactionFile": "फ़िंगरॉम लेनदेन लॉग फ़ाइल (.log)",
     "transferHeadline": "स्थानांतरण",
     "transferTooltip": "स्थानांतरण विवरण सेट करें",
+    "transfersHeadline": "स्थानांतरण",
     "typeButton": "बटन",
     "updateAccountTooltip": "खाता अद्यतन करें",
     "updateBillTooltip": "बिल अद्यतन करें",

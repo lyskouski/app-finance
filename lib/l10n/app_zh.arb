@@ -408,6 +408,7 @@
     "transactionFile": "Fingrom 交易日志文件 (.log)",
     "transferHeadline": "转账",
     "transferTooltip": "设置转账详情",
+    "transfersHeadline": "转让",
     "typeButton": "按钮",
     "updateAccountTooltip": "更新账户",
     "updateBillTooltip": "更新账单",

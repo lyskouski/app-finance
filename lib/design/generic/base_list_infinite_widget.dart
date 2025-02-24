@@ -71,11 +71,11 @@ class BaseListInfiniteWidgetState extends State<BaseListInfiniteWidget> {
   }
 
   void clearState() {
-    setState(() {
+    if (scrollController.hasClients) {
       scrollController.jumpTo(0);
       items.clear();
-      _addItems();
-    });
+      setState(_addItems);
+    }
   }
 
   @override

@@ -408,6 +408,7 @@
     "transactionFile": "Arquivo de registro de transações do Fingrom (.log)",
     "transferHeadline": "Transferir",
     "transferTooltip": "Definir detalhes da transferência",
+    "transfersHeadline": "Transferências",
     "typeButton": "Botão",
     "updateAccountTooltip": "Atualizar conta",
     "updateBillTooltip": "Update Bill (Atualizar conta)",
