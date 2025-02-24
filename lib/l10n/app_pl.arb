@@ -408,6 +408,7 @@
     "transactionFile": "Plik dziennika transakcji Fingrom (.log)",
     "transferHeadline": "Przelew",
     "transferTooltip": "Ustaw szczegóły transferu",
+    "transfersHeadline": "Przelewy",
     "typeButton": "Przycisk",
     "updateAccountTooltip": "Zaktualizuj rachunek",
     "updateBillTooltip": "Zaktualizuj rachunek",

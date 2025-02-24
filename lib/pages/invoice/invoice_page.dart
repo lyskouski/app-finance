@@ -1,4 +1,4 @@
-// Copyright 2023 The terCAD team. All rights reserved.
+// Copyright 2025 The terCAD team. All rights reserved.
 // Use of this source code is governed by a CC BY-NC-ND 4.0 license that can be found in the LICENSE file.
 
 import 'package:app_finance/_classes/controller/iterator_controller.dart';
@@ -25,7 +25,7 @@ class InvoicePage extends StatefulWidget {
   InvoicePageState createState() => InvoicePageState();
 }
 
-class InvoicePageState extends AbstractPageState<InvoicePage> {
+class InvoicePageState<T extends StatefulWidget> extends AbstractPageState<T> {
   InterfaceIterator? stream;
   List<Widget> itemsShown = [];
   DateTime timer = DateTime(DateTime.now().year, DateTime.now().month, DateTime.now().day);
@@ -48,21 +48,44 @@ class InvoicePageState extends AbstractPageState<InvoicePage> {
     super.dispose();
   }
 
-  void _addItems() {
+  Widget addHeaderWidget() {
     final width = ScreenHelper.state().width - ThemeHelper.getIndent(4);
     DateTime startingDay = DateTime.now().getStartingDay(AppStartOfMonth.get());
+    return SliverToBoxAdapter(
+      child: BaseHeaderWidget(
+        route: AppRoute.homeRoute,
+        tooltip: AppLocale.labels.homeTooltip,
+        width: width,
+        total: state.getTotal(AppDataType.invoice),
+        title: '${AppLocale.labels.invoiceHeadline}, ${startingDay.fullMonth()}',
+      ),
+    );
+  }
+
+  Widget addLineWidget(dynamic item) {
+    final width = ScreenHelper.state().width - ThemeHelper.getIndent(4);
+    final account = state.getByUuid(item.account);
+    return BaseSwipeWidget(
+      routePath: AppRoute.invoiceEditRoute,
+      uuid: item.uuid!,
+      child: BaseLineWidget(
+        uuid: item.uuid!,
+        title: item.title,
+        description: account != null ? '${account.title} (${account.description})' : '',
+        details: item.detailsFormatted,
+        progress: item.progress,
+        color: item.color ?? Colors.transparent,
+        icon: item.icon ?? Icons.radio_button_unchecked_sharp,
+        hidden: item.hidden,
+        width: width,
+        route: AppRoute.invoiceViewRoute,
+      ),
+    );
+  }
+
+  void _addItems() {
     if (itemsShown.isEmpty) {
-      itemsShown.add(
-        SliverToBoxAdapter(
-          child: BaseHeaderWidget(
-            route: AppRoute.homeRoute,
-            tooltip: AppLocale.labels.homeTooltip,
-            width: width,
-            total: state.getTotal(AppDataType.invoice),
-            title: '${AppLocale.labels.invoiceHeadline}, ${startingDay.fullMonth()}',
-          ),
-        ),
-      );
+      itemsShown.add(addHeaderWidget());
     }
     if (stream == null || stream?.isFinished == true) {
       return;
@@ -88,25 +111,9 @@ class InvoicePageState extends AbstractPageState<InvoicePage> {
               itemCount: items.length,
               itemBuilder: (context, int index) {
                 final item = items[index];
-                final account = state.getByUuid(item.account);
                 return BackgroundWrapper(
                   index: index,
-                  child: BaseSwipeWidget(
-                    routePath: AppRoute.invoiceEditRoute,
-                    uuid: item.uuid!,
-                    child: BaseLineWidget(
-                      uuid: item.uuid!,
-                      title: item.title,
-                      description: account != null ? '${account.title} (${account.description})' : '',
-                      details: item.detailsFormatted,
-                      progress: item.progress,
-                      color: item.color ?? Colors.transparent,
-                      icon: item.icon ?? Icons.radio_button_unchecked_sharp,
-                      hidden: item.hidden,
-                      width: width,
-                      route: AppRoute.invoiceViewRoute,
-                    ),
-                  ),
+                  child: addLineWidget(item),
                 );
               },
             ),
@@ -138,6 +145,8 @@ class InvoicePageState extends AbstractPageState<InvoicePage> {
     );
   }
 
+  bool getContentFilter(InvoiceAppData o) => o.accountFrom != null;
+
   @override
   Widget buildContent(BuildContext context, BoxConstraints constraints) {
     state.addListener(() {
@@ -149,7 +158,7 @@ class InvoicePageState extends AbstractPageState<InvoicePage> {
     if (stream == null) {
       WidgetsBinding.instance.addPostFrameCallback(
         (_) => setState(() {
-          stream = state.getStream<InvoiceAppData>(AppDataType.invoice, filter: (o) => o.accountFrom != null);
+          stream = state.getStream<InvoiceAppData>(AppDataType.invoice, filter: getContentFilter);
           _addItems();
         }),
       );

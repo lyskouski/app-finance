@@ -408,6 +408,7 @@
     "transactionFile": "Soubor protokolu transakcí Fingrom (.log)",
     "transferHeadline": "Přenos",
     "transferTooltip": "Nastavit podrobnosti o přenosu",
+    "transfersHeadline": "Převody",
     "typeButton": "Tlačítko",
     "updateAccountTooltip": "Aktualizovat účet",
     "updateBillTooltip": "Aktualizovat účet",

@@ -408,6 +408,7 @@
     "transactionFile": "핑프롬 트랜잭션 로그 파일(.log)",
     "transferHeadline": "전송",
     "transferTooltip": "전송 세부 정보 설정",
+    "transfersHeadline": "전송",
     "typeButton": "버튼",
     "updateAccountTooltip": "계정 업데이트",
     "updateBillTooltip": "청구서 업데이트",

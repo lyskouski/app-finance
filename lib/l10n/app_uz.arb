@@ -408,6 +408,7 @@
     "transactionFile": "Fingrom tranzaksiyalari jurnali fayli (.log)",
     "transferHeadline": "Transfer",
     "transferTooltip": "Transfer ma'lumotlarini o'rnating",
+    "transfersHeadline": "Transferlar",
     "typeButton": "Tugma",
     "updateAccountTooltip": "Hisobni yangilash",
     "updateBillTooltip": "Billni yangilash",

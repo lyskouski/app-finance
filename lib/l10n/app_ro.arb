@@ -408,6 +408,7 @@
     "transactionFile": "Fișierul jurnal al tranzacțiilor Fingrom (.log)",
     "transferHeadline": "Transfer",
     "transferTooltip": "Setați detaliile transferului",
+    "transfersHeadline": "Transferuri",
     "typeButton": "Buton",
     "updateAccountTooltip": "Actualizare cont",
     "updateBillTooltip": "Actualizare factură",

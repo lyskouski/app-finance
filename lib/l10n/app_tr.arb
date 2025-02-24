@@ -408,6 +408,7 @@
     "transactionFile": "Fingrom İşlemleri Günlük Dosyası (.log)",
     "transferHeadline": "Transfer",
     "transferTooltip": "Transfer Ayrıntılarını Ayarla",
+    "transfersHeadline": "Transferler",
     "typeButton": "Düğme",
     "updateAccountTooltip": "Hesap Güncelleme",
     "updateBillTooltip": "Bill'i Güncelle",

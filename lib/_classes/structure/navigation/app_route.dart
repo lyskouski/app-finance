@@ -36,6 +36,7 @@ abstract class AppRoute {
   static const String invoiceRoute = '/app/finance/invoice';
   static const String invoiceViewRoute = '/app/finance/invoice/view';
   static const String invoiceEditRoute = '/app/finance/invoice/edit';
+  static const String invoiceTransferRoute = '/app/finance/invoice-transfer';
   static const String homeRoute = '/app/finance/main';
   static const String metricsRoute = '/app/finance/metrics';
   static const String metricsSearchRoute = '/app/finance/metrics/search';

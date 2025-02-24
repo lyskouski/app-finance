@@ -408,6 +408,7 @@
     "transactionFile": "Fingrom файл журнала транзакцый (.log)",
     "transferHeadline": "Перадача",
     "transferTooltip": "Усталюйце звесткі перадачы",
+    "transfersHeadline": "Трансферы",
     "typeButton": "Кнопка",
     "updateAccountTooltip": "Змяніць рахунак",
     "updateBillTooltip": "Змяніць чэк",

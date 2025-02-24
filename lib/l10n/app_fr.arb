@@ -408,6 +408,7 @@
     "transactionFile": "Fichier journal des transactions Fingrom (.log)",
     "transferHeadline": "Transfert",
     "transferTooltip": "Définir les détails du transfert",
+    "transfersHeadline": "Transferts",
     "typeButton": "Bouton",
     "updateAccountTooltip": "Mise à jour du compte",
     "updateBillTooltip": "Mise à jour de la facture",

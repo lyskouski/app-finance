@@ -408,6 +408,7 @@
     "transactionFile": "فایل گزارش معاملات Fingrom (log.)",
     "transferHeadline": "انتقال",
     "transferTooltip": "تنظیم جزئیات انتقال",
+    "transfersHeadline": "نقل و انتقالات",
     "typeButton": "دکمه",
     "updateAccountTooltip": "به روز رسانی حساب کاربری",
     "updateBillTooltip": "به روز رسانی بیل",

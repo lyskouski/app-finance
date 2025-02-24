@@ -408,6 +408,7 @@
     "transactionFile": "Fingrom Transactions Log File (.log)",
     "transferHeadline": "Transfer",
     "transferTooltip": "Transfer təfərrüatlarını təyin edin",
+    "transfersHeadline": "Transferlər",
     "typeButton": "Düymə",
     "updateAccountTooltip": "Hesabı yeniləyin",
     "updateBillTooltip": "Billi yeniləyin",

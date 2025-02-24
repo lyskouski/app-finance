@@ -408,6 +408,7 @@
     "transactionFile": "Fingrom 取引ログファイル（.log）",
     "transferHeadline": "転送",
     "transferTooltip": "転送の詳細を設定",
+    "transfersHeadline": "移籍",
     "typeButton": "ボタン",
     "updateAccountTooltip": "アカウントの更新",
     "updateBillTooltip": "請求書の更新",
