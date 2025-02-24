@@ -33,6 +33,7 @@ abstract class AppRoute {
   static const String goalAddRoute = '/app/finance/goal/add';
   static const String goalViewRoute = '/app/finance/goal/view';
   static const String goalEditRoute = '/app/finance/goal/edit';
+  static const String invoiceRoute = '/app/finance/invoice';
   static const String invoiceViewRoute = '/app/finance/invoice/view';
   static const String invoiceEditRoute = '/app/finance/invoice/edit';
   static const String homeRoute = '/app/finance/main';
