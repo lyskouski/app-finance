@@ -870,6 +870,9 @@ class AppLocalizationsJa extends AppLocalizations {
   }
 
   @override
+  String get searchTooltip => '検索';
+
+  @override
   String get settingsBaseHeadline => '基本設定';
 
   @override

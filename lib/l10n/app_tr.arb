@@ -371,6 +371,7 @@
             "type": "String"
         }
     },
+    "searchTooltip": "Aramak",
     "settingsBaseHeadline": "Temel Bilgiler",
     "settingsHeadline": "Ayarlar",
     "skipFromTotals": "Toplamlardan hariç tut",

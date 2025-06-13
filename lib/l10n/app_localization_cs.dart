@@ -872,6 +872,9 @@ class AppLocalizationsCs extends AppLocalizations {
   }
 
   @override
+  String get searchTooltip => 'Vyhledávání';
+
+  @override
   String get settingsBaseHeadline => 'Základy';
 
   @override

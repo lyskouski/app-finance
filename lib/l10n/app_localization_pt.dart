@@ -875,6 +875,9 @@ class AppLocalizationsPt extends AppLocalizations {
   }
 
   @override
+  String get searchTooltip => 'Pesquisa';
+
+  @override
   String get settingsBaseHeadline => 'Noções básicas';
 
   @override
@@ -1895,6 +1898,9 @@ class AppLocalizationsPtBr extends AppLocalizationsPt {
   String search(Object value) {
     return 'Mostrar por padrão \'$value\'';
   }
+
+  @override
+  String get searchTooltip => 'Procurar';
 
   @override
   String get settingsBaseHeadline => 'Noções básicas';

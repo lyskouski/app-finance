@@ -371,6 +371,7 @@
             "type": "String"
         }
     },
+    "searchTooltip": "يبحث",
     "settingsBaseHeadline": "الأساسيات",
     "settingsHeadline": "الإعدادات",
     "skipFromTotals": "الاستبعاد من المجاميع",

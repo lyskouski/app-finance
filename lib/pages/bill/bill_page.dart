@@ -58,6 +58,7 @@ class BillPageState<T extends StatefulWidget> extends AbstractPageState<T> {
         width: width,
         total: state.getTotal(AppDataType.bills),
         title: '${AppLocale.labels.billHeadline}, ${startingDay.fullMonth()}',
+        searchRoute: AppRoute.billSearchRoute,
       ),
     );
   }

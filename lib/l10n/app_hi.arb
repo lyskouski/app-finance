@@ -371,6 +371,7 @@
             "type": "String"
         }
     },
+    "searchTooltip": "खोज",
     "settingsBaseHeadline": "मूल बातें",
     "settingsHeadline": "समायोजन",
     "skipFromTotals": "कुल से बाहर रखें",

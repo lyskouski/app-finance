@@ -1783,6 +1783,12 @@ abstract class AppLocalizations {
   /// **'Show By \'{value}\' Pattern'**
   String search(Object value);
 
+  /// No description provided for @searchTooltip.
+  ///
+  /// In en, this message translates to:
+  /// **'Search'**
+  String get searchTooltip;
+
   /// No description provided for @settingsBaseHeadline.
   ///
   /// In en, this message translates to:

@@ -874,6 +874,9 @@ class AppLocalizationsAz extends AppLocalizations {
   }
 
   @override
+  String get searchTooltip => 'Axtar';
+
+  @override
   String get settingsBaseHeadline => 'Əsaslar';
 
   @override

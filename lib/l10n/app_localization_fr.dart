@@ -876,6 +876,9 @@ class AppLocalizationsFr extends AppLocalizations {
   }
 
   @override
+  String get searchTooltip => 'Recherche';
+
+  @override
   String get settingsBaseHeadline => 'Principes de base';
 
   @override

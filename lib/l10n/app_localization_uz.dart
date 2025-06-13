@@ -878,6 +878,9 @@ class AppLocalizationsUz extends AppLocalizations {
   }
 
   @override
+  String get searchTooltip => 'Qidiruv';
+
+  @override
   String get settingsBaseHeadline => 'Asoslar';
 
   @override

@@ -371,6 +371,7 @@
             "type": "String"
         }
     },
+    "searchTooltip": "Axtar",
     "settingsBaseHeadline": "Əsaslar",
     "settingsHeadline": "Parametrlər",
     "skipFromTotals": "Cəmilərdən xaric edin",

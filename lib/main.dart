@@ -33,6 +33,7 @@ import 'package:app_finance/pages/automation/payment_view_page.dart';
 import 'package:app_finance/pages/bill/bill_add_page.dart';
 import 'package:app_finance/pages/bill/bill_edit_page.dart';
 import 'package:app_finance/pages/bill/bill_page.dart';
+import 'package:app_finance/pages/bill/bill_search_page.dart';
 import 'package:app_finance/pages/bill/bill_view_page.dart';
 import 'package:app_finance/pages/budget/budget_page.dart';
 import 'package:app_finance/pages/budget/budget_add_page.dart';
@@ -174,6 +175,7 @@ class MyAppState extends State<MyApp> {
           AppRoute.billAddRoute => BillAddPage(focus: focus),
           AppRoute.billViewRoute => BillViewPage(uuid: key),
           AppRoute.billEditRoute => BillEditPage(uuid: key),
+          AppRoute.billSearchRoute => BillSearchPage(),
           AppRoute.budgetRoute => const BudgetPage(),
           AppRoute.budgetAddRoute => const BudgetAddPage(),
           AppRoute.budgetViewRoute => BudgetViewPage(uuid: key),

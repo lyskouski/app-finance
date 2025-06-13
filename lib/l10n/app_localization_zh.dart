@@ -870,6 +870,9 @@ class AppLocalizationsZh extends AppLocalizations {
   }
 
   @override
+  String get searchTooltip => '搜索';
+
+  @override
   String get settingsBaseHeadline => '基础知识';
 
   @override
@@ -1882,6 +1885,9 @@ class AppLocalizationsZhTw extends AppLocalizationsZh {
   String search(Object value) {
     return '以 \'$value\' 模式顯示';
   }
+
+  @override
+  String get searchTooltip => '搜尋';
 
   @override
   String get settingsBaseHeadline => '基本知識';

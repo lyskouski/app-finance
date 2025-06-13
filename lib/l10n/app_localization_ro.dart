@@ -876,6 +876,9 @@ class AppLocalizationsRo extends AppLocalizations {
   }
 
   @override
+  String get searchTooltip => 'Căutare';
+
+  @override
   String get settingsBaseHeadline => 'Principii de bază';
 
   @override

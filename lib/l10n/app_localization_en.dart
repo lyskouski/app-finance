@@ -871,6 +871,9 @@ class AppLocalizationsEn extends AppLocalizations {
   }
 
   @override
+  String get searchTooltip => 'Search';
+
+  @override
   String get settingsBaseHeadline => 'Basics';
 
   @override

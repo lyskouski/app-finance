@@ -870,6 +870,9 @@ class AppLocalizationsKo extends AppLocalizations {
   }
 
   @override
+  String get searchTooltip => '찾다';
+
+  @override
   String get settingsBaseHeadline => '기본 사항';
 
   @override

@@ -872,6 +872,9 @@ class AppLocalizationsPl extends AppLocalizations {
   }
 
   @override
+  String get searchTooltip => 'Szukaj';
+
+  @override
   String get settingsBaseHeadline => 'Podstawy';
 
   @override

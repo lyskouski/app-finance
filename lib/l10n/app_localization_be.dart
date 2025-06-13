@@ -873,6 +873,9 @@ class AppLocalizationsBe extends AppLocalizations {
   }
 
   @override
+  String get searchTooltip => 'Пошук';
+
+  @override
   String get settingsBaseHeadline => 'Асновы';
 
   @override
@@ -1889,6 +1892,9 @@ class AppLocalizationsBeEu extends AppLocalizationsBe {
   String search(Object value) {
     return 'Pakazać pa \'$value\' Šablonie';
   }
+
+  @override
+  String get searchTooltip => 'Pošuk';
 
   @override
   String get settingsBaseHeadline => 'Asnovy';
