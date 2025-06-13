@@ -20,6 +20,7 @@ import 'package:app_finance/_configs/custom_text_theme.dart';
 import 'package:app_finance/_classes/storage/app_data.dart';
 import 'package:app_finance/_classes/structure/navigation/app_route.dart';
 import 'package:app_finance/_configs/firebase_options.dart';
+import 'package:app_finance/l10n/app_localization.dart';
 import 'package:app_finance/pages/about/about_page.dart';
 import 'package:app_finance/pages/account/account_add_page.dart';
 import 'package:app_finance/pages/account/account_edit_page.dart';
@@ -58,7 +59,6 @@ import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_currency_picker/flutter_currency_picker.dart';
-import 'package:flutter_gen/gen_l10n/app_localization.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
