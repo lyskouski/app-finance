@@ -9,8 +9,7 @@ class AppLocalizationsEn extends AppLocalizations {
   AppLocalizationsEn([String locale = 'en']) : super(locale);
 
   @override
-  String get a =>
-      'RUN `dart run grinder sort-translations --quiet` FOR ORDERING';
+  String get a => 'RUN `dart run grinder sort-translations --quiet` FOR ORDERING';
 
   @override
   String get aboutHeadline => 'About';
@@ -97,8 +96,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get balanceDate => 'Balance Date Update';
 
   @override
-  String get balanceDateTooltip =>
-      'Outcomes and Incomes before this date won\'t affect the balance';
+  String get balanceDateTooltip => 'Outcomes and Incomes before this date won\'t affect the balance';
 
   @override
   String get balanceTooltip => 'Set Balance';

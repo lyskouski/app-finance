@@ -9,8 +9,7 @@ class AppLocalizationsHi extends AppLocalizations {
   AppLocalizationsHi([String locale = 'hi']) : super(locale);
 
   @override
-  String get a =>
-      'RUN `dart run grinder sort-translations --quiet` FOR ORDERING';
+  String get a => 'RUN `dart run grinder sort-translations --quiet` FOR ORDERING';
 
   @override
   String get aboutHeadline => 'के बारे में';
@@ -97,8 +96,7 @@ class AppLocalizationsHi extends AppLocalizations {
   String get balanceDate => 'शेष तिथि अद्यतन';
 
   @override
-  String get balanceDateTooltip =>
-      'इस तिथि से पहले के परिणाम और आय शेष राशि को प्रभावित नहीं करेंगे';
+  String get balanceDateTooltip => 'इस तिथि से पहले के परिणाम और आय शेष राशि को प्रभावित नहीं करेंगे';
 
   @override
   String get balanceTooltip => 'संतुलन स्थापित करें';
@@ -308,8 +306,7 @@ class AppLocalizationsHi extends AppLocalizations {
   String get confirmHeader => 'कार्रवाई की पुष्टि करें';
 
   @override
-  String get confirmTooltip =>
-      'क्या आपको यकीन है? इस एक्शन को वापस नहीं किया जा सकता।';
+  String get confirmTooltip => 'क्या आपको यकीन है? इस एक्शन को वापस नहीं किया जा सकता।';
 
   @override
   String get contributors => 'योगदानकर्ताओं';
@@ -721,8 +718,7 @@ class AppLocalizationsHi extends AppLocalizations {
   String get milestones => 'मील के पत्थर';
 
   @override
-  String get missingContent =>
-      'फ़ाइल संसाधित नहीं की जा सकती (या तो रद्द की गई)';
+  String get missingContent => 'फ़ाइल संसाधित नहीं की जा सकती (या तो रद्द की गई)';
 
   @override
   String get navigationTooltip => 'मुख्य मेनू खोलें';
@@ -811,8 +807,7 @@ class AppLocalizationsHi extends AppLocalizations {
   String get peerPing => 'गुनगुनाहट';
 
   @override
-  String get peerSent =>
-      'डेटा को कनेक्टेड डिवाइसेस में स्थानांतरित किया जाता है';
+  String get peerSent => 'डेटा को कनेक्टेड डिवाइसेस में स्थानांतरित किया जाता है';
 
   @override
   String get peerStatus => 'स्थिति';

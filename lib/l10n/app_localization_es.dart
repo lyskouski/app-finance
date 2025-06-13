@@ -9,8 +9,7 @@ class AppLocalizationsEs extends AppLocalizations {
   AppLocalizationsEs([String locale = 'es']) : super(locale);
 
   @override
-  String get a =>
-      'RUN `dart run grinder sort-translations --quiet` FOR ORDERING';
+  String get a => 'RUN `dart run grinder sort-translations --quiet` FOR ORDERING';
 
   @override
   String get aboutHeadline => 'Acerca de';
@@ -97,8 +96,7 @@ class AppLocalizationsEs extends AppLocalizations {
   String get balanceDate => 'Fecha de actualización del saldo';
 
   @override
-  String get balanceDateTooltip =>
-      'Los resultados e ingresos anteriores a esta fecha no afectarán al saldo';
+  String get balanceDateTooltip => 'Los resultados e ingresos anteriores a esta fecha no afectarán al saldo';
 
   @override
   String get balanceTooltip => 'Establecer Saldo';
@@ -308,8 +306,7 @@ class AppLocalizationsEs extends AppLocalizations {
   String get confirmHeader => 'Confirmar Acción';
 
   @override
-  String get confirmTooltip =>
-      '¿Está seguro? Esta acción no se puede deshacer.';
+  String get confirmTooltip => '¿Está seguro? Esta acción no se puede deshacer.';
 
   @override
   String get contributors => 'Colaboradores';
@@ -583,8 +580,7 @@ class AppLocalizationsEs extends AppLocalizations {
   String get errorExpired => 'Tarjeta caducada';
 
   @override
-  String get errorNegative =>
-      '¡No puede ser negativa! Por favor, corrija el error';
+  String get errorNegative => '¡No puede ser negativa! Por favor, corrija el error';
 
   @override
   String get example => 'Ejemplo';
@@ -733,8 +729,7 @@ class AppLocalizationsEs extends AppLocalizations {
   }
 
   @override
-  String get noChartData =>
-      'Faltan datos (o no son suficientes) para mostrarlos';
+  String get noChartData => 'Faltan datos (o no son suficientes) para mostrarlos';
 
   @override
   String get notifyHeadline => 'Notificaciones Parser';
@@ -812,8 +807,7 @@ class AppLocalizationsEs extends AppLocalizations {
   String get peerPing => 'ping';
 
   @override
-  String get peerSent =>
-      'Los datos se transfieren a los Dispositivos conectados';
+  String get peerSent => 'Los datos se transfieren a los Dispositivos conectados';
 
   @override
   String get peerStatus => 'Status';
@@ -978,8 +972,7 @@ class AppLocalizationsEs extends AppLocalizations {
   String get total => 'total';
 
   @override
-  String get transactionFile =>
-      'Archivo de registro de transacciones Fingrom (.log)';
+  String get transactionFile => 'Archivo de registro de transacciones Fingrom (.log)';
 
   @override
   String get transferHeadline => 'Transferencia';
@@ -1018,8 +1011,7 @@ class AppLocalizationsEs extends AppLocalizations {
   String get validTillDate => 'Fecha de validez';
 
   @override
-  String get webDav =>
-      'Autoría y control de versiones distribuido por la Web (WebDav)';
+  String get webDav => 'Autoría y control de versiones distribuido por la Web (WebDav)';
 
   @override
   String get zoomState => 'Acercar / Alejar';

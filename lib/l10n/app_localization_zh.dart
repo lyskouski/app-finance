@@ -9,8 +9,7 @@ class AppLocalizationsZh extends AppLocalizations {
   AppLocalizationsZh([String locale = 'zh']) : super(locale);
 
   @override
-  String get a =>
-      'RUN `dart run grinder sort-translations --quiet` FOR ORDERING';
+  String get a => 'RUN `dart run grinder sort-translations --quiet` FOR ORDERING';
 
   @override
   String get aboutHeadline => '关于';
@@ -891,8 +890,7 @@ class AppLocalizationsZh extends AppLocalizations {
   String get splitTooltip => '声明每月限额';
 
   @override
-  String get subscription =>
-      '作为一个开源项目，订阅不会解锁任何额外功能。不过，这将是对应用程序持续发展和改进的投资，并能保持其可用性。';
+  String get subscription => '作为一个开源项目，订阅不会解锁任何额外功能。不过，这将是对应用程序持续发展和改进的投资，并能保持其可用性。';
 
   @override
   String get subscriptionCoffee => '购买咖啡';
@@ -1023,8 +1021,7 @@ class AppLocalizationsZhTw extends AppLocalizationsZh {
   AppLocalizationsZhTw() : super('zh_TW');
 
   @override
-  String get a =>
-      'RUN `dart run grinder sort-translations --quiet` FOR ORDERING';
+  String get a => 'RUN `dart run grinder sort-translations --quiet` FOR ORDERING';
 
   @override
   String get aboutHeadline => '關於我們';
@@ -1905,8 +1902,7 @@ class AppLocalizationsZhTw extends AppLocalizationsZh {
   String get splitTooltip => '宣告每月限制';
 
   @override
-  String get subscription =>
-      '作為一個開放原始碼專案，訂閱不會解鎖任何額外功能。然而，這將會成為對應用程式持續演進與改進的投資，並維持其可用性。';
+  String get subscription => '作為一個開放原始碼專案，訂閱不會解鎖任何額外功能。然而，這將會成為對應用程式持續演進與改進的投資，並維持其可用性。';
 
   @override
   String get subscriptionCoffee => '購買咖啡';

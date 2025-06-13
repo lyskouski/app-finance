@@ -9,8 +9,7 @@ class AppLocalizationsTr extends AppLocalizations {
   AppLocalizationsTr([String locale = 'tr']) : super(locale);
 
   @override
-  String get a =>
-      'RUN `dart run grinder sort-translations --quiet` FOR ORDERING';
+  String get a => 'RUN `dart run grinder sort-translations --quiet` FOR ORDERING';
 
   @override
   String get aboutHeadline => 'Hakkında';
@@ -97,8 +96,7 @@ class AppLocalizationsTr extends AppLocalizations {
   String get balanceDate => 'Denge Tarihi Güncellemesi';
 
   @override
-  String get balanceDateTooltip =>
-      'Bu tarihten önceki Sonuçlar ve Gelirler bakiyeyi etkilemeyecektir';
+  String get balanceDateTooltip => 'Bu tarihten önceki Sonuçlar ve Gelirler bakiyeyi etkilemeyecektir';
 
   @override
   String get balanceTooltip => 'Dengeyi Ayarla';

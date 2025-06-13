@@ -9,8 +9,7 @@ class AppLocalizationsPt extends AppLocalizations {
   AppLocalizationsPt([String locale = 'pt']) : super(locale);
 
   @override
-  String get a =>
-      'RUN `dart run grinder sort-translations --quiet` FOR ORDERING';
+  String get a => 'RUN `dart run grinder sort-translations --quiet` FOR ORDERING';
 
   @override
   String get aboutHeadline => 'Sobre a';
@@ -97,8 +96,7 @@ class AppLocalizationsPt extends AppLocalizations {
   String get balanceDate => 'Atualização da data do saldo';
 
   @override
-  String get balanceDateTooltip =>
-      'Os resultados e rendimentos anteriores a esta data não afectam o saldo';
+  String get balanceDateTooltip => 'Os resultados e rendimentos anteriores a esta data não afectam o saldo';
 
   @override
   String get balanceTooltip => 'Definir saldo';
@@ -582,8 +580,7 @@ class AppLocalizationsPt extends AppLocalizations {
   String get errorExpired => 'Cartão expirado';
 
   @override
-  String get errorNegative =>
-      'Não pode ser negativo! Por favor, corrija o erro';
+  String get errorNegative => 'Não pode ser negativo! Por favor, corrija o erro';
 
   @override
   String get example => 'Exemplo';
@@ -721,8 +718,7 @@ class AppLocalizationsPt extends AppLocalizations {
   String get milestones => 'Marcos';
 
   @override
-  String get missingContent =>
-      'O ficheiro não pode ser processado (ou cancelado)';
+  String get missingContent => 'O ficheiro não pode ser processado (ou cancelado)';
 
   @override
   String get navigationTooltip => 'Abrir o menu principal';
@@ -733,8 +729,7 @@ class AppLocalizationsPt extends AppLocalizations {
   }
 
   @override
-  String get noChartData =>
-      'Faltam dados (ou não são suficientes) para serem mostrados';
+  String get noChartData => 'Faltam dados (ou não são suficientes) para serem mostrados';
 
   @override
   String get notifyHeadline => 'Analisador de notificações';
@@ -812,8 +807,7 @@ class AppLocalizationsPt extends AppLocalizations {
   String get peerPing => 'ping';
 
   @override
-  String get peerSent =>
-      'Os dados são transferidos para os dispositivos ligados';
+  String get peerSent => 'Os dados são transferidos para os dispositivos ligados';
 
   @override
   String get peerStatus => 'Estado';
@@ -963,8 +957,7 @@ class AppLocalizationsPt extends AppLocalizations {
   String get titleAccountTooltip => 'Introduzir identificador de conta';
 
   @override
-  String get titleBudgetTooltip =>
-      'Introduzir o nome da categoria de orçamento';
+  String get titleBudgetTooltip => 'Introduzir o nome da categoria de orçamento';
 
   @override
   String get titleGoal => 'Objetivo';
@@ -979,8 +972,7 @@ class AppLocalizationsPt extends AppLocalizations {
   String get total => 'total';
 
   @override
-  String get transactionFile =>
-      'Ficheiro de registo de transacções do Fingrom (.log)';
+  String get transactionFile => 'Ficheiro de registo de transacções do Fingrom (.log)';
 
   @override
   String get transferHeadline => 'Transferir';
@@ -1019,8 +1011,7 @@ class AppLocalizationsPt extends AppLocalizations {
   String get validTillDate => 'Transação válida';
 
   @override
-  String get webDav =>
-      'Criação de versões e autoria distribuída na Web (WebDav)';
+  String get webDav => 'Criação de versões e autoria distribuída na Web (WebDav)';
 
   @override
   String get zoomState => 'Ampliar / Reduzir o zoom';
@@ -1031,8 +1022,7 @@ class AppLocalizationsPtBr extends AppLocalizationsPt {
   AppLocalizationsPtBr() : super('pt_BR');
 
   @override
-  String get a =>
-      'RUN `dart run grinder sort-translations --quiet` FOR ORDERING';
+  String get a => 'RUN `dart run grinder sort-translations --quiet` FOR ORDERING';
 
   @override
   String get aboutHeadline => 'Sobre a';
@@ -1119,8 +1109,7 @@ class AppLocalizationsPtBr extends AppLocalizationsPt {
   String get balanceDate => 'Atualização da data do saldo';
 
   @override
-  String get balanceDateTooltip =>
-      'Os resultados e rendimentos anteriores a essa data não afetarão o saldo';
+  String get balanceDateTooltip => 'Os resultados e rendimentos anteriores a essa data não afetarão o saldo';
 
   @override
   String get balanceTooltip => 'Definir saldo';
@@ -1604,8 +1593,7 @@ class AppLocalizationsPtBr extends AppLocalizationsPt {
   String get errorExpired => 'Cartão expirado';
 
   @override
-  String get errorNegative =>
-      'Não pode ser negativo! Por favor, corrija o erro';
+  String get errorNegative => 'Não pode ser negativo! Por favor, corrija o erro';
 
   @override
   String get example => 'Exemplo';
@@ -1743,8 +1731,7 @@ class AppLocalizationsPtBr extends AppLocalizationsPt {
   String get milestones => 'Marcos';
 
   @override
-  String get missingContent =>
-      'O arquivo não pode ser processado (ou cancelado)';
+  String get missingContent => 'O arquivo não pode ser processado (ou cancelado)';
 
   @override
   String get navigationTooltip => 'Abrir o menu principal';
@@ -1755,8 +1742,7 @@ class AppLocalizationsPtBr extends AppLocalizationsPt {
   }
 
   @override
-  String get noChartData =>
-      'Os dados estão faltando (ou não são suficientes) para serem exibidos';
+  String get noChartData => 'Os dados estão faltando (ou não são suficientes) para serem exibidos';
 
   @override
   String get notifyHeadline => 'Analisador de notificações';
@@ -1834,8 +1820,7 @@ class AppLocalizationsPtBr extends AppLocalizationsPt {
   String get peerPing => 'ping';
 
   @override
-  String get peerSent =>
-      'Os dados são transferidos para os dispositivos conectados';
+  String get peerSent => 'Os dados são transferidos para os dispositivos conectados';
 
   @override
   String get peerStatus => 'Status';
@@ -2000,8 +1985,7 @@ class AppLocalizationsPtBr extends AppLocalizationsPt {
   String get total => 'total';
 
   @override
-  String get transactionFile =>
-      'Arquivo de registro de transações do Fingrom (.log)';
+  String get transactionFile => 'Arquivo de registro de transações do Fingrom (.log)';
 
   @override
   String get transferHeadline => 'Transferir';
@@ -2022,8 +2006,7 @@ class AppLocalizationsPtBr extends AppLocalizationsPt {
   String get updateBillTooltip => 'Update Bill (Atualizar conta)';
 
   @override
-  String get updateBudgetTooltip =>
-      'Update Budget Category (Atualizar categoria orçamentária)';
+  String get updateBudgetTooltip => 'Update Budget Category (Atualizar categoria orçamentária)';
 
   @override
   String get updateGoalTooltip => 'Atualizar meta';
@@ -2041,8 +2024,7 @@ class AppLocalizationsPtBr extends AppLocalizationsPt {
   String get validTillDate => 'Valid Till';
 
   @override
-  String get webDav =>
-      'Autoria e controle de versão distribuídos pela Web (WebDav)';
+  String get webDav => 'Autoria e controle de versão distribuídos pela Web (WebDav)';
 
   @override
   String get zoomState => 'Ampliar / Reduzir o zoom';
