@@ -9,7 +9,8 @@ class AppLocalizationsBe extends AppLocalizations {
   AppLocalizationsBe([String locale = 'be']) : super(locale);
 
   @override
-  String get a => 'RUN `dart run grinder sort-translations --quiet` FOR ORDERING';
+  String get a =>
+      'RUN `dart run grinder sort-translations --quiet` FOR ORDERING';
 
   @override
   String get aboutHeadline => 'Аб дадатку';
@@ -96,7 +97,8 @@ class AppLocalizationsBe extends AppLocalizations {
   String get balanceDate => 'Дата аднаўленьня балансу';
 
   @override
-  String get balanceDateTooltip => 'Вылікі і прыбыткі да гэтай даты не паўплываюць на баланс';
+  String get balanceDateTooltip =>
+      'Вылікі і прыбыткі да гэтай даты не паўплываюць на баланс';
 
   @override
   String get balanceTooltip => 'Усталяваць баланс';
@@ -580,7 +582,8 @@ class AppLocalizationsBe extends AppLocalizations {
   String get errorExpired => 'Тэрмін дьзеяньня карты скончыўся';
 
   @override
-  String get errorNegative => 'Ня можа быць адмоўным! Калі ласка, выпраўце памылку';
+  String get errorNegative =>
+      'Ня можа быць адмоўным! Калі ласка, выпраўце памылку';
 
   @override
   String get example => 'Прыклад';
@@ -729,7 +732,8 @@ class AppLocalizationsBe extends AppLocalizations {
   }
 
   @override
-  String get noChartData => 'Адсутнічаюць (або недастаткова) дадьзеныя для паказу';
+  String get noChartData =>
+      'Адсутнічаюць (або недастаткова) дадьзеныя для паказу';
 
   @override
   String get notifyHeadline => 'Апрацоўшчык апавяшчэньняў';
@@ -1011,7 +1015,8 @@ class AppLocalizationsBe extends AppLocalizations {
   String get validTillDate => 'Дьзейнічае да';
 
   @override
-  String get webDav => 'Вэб-размеркаванае стварэньне і кіраваньне версіямі (WebDav)';
+  String get webDav =>
+      'Вэб-размеркаванае стварэньне і кіраваньне версіямі (WebDav)';
 
   @override
   String get zoomState => 'Павялічыць / паменьшыць';
@@ -1022,7 +1027,8 @@ class AppLocalizationsBeEu extends AppLocalizationsBe {
   AppLocalizationsBeEu() : super('be_EU');
 
   @override
-  String get a => 'RUN `dart run grinder sort-translations --quiet` FOR ORDERING';
+  String get a =>
+      'RUN `dart run grinder sort-translations --quiet` FOR ORDERING';
 
   @override
   String get aboutHeadline => 'Ab Dadatku';
@@ -1109,7 +1115,8 @@ class AppLocalizationsBeEu extends AppLocalizationsBe {
   String get balanceDate => 'Data Adnaŭlieńnia Balansu';
 
   @override
-  String get balanceDateTooltip => 'Vyliki i Prybytki da hetaj daty nie paŭplyvajuć na balans';
+  String get balanceDateTooltip =>
+      'Vyliki i Prybytki da hetaj daty nie paŭplyvajuć na balans';
 
   @override
   String get balanceTooltip => 'Ustaliavać Balans';
@@ -1593,7 +1600,8 @@ class AppLocalizationsBeEu extends AppLocalizationsBe {
   String get errorExpired => 'Termin d́ziejańnia Karty skončyŭsia';
 
   @override
-  String get errorNegative => 'Nia moža być admoŭnym! Kali laska, vypraŭcie pamylku';
+  String get errorNegative =>
+      'Nia moža być admoŭnym! Kali laska, vypraŭcie pamylku';
 
   @override
   String get example => 'Pryklad';
@@ -1742,7 +1750,8 @@ class AppLocalizationsBeEu extends AppLocalizationsBe {
   }
 
   @override
-  String get noChartData => 'Adsutničajuć (abo niedastatkova) dad́zienyja dlia pakazu';
+  String get noChartData =>
+      'Adsutničajuć (abo niedastatkova) dad́zienyja dlia pakazu';
 
   @override
   String get notifyHeadline => 'Apracoŭščyk Apaviaščeńniaŭ';
@@ -2024,7 +2033,8 @@ class AppLocalizationsBeEu extends AppLocalizationsBe {
   String get validTillDate => 'D́ziejničaje da';
 
   @override
-  String get webDav => 'Veb-razmierkavanaje Stvareńnie i Kiravańnie Viersijami (WebDav)';
+  String get webDav =>
+      'Veb-razmierkavanaje Stvareńnie i Kiravańnie Viersijami (WebDav)';
 
   @override
   String get zoomState => 'Pavialičyć / Pamieńšyć';

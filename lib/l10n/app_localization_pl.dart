@@ -9,7 +9,8 @@ class AppLocalizationsPl extends AppLocalizations {
   AppLocalizationsPl([String locale = 'pl']) : super(locale);
 
   @override
-  String get a => 'RUN `dart run grinder sort-translations --quiet` FOR ORDERING';
+  String get a =>
+      'RUN `dart run grinder sort-translations --quiet` FOR ORDERING';
 
   @override
   String get aboutHeadline => 'O aplikacji';
@@ -96,7 +97,8 @@ class AppLocalizationsPl extends AppLocalizations {
   String get balanceDate => 'Data aktualizacji salda';
 
   @override
-  String get balanceDateTooltip => 'Wyniki i przychody sprzed tej daty nie wpłyną na saldo.';
+  String get balanceDateTooltip =>
+      'Wyniki i przychody sprzed tej daty nie wpłyną na saldo.';
 
   @override
   String get balanceTooltip => 'Ustaw saldo';
@@ -729,7 +731,8 @@ class AppLocalizationsPl extends AppLocalizations {
   }
 
   @override
-  String get noChartData => 'Brakuje danych (lub jest ich za mało) do wyświetlenia';
+  String get noChartData =>
+      'Brakuje danych (lub jest ich za mało) do wyświetlenia';
 
   @override
   String get notifyHeadline => 'Parser powiadomień';
@@ -1011,7 +1014,8 @@ class AppLocalizationsPl extends AppLocalizations {
   String get validTillDate => 'Ważny termin płatności';
 
   @override
-  String get webDav => 'Rozproszone tworzenie i wersjonowanie przez Internet (WebDav)';
+  String get webDav =>
+      'Rozproszone tworzenie i wersjonowanie przez Internet (WebDav)';
 
   @override
   String get zoomState => 'Powiększanie / pomniejszanie';

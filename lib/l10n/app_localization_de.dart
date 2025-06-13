@@ -9,7 +9,8 @@ class AppLocalizationsDe extends AppLocalizations {
   AppLocalizationsDe([String locale = 'de']) : super(locale);
 
   @override
-  String get a => 'RUN `dart run grinder sort-translations --quiet` FOR ORDERING';
+  String get a =>
+      'RUN `dart run grinder sort-translations --quiet` FOR ORDERING';
 
   @override
   String get aboutHeadline => 'Über';
@@ -54,7 +55,8 @@ class AppLocalizationsDe extends AppLocalizations {
   String get addGoalTooltip => 'Neues Ziel hinzufügen';
 
   @override
-  String get addMainTooltip => 'Rechnung, Einkommen oder Überweisung hinzufügen';
+  String get addMainTooltip =>
+      'Rechnung, Einkommen oder Überweisung hinzufügen';
 
   @override
   String afterNDays(Object value) {
@@ -96,7 +98,8 @@ class AppLocalizationsDe extends AppLocalizations {
   String get balanceDate => 'Datum der Aktualisierung des Saldos';
 
   @override
-  String get balanceDateTooltip => 'Ausgaben und Einnahmen vor diesem Datum haben keinen Einfluss auf den Saldo';
+  String get balanceDateTooltip =>
+      'Ausgaben und Einnahmen vor diesem Datum haben keinen Einfluss auf den Saldo';
 
   @override
   String get balanceTooltip => 'Saldo festlegen';
@@ -306,7 +309,8 @@ class AppLocalizationsDe extends AppLocalizations {
   String get confirmHeader => 'Aktion bestätigen';
 
   @override
-  String get confirmTooltip => 'Sind Sie sicher? Diese Aktion kann nicht rückgängig gemacht werden.';
+  String get confirmTooltip =>
+      'Sind Sie sicher? Diese Aktion kann nicht rückgängig gemacht werden.';
 
   @override
   String get contributors => 'Beitragende';
@@ -580,7 +584,8 @@ class AppLocalizationsDe extends AppLocalizations {
   String get errorExpired => 'Karte abgelaufen';
 
   @override
-  String get errorNegative => 'Kann nicht negativ sein! Bitte beheben Sie den Fehler';
+  String get errorNegative =>
+      'Kann nicht negativ sein! Bitte beheben Sie den Fehler';
 
   @override
   String get example => 'Beispiel';
@@ -685,7 +690,8 @@ class AppLocalizationsDe extends AppLocalizations {
   String get isCleaned => 'Vorhandene Daten entfernen';
 
   @override
-  String get isCreated => 'Bereits erstellt, folgen Sie den nächsten Schritten!';
+  String get isCreated =>
+      'Bereits erstellt, folgen Sie den nächsten Schritten!';
 
   @override
   String get isEncrypted => 'Datei ist verschlüsselt (standardmäßig)';
@@ -718,7 +724,8 @@ class AppLocalizationsDe extends AppLocalizations {
   String get milestones => 'Meilensteine';
 
   @override
-  String get missingContent => 'Datei kann nicht verarbeitet werden (entweder abgebrochen)';
+  String get missingContent =>
+      'Datei kann nicht verarbeitet werden (entweder abgebrochen)';
 
   @override
   String get navigationTooltip => 'Hauptmenü öffnen';
@@ -729,7 +736,8 @@ class AppLocalizationsDe extends AppLocalizations {
   }
 
   @override
-  String get noChartData => 'Daten fehlen (oder sind nicht ausreichend) um angezeigt zu werden';
+  String get noChartData =>
+      'Daten fehlen (oder sind nicht ausreichend) um angezeigt zu werden';
 
   @override
   String get notifyHeadline => 'Benachrichtigungen Parser';
@@ -1011,7 +1019,8 @@ class AppLocalizationsDe extends AppLocalizations {
   String get validTillDate => 'Gültig bis';
 
   @override
-  String get webDav => 'Verteilte Autorisierung und Versionierung im Web (WebDav)';
+  String get webDav =>
+      'Verteilte Autorisierung und Versionierung im Web (WebDav)';
 
   @override
   String get zoomState => 'Vergrößern / Verkleinern';

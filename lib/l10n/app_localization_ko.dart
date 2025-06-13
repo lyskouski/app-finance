@@ -9,7 +9,8 @@ class AppLocalizationsKo extends AppLocalizations {
   AppLocalizationsKo([String locale = 'ko']) : super(locale);
 
   @override
-  String get a => 'RUN `dart run grinder sort-translations --quiet` FOR ORDERING';
+  String get a =>
+      'RUN `dart run grinder sort-translations --quiet` FOR ORDERING';
 
   @override
   String get aboutHeadline => '정보';

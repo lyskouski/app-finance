@@ -9,7 +9,8 @@ class AppLocalizationsUk extends AppLocalizations {
   AppLocalizationsUk([String locale = 'uk']) : super(locale);
 
   @override
-  String get a => 'RUN `dart run grinder sort-translations --quiet` FOR ORDERING';
+  String get a =>
+      'RUN `dart run grinder sort-translations --quiet` FOR ORDERING';
 
   @override
   String get aboutHeadline => 'Про додаток';
@@ -96,7 +97,8 @@ class AppLocalizationsUk extends AppLocalizations {
   String get balanceDate => 'Дата оновлення балансу';
 
   @override
-  String get balanceDateTooltip => 'Відрахування та прибутки до цієї дати не вплинуть на баланс';
+  String get balanceDateTooltip =>
+      'Відрахування та прибутки до цієї дати не вплинуть на баланс';
 
   @override
   String get balanceTooltip => 'Встановити баланс';
@@ -580,7 +582,8 @@ class AppLocalizationsUk extends AppLocalizations {
   String get errorExpired => 'Термін дії картки закінчився';
 
   @override
-  String get errorNegative => 'Не може бути негативним! Будь ласка, виправте помилку';
+  String get errorNegative =>
+      'Не може бути негативним! Будь ласка, виправте помилку';
 
   @override
   String get example => 'Приклад';
@@ -1011,7 +1014,8 @@ class AppLocalizationsUk extends AppLocalizations {
   String get validTillDate => 'Дійсний до';
 
   @override
-  String get webDav => 'Веб-розподілене створення і кирування версіями (WebDav)';
+  String get webDav =>
+      'Веб-розподілене створення і кирування версіями (WebDav)';
 
   @override
   String get zoomState => 'Збільшити / Зменшити';

@@ -9,7 +9,8 @@ class AppLocalizationsUz extends AppLocalizations {
   AppLocalizationsUz([String locale = 'uz']) : super(locale);
 
   @override
-  String get a => 'RUN `dart run grinder sort-translations --quiet` FOR ORDERING';
+  String get a =>
+      'RUN `dart run grinder sort-translations --quiet` FOR ORDERING';
 
   @override
   String get aboutHeadline => 'Haqida';
@@ -54,7 +55,8 @@ class AppLocalizationsUz extends AppLocalizations {
   String get addGoalTooltip => 'Yangi maqsad qo\'shing';
 
   @override
-  String get addMainTooltip => 'Hisob-kitob, daromad yoki pul o\'tkazmasini qo\'shing';
+  String get addMainTooltip =>
+      'Hisob-kitob, daromad yoki pul o\'tkazmasini qo\'shing';
 
   @override
   String afterNDays(Object value) {
@@ -96,7 +98,8 @@ class AppLocalizationsUz extends AppLocalizations {
   String get balanceDate => 'Balans sanasini yangilash';
 
   @override
-  String get balanceDateTooltip => 'Ushbu sanadan oldingi natijalar va daromadlar balansga ta\'sir qilmaydi';
+  String get balanceDateTooltip =>
+      'Ushbu sanadan oldingi natijalar va daromadlar balansga ta\'sir qilmaydi';
 
   @override
   String get balanceTooltip => 'Balansni o\'rnatish';
@@ -306,7 +309,8 @@ class AppLocalizationsUz extends AppLocalizations {
   String get confirmHeader => 'Amalni tasdiqlang';
 
   @override
-  String get confirmTooltip => 'Ishonchingiz komilmi? Bu amalni ortga qaytarib bo‘lmaydi.';
+  String get confirmTooltip =>
+      'Ishonchingiz komilmi? Bu amalni ortga qaytarib bo‘lmaydi.';
 
   @override
   String get contributors => 'Himoyachilar';
@@ -580,7 +584,8 @@ class AppLocalizationsUz extends AppLocalizations {
   String get errorExpired => 'Karta muddati tugagan';
 
   @override
-  String get errorNegative => 'Salbiy bo\'lishi mumkin emas! Iltimos, xatoni tuzating';
+  String get errorNegative =>
+      'Salbiy bo\'lishi mumkin emas! Iltimos, xatoni tuzating';
 
   @override
   String get example => 'Misol';
@@ -638,7 +643,8 @@ class AppLocalizationsUz extends AppLocalizations {
   String get goalTooltip => 'Ochiq maqsadlar';
 
   @override
-  String get hasEncrypted => 'Bir marta o\'rnatilsa, uni o\'zgartirib bo\'lmaydi';
+  String get hasEncrypted =>
+      'Bir marta o\'rnatilsa, uni o\'zgartirib bo\'lmaydi';
 
   @override
   String get helpTooltip => '[Yordam] Sahifaning tavsifini ko\'rsatish';
@@ -685,7 +691,8 @@ class AppLocalizationsUz extends AppLocalizations {
   String get isCleaned => 'Mavjud ma\'lumotlarni olib tashlang';
 
   @override
-  String get isCreated => 'Allaqachon yaratilgan, keyingi bosqichlarni bajaring!';
+  String get isCreated =>
+      'Allaqachon yaratilgan, keyingi bosqichlarni bajaring!';
 
   @override
   String get isEncrypted => 'Fayl shifrlangan (sukut bo\'yicha)';
@@ -718,7 +725,8 @@ class AppLocalizationsUz extends AppLocalizations {
   String get milestones => 'Marosimlar';
 
   @override
-  String get missingContent => 'Faylni qayta ishlash mumkin emas (yoki bekor qilinadi)';
+  String get missingContent =>
+      'Faylni qayta ishlash mumkin emas (yoki bekor qilinadi)';
 
   @override
   String get navigationTooltip => 'Asosiy menyuni oching';
@@ -729,7 +737,8 @@ class AppLocalizationsUz extends AppLocalizations {
   }
 
   @override
-  String get noChartData => 'Koʻrsatish uchun maʼlumotlar yetishmayapti (yoki yetarli emas).';
+  String get noChartData =>
+      'Koʻrsatish uchun maʼlumotlar yetishmayapti (yoki yetarli emas).';
 
   @override
   String get notifyHeadline => 'Bildirishnomalarni tahlil qilish';
@@ -1011,7 +1020,8 @@ class AppLocalizationsUz extends AppLocalizations {
   String get validTillDate => 'Qachon amal qiladi';
 
   @override
-  String get webDav => 'Internetda tarqatilgan mualliflik va versiyalarni yaratish (WebDav)';
+  String get webDav =>
+      'Internetda tarqatilgan mualliflik va versiyalarni yaratish (WebDav)';
 
   @override
   String get zoomState => 'Kattalashtirish / Kichraytirish';

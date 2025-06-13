@@ -9,7 +9,8 @@ class AppLocalizationsNl extends AppLocalizations {
   AppLocalizationsNl([String locale = 'nl']) : super(locale);
 
   @override
-  String get a => 'RUN `dart run grinder sort-translations --quiet` FOR ORDERING';
+  String get a =>
+      'RUN `dart run grinder sort-translations --quiet` FOR ORDERING';
 
   @override
   String get aboutHeadline => 'Over';
@@ -96,7 +97,8 @@ class AppLocalizationsNl extends AppLocalizations {
   String get balanceDate => 'Saldo Datum Bijwerken';
 
   @override
-  String get balanceDateTooltip => 'Uitkomsten en inkomsten vóór deze datum hebben geen invloed op het saldo';
+  String get balanceDateTooltip =>
+      'Uitkomsten en inkomsten vóór deze datum hebben geen invloed op het saldo';
 
   @override
   String get balanceTooltip => 'Saldo instellen';
@@ -306,7 +308,8 @@ class AppLocalizationsNl extends AppLocalizations {
   String get confirmHeader => 'Actie bevestigen';
 
   @override
-  String get confirmTooltip => 'Weet u het zeker? Deze actie kan niet ongedaan worden gemaakt.';
+  String get confirmTooltip =>
+      'Weet u het zeker? Deze actie kan niet ongedaan worden gemaakt.';
 
   @override
   String get contributors => 'Medewerkers';
@@ -729,7 +732,8 @@ class AppLocalizationsNl extends AppLocalizations {
   }
 
   @override
-  String get noChartData => 'Gegevens ontbreken (of zijn niet voldoende) om te worden getoond';
+  String get noChartData =>
+      'Gegevens ontbreken (of zijn niet voldoende) om te worden getoond';
 
   @override
   String get notifyHeadline => 'Meldingen Parser';
@@ -807,7 +811,8 @@ class AppLocalizationsNl extends AppLocalizations {
   String get peerPing => 'ping';
 
   @override
-  String get peerSent => 'Gegevens worden overgedragen naar verbonden Apparaten';
+  String get peerSent =>
+      'Gegevens worden overgedragen naar verbonden Apparaten';
 
   @override
   String get peerStatus => 'Status';
@@ -1011,7 +1016,8 @@ class AppLocalizationsNl extends AppLocalizations {
   String get validTillDate => 'Geldig tot';
 
   @override
-  String get webDav => 'Web gedistribueerde authorisatie en versiebeheer (WebDav)';
+  String get webDav =>
+      'Web gedistribueerde authorisatie en versiebeheer (WebDav)';
 
   @override
   String get zoomState => 'Inzoomen / Uitzoomen';

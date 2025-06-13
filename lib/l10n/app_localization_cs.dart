@@ -9,7 +9,8 @@ class AppLocalizationsCs extends AppLocalizations {
   AppLocalizationsCs([String locale = 'cs']) : super(locale);
 
   @override
-  String get a => 'RUN `dart run grinder sort-translations --quiet` FOR ORDERING';
+  String get a =>
+      'RUN `dart run grinder sort-translations --quiet` FOR ORDERING';
 
   @override
   String get aboutHeadline => 'O stránkách';
@@ -96,7 +97,8 @@ class AppLocalizationsCs extends AppLocalizations {
   String get balanceDate => 'Datum aktualizace zůstatku';
 
   @override
-  String get balanceDateTooltip => 'Výnosy a příjmy před tímto datem zůstatek neovlivní.';
+  String get balanceDateTooltip =>
+      'Výnosy a příjmy před tímto datem zůstatek neovlivní.';
 
   @override
   String get balanceTooltip => 'Nastavení zůstatku';
@@ -729,7 +731,8 @@ class AppLocalizationsCs extends AppLocalizations {
   }
 
   @override
-  String get noChartData => 'Chybí údaje (nebo jich není dostatek), aby se zobrazily';
+  String get noChartData =>
+      'Chybí údaje (nebo jich není dostatek), aby se zobrazily';
 
   @override
   String get notifyHeadline => 'Parser oznámení';

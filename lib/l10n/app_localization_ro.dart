@@ -9,7 +9,8 @@ class AppLocalizationsRo extends AppLocalizations {
   AppLocalizationsRo([String locale = 'ro']) : super(locale);
 
   @override
-  String get a => 'RUN `dart run grinder sort-translations --quiet` FOR ORDERING';
+  String get a =>
+      'RUN `dart run grinder sort-translations --quiet` FOR ORDERING';
 
   @override
   String get aboutHeadline => 'Despre';
@@ -96,7 +97,8 @@ class AppLocalizationsRo extends AppLocalizations {
   String get balanceDate => 'Data actualizării soldului';
 
   @override
-  String get balanceDateTooltip => 'Rezultatele și veniturile anterioare acestei date nu vor afecta soldul';
+  String get balanceDateTooltip =>
+      'Rezultatele și veniturile anterioare acestei date nu vor afecta soldul';
 
   @override
   String get balanceTooltip => 'Setați soldul';
@@ -306,7 +308,8 @@ class AppLocalizationsRo extends AppLocalizations {
   String get confirmHeader => 'Confirmați acțiunea';
 
   @override
-  String get confirmTooltip => 'Sunteți sigur? Această acțiune nu poate fi anulată.';
+  String get confirmTooltip =>
+      'Sunteți sigur? Această acțiune nu poate fi anulată.';
 
   @override
   String get contributors => 'Contributori';
@@ -580,7 +583,8 @@ class AppLocalizationsRo extends AppLocalizations {
   String get errorExpired => 'Card expirat';
 
   @override
-  String get errorNegative => 'Nu poate fi negativ! Vă rugăm, corectați eroarea';
+  String get errorNegative =>
+      'Nu poate fi negativ! Vă rugăm, corectați eroarea';
 
   @override
   String get example => 'Exemplu';
@@ -729,7 +733,8 @@ class AppLocalizationsRo extends AppLocalizations {
   }
 
   @override
-  String get noChartData => 'Datele lipsesc (sau nu sunt suficiente) pentru a fi afișate';
+  String get noChartData =>
+      'Datele lipsesc (sau nu sunt suficiente) pentru a fi afișate';
 
   @override
   String get notifyHeadline => 'Notificări Parser';
@@ -753,7 +758,8 @@ class AppLocalizationsRo extends AppLocalizations {
   String get password => 'Parolă';
 
   @override
-  String get path => 'Numele fișierului (în care se salvează sau din care se încarcă)';
+  String get path =>
+      'Numele fișierului (în care se salvează sau din care se încarcă)';
 
   @override
   String get paymentType => 'Interval de plată';
@@ -807,7 +813,8 @@ class AppLocalizationsRo extends AppLocalizations {
   String get peerPing => 'ping';
 
   @override
-  String get peerSent => 'Datele sunt transferate către dispozitivele conectate';
+  String get peerSent =>
+      'Datele sunt transferate către dispozitivele conectate';
 
   @override
   String get peerStatus => 'Stare';
@@ -972,7 +979,8 @@ class AppLocalizationsRo extends AppLocalizations {
   String get total => 'total';
 
   @override
-  String get transactionFile => 'Fișierul jurnal al tranzacțiilor Fingrom (.log)';
+  String get transactionFile =>
+      'Fișierul jurnal al tranzacțiilor Fingrom (.log)';
 
   @override
   String get transferHeadline => 'Transfer';
