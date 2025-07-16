@@ -371,6 +371,7 @@
             "type": "String"
         }
     },
+    "searchTooltip": "Căutare",
     "settingsBaseHeadline": "Principii de bază",
     "settingsHeadline": "Setări",
     "skipFromTotals": "Excludere din totaluri",

@@ -371,6 +371,7 @@
             "type": "String"
         }
     },
+    "searchTooltip": "찾다",
     "settingsBaseHeadline": "기본 사항",
     "settingsHeadline": "설정",
     "skipFromTotals": "합계에서 제외",

@@ -58,6 +58,7 @@ class BillPageState<T extends StatefulWidget> extends AbstractPageState<T> {
         width: width,
         total: state.getTotal(AppDataType.bills),
         title: '${AppLocale.labels.billHeadline}, ${startingDay.fullMonth()}',
+        searchRoute: AppRoute.billSearchRoute,
       ),
     );
   }
@@ -88,6 +89,10 @@ class BillPageState<T extends StatefulWidget> extends AbstractPageState<T> {
     );
   }
 
+  List<dynamic> getItems(DateTime timer) {
+    return stream!.getTill(0.0 + timer.millisecondsSinceEpoch);
+  }
+
   void _addItems() {
     if (itemsShown.isEmpty) {
       itemsShown.add(addHeaderWidget());
@@ -99,7 +104,7 @@ class BillPageState<T extends StatefulWidget> extends AbstractPageState<T> {
     List<dynamic> items = [];
     do {
       marker = timer.yMEd();
-      items = stream!.getTill(0.0 + timer.millisecondsSinceEpoch);
+      items = getItems(timer);
       timer = timer.add(const Duration(days: -1));
     } while (items.isEmpty && !stream!.isFinished);
 
@@ -152,14 +157,16 @@ class BillPageState<T extends StatefulWidget> extends AbstractPageState<T> {
 
   InterfaceIterator getContentStream() => state.getStream<BillAppData>(AppDataType.bills);
 
+  void clearState() {
+    itemsShown = [];
+    final now = DateTime.now();
+    timer = DateTime(now.year, now.month, now.day);
+    stream = null;
+  }
+
   @override
   Widget buildContent(BuildContext context, BoxConstraints constraints) {
-    state.addListener(() {
-      itemsShown = [];
-      final now = DateTime.now();
-      timer = DateTime(now.year, now.month, now.day);
-      stream = null;
-    });
+    state.addListener(clearState);
     if (stream == null) {
       WidgetsBinding.instance.addPostFrameCallback(
         (_) => setState(() {

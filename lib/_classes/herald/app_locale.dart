@@ -3,10 +3,10 @@
 
 import 'package:app_finance/_classes/herald/app_design.dart';
 import 'package:app_finance/_classes/storage/app_preferences.dart';
+import 'package:app_finance/l10n/app_localization.dart';
+import 'package:app_finance/l10n/app_localization_en.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_currency_picker/flutter_currency_picker.dart';
-import 'package:flutter_gen/gen_l10n/app_localization.dart';
-import 'package:flutter_gen/gen_l10n/app_localization_en.dart';
 
 class AppLocale extends ValueNotifier<Locale?> {
   static String code = AppPreferences.get(AppPreferences.prefLocale) ?? 'en';

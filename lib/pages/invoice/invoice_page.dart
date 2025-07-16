@@ -35,6 +35,7 @@ class InvoicePageState<T extends StatefulWidget> extends BillPageState<T> {
         width: width,
         total: state.getTotal(AppDataType.invoice),
         title: '${AppLocale.labels.invoiceHeadline}, ${startingDay.fullMonth()}',
+        searchRoute: AppRoute.invoiceSearchRoute,
       ),
     );
   }

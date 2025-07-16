@@ -371,6 +371,7 @@
             "type": "String"
         }
     },
+    "searchTooltip": "Pošuk",
     "settingsBaseHeadline": "Asnovy",
     "settingsHeadline": "Nalady",
     "skipFromTotals": "Vykliučyć z ahuĺnych vynikaŭ",

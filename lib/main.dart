@@ -20,6 +20,7 @@ import 'package:app_finance/_configs/custom_text_theme.dart';
 import 'package:app_finance/_classes/storage/app_data.dart';
 import 'package:app_finance/_classes/structure/navigation/app_route.dart';
 import 'package:app_finance/_configs/firebase_options.dart';
+import 'package:app_finance/l10n/app_localization.dart';
 import 'package:app_finance/pages/about/about_page.dart';
 import 'package:app_finance/pages/account/account_add_page.dart';
 import 'package:app_finance/pages/account/account_edit_page.dart';
@@ -32,6 +33,7 @@ import 'package:app_finance/pages/automation/payment_view_page.dart';
 import 'package:app_finance/pages/bill/bill_add_page.dart';
 import 'package:app_finance/pages/bill/bill_edit_page.dart';
 import 'package:app_finance/pages/bill/bill_page.dart';
+import 'package:app_finance/pages/bill/bill_search_page.dart';
 import 'package:app_finance/pages/bill/bill_view_page.dart';
 import 'package:app_finance/pages/budget/budget_page.dart';
 import 'package:app_finance/pages/budget/budget_add_page.dart';
@@ -46,7 +48,9 @@ import 'package:app_finance/pages/goal/goal_view_page.dart';
 import 'package:app_finance/pages/home/home_page.dart';
 import 'package:app_finance/pages/invoice/invoice_edit_page.dart';
 import 'package:app_finance/pages/invoice/invoice_page.dart';
+import 'package:app_finance/pages/invoice/invoice_search_page.dart';
 import 'package:app_finance/pages/invoice/invoice_transfer_page.dart';
+import 'package:app_finance/pages/invoice/invoice_transfer_search_page.dart';
 import 'package:app_finance/pages/invoice/invoice_view_page.dart';
 import 'package:app_finance/pages/metrics/metrics_page.dart';
 import 'package:app_finance/pages/settings/settings_page.dart';
@@ -58,7 +62,6 @@ import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_currency_picker/flutter_currency_picker.dart';
-import 'package:flutter_gen/gen_l10n/app_localization.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -174,6 +177,7 @@ class MyAppState extends State<MyApp> {
           AppRoute.billAddRoute => BillAddPage(focus: focus),
           AppRoute.billViewRoute => BillViewPage(uuid: key),
           AppRoute.billEditRoute => BillEditPage(uuid: key),
+          AppRoute.billSearchRoute => BillSearchPage(),
           AppRoute.budgetRoute => const BudgetPage(),
           AppRoute.budgetAddRoute => const BudgetAddPage(),
           AppRoute.budgetViewRoute => BudgetViewPage(uuid: key),
@@ -188,7 +192,9 @@ class MyAppState extends State<MyApp> {
           AppRoute.invoiceRoute => InvoicePage(),
           AppRoute.invoiceViewRoute => InvoiceViewPage(uuid: key),
           AppRoute.invoiceEditRoute => InvoiceEditPage(uuid: key),
+          AppRoute.invoiceSearchRoute => InvoiceSearchPage(),
           AppRoute.invoiceTransferRoute => InvoiceTransferPage(),
+          AppRoute.invoiceTransferSearchRoute => InvoiceTransferSearchPage(),
           AppRoute.homeRoute => const HomePage(),
           AppRoute.metricsRoute => const MetricsPage(),
           AppRoute.metricsSearchRoute => MetricsPage(search: key),

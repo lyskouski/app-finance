@@ -22,6 +22,7 @@ abstract class AppRoute {
   static const String billAddRoute = '/app/finance/bill/add';
   static const String billViewRoute = '/app/finance/bill/view';
   static const String billEditRoute = '/app/finance/bill/edit';
+  static const String billSearchRoute = '/app/finance/bill/search';
   static const String budgetRoute = '/app/finance/budget';
   static const String budgetAddRoute = '/app/finance/budget/add';
   static const String budgetViewRoute = '/app/finance/budget/view';
@@ -36,7 +37,9 @@ abstract class AppRoute {
   static const String invoiceRoute = '/app/finance/invoice';
   static const String invoiceViewRoute = '/app/finance/invoice/view';
   static const String invoiceEditRoute = '/app/finance/invoice/edit';
+  static const String invoiceSearchRoute = '/app/finance/invoice/search';
   static const String invoiceTransferRoute = '/app/finance/invoice-transfer';
+  static const String invoiceTransferSearchRoute = '/app/finance/invoice-transfer/search';
   static const String homeRoute = '/app/finance/main';
   static const String metricsRoute = '/app/finance/metrics';
   static const String metricsSearchRoute = '/app/finance/metrics/search';

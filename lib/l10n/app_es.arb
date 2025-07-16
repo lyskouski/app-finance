@@ -371,6 +371,7 @@
             "type": "String"
         }
     },
+    "searchTooltip": "Buscar",
     "settingsBaseHeadline": "Básico",
     "settingsHeadline": "Configuración",
     "skipFromTotals": "Excluir de los totales",

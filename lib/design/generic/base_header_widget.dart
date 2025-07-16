@@ -19,9 +19,10 @@ import 'package:provider/provider.dart';
 class BaseHeaderWidget extends StatelessWidget {
   final String? tooltip;
   final String? route;
+  final String? searchRoute;
   final String title;
   final double width;
-  final double total;
+  final double? total;
   final bool hasExpand;
   final bool toExpand;
   final Function? expand;
@@ -36,6 +37,7 @@ class BaseHeaderWidget extends StatelessWidget {
     this.hasExpand = false,
     this.toExpand = true,
     this.expand,
+    this.searchRoute,
   }) : assert(hasExpand && expand != null || !hasExpand);
 
   @override
@@ -51,6 +53,7 @@ class BaseHeaderWidget extends StatelessWidget {
     final subHeight = ThemeHelper.getTextHeight(Text(title, style: subStyle));
     final numStyle = isWide ? textTheme.numberSmall : textTheme.numberLarge;
     final numHeight = ThemeHelper.getTextHeight(Text(total.toString(), style: numStyle));
+    final isSearchRoute = searchRoute != null && searchRoute!.isNotEmpty;
     return TapWidget(
       tooltip: tooltip,
       route: RouteSettings(name: route),
@@ -61,7 +64,7 @@ class BaseHeaderWidget extends StatelessWidget {
         color: colorScheme.inverseSurface.withValues(alpha: 0.1),
         child: GridContainer(
           alignment: AppDesign.getAlignment<MainAxisAlignment>(),
-          rows: [null, ThemeHelper.barHeight, if (hasExpand) ThemeHelper.barHeight],
+          rows: [null, ThemeHelper.barHeight, if (hasExpand || isSearchRoute) ThemeHelper.barHeight],
           columns: [subHeight, null],
           children: [
             GridItem(
@@ -75,7 +78,7 @@ class BaseHeaderWidget extends StatelessWidget {
               child: FittedBox(
                 fit: BoxFit.scaleDown,
                 alignment: AppDesign.isRightToLeft() ? Alignment.centerRight : Alignment.centerLeft,
-                child: TextWrapper(total.toCurrency(withPattern: false), style: numStyle),
+                child: TextWrapper(total != null ? total!.toCurrency(withPattern: false) : '', style: numStyle),
               ),
             ),
             GridItem(
@@ -106,6 +109,22 @@ class BaseHeaderWidget extends StatelessWidget {
                   tooltip: toExpand ? AppLocale.labels.expand : AppLocale.labels.collapse,
                   onPressed: () => expand!(),
                   isSelected: toExpand,
+                ),
+              ),
+            if (isSearchRoute)
+              GridItem(
+                start: const Size(2, 0),
+                end: const Size(3, 2),
+                child: ToolbarButtonWidget(
+                  borderColor: context.colorScheme.onSecondaryContainer.withValues(alpha: 0.3),
+                  offset: bnShift,
+                  selectedIcon: Icons.expand,
+                  selectedColor: context.colorScheme.onSecondaryContainer,
+                  backgroundColor: context.colorScheme.surface.withValues(alpha: 0.3),
+                  icon: Icons.search,
+                  color: context.colorScheme.onSecondaryContainer,
+                  tooltip: AppLocale.labels.searchTooltip,
+                  onPressed: () => nav.pushNamed(searchRoute!),
                 ),
               ),
           ],

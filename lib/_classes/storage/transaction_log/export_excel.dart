@@ -8,11 +8,9 @@ import 'package:app_finance/_classes/structure/bill_app_data.dart';
 import 'package:app_finance/_classes/structure/currency/exchange.dart';
 import 'package:app_finance/_classes/structure/invoice_app_data.dart';
 import 'package:app_finance/_ext/date_time_ext.dart';
-import 'package:app_finance/_mixins/file/file_export_mixin_web.dart'
-    if (dart.library.io) 'package:app_finance/_mixins/file/file_export_mixin.dart';
 import 'package:excel/excel.dart';
 
-class ExportExcel with FileExportMixin {
+class ExportExcel {
   final AppData state;
   late final Excel excel;
   late final Exchange exchange;
@@ -45,10 +43,7 @@ class ExportExcel with FileExportMixin {
       curr = DateTime(now.year, now.month - increment, now.day).getStartingDay(startingDay);
     }
     excel.delete('Sheet1');
-    List<int>? fileBytes = excel.save();
-    if (fileBytes != null) {
-      await exportFile(fileBytes, 'fingrom_export.xlsx');
-    }
+    excel.save(fileName: 'fingrom_export.xlsx');
   }
 
   _addHeader(String name) {

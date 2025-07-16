@@ -371,6 +371,7 @@
             "type": "String"
         }
     },
+    "searchTooltip": "Пошук",
     "settingsBaseHeadline": "Основи",
     "settingsHeadline": "Налаштування",
     "skipFromTotals": "Виключити із загальної кількості",

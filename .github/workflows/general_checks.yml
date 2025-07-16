@@ -29,7 +29,9 @@ jobs:
 
       - name: Verify Formatting
         if: matrix.os == 'ubuntu-latest'
-        run: dart format -l 120 --output=none --set-exit-if-changed .
+        run: |
+          dart format -l 120 ./lib/l10n
+          dart format -l 120 --output=none --set-exit-if-changed .
 
       - name: Check Localizations Ordering
         if: matrix.os == 'ubuntu-latest'
