@@ -28,6 +28,15 @@ Feature: Verify Expenses Functionality
     | Bank Account | EUR | Group / 2 |      5 | PLN      |     2.20 |       €79.00 |  $60.00 / $125.00 |         Group |
     | Cash         | USD | Group / 2 |     10 | PLN      |     4.50 |      $855.00 | $105.00 / $125.00 |         Group |
 
+  Scenario: Verify Filters
+    Given I am on "Bills" page
+     When I tap "Search" button
+      And I select "Bank Account" from "AccountSelector" with "Enter Account Identifier" tooltip
+      And I select "Limited" from "BudgetSelector" with "Enter Budget Category Name" tooltip
+     Then I can see "Bank Account - Limited" component
+      And I cannot see "Cash - Limited" component
+      And I cannot see "Bank Account - Group / 2" component
+
   Scenario: Tear Down
     Given I am on "Currencies" page
      Then I can see "PLN-EUR" component
