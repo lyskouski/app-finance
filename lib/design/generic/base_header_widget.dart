@@ -22,7 +22,7 @@ class BaseHeaderWidget extends StatelessWidget {
   final String? searchRoute;
   final String title;
   final double width;
-  final double total;
+  final double? total;
   final bool hasExpand;
   final bool toExpand;
   final Function? expand;
@@ -78,7 +78,7 @@ class BaseHeaderWidget extends StatelessWidget {
               child: FittedBox(
                 fit: BoxFit.scaleDown,
                 alignment: AppDesign.isRightToLeft() ? Alignment.centerRight : Alignment.centerLeft,
-                child: TextWrapper(total.toCurrency(withPattern: false), style: numStyle),
+                child: TextWrapper(total != null ? total!.toCurrency(withPattern: false) : '', style: numStyle),
               ),
             ),
             GridItem(
