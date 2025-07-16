@@ -1,6 +1,7 @@
-// Copyright 2023 The terCAD team. All rights reserved.
+// Copyright 2025 The terCAD team. All rights reserved.
 // Use of this source code is governed by a CC BY-NC-ND 4.0 license that can be found in the LICENSE file.
 
+import 'package:app_finance/_classes/controller/delayed_call.dart';
 import 'package:app_finance/_classes/controller/iterator_controller.dart';
 import 'package:app_finance/_classes/herald/app_design.dart';
 import 'package:app_finance/_classes/herald/app_locale.dart';
@@ -32,6 +33,10 @@ class BillViewPageState extends BillPageState<BillSearchPage> {
   @override
   void initState() {
     description = TextEditingController();
+    final runner = DelayedCall(1500);
+    bool isFocused = false;
+    changeState() => setState(clearState);
+    description.addListener(() => isFocused ? runner.run(changeState) : isFocused = true);
     super.initState();
   }
 
@@ -56,6 +61,19 @@ class BillViewPageState extends BillPageState<BillSearchPage> {
   InterfaceIterator getContentStream() => state.getStream<BillAppData>(AppDataType.bills, filter: getContentFilter);
 
   @override
+  List<dynamic> getItems(DateTime timer) {
+    final data = super.getItems(timer);
+    bool filterState(BillAppData item) {
+      final descriptionMatch = item.title.toLowerCase().contains(description.text.toLowerCase());
+      final accountMatch = account == null || item.account == account;
+      final budgetMatch = budget == null || item.category == budget;
+      return descriptionMatch && accountMatch && budgetMatch;
+    }
+
+    return data.where((v) => filterState(v)).toList();
+  }
+
+  @override
   Widget addHeaderWidget() {
     final width = ScreenHelper.state().width - ThemeHelper.getIndent(4);
     return SliverToBoxAdapter(
@@ -76,6 +94,7 @@ class BillViewPageState extends BillPageState<BillSearchPage> {
             state: state,
             options: accountList,
             onChange: (value) => setState(() {
+              clearState();
               account = value?.uuid;
             }),
             width: width,
@@ -89,7 +108,8 @@ class BillViewPageState extends BillPageState<BillSearchPage> {
             state: state,
             options: budgetList,
             onChange: (value) => setState(() {
-              account = value?.uuid;
+              clearState();
+              budget = value?.uuid;
             }),
             width: width,
           ),
