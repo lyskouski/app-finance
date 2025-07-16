@@ -48,6 +48,7 @@ import 'package:app_finance/pages/goal/goal_view_page.dart';
 import 'package:app_finance/pages/home/home_page.dart';
 import 'package:app_finance/pages/invoice/invoice_edit_page.dart';
 import 'package:app_finance/pages/invoice/invoice_page.dart';
+import 'package:app_finance/pages/invoice/invoice_search_page.dart';
 import 'package:app_finance/pages/invoice/invoice_transfer_page.dart';
 import 'package:app_finance/pages/invoice/invoice_view_page.dart';
 import 'package:app_finance/pages/metrics/metrics_page.dart';
@@ -190,6 +191,7 @@ class MyAppState extends State<MyApp> {
           AppRoute.invoiceRoute => InvoicePage(),
           AppRoute.invoiceViewRoute => InvoiceViewPage(uuid: key),
           AppRoute.invoiceEditRoute => InvoiceEditPage(uuid: key),
+          AppRoute.invoiceSearchRoute => InvoiceSearchPage(),
           AppRoute.invoiceTransferRoute => InvoiceTransferPage(),
           AppRoute.homeRoute => const HomePage(),
           AppRoute.metricsRoute => const MetricsPage(),

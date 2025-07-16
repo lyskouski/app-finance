@@ -6,29 +6,27 @@ import 'package:app_finance/_classes/controller/iterator_controller.dart';
 import 'package:app_finance/_classes/herald/app_design.dart';
 import 'package:app_finance/_classes/herald/app_locale.dart';
 import 'package:app_finance/_classes/storage/app_data.dart';
-import 'package:app_finance/_classes/structure/bill_app_data.dart';
+import 'package:app_finance/_classes/structure/invoice_app_data.dart';
 import 'package:app_finance/_configs/screen_helper.dart';
 import 'package:app_finance/_configs/theme_helper.dart';
 import 'package:app_finance/design/form/list_account_selector.dart';
 import 'package:app_finance/design/wrapper/input_wrapper.dart';
-import 'package:app_finance/pages/bill/bill_page.dart';
+import 'package:app_finance/pages/invoice/invoice_page.dart';
 import 'package:flutter/material.dart';
 
-class BillSearchPage extends StatefulWidget {
-  const BillSearchPage({super.key});
+class InvoiceSearchPage extends StatefulWidget {
+  const InvoiceSearchPage({super.key});
 
   @override
-  BillViewPageState createState() => BillViewPageState();
+  InvoiceSearchPageState createState() => InvoiceSearchPageState();
 }
 
-class BillViewPageState extends BillPageState<BillSearchPage> {
+class InvoiceSearchPageState extends InvoicePageState<InvoiceSearchPage> {
   String? account;
-  String? budget;
   late TextEditingController description;
+
   late List<ListAccountSelectorItem> accountList =
       state.getList(AppDataType.accounts).map((item) => ListAccountSelectorItem(item: item)).toList();
-  late List<ListAccountSelectorItem> budgetList =
-      state.getList(AppDataType.budgets).map((item) => ListAccountSelectorItem(item: item)).toList();
 
   @override
   void initState() {
@@ -55,15 +53,16 @@ class BillViewPageState extends BillPageState<BillSearchPage> {
   @override
   Widget buildButton(BuildContext context, BoxConstraints constraints) => ThemeHelper.emptyBox;
 
-  bool getContentFilter(BillAppData item) {
-    final descriptionMatch = item.title.toLowerCase().contains(description.text.toLowerCase());
-    final accountMatch = account == null || item.account == account;
-    final budgetMatch = budget == null || item.category == budget;
-    return !(descriptionMatch && accountMatch && budgetMatch);
+  @override
+  bool getContentFilter(InvoiceAppData o) {
+    final descriptionMatch = o.title.toLowerCase().contains(description.text.toLowerCase());
+    final accountMatch = account == null || o.account == account;
+    return !(descriptionMatch && accountMatch) || o.accountFrom != null;
   }
 
   @override
-  InterfaceIterator getContentStream() => state.getStream<BillAppData>(AppDataType.bills, filter: getContentFilter);
+  InterfaceIterator getContentStream() =>
+      state.getStream<InvoiceAppData>(AppDataType.invoice, filter: getContentFilter);
 
   @override
   Widget addHeaderWidget() {
@@ -87,19 +86,6 @@ class BillViewPageState extends BillPageState<BillSearchPage> {
             onChange: (value) => setState(() {
               clearState();
               account = value?.uuid;
-            }),
-            width: width,
-          ),
-          InputWrapper(
-            type: NamedInputType.budgetSelector,
-            value: budget != null ? state.getByUuid(budget!) : null,
-            title: AppLocale.labels.budget,
-            tooltip: AppLocale.labels.titleBudgetTooltip,
-            state: state,
-            options: budgetList,
-            onChange: (value) => setState(() {
-              clearState();
-              budget = value?.uuid;
             }),
             width: width,
           ),
