@@ -31,13 +31,13 @@
             <td class="headerValue">lcov.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntryLo">65.4&nbsp;%</td>
+            <td class="headerCovTableEntryLo">66.0&nbsp;%</td>
             <td class="headerCovTableEntry">153</td>
-            <td class="headerCovTableEntry">100</td>
+            <td class="headerCovTableEntry">101</td>
           </tr>
           <tr>
             <td class="headerItem">Test Date:</td>
-            <td class="headerValue">2025-02-24 14:08:05</td>
+            <td class="headerValue">2025-07-16 13:41:15</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntryHi">-</td>
@@ -343,11 +343,11 @@
 <span id="L281"><span class="lineNum">     281</span>              :           inverse,</span>
 <span id="L282"><span class="lineNum">     282</span> <span class="tlaGNC">           1 :           transform: getByUuid,</span></span>
 <span id="L283"><span class="lineNum">     283</span>              :           boundary: boundary,</span>
-<span id="L284"><span class="lineNum">     284</span> <span class="tlaUNC tlaBgUNC">           0 :           filter: (M v) =&gt; v.hidden || filter?.call(v) == true,</span></span>
+<span id="L284"><span class="lineNum">     284</span> <span class="tlaGNC">           4 :           filter: (M v) =&gt; v.hidden || filter?.call(v) == true,</span></span>
 <span id="L285"><span class="lineNum">     285</span>              :         );</span>
 <span id="L286"><span class="lineNum">     286</span>              :   }</span>
 <span id="L287"><span class="lineNum">     287</span>              : </span>
-<span id="L288"><span class="lineNum">     288</span> <span class="tlaUNC">           0 :   List&lt;dynamic&gt; getActualList(AppDataType property, [bool isClone = true]) {</span></span>
+<span id="L288"><span class="lineNum">     288</span> <span class="tlaUNC tlaBgUNC">           0 :   List&lt;dynamic&gt; getActualList(AppDataType property, [bool isClone = true]) {</span></span>
 <span id="L289"><span class="lineNum">     289</span> <span class="tlaUNC">           0 :     return (_data[property]?.listActual ?? [])</span></span>
 <span id="L290"><span class="lineNum">     290</span> <span class="tlaUNC">           0 :         .map((uuid) =&gt; getByUuid(uuid, isClone))</span></span>
 <span id="L291"><span class="lineNum">     291</span> <span class="tlaUNC">           0 :         .where((element) =&gt; !element.hidden)</span></span>
