@@ -9,6 +9,7 @@ import 'package:app_finance/_classes/math/bill_recalculation.dart';
 import 'package:app_finance/_classes/structure/budget_app_data.dart';
 import 'package:app_finance/_classes/structure/currency/exchange.dart';
 import 'package:app_finance/_classes/storage/app_data.dart';
+import 'package:app_finance/_configs/budget_type.dart';
 import 'package:dart_class_wrapper/gen/generate_with_method_setters.dart';
 import 'package:flutter_currency_picker/flutter_currency_picker.dart';
 import 'package:flutter_test/flutter_test.dart';
@@ -258,6 +259,25 @@ void main() {
       final budget = BudgetAppData(title: '', amount: 100);
       mock.updateBudget(budget, budget);
       expect(budget.amount, 0);
+    });
+
+    test('updateBudget with DateBoundary', () {
+      final year = DateTime.now().year;
+      object.initial!.createdAt = DateTime(year);
+      object.initial!.details = 100.0;
+      object.change.createdAt = DateTime(year);
+      object.change.details = 100.0;
+      final mock = WrapperBillRecalculation(
+        initial: object.initial,
+        change: object.change,
+      )..exchange = object.exchange;
+      final budgetInitial = BudgetAppData(title: '', uuid: '1', amountLimit: 100.0, type: AppBudgetType.week.name);
+      final budgetChange = BudgetAppData(title: '', uuid: '2', amountLimit: 100.0, type: AppBudgetType.year.name);
+      mock.updateBudget(budgetChange, budgetInitial);
+      expect(budgetInitial.progress, 0.0);
+      expect(budgetInitial.amount, 0.0);
+      expect(budgetChange.progress, 1.0);
+      expect(budgetChange.amount, 100.0);
     });
   });
 }
