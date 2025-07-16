@@ -55,17 +55,18 @@ class BillRecalculation extends AbstractRecalculation {
   }
 
   BillRecalculation updateBudget(BudgetAppData budgetChange, BudgetAppData? budgetInitial) {
-    if (budgetChange.getDateBoundary().isAfter(change.createdAt)) {
-      return this;
-    }
-    if (budgetInitial != null && budgetChange.uuid != budgetInitial.uuid) {
+    if (budgetInitial != null &&
+        budgetChange.uuid != budgetInitial.uuid &&
+        !budgetInitial.getDateBoundary().isAfter(change.createdAt)) {
       double prevDelta = exchange.reform(getPrevDelta(), initial?.currency, budgetInitial.currency);
       budgetInitial.progress = getProgress(budgetInitial.amountLimit, budgetInitial.progress, -prevDelta);
       budgetInitial.amount -= prevDelta;
     }
-    double delta = getStateDelta(budgetInitial, budgetChange, true);
-    budgetChange.progress = getProgress(budgetChange.amountLimit, budgetChange.progress, delta);
-    budgetChange.amount += delta;
+    if (!budgetChange.getDateBoundary().isAfter(change.createdAt)) {
+      double delta = getStateDelta(budgetInitial, budgetChange, true);
+      budgetChange.progress = getProgress(budgetChange.amountLimit, budgetChange.progress, delta);
+      budgetChange.amount += delta;
+    }
     return this;
   }
 }
