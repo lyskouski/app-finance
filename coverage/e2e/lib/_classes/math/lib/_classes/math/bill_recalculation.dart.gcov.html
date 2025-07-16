@@ -31,13 +31,13 @@
             <td class="headerValue">lcov.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntryLo">59.4&nbsp;%</td>
-            <td class="headerCovTableEntry">32</td>
+            <td class="headerCovTableEntryLo">57.6&nbsp;%</td>
+            <td class="headerCovTableEntry">33</td>
             <td class="headerCovTableEntry">19</td>
           </tr>
           <tr>
             <td class="headerItem">Test Date:</td>
-            <td class="headerValue">2025-07-16 13:41:15</td>
+            <td class="headerValue">2025-07-16 14:29:02</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntryHi">-</td>
@@ -117,20 +117,21 @@
 <span id="L55"><span class="lineNum">      55</span>              :   }</span>
 <span id="L56"><span class="lineNum">      56</span>              : </span>
 <span id="L57"><span class="lineNum">      57</span> <span class="tlaGNC">           1 :   BillRecalculation updateBudget(BudgetAppData budgetChange, BudgetAppData? budgetInitial) {</span></span>
-<span id="L58"><span class="lineNum">      58</span> <span class="tlaGNC">           4 :     if (budgetChange.getDateBoundary().isAfter(change.createdAt)) {</span></span>
-<span id="L59"><span class="lineNum">      59</span>              :       return this;</span>
-<span id="L60"><span class="lineNum">      60</span>              :     }</span>
-<span id="L61"><span class="lineNum">      61</span> <span class="tlaUNC tlaBgUNC">           0 :     if (budgetInitial != null &amp;&amp; budgetChange.uuid != budgetInitial.uuid) {</span></span>
-<span id="L62"><span class="lineNum">      62</span> <span class="tlaUNC">           0 :       double prevDelta = exchange.reform(getPrevDelta(), initial?.currency, budgetInitial.currency);</span></span>
-<span id="L63"><span class="lineNum">      63</span> <span class="tlaUNC">           0 :       budgetInitial.progress = getProgress(budgetInitial.amountLimit, budgetInitial.progress, -prevDelta);</span></span>
-<span id="L64"><span class="lineNum">      64</span> <span class="tlaUNC">           0 :       budgetInitial.amount -= prevDelta;</span></span>
-<span id="L65"><span class="lineNum">      65</span>              :     }</span>
-<span id="L66"><span class="lineNum">      66</span> <span class="tlaGNC tlaBgGNC">           1 :     double delta = getStateDelta(budgetInitial, budgetChange, true);</span></span>
-<span id="L67"><span class="lineNum">      67</span> <span class="tlaGNC">           4 :     budgetChange.progress = getProgress(budgetChange.amountLimit, budgetChange.progress, delta);</span></span>
-<span id="L68"><span class="lineNum">      68</span> <span class="tlaGNC">           2 :     budgetChange.amount += delta;</span></span>
-<span id="L69"><span class="lineNum">      69</span>              :     return this;</span>
-<span id="L70"><span class="lineNum">      70</span>              :   }</span>
-<span id="L71"><span class="lineNum">      71</span>              : }</span>
+<span id="L58"><span class="lineNum">      58</span>              :     if (budgetInitial != null &amp;&amp;</span>
+<span id="L59"><span class="lineNum">      59</span> <span class="tlaUNC tlaBgUNC">           0 :         budgetChange.uuid != budgetInitial.uuid &amp;&amp;</span></span>
+<span id="L60"><span class="lineNum">      60</span> <span class="tlaUNC">           0 :         !budgetInitial.getDateBoundary().isAfter(change.createdAt)) {</span></span>
+<span id="L61"><span class="lineNum">      61</span> <span class="tlaUNC">           0 :       double prevDelta = exchange.reform(getPrevDelta(), initial?.currency, budgetInitial.currency);</span></span>
+<span id="L62"><span class="lineNum">      62</span> <span class="tlaUNC">           0 :       budgetInitial.progress = getProgress(budgetInitial.amountLimit, budgetInitial.progress, -prevDelta);</span></span>
+<span id="L63"><span class="lineNum">      63</span> <span class="tlaUNC">           0 :       budgetInitial.amount -= prevDelta;</span></span>
+<span id="L64"><span class="lineNum">      64</span>              :     }</span>
+<span id="L65"><span class="lineNum">      65</span> <span class="tlaGNC tlaBgGNC">           4 :     if (!budgetChange.getDateBoundary().isAfter(change.createdAt)) {</span></span>
+<span id="L66"><span class="lineNum">      66</span> <span class="tlaGNC">           1 :       double delta = getStateDelta(budgetInitial, budgetChange, true);</span></span>
+<span id="L67"><span class="lineNum">      67</span> <span class="tlaGNC">           4 :       budgetChange.progress = getProgress(budgetChange.amountLimit, budgetChange.progress, delta);</span></span>
+<span id="L68"><span class="lineNum">      68</span> <span class="tlaGNC">           2 :       budgetChange.amount += delta;</span></span>
+<span id="L69"><span class="lineNum">      69</span>              :     }</span>
+<span id="L70"><span class="lineNum">      70</span>              :     return this;</span>
+<span id="L71"><span class="lineNum">      71</span>              :   }</span>
+<span id="L72"><span class="lineNum">      72</span>              : }</span>
         </pre>
               </td>
             </tr>
