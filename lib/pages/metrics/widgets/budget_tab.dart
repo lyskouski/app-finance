@@ -106,7 +106,7 @@ class BudgetTab extends StatelessWidget {
             ThemeHelper.hIndent4x,
             TableWidget(
               shadowColor: context.colorScheme.onSurface.withValues(alpha: 0.1),
-              width: width - space,
+              width: width - space - 4 * indent,
               chunk: const [20, 72, null, null, null],
               data: _generateTable(),
             ),
