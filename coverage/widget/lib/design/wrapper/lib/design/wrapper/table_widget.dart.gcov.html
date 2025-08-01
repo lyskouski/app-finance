@@ -32,12 +32,12 @@
             <td></td>
             <td class="headerItem">Lines:</td>
             <td class="headerCovTableEntryLo">0.0&nbsp;%</td>
-            <td class="headerCovTableEntry">18</td>
+            <td class="headerCovTableEntry">15</td>
             <td class="headerCovTableEntry">0</td>
           </tr>
           <tr>
             <td class="headerItem">Test Date:</td>
-            <td class="headerValue">2025-07-16 14:27:32</td>
+            <td class="headerValue">2025-08-01 13:12:05</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntryHi">-</td>
@@ -64,57 +64,48 @@
 <span id="L2"><span class="lineNum">       2</span>              : // Use of this source code is governed by a CC BY-NC-ND 4.0 license that can be found in the LICENSE file.</span>
 <span id="L3"><span class="lineNum">       3</span>              : </span>
 <span id="L4"><span class="lineNum">       4</span>              : import 'package:app_finance/_classes/herald/app_design.dart';</span>
-<span id="L5"><span class="lineNum">       5</span>              : import 'package:app_finance/_configs/screen_helper.dart';</span>
-<span id="L6"><span class="lineNum">       6</span>              : import 'package:app_finance/_configs/theme_helper.dart';</span>
-<span id="L7"><span class="lineNum">       7</span>              : import 'package:app_finance/design/wrapper/row_widget.dart';</span>
-<span id="L8"><span class="lineNum">       8</span>              : import 'package:flutter/foundation.dart';</span>
-<span id="L9"><span class="lineNum">       9</span>              : import 'package:flutter/material.dart';</span>
-<span id="L10"><span class="lineNum">      10</span>              : </span>
-<span id="L11"><span class="lineNum">      11</span>              : class TableWidget extends StatelessWidget {</span>
-<span id="L12"><span class="lineNum">      12</span>              :   final List&lt;List&lt;Widget&gt;&gt; data;</span>
-<span id="L13"><span class="lineNum">      13</span>              :   final List&lt;double?&gt; chunk;</span>
-<span id="L14"><span class="lineNum">      14</span>              :   final Color shadowColor;</span>
-<span id="L15"><span class="lineNum">      15</span>              :   final double width;</span>
-<span id="L16"><span class="lineNum">      16</span>              : </span>
-<span id="L17"><span class="lineNum">      17</span> <span class="tlaUNC tlaBgUNC">           0 :   const TableWidget({</span></span>
-<span id="L18"><span class="lineNum">      18</span>              :     super.key,</span>
-<span id="L19"><span class="lineNum">      19</span>              :     required this.data,</span>
-<span id="L20"><span class="lineNum">      20</span>              :     required this.width,</span>
-<span id="L21"><span class="lineNum">      21</span>              :     required this.chunk,</span>
-<span id="L22"><span class="lineNum">      22</span>              :     required this.shadowColor,</span>
-<span id="L23"><span class="lineNum">      23</span>              :   });</span>
-<span id="L24"><span class="lineNum">      24</span>              : </span>
-<span id="L25"><span class="lineNum">      25</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L26"><span class="lineNum">      26</span>              :   Widget build(BuildContext context) {</span>
-<span id="L27"><span class="lineNum">      27</span> <span class="tlaUNC">           0 :     final length = data.isNotEmpty ? data.length + 1 : 0;</span></span>
-<span id="L28"><span class="lineNum">      28</span> <span class="tlaUNC">           0 :     final indent = ThemeHelper.getIndent();</span></span>
-<span id="L29"><span class="lineNum">      29</span>              :     double space = 0;</span>
-<span id="L30"><span class="lineNum">      30</span>              :     if (kIsWeb) {</span>
-<span id="L31"><span class="lineNum">      31</span> <span class="tlaUNC">           0 :       space = 2 * indent * chunk.length;</span></span>
-<span id="L32"><span class="lineNum">      32</span> <span class="tlaUNC">           0 :       if (ScreenHelper.state().isLeftBar) {</span></span>
-<span id="L33"><span class="lineNum">      33</span> <span class="tlaUNC">           0 :         space += space;</span></span>
-<span id="L34"><span class="lineNum">      34</span>              :       }</span>
-<span id="L35"><span class="lineNum">      35</span>              :     }</span>
-<span id="L36"><span class="lineNum">      36</span> <span class="tlaUNC">           0 :     return Column(</span></span>
-<span id="L37"><span class="lineNum">      37</span> <span class="tlaUNC">           0 :       children: List&lt;Widget&gt;.generate(length, (index) {</span></span>
-<span id="L38"><span class="lineNum">      38</span> <span class="tlaUNC">           0 :         if (index == 1) {</span></span>
-<span id="L39"><span class="lineNum">      39</span>              :           return const Divider(thickness: 1);</span>
-<span id="L40"><span class="lineNum">      40</span>              :         }</span>
-<span id="L41"><span class="lineNum">      41</span> <span class="tlaUNC">           0 :         final idx = index == 0 ? 0 : index - 1;</span></span>
-<span id="L42"><span class="lineNum">      42</span> <span class="tlaUNC">           0 :         return Container(</span></span>
-<span id="L43"><span class="lineNum">      43</span> <span class="tlaUNC">           0 :           color: idx &gt; 0 &amp;&amp; idx % 2 == 0 ? shadowColor : Colors.transparent,</span></span>
-<span id="L44"><span class="lineNum">      44</span> <span class="tlaUNC">           0 :           child: RowWidget(</span></span>
-<span id="L45"><span class="lineNum">      45</span> <span class="tlaUNC">           0 :             chunk: chunk,</span></span>
-<span id="L46"><span class="lineNum">      46</span> <span class="tlaUNC">           0 :             alignment: AppDesign.getInverseAlignment&lt;MainAxisAlignment&gt;(),</span></span>
-<span id="L47"><span class="lineNum">      47</span>              :             indent: indent,</span>
-<span id="L48"><span class="lineNum">      48</span> <span class="tlaUNC">           0 :             maxWidth: width - space,</span></span>
-<span id="L49"><span class="lineNum">      49</span> <span class="tlaUNC">           0 :             children: data[idx].map((o) =&gt; [o]).toList(),</span></span>
-<span id="L50"><span class="lineNum">      50</span>              :           ),</span>
-<span id="L51"><span class="lineNum">      51</span>              :         );</span>
-<span id="L52"><span class="lineNum">      52</span>              :       }),</span>
-<span id="L53"><span class="lineNum">      53</span>              :     );</span>
-<span id="L54"><span class="lineNum">      54</span>              :   }</span>
-<span id="L55"><span class="lineNum">      55</span>              : }</span>
+<span id="L5"><span class="lineNum">       5</span>              : import 'package:app_finance/_configs/theme_helper.dart';</span>
+<span id="L6"><span class="lineNum">       6</span>              : import 'package:app_finance/design/wrapper/row_widget.dart';</span>
+<span id="L7"><span class="lineNum">       7</span>              : import 'package:flutter/material.dart';</span>
+<span id="L8"><span class="lineNum">       8</span>              : </span>
+<span id="L9"><span class="lineNum">       9</span>              : class TableWidget extends StatelessWidget {</span>
+<span id="L10"><span class="lineNum">      10</span>              :   final List&lt;List&lt;Widget&gt;&gt; data;</span>
+<span id="L11"><span class="lineNum">      11</span>              :   final List&lt;double?&gt; chunk;</span>
+<span id="L12"><span class="lineNum">      12</span>              :   final Color shadowColor;</span>
+<span id="L13"><span class="lineNum">      13</span>              :   final double width;</span>
+<span id="L14"><span class="lineNum">      14</span>              : </span>
+<span id="L15"><span class="lineNum">      15</span> <span class="tlaUNC tlaBgUNC">           0 :   const TableWidget({</span></span>
+<span id="L16"><span class="lineNum">      16</span>              :     super.key,</span>
+<span id="L17"><span class="lineNum">      17</span>              :     required this.data,</span>
+<span id="L18"><span class="lineNum">      18</span>              :     required this.width,</span>
+<span id="L19"><span class="lineNum">      19</span>              :     required this.chunk,</span>
+<span id="L20"><span class="lineNum">      20</span>              :     required this.shadowColor,</span>
+<span id="L21"><span class="lineNum">      21</span>              :   });</span>
+<span id="L22"><span class="lineNum">      22</span>              : </span>
+<span id="L23"><span class="lineNum">      23</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L24"><span class="lineNum">      24</span>              :   Widget build(BuildContext context) {</span>
+<span id="L25"><span class="lineNum">      25</span> <span class="tlaUNC">           0 :     final length = data.isNotEmpty ? data.length + 1 : 0;</span></span>
+<span id="L26"><span class="lineNum">      26</span> <span class="tlaUNC">           0 :     final indent = ThemeHelper.getIndent();</span></span>
+<span id="L27"><span class="lineNum">      27</span> <span class="tlaUNC">           0 :     return Column(</span></span>
+<span id="L28"><span class="lineNum">      28</span> <span class="tlaUNC">           0 :       children: List&lt;Widget&gt;.generate(length, (index) {</span></span>
+<span id="L29"><span class="lineNum">      29</span> <span class="tlaUNC">           0 :         if (index == 1) {</span></span>
+<span id="L30"><span class="lineNum">      30</span>              :           return const Divider(thickness: 1);</span>
+<span id="L31"><span class="lineNum">      31</span>              :         }</span>
+<span id="L32"><span class="lineNum">      32</span> <span class="tlaUNC">           0 :         final idx = index == 0 ? 0 : index - 1;</span></span>
+<span id="L33"><span class="lineNum">      33</span> <span class="tlaUNC">           0 :         return Container(</span></span>
+<span id="L34"><span class="lineNum">      34</span> <span class="tlaUNC">           0 :           color: idx &gt; 0 &amp;&amp; idx % 2 == 0 ? shadowColor : Colors.transparent,</span></span>
+<span id="L35"><span class="lineNum">      35</span> <span class="tlaUNC">           0 :           child: RowWidget(</span></span>
+<span id="L36"><span class="lineNum">      36</span> <span class="tlaUNC">           0 :             chunk: chunk,</span></span>
+<span id="L37"><span class="lineNum">      37</span> <span class="tlaUNC">           0 :             alignment: AppDesign.getInverseAlignment&lt;MainAxisAlignment&gt;(),</span></span>
+<span id="L38"><span class="lineNum">      38</span>              :             indent: indent,</span>
+<span id="L39"><span class="lineNum">      39</span> <span class="tlaUNC">           0 :             maxWidth: width,</span></span>
+<span id="L40"><span class="lineNum">      40</span> <span class="tlaUNC">           0 :             children: data[idx].map((o) =&gt; [o]).toList(),</span></span>
+<span id="L41"><span class="lineNum">      41</span>              :           ),</span>
+<span id="L42"><span class="lineNum">      42</span>              :         );</span>
+<span id="L43"><span class="lineNum">      43</span>              :       }),</span>
+<span id="L44"><span class="lineNum">      44</span>              :     );</span>
+<span id="L45"><span class="lineNum">      45</span>              :   }</span>
+<span id="L46"><span class="lineNum">      46</span>              : }</span>
         </pre>
               </td>
             </tr>

@@ -2,8 +2,11 @@
 
 _Güncellemelerin tam listesi “İpuçları” düğmesindeki “Hakkında” gezinti öğesi aracılığıyla görüntülenebilir._
 
+### 6.4.0
+- Faturalar, Hesap Özetleri ve Transferler sayfalarına filtreler eklendi
+
 ### 6.3.0
-- Gelir ve İşlem sayfaları ekleme
+- Faturalar ve Transferler sayfaları eklendi
 
 ### 6.2.0
 - Yinelenen ödemeleri kullanıcı aralığına göre genişletme

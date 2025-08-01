@@ -2,8 +2,11 @@
 
 _Yangilanishlarning toʻliq roʻyxatini “Maslahat” tugmasidagi “Haqida” navigatsiya bandi orqali koʻrish mumkin._
 
+### 6.4.0
+- Hisob-kitoblar, schyot-fakturalar va o‘tkazmalar sahifalari uchun filtrlar qo‘shish
+
 ### 6.3.0
-- Daromad va tranzaksiya sahifalarini qo'shish
+- Hisob-fakturalar va o'tkazmalar sahifalarini qo'shish
 
 ### 6.2.0
 - Takroriy to'lovlarni foydalanuvchi oralig'i bo'yicha uzaytirish

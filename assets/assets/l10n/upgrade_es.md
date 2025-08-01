@@ -2,8 +2,11 @@
 
 _La lista completa de actualizaciones puede consultarse en el menú "Acerca de" del botón "Sugerencias"._
 
+### 6.4.0
+- Se han añadido filtros para las páginas de facturas, recibos y transferencias
+
 ### 6.3.0
-- Añadir páginas de ingresos y transacciones
+- Se han añadido las páginas de facturas y transferencias
 
 ### 6.2.0
 - Ampliación de pagos recurrentes por intervalo de usuario

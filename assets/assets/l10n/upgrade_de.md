@@ -2,8 +2,11 @@
 
 _Die vollständige Liste der Updates kann über den Navigationspunkt "Über" auf der Schaltfläche "Hinweise" eingesehen werden._
 
+### 6.4.0
+- Hinzufügen von Filtern für die Seiten „Rechnungen”, „Fakturen” und „Überweisungen”
+
 ### 6.3.0
-- Hinzufügen von Einkommens- und Transaktionsseiten
+- Hinzufügen der Seiten „Fakturen” und „Überweisungen”
 
 ### 6.2.0
 - Wiederkehrende Zahlungen nach Benutzerintervall verlängern

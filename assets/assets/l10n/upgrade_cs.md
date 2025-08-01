@@ -2,8 +2,11 @@
 
 _Úplný seznam aktualizací si můžete prohlédnout v navigační položce „O aplikaci“ na tlačítku „Tipy“._
 
+### 6.4.0
+- Přidání filtrů pro stránky Účty, Faktury a Převody
+
 ### 6.3.0
-- Přidání stránek příjmů a transakcí
+- Přidání stránek Faktury a Převody
 
 ### 6.2.0
 - Rozšíření opakovaných plateb o intervaly mezi uživateli

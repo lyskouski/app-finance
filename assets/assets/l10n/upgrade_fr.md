@@ -2,8 +2,11 @@
 
 _La liste complète des mises à jour peut être consultée via l'élément de navigation "À propos" du bouton "Conseils"._
 
+### 6.4.0
+- Ajout de filtres pour les pages Comptes, Factures et Virements
+
 ### 6.3.0
-- Ajout des pages Revenus et Transactions
+- Ajout des pages Factures et Virements
 
 ### 6.2.0
 - Extension des paiements récurrents par intervalle d'utilisateur

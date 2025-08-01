@@ -2,8 +2,11 @@
 
 _A lista completa de atualizações pode ser visualizada no item de navegação "Sobre" no botão "Dicas"._
 
+### 6.4.0
+- Adição de filtros para as páginas Contas, Faturas e Transferências
+
 ### 6.3.0
-- Adição de páginas de renda e transação
+- Adição das páginas Faturas e Transferências
 
 ### 6.2.0
 - Extensão de pagamentos recorrentes por intervalo de usuário

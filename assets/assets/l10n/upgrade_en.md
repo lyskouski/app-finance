@@ -2,8 +2,11 @@
 
 _The full list of updates can be viewed via the "About" navigation item on the "Hints" button._
 
+### 6.4.0
+- Adding filters for Bills, Invoices, and Transfers pages
+
 ### 6.3.0
-- Adding Income and Transaction pages
+- Adding Invoices and Transfers pages
 
 ### 6.2.0
 - Extending recurring payments by user interval

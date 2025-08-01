@@ -2,8 +2,11 @@
 
 _De volledige lijst met updates kan worden bekeken via het navigatie-item “Over” op de knop “Hints”._
 
+### 6.4.0
+- Filters toevoegen voor pagina's met rekeningen, facturen en overschrijvingen
+
 ### 6.3.0
-- Inkomsten- en transactiepagina's toevoegen
+- Pagina's met facturen en overschrijvingen toevoegen
 
 ### 6.2.0
 - Terugkerende betalingen uitbreiden met gebruikersinterval
