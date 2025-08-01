@@ -2,8 +2,11 @@
 
 _Poŭny spis abnaŭlieńniaŭ možna prahliadzieć u navihacyjnym punkcie «Ab Dadatku» na knopcy «Padkazki»._ 
 
+### 6.4.0
+- Dadańnie fiĺtraŭ dlia staronak "Rachunki", "Faktury" i "Pieravody"
+
 ### 6.3.0
-- Dadańnie staronak dachodaŭ i tranzakcyj
+- Dadańnie staronak "Faktury" i "Pieravody"
 
 ### 6.2.0
 - Pašyreńnie pieryjadyčnych placiažoŭ pa intervalach karystaĺnikaŭ

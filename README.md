@@ -48,6 +48,7 @@ That empowers users to effortlessly manage their finances while ensuring that no
   - Customizable start day of the week and month
 - Bills, Transfers, Incomes (Invoices)
   - Recurring Payments (with a home widget for Android)
+  - Filtering
 - Goals Definition
 - Exchange rates, Default Currency for Summary
 - Metrics: 

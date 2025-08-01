@@ -3,8 +3,11 @@
 _L'elenco completo degli aggiornamenti può essere consultato tramite la voce di navigazione “Informazioni” del 
 pulsante “Suggerimenti”._
 
+### 6.4.0
+- Aggiunta di filtri per le pagine Fatture, Ricevute e Trasferimenti
+
 ### 6.3.0
-- Aggiunta delle pagine Redditi e Transazioni
+- Aggiunta delle pagine Fatture e Trasferimenti
 
 ### 6.2.0
 - Estensione dei pagamenti ricorrenti per intervallo di tempo dell'utente
