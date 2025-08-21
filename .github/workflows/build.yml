@@ -157,6 +157,12 @@ jobs:
           p12-file-base64: ${{ secrets.APPLE_P12 }}
           p12-password: ${{ secrets.APPLE_P12_KEY }}
 
+      # Error: Validation failed SDK version issue. This app was built with the iOS 17.5 SDK. 
+      # All iOS and iPadOS apps must be built with the iOS 18 SDK or later, ...
+      - name: Set Xcode version
+        if: matrix.target == 'iOS'
+        run: sudo xcode-select -s /Applications/Xcode_16.2.app
+
 #      - name: Import Development Certificate
 #        if: matrix.target == 'iOS'
 #        uses: apple-actions/import-codesign-certs@v2
