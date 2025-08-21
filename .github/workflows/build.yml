@@ -36,7 +36,9 @@ jobs:
             build_path: build/windows/x64/runner/Release
             asset_extension: .zip
             asset_content_type: application/zip
-          - os: ubuntu-latest
+          # Error: undefined symbol: g_once_init_enter_pointer
+          # Build Linux app in the oldest Ubuntu for better compatibility
+          - os: ubuntu-22.04
             target: LinuxSnap
             build_path: ./
             asset_extension: .snap
