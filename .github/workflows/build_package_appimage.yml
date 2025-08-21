@@ -21,7 +21,9 @@ on:
 jobs:
   build:
     name: Create Linux AppImage Build
-    runs-on: ubuntu-latest
+    # Error: undefined symbol: g_once_init_enter_pointer
+    # Build Linux app in the oldest Ubuntu for better compatibility
+    runs-on: ubuntu-22.04
     steps:
       - uses: actions/checkout@v3
 
