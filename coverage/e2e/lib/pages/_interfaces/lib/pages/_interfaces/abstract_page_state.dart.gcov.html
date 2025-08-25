@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Test Date:</td>
-            <td class="headerValue">2025-08-21 12:49:22</td>
+            <td class="headerValue">2025-08-25 09:52:55</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntryHi">-</td>
@@ -306,7 +306,7 @@
 <span id="L244"><span class="lineNum">     244</span> <span class="tlaGNC">           2 :     final scale = context.watch&lt;AppZoom&gt;().value;</span></span>
 <span id="L245"><span class="lineNum">     245</span> <span class="tlaGNC">           1 :     return Scaffold(</span></span>
 <span id="L246"><span class="lineNum">     246</span> <span class="tlaGNC">           3 :       appBar: AppBar(backgroundColor: context.colorScheme.primary, toolbarHeight: 0),</span></span>
-<span id="L247"><span class="lineNum">     247</span> <span class="tlaGNC">           2 :       body: Consumer&lt;AppData&gt;(builder: (context, appState, _) {</span></span>
+<span id="L247"><span class="lineNum">     247</span> <span class="tlaGNC">           3 :       body: SafeArea(child: Consumer&lt;AppData&gt;(builder: (context, appState, _) {</span></span>
 <span id="L248"><span class="lineNum">     248</span> <span class="tlaGNC">           1 :         state = appState;</span></span>
 <span id="L249"><span class="lineNum">     249</span> <span class="tlaGNC">           2 :         return LayoutBuilder(builder: (context, constraints) {</span></span>
 <span id="L250"><span class="lineNum">     250</span> <span class="tlaGNC">           1 :           final display = ScreenHelper.getInstance(context, constraints);</span></span>
@@ -411,7 +411,7 @@
 <span id="L349"><span class="lineNum">     349</span>              :             ),</span>
 <span id="L350"><span class="lineNum">     350</span>              :           );</span>
 <span id="L351"><span class="lineNum">     351</span>              :         });</span>
-<span id="L352"><span class="lineNum">     352</span>              :       }),</span>
+<span id="L352"><span class="lineNum">     352</span>              :       })),</span>
 <span id="L353"><span class="lineNum">     353</span>              :     );</span>
 <span id="L354"><span class="lineNum">     354</span>              :   }</span>
 <span id="L355"><span class="lineNum">     355</span>              : }</span>
