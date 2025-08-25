@@ -165,8 +165,7 @@ jobs:
         if: matrix.target == 'iOS'
         run: |
           sudo xcode-select -s /Applications/Xcode_16.2.app
-          xcodebuild -downloadPlatform iOS -exportPath ./ -buildVersion 18.2
-          xcodebuild -importPlatform iOS_18.2_Simulator_Runtime.dmg
+          xcodebuild -runFirstLaunch -checkForNewerComponents
 
 #      - name: Import Development Certificate
 #        if: matrix.target == 'iOS'
