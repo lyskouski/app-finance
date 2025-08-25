@@ -166,7 +166,8 @@ jobs:
         run: |
           sudo xcode-select -s /Applications/Xcode_16.2.app
           xcodebuild -downloadPlatform iOS -exportPath ./ -buildVersion 18.2
-          xcodebuild -importPlatform iphonesimulator_18.2_22C150.dmg
+          DMG_FILE=$(ls iphonesimulator_*.dmg | head -n 1)
+          xcodebuild -importPlatform "$DMG_FILE"
           xcodebuild -runFirstLaunch -checkForNewerComponents
 
 #      - name: Import Development Certificate
