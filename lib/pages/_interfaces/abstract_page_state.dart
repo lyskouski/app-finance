@@ -244,7 +244,7 @@ abstract class AbstractPageState<T extends StatefulWidget> extends State<T> {
     final scale = context.watch<AppZoom>().value;
     return Scaffold(
       appBar: AppBar(backgroundColor: context.colorScheme.primary, toolbarHeight: 0),
-      body: Consumer<AppData>(builder: (context, appState, _) {
+      body: SafeArea(child: Consumer<AppData>(builder: (context, appState, _) {
         state = appState;
         return LayoutBuilder(builder: (context, constraints) {
           final display = ScreenHelper.getInstance(context, constraints);
@@ -349,7 +349,7 @@ abstract class AbstractPageState<T extends StatefulWidget> extends State<T> {
             ),
           );
         });
-      }),
+      })),
     );
   }
 }
