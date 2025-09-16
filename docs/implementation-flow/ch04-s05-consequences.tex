@@ -5,9 +5,9 @@
 \subsection{Assessing of Ignorance} \label{ut-fail}
 \markboth{Gating}{Assessing of Ignorance}
 
-Initially, we emphasized the significance of having tests and an ecosystem for their automation. However, it was not 
-written any to validate the repercussions of neglecting them. Let's assess the errors made during our Increment (four 
-Iterations, two weeks each):
+Initially, we emphasized the importance of having tests and an ecosystem for their automation. However, we did not write 
+anything about the repercussions of neglecting them. Now, let's review the errors made during our increment (four 
+iterations, two weeks each).
 
 \begin{lstlisting}[language=terminal]
 git log --format="%ad %s" --grep="\[BF\]" --date=iso | awk -F ' ' '{print $1}' | sort | uniq -c
@@ -58,18 +58,18 @@ as a tool to ensure quality throughout every phase, can find a practical applica
 The strength of a system is determined by the resilience of its most vulnerable component. That's why we should always 
 bet on tests automation, it won't be regretted.
 
-Test-Driven Development approach is known from 1999 year as Extreme Programming flow, but for unknown reasons 
-not widely spread. Argumentation that "we do not have a time to write tests" is the same as "we won't use a car since 
-already running to reach our 200km target within a day" (instead of a few hours). In Agile transformations it's a mantra 
-that the usage of Scrum (communication framework) will increase development flow 10 times. By looking wider, 
-Agile, DevOps, Lean, and other approaches put an emphasis on the quality throughout the process. It's so since a 
-communication itself has a natural limitation in the achievable performance optimization. Next 10x boost can be reached 
-by growing exceptionally a technical excellence. Observing developers dedicating half a day to test a seemingly 
-"one-hour" change, we may find it perplexing that the idea of investing an additional hour in crafting tests is met with 
+The Test-Driven Development approach has been around since 1999 as the Extreme Programming flow, but for unknown 
+reasons, it has not become widely popular. The argument that "we don't have time to write tests" is similar to saying, 
+"We won't use a car to reach our 200 km target within a day since we can already run that distance in a few hours." In 
+Agile transformations, the mantra is that using Scrum, a communication framework, will increase development flow 
+tenfold. More broadly, Agile, DevOps, Lean, and other approaches emphasize quality throughout the process. This is 
+because communication itself has a natural limitation on achievable performance optimization. The next 10x boost can be 
+achieved by growing technical excellence exceptionally. When we observe developers dedicating half a day to testing a 
+seemingly "one-hour" change, it's perplexing that the idea of investing an additional hour in crafting tests is met with 
 resistance.
 
-As an example, by achieving the technical excellence through a semaphore approach ("red" - write test for the missed 
-part of a code, assert expectations; "yellow" - write code to pass tests; "green" - refactor your code) the 
-stabilization phase, "monthly" regression testing, even a separate QA Department won't be needed. All acceptance 
-criteria for user story, feature, and even epic are transliterated into tests, and controlled by automation. That 
-reinforces the developer's mental model of the code, boosts confidence and increases productivity.
+For example, achieving technical excellence through a semaphore approach ("red" — write a test for the missing part of 
+the code and assert expectations; "yellow" — write code to pass the tests; "green" — refactor the code) eliminates the 
+need for a stabilization phase, monthly regression testing, and a separate QA department. All acceptance criteria for a 
+user story, feature, or epic are translated into tests and controlled by automation. This approach reinforces the 
+developer's mental model of the code, boosts confidence, and increases productivity.

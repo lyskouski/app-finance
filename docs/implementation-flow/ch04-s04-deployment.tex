@@ -21,8 +21,8 @@ factory GoalAppData.fromJson(Map<String, dynamic> json) {
 // ... other code
 \end{lstlisting}
 
-\noindent To fix this issue, we need to ensure that all instances of IconData are used in a constant context, that can 
-be partially solved by the next modification:
+\noindent To resolve this issue, we must ensure that all instances of IconData are used in a constant context. This can 
+be partially achieved with the following modification:
 
 \begin{lstlisting}
 // ./lib/_mixins/formatter_mixin.dart
@@ -47,11 +47,11 @@ factory GoalAppData.fromJson(Map<String, dynamic> json) {
       : null,
 \end{lstlisting}
 
-\noindent Now, when we'll call \q{getIconFromString} with a dynamic icon name, it will create the \q{IconData}-instance 
-for that name if it doesn't already exist and cache it in the \q{\_cache}-map. If the same icon name is used again in 
-the future, it will return the cached \q{IconData}-instance, allowing tree shaking to work correctly. But we still have 
-to suppress the error itself because, when we're dealing with dynamic values that cannot be statically analyzed at 
-compile time, tree shaking is impossible:
+\noindent Now, when we call \q{getIconFromString} with a dynamic icon name, it will create an \q{IconData}-instance for 
+that name, if necessary, and cache it in the \q{\_cache}-map. If the same icon name is used again in the future, the 
+cached \q{IconData}-instance will be returned, allowing tree shaking to work correctly. However, we still need to 
+suppress the error because tree shaking is impossible when dealing with dynamic values that cannot be analyzed 
+statically at compile time:
 
 \begin{lstlisting}[language=terminal]
 flutter build -v web --release --no-tree-shake-icons
@@ -79,9 +79,9 @@ static void init(AppData store, String type, Map<String, dynamic> data) {
 // ... other code
 \end{lstlisting}
 
-\noindent The primary issue with this solution is that it cannot be portaged to other platforms, as different build 
-types (even within the same platform) may use various runtime notations for the same class. A more robust approach is 
-to adjust the JSON conversion process:
+\noindent The main problem with this solution is that it cannot be transferred to other platforms because different 
+build types (even within the same platform) may use different runtime notations for the same class. A more robust 
+approach would be to adjust the JSON conversion process.
 
 \begin{lstlisting}
 // ./lib/_classes/data/abstract_app_data.dart

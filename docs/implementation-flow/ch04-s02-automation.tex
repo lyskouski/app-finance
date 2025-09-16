@@ -5,9 +5,9 @@
 \subsection{Automating Conditions}
 \markboth{Gating}{Automating Conditions}
 
-Writing tests is not sufficient without a defined / automated continues integration. To achieve a robust quality check,
-we need to implement a plethora of automation that gradually alleviate the need for a manual intervention. Furthermore,
-Flutter provides a couple of commands to check the code itself:
+Writing tests is not enough without defined and automated continuous integration. To achieve robust quality checks, we 
+need to implement automation that gradually eliminates the need for manual intervention. Furthermore, Flutter provides 
+commands to check the code itself:
 
 \begin{itemize}
   \item flutter analyze -- static analysis;
@@ -19,10 +19,10 @@ Flutter provides a couple of commands to check the code itself:
 
 \subsubsection{Creating Git Hooks}
 
-Someone might think that additional checks before \q{git commit} or \q{git push} will slowdown the development process,
-contrary that minimizes pushes back and forward to resolve failures on CI/CD build procedure. For huge projects
-that process might take hours in contrast with seconds on a local environment. Certainly, the automation process must be
-carried out accurately and diligently; otherwise, it will become a constant source of frustration.
+Some might think additional checks before \q{git commit} or \q{git push} would slow down the development process. 
+Contrary to that, it minimizes back-and-forth pushes to resolve failures in the CI/CD build procedure. For large 
+projects, this process might take hours, as opposed to seconds in a local environment. Of course, the automation process 
+must be carried out accurately and diligently; otherwise, it will be a constant source of frustration.
 
 Implementation of git hooks is mostly a preparation of \q{bash}-scripts for execution, so, let's discuss here
 \q{pre-push}-file (since \q{pre-commit}-file contains almost the same logic for another scope of commands). As an
@@ -251,7 +251,9 @@ rebuild generated files as needed.
 
 \subsubsection{Running GitHub Workflows}
 
-With our local automation in place, it's time to take the next step and establish quality gates for our GitHub repository.
+Now that our local automation is in place, it's time to take the next step: establishing quality gates for our GitHub 
+repository. This involves setting up a GitHub Workflow that will be triggered on every pull request and push to the main 
+branch.
 
 \begin{lstlisting}[language=yaml]
 ## ./.github/workflows/dart.yml
@@ -307,9 +309,9 @@ jobs:
 
 \subsubsection{Commending with Badges} \label{a-badges}
 
-One of the ways to enhance the current state is by acknowledging and appreciating our efforts through Badges of Workflow
-Status and Code Coverage. These badges serve as a testament to our commitment to quality and efficiency, motivating us
-to continually improve and achieve even greater heights.
+One way to improve the current state is to acknowledge and appreciate our efforts with Badges of Workflow Status and 
+Code Coverage. These badges demonstrate our commitment to quality and efficiency, motivating us to continually improve 
+and reach new heights.
 
 \begin{lstlisting}[language=terminal]
 ## ./README.md

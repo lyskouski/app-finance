@@ -148,9 +148,9 @@ double getDelta() {
 
 \subsubsection{Creating Widget Tests} \label{widget-tests}
 
-Widget tests in Flutter are a form of automated testing used to verify the correctness and behavior of individual 
-widgets in an application. These tests are focused on evaluating the appearance, layout, and interaction of widgets, 
-ensuring that they are rendered correctly and respond appropriately to user interactions.
+In Flutter, widget tests are a form of automated testing that verifies the correctness and behavior of individual 
+widgets within an application. These tests evaluate the appearance, layout, and interaction of widgets to ensure they 
+are rendered correctly and respond appropriately to user interactions.
 
 \noindent ... and we've already broken a first of them (that's been provided through the Flutter template generation). 
 At the beginning it was covering \q{Add}-button as an incremental trigger for the shown counter.
@@ -173,7 +173,7 @@ void main() {
 }
 \end{lstlisting}
 
-\noindent By now, let's just check that \q{Add}-button is opening a Widget with a three named tabs:
+\noindent By now, let's just check that the \q{Add}-button opens a Widget with three named tabs:
 
 \begin{lstlisting}
 void main() {
@@ -203,9 +203,9 @@ void main() {
 \noindent Here we are, by \q{tap} and \q{expect} the flow of the whole application can be checked. Such type of tests 
 is called as Widget tests that's emphasized by specially named \q{testWidgets}-function.
 
-Initially, it would be better to concentrate mostly on Business Logic check (by unit tests) than on a draft state of 
-our pages and their flow. Nonetheless, the current one will check that the application can be started without errors, 
-and there're no any freezes or an infinite loops of rendering (at least for those two pages). 
+Initially, it would be better to focus primarily on the business logic check (via unit tests) rather than on the draft 
+state of our pages and their flow. Nevertheless, the current one will ensure that the application can start without 
+errors and that there are no freezes or infinite rendering loops (at least for the first two pages). 
 
 
 \subsubsection{Using Code Generators} \label{ut-code-generator}
@@ -550,10 +550,10 @@ like:
     And I should see "Budget <budget>" percentage change to <value> with left <budget_amount>
 \end{lstlisting}
 
-\noindent Such a powerful simplification cannot be ignored, it's not a mess but the extreme reusability. If something
-would be changed (pipeline to open form, properties, widgets, etc.), a single scenario would be responsible for that. 
-The naming convention: scenario is written in past tense, step -- in present. By following such a simple rule it would 
-be always obvious the nested structure from a written sentence. 
+\noindent Such a powerful simplification cannot be ignored; it's not messy, but extremely reusable. If something were to 
+change (e.g., the pipeline, open form, properties, or widgets), a single scenario would be responsible for it. The 
+naming convention is as follows: Scenario is written in the past tense and Step is written in the present. Following 
+this simple rule would always make the nested structure obvious in a written sentence.
 
 Another drawback is that Gherkin runs User Interface tests by compiling and running the original application with 
 enabled Flutter Driver Extension 
@@ -807,10 +807,10 @@ for integration tests (\cref{int-tests}).
 
 \subsubsection{Asserting by Images} \label{golden-image}
 
-After successfully capturing images (\cref{t-record}), their utility extends beyond debugging alone by serving as 
-golden images. These images can be used as benchmark references, facilitating the process of comparing visual 
-outputs during subsequent testing iterations. By capturing and preserving the visual representation of a desired state, 
-these images allow developers to discern any deviations or anomalies in the UI rendering as the application evolves. 
+After successfully capturing images (see \cref{t-record}), they can be used for more than just debugging by serving as 
+golden images. These images can be used as benchmark references, facilitating the process of comparing visual outputs 
+during subsequent testing iterations. By capturing and preserving the visual representation of the desired state, these 
+images enable developers to identify any discrepancies or irregularities in the UI rendering as the application evolves.
 
 Moreover, this approach is instrumental in enabling the application to undergo across expected variability of screen 
 sizes and pixel ratios, thereby ensuring a comprehensive assessment of its adaptive design alignments 
