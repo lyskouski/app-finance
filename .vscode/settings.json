@@ -7,6 +7,7 @@
     "editor.rulers": [
         120
     ],
+    "editor.wordWrap": "on",
     "[dart]": {
         "editor.rulers": [
             120

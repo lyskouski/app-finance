@@ -10,12 +10,13 @@ tools for building UIs, handling user input, and accessing device features. Flut
 that are the building blocks of Flutter apps, and everything, from a simple button to a complex layout, is a widget
 (including animations and layout controls).
 
-\paragraph{Engine} At the core of Flutter is the C/C++ engine, known as \q{Skia} (open-source 2D-graphics library, 
-developed and maintained by Google), that provides a set of low-level APIs for rendering graphics (support for both 
-vector and bitmap graphics to draw shapes, text, and images) and low-level platform services. Skia includes 
-anti-aliasing capabilities, which smooth out edges and lines to create visually pleasing graphics. This engine provides 
-interfaces with the platform-specific code to interact with device hardware. \q{Impeller} is an additional renderer 
-within Flutter's engine (default for iOS), enabling new experiences such as 3D support.
+\paragraph{Engine} At the core of Flutter is the C/C++ engine, built around \q{Skia}, an open-source 2D graphics 
+library maintained by Google. Skia provides low-level APIs for rendering vector and bitmap graphics, including shapes, 
+text, and images, along with features such as anti-aliasing for smoother visuals. The engine also bridges to 
+platform-specific code to access device hardware and system services. In recent versions, Flutter introduced 
+\q{Impeller}, a modern rendering runtime designed as a replacement for Skia in certain contexts. Impeller is now the 
+default renderer on iOS (and gradually being rolled out to other platforms) and brings improved performance, 
+consistency across devices, and support for advanced rendering features such as 3D and more efficient GPU utilization.
 
 \paragraph{Embedder} The Flutter Engine is window toolkit agnostic, meaning a capability to build Flutter embedders on 
 one of the platforms not supported out of the box. That enables creation of custom solutions with the power and 
@@ -29,18 +30,17 @@ from either the Dart or native side (for example, a native method to access the 
 communication is covered by a data serialization and deserialization process that ensures that it is in a format that 
 both can understand.
 
-\paragraph{Framework} The Flutter Framework includes Material and Cupertino, which provide a wide range of user interface 
-components. Cupertino widgets mimic the iOS look and feel. Material Design is characterized by its use of material 
-surfaces and responsive animations.
+\paragraph{Framework} The Flutter Framework includes Material Design and Cupertino, which provide a wide range of user 
+interface components.
 
 
 \subsubsection{Considering Diversity}
 
-Out of the box (OOTB), Flutter offers a vast array of widgets that greatly facilitate the creation of diverse and 
-complex user interfaces. These widgets are designed to cater a wide range of application needs, from crafting simple 
-layouts to developing intricate and feature-rich interfaces. This comprehensive selection of widgets significantly 
-accelerates the development process, allowing us to focus more on reaching the functional needs and less on building UI 
-components from scratch.
+\q{Flutter} offers a vast array of out-of-the-box (OOTB) widgets that greatly facilitate the creation of diverse and 
+complex user interfaces. These widgets are designed to meet a wide range of application needs, from creating simple 
+layouts to developing intricate, feature-rich interfaces. This comprehensive selection of widgets significantly 
+accelerates the development process, enabling us to prioritize meeting functional needs over building UI components 
+from scratch.
 
 \begin{itemize}
   \item \q{SizedBox} for a size allocation, \q{Container} extends it by styling as padding, margin, and background color.
