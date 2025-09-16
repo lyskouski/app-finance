@@ -87,6 +87,35 @@ var map = (text: 'sample', at: 123); // map.text; // 'sample'
 \end{lstlisting}
 
 
+\subsubsection{Observing Types}
+
+Dart is a statically typed language, which means that the type of a variable is known at compile time. However, it also
+supports type inference, allowing the compiler to automatically deduce the type of a variable based on the assigned value:
+
+\begin{lstlisting}
+int count = 10; // Explicit type declaration
+var count = 10; // Type inferred as int
+final count = 10; // Immutable variable, type inferred as int
+const count = 10; // Compile-time constant, type inferred as int
+\end{lstlisting}
+
+Dart is a relatively strongly typed language, which means it encourages declaring explicit types rather than relying 
+on \q{var}. This practice enhances code readability and maintainability by making the intended type of each variable 
+clear.
+
+\begin{lstlisting}
+String txt = 'Demo string'; // Explicit type declaration
+\end{lstlisting}
+
+For collection types that hold other objects, we can also specify the type of the stored elements.
+
+\begin{lstlisting}
+List<String> names = ['Alice', 'Bob', 'Charlie'];
+Map<String, int> ages = {'Alice': 30, 'Bob': 25};
+Set<int> uniqueNumbers = {1, 2, 3, 2};
+\end{lstlisting}
+
+
 \subsubsection{Extracting Patterns}
 
 Pattern matching in programming involves comparing data structures against predefined patterns, which enables 
@@ -159,9 +188,9 @@ calculateValue(DateTime start, DateTime end, DateTime current) {
 }
 \end{lstlisting}
 
-\noindent \q{DateFormat} is used to convert and parse dates into a specific format, such as 'yyyy-MM-dd' 
-(\emph{4 characters for a year, dash, 2 symbols for a month, dash, last two to identify the date}), while considering 
-localization preferences.
+\noindent The \q{DateFormat} function is used to convert and parse dates into a specific format, such as 'yyyy-MM-dd' 
+(\emph{four characters for the year, a dash, two characters for the month, a dash, and the last two characters 
+to identify the day}), while considering localization preferences.
 
 \begin{lstlisting}
 DateTime dt = DateTime(2023, 11, 1);
@@ -407,6 +436,55 @@ if (val is Function) val();
 \end{lstlisting}
 
 
+\subsubsection{Observing Functional Programming}
+Dart supports functional programming concepts, allowing functions to be treated as first-class citizens. 
+This means they can be assigned to variables, passed as arguments, and returned from other functions.
+
+Functions can also be composed, allowing for the creation of more complex behavior by combining simpler functions. 
+This is often achieved through higher-order functions, which take other functions as arguments or return them as results. 
+
+Dart also provides support for functional programming through features like first-class functions, closures, 
+and higher-order functions.
+
+\begin{lstlisting}
+// Assign function to a variable
+var processOrder = (String orderId) {
+  print('Processing order: $orderId');
+};
+
+// Pass function as an argument (higher-order function)
+void executeProcess(Function(String) processor, String id) {
+  processor(id);
+}
+
+// Return a function from another function
+Function(String) createLogger(String prefix) {
+  return (String message) => print('$prefix: $message');
+}
+
+// Compose functions
+String toUpper(String input) => input.toUpperCase();
+String addExclamation(String input) => '$input!';
+
+String compose(String Function(String) f, String Function(String) g, String value) {
+  return f(g(value));
+}
+
+// Usage examples
+void main() {
+  processOrder('A123'); // Processing order: A123
+
+  executeProcess(processOrder, 'B456'); // Processing order: B456
+
+  var logger = createLogger('INFO');
+  logger('Order completed'); // INFO: Order completed
+
+  var result = compose(addExclamation, toUpper, 'hello');
+  print(result); // HELLO!
+}
+\end{lstlisting}
+
+
 \subsubsection{Operating Asynchronously}
 
 Asynchronous operations allow to perform other tasks while waiting for an operation to complete, such as fetching data 
@@ -598,6 +676,53 @@ String message = switch (state) {
     LoadedState obj => obj.data,    
     _ => 'Unhandled state (all others)'
   };
+\end{lstlisting}
+
+
+\subsubsection{Metaprogramming Overview}
+
+In Dart, metaprogramming capabilities are somewhat limited compared to languages like Python or Ruby, but there are 
+still a few important tools available:
+
+\noindent 1. Reflection: Dart provides a \q{dart:mirrors} library for reflection, allowing you to inspect and manipulate 
+objects at runtime. However, this library is not supported in Flutter for web and mobile.
+
+\noindent 2. Code Generation: Dart supports code generation through build_runner and source_gen packages. You can create 
+custom annotations and use code generators to produce boilerplate code.
+
+\noindent 3. Macros: Dart has introduced a macro system that allows you to write code that generates other code at 
+compile time.
+
+\noindent 4. "Magic methods": Dart allows to override certain methods in classes to change their behavior, 
+such as \q{noSuchMethod()}.
+
+Normally, when we call a method in Dart, the runtime looks for that method in the current class. If it is not found, 
+Dart checks the superclass chain. If no matching method is found, instead of immediately throwing an error, Dart will 
+invoke \q{noSuchMethod()} but only if it has been implemented in the class.
+
+\begin{lstlisting}
+class ComicsModel {
+  // Override noSuchMethod to catch calls to undefined methods.
+  @override
+  dynamic noSuchMethod(Invocation invocation) {
+    final methodName = invocation.memberName;
+    final args = invocation.positionalArguments;
+
+    if (methodName.toString().contains('save')) {
+      // Custom handling for `save` calls
+      print('Performing save operation with arguments: $args');
+    } else {
+      // If it's not 'save', throw the default exception
+      super.noSuchMethod(invocation);
+    }
+  }
+}
+
+void main() {
+  var model = ComicsModel();
+  model.save('Issue #1'); // Handled by noSuchMethod
+  model.delete();         // Will throw NoSuchMethodError
+}
 \end{lstlisting}
 
 
