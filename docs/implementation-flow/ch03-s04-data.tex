@@ -4,29 +4,25 @@
 \subsection{Defining Storage}
 \markboth{Prototyping}{Defining Storage}
 
-After a series of experiments aimed at modifying the content visualization through repeated adjustments, it became 
-clear what information is truly relevant for each item within our application \issue{17}{}. Here's the trick! In our 
-approach, we store the user input exactly as it is. All structures (as bills, accounts, budgets, currencies rate, 
-invoices, transfers, etc.) are derived from this core item and will be used at run-time only as a representation layer 
-of those "transactions".
+After a series of experiments aimed at modifying the visualization of content through repeated adjustments, it became clear which information is truly relevant for each item within our application \issue{17}{}. Here's the trick! In our approach, we store user input exactly as it is. All structures (bills, accounts, budgets, currency rates, invoices, transfers, etc.) are derived from this core item and are only used at runtime as a representation layer of these "transactions".
 
-To answer on a possible questions "what's for", we should dive into the world of finances. Transactions are the 
-foundation of financial record-keeping. Their immutability (cannot be adjusted or deleted) is dictated by a regulated 
-environment of the banking industry (historical transaction data can be trusted and is compliant with regulatory 
-standards), and helps maintain a data integrity by minimizing the risk of its manipulation or loss.
+In answer to the question, "What's the purpose of transactions?" we must delve into the world of finance. Transactions 
+form the basis of financial record-keeping. Their immutability, or inability to be adjusted or deleted, is dictated by 
+the regulated environment of the banking industry. This ensures that historical transaction data can be trusted and is 
+compliant with regulatory standards. Immutability helps maintain data integrity by minimizing the risk of manipulation 
+or loss.
 
-\noindent We might not be a bank, but the immutability of transactions provides a powerful built-in fault tolerance 
-mechanism. This immutability ensures that every user entry is preserved exactly as it was entered. When an edit action 
-is performed, what's happening behind the scenes is the creation of a new transaction. This approach safeguards against 
-any computational errors in our code. In case of any error, the next patch (application upgrade) automatically 
-restores the application's quality state without requiring complex migrations, conversions, or any other type of 
-the data manipulations. It's all about preserving data integrity and ensuring a seamless user experience.
+\noindent Although we are not a bank, the immutability of transactions provides a powerful, built-in fault tolerance 
+mechanism. This ensures that every user entry is preserved exactly as it was entered. When an edit is performed, a new 
+transaction is created behind the scenes. This approach safeguards against computational errors in our code. In the 
+event of an error, the next patch (application upgrade) automatically restores the application's quality state, 
+eliminating the need for complex migrations, conversions, or other types of data manipulation. Our focus is on 
+preserving data integrity and ensuring a seamless user experience.
 
 
 \subsubsection{Streaming Big Files}
 
-Since our transaction log can be counted in millions of millions, the better way to restore data structures from a file
-is to use the streaming approach:
+Because our transaction log is measured in the millions, the best way to restore data structures from a file is to use the streaming approach. This allows us to read the file line by line, processing each line as it is read, rather than loading the entire file into memory at once. This is particularly useful for large files, as it minimizes memory usage and allows for more efficient processing.
 
 \begin{lstlisting}
 // ./lib/_classes/data/transaction_log.dart
@@ -79,18 +75,18 @@ class AppData extends ChangeNotifier {
 
 \subsubsection{Using Shared Preferences}
 
-Let's take a step back and explore the use of shared preferences as an effective alternative to "saving files" for Web,
-and user settings across all platforms:
+Now, let's take a step back and explore how shared preferences can be used as an effective alternative to saving files 
+for Web and user settings across all platforms:
 
 \begin{lstlisting}[language=terminal]
 $ flutter pub add shared_preferences
 \end{lstlisting}
 
-\noindent To interact with preferences efficiently, we might employ mixins, which offer a powerful mechanism for reusing 
-code across multiple classes. A mixin is defined by using the \q{mixin}-keyword followed by its name and a set of members, 
-such as properties, methods, and getters/setters. It cannot be instantiated on its own; instead, it is meant to be mixed 
-into other classes by using the \q{with}-keyword (it inherits all the members from the mixin). That allows the class 
-to access and use the properties and methods defined in the mixin as if they were a part of its own implementation:
+\noindent To efficiently interact with preferences, we can use mixins, which are a powerful mechanism for reusing code 
+across multiple classes. A mixin is defined using the \q{mixin}-keyword followed by its name and a set of members, such 
+as properties, methods, and getters/setters. A mixin cannot be instantiated on its own. Instead, it is meant to be mixed 
+into other classes using the \q{with}-keyword (it inherits all the members from the mixin). This allows the class to 
+access and use the properties and methods defined in the mixin as if they were part of its own implementation.
 
 \begin{lstlisting}
 // ./lib/_mixins/shared_preferences_mixin.dart
@@ -129,6 +125,160 @@ class ExpensesTabState<T extends ExpensesTab> extends State<T>
     setPreference(prefAccount, account ?? '');
 // ... other code
 \end{lstlisting}
+
+\noindent What we have forgotten is that Local Storage is usually limited to 5-10 MB per domain. This limit can vary, 
+and some browsers may allow more storage or give users more control over the quota. Fortunately, there is \q{Indexed DB} 
+and its accompanying library -- \q{idb_shim}:
+
+\begin{lstlisting}
+// ./lib/_classes/storage/transaction_log/abstract_storage_web.dart
+abstract class AbstractStorage implements InterfaceStorage {
+  static int increment = 0;
+  static const String storeName = 'records';
+  static Database? db;
+
+  static Future<void> _initIndexedDB() async {
+    IdbFactory? idbFactory = getIdbFactory();
+    if (idbFactory == null) {
+      return;
+    }
+    db = await idbFactory.open('fingrom.db', version: 1, onUpgradeNeeded: (VersionChangeEvent event) {
+      event.database.createObjectStore(storeName, keyPath: 'id');
+    });
+  }
+
+  static Future<String> getSize() async {
+    int size = increment * 256;
+    return size.toByteSize();
+  }
+
+  static void saveRaw(String line) {
+    if (db != null) {
+      var store = db!.transaction(storeName, 'readwrite').objectStore(storeName);
+      store.put({'id': 'log$increment', 'line': line});
+    } else {
+      AppPreferences.set('log$increment', line);
+    }
+    increment++;
+  }
+
+  static Stream<String> readRaw(Function callback) async* {
+    int attempts = 0;
+    do {
+      int i = increment + attempts;
+      String? line = await callback(i);
+      if (line == null) {
+        attempts++;
+      } else {
+        increment += attempts + 1;
+        attempts = 0;
+      }
+      yield line ?? '';
+    } while (attempts < 10);
+  }
+
+  static Stream<String> read() async* {
+    increment = 0;
+    await _initIndexedDB();
+    await for (var line in readRaw((i) => AppPreferences.get('log$i'))) {
+      yield line;
+    }
+    if (db != null) {
+      var store = db!.transaction(storeName, 'readonly').objectStore(storeName);
+      await for (var line in readRaw((i) async => ((await store.getObject('log$i')) as Map?)?['line'])) {
+        yield line;
+      }
+    }
+  }
+}(*@ \stopnumber @*)
+
+// ./lib/_classes/storage/transaction_log/abstract_storage.dart
+abstract class AbstractStorage implements InterfaceStorage {
+  static File? _logFile;
+  static bool _isLocked = false;
+
+  static const filePath = '.terCAD/app-finance.log';
+
+  static Future<File> get logFle async {
+    if (_logFile != null) {
+      return Future.value(_logFile);
+    }
+    List<File> scope = [
+      await getApplicationDocumentsDirectory(),
+      await getApplicationSupportDirectory(),
+      Directory.systemTemp,
+      await getTemporaryDirectory(),
+    ].map((dir) => File('${dir.absolute.path}/$filePath')).toList();
+    File? file = scope.where((f) => f.existsSync()).firstOrNull;
+    int i = 0;
+    while (i < scope.length && file == null) {
+      try {
+        File tmp = scope[i];
+        if (!tmp.existsSync()) {
+          tmp.createSync(recursive: true);
+          tmp.writeAsString("\n", mode: FileMode.append);
+        }
+        file = tmp;
+      } catch (e) {
+        i++;
+      }
+    }
+    if (file == null) {
+      throw Exception('Write access denied for: $scope.');
+    }
+    return _logFile = file;
+  }
+
+  static Future<String> getSize() async {
+    int size = (await logFle).lengthSync();
+    return size.toByteSize();
+  }
+
+  static void saveRaw(String line) {
+    int retrial = 1;
+    while (_isLocked && retrial < 1000) {
+      sleep(Duration(microseconds: retrial * 10));
+      retrial++;
+    }
+    _isLocked = true;
+    _logFile!.writeAsStringSync("$line\n", mode: FileMode.append);
+    _isLocked = false;
+  }
+
+  static Stream<String> read() async* {
+    Stream<String> lines = (await logFle).openRead().transform(utf8.decoder).transform(const LineSplitter());
+
+    await for (var line in lines) {
+      yield line;
+    }
+  }
+}(*@ \stopnumber @*)
+
+// ./lib/_classes/storage/transaction_log.dart
+import 'package:app_finance/_classes/storage/transaction_log/abstract_storage_web.dart'
+    if (dart.library.io) 'package:app_finance/_classes/storage/transaction_log/abstract_storage.dart';
+\end{lstlisting}
+
+\noindent The code above demonstrates two platform-specific implementations of an abstract storage class for transaction 
+logs in a Flutter application:
+
+\begin{itemize}
+\setlength{\itemsep}{3pt}
+\setlength{\parskip}{0pt}
+\setlength{\parsep}{0pt}
+    \item Web implementation (abstract\_storage_web.dart) uses IndexedDB (via idb\_shim) or falls back to local 
+    preferences for storing transaction logs. It provides methods for initializing the database, saving raw log lines, 
+    and reading logs as a stream. The readRaw method supports retries to handle missing or deleted records.
+
+    \item Native implementation (abstract\_storage.dart) uses the file system to store logs in a file. It ensures thread 
+    safety with a lock when writing, supports multiple fallback directories, and streams log lines for efficient reading.
+
+    \item The last import statement (transaction\_log.dart) uses Dart's conditional imports to select the appropriate 
+    storage implementation depending on the platform (web or native).
+\end{itemize}
+
+\noindent This approach allows the application to handle large transaction logs efficiently and in a platform-agnostic 
+way.
 
 
 \subsubsection{Managing Local Storage}
