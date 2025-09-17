@@ -4,47 +4,43 @@
 \subsection{Aggregating External Sources}
 \markboth{Unleashing}{Aggregating External Sources}
 
-In the realm of any application, the concept of "Seamless Migration" stands as a pivotal attribute that can 
-significantly elevate user experience. And it's imperative to provide convenient options to seamlessly import their 
-data \emph{(a broad spectrum of financial information, ranging from transaction histories to detailed account 
-statements)} from various external sources (actually, existing market competitors).
+In any application, the concept of "seamless migration" is a pivotal attribute that can significantly improve the user 
+experience. It's crucial to offer convenient options for importing a broad spectrum of financial information, including 
+transaction histories and detailed account statements, from various external sources, including existing market 
+competitors.
 
-The crux of this functionality lies in the establishment of integration channels with renowned financial institutions. 
-By enabling users to link their bank accounts, credit cards, or other financial platforms, our application can 
-orchestrate an automated and systematic import of transactional data. The architecture of this integration hinges 
-on the utilization of APIs and secure connection protocols that guarantee the confidentiality of sensitive financial 
-information.
+The crux of this functionality lies in establishing integration channels with renowned financial institutions. Our 
+application enables users to link their bank accounts, credit cards, and other financial platforms. This allows us to 
+automate and systematize the import of transactional data. This integration architecture relies on APIs and secure 
+connection protocols that ensure the confidentiality of sensitive financial information.
 
-The implications of such seamless data import is appreciated in an era characterized by the urgency of time and the 
-demand for instantaneous solutions. And it reinforces the notion that our application isn't just another financial 
-tool, but a resource that is acutely attuned to users' needs, providing practical solutions that simplify their 
-financial management endeavors. So, it's a strategic initiative that encapsulates the essence of user-centric design. 
+In an era characterized by the urgency of time and the demand for instantaneous solutions, the implications of such 
+seamless data import are appreciated. It reinforces the idea that our application is not just another financial tool, 
+but rather a resource acutely attuned to users' needs. It provides practical solutions that simplify financial 
+management. Thus, it's a strategic initiative that encapsulates the essence of user-centric design. 
 
 
 \subsubsection{Importing Comma-Separated Values (CSV)}
 
-A CSV (comma-separated values) file is a text-based file format distinguished by its specific structure that facilitates 
-the storage of data in a tabular format. This format is particularly suited for representing data in rows and columns, 
-lending itself to various applications, ranging from simple data storage to complex data analysis.
+A CSV (Comma Separated Values) file is a text-based file format with a specific structure that makes storing data in a 
+table easy. This format is ideal for displaying data in rows and columns and has many applications, from simple data 
+storage to complex data analysis.
 
-And that format is the simples in its usage to export from external resources financial data, and import it into our 
-application by using \q{csv}-package \issue{35}{a425bbd}:
+This format is the simplest way to export financial data from external resources and import it into our application using the \q{csv}-package \issue{35}{a425bbd}:
 
 \begin{lstlisting}
-String content = await importFile(ext);
-// splitter - '\n' or '\r\n'
+String content = await importFile(path);
+String splitter = content.contains('\r\n') ? '\r\n' : '\n';
 final result = CsvToListConverter(eol: splitter).convert(content);
 \end{lstlisting}
 
 
 \subsubsection{Parsing Quicken Data (QIF)}
 
-QIF files stand as plain text documents that adhere to a structure of "tag-value" pairs. The architecture is 
-characterized by a distinct format wherein each line commences with a solitary character "tag" that is promptly 
-succeeded by its corresponding "value," which persists until the culmination of that line. This format provides a 
-straightforward and human-readable way to encapsulate financial data within a text-based paradigm, facilitating 
-easier comprehension and interpretation
-(\href{https://en.wikipedia.org/wiki/Quicken_Interchange_Format}{https://en.wikipedia.org/wiki/Quicken\_Interchange\_Format}):
+QIF files are plain text documents that adhere to a "tag-value" pair structure. Each line begins with a single character 
+"tag" followed immediately by its corresponding "value", which continues until the end of the line. This format provides 
+a straightforward, human-readable way to encapsulate financial data in a text-based paradigm, making it easier to 
+comprehend and interpret (\href{https://en.wikipedia.org/wiki/Quicken_Interchange_Format}{https://en.wikipedia.org/wiki/Quicken\_Interchange\_Format}):
 
 \begin{lstlisting}[language=terminal]
 !Type:Bank # "!" - a section of records
@@ -58,7 +54,7 @@ L[Visa]/   # "L" - category line
 ^          # "^" - end of record
 \end{lstlisting}
 
-\noindent Armed with these foundational details, it becomes feasible to construct a parser for QIF files 
+\noindent With these foundational details in hand, constructing a parser for QIF files becomes feasible 
 \issue{189}{133ee9f}:
 
 \begin{lstlisting}
@@ -92,16 +88,12 @@ FileScope _parseQif(String fileContent, [String splitter = '\n']) {
 
 \subsubsection{Fulfilling Financial Exchange Data (OFX)}
 
-Open Financial Exchange (OFX) files serve as the conduit through which financial data is seamlessly shared between 
-software applications and financial institutions. This dynamic format plays a pivotal role in streamlining the complex 
-and intricate interactions that underpin modern financial management. The scope of this exchange varies from intricate 
-transaction details to comprehensive account information, even extending to encompass bill payments.
+Open Financial Exchange (OFX) files facilitate the seamless sharing of financial data between software applications and 
+financial institutions. This dynamic format plays a pivotal role in streamlining the complex interactions that underpin 
+modern financial management. The scope of this exchange encompasses everything from intricate transaction details to 
+comprehensive account information and even bill payments.
 
-One of the defining attributes of the OFX file format is its compatibility across a spectrum of software applications. 
-This format engenders a unified language that bridges the diverse software platforms utilized by both individuals and 
-financial institutions. Through this universal language, financial data flows seamlessly and amplifies the efficiency 
-of financial interactions across the digital domain. The data stored inside the OFX files is based on the Standard 
-Generalized Markup Language (SGML; ISO 8879:1986) standard:
+One of the defining attributes of the OFX file format is its compatibility with a wide range of software applications. This format establishes a unified language that connects the various software platforms used by individuals and financial institutions alike. This universal language enables financial data to flow seamlessly, amplifying the efficiency of financial interactions in the digital realm. The data stored in OFX files is based on the Standard Generalized Markup Language (SGML; ISO 8879:1986) standard:
 
 \begin{lstlisting}[language=xml]
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
@@ -111,43 +103,67 @@ Generalized Markup Language (SGML; ISO 8879:1986) standard:
   <STMTRS>
     <BANKTRANLIST>
       <STMTTRN>
-        <TRNTYPE>DEBIT</TRNTYPE>
-        <DTPOSTED>***4332</DTPOSTED>
-        <TRNAMT>-100.00</TRNAMT>
-        <FITID>1234232</FITID>
-        <NAME>Market Store</NAME>
+        <TRNTYPE>DEBIT
+        <DTPOSTED>***4332
+        <TRNAMT>-100.00
+        <FITID>1234232
+        <NAME>Market Store
       </STMTTRN>
 \end{lstlisting}
 
-\noindent That's why we may use \q{xml}-package to parse content and import all needed data \issue{189}{7bd7eea}:
+\noindent We might think that an \q{xml}-package would be suitable for obtaining data \issue{189}{7bd7eea}, but the command fails with an error stating that the XML file is invalid \issue{518}{}:
 
 \begin{lstlisting}
-// @var String content
+// XmlTagException: Expected </SEVERITY>, but found </STATUS> at ...
 XmlDocument.parse(content);
+\end{lstlisting}
+
+\noindent The reason is that OFX files are not strictly XML files. They contain a header section with metadata, followed 
+by a body section that resembles XML but doesn't fully comply with XML standards. The body section uses SGML-like 
+syntax, which is less strict than XML. To parse OFX files correctly, we need to handle the header separately and then 
+parse the body as SGML-like content. We can use regular expressions to extract the relevant sections and then process 
+them accordingly:
+
+\begin{lstlisting}
+  FileScope _parseOfx(String content) {
+    Map<String, int> mapping = {
+      'FITID': 0, // Unique ID
+      'TRNAMT': amountType, // Amount
+      'NAME': 2, // Description
+      'DTPOSTED': dateType, // Date
+    };
+
+    final data = content.split('<STMTTRN>');
+    for (int i = 1; i < data.length; i++) {
+      for (var key in mapping.keys) {
+        final regexp = RegExp(r'(?<=<' + key + r'>)(.*?)(?=<)');
+        final match = regexp.firstMatch(data[i]);
+        if (match != null) {
+          // ... proceed data processing
 \end{lstlisting}
 
 
 \subsubsection{Supporting Banking Protocols}
 
-Financial Transaction Services (FinTS) protocol \issue{314}{}, previously recognized as HBCI (Home Banking Computer 
-Interface), stands as a testament to technological advancement in the realm of digital finance. FinTS emerges as a 
-bank-independent interface, meticulously crafted to cater to the distinct needs of German banking institutions and 
-their clientele; enabling them to seamlessly engage in statement downloads, initiate bank transfers, and facilitate 
-direct debits. 
+The Financial Transaction Services (FinTS) protocol \issue{314}{}, previously recognized as HBCI (Home Banking Computer 
+Interface), is a testament to technological advancement in digital finance. FinTS is a bank-independent interface 
+meticulously designed to meet the unique requirements of German banking institutions and their customers. It enables 
+them to effortlessly perform tasks such as downloading statements, initiating bank transfers, and processing direct 
+debits. 
 
-In addition to the pure protocol implementation, we may also utilize simplified solutions like Account Information 
-Service (AIS) platforms, such as TryPay in Poland \issue{252}{}, to retrieve a financial data from bank accounts. And, 
-there is nothing specific to the Flutter usage other then the implementation in accordance with an API specification.
+In addition to the pure protocol implementation, we can use simplified solutions, such as the Account Information 
+Service (AIS) platform TryPay in Poland \issue{252}{}, to retrieve financial data from bank accounts. There is nothing 
+specific to Flutter usage other than implementation in accordance with the API specification.
 
 
 \subsubsection{Parsing Notifications (Android)}
 
-As an alternative (or simultaneous solution) to directly implementing financial protocols for integration with banks, 
-we could consider creating a parser for incoming notifications. As a note, this approach is available for Android but 
-restricted on iOS due to the platform limitations. 
+As an alternative to directly implementing financial protocols for integration with banks, we could create a parser for 
+incoming notifications. Note that this approach is available for Android but is restricted on iOS due to platform 
+limitations.
 
-To access notifications from other applications, it's essential to have the necessary permissions registered in 
-the \q{AndroidManifest.xml}-file:
+In order to access notifications from other applications, the necessary permissions must be registered in the 
+\q{AndroidManifest.xml}-file:
 
 \begin{lstlisting}[language=xml]
 <service

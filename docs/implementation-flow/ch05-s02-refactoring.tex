@@ -4,67 +4,65 @@
 \subsection{Refactoring by Principles} \label{refactoring}
 \markboth{Unleashing}{Refactoring by Principles}
 
-Having scrutinized the application's "skeleton", which includes scalability and fault tolerance (\ref{benchmark}), 
-it's now an opportune time to delve into its "nervous system" -- ensuring alignment with architectural and code style 
-principles.\\
+After scrutinizing the application's "skeleton", which includes scalability and fault tolerance (see \ref{benchmark}), 
+now is the time to examine its "nervous system" to ensure alignment with architectural and code style principles.\\
 \\
 
 \noindent Architectural Principles:
 
 \begin{itemize}
   \item Architectural modularity \cite{Rich20} emphasizes breaking down a software system into distinct modules or 
-  components. Each module should have a clear and well-defined purpose, promoting easier development, testing, and 
+  components. Each module should have a clear, well-defined purpose to promote easier development, testing, and 
   maintenance.
 
-  \item Layered architecture \cite{Rich22} divides a system into logical layers, each responsible for specific tasks. 
-  This separation enhances code organization and facilitates the isolation of concerns.
+  \item Layered architecture \cite{Rich22} divides a system into logical layers, each of which is responsible for 
+  specific tasks. This separation improves code organization and makes it easier to isolate concerns.
 
-  \item Separation of Concerns (SoC) advocates segregating different aspects of functionality to prevent overlap. By 
-  example, Clean Architecture \cite{Mart18}, as an architectural pattern, introduces a distinctive approach to code 
-  structuring, fostering a meticulously organized framework that seamlessly aligns with software development principles. 
-  At its core, Clean Architecture reimagines the arrangement of code into distinct layers, each bearing a clearly 
-  defined and specialized responsibility. These layers are demarcated by robust boundaries that serve to insulate 
-  inner layers from the influences of outer ones. This strategic isolation promotes a coherent structure that safeguards 
-  the integrity of the system, even as it evolves and undergoes modifications over time. This minimizes code 
-  entanglement, making it easier to modify, debug, and maintain individual components and layers.
+  \item The Separation of Concerns (SoC) principle advocates for the segregation of different aspects of functionality 
+  to prevent overlap. For example, Clean Architecture \cite{Mart18}, an architectural pattern, introduces a distinctive 
+  approach to structuring code, fostering a meticulously organized framework that aligns with software development 
+  principles. At its core, Clean Architecture reimagines code organization into distinct layers, each with a clearly 
+  defined, specialized responsibility. These layers are demarcated by robust boundaries that insulate inner layers from 
+  outer influences. This strategic isolation promotes a coherent structure that safeguards the system's integrity as it 
+  evolves and undergoes modifications over time. It minimizes code entanglement, making individual components and layers 
+  easier to modify, debug, and maintain.
 
-  \item Decoupled systems \cite{Kass05} have minimal dependencies between components. This flexibility enables easier 
+  \item Decoupled systems \cite{Kass05} have minimal dependencies between components. This flexibility allows for easier 
   upgrades, replacements, and integrations without causing ripple effects.
 \end{itemize}
 
 \noindent Code Style Principles:
 
 \begin{itemize}
-  \item Consistent code style \cite{Mart22} promotes uniformity in formatting, naming conventions, and overall structure. 
-  This aids in enhancing code readability and collaboration among developers.
+  \item A consistent code style \cite{Mart22} promotes uniformity in formatting, naming conventions, and overall 
+  structure. This improves code readability and facilitates collaboration among developers.
 
-  \item The DRY (Don't Repeat Yourself) principle advocates avoiding duplications in code.
+  \item The DRY (Don't Repeat Yourself) principle encourages avoiding duplication of code.
 
-  \item Simplicity is key (KISS). Complex solutions are harder to understand and maintain. Embrace simplicity unless a 
-  more complex approach is justified.
+  \item Simplicity is key (KISS). Complex solutions are more difficult to understand and maintain. Embrace simplicity 
+  unless a more complex approach is necessary.
 
-  \item Ya Ain't Gonna Need It (YAGNI). Alike Occam's Razor for the code by asking ourselves if it's really needed or 
+  \item "You Ain't Gonna Need It" (YAGNI). Like Occam's Razor, we should ask ourselves if it's really needed or if it's 
   just making the system more complicated \cite{LaiJ23}.
 
-  \item Do It Or Get Bitten In The End (DOGBITE). Solution can (and, actually, have to) be build in a certain way 
-  by predicting the future evolution of conditions to meet, since it's far cheaper to fix a problem upstream in the 
-  development process than downstream \cite{McCo97}.
+  \item Do it or get bitten in the end (DOGBITE). The solution must be built in a certain way by predicting the future 
+  evolution of conditions to be met, since it's far cheaper to fix a problem upstream in the development process than 
+  downstream \cite{McCo97}.
 
-  \item SOLID Principles, as an acronym, representing a set of five design principles: Single Responsibility, 
-  Open-Closed, Liskov Substitution, Interface Segregation, and Dependency Inversion.
+  \item The SOLID principles are an acronym representing five design principles: Single Responsibility, Open-Closed, 
+  Liskov Substitution, Interface Segregation, and Dependency Inversion.
 \end{itemize}
 
-\noindent We won't dive into details of architectural and code style principles (see references above), and even won't 
-discuss changes made \issue{159}{} \issue{217}{}, only recalling the semaphore approach (\ref{ut-fail}) that to declare 
-refactoring only after significant code coverage. Refactoring as a process of rearchitecture \cite{Chec23} previously 
-made decisions to restate, revise, and improve them by visualizing them in clean code. 
+\noindent We won't discuss the details of the architectural and code style principles (see the references above) or the 
+changes made in issues \issue{159}{} and \issue{217}{}. Only the semaphore approach (see equation \ref{ut-fail}) will be 
+recalled, which declares refactoring only after significant code coverage. Refactoring is a process of rearchitecting 
+\cite{Chec23} that makes previous decisions to restate, revise, and improve them by visualizing them in clean code. 
 
-As a note, it's worth noting that approaches can be mixed, such as combining design patterns like VIPER (View, Presenter, 
-Interactor, Router, Entity), MVVM (Model, View, ViewModel), or others to represent the business layer, with Atomic Design 
-\cite{Kama22} methodology, or others, for the presentation layer.
+Note that approaches can be mixed. For example, design patterns such as VIPER (View, Presenter, Interactor, Router, 
+Entity) and MVVM (Model, View, ViewModel) can be used to represent the business layer. Then, the presentation layer can 
+be represented using the Atomic Design \cite{Kama22} methodology or others.
 
 In the context of extreme programming, the methodology includes a provision for pair programming \cite{Ligu19}. This 
-involves two programmers working closely together at a single workstation, actively communicating throughout the process 
-of writing of writing each line of code. Pleasure to restate and extreme this practice to the next flow: the first 
-developer tests, followed by the second developer doing the implementation, and the third developer doing a final 
-refactoring. does a final refactoring; and they keep changing these "hats" \cite{Bono17}.
+involves two programmers working closely together at a single workstation and communicating throughout the process of 
+writing each line of code. The first developer provides automatic tests, the second implements, and the third refactors, 
+with each developer switching "hats" repeatedly \cite{Bono17}.

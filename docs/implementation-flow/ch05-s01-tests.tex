@@ -4,25 +4,25 @@
 \subsection{Benchmarking Prototype} \label{benchmark}
 \markboth{Unleashing}{Benchmarking Prototype}
 
-Before adding functionality in the form of muscles to the created prototype skeleton, we need to verify its reliability.
-Restructuring the fundamental concepts of the application in the future would not only pose a considerable challenge 
-but also entail a substantial effort and potential complications.
+Before adding muscle functionality to the created prototype skeleton, we must verify its reliability. Restructuring the 
+application's fundamental concepts in the future would pose considerable challenges and entail substantial effort and 
+potential complications.
 
 
 \subsubsection{Providing Integration Tests} \label{int-tests}
 
-Unit (\ref{ut-unit}) and widget (\ref{widget-tests}) tests serve as valuable tools for assessing isolated classes, 
-functions, or widgets. However, not all of the problems can be tackled by them. Integration tests are used to identify 
-systemic flaws (data corruption, concurrency problems, miscommunication between services, etc.) that might not be 
-evident in unit tests by verifying a synergy of individual assets, while integration tests validate the application as 
-a whole. Integration tests are designed to reflect the real-time performance of an application on an actual device or 
-platform. In conclusion, they provide a vital link in the testing hierarchy by validating a collocation of various 
-components within an application. In such a way integration tests simulate end-to-end user workflows that we've 
-implemented and discussed earlier -- \ref{t-gherkin}.
+Unit (\ref{ut-unit}) and widget (\ref{widget-tests}) tests are valuable tools for assessing isolated classes, functions, 
+or widgets. However, they cannot address all problems. Integration tests identify systemic flaws, such as data 
+corruption, concurrency problems, and miscommunication between services, that might not be evident in unit tests. They 
+do this by verifying the synergy of individual assets. Integration tests validate the application as a whole. They are 
+designed to reflect the real-time performance of an application on an actual device or platform. In conclusion, they 
+provide a vital link in the testing hierarchy by validating the collaboration of various components within an 
+application. In this way, integration tests simulate the end-to-end user workflows we implemented and discussed earlier 
+(see \ref{t-gherkin}).
 
-Integration tests in Flutter can be written by using \q{integration\_test}-package, in addition, 
-\q{flutter\_driver}-package would help us to evaluate tests on real or virtual devices, and environments to track 
-the timeline of tests execution (both packages are provided by the SDK):
+Flutter integration tests can be written using the \q{integration\_test}-package. In addition, the \q{flutter\_driver} 
+package helps us evaluate tests on real or virtual devices and environments, and track the timeline of test execution. 
+Both packages are provided by the SDK.
 
 \begin{lstlisting}[language=yaml]
 ## ./pubspec.yaml
@@ -33,36 +33,34 @@ dev_dependencies:
     sdk: flutter
 \end{lstlisting}
 
-\noindent The implementation's deference from a widget test is in a usage of the next code line, that enables tests 
+\noindent The implementation differs from a widget test in its use of the following code line, which enables test 
 execution on a physical device or platform:
+
 \begin{lstlisting}
 IntegrationTestWidgetsFlutterBinding.ensureInitialized();
 \end{lstlisting}
 
-\noindent \q{Firebase Test Lab} and \q{BrowserStack} stand as a cloud-powered testing platforms, and enable the 
-integration tests evaluation across an extensive spectrum of devices and configurations.
+\noindent \q{Firebase Test Lab} and \q{BrowserStack} are cloud-powered testing platforms that enable evaluation of integration tests across an extensive spectrum of devices and configurations.
 
-It's essential to note that Just-In-Time (JIT) and Ahead-of-Time (AOT) compilers (\ref{dart}) may yield different 
-results. What works flawlessly in development mode (JIT) might encounter issues in release mode (AOT), as 
-demonstrated by the following \cref{img:compilation-err}. That is why integration tests are a valuable asset in the 
-automated verification process.
+Note that Just-In-Time (JIT) and Ahead-of-Time (AOT) compilers (see \ref{dart}) may produce different results. What 
+works flawlessly in development mode (JIT) may not work as well in release mode (AOT), as demonstrated by the following 
+image \cref{img:compilation-err}. This is why integration tests are valuable in the automated verification process.
 
 \img{features/compilation-err}{Deviation between JIT (left) and AOT (right) compilations}{img:compilation-err}
 
 \subsubsection{Doing Performance Testing}
 
-Performance testing is a type of software testing designed to evaluate the speed, responsiveness, stability, and 
-overall performance of an application under different conditions. It involves subjecting the application to 
-simulated workloads and stress scenarios to assess how it behaves in terms of speed, scalability, and resource usage. 
-Performance testing ensures that the software can handle the expected load without degradation in performance.
+Performance testing is a type of software testing that evaluates an application's speed, responsiveness, stability, and 
+overall performance under different conditions. It involves subjecting the application to simulated workloads and stress 
+scenarios to evaluate its behavior in terms of speed, scalability, and resource usage. Through performance testing, 
+developers can ensure that the software can handle the expected load without experiencing a degradation in performance.
 
-By simulating different levels of user traffic, performance testing helps determine the application's scalability by
-assessing resources utilization (CPU, memory, network bandwidth, and other parameters), and identify performance 
-bottlenecks, such as slow database queries, inefficient code, or network latency, and address these issues before 
-they impact users.
+Performance testing simulates different levels of user traffic to help determine an application's scalability. It does 
+this by assessing resource utilization (CPU, memory, network bandwidth, etc.) and identifying performance bottlenecks, 
+such as slow database queries, inefficient code, or network latency. Addressing these issues before they impact users is 
+crucial.
 
-The detailed information about performance testing can be taken from the International Software Testing Qualifications 
-Board (ISTQB) or the Software Engineering Institute (SEI), while here we'll highlight only their types definition 
+Detailed information about performance testing can be found in the International Software Testing Qualifications Board (ISTQB) or the Software Engineering Institute (SEI) publications. Here, we will only highlight their definitions
 (\cite{Ian15}, \cite{Sag16}, \cite{Sag23}):
 \begin{itemize}
   \item Load Testing: Evaluates how an application performs under expected load conditions. It helps determine the 
@@ -82,7 +80,7 @@ Board (ISTQB) or the Software Engineering Institute (SEI), while here we'll high
   number of records in a database. It helps identify scalability and performance issues associated with data volume.
 \end{itemize}
 
-\noindent Back to our process, it would be used the next command to evaluate performance tests:
+\noindent Returning to our process, the following command would be used to evaluate performance tests:
 
 \begin{lstlisting}[language=terminal]
 # Precondition for Web profiling
@@ -94,11 +92,10 @@ flutter drive \
   --profile
 \end{lstlisting}
 
-\noindent The \q{--profile}-option enables the application compilation in "profile mode" that helps the benchmark 
-results to be closer to what will be experienced by end users. By running on a mobile device or emulator it's proposed 
-to use \q{--no-dds}-parameter in addition, that will disable unaccessible Dart Development Service (DDS). The 
-\q{--target} declares the scope of test executions while \q{--driver}-option does track the outcomes. The driver 
-configuration can be taken from 
+\noindent The \q{--profile}-option enables application compilation in "profile mode," which helps benchmark results 
+reflect the experience of end users. When running on a mobile device or emulator, it is recommended to use the 
+\q{--no-dds}-parameter, which disables the inaccessible Dart Development Service (DDS). The \q{--target}-option declares 
+the scope of test executions, and the \q{--driver}-option tracks the outcomes. The driver configuration can be found at 
 \href{https://docs.flutter.dev/cookbook/testing/integration/profiling}{https://docs.flutter.dev/cookbook/testing/integration/profiling}:
 
 \begin{lstlisting}
@@ -124,8 +121,8 @@ Future<void> main() {
 }
 \end{lstlisting}
 
-\noindent Since it's a Widget Tests'-based approach (\ref{widget-tests}, \ref{t-gherkin}), we'll accent only on the 
-usage of \q{traceAction}-method to store time-based metrics:
+\noindent Since it's a Widget Tests-based approach (\ref{widget-tests}, \ref{t-gherkin}), we'll focus only on using the 
+\q{traceAction}-method to store time-based metrics:
 
 \begin{lstlisting}
 // ./test/performance/load/creation_test.dart
@@ -160,17 +157,18 @@ void main() {
 
 \img{features/perf-chrome-tracing}{Google Chrome -- performance trace}{img:perf-chrome-tracing}
 
-\noindent The \q{timeline.timeline\_summary.json}-file, by being a native \q{JSON}-file, can be opened in IDE for a 
-manual check, but it's mostly used in CI/CD to fail the build if any of defined parameter is out of the boundaries. 
-By example, the value of \q{average\_frame\_build\_time\_millis}-parameter is recommended to be below 16 milliseconds to 
-ensure that the app runs at 60 frames per second without glitches. Other parameters are widely described on the page
+\noindent The \q{timeline.timeline\_summary.json}-file is a native \q{JSON}-file that can be opened in an IDE for manual 
+inspection. However, it is mostly used in CI/CD to fail the build if any defined parameter is outside the specified 
+range. For example, the recommended value for the \q{average\_frame\_build\_time\_millis}-parameter is below 16 
+milliseconds to ensure the app runs at 60 frames per second without glitches. Other parameters are described in detail 
+on the page 
 \href{https://api.flutter.dev/flutter/flutter\_driver/TimelineSummary/summaryJson.html}{https://api.flutter.dev/flutter/flutter\_driver/TimelineSummary}.
 
 
 \subsubsection{Measuring Responsiveness}
 \paragraph{Load Testing}
-Check response time and resource utilization for the first run (Initial Setup) by creating account and budget 
-category:
+
+Check the response time and resource utilization for the initial setup by creating an account and budget category:
 
 \begin{lstlisting}[language=cucumber]
 @start
@@ -194,8 +192,8 @@ Feature: Verify Initial Flow
     Then I can see "Accounts, total" component
 \end{lstlisting}
 
-\noindent And, what we've identified from executions (\cref{tb:frame-build}) is a degraded \q{frame build}-parameter 
-that affects our frames per second (FPS) by generating only 37 frames instead of 60:\\
+\noindent From executions (see \cref{tb:frame-build}), we've identified a degraded frame build parameter that affects 
+our frames per second (FPS) by generating only 37 frames instead of 60:\\
 
 \begin{table}[h!]
   \begin{tabular}{ |p{6.8cm}||r|r|r|  }
@@ -214,16 +212,16 @@ that affects our frames per second (FPS) by generating only 37 frames instead of
 
 \img{features/perf-slow-frame}{Performance Monitor in Visual Studio Code}{img:perf-slow-frame}
 
-\noindent This issue (\cref{img:perf-slow-frame}) pertains to a compilation jank in animations due to shaders 
-calculation (a code snippets executed on a graphics processing unit [GPU] to render a sequence of draw commands). 
-Their pre-compilation strategy mitigates the compilation-related disruptions during subsequent animations, and improves 
-frames per second rendering. To run the app with \q{--cache-sksl} turned on to capture shaders in SkSL:
+\noindent This issue (see figure \cref{img:perf-slow-frame}) relates to janky animations caused by shader calculations. 
+Shaders are code snippets executed on a graphics processing unit (GPU) to render a sequence of draw commands. The 
+pre-compilation strategy mitigates disruptions related to compilation during subsequent animations and improves 
+rendering of frames per second. To run the app with \q{--cache-sksl} turned on to capture shaders in SkSL:
 
 \begin{lstlisting}[language=terminal]
 $ flutter run --profile --cache-sksl --purge-persistent-cache
 \end{lstlisting}
 
-\noindent Warm-up shaders in Skia Shader Language (SkSL) format during the build:
+\noindent During the build, warm up shaders in Skia Shader Language (SkSL) format:
 
 \begin{lstlisting}[language=terminal]
 # Capture shaders in Skia Shader Language (SkSL) format into a file
@@ -254,22 +252,21 @@ Future<void> main() async {
   });
 \end{lstlisting}
 
-\noindent Simply by SkSL caching we've taken \q{56 FPS (average)} as an outcome, but there are many other points for 
-the responsiveness optimization.
+\noindent We've achieved an average of 56 FPS through SkSL caching alone, but there are many other factors that 
+contribute to responsiveness optimization.
 
-Further enhancements can be realized through optimization of listeners, like \q{MediaQuery.of(content)}. 
-Since its usage can inadvertently result in extensive rebuilds, particularly when the keyboard is toggled between 
-shown and hidden states. This is attributed to the intrinsic behavior of the \q{.of(context)} listeners, which react to 
-any change, including updates to the MediaQuery's \q{viewInsets} property. This may trigger the whole \q{.of(context)} 
-listeners, even if they don't utilize the mentioned property, ultimately affecting performance. The solution comes from 
-a partial listening in Flutter (\q{MediaQuery.platformBrightnessOf} - for brightness, \q{MediaQuery.sizeOf} - to track
-height and width). A simple tweak with the substantial benefits in the application performance.
+Further enhancements can be achieved by optimizing listeners like \q{MediaQuery.of(content)}. This is because its usage 
+can inadvertently result in extensive rebuilds, especially when the keyboard is toggled between the shown and hidden 
+states. This is due to the intrinsic behavior of the \q{.of(context)} listeners, which react to any change, including 
+updates to the MediaQuery's \q{viewInsets} property. This can trigger all the \q{.of(context)} listeners, even if they 
+don't use the aforementioned property, which ultimately affects performance. The solution is partial listening in 
+Flutter: \q{MediaQuery.platformBrightnessOf} for brightness and \q{MediaQuery.sizeOf} to track height and width. This 
+simple tweak provides substantial benefits to application performance.
 
-Another avenue for enhancement lies in the conversion of functions involving Widget generation (through Functions) into 
-native Widgets, with the aim of optimizing resource consumption and caching mechanisms. Given Flutter's propensity to 
-preload all UI components beforehand and subsequently feed data to widgets already resident in memory during runtime, 
-the merit of this approach becomes evident. Through this, the need for rebuilding the entire dynamic UI (as necessitated 
-by function callbacks) from scratch in a single frame is circumvented:
+Another avenue for enhancement lies in converting functions involving widget generation into native widgets. This aims 
+to optimize resource consumption and caching mechanisms. Flutter's tendency to preload all UI components and then feed 
+data to existing widgets during runtime makes this approach beneficial. This approach circumvents the need to rebuild 
+the entire dynamic UI from scratch in a single frame as necessitated by function callbacks:
 
 \begin{lstlisting}
 // Not recommended
@@ -286,29 +283,30 @@ ListView.builder(
 );
 \end{lstlisting}
 
-\noindent Optimizing the utilization of \q{StatefulWidget} holds the potential to enhance performance, primarily due to 
-the reduced number of Widgets controlling the lifecycle. This streamlined approach translates to swifter response times.
+\noindent Optimizing the use of \q{StatefulWidget} has the potential to improve performance, primarily because fewer 
+widgets control the lifecycle. This streamlined approach translates to faster response times.
 
-\q{RepaintBoundary}-widget can be used for a render decoupling (isolate parts that need to be repainted from the rest 
-of the tree), the child widget will be rendered independently of its parent widget. For example, constantly animated 
-widgets can be wrapped by \q{RepaintBoundary}-widget to prevent it from causing the rest of the UI to be unnecessarily
-repainted.
+The \q{RepaintBoundary}-widget can be used for render decoupling, which isolates parts that need to be repainted from 
+the rest of the tree. The child widget will then be rendered independently of its parent widget. Constantly animated 
+widgets, for example, can be wrapped by a \q{RepaintBoundary}-widget to prevent the rest of the UI from being 
+unnecessarily repainted.
 
-\q{AutomaticKeepAliveClientMixin}-mixin is another solution for retaining the state of widgets that are expensive to 
-rebuild, or for the widgets that come in and out of view like \q{ListView} or \q{GridView} by preserving the state of
-nested \q{StatefulWidget}s via:
+The \q{AutomaticKeepAliveClientMixin}-mixin is another solution for retaining the state of expensive widgets or widgets 
+that come in and out of view, such as \q{ListView} and \q{GridView}, by preserving the state of nested 
+\q{StatefulWidget}s.
 
 \begin{lstlisting}
 @override
 bool get wantKeepAlive => true;
 \end{lstlisting}
 
-\noindent Almost the same flow can be achieved by \q{Offstage}-widget usage, that toggle its child's visibility without 
-removing it from the widget tree (mostly, without losing their state or triggering a rebuild).
+\noindent The same flow can almost be achieved by using the \q{Offstage}-widget, which toggles the visibility of its 
+children without removing them from the widget tree (and mostly without losing their state or triggering a rebuild).
 
-And not obvious but acknowledgeable, Flutter upgrade procedure (by example, Flutter 3.10 triples the frame rate if 
-change \q{FlutterViews} background color to a non-nil value \cite{Chis23}). Contrary, the upgrade itself can lead to 
-the outage by broken dependencies and missed packages support:
+It is not obvious, but it can be acknowledged that the Flutter upgrade procedure (for example, upgrading to Flutter 3.10 
+can triple the frame rate if the background color of the \q{FlutterViews} is changed to a non-nil value, as cited in 
+\cite{Chis23}). Conversely, the upgrade itself can lead to outages due to broken dependencies and missing package 
+support:
 
 \begin{lstlisting}[language=terminal]
 [!] CocoaPods could not find compatible versions for 
@@ -323,17 +321,17 @@ the outage by broken dependencies and missed packages support:
 
 \subsubsection{Anticipating Churn Rate}
 
-\paragraph{Volume Testing} Check initial load (a time before the enabled interaction) with a huge transaction log 
-history (32Mb, 128Mb, 512Mb, 2Gb).
+\paragraph{Volume Testing} Check the initial load, which is the amount of time before the interaction is enabled, with a 
+huge transaction log history (32 MB, 128 MB, 512 MB, or 2 GB).
 
-In this specific test context, our primary objective is to precisely measure the time it takes for the main page to
-become fully accessible to users. We might achieve this goal by continuously monitoring the state of the application, 
-particularly focusing on the disappearance of the "Project Initialization" header. This monitoring process allows us 
-to capture the moment the application becomes responsive and ready for user interaction. 
+In this test, our main goal is to accurately measure how long it takes for the main page to become fully accessible to 
+users. To achieve this, we will continuously monitor the application's state, focusing particularly on the disappearance 
+of the "Project Initialization" header. This monitoring process enables us to identify the moment when the application 
+becomes responsive and ready for user interaction. 
 
-To gain a comprehensive perspective, we complement this elapsed time measurement with an analysis of the transaction 
-log history. By correlating the loading time with the log's size, we can identify any potential performance bottlenecks 
-or issues related to the application's initialization process:
+To gain a comprehensive perspective, we supplement the elapsed time measurement with an analysis of the transaction log 
+history. By correlating loading time with log size, we can identify potential performance bottlenecks or issues related 
+to the application's initialization process.
 
 \begin{lstlisting}
 // ./integration_test/stress/initialization_test.dart
@@ -390,30 +388,30 @@ class FirstRun extends Given with SharedPreferencesMixin {
 \caption{Stress Testing: Loading Time vs. Number of Items} \label{t-stress}
 \end{figure}
 
-\noindent Results (\cref{t-stress}) have shown that the needed time for the cold start varies from 863 milliseconds  
-with zero items up to 5.85 minutes to load 2.53 GB transactions' log file with 4.7 millions of items. That's far away 
-from our assertion -- less than 2 seconds (for the current solution, 8.20 MB file size with 16.4 thousands of items).
-This implies that somewhere in between of 1.5 to 5 years of a consistent usage, our customers might encounter a 
-situation where opening the application takes longer than 2 seconds. Based on retrieved data, we have to optimize  
-initialization by implementing warm-up caching strategy (mostly known as hot, warm, and cold caches \cite{Tom17}). 
+\noindent The results (see \cref{t-stress}) have shown that the time required for a cold start varies from 863 
+milliseconds with zero items to 5.85 minutes to load a 2.53 GB log file containing 4.7 million items. This is far from 
+our assertion of less than two seconds for the current solution with an 8.20 MB file size and 16,400 items. This implies 
+that after consistent usage for one and a half to five years, our customers may encounter a situation in which opening 
+the application takes longer than two seconds. Based on the retrieved data, we must optimize initialization by 
+implementing a warm-up caching strategy, also known as hot, warm, and cold caches \cite{Tom17}.
 
 
 \paragraph{Endurance Testing}
-Check response time and resource utilization by adding different types of data within a different time 
-periods (15 minutes, an hour, 4 hours, 8 hours).
 
-In that test we would be interested in debugging memory issues via DevTools. DevTools is a suite of performance and 
-debugging tools for Dart and Flutter that can be started from IDE (with installed extensions from \ref{first-step}) 
-by pressing \key{F1} and typing \q{devtools} there.
+Check the response time and resource utilization by adding different types of data over different time periods (15 
+minutes, one hour, four hours, and eight hours).
 
-Detecting memory leaks involves analyzing the Heap Snapshot from Memory View tab. These snapshots 
+For that test, we would like to debug memory issues using DevTools. DevTools is a suite of performance and debugging 
+tools for Dart and Flutter. It can be started from an IDE with the necessary extensions installed by pressing \key{F1} 
+and typing \q{devtools}.
+
+Detecting memory leaks involves analyzing the heap snapshot from the Memory View tab. These snapshots 
 (\cref{img:memory-snapshot}) provide a means of comparing heap growth and identifying objects that might increase in 
-number unexpectedly. While it's true that images and media can contribute substantially to memory consumption, 
-they often aren't the root cause of memory leaks. Instead, attention should be directed towards addressing a potential 
-incomplete rebound phenomenon (\cref{img:memory-leak}) for Resident Set Size (RSS, program's memory that is currently 
-loaded into RAM and is available for immediate use). A notable illustration of a sizeable, short-lived object that 
-could inadvertently infiltrate a long-lived area, consequently leading to leaks, is the \q{context}-parameter 
-transmitted to Flutter's build method:
+number unexpectedly. Although images and media can contribute substantially to memory consumption, they are often not 
+the root cause of memory leaks. Instead, attention should be directed toward addressing the incomplete rebound 
+phenomenon (see \cref{img:memory-leak}) for resident set size (RSS), which is the program's memory currently loaded into 
+RAM and available for immediate use. One example of a large, short-lived object that could inadvertently enter a 
+long-lived area and lead to leaks is the \q{context}-parameter transmitted to Flutter's build method:
 
 \begin{lstlisting}
 Widget build(BuildContext context) {
@@ -437,8 +435,8 @@ Widget build(BuildContext context) {
 \img{features/memory-leak}{Incomplete rebound phenomenon for RSS}{img:memory-leak}
 \img{features/devtools-connection}{DevTools: Connect to the running instance}{img:devtools-connection}
 
-\noindent To track CPU and Memory Heap we'll run Devtools separately, and connect it (\cref{img:devtools-connection}) 
-to the process by a provided URL from an integration tests' output:
+\noindent To track the CPU and memory heap, we'll run DevTools separately and connect it 
+(\cref{img:devtools-connection}) to the process via the URL provided in the output of the integration tests:
 
 \begin{lstlisting}[language=terminal]
 Building Windows application...           13.1s
@@ -447,7 +445,7 @@ VMServiceFlutterDriver: Connecting to Flutter application at
     http://127.0.0.1:52135/VDm4NX0QVr4=/
 \end{lstlisting}
 
-\noindent The test itself will simulate a user behavior by randomly creating bills (90\%), budget categories (10\%),
+\noindent The test itself will simulate a user behavior by randomly creating bills (90\%), budget categories (10\%), 
 and accounts (5\%): 
 
 \begin{lstlisting}
@@ -472,7 +470,7 @@ testWidgets('Imitate User Activities', (WidgetTester tester) async {
 }, timeout: const Timeout(Duration(hours: 9)));
 \end{lstlisting}
 
-\noindent After a couple of minutes of execution we've taken an error:
+\noindent After a couple minutes of execution, an error occurred:
 
 \begin{lstlisting}[language=terminal]
 Running scenario: Create new Bill # :2
@@ -487,10 +485,10 @@ Running scenario: Create new Bill # :2
 RangeError (index): Invalid value: Valid value range is empty: -1
 \end{lstlisting}
 
-\noindent The problem is linked to a guarded function conflict (first method had not yet finished executing at the time 
-that the second one was called) \q{tap}-action on buttons that leads to \q{Navigator.pop | push}-command 
-execution, and it can be "easily" resolved by adding a duration freeze and making assertions synchronic (\q{expect} 
-changed to \q{expectSync}):
+\noindent The problem is linked to a guarded function conflict (the first method had not finished executing when the 
+second one was called), as well as a \q{tap}-action on buttons that leads to \q{Navigator.pop} or \q{Navigator.push} 
+execution. It can be "easily" resolved by adding a duration freeze and making assertions synchronous (changing 
+\q{expect} to \q{expectSync}):
 
 \begin{lstlisting}
 // ./test/e2e/_steps/when/tap_defined_button.dart
@@ -501,16 +499,16 @@ await FileRunner.tester.tap(btn);
 await FileRunner.tester.pumpAndSettle(Duration(milliseconds: 400));
 \end{lstlisting}
 
-\noindent As a side effect of that case investigation, it's been noticed a couple of problems. One of them is relevant
-to a missed first record from transaction logs during initialization process:
+\noindent As a result of investigating that case, a couple of problems have been noticed. One of them relates to a 
+missing initial record in the transaction logs:
 
 \begin{lstlisting}[language=terminal]
 FormatException: Invalid length, must be multiple of four
 \end{lstlisting}
 
-\noindent The problem here is that the \q{transaction log}-file was created with a BOM as a first symbol in a line, 
-that's why encryption is failing. Good catch! Let's add a new line at a moment of the file creation, and go further. 
-Additionally, raised a problem with \q{FloatingActionButton}-buttons:
+\noindent The problem is that the transaction log file was created with a BOM as the first character on a line, which is 
+why encryption is failing. Good catch! Let's insert a new line when the file is created and proceed. Additionally, there 
+was a problem with \q{FloatingActionButton}-buttons:
 
 \begin{lstlisting}[language=terminal]
 The following assertion was thrown during a scheduler callback:
@@ -521,19 +519,18 @@ The following assertion was thrown during a scheduler callback:
     <default FloatingActionButton tag>
 \end{lstlisting}
 
-\noindent The error indicates that we have multiple \q{Hero} widgets (\q{FloatingActionButton}-buttons in our case) 
-with the same tag within a subtree. Heroes in Flutter are used to create smooth animations when transitioning between 
-screens or widgets. Each Hero widget must have a unique non-null tag to properly manage the animation between the source 
-and destination widgets. So, we have to make them unique by adding \q{heroTag}-property per each \issue{130}{b4369fc}.
+\noindent The error indicates that there are multiple \q{Hero}-widgets (\q{FloatingActionButton}-buttons, in our case) 
+with the same tag within a subtree. In Flutter, Heroes are used to create smooth animations when transitioning between 
+screens or widgets. Each Hero widget must have a unique, non-null tag to properly manage animation between source and 
+destination widgets. Therefore, we must make them unique by adding a \q{heroTag}-property to each \issue{130}{b4369fc}.
 
-Lastly, the outcomes gleaned from our exhaustive endurance testing have illuminated the presence of memory 
-leaks during the intensive application usage, as depicted in \cref{img:memory-profiler}. Simply saying, each 
-new interaction within the application has a discernible impact on its responsiveness, culminating in a noticeable 
-performance degradation after a couple of minutes, as illustrated in \cref{gr:taken-cycle} "Initial State". That 
-fix has to go upfront of any other changes; since ignorance would definitely ended by a loss of users who will 
-get their first impression in a negative aspect. By analyzing traces from DevTools, it can be identified the source 
-of the problem, which fix is resulted in a gain of 1 ms at the start but without any significant forecast 
-degradation through the time (\cref{img:m-profiler-after}, \cref{gr:taken-cycle} "Adjusted").
+Lastly, our exhaustive endurance testing revealed memory leaks during intensive application usage, as shown in 
+\cref{img:memory-profiler}. In short, each new interaction with the application impacts its responsiveness, resulting in 
+noticeable performance degradation after a few minutes, as shown in \cref{gr:taken-cycle} "Initial State". This fix must 
+be implemented before any other changes, as ignorance would result in a loss of users who would have a negative first 
+impression. By analyzing DevTools traces, we identified the source of the problem. The fix resulted in a 1 ms gain at 
+the start without any significant forecast degradation over time (see \cref{img:m-profiler-after} and 
+\cref{gr:taken-cycle} "Adjusted").
 
 \img{features/memory-profiler}{Flutter DevTools: Memory Profiler Results}{img:memory-profiler}
 \img{features/memory-profiler-after}{Flutter DevTools: Memory Profiler Results after Refactoring}{img:m-profiler-after}

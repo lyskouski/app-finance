@@ -4,20 +4,21 @@
 \subsection{Replicating Data}
 \markboth{Unleashing}{Replicating Data}
 
-Our implementation prioritizes data security and privacy by exclusively relying on in-app communication, which keeps 
-a user data within the app's controlled environment. However, this approach, while enhancing security, can introduce 
-some complexity in the process of synchronizing data between devices. 
+Our implementation prioritizes data security and privacy by relying exclusively on in-app communication. This keeps user 
+data within the app's controlled environment. While this approach enhances security, it can complicate the process of 
+synchronizing data between devices. 
 
-However, a practical approach for enabling data transfer between devices involves leveraging Peer-To-Peer (P2P) 
-connections \issue{123}{}. In P2P connections, devices communicate directly with one another, bypassing the need for a 
-central server. This decentralized approach offers several benefits, including data sharing, synchronization, and 
-collaboration. It also places a strong emphasis on user data control, as there is no involvement of a central server. 
-This privacy and security aspect is especially crucial for sensitive applications, such as personal finance tracking.
+However, a practical approach to enabling data transfer between devices is to leverage peer-to-peer (P2P) connections 
+\issue{123}{}. With P2P connections, devices communicate directly with one another, bypassing the need for a central 
+server. This decentralized approach offers benefits such as data sharing, synchronization, and collaboration. It also 
+places a strong emphasis on user data control because there is no central server involved. This privacy and security 
+aspect is especially crucial for sensitive applications, such as personal finance tracking.
 
-P2P networks are capable of enabling data synchronization even when devices are offline or lack an internet connection. 
-When these devices regain connectivity, they can seamlessly exchange data, making this feature valuable for applications 
-intended for low-connectivity or remote environments. That's why P2P connections are well-suited for maintaining data 
-consistency across multiple devices, ensuring that any modifications made on one device are swiftly replicated on others:
+P2P networks can enable data synchronization even when devices lack an internet connection or are offline. When these 
+devices regain connectivity, they can seamlessly exchange data. This feature is valuable for applications intended for 
+environments with limited connectivity or in remote areas. This is why P2P connections are ideal for maintaining data 
+consistency across multiple devices, ensuring that any modifications made on one device are quickly replicated on the 
+others:
 
 \begin{lstlisting}
 // ./lib/_classes/herald/app_sync.dart
@@ -103,9 +104,9 @@ class AppSync extends ChangeNotifier {
 
 \img{features/p2p}{Configure Pear-To-Pear Connection}{img:f-p2p}
 
-Overall, P2P connections offer an efficient way to sync data between devices, enabling real-time, secure, and 
-collaborative experiences across various applications. Their decentralized nature provides users with greater 
-control over their data, making them an appealing choice for many modern applications. In addition, generating and 
-scanning \q{QR}-codes can facilitate an information sharing \issue{220}{} for a small chunks of data (3KB, 7,089 
-numeric characters or 4,269 alphanumeric ones). As well as Near Field Communication (NFC), Wi-Fi Direct, or Bluetooth 
-connection enables short-range communication between devices.
+Overall, P2P connections are an efficient way to sync data between devices, enabling real-time, secure, and 
+collaborative experiences across various applications. Their decentralized nature gives users greater control over their 
+data, making them appealing for many modern applications. Additionally, generating and scanning \q{QR}-codes can 
+facilitate sharing \issue{220}{} small amounts of data (3 KB, 7,089 numeric characters, or 4,269 alphanumeric 
+characters). Near Field Communication (NFC), Wi-Fi Direct, and Bluetooth connections also enable short-range 
+communication between devices.

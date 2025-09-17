@@ -4,11 +4,11 @@
 \subsection{Visualizing Data}
 \markboth{Unleashing}{Visualizing Data}
 
-With countless transactions, revenue streams, expenditures, and budgetary considerations, it's essential to have a 
-system in place that simplifies the intricacies. The traditional reliance on spreadsheets and numerical reports to 
-handle this complexity often results in a daunting and overwhelming experience, especially as data volumes continue 
-to grow.  This challenge necessitates solutions for visualizing and interpreting data effectively. Our financial 
-accounting application may employ the data visualization in various use cases:
+With countless transactions, revenue streams, expenditures, and budgetary considerations, having a system that 
+simplifies these complexities is essential. Traditionally, spreadsheets and numerical reports have been used to handle 
+this complexity, but they often result in an overwhelming experience, especially as data volumes continue to grow.  This 
+challenge requires solutions that effectively visualize and interpret data. Our financial accounting application employs 
+data visualization for various use cases:
 
 \begin{itemize}
   \item Cash Flow Analysis -- predicts financial trends, manage liquidity, and ensure operational continuity.
@@ -24,18 +24,17 @@ accounting application may employ the data visualization in various use cases:
   \item Portfolio Management -- assess the performance of assets for informed investment decisions.
 \end{itemize}
 
-\noindent While these categories can encompass a wide range of tools and techniques, our initial focus is on delivering 
-high-impact features shortly (since the full scope might take months). As we move forward, we'll progressively enhance 
-the application by introducing a broader scope of options.
+\noindent These categories encompass a wide range of tools and techniques. Initially, we will focus on delivering 
+high-impact features quickly, since achieving the full scope may take months. As we move forward, we will progressively 
+enhance the application by introducing a broader range of options.
 
-Let's kick things off by introducing a first chart for managing budget categories: Forecast Chart. 
-This chart provides a visual representation of historical data while also forecasting the future based on mathematical 
-models. These models can vary depending on the specific field and the type of data being analyzed. We'll take the 
-simplest one -- Monte-Carlo Simulation, a computational technique used to approximate the behavior of complex systems 
-or processes through random sampling. This simulation method is particularly valuable when dealing with systems that 
-involve many variables and intricate relationships. By simulating numerous scenarios through random sampling, Monte 
-Carlo simulations provide a way to explore a wide range of possibilities and assess the likelihood of different 
-financial scenarios:
+To start, let's introduce the first chart for managing budget categories: The Forecast Chart. It provides a visual 
+representation of historical data and uses mathematical models to forecast the future. The specific field and the type 
+of data being analyzed determine these models. We'll start with the simplest one: Monte Carlo simulation, a 
+computational technique that uses random sampling to approximate the behavior of complex systems or processes. This 
+method is particularly valuable when dealing with systems involving many variables and intricate relationships. By 
+simulating numerous scenarios through random sampling, Monte Carlo simulations provide a way to explore a wide range of 
+possibilities and assess the likelihood of different financial scenarios:
 
 \begin{lstlisting}
 // ./lib/_classes/math/monte_carlo_simulation.dart
@@ -93,8 +92,8 @@ class MonteCarloSimulation {
 \end{lstlisting}
 
 \noindent It's left to generate the chart itself \issue{4}{}, which can be achieved using the \q{CustomPaint}-widget. 
-The advantage of using this widget is that it allows us to separate the chart's line (\q{painter}-property) from a
-secondary data like axes and background colors (\q{foregroundPainter}-property):
+The advantage of using this widget is that it allows us to separate the chart's line (the \q{painter}-property) from 
+secondary data, such as the axes and background colors (the \q{foregroundPainter}-property):
 
 \begin{lstlisting}
 // ./lib/charts/forecast_chart.dart
@@ -128,8 +127,8 @@ return SizedBox(
 );
 \end{lstlisting}
 
-\noindent We have created our own painters, named \q{ForegroundChartPainter} (gonna be used for all other charts) and 
-\q{ForecastChartPainter}. These classes are responsible for plotting a graphical information on the \q{Canvas}:
+\noindent We created our own painters: \q{ForegroundChartPainter} (which will be used for all other charts), as well as 
+the \q{ForecastChartPainter}. These classes are responsible for plotting graphical information on the \q{Canvas}:
 
 \begin{lstlisting}
 // ./lib/charts/painter/forecast_chart_painter.dart
