@@ -5,22 +5,22 @@
 \subsection{Relying Versatility}
 \markboth{Optimizing}{Relying Versatility}
 
-Basically, responsive design relies on fluid layouts and media queries to adapt content dynamically to different screen 
-sizes within a single codebase. Adaptive design, on the other hand, involves creating a specific layout per different 
-devices or screen sizes. Each approach has its strengths and weaknesses, and the choice between them depends on many 
-factors. But ideally it would be better to mix both solutions: widgets itself should be responsive, pages (aggregative 
-widgets, called by routes) -- adaptive.
+Responsive design uses fluid layouts and media queries to dynamically adapt content to different screen sizes within a 
+single codebase. In contrast, adaptive design involves creating a specific layout for each device or screen size. Each 
+approach has its strengths and weaknesses, and the choice between them depends on various factors. Ideally, both 
+solutions would be used: widgets should be responsive and pages (aggregative widgets called by routes) should be 
+adaptive.
 
 
 \subsubsection{Packaging Components}
 
-Embracing a grid layout as part of an adaptive design strategy is a pivotal step toward creating a versatile and 
-user-centric digital experience (\cref{img:u-grid}). Grids provide the structure needed to maintain visual consistency, 
-prioritize content, and seamlessly adapt to diverse screen sizes.
+Adopting a grid layout as part of an adaptive design strategy is a pivotal step toward creating a versatile, 
+user-centric digital experience (see \cref{img:u-grid}). Grids provide the necessary structure to maintain visual 
+consistency, prioritize content, and adapt seamlessly to diverse screen sizes.
 
-And for that case let's dive into an external package creation. From IDE, by pressing \key{F1} -- \q{Flutter: New 
-Project} -- \q{Package}, we will generate a package template (only "lib" and "test"-folders plus configuration files). 
-Inside \q{lib}-folder the file, named identically to our package, works as an entry point for the package
+In that case, let's dive into creating an external package. From the IDE, press \key{F1} -- \q{Flutter: New Project} -- 
+\q{Package}. We will generate a package template with only the "lib" and "test" folders plus configuration files. Inside 
+the \q{lib}-folder, the file named identically to our package works as an entry point for the package 
 (\href{https://pub.dev/packages/flutter_grid_layout}{https://pub.dev/packages/flutter\_grid\_layout}):
 
 \begin{lstlisting}
@@ -34,10 +34,10 @@ export 'src/grid_item.dart';
 
 \img{uiux/cssgrid-flexbox}{Representation of Grid Layout \cite{Tayl18}}{img:u-grid}
 
-\noindent The implementation has a resemblance to the previously created \q{RowWidget} by its functionality of 
-converting relative values into density-independent pixels (DIP). \q{GridItem}-widget serves as an encapsulating 
-entity for the original widget, delineating its placement within a grid matrix; while \q{GridContainer}-widget covers
-all requisite calculations for repositioning:
+\noindent The implementation resembles the previously created \q{RowWidget} in that it converts relative values into 
+density-independent pixels (DIP). The \q{GridItem}-widget serves as an encapsulating entity for the original widget, 
+delineating its placement within a grid matrix, while the \q{GridContainer}-widget covers all requisite calculations for 
+repositioning:
 
 \begin{lstlisting}
 // ./lib/src/grid_item.dart
@@ -119,24 +119,24 @@ class GridContainer extends StatelessWidget {
 }
 \end{lstlisting}
 
-\noindent By using \q{flutter pub publish}-command our package will become available on 
-\href{https://pub.dev}{https://pub.dev} and can be aggregated into the main project by 
-\q{flutter pub add flutter\_grid\_layout}-command evaluation.
+\noindent Using the \q{flutter pub publish}-command makes our package available on 
+\href{https://pub.dev}{https://pub.dev}. It can then be aggregated into the main project using the 
+\q{flutter pub add flutter\_grid\_layout}-command.
 
 
 \subsubsection{Extending Behavior}
 
-Responsiveness, by being a paramount in engaging users across a multitude of devices, is covered by a couple of design 
-concepts \cite{Frai22}: fluid layouts, media queries, and content prioritization. The concept of "Fluid Layouts" is in 
-a usage of relative units like percentages for widths and heights, allowing content to dynamically expand or contract 
-based on the available screen real estate. "Media Queries" are used to apply rules based on characteristics such as 
-screen size and orientation. Whereas "Content Prioritization" entails thoughtful content ordering and reposition;
-based on screen configuration, less critical elements can gracefully adapt, be positioned differently, or even hidden.
+Responsiveness is paramount in engaging users across a multitude of devices and is covered by a couple of design 
+concepts \cite{Frai22}: fluid layouts, media queries, and content prioritization. "Fluid layouts" use relative units, 
+such as percentages, for widths and heights. This allows content to dynamically expand or contract based on the 
+available screen space. Media queries are used to apply rules based on characteristics such as screen size and 
+orientation. "Content prioritization" involves thoughtful ordering and repositioning of content. Based on screen 
+configuration, less critical elements can adapt, be positioned differently, or be hidden.
 
-\q{RowWidget} describes responsiveness behavior \issue{37}{abd9308}, \issue{185}{e1e7385} when we set a direct or 
-relative (values \q{0.0 ... 0.9(9)} are converted into \q{0 ... 99.9(9)\%} of an available width) size for a couple of 
-components, and left nullable size (alike, \q{Spacer}-widget) for others. In that case the text section will be hidden 
-for the width less than 40 density-independent pixels (DIP):
+\q{RowWidget} describes the responsiveness behavior (\issue{37}{abd9308}, \issue{185}{e1e7385}) when a direct or 
+relative value is set (\q{0.0 ... 0.9(9)} values are converted into \q{0 ... 99.9(9)\%} of the available width) for some 
+components and a nullable size for others (e.g., the \q{Spacer}-widget). In that case, the text section will be hidden 
+if the width is less than 40 density-independent pixels (DIP):
 
 \begin{lstlisting}
 RowWidget(
@@ -158,7 +158,7 @@ RowWidget(
 )
 \end{lstlisting}
 
-\noindent On other hand, \q{GridLayer} manages \issue{158}{} different strategies of a widgets' composition: 
+\noindent On the other hand, \q{GridLayer} manages \issue{158}{} different widget composition strategies: 
 
 \begin{lstlisting}
 // ./lib/routes/home_page.dart

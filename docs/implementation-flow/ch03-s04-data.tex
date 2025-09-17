@@ -189,8 +189,8 @@ abstract class AbstractStorage implements InterfaceStorage {
         yield line;
       }
     }
-  }
-}(*@ \stopnumber @*)
+  }(*@ \stopnumber @*)
+}
 
 // ./lib/_classes/storage/transaction_log/abstract_storage.dart
 abstract class AbstractStorage implements InterfaceStorage {
@@ -251,8 +251,8 @@ abstract class AbstractStorage implements InterfaceStorage {
     await for (var line in lines) {
       yield line;
     }
-  }
-}(*@ \stopnumber @*)
+  }(*@ \stopnumber @*)
+}
 
 // ./lib/_classes/storage/transaction_log.dart
 import 'package:app_finance/_classes/storage/transaction_log/abstract_storage_web.dart'
