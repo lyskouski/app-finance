@@ -74,6 +74,46 @@ from scratch.
 \noindent And, a lot of others...
 
 
+\subsubsection{Handling User Input and Gestures}
+
+User input and event handling make Flutter apps interactive and responsive. Whether through taps, clicks, gestures, or 
+keyboard shortcuts, they let apps adapt to different devices—touch on mobile, mouse on desktop, or stylus on 
+tablets—enhancing usability across platforms.
+
+Flutter offers the \q{GestureDetector} widget to capture gestures such as taps, drags, and scaling. It also supports 
+mouse clicks on desktop and web. Text input is commonly handled using the \q{TextField} and \q{TextFormField} widgets, 
+while \q{FocusNode} and \q{FocusScope} manage focus and navigation. Lower-level keyboard input can be handled using the 
+\q{RawKeyboardListener} widget. Flutter also supports input from game controllers, accessibility tools, and other 
+platform-specific devices. The \q{GestureDetector} does not have a visual representation and acts as an invisible 
+wrapper around its child widget, capturing user interactions on that child.
+
+\begin{lstlisting}
+GestureDetector(
+  onTap: () {
+    // Handle tap event
+  },
+  onDoubleTap: () {
+    // Handle double-tap event
+  },
+  onLongPress: () {
+    // Handle long-press event
+  },
+  onPanUpdate: (details) {
+    // Handle drag event
+  },
+  child: Container(
+    width: 200,
+    height: 200,
+    color: Colors.blue,
+    child: Center(child: Text('Tap me')),
+  ),
+);
+\end{lstlisting}
+
+\noindent In this example, the \q{GestureDetector} wraps a \q{Container} widget. It listens for various gestures like
+tap, double-tap, long-press, and drag (pan update). When a user interacts with the container, the corresponding callback 
+functions are triggered, allowing to handle the events accordingly.
+
 \newpage
 \subsubsection{Distinguishing States} \label{flutter-state}
 
