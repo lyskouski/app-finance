@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Test Date:</td>
-            <td class="headerValue">2025-09-18 13:32:54</td>
+            <td class="headerValue">2025-09-18 14:05:25</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntryHi">-</td>
@@ -111,7 +111,7 @@
 <span id="L49"><span class="lineNum">      49</span>              :                 )),</span>
 <span id="L50"><span class="lineNum">      50</span>              :               ],</span>
 <span id="L51"><span class="lineNum">      51</span> <span class="tlaUNC">           0 :               yMax: DataHandler.countBudgetTotal(</span></span>
-<span id="L52"><span class="lineNum">      52</span> <span class="tlaUNC">           0 :                 appState.getList(AppDataType.budgets).cast&lt;BudgetAppData&gt;(),</span></span>
+<span id="L52"><span class="lineNum">      52</span> <span class="tlaUNC">           0 :                 appState.getList(AppDataType.budgets).cast&lt;BudgetAppData&gt;().where((v) =&gt; !v.skip).toList(),</span></span>
 <span id="L53"><span class="lineNum">      53</span>              :                 exchange: exchange,</span>
 <span id="L54"><span class="lineNum">      54</span>              :               ),</span>
 <span id="L55"><span class="lineNum">      55</span>              :             ),</span>
