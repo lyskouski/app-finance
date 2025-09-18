@@ -49,7 +49,7 @@ class BudgetForecastChart extends AccountFlowChart {
                 )),
               ],
               yMax: DataHandler.countBudgetTotal(
-                appState.getList(AppDataType.budgets).cast<BudgetAppData>(),
+                appState.getList(AppDataType.budgets).cast<BudgetAppData>().where((v) => !v.skip).toList(),
                 exchange: exchange,
               ),
             ),

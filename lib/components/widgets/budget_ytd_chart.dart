@@ -29,7 +29,7 @@ class BudgetYtdChart extends StatelessWidget {
     final day = AppStartOfMonth.get();
     final current = DateTime.now().getStartingDay(day);
     final endLastYear = DateTime(current.year, current.month - 12, day);
-    final budgets = store.getList(AppDataType.budgets).cast<BudgetAppData>();
+    final budgets = store.getList(AppDataType.budgets).cast<BudgetAppData>().where((v) => !v.skip).toList();
     final exchange = Exchange(store: store);
     final budgetsAmount =
         budgets.fold(0.0, (v, e) => v + exchange.reform(e.amountLimit, e.currency, exchange.getDefaultCurrency()));
