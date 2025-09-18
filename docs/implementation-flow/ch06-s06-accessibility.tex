@@ -4,17 +4,16 @@
 \subsection{Supporting Accessibility}
 \markboth{Optimizing}{Supporting Accessibility}
 
-Before delving into Flutter's accessibility capabilities, it's valuable to comprehend the significance of accessibility. 
-Accessibility involves the design and development of applications that are usable by all individuals, including those 
-with disabilities such as visual, auditory, motor, or cognitive impairments. Providing equal access to information 
-and services for all users is a matter of ethical and social responsibility. By ensuring that our app is 
-accessible \issue{34}{}, we broaden its user base to include a more diverse audience. Lastly, accessibility often 
-constitutes as a legal obligation in many regions.
+Before delving into Flutter's accessibility capabilities, it's important to understand the importance of accessibility. 
+Accessible design involves creating applications that can be used by all individuals, including those with visual, 
+auditory, motor, or cognitive impairments. Providing equal access to information and services for all users is an 
+ethical and social responsibility. Ensuring that our app is accessible \issue{34}{} broadens its user base to include a 
+more diverse audience. Lastly, accessibility is often a legal obligation in many regions.
 
-The \q{Semantics} and \q{Tooltip} widgets serve as the initial building blocks for enhancing accessibility. They play a 
-critical role in assisting screen readers by providing context to users with visual impairments. It can be implemented 
-in a way of wrapping button by duplicating a written title to a label of it (some elements, as \q{FloatingActionButton} 
-contains the label in a scope of properties):
+The \q{Semantics} and \q{Tooltip} widgets are the initial building blocks for enhancing accessibility. They play a 
+critical role in assisting screen readers by providing context to users with visual impairments. They can be implemented 
+by wrapping a button and duplicating its title as a label (some elements, such as \q{FloatingActionButton}, contain the 
+label within a set of properties):
 
 \begin{lstlisting}
 // ./lib/widgets/wrapper/elevate_button_widget.dart
@@ -48,17 +47,17 @@ class ElevatedButtonWidget extends StatelessWidget {
 // ... closing brackets
 \end{lstlisting}
 
-\noindent Regardless of its role as a canvas for creating user interfaces, Flutter excels in ensuring the accessibility 
-of widgets, allowing them to seamlessly interact with screen readers like TalkBack on Android and VoiceOver on iOS. In 
-this context, the semantic tree in Flutter closely aligns with the widget tree. Flutter integrates with the 
-accessibility APIs of the underlying platforms, which means it can effectively communicate with screen readers. 
-Semantics actions act as intermediaries between the operating system's accessibility APIs and the semantics nodes. 
-That enables various interactions, including tapping, long-pressing, scrolling, accessibility focus transitions, and a 
-range of other actions, thereby ensuring an accessible user experience.
+\noindent Flutter excels in ensuring the accessibility of widgets, allowing them to seamlessly interact with screen 
+readers like TalkBack on Android and VoiceOver on iOS, regardless of its role as a canvas for creating user interfaces. 
+In this context, the semantic tree in Flutter closely aligns with the widget tree. Flutter integrates with the 
+accessibility APIs of the underlying platforms, enabling effective communication with screen readers. Semantic actions 
+act as intermediaries between the operating system's accessibility APIs and semantics nodes. This enables various 
+interactions, including tapping, long pressing, scrolling, accessibility focus transitions, and other actions. These 
+features ensure an accessible user experience.
 
-To validate that our application complies with semantic assertions and provides the expected accessibility, we may 
-employ the \q{SemanticsOwner} for testing. That enables us to conduct programmatically-driven tests on 
-the behavior of the application's semantics tree:
+To validate that our application complies with semantic assertions and provides the expected accessibility, we can use 
+the \q{SemanticsOwner} for testing. This allows us to perform programmatically driven tests on the behavior of the 
+application's semantics tree:
 
 \begin{lstlisting}
 testWidgets('Test semantics actions', (WidgetTester tester) async {
@@ -99,11 +98,11 @@ testWidgets('Test alternative inputs', (WidgetTester tester) async {
   \caption{Shortcuts in the application} \label{tb:shortcuts}
 \end{table}
 
-\noindent The accessibility isn't limited solely to the text interpretation, by extending experience to effectively 
-manage the focus for users who navigate through the app using keyboards or voice commands. As a navigation can be 
-enhanced with keyboard shortcuts provided through the use of the \q{Listener}-widget. This feature is particularly 
-valuable for users who rely on keyboard navigation (either for accessibility, or from desktop usage perspective). This 
-not only adheres to accessibility guidelines but also makes our application more inclusive and user-friendly:
+\noindent Accessibility isn't limited to text interpretation. It extends to effectively managing focus for users 
+navigating the app with keyboards or voice commands. Navigation can be enhanced with keyboard shortcuts provided by the 
+\q{Listener}-widget. This feature is particularly valuable for users who rely on keyboard navigation, either for 
+accessibility or for desktop usage. It adheres to accessibility guidelines and makes our application more inclusive and 
+user-friendly:
 
 \begin{lstlisting}
 // ./lib/widgets/wrapper/input_controller_wrapper.dart

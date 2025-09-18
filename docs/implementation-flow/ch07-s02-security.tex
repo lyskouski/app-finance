@@ -4,28 +4,27 @@
 \subsection{Securing Information}
 \markboth{Productionizing}{Securing Information}
 
-Securing information is essential for financial accounting, as well as for any application. Ensuring the privacy 
-of this information is not only ethically necessary but also legally mandated. Many regions have stringent data 
-protection laws that require businesses to secure financial data, such as GDPR in Europe and HIPAA in the United States.
-Failing to do so can result in severe fines and legal consequences.
+Securing information is essential not only for financial accounting but also for any application. Not only is ensuring 
+the privacy of this information ethically necessary, it is also legally mandated. Many regions have strict data 
+protection laws requiring businesses to secure financial data. Examples include the GDPR in Europe and the HIPAA in the 
+United States. Failure to comply can result in severe fines and legal consequences.
 
-When users entrust their financial information to an application, they expect that their data will be kept secure. 
-Building and maintaining trust is vital in the financial sector, and a data breach can irreparably damage a company's 
-reputation. So, a financial institution or application that demonstrates strong security practices can use this as a 
-competitive advantage.
+Users expect that their financial information will be kept secure when they entrust it to an application. Trust is 
+paramount in the financial sector, and a data breach can irreparably damage a company's reputation. Therefore, financial 
+institutions and applications that demonstrate strong security practices can use this as a competitive advantage.
 
-To achieve information security, applications must implement robust cybersecurity measures, including encryption, 
-access controls, and regular security audits. Ensuring the app security is a continuous endeavor that requires a 
-proactive approach.
+Achieving information security requires implementing robust cybersecurity measures, such as encryption, access controls, 
+and regular security audits, in applications. Ensuring app security is an ongoing endeavor that requires a proactive 
+approach.
 
 
 \subsubsection{Storing API keys}
 \markboth{Productionizing}{Storing API keys}
 
-Every API requires passing a secret key with each request to validate the identity. These keys should remain 
-confidential (as not be a part of the \q{git} history). Even detaching credentials into a separate \q{.env}-file  
-susceptible to leaks. The most secure way is to store secrets as environment variables during the compilation 
-(\q{build}) or evaluation (\q{run}):
+Each API requires a secret key to be passed with every request for identity validation. These keys should remain 
+confidential and not be part of the Git history. Even detaching credentials into a separate \q{.env}-file makes them 
+susceptible to leaks. The most secure way to store secrets is as environment variables during compilation (\q{build}) or 
+evaluation (\q{run}):
 
 \begin{lstlisting}[language=terminal]
 flutter build --dart-define==KEY=SECRET \
@@ -33,15 +32,15 @@ flutter build --dart-define==KEY=SECRET \
     --dart-define==KEY3=SECRET3
 \end{lstlisting}
 
-\noindent To get the API key from an environment:
+\noindent To obtain the API key from an environment:
 
 \begin{lstlisting}
 String? apiKey = String.fromEnvironment('KEY', defaultValue: null);
 \end{lstlisting}
 
-\noindent For handling dynamic values, consider employing the \q{flutter\_secure\_storage}-package to securely store 
-sensitive data through encrypted shared preferences (\emph{Keychain for iOS and macOS, AES encryption for Android and 
-Windows, libsecret for Linux, and WebCrypto for Web}):
+\noindent To handle dynamic values, consider using the \q{flutter\_secure\_storage}-package to securely store sensitive 
+data through encrypted shared preferences (\emph{Keychain for iOS and macOS, AES encryption for Android and Windows, 
+libsecret for Linux, and WebCrypto for Web}):
 
 \begin{lstlisting}
 final storage = new FlutterSecureStorage();
@@ -53,14 +52,15 @@ String value = await storage.read(key: key);
 \subsubsection{Encrypting Storage}
 \markboth{Productionizing}{Encrypting Storage}
 
-Encryption is a critical process in the realm of cybersecurity, as it involves transforming a plain text into its 
-encoded format, bolstering the confidentiality, integrity, and overall security of sensitive information. The process 
-of "hiding" information can be one-way direction (by taking \q{hash}-key from a value, and using it for a comparison) 
-or bidirectional (decrypt with a cryptographic key). For the last, there are two primary types of encryption: symmetric 
-(AES, 3-DES, SNOW) and asymmetric (RSA, Elliptic curve cryptography) encryption, which is also referred to as public 
-key encryption. Symmetric encryption relies on a single shared key, which all parties involved use for both encrypting 
-and decrypting data. In contrast, asymmetric encryption, often referred to as public-key encryption, employs a pair of 
-keys: one for encryption and another distinct key for decryption purposes.
+Encryption is a critical process in cybersecurity because it transforms plain text into an encoded format, thereby 
+bolstering the confidentiality, integrity, and security of sensitive information. This "hiding" process can be one-way 
+(taking a \q{hash}-key from a value for comparison) or bidirectional (decrypting with a cryptographic key). There are 
+two primary types of encryption: symmetric and asymmetric. Symmetric encryption uses a single key for both encrypting 
+and decrypting data, and examples include AES, 3-DES, and SNOW. Asymmetric encryption, also referred to as public key 
+encryption, uses two keys: a public key for encryption and a private key for decryption. Examples include RSA and 
+elliptic curve cryptography. Symmetric encryption uses a single shared key for encrypting and decrypting data, and all 
+parties involved use this key. In contrast, asymmetric encryption employs a pair of keys: one for encryption and a 
+different key for decryption.
 
 To "disable" (at least make harder) capability to change financial transactions directly, it may be used a sum control 
 \q{hash}-key \issue{58}{}:
@@ -83,7 +83,7 @@ class TransactionLog {
       }
 \end{lstlisting}
 
-\noindent Additionally, to protect user data we should apply mechanics of lines encryption:
+\noindent Additionally, to protect user data, we should implement line encryption.
 
 \begin{lstlisting}
 // ./lib/_classes/data/transaction_log.dart

@@ -18,10 +18,10 @@ not declared steps to reproduce it constantly.
 
 \img{uiux/bottom-bar}{Application Bottom Bar for small screens}{img:u-bottom-bar}
 
-\noindent In our case (\cref{img:u-bottom-bar}) the problem is relevant to the usage of 
-\q{FloatingActionButtonLocation.centerDocked} with enabled \q{bottomNavigationBar} for \q{Scaffold}, and appears by 
-navigating back and forth between pages. The issue is related to how Flutter renders under the hood, and there are no 
-declared steps to resolve it. Each time, the solution may require a unique approach:
+\noindent In our case (see \cref{img:u-bottom-bar}), the problem occurs when using 
+\q{FloatingActionButtonLocation.centerDocked} with a \q{bottomNavigationBar} for \q{Scaffold}. The problem appears when 
+navigating back and forth between pages. This issue relates to how Flutter renders under the hood, and there are no 
+steps declared to resolve it. Each time, a unique approach may be required:
 
 \begin{lstlisting}
 // Awaiting for the route transition to be completed
@@ -48,6 +48,6 @@ via \q{pubspec.yaml}, or, in case of Flutter itself, by a local binding (as for 
 \href{https://docs.flutter.dev/get-started/install/linux#install-flutter-manually}{https://docs.flutter.dev/get-started/install/linux\#install-flutter-manually}).\\
 \\
 
-\noindent The main idea is not to let the problem take its course. Neither users, nor superiors would care that the 
-problem falls outside the scope of our application or responsibilities. The provided impetus have to reach the 
-target with our full assistance every step of the way.
+\noindent The main idea is to not let the problem take its course. Neither users nor superiors would care if the problem 
+falls outside the scope of our application or responsibilities. With our full assistance every step of the way, the 
+provided impetus must reach the target.

@@ -3,9 +3,7 @@
 
 \subsubsection{AWS Cloud}
 
-Previously, we've discussed a capability to publish \q{Web}-package to GitHub Pages (\ref{deploy-web}), but 
-directly the same flow can be used to release our application on Cloud. A breaf example of Amazon Simple Storage 
-Service (AWS S3) usage:
+We've previously discussed the capability to publish a web package to GitHub Pages (see \ref{deploy-web}), but the same process can be used to release our application on the cloud. Here is a brief example of Amazon Simple Storage Service (AWS S3) usage:
 
 \begin{lstlisting}[language=yaml]
 name: Deploy to AWS S3
@@ -37,9 +35,52 @@ jobs:
       run: aws s3 sync ./build/web s3://${{ secrets.AWS_S3_BUCKET }} --delete
 \end{lstlisting}
 
-\noindent Upon configuring a DNS record with the provided \q{AWS S3}-URL, resembling the following:
+\noindent Upon configuring a DNS record with the provided \q{AWS S3}-URL, it should resemble the following:
 
 \begin{lstlisting}[language=terminal]
 [Type]	 [Host]        [Value]
 APEX	   tercad.pt.    d1eojshauhnf9p.cloudfront.net.
 \end{lstlisting}
+
+\noindent As a step back, this web application can be deployed in any AWS region (\cref{img:cloud-region}) that supports 
+the services used by the application.
+
+\img{cloud/region}{Select Region}{img:cloud-region}
+
+\noindent In the AWS Management Console, under "Storage", click "Services", and then choose "S3", select "Create Bucket".
+Enter a globally unique bucket name. From the drop-down list, select the region we plan to use. Click the "Create" 
+button in the lower-left corner of the dialog box without selecting the bucket from which to copy the settings.
+
+To send all files and subdirectories from a "local directory", we will use GitHub Actions, as shown at the beginning.
+
+With bucket policies, we can specify who is allowed to access the content in our S3 buckets. Bucket policies are JSON 
+documents that specify which principals are allowed to perform various actions on the objects in our bucket. The 
+following example bucket policy allows public read access to all objects in the specified bucket:
+
+\begin{lstlisting}[language=json]
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Effect": "Allow",
+      "Principal": "*",
+      "Action": "s3:GetObject",
+      "Resource": "arn:aws:s3:::our-bucket-name/*"
+    }
+  ]
+}
+\end{lstlisting}
+
+\noindent Replace \q{our-bucket-name} with the actual name of our S3 bucket. This policy allows anyone (denoted by 
+\q{Principal: "*"} to perform the \q{s3:GetObject} action, which is necessary for reading objects from the bucket.
+
+By default, objects in an S3 bucket are accessible via a URL with the structure http://.amazonaws.com//. To serve 
+resources from the root URL (i.e., /index.html), we must enable the website hosting feature in our bucket. On the bucket 
+details page in the S3 console, open the "Properties" tab. Select the "Static website hosting". Select "Use" this bucket 
+to host a website and enter index.html in the root document field. Leave the other fields blank.
+After that, our objects will be accessible at a website address that depends on the AWS region of the bucket: 
+.s3-website-.amazonaws.com. For example, if our bucket is named \q{tercad-web} and is located in the US East (N. 
+Virginia) region, the URL would be \q{http://tercad-web.s3-website-us-east-1.amazonaws.com}.
+
+For more details check 
+\href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/HostingWebsiteOnS3Setup.html}{https://docs.aws.amazon.com/AmazonS3/latest/userguide/HostingWebsiteOnS3Setup.html}.

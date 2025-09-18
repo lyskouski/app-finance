@@ -1,17 +1,17 @@
 % Copyright 2023 The terCAD team. All rights reserved.
 % Use of this content is governed by a CC BY-NC-ND 4.0 license that can be found in the LICENSE file.
 
-\subsection{Debugging Issue}
-\markboth{Optimizing}{Debugging Issue}
+\subsection{Debugging Issues}
+\markboth{Optimizing}{Debugging Issues}
 
 Any application may encounter bugs and issues during after being released that might be hardly understandable 
 (\cref{img:o-error}, \issue{421}{}).
 
 \img{features/crash-stacktrace}{Firebase Chrashlytics: Failure report}{img:o-error}
 
-\noindent One of the simplest yet effective methods for debugging in Flutter is logging. By strategically placing logger 
-statements in our code, we may trace the flow of execution and monitor variable changes. For the case of distributed 
-applications, it should be used loggers with external (to application) storage, as Sentry
+\noindent Logging is one of the simplest yet most effective debugging methods in Flutter. By strategically placing 
+logger statements in our code, we can trace the flow of execution and monitor changes to variables. For distributed 
+applications, loggers with external storage should be used, such as Sentry
 (\href{https://pub.dev/packages/sentry\_flutter}{https://pub.dev/packages/sentry\_flutter}):
 
 \begin{lstlisting}
@@ -35,23 +35,22 @@ Sentry.captureMessage(
 );
 \end{lstlisting}
 
-\noindent Once the issue has been successfully replicated locally, we might place breakpoints in our code to halt 
-execution at specific points. By default, when executing the \q{flutter run}-command, the application runs in a
-debug mode. This enables us to scrutinize variables and navigate through the code step by step, facilitating a more 
-granular inspection of the codebase. But let's avoid that, since the debugging process (either local or production) 
-should have a unified approach -- logs.
+\noindent After successfully replicating the issue locally, we can place breakpoints in our code to halt execution at 
+specific points. By default, the application runs in debug mode when executing the flutter run command. This allows us 
+to examine variables and navigate through the code step by step, providing a more detailed inspection of the codebase. 
+However, let's avoid that since the debugging process (local or production) should use a unified approach -- logs.
 
-In the case of utilizing a web distribution, it becomes necessary to find a means to examine Web Progressive Applications 
-(WPA). The majority of mobile browsers facilitate a remote debugging through their developer tools. For instance, 
-in Chrome, we may use \href{chrome://inspect\#devices}{chrome://inspect\#devices} to enable access to a phone that is 
-connected via a USB. Underneath it would be shown a list of recognized devices (\cref{img:o-devtool}). By clicking on 
-the respective device, the inspect panel is activated, enabling the detailed examination and debugging.
+When using a web distribution, it becomes necessary to find a way to examine web progressive applications (WPAs). Most 
+mobile browsers allow remote debugging through their developer tools. For example, in Chrome, we can use 
+\href{chrome://inspect\#devices}{chrome://inspect\#devices} to access a connected phone via USB. A list of recognized 
+devices will be shown underneath (see \cref{img:o-devtool}). Clicking on a device activates the Inspect panel, enabling 
+detailed examination and debugging.
 
 \img{features/devtool-devices}{Google Chrome: Devices Inspector}{img:o-devtool}
 
-\noindent The phone might not be recognized after being connected. In that case we should turn on the "USB debugging".
-As for Android, those options are available on \q{Developer options} from \q{Settings}-menu after clicking 7 times 
-on \q{Build Number} (from "About phone"-submenu).
+\noindent The phone may not be recognized after being connected. In that case, we should turn on "USB debugging." As for 
+Android, this option is available in the \q{Developer options} in the \q{Settings} menu after clicking seven times on 
+\q{Build Number} in the "About phone" submenu.
 
 For the case of "\emph{Pending authentication: please accept debugging session on the device}", consider experimenting 
 with various USB cables or connecting to different ports on a machine. Additionally, we should attempt a sequence of 
@@ -60,8 +59,11 @@ command prompts to manage the Android Debug Bridge (ADB): start from \q{adb kill
 "Discover network targets"-checkbox. This sequence might help resolve authentication-related issues during the debugging 
 session.
 
-An additional tip is to modify the USB connection type to \q{MIDI} instead of file transfers. Simply slide down the 
-main header to access the configuration settings and make the necessary adjustment.
+Another tip is to change the USB connection type to \q{MIDI} instead of file transfers. To do so, simply slide down the 
+main header to access the configuration settings and make the necessary adjustment. Once the device is recognized, we 
+can open the Inspect panel. This panel provides access to various tabs, including Elements, Console, Sources, Network, 
+Performance, Memory, Application, and Security. The Console tab is particularly useful for monitoring logs and debugging 
+information in real-time.
 
 ~
 
@@ -71,22 +73,20 @@ main header to access the configuration settings and make the necessary adjustme
 
 \img{features/crash-stacktrace-details}{Google Chrome: Failure detection}{img:o-error-details}
 
-\noindent The issue at hand is exclusive to Progressive Web App (PWA) development, particularly linked to transliteration 
-corruption. This problem emerges \emph{(in Flutter 3.16.0 with Dart 3.2.0)} due to the two-step compilation process 
-that Dart code undergoes. Initially, it is compiled into optimized JavaScript for deployment, and then this JavaScript 
-undergoes Just-In-Time (JIT) compilation by the web platform into a native code during runtime. The intricacies of this 
-compilation pipeline introduce a potential source of errors, as observed in the described scenario.
+\noindent The issue at hand is exclusive to Progressive Web App (PWA) development and is specifically related to 
+transliteration corruption. This problem emerges in Flutter 3.16.0 with Dart 3.2.0 due to the two-step compilation 
+process that Dart code undergoes. First, the code is compiled into optimized JavaScript for deployment. Then, the web 
+platform compiles this JavaScript into native code during runtime using Just-In-Time (JIT) compilation. The intricacies 
+of this compilation pipeline introduce a potential source of errors, as observed in the described scenario.
 
-Previously, there was a brief mention of the option to build with Web Assembly (\ref{deploy-web}). Web Assembly is a 
-low-level format that resides closer to the abstraction level of machine code compared to JavaScript. This proximity 
-results in enhanced startup times and a more predictable execution flow. Opting for Web Assembly eliminates the need 
-for the two-step compilation process, making it a potential solution amidst various uncertainties. However, it's worth 
-noting that Web Assembly, introduced in 2020, remains experimental and introduces its set of considerations and 
+There was a brief mention previously of the option to build with Web Assembly (see \ref{deploy-web}). Web Assembly is a 
+low-level format residing closer to the machine code abstraction level than JavaScript does. This proximity results in 
+faster startup times and a more predictable execution flow. Using Web Assembly eliminates the need for the two-step 
+compilation process, making it a viable solution amidst various uncertainties. However, it's worth noting that Web 
+Assembly is still experimental, having been introduced in 2020, and introduces its own set of considerations and 
 potential trade-offs.
 
-Occasionally, when an urgent solution is required, the quickest remedy may involve reverting \issue{424}{} the made 
-changes. In our context, this entails downgrading Flutter to a previous version (that can be retrieved from CI/CD). 
-The rollback can be achieved through FVM (\ref{sdk}) or directly by following a step-by-step process:
+Occasionally, when an urgent solution is required, the quickest remedy may be to revert the changes made to \issue{424}{}. In our context, this means downgrading Flutter to an earlier version, which can be retrieved from CI/CD. This can be done through FVM (see reference \ref{sdk}) or by following a step-by-step process:
 
 \begin{lstlisting}[language=terminal]
 # Check the current state
@@ -104,7 +104,7 @@ $ cd ~/project
 $ flutter create .
 \end{lstlisting}
 
-\noindent And from here on out, we need to nail down the SDK version in all of our CI/CD processes:
+\noindent From here on out, we need to specify the SDK version in all of our CI/CD processes:
 
 \begin{lstlisting}[language=yaml]
 - uses: subosito/flutter-action@v2
@@ -131,13 +131,14 @@ $ flutter upgrade
 \end{lstlisting}
 
 \noindent However, addressing the original issue remains elusive as it extends beyond our sphere of influence. Even if 
-we will revert almost all the changes made between two releases of the application... even by going further to primordial, 
-the error would persist. This is because we have the control over the initial compilation of the web application but a 
-lack of any at the Just-In-Time (JIT) transformation that occurs on a mobile device as a Progressive Web App (PWA).
+we will revert almost all the changes made between two releases of the application... even by going further to 
+primordial, the error would persist. This is because we have the control over the initial compilation of the web 
+application but a lack of any at the Just-In-Time (JIT) transformation that occurs on a mobile device as a Progressive 
+Web App (PWA).
 
-Interestingly, this challenge led us to an unmanageable error state, necessitating the prompt action due to freezes 
-associated with each opened selector (for everyone who is using the app as PWA). Throughout the re-implementation 
-process of the component, we discovered an essential capability: the seamless transfer of data between pages.
+Interestingly, this challenge led us to an unmanageable error state, which required prompt action due to freezes 
+associated with each opened selector for anyone using the app as a PWA. During the reimplementation of the component, we 
+discovered a key feature: seamless data transfer between pages. This capability allows us to pass not only raw data but also functions that define the representation of that data. This is particularly useful when we want to customize how data is displayed without altering the underlying data structure.
 
 \begin{lstlisting}
 // ./lib/design/form/list_selector.dart
@@ -161,16 +162,14 @@ void onTap(BuildContext context) async {
 onPressed: () => nav.pop<T?>(result as T?),
 \end{lstlisting}
 
-\noindent We have successfully extended our capabilities by not only transmitting a raw data, but also encapsulating a 
-representation state within a function. Moreover, we have enhanced our component by introducing a clear-state button 
-and adding functionality to automatically select the first element by pressing Enter \issue{424}{}. We can proudly 
-commend ourselves for navigating challenges and enhancing our system (\cref{img:o-selector}), much like adept problem 
-solvers.
+\noindent We have successfully expanded our capabilities by transmitting raw data and encapsulating a representation 
+state within a function. Furthermore, we have improved our component by adding a clear-state button and the ability to 
+automatically select the first element when the Enter key is pressed \issue{424}{}. Much like adept problem solvers, we 
+can commend ourselves for navigating challenges and enhancing our system (see \cref{img:o-selector}).
 
 \img{features/selector}{Customized selector's popup window}{img:o-selector}
 
-\noindent As a note, we have refrained from utilizing breakpoints to debug our application step by step through the IDE. 
-Let's avoid the vicious practices of modern programming that leads to inadvertent complications in the realm of 
-concurrency and parallelism, where a breakpoint might influence the app's flow in a manner that could lead to even 
-greater confusion. And, when we reach the point of feeling unable to comprehend the code, the problem might not be 
-there.
+\noindent Note that we have refrained from using breakpoints to debug our application step by step through the IDE. 
+Let's avoid modern programming practices that lead to inadvertent complications in concurrency and parallelism. A 
+breakpoint could influence the app's flow, causing even greater confusion. When we reach the point where we feel unable 
+to comprehend the code, the problem might not actually be there. Instead, we should rely on logs to trace the application's behavior. By strategically placing logging statements, we can monitor the flow of execution and identify where things might be going wrong without altering the program's state or timing.

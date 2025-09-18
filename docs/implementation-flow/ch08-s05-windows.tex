@@ -56,11 +56,10 @@ $ dart run msix:create \
   --capabilities internetClient
 \end{lstlisting}
 
-\noindent MSIX installers should be signed with a certificate, to ensure that app installs and updates come from 
-trustworthy sources. But in case of publishing to the Microsoft Store, the installation package will be signed 
-automatically by the store. In addition, we may utilize App Center (\href{https://appcenter.ms}{https://appcenter.ms}) 
-as an early access platform for the users; it contains own Analytics and Crashes that can be used across multiple 
-platforms.
+\noindent MSIX installers should be signed with a certificate to verify that apps are installed and updated from trusted 
+sources. However, if we publish to the Microsoft Store, the store will automatically sign the installation package. 
+Additionally, we may use App Center (\href{https://appcenter.ms}{https://appcenter.ms}) as an early access platform for 
+users. It contains Analytics and Crash Reports that can be used across multiple platforms.
 
 To streamline the distribution process, we might use MS Store CLI (command line interface), a tool designed to 
 interface with the Microsoft Store submission API for publishing Windows apps to the Microsoft Store. To get started 
