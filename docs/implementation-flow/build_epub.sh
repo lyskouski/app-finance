@@ -27,3 +27,5 @@ sed -i 's/\_img="/><img src="/g' index.html
 # pandoc --from=html index.html --to=epub3 -o index.epub
 ## ... or, by using calibre (better outcome)
 ebook-convert index.html index.epub --language en --no-default-epub-cover
+
+# Then use Calibre for the final tuning
