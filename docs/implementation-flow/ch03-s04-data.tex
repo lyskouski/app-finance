@@ -126,9 +126,57 @@ class ExpensesTabState<T extends ExpensesTab> extends State<T>
 // ... other code
 \end{lstlisting}
 
+
+\subsubsection{Managing Local Storage}
+
+File usage is limited by systems where our application can be used as installed instance. To support web browsers
+we may rely on Local Storage. Instead of using \q{dart:html}, let's proceed with known \q{shared\_preferences} 
+(\cref{img:mn-preferences}).
+
+\begin{lstlisting}
+import 'package:flutter/foundation.dart' show kIsWeb;
+
+static void save(dynamic content) async {
+  if (kIsWeb) {
+    await TransactionLog().setPreference('log$increment', content.toString());
+    increment++;
+  } else {
+    (await _logFle).writeAsString("$line\n", mode: FileMode.append);
+  }
+}
+static Stream<String> _loadWeb() async* {
+  // Some transactions might be lost or deleted
+  int attempts = 0;
+  do {
+    int i = increment + attempts;
+    var line = await TransactionLog().getPreference('log$i');
+    if (line == null) {
+      attempts++;
+    } else {
+      increment += attempts + 1;
+      attempts = 0;
+    }
+    yield line ?? '';
+    // Adding retrial approach
+  } while (attempts < 10);
+}
+\end{lstlisting}
+
+\img{prototyping/local-storage-web}{Usage of Local Storage by Application}{img:mn-preferences}
+
+\begin{lstlisting}[firstnumber=29]
+static Future<bool> load(AppData store) async {
+  Stream<String> lines = kIsWeb
+      ? _loadWeb()
+      : (await _logFle).openRead()
+        .transform(utf8.decoder)
+        .transform(const LineSplitter());
+// ... other stuff
+\end{lstlisting}
+
 \noindent What we have forgotten is that Local Storage is usually limited to 5-10 MB per domain. This limit can vary, 
 and some browsers may allow more storage or give users more control over the quota. Fortunately, there is \q{Indexed DB} 
-and its accompanying library -- \q{idb_shim}:
+and its accompanying library -- \q{idb\_shim}:
 
 \begin{lstlisting}
 // ./lib/_classes/storage/transaction_log/abstract_storage_web.dart
@@ -266,7 +314,7 @@ logs in a Flutter application:
 \setlength{\itemsep}{3pt}
 \setlength{\parskip}{0pt}
 \setlength{\parsep}{0pt}
-    \item Web implementation (abstract\_storage_web.dart) uses IndexedDB (via idb\_shim) or falls back to local 
+    \item Web implementation (abstract\_storage\_web.dart) uses IndexedDB (via idb\_shim) or falls back to local 
     preferences for storing transaction logs. It provides methods for initializing the database, saving raw log lines, 
     and reading logs as a stream. The readRaw method supports retries to handle missing or deleted records.
 
@@ -279,54 +327,6 @@ logs in a Flutter application:
 
 \noindent This approach allows the application to handle large transaction logs efficiently and in a platform-agnostic 
 way.
-
-
-\subsubsection{Managing Local Storage}
-
-File usage is limited by systems where our application can be used as installed instance. To support web browsers
-we may rely on Local Storage. Instead of using \q{dart:html}, let's proceed with known \q{shared\_preferences} 
-(\cref{img:mn-preferences}).
-
-\begin{lstlisting}
-import 'package:flutter/foundation.dart' show kIsWeb;
-
-static void save(dynamic content) async {
-  if (kIsWeb) {
-    await TransactionLog().setPreference('log$increment', content.toString());
-    increment++;
-  } else {
-    (await _logFle).writeAsString("$line\n", mode: FileMode.append);
-  }
-}
-static Stream<String> _loadWeb() async* {
-  // Some transactions might be lost or deleted
-  int attempts = 0;
-  do {
-    int i = increment + attempts;
-    var line = await TransactionLog().getPreference('log$i');
-    if (line == null) {
-      attempts++;
-    } else {
-      increment += attempts + 1;
-      attempts = 0;
-    }
-    yield line ?? '';
-    // Adding retrial approach
-  } while (attempts < 10);
-}
-\end{lstlisting}
-
-\img{prototyping/local-storage-web}{Usage of Local Storage by Application}{img:mn-preferences}
-
-\begin{lstlisting}[firstnumber=29]
-static Future<bool> load(AppData store) async {
-  Stream<String> lines = kIsWeb
-      ? _loadWeb()
-      : (await _logFle).openRead()
-        .transform(utf8.decoder)
-        .transform(const LineSplitter());
-// ... other stuff
-\end{lstlisting}
 
 
 \subsubsection{Using Dynamic Structures}

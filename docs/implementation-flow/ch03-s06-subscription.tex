@@ -33,6 +33,7 @@ services, that're specialized on crowdfunding initiatives:
   \item  and many others...
 \end{itemize}
 
+\newpage
 \img{first-steps/subscription-links}{List of external subscriptions}{img:fs-links}
 
 \noindent Implementation of external links \issue{20}{} is possible by \q{url\_launcher}-package (\cref{img:fs-links}):
@@ -57,6 +58,7 @@ class OtherWidget extends StatelessWidget {
 \end{lstlisting}
 
 
+\newpage
 \subsubsection{Enabling Purchases}
 
 In-app purchases are required for mobile app stores since it cannot be used any third-party systems to handle payments
@@ -95,6 +97,7 @@ As for the first one, the CodeLabs provides a step-by-step manual in details:
 \noindent The potential downside of using the \q{in\_app\_purchase}-package is that it might result in build failures 
 for \q{macOS}. This could occur due to the requirement for a minimum macOS version of 10.15 for deployment:
 
+\newpage
 \begin{lstlisting}
 // ./macos/Runner.xcodeproj/project.pbxproj
 \end{lstlisting}
@@ -125,7 +128,7 @@ Guideline 2.1 - Performance - App Completeness
 
 \noindent For iOS/macOS, by using Xcode's Capabilities panel, turn on In-App Purchases, and select the IDs we want to 
 use. This creates the \q{Runner/Release.entitlements}-file:
-\newpage
+
 \begin{lstlisting}[language=xml]
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">

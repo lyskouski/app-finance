@@ -90,7 +90,7 @@ void main() async {
 }
 \end{lstlisting}
 
-\noindent That might be the case for web, android, ios, macos, and windows (the last is not yet supported by 
+\noindent That might be the case for Web, Android, iOS, macOC, and Windows (the last is not yet supported by 
 \q{firebase\_analytics} version 11.3.6); but we have additionally linux that is not supported by now, so, let's patch 
 \q{firebase\_options.dart}-file to return null instead of throwing an exception:
 
@@ -98,9 +98,7 @@ void main() async {
 // ./lib/firebase_options.dart
 class DefaultFirebaseOptions {
   static FirebaseOptions? get currentPlatform {
-    if (kIsWeb) {
-      return web;
-    }
+    if (kIsWeb) return web;
     switch (defaultTargetPlatform) {
       /* ... other cases ... */
       case TargetPlatform.linux:

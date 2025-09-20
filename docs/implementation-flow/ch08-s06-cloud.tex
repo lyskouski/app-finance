@@ -47,7 +47,7 @@ the services used by the application.
 
 \img{cloud/region}{Select Region}{img:cloud-region}
 
-\noindent In the AWS Management Console, under "Storage", click "Services", and then choose "S3", select "Create Bucket".
+In the AWS Management Console, under "Storage", click "Services", and then choose "S3", select "Create Bucket".
 Enter a globally unique bucket name. From the drop-down list, select the region we plan to use. Click the "Create" 
 button in the lower-left corner of the dialog box without selecting the bucket from which to copy the settings.
 
@@ -57,7 +57,7 @@ With bucket policies, we can specify who is allowed to access the content in our
 documents that specify which principals are allowed to perform various actions on the objects in our bucket. The 
 following example bucket policy allows public read access to all objects in the specified bucket:
 
-\begin{lstlisting}[language=json]
+\begin{lstlisting}[language=yaml]
 {
   "Version": "2012-10-17",
   "Statement": [
@@ -82,5 +82,7 @@ After that, our objects will be accessible at a website address that depends on 
 .s3-website-.amazonaws.com. For example, if our bucket is named \q{tercad-web} and is located in the US East (N. 
 Virginia) region, the URL would be \q{http://tercad-web.s3-website-us-east-1.amazonaws.com}.
 
-For more details check 
-\href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/HostingWebsiteOnS3Setup.html}{https://docs.aws.amazon.com/AmazonS3/latest/userguide/HostingWebsiteOnS3Setup.html}.
+~
+
+\noindent For more details check: https://docs.aws.amazon.com\\
+\href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/HostingWebsiteOnS3Setup.html}{/AmazonS3/latest/userguide/HostingWebsiteOnS3Setup.html}

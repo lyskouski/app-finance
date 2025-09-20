@@ -99,20 +99,44 @@ final count = 10; // Immutable variable, type inferred as int
 const count = 10; // Compile-time constant, type inferred as int
 \end{lstlisting}
 
-Dart is a relatively strongly typed language, which means it encourages declaring explicit types rather than relying 
-on \q{var}. This practice enhances code readability and maintainability by making the intended type of each variable 
-clear.
+\noindent Dart is a relatively strongly typed language, which means it encourages declaring explicit types rather than 
+relying on \q{var}. This practice enhances code readability and maintainability by making the intended type of each 
+variable clear.
 
 \begin{lstlisting}
-String txt = 'Demo string'; // Explicit type declaration
+// Explicit type declaration
+String txt = 'Demo string';
+int age = 30;
+double price = 19.99;
+num flexible = 42;
+flexible = 42.5; // num can hold both int and double
+BigInt huge = BigInt.parse('1234567890123456789012345');
 \end{lstlisting}
 
-For collection types that hold other objects, we can also specify the type of the stored elements.
+\noindent For collection types that hold other objects, we can also specify the type of the stored elements:
 
 \begin{lstlisting}
 List<String> names = ['Alice', 'Bob', 'Charlie'];
 Map<String, int> ages = {'Alice': 30, 'Bob': 25};
 Set<int> uniqueNumbers = {1, 2, 3, 2};
+// Records has no explicit declaration
+var record = ('Alice', 25, isStudent: true);
+\end{lstlisting}
+
+\noindent We can define our own types by using \q{typedef}. A \q{typedef} allows us to create an alias for a complex 
+type, making code more readable and maintainable. This is especially useful when working with function signatures, 
+records, or deeply nested structures. In the example below, we define a record type named \q{ScreenHelperState}, 
+which groups together several related properties into a single logical type. By using a typedef, we can reuse this 
+type throughout the application without having to redefine the full structure each time:
+
+\begin{lstlisting}
+typedef ScreenHelperState = ({
+  bool isWide,
+  bool isBottom,
+  bool isWearable,
+  double height,
+  double width,
+});
 \end{lstlisting}
 
 
@@ -687,8 +711,8 @@ still a few important tools available:
 \noindent 1. Reflection: Dart provides a \q{dart:mirrors} library for reflection, allowing you to inspect and manipulate 
 objects at runtime. However, this library is not supported in Flutter for web and mobile.
 
-\noindent 2. Code Generation: Dart supports code generation through build_runner and source_gen packages. You can create 
-custom annotations and use code generators to produce boilerplate code.
+\noindent 2. Code Generation: Dart supports code generation through \q{build\_runner} and \q{source\_gen} packages. 
+You can create custom annotations and use code generators to produce boilerplate code.
 
 \noindent 3. Macros: Dart has introduced a macro system that allows you to write code that generates other code at 
 compile time.
@@ -817,8 +841,8 @@ TransactionLogData<String> data = ...;
 print(data.toJson());
 \end{lstlisting}
 
-This code leverages Dart's new feature called augmentation, that allows to modify a class or function by adding new 
-members or replacing existing bodies from outside the original definition:
+\noindent This code leverages Dart's new feature called augmentation, that allows to modify a class or function by 
+adding new members or replacing existing bodies from outside the original definition:
 
 \begin{lstlisting}
 // "Uninitialized" error occurs unless a constructor is provided

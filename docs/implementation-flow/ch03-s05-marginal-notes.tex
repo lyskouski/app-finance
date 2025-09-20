@@ -49,6 +49,7 @@ class MyApp extends StatelessWidget {
 
 \noindent To enable switching between tabs by tapping instead of swiping, we should make following adjustments:
 
+\newpage
 \begin{lstlisting}
 class MyApp extends StatelessWidget {
   final _pageController = PageController(initialPage: 0);
@@ -100,6 +101,7 @@ class MyApp extends StatelessWidget with TickerProviderStateMixin {
     tabController?.dispose();
     super.dispose();
   }
+
 
   void switchTab(int newIndex) {
     setState(() {
@@ -212,7 +214,6 @@ existing external components (adding them to the page as widgets) or by customiz
 // ./lib/widgets/_wrappers/dots_indicator_decoration.dart
 class DotsIndicatorDecoration extends Decoration {
   // ... properties and constructor definition
-
   @override
   BoxPainter createBoxPainter([VoidCallback? onChanged]) {
     return _CustomTabIndicatorPainter(

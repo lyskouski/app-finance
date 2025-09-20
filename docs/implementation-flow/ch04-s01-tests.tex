@@ -48,6 +48,7 @@ evaluated solely, by group, by file, or fully (\cref{img:fs-test-explorer}).
 
 \noindent As a first step, we would start from covering the implemented Account Recalculation flow:
 
+\newpage
 \begin{lstlisting}
 // test/unit/_classes/data/account_recalculation_test.dart 
 void main() {
@@ -58,8 +59,7 @@ void main() {
     // 'setUpAll' - once at the beginning of group evaluation
     setUp(() {
       final accountMock = AccountAppData(
-        uuid: '1',
-        title: 'test',
+        uuid: '1', title: 'test',
         type: AppAccountType.account.toString(),
       );
       mock = AccountRecalculation(
