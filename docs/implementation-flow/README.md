@@ -10,16 +10,20 @@ Scheduled to 1st November 2023
   - Kindle eBook (ASIN: B0CLLKNXQR): https://www.amazon.com/dp/B0CLLKNXQR
   - Paperback (ASIN: B0CLP5JQJC): https://www.amazon.com/Zero-Market-Flutter-Desktop-Distribution/dp/B0CLP5JQJC/
   - Hardcover (ASIN: B0CLNT8GPC): https://www.amazon.com/Zero-Market-Flutter-Desktop-Distribution/dp/B0CLNT8GPC/
+- **Google Books**
+  - https://play.google.com/store/books/details?id=FkqIEQAAQBAJ&pli=1
 - **Apple Books**
   - https://books.apple.com/us/book/from-zero-to-market-with-flutter/id6470395934
-- **Google Books**
-  - https://books.google.pl/books/about?id=j4XhEAAAQBAJ
-- **Smashwords**
-  - https://www.smashwords.com/books/view/1471129 (choose your price)
-- **Barnes & Noble(R)**
+- **draft2digital**
+  - https://www.smashwords.com/books/view/1471129
+  - https://www.everand.com/book/680105554/From-Zero-to-Market-with-Flutter
   - https://www.barnesandnoble.com/w/from-zero-to-market-with-flutter-viachaslau-lyskouski/1144274308
-- **bol.**
-  - https://www.bol.com/be/nl/p/from-zero-to-market-with-flutter/9300000165265465/
+  - https://fable.co/book/x-9798215870877
+  - https://www.hoopladigital.com/title/17144864
+  - https://www.kobo.com/pl/en/ebook/from-zero-to-market-with-flutter
+  - https://market.thepalaceproject.org/item/5689711
+  - https://www.thalia.de/shop/home/artikeldetails/A1071072713
+  - https://shop.vivlio.com/product/9798215870877_9798215870877_10020/from-zero-to-market-with-flutter
 
 
 ## Sampling on Financial Accounting App Life-Cycles
@@ -65,3 +69,4 @@ Or, [treat me to :coffee:](https://www.buymeacoffee.com/lyskouski).
 The materials herein are all &copy; 2023 Viachaslau Lyskouski.
 
 <a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-nd/4.0/88x31.png" /></a><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/4.0/">Creative Commons Attribution-NonCommercial-NoDerivs 4.0 Unported License</a>.
+
