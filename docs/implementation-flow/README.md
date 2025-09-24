@@ -13,7 +13,7 @@ Scheduled to 1st November 2023
 - **Google Books**
   - https://play.google.com/store/books/details?id=FkqIEQAAQBAJ&pli=1
 - **Apple Books**
-  - https://books.apple.com/us/book/from-zero-to-market-with-flutter/id6470395934
+  - https://books.apple.com/us/book/from-zero-to-market-with-flutter/id6470395206
 - **draft2digital**
   - https://www.smashwords.com/books/view/1471129
   - https://www.everand.com/book/680105554/From-Zero-to-Market-with-Flutter
@@ -69,4 +69,5 @@ Or, [treat me to :coffee:](https://www.buymeacoffee.com/lyskouski).
 The materials herein are all &copy; 2023 Viachaslau Lyskouski.
 
 <a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-nd/4.0/88x31.png" /></a><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/4.0/">Creative Commons Attribution-NonCommercial-NoDerivs 4.0 Unported License</a>.
+
 
