@@ -3,6 +3,7 @@
 
 import 'package:app_finance/_classes/controller/delayed_call.dart';
 import 'package:app_finance/_classes/controller/iterator_controller.dart';
+import 'package:app_finance/_classes/controller/focus_controller.dart';
 import 'package:app_finance/_classes/herald/app_design.dart';
 import 'package:app_finance/_classes/herald/app_locale.dart';
 import 'package:app_finance/_classes/storage/app_data.dart';
@@ -11,6 +12,7 @@ import 'package:app_finance/_configs/screen_helper.dart';
 import 'package:app_finance/_configs/theme_helper.dart';
 import 'package:app_finance/design/form/list_account_selector.dart';
 import 'package:app_finance/design/wrapper/input_wrapper.dart';
+import 'package:app_finance/design/wrapper/single_scroll_wrapper.dart';
 import 'package:app_finance/pages/invoice/invoice_page.dart';
 import 'package:flutter/material.dart';
 
@@ -24,6 +26,7 @@ class InvoiceSearchPage extends StatefulWidget {
 class InvoiceSearchPageState extends InvoicePageState<InvoiceSearchPage> {
   String? account;
   late TextEditingController description;
+  late FocusController focus;
 
   late List<ListAccountSelectorItem> accountList =
       state.getList(AppDataType.accounts).map((item) => ListAccountSelectorItem(item: item)).toList();
@@ -31,16 +34,23 @@ class InvoiceSearchPageState extends InvoicePageState<InvoiceSearchPage> {
   @override
   void initState() {
     description = TextEditingController();
+    focus = FocusController();
     final runner = DelayedCall(1500);
-    bool isFocused = false;
     changeState() => setState(clearState);
-    description.addListener(() => isFocused ? runner.run(changeState) : isFocused = true);
+    String previousText = '';
+    description.addListener(() {
+      if (description.text != previousText) {
+        previousText = description.text;
+        runner.run(changeState);
+      }
+    });
     super.initState();
   }
 
   @override
   dispose() {
     description.dispose();
+    focus.dispose();
     super.dispose();
   }
 
@@ -68,28 +78,31 @@ class InvoiceSearchPageState extends InvoicePageState<InvoiceSearchPage> {
   Widget addHeaderWidget() {
     final width = ScreenHelper.state().width - ThemeHelper.getIndent(4);
     return SliverToBoxAdapter(
-      child: Column(
-        crossAxisAlignment: AppDesign.getAlignment(),
-        children: [
-          InputWrapper.text(
-            title: AppLocale.labels.description,
-            controller: description,
-            tooltip: AppLocale.labels.descriptionTooltip,
-          ),
-          InputWrapper(
-            type: NamedInputType.accountSelector,
-            value: account != null ? state.getByUuid(account!) : null,
-            title: AppLocale.labels.account,
-            tooltip: AppLocale.labels.titleAccountTooltip,
-            state: state,
-            options: accountList,
-            onChange: (value) => setState(() {
-              clearState();
-              account = value?.uuid;
-            }),
-            width: width,
-          ),
-        ],
+      child: SingleScrollWrapper(
+        controller: focus,
+        child: Column(
+          crossAxisAlignment: AppDesign.getAlignment(),
+          children: [
+            InputWrapper.text(
+              title: AppLocale.labels.description,
+              controller: description,
+              tooltip: AppLocale.labels.descriptionTooltip,
+            ),
+            InputWrapper(
+              type: NamedInputType.accountSelector,
+              value: account != null ? state.getByUuid(account!) : null,
+              title: AppLocale.labels.account,
+              tooltip: AppLocale.labels.titleAccountTooltip,
+              state: state,
+              options: accountList,
+              onChange: (value) => setState(() {
+                if (value?.uuid != account) clearState();
+                account = value?.uuid;
+              }),
+              width: width,
+            ),
+          ],
+        ),
       ),
     );
   }
