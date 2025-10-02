@@ -63,6 +63,12 @@ class AppLocalizationsTr extends AppLocalizations {
   }
 
   @override
+  String get amountFrom => 'Başlangıç ​​Miktarı';
+
+  @override
+  String get amountTo => 'Bitiş Miktarı';
+
+  @override
   String appBuild(Object build) {
     return 'İnşa et: $build';
   }

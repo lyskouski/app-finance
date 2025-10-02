@@ -21,6 +21,8 @@
             "type": "int"
         }
     },
+    "amountFrom": "از مبلغ",
+    "amountTo": "به مبلغ",
     "appBuild": "ساخت: {build}",
     "@appBuild": {
         "build": {

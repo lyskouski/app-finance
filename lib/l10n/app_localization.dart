@@ -241,6 +241,18 @@ abstract class AppLocalizations {
   /// **'after {value} days'**
   String afterNDays(Object value);
 
+  /// No description provided for @amountFrom.
+  ///
+  /// In en, this message translates to:
+  /// **'From Amount'**
+  String get amountFrom;
+
+  /// No description provided for @amountTo.
+  ///
+  /// In en, this message translates to:
+  /// **'To Amount'**
+  String get amountTo;
+
   /// No description provided for @appBuild.
   ///
   /// In en, this message translates to:

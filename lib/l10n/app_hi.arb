@@ -21,6 +21,8 @@
             "type": "int"
         }
     },
+    "amountFrom": "राशि से",
+    "amountTo": "राशि तक",
     "appBuild": "निर्माण: {build}",
     "@appBuild": {
         "build": {

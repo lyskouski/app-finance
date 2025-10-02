@@ -63,6 +63,12 @@ class AppLocalizationsNl extends AppLocalizations {
   }
 
   @override
+  String get amountFrom => 'Vanaf bedrag';
+
+  @override
+  String get amountTo => 'Naar bedrag';
+
+  @override
   String appBuild(Object build) {
     return 'Samenstellen: $build';
   }

@@ -21,6 +21,8 @@
             "type": "int"
         }
     },
+    "amountFrom": "من المبلغ",
+    "amountTo": "إلى المبلغ",
     "appBuild": "بناء {build}",
     "@appBuild": {
         "build": {

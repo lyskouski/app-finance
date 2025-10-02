@@ -21,6 +21,8 @@
             "type": "int"
         }
     },
+    "amountFrom": "De Valor",
+    "amountTo": "Para Valor",
     "appBuild": "Criar: {build}",
     "@appBuild": {
         "build": {

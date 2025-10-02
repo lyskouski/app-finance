@@ -21,6 +21,8 @@
             "type": "int"
         }
     },
+    "amountFrom": "Vanaf bedrag",
+    "amountTo": "Naar bedrag",
     "appBuild": "Samenstellen: {build}",
     "@appBuild": {
         "build": {

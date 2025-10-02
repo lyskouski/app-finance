@@ -13,7 +13,9 @@ import 'package:app_finance/_configs/theme_helper.dart';
 import 'package:app_finance/_ext/build_context_ext.dart';
 import 'package:app_finance/design/form/date_range_input.dart';
 import 'package:app_finance/design/form/list_account_selector.dart';
+import 'package:app_finance/design/form/simple_input.dart';
 import 'package:app_finance/design/wrapper/input_wrapper.dart';
+import 'package:app_finance/design/wrapper/row_widget.dart';
 import 'package:app_finance/design/wrapper/single_scroll_wrapper.dart';
 import 'package:app_finance/design/wrapper/text_wrapper.dart';
 import 'package:app_finance/pages/bill/bill_page.dart';
@@ -35,6 +37,8 @@ class BillViewPageState extends BillPageState<BillSearchPage> {
   DateTime? startDate;
   DateTime? endDate;
   late TextEditingController description;
+  late TextEditingController amountFrom;
+  late TextEditingController amountTo;
   late FocusController focus;
   late List<ListAccountSelectorItem> accountList =
       state.getList(AppDataType.accounts).map((item) => ListAccountSelectorItem(item: item)).toList();
@@ -44,6 +48,8 @@ class BillViewPageState extends BillPageState<BillSearchPage> {
   @override
   void initState() {
     description = TextEditingController();
+    amountFrom = TextEditingController();
+    amountTo = TextEditingController();
     focus = FocusController();
     super.initState();
   }
@@ -51,6 +57,8 @@ class BillViewPageState extends BillPageState<BillSearchPage> {
   @override
   dispose() {
     description.dispose();
+    amountFrom.dispose();
+    amountTo.dispose();
     focus.dispose();
     super.dispose();
   }
@@ -79,13 +87,17 @@ class BillViewPageState extends BillPageState<BillSearchPage> {
     final currencyMatch = currency == null || item.currency == currency;
     final startDateMatch = startDate == null || item.createdAt.isAfter(startDate!);
     final endDateMatch = endDate == null || item.createdAt.isBefore(endDate!);
+    final amountFromMatch = amountFrom.text.isEmpty || item.details >= double.tryParse(amountFrom.text)!;
+    final amountToMatch = amountTo.text.isEmpty || item.details <= double.tryParse(amountTo.text)!;
     return !(descriptionMatch &&
         accountMatch &&
         budgetMatch &&
         typeMatch &&
         currencyMatch &&
         startDateMatch &&
-        endDateMatch);
+        endDateMatch &&
+        amountFromMatch &&
+        amountToMatch);
   }
 
   @override
@@ -94,6 +106,7 @@ class BillViewPageState extends BillPageState<BillSearchPage> {
   @override
   Widget addHeaderWidget() {
     final width = ScreenHelper.state().width - ThemeHelper.getIndent(4);
+    final indent = ThemeHelper.getIndent(2);
     return SliverToBoxAdapter(
       child: SingleScrollWrapper(
         controller: focus,
@@ -104,6 +117,35 @@ class BillViewPageState extends BillPageState<BillSearchPage> {
               title: AppLocale.labels.description,
               controller: description,
               tooltip: AppLocale.labels.descriptionTooltip,
+            ),
+            RowWidget(
+              indent: indent,
+              maxWidth: width + indent,
+              chunk: const [0.5, 0.5],
+              children: [
+                [
+                  InputWrapper.text(
+                    title: AppLocale.labels.amountFrom,
+                    tooltip: AppLocale.labels.billSetTooltip,
+                    controller: amountFrom,
+                    inputType: const TextInputType.numberWithOptions(decimal: true),
+                    formatter: [
+                      SimpleInputFormatter.filterDouble,
+                    ],
+                  ),
+                ],
+                [
+                  InputWrapper.text(
+                    title: AppLocale.labels.amountTo,
+                    tooltip: AppLocale.labels.billSetTooltip,
+                    controller: amountTo,
+                    inputType: const TextInputType.numberWithOptions(decimal: true),
+                    formatter: [
+                      SimpleInputFormatter.filterDouble,
+                    ],
+                  ),
+                ],
+              ],
             ),
             InputWrapper.select(
               value: type,

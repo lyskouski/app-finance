@@ -63,6 +63,12 @@ class AppLocalizationsFa extends AppLocalizations {
   }
 
   @override
+  String get amountFrom => 'از مبلغ';
+
+  @override
+  String get amountTo => 'به مبلغ';
+
+  @override
   String appBuild(Object build) {
     return 'ساخت: $build';
   }

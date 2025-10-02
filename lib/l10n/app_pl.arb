@@ -21,6 +21,8 @@
             "type": "int"
         }
     },
+    "amountFrom": "Kwota od",
+    "amountTo": "Kwota do",
     "appBuild": "Utwórz: {build}",
     "@appBuild": {
         "build": {

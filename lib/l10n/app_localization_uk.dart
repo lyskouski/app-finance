@@ -63,6 +63,12 @@ class AppLocalizationsUk extends AppLocalizations {
   }
 
   @override
+  String get amountFrom => 'Сума від';
+
+  @override
+  String get amountTo => 'Сума до';
+
+  @override
   String appBuild(Object build) {
     return 'Збірка: $build';
   }

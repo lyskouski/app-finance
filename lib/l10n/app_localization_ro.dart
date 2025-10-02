@@ -63,6 +63,12 @@ class AppLocalizationsRo extends AppLocalizations {
   }
 
   @override
+  String get amountFrom => 'De la Sumă';
+
+  @override
+  String get amountTo => 'Către Sumă';
+
+  @override
   String appBuild(Object build) {
     return 'Construiește: $build';
   }

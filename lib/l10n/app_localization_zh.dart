@@ -63,6 +63,12 @@ class AppLocalizationsZh extends AppLocalizations {
   }
 
   @override
+  String get amountFrom => '起始金额';
+
+  @override
+  String get amountTo => '终止金额';
+
+  @override
   String appBuild(Object build) {
     return '构建: $build';
   }
@@ -1081,6 +1087,12 @@ class AppLocalizationsZhTw extends AppLocalizationsZh {
   String afterNDays(Object value) {
     return '$value天後';
   }
+
+  @override
+  String get amountFrom => '起始金額';
+
+  @override
+  String get amountTo => '終止金額';
 
   @override
   String appBuild(Object build) {

@@ -63,6 +63,12 @@ class AppLocalizationsAz extends AppLocalizations {
   }
 
   @override
+  String get amountFrom => 'Məbləğdən';
+
+  @override
+  String get amountTo => 'Məbləğə';
+
+  @override
   String appBuild(Object build) {
     return 'Qurmaq: $build';
   }

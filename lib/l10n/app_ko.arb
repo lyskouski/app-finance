@@ -21,6 +21,8 @@
             "type": "int"
         }
     },
+    "amountFrom": "시작 금액",
+    "amountTo": "종료 금액",
     "appBuild": "빌드: {build}",
     "@appBuild": {
         "build": {

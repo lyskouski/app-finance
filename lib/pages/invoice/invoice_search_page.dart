@@ -13,7 +13,9 @@ import 'package:app_finance/_configs/theme_helper.dart';
 import 'package:app_finance/_ext/build_context_ext.dart';
 import 'package:app_finance/design/form/date_range_input.dart';
 import 'package:app_finance/design/form/list_account_selector.dart';
+import 'package:app_finance/design/form/simple_input.dart';
 import 'package:app_finance/design/wrapper/input_wrapper.dart';
+import 'package:app_finance/design/wrapper/row_widget.dart';
 import 'package:app_finance/design/wrapper/single_scroll_wrapper.dart';
 import 'package:app_finance/design/wrapper/text_wrapper.dart';
 import 'package:app_finance/pages/invoice/invoice_page.dart';
@@ -34,6 +36,8 @@ class InvoiceSearchPageState extends InvoicePageState<InvoiceSearchPage> {
   DateTime? startDate;
   DateTime? endDate;
   late TextEditingController description;
+  late TextEditingController amountFrom;
+  late TextEditingController amountTo;
   late FocusController focus;
 
   late List<ListAccountSelectorItem> accountList =
@@ -42,6 +46,8 @@ class InvoiceSearchPageState extends InvoicePageState<InvoiceSearchPage> {
   @override
   void initState() {
     description = TextEditingController();
+    amountFrom = TextEditingController();
+    amountTo = TextEditingController();
     focus = FocusController();
     super.initState();
   }
@@ -49,6 +55,8 @@ class InvoiceSearchPageState extends InvoicePageState<InvoiceSearchPage> {
   @override
   dispose() {
     description.dispose();
+    amountFrom.dispose();
+    amountTo.dispose();
     focus.dispose();
     super.dispose();
   }
@@ -77,7 +85,17 @@ class InvoiceSearchPageState extends InvoicePageState<InvoiceSearchPage> {
     final currencyMatch = currency == null || o.currency == currency;
     final startDateMatch = startDate == null || o.createdAt.isAfter(startDate!);
     final endDateMatch = endDate == null || o.createdAt.isBefore(endDate!);
-    return !(descriptionMatch && accountMatch && typeMatch && currencyMatch && startDateMatch && endDateMatch) ||
+    final amountFromMatch = amountFrom.text.isEmpty || o.details >= double.tryParse(amountFrom.text)!;
+    final amountToMatch = amountTo.text.isEmpty || o.details <= double.tryParse(amountTo.text)!;
+
+    return !(descriptionMatch &&
+            accountMatch &&
+            typeMatch &&
+            currencyMatch &&
+            startDateMatch &&
+            endDateMatch &&
+            amountFromMatch &&
+            amountToMatch) ||
         o.accountFrom != null;
   }
 
@@ -88,6 +106,7 @@ class InvoiceSearchPageState extends InvoicePageState<InvoiceSearchPage> {
   @override
   Widget addHeaderWidget() {
     final width = ScreenHelper.state().width - ThemeHelper.getIndent(4);
+    final indent = ThemeHelper.getIndent(2);
     return SliverToBoxAdapter(
       child: SingleScrollWrapper(
         controller: focus,
@@ -98,6 +117,35 @@ class InvoiceSearchPageState extends InvoicePageState<InvoiceSearchPage> {
               title: AppLocale.labels.description,
               controller: description,
               tooltip: AppLocale.labels.descriptionTooltip,
+            ),
+            RowWidget(
+              indent: indent,
+              maxWidth: width + indent,
+              chunk: const [0.5, 0.5],
+              children: [
+                [
+                  InputWrapper.text(
+                    title: AppLocale.labels.amountFrom,
+                    tooltip: AppLocale.labels.billSetTooltip,
+                    controller: amountFrom,
+                    inputType: const TextInputType.numberWithOptions(decimal: true),
+                    formatter: [
+                      SimpleInputFormatter.filterDouble,
+                    ],
+                  ),
+                ],
+                [
+                  InputWrapper.text(
+                    title: AppLocale.labels.amountTo,
+                    tooltip: AppLocale.labels.billSetTooltip,
+                    controller: amountTo,
+                    inputType: const TextInputType.numberWithOptions(decimal: true),
+                    formatter: [
+                      SimpleInputFormatter.filterDouble,
+                    ],
+                  ),
+                ],
+              ],
             ),
             InputWrapper.select(
               value: type,

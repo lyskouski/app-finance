@@ -21,6 +21,8 @@
             "type": "int"
         }
     },
+    "amountFrom": "Suma ad",
+    "amountTo": "Suma da",
     "appBuild": "Zborka: {build}",
     "@appBuild": {
         "build": {

@@ -63,6 +63,12 @@ class AppLocalizationsBe extends AppLocalizations {
   }
 
   @override
+  String get amountFrom => 'Сума ад';
+
+  @override
+  String get amountTo => 'Сума да';
+
+  @override
   String appBuild(Object build) {
     return 'Зборка: $build';
   }
@@ -1085,6 +1091,12 @@ class AppLocalizationsBeEu extends AppLocalizationsBe {
   String afterNDays(Object value) {
     return 'praz $value dzion';
   }
+
+  @override
+  String get amountFrom => 'Suma ad';
+
+  @override
+  String get amountTo => 'Suma da';
 
   @override
   String appBuild(Object build) {

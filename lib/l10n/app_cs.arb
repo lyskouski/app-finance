@@ -21,6 +21,8 @@
             "type": "int"
         }
     },
+    "amountFrom": "Částka od",
+    "amountTo": "Částka do",
     "appBuild": "Sestavit: {build}",
     "@appBuild": {
         "build": {

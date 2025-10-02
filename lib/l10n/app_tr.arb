@@ -21,6 +21,8 @@
             "type": "int"
         }
     },
+    "amountFrom": "Başlangıç ​​Miktarı",
+    "amountTo": "Bitiş Miktarı",
     "appBuild": "İnşa et: {build}",
     "@appBuild": {
         "build": {

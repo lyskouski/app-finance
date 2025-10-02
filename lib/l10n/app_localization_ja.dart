@@ -63,6 +63,12 @@ class AppLocalizationsJa extends AppLocalizations {
   }
 
   @override
+  String get amountFrom => '開始金額';
+
+  @override
+  String get amountTo => '終了金額';
+
+  @override
   String appBuild(Object build) {
     return 'ビルドする $build';
   }

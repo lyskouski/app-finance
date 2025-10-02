@@ -21,6 +21,8 @@
             "type": "int"
         }
     },
+    "amountFrom": "起始金额",
+    "amountTo": "终止金额",
     "appBuild": "构建: {build}",
     "@appBuild": {
         "build": {

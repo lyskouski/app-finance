@@ -63,6 +63,12 @@ class AppLocalizationsHi extends AppLocalizations {
   }
 
   @override
+  String get amountFrom => 'राशि से';
+
+  @override
+  String get amountTo => 'राशि तक';
+
+  @override
   String appBuild(Object build) {
     return 'निर्माण: $build';
   }

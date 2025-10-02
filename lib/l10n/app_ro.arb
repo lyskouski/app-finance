@@ -21,6 +21,8 @@
             "type": "int"
         }
     },
+    "amountFrom": "De la Sumă",
+    "amountTo": "Către Sumă",
     "appBuild": "Construiește: {build}",
     "@appBuild": {
         "build": {

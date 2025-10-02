@@ -21,6 +21,8 @@
             "type": "int"
         }
     },
+    "amountFrom": "Montant de départ",
+    "amountTo": "Montant d'arrivée",
     "appBuild": "Construire : {build}",
     "@appBuild": {
         "build": {

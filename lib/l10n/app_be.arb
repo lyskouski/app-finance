@@ -21,6 +21,8 @@
             "type": "int"
         }
     },
+    "amountFrom": "Сума ад",
+    "amountTo": "Сума да",
     "appBuild": "Зборка: {build}",
     "@appBuild": {
         "build": {

@@ -21,6 +21,8 @@
             "type": "int"
         }
     },
+    "amountFrom": "Importe inicial",
+    "amountTo": "Importe final",
     "appBuild": "Construir: {build}",
     "@appBuild": {
         "build": {

@@ -63,6 +63,12 @@ class AppLocalizationsFr extends AppLocalizations {
   }
 
   @override
+  String get amountFrom => 'Montant de départ';
+
+  @override
+  String get amountTo => 'Montant d\'arrivée';
+
+  @override
   String appBuild(Object build) {
     return 'Construire : $build';
   }

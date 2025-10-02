@@ -63,6 +63,12 @@ class AppLocalizationsIt extends AppLocalizations {
   }
 
   @override
+  String get amountFrom => 'Importo iniziale';
+
+  @override
+  String get amountTo => 'Importo finale';
+
+  @override
   String appBuild(Object build) {
     return 'Costruire: $build';
   }

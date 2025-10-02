@@ -63,6 +63,12 @@ class AppLocalizationsKo extends AppLocalizations {
   }
 
   @override
+  String get amountFrom => '시작 금액';
+
+  @override
+  String get amountTo => '종료 금액';
+
+  @override
   String appBuild(Object build) {
     return '빌드: $build';
   }

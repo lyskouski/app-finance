@@ -64,6 +64,12 @@ class AppLocalizationsUz extends AppLocalizations {
   }
 
   @override
+  String get amountFrom => 'Miqdordan';
+
+  @override
+  String get amountTo => 'Miqdorga';
+
+  @override
   String appBuild(Object build) {
     return 'Qurilish: $build';
   }

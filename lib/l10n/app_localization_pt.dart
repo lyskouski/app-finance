@@ -63,6 +63,12 @@ class AppLocalizationsPt extends AppLocalizations {
   }
 
   @override
+  String get amountFrom => 'De Valor';
+
+  @override
+  String get amountTo => 'Para Valor';
+
+  @override
   String appBuild(Object build) {
     return 'Criar: $build';
   }
@@ -1089,6 +1095,12 @@ class AppLocalizationsPtBr extends AppLocalizationsPt {
   String afterNDays(Object value) {
     return 'após $value dias';
   }
+
+  @override
+  String get amountFrom => 'De Valor';
+
+  @override
+  String get amountTo => 'Para Valor';
 
   @override
   String appBuild(Object build) {

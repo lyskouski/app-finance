@@ -21,6 +21,8 @@
             "type": "int"
         }
     },
+    "amountFrom": "Məbləğdən",
+    "amountTo": "Məbləğə",
     "appBuild": "Qurmaq: {build}",
     "@appBuild": {
         "build": {

@@ -21,6 +21,8 @@
             "type": "int"
         }
     },
+    "amountFrom": "Miqdordan",
+    "amountTo": "Miqdorga",
     "appBuild": "Qurilish: {build}",
     "@appBuild": {
         "build": {

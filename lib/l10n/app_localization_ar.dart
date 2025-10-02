@@ -63,6 +63,12 @@ class AppLocalizationsAr extends AppLocalizations {
   }
 
   @override
+  String get amountFrom => 'من المبلغ';
+
+  @override
+  String get amountTo => 'إلى المبلغ';
+
+  @override
   String appBuild(Object build) {
     return 'بناء $build';
   }
