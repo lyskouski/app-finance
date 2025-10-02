@@ -419,6 +419,9 @@ class AppLocalizationsUk extends AppLocalizations {
   String get dateFormat => 'Формат дати';
 
   @override
+  String get dateRange => 'Діапазон дат';
+
+  @override
   String get dateTooltip => 'Виберіть дату';
 
   @override

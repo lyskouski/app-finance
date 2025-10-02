@@ -177,6 +177,7 @@
     "customizeTooltip": "自定义页面",
     "darkMode": "暗",
     "dateFormat": "日期格式",
+    "dateRange": "日期範圍",
     "dateTooltip": "选择日期",
     "dayMonday": "星期一",
     "dayStartOfMonth": "月初",

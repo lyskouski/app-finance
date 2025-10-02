@@ -418,6 +418,9 @@ class AppLocalizationsJa extends AppLocalizations {
   String get dateFormat => '日付フォーマット';
 
   @override
+  String get dateRange => '日付範囲';
+
+  @override
   String get dateTooltip => '日付選択';
 
   @override

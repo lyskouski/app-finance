@@ -919,6 +919,12 @@ abstract class AppLocalizations {
   /// **'Date Format'**
   String get dateFormat;
 
+  /// No description provided for @dateRange.
+  ///
+  /// In en, this message translates to:
+  /// **'Date Range'**
+  String get dateRange;
+
   /// No description provided for @dateTooltip.
   ///
   /// In en, this message translates to:

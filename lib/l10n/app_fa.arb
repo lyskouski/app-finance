@@ -177,6 +177,7 @@
     "customizeTooltip": "سفارشی کردن صفحه",
     "darkMode": "تاریک",
     "dateFormat": "فرمت تاریخ",
+    "dateRange": "نطاق تاریخ",
     "dateTooltip": "تاریخ را انتخاب کنید",
     "dayMonday": "دوشنبه",
     "dayStartOfMonth": "شروع ماه",

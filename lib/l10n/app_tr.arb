@@ -177,6 +177,7 @@
     "customizeTooltip": "Sayfayı Özelleştir",
     "darkMode": "Karanlık",
     "dateFormat": "Tarih Formatı",
+    "dateRange": "Tarih Aralığı",
     "dateTooltip": "Tarih Seçiniz",
     "dayMonday": "Pazartesi",
     "dayStartOfMonth": "Ayın başlangıcı",

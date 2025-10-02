@@ -421,6 +421,9 @@ class AppLocalizationsDe extends AppLocalizations {
   String get dateFormat => 'Datumsformat';
 
   @override
+  String get dateRange => 'Datumsbereich';
+
+  @override
   String get dateTooltip => 'Datum auswählen';
 
   @override

@@ -420,6 +420,9 @@ class AppLocalizationsRo extends AppLocalizations {
   String get dateFormat => 'Format dată';
 
   @override
+  String get dateRange => 'Interval de date';
+
+  @override
   String get dateTooltip => 'Selectați data';
 
   @override

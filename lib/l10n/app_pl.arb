@@ -177,6 +177,7 @@
     "customizeTooltip": "Dostosowywanie strony",
     "darkMode": "Ciemny",
     "dateFormat": "Format daty",
+    "dateRange": "Zakres dat",
     "dateTooltip": "Wybierz datę",
     "dayMonday": "Poniedziałek",
     "dayStartOfMonth": "Początek miesiąca",

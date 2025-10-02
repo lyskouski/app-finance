@@ -8,9 +8,12 @@ import 'package:app_finance/_classes/storage/app_data.dart';
 import 'package:app_finance/_classes/structure/invoice_app_data.dart';
 import 'package:app_finance/_configs/screen_helper.dart';
 import 'package:app_finance/_configs/theme_helper.dart';
+import 'package:app_finance/_ext/build_context_ext.dart';
+import 'package:app_finance/design/form/date_range_input.dart';
 import 'package:app_finance/design/form/list_account_selector.dart';
 import 'package:app_finance/design/wrapper/input_wrapper.dart';
 import 'package:app_finance/design/wrapper/single_scroll_wrapper.dart';
+import 'package:app_finance/design/wrapper/text_wrapper.dart';
 import 'package:app_finance/pages/invoice/invoice_transfer_page.dart';
 import 'package:flutter/material.dart';
 
@@ -24,6 +27,8 @@ class InvoiceTransferSearchPage extends StatefulWidget {
 class InvoiceTransferSearchPageState extends InvoiceTransferPageState<InvoiceTransferSearchPage> {
   String? accountFrom;
   String? accountTo;
+  DateTime? startDate;
+  DateTime? endDate;
   late TextEditingController description;
   late FocusController focus;
 
@@ -65,7 +70,10 @@ class InvoiceTransferSearchPageState extends InvoiceTransferPageState<InvoiceTra
     final descriptionMatch = o.title.toLowerCase().contains(description.text.toLowerCase());
     final accountFromMatch = accountFrom == null || o.accountFrom == accountFrom;
     final accountToMatch = accountTo == null || o.account == accountTo;
-    return !(descriptionMatch && accountFromMatch && accountToMatch) || o.accountFrom == null;
+    final startDateMatch = startDate == null || o.createdAt.isAfter(startDate!);
+    final endDateMatch = endDate == null || o.createdAt.isBefore(endDate!);
+    return !(descriptionMatch && accountFromMatch && accountToMatch && startDateMatch && endDateMatch) ||
+        o.accountFrom == null;
   }
 
   @override
@@ -107,6 +115,19 @@ class InvoiceTransferSearchPageState extends InvoiceTransferPageState<InvoiceTra
                 accountFrom = value?.uuid;
               }),
               width: width,
+            ),
+            TextWrapper(
+              AppLocale.labels.dateRange,
+              style: context.textTheme.bodyLarge,
+            ),
+            DateRangeInput(
+              valueFrom: startDate,
+              value: endDate,
+              setState: (start, end) => setState(() {
+                startDate = start;
+                endDate = end;
+                clearState();
+              }),
             ),
           ],
         ),

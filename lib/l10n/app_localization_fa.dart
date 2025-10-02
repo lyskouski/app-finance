@@ -419,6 +419,9 @@ class AppLocalizationsFa extends AppLocalizations {
   String get dateFormat => 'فرمت تاریخ';
 
   @override
+  String get dateRange => 'نطاق تاریخ';
+
+  @override
   String get dateTooltip => 'تاریخ را انتخاب کنید';
 
   @override

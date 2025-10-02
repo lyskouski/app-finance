@@ -419,6 +419,9 @@ class AppLocalizationsPt extends AppLocalizations {
   String get dateFormat => 'Formato da data';
 
   @override
+  String get dateRange => 'Intervalo de datas';
+
+  @override
   String get dateTooltip => 'Selecionar data';
 
   @override
@@ -1442,6 +1445,9 @@ class AppLocalizationsPtBr extends AppLocalizationsPt {
 
   @override
   String get dateFormat => 'Formato de data';
+
+  @override
+  String get dateRange => 'Intervalo de datas';
 
   @override
   String get dateTooltip => 'Selecionar data';

@@ -419,6 +419,9 @@ class AppLocalizationsCs extends AppLocalizations {
   String get dateFormat => 'Formát data';
 
   @override
+  String get dateRange => 'Rozsah dat';
+
+  @override
   String get dateTooltip => 'Výběr data';
 
   @override

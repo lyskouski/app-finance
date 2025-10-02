@@ -177,6 +177,7 @@
     "customizeTooltip": "Customize Page",
     "darkMode": "Oscuro",
     "dateFormat": "Formato de fecha",
+    "dateRange": "Rango de fechas",
     "dateTooltip": "Seleccionar fecha",
     "dayMonday": "Lunes",
     "dayStartOfMonth": "Principios de mes",

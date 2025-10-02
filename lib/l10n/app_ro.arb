@@ -177,6 +177,7 @@
     "customizeTooltip": "Personalizați pagina",
     "darkMode": "Întuneric",
     "dateFormat": "Format dată",
+    "dateRange": "Interval de date",
     "dateTooltip": "Selectați data",
     "dayMonday": "Luni",
     "dayStartOfMonth": "Începutul lunii",

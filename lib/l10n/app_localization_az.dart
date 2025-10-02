@@ -420,6 +420,9 @@ class AppLocalizationsAz extends AppLocalizations {
   String get dateFormat => 'Tarix formatı';
 
   @override
+  String get dateRange => 'Tarix Aralığı';
+
+  @override
   String get dateTooltip => 'Tarixi seçin';
 
   @override

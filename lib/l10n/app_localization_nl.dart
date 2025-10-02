@@ -420,6 +420,9 @@ class AppLocalizationsNl extends AppLocalizations {
   String get dateFormat => 'Datum Formaat';
 
   @override
+  String get dateRange => 'Datumbereik';
+
+  @override
   String get dateTooltip => 'Datum selecteren';
 
   @override

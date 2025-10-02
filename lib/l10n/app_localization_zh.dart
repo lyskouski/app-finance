@@ -418,6 +418,9 @@ class AppLocalizationsZh extends AppLocalizations {
   String get dateFormat => '日期格式';
 
   @override
+  String get dateRange => '日期範圍';
+
+  @override
   String get dateTooltip => '选择日期';
 
   @override
@@ -1433,6 +1436,9 @@ class AppLocalizationsZhTw extends AppLocalizationsZh {
 
   @override
   String get dateFormat => 'Date Format';
+
+  @override
+  String get dateRange => '日期范围';
 
   @override
   String get dateTooltip => '選擇日期';

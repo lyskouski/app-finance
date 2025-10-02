@@ -421,6 +421,9 @@ class AppLocalizationsUz extends AppLocalizations {
   String get dateFormat => 'Sana formati';
 
   @override
+  String get dateRange => 'Sana oralig\'i';
+
+  @override
   String get dateTooltip => 'Sana-ni tanlang';
 
   @override

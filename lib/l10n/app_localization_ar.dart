@@ -419,6 +419,9 @@ class AppLocalizationsAr extends AppLocalizations {
   String get dateFormat => 'تنسيق التاريخ';
 
   @override
+  String get dateRange => 'نطاق التاريخ';
+
+  @override
   String get dateTooltip => 'تحديد التاريخ';
 
   @override

@@ -420,6 +420,9 @@ class AppLocalizationsHi extends AppLocalizations {
   String get dateFormat => 'तारिख का प्रारूप';
 
   @override
+  String get dateRange => 'तारीख़ की सीमा';
+
+  @override
   String get dateTooltip => 'तारीख़ चुनें';
 
   @override

@@ -177,6 +177,7 @@
     "customizeTooltip": "ページのカスタマイズ",
     "darkMode": "暗い",
     "dateFormat": "日付フォーマット",
+    "dateRange": "日付範囲",
     "dateTooltip": "日付選択",
     "dayMonday": "月曜日",
     "dayStartOfMonth": "月初",

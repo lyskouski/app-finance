@@ -29,7 +29,7 @@ class DateInput extends AbstractSelector {
   DateInputState createState() => DateInputState();
 }
 
-class DateInputState extends AbstractSelectorState<DateInput> {
+class DateInputState<T extends DateInput> extends AbstractSelectorState<T> {
   @override
   Future<void> onTap(BuildContext context) async {
     DateTime currentDate = DateTime.now();
@@ -56,10 +56,14 @@ class DateInputState extends AbstractSelectorState<DateInput> {
     }
   }
 
+  String formatDate(DateTime? date) {
+    final DateFormat formatter = DateFormat.yMd(AppLocale.code);
+    return formatter.format(date!);
+  }
+
   @override
   Widget buildContent(BuildContext context) {
     final style = context.textTheme.numberMedium;
-    final DateFormat formatterDate = DateFormat.yMd(AppLocale.code);
     final labelStyle = context.textTheme.tooltipSmall.copyWith(color: style.color?.withValues(alpha: 0.4));
     final hintStyle = context.textTheme.tooltipMedium.copyWith(overflow: TextOverflow.ellipsis);
     return Container(
@@ -72,10 +76,10 @@ class DateInputState extends AbstractSelectorState<DateInput> {
                     crossAxisAlignment: AppDesign.getAlignment(),
                     children: [
                       TextWrapper(AppLocale.labels.dateTooltip, style: labelStyle),
-                      TextWrapper(formatterDate.format(widget.value!), style: style),
+                      TextWrapper(formatDate(widget.value!), style: style),
                     ],
                   )
-                : TextWrapper(formatterDate.format(widget.value!), style: style)
+                : TextWrapper(formatDate(widget.value!), style: style)
             : TextWrapper(AppLocale.labels.dateTooltip, style: hintStyle),
         focusNode: focus,
         autofocus: focusController.isFocused(this),

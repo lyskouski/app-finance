@@ -177,6 +177,7 @@
     "customizeTooltip": "Pagina aanpassen",
     "darkMode": "Donker",
     "dateFormat": "Datum Formaat",
+    "dateRange": "Datumbereik",
     "dateTooltip": "Datum selecteren",
     "dayMonday": "Maandag",
     "dayStartOfMonth": "Begin van de maand",

@@ -177,6 +177,7 @@
     "customizeTooltip": "Наладьзіць старонку",
     "darkMode": "Цёмны",
     "dateFormat": "Фармат даты",
+    "dateRange": "Дыяпазон дат",
     "dateTooltip": "Абярыце дату",
     "dayMonday": "Панядзелак",
     "dayStartOfMonth": "Пачатак месяца",

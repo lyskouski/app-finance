@@ -418,6 +418,9 @@ class AppLocalizationsKo extends AppLocalizations {
   String get dateFormat => '날짜 형식';
 
   @override
+  String get dateRange => '날짜 범위';
+
+  @override
   String get dateTooltip => '날짜 선택';
 
   @override

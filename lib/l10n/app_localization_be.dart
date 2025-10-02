@@ -419,6 +419,9 @@ class AppLocalizationsBe extends AppLocalizations {
   String get dateFormat => 'Фармат даты';
 
   @override
+  String get dateRange => 'Дыяпазон дат';
+
+  @override
   String get dateTooltip => 'Абярыце дату';
 
   @override
@@ -1438,6 +1441,9 @@ class AppLocalizationsBeEu extends AppLocalizationsBe {
 
   @override
   String get dateFormat => 'Farmat Daty';
+
+  @override
+  String get dateRange => 'Dyjapazon dat';
 
   @override
   String get dateTooltip => 'Abiarycie Datu';

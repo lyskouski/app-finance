@@ -10,9 +10,12 @@ import 'package:app_finance/_classes/structure/bill_app_data.dart';
 import 'package:app_finance/_configs/account_type.dart';
 import 'package:app_finance/_configs/screen_helper.dart';
 import 'package:app_finance/_configs/theme_helper.dart';
+import 'package:app_finance/_ext/build_context_ext.dart';
+import 'package:app_finance/design/form/date_range_input.dart';
 import 'package:app_finance/design/form/list_account_selector.dart';
 import 'package:app_finance/design/wrapper/input_wrapper.dart';
 import 'package:app_finance/design/wrapper/single_scroll_wrapper.dart';
+import 'package:app_finance/design/wrapper/text_wrapper.dart';
 import 'package:app_finance/pages/bill/bill_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_currency_picker/flutter_currency_picker.dart';
@@ -29,6 +32,8 @@ class BillViewPageState extends BillPageState<BillSearchPage> {
   String? budget;
   String? type;
   Currency? currency;
+  DateTime? startDate;
+  DateTime? endDate;
   late TextEditingController description;
   late FocusController focus;
   late List<ListAccountSelectorItem> accountList =
@@ -72,7 +77,15 @@ class BillViewPageState extends BillPageState<BillSearchPage> {
     final budgetMatch = budget == null || item.category == budget;
     final typeMatch = type == null || state.getByUuid(item.account)?.type == type;
     final currencyMatch = currency == null || item.currency == currency;
-    return !(descriptionMatch && accountMatch && budgetMatch && typeMatch && currencyMatch);
+    final startDateMatch = startDate == null || item.createdAt.isAfter(startDate!);
+    final endDateMatch = endDate == null || item.createdAt.isBefore(endDate!);
+    return !(descriptionMatch &&
+        accountMatch &&
+        budgetMatch &&
+        typeMatch &&
+        currencyMatch &&
+        startDateMatch &&
+        endDateMatch);
   }
 
   @override
@@ -135,6 +148,19 @@ class BillViewPageState extends BillPageState<BillSearchPage> {
               onChange: (value) => setState(() {
                 if (value != currency) clearState();
                 currency = value;
+              }),
+            ),
+            TextWrapper(
+              AppLocale.labels.dateRange,
+              style: context.textTheme.bodyLarge,
+            ),
+            DateRangeInput(
+              valueFrom: startDate,
+              value: endDate,
+              setState: (start, end) => setState(() {
+                startDate = start;
+                endDate = end;
+                clearState();
               }),
             ),
           ],

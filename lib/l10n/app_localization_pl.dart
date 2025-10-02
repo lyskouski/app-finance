@@ -419,6 +419,9 @@ class AppLocalizationsPl extends AppLocalizations {
   String get dateFormat => 'Format daty';
 
   @override
+  String get dateRange => 'Zakres dat';
+
+  @override
   String get dateTooltip => 'Wybierz datę';
 
   @override

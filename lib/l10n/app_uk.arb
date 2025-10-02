@@ -177,6 +177,7 @@
     "customizeTooltip": "Налаштувати сторінку",
     "darkMode": "Темний",
     "dateFormat": "Формат дати",
+    "dateRange": "Діапазон дат",
     "dateTooltip": "Виберіть дату",
     "dayMonday": "Понеділок",
     "dayStartOfMonth": "Початок місяця",

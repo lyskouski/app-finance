@@ -419,6 +419,9 @@ class AppLocalizationsTr extends AppLocalizations {
   String get dateFormat => 'Tarih Formatı';
 
   @override
+  String get dateRange => 'Tarih Aralığı';
+
+  @override
   String get dateTooltip => 'Tarih Seçiniz';
 
   @override

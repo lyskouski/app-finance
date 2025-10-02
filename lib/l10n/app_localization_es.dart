@@ -420,6 +420,9 @@ class AppLocalizationsEs extends AppLocalizations {
   String get dateFormat => 'Formato de fecha';
 
   @override
+  String get dateRange => 'Rango de fechas';
+
+  @override
   String get dateTooltip => 'Seleccionar fecha';
 
   @override
