@@ -160,8 +160,33 @@ $ flatpak-builder --user --install --force-clean build-dir com.tercad.fingrom.ym
 $ flatpak run com.tercad.fingrom
 \end{lstlisting}
 
-\noindent Build and installation is controlled by definitions from \q{com.tercad.fingrom.yml}-file
-(\href{https://docs.flatpak.org/en/latest/manifests.html}{https://docs.flatpak.org/en/latest/manifests.html}).
+\noindent To create a Flatpak application, we need to define a manifest file (YAML, \q{com.tercad.fingrom.yml}) that 
+describes our application, its dependencies, and how to build it. This manifest file is then used by the Flatpak build 
+system to create the application package. Here's a basic example of what a Flatpak manifest file might look like for a 
+Flutter application (\href{https://docs.flatpak.org/en/latest/manifests.html}{https://docs.flatpak.org/en/latest/manifests.html}):
+
+\begin{lstlisting}[language=yaml]
+id: com.tercad.fingrom
+runtime: org.freedesktop.Platform
+runtime-version: 23.08
+sdk: org.freedesktop.Sdk
+command: fingrom
+modules:
+  - name: fingrom
+    buildsystem: cmake
+    sources:
+      - type: git
+        url: https://github.com/lyskouski/app-finance.git
+        tag: v1.0.0
+\end{lstlisting}
+
+\noindent The manifest file specifies the application ID, the runtime and SDK to use, the command to run the application,
+and the modules that define how to build the application from its source code.
+
+To distribute it, we need to create a merge request into Flathub repository
+\href{https://github.com/flathub/flathub}{https://github.com/flathub/flathub}
+and submit our application for review. Once approved, it will be created a repository for our application with an 
+automation to distribute it to Flatpak (\href{https://flathub.org}{https://flathub.org}).
 
 
 \subsubsection{Linux AppImage}
@@ -208,7 +233,7 @@ $ appimage-builder --recipe AppImageBuilder.yml
 \noindent A valuable change \issue{460}{} to be done is to exclude icons packages from \q{AppImageBuilder.yml} before 
 the build to avoid an error \emph{"Unable to load image-loading module: libpixbufloader-svg.so"}:
 
-\begin{lstlisting}[language=terminal]
+\begin{lstlisting}[language=yaml]
 AppDir:
   apt:
     exclude:
