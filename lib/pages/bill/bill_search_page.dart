@@ -7,6 +7,7 @@ import 'package:app_finance/_classes/herald/app_design.dart';
 import 'package:app_finance/_classes/herald/app_locale.dart';
 import 'package:app_finance/_classes/storage/app_data.dart';
 import 'package:app_finance/_classes/structure/bill_app_data.dart';
+import 'package:app_finance/_configs/account_type.dart';
 import 'package:app_finance/_configs/screen_helper.dart';
 import 'package:app_finance/_configs/theme_helper.dart';
 import 'package:app_finance/design/form/list_account_selector.dart';
@@ -25,6 +26,7 @@ class BillSearchPage extends StatefulWidget {
 class BillViewPageState extends BillPageState<BillSearchPage> {
   String? account;
   String? budget;
+  String? type;
   late TextEditingController description;
   late FocusController focus;
   late List<ListAccountSelectorItem> accountList =
@@ -66,7 +68,8 @@ class BillViewPageState extends BillPageState<BillSearchPage> {
     final descriptionMatch = item.title.toLowerCase().contains(description.text.toLowerCase());
     final accountMatch = account == null || item.account == account;
     final budgetMatch = budget == null || item.category == budget;
-    return !(descriptionMatch && accountMatch && budgetMatch);
+    final typeMatch = type == null || state.getByUuid(item.account)?.type == type;
+    return !(descriptionMatch && accountMatch && budgetMatch && typeMatch);
   }
 
   @override
@@ -85,6 +88,16 @@ class BillViewPageState extends BillPageState<BillSearchPage> {
               title: AppLocale.labels.description,
               controller: description,
               tooltip: AppLocale.labels.descriptionTooltip,
+            ),
+            InputWrapper.select(
+              value: type,
+              title: AppLocale.labels.accountType,
+              tooltip: AppLocale.labels.accountTypeTooltip,
+              options: AccountType.getList(),
+              onChange: (value) => setState(() {
+                if (value != type) clearState();
+                type = value;
+              }),
             ),
             InputWrapper(
               type: NamedInputType.accountSelector,

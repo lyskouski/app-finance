@@ -7,6 +7,7 @@ import 'package:app_finance/_classes/herald/app_design.dart';
 import 'package:app_finance/_classes/herald/app_locale.dart';
 import 'package:app_finance/_classes/storage/app_data.dart';
 import 'package:app_finance/_classes/structure/invoice_app_data.dart';
+import 'package:app_finance/_configs/account_type.dart';
 import 'package:app_finance/_configs/screen_helper.dart';
 import 'package:app_finance/_configs/theme_helper.dart';
 import 'package:app_finance/design/form/list_account_selector.dart';
@@ -24,6 +25,7 @@ class InvoiceSearchPage extends StatefulWidget {
 
 class InvoiceSearchPageState extends InvoicePageState<InvoiceSearchPage> {
   String? account;
+  String? type;
   late TextEditingController description;
   late FocusController focus;
 
@@ -64,7 +66,8 @@ class InvoiceSearchPageState extends InvoicePageState<InvoiceSearchPage> {
   bool getContentFilter(InvoiceAppData o) {
     final descriptionMatch = o.title.toLowerCase().contains(description.text.toLowerCase());
     final accountMatch = account == null || o.account == account;
-    return !(descriptionMatch && accountMatch) || o.accountFrom != null;
+    final typeMatch = type == null || state.getByUuid(o.account)?.type == type;
+    return !(descriptionMatch && accountMatch && typeMatch) || o.accountFrom != null;
   }
 
   @override
@@ -84,6 +87,16 @@ class InvoiceSearchPageState extends InvoicePageState<InvoiceSearchPage> {
               title: AppLocale.labels.description,
               controller: description,
               tooltip: AppLocale.labels.descriptionTooltip,
+            ),
+            InputWrapper.select(
+              value: type,
+              title: AppLocale.labels.accountType,
+              tooltip: AppLocale.labels.accountTypeTooltip,
+              options: AccountType.getList(),
+              onChange: (value) => setState(() {
+                if (value != type) clearState();
+                type = value;
+              }),
             ),
             InputWrapper(
               type: NamedInputType.accountSelector,
