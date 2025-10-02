@@ -33,6 +33,7 @@ Feature: Verify Expenses Functionality
      When I tap "Search" button
       And I select "Bank Account" from "AccountSelector" with "Enter Account Identifier" tooltip
       And I select "Limited" from "BudgetSelector" with "Enter Budget Category Name" tooltip
+      And I tap "Search" button
      Then I can see "Bank Account - Limited" component
       And I cannot see "Cash - Limited" component
       And I cannot see "Bank Account - Group / 2" component
