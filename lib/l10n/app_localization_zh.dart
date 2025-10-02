@@ -63,6 +63,12 @@ class AppLocalizationsZh extends AppLocalizations {
   }
 
   @override
+  String get amountFrom => '起始金额';
+
+  @override
+  String get amountTo => '终止金额';
+
+  @override
   String appBuild(Object build) {
     return '构建: $build';
   }
@@ -416,6 +422,9 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String get dateFormat => '日期格式';
+
+  @override
+  String get dateRange => '日期範圍';
 
   @override
   String get dateTooltip => '选择日期';
@@ -1080,6 +1089,12 @@ class AppLocalizationsZhTw extends AppLocalizationsZh {
   }
 
   @override
+  String get amountFrom => '起始金額';
+
+  @override
+  String get amountTo => '終止金額';
+
+  @override
   String appBuild(Object build) {
     return '建立：$build';
   }
@@ -1433,6 +1448,9 @@ class AppLocalizationsZhTw extends AppLocalizationsZh {
 
   @override
   String get dateFormat => 'Date Format';
+
+  @override
+  String get dateRange => '日期范围';
 
   @override
   String get dateTooltip => '選擇日期';

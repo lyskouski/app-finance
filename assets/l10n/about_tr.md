@@ -47,6 +47,7 @@ Bu, kullanıcıların mali durumlarını zahmetsizce yönetmelerini sağlarken k
   - Haftanın ve ayın özelleştirilebilir başlangıç ​​günü
 - Faturalar, Transferler, Gelirler (Faturalar)
   - Yinelenen Ödemeler (ana sayfa widget'ı ile)
+  - Filtreleme
 - Hedefler Tanım
 - Döviz kurları, Özet için Varsayılan Para Birimi
 - Metrikler: 

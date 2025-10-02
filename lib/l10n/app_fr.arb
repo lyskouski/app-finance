@@ -21,6 +21,8 @@
             "type": "int"
         }
     },
+    "amountFrom": "Montant de départ",
+    "amountTo": "Montant d'arrivée",
     "appBuild": "Construire : {build}",
     "@appBuild": {
         "build": {
@@ -177,6 +179,7 @@
     "customizeTooltip": "Personnaliser la page",
     "darkMode": "Sombre",
     "dateFormat": "Format de la date",
+    "dateRange": "Plage de dates",
     "dateTooltip": "Sélectionner la date",
     "dayMonday": "Lundi",
     "dayStartOfMonth": "Début du mois",

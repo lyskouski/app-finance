@@ -21,6 +21,8 @@
             "type": "int"
         }
     },
+    "amountFrom": "시작 금액",
+    "amountTo": "종료 금액",
     "appBuild": "빌드: {build}",
     "@appBuild": {
         "build": {
@@ -177,6 +179,7 @@
     "customizeTooltip": "페이지 사용자 지정",
     "darkMode": "어둡게",
     "dateFormat": "날짜 형식",
+    "dateRange": "날짜 범위",
     "dateTooltip": "날짜 선택",
     "dayMonday": "월요일",
     "dayStartOfMonth": "이달의 시작",

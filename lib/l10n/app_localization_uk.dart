@@ -63,6 +63,12 @@ class AppLocalizationsUk extends AppLocalizations {
   }
 
   @override
+  String get amountFrom => 'Сума від';
+
+  @override
+  String get amountTo => 'Сума до';
+
+  @override
   String appBuild(Object build) {
     return 'Збірка: $build';
   }
@@ -417,6 +423,9 @@ class AppLocalizationsUk extends AppLocalizations {
 
   @override
   String get dateFormat => 'Формат дати';
+
+  @override
+  String get dateRange => 'Діапазон дат';
 
   @override
   String get dateTooltip => 'Виберіть дату';

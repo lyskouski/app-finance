@@ -21,6 +21,8 @@
             "type": "int"
         }
     },
+    "amountFrom": "من المبلغ",
+    "amountTo": "إلى المبلغ",
     "appBuild": "بناء {build}",
     "@appBuild": {
         "build": {
@@ -177,6 +179,7 @@
     "customizeTooltip": "تخصيص الصفحة",
     "darkMode": "داكن",
     "dateFormat": "تنسيق التاريخ",
+    "dateRange": "نطاق التاريخ",
     "dateTooltip": "تحديد التاريخ",
     "dayMonday": "الإثنين",
     "dayStartOfMonth": "بداية الشهر",

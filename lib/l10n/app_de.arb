@@ -21,6 +21,8 @@
             "type": "int"
         }
     },
+    "amountFrom": "Von-Betrag",
+    "amountTo": "Bis-Betrag",
     "appBuild": "Erstellen: {build}",
     "@appBuild": {
         "build": {
@@ -177,6 +179,7 @@
     "customizeTooltip": "Seite anpassen",
     "darkMode": "Dunkel",
     "dateFormat": "Datumsformat",
+    "dateRange": "Datumsbereich",
     "dateTooltip": "Datum auswählen",
     "dayMonday": "Montag",
     "dayStartOfMonth": "Anfang des Monats",

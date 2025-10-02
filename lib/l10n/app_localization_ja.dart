@@ -63,6 +63,12 @@ class AppLocalizationsJa extends AppLocalizations {
   }
 
   @override
+  String get amountFrom => '開始金額';
+
+  @override
+  String get amountTo => '終了金額';
+
+  @override
   String appBuild(Object build) {
     return 'ビルドする $build';
   }
@@ -416,6 +422,9 @@ class AppLocalizationsJa extends AppLocalizations {
 
   @override
   String get dateFormat => '日付フォーマット';
+
+  @override
+  String get dateRange => '日付範囲';
 
   @override
   String get dateTooltip => '日付選択';

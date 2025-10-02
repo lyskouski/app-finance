@@ -21,6 +21,8 @@
             "type": "int"
         }
     },
+    "amountFrom": "起始金额",
+    "amountTo": "终止金额",
     "appBuild": "构建: {build}",
     "@appBuild": {
         "build": {
@@ -177,6 +179,7 @@
     "customizeTooltip": "自定义页面",
     "darkMode": "暗",
     "dateFormat": "日期格式",
+    "dateRange": "日期範圍",
     "dateTooltip": "选择日期",
     "dayMonday": "星期一",
     "dayStartOfMonth": "月初",

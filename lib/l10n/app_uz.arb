@@ -21,6 +21,8 @@
             "type": "int"
         }
     },
+    "amountFrom": "Miqdordan",
+    "amountTo": "Miqdorga",
     "appBuild": "Qurilish: {build}",
     "@appBuild": {
         "build": {
@@ -177,6 +179,7 @@
     "customizeTooltip": "Sahifani moslashtirish",
     "darkMode": "Qorong'i",
     "dateFormat": "Sana formati",
+    "dateRange": "Sana oralig'i",
     "dateTooltip": "Sana-ni tanlang",
     "dayMonday": "Dushanba",
     "dayStartOfMonth": "Oyning boshlanishi",

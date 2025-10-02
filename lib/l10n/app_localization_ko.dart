@@ -63,6 +63,12 @@ class AppLocalizationsKo extends AppLocalizations {
   }
 
   @override
+  String get amountFrom => '시작 금액';
+
+  @override
+  String get amountTo => '종료 금액';
+
+  @override
   String appBuild(Object build) {
     return '빌드: $build';
   }
@@ -416,6 +422,9 @@ class AppLocalizationsKo extends AppLocalizations {
 
   @override
   String get dateFormat => '날짜 형식';
+
+  @override
+  String get dateRange => '날짜 범위';
 
   @override
   String get dateTooltip => '날짜 선택';

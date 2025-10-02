@@ -63,6 +63,12 @@ class AppLocalizationsHi extends AppLocalizations {
   }
 
   @override
+  String get amountFrom => 'राशि से';
+
+  @override
+  String get amountTo => 'राशि तक';
+
+  @override
   String appBuild(Object build) {
     return 'निर्माण: $build';
   }
@@ -418,6 +424,9 @@ class AppLocalizationsHi extends AppLocalizations {
 
   @override
   String get dateFormat => 'तारिख का प्रारूप';
+
+  @override
+  String get dateRange => 'तारीख़ की सीमा';
 
   @override
   String get dateTooltip => 'तारीख़ चुनें';

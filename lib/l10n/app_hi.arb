@@ -21,6 +21,8 @@
             "type": "int"
         }
     },
+    "amountFrom": "राशि से",
+    "amountTo": "राशि तक",
     "appBuild": "निर्माण: {build}",
     "@appBuild": {
         "build": {
@@ -177,6 +179,7 @@
     "customizeTooltip": "पृष्ठ अनुकूलित करें",
     "darkMode": "अँधेरा",
     "dateFormat": "तारिख का प्रारूप",
+    "dateRange": "तारीख़ की सीमा",
     "dateTooltip": "तारीख़ चुनें",
     "dayMonday": "सोमवार",
     "dayStartOfMonth": "महीने की शुरुआत",

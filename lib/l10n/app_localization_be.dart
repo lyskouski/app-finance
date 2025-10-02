@@ -63,6 +63,12 @@ class AppLocalizationsBe extends AppLocalizations {
   }
 
   @override
+  String get amountFrom => 'Сума ад';
+
+  @override
+  String get amountTo => 'Сума да';
+
+  @override
   String appBuild(Object build) {
     return 'Зборка: $build';
   }
@@ -417,6 +423,9 @@ class AppLocalizationsBe extends AppLocalizations {
 
   @override
   String get dateFormat => 'Фармат даты';
+
+  @override
+  String get dateRange => 'Дыяпазон дат';
 
   @override
   String get dateTooltip => 'Абярыце дату';
@@ -1084,6 +1093,12 @@ class AppLocalizationsBeEu extends AppLocalizationsBe {
   }
 
   @override
+  String get amountFrom => 'Suma ad';
+
+  @override
+  String get amountTo => 'Suma da';
+
+  @override
   String appBuild(Object build) {
     return 'Zborka: $build';
   }
@@ -1438,6 +1453,9 @@ class AppLocalizationsBeEu extends AppLocalizationsBe {
 
   @override
   String get dateFormat => 'Farmat Daty';
+
+  @override
+  String get dateRange => 'Dyjapazon dat';
 
   @override
   String get dateTooltip => 'Abiarycie Datu';

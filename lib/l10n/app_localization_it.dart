@@ -63,6 +63,12 @@ class AppLocalizationsIt extends AppLocalizations {
   }
 
   @override
+  String get amountFrom => 'Importo iniziale';
+
+  @override
+  String get amountTo => 'Importo finale';
+
+  @override
   String appBuild(Object build) {
     return 'Costruire: $build';
   }
@@ -418,6 +424,9 @@ class AppLocalizationsIt extends AppLocalizations {
 
   @override
   String get dateFormat => 'Formato data';
+
+  @override
+  String get dateRange => 'Intervallo di date';
 
   @override
   String get dateTooltip => 'Selezionare la data';

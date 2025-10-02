@@ -47,6 +47,7 @@ Che permetta agli utenti di gestire le proprie finanze senza sforzo, garantendo 
   - Giorno di inizio della settimana e del mese personalizzabili
 - Bollette, trasferimenti, entrate (fatture)
   - Pagamenti ricorrenti (con un widget)
+  - Filtraggio
 - Definizione degli obiettivi
 - Tassi di cambio, Valuta predefinita per il riepilogo
 - Metriche: 

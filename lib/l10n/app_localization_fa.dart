@@ -63,6 +63,12 @@ class AppLocalizationsFa extends AppLocalizations {
   }
 
   @override
+  String get amountFrom => 'از مبلغ';
+
+  @override
+  String get amountTo => 'به مبلغ';
+
+  @override
   String appBuild(Object build) {
     return 'ساخت: $build';
   }
@@ -417,6 +423,9 @@ class AppLocalizationsFa extends AppLocalizations {
 
   @override
   String get dateFormat => 'فرمت تاریخ';
+
+  @override
+  String get dateRange => 'نطاق تاریخ';
 
   @override
   String get dateTooltip => 'تاریخ را انتخاب کنید';

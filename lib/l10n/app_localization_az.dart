@@ -63,6 +63,12 @@ class AppLocalizationsAz extends AppLocalizations {
   }
 
   @override
+  String get amountFrom => 'Məbləğdən';
+
+  @override
+  String get amountTo => 'Məbləğə';
+
+  @override
   String appBuild(Object build) {
     return 'Qurmaq: $build';
   }
@@ -418,6 +424,9 @@ class AppLocalizationsAz extends AppLocalizations {
 
   @override
   String get dateFormat => 'Tarix formatı';
+
+  @override
+  String get dateRange => 'Tarix Aralığı';
 
   @override
   String get dateTooltip => 'Tarixi seçin';

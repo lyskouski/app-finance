@@ -21,6 +21,8 @@
             "type": "int"
         }
     },
+    "amountFrom": "Məbləğdən",
+    "amountTo": "Məbləğə",
     "appBuild": "Qurmaq: {build}",
     "@appBuild": {
         "build": {
@@ -177,6 +179,7 @@
     "customizeTooltip": "Səhifəni fərdiləşdirin",
     "darkMode": "Qaranlıq",
     "dateFormat": "Tarix formatı",
+    "dateRange": "Tarix Aralığı",
     "dateTooltip": "Tarixi seçin",
     "dayMonday": "bazar ertəsi",
     "dayStartOfMonth": "Ayın başlanğıcı",

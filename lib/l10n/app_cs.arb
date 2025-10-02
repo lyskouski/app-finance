@@ -21,6 +21,8 @@
             "type": "int"
         }
     },
+    "amountFrom": "Částka od",
+    "amountTo": "Částka do",
     "appBuild": "Sestavit: {build}",
     "@appBuild": {
         "build": {
@@ -177,6 +179,7 @@
     "customizeTooltip": "Přizpůsobení stránky",
     "darkMode": "Tmavé",
     "dateFormat": "Formát data",
+    "dateRange": "Rozsah dat",
     "dateTooltip": "Výběr data",
     "dayMonday": "Pondělí",
     "dayStartOfMonth": "Začátek měsíce",

@@ -233,6 +233,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.0.8"
+  custom_date_range_picker:
+    dependency: "direct main"
+    description:
+      name: custom_date_range_picker
+      sha256: d811089016cc4e6f5f6bacfc678d6a5a0cf312ed3cd2f5cf884809c1e2f4f78f
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.2.0"
   dart_class_wrapper:
     dependency: "direct dev"
     description:

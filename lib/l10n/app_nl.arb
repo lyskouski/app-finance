@@ -21,6 +21,8 @@
             "type": "int"
         }
     },
+    "amountFrom": "Vanaf bedrag",
+    "amountTo": "Naar bedrag",
     "appBuild": "Samenstellen: {build}",
     "@appBuild": {
         "build": {
@@ -177,6 +179,7 @@
     "customizeTooltip": "Pagina aanpassen",
     "darkMode": "Donker",
     "dateFormat": "Datum Formaat",
+    "dateRange": "Datumbereik",
     "dateTooltip": "Datum selecteren",
     "dayMonday": "Maandag",
     "dayStartOfMonth": "Begin van de maand",

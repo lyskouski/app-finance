@@ -21,6 +21,8 @@
             "type": "int"
         }
     },
+    "amountFrom": "De Valor",
+    "amountTo": "Para Valor",
     "appBuild": "Criar: {build}",
     "@appBuild": {
         "build": {
@@ -177,6 +179,7 @@
     "customizeTooltip": "Personalizar página",
     "darkMode": "Escuro",
     "dateFormat": "Formato de data",
+    "dateRange": "Intervalo de datas",
     "dateTooltip": "Selecionar data",
     "dayMonday": "Segunda-feira",
     "dayStartOfMonth": "Início do mês",

@@ -63,6 +63,12 @@ class AppLocalizationsPt extends AppLocalizations {
   }
 
   @override
+  String get amountFrom => 'De Valor';
+
+  @override
+  String get amountTo => 'Para Valor';
+
+  @override
   String appBuild(Object build) {
     return 'Criar: $build';
   }
@@ -417,6 +423,9 @@ class AppLocalizationsPt extends AppLocalizations {
 
   @override
   String get dateFormat => 'Formato da data';
+
+  @override
+  String get dateRange => 'Intervalo de datas';
 
   @override
   String get dateTooltip => 'Selecionar data';
@@ -1088,6 +1097,12 @@ class AppLocalizationsPtBr extends AppLocalizationsPt {
   }
 
   @override
+  String get amountFrom => 'De Valor';
+
+  @override
+  String get amountTo => 'Para Valor';
+
+  @override
   String appBuild(Object build) {
     return 'Criar: $build';
   }
@@ -1442,6 +1457,9 @@ class AppLocalizationsPtBr extends AppLocalizationsPt {
 
   @override
   String get dateFormat => 'Formato de data';
+
+  @override
+  String get dateRange => 'Intervalo de datas';
 
   @override
   String get dateTooltip => 'Selecionar data';

@@ -63,6 +63,12 @@ class AppLocalizationsCs extends AppLocalizations {
   }
 
   @override
+  String get amountFrom => 'Částka od';
+
+  @override
+  String get amountTo => 'Částka do';
+
+  @override
   String appBuild(Object build) {
     return 'Sestavit: $build';
   }
@@ -417,6 +423,9 @@ class AppLocalizationsCs extends AppLocalizations {
 
   @override
   String get dateFormat => 'Formát data';
+
+  @override
+  String get dateRange => 'Rozsah dat';
 
   @override
   String get dateTooltip => 'Výběr data';

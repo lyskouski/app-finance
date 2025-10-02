@@ -21,6 +21,8 @@
             "type": "int"
         }
     },
+    "amountFrom": "Сума ад",
+    "amountTo": "Сума да",
     "appBuild": "Зборка: {build}",
     "@appBuild": {
         "build": {
@@ -177,6 +179,7 @@
     "customizeTooltip": "Наладьзіць старонку",
     "darkMode": "Цёмны",
     "dateFormat": "Фармат даты",
+    "dateRange": "Дыяпазон дат",
     "dateTooltip": "Абярыце дату",
     "dayMonday": "Панядзелак",
     "dayStartOfMonth": "Пачатак месяца",

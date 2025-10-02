@@ -21,6 +21,8 @@
             "type": "int"
         }
     },
+    "amountFrom": "Başlangıç ​​Miktarı",
+    "amountTo": "Bitiş Miktarı",
     "appBuild": "İnşa et: {build}",
     "@appBuild": {
         "build": {
@@ -177,6 +179,7 @@
     "customizeTooltip": "Sayfayı Özelleştir",
     "darkMode": "Karanlık",
     "dateFormat": "Tarih Formatı",
+    "dateRange": "Tarih Aralığı",
     "dateTooltip": "Tarih Seçiniz",
     "dayMonday": "Pazartesi",
     "dayStartOfMonth": "Ayın başlangıcı",

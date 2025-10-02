@@ -21,6 +21,8 @@
             "type": "int"
         }
     },
+    "amountFrom": "Importo iniziale",
+    "amountTo": "Importo finale",
     "appBuild": "Costruire: {build}",
     "@appBuild": {
         "build": {
@@ -177,6 +179,7 @@
     "customizeTooltip": "Personalizza pagina",
     "darkMode": "Scura",
     "dateFormat": "Formato data",
+    "dateRange": "Intervallo di date",
     "dateTooltip": "Selezionare la data",
     "dayMonday": "Lunedì",
     "dayStartOfMonth": "Inizio del mese",

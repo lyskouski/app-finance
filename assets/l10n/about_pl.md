@@ -47,6 +47,7 @@ Dzięki temu użytkownicy mogą bez wysiłku zarządzać swoimi finansami, jedno
   - Możliwość dostosowania dnia rozpoczęcia tygodnia i miesiąca
 - Rachunki, przelewy, dochody (faktury)
   - Płatności cykliczne (z widżetem domowym)
+  - Filtrowanie
 - Definicja celów
 - Kursy wymiany, domyślna waluta dla podsumowania
 - Metryki: 

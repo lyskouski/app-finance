@@ -47,6 +47,7 @@ Dat stelt gebruikers in staat om moeiteloos hun financiën te beheren en zorgt e
   - Aanpasbare startdag van de week en maand
 - Rekeningen, overschrijvingen, inkomsten (facturen)
   - Terugkerende betalingen (met een widget)
+  - Filteren
 - Doelen definiëren
 - Wisselkoersen, standaardvaluta voor overzicht
 - Metriek: 
