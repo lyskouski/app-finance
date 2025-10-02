@@ -47,6 +47,7 @@ zastaniecca ŭ baku.
   - Naladžvaĺny dzień pačatku tydnia i miesiaca
 - Rachunki, pieraklady, dachody (faktury) 
   - Pieryjadyčnyja placiažy (z chatnim vidžetam)
+  - Fiĺtravańnie
 - Vyznačeńnie metaŭ - Kursy valiut, valiuta pa zmaŭčańni dlia zvodki 
 - Mietryki: 
   - Biudžet: 

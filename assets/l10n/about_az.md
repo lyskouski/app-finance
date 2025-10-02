@@ -47,6 +47,7 @@ Bu, istifadəçilərə heç kimin geridə qalmamasını təmin etməklə öz mal
   - Həftənin və ayın fərdiləşdirilə bilən başlanğıc günü
 - Hesablar, köçürmələr, gəlirlər (qaimə-fakturalar)
   - Təkrarlanan ödənişlər (ev vidceti ilə)
+  - Filtrləmə
 - Məqsədlərin Tərifi
 - Valyuta məzənnələri, Xülasə üçün Defolt Valyuta
 - Metriklər:
