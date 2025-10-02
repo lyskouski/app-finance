@@ -15,6 +15,7 @@ import 'package:app_finance/design/wrapper/input_wrapper.dart';
 import 'package:app_finance/design/wrapper/single_scroll_wrapper.dart';
 import 'package:app_finance/pages/bill/bill_page.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_currency_picker/flutter_currency_picker.dart';
 
 class BillSearchPage extends StatefulWidget {
   const BillSearchPage({super.key});
@@ -27,6 +28,7 @@ class BillViewPageState extends BillPageState<BillSearchPage> {
   String? account;
   String? budget;
   String? type;
+  Currency? currency;
   late TextEditingController description;
   late FocusController focus;
   late List<ListAccountSelectorItem> accountList =
@@ -69,7 +71,8 @@ class BillViewPageState extends BillPageState<BillSearchPage> {
     final accountMatch = account == null || item.account == account;
     final budgetMatch = budget == null || item.category == budget;
     final typeMatch = type == null || state.getByUuid(item.account)?.type == type;
-    return !(descriptionMatch && accountMatch && budgetMatch && typeMatch);
+    final currencyMatch = currency == null || item.currency == currency;
+    return !(descriptionMatch && accountMatch && budgetMatch && typeMatch && currencyMatch);
   }
 
   @override
@@ -124,6 +127,15 @@ class BillViewPageState extends BillPageState<BillSearchPage> {
                 budget = value?.uuid;
               }),
               width: width,
+            ),
+            InputWrapper.currency(
+              value: currency,
+              title: AppLocale.labels.currency,
+              tooltip: AppLocale.labels.currencyTooltip,
+              onChange: (value) => setState(() {
+                if (value != currency) clearState();
+                currency = value;
+              }),
             ),
           ],
         ),

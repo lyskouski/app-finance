@@ -15,6 +15,7 @@ import 'package:app_finance/design/wrapper/input_wrapper.dart';
 import 'package:app_finance/design/wrapper/single_scroll_wrapper.dart';
 import 'package:app_finance/pages/invoice/invoice_page.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_currency_picker/flutter_currency_picker.dart';
 
 class InvoiceSearchPage extends StatefulWidget {
   const InvoiceSearchPage({super.key});
@@ -26,6 +27,7 @@ class InvoiceSearchPage extends StatefulWidget {
 class InvoiceSearchPageState extends InvoicePageState<InvoiceSearchPage> {
   String? account;
   String? type;
+  Currency? currency;
   late TextEditingController description;
   late FocusController focus;
 
@@ -67,7 +69,8 @@ class InvoiceSearchPageState extends InvoicePageState<InvoiceSearchPage> {
     final descriptionMatch = o.title.toLowerCase().contains(description.text.toLowerCase());
     final accountMatch = account == null || o.account == account;
     final typeMatch = type == null || state.getByUuid(o.account)?.type == type;
-    return !(descriptionMatch && accountMatch && typeMatch) || o.accountFrom != null;
+    final currencyMatch = currency == null || o.currency == currency;
+    return !(descriptionMatch && accountMatch && typeMatch && currencyMatch) || o.accountFrom != null;
   }
 
   @override
@@ -110,6 +113,15 @@ class InvoiceSearchPageState extends InvoicePageState<InvoiceSearchPage> {
                 account = value?.uuid;
               }),
               width: width,
+            ),
+            InputWrapper.currency(
+              value: currency,
+              title: AppLocale.labels.currency,
+              tooltip: AppLocale.labels.currencyTooltip,
+              onChange: (value) => setState(() {
+                if (value != currency) clearState();
+                currency = value;
+              }),
             ),
           ],
         ),
