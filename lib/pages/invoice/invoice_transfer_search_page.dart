@@ -1,7 +1,6 @@
 // Copyright 2025 The terCAD team. All rights reserved.
 // Use of this source code is governed by a CC BY-NC-ND 4.0 license that can be found in the LICENSE file.
 
-import 'package:app_finance/_classes/controller/delayed_call.dart';
 import 'package:app_finance/_classes/controller/focus_controller.dart';
 import 'package:app_finance/_classes/herald/app_design.dart';
 import 'package:app_finance/_classes/herald/app_locale.dart';
@@ -35,15 +34,6 @@ class InvoiceTransferSearchPageState extends InvoiceTransferPageState<InvoiceTra
   void initState() {
     description = TextEditingController();
     focus = FocusController();
-    final runner = DelayedCall(1500);
-    changeState() => setState(clearState);
-    String previousText = '';
-    description.addListener(() {
-      if (description.text != previousText) {
-        previousText = description.text;
-        runner.run(changeState);
-      }
-    });
     super.initState();
   }
 
@@ -58,10 +48,17 @@ class InvoiceTransferSearchPageState extends InvoiceTransferPageState<InvoiceTra
   String getTitle() => AppLocale.labels.searchTooltip;
 
   @override
-  String getButtonName() => '';
+  String getButtonName() => AppLocale.labels.searchTooltip;
 
   @override
-  Widget buildButton(BuildContext context, BoxConstraints constraints) => ThemeHelper.emptyBox;
+  Widget buildButton(BuildContext context, BoxConstraints constraints) {
+    return FloatingActionButton(
+      heroTag: 'invoice_transfer_search_page',
+      onPressed: () => setState(clearState),
+      tooltip: getButtonName(),
+      child: const Icon(Icons.search),
+    );
+  }
 
   @override
   bool getContentFilter(InvoiceAppData o) {
