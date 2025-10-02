@@ -32,12 +32,12 @@
             <td></td>
             <td class="headerItem">Lines:</td>
             <td class="headerCovTableEntryLo">0.0&nbsp;%</td>
-            <td class="headerCovTableEntry">344</td>
+            <td class="headerCovTableEntry">347</td>
             <td class="headerCovTableEntry">0</td>
           </tr>
           <tr>
             <td class="headerItem">Test Date:</td>
-            <td class="headerValue">2025-10-02 08:41:28</td>
+            <td class="headerValue">2025-10-02 12:11:26</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntryHi">-</td>
@@ -124,963 +124,972 @@
 <span id="L62"><span class="lineNum">      62</span>              :   }</span>
 <span id="L63"><span class="lineNum">      63</span>              : </span>
 <span id="L64"><span class="lineNum">      64</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L65"><span class="lineNum">      65</span>              :   String appBuild(Object build) {</span>
-<span id="L66"><span class="lineNum">      66</span> <span class="tlaUNC">           0 :     return 'निर्माण: $build';</span></span>
-<span id="L67"><span class="lineNum">      67</span>              :   }</span>
-<span id="L68"><span class="lineNum">      68</span>              : </span>
-<span id="L69"><span class="lineNum">      69</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L70"><span class="lineNum">      70</span>              :   String get appInitHeadline =&gt; 'परियोजना आरंभीकरण';</span>
-<span id="L71"><span class="lineNum">      71</span>              : </span>
-<span id="L72"><span class="lineNum">      72</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L73"><span class="lineNum">      73</span>              :   String get appStartHeadline =&gt; 'प्रारंभिक व्यवस्था';</span>
+<span id="L65"><span class="lineNum">      65</span>              :   String get amountFrom =&gt; 'राशि से';</span>
+<span id="L66"><span class="lineNum">      66</span>              : </span>
+<span id="L67"><span class="lineNum">      67</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L68"><span class="lineNum">      68</span>              :   String get amountTo =&gt; 'राशि तक';</span>
+<span id="L69"><span class="lineNum">      69</span>              : </span>
+<span id="L70"><span class="lineNum">      70</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L71"><span class="lineNum">      71</span>              :   String appBuild(Object build) {</span>
+<span id="L72"><span class="lineNum">      72</span> <span class="tlaUNC">           0 :     return 'निर्माण: $build';</span></span>
+<span id="L73"><span class="lineNum">      73</span>              :   }</span>
 <span id="L74"><span class="lineNum">      74</span>              : </span>
 <span id="L75"><span class="lineNum">      75</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L76"><span class="lineNum">      76</span>              :   String get appTitle =&gt; 'उँगलियाँ';</span>
+<span id="L76"><span class="lineNum">      76</span>              :   String get appInitHeadline =&gt; 'परियोजना आरंभीकरण';</span>
 <span id="L77"><span class="lineNum">      77</span>              : </span>
 <span id="L78"><span class="lineNum">      78</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L79"><span class="lineNum">      79</span>              :   String appVersion(Object version) {</span>
-<span id="L80"><span class="lineNum">      80</span> <span class="tlaUNC">           0 :     return 'संस्करण: $version';</span></span>
-<span id="L81"><span class="lineNum">      81</span>              :   }</span>
-<span id="L82"><span class="lineNum">      82</span>              : </span>
-<span id="L83"><span class="lineNum">      83</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L84"><span class="lineNum">      84</span>              :   String get automationHeadline =&gt; 'स्वचालन';</span>
-<span id="L85"><span class="lineNum">      85</span>              : </span>
-<span id="L86"><span class="lineNum">      86</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L87"><span class="lineNum">      87</span>              :   String get automationTypeDays =&gt; 'कुछ दिनों के बाद';</span>
+<span id="L79"><span class="lineNum">      79</span>              :   String get appStartHeadline =&gt; 'प्रारंभिक व्यवस्था';</span>
+<span id="L80"><span class="lineNum">      80</span>              : </span>
+<span id="L81"><span class="lineNum">      81</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L82"><span class="lineNum">      82</span>              :   String get appTitle =&gt; 'उँगलियाँ';</span>
+<span id="L83"><span class="lineNum">      83</span>              : </span>
+<span id="L84"><span class="lineNum">      84</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L85"><span class="lineNum">      85</span>              :   String appVersion(Object version) {</span>
+<span id="L86"><span class="lineNum">      86</span> <span class="tlaUNC">           0 :     return 'संस्करण: $version';</span></span>
+<span id="L87"><span class="lineNum">      87</span>              :   }</span>
 <span id="L88"><span class="lineNum">      88</span>              : </span>
 <span id="L89"><span class="lineNum">      89</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L90"><span class="lineNum">      90</span>              :   String get backTooltip =&gt; 'वापस लौटाएं';</span>
+<span id="L90"><span class="lineNum">      90</span>              :   String get automationHeadline =&gt; 'स्वचालन';</span>
 <span id="L91"><span class="lineNum">      91</span>              : </span>
 <span id="L92"><span class="lineNum">      92</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L93"><span class="lineNum">      93</span>              :   String get balance =&gt; 'वास्तविक संतुलन';</span>
+<span id="L93"><span class="lineNum">      93</span>              :   String get automationTypeDays =&gt; 'कुछ दिनों के बाद';</span>
 <span id="L94"><span class="lineNum">      94</span>              : </span>
 <span id="L95"><span class="lineNum">      95</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L96"><span class="lineNum">      96</span>              :   String get balanceDate =&gt; 'शेष तिथि अद्यतन';</span>
+<span id="L96"><span class="lineNum">      96</span>              :   String get backTooltip =&gt; 'वापस लौटाएं';</span>
 <span id="L97"><span class="lineNum">      97</span>              : </span>
 <span id="L98"><span class="lineNum">      98</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L99"><span class="lineNum">      99</span>              :   String get balanceDateTooltip =&gt; 'इस तिथि से पहले के परिणाम और आय शेष राशि को प्रभावित नहीं करेंगे';</span>
+<span id="L99"><span class="lineNum">      99</span>              :   String get balance =&gt; 'वास्तविक संतुलन';</span>
 <span id="L100"><span class="lineNum">     100</span>              : </span>
 <span id="L101"><span class="lineNum">     101</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L102"><span class="lineNum">     102</span>              :   String get balanceTooltip =&gt; 'संतुलन स्थापित करें';</span>
+<span id="L102"><span class="lineNum">     102</span>              :   String get balanceDate =&gt; 'शेष तिथि अद्यतन';</span>
 <span id="L103"><span class="lineNum">     103</span>              : </span>
 <span id="L104"><span class="lineNum">     104</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L105"><span class="lineNum">     105</span>              :   String get bankAccount =&gt; 'बैंक खाता';</span>
+<span id="L105"><span class="lineNum">     105</span>              :   String get balanceDateTooltip =&gt; 'इस तिथि से पहले के परिणाम और आय शेष राशि को प्रभावित नहीं करेंगे';</span>
 <span id="L106"><span class="lineNum">     106</span>              : </span>
 <span id="L107"><span class="lineNum">     107</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L108"><span class="lineNum">     108</span>              :   String get bill =&gt; 'बिल';</span>
+<span id="L108"><span class="lineNum">     108</span>              :   String get balanceTooltip =&gt; 'संतुलन स्थापित करें';</span>
 <span id="L109"><span class="lineNum">     109</span>              : </span>
 <span id="L110"><span class="lineNum">     110</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L111"><span class="lineNum">     111</span>              :   String get billHeadline =&gt; 'विधेयकों';</span>
+<span id="L111"><span class="lineNum">     111</span>              :   String get bankAccount =&gt; 'बैंक खाता';</span>
 <span id="L112"><span class="lineNum">     112</span>              : </span>
 <span id="L113"><span class="lineNum">     113</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L114"><span class="lineNum">     114</span>              :   String get billSetTooltip =&gt; 'रकम तय करें';</span>
+<span id="L114"><span class="lineNum">     114</span>              :   String get bill =&gt; 'बिल';</span>
 <span id="L115"><span class="lineNum">     115</span>              : </span>
 <span id="L116"><span class="lineNum">     116</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L117"><span class="lineNum">     117</span>              :   String billSum(Object value) {</span>
-<span id="L118"><span class="lineNum">     118</span> <span class="tlaUNC">           0 :     return 'बिल: $value';</span></span>
-<span id="L119"><span class="lineNum">     119</span>              :   }</span>
-<span id="L120"><span class="lineNum">     120</span>              : </span>
-<span id="L121"><span class="lineNum">     121</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L122"><span class="lineNum">     122</span>              :   String get billTooltip =&gt; 'बिल खोलें';</span>
-<span id="L123"><span class="lineNum">     123</span>              : </span>
-<span id="L124"><span class="lineNum">     124</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L125"><span class="lineNum">     125</span>              :   String get billTypeTooltip =&gt; '[प्रकार] बिल, आय या स्थानांतरण';</span>
+<span id="L117"><span class="lineNum">     117</span>              :   String get billHeadline =&gt; 'विधेयकों';</span>
+<span id="L118"><span class="lineNum">     118</span>              : </span>
+<span id="L119"><span class="lineNum">     119</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L120"><span class="lineNum">     120</span>              :   String get billSetTooltip =&gt; 'रकम तय करें';</span>
+<span id="L121"><span class="lineNum">     121</span>              : </span>
+<span id="L122"><span class="lineNum">     122</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L123"><span class="lineNum">     123</span>              :   String billSum(Object value) {</span>
+<span id="L124"><span class="lineNum">     124</span> <span class="tlaUNC">           0 :     return 'बिल: $value';</span></span>
+<span id="L125"><span class="lineNum">     125</span>              :   }</span>
 <span id="L126"><span class="lineNum">     126</span>              : </span>
 <span id="L127"><span class="lineNum">     127</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L128"><span class="lineNum">     128</span>              :   String get brightnessTheme =&gt; 'चमक थीम';</span>
+<span id="L128"><span class="lineNum">     128</span>              :   String get billTooltip =&gt; 'बिल खोलें';</span>
 <span id="L129"><span class="lineNum">     129</span>              : </span>
 <span id="L130"><span class="lineNum">     130</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L131"><span class="lineNum">     131</span>              :   String get btnAdd =&gt; 'जोड़ना';</span>
+<span id="L131"><span class="lineNum">     131</span>              :   String get billTypeTooltip =&gt; '[प्रकार] बिल, आय या स्थानांतरण';</span>
 <span id="L132"><span class="lineNum">     132</span>              : </span>
 <span id="L133"><span class="lineNum">     133</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L134"><span class="lineNum">     134</span>              :   String get btnCancel =&gt; 'रद्द करना';</span>
+<span id="L134"><span class="lineNum">     134</span>              :   String get brightnessTheme =&gt; 'चमक थीम';</span>
 <span id="L135"><span class="lineNum">     135</span>              : </span>
 <span id="L136"><span class="lineNum">     136</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L137"><span class="lineNum">     137</span>              :   String get btnConfirm =&gt; 'पुष्टि करना';</span>
+<span id="L137"><span class="lineNum">     137</span>              :   String get btnAdd =&gt; 'जोड़ना';</span>
 <span id="L138"><span class="lineNum">     138</span>              : </span>
 <span id="L139"><span class="lineNum">     139</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L140"><span class="lineNum">     140</span>              :   String get btnMore =&gt; 'अधिक';</span>
+<span id="L140"><span class="lineNum">     140</span>              :   String get btnCancel =&gt; 'रद्द करना';</span>
 <span id="L141"><span class="lineNum">     141</span>              : </span>
 <span id="L142"><span class="lineNum">     142</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L143"><span class="lineNum">     143</span>              :   String get budget =&gt; 'बजट श्रेणी';</span>
+<span id="L143"><span class="lineNum">     143</span>              :   String get btnConfirm =&gt; 'पुष्टि करना';</span>
 <span id="L144"><span class="lineNum">     144</span>              : </span>
 <span id="L145"><span class="lineNum">     145</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L146"><span class="lineNum">     146</span>              :   String get budgetHeadline =&gt; 'बजट';</span>
+<span id="L146"><span class="lineNum">     146</span>              :   String get btnMore =&gt; 'अधिक';</span>
 <span id="L147"><span class="lineNum">     147</span>              : </span>
 <span id="L148"><span class="lineNum">     148</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L149"><span class="lineNum">     149</span>              :   String get budgetLimit =&gt; 'प्रति माह सीमा';</span>
+<span id="L149"><span class="lineNum">     149</span>              :   String get budget =&gt; 'बजट श्रेणी';</span>
 <span id="L150"><span class="lineNum">     150</span>              : </span>
 <span id="L151"><span class="lineNum">     151</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L152"><span class="lineNum">     152</span>              :   String get budgetLimitHeadline =&gt; 'सीमा समायोजन';</span>
+<span id="L152"><span class="lineNum">     152</span>              :   String get budgetHeadline =&gt; 'बजट';</span>
 <span id="L153"><span class="lineNum">     153</span>              : </span>
 <span id="L154"><span class="lineNum">     154</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L155"><span class="lineNum">     155</span>              :   String get budgetRelativeLimit =&gt; 'प्रति माह सापेक्ष गुणांक';</span>
+<span id="L155"><span class="lineNum">     155</span>              :   String get budgetLimit =&gt; 'प्रति माह सीमा';</span>
 <span id="L156"><span class="lineNum">     156</span>              : </span>
 <span id="L157"><span class="lineNum">     157</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L158"><span class="lineNum">     158</span>              :   String get budgetTooltip =&gt; 'बजट प्रकार खोलें';</span>
+<span id="L158"><span class="lineNum">     158</span>              :   String get budgetLimitHeadline =&gt; 'सीमा समायोजन';</span>
 <span id="L159"><span class="lineNum">     159</span>              : </span>
 <span id="L160"><span class="lineNum">     160</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L161"><span class="lineNum">     161</span>              :   String get budgetType =&gt; 'बजट अंतराल';</span>
+<span id="L161"><span class="lineNum">     161</span>              :   String get budgetRelativeLimit =&gt; 'प्रति माह सापेक्ष गुणांक';</span>
 <span id="L162"><span class="lineNum">     162</span>              : </span>
 <span id="L163"><span class="lineNum">     163</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L164"><span class="lineNum">     164</span>              :   String get budgetTypeAsIs =&gt; 'असीमित';</span>
+<span id="L164"><span class="lineNum">     164</span>              :   String get budgetTooltip =&gt; 'बजट प्रकार खोलें';</span>
 <span id="L165"><span class="lineNum">     165</span>              : </span>
 <span id="L166"><span class="lineNum">     166</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L167"><span class="lineNum">     167</span>              :   String get budgetTypeFixed =&gt; 'निश्चित';</span>
+<span id="L167"><span class="lineNum">     167</span>              :   String get budgetType =&gt; 'बजट अंतराल';</span>
 <span id="L168"><span class="lineNum">     168</span>              : </span>
 <span id="L169"><span class="lineNum">     169</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L170"><span class="lineNum">     170</span>              :   String get budgetTypeMonth =&gt; 'मासिक';</span>
+<span id="L170"><span class="lineNum">     170</span>              :   String get budgetTypeAsIs =&gt; 'असीमित';</span>
 <span id="L171"><span class="lineNum">     171</span>              : </span>
 <span id="L172"><span class="lineNum">     172</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L173"><span class="lineNum">     173</span>              :   String get budgetTypeRelative =&gt; 'सापेक्ष';</span>
+<span id="L173"><span class="lineNum">     173</span>              :   String get budgetTypeFixed =&gt; 'निश्चित';</span>
 <span id="L174"><span class="lineNum">     174</span>              : </span>
 <span id="L175"><span class="lineNum">     175</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L176"><span class="lineNum">     176</span>              :   String get budgetTypeWeek =&gt; 'साप्ताहिक';</span>
+<span id="L176"><span class="lineNum">     176</span>              :   String get budgetTypeMonth =&gt; 'मासिक';</span>
 <span id="L177"><span class="lineNum">     177</span>              : </span>
 <span id="L178"><span class="lineNum">     178</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L179"><span class="lineNum">     179</span>              :   String get budgetTypeYear =&gt; 'वार्षिक';</span>
+<span id="L179"><span class="lineNum">     179</span>              :   String get budgetTypeRelative =&gt; 'सापेक्ष';</span>
 <span id="L180"><span class="lineNum">     180</span>              : </span>
 <span id="L181"><span class="lineNum">     181</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L182"><span class="lineNum">     182</span>              :   String get cash =&gt; 'नकद';</span>
+<span id="L182"><span class="lineNum">     182</span>              :   String get budgetTypeWeek =&gt; 'साप्ताहिक';</span>
 <span id="L183"><span class="lineNum">     183</span>              : </span>
 <span id="L184"><span class="lineNum">     184</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L185"><span class="lineNum">     185</span>              :   String get chartBarRace =&gt; 'श्रेणियों के लिए बार रेस';</span>
+<span id="L185"><span class="lineNum">     185</span>              :   String get budgetTypeYear =&gt; 'वार्षिक';</span>
 <span id="L186"><span class="lineNum">     186</span>              : </span>
 <span id="L187"><span class="lineNum">     187</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L188"><span class="lineNum">     188</span>              :   String get chartForecast =&gt; 'पूर्वानुमान चार्ट';</span>
+<span id="L188"><span class="lineNum">     188</span>              :   String get cash =&gt; 'नकद';</span>
 <span id="L189"><span class="lineNum">     189</span>              : </span>
 <span id="L190"><span class="lineNum">     190</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L191"><span class="lineNum">     191</span>              :   String get chartOHLC =&gt; 'कैंडलस्टिक (खुला-उच्च-निम्न-बंद) चार्ट';</span>
+<span id="L191"><span class="lineNum">     191</span>              :   String get chartBarRace =&gt; 'श्रेणियों के लिए बार रेस';</span>
 <span id="L192"><span class="lineNum">     192</span>              : </span>
 <span id="L193"><span class="lineNum">     193</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L194"><span class="lineNum">     194</span>              :   String get chartYtdExpense =&gt; 'वर्ष-दर-वर्ष व्यय';</span>
+<span id="L194"><span class="lineNum">     194</span>              :   String get chartForecast =&gt; 'पूर्वानुमान चार्ट';</span>
 <span id="L195"><span class="lineNum">     195</span>              : </span>
 <span id="L196"><span class="lineNum">     196</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L197"><span class="lineNum">     197</span>              :   String get clear =&gt; 'ड्रॉप वैल्यू';</span>
+<span id="L197"><span class="lineNum">     197</span>              :   String get chartOHLC =&gt; 'कैंडलस्टिक (खुला-उच्च-निम्न-बंद) चार्ट';</span>
 <span id="L198"><span class="lineNum">     198</span>              : </span>
 <span id="L199"><span class="lineNum">     199</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L200"><span class="lineNum">     200</span>              :   String get closeTooltip =&gt; 'बंद करना';</span>
+<span id="L200"><span class="lineNum">     200</span>              :   String get chartYtdExpense =&gt; 'वर्ष-दर-वर्ष व्यय';</span>
 <span id="L201"><span class="lineNum">     201</span>              : </span>
 <span id="L202"><span class="lineNum">     202</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L203"><span class="lineNum">     203</span>              :   String get closedAt =&gt; 'आज तक समाप्त';</span>
+<span id="L203"><span class="lineNum">     203</span>              :   String get clear =&gt; 'ड्रॉप वैल्यू';</span>
 <span id="L204"><span class="lineNum">     204</span>              : </span>
 <span id="L205"><span class="lineNum">     205</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L206"><span class="lineNum">     206</span>              :   String get cmpChart =&gt; 'चित्र';</span>
+<span id="L206"><span class="lineNum">     206</span>              :   String get closeTooltip =&gt; 'बंद करना';</span>
 <span id="L207"><span class="lineNum">     207</span>              : </span>
 <span id="L208"><span class="lineNum">     208</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L209"><span class="lineNum">     209</span>              :   String get cmpRecent =&gt; 'हाल के आइटम';</span>
+<span id="L209"><span class="lineNum">     209</span>              :   String get closedAt =&gt; 'आज तक समाप्त';</span>
 <span id="L210"><span class="lineNum">     210</span>              : </span>
 <span id="L211"><span class="lineNum">     211</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L212"><span class="lineNum">     212</span>              :   String get cmpRecentCount =&gt; 'सूची का आकार';</span>
+<span id="L212"><span class="lineNum">     212</span>              :   String get cmpChart =&gt; 'चित्र';</span>
 <span id="L213"><span class="lineNum">     213</span>              : </span>
 <span id="L214"><span class="lineNum">     214</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L215"><span class="lineNum">     215</span>              :   String get coAuthor =&gt; 'लेखक';</span>
+<span id="L215"><span class="lineNum">     215</span>              :   String get cmpRecent =&gt; 'हाल के आइटम';</span>
 <span id="L216"><span class="lineNum">     216</span>              : </span>
 <span id="L217"><span class="lineNum">     217</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L218"><span class="lineNum">     218</span>              :   String get coConsult =&gt; 'सलाहकार';</span>
+<span id="L218"><span class="lineNum">     218</span>              :   String get cmpRecentCount =&gt; 'सूची का आकार';</span>
 <span id="L219"><span class="lineNum">     219</span>              : </span>
 <span id="L220"><span class="lineNum">     220</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L221"><span class="lineNum">     221</span>              :   String get coDeveloper =&gt; 'डेवलपर';</span>
+<span id="L221"><span class="lineNum">     221</span>              :   String get coAuthor =&gt; 'लेखक';</span>
 <span id="L222"><span class="lineNum">     222</span>              : </span>
 <span id="L223"><span class="lineNum">     223</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L224"><span class="lineNum">     224</span>              :   String get coNew =&gt; 'जोड़ना';</span>
+<span id="L224"><span class="lineNum">     224</span>              :   String get coConsult =&gt; 'सलाहकार';</span>
 <span id="L225"><span class="lineNum">     225</span>              : </span>
 <span id="L226"><span class="lineNum">     226</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L227"><span class="lineNum">     227</span>              :   String get coPromoter =&gt; 'प्रमोटर';</span>
+<span id="L227"><span class="lineNum">     227</span>              :   String get coDeveloper =&gt; 'डेवलपर';</span>
 <span id="L228"><span class="lineNum">     228</span>              : </span>
 <span id="L229"><span class="lineNum">     229</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L230"><span class="lineNum">     230</span>              :   String get coTranslator =&gt; 'अनुवादक';</span>
+<span id="L230"><span class="lineNum">     230</span>              :   String get coNew =&gt; 'जोड़ना';</span>
 <span id="L231"><span class="lineNum">     231</span>              : </span>
 <span id="L232"><span class="lineNum">     232</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L233"><span class="lineNum">     233</span>              :   String get coef =&gt; 'कोएफ़.';</span>
+<span id="L233"><span class="lineNum">     233</span>              :   String get coPromoter =&gt; 'प्रमोटर';</span>
 <span id="L234"><span class="lineNum">     234</span>              : </span>
 <span id="L235"><span class="lineNum">     235</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L236"><span class="lineNum">     236</span>              :   String get collapse =&gt; 'अनुभाग को संक्षिप्त करें (पुनर्स्थापित करें)।';</span>
+<span id="L236"><span class="lineNum">     236</span>              :   String get coTranslator =&gt; 'अनुवादक';</span>
 <span id="L237"><span class="lineNum">     237</span>              : </span>
 <span id="L238"><span class="lineNum">     238</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L239"><span class="lineNum">     239</span>              :   String get color =&gt; 'रंग';</span>
+<span id="L239"><span class="lineNum">     239</span>              :   String get coef =&gt; 'कोएफ़.';</span>
 <span id="L240"><span class="lineNum">     240</span>              : </span>
 <span id="L241"><span class="lineNum">     241</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L242"><span class="lineNum">     242</span>              :   String get colorApp =&gt; 'रिवाज़';</span>
+<span id="L242"><span class="lineNum">     242</span>              :   String get collapse =&gt; 'अनुभाग को संक्षिप्त करें (पुनर्स्थापित करें)।';</span>
 <span id="L243"><span class="lineNum">     243</span>              : </span>
 <span id="L244"><span class="lineNum">     244</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L245"><span class="lineNum">     245</span>              :   String get colorBackground =&gt; 'पृष्ठभूमि';</span>
+<span id="L245"><span class="lineNum">     245</span>              :   String get color =&gt; 'रंग';</span>
 <span id="L246"><span class="lineNum">     246</span>              : </span>
 <span id="L247"><span class="lineNum">     247</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L248"><span class="lineNum">     248</span>              :   String get colorDark =&gt; 'अँधेरा';</span>
+<span id="L248"><span class="lineNum">     248</span>              :   String get colorApp =&gt; 'रिवाज़';</span>
 <span id="L249"><span class="lineNum">     249</span>              : </span>
 <span id="L250"><span class="lineNum">     250</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L251"><span class="lineNum">     251</span>              :   String get colorInversePrimary =&gt; 'उलटा प्राथमिक';</span>
+<span id="L251"><span class="lineNum">     251</span>              :   String get colorBackground =&gt; 'पृष्ठभूमि';</span>
 <span id="L252"><span class="lineNum">     252</span>              : </span>
 <span id="L253"><span class="lineNum">     253</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L254"><span class="lineNum">     254</span>              :   String get colorInverseSurface =&gt; 'उलटा सतह';</span>
+<span id="L254"><span class="lineNum">     254</span>              :   String get colorDark =&gt; 'अँधेरा';</span>
 <span id="L255"><span class="lineNum">     255</span>              : </span>
 <span id="L256"><span class="lineNum">     256</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L257"><span class="lineNum">     257</span>              :   String get colorLight =&gt; 'रोशनी';</span>
+<span id="L257"><span class="lineNum">     257</span>              :   String get colorInversePrimary =&gt; 'उलटा प्राथमिक';</span>
 <span id="L258"><span class="lineNum">     258</span>              : </span>
 <span id="L259"><span class="lineNum">     259</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L260"><span class="lineNum">     260</span>              :   String get colorOnInverseSurface =&gt; 'उलटी सतह पर';</span>
+<span id="L260"><span class="lineNum">     260</span>              :   String get colorInverseSurface =&gt; 'उलटा सतह';</span>
 <span id="L261"><span class="lineNum">     261</span>              : </span>
 <span id="L262"><span class="lineNum">     262</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L263"><span class="lineNum">     263</span>              :   String get colorOnSecondary =&gt; 'माध्यमिक पर';</span>
+<span id="L263"><span class="lineNum">     263</span>              :   String get colorLight =&gt; 'रोशनी';</span>
 <span id="L264"><span class="lineNum">     264</span>              : </span>
 <span id="L265"><span class="lineNum">     265</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L266"><span class="lineNum">     266</span>              :   String get colorOnSecondaryContainer =&gt; 'कंटेनर पर';</span>
+<span id="L266"><span class="lineNum">     266</span>              :   String get colorOnInverseSurface =&gt; 'उलटी सतह पर';</span>
 <span id="L267"><span class="lineNum">     267</span>              : </span>
 <span id="L268"><span class="lineNum">     268</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L269"><span class="lineNum">     269</span>              :   String get colorPrimary =&gt; 'प्राथमिक';</span>
+<span id="L269"><span class="lineNum">     269</span>              :   String get colorOnSecondary =&gt; 'माध्यमिक पर';</span>
 <span id="L270"><span class="lineNum">     270</span>              : </span>
 <span id="L271"><span class="lineNum">     271</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L272"><span class="lineNum">     272</span>              :   String get colorRestore =&gt; 'पैलेट रीसेट करें';</span>
+<span id="L272"><span class="lineNum">     272</span>              :   String get colorOnSecondaryContainer =&gt; 'कंटेनर पर';</span>
 <span id="L273"><span class="lineNum">     273</span>              : </span>
 <span id="L274"><span class="lineNum">     274</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L275"><span class="lineNum">     275</span>              :   String get colorSecondary =&gt; 'माध्यमिक';</span>
+<span id="L275"><span class="lineNum">     275</span>              :   String get colorPrimary =&gt; 'प्राथमिक';</span>
 <span id="L276"><span class="lineNum">     276</span>              : </span>
 <span id="L277"><span class="lineNum">     277</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L278"><span class="lineNum">     278</span>              :   String get colorSystem =&gt; 'गलती करना';</span>
+<span id="L278"><span class="lineNum">     278</span>              :   String get colorRestore =&gt; 'पैलेट रीसेट करें';</span>
 <span id="L279"><span class="lineNum">     279</span>              : </span>
 <span id="L280"><span class="lineNum">     280</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L281"><span class="lineNum">     281</span>              :   String get colorTheme =&gt; 'पैलेट';</span>
+<span id="L281"><span class="lineNum">     281</span>              :   String get colorSecondary =&gt; 'माध्यमिक';</span>
 <span id="L282"><span class="lineNum">     282</span>              : </span>
 <span id="L283"><span class="lineNum">     283</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L284"><span class="lineNum">     284</span>              :   String get colorTooltip =&gt; 'एक रंग चुनें';</span>
+<span id="L284"><span class="lineNum">     284</span>              :   String get colorSystem =&gt; 'गलती करना';</span>
 <span id="L285"><span class="lineNum">     285</span>              : </span>
 <span id="L286"><span class="lineNum">     286</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L287"><span class="lineNum">     287</span>              :   String get colorType =&gt; 'रंग प्रकार';</span>
+<span id="L287"><span class="lineNum">     287</span>              :   String get colorTheme =&gt; 'पैलेट';</span>
 <span id="L288"><span class="lineNum">     288</span>              : </span>
 <span id="L289"><span class="lineNum">     289</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L290"><span class="lineNum">     290</span>              :   String get colorUser =&gt; 'निजी';</span>
+<span id="L290"><span class="lineNum">     290</span>              :   String get colorTooltip =&gt; 'एक रंग चुनें';</span>
 <span id="L291"><span class="lineNum">     291</span>              : </span>
 <span id="L292"><span class="lineNum">     292</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L293"><span class="lineNum">     293</span>              :   String columnMap(Object value) {</span>
-<span id="L294"><span class="lineNum">     294</span> <span class="tlaUNC">           0 :     return 'कॉलम \'$value\' के लिए मैपिंग';</span></span>
-<span id="L295"><span class="lineNum">     295</span>              :   }</span>
-<span id="L296"><span class="lineNum">     296</span>              : </span>
-<span id="L297"><span class="lineNum">     297</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L298"><span class="lineNum">     298</span>              :   String columnMapTooltip(Object value) {</span>
-<span id="L299"><span class="lineNum">     299</span> <span class="tlaUNC">           0 :     return '\'$value\' - कॉलम मैपिंग चुनें';</span></span>
-<span id="L300"><span class="lineNum">     300</span>              :   }</span>
-<span id="L301"><span class="lineNum">     301</span>              : </span>
-<span id="L302"><span class="lineNum">     302</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L303"><span class="lineNum">     303</span>              :   String get completeGoalTooltip =&gt; 'पूरा लक्ष्य';</span>
-<span id="L304"><span class="lineNum">     304</span>              : </span>
-<span id="L305"><span class="lineNum">     305</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L306"><span class="lineNum">     306</span>              :   String get confirmHeader =&gt; 'कार्रवाई की पुष्टि करें';</span>
+<span id="L293"><span class="lineNum">     293</span>              :   String get colorType =&gt; 'रंग प्रकार';</span>
+<span id="L294"><span class="lineNum">     294</span>              : </span>
+<span id="L295"><span class="lineNum">     295</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L296"><span class="lineNum">     296</span>              :   String get colorUser =&gt; 'निजी';</span>
+<span id="L297"><span class="lineNum">     297</span>              : </span>
+<span id="L298"><span class="lineNum">     298</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L299"><span class="lineNum">     299</span>              :   String columnMap(Object value) {</span>
+<span id="L300"><span class="lineNum">     300</span> <span class="tlaUNC">           0 :     return 'कॉलम \'$value\' के लिए मैपिंग';</span></span>
+<span id="L301"><span class="lineNum">     301</span>              :   }</span>
+<span id="L302"><span class="lineNum">     302</span>              : </span>
+<span id="L303"><span class="lineNum">     303</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L304"><span class="lineNum">     304</span>              :   String columnMapTooltip(Object value) {</span>
+<span id="L305"><span class="lineNum">     305</span> <span class="tlaUNC">           0 :     return '\'$value\' - कॉलम मैपिंग चुनें';</span></span>
+<span id="L306"><span class="lineNum">     306</span>              :   }</span>
 <span id="L307"><span class="lineNum">     307</span>              : </span>
 <span id="L308"><span class="lineNum">     308</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L309"><span class="lineNum">     309</span>              :   String get confirmTooltip =&gt; 'क्या आपको यकीन है? इस एक्शन को वापस नहीं किया जा सकता।';</span>
+<span id="L309"><span class="lineNum">     309</span>              :   String get completeGoalTooltip =&gt; 'पूरा लक्ष्य';</span>
 <span id="L310"><span class="lineNum">     310</span>              : </span>
 <span id="L311"><span class="lineNum">     311</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L312"><span class="lineNum">     312</span>              :   String get contributors =&gt; 'योगदानकर्ताओं';</span>
+<span id="L312"><span class="lineNum">     312</span>              :   String get confirmHeader =&gt; 'कार्रवाई की पुष्टि करें';</span>
 <span id="L313"><span class="lineNum">     313</span>              : </span>
 <span id="L314"><span class="lineNum">     314</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L315"><span class="lineNum">     315</span>              :   String get conversion =&gt; 'परिवर्तन';</span>
+<span id="L315"><span class="lineNum">     315</span>              :   String get confirmTooltip =&gt; 'क्या आपको यकीन है? इस एक्शन को वापस नहीं किया जा सकता।';</span>
 <span id="L316"><span class="lineNum">     316</span>              : </span>
 <span id="L317"><span class="lineNum">     317</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L318"><span class="lineNum">     318</span>              :   String conversionMessage(Object currency) {</span>
-<span id="L319"><span class="lineNum">     319</span> <span class="tlaUNC">           0 :     return '$currency में लिया गया';</span></span>
-<span id="L320"><span class="lineNum">     320</span>              :   }</span>
-<span id="L321"><span class="lineNum">     321</span>              : </span>
-<span id="L322"><span class="lineNum">     322</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L323"><span class="lineNum">     323</span>              :   String get createAccountHeader =&gt; 'नया खाता बनाएँ';</span>
-<span id="L324"><span class="lineNum">     324</span>              : </span>
-<span id="L325"><span class="lineNum">     325</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L326"><span class="lineNum">     326</span>              :   String get createAccountTooltip =&gt; 'नया खाता बनाएँ';</span>
+<span id="L318"><span class="lineNum">     318</span>              :   String get contributors =&gt; 'योगदानकर्ताओं';</span>
+<span id="L319"><span class="lineNum">     319</span>              : </span>
+<span id="L320"><span class="lineNum">     320</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L321"><span class="lineNum">     321</span>              :   String get conversion =&gt; 'परिवर्तन';</span>
+<span id="L322"><span class="lineNum">     322</span>              : </span>
+<span id="L323"><span class="lineNum">     323</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L324"><span class="lineNum">     324</span>              :   String conversionMessage(Object currency) {</span>
+<span id="L325"><span class="lineNum">     325</span> <span class="tlaUNC">           0 :     return '$currency में लिया गया';</span></span>
+<span id="L326"><span class="lineNum">     326</span>              :   }</span>
 <span id="L327"><span class="lineNum">     327</span>              : </span>
 <span id="L328"><span class="lineNum">     328</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L329"><span class="lineNum">     329</span>              :   String get createBillHeader =&gt; 'नया लेनदेन बनाएं';</span>
+<span id="L329"><span class="lineNum">     329</span>              :   String get createAccountHeader =&gt; 'नया खाता बनाएँ';</span>
 <span id="L330"><span class="lineNum">     330</span>              : </span>
 <span id="L331"><span class="lineNum">     331</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L332"><span class="lineNum">     332</span>              :   String get createBillTooltip =&gt; 'नया बिल जोड़ें';</span>
+<span id="L332"><span class="lineNum">     332</span>              :   String get createAccountTooltip =&gt; 'नया खाता बनाएँ';</span>
 <span id="L333"><span class="lineNum">     333</span>              : </span>
 <span id="L334"><span class="lineNum">     334</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L335"><span class="lineNum">     335</span>              :   String get createBudgetHeader =&gt; 'नई बजट श्रेणी';</span>
+<span id="L335"><span class="lineNum">     335</span>              :   String get createBillHeader =&gt; 'नया लेनदेन बनाएं';</span>
 <span id="L336"><span class="lineNum">     336</span>              : </span>
 <span id="L337"><span class="lineNum">     337</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L338"><span class="lineNum">     338</span>              :   String get createBudgetTooltip =&gt; 'नई बजट श्रेणी बनाएं';</span>
+<span id="L338"><span class="lineNum">     338</span>              :   String get createBillTooltip =&gt; 'नया बिल जोड़ें';</span>
 <span id="L339"><span class="lineNum">     339</span>              : </span>
 <span id="L340"><span class="lineNum">     340</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L341"><span class="lineNum">     341</span>              :   String get createGoalHeader =&gt; 'लक्ष्य बनाएं';</span>
+<span id="L341"><span class="lineNum">     341</span>              :   String get createBudgetHeader =&gt; 'नई बजट श्रेणी';</span>
 <span id="L342"><span class="lineNum">     342</span>              : </span>
 <span id="L343"><span class="lineNum">     343</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L344"><span class="lineNum">     344</span>              :   String get createGoalTooltip =&gt; 'नया लक्ष्य जोड़ें';</span>
+<span id="L344"><span class="lineNum">     344</span>              :   String get createBudgetTooltip =&gt; 'नई बजट श्रेणी बनाएं';</span>
 <span id="L345"><span class="lineNum">     345</span>              : </span>
 <span id="L346"><span class="lineNum">     346</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L347"><span class="lineNum">     347</span>              :   String get createIncomeTooltip =&gt; 'नई आय जोड़ें';</span>
+<span id="L347"><span class="lineNum">     347</span>              :   String get createGoalHeader =&gt; 'लक्ष्य बनाएं';</span>
 <span id="L348"><span class="lineNum">     348</span>              : </span>
 <span id="L349"><span class="lineNum">     349</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L350"><span class="lineNum">     350</span>              :   String get createPaymentTooltip =&gt; 'नया भुगतान जोड़ें';</span>
+<span id="L350"><span class="lineNum">     350</span>              :   String get createGoalTooltip =&gt; 'नया लक्ष्य जोड़ें';</span>
 <span id="L351"><span class="lineNum">     351</span>              : </span>
 <span id="L352"><span class="lineNum">     352</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L353"><span class="lineNum">     353</span>              :   String get createTransferTooltip =&gt; 'स्थानांतरण बनाएँ';</span>
+<span id="L353"><span class="lineNum">     353</span>              :   String get createIncomeTooltip =&gt; 'नई आय जोड़ें';</span>
 <span id="L354"><span class="lineNum">     354</span>              : </span>
 <span id="L355"><span class="lineNum">     355</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L356"><span class="lineNum">     356</span>              :   String get credit =&gt; 'श्रेय';</span>
+<span id="L356"><span class="lineNum">     356</span>              :   String get createPaymentTooltip =&gt; 'नया भुगतान जोड़ें';</span>
 <span id="L357"><span class="lineNum">     357</span>              : </span>
 <span id="L358"><span class="lineNum">     358</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L359"><span class="lineNum">     359</span>              :   String get creditCard =&gt; 'क्रेडिट कार्ड';</span>
+<span id="L359"><span class="lineNum">     359</span>              :   String get createTransferTooltip =&gt; 'स्थानांतरण बनाएँ';</span>
 <span id="L360"><span class="lineNum">     360</span>              : </span>
 <span id="L361"><span class="lineNum">     361</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L362"><span class="lineNum">     362</span>              :   String get currency =&gt; 'मुद्रा';</span>
+<span id="L362"><span class="lineNum">     362</span>              :   String get credit =&gt; 'श्रेय';</span>
 <span id="L363"><span class="lineNum">     363</span>              : </span>
 <span id="L364"><span class="lineNum">     364</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L365"><span class="lineNum">     365</span>              :   String get currencyAddHeadline =&gt; 'मुद्रा विनिमय';</span>
+<span id="L365"><span class="lineNum">     365</span>              :   String get creditCard =&gt; 'क्रेडिट कार्ड';</span>
 <span id="L366"><span class="lineNum">     366</span>              : </span>
 <span id="L367"><span class="lineNum">     367</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L368"><span class="lineNum">     368</span>              :   String get currencyAddTooltip =&gt; 'मुद्रा विनिमय दर जोड़ें';</span>
+<span id="L368"><span class="lineNum">     368</span>              :   String get currency =&gt; 'मुद्रा';</span>
 <span id="L369"><span class="lineNum">     369</span>              : </span>
 <span id="L370"><span class="lineNum">     370</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L371"><span class="lineNum">     371</span>              :   String get currencyDefault =&gt; 'डिफ़ॉल्ट मुद्रा';</span>
+<span id="L371"><span class="lineNum">     371</span>              :   String get currencyAddHeadline =&gt; 'मुद्रा विनिमय';</span>
 <span id="L372"><span class="lineNum">     372</span>              : </span>
 <span id="L373"><span class="lineNum">     373</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L374"><span class="lineNum">     374</span>              :   String get currencyDistribution =&gt; 'वितरण';</span>
+<span id="L374"><span class="lineNum">     374</span>              :   String get currencyAddTooltip =&gt; 'मुद्रा विनिमय दर जोड़ें';</span>
 <span id="L375"><span class="lineNum">     375</span>              : </span>
 <span id="L376"><span class="lineNum">     376</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L377"><span class="lineNum">     377</span>              :   String currencyExchange(Object from, Object to) {</span>
-<span id="L378"><span class="lineNum">     378</span> <span class="tlaUNC">           0 :     return 'मुद्रा विनिमय: $from -&gt; $to';</span></span>
-<span id="L379"><span class="lineNum">     379</span>              :   }</span>
-<span id="L380"><span class="lineNum">     380</span>              : </span>
-<span id="L381"><span class="lineNum">     381</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L382"><span class="lineNum">     382</span>              :   String get currencyHeadline =&gt; 'मुद्राओं';</span>
-<span id="L383"><span class="lineNum">     383</span>              : </span>
-<span id="L384"><span class="lineNum">     384</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L385"><span class="lineNum">     385</span>              :   String currencyIn(Object value) {</span>
-<span id="L386"><span class="lineNum">     386</span> <span class="tlaUNC">           0 :     return 'मूल्य $value';</span></span>
-<span id="L387"><span class="lineNum">     387</span>              :   }</span>
-<span id="L388"><span class="lineNum">     388</span>              : </span>
-<span id="L389"><span class="lineNum">     389</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L390"><span class="lineNum">     390</span>              :   String get currencyShort =&gt; 'मुद्रा';</span>
-<span id="L391"><span class="lineNum">     391</span>              : </span>
-<span id="L392"><span class="lineNum">     392</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L393"><span class="lineNum">     393</span>              :   String get currencyTooltip =&gt; 'मुद्रा प्रकार (कोड)';</span>
+<span id="L377"><span class="lineNum">     377</span>              :   String get currencyDefault =&gt; 'डिफ़ॉल्ट मुद्रा';</span>
+<span id="L378"><span class="lineNum">     378</span>              : </span>
+<span id="L379"><span class="lineNum">     379</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L380"><span class="lineNum">     380</span>              :   String get currencyDistribution =&gt; 'वितरण';</span>
+<span id="L381"><span class="lineNum">     381</span>              : </span>
+<span id="L382"><span class="lineNum">     382</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L383"><span class="lineNum">     383</span>              :   String currencyExchange(Object from, Object to) {</span>
+<span id="L384"><span class="lineNum">     384</span> <span class="tlaUNC">           0 :     return 'मुद्रा विनिमय: $from -&gt; $to';</span></span>
+<span id="L385"><span class="lineNum">     385</span>              :   }</span>
+<span id="L386"><span class="lineNum">     386</span>              : </span>
+<span id="L387"><span class="lineNum">     387</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L388"><span class="lineNum">     388</span>              :   String get currencyHeadline =&gt; 'मुद्राओं';</span>
+<span id="L389"><span class="lineNum">     389</span>              : </span>
+<span id="L390"><span class="lineNum">     390</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L391"><span class="lineNum">     391</span>              :   String currencyIn(Object value) {</span>
+<span id="L392"><span class="lineNum">     392</span> <span class="tlaUNC">           0 :     return 'मूल्य $value';</span></span>
+<span id="L393"><span class="lineNum">     393</span>              :   }</span>
 <span id="L394"><span class="lineNum">     394</span>              : </span>
 <span id="L395"><span class="lineNum">     395</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L396"><span class="lineNum">     396</span>              :   String get currencyUpdateTooltip =&gt; 'मुद्रा दर अद्यतन करें';</span>
+<span id="L396"><span class="lineNum">     396</span>              :   String get currencyShort =&gt; 'मुद्रा';</span>
 <span id="L397"><span class="lineNum">     397</span>              : </span>
 <span id="L398"><span class="lineNum">     398</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L399"><span class="lineNum">     399</span>              :   String get currentDate =&gt; 'वर्तमान दिनांक सूचक';</span>
+<span id="L399"><span class="lineNum">     399</span>              :   String get currencyTooltip =&gt; 'मुद्रा प्रकार (कोड)';</span>
 <span id="L400"><span class="lineNum">     400</span>              : </span>
 <span id="L401"><span class="lineNum">     401</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L402"><span class="lineNum">     402</span>              :   String get customAddTooltip =&gt; 'विजेट जोड़ें';</span>
+<span id="L402"><span class="lineNum">     402</span>              :   String get currencyUpdateTooltip =&gt; 'मुद्रा दर अद्यतन करें';</span>
 <span id="L403"><span class="lineNum">     403</span>              : </span>
 <span id="L404"><span class="lineNum">     404</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L405"><span class="lineNum">     405</span>              :   String get customDeleteTooltip =&gt; 'अनुकूलन हटाएँ';</span>
+<span id="L405"><span class="lineNum">     405</span>              :   String get currentDate =&gt; 'वर्तमान दिनांक सूचक';</span>
 <span id="L406"><span class="lineNum">     406</span>              : </span>
 <span id="L407"><span class="lineNum">     407</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L408"><span class="lineNum">     408</span>              :   String get customSaveTooltip =&gt; 'अनुकूलन सहेजें';</span>
+<span id="L408"><span class="lineNum">     408</span>              :   String get customAddTooltip =&gt; 'विजेट जोड़ें';</span>
 <span id="L409"><span class="lineNum">     409</span>              : </span>
 <span id="L410"><span class="lineNum">     410</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L411"><span class="lineNum">     411</span>              :   String get customizeTooltip =&gt; 'पृष्ठ अनुकूलित करें';</span>
+<span id="L411"><span class="lineNum">     411</span>              :   String get customDeleteTooltip =&gt; 'अनुकूलन हटाएँ';</span>
 <span id="L412"><span class="lineNum">     412</span>              : </span>
 <span id="L413"><span class="lineNum">     413</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L414"><span class="lineNum">     414</span>              :   String get darkMode =&gt; 'अँधेरा';</span>
+<span id="L414"><span class="lineNum">     414</span>              :   String get customSaveTooltip =&gt; 'अनुकूलन सहेजें';</span>
 <span id="L415"><span class="lineNum">     415</span>              : </span>
 <span id="L416"><span class="lineNum">     416</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L417"><span class="lineNum">     417</span>              :   String get dateFormat =&gt; 'तारिख का प्रारूप';</span>
+<span id="L417"><span class="lineNum">     417</span>              :   String get customizeTooltip =&gt; 'पृष्ठ अनुकूलित करें';</span>
 <span id="L418"><span class="lineNum">     418</span>              : </span>
 <span id="L419"><span class="lineNum">     419</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L420"><span class="lineNum">     420</span>              :   String get dateTooltip =&gt; 'तारीख़ चुनें';</span>
+<span id="L420"><span class="lineNum">     420</span>              :   String get darkMode =&gt; 'अँधेरा';</span>
 <span id="L421"><span class="lineNum">     421</span>              : </span>
 <span id="L422"><span class="lineNum">     422</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L423"><span class="lineNum">     423</span>              :   String get dayMonday =&gt; 'सोमवार';</span>
+<span id="L423"><span class="lineNum">     423</span>              :   String get dateFormat =&gt; 'तारिख का प्रारूप';</span>
 <span id="L424"><span class="lineNum">     424</span>              : </span>
 <span id="L425"><span class="lineNum">     425</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L426"><span class="lineNum">     426</span>              :   String get dayStartOfMonth =&gt; 'महीने की शुरुआत';</span>
+<span id="L426"><span class="lineNum">     426</span>              :   String get dateRange =&gt; 'तारीख़ की सीमा';</span>
 <span id="L427"><span class="lineNum">     427</span>              : </span>
 <span id="L428"><span class="lineNum">     428</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L429"><span class="lineNum">     429</span>              :   String get dayStartOfWeek =&gt; 'सप्ताह की शुरुआत';</span>
+<span id="L429"><span class="lineNum">     429</span>              :   String get dateTooltip =&gt; 'तारीख़ चुनें';</span>
 <span id="L430"><span class="lineNum">     430</span>              : </span>
 <span id="L431"><span class="lineNum">     431</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L432"><span class="lineNum">     432</span>              :   String get daySunday =&gt; 'रविवार';</span>
+<span id="L432"><span class="lineNum">     432</span>              :   String get dayMonday =&gt; 'सोमवार';</span>
 <span id="L433"><span class="lineNum">     433</span>              : </span>
 <span id="L434"><span class="lineNum">     434</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L435"><span class="lineNum">     435</span>              :   String get debitCard =&gt; 'डेबिट कार्ड';</span>
+<span id="L435"><span class="lineNum">     435</span>              :   String get dayStartOfMonth =&gt; 'महीने की शुरुआत';</span>
 <span id="L436"><span class="lineNum">     436</span>              : </span>
 <span id="L437"><span class="lineNum">     437</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L438"><span class="lineNum">     438</span>              :   String def(Object value) {</span>
-<span id="L439"><span class="lineNum">     439</span> <span class="tlaUNC">           0 :     return '\'$value\' के लिए डिफ़ॉल्ट मान';</span></span>
-<span id="L440"><span class="lineNum">     440</span>              :   }</span>
-<span id="L441"><span class="lineNum">     441</span>              : </span>
-<span id="L442"><span class="lineNum">     442</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L443"><span class="lineNum">     443</span>              :   String get deleteAccountTooltip =&gt; 'खाता निष्क्रिय करें';</span>
-<span id="L444"><span class="lineNum">     444</span>              : </span>
-<span id="L445"><span class="lineNum">     445</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L446"><span class="lineNum">     446</span>              :   String get deleteBillTooltip =&gt; 'बिल हटाएँ';</span>
-<span id="L447"><span class="lineNum">     447</span>              : </span>
-<span id="L448"><span class="lineNum">     448</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L449"><span class="lineNum">     449</span>              :   String get deleteBudgetTooltip =&gt; 'बजट श्रेणी निष्क्रिय करें';</span>
+<span id="L438"><span class="lineNum">     438</span>              :   String get dayStartOfWeek =&gt; 'सप्ताह की शुरुआत';</span>
+<span id="L439"><span class="lineNum">     439</span>              : </span>
+<span id="L440"><span class="lineNum">     440</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L441"><span class="lineNum">     441</span>              :   String get daySunday =&gt; 'रविवार';</span>
+<span id="L442"><span class="lineNum">     442</span>              : </span>
+<span id="L443"><span class="lineNum">     443</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L444"><span class="lineNum">     444</span>              :   String get debitCard =&gt; 'डेबिट कार्ड';</span>
+<span id="L445"><span class="lineNum">     445</span>              : </span>
+<span id="L446"><span class="lineNum">     446</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L447"><span class="lineNum">     447</span>              :   String def(Object value) {</span>
+<span id="L448"><span class="lineNum">     448</span> <span class="tlaUNC">           0 :     return '\'$value\' के लिए डिफ़ॉल्ट मान';</span></span>
+<span id="L449"><span class="lineNum">     449</span>              :   }</span>
 <span id="L450"><span class="lineNum">     450</span>              : </span>
 <span id="L451"><span class="lineNum">     451</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L452"><span class="lineNum">     452</span>              :   String get deleteGoalTooltip =&gt; 'लक्ष्य हटाएँ';</span>
+<span id="L452"><span class="lineNum">     452</span>              :   String get deleteAccountTooltip =&gt; 'खाता निष्क्रिय करें';</span>
 <span id="L453"><span class="lineNum">     453</span>              : </span>
 <span id="L454"><span class="lineNum">     454</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L455"><span class="lineNum">     455</span>              :   String get deleteInvoiceTooltip =&gt; 'चालान हटाएँ';</span>
+<span id="L455"><span class="lineNum">     455</span>              :   String get deleteBillTooltip =&gt; 'बिल हटाएँ';</span>
 <span id="L456"><span class="lineNum">     456</span>              : </span>
 <span id="L457"><span class="lineNum">     457</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L458"><span class="lineNum">     458</span>              :   String get deletePaymentTooltip =&gt; 'भुगतान हटाएं';</span>
+<span id="L458"><span class="lineNum">     458</span>              :   String get deleteBudgetTooltip =&gt; 'बजट श्रेणी निष्क्रिय करें';</span>
 <span id="L459"><span class="lineNum">     459</span>              : </span>
 <span id="L460"><span class="lineNum">     460</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L461"><span class="lineNum">     461</span>              :   String get deleteTooltip =&gt; 'मिटाना';</span>
+<span id="L461"><span class="lineNum">     461</span>              :   String get deleteGoalTooltip =&gt; 'लक्ष्य हटाएँ';</span>
 <span id="L462"><span class="lineNum">     462</span>              : </span>
 <span id="L463"><span class="lineNum">     463</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L464"><span class="lineNum">     464</span>              :   String get deleteTransferTooltip =&gt; 'स्थानांतरण हटाएँ';</span>
+<span id="L464"><span class="lineNum">     464</span>              :   String get deleteInvoiceTooltip =&gt; 'चालान हटाएँ';</span>
 <span id="L465"><span class="lineNum">     465</span>              : </span>
 <span id="L466"><span class="lineNum">     466</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L467"><span class="lineNum">     467</span>              :   String get deposit =&gt; 'जमा';</span>
+<span id="L467"><span class="lineNum">     467</span>              :   String get deletePaymentTooltip =&gt; 'भुगतान हटाएं';</span>
 <span id="L468"><span class="lineNum">     468</span>              : </span>
 <span id="L469"><span class="lineNum">     469</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L470"><span class="lineNum">     470</span>              :   String get description =&gt; 'विवरण';</span>
+<span id="L470"><span class="lineNum">     470</span>              :   String get deleteTooltip =&gt; 'मिटाना';</span>
 <span id="L471"><span class="lineNum">     471</span>              : </span>
 <span id="L472"><span class="lineNum">     472</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L473"><span class="lineNum">     473</span>              :   String get descriptionTooltip =&gt; 'व्यय विवरण सेट करें';</span>
+<span id="L473"><span class="lineNum">     473</span>              :   String get deleteTransferTooltip =&gt; 'स्थानांतरण हटाएँ';</span>
 <span id="L474"><span class="lineNum">     474</span>              : </span>
 <span id="L475"><span class="lineNum">     475</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L476"><span class="lineNum">     476</span>              :   String get design =&gt; 'डिज़ाइन मोड (संस्कृति विशिष्ट)';</span>
+<span id="L476"><span class="lineNum">     476</span>              :   String get deposit =&gt; 'जमा';</span>
 <span id="L477"><span class="lineNum">     477</span>              : </span>
 <span id="L478"><span class="lineNum">     478</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L479"><span class="lineNum">     479</span>              :   String get designAsiaGeneral =&gt; 'एशिया जनरल';</span>
+<span id="L479"><span class="lineNum">     479</span>              :   String get description =&gt; 'विवरण';</span>
 <span id="L480"><span class="lineNum">     480</span>              : </span>
 <span id="L481"><span class="lineNum">     481</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L482"><span class="lineNum">     482</span>              :   String get designGermany =&gt; 'जर्मनी';</span>
+<span id="L482"><span class="lineNum">     482</span>              :   String get descriptionTooltip =&gt; 'व्यय विवरण सेट करें';</span>
 <span id="L483"><span class="lineNum">     483</span>              : </span>
 <span id="L484"><span class="lineNum">     484</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L485"><span class="lineNum">     485</span>              :   String get designGlobal =&gt; 'वैश्विक';</span>
+<span id="L485"><span class="lineNum">     485</span>              :   String get design =&gt; 'डिज़ाइन मोड (संस्कृति विशिष्ट)';</span>
 <span id="L486"><span class="lineNum">     486</span>              : </span>
 <span id="L487"><span class="lineNum">     487</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L488"><span class="lineNum">     488</span>              :   String get designRtlGeneral =&gt; 'दाएं से बाएं अक्षरांकन';</span>
+<span id="L488"><span class="lineNum">     488</span>              :   String get designAsiaGeneral =&gt; 'एशिया जनरल';</span>
 <span id="L489"><span class="lineNum">     489</span>              : </span>
 <span id="L490"><span class="lineNum">     490</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L491"><span class="lineNum">     491</span>              :   String get details =&gt; 'विवरण';</span>
+<span id="L491"><span class="lineNum">     491</span>              :   String get designGermany =&gt; 'जर्मनी';</span>
 <span id="L492"><span class="lineNum">     492</span>              : </span>
 <span id="L493"><span class="lineNum">     493</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L494"><span class="lineNum">     494</span>              :   String get detailsTooltip =&gt; '****2345 - संख्या के अंतिम 4 अंक';</span>
+<span id="L494"><span class="lineNum">     494</span>              :   String get designGlobal =&gt; 'वैश्विक';</span>
 <span id="L495"><span class="lineNum">     495</span>              : </span>
 <span id="L496"><span class="lineNum">     496</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L497"><span class="lineNum">     497</span>              :   String get dtAm =&gt; 'पूर्वाह्न';</span>
+<span id="L497"><span class="lineNum">     497</span>              :   String get designRtlGeneral =&gt; 'दाएं से बाएं अक्षरांकन';</span>
 <span id="L498"><span class="lineNum">     498</span>              : </span>
 <span id="L499"><span class="lineNum">     499</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L500"><span class="lineNum">     500</span>              :   String get dtAmPm =&gt; 'प्रातः/अपराह्न में घंटा (0~11)';</span>
+<span id="L500"><span class="lineNum">     500</span>              :   String get details =&gt; 'विवरण';</span>
 <span id="L501"><span class="lineNum">     501</span>              : </span>
 <span id="L502"><span class="lineNum">     502</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L503"><span class="lineNum">     503</span>              :   String get dtDay =&gt; 'महीने में दिन';</span>
+<span id="L503"><span class="lineNum">     503</span>              :   String get detailsTooltip =&gt; '****2345 - संख्या के अंतिम 4 अंक';</span>
 <span id="L504"><span class="lineNum">     504</span>              : </span>
 <span id="L505"><span class="lineNum">     505</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L506"><span class="lineNum">     506</span>              :   String get dtEscape =&gt; 'पाठ के लिए पलायन';</span>
+<span id="L506"><span class="lineNum">     506</span>              :   String get dtAm =&gt; 'पूर्वाह्न';</span>
 <span id="L507"><span class="lineNum">     507</span>              : </span>
 <span id="L508"><span class="lineNum">     508</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L509"><span class="lineNum">     509</span>              :   String get dtHalfHour =&gt; 'प्रातः/अपराह्न में घंटा (1~12)';</span>
+<span id="L509"><span class="lineNum">     509</span>              :   String get dtAmPm =&gt; 'प्रातः/अपराह्न में घंटा (0~11)';</span>
 <span id="L510"><span class="lineNum">     510</span>              : </span>
 <span id="L511"><span class="lineNum">     511</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L512"><span class="lineNum">     512</span>              :   String get dtHour =&gt; 'दिन में घंटा (0~23)';</span>
+<span id="L512"><span class="lineNum">     512</span>              :   String get dtDay =&gt; 'महीने में दिन';</span>
 <span id="L513"><span class="lineNum">     513</span>              : </span>
 <span id="L514"><span class="lineNum">     514</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L515"><span class="lineNum">     515</span>              :   String get dtMinute =&gt; 'घंटे में मिनट';</span>
+<span id="L515"><span class="lineNum">     515</span>              :   String get dtEscape =&gt; 'पाठ के लिए पलायन';</span>
 <span id="L516"><span class="lineNum">     516</span>              : </span>
 <span id="L517"><span class="lineNum">     517</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L518"><span class="lineNum">     518</span>              :   String get dtMonth =&gt; 'साल में महीना';</span>
+<span id="L518"><span class="lineNum">     518</span>              :   String get dtHalfHour =&gt; 'प्रातः/अपराह्न में घंटा (1~12)';</span>
 <span id="L519"><span class="lineNum">     519</span>              : </span>
 <span id="L520"><span class="lineNum">     520</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L521"><span class="lineNum">     521</span>              :   String get dtNamedDay =&gt; 'सप्ताह का दिन';</span>
+<span id="L521"><span class="lineNum">     521</span>              :   String get dtHour =&gt; 'दिन में घंटा (0~23)';</span>
 <span id="L522"><span class="lineNum">     522</span>              : </span>
 <span id="L523"><span class="lineNum">     523</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L524"><span class="lineNum">     524</span>              :   String get dtPm =&gt; 'बजे';</span>
+<span id="L524"><span class="lineNum">     524</span>              :   String get dtMinute =&gt; 'घंटे में मिनट';</span>
 <span id="L525"><span class="lineNum">     525</span>              : </span>
 <span id="L526"><span class="lineNum">     526</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L527"><span class="lineNum">     527</span>              :   String get dtQuote =&gt; 'एकल बोली';</span>
+<span id="L527"><span class="lineNum">     527</span>              :   String get dtMonth =&gt; 'साल में महीना';</span>
 <span id="L528"><span class="lineNum">     528</span>              : </span>
 <span id="L529"><span class="lineNum">     529</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L530"><span class="lineNum">     530</span>              :   String get dtSecond =&gt; 'मिनट में दूसरा';</span>
+<span id="L530"><span class="lineNum">     530</span>              :   String get dtNamedDay =&gt; 'सप्ताह का दिन';</span>
 <span id="L531"><span class="lineNum">     531</span>              : </span>
 <span id="L532"><span class="lineNum">     532</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L533"><span class="lineNum">     533</span>              :   String get dtYear =&gt; 'वर्ष';</span>
+<span id="L533"><span class="lineNum">     533</span>              :   String get dtPm =&gt; 'बजे';</span>
 <span id="L534"><span class="lineNum">     534</span>              : </span>
 <span id="L535"><span class="lineNum">     535</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L536"><span class="lineNum">     536</span>              :   String get editAccountHeader =&gt; 'खाता अद्यतन करें';</span>
+<span id="L536"><span class="lineNum">     536</span>              :   String get dtQuote =&gt; 'एकल बोली';</span>
 <span id="L537"><span class="lineNum">     537</span>              : </span>
 <span id="L538"><span class="lineNum">     538</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L539"><span class="lineNum">     539</span>              :   String get editAccountTooltip =&gt; 'खाता संपादित करें';</span>
+<span id="L539"><span class="lineNum">     539</span>              :   String get dtSecond =&gt; 'मिनट में दूसरा';</span>
 <span id="L540"><span class="lineNum">     540</span>              : </span>
 <span id="L541"><span class="lineNum">     541</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L542"><span class="lineNum">     542</span>              :   String get editBillHeader =&gt; 'बिल अद्यतन करें';</span>
+<span id="L542"><span class="lineNum">     542</span>              :   String get dtYear =&gt; 'वर्ष';</span>
 <span id="L543"><span class="lineNum">     543</span>              : </span>
 <span id="L544"><span class="lineNum">     544</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L545"><span class="lineNum">     545</span>              :   String get editBillTooltip =&gt; 'बिल संपादित करें';</span>
+<span id="L545"><span class="lineNum">     545</span>              :   String get editAccountHeader =&gt; 'खाता अद्यतन करें';</span>
 <span id="L546"><span class="lineNum">     546</span>              : </span>
 <span id="L547"><span class="lineNum">     547</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L548"><span class="lineNum">     548</span>              :   String get editBudgetHeader =&gt; 'बजट श्रेणी अद्यतन करें';</span>
+<span id="L548"><span class="lineNum">     548</span>              :   String get editAccountTooltip =&gt; 'खाता संपादित करें';</span>
 <span id="L549"><span class="lineNum">     549</span>              : </span>
 <span id="L550"><span class="lineNum">     550</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L551"><span class="lineNum">     551</span>              :   String get editBudgetTooltip =&gt; 'बजट श्रेणी संपादित करें';</span>
+<span id="L551"><span class="lineNum">     551</span>              :   String get editBillHeader =&gt; 'बिल अद्यतन करें';</span>
 <span id="L552"><span class="lineNum">     552</span>              : </span>
 <span id="L553"><span class="lineNum">     553</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L554"><span class="lineNum">     554</span>              :   String get editGoalHeader =&gt; 'लक्ष्य अद्यतन करें';</span>
+<span id="L554"><span class="lineNum">     554</span>              :   String get editBillTooltip =&gt; 'बिल संपादित करें';</span>
 <span id="L555"><span class="lineNum">     555</span>              : </span>
 <span id="L556"><span class="lineNum">     556</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L557"><span class="lineNum">     557</span>              :   String get editGoalTooltip =&gt; 'लक्ष्य संपादित करें';</span>
+<span id="L557"><span class="lineNum">     557</span>              :   String get editBudgetHeader =&gt; 'बजट श्रेणी अद्यतन करें';</span>
 <span id="L558"><span class="lineNum">     558</span>              : </span>
 <span id="L559"><span class="lineNum">     559</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L560"><span class="lineNum">     560</span>              :   String get editInvoiceTooltip =&gt; 'चालान संपादित करें';</span>
+<span id="L560"><span class="lineNum">     560</span>              :   String get editBudgetTooltip =&gt; 'बजट श्रेणी संपादित करें';</span>
 <span id="L561"><span class="lineNum">     561</span>              : </span>
 <span id="L562"><span class="lineNum">     562</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L563"><span class="lineNum">     563</span>              :   String get editPaymentTooltip =&gt; 'भुगतान संपादित करें';</span>
+<span id="L563"><span class="lineNum">     563</span>              :   String get editGoalHeader =&gt; 'लक्ष्य अद्यतन करें';</span>
 <span id="L564"><span class="lineNum">     564</span>              : </span>
 <span id="L565"><span class="lineNum">     565</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L566"><span class="lineNum">     566</span>              :   String get editTooltip =&gt; 'संपादन करना';</span>
+<span id="L566"><span class="lineNum">     566</span>              :   String get editGoalTooltip =&gt; 'लक्ष्य संपादित करें';</span>
 <span id="L567"><span class="lineNum">     567</span>              : </span>
 <span id="L568"><span class="lineNum">     568</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L569"><span class="lineNum">     569</span>              :   String get editTransferTooltip =&gt; 'स्थानांतरण संपादित करें';</span>
+<span id="L569"><span class="lineNum">     569</span>              :   String get editInvoiceTooltip =&gt; 'चालान संपादित करें';</span>
 <span id="L570"><span class="lineNum">     570</span>              : </span>
 <span id="L571"><span class="lineNum">     571</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L572"><span class="lineNum">     572</span>              :   String get encryptionMode =&gt; 'डेटा एन्क्रिप्शन';</span>
+<span id="L572"><span class="lineNum">     572</span>              :   String get editPaymentTooltip =&gt; 'भुगतान संपादित करें';</span>
 <span id="L573"><span class="lineNum">     573</span>              : </span>
 <span id="L574"><span class="lineNum">     574</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L575"><span class="lineNum">     575</span>              :   String error(Object value) {</span>
-<span id="L576"><span class="lineNum">     576</span> <span class="tlaUNC">           0 :     return 'त्रुटि: $value';</span></span>
-<span id="L577"><span class="lineNum">     577</span>              :   }</span>
-<span id="L578"><span class="lineNum">     578</span>              : </span>
-<span id="L579"><span class="lineNum">     579</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L580"><span class="lineNum">     580</span>              :   String get errorExpired =&gt; 'कार्ड समाप्त हो गया';</span>
-<span id="L581"><span class="lineNum">     581</span>              : </span>
-<span id="L582"><span class="lineNum">     582</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L583"><span class="lineNum">     583</span>              :   String get errorNegative =&gt; 'नकारात्मक नहीं हो सकता! कृपया, त्रुटि ठीक करें';</span>
-<span id="L584"><span class="lineNum">     584</span>              : </span>
-<span id="L585"><span class="lineNum">     585</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L586"><span class="lineNum">     586</span>              :   String get example =&gt; 'उदाहरण';</span>
+<span id="L575"><span class="lineNum">     575</span>              :   String get editTooltip =&gt; 'संपादन करना';</span>
+<span id="L576"><span class="lineNum">     576</span>              : </span>
+<span id="L577"><span class="lineNum">     577</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L578"><span class="lineNum">     578</span>              :   String get editTransferTooltip =&gt; 'स्थानांतरण संपादित करें';</span>
+<span id="L579"><span class="lineNum">     579</span>              : </span>
+<span id="L580"><span class="lineNum">     580</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L581"><span class="lineNum">     581</span>              :   String get encryptionMode =&gt; 'डेटा एन्क्रिप्शन';</span>
+<span id="L582"><span class="lineNum">     582</span>              : </span>
+<span id="L583"><span class="lineNum">     583</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L584"><span class="lineNum">     584</span>              :   String error(Object value) {</span>
+<span id="L585"><span class="lineNum">     585</span> <span class="tlaUNC">           0 :     return 'त्रुटि: $value';</span></span>
+<span id="L586"><span class="lineNum">     586</span>              :   }</span>
 <span id="L587"><span class="lineNum">     587</span>              : </span>
 <span id="L588"><span class="lineNum">     588</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L589"><span class="lineNum">     589</span>              :   String get expand =&gt; 'अनुभाग का विस्तार करें';</span>
+<span id="L589"><span class="lineNum">     589</span>              :   String get errorExpired =&gt; 'कार्ड समाप्त हो गया';</span>
 <span id="L590"><span class="lineNum">     590</span>              : </span>
 <span id="L591"><span class="lineNum">     591</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L592"><span class="lineNum">     592</span>              :   String get expense =&gt; 'व्यय की राशि';</span>
+<span id="L592"><span class="lineNum">     592</span>              :   String get errorNegative =&gt; 'नकारात्मक नहीं हो सकता! कृपया, त्रुटि ठीक करें';</span>
 <span id="L593"><span class="lineNum">     593</span>              : </span>
 <span id="L594"><span class="lineNum">     594</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L595"><span class="lineNum">     595</span>              :   String get expenseDateTime =&gt; 'पर बिल किया गया';</span>
+<span id="L595"><span class="lineNum">     595</span>              :   String get example =&gt; 'उदाहरण';</span>
 <span id="L596"><span class="lineNum">     596</span>              : </span>
 <span id="L597"><span class="lineNum">     597</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L598"><span class="lineNum">     598</span>              :   String get expenseHeadline =&gt; 'व्यय';</span>
+<span id="L598"><span class="lineNum">     598</span>              :   String get expand =&gt; 'अनुभाग का विस्तार करें';</span>
 <span id="L599"><span class="lineNum">     599</span>              : </span>
 <span id="L600"><span class="lineNum">     600</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L601"><span class="lineNum">     601</span>              :   String get expenseTransfer =&gt; 'स्थानांतरण की राशि';</span>
+<span id="L601"><span class="lineNum">     601</span>              :   String get expense =&gt; 'व्यय की राशि';</span>
 <span id="L602"><span class="lineNum">     602</span>              : </span>
 <span id="L603"><span class="lineNum">     603</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L604"><span class="lineNum">     604</span>              :   String exportFile(Object value) {</span>
-<span id="L605"><span class="lineNum">     605</span> <span class="tlaUNC">           0 :     return '.$value फ़ाइल के रूप में निर्यात करें';</span></span>
-<span id="L606"><span class="lineNum">     606</span>              :   }</span>
-<span id="L607"><span class="lineNum">     607</span>              : </span>
-<span id="L608"><span class="lineNum">     608</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L609"><span class="lineNum">     609</span>              :   String get failData =&gt; 'राशि कटौती';</span>
-<span id="L610"><span class="lineNum">     610</span>              : </span>
-<span id="L611"><span class="lineNum">     611</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L612"><span class="lineNum">     612</span>              :   String get flowTypeInvoice =&gt; 'चालान';</span>
-<span id="L613"><span class="lineNum">     613</span>              : </span>
-<span id="L614"><span class="lineNum">     614</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L615"><span class="lineNum">     615</span>              :   String get flowTypeTooltip =&gt; 'राशि का प्रकार: बिल, चालान';</span>
+<span id="L604"><span class="lineNum">     604</span>              :   String get expenseDateTime =&gt; 'पर बिल किया गया';</span>
+<span id="L605"><span class="lineNum">     605</span>              : </span>
+<span id="L606"><span class="lineNum">     606</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L607"><span class="lineNum">     607</span>              :   String get expenseHeadline =&gt; 'व्यय';</span>
+<span id="L608"><span class="lineNum">     608</span>              : </span>
+<span id="L609"><span class="lineNum">     609</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L610"><span class="lineNum">     610</span>              :   String get expenseTransfer =&gt; 'स्थानांतरण की राशि';</span>
+<span id="L611"><span class="lineNum">     611</span>              : </span>
+<span id="L612"><span class="lineNum">     612</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L613"><span class="lineNum">     613</span>              :   String exportFile(Object value) {</span>
+<span id="L614"><span class="lineNum">     614</span> <span class="tlaUNC">           0 :     return '.$value फ़ाइल के रूप में निर्यात करें';</span></span>
+<span id="L615"><span class="lineNum">     615</span>              :   }</span>
 <span id="L616"><span class="lineNum">     616</span>              : </span>
 <span id="L617"><span class="lineNum">     617</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L618"><span class="lineNum">     618</span>              :   String get forecastData =&gt; 'पूर्वानुमान';</span>
+<span id="L618"><span class="lineNum">     618</span>              :   String get failData =&gt; 'राशि कटौती';</span>
 <span id="L619"><span class="lineNum">     619</span>              : </span>
 <span id="L620"><span class="lineNum">     620</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L621"><span class="lineNum">     621</span>              :   String get from =&gt; 'से';</span>
+<span id="L621"><span class="lineNum">     621</span>              :   String get flowTypeInvoice =&gt; 'चालान';</span>
 <span id="L622"><span class="lineNum">     622</span>              : </span>
 <span id="L623"><span class="lineNum">     623</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L624"><span class="lineNum">     624</span>              :   String get goNextTooltip =&gt; 'आगे बढ़ें';</span>
+<span id="L624"><span class="lineNum">     624</span>              :   String get flowTypeTooltip =&gt; 'राशि का प्रकार: बिल, चालान';</span>
 <span id="L625"><span class="lineNum">     625</span>              : </span>
 <span id="L626"><span class="lineNum">     626</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L627"><span class="lineNum">     627</span>              :   String get goalHeadline =&gt; 'लक्ष्य';</span>
+<span id="L627"><span class="lineNum">     627</span>              :   String get forecastData =&gt; 'पूर्वानुमान';</span>
 <span id="L628"><span class="lineNum">     628</span>              : </span>
 <span id="L629"><span class="lineNum">     629</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L630"><span class="lineNum">     630</span>              :   String goalProfit(Object value) {</span>
-<span id="L631"><span class="lineNum">     631</span> <span class="tlaUNC">           0 :     return 'लक्ष्य लक्ष्य: $value';</span></span>
-<span id="L632"><span class="lineNum">     632</span>              :   }</span>
-<span id="L633"><span class="lineNum">     633</span>              : </span>
-<span id="L634"><span class="lineNum">     634</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L635"><span class="lineNum">     635</span>              :   String get goalProfitTooltip =&gt; 'लाभ बनाम लक्ष्य लक्ष्य';</span>
-<span id="L636"><span class="lineNum">     636</span>              : </span>
-<span id="L637"><span class="lineNum">     637</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L638"><span class="lineNum">     638</span>              :   String get goalTooltip =&gt; 'लक्ष्य खोलें';</span>
-<span id="L639"><span class="lineNum">     639</span>              : </span>
-<span id="L640"><span class="lineNum">     640</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L641"><span class="lineNum">     641</span>              :   String get hasEncrypted =&gt; 'एक बार सेट हो जाने पर, बदला नहीं जा सकता';</span>
+<span id="L630"><span class="lineNum">     630</span>              :   String get from =&gt; 'से';</span>
+<span id="L631"><span class="lineNum">     631</span>              : </span>
+<span id="L632"><span class="lineNum">     632</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L633"><span class="lineNum">     633</span>              :   String get goNextTooltip =&gt; 'आगे बढ़ें';</span>
+<span id="L634"><span class="lineNum">     634</span>              : </span>
+<span id="L635"><span class="lineNum">     635</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L636"><span class="lineNum">     636</span>              :   String get goalHeadline =&gt; 'लक्ष्य';</span>
+<span id="L637"><span class="lineNum">     637</span>              : </span>
+<span id="L638"><span class="lineNum">     638</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L639"><span class="lineNum">     639</span>              :   String goalProfit(Object value) {</span>
+<span id="L640"><span class="lineNum">     640</span> <span class="tlaUNC">           0 :     return 'लक्ष्य लक्ष्य: $value';</span></span>
+<span id="L641"><span class="lineNum">     641</span>              :   }</span>
 <span id="L642"><span class="lineNum">     642</span>              : </span>
 <span id="L643"><span class="lineNum">     643</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L644"><span class="lineNum">     644</span>              :   String get helpTooltip =&gt; '[सहायता] उस पृष्ठ का विवरण दिखाएँ';</span>
+<span id="L644"><span class="lineNum">     644</span>              :   String get goalProfitTooltip =&gt; 'लाभ बनाम लक्ष्य लक्ष्य';</span>
 <span id="L645"><span class="lineNum">     645</span>              : </span>
 <span id="L646"><span class="lineNum">     646</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L647"><span class="lineNum">     647</span>              :   String get homeHeadline =&gt; 'घर';</span>
+<span id="L647"><span class="lineNum">     647</span>              :   String get goalTooltip =&gt; 'लक्ष्य खोलें';</span>
 <span id="L648"><span class="lineNum">     648</span>              : </span>
 <span id="L649"><span class="lineNum">     649</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L650"><span class="lineNum">     650</span>              :   String get homeTooltip =&gt; 'मुख्य पृष्ठ पर वापस जाएँ';</span>
+<span id="L650"><span class="lineNum">     650</span>              :   String get hasEncrypted =&gt; 'एक बार सेट हो जाने पर, बदला नहीं जा सकता';</span>
 <span id="L651"><span class="lineNum">     651</span>              : </span>
 <span id="L652"><span class="lineNum">     652</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L653"><span class="lineNum">     653</span>              :   String get icon =&gt; 'आइकन';</span>
+<span id="L653"><span class="lineNum">     653</span>              :   String get helpTooltip =&gt; '[सहायता] उस पृष्ठ का विवरण दिखाएँ';</span>
 <span id="L654"><span class="lineNum">     654</span>              : </span>
 <span id="L655"><span class="lineNum">     655</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L656"><span class="lineNum">     656</span>              :   String get iconTooltip =&gt; 'आइकन चुनें';</span>
+<span id="L656"><span class="lineNum">     656</span>              :   String get homeHeadline =&gt; 'घर';</span>
 <span id="L657"><span class="lineNum">     657</span>              : </span>
 <span id="L658"><span class="lineNum">     658</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L659"><span class="lineNum">     659</span>              :   String get ignoreTooltip =&gt; 'अनदेखा करना';</span>
+<span id="L659"><span class="lineNum">     659</span>              :   String get homeTooltip =&gt; 'मुख्य पृष्ठ पर वापस जाएँ';</span>
 <span id="L660"><span class="lineNum">     660</span>              : </span>
 <span id="L661"><span class="lineNum">     661</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L662"><span class="lineNum">     662</span>              :   String get importHeadline =&gt; 'आयात / निर्यात';</span>
+<span id="L662"><span class="lineNum">     662</span>              :   String get icon =&gt; 'आइकन';</span>
 <span id="L663"><span class="lineNum">     663</span>              : </span>
 <span id="L664"><span class="lineNum">     664</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L665"><span class="lineNum">     665</span>              :   String get income =&gt; 'आय की राशि';</span>
+<span id="L665"><span class="lineNum">     665</span>              :   String get iconTooltip =&gt; 'आइकन चुनें';</span>
 <span id="L666"><span class="lineNum">     666</span>              : </span>
 <span id="L667"><span class="lineNum">     667</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L668"><span class="lineNum">     668</span>              :   String get incomeHeadline =&gt; 'आय';</span>
+<span id="L668"><span class="lineNum">     668</span>              :   String get ignoreTooltip =&gt; 'अनदेखा करना';</span>
 <span id="L669"><span class="lineNum">     669</span>              : </span>
 <span id="L670"><span class="lineNum">     670</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L671"><span class="lineNum">     671</span>              :   String get incomeHealth =&gt; 'आय स्वास्थ्य रडार';</span>
+<span id="L671"><span class="lineNum">     671</span>              :   String get importHeadline =&gt; 'आयात / निर्यात';</span>
 <span id="L672"><span class="lineNum">     672</span>              : </span>
 <span id="L673"><span class="lineNum">     673</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L674"><span class="lineNum">     674</span>              :   String get incomeTooltip =&gt; 'आय विवरण निर्धारित करें';</span>
+<span id="L674"><span class="lineNum">     674</span>              :   String get income =&gt; 'आय की राशि';</span>
 <span id="L675"><span class="lineNum">     675</span>              : </span>
 <span id="L676"><span class="lineNum">     676</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L677"><span class="lineNum">     677</span>              :   String get invoiceHeadline =&gt; 'चालान';</span>
+<span id="L677"><span class="lineNum">     677</span>              :   String get incomeHeadline =&gt; 'आय';</span>
 <span id="L678"><span class="lineNum">     678</span>              : </span>
 <span id="L679"><span class="lineNum">     679</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L680"><span class="lineNum">     680</span>              :   String invoiceSum(Object value) {</span>
-<span id="L681"><span class="lineNum">     681</span> <span class="tlaUNC">           0 :     return 'चालान: $value';</span></span>
-<span id="L682"><span class="lineNum">     682</span>              :   }</span>
-<span id="L683"><span class="lineNum">     683</span>              : </span>
-<span id="L684"><span class="lineNum">     684</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L685"><span class="lineNum">     685</span>              :   String get isCleaned =&gt; 'मौजूदा डेटा हटाएं';</span>
-<span id="L686"><span class="lineNum">     686</span>              : </span>
-<span id="L687"><span class="lineNum">     687</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L688"><span class="lineNum">     688</span>              :   String get isCreated =&gt; 'पहले ही बनाया जा चुका है, अगले चरणों का पालन करें!';</span>
-<span id="L689"><span class="lineNum">     689</span>              : </span>
-<span id="L690"><span class="lineNum">     690</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L691"><span class="lineNum">     691</span>              :   String get isEncrypted =&gt; 'फ़ाइल एन्क्रिप्टेड है (डिफ़ॉल्ट रूप से)';</span>
+<span id="L680"><span class="lineNum">     680</span>              :   String get incomeHealth =&gt; 'आय स्वास्थ्य रडार';</span>
+<span id="L681"><span class="lineNum">     681</span>              : </span>
+<span id="L682"><span class="lineNum">     682</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L683"><span class="lineNum">     683</span>              :   String get incomeTooltip =&gt; 'आय विवरण निर्धारित करें';</span>
+<span id="L684"><span class="lineNum">     684</span>              : </span>
+<span id="L685"><span class="lineNum">     685</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L686"><span class="lineNum">     686</span>              :   String get invoiceHeadline =&gt; 'चालान';</span>
+<span id="L687"><span class="lineNum">     687</span>              : </span>
+<span id="L688"><span class="lineNum">     688</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L689"><span class="lineNum">     689</span>              :   String invoiceSum(Object value) {</span>
+<span id="L690"><span class="lineNum">     690</span> <span class="tlaUNC">           0 :     return 'चालान: $value';</span></span>
+<span id="L691"><span class="lineNum">     691</span>              :   }</span>
 <span id="L692"><span class="lineNum">     692</span>              : </span>
 <span id="L693"><span class="lineNum">     693</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L694"><span class="lineNum">     694</span>              :   String get isRequired =&gt; 'आवश्यक';</span>
+<span id="L694"><span class="lineNum">     694</span>              :   String get isCleaned =&gt; 'मौजूदा डेटा हटाएं';</span>
 <span id="L695"><span class="lineNum">     695</span>              : </span>
 <span id="L696"><span class="lineNum">     696</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L697"><span class="lineNum">     697</span>              :   String get language =&gt; 'भाषा';</span>
+<span id="L697"><span class="lineNum">     697</span>              :   String get isCreated =&gt; 'पहले ही बनाया जा चुका है, अगले चरणों का पालन करें!';</span>
 <span id="L698"><span class="lineNum">     698</span>              : </span>
 <span id="L699"><span class="lineNum">     699</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L700"><span class="lineNum">     700</span>              :   String get left =&gt; 'बाएं';</span>
+<span id="L700"><span class="lineNum">     700</span>              :   String get isEncrypted =&gt; 'फ़ाइल एन्क्रिप्टेड है (डिफ़ॉल्ट रूप से)';</span>
 <span id="L701"><span class="lineNum">     701</span>              : </span>
 <span id="L702"><span class="lineNum">     702</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L703"><span class="lineNum">     703</span>              :   String get lightMode =&gt; 'रोशनी';</span>
+<span id="L703"><span class="lineNum">     703</span>              :   String get isRequired =&gt; 'आवश्यक';</span>
 <span id="L704"><span class="lineNum">     704</span>              : </span>
 <span id="L705"><span class="lineNum">     705</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L706"><span class="lineNum">     706</span>              :   String get link =&gt; 'यूनिफ़ॉर्म रिसोर्स लोकेटर (यूआरएल)';</span>
+<span id="L706"><span class="lineNum">     706</span>              :   String get language =&gt; 'भाषा';</span>
 <span id="L707"><span class="lineNum">     707</span>              : </span>
 <span id="L708"><span class="lineNum">     708</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L709"><span class="lineNum">     709</span>              :   String get meaning =&gt; 'अर्थ';</span>
+<span id="L709"><span class="lineNum">     709</span>              :   String get left =&gt; 'बाएं';</span>
 <span id="L710"><span class="lineNum">     710</span>              : </span>
 <span id="L711"><span class="lineNum">     711</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L712"><span class="lineNum">     712</span>              :   String get metricsHeadline =&gt; 'मेट्रिक्स';</span>
+<span id="L712"><span class="lineNum">     712</span>              :   String get lightMode =&gt; 'रोशनी';</span>
 <span id="L713"><span class="lineNum">     713</span>              : </span>
 <span id="L714"><span class="lineNum">     714</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L715"><span class="lineNum">     715</span>              :   String get metricsTooltip =&gt; 'मेट्रिक्स';</span>
+<span id="L715"><span class="lineNum">     715</span>              :   String get link =&gt; 'यूनिफ़ॉर्म रिसोर्स लोकेटर (यूआरएल)';</span>
 <span id="L716"><span class="lineNum">     716</span>              : </span>
 <span id="L717"><span class="lineNum">     717</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L718"><span class="lineNum">     718</span>              :   String get milestones =&gt; 'मील के पत्थर';</span>
+<span id="L718"><span class="lineNum">     718</span>              :   String get meaning =&gt; 'अर्थ';</span>
 <span id="L719"><span class="lineNum">     719</span>              : </span>
 <span id="L720"><span class="lineNum">     720</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L721"><span class="lineNum">     721</span>              :   String get missingContent =&gt; 'फ़ाइल संसाधित नहीं की जा सकती (या तो रद्द की गई)';</span>
+<span id="L721"><span class="lineNum">     721</span>              :   String get metricsHeadline =&gt; 'मेट्रिक्स';</span>
 <span id="L722"><span class="lineNum">     722</span>              : </span>
 <span id="L723"><span class="lineNum">     723</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L724"><span class="lineNum">     724</span>              :   String get navigationTooltip =&gt; 'मुख्य मेनू खोलें';</span>
+<span id="L724"><span class="lineNum">     724</span>              :   String get metricsTooltip =&gt; 'मेट्रिक्स';</span>
 <span id="L725"><span class="lineNum">     725</span>              : </span>
 <span id="L726"><span class="lineNum">     726</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L727"><span class="lineNum">     727</span>              :   String netProfit(Object value) {</span>
-<span id="L728"><span class="lineNum">     728</span> <span class="tlaUNC">           0 :     return 'लाभ: $value';</span></span>
-<span id="L729"><span class="lineNum">     729</span>              :   }</span>
-<span id="L730"><span class="lineNum">     730</span>              : </span>
-<span id="L731"><span class="lineNum">     731</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L732"><span class="lineNum">     732</span>              :   String get noChartData =&gt; 'दिखाने के लिए डेटा गायब है (या पर्याप्त नहीं है)।';</span>
-<span id="L733"><span class="lineNum">     733</span>              : </span>
-<span id="L734"><span class="lineNum">     734</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L735"><span class="lineNum">     735</span>              :   String get notifyHeadline =&gt; 'सूचनाएं पार्सर';</span>
-<span id="L736"><span class="lineNum">     736</span>              : </span>
-<span id="L737"><span class="lineNum">     737</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L738"><span class="lineNum">     738</span>              :   String get ok =&gt; 'ठीक है';</span>
+<span id="L727"><span class="lineNum">     727</span>              :   String get milestones =&gt; 'मील के पत्थर';</span>
+<span id="L728"><span class="lineNum">     728</span>              : </span>
+<span id="L729"><span class="lineNum">     729</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L730"><span class="lineNum">     730</span>              :   String get missingContent =&gt; 'फ़ाइल संसाधित नहीं की जा सकती (या तो रद्द की गई)';</span>
+<span id="L731"><span class="lineNum">     731</span>              : </span>
+<span id="L732"><span class="lineNum">     732</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L733"><span class="lineNum">     733</span>              :   String get navigationTooltip =&gt; 'मुख्य मेनू खोलें';</span>
+<span id="L734"><span class="lineNum">     734</span>              : </span>
+<span id="L735"><span class="lineNum">     735</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L736"><span class="lineNum">     736</span>              :   String netProfit(Object value) {</span>
+<span id="L737"><span class="lineNum">     737</span> <span class="tlaUNC">           0 :     return 'लाभ: $value';</span></span>
+<span id="L738"><span class="lineNum">     738</span>              :   }</span>
 <span id="L739"><span class="lineNum">     739</span>              : </span>
 <span id="L740"><span class="lineNum">     740</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L741"><span class="lineNum">     741</span>              :   String get orderPin =&gt; 'प्राथमिकता क्रम';</span>
+<span id="L741"><span class="lineNum">     741</span>              :   String get noChartData =&gt; 'दिखाने के लिए डेटा गायब है (या पर्याप्त नहीं है)।';</span>
 <span id="L742"><span class="lineNum">     742</span>              : </span>
 <span id="L743"><span class="lineNum">     743</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L744"><span class="lineNum">     744</span>              :   String get orderUnpin =&gt; 'सामान्यीकृत आदेश';</span>
+<span id="L744"><span class="lineNum">     744</span>              :   String get notifyHeadline =&gt; 'सूचनाएं पार्सर';</span>
 <span id="L745"><span class="lineNum">     745</span>              : </span>
 <span id="L746"><span class="lineNum">     746</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L747"><span class="lineNum">     747</span>              :   String get outputFile =&gt; 'फ़ाइल के लिए गंतव्य';</span>
+<span id="L747"><span class="lineNum">     747</span>              :   String get ok =&gt; 'ठीक है';</span>
 <span id="L748"><span class="lineNum">     748</span>              : </span>
 <span id="L749"><span class="lineNum">     749</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L750"><span class="lineNum">     750</span>              :   String get parseFile =&gt; 'फ़ाइल पार्स करें';</span>
+<span id="L750"><span class="lineNum">     750</span>              :   String get orderPin =&gt; 'प्राथमिकता क्रम';</span>
 <span id="L751"><span class="lineNum">     751</span>              : </span>
 <span id="L752"><span class="lineNum">     752</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L753"><span class="lineNum">     753</span>              :   String get password =&gt; 'पासवर्ड';</span>
+<span id="L753"><span class="lineNum">     753</span>              :   String get orderUnpin =&gt; 'सामान्यीकृत आदेश';</span>
 <span id="L754"><span class="lineNum">     754</span>              : </span>
 <span id="L755"><span class="lineNum">     755</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L756"><span class="lineNum">     756</span>              :   String get path =&gt; 'फ़ाइल नाम (सेव करने या लोड करने के लिए)';</span>
+<span id="L756"><span class="lineNum">     756</span>              :   String get outputFile =&gt; 'फ़ाइल के लिए गंतव्य';</span>
 <span id="L757"><span class="lineNum">     757</span>              : </span>
 <span id="L758"><span class="lineNum">     758</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L759"><span class="lineNum">     759</span>              :   String get paymentType =&gt; 'भुगतान अंतराल';</span>
+<span id="L759"><span class="lineNum">     759</span>              :   String get parseFile =&gt; 'फ़ाइल पार्स करें';</span>
 <span id="L760"><span class="lineNum">     760</span>              : </span>
 <span id="L761"><span class="lineNum">     761</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L762"><span class="lineNum">     762</span>              :   String get paymentsHeadline =&gt; 'आवर्ती भुगतान';</span>
+<span id="L762"><span class="lineNum">     762</span>              :   String get password =&gt; 'पासवर्ड';</span>
 <span id="L763"><span class="lineNum">     763</span>              : </span>
 <span id="L764"><span class="lineNum">     764</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L765"><span class="lineNum">     765</span>              :   String get pearDisabled =&gt; '-- अक्षम --';</span>
+<span id="L765"><span class="lineNum">     765</span>              :   String get path =&gt; 'फ़ाइल नाम (सेव करने या लोड करने के लिए)';</span>
 <span id="L766"><span class="lineNum">     766</span>              : </span>
 <span id="L767"><span class="lineNum">     767</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L768"><span class="lineNum">     768</span>              :   String get pearLoading =&gt; 'प्रगति पर है...';</span>
+<span id="L768"><span class="lineNum">     768</span>              :   String get paymentType =&gt; 'भुगतान अंतराल';</span>
 <span id="L769"><span class="lineNum">     769</span>              : </span>
 <span id="L770"><span class="lineNum">     770</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L771"><span class="lineNum">     771</span>              :   String get peerAccept =&gt; 'स्वीकार करना';</span>
+<span id="L771"><span class="lineNum">     771</span>              :   String get paymentsHeadline =&gt; 'आवर्ती भुगतान';</span>
 <span id="L772"><span class="lineNum">     772</span>              : </span>
 <span id="L773"><span class="lineNum">     773</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L774"><span class="lineNum">     774</span>              :   String get peerAction =&gt; 'कार्रवाई';</span>
+<span id="L774"><span class="lineNum">     774</span>              :   String get pearDisabled =&gt; '-- अक्षम --';</span>
 <span id="L775"><span class="lineNum">     775</span>              : </span>
 <span id="L776"><span class="lineNum">     776</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L777"><span class="lineNum">     777</span>              :   String get peerClosed =&gt; 'समाप्त';</span>
+<span id="L777"><span class="lineNum">     777</span>              :   String get pearLoading =&gt; 'प्रगति पर है...';</span>
 <span id="L778"><span class="lineNum">     778</span>              : </span>
 <span id="L779"><span class="lineNum">     779</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L780"><span class="lineNum">     780</span>              :   String get peerConnect =&gt; 'डिवाइस कनेक्ट करें';</span>
+<span id="L780"><span class="lineNum">     780</span>              :   String get peerAccept =&gt; 'स्वीकार करना';</span>
 <span id="L781"><span class="lineNum">     781</span>              : </span>
 <span id="L782"><span class="lineNum">     782</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L783"><span class="lineNum">     783</span>              :   String get peerConnectBtn =&gt; 'जोड़ना';</span>
+<span id="L783"><span class="lineNum">     783</span>              :   String get peerAction =&gt; 'कार्रवाई';</span>
 <span id="L784"><span class="lineNum">     784</span>              : </span>
 <span id="L785"><span class="lineNum">     785</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L786"><span class="lineNum">     786</span>              :   String get peerDelete =&gt; 'मिटाना';</span>
+<span id="L786"><span class="lineNum">     786</span>              :   String get peerClosed =&gt; 'समाप्त';</span>
 <span id="L787"><span class="lineNum">     787</span>              : </span>
 <span id="L788"><span class="lineNum">     788</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L789"><span class="lineNum">     789</span>              :   String get peerDevice =&gt; 'जुड़ी हुई डिवाइसेज';</span>
+<span id="L789"><span class="lineNum">     789</span>              :   String get peerConnect =&gt; 'डिवाइस कनेक्ट करें';</span>
 <span id="L790"><span class="lineNum">     790</span>              : </span>
 <span id="L791"><span class="lineNum">     791</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L792"><span class="lineNum">     792</span>              :   String get peerId =&gt; 'कनेक्शन के लिए आपका डिवाइस पहचानकर्ता';</span>
+<span id="L792"><span class="lineNum">     792</span>              :   String get peerConnectBtn =&gt; 'जोड़ना';</span>
 <span id="L793"><span class="lineNum">     793</span>              : </span>
 <span id="L794"><span class="lineNum">     794</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L795"><span class="lineNum">     795</span>              :   String get peerOffline =&gt; 'ऑफलाइन';</span>
+<span id="L795"><span class="lineNum">     795</span>              :   String get peerDelete =&gt; 'मिटाना';</span>
 <span id="L796"><span class="lineNum">     796</span>              : </span>
 <span id="L797"><span class="lineNum">     797</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L798"><span class="lineNum">     798</span>              :   String get peerOnline =&gt; 'जुड़े हुए';</span>
+<span id="L798"><span class="lineNum">     798</span>              :   String get peerDevice =&gt; 'जुड़ी हुई डिवाइसेज';</span>
 <span id="L799"><span class="lineNum">     799</span>              : </span>
 <span id="L800"><span class="lineNum">     800</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L801"><span class="lineNum">     801</span>              :   String get peerOtherId =&gt; 'कनेक्शन के लिए डिवाइस पहचानकर्ता';</span>
+<span id="L801"><span class="lineNum">     801</span>              :   String get peerId =&gt; 'कनेक्शन के लिए आपका डिवाइस पहचानकर्ता';</span>
 <span id="L802"><span class="lineNum">     802</span>              : </span>
 <span id="L803"><span class="lineNum">     803</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L804"><span class="lineNum">     804</span>              :   String get peerPending =&gt; 'लंबित';</span>
+<span id="L804"><span class="lineNum">     804</span>              :   String get peerOffline =&gt; 'ऑफलाइन';</span>
 <span id="L805"><span class="lineNum">     805</span>              : </span>
 <span id="L806"><span class="lineNum">     806</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L807"><span class="lineNum">     807</span>              :   String get peerPing =&gt; 'गुनगुनाहट';</span>
+<span id="L807"><span class="lineNum">     807</span>              :   String get peerOnline =&gt; 'जुड़े हुए';</span>
 <span id="L808"><span class="lineNum">     808</span>              : </span>
 <span id="L809"><span class="lineNum">     809</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L810"><span class="lineNum">     810</span>              :   String get peerSent =&gt; 'डेटा को कनेक्टेड डिवाइसेस में स्थानांतरित किया जाता है';</span>
+<span id="L810"><span class="lineNum">     810</span>              :   String get peerOtherId =&gt; 'कनेक्शन के लिए डिवाइस पहचानकर्ता';</span>
 <span id="L811"><span class="lineNum">     811</span>              : </span>
 <span id="L812"><span class="lineNum">     812</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L813"><span class="lineNum">     813</span>              :   String get peerStatus =&gt; 'स्थिति';</span>
+<span id="L813"><span class="lineNum">     813</span>              :   String get peerPending =&gt; 'लंबित';</span>
 <span id="L814"><span class="lineNum">     814</span>              : </span>
 <span id="L815"><span class="lineNum">     815</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L816"><span class="lineNum">     816</span>              :   String get peerSync =&gt; 'स्थानांतरण डेटा';</span>
+<span id="L816"><span class="lineNum">     816</span>              :   String get peerPing =&gt; 'गुनगुनाहट';</span>
 <span id="L817"><span class="lineNum">     817</span>              : </span>
 <span id="L818"><span class="lineNum">     818</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L819"><span class="lineNum">     819</span>              :   String pickFile(Object value) {</span>
-<span id="L820"><span class="lineNum">     820</span> <span class="tlaUNC">           0 :     return '.$value-फ़ाइल चुनें';</span></span>
-<span id="L821"><span class="lineNum">     821</span>              :   }</span>
-<span id="L822"><span class="lineNum">     822</span>              : </span>
-<span id="L823"><span class="lineNum">     823</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L824"><span class="lineNum">     824</span>              :   String pongStatus(Object uuid) {</span>
-<span id="L825"><span class="lineNum">     825</span> <span class="tlaUNC">           0 :     return '$uuid से अनुरोध लिया गया';</span></span>
-<span id="L826"><span class="lineNum">     826</span>              :   }</span>
-<span id="L827"><span class="lineNum">     827</span>              : </span>
-<span id="L828"><span class="lineNum">     828</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L829"><span class="lineNum">     829</span>              :   String get processIsFinished =&gt; 'खत्म!';</span>
-<span id="L830"><span class="lineNum">     830</span>              : </span>
-<span id="L831"><span class="lineNum">     831</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L832"><span class="lineNum">     832</span>              :   String progress(Object value) {</span>
-<span id="L833"><span class="lineNum">     833</span> <span class="tlaUNC">           0 :     return 'प्रगति: $value%';</span></span>
-<span id="L834"><span class="lineNum">     834</span>              :   }</span>
-<span id="L835"><span class="lineNum">     835</span>              : </span>
-<span id="L836"><span class="lineNum">     836</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L837"><span class="lineNum">     837</span>              :   String get raiseData =&gt; 'राशि जोड़';</span>
-<span id="L838"><span class="lineNum">     838</span>              : </span>
-<span id="L839"><span class="lineNum">     839</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L840"><span class="lineNum">     840</span>              :   String get recoveryHeadline =&gt; 'वसूली';</span>
-<span id="L841"><span class="lineNum">     841</span>              : </span>
-<span id="L842"><span class="lineNum">     842</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L843"><span class="lineNum">     843</span>              :   String get recoveryTooltip =&gt; 'से उबरना';</span>
+<span id="L819"><span class="lineNum">     819</span>              :   String get peerSent =&gt; 'डेटा को कनेक्टेड डिवाइसेस में स्थानांतरित किया जाता है';</span>
+<span id="L820"><span class="lineNum">     820</span>              : </span>
+<span id="L821"><span class="lineNum">     821</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L822"><span class="lineNum">     822</span>              :   String get peerStatus =&gt; 'स्थिति';</span>
+<span id="L823"><span class="lineNum">     823</span>              : </span>
+<span id="L824"><span class="lineNum">     824</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L825"><span class="lineNum">     825</span>              :   String get peerSync =&gt; 'स्थानांतरण डेटा';</span>
+<span id="L826"><span class="lineNum">     826</span>              : </span>
+<span id="L827"><span class="lineNum">     827</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L828"><span class="lineNum">     828</span>              :   String pickFile(Object value) {</span>
+<span id="L829"><span class="lineNum">     829</span> <span class="tlaUNC">           0 :     return '.$value-फ़ाइल चुनें';</span></span>
+<span id="L830"><span class="lineNum">     830</span>              :   }</span>
+<span id="L831"><span class="lineNum">     831</span>              : </span>
+<span id="L832"><span class="lineNum">     832</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L833"><span class="lineNum">     833</span>              :   String pongStatus(Object uuid) {</span>
+<span id="L834"><span class="lineNum">     834</span> <span class="tlaUNC">           0 :     return '$uuid से अनुरोध लिया गया';</span></span>
+<span id="L835"><span class="lineNum">     835</span>              :   }</span>
+<span id="L836"><span class="lineNum">     836</span>              : </span>
+<span id="L837"><span class="lineNum">     837</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L838"><span class="lineNum">     838</span>              :   String get processIsFinished =&gt; 'खत्म!';</span>
+<span id="L839"><span class="lineNum">     839</span>              : </span>
+<span id="L840"><span class="lineNum">     840</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L841"><span class="lineNum">     841</span>              :   String progress(Object value) {</span>
+<span id="L842"><span class="lineNum">     842</span> <span class="tlaUNC">           0 :     return 'प्रगति: $value%';</span></span>
+<span id="L843"><span class="lineNum">     843</span>              :   }</span>
 <span id="L844"><span class="lineNum">     844</span>              : </span>
 <span id="L845"><span class="lineNum">     845</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L846"><span class="lineNum">     846</span>              :   String get releases =&gt; 'विज्ञप्ति';</span>
+<span id="L846"><span class="lineNum">     846</span>              :   String get raiseData =&gt; 'राशि जोड़';</span>
 <span id="L847"><span class="lineNum">     847</span>              : </span>
 <span id="L848"><span class="lineNum">     848</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L849"><span class="lineNum">     849</span>              :   String get reset =&gt; 'रीसेट';</span>
+<span id="L849"><span class="lineNum">     849</span>              :   String get recoveryHeadline =&gt; 'वसूली';</span>
 <span id="L850"><span class="lineNum">     850</span>              : </span>
 <span id="L851"><span class="lineNum">     851</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L852"><span class="lineNum">     852</span>              :   String get returnBack =&gt; 'वापस लौटाएं';</span>
+<span id="L852"><span class="lineNum">     852</span>              :   String get recoveryTooltip =&gt; 'से उबरना';</span>
 <span id="L853"><span class="lineNum">     853</span>              : </span>
 <span id="L854"><span class="lineNum">     854</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L855"><span class="lineNum">     855</span>              :   String get roadmap =&gt; 'रोडमैप';</span>
+<span id="L855"><span class="lineNum">     855</span>              :   String get releases =&gt; 'विज्ञप्ति';</span>
 <span id="L856"><span class="lineNum">     856</span>              : </span>
 <span id="L857"><span class="lineNum">     857</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L858"><span class="lineNum">     858</span>              :   String get saveNotification =&gt; 'बदलाव सुरक्षित किया गया!';</span>
+<span id="L858"><span class="lineNum">     858</span>              :   String get reset =&gt; 'रीसेट';</span>
 <span id="L859"><span class="lineNum">     859</span>              : </span>
 <span id="L860"><span class="lineNum">     860</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L861"><span class="lineNum">     861</span>              :   String get saveSettingsTooltip =&gt; 'बचाना';</span>
+<span id="L861"><span class="lineNum">     861</span>              :   String get returnBack =&gt; 'वापस लौटाएं';</span>
 <span id="L862"><span class="lineNum">     862</span>              : </span>
 <span id="L863"><span class="lineNum">     863</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L864"><span class="lineNum">     864</span>              :   String get saveTooltip =&gt; 'में सुरक्षित करें';</span>
+<span id="L864"><span class="lineNum">     864</span>              :   String get roadmap =&gt; 'रोडमैप';</span>
 <span id="L865"><span class="lineNum">     865</span>              : </span>
 <span id="L866"><span class="lineNum">     866</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L867"><span class="lineNum">     867</span>              :   String search(Object value) {</span>
-<span id="L868"><span class="lineNum">     868</span> <span class="tlaUNC">           0 :     return '\'$value\' पैटर्न द्वारा दिखाएँ';</span></span>
-<span id="L869"><span class="lineNum">     869</span>              :   }</span>
-<span id="L870"><span class="lineNum">     870</span>              : </span>
-<span id="L871"><span class="lineNum">     871</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L872"><span class="lineNum">     872</span>              :   String get searchTooltip =&gt; 'खोज';</span>
-<span id="L873"><span class="lineNum">     873</span>              : </span>
-<span id="L874"><span class="lineNum">     874</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L875"><span class="lineNum">     875</span>              :   String get settingsBaseHeadline =&gt; 'मूल बातें';</span>
-<span id="L876"><span class="lineNum">     876</span>              : </span>
-<span id="L877"><span class="lineNum">     877</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L878"><span class="lineNum">     878</span>              :   String get settingsHeadline =&gt; 'समायोजन';</span>
+<span id="L867"><span class="lineNum">     867</span>              :   String get saveNotification =&gt; 'बदलाव सुरक्षित किया गया!';</span>
+<span id="L868"><span class="lineNum">     868</span>              : </span>
+<span id="L869"><span class="lineNum">     869</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L870"><span class="lineNum">     870</span>              :   String get saveSettingsTooltip =&gt; 'बचाना';</span>
+<span id="L871"><span class="lineNum">     871</span>              : </span>
+<span id="L872"><span class="lineNum">     872</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L873"><span class="lineNum">     873</span>              :   String get saveTooltip =&gt; 'में सुरक्षित करें';</span>
+<span id="L874"><span class="lineNum">     874</span>              : </span>
+<span id="L875"><span class="lineNum">     875</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L876"><span class="lineNum">     876</span>              :   String search(Object value) {</span>
+<span id="L877"><span class="lineNum">     877</span> <span class="tlaUNC">           0 :     return '\'$value\' पैटर्न द्वारा दिखाएँ';</span></span>
+<span id="L878"><span class="lineNum">     878</span>              :   }</span>
 <span id="L879"><span class="lineNum">     879</span>              : </span>
 <span id="L880"><span class="lineNum">     880</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L881"><span class="lineNum">     881</span>              :   String get skipFromTotals =&gt; 'कुल से बाहर रखें';</span>
+<span id="L881"><span class="lineNum">     881</span>              :   String get searchTooltip =&gt; 'खोज';</span>
 <span id="L882"><span class="lineNum">     882</span>              : </span>
 <span id="L883"><span class="lineNum">     883</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L884"><span class="lineNum">     884</span>              :   String get skipTooltip =&gt; 'चरण छोड़ें';</span>
+<span id="L884"><span class="lineNum">     884</span>              :   String get settingsBaseHeadline =&gt; 'मूल बातें';</span>
 <span id="L885"><span class="lineNum">     885</span>              : </span>
 <span id="L886"><span class="lineNum">     886</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L887"><span class="lineNum">     887</span>              :   String get spent =&gt; 'खर्च किया';</span>
+<span id="L887"><span class="lineNum">     887</span>              :   String get settingsHeadline =&gt; 'समायोजन';</span>
 <span id="L888"><span class="lineNum">     888</span>              : </span>
 <span id="L889"><span class="lineNum">     889</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L890"><span class="lineNum">     890</span>              :   String get splitCancelTooltip =&gt; 'प्रति माह विभाजन रद्द करें';</span>
+<span id="L890"><span class="lineNum">     890</span>              :   String get skipFromTotals =&gt; 'कुल से बाहर रखें';</span>
 <span id="L891"><span class="lineNum">     891</span>              : </span>
 <span id="L892"><span class="lineNum">     892</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L893"><span class="lineNum">     893</span>              :   String get splitTooltip =&gt; 'प्रति माह सीमा घोषित करें';</span>
+<span id="L893"><span class="lineNum">     893</span>              :   String get skipTooltip =&gt; 'चरण छोड़ें';</span>
 <span id="L894"><span class="lineNum">     894</span>              : </span>
 <span id="L895"><span class="lineNum">     895</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L896"><span class="lineNum">     896</span>              :   String get subscription =&gt;</span>
-<span id="L897"><span class="lineNum">     897</span>              :       'एक ओपन-सोर्स प्रोजेक्ट के रूप में, सदस्यता लेने से कोई अतिरिक्त सुविधाएँ अनलॉक नहीं होंगी। हालाँकि, यह एप्लिकेशन के निरंतर विकास और सुधार और इसकी उपलब्धता को संरक्षित करने में एक निवेश के रूप में काम करेगा।';</span>
-<span id="L898"><span class="lineNum">     898</span>              : </span>
-<span id="L899"><span class="lineNum">     899</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L900"><span class="lineNum">     900</span>              :   String get subscriptionCoffee =&gt; 'एक कॉफ़ी खरीदें';</span>
-<span id="L901"><span class="lineNum">     901</span>              : </span>
-<span id="L902"><span class="lineNum">     902</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L903"><span class="lineNum">     903</span>              :   String get subscriptionDinner =&gt; 'रात के खाने का इलाज करें';</span>
-<span id="L904"><span class="lineNum">     904</span>              : </span>
-<span id="L905"><span class="lineNum">     905</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L906"><span class="lineNum">     906</span>              :   String get subscriptionDonorbox =&gt; 'डोनरबॉक्स के माध्यम से सदस्यता लें';</span>
+<span id="L896"><span class="lineNum">     896</span>              :   String get spent =&gt; 'खर्च किया';</span>
+<span id="L897"><span class="lineNum">     897</span>              : </span>
+<span id="L898"><span class="lineNum">     898</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L899"><span class="lineNum">     899</span>              :   String get splitCancelTooltip =&gt; 'प्रति माह विभाजन रद्द करें';</span>
+<span id="L900"><span class="lineNum">     900</span>              : </span>
+<span id="L901"><span class="lineNum">     901</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L902"><span class="lineNum">     902</span>              :   String get splitTooltip =&gt; 'प्रति माह सीमा घोषित करें';</span>
+<span id="L903"><span class="lineNum">     903</span>              : </span>
+<span id="L904"><span class="lineNum">     904</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L905"><span class="lineNum">     905</span>              :   String get subscription =&gt;</span>
+<span id="L906"><span class="lineNum">     906</span>              :       'एक ओपन-सोर्स प्रोजेक्ट के रूप में, सदस्यता लेने से कोई अतिरिक्त सुविधाएँ अनलॉक नहीं होंगी। हालाँकि, यह एप्लिकेशन के निरंतर विकास और सुधार और इसकी उपलब्धता को संरक्षित करने में एक निवेश के रूप में काम करेगा।';</span>
 <span id="L907"><span class="lineNum">     907</span>              : </span>
 <span id="L908"><span class="lineNum">     908</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L909"><span class="lineNum">     909</span>              :   String get subscriptionGithub =&gt; 'GitHub के माध्यम से सदस्यता लें';</span>
+<span id="L909"><span class="lineNum">     909</span>              :   String get subscriptionCoffee =&gt; 'एक कॉफ़ी खरीदें';</span>
 <span id="L910"><span class="lineNum">     910</span>              : </span>
 <span id="L911"><span class="lineNum">     911</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L912"><span class="lineNum">     912</span>              :   String get subscriptionHeadline =&gt; 'प्रायोजन';</span>
+<span id="L912"><span class="lineNum">     912</span>              :   String get subscriptionDinner =&gt; 'रात के खाने का इलाज करें';</span>
 <span id="L913"><span class="lineNum">     913</span>              : </span>
 <span id="L914"><span class="lineNum">     914</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L915"><span class="lineNum">     915</span>              :   String get subscriptionInactive =&gt; 'क्रय सेवा अनुपलब्ध';</span>
+<span id="L915"><span class="lineNum">     915</span>              :   String get subscriptionDonorbox =&gt; 'डोनरबॉक्स के माध्यम से सदस्यता लें';</span>
 <span id="L916"><span class="lineNum">     916</span>              : </span>
 <span id="L917"><span class="lineNum">     917</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L918"><span class="lineNum">     918</span>              :   String get subscriptionPatreon =&gt; 'पैट्रियन के माध्यम से सदस्यता लें';</span>
+<span id="L918"><span class="lineNum">     918</span>              :   String get subscriptionGithub =&gt; 'GitHub के माध्यम से सदस्यता लें';</span>
 <span id="L919"><span class="lineNum">     919</span>              : </span>
 <span id="L920"><span class="lineNum">     920</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L921"><span class="lineNum">     921</span>              :   String get subscriptionPaypal =&gt; 'कॉफ़ी खरीदें (PayPal)';</span>
+<span id="L921"><span class="lineNum">     921</span>              :   String get subscriptionHeadline =&gt; 'प्रायोजन';</span>
 <span id="L922"><span class="lineNum">     922</span>              : </span>
 <span id="L923"><span class="lineNum">     923</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L924"><span class="lineNum">     924</span>              :   String get subscriptionTiny =&gt; 'एक भाग्यशाली सिक्का दें';</span>
+<span id="L924"><span class="lineNum">     924</span>              :   String get subscriptionInactive =&gt; 'क्रय सेवा अनुपलब्ध';</span>
 <span id="L925"><span class="lineNum">     925</span>              : </span>
 <span id="L926"><span class="lineNum">     926</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L927"><span class="lineNum">     927</span>              :   String get subscriptionTooltip =&gt; 'समर्थन (प्रायोजन)';</span>
+<span id="L927"><span class="lineNum">     927</span>              :   String get subscriptionPatreon =&gt; 'पैट्रियन के माध्यम से सदस्यता लें';</span>
 <span id="L928"><span class="lineNum">     928</span>              : </span>
 <span id="L929"><span class="lineNum">     929</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L930"><span class="lineNum">     930</span>              :   String get success =&gt; 'सफल हुए';</span>
+<span id="L930"><span class="lineNum">     930</span>              :   String get subscriptionPaypal =&gt; 'कॉफ़ी खरीदें (PayPal)';</span>
 <span id="L931"><span class="lineNum">     931</span>              : </span>
 <span id="L932"><span class="lineNum">     932</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L933"><span class="lineNum">     933</span>              :   String get summary =&gt; 'सारांश';</span>
+<span id="L933"><span class="lineNum">     933</span>              :   String get subscriptionTiny =&gt; 'एक भाग्यशाली सिक्का दें';</span>
 <span id="L934"><span class="lineNum">     934</span>              : </span>
 <span id="L935"><span class="lineNum">     935</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L936"><span class="lineNum">     936</span>              :   String get symbol =&gt; 'प्रतीक';</span>
+<span id="L936"><span class="lineNum">     936</span>              :   String get subscriptionTooltip =&gt; 'समर्थन (प्रायोजन)';</span>
 <span id="L937"><span class="lineNum">     937</span>              : </span>
 <span id="L938"><span class="lineNum">     938</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L939"><span class="lineNum">     939</span>              :   String get syncHeadline =&gt; 'डिवाइस सिंक करें';</span>
+<span id="L939"><span class="lineNum">     939</span>              :   String get success =&gt; 'सफल हुए';</span>
 <span id="L940"><span class="lineNum">     940</span>              : </span>
 <span id="L941"><span class="lineNum">     941</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L942"><span class="lineNum">     942</span>              :   String get systemMode =&gt; 'प्रणाली';</span>
+<span id="L942"><span class="lineNum">     942</span>              :   String get summary =&gt; 'सारांश';</span>
 <span id="L943"><span class="lineNum">     943</span>              : </span>
 <span id="L944"><span class="lineNum">     944</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L945"><span class="lineNum">     945</span>              :   String get tapToOpen =&gt; 'खोलने के लिए नल';</span>
+<span id="L945"><span class="lineNum">     945</span>              :   String get symbol =&gt; 'प्रतीक';</span>
 <span id="L946"><span class="lineNum">     946</span>              : </span>
 <span id="L947"><span class="lineNum">     947</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L948"><span class="lineNum">     948</span>              :   String get targetAmount =&gt; 'लक्ष्य राशि';</span>
+<span id="L948"><span class="lineNum">     948</span>              :   String get syncHeadline =&gt; 'डिवाइस सिंक करें';</span>
 <span id="L949"><span class="lineNum">     949</span>              : </span>
 <span id="L950"><span class="lineNum">     950</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L951"><span class="lineNum">     951</span>              :   String get termPrivacy =&gt; 'गोपनीयता नीति';</span>
+<span id="L951"><span class="lineNum">     951</span>              :   String get systemMode =&gt; 'प्रणाली';</span>
 <span id="L952"><span class="lineNum">     952</span>              : </span>
 <span id="L953"><span class="lineNum">     953</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L954"><span class="lineNum">     954</span>              :   String get termUse =&gt; 'उपयोग की शर्तें';</span>
+<span id="L954"><span class="lineNum">     954</span>              :   String get tapToOpen =&gt; 'खोलने के लिए नल';</span>
 <span id="L955"><span class="lineNum">     955</span>              : </span>
 <span id="L956"><span class="lineNum">     956</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L957"><span class="lineNum">     957</span>              :   String get title =&gt; 'शीर्षक';</span>
+<span id="L957"><span class="lineNum">     957</span>              :   String get targetAmount =&gt; 'लक्ष्य राशि';</span>
 <span id="L958"><span class="lineNum">     958</span>              : </span>
 <span id="L959"><span class="lineNum">     959</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L960"><span class="lineNum">     960</span>              :   String get titleAccountTooltip =&gt; 'खाता पहचानकर्ता दर्ज करें';</span>
+<span id="L960"><span class="lineNum">     960</span>              :   String get termPrivacy =&gt; 'गोपनीयता नीति';</span>
 <span id="L961"><span class="lineNum">     961</span>              : </span>
 <span id="L962"><span class="lineNum">     962</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L963"><span class="lineNum">     963</span>              :   String get titleBudgetTooltip =&gt; 'बजट श्रेणी का नाम दर्ज करें';</span>
+<span id="L963"><span class="lineNum">     963</span>              :   String get termUse =&gt; 'उपयोग की शर्तें';</span>
 <span id="L964"><span class="lineNum">     964</span>              : </span>
 <span id="L965"><span class="lineNum">     965</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L966"><span class="lineNum">     966</span>              :   String get titleGoal =&gt; 'लक्ष्य';</span>
+<span id="L966"><span class="lineNum">     966</span>              :   String get title =&gt; 'शीर्षक';</span>
 <span id="L967"><span class="lineNum">     967</span>              : </span>
 <span id="L968"><span class="lineNum">     968</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L969"><span class="lineNum">     969</span>              :   String get titleGoalTooltip =&gt; 'लक्ष्य विवरण परिभाषित करें';</span>
+<span id="L969"><span class="lineNum">     969</span>              :   String get titleAccountTooltip =&gt; 'खाता पहचानकर्ता दर्ज करें';</span>
 <span id="L970"><span class="lineNum">     970</span>              : </span>
 <span id="L971"><span class="lineNum">     971</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L972"><span class="lineNum">     972</span>              :   String get to =&gt; 'को';</span>
+<span id="L972"><span class="lineNum">     972</span>              :   String get titleBudgetTooltip =&gt; 'बजट श्रेणी का नाम दर्ज करें';</span>
 <span id="L973"><span class="lineNum">     973</span>              : </span>
 <span id="L974"><span class="lineNum">     974</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L975"><span class="lineNum">     975</span>              :   String get total =&gt; 'कुल';</span>
+<span id="L975"><span class="lineNum">     975</span>              :   String get titleGoal =&gt; 'लक्ष्य';</span>
 <span id="L976"><span class="lineNum">     976</span>              : </span>
 <span id="L977"><span class="lineNum">     977</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L978"><span class="lineNum">     978</span>              :   String get transactionFile =&gt; 'फ़िंगरॉम लेनदेन लॉग फ़ाइल (.log)';</span>
+<span id="L978"><span class="lineNum">     978</span>              :   String get titleGoalTooltip =&gt; 'लक्ष्य विवरण परिभाषित करें';</span>
 <span id="L979"><span class="lineNum">     979</span>              : </span>
 <span id="L980"><span class="lineNum">     980</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L981"><span class="lineNum">     981</span>              :   String get transferHeadline =&gt; 'स्थानांतरण';</span>
+<span id="L981"><span class="lineNum">     981</span>              :   String get to =&gt; 'को';</span>
 <span id="L982"><span class="lineNum">     982</span>              : </span>
 <span id="L983"><span class="lineNum">     983</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L984"><span class="lineNum">     984</span>              :   String get transferTooltip =&gt; 'स्थानांतरण विवरण सेट करें';</span>
+<span id="L984"><span class="lineNum">     984</span>              :   String get total =&gt; 'कुल';</span>
 <span id="L985"><span class="lineNum">     985</span>              : </span>
 <span id="L986"><span class="lineNum">     986</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L987"><span class="lineNum">     987</span>              :   String get transfersHeadline =&gt; 'स्थानांतरण';</span>
+<span id="L987"><span class="lineNum">     987</span>              :   String get transactionFile =&gt; 'फ़िंगरॉम लेनदेन लॉग फ़ाइल (.log)';</span>
 <span id="L988"><span class="lineNum">     988</span>              : </span>
 <span id="L989"><span class="lineNum">     989</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L990"><span class="lineNum">     990</span>              :   String get typeButton =&gt; 'बटन';</span>
+<span id="L990"><span class="lineNum">     990</span>              :   String get transferHeadline =&gt; 'स्थानांतरण';</span>
 <span id="L991"><span class="lineNum">     991</span>              : </span>
 <span id="L992"><span class="lineNum">     992</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L993"><span class="lineNum">     993</span>              :   String get updateAccountTooltip =&gt; 'खाता अद्यतन करें';</span>
+<span id="L993"><span class="lineNum">     993</span>              :   String get transferTooltip =&gt; 'स्थानांतरण विवरण सेट करें';</span>
 <span id="L994"><span class="lineNum">     994</span>              : </span>
 <span id="L995"><span class="lineNum">     995</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L996"><span class="lineNum">     996</span>              :   String get updateBillTooltip =&gt; 'बिल अद्यतन करें';</span>
+<span id="L996"><span class="lineNum">     996</span>              :   String get transfersHeadline =&gt; 'स्थानांतरण';</span>
 <span id="L997"><span class="lineNum">     997</span>              : </span>
 <span id="L998"><span class="lineNum">     998</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L999"><span class="lineNum">     999</span>              :   String get updateBudgetTooltip =&gt; 'बजट श्रेणी अद्यतन करें';</span>
+<span id="L999"><span class="lineNum">     999</span>              :   String get typeButton =&gt; 'बटन';</span>
 <span id="L1000"><span class="lineNum">    1000</span>              : </span>
 <span id="L1001"><span class="lineNum">    1001</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1002"><span class="lineNum">    1002</span>              :   String get updateGoalTooltip =&gt; 'लक्ष्य अद्यतन करें';</span>
+<span id="L1002"><span class="lineNum">    1002</span>              :   String get updateAccountTooltip =&gt; 'खाता अद्यतन करें';</span>
 <span id="L1003"><span class="lineNum">    1003</span>              : </span>
 <span id="L1004"><span class="lineNum">    1004</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1005"><span class="lineNum">    1005</span>              :   String get updatePaymentTooltip =&gt; 'भुगतान अपडेट करें';</span>
+<span id="L1005"><span class="lineNum">    1005</span>              :   String get updateBillTooltip =&gt; 'बिल अद्यतन करें';</span>
 <span id="L1006"><span class="lineNum">    1006</span>              : </span>
 <span id="L1007"><span class="lineNum">    1007</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1008"><span class="lineNum">    1008</span>              :   String get username =&gt; 'उपयोगकर्ता नाम (खाता)';</span>
+<span id="L1008"><span class="lineNum">    1008</span>              :   String get updateBudgetTooltip =&gt; 'बजट श्रेणी अद्यतन करें';</span>
 <span id="L1009"><span class="lineNum">    1009</span>              : </span>
 <span id="L1010"><span class="lineNum">    1010</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1011"><span class="lineNum">    1011</span>              :   String get uuid =&gt; 'अद्वितीय लेनदेन पहचानकर्ता';</span>
+<span id="L1011"><span class="lineNum">    1011</span>              :   String get updateGoalTooltip =&gt; 'लक्ष्य अद्यतन करें';</span>
 <span id="L1012"><span class="lineNum">    1012</span>              : </span>
 <span id="L1013"><span class="lineNum">    1013</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1014"><span class="lineNum">    1014</span>              :   String get validTillDate =&gt; 'तक मान्य';</span>
+<span id="L1014"><span class="lineNum">    1014</span>              :   String get updatePaymentTooltip =&gt; 'भुगतान अपडेट करें';</span>
 <span id="L1015"><span class="lineNum">    1015</span>              : </span>
 <span id="L1016"><span class="lineNum">    1016</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1017"><span class="lineNum">    1017</span>              :   String get webDav =&gt; 'वेब वितरित संलेखन और संस्करण (वेबडाव)';</span>
+<span id="L1017"><span class="lineNum">    1017</span>              :   String get username =&gt; 'उपयोगकर्ता नाम (खाता)';</span>
 <span id="L1018"><span class="lineNum">    1018</span>              : </span>
 <span id="L1019"><span class="lineNum">    1019</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1020"><span class="lineNum">    1020</span>              :   String get zoomState =&gt; 'ज़ूम इन ज़ूम आउट';</span>
-<span id="L1021"><span class="lineNum">    1021</span>              : }</span>
+<span id="L1020"><span class="lineNum">    1020</span>              :   String get uuid =&gt; 'अद्वितीय लेनदेन पहचानकर्ता';</span>
+<span id="L1021"><span class="lineNum">    1021</span>              : </span>
+<span id="L1022"><span class="lineNum">    1022</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L1023"><span class="lineNum">    1023</span>              :   String get validTillDate =&gt; 'तक मान्य';</span>
+<span id="L1024"><span class="lineNum">    1024</span>              : </span>
+<span id="L1025"><span class="lineNum">    1025</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L1026"><span class="lineNum">    1026</span>              :   String get webDav =&gt; 'वेब वितरित संलेखन और संस्करण (वेबडाव)';</span>
+<span id="L1027"><span class="lineNum">    1027</span>              : </span>
+<span id="L1028"><span class="lineNum">    1028</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L1029"><span class="lineNum">    1029</span>              :   String get zoomState =&gt; 'ज़ूम इन ज़ूम आउट';</span>
+<span id="L1030"><span class="lineNum">    1030</span>              : }</span>
         </pre>
               </td>
             </tr>

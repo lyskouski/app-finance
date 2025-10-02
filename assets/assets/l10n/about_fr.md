@@ -47,6 +47,7 @@ Elle permet aux utilisateurs de gérer leurs finances sans effort, tout en veill
   - Jour de début de la semaine et du mois personnalisable
 - Factures, transferts, revenus (factures)
   - Paiements récurrents (avec un widget)
+  - Filtrage
 - Définition des objectifs
 - Taux de change, devise par défaut pour le résumé
 - Métriques : 

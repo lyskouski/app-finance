@@ -47,6 +47,7 @@ Která uživatelům umožní bez námahy spravovat své finance a zároveň zaji
   - Přizpůsobitelný počáteční den týdne a měsíce
 - Účty, převody, příjmy (faktury)
   - Opakující se platby (s widgetem na domovské obrazovce)
+  - Filtrování
 - Definice cílů
 - Směnné kurzy, výchozí měna pro shrnutí
 - Metriky: 

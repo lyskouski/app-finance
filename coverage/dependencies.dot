@@ -214,7 +214,7 @@ digraph G {
   }
   {
     rank = same; "design";
-    form [label="<0>FORM|<month_year_input>month_year_input|<list_selector_item>list_selector_item|<list_selector_page>list_selector_page|<color_selector>color_selector|<simple_input>simple_input|<date_time_input>date_time_input|<list_budget_selector>list_budget_selector|<icon_selector>icon_selector|<currency_selector_code>currency_selector_code|<list_selector>list_selector|<currency_selector>currency_selector|<currency_exchange_input>currency_exchange_input|<date_input>date_input|<abstract_selector>abstract_selector|<list_account_selector>list_account_selector",fillcolor="silver:white", gradientangle=240, style="filled"];
+    form [label="<0>FORM|<month_year_input>month_year_input|<list_selector_item>list_selector_item|<list_selector_page>list_selector_page|<color_selector>color_selector|<simple_input>simple_input|<date_time_input>date_time_input|<list_budget_selector>list_budget_selector|<icon_selector>icon_selector|<currency_selector_code>currency_selector_code|<list_selector>list_selector|<currency_selector>currency_selector|<currency_exchange_input>currency_exchange_input|<date_input>date_input|<date_range_input>date_range_input|<abstract_selector>abstract_selector|<list_account_selector>list_account_selector",fillcolor="silver:white", gradientangle=240, style="filled"];
   }
 
   file -> herald [color="green"];
@@ -344,6 +344,7 @@ digraph G {
   bill -> storage [color="#F0F0F050"];
   bill -> structure [color="#F0F0F050"];
   bill -> _configs_ [color="#F0F0F050"];
+  bill -> _ext_ [color="#F0F0F050"];
   bill -> form [color="#F0F0F050"];
   bill -> wrapper [color="#F0F0F050"];
   bill -> bill [color="#F0F0F050"];
@@ -801,6 +802,7 @@ digraph G {
   invoice -> storage [color="#F0F0F050"];
   invoice -> structure [color="#F0F0F050"];
   invoice -> _configs_ [color="#F0F0F050"];
+  invoice -> _ext_ [color="#F0F0F050"];
   invoice -> form [color="#F0F0F050"];
   invoice -> wrapper [color="#F0F0F050"];
   invoice -> invoice [color="#F0F0F050"];
@@ -809,6 +811,7 @@ digraph G {
   invoice -> storage [color="#F0F0F050"];
   invoice -> structure [color="#F0F0F050"];
   invoice -> _configs_ [color="#F0F0F050"];
+  invoice -> _ext_ [color="#F0F0F050"];
   invoice -> form [color="#F0F0F050"];
   invoice -> wrapper [color="#F0F0F050"];
   invoice -> invoice [color="#F0F0F050"];
@@ -1307,6 +1310,9 @@ digraph G {
   form -> _ext_ [color="#0000FF50"];
   form -> form [color="#0000FF50"];
   form -> wrapper [color="#0000FF50"];
+  form -> herald [color="#0000FF50"];
+  form -> _ext_ [color="#0000FF50"];
+  form -> form [color="#0000FF50"];
   form -> controller [color="#0000FF50"];
   form -> wrapper [color="#0000FF50"];
   form -> storage [color="#0000FF50"];

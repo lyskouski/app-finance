@@ -47,6 +47,7 @@ Care permite utilizatorilor să își gestioneze finanțele fără efort, asigur
   - Zi de început a săptămânii și a lunii personalizabilă
 - Facturi, transferuri, venituri (facturi)
   - Plăți recurente (cu un widget de pornire)
+  - Filtrare
 - Definirea obiectivelor
 - Ratele de schimb, Moneda implicită pentru rezumat
 - Metrici: 

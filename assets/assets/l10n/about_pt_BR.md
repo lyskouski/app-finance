@@ -47,6 +47,7 @@ Isso permite que os usuários gerenciem suas finanças sem esforço, garantindo 
   - Dia de início da semana e mês personalizáveis
 - Contas, transferências, receitas (faturas)
   - Pagamentos recorrentes (com um widget inicial)
+  - Filtragem
 - Definição de metas
 - Taxas de câmbio, moeda padrão para resumo
 - Métricas: 

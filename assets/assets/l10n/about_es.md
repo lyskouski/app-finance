@@ -47,6 +47,7 @@ Que permita a los usuarios gestionar sus finanzas sin esfuerzo, garantizando al 
   - Día de inicio de la semana y del mes personalizable
 - Facturas, Transferencias, Ingresos (Facturas)
   - Pagos periódicos (con un widget de inicio)
+  - Filtrado
 - Definición de Metas
 - Tipos de cambio, Moneda por defecto para el resumen
 - Métricas: 
