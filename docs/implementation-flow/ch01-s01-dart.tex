@@ -4,41 +4,41 @@
 \subsection{Dart}
 \markboth{Bootcamping}{Dart} \label{dart}
 
-Dart is known for its simplicity and readability as object-oriented and class-based language. It offers C-style syntax 
+Dart is known for its simplicity and readability as object-oriented and class-based language. It offers C-style syntax
 and object-oriented programming (OOP) concept (inheritance, polymorphism, and encapsulation).
 
-\paragraph{Dart Virtual Machine (VM)} includes a just-in-time (JIT) compiler for fast development cycles and an 
-ahead-of-time (AOT) compiler for optimized production performance by translating \q{Dart}-code into a native machine 
-code. Its web compiler translates Dart into JavaScript or Web Assembly. With a support of multi-threaded 
-execution, VM provides efficient utilization of modern multi-core processors via \q{Isolates} (\emph{a separate threads, 
+\paragraph{Dart Virtual Machine (VM)} includes a just-in-time (JIT) compiler for fast development cycles and an
+ahead-of-time (AOT) compiler for optimized production performance by translating \q{Dart}-code into a native machine
+code. Its web compiler translates Dart into JavaScript or Web Assembly. With a support of multi-threaded
+execution, VM provides efficient utilization of modern multi-core processors via \q{Isolates} (\emph{a separate threads,
 that communicate via message passing}) for concurrent executions.
 
-Dart Virtual Machine is designed as a platform-agnostic interpreter (\emph{desktop environments [Windows, macOS, Linux], 
-mobile devices [Android, iOS], and web browsers}) with a modular and extensible architecture (capabilities to extend 
-core-components as primitives and classes). It includes components such as Dart Core Libraries, Garbage Collector 
-(\emph{with separating objects into young and old generations, automatically reclaims memory occupied by objects that 
-are no longer reachable}), and Dart Development Compiler (DDC, \emph{designed to compile Dart to JavaScript / TypeScript 
+Dart Virtual Machine is designed as a platform-agnostic interpreter (\emph{desktop environments [Windows, macOS, Linux],
+mobile devices [Android, iOS], and web browsers}) with a modular and extensible architecture (capabilities to extend
+core-components as primitives and classes). It includes components such as Dart Core Libraries, Garbage Collector
+(\emph{with separating objects into young and old generations, automatically reclaims memory occupied by objects that
+are no longer reachable}), and Dart Development Compiler (DDC, \emph{designed to compile Dart to JavaScript / TypeScript
 by enabling real-time code changes and efficient debugging for web applications}).
 
-\paragraph{Dart Software Development Kit (SDK)} provides a command-line interface (CLI), a package manager, 
-and a collection of utility libraries that simplify common tasks. Package Manager (\q{pub}) controls libraries and 
-their dependencies via \q{pubspec.yaml}-file by using public (\href{https://pub.dev}{https://pub.dev}) and private 
+\paragraph{Dart Software Development Kit (SDK)} provides a command-line interface (CLI), a package manager,
+and a collection of utility libraries that simplify common tasks. Package Manager (\q{pub}) controls libraries and
+their dependencies via \q{pubspec.yaml}-file by using public (\href{https://pub.dev}{https://pub.dev}) and private
 (\q{dart pub add private\_package --hosted https://...}) storages.
 
 \paragraph{Entire End-to-End Stack}
 
-Dart is well-equipped to cover the full stack development. \q{Flutter}, powered by Dart, enables developers to write 
-code once and run it on multiple platforms, providing a unified user experience. \q{Aqueduct} provides a robust 
-foundation for building scalable and high-performance backend services and APIs. Dart's versatility extends 
-seamlessly to a database layer, offering compatibility with a wide range of database systems, both SQL and 
-noSQL databases (as \q{Aqueduct ORM} for PostgreSQL, \q{Realm} for MongoDB), as well as databases built specifically 
+Dart is well-equipped to cover the full stack development. \q{Flutter}, powered by Dart, enables developers to write
+code once and run it on multiple platforms, providing a unified user experience. \q{Aqueduct} provides a robust
+foundation for building scalable and high-performance backend services and APIs. Dart's versatility extends
+seamlessly to a database layer, offering compatibility with a wide range of database systems, both SQL and
+noSQL databases (as \q{Aqueduct ORM} for PostgreSQL, \q{Realm} for MongoDB), as well as databases built specifically
 using Dart as their foundation (like \q{DartinoDB}).
 
 
 \newpage
 \subsubsection{Checking Primitives} \label{dart-prim}
 
-Primitives (built-in data types) behave as objects with own methods and properties, and can be even extended 
+Primitives (built-in data types) behave as objects with own methods and properties, and can be even extended
 by \q{extension}:
 
 \begin{lstlisting}
@@ -63,18 +63,18 @@ extension DoubleExt on double {
 }
 \end{lstlisting}
 
-\noindent Collections are represented by \q{List}, \q{Map}, \q{Set}, \q{Records}, and \q{Queue}. Where \q{List} is an 
-ordered collection of objects; \q{Map}, as a collection of key/value pairs, is used to retrieve a value by its 
-associated key with a maintained key uniqueness; as well as \q{Set} -- to control uniqueness of variables. \q{Queue} 
-implements both stack and queue behavior (where, ListQueue -- keeps a cyclic buffer of elements, DoubleLinkedQueue -- 
-to guarantee constant time on 'add', 'remove-at-ends' and 'peek'-operations). As a distinctive feature of collections, 
+\noindent Collections are represented by \q{List}, \q{Map}, \q{Set}, \q{Records}, and \q{Queue}. Where \q{List} is an
+ordered collection of objects; \q{Map}, as a collection of key/value pairs, is used to retrieve a value by its
+associated key with a maintained key uniqueness; as well as \q{Set} -- to control uniqueness of variables. \q{Queue}
+implements both stack and queue behavior (where, ListQueue -- keeps a cyclic buffer of elements, DoubleLinkedQueue --
+to guarantee constant time on 'add', 'remove-at-ends' and 'peek'-operations). As a distinctive feature of collections,
 their iterativeness is declared by a subtype:
 
 \begin{itemize}
-  \item \q{HashMap} and \q{HashSet}, unordered, both provide an access to items (by key) in (potentially) amortized 
+  \item \q{HashMap} and \q{HashSet}, unordered, both provide an access to items (by key) in (potentially) amortized
   constant time;
   \item \q{LinkedHashMap} and \q{LinkedHashSet} iterate in key insertion order;
-  \item \q{SplayTreeMap} and \q{SplayTreeSet} are based on a self-balancing binary tree that allows most single-entry 
+  \item \q{SplayTreeMap} and \q{SplayTreeSet} are based on a self-balancing binary tree that allows most single-entry
   operations in amortized logarithmic time;
 \end{itemize}
 
@@ -99,8 +99,8 @@ final count = 10; // Immutable variable, type inferred as int
 const count = 10; // Compile-time constant, type inferred as int
 \end{lstlisting}
 
-\noindent Dart is a relatively strongly typed language, which means it encourages declaring explicit types rather than 
-relying on \q{var}. This practice enhances code readability and maintainability by making the intended type of each 
+\noindent Dart is a relatively strongly typed language, which means it encourages declaring explicit types rather than
+relying on \q{var}. This practice enhances code readability and maintainability by making the intended type of each
 variable clear.
 
 \begin{lstlisting}
@@ -123,10 +123,10 @@ Set<int> uniqueNumbers = {1, 2, 3, 2};
 var record = ('Alice', 25, isStudent: true);
 \end{lstlisting}
 
-\noindent We can define our own types by using \q{typedef}. A \q{typedef} allows us to create an alias for a complex 
-type, making code more readable and maintainable. This is especially useful when working with function signatures, 
-records, or deeply nested structures. In the example below, we define a record type named \q{ScreenHelperState}, 
-which groups together several related properties into a single logical type. By using a typedef, we can reuse this 
+\noindent We can define our own types by using \q{typedef}. A \q{typedef} allows us to create an alias for a complex
+type, making code more readable and maintainable. This is especially useful when working with function signatures,
+records, or deeply nested structures. In the example below, we define a record type named \q{ScreenHelperState},
+which groups together several related properties into a single logical type. By using a typedef, we can reuse this
 type throughout the application without having to redefine the full structure each time:
 
 \begin{lstlisting}
@@ -142,7 +142,7 @@ typedef ScreenHelperState = ({
 
 \subsubsection{Extracting Patterns}
 
-Pattern matching in programming involves comparing data structures against predefined patterns, which enables 
+Pattern matching in programming involves comparing data structures against predefined patterns, which enables
 conditional execution based on the match:
 
 \begin{lstlisting}
@@ -162,8 +162,8 @@ switch (obj) {
 }
 \end{lstlisting}
 
-\noindent Destructuring, on the other hand, offers a means to extract individual elements from complex data structures 
-like arrays or objects and assign them to variables. This technique is especially valuable when dealing with complex 
+\noindent Destructuring, on the other hand, offers a means to extract individual elements from complex data structures
+like arrays or objects and assign them to variables. This technique is especially valuable when dealing with complex
 objects, allowing you to fetch their properties efficiently:
 
 \begin{lstlisting}
@@ -175,7 +175,7 @@ final [adminName, userName, guestName] = users;
 var (name, [code, type]) = ('User 1', [123, true]);
 
 // Object extraction
-class Transaction { 
+class Transaction {
   String description;
   String category;
   double amount;
@@ -197,7 +197,7 @@ for (final Transaction(:category, :amount) in scope) {
 Let's revise a few build-in capabilities of dates' type from an example:\\
 - IF \q{end}-date is lower or equal to \q{current}-date THEN return 1\\
 - IF \q{start}-date is equal to \q{current}-date THEN return 0\\
-- ELSE return a relative value in the range of \q{0...1} by calculating the float value based on the ratio of the number 
+- ELSE return a relative value in the range of \q{0...1} by calculating the float value based on the ratio of the number
 of days between \q{start} and \q{current} to the total number of days between \q{start} and \q{end}.
 
 \begin{lstlisting}
@@ -205,15 +205,15 @@ calculateValue(DateTime start, DateTime end, DateTime current) {
   if (end.isBefore(current) || end.isAtSameMomentAs(current))
     return 1;
   if (start.isAtSameMomentAs(current))
-    return 0;  
+    return 0;
   int total = end.difference(start).inDays;
   int diff = current.difference(start).inDays;
   return diff / total;
 }
 \end{lstlisting}
 
-\noindent The \q{DateFormat} function is used to convert and parse dates into a specific format, such as 'yyyy-MM-dd' 
-(\emph{four characters for the year, a dash, two characters for the month, a dash, and the last two characters 
+\noindent The \q{DateFormat} function is used to convert and parse dates into a specific format, such as 'yyyy-MM-dd'
+(\emph{four characters for the year, a dash, two characters for the month, a dash, and the last two characters
 to identify the day}), while considering localization preferences.
 
 \begin{lstlisting}
@@ -228,17 +228,17 @@ DateTime? value = DateTime.tryParse(text);
 
 \begin{lstlisting}
 extension DateTimeExt on DateTime {
-  // DateTime(/* ... */).toMonthDay(); 
+  // DateTime(/* ... */).toMonthDay();
   String toMonthDay(Locale? locale) =>
       DateFormat.MMMMd(locale ?? 'en_US').format(this);
 }
 \end{lstlisting}
 
-\noindent \q{DateTime}-class doesn't inherently handle time zones, but it can be covered by external libraries like 
-\q{timezone} or \q{intl}. To facilitate time processing, one can utilize the "Unix" timestamp, also known as an epoch 
-timestamp, through the properties \q{microsecondsSinceEpoch} and \q{millisecondsSinceEpoch}. 
- 
-Additionally, for application testing purposes, consider the use of libraries like \q{fake\_datetime} to mock the 
+\noindent \q{DateTime}-class doesn't inherently handle time zones, but it can be covered by external libraries like
+\q{timezone} or \q{intl}. To facilitate time processing, one can utilize the "Unix" timestamp, also known as an epoch
+timestamp, through the properties \q{microsecondsSinceEpoch} and \q{millisecondsSinceEpoch}.
+
+Additionally, for application testing purposes, consider the use of libraries like \q{fake\_datetime} to mock the
 current time, enabling more effective testing scenarios.
 
 \newpage
@@ -279,7 +279,7 @@ extension Ext<T extends num> on T? {
 }
 /// Overloading '|' to merge maps
 extension Merge<T, K> on Map<T, K> {
-  Map<T, K> operator |(Map<T, K> other) => 
+  Map<T, K> operator |(Map<T, K> other) =>
       {...this}..addEntries(other.entries);
 }
 \end{lstlisting}
@@ -301,11 +301,11 @@ CanonicalizedMap.from(m, (k) => k.toLowerCase()) // {'Sample': 1}
 \newpage
 \subsubsection{Overloading Operators}
 
-"Magic methods" are often referred to as "operator overloading" or "special methods." They allow to declare a custom 
+"Magic methods" are often referred to as "operator overloading" or "special methods." They allow to declare a custom
 behavior for built-in operations:
 
 \begin{itemize}
-  \item \q{toString} returns a string representation of an object, can be used for a serialization and deserialization 
+  \item \q{toString} returns a string representation of an object, can be used for a serialization and deserialization
   process of an object;
   \item \q{call} allows an object to be treated as a function;
   \item \q{hashCode} returns a hash code for an object (to use it as a key for \q{Map} and \q{Set}, and to override \q{==});
@@ -351,8 +351,8 @@ A few options are available for the arguments declaration:
 
 \begin{lstlisting}
 // Ordered scope
-/// Sample: add('test', null) 
-/// Sample: add('test', 123) 
+/// Sample: add('test', null)
+/// Sample: add('test', 123)
 void add(String value, int? id);
 
 // With optional arguments
@@ -371,9 +371,9 @@ void add({String value, int id = 123});
 void add(String value, {int? id});
 \end{lstlisting}
 
-\noindent In the context of classes, their properties can be protected (with \q{@protected}-annotation, accessible for 
-extends), private (started from underscore; neither visible, nor accessible from extends), and public (others); 
-with extra options as \q{final} (immutable), \q{const} (not changeable for run-time), \q{static} (to 
+\noindent In the context of classes, their properties can be protected (with \q{@protected}-annotation, accessible for
+extends), private (started from underscore; neither visible, nor accessible from extends), and public (others);
+with extra options as \q{final} (immutable), \q{const} (not changeable for run-time), \q{static} (to
 grant access without object initialization), and \q{late} (postponed initialization):
 
 \begin{lstlisting}
@@ -401,7 +401,7 @@ class Person {
 
 \subsubsection{Asserting Functions Definition}
 
-By utilizing a type definition (\q{typedef}), we can simplify the representation of a complex structure as arguments or 
+By utilizing a type definition (\q{typedef}), we can simplify the representation of a complex structure as arguments or
 declare the expected structure of a function, which is then propagated as an argument:
 
 \begin{lstlisting}
@@ -433,7 +433,7 @@ Generics can be useful in specific cases, serving as a deferred type declaration
 \begin{lstlisting}
 extension StringExt on String {
   // Letter in uppercase highlights a type variability
-  /// Sample: '[1,2,3]'.toList<int>(); // [1, 2, 3] 
+  /// Sample: '[1,2,3]'.toList<int>(); // [1, 2, 3]
   List<T> toList<T>() { // Limitation: <T extends num>
     final data = length > 0 ? json.decode(this) : [];
     // Convert to declared Type
@@ -446,7 +446,7 @@ extension StringExt on String {
 
 \begin{lstlisting}
 extension StringExt on String {
-  /// Sample: '[1,"2",3.0]'.toList(); // [1, '2', 3.0] 
+  /// Sample: '[1,"2",3.0]'.toList(); // [1, '2', 3.0]
   List<dynamic> toList() =>
       length > 0 ? json.decode(this) : [];
 }
@@ -461,13 +461,13 @@ if (val is Function) val();
 
 
 \subsubsection{Observing Functional Programming}
-Dart supports functional programming concepts, allowing functions to be treated as first-class citizens. 
+Dart supports functional programming concepts, allowing functions to be treated as first-class citizens.
 This means they can be assigned to variables, passed as arguments, and returned from other functions.
 
-Functions can also be composed, allowing for the creation of more complex behavior by combining simpler functions. 
-This is often achieved through higher-order functions, which take other functions as arguments or return them as results. 
+Functions can also be composed, allowing for the creation of more complex behavior by combining simpler functions.
+This is often achieved through higher-order functions, which take other functions as arguments or return them as results.
 
-Dart also provides support for functional programming through features like first-class functions, closures, 
+Dart also provides support for functional programming through features like first-class functions, closures,
 and higher-order functions.
 
 \begin{lstlisting}
@@ -511,9 +511,9 @@ void main() {
 
 \subsubsection{Operating Asynchronously}
 
-Asynchronous operations allow to perform other tasks while waiting for an operation to complete, such as fetching data 
-from a network, writing to a database, or reading from a file. The \q{async}-keyword is used to mark a function as 
-asynchronous (with a return statement marked as \q{Future}), while the \q{await}-keyword pauses execution until a 
+Asynchronous operations allow to perform other tasks while waiting for an operation to complete, such as fetching data
+from a network, writing to a database, or reading from a file. The \q{async}-keyword is used to mark a function as
+asynchronous (with a return statement marked as \q{Future}), while the \q{await}-keyword pauses execution until a
 specific asynchronous operation is completed.
 
 \begin{lstlisting}
@@ -537,7 +537,7 @@ Stream<String> readFile() async* {
 }
 \end{lstlisting}
 
-\noindent Additionally, a \q{Completer} is an object that aids in managing asynchronous operations by providing a means 
+\noindent Additionally, a \q{Completer} is an object that aids in managing asynchronous operations by providing a means
 to manually produce and complete a \q{Future}.
 
 \begin{lstlisting}
@@ -557,24 +557,76 @@ void asyncOperation(Completer<String> state) async {
 }
 \end{lstlisting}
 
-\noindent For a large computation that could drop frames or freeze the app if run in the main isolate, it can be 
-created additional isolates using one of two functions: \q{Isolate.spawn()} or \q{Compute()}. This approach, known as 
+\noindent For a large computation that could drop frames or freeze the app if run in the main isolate, it can be
+created additional isolates using one of two functions: \q{Isolate.spawn()} or \q{Compute()}. This approach, known as
 parallelism, allows for parallel code execution across multiple processor cores.
+
+
+\subsubsection{Observing Signals}
+
+Signals are reactive state variables introduced in Dart 3.3+ that automatically trigger UI updates when their values
+change. They provide a way to manage state in a more declarative manner, allowing developers to focus on the
+relationships between different pieces of state rather than the imperative details of how to update the UI.
+
+\begin{lstlisting}
+import 'package:flutter_signals/flutter_signals.dart';
+
+final counter = signal(0); // Create a reactive signal
+
+void main() {
+  // Listen for changes to the counter signal
+  counter.stream.listen((value) {
+    print('Counter updated: $value');
+  });
+
+  // Update the counter signal
+  counter.value++;
+  counter.value = 42;
+}
+\end{lstlisting}
+
+\noindent We can derive reactive values based on other signals:
+
+\begin{lstlisting}
+final name = signal('Alice');
+final greeting = computed(() => 'Hello, ${name.value}');
+
+print(greeting.value); // Hello, Alice
+name.value = 'Bob';
+print(greeting.value); // Hello, Bob (auto-updated)
+\end{lstlisting}
+
+\noindent To enable dependency tracking in Flutter we might use \q{SignalBuilder} widget:
+
+\begin{lstlisting}
+class MyWidget extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return SignalBuilder(
+      signal: counter,
+      builder: (_, value) => Text('Counter value: $value'),
+    );
+  }
+}
+\end{lstlisting}
+
+\noindent Signals can be particularly useful in scenarios where state changes frequently and needs to be reflected
+immediately in the UI, such as in forms, animations, or real-time data updates.
 
 
 \subsubsection{Initializating Classes}
 
-Every object is an instance of a class, and all classes (except \q{null}) inherit from the \q{Object}-class. While each 
+Every object is an instance of a class, and all classes (except \q{null}) inherit from the \q{Object}-class. While each
 class typically has only one superclass (via \q{extends}), it might cover multiple interfaces by using \q{implements}.
-Moreover, dart implements a form of multiple inheritance via \q{Mixin}s. Extension methods provide a means to 
+Moreover, dart implements a form of multiple inheritance via \q{Mixin}s. Extension methods provide a means to
 enhance a class's functionality without altering the class or creating a subclass.
 
 \begin{lstlisting}
 class WebDavProtocol
     // inherits superclass methods and properties
-    extends AbstractProtocol 
+    extends AbstractProtocol
     // class extended by methods from mixin
-    with FileImportMixin, FileExportMixin 
+    with FileImportMixin, FileExportMixin
     // structure is controlled by interfaces
     implements InterfaceProtocol, InterfaceFile {
   // ... content
@@ -588,7 +640,7 @@ mixin FileImportMixin {
   Future<String?> importFile(List<String> ext) async { /* ... */ }
 }
 \end{lstlisting}
-  
+
 \noindent Additionally, class modifiers enable a control over how a class can be extended or specialized:
 
 \begin{itemize}
@@ -596,12 +648,12 @@ mixin FileImportMixin {
   \item \q{base} -- disallows implementation (\q{implements}), only inheritance (\q{extends});
   \item \q{interface} -- guarantees interface implementation, but not inheritance;
   \item \q{final} -- prohibits subtyping from this class;
-  \item \q{macro} -- declares macro (implements ClassDeclarationsMacro); 
+  \item \q{macro} -- declares macro (implements ClassDeclarationsMacro);
   \item \q{sealed} -- provides enumerable set of subtypes (to be used in \q{switch});
   \item \q{@immutable}-notation -- forces all properties to be \q{final}.
 \end{itemize}
 
-\noindent With a few restrictions (cannot be combined): \q{abstract} with \q{sealed}; \q{interface}, \q{final} or 
+\noindent With a few restrictions (cannot be combined): \q{abstract} with \q{sealed}; \q{interface}, \q{final} or
 \q{sealed} with \q{mixin}.
 
 
@@ -623,13 +675,13 @@ class CurrencySelector<K extends CurrencySelectorItem> extends StatefulWidget {
   // ... other properties
 
   // SearchAnchor
-  const CurrencySelector({ /* ... */}) : 
+  const CurrencySelector({ /* ... */}) :
       searchType = CurrencySelectorType.searchAnchor;
   // SearchAnchor(isFullScreen: false)
-  const CurrencySelector.min({ /* ... */}) : 
+  const CurrencySelector.min({ /* ... */}) :
       searchType = CurrencySelectorType.searchAnchorMin;
   // SearchAnchor.bar
-  const CurrencySelector.bar({ /* ... */}) : 
+  const CurrencySelector.bar({ /* ... */}) :
       searchType = CurrencySelectorType.searchAnchorBar;
   // Differentiate State-manager per taken type
   @override
@@ -640,7 +692,7 @@ class CurrencySelector<K extends CurrencySelectorItem> extends StatefulWidget {
           CurrencySelectorMinState<CurrencySelector, K>(),
         _ => CurrencySelectorState<CurrencySelector, K>(),
       };
-  // Instantiate class from its string representation 
+  // Instantiate class from its string representation
   factory CurrencySelector<K>.fromString(String data) {
     return CurrencySelector<K>(/* ... */);
   }
@@ -654,7 +706,7 @@ class CurrencySelector<K extends CurrencySelectorItem> extends StatefulWidget {
 \newpage
 \subsubsection{Enumerating Classifications}
 
-Enumerated types, often referred to as enums, are a distinct category of classes designed for the representation of a 
+Enumerated types, often referred to as enums, are a distinct category of classes designed for the representation of a
 predefined set of constant values. As an example, to validate function arguments or switch statement:
 
 \begin{lstlisting}
@@ -669,8 +721,8 @@ void processStatus(Status status) {
 void main() => processStatus(Status.active);
 \end{lstlisting}
 
-\noindent Using enums in function parameters enforces valid enum values, ensuring that only acceptable options are used 
-as inputs. Enums also facilitate seamless conversion between enum values and strings, and enable associating additional 
+\noindent Using enums in function parameters enforces valid enum values, ensuring that only acceptable options are used
+as inputs. Enums also facilitate seamless conversion between enum values and strings, and enable associating additional
 information with enum values (of any data type):
 
 \begin{lstlisting}
@@ -696,8 +748,8 @@ String message = switch (state) {
     LoadingState() => 'Loading...',
     // Taking a property state from the class
     ErrorState(message:var msg) => 'Error taken: ${msg}',
-    // To access the object in a case block by its type 
-    LoadedState obj => obj.data,    
+    // To access the object in a case block by its type
+    LoadedState obj => obj.data,
     _ => 'Unhandled state (all others)'
   };
 \end{lstlisting}
@@ -705,23 +757,23 @@ String message = switch (state) {
 
 \subsubsection{Metaprogramming Overview}
 
-In Dart, metaprogramming capabilities are somewhat limited compared to languages like Python or Ruby, but there are 
+In Dart, metaprogramming capabilities are somewhat limited compared to languages like Python or Ruby, but there are
 still a few important tools available:
 
-\noindent 1. Reflection: Dart provides a \q{dart:mirrors} library for reflection, allowing you to inspect and manipulate 
+\noindent 1. Reflection: Dart provides a \q{dart:mirrors} library for reflection, allowing you to inspect and manipulate
 objects at runtime. However, this library is not supported in Flutter for web and mobile.
 
-\noindent 2. Code Generation: Dart supports code generation through \q{build\_runner} and \q{source\_gen} packages. 
+\noindent 2. Code Generation: Dart supports code generation through \q{build\_runner} and \q{source\_gen} packages.
 You can create custom annotations and use code generators to produce boilerplate code.
 
-\noindent 3. Macros: Dart has introduced a macro system that allows you to write code that generates other code at 
+\noindent 3. Macros: Dart has introduced a macro system that allows you to write code that generates other code at
 compile time.
 
-\noindent 4. "Magic methods": Dart allows to override certain methods in classes to change their behavior, 
+\noindent 4. "Magic methods": Dart allows to override certain methods in classes to change their behavior,
 such as \q{noSuchMethod()}.
 
-Normally, when we call a method in Dart, the runtime looks for that method in the current class. If it is not found, 
-Dart checks the superclass chain. If no matching method is found, instead of immediately throwing an error, Dart will 
+Normally, when we call a method in Dart, the runtime looks for that method in the current class. If it is not found,
+Dart checks the superclass chain. If no matching method is found, instead of immediately throwing an error, Dart will
 invoke \q{noSuchMethod()} but only if it has been implemented in the class.
 
 \begin{lstlisting}
@@ -753,16 +805,16 @@ void main() {
 \newpage
 \subsubsection{Managing Components}
 
-The \q{import}-statement is used to include code from our own project or external modules (packages) into the 
-application. When we're importing code from the own project, it can be used relative paths to specify the location of 
+The \q{import}-statement is used to include code from our own project or external modules (packages) into the
+application. When we're importing code from the own project, it can be used relative paths to specify the location of
 the file or module:
 
 \begin{lstlisting}
 import 'relative_path_to_file.dart';
 \end{lstlisting}
 
-\noindent However, using relative paths is not recommended when we aim to maintain cross-platform compatibility. 
-Instead, we should employ the package name as a prefix to the path, seamlessly, just as it's done for all external 
+\noindent However, using relative paths is not recommended when we aim to maintain cross-platform compatibility.
+Instead, we should employ the package name as a prefix to the path, seamlessly, just as it's done for all external
 components:
 
 \begin{lstlisting}
@@ -784,9 +836,9 @@ class GaugePainter extends CustomPainter {
   // ... other code
 \end{lstlisting}
 
-\noindent The useful optimization of the startup time of our application, when dealing with large or rarely used 
-packages, is the usage of deferred imports. Deferred loading means that the code from the imported package will not be 
-loaded immediately when the application starts. Instead, it will be loaded on-demand, typically when we explicitly 
+\noindent The useful optimization of the startup time of our application, when dealing with large or rarely used
+packages, is the usage of deferred imports. Deferred loading means that the code from the imported package will not be
+loaded immediately when the application starts. Instead, it will be loaded on-demand, typically when we explicitly
 request it in the code:
 
 \begin{lstlisting}
@@ -795,18 +847,18 @@ import 'package:heavy_package/heavy_package.dart' deferred as heavy;
 final lib = await heavy.loadLibrary();
 \end{lstlisting}
 
-\noindent An essential element of the application size optimization involves the reduction of superfluous imports. 
+\noindent An essential element of the application size optimization involves the reduction of superfluous imports.
 We should refrain from importing complete libraries when we only require a fraction of their functionality:
 
 \begin{lstlisting}
 import 'dart:async' show Future, Stream;
 \end{lstlisting}
 
-\noindent In certain scenarios, it becomes necessary to address environment-specific requirements by employing distinct 
+\noindent In certain scenarios, it becomes necessary to address environment-specific requirements by employing distinct
 sets of libraries:
 
 \begin{lstlisting}
-import 'package:file_picker_web/file_picker_web.dart' 
+import 'package:file_picker_web/file_picker_web.dart'
   if (dart.library.io) 'package:file_picker/file_picker.dart';
 \end{lstlisting}
 
@@ -814,8 +866,8 @@ import 'package:file_picker_web/file_picker_web.dart'
 \newpage
 \subsubsection{Using Macros}
 
-Macros are code that generates additional code. Unlike traditional code generation, Dart's macro system is integrated 
-directly into the language, providing real-time code generation. Out of the box, Dart provides a macro called 
+Macros are code that generates additional code. Unlike traditional code generation, Dart's macro system is integrated
+directly into the language, providing real-time code generation. Out of the box, Dart provides a macro called
 \href{https://dart.dev/go/json-codable}{JsonCodable} that automatically generates \q{toJson()} and \q{fromJson} methods:
 
 \begin{lstlisting}
@@ -841,13 +893,13 @@ TransactionLogData<String> data = ...;
 print(data.toJson());
 \end{lstlisting}
 
-\noindent This code leverages Dart's new feature called augmentation, that allows to modify a class or function by 
+\noindent This code leverages Dart's new feature called augmentation, that allows to modify a class or function by
 adding new members or replacing existing bodies from outside the original definition:
 
 \begin{lstlisting}
 // "Uninitialized" error occurs unless a constructor is provided
 class InvoiceAppData {
-  final String account; 
+  final String account;
 }
 
 augment class InvoiceAppData {
@@ -901,6 +953,6 @@ expect(result, expected, reason: 'Expected ___!');
 expect(result, 0, skip: true); // Or, set String as a comment
 \end{lstlisting}
 
-\noindent In addition, \q{allOf}-matcher allows combining multiple matchers, \q{anyOf} -- check if any of the conditions 
-are met. While \q{expect}-function is used to compare the results of some operations, \q{mocktail}-package declares 
+\noindent In addition, \q{allOf}-matcher allows combining multiple matchers, \q{anyOf} -- check if any of the conditions
+are met. While \q{expect}-function is used to compare the results of some operations, \q{mocktail}-package declares
 \q{verify}-function to ensure that some other functions were used (or not) during the test execution.
