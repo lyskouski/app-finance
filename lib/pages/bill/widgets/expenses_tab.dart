@@ -18,12 +18,14 @@ import 'package:app_finance/pages/_interfaces/interface_page_inject.dart';
 import 'package:app_finance/design/form/currency_exchange_input.dart';
 import 'package:app_finance/design/form/date_time_input.dart';
 import 'package:app_finance/design/button/full_sized_button_widget.dart';
+import 'package:app_finance/design/button/link_widget.dart';
 import 'package:app_finance/design/form/list_account_selector.dart';
 import 'package:app_finance/design/form/simple_input.dart';
 import 'package:app_finance/design/wrapper/row_widget.dart';
 import 'package:app_finance/design/wrapper/single_scroll_wrapper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_currency_picker/flutter_currency_picker.dart';
+import 'package:flutter_solidart/flutter_solidart.dart';
 
 class ExpensesTab<T> extends StatefulWidget {
   final String? account;
@@ -61,7 +63,9 @@ class ExpensesTabState<T extends ExpensesTab> extends State<T> {
   Currency? budgetCurrency;
   Currency? currency;
   late TextEditingController bill;
+  final billSignal = Signal<String>('');
   late TextEditingController description;
+  final descriptionSignal = Signal<String>('');
   late ExchangeController exchange;
   DateTime? createdAt;
   bool hasErrors = false;
@@ -83,7 +87,9 @@ class ExpensesTabState<T extends ExpensesTab> extends State<T> {
     budget = widget.budget ?? objBudget?.uuid;
     currency = widget.currency ?? objAccount?.currency ?? objBudget?.currency ?? Exchange.defaultCurrency;
     bill = TextEditingController(text: widget.bill != null ? widget.bill.toString() : '');
+    bill.addListener(() => billSignal.value = bill.text);
     description = TextEditingController(text: widget.description);
+    description.addListener(() => descriptionSignal.value = description.text);
     createdAt = widget.createdAt;
     accountCurrency = widget.state.getByUuid(account ?? '')?.currency;
     budgetCurrency = widget.state.getByUuid(budget ?? '')?.currency;
@@ -231,6 +237,27 @@ class ExpensesTabState<T extends ExpensesTab> extends State<T> {
                 title: AppLocale.labels.description,
                 controller: description,
                 tooltip: AppLocale.labels.descriptionTooltip,
+              ),
+              SignalBuilder(
+                builder: (_, __) => Row(
+                    mainAxisAlignment: AppDesign.getAlignment<MainAxisAlignment>(),
+                    spacing: indent,
+                    children: widget.state.prediction
+                        .predict(BillAppData(
+                      account: account ?? '',
+                      category: budget ?? '',
+                      currency: currency,
+                      title: descriptionSignal.value,
+                      details: double.tryParse(billSignal.value) ?? 0.0,
+                    ))
+                        .map((e) {
+                      final item = widget.state.getByUuid(e);
+                      if (item == null) return Container();
+                      return LinkWidget(
+                        item.title,
+                        onTap: () => setState(() => budget = item.uuid),
+                      );
+                    }).toList()),
               ),
               InputWrapper(
                 type: NamedInputType.budgetSelector,

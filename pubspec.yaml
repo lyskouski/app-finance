@@ -56,6 +56,7 @@ dependencies:
   excel: ^4.0.6
   home_widget: ^0.7.0
   custom_date_range_picker: ^1.2.0
+  flutter_solidart: ^2.6.1
 
 dependency_overrides:
   flutter_webrtc: 0.12.10

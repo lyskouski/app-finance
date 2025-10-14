@@ -569,9 +569,9 @@ change. They provide a way to manage state in a more declarative manner, allowin
 relationships between different pieces of state rather than the imperative details of how to update the UI.
 
 \begin{lstlisting}
-import 'package:flutter_signals/flutter_signals.dart';
+import 'package:flutter_solidart/flutter_solidart.dart';
 
-final counter = signal(0); // Create a reactive signal
+final counter = Signal<int>(0); // Create a reactive signal
 
 void main() {
   // Listen for changes to the counter signal
@@ -588,7 +588,7 @@ void main() {
 \noindent We can derive reactive values based on other signals:
 
 \begin{lstlisting}
-final name = signal('Alice');
+final name = Signal<String>('Alice');
 final greeting = computed(() => 'Hello, ${name.value}');
 
 print(greeting.value); // Hello, Alice
@@ -600,11 +600,12 @@ print(greeting.value); // Hello, Bob (auto-updated)
 
 \begin{lstlisting}
 class MyWidget extends StatelessWidget {
+  final sn = Signal<String>('');
+
   @override
   Widget build(BuildContext context) {
     return SignalBuilder(
-      signal: counter,
-      builder: (_, value) => Text('Counter value: $value'),
+      builder: (_, __) => Text('Counter value: ${sn.value}'),
     );
   }
 }
