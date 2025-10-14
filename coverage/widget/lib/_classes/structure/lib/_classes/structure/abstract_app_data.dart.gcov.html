@@ -31,13 +31,13 @@
             <td class="headerValue">lcov.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntryLo">0.0&nbsp;%</td>
+            <td class="headerCovTableEntryLo">13.3&nbsp;%</td>
             <td class="headerCovTableEntry">45</td>
-            <td class="headerCovTableEntry">0</td>
+            <td class="headerCovTableEntry">6</td>
           </tr>
           <tr>
             <td class="headerItem">Test Date:</td>
-            <td class="headerValue">2025-10-14 07:23:09</td>
+            <td class="headerValue">2025-10-14 12:52:52</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntryHi">-</td>
@@ -92,7 +92,7 @@
 <span id="L30"><span class="lineNum">      30</span>              :   Currency? currency;</span>
 <span id="L31"><span class="lineNum">      31</span>              :   String? payment;</span>
 <span id="L32"><span class="lineNum">      32</span>              : </span>
-<span id="L33"><span class="lineNum">      33</span> <span class="tlaUNC tlaBgUNC">           0 :   AbstractAppData({</span></span>
+<span id="L33"><span class="lineNum">      33</span> <span class="tlaGNC tlaBgGNC">           2 :   AbstractAppData({</span></span>
 <span id="L34"><span class="lineNum">      34</span>              :     required this.title,</span>
 <span id="L35"><span class="lineNum">      35</span>              :     this.uuid,</span>
 <span id="L36"><span class="lineNum">      36</span>              :     this.description,</span>
@@ -107,13 +107,13 @@
 <span id="L45"><span class="lineNum">      45</span>              :     this.hidden = false,</span>
 <span id="L46"><span class="lineNum">      46</span>              :     this.skip = false,</span>
 <span id="L47"><span class="lineNum">      47</span>              :     this.payment,</span>
-<span id="L48"><span class="lineNum">      48</span> <span class="tlaUNC">           0 :   })  : _createdAt = createdAt ?? (createdAtFormatted != null ? DateTime.parse(createdAtFormatted) : DateTime.now()),</span></span>
-<span id="L49"><span class="lineNum">      49</span> <span class="tlaUNC">           0 :         _updatedAt = updatedAt ?? DateTime.now(),</span></span>
-<span id="L50"><span class="lineNum">      50</span> <span class="tlaUNC">           0 :         _amount = 0.0 + (details ?? 0.0);</span></span>
+<span id="L48"><span class="lineNum">      48</span> <span class="tlaGNC">           2 :   })  : _createdAt = createdAt ?? (createdAtFormatted != null ? DateTime.parse(createdAtFormatted) : DateTime.now()),</span></span>
+<span id="L49"><span class="lineNum">      49</span> <span class="tlaGNC">           2 :         _updatedAt = updatedAt ?? DateTime.now(),</span></span>
+<span id="L50"><span class="lineNum">      50</span> <span class="tlaGNC">           2 :         _amount = 0.0 + (details ?? 0.0);</span></span>
 <span id="L51"><span class="lineNum">      51</span>              : </span>
 <span id="L52"><span class="lineNum">      52</span>              :   AbstractAppData clone();</span>
 <span id="L53"><span class="lineNum">      53</span>              : </span>
-<span id="L54"><span class="lineNum">      54</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L54"><span class="lineNum">      54</span> <span class="tlaUNC tlaBgUNC">           0 :   @override</span></span>
 <span id="L55"><span class="lineNum">      55</span> <span class="tlaUNC">           0 :   void deactivate() =&gt; hidden = true;</span></span>
 <span id="L56"><span class="lineNum">      56</span>              : </span>
 <span id="L57"><span class="lineNum">      57</span> <span class="tlaUNC">           0 :   factory AbstractAppData.fromJson(Map&lt;String, dynamic&gt; json) {</span></span>
@@ -152,10 +152,10 @@
 <span id="L90"><span class="lineNum">      90</span> <span class="tlaUNC">           0 :   @override</span></span>
 <span id="L91"><span class="lineNum">      91</span> <span class="tlaUNC">           0 :   String toString() =&gt; json.encode(toFile());</span></span>
 <span id="L92"><span class="lineNum">      92</span>              : </span>
-<span id="L93"><span class="lineNum">      93</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L94"><span class="lineNum">      94</span> <span class="tlaUNC">           0 :   dynamic get details =&gt; _amount;</span></span>
+<span id="L93"><span class="lineNum">      93</span> <span class="tlaGNC tlaBgGNC">           2 :   @override</span></span>
+<span id="L94"><span class="lineNum">      94</span> <span class="tlaGNC">           2 :   dynamic get details =&gt; _amount;</span></span>
 <span id="L95"><span class="lineNum">      95</span>              : </span>
-<span id="L96"><span class="lineNum">      96</span> <span class="tlaUNC">           0 :   set details(dynamic value) =&gt; _amount = value;</span></span>
+<span id="L96"><span class="lineNum">      96</span> <span class="tlaUNC tlaBgUNC">           0 :   set details(dynamic value) =&gt; _amount = value;</span></span>
 <span id="L97"><span class="lineNum">      97</span>              : </span>
 <span id="L98"><span class="lineNum">      98</span> <span class="tlaUNC">           0 :   Widget? get error =&gt; null;</span></span>
 <span id="L99"><span class="lineNum">      99</span>              : </span>

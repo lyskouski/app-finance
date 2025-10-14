@@ -154,7 +154,7 @@ digraph G {
   }
   {
     rank = same; "_classes";
-    math [label="<0>MATH|<goal_recalculation>goal_recalculation|<total_recalculation>total_recalculation|<abstract_recalculation>abstract_recalculation|<account_recalculation>account_recalculation|<bill_recalculation>bill_recalculation|<budget_recalculation>budget_recalculation|<invoice_recalculation>invoice_recalculation",fillcolor="silver:white", gradientangle=240, style="filled"];
+    math [label="<0>MATH|<goal_recalculation>goal_recalculation|<total_recalculation>total_recalculation|<budget_prediction>budget_prediction|<abstract_recalculation>abstract_recalculation|<account_recalculation>account_recalculation|<bill_recalculation>bill_recalculation|<budget_recalculation>budget_recalculation|<invoice_recalculation>invoice_recalculation",fillcolor="silver:white", gradientangle=240, style="filled"];
   }
   {
     rank = same; "_classes";
@@ -918,6 +918,7 @@ digraph G {
   math -> storage [color="green"];
   math -> math [color="green"];
   math -> structure_currency [color="green"];
+  math -> structure [color="green"];
   math -> structure [color="green"];
   math -> structure_currency [color="green"];
   math -> math [color="green"];
