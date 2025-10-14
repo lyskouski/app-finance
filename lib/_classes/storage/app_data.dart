@@ -5,6 +5,7 @@ import 'dart:collection';
 import 'package:app_finance/_classes/controller/iterator_controller.dart';
 import 'package:app_finance/_classes/herald/app_start_of_month.dart';
 import 'package:app_finance/_classes/herald/app_sync.dart';
+import 'package:app_finance/_classes/math/budget_prediction.dart';
 import 'package:app_finance/_classes/math/goal_recalculation.dart';
 import 'package:app_finance/_classes/math/invoice_recalculation.dart';
 import 'package:app_finance/_classes/storage/history_data.dart';
@@ -47,6 +48,7 @@ class AppData extends ChangeNotifier {
   bool isLoading = false;
   final _hashTable = HashMap<String, dynamic>();
   final _data = <AppDataType, SummaryAppData>{};
+  final prediction = BudgetPrediction();
 
   AppData(this.appSync) : super() {
     isLoading = true;
@@ -211,6 +213,7 @@ class AppData extends ChangeNotifier {
         _data[AppDataType.budgets]?.add(initial.category);
       }
     }
+    prediction.add(change);
     final rec = BillRecalculation(change: change, initial: initial)..exchange = exchange;
     if (currAccount != null) {
       rec.updateAccount(currAccount, prevAccount);

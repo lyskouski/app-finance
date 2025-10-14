@@ -25,6 +25,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "0.1.7"
+  alien_signals:
+    dependency: transitive
+    description:
+      name: alien_signals
+      sha256: "01684b67626554f6719852e9e0dd730b44c84c724f1176935b6d8df05e6d11f9"
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.5.4"
   analyzer:
     dependency: transitive
     description:
@@ -504,6 +512,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.0.24"
+  flutter_solidart:
+    dependency: "direct main"
+    description:
+      name: flutter_solidart
+      sha256: "7d54ab6d137878efc9a1f4f4b980dac1735d2b25aec68a099656eae32d8ddb02"
+      url: "https://pub.dev"
+    source: hosted
+    version: "2.6.1"
   flutter_svg:
     dependency: "direct main"
     description:
@@ -1097,6 +1113,14 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.0"
+  solidart:
+    dependency: transitive
+    description:
+      name: solidart
+      sha256: "23b6b9a638c3a7327593ea18e43dab81e990f79e94b6a92f29e96addd83fa489"
+      url: "https://pub.dev"
+    source: hosted
+    version: "2.7.1"
   source_gen:
     dependency: transitive
     description:
