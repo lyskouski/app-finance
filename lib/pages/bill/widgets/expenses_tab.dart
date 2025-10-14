@@ -1,6 +1,7 @@
 // Copyright 2023 The terCAD team. All rights reserved.
 // Use of this source code is governed by a CC BY-NC-ND 4.0 license that can be found in the LICENSE file.
 
+import 'package:app_finance/_classes/controller/delayed_call.dart';
 import 'package:app_finance/_classes/controller/exchange_controller.dart';
 import 'package:app_finance/_classes/herald/app_design.dart';
 import 'package:app_finance/_classes/herald/app_locale.dart';
@@ -87,9 +88,11 @@ class ExpensesTabState<T extends ExpensesTab> extends State<T> {
     budget = widget.budget ?? objBudget?.uuid;
     currency = widget.currency ?? objAccount?.currency ?? objBudget?.currency ?? Exchange.defaultCurrency;
     bill = TextEditingController(text: widget.bill != null ? widget.bill.toString() : '');
-    bill.addListener(() => billSignal.value = bill.text);
+    final billTimer = DelayedCall(1000);
+    bill.addListener(() => billTimer.run(() => billSignal.value = bill.text));
     description = TextEditingController(text: widget.description);
-    description.addListener(() => descriptionSignal.value = description.text);
+    final descriptionTimer = DelayedCall(1000);
+    description.addListener(() => descriptionTimer.run(() => descriptionSignal.value = description.text));
     createdAt = widget.createdAt;
     accountCurrency = widget.state.getByUuid(account ?? '')?.currency;
     budgetCurrency = widget.state.getByUuid(budget ?? '')?.currency;
