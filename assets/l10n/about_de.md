@@ -26,8 +26,8 @@ Deutsch (DE) |
 ---
 
 **Fingrom** -- plattformübergreifende Open-Source-Finanzbuchhaltungsanwendung ohne Werbung und Einschränkungen.
-Das Ziel der Lösung ist es, eine Finanzbuchhaltungsanwendung zu schaffen, die intuitiv, effizient und umfassend ist. 
-Sie ermöglicht es den Nutzern, ihre Finanzen mühelos zu verwalten und gleichzeitig sicherzustellen, dass niemand 
+Das Ziel der Lösung ist es, eine Finanzbuchhaltungsanwendung zu schaffen, die intuitiv, effizient und umfassend ist.
+Sie ermöglicht es den Nutzern, ihre Finanzen mühelos zu verwalten und gleichzeitig sicherzustellen, dass niemand
 zurückgelassen wird.
 
 [![Das Video ansehen](../images/presentation_en.png)](https://youtu.be/7hVGHYNzlQU)
@@ -49,9 +49,10 @@ zurückgelassen wird.
 - Rechnungen, Überweisungen, Einkünfte (Rechnungen)
   - Wiederkehrende Zahlungen (mit einem Home-Widget)
   - Filterung
+  - Annahme/Prognose zur Budgetkategorie
 - Ziele Definition
 - Wechselkurse, Standardwährung für Zusammenfassung
-- Metriken: 
+- Metriken:
   - Budget:
     - Vorhersage (mit Monte-Carlo-Simulation)
     - Budgetgrenze und Ausgaben pro Monat
@@ -64,7 +65,7 @@ zurückgelassen wird.
     - Balkenrennen für Kategorien
   - Ziele-Gauge-Diagramm
   - Historisches Währungsdiagramm
-- Synchronisierung zwischen Geräten (P2P) 
+- Synchronisierung zwischen Geräten (P2P)
 - Wiederherstellung über WebDav oder eine direkte Datei
 - Import von `CSV`, `QIF`, `OFX` Dateien für Rechnungen und Rechnungen
 - Exportieren in die Excel-Datei `XLSX`

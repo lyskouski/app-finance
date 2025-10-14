@@ -2,6 +2,9 @@
 
 _The full list of updates can be viewed via the "About" navigation item on the "Hints" button._
 
+### 6.5.0
+- Introducing Budget Category assumption / prediction for Bills
+
 ### 6.4.0
 - Adding filters for Bills, Invoices, and Transfers pages
 
@@ -18,7 +21,7 @@ _The full list of updates can be viewed via the "About" navigation item on the "
 - Improving exchange rates' forms
 
 ### 6.0.3
-- Changing the navigation when adding items (to the previous page instead of home) 
+- Changing the navigation when adding items (to the previous page instead of home)
 
 ### 6.0.2
 - Fixing expense edit mode with exchange
@@ -53,7 +56,7 @@ _The full list of updates can be viewed via the "About" navigation item on the "
 - Fixing Accounts and Budgets Summary tabs calculations
 
 ### 5.6.1
-- Remedying text orientation for right-to-left oriented localizations 
+- Remedying text orientation for right-to-left oriented localizations
 
 ### 5.6.0
 - Enhancing introductory pages
@@ -62,14 +65,14 @@ _The full list of updates can be viewed via the "About" navigation item on the "
 
 ### 5.5.1
 - Fixing recovery from a .log-file for Android
-- Adding Japanese (JA) and Spanish (ES) languages 
+- Adding Japanese (JA) and Spanish (ES) languages
 
 ### 5.5.0
 - Improving self-configured board by adding charts
 - Adding Arabic (AR) and Azerbaijan (AZ) languages
 
 ### 5.3.7
-- Adding "clean-up"-option for a restoring procedure  
+- Adding "clean-up"-option for a restoring procedure
 
 ### 5.3.6
 - Resolving icons for Invoices

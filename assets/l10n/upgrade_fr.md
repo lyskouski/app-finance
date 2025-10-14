@@ -2,6 +2,9 @@
 
 _La liste complète des mises à jour peut être consultée via l'élément de navigation "À propos" du bouton "Conseils"._
 
+### 6.5.0
+- Introduction de l'hypothèse/prévision de catégorie budgétaire pour les factures
+
 ### 6.4.0
 - Ajout de filtres pour les pages Comptes, Factures et Virements
 
@@ -18,7 +21,7 @@ _La liste complète des mises à jour peut être consultée via l'élément de n
 - Amélioration des formulaires de taux de change
 
 ### 6.0.3
-- Modification de la navigation lors de l'ajout d'éléments (vers la page précédente au lieu de la page d'accueil) 
+- Modification de la navigation lors de l'ajout d'éléments (vers la page précédente au lieu de la page d'accueil)
 
 ### 6.0.2
 - Correction du mode d'édition des dépenses avec l'échange
@@ -53,7 +56,7 @@ _La liste complète des mises à jour peut être consultée via l'élément de n
 - Correction des calculs des onglets Résumé des comptes et des budgets
 
 ### 5.6.1
-- Correction de l'orientation du texte pour les localisations orientées de droite à gauche 
+- Correction de l'orientation du texte pour les localisations orientées de droite à gauche
 
 ### 5.6.0
 - Amélioration des pages d'introduction
@@ -62,14 +65,14 @@ _La liste complète des mises à jour peut être consultée via l'élément de n
 
 ### 5.5.1
 - Correction de la récupération à partir d'un fichier .log pour Android
-- Ajout des langues japonaise (JA) et espagnole (ES) 
+- Ajout des langues japonaise (JA) et espagnole (ES)
 
 ### 5.5.0
 - Amélioration du tableau auto-configuré par l'ajout de graphiques
 - Ajout des langues arabe (AR) et azerbaïdjanaise (AZ)
 
 ### 5.3.7
-- Ajout de l'option "clean-up" pour une procédure de restauration  
+- Ajout de l'option "clean-up" pour une procédure de restauration
 
 ### 5.3.6
 - Résolution des icônes pour les factures
@@ -90,7 +93,7 @@ _La liste complète des mises à jour peut être consultée via l'élément de n
 - Amélioration de la localisation en persan
 
 ### 5.3.0
-- Ajout de la localisation en persan. 
+- Ajout de la localisation en persan.
 
 ### 5.2.6
 - Résolution du stockage Linux Flatpak

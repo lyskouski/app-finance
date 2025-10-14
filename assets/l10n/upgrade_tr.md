@@ -2,6 +2,9 @@
 
 _Güncellemelerin tam listesi “İpuçları” düğmesindeki “Hakkında” gezinti öğesi aracılığıyla görüntülenebilir._
 
+### 6.5.0
+- Faturalar için Bütçe Kategorisi varsayımı / tahmini özelliği eklendi
+
 ### 6.4.0
 - Faturalar, Hesap Özetleri ve Transferler sayfalarına filtreler eklendi
 
@@ -18,7 +21,7 @@ _Güncellemelerin tam listesi “İpuçları” düğmesindeki “Hakkında” g
 - Döviz kurlarının formlarının iyileştirilmesi
 
 ### 6.0.3
-- Öğeler eklenirken gezinmenin değiştirilmesi (ana sayfa yerine önceki sayfaya) 
+- Öğeler eklenirken gezinmenin değiştirilmesi (ana sayfa yerine önceki sayfaya)
 
 ### 6.0.2
 - Exchange ile gider düzenleme modu düzeltildi
@@ -53,7 +56,7 @@ _Güncellemelerin tam listesi “İpuçları” düğmesindeki “Hakkında” g
 - Hesaplar ve Bütçeler Özet sekmeleri hesaplamalarının düzeltilmesi
 
 ### 5.6.1
-- Sağdan sola yönlendirilmiş yerelleştirmeler için metin yönlendirmesi düzeltildi 
+- Sağdan sola yönlendirilmiş yerelleştirmeler için metin yönlendirmesi düzeltildi
 
 ### 5.6.0
 - Giriş sayfalarının iyileştirilmesi
@@ -62,14 +65,14 @@ _Güncellemelerin tam listesi “İpuçları” düğmesindeki “Hakkında” g
 
 ### 5.5.1
 - Android için bir .log dosyasından kurtarmayı düzeltme
-- Japonca (JA) ve İspanyolca (ES) dillerinin eklenmesi 
+- Japonca (JA) ve İspanyolca (ES) dillerinin eklenmesi
 
 ### 5.5.0
 - Grafikler ekleyerek kendi kendine yapılandırılan panoyu iyileştirme
 - Arapça (AR) ve Azerbaycan (AZ) dillerinin eklenmesi
 
 ### 5.3.7
-- Geri yükleme prosedürü için “clean-up”-seçeneği ekleme  
+- Geri yükleme prosedürü için “clean-up”-seçeneği ekleme
 
 ### 5.3.6
 - Faturalar için simgeleri çözme

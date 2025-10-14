@@ -26,7 +26,7 @@ Português Brasileiro (PTB) |
 ---
 
 **Fingrom** -- aplicativo de contabilidade financeira de plataforma cruzada de código aberto sem anúncios e limitações.
-O objetivo da solução é criar um aplicativo de contabilidade financeira que seja intuitivo, eficiente e inclusivo. 
+O objetivo da solução é criar um aplicativo de contabilidade financeira que seja intuitivo, eficiente e inclusivo.
 Isso permite que os usuários gerenciem suas finanças sem esforço, garantindo que ninguém seja deixado para trás.
 
 [![Assista ao vídeo](../images/presentation_en.png)](https://youtu.be/sNTbpILLsOw)
@@ -48,9 +48,10 @@ Isso permite que os usuários gerenciem suas finanças sem esforço, garantindo 
 - Contas, transferências, receitas (faturas)
   - Pagamentos recorrentes (com um widget inicial)
   - Filtragem
+  - Premissa/previsão da categoria orçamentária
 - Definição de metas
 - Taxas de câmbio, moeda padrão para resumo
-- Métricas: 
+- Métricas:
   - Orçamento:
     - Previsão (com simulação de Monte Carlo)
     - Limite orçamentário e despesas por mês
@@ -63,7 +64,7 @@ Isso permite que os usuários gerenciem suas finanças sem esforço, garantindo 
     - Corrida de barras por categorias
   - Gráfico do indicador de metas
   - Gráfico histórico de moedas
-- Sincronização entre dispositivos (P2P) 
+- Sincronização entre dispositivos (P2P)
 - Recuperação via WebDav ou um arquivo direto
 - Importação de arquivos `CSV`, `QIF`, `OFX` para contas e faturas
 - Exportar para arquivo Excel `XLSX`

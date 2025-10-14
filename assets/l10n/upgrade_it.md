@@ -1,7 +1,10 @@
 ## Ultime modifiche
 
-_L'elenco completo degli aggiornamenti può essere consultato tramite la voce di navigazione “Informazioni” del 
+_L'elenco completo degli aggiornamenti può essere consultato tramite la voce di navigazione “Informazioni” del
 pulsante “Suggerimenti”._
+
+### 6.5.0
+- Introduzione dell'ipotesi/previsione della categoria di budget per le fatture
 
 ### 6.4.0
 - Aggiunta di filtri per le pagine Fatture, Ricevute e Trasferimenti
@@ -19,7 +22,7 @@ pulsante “Suggerimenti”._
 - Miglioramento dei moduli dei tassi di cambio
 
 ### 6.0.3
-- Modifica della navigazione quando si aggiungono elementi (alla pagina precedente invece che alla home) 
+- Modifica della navigazione quando si aggiungono elementi (alla pagina precedente invece che alla home)
 
 ### 6.0.2
 - Correzione della modalità di modifica delle spese con lo scambio
@@ -54,7 +57,7 @@ pulsante “Suggerimenti”._
 - Correzione dei calcoli delle schede di riepilogo dei conti e dei bilanci
 
 ### 5.6.1
-- Correzione dell'orientamento del testo per le localizzazioni orientate da destra a sinistra 
+- Correzione dell'orientamento del testo per le localizzazioni orientate da destra a sinistra
 
 ### 5.6.0
 - Miglioramento delle pagine introduttive
@@ -70,7 +73,7 @@ pulsante “Suggerimenti”._
 - Aggiunta delle lingue araba (AR) e azera (AZ)
 
 ### 5.3.7
-- Aggiunta dell'opzione “clean-up” per una procedura di ripristino  
+- Aggiunta dell'opzione “clean-up” per una procedura di ripristino
 
 ### 5.3.6
 - Risoluzione delle icone per le fatture
