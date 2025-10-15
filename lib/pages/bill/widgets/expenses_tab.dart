@@ -258,31 +258,34 @@ class ExpensesTabState<T extends ExpensesTab> extends State<T> {
                 }),
                 width: width,
               ),
-              SignalBuilder(
-                builder: (_, __) => Row(
-                    mainAxisAlignment: AppDesign.getAlignment<MainAxisAlignment>(),
-                    spacing: indent,
-                    children: widget.state.prediction
-                        .predict(BillAppData(
-                      account: account ?? '',
-                      category: budget ?? '',
-                      currency: currency,
-                      title: descriptionSignal.value,
-                      details: double.tryParse(billSignal.value) ?? 0.0,
-                    ))
-                        .map((e) {
-                      final item = widget.state.getByUuid(e);
-                      if (item == null) return Container();
-                      return ToolbarButtonWidget(
-                        isWide: true,
-                        tooltip: item.title,
-                        color: item.color ?? context.colorScheme.primary,
-                        borderColor: item.color?.withValues(alpha: 0.5),
-                        icon: item.icon ?? Icons.category,
-                        onPressed: () => setState(() => budget = item.uuid),
-                      );
-                    }).toList()),
-              ),
+              SignalBuilder(builder: (_, __) {
+                final bill = BillAppData(
+                  account: account ?? '',
+                  category: budget ?? '',
+                  currency: currency,
+                  title: descriptionSignal.value,
+                  details: double.tryParse(billSignal.value) ?? 0.0,
+                );
+                final scope = widget.state.prediction.predict(bill).map((e) {
+                  final item = widget.state.getByUuid(e);
+                  if (item == null) return Container();
+                  return ToolbarButtonWidget(
+                    isWide: true,
+                    tooltip: item.title,
+                    color: item.color ?? context.colorScheme.primary,
+                    borderColor: item.color?.withValues(alpha: 0.5),
+                    icon: item.icon ?? Icons.category,
+                    onPressed: () => setState(() => budget = item.uuid),
+                  );
+                });
+                return RowWidget(
+                  alignment: AppDesign.getAlignment<MainAxisAlignment>(),
+                  indent: indent,
+                  maxWidth: constraints.maxWidth,
+                  chunk: scope.map((_) => null).toList(),
+                  children: scope.map((e) => [e]).toList(),
+                );
+              }),
               ThemeHelper.hIndent2x,
               Text(
                 AppLocale.labels.expenseDateTime,
