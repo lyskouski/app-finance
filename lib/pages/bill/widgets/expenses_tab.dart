@@ -267,9 +267,9 @@ class ExpensesTabState<T extends ExpensesTab> extends State<T> {
                   details: double.tryParse(billSignal.value) ?? 0.0,
                 );
                 final categories = widget.state.prediction.predict(bill);
+                if (categories.isEmpty) return ThemeHelper.emptyBox;
                 final scope = categories.map((e) {
                   final item = widget.state.getByUuid(e);
-                  if (item == null) return Container();
                   return ToolbarButtonWidget(
                     isWide: true,
                     maxWidth: width / categories.length - indent * (categories.length - 1),
