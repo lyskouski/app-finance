@@ -2,6 +2,9 @@
 
 _A lista completa de atualizações pode ser visualizada no item de navegação "Sobre" no botão "Dicas"._
 
+### 6.5.0
+- Introdução da previsão/estimativa da categoria orçamentária para contas
+
 ### 6.4.0
 - Adição de filtros para as páginas Contas, Faturas e Transferências
 
@@ -18,7 +21,7 @@ _A lista completa de atualizações pode ser visualizada no item de navegação 
 - Melhoria das formas das taxas de câmbio
 
 ### 6.0.3
-- Alteração da navegação ao adicionar itens (para a página anterior em vez da página inicial) 
+- Alteração da navegação ao adicionar itens (para a página anterior em vez da página inicial)
 
 ### 6.0.2
 - Correção do modo de edição de despesas com câmbio
@@ -53,7 +56,7 @@ _A lista completa de atualizações pode ser visualizada no item de navegação 
 - Correção dos cálculos das guias Resumo de contas e orçamentos
 
 ### 5.6.1
-- Correção da orientação do texto para localizações orientadas da direita para a esquerda 
+- Correção da orientação do texto para localizações orientadas da direita para a esquerda
 
 ### 5.6.0
 - Aprimoramento das páginas introdutórias
@@ -62,14 +65,14 @@ _A lista completa de atualizações pode ser visualizada no item de navegação 
 
 ### 5.5.1
 - Correção da recuperação de um arquivo .log para Android
-- Adição dos idiomas japonês (JA) e espanhol (ES) 
+- Adição dos idiomas japonês (JA) e espanhol (ES)
 
 ### 5.5.0
 - Aprimoramento do quadro autoconfigurado com a adição de gráficos
 - Adição dos idiomas árabe (AR) e azerbaijão (AZ)
 
 ### 5.3.7
-- Adição da opção "clean-up" para um procedimento de restauração  
+- Adição da opção "clean-up" para um procedimento de restauração
 
 ### 5.3.6
 - Resolução de ícones para faturas
@@ -90,7 +93,7 @@ _A lista completa de atualizações pode ser visualizada no item de navegação 
 - Aprimoramento da localização em persa
 
 ### 5.3.0
-- Adição da localização em persa. 
+- Adição da localização em persa.
 
 ### 5.2.6
 - Resolução do armazenamento do Linux Flatpak

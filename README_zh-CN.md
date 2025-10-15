@@ -1,7 +1,7 @@
 [ [English](./README.md) | [Deutsch](./README_de.md) | 简体中文 | [...](./assets/l10n/about_zh.md) ]
 
 # ![Fingrom Logo](./docs/design-flow/logo/main.svg) 财务会计应用
-[![许可证 : CC BY-NC-ND 4.0](https://img.shields.io/badge/License-CC_BY--NC--ND_4.0-lightgrey.svg)](https://creativecommons.org/licenses/by-nc-nd/4.0/) 
+[![许可证 : CC BY-NC-ND 4.0](https://img.shields.io/badge/License-CC_BY--NC--ND_4.0-lightgrey.svg)](https://creativecommons.org/licenses/by-nc-nd/4.0/)
 [![检查状态](https://github.com/lyskouski/app-finance/actions/workflows/push_to_main.yml/badge.svg?branch=main)](https://github.com/lyskouski/app-finance/actions/workflows/push_to_main.yml)
 [![构建状态](https://github.com/lyskouski/app-finance/actions/workflows/build.yml/badge.svg)](https://github.com/lyskouski/app-finance/actions/workflows/build.yml)
 
@@ -9,7 +9,7 @@
 [![小工具测试覆盖率](https://lyskouski.github.io/app-finance/coverage/widget_coverage_badge.svg)](https://lyskouski.github.io/app-finance/coverage/widget/index.html)
 [![端到端覆盖率](https://lyskouski.github.io/app-finance/coverage/e2e_coverage_badge.svg)](https://lyskouski.github.io/app-finance/coverage/e2e/index.html)
 
-**Fingrom** (金融雷击) -- 无广告、无限制的开源跨平台财务会计应用程序。该解决方案的目标是创建一个直观、高效、包容的财务会计应用程序。 
+**Fingrom** (金融雷击) -- 无广告、无限制的开源跨平台财务会计应用程序。该解决方案的目标是创建一个直观、高效、包容的财务会计应用程序。
 它能让用户毫不费力地管理自己的财务，同时确保没有人掉队。
 
 
@@ -48,9 +48,10 @@
 - 账单、转账、收入（发票）
   - 循环支付（带安卓版主页小部件）
   - 过滤
+  - 預算類別假設／預測
 - 目标定义
 - 汇率、摘要的默认货币
-- 指标： 
+- 指标：
   - 预算：
     - 预测（蒙特卡罗模拟）
     - 预算限额和每月支出
@@ -118,7 +119,7 @@
 关于"-"贡献者 "中提及以示感谢），详情请查看[贡献部分](./CONTRIBUTING_zh-CN.md)。
 
 但是，如果被选为对本版本的贡献（不只是错字更正），则表示您同意向我提供
-我（和我可能的团队）认为合适的非独家使用许可。您可能已经猜到 
+我（和我可能的团队）认为合适的非独家使用许可。您可能已经猜到
 但我只是想说得更清楚些。
 
 

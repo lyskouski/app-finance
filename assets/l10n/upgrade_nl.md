@@ -2,6 +2,9 @@
 
 _De volledige lijst met updates kan worden bekeken via het navigatie-item “Over” op de knop “Hints”._
 
+### 6.5.0
+- Introductie van budgetcategorieveronderstelling/-voorspelling voor rekeningen
+
 ### 6.4.0
 - Filters toevoegen voor pagina's met rekeningen, facturen en overschrijvingen
 
@@ -18,7 +21,7 @@ _De volledige lijst met updates kan worden bekeken via het navigatie-item “Ove
 - Formulieren voor wisselkoersen verbeteren
 
 ### 6.0.3
-- De navigatie bij het toevoegen van items wijzigen (naar de vorige pagina in plaats van home) 
+- De navigatie bij het toevoegen van items wijzigen (naar de vorige pagina in plaats van home)
 
 ### 6.0.2
 - Onkostenbewerkingsmodus met uitwisseling repareren
@@ -53,7 +56,7 @@ _De volledige lijst met updates kan worden bekeken via het navigatie-item “Ove
 - Tabbladen Rekeningen en Budgetten berekenen gerepareerd
 
 ### 5.6.1
-- Tekstoriëntatie voor rechts-naar-links georiënteerde lokalisaties verbeterd 
+- Tekstoriëntatie voor rechts-naar-links georiënteerde lokalisaties verbeterd
 
 ### 5.6.0
 - Inleidende pagina's verbeteren
@@ -62,14 +65,14 @@ _De volledige lijst met updates kan worden bekeken via het navigatie-item “Ove
 
 ### 5.5.1
 - Herstel vanuit een .log-bestand voor Android verbeterd
-- Toevoeging van Japanse (JA) en Spaanse (ES) talen 
+- Toevoeging van Japanse (JA) en Spaanse (ES) talen
 
 ### 5.5.0
 - Zelf geconfigureerd bord verbeterd door grafieken toe te voegen
 - Toevoeging van de talen Arabisch (AR) en Azerbeidzjan (AZ)
 
 ### 5.3.7
-- Optie “opschonen” voor een herstelprocedure toevoegen  
+- Optie “opschonen” voor een herstelprocedure toevoegen
 
 ### 5.3.6
 - Pictogrammen voor facturen oplossen

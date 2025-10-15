@@ -2,6 +2,9 @@
 
 _Yeniləmələrin tam siyahısına "İpucu" düyməsindəki "Haqqında" naviqasiya elementi vasitəsilə baxmaq olar._
 
+### 6.5.0
+- Bills üçün Büdcə Kateqoriyasının fərziyyəsi / proqnozunun təqdim edilməsi
+
 ### 6.4.0
 - Hesablar, Fakturalar və Köçürmələr səhifələri üçün filtrlərin əlavə edilməsi
 

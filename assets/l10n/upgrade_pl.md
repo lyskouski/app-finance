@@ -2,6 +2,9 @@
 
 _Pełną listę aktualizacji można wyświetlić za pomocą elementu nawigacyjnego "O aplikacji" na przycisku "Wskazówki"._
 
+### 6.5.0
+- Wprowadzenie założenia/prognozy kategorii budżetowej dla rachunków
+
 ### 6.4.0
 - Dodanie filtrów dla stron Rachunki, Faktury i Przelewy
 
@@ -18,7 +21,7 @@ _Pełną listę aktualizacji można wyświetlić za pomocą elementu nawigacyjne
 - Ulepszanie formularzy kursów wymiany
 
 ### 6.0.3
-- Zmiana nawigacji podczas dodawania elementów (do poprzedniej strony zamiast głównej) 
+- Zmiana nawigacji podczas dodawania elementów (do poprzedniej strony zamiast głównej)
 
 ### 6.0.2
 - Naprawa trybu edycji wydatków z giełdą
@@ -62,14 +65,14 @@ _Pełną listę aktualizacji można wyświetlić za pomocą elementu nawigacyjne
 
 ### 5.5.1
 - Naprawiono odzyskiwanie z pliku .log dla systemu Android
-- Dodanie języków japońskiego (JA) i hiszpańskiego (ES) 
+- Dodanie języków japońskiego (JA) i hiszpańskiego (ES)
 
 ### 5.5.0
 - Ulepszenie samodzielnie skonfigurowanej tablicy poprzez dodanie wykresów
 - Dodanie języków arabskiego (AR) i azerskiego (AZ)
 
 ### 5.3.7
-- Dodanie opcji "czyszczenie" dla procedury przywracania  
+- Dodanie opcji "czyszczenie" dla procedury przywracania
 
 ### 5.3.6
 - Rozwiązywanie ikon dla faktur

@@ -48,6 +48,7 @@ Bu, istifadəçilərə heç kimin geridə qalmamasını təmin etməklə öz mal
 - Hesablar, köçürmələr, gəlirlər (qaimə-fakturalar)
   - Təkrarlanan ödənişlər (ev vidceti ilə)
   - Filtrləmə
+  - Büdcə Kateqoriyasının fərziyyəsi / proqnozu
 - Məqsədlərin Tərifi
 - Valyuta məzənnələri, Xülasə üçün Defolt Valyuta
 - Metriklər:

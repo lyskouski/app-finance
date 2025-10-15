@@ -25,59 +25,60 @@ Latsinka (BE) |
 
 ---
 
-**Fingrom** - krosplatformiennaje finansavaje ŭlikovaje prykladańnie z adkrytym zychodnym kodam biez reklamy i abmiežavańniaŭ. 
-Metaj rašeńnia zjaŭliajecca stvareńnie intuityŭna zrazumielaha, efiektyŭnaha i inkliuziŭnaha prylažeńnia dlia finansavaha 
-ŭliku. Heta daje karystaĺnikam mahčymasć biez asablivych vysilkaŭ kiravać svaimi finansami, harantujučy, što nichto nie 
+**Fingrom** - krosplatformiennaje finansavaje ŭlikovaje prykladańnie z adkrytym zychodnym kodam biez reklamy i abmiežavańniaŭ.
+Metaj rašeńnia zjaŭliajecca stvareńnie intuityŭna zrazumielaha, efiektyŭnaha i inkliuziŭnaha prylažeńnia dlia finansavaha
+ŭliku. Heta daje karystaĺnikam mahčymasć biez asablivych vysilkaŭ kiravać svaimi finansami, harantujučy, što nichto nie
 zastaniecca ŭ baku.
 
 [![Hliadzieć videa](../images/presentation_en.png)](https://youtu.be/sNTbpILLsOw)
 
-### Funkcyjanaĺnasć 
-- Buchhaltarski ŭlik (typ rachunku, valiuta/kryptavaliuta) 
-  - Prostaja hrupoŭka praz `/`-simval (u nazvie) dlia haloŭnaj staronki 
-  - Časopis tranzakcyj 
-  - Zamarozić sumu pa dacie abnaŭlieńnia (dlia impartu papiaredniaj historyi) 
-- Biudžetnyja katehoryi - Prostaja hrupoŭka praz `/`-simval (u nazvie) dlia haloŭnaj staronki 
-  - Z abmiežavańniami: 
-    - Abnaŭliajecca ŭ pačatku kožnaha miesiaca 
-    - Naladžvaĺnyja limity ŭ miesiac 
-    - Adnosna (0,0 ... 1,0) da dachodu 
-  - Abo biez abmiežavanniaŭ, pakazaŭšy vydatkavanuju sumu 
+### Funkcyjanaĺnasć
+- Buchhaltarski ŭlik (typ rachunku, valiuta/kryptavaliuta)
+  - Prostaja hrupoŭka praz `/`-simval (u nazvie) dlia haloŭnaj staronki
+  - Časopis tranzakcyj
+  - Zamarozić sumu pa dacie abnaŭlieńnia (dlia impartu papiaredniaj historyi)
+- Biudžetnyja katehoryi - Prostaja hrupoŭka praz `/`-simval (u nazvie) dlia haloŭnaj staronki
+  - Z abmiežavańniami:
+    - Abnaŭliajecca ŭ pačatku kožnaha miesiaca
+    - Naladžvaĺnyja limity ŭ miesiac
+    - Adnosna (0,0 ... 1,0) da dachodu
+  - Abo biez abmiežavanniaŭ, pakazaŭšy vydatkavanuju sumu
   - Rozny hrafik: štotydzień, štomiesiac, štohod
   - Naladžvaĺny dzień pačatku tydnia i miesiaca
-- Rachunki, pieraklady, dachody (faktury) 
+- Rachunki, pieraklady, dachody (faktury)
   - Pieryjadyčnyja placiažy (z chatnim vidžetam)
   - Fiĺtravańnie
-- Vyznačeńnie metaŭ - Kursy valiut, valiuta pa zmaŭčańni dlia zvodki 
-- Mietryki: 
-  - Biudžet: 
-    - Prahnoz (z madeliavanniem Monte-Karla) 
-    - Limit biudžetu i vydatki ŭ miesiac 
-  - Rachunak: 
-    - Dyjahrama padsviečnikaŭ (OHLC). 
-    - Radar zdaroŭja dachodaŭ 
-    - Razmierkavańnie valiuty 
-  - Rachunki: 
-    - Vydatki z pačatku hoda 
-    - Barnaja honka pa katehoryjach 
-  - Dyjahrama metaŭ 
-  - Histaryčny hrafik valiut 
-- Sinchranizacyja pamiž pryladami (P2P) 
-- Adnaŭlieńnie praz WebDav abo fajl 
-- Impart z fajlaŭ `CSV`, `QIF`, `OFX` dlia rachunkaŭ i rachunkaŭ-faktur 
+  - Prahnoz/dapuščeńnie pa katehoryi biudžetu
+- Vyznačeńnie metaŭ - Kursy valiut, valiuta pa zmaŭčańni dlia zvodki
+- Mietryki:
+  - Biudžet:
+    - Prahnoz (z madeliavanniem Monte-Karla)
+    - Limit biudžetu i vydatki ŭ miesiac
+  - Rachunak:
+    - Dyjahrama padsviečnikaŭ (OHLC).
+    - Radar zdaroŭja dachodaŭ
+    - Razmierkavańnie valiuty
+  - Rachunki:
+    - Vydatki z pačatku hoda
+    - Barnaja honka pa katehoryjach
+  - Dyjahrama metaŭ
+  - Histaryčny hrafik valiut
+- Sinchranizacyja pamiž pryladami (P2P)
+- Adnaŭlieńnie praz WebDav abo fajl
+- Impart z fajlaŭ `CSV`, `QIF`, `OFX` dlia rachunkaŭ i rachunkaŭ-faktur
 - Ekspart u fajl Excel `XLSX`
-- Šyfravańnie dadzienych 
-- Lakalizacyja 
-- Vopyt karystaĺnika 
-  - Haloŭnaja staronka z mahčymasciu kanfihuracyi (niekaĺki kanfihuracyj na nabor "šyrynia ch vyšynia") 
-  - Spahadny i adaptyŭny dyzajn 
-    - Adaptyŭnaja paneĺ navihacyi (vierchniaja, nižniaja, pravaja) i ŭkladki (vierchniaja, lievaja) 
-  - Tematyčny režym (ciomny, svietly, sistemny) z vyznačeńniem palitry (sistemny, karystaĺnicki, piersanaĺny - sieliektar kolieraŭ) 
-  - Zachavać apošni vybar dlia rachunku, biudžetu i valiuty 
-  - Aŭtamatyčnaja prakrutka da vybranaha eliemienta ŭ formie 
-  - Razharnuć / zharnuć razdziely na haloŭnaj staroncy 
-  - Praviadzicie paĺcam dlia chutkaha dostupu da dziejanniaŭ redahavannia i vydaliennia 
-  - Pavieličeńnie/pamianšeńnie (ad 60% da 200%) praz «Nastrojki» 
+- Šyfravańnie dadzienych
+- Lakalizacyja
+- Vopyt karystaĺnika
+  - Haloŭnaja staronka z mahčymasciu kanfihuracyi (niekaĺki kanfihuracyj na nabor "šyrynia ch vyšynia")
+  - Spahadny i adaptyŭny dyzajn
+    - Adaptyŭnaja paneĺ navihacyi (vierchniaja, nižniaja, pravaja) i ŭkladki (vierchniaja, lievaja)
+  - Tematyčny režym (ciomny, svietly, sistemny) z vyznačeńniem palitry (sistemny, karystaĺnicki, piersanaĺny - sieliektar kolieraŭ)
+  - Zachavać apošni vybar dlia rachunku, biudžetu i valiuty
+  - Aŭtamatyčnaja prakrutka da vybranaha eliemienta ŭ formie
+  - Razharnuć / zharnuć razdziely na haloŭnaj staroncy
+  - Praviadzicie paĺcam dlia chutkaha dostupu da dziejanniaŭ redahavannia i vydaliennia
+  - Pavieličeńnie/pamianšeńnie (ad 60% da 200%) praz «Nastrojki»
   - Spalučeńnia klaviš
 
 | Apisańnie                           | Shortcut                       |

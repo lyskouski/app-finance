@@ -26,7 +26,7 @@ Italiano (IT) |
 ---
 
 **Fingrom** -- applicazione di contabilità finanziaria multipiattaforma open-source senza annunci e limitazioni.
-L'obiettivo della soluzione è creare un'applicazione di contabilità finanziaria che sia intuitiva, efficiente e inclusiva. 
+L'obiettivo della soluzione è creare un'applicazione di contabilità finanziaria che sia intuitiva, efficiente e inclusiva.
 Che permetta agli utenti di gestire le proprie finanze senza sforzo, garantendo al contempo che nessuno venga lasciato indietro.
 
 [![Guarda il video](../images/presentation_en.png)](https://youtu.be/sNTbpILLsOw)
@@ -48,9 +48,10 @@ Che permetta agli utenti di gestire le proprie finanze senza sforzo, garantendo 
 - Bollette, trasferimenti, entrate (fatture)
   - Pagamenti ricorrenti (con un widget)
   - Filtraggio
+  - Ipotesi/previsioni relative alla categoria di bilancio
 - Definizione degli obiettivi
 - Tassi di cambio, Valuta predefinita per il riepilogo
-- Metriche: 
+- Metriche:
   - Bilancio:
     - Previsione (con simulazione Monte Carlo)
     - Limite di budget e spese per mese
@@ -63,7 +64,7 @@ Che permetta agli utenti di gestire le proprie finanze senza sforzo, garantendo 
     - Gara a barre per categorie
   - Grafico degli obiettivi
   - Grafico storico della valuta
-- Sincronizzazione tra dispositivi (P2P) 
+- Sincronizzazione tra dispositivi (P2P)
 - Recupero tramite WebDav o file diretto
 - Importazione da file `CSV`, `QIF`, `OFX` per fatture e bollette
 - Esportazione in file Excel `XLSX`

@@ -1,7 +1,7 @@
 [ English | [Deutsch](./README_de.md) | [简体中文](./README_zh-CN.md) | [...](./assets/l10n/about_en.md) ]
 
 # ![Fingrom Logo](./docs/design-flow/logo/main.svg) Financial Accounting Application
-[![License: CC BY-NC-ND 4.0](https://img.shields.io/badge/License-CC_BY--NC--ND_4.0-lightgrey.svg)](https://creativecommons.org/licenses/by-nc-nd/4.0/) 
+[![License: CC BY-NC-ND 4.0](https://img.shields.io/badge/License-CC_BY--NC--ND_4.0-lightgrey.svg)](https://creativecommons.org/licenses/by-nc-nd/4.0/)
 [![Check Status](https://github.com/lyskouski/app-finance/actions/workflows/push_to_main.yml/badge.svg?branch=main)](https://github.com/lyskouski/app-finance/actions/workflows/push_to_main.yml)
 [![Build Status](https://github.com/lyskouski/app-finance/actions/workflows/build.yml/badge.svg)](https://github.com/lyskouski/app-finance/actions/workflows/build.yml)
 
@@ -10,7 +10,7 @@
 [![End-To-End Coverage](https://lyskouski.github.io/app-finance/coverage/e2e_coverage_badge.svg)](https://lyskouski.github.io/app-finance/coverage/e2e/index.html)
 
 **Fingrom** -- open-source cross-platform financial accounting application without Ads and limitations.
-The goal of the solution is to create a financial accounting application that is intuitive, efficient, and inclusive. 
+The goal of the solution is to create a financial accounting application that is intuitive, efficient, and inclusive.
 That empowers users to effortlessly manage their finances while ensuring that no one is left behind.
 
 
@@ -49,9 +49,10 @@ That empowers users to effortlessly manage their finances while ensuring that no
 - Bills, Transfers, Incomes (Invoices)
   - Recurring Payments (with a home widget for Android)
   - Filtering
+  - Budget Category assumption / prediction
 - Goals Definition
 - Exchange rates, Default Currency for Summary
-- Metrics: 
+- Metrics:
   - Budget:
     - Forecast (with Monte Carlo simulation)
     - Budget limit and expenses per month
@@ -64,7 +65,7 @@ That empowers users to effortlessly manage their finances while ensuring that no
     - Bar Race for Categories
   - Goals Gauge Chart
   - Currency Historical Chart
-- [[demo]](https://youtu.be/RccQ8JpfJs4) Synchronization between devices (P2P) 
+- [[demo]](https://youtu.be/RccQ8JpfJs4) Synchronization between devices (P2P)
 - Recovery via WebDav or a direct File
 - Import from `CSV`, `QIF`, `OFX` files for Bills and Invoices
 - Export to Excel `XLSX` file
@@ -102,8 +103,8 @@ That empowers users to effortlessly manage their finances while ensuring that no
 
 ## Support (Sponsorship)
 
-As an open-source project, subscribing will not unlock any additional features in the app. However, it would serve as 
-an investment in the continuous evolution and improvement of the application. So, if you'd like to contribute 
+As an open-source project, subscribing will not unlock any additional features in the app. However, it would serve as
+an investment in the continuous evolution and improvement of the application. So, if you'd like to contribute
 financially towards the efforts, please consider these options:
 
 * [Github Sponsorship](https://github.com/users/lyskouski/sponsorship)
@@ -115,11 +116,11 @@ Or, [buy a :coffee:](https://www.buymeacoffee.com/lyskouski).
 
 ## Contributions
 
-Any made contribution **is greatly appreciated** (also, by mentioning in `Contributors` section, `Release` notes, and 
+Any made contribution **is greatly appreciated** (also, by mentioning in `Contributors` section, `Release` notes, and
 in the app `About` - `Contributors` as a gratitude), check [Contribution Section](./CONTRIBUTING.md) for more details.
 
 However, if it's been chosen a contribution (not just typo corrections) to this repo, you agree that you're giving
-me a non-exclusive license to use that content, as I (and my possible team) deem appropriate. You probably guessed 
+me a non-exclusive license to use that content, as I (and my possible team) deem appropriate. You probably guessed
 that already, but I just wanted to be extra clear on that.
 
 ## License & Copyright
@@ -129,6 +130,6 @@ The content herein are all &copy; 2023 **terCAD** Team (Viachaslau Lyskouski).
 <a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-nd/4.0/88x31.png" /></a><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/4.0/">Creative Commons Attribution-NonCommercial-NoDerivs 4.0 Unported License</a>:
 - **Attribution**: provide a link to the license, and indicate if changes were made
 - **NonCommercial**: cannot be used as a part of a commercial solution
-- **NoDerivatives**: any modification (remix, transform, or build upon the material) cannot be distributed by your own. 
-  Push it back to the main repository (https://github.com/lyskouski/app-finance) to unblock the distribution for made 
+- **NoDerivatives**: any modification (remix, transform, or build upon the material) cannot be distributed by your own.
+  Push it back to the main repository (https://github.com/lyskouski/app-finance) to unblock the distribution for made
   changes.
