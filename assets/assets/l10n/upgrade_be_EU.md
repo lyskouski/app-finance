@@ -1,6 +1,9 @@
-## Apošnija zmieny 
+## Apošnija zmieny
 
-_Poŭny spis abnaŭlieńniaŭ možna prahliadzieć u navihacyjnym punkcie «Ab Dadatku» na knopcy «Padkazki»._ 
+_Poŭny spis abnaŭlieńniaŭ možna prahliadzieć u navihacyjnym punkcie «Ab Dadatku» na knopcy «Padkazki»._
+
+### 6.5.0
+- Uvodziny ŭ biudžetnuju katehoryju zdahadak/prahnozaŭ dlia hrašovych rachunkaŭ
 
 ### 6.4.0
 - Dadańnie fiĺtraŭ dlia staronak "Rachunki", "Faktury" i "Pieravody"
@@ -18,7 +21,7 @@ _Poŭny spis abnaŭlieńniaŭ možna prahliadzieć u navihacyjnym punkcie «Ab D
 - Udaskanalieńnie formaŭ abmiennych kursaŭ
 
 ### 6.0.3
-- Zmiena navihacyi pry dadańni eliemientaŭ (na papiaredniuju staronku zamiest chatniaj) 
+- Zmiena navihacyi pry dadańni eliemientaŭ (na papiaredniuju staronku zamiest chatniaj)
 
 ### 6.0.2
 - Vypraŭlieńnie režymu redahavańnia raschodaŭ z abmienam
@@ -52,11 +55,11 @@ _Poŭny spis abnaŭlieńniaŭ možna prahliadzieć u navihacyjnym punkcie «Ab D
 ### 5.6.2
 - Vypraŭlieńnie razlikaŭ ulikovych zapisaŭ i biudžetaŭ
 
-### 5.6.1 
+### 5.6.1
 - Vypraŭlieńnie aryjentacyi tekstu dlia lakalizacyi sprava nalieva
 
-### 5.6.0 
-- Paliapšeńnie ŭstupnych staronak 
+### 5.6.0
+- Paliapšeńnie ŭstupnych staronak
 - Znajomstva z ukladkaj «Zvodka ŭlikovych zapisaŭ i biudžetaŭ»
 - Dadannie itaĺjanskaj (IT) i tureckaj (TR) moŭ
 
@@ -68,38 +71,38 @@ _Poŭny spis abnaŭlieńniaŭ možna prahliadzieć u navihacyjnym punkcie «Ab D
 - Paliepšana karystackaja doška dadańniem dyjahram
 - Dadańnie arabskaj (AR) i azierbajdžanskaj (AZ) moŭ
 
-### 5.3.7 
-- Dadańnie opcyi "ačystki" dlia pracedury adnaŭlieńnia 
+### 5.3.7
+- Dadańnie opcyi "ačystki" dlia pracedury adnaŭlieńnia
 
-### 5.3.6 
+### 5.3.6
 - Rašeńnie značkoŭ dlia rachunkaŭ
 
 ### 5.3.5
-- Vypraŭlieńnie pačatkovaj fazy dlia eliemientaŭ sa značeńniami biez drobavych častak 
+- Vypraŭlieńnie pačatkovaj fazy dlia eliemientaŭ sa značeńniami biez drobavych častak
 
 ### 5.3.4
 - Rašeńnie zborki Linux Flathub
 
-### 5.3.3 
-- Paliapšeńnie stylistyki knopak 
+### 5.3.3
+- Paliapšeńnie stylistyki knopak
 
-### 5.3.2 
-- Fiksacyja strat ad abmienu valiuty 
+### 5.3.2
+- Fiksacyja strat ad abmienu valiuty
 
-### 5.3.1 
+### 5.3.1
 - Paliapšeńnie piersidskaj lakalizacyi
 
-### 5.3.0 
+### 5.3.0
 - Dadańnie piersidskaj lakalizacyi
 
-### 5.2.6 
-- Rašeńnie schovišča Linux Flatpak 
+### 5.2.6
+- Rašeńnie schovišča Linux Flatpak
 
-### 5.2.4 
-- Dadańnie valiuty UZS (uzbiekski sum) i ŭzbiekskaj lakalizacyi 
+### 5.2.4
+- Dadańnie valiuty UZS (uzbiekski sum) i ŭzbiekskaj lakalizacyi
 
-### 5.2.2 
-- Zamiena SDK Selector na karystackuju realizacyju dlia vyrašeńnia zavisańniaŭ 
+### 5.2.2
+- Zamiena SDK Selector na karystackuju realizacyju dlia vyrašeńnia zavisańniaŭ
 
-### 5.2.0 
+### 5.2.0
 - Vypraŭlieńnie pamylki: apieratar nuliavoj pravierki vykarystoŭvajecca dlia nuliavoha značeńnia

@@ -26,7 +26,7 @@ Polski (PL) |
 ---
 
 **Fingrom** - wieloplatformowa aplikacja finansowo-księgowa o otwartym kodzie źródłowym bez reklam i ograniczeń.
-Celem rozwiązania jest stworzenie aplikacji do księgowości finansowej, która jest intuicyjna, wydajna i integracyjna. 
+Celem rozwiązania jest stworzenie aplikacji do księgowości finansowej, która jest intuicyjna, wydajna i integracyjna.
 Dzięki temu użytkownicy mogą bez wysiłku zarządzać swoimi finansami, jednocześnie zapewniając, że nikt nie zostanie pominięty.
 
 [![Obejrzyj wideo](../images/presentation_en.png)](https://youtu.be/sNTbpILLsOw)
@@ -48,9 +48,10 @@ Dzięki temu użytkownicy mogą bez wysiłku zarządzać swoimi finansami, jedno
 - Rachunki, przelewy, dochody (faktury)
   - Płatności cykliczne (z widżetem domowym)
   - Filtrowanie
+  - Założenie/prognoza kategorii budżetowej
 - Definicja celów
 - Kursy wymiany, domyślna waluta dla podsumowania
-- Metryki: 
+- Metryki:
   - Budżet:
     - Prognoza (z symulacją Monte Carlo)
     - Limit budżetu i wydatki na miesiąc
@@ -63,7 +64,7 @@ Dzięki temu użytkownicy mogą bez wysiłku zarządzać swoimi finansami, jedno
     - Wyścig słupkowy dla kategorii
   - Wykres wskaźnika celów
   - Wykres historyczny waluty
-- Synchronizacja między urządzeniami (P2P) 
+- Synchronizacja między urządzeniami (P2P)
 - Odzyskiwanie poprzez WebDav lub bezpośredni plik
 - Import z plików `CSV`, `QIF`, `OFX` dla rachunków i faktur
 - Eksport do pliku Excel `XLSX`

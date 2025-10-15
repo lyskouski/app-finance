@@ -26,7 +26,7 @@ Nederlandse (NL) |
 ---
 
 **Fingrom** -- open-source cross-platform financieel boekhoudprogramma zonder Ads en beperkingen.
-Het doel van de oplossing is om een financiële boekhoudapplicatie te maken die intuïtief, efficiënt en inclusief is. 
+Het doel van de oplossing is om een financiële boekhoudapplicatie te maken die intuïtief, efficiënt en inclusief is.
 Dat stelt gebruikers in staat om moeiteloos hun financiën te beheren en zorgt ervoor dat niemand achterblijft.
 
 [![Bekijk de video](../images/presentation_en.png)](https://youtu.be/sNTbpILLsOw)
@@ -48,9 +48,10 @@ Dat stelt gebruikers in staat om moeiteloos hun financiën te beheren en zorgt e
 - Rekeningen, overschrijvingen, inkomsten (facturen)
   - Terugkerende betalingen (met een widget)
   - Filteren
+  - Begrotingscategorie veronderstelling / voorspelling
 - Doelen definiëren
 - Wisselkoersen, standaardvaluta voor overzicht
-- Metriek: 
+- Metriek:
   - Budget:
     - Prognose (met Monte Carlo-simulatie)
     - Budgetlimiet en uitgaven per maand
@@ -63,7 +64,7 @@ Dat stelt gebruikers in staat om moeiteloos hun financiën te beheren en zorgt e
     - Staafgrafiek voor categorieën
   - Doelstellingen Grafiek
   - Historische valuta grafiek
-- Synchronisatie tussen apparaten (P2P) 
+- Synchronisatie tussen apparaten (P2P)
 - Herstel via WebDav of een direct bestand
 - Importeren uit `CSV`, `QIF`, `OFX` bestanden voor rekeningen en facturen
 - Exporteren naar Excel `XLSX`-bestand

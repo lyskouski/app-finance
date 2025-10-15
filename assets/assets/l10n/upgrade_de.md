@@ -2,6 +2,9 @@
 
 _Die vollständige Liste der Updates kann über den Navigationspunkt "Über" auf der Schaltfläche "Hinweise" eingesehen werden._
 
+### 6.5.0
+- Einführung der Annahme/Prognose von Budgetkategorien für Rechnungen
+
 ### 6.4.0
 - Hinzufügen von Filtern für die Seiten „Rechnungen”, „Fakturen” und „Überweisungen”
 
@@ -18,7 +21,7 @@ _Die vollständige Liste der Updates kann über den Navigationspunkt "Über" auf
 - Verbesserung der Formulare für die Wechselkurse
 
 ### 6.0.3
-- Ändern der Navigation beim Hinzufügen von Artikeln (zur vorherigen Seite statt zur Startseite) 
+- Ändern der Navigation beim Hinzufügen von Artikeln (zur vorherigen Seite statt zur Startseite)
 
 ### 6.0.2
 - Korrektur des Bearbeitungsmodus für Ausgaben mit Austausch
@@ -53,7 +56,7 @@ _Die vollständige Liste der Updates kann über den Navigationspunkt "Über" auf
 - Korrektur der Berechnungen auf den Registerkarten Konten und Budgets Zusammenfassung
 
 ### 5.6.1
-- Behebung der Textausrichtung für rechts-nach-links orientierte Lokalisierungen 
+- Behebung der Textausrichtung für rechts-nach-links orientierte Lokalisierungen
 
 ### 5.6.0
 - Verbesserung der Einführungsseiten
@@ -62,14 +65,14 @@ _Die vollständige Liste der Updates kann über den Navigationspunkt "Über" auf
 
 ### 5.5.1
 - Korrektur der Wiederherstellung aus einer .log-Datei für Android
-- Hinzufügen der Sprachen Japanisch (JA) und Spanisch (ES) 
+- Hinzufügen der Sprachen Japanisch (JA) und Spanisch (ES)
 
 ### 5.5.0
 - Verbesserung der selbstkonfigurierten Tafel durch Hinzufügen von Diagrammen
 - Hinzufügen der Sprachen Arabisch (AR) und Aserbaidschan (AZ)
 
 ### 5.3.7
-- Hinzufügen der "clean-up"-Option für eine Wiederherstellungsprozedur  
+- Hinzufügen der "clean-up"-Option für eine Wiederherstellungsprozedur
 
 ### 5.3.6
 - Auflösen von Symbolen für Rechnungen
@@ -90,7 +93,7 @@ _Die vollständige Liste der Updates kann über den Navigationspunkt "Über" auf
 - Verbesserung der persischen Lokalisierung
 
 ### 5.3.0
-- Hinzufügen der persischen Lokalisierung.  
+- Hinzufügen der persischen Lokalisierung.
 
 ### 5.2.6
 - Auflösen des Linux Flatpak-Speichers

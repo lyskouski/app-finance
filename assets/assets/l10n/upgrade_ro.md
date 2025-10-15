@@ -2,6 +2,9 @@
 
 _Lista completă a actualizărilor poate fi vizualizată prin intermediul elementului de navigare „Despre” de pe butonul „Sugestii”._
 
+### 6.5.0
+- Introducerea ipotezei/previziunii categoriei bugetare pentru facturi
+
 ### 6.4.0
 - Adăugarea de filtre pentru paginile Facturi, Chitanțe și Transferuri
 
@@ -18,7 +21,7 @@ _Lista completă a actualizărilor poate fi vizualizată prin intermediul elemen
 - Îmbunătățirea formelor ratelor de schimb'
 
 ### 6.0.3
-- Modificarea navigării la adăugarea de elemente (la pagina anterioară în loc de acasă) 
+- Modificarea navigării la adăugarea de elemente (la pagina anterioară în loc de acasă)
 
 ### 6.0.2
 - Fixarea modului de editare a cheltuielilor cu schimbul
@@ -53,7 +56,7 @@ _Lista completă a actualizărilor poate fi vizualizată prin intermediul elemen
 - Corectarea calculelor din filele Conturi și Bugete rezumat
 
 ### 5.6.1
-- Remedierea orientării textului pentru localizările orientate de la dreapta la stânga 
+- Remedierea orientării textului pentru localizările orientate de la dreapta la stânga
 
 ### 5.6.0
 - Îmbunătățirea paginilor introductive
@@ -62,14 +65,14 @@ _Lista completă a actualizărilor poate fi vizualizată prin intermediul elemen
 
 ### 5.5.1
 - Corectarea recuperării dintr-un fișier .log pentru Android
-- Adăugarea limbilor japoneză (JA) și spaniolă (ES) 
+- Adăugarea limbilor japoneză (JA) și spaniolă (ES)
 
 ### 5.5.0
 - Îmbunătățirea panoului autoconfigurat prin adăugarea de diagrame
 - Adăugarea limbilor arabă (AR) și azeră (AZ)
 
 ### 5.3.7
-- Adăugarea opțiunii „curățare” pentru o procedură de restaurare  
+- Adăugarea opțiunii „curățare” pentru o procedură de restaurare
 
 ### 5.3.6
 - Rezolvarea pictogramelor pentru facturi

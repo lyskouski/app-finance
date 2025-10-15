@@ -26,7 +26,7 @@ Limba română (RO) |
 ---
 
 **Fingrom** -- aplicație de contabilitate financiară cross-platform open-source fără anunțuri și limitări.
-Scopul soluției este de a crea o aplicație de contabilitate financiară care este intuitivă, eficientă și incluzivă. 
+Scopul soluției este de a crea o aplicație de contabilitate financiară care este intuitivă, eficientă și incluzivă.
 Care permite utilizatorilor să își gestioneze finanțele fără efort, asigurându-se în același timp că nimeni nu este lăsat în urmă.
 
 [![Urmăriți videoclipul](../images/presentation_en.png)](https://youtu.be/sNTbpILLsOw)
@@ -48,9 +48,10 @@ Care permite utilizatorilor să își gestioneze finanțele fără efort, asigur
 - Facturi, transferuri, venituri (facturi)
   - Plăți recurente (cu un widget de pornire)
   - Filtrare
+  - Ipoteza/previziunea categoriei bugetare
 - Definirea obiectivelor
 - Ratele de schimb, Moneda implicită pentru rezumat
-- Metrici: 
+- Metrici:
   - Buget:
     - Previziune (cu simulare Monte Carlo)
     - Limita bugetară și cheltuielile pe lună
@@ -63,7 +64,7 @@ Care permite utilizatorilor să își gestioneze finanțele fără efort, asigur
     - Bar Race pentru categorii
   - Grafic de măsurare a obiectivelor
   - Diagrama istorică a monedei
-- Sincronizare între dispozitive (P2P) 
+- Sincronizare între dispozitive (P2P)
 - Recuperare prin WebDav sau un fișier direct
 - Import din fișiere `CSV`, `QIF`, `OFX` pentru facturi și facturi
 - Export către fișiere Excel `XLSX`.

@@ -2,6 +2,9 @@
 
 _La lista completa de actualizaciones puede consultarse en el menú "Acerca de" del botón "Sugerencias"._
 
+### 6.5.0
+- Introducción de la suposición/predicción de la categoría presupuestaria para las facturas
+
 ### 6.4.0
 - Se han añadido filtros para las páginas de facturas, recibos y transferencias
 
@@ -18,7 +21,7 @@ _La lista completa de actualizaciones puede consultarse en el menú "Acerca de" 
 - Mejora de las formas de los tipos de cambio
 
 ### 6.0.3
-- Cambiar la navegación al añadir elementos (a la página anterior en lugar de home) 
+- Cambiar la navegación al añadir elementos (a la página anterior en lugar de home)
 
 ### 6.0.2
 - Arreglar el modo de edición de gastos con intercambio
@@ -53,7 +56,7 @@ _La lista completa de actualizaciones puede consultarse en el menú "Acerca de" 
 - Corrección de los cálculos de las pestañas Resumen de Cuentas y Presupuestos.
 
 ### 5.6.1
-- Corrección de la orientación del texto en localizaciones orientadas de derecha a izquierda 
+- Corrección de la orientación del texto en localizaciones orientadas de derecha a izquierda
 
 ### 5.6.0
 - Mejora de las páginas introductorias
@@ -62,14 +65,14 @@ _La lista completa de actualizaciones puede consultarse en el menú "Acerca de" 
 
 ### 5.5.1
 - Corrección de la recuperación desde un archivo .log para Android
-- Adición de los idiomas japonés (JA) y español (ES) 
+- Adición de los idiomas japonés (JA) y español (ES)
 
 ### 5.5.0
 - Mejora del tablero autoconfigurable añadiendo gráficos
 - Adición de los idiomas árabe (AR) y azerbaiyano (AZ)
 
 ### 5.3.7
-- Adición de "limpieza"-opción para un procedimiento de restauración  
+- Adición de "limpieza"-opción para un procedimiento de restauración
 
 ### 5.3.6
 - Resolver iconos para facturas

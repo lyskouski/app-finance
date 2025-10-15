@@ -26,7 +26,7 @@ English (EN-US) |
 ---
 
 **Fingrom** -- open-source cross-platform financial accounting application without Ads and limitations.
-The goal of the solution is to create a financial accounting application that is intuitive, efficient, and inclusive. 
+The goal of the solution is to create a financial accounting application that is intuitive, efficient, and inclusive.
 That empowers users to effortlessly manage their finances while ensuring that no one is left behind.
 
 [![Watch the video](../images/presentation_en.png)](https://youtu.be/sNTbpILLsOw)
@@ -48,9 +48,10 @@ That empowers users to effortlessly manage their finances while ensuring that no
 - Bills, Transfers, Incomes (Invoices)
   - Recurring Payments (with a home widget)
   - Filtering
+  - Budget Category assumption / prediction
 - Goals Definition
 - Exchange rates, Default Currency for Summary
-- Metrics: 
+- Metrics:
   - Budget:
     - Forecast (with Monte Carlo simulation)
     - Budget limit and expenses per month
@@ -63,7 +64,7 @@ That empowers users to effortlessly manage their finances while ensuring that no
     - Bar Race for Categories
   - Goals Gauge Chart
   - Currency Historical Chart
-- Synchronization between devices (P2P) 
+- Synchronization between devices (P2P)
 - Recovery via WebDav or a direct File
 - Import from `CSV`, `QIF`, `OFX` files for Bills and Invoices
 - Export to Excel `XLSX` file

@@ -26,7 +26,7 @@
 ---
 
 **Fingrom** -- open-source multiplatformní aplikace pro finanční účetnictví bez reklam a omezení.
-Cílem řešení je vytvořit aplikaci finančního účetnictví, která je intuitivní, efektivní a inkluzivní. 
+Cílem řešení je vytvořit aplikaci finančního účetnictví, která je intuitivní, efektivní a inkluzivní.
 Která uživatelům umožní bez námahy spravovat své finance a zároveň zajistí, aby nikdo nezůstal pozadu.
 
 [![Podívejte se na video](../images/presentation_en.png)](https://youtu.be/sNTbpILLsOw)
@@ -48,9 +48,10 @@ Která uživatelům umožní bez námahy spravovat své finance a zároveň zaji
 - Účty, převody, příjmy (faktury)
   - Opakující se platby (s widgetem na domovské obrazovce)
   - Filtrování
+  - Předpoklad/předpověď rozpočtové kategorie
 - Definice cílů
 - Směnné kurzy, výchozí měna pro shrnutí
-- Metriky: 
+- Metriky:
   - Rozpočet:
     - Rozpočet: Prognóza (se simulací Monte Carlo)
     - Rozpočtový limit a výdaje za měsíc
@@ -63,7 +64,7 @@ Která uživatelům umožní bez námahy spravovat své finance a zároveň zaji
     - Sloupcový závod pro kategorie
   - Měřicí graf cílů
   - Měnový historický graf
-- Synchronizace mezi zařízeními (P2P) 
+- Synchronizace mezi zařízeními (P2P)
 - Obnovení prostřednictvím WebDav nebo přímo souboru
 - Import ze souborů `CSV`, `QIF`, `OFX` pro účty a faktury
 - Export do souboru `XLSX` aplikace Excel

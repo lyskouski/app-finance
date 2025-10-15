@@ -26,7 +26,7 @@ Türk dili (TR) |
 ---
 
 **Fingrom** -- Reklamlar ve sınırlamalar olmadan açık kaynaklı çapraz platform finansal muhasebe uygulaması.
-Çözümün amacı sezgisel, verimli ve kapsayıcı bir finansal muhasebe uygulaması oluşturmaktır. 
+Çözümün amacı sezgisel, verimli ve kapsayıcı bir finansal muhasebe uygulaması oluşturmaktır.
 Bu, kullanıcıların mali durumlarını zahmetsizce yönetmelerini sağlarken kimsenin geride kalmamasını sağlar.
 
 [![Videoyu izleyin](../images/presentation_en.png)](https://youtu.be/sNTbpILLsOw)
@@ -48,9 +48,10 @@ Bu, kullanıcıların mali durumlarını zahmetsizce yönetmelerini sağlarken k
 - Faturalar, Transferler, Gelirler (Faturalar)
   - Yinelenen Ödemeler (ana sayfa widget'ı ile)
   - Filtreleme
+  - Bütçe Kategorisi varsayımı / tahmini
 - Hedefler Tanım
 - Döviz kurları, Özet için Varsayılan Para Birimi
-- Metrikler: 
+- Metrikler:
   - Bütçe:
     - Tahmin (Monte Carlo simülasyonu ile)
     - Bütçe limiti ve aylık harcamalar
@@ -63,7 +64,7 @@ Bu, kullanıcıların mali durumlarını zahmetsizce yönetmelerini sağlarken k
     - Kategoriler için Bar Yarışı
   - Hedefler Gösterge Tablosu
   - Para Birimi Tarihsel Grafiği
-- Cihazlar arasında senkronizasyon (P2P) 
+- Cihazlar arasında senkronizasyon (P2P)
 - WebDav veya doğrudan bir Dosya aracılığıyla kurtarma
 - Faturalar için `CSV`, `QIF`, `OFX` dosyalarından içe aktarma
 - Excel `XLSX` dosyasına aktarın

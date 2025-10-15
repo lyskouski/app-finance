@@ -2,6 +2,9 @@
 
 _Úplný seznam aktualizací si můžete prohlédnout v navigační položce „O aplikaci“ na tlačítku „Tipy“._
 
+### 6.5.0
+- Zavedení předpokladu/předpovědi rozpočtové kategorie pro účty
+
 ### 6.4.0
 - Přidání filtrů pro stránky Účty, Faktury a Převody
 
@@ -18,7 +21,7 @@ _Úplný seznam aktualizací si můžete prohlédnout v navigační položce „
 - Vylepšení formulářů směnných kurzů
 
 ### 6.0.3
-- Změna navigace při přidávání položek (na předchozí stránku místo na úvodní) 
+- Změna navigace při přidávání položek (na předchozí stránku místo na úvodní)
 
 ### 6.0.2
 - Oprava režimu editace výdajů se směnárnou
@@ -56,7 +59,7 @@ _Úplný seznam aktualizací si můžete prohlédnout v navigační položce „
 - Oprava výpočtů na kartách Účty a Souhrnné rozpočty
 
 ### 5.6.1
-- Oprava orientace textu u lokalizací orientovaných zprava doleva 
+- Oprava orientace textu u lokalizací orientovaných zprava doleva
 
 ### 5.6.0
 - Vylepšení úvodních stránek
@@ -65,14 +68,14 @@ _Úplný seznam aktualizací si můžete prohlédnout v navigační položce „
 
 ### 5.5.1
 - Oprava obnovení ze souboru .log pro systém Android
-- Přidání japonštiny (JA) a španělštiny (ES) 
+- Přidání japonštiny (JA) a španělštiny (ES)
 
 ### 5.5.0
 - Vylepšení samokonfigurace tabule přidáním grafů
 - Přidání arabštiny (AR) a ázerbájdžánštiny (AZ)
 
 ### 5.3.7
-- Přidání možnosti „clean-up“ pro postup obnovy  
+- Přidání možnosti „clean-up“ pro postup obnovy
 
 ### 5.3.6
 - Řešení ikon pro faktury
