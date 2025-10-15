@@ -1,6 +1,6 @@
 app-id: com.tercad.fingrom
 runtime: org.gnome.Platform
-runtime-version: "45"
+runtime-version: "47"
 sdk: org.gnome.Sdk
 command: fingrom
 separate-locales: false
@@ -17,8 +17,8 @@ modules:
     buildsystem: meson
     sources:
       - type: archive
-        url: https://download.gnome.org/sources/zenity/3.41/zenity-3.41.0.tar.xz
-        sha256: 19b676c3510e22badfcc3204062d432ba537402f5e0ae26128c0d90c954037e1
+        url: https://download.gnome.org/sources/zenity/4.0/zenity-4.0.2.tar.xz
+        sha256: c16dcae46e29e22c2fa0b95e80e06c96b2aec93840161369c95c85ed9f093153
 
   - name: Fingrom
     buildsystem: simple
@@ -31,8 +31,8 @@ modules:
       - chmod +x /app/Fingrom/fingrom
       - mkdir -p /app/bin
       - ln -s /app/Fingrom/fingrom /app/bin/fingrom
-      - export XDG_DATA_HOME="/var/lib/flatpak/exports/share:$XDG_DATA_HOME" 
-      - export XDG_DATA_DIRS="/var/lib/flatpak/exports/share:$XDG_DATA_DIRS" 
+      - export XDG_DATA_HOME="/var/lib/flatpak/exports/share:$XDG_DATA_HOME"
+      - export XDG_DATA_DIRS="/var/lib/flatpak/exports/share:$XDG_DATA_DIRS"
       - install -Dm644 /app/Fingrom/com.tercad.fingrom.svg /app/share/icons/hicolor/scalable/apps/com.tercad.fingrom.svg
       - install -Dm644 /app/Fingrom/com.tercad.fingrom.desktop /app/share/applications/com.tercad.fingrom.desktop
       - install -Dm644 com.tercad.fingrom.metainfo.xml /app/share/appdata/com.tercad.fingrom.metainfo.xml
