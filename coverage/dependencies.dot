@@ -369,10 +369,10 @@ digraph G {
   bill_widgets -> storage [color="#F0F0F050"];
   bill_widgets -> _configs_ [color="#F0F0F050"];
   bill_widgets -> _ext_ [color="#F0F0F050"];
+  bill_widgets -> button [color="#F0F0F050"];
   bill_widgets -> wrapper [color="#F0F0F050"];
   bill_widgets -> _interfaces [color="#F0F0F050"];
   bill_widgets -> form [color="#F0F0F050"];
-  bill_widgets -> button [color="#F0F0F050"];
   bill_widgets -> herald [color="#F0F0F050"];
   bill_widgets -> structure_navigation [color="#F0F0F050"];
   bill_widgets -> _configs_ [color="#F0F0F050"];

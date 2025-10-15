@@ -31,13 +31,13 @@
             <td class="headerValue">lcov.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntryMed">76.1&nbsp;%</td>
-            <td class="headerCovTableEntry">155</td>
-            <td class="headerCovTableEntry">118</td>
+            <td class="headerCovTableEntryLo">71.4&nbsp;%</td>
+            <td class="headerCovTableEntry">161</td>
+            <td class="headerCovTableEntry">115</td>
           </tr>
           <tr>
             <td class="headerItem">Test Date:</td>
-            <td class="headerValue">2025-10-15 09:35:50</td>
+            <td class="headerValue">2025-10-15 14:28:57</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntryHi">-</td>
@@ -76,12 +76,12 @@
 <span id="L14"><span class="lineNum">      14</span>              : import 'package:app_finance/_configs/theme_helper.dart';</span>
 <span id="L15"><span class="lineNum">      15</span>              : import 'package:app_finance/_ext/build_context_ext.dart';</span>
 <span id="L16"><span class="lineNum">      16</span>              : import 'package:app_finance/_ext/double_ext.dart';</span>
-<span id="L17"><span class="lineNum">      17</span>              : import 'package:app_finance/design/wrapper/input_wrapper.dart';</span>
-<span id="L18"><span class="lineNum">      18</span>              : import 'package:app_finance/pages/_interfaces/interface_page_inject.dart';</span>
-<span id="L19"><span class="lineNum">      19</span>              : import 'package:app_finance/design/form/currency_exchange_input.dart';</span>
-<span id="L20"><span class="lineNum">      20</span>              : import 'package:app_finance/design/form/date_time_input.dart';</span>
-<span id="L21"><span class="lineNum">      21</span>              : import 'package:app_finance/design/button/full_sized_button_widget.dart';</span>
-<span id="L22"><span class="lineNum">      22</span>              : import 'package:app_finance/design/button/link_widget.dart';</span>
+<span id="L17"><span class="lineNum">      17</span>              : import 'package:app_finance/design/button/toolbar_button_widget.dart';</span>
+<span id="L18"><span class="lineNum">      18</span>              : import 'package:app_finance/design/wrapper/input_wrapper.dart';</span>
+<span id="L19"><span class="lineNum">      19</span>              : import 'package:app_finance/pages/_interfaces/interface_page_inject.dart';</span>
+<span id="L20"><span class="lineNum">      20</span>              : import 'package:app_finance/design/form/currency_exchange_input.dart';</span>
+<span id="L21"><span class="lineNum">      21</span>              : import 'package:app_finance/design/form/date_time_input.dart';</span>
+<span id="L22"><span class="lineNum">      22</span>              : import 'package:app_finance/design/button/full_sized_button_widget.dart';</span>
 <span id="L23"><span class="lineNum">      23</span>              : import 'package:app_finance/design/form/list_account_selector.dart';</span>
 <span id="L24"><span class="lineNum">      24</span>              : import 'package:app_finance/design/form/simple_input.dart';</span>
 <span id="L25"><span class="lineNum">      25</span>              : import 'package:app_finance/design/wrapper/row_widget.dart';</span>
@@ -303,61 +303,71 @@
 <span id="L241"><span class="lineNum">     241</span> <span class="tlaGNC">           2 :                 controller: description,</span></span>
 <span id="L242"><span class="lineNum">     242</span> <span class="tlaGNC">           4 :                 tooltip: AppLocale.labels.descriptionTooltip,</span></span>
 <span id="L243"><span class="lineNum">     243</span>              :               ),</span>
-<span id="L244"><span class="lineNum">     244</span> <span class="tlaGNC">           2 :               SignalBuilder(</span></span>
-<span id="L245"><span class="lineNum">     245</span> <span class="tlaGNC">           4 :                 builder: (_, __) =&gt; Row(</span></span>
-<span id="L246"><span class="lineNum">     246</span> <span class="tlaGNC">           2 :                     mainAxisAlignment: AppDesign.getAlignment&lt;MainAxisAlignment&gt;(),</span></span>
-<span id="L247"><span class="lineNum">     247</span>              :                     spacing: indent,</span>
-<span id="L248"><span class="lineNum">     248</span> <span class="tlaGNC">           6 :                     children: widget.state.prediction</span></span>
-<span id="L249"><span class="lineNum">     249</span> <span class="tlaGNC">           4 :                         .predict(BillAppData(</span></span>
-<span id="L250"><span class="lineNum">     250</span> <span class="tlaGNC">           2 :                       account: account ?? '',</span></span>
-<span id="L251"><span class="lineNum">     251</span> <span class="tlaGNC">           2 :                       category: budget ?? '',</span></span>
-<span id="L252"><span class="lineNum">     252</span> <span class="tlaGNC">           2 :                       currency: currency,</span></span>
-<span id="L253"><span class="lineNum">     253</span> <span class="tlaGNC">           4 :                       title: descriptionSignal.value,</span></span>
-<span id="L254"><span class="lineNum">     254</span> <span class="tlaGNC">           6 :                       details: double.tryParse(billSignal.value) ?? 0.0,</span></span>
-<span id="L255"><span class="lineNum">     255</span>              :                     ))</span>
-<span id="L256"><span class="lineNum">     256</span> <span class="tlaGNC">           2 :                         .map((e) {</span></span>
-<span id="L257"><span class="lineNum">     257</span> <span class="tlaUNC tlaBgUNC">           0 :                       final item = widget.state.getByUuid(e);</span></span>
-<span id="L258"><span class="lineNum">     258</span> <span class="tlaUNC">           0 :                       if (item == null) return Container();</span></span>
-<span id="L259"><span class="lineNum">     259</span> <span class="tlaUNC">           0 :                       return LinkWidget(</span></span>
-<span id="L260"><span class="lineNum">     260</span> <span class="tlaUNC">           0 :                         item.title,</span></span>
-<span id="L261"><span class="lineNum">     261</span> <span class="tlaUNC">           0 :                         onTap: () =&gt; setState(() =&gt; budget = item.uuid),</span></span>
-<span id="L262"><span class="lineNum">     262</span>              :                       );</span>
-<span id="L263"><span class="lineNum">     263</span> <span class="tlaGNC tlaBgGNC">           2 :                     }).toList()),</span></span>
-<span id="L264"><span class="lineNum">     264</span>              :               ),</span>
-<span id="L265"><span class="lineNum">     265</span> <span class="tlaGNC">           2 :               InputWrapper(</span></span>
-<span id="L266"><span class="lineNum">     266</span>              :                 type: NamedInputType.budgetSelector,</span>
-<span id="L267"><span class="lineNum">     267</span>              :                 isRequired: true,</span>
-<span id="L268"><span class="lineNum">     268</span> <span class="tlaGNC">           2 :                 value: budget != null ? widget.state.getByUuid(budget!) : null,</span></span>
-<span id="L269"><span class="lineNum">     269</span> <span class="tlaGNC">           4 :                 title: AppLocale.labels.budget,</span></span>
-<span id="L270"><span class="lineNum">     270</span> <span class="tlaGNC">           2 :                 showError: hasErrors &amp;&amp; budget == null,</span></span>
-<span id="L271"><span class="lineNum">     271</span> <span class="tlaGNC">           4 :                 tooltip: AppLocale.labels.titleBudgetTooltip,</span></span>
-<span id="L272"><span class="lineNum">     272</span> <span class="tlaGNC">           4 :                 state: widget.state,</span></span>
-<span id="L273"><span class="lineNum">     273</span> <span class="tlaUNC tlaBgUNC">           0 :                 onChange: (value) =&gt; setState(() {</span></span>
-<span id="L274"><span class="lineNum">     274</span> <span class="tlaUNC">           0 :                   budget = value?.uuid;</span></span>
-<span id="L275"><span class="lineNum">     275</span>              :                   if (value != null) {</span>
-<span id="L276"><span class="lineNum">     276</span> <span class="tlaUNC">           0 :                     budgetCurrency = value.currency;</span></span>
-<span id="L277"><span class="lineNum">     277</span> <span class="tlaUNC">           0 :                     currency ??= budgetCurrency;</span></span>
-<span id="L278"><span class="lineNum">     278</span>              :                   }</span>
-<span id="L279"><span class="lineNum">     279</span>              :                 }),</span>
-<span id="L280"><span class="lineNum">     280</span>              :                 width: width,</span>
-<span id="L281"><span class="lineNum">     281</span>              :               ),</span>
-<span id="L282"><span class="lineNum">     282</span> <span class="tlaGNC tlaBgGNC">           2 :               Text(</span></span>
-<span id="L283"><span class="lineNum">     283</span> <span class="tlaGNC">           4 :                 AppLocale.labels.expenseDateTime,</span></span>
-<span id="L284"><span class="lineNum">     284</span> <span class="tlaGNC">           2 :                 style: textTheme.bodyLarge,</span></span>
-<span id="L285"><span class="lineNum">     285</span>              :               ),</span>
-<span id="L286"><span class="lineNum">     286</span> <span class="tlaGNC">           2 :               DateTimeInput(</span></span>
-<span id="L287"><span class="lineNum">     287</span> <span class="tlaGNC">           2 :                 width: width - indent,</span></span>
-<span id="L288"><span class="lineNum">     288</span> <span class="tlaGNC">           4 :                 value: createdAt ?? DateTime.now(),</span></span>
-<span id="L289"><span class="lineNum">     289</span> <span class="tlaUNC tlaBgUNC">           0 :                 setState: (value) =&gt; setState(() =&gt; createdAt = value),</span></span>
-<span id="L290"><span class="lineNum">     290</span>              :               ),</span>
-<span id="L291"><span class="lineNum">     291</span>              :               ThemeHelper.formEndBox,</span>
-<span id="L292"><span class="lineNum">     292</span>              :             ],</span>
-<span id="L293"><span class="lineNum">     293</span>              :           );</span>
-<span id="L294"><span class="lineNum">     294</span>              :         }),</span>
-<span id="L295"><span class="lineNum">     295</span>              :       ),</span>
-<span id="L296"><span class="lineNum">     296</span>              :     );</span>
-<span id="L297"><span class="lineNum">     297</span>              :   }</span>
-<span id="L298"><span class="lineNum">     298</span>              : }</span>
+<span id="L244"><span class="lineNum">     244</span> <span class="tlaGNC">           2 :               InputWrapper(</span></span>
+<span id="L245"><span class="lineNum">     245</span>              :                 type: NamedInputType.budgetSelector,</span>
+<span id="L246"><span class="lineNum">     246</span>              :                 isRequired: true,</span>
+<span id="L247"><span class="lineNum">     247</span> <span class="tlaGNC">           2 :                 value: budget != null ? widget.state.getByUuid(budget!) : null,</span></span>
+<span id="L248"><span class="lineNum">     248</span> <span class="tlaGNC">           4 :                 title: AppLocale.labels.budget,</span></span>
+<span id="L249"><span class="lineNum">     249</span> <span class="tlaGNC">           2 :                 showError: hasErrors &amp;&amp; budget == null,</span></span>
+<span id="L250"><span class="lineNum">     250</span> <span class="tlaGNC">           4 :                 tooltip: AppLocale.labels.titleBudgetTooltip,</span></span>
+<span id="L251"><span class="lineNum">     251</span> <span class="tlaGNC">           4 :                 state: widget.state,</span></span>
+<span id="L252"><span class="lineNum">     252</span> <span class="tlaUNC tlaBgUNC">           0 :                 onChange: (value) =&gt; setState(() {</span></span>
+<span id="L253"><span class="lineNum">     253</span> <span class="tlaUNC">           0 :                   budget = value?.uuid;</span></span>
+<span id="L254"><span class="lineNum">     254</span>              :                   if (value != null) {</span>
+<span id="L255"><span class="lineNum">     255</span> <span class="tlaUNC">           0 :                     budgetCurrency = value.currency;</span></span>
+<span id="L256"><span class="lineNum">     256</span> <span class="tlaUNC">           0 :                     currency ??= budgetCurrency;</span></span>
+<span id="L257"><span class="lineNum">     257</span>              :                   }</span>
+<span id="L258"><span class="lineNum">     258</span>              :                 }),</span>
+<span id="L259"><span class="lineNum">     259</span>              :                 width: width,</span>
+<span id="L260"><span class="lineNum">     260</span>              :               ),</span>
+<span id="L261"><span class="lineNum">     261</span> <span class="tlaGNC tlaBgGNC">           4 :               SignalBuilder(builder: (_, __) {</span></span>
+<span id="L262"><span class="lineNum">     262</span> <span class="tlaGNC">           2 :                 final bill = BillAppData(</span></span>
+<span id="L263"><span class="lineNum">     263</span> <span class="tlaGNC">           2 :                   account: account ?? '',</span></span>
+<span id="L264"><span class="lineNum">     264</span> <span class="tlaGNC">           2 :                   category: budget ?? '',</span></span>
+<span id="L265"><span class="lineNum">     265</span> <span class="tlaGNC">           2 :                   currency: currency,</span></span>
+<span id="L266"><span class="lineNum">     266</span> <span class="tlaGNC">           4 :                   title: descriptionSignal.value,</span></span>
+<span id="L267"><span class="lineNum">     267</span> <span class="tlaGNC">           6 :                   details: double.tryParse(billSignal.value) ?? 0.0,</span></span>
+<span id="L268"><span class="lineNum">     268</span>              :                 );</span>
+<span id="L269"><span class="lineNum">     269</span> <span class="tlaGNC">           8 :                 final categories = widget.state.prediction.predict(bill);</span></span>
+<span id="L270"><span class="lineNum">     270</span> <span class="tlaGNC">           2 :                 if (categories.isEmpty) return ThemeHelper.emptyBox;</span></span>
+<span id="L271"><span class="lineNum">     271</span> <span class="tlaUNC tlaBgUNC">           0 :                 final scope = categories.map((e) {</span></span>
+<span id="L272"><span class="lineNum">     272</span> <span class="tlaUNC">           0 :                   final item = widget.state.getByUuid(e);</span></span>
+<span id="L273"><span class="lineNum">     273</span> <span class="tlaUNC">           0 :                   return ToolbarButtonWidget(</span></span>
+<span id="L274"><span class="lineNum">     274</span>              :                     isWide: true,</span>
+<span id="L275"><span class="lineNum">     275</span> <span class="tlaUNC">           0 :                     maxWidth: width / categories.length - indent * categories.length,</span></span>
+<span id="L276"><span class="lineNum">     276</span> <span class="tlaUNC">           0 :                     tooltip: item.title,</span></span>
+<span id="L277"><span class="lineNum">     277</span> <span class="tlaUNC">           0 :                     color: item.color ?? context.colorScheme.primary,</span></span>
+<span id="L278"><span class="lineNum">     278</span> <span class="tlaUNC">           0 :                     borderColor: item.color?.withValues(alpha: 0.5),</span></span>
+<span id="L279"><span class="lineNum">     279</span> <span class="tlaUNC">           0 :                     icon: item.icon ?? Icons.category,</span></span>
+<span id="L280"><span class="lineNum">     280</span> <span class="tlaUNC">           0 :                     onPressed: () =&gt; setState(() =&gt; budget = item.uuid),</span></span>
+<span id="L281"><span class="lineNum">     281</span>              :                   );</span>
+<span id="L282"><span class="lineNum">     282</span>              :                 });</span>
+<span id="L283"><span class="lineNum">     283</span> <span class="tlaUNC">           0 :                 return RowWidget(</span></span>
+<span id="L284"><span class="lineNum">     284</span> <span class="tlaUNC">           0 :                   alignment: AppDesign.getAlignment&lt;MainAxisAlignment&gt;(),</span></span>
+<span id="L285"><span class="lineNum">     285</span>              :                   indent: indent,</span>
+<span id="L286"><span class="lineNum">     286</span> <span class="tlaUNC">           0 :                   maxWidth: constraints.maxWidth,</span></span>
+<span id="L287"><span class="lineNum">     287</span> <span class="tlaUNC">           0 :                   chunk: scope.map((_) =&gt; null).toList(),</span></span>
+<span id="L288"><span class="lineNum">     288</span> <span class="tlaUNC">           0 :                   children: scope.map((e) =&gt; [e]).toList(),</span></span>
+<span id="L289"><span class="lineNum">     289</span>              :                 );</span>
+<span id="L290"><span class="lineNum">     290</span>              :               }),</span>
+<span id="L291"><span class="lineNum">     291</span>              :               ThemeHelper.hIndent2x,</span>
+<span id="L292"><span class="lineNum">     292</span> <span class="tlaGNC tlaBgGNC">           2 :               Text(</span></span>
+<span id="L293"><span class="lineNum">     293</span> <span class="tlaGNC">           4 :                 AppLocale.labels.expenseDateTime,</span></span>
+<span id="L294"><span class="lineNum">     294</span> <span class="tlaGNC">           2 :                 style: textTheme.bodyLarge,</span></span>
+<span id="L295"><span class="lineNum">     295</span>              :               ),</span>
+<span id="L296"><span class="lineNum">     296</span> <span class="tlaGNC">           2 :               DateTimeInput(</span></span>
+<span id="L297"><span class="lineNum">     297</span> <span class="tlaGNC">           2 :                 width: width - indent,</span></span>
+<span id="L298"><span class="lineNum">     298</span> <span class="tlaGNC">           4 :                 value: createdAt ?? DateTime.now(),</span></span>
+<span id="L299"><span class="lineNum">     299</span> <span class="tlaUNC tlaBgUNC">           0 :                 setState: (value) =&gt; setState(() =&gt; createdAt = value),</span></span>
+<span id="L300"><span class="lineNum">     300</span>              :               ),</span>
+<span id="L301"><span class="lineNum">     301</span>              :               ThemeHelper.formEndBox,</span>
+<span id="L302"><span class="lineNum">     302</span>              :             ],</span>
+<span id="L303"><span class="lineNum">     303</span>              :           );</span>
+<span id="L304"><span class="lineNum">     304</span>              :         }),</span>
+<span id="L305"><span class="lineNum">     305</span>              :       ),</span>
+<span id="L306"><span class="lineNum">     306</span>              :     );</span>
+<span id="L307"><span class="lineNum">     307</span>              :   }</span>
+<span id="L308"><span class="lineNum">     308</span>              : }</span>
         </pre>
               </td>
             </tr>

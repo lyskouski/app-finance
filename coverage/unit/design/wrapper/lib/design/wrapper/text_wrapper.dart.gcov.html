@@ -32,12 +32,12 @@
             <td></td>
             <td class="headerItem">Lines:</td>
             <td class="headerCovTableEntryLo">0.0&nbsp;%</td>
-            <td class="headerCovTableEntry">17</td>
+            <td class="headerCovTableEntry">18</td>
             <td class="headerCovTableEntry">0</td>
           </tr>
           <tr>
             <td class="headerItem">Test Date:</td>
-            <td class="headerValue">2025-10-15 09:34:46</td>
+            <td class="headerValue">2025-10-15 14:27:51</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntryHi">-</td>
@@ -72,43 +72,46 @@
 <span id="L10"><span class="lineNum">      10</span>              :   final TextStyle? style;</span>
 <span id="L11"><span class="lineNum">      11</span>              :   final int maxLines;</span>
 <span id="L12"><span class="lineNum">      12</span>              :   final String tooltip;</span>
-<span id="L13"><span class="lineNum">      13</span>              : </span>
-<span id="L14"><span class="lineNum">      14</span> <span class="tlaUNC tlaBgUNC">           0 :   const TextWrapper(</span></span>
-<span id="L15"><span class="lineNum">      15</span>              :     this.text, {</span>
-<span id="L16"><span class="lineNum">      16</span>              :     super.key,</span>
-<span id="L17"><span class="lineNum">      17</span>              :     String? tooltip,</span>
-<span id="L18"><span class="lineNum">      18</span>              :     this.style = const TextStyle(),</span>
-<span id="L19"><span class="lineNum">      19</span>              :     this.maxLines = 1,</span>
-<span id="L20"><span class="lineNum">      20</span>              :   }) : tooltip = tooltip ?? text;</span>
-<span id="L21"><span class="lineNum">      21</span>              : </span>
-<span id="L22"><span class="lineNum">      22</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L23"><span class="lineNum">      23</span>              :   Widget build(BuildContext context) {</span>
-<span id="L24"><span class="lineNum">      24</span> <span class="tlaUNC">           0 :     return LayoutBuilder(</span></span>
-<span id="L25"><span class="lineNum">      25</span> <span class="tlaUNC">           0 :       builder: (context, constraints) {</span></span>
-<span id="L26"><span class="lineNum">      26</span> <span class="tlaUNC">           0 :         if (ThemeHelper.isTextExceedWidth(text, style, constraints.maxWidth)) {</span></span>
-<span id="L27"><span class="lineNum">      27</span> <span class="tlaUNC">           0 :           return Tooltip(</span></span>
-<span id="L28"><span class="lineNum">      28</span> <span class="tlaUNC">           0 :             message: tooltip,</span></span>
-<span id="L29"><span class="lineNum">      29</span> <span class="tlaUNC">           0 :             child: Text(</span></span>
-<span id="L30"><span class="lineNum">      30</span> <span class="tlaUNC">           0 :               text,</span></span>
-<span id="L31"><span class="lineNum">      31</span> <span class="tlaUNC">           0 :               style: style,</span></span>
-<span id="L32"><span class="lineNum">      32</span> <span class="tlaUNC">           0 :               maxLines: maxLines,</span></span>
-<span id="L33"><span class="lineNum">      33</span>              :               overflow: TextOverflow.ellipsis,</span>
-<span id="L34"><span class="lineNum">      34</span> <span class="tlaUNC">           0 :               textDirection: AppDesign.getAlignment&lt;TextDirection&gt;(),</span></span>
-<span id="L35"><span class="lineNum">      35</span>              :             ),</span>
-<span id="L36"><span class="lineNum">      36</span>              :           );</span>
-<span id="L37"><span class="lineNum">      37</span>              :         } else {</span>
-<span id="L38"><span class="lineNum">      38</span> <span class="tlaUNC">           0 :           return Text(</span></span>
-<span id="L39"><span class="lineNum">      39</span> <span class="tlaUNC">           0 :             text,</span></span>
-<span id="L40"><span class="lineNum">      40</span> <span class="tlaUNC">           0 :             style: style,</span></span>
-<span id="L41"><span class="lineNum">      41</span> <span class="tlaUNC">           0 :             maxLines: maxLines,</span></span>
-<span id="L42"><span class="lineNum">      42</span>              :             overflow: TextOverflow.ellipsis,</span>
-<span id="L43"><span class="lineNum">      43</span> <span class="tlaUNC">           0 :             textDirection: AppDesign.getAlignment&lt;TextDirection&gt;(),</span></span>
-<span id="L44"><span class="lineNum">      44</span>              :           );</span>
-<span id="L45"><span class="lineNum">      45</span>              :         }</span>
-<span id="L46"><span class="lineNum">      46</span>              :       },</span>
-<span id="L47"><span class="lineNum">      47</span>              :     );</span>
-<span id="L48"><span class="lineNum">      48</span>              :   }</span>
-<span id="L49"><span class="lineNum">      49</span>              : }</span>
+<span id="L13"><span class="lineNum">      13</span>              :   final double? maxWidth;</span>
+<span id="L14"><span class="lineNum">      14</span>              : </span>
+<span id="L15"><span class="lineNum">      15</span> <span class="tlaUNC tlaBgUNC">           0 :   const TextWrapper(</span></span>
+<span id="L16"><span class="lineNum">      16</span>              :     this.text, {</span>
+<span id="L17"><span class="lineNum">      17</span>              :     super.key,</span>
+<span id="L18"><span class="lineNum">      18</span>              :     String? tooltip,</span>
+<span id="L19"><span class="lineNum">      19</span>              :     this.maxWidth,</span>
+<span id="L20"><span class="lineNum">      20</span>              :     this.style = const TextStyle(),</span>
+<span id="L21"><span class="lineNum">      21</span>              :     this.maxLines = 1,</span>
+<span id="L22"><span class="lineNum">      22</span>              :   }) : tooltip = tooltip ?? text;</span>
+<span id="L23"><span class="lineNum">      23</span>              : </span>
+<span id="L24"><span class="lineNum">      24</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L25"><span class="lineNum">      25</span>              :   Widget build(BuildContext context) {</span>
+<span id="L26"><span class="lineNum">      26</span> <span class="tlaUNC">           0 :     return LayoutBuilder(</span></span>
+<span id="L27"><span class="lineNum">      27</span> <span class="tlaUNC">           0 :       builder: (context, constraints) {</span></span>
+<span id="L28"><span class="lineNum">      28</span> <span class="tlaUNC">           0 :         final width = maxWidth ?? constraints.maxWidth;</span></span>
+<span id="L29"><span class="lineNum">      29</span> <span class="tlaUNC">           0 :         if (ThemeHelper.isTextExceedWidth(text, style, width)) {</span></span>
+<span id="L30"><span class="lineNum">      30</span> <span class="tlaUNC">           0 :           return Tooltip(</span></span>
+<span id="L31"><span class="lineNum">      31</span> <span class="tlaUNC">           0 :             message: tooltip,</span></span>
+<span id="L32"><span class="lineNum">      32</span> <span class="tlaUNC">           0 :             child: Text(</span></span>
+<span id="L33"><span class="lineNum">      33</span> <span class="tlaUNC">           0 :               text,</span></span>
+<span id="L34"><span class="lineNum">      34</span> <span class="tlaUNC">           0 :               style: style,</span></span>
+<span id="L35"><span class="lineNum">      35</span> <span class="tlaUNC">           0 :               maxLines: maxLines,</span></span>
+<span id="L36"><span class="lineNum">      36</span>              :               overflow: TextOverflow.ellipsis,</span>
+<span id="L37"><span class="lineNum">      37</span> <span class="tlaUNC">           0 :               textDirection: AppDesign.getAlignment&lt;TextDirection&gt;(),</span></span>
+<span id="L38"><span class="lineNum">      38</span>              :             ),</span>
+<span id="L39"><span class="lineNum">      39</span>              :           );</span>
+<span id="L40"><span class="lineNum">      40</span>              :         } else {</span>
+<span id="L41"><span class="lineNum">      41</span> <span class="tlaUNC">           0 :           return Text(</span></span>
+<span id="L42"><span class="lineNum">      42</span> <span class="tlaUNC">           0 :             text,</span></span>
+<span id="L43"><span class="lineNum">      43</span> <span class="tlaUNC">           0 :             style: style,</span></span>
+<span id="L44"><span class="lineNum">      44</span> <span class="tlaUNC">           0 :             maxLines: maxLines,</span></span>
+<span id="L45"><span class="lineNum">      45</span>              :             overflow: TextOverflow.ellipsis,</span>
+<span id="L46"><span class="lineNum">      46</span> <span class="tlaUNC">           0 :             textDirection: AppDesign.getAlignment&lt;TextDirection&gt;(),</span></span>
+<span id="L47"><span class="lineNum">      47</span>              :           );</span>
+<span id="L48"><span class="lineNum">      48</span>              :         }</span>
+<span id="L49"><span class="lineNum">      49</span>              :       },</span>
+<span id="L50"><span class="lineNum">      50</span>              :     );</span>
+<span id="L51"><span class="lineNum">      51</span>              :   }</span>
+<span id="L52"><span class="lineNum">      52</span>              : }</span>
         </pre>
               </td>
             </tr>
