@@ -96,7 +96,7 @@ class ToolbarButtonWidgetState extends State<ToolbarButtonWidget> {
                             padding: EdgeInsets.fromLTRB(indent, indent, indent, 0),
                             child: TextWrapper(
                               widget.tooltip,
-                              maxWidth: widget.maxWidth,
+                              maxWidth: widget.maxWidth != null ? widget.maxWidth! - 3 * indent : null,
                               style: context.textTheme.headlineSmall?.copyWith(color: color),
                             ),
                           ),

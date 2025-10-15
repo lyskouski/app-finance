@@ -272,7 +272,7 @@ class ExpensesTabState<T extends ExpensesTab> extends State<T> {
                   final item = widget.state.getByUuid(e);
                   return ToolbarButtonWidget(
                     isWide: true,
-                    maxWidth: width / categories.length - indent * (categories.length - 1),
+                    maxWidth: width / categories.length - indent * categories.length,
                     tooltip: item.title,
                     color: item.color ?? context.colorScheme.primary,
                     borderColor: item.color?.withValues(alpha: 0.5),
