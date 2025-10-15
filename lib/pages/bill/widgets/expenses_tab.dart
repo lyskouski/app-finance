@@ -266,11 +266,13 @@ class ExpensesTabState<T extends ExpensesTab> extends State<T> {
                   title: descriptionSignal.value,
                   details: double.tryParse(billSignal.value) ?? 0.0,
                 );
-                final scope = widget.state.prediction.predict(bill).map((e) {
+                final categories = widget.state.prediction.predict(bill);
+                final scope = categories.map((e) {
                   final item = widget.state.getByUuid(e);
                   if (item == null) return Container();
                   return ToolbarButtonWidget(
                     isWide: true,
+                    maxWidth: width / categories.length - indent * (categories.length - 1),
                     tooltip: item.title,
                     color: item.color ?? context.colorScheme.primary,
                     borderColor: item.color?.withValues(alpha: 0.5),
