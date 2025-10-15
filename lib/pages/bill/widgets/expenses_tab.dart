@@ -14,12 +14,12 @@ import 'package:app_finance/_configs/account_type.dart';
 import 'package:app_finance/_configs/theme_helper.dart';
 import 'package:app_finance/_ext/build_context_ext.dart';
 import 'package:app_finance/_ext/double_ext.dart';
+import 'package:app_finance/design/button/toolbar_button_widget.dart';
 import 'package:app_finance/design/wrapper/input_wrapper.dart';
 import 'package:app_finance/pages/_interfaces/interface_page_inject.dart';
 import 'package:app_finance/design/form/currency_exchange_input.dart';
 import 'package:app_finance/design/form/date_time_input.dart';
 import 'package:app_finance/design/button/full_sized_button_widget.dart';
-import 'package:app_finance/design/button/link_widget.dart';
 import 'package:app_finance/design/form/list_account_selector.dart';
 import 'package:app_finance/design/form/simple_input.dart';
 import 'package:app_finance/design/wrapper/row_widget.dart';
@@ -241,27 +241,6 @@ class ExpensesTabState<T extends ExpensesTab> extends State<T> {
                 controller: description,
                 tooltip: AppLocale.labels.descriptionTooltip,
               ),
-              SignalBuilder(
-                builder: (_, __) => Row(
-                    mainAxisAlignment: AppDesign.getAlignment<MainAxisAlignment>(),
-                    spacing: indent,
-                    children: widget.state.prediction
-                        .predict(BillAppData(
-                      account: account ?? '',
-                      category: budget ?? '',
-                      currency: currency,
-                      title: descriptionSignal.value,
-                      details: double.tryParse(billSignal.value) ?? 0.0,
-                    ))
-                        .map((e) {
-                      final item = widget.state.getByUuid(e);
-                      if (item == null) return Container();
-                      return LinkWidget(
-                        item.title,
-                        onTap: () => setState(() => budget = item.uuid),
-                      );
-                    }).toList()),
-              ),
               InputWrapper(
                 type: NamedInputType.budgetSelector,
                 isRequired: true,
@@ -279,6 +258,37 @@ class ExpensesTabState<T extends ExpensesTab> extends State<T> {
                 }),
                 width: width,
               ),
+              SignalBuilder(builder: (_, __) {
+                final bill = BillAppData(
+                  account: account ?? '',
+                  category: budget ?? '',
+                  currency: currency,
+                  title: descriptionSignal.value,
+                  details: double.tryParse(billSignal.value) ?? 0.0,
+                );
+                final categories = widget.state.prediction.predict(bill);
+                if (categories.isEmpty) return ThemeHelper.emptyBox;
+                final scope = categories.map((e) {
+                  final item = widget.state.getByUuid(e);
+                  return ToolbarButtonWidget(
+                    isWide: true,
+                    maxWidth: width / categories.length - indent * categories.length,
+                    tooltip: item.title,
+                    color: item.color ?? context.colorScheme.primary,
+                    borderColor: item.color?.withValues(alpha: 0.5),
+                    icon: item.icon ?? Icons.category,
+                    onPressed: () => setState(() => budget = item.uuid),
+                  );
+                });
+                return RowWidget(
+                  alignment: AppDesign.getAlignment<MainAxisAlignment>(),
+                  indent: indent,
+                  maxWidth: constraints.maxWidth,
+                  chunk: scope.map((_) => null).toList(),
+                  children: scope.map((e) => [e]).toList(),
+                );
+              }),
+              ThemeHelper.hIndent2x,
               Text(
                 AppLocale.labels.expenseDateTime,
                 style: textTheme.bodyLarge,

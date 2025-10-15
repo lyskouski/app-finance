@@ -23,6 +23,7 @@ class ToolbarButtonWidget extends StatefulWidget {
   final IconData icon;
   final IconData? selectedIcon;
   final bool? isSelected;
+  final double? maxWidth;
 
   const ToolbarButtonWidget({
     super.key,
@@ -37,6 +38,7 @@ class ToolbarButtonWidget extends StatefulWidget {
     this.borderColor,
     this.backgroundColor,
     this.offset,
+    this.maxWidth,
     this.isWide = false,
   });
 
@@ -89,10 +91,12 @@ class ToolbarButtonWidgetState extends State<ToolbarButtonWidget> {
                       child: Row(
                         children: [
                           Icon(widget.icon, color: color),
-                          Padding(
+                          Container(
+                            width: widget.maxWidth != null ? widget.maxWidth! - 2 * indent : null,
                             padding: EdgeInsets.fromLTRB(indent, indent, indent, 0),
                             child: TextWrapper(
                               widget.tooltip,
+                              maxWidth: widget.maxWidth != null ? widget.maxWidth! - 3 * indent : null,
                               style: context.textTheme.headlineSmall?.copyWith(color: color),
                             ),
                           ),

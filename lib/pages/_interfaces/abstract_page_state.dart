@@ -6,6 +6,7 @@ import 'package:app_finance/_classes/herald/app_locale.dart';
 import 'package:app_finance/_classes/herald/app_zoom.dart';
 import 'package:app_finance/_classes/structure/navigation/app_menu.dart';
 import 'package:app_finance/_classes/storage/app_data.dart';
+import 'package:app_finance/_classes/structure/navigation/app_route.dart';
 import 'package:app_finance/_configs/screen_helper.dart';
 import 'package:app_finance/_configs/theme_helper.dart';
 import 'package:app_finance/_ext/build_context_ext.dart';
@@ -39,7 +40,7 @@ abstract class AbstractPageState<T extends StatefulWidget> extends State<T> {
     return ToolbarButtonWidget(
       isWide: ScreenHelper.state().isWide,
       tooltip: AppLocale.labels.backTooltip,
-      onPressed: () => nav.pop(),
+      onPressed: () => nav.canPop() ? nav.pop() : nav.pushNamed(AppRoute.homeRoute),
       icon: Icons.arrow_back,
       color: Colors.white70,
     );

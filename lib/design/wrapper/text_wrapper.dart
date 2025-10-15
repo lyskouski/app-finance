@@ -10,11 +10,13 @@ class TextWrapper extends StatelessWidget {
   final TextStyle? style;
   final int maxLines;
   final String tooltip;
+  final double? maxWidth;
 
   const TextWrapper(
     this.text, {
     super.key,
     String? tooltip,
+    this.maxWidth,
     this.style = const TextStyle(),
     this.maxLines = 1,
   }) : tooltip = tooltip ?? text;
@@ -23,7 +25,8 @@ class TextWrapper extends StatelessWidget {
   Widget build(BuildContext context) {
     return LayoutBuilder(
       builder: (context, constraints) {
-        if (ThemeHelper.isTextExceedWidth(text, style, constraints.maxWidth)) {
+        final width = maxWidth ?? constraints.maxWidth;
+        if (ThemeHelper.isTextExceedWidth(text, style, width)) {
           return Tooltip(
             message: tooltip,
             child: Text(
