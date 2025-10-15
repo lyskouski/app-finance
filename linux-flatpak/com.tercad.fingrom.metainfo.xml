@@ -36,7 +36,7 @@
         <li>Import from CSV, QIF, OFX files for Bills and Invoices</li>
         <li>Export to Excel (XLSX) file</li>
         <li>Data encryption</li>
-        <li>Localizations: EN, BE, PL, PT, FR, DE, UK, ZH, HI, UZ, FA, AR, AZ, JA, ES, IT, TR, KO, NL</li>
+        <li>Localizations: EN, BE, PL, PT, FR, DE, UK, ZH, HI, UZ, FA, AR, AZ, JA, ES, IT, TR, KO, NL, CS, RO</li>
         <li>Responsive and Adaptive Design</li>
         <li>Shortcuts</li>
     </ul>
@@ -45,11 +45,10 @@
       feel free to reach out!
     </p>
     <p>
-        This is the "open-source code" application that welcomes and values contributions from the community.
-        However, there are some limitations when it comes to making external modifications and distributions,
-        as it follows the CC-BY-NC-ND-4.0 license. As the project's author, I am committed to upholding the
-        "Terms of Use" and "Privacy Policy" to ensure the well-being and satisfaction of all users across
-        all platforms (desktop, mobile, and web).
+      This is an "open source code" application that welcomes and values contributions from the community.
+      However, there are some restrictions when it comes to external modification and distribution, as it follows
+      the CC-BY-NC-ND-4.0 license. As the author of this project, I agree to abide by the "Terms of Use" and "Privacy
+      Policy" to ensure the well-being and satisfaction of all users on all platforms (desktop, mobile and web).
     </p>
   </description>
   <screenshots>
