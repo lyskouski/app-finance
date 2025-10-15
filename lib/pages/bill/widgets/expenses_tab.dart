@@ -14,12 +14,12 @@ import 'package:app_finance/_configs/account_type.dart';
 import 'package:app_finance/_configs/theme_helper.dart';
 import 'package:app_finance/_ext/build_context_ext.dart';
 import 'package:app_finance/_ext/double_ext.dart';
+import 'package:app_finance/design/button/toolbar_button_widget.dart';
 import 'package:app_finance/design/wrapper/input_wrapper.dart';
 import 'package:app_finance/pages/_interfaces/interface_page_inject.dart';
 import 'package:app_finance/design/form/currency_exchange_input.dart';
 import 'package:app_finance/design/form/date_time_input.dart';
 import 'package:app_finance/design/button/full_sized_button_widget.dart';
-import 'package:app_finance/design/button/link_widget.dart';
 import 'package:app_finance/design/form/list_account_selector.dart';
 import 'package:app_finance/design/form/simple_input.dart';
 import 'package:app_finance/design/wrapper/row_widget.dart';
@@ -273,12 +273,17 @@ class ExpensesTabState<T extends ExpensesTab> extends State<T> {
                         .map((e) {
                       final item = widget.state.getByUuid(e);
                       if (item == null) return Container();
-                      return LinkWidget(
-                        item.title,
-                        onTap: () => setState(() => budget = item.uuid),
+                      return ToolbarButtonWidget(
+                        isWide: true,
+                        tooltip: item.title,
+                        color: item.color ?? context.colorScheme.primary,
+                        borderColor: item.color?.withValues(alpha: 0.5),
+                        icon: item.icon ?? Icons.category,
+                        onPressed: () => setState(() => budget = item.uuid),
                       );
                     }).toList()),
               ),
+              ThemeHelper.hIndent2x,
               Text(
                 AppLocale.labels.expenseDateTime,
                 style: textTheme.bodyLarge,
