@@ -241,6 +241,23 @@ class ExpensesTabState<T extends ExpensesTab> extends State<T> {
                 controller: description,
                 tooltip: AppLocale.labels.descriptionTooltip,
               ),
+              InputWrapper(
+                type: NamedInputType.budgetSelector,
+                isRequired: true,
+                value: budget != null ? widget.state.getByUuid(budget!) : null,
+                title: AppLocale.labels.budget,
+                showError: hasErrors && budget == null,
+                tooltip: AppLocale.labels.titleBudgetTooltip,
+                state: widget.state,
+                onChange: (value) => setState(() {
+                  budget = value?.uuid;
+                  if (value != null) {
+                    budgetCurrency = value.currency;
+                    currency ??= budgetCurrency;
+                  }
+                }),
+                width: width,
+              ),
               SignalBuilder(
                 builder: (_, __) => Row(
                     mainAxisAlignment: AppDesign.getAlignment<MainAxisAlignment>(),
@@ -261,23 +278,6 @@ class ExpensesTabState<T extends ExpensesTab> extends State<T> {
                         onTap: () => setState(() => budget = item.uuid),
                       );
                     }).toList()),
-              ),
-              InputWrapper(
-                type: NamedInputType.budgetSelector,
-                isRequired: true,
-                value: budget != null ? widget.state.getByUuid(budget!) : null,
-                title: AppLocale.labels.budget,
-                showError: hasErrors && budget == null,
-                tooltip: AppLocale.labels.titleBudgetTooltip,
-                state: widget.state,
-                onChange: (value) => setState(() {
-                  budget = value?.uuid;
-                  if (value != null) {
-                    budgetCurrency = value.currency;
-                    currency ??= budgetCurrency;
-                  }
-                }),
-                width: width,
               ),
               Text(
                 AppLocale.labels.expenseDateTime,
