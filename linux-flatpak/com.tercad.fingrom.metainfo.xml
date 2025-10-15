@@ -3,7 +3,7 @@
   <id>com.tercad.fingrom</id>
   <name>Fingrom</name>
   <developer_name>lyskouski</developer_name>
-  <summary>Platform-agnostic financial accounting app</summary>
+  <summary>Platform-agnostic financial accounting application for personal finance management</summary>
   <metadata_license>CC0-1.0</metadata_license>
   <project_license>CC-BY-NC-ND-4.0</project_license>
   <recommends>
