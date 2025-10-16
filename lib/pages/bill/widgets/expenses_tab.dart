@@ -12,6 +12,7 @@ import 'package:app_finance/_classes/storage/app_preferences.dart';
 import 'package:app_finance/_classes/storage/app_data.dart';
 import 'package:app_finance/_configs/account_type.dart';
 import 'package:app_finance/_configs/theme_helper.dart';
+import 'package:app_finance/_configs/screen_helper.dart';
 import 'package:app_finance/_ext/build_context_ext.dart';
 import 'package:app_finance/_ext/double_ext.dart';
 import 'package:app_finance/design/button/toolbar_button_widget.dart';
@@ -180,6 +181,7 @@ class ExpensesTabState<T extends ExpensesTab> extends State<T> {
         margin: EdgeInsets.fromLTRB(indent, indent, indent, 240),
         child: LayoutBuilder(builder: (context, constraints) {
           double width = constraints.maxWidth;
+          final display = ScreenHelper.getInstance(context, constraints);
           return Column(
             crossAxisAlignment: AppDesign.getAlignment(),
             children: [
@@ -272,7 +274,8 @@ class ExpensesTabState<T extends ExpensesTab> extends State<T> {
                   final item = widget.state.getByUuid(e);
                   return ToolbarButtonWidget(
                     isWide: true,
-                    maxWidth: width / categories.length - indent * categories.length,
+                    maxWidth:
+                        display.isBottom ? width - indent * 2 : width / categories.length - indent * categories.length,
                     tooltip: item.title,
                     color: item.color ?? context.colorScheme.primary,
                     borderColor: item.color?.withValues(alpha: 0.5),
@@ -280,13 +283,15 @@ class ExpensesTabState<T extends ExpensesTab> extends State<T> {
                     onPressed: () => setState(() => budget = item.uuid),
                   );
                 });
-                return RowWidget(
-                  alignment: AppDesign.getAlignment<MainAxisAlignment>(),
-                  indent: indent,
-                  maxWidth: constraints.maxWidth,
-                  chunk: scope.map((_) => null).toList(),
-                  children: scope.map((e) => [e]).toList(),
-                );
+                return display.isBottom
+                    ? Column(children: scope.toList())
+                    : RowWidget(
+                        alignment: AppDesign.getAlignment<MainAxisAlignment>(),
+                        indent: indent,
+                        maxWidth: constraints.maxWidth,
+                        chunk: scope.map((_) => null).toList(),
+                        children: scope.map((e) => [e]).toList(),
+                      );
               }),
               ThemeHelper.hIndent2x,
               Text(
