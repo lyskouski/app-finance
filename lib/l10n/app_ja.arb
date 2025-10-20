@@ -135,6 +135,7 @@
             "type": "String"
         }
     },
+    "copiedToClipboard": "クリップボードにコピーされました",
     "createAccountHeader": "新規アカウント作成",
     "createAccountTooltip": "新しい口座を作成する",
     "createBillHeader": "新規取引の作成",

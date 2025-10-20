@@ -135,6 +135,7 @@
             "type": "String"
         }
     },
+    "copiedToClipboard": "تم النسخ إلى الحافظة",
     "createAccountHeader": "إنشاء حساب جديد",
     "createAccountTooltip": "إنشاء حساب جديد",
     "createBillHeader": "إنشاء معاملة جديدة",

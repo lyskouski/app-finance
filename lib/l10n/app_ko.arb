@@ -135,6 +135,7 @@
             "type": "String"
         }
     },
+    "copiedToClipboard": "클립보드에 복사됨",
     "createAccountHeader": "새 계정 만들기",
     "createAccountTooltip": "새 계정 만들기",
     "createBillHeader": "새 트랜잭션 만들기",

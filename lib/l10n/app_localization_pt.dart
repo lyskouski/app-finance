@@ -328,6 +328,9 @@ class AppLocalizationsPt extends AppLocalizations {
   }
 
   @override
+  String get copiedToClipboard => 'Copiado para a área de transferência';
+
+  @override
   String get createAccountHeader => 'Criar nova conta';
 
   @override
@@ -1360,6 +1363,9 @@ class AppLocalizationsPtBr extends AppLocalizationsPt {
   String conversionMessage(Object currency) {
     return 'Realizada em $currency';
   }
+
+  @override
+  String get copiedToClipboard => 'Copiado para a área de transferência';
 
   @override
   String get createAccountHeader => 'Criar nova conta';

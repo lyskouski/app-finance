@@ -328,6 +328,9 @@ class AppLocalizationsTr extends AppLocalizations {
   }
 
   @override
+  String get copiedToClipboard => 'Panoya kopyalandı';
+
+  @override
   String get createAccountHeader => 'Yeni Hesap Oluştur';
 
   @override

@@ -329,6 +329,9 @@ class AppLocalizationsNl extends AppLocalizations {
   }
 
   @override
+  String get copiedToClipboard => 'Gekopieerd naar klembord';
+
+  @override
   String get createAccountHeader => 'Nieuwe rekening aanmaken';
 
   @override

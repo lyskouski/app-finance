@@ -135,6 +135,7 @@
             "type": "String"
         }
     },
+    "copiedToClipboard": "क्लिपबोर्ड पर कॉपी किया गया",
     "createAccountHeader": "नया खाता बनाएँ",
     "createAccountTooltip": "नया खाता बनाएँ",
     "createBillHeader": "नया लेनदेन बनाएं",

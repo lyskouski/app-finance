@@ -330,6 +330,9 @@ class AppLocalizationsUz extends AppLocalizations {
   }
 
   @override
+  String get copiedToClipboard => 'Buferga nusxalandi';
+
+  @override
   String get createAccountHeader => 'Yangi hisob yaratish';
 
   @override

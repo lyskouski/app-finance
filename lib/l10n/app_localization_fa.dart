@@ -328,6 +328,9 @@ class AppLocalizationsFa extends AppLocalizations {
   }
 
   @override
+  String get copiedToClipboard => 'کپی شده به کلیپ بورد';
+
+  @override
   String get createAccountHeader => 'ایجاد حساب جدید';
 
   @override

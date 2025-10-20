@@ -135,6 +135,7 @@
             "type": "String"
         }
     },
+    "copiedToClipboard": "Buferga nusxalandi",
     "createAccountHeader": "Yangi hisob yaratish",
     "createAccountTooltip": "Yangi hisob yaratish",
     "createBillHeader": "Yangi tranzaksiya yarating",

@@ -135,6 +135,7 @@
             "type": "String"
         }
     },
+    "copiedToClipboard": "Zkopírováno do schránky",
     "createAccountHeader": "Vytvořit nový účet",
     "createAccountTooltip": "Vytvořit nový účet",
     "createBillHeader": "Vytvořit novou transakci",

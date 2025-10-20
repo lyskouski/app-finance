@@ -330,6 +330,9 @@ class AppLocalizationsDe extends AppLocalizations {
   }
 
   @override
+  String get copiedToClipboard => 'In die Zwischenablage kopiert';
+
+  @override
   String get createAccountHeader => 'Neues Konto erstellen';
 
   @override

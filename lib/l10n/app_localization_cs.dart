@@ -328,6 +328,9 @@ class AppLocalizationsCs extends AppLocalizations {
   }
 
   @override
+  String get copiedToClipboard => 'Zkopírováno do schránky';
+
+  @override
   String get createAccountHeader => 'Vytvořit nový účet';
 
   @override

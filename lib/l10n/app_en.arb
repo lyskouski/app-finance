@@ -135,6 +135,7 @@
             "type": "String"
         }
     },
+    "copiedToClipboard": "Copied to Clipboard",
     "createAccountHeader": "Create new Account",
     "createAccountTooltip": "Create new Account",
     "createBillHeader": "Create new Transaction",

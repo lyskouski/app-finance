@@ -328,6 +328,9 @@ class AppLocalizationsBe extends AppLocalizations {
   }
 
   @override
+  String get copiedToClipboard => 'Скапіравана ў буфер абмену';
+
+  @override
   String get createAccountHeader => 'Стварыць рахунак';
 
   @override
@@ -1356,6 +1359,9 @@ class AppLocalizationsBeEu extends AppLocalizationsBe {
   String conversionMessage(Object currency) {
     return 'Uziata ŭ $currency';
   }
+
+  @override
+  String get copiedToClipboard => 'Skapiravana ŭ bufier abmienu';
 
   @override
   String get createAccountHeader => 'Stvaryć Rachunak';

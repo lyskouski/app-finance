@@ -14,8 +14,8 @@ import 'package:app_finance/design/wrapper/table_widget.dart';
 import 'package:app_finance/design/wrapper/text_wrapper.dart';
 import 'package:app_finance/design/generic/loading_widget.dart';
 import 'package:app_finance/pages/_interfaces/interface_page_inject.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
 
 class SyncTab extends StatefulWidget {
@@ -67,11 +67,13 @@ class SyncTabState extends State<SyncTab> {
 
   void synchronize() {
     setState(() => loading = true);
+    dataProvider.getList(AppDataType.goals).forEach((o) => sync.send(o.toStream()));
     dataProvider.getList(AppDataType.bills).forEach((o) => sync.send(o.toStream()));
     dataProvider.getList(AppDataType.invoice).forEach((o) => sync.send(o.toStream()));
     dataProvider.getList(AppDataType.budgets).forEach((o) => sync.send(o.toStream()));
     dataProvider.getList(AppDataType.accounts).forEach((o) => sync.send(o.toStream()));
     dataProvider.getList(AppDataType.currencies).forEach((o) => sync.send(o.toStream()));
+    dataProvider.getList(AppDataType.payments).forEach((o) => sync.send(o.toStream()));
     setState(() => loading = false);
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(content: Text(AppLocale.labels.peerSent)),
@@ -115,6 +117,12 @@ class SyncTabState extends State<SyncTab> {
                         child: SelectableText(
                           sync.getUuid() ?? AppLocale.labels.pearDisabled,
                           style: textTheme.bodyLarge,
+                          onTap: () {
+                            Clipboard.setData(ClipboardData(text: sync.getUuid() ?? ''));
+                            ScaffoldMessenger.of(context).showSnackBar(
+                              SnackBar(content: Text(AppLocale.labels.copiedToClipboard)),
+                            );
+                          },
                         ),
                       ),
                     ],
