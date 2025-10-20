@@ -135,6 +135,7 @@
             "type": "String"
         }
     },
+    "copiedToClipboard": "Gekopieerd naar klembord",
     "createAccountHeader": "Nieuwe rekening aanmaken",
     "createAccountTooltip": "Nieuw account aanmaken",
     "createBillHeader": "Nieuwe transactie aanmaken",

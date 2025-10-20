@@ -327,6 +327,9 @@ class AppLocalizationsKo extends AppLocalizations {
   }
 
   @override
+  String get copiedToClipboard => '클립보드에 복사됨';
+
+  @override
   String get createAccountHeader => '새 계정 만들기';
 
   @override

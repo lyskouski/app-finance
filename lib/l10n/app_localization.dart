@@ -745,6 +745,12 @@ abstract class AppLocalizations {
   /// **'Taken in {currency}'**
   String conversionMessage(Object currency);
 
+  /// No description provided for @copiedToClipboard.
+  ///
+  /// In en, this message translates to:
+  /// **'Copied to Clipboard'**
+  String get copiedToClipboard;
+
   /// No description provided for @createAccountHeader.
   ///
   /// In en, this message translates to:

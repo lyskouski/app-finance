@@ -329,6 +329,9 @@ class AppLocalizationsAz extends AppLocalizations {
   }
 
   @override
+  String get copiedToClipboard => 'Buferə kopyalandı';
+
+  @override
   String get createAccountHeader => 'Yeni hesab yaratmaq';
 
   @override

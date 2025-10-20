@@ -329,6 +329,9 @@ class AppLocalizationsRo extends AppLocalizations {
   }
 
   @override
+  String get copiedToClipboard => 'Copiată în clipboard';
+
+  @override
   String get createAccountHeader => 'Creați un cont nou';
 
   @override

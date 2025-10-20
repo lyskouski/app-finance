@@ -328,6 +328,9 @@ class AppLocalizationsPl extends AppLocalizations {
   }
 
   @override
+  String get copiedToClipboard => 'Skopiowano do schowka';
+
+  @override
   String get createAccountHeader => 'Utwórz nowe konto';
 
   @override

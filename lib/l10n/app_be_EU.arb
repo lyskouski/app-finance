@@ -135,6 +135,7 @@
             "type": "String"
         }
     },
+    "copiedToClipboard": "Skapiravana ŭ bufier abmienu",
     "createAccountHeader": "Stvaryć Rachunak",
     "createAccountTooltip": "Stvaryć Rachunak",
     "createBillHeader": "Dadać Tranzakcyju",

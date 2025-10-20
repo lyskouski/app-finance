@@ -328,6 +328,9 @@ class AppLocalizationsAr extends AppLocalizations {
   }
 
   @override
+  String get copiedToClipboard => 'تم النسخ إلى الحافظة';
+
+  @override
   String get createAccountHeader => 'إنشاء حساب جديد';
 
   @override

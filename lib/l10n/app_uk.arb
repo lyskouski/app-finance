@@ -135,6 +135,7 @@
             "type": "String"
         }
     },
+    "copiedToClipboard": "Скопійовано в буфер обміну",
     "createAccountHeader": "Створити новий рахунок",
     "createAccountTooltip": "Створити рахунок",
     "createBillHeader": "Додати нову транзакцію",

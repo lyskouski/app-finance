@@ -135,6 +135,7 @@
             "type": "String"
         }
     },
+    "copiedToClipboard": "Buferə kopyalandı",
     "createAccountHeader": "Yeni hesab yaratmaq",
     "createAccountTooltip": "Yeni hesab yaratmaq",
     "createBillHeader": "Yeni Əməliyyat yaradın",

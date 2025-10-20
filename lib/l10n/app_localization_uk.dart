@@ -328,6 +328,9 @@ class AppLocalizationsUk extends AppLocalizations {
   }
 
   @override
+  String get copiedToClipboard => 'Скопійовано в буфер обміну';
+
+  @override
   String get createAccountHeader => 'Створити новий рахунок';
 
   @override

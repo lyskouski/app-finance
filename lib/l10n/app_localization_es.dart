@@ -329,6 +329,9 @@ class AppLocalizationsEs extends AppLocalizations {
   }
 
   @override
+  String get copiedToClipboard => 'Copiado al portapapeles';
+
+  @override
   String get createAccountHeader => 'Crear nueva cuenta';
 
   @override

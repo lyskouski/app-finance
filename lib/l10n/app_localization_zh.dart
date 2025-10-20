@@ -327,6 +327,9 @@ class AppLocalizationsZh extends AppLocalizations {
   }
 
   @override
+  String get copiedToClipboard => '已复制到剪贴板';
+
+  @override
   String get createAccountHeader => '创建新账户';
 
   @override
@@ -1351,6 +1354,9 @@ class AppLocalizationsZhTw extends AppLocalizationsZh {
   String conversionMessage(Object currency) {
     return '以 $currency 兌換';
   }
+
+  @override
+  String get copiedToClipboard => '已複製到剪貼簿';
 
   @override
   String get createAccountHeader => '建立新帳戶';

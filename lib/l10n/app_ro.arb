@@ -135,6 +135,7 @@
             "type": "String"
         }
     },
+    "copiedToClipboard": "Copiată în clipboard",
     "createAccountHeader": "Creați un cont nou",
     "createAccountTooltip": "Crearea unui cont nou",
     "createBillHeader": "Crearea unei noi tranzacții",

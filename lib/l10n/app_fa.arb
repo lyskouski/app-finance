@@ -135,6 +135,7 @@
             "type": "String"
         }
     },
+    "copiedToClipboard": "کپی شده به کلیپ بورد",
     "createAccountHeader": "ایجاد حساب جدید",
     "createAccountTooltip": "ایجاد حساب جدید",
     "createBillHeader": "تراکنش جدید ایجاد کنید",

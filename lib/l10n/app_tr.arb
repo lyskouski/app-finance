@@ -135,6 +135,7 @@
             "type": "String"
         }
     },
+    "copiedToClipboard": "Panoya kopyalandı",
     "createAccountHeader": "Yeni Hesap Oluştur",
     "createAccountTooltip": "Yeni Hesap Oluştur",
     "createBillHeader": "Yeni İşlem Oluştur",

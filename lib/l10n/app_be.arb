@@ -135,6 +135,7 @@
             "type": "String"
         }
     },
+    "copiedToClipboard": "Скапіравана ў буфер абмену",
     "createAccountHeader": "Стварыць рахунак",
     "createAccountTooltip": "Стварыць рахунак",
     "createBillHeader": "Дадаць транзакцыю",

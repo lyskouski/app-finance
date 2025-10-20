@@ -329,6 +329,9 @@ class AppLocalizationsHi extends AppLocalizations {
   }
 
   @override
+  String get copiedToClipboard => 'क्लिपबोर्ड पर कॉपी किया गया';
+
+  @override
   String get createAccountHeader => 'नया खाता बनाएँ';
 
   @override

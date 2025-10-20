@@ -327,6 +327,9 @@ class AppLocalizationsJa extends AppLocalizations {
   }
 
   @override
+  String get copiedToClipboard => 'クリップボードにコピーされました';
+
+  @override
   String get createAccountHeader => '新規アカウント作成';
 
   @override

@@ -135,6 +135,7 @@
             "type": "String"
         }
     },
+    "copiedToClipboard": "已复制到剪贴板",
     "createAccountHeader": "创建新账户",
     "createAccountTooltip": "创建新账户",
     "createBillHeader": "创建新交易",
