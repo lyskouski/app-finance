@@ -72,6 +72,7 @@ class SyncTabState extends State<SyncTab> {
     dataProvider.getList(AppDataType.budgets).forEach((o) => sync.send(o.toStream()));
     dataProvider.getList(AppDataType.accounts).forEach((o) => sync.send(o.toStream()));
     dataProvider.getList(AppDataType.currencies).forEach((o) => sync.send(o.toStream()));
+    dataProvider.getList(AppDataType.payments).forEach((o) => sync.send(o.toStream()));
     setState(() => loading = false);
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(content: Text(AppLocale.labels.peerSent)),
