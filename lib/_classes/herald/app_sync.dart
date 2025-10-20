@@ -3,6 +3,7 @@
 
 import 'package:app_finance/_classes/storage/app_preferences.dart';
 import 'package:flutter/foundation.dart';
+import 'package:flutter/widgets.dart';
 import 'package:peerdart/peerdart.dart';
 import 'package:uuid/uuid.dart';
 
@@ -55,23 +56,29 @@ class AppSync extends ChangeNotifier {
   }
 
   void trace(String id) {
-    if (!peer.open) {
-      peer.reconnect();
-    }
-    if (_status[id] == null) {
-      _status[id] = SyncPeer(id, peer.connect(id));
-    } else if (!_status[id]!.connection.open) {
-      peer.removeConnection(_status[id]!.connection);
-      _status[id]!.connection = peer.connect(id);
-    }
-    // TBD: when connected, verify postponed messages
-    _status[id]!.connection.once('open').then((v) {
-      _status[id]!.status = true;
-      notifyListeners();
-    });
-    _status[id]!.connection.once('close').then((v) {
-      _status[id]!.status = false;
-      notifyListeners();
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      if (!peer.open) {
+        peer.reconnect();
+      }
+      if (_status[id] == null) {
+        _status[id] = SyncPeer(id, peer.connect(id));
+      } else if (!_status[id]!.connection.open) {
+        peer.removeConnection(_status[id]!.connection);
+        _status[id]!.connection = peer.connect(id);
+      }
+      // TBD: when connected, verify postponed messages
+      _status[id]!.connection.once('open').then((v) {
+        WidgetsBinding.instance.addPostFrameCallback((_) {
+          _status[id]!.status = true;
+          notifyListeners();
+        });
+      });
+      _status[id]!.connection.once('close').then((v) {
+        WidgetsBinding.instance.addPostFrameCallback((_) {
+          _status[id]!.status = false;
+          notifyListeners();
+        });
+      });
     });
   }
 
@@ -93,47 +100,61 @@ class AppSync extends ChangeNotifier {
   }
 
   void disable() {
-    AppPreferences.clear(AppPreferences.prefPeer);
-    AppPreferences.clear(AppPreferences.prefP2P);
-    peer.dispose();
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      AppPreferences.clear(AppPreferences.prefPeer);
+      AppPreferences.clear(AppPreferences.prefP2P);
+      peer.dispose();
+    });
   }
 
   void enable([String? id]) {
-    id ??= getUuid(true);
-    peer = Peer(id: id); //, options: PeerOptions(debug: LogLevel.All));
-    peer.on<DataConnection>('connection').listen(_listen);
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      id ??= getUuid(true);
+      peer = Peer(id: id);
+      peer.on<DataConnection>('connection').listen((conn) {
+        WidgetsBinding.instance.addPostFrameCallback((_) => _listen(conn));
+      });
+    });
   }
 
   _listen(DataConnection conn) {
     conn.on('data').listen((data) {
-      _cb.forEach((_, callback) => callback(data));
+      WidgetsBinding.instance.addPostFrameCallback((_) {
+        _cb.forEach((_, callback) => callback(data));
+      });
     });
     conn.on('binary').listen((data) {
-      _cbBin.forEach((_, callback) => callback(data));
+      WidgetsBinding.instance.addPostFrameCallback((_) {
+        _cbBin.forEach((_, callback) => callback(data));
+      });
     });
   }
 
   send(String data, [String? uuid]) {
-    if (uuid != null) {
-      if (_status[uuid]?.status == true) {
-        _status[uuid]!.connection.send(data);
-      }
-    } else {
-      final keyList = _status.keys.toList();
-      for (int i = 0; i < keyList.length; i++) {
-        if (_status[keyList[i]]?.status == true && _status[keyList[i]]!.connection.open) {
-          _status[keyList[i]]!.connection.send(data);
-        } else {
-          // .. postpone message
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      if (uuid != null) {
+        if (_status[uuid]?.status == true) {
+          _status[uuid]!.connection.send(data);
+        }
+      } else {
+        final keyList = _status.keys.toList();
+        for (int i = 0; i < keyList.length; i++) {
+          if (_status[keyList[i]]?.status == true && _status[keyList[i]]!.connection.open) {
+            _status[keyList[i]]!.connection.send(data);
+          } else {
+            // .. postpone message
+          }
         }
       }
-    }
+    });
   }
 
   ping(String uuid) {
-    if (_status[uuid]?.status == true) {
-      _status[uuid]!.connection.sendBinary(Uint8List.fromList(getUuid()?.codeUnits ?? [0]));
-    }
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      if (_status[uuid]?.status == true) {
+        _status[uuid]!.connection.sendBinary(Uint8List.fromList(getUuid()?.codeUnits ?? [0]));
+      }
+    });
   }
 
   String getNewUuid() {
