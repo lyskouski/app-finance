@@ -67,6 +67,7 @@ class SyncTabState extends State<SyncTab> {
 
   void synchronize() {
     setState(() => loading = true);
+    dataProvider.getList(AppDataType.goals).forEach((o) => sync.send(o.toStream()));
     dataProvider.getList(AppDataType.bills).forEach((o) => sync.send(o.toStream()));
     dataProvider.getList(AppDataType.invoice).forEach((o) => sync.send(o.toStream()));
     dataProvider.getList(AppDataType.budgets).forEach((o) => sync.send(o.toStream()));
