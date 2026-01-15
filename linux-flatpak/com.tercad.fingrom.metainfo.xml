@@ -2,7 +2,7 @@
 <component type="desktop-application">
   <id>com.tercad.fingrom</id>
   <name>Fingrom</name>
-  <developer_name>lyskouski</developer_name>
+  <developer id="io.github.lyskouski"><name>lyskouski</name></developer>
   <summary>Platform-agnostic financial accounting application for personal finance management</summary>
   <metadata_license>CC0-1.0</metadata_license>
   <project_license>CC-BY-NC-ND-4.0</project_license>
@@ -11,12 +11,12 @@
     <control>keyboard</control>
     <control>touch</control>
   </recommends>
-  <categories>
-    <category>Office</category>
-  </categories>
   <url type="homepage">https://github.com/lyskouski/app-finance</url>
   <url type="bugtracker">https://github.com/lyskouski/app-finance/issues</url>
   <url type="translate">https://github.com/lyskouski/app-finance/tree/main/lib/l10n</url>
+  <url type="vcs-browser">https://github.com/lyskouski/app-finance</url>
+  <content_rating type="oars-1.1"/>
+  <update_contact>support@tercad.pl</update_contact>  
   <branding>
     <color type="primary" scheme_preference="light">#ffffff</color>
     <color type="primary" scheme_preference="dark">#000000</color>
@@ -99,7 +99,4 @@
       </description>
     </release>
   </releases>
-  <content_rating type="oars-1.1">
-  </content_rating>
-  <update_contact>support@tercad.pl</update_contact>
 </component>
