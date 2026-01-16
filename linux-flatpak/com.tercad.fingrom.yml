@@ -1,6 +1,6 @@
 app-id: com.tercad.fingrom
 runtime: org.gnome.Platform
-runtime-version: "47"
+runtime-version: "49"
 sdk: org.gnome.Sdk
 command: fingrom
 separate-locales: false

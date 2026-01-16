@@ -11,12 +11,29 @@
     <control>keyboard</control>
     <control>touch</control>
   </recommends>
+  <categories>
+    <category>Office</category>
+    <category>Finance</category>
+    <category>Utility</category>
+  </categories>
+  <keywords>
+    <keyword>Finance</keyword>
+    <keyword>Accounting
+    <keyword>Budget</keyword>
+    <keyword>Bills</keyword>
+    <keyword>Transfers</keyword>
+    <keyword>Incomes</keyword>
+    <keyword>Invoices</keyword>
+    <keyword>Payments</keyword>
+    <keyword>Exchange rates</keyword>
+  </keywords>
   <url type="homepage">https://github.com/lyskouski/app-finance</url>
   <url type="bugtracker">https://github.com/lyskouski/app-finance/issues</url>
   <url type="translate">https://github.com/lyskouski/app-finance/tree/main/lib/l10n</url>
   <url type="vcs-browser">https://github.com/lyskouski/app-finance</url>
+  <launchable type="desktop-id">com.tercad.fingrom.desktop</launchable>
   <content_rating type="oars-1.1"/>
-  <update_contact>support@tercad.pl</update_contact>  
+  <update_contact>support@tercad.pl</update_contact>
   <branding>
     <color type="primary" scheme_preference="light">#ffffff</color>
     <color type="primary" scheme_preference="dark">#000000</color>
@@ -89,7 +106,6 @@
       <caption>Widescreen: Account Page</caption>
     </screenshot>
   </screenshots>
-  <launchable type="desktop-id">com.tercad.fingrom.desktop</launchable>
   <releases>
     <release version="{VERSION}" date="{DATE}">
       <description translatable="no">
