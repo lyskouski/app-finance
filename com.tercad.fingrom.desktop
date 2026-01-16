@@ -2,7 +2,8 @@
 Type=Application
 Name=Fingrom
 Comment=Open-source platform-agnostic financial accounting application
-Categories=Finance;Utility;
+Categories=Office;Finance;Utility;
+Keywords=Finance;Accounting;Budget;Bills;Transfers;Incomes;Invoices;Payments;Exchange rates;
 Icon=com.tercad.fingrom
 Exec=fingrom
 StartupWMClass=fingrom
