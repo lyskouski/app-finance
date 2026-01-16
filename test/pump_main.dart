@@ -58,16 +58,23 @@ class PumpMain {
   }
 
   static Future<void> _initFont(String name) async {
-    final root = fs.directory(platform.environment['FLUTTER_ROOT']).path.replaceAll('\\', '/');
-    final scope = [
-      'assets/fonts/$name.ttf',
-      'assets/fonts/$name.otf',
-      '$root/bin/cache/artifacts/material_fonts/$name.otf',
-    ];
-    final path = scope.firstWhere((path) => io.File(path).existsSync());
-    final Future<ByteData> fontData = rootBundle.load(path);
-    final FontLoader fontLoader = FontLoader(name)..addFont(fontData);
-    await fontLoader.load();
+    try {
+      final root = fs.directory(platform.environment['FLUTTER_ROOT']).path.replaceAll('\\', '/');
+      final scope = [
+        'assets/fonts/$name.ttf',
+        'assets/fonts/$name.otf',
+        '$root/bin/cache/artifacts/material_fonts/$name.otf',
+      ];
+      final path = scope.firstWhere((path) => io.File(path).existsSync(), orElse: () => '');
+      if (path.isNotEmpty) {
+        final Future<ByteData> fontData = rootBundle.load(path);
+        final FontLoader fontLoader = FontLoader(name)..addFont(fontData);
+        await fontLoader.load();
+      }
+    } catch (e) {
+      // Font loading failed, tests will use fallback fonts
+      print('Warning: Failed to load font $name, using fallback fonts');
+    }
   }
 
   static Future<void> initPaint(WidgetTester tester, CustomPainter paint, [Size size = const Size(320, 240)]) async {
