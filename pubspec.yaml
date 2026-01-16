@@ -25,7 +25,7 @@ dependencies:
   # CupertinoIcons class for iOS style icons
   cupertino_icons: ^1.0.2
   adaptive_breakpoints: ^0.1.6
-  google_fonts: ^6.1.0
+  google_fonts: ^6.3.0
   intl: ^0.20.2
   flutter_colorpicker: ^1.0.3
   uuid: ^4.5.1
