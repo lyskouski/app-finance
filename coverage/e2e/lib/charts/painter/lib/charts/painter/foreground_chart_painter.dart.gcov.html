@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Test Date:</td>
-            <td class="headerValue">2025-10-20 13:35:45</td>
+            <td class="headerValue">2026-01-16 09:30:45</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntryHi">-</td>
@@ -176,106 +176,107 @@
 <span id="L114"><span class="lineNum">     114</span> <span class="tlaGNC">           1 :           color: color,</span></span>
 <span id="L115"><span class="lineNum">     115</span> <span class="tlaGNC">           2 :           fontSize: textArea / 2.2,</span></span>
 <span id="L116"><span class="lineNum">     116</span>              :           fontFamily: 'Abel-Regular',</span>
-<span id="L117"><span class="lineNum">     117</span>              :         ),</span>
-<span id="L118"><span class="lineNum">     118</span>              :       ),</span>
-<span id="L119"><span class="lineNum">     119</span>              :       textDirection: TextDirection.ltr,</span>
-<span id="L120"><span class="lineNum">     120</span>              :     );</span>
-<span id="L121"><span class="lineNum">     121</span> <span class="tlaGNC">           1 :     textPainter.layout();</span></span>
-<span id="L122"><span class="lineNum">     122</span> <span class="tlaGNC">           4 :     textPainter.paint(canvas, Offset(x - textPainter.width, y));</span></span>
-<span id="L123"><span class="lineNum">     123</span>              :   }</span>
-<span id="L124"><span class="lineNum">     124</span>              : </span>
-<span id="L125"><span class="lineNum">     125</span> <span class="tlaUNC tlaBgUNC">           0 :   void _paintIcon(Canvas canvas, double x, double y, IconData? icon) {</span></span>
-<span id="L126"><span class="lineNum">     126</span>              :     if (icon == null) {</span>
-<span id="L127"><span class="lineNum">     127</span>              :       return;</span>
-<span id="L128"><span class="lineNum">     128</span>              :     }</span>
-<span id="L129"><span class="lineNum">     129</span> <span class="tlaUNC">           0 :     final textPainter = TextPainter(</span></span>
-<span id="L130"><span class="lineNum">     130</span> <span class="tlaUNC">           0 :       text: TextSpan(</span></span>
-<span id="L131"><span class="lineNum">     131</span> <span class="tlaUNC">           0 :         text: String.fromCharCode(icon.codePoint),</span></span>
-<span id="L132"><span class="lineNum">     132</span> <span class="tlaUNC">           0 :         style: TextStyle(</span></span>
-<span id="L133"><span class="lineNum">     133</span> <span class="tlaUNC">           0 :           color: color,</span></span>
-<span id="L134"><span class="lineNum">     134</span> <span class="tlaUNC">           0 :           fontSize: textArea,</span></span>
-<span id="L135"><span class="lineNum">     135</span> <span class="tlaUNC">           0 :           fontFamily: Icons.question_mark.fontFamily,</span></span>
-<span id="L136"><span class="lineNum">     136</span>              :         ),</span>
-<span id="L137"><span class="lineNum">     137</span>              :       ),</span>
-<span id="L138"><span class="lineNum">     138</span>              :       textDirection: TextDirection.ltr,</span>
-<span id="L139"><span class="lineNum">     139</span>              :     );</span>
-<span id="L140"><span class="lineNum">     140</span> <span class="tlaUNC">           0 :     textPainter.layout();</span></span>
-<span id="L141"><span class="lineNum">     141</span> <span class="tlaUNC">           0 :     textPainter.paint(canvas, Offset(x - textPainter.width, y));</span></span>
-<span id="L142"><span class="lineNum">     142</span>              :   }</span>
-<span id="L143"><span class="lineNum">     143</span>              : </span>
-<span id="L144"><span class="lineNum">     144</span> <span class="tlaGNC tlaBgGNC">           1 :   void _paintAxisY(Canvas canvas, Size size) {</span></span>
-<span id="L145"><span class="lineNum">     145</span> <span class="tlaGNC">           1 :     final lineColor = Paint()</span></span>
-<span id="L146"><span class="lineNum">     146</span> <span class="tlaGNC">           3 :       ..color = this.lineColor.withValues(alpha: 0.4)</span></span>
-<span id="L147"><span class="lineNum">     147</span> <span class="tlaGNC">           1 :       ..strokeWidth = 0.5;</span></span>
-<span id="L148"><span class="lineNum">     148</span> <span class="tlaGNC">           5 :     double step = (yMax - yMin) / yDiv;</span></span>
-<span id="L149"><span class="lineNum">     149</span> <span class="tlaGNC">           3 :     for (int i = 0; i &lt; yDiv; i++) {</span></span>
-<span id="L150"><span class="lineNum">     150</span> <span class="tlaGNC">           1 :       double delta = step * i;</span></span>
-<span id="L151"><span class="lineNum">     151</span> <span class="tlaGNC">           4 :       double y = _shiftStep(size.height, textArea, yDiv, i);</span></span>
-<span id="L152"><span class="lineNum">     152</span> <span class="tlaGNC">           1 :       if (yType != null || i == 0) {</span></span>
-<span id="L153"><span class="lineNum">     153</span> <span class="tlaGNC">           5 :         canvas.drawLine(Offset(shift, y), Offset(size.width, y), lineColor);</span></span>
-<span id="L154"><span class="lineNum">     154</span>              :       }</span>
-<span id="L155"><span class="lineNum">     155</span> <span class="tlaGNC">           1 :       switch (yType) {</span></span>
-<span id="L156"><span class="lineNum">     156</span> <span class="tlaGNC">           1 :         case double:</span></span>
-<span id="L157"><span class="lineNum">     157</span> <span class="tlaGNC">           3 :           final formatter = yTpl ?? intl.NumberFormat.decimalPatternDigits(decimalDigits: 2, locale: AppLocale.code);</span></span>
-<span id="L158"><span class="lineNum">     158</span> <span class="tlaGNC">           8 :           _paintText(canvas, textArea, y - textArea / 3, formatter.format(yMin + delta));</span></span>
-<span id="L159"><span class="lineNum">     159</span>              :           break;</span>
-<span id="L160"><span class="lineNum">     160</span> <span class="tlaUNC tlaBgUNC">           0 :         case IconData:</span></span>
-<span id="L161"><span class="lineNum">     161</span> <span class="tlaUNC">           0 :           final code = i &gt;= yMap.length ? null : yMap[i];</span></span>
-<span id="L162"><span class="lineNum">     162</span> <span class="tlaUNC">           0 :           _paintIcon(canvas, textArea, y - textArea, code);</span></span>
-<span id="L163"><span class="lineNum">     163</span>              :           break;</span>
-<span id="L164"><span class="lineNum">     164</span> <span class="tlaUNC">           0 :         case Percentage:</span></span>
-<span id="L165"><span class="lineNum">     165</span> <span class="tlaUNC">           0 :           final formatter = yTpl ?? intl.NumberFormat.decimalPatternDigits(decimalDigits: 0, locale: AppLocale.code);</span></span>
-<span id="L166"><span class="lineNum">     166</span> <span class="tlaUNC">           0 :           _paintText(canvas, textArea, y - textArea / 3, formatter.format(yMin + delta) + ' %');</span></span>
-<span id="L167"><span class="lineNum">     167</span>              :           break;</span>
-<span id="L168"><span class="lineNum">     168</span>              :       }</span>
-<span id="L169"><span class="lineNum">     169</span>              :     }</span>
-<span id="L170"><span class="lineNum">     170</span>              :   }</span>
-<span id="L171"><span class="lineNum">     171</span>              : </span>
-<span id="L172"><span class="lineNum">     172</span> <span class="tlaGNC tlaBgGNC">           1 :   double _shiftStep(total, shift, div, i) {</span></span>
-<span id="L173"><span class="lineNum">     173</span> <span class="tlaGNC">           4 :     return (total - shift) * (1 - i / div);</span></span>
-<span id="L174"><span class="lineNum">     174</span>              :   }</span>
-<span id="L175"><span class="lineNum">     175</span>              : </span>
-<span id="L176"><span class="lineNum">     176</span> <span class="tlaGNC">           1 :   void _paintAxisX(Canvas canvas, Size size) {</span></span>
-<span id="L177"><span class="lineNum">     177</span> <span class="tlaGNC">           1 :     final lineColor = Paint()</span></span>
-<span id="L178"><span class="lineNum">     178</span> <span class="tlaGNC">           3 :       ..color = this.lineColor.withValues(alpha: 0.4)</span></span>
-<span id="L179"><span class="lineNum">     179</span> <span class="tlaGNC">           1 :       ..strokeWidth = 0.5;</span></span>
-<span id="L180"><span class="lineNum">     180</span> <span class="tlaGNC">           1 :     final background = Paint()</span></span>
-<span id="L181"><span class="lineNum">     181</span> <span class="tlaGNC">           3 :       ..color = this.background.withValues(alpha: 0.05)</span></span>
-<span id="L182"><span class="lineNum">     182</span> <span class="tlaGNC">           1 :       ..style = PaintingStyle.fill;</span></span>
-<span id="L183"><span class="lineNum">     183</span> <span class="tlaGNC">           1 :     double step = switch (xType) {</span></span>
-<span id="L184"><span class="lineNum">     184</span> <span class="tlaGNC">           7 :       DateTime =&gt; (xMax - xMin - 1) / xDiv,</span></span>
-<span id="L185"><span class="lineNum">     185</span> <span class="tlaUNC tlaBgUNC">           0 :       _ =&gt; (xMax - xMin) / xDiv,</span></span>
-<span id="L186"><span class="lineNum">     186</span>              :     };</span>
-<span id="L187"><span class="lineNum">     187</span> <span class="tlaGNC tlaBgGNC">           3 :     double height = size.height - textArea;</span></span>
-<span id="L188"><span class="lineNum">     188</span> <span class="tlaGNC">           3 :     for (int i = 0; i &lt;= xDiv; i++) {</span></span>
-<span id="L189"><span class="lineNum">     189</span> <span class="tlaGNC">           3 :       double delta = step * (xDiv - i);</span></span>
-<span id="L190"><span class="lineNum">     190</span> <span class="tlaGNC">           4 :       double x = _shiftStep(size.width, shift, xDiv, i);</span></span>
-<span id="L191"><span class="lineNum">     191</span> <span class="tlaGNC">           8 :       canvas.drawLine(Offset(x + shift, height), Offset(x + shift, height + 4), lineColor);</span></span>
-<span id="L192"><span class="lineNum">     192</span> <span class="tlaGNC">           2 :       if (i &lt; xDiv) {</span></span>
-<span id="L193"><span class="lineNum">     193</span> <span class="tlaGNC">           2 :         dynamic value = xMin + delta;</span></span>
-<span id="L194"><span class="lineNum">     194</span> <span class="tlaGNC">           2 :         if (xType == DateTime) {</span></span>
-<span id="L195"><span class="lineNum">     195</span> <span class="tlaGNC">           1 :           final formatter = xTpl ?? intl.DateFormat('d');</span></span>
-<span id="L196"><span class="lineNum">     196</span> <span class="tlaGNC">           3 :           value = formatter.format(DateTime.fromMillisecondsSinceEpoch(value.toInt()));</span></span>
-<span id="L197"><span class="lineNum">     197</span>              :         } else {</span>
-<span id="L198"><span class="lineNum">     198</span> <span class="tlaUNC tlaBgUNC">           0 :           final formatter = xTpl ?? intl.NumberFormat.decimalPatternDigits(decimalDigits: 1, locale: AppLocale.code);</span></span>
-<span id="L199"><span class="lineNum">     199</span> <span class="tlaUNC">           0 :           value = formatter.format(value as double);</span></span>
-<span id="L200"><span class="lineNum">     200</span>              :         }</span>
-<span id="L201"><span class="lineNum">     201</span> <span class="tlaGNC tlaBgGNC">           1 :         if (xType != null) {</span></span>
-<span id="L202"><span class="lineNum">     202</span> <span class="tlaGNC">           6 :           _paintText(canvas, x + shift - 2, height + 1, value.toString());</span></span>
-<span id="L203"><span class="lineNum">     203</span>              :         }</span>
-<span id="L204"><span class="lineNum">     204</span>              :       }</span>
-<span id="L205"><span class="lineNum">     205</span> <span class="tlaGNC">           2 :       if (i % 2 != 0) {</span></span>
-<span id="L206"><span class="lineNum">     206</span> <span class="tlaGNC">           1 :         canvas.drawRect(</span></span>
-<span id="L207"><span class="lineNum">     207</span> <span class="tlaGNC">           1 :           Rect.fromPoints(</span></span>
-<span id="L208"><span class="lineNum">     208</span> <span class="tlaGNC">           3 :             Offset(x + shift, 0),</span></span>
-<span id="L209"><span class="lineNum">     209</span> <span class="tlaGNC">           8 :             Offset(_shiftStep(size.width, shift, xDiv, i - 1) + shift, height),</span></span>
-<span id="L210"><span class="lineNum">     210</span>              :           ),</span>
-<span id="L211"><span class="lineNum">     211</span>              :           background,</span>
-<span id="L212"><span class="lineNum">     212</span>              :         );</span>
-<span id="L213"><span class="lineNum">     213</span>              :       }</span>
-<span id="L214"><span class="lineNum">     214</span>              :     }</span>
-<span id="L215"><span class="lineNum">     215</span>              :   }</span>
-<span id="L216"><span class="lineNum">     216</span>              : }</span>
+<span id="L117"><span class="lineNum">     117</span>              :           fontFamilyFallback: const ['Arial', 'Helvetica', 'sans-serif'],</span>
+<span id="L118"><span class="lineNum">     118</span>              :         ),</span>
+<span id="L119"><span class="lineNum">     119</span>              :       ),</span>
+<span id="L120"><span class="lineNum">     120</span>              :       textDirection: TextDirection.ltr,</span>
+<span id="L121"><span class="lineNum">     121</span>              :     );</span>
+<span id="L122"><span class="lineNum">     122</span> <span class="tlaGNC">           1 :     textPainter.layout();</span></span>
+<span id="L123"><span class="lineNum">     123</span> <span class="tlaGNC">           4 :     textPainter.paint(canvas, Offset(x - textPainter.width, y));</span></span>
+<span id="L124"><span class="lineNum">     124</span>              :   }</span>
+<span id="L125"><span class="lineNum">     125</span>              : </span>
+<span id="L126"><span class="lineNum">     126</span> <span class="tlaUNC tlaBgUNC">           0 :   void _paintIcon(Canvas canvas, double x, double y, IconData? icon) {</span></span>
+<span id="L127"><span class="lineNum">     127</span>              :     if (icon == null) {</span>
+<span id="L128"><span class="lineNum">     128</span>              :       return;</span>
+<span id="L129"><span class="lineNum">     129</span>              :     }</span>
+<span id="L130"><span class="lineNum">     130</span> <span class="tlaUNC">           0 :     final textPainter = TextPainter(</span></span>
+<span id="L131"><span class="lineNum">     131</span> <span class="tlaUNC">           0 :       text: TextSpan(</span></span>
+<span id="L132"><span class="lineNum">     132</span> <span class="tlaUNC">           0 :         text: String.fromCharCode(icon.codePoint),</span></span>
+<span id="L133"><span class="lineNum">     133</span> <span class="tlaUNC">           0 :         style: TextStyle(</span></span>
+<span id="L134"><span class="lineNum">     134</span> <span class="tlaUNC">           0 :           color: color,</span></span>
+<span id="L135"><span class="lineNum">     135</span> <span class="tlaUNC">           0 :           fontSize: textArea,</span></span>
+<span id="L136"><span class="lineNum">     136</span> <span class="tlaUNC">           0 :           fontFamily: Icons.question_mark.fontFamily,</span></span>
+<span id="L137"><span class="lineNum">     137</span>              :         ),</span>
+<span id="L138"><span class="lineNum">     138</span>              :       ),</span>
+<span id="L139"><span class="lineNum">     139</span>              :       textDirection: TextDirection.ltr,</span>
+<span id="L140"><span class="lineNum">     140</span>              :     );</span>
+<span id="L141"><span class="lineNum">     141</span> <span class="tlaUNC">           0 :     textPainter.layout();</span></span>
+<span id="L142"><span class="lineNum">     142</span> <span class="tlaUNC">           0 :     textPainter.paint(canvas, Offset(x - textPainter.width, y));</span></span>
+<span id="L143"><span class="lineNum">     143</span>              :   }</span>
+<span id="L144"><span class="lineNum">     144</span>              : </span>
+<span id="L145"><span class="lineNum">     145</span> <span class="tlaGNC tlaBgGNC">           1 :   void _paintAxisY(Canvas canvas, Size size) {</span></span>
+<span id="L146"><span class="lineNum">     146</span> <span class="tlaGNC">           1 :     final lineColor = Paint()</span></span>
+<span id="L147"><span class="lineNum">     147</span> <span class="tlaGNC">           3 :       ..color = this.lineColor.withValues(alpha: 0.4)</span></span>
+<span id="L148"><span class="lineNum">     148</span> <span class="tlaGNC">           1 :       ..strokeWidth = 0.5;</span></span>
+<span id="L149"><span class="lineNum">     149</span> <span class="tlaGNC">           5 :     double step = (yMax - yMin) / yDiv;</span></span>
+<span id="L150"><span class="lineNum">     150</span> <span class="tlaGNC">           3 :     for (int i = 0; i &lt; yDiv; i++) {</span></span>
+<span id="L151"><span class="lineNum">     151</span> <span class="tlaGNC">           1 :       double delta = step * i;</span></span>
+<span id="L152"><span class="lineNum">     152</span> <span class="tlaGNC">           4 :       double y = _shiftStep(size.height, textArea, yDiv, i);</span></span>
+<span id="L153"><span class="lineNum">     153</span> <span class="tlaGNC">           1 :       if (yType != null || i == 0) {</span></span>
+<span id="L154"><span class="lineNum">     154</span> <span class="tlaGNC">           5 :         canvas.drawLine(Offset(shift, y), Offset(size.width, y), lineColor);</span></span>
+<span id="L155"><span class="lineNum">     155</span>              :       }</span>
+<span id="L156"><span class="lineNum">     156</span> <span class="tlaGNC">           1 :       switch (yType) {</span></span>
+<span id="L157"><span class="lineNum">     157</span> <span class="tlaGNC">           1 :         case double:</span></span>
+<span id="L158"><span class="lineNum">     158</span> <span class="tlaGNC">           3 :           final formatter = yTpl ?? intl.NumberFormat.decimalPatternDigits(decimalDigits: 2, locale: AppLocale.code);</span></span>
+<span id="L159"><span class="lineNum">     159</span> <span class="tlaGNC">           8 :           _paintText(canvas, textArea, y - textArea / 3, formatter.format(yMin + delta));</span></span>
+<span id="L160"><span class="lineNum">     160</span>              :           break;</span>
+<span id="L161"><span class="lineNum">     161</span> <span class="tlaUNC tlaBgUNC">           0 :         case IconData:</span></span>
+<span id="L162"><span class="lineNum">     162</span> <span class="tlaUNC">           0 :           final code = i &gt;= yMap.length ? null : yMap[i];</span></span>
+<span id="L163"><span class="lineNum">     163</span> <span class="tlaUNC">           0 :           _paintIcon(canvas, textArea, y - textArea, code);</span></span>
+<span id="L164"><span class="lineNum">     164</span>              :           break;</span>
+<span id="L165"><span class="lineNum">     165</span> <span class="tlaUNC">           0 :         case Percentage:</span></span>
+<span id="L166"><span class="lineNum">     166</span> <span class="tlaUNC">           0 :           final formatter = yTpl ?? intl.NumberFormat.decimalPatternDigits(decimalDigits: 0, locale: AppLocale.code);</span></span>
+<span id="L167"><span class="lineNum">     167</span> <span class="tlaUNC">           0 :           _paintText(canvas, textArea, y - textArea / 3, formatter.format(yMin + delta) + ' %');</span></span>
+<span id="L168"><span class="lineNum">     168</span>              :           break;</span>
+<span id="L169"><span class="lineNum">     169</span>              :       }</span>
+<span id="L170"><span class="lineNum">     170</span>              :     }</span>
+<span id="L171"><span class="lineNum">     171</span>              :   }</span>
+<span id="L172"><span class="lineNum">     172</span>              : </span>
+<span id="L173"><span class="lineNum">     173</span> <span class="tlaGNC tlaBgGNC">           1 :   double _shiftStep(total, shift, div, i) {</span></span>
+<span id="L174"><span class="lineNum">     174</span> <span class="tlaGNC">           4 :     return (total - shift) * (1 - i / div);</span></span>
+<span id="L175"><span class="lineNum">     175</span>              :   }</span>
+<span id="L176"><span class="lineNum">     176</span>              : </span>
+<span id="L177"><span class="lineNum">     177</span> <span class="tlaGNC">           1 :   void _paintAxisX(Canvas canvas, Size size) {</span></span>
+<span id="L178"><span class="lineNum">     178</span> <span class="tlaGNC">           1 :     final lineColor = Paint()</span></span>
+<span id="L179"><span class="lineNum">     179</span> <span class="tlaGNC">           3 :       ..color = this.lineColor.withValues(alpha: 0.4)</span></span>
+<span id="L180"><span class="lineNum">     180</span> <span class="tlaGNC">           1 :       ..strokeWidth = 0.5;</span></span>
+<span id="L181"><span class="lineNum">     181</span> <span class="tlaGNC">           1 :     final background = Paint()</span></span>
+<span id="L182"><span class="lineNum">     182</span> <span class="tlaGNC">           3 :       ..color = this.background.withValues(alpha: 0.05)</span></span>
+<span id="L183"><span class="lineNum">     183</span> <span class="tlaGNC">           1 :       ..style = PaintingStyle.fill;</span></span>
+<span id="L184"><span class="lineNum">     184</span> <span class="tlaGNC">           1 :     double step = switch (xType) {</span></span>
+<span id="L185"><span class="lineNum">     185</span> <span class="tlaGNC">           7 :       DateTime =&gt; (xMax - xMin - 1) / xDiv,</span></span>
+<span id="L186"><span class="lineNum">     186</span> <span class="tlaUNC tlaBgUNC">           0 :       _ =&gt; (xMax - xMin) / xDiv,</span></span>
+<span id="L187"><span class="lineNum">     187</span>              :     };</span>
+<span id="L188"><span class="lineNum">     188</span> <span class="tlaGNC tlaBgGNC">           3 :     double height = size.height - textArea;</span></span>
+<span id="L189"><span class="lineNum">     189</span> <span class="tlaGNC">           3 :     for (int i = 0; i &lt;= xDiv; i++) {</span></span>
+<span id="L190"><span class="lineNum">     190</span> <span class="tlaGNC">           3 :       double delta = step * (xDiv - i);</span></span>
+<span id="L191"><span class="lineNum">     191</span> <span class="tlaGNC">           4 :       double x = _shiftStep(size.width, shift, xDiv, i);</span></span>
+<span id="L192"><span class="lineNum">     192</span> <span class="tlaGNC">           8 :       canvas.drawLine(Offset(x + shift, height), Offset(x + shift, height + 4), lineColor);</span></span>
+<span id="L193"><span class="lineNum">     193</span> <span class="tlaGNC">           2 :       if (i &lt; xDiv) {</span></span>
+<span id="L194"><span class="lineNum">     194</span> <span class="tlaGNC">           2 :         dynamic value = xMin + delta;</span></span>
+<span id="L195"><span class="lineNum">     195</span> <span class="tlaGNC">           2 :         if (xType == DateTime) {</span></span>
+<span id="L196"><span class="lineNum">     196</span> <span class="tlaGNC">           1 :           final formatter = xTpl ?? intl.DateFormat('d');</span></span>
+<span id="L197"><span class="lineNum">     197</span> <span class="tlaGNC">           3 :           value = formatter.format(DateTime.fromMillisecondsSinceEpoch(value.toInt()));</span></span>
+<span id="L198"><span class="lineNum">     198</span>              :         } else {</span>
+<span id="L199"><span class="lineNum">     199</span> <span class="tlaUNC tlaBgUNC">           0 :           final formatter = xTpl ?? intl.NumberFormat.decimalPatternDigits(decimalDigits: 1, locale: AppLocale.code);</span></span>
+<span id="L200"><span class="lineNum">     200</span> <span class="tlaUNC">           0 :           value = formatter.format(value as double);</span></span>
+<span id="L201"><span class="lineNum">     201</span>              :         }</span>
+<span id="L202"><span class="lineNum">     202</span> <span class="tlaGNC tlaBgGNC">           1 :         if (xType != null) {</span></span>
+<span id="L203"><span class="lineNum">     203</span> <span class="tlaGNC">           6 :           _paintText(canvas, x + shift - 2, height + 1, value.toString());</span></span>
+<span id="L204"><span class="lineNum">     204</span>              :         }</span>
+<span id="L205"><span class="lineNum">     205</span>              :       }</span>
+<span id="L206"><span class="lineNum">     206</span> <span class="tlaGNC">           2 :       if (i % 2 != 0) {</span></span>
+<span id="L207"><span class="lineNum">     207</span> <span class="tlaGNC">           1 :         canvas.drawRect(</span></span>
+<span id="L208"><span class="lineNum">     208</span> <span class="tlaGNC">           1 :           Rect.fromPoints(</span></span>
+<span id="L209"><span class="lineNum">     209</span> <span class="tlaGNC">           3 :             Offset(x + shift, 0),</span></span>
+<span id="L210"><span class="lineNum">     210</span> <span class="tlaGNC">           8 :             Offset(_shiftStep(size.width, shift, xDiv, i - 1) + shift, height),</span></span>
+<span id="L211"><span class="lineNum">     211</span>              :           ),</span>
+<span id="L212"><span class="lineNum">     212</span>              :           background,</span>
+<span id="L213"><span class="lineNum">     213</span>              :         );</span>
+<span id="L214"><span class="lineNum">     214</span>              :       }</span>
+<span id="L215"><span class="lineNum">     215</span>              :     }</span>
+<span id="L216"><span class="lineNum">     216</span>              :   }</span>
+<span id="L217"><span class="lineNum">     217</span>              : }</span>
         </pre>
               </td>
             </tr>
