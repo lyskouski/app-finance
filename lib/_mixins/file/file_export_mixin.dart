@@ -5,13 +5,22 @@ import 'dart:io';
 
 import 'package:app_finance/_classes/herald/app_locale.dart';
 import 'package:file_picker/file_picker.dart';
+import 'package:flutter/foundation.dart';
 
 mixin FileExportMixin {
   Future<void> exportFile(List<int> codeUnits, String filename) async {
-    final path = await FilePicker.platform.saveFile(dialogTitle: AppLocale.labels.outputFile, fileName: filename);
-    if (path != null) {
-      final saveFile = File(path);
-      await saveFile.writeAsBytes(codeUnits);
+    if (defaultTargetPlatform == TargetPlatform.android || defaultTargetPlatform == TargetPlatform.iOS) {
+      await FilePicker.platform.saveFile(
+        dialogTitle: AppLocale.labels.outputFile,
+        fileName: filename,
+        bytes: Uint8List.fromList(codeUnits),
+      );
+    } else {
+      final path = await FilePicker.platform.saveFile(dialogTitle: AppLocale.labels.outputFile, fileName: filename);
+      if (path != null) {
+        final saveFile = File(path);
+        await saveFile.writeAsBytes(codeUnits);
+      }
     }
   }
 }
