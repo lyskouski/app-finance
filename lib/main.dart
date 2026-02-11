@@ -2,7 +2,6 @@
 // Use of this source code is governed by a CC BY-NC-ND 4.0 license that can be found in the LICENSE file.
 
 import 'dart:async';
-import 'dart:io';
 
 import 'package:app_finance/_classes/controller/fallback_localization_delegate.dart';
 import 'package:app_finance/_classes/herald/app_design.dart';
@@ -71,20 +70,7 @@ void main() async {
   runZonedGuarded<Future<void>>(() async {
     WidgetsFlutterBinding.ensureInitialized();
 
-    bool shouldInitializeFirebase = platform != null;
-    if (Platform.isAndroid) {
-      try {
-        final deviceInfo = await Process.run('getprop', ['ro.build.version.sdk']);
-        final sdkVersion = int.tryParse(deviceInfo.stdout.toString().trim()) ?? 0;
-        if (sdkVersion >= 35) {
-          shouldInitializeFirebase = false;
-        }
-      } catch (e) {
-        // Proceed with Firebase initialization
-      }
-    }
-
-    if (shouldInitializeFirebase) {
+    if (platform != null) {
       await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
       FirebaseAnalytics.instance.logAppOpen();
       PlatformDispatcher.instance.onError = (error, stack) {
