@@ -2,6 +2,7 @@
 // Use of this source code is governed by a CC BY-NC-ND 4.0 license that can be found in the LICENSE file.
 
 import 'dart:async';
+import 'dart:io';
 
 import 'package:app_finance/_classes/controller/fallback_localization_delegate.dart';
 import 'package:app_finance/_classes/herald/app_design.dart';
@@ -69,7 +70,21 @@ void main() async {
   final platform = DefaultFirebaseOptions.currentPlatform;
   runZonedGuarded<Future<void>>(() async {
     WidgetsFlutterBinding.ensureInitialized();
-    if (platform != null) {
+
+    bool shouldInitializeFirebase = platform != null;
+    if (Platform.isAndroid) {
+      try {
+        final deviceInfo = await Process.run('getprop', ['ro.build.version.sdk']);
+        final sdkVersion = int.tryParse(deviceInfo.stdout.toString().trim()) ?? 0;
+        if (sdkVersion >= 35) {
+          shouldInitializeFirebase = false;
+        }
+      } catch (e) {
+        // Proceed with Firebase initialization
+      }
+    }
+
+    if (shouldInitializeFirebase) {
       await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
       FirebaseAnalytics.instance.logAppOpen();
       PlatformDispatcher.instance.onError = (error, stack) {
@@ -129,12 +144,16 @@ void main() async {
       ),
     );
   }, (error, stack) {
-    if (platform != null) {
-      if (kIsWeb) {
-        FirebaseAnalytics.instance.logEvent(name: 'flutter-error', parameters: {'error': error.toString()});
-      } else {
-        FirebaseCrashlytics.instance.recordError(error, stack, fatal: true);
+    try {
+      if (platform != null && Firebase.apps.isNotEmpty) {
+        if (kIsWeb) {
+          FirebaseAnalytics.instance.logEvent(name: 'flutter-error', parameters: {'error': error.toString()});
+        } else {
+          FirebaseCrashlytics.instance.recordError(error, stack, fatal: true);
+        }
       }
+    } catch (e) {
+      // Skip Firebase logging
     }
     FlutterError.presentError(FlutterErrorDetails(exception: error, stack: stack));
     // SystemNavigator.pop();
@@ -156,10 +175,16 @@ class MyAppState extends State<MyApp> {
     final String key = args?['uuid'] ?? args?['search'] ?? '';
     final int focus = args?['focus'] ?? 1;
     if (widget.platform != null) {
-      FirebaseAnalytics.instance.logScreenView(
-        screenName: route,
-        parameters: args?.cast(),
-      );
+      try {
+        if (Firebase.apps.isNotEmpty) {
+          FirebaseAnalytics.instance.logScreenView(
+            screenName: route,
+            parameters: args?.cast(),
+          );
+        }
+      } catch (e) {
+        // Skip Firebase logging
+      }
     }
 
     Widget router(String route) => switch (route) {
