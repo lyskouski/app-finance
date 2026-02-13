@@ -3,9 +3,12 @@
 
 import 'package:app_finance/_classes/herald/app_locale.dart';
 import 'package:app_finance/_classes/storage/app_preferences.dart';
+import 'package:app_finance/_configs/custom_color_scheme.dart';
 import 'package:app_finance/_configs/theme_helper.dart';
+import 'package:app_finance/_ext/build_context_ext.dart';
 import 'package:app_finance/pages/_interfaces/abstract_page_state.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:simple_totp_auth/simple_totp_auth.dart';
 
 class SecurityPage extends StatefulWidget {
@@ -28,7 +31,10 @@ class SecurityPageState extends AbstractPageState<SecurityPage> {
   @override
   Widget buildContent(BuildContext context, BoxConstraints constraints) {
     final indent = ThemeHelper.getIndent();
+    final textTheme = context.textTheme;
     final secret = AppPreferences.get(AppPreferences.prefPrivacyKey) ?? '';
+    final totp = TOTP(secret: secret);
+    final totpUrl = totp.generateOTPAuthURI(issuer: 'Fingrom', account: 'support@tercad.pl');
     return Padding(
       padding: EdgeInsets.fromLTRB(indent, indent, indent, 0),
       child: Column(
@@ -40,7 +46,21 @@ class SecurityPageState extends AbstractPageState<SecurityPage> {
             width: 200,
             height: 200,
             color: Colors.white,
-          )
+          ),
+          Container(
+            padding: EdgeInsets.all(indent),
+            color: context.colorScheme.fieldBackground,
+            child: SelectableText(
+              totpUrl,
+              style: textTheme.bodyLarge,
+              onTap: () {
+                Clipboard.setData(ClipboardData(text: totpUrl));
+                ScaffoldMessenger.of(context).showSnackBar(
+                  SnackBar(content: Text(AppLocale.labels.copiedToClipboard)),
+                );
+              },
+            ),
+          ),
         ],
       ),
     );
