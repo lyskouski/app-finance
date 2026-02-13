@@ -240,7 +240,7 @@ jobs:
       - name: Sign macOS Package
         if: matrix.target == 'macOS'
         run: |
-          codesign --deep --force -s "8PVKPQ758L" --entitlements $GITHUB_WORKSPACE/macos/Runner/Release.entitlements "Fingrom.app"
+          codesign --deep --force -s "8PVKPQ758L" --identifier "com.tercad.fingrom" --entitlements $GITHUB_WORKSPACE/macos/Runner/Release.entitlements "Fingrom.app"
         working-directory: ${{ matrix.build_path }}
 
       - name: Import macOS Installer Certificate
