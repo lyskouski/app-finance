@@ -40,7 +40,7 @@ jobs:
       - name: Build Linux Flatpak
         run: |
           sudo apt-get update
-          sudo apt-get install -y flatpak flatpak-builder appstream appstream-compose
+          sudo apt-get install -y flatpak flatpak-builder appstream
           sudo flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
           sudo flatpak install flathub org.gnome.Platform//49 org.gnome.Sdk//49 -y
           sudo flatpak-builder --install build-dir com.tercad.fingrom.yml
