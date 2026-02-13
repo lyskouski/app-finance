@@ -886,6 +886,9 @@ class AppLocalizationsFa extends AppLocalizations {
   String get searchTooltip => 'جستجو';
 
   @override
+  String get securityHeadline => 'امنیت';
+
+  @override
   String get settingsBaseHeadline => 'مبانی';
 
   @override

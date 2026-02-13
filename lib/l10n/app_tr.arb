@@ -376,6 +376,7 @@
         }
     },
     "searchTooltip": "Aramak",
+    "securityHeadline": "Güvenlik",
     "settingsBaseHeadline": "Temel Bilgiler",
     "settingsHeadline": "Ayarlar",
     "skipFromTotals": "Toplamlardan hariç tut",

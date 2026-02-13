@@ -886,6 +886,9 @@ class AppLocalizationsTr extends AppLocalizations {
   String get searchTooltip => 'Aramak';
 
   @override
+  String get securityHeadline => 'Güvenlik';
+
+  @override
   String get settingsBaseHeadline => 'Temel Bilgiler';
 
   @override

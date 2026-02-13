@@ -376,6 +376,7 @@
         }
     },
     "searchTooltip": "搜尋",
+    "securityHeadline": "安全性",
     "settingsBaseHeadline": "基本知識",
     "settingsHeadline": "設定",
     "skipFromTotals": "總計不包括",

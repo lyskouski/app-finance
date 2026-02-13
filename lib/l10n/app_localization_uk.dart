@@ -887,6 +887,9 @@ class AppLocalizationsUk extends AppLocalizations {
   String get searchTooltip => 'Пошук';
 
   @override
+  String get securityHeadline => 'Безпека';
+
+  @override
   String get settingsBaseHeadline => 'Основи';
 
   @override

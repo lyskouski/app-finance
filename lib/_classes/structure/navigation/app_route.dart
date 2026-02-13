@@ -43,6 +43,7 @@ abstract class AppRoute {
   static const String homeRoute = '/app/finance/main';
   static const String metricsRoute = '/app/finance/metrics';
   static const String metricsSearchRoute = '/app/finance/metrics/search';
+  static const String securityRoute = '/app/finance/security';
   static const String settingsRoute = '/app/finance/settings';
   static const String startRoute = '/app/finance/start';
   static const String subscriptionRoute = '/app/finance/subscription';

@@ -886,6 +886,9 @@ class AppLocalizationsAr extends AppLocalizations {
   String get searchTooltip => 'يبحث';
 
   @override
+  String get securityHeadline => 'الأمن';
+
+  @override
   String get settingsBaseHeadline => 'الأساسيات';
 
   @override

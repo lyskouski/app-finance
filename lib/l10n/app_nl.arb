@@ -376,6 +376,7 @@
         }
     },
     "searchTooltip": "Zoekopdracht",
+    "securityHeadline": "Beveiliging",
     "settingsBaseHeadline": "Basis",
     "settingsHeadline": "Instellingen",
     "skipFromTotals": "Niet opnemen in totalen",

@@ -889,6 +889,9 @@ class AppLocalizationsHi extends AppLocalizations {
   String get searchTooltip => 'खोज';
 
   @override
+  String get securityHeadline => 'सुरक्षा';
+
+  @override
   String get settingsBaseHeadline => 'मूल बातें';
 
   @override

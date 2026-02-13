@@ -890,6 +890,9 @@ class AppLocalizationsPt extends AppLocalizations {
   String get searchTooltip => 'Pesquisa';
 
   @override
+  String get securityHeadline => 'Segurança';
+
+  @override
   String get settingsBaseHeadline => 'Noções básicas';
 
   @override
@@ -1925,6 +1928,9 @@ class AppLocalizationsPtBr extends AppLocalizationsPt {
 
   @override
   String get searchTooltip => 'Procurar';
+
+  @override
+  String get securityHeadline => 'Segurança';
 
   @override
   String get settingsBaseHeadline => 'Noções básicas';

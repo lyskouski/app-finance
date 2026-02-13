@@ -891,6 +891,9 @@ class AppLocalizationsRo extends AppLocalizations {
   String get searchTooltip => 'Căutare';
 
   @override
+  String get securityHeadline => 'Securitate';
+
+  @override
   String get settingsBaseHeadline => 'Principii de bază';
 
   @override

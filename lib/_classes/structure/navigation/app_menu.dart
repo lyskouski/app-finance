@@ -78,6 +78,11 @@ class AppMenu {
         icon: Icons.settings,
         route: AppRoute.settingsRoute,
       ),
+      AppMenuItem(
+        name: AppLocale.labels.securityHeadline,
+        icon: Icons.security,
+        route: AppRoute.securityRoute,
+      ),
       if (![TargetPlatform.iOS, TargetPlatform.macOS, TargetPlatform.android].contains(defaultTargetPlatform))
         AppMenuItem(
           name: AppLocale.labels.subscriptionHeadline,

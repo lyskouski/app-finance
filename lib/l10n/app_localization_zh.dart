@@ -885,6 +885,9 @@ class AppLocalizationsZh extends AppLocalizations {
   String get searchTooltip => '搜索';
 
   @override
+  String get securityHeadline => '安全';
+
+  @override
   String get settingsBaseHeadline => '基础知识';
 
   @override
@@ -1912,6 +1915,9 @@ class AppLocalizationsZhTw extends AppLocalizationsZh {
 
   @override
   String get searchTooltip => '搜尋';
+
+  @override
+  String get securityHeadline => '安全性';
 
   @override
   String get settingsBaseHeadline => '基本知識';

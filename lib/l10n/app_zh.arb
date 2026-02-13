@@ -376,6 +376,7 @@
         }
     },
     "searchTooltip": "搜索",
+    "securityHeadline": "安全",
     "settingsBaseHeadline": "基础知识",
     "settingsHeadline": "设置",
     "skipFromTotals": "不计入总数",

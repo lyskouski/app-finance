@@ -376,6 +376,7 @@
         }
     },
     "searchTooltip": "찾다",
+    "securityHeadline": "보안",
     "settingsBaseHeadline": "기본 사항",
     "settingsHeadline": "설정",
     "skipFromTotals": "합계에서 제외",

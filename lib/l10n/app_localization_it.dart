@@ -890,6 +890,9 @@ class AppLocalizationsIt extends AppLocalizations {
   String get searchTooltip => 'Ricerca';
 
   @override
+  String get securityHeadline => 'Sicurezza';
+
+  @override
   String get settingsBaseHeadline => 'Nozioni di base';
 
   @override

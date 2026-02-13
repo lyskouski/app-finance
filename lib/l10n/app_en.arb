@@ -376,6 +376,7 @@
         }
     },
     "searchTooltip": "Search",
+    "securityHeadline": "Security",
     "settingsBaseHeadline": "Basics",
     "settingsHeadline": "Settings",
     "skipFromTotals": "Exclude from Totals",

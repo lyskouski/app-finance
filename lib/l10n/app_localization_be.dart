@@ -888,6 +888,9 @@ class AppLocalizationsBe extends AppLocalizations {
   String get searchTooltip => 'Пошук';
 
   @override
+  String get securityHeadline => 'Бяспека';
+
+  @override
   String get settingsBaseHeadline => 'Асновы';
 
   @override
@@ -1919,6 +1922,9 @@ class AppLocalizationsBeEu extends AppLocalizationsBe {
 
   @override
   String get searchTooltip => 'Pošuk';
+
+  @override
+  String get securityHeadline => 'Biaspieka';
 
   @override
   String get settingsBaseHeadline => 'Asnovy';

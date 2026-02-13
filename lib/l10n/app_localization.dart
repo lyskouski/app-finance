@@ -1813,6 +1813,12 @@ abstract class AppLocalizations {
   /// **'Search'**
   String get searchTooltip;
 
+  /// No description provided for @securityHeadline.
+  ///
+  /// In en, this message translates to:
+  /// **'Security'**
+  String get securityHeadline;
+
   /// No description provided for @settingsBaseHeadline.
   ///
   /// In en, this message translates to:

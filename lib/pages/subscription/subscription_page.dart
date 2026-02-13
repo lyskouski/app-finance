@@ -25,9 +25,10 @@ class SubscriptionPageState extends AbstractPageState<SubscriptionPage> {
   String getButtonName() => '';
 
   @override
-  Widget buildButton(BuildContext context, BoxConstraints constraints) {
-    return ThemeHelper.emptyBox;
-  }
+  Widget buildButton(BuildContext context, BoxConstraints constraints) => ThemeHelper.emptyBox;
+
+  @override
+  String getTitle() => AppLocale.labels.subscriptionHeadline;
 
   @override
   Widget buildContent(BuildContext context, BoxConstraints constraints) {
@@ -74,10 +75,5 @@ class SubscriptionPageState extends AbstractPageState<SubscriptionPage> {
         ],
       ),
     );
-  }
-
-  @override
-  String getTitle() {
-    return AppLocale.labels.subscriptionHeadline;
   }
 }

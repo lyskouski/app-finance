@@ -887,6 +887,9 @@ class AppLocalizationsPl extends AppLocalizations {
   String get searchTooltip => 'Szukaj';
 
   @override
+  String get securityHeadline => 'Bezpieczeństwo';
+
+  @override
   String get settingsBaseHeadline => 'Podstawy';
 
   @override

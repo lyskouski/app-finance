@@ -376,6 +376,7 @@
         }
     },
     "searchTooltip": "検索",
+    "securityHeadline": "セキュリティ",
     "settingsBaseHeadline": "基本設定",
     "settingsHeadline": "設定",
     "skipFromTotals": "合計から除外する",

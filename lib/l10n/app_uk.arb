@@ -376,6 +376,7 @@
         }
     },
     "searchTooltip": "Пошук",
+    "securityHeadline": "Безпека",
     "settingsBaseHeadline": "Основи",
     "settingsHeadline": "Налаштування",
     "skipFromTotals": "Виключити із загальної кількості",

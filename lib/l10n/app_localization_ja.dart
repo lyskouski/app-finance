@@ -885,6 +885,9 @@ class AppLocalizationsJa extends AppLocalizations {
   String get searchTooltip => '検索';
 
   @override
+  String get securityHeadline => 'セキュリティ';
+
+  @override
   String get settingsBaseHeadline => '基本設定';
 
   @override

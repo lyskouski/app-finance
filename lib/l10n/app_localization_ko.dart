@@ -885,6 +885,9 @@ class AppLocalizationsKo extends AppLocalizations {
   String get searchTooltip => '찾다';
 
   @override
+  String get securityHeadline => '보안';
+
+  @override
   String get settingsBaseHeadline => '기본 사항';
 
   @override

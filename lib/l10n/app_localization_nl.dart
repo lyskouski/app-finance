@@ -889,6 +889,9 @@ class AppLocalizationsNl extends AppLocalizations {
   String get searchTooltip => 'Zoekopdracht';
 
   @override
+  String get securityHeadline => 'Beveiliging';
+
+  @override
   String get settingsBaseHeadline => 'Basis';
 
   @override
