@@ -885,6 +885,24 @@ class AppLocalizationsKo extends AppLocalizations {
   String get searchTooltip => '찾다';
 
   @override
+  String get secureOtpCode => '일회용 비밀번호 코드';
+
+  @override
+  String get secureOtpCodeInvalid => '유효하지 않은 코드입니다! 새로운 코드를 받아서 입력해주세요.';
+
+  @override
+  String get securePassword => '비밀번호 (복구 문구)';
+
+  @override
+  String get securePasswordEmpty => '비밀번호를 비워 둘 수 없습니다!';
+
+  @override
+  String get securePasswordNotMatch => '비밀번호가 일치하지 않습니다!';
+
+  @override
+  String get securePasswordRepeat => '비밀번호 재입력';
+
+  @override
   String get securityHeadline => '보안';
 
   @override
@@ -892,6 +910,9 @@ class AppLocalizationsKo extends AppLocalizations {
 
   @override
   String get settingsHeadline => '설정';
+
+  @override
+  String get settingsSaved => '설정이 저장되었습니다!';
 
   @override
   String get skipFromTotals => '합계에서 제외';

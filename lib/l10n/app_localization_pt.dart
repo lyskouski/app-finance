@@ -890,6 +890,25 @@ class AppLocalizationsPt extends AppLocalizations {
   String get searchTooltip => 'Pesquisa';
 
   @override
+  String get secureOtpCode => 'Código de Palavra-passe Única';
+
+  @override
+  String get secureOtpCodeInvalid =>
+      'Código inválido! Por favor, gere um novo código e insira-o';
+
+  @override
+  String get securePassword => 'Palavra-passe (Frase de Recuperação)';
+
+  @override
+  String get securePasswordEmpty => 'A palavra-passe não pode estar em branco!';
+
+  @override
+  String get securePasswordNotMatch => 'As senhas não coincidem!';
+
+  @override
+  String get securePasswordRepeat => 'Repetir Palavra-passe';
+
+  @override
   String get securityHeadline => 'Segurança';
 
   @override
@@ -897,6 +916,9 @@ class AppLocalizationsPt extends AppLocalizations {
 
   @override
   String get settingsHeadline => 'Definições';
+
+  @override
+  String get settingsSaved => 'Configurações salvas!';
 
   @override
   String get skipFromTotals => 'Excluir dos totais';
@@ -1930,6 +1952,25 @@ class AppLocalizationsPtBr extends AppLocalizationsPt {
   String get searchTooltip => 'Procurar';
 
   @override
+  String get secureOtpCode => 'Código de Senha Única';
+
+  @override
+  String get secureOtpCodeInvalid =>
+      'Código inválido! Por favor, gere um novo código e insira-o';
+
+  @override
+  String get securePassword => 'Senha (Frase de Recuperação)';
+
+  @override
+  String get securePasswordEmpty => 'A senha não pode estar em branco!';
+
+  @override
+  String get securePasswordNotMatch => 'As senhas não coincidem!';
+
+  @override
+  String get securePasswordRepeat => 'Repetir Senha';
+
+  @override
   String get securityHeadline => 'Segurança';
 
   @override
@@ -1937,6 +1978,9 @@ class AppLocalizationsPtBr extends AppLocalizationsPt {
 
   @override
   String get settingsHeadline => 'Configurações';
+
+  @override
+  String get settingsSaved => 'Configurações salvas!';
 
   @override
   String get skipFromTotals => 'Excluir dos totais';

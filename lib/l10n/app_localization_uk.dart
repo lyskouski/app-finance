@@ -887,6 +887,25 @@ class AppLocalizationsUk extends AppLocalizations {
   String get searchTooltip => 'Пошук';
 
   @override
+  String get secureOtpCode => 'Код одноразового пароля';
+
+  @override
+  String get secureOtpCodeInvalid =>
+      'Неправильно! Будь ласка, візьміть новий код і введіть його';
+
+  @override
+  String get securePassword => 'Пароль (Фраза для відновлення)';
+
+  @override
+  String get securePasswordEmpty => 'Пароль не може бути порожнім!';
+
+  @override
+  String get securePasswordNotMatch => 'Паролі не збігаються!';
+
+  @override
+  String get securePasswordRepeat => 'Повторіть пароль';
+
+  @override
   String get securityHeadline => 'Безпека';
 
   @override
@@ -894,6 +913,9 @@ class AppLocalizationsUk extends AppLocalizations {
 
   @override
   String get settingsHeadline => 'Налаштування';
+
+  @override
+  String get settingsSaved => 'Налаштування збережено!';
 
   @override
   String get skipFromTotals => 'Виключити із загальної кількості';

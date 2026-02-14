@@ -893,6 +893,25 @@ class AppLocalizationsUz extends AppLocalizations {
   String get searchTooltip => 'Qidiruv';
 
   @override
+  String get secureOtpCode => 'Bir martalik parol kodi';
+
+  @override
+  String get secureOtpCodeInvalid =>
+      'Noto\'g\'ri! Iltimos, yangi kod oling va uni kiriting';
+
+  @override
+  String get securePassword => 'Parol (Qayta tiklash iborasi)';
+
+  @override
+  String get securePasswordEmpty => 'Parol bo\'sh bo\'la olmaydi!';
+
+  @override
+  String get securePasswordNotMatch => 'Parollar mos kelmaydi!';
+
+  @override
+  String get securePasswordRepeat => 'Parolni takrorlash';
+
+  @override
   String get securityHeadline => 'Xavfsizlik';
 
   @override
@@ -900,6 +919,9 @@ class AppLocalizationsUz extends AppLocalizations {
 
   @override
   String get settingsHeadline => 'Sozlamalar';
+
+  @override
+  String get settingsSaved => 'Sozlamalar saqlandi!';
 
   @override
   String get skipFromTotals => 'Jami hisobdan chiqarib tashlang';

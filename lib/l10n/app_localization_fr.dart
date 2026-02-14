@@ -891,6 +891,26 @@ class AppLocalizationsFr extends AppLocalizations {
   String get searchTooltip => 'Recherche';
 
   @override
+  String get secureOtpCode => 'Code de mot de passe à usage unique';
+
+  @override
+  String get secureOtpCodeInvalid =>
+      'Code invalide ! Veuillez générer un nouveau code et le saisir';
+
+  @override
+  String get securePassword => 'Mot de passe (Phrase de récupération)';
+
+  @override
+  String get securePasswordEmpty => 'Le mot de passe ne peut pas être vide !';
+
+  @override
+  String get securePasswordNotMatch =>
+      'Les mots de passe ne correspondent pas !';
+
+  @override
+  String get securePasswordRepeat => 'Répéter le mot de passe';
+
+  @override
   String get securityHeadline => 'Sécurité';
 
   @override
@@ -898,6 +918,9 @@ class AppLocalizationsFr extends AppLocalizations {
 
   @override
   String get settingsHeadline => 'Paramètres';
+
+  @override
+  String get settingsSaved => 'Paramètres enregistrés !';
 
   @override
   String get skipFromTotals => 'Exclure des totaux';

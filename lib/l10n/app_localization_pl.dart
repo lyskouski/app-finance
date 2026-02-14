@@ -887,6 +887,25 @@ class AppLocalizationsPl extends AppLocalizations {
   String get searchTooltip => 'Szukaj';
 
   @override
+  String get secureOtpCode => 'Kod jednorazowego hasła';
+
+  @override
+  String get secureOtpCodeInvalid =>
+      'Nieprawidłowy kod! Proszę, wygeneruj nowy kod i wprowadź go';
+
+  @override
+  String get securePassword => 'Hasło (fraza odzyskiwania)';
+
+  @override
+  String get securePasswordEmpty => 'Hasło nie może być puste!';
+
+  @override
+  String get securePasswordNotMatch => 'Hasła nie są zgodne!';
+
+  @override
+  String get securePasswordRepeat => 'Powtórz hasło';
+
+  @override
   String get securityHeadline => 'Bezpieczeństwo';
 
   @override
@@ -894,6 +913,9 @@ class AppLocalizationsPl extends AppLocalizations {
 
   @override
   String get settingsHeadline => 'Ustawienia';
+
+  @override
+  String get settingsSaved => 'Ustawienia zapisane!';
 
   @override
   String get skipFromTotals => 'Wyklucz z sumy';

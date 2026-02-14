@@ -24,6 +24,9 @@ class AppPreferences {
   static const String prefMonthStartDay = 'monthStartDay';
   static const String prefPrivacyKey = 'privacyKey';
   static const String prefIsOTP = 'isOTP';
+  static const String prefRecoveryKey = 'recoveryKey';
+
+  static const String isActive = 'true';
 
   static late SharedPreferences pref;
 

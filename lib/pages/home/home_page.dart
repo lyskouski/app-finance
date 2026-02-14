@@ -176,7 +176,7 @@ class HomePageState extends AbstractPageState<HomePage> {
     }
     return Consumer<AppData>(builder: (context, appState, _) {
       state = appState;
-      if (AppPreferences.get(AppPreferences.prefIsOTP) == 'true') {
+      if (AppPreferences.get(AppPreferences.prefIsOTP) == AppPreferences.isActive) {
         // TBD
       }
       if (appState.isLoading) {

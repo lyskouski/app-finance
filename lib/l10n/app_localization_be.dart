@@ -43,7 +43,7 @@ class AppLocalizationsBe extends AppLocalizations {
   String get activate => 'Актываваць';
 
   @override
-  String get actualData => 'Гістарычныя дадьзеныя';
+  String get actualData => 'Гістарычныя дадзеныя';
 
   @override
   String get addAccountTooltip => 'Дадаць рахунак';
@@ -888,6 +888,25 @@ class AppLocalizationsBe extends AppLocalizations {
   String get searchTooltip => 'Пошук';
 
   @override
+  String get secureOtpCode => 'Аднаразовы пароль';
+
+  @override
+  String get secureOtpCodeInvalid =>
+      'Няправільны! Калі ласка, вазьміце новы код і ўвядзіце яго.';
+
+  @override
+  String get securePassword => 'Пароль (фраза аднаўленьня)';
+
+  @override
+  String get securePasswordEmpty => 'Пароль не можа быць пустым!';
+
+  @override
+  String get securePasswordNotMatch => 'Паролі не супадаюць!';
+
+  @override
+  String get securePasswordRepeat => 'Паўтарыць пароль';
+
+  @override
   String get securityHeadline => 'Бяспека';
 
   @override
@@ -895,6 +914,9 @@ class AppLocalizationsBe extends AppLocalizations {
 
   @override
   String get settingsHeadline => 'Налады';
+
+  @override
+  String get settingsSaved => 'Налады захаваны!';
 
   @override
   String get skipFromTotals => 'Выключыць з агульных вынікаў';
@@ -1924,6 +1946,25 @@ class AppLocalizationsBeEu extends AppLocalizationsBe {
   String get searchTooltip => 'Pošuk';
 
   @override
+  String get secureOtpCode => 'Adnarazovy paroĺ';
+
+  @override
+  String get secureOtpCodeInvalid =>
+      'Niapraviĺny! Kali laska, vaźmicie novy kod i ŭviadzicie jaho';
+
+  @override
+  String get securePassword => 'Paroĺ (fraza adnaŭlieńnia)';
+
+  @override
+  String get securePasswordEmpty => 'Paroĺ nie moža być pustym!';
+
+  @override
+  String get securePasswordNotMatch => 'Paroli nie supadajuć!';
+
+  @override
+  String get securePasswordRepeat => 'Paŭtarycie paroĺ';
+
+  @override
   String get securityHeadline => 'Biaspieka';
 
   @override
@@ -1931,6 +1972,9 @@ class AppLocalizationsBeEu extends AppLocalizationsBe {
 
   @override
   String get settingsHeadline => 'Nalady';
+
+  @override
+  String get settingsSaved => 'Nalady zachavany!';
 
   @override
   String get skipFromTotals => 'Vykliučyć z ahuĺnych vynikaŭ';

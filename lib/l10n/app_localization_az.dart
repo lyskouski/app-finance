@@ -889,6 +889,25 @@ class AppLocalizationsAz extends AppLocalizations {
   String get searchTooltip => 'Axtar';
 
   @override
+  String get secureOtpCode => 'Bir dəfəlik Şifrə Kodu';
+
+  @override
+  String get secureOtpCodeInvalid =>
+      'Etkisiz! Zəhmət olmasa, yeni kod götürün və daxil edin';
+
+  @override
+  String get securePassword => 'Şifrə (Bərpa ifadəsi)';
+
+  @override
+  String get securePasswordEmpty => 'Şifrə boş ola bilməz!';
+
+  @override
+  String get securePasswordNotMatch => 'Şifrələr uyğun gəlmir!';
+
+  @override
+  String get securePasswordRepeat => 'Təkrar Şifrə';
+
+  @override
   String get securityHeadline => 'Təhlükəsizlik';
 
   @override
@@ -896,6 +915,9 @@ class AppLocalizationsAz extends AppLocalizations {
 
   @override
   String get settingsHeadline => 'Parametrlər';
+
+  @override
+  String get settingsSaved => 'Tənzimləmələr yadda saxlanıldı!';
 
   @override
   String get skipFromTotals => 'Cəmilərdən xaric edin';

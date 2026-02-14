@@ -886,6 +886,25 @@ class AppLocalizationsAr extends AppLocalizations {
   String get searchTooltip => 'يبحث';
 
   @override
+  String get secureOtpCode => 'رمز كلمة المرور لمرة واحدة';
+
+  @override
+  String get secureOtpCodeInvalid =>
+      'غير صالح! يرجى الحصول على رمز جديد وإدخاله';
+
+  @override
+  String get securePassword => 'كلمة المرور (عبارة الاسترداد)';
+
+  @override
+  String get securePasswordEmpty => 'لا يمكن أن تكون كلمة المرور فارغة!';
+
+  @override
+  String get securePasswordNotMatch => 'كلمتا المرور غير متطابقتين!';
+
+  @override
+  String get securePasswordRepeat => 'إعادة كلمة المرور';
+
+  @override
   String get securityHeadline => 'الأمن';
 
   @override
@@ -893,6 +912,9 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get settingsHeadline => 'الإعدادات';
+
+  @override
+  String get settingsSaved => 'تم حفظ الإعدادات!';
 
   @override
   String get skipFromTotals => 'الاستبعاد من المجاميع';

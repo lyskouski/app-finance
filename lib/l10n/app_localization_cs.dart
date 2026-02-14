@@ -887,6 +887,25 @@ class AppLocalizationsCs extends AppLocalizations {
   String get searchTooltip => 'Vyhledávání';
 
   @override
+  String get secureOtpCode => 'Jednorázové heslo';
+
+  @override
+  String get secureOtpCodeInvalid =>
+      'Neplatné! Získejte nový kód a zadejte jej.';
+
+  @override
+  String get securePassword => 'Heslo (obnovovací fráze)';
+
+  @override
+  String get securePasswordEmpty => 'Heslo nesmí být prázdné!';
+
+  @override
+  String get securePasswordNotMatch => 'Hesla se neshodují!';
+
+  @override
+  String get securePasswordRepeat => 'Opakování hesla';
+
+  @override
   String get securityHeadline => 'Bezpečnost';
 
   @override
@@ -894,6 +913,9 @@ class AppLocalizationsCs extends AppLocalizations {
 
   @override
   String get settingsHeadline => 'Nastavení';
+
+  @override
+  String get settingsSaved => 'Nastavení uloženo!';
 
   @override
   String get skipFromTotals => 'Vyloučit ze součtů';

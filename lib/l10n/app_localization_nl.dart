@@ -889,6 +889,25 @@ class AppLocalizationsNl extends AppLocalizations {
   String get searchTooltip => 'Zoekopdracht';
 
   @override
+  String get secureOtpCode => 'Eenmalig wachtwoordcode';
+
+  @override
+  String get secureOtpCodeInvalid =>
+      'Ongeldige code! Kies een nieuwe code en voer deze in';
+
+  @override
+  String get securePassword => 'Wachtwoord (herstelzin)';
+
+  @override
+  String get securePasswordEmpty => 'Het wachtwoord mag niet leeg zijn!';
+
+  @override
+  String get securePasswordNotMatch => 'Wachtwoorden komen niet overeen!';
+
+  @override
+  String get securePasswordRepeat => 'Wachtwoord herhalen';
+
+  @override
   String get securityHeadline => 'Beveiliging';
 
   @override
@@ -896,6 +915,9 @@ class AppLocalizationsNl extends AppLocalizations {
 
   @override
   String get settingsHeadline => 'Instellingen';
+
+  @override
+  String get settingsSaved => 'Instellingen opgeslagen!';
 
   @override
   String get skipFromTotals => 'Niet opnemen in totalen';
