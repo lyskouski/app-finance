@@ -70,6 +70,9 @@ Bu foydalanuvchilarga o'z mablag'larini osonlikcha boshqarish imkoniyatini berad
 - Excel `XLSX` fayliga eksport qiling
 - Ma'lumotlarni shifrlash
 - Mahalliylashtirish
+- Xavfsizlik
+  - Bir martalik parol kodi bilan himoya
+  - Tiklash kodi
 - Foydalanuvchi tajribasi
   - Sozlanishi mumkin bo'lgan asosiy sahifa ("kenglik x balandlik" uchun bir nechta konfiguratsiyalar)
   - Sezgir va moslashuvchan dizayn

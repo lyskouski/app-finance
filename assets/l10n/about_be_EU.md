@@ -69,6 +69,9 @@ zastaniecca ŭ baku.
 - Ekspart u fajl Excel `XLSX`
 - Šyfravańnie dadzienych
 - Lakalizacyja
+- Biaspieka
+  - Abarona adnarazovym paroliem
+  - Kod adnaŭlieńnia
 - Vopyt karystaĺnika
   - Haloŭnaja staronka z mahčymasciu kanfihuracyi (niekaĺki kanfihuracyj na nabor "šyrynia ch vyšynia")
   - Spahadny i adaptyŭny dyzajn

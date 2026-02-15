@@ -70,6 +70,9 @@ Que permita a los usuarios gestionar sus finanzas sin esfuerzo, garantizando al 
 - Exportación a archivo Excel `XLSX`
 - Encriptación de datos
 - Localización
+- Seguridad
+  - Protección mediante código de contraseña de un solo uso
+  - Código de recuperación
 - Experiencia de usuario
   - Página principal configurable (múltiples configuraciones por conjunto `ancho x alto`)
   - Diseño adaptable y con capacidad de respuesta
