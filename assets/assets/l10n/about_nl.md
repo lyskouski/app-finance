@@ -70,6 +70,9 @@ Dat stelt gebruikers in staat om moeiteloos hun financiën te beheren en zorgt e
 - Exporteren naar Excel `XLSX`-bestand
 - Gegevensencryptie
 - Lokalisatie
+- Beveiliging
+  - Bescherming door eenmalige wachtwoordcode
+  - Herstelcode
 - Gebruikerservaring
   - Configureerbare hoofdpagina (meerdere configuraties per `breedte x hoogte` set)
   - Responsief en adaptief ontwerp

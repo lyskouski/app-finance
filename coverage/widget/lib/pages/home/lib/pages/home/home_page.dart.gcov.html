@@ -31,13 +31,13 @@
             <td class="headerValue">lcov.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntryLo">63.8&nbsp;%</td>
-            <td class="headerCovTableEntry">127</td>
-            <td class="headerCovTableEntry">81</td>
+            <td class="headerCovTableEntryLo">64.2&nbsp;%</td>
+            <td class="headerCovTableEntry">134</td>
+            <td class="headerCovTableEntry">86</td>
           </tr>
           <tr>
             <td class="headerItem">Test Date:</td>
-            <td class="headerValue">2026-02-13 09:44:38</td>
+            <td class="headerValue">2026-02-15 18:30:27</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntryHi">-</td>
@@ -81,292 +81,306 @@
 <span id="L19"><span class="lineNum">      19</span>              : import 'package:app_finance/components/widgets/bill_ytd_chart.dart';</span>
 <span id="L20"><span class="lineNum">      20</span>              : import 'package:app_finance/pages/_interfaces/abstract_page_state.dart';</span>
 <span id="L21"><span class="lineNum">      21</span>              : import 'package:app_finance/pages/home/home_edit_page.dart';</span>
-<span id="L22"><span class="lineNum">      22</span>              : import 'package:app_finance/pages/start/start_page.dart';</span>
-<span id="L23"><span class="lineNum">      23</span>              : import 'package:app_finance/design/wrapper/grid_layer.dart';</span>
-<span id="L24"><span class="lineNum">      24</span>              : import 'package:app_finance/pages/home/widgets/init_tab.dart';</span>
-<span id="L25"><span class="lineNum">      25</span>              : import 'package:app_finance/design/button/toolbar_button_widget.dart';</span>
-<span id="L26"><span class="lineNum">      26</span>              : import 'package:app_finance/components/widgets/account_widget.dart';</span>
-<span id="L27"><span class="lineNum">      27</span>              : import 'package:app_finance/components/widgets/bill_widget.dart';</span>
-<span id="L28"><span class="lineNum">      28</span>              : import 'package:app_finance/components/widgets/budget_widget.dart';</span>
-<span id="L29"><span class="lineNum">      29</span>              : import 'package:app_finance/pages/home/widgets/goal_widget.dart';</span>
-<span id="L30"><span class="lineNum">      30</span>              : import 'package:flutter/foundation.dart';</span>
-<span id="L31"><span class="lineNum">      31</span>              : import 'package:flutter/material.dart';</span>
-<span id="L32"><span class="lineNum">      32</span>              : import 'package:flutter_markdown/flutter_markdown.dart';</span>
-<span id="L33"><span class="lineNum">      33</span>              : import 'package:flutter_svg/flutter_svg.dart';</span>
-<span id="L34"><span class="lineNum">      34</span>              : import 'package:package_info_plus/package_info_plus.dart';</span>
-<span id="L35"><span class="lineNum">      35</span>              : import 'package:provider/provider.dart';</span>
-<span id="L36"><span class="lineNum">      36</span>              : </span>
-<span id="L37"><span class="lineNum">      37</span>              : class HomePage extends StatefulWidget {</span>
-<span id="L38"><span class="lineNum">      38</span> <span class="tlaGNC tlaBgGNC">           2 :   const HomePage({super.key});</span></span>
-<span id="L39"><span class="lineNum">      39</span>              : </span>
-<span id="L40"><span class="lineNum">      40</span> <span class="tlaGNC">           3 :   @override</span></span>
-<span id="L41"><span class="lineNum">      41</span> <span class="tlaGNC">           3 :   HomePageState createState() =&gt; HomePageState();</span></span>
-<span id="L42"><span class="lineNum">      42</span>              : }</span>
-<span id="L43"><span class="lineNum">      43</span>              : </span>
-<span id="L44"><span class="lineNum">      44</span>              : class HomePageState extends AbstractPageState&lt;HomePage&gt; {</span>
-<span id="L45"><span class="lineNum">      45</span>              :   String? toExpand;</span>
-<span id="L46"><span class="lineNum">      46</span>              :   bool isEditMode = false;</span>
-<span id="L47"><span class="lineNum">      47</span>              :   late String version;</span>
-<span id="L48"><span class="lineNum">      48</span>              : </span>
-<span id="L49"><span class="lineNum">      49</span> <span class="tlaGNC">           3 :   @override</span></span>
-<span id="L50"><span class="lineNum">      50</span>              :   initState() {</span>
-<span id="L51"><span class="lineNum">      51</span> <span class="tlaGNC">           3 :     super.initState();</span></span>
-<span id="L52"><span class="lineNum">      52</span> <span class="tlaGNC">           6 :     toExpand = AppPreferences.get(AppPreferences.prefExpand);</span></span>
-<span id="L53"><span class="lineNum">      53</span> <span class="tlaGNC">           6 :     version = AppPreferences.get(AppPreferences.prefVersion) ?? '';</span></span>
-<span id="L54"><span class="lineNum">      54</span> <span class="tlaGNC">           6 :     PackageInfo.fromPlatform().then((PackageInfo value) {</span></span>
-<span id="L55"><span class="lineNum">      55</span> <span class="tlaUNC tlaBgUNC">           0 :       if (version != value.version) {</span></span>
-<span id="L56"><span class="lineNum">      56</span> <span class="tlaUNC">           0 :         WidgetsBinding.instance.addPostFrameCallback((_) =&gt; showModalBottomSheet(</span></span>
-<span id="L57"><span class="lineNum">      57</span> <span class="tlaUNC">           0 :               context: context,</span></span>
-<span id="L58"><span class="lineNum">      58</span> <span class="tlaUNC">           0 :               builder: (BuildContext context) =&gt; buildReleaseHelper(context, version),</span></span>
-<span id="L59"><span class="lineNum">      59</span>              :             ));</span>
-<span id="L60"><span class="lineNum">      60</span> <span class="tlaUNC">           0 :         AppPreferences.set(AppPreferences.prefVersion, value.version);</span></span>
-<span id="L61"><span class="lineNum">      61</span>              :       }</span>
-<span id="L62"><span class="lineNum">      62</span>              :     });</span>
-<span id="L63"><span class="lineNum">      63</span>              :   }</span>
-<span id="L64"><span class="lineNum">      64</span>              : </span>
-<span id="L65"><span class="lineNum">      65</span> <span class="tlaUNC">           0 :   Widget buildReleaseHelper(BuildContext context, String version) =&gt; buildHelper(</span></span>
-<span id="L66"><span class="lineNum">      66</span>              :         context,</span>
-<span id="L67"><span class="lineNum">      67</span>              :         type: 'upgrade',</span>
-<span id="L68"><span class="lineNum">      68</span> <span class="tlaUNC">           0 :         builder: (context, snapshot) {</span></span>
-<span id="L69"><span class="lineNum">      69</span> <span class="tlaUNC">           0 :           if (snapshot.hasData) {</span></span>
-<span id="L70"><span class="lineNum">      70</span> <span class="tlaUNC">           0 :             String data = snapshot.data!;</span></span>
-<span id="L71"><span class="lineNum">      71</span> <span class="tlaUNC">           0 :             if (version.isNotEmpty) {</span></span>
-<span id="L72"><span class="lineNum">      72</span> <span class="tlaUNC">           0 :               data = data.split('### $version')[0];</span></span>
-<span id="L73"><span class="lineNum">      73</span>              :             }</span>
-<span id="L74"><span class="lineNum">      74</span> <span class="tlaUNC">           0 :             return Directionality(</span></span>
-<span id="L75"><span class="lineNum">      75</span> <span class="tlaUNC">           0 :               textDirection: AppDesign.getAlignment&lt;TextDirection&gt;(),</span></span>
-<span id="L76"><span class="lineNum">      76</span> <span class="tlaUNC">           0 :               child: Markdown(data: data),</span></span>
-<span id="L77"><span class="lineNum">      77</span>              :             );</span>
-<span id="L78"><span class="lineNum">      78</span>              :           }</span>
-<span id="L79"><span class="lineNum">      79</span> <span class="tlaUNC">           0 :           return Container();</span></span>
-<span id="L80"><span class="lineNum">      80</span>              :         },</span>
-<span id="L81"><span class="lineNum">      81</span>              :       );</span>
-<span id="L82"><span class="lineNum">      82</span>              : </span>
-<span id="L83"><span class="lineNum">      83</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L84"><span class="lineNum">      84</span> <span class="tlaUNC">           0 :   String getTitle() =&gt; AppLocale.labels.appTitle;</span></span>
-<span id="L85"><span class="lineNum">      85</span>              : </span>
-<span id="L86"><span class="lineNum">      86</span> <span class="tlaGNC tlaBgGNC">           3 :   @override</span></span>
-<span id="L87"><span class="lineNum">      87</span>              :   Widget buildBottomBar(BuildContext context, BoxConstraints constraints) {</span>
-<span id="L88"><span class="lineNum">      88</span> <span class="tlaGNC">           6 :     return ThemeHelper.isWearable ? ThemeHelper.emptyBox : super.buildBottomBar(context, constraints);</span></span>
-<span id="L89"><span class="lineNum">      89</span>              :   }</span>
-<span id="L90"><span class="lineNum">      90</span>              : </span>
-<span id="L91"><span class="lineNum">      91</span> <span class="tlaUNC tlaBgUNC">           0 :   @override</span></span>
-<span id="L92"><span class="lineNum">      92</span>              :   Widget? buildRightBar(BuildContext context, BoxConstraints constraints) {</span>
-<span id="L93"><span class="lineNum">      93</span> <span class="tlaUNC">           0 :     return ThemeHelper.isWearable ? null : super.buildRightBar(context, constraints);</span></span>
-<span id="L94"><span class="lineNum">      94</span>              :   }</span>
-<span id="L95"><span class="lineNum">      95</span>              : </span>
-<span id="L96"><span class="lineNum">      96</span> <span class="tlaGNC tlaBgGNC">           3 :   @override</span></span>
-<span id="L97"><span class="lineNum">      97</span>              :   Widget? getBarLeading(NavigatorState nav) {</span>
-<span id="L98"><span class="lineNum">      98</span> <span class="tlaGNC">           3 :     if (ScreenHelper.state().isWide) {</span></span>
-<span id="L99"><span class="lineNum">      99</span>              :       return ThemeHelper.emptyBox;</span>
-<span id="L100"><span class="lineNum">     100</span>              :     }</span>
-<span id="L101"><span class="lineNum">     101</span> <span class="tlaGNC">           3 :     return Builder(</span></span>
-<span id="L102"><span class="lineNum">     102</span> <span class="tlaGNC">           3 :       builder: (BuildContext context) {</span></span>
-<span id="L103"><span class="lineNum">     103</span> <span class="tlaGNC">           3 :         final scaffold = Scaffold.of(context);</span></span>
-<span id="L104"><span class="lineNum">     104</span> <span class="tlaGNC">           3 :         return ToolbarButtonWidget(</span></span>
-<span id="L105"><span class="lineNum">     105</span>              :           icon: Icons.menu,</span>
-<span id="L106"><span class="lineNum">     106</span>              :           color: Colors.white70,</span>
-<span id="L107"><span class="lineNum">     107</span> <span class="tlaGNC">           6 :           tooltip: AppLocale.labels.navigationTooltip,</span></span>
-<span id="L108"><span class="lineNum">     108</span> <span class="tlaUNC tlaBgUNC">           0 :           onPressed: () =&gt; AppDesign.isRightToLeft() ? scaffold.openEndDrawer() : scaffold.openDrawer(),</span></span>
-<span id="L109"><span class="lineNum">     109</span>              :         );</span>
-<span id="L110"><span class="lineNum">     110</span>              :       },</span>
-<span id="L111"><span class="lineNum">     111</span>              :     );</span>
-<span id="L112"><span class="lineNum">     112</span>              :   }</span>
-<span id="L113"><span class="lineNum">     113</span>              : </span>
-<span id="L114"><span class="lineNum">     114</span> <span class="tlaGNC tlaBgGNC">           3 :   @override</span></span>
-<span id="L115"><span class="lineNum">     115</span>              :   List&lt;Widget&gt; getBarActions(NavigatorState nav) {</span>
-<span id="L116"><span class="lineNum">     116</span> <span class="tlaGNC">           3 :     final isWide = ScreenHelper.state().isWide;</span></span>
-<span id="L117"><span class="lineNum">     117</span> <span class="tlaGNC">           3 :     return [</span></span>
-<span id="L118"><span class="lineNum">     118</span> <span class="tlaGNC">           3 :       ToolbarButtonWidget(</span></span>
-<span id="L119"><span class="lineNum">     119</span>              :         isWide: isWide,</span>
-<span id="L120"><span class="lineNum">     120</span>              :         icon: Icons.app_registration_outlined,</span>
-<span id="L121"><span class="lineNum">     121</span>              :         color: Colors.white70,</span>
-<span id="L122"><span class="lineNum">     122</span> <span class="tlaGNC">           6 :         tooltip: AppLocale.labels.customizeTooltip,</span></span>
-<span id="L123"><span class="lineNum">     123</span> <span class="tlaUNC tlaBgUNC">           0 :         onPressed: () =&gt; setState(() =&gt; isEditMode = true),</span></span>
-<span id="L124"><span class="lineNum">     124</span>              :       ),</span>
-<span id="L125"><span class="lineNum">     125</span> <span class="tlaGNC tlaBgGNC">           9 :       if (![TargetPlatform.iOS, TargetPlatform.macOS, TargetPlatform.android].contains(defaultTargetPlatform))</span></span>
-<span id="L126"><span class="lineNum">     126</span> <span class="tlaUNC tlaBgUNC">           0 :         ToolbarButtonWidget(</span></span>
-<span id="L127"><span class="lineNum">     127</span>              :           isWide: isWide,</span>
-<span id="L128"><span class="lineNum">     128</span>              :           icon: Icons.switch_access_shortcut_add_outlined,</span>
-<span id="L129"><span class="lineNum">     129</span>              :           color: Colors.white70,</span>
-<span id="L130"><span class="lineNum">     130</span> <span class="tlaUNC">           0 :           tooltip: AppLocale.labels.subscriptionTooltip,</span></span>
-<span id="L131"><span class="lineNum">     131</span> <span class="tlaUNC">           0 :           onPressed: () =&gt; nav.pushNamed(AppRoute.subscriptionRoute),</span></span>
-<span id="L132"><span class="lineNum">     132</span>              :         ),</span>
-<span id="L133"><span class="lineNum">     133</span>              :     ];</span>
-<span id="L134"><span class="lineNum">     134</span>              :   }</span>
-<span id="L135"><span class="lineNum">     135</span>              : </span>
-<span id="L136"><span class="lineNum">     136</span> <span class="tlaGNC tlaBgGNC">           3 :   @override</span></span>
-<span id="L137"><span class="lineNum">     137</span>              :   Widget getBarTitle(BuildContext context, [bool isBottom = false]) {</span>
-<span id="L138"><span class="lineNum">     138</span> <span class="tlaGNC">           3 :     return SvgPicture.asset(</span></span>
-<span id="L139"><span class="lineNum">     139</span>              :       'assets/images/fingrom.svg',</span>
-<span id="L140"><span class="lineNum">     140</span>              :       height: isBottom ? 20 : 40,</span>
-<span id="L141"><span class="lineNum">     141</span>              :       alignment: Alignment.centerLeft,</span>
-<span id="L142"><span class="lineNum">     142</span> <span class="tlaGNC">           6 :       semanticsLabel: AppLocale.labels.appTitle,</span></span>
-<span id="L143"><span class="lineNum">     143</span>              :     );</span>
-<span id="L144"><span class="lineNum">     144</span>              :   }</span>
-<span id="L145"><span class="lineNum">     145</span>              : </span>
-<span id="L146"><span class="lineNum">     146</span> <span class="tlaGNC">           3 :   @override</span></span>
-<span id="L147"><span class="lineNum">     147</span> <span class="tlaGNC">           6 :   String getButtonName() =&gt; AppLocale.labels.addMainTooltip;</span></span>
-<span id="L148"><span class="lineNum">     148</span>              : </span>
-<span id="L149"><span class="lineNum">     149</span> <span class="tlaGNC">           3 :   @override</span></span>
-<span id="L150"><span class="lineNum">     150</span>              :   Widget buildButton(BuildContext context, BoxConstraints constraints) {</span>
-<span id="L151"><span class="lineNum">     151</span> <span class="tlaGNC">           3 :     NavigatorState nav = Navigator.of(context);</span></span>
-<span id="L152"><span class="lineNum">     152</span> <span class="tlaGNC">           3 :     return FloatingActionButton(</span></span>
-<span id="L153"><span class="lineNum">     153</span>              :       heroTag: 'home_page',</span>
-<span id="L154"><span class="lineNum">     154</span> <span class="tlaGNC">           3 :       mini: ThemeHelper.isWearable,</span></span>
-<span id="L155"><span class="lineNum">     155</span> <span class="tlaGNC">           2 :       onPressed: () =&gt; nav.pushNamed(AppRoute.billAddRoute),</span></span>
-<span id="L156"><span class="lineNum">     156</span> <span class="tlaGNC">           3 :       tooltip: getButtonName(),</span></span>
-<span id="L157"><span class="lineNum">     157</span>              :       child: const Icon(Icons.add),</span>
-<span id="L158"><span class="lineNum">     158</span>              :     );</span>
-<span id="L159"><span class="lineNum">     159</span>              :   }</span>
-<span id="L160"><span class="lineNum">     160</span>              : </span>
-<span id="L161"><span class="lineNum">     161</span> <span class="tlaGNC">           3 :   @override</span></span>
-<span id="L162"><span class="lineNum">     162</span>              :   Widget build(BuildContext context) {</span>
-<span id="L163"><span class="lineNum">     163</span> <span class="tlaGNC">           6 :     Provider.of&lt;AppLocale&gt;(context, listen: false).updateState(context);</span></span>
-<span id="L164"><span class="lineNum">     164</span> <span class="tlaGNC">           3 :     if (isEditMode) {</span></span>
-<span id="L165"><span class="lineNum">     165</span> <span class="tlaUNC tlaBgUNC">           0 :       return HomeEditPage(callback: () =&gt; setState(() =&gt; isEditMode = false));</span></span>
-<span id="L166"><span class="lineNum">     166</span>              :     }</span>
-<span id="L167"><span class="lineNum">     167</span> <span class="tlaGNC tlaBgGNC">           3 :     if (AppPreferences.get(AppPreferences.prefPrivacyPolicy) == null) {</span></span>
-<span id="L168"><span class="lineNum">     168</span>              :       return const StartPage();</span>
-<span id="L169"><span class="lineNum">     169</span>              :     }</span>
-<span id="L170"><span class="lineNum">     170</span> <span class="tlaGNC">           6 :     return Consumer&lt;AppData&gt;(builder: (context, appState, _) {</span></span>
-<span id="L171"><span class="lineNum">     171</span> <span class="tlaGNC">           3 :       state = appState;</span></span>
-<span id="L172"><span class="lineNum">     172</span> <span class="tlaGNC">           3 :       if (appState.isLoading) {</span></span>
-<span id="L173"><span class="lineNum">     173</span>              :         return const InitTab();</span>
-<span id="L174"><span class="lineNum">     174</span>              :       }</span>
-<span id="L175"><span class="lineNum">     175</span> <span class="tlaGNC">          15 :       WidgetsBinding.instance.addPostFrameCallback((_) =&gt; PaymentsController(state));</span></span>
-<span id="L176"><span class="lineNum">     176</span> <span class="tlaGNC">           3 :       return super.build(context);</span></span>
-<span id="L177"><span class="lineNum">     177</span>              :     });</span>
-<span id="L178"><span class="lineNum">     178</span>              :   }</span>
-<span id="L179"><span class="lineNum">     179</span>              : </span>
-<span id="L180"><span class="lineNum">     180</span> <span class="tlaGNC">           3 :   @override</span></span>
-<span id="L181"><span class="lineNum">     181</span>              :   Widget buildContent(BuildContext context, BoxConstraints constraints) {</span>
-<span id="L182"><span class="lineNum">     182</span> <span class="tlaGNC">           3 :     final data = ComponentsBuilder.getData(context);</span></span>
-<span id="L183"><span class="lineNum">     183</span> <span class="tlaUNC tlaBgUNC">           0 :     if (data != null &amp;&amp; data.isNotEmpty) {</span></span>
-<span id="L184"><span class="lineNum">     184</span> <span class="tlaUNC">           0 :       return ComponentsBuilder(data);</span></span>
-<span id="L185"><span class="lineNum">     185</span>              :     }</span>
-<span id="L186"><span class="lineNum">     186</span> <span class="tlaGNC tlaBgGNC">           3 :     double indent = ThemeHelper.getIndent();</span></span>
-<span id="L187"><span class="lineNum">     187</span> <span class="tlaGNC">           3 :     EdgeInsets margin = EdgeInsets.only(top: indent);</span></span>
-<span id="L188"><span class="lineNum">     188</span> <span class="tlaGNC">           3 :     final countWidth = ThemeHelper.getWidthCount(constraints);</span></span>
-<span id="L189"><span class="lineNum">     189</span> <span class="tlaGNC">           3 :     final countHeight = ThemeHelper.getHeightCount(context, constraints);</span></span>
-<span id="L190"><span class="lineNum">     190</span> <span class="tlaGNC">           3 :     bool isVertical = countWidth == 1 &amp;&amp; !ThemeHelper.isWearable;</span></span>
-<span id="L191"><span class="lineNum">     191</span> <span class="tlaGNC">           3 :     bool isWide = ScreenHelper.state().isWide;</span></span>
-<span id="L192"><span class="lineNum">     192</span> <span class="tlaGNC">           3 :     double width = ThemeHelper.getWidth(context, 3, constraints);</span></span>
-<span id="L193"><span class="lineNum">     193</span> <span class="tlaGNC">          12 :     double partWidth = width / countWidth - indent * (countWidth - 1);</span></span>
-<span id="L194"><span class="lineNum">     194</span> <span class="tlaGNC">           9 :     DateTime curr = DateTime.now().getStartingDay(AppStartOfMonth.get());</span></span>
-<span id="L195"><span class="lineNum">     195</span>              : </span>
-<span id="L196"><span class="lineNum">     196</span> <span class="tlaGNC">           3 :     final billWidget = BillWidget(</span></span>
-<span id="L197"><span class="lineNum">     197</span>              :       margin: margin,</span>
-<span id="L198"><span class="lineNum">     198</span> <span class="tlaGNC">          12 :       title: '${AppLocale.labels.billHeadline}, ${curr.fullMonth()}',</span></span>
-<span id="L199"><span class="lineNum">     199</span> <span class="tlaGNC">           6 :       state: state.get(AppDataType.bills),</span></span>
-<span id="L200"><span class="lineNum">     200</span>              :       limit: 7,</span>
-<span id="L201"><span class="lineNum">     201</span>              :       route: AppRoute.billRoute,</span>
-<span id="L202"><span class="lineNum">     202</span> <span class="tlaGNC">           6 :       tooltip: AppLocale.labels.billTooltip,</span></span>
-<span id="L203"><span class="lineNum">     203</span>              :       width: isVertical ? width : partWidth,</span>
-<span id="L204"><span class="lineNum">     204</span>              :       hasExpand: isVertical,</span>
-<span id="L205"><span class="lineNum">     205</span> <span class="tlaGNC">           3 :       toExpand: toExpand,</span></span>
-<span id="L206"><span class="lineNum">     206</span> <span class="tlaUNC tlaBgUNC">           0 :       callback: (v) =&gt; setState(() =&gt; toExpand = v),</span></span>
-<span id="L207"><span class="lineNum">     207</span>              :     );</span>
-<span id="L208"><span class="lineNum">     208</span> <span class="tlaGNC tlaBgGNC">           3 :     final accountWidget = AccountWidget(</span></span>
-<span id="L209"><span class="lineNum">     209</span>              :       margin: margin,</span>
-<span id="L210"><span class="lineNum">     210</span> <span class="tlaGNC">          15 :       title: '${AppLocale.labels.accountHeadline}, ${AppLocale.labels.total}',</span></span>
-<span id="L211"><span class="lineNum">     211</span> <span class="tlaGNC">           6 :       state: state.get(AppDataType.accounts),</span></span>
-<span id="L212"><span class="lineNum">     212</span>              :       limit: 7,</span>
-<span id="L213"><span class="lineNum">     213</span>              :       route: AppRoute.accountRoute,</span>
-<span id="L214"><span class="lineNum">     214</span> <span class="tlaGNC">           6 :       tooltip: AppLocale.labels.accountTooltip,</span></span>
-<span id="L215"><span class="lineNum">     215</span>              :       width: isVertical ? width : partWidth,</span>
-<span id="L216"><span class="lineNum">     216</span>              :       hasExpand: isVertical,</span>
-<span id="L217"><span class="lineNum">     217</span> <span class="tlaGNC">           3 :       toExpand: toExpand,</span></span>
-<span id="L218"><span class="lineNum">     218</span> <span class="tlaUNC tlaBgUNC">           0 :       callback: (v) =&gt; setState(() =&gt; toExpand = v),</span></span>
-<span id="L219"><span class="lineNum">     219</span> <span class="tlaGNC tlaBgGNC">           9 :     )..exchange = Exchange(store: super.state);</span></span>
-<span id="L220"><span class="lineNum">     220</span> <span class="tlaGNC">           3 :     final budgetWidget = BudgetWidget(</span></span>
-<span id="L221"><span class="lineNum">     221</span>              :       margin: margin,</span>
-<span id="L222"><span class="lineNum">     222</span> <span class="tlaGNC">          15 :       title: '${AppLocale.labels.budgetHeadline}, ${AppLocale.labels.left}',</span></span>
-<span id="L223"><span class="lineNum">     223</span> <span class="tlaGNC">           6 :       state: state.get(AppDataType.budgets),</span></span>
-<span id="L224"><span class="lineNum">     224</span>              :       limit: 7,</span>
-<span id="L225"><span class="lineNum">     225</span>              :       route: AppRoute.budgetRoute,</span>
-<span id="L226"><span class="lineNum">     226</span> <span class="tlaGNC">           6 :       tooltip: AppLocale.labels.budgetTooltip,</span></span>
-<span id="L227"><span class="lineNum">     227</span>              :       width: isVertical ? width : partWidth,</span>
-<span id="L228"><span class="lineNum">     228</span>              :       hasExpand: isVertical,</span>
-<span id="L229"><span class="lineNum">     229</span> <span class="tlaGNC">           3 :       toExpand: toExpand,</span></span>
-<span id="L230"><span class="lineNum">     230</span> <span class="tlaUNC tlaBgUNC">           0 :       callback: (v) =&gt; setState(() =&gt; toExpand = v),</span></span>
-<span id="L231"><span class="lineNum">     231</span> <span class="tlaGNC tlaBgGNC">           9 :     )..exchange = Exchange(store: super.state);</span></span>
-<span id="L232"><span class="lineNum">     232</span>              : </span>
-<span id="L233"><span class="lineNum">     233</span> <span class="tlaGNC">           3 :     return GridLayer(</span></span>
-<span id="L234"><span class="lineNum">     234</span>              :       padding: indent,</span>
-<span id="L235"><span class="lineNum">     235</span>              :       width: width,</span>
-<span id="L236"><span class="lineNum">     236</span>              :       crossAxisCount: countWidth,</span>
-<span id="L237"><span class="lineNum">     237</span>              :       strategy: switch (countWidth) {</span>
-<span id="L238"><span class="lineNum">     238</span> <span class="tlaGNC">           3 :         4 =&gt; [</span></span>
-<span id="L239"><span class="lineNum">     239</span> <span class="tlaUNC tlaBgUNC">           0 :             [0, 6],</span></span>
-<span id="L240"><span class="lineNum">     240</span> <span class="tlaUNC">           0 :             [2, 5],</span></span>
-<span id="L241"><span class="lineNum">     241</span> <span class="tlaUNC">           0 :             [3, 4],</span></span>
-<span id="L242"><span class="lineNum">     242</span> <span class="tlaUNC">           0 :             [1, 7]</span></span>
-<span id="L243"><span class="lineNum">     243</span>              :           ],</span>
-<span id="L244"><span class="lineNum">     244</span> <span class="tlaGNC tlaBgGNC">           3 :         3 =&gt; [</span></span>
-<span id="L245"><span class="lineNum">     245</span> <span class="tlaUNC tlaBgUNC">           0 :             [2],</span></span>
-<span id="L246"><span class="lineNum">     246</span> <span class="tlaUNC">           0 :             [3],</span></span>
-<span id="L247"><span class="lineNum">     247</span> <span class="tlaUNC">           0 :             [0, 1]</span></span>
-<span id="L248"><span class="lineNum">     248</span>              :           ],</span>
-<span id="L249"><span class="lineNum">     249</span> <span class="tlaGNC tlaBgGNC">           6 :         2 =&gt; [</span></span>
-<span id="L250"><span class="lineNum">     250</span> <span class="tlaGNC">           3 :             [2, 3],</span></span>
-<span id="L251"><span class="lineNum">     251</span> <span class="tlaGNC">           3 :             [0, 1]</span></span>
-<span id="L252"><span class="lineNum">     252</span>              :           ],</span>
-<span id="L253"><span class="lineNum">     253</span> <span class="tlaUNC tlaBgUNC">           0 :         _ =&gt; [</span></span>
-<span id="L254"><span class="lineNum">     254</span> <span class="tlaUNC">           0 :             [0, 1, 2, 3]</span></span>
-<span id="L255"><span class="lineNum">     255</span>              :           ]</span>
-<span id="L256"><span class="lineNum">     256</span>              :       },</span>
-<span id="L257"><span class="lineNum">     257</span> <span class="tlaGNC tlaBgGNC">           3 :       children: [</span></span>
-<span id="L258"><span class="lineNum">     258</span> <span class="tlaGNC">           3 :         countHeight &gt; 3</span></span>
-<span id="L259"><span class="lineNum">     259</span>              :             ? isWide</span>
-<span id="L260"><span class="lineNum">     260</span> <span class="tlaUNC tlaBgUNC">           0 :                 ? Expanded(</span></span>
-<span id="L261"><span class="lineNum">     261</span> <span class="tlaUNC">           0 :                     child: Padding(</span></span>
-<span id="L262"><span class="lineNum">     262</span> <span class="tlaUNC">           0 :                       padding: EdgeInsets.only(top: indent / 2),</span></span>
-<span id="L263"><span class="lineNum">     263</span>              :                       child: const ComponentRecent({'type': ComponentRecentType.goals, 'count': 7}),</span>
-<span id="L264"><span class="lineNum">     264</span>              :                     ),</span>
-<span id="L265"><span class="lineNum">     265</span>              :                   )</span>
-<span id="L266"><span class="lineNum">     266</span> <span class="tlaGNC tlaBgGNC">           3 :                 : GoalWidget(</span></span>
-<span id="L267"><span class="lineNum">     267</span>              :                     width: isVertical ? width : partWidth,</span>
-<span id="L268"><span class="lineNum">     268</span> <span class="tlaGNC">           6 :                     state: super.state.getList(AppDataType.goals),</span></span>
-<span id="L269"><span class="lineNum">     269</span>              :                   )</span>
-<span id="L270"><span class="lineNum">     270</span>              :             : ThemeHelper.emptyBox,</span>
-<span id="L271"><span class="lineNum">     271</span>              :         billWidget,</span>
-<span id="L272"><span class="lineNum">     272</span>              :         accountWidget,</span>
-<span id="L273"><span class="lineNum">     273</span>              :         budgetWidget,</span>
-<span id="L274"><span class="lineNum">     274</span> <span class="tlaUNC tlaBgUNC">           0 :         () =&gt; const Expanded(</span></span>
-<span id="L275"><span class="lineNum">     275</span>              :               child: Column(</span>
-<span id="L276"><span class="lineNum">     276</span>              :                 children: [</span>
-<span id="L277"><span class="lineNum">     277</span>              :                   Expanded(child: ThemeHelper.emptyBox),</span>
-<span id="L278"><span class="lineNum">     278</span>              :                   AccountFlowChart(),</span>
-<span id="L279"><span class="lineNum">     279</span>              :                   ThemeHelper.hIndent6x,</span>
-<span id="L280"><span class="lineNum">     280</span>              :                 ],</span>
-<span id="L281"><span class="lineNum">     281</span>              :               ),</span>
-<span id="L282"><span class="lineNum">     282</span>              :             ),</span>
-<span id="L283"><span class="lineNum">     283</span> <span class="tlaUNC">           0 :         () =&gt; const Expanded(</span></span>
-<span id="L284"><span class="lineNum">     284</span>              :               child: Column(</span>
-<span id="L285"><span class="lineNum">     285</span>              :                 children: [</span>
-<span id="L286"><span class="lineNum">     286</span>              :                   Expanded(child: ThemeHelper.emptyBox),</span>
-<span id="L287"><span class="lineNum">     287</span>              :                   BudgetForecastChart(),</span>
-<span id="L288"><span class="lineNum">     288</span>              :                   ThemeHelper.hIndent6x,</span>
-<span id="L289"><span class="lineNum">     289</span>              :                 ],</span>
-<span id="L290"><span class="lineNum">     290</span>              :               ),</span>
-<span id="L291"><span class="lineNum">     291</span>              :             ),</span>
-<span id="L292"><span class="lineNum">     292</span> <span class="tlaUNC">           0 :         () =&gt; const Expanded(</span></span>
-<span id="L293"><span class="lineNum">     293</span>              :               child: Column(</span>
-<span id="L294"><span class="lineNum">     294</span>              :                 children: [</span>
-<span id="L295"><span class="lineNum">     295</span>              :                   Expanded(child: ThemeHelper.emptyBox),</span>
-<span id="L296"><span class="lineNum">     296</span>              :                   BillYtdChart(),</span>
-<span id="L297"><span class="lineNum">     297</span>              :                   ThemeHelper.hIndent6x,</span>
-<span id="L298"><span class="lineNum">     298</span>              :                 ],</span>
-<span id="L299"><span class="lineNum">     299</span>              :               ),</span>
-<span id="L300"><span class="lineNum">     300</span>              :             ),</span>
-<span id="L301"><span class="lineNum">     301</span> <span class="tlaUNC">           0 :         () =&gt; const Expanded(</span></span>
-<span id="L302"><span class="lineNum">     302</span>              :               child: ComponentRecent({'type': ComponentRecentType.invoice, 'count': 7}),</span>
-<span id="L303"><span class="lineNum">     303</span>              :             ),</span>
-<span id="L304"><span class="lineNum">     304</span>              :       ],</span>
-<span id="L305"><span class="lineNum">     305</span>              :     );</span>
-<span id="L306"><span class="lineNum">     306</span>              :   }</span>
-<span id="L307"><span class="lineNum">     307</span>              : }</span>
+<span id="L22"><span class="lineNum">      22</span>              : import 'package:app_finance/pages/home/widgets/security_tab.dart';</span>
+<span id="L23"><span class="lineNum">      23</span>              : import 'package:app_finance/pages/start/start_page.dart';</span>
+<span id="L24"><span class="lineNum">      24</span>              : import 'package:app_finance/design/wrapper/grid_layer.dart';</span>
+<span id="L25"><span class="lineNum">      25</span>              : import 'package:app_finance/pages/home/widgets/init_tab.dart';</span>
+<span id="L26"><span class="lineNum">      26</span>              : import 'package:app_finance/design/button/toolbar_button_widget.dart';</span>
+<span id="L27"><span class="lineNum">      27</span>              : import 'package:app_finance/components/widgets/account_widget.dart';</span>
+<span id="L28"><span class="lineNum">      28</span>              : import 'package:app_finance/components/widgets/bill_widget.dart';</span>
+<span id="L29"><span class="lineNum">      29</span>              : import 'package:app_finance/components/widgets/budget_widget.dart';</span>
+<span id="L30"><span class="lineNum">      30</span>              : import 'package:app_finance/pages/home/widgets/goal_widget.dart';</span>
+<span id="L31"><span class="lineNum">      31</span>              : import 'package:flutter/foundation.dart';</span>
+<span id="L32"><span class="lineNum">      32</span>              : import 'package:flutter/material.dart';</span>
+<span id="L33"><span class="lineNum">      33</span>              : import 'package:flutter_markdown/flutter_markdown.dart';</span>
+<span id="L34"><span class="lineNum">      34</span>              : import 'package:flutter_svg/flutter_svg.dart';</span>
+<span id="L35"><span class="lineNum">      35</span>              : import 'package:package_info_plus/package_info_plus.dart';</span>
+<span id="L36"><span class="lineNum">      36</span>              : import 'package:provider/provider.dart';</span>
+<span id="L37"><span class="lineNum">      37</span>              : import 'package:simple_totp_auth/simple_totp_auth.dart';</span>
+<span id="L38"><span class="lineNum">      38</span>              : </span>
+<span id="L39"><span class="lineNum">      39</span>              : class HomePage extends StatefulWidget {</span>
+<span id="L40"><span class="lineNum">      40</span> <span class="tlaGNC tlaBgGNC">           2 :   const HomePage({super.key});</span></span>
+<span id="L41"><span class="lineNum">      41</span>              : </span>
+<span id="L42"><span class="lineNum">      42</span> <span class="tlaGNC">           3 :   @override</span></span>
+<span id="L43"><span class="lineNum">      43</span> <span class="tlaGNC">           3 :   HomePageState createState() =&gt; HomePageState();</span></span>
+<span id="L44"><span class="lineNum">      44</span>              : }</span>
+<span id="L45"><span class="lineNum">      45</span>              : </span>
+<span id="L46"><span class="lineNum">      46</span>              : class HomePageState extends AbstractPageState&lt;HomePage&gt; {</span>
+<span id="L47"><span class="lineNum">      47</span>              :   String? toExpand;</span>
+<span id="L48"><span class="lineNum">      48</span>              :   String secret = '';</span>
+<span id="L49"><span class="lineNum">      49</span>              :   bool isEditMode = false;</span>
+<span id="L50"><span class="lineNum">      50</span>              :   bool isOtpPassed = false;</span>
+<span id="L51"><span class="lineNum">      51</span>              :   late String version;</span>
+<span id="L52"><span class="lineNum">      52</span>              : </span>
+<span id="L53"><span class="lineNum">      53</span> <span class="tlaGNC">           3 :   @override</span></span>
+<span id="L54"><span class="lineNum">      54</span>              :   initState() {</span>
+<span id="L55"><span class="lineNum">      55</span> <span class="tlaGNC">           3 :     super.initState();</span></span>
+<span id="L56"><span class="lineNum">      56</span> <span class="tlaGNC">           6 :     toExpand = AppPreferences.get(AppPreferences.prefExpand);</span></span>
+<span id="L57"><span class="lineNum">      57</span> <span class="tlaGNC">           6 :     version = AppPreferences.get(AppPreferences.prefVersion) ?? '';</span></span>
+<span id="L58"><span class="lineNum">      58</span> <span class="tlaGNC">           6 :     secret = AppPreferences.get(AppPreferences.prefPrivacyKey) ?? '';</span></span>
+<span id="L59"><span class="lineNum">      59</span> <span class="tlaGNC">           6 :     if (secret.isEmpty) {</span></span>
+<span id="L60"><span class="lineNum">      60</span> <span class="tlaGNC">           6 :       secret = TOTP.generateSecret();</span></span>
+<span id="L61"><span class="lineNum">      61</span> <span class="tlaGNC">           6 :       AppPreferences.set(AppPreferences.prefPrivacyKey, secret);</span></span>
+<span id="L62"><span class="lineNum">      62</span>              :     }</span>
+<span id="L63"><span class="lineNum">      63</span> <span class="tlaGNC">           6 :     PackageInfo.fromPlatform().then((PackageInfo value) {</span></span>
+<span id="L64"><span class="lineNum">      64</span> <span class="tlaUNC tlaBgUNC">           0 :       if (version != value.version) {</span></span>
+<span id="L65"><span class="lineNum">      65</span> <span class="tlaUNC">           0 :         WidgetsBinding.instance.addPostFrameCallback((_) =&gt; showModalBottomSheet(</span></span>
+<span id="L66"><span class="lineNum">      66</span> <span class="tlaUNC">           0 :               context: context,</span></span>
+<span id="L67"><span class="lineNum">      67</span> <span class="tlaUNC">           0 :               builder: (BuildContext context) =&gt; buildReleaseHelper(context, version),</span></span>
+<span id="L68"><span class="lineNum">      68</span>              :             ));</span>
+<span id="L69"><span class="lineNum">      69</span> <span class="tlaUNC">           0 :         AppPreferences.set(AppPreferences.prefVersion, value.version);</span></span>
+<span id="L70"><span class="lineNum">      70</span>              :       }</span>
+<span id="L71"><span class="lineNum">      71</span>              :     });</span>
+<span id="L72"><span class="lineNum">      72</span>              :   }</span>
+<span id="L73"><span class="lineNum">      73</span>              : </span>
+<span id="L74"><span class="lineNum">      74</span> <span class="tlaUNC">           0 :   Widget buildReleaseHelper(BuildContext context, String version) =&gt; buildHelper(</span></span>
+<span id="L75"><span class="lineNum">      75</span>              :         context,</span>
+<span id="L76"><span class="lineNum">      76</span>              :         type: 'upgrade',</span>
+<span id="L77"><span class="lineNum">      77</span> <span class="tlaUNC">           0 :         builder: (context, snapshot) {</span></span>
+<span id="L78"><span class="lineNum">      78</span> <span class="tlaUNC">           0 :           if (snapshot.hasData) {</span></span>
+<span id="L79"><span class="lineNum">      79</span> <span class="tlaUNC">           0 :             String data = snapshot.data!;</span></span>
+<span id="L80"><span class="lineNum">      80</span> <span class="tlaUNC">           0 :             if (version.isNotEmpty) {</span></span>
+<span id="L81"><span class="lineNum">      81</span> <span class="tlaUNC">           0 :               data = data.split('### $version')[0];</span></span>
+<span id="L82"><span class="lineNum">      82</span>              :             }</span>
+<span id="L83"><span class="lineNum">      83</span> <span class="tlaUNC">           0 :             return Directionality(</span></span>
+<span id="L84"><span class="lineNum">      84</span> <span class="tlaUNC">           0 :               textDirection: AppDesign.getAlignment&lt;TextDirection&gt;(),</span></span>
+<span id="L85"><span class="lineNum">      85</span> <span class="tlaUNC">           0 :               child: Markdown(data: data),</span></span>
+<span id="L86"><span class="lineNum">      86</span>              :             );</span>
+<span id="L87"><span class="lineNum">      87</span>              :           }</span>
+<span id="L88"><span class="lineNum">      88</span> <span class="tlaUNC">           0 :           return Container();</span></span>
+<span id="L89"><span class="lineNum">      89</span>              :         },</span>
+<span id="L90"><span class="lineNum">      90</span>              :       );</span>
+<span id="L91"><span class="lineNum">      91</span>              : </span>
+<span id="L92"><span class="lineNum">      92</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L93"><span class="lineNum">      93</span> <span class="tlaUNC">           0 :   String getTitle() =&gt; AppLocale.labels.appTitle;</span></span>
+<span id="L94"><span class="lineNum">      94</span>              : </span>
+<span id="L95"><span class="lineNum">      95</span> <span class="tlaGNC tlaBgGNC">           3 :   @override</span></span>
+<span id="L96"><span class="lineNum">      96</span>              :   Widget buildBottomBar(BuildContext context, BoxConstraints constraints) {</span>
+<span id="L97"><span class="lineNum">      97</span> <span class="tlaGNC">           6 :     return ThemeHelper.isWearable ? ThemeHelper.emptyBox : super.buildBottomBar(context, constraints);</span></span>
+<span id="L98"><span class="lineNum">      98</span>              :   }</span>
+<span id="L99"><span class="lineNum">      99</span>              : </span>
+<span id="L100"><span class="lineNum">     100</span> <span class="tlaUNC tlaBgUNC">           0 :   @override</span></span>
+<span id="L101"><span class="lineNum">     101</span>              :   Widget? buildRightBar(BuildContext context, BoxConstraints constraints) {</span>
+<span id="L102"><span class="lineNum">     102</span> <span class="tlaUNC">           0 :     return ThemeHelper.isWearable ? null : super.buildRightBar(context, constraints);</span></span>
+<span id="L103"><span class="lineNum">     103</span>              :   }</span>
+<span id="L104"><span class="lineNum">     104</span>              : </span>
+<span id="L105"><span class="lineNum">     105</span> <span class="tlaGNC tlaBgGNC">           3 :   @override</span></span>
+<span id="L106"><span class="lineNum">     106</span>              :   Widget? getBarLeading(NavigatorState nav) {</span>
+<span id="L107"><span class="lineNum">     107</span> <span class="tlaGNC">           3 :     if (ScreenHelper.state().isWide) {</span></span>
+<span id="L108"><span class="lineNum">     108</span>              :       return ThemeHelper.emptyBox;</span>
+<span id="L109"><span class="lineNum">     109</span>              :     }</span>
+<span id="L110"><span class="lineNum">     110</span> <span class="tlaGNC">           3 :     return Builder(</span></span>
+<span id="L111"><span class="lineNum">     111</span> <span class="tlaGNC">           3 :       builder: (BuildContext context) {</span></span>
+<span id="L112"><span class="lineNum">     112</span> <span class="tlaGNC">           3 :         final scaffold = Scaffold.of(context);</span></span>
+<span id="L113"><span class="lineNum">     113</span> <span class="tlaGNC">           3 :         return ToolbarButtonWidget(</span></span>
+<span id="L114"><span class="lineNum">     114</span>              :           icon: Icons.menu,</span>
+<span id="L115"><span class="lineNum">     115</span>              :           color: Colors.white70,</span>
+<span id="L116"><span class="lineNum">     116</span> <span class="tlaGNC">           6 :           tooltip: AppLocale.labels.navigationTooltip,</span></span>
+<span id="L117"><span class="lineNum">     117</span> <span class="tlaUNC tlaBgUNC">           0 :           onPressed: () =&gt; AppDesign.isRightToLeft() ? scaffold.openEndDrawer() : scaffold.openDrawer(),</span></span>
+<span id="L118"><span class="lineNum">     118</span>              :         );</span>
+<span id="L119"><span class="lineNum">     119</span>              :       },</span>
+<span id="L120"><span class="lineNum">     120</span>              :     );</span>
+<span id="L121"><span class="lineNum">     121</span>              :   }</span>
+<span id="L122"><span class="lineNum">     122</span>              : </span>
+<span id="L123"><span class="lineNum">     123</span> <span class="tlaGNC tlaBgGNC">           3 :   @override</span></span>
+<span id="L124"><span class="lineNum">     124</span>              :   List&lt;Widget&gt; getBarActions(NavigatorState nav) {</span>
+<span id="L125"><span class="lineNum">     125</span> <span class="tlaGNC">           3 :     final isWide = ScreenHelper.state().isWide;</span></span>
+<span id="L126"><span class="lineNum">     126</span> <span class="tlaGNC">           3 :     return [</span></span>
+<span id="L127"><span class="lineNum">     127</span> <span class="tlaGNC">           3 :       ToolbarButtonWidget(</span></span>
+<span id="L128"><span class="lineNum">     128</span>              :         isWide: isWide,</span>
+<span id="L129"><span class="lineNum">     129</span>              :         icon: Icons.app_registration_outlined,</span>
+<span id="L130"><span class="lineNum">     130</span>              :         color: Colors.white70,</span>
+<span id="L131"><span class="lineNum">     131</span> <span class="tlaGNC">           6 :         tooltip: AppLocale.labels.customizeTooltip,</span></span>
+<span id="L132"><span class="lineNum">     132</span> <span class="tlaUNC tlaBgUNC">           0 :         onPressed: () =&gt; setState(() =&gt; isEditMode = true),</span></span>
+<span id="L133"><span class="lineNum">     133</span>              :       ),</span>
+<span id="L134"><span class="lineNum">     134</span> <span class="tlaGNC tlaBgGNC">           9 :       if (![TargetPlatform.iOS, TargetPlatform.macOS, TargetPlatform.android].contains(defaultTargetPlatform))</span></span>
+<span id="L135"><span class="lineNum">     135</span> <span class="tlaUNC tlaBgUNC">           0 :         ToolbarButtonWidget(</span></span>
+<span id="L136"><span class="lineNum">     136</span>              :           isWide: isWide,</span>
+<span id="L137"><span class="lineNum">     137</span>              :           icon: Icons.switch_access_shortcut_add_outlined,</span>
+<span id="L138"><span class="lineNum">     138</span>              :           color: Colors.white70,</span>
+<span id="L139"><span class="lineNum">     139</span> <span class="tlaUNC">           0 :           tooltip: AppLocale.labels.subscriptionTooltip,</span></span>
+<span id="L140"><span class="lineNum">     140</span> <span class="tlaUNC">           0 :           onPressed: () =&gt; nav.pushNamed(AppRoute.subscriptionRoute),</span></span>
+<span id="L141"><span class="lineNum">     141</span>              :         ),</span>
+<span id="L142"><span class="lineNum">     142</span>              :     ];</span>
+<span id="L143"><span class="lineNum">     143</span>              :   }</span>
+<span id="L144"><span class="lineNum">     144</span>              : </span>
+<span id="L145"><span class="lineNum">     145</span> <span class="tlaGNC tlaBgGNC">           3 :   @override</span></span>
+<span id="L146"><span class="lineNum">     146</span>              :   Widget getBarTitle(BuildContext context, [bool isBottom = false]) {</span>
+<span id="L147"><span class="lineNum">     147</span> <span class="tlaGNC">           3 :     return SvgPicture.asset(</span></span>
+<span id="L148"><span class="lineNum">     148</span>              :       'assets/images/fingrom.svg',</span>
+<span id="L149"><span class="lineNum">     149</span>              :       height: isBottom ? 20 : 40,</span>
+<span id="L150"><span class="lineNum">     150</span>              :       alignment: Alignment.centerLeft,</span>
+<span id="L151"><span class="lineNum">     151</span> <span class="tlaGNC">           6 :       semanticsLabel: AppLocale.labels.appTitle,</span></span>
+<span id="L152"><span class="lineNum">     152</span>              :     );</span>
+<span id="L153"><span class="lineNum">     153</span>              :   }</span>
+<span id="L154"><span class="lineNum">     154</span>              : </span>
+<span id="L155"><span class="lineNum">     155</span> <span class="tlaGNC">           3 :   @override</span></span>
+<span id="L156"><span class="lineNum">     156</span> <span class="tlaGNC">           6 :   String getButtonName() =&gt; AppLocale.labels.addMainTooltip;</span></span>
+<span id="L157"><span class="lineNum">     157</span>              : </span>
+<span id="L158"><span class="lineNum">     158</span> <span class="tlaGNC">           3 :   @override</span></span>
+<span id="L159"><span class="lineNum">     159</span>              :   Widget buildButton(BuildContext context, BoxConstraints constraints) {</span>
+<span id="L160"><span class="lineNum">     160</span> <span class="tlaGNC">           3 :     NavigatorState nav = Navigator.of(context);</span></span>
+<span id="L161"><span class="lineNum">     161</span> <span class="tlaGNC">           3 :     return FloatingActionButton(</span></span>
+<span id="L162"><span class="lineNum">     162</span>              :       heroTag: 'home_page',</span>
+<span id="L163"><span class="lineNum">     163</span> <span class="tlaGNC">           3 :       mini: ThemeHelper.isWearable,</span></span>
+<span id="L164"><span class="lineNum">     164</span> <span class="tlaGNC">           2 :       onPressed: () =&gt; nav.pushNamed(AppRoute.billAddRoute),</span></span>
+<span id="L165"><span class="lineNum">     165</span> <span class="tlaGNC">           3 :       tooltip: getButtonName(),</span></span>
+<span id="L166"><span class="lineNum">     166</span>              :       child: const Icon(Icons.add),</span>
+<span id="L167"><span class="lineNum">     167</span>              :     );</span>
+<span id="L168"><span class="lineNum">     168</span>              :   }</span>
+<span id="L169"><span class="lineNum">     169</span>              : </span>
+<span id="L170"><span class="lineNum">     170</span> <span class="tlaGNC">           3 :   @override</span></span>
+<span id="L171"><span class="lineNum">     171</span>              :   Widget build(BuildContext context) {</span>
+<span id="L172"><span class="lineNum">     172</span> <span class="tlaGNC">           6 :     Provider.of&lt;AppLocale&gt;(context, listen: false).updateState(context);</span></span>
+<span id="L173"><span class="lineNum">     173</span> <span class="tlaGNC">           3 :     if (isEditMode) {</span></span>
+<span id="L174"><span class="lineNum">     174</span> <span class="tlaUNC tlaBgUNC">           0 :       return HomeEditPage(callback: () =&gt; setState(() =&gt; isEditMode = false));</span></span>
+<span id="L175"><span class="lineNum">     175</span>              :     }</span>
+<span id="L176"><span class="lineNum">     176</span> <span class="tlaGNC tlaBgGNC">           3 :     if (AppPreferences.get(AppPreferences.prefPrivacyPolicy) == null) {</span></span>
+<span id="L177"><span class="lineNum">     177</span>              :       return const StartPage();</span>
+<span id="L178"><span class="lineNum">     178</span>              :     }</span>
+<span id="L179"><span class="lineNum">     179</span> <span class="tlaGNC">           6 :     return Consumer&lt;AppData&gt;(builder: (context, appState, _) {</span></span>
+<span id="L180"><span class="lineNum">     180</span> <span class="tlaGNC">           3 :       state = appState;</span></span>
+<span id="L181"><span class="lineNum">     181</span> <span class="tlaGNC">           6 :       if (AppPreferences.get(AppPreferences.prefIsOTP) == AppPreferences.isActive &amp;&amp; !isOtpPassed) {</span></span>
+<span id="L182"><span class="lineNum">     182</span> <span class="tlaUNC tlaBgUNC">           0 :         return SecurityTab(</span></span>
+<span id="L183"><span class="lineNum">     183</span> <span class="tlaUNC">           0 :           onSuccess: () =&gt; setState(() =&gt; isOtpPassed = true),</span></span>
+<span id="L184"><span class="lineNum">     184</span>              :         );</span>
+<span id="L185"><span class="lineNum">     185</span>              :       }</span>
+<span id="L186"><span class="lineNum">     186</span> <span class="tlaGNC tlaBgGNC">           3 :       if (appState.isLoading) {</span></span>
+<span id="L187"><span class="lineNum">     187</span>              :         return const InitTab();</span>
+<span id="L188"><span class="lineNum">     188</span>              :       }</span>
+<span id="L189"><span class="lineNum">     189</span> <span class="tlaGNC">          15 :       WidgetsBinding.instance.addPostFrameCallback((_) =&gt; PaymentsController(state));</span></span>
+<span id="L190"><span class="lineNum">     190</span> <span class="tlaGNC">           3 :       return super.build(context);</span></span>
+<span id="L191"><span class="lineNum">     191</span>              :     });</span>
+<span id="L192"><span class="lineNum">     192</span>              :   }</span>
+<span id="L193"><span class="lineNum">     193</span>              : </span>
+<span id="L194"><span class="lineNum">     194</span> <span class="tlaGNC">           3 :   @override</span></span>
+<span id="L195"><span class="lineNum">     195</span>              :   Widget buildContent(BuildContext context, BoxConstraints constraints) {</span>
+<span id="L196"><span class="lineNum">     196</span> <span class="tlaGNC">           3 :     final data = ComponentsBuilder.getData(context);</span></span>
+<span id="L197"><span class="lineNum">     197</span> <span class="tlaUNC tlaBgUNC">           0 :     if (data != null &amp;&amp; data.isNotEmpty) {</span></span>
+<span id="L198"><span class="lineNum">     198</span> <span class="tlaUNC">           0 :       return ComponentsBuilder(data);</span></span>
+<span id="L199"><span class="lineNum">     199</span>              :     }</span>
+<span id="L200"><span class="lineNum">     200</span> <span class="tlaGNC tlaBgGNC">           3 :     double indent = ThemeHelper.getIndent();</span></span>
+<span id="L201"><span class="lineNum">     201</span> <span class="tlaGNC">           3 :     EdgeInsets margin = EdgeInsets.only(top: indent);</span></span>
+<span id="L202"><span class="lineNum">     202</span> <span class="tlaGNC">           3 :     final countWidth = ThemeHelper.getWidthCount(constraints);</span></span>
+<span id="L203"><span class="lineNum">     203</span> <span class="tlaGNC">           3 :     final countHeight = ThemeHelper.getHeightCount(context, constraints);</span></span>
+<span id="L204"><span class="lineNum">     204</span> <span class="tlaGNC">           3 :     bool isVertical = countWidth == 1 &amp;&amp; !ThemeHelper.isWearable;</span></span>
+<span id="L205"><span class="lineNum">     205</span> <span class="tlaGNC">           3 :     bool isWide = ScreenHelper.state().isWide;</span></span>
+<span id="L206"><span class="lineNum">     206</span> <span class="tlaGNC">           3 :     double width = ThemeHelper.getWidth(context, 3, constraints);</span></span>
+<span id="L207"><span class="lineNum">     207</span> <span class="tlaGNC">          12 :     double partWidth = width / countWidth - indent * (countWidth - 1);</span></span>
+<span id="L208"><span class="lineNum">     208</span> <span class="tlaGNC">           9 :     DateTime curr = DateTime.now().getStartingDay(AppStartOfMonth.get());</span></span>
+<span id="L209"><span class="lineNum">     209</span>              : </span>
+<span id="L210"><span class="lineNum">     210</span> <span class="tlaGNC">           3 :     final billWidget = BillWidget(</span></span>
+<span id="L211"><span class="lineNum">     211</span>              :       margin: margin,</span>
+<span id="L212"><span class="lineNum">     212</span> <span class="tlaGNC">          12 :       title: '${AppLocale.labels.billHeadline}, ${curr.fullMonth()}',</span></span>
+<span id="L213"><span class="lineNum">     213</span> <span class="tlaGNC">           6 :       state: state.get(AppDataType.bills),</span></span>
+<span id="L214"><span class="lineNum">     214</span>              :       limit: 7,</span>
+<span id="L215"><span class="lineNum">     215</span>              :       route: AppRoute.billRoute,</span>
+<span id="L216"><span class="lineNum">     216</span> <span class="tlaGNC">           6 :       tooltip: AppLocale.labels.billTooltip,</span></span>
+<span id="L217"><span class="lineNum">     217</span>              :       width: isVertical ? width : partWidth,</span>
+<span id="L218"><span class="lineNum">     218</span>              :       hasExpand: isVertical,</span>
+<span id="L219"><span class="lineNum">     219</span> <span class="tlaGNC">           3 :       toExpand: toExpand,</span></span>
+<span id="L220"><span class="lineNum">     220</span> <span class="tlaUNC tlaBgUNC">           0 :       callback: (v) =&gt; setState(() =&gt; toExpand = v),</span></span>
+<span id="L221"><span class="lineNum">     221</span>              :     );</span>
+<span id="L222"><span class="lineNum">     222</span> <span class="tlaGNC tlaBgGNC">           3 :     final accountWidget = AccountWidget(</span></span>
+<span id="L223"><span class="lineNum">     223</span>              :       margin: margin,</span>
+<span id="L224"><span class="lineNum">     224</span> <span class="tlaGNC">          15 :       title: '${AppLocale.labels.accountHeadline}, ${AppLocale.labels.total}',</span></span>
+<span id="L225"><span class="lineNum">     225</span> <span class="tlaGNC">           6 :       state: state.get(AppDataType.accounts),</span></span>
+<span id="L226"><span class="lineNum">     226</span>              :       limit: 7,</span>
+<span id="L227"><span class="lineNum">     227</span>              :       route: AppRoute.accountRoute,</span>
+<span id="L228"><span class="lineNum">     228</span> <span class="tlaGNC">           6 :       tooltip: AppLocale.labels.accountTooltip,</span></span>
+<span id="L229"><span class="lineNum">     229</span>              :       width: isVertical ? width : partWidth,</span>
+<span id="L230"><span class="lineNum">     230</span>              :       hasExpand: isVertical,</span>
+<span id="L231"><span class="lineNum">     231</span> <span class="tlaGNC">           3 :       toExpand: toExpand,</span></span>
+<span id="L232"><span class="lineNum">     232</span> <span class="tlaUNC tlaBgUNC">           0 :       callback: (v) =&gt; setState(() =&gt; toExpand = v),</span></span>
+<span id="L233"><span class="lineNum">     233</span> <span class="tlaGNC tlaBgGNC">           9 :     )..exchange = Exchange(store: super.state);</span></span>
+<span id="L234"><span class="lineNum">     234</span> <span class="tlaGNC">           3 :     final budgetWidget = BudgetWidget(</span></span>
+<span id="L235"><span class="lineNum">     235</span>              :       margin: margin,</span>
+<span id="L236"><span class="lineNum">     236</span> <span class="tlaGNC">          15 :       title: '${AppLocale.labels.budgetHeadline}, ${AppLocale.labels.left}',</span></span>
+<span id="L237"><span class="lineNum">     237</span> <span class="tlaGNC">           6 :       state: state.get(AppDataType.budgets),</span></span>
+<span id="L238"><span class="lineNum">     238</span>              :       limit: 7,</span>
+<span id="L239"><span class="lineNum">     239</span>              :       route: AppRoute.budgetRoute,</span>
+<span id="L240"><span class="lineNum">     240</span> <span class="tlaGNC">           6 :       tooltip: AppLocale.labels.budgetTooltip,</span></span>
+<span id="L241"><span class="lineNum">     241</span>              :       width: isVertical ? width : partWidth,</span>
+<span id="L242"><span class="lineNum">     242</span>              :       hasExpand: isVertical,</span>
+<span id="L243"><span class="lineNum">     243</span> <span class="tlaGNC">           3 :       toExpand: toExpand,</span></span>
+<span id="L244"><span class="lineNum">     244</span> <span class="tlaUNC tlaBgUNC">           0 :       callback: (v) =&gt; setState(() =&gt; toExpand = v),</span></span>
+<span id="L245"><span class="lineNum">     245</span> <span class="tlaGNC tlaBgGNC">           9 :     )..exchange = Exchange(store: super.state);</span></span>
+<span id="L246"><span class="lineNum">     246</span>              : </span>
+<span id="L247"><span class="lineNum">     247</span> <span class="tlaGNC">           3 :     return GridLayer(</span></span>
+<span id="L248"><span class="lineNum">     248</span>              :       padding: indent,</span>
+<span id="L249"><span class="lineNum">     249</span>              :       width: width,</span>
+<span id="L250"><span class="lineNum">     250</span>              :       crossAxisCount: countWidth,</span>
+<span id="L251"><span class="lineNum">     251</span>              :       strategy: switch (countWidth) {</span>
+<span id="L252"><span class="lineNum">     252</span> <span class="tlaGNC">           3 :         4 =&gt; [</span></span>
+<span id="L253"><span class="lineNum">     253</span> <span class="tlaUNC tlaBgUNC">           0 :             [0, 6],</span></span>
+<span id="L254"><span class="lineNum">     254</span> <span class="tlaUNC">           0 :             [2, 5],</span></span>
+<span id="L255"><span class="lineNum">     255</span> <span class="tlaUNC">           0 :             [3, 4],</span></span>
+<span id="L256"><span class="lineNum">     256</span> <span class="tlaUNC">           0 :             [1, 7]</span></span>
+<span id="L257"><span class="lineNum">     257</span>              :           ],</span>
+<span id="L258"><span class="lineNum">     258</span> <span class="tlaGNC tlaBgGNC">           3 :         3 =&gt; [</span></span>
+<span id="L259"><span class="lineNum">     259</span> <span class="tlaUNC tlaBgUNC">           0 :             [2],</span></span>
+<span id="L260"><span class="lineNum">     260</span> <span class="tlaUNC">           0 :             [3],</span></span>
+<span id="L261"><span class="lineNum">     261</span> <span class="tlaUNC">           0 :             [0, 1]</span></span>
+<span id="L262"><span class="lineNum">     262</span>              :           ],</span>
+<span id="L263"><span class="lineNum">     263</span> <span class="tlaGNC tlaBgGNC">           6 :         2 =&gt; [</span></span>
+<span id="L264"><span class="lineNum">     264</span> <span class="tlaGNC">           3 :             [2, 3],</span></span>
+<span id="L265"><span class="lineNum">     265</span> <span class="tlaGNC">           3 :             [0, 1]</span></span>
+<span id="L266"><span class="lineNum">     266</span>              :           ],</span>
+<span id="L267"><span class="lineNum">     267</span> <span class="tlaUNC tlaBgUNC">           0 :         _ =&gt; [</span></span>
+<span id="L268"><span class="lineNum">     268</span> <span class="tlaUNC">           0 :             [0, 1, 2, 3]</span></span>
+<span id="L269"><span class="lineNum">     269</span>              :           ]</span>
+<span id="L270"><span class="lineNum">     270</span>              :       },</span>
+<span id="L271"><span class="lineNum">     271</span> <span class="tlaGNC tlaBgGNC">           3 :       children: [</span></span>
+<span id="L272"><span class="lineNum">     272</span> <span class="tlaGNC">           3 :         countHeight &gt; 3</span></span>
+<span id="L273"><span class="lineNum">     273</span>              :             ? isWide</span>
+<span id="L274"><span class="lineNum">     274</span> <span class="tlaUNC tlaBgUNC">           0 :                 ? Expanded(</span></span>
+<span id="L275"><span class="lineNum">     275</span> <span class="tlaUNC">           0 :                     child: Padding(</span></span>
+<span id="L276"><span class="lineNum">     276</span> <span class="tlaUNC">           0 :                       padding: EdgeInsets.only(top: indent / 2),</span></span>
+<span id="L277"><span class="lineNum">     277</span>              :                       child: const ComponentRecent({'type': ComponentRecentType.goals, 'count': 7}),</span>
+<span id="L278"><span class="lineNum">     278</span>              :                     ),</span>
+<span id="L279"><span class="lineNum">     279</span>              :                   )</span>
+<span id="L280"><span class="lineNum">     280</span> <span class="tlaGNC tlaBgGNC">           3 :                 : GoalWidget(</span></span>
+<span id="L281"><span class="lineNum">     281</span>              :                     width: isVertical ? width : partWidth,</span>
+<span id="L282"><span class="lineNum">     282</span> <span class="tlaGNC">           6 :                     state: super.state.getList(AppDataType.goals),</span></span>
+<span id="L283"><span class="lineNum">     283</span>              :                   )</span>
+<span id="L284"><span class="lineNum">     284</span>              :             : ThemeHelper.emptyBox,</span>
+<span id="L285"><span class="lineNum">     285</span>              :         billWidget,</span>
+<span id="L286"><span class="lineNum">     286</span>              :         accountWidget,</span>
+<span id="L287"><span class="lineNum">     287</span>              :         budgetWidget,</span>
+<span id="L288"><span class="lineNum">     288</span> <span class="tlaUNC tlaBgUNC">           0 :         () =&gt; const Expanded(</span></span>
+<span id="L289"><span class="lineNum">     289</span>              :               child: Column(</span>
+<span id="L290"><span class="lineNum">     290</span>              :                 children: [</span>
+<span id="L291"><span class="lineNum">     291</span>              :                   Expanded(child: ThemeHelper.emptyBox),</span>
+<span id="L292"><span class="lineNum">     292</span>              :                   AccountFlowChart(),</span>
+<span id="L293"><span class="lineNum">     293</span>              :                   ThemeHelper.hIndent6x,</span>
+<span id="L294"><span class="lineNum">     294</span>              :                 ],</span>
+<span id="L295"><span class="lineNum">     295</span>              :               ),</span>
+<span id="L296"><span class="lineNum">     296</span>              :             ),</span>
+<span id="L297"><span class="lineNum">     297</span> <span class="tlaUNC">           0 :         () =&gt; const Expanded(</span></span>
+<span id="L298"><span class="lineNum">     298</span>              :               child: Column(</span>
+<span id="L299"><span class="lineNum">     299</span>              :                 children: [</span>
+<span id="L300"><span class="lineNum">     300</span>              :                   Expanded(child: ThemeHelper.emptyBox),</span>
+<span id="L301"><span class="lineNum">     301</span>              :                   BudgetForecastChart(),</span>
+<span id="L302"><span class="lineNum">     302</span>              :                   ThemeHelper.hIndent6x,</span>
+<span id="L303"><span class="lineNum">     303</span>              :                 ],</span>
+<span id="L304"><span class="lineNum">     304</span>              :               ),</span>
+<span id="L305"><span class="lineNum">     305</span>              :             ),</span>
+<span id="L306"><span class="lineNum">     306</span> <span class="tlaUNC">           0 :         () =&gt; const Expanded(</span></span>
+<span id="L307"><span class="lineNum">     307</span>              :               child: Column(</span>
+<span id="L308"><span class="lineNum">     308</span>              :                 children: [</span>
+<span id="L309"><span class="lineNum">     309</span>              :                   Expanded(child: ThemeHelper.emptyBox),</span>
+<span id="L310"><span class="lineNum">     310</span>              :                   BillYtdChart(),</span>
+<span id="L311"><span class="lineNum">     311</span>              :                   ThemeHelper.hIndent6x,</span>
+<span id="L312"><span class="lineNum">     312</span>              :                 ],</span>
+<span id="L313"><span class="lineNum">     313</span>              :               ),</span>
+<span id="L314"><span class="lineNum">     314</span>              :             ),</span>
+<span id="L315"><span class="lineNum">     315</span> <span class="tlaUNC">           0 :         () =&gt; const Expanded(</span></span>
+<span id="L316"><span class="lineNum">     316</span>              :               child: ComponentRecent({'type': ComponentRecentType.invoice, 'count': 7}),</span>
+<span id="L317"><span class="lineNum">     317</span>              :             ),</span>
+<span id="L318"><span class="lineNum">     318</span>              :       ],</span>
+<span id="L319"><span class="lineNum">     319</span>              :     );</span>
+<span id="L320"><span class="lineNum">     320</span>              :   }</span>
+<span id="L321"><span class="lineNum">     321</span>              : }</span>
         </pre>
               </td>
             </tr>

@@ -70,6 +70,9 @@ Bu, istifadəçilərə heç kimin geridə qalmamasını təmin etməklə öz mal
 - Excel `XLSX` faylına ixrac edin
 - Məlumatların şifrələnməsi
 - Lokallaşdırma
+- Təhlükəsizlik
+  - Tək istifadəlik şifrə kodu ilə qoruma
+  - Bərpa kodu
 - İstifadəçi təcrübəsi
   - Konfiqurasiya edilə bilən Əsas Səhifə ("en x hündürlük" dəsti üçün birdən çox konfiqurasiya)
   - Cavab verən və Uyğunlaşan Dizayn

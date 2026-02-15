@@ -70,6 +70,9 @@ Dzięki temu użytkownicy mogą bez wysiłku zarządzać swoimi finansami, jedno
 - Eksport do pliku Excel `XLSX`
 - Szyfrowanie danych
 - Lokalizacja
+- Bezpieczeństwo
+  - Ochrona za pomocą jednorazowego kodu hasła
+  - Kod odzyskiwania
 - Doświadczenie użytkownika
   - Konfigurowalna strona główna (wiele konfiguracji na zestaw `szerokość x wysokość`)
   - Responsywny i adaptacyjny design

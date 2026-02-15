@@ -32,12 +32,12 @@
             <td></td>
             <td class="headerItem">Lines:</td>
             <td class="headerCovTableEntryLo">0.0&nbsp;%</td>
-            <td class="headerCovTableEntry">348</td>
+            <td class="headerCovTableEntry">358</td>
             <td class="headerCovTableEntry">0</td>
           </tr>
           <tr>
             <td class="headerItem">Test Date:</td>
-            <td class="headerValue">2026-02-13 09:44:38</td>
+            <td class="headerValue">2026-02-15 18:30:27</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntryHi">-</td>
@@ -506,593 +506,623 @@
 <span id="L444"><span class="lineNum">     444</span>              :   String get daySunday =&gt; 'Pazar';</span>
 <span id="L445"><span class="lineNum">     445</span>              : </span>
 <span id="L446"><span class="lineNum">     446</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L447"><span class="lineNum">     447</span>              :   String get debitCard =&gt; 'Banka Kartı';</span>
+<span id="L447"><span class="lineNum">     447</span>              :   String get deactivateAction =&gt; 'Parola Korumasını devre dışı bırak';</span>
 <span id="L448"><span class="lineNum">     448</span>              : </span>
 <span id="L449"><span class="lineNum">     449</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L450"><span class="lineNum">     450</span>              :   String def(Object value) {</span>
-<span id="L451"><span class="lineNum">     451</span> <span class="tlaUNC">           0 :     return '\'$value\' için Varsayılan Değer';</span></span>
-<span id="L452"><span class="lineNum">     452</span>              :   }</span>
-<span id="L453"><span class="lineNum">     453</span>              : </span>
-<span id="L454"><span class="lineNum">     454</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L455"><span class="lineNum">     455</span>              :   String get deleteAccountTooltip =&gt; 'Hesabı Devre Dışı Bırak';</span>
+<span id="L450"><span class="lineNum">     450</span>              :   String get debitCard =&gt; 'Banka Kartı';</span>
+<span id="L451"><span class="lineNum">     451</span>              : </span>
+<span id="L452"><span class="lineNum">     452</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L453"><span class="lineNum">     453</span>              :   String def(Object value) {</span>
+<span id="L454"><span class="lineNum">     454</span> <span class="tlaUNC">           0 :     return '\'$value\' için Varsayılan Değer';</span></span>
+<span id="L455"><span class="lineNum">     455</span>              :   }</span>
 <span id="L456"><span class="lineNum">     456</span>              : </span>
 <span id="L457"><span class="lineNum">     457</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L458"><span class="lineNum">     458</span>              :   String get deleteBillTooltip =&gt; 'Faturayı Sil';</span>
+<span id="L458"><span class="lineNum">     458</span>              :   String get deleteAccountTooltip =&gt; 'Hesabı Devre Dışı Bırak';</span>
 <span id="L459"><span class="lineNum">     459</span>              : </span>
 <span id="L460"><span class="lineNum">     460</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L461"><span class="lineNum">     461</span>              :   String get deleteBudgetTooltip =&gt; 'Bütçe Kategorisini Devre Dışı Bırak';</span>
+<span id="L461"><span class="lineNum">     461</span>              :   String get deleteBillTooltip =&gt; 'Faturayı Sil';</span>
 <span id="L462"><span class="lineNum">     462</span>              : </span>
 <span id="L463"><span class="lineNum">     463</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L464"><span class="lineNum">     464</span>              :   String get deleteGoalTooltip =&gt; 'Hedefi Sil';</span>
+<span id="L464"><span class="lineNum">     464</span>              :   String get deleteBudgetTooltip =&gt; 'Bütçe Kategorisini Devre Dışı Bırak';</span>
 <span id="L465"><span class="lineNum">     465</span>              : </span>
 <span id="L466"><span class="lineNum">     466</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L467"><span class="lineNum">     467</span>              :   String get deleteInvoiceTooltip =&gt; 'Fatura Silme';</span>
+<span id="L467"><span class="lineNum">     467</span>              :   String get deleteGoalTooltip =&gt; 'Hedefi Sil';</span>
 <span id="L468"><span class="lineNum">     468</span>              : </span>
 <span id="L469"><span class="lineNum">     469</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L470"><span class="lineNum">     470</span>              :   String get deletePaymentTooltip =&gt; 'Ödeme Sil';</span>
+<span id="L470"><span class="lineNum">     470</span>              :   String get deleteInvoiceTooltip =&gt; 'Fatura Silme';</span>
 <span id="L471"><span class="lineNum">     471</span>              : </span>
 <span id="L472"><span class="lineNum">     472</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L473"><span class="lineNum">     473</span>              :   String get deleteTooltip =&gt; 'Silme';</span>
+<span id="L473"><span class="lineNum">     473</span>              :   String get deletePaymentTooltip =&gt; 'Ödeme Sil';</span>
 <span id="L474"><span class="lineNum">     474</span>              : </span>
 <span id="L475"><span class="lineNum">     475</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L476"><span class="lineNum">     476</span>              :   String get deleteTransferTooltip =&gt; 'Transfer Sil';</span>
+<span id="L476"><span class="lineNum">     476</span>              :   String get deleteTooltip =&gt; 'Silme';</span>
 <span id="L477"><span class="lineNum">     477</span>              : </span>
 <span id="L478"><span class="lineNum">     478</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L479"><span class="lineNum">     479</span>              :   String get deposit =&gt; 'Depozito';</span>
+<span id="L479"><span class="lineNum">     479</span>              :   String get deleteTransferTooltip =&gt; 'Transfer Sil';</span>
 <span id="L480"><span class="lineNum">     480</span>              : </span>
 <span id="L481"><span class="lineNum">     481</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L482"><span class="lineNum">     482</span>              :   String get description =&gt; 'Açıklama';</span>
+<span id="L482"><span class="lineNum">     482</span>              :   String get deposit =&gt; 'Depozito';</span>
 <span id="L483"><span class="lineNum">     483</span>              : </span>
 <span id="L484"><span class="lineNum">     484</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L485"><span class="lineNum">     485</span>              :   String get descriptionTooltip =&gt; 'Gider Ayrıntılarını Ayarla';</span>
+<span id="L485"><span class="lineNum">     485</span>              :   String get description =&gt; 'Açıklama';</span>
 <span id="L486"><span class="lineNum">     486</span>              : </span>
 <span id="L487"><span class="lineNum">     487</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L488"><span class="lineNum">     488</span>              :   String get design =&gt; 'Tasarım Modu (Kültüre Özel)';</span>
+<span id="L488"><span class="lineNum">     488</span>              :   String get descriptionTooltip =&gt; 'Gider Ayrıntılarını Ayarla';</span>
 <span id="L489"><span class="lineNum">     489</span>              : </span>
 <span id="L490"><span class="lineNum">     490</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L491"><span class="lineNum">     491</span>              :   String get designAsiaGeneral =&gt; 'Asya Genel';</span>
+<span id="L491"><span class="lineNum">     491</span>              :   String get design =&gt; 'Tasarım Modu (Kültüre Özel)';</span>
 <span id="L492"><span class="lineNum">     492</span>              : </span>
 <span id="L493"><span class="lineNum">     493</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L494"><span class="lineNum">     494</span>              :   String get designGermany =&gt; 'Almanya';</span>
+<span id="L494"><span class="lineNum">     494</span>              :   String get designAsiaGeneral =&gt; 'Asya Genel';</span>
 <span id="L495"><span class="lineNum">     495</span>              : </span>
 <span id="L496"><span class="lineNum">     496</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L497"><span class="lineNum">     497</span>              :   String get designGlobal =&gt; 'Küresel';</span>
+<span id="L497"><span class="lineNum">     497</span>              :   String get designGermany =&gt; 'Almanya';</span>
 <span id="L498"><span class="lineNum">     498</span>              : </span>
 <span id="L499"><span class="lineNum">     499</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L500"><span class="lineNum">     500</span>              :   String get designRtlGeneral =&gt; 'Right-to-Left Lettering';</span>
+<span id="L500"><span class="lineNum">     500</span>              :   String get designGlobal =&gt; 'Küresel';</span>
 <span id="L501"><span class="lineNum">     501</span>              : </span>
 <span id="L502"><span class="lineNum">     502</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L503"><span class="lineNum">     503</span>              :   String get details =&gt; 'Detaylar';</span>
+<span id="L503"><span class="lineNum">     503</span>              :   String get designRtlGeneral =&gt; 'Right-to-Left Lettering';</span>
 <span id="L504"><span class="lineNum">     504</span>              : </span>
 <span id="L505"><span class="lineNum">     505</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L506"><span class="lineNum">     506</span>              :   String get detailsTooltip =&gt; '****2345 - numaranın son 4 hanesi';</span>
+<span id="L506"><span class="lineNum">     506</span>              :   String get details =&gt; 'Detaylar';</span>
 <span id="L507"><span class="lineNum">     507</span>              : </span>
 <span id="L508"><span class="lineNum">     508</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L509"><span class="lineNum">     509</span>              :   String get dtAm =&gt; 'am';</span>
+<span id="L509"><span class="lineNum">     509</span>              :   String get detailsTooltip =&gt; '****2345 - numaranın son 4 hanesi';</span>
 <span id="L510"><span class="lineNum">     510</span>              : </span>
 <span id="L511"><span class="lineNum">     511</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L512"><span class="lineNum">     512</span>              :   String get dtAmPm =&gt; 'am/pm cinsinden saat (0~11)';</span>
+<span id="L512"><span class="lineNum">     512</span>              :   String get dtAm =&gt; 'am';</span>
 <span id="L513"><span class="lineNum">     513</span>              : </span>
 <span id="L514"><span class="lineNum">     514</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L515"><span class="lineNum">     515</span>              :   String get dtDay =&gt; 'ay içinde gün';</span>
+<span id="L515"><span class="lineNum">     515</span>              :   String get dtAmPm =&gt; 'am/pm cinsinden saat (0~11)';</span>
 <span id="L516"><span class="lineNum">     516</span>              : </span>
 <span id="L517"><span class="lineNum">     517</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L518"><span class="lineNum">     518</span>              :   String get dtEscape =&gt; 'metin için kaçış';</span>
+<span id="L518"><span class="lineNum">     518</span>              :   String get dtDay =&gt; 'ay içinde gün';</span>
 <span id="L519"><span class="lineNum">     519</span>              : </span>
 <span id="L520"><span class="lineNum">     520</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L521"><span class="lineNum">     521</span>              :   String get dtHalfHour =&gt; 'am/pm cinsinden saat (1~12)';</span>
+<span id="L521"><span class="lineNum">     521</span>              :   String get dtEscape =&gt; 'metin için kaçış';</span>
 <span id="L522"><span class="lineNum">     522</span>              : </span>
 <span id="L523"><span class="lineNum">     523</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L524"><span class="lineNum">     524</span>              :   String get dtHour =&gt; 'gün içindeki saat (0~23)';</span>
+<span id="L524"><span class="lineNum">     524</span>              :   String get dtHalfHour =&gt; 'am/pm cinsinden saat (1~12)';</span>
 <span id="L525"><span class="lineNum">     525</span>              : </span>
 <span id="L526"><span class="lineNum">     526</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L527"><span class="lineNum">     527</span>              :   String get dtMinute =&gt; 'saat içinde dakika';</span>
+<span id="L527"><span class="lineNum">     527</span>              :   String get dtHour =&gt; 'gün içindeki saat (0~23)';</span>
 <span id="L528"><span class="lineNum">     528</span>              : </span>
 <span id="L529"><span class="lineNum">     529</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L530"><span class="lineNum">     530</span>              :   String get dtMonth =&gt; 'yıl içinde ay';</span>
+<span id="L530"><span class="lineNum">     530</span>              :   String get dtMinute =&gt; 'saat içinde dakika';</span>
 <span id="L531"><span class="lineNum">     531</span>              : </span>
 <span id="L532"><span class="lineNum">     532</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L533"><span class="lineNum">     533</span>              :   String get dtNamedDay =&gt; 'haftanın günü';</span>
+<span id="L533"><span class="lineNum">     533</span>              :   String get dtMonth =&gt; 'yıl içinde ay';</span>
 <span id="L534"><span class="lineNum">     534</span>              : </span>
 <span id="L535"><span class="lineNum">     535</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L536"><span class="lineNum">     536</span>              :   String get dtPm =&gt; 'pm';</span>
+<span id="L536"><span class="lineNum">     536</span>              :   String get dtNamedDay =&gt; 'haftanın günü';</span>
 <span id="L537"><span class="lineNum">     537</span>              : </span>
 <span id="L538"><span class="lineNum">     538</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L539"><span class="lineNum">     539</span>              :   String get dtQuote =&gt; 'tek alıntı';</span>
+<span id="L539"><span class="lineNum">     539</span>              :   String get dtPm =&gt; 'pm';</span>
 <span id="L540"><span class="lineNum">     540</span>              : </span>
 <span id="L541"><span class="lineNum">     541</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L542"><span class="lineNum">     542</span>              :   String get dtSecond =&gt; 'dakika içinde saniye';</span>
+<span id="L542"><span class="lineNum">     542</span>              :   String get dtQuote =&gt; 'tek alıntı';</span>
 <span id="L543"><span class="lineNum">     543</span>              : </span>
 <span id="L544"><span class="lineNum">     544</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L545"><span class="lineNum">     545</span>              :   String get dtYear =&gt; 'yıl';</span>
+<span id="L545"><span class="lineNum">     545</span>              :   String get dtSecond =&gt; 'dakika içinde saniye';</span>
 <span id="L546"><span class="lineNum">     546</span>              : </span>
 <span id="L547"><span class="lineNum">     547</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L548"><span class="lineNum">     548</span>              :   String get editAccountHeader =&gt; 'Hesap Güncelleme';</span>
+<span id="L548"><span class="lineNum">     548</span>              :   String get dtYear =&gt; 'yıl';</span>
 <span id="L549"><span class="lineNum">     549</span>              : </span>
 <span id="L550"><span class="lineNum">     550</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L551"><span class="lineNum">     551</span>              :   String get editAccountTooltip =&gt; 'Hesabı Düzenle';</span>
+<span id="L551"><span class="lineNum">     551</span>              :   String get editAccountHeader =&gt; 'Hesap Güncelleme';</span>
 <span id="L552"><span class="lineNum">     552</span>              : </span>
 <span id="L553"><span class="lineNum">     553</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L554"><span class="lineNum">     554</span>              :   String get editBillHeader =&gt; 'Bill\'i Güncelle';</span>
+<span id="L554"><span class="lineNum">     554</span>              :   String get editAccountTooltip =&gt; 'Hesabı Düzenle';</span>
 <span id="L555"><span class="lineNum">     555</span>              : </span>
 <span id="L556"><span class="lineNum">     556</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L557"><span class="lineNum">     557</span>              :   String get editBillTooltip =&gt; 'Faturayı Düzenle';</span>
+<span id="L557"><span class="lineNum">     557</span>              :   String get editBillHeader =&gt; 'Bill\'i Güncelle';</span>
 <span id="L558"><span class="lineNum">     558</span>              : </span>
 <span id="L559"><span class="lineNum">     559</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L560"><span class="lineNum">     560</span>              :   String get editBudgetHeader =&gt; 'Bütçe Kategorisini Güncelle';</span>
+<span id="L560"><span class="lineNum">     560</span>              :   String get editBillTooltip =&gt; 'Faturayı Düzenle';</span>
 <span id="L561"><span class="lineNum">     561</span>              : </span>
 <span id="L562"><span class="lineNum">     562</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L563"><span class="lineNum">     563</span>              :   String get editBudgetTooltip =&gt; 'Bütçe Kategorisini Düzenle';</span>
+<span id="L563"><span class="lineNum">     563</span>              :   String get editBudgetHeader =&gt; 'Bütçe Kategorisini Güncelle';</span>
 <span id="L564"><span class="lineNum">     564</span>              : </span>
 <span id="L565"><span class="lineNum">     565</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L566"><span class="lineNum">     566</span>              :   String get editGoalHeader =&gt; 'Hedefi Güncelle';</span>
+<span id="L566"><span class="lineNum">     566</span>              :   String get editBudgetTooltip =&gt; 'Bütçe Kategorisini Düzenle';</span>
 <span id="L567"><span class="lineNum">     567</span>              : </span>
 <span id="L568"><span class="lineNum">     568</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L569"><span class="lineNum">     569</span>              :   String get editGoalTooltip =&gt; 'Hedefi Düzenle';</span>
+<span id="L569"><span class="lineNum">     569</span>              :   String get editGoalHeader =&gt; 'Hedefi Güncelle';</span>
 <span id="L570"><span class="lineNum">     570</span>              : </span>
 <span id="L571"><span class="lineNum">     571</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L572"><span class="lineNum">     572</span>              :   String get editInvoiceTooltip =&gt; 'Fatura Düzenle';</span>
+<span id="L572"><span class="lineNum">     572</span>              :   String get editGoalTooltip =&gt; 'Hedefi Düzenle';</span>
 <span id="L573"><span class="lineNum">     573</span>              : </span>
 <span id="L574"><span class="lineNum">     574</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L575"><span class="lineNum">     575</span>              :   String get editPaymentTooltip =&gt; 'Ödeme Düzenle';</span>
+<span id="L575"><span class="lineNum">     575</span>              :   String get editInvoiceTooltip =&gt; 'Fatura Düzenle';</span>
 <span id="L576"><span class="lineNum">     576</span>              : </span>
 <span id="L577"><span class="lineNum">     577</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L578"><span class="lineNum">     578</span>              :   String get editTooltip =&gt; 'Düzenle';</span>
+<span id="L578"><span class="lineNum">     578</span>              :   String get editPaymentTooltip =&gt; 'Ödeme Düzenle';</span>
 <span id="L579"><span class="lineNum">     579</span>              : </span>
 <span id="L580"><span class="lineNum">     580</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L581"><span class="lineNum">     581</span>              :   String get editTransferTooltip =&gt; 'Aktarımı Düzenle';</span>
+<span id="L581"><span class="lineNum">     581</span>              :   String get editTooltip =&gt; 'Düzenle';</span>
 <span id="L582"><span class="lineNum">     582</span>              : </span>
 <span id="L583"><span class="lineNum">     583</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L584"><span class="lineNum">     584</span>              :   String get encryptionMode =&gt; 'Veri Şifreleme';</span>
+<span id="L584"><span class="lineNum">     584</span>              :   String get editTransferTooltip =&gt; 'Aktarımı Düzenle';</span>
 <span id="L585"><span class="lineNum">     585</span>              : </span>
 <span id="L586"><span class="lineNum">     586</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L587"><span class="lineNum">     587</span>              :   String error(Object value) {</span>
-<span id="L588"><span class="lineNum">     588</span> <span class="tlaUNC">           0 :     return 'Hata: $value';</span></span>
-<span id="L589"><span class="lineNum">     589</span>              :   }</span>
-<span id="L590"><span class="lineNum">     590</span>              : </span>
-<span id="L591"><span class="lineNum">     591</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L592"><span class="lineNum">     592</span>              :   String get errorExpired =&gt; 'Kartın süresi doldu';</span>
+<span id="L587"><span class="lineNum">     587</span>              :   String get encryptionMode =&gt; 'Veri Şifreleme';</span>
+<span id="L588"><span class="lineNum">     588</span>              : </span>
+<span id="L589"><span class="lineNum">     589</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L590"><span class="lineNum">     590</span>              :   String error(Object value) {</span>
+<span id="L591"><span class="lineNum">     591</span> <span class="tlaUNC">           0 :     return 'Hata: $value';</span></span>
+<span id="L592"><span class="lineNum">     592</span>              :   }</span>
 <span id="L593"><span class="lineNum">     593</span>              : </span>
 <span id="L594"><span class="lineNum">     594</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L595"><span class="lineNum">     595</span>              :   String get errorNegative =&gt; 'Olumsuz olamaz! Lütfen hatayı düzeltin';</span>
+<span id="L595"><span class="lineNum">     595</span>              :   String get errorExpired =&gt; 'Kartın süresi doldu';</span>
 <span id="L596"><span class="lineNum">     596</span>              : </span>
 <span id="L597"><span class="lineNum">     597</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L598"><span class="lineNum">     598</span>              :   String get example =&gt; 'Örnek';</span>
+<span id="L598"><span class="lineNum">     598</span>              :   String get errorNegative =&gt; 'Olumsuz olamaz! Lütfen hatayı düzeltin';</span>
 <span id="L599"><span class="lineNum">     599</span>              : </span>
 <span id="L600"><span class="lineNum">     600</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L601"><span class="lineNum">     601</span>              :   String get expand =&gt; 'Bölümü Genişlet';</span>
+<span id="L601"><span class="lineNum">     601</span>              :   String get example =&gt; 'Örnek';</span>
 <span id="L602"><span class="lineNum">     602</span>              : </span>
 <span id="L603"><span class="lineNum">     603</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L604"><span class="lineNum">     604</span>              :   String get expense =&gt; 'Harcama Tutarı';</span>
+<span id="L604"><span class="lineNum">     604</span>              :   String get expand =&gt; 'Bölümü Genişlet';</span>
 <span id="L605"><span class="lineNum">     605</span>              : </span>
 <span id="L606"><span class="lineNum">     606</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L607"><span class="lineNum">     607</span>              :   String get expenseDateTime =&gt; 'Faturalandırma';</span>
+<span id="L607"><span class="lineNum">     607</span>              :   String get expense =&gt; 'Harcama Tutarı';</span>
 <span id="L608"><span class="lineNum">     608</span>              : </span>
 <span id="L609"><span class="lineNum">     609</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L610"><span class="lineNum">     610</span>              :   String get expenseHeadline =&gt; 'Giderler';</span>
+<span id="L610"><span class="lineNum">     610</span>              :   String get expenseDateTime =&gt; 'Faturalandırma';</span>
 <span id="L611"><span class="lineNum">     611</span>              : </span>
 <span id="L612"><span class="lineNum">     612</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L613"><span class="lineNum">     613</span>              :   String get expenseTransfer =&gt; 'Transfer Tutarı';</span>
+<span id="L613"><span class="lineNum">     613</span>              :   String get expenseHeadline =&gt; 'Giderler';</span>
 <span id="L614"><span class="lineNum">     614</span>              : </span>
 <span id="L615"><span class="lineNum">     615</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L616"><span class="lineNum">     616</span>              :   String exportFile(Object value) {</span>
-<span id="L617"><span class="lineNum">     617</span> <span class="tlaUNC">           0 :     return '.$value dosyası olarak dışa aktar';</span></span>
-<span id="L618"><span class="lineNum">     618</span>              :   }</span>
-<span id="L619"><span class="lineNum">     619</span>              : </span>
-<span id="L620"><span class="lineNum">     620</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L621"><span class="lineNum">     621</span>              :   String get failData =&gt; 'Tutar Kesintisi';</span>
+<span id="L616"><span class="lineNum">     616</span>              :   String get expenseTransfer =&gt; 'Transfer Tutarı';</span>
+<span id="L617"><span class="lineNum">     617</span>              : </span>
+<span id="L618"><span class="lineNum">     618</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L619"><span class="lineNum">     619</span>              :   String exportFile(Object value) {</span>
+<span id="L620"><span class="lineNum">     620</span> <span class="tlaUNC">           0 :     return '.$value dosyası olarak dışa aktar';</span></span>
+<span id="L621"><span class="lineNum">     621</span>              :   }</span>
 <span id="L622"><span class="lineNum">     622</span>              : </span>
 <span id="L623"><span class="lineNum">     623</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L624"><span class="lineNum">     624</span>              :   String get flowTypeInvoice =&gt; 'Invoice';</span>
+<span id="L624"><span class="lineNum">     624</span>              :   String get failData =&gt; 'Tutar Kesintisi';</span>
 <span id="L625"><span class="lineNum">     625</span>              : </span>
 <span id="L626"><span class="lineNum">     626</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L627"><span class="lineNum">     627</span>              :   String get flowTypeTooltip =&gt; 'Tutar Türü: Fatura, Fatura';</span>
+<span id="L627"><span class="lineNum">     627</span>              :   String get flowTypeInvoice =&gt; 'Invoice';</span>
 <span id="L628"><span class="lineNum">     628</span>              : </span>
 <span id="L629"><span class="lineNum">     629</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L630"><span class="lineNum">     630</span>              :   String get forecastData =&gt; 'Tahmin';</span>
+<span id="L630"><span class="lineNum">     630</span>              :   String get flowTypeTooltip =&gt; 'Tutar Türü: Fatura, Fatura';</span>
 <span id="L631"><span class="lineNum">     631</span>              : </span>
 <span id="L632"><span class="lineNum">     632</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L633"><span class="lineNum">     633</span>              :   String get from =&gt; 'gelen';</span>
+<span id="L633"><span class="lineNum">     633</span>              :   String get forecastData =&gt; 'Tahmin';</span>
 <span id="L634"><span class="lineNum">     634</span>              : </span>
 <span id="L635"><span class="lineNum">     635</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L636"><span class="lineNum">     636</span>              :   String get goNextTooltip =&gt; 'Sonraki';</span>
+<span id="L636"><span class="lineNum">     636</span>              :   String get from =&gt; 'gelen';</span>
 <span id="L637"><span class="lineNum">     637</span>              : </span>
 <span id="L638"><span class="lineNum">     638</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L639"><span class="lineNum">     639</span>              :   String get goalHeadline =&gt; 'Hedefler';</span>
+<span id="L639"><span class="lineNum">     639</span>              :   String get goNextTooltip =&gt; 'Sonraki';</span>
 <span id="L640"><span class="lineNum">     640</span>              : </span>
 <span id="L641"><span class="lineNum">     641</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L642"><span class="lineNum">     642</span>              :   String goalProfit(Object value) {</span>
-<span id="L643"><span class="lineNum">     643</span> <span class="tlaUNC">           0 :     return 'Hedefler Hedef: $value';</span></span>
-<span id="L644"><span class="lineNum">     644</span>              :   }</span>
-<span id="L645"><span class="lineNum">     645</span>              : </span>
-<span id="L646"><span class="lineNum">     646</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L647"><span class="lineNum">     647</span>              :   String get goalProfitTooltip =&gt; 'Hedeflere Karşı Kâr';</span>
+<span id="L642"><span class="lineNum">     642</span>              :   String get goalHeadline =&gt; 'Hedefler';</span>
+<span id="L643"><span class="lineNum">     643</span>              : </span>
+<span id="L644"><span class="lineNum">     644</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L645"><span class="lineNum">     645</span>              :   String goalProfit(Object value) {</span>
+<span id="L646"><span class="lineNum">     646</span> <span class="tlaUNC">           0 :     return 'Hedefler Hedef: $value';</span></span>
+<span id="L647"><span class="lineNum">     647</span>              :   }</span>
 <span id="L648"><span class="lineNum">     648</span>              : </span>
 <span id="L649"><span class="lineNum">     649</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L650"><span class="lineNum">     650</span>              :   String get goalTooltip =&gt; 'Açık Hedefler';</span>
+<span id="L650"><span class="lineNum">     650</span>              :   String get goalProfitTooltip =&gt; 'Hedeflere Karşı Kâr';</span>
 <span id="L651"><span class="lineNum">     651</span>              : </span>
 <span id="L652"><span class="lineNum">     652</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L653"><span class="lineNum">     653</span>              :   String get hasEncrypted =&gt; 'Ayarlandıktan sonra değiştirilemez';</span>
+<span id="L653"><span class="lineNum">     653</span>              :   String get goalTooltip =&gt; 'Açık Hedefler';</span>
 <span id="L654"><span class="lineNum">     654</span>              : </span>
 <span id="L655"><span class="lineNum">     655</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L656"><span class="lineNum">     656</span>              :   String get helpTooltip =&gt; '[Yardım] Bu Sayfanın Açıklamasını Göster';</span>
+<span id="L656"><span class="lineNum">     656</span>              :   String get hasEncrypted =&gt; 'Ayarlandıktan sonra değiştirilemez';</span>
 <span id="L657"><span class="lineNum">     657</span>              : </span>
 <span id="L658"><span class="lineNum">     658</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L659"><span class="lineNum">     659</span>              :   String get homeHeadline =&gt; 'Home';</span>
+<span id="L659"><span class="lineNum">     659</span>              :   String get helpTooltip =&gt; '[Yardım] Bu Sayfanın Açıklamasını Göster';</span>
 <span id="L660"><span class="lineNum">     660</span>              : </span>
 <span id="L661"><span class="lineNum">     661</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L662"><span class="lineNum">     662</span>              :   String get homeTooltip =&gt; 'Ana Sayfaya Geri Dön';</span>
+<span id="L662"><span class="lineNum">     662</span>              :   String get homeHeadline =&gt; 'Home';</span>
 <span id="L663"><span class="lineNum">     663</span>              : </span>
 <span id="L664"><span class="lineNum">     664</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L665"><span class="lineNum">     665</span>              :   String get icon =&gt; 'Simge';</span>
+<span id="L665"><span class="lineNum">     665</span>              :   String get homeTooltip =&gt; 'Ana Sayfaya Geri Dön';</span>
 <span id="L666"><span class="lineNum">     666</span>              : </span>
 <span id="L667"><span class="lineNum">     667</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L668"><span class="lineNum">     668</span>              :   String get iconTooltip =&gt; 'Simge Seçin';</span>
+<span id="L668"><span class="lineNum">     668</span>              :   String get icon =&gt; 'Simge';</span>
 <span id="L669"><span class="lineNum">     669</span>              : </span>
 <span id="L670"><span class="lineNum">     670</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L671"><span class="lineNum">     671</span>              :   String get ignoreTooltip =&gt; 'Görmezden gel';</span>
+<span id="L671"><span class="lineNum">     671</span>              :   String get iconTooltip =&gt; 'Simge Seçin';</span>
 <span id="L672"><span class="lineNum">     672</span>              : </span>
 <span id="L673"><span class="lineNum">     673</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L674"><span class="lineNum">     674</span>              :   String get importHeadline =&gt; 'İthalat / İhracat';</span>
+<span id="L674"><span class="lineNum">     674</span>              :   String get ignoreTooltip =&gt; 'Görmezden gel';</span>
 <span id="L675"><span class="lineNum">     675</span>              : </span>
 <span id="L676"><span class="lineNum">     676</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L677"><span class="lineNum">     677</span>              :   String get income =&gt; 'Gelir Miktarı';</span>
+<span id="L677"><span class="lineNum">     677</span>              :   String get importHeadline =&gt; 'İthalat / İhracat';</span>
 <span id="L678"><span class="lineNum">     678</span>              : </span>
 <span id="L679"><span class="lineNum">     679</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L680"><span class="lineNum">     680</span>              :   String get incomeHeadline =&gt; 'Gelir';</span>
+<span id="L680"><span class="lineNum">     680</span>              :   String get income =&gt; 'Gelir Miktarı';</span>
 <span id="L681"><span class="lineNum">     681</span>              : </span>
 <span id="L682"><span class="lineNum">     682</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L683"><span class="lineNum">     683</span>              :   String get incomeHealth =&gt; 'Gelir Sağlığı Radarı';</span>
+<span id="L683"><span class="lineNum">     683</span>              :   String get incomeHeadline =&gt; 'Gelir';</span>
 <span id="L684"><span class="lineNum">     684</span>              : </span>
 <span id="L685"><span class="lineNum">     685</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L686"><span class="lineNum">     686</span>              :   String get incomeTooltip =&gt; 'Gelir Ayrıntılarını Ayarla';</span>
+<span id="L686"><span class="lineNum">     686</span>              :   String get incomeHealth =&gt; 'Gelir Sağlığı Radarı';</span>
 <span id="L687"><span class="lineNum">     687</span>              : </span>
 <span id="L688"><span class="lineNum">     688</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L689"><span class="lineNum">     689</span>              :   String get invoiceHeadline =&gt; 'Invoices';</span>
+<span id="L689"><span class="lineNum">     689</span>              :   String get incomeTooltip =&gt; 'Gelir Ayrıntılarını Ayarla';</span>
 <span id="L690"><span class="lineNum">     690</span>              : </span>
 <span id="L691"><span class="lineNum">     691</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L692"><span class="lineNum">     692</span>              :   String invoiceSum(Object value) {</span>
-<span id="L693"><span class="lineNum">     693</span> <span class="tlaUNC">           0 :     return 'Faturalar: $value';</span></span>
-<span id="L694"><span class="lineNum">     694</span>              :   }</span>
-<span id="L695"><span class="lineNum">     695</span>              : </span>
-<span id="L696"><span class="lineNum">     696</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L697"><span class="lineNum">     697</span>              :   String get isCleaned =&gt; 'Mevcut verileri kaldırın';</span>
+<span id="L692"><span class="lineNum">     692</span>              :   String get invoiceHeadline =&gt; 'Invoices';</span>
+<span id="L693"><span class="lineNum">     693</span>              : </span>
+<span id="L694"><span class="lineNum">     694</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L695"><span class="lineNum">     695</span>              :   String invoiceSum(Object value) {</span>
+<span id="L696"><span class="lineNum">     696</span> <span class="tlaUNC">           0 :     return 'Faturalar: $value';</span></span>
+<span id="L697"><span class="lineNum">     697</span>              :   }</span>
 <span id="L698"><span class="lineNum">     698</span>              : </span>
 <span id="L699"><span class="lineNum">     699</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L700"><span class="lineNum">     700</span>              :   String get isCreated =&gt; 'Zaten oluşturuldu, sonraki adımları izleyin!';</span>
+<span id="L700"><span class="lineNum">     700</span>              :   String get isCleaned =&gt; 'Mevcut verileri kaldırın';</span>
 <span id="L701"><span class="lineNum">     701</span>              : </span>
 <span id="L702"><span class="lineNum">     702</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L703"><span class="lineNum">     703</span>              :   String get isEncrypted =&gt; 'Dosya şifrelenmiştir (varsayılan olarak)';</span>
+<span id="L703"><span class="lineNum">     703</span>              :   String get isCreated =&gt; 'Zaten oluşturuldu, sonraki adımları izleyin!';</span>
 <span id="L704"><span class="lineNum">     704</span>              : </span>
 <span id="L705"><span class="lineNum">     705</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L706"><span class="lineNum">     706</span>              :   String get isRequired =&gt; 'gerekli';</span>
+<span id="L706"><span class="lineNum">     706</span>              :   String get isEncrypted =&gt; 'Dosya şifrelenmiştir (varsayılan olarak)';</span>
 <span id="L707"><span class="lineNum">     707</span>              : </span>
 <span id="L708"><span class="lineNum">     708</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L709"><span class="lineNum">     709</span>              :   String get language =&gt; 'Language';</span>
+<span id="L709"><span class="lineNum">     709</span>              :   String get isRequired =&gt; 'gerekli';</span>
 <span id="L710"><span class="lineNum">     710</span>              : </span>
 <span id="L711"><span class="lineNum">     711</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L712"><span class="lineNum">     712</span>              :   String get left =&gt; 'Sol';</span>
+<span id="L712"><span class="lineNum">     712</span>              :   String get language =&gt; 'Language';</span>
 <span id="L713"><span class="lineNum">     713</span>              : </span>
 <span id="L714"><span class="lineNum">     714</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L715"><span class="lineNum">     715</span>              :   String get lightMode =&gt; 'Işık';</span>
+<span id="L715"><span class="lineNum">     715</span>              :   String get left =&gt; 'Sol';</span>
 <span id="L716"><span class="lineNum">     716</span>              : </span>
 <span id="L717"><span class="lineNum">     717</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L718"><span class="lineNum">     718</span>              :   String get link =&gt; 'Tekdüzen Kaynak Konum Belirleyici (URL)';</span>
+<span id="L718"><span class="lineNum">     718</span>              :   String get lightMode =&gt; 'Işık';</span>
 <span id="L719"><span class="lineNum">     719</span>              : </span>
 <span id="L720"><span class="lineNum">     720</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L721"><span class="lineNum">     721</span>              :   String get meaning =&gt; 'Anlamı';</span>
+<span id="L721"><span class="lineNum">     721</span>              :   String get link =&gt; 'Tekdüzen Kaynak Konum Belirleyici (URL)';</span>
 <span id="L722"><span class="lineNum">     722</span>              : </span>
 <span id="L723"><span class="lineNum">     723</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L724"><span class="lineNum">     724</span>              :   String get metricsHeadline =&gt; 'Metrikler';</span>
+<span id="L724"><span class="lineNum">     724</span>              :   String get meaning =&gt; 'Anlamı';</span>
 <span id="L725"><span class="lineNum">     725</span>              : </span>
 <span id="L726"><span class="lineNum">     726</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L727"><span class="lineNum">     727</span>              :   String get metricsTooltip =&gt; 'Metrikler';</span>
+<span id="L727"><span class="lineNum">     727</span>              :   String get metricsHeadline =&gt; 'Metrikler';</span>
 <span id="L728"><span class="lineNum">     728</span>              : </span>
 <span id="L729"><span class="lineNum">     729</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L730"><span class="lineNum">     730</span>              :   String get milestones =&gt; 'Kilometre Taşları';</span>
+<span id="L730"><span class="lineNum">     730</span>              :   String get metricsTooltip =&gt; 'Metrikler';</span>
 <span id="L731"><span class="lineNum">     731</span>              : </span>
 <span id="L732"><span class="lineNum">     732</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L733"><span class="lineNum">     733</span>              :   String get missingContent =&gt; 'Dosya işlenemiyor (ya iptal edildi)';</span>
+<span id="L733"><span class="lineNum">     733</span>              :   String get milestones =&gt; 'Kilometre Taşları';</span>
 <span id="L734"><span class="lineNum">     734</span>              : </span>
 <span id="L735"><span class="lineNum">     735</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L736"><span class="lineNum">     736</span>              :   String get navigationTooltip =&gt; 'Ana menüyü açın';</span>
+<span id="L736"><span class="lineNum">     736</span>              :   String get missingContent =&gt; 'Dosya işlenemiyor (ya iptal edildi)';</span>
 <span id="L737"><span class="lineNum">     737</span>              : </span>
 <span id="L738"><span class="lineNum">     738</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L739"><span class="lineNum">     739</span>              :   String netProfit(Object value) {</span>
-<span id="L740"><span class="lineNum">     740</span> <span class="tlaUNC">           0 :     return 'Kâr: $value';</span></span>
-<span id="L741"><span class="lineNum">     741</span>              :   }</span>
-<span id="L742"><span class="lineNum">     742</span>              : </span>
-<span id="L743"><span class="lineNum">     743</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L744"><span class="lineNum">     744</span>              :   String get noChartData =&gt; 'Gösterilecek veri eksik (veya yeterli değil)';</span>
+<span id="L739"><span class="lineNum">     739</span>              :   String get navigationTooltip =&gt; 'Ana menüyü açın';</span>
+<span id="L740"><span class="lineNum">     740</span>              : </span>
+<span id="L741"><span class="lineNum">     741</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L742"><span class="lineNum">     742</span>              :   String netProfit(Object value) {</span>
+<span id="L743"><span class="lineNum">     743</span> <span class="tlaUNC">           0 :     return 'Kâr: $value';</span></span>
+<span id="L744"><span class="lineNum">     744</span>              :   }</span>
 <span id="L745"><span class="lineNum">     745</span>              : </span>
 <span id="L746"><span class="lineNum">     746</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L747"><span class="lineNum">     747</span>              :   String get notifyHeadline =&gt; 'Bildirim Ayrıştırıcı';</span>
+<span id="L747"><span class="lineNum">     747</span>              :   String get noChartData =&gt; 'Gösterilecek veri eksik (veya yeterli değil)';</span>
 <span id="L748"><span class="lineNum">     748</span>              : </span>
 <span id="L749"><span class="lineNum">     749</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L750"><span class="lineNum">     750</span>              :   String get ok =&gt; 'TAMAM.';</span>
+<span id="L750"><span class="lineNum">     750</span>              :   String get notifyHeadline =&gt; 'Bildirim Ayrıştırıcı';</span>
 <span id="L751"><span class="lineNum">     751</span>              : </span>
 <span id="L752"><span class="lineNum">     752</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L753"><span class="lineNum">     753</span>              :   String get orderPin =&gt; 'Önceliklendirilmiş sıra';</span>
+<span id="L753"><span class="lineNum">     753</span>              :   String get ok =&gt; 'TAMAM.';</span>
 <span id="L754"><span class="lineNum">     754</span>              : </span>
 <span id="L755"><span class="lineNum">     755</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L756"><span class="lineNum">     756</span>              :   String get orderUnpin =&gt; 'Genelleştirilmiş düzen';</span>
+<span id="L756"><span class="lineNum">     756</span>              :   String get orderPin =&gt; 'Önceliklendirilmiş sıra';</span>
 <span id="L757"><span class="lineNum">     757</span>              : </span>
 <span id="L758"><span class="lineNum">     758</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L759"><span class="lineNum">     759</span>              :   String get outputFile =&gt; 'Dosya için hedef';</span>
+<span id="L759"><span class="lineNum">     759</span>              :   String get orderUnpin =&gt; 'Genelleştirilmiş düzen';</span>
 <span id="L760"><span class="lineNum">     760</span>              : </span>
 <span id="L761"><span class="lineNum">     761</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L762"><span class="lineNum">     762</span>              :   String get parseFile =&gt; 'Dosyayı Ayrıştırma';</span>
+<span id="L762"><span class="lineNum">     762</span>              :   String get outputFile =&gt; 'Dosya için hedef';</span>
 <span id="L763"><span class="lineNum">     763</span>              : </span>
 <span id="L764"><span class="lineNum">     764</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L765"><span class="lineNum">     765</span>              :   String get password =&gt; 'Şifre';</span>
+<span id="L765"><span class="lineNum">     765</span>              :   String get parseFile =&gt; 'Dosyayı Ayrıştırma';</span>
 <span id="L766"><span class="lineNum">     766</span>              : </span>
 <span id="L767"><span class="lineNum">     767</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L768"><span class="lineNum">     768</span>              :   String get path =&gt; 'Dosya Adı (içine kaydetmek veya içinden yüklemek için)';</span>
+<span id="L768"><span class="lineNum">     768</span>              :   String get password =&gt; 'Şifre';</span>
 <span id="L769"><span class="lineNum">     769</span>              : </span>
 <span id="L770"><span class="lineNum">     770</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L771"><span class="lineNum">     771</span>              :   String get paymentType =&gt; 'Ödeme Aralığı';</span>
+<span id="L771"><span class="lineNum">     771</span>              :   String get path =&gt; 'Dosya Adı (içine kaydetmek veya içinden yüklemek için)';</span>
 <span id="L772"><span class="lineNum">     772</span>              : </span>
 <span id="L773"><span class="lineNum">     773</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L774"><span class="lineNum">     774</span>              :   String get paymentsHeadline =&gt; 'Yinelenen Ödemeler';</span>
+<span id="L774"><span class="lineNum">     774</span>              :   String get paymentType =&gt; 'Ödeme Aralığı';</span>
 <span id="L775"><span class="lineNum">     775</span>              : </span>
 <span id="L776"><span class="lineNum">     776</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L777"><span class="lineNum">     777</span>              :   String get pearDisabled =&gt; '-- devre dışı --';</span>
+<span id="L777"><span class="lineNum">     777</span>              :   String get paymentsHeadline =&gt; 'Yinelenen Ödemeler';</span>
 <span id="L778"><span class="lineNum">     778</span>              : </span>
 <span id="L779"><span class="lineNum">     779</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L780"><span class="lineNum">     780</span>              :   String get pearLoading =&gt; 'Devam Ediyor...';</span>
+<span id="L780"><span class="lineNum">     780</span>              :   String get pearDisabled =&gt; '-- devre dışı --';</span>
 <span id="L781"><span class="lineNum">     781</span>              : </span>
 <span id="L782"><span class="lineNum">     782</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L783"><span class="lineNum">     783</span>              :   String get peerAccept =&gt; 'kabul et';</span>
+<span id="L783"><span class="lineNum">     783</span>              :   String get pearLoading =&gt; 'Devam Ediyor...';</span>
 <span id="L784"><span class="lineNum">     784</span>              : </span>
 <span id="L785"><span class="lineNum">     785</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L786"><span class="lineNum">     786</span>              :   String get peerAction =&gt; 'Eylem';</span>
+<span id="L786"><span class="lineNum">     786</span>              :   String get peerAccept =&gt; 'kabul et';</span>
 <span id="L787"><span class="lineNum">     787</span>              : </span>
 <span id="L788"><span class="lineNum">     788</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L789"><span class="lineNum">     789</span>              :   String get peerClosed =&gt; 'sonlandırıldı';</span>
+<span id="L789"><span class="lineNum">     789</span>              :   String get peerAction =&gt; 'Eylem';</span>
 <span id="L790"><span class="lineNum">     790</span>              : </span>
 <span id="L791"><span class="lineNum">     791</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L792"><span class="lineNum">     792</span>              :   String get peerConnect =&gt; 'Cihazı Bağlayın';</span>
+<span id="L792"><span class="lineNum">     792</span>              :   String get peerClosed =&gt; 'sonlandırıldı';</span>
 <span id="L793"><span class="lineNum">     793</span>              : </span>
 <span id="L794"><span class="lineNum">     794</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L795"><span class="lineNum">     795</span>              :   String get peerConnectBtn =&gt; 'bağlanmak';</span>
+<span id="L795"><span class="lineNum">     795</span>              :   String get peerConnect =&gt; 'Cihazı Bağlayın';</span>
 <span id="L796"><span class="lineNum">     796</span>              : </span>
 <span id="L797"><span class="lineNum">     797</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L798"><span class="lineNum">     798</span>              :   String get peerDelete =&gt; 'silme';</span>
+<span id="L798"><span class="lineNum">     798</span>              :   String get peerConnectBtn =&gt; 'bağlanmak';</span>
 <span id="L799"><span class="lineNum">     799</span>              : </span>
 <span id="L800"><span class="lineNum">     800</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L801"><span class="lineNum">     801</span>              :   String get peerDevice =&gt; 'Bağlantılı Cihazlar';</span>
+<span id="L801"><span class="lineNum">     801</span>              :   String get peerDelete =&gt; 'silme';</span>
 <span id="L802"><span class="lineNum">     802</span>              : </span>
 <span id="L803"><span class="lineNum">     803</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L804"><span class="lineNum">     804</span>              :   String get peerId =&gt; 'Bağlantı için Cihaz Tanımlayıcınız';</span>
+<span id="L804"><span class="lineNum">     804</span>              :   String get peerDevice =&gt; 'Bağlantılı Cihazlar';</span>
 <span id="L805"><span class="lineNum">     805</span>              : </span>
 <span id="L806"><span class="lineNum">     806</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L807"><span class="lineNum">     807</span>              :   String get peerOffline =&gt; 'çevrimdışı';</span>
+<span id="L807"><span class="lineNum">     807</span>              :   String get peerId =&gt; 'Bağlantı için Cihaz Tanımlayıcınız';</span>
 <span id="L808"><span class="lineNum">     808</span>              : </span>
 <span id="L809"><span class="lineNum">     809</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L810"><span class="lineNum">     810</span>              :   String get peerOnline =&gt; 'bağlı';</span>
+<span id="L810"><span class="lineNum">     810</span>              :   String get peerOffline =&gt; 'çevrimdışı';</span>
 <span id="L811"><span class="lineNum">     811</span>              : </span>
 <span id="L812"><span class="lineNum">     812</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L813"><span class="lineNum">     813</span>              :   String get peerOtherId =&gt; 'Bağlantı için Cihaz Tanımlayıcısı';</span>
+<span id="L813"><span class="lineNum">     813</span>              :   String get peerOnline =&gt; 'bağlı';</span>
 <span id="L814"><span class="lineNum">     814</span>              : </span>
 <span id="L815"><span class="lineNum">     815</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L816"><span class="lineNum">     816</span>              :   String get peerPending =&gt; 'beklemede';</span>
+<span id="L816"><span class="lineNum">     816</span>              :   String get peerOtherId =&gt; 'Bağlantı için Cihaz Tanımlayıcısı';</span>
 <span id="L817"><span class="lineNum">     817</span>              : </span>
 <span id="L818"><span class="lineNum">     818</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L819"><span class="lineNum">     819</span>              :   String get peerPing =&gt; 'ping';</span>
+<span id="L819"><span class="lineNum">     819</span>              :   String get peerPending =&gt; 'beklemede';</span>
 <span id="L820"><span class="lineNum">     820</span>              : </span>
 <span id="L821"><span class="lineNum">     821</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L822"><span class="lineNum">     822</span>              :   String get peerSent =&gt; 'Veriler bağlı Cihazlara aktarılır';</span>
+<span id="L822"><span class="lineNum">     822</span>              :   String get peerPing =&gt; 'ping';</span>
 <span id="L823"><span class="lineNum">     823</span>              : </span>
 <span id="L824"><span class="lineNum">     824</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L825"><span class="lineNum">     825</span>              :   String get peerStatus =&gt; 'Durum';</span>
+<span id="L825"><span class="lineNum">     825</span>              :   String get peerSent =&gt; 'Veriler bağlı Cihazlara aktarılır';</span>
 <span id="L826"><span class="lineNum">     826</span>              : </span>
 <span id="L827"><span class="lineNum">     827</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L828"><span class="lineNum">     828</span>              :   String get peerSync =&gt; 'Veri Aktarımı';</span>
+<span id="L828"><span class="lineNum">     828</span>              :   String get peerStatus =&gt; 'Durum';</span>
 <span id="L829"><span class="lineNum">     829</span>              : </span>
 <span id="L830"><span class="lineNum">     830</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L831"><span class="lineNum">     831</span>              :   String pickFile(Object value) {</span>
-<span id="L832"><span class="lineNum">     832</span> <span class="tlaUNC">           0 :     return '.$value-dosyasını seç';</span></span>
-<span id="L833"><span class="lineNum">     833</span>              :   }</span>
-<span id="L834"><span class="lineNum">     834</span>              : </span>
-<span id="L835"><span class="lineNum">     835</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L836"><span class="lineNum">     836</span>              :   String pongStatus(Object uuid) {</span>
-<span id="L837"><span class="lineNum">     837</span> <span class="tlaUNC">           0 :     return '$uuid adresinden istek alındı';</span></span>
-<span id="L838"><span class="lineNum">     838</span>              :   }</span>
-<span id="L839"><span class="lineNum">     839</span>              : </span>
-<span id="L840"><span class="lineNum">     840</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L841"><span class="lineNum">     841</span>              :   String get processIsFinished =&gt; 'Bitti!';</span>
+<span id="L831"><span class="lineNum">     831</span>              :   String get peerSync =&gt; 'Veri Aktarımı';</span>
+<span id="L832"><span class="lineNum">     832</span>              : </span>
+<span id="L833"><span class="lineNum">     833</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L834"><span class="lineNum">     834</span>              :   String pickFile(Object value) {</span>
+<span id="L835"><span class="lineNum">     835</span> <span class="tlaUNC">           0 :     return '.$value-dosyasını seç';</span></span>
+<span id="L836"><span class="lineNum">     836</span>              :   }</span>
+<span id="L837"><span class="lineNum">     837</span>              : </span>
+<span id="L838"><span class="lineNum">     838</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L839"><span class="lineNum">     839</span>              :   String pongStatus(Object uuid) {</span>
+<span id="L840"><span class="lineNum">     840</span> <span class="tlaUNC">           0 :     return '$uuid adresinden istek alındı';</span></span>
+<span id="L841"><span class="lineNum">     841</span>              :   }</span>
 <span id="L842"><span class="lineNum">     842</span>              : </span>
 <span id="L843"><span class="lineNum">     843</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L844"><span class="lineNum">     844</span>              :   String progress(Object value) {</span>
-<span id="L845"><span class="lineNum">     845</span> <span class="tlaUNC">           0 :     return 'İlerleme: $value%';</span></span>
-<span id="L846"><span class="lineNum">     846</span>              :   }</span>
-<span id="L847"><span class="lineNum">     847</span>              : </span>
-<span id="L848"><span class="lineNum">     848</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L849"><span class="lineNum">     849</span>              :   String get raiseData =&gt; 'Tutar İlave';</span>
+<span id="L844"><span class="lineNum">     844</span>              :   String get processIsFinished =&gt; 'Bitti!';</span>
+<span id="L845"><span class="lineNum">     845</span>              : </span>
+<span id="L846"><span class="lineNum">     846</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L847"><span class="lineNum">     847</span>              :   String progress(Object value) {</span>
+<span id="L848"><span class="lineNum">     848</span> <span class="tlaUNC">           0 :     return 'İlerleme: $value%';</span></span>
+<span id="L849"><span class="lineNum">     849</span>              :   }</span>
 <span id="L850"><span class="lineNum">     850</span>              : </span>
 <span id="L851"><span class="lineNum">     851</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L852"><span class="lineNum">     852</span>              :   String get recoveryHeadline =&gt; 'Kurtarma';</span>
+<span id="L852"><span class="lineNum">     852</span>              :   String get raiseData =&gt; 'Tutar İlave';</span>
 <span id="L853"><span class="lineNum">     853</span>              : </span>
 <span id="L854"><span class="lineNum">     854</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L855"><span class="lineNum">     855</span>              :   String get recoveryTooltip =&gt; 'Kurtarmak';</span>
+<span id="L855"><span class="lineNum">     855</span>              :   String get recoveryHeadline =&gt; 'Kurtarma';</span>
 <span id="L856"><span class="lineNum">     856</span>              : </span>
 <span id="L857"><span class="lineNum">     857</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L858"><span class="lineNum">     858</span>              :   String get releases =&gt; 'Bültenler';</span>
+<span id="L858"><span class="lineNum">     858</span>              :   String get recoveryTooltip =&gt; 'Kurtarmak';</span>
 <span id="L859"><span class="lineNum">     859</span>              : </span>
 <span id="L860"><span class="lineNum">     860</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L861"><span class="lineNum">     861</span>              :   String get reset =&gt; 'Sıfırla';</span>
+<span id="L861"><span class="lineNum">     861</span>              :   String get releases =&gt; 'Bültenler';</span>
 <span id="L862"><span class="lineNum">     862</span>              : </span>
 <span id="L863"><span class="lineNum">     863</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L864"><span class="lineNum">     864</span>              :   String get returnBack =&gt; 'Geri Dönüş';</span>
+<span id="L864"><span class="lineNum">     864</span>              :   String get reset =&gt; 'Sıfırla';</span>
 <span id="L865"><span class="lineNum">     865</span>              : </span>
 <span id="L866"><span class="lineNum">     866</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L867"><span class="lineNum">     867</span>              :   String get roadmap =&gt; 'Yol Haritası';</span>
+<span id="L867"><span class="lineNum">     867</span>              :   String get returnBack =&gt; 'Geri Dönüş';</span>
 <span id="L868"><span class="lineNum">     868</span>              : </span>
 <span id="L869"><span class="lineNum">     869</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L870"><span class="lineNum">     870</span>              :   String get saveNotification =&gt; 'Değişiklikler kaydedildi!';</span>
+<span id="L870"><span class="lineNum">     870</span>              :   String get roadmap =&gt; 'Yol Haritası';</span>
 <span id="L871"><span class="lineNum">     871</span>              : </span>
 <span id="L872"><span class="lineNum">     872</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L873"><span class="lineNum">     873</span>              :   String get saveSettingsTooltip =&gt; 'Kaydet';</span>
+<span id="L873"><span class="lineNum">     873</span>              :   String get saveNotification =&gt; 'Değişiklikler kaydedildi!';</span>
 <span id="L874"><span class="lineNum">     874</span>              : </span>
 <span id="L875"><span class="lineNum">     875</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L876"><span class="lineNum">     876</span>              :   String get saveTooltip =&gt; 'Şuraya Kaydet';</span>
+<span id="L876"><span class="lineNum">     876</span>              :   String get saveSettingsTooltip =&gt; 'Kaydet';</span>
 <span id="L877"><span class="lineNum">     877</span>              : </span>
 <span id="L878"><span class="lineNum">     878</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L879"><span class="lineNum">     879</span>              :   String search(Object value) {</span>
-<span id="L880"><span class="lineNum">     880</span> <span class="tlaUNC">           0 :     return '\'$value\' Kalıbına Göre Göster';</span></span>
-<span id="L881"><span class="lineNum">     881</span>              :   }</span>
-<span id="L882"><span class="lineNum">     882</span>              : </span>
-<span id="L883"><span class="lineNum">     883</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L884"><span class="lineNum">     884</span>              :   String get searchTooltip =&gt; 'Aramak';</span>
+<span id="L879"><span class="lineNum">     879</span>              :   String get saveTooltip =&gt; 'Şuraya Kaydet';</span>
+<span id="L880"><span class="lineNum">     880</span>              : </span>
+<span id="L881"><span class="lineNum">     881</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L882"><span class="lineNum">     882</span>              :   String search(Object value) {</span>
+<span id="L883"><span class="lineNum">     883</span> <span class="tlaUNC">           0 :     return '\'$value\' Kalıbına Göre Göster';</span></span>
+<span id="L884"><span class="lineNum">     884</span>              :   }</span>
 <span id="L885"><span class="lineNum">     885</span>              : </span>
 <span id="L886"><span class="lineNum">     886</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L887"><span class="lineNum">     887</span>              :   String get settingsBaseHeadline =&gt; 'Temel Bilgiler';</span>
+<span id="L887"><span class="lineNum">     887</span>              :   String get searchTooltip =&gt; 'Aramak';</span>
 <span id="L888"><span class="lineNum">     888</span>              : </span>
 <span id="L889"><span class="lineNum">     889</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L890"><span class="lineNum">     890</span>              :   String get settingsHeadline =&gt; 'Ayarlar';</span>
+<span id="L890"><span class="lineNum">     890</span>              :   String get secureOtpCode =&gt; 'Bir Defalık Parola Kodu';</span>
 <span id="L891"><span class="lineNum">     891</span>              : </span>
 <span id="L892"><span class="lineNum">     892</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L893"><span class="lineNum">     893</span>              :   String get skipFromTotals =&gt; 'Toplamlardan hariç tut';</span>
+<span id="L893"><span class="lineNum">     893</span>              :   String get secureOtpCodeInvalid =&gt; 'Geçersiz! Lütfen yeni bir kod oluşturun ve girin';</span>
 <span id="L894"><span class="lineNum">     894</span>              : </span>
 <span id="L895"><span class="lineNum">     895</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L896"><span class="lineNum">     896</span>              :   String get skipTooltip =&gt; 'Adım(lar)ı Atla';</span>
+<span id="L896"><span class="lineNum">     896</span>              :   String get secureOtpDeactivated =&gt; 'Parola Koruması devre dışı bırakıldı';</span>
 <span id="L897"><span class="lineNum">     897</span>              : </span>
 <span id="L898"><span class="lineNum">     898</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L899"><span class="lineNum">     899</span>              :   String get spent =&gt; 'harcandı';</span>
+<span id="L899"><span class="lineNum">     899</span>              :   String get securePassword =&gt; 'Parola (Kurtarma İfadesi)';</span>
 <span id="L900"><span class="lineNum">     900</span>              : </span>
 <span id="L901"><span class="lineNum">     901</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L902"><span class="lineNum">     902</span>              :   String get splitCancelTooltip =&gt; 'Ay Başına Bölünmeyi İptal Et';</span>
+<span id="L902"><span class="lineNum">     902</span>              :   String get securePasswordEmpty =&gt; 'Şifre boş bırakılamaz!';</span>
 <span id="L903"><span class="lineNum">     903</span>              : </span>
 <span id="L904"><span class="lineNum">     904</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L905"><span class="lineNum">     905</span>              :   String get splitTooltip =&gt; 'Aylık Limitleri Bildirin';</span>
+<span id="L905"><span class="lineNum">     905</span>              :   String get securePasswordNotMatch =&gt; 'Şifreler eşleşmiyor!';</span>
 <span id="L906"><span class="lineNum">     906</span>              : </span>
 <span id="L907"><span class="lineNum">     907</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L908"><span class="lineNum">     908</span>              :   String get subscription =&gt;</span>
-<span id="L909"><span class="lineNum">     909</span>              :       'Açık kaynaklı bir proje olarak, abone olmak herhangi bir ek özelliğin kilidini açmayacaktır. Ancak, uygulamanın sürekli gelişimi ve iyileştirilmesi ve kullanılabilirliğinin korunması için bir yatırım olarak hizmet edecektir.';</span>
-<span id="L910"><span class="lineNum">     910</span>              : </span>
-<span id="L911"><span class="lineNum">     911</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L912"><span class="lineNum">     912</span>              :   String get subscriptionCoffee =&gt; 'Bir Kahve Satın Alın';</span>
-<span id="L913"><span class="lineNum">     913</span>              : </span>
-<span id="L914"><span class="lineNum">     914</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L915"><span class="lineNum">     915</span>              :   String get subscriptionDinner =&gt; 'Akşam Yemeğinde İkram';</span>
-<span id="L916"><span class="lineNum">     916</span>              : </span>
-<span id="L917"><span class="lineNum">     917</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L918"><span class="lineNum">     918</span>              :   String get subscriptionDonorbox =&gt; 'Donorbox üzerinden abone olun';</span>
-<span id="L919"><span class="lineNum">     919</span>              : </span>
-<span id="L920"><span class="lineNum">     920</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L921"><span class="lineNum">     921</span>              :   String get subscriptionGithub =&gt; 'GitHub üzerinden abone olun';</span>
-<span id="L922"><span class="lineNum">     922</span>              : </span>
-<span id="L923"><span class="lineNum">     923</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L924"><span class="lineNum">     924</span>              :   String get subscriptionHeadline =&gt; 'Sponsorluk';</span>
-<span id="L925"><span class="lineNum">     925</span>              : </span>
-<span id="L926"><span class="lineNum">     926</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L927"><span class="lineNum">     927</span>              :   String get subscriptionInactive =&gt; 'Satın Alma Hizmeti Kullanılamıyor';</span>
-<span id="L928"><span class="lineNum">     928</span>              : </span>
-<span id="L929"><span class="lineNum">     929</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L930"><span class="lineNum">     930</span>              :   String get subscriptionPatreon =&gt; 'Patreon aracılığıyla abone olun';</span>
-<span id="L931"><span class="lineNum">     931</span>              : </span>
-<span id="L932"><span class="lineNum">     932</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L933"><span class="lineNum">     933</span>              :   String get subscriptionPaypal =&gt; 'Kahve Satın Alın (PayPal)';</span>
-<span id="L934"><span class="lineNum">     934</span>              : </span>
-<span id="L935"><span class="lineNum">     935</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L936"><span class="lineNum">     936</span>              :   String get subscriptionTiny =&gt; 'Şanslı bir madeni para verin';</span>
-<span id="L937"><span class="lineNum">     937</span>              : </span>
-<span id="L938"><span class="lineNum">     938</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L939"><span class="lineNum">     939</span>              :   String get subscriptionTooltip =&gt; 'Destek (Sponsorluk)';</span>
+<span id="L908"><span class="lineNum">     908</span>              :   String get securePasswordRepeat =&gt; 'Parolayı Tekrarla';</span>
+<span id="L909"><span class="lineNum">     909</span>              : </span>
+<span id="L910"><span class="lineNum">     910</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L911"><span class="lineNum">     911</span>              :   String get securityHeadline =&gt; 'Güvenlik';</span>
+<span id="L912"><span class="lineNum">     912</span>              : </span>
+<span id="L913"><span class="lineNum">     913</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L914"><span class="lineNum">     914</span>              :   String get settingsBaseHeadline =&gt; 'Temel Bilgiler';</span>
+<span id="L915"><span class="lineNum">     915</span>              : </span>
+<span id="L916"><span class="lineNum">     916</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L917"><span class="lineNum">     917</span>              :   String get settingsHeadline =&gt; 'Ayarlar';</span>
+<span id="L918"><span class="lineNum">     918</span>              : </span>
+<span id="L919"><span class="lineNum">     919</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L920"><span class="lineNum">     920</span>              :   String get settingsSaved =&gt; 'Ayarlar kaydedildi!';</span>
+<span id="L921"><span class="lineNum">     921</span>              : </span>
+<span id="L922"><span class="lineNum">     922</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L923"><span class="lineNum">     923</span>              :   String get skipFromTotals =&gt; 'Toplamlardan hariç tut';</span>
+<span id="L924"><span class="lineNum">     924</span>              : </span>
+<span id="L925"><span class="lineNum">     925</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L926"><span class="lineNum">     926</span>              :   String get skipTooltip =&gt; 'Adım(lar)ı Atla';</span>
+<span id="L927"><span class="lineNum">     927</span>              : </span>
+<span id="L928"><span class="lineNum">     928</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L929"><span class="lineNum">     929</span>              :   String get spent =&gt; 'harcandı';</span>
+<span id="L930"><span class="lineNum">     930</span>              : </span>
+<span id="L931"><span class="lineNum">     931</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L932"><span class="lineNum">     932</span>              :   String get splitCancelTooltip =&gt; 'Ay Başına Bölünmeyi İptal Et';</span>
+<span id="L933"><span class="lineNum">     933</span>              : </span>
+<span id="L934"><span class="lineNum">     934</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L935"><span class="lineNum">     935</span>              :   String get splitTooltip =&gt; 'Aylık Limitleri Bildirin';</span>
+<span id="L936"><span class="lineNum">     936</span>              : </span>
+<span id="L937"><span class="lineNum">     937</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L938"><span class="lineNum">     938</span>              :   String get subscription =&gt;</span>
+<span id="L939"><span class="lineNum">     939</span>              :       'Açık kaynaklı bir proje olarak, abone olmak herhangi bir ek özelliğin kilidini açmayacaktır. Ancak, uygulamanın sürekli gelişimi ve iyileştirilmesi ve kullanılabilirliğinin korunması için bir yatırım olarak hizmet edecektir.';</span>
 <span id="L940"><span class="lineNum">     940</span>              : </span>
 <span id="L941"><span class="lineNum">     941</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L942"><span class="lineNum">     942</span>              :   String get success =&gt; 'Başarılı';</span>
+<span id="L942"><span class="lineNum">     942</span>              :   String get subscriptionCoffee =&gt; 'Bir Kahve Satın Alın';</span>
 <span id="L943"><span class="lineNum">     943</span>              : </span>
 <span id="L944"><span class="lineNum">     944</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L945"><span class="lineNum">     945</span>              :   String get summary =&gt; 'Özet';</span>
+<span id="L945"><span class="lineNum">     945</span>              :   String get subscriptionDinner =&gt; 'Akşam Yemeğinde İkram';</span>
 <span id="L946"><span class="lineNum">     946</span>              : </span>
 <span id="L947"><span class="lineNum">     947</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L948"><span class="lineNum">     948</span>              :   String get symbol =&gt; 'Sembol';</span>
+<span id="L948"><span class="lineNum">     948</span>              :   String get subscriptionDonorbox =&gt; 'Donorbox üzerinden abone olun';</span>
 <span id="L949"><span class="lineNum">     949</span>              : </span>
 <span id="L950"><span class="lineNum">     950</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L951"><span class="lineNum">     951</span>              :   String get syncHeadline =&gt; 'Senkronizasyon Cihazları';</span>
+<span id="L951"><span class="lineNum">     951</span>              :   String get subscriptionGithub =&gt; 'GitHub üzerinden abone olun';</span>
 <span id="L952"><span class="lineNum">     952</span>              : </span>
 <span id="L953"><span class="lineNum">     953</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L954"><span class="lineNum">     954</span>              :   String get systemMode =&gt; 'System';</span>
+<span id="L954"><span class="lineNum">     954</span>              :   String get subscriptionHeadline =&gt; 'Sponsorluk';</span>
 <span id="L955"><span class="lineNum">     955</span>              : </span>
 <span id="L956"><span class="lineNum">     956</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L957"><span class="lineNum">     957</span>              :   String get tapToOpen =&gt; 'Açmak için dokunun';</span>
+<span id="L957"><span class="lineNum">     957</span>              :   String get subscriptionInactive =&gt; 'Satın Alma Hizmeti Kullanılamıyor';</span>
 <span id="L958"><span class="lineNum">     958</span>              : </span>
 <span id="L959"><span class="lineNum">     959</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L960"><span class="lineNum">     960</span>              :   String get targetAmount =&gt; 'Hedef Miktar';</span>
+<span id="L960"><span class="lineNum">     960</span>              :   String get subscriptionPatreon =&gt; 'Patreon aracılığıyla abone olun';</span>
 <span id="L961"><span class="lineNum">     961</span>              : </span>
 <span id="L962"><span class="lineNum">     962</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L963"><span class="lineNum">     963</span>              :   String get termPrivacy =&gt; 'Gizlilik Politikası';</span>
+<span id="L963"><span class="lineNum">     963</span>              :   String get subscriptionPaypal =&gt; 'Kahve Satın Alın (PayPal)';</span>
 <span id="L964"><span class="lineNum">     964</span>              : </span>
 <span id="L965"><span class="lineNum">     965</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L966"><span class="lineNum">     966</span>              :   String get termUse =&gt; 'Kullanım Koşulları';</span>
+<span id="L966"><span class="lineNum">     966</span>              :   String get subscriptionTiny =&gt; 'Şanslı bir madeni para verin';</span>
 <span id="L967"><span class="lineNum">     967</span>              : </span>
 <span id="L968"><span class="lineNum">     968</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L969"><span class="lineNum">     969</span>              :   String get title =&gt; 'Başlık';</span>
+<span id="L969"><span class="lineNum">     969</span>              :   String get subscriptionTooltip =&gt; 'Destek (Sponsorluk)';</span>
 <span id="L970"><span class="lineNum">     970</span>              : </span>
 <span id="L971"><span class="lineNum">     971</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L972"><span class="lineNum">     972</span>              :   String get titleAccountTooltip =&gt; 'Hesap Tanımlayıcısını Girin';</span>
+<span id="L972"><span class="lineNum">     972</span>              :   String get success =&gt; 'Başarılı';</span>
 <span id="L973"><span class="lineNum">     973</span>              : </span>
 <span id="L974"><span class="lineNum">     974</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L975"><span class="lineNum">     975</span>              :   String get titleBudgetTooltip =&gt; 'Bütçe Kategorisi Adını Girin';</span>
+<span id="L975"><span class="lineNum">     975</span>              :   String get summary =&gt; 'Özet';</span>
 <span id="L976"><span class="lineNum">     976</span>              : </span>
 <span id="L977"><span class="lineNum">     977</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L978"><span class="lineNum">     978</span>              :   String get titleGoal =&gt; 'Hedef';</span>
+<span id="L978"><span class="lineNum">     978</span>              :   String get symbol =&gt; 'Sembol';</span>
 <span id="L979"><span class="lineNum">     979</span>              : </span>
 <span id="L980"><span class="lineNum">     980</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L981"><span class="lineNum">     981</span>              :   String get titleGoalTooltip =&gt; 'Hedef Tanımını Belirleyin';</span>
+<span id="L981"><span class="lineNum">     981</span>              :   String get syncHeadline =&gt; 'Senkronizasyon Cihazları';</span>
 <span id="L982"><span class="lineNum">     982</span>              : </span>
 <span id="L983"><span class="lineNum">     983</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L984"><span class="lineNum">     984</span>              :   String get to =&gt; 'için';</span>
+<span id="L984"><span class="lineNum">     984</span>              :   String get systemMode =&gt; 'System';</span>
 <span id="L985"><span class="lineNum">     985</span>              : </span>
 <span id="L986"><span class="lineNum">     986</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L987"><span class="lineNum">     987</span>              :   String get total =&gt; 'Toplam';</span>
+<span id="L987"><span class="lineNum">     987</span>              :   String get tapToOpen =&gt; 'Açmak için dokunun';</span>
 <span id="L988"><span class="lineNum">     988</span>              : </span>
 <span id="L989"><span class="lineNum">     989</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L990"><span class="lineNum">     990</span>              :   String get transactionFile =&gt; 'Fingrom İşlemleri Günlük Dosyası (.log)';</span>
+<span id="L990"><span class="lineNum">     990</span>              :   String get targetAmount =&gt; 'Hedef Miktar';</span>
 <span id="L991"><span class="lineNum">     991</span>              : </span>
 <span id="L992"><span class="lineNum">     992</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L993"><span class="lineNum">     993</span>              :   String get transferHeadline =&gt; 'Transfer';</span>
+<span id="L993"><span class="lineNum">     993</span>              :   String get termPrivacy =&gt; 'Gizlilik Politikası';</span>
 <span id="L994"><span class="lineNum">     994</span>              : </span>
 <span id="L995"><span class="lineNum">     995</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L996"><span class="lineNum">     996</span>              :   String get transferTooltip =&gt; 'Transfer Ayrıntılarını Ayarla';</span>
+<span id="L996"><span class="lineNum">     996</span>              :   String get termUse =&gt; 'Kullanım Koşulları';</span>
 <span id="L997"><span class="lineNum">     997</span>              : </span>
 <span id="L998"><span class="lineNum">     998</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L999"><span class="lineNum">     999</span>              :   String get transfersHeadline =&gt; 'Transferler';</span>
+<span id="L999"><span class="lineNum">     999</span>              :   String get title =&gt; 'Başlık';</span>
 <span id="L1000"><span class="lineNum">    1000</span>              : </span>
 <span id="L1001"><span class="lineNum">    1001</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1002"><span class="lineNum">    1002</span>              :   String get typeButton =&gt; 'Düğme';</span>
+<span id="L1002"><span class="lineNum">    1002</span>              :   String get titleAccountTooltip =&gt; 'Hesap Tanımlayıcısını Girin';</span>
 <span id="L1003"><span class="lineNum">    1003</span>              : </span>
 <span id="L1004"><span class="lineNum">    1004</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1005"><span class="lineNum">    1005</span>              :   String get updateAccountTooltip =&gt; 'Hesap Güncelleme';</span>
+<span id="L1005"><span class="lineNum">    1005</span>              :   String get titleBudgetTooltip =&gt; 'Bütçe Kategorisi Adını Girin';</span>
 <span id="L1006"><span class="lineNum">    1006</span>              : </span>
 <span id="L1007"><span class="lineNum">    1007</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1008"><span class="lineNum">    1008</span>              :   String get updateBillTooltip =&gt; 'Bill\'i Güncelle';</span>
+<span id="L1008"><span class="lineNum">    1008</span>              :   String get titleGoal =&gt; 'Hedef';</span>
 <span id="L1009"><span class="lineNum">    1009</span>              : </span>
 <span id="L1010"><span class="lineNum">    1010</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1011"><span class="lineNum">    1011</span>              :   String get updateBudgetTooltip =&gt; 'Bütçe Kategorisini Güncelle';</span>
+<span id="L1011"><span class="lineNum">    1011</span>              :   String get titleGoalTooltip =&gt; 'Hedef Tanımını Belirleyin';</span>
 <span id="L1012"><span class="lineNum">    1012</span>              : </span>
 <span id="L1013"><span class="lineNum">    1013</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1014"><span class="lineNum">    1014</span>              :   String get updateGoalTooltip =&gt; 'Hedefi Güncelle';</span>
+<span id="L1014"><span class="lineNum">    1014</span>              :   String get to =&gt; 'için';</span>
 <span id="L1015"><span class="lineNum">    1015</span>              : </span>
 <span id="L1016"><span class="lineNum">    1016</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1017"><span class="lineNum">    1017</span>              :   String get updatePaymentTooltip =&gt; 'Ödeme Güncelleme';</span>
+<span id="L1017"><span class="lineNum">    1017</span>              :   String get total =&gt; 'Toplam';</span>
 <span id="L1018"><span class="lineNum">    1018</span>              : </span>
 <span id="L1019"><span class="lineNum">    1019</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1020"><span class="lineNum">    1020</span>              :   String get username =&gt; 'Kullanıcı Adı (Hesap)';</span>
+<span id="L1020"><span class="lineNum">    1020</span>              :   String get transactionFile =&gt; 'Fingrom İşlemleri Günlük Dosyası (.log)';</span>
 <span id="L1021"><span class="lineNum">    1021</span>              : </span>
 <span id="L1022"><span class="lineNum">    1022</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1023"><span class="lineNum">    1023</span>              :   String get uuid =&gt; 'Benzersiz İşlem Tanımlayıcısı';</span>
+<span id="L1023"><span class="lineNum">    1023</span>              :   String get transferHeadline =&gt; 'Transfer';</span>
 <span id="L1024"><span class="lineNum">    1024</span>              : </span>
 <span id="L1025"><span class="lineNum">    1025</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1026"><span class="lineNum">    1026</span>              :   String get validTillDate =&gt; 'Geçerlilik Süresi';</span>
+<span id="L1026"><span class="lineNum">    1026</span>              :   String get transferTooltip =&gt; 'Transfer Ayrıntılarını Ayarla';</span>
 <span id="L1027"><span class="lineNum">    1027</span>              : </span>
 <span id="L1028"><span class="lineNum">    1028</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1029"><span class="lineNum">    1029</span>              :   String get webDav =&gt; 'Web Dağıtılmış Yazma ve Sürüm Oluşturma (WebDav)';</span>
+<span id="L1029"><span class="lineNum">    1029</span>              :   String get transfersHeadline =&gt; 'Transferler';</span>
 <span id="L1030"><span class="lineNum">    1030</span>              : </span>
 <span id="L1031"><span class="lineNum">    1031</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L1032"><span class="lineNum">    1032</span>              :   String get zoomState =&gt; 'Yakınlaştırma / Uzaklaştırma';</span>
-<span id="L1033"><span class="lineNum">    1033</span>              : }</span>
+<span id="L1032"><span class="lineNum">    1032</span>              :   String get typeButton =&gt; 'Düğme';</span>
+<span id="L1033"><span class="lineNum">    1033</span>              : </span>
+<span id="L1034"><span class="lineNum">    1034</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L1035"><span class="lineNum">    1035</span>              :   String get updateAccountTooltip =&gt; 'Hesap Güncelleme';</span>
+<span id="L1036"><span class="lineNum">    1036</span>              : </span>
+<span id="L1037"><span class="lineNum">    1037</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L1038"><span class="lineNum">    1038</span>              :   String get updateBillTooltip =&gt; 'Bill\'i Güncelle';</span>
+<span id="L1039"><span class="lineNum">    1039</span>              : </span>
+<span id="L1040"><span class="lineNum">    1040</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L1041"><span class="lineNum">    1041</span>              :   String get updateBudgetTooltip =&gt; 'Bütçe Kategorisini Güncelle';</span>
+<span id="L1042"><span class="lineNum">    1042</span>              : </span>
+<span id="L1043"><span class="lineNum">    1043</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L1044"><span class="lineNum">    1044</span>              :   String get updateGoalTooltip =&gt; 'Hedefi Güncelle';</span>
+<span id="L1045"><span class="lineNum">    1045</span>              : </span>
+<span id="L1046"><span class="lineNum">    1046</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L1047"><span class="lineNum">    1047</span>              :   String get updatePaymentTooltip =&gt; 'Ödeme Güncelleme';</span>
+<span id="L1048"><span class="lineNum">    1048</span>              : </span>
+<span id="L1049"><span class="lineNum">    1049</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L1050"><span class="lineNum">    1050</span>              :   String get username =&gt; 'Kullanıcı Adı (Hesap)';</span>
+<span id="L1051"><span class="lineNum">    1051</span>              : </span>
+<span id="L1052"><span class="lineNum">    1052</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L1053"><span class="lineNum">    1053</span>              :   String get uuid =&gt; 'Benzersiz İşlem Tanımlayıcısı';</span>
+<span id="L1054"><span class="lineNum">    1054</span>              : </span>
+<span id="L1055"><span class="lineNum">    1055</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L1056"><span class="lineNum">    1056</span>              :   String get validTillDate =&gt; 'Geçerlilik Süresi';</span>
+<span id="L1057"><span class="lineNum">    1057</span>              : </span>
+<span id="L1058"><span class="lineNum">    1058</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L1059"><span class="lineNum">    1059</span>              :   String get webDav =&gt; 'Web Dağıtılmış Yazma ve Sürüm Oluşturma (WebDav)';</span>
+<span id="L1060"><span class="lineNum">    1060</span>              : </span>
+<span id="L1061"><span class="lineNum">    1061</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L1062"><span class="lineNum">    1062</span>              :   String get zoomState =&gt; 'Yakınlaştırma / Uzaklaştırma';</span>
+<span id="L1063"><span class="lineNum">    1063</span>              : }</span>
         </pre>
               </td>
             </tr>

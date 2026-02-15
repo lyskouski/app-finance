@@ -70,6 +70,9 @@ Care permite utilizatorilor să își gestioneze finanțele fără efort, asigur
 - Export către fișiere Excel `XLSX`.
 - Criptarea datelor
 - Localizare
+- Securitate
+  - Protecție prin cod de parolă unică
+  - Cod de recuperare
 - Experiența utilizatorului
   - Pagina principală configurabilă (configurații multiple pentru fiecare set `lățime x înălțime`)
   - Design receptiv și adaptabil

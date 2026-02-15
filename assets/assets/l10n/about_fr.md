@@ -70,6 +70,9 @@ Elle permet aux utilisateurs de gérer leurs finances sans effort, tout en veill
 - Export vers un fichier Excel `XLSX`
 - Cryptage des données
 - Localisation des données
+- Sécurité
+  - Protection par mot de passe à usage unique
+  - Code de récupération
 - Expérience utilisateur
   - Page principale configurable (plusieurs configurations par jeu de `largeur x hauteur`)
   - Design réactif et adaptatif

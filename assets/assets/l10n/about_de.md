@@ -71,6 +71,9 @@ zurückgelassen wird.
 - Exportieren in die Excel-Datei `XLSX`
 - Verschlüsselung der Daten
 - Lokalisierung
+- Sicherheit
+  - Schutz durch Einmalpasswort-Code
+  - Wiederherstellungscode
 - Benutzerfreundlichkeit
   - Konfigurierbare Hauptseite (mehrere Konfigurationen pro `Breite x Höhe` eingestellt)
   - Reaktionsfähiges & adaptives Design

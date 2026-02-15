@@ -98,7 +98,7 @@ digraph G {
   }
   {
     rank = same; "pages";
-    home_widgets [label="<0>HOME_WIDGETS|<goal_widget>goal_widget|<init_tab>init_tab|<goal_line_widget>goal_line_widget",fillcolor="silver:white", gradientangle=240, style="filled"];
+    home_widgets [label="<0>HOME_WIDGETS|<goal_widget>goal_widget|<init_tab>init_tab|<goal_line_widget>goal_line_widget|<security_tab>security_tab",fillcolor="silver:white", gradientangle=240, style="filled"];
   }
   {
     rank = same; "pages";
@@ -127,6 +127,10 @@ digraph G {
   {
     rank = same; "pages";
     account_widgets [label="<0>ACCOUNT_WIDGETS|<header_widget>header_widget|<account_line_widget>account_line_widget",fillcolor="silver:white", gradientangle=240, style="filled"];
+  }
+  {
+    rank = same; "pages";
+    security [label="<0>SECURITY|<security_page>security_page",fillcolor="silver:white", gradientangle=240, style="filled"];
   }
   {
     rank = same; "pages";
@@ -720,6 +724,14 @@ digraph G {
   home_widgets -> _configs_ [color="#F0F0F050"];
   home_widgets -> _ext_ [color="#F0F0F050"];
   home_widgets -> wrapper [color="#F0F0F050"];
+  home_widgets -> controller [color="#F0F0F050"];
+  home_widgets -> herald [color="#F0F0F050"];
+  home_widgets -> storage [color="#F0F0F050"];
+  home_widgets -> _configs_ [color="#F0F0F050"];
+  home_widgets -> button [color="#F0F0F050"];
+  home_widgets -> generic [color="#F0F0F050"];
+  home_widgets -> wrapper [color="#F0F0F050"];
+  home_widgets -> _interfaces [color="#F0F0F050"];
   home -> herald [color="#F0F0F050"];
   home -> storage [color="#F0F0F050"];
   home -> _configs_ [color="#F0F0F050"];
@@ -739,9 +751,9 @@ digraph G {
   home -> components_ [color="#F0F0F050"];
   home -> _interfaces [color="#F0F0F050"];
   home -> home [color="#F0F0F050"];
+  home -> home_widgets [color="#F0F0F050"];
   home -> start [color="#F0F0F050"];
   home -> wrapper [color="#F0F0F050"];
-  home -> home_widgets [color="#F0F0F050"];
   home -> button [color="#F0F0F050"];
   automation -> controller [color="#F0F0F050"];
   automation -> herald [color="#F0F0F050"];
@@ -867,6 +879,15 @@ digraph G {
   account -> _interfaces [color="#F0F0F050"];
   account -> account_widgets [color="#F0F0F050"];
   account -> generic [color="#F0F0F050"];
+  security -> controller [color="#F0F0F050"];
+  security -> herald [color="#F0F0F050"];
+  security -> storage [color="#F0F0F050"];
+  security -> _configs_ [color="#F0F0F050"];
+  security -> _ext_ [color="#F0F0F050"];
+  security -> button [color="#F0F0F050"];
+  security -> generic [color="#F0F0F050"];
+  security -> wrapper [color="#F0F0F050"];
+  security -> _interfaces [color="#F0F0F050"];
   start_widgets -> herald [color="#F0F0F050"];
   start_widgets -> storage [color="#F0F0F050"];
   start_widgets -> _configs_ [color="#F0F0F050"];
