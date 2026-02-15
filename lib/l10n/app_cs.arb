@@ -186,6 +186,7 @@
     "dayStartOfMonth": "Začátek měsíce",
     "dayStartOfWeek": "Začátek týdne",
     "daySunday": "Neděle",
+    "deactivateAction": "Deaktivovat ochranu heslem",
     "debitCard": "Debetní karta",
     "def": "Výchozí hodnota pro '{value}'",
     "@def": {
@@ -378,6 +379,7 @@
     "searchTooltip": "Vyhledávání",
     "secureOtpCode": "Jednorázové heslo",
     "secureOtpCodeInvalid": "Neplatné! Získejte nový kód a zadejte jej.",
+    "secureOtpDeactivated": "Ochrana heslem je deaktivována",
     "securePassword": "Heslo (obnovovací fráze)",
     "securePasswordEmpty": "Heslo nesmí být prázdné!",
     "securePasswordNotMatch": "Hesla se neshodují!",

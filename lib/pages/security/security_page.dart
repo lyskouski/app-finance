@@ -1,6 +1,7 @@
 // Copyright 2026 The terCAD team. All rights reserved.
 // Use of this source code is governed by a CC BY-NC-ND 4.0 license that can be found in the LICENSE file.
 
+import 'package:app_finance/_classes/controller/encryption_handler.dart';
 import 'package:app_finance/_classes/controller/focus_controller.dart';
 import 'package:app_finance/_classes/herald/app_design.dart';
 import 'package:app_finance/_classes/herald/app_locale.dart';
@@ -48,20 +49,24 @@ class SecurityPageState extends AbstractPageState<SecurityPage> {
     super.dispose();
   }
 
+  bool get isOtpActive => AppPreferences.get(AppPreferences.prefIsOTP) == AppPreferences.isActive;
+
   @override
-  String getButtonName() => AppLocale.labels.saveSettingsTooltip;
+  String getButtonName() {
+    return isOtpActive ? AppLocale.labels.deactivateAction : AppLocale.labels.saveSettingsTooltip;
+  }
 
   @override
   Widget buildButton(BuildContext context, BoxConstraints constraints) => FullSizedButtonWidget(
         constraints: constraints,
         controller: focus,
-        onPressed: () => triggerActionButton(),
+        onPressed: () => isOtpActive ? triggerDeactivateButton() : triggerActionButton(),
         title: getButtonName(),
-        icon: Icons.save,
+        icon: isOtpActive ? Icons.do_disturb_alt : Icons.save,
       );
 
   void triggerActionButton() {
-    if (password.text.isEmpty || passwordRepeat.text.isEmpty) {
+    if (password.text.isEmpty) {
       NotificationBar.showSnackBar(context, AppLocale.labels.securePasswordEmpty, true);
       return;
     }
@@ -79,8 +84,28 @@ class SecurityPageState extends AbstractPageState<SecurityPage> {
     }
 
     AppPreferences.set(AppPreferences.prefIsOTP, AppPreferences.isActive);
-    AppPreferences.set(AppPreferences.prefRecoveryKey, password.text);
+    AppPreferences.set(AppPreferences.prefRecoveryKey, EncryptionHandler.getHashString(password.text));
+    setState(() {
+      password.clear();
+      passwordRepeat.clear();
+      otpCode.clear();
+    });
     NotificationBar.showSnackBar(context, AppLocale.labels.settingsSaved);
+  }
+
+  void triggerDeactivateButton() {
+    if (password.text.isEmpty) {
+      NotificationBar.showSnackBar(context, AppLocale.labels.securePasswordEmpty, true);
+      return;
+    }
+    final key = AppPreferences.get(AppPreferences.prefRecoveryKey) ?? '';
+    if (EncryptionHandler.getHashString(password.text) != key) {
+      NotificationBar.showSnackBar(context, AppLocale.labels.securePasswordNotMatch, true);
+      return;
+    }
+    AppPreferences.set(AppPreferences.prefIsOTP, AppPreferences.isInactive);
+    setState(() => password.clear());
+    NotificationBar.showSnackBar(context, AppLocale.labels.secureOtpDeactivated);
   }
 
   @override
@@ -106,39 +131,42 @@ class SecurityPageState extends AbstractPageState<SecurityPage> {
               isRequired: true,
               inputType: TextInputType.visiblePassword,
             ),
-            InputWrapper.text(
-              title: AppLocale.labels.securePasswordRepeat,
-              controller: passwordRepeat,
-              isRequired: true,
-              inputType: TextInputType.visiblePassword,
-            ),
-            TOTPQrWidget(
-              secret: secret,
-              issuer: 'Fingrom',
-              accountName: 'support@tercad.pl',
-              width: 200,
-              height: 200,
-              color: Colors.white,
-            ),
-            Container(
-              padding: EdgeInsets.all(indent),
-              color: context.colorScheme.fieldBackground,
-              child: SelectableText(
-                totpUrl,
-                style: textTheme.bodyLarge,
-                onTap: () {
-                  Clipboard.setData(ClipboardData(text: totpUrl));
-                  ScaffoldMessenger.of(context).showSnackBar(
-                    SnackBar(content: Text(AppLocale.labels.copiedToClipboard)),
-                  );
-                },
+            if (!isOtpActive) ...[
+              InputWrapper.text(
+                title: AppLocale.labels.securePasswordRepeat,
+                controller: passwordRepeat,
+                isRequired: true,
+                inputType: TextInputType.visiblePassword,
               ),
-            ),
-            ThemeHelper.hIndent2x,
-            InputWrapper.text(
-              title: AppLocale.labels.secureOtpCode,
-              controller: otpCode,
-            ),
+              TOTPQrWidget(
+                secret: secret,
+                issuer: 'Fingrom',
+                accountName: 'support@tercad.pl',
+                width: 200,
+                height: 200,
+                color: Colors.white,
+              ),
+              Container(
+                padding: EdgeInsets.all(indent),
+                color: context.colorScheme.fieldBackground,
+                child: SelectableText(
+                  totpUrl,
+                  style: textTheme.bodyLarge,
+                  onTap: () {
+                    Clipboard.setData(ClipboardData(text: totpUrl));
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      SnackBar(content: Text(AppLocale.labels.copiedToClipboard)),
+                    );
+                  },
+                ),
+              ),
+              ThemeHelper.hIndent2x,
+              InputWrapper.text(
+                title: AppLocale.labels.secureOtpCode,
+                controller: otpCode,
+              ),
+              ThemeHelper.hIndent2x,
+            ],
           ],
         ),
       ),

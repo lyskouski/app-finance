@@ -186,6 +186,7 @@
     "dayStartOfMonth": "Початок місяця",
     "dayStartOfWeek": "Початок тижня",
     "daySunday": "Неділя",
+    "deactivateAction": "Вимкнути захист паролем",
     "debitCard": "Дебетова картка",
     "def": "Значення за умовчанням для '{value}'",
     "@def": {
@@ -378,6 +379,7 @@
     "searchTooltip": "Пошук",
     "secureOtpCode": "Код одноразового пароля",
     "secureOtpCodeInvalid": "Неправильно! Будь ласка, візьміть новий код і введіть його",
+    "secureOtpDeactivated": "Захист паролем вимкнено",
     "securePassword": "Пароль (Фраза для відновлення)",
     "securePasswordEmpty": "Пароль не може бути порожнім!",
     "securePasswordNotMatch": "Паролі не збігаються!",

@@ -186,6 +186,7 @@
     "dayStartOfMonth": "Inizio del mese",
     "dayStartOfWeek": "Inizio settimana",
     "daySunday": "Domenica",
+    "deactivateAction": "Disattiva la protezione con password",
     "debitCard": "Carta di debito",
     "def": "Valore predefinito per '{value}'",
     "@def": {
@@ -378,6 +379,7 @@
     "searchTooltip": "Ricerca",
     "secureOtpCode": "Codice password monouso",
     "secureOtpCodeInvalid": "Codice non valido! Per favore, genera un nuovo codice e inseriscilo",
+    "secureOtpDeactivated": "La protezione con password è disattivata",
     "securePassword": "Password (frase di recupero)",
     "securePasswordEmpty": "La password non può essere vuota!",
     "securePasswordNotMatch": "Le password non corrispondono!",

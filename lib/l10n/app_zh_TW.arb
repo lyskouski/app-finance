@@ -186,6 +186,7 @@
     "dayStartOfMonth": "本月開始",
     "dayStartOfWeek": "本週開始",
     "daySunday": "星期日",
+    "deactivateAction": "停用密碼保護功能",
     "debitCard": "借記卡",
     "def": "{value}的預設值",
     "@def": {
@@ -378,6 +379,7 @@
     "searchTooltip": "搜尋",
     "secureOtpCode": "一次性密碼代碼",
     "secureOtpCodeInvalid": "無效！請獲取新代碼並輸入",
+    "secureOtpDeactivated": "密碼保護功能已停用",
     "securePassword": "密碼（恢復短語）",
     "securePasswordEmpty": "密碼不能為空！",
     "securePasswordNotMatch": "密碼不匹配！",

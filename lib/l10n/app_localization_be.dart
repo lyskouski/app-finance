@@ -446,6 +446,9 @@ class AppLocalizationsBe extends AppLocalizations {
   String get daySunday => 'Нядзеля';
 
   @override
+  String get deactivateAction => 'Адключыць абарону паролем';
+
+  @override
   String get debitCard => 'Дэбетавая картка';
 
   @override
@@ -893,6 +896,9 @@ class AppLocalizationsBe extends AppLocalizations {
   @override
   String get secureOtpCodeInvalid =>
       'Няправільны! Калі ласка, вазьміце новы код і ўвядзіце яго.';
+
+  @override
+  String get secureOtpDeactivated => 'Абарона паролем адключана';
 
   @override
   String get securePassword => 'Пароль (фраза аднаўленьня)';
@@ -1504,6 +1510,9 @@ class AppLocalizationsBeEu extends AppLocalizationsBe {
   String get daySunday => 'Niadzielia';
 
   @override
+  String get deactivateAction => 'Adkliučyć abaronu paroliem';
+
+  @override
   String get debitCard => 'Debietavaja Kartka';
 
   @override
@@ -1951,6 +1960,9 @@ class AppLocalizationsBeEu extends AppLocalizationsBe {
   @override
   String get secureOtpCodeInvalid =>
       'Niapraviĺny! Kali laska, vaźmicie novy kod i ŭviadzicie jaho';
+
+  @override
+  String get secureOtpDeactivated => 'Abarona paroliem adkliučana';
 
   @override
   String get securePassword => 'Paroĺ (fraza adnaŭlieńnia)';

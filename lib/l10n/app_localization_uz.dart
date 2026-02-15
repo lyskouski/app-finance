@@ -448,6 +448,9 @@ class AppLocalizationsUz extends AppLocalizations {
   String get daySunday => 'Yakshanba';
 
   @override
+  String get deactivateAction => 'Parol himoyasini o\'chirish';
+
+  @override
   String get debitCard => 'Debit karta';
 
   @override
@@ -898,6 +901,9 @@ class AppLocalizationsUz extends AppLocalizations {
   @override
   String get secureOtpCodeInvalid =>
       'Noto\'g\'ri! Iltimos, yangi kod oling va uni kiriting';
+
+  @override
+  String get secureOtpDeactivated => 'Parol himoyasi o\'chirilgan';
 
   @override
   String get securePassword => 'Parol (Qayta tiklash iborasi)';

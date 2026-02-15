@@ -447,6 +447,9 @@ class AppLocalizationsAz extends AppLocalizations {
   String get daySunday => 'bazar günü';
 
   @override
+  String get deactivateAction => 'Şifrə qorunmasını deaktiv edin';
+
+  @override
   String get debitCard => 'Debet kartı';
 
   @override
@@ -894,6 +897,9 @@ class AppLocalizationsAz extends AppLocalizations {
   @override
   String get secureOtpCodeInvalid =>
       'Etkisiz! Zəhmət olmasa, yeni kod götürün və daxil edin';
+
+  @override
+  String get secureOtpDeactivated => 'Şifrə qorunması deaktiv edilib';
 
   @override
   String get securePassword => 'Şifrə (Bərpa ifadəsi)';

@@ -447,6 +447,9 @@ class AppLocalizationsRo extends AppLocalizations {
   String get daySunday => 'Duminică';
 
   @override
+  String get deactivateAction => 'Dezactivează protecția cu parolă';
+
+  @override
   String get debitCard => 'Card de debit';
 
   @override
@@ -896,6 +899,9 @@ class AppLocalizationsRo extends AppLocalizations {
   @override
   String get secureOtpCodeInvalid =>
       'Cod invalid! Vă rugăm să generați un cod nou și să-l introduceți';
+
+  @override
+  String get secureOtpDeactivated => 'Protecția cu parolă este dezactivată';
 
   @override
   String get securePassword => 'Parolă (Frază de recuperare)';

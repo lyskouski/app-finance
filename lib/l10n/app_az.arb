@@ -186,6 +186,7 @@
     "dayStartOfMonth": "Ayın başlanğıcı",
     "dayStartOfWeek": "Həftənin başlanğıcı",
     "daySunday": "bazar günü",
+    "deactivateAction": "Şifrə qorunmasını deaktiv edin",
     "debitCard": "Debet kartı",
     "def": "'{value}' üçün Defolt Dəyər",
     "@def": {
@@ -378,6 +379,7 @@
     "searchTooltip": "Axtar",
     "secureOtpCode": "Bir dəfəlik Şifrə Kodu",
     "secureOtpCodeInvalid": "Etkisiz! Zəhmət olmasa, yeni kod götürün və daxil edin",
+    "secureOtpDeactivated": "Şifrə qorunması deaktiv edilib",
     "securePassword": "Şifrə (Bərpa ifadəsi)",
     "securePasswordEmpty": "Şifrə boş ola bilməz!",
     "securePasswordNotMatch": "Şifrələr uyğun gəlmir!",

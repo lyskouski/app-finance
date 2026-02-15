@@ -186,6 +186,7 @@
     "dayStartOfMonth": "Oyning boshlanishi",
     "dayStartOfWeek": "Hafta boshi",
     "daySunday": "Yakshanba",
+    "deactivateAction": "Parol himoyasini o'chirish",
     "debitCard": "Debit karta",
     "def": "“{value}” uchun birlamchi qiymat",
     "@def": {
@@ -378,6 +379,7 @@
     "searchTooltip": "Qidiruv",
     "secureOtpCode": "Bir martalik parol kodi",
     "secureOtpCodeInvalid": "Noto'g'ri! Iltimos, yangi kod oling va uni kiriting",
+    "secureOtpDeactivated": "Parol himoyasi o'chirilgan",
     "securePassword": "Parol (Qayta tiklash iborasi)",
     "securePasswordEmpty": "Parol bo'sh bo'la olmaydi!",
     "securePasswordNotMatch": "Parollar mos kelmaydi!",

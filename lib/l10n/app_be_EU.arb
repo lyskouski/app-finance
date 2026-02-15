@@ -186,6 +186,7 @@
     "dayStartOfMonth": "Pačatak Miesiaca",
     "dayStartOfWeek": "Pačatak Tydnia",
     "daySunday": "Niadzielia",
+    "deactivateAction": "Adkliučyć abaronu paroliem",
     "debitCard": "Debietavaja Kartka",
     "def": "Biezumoŭnaje Značeńnie dlia '{value}'",
     "@def": {
@@ -378,6 +379,7 @@
     "searchTooltip": "Pošuk",
     "secureOtpCode": "Adnarazovy paroĺ",
     "secureOtpCodeInvalid": "Niapraviĺny! Kali laska, vaźmicie novy kod i ŭviadzicie jaho",
+    "secureOtpDeactivated": "Abarona paroliem adkliučana",
     "securePassword": "Paroĺ (fraza adnaŭlieńnia)",
     "securePasswordEmpty": "Paroĺ nie moža być pustym!",
     "securePasswordNotMatch": "Paroli nie supadajuć!",

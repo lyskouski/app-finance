@@ -446,6 +446,9 @@ class AppLocalizationsFa extends AppLocalizations {
   String get daySunday => 'یکشنبه';
 
   @override
+  String get deactivateAction => 'غیرفعال کردن حفاظت با رمز عبور';
+
+  @override
   String get debitCard => 'کارت اعتباری';
 
   @override
@@ -891,6 +894,9 @@ class AppLocalizationsFa extends AppLocalizations {
   @override
   String get secureOtpCodeInvalid =>
       'کد نامعتبر! لطفاً کد جدیدی بگیرید و وارد کنید';
+
+  @override
+  String get secureOtpDeactivated => 'حفاظت با رمز عبور غیرفعال است';
 
   @override
   String get securePassword => 'رمز عبور (عبارت بازیابی)';

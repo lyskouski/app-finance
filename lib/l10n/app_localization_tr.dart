@@ -446,6 +446,9 @@ class AppLocalizationsTr extends AppLocalizations {
   String get daySunday => 'Pazar';
 
   @override
+  String get deactivateAction => 'Parola Korumasını devre dışı bırak';
+
+  @override
   String get debitCard => 'Banka Kartı';
 
   @override
@@ -891,6 +894,9 @@ class AppLocalizationsTr extends AppLocalizations {
   @override
   String get secureOtpCodeInvalid =>
       'Geçersiz! Lütfen yeni bir kod oluşturun ve girin';
+
+  @override
+  String get secureOtpDeactivated => 'Parola Koruması devre dışı bırakıldı';
 
   @override
   String get securePassword => 'Parola (Kurtarma İfadesi)';

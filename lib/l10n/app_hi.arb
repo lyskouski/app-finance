@@ -186,6 +186,7 @@
     "dayStartOfMonth": "महीने की शुरुआत",
     "dayStartOfWeek": "सप्ताह की शुरुआत",
     "daySunday": "रविवार",
+    "deactivateAction": "पासवर्ड सुरक्षा अक्षम करें",
     "debitCard": "डेबिट कार्ड",
     "def": "'{value}' के लिए डिफ़ॉल्ट मान",
     "@def": {
@@ -378,6 +379,7 @@
     "searchTooltip": "खोज",
     "secureOtpCode": "एक बार के लिए पासवर्ड कोड",
     "secureOtpCodeInvalid": "अमान्य! कृपया एक नया कोड प्राप्त करें और इसे दर्ज करें",
+    "secureOtpDeactivated": "पासवर्ड सुरक्षा अक्षम है",
     "securePassword": "पासवर्ड (रिकवरी फ्रेज़)",
     "securePasswordEmpty": "पासवर्ड खाली नहीं हो सकता!",
     "securePasswordNotMatch": "पासवर्ड मेल नहीं खाते!",

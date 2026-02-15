@@ -186,6 +186,7 @@
     "dayStartOfMonth": "Ayın başlangıcı",
     "dayStartOfWeek": "Hafta başı",
     "daySunday": "Pazar",
+    "deactivateAction": "Parola Korumasını devre dışı bırak",
     "debitCard": "Banka Kartı",
     "def": "'{value}' için Varsayılan Değer",
     "@def": {
@@ -378,6 +379,7 @@
     "searchTooltip": "Aramak",
     "secureOtpCode": "Bir Defalık Parola Kodu",
     "secureOtpCodeInvalid": "Geçersiz! Lütfen yeni bir kod oluşturun ve girin",
+    "secureOtpDeactivated": "Parola Koruması devre dışı bırakıldı",
     "securePassword": "Parola (Kurtarma İfadesi)",
     "securePasswordEmpty": "Şifre boş bırakılamaz!",
     "securePasswordNotMatch": "Şifreler eşleşmiyor!",

@@ -186,6 +186,7 @@
     "dayStartOfMonth": "Begin van de maand",
     "dayStartOfWeek": "Begin van de week",
     "daySunday": "Zondag",
+    "deactivateAction": "Wachtwoordbeveiliging deactiveren",
     "debitCard": "Debetkaart",
     "def": "Standaardwaarde voor '{value}'",
     "@def": {
@@ -378,6 +379,7 @@
     "searchTooltip": "Zoekopdracht",
     "secureOtpCode": "Eenmalig wachtwoordcode",
     "secureOtpCodeInvalid": "Ongeldige code! Kies een nieuwe code en voer deze in",
+    "secureOtpDeactivated": "Wachtwoordbeveiliging is gedeactiveerd",
     "securePassword": "Wachtwoord (herstelzin)",
     "securePasswordEmpty": "Het wachtwoord mag niet leeg zijn!",
     "securePasswordNotMatch": "Wachtwoorden komen niet overeen!",

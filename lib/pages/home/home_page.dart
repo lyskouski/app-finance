@@ -19,6 +19,7 @@ import 'package:app_finance/components/component_recent.dart';
 import 'package:app_finance/components/widgets/bill_ytd_chart.dart';
 import 'package:app_finance/pages/_interfaces/abstract_page_state.dart';
 import 'package:app_finance/pages/home/home_edit_page.dart';
+import 'package:app_finance/pages/home/widgets/security_tab.dart';
 import 'package:app_finance/pages/start/start_page.dart';
 import 'package:app_finance/design/wrapper/grid_layer.dart';
 import 'package:app_finance/pages/home/widgets/init_tab.dart';
@@ -46,6 +47,7 @@ class HomePageState extends AbstractPageState<HomePage> {
   String? toExpand;
   String secret = '';
   bool isEditMode = false;
+  bool isOtpPassed = false;
   late String version;
 
   @override
@@ -176,8 +178,10 @@ class HomePageState extends AbstractPageState<HomePage> {
     }
     return Consumer<AppData>(builder: (context, appState, _) {
       state = appState;
-      if (AppPreferences.get(AppPreferences.prefIsOTP) == AppPreferences.isActive) {
-        // TBD
+      if (AppPreferences.get(AppPreferences.prefIsOTP) == AppPreferences.isActive && !isOtpPassed) {
+        return SecurityTab(
+          onSuccess: () => setState(() => isOtpPassed = true),
+        );
       }
       if (appState.isLoading) {
         return const InitTab();

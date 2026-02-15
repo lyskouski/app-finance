@@ -445,6 +445,9 @@ class AppLocalizationsZh extends AppLocalizations {
   String get daySunday => '周日';
 
   @override
+  String get deactivateAction => '停用密码保护';
+
+  @override
   String get debitCard => '借记卡';
 
   @override
@@ -889,6 +892,9 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String get secureOtpCodeInvalid => '无效！请获取新验证码并输入';
+
+  @override
+  String get secureOtpDeactivated => '密码保护已停用';
 
   @override
   String get securePassword => '密码（恢复短语）';
@@ -1498,6 +1504,9 @@ class AppLocalizationsZhTw extends AppLocalizationsZh {
   String get daySunday => '星期日';
 
   @override
+  String get deactivateAction => '停用密碼保護功能';
+
+  @override
   String get debitCard => '借記卡';
 
   @override
@@ -1942,6 +1951,9 @@ class AppLocalizationsZhTw extends AppLocalizationsZh {
 
   @override
   String get secureOtpCodeInvalid => '無效！請獲取新代碼並輸入';
+
+  @override
+  String get secureOtpDeactivated => '密碼保護功能已停用';
 
   @override
   String get securePassword => '密碼（恢復短語）';

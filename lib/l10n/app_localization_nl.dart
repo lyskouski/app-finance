@@ -447,6 +447,9 @@ class AppLocalizationsNl extends AppLocalizations {
   String get daySunday => 'Zondag';
 
   @override
+  String get deactivateAction => 'Wachtwoordbeveiliging deactiveren';
+
+  @override
   String get debitCard => 'Debetkaart';
 
   @override
@@ -894,6 +897,9 @@ class AppLocalizationsNl extends AppLocalizations {
   @override
   String get secureOtpCodeInvalid =>
       'Ongeldige code! Kies een nieuwe code en voer deze in';
+
+  @override
+  String get secureOtpDeactivated => 'Wachtwoordbeveiliging is gedeactiveerd';
 
   @override
   String get securePassword => 'Wachtwoord (herstelzin)';

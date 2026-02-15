@@ -186,6 +186,7 @@
     "dayStartOfMonth": "بداية الشهر",
     "dayStartOfWeek": "بداية الأسبوع",
     "daySunday": "الأحد",
+    "deactivateAction": "إلغاء تفعيل حماية كلمة المرور",
     "debitCard": "بطاقة الخصم",
     "def": "القيمة الافتراضية لـ '{value}'",
     "@def": {
@@ -378,6 +379,7 @@
     "searchTooltip": "يبحث",
     "secureOtpCode": "رمز كلمة المرور لمرة واحدة",
     "secureOtpCodeInvalid": "غير صالح! يرجى الحصول على رمز جديد وإدخاله",
+    "secureOtpDeactivated": "حماية كلمة المرور معطلة",
     "securePassword": "كلمة المرور (عبارة الاسترداد)",
     "securePasswordEmpty": "لا يمكن أن تكون كلمة المرور فارغة!",
     "securePasswordNotMatch": "كلمتا المرور غير متطابقتين!",

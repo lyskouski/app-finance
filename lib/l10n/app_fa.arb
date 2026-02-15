@@ -186,6 +186,7 @@
     "dayStartOfMonth": "شروع ماه",
     "dayStartOfWeek": "شروع هفته",
     "daySunday": "یکشنبه",
+    "deactivateAction": "غیرفعال کردن حفاظت با رمز عبور",
     "debitCard": "کارت اعتباری",
     "def": "مقدار پیش‌فرض برای '{value}'",
     "@def": {
@@ -378,6 +379,7 @@
     "searchTooltip": "جستجو",
     "secureOtpCode": "کد رمز عبور یکباره",
     "secureOtpCodeInvalid": "کد نامعتبر! لطفاً کد جدیدی بگیرید و وارد کنید",
+    "secureOtpDeactivated": "حفاظت با رمز عبور غیرفعال است",
     "securePassword": "رمز عبور (عبارت بازیابی)",
     "securePasswordEmpty": "رمز عبور نمی‌تواند خالی باشد!",
     "securePasswordNotMatch": "رمزهای عبور مطابقت ندارند!",

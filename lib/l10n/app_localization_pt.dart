@@ -446,6 +446,9 @@ class AppLocalizationsPt extends AppLocalizations {
   String get daySunday => 'Domingo';
 
   @override
+  String get deactivateAction => 'Desativar proteção por palavra-passe';
+
+  @override
   String get debitCard => 'Cartão de débito';
 
   @override
@@ -895,6 +898,10 @@ class AppLocalizationsPt extends AppLocalizations {
   @override
   String get secureOtpCodeInvalid =>
       'Código inválido! Por favor, gere um novo código e insira-o';
+
+  @override
+  String get secureOtpDeactivated =>
+      'A proteção por palavra-passe está desativada';
 
   @override
   String get securePassword => 'Palavra-passe (Frase de Recuperação)';
@@ -1508,6 +1515,9 @@ class AppLocalizationsPtBr extends AppLocalizationsPt {
   String get daySunday => 'Domingo';
 
   @override
+  String get deactivateAction => 'Desativar proteção por senha';
+
+  @override
   String get debitCard => 'Cartão de débito';
 
   @override
@@ -1957,6 +1967,9 @@ class AppLocalizationsPtBr extends AppLocalizationsPt {
   @override
   String get secureOtpCodeInvalid =>
       'Código inválido! Por favor, gere um novo código e insira-o';
+
+  @override
+  String get secureOtpDeactivated => 'A proteção por senha está desativada';
 
   @override
   String get securePassword => 'Senha (Frase de Recuperação)';

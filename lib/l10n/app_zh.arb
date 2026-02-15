@@ -186,6 +186,7 @@
     "dayStartOfMonth": "月初",
     "dayStartOfWeek": "周初",
     "daySunday": "周日",
+    "deactivateAction": "停用密码保护",
     "debitCard": "借记卡",
     "def": "'{value}' 的默认值",
     "@def": {
@@ -378,6 +379,7 @@
     "searchTooltip": "搜索",
     "secureOtpCode": "一次性密码验证码",
     "secureOtpCodeInvalid": "无效！请获取新验证码并输入",
+    "secureOtpDeactivated": "密码保护已停用",
     "securePassword": "密码（恢复短语）",
     "securePasswordEmpty": "密码不能为空！",
     "securePasswordNotMatch": "密码不匹配！",

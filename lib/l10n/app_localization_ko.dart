@@ -445,6 +445,9 @@ class AppLocalizationsKo extends AppLocalizations {
   String get daySunday => '일요일';
 
   @override
+  String get deactivateAction => '비밀번호 보호를 비활성화하세요';
+
+  @override
   String get debitCard => '직불 카드';
 
   @override
@@ -889,6 +892,9 @@ class AppLocalizationsKo extends AppLocalizations {
 
   @override
   String get secureOtpCodeInvalid => '유효하지 않은 코드입니다! 새로운 코드를 받아서 입력해주세요.';
+
+  @override
+  String get secureOtpDeactivated => '비밀번호 보호가 비활성화되었습니다';
 
   @override
   String get securePassword => '비밀번호 (복구 문구)';

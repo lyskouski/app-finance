@@ -446,6 +446,9 @@ class AppLocalizationsUk extends AppLocalizations {
   String get daySunday => 'Неділя';
 
   @override
+  String get deactivateAction => 'Вимкнути захист паролем';
+
+  @override
   String get debitCard => 'Дебетова картка';
 
   @override
@@ -892,6 +895,9 @@ class AppLocalizationsUk extends AppLocalizations {
   @override
   String get secureOtpCodeInvalid =>
       'Неправильно! Будь ласка, візьміть новий код і введіть його';
+
+  @override
+  String get secureOtpDeactivated => 'Захист паролем вимкнено';
 
   @override
   String get securePassword => 'Пароль (Фраза для відновлення)';

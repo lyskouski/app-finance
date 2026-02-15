@@ -186,6 +186,7 @@
     "dayStartOfMonth": "Début du mois",
     "dayStartOfWeek": "Début de la semaine",
     "daySunday": "Dimanche",
+    "deactivateAction": "Désactiver la protection par mot de passe",
     "debitCard": "Carte de débit",
     "def": "Valeur par défaut pour '{value}'",
     "@def": {
@@ -378,6 +379,7 @@
     "searchTooltip": "Recherche",
     "secureOtpCode": "Code de mot de passe à usage unique",
     "secureOtpCodeInvalid": "Code invalide ! Veuillez générer un nouveau code et le saisir",
+    "secureOtpDeactivated": "La protection par mot de passe est désactivée",
     "securePassword": "Mot de passe (Phrase de récupération)",
     "securePasswordEmpty": "Le mot de passe ne peut pas être vide !",
     "securePasswordNotMatch": "Les mots de passe ne correspondent pas !",

@@ -446,6 +446,9 @@ class AppLocalizationsCs extends AppLocalizations {
   String get daySunday => 'Neděle';
 
   @override
+  String get deactivateAction => 'Deaktivovat ochranu heslem';
+
+  @override
   String get debitCard => 'Debetní karta';
 
   @override
@@ -892,6 +895,9 @@ class AppLocalizationsCs extends AppLocalizations {
   @override
   String get secureOtpCodeInvalid =>
       'Neplatné! Získejte nový kód a zadejte jej.';
+
+  @override
+  String get secureOtpDeactivated => 'Ochrana heslem je deaktivována';
 
   @override
   String get securePassword => 'Heslo (obnovovací fráze)';

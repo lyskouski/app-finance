@@ -973,6 +973,12 @@ abstract class AppLocalizations {
   /// **'Sunday'**
   String get daySunday;
 
+  /// No description provided for @deactivateAction.
+  ///
+  /// In en, this message translates to:
+  /// **'Deactivate Password Protection'**
+  String get deactivateAction;
+
   /// No description provided for @debitCard.
   ///
   /// In en, this message translates to:
@@ -1824,6 +1830,12 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Invalid! Please, take fresh code and enter it'**
   String get secureOtpCodeInvalid;
+
+  /// No description provided for @secureOtpDeactivated.
+  ///
+  /// In en, this message translates to:
+  /// **'Password Protection is deactivated'**
+  String get secureOtpDeactivated;
 
   /// No description provided for @securePassword.
   ///

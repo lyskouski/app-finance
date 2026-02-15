@@ -446,6 +446,9 @@ class AppLocalizationsAr extends AppLocalizations {
   String get daySunday => 'الأحد';
 
   @override
+  String get deactivateAction => 'إلغاء تفعيل حماية كلمة المرور';
+
+  @override
   String get debitCard => 'بطاقة الخصم';
 
   @override
@@ -891,6 +894,9 @@ class AppLocalizationsAr extends AppLocalizations {
   @override
   String get secureOtpCodeInvalid =>
       'غير صالح! يرجى الحصول على رمز جديد وإدخاله';
+
+  @override
+  String get secureOtpDeactivated => 'حماية كلمة المرور معطلة';
 
   @override
   String get securePassword => 'كلمة المرور (عبارة الاسترداد)';

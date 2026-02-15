@@ -186,6 +186,7 @@
     "dayStartOfMonth": "Początek miesiąca",
     "dayStartOfWeek": "Początek tygodnia",
     "daySunday": "Niedziela",
+    "deactivateAction": "Wyłącz ochronę hasłem",
     "debitCard": "Karta debetowa",
     "def": "Wartość domyślna dla '{value}'",
     "@def": {
@@ -378,6 +379,7 @@
     "searchTooltip": "Szukaj",
     "secureOtpCode": "Kod jednorazowego hasła",
     "secureOtpCodeInvalid": "Nieprawidłowy kod! Proszę, wygeneruj nowy kod i wprowadź go",
+    "secureOtpDeactivated": "Ochrona hasłem jest wyłączona",
     "securePassword": "Hasło (fraza odzyskiwania)",
     "securePasswordEmpty": "Hasło nie może być puste!",
     "securePasswordNotMatch": "Hasła nie są zgodne!",

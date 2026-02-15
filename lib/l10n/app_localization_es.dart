@@ -447,6 +447,9 @@ class AppLocalizationsEs extends AppLocalizations {
   String get daySunday => 'Domingo';
 
   @override
+  String get deactivateAction => 'Desactivar protección con contraseña';
+
+  @override
   String get debitCard => 'Tarjeta de débito';
 
   @override
@@ -895,6 +898,10 @@ class AppLocalizationsEs extends AppLocalizations {
   @override
   String get secureOtpCodeInvalid =>
       '¡No es válido! Por favor, obtenga un nuevo código e introdúzcalo.';
+
+  @override
+  String get secureOtpDeactivated =>
+      'La protección con contraseña está desactivada';
 
   @override
   String get securePassword => 'Contraseña (Frase de recuperación)';

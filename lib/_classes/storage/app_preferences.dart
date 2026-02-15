@@ -27,6 +27,7 @@ class AppPreferences {
   static const String prefRecoveryKey = 'recoveryKey';
 
   static const String isActive = 'true';
+  static const String isInactive = 'false';
 
   static late SharedPreferences pref;
 
