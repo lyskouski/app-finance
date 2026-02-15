@@ -70,6 +70,9 @@ Která uživatelům umožní bez námahy spravovat své finance a zároveň zaji
 - Export do souboru `XLSX` aplikace Excel
 - Šifrování dat
 - Lokalizace
+- Bezpečnost
+  - Ochrana jednorázovým heslem
+  - Obnovovací kód
 - Uživatelské zkušenosti
   - Konfigurovatelná hlavní stránka (více konfigurací pro sadu `šířka x výška`)
   - Responzivní a přizpůsobivý design

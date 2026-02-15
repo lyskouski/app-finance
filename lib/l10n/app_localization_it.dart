@@ -447,6 +447,9 @@ class AppLocalizationsIt extends AppLocalizations {
   String get daySunday => 'Domenica';
 
   @override
+  String get deactivateAction => 'Disattiva la protezione con password';
+
+  @override
   String get debitCard => 'Carta di debito';
 
   @override
@@ -890,10 +893,38 @@ class AppLocalizationsIt extends AppLocalizations {
   String get searchTooltip => 'Ricerca';
 
   @override
+  String get secureOtpCode => 'Codice password monouso';
+
+  @override
+  String get secureOtpCodeInvalid =>
+      'Codice non valido! Per favore, genera un nuovo codice e inseriscilo';
+
+  @override
+  String get secureOtpDeactivated => 'La protezione con password è disattivata';
+
+  @override
+  String get securePassword => 'Password (frase di recupero)';
+
+  @override
+  String get securePasswordEmpty => 'La password non può essere vuota!';
+
+  @override
+  String get securePasswordNotMatch => 'Le password non corrispondono!';
+
+  @override
+  String get securePasswordRepeat => 'Ripetere la password';
+
+  @override
+  String get securityHeadline => 'Sicurezza';
+
+  @override
   String get settingsBaseHeadline => 'Nozioni di base';
 
   @override
   String get settingsHeadline => 'Impostazioni';
+
+  @override
+  String get settingsSaved => 'Impostazioni salvate!';
 
   @override
   String get skipFromTotals => 'Escludere dai totali';

@@ -446,6 +446,9 @@ class AppLocalizationsTr extends AppLocalizations {
   String get daySunday => 'Pazar';
 
   @override
+  String get deactivateAction => 'Parola Korumasını devre dışı bırak';
+
+  @override
   String get debitCard => 'Banka Kartı';
 
   @override
@@ -886,10 +889,38 @@ class AppLocalizationsTr extends AppLocalizations {
   String get searchTooltip => 'Aramak';
 
   @override
+  String get secureOtpCode => 'Bir Defalık Parola Kodu';
+
+  @override
+  String get secureOtpCodeInvalid =>
+      'Geçersiz! Lütfen yeni bir kod oluşturun ve girin';
+
+  @override
+  String get secureOtpDeactivated => 'Parola Koruması devre dışı bırakıldı';
+
+  @override
+  String get securePassword => 'Parola (Kurtarma İfadesi)';
+
+  @override
+  String get securePasswordEmpty => 'Şifre boş bırakılamaz!';
+
+  @override
+  String get securePasswordNotMatch => 'Şifreler eşleşmiyor!';
+
+  @override
+  String get securePasswordRepeat => 'Parolayı Tekrarla';
+
+  @override
+  String get securityHeadline => 'Güvenlik';
+
+  @override
   String get settingsBaseHeadline => 'Temel Bilgiler';
 
   @override
   String get settingsHeadline => 'Ayarlar';
+
+  @override
+  String get settingsSaved => 'Ayarlar kaydedildi!';
 
   @override
   String get skipFromTotals => 'Toplamlardan hariç tut';

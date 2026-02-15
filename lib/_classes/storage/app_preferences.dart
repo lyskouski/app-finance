@@ -22,6 +22,12 @@ class AppPreferences {
   static const String prefVersion = 'version';
   static const String prefWeekStartDay = 'weekStartDay';
   static const String prefMonthStartDay = 'monthStartDay';
+  static const String prefPrivacyKey = 'privacyKey';
+  static const String prefIsOTP = 'isOTP';
+  static const String prefRecoveryKey = 'recoveryKey';
+
+  static const String isActive = 'true';
+  static const String isInactive = 'false';
 
   static late SharedPreferences pref;
 

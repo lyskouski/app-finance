@@ -446,6 +446,9 @@ class AppLocalizationsFa extends AppLocalizations {
   String get daySunday => 'یکشنبه';
 
   @override
+  String get deactivateAction => 'غیرفعال کردن حفاظت با رمز عبور';
+
+  @override
   String get debitCard => 'کارت اعتباری';
 
   @override
@@ -886,10 +889,38 @@ class AppLocalizationsFa extends AppLocalizations {
   String get searchTooltip => 'جستجو';
 
   @override
+  String get secureOtpCode => 'کد رمز عبور یکباره';
+
+  @override
+  String get secureOtpCodeInvalid =>
+      'کد نامعتبر! لطفاً کد جدیدی بگیرید و وارد کنید';
+
+  @override
+  String get secureOtpDeactivated => 'حفاظت با رمز عبور غیرفعال است';
+
+  @override
+  String get securePassword => 'رمز عبور (عبارت بازیابی)';
+
+  @override
+  String get securePasswordEmpty => 'رمز عبور نمی‌تواند خالی باشد!';
+
+  @override
+  String get securePasswordNotMatch => 'رمزهای عبور مطابقت ندارند!';
+
+  @override
+  String get securePasswordRepeat => 'تکرار رمز عبور';
+
+  @override
+  String get securityHeadline => 'امنیت';
+
+  @override
   String get settingsBaseHeadline => 'مبانی';
 
   @override
   String get settingsHeadline => 'تنظیمات';
+
+  @override
+  String get settingsSaved => 'تنظیمات ذخیره شد!';
 
   @override
   String get skipFromTotals => 'حذف از مجموع';

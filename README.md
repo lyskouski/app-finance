@@ -71,6 +71,9 @@ That empowers users to effortlessly manage their finances while ensuring that no
 - Export to Excel `XLSX` file
 - Data encryption
 - Localization
+- Security
+  - Protection by One-time Password Code
+  - Recovery Code
 - User Experience
   - Configurable Main Page (multiple configurations per `width x height` set)
   - Responsive & Adaptive Design

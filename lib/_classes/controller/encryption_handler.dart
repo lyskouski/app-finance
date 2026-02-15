@@ -15,7 +15,11 @@ class EncryptionHandler {
   static IV get code => IV.fromLength(8);
 
   static String getHash(Map<String, dynamic> data) {
-    return md5.convert(utf8.encode(data.toString())).toString();
+    return getHashString(data.toString());
+  }
+
+  static String getHashString(String data) {
+    return md5.convert(utf8.encode(data)).toString();
   }
 
   static bool doEncrypt() {

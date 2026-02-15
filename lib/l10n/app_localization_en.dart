@@ -446,6 +446,9 @@ class AppLocalizationsEn extends AppLocalizations {
   String get daySunday => 'Sunday';
 
   @override
+  String get deactivateAction => 'Deactivate Password Protection';
+
+  @override
   String get debitCard => 'Debit Card';
 
   @override
@@ -886,10 +889,38 @@ class AppLocalizationsEn extends AppLocalizations {
   String get searchTooltip => 'Search';
 
   @override
+  String get secureOtpCode => 'One-time Password Code';
+
+  @override
+  String get secureOtpCodeInvalid =>
+      'Invalid! Please, take fresh code and enter it';
+
+  @override
+  String get secureOtpDeactivated => 'Password Protection is deactivated';
+
+  @override
+  String get securePassword => 'Password (Recovery Phrase)';
+
+  @override
+  String get securePasswordEmpty => 'Password cannot be empty!';
+
+  @override
+  String get securePasswordNotMatch => 'Passwords do not match!';
+
+  @override
+  String get securePasswordRepeat => 'Repeat Password';
+
+  @override
+  String get securityHeadline => 'Security';
+
+  @override
   String get settingsBaseHeadline => 'Basics';
 
   @override
   String get settingsHeadline => 'Settings';
+
+  @override
+  String get settingsSaved => 'Settings saved!';
 
   @override
   String get skipFromTotals => 'Exclude from Totals';

@@ -445,6 +445,9 @@ class AppLocalizationsJa extends AppLocalizations {
   String get daySunday => '日曜日';
 
   @override
+  String get deactivateAction => 'パスワード保護を無効化します';
+
+  @override
   String get debitCard => 'デビットカード';
 
   @override
@@ -885,10 +888,37 @@ class AppLocalizationsJa extends AppLocalizations {
   String get searchTooltip => '検索';
 
   @override
+  String get secureOtpCode => 'ワンタイムパスワードコード';
+
+  @override
+  String get secureOtpCodeInvalid => '無効なコードです！新しいコードを取得して入力してください';
+
+  @override
+  String get secureOtpDeactivated => 'パスワード保護は無効化されています';
+
+  @override
+  String get securePassword => 'パスワード（回復フレーズ）';
+
+  @override
+  String get securePasswordEmpty => 'パスワードは空欄にできません！';
+
+  @override
+  String get securePasswordNotMatch => 'パスワードが一致しません！';
+
+  @override
+  String get securePasswordRepeat => 'パスワードの再入力';
+
+  @override
+  String get securityHeadline => 'セキュリティ';
+
+  @override
   String get settingsBaseHeadline => '基本設定';
 
   @override
   String get settingsHeadline => '設定';
+
+  @override
+  String get settingsSaved => '設定が保存されました！';
 
   @override
   String get skipFromTotals => '合計から除外する';

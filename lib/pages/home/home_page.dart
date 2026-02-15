@@ -19,6 +19,7 @@ import 'package:app_finance/components/component_recent.dart';
 import 'package:app_finance/components/widgets/bill_ytd_chart.dart';
 import 'package:app_finance/pages/_interfaces/abstract_page_state.dart';
 import 'package:app_finance/pages/home/home_edit_page.dart';
+import 'package:app_finance/pages/home/widgets/security_tab.dart';
 import 'package:app_finance/pages/start/start_page.dart';
 import 'package:app_finance/design/wrapper/grid_layer.dart';
 import 'package:app_finance/pages/home/widgets/init_tab.dart';
@@ -33,6 +34,7 @@ import 'package:flutter_markdown/flutter_markdown.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:package_info_plus/package_info_plus.dart';
 import 'package:provider/provider.dart';
+import 'package:simple_totp_auth/simple_totp_auth.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -43,7 +45,9 @@ class HomePage extends StatefulWidget {
 
 class HomePageState extends AbstractPageState<HomePage> {
   String? toExpand;
+  String secret = '';
   bool isEditMode = false;
+  bool isOtpPassed = false;
   late String version;
 
   @override
@@ -51,6 +55,11 @@ class HomePageState extends AbstractPageState<HomePage> {
     super.initState();
     toExpand = AppPreferences.get(AppPreferences.prefExpand);
     version = AppPreferences.get(AppPreferences.prefVersion) ?? '';
+    secret = AppPreferences.get(AppPreferences.prefPrivacyKey) ?? '';
+    if (secret.isEmpty) {
+      secret = TOTP.generateSecret();
+      AppPreferences.set(AppPreferences.prefPrivacyKey, secret);
+    }
     PackageInfo.fromPlatform().then((PackageInfo value) {
       if (version != value.version) {
         WidgetsBinding.instance.addPostFrameCallback((_) => showModalBottomSheet(
@@ -169,6 +178,11 @@ class HomePageState extends AbstractPageState<HomePage> {
     }
     return Consumer<AppData>(builder: (context, appState, _) {
       state = appState;
+      if (AppPreferences.get(AppPreferences.prefIsOTP) == AppPreferences.isActive && !isOtpPassed) {
+        return SecurityTab(
+          onSuccess: () => setState(() => isOtpPassed = true),
+        );
+      }
       if (appState.isLoading) {
         return const InitTab();
       }

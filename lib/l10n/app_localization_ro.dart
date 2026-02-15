@@ -447,6 +447,9 @@ class AppLocalizationsRo extends AppLocalizations {
   String get daySunday => 'Duminică';
 
   @override
+  String get deactivateAction => 'Dezactivează protecția cu parolă';
+
+  @override
   String get debitCard => 'Card de debit';
 
   @override
@@ -891,10 +894,38 @@ class AppLocalizationsRo extends AppLocalizations {
   String get searchTooltip => 'Căutare';
 
   @override
+  String get secureOtpCode => 'Cod parolă unică';
+
+  @override
+  String get secureOtpCodeInvalid =>
+      'Cod invalid! Vă rugăm să generați un cod nou și să-l introduceți';
+
+  @override
+  String get secureOtpDeactivated => 'Protecția cu parolă este dezactivată';
+
+  @override
+  String get securePassword => 'Parolă (Frază de recuperare)';
+
+  @override
+  String get securePasswordEmpty => 'Parola nu poate fi goală!';
+
+  @override
+  String get securePasswordNotMatch => 'Parolele nu se potrivesc!';
+
+  @override
+  String get securePasswordRepeat => 'Repetă parola';
+
+  @override
+  String get securityHeadline => 'Securitate';
+
+  @override
   String get settingsBaseHeadline => 'Principii de bază';
 
   @override
   String get settingsHeadline => 'Setări';
+
+  @override
+  String get settingsSaved => 'Setări salvate!';
 
   @override
   String get skipFromTotals => 'Excludere din totaluri';

@@ -193,6 +193,7 @@ class InputWrapper extends StatelessWidget {
               hintColor: hintColor,
               formatter: formatter,
               type: inputType ?? TextInputType.text,
+              obscure: inputType == TextInputType.visiblePassword,
             ),
           NamedInputType.listSelector => ListSelector<ListSelectorItem>(
               key: getKey(),

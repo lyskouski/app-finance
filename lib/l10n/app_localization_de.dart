@@ -448,6 +448,9 @@ class AppLocalizationsDe extends AppLocalizations {
   String get daySunday => 'Sonntag';
 
   @override
+  String get deactivateAction => 'Passwortschutz deaktivieren';
+
+  @override
   String get debitCard => 'Debitkarte';
 
   @override
@@ -892,10 +895,38 @@ class AppLocalizationsDe extends AppLocalizations {
   String get searchTooltip => 'Suchen';
 
   @override
+  String get secureOtpCode => 'Einmalpasswortcode';
+
+  @override
+  String get secureOtpCodeInvalid =>
+      'Ungültig! Bitte, neuen Code generieren und eingeben';
+
+  @override
+  String get secureOtpDeactivated => 'Passwortschutz ist deaktiviert';
+
+  @override
+  String get securePassword => 'Passwort (Wiederherstellungsphrase)';
+
+  @override
+  String get securePasswordEmpty => 'Das Passwort darf nicht leer sein!';
+
+  @override
+  String get securePasswordNotMatch => 'Die Passwörter stimmen nicht überein!';
+
+  @override
+  String get securePasswordRepeat => 'Passwort wiederholen';
+
+  @override
+  String get securityHeadline => 'Sicherheit';
+
+  @override
   String get settingsBaseHeadline => 'Grundlagen';
 
   @override
   String get settingsHeadline => 'Einstellungen';
+
+  @override
+  String get settingsSaved => 'Einstellungen gespeichert!';
 
   @override
   String get skipFromTotals => 'Aus den Gesamtwerten ausschließen';

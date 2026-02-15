@@ -70,6 +70,9 @@ Bu, kullanıcıların mali durumlarını zahmetsizce yönetmelerini sağlarken k
 - Excel `XLSX` dosyasına aktarın
 - Veri şifreleme
 - Yerelleştirme
+- Güvenlik
+  - Tek Kullanımlık Şifre Kodu ile Koruma
+  - Kurtarma Kodu
 - Kullanıcı Deneyimi
   - Yapılandırılabilir Ana Sayfa (`genişlik x yükseklik` seti başına birden fazla yapılandırma)
   - Duyarlı ve Uyarlanabilir Tasarım

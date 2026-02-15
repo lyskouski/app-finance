@@ -447,6 +447,9 @@ class AppLocalizationsHi extends AppLocalizations {
   String get daySunday => 'रविवार';
 
   @override
+  String get deactivateAction => 'पासवर्ड सुरक्षा अक्षम करें';
+
+  @override
   String get debitCard => 'डेबिट कार्ड';
 
   @override
@@ -889,10 +892,38 @@ class AppLocalizationsHi extends AppLocalizations {
   String get searchTooltip => 'खोज';
 
   @override
+  String get secureOtpCode => 'एक बार के लिए पासवर्ड कोड';
+
+  @override
+  String get secureOtpCodeInvalid =>
+      'अमान्य! कृपया एक नया कोड प्राप्त करें और इसे दर्ज करें';
+
+  @override
+  String get secureOtpDeactivated => 'पासवर्ड सुरक्षा अक्षम है';
+
+  @override
+  String get securePassword => 'पासवर्ड (रिकवरी फ्रेज़)';
+
+  @override
+  String get securePasswordEmpty => 'पासवर्ड खाली नहीं हो सकता!';
+
+  @override
+  String get securePasswordNotMatch => 'पासवर्ड मेल नहीं खाते!';
+
+  @override
+  String get securePasswordRepeat => 'पासवर्ड दोहराएं';
+
+  @override
+  String get securityHeadline => 'सुरक्षा';
+
+  @override
   String get settingsBaseHeadline => 'मूल बातें';
 
   @override
   String get settingsHeadline => 'समायोजन';
+
+  @override
+  String get settingsSaved => 'सेटिंग्स सहेजी गई!';
 
   @override
   String get skipFromTotals => 'कुल से बाहर रखें';

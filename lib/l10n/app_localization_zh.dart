@@ -445,6 +445,9 @@ class AppLocalizationsZh extends AppLocalizations {
   String get daySunday => '周日';
 
   @override
+  String get deactivateAction => '停用密码保护';
+
+  @override
   String get debitCard => '借记卡';
 
   @override
@@ -885,10 +888,37 @@ class AppLocalizationsZh extends AppLocalizations {
   String get searchTooltip => '搜索';
 
   @override
+  String get secureOtpCode => '一次性密码验证码';
+
+  @override
+  String get secureOtpCodeInvalid => '无效！请获取新验证码并输入';
+
+  @override
+  String get secureOtpDeactivated => '密码保护已停用';
+
+  @override
+  String get securePassword => '密码（恢复短语）';
+
+  @override
+  String get securePasswordEmpty => '密码不能为空！';
+
+  @override
+  String get securePasswordNotMatch => '密码不匹配！';
+
+  @override
+  String get securePasswordRepeat => '重复密码';
+
+  @override
+  String get securityHeadline => '安全';
+
+  @override
   String get settingsBaseHeadline => '基础知识';
 
   @override
   String get settingsHeadline => '设置';
+
+  @override
+  String get settingsSaved => '设置已保存！';
 
   @override
   String get skipFromTotals => '不计入总数';
@@ -1474,6 +1504,9 @@ class AppLocalizationsZhTw extends AppLocalizationsZh {
   String get daySunday => '星期日';
 
   @override
+  String get deactivateAction => '停用密碼保護功能';
+
+  @override
   String get debitCard => '借記卡';
 
   @override
@@ -1914,10 +1947,37 @@ class AppLocalizationsZhTw extends AppLocalizationsZh {
   String get searchTooltip => '搜尋';
 
   @override
+  String get secureOtpCode => '一次性密碼代碼';
+
+  @override
+  String get secureOtpCodeInvalid => '無效！請獲取新代碼並輸入';
+
+  @override
+  String get secureOtpDeactivated => '密碼保護功能已停用';
+
+  @override
+  String get securePassword => '密碼（恢復短語）';
+
+  @override
+  String get securePasswordEmpty => '密碼不能為空！';
+
+  @override
+  String get securePasswordNotMatch => '密碼不匹配！';
+
+  @override
+  String get securePasswordRepeat => '重複密碼';
+
+  @override
+  String get securityHeadline => '安全性';
+
+  @override
   String get settingsBaseHeadline => '基本知識';
 
   @override
   String get settingsHeadline => '設定';
+
+  @override
+  String get settingsSaved => '設定已儲存！';
 
   @override
   String get skipFromTotals => '總計不包括';

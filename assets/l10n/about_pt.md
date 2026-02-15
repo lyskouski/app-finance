@@ -70,6 +70,9 @@ Isto permite aos utilizadores gerir as suas finanças sem esforço, garantindo q
 - Exportar para ficheiro Excel `XLSX`
 - Encriptação de dados
 - Localização
+- Segurança
+  - Proteção por código de senha única
+  - Código de recuperação
 - Experiência do utilizador
   - Página principal configurável (múltiplas configurações por conjunto `largura x altura`)
   - Design responsivo e adaptável

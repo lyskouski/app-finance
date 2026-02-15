@@ -446,6 +446,9 @@ class AppLocalizationsUk extends AppLocalizations {
   String get daySunday => 'Неділя';
 
   @override
+  String get deactivateAction => 'Вимкнути захист паролем';
+
+  @override
   String get debitCard => 'Дебетова картка';
 
   @override
@@ -887,10 +890,38 @@ class AppLocalizationsUk extends AppLocalizations {
   String get searchTooltip => 'Пошук';
 
   @override
+  String get secureOtpCode => 'Код одноразового пароля';
+
+  @override
+  String get secureOtpCodeInvalid =>
+      'Неправильно! Будь ласка, візьміть новий код і введіть його';
+
+  @override
+  String get secureOtpDeactivated => 'Захист паролем вимкнено';
+
+  @override
+  String get securePassword => 'Пароль (Фраза для відновлення)';
+
+  @override
+  String get securePasswordEmpty => 'Пароль не може бути порожнім!';
+
+  @override
+  String get securePasswordNotMatch => 'Паролі не збігаються!';
+
+  @override
+  String get securePasswordRepeat => 'Повторіть пароль';
+
+  @override
+  String get securityHeadline => 'Безпека';
+
+  @override
   String get settingsBaseHeadline => 'Основи';
 
   @override
   String get settingsHeadline => 'Налаштування';
+
+  @override
+  String get settingsSaved => 'Налаштування збережено!';
 
   @override
   String get skipFromTotals => 'Виключити із загальної кількості';

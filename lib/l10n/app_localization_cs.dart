@@ -446,6 +446,9 @@ class AppLocalizationsCs extends AppLocalizations {
   String get daySunday => 'Neděle';
 
   @override
+  String get deactivateAction => 'Deaktivovat ochranu heslem';
+
+  @override
   String get debitCard => 'Debetní karta';
 
   @override
@@ -887,10 +890,38 @@ class AppLocalizationsCs extends AppLocalizations {
   String get searchTooltip => 'Vyhledávání';
 
   @override
+  String get secureOtpCode => 'Jednorázové heslo';
+
+  @override
+  String get secureOtpCodeInvalid =>
+      'Neplatné! Získejte nový kód a zadejte jej.';
+
+  @override
+  String get secureOtpDeactivated => 'Ochrana heslem je deaktivována';
+
+  @override
+  String get securePassword => 'Heslo (obnovovací fráze)';
+
+  @override
+  String get securePasswordEmpty => 'Heslo nesmí být prázdné!';
+
+  @override
+  String get securePasswordNotMatch => 'Hesla se neshodují!';
+
+  @override
+  String get securePasswordRepeat => 'Opakování hesla';
+
+  @override
+  String get securityHeadline => 'Bezpečnost';
+
+  @override
   String get settingsBaseHeadline => 'Základy';
 
   @override
   String get settingsHeadline => 'Nastavení';
+
+  @override
+  String get settingsSaved => 'Nastavení uloženo!';
 
   @override
   String get skipFromTotals => 'Vyloučit ze součtů';

@@ -973,6 +973,12 @@ abstract class AppLocalizations {
   /// **'Sunday'**
   String get daySunday;
 
+  /// No description provided for @deactivateAction.
+  ///
+  /// In en, this message translates to:
+  /// **'Deactivate Password Protection'**
+  String get deactivateAction;
+
   /// No description provided for @debitCard.
   ///
   /// In en, this message translates to:
@@ -1813,6 +1819,54 @@ abstract class AppLocalizations {
   /// **'Search'**
   String get searchTooltip;
 
+  /// No description provided for @secureOtpCode.
+  ///
+  /// In en, this message translates to:
+  /// **'One-time Password Code'**
+  String get secureOtpCode;
+
+  /// No description provided for @secureOtpCodeInvalid.
+  ///
+  /// In en, this message translates to:
+  /// **'Invalid! Please, take fresh code and enter it'**
+  String get secureOtpCodeInvalid;
+
+  /// No description provided for @secureOtpDeactivated.
+  ///
+  /// In en, this message translates to:
+  /// **'Password Protection is deactivated'**
+  String get secureOtpDeactivated;
+
+  /// No description provided for @securePassword.
+  ///
+  /// In en, this message translates to:
+  /// **'Password (Recovery Phrase)'**
+  String get securePassword;
+
+  /// No description provided for @securePasswordEmpty.
+  ///
+  /// In en, this message translates to:
+  /// **'Password cannot be empty!'**
+  String get securePasswordEmpty;
+
+  /// No description provided for @securePasswordNotMatch.
+  ///
+  /// In en, this message translates to:
+  /// **'Passwords do not match!'**
+  String get securePasswordNotMatch;
+
+  /// No description provided for @securePasswordRepeat.
+  ///
+  /// In en, this message translates to:
+  /// **'Repeat Password'**
+  String get securePasswordRepeat;
+
+  /// No description provided for @securityHeadline.
+  ///
+  /// In en, this message translates to:
+  /// **'Security'**
+  String get securityHeadline;
+
   /// No description provided for @settingsBaseHeadline.
   ///
   /// In en, this message translates to:
@@ -1824,6 +1878,12 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Settings'**
   String get settingsHeadline;
+
+  /// No description provided for @settingsSaved.
+  ///
+  /// In en, this message translates to:
+  /// **'Settings saved!'**
+  String get settingsSaved;
 
   /// No description provided for @skipFromTotals.
   ///
