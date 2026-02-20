@@ -28,6 +28,6 @@ parts:
       - zenity
     source: .
     plugin: flutter
-    build-packages: [libgtk-3-dev, ninja-build, clang]
+    build-packages: [libgtk-3-dev, ninja-build, clang, lld]
     stage-packages: [libgtk-3-0, ibus-gtk3, libpulse0]
     flutter-target: lib/main.dart
