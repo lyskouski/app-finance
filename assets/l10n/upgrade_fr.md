@@ -2,6 +2,9 @@
 
 _La liste complète des mises à jour peut être consultée via l'élément de navigation "À propos" du bouton "Conseils"._
 
+### 6.6.1
+- Sécurité : ajout d'une protection par mot de passe à usage unique
+
 ### 6.5.0
 - Introduction de l'hypothèse/prévision de catégorie budgétaire pour les factures
 

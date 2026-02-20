@@ -2,6 +2,9 @@
 
 _Güncellemelerin tam listesi “İpuçları” düğmesindeki “Hakkında” gezinti öğesi aracılığıyla görüntülenebilir._
 
+### 6.6.1
+- Güvenlik: Tek Kullanımlık Şifre Koruması Ekleme
+
 ### 6.5.0
 - Faturalar için Bütçe Kategorisi varsayımı / tahmini özelliği eklendi
 

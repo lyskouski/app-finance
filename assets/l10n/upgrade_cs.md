@@ -2,6 +2,9 @@
 
 _Úplný seznam aktualizací si můžete prohlédnout v navigační položce „O aplikaci“ na tlačítku „Tipy“._
 
+### 6.6.1
+- Zabezpečení: Přidání ochrany jednorázovým heslem
+
 ### 6.5.0
 - Zavedení předpokladu/předpovědi rozpočtové kategorie pro účty
 

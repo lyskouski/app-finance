@@ -2,6 +2,9 @@
 
 _A lista completa de atualizações pode ser visualizada no item de navegação "Sobre" no botão "Dicas"._
 
+### 6.6.1
+- Segurança: Adicionando proteção por senha de uso único
+
 ### 6.5.0
 - Introdução da previsão/estimativa da categoria orçamentária para contas
 

@@ -2,6 +2,9 @@
 
 _Yeniləmələrin tam siyahısına "İpucu" düyməsindəki "Haqqında" naviqasiya elementi vasitəsilə baxmaq olar._
 
+### 6.6.1
+- Təhlükəsizlik: Birdəfəlik şifrə qorumasının əlavə edilməsi
+
 ### 6.5.0
 - Bills üçün Büdcə Kateqoriyasının fərziyyəsi / proqnozunun təqdim edilməsi
 

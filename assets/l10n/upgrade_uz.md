@@ -2,6 +2,9 @@
 
 _Yangilanishlarning toʻliq roʻyxatini “Maslahat” tugmasidagi “Haqida” navigatsiya bandi orqali koʻrish mumkin._
 
+### 6.6.1
+- Xavfsizlik: Bir martalik parol himoyasini qo'shish
+
 ### 6.5.0
 - Pul veksellari uchun Byudjet toifasi taxmini / bashorati bilan tanishish
 

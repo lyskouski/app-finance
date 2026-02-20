@@ -2,6 +2,9 @@
 
 _Lista completă a actualizărilor poate fi vizualizată prin intermediul elementului de navigare „Despre” de pe butonul „Sugestii”._
 
+### 6.6.1
+- Securitate: adăugarea protecției cu parolă unică
+
 ### 6.5.0
 - Introducerea ipotezei/previziunii categoriei bugetare pentru facturi
 

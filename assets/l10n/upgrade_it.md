@@ -3,6 +3,9 @@
 _L'elenco completo degli aggiornamenti può essere consultato tramite la voce di navigazione “Informazioni” del
 pulsante “Suggerimenti”._
 
+### 6.6.1
+- Sicurezza: aggiunta della protezione con password monouso
+
 ### 6.5.0
 - Introduzione dell'ipotesi/previsione della categoria di budget per le fatture
 

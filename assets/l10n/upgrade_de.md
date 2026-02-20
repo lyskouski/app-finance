@@ -2,6 +2,9 @@
 
 _Die vollständige Liste der Updates kann über den Navigationspunkt "Über" auf der Schaltfläche "Hinweise" eingesehen werden._
 
+### 6.6.1
+- Sicherheit: Hinzufügen eines Einmalpasswort-Schutzes
+
 ### 6.5.0
 - Einführung der Annahme/Prognose von Budgetkategorien für Rechnungen
 

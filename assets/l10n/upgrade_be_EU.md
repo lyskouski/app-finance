@@ -2,6 +2,9 @@
 
 _Poŭny spis abnaŭlieńniaŭ možna prahliadzieć u navihacyjnym punkcie «Ab Dadatku» na knopcy «Padkazki»._
 
+### 6.6.1
+- Biaspieka: Dadańnie abarony adnarazovym paroliem
+
 ### 6.5.0
 - Uvodziny ŭ biudžetnuju katehoryju zdahadak/prahnozaŭ dlia hrašovych rachunkaŭ
 
