@@ -3,7 +3,7 @@ base: core22
 version: 1.0.0+1
 summary: Open-source platform-agnostic financial accounting application
 description: |
-  The goal of the solution is to create a financial accounting application that is intuitive, efficient, 
+  The goal of the solution is to create a financial accounting application that is intuitive, efficient,
   and inclusive. That empowers users to effortlessly manage their finances while ensuring that no one is left behind.
 
 grade: stable
@@ -18,7 +18,7 @@ apps:
     plugs: [home, desktop, desktop-legacy, network, network-bind, opengl, x11, audio-playback]
     extensions: [gnome]
 
-parts:  
+parts:
   zenity:
     plugin: nil
     stage-packages:
@@ -28,6 +28,6 @@ parts:
       - zenity
     source: .
     plugin: flutter
-    build-packages: [libgtk-3-dev, ninja-build]
+    build-packages: [libgtk-3-dev, ninja-build, clang]
     stage-packages: [libgtk-3-0, ibus-gtk3, libpulse0]
     flutter-target: lib/main.dart
