@@ -2,6 +2,9 @@
 
 _La lista completa de actualizaciones puede consultarse en el menú "Acerca de" del botón "Sugerencias"._
 
+### 6.6.1
+- Seguridad: añadir protección con contraseña de un solo uso.
+
 ### 6.5.0
 - Introducción de la suposición/predicción de la categoría presupuestaria para las facturas
 

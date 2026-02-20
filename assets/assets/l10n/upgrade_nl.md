@@ -2,6 +2,9 @@
 
 _De volledige lijst met updates kan worden bekeken via het navigatie-item “Over” op de knop “Hints”._
 
+### 6.6.1
+- Beveiliging: eenmalige wachtwoordbeveiliging toevoegen
+
 ### 6.5.0
 - Introductie van budgetcategorieveronderstelling/-voorspelling voor rekeningen
 

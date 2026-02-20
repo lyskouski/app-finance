@@ -2,6 +2,9 @@
 
 _Pełną listę aktualizacji można wyświetlić za pomocą elementu nawigacyjnego "O aplikacji" na przycisku "Wskazówki"._
 
+### 6.6.1
+- Bezpieczeństwo: dodanie ochrony za pomocą jednorazowego hasła
+
 ### 6.5.0
 - Wprowadzenie założenia/prognozy kategorii budżetowej dla rachunków
 

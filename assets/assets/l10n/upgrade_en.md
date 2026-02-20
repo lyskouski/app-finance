@@ -2,6 +2,9 @@
 
 _The full list of updates can be viewed via the "About" navigation item on the "Hints" button._
 
+### 6.6.1
+- Security: Adding One-Time Password Protection
+
 ### 6.5.0
 - Introducing Budget Category assumption / prediction for Bills
 

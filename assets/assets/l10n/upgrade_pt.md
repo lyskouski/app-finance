@@ -2,6 +2,9 @@
 
 _A lista completa de actualizações pode ser consultada através do item de navegação "Acerca" no botão "Sugestões"._
 
+### 6.6.1
+- Segurança: Adicionar proteção por palavra-passe única
+
 ### 6.5.0
 - Introdução da suposição/previsão da categoria orçamental para contas
 
