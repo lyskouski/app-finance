@@ -3,7 +3,7 @@ import java.io.FileInputStream
 import java.io.InputStreamReader
 
 plugins {
-    id("com.android.application")
+    id("com.android.application") version "8.9.1"
     // START: FlutterFire Configuration
     id("com.google.gms.google-services")
     id("com.google.firebase.crashlytics")
