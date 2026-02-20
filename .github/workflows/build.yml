@@ -164,7 +164,7 @@ jobs:
       - name: Set Xcode version
         if: matrix.target == 'iOS'
         run: |
-          sudo xcode-select -s /Applications/Xcode_26.app
+          sudo xcode-select -s /Applications/Xcode_26.app/Contents/Developer
           xcodebuild -downloadPlatform iOS -exportPath ./ -buildVersion 26.0
           DMG_FILE=$(ls iphonesimulator_*.dmg | head -n 1)
           xcodebuild -importPlatform "$DMG_FILE"
