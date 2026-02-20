@@ -35,7 +35,6 @@ modules:
       - export XDG_DATA_DIRS="/var/lib/flatpak/exports/share:$XDG_DATA_DIRS"
       - install -Dm644 /app/Fingrom/com.tercad.fingrom.svg /app/share/icons/hicolor/scalable/apps/com.tercad.fingrom.svg
       - install -Dm644 /app/Fingrom/com.tercad.fingrom.desktop /app/share/applications/com.tercad.fingrom.desktop
-      - install -Dm644 com.tercad.fingrom.metainfo.xml /app/share/appdata/com.tercad.fingrom.metainfo.xml
     sources:
       - type: file
         url: https://github.com/lyskouski/app-finance/releases/download/v{VERSION}/fingrom_Linux.tar.gz
