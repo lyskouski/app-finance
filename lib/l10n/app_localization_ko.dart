@@ -927,6 +927,9 @@ class AppLocalizationsKo extends AppLocalizations {
   String get skipTooltip => '단계 건너뛰기';
 
   @override
+  String get sortTooltip => '항목 정렬';
+
+  @override
   String get spent => '지출';
 
   @override

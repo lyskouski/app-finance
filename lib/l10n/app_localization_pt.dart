@@ -934,6 +934,9 @@ class AppLocalizationsPt extends AppLocalizations {
   String get skipTooltip => 'Saltar passo(s)';
 
   @override
+  String get sortTooltip => 'Ordenar itens';
+
+  @override
   String get spent => 'gasto';
 
   @override
@@ -2000,6 +2003,9 @@ class AppLocalizationsPtBr extends AppLocalizationsPt {
 
   @override
   String get skipTooltip => 'Pular etapa(s)';
+
+  @override
+  String get sortTooltip => 'Ordenar itens';
 
   @override
   String get spent => 'gasto';

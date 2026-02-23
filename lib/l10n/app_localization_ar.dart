@@ -929,6 +929,9 @@ class AppLocalizationsAr extends AppLocalizations {
   String get skipTooltip => 'تخطي الخطوة (الخطوات)';
 
   @override
+  String get sortTooltip => 'فرز العناصر';
+
+  @override
   String get spent => 'المستهلكة';
 
   @override

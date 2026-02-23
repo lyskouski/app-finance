@@ -932,6 +932,9 @@ class AppLocalizationsHi extends AppLocalizations {
   String get skipTooltip => 'चरण छोड़ें';
 
   @override
+  String get sortTooltip => 'आइटम्स को क्रमबद्ध करें';
+
+  @override
   String get spent => 'खर्च किया';
 
   @override

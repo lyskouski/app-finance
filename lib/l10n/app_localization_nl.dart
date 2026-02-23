@@ -932,6 +932,9 @@ class AppLocalizationsNl extends AppLocalizations {
   String get skipTooltip => 'Stap(pen) overslaan';
 
   @override
+  String get sortTooltip => 'Sorteer items';
+
+  @override
   String get spent => 'uitgegeven';
 
   @override

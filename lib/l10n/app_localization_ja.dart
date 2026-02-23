@@ -927,6 +927,9 @@ class AppLocalizationsJa extends AppLocalizations {
   String get skipTooltip => 'ステップをスキップする';
 
   @override
+  String get sortTooltip => 'アイテムを並べ替える';
+
+  @override
   String get spent => '使用済み';
 
   @override

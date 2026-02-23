@@ -390,6 +390,7 @@
     "settingsSaved": "Settings saved!",
     "skipFromTotals": "Exclude from Totals",
     "skipTooltip": "Skip Step(s)",
+    "sortTooltip": "Sort Items",
     "spent": "spent",
     "splitCancelTooltip": "Cancel Split per Month",
     "splitTooltip": "Declare Limits per Month",

@@ -936,6 +936,9 @@ class AppLocalizationsUz extends AppLocalizations {
   String get skipTooltip => 'Qadam(lar)ni o‘tkazib yuborish';
 
   @override
+  String get sortTooltip => 'Elementlarni saralash';
+
+  @override
   String get spent => 'sarflangan';
 
   @override

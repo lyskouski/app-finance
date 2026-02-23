@@ -929,6 +929,9 @@ class AppLocalizationsTr extends AppLocalizations {
   String get skipTooltip => 'Adım(lar)ı Atla';
 
   @override
+  String get sortTooltip => 'Öğeleri Sırala';
+
+  @override
   String get spent => 'harcandı';
 
   @override

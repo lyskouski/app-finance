@@ -1897,6 +1897,12 @@ abstract class AppLocalizations {
   /// **'Skip Step(s)'**
   String get skipTooltip;
 
+  /// No description provided for @sortTooltip.
+  ///
+  /// In en, this message translates to:
+  /// **'Sort Items'**
+  String get sortTooltip;
+
   /// No description provided for @spent.
   ///
   /// In en, this message translates to:

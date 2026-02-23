@@ -930,6 +930,9 @@ class AppLocalizationsPl extends AppLocalizations {
   String get skipTooltip => 'Pomiń kroki';
 
   @override
+  String get sortTooltip => 'Sortuj elementy';
+
+  @override
   String get spent => 'zużyty';
 
   @override

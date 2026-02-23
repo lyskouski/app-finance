@@ -933,6 +933,9 @@ class AppLocalizationsIt extends AppLocalizations {
   String get skipTooltip => 'Salta i passi';
 
   @override
+  String get sortTooltip => 'Ordina elementi';
+
+  @override
   String get spent => 'speso';
 
   @override

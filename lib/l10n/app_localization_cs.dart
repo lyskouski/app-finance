@@ -930,6 +930,9 @@ class AppLocalizationsCs extends AppLocalizations {
   String get skipTooltip => 'Vynechat krok(y)';
 
   @override
+  String get sortTooltip => 'Seřadit položky';
+
+  @override
   String get spent => 'strávil';
 
   @override

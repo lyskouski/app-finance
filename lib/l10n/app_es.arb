@@ -390,6 +390,7 @@
     "settingsSaved": "¡Configuración guardada!",
     "skipFromTotals": "Excluir de los totales",
     "skipTooltip": "Saltar Paso(s)",
+    "sortTooltip": "Ordenar elementos",
     "spent": "gastado",
     "splitCancelTooltip": "Anular división por mes",
     "splitTooltip": "Declarar límites por mes",

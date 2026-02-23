@@ -72,6 +72,7 @@ class BudgetPageState extends AbstractPageState<BudgetPage> {
   Widget buildContent(BuildContext context, BoxConstraints constraints) {
     final items = _getItems();
     final design = Provider.of<AppDesign>(context, listen: false);
+    // if sorting else
     if (design.value == AppDesignType.germany) {
       items.list.sort((a, b) => a.title.compareTo(b.title));
     }
@@ -88,6 +89,7 @@ class BudgetPageState extends AbstractPageState<BudgetPage> {
             width: width,
             total: items.total,
             title: '${AppLocale.labels.budgetHeadline}, ${AppLocale.labels.left}',
+            sortRoute: AppRoute.sortingRoute,
           ),
           ThemeHelper.hIndent,
           if (widthCount > 2) HeaderWidget(count: widthCount, width: width),

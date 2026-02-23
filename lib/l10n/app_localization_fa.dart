@@ -929,6 +929,9 @@ class AppLocalizationsFa extends AppLocalizations {
   String get skipTooltip => 'رد شدن از مرحله(های)';
 
   @override
+  String get sortTooltip => 'مرتب سازی آیتم ها';
+
+  @override
   String get spent => 'صرف کرد';
 
   @override

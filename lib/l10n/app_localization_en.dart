@@ -929,6 +929,9 @@ class AppLocalizationsEn extends AppLocalizations {
   String get skipTooltip => 'Skip Step(s)';
 
   @override
+  String get sortTooltip => 'Sort Items';
+
+  @override
   String get spent => 'spent';
 
   @override

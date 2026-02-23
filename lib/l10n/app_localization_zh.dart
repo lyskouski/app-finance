@@ -927,6 +927,9 @@ class AppLocalizationsZh extends AppLocalizations {
   String get skipTooltip => '跳过步骤';
 
   @override
+  String get sortTooltip => '排序项目';
+
+  @override
   String get spent => '已花费';
 
   @override
@@ -1984,6 +1987,9 @@ class AppLocalizationsZhTw extends AppLocalizationsZh {
 
   @override
   String get skipTooltip => '跳過步驟';
+
+  @override
+  String get sortTooltip => '排序項目';
 
   @override
   String get spent => '花費';

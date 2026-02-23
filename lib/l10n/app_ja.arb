@@ -390,6 +390,7 @@
     "settingsSaved": "設定が保存されました！",
     "skipFromTotals": "合計から除外する",
     "skipTooltip": "ステップをスキップする",
+    "sortTooltip": "アイテムを並べ替える",
     "spent": "使用済み",
     "splitCancelTooltip": "月ごとの分割を取り消す",
     "splitTooltip": "月ごとの制限を宣言する",

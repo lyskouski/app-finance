@@ -930,6 +930,9 @@ class AppLocalizationsUk extends AppLocalizations {
   String get skipTooltip => 'Пропустити крок(і)';
 
   @override
+  String get sortTooltip => 'Сортувати елементи';
+
+  @override
   String get spent => 'патр.';
 
   @override

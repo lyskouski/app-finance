@@ -390,6 +390,7 @@
     "settingsSaved": "Paramètres enregistrés !",
     "skipFromTotals": "Exclure des totaux",
     "skipTooltip": "Sauter étape(s)",
+    "sortTooltip": "Trier les éléments",
     "spent": "dépensé",
     "splitCancelTooltip": "Annuler le fractionnement par mois",
     "splitTooltip": "Déclarer des limites par mois",

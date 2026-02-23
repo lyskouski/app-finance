@@ -931,6 +931,9 @@ class AppLocalizationsBe extends AppLocalizations {
   String get skipTooltip => 'Прапусьціць крок(і)';
 
   @override
+  String get sortTooltip => 'Сартаваць элементы';
+
+  @override
   String get spent => 'патр.';
 
   @override
@@ -1993,6 +1996,9 @@ class AppLocalizationsBeEu extends AppLocalizationsBe {
 
   @override
   String get skipTooltip => 'Prapuścić Krok(i)';
+
+  @override
+  String get sortTooltip => 'Sartavać eliemienty';
 
   @override
   String get spent => 'patr.';

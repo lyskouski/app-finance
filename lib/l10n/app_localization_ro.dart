@@ -934,6 +934,9 @@ class AppLocalizationsRo extends AppLocalizations {
   String get skipTooltip => 'Sari peste pas(e)';
 
   @override
+  String get sortTooltip => 'Sortați elementele';
+
+  @override
   String get spent => 'cheltuite';
 
   @override
