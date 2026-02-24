@@ -8,6 +8,7 @@ import 'package:app_finance/_classes/herald/app_design.dart';
 import 'package:app_finance/_classes/herald/app_locale.dart';
 import 'package:app_finance/_classes/herald/app_palette.dart';
 import 'package:app_finance/_classes/herald/app_purchase.dart';
+import 'package:app_finance/_classes/herald/app_sorting.dart';
 import 'package:app_finance/_classes/herald/app_start_of_month.dart';
 import 'package:app_finance/_classes/herald/app_sync.dart';
 import 'package:app_finance/_classes/herald/app_theme.dart';
@@ -126,6 +127,9 @@ void main() async {
           ),
           ChangeNotifierProvider<AppStartOfMonth>(
             create: (_) => AppStartOfMonth(),
+          ),
+          ChangeNotifierProvider<AppSorting>(
+            create: (_) => AppSorting(),
           ),
         ],
         child: MyApp(platform: platform),

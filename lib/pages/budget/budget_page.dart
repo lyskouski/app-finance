@@ -17,6 +17,7 @@ import 'package:app_finance/pages/budget/widgets/budget_line_widget.dart';
 import 'package:app_finance/pages/budget/widgets/header_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_currency_picker/flutter_currency_picker.dart';
+import 'package:provider/provider.dart';
 
 class BudgetPage extends StatefulWidget {
   final String? search;
@@ -69,7 +70,8 @@ class BudgetPageState extends AbstractPageState<BudgetPage> {
   @override
   Widget buildContent(BuildContext context, BoxConstraints constraints) {
     final items = _getItems();
-    items.list.sort(AppSorting(context).sort);
+    final sorting = Provider.of<AppSorting>(context, listen: true);
+    items.list.sort(sorting.getSortFunction(context));
     final width = ThemeHelper.getWidth(context, 4, constraints);
     final indent = ThemeHelper.getIndent();
     final widthCount = ThemeHelper.getWidthCount(constraints, context);

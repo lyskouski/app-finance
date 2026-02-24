@@ -18,14 +18,14 @@ enum AppSortingType {
 class SortingType {
   static List<ListSelectorItem> getList() {
     return [
-      ListSelectorItem(id: AppSortingType.amountDesc.toString(), name: AppLocale.labels.sortingAmountDesc),
-      ListSelectorItem(id: AppSortingType.amountAsc.toString(), name: AppLocale.labels.sortingAmountAsc),
-      ListSelectorItem(id: AppSortingType.createdAtDesc.toString(), name: AppLocale.labels.sortingCreatedAtDesc),
-      ListSelectorItem(id: AppSortingType.createdAtAsc.toString(), name: AppLocale.labels.sortingCreatedAtAsc),
-      ListSelectorItem(id: AppSortingType.titleDesc.toString(), name: AppLocale.labels.sortingTitleDesc),
-      ListSelectorItem(id: AppSortingType.titleAsc.toString(), name: AppLocale.labels.sortingTitleAsc),
-      ListSelectorItem(id: AppSortingType.updatedAtDesc.toString(), name: AppLocale.labels.sortingUpdatedAtDesc),
-      ListSelectorItem(id: AppSortingType.updatedAtAsc.toString(), name: AppLocale.labels.sortingUpdatedAtAsc),
+      ListSelectorItem(id: AppSortingType.amountDesc.name, name: AppLocale.labels.sortingAmountDesc),
+      ListSelectorItem(id: AppSortingType.amountAsc.name, name: AppLocale.labels.sortingAmountAsc),
+      ListSelectorItem(id: AppSortingType.createdAtDesc.name, name: AppLocale.labels.sortingCreatedAtDesc),
+      ListSelectorItem(id: AppSortingType.createdAtAsc.name, name: AppLocale.labels.sortingCreatedAtAsc),
+      ListSelectorItem(id: AppSortingType.titleDesc.name, name: AppLocale.labels.sortingTitleDesc),
+      ListSelectorItem(id: AppSortingType.titleAsc.name, name: AppLocale.labels.sortingTitleAsc),
+      ListSelectorItem(id: AppSortingType.updatedAtDesc.name, name: AppLocale.labels.sortingUpdatedAtDesc),
+      ListSelectorItem(id: AppSortingType.updatedAtAsc.name, name: AppLocale.labels.sortingUpdatedAtAsc),
     ];
   }
 

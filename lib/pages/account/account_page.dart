@@ -16,6 +16,7 @@ import 'package:app_finance/design/generic/base_swipe_widget.dart';
 import 'package:app_finance/design/wrapper/tap_widget.dart';
 import 'package:app_finance/pages/account/widgets/header_widget.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class AccountPage extends StatefulWidget {
   final String? search;
@@ -68,7 +69,8 @@ class AccountPageState extends AbstractPageState<AccountPage> {
   @override
   Widget buildContent(BuildContext context, BoxConstraints constraints) {
     final items = _getItems();
-    items.list.sort(AppSorting(context).sort);
+    final sorting = Provider.of<AppSorting>(context, listen: true);
+    items.list.sort(sorting.getSortFunction(context));
     final width = ThemeHelper.getWidth(context, 4, constraints);
     final indent = ThemeHelper.getIndent();
     final widthCount = ThemeHelper.getWidthCount(constraints, context);
@@ -104,8 +106,10 @@ class AccountPageState extends AbstractPageState<AccountPage> {
                     uuid: item.uuid!,
                     child: TapWidget(
                       tooltip: '',
-                      route:
-                          RouteSettings(name: AppRoute.accountViewRoute, arguments: {routeArguments.uuid: item.uuid}),
+                      route: RouteSettings(
+                        name: AppRoute.accountViewRoute,
+                        arguments: {routeArguments.uuid: item.uuid},
+                      ),
                       child: AccountLineWidget(
                         item: item,
                         width: width,
