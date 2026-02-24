@@ -934,6 +934,30 @@ class AppLocalizationsBe extends AppLocalizations {
   String get sortTooltip => 'Сартаваць элементы';
 
   @override
+  String get sortingAmountAsc => 'Сума па ўзрастаньні';
+
+  @override
+  String get sortingAmountDesc => 'Сума па змяншэньні';
+
+  @override
+  String get sortingCreatedAtAsc => 'Дата стварэньня па ўзрастаньні';
+
+  @override
+  String get sortingCreatedAtDesc => 'Дата стварэньня змяншальная';
+
+  @override
+  String get sortingTitleAsc => 'Назва па ўзрастаньні';
+
+  @override
+  String get sortingTitleDesc => 'Назва змяншальная';
+
+  @override
+  String get sortingUpdatedAtAsc => 'Дата абнаўленьня па ўзрастаньні';
+
+  @override
+  String get sortingUpdatedAtDesc => 'Дата абнаўленьня змяншальная';
+
+  @override
   String get spent => 'патр.';
 
   @override
@@ -1999,6 +2023,30 @@ class AppLocalizationsBeEu extends AppLocalizationsBe {
 
   @override
   String get sortTooltip => 'Sartavać eliemienty';
+
+  @override
+  String get sortingAmountAsc => 'Suma pa ŭzrastańni';
+
+  @override
+  String get sortingAmountDesc => 'Suma pa zmianšeńni';
+
+  @override
+  String get sortingCreatedAtAsc => 'Data Stvareńnia Paŭzrostańni';
+
+  @override
+  String get sortingCreatedAtDesc => 'Data Stvareńnia Znižajucy';
+
+  @override
+  String get sortingTitleAsc => 'Nazva Paŭzrostańni';
+
+  @override
+  String get sortingTitleDesc => 'Nazva Znižajucy';
+
+  @override
+  String get sortingUpdatedAtAsc => 'Data Abnavleńnia Paŭzrostańni';
+
+  @override
+  String get sortingUpdatedAtDesc => 'Data Abnavleńnia Znižajucy';
 
   @override
   String get spent => 'patr.';

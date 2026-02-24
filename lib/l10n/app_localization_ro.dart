@@ -937,6 +937,30 @@ class AppLocalizationsRo extends AppLocalizations {
   String get sortTooltip => 'Sortați elementele';
 
   @override
+  String get sortingAmountAsc => 'Suma crescătoare';
+
+  @override
+  String get sortingAmountDesc => 'Suma descrescătoare';
+
+  @override
+  String get sortingCreatedAtAsc => 'Creat la crescător';
+
+  @override
+  String get sortingCreatedAtDesc => 'Creat la descrescător';
+
+  @override
+  String get sortingTitleAsc => 'Titlu crescător';
+
+  @override
+  String get sortingTitleDesc => 'Titlu descrescător';
+
+  @override
+  String get sortingUpdatedAtAsc => 'Actualizat la crescător';
+
+  @override
+  String get sortingUpdatedAtDesc => 'Actualizat la descrescător';
+
+  @override
   String get spent => 'cheltuite';
 
   @override

@@ -937,6 +937,30 @@ class AppLocalizationsPt extends AppLocalizations {
   String get sortTooltip => 'Ordenar itens';
 
   @override
+  String get sortingAmountAsc => 'Valor ascendente';
+
+  @override
+  String get sortingAmountDesc => 'Valor descendente';
+
+  @override
+  String get sortingCreatedAtAsc => 'Criado em ordem crescente';
+
+  @override
+  String get sortingCreatedAtDesc => 'Criado em ordem decrescente';
+
+  @override
+  String get sortingTitleAsc => 'Título em ordem crescente';
+
+  @override
+  String get sortingTitleDesc => 'Título em ordem decrescente';
+
+  @override
+  String get sortingUpdatedAtAsc => 'Atualizado em ordem crescente';
+
+  @override
+  String get sortingUpdatedAtDesc => 'Atualizado em ordem decrescente';
+
+  @override
   String get spent => 'gasto';
 
   @override
@@ -2006,6 +2030,30 @@ class AppLocalizationsPtBr extends AppLocalizationsPt {
 
   @override
   String get sortTooltip => 'Ordenar itens';
+
+  @override
+  String get sortingAmountAsc => 'Valor ascendente';
+
+  @override
+  String get sortingAmountDesc => 'Valor descendente';
+
+  @override
+  String get sortingCreatedAtAsc => 'Criado em ordem crescente';
+
+  @override
+  String get sortingCreatedAtDesc => 'Criado em ordem decrescente';
+
+  @override
+  String get sortingTitleAsc => 'Título em ordem crescente';
+
+  @override
+  String get sortingTitleDesc => 'Título em ordem decrescente';
+
+  @override
+  String get sortingUpdatedAtAsc => 'Atualizado em ordem crescente';
+
+  @override
+  String get sortingUpdatedAtDesc => 'Atualizado em ordem decrescente';
 
   @override
   String get spent => 'gasto';

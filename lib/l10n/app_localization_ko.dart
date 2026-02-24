@@ -930,6 +930,30 @@ class AppLocalizationsKo extends AppLocalizations {
   String get sortTooltip => '항목 정렬';
 
   @override
+  String get sortingAmountAsc => '금액 (오름차순)';
+
+  @override
+  String get sortingAmountDesc => '금액 (내림차순)';
+
+  @override
+  String get sortingCreatedAtAsc => '생성일 (오름차순)';
+
+  @override
+  String get sortingCreatedAtDesc => '생성일 (내림차순)';
+
+  @override
+  String get sortingTitleAsc => '제목 (오름차순)';
+
+  @override
+  String get sortingTitleDesc => '제목 (내림차순)';
+
+  @override
+  String get sortingUpdatedAtAsc => '업데이트 날짜 (오름차순)';
+
+  @override
+  String get sortingUpdatedAtDesc => '업데이트 날짜 (내림차순)';
+
+  @override
   String get spent => '지출';
 
   @override

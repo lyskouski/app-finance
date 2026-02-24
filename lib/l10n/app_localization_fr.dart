@@ -939,6 +939,30 @@ class AppLocalizationsFr extends AppLocalizations {
   String get sortTooltip => 'Trier les éléments';
 
   @override
+  String get sortingAmountAsc => 'Montant croissant';
+
+  @override
+  String get sortingAmountDesc => 'Montant décroissant';
+
+  @override
+  String get sortingCreatedAtAsc => 'Créé le croissant';
+
+  @override
+  String get sortingCreatedAtDesc => 'Créé le décroissant';
+
+  @override
+  String get sortingTitleAsc => 'Titre croissant';
+
+  @override
+  String get sortingTitleDesc => 'Titre décroissant';
+
+  @override
+  String get sortingUpdatedAtAsc => 'Mis à jour le croissant';
+
+  @override
+  String get sortingUpdatedAtDesc => 'Mis à jour le décroissant';
+
+  @override
   String get spent => 'dépensé';
 
   @override

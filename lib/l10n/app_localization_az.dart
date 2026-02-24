@@ -935,6 +935,30 @@ class AppLocalizationsAz extends AppLocalizations {
   String get sortTooltip => 'Elementləri sırala';
 
   @override
+  String get sortingAmountAsc => 'Məbləğ Artan';
+
+  @override
+  String get sortingAmountDesc => 'Məbləğ Enən';
+
+  @override
+  String get sortingCreatedAtAsc => 'Yaradılma Tarixi Artan';
+
+  @override
+  String get sortingCreatedAtDesc => 'Yaradılma Tarixi Enən';
+
+  @override
+  String get sortingTitleAsc => 'Başlıq Artan';
+
+  @override
+  String get sortingTitleDesc => 'Başlıq Enən';
+
+  @override
+  String get sortingUpdatedAtAsc => 'Yenilənmə Tarixi Artan';
+
+  @override
+  String get sortingUpdatedAtDesc => 'Yenilənmə Tarixi Enən';
+
+  @override
   String get spent => 'sərf etdi';
 
   @override

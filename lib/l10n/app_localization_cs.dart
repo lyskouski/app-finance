@@ -933,6 +933,30 @@ class AppLocalizationsCs extends AppLocalizations {
   String get sortTooltip => 'Seřadit položky';
 
   @override
+  String get sortingAmountAsc => 'Částka vzestupně';
+
+  @override
+  String get sortingAmountDesc => 'Částka sestupně';
+
+  @override
+  String get sortingCreatedAtAsc => 'Datum vytvoření vzestupně';
+
+  @override
+  String get sortingCreatedAtDesc => 'Datum vytvoření sestupně';
+
+  @override
+  String get sortingTitleAsc => 'Název vzestupně';
+
+  @override
+  String get sortingTitleDesc => 'Název sestupně';
+
+  @override
+  String get sortingUpdatedAtAsc => 'Datum aktualizace vzestupně';
+
+  @override
+  String get sortingUpdatedAtDesc => 'Datum aktualizace sestupně';
+
+  @override
   String get spent => 'strávil';
 
   @override

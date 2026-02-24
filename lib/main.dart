@@ -55,6 +55,7 @@ import 'package:app_finance/pages/invoice/invoice_view_page.dart';
 import 'package:app_finance/pages/metrics/metrics_page.dart';
 import 'package:app_finance/pages/security/security_page.dart';
 import 'package:app_finance/pages/settings/settings_page.dart';
+import 'package:app_finance/pages/sorting_page.dart';
 import 'package:app_finance/pages/start/start_page.dart';
 import 'package:app_finance/pages/subscription/subscription_page.dart';
 import 'package:firebase_analytics/firebase_analytics.dart';
@@ -214,6 +215,7 @@ class MyAppState extends State<MyApp> {
           AppRoute.settingsRoute => const SettingsPage(),
           AppRoute.startRoute => const StartPage(),
           AppRoute.subscriptionRoute => const SubscriptionPage(),
+          AppRoute.sortingRoute => const SortingPage(),
           _ => const HomePage(),
         };
     return (_) => Directionality(

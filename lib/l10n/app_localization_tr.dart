@@ -113,10 +113,10 @@ class AppLocalizationsTr extends AppLocalizations {
   String get bankAccount => 'Banka Hesabı';
 
   @override
-  String get bill => 'Bill';
+  String get bill => 'Fatura';
 
   @override
-  String get billHeadline => 'Bills';
+  String get billHeadline => 'Faturalar';
 
   @override
   String get billSetTooltip => 'Miktarı Ayarla';
@@ -930,6 +930,30 @@ class AppLocalizationsTr extends AppLocalizations {
 
   @override
   String get sortTooltip => 'Öğeleri Sırala';
+
+  @override
+  String get sortingAmountAsc => 'Miktar Artan';
+
+  @override
+  String get sortingAmountDesc => 'Miktar Azalan';
+
+  @override
+  String get sortingCreatedAtAsc => 'Oluşturulma Tarihi Artan';
+
+  @override
+  String get sortingCreatedAtDesc => 'Oluşturulma Tarihi Azalan';
+
+  @override
+  String get sortingTitleAsc => 'Başlık Artan';
+
+  @override
+  String get sortingTitleDesc => 'Başlık Azalan';
+
+  @override
+  String get sortingUpdatedAtAsc => 'Güncellenme Tarihi Artan';
+
+  @override
+  String get sortingUpdatedAtDesc => 'Güncellenme Tarihi Azalan';
 
   @override
   String get spent => 'harcandı';

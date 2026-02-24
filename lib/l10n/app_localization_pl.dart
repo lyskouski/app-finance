@@ -28,7 +28,7 @@ class AppLocalizationsPl extends AppLocalizations {
   String get accountTo => 'Do konta';
 
   @override
-  String get accountTooltip => 'Otwarte konta';
+  String get accountTooltip => 'Otwórz konto';
 
   @override
   String get accountType => 'Typ konta';
@@ -931,6 +931,30 @@ class AppLocalizationsPl extends AppLocalizations {
 
   @override
   String get sortTooltip => 'Sortuj elementy';
+
+  @override
+  String get sortingAmountAsc => 'Kwota rosnąco';
+
+  @override
+  String get sortingAmountDesc => 'Kwota malejąco';
+
+  @override
+  String get sortingCreatedAtAsc => 'Utworzono rosnąco';
+
+  @override
+  String get sortingCreatedAtDesc => 'Utworzono malejąco';
+
+  @override
+  String get sortingTitleAsc => 'Tytuł rosnąco';
+
+  @override
+  String get sortingTitleDesc => 'Tytuł malejąco';
+
+  @override
+  String get sortingUpdatedAtAsc => 'Aktualizacja rosnąco';
+
+  @override
+  String get sortingUpdatedAtDesc => 'Aktualizacja malejąco';
 
   @override
   String get spent => 'zużyty';

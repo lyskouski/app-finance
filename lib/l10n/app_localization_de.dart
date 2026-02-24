@@ -938,6 +938,30 @@ class AppLocalizationsDe extends AppLocalizations {
   String get sortTooltip => 'Elemente sortieren';
 
   @override
+  String get sortingAmountAsc => 'Betrag aufsteigend';
+
+  @override
+  String get sortingAmountDesc => 'Betrag absteigend';
+
+  @override
+  String get sortingCreatedAtAsc => 'Erstellt am aufsteigend';
+
+  @override
+  String get sortingCreatedAtDesc => 'Erstellt am absteigend';
+
+  @override
+  String get sortingTitleAsc => 'Titel aufsteigend';
+
+  @override
+  String get sortingTitleDesc => 'Titel absteigend';
+
+  @override
+  String get sortingUpdatedAtAsc => 'Aktualisiert am aufsteigend';
+
+  @override
+  String get sortingUpdatedAtDesc => 'Aktualisiert am absteigend';
+
+  @override
   String get spent => 'ausgegeben';
 
   @override

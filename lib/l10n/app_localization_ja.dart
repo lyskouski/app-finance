@@ -930,6 +930,30 @@ class AppLocalizationsJa extends AppLocalizations {
   String get sortTooltip => 'アイテムを並べ替える';
 
   @override
+  String get sortingAmountAsc => '金額（昇順）';
+
+  @override
+  String get sortingAmountDesc => '金額（降順）';
+
+  @override
+  String get sortingCreatedAtAsc => '作成日（昇順）';
+
+  @override
+  String get sortingCreatedAtDesc => '作成日（降順）';
+
+  @override
+  String get sortingTitleAsc => 'タイトル（昇順）';
+
+  @override
+  String get sortingTitleDesc => 'タイトル（降順）';
+
+  @override
+  String get sortingUpdatedAtAsc => '更新日（昇順）';
+
+  @override
+  String get sortingUpdatedAtDesc => '更新日（降順）';
+
+  @override
   String get spent => '使用済み';
 
   @override

@@ -939,6 +939,30 @@ class AppLocalizationsUz extends AppLocalizations {
   String get sortTooltip => 'Elementlarni saralash';
 
   @override
+  String get sortingAmountAsc => 'Summa bo\'yicha o\'sib boradi';
+
+  @override
+  String get sortingAmountDesc => 'Summa bo\'yicha pasayiborak';
+
+  @override
+  String get sortingCreatedAtAsc => 'Yaratilgan sana bo\'yicha o\'sib boradi';
+
+  @override
+  String get sortingCreatedAtDesc => 'Yaratilgan sana bo\'yicha pasayiborak';
+
+  @override
+  String get sortingTitleAsc => 'Sarlavha bo\'yicha o\'sib boradi';
+
+  @override
+  String get sortingTitleDesc => 'Sarlavha bo\'yicha pasayiborak';
+
+  @override
+  String get sortingUpdatedAtAsc => 'Yangilangan sana bo\'yicha o\'sib boradi';
+
+  @override
+  String get sortingUpdatedAtDesc => 'Yangilangan sana bo\'yicha pasayiborak';
+
+  @override
   String get spent => 'sarflangan';
 
   @override
