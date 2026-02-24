@@ -23,6 +23,7 @@ class ListSelectorPage<T extends Object?> extends StatefulWidget {
   final List<ListSelectorItem> options;
   final String tooltip;
   final FntSelectorCallback? itemBuilder;
+  final void Function(T?)? onTap;
 
   const ListSelectorPage({
     super.key,
@@ -30,13 +31,14 @@ class ListSelectorPage<T extends Object?> extends StatefulWidget {
     required this.tooltip,
     this.result,
     this.itemBuilder,
+    this.onTap,
   });
 
   @override
   State<StatefulWidget> createState() => ListSelectorPageState<T>();
 }
 
-class ListSelectorPageState<T extends Object?> extends State<ListSelectorPage> {
+class ListSelectorPageState<T extends Object?> extends State<ListSelectorPage<T>> {
   final controller = TextEditingController();
   late NavigatorState nav;
   dynamic result;
@@ -62,6 +64,14 @@ class ListSelectorPageState<T extends Object?> extends State<ListSelectorPage> {
     options = widget.options.where((e) => e.match(value)).toList();
   }
 
+  void onTap(T? item) {
+    if (widget.onTap != null) {
+      widget.onTap!(item);
+    } else {
+      nav.pop<T>(item);
+    }
+  }
+
   Widget itemBuilder(List<ListSelectorItem> options) =>
       widget.itemBuilder?.call(options, nav) ??
       ListView.builder(
@@ -71,7 +81,7 @@ class ListSelectorPageState<T extends Object?> extends State<ListSelectorPage> {
             tileColor: index % 2 == 0 ? context.colorScheme.primary.withValues(alpha: 0.05) : null,
             hoverColor: context.colorScheme.primary.withValues(alpha: 0.15),
             title: options[index].suggest(context),
-            onTap: () => nav.pop<T>(options[index] as T),
+            onTap: () => onTap(options[index] as T),
           );
         },
       );
@@ -137,7 +147,7 @@ class ListSelectorPageState<T extends Object?> extends State<ListSelectorPage> {
                         withLabel: true,
                         forceFocus: true,
                         onFieldSubmitted: (String value) =>
-                            nav.pop<T>(widget.options.where((e) => e.match(value)).firstOrNull as T?),
+                            onTap(widget.options.where((e) => e.match(value)).firstOrNull as T?),
                       ),
                     ),
                     GridItem(
@@ -151,7 +161,7 @@ class ListSelectorPageState<T extends Object?> extends State<ListSelectorPage> {
                           ),
                         ),
                         icon: const Icon(Icons.clear),
-                        onPressed: () => nav.pop<T?>(null),
+                        onPressed: () => onTap(null),
                       ),
                     ),
                     GridItem(
@@ -160,7 +170,7 @@ class ListSelectorPageState<T extends Object?> extends State<ListSelectorPage> {
                       child: IconButton(
                         tooltip: AppLocale.labels.returnBack,
                         icon: const Icon(Icons.rotate_left_rounded),
-                        onPressed: () => nav.pop<T?>(result as T?),
+                        onPressed: () => onTap(result as T?),
                       ),
                     ),
                   ],
@@ -172,7 +182,7 @@ class ListSelectorPageState<T extends Object?> extends State<ListSelectorPage> {
                 tileColor: context.colorScheme.primary.withValues(alpha: 0.15),
                 hoverColor: context.colorScheme.primary.withValues(alpha: 0.20),
                 title: widget.options.where((e) => e.equal(result)).firstOrNull?.build(context) ?? ThemeHelper.emptyBox,
-                onTap: () => nav.pop<T>(result as T),
+                onTap: () => onTap(result as T?),
               ),
             Expanded(child: Padding(padding: EdgeInsets.all(indent), child: itemBuilder(options))),
           ],

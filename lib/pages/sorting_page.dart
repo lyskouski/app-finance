@@ -2,8 +2,10 @@
 // Use of this source code is governed by a CC BY-NC-ND 4.0 license that can be found in the LICENSE file.
 
 import 'package:app_finance/_classes/herald/app_locale.dart';
+import 'package:app_finance/_classes/storage/app_preferences.dart';
 import 'package:app_finance/_configs/sorting_type.dart';
 import 'package:app_finance/_configs/theme_helper.dart';
+import 'package:app_finance/design/form/list_selector_item.dart';
 import 'package:app_finance/design/form/list_selector_page.dart';
 import 'package:app_finance/pages/_interfaces/abstract_page_state.dart';
 import 'package:flutter/material.dart';
@@ -34,15 +36,23 @@ class SortingPageState extends AbstractPageState<SortingPage> {
   @override
   Widget? getBarLeading(NavigatorState nav) => ThemeHelper.emptyBox;
 
-  FntSelectorCallback? getItemBuilder() => null;
+  void onTap(ListSelectorItem? item, NavigatorState nav) {
+    if (item == null) {
+      AppPreferences.clear(AppPreferences.prefSortingKey);
+    } else {
+      AppPreferences.set(AppPreferences.prefSortingKey, item.id);
+    }
+    nav.pop();
+  }
 
   @override
   Widget buildContent(BuildContext context, BoxConstraints constraints) {
-    return ListSelectorPage(
+    final nav = Navigator.of(context);
+    return ListSelectorPage<ListSelectorItem>(
       options: SortingType.getList(),
-      result: null,
+      result: SortingType.getItem(AppPreferences.get(AppPreferences.prefSortingKey) ?? ''),
       tooltip: AppLocale.labels.sortTooltip,
-      itemBuilder: getItemBuilder(),
+      onTap: (item) => onTap(item, nav),
     );
   }
 }
