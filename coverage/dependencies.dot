@@ -18,7 +18,7 @@ digraph G {
   }
   {
     rank = same; "_configs";
-    _configs_ [label="<0>_CONFIGS_|<account_type>account_type|<design_type>design_type|<firebase_options>firebase_options|<screen_helper>screen_helper|<budget_type>budget_type|<payment_type>payment_type|<custom_text_theme>custom_text_theme|<automation_type>automation_type|<theme_helper>theme_helper|<custom_color_scheme>custom_color_scheme",fillcolor="silver:white", gradientangle=240, style="filled"];
+    _configs_ [label="<0>_CONFIGS_|<account_type>account_type|<design_type>design_type|<firebase_options>firebase_options|<screen_helper>screen_helper|<budget_type>budget_type|<payment_type>payment_type|<custom_text_theme>custom_text_theme|<automation_type>automation_type|<theme_helper>theme_helper|<custom_color_scheme>custom_color_scheme|<sorting_type>sorting_type",fillcolor="silver:white", gradientangle=240, style="filled"];
   }
   {
     rank = same; "pages";
@@ -35,6 +35,10 @@ digraph G {
   {
     rank = same; "pages";
     metrics_widgets [label="<0>METRICS_WIDGETS|<account_tab>account_tab|<bill_tab>bill_tab|<budget_tab>budget_tab",fillcolor="silver:white", gradientangle=240, style="filled"];
+  }
+  {
+    rank = same; "pages";
+    pages_ [label="<0>PAGES_|<sorting_page>sorting_page",fillcolor="silver:white", gradientangle=240, style="filled"];
   }
   {
     rank = same; "pages";
@@ -162,7 +166,7 @@ digraph G {
   }
   {
     rank = same; "_classes";
-    herald [label="<0>HERALD|<app_locale>app_locale|<app_start_of_month>app_start_of_month|<app_theme>app_theme|<app_design>app_design|<app_palette>app_palette|<app_sync>app_sync|<app_start_of_week>app_start_of_week|<app_zoom>app_zoom|<app_purchase>app_purchase",fillcolor="silver:white", gradientangle=240, style="filled"];
+    herald [label="<0>HERALD|<app_locale>app_locale|<app_start_of_month>app_start_of_month|<app_theme>app_theme|<app_design>app_design|<app_palette>app_palette|<app_sync>app_sync|<app_start_of_week>app_start_of_week|<app_zoom>app_zoom|<app_purchase>app_purchase|<app_sorting>app_sorting",fillcolor="silver:white", gradientangle=240, style="filled"];
   }
   {
     rank = same; "_classes";
@@ -241,6 +245,8 @@ digraph G {
   _configs_ -> _configs_ [color="green"];
   _configs_ -> herald [color="green"];
   _configs_ -> _configs_ [color="green"];
+  _configs_ -> herald [color="green"];
+  _configs_ -> form [color="green"];
   subscription_widgets -> controller [color="#F0F0F050"];
   subscription_widgets -> herald [color="#F0F0F050"];
   subscription_widgets -> _configs_ [color="#F0F0F050"];
@@ -299,6 +305,10 @@ digraph G {
   metrics_widgets -> widgets [color="#F0F0F050"];
   metrics_widgets -> generic [color="#F0F0F050"];
   metrics_widgets -> wrapper [color="#F0F0F050"];
+  pages_ -> herald [color="#F0F0F050"];
+  pages_ -> _configs_ [color="#F0F0F050"];
+  pages_ -> form [color="#F0F0F050"];
+  pages_ -> _interfaces [color="#F0F0F050"];
   currency -> controller [color="#F0F0F050"];
   currency -> herald [color="#F0F0F050"];
   currency -> storage [color="#F0F0F050"];
@@ -966,6 +976,9 @@ digraph G {
   herald -> storage [color="green"];
   herald -> storage [color="green"];
   herald -> controller [color="green"];
+  herald -> herald [color="green"];
+  herald -> storage [color="green"];
+  herald -> _configs_ [color="green"];
 
   controller -> herald [color="green"];
   controller -> storage [color="green"];
