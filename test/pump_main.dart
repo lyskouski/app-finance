@@ -4,6 +4,7 @@
 import 'dart:io' as io;
 import 'package:app_finance/_classes/herald/app_design.dart';
 import 'package:app_finance/_classes/herald/app_purchase.dart';
+import 'package:app_finance/_classes/herald/app_sorting.dart';
 import 'package:app_finance/_classes/herald/app_start_of_month.dart';
 import 'package:app_finance/_classes/herald/app_start_of_week.dart';
 import 'package:app_finance/_classes/storage/transaction_log/abstract_storage.dart';
@@ -178,6 +179,9 @@ class PumpMain {
         ),
         ChangeNotifierProvider<AppStartOfMonth>(
           create: (_) => AppStartOfMonth(),
+        ),
+        ChangeNotifierProvider<AppSorting>(
+          create: (_) => AppSorting(),
         ),
       ],
       child: RepaintBoundary(
