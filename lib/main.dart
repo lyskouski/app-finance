@@ -8,6 +8,7 @@ import 'package:app_finance/_classes/herald/app_design.dart';
 import 'package:app_finance/_classes/herald/app_locale.dart';
 import 'package:app_finance/_classes/herald/app_palette.dart';
 import 'package:app_finance/_classes/herald/app_purchase.dart';
+import 'package:app_finance/_classes/herald/app_sorting.dart';
 import 'package:app_finance/_classes/herald/app_start_of_month.dart';
 import 'package:app_finance/_classes/herald/app_sync.dart';
 import 'package:app_finance/_classes/herald/app_theme.dart';
@@ -55,6 +56,7 @@ import 'package:app_finance/pages/invoice/invoice_view_page.dart';
 import 'package:app_finance/pages/metrics/metrics_page.dart';
 import 'package:app_finance/pages/security/security_page.dart';
 import 'package:app_finance/pages/settings/settings_page.dart';
+import 'package:app_finance/pages/sorting_page.dart';
 import 'package:app_finance/pages/start/start_page.dart';
 import 'package:app_finance/pages/subscription/subscription_page.dart';
 import 'package:firebase_analytics/firebase_analytics.dart';
@@ -125,6 +127,9 @@ void main() async {
           ),
           ChangeNotifierProvider<AppStartOfMonth>(
             create: (_) => AppStartOfMonth(),
+          ),
+          ChangeNotifierProvider<AppSorting>(
+            create: (_) => AppSorting(),
           ),
         ],
         child: MyApp(platform: platform),
@@ -214,6 +219,7 @@ class MyAppState extends State<MyApp> {
           AppRoute.settingsRoute => const SettingsPage(),
           AppRoute.startRoute => const StartPage(),
           AppRoute.subscriptionRoute => const SubscriptionPage(),
+          AppRoute.sortingRoute => const SortingPage(),
           _ => const HomePage(),
         };
     return (_) => Directionality(

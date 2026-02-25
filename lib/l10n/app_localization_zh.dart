@@ -927,6 +927,33 @@ class AppLocalizationsZh extends AppLocalizations {
   String get skipTooltip => '跳过步骤';
 
   @override
+  String get sortTooltip => '排序项目';
+
+  @override
+  String get sortingAmountAsc => '金额升序';
+
+  @override
+  String get sortingAmountDesc => '金额降序';
+
+  @override
+  String get sortingCreatedAtAsc => '创建时间升序';
+
+  @override
+  String get sortingCreatedAtDesc => '创建时间降序';
+
+  @override
+  String get sortingTitleAsc => '标题升序';
+
+  @override
+  String get sortingTitleDesc => '标题降序';
+
+  @override
+  String get sortingUpdatedAtAsc => '更新时间升序';
+
+  @override
+  String get sortingUpdatedAtDesc => '更新时间降序';
+
+  @override
   String get spent => '已花费';
 
   @override
@@ -1984,6 +2011,33 @@ class AppLocalizationsZhTw extends AppLocalizationsZh {
 
   @override
   String get skipTooltip => '跳過步驟';
+
+  @override
+  String get sortTooltip => '排序項目';
+
+  @override
+  String get sortingAmountAsc => '金額升序排列';
+
+  @override
+  String get sortingAmountDesc => '金額降序排列';
+
+  @override
+  String get sortingCreatedAtAsc => '建立日期升序排列';
+
+  @override
+  String get sortingCreatedAtDesc => '建立日期降序排列';
+
+  @override
+  String get sortingTitleAsc => '標題升序排列';
+
+  @override
+  String get sortingTitleDesc => '標題降序排列';
+
+  @override
+  String get sortingUpdatedAtAsc => '更新日期升序排列';
+
+  @override
+  String get sortingUpdatedAtDesc => '更新日期降序排列';
 
   @override
   String get spent => '花費';

@@ -1897,6 +1897,60 @@ abstract class AppLocalizations {
   /// **'Skip Step(s)'**
   String get skipTooltip;
 
+  /// No description provided for @sortTooltip.
+  ///
+  /// In en, this message translates to:
+  /// **'Sort Items'**
+  String get sortTooltip;
+
+  /// No description provided for @sortingAmountAsc.
+  ///
+  /// In en, this message translates to:
+  /// **'Amount Ascending'**
+  String get sortingAmountAsc;
+
+  /// No description provided for @sortingAmountDesc.
+  ///
+  /// In en, this message translates to:
+  /// **'Amount Descending'**
+  String get sortingAmountDesc;
+
+  /// No description provided for @sortingCreatedAtAsc.
+  ///
+  /// In en, this message translates to:
+  /// **'Created At Ascending'**
+  String get sortingCreatedAtAsc;
+
+  /// No description provided for @sortingCreatedAtDesc.
+  ///
+  /// In en, this message translates to:
+  /// **'Created At Descending'**
+  String get sortingCreatedAtDesc;
+
+  /// No description provided for @sortingTitleAsc.
+  ///
+  /// In en, this message translates to:
+  /// **'Title Ascending'**
+  String get sortingTitleAsc;
+
+  /// No description provided for @sortingTitleDesc.
+  ///
+  /// In en, this message translates to:
+  /// **'Title Descending'**
+  String get sortingTitleDesc;
+
+  /// No description provided for @sortingUpdatedAtAsc.
+  ///
+  /// In en, this message translates to:
+  /// **'Updated At Ascending'**
+  String get sortingUpdatedAtAsc;
+
+  /// No description provided for @sortingUpdatedAtDesc.
+  ///
+  /// In en, this message translates to:
+  /// **'Updated At Descending'**
+  String get sortingUpdatedAtDesc;
+
   /// No description provided for @spent.
   ///
   /// In en, this message translates to:

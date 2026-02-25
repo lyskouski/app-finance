@@ -20,6 +20,7 @@ class BaseHeaderWidget extends StatelessWidget {
   final String? tooltip;
   final String? route;
   final String? searchRoute;
+  final String? sortRoute;
   final String title;
   final double width;
   final double? total;
@@ -38,6 +39,7 @@ class BaseHeaderWidget extends StatelessWidget {
     this.toExpand = true,
     this.expand,
     this.searchRoute,
+    this.sortRoute,
   }) : assert(hasExpand && expand != null || !hasExpand);
 
   @override
@@ -54,6 +56,7 @@ class BaseHeaderWidget extends StatelessWidget {
     final numStyle = isWide ? textTheme.numberSmall : textTheme.numberLarge;
     final numHeight = ThemeHelper.getTextHeight(Text(total.toString(), style: numStyle));
     final isSearchRoute = searchRoute != null && searchRoute!.isNotEmpty;
+    final isSortRoute = sortRoute != null && sortRoute!.isNotEmpty;
     return TapWidget(
       tooltip: tooltip,
       route: RouteSettings(name: route),
@@ -64,7 +67,7 @@ class BaseHeaderWidget extends StatelessWidget {
         color: colorScheme.inverseSurface.withValues(alpha: 0.1),
         child: GridContainer(
           alignment: AppDesign.getAlignment<MainAxisAlignment>(),
-          rows: [null, ThemeHelper.barHeight, if (hasExpand || isSearchRoute) ThemeHelper.barHeight],
+          rows: [null, ThemeHelper.barHeight, if (hasExpand || isSearchRoute || isSortRoute) ThemeHelper.barHeight],
           columns: [subHeight, null],
           children: [
             GridItem(
@@ -118,13 +121,27 @@ class BaseHeaderWidget extends StatelessWidget {
                 child: ToolbarButtonWidget(
                   borderColor: context.colorScheme.onSecondaryContainer.withValues(alpha: 0.3),
                   offset: bnShift,
-                  selectedIcon: Icons.expand,
                   selectedColor: context.colorScheme.onSecondaryContainer,
                   backgroundColor: context.colorScheme.surface.withValues(alpha: 0.3),
                   icon: Icons.search,
                   color: context.colorScheme.onSecondaryContainer,
                   tooltip: AppLocale.labels.searchTooltip,
                   onPressed: () => nav.pushNamed(searchRoute!),
+                ),
+              ),
+            if (isSortRoute)
+              GridItem(
+                start: const Size(2, 0),
+                end: const Size(3, 2),
+                child: ToolbarButtonWidget(
+                  borderColor: context.colorScheme.onSecondaryContainer.withValues(alpha: 0.3),
+                  offset: bnShift,
+                  selectedColor: context.colorScheme.onSecondaryContainer,
+                  backgroundColor: context.colorScheme.surface.withValues(alpha: 0.3),
+                  icon: Icons.sort,
+                  color: context.colorScheme.onSecondaryContainer,
+                  tooltip: AppLocale.labels.sortTooltip,
+                  onPressed: () => nav.pushNamed(sortRoute!),
                 ),
               ),
           ],

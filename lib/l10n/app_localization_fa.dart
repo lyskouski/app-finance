@@ -929,6 +929,33 @@ class AppLocalizationsFa extends AppLocalizations {
   String get skipTooltip => 'رد شدن از مرحله(های)';
 
   @override
+  String get sortTooltip => 'مرتب سازی آیتم ها';
+
+  @override
+  String get sortingAmountAsc => 'مقدار صعودی';
+
+  @override
+  String get sortingAmountDesc => 'مقدار نزولی';
+
+  @override
+  String get sortingCreatedAtAsc => 'ایجاد شده در صعودی';
+
+  @override
+  String get sortingCreatedAtDesc => 'ایجاد شده در نزولی';
+
+  @override
+  String get sortingTitleAsc => 'عنوان صعودی';
+
+  @override
+  String get sortingTitleDesc => 'عنوان نزولی';
+
+  @override
+  String get sortingUpdatedAtAsc => 'به‌روزرسانی شده در صعودی';
+
+  @override
+  String get sortingUpdatedAtDesc => 'به‌روزرسانی شده در نزولی';
+
+  @override
   String get spent => 'صرف کرد';
 
   @override

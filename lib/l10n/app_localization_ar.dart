@@ -929,6 +929,33 @@ class AppLocalizationsAr extends AppLocalizations {
   String get skipTooltip => 'تخطي الخطوة (الخطوات)';
 
   @override
+  String get sortTooltip => 'فرز العناصر';
+
+  @override
+  String get sortingAmountAsc => 'المبلغ التصاعدي';
+
+  @override
+  String get sortingAmountDesc => 'المبلغ التنازلي';
+
+  @override
+  String get sortingCreatedAtAsc => 'تاريخ الإنشاء تصاعدي';
+
+  @override
+  String get sortingCreatedAtDesc => 'تاريخ الإنشاء تنازلي';
+
+  @override
+  String get sortingTitleAsc => 'العنوان تصاعدي';
+
+  @override
+  String get sortingTitleDesc => 'العنوان تنازلي';
+
+  @override
+  String get sortingUpdatedAtAsc => 'تاريخ التحديث تصاعدي';
+
+  @override
+  String get sortingUpdatedAtDesc => 'تاريخ التحديث تنازلي';
+
+  @override
   String get spent => 'المستهلكة';
 
   @override

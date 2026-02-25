@@ -930,6 +930,33 @@ class AppLocalizationsUk extends AppLocalizations {
   String get skipTooltip => 'Пропустити крок(і)';
 
   @override
+  String get sortTooltip => 'Сортувати елементи';
+
+  @override
+  String get sortingAmountAsc => 'Сума у порядку зростання';
+
+  @override
+  String get sortingAmountDesc => 'Сума у порядку спадання';
+
+  @override
+  String get sortingCreatedAtAsc => 'Створено у порядку зростання';
+
+  @override
+  String get sortingCreatedAtDesc => 'Створено у порядку спадання';
+
+  @override
+  String get sortingTitleAsc => 'Заголовок у порядку зростання';
+
+  @override
+  String get sortingTitleDesc => 'Заголовок у порядку спадання';
+
+  @override
+  String get sortingUpdatedAtAsc => 'Оновлено у порядку зростання';
+
+  @override
+  String get sortingUpdatedAtDesc => 'Оновлено у порядку спадання';
+
+  @override
   String get spent => 'патр.';
 
   @override

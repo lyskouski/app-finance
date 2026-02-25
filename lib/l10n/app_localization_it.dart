@@ -933,6 +933,33 @@ class AppLocalizationsIt extends AppLocalizations {
   String get skipTooltip => 'Salta i passi';
 
   @override
+  String get sortTooltip => 'Ordina elementi';
+
+  @override
+  String get sortingAmountAsc => 'Importo crescente';
+
+  @override
+  String get sortingAmountDesc => 'Importo decrescente';
+
+  @override
+  String get sortingCreatedAtAsc => 'Creato il crescente';
+
+  @override
+  String get sortingCreatedAtDesc => 'Creato il decrescente';
+
+  @override
+  String get sortingTitleAsc => 'Titolo crescente';
+
+  @override
+  String get sortingTitleDesc => 'Titolo decrescente';
+
+  @override
+  String get sortingUpdatedAtAsc => 'Aggiornato il crescente';
+
+  @override
+  String get sortingUpdatedAtDesc => 'Aggiornato il decrescente';
+
+  @override
   String get spent => 'speso';
 
   @override

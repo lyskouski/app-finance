@@ -932,6 +932,33 @@ class AppLocalizationsHi extends AppLocalizations {
   String get skipTooltip => 'चरण छोड़ें';
 
   @override
+  String get sortTooltip => 'आइटम्स को क्रमबद्ध करें';
+
+  @override
+  String get sortingAmountAsc => 'राशि बढ़ती हुई';
+
+  @override
+  String get sortingAmountDesc => 'राशि घटती हुई';
+
+  @override
+  String get sortingCreatedAtAsc => 'निर्मित तिथि बढ़ती हुई';
+
+  @override
+  String get sortingCreatedAtDesc => 'निर्मित तिथि घटती हुई';
+
+  @override
+  String get sortingTitleAsc => 'शीर्षक बढ़ती हुई';
+
+  @override
+  String get sortingTitleDesc => 'शीर्षक घटती हुई';
+
+  @override
+  String get sortingUpdatedAtAsc => 'अद्यतन तिथि बढ़ती हुई';
+
+  @override
+  String get sortingUpdatedAtDesc => 'अद्यतन तिथि घटती हुई';
+
+  @override
   String get spent => 'खर्च किया';
 
   @override

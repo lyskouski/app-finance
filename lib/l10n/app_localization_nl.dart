@@ -932,6 +932,33 @@ class AppLocalizationsNl extends AppLocalizations {
   String get skipTooltip => 'Stap(pen) overslaan';
 
   @override
+  String get sortTooltip => 'Sorteer items';
+
+  @override
+  String get sortingAmountAsc => 'Bedrag oplopend';
+
+  @override
+  String get sortingAmountDesc => 'Bedrag aflopend';
+
+  @override
+  String get sortingCreatedAtAsc => 'Gemaakt op oplopend';
+
+  @override
+  String get sortingCreatedAtDesc => 'Gemaakt op aflopend';
+
+  @override
+  String get sortingTitleAsc => 'Titel oplopend';
+
+  @override
+  String get sortingTitleDesc => 'Titel aflopend';
+
+  @override
+  String get sortingUpdatedAtAsc => 'Bijgewerkt op oplopend';
+
+  @override
+  String get sortingUpdatedAtDesc => 'Bijgewerkt op aflopend';
+
+  @override
   String get spent => 'uitgegeven';
 
   @override

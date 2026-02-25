@@ -929,6 +929,33 @@ class AppLocalizationsEn extends AppLocalizations {
   String get skipTooltip => 'Skip Step(s)';
 
   @override
+  String get sortTooltip => 'Sort Items';
+
+  @override
+  String get sortingAmountAsc => 'Amount Ascending';
+
+  @override
+  String get sortingAmountDesc => 'Amount Descending';
+
+  @override
+  String get sortingCreatedAtAsc => 'Created At Ascending';
+
+  @override
+  String get sortingCreatedAtDesc => 'Created At Descending';
+
+  @override
+  String get sortingTitleAsc => 'Title Ascending';
+
+  @override
+  String get sortingTitleDesc => 'Title Descending';
+
+  @override
+  String get sortingUpdatedAtAsc => 'Updated At Ascending';
+
+  @override
+  String get sortingUpdatedAtDesc => 'Updated At Descending';
+
+  @override
   String get spent => 'spent';
 
   @override
