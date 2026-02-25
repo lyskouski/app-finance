@@ -35,9 +35,12 @@ zastaniecca ŭ baku.
 ### Funkcyjanaĺnasć
 - Buchhaltarski ŭlik (typ rachunku, valiuta/kryptavaliuta)
   - Prostaja hrupoŭka praz `/`-simval (u nazvie) dlia haloŭnaj staronki
+  - Sartavańnie pa ahuĺnaj koĺkasci, datach i nazvach
   - Časopis tranzakcyj
   - Zamarozić sumu pa dacie abnaŭlieńnia (dlia impartu papiaredniaj historyi)
-- Biudžetnyja katehoryi - Prostaja hrupoŭka praz `/`-simval (u nazvie) dlia haloŭnaj staronki
+- Biudžetnyja katehoryi
+  - Prostaja hrupoŭka praz `/`-simval (u nazvie) dlia haloŭnaj staronki
+  - Sartavańnie pa ahuĺnaj koĺkasci, datach i nazvach
   - Z abmiežavańniami:
     - Abnaŭliajecca ŭ pačatku kožnaha miesiaca
     - Naladžvaĺnyja limity ŭ miesiac

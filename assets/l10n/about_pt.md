@@ -34,10 +34,12 @@ Isto permite aos utilizadores gerir as suas finanças sem esforço, garantindo q
 ### Funcionalidade
 - Contabilidade (tipo de conta, moeda/criptomoeda)
   - Agrupamento simples através do símbolo `/` (no nome) para a página principal
+  - Ordenar por totais, datas e títulos
   - Registo de transacções
   - Congelamento do montante por data de atualização (para importar o histórico anterior)
 - Categorias de orçamento
   - Agrupamento simples através do símbolo `/` (no nome) para a página principal
+  - Ordenar por totais, datas e títulos
   - Com limites renovados:
     - Renovado no início de cada mês
     - Limites configuráveis por mês

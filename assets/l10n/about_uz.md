@@ -34,10 +34,12 @@ Bu foydalanuvchilarga o'z mablag'larini osonlikcha boshqarish imkoniyatini berad
 ### Funktsionallik
 - Buxgalteriya hisobi (hisob turi, valyuta/kriptovalyuta)
   - Asosiy sahifa uchun `/`-belgi (nomi) orqali oddiy guruhlash
+  - Jami summalar, sanalar va sarlavhalar bo'yicha saralash
   - Tranzaktsiyalar jurnali
   - Yangilanish sanasi bo'yicha miqdorni muzlatish (oldingi tarixni import qilish uchun)
 - Byudjet toifalari
   - Asosiy sahifa uchun `/`-belgi (nomi) orqali oddiy guruhlash
+  - Jami summalar, sanalar va sarlavhalar bo'yicha saralash
   - Cheklovlarni qayta ko'rib chiqish bilan:
     - Har oyning boshida yangilanadi
     - Oyiga sozlanishi mumkin bo'lgan chegaralar

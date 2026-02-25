@@ -34,10 +34,12 @@ Che permetta agli utenti di gestire le proprie finanze senza sforzo, garantendo 
 ### Funzionalità
 - Contabilità (tipo di conto, valuta/criptovaluta)
   - Raggruppamento semplice tramite il simbolo `/` (nel nome) per la pagina principale
+  - Ordinamento per totali, date e titoli
   - Registro delle transazioni
   - Congelamento dell'importo per data di aggiornamento (per importare la cronologia precedente)
 - Categorie di bilancio
   - Raggruppamento semplice tramite `/`-simbolo (nel nome) per la pagina principale
+  - Ordinamento per totali, date e titoli
   - Con limiti rideterminati:
     - Rinnovati all'inizio di ogni mese
     - Limiti configurabili per mese

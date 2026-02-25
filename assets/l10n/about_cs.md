@@ -34,10 +34,12 @@ Která uživatelům umožní bez námahy spravovat své finance a zároveň zaji
 ### Funkčnost
 - Účtování (typ účtu, měna/kriptoměna)
   - Jednoduché seskupení pomocí `/`-symbolu (v názvu) pro hlavní stránku
+  - Třídění podle součtů, dat a názvů
   - Protokol transakcí
   - Zmrazení částky podle data aktualizace (pro import předchozí historie)
 - Kategorie rozpočtu
   - Jednoduché seskupení pomocí `/`-symbolu (v názvu) pro hlavní stránku
+  - Třídění podle součtů, dat a názvů
   - S limity restartovat:
     - Obnoveno na začátku každého měsíce
     - Konfigurovatelné limity na měsíc

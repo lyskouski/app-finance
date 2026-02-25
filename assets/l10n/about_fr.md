@@ -34,10 +34,12 @@ Elle permet aux utilisateurs de gérer leurs finances sans effort, tout en veill
 ### Fonctionnalité
 - Comptabilité (Type de compte, Devise/Cryptocurrency)
   - Regroupement simple via le symbole `/` (dans le nom) pour la page principale
+  - Tri par totaux, dates et titres
   - Journal des transactions
   - Gel du montant par date de mise à jour (pour importer l'historique précédent)
 - Catégories de budget
   - Regroupement simple via le symbole `/` (dans le nom) pour la page principale
+  - Tri par totaux, dates et titres
   - Avec des limites à respecter :
     - Renouvelé au début de chaque mois
     - Limites configurables par mois

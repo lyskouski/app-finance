@@ -34,10 +34,12 @@ Bu, istifadəçilərə heç kimin geridə qalmamasını təmin etməklə öz mal
 ### Funksionallıq
 - Mühasibat uçotu (Hesab növü, valyuta/kriptovalyuta)
   - Əsas səhifə üçün `/`-simvol (adda) vasitəsilə sadə qruplaşdırma
+  - Ümumi məbləğlər, tarixlər və başlıqlar üzrə sıralama
   - Əməliyyatlar jurnalı
   - Yeniləmə tarixinə görə məbləği dondurun (əvvəlki tarixi idxal etmək üçün)
 - Büdcə Kateqoriyaları
   - Əsas səhifə üçün `/`-simvol (adda) vasitəsilə sadə qruplaşdırma
+  - Ümumi məbləğlər, tarixlər və başlıqlar üzrə sıralama
   - Limitlərlə yenidən:
   - Hər ayın əvvəlində yenilənir
   - Ayda konfiqurasiya edilə bilən məhdudiyyətlər

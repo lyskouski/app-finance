@@ -35,10 +35,12 @@ zurückgelassen wird.
 ### Funktionalität
 - Buchhaltung (Kontotyp, Währung/Kryptowährung)
   - Einfache Gruppierung über `/`-Symbol (im Namen) für die Hauptseite
+  - Sortieren nach Summen, Daten und Titeln
   - Transaktionsprotokoll
   - Einfrieren von Beträgen nach Aktualisierungsdatum (um frühere Historien zu importieren)
 - Budget-Kategorien
   - Einfache Gruppierung über das `/`-Symbol (im Namen) für die Hauptseite
+  - Sortieren nach Summen, Daten und Titeln
   - Mit Limits wiederherstellen:
     - Erneuert am Anfang eines jeden Monats
     - Konfigurierbare Limits pro Monat
