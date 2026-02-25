@@ -34,10 +34,12 @@ Dat stelt gebruikers in staat om moeiteloos hun financiën te beheren en zorgt e
 ### Functionaliteit
 - Boekhouding (Rekeningtype, Valuta/Cryptocurrency)
   - Eenvoudige groepering via `/`-symbool (in naam) voor de hoofdpagina
+  - Sorteren op totalen, datums en titels
   - Logboek transacties
   - Bevries bedrag op Bijwerkdatum (om vorige geschiedenis te importeren)
 - Budget categorieën
   - Eenvoudige groepering via `/`-symbool (in naam) voor de hoofdpagina
+  - Sorteren op totalen, datums en titels
   - Met limieten herstellen:
     - Vernieuwd aan het begin van elke maand
     - Configureerbare limieten per maand

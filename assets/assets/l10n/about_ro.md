@@ -34,10 +34,12 @@ Care permite utilizatorilor să își gestioneze finanțele fără efort, asigur
 ### Funcționalitate
 - Contabilitate (Tip de cont, Monedă/Criptomonedă)
   - Grupare simplă prin simbolul `/` (în nume) pentru pagina principală
+  - Sortare după totaluri, date și titluri
   - Jurnalul tranzacțiilor
   - Înghețarea sumei în funcție de data actualizării (pentru a importa istoricul anterior)
 - Categorii de buget
   - Grupare simplă prin `/`-simbol (în nume) pentru pagina principală
+  - Sortare după totaluri, date și titluri
   - Cu limite restate:
     - Reînnoite la începutul fiecărei luni
     - Limite configurabile pe lună

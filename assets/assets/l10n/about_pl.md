@@ -34,10 +34,12 @@ Dzięki temu użytkownicy mogą bez wysiłku zarządzać swoimi finansami, jedno
 ### Funkcjonalność
 - Księgowość (typ konta, waluta/kryptowaluta)
   - Proste grupowanie za pomocą symbolu `/` (w nazwie) dla strony głównej
+  - Sortowanie według sum, dat i tytułów
   - Dziennik transakcji
   - Zamrożenie kwoty według daty aktualizacji (aby zaimportować poprzednią historię)
 - Kategorie budżetu
   - Proste grupowanie poprzez `/`-symbol (w nazwie) dla strony głównej
+  - Sortowanie według sum, dat i tytułów
   - Z limitami restate:
     - Odnawiane na początku każdego miesiąca
     - Konfigurowalne limity na miesiąc

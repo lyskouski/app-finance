@@ -34,10 +34,12 @@ Que permita a los usuarios gestionar sus finanzas sin esfuerzo, garantizando al 
 ### Funcionalidad
 - Contabilidad (tipo de cuenta, divisa/criptodivisa)
   - Agrupación sencilla mediante el símbolo `/` (en el nombre) para la página principal
+  - Ordenar por totales, fechas y títulos
   - Registro de transacciones
   - Congelar importe por Fecha de actualización (para importar historial anterior)
 - Categorías presupuestarias
   - Agrupación simple mediante el símbolo `/` (en el nombre) para la página principal
+  - Ordenar por totales, fechas y títulos
   - Con actualización de límites:
     - Renovados al principio de cada mes
     - Límites configurables por mes

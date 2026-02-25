@@ -34,10 +34,12 @@ Bu, kullanıcıların mali durumlarını zahmetsizce yönetmelerini sağlarken k
 ### İşlevsellik
 - Muhasebe (Hesap Türü, Para Birimi/Kripto Para)
   - Ana sayfa için `/` sembolü (isimde) aracılığıyla basit gruplama
+  - Toplamlara, tarihlere ve başlıklara göre sıralama
   - İşlem günlüğü
   - Güncelleme tarihine göre tutarı dondurma (önceki geçmişi içe aktarmak için)
 - Bütçe Kategorileri
   - Ana sayfa için `/` sembolü (isimde) aracılığıyla basit gruplama
+  - Toplamlara, tarihlere ve başlıklara göre sıralama
   - Limitler yeniden belirlenmiştir:
     - Her ayın başında yenilenir
     - Aylık yapılandırılabilir limitler

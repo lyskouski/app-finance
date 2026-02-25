@@ -34,10 +34,12 @@ That empowers users to effortlessly manage their finances while ensuring that no
 ### Functionality
 - Accounting (Account Type, Currency/Cryptocurrency)
   - Simple grouping via `/`-symbol (in name) for the main page
+  - Sorting by totals, dates, and titles
   - Transactions log
   - Freeze amount by Update date (to import previous history)
 - Budget Categories
   - Simple grouping via `/`-symbol (in name) for the main page
+  - Sorting by totals, dates, and titles
   - With limits restate:
     - Renewed at the beginning of each month
     - Configurable limits per month
