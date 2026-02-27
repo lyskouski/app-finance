@@ -1,7 +1,9 @@
 // Copyright 2026 The terCAD team. All rights reserved.
 // Use of this source code is governed by a CC BY-NC-ND 4.0 license that can be found in the LICENSE file.
 
+import 'package:app_finance/_classes/controller/iterator_controller.dart';
 import 'package:app_finance/_classes/herald/app_design.dart';
+import 'package:app_finance/_classes/storage/app_data.dart';
 import 'package:app_finance/_classes/structure/bill_app_data.dart';
 import 'package:app_finance/_classes/structure/budget_app_data.dart';
 import 'package:app_finance/_classes/structure/navigation/app_route.dart';
@@ -17,6 +19,7 @@ import 'package:app_finance/design/wrapper/text_wrapper.dart';
 import 'package:app_finance/pages/_interfaces/abstract_page_state.dart';
 import 'package:app_finance/pages/bill/widgets/bill_line_widget.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 
 class BillScopeViewPage extends StatefulWidget {
   final String search;
@@ -34,7 +37,7 @@ class BillScopeViewPage extends StatefulWidget {
 
 class BillScopeViewPageState extends AbstractPageState<BillScopeViewPage> {
   @override
-  String getTitle() => widget.search;
+  String getTitle() => DateFormat.yMMMM().format(DateTime.parse(widget.search));
 
   @override
   String getButtonName() => '';
@@ -42,16 +45,28 @@ class BillScopeViewPageState extends AbstractPageState<BillScopeViewPage> {
   @override
   Widget buildButton(BuildContext context, BoxConstraints constraints) => const SizedBox.shrink();
 
+  bool getContentFilter(BillAppData item) {
+    final budgetMatch = item.category == widget.uuid;
+    final startDate = DateTime.parse(widget.search);
+    final startDateMatch = item.createdAt.isAfter(startDate);
+    final endDate = DateTime(startDate.year, startDate.month + 1, startDate.day);
+    final endDateMatch = item.createdAt.isBefore(endDate);
+    return !(budgetMatch && startDateMatch && endDateMatch);
+  }
+
+  List<BillAppData> getContent() =>
+      state.getStream<BillAppData>(AppDataType.bills, filter: getContentFilter).toList().cast<BillAppData>();
+
   @override
   Widget buildContent(BuildContext context, BoxConstraints constraints) {
     final item = (state.getByUuid(widget.uuid) as BudgetAppData).clone();
-    final items = []; // TBD
+    final items = getContent();
     final width = ThemeHelper.getWidth(context, 2, constraints);
     final textTheme = context.textTheme;
     final indent = ThemeHelper.getIndent();
     final txtWidth = ThemeHelper.getTextWidth(Text(item.detailsFormatted, style: textTheme.numberMedium));
     return Padding(
-      padding: EdgeInsets.only(top: indent),
+      padding: EdgeInsets.all(indent),
       child: Column(
         children: [
           Column(
@@ -116,7 +131,7 @@ class BillScopeViewPageState extends AbstractPageState<BillScopeViewPage> {
                       tooltip: '',
                       route: RouteSettings(name: AppRoute.billViewRoute, arguments: {routeArguments.uuid: item.uuid}),
                       child: BillLineWidget(
-                        width: width,
+                        width: width - 2 * indent,
                         uuid: item.uuid ?? '',
                         title: item.title,
                         details: item.detailsFormatted,
