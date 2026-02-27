@@ -1,11 +1,11 @@
 // Copyright 2026 The terCAD team. All rights reserved.
 // Use of this source code is governed by a CC BY-NC-ND 4.0 license that can be found in the LICENSE file.
 
-import 'package:app_finance/_classes/controller/iterator_controller.dart';
 import 'package:app_finance/_classes/herald/app_design.dart';
 import 'package:app_finance/_classes/storage/app_data.dart';
 import 'package:app_finance/_classes/structure/bill_app_data.dart';
 import 'package:app_finance/_classes/structure/budget_app_data.dart';
+import 'package:app_finance/_classes/structure/currency/exchange.dart';
 import 'package:app_finance/_classes/structure/navigation/app_route.dart';
 import 'package:app_finance/_configs/custom_text_theme.dart';
 import 'package:app_finance/_configs/theme_helper.dart';
@@ -59,8 +59,14 @@ class BillScopeViewPageState extends AbstractPageState<BillScopeViewPage> {
 
   @override
   Widget buildContent(BuildContext context, BoxConstraints constraints) {
-    final item = (state.getByUuid(widget.uuid) as BudgetAppData).clone();
     final items = getContent();
+    final exchange = Exchange(store: state);
+    final item = (state.getByUuid(widget.uuid) as BudgetAppData).clone();
+    item.amount = 0.0;
+    item.details = 0.0;
+    for (var bill in items) {
+      item.amount += exchange.reform(bill.details, bill.currency, item.currency);
+    }
     final width = ThemeHelper.getWidth(context, 2, constraints);
     final textTheme = context.textTheme;
     final indent = ThemeHelper.getIndent();
