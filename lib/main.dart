@@ -34,6 +34,7 @@ import 'package:app_finance/pages/automation/payment_view_page.dart';
 import 'package:app_finance/pages/bill/bill_add_page.dart';
 import 'package:app_finance/pages/bill/bill_edit_page.dart';
 import 'package:app_finance/pages/bill/bill_page.dart';
+import 'package:app_finance/pages/bill/bill_scope_view_page.dart';
 import 'package:app_finance/pages/bill/bill_search_page.dart';
 import 'package:app_finance/pages/bill/bill_view_page.dart';
 import 'package:app_finance/pages/budget/budget_page.dart';
@@ -164,7 +165,9 @@ class MyAppState extends State<MyApp> {
   WidgetBuilder? getPage(String route, Object? arguments) {
     AppRoute.current = route;
     final args = arguments as Map<String, dynamic>?;
-    final String key = args?['uuid'] ?? args?['search'] ?? '';
+    final String key = args?['uuid'] ?? args?['search'] ?? ''; // TBD: deprecated
+    final String uuid = args?['uuid'] ?? '';
+    final String search = args?['search'] ?? '';
     final int focus = args?['focus'] ?? 1;
     if (widget.platform != null) {
       try {
@@ -195,6 +198,7 @@ class MyAppState extends State<MyApp> {
           AppRoute.billViewRoute => BillViewPage(uuid: key),
           AppRoute.billEditRoute => BillEditPage(uuid: key),
           AppRoute.billSearchRoute => BillSearchPage(),
+          AppRoute.billScopeViewRoute => BillScopeViewPage(search: search, uuid: uuid),
           AppRoute.budgetRoute => const BudgetPage(),
           AppRoute.budgetAddRoute => const BudgetAddPage(),
           AppRoute.budgetViewRoute => BudgetViewPage(uuid: key),

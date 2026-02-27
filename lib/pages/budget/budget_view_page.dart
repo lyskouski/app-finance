@@ -79,7 +79,7 @@ class BudgetViewPageState extends AbstractPageState<BudgetViewPage> with TickerP
     );
   }
 
-  Widget buildListWidget(item, BuildContext context) {
+  Widget buildDeltaListWidget(item, BuildContext context) {
     final value = (item.delta as double).toCurrency(currency: item.currency, withPattern: false);
     return BaseLineWidget(
       uuid: '',
@@ -92,7 +92,7 @@ class BudgetViewPageState extends AbstractPageState<BudgetViewPage> with TickerP
     );
   }
 
-  Widget buildLineWidget(item, BuildContext context) {
+  Widget buildBillListWidget(item, BuildContext context) {
     return BaseLineWidget(
       uuid: item.uuid ?? '',
       title: item.title ?? '',
@@ -108,6 +108,23 @@ class BudgetViewPageState extends AbstractPageState<BudgetViewPage> with TickerP
     );
   }
 
+  Widget buildSummaryListWidget(item, BuildContext context) {
+    return BaseLineWidget(
+      uuid: item.uuid ?? '',
+      title: item.title ?? '',
+      description: item.description ?? '',
+      details: item.detailsFormatted,
+      progress: item.progress,
+      color: item.color ?? Colors.transparent,
+      icon: item.icon ?? Icons.radio_button_unchecked_sharp,
+      hidden: item.hidden,
+      skip: item.skip,
+      width: width,
+      route: AppRoute.billScopeViewRoute,
+      routeCondition: {routeArguments.search: item.uuid, routeArguments.uuid: widget.uuid},
+    );
+  }
+
   InterfaceIterator<num, dynamic, dynamic> _getSummary() {
     var exchange = Exchange(store: state);
     var category = super.state.getByUuid(widget.uuid) as BudgetAppData;
@@ -118,6 +135,7 @@ class BudgetViewPageState extends AbstractPageState<BudgetViewPage> with TickerP
     int iteration = 0;
     BillAppData? item;
     AccountAppData summary = AccountAppData(
+      uuid: curr.toString(),
       type: AppAccountType.cash.toString(),
       title: DateFormat.MMMM().format(curr),
       description: curr.year.toString(),
@@ -137,6 +155,7 @@ class BudgetViewPageState extends AbstractPageState<BudgetViewPage> with TickerP
         }
         iteration++;
         curr = DateTime(now.year, now.month - iteration, now.day).getStartingDay(startingDay);
+        summary.uuid = curr.toString();
         summary.details = 0.0;
         summary.color = null;
         summary.title = DateFormat.MMMM().format(curr);
@@ -181,17 +200,17 @@ class BudgetViewPageState extends AbstractPageState<BudgetViewPage> with TickerP
                   stream:
                       state.getStream(AppDataType.bills, boundary: boundary, filter: (o) => o.category != widget.uuid),
                   width: width,
-                  buildListWidget: buildLineWidget,
+                  buildListWidget: buildBillListWidget,
                 ),
                 BaseListInfiniteWidget(
                   stream: _getSummary(),
                   width: width,
-                  buildListWidget: buildLineWidget,
+                  buildListWidget: buildSummaryListWidget,
                 ),
                 BaseListInfiniteWidget(
                   stream: HistoryData.getStream(widget.uuid),
                   width: width,
-                  buildListWidget: buildListWidget,
+                  buildListWidget: buildDeltaListWidget,
                 ),
               ],
             ),

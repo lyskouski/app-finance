@@ -23,6 +23,7 @@ class BaseLineWidget extends StatelessWidget {
   final IconData? icon;
   final double width;
   final String route;
+  final Map<String, dynamic>? routeCondition;
   final bool hidden;
   final bool skip;
   final bool showDivider;
@@ -42,6 +43,7 @@ class BaseLineWidget extends StatelessWidget {
     this.skip = false,
     this.progress = 1,
     this.route = '',
+    this.routeCondition,
     this.showDivider = true,
   });
 
@@ -57,7 +59,10 @@ class BaseLineWidget extends StatelessWidget {
     return TapWidget(
       tooltip: '',
       toWrap: route != '' && uuid != '',
-      route: RouteSettings(name: route, arguments: {routeArguments.uuid: uuid}),
+      route: RouteSettings(
+        name: route,
+        arguments: routeCondition != null ? routeCondition! : {routeArguments.uuid: uuid},
+      ),
       child: Column(
         crossAxisAlignment: AppDesign.getAlignment(),
         children: [
