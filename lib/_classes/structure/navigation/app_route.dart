@@ -23,6 +23,7 @@ abstract class AppRoute {
   static const String billViewRoute = '/app/finance/bill/view';
   static const String billEditRoute = '/app/finance/bill/edit';
   static const String billSearchRoute = '/app/finance/bill/search';
+  static const String billScopeViewRoute = '/app/finance/bill/scope';
   static const String budgetRoute = '/app/finance/budget';
   static const String budgetAddRoute = '/app/finance/budget/add';
   static const String budgetViewRoute = '/app/finance/budget/view';

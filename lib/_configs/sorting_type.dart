@@ -25,7 +25,7 @@ class SortingType {
       ListSelectorItem(id: AppSortingType.titleDesc.name, name: AppLocale.labels.sortingTitleDesc),
       ListSelectorItem(id: AppSortingType.titleAsc.name, name: AppLocale.labels.sortingTitleAsc),
       ListSelectorItem(id: AppSortingType.updatedAtDesc.name, name: AppLocale.labels.sortingUpdatedAtDesc),
-      ListSelectorItem(id: AppSortingType.updatedAtAsc.name, name: AppLocale.labels.sortingUpdatedAtAsc),
+      // ListSelectorItem(id: AppSortingType.updatedAtAsc.name, name: AppLocale.labels.sortingUpdatedAtAsc),
     ];
   }
 
