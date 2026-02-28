@@ -3,6 +3,7 @@
 
 import 'package:app_finance/_classes/herald/app_design.dart';
 import 'package:app_finance/_classes/herald/app_locale.dart';
+import 'package:app_finance/_classes/herald/app_sorting.dart';
 import 'package:app_finance/_classes/herald/app_start_of_month.dart';
 import 'package:app_finance/_classes/storage/app_data.dart';
 import 'package:app_finance/_classes/structure/bill_app_data.dart';
@@ -18,6 +19,7 @@ import 'package:app_finance/components/widgets/budget_ytd_chart.dart';
 import 'package:app_finance/design/generic/text_widget.dart';
 import 'package:app_finance/design/wrapper/table_widget.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class BudgetTab extends StatelessWidget {
   final AppData store;
@@ -52,7 +54,7 @@ class BudgetTab extends StatelessWidget {
     );
   }
 
-  List<List<Widget>> _generateTable() {
+  List<List<Widget>> _generateTable(int Function(dynamic, dynamic) fn) {
     final date = DateTime.now();
     final List<List<Widget>> result = [
       [
@@ -72,7 +74,9 @@ class BudgetTab extends StatelessWidget {
     final billThird = bills
         .getTill(date.getPreviousMonth(2).getStartingDay(day).millisecondsSinceEpoch.toDouble())
         .cast<BillAppData>();
-    for (BudgetAppData budget in store.getList(AppDataType.budgets)) {
+    final items = store.getList(AppDataType.budgets);
+    items.sort(fn);
+    for (BudgetAppData budget in items) {
       result.add([
         Icon(budget.icon, color: budget.color),
         TextWidget(budget.title),
@@ -86,6 +90,7 @@ class BudgetTab extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final sorting = Provider.of<AppSorting>(context, listen: true);
     final indent = ThemeHelper.getIndent(2);
     double space = 0;
     if (ScreenHelper.state().isLeftBar) {
@@ -108,7 +113,7 @@ class BudgetTab extends StatelessWidget {
               shadowColor: context.colorScheme.onSurface.withValues(alpha: 0.1),
               width: width - space - 4 * indent,
               chunk: const [20, 72, null, null, null],
-              data: _generateTable(),
+              data: _generateTable(sorting.getSortFunction(context)),
             ),
             ThemeHelper.formEndBox,
           ],
