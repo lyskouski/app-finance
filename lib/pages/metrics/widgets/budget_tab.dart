@@ -9,6 +9,7 @@ import 'package:app_finance/_classes/storage/app_data.dart';
 import 'package:app_finance/_classes/structure/bill_app_data.dart';
 import 'package:app_finance/_classes/structure/budget_app_data.dart';
 import 'package:app_finance/_classes/structure/currency/exchange.dart';
+import 'package:app_finance/_classes/structure/navigation/app_route.dart';
 import 'package:app_finance/_configs/screen_helper.dart';
 import 'package:app_finance/_configs/theme_helper.dart';
 import 'package:app_finance/_ext/build_context_ext.dart';
@@ -18,6 +19,7 @@ import 'package:app_finance/components/widgets/budget_forecast_chart.dart';
 import 'package:app_finance/components/widgets/budget_ytd_chart.dart';
 import 'package:app_finance/design/generic/text_widget.dart';
 import 'package:app_finance/design/wrapper/table_widget.dart';
+import 'package:app_finance/design/wrapper/tap_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -31,7 +33,7 @@ class BudgetTab extends StatelessWidget {
     required this.width,
   });
 
-  Widget _getField(BudgetAppData budget, List<BillAppData> bills) {
+  Widget _getField(BudgetAppData budget, List<BillAppData> bills, DateTime date) {
     Color? color;
     String? text = '-';
     if (budget.amountLimit > 0) {
@@ -47,14 +49,21 @@ class BudgetTab extends StatelessWidget {
         color = Colors.pink;
       }
     }
-    return Container(
-      alignment: Alignment.centerRight,
-      color: color?.withValues(alpha: 0.2),
-      child: TextWidget(text),
+    return TapWidget(
+      tooltip: '${budget.title}, ${date.fullMonth()}: $text',
+      route: RouteSettings(
+        name: AppRoute.billScopeViewRoute,
+        arguments: {routeArguments.search: date.toString(), routeArguments.uuid: budget.uuid},
+      ),
+      child: Container(
+        alignment: Alignment.centerRight,
+        color: color?.withValues(alpha: 0.2),
+        child: TextWidget(text),
+      ),
     );
   }
 
-  List<List<Widget>> _generateTable(int Function(dynamic, dynamic) fn) {
+  List<List<Widget>> _generateTable(int Function(dynamic, dynamic) fnSort) {
     final date = DateTime.now();
     final List<List<Widget>> result = [
       [
@@ -67,22 +76,22 @@ class BudgetTab extends StatelessWidget {
     ];
     final day = AppStartOfMonth.get();
     final bills = store.getStream(AppDataType.bills);
-    final billFirst = bills.getTill(date.getStartingDay(day).millisecondsSinceEpoch.toDouble()).cast<BillAppData>();
-    final billSecond = bills
-        .getTill(date.getPreviousMonth(1).getStartingDay(day).millisecondsSinceEpoch.toDouble())
-        .cast<BillAppData>();
-    final billThird = bills
-        .getTill(date.getPreviousMonth(2).getStartingDay(day).millisecondsSinceEpoch.toDouble())
-        .cast<BillAppData>();
+    final dateFirst = date.getStartingDay(day);
+    final billFirst = bills.getTill(dateFirst.millisecondsSinceEpoch.toDouble()).cast<BillAppData>();
+    final dateSecond = date.getPreviousMonth(1).getStartingDay(day);
+    final billSecond = bills.getTill(dateSecond.millisecondsSinceEpoch.toDouble()).cast<BillAppData>();
+    final dateThird = date.getPreviousMonth(2).getStartingDay(day);
+    final billThird = bills.getTill(dateThird.millisecondsSinceEpoch.toDouble()).cast<BillAppData>();
     final items = store.getList(AppDataType.budgets);
-    items.sort(fn);
+    items.sort(fnSort);
     for (BudgetAppData budget in items) {
+      bool fnCategory(bill) => bill.category == budget.uuid;
       result.add([
         Icon(budget.icon, color: budget.color),
         TextWidget(budget.title),
-        _getField(budget, billFirst.where((bill) => bill.category == budget.uuid).toList()),
-        _getField(budget, billSecond.where((bill) => bill.category == budget.uuid).toList()),
-        _getField(budget, billThird.where((bill) => bill.category == budget.uuid).toList()),
+        _getField(budget, billFirst.where(fnCategory).toList(), dateFirst),
+        _getField(budget, billSecond.where(fnCategory).toList(), dateSecond),
+        _getField(budget, billThird.where(fnCategory).toList(), dateThird),
       ]);
     }
     return result;
