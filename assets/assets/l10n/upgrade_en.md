@@ -2,6 +2,10 @@
 
 _The full list of updates can be viewed via the "About" navigation item on the "Hints" button._
 
+### 6.7.0
+- Budget/Account sorting by name, date, and amount
+- Budget > Summary: clickable options to check Bills in an interval
+
 ### 6.6.1
 - Security: Adding One-Time Password Protection
 
