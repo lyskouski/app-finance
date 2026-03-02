@@ -2,6 +2,10 @@
 
 _Yangilanishlarning toʻliq roʻyxatini “Maslahat” tugmasidagi “Haqida” navigatsiya bandi orqali koʻrish mumkin._
 
+### 6.7.0
+- Byudjet/Hisobni nom, sana va miqdor bo'yicha saralash
+- Byudjet > Qisqacha ma'lumot: hisob-fakturalarni ma'lum bir oralikda tekshirish uchun bosiladigan variantlar
+
 ### 6.6.1
 - Xavfsizlik: Bir martalik parol himoyasini qo'shish
 

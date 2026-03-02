@@ -2,6 +2,10 @@
 
 _Pełną listę aktualizacji można wyświetlić za pomocą elementu nawigacyjnego "O aplikacji" na przycisku "Wskazówki"._
 
+### 6.7.0
+- Sortowanie budżetu/konta według nazwy, daty i kwoty
+- Budżet > Podsumowanie: opcje klikalne umożliwiające sprawdzenie rachunków w danym przedziale czasowym
+
 ### 6.6.1
 - Bezpieczeństwo: dodanie ochrony za pomocą jednorazowego hasła
 

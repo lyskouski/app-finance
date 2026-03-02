@@ -2,6 +2,10 @@
 
 _Lista completă a actualizărilor poate fi vizualizată prin intermediul elementului de navigare „Despre” de pe butonul „Sugestii”._
 
+### 6.7.0
+- Sortarea bugetului/contului după nume, dată și sumă
+- Buget > Rezumat: opțiuni clicabile pentru a verifica facturile într-un interval
+
 ### 6.6.1
 - Securitate: adăugarea protecției cu parolă unică
 

@@ -2,6 +2,10 @@
 
 _Güncellemelerin tam listesi “İpuçları” düğmesindeki “Hakkında” gezinti öğesi aracılığıyla görüntülenebilir._
 
+### 6.7.0
+- Bütçe/Hesapları ada, tarihe ve tutara göre sıralama
+- Bütçe > Özet: belirli bir aralıktaki faturaları kontrol etmek için tıklanabilir seçenekler
+
 ### 6.6.1
 - Güvenlik: Tek Kullanımlık Şifre Koruması Ekleme
 

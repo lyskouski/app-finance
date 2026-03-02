@@ -3,6 +3,10 @@
 _L'elenco completo degli aggiornamenti può essere consultato tramite la voce di navigazione “Informazioni” del
 pulsante “Suggerimenti”._
 
+### 6.7.0
+- Ordinamento del budget/conto per nome, data e importo
+- Budget > Riepilogo: opzioni cliccabili per controllare le fatture in un intervallo di tempo
+
 ### 6.6.1
 - Sicurezza: aggiunta della protezione con password monouso
 

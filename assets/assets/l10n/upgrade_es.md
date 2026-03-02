@@ -2,6 +2,10 @@
 
 _La lista completa de actualizaciones puede consultarse en el menú "Acerca de" del botón "Sugerencias"._
 
+### 6.7.0
+- Clasificación del presupuesto/cuenta por nombre, fecha e importe
+- Presupuesto > Resumen: opciones en las que se puede hacer clic para comprobar las facturas en un intervalo
+
 ### 6.6.1
 - Seguridad: añadir protección con contraseña de un solo uso.
 
