@@ -2,6 +2,10 @@
 
 _Poŭny spis abnaŭlieńniaŭ možna prahliadzieć u navihacyjnym punkcie «Ab Dadatku» na knopcy «Padkazki»._
 
+### 6.7.0
+- Sartavańnie biudžetu/rachunkaŭ pa nazvie, dacie i sumie
+- Biudžet > Zvodka: opcyi, jakija možna naciskać, dlia pravierki rachunkaŭ za peŭny interval
+
 ### 6.6.1
 - Biaspieka: Dadańnie abarony adnarazovym paroliem
 

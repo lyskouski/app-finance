@@ -2,6 +2,10 @@
 
 _La liste complète des mises à jour peut être consultée via l'élément de navigation "À propos" du bouton "Conseils"._
 
+### 6.7.0
+- Tri du budget/compte par nom, date et montant
+- Budget > Résumé : options cliquables pour vérifier les factures dans un intervalle donné
+
 ### 6.6.1
 - Sécurité : ajout d'une protection par mot de passe à usage unique
 

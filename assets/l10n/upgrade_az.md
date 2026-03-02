@@ -2,6 +2,10 @@
 
 _Yeniləmələrin tam siyahısına "İpucu" düyməsindəki "Haqqında" naviqasiya elementi vasitəsilə baxmaq olar._
 
+### 6.7.0
+- Büdcə/Hesabın adı, tarixi və məbləği üzrə sıralanması
+- Büdcə > Xülasə: müəyyən intervallarla ödənişləri yoxlamaq üçün kliklənə bilən seçimlər
+
 ### 6.6.1
 - Təhlükəsizlik: Birdəfəlik şifrə qorumasının əlavə edilməsi
 

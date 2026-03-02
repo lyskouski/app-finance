@@ -2,6 +2,10 @@
 
 _De volledige lijst met updates kan worden bekeken via het navigatie-item “Over” op de knop “Hints”._
 
+### 6.7.0
+- Budget/rekening sorteren op naam, datum en bedrag
+- Budget > Overzicht: klikbare opties om rekeningen in een bepaald interval te controleren
+
 ### 6.6.1
 - Beveiliging: eenmalige wachtwoordbeveiliging toevoegen
 
