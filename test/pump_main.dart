@@ -9,10 +9,6 @@ import 'package:app_finance/_classes/herald/app_start_of_month.dart';
 import 'package:app_finance/_classes/herald/app_start_of_week.dart';
 import 'package:app_finance/_classes/storage/transaction_log/abstract_storage.dart';
 import 'package:app_finance/_configs/custom_text_theme.dart';
-import 'package:dart_class_wrapper/dart_class_wrapper.dart';
-import 'package:file/file.dart';
-import 'package:file/local.dart';
-
 import 'package:app_finance/_classes/herald/app_palette.dart';
 import 'package:app_finance/_classes/herald/app_sync.dart';
 import 'package:app_finance/_classes/herald/app_zoom.dart';
@@ -22,6 +18,9 @@ import 'package:app_finance/_classes/herald/app_theme.dart';
 import 'package:app_finance/_classes/storage/app_preferences.dart';
 import 'package:app_finance/l10n/app_localization.dart';
 import 'package:app_finance/main.dart';
+import 'package:dart_class_wrapper/dart_class_wrapper.dart';
+import 'package:file/file.dart';
+import 'package:file/local.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_test/flutter_test.dart';
@@ -146,9 +145,9 @@ class PumpMain {
     }
   }
 
-  Future<void> initMain(WidgetTester tester, bool isIntegration) async {
+  Widget getApp(Widget home, bool isIntegration) {
     final appSync = AppSync();
-    await tester.pumpWidget(MultiProvider(
+    return MultiProvider(
       providers: [
         ChangeNotifierProvider<AppSync>(
           create: (_) => appSync,
@@ -184,10 +183,17 @@ class PumpMain {
           create: (_) => AppSorting(),
         ),
       ],
-      child: RepaintBoundary(
+      child: home,
+    );
+  }
+
+  Future<void> initMain(WidgetTester tester, bool isIntegration) async {
+    await tester.pumpWidget(getApp(
+      RepaintBoundary(
         key: ScreenCapture.getKey(),
         child: const MyApp(),
       ),
+      isIntegration,
     ));
   }
 }
