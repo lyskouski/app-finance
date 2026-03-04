@@ -57,6 +57,41 @@ add_subdirectory("runner")
 # them to the application.
 include(flutter/generated_plugins.cmake)
 
+# --- Firebase on Windows ---
+#
+# The firebase_core Windows implementation currently pulls in the Firebase C++
+# SDK which is distributed as prebuilt static libs. Those libs may require a
+# newer MSVC toolset than the one available in a given environment, leading to
+# link errors such as unresolved __std_* symbols.
+#
+# Fingrom does not require Firebase on Windows to run core functionality, so we
+# disable linking the firebase_core plugin on Windows builds.
+function(_fingrom_remove_link_library target lib)
+  if(NOT TARGET ${target})
+    return()
+  endif()
+
+  get_target_property(_libs ${target} LINK_LIBRARIES)
+  if(NOT _libs)
+    return()
+  endif()
+
+  list(REMOVE_ITEM _libs ${lib})
+  set_target_properties(${target} PROPERTIES LINK_LIBRARIES "${_libs}")
+endfunction()
+
+if(WIN32 AND TARGET firebase_core_plugin)
+  _fingrom_remove_link_library(${BINARY_NAME} firebase_core_plugin)
+
+  # Keep install step clean as well.
+  if(DEFINED PLUGIN_BUNDLED_LIBRARIES)
+    list(REMOVE_ITEM PLUGIN_BUNDLED_LIBRARIES $<TARGET_FILE:firebase_core_plugin>)
+  endif()
+
+  # Prevent the plugin from being built unless something explicitly depends on it.
+  set_target_properties(firebase_core_plugin PROPERTIES EXCLUDE_FROM_ALL TRUE)
+endif()
+
 
 # === Installation ===
 # Support files are copied into place next to the executable, so that it can

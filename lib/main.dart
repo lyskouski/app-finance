@@ -70,7 +70,12 @@ import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 void main() async {
-  final platform = DefaultFirebaseOptions.currentPlatform;
+  final FirebaseOptions? platform;
+  if (kIsWeb || defaultTargetPlatform == TargetPlatform.iOS || defaultTargetPlatform == TargetPlatform.android) {
+    platform = DefaultFirebaseOptions.currentPlatform;
+  } else {
+    platform = null;
+  }
   runZonedGuarded<Future<void>>(() async {
     WidgetsFlutterBinding.ensureInitialized();
 
