@@ -4,9 +4,12 @@
 import 'package:app_finance/_classes/herald/app_locale.dart';
 import 'package:app_finance/_classes/herald/app_start_of_month.dart';
 import 'package:app_finance/_classes/storage/app_data.dart';
+import 'package:app_finance/_classes/structure/account_app_data.dart';
 import 'package:app_finance/_classes/structure/bill_app_data.dart';
 import 'package:app_finance/_classes/structure/budget_app_data.dart';
+import 'package:app_finance/_classes/structure/currency_app_data.dart';
 import 'package:app_finance/_classes/structure/currency/exchange.dart';
+import 'package:app_finance/_classes/structure/invoice_app_data.dart';
 import 'package:app_finance/_configs/theme_helper.dart';
 import 'package:app_finance/_ext/build_context_ext.dart';
 import 'package:app_finance/_ext/date_time_ext.dart';
@@ -26,6 +29,7 @@ class ComponentSummary extends StatelessWidget {
   List<List<Widget>> _generateSummaryTable(AppData appState) {
     final exchange = Exchange(store: appState);
     final defaultCurrency = exchange.getDefaultCurrency();
+    final displayCurrency = defaultCurrency ?? Exchange.defaultCurrency;
 
     final DateTime startingDay = DateTime.now().getStartingDay(AppStartOfMonth.get());
     final monthStarts = <DateTime>[
@@ -40,6 +44,34 @@ class ComponentSummary extends StatelessWidget {
 
     final budgets = appState.getList(AppDataType.budgets).cast<BudgetAppData>().where((b) => !b.hidden).toList();
     final bills = appState.getList(AppDataType.bills).cast<BillAppData>().where((b) => !b.hidden).toList();
+    final accounts = appState.getList(AppDataType.accounts).cast<AccountAppData>().where((a) => !a.hidden).toList();
+    final invoices = appState
+        .getList(AppDataType.invoice)
+        .cast<InvoiceAppData>()
+        .where((i) => !i.hidden && i.accountFrom == null)
+        .toList();
+
+    double _convertAmount(double amount, Currency? origin, Currency? target) {
+      if (origin == null || target == null || origin.code == target.code) {
+        return amount;
+      }
+      final direct = appState.getByUuid('${origin.code}-${target.code}', false) as CurrencyAppData?;
+      if (direct != null) {
+        return amount * (direct.details as double);
+      }
+      final reverse = appState.getByUuid('${target.code}-${origin.code}', false) as CurrencyAppData?;
+      if (reverse != null && (reverse.details as double) != 0.0) {
+        return amount / (reverse.details as double);
+      }
+      return amount;
+    }
+
+    String _formatAmount(double value, Currency? currency) {
+      if (currency == null) {
+        return value.toStringAsFixed(2);
+      }
+      return value.toCurrency(currency: currency, withPattern: false);
+    }
 
     double sumForBudgetAndMonth(BudgetAppData budget, int monthIndex) {
       final start = monthStarts[monthIndex];
@@ -76,6 +108,57 @@ class ComponentSummary extends StatelessWidget {
       return value.toCurrency(currency: curr, withPattern: false);
     }
 
+    double sumBillsForMonth(int monthIndex) {
+      final start = monthStarts[monthIndex];
+      final end = monthEnds[monthIndex];
+
+      double total = 0.0;
+      for (final bill in bills) {
+        final createdAt = bill.createdAt;
+        if (createdAt.isBefore(start) || !createdAt.isBefore(end)) {
+          continue;
+        }
+        final amount = (bill.details as num?)?.toDouble() ?? 0.0;
+        total += _convertAmount(amount, bill.currency, displayCurrency);
+      }
+      return total;
+    }
+
+    double sumIncomeForMonth(int monthIndex) {
+      final start = monthStarts[monthIndex];
+      final end = monthEnds[monthIndex];
+
+      double total = 0.0;
+      for (final invoice in invoices) {
+        final createdAt = invoice.createdAt;
+        if (createdAt.isBefore(start) || !createdAt.isBefore(end)) {
+          continue;
+        }
+        final amount = (invoice.details as num?)?.toDouble() ?? 0.0;
+        total += _convertAmount(amount, invoice.currency, displayCurrency);
+      }
+      return total;
+    }
+
+    double sumIncomeForAccountAndMonth(AccountAppData account, int monthIndex) {
+      final start = monthStarts[monthIndex];
+      final end = monthEnds[monthIndex];
+
+      double total = 0.0;
+      for (final invoice in invoices) {
+        if (invoice.account != account.uuid) {
+          continue;
+        }
+        final createdAt = invoice.createdAt;
+        if (createdAt.isBefore(start) || !createdAt.isBefore(end)) {
+          continue;
+        }
+        final amount = (invoice.details as num?)?.toDouble() ?? 0.0;
+        total += _convertAmount(amount, invoice.currency, account.currency);
+      }
+      return total;
+    }
+
     final rows = <List<Widget>>[];
 
     // Header
@@ -96,32 +179,43 @@ class ComponentSummary extends StatelessWidget {
       ]);
     }
 
-    // Overall summary row (in default currency where available)
-    final summaryMonthTotals = List<double>.generate(6, (monthIndex) {
-      double total = 0.0;
-      for (final budget in budgets) {
-        final targetCurrency = budget.currency ?? defaultCurrency;
-        final value = sumForBudgetAndMonth(budget, monthIndex);
-        // If budgets use different currencies, totals are best-effort.
-        if (defaultCurrency != null && targetCurrency != null && targetCurrency.code != defaultCurrency.code) {
-          // Can't safely convert here without mutating store; skip conversion.
-          total += value;
-        } else {
-          total += value;
-        }
-      }
-      return total;
-    });
-    final summaryTotal = summaryMonthTotals.fold<double>(0.0, (a, b) => a + b);
+    List<Widget> separatorRow() => List<Widget>.generate(
+          8,
+          (_) => const TextWidget('---'),
+        );
+
+    // Accounts with invoices
+    rows.add(separatorRow());
+    final accountsWithInvoices = accounts.where((a) => invoices.any((i) => i.account == a.uuid)).toList();
+    for (final account in accountsWithInvoices) {
+      final monthTotals = List<double>.generate(6, (i) => sumIncomeForAccountAndMonth(account, i));
+      final total = monthTotals.fold<double>(0.0, (a, b) => a + b);
+      rows.add([
+        TextWidget(account.title),
+        for (final v in monthTotals) TextWidget(_formatAmount(v, account.currency)),
+        TextWidget(_formatAmount(total, account.currency)),
+      ]);
+    }
+
+    // Income
+    rows.add(separatorRow());
+    final incomeMonthTotals = List<double>.generate(6, (i) => sumIncomeForMonth(i));
+    final incomeTotal = incomeMonthTotals.fold<double>(0.0, (a, b) => a + b);
     rows.add([
-      TextWidget(AppLocale.labels.summary),
-      for (final v in summaryMonthTotals)
-        TextWidget(defaultCurrency == null
-            ? v.toStringAsFixed(2)
-            : v.toCurrency(currency: defaultCurrency, withPattern: false)),
-      TextWidget(defaultCurrency == null
-          ? summaryTotal.toStringAsFixed(2)
-          : summaryTotal.toCurrency(currency: defaultCurrency, withPattern: false)),
+      TextWidget(AppLocale.labels.income),
+      for (final v in incomeMonthTotals) TextWidget(_formatAmount(v, displayCurrency)),
+      TextWidget(_formatAmount(incomeTotal, displayCurrency)),
+    ]);
+
+    // Totals: Income - Bills
+    rows.add(separatorRow());
+    final billMonthTotals = List<double>.generate(6, (i) => sumBillsForMonth(i));
+    final netMonthTotals = List<double>.generate(6, (i) => incomeMonthTotals[i] - billMonthTotals[i]);
+    final netTotal = netMonthTotals.fold<double>(0.0, (a, b) => a + b);
+    rows.add([
+      TextWidget(AppLocale.labels.total),
+      for (final v in netMonthTotals) TextWidget(_formatAmount(v, displayCurrency)),
+      TextWidget(_formatAmount(netTotal, displayCurrency)),
     ]);
 
     return rows;
