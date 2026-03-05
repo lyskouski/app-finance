@@ -34,6 +34,7 @@ void main() {
 
   final enabledDevices = config.getEnabledDevices();
 
+  // flutter test integration_test/screenshots/capture_test.dart --dart-define=SCREENSHOT_LOCALES=en
   const localeCsv = String.fromEnvironment('SCREENSHOT_LOCALES');
   final localeFilter = localeCsv.split(',').map((v) => v.trim()).where((v) => v.isNotEmpty).toSet();
 
