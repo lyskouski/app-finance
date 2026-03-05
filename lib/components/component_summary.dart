@@ -7,7 +7,6 @@ import 'package:app_finance/_classes/storage/app_data.dart';
 import 'package:app_finance/_classes/structure/account_app_data.dart';
 import 'package:app_finance/_classes/structure/bill_app_data.dart';
 import 'package:app_finance/_classes/structure/budget_app_data.dart';
-import 'package:app_finance/_classes/structure/currency_app_data.dart';
 import 'package:app_finance/_classes/structure/currency/exchange.dart';
 import 'package:app_finance/_classes/structure/invoice_app_data.dart';
 import 'package:app_finance/_configs/theme_helper.dart';
@@ -28,8 +27,7 @@ class ComponentSummary extends StatelessWidget {
 
   List<List<Widget>> _generateSummaryTable(AppData appState) {
     final exchange = Exchange(store: appState);
-    final defaultCurrency = exchange.getDefaultCurrency();
-    final displayCurrency = defaultCurrency ?? Exchange.defaultCurrency;
+    final displayCurrency = exchange.getDefaultCurrency() ?? Exchange.defaultCurrency;
 
     final DateTime startingDay = DateTime.now().getStartingDay(AppStartOfMonth.get());
     final monthStarts = <DateTime>[
@@ -51,22 +49,7 @@ class ComponentSummary extends StatelessWidget {
         .where((i) => !i.hidden && i.accountFrom == null)
         .toList();
 
-    double _convertAmount(double amount, Currency? origin, Currency? target) {
-      if (origin == null || target == null || origin.code == target.code) {
-        return amount;
-      }
-      final direct = appState.getByUuid('${origin.code}-${target.code}', false) as CurrencyAppData?;
-      if (direct != null) {
-        return amount * (direct.details as double);
-      }
-      final reverse = appState.getByUuid('${target.code}-${origin.code}', false) as CurrencyAppData?;
-      if (reverse != null && (reverse.details as double) != 0.0) {
-        return amount / (reverse.details as double);
-      }
-      return amount;
-    }
-
-    String _formatAmount(double value, Currency? currency) {
+    String formatAmount(double value, Currency? currency) {
       if (currency == null) {
         return value.toStringAsFixed(2);
       }
@@ -76,7 +59,6 @@ class ComponentSummary extends StatelessWidget {
     double sumForBudgetAndMonth(BudgetAppData budget, int monthIndex) {
       final start = monthStarts[monthIndex];
       final end = monthEnds[monthIndex];
-      final targetCurrency = budget.currency ?? defaultCurrency;
 
       double total = 0.0;
       for (final bill in bills) {
@@ -89,24 +71,12 @@ class ComponentSummary extends StatelessWidget {
         }
 
         final amount = (bill.details as num?)?.toDouble() ?? 0.0;
-        if (targetCurrency == null || bill.currency == null || bill.currency?.code == targetCurrency.code) {
-          total += amount;
-        } else {
-          // Avoid mutating store during build (Exchange.reform may add missing rates).
-          // `exchangeCategory` is precomputed when bills are updated.
-          total += amount * bill.exchangeCategory;
-        }
+        total += exchange.reform(amount, bill.currency, displayCurrency);
       }
       return total;
     }
 
-    String formatAmountForBudget(BudgetAppData budget, double value) {
-      final curr = budget.currency ?? defaultCurrency;
-      if (curr == null) {
-        return value.toStringAsFixed(2);
-      }
-      return value.toCurrency(currency: curr, withPattern: false);
-    }
+    String formatAmountForBudget(BudgetAppData budget, double value) => formatAmount(value, displayCurrency);
 
     double sumBillsForMonth(int monthIndex) {
       final start = monthStarts[monthIndex];
@@ -119,7 +89,7 @@ class ComponentSummary extends StatelessWidget {
           continue;
         }
         final amount = (bill.details as num?)?.toDouble() ?? 0.0;
-        total += _convertAmount(amount, bill.currency, displayCurrency);
+        total += exchange.reform(amount, bill.currency, displayCurrency);
       }
       return total;
     }
@@ -135,7 +105,7 @@ class ComponentSummary extends StatelessWidget {
           continue;
         }
         final amount = (invoice.details as num?)?.toDouble() ?? 0.0;
-        total += _convertAmount(amount, invoice.currency, displayCurrency);
+        total += exchange.reform(amount, invoice.currency, displayCurrency);
       }
       return total;
     }
@@ -154,7 +124,7 @@ class ComponentSummary extends StatelessWidget {
           continue;
         }
         final amount = (invoice.details as num?)?.toDouble() ?? 0.0;
-        total += _convertAmount(amount, invoice.currency, account.currency);
+        total += exchange.reform(amount, invoice.currency, displayCurrency);
       }
       return total;
     }
@@ -163,9 +133,14 @@ class ComponentSummary extends StatelessWidget {
 
     // Header
     rows.add([
-      TextWidget(AppLocale.labels.budgetHeadline),
-      for (final m in monthStarts) TextWidget(m.fullMonthYear()),
-      TextWidget(AppLocale.labels.summary),
+      TextWidget(' '),
+      for (final m in monthStarts) TextWidget(m.fullMonthYear(), style: TextStyle(fontWeight: FontWeight.bold)),
+      TextWidget(AppLocale.labels.summary, style: TextStyle(fontWeight: FontWeight.bold)),
+    ]);
+    rows.add([
+      TextWidget(AppLocale.labels.budgetHeadline, style: TextStyle(fontWeight: FontWeight.bold)),
+      for (final _ in monthStarts) TextWidget(' '),
+      TextWidget(' '),
     ]);
 
     // Budget category rows
@@ -173,7 +148,7 @@ class ComponentSummary extends StatelessWidget {
       final monthTotals = List<double>.generate(6, (i) => sumForBudgetAndMonth(budget, i));
       final total = monthTotals.fold<double>(0.0, (a, b) => a + b);
       rows.add([
-        TextWidget(budget.title),
+        TextWidget('- ${budget.title}'),
         for (final v in monthTotals) TextWidget(formatAmountForBudget(budget, v)),
         TextWidget(formatAmountForBudget(budget, total)),
       ]);
@@ -181,41 +156,44 @@ class ComponentSummary extends StatelessWidget {
 
     List<Widget> separatorRow() => List<Widget>.generate(
           8,
-          (_) => const TextWidget('---'),
+          (_) => const TextWidget(' '),
         );
 
+    // Header
+    rows.add([
+      TextWidget(AppLocale.labels.accountHeadline, style: TextStyle(fontWeight: FontWeight.bold)),
+      for (final _ in monthStarts) TextWidget(' '),
+      TextWidget(' '),
+    ]);
+
     // Accounts with invoices
-    rows.add(separatorRow());
     final accountsWithInvoices = accounts.where((a) => invoices.any((i) => i.account == a.uuid)).toList();
     for (final account in accountsWithInvoices) {
       final monthTotals = List<double>.generate(6, (i) => sumIncomeForAccountAndMonth(account, i));
       final total = monthTotals.fold<double>(0.0, (a, b) => a + b);
       rows.add([
-        TextWidget(account.title),
-        for (final v in monthTotals) TextWidget(_formatAmount(v, account.currency)),
-        TextWidget(_formatAmount(total, account.currency)),
+        TextWidget('- ${account.title}'),
+        for (final v in monthTotals) TextWidget(formatAmount(v, displayCurrency)),
+        TextWidget(formatAmount(total, displayCurrency)),
       ]);
     }
 
     // Income
-    rows.add(separatorRow());
-    final incomeMonthTotals = List<double>.generate(6, (i) => sumIncomeForMonth(i));
-    final incomeTotal = incomeMonthTotals.fold<double>(0.0, (a, b) => a + b);
-    rows.add([
-      TextWidget(AppLocale.labels.income),
-      for (final v in incomeMonthTotals) TextWidget(_formatAmount(v, displayCurrency)),
-      TextWidget(_formatAmount(incomeTotal, displayCurrency)),
-    ]);
 
     // Totals: Income - Bills
     rows.add(separatorRow());
+    final incomeMonthTotals = List<double>.generate(6, (i) => sumIncomeForMonth(i));
     final billMonthTotals = List<double>.generate(6, (i) => sumBillsForMonth(i));
     final netMonthTotals = List<double>.generate(6, (i) => incomeMonthTotals[i] - billMonthTotals[i]);
     final netTotal = netMonthTotals.fold<double>(0.0, (a, b) => a + b);
     rows.add([
-      TextWidget(AppLocale.labels.total),
-      for (final v in netMonthTotals) TextWidget(_formatAmount(v, displayCurrency)),
-      TextWidget(_formatAmount(netTotal, displayCurrency)),
+      TextWidget(AppLocale.labels.total, style: TextStyle(fontWeight: FontWeight.bold)),
+      for (final v in netMonthTotals)
+        TextWidget(
+          formatAmount(v, displayCurrency),
+          style: TextStyle(fontWeight: FontWeight.bold),
+        ),
+      TextWidget(formatAmount(netTotal, displayCurrency), style: TextStyle(fontWeight: FontWeight.bold)),
     ]);
 
     return rows;
@@ -229,12 +207,17 @@ class ComponentSummary extends StatelessWidget {
         return Flex(
           direction: Axis.horizontal,
           children: [
-            TableWidget(
-              shadowColor: context.colorScheme.onSurface.withValues(alpha: 0.1),
-              width: constraints.maxWidth - indent * 4,
-              chunk: const [200, null, null, null, null, null, null, 100],
-              data: _generateSummaryTable(appState),
-            )
+            Expanded(
+              child: SingleChildScrollView(
+                scrollDirection: Axis.vertical,
+                child: TableWidget(
+                  shadowColor: context.colorScheme.onSurface.withValues(alpha: 0.1),
+                  width: constraints.maxWidth - indent * 4,
+                  chunk: const [200, null, null, null, null, null, null, 100],
+                  data: _generateSummaryTable(appState),
+                ),
+              ),
+            ),
           ],
         );
       });
