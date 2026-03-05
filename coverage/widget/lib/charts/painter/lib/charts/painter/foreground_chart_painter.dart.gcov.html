@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Test Date:</td>
-            <td class="headerValue">2026-03-02 07:49:41</td>
+            <td class="headerValue">2026-03-05 10:13:15</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntryHi">-</td>
@@ -217,7 +217,7 @@
 <span id="L155"><span class="lineNum">     155</span>              :       }</span>
 <span id="L156"><span class="lineNum">     156</span> <span class="tlaGNC">           1 :       switch (yType) {</span></span>
 <span id="L157"><span class="lineNum">     157</span> <span class="tlaGNC">           1 :         case double:</span></span>
-<span id="L158"><span class="lineNum">     158</span> <span class="tlaGNC">           3 :           final formatter = yTpl ?? intl.NumberFormat.decimalPatternDigits(decimalDigits: 2, locale: AppLocale.code);</span></span>
+<span id="L158"><span class="lineNum">     158</span> <span class="tlaGNC">           2 :           final formatter = yTpl ?? intl.NumberFormat.decimalPatternDigits(decimalDigits: 2, locale: AppLocale.code);</span></span>
 <span id="L159"><span class="lineNum">     159</span> <span class="tlaGNC">           8 :           _paintText(canvas, textArea, y - textArea / 3, formatter.format(yMin + delta));</span></span>
 <span id="L160"><span class="lineNum">     160</span>              :           break;</span>
 <span id="L161"><span class="lineNum">     161</span> <span class="tlaGNC">           1 :         case IconData:</span></span>
@@ -258,7 +258,7 @@
 <span id="L196"><span class="lineNum">     196</span> <span class="tlaUNC tlaBgUNC">           0 :           final formatter = xTpl ?? intl.DateFormat('d');</span></span>
 <span id="L197"><span class="lineNum">     197</span> <span class="tlaUNC">           0 :           value = formatter.format(DateTime.fromMillisecondsSinceEpoch(value.toInt()));</span></span>
 <span id="L198"><span class="lineNum">     198</span>              :         } else {</span>
-<span id="L199"><span class="lineNum">     199</span> <span class="tlaGNC tlaBgGNC">           3 :           final formatter = xTpl ?? intl.NumberFormat.decimalPatternDigits(decimalDigits: 1, locale: AppLocale.code);</span></span>
+<span id="L199"><span class="lineNum">     199</span> <span class="tlaGNC tlaBgGNC">           2 :           final formatter = xTpl ?? intl.NumberFormat.decimalPatternDigits(decimalDigits: 1, locale: AppLocale.code);</span></span>
 <span id="L200"><span class="lineNum">     200</span> <span class="tlaGNC">           1 :           value = formatter.format(value as double);</span></span>
 <span id="L201"><span class="lineNum">     201</span>              :         }</span>
 <span id="L202"><span class="lineNum">     202</span> <span class="tlaGNC">           1 :         if (xType != null) {</span></span>

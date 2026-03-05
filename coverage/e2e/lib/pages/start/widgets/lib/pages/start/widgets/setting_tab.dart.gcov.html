@@ -31,13 +31,13 @@
             <td class="headerValue">lcov.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntryLo">52.8&nbsp;%</td>
-            <td class="headerCovTableEntry">246</td>
-            <td class="headerCovTableEntry">130</td>
+            <td class="headerCovTableEntryLo">52.7&nbsp;%</td>
+            <td class="headerCovTableEntry">245</td>
+            <td class="headerCovTableEntry">129</td>
           </tr>
           <tr>
             <td class="headerItem">Test Date:</td>
-            <td class="headerValue">2026-03-02 07:51:13</td>
+            <td class="headerValue">2026-03-05 10:15:09</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntryHi">-</td>
@@ -228,7 +228,7 @@
 <span id="L166"><span class="lineNum">     166</span> <span class="tlaGNC">           1 :     final indent = ThemeHelper.getIndent(2);</span></span>
 <span id="L167"><span class="lineNum">     167</span> <span class="tlaGNC">           3 :     final width = ThemeHelper.getMaxWidth(context, constraints) - 2 * indent;</span></span>
 <span id="L168"><span class="lineNum">     168</span> <span class="tlaGNC">           1 :     if (currency == null) {</span></span>
-<span id="L169"><span class="lineNum">     169</span> <span class="tlaGNC">           5 :       WidgetsBinding.instance.addPostFrameCallback((_) =&gt; initCurrencyFromLocale(AppLocale.code));</span></span>
+<span id="L169"><span class="lineNum">     169</span> <span class="tlaGNC">           4 :       WidgetsBinding.instance.addPostFrameCallback((_) =&gt; initCurrencyFromLocale(AppLocale.code));</span></span>
 <span id="L170"><span class="lineNum">     170</span>              :       return ThemeHelper.emptyBox;</span>
 <span id="L171"><span class="lineNum">     171</span>              :     }</span>
 <span id="L172"><span class="lineNum">     172</span> <span class="tlaGNC">           1 :     return SingleScrollWrapper(</span></span>
@@ -240,7 +240,7 @@
 <span id="L178"><span class="lineNum">     178</span> <span class="tlaGNC">           1 :           InputWrapper.select(</span></span>
 <span id="L179"><span class="lineNum">     179</span> <span class="tlaGNC">           2 :             title: AppLocale.labels.language,</span></span>
 <span id="L180"><span class="lineNum">     180</span> <span class="tlaGNC">           2 :             tooltip: AppLocale.labels.language,</span></span>
-<span id="L181"><span class="lineNum">     181</span> <span class="tlaGNC">           1 :             value: AppLocale.code,</span></span>
+<span id="L181"><span class="lineNum">     181</span>              :             value: AppLocale.code,</span>
 <span id="L182"><span class="lineNum">     182</span> <span class="tlaGNC">           1 :             options: languages,</span></span>
 <span id="L183"><span class="lineNum">     183</span> <span class="tlaUNC tlaBgUNC">           0 :             onChange: (v) =&gt; saveLocale(v ?? AppLocale.code),</span></span>
 <span id="L184"><span class="lineNum">     184</span>              :           ),</span>
