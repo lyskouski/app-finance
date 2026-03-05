@@ -61,89 +61,117 @@ void main() {
       ? AppLocalizations.supportedLocales
       : AppLocalizations.supportedLocales.where((l) => localeFilter.contains(l.toString())).toList();
 
+  // flutter test integration_test/screenshots/capture_test.dart --dart-define=SCREENSHOT_STEPS=4_m_budgets
+  const stepCsv = String.fromEnvironment('SCREENSHOT_STEPS');
+  final stepFilter = stepCsv.split(',').map((v) => v.trim()).where((v) => v.isNotEmpty).toSet();
+
+  bool isEnabledStep(String stepId) {
+    if (stepFilter.isEmpty) {
+      return true;
+    }
+    final normalized = stepId.toLowerCase();
+    return stepFilter.any((s) => s.toLowerCase() == normalized);
+  }
+
   for (final locale in locales) {
     final localeCode = locale.toString();
     for (final device in filteredDevices) {
       // Home
-      _screenshotForDevice('1_home', device, config, localeCode: localeCode);
+      if (isEnabledStep('1_home')) {
+        _screenshotForDevice('1_home', device, config, localeCode: localeCode);
+      }
 
       // Bills
-      _screenshotForDevice(
-        '2_bills',
-        device,
-        config,
-        localeCode: localeCode,
-        beforeScreenshot: (tester) => _goToRoute(AppRoute.billRoute, tester, config),
-      );
+      if (isEnabledStep('2_bills')) {
+        _screenshotForDevice(
+          '2_bills',
+          device,
+          config,
+          localeCode: localeCode,
+          beforeScreenshot: (tester) => _goToRoute(AppRoute.billRoute, tester, config),
+        );
+      }
 
       // Accounts
-      _screenshotForDevice(
-        '3_accounts',
-        device,
-        config,
-        localeCode: localeCode,
-        beforeScreenshot: (tester) => _goToRoute(AppRoute.accountRoute, tester, config),
-      );
+      if (isEnabledStep('3_accounts')) {
+        _screenshotForDevice(
+          '3_accounts',
+          device,
+          config,
+          localeCode: localeCode,
+          beforeScreenshot: (tester) => _goToRoute(AppRoute.accountRoute, tester, config),
+        );
+      }
 
       // Metrics > Budgets (tab 0)
-      _screenshotForDevice(
-        '4_m_budgets',
-        device,
-        config,
-        localeCode: localeCode,
-        beforeScreenshot: (tester) => _goToRoute(
-          AppRoute.metricsSearchRoute,
-          tester,
+      if (isEnabledStep('4_m_budgets')) {
+        _screenshotForDevice(
+          '4_m_budgets',
+          device,
           config,
-          arguments: {routeArguments.search: '0'},
-        ),
-      );
+          localeCode: localeCode,
+          beforeScreenshot: (tester) => _goToRoute(
+            AppRoute.metricsSearchRoute,
+            tester,
+            config,
+            arguments: {routeArguments.search: '0'},
+          ),
+        );
+      }
 
       // Metrics > Accounts (tab 1)
-      _screenshotForDevice(
-        '5_m_accounts',
-        device,
-        config,
-        localeCode: localeCode,
-        beforeScreenshot: (tester) => _goToRoute(
-          AppRoute.metricsSearchRoute,
-          tester,
+      if (isEnabledStep('5_m_accounts')) {
+        _screenshotForDevice(
+          '5_m_accounts',
+          device,
           config,
-          arguments: {routeArguments.search: '1'},
-        ),
-      );
+          localeCode: localeCode,
+          beforeScreenshot: (tester) => _goToRoute(
+            AppRoute.metricsSearchRoute,
+            tester,
+            config,
+            arguments: {routeArguments.search: '1'},
+          ),
+        );
+      }
 
       // Metrics > Bills (tab 2)
-      _screenshotForDevice(
-        '6_m_bills',
-        device,
-        config,
-        localeCode: localeCode,
-        beforeScreenshot: (tester) => _goToRoute(
-          AppRoute.metricsSearchRoute,
-          tester,
+      if (isEnabledStep('6_m_bills')) {
+        _screenshotForDevice(
+          '6_m_bills',
+          device,
           config,
-          arguments: {routeArguments.search: '2'},
-        ),
-      );
+          localeCode: localeCode,
+          beforeScreenshot: (tester) => _goToRoute(
+            AppRoute.metricsSearchRoute,
+            tester,
+            config,
+            arguments: {routeArguments.search: '2'},
+          ),
+        );
+      }
 
       // Automation (defaults to Payments tab)
-      _screenshotForDevice(
-        '7_automation',
-        device,
-        config,
-        localeCode: localeCode,
-        beforeScreenshot: (tester) => _goToRoute(AppRoute.automationRoute, tester, config),
-      );
+      if (isEnabledStep('7_automation')) {
+        _screenshotForDevice(
+          '7_automation',
+          device,
+          config,
+          localeCode: localeCode,
+          beforeScreenshot: (tester) => _goToRoute(AppRoute.automationRoute, tester, config),
+        );
+      }
 
       // Goals
-      _screenshotForDevice(
-        '8_goals',
-        device,
-        config,
-        localeCode: localeCode,
-        beforeScreenshot: (tester) => _goToRoute(AppRoute.goalRoute, tester, config),
-      );
+      if (isEnabledStep('8_goals')) {
+        _screenshotForDevice(
+          '8_goals',
+          device,
+          config,
+          localeCode: localeCode,
+          beforeScreenshot: (tester) => _goToRoute(AppRoute.goalRoute, tester, config),
+        );
+      }
     }
   }
 }
