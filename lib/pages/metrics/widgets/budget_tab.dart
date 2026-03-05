@@ -10,7 +10,6 @@ import 'package:app_finance/_classes/structure/bill_app_data.dart';
 import 'package:app_finance/_classes/structure/budget_app_data.dart';
 import 'package:app_finance/_classes/structure/currency/exchange.dart';
 import 'package:app_finance/_classes/structure/navigation/app_route.dart';
-import 'package:app_finance/_configs/screen_helper.dart';
 import 'package:app_finance/_configs/theme_helper.dart';
 import 'package:app_finance/_ext/build_context_ext.dart';
 import 'package:app_finance/_ext/date_time_ext.dart';
@@ -25,12 +24,10 @@ import 'package:provider/provider.dart';
 
 class BudgetTab extends StatelessWidget {
   final AppData store;
-  final double width;
 
   const BudgetTab({
     super.key,
     required this.store,
-    required this.width,
   });
 
   Widget _getField(BudgetAppData budget, List<BillAppData> bills, DateTime date) {
@@ -101,13 +98,6 @@ class BudgetTab extends StatelessWidget {
   Widget build(BuildContext context) {
     final sorting = Provider.of<AppSorting>(context, listen: true);
     final indent = ThemeHelper.getIndent(2);
-    double space = 0;
-    if (ScreenHelper.state().isLeftBar) {
-      space = ThemeHelper.barHeight;
-    }
-    if (ScreenHelper.state().isWide) {
-      space = ThemeHelper.menuWidth;
-    }
     return SingleChildScrollView(
       child: Padding(
         padding: EdgeInsets.all(indent),
@@ -118,12 +108,14 @@ class BudgetTab extends StatelessWidget {
             ThemeHelper.hIndent4x,
             const BudgetYtdChart(),
             ThemeHelper.hIndent4x,
-            TableWidget(
-              shadowColor: context.colorScheme.onSurface.withValues(alpha: 0.1),
-              width: width - space - 4 * indent,
-              chunk: const [20, 72, null, null, null],
-              data: _generateTable(sorting.getSortFunction(context)),
-            ),
+            LayoutBuilder(builder: (context, constraints) {
+              return TableWidget(
+                shadowColor: context.colorScheme.onSurface.withValues(alpha: 0.1),
+                width: constraints.maxWidth,
+                chunk: const [20, 72, null, null, null],
+                data: _generateTable(sorting.getSortFunction(context)),
+              );
+            }),
             ThemeHelper.formEndBox,
           ],
         ),

@@ -112,7 +112,6 @@ class HomePageState extends AbstractPageState<HomePage> {
         final scaffold = Scaffold.of(context);
         return ToolbarButtonWidget(
           icon: Icons.menu,
-          color: Colors.white70,
           tooltip: AppLocale.labels.navigationTooltip,
           onPressed: () => AppDesign.isRightToLeft() ? scaffold.openEndDrawer() : scaffold.openDrawer(),
         );
@@ -127,7 +126,6 @@ class HomePageState extends AbstractPageState<HomePage> {
       ToolbarButtonWidget(
         isWide: isWide,
         icon: Icons.app_registration_outlined,
-        color: Colors.white70,
         tooltip: AppLocale.labels.customizeTooltip,
         onPressed: () => setState(() => isEditMode = true),
       ),
@@ -135,7 +133,6 @@ class HomePageState extends AbstractPageState<HomePage> {
         ToolbarButtonWidget(
           isWide: isWide,
           icon: Icons.switch_access_shortcut_add_outlined,
-          color: Colors.white70,
           tooltip: AppLocale.labels.subscriptionTooltip,
           onPressed: () => nav.pushNamed(AppRoute.subscriptionRoute),
         ),

@@ -42,7 +42,6 @@ abstract class AbstractPageState<T extends StatefulWidget> extends State<T> {
       tooltip: AppLocale.labels.backTooltip,
       onPressed: () => nav.canPop() ? nav.pop() : nav.pushNamed(AppRoute.homeRoute),
       icon: Icons.arrow_back,
-      color: Colors.white70,
     );
   }
 
@@ -96,7 +95,8 @@ abstract class AbstractPageState<T extends StatefulWidget> extends State<T> {
             builder: buildHelper,
           ),
           icon: Icons.contact_support_outlined,
-          color: Colors.white70,
+          color: isWide ? context.colorScheme.onSurface : Colors.white70,
+          borderColor: isWide ? context.colorScheme.onSurface : Colors.white70,
           semanticLabel: AppLocale.labels.helpTooltip,
         ),
       if (!isWide)
@@ -115,9 +115,10 @@ abstract class AbstractPageState<T extends StatefulWidget> extends State<T> {
   }
 
   Widget getBarTitle(BuildContext context, [bool isBottom = false]) {
+    final isWide = ScreenHelper.state().isWide;
     return TextWrapper(
       getTitle(),
-      style: TextStyle(color: context.colorScheme.onInverseSurface.withValues(alpha: 0.8)),
+      style: TextStyle(color: isWide ? context.colorScheme.onSurface : Colors.white70),
     );
   }
 
