@@ -3,7 +3,6 @@
 
 import 'package:flutter/material.dart';
 
-/// Device configuration for screenshot capture
 class DeviceConfig {
   const DeviceConfig({
     required this.name,

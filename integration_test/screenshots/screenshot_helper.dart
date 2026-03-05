@@ -10,7 +10,6 @@ import 'package:flutter/services.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'device_configs.dart';
 
-/// Enhanced screenshot helper supporting multiple platforms and devices
 class ScreenshotHelper {
   static const String _baseOutputDir = 'screenshots';
   static final Map<String, GlobalKey> _screenshotKeys = {};
@@ -108,39 +107,18 @@ class ScreenshotHelper {
     final sanitizedDeviceName = device.name.replaceAll(RegExp(r'[^\w\-_.]'), '_');
 
     final outputDir = customPath ?? _baseOutputDir;
-    final platformDir = _getPlatformDir(device.platform);
-    final fullPath = '$outputDir/$platformDir';
+    final fullPath = '$outputDir/$sanitizedDeviceName';
 
     final directory = Directory(fullPath);
     if (!directory.existsSync()) {
       directory.createSync(recursive: true);
     }
 
-    final filename = '${sanitizedTestName}_$sanitizedDeviceName.png';
+    final filename = '$sanitizedTestName.png';
     final file = File('$fullPath/$filename');
 
     await file.writeAsBytes(bytes);
     debugPrint('Screenshot saved: ${file.path}');
-  }
-
-  /// Get platform-specific directory name
-  static String _getPlatformDir(TargetPlatform? platform) {
-    switch (platform) {
-      case TargetPlatform.iOS:
-        return 'ios';
-      case TargetPlatform.android:
-        return 'android';
-      case TargetPlatform.macOS:
-        return 'macos';
-      case TargetPlatform.windows:
-        return 'windows';
-      case TargetPlatform.linux:
-        return 'linux';
-      case TargetPlatform.fuchsia:
-        return 'fuchsia';
-      default:
-        return 'default';
-    }
   }
 
   /// Get platform-specific theme

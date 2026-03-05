@@ -5,7 +5,6 @@
 
 import 'package:app_finance/_classes/storage/app_preferences.dart';
 import 'package:app_finance/main.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -15,91 +14,87 @@ import 'screenshot_helper.dart';
 import 'screenshot_config.dart';
 
 void main() {
-  group('Cross-Platform Screenshots:', () {
-    TestWidgetsFlutterBinding.ensureInitialized();
+  TestWidgetsFlutterBinding.ensureInitialized();
 
-    final preset = ScreenshotPresets.comprehensive;
-    // This test is meant to GENERATE screenshots, not compare them.
-    final config = ScreenshotConfig(
-      enabledPlatforms: preset.enabledPlatforms,
-      enabledDeviceTypes: preset.enabledDeviceTypes,
-      outputDirectory: preset.outputDirectory,
-      pixelRatio: preset.pixelRatio,
-      animationSettleTime: preset.animationSettleTime,
-      generateHtmlReport: false,
-      enableGoldenComparison: false,
-      comparisonThreshold: preset.comparisonThreshold,
-    );
+  final preset = ScreenshotPresets.comprehensive;
+  // This test is meant to GENERATE screenshots, not to compare them
+  final config = ScreenshotConfig(
+    enabledPlatforms: preset.enabledPlatforms,
+    enabledDeviceTypes: preset.enabledDeviceTypes,
+    outputDirectory: preset.outputDirectory,
+    pixelRatio: preset.pixelRatio,
+    animationSettleTime: preset.animationSettleTime,
+    generateHtmlReport: false,
+    enableGoldenComparison: false,
+    comparisonThreshold: preset.comparisonThreshold,
+  );
 
-    final enabledDevices = config.getEnabledDevices();
+  final enabledDevices = config.getEnabledDevices();
 
-    // Test home screen on all enabled devices
-    group('Home Screen:', () {
-      for (final device in enabledDevices) {
-        _screenshotForDevice('1_home', device, config);
-      }
+  for (final device in enabledDevices) {
+    // Home
+    _screenshotForDevice('1_home', device, config, beforeScreenshot: (tester) async {
+      await _goTo('Home', tester, config);
     });
-
-    // Test navigation functionality
-    group('Navigation:', () {
-      for (final device in enabledDevices) {
-        _screenshotForDevice('2_chat_jane', device, config, beforeScreenshot: (tester) async {
-          await tester.pumpAndSettle(config.animationSettleTime);
-          final janeButton = find.text('Jane');
-          if (janeButton.evaluate().isNotEmpty) {
-            await tester.tap(janeButton);
-            await tester.pumpAndSettle(config.animationSettleTime);
-          }
-        });
-      }
+    // Bills
+    _screenshotForDevice('2_bills', device, config, beforeScreenshot: (tester) async {
+      await _goTo('Bills', tester, config);
     });
-
-    // Platform-specific tests
-    group('Platform Specific Features:', () {
-      final mobileDevices = enabledDevices
-          .where((d) => d.platform == TargetPlatform.iOS || d.platform == TargetPlatform.android)
-          .toList();
-
-      final desktopDevices = enabledDevices
-          .where((d) =>
-              d.platform == TargetPlatform.macOS ||
-              d.platform == TargetPlatform.windows ||
-              d.platform == TargetPlatform.linux)
-          .toList();
-
-      // Mobile-specific tests
-      if (mobileDevices.isNotEmpty) {
-        group('Mobile Features:', () {
-          for (final device in mobileDevices) {
-            _screenshotForDevice('mobile_menu', device, config, beforeScreenshot: (tester) async {
-              await tester.pumpAndSettle(config.animationSettleTime);
-              // Test mobile-specific menu behavior
-              final drawer = find.byTooltip('Open navigation drawer');
-              if (drawer.evaluate().isNotEmpty) {
-                await tester.tap(drawer);
-                await tester.pumpAndSettle(config.animationSettleTime);
-              }
-            });
-          }
-        });
-      }
-
-      // Desktop-specific tests
-      if (desktopDevices.isNotEmpty) {
-        group('Desktop Features:', () {
-          for (final device in desktopDevices) {
-            _screenshotForDevice('desktop_layout', device, config, beforeScreenshot: (tester) async {
-              await tester.pumpAndSettle(config.animationSettleTime);
-              // Desktop layout should show full navigation
-            });
-          }
-        });
-      }
+    // Accounts
+    _screenshotForDevice('3_accounts', device, config, beforeScreenshot: (tester) async {
+      await _goTo('Accounts', tester, config);
     });
-  });
+    // Metrics > Budgets
+    _screenshotForDevice('4_m_budgets', device, config, beforeScreenshot: (tester) async {
+      await _goTo('Metrics', tester, config);
+      final btn = find.text('Budgets').first;
+      await tester.tap(btn);
+      await tester.pumpAndSettle(config.animationSettleTime);
+    });
+    // Metrics > Accounts
+    _screenshotForDevice('5_m_accounts', device, config, beforeScreenshot: (tester) async {
+      await _goTo('Metrics', tester, config);
+      final btn = find.text('Accounts');
+      await tester.tap(btn);
+      await tester.pumpAndSettle(config.animationSettleTime);
+    });
+    // Metrics > Bills
+    _screenshotForDevice('6_m_bills', device, config, beforeScreenshot: (tester) async {
+      await _goTo('Metrics', tester, config);
+      final btn = find.text('Bills').first;
+      await tester.tap(btn);
+      await tester.pumpAndSettle(config.animationSettleTime);
+    });
+    // Automation > Recurring Payments
+    _screenshotForDevice('7_automation', device, config, beforeScreenshot: (tester) async {
+      await _goTo('Automation', tester, config);
+      final btn = find.text('Recurring Payments').first;
+      await tester.tap(btn);
+      await tester.pumpAndSettle(config.animationSettleTime);
+    });
+    // Goals
+    _screenshotForDevice('8_goals', device, config, beforeScreenshot: (tester) async {
+      await _goTo('Goals', tester, config);
+    });
+  }
 }
 
-/// Capture screenshot for a specific device
+Future<void> _goTo(String route, WidgetTester tester, ScreenshotConfig config) async {
+  final btn = find.byTooltip('Open main menu');
+  if (btn.evaluate().isNotEmpty) {
+    await tester.tap(btn);
+    await tester.pumpAndSettle(config.animationSettleTime);
+  }
+  Finder header = find.text(route);
+  final matchCount = tester.widgetList(header).length;
+  if (matchCount > 1) {
+    header = header.last;
+  }
+  await tester.ensureVisible(header);
+  await tester.tap(header);
+  await tester.pumpAndSettle(config.animationSettleTime);
+}
+
 void _screenshotForDevice(
   String description,
   DeviceConfig device,

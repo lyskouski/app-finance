@@ -5,7 +5,6 @@ import 'package:flutter/foundation.dart';
 
 import 'device_configs.dart';
 
-/// Configuration for screenshot testing
 class ScreenshotConfig {
   ScreenshotConfig({
     this.enabledPlatforms = const {
@@ -20,7 +19,7 @@ class ScreenshotConfig {
       'tablets': true,
       'desktops': true,
     },
-    this.outputDirectory = 'coverage/screenshots',
+    this.outputDirectory = 'screenshots',
     this.pixelRatio = 3.0,
     this.animationSettleTime = const Duration(milliseconds: 500),
     this.generateHtmlReport = true,
