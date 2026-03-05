@@ -5,20 +5,12 @@ import 'package:app_finance/_classes/herald/app_locale.dart';
 import 'package:app_finance/_classes/herald/app_start_of_month.dart';
 import 'package:app_finance/_classes/storage/app_data.dart';
 import 'package:app_finance/_classes/structure/currency/exchange.dart';
-import 'package:app_finance/_classes/structure/navigation/app_route.dart';
 import 'package:app_finance/_configs/theme_helper.dart';
 import 'package:app_finance/_ext/build_context_ext.dart';
 import 'package:app_finance/_ext/date_time_ext.dart';
-import 'package:app_finance/_ext/string_ext.dart';
 import 'package:app_finance/components/_core/component_data.dart';
-import 'package:app_finance/components/widgets/account_widget.dart';
-import 'package:app_finance/components/widgets/bill_widget.dart';
-import 'package:app_finance/components/widgets/budget_widget.dart';
-import 'package:app_finance/components/widgets/payment_widget.dart';
-import 'package:app_finance/design/form/list_selector_item.dart';
-import 'package:app_finance/design/form/list_selector.dart';
-import 'package:app_finance/design/form/simple_input.dart';
-import 'package:app_finance/design/generic/base_widget.dart';
+import 'package:app_finance/design/generic/text_widget.dart';
+import 'package:app_finance/design/wrapper/table_widget.dart';
 import 'package:app_finance/design/wrapper/text_wrapper.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -28,18 +20,69 @@ class ComponentSummary extends StatelessWidget {
 
   const ComponentSummary(this.data, {super.key});
 
+  _generateSummaryTable(AppData appState) {
+    final exchange = Exchange(store: appState);
+    DateTime startingDay = DateTime.now().getStartingDay(AppStartOfMonth.get());
+    return [
+      [
+        TextWidget(' '),
+        TextWidget(startingDay.getPreviousMonth(5).fullMonthYear()),
+        TextWidget(startingDay.getPreviousMonth(4).fullMonthYear()),
+        TextWidget(startingDay.getPreviousMonth(3).fullMonthYear()),
+        TextWidget(startingDay.getPreviousMonth(2).fullMonthYear()),
+        TextWidget(startingDay.getPreviousMonth(1).fullMonthYear()),
+        TextWidget(startingDay.fullMonthYear()),
+        TextWidget(AppLocale.labels.summary),
+      ],
+      [
+        TextWidget(AppLocale.labels.budgetHeadline),
+        TextWidget(' '),
+        TextWidget(' '),
+        TextWidget(' '),
+        TextWidget(' '),
+        TextWidget(' '),
+        TextWidget(' '),
+        TextWidget(' '),
+      ],
+      [
+        TextWidget(AppLocale.labels.invoiceHeadline),
+        TextWidget(' '),
+        TextWidget(' '),
+        TextWidget(' '),
+        TextWidget(' '),
+        TextWidget(' '),
+        TextWidget(' '),
+        TextWidget(' '),
+      ],
+      [
+        TextWidget(AppLocale.labels.summary),
+        TextWidget(' ---TBD--- '),
+        TextWidget(' ---TBD--- '),
+        TextWidget(' ---TBD--- '),
+        TextWidget(' ---TBD--- '),
+        TextWidget(' ---TBD--- '),
+        TextWidget(' ---TBD--- '),
+        TextWidget(' ---TBD--- '),
+      ],
+    ];
+  }
+
   @override
   Widget build(BuildContext context) {
     double indent = ThemeHelper.getIndent(0.5);
-    EdgeInsets margin = EdgeInsets.all(indent);
-    DateTime startingDay = DateTime.now().getStartingDay(AppStartOfMonth.get());
     return Consumer<AppData>(builder: (context, appState, _) {
-      final exchange = Exchange(store: appState);
       return LayoutBuilder(builder: (context, constraints) {
         final width = constraints.maxWidth - indent * 4;
         return Flex(
           direction: Axis.horizontal,
-          children: [ThemeHelper.emptyBox],
+          children: [
+            TableWidget(
+              shadowColor: context.colorScheme.onSurface.withValues(alpha: 0.1),
+              width: width - 2 * indent,
+              chunk: const [200, null, null, null, null, null, null, 100],
+              data: _generateSummaryTable(appState),
+            )
+          ],
         );
       });
     });

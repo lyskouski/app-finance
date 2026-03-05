@@ -78,6 +78,16 @@ extension DateTimeExt on DateTime {
     return formatterDate.format(this);
   }
 
+  String fullMonthYear() {
+    DateFormat formatterDate;
+    try {
+      formatterDate = DateFormat.yMMMM(AppLocale.code);
+    } catch (e) {
+      formatterDate = DateFormat.yMMMM('en_US');
+    }
+    return formatterDate.format(this);
+  }
+
   String dateTime() {
     DateFormat formatterDate;
     DateFormat formatterTime;
