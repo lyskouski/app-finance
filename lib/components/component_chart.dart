@@ -24,15 +24,13 @@ enum ComponentChartType {
 }
 
 class ComponentChart extends StatelessWidget {
-  static const type = 'type';
-
   final ComponentData data;
 
   const ComponentChart(this.data, {super.key});
 
   @override
   Widget build(BuildContext context) {
-    ComponentChartType? widgetType = data[type]?.toString().toEnum(ComponentChartType.values);
+    ComponentChartType? widgetType = data[componentData.type]?.toString().toEnum(ComponentChartType.values);
     return Container(
       padding: EdgeInsets.all(ThemeHelper.getIndent()),
       child: switch (widgetType) {
@@ -63,7 +61,7 @@ class ComponentChartFormState extends State<ComponentChartForm> {
   @override
   initState() {
     super.initState();
-    _option = widget.data[ComponentChart.type];
+    _option = widget.data[componentData.type];
   }
 
   @override
@@ -84,7 +82,7 @@ class ComponentChartFormState extends State<ComponentChartForm> {
             ListSelector<ListSelectorItem>(
               setState: (value) {
                 setState(() => _option = value?.id);
-                widget.adjust(widget.data[componentData.order], {...widget.data, ComponentChart.type: value?.id});
+                widget.adjust(widget.data[componentData.order], {...widget.data, componentData.type: value?.id});
               },
               hintText: AppLocale.labels.cmpChart,
               value: _option != null ? ListSelectorItem(id: _option!, name: '') : null,

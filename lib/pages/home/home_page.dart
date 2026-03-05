@@ -12,7 +12,10 @@ import 'package:app_finance/_configs/screen_helper.dart';
 import 'package:app_finance/_configs/theme_helper.dart';
 import 'package:app_finance/_classes/structure/navigation/app_route.dart';
 import 'package:app_finance/_ext/date_time_ext.dart';
+import 'package:app_finance/components/_core/component_data.dart';
 import 'package:app_finance/components/_core/components_builder.dart';
+import 'package:app_finance/components/_core/list_component_registry.dart';
+import 'package:app_finance/components/component_chart.dart';
 import 'package:app_finance/components/widgets/account_flow_chart.dart';
 import 'package:app_finance/components/widgets/budget_forecast_chart.dart';
 import 'package:app_finance/components/component_recent.dart';
@@ -188,18 +191,61 @@ class HomePageState extends AbstractPageState<HomePage> {
     });
   }
 
+  Widget buildContentWideScreen() {
+    return ComponentsBuilder([
+      {
+        componentData.key: ComponentRegistry.chart.toString(),
+        componentData.startX: 0.0,
+        componentData.startY: 4.0,
+        componentData.endX: 4.0,
+        componentData.endY: 7.0,
+        componentData.order: 0,
+        componentData.type: ComponentChartType.accountFlow.toString(),
+      },
+      {
+        componentData.key: ComponentRegistry.chart.toString(),
+        componentData.startX: 4.0,
+        componentData.startY: 4.0,
+        componentData.endX: 8.0,
+        componentData.endY: 7.0,
+        componentData.order: 1,
+        componentData.type: ComponentChartType.billYtd.toString()
+      },
+      {
+        componentData.key: ComponentRegistry.chart.toString(),
+        componentData.startX: 8.0,
+        componentData.startY: 4.0,
+        componentData.endX: 12.0,
+        componentData.endY: 7.0,
+        componentData.order: 2,
+        componentData.type: ComponentChartType.budgetForecast.toString()
+      },
+      {
+        componentData.key: ComponentRegistry.summary.toString(),
+        componentData.startX: 0,
+        componentData.startY: 0,
+        componentData.endX: 12.0,
+        componentData.endY: 4.0,
+        componentData.order: 3,
+        componentData.type: ComponentRecentType.account.toString()
+      }
+    ]);
+  }
+
   @override
   Widget buildContent(BuildContext context, BoxConstraints constraints) {
     final data = ComponentsBuilder.getData(context);
+    bool isWide = ScreenHelper.state().isWide;
+    final countHeight = ThemeHelper.getHeightCount(context, constraints);
     if (data != null && data.isNotEmpty) {
       return ComponentsBuilder(data);
+    } else if (countHeight > 3 && isWide) {
+      return buildContentWideScreen();
     }
     double indent = ThemeHelper.getIndent();
     EdgeInsets margin = EdgeInsets.only(top: indent);
     final countWidth = ThemeHelper.getWidthCount(constraints);
-    final countHeight = ThemeHelper.getHeightCount(context, constraints);
     bool isVertical = countWidth == 1 && !ThemeHelper.isWearable;
-    bool isWide = ScreenHelper.state().isWide;
     double width = ThemeHelper.getWidth(context, 3, constraints);
     double partWidth = width / countWidth - indent * (countWidth - 1);
     DateTime curr = DateTime.now().getStartingDay(AppStartOfMonth.get());

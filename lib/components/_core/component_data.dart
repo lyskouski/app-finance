@@ -13,4 +13,5 @@ const componentData = (
   start: '_start',
   end: '_end',
   shift: '_shift',
+  type: 'type',
 );
