@@ -126,3 +126,5 @@ scripts:
     flutter test
   goldenImages:
     flutter test --update-goldens test/widget
+  screenshots:
+    flutter test integration_test/screenshots/capture_test.dart
