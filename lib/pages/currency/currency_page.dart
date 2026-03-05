@@ -67,7 +67,6 @@ class CurrencyPageState extends AbstractPageState<CurrencyPage> {
         tooltip: AppLocale.labels.currencyAddTooltip,
         onPressed: () => nav.pushNamed(AppRoute.currencyAddRoute),
         icon: Icons.add,
-        color: Colors.white70,
         semanticLabel: AppLocale.labels.currencyAddTooltip,
       ),
       ...super.getBarActions(nav)

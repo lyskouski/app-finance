@@ -11,7 +11,7 @@ import 'package:flutter/semantics.dart';
 typedef FnCall = void Function();
 
 class ToolbarButtonWidget extends StatefulWidget {
-  final Color color;
+  final Color? color;
   final Color? borderColor;
   final Color? backgroundColor;
   final Color? selectedColor;
@@ -29,8 +29,8 @@ class ToolbarButtonWidget extends StatefulWidget {
     super.key,
     required this.onPressed,
     required this.tooltip,
-    required this.color,
     required this.icon,
+    this.color,
     this.selectedIcon,
     this.selectedColor,
     this.semanticLabel,
@@ -48,8 +48,15 @@ class ToolbarButtonWidget extends StatefulWidget {
 
 class ToolbarButtonWidgetState extends State<ToolbarButtonWidget> {
   late Color initColor;
-  late Color color = widget.color;
+  late Color color = _getColor();
   bool isHover = false;
+
+  Color _getColor() {
+    if (widget.color != null) {
+      return widget.color!;
+    }
+    return widget.isWide ? context.colorScheme.onSurface : Colors.white70;
+  }
 
   _onEnter(_) => setState(() {
         color = Colors.white54;
@@ -57,7 +64,7 @@ class ToolbarButtonWidgetState extends State<ToolbarButtonWidget> {
       });
 
   _onExit(_) => setState(() {
-        color = widget.color;
+        color = _getColor();
         isHover = false;
       });
 
@@ -65,6 +72,7 @@ class ToolbarButtonWidgetState extends State<ToolbarButtonWidget> {
   Widget build(BuildContext context) {
     final indent = ThemeHelper.getIndent();
     initColor = widget.backgroundColor ?? context.colorScheme.surface.withValues(alpha: 0.1);
+    final borderColor = widget.isWide ? context.colorScheme.onSurface : Colors.white30;
     return Semantics(
       attributedHint: AttributedString(AppLocale.labels.typeButton),
       attributedLabel: AttributedString(widget.semanticLabel ?? widget.tooltip),
@@ -78,7 +86,7 @@ class ToolbarButtonWidgetState extends State<ToolbarButtonWidget> {
           decoration: BoxDecoration(
             shape: BoxShape.rectangle,
             color: isHover ? Colors.black54 : initColor,
-            border: Border.all(color: widget.borderColor ?? Colors.white30, width: 1),
+            border: Border.all(color: widget.borderColor ?? borderColor, width: 1),
           ),
           child: Material(
             elevation: 0,
