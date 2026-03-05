@@ -9,10 +9,18 @@ import 'package:flutter/material.dart';
 import 'package:flutter_currency_picker/flutter_currency_picker.dart';
 
 class AppLocale extends ValueNotifier<Locale?> {
-  static String code = AppPreferences.get(AppPreferences.prefLocale) ?? 'en';
+  static String code = 'en';
   static AppLocalizations labels = AppLocalizationsEn();
 
-  AppLocale() : super(AppLocale.fromCode(code));
+  AppLocale() : super(_initialLocale());
+
+  static Locale? _initialLocale() {
+    final prefCode = AppPreferences.get(AppPreferences.prefLocale);
+    if (prefCode != null && prefCode.isNotEmpty) {
+      code = prefCode;
+    }
+    return AppLocale.fromCode(code);
+  }
 
   static Locale? fromCode(String value) {
     try {

@@ -4,7 +4,10 @@
 // flutter test integration_test/screenshots/capture_test.dart
 
 import 'package:app_finance/_classes/storage/app_preferences.dart';
+import 'package:app_finance/_classes/structure/navigation/app_route.dart';
+import 'package:app_finance/l10n/app_localization.dart';
 import 'package:app_finance/main.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -31,67 +34,108 @@ void main() {
 
   final enabledDevices = config.getEnabledDevices();
 
-  for (final device in enabledDevices) {
-    // Home
-    _screenshotForDevice('1_home', device, config, beforeScreenshot: (tester) async {
-      await _goTo('Home', tester, config);
-    });
-    // Bills
-    _screenshotForDevice('2_bills', device, config, beforeScreenshot: (tester) async {
-      await _goTo('Bills', tester, config);
-    });
-    // Accounts
-    _screenshotForDevice('3_accounts', device, config, beforeScreenshot: (tester) async {
-      await _goTo('Accounts', tester, config);
-    });
-    // Metrics > Budgets
-    _screenshotForDevice('4_m_budgets', device, config, beforeScreenshot: (tester) async {
-      await _goTo('Metrics', tester, config);
-      final btn = find.text('Budgets').first;
-      await tester.tap(btn);
-      await tester.pumpAndSettle(config.animationSettleTime);
-    });
-    // Metrics > Accounts
-    _screenshotForDevice('5_m_accounts', device, config, beforeScreenshot: (tester) async {
-      await _goTo('Metrics', tester, config);
-      final btn = find.text('Accounts');
-      await tester.tap(btn);
-      await tester.pumpAndSettle(config.animationSettleTime);
-    });
-    // Metrics > Bills
-    _screenshotForDevice('6_m_bills', device, config, beforeScreenshot: (tester) async {
-      await _goTo('Metrics', tester, config);
-      final btn = find.text('Bills').first;
-      await tester.tap(btn);
-      await tester.pumpAndSettle(config.animationSettleTime);
-    });
-    // Automation > Recurring Payments
-    _screenshotForDevice('7_automation', device, config, beforeScreenshot: (tester) async {
-      await _goTo('Automation', tester, config);
-      final btn = find.text('Recurring Payments').first;
-      await tester.tap(btn);
-      await tester.pumpAndSettle(config.animationSettleTime);
-    });
-    // Goals
-    _screenshotForDevice('8_goals', device, config, beforeScreenshot: (tester) async {
-      await _goTo('Goals', tester, config);
-    });
+  const localeCsv = String.fromEnvironment('SCREENSHOT_LOCALES');
+  final localeFilter = localeCsv.split(',').map((v) => v.trim()).where((v) => v.isNotEmpty).toSet();
+
+  final locales = localeFilter.isEmpty
+      ? AppLocalizations.supportedLocales
+      : AppLocalizations.supportedLocales.where((l) => localeFilter.contains(l.toString())).toList();
+
+  for (final locale in locales) {
+    final localeCode = locale.toString();
+    for (final device in enabledDevices) {
+      // Home
+      _screenshotForDevice('1_home', device, config, localeCode: localeCode);
+
+      // Bills
+      _screenshotForDevice(
+        '2_bills',
+        device,
+        config,
+        localeCode: localeCode,
+        beforeScreenshot: (tester) => _goToRoute(AppRoute.billRoute, tester, config),
+      );
+
+      // Accounts
+      _screenshotForDevice(
+        '3_accounts',
+        device,
+        config,
+        localeCode: localeCode,
+        beforeScreenshot: (tester) => _goToRoute(AppRoute.accountRoute, tester, config),
+      );
+
+      // Metrics > Budgets (tab 0)
+      _screenshotForDevice(
+        '4_m_budgets',
+        device,
+        config,
+        localeCode: localeCode,
+        beforeScreenshot: (tester) => _goToRoute(
+          AppRoute.metricsSearchRoute,
+          tester,
+          config,
+          arguments: {routeArguments.search: '0'},
+        ),
+      );
+
+      // Metrics > Accounts (tab 1)
+      _screenshotForDevice(
+        '5_m_accounts',
+        device,
+        config,
+        localeCode: localeCode,
+        beforeScreenshot: (tester) => _goToRoute(
+          AppRoute.metricsSearchRoute,
+          tester,
+          config,
+          arguments: {routeArguments.search: '1'},
+        ),
+      );
+
+      // Metrics > Bills (tab 2)
+      _screenshotForDevice(
+        '6_m_bills',
+        device,
+        config,
+        localeCode: localeCode,
+        beforeScreenshot: (tester) => _goToRoute(
+          AppRoute.metricsSearchRoute,
+          tester,
+          config,
+          arguments: {routeArguments.search: '2'},
+        ),
+      );
+
+      // Automation (defaults to Payments tab)
+      _screenshotForDevice(
+        '7_automation',
+        device,
+        config,
+        localeCode: localeCode,
+        beforeScreenshot: (tester) => _goToRoute(AppRoute.automationRoute, tester, config),
+      );
+
+      // Goals
+      _screenshotForDevice(
+        '8_goals',
+        device,
+        config,
+        localeCode: localeCode,
+        beforeScreenshot: (tester) => _goToRoute(AppRoute.goalRoute, tester, config),
+      );
+    }
   }
 }
 
-Future<void> _goTo(String route, WidgetTester tester, ScreenshotConfig config) async {
-  final btn = find.byTooltip('Open main menu');
-  if (btn.evaluate().isNotEmpty) {
-    await tester.tap(btn);
-    await tester.pumpAndSettle(config.animationSettleTime);
-  }
-  Finder header = find.text(route);
-  final matchCount = tester.widgetList(header).length;
-  if (matchCount > 1) {
-    header = header.last;
-  }
-  await tester.ensureVisible(header);
-  await tester.tap(header);
+Future<void> _goToRoute(
+  String route,
+  WidgetTester tester,
+  ScreenshotConfig config, {
+  Map<String, dynamic>? arguments,
+}) async {
+  final navigator = tester.state<NavigatorState>(find.byType(Navigator));
+  navigator.pushNamed(route, arguments: arguments);
   await tester.pumpAndSettle(config.animationSettleTime);
 }
 
@@ -100,14 +144,23 @@ void _screenshotForDevice(
   DeviceConfig device,
   ScreenshotConfig config, {
   Future<void> Function(WidgetTester tester)? beforeScreenshot,
+  required String localeCode,
 }) {
-  testWidgets('$description - ${device.name}', (tester) async {
+  testWidgets('$description - ${device.name} - $localeCode', (tester) async {
     // Configure device settings
     ScreenshotHelper.configureDevice(tester, device);
 
     try {
       // Initialize app preferences
       AppPreferences.pref = await SharedPreferences.getInstance();
+
+      // Ensure the app starts in the requested locale.
+      await AppPreferences.set(AppPreferences.prefLocale, localeCode);
+
+      // Skip onboarding/start gate in HomePage.
+      if (AppPreferences.get(AppPreferences.prefPrivacyPolicy) == null) {
+        await AppPreferences.set(AppPreferences.prefPrivacyPolicy, '');
+      }
 
       // Screenshot generation should not attempt to start P2P sync/WebRTC
       await AppPreferences.clear(AppPreferences.prefPeer);
@@ -117,7 +170,7 @@ void _screenshotForDevice(
       final pumpMain = PumpMain();
       final appWidget = ScreenshotHelper.createScreenshotApp(
         device: device,
-        screenshotKey: '${description}_${device.name}',
+        screenshotKey: '${description}_${device.name}_$localeCode',
         child: pumpMain.getApp(const MyApp(), true),
       );
 
@@ -137,8 +190,8 @@ void _screenshotForDevice(
       await ScreenshotHelper.captureScreenshot(
         testName: description,
         device: device,
-        screenshotKey: '${description}_${device.name}',
-        customPath: config.outputDirectory,
+        screenshotKey: '${description}_${device.name}_$localeCode',
+        customPath: '${config.outputDirectory}/$localeCode',
         pixelRatio: device.devicePixelRatio,
       );
 
