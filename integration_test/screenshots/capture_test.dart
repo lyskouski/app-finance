@@ -34,6 +34,25 @@ void main() {
 
   final enabledDevices = config.getEnabledDevices();
 
+  // flutter test integration_test/screenshots/capture_test.dart --dart-define=SCREENSHOT_DEVICES="iPhone 15 Pro"
+  const deviceCsv = String.fromEnvironment('SCREENSHOT_DEVICES');
+  final deviceFilter = deviceCsv.split(',').map((v) => v.trim()).where((v) => v.isNotEmpty).toSet();
+
+  bool matchesDeviceFilter(DeviceConfig device) {
+    if (deviceFilter.isEmpty) {
+      return true;
+    }
+    final name = device.name;
+    final normalized = name.toLowerCase();
+    final underscored = name.replaceAll(' ', '_').toLowerCase();
+    return deviceFilter.any((f) {
+      final ff = f.toLowerCase();
+      return ff == normalized || ff == underscored;
+    });
+  }
+
+  final filteredDevices = enabledDevices.where(matchesDeviceFilter).toList();
+
   // flutter test integration_test/screenshots/capture_test.dart --dart-define=SCREENSHOT_LOCALES=en
   const localeCsv = String.fromEnvironment('SCREENSHOT_LOCALES');
   final localeFilter = localeCsv.split(',').map((v) => v.trim()).where((v) => v.isNotEmpty).toSet();
@@ -44,7 +63,7 @@ void main() {
 
   for (final locale in locales) {
     final localeCode = locale.toString();
-    for (final device in enabledDevices) {
+    for (final device in filteredDevices) {
       // Home
       _screenshotForDevice('1_home', device, config, localeCode: localeCode);
 
