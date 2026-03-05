@@ -32,7 +32,6 @@ enum ComponentRecentType {
 }
 
 class ComponentRecent extends StatelessWidget {
-  static const type = 'type';
   static const count = 'count';
 
   final ComponentData data;
@@ -43,7 +42,7 @@ class ComponentRecent extends StatelessWidget {
   Widget build(BuildContext context) {
     double indent = ThemeHelper.getIndent(0.5);
     EdgeInsets margin = EdgeInsets.all(indent);
-    ComponentRecentType? widgetType = data[type]?.toString().toEnum(ComponentRecentType.values);
+    ComponentRecentType? widgetType = data[componentData.type]?.toString().toEnum(ComponentRecentType.values);
     final limit = switch (data[count].runtimeType) {
       String => (data[count] as String).toInt(),
       double => (data[count] as double).toInt(),
@@ -139,7 +138,7 @@ class ComponentRecentFormState extends State<ComponentRecentForm> {
   initState() {
     super.initState();
     _controller.text = (widget.data[ComponentRecent.count] ?? 7).toString();
-    _option = widget.data[ComponentRecent.type];
+    _option = widget.data[componentData.type];
   }
 
   @override
@@ -161,7 +160,7 @@ class ComponentRecentFormState extends State<ComponentRecentForm> {
             ListSelector<ListSelectorItem>(
               setState: (value) {
                 setState(() => _option = value?.id);
-                widget.adjust(widget.data[componentData.order], {...widget.data, ComponentRecent.type: value?.id});
+                widget.adjust(widget.data[componentData.order], {...widget.data, componentData.type: value?.id});
               },
               hintText: AppLocale.labels.cmpRecent,
               value: _option != null ? ListSelectorItem(id: _option!, name: '') : null,

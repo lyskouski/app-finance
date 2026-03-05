@@ -6,6 +6,7 @@ import 'package:app_finance/components/component_chart.dart';
 import 'package:app_finance/components/component_recent.dart';
 import 'package:app_finance/components/_core/component_data.dart';
 import 'package:app_finance/components/_core/list_component_registry.dart';
+import 'package:app_finance/components/component_summary.dart';
 import 'package:flutter/material.dart';
 
 class ComponentsBuilderForm extends StatelessWidget {
@@ -20,6 +21,7 @@ class ComponentsBuilderForm extends StatelessWidget {
     return switch (key) {
       ComponentRegistry.recent => ComponentRecentForm(data, adjust: adjust),
       ComponentRegistry.chart => ComponentChartForm(data, adjust: adjust),
+      ComponentRegistry.summary => ComponentSummaryForm(data, adjust: adjust),
     };
   }
 }
