@@ -25,12 +25,10 @@ import 'package:provider/provider.dart';
 
 class BudgetTab extends StatelessWidget {
   final AppData store;
-  final double width;
 
   const BudgetTab({
     super.key,
     required this.store,
-    required this.width,
   });
 
   Widget _getField(BudgetAppData budget, List<BillAppData> bills, DateTime date) {
@@ -118,12 +116,14 @@ class BudgetTab extends StatelessWidget {
             ThemeHelper.hIndent4x,
             const BudgetYtdChart(),
             ThemeHelper.hIndent4x,
-            TableWidget(
-              shadowColor: context.colorScheme.onSurface.withValues(alpha: 0.1),
-              width: width - space - 4 * indent,
-              chunk: const [20, 72, null, null, null],
-              data: _generateTable(sorting.getSortFunction(context)),
-            ),
+            LayoutBuilder(builder: (context, constraints) {
+              return TableWidget(
+                shadowColor: context.colorScheme.onSurface.withValues(alpha: 0.1),
+                width: constraints.maxWidth - space,
+                chunk: const [20, 72, null, null, null],
+                data: _generateTable(sorting.getSortFunction(context)),
+              );
+            }),
             ThemeHelper.formEndBox,
           ],
         ),
