@@ -18,7 +18,7 @@ digraph G {
   }
   {
     rank = same; "components";
-    components_ [label="<0>COMPONENTS_|<component_chart>component_chart|<component_recent>component_recent",fillcolor="silver:white", gradientangle=240, style="filled"];
+    components_ [label="<0>COMPONENTS_|<component_chart>component_chart|<component_recent>component_recent|<component_summary>component_summary",fillcolor="silver:white", gradientangle=240, style="filled"];
   }
   {
     rank = same; "components";
@@ -346,6 +346,15 @@ digraph G {
   _core -> _core [color="#FF00FF50"];
   _core -> _core_widgets [color="#FF00FF50"];
 
+  components_ -> herald [color="#FF00FF50"];
+  components_ -> storage [color="#FF00FF50"];
+  components_ -> structure [color="#FF00FF50"];
+  components_ -> structure_currency [color="#FF00FF50"];
+  components_ -> _configs_ [color="#FF00FF50"];
+  components_ -> _ext_ [color="#FF00FF50"];
+  components_ -> _core [color="#FF00FF50"];
+  components_ -> generic [color="#FF00FF50"];
+  components_ -> wrapper [color="#FF00FF50"];
   charts_ -> interface [color="red"];
   charts_ -> painter [color="red"];
 
@@ -754,8 +763,8 @@ digraph G {
   home -> structure_navigation [color="#F0F0F050"];
   home -> _ext_ [color="#F0F0F050"];
   home -> _core [color="#F0F0F050"];
-  home -> widgets [color="#F0F0F050"];
   home -> components_ [color="#F0F0F050"];
+  home -> widgets [color="#F0F0F050"];
   home -> _interfaces [color="#F0F0F050"];
   home -> home [color="#F0F0F050"];
   home -> home_widgets [color="#F0F0F050"];

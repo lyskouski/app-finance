@@ -32,12 +32,12 @@
             <td></td>
             <td class="headerItem">Lines:</td>
             <td class="headerCovTableEntryLo">0.0&nbsp;%</td>
-            <td class="headerCovTableEntry">5</td>
+            <td class="headerCovTableEntry">6</td>
             <td class="headerCovTableEntry">0</td>
           </tr>
           <tr>
             <td class="headerItem">Test Date:</td>
-            <td class="headerValue">2026-03-05 13:50:00</td>
+            <td class="headerValue">2026-03-05 15:53:38</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntryHi">-</td>
@@ -68,23 +68,25 @@
 <span id="L6"><span class="lineNum">       6</span>              : import 'package:app_finance/components/component_recent.dart';</span>
 <span id="L7"><span class="lineNum">       7</span>              : import 'package:app_finance/components/_core/component_data.dart';</span>
 <span id="L8"><span class="lineNum">       8</span>              : import 'package:app_finance/components/_core/list_component_registry.dart';</span>
-<span id="L9"><span class="lineNum">       9</span>              : import 'package:flutter/material.dart';</span>
-<span id="L10"><span class="lineNum">      10</span>              : </span>
-<span id="L11"><span class="lineNum">      11</span>              : class ComponentsBuilderForm extends StatelessWidget {</span>
-<span id="L12"><span class="lineNum">      12</span>              :   final ComponentData data;</span>
-<span id="L13"><span class="lineNum">      13</span>              :   final Function adjust;</span>
-<span id="L14"><span class="lineNum">      14</span>              : </span>
-<span id="L15"><span class="lineNum">      15</span> <span class="tlaUNC tlaBgUNC">           0 :   const ComponentsBuilderForm(this.data, {super.key, required this.adjust});</span></span>
-<span id="L16"><span class="lineNum">      16</span>              : </span>
-<span id="L17"><span class="lineNum">      17</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L18"><span class="lineNum">      18</span>              :   Widget build(BuildContext context) {</span>
-<span id="L19"><span class="lineNum">      19</span> <span class="tlaUNC">           0 :     final key = (data[componentData.key] as String).toEnum(ComponentRegistry.values);</span></span>
-<span id="L20"><span class="lineNum">      20</span>              :     return switch (key) {</span>
-<span id="L21"><span class="lineNum">      21</span> <span class="tlaUNC">           0 :       ComponentRegistry.recent =&gt; ComponentRecentForm(data, adjust: adjust),</span></span>
-<span id="L22"><span class="lineNum">      22</span> <span class="tlaUNC">           0 :       ComponentRegistry.chart =&gt; ComponentChartForm(data, adjust: adjust),</span></span>
-<span id="L23"><span class="lineNum">      23</span>              :     };</span>
-<span id="L24"><span class="lineNum">      24</span>              :   }</span>
-<span id="L25"><span class="lineNum">      25</span>              : }</span>
+<span id="L9"><span class="lineNum">       9</span>              : import 'package:app_finance/components/component_summary.dart';</span>
+<span id="L10"><span class="lineNum">      10</span>              : import 'package:flutter/material.dart';</span>
+<span id="L11"><span class="lineNum">      11</span>              : </span>
+<span id="L12"><span class="lineNum">      12</span>              : class ComponentsBuilderForm extends StatelessWidget {</span>
+<span id="L13"><span class="lineNum">      13</span>              :   final ComponentData data;</span>
+<span id="L14"><span class="lineNum">      14</span>              :   final Function adjust;</span>
+<span id="L15"><span class="lineNum">      15</span>              : </span>
+<span id="L16"><span class="lineNum">      16</span> <span class="tlaUNC tlaBgUNC">           0 :   const ComponentsBuilderForm(this.data, {super.key, required this.adjust});</span></span>
+<span id="L17"><span class="lineNum">      17</span>              : </span>
+<span id="L18"><span class="lineNum">      18</span> <span class="tlaUNC">           0 :   @override</span></span>
+<span id="L19"><span class="lineNum">      19</span>              :   Widget build(BuildContext context) {</span>
+<span id="L20"><span class="lineNum">      20</span> <span class="tlaUNC">           0 :     final key = (data[componentData.key] as String).toEnum(ComponentRegistry.values);</span></span>
+<span id="L21"><span class="lineNum">      21</span>              :     return switch (key) {</span>
+<span id="L22"><span class="lineNum">      22</span> <span class="tlaUNC">           0 :       ComponentRegistry.recent =&gt; ComponentRecentForm(data, adjust: adjust),</span></span>
+<span id="L23"><span class="lineNum">      23</span> <span class="tlaUNC">           0 :       ComponentRegistry.chart =&gt; ComponentChartForm(data, adjust: adjust),</span></span>
+<span id="L24"><span class="lineNum">      24</span> <span class="tlaUNC">           0 :       ComponentRegistry.summary =&gt; ComponentSummaryForm(data, adjust: adjust),</span></span>
+<span id="L25"><span class="lineNum">      25</span>              :     };</span>
+<span id="L26"><span class="lineNum">      26</span>              :   }</span>
+<span id="L27"><span class="lineNum">      27</span>              : }</span>
         </pre>
               </td>
             </tr>
