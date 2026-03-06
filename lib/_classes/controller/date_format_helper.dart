@@ -51,6 +51,7 @@ class DateFormatHelper {
   }
 
   List<String> _fillDates(List<String?> format, Map<int, _Assertion> check, String locale) {
+    if (format.isEmpty) return [''];
     bool isMonth = _isMonthFirst(locale);
     final timeDiv = format.where((v) => v == ':').length;
     final time = ['HH', 'mm', if (timeDiv > 1) 'ss'];

@@ -75,6 +75,7 @@ class IteratorController<T extends num, K, M> implements InterfaceIterator<T, K,
   List<M> chunk(int length) {
     final result = List.generate(length, (_) => next);
     result.removeWhere((e) => e == null);
+    if (result.isEmpty) return [];
     return result.cast<M>();
   }
 
