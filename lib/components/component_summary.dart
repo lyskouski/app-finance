@@ -134,8 +134,15 @@ class ComponentSummary extends StatelessWidget {
     // Header
     rows.add([
       TextWidget(' '),
-      for (final m in monthStarts) TextWidget(m.fullMonthYear(), style: TextStyle(fontWeight: FontWeight.bold)),
-      TextWidget(AppLocale.labels.summary, style: TextStyle(fontWeight: FontWeight.bold)),
+      for (final m in monthStarts)
+        Align(
+          alignment: Alignment.centerRight,
+          child: TextWidget(m.fullMonthYear(), style: TextStyle(fontWeight: FontWeight.bold)),
+        ),
+      Align(
+        alignment: Alignment.centerRight,
+        child: TextWidget(AppLocale.labels.summary, style: TextStyle(fontWeight: FontWeight.bold)),
+      ),
     ]);
     rows.add([
       TextWidget(AppLocale.labels.budgetHeadline, style: TextStyle(fontWeight: FontWeight.bold)),
@@ -149,15 +156,19 @@ class ComponentSummary extends StatelessWidget {
       final total = monthTotals.fold<double>(0.0, (a, b) => a + b);
       rows.add([
         TextWidget('- ${budget.title}'),
-        for (final v in monthTotals) TextWidget(formatAmountForBudget(budget, v)),
-        TextWidget(formatAmountForBudget(budget, total)),
+        for (final v in monthTotals)
+          Align(
+            alignment: Alignment.centerRight,
+            child: TextWidget(formatAmountForBudget(budget, v)),
+          ),
+        Align(
+          alignment: Alignment.centerRight,
+          child: TextWidget(formatAmountForBudget(budget, total)),
+        ),
       ]);
     }
 
-    List<Widget> separatorRow() => List<Widget>.generate(
-          8,
-          (_) => const TextWidget(' '),
-        );
+    List<Widget> separatorRow() => List<Widget>.generate(8, (_) => const TextWidget(' '));
 
     // Header
     rows.add([
@@ -173,8 +184,15 @@ class ComponentSummary extends StatelessWidget {
       final total = monthTotals.fold<double>(0.0, (a, b) => a + b);
       rows.add([
         TextWidget('- ${account.title}'),
-        for (final v in monthTotals) TextWidget(formatAmount(v, displayCurrency)),
-        TextWidget(formatAmount(total, displayCurrency)),
+        for (final v in monthTotals)
+          Align(
+            alignment: Alignment.centerRight,
+            child: TextWidget(formatAmount(v, displayCurrency)),
+          ),
+        Align(
+          alignment: Alignment.centerRight,
+          child: TextWidget(formatAmount(total, displayCurrency)),
+        ),
       ]);
     }
 
@@ -189,11 +207,17 @@ class ComponentSummary extends StatelessWidget {
     rows.add([
       TextWidget(AppLocale.labels.total, style: TextStyle(fontWeight: FontWeight.bold)),
       for (final v in netMonthTotals)
-        TextWidget(
-          formatAmount(v, displayCurrency),
-          style: TextStyle(fontWeight: FontWeight.bold),
+        Align(
+          alignment: Alignment.centerRight,
+          child: TextWidget(
+            formatAmount(v, displayCurrency),
+            style: TextStyle(fontWeight: FontWeight.bold),
+          ),
         ),
-      TextWidget(formatAmount(netTotal, displayCurrency), style: TextStyle(fontWeight: FontWeight.bold)),
+      Align(
+        alignment: Alignment.centerRight,
+        child: TextWidget(formatAmount(netTotal, displayCurrency), style: TextStyle(fontWeight: FontWeight.bold)),
+      ),
     ]);
 
     return rows;
