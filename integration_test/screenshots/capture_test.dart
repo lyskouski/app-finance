@@ -3,6 +3,8 @@
 
 // flutter test integration_test/screenshots/capture_test.dart
 
+import 'package:app_finance/_classes/herald/app_design.dart';
+import 'package:app_finance/_classes/herald/app_locale.dart';
 import 'package:app_finance/_classes/storage/app_preferences.dart';
 import 'package:app_finance/_classes/structure/navigation/app_route.dart';
 import 'package:app_finance/l10n/app_localization.dart';
@@ -204,6 +206,8 @@ void _screenshotForDevice(
 
       // Ensure the app starts in the requested locale.
       await AppPreferences.set(AppPreferences.prefLocale, localeCode);
+      final design = AppDesign.fromLocale(AppLocale.fromCode(localeCode));
+      await AppPreferences.set(AppPreferences.prefDesign, design);
 
       // Skip onboarding/start gate in HomePage.
       if (AppPreferences.get(AppPreferences.prefPrivacyPolicy) == null) {
