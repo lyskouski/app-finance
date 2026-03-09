@@ -2,6 +2,7 @@
 // Use of this source code is governed by a CC BY-NC-ND 4.0 license that can be found in the LICENSE file.
 
 import 'package:app_finance/_classes/herald/app_locale.dart';
+import 'package:app_finance/_classes/herald/app_sorting.dart';
 import 'package:app_finance/_classes/herald/app_start_of_month.dart';
 import 'package:app_finance/_classes/storage/app_data.dart';
 import 'package:app_finance/_classes/structure/account_app_data.dart';
@@ -25,7 +26,7 @@ class ComponentSummary extends StatelessWidget {
 
   const ComponentSummary(this.data, {super.key});
 
-  List<List<Widget>> _generateSummaryTable(AppData appState) {
+  List<List<Widget>> _generateSummaryTable(AppData appState, BuildContext context) {
     final exchange = Exchange(store: appState);
     final displayCurrency = exchange.getDefaultCurrency() ?? Exchange.defaultCurrency;
 
@@ -40,14 +41,17 @@ class ComponentSummary extends StatelessWidget {
     ];
     final monthEnds = monthStarts.map((d) => d.getNextMonth()).toList();
 
-    final budgets = appState.getList(AppDataType.budgets).cast<BudgetAppData>().where((b) => !b.hidden).toList();
-    final bills = appState.getList(AppDataType.bills).cast<BillAppData>().where((b) => !b.hidden).toList();
+    final sorting = Provider.of<AppSorting>(context, listen: true);
+    final budgets = appState.getList(AppDataType.budgets).cast<BudgetAppData>();
+    budgets.sort(sorting.getSortFunction(context));
+    final bills = appState
+        .getStream(AppDataType.bills, boundary: startingDay.getPreviousMonth(6).millisecondsSinceEpoch + 0.0)
+        .toList()
+        .cast<BillAppData>();
     final accounts = appState.getList(AppDataType.accounts).cast<AccountAppData>().where((a) => !a.hidden).toList();
-    final invoices = appState
-        .getList(AppDataType.invoice)
-        .cast<InvoiceAppData>()
-        .where((i) => !i.hidden && i.accountFrom == null)
-        .toList();
+    accounts.sort(sorting.getSortFunction(context));
+    final invoices =
+        appState.getList(AppDataType.invoice).cast<InvoiceAppData>().where((i) => i.accountFrom == null).toList();
 
     String formatAmount(double value, Currency? currency) {
       if (currency == null) {
@@ -238,7 +242,7 @@ class ComponentSummary extends StatelessWidget {
                   shadowColor: context.colorScheme.onSurface.withValues(alpha: 0.1),
                   width: constraints.maxWidth - indent * 4,
                   chunk: const [200, null, null, null, null, null, null, 100],
-                  data: _generateSummaryTable(appState),
+                  data: _generateSummaryTable(appState, context),
                 ),
               ),
             ),
