@@ -218,7 +218,7 @@ digraph G {
   }
   {
     rank = same; "_configs";
-    _configs_ [label="<0>_CONFIGS_|<account_type>account_type|<screen_helper>screen_helper|<custom_color_scheme>custom_color_scheme|<firebase_options>firebase_options|<theme_helper>theme_helper|<automation_type>automation_type|<budget_type>budget_type|<custom_text_theme>custom_text_theme|<payment_type>payment_type|<sorting_type>sorting_type|<design_type>design_type",fillcolor="silver:white", gradientangle=240, style="filled"];
+    _configs_ [label="<0>_CONFIGS_|<account_type>account_type|<screen_helper>screen_helper|<custom_color_scheme>custom_color_scheme|<firebase_options>firebase_options|<theme_helper>theme_helper|<automation_type>automation_type|<budget_type>budget_type|<member_list>member_list|<custom_text_theme>custom_text_theme|<payment_type>payment_type|<sorting_type>sorting_type|<design_type>design_type",fillcolor="silver:white", gradientangle=240, style="filled"];
   }
   {
     rank = same; "_ext";
@@ -1358,6 +1358,7 @@ digraph G {
   _configs_ -> form [color="green"];
   _configs_ -> herald [color="green"];
   _configs_ -> form [color="green"];
+  _configs_ -> herald [color="green"];
   _configs_ -> _configs_ [color="green"];
   _configs_ -> herald [color="green"];
   _configs_ -> form [color="green"];
