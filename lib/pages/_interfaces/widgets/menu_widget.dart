@@ -4,6 +4,7 @@
 import 'package:app_finance/_classes/herald/app_design.dart';
 import 'package:app_finance/_classes/structure/navigation/app_menu.dart';
 import 'package:app_finance/_classes/structure/navigation/app_menu_item.dart';
+import 'package:app_finance/_classes/structure/navigation/app_route.dart';
 import 'package:app_finance/_configs/screen_helper.dart';
 import 'package:app_finance/_configs/theme_helper.dart';
 import 'package:app_finance/_ext/build_context_ext.dart';
@@ -23,9 +24,11 @@ class MenuWidget extends StatelessWidget {
     required this.setState,
   });
 
-  void _navigateToPage(NavigatorState nav, String routeName) {
+  void _navigateToPage(String? currentRouteName, NavigatorState nav, String routeName) {
     setState();
-    nav.pop();
+    if (currentRouteName != AppRoute.homeRoute && nav.canPop()) {
+      nav.pop();
+    }
     nav.pushNamed(routeName);
   }
 
@@ -45,9 +48,10 @@ class MenuWidget extends StatelessWidget {
     Color color = isSelected ? colorScheme.primary : colorScheme.secondary;
     AppMenuItem menu = AppMenu.getByIndex(index);
     NavigatorState nav = Navigator.of(context);
+    final currentRouteName = ModalRoute.of(context)?.settings.name;
 
     return InkWell(
-      onTap: () => _navigateToPage(nav, menu.route),
+      onTap: () => _navigateToPage(currentRouteName, nav, menu.route),
       focusNode: isSelected && !isWide ? (focus..requestFocus()) : focus,
       onHover: _onHover,
       child: Container(
