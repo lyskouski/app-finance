@@ -32,6 +32,14 @@ class DeviceConfig {
 /// Platform-specific device configurations
 class PlatformDevices {
   // iOS Devices
+  static const DeviceConfig iphone15ProMax = DeviceConfig(
+    name: 'iPhone 15 Pro Max', // Apple Marketplace [iPhone 6.9" Display]
+    size: Size(1290, 2796),
+    devicePixelRatio: 3.0,
+    platform: TargetPlatform.iOS,
+    safeArea: EdgeInsets.only(top: 47, bottom: 34),
+  );
+
   static const DeviceConfig iPhone = DeviceConfig(
     name: 'iPhone 6.5dm', // Apple Marketplace [iPhone 6.5" Display]
     size: Size(1284, 2778),
@@ -39,17 +47,10 @@ class PlatformDevices {
     platform: TargetPlatform.iOS,
     safeArea: EdgeInsets.only(top: 47, bottom: 34),
   );
+
   static const DeviceConfig iphone15Pro = DeviceConfig(
     name: 'iPhone 15 Pro', // Apple Marketplace [iPhone 6.3" Display]
     size: Size(1179, 2556),
-    devicePixelRatio: 3.0,
-    platform: TargetPlatform.iOS,
-    safeArea: EdgeInsets.only(top: 47, bottom: 34),
-  );
-
-  static const DeviceConfig iphone15ProMax = DeviceConfig(
-    name: 'iPhone 15 Pro Max', // Apple Marketplace [iPhone 6.9" Display]
-    size: Size(1290, 2796),
     devicePixelRatio: 3.0,
     platform: TargetPlatform.iOS,
     safeArea: EdgeInsets.only(top: 47, bottom: 34),
