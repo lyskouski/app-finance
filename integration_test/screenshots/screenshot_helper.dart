@@ -8,7 +8,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'device_configs.dart';
+import 'device_config.dart';
 
 class ScreenshotHelper {
   static const String _baseOutputDir = 'screenshots';

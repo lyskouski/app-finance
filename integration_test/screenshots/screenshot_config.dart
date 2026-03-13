@@ -3,7 +3,7 @@
 
 import 'package:flutter/foundation.dart';
 
-import 'device_configs.dart';
+import 'device_config.dart';
 
 class ScreenshotConfig {
   ScreenshotConfig({

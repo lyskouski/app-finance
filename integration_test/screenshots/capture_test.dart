@@ -15,7 +15,7 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../test/pump_main.dart';
-import 'device_configs.dart';
+import 'device_config.dart';
 import 'screenshot_helper.dart';
 import 'screenshot_config.dart';
 

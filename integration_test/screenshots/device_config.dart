@@ -186,6 +186,7 @@ class PlatformDevices {
     safeArea: EdgeInsets.zero,
     navigationBarHeight: 0,
   );
+
   static const DeviceConfig macBookPro14 = DeviceConfig(
     name: 'MacBook Pro 14dm',
     size: Size(3024, 1964),
