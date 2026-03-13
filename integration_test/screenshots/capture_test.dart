@@ -1,7 +1,16 @@
 // Copyright 2026 The terCAD team. All rights reserved.
 // Use of this source code is governed by a CC BY-NC-ND 4.0 license that can be found in the LICENSE file.
 
+// # Run all tests
 // flutter test integration_test/screenshots/capture_test.dart
+// # Limit by devices
+// flutter test integration_test/screenshots/capture_test.dart --dart-define=SCREENSHOT_DEVICES="iPhone 15 Pro"
+// # Limit by languages
+// flutter test integration_test/screenshots/capture_test.dart --dart-define=SCREENSHOT_LOCALES=en
+// # Limit by steps
+// flutter test integration_test/screenshots/capture_test.dart --dart-define=SCREENSHOT_STEPS=1_home
+// # Skip devices for which a folder already exists
+// flutter test integration_test/screenshots/capture_test.dart --dart-define=SKIP_EXISTANT=true
 
 import 'package:app_finance/_classes/herald/app_design.dart';
 import 'package:app_finance/_classes/herald/app_locale.dart';
