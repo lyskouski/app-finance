@@ -83,6 +83,7 @@ dev_dependencies:
   dart_class_wrapper: ^1.0.1
   flutter_gherkin_generator: ^1.0.5
   flutter_gherkin_wrapper: ^1.0.5
+  flutter_screenshot_generator: ^1.0.0
 
 flutter:
   generate: true

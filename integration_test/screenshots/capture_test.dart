@@ -3,7 +3,6 @@
 
 // flutter test integration_test/screenshots/capture_test.dart
 
-import 'dart:io';
 import 'package:app_finance/_classes/herald/app_design.dart';
 import 'package:app_finance/_classes/herald/app_locale.dart';
 import 'package:app_finance/_classes/storage/app_preferences.dart';
@@ -11,185 +10,70 @@ import 'package:app_finance/_classes/structure/navigation/app_route.dart';
 import 'package:app_finance/l10n/app_localization.dart';
 import 'package:app_finance/main.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenshot_generator/flutter_screenshot_generator.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../test/pump_main.dart';
-import 'device_config.dart';
-import 'screenshot_helper.dart';
-import 'screenshot_config.dart';
 
 void main() {
-  TestWidgetsFlutterBinding.ensureInitialized();
-
-  final preset = ScreenshotPresets.comprehensive;
-  // This test is meant to GENERATE screenshots, not to compare them
-  final config = ScreenshotConfig(
-    enabledPlatforms: preset.enabledPlatforms,
-    enabledDeviceTypes: preset.enabledDeviceTypes,
-    outputDirectory: preset.outputDirectory,
-    pixelRatio: preset.pixelRatio,
-    animationSettleTime: preset.animationSettleTime,
-    generateHtmlReport: false,
-    enableGoldenComparison: false,
-    comparisonThreshold: preset.comparisonThreshold,
+  final gen = ScreenshotGenerator(
+    locales: AppLocalizations.supportedLocales,
+    fnGetApp: () => PumpMain().getApp(const MyApp(), true),
+    fnInit: (device, config, localeCode) async {
+      AppPreferences.pref = await SharedPreferences.getInstance();
+      // Set locale
+      await AppPreferences.set(AppPreferences.prefLocale, localeCode);
+      final design = AppDesign.fromLocale(AppLocale.fromCode(localeCode));
+      await AppPreferences.set(AppPreferences.prefDesign, design);
+      // Skip onboarding/start gate in HomePage
+      if (AppPreferences.get(AppPreferences.prefPrivacyPolicy) == null) {
+        await AppPreferences.set(AppPreferences.prefPrivacyPolicy, '');
+      }
+      // Screenshot generation should not attempt to start P2P sync/WebRTC
+      await AppPreferences.clear(AppPreferences.prefPeer);
+      await AppPreferences.clear(AppPreferences.prefP2P);
+    },
   );
-
-  final enabledDevices = config.getEnabledDevices();
-
-  // flutter test integration_test/screenshots/capture_test.dart --dart-define=SCREENSHOT_DEVICES="iPhone 15 Pro"
-  const deviceCsv = String.fromEnvironment('SCREENSHOT_DEVICES');
-  final deviceFilter = deviceCsv.split(',').map((v) => v.trim()).where((v) => v.isNotEmpty).toSet();
-
-  bool matchesDeviceFilter(DeviceConfig device) {
-    if (deviceFilter.isEmpty) {
-      return true;
-    }
-    final name = device.name;
-    final normalized = name.toLowerCase();
-    final underscored = name.replaceAll(' ', '_').toLowerCase();
-    return deviceFilter.any((f) {
-      final ff = f.toLowerCase();
-      return ff == normalized || ff == underscored;
-    });
-  }
-
-  final filteredDevices = enabledDevices.where(matchesDeviceFilter).toList();
-
-  // flutter test integration_test/screenshots/capture_test.dart --dart-define=SCREENSHOT_LOCALES=en
-  const localeCsv = String.fromEnvironment('SCREENSHOT_LOCALES');
-  final localeFilter = localeCsv.split(',').map((v) => v.trim()).where((v) => v.isNotEmpty).toSet();
-
-  final locales = localeFilter.isEmpty
-      ? AppLocalizations.supportedLocales
-      : AppLocalizations.supportedLocales.where((l) => localeFilter.contains(l.toString())).toList();
-
-  // flutter test integration_test/screenshots/capture_test.dart --dart-define=SCREENSHOT_STEPS=4_m_budgets
-  const stepCsv = String.fromEnvironment('SCREENSHOT_STEPS');
-  final stepFilter = stepCsv.split(',').map((v) => v.trim()).where((v) => v.isNotEmpty).toSet();
-
-  // flutter test integration_test/screenshots/capture_test.dart --dart-define=SKIP_EXISTANT=true
-  const skipExistant = String.fromEnvironment('SKIP_EXISTANT');
-  final shouldSkipExisting = skipExistant.toLowerCase() == 'true' || skipExistant == '1';
-
-  bool isEnabledStep(String stepId) {
-    if (stepFilter.isEmpty) {
-      return true;
-    }
-    final normalized = stepId.toLowerCase();
-    return stepFilter.any((s) => s.toLowerCase() == normalized);
-  }
-
-  for (final locale in locales) {
-    final localeCode = locale.toString();
-    for (final device in filteredDevices) {
-      // Check if we should skip this locale/device combination
-      if (shouldSkipExisting) {
-        final deviceFolderName = device.name.replaceAll(' ', '_').replaceAll(RegExp(r'[^\w\-_]'), '');
-        final outputPath = Directory('${config.outputDirectory}/$localeCode/$deviceFolderName');
-        if (outputPath.existsSync()) {
-          print('Skipping $localeCode/${device.name} - folder exists with screenshots');
-          continue;
-        }
-      }
-      // Home
-      if (isEnabledStep('1_home')) {
-        _screenshotForDevice('1_home', device, config, localeCode: localeCode);
-      }
-
-      // Bills
-      if (isEnabledStep('2_bills')) {
-        _screenshotForDevice(
-          '2_bills',
-          device,
-          config,
-          localeCode: localeCode,
-          beforeScreenshot: (tester) => _goToRoute(AppRoute.billRoute, tester, config),
-        );
-      }
-
-      // Accounts
-      if (isEnabledStep('3_accounts')) {
-        _screenshotForDevice(
-          '3_accounts',
-          device,
-          config,
-          localeCode: localeCode,
-          beforeScreenshot: (tester) => _goToRoute(AppRoute.accountRoute, tester, config),
-        );
-      }
-
-      // Metrics > Budgets (tab 0)
-      if (isEnabledStep('4_m_budgets')) {
-        _screenshotForDevice(
-          '4_m_budgets',
-          device,
-          config,
-          localeCode: localeCode,
-          beforeScreenshot: (tester) => _goToRoute(
-            AppRoute.metricsSearchRoute,
-            tester,
-            config,
-            arguments: {routeArguments.search: '0'},
-          ),
-        );
-      }
-
-      // Metrics > Accounts (tab 1)
-      if (isEnabledStep('5_m_accounts')) {
-        _screenshotForDevice(
-          '5_m_accounts',
-          device,
-          config,
-          localeCode: localeCode,
-          beforeScreenshot: (tester) => _goToRoute(
-            AppRoute.metricsSearchRoute,
-            tester,
-            config,
-            arguments: {routeArguments.search: '1'},
-          ),
-        );
-      }
-
-      // Metrics > Bills (tab 2)
-      if (isEnabledStep('6_m_bills')) {
-        _screenshotForDevice(
-          '6_m_bills',
-          device,
-          config,
-          localeCode: localeCode,
-          beforeScreenshot: (tester) => _goToRoute(
-            AppRoute.metricsSearchRoute,
-            tester,
-            config,
-            arguments: {routeArguments.search: '2'},
-          ),
-        );
-      }
-
-      // Automation (defaults to Payments tab)
-      if (isEnabledStep('7_automation')) {
-        _screenshotForDevice(
-          '7_automation',
-          device,
-          config,
-          localeCode: localeCode,
-          beforeScreenshot: (tester) => _goToRoute(AppRoute.automationRoute, tester, config),
-        );
-      }
-
-      // Goals
-      if (isEnabledStep('8_goals')) {
-        _screenshotForDevice(
-          '8_goals',
-          device,
-          config,
-          localeCode: localeCode,
-          beforeScreenshot: (tester) => _goToRoute(AppRoute.goalRoute, tester, config),
-        );
-      }
-    }
-  }
+  gen.inject('1_home');
+  gen.inject('2_bills', before: (tester) => _goToRoute(AppRoute.billRoute, tester, gen.config));
+  gen.inject('3_accounts', before: (tester) => _goToRoute(AppRoute.accountRoute, tester, gen.config));
+  gen.inject(
+    '4_metrics__budgets',
+    before: (tester) => _goToRoute(
+      AppRoute.metricsSearchRoute,
+      tester,
+      gen.config,
+      arguments: {routeArguments.search: '0'},
+    ),
+  );
+  gen.inject(
+    '5_metrics__accounts',
+    before: (tester) => _goToRoute(
+      AppRoute.metricsSearchRoute,
+      tester,
+      gen.config,
+      arguments: {routeArguments.search: '1'},
+    ),
+  );
+  gen.inject(
+    '6_metrics__bills',
+    before: (tester) => _goToRoute(
+      AppRoute.metricsSearchRoute,
+      tester,
+      gen.config,
+      arguments: {routeArguments.search: '2'},
+    ),
+  );
+  gen.inject(
+    '7_automation',
+    before: (tester) => _goToRoute(AppRoute.automationRoute, tester, gen.config),
+  );
+  gen.inject(
+    '8_goals',
+    before: (tester) => _goToRoute(AppRoute.goalRoute, tester, gen.config),
+  );
+  gen.run();
 }
 
 Future<void> _goToRoute(
@@ -201,78 +85,4 @@ Future<void> _goToRoute(
   final navigator = tester.state<NavigatorState>(find.byType(Navigator));
   navigator.pushNamed(route, arguments: arguments);
   await tester.pumpAndSettle(config.animationSettleTime);
-}
-
-void _screenshotForDevice(
-  String description,
-  DeviceConfig device,
-  ScreenshotConfig config, {
-  Future<void> Function(WidgetTester tester)? beforeScreenshot,
-  required String localeCode,
-}) {
-  testWidgets('$description - ${device.name} - $localeCode', (tester) async {
-    // Configure device settings
-    ScreenshotHelper.configureDevice(tester, device);
-
-    try {
-      // Initialize app preferences
-      AppPreferences.pref = await SharedPreferences.getInstance();
-
-      // Ensure the app starts in the requested locale.
-      await AppPreferences.set(AppPreferences.prefLocale, localeCode);
-      final design = AppDesign.fromLocale(AppLocale.fromCode(localeCode));
-      await AppPreferences.set(AppPreferences.prefDesign, design);
-
-      // Skip onboarding/start gate in HomePage.
-      if (AppPreferences.get(AppPreferences.prefPrivacyPolicy) == null) {
-        await AppPreferences.set(AppPreferences.prefPrivacyPolicy, '');
-      }
-
-      // Screenshot generation should not attempt to start P2P sync/WebRTC
-      await AppPreferences.clear(AppPreferences.prefPeer);
-      await AppPreferences.clear(AppPreferences.prefP2P);
-
-      // Create screenshot-ready app
-      final pumpMain = PumpMain();
-      final appWidget = ScreenshotHelper.createScreenshotApp(
-        device: device,
-        screenshotKey: '${description}_${device.name}_$localeCode',
-        child: pumpMain.getApp(const MyApp(), true),
-      );
-
-      await tester.pumpWidget(appWidget);
-      await tester.pumpAndSettleForDevice(device);
-      await tester.loadDeviceAssets(device);
-
-      // Execute pre-screenshot actions
-      if (beforeScreenshot != null) {
-        await beforeScreenshot(tester);
-      }
-
-      // Wait for any final animations
-      await tester.pumpAndSettle(config.animationSettleTime);
-
-      // Capture the screenshot
-      await ScreenshotHelper.captureScreenshot(
-        testName: description,
-        device: device,
-        screenshotKey: '${description}_${device.name}_$localeCode',
-        customPath: '${config.outputDirectory}/$localeCode',
-        pixelRatio: device.devicePixelRatio,
-      );
-
-      // Optionally compare with golden files
-      if (config.enableGoldenComparison) {
-        await ScreenshotHelper.expectScreenshotForDevice(
-          tester,
-          device,
-          description,
-          threshold: config.comparisonThreshold,
-        );
-      }
-    } finally {
-      // Reset device configuration
-      ScreenshotHelper.resetDevice(tester);
-    }
-  });
 }
