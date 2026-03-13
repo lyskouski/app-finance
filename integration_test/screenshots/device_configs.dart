@@ -178,6 +178,14 @@ class PlatformDevices {
   );
 
   // Desktop Devices
+  static const DeviceConfig macBook = DeviceConfig(
+    name: 'MacBook', // Apple Marketplace
+    size: Size(2880, 1800),
+    devicePixelRatio: 2.0,
+    platform: TargetPlatform.macOS,
+    safeArea: EdgeInsets.zero,
+    navigationBarHeight: 0,
+  );
   static const DeviceConfig macBookPro14 = DeviceConfig(
     name: 'MacBook Pro 14dm',
     size: Size(3024, 1964),
@@ -255,6 +263,7 @@ class PlatformDevices {
   ];
 
   static const List<DeviceConfig> desktops = [
+    macBook,
     macBookPro14,
     macBookAir13,
     windows1080p,
