@@ -115,7 +115,10 @@ msix_config:
   publisher: CN=78144012-EC6A-4BE8-97BF-A392EF55482E
   publisher_display_name: Viachaslau Lyskouski
   identity_name: terCAD.FingromMSIX
-  logo_path: windows/runner/resources/app_icon.png
+  logo_path: assets/images/logo.png
+  start_menu_icon_path: assets/images/logo.png
+  tile_icon_path: assets/images/logo.png
+  icons_background_color: transparent
   capabilities: internetClient
   store: true
 
