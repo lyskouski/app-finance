@@ -88,24 +88,23 @@ abstract class BasicTabWidgetState extends State<TabWidget> with TickerProviderS
       return;
     }
     setState(() {
+      tabIndex = newIndex;
       tabController.animateTo(newIndex);
-      if (pageController.hasClients) {
-        tabIndex += newIndex > tabIndex ? 1 : -1;
-        pageController.animateToPage(
-          tabIndex,
-          duration: const Duration(milliseconds: 300),
-          curve: Curves.ease,
-        );
-        if (tabIndex == newIndex && widget.callback != null) {
+      if (widget.isLeft) {
+        if (widget.callback != null) {
           widget.callback!(newIndex);
-        } else {
-          timer.run(() {
-            switchTab(newIndex);
-          });
         }
-      } else if (widget.callback != null) {
-        tabIndex = newIndex;
-        widget.callback!(newIndex);
+      } else {
+        if (pageController.hasClients) {
+          pageController.animateToPage(
+            newIndex,
+            duration: const Duration(milliseconds: 300),
+            curve: Curves.ease,
+          );
+        }
+        if (widget.callback != null) {
+          widget.callback!(newIndex);
+        }
       }
     });
   }
@@ -140,6 +139,10 @@ abstract class BasicTabWidgetState extends State<TabWidget> with TickerProviderS
     final color = context.colorScheme.onInverseSurface;
     final selected = context.textTheme.bodySmall?.copyWith(color: color);
     final style = context.textTheme.bodySmall?.copyWith(color: color.withValues(alpha: 0.6));
+    double? maxWidth;
+    if (widget.tabs != null) {
+      maxWidth = (ThemeHelper.getHeight(context) - widget.tabs!.length * 50) / widget.tabs!.length;
+    }
     return SizedBox(
       width: ThemeHelper.barHeight,
       child: NavigationRail(
@@ -165,6 +168,7 @@ abstract class BasicTabWidgetState extends State<TabWidget> with TickerProviderS
                           child: TextWrapper(
                             e.value.text ?? '',
                             style: tabIndex == e.key ? selected : style,
+                            maxWidth: maxWidth,
                           ),
                         ),
                         label: RotatedBox(
@@ -190,7 +194,7 @@ abstract class BasicTabWidgetState extends State<TabWidget> with TickerProviderS
                                 ),
                               ),
                             ),
-                            child: TextWrapper(e.value.text ?? '', style: style),
+                            child: TextWrapper(e.value.text ?? '', style: style, maxWidth: maxWidth),
                           ),
                         ),
                         label: ThemeHelper.emptyBox,
@@ -207,20 +211,11 @@ abstract class BasicTabWidgetState extends State<TabWidget> with TickerProviderS
       children: [
         getLeftAppBar(context),
         Expanded(
-          child: GestureDetector(
-            onHorizontalDragEnd: (DragEndDetails details) {
-              if (details.primaryVelocity! > 0) {
-                switchTab(tabIndex - 1);
-              } else if (details.primaryVelocity! < 0) {
-                switchTab(tabIndex + 1);
-              }
-            },
-            child: Padding(
-              padding: widget.hasIndent ? EdgeInsets.fromLTRB(indent, 0, indent, 0) : EdgeInsets.zero,
-              child: TabBarView(
-                controller: tabController,
-                children: widget.children,
-              ),
+          child: Padding(
+            padding: widget.hasIndent ? EdgeInsets.fromLTRB(indent, 0, indent, 0) : EdgeInsets.zero,
+            child: TabBarView(
+              controller: tabController,
+              children: widget.children,
             ),
           ),
         ),

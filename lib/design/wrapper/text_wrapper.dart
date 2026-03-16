@@ -27,14 +27,17 @@ class TextWrapper extends StatelessWidget {
       builder: (context, constraints) {
         final width = maxWidth ?? constraints.maxWidth;
         if (ThemeHelper.isTextExceedWidth(text, style, width)) {
-          return Tooltip(
-            message: tooltip,
-            child: Text(
-              text,
-              style: style,
-              maxLines: maxLines,
-              overflow: TextOverflow.ellipsis,
-              textDirection: AppDesign.getAlignment<TextDirection>(),
+          return SizedBox(
+            width: width,
+            child: Tooltip(
+              message: tooltip,
+              child: Text(
+                text,
+                style: style,
+                maxLines: maxLines,
+                overflow: TextOverflow.ellipsis,
+                textDirection: AppDesign.getAlignment<TextDirection>(),
+              ),
             ),
           );
         } else {
