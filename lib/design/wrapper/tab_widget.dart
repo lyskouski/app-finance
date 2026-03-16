@@ -139,6 +139,10 @@ abstract class BasicTabWidgetState extends State<TabWidget> with TickerProviderS
     final color = context.colorScheme.onInverseSurface;
     final selected = context.textTheme.bodySmall?.copyWith(color: color);
     final style = context.textTheme.bodySmall?.copyWith(color: color.withValues(alpha: 0.6));
+    double? maxWidth;
+    if (widget.tabs != null) {
+      maxWidth = (ThemeHelper.getHeight(context) - widget.tabs!.length * 50) / widget.tabs!.length;
+    }
     return SizedBox(
       width: ThemeHelper.barHeight,
       child: NavigationRail(
@@ -164,6 +168,7 @@ abstract class BasicTabWidgetState extends State<TabWidget> with TickerProviderS
                           child: TextWrapper(
                             e.value.text ?? '',
                             style: tabIndex == e.key ? selected : style,
+                            maxWidth: maxWidth,
                           ),
                         ),
                         label: RotatedBox(
@@ -189,7 +194,7 @@ abstract class BasicTabWidgetState extends State<TabWidget> with TickerProviderS
                                 ),
                               ),
                             ),
-                            child: TextWrapper(e.value.text ?? '', style: style),
+                            child: TextWrapper(e.value.text ?? '', style: style, maxWidth: maxWidth),
                           ),
                         ),
                         label: ThemeHelper.emptyBox,
