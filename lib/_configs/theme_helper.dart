@@ -109,12 +109,14 @@ class ThemeHelper {
 
   static bool isVertical(BoxConstraints constraints) => constraints.maxWidth < constraints.maxHeight;
 
+  static bool isHorizontal(BoxConstraints constraints) => constraints.maxWidth > constraints.maxHeight;
+
   static bool isLower(AdaptiveWindowType size, AdaptiveWindowType windowType) => windowType <= size;
 
   static bool isNavBottom(BoxConstraints constraints) => getWidthCount(constraints) <= 2;
 
   static bool isNavRight(BuildContext context, BoxConstraints constraints) =>
-      isNavBottom(constraints) && getHeightCount(context, constraints) <= 2;
+      isHorizontal(constraints) && getHeightCount(context, constraints) <= 2;
 
   static int getWidthCount(BoxConstraints? constraints, [BuildContext? context]) {
     double width = context != null ? getWidth(context, 0, constraints) : constraints?.maxWidth ?? 0;

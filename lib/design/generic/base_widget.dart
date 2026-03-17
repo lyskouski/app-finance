@@ -133,6 +133,7 @@ class BaseWidget extends StatelessWidget {
               title: title,
               tooltip: tooltip,
               hasExpand: hasExpand,
+              hasMetrics: limit != null && limit! > 0,
               toExpand: (toExpand ?? '') == '' || toExpand != title,
               expand: _expand,
             ),

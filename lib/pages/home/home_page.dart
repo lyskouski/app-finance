@@ -232,19 +232,56 @@ class HomePageState extends AbstractPageState<HomePage> {
     ]);
   }
 
+  Widget buildContentSmallScreen() {
+    return ComponentsBuilder([
+      {
+        componentData.key: ComponentRegistry.recent.toString(),
+        componentData.startX: 0,
+        componentData.startY: 0,
+        componentData.endX: 3.0,
+        componentData.endY: 2.0,
+        componentData.order: 0,
+        componentData.type: ComponentRecentType.account.toString(),
+        ComponentRecent.count: 0
+      },
+      {
+        componentData.key: ComponentRegistry.recent.toString(),
+        componentData.startX: 3.0,
+        componentData.startY: 0.0,
+        componentData.endX: 6.0,
+        componentData.endY: 2.0,
+        componentData.order: 1,
+        componentData.type: ComponentRecentType.budget.toString(),
+        ComponentRecent.count: 0
+      },
+      {
+        componentData.key: ComponentRegistry.recent.toString(),
+        componentData.startX: 0.0,
+        componentData.startY: 2.0,
+        componentData.endX: 6.0,
+        componentData.endY: 12.0,
+        componentData.order: 2,
+        componentData.type: ComponentRecentType.bill.toString(),
+        ComponentRecent.count: 10
+      }
+    ]);
+  }
+
   @override
   Widget buildContent(BuildContext context, BoxConstraints constraints) {
     final data = ComponentsBuilder.getData(context);
     bool isWide = ScreenHelper.state().isWide;
     final countHeight = ThemeHelper.getHeightCount(context, constraints);
+    final countWidth = ThemeHelper.getWidthCount(constraints, context);
     if (data != null && data.isNotEmpty) {
       return ComponentsBuilder(data);
     } else if (countHeight > 3 && isWide) {
       return buildContentWideScreen();
+    } else if (countHeight < 3 && countWidth == 1 && !ThemeHelper.isHorizontal(constraints)) {
+      return buildContentSmallScreen();
     }
     double indent = ThemeHelper.getIndent();
     EdgeInsets margin = EdgeInsets.only(top: indent);
-    final countWidth = ThemeHelper.getWidthCount(constraints);
     bool isVertical = countWidth == 1 && !ThemeHelper.isWearable;
     double width = ThemeHelper.getWidth(context, 3, constraints);
     double partWidth = width / countWidth - indent * (countWidth - 1);
