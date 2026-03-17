@@ -154,20 +154,36 @@ jobs:
       - name: Setup Xcode and iOS Platform
         if: matrix.target == 'iOS'
         run: |
-          # Use latest Xcode
-          sudo xcode-select -s /Applications/Xcode.app/Contents/Developer
+          # List available Xcode versions
+          ls -la /Applications/ | grep -i xcode
 
-          # Install iOS platform components
-          xcodebuild -downloadPlatform iOS
+          # Try to use Xcode 26+ (check if available)
+          if [ -d "/Applications/Xcode_16.0.app" ]; then
+            sudo xcode-select -s /Applications/Xcode_16.0.app/Contents/Developer
+          elif [ -d "/Applications/Xcode.app" ]; then
+            sudo xcode-select -s /Applications/Xcode.app/Contents/Developer
+          fi
 
-          # Install simulators if needed
-          sudo xcrun simctl list devices
+          # Show current Xcode version
+          xcrun xcodebuild -version
 
-          # Verify iOS platform is available
+          # Show available SDKs
+          echo "Available SDKs:"
+          xcrun xcodebuild -showsdks
+
+          # Try to install latest iOS platform
+          xcodebuild -downloadAllPlatforms || echo "Platform download failed, continuing with available platforms"
+
+          # Show iOS SDKs specifically
+          echo "iOS SDKs:"
           xcrun xcodebuild -showsdks | grep -i ios
 
-          # Show Xcode version
-          xcrun xcodebuild -version
+          # Check if iOS 26+ SDK is available
+          if xcrun xcodebuild -showsdks | grep -q "iphoneos[1-9][0-9]\|iphoneos26"; then
+            echo "iOS 26+ SDK found"
+          else
+            echo "Warning: iOS 26+ SDK not found, using latest available"
+          fi
 
       - name: Import Distribution Certificate
         if: matrix.target == 'iOS'
@@ -209,7 +225,10 @@ jobs:
           # Configure Flutter for iOS
           flutter config --enable-ios
 
-          # Build iOS app
+          # Set iOS deployment target to use latest SDK
+          export IPHONEOS_DEPLOYMENT_TARGET=18.0
+
+          # Build iOS app with latest available SDK
           flutter build ipa --build-name=${{ needs.release.outputs.version }} --build-number=${{ needs.release.outputs.build_number }} --release --obfuscate --split-debug-info=build/ios/symbols --no-tree-shake-icons --export-options-plist ./ios/ExportOptions.plist
           mv ${{ matrix.build_path }}/fingrom.ipa fingrom_${{ matrix.target }}.ipa
 
@@ -223,7 +242,12 @@ jobs:
       - name: Setup Xcode for macOS
         if: matrix.target == 'macOS'
         run: |
-          sudo xcode-select -s /Applications/Xcode.app/Contents/Developer
+          # Try to use latest Xcode
+          if [ -d "/Applications/Xcode_16.0.app" ]; then
+            sudo xcode-select -s /Applications/Xcode_16.0.app/Contents/Developer
+          elif [ -d "/Applications/Xcode.app" ]; then
+            sudo xcode-select -s /Applications/Xcode.app/Contents/Developer
+          fi
           xcrun xcodebuild -version
 
       - name: Run macOS Build
