@@ -2,6 +2,9 @@
 
 _De volledige lijst met updates kan worden bekeken via het navigatie-item “Over” op de knop “Hints”._
 
+### 7.0.2
+- Verbeterde startpagina voor zowel grote als kleine schermen
+
 ### 6.7.0
 - Budget/rekening sorteren op naam, datum en bedrag
 - Budget > Overzicht: klikbare opties om rekeningen in een bepaald interval te controleren

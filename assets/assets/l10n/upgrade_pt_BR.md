@@ -2,6 +2,9 @@
 
 _A lista completa de atualizações pode ser visualizada no item de navegação "Sobre" no botão "Dicas"._
 
+### 7.0.2
+- Página inicial otimizada para telas grandes e pequenas
+
 ### 6.7.0
 - Classificação do orçamento/conta por nome, data e valor
 - Orçamento > Resumo: opções clicáveis para verificar contas em um intervalo

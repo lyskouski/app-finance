@@ -2,6 +2,9 @@
 
 _Lista completă a actualizărilor poate fi vizualizată prin intermediul elementului de navigare „Despre” de pe butonul „Sugestii”._
 
+### 7.0.2
+- Pagina de start optimizată atât pentru ecranele mari, cât și pentru cele mici
+
 ### 6.7.0
 - Sortarea bugetului/contului după nume, dată și sumă
 - Buget > Rezumat: opțiuni clicabile pentru a verifica facturile într-un interval

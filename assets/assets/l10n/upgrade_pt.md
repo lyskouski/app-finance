@@ -2,6 +2,9 @@
 
 _A lista completa de actualizações pode ser consultada através do item de navegação "Acerca" no botão "Sugestões"._
 
+### 7.0.2
+- Página inicial otimizada para ecrãs grandes e pequenos
+
 ### 6.7.0
 - Orçamento/Conta ordenados por nome, data e montante
 - Orçamento > Resumo: opções clicáveis para verificar contas num intervalo

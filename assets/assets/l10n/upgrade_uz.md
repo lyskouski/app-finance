@@ -2,6 +2,9 @@
 
 _Yangilanishlarning toʻliq roʻyxatini “Maslahat” tugmasidagi “Haqida” navigatsiya bandi orqali koʻrish mumkin._
 
+### 7.0.2
+- Katta va kichik ekranlar uchun bosh sahifa yaxshilandi
+
 ### 6.7.0
 - Byudjet/Hisobni nom, sana va miqdor bo'yicha saralash
 - Byudjet > Qisqacha ma'lumot: hisob-fakturalarni ma'lum bir oralikda tekshirish uchun bosiladigan variantlar
