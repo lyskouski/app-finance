@@ -21,12 +21,14 @@ jobs:
       matrix:
         target: [macOS, iOS, Windows, LinuxSnap, Android, Web]
         include:
-          - os: macos-latest
+          # os: macos-latest - ITMS-90725: SDK version issue
+          - os: macos-15
             target: macOS
             build_path: build/macos/Build/Products/Release
             asset_extension: .zip
             asset_content_type: application/zip
-          - os: macos-latest
+          # os: macos-latest - ITMS-90725: SDK version issue
+          - os: macos-15
             target: iOS
             build_path: build/ios/ipa
             asset_extension: .ipa
@@ -151,6 +153,12 @@ jobs:
           mv ${{ matrix.build_path }}/app-release.aab $GITHUB_WORKSPACE/fingrom_${{ matrix.target }}.aab
 
 # iOS
+      - name: Set Xcode version
+        if: matrix.target == 'iOS'
+        run: |
+          sudo xcode-select -s /Applications/Xcode_16.0.app/Contents/Developer
+          xcrun xcodebuild -version
+
       - name: Import Distribution Certificate
         if: matrix.target == 'iOS'
         uses: apple-actions/import-codesign-certs@v2
@@ -158,17 +166,6 @@ jobs:
           keychain: signing_distr
           p12-file-base64: ${{ secrets.APPLE_P12 }}
           p12-password: ${{ secrets.APPLE_P12_KEY }}
-
-      # Error: Validation failed SDK version issue. This app was built with the iOS 18.2 SDK.
-      # All iOS and iPadOS apps must be built with the iOS 26 SDK or later, ...
-      - name: Set Xcode version
-        if: matrix.target == 'iOS'
-        run: |
-          sudo xcode-select -s /Applications/Xcode.app/Contents/Developer
-          xcodebuild -downloadPlatform iOS -exportPath ./ -buildVersion 26.0
-          DMG_FILE=$(ls iphonesimulator_*.dmg | head -n 1)
-          xcodebuild -importPlatform "$DMG_FILE"
-          xcodebuild -runFirstLaunch -checkForNewerComponents
 
 #      - name: Import Development Certificate
 #        if: matrix.target == 'iOS'
@@ -209,6 +206,12 @@ jobs:
           xcrun altool --upload-app --type ios -f fingrom_${{ matrix.target }}.ipa --apiKey ${{ secrets.APPLE_API_KEY }} --apiIssuer ${{ secrets.APPLE_API_ISSUE }}
 
 # macOS
+      - name: Set Xcode version
+        if: matrix.target == 'macOS'
+        run: |
+          sudo xcode-select -s /Applications/Xcode_16.0.app/Contents/Developer
+          xcrun xcodebuild -version
+
       - name: Run macOS Build
         if: matrix.target == 'macOS'
         run: |
