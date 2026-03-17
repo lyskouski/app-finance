@@ -25,6 +25,7 @@ class BaseHeaderWidget extends StatelessWidget {
   final double width;
   final double? total;
   final bool hasExpand;
+  final bool hasMetrics;
   final bool toExpand;
   final Function? expand;
 
@@ -36,6 +37,7 @@ class BaseHeaderWidget extends StatelessWidget {
     required this.total,
     required this.width,
     this.hasExpand = false,
+    this.hasMetrics = true,
     this.toExpand = true,
     this.expand,
     this.searchRoute,
@@ -62,7 +64,7 @@ class BaseHeaderWidget extends StatelessWidget {
       route: RouteSettings(name: route),
       child: Container(
         padding: EdgeInsets.all(indent / 2),
-        height: numHeight + subHeight + indent,
+        height: numHeight + subHeight + (hasMetrics ? indent : 0),
         width: double.infinity,
         color: colorScheme.inverseSurface.withValues(alpha: 0.1),
         child: GridContainer(
@@ -72,31 +74,32 @@ class BaseHeaderWidget extends StatelessWidget {
           children: [
             GridItem(
               start: const Size(0, 0),
-              end: const Size(1, 1),
+              end: hasMetrics ? const Size(1, 1) : const Size(2, 1),
               child: TextWrapper(title, style: subStyle),
             ),
             GridItem(
               start: const Size(0, 1),
-              end: const Size(1, 2),
+              end: hasMetrics ? const Size(1, 2) : const Size(2, 2),
               child: FittedBox(
                 fit: BoxFit.scaleDown,
                 alignment: AppDesign.isRightToLeft() ? Alignment.centerRight : Alignment.centerLeft,
                 child: TextWrapper(total != null ? total!.toCurrency(withPattern: false) : '', style: numStyle),
               ),
             ),
-            GridItem(
-              start: const Size(1, 0),
-              end: const Size(2, 2),
-              child: ToolbarButtonWidget(
-                borderColor: context.colorScheme.onSecondaryContainer.withValues(alpha: 0.3),
-                offset: bnShift,
-                icon: Icons.stacked_bar_chart,
-                color: context.colorScheme.onSecondaryContainer,
-                tooltip: AppLocale.labels.metricsTooltip,
-                onPressed: () => nav.pushNamed(metrics.name!, arguments: metrics.arguments),
-                backgroundColor: context.colorScheme.surface.withValues(alpha: 0.3),
+            if (hasMetrics)
+              GridItem(
+                start: const Size(1, 0),
+                end: const Size(2, 2),
+                child: ToolbarButtonWidget(
+                  borderColor: context.colorScheme.onSecondaryContainer.withValues(alpha: 0.3),
+                  offset: bnShift,
+                  icon: Icons.stacked_bar_chart,
+                  color: context.colorScheme.onSecondaryContainer,
+                  tooltip: AppLocale.labels.metricsTooltip,
+                  onPressed: () => nav.pushNamed(metrics.name!, arguments: metrics.arguments),
+                  backgroundColor: context.colorScheme.surface.withValues(alpha: 0.3),
+                ),
               ),
-            ),
             if (hasExpand)
               GridItem(
                 start: const Size(2, 0),
