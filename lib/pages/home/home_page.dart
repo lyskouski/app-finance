@@ -272,12 +272,12 @@ class HomePageState extends AbstractPageState<HomePage> {
     final data = ComponentsBuilder.getData(context);
     bool isWide = ScreenHelper.state().isWide;
     final countHeight = ThemeHelper.getHeightCount(context, constraints);
-    final countWidth = ThemeHelper.getWidthCount(constraints);
+    final countWidth = ThemeHelper.getWidthCount(constraints, context);
     if (data != null && data.isNotEmpty) {
       return ComponentsBuilder(data);
     } else if (countHeight > 3 && isWide) {
       return buildContentWideScreen();
-    } else if (countHeight < 3 && countWidth == 1) {
+    } else if (countHeight < 3 && countWidth == 1 && !ThemeHelper.isHorizontal(constraints)) {
       return buildContentSmallScreen();
     }
     double indent = ThemeHelper.getIndent();

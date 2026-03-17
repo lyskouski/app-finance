@@ -58,7 +58,7 @@ class BaseListLimitedWidget extends StatelessWidget {
           } else if (index <= itemCount - 2) {
             final item = state[index - 1];
             return buildListWidget(item, context);
-          } else if (hasMore) {
+          } else if (hasMore && limit != null && limit! > 0) {
             return Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
@@ -66,7 +66,7 @@ class BaseListLimitedWidget extends StatelessWidget {
                 addButton,
               ],
             );
-          } else {
+          } else if (limit != null && limit! > 0) {
             return addButton;
           }
         });
