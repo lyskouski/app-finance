@@ -2,6 +2,9 @@
 
 _Die vollständige Liste der Updates kann über den Navigationspunkt "Über" auf der Schaltfläche "Hinweise" eingesehen werden._
 
+### 7.0.2
+- Optimierte Startseite für große und kleine Bildschirme
+
 ### 6.7.0
 - Sortierung von Budgets/Konten nach Name, Datum und Betrag
 - Budget > Zusammenfassung: anklickbare Optionen zum Überprüfen von Rechnungen in einem bestimmten Zeitraum

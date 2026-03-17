@@ -2,6 +2,9 @@
 
 _Güncellemelerin tam listesi “İpuçları” düğmesindeki “Hakkında” gezinti öğesi aracılığıyla görüntülenebilir._
 
+### 7.0.2
+- Hem geniş hem de dar ekranlar için ana sayfa iyileştirildi
+
 ### 6.7.0
 - Bütçe/Hesapları ada, tarihe ve tutara göre sıralama
 - Bütçe > Özet: belirli bir aralıktaki faturaları kontrol etmek için tıklanabilir seçenekler

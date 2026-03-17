@@ -2,6 +2,9 @@
 
 _The full list of updates can be viewed via the "About" navigation item on the "Hints" button._
 
+### 7.0.2
+- Improved Home page for both large and small screens
+
 ### 6.7.0
 - Budget/Account sorting by name, date, and amount
 - Budget > Summary: clickable options to check Bills in an interval

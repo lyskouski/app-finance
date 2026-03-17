@@ -2,6 +2,9 @@
 
 _La liste complète des mises à jour peut être consultée via l'élément de navigation "À propos" du bouton "Conseils"._
 
+### 7.0.2
+- Amélioration de la page d'accueil pour les grands et les petits écrans
+
 ### 6.7.0
 - Tri du budget/compte par nom, date et montant
 - Budget > Résumé : options cliquables pour vérifier les factures dans un intervalle donné

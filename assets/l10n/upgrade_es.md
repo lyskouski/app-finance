@@ -2,6 +2,9 @@
 
 _La lista completa de actualizaciones puede consultarse en el menú "Acerca de" del botón "Sugerencias"._
 
+### 7.0.2
+- Página de inicio mejorada tanto para pantallas grandes como pequeñas
+
 ### 6.7.0
 - Clasificación del presupuesto/cuenta por nombre, fecha e importe
 - Presupuesto > Resumen: opciones en las que se puede hacer clic para comprobar las facturas en un intervalo

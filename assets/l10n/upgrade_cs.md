@@ -2,6 +2,9 @@
 
 _Úplný seznam aktualizací si můžete prohlédnout v navigační položce „O aplikaci“ na tlačítku „Tipy“._
 
+### 7.0.2
+- Vylepšená úvodní stránka pro velké i malé obrazovky
+
 ### 6.7.0
 - Třídění rozpočtu/účtu podle názvu, data a částky
 - Rozpočet > Souhrn: klikatelné možnosti pro kontrolu účtů v určitém intervalu

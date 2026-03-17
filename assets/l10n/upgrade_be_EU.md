@@ -2,6 +2,9 @@
 
 _Poŭny spis abnaŭlieńniaŭ možna prahliadzieć u navihacyjnym punkcie «Ab Dadatku» na knopcy «Padkazki»._
 
+### 7.0.2
+- Paliepšanaja haloŭnaja staronka jak dlia vialikich, tak i dlia malych ekranaŭ
+
 ### 6.7.0
 - Sartavańnie biudžetu/rachunkaŭ pa nazvie, dacie i sumie
 - Biudžet > Zvodka: opcyi, jakija možna naciskać, dlia pravierki rachunkaŭ za peŭny interval
