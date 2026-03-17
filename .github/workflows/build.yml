@@ -151,22 +151,48 @@ jobs:
           mv ${{ matrix.build_path }}/app-release.aab $GITHUB_WORKSPACE/fingrom_${{ matrix.target }}.aab
 
 # iOS
-      - name: Setup Xcode and iOS Platform
-        if: matrix.target == 'iOS'
+      - name: Setup Xcode (iOS/macOS)
+        if: matrix.target == 'iOS' || matrix.target == 'macOS'
         run: |
           # List available Xcode versions
+          echo "Available Xcode versions:"
           ls -la /Applications/ | grep -i xcode
-
-          # Try to use Xcode 26+ (check if available)
-          if [ -d "/Applications/Xcode_16.0.app" ]; then
-            sudo xcode-select -s /Applications/Xcode_16.0.app/Contents/Developer
-          elif [ -d "/Applications/Xcode.app" ]; then
+          # Try to use Xcode 26+ first (prioritize newest)
+          if [ -d "/Applications/Xcode_26.3.app" ]; then
+            echo "Using Xcode 26.3"
+            sudo xcode-select -s /Applications/Xcode_26.3.app/Contents/Developer
+          elif [ -d "/Applications/Xcode_26.2.app" ]; then
+            echo "Using Xcode 26.2"
+            sudo xcode-select -s /Applications/Xcode_26.2.app/Contents/Developer
+          elif [ -d "/Applications/Xcode_26.1.1.app" ]; then
+            echo "Using Xcode 26.1.1"
+            sudo xcode-select -s /Applications/Xcode_26.1.1.app/Contents/Developer
+          elif [ -d "/Applications/Xcode_26.0.1.app" ]; then
+            echo "Using Xcode 26.0.1"
+            sudo xcode-select -s /Applications/Xcode_26.0.1.app/Contents/Developer
+          elif [ -d "/Applications/Xcode_26.0.app" ]; then
+            echo "Using Xcode 26.0"
+            sudo xcode-select -s /Applications/Xcode_26.0.app/Contents/Developer
+          else
+            echo "Warning: No Xcode 26+ found, using default"
             sudo xcode-select -s /Applications/Xcode.app/Contents/Developer
           fi
 
           # Show current Xcode version
+          echo "Selected Xcode version:"
           xcrun xcodebuild -version
 
+      - name: Import Distribution Certificate
+        if: matrix.target == 'iOS'
+        uses: apple-actions/import-codesign-certs@v2
+        with:
+          keychain: signing_distr
+          p12-file-base64: ${{ secrets.APPLE_P12 }}
+          p12-password: ${{ secrets.APPLE_P12_KEY }}
+
+      - name: Setup iOS Platform
+        if: matrix.target == 'iOS'
+        run: |
           # Show available SDKs
           echo "Available SDKs:"
           xcrun xcodebuild -showsdks
@@ -179,19 +205,14 @@ jobs:
           xcrun xcodebuild -showsdks | grep -i ios
 
           # Check if iOS 26+ SDK is available
-          if xcrun xcodebuild -showsdks | grep -q "iphoneos[1-9][0-9]\|iphoneos26"; then
-            echo "iOS 26+ SDK found"
+          if xcrun xcodebuild -showsdks | grep -q "iphoneos2[6-9]\|iphoneos[3-9][0-9]"; then
+            echo "✅ iOS 26+ SDK found"
           else
-            echo "Warning: iOS 26+ SDK not found, using latest available"
+            echo "❌ Warning: iOS 26+ SDK not found, build will use available SDK"
+            echo "Available iOS SDKs:"
+            xcrun xcodebuild -showsdks | grep iphoneos
           fi
 
-      - name: Import Distribution Certificate
-        if: matrix.target == 'iOS'
-        uses: apple-actions/import-codesign-certs@v2
-        with:
-          keychain: signing_distr
-          p12-file-base64: ${{ secrets.APPLE_P12 }}
-          p12-password: ${{ secrets.APPLE_P12_KEY }}
 
 #      - name: Import Development Certificate
 #        if: matrix.target == 'iOS'
@@ -222,6 +243,10 @@ jobs:
       - name: Run iOS Build
         if: matrix.target == 'iOS'
         run: |
+          # Verify certificates are imported
+          echo "Checking available certificates:"
+          security find-identity -v -p codesigning
+
           # Configure Flutter for iOS
           flutter config --enable-ios
 
@@ -239,17 +264,6 @@ jobs:
           xcrun altool --upload-app --type ios -f fingrom_${{ matrix.target }}.ipa --apiKey ${{ secrets.APPLE_API_KEY }} --apiIssuer ${{ secrets.APPLE_API_ISSUE }}
 
 # macOS
-      - name: Setup Xcode for macOS
-        if: matrix.target == 'macOS'
-        run: |
-          # Try to use latest Xcode
-          if [ -d "/Applications/Xcode_16.0.app" ]; then
-            sudo xcode-select -s /Applications/Xcode_16.0.app/Contents/Developer
-          elif [ -d "/Applications/Xcode.app" ]; then
-            sudo xcode-select -s /Applications/Xcode.app/Contents/Developer
-          fi
-          xcrun xcodebuild -version
-
       - name: Run macOS Build
         if: matrix.target == 'macOS'
         run: |
