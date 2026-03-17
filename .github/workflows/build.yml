@@ -21,14 +21,12 @@ jobs:
       matrix:
         target: [macOS, iOS, Windows, LinuxSnap, Android, Web]
         include:
-          # os: macos-latest - ITMS-90725: SDK version issue
-          - os: macos-15
+          - os: macos-latest
             target: macOS
             build_path: build/macos/Build/Products/Release
             asset_extension: .zip
             asset_content_type: application/zip
-          # os: macos-latest - ITMS-90725: SDK version issue
-          - os: macos-15
+          - os: macos-latest
             target: iOS
             build_path: build/ios/ipa
             asset_extension: .ipa
@@ -153,10 +151,22 @@ jobs:
           mv ${{ matrix.build_path }}/app-release.aab $GITHUB_WORKSPACE/fingrom_${{ matrix.target }}.aab
 
 # iOS
-      - name: Set Xcode version
+      - name: Setup Xcode and iOS Platform
         if: matrix.target == 'iOS'
         run: |
-          sudo xcode-select -s /Applications/Xcode_16.0.app/Contents/Developer
+          # Use latest Xcode
+          sudo xcode-select -s /Applications/Xcode.app/Contents/Developer
+
+          # Install iOS platform components
+          xcodebuild -downloadPlatform iOS
+
+          # Install simulators if needed
+          sudo xcrun simctl list devices
+
+          # Verify iOS platform is available
+          xcrun xcodebuild -showsdks | grep -i ios
+
+          # Show Xcode version
           xcrun xcodebuild -version
 
       - name: Import Distribution Certificate
@@ -196,6 +206,10 @@ jobs:
       - name: Run iOS Build
         if: matrix.target == 'iOS'
         run: |
+          # Configure Flutter for iOS
+          flutter config --enable-ios
+
+          # Build iOS app
           flutter build ipa --build-name=${{ needs.release.outputs.version }} --build-number=${{ needs.release.outputs.build_number }} --release --obfuscate --split-debug-info=build/ios/symbols --no-tree-shake-icons --export-options-plist ./ios/ExportOptions.plist
           mv ${{ matrix.build_path }}/fingrom.ipa fingrom_${{ matrix.target }}.ipa
 
@@ -206,10 +220,10 @@ jobs:
           xcrun altool --upload-app --type ios -f fingrom_${{ matrix.target }}.ipa --apiKey ${{ secrets.APPLE_API_KEY }} --apiIssuer ${{ secrets.APPLE_API_ISSUE }}
 
 # macOS
-      - name: Set Xcode version
+      - name: Setup Xcode for macOS
         if: matrix.target == 'macOS'
         run: |
-          sudo xcode-select -s /Applications/Xcode_16.0.app/Contents/Developer
+          sudo xcode-select -s /Applications/Xcode.app/Contents/Developer
           xcrun xcodebuild -version
 
       - name: Run macOS Build
