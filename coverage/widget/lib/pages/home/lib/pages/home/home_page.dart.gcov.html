@@ -31,13 +31,13 @@
             <td class="headerValue">lcov.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntryLo">58.0&nbsp;%</td>
-            <td class="headerCovTableEntry">150</td>
-            <td class="headerCovTableEntry">87</td>
+            <td class="headerCovTableEntryLo">54.0&nbsp;%</td>
+            <td class="headerCovTableEntry">163</td>
+            <td class="headerCovTableEntry">88</td>
           </tr>
           <tr>
             <td class="headerItem">Test Date:</td>
-            <td class="headerValue">2026-03-16 13:48:15</td>
+            <td class="headerValue">2026-03-17 13:47:04</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntryHi">-</td>
@@ -294,136 +294,173 @@
 <span id="L232"><span class="lineNum">     232</span>              :     ]);</span>
 <span id="L233"><span class="lineNum">     233</span>              :   }</span>
 <span id="L234"><span class="lineNum">     234</span>              : </span>
-<span id="L235"><span class="lineNum">     235</span> <span class="tlaGNC tlaBgGNC">           3 :   @override</span></span>
-<span id="L236"><span class="lineNum">     236</span>              :   Widget buildContent(BuildContext context, BoxConstraints constraints) {</span>
-<span id="L237"><span class="lineNum">     237</span> <span class="tlaGNC">           3 :     final data = ComponentsBuilder.getData(context);</span></span>
-<span id="L238"><span class="lineNum">     238</span> <span class="tlaGNC">           3 :     bool isWide = ScreenHelper.state().isWide;</span></span>
-<span id="L239"><span class="lineNum">     239</span> <span class="tlaGNC">           3 :     final countHeight = ThemeHelper.getHeightCount(context, constraints);</span></span>
-<span id="L240"><span class="lineNum">     240</span> <span class="tlaUNC tlaBgUNC">           0 :     if (data != null &amp;&amp; data.isNotEmpty) {</span></span>
-<span id="L241"><span class="lineNum">     241</span> <span class="tlaUNC">           0 :       return ComponentsBuilder(data);</span></span>
-<span id="L242"><span class="lineNum">     242</span> <span class="tlaGNC tlaBgGNC">           3 :     } else if (countHeight &gt; 3 &amp;&amp; isWide) {</span></span>
-<span id="L243"><span class="lineNum">     243</span> <span class="tlaUNC tlaBgUNC">           0 :       return buildContentWideScreen();</span></span>
-<span id="L244"><span class="lineNum">     244</span>              :     }</span>
-<span id="L245"><span class="lineNum">     245</span> <span class="tlaGNC tlaBgGNC">           3 :     double indent = ThemeHelper.getIndent();</span></span>
-<span id="L246"><span class="lineNum">     246</span> <span class="tlaGNC">           3 :     EdgeInsets margin = EdgeInsets.only(top: indent);</span></span>
-<span id="L247"><span class="lineNum">     247</span> <span class="tlaGNC">           3 :     final countWidth = ThemeHelper.getWidthCount(constraints);</span></span>
-<span id="L248"><span class="lineNum">     248</span> <span class="tlaGNC">           3 :     bool isVertical = countWidth == 1 &amp;&amp; !ThemeHelper.isWearable;</span></span>
-<span id="L249"><span class="lineNum">     249</span> <span class="tlaGNC">           3 :     double width = ThemeHelper.getWidth(context, 3, constraints);</span></span>
-<span id="L250"><span class="lineNum">     250</span> <span class="tlaGNC">          12 :     double partWidth = width / countWidth - indent * (countWidth - 1);</span></span>
-<span id="L251"><span class="lineNum">     251</span> <span class="tlaGNC">           9 :     DateTime curr = DateTime.now().getStartingDay(AppStartOfMonth.get());</span></span>
-<span id="L252"><span class="lineNum">     252</span>              : </span>
-<span id="L253"><span class="lineNum">     253</span> <span class="tlaGNC">           3 :     final billWidget = BillWidget(</span></span>
-<span id="L254"><span class="lineNum">     254</span>              :       margin: margin,</span>
-<span id="L255"><span class="lineNum">     255</span> <span class="tlaGNC">          12 :       title: '${AppLocale.labels.billHeadline}, ${curr.fullMonth()}',</span></span>
-<span id="L256"><span class="lineNum">     256</span> <span class="tlaGNC">           6 :       state: state.get(AppDataType.bills),</span></span>
-<span id="L257"><span class="lineNum">     257</span>              :       limit: 7,</span>
-<span id="L258"><span class="lineNum">     258</span>              :       route: AppRoute.billRoute,</span>
-<span id="L259"><span class="lineNum">     259</span> <span class="tlaGNC">           6 :       tooltip: AppLocale.labels.billTooltip,</span></span>
-<span id="L260"><span class="lineNum">     260</span>              :       width: isVertical ? width : partWidth,</span>
-<span id="L261"><span class="lineNum">     261</span>              :       hasExpand: isVertical,</span>
-<span id="L262"><span class="lineNum">     262</span> <span class="tlaGNC">           3 :       toExpand: toExpand,</span></span>
-<span id="L263"><span class="lineNum">     263</span> <span class="tlaUNC tlaBgUNC">           0 :       callback: (v) =&gt; setState(() =&gt; toExpand = v),</span></span>
-<span id="L264"><span class="lineNum">     264</span>              :     );</span>
-<span id="L265"><span class="lineNum">     265</span> <span class="tlaGNC tlaBgGNC">           3 :     final accountWidget = AccountWidget(</span></span>
-<span id="L266"><span class="lineNum">     266</span>              :       margin: margin,</span>
-<span id="L267"><span class="lineNum">     267</span> <span class="tlaGNC">          15 :       title: '${AppLocale.labels.accountHeadline}, ${AppLocale.labels.total}',</span></span>
-<span id="L268"><span class="lineNum">     268</span> <span class="tlaGNC">           6 :       state: state.get(AppDataType.accounts),</span></span>
-<span id="L269"><span class="lineNum">     269</span>              :       limit: 7,</span>
-<span id="L270"><span class="lineNum">     270</span>              :       route: AppRoute.accountRoute,</span>
-<span id="L271"><span class="lineNum">     271</span> <span class="tlaGNC">           6 :       tooltip: AppLocale.labels.accountTooltip,</span></span>
-<span id="L272"><span class="lineNum">     272</span>              :       width: isVertical ? width : partWidth,</span>
-<span id="L273"><span class="lineNum">     273</span>              :       hasExpand: isVertical,</span>
-<span id="L274"><span class="lineNum">     274</span> <span class="tlaGNC">           3 :       toExpand: toExpand,</span></span>
-<span id="L275"><span class="lineNum">     275</span> <span class="tlaUNC tlaBgUNC">           0 :       callback: (v) =&gt; setState(() =&gt; toExpand = v),</span></span>
-<span id="L276"><span class="lineNum">     276</span> <span class="tlaGNC tlaBgGNC">           9 :     )..exchange = Exchange(store: super.state);</span></span>
-<span id="L277"><span class="lineNum">     277</span> <span class="tlaGNC">           3 :     final budgetWidget = BudgetWidget(</span></span>
-<span id="L278"><span class="lineNum">     278</span>              :       margin: margin,</span>
-<span id="L279"><span class="lineNum">     279</span> <span class="tlaGNC">          15 :       title: '${AppLocale.labels.budgetHeadline}, ${AppLocale.labels.left}',</span></span>
-<span id="L280"><span class="lineNum">     280</span> <span class="tlaGNC">           6 :       state: state.get(AppDataType.budgets),</span></span>
-<span id="L281"><span class="lineNum">     281</span>              :       limit: 7,</span>
-<span id="L282"><span class="lineNum">     282</span>              :       route: AppRoute.budgetRoute,</span>
-<span id="L283"><span class="lineNum">     283</span> <span class="tlaGNC">           6 :       tooltip: AppLocale.labels.budgetTooltip,</span></span>
-<span id="L284"><span class="lineNum">     284</span>              :       width: isVertical ? width : partWidth,</span>
-<span id="L285"><span class="lineNum">     285</span>              :       hasExpand: isVertical,</span>
-<span id="L286"><span class="lineNum">     286</span> <span class="tlaGNC">           3 :       toExpand: toExpand,</span></span>
-<span id="L287"><span class="lineNum">     287</span> <span class="tlaUNC tlaBgUNC">           0 :       callback: (v) =&gt; setState(() =&gt; toExpand = v),</span></span>
-<span id="L288"><span class="lineNum">     288</span> <span class="tlaGNC tlaBgGNC">           9 :     )..exchange = Exchange(store: super.state);</span></span>
+<span id="L235"><span class="lineNum">     235</span> <span class="tlaUNC">           0 :   Widget buildContentSmallScreen() {</span></span>
+<span id="L236"><span class="lineNum">     236</span> <span class="tlaUNC">           0 :     return ComponentsBuilder([</span></span>
+<span id="L237"><span class="lineNum">     237</span> <span class="tlaUNC">           0 :       {</span></span>
+<span id="L238"><span class="lineNum">     238</span> <span class="tlaUNC">           0 :         componentData.key: ComponentRegistry.recent.toString(),</span></span>
+<span id="L239"><span class="lineNum">     239</span>              :         componentData.startX: 0,</span>
+<span id="L240"><span class="lineNum">     240</span>              :         componentData.startY: 0,</span>
+<span id="L241"><span class="lineNum">     241</span>              :         componentData.endX: 3.0,</span>
+<span id="L242"><span class="lineNum">     242</span>              :         componentData.endY: 2.0,</span>
+<span id="L243"><span class="lineNum">     243</span>              :         componentData.order: 0,</span>
+<span id="L244"><span class="lineNum">     244</span> <span class="tlaUNC">           0 :         componentData.type: ComponentRecentType.account.toString(),</span></span>
+<span id="L245"><span class="lineNum">     245</span>              :         ComponentRecent.count: 0</span>
+<span id="L246"><span class="lineNum">     246</span>              :       },</span>
+<span id="L247"><span class="lineNum">     247</span> <span class="tlaUNC">           0 :       {</span></span>
+<span id="L248"><span class="lineNum">     248</span> <span class="tlaUNC">           0 :         componentData.key: ComponentRegistry.recent.toString(),</span></span>
+<span id="L249"><span class="lineNum">     249</span>              :         componentData.startX: 3.0,</span>
+<span id="L250"><span class="lineNum">     250</span>              :         componentData.startY: 0.0,</span>
+<span id="L251"><span class="lineNum">     251</span>              :         componentData.endX: 6.0,</span>
+<span id="L252"><span class="lineNum">     252</span>              :         componentData.endY: 2.0,</span>
+<span id="L253"><span class="lineNum">     253</span>              :         componentData.order: 1,</span>
+<span id="L254"><span class="lineNum">     254</span> <span class="tlaUNC">           0 :         componentData.type: ComponentRecentType.budget.toString(),</span></span>
+<span id="L255"><span class="lineNum">     255</span>              :         ComponentRecent.count: 0</span>
+<span id="L256"><span class="lineNum">     256</span>              :       },</span>
+<span id="L257"><span class="lineNum">     257</span> <span class="tlaUNC">           0 :       {</span></span>
+<span id="L258"><span class="lineNum">     258</span> <span class="tlaUNC">           0 :         componentData.key: ComponentRegistry.recent.toString(),</span></span>
+<span id="L259"><span class="lineNum">     259</span>              :         componentData.startX: 0.0,</span>
+<span id="L260"><span class="lineNum">     260</span>              :         componentData.startY: 2.0,</span>
+<span id="L261"><span class="lineNum">     261</span>              :         componentData.endX: 6.0,</span>
+<span id="L262"><span class="lineNum">     262</span>              :         componentData.endY: 12.0,</span>
+<span id="L263"><span class="lineNum">     263</span>              :         componentData.order: 2,</span>
+<span id="L264"><span class="lineNum">     264</span> <span class="tlaUNC">           0 :         componentData.type: ComponentRecentType.bill.toString(),</span></span>
+<span id="L265"><span class="lineNum">     265</span>              :         ComponentRecent.count: 10</span>
+<span id="L266"><span class="lineNum">     266</span>              :       }</span>
+<span id="L267"><span class="lineNum">     267</span>              :     ]);</span>
+<span id="L268"><span class="lineNum">     268</span>              :   }</span>
+<span id="L269"><span class="lineNum">     269</span>              : </span>
+<span id="L270"><span class="lineNum">     270</span> <span class="tlaGNC tlaBgGNC">           3 :   @override</span></span>
+<span id="L271"><span class="lineNum">     271</span>              :   Widget buildContent(BuildContext context, BoxConstraints constraints) {</span>
+<span id="L272"><span class="lineNum">     272</span> <span class="tlaGNC">           3 :     final data = ComponentsBuilder.getData(context);</span></span>
+<span id="L273"><span class="lineNum">     273</span> <span class="tlaGNC">           3 :     bool isWide = ScreenHelper.state().isWide;</span></span>
+<span id="L274"><span class="lineNum">     274</span> <span class="tlaGNC">           3 :     final countHeight = ThemeHelper.getHeightCount(context, constraints);</span></span>
+<span id="L275"><span class="lineNum">     275</span> <span class="tlaGNC">           3 :     final countWidth = ThemeHelper.getWidthCount(constraints, context);</span></span>
+<span id="L276"><span class="lineNum">     276</span> <span class="tlaUNC tlaBgUNC">           0 :     if (data != null &amp;&amp; data.isNotEmpty) {</span></span>
+<span id="L277"><span class="lineNum">     277</span> <span class="tlaUNC">           0 :       return ComponentsBuilder(data);</span></span>
+<span id="L278"><span class="lineNum">     278</span> <span class="tlaGNC tlaBgGNC">           3 :     } else if (countHeight &gt; 3 &amp;&amp; isWide) {</span></span>
+<span id="L279"><span class="lineNum">     279</span> <span class="tlaUNC tlaBgUNC">           0 :       return buildContentWideScreen();</span></span>
+<span id="L280"><span class="lineNum">     280</span> <span class="tlaGNC tlaBgGNC">           3 :     } else if (countHeight &lt; 3 &amp;&amp; countWidth == 1 &amp;&amp; !ThemeHelper.isHorizontal(constraints)) {</span></span>
+<span id="L281"><span class="lineNum">     281</span> <span class="tlaUNC tlaBgUNC">           0 :       return buildContentSmallScreen();</span></span>
+<span id="L282"><span class="lineNum">     282</span>              :     }</span>
+<span id="L283"><span class="lineNum">     283</span> <span class="tlaGNC tlaBgGNC">           3 :     double indent = ThemeHelper.getIndent();</span></span>
+<span id="L284"><span class="lineNum">     284</span> <span class="tlaGNC">           3 :     EdgeInsets margin = EdgeInsets.only(top: indent);</span></span>
+<span id="L285"><span class="lineNum">     285</span> <span class="tlaGNC">           3 :     bool isVertical = countWidth == 1 &amp;&amp; !ThemeHelper.isWearable;</span></span>
+<span id="L286"><span class="lineNum">     286</span> <span class="tlaGNC">           3 :     double width = ThemeHelper.getWidth(context, 3, constraints);</span></span>
+<span id="L287"><span class="lineNum">     287</span> <span class="tlaGNC">          12 :     double partWidth = width / countWidth - indent * (countWidth - 1);</span></span>
+<span id="L288"><span class="lineNum">     288</span> <span class="tlaGNC">           9 :     DateTime curr = DateTime.now().getStartingDay(AppStartOfMonth.get());</span></span>
 <span id="L289"><span class="lineNum">     289</span>              : </span>
-<span id="L290"><span class="lineNum">     290</span> <span class="tlaGNC">           3 :     return GridLayer(</span></span>
-<span id="L291"><span class="lineNum">     291</span>              :       padding: indent,</span>
-<span id="L292"><span class="lineNum">     292</span>              :       width: width,</span>
-<span id="L293"><span class="lineNum">     293</span>              :       crossAxisCount: countWidth,</span>
-<span id="L294"><span class="lineNum">     294</span>              :       strategy: switch (countWidth) {</span>
-<span id="L295"><span class="lineNum">     295</span> <span class="tlaGNC">           3 :         4 =&gt; [</span></span>
-<span id="L296"><span class="lineNum">     296</span> <span class="tlaUNC tlaBgUNC">           0 :             [0, 6],</span></span>
-<span id="L297"><span class="lineNum">     297</span> <span class="tlaUNC">           0 :             [2, 5],</span></span>
-<span id="L298"><span class="lineNum">     298</span> <span class="tlaUNC">           0 :             [3, 4],</span></span>
-<span id="L299"><span class="lineNum">     299</span> <span class="tlaUNC">           0 :             [1, 7]</span></span>
-<span id="L300"><span class="lineNum">     300</span>              :           ],</span>
-<span id="L301"><span class="lineNum">     301</span> <span class="tlaGNC tlaBgGNC">           3 :         3 =&gt; [</span></span>
-<span id="L302"><span class="lineNum">     302</span> <span class="tlaUNC tlaBgUNC">           0 :             [2],</span></span>
-<span id="L303"><span class="lineNum">     303</span> <span class="tlaUNC">           0 :             [3],</span></span>
-<span id="L304"><span class="lineNum">     304</span> <span class="tlaUNC">           0 :             [0, 1]</span></span>
-<span id="L305"><span class="lineNum">     305</span>              :           ],</span>
-<span id="L306"><span class="lineNum">     306</span> <span class="tlaGNC tlaBgGNC">           6 :         2 =&gt; [</span></span>
-<span id="L307"><span class="lineNum">     307</span> <span class="tlaGNC">           3 :             [2, 3],</span></span>
-<span id="L308"><span class="lineNum">     308</span> <span class="tlaGNC">           3 :             [0, 1]</span></span>
-<span id="L309"><span class="lineNum">     309</span>              :           ],</span>
-<span id="L310"><span class="lineNum">     310</span> <span class="tlaUNC tlaBgUNC">           0 :         _ =&gt; [</span></span>
-<span id="L311"><span class="lineNum">     311</span> <span class="tlaUNC">           0 :             [0, 1, 2, 3]</span></span>
-<span id="L312"><span class="lineNum">     312</span>              :           ]</span>
-<span id="L313"><span class="lineNum">     313</span>              :       },</span>
-<span id="L314"><span class="lineNum">     314</span> <span class="tlaGNC tlaBgGNC">           3 :       children: [</span></span>
-<span id="L315"><span class="lineNum">     315</span> <span class="tlaGNC">           3 :         countHeight &gt; 3</span></span>
-<span id="L316"><span class="lineNum">     316</span>              :             ? isWide</span>
-<span id="L317"><span class="lineNum">     317</span> <span class="tlaUNC tlaBgUNC">           0 :                 ? Expanded(</span></span>
-<span id="L318"><span class="lineNum">     318</span> <span class="tlaUNC">           0 :                     child: Padding(</span></span>
-<span id="L319"><span class="lineNum">     319</span> <span class="tlaUNC">           0 :                       padding: EdgeInsets.only(top: indent / 2),</span></span>
-<span id="L320"><span class="lineNum">     320</span>              :                       child: const ComponentRecent({'type': ComponentRecentType.goals, 'count': 7}),</span>
-<span id="L321"><span class="lineNum">     321</span>              :                     ),</span>
-<span id="L322"><span class="lineNum">     322</span>              :                   )</span>
-<span id="L323"><span class="lineNum">     323</span> <span class="tlaGNC tlaBgGNC">           3 :                 : GoalWidget(</span></span>
-<span id="L324"><span class="lineNum">     324</span>              :                     width: isVertical ? width : partWidth,</span>
-<span id="L325"><span class="lineNum">     325</span> <span class="tlaGNC">           6 :                     state: super.state.getList(AppDataType.goals),</span></span>
-<span id="L326"><span class="lineNum">     326</span>              :                   )</span>
-<span id="L327"><span class="lineNum">     327</span>              :             : ThemeHelper.emptyBox,</span>
-<span id="L328"><span class="lineNum">     328</span>              :         billWidget,</span>
-<span id="L329"><span class="lineNum">     329</span>              :         accountWidget,</span>
-<span id="L330"><span class="lineNum">     330</span>              :         budgetWidget,</span>
-<span id="L331"><span class="lineNum">     331</span> <span class="tlaUNC tlaBgUNC">           0 :         () =&gt; const Expanded(</span></span>
-<span id="L332"><span class="lineNum">     332</span>              :               child: Column(</span>
-<span id="L333"><span class="lineNum">     333</span>              :                 children: [</span>
-<span id="L334"><span class="lineNum">     334</span>              :                   Expanded(child: ThemeHelper.emptyBox),</span>
-<span id="L335"><span class="lineNum">     335</span>              :                   AccountFlowChart(),</span>
-<span id="L336"><span class="lineNum">     336</span>              :                   ThemeHelper.hIndent6x,</span>
-<span id="L337"><span class="lineNum">     337</span>              :                 ],</span>
-<span id="L338"><span class="lineNum">     338</span>              :               ),</span>
-<span id="L339"><span class="lineNum">     339</span>              :             ),</span>
-<span id="L340"><span class="lineNum">     340</span> <span class="tlaUNC">           0 :         () =&gt; const Expanded(</span></span>
-<span id="L341"><span class="lineNum">     341</span>              :               child: Column(</span>
-<span id="L342"><span class="lineNum">     342</span>              :                 children: [</span>
-<span id="L343"><span class="lineNum">     343</span>              :                   Expanded(child: ThemeHelper.emptyBox),</span>
-<span id="L344"><span class="lineNum">     344</span>              :                   BudgetForecastChart(),</span>
-<span id="L345"><span class="lineNum">     345</span>              :                   ThemeHelper.hIndent6x,</span>
-<span id="L346"><span class="lineNum">     346</span>              :                 ],</span>
-<span id="L347"><span class="lineNum">     347</span>              :               ),</span>
-<span id="L348"><span class="lineNum">     348</span>              :             ),</span>
-<span id="L349"><span class="lineNum">     349</span> <span class="tlaUNC">           0 :         () =&gt; const Expanded(</span></span>
-<span id="L350"><span class="lineNum">     350</span>              :               child: Column(</span>
-<span id="L351"><span class="lineNum">     351</span>              :                 children: [</span>
-<span id="L352"><span class="lineNum">     352</span>              :                   Expanded(child: ThemeHelper.emptyBox),</span>
-<span id="L353"><span class="lineNum">     353</span>              :                   BillYtdChart(),</span>
-<span id="L354"><span class="lineNum">     354</span>              :                   ThemeHelper.hIndent6x,</span>
-<span id="L355"><span class="lineNum">     355</span>              :                 ],</span>
-<span id="L356"><span class="lineNum">     356</span>              :               ),</span>
-<span id="L357"><span class="lineNum">     357</span>              :             ),</span>
-<span id="L358"><span class="lineNum">     358</span> <span class="tlaUNC">           0 :         () =&gt; const Expanded(</span></span>
-<span id="L359"><span class="lineNum">     359</span>              :               child: ComponentRecent({'type': ComponentRecentType.invoice, 'count': 7}),</span>
-<span id="L360"><span class="lineNum">     360</span>              :             ),</span>
-<span id="L361"><span class="lineNum">     361</span>              :       ],</span>
-<span id="L362"><span class="lineNum">     362</span>              :     );</span>
-<span id="L363"><span class="lineNum">     363</span>              :   }</span>
-<span id="L364"><span class="lineNum">     364</span>              : }</span>
+<span id="L290"><span class="lineNum">     290</span> <span class="tlaGNC">           3 :     final billWidget = BillWidget(</span></span>
+<span id="L291"><span class="lineNum">     291</span>              :       margin: margin,</span>
+<span id="L292"><span class="lineNum">     292</span> <span class="tlaGNC">          12 :       title: '${AppLocale.labels.billHeadline}, ${curr.fullMonth()}',</span></span>
+<span id="L293"><span class="lineNum">     293</span> <span class="tlaGNC">           6 :       state: state.get(AppDataType.bills),</span></span>
+<span id="L294"><span class="lineNum">     294</span>              :       limit: 7,</span>
+<span id="L295"><span class="lineNum">     295</span>              :       route: AppRoute.billRoute,</span>
+<span id="L296"><span class="lineNum">     296</span> <span class="tlaGNC">           6 :       tooltip: AppLocale.labels.billTooltip,</span></span>
+<span id="L297"><span class="lineNum">     297</span>              :       width: isVertical ? width : partWidth,</span>
+<span id="L298"><span class="lineNum">     298</span>              :       hasExpand: isVertical,</span>
+<span id="L299"><span class="lineNum">     299</span> <span class="tlaGNC">           3 :       toExpand: toExpand,</span></span>
+<span id="L300"><span class="lineNum">     300</span> <span class="tlaUNC tlaBgUNC">           0 :       callback: (v) =&gt; setState(() =&gt; toExpand = v),</span></span>
+<span id="L301"><span class="lineNum">     301</span>              :     );</span>
+<span id="L302"><span class="lineNum">     302</span> <span class="tlaGNC tlaBgGNC">           3 :     final accountWidget = AccountWidget(</span></span>
+<span id="L303"><span class="lineNum">     303</span>              :       margin: margin,</span>
+<span id="L304"><span class="lineNum">     304</span> <span class="tlaGNC">          15 :       title: '${AppLocale.labels.accountHeadline}, ${AppLocale.labels.total}',</span></span>
+<span id="L305"><span class="lineNum">     305</span> <span class="tlaGNC">           6 :       state: state.get(AppDataType.accounts),</span></span>
+<span id="L306"><span class="lineNum">     306</span>              :       limit: 7,</span>
+<span id="L307"><span class="lineNum">     307</span>              :       route: AppRoute.accountRoute,</span>
+<span id="L308"><span class="lineNum">     308</span> <span class="tlaGNC">           6 :       tooltip: AppLocale.labels.accountTooltip,</span></span>
+<span id="L309"><span class="lineNum">     309</span>              :       width: isVertical ? width : partWidth,</span>
+<span id="L310"><span class="lineNum">     310</span>              :       hasExpand: isVertical,</span>
+<span id="L311"><span class="lineNum">     311</span> <span class="tlaGNC">           3 :       toExpand: toExpand,</span></span>
+<span id="L312"><span class="lineNum">     312</span> <span class="tlaUNC tlaBgUNC">           0 :       callback: (v) =&gt; setState(() =&gt; toExpand = v),</span></span>
+<span id="L313"><span class="lineNum">     313</span> <span class="tlaGNC tlaBgGNC">           9 :     )..exchange = Exchange(store: super.state);</span></span>
+<span id="L314"><span class="lineNum">     314</span> <span class="tlaGNC">           3 :     final budgetWidget = BudgetWidget(</span></span>
+<span id="L315"><span class="lineNum">     315</span>              :       margin: margin,</span>
+<span id="L316"><span class="lineNum">     316</span> <span class="tlaGNC">          15 :       title: '${AppLocale.labels.budgetHeadline}, ${AppLocale.labels.left}',</span></span>
+<span id="L317"><span class="lineNum">     317</span> <span class="tlaGNC">           6 :       state: state.get(AppDataType.budgets),</span></span>
+<span id="L318"><span class="lineNum">     318</span>              :       limit: 7,</span>
+<span id="L319"><span class="lineNum">     319</span>              :       route: AppRoute.budgetRoute,</span>
+<span id="L320"><span class="lineNum">     320</span> <span class="tlaGNC">           6 :       tooltip: AppLocale.labels.budgetTooltip,</span></span>
+<span id="L321"><span class="lineNum">     321</span>              :       width: isVertical ? width : partWidth,</span>
+<span id="L322"><span class="lineNum">     322</span>              :       hasExpand: isVertical,</span>
+<span id="L323"><span class="lineNum">     323</span> <span class="tlaGNC">           3 :       toExpand: toExpand,</span></span>
+<span id="L324"><span class="lineNum">     324</span> <span class="tlaUNC tlaBgUNC">           0 :       callback: (v) =&gt; setState(() =&gt; toExpand = v),</span></span>
+<span id="L325"><span class="lineNum">     325</span> <span class="tlaGNC tlaBgGNC">           9 :     )..exchange = Exchange(store: super.state);</span></span>
+<span id="L326"><span class="lineNum">     326</span>              : </span>
+<span id="L327"><span class="lineNum">     327</span> <span class="tlaGNC">           3 :     return GridLayer(</span></span>
+<span id="L328"><span class="lineNum">     328</span>              :       padding: indent,</span>
+<span id="L329"><span class="lineNum">     329</span>              :       width: width,</span>
+<span id="L330"><span class="lineNum">     330</span>              :       crossAxisCount: countWidth,</span>
+<span id="L331"><span class="lineNum">     331</span>              :       strategy: switch (countWidth) {</span>
+<span id="L332"><span class="lineNum">     332</span> <span class="tlaGNC">           3 :         4 =&gt; [</span></span>
+<span id="L333"><span class="lineNum">     333</span> <span class="tlaUNC tlaBgUNC">           0 :             [0, 6],</span></span>
+<span id="L334"><span class="lineNum">     334</span> <span class="tlaUNC">           0 :             [2, 5],</span></span>
+<span id="L335"><span class="lineNum">     335</span> <span class="tlaUNC">           0 :             [3, 4],</span></span>
+<span id="L336"><span class="lineNum">     336</span> <span class="tlaUNC">           0 :             [1, 7]</span></span>
+<span id="L337"><span class="lineNum">     337</span>              :           ],</span>
+<span id="L338"><span class="lineNum">     338</span> <span class="tlaGNC tlaBgGNC">           3 :         3 =&gt; [</span></span>
+<span id="L339"><span class="lineNum">     339</span> <span class="tlaUNC tlaBgUNC">           0 :             [2],</span></span>
+<span id="L340"><span class="lineNum">     340</span> <span class="tlaUNC">           0 :             [3],</span></span>
+<span id="L341"><span class="lineNum">     341</span> <span class="tlaUNC">           0 :             [0, 1]</span></span>
+<span id="L342"><span class="lineNum">     342</span>              :           ],</span>
+<span id="L343"><span class="lineNum">     343</span> <span class="tlaGNC tlaBgGNC">           6 :         2 =&gt; [</span></span>
+<span id="L344"><span class="lineNum">     344</span> <span class="tlaGNC">           3 :             [2, 3],</span></span>
+<span id="L345"><span class="lineNum">     345</span> <span class="tlaGNC">           3 :             [0, 1]</span></span>
+<span id="L346"><span class="lineNum">     346</span>              :           ],</span>
+<span id="L347"><span class="lineNum">     347</span> <span class="tlaUNC tlaBgUNC">           0 :         _ =&gt; [</span></span>
+<span id="L348"><span class="lineNum">     348</span> <span class="tlaUNC">           0 :             [0, 1, 2, 3]</span></span>
+<span id="L349"><span class="lineNum">     349</span>              :           ]</span>
+<span id="L350"><span class="lineNum">     350</span>              :       },</span>
+<span id="L351"><span class="lineNum">     351</span> <span class="tlaGNC tlaBgGNC">           3 :       children: [</span></span>
+<span id="L352"><span class="lineNum">     352</span> <span class="tlaGNC">           3 :         countHeight &gt; 3</span></span>
+<span id="L353"><span class="lineNum">     353</span>              :             ? isWide</span>
+<span id="L354"><span class="lineNum">     354</span> <span class="tlaUNC tlaBgUNC">           0 :                 ? Expanded(</span></span>
+<span id="L355"><span class="lineNum">     355</span> <span class="tlaUNC">           0 :                     child: Padding(</span></span>
+<span id="L356"><span class="lineNum">     356</span> <span class="tlaUNC">           0 :                       padding: EdgeInsets.only(top: indent / 2),</span></span>
+<span id="L357"><span class="lineNum">     357</span>              :                       child: const ComponentRecent({'type': ComponentRecentType.goals, 'count': 7}),</span>
+<span id="L358"><span class="lineNum">     358</span>              :                     ),</span>
+<span id="L359"><span class="lineNum">     359</span>              :                   )</span>
+<span id="L360"><span class="lineNum">     360</span> <span class="tlaGNC tlaBgGNC">           3 :                 : GoalWidget(</span></span>
+<span id="L361"><span class="lineNum">     361</span>              :                     width: isVertical ? width : partWidth,</span>
+<span id="L362"><span class="lineNum">     362</span> <span class="tlaGNC">           6 :                     state: super.state.getList(AppDataType.goals),</span></span>
+<span id="L363"><span class="lineNum">     363</span>              :                   )</span>
+<span id="L364"><span class="lineNum">     364</span>              :             : ThemeHelper.emptyBox,</span>
+<span id="L365"><span class="lineNum">     365</span>              :         billWidget,</span>
+<span id="L366"><span class="lineNum">     366</span>              :         accountWidget,</span>
+<span id="L367"><span class="lineNum">     367</span>              :         budgetWidget,</span>
+<span id="L368"><span class="lineNum">     368</span> <span class="tlaUNC tlaBgUNC">           0 :         () =&gt; const Expanded(</span></span>
+<span id="L369"><span class="lineNum">     369</span>              :               child: Column(</span>
+<span id="L370"><span class="lineNum">     370</span>              :                 children: [</span>
+<span id="L371"><span class="lineNum">     371</span>              :                   Expanded(child: ThemeHelper.emptyBox),</span>
+<span id="L372"><span class="lineNum">     372</span>              :                   AccountFlowChart(),</span>
+<span id="L373"><span class="lineNum">     373</span>              :                   ThemeHelper.hIndent6x,</span>
+<span id="L374"><span class="lineNum">     374</span>              :                 ],</span>
+<span id="L375"><span class="lineNum">     375</span>              :               ),</span>
+<span id="L376"><span class="lineNum">     376</span>              :             ),</span>
+<span id="L377"><span class="lineNum">     377</span> <span class="tlaUNC">           0 :         () =&gt; const Expanded(</span></span>
+<span id="L378"><span class="lineNum">     378</span>              :               child: Column(</span>
+<span id="L379"><span class="lineNum">     379</span>              :                 children: [</span>
+<span id="L380"><span class="lineNum">     380</span>              :                   Expanded(child: ThemeHelper.emptyBox),</span>
+<span id="L381"><span class="lineNum">     381</span>              :                   BudgetForecastChart(),</span>
+<span id="L382"><span class="lineNum">     382</span>              :                   ThemeHelper.hIndent6x,</span>
+<span id="L383"><span class="lineNum">     383</span>              :                 ],</span>
+<span id="L384"><span class="lineNum">     384</span>              :               ),</span>
+<span id="L385"><span class="lineNum">     385</span>              :             ),</span>
+<span id="L386"><span class="lineNum">     386</span> <span class="tlaUNC">           0 :         () =&gt; const Expanded(</span></span>
+<span id="L387"><span class="lineNum">     387</span>              :               child: Column(</span>
+<span id="L388"><span class="lineNum">     388</span>              :                 children: [</span>
+<span id="L389"><span class="lineNum">     389</span>              :                   Expanded(child: ThemeHelper.emptyBox),</span>
+<span id="L390"><span class="lineNum">     390</span>              :                   BillYtdChart(),</span>
+<span id="L391"><span class="lineNum">     391</span>              :                   ThemeHelper.hIndent6x,</span>
+<span id="L392"><span class="lineNum">     392</span>              :                 ],</span>
+<span id="L393"><span class="lineNum">     393</span>              :               ),</span>
+<span id="L394"><span class="lineNum">     394</span>              :             ),</span>
+<span id="L395"><span class="lineNum">     395</span> <span class="tlaUNC">           0 :         () =&gt; const Expanded(</span></span>
+<span id="L396"><span class="lineNum">     396</span>              :               child: ComponentRecent({'type': ComponentRecentType.invoice, 'count': 7}),</span>
+<span id="L397"><span class="lineNum">     397</span>              :             ),</span>
+<span id="L398"><span class="lineNum">     398</span>              :       ],</span>
+<span id="L399"><span class="lineNum">     399</span>              :     );</span>
+<span id="L400"><span class="lineNum">     400</span>              :   }</span>
+<span id="L401"><span class="lineNum">     401</span>              : }</span>
         </pre>
               </td>
             </tr>
