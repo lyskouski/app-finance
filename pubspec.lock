@@ -532,10 +532,10 @@ packages:
     dependency: "direct dev"
     description:
       name: flutter_screenshot_generator
-      sha256: "637c52482c70c71432767bfb53791132646e7b042b3b01995cb86f5f53162f0c"
+      sha256: "18f16e220e0213966dc7019e8e0533a83a6b1dd91d25b6c9ec03da6a2c87ce9a"
       url: "https://pub.dev"
     source: hosted
-    version: "1.0.0"
+    version: "1.0.1"
   flutter_solidart:
     dependency: "direct main"
     description:
