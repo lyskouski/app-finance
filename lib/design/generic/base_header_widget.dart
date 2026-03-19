@@ -64,7 +64,7 @@ class BaseHeaderWidget extends StatelessWidget {
       route: RouteSettings(name: route),
       child: Container(
         padding: EdgeInsets.all(indent / 2),
-        height: numHeight + subHeight + (hasMetrics ? indent : -indent - 1),
+        height: numHeight + subHeight + (hasMetrics ? indent : -indent - 2),
         width: double.infinity,
         color: colorScheme.inverseSurface.withValues(alpha: 0.1),
         child: GridContainer(
