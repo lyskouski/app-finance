@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Test Date:</td>
-            <td class="headerValue">2026-03-19 08:19:39</td>
+            <td class="headerValue">2026-03-19 08:30:48</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntryHi">-</td>
@@ -97,7 +97,7 @@
 <span id="L35"><span class="lineNum">      35</span> <span class="tlaGNC">           6 :     isBottom = ThemeHelper.isNavBottom(constraints);</span></span>
 <span id="L36"><span class="lineNum">      36</span> <span class="tlaGNC">           6 :     isWearable = ThemeHelper.isWearableMode(context, constraints);</span></span>
 <span id="L37"><span class="lineNum">      37</span> <span class="tlaGNC">           6 :     isRight = ThemeHelper.isNavRight(context, constraints);</span></span>
-<span id="L38"><span class="lineNum">      38</span> <span class="tlaGNC">           9 :     isLeftBar = ThemeHelper.getHeight(context) &lt; 520;</span></span>
+<span id="L38"><span class="lineNum">      38</span> <span class="tlaGNC">           6 :     isLeftBar = isRight &amp;&amp; ThemeHelper.getHeight(context) &lt; 520;</span></span>
 <span id="L39"><span class="lineNum">      39</span> <span class="tlaGNC">           6 :     height = ThemeHelper.getHeight(context);</span></span>
 <span id="L40"><span class="lineNum">      40</span> <span class="tlaGNC">           6 :     originWidth = ThemeHelper.getWidth(context);</span></span>
 <span id="L41"><span class="lineNum">      41</span> <span class="tlaGNC">           6 :     width = ThemeHelper.getWidth(context, 0, constraints);</span></span>
