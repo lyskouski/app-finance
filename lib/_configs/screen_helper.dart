@@ -35,7 +35,7 @@ class ScreenHelper {
     isBottom = ThemeHelper.isNavBottom(constraints);
     isWearable = ThemeHelper.isWearableMode(context, constraints);
     isRight = ThemeHelper.isNavRight(context, constraints);
-    isLeftBar = ThemeHelper.getHeight(context) < 520;
+    isLeftBar = isRight && ThemeHelper.getHeight(context) < 520;
     height = ThemeHelper.getHeight(context);
     originWidth = ThemeHelper.getWidth(context);
     width = ThemeHelper.getWidth(context, 0, constraints);
