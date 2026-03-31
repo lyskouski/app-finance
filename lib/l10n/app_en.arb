@@ -183,6 +183,7 @@
     "dateRange": "Date Range",
     "dateTooltip": "Select Date",
     "dayMonday": "Monday",
+    "daySaturday": "Saturday",
     "dayStartOfMonth": "Start of Month",
     "dayStartOfWeek": "Start of Week",
     "daySunday": "Sunday",

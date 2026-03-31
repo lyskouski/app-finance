@@ -437,6 +437,9 @@ class AppLocalizationsCs extends AppLocalizations {
   String get dayMonday => 'Pondělí';
 
   @override
+  String get daySaturday => 'Sobota';
+
+  @override
   String get dayStartOfMonth => 'Začátek měsíce';
 
   @override

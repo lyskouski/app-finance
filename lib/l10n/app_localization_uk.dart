@@ -437,6 +437,9 @@ class AppLocalizationsUk extends AppLocalizations {
   String get dayMonday => 'Понеділок';
 
   @override
+  String get daySaturday => 'Субота';
+
+  @override
   String get dayStartOfMonth => 'Початок місяця';
 
   @override

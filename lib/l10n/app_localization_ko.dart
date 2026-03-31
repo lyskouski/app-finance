@@ -436,6 +436,9 @@ class AppLocalizationsKo extends AppLocalizations {
   String get dayMonday => '월요일';
 
   @override
+  String get daySaturday => '토요일';
+
+  @override
   String get dayStartOfMonth => '이달의 시작';
 
   @override

@@ -438,6 +438,9 @@ class AppLocalizationsEs extends AppLocalizations {
   String get dayMonday => 'Lunes';
 
   @override
+  String get daySaturday => 'Sábado';
+
+  @override
   String get dayStartOfMonth => 'Principios de mes';
 
   @override

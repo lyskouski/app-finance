@@ -437,6 +437,9 @@ class AppLocalizationsBe extends AppLocalizations {
   String get dayMonday => 'Панядзелак';
 
   @override
+  String get daySaturday => 'Субота';
+
+  @override
   String get dayStartOfMonth => 'Пачатак месяца';
 
   @override
@@ -1526,6 +1529,9 @@ class AppLocalizationsBeEu extends AppLocalizationsBe {
 
   @override
   String get dayMonday => 'Paniadzielak';
+
+  @override
+  String get daySaturday => 'Subota';
 
   @override
   String get dayStartOfMonth => 'Pačatak Miesiaca';

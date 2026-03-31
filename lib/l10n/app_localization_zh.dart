@@ -436,6 +436,9 @@ class AppLocalizationsZh extends AppLocalizations {
   String get dayMonday => '星期一';
 
   @override
+  String get daySaturday => '周六';
+
+  @override
   String get dayStartOfMonth => '月初';
 
   @override
@@ -1520,6 +1523,9 @@ class AppLocalizationsZhTw extends AppLocalizationsZh {
 
   @override
   String get dayMonday => '星期一';
+
+  @override
+  String get daySaturday => '週六';
 
   @override
   String get dayStartOfMonth => '本月開始';

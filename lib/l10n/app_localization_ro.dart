@@ -438,6 +438,9 @@ class AppLocalizationsRo extends AppLocalizations {
   String get dayMonday => 'Luni';
 
   @override
+  String get daySaturday => 'Sâmbătă';
+
+  @override
   String get dayStartOfMonth => 'Începutul lunii';
 
   @override

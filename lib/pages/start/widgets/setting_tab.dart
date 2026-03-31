@@ -205,6 +205,7 @@ class SettingTabState<T extends SettingTab> extends AbstractTabState<T> {
             tooltip: AppLocale.labels.dayStartOfWeek,
             value: startOfWeek.value.toString(),
             options: [
+              ListSelectorItem(id: '6', name: AppLocale.labels.daySaturday),
               ListSelectorItem(id: '0', name: AppLocale.labels.daySunday),
               ListSelectorItem(id: '1', name: AppLocale.labels.dayMonday),
             ].cast<ListSelectorItem>(),

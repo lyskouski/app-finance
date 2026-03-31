@@ -438,6 +438,9 @@ class AppLocalizationsNl extends AppLocalizations {
   String get dayMonday => 'Maandag';
 
   @override
+  String get daySaturday => 'Zaterdag';
+
+  @override
   String get dayStartOfMonth => 'Begin van de maand';
 
   @override
