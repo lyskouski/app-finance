@@ -127,6 +127,9 @@ class SettingTabState<T extends SettingTab> extends AbstractTabState<T> {
   Future<void> saveLocale(String value) async {
     await locale.set(value);
     await design.set(AppDesign.fromLocale(AppLocale.fromCode(value)));
+    if (value == 'ar') {
+      await startOfWeek.set(int.parse(AppStartOfWeek.SATURDAY));
+    }
     setState(() {});
   }
 
