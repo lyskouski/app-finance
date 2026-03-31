@@ -437,6 +437,9 @@ class AppLocalizationsTr extends AppLocalizations {
   String get dayMonday => 'Pazartesi';
 
   @override
+  String get daySaturday => 'Cumartesi';
+
+  @override
   String get dayStartOfMonth => 'Ayın başlangıcı';
 
   @override

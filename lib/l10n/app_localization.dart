@@ -955,6 +955,12 @@ abstract class AppLocalizations {
   /// **'Monday'**
   String get dayMonday;
 
+  /// No description provided for @daySaturday.
+  ///
+  /// In en, this message translates to:
+  /// **'Saturday'**
+  String get daySaturday;
+
   /// No description provided for @dayStartOfMonth.
   ///
   /// In en, this message translates to:

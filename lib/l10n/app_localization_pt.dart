@@ -437,6 +437,9 @@ class AppLocalizationsPt extends AppLocalizations {
   String get dayMonday => 'Segunda-feira';
 
   @override
+  String get daySaturday => 'Sábado';
+
+  @override
   String get dayStartOfMonth => 'Início do mês';
 
   @override
@@ -1531,6 +1534,9 @@ class AppLocalizationsPtBr extends AppLocalizationsPt {
 
   @override
   String get dayMonday => 'Segunda-feira';
+
+  @override
+  String get daySaturday => 'Sábado';
 
   @override
   String get dayStartOfMonth => 'Início do mês';

@@ -183,6 +183,7 @@
     "dateRange": "Plage de dates",
     "dateTooltip": "Sélectionner la date",
     "dayMonday": "Lundi",
+    "daySaturday": "Samedi",
     "dayStartOfMonth": "Début du mois",
     "dayStartOfWeek": "Début de la semaine",
     "daySunday": "Dimanche",

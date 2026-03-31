@@ -5,6 +5,10 @@ import 'package:app_finance/_classes/storage/app_preferences.dart';
 import 'package:flutter/material.dart';
 
 class AppStartOfWeek extends ValueNotifier<int> {
+  static const MONDAY = '1';
+  static const SATURDAY = '6';
+  static const SUNDAY = '0';
+
   static get state => int.tryParse(AppPreferences.get(AppPreferences.prefWeekStartDay) ?? '') ?? 1;
 
   AppStartOfWeek() : super(state);

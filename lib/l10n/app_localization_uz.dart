@@ -439,6 +439,9 @@ class AppLocalizationsUz extends AppLocalizations {
   String get dayMonday => 'Dushanba';
 
   @override
+  String get daySaturday => 'Shanba';
+
+  @override
   String get dayStartOfMonth => 'Oyning boshlanishi';
 
   @override

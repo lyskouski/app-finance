@@ -31,6 +31,8 @@ class AppLocale extends ValueNotifier<Locale?> {
     }
   }
 
+  static Locale get() => AppLocale.fromCode(AppPreferences.get(AppPreferences.prefLocale) ?? '') ?? Locale('en', 'US');
+
   Future<void> set(String newValue, [Function? callback]) async {
     final loc = fromCode(newValue);
     if (loc != null && loc != value && AppLocalizations.supportedLocales.contains(loc)) {

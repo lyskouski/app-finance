@@ -437,6 +437,9 @@ class AppLocalizationsFa extends AppLocalizations {
   String get dayMonday => 'دوشنبه';
 
   @override
+  String get daySaturday => 'شنبه';
+
+  @override
   String get dayStartOfMonth => 'شروع ماه';
 
   @override

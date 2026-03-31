@@ -127,6 +127,9 @@ class SettingTabState<T extends SettingTab> extends AbstractTabState<T> {
   Future<void> saveLocale(String value) async {
     await locale.set(value);
     await design.set(AppDesign.fromLocale(AppLocale.fromCode(value)));
+    if (value == 'ar') {
+      await startOfWeek.set(int.parse(AppStartOfWeek.SATURDAY));
+    }
     setState(() {});
   }
 
@@ -205,6 +208,7 @@ class SettingTabState<T extends SettingTab> extends AbstractTabState<T> {
             tooltip: AppLocale.labels.dayStartOfWeek,
             value: startOfWeek.value.toString(),
             options: [
+              ListSelectorItem(id: '6', name: AppLocale.labels.daySaturday),
               ListSelectorItem(id: '0', name: AppLocale.labels.daySunday),
               ListSelectorItem(id: '1', name: AppLocale.labels.dayMonday),
             ].cast<ListSelectorItem>(),

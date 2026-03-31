@@ -3,6 +3,7 @@
 
 import 'package:app_finance/_classes/herald/app_locale.dart';
 import 'package:app_finance/_classes/herald/app_start_of_month.dart';
+import 'package:app_finance/_classes/herald/app_start_of_week.dart';
 import 'package:app_finance/_classes/storage/app_preferences.dart';
 import 'package:app_finance/_classes/structure/abstract_app_data.dart';
 import 'package:app_finance/_classes/storage/app_data.dart';
@@ -146,8 +147,13 @@ class BudgetAppData extends AbstractAppData with StorageMixin {
     if (type == AppBudgetType.year.name) {
       boundary = DateTime(boundary.year);
     } else if (type == AppBudgetType.week.name) {
-      String day = AppPreferences.get(AppPreferences.prefWeekStartDay) ?? '1';
-      boundary = boundary.getPreviousDay(day == '1' ? DateTime.monday : DateTime.sunday);
+      int boundaryDay = switch (AppPreferences.get(AppPreferences.prefWeekStartDay)) {
+        AppStartOfWeek.MONDAY => DateTime.monday,
+        AppStartOfWeek.SATURDAY => DateTime.saturday,
+        AppStartOfWeek.SUNDAY => DateTime.sunday,
+        _ => DateTime.monday,
+      };
+      boundary = boundary.getPreviousDay(boundaryDay);
     } else {
       boundary = boundary.getStartingDay(AppStartOfMonth.get());
     }

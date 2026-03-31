@@ -438,6 +438,9 @@ class AppLocalizationsAz extends AppLocalizations {
   String get dayMonday => 'bazar ertəsi';
 
   @override
+  String get daySaturday => 'Şənbə';
+
+  @override
   String get dayStartOfMonth => 'Ayın başlanğıcı';
 
   @override

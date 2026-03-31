@@ -436,6 +436,9 @@ class AppLocalizationsJa extends AppLocalizations {
   String get dayMonday => '月曜日';
 
   @override
+  String get daySaturday => '土曜日';
+
+  @override
   String get dayStartOfMonth => '月初';
 
   @override
