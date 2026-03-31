@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Test Date:</td>
-            <td class="headerValue">2026-03-31 11:19:47</td>
+            <td class="headerValue">2026-03-31 13:29:24</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntryHi">-</td>
@@ -67,18 +67,22 @@
 <span id="L5"><span class="lineNum">       5</span>              : import 'package:flutter/material.dart';</span>
 <span id="L6"><span class="lineNum">       6</span>              : </span>
 <span id="L7"><span class="lineNum">       7</span>              : class AppStartOfWeek extends ValueNotifier&lt;int&gt; {</span>
-<span id="L8"><span class="lineNum">       8</span> <span class="tlaGNC tlaBgGNC">           3 :   static get state =&gt; int.tryParse(AppPreferences.get(AppPreferences.prefWeekStartDay) ?? '') ?? 1;</span></span>
-<span id="L9"><span class="lineNum">       9</span>              : </span>
-<span id="L10"><span class="lineNum">      10</span> <span class="tlaGNC">           3 :   AppStartOfWeek() : super(state);</span></span>
+<span id="L8"><span class="lineNum">       8</span>              :   static const MONDAY = '1';</span>
+<span id="L9"><span class="lineNum">       9</span>              :   static const SATURDAY = '6';</span>
+<span id="L10"><span class="lineNum">      10</span>              :   static const SUNDAY = '0';</span>
 <span id="L11"><span class="lineNum">      11</span>              : </span>
-<span id="L12"><span class="lineNum">      12</span> <span class="tlaUNC tlaBgUNC">           0 :   Future&lt;void&gt; set(int newValue) async {</span></span>
-<span id="L13"><span class="lineNum">      13</span> <span class="tlaUNC">           0 :     if (newValue != value) {</span></span>
-<span id="L14"><span class="lineNum">      14</span> <span class="tlaUNC">           0 :       value = newValue;</span></span>
-<span id="L15"><span class="lineNum">      15</span> <span class="tlaUNC">           0 :       await AppPreferences.set(AppPreferences.prefWeekStartDay, value.toString());</span></span>
-<span id="L16"><span class="lineNum">      16</span> <span class="tlaUNC">           0 :       notifyListeners();</span></span>
-<span id="L17"><span class="lineNum">      17</span>              :     }</span>
-<span id="L18"><span class="lineNum">      18</span>              :   }</span>
-<span id="L19"><span class="lineNum">      19</span>              : }</span>
+<span id="L12"><span class="lineNum">      12</span> <span class="tlaGNC tlaBgGNC">           3 :   static get state =&gt; int.tryParse(AppPreferences.get(AppPreferences.prefWeekStartDay) ?? '') ?? 1;</span></span>
+<span id="L13"><span class="lineNum">      13</span>              : </span>
+<span id="L14"><span class="lineNum">      14</span> <span class="tlaGNC">           3 :   AppStartOfWeek() : super(state);</span></span>
+<span id="L15"><span class="lineNum">      15</span>              : </span>
+<span id="L16"><span class="lineNum">      16</span> <span class="tlaUNC tlaBgUNC">           0 :   Future&lt;void&gt; set(int newValue) async {</span></span>
+<span id="L17"><span class="lineNum">      17</span> <span class="tlaUNC">           0 :     if (newValue != value) {</span></span>
+<span id="L18"><span class="lineNum">      18</span> <span class="tlaUNC">           0 :       value = newValue;</span></span>
+<span id="L19"><span class="lineNum">      19</span> <span class="tlaUNC">           0 :       await AppPreferences.set(AppPreferences.prefWeekStartDay, value.toString());</span></span>
+<span id="L20"><span class="lineNum">      20</span> <span class="tlaUNC">           0 :       notifyListeners();</span></span>
+<span id="L21"><span class="lineNum">      21</span>              :     }</span>
+<span id="L22"><span class="lineNum">      22</span>              :   }</span>
+<span id="L23"><span class="lineNum">      23</span>              : }</span>
         </pre>
               </td>
             </tr>

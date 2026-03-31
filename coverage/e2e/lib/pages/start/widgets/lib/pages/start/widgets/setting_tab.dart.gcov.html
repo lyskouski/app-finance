@@ -31,13 +31,13 @@
             <td class="headerValue">lcov.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntryLo">52.7&nbsp;%</td>
-            <td class="headerCovTableEntry">245</td>
-            <td class="headerCovTableEntry">129</td>
+            <td class="headerCovTableEntryLo">52.4&nbsp;%</td>
+            <td class="headerCovTableEntry">248</td>
+            <td class="headerCovTableEntry">130</td>
           </tr>
           <tr>
             <td class="headerItem">Test Date:</td>
-            <td class="headerValue">2026-03-31 11:19:47</td>
+            <td class="headerValue">2026-03-31 13:29:24</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntryHi">-</td>
@@ -189,285 +189,289 @@
 <span id="L127"><span class="lineNum">     127</span> <span class="tlaUNC">           0 :   Future&lt;void&gt; saveLocale(String value) async {</span></span>
 <span id="L128"><span class="lineNum">     128</span> <span class="tlaUNC">           0 :     await locale.set(value);</span></span>
 <span id="L129"><span class="lineNum">     129</span> <span class="tlaUNC">           0 :     await design.set(AppDesign.fromLocale(AppLocale.fromCode(value)));</span></span>
-<span id="L130"><span class="lineNum">     130</span> <span class="tlaUNC">           0 :     setState(() {});</span></span>
-<span id="L131"><span class="lineNum">     131</span>              :   }</span>
-<span id="L132"><span class="lineNum">     132</span>              : </span>
-<span id="L133"><span class="lineNum">     133</span> <span class="tlaUNC">           0 :   Future&lt;void&gt; saveDesign(String value) async {</span></span>
-<span id="L134"><span class="lineNum">     134</span> <span class="tlaUNC">           0 :     await design.set(value);</span></span>
-<span id="L135"><span class="lineNum">     135</span> <span class="tlaUNC">           0 :     setState(() {});</span></span>
-<span id="L136"><span class="lineNum">     136</span>              :   }</span>
-<span id="L137"><span class="lineNum">     137</span>              : </span>
-<span id="L138"><span class="lineNum">     138</span> <span class="tlaUNC">           0 :   Future&lt;void&gt; changePalette(_) async {</span></span>
-<span id="L139"><span class="lineNum">     139</span> <span class="tlaUNC">           0 :     await palette.set(paletteState.light, paletteState.dark);</span></span>
-<span id="L140"><span class="lineNum">     140</span> <span class="tlaUNC">           0 :     setState(() =&gt; paletteState);</span></span>
-<span id="L141"><span class="lineNum">     141</span>              :   }</span>
-<span id="L142"><span class="lineNum">     142</span>              : </span>
-<span id="L143"><span class="lineNum">     143</span> <span class="tlaGNC tlaBgGNC">           1 :   Future&lt;void&gt; initCurrencyFromLocale(String locale) async {</span></span>
-<span id="L144"><span class="lineNum">     144</span> <span class="tlaGNC">           1 :     final format = NumberFormat.simpleCurrency(locale: locale);</span></span>
-<span id="L145"><span class="lineNum">     145</span> <span class="tlaGNC">           1 :     final code = format.currencyName ?? 'EUR';</span></span>
-<span id="L146"><span class="lineNum">     146</span> <span class="tlaGNC">           1 :     await AppPreferences.set(AppPreferences.prefCurrency, code);</span></span>
-<span id="L147"><span class="lineNum">     147</span> <span class="tlaGNC">           4 :     setState(() =&gt; currency = CurrencyProvider.find(code));</span></span>
-<span id="L148"><span class="lineNum">     148</span> <span class="tlaGNC">           1 :     Exchange.defaultCurrency = currency;</span></span>
-<span id="L149"><span class="lineNum">     149</span> <span class="tlaGNC">           1 :     CurrencyDefaults.defaultCurrency = currency;</span></span>
-<span id="L150"><span class="lineNum">     150</span>              :   }</span>
-<span id="L151"><span class="lineNum">     151</span>              : </span>
-<span id="L152"><span class="lineNum">     152</span> <span class="tlaGNC">           1 :   @override</span></span>
-<span id="L153"><span class="lineNum">     153</span> <span class="tlaGNC">           2 :   String getButtonTitle() =&gt; AppLocale.labels.saveSettingsTooltip;</span></span>
+<span id="L130"><span class="lineNum">     130</span> <span class="tlaUNC">           0 :     if (value == 'ar') {</span></span>
+<span id="L131"><span class="lineNum">     131</span> <span class="tlaUNC">           0 :       await startOfWeek.set(int.parse(AppStartOfWeek.SATURDAY));</span></span>
+<span id="L132"><span class="lineNum">     132</span>              :     }</span>
+<span id="L133"><span class="lineNum">     133</span> <span class="tlaUNC">           0 :     setState(() {});</span></span>
+<span id="L134"><span class="lineNum">     134</span>              :   }</span>
+<span id="L135"><span class="lineNum">     135</span>              : </span>
+<span id="L136"><span class="lineNum">     136</span> <span class="tlaUNC">           0 :   Future&lt;void&gt; saveDesign(String value) async {</span></span>
+<span id="L137"><span class="lineNum">     137</span> <span class="tlaUNC">           0 :     await design.set(value);</span></span>
+<span id="L138"><span class="lineNum">     138</span> <span class="tlaUNC">           0 :     setState(() {});</span></span>
+<span id="L139"><span class="lineNum">     139</span>              :   }</span>
+<span id="L140"><span class="lineNum">     140</span>              : </span>
+<span id="L141"><span class="lineNum">     141</span> <span class="tlaUNC">           0 :   Future&lt;void&gt; changePalette(_) async {</span></span>
+<span id="L142"><span class="lineNum">     142</span> <span class="tlaUNC">           0 :     await palette.set(paletteState.light, paletteState.dark);</span></span>
+<span id="L143"><span class="lineNum">     143</span> <span class="tlaUNC">           0 :     setState(() =&gt; paletteState);</span></span>
+<span id="L144"><span class="lineNum">     144</span>              :   }</span>
+<span id="L145"><span class="lineNum">     145</span>              : </span>
+<span id="L146"><span class="lineNum">     146</span> <span class="tlaGNC tlaBgGNC">           1 :   Future&lt;void&gt; initCurrencyFromLocale(String locale) async {</span></span>
+<span id="L147"><span class="lineNum">     147</span> <span class="tlaGNC">           1 :     final format = NumberFormat.simpleCurrency(locale: locale);</span></span>
+<span id="L148"><span class="lineNum">     148</span> <span class="tlaGNC">           1 :     final code = format.currencyName ?? 'EUR';</span></span>
+<span id="L149"><span class="lineNum">     149</span> <span class="tlaGNC">           1 :     await AppPreferences.set(AppPreferences.prefCurrency, code);</span></span>
+<span id="L150"><span class="lineNum">     150</span> <span class="tlaGNC">           4 :     setState(() =&gt; currency = CurrencyProvider.find(code));</span></span>
+<span id="L151"><span class="lineNum">     151</span> <span class="tlaGNC">           1 :     Exchange.defaultCurrency = currency;</span></span>
+<span id="L152"><span class="lineNum">     152</span> <span class="tlaGNC">           1 :     CurrencyDefaults.defaultCurrency = currency;</span></span>
+<span id="L153"><span class="lineNum">     153</span>              :   }</span>
 <span id="L154"><span class="lineNum">     154</span>              : </span>
 <span id="L155"><span class="lineNum">     155</span> <span class="tlaGNC">           1 :   @override</span></span>
-<span id="L156"><span class="lineNum">     156</span>              :   Widget buildContent(BuildContext context, BoxConstraints constraints) {</span>
-<span id="L157"><span class="lineNum">     157</span> <span class="tlaGNC">           2 :     theme = Provider.of&lt;AppTheme&gt;(context, listen: false);</span></span>
-<span id="L158"><span class="lineNum">     158</span> <span class="tlaGNC">           2 :     zoom = Provider.of&lt;AppZoom&gt;(context, listen: false);</span></span>
-<span id="L159"><span class="lineNum">     159</span> <span class="tlaGNC">           2 :     startOfWeek = Provider.of&lt;AppStartOfWeek&gt;(context, listen: true);</span></span>
-<span id="L160"><span class="lineNum">     160</span> <span class="tlaGNC">           2 :     startOfMonth = Provider.of&lt;AppStartOfMonth&gt;(context, listen: true);</span></span>
-<span id="L161"><span class="lineNum">     161</span> <span class="tlaGNC">           2 :     palette = Provider.of&lt;AppPalette&gt;(context, listen: false);</span></span>
-<span id="L162"><span class="lineNum">     162</span> <span class="tlaGNC">           2 :     locale = Provider.of&lt;AppLocale&gt;(context, listen: false);</span></span>
-<span id="L163"><span class="lineNum">     163</span> <span class="tlaGNC">           2 :     design = Provider.of&lt;AppDesign&gt;(context, listen: false);</span></span>
-<span id="L164"><span class="lineNum">     164</span> <span class="tlaGNC">           2 :     state = Provider.of&lt;AppData&gt;(context, listen: true);</span></span>
-<span id="L165"><span class="lineNum">     165</span> <span class="tlaGNC">           1 :     final textTheme = context.textTheme;</span></span>
-<span id="L166"><span class="lineNum">     166</span> <span class="tlaGNC">           1 :     final indent = ThemeHelper.getIndent(2);</span></span>
-<span id="L167"><span class="lineNum">     167</span> <span class="tlaGNC">           3 :     final width = ThemeHelper.getMaxWidth(context, constraints) - 2 * indent;</span></span>
-<span id="L168"><span class="lineNum">     168</span> <span class="tlaGNC">           1 :     if (currency == null) {</span></span>
-<span id="L169"><span class="lineNum">     169</span> <span class="tlaGNC">           4 :       WidgetsBinding.instance.addPostFrameCallback((_) =&gt; initCurrencyFromLocale(AppLocale.code));</span></span>
-<span id="L170"><span class="lineNum">     170</span>              :       return ThemeHelper.emptyBox;</span>
-<span id="L171"><span class="lineNum">     171</span>              :     }</span>
-<span id="L172"><span class="lineNum">     172</span> <span class="tlaGNC">           1 :     return SingleScrollWrapper(</span></span>
-<span id="L173"><span class="lineNum">     173</span> <span class="tlaGNC">           1 :       controller: controller,</span></span>
-<span id="L174"><span class="lineNum">     174</span> <span class="tlaGNC">           1 :       child: Column(</span></span>
-<span id="L175"><span class="lineNum">     175</span> <span class="tlaGNC">           1 :         crossAxisAlignment: AppDesign.getAlignment(),</span></span>
-<span id="L176"><span class="lineNum">     176</span> <span class="tlaGNC">           1 :         children: [</span></span>
-<span id="L177"><span class="lineNum">     177</span>              :           ThemeHelper.hIndent2x,</span>
-<span id="L178"><span class="lineNum">     178</span> <span class="tlaGNC">           1 :           InputWrapper.select(</span></span>
-<span id="L179"><span class="lineNum">     179</span> <span class="tlaGNC">           2 :             title: AppLocale.labels.language,</span></span>
-<span id="L180"><span class="lineNum">     180</span> <span class="tlaGNC">           2 :             tooltip: AppLocale.labels.language,</span></span>
-<span id="L181"><span class="lineNum">     181</span>              :             value: AppLocale.code,</span>
-<span id="L182"><span class="lineNum">     182</span> <span class="tlaGNC">           1 :             options: languages,</span></span>
-<span id="L183"><span class="lineNum">     183</span> <span class="tlaUNC tlaBgUNC">           0 :             onChange: (v) =&gt; saveLocale(v ?? AppLocale.code),</span></span>
-<span id="L184"><span class="lineNum">     184</span>              :           ),</span>
-<span id="L185"><span class="lineNum">     185</span> <span class="tlaGNC tlaBgGNC">           1 :           InputWrapper.select(</span></span>
-<span id="L186"><span class="lineNum">     186</span> <span class="tlaGNC">           2 :             title: AppLocale.labels.design,</span></span>
-<span id="L187"><span class="lineNum">     187</span> <span class="tlaGNC">           2 :             tooltip: AppLocale.labels.design,</span></span>
-<span id="L188"><span class="lineNum">     188</span> <span class="tlaGNC">           2 :             value: AppDesign.get().name,</span></span>
-<span id="L189"><span class="lineNum">     189</span> <span class="tlaGNC">           1 :             options: [</span></span>
-<span id="L190"><span class="lineNum">     190</span> <span class="tlaGNC">           4 :               ListSelectorItem(id: AppDesignType.global.name, name: AppLocale.labels.designGlobal),</span></span>
-<span id="L191"><span class="lineNum">     191</span> <span class="tlaGNC">           4 :               ListSelectorItem(id: AppDesignType.asiaGeneral.name, name: AppLocale.labels.designAsiaGeneral),</span></span>
-<span id="L192"><span class="lineNum">     192</span> <span class="tlaGNC">           4 :               ListSelectorItem(id: AppDesignType.rtlGeneral.name, name: AppLocale.labels.designRtlGeneral),</span></span>
-<span id="L193"><span class="lineNum">     193</span> <span class="tlaGNC">           4 :               ListSelectorItem(id: AppDesignType.germany.name, name: AppLocale.labels.designGermany),</span></span>
-<span id="L194"><span class="lineNum">     194</span> <span class="tlaGNC">           1 :             ].cast&lt;ListSelectorItem&gt;(),</span></span>
-<span id="L195"><span class="lineNum">     195</span> <span class="tlaUNC tlaBgUNC">           0 :             onChange: (v) =&gt; saveDesign(AppDesign.find(v)?.name ?? AppDesignType.global.name),</span></span>
-<span id="L196"><span class="lineNum">     196</span>              :           ),</span>
-<span id="L197"><span class="lineNum">     197</span> <span class="tlaGNC tlaBgGNC">           1 :           InputWrapper.currency(</span></span>
-<span id="L198"><span class="lineNum">     198</span> <span class="tlaGNC">           2 :             title: AppLocale.labels.currencyDefault,</span></span>
-<span id="L199"><span class="lineNum">     199</span> <span class="tlaGNC">           2 :             tooltip: AppLocale.labels.currencyDefault,</span></span>
-<span id="L200"><span class="lineNum">     200</span> <span class="tlaGNC">           1 :             value: currency,</span></span>
-<span id="L201"><span class="lineNum">     201</span> <span class="tlaGNC">           1 :             onChange: saveCurrency,</span></span>
-<span id="L202"><span class="lineNum">     202</span>              :           ),</span>
-<span id="L203"><span class="lineNum">     203</span> <span class="tlaGNC">           1 :           InputWrapper.select(</span></span>
-<span id="L204"><span class="lineNum">     204</span> <span class="tlaGNC">           2 :             title: AppLocale.labels.dayStartOfWeek,</span></span>
-<span id="L205"><span class="lineNum">     205</span> <span class="tlaGNC">           2 :             tooltip: AppLocale.labels.dayStartOfWeek,</span></span>
-<span id="L206"><span class="lineNum">     206</span> <span class="tlaGNC">           3 :             value: startOfWeek.value.toString(),</span></span>
-<span id="L207"><span class="lineNum">     207</span> <span class="tlaGNC">           1 :             options: [</span></span>
-<span id="L208"><span class="lineNum">     208</span> <span class="tlaGNC">           3 :               ListSelectorItem(id: '0', name: AppLocale.labels.daySunday),</span></span>
-<span id="L209"><span class="lineNum">     209</span> <span class="tlaGNC">           3 :               ListSelectorItem(id: '1', name: AppLocale.labels.dayMonday),</span></span>
-<span id="L210"><span class="lineNum">     210</span> <span class="tlaGNC">           1 :             ].cast&lt;ListSelectorItem&gt;(),</span></span>
-<span id="L211"><span class="lineNum">     211</span> <span class="tlaUNC tlaBgUNC">           0 :             onChange: (v) =&gt; startOfWeek.set(int.tryParse(v) ?? 1),</span></span>
-<span id="L212"><span class="lineNum">     212</span>              :           ),</span>
-<span id="L213"><span class="lineNum">     213</span> <span class="tlaGNC tlaBgGNC">           1 :           InputWrapper.select(</span></span>
-<span id="L214"><span class="lineNum">     214</span> <span class="tlaGNC">           2 :             title: AppLocale.labels.dayStartOfMonth,</span></span>
-<span id="L215"><span class="lineNum">     215</span> <span class="tlaGNC">           2 :             tooltip: AppLocale.labels.dayStartOfMonth,</span></span>
-<span id="L216"><span class="lineNum">     216</span> <span class="tlaGNC">           3 :             value: startOfMonth.value.toString(),</span></span>
-<span id="L217"><span class="lineNum">     217</span> <span class="tlaGNC">           2 :             options: List.generate(31, (index) {</span></span>
-<span id="L218"><span class="lineNum">     218</span> <span class="tlaGNC">           2 :               String key = (index + 1).toString();</span></span>
-<span id="L219"><span class="lineNum">     219</span> <span class="tlaGNC">           1 :               return ListSelectorItem(id: key, name: key);</span></span>
-<span id="L220"><span class="lineNum">     220</span> <span class="tlaGNC">           1 :             }).cast&lt;ListSelectorItem&gt;(),</span></span>
-<span id="L221"><span class="lineNum">     221</span> <span class="tlaGNC">           1 :             onChange: saveStartOfMonth,</span></span>
-<span id="L222"><span class="lineNum">     222</span>              :           ),</span>
-<span id="L223"><span class="lineNum">     223</span> <span class="tlaGNC">           1 :           if (kDebugMode) ...[</span></span>
-<span id="L224"><span class="lineNum">     224</span> <span class="tlaGNC">           1 :             Row(</span></span>
-<span id="L225"><span class="lineNum">     225</span> <span class="tlaGNC">           1 :               mainAxisAlignment: AppDesign.getAlignment&lt;MainAxisAlignment&gt;(),</span></span>
-<span id="L226"><span class="lineNum">     226</span> <span class="tlaGNC">           1 :               children: [</span></span>
-<span id="L227"><span class="lineNum">     227</span> <span class="tlaGNC">           1 :                 Text(</span></span>
-<span id="L228"><span class="lineNum">     228</span> <span class="tlaGNC">           2 :                   AppLocale.labels.encryptionMode,</span></span>
-<span id="L229"><span class="lineNum">     229</span> <span class="tlaGNC">           1 :                   style: textTheme.bodyLarge,</span></span>
-<span id="L230"><span class="lineNum">     230</span>              :                 ),</span>
-<span id="L231"><span class="lineNum">     231</span> <span class="tlaGNC">           1 :                 Switch(</span></span>
-<span id="L232"><span class="lineNum">     232</span> <span class="tlaGNC">           1 :                   value: isEncrypted,</span></span>
-<span id="L233"><span class="lineNum">     233</span> <span class="tlaGNC">           1 :                   onChanged: saveEncryption,</span></span>
+<span id="L156"><span class="lineNum">     156</span> <span class="tlaGNC">           2 :   String getButtonTitle() =&gt; AppLocale.labels.saveSettingsTooltip;</span></span>
+<span id="L157"><span class="lineNum">     157</span>              : </span>
+<span id="L158"><span class="lineNum">     158</span> <span class="tlaGNC">           1 :   @override</span></span>
+<span id="L159"><span class="lineNum">     159</span>              :   Widget buildContent(BuildContext context, BoxConstraints constraints) {</span>
+<span id="L160"><span class="lineNum">     160</span> <span class="tlaGNC">           2 :     theme = Provider.of&lt;AppTheme&gt;(context, listen: false);</span></span>
+<span id="L161"><span class="lineNum">     161</span> <span class="tlaGNC">           2 :     zoom = Provider.of&lt;AppZoom&gt;(context, listen: false);</span></span>
+<span id="L162"><span class="lineNum">     162</span> <span class="tlaGNC">           2 :     startOfWeek = Provider.of&lt;AppStartOfWeek&gt;(context, listen: true);</span></span>
+<span id="L163"><span class="lineNum">     163</span> <span class="tlaGNC">           2 :     startOfMonth = Provider.of&lt;AppStartOfMonth&gt;(context, listen: true);</span></span>
+<span id="L164"><span class="lineNum">     164</span> <span class="tlaGNC">           2 :     palette = Provider.of&lt;AppPalette&gt;(context, listen: false);</span></span>
+<span id="L165"><span class="lineNum">     165</span> <span class="tlaGNC">           2 :     locale = Provider.of&lt;AppLocale&gt;(context, listen: false);</span></span>
+<span id="L166"><span class="lineNum">     166</span> <span class="tlaGNC">           2 :     design = Provider.of&lt;AppDesign&gt;(context, listen: false);</span></span>
+<span id="L167"><span class="lineNum">     167</span> <span class="tlaGNC">           2 :     state = Provider.of&lt;AppData&gt;(context, listen: true);</span></span>
+<span id="L168"><span class="lineNum">     168</span> <span class="tlaGNC">           1 :     final textTheme = context.textTheme;</span></span>
+<span id="L169"><span class="lineNum">     169</span> <span class="tlaGNC">           1 :     final indent = ThemeHelper.getIndent(2);</span></span>
+<span id="L170"><span class="lineNum">     170</span> <span class="tlaGNC">           3 :     final width = ThemeHelper.getMaxWidth(context, constraints) - 2 * indent;</span></span>
+<span id="L171"><span class="lineNum">     171</span> <span class="tlaGNC">           1 :     if (currency == null) {</span></span>
+<span id="L172"><span class="lineNum">     172</span> <span class="tlaGNC">           4 :       WidgetsBinding.instance.addPostFrameCallback((_) =&gt; initCurrencyFromLocale(AppLocale.code));</span></span>
+<span id="L173"><span class="lineNum">     173</span>              :       return ThemeHelper.emptyBox;</span>
+<span id="L174"><span class="lineNum">     174</span>              :     }</span>
+<span id="L175"><span class="lineNum">     175</span> <span class="tlaGNC">           1 :     return SingleScrollWrapper(</span></span>
+<span id="L176"><span class="lineNum">     176</span> <span class="tlaGNC">           1 :       controller: controller,</span></span>
+<span id="L177"><span class="lineNum">     177</span> <span class="tlaGNC">           1 :       child: Column(</span></span>
+<span id="L178"><span class="lineNum">     178</span> <span class="tlaGNC">           1 :         crossAxisAlignment: AppDesign.getAlignment(),</span></span>
+<span id="L179"><span class="lineNum">     179</span> <span class="tlaGNC">           1 :         children: [</span></span>
+<span id="L180"><span class="lineNum">     180</span>              :           ThemeHelper.hIndent2x,</span>
+<span id="L181"><span class="lineNum">     181</span> <span class="tlaGNC">           1 :           InputWrapper.select(</span></span>
+<span id="L182"><span class="lineNum">     182</span> <span class="tlaGNC">           2 :             title: AppLocale.labels.language,</span></span>
+<span id="L183"><span class="lineNum">     183</span> <span class="tlaGNC">           2 :             tooltip: AppLocale.labels.language,</span></span>
+<span id="L184"><span class="lineNum">     184</span>              :             value: AppLocale.code,</span>
+<span id="L185"><span class="lineNum">     185</span> <span class="tlaGNC">           1 :             options: languages,</span></span>
+<span id="L186"><span class="lineNum">     186</span> <span class="tlaUNC tlaBgUNC">           0 :             onChange: (v) =&gt; saveLocale(v ?? AppLocale.code),</span></span>
+<span id="L187"><span class="lineNum">     187</span>              :           ),</span>
+<span id="L188"><span class="lineNum">     188</span> <span class="tlaGNC tlaBgGNC">           1 :           InputWrapper.select(</span></span>
+<span id="L189"><span class="lineNum">     189</span> <span class="tlaGNC">           2 :             title: AppLocale.labels.design,</span></span>
+<span id="L190"><span class="lineNum">     190</span> <span class="tlaGNC">           2 :             tooltip: AppLocale.labels.design,</span></span>
+<span id="L191"><span class="lineNum">     191</span> <span class="tlaGNC">           2 :             value: AppDesign.get().name,</span></span>
+<span id="L192"><span class="lineNum">     192</span> <span class="tlaGNC">           1 :             options: [</span></span>
+<span id="L193"><span class="lineNum">     193</span> <span class="tlaGNC">           4 :               ListSelectorItem(id: AppDesignType.global.name, name: AppLocale.labels.designGlobal),</span></span>
+<span id="L194"><span class="lineNum">     194</span> <span class="tlaGNC">           4 :               ListSelectorItem(id: AppDesignType.asiaGeneral.name, name: AppLocale.labels.designAsiaGeneral),</span></span>
+<span id="L195"><span class="lineNum">     195</span> <span class="tlaGNC">           4 :               ListSelectorItem(id: AppDesignType.rtlGeneral.name, name: AppLocale.labels.designRtlGeneral),</span></span>
+<span id="L196"><span class="lineNum">     196</span> <span class="tlaGNC">           4 :               ListSelectorItem(id: AppDesignType.germany.name, name: AppLocale.labels.designGermany),</span></span>
+<span id="L197"><span class="lineNum">     197</span> <span class="tlaGNC">           1 :             ].cast&lt;ListSelectorItem&gt;(),</span></span>
+<span id="L198"><span class="lineNum">     198</span> <span class="tlaUNC tlaBgUNC">           0 :             onChange: (v) =&gt; saveDesign(AppDesign.find(v)?.name ?? AppDesignType.global.name),</span></span>
+<span id="L199"><span class="lineNum">     199</span>              :           ),</span>
+<span id="L200"><span class="lineNum">     200</span> <span class="tlaGNC tlaBgGNC">           1 :           InputWrapper.currency(</span></span>
+<span id="L201"><span class="lineNum">     201</span> <span class="tlaGNC">           2 :             title: AppLocale.labels.currencyDefault,</span></span>
+<span id="L202"><span class="lineNum">     202</span> <span class="tlaGNC">           2 :             tooltip: AppLocale.labels.currencyDefault,</span></span>
+<span id="L203"><span class="lineNum">     203</span> <span class="tlaGNC">           1 :             value: currency,</span></span>
+<span id="L204"><span class="lineNum">     204</span> <span class="tlaGNC">           1 :             onChange: saveCurrency,</span></span>
+<span id="L205"><span class="lineNum">     205</span>              :           ),</span>
+<span id="L206"><span class="lineNum">     206</span> <span class="tlaGNC">           1 :           InputWrapper.select(</span></span>
+<span id="L207"><span class="lineNum">     207</span> <span class="tlaGNC">           2 :             title: AppLocale.labels.dayStartOfWeek,</span></span>
+<span id="L208"><span class="lineNum">     208</span> <span class="tlaGNC">           2 :             tooltip: AppLocale.labels.dayStartOfWeek,</span></span>
+<span id="L209"><span class="lineNum">     209</span> <span class="tlaGNC">           3 :             value: startOfWeek.value.toString(),</span></span>
+<span id="L210"><span class="lineNum">     210</span> <span class="tlaGNC">           1 :             options: [</span></span>
+<span id="L211"><span class="lineNum">     211</span> <span class="tlaGNC">           3 :               ListSelectorItem(id: '6', name: AppLocale.labels.daySaturday),</span></span>
+<span id="L212"><span class="lineNum">     212</span> <span class="tlaGNC">           3 :               ListSelectorItem(id: '0', name: AppLocale.labels.daySunday),</span></span>
+<span id="L213"><span class="lineNum">     213</span> <span class="tlaGNC">           3 :               ListSelectorItem(id: '1', name: AppLocale.labels.dayMonday),</span></span>
+<span id="L214"><span class="lineNum">     214</span> <span class="tlaGNC">           1 :             ].cast&lt;ListSelectorItem&gt;(),</span></span>
+<span id="L215"><span class="lineNum">     215</span> <span class="tlaUNC tlaBgUNC">           0 :             onChange: (v) =&gt; startOfWeek.set(int.tryParse(v) ?? 1),</span></span>
+<span id="L216"><span class="lineNum">     216</span>              :           ),</span>
+<span id="L217"><span class="lineNum">     217</span> <span class="tlaGNC tlaBgGNC">           1 :           InputWrapper.select(</span></span>
+<span id="L218"><span class="lineNum">     218</span> <span class="tlaGNC">           2 :             title: AppLocale.labels.dayStartOfMonth,</span></span>
+<span id="L219"><span class="lineNum">     219</span> <span class="tlaGNC">           2 :             tooltip: AppLocale.labels.dayStartOfMonth,</span></span>
+<span id="L220"><span class="lineNum">     220</span> <span class="tlaGNC">           3 :             value: startOfMonth.value.toString(),</span></span>
+<span id="L221"><span class="lineNum">     221</span> <span class="tlaGNC">           2 :             options: List.generate(31, (index) {</span></span>
+<span id="L222"><span class="lineNum">     222</span> <span class="tlaGNC">           2 :               String key = (index + 1).toString();</span></span>
+<span id="L223"><span class="lineNum">     223</span> <span class="tlaGNC">           1 :               return ListSelectorItem(id: key, name: key);</span></span>
+<span id="L224"><span class="lineNum">     224</span> <span class="tlaGNC">           1 :             }).cast&lt;ListSelectorItem&gt;(),</span></span>
+<span id="L225"><span class="lineNum">     225</span> <span class="tlaGNC">           1 :             onChange: saveStartOfMonth,</span></span>
+<span id="L226"><span class="lineNum">     226</span>              :           ),</span>
+<span id="L227"><span class="lineNum">     227</span> <span class="tlaGNC">           1 :           if (kDebugMode) ...[</span></span>
+<span id="L228"><span class="lineNum">     228</span> <span class="tlaGNC">           1 :             Row(</span></span>
+<span id="L229"><span class="lineNum">     229</span> <span class="tlaGNC">           1 :               mainAxisAlignment: AppDesign.getAlignment&lt;MainAxisAlignment&gt;(),</span></span>
+<span id="L230"><span class="lineNum">     230</span> <span class="tlaGNC">           1 :               children: [</span></span>
+<span id="L231"><span class="lineNum">     231</span> <span class="tlaGNC">           1 :                 Text(</span></span>
+<span id="L232"><span class="lineNum">     232</span> <span class="tlaGNC">           2 :                   AppLocale.labels.encryptionMode,</span></span>
+<span id="L233"><span class="lineNum">     233</span> <span class="tlaGNC">           1 :                   style: textTheme.bodyLarge,</span></span>
 <span id="L234"><span class="lineNum">     234</span>              :                 ),</span>
-<span id="L235"><span class="lineNum">     235</span> <span class="tlaGNC">           1 :                 Expanded(</span></span>
-<span id="L236"><span class="lineNum">     236</span> <span class="tlaGNC">           1 :                   child: hasEncrypted ? Text(AppLocale.labels.hasEncrypted) : ThemeHelper.emptyBox,</span></span>
-<span id="L237"><span class="lineNum">     237</span>              :                 ),</span>
-<span id="L238"><span class="lineNum">     238</span>              :               ],</span>
-<span id="L239"><span class="lineNum">     239</span>              :             ),</span>
-<span id="L240"><span class="lineNum">     240</span>              :             ThemeHelper.hIndent2x,</span>
-<span id="L241"><span class="lineNum">     241</span>              :           ],</span>
-<span id="L242"><span class="lineNum">     242</span> <span class="tlaGNC">           1 :           InputWrapper.select(</span></span>
-<span id="L243"><span class="lineNum">     243</span> <span class="tlaGNC">           2 :             title: AppLocale.labels.brightnessTheme,</span></span>
-<span id="L244"><span class="lineNum">     244</span> <span class="tlaGNC">           1 :             value: brightness,</span></span>
-<span id="L245"><span class="lineNum">     245</span> <span class="tlaGNC">           2 :             tooltip: AppLocale.labels.brightnessTheme,</span></span>
-<span id="L246"><span class="lineNum">     246</span> <span class="tlaGNC">           1 :             options: [</span></span>
-<span id="L247"><span class="lineNum">     247</span> <span class="tlaGNC">           3 :               ListSelectorItem(id: '0', name: AppLocale.labels.systemMode),</span></span>
-<span id="L248"><span class="lineNum">     248</span> <span class="tlaGNC">           3 :               ListSelectorItem(id: '1', name: AppLocale.labels.lightMode),</span></span>
-<span id="L249"><span class="lineNum">     249</span> <span class="tlaGNC">           3 :               ListSelectorItem(id: '2', name: AppLocale.labels.darkMode),</span></span>
-<span id="L250"><span class="lineNum">     250</span> <span class="tlaGNC">           1 :             ].cast&lt;ListSelectorItem&gt;(),</span></span>
-<span id="L251"><span class="lineNum">     251</span> <span class="tlaUNC tlaBgUNC">           0 :             onChange: (v) =&gt; saveTheme(v ?? '0'),</span></span>
-<span id="L252"><span class="lineNum">     252</span>              :           ),</span>
-<span id="L253"><span class="lineNum">     253</span> <span class="tlaGNC tlaBgGNC">           1 :           InputWrapper.select(</span></span>
-<span id="L254"><span class="lineNum">     254</span> <span class="tlaGNC">           2 :             title: AppLocale.labels.colorTheme,</span></span>
-<span id="L255"><span class="lineNum">     255</span> <span class="tlaGNC">           1 :             value: colorMode,</span></span>
-<span id="L256"><span class="lineNum">     256</span> <span class="tlaGNC">           2 :             tooltip: AppLocale.labels.colorTheme,</span></span>
-<span id="L257"><span class="lineNum">     257</span> <span class="tlaGNC">           1 :             options: [</span></span>
-<span id="L258"><span class="lineNum">     258</span> <span class="tlaGNC">           3 :               ListSelectorItem(id: AppColors.colorApp, name: AppLocale.labels.colorApp),</span></span>
-<span id="L259"><span class="lineNum">     259</span> <span class="tlaGNC">           3 :               ListSelectorItem(id: AppColors.colorSystem, name: AppLocale.labels.colorSystem),</span></span>
-<span id="L260"><span class="lineNum">     260</span> <span class="tlaGNC">           3 :               ListSelectorItem(id: AppColors.colorUser, name: AppLocale.labels.colorUser),</span></span>
-<span id="L261"><span class="lineNum">     261</span> <span class="tlaGNC">           1 :             ].cast&lt;ListSelectorItem&gt;(),</span></span>
-<span id="L262"><span class="lineNum">     262</span> <span class="tlaUNC tlaBgUNC">           0 :             onChange: (v) =&gt; saveColor(v ?? AppColors.colorApp),</span></span>
-<span id="L263"><span class="lineNum">     263</span>              :           ),</span>
-<span id="L264"><span class="lineNum">     264</span> <span class="tlaGNC tlaBgGNC">           2 :           if (colorMode == AppColors.colorUser) ...[</span></span>
-<span id="L265"><span class="lineNum">     265</span> <span class="tlaUNC tlaBgUNC">           0 :             TableWidget(</span></span>
-<span id="L266"><span class="lineNum">     266</span>              :               width: width,</span>
-<span id="L267"><span class="lineNum">     267</span> <span class="tlaUNC">           0 :               shadowColor: context.colorScheme.onSurface.withValues(alpha: 0.05),</span></span>
-<span id="L268"><span class="lineNum">     268</span>              :               chunk: const [120, null, null],</span>
-<span id="L269"><span class="lineNum">     269</span> <span class="tlaUNC">           0 :               data: [</span></span>
-<span id="L270"><span class="lineNum">     270</span> <span class="tlaUNC">           0 :                 [</span></span>
-<span id="L271"><span class="lineNum">     271</span> <span class="tlaUNC">           0 :                   Text(AppLocale.labels.colorType),</span></span>
-<span id="L272"><span class="lineNum">     272</span> <span class="tlaUNC">           0 :                   Row(</span></span>
-<span id="L273"><span class="lineNum">     273</span>              :                     mainAxisAlignment: MainAxisAlignment.spaceBetween,</span>
-<span id="L274"><span class="lineNum">     274</span> <span class="tlaUNC">           0 :                     children: [</span></span>
-<span id="L275"><span class="lineNum">     275</span> <span class="tlaUNC">           0 :                       Text(AppLocale.labels.colorLight),</span></span>
-<span id="L276"><span class="lineNum">     276</span> <span class="tlaUNC">           0 :                       IconButton(</span></span>
-<span id="L277"><span class="lineNum">     277</span> <span class="tlaUNC">           0 :                         onPressed: () =&gt;</span></span>
-<span id="L278"><span class="lineNum">     278</span> <span class="tlaUNC">           0 :                             changePalette(paletteState = (light: AppDefaultColors(), dark: paletteState.dark)),</span></span>
-<span id="L279"><span class="lineNum">     279</span>              :                         icon: const Icon(Icons.restore),</span>
-<span id="L280"><span class="lineNum">     280</span> <span class="tlaUNC">           0 :                         tooltip: AppLocale.labels.colorRestore,</span></span>
-<span id="L281"><span class="lineNum">     281</span>              :                       ),</span>
-<span id="L282"><span class="lineNum">     282</span>              :                     ],</span>
-<span id="L283"><span class="lineNum">     283</span>              :                   ),</span>
-<span id="L284"><span class="lineNum">     284</span> <span class="tlaUNC">           0 :                   Row(</span></span>
-<span id="L285"><span class="lineNum">     285</span>              :                     mainAxisAlignment: MainAxisAlignment.spaceBetween,</span>
-<span id="L286"><span class="lineNum">     286</span> <span class="tlaUNC">           0 :                     children: [</span></span>
-<span id="L287"><span class="lineNum">     287</span> <span class="tlaUNC">           0 :                       Text(AppLocale.labels.colorDark),</span></span>
-<span id="L288"><span class="lineNum">     288</span> <span class="tlaUNC">           0 :                       IconButton(</span></span>
-<span id="L289"><span class="lineNum">     289</span> <span class="tlaUNC">           0 :                         onPressed: () =&gt;</span></span>
-<span id="L290"><span class="lineNum">     290</span> <span class="tlaUNC">           0 :                             changePalette(paletteState = (light: paletteState.light, dark: AppDarkColors())),</span></span>
-<span id="L291"><span class="lineNum">     291</span>              :                         icon: const Icon(Icons.restore),</span>
-<span id="L292"><span class="lineNum">     292</span> <span class="tlaUNC">           0 :                         tooltip: AppLocale.labels.colorRestore,</span></span>
-<span id="L293"><span class="lineNum">     293</span>              :                       ),</span>
-<span id="L294"><span class="lineNum">     294</span>              :                     ],</span>
-<span id="L295"><span class="lineNum">     295</span>              :                   ),</span>
-<span id="L296"><span class="lineNum">     296</span>              :                 ],</span>
-<span id="L297"><span class="lineNum">     297</span> <span class="tlaUNC">           0 :                 [</span></span>
-<span id="L298"><span class="lineNum">     298</span> <span class="tlaUNC">           0 :                   Text(AppLocale.labels.colorBackground),</span></span>
-<span id="L299"><span class="lineNum">     299</span> <span class="tlaUNC">           0 :                   ColorSelector(</span></span>
-<span id="L300"><span class="lineNum">     300</span> <span class="tlaUNC">           0 :                       value: paletteState.light.background.toMaterialColor,</span></span>
-<span id="L301"><span class="lineNum">     301</span> <span class="tlaUNC">           0 :                       setState: (v) =&gt; changePalette(paletteState.light.background = v)),</span></span>
-<span id="L302"><span class="lineNum">     302</span> <span class="tlaUNC">           0 :                   ColorSelector(</span></span>
-<span id="L303"><span class="lineNum">     303</span> <span class="tlaUNC">           0 :                       value: paletteState.dark.background.toMaterialColor,</span></span>
-<span id="L304"><span class="lineNum">     304</span> <span class="tlaUNC">           0 :                       setState: (v) =&gt; changePalette(paletteState.dark.background = v)),</span></span>
-<span id="L305"><span class="lineNum">     305</span>              :                 ],</span>
-<span id="L306"><span class="lineNum">     306</span> <span class="tlaUNC">           0 :                 [</span></span>
-<span id="L307"><span class="lineNum">     307</span> <span class="tlaUNC">           0 :                   Text(AppLocale.labels.colorPrimary),</span></span>
-<span id="L308"><span class="lineNum">     308</span> <span class="tlaUNC">           0 :                   ColorSelector(</span></span>
-<span id="L309"><span class="lineNum">     309</span> <span class="tlaUNC">           0 :                       value: paletteState.light.primary.toMaterialColor,</span></span>
-<span id="L310"><span class="lineNum">     310</span> <span class="tlaUNC">           0 :                       setState: (v) =&gt; changePalette(paletteState.light.primary = v)),</span></span>
-<span id="L311"><span class="lineNum">     311</span> <span class="tlaUNC">           0 :                   ColorSelector(</span></span>
-<span id="L312"><span class="lineNum">     312</span> <span class="tlaUNC">           0 :                       value: paletteState.dark.primary.toMaterialColor,</span></span>
-<span id="L313"><span class="lineNum">     313</span> <span class="tlaUNC">           0 :                       setState: (v) =&gt; changePalette(paletteState.dark.primary = v)),</span></span>
-<span id="L314"><span class="lineNum">     314</span>              :                 ],</span>
-<span id="L315"><span class="lineNum">     315</span> <span class="tlaUNC">           0 :                 [</span></span>
-<span id="L316"><span class="lineNum">     316</span> <span class="tlaUNC">           0 :                   Text(AppLocale.labels.colorInversePrimary),</span></span>
-<span id="L317"><span class="lineNum">     317</span> <span class="tlaUNC">           0 :                   ColorSelector(</span></span>
-<span id="L318"><span class="lineNum">     318</span> <span class="tlaUNC">           0 :                       value: paletteState.light.inversePrimary.toMaterialColor,</span></span>
-<span id="L319"><span class="lineNum">     319</span> <span class="tlaUNC">           0 :                       setState: (v) =&gt; changePalette(paletteState.light.inversePrimary = v)),</span></span>
-<span id="L320"><span class="lineNum">     320</span> <span class="tlaUNC">           0 :                   ColorSelector(</span></span>
-<span id="L321"><span class="lineNum">     321</span> <span class="tlaUNC">           0 :                       value: paletteState.dark.inversePrimary.toMaterialColor,</span></span>
-<span id="L322"><span class="lineNum">     322</span> <span class="tlaUNC">           0 :                       setState: (v) =&gt; changePalette(paletteState.dark.inversePrimary = v)),</span></span>
-<span id="L323"><span class="lineNum">     323</span>              :                 ],</span>
-<span id="L324"><span class="lineNum">     324</span> <span class="tlaUNC">           0 :                 [</span></span>
-<span id="L325"><span class="lineNum">     325</span> <span class="tlaUNC">           0 :                   Text(AppLocale.labels.colorInverseSurface),</span></span>
-<span id="L326"><span class="lineNum">     326</span> <span class="tlaUNC">           0 :                   ColorSelector(</span></span>
-<span id="L327"><span class="lineNum">     327</span> <span class="tlaUNC">           0 :                       value: paletteState.light.inverseSurface.toMaterialColor,</span></span>
-<span id="L328"><span class="lineNum">     328</span> <span class="tlaUNC">           0 :                       setState: (v) =&gt; changePalette(paletteState.light.inverseSurface = v)),</span></span>
-<span id="L329"><span class="lineNum">     329</span> <span class="tlaUNC">           0 :                   ColorSelector(</span></span>
-<span id="L330"><span class="lineNum">     330</span> <span class="tlaUNC">           0 :                       value: paletteState.dark.inverseSurface.toMaterialColor,</span></span>
-<span id="L331"><span class="lineNum">     331</span> <span class="tlaUNC">           0 :                       setState: (v) =&gt; changePalette(paletteState.dark.inverseSurface = v)),</span></span>
-<span id="L332"><span class="lineNum">     332</span>              :                 ],</span>
-<span id="L333"><span class="lineNum">     333</span> <span class="tlaUNC">           0 :                 [</span></span>
-<span id="L334"><span class="lineNum">     334</span> <span class="tlaUNC">           0 :                   Text(AppLocale.labels.colorOnInverseSurface),</span></span>
-<span id="L335"><span class="lineNum">     335</span> <span class="tlaUNC">           0 :                   ColorSelector(</span></span>
-<span id="L336"><span class="lineNum">     336</span> <span class="tlaUNC">           0 :                       value: paletteState.light.onInverseSurface.toMaterialColor,</span></span>
-<span id="L337"><span class="lineNum">     337</span> <span class="tlaUNC">           0 :                       setState: (v) =&gt; changePalette(paletteState.light.onInverseSurface = v)),</span></span>
-<span id="L338"><span class="lineNum">     338</span> <span class="tlaUNC">           0 :                   ColorSelector(</span></span>
-<span id="L339"><span class="lineNum">     339</span> <span class="tlaUNC">           0 :                       value: paletteState.dark.onInverseSurface.toMaterialColor,</span></span>
-<span id="L340"><span class="lineNum">     340</span> <span class="tlaUNC">           0 :                       setState: (v) =&gt; changePalette(paletteState.dark.onInverseSurface = v)),</span></span>
-<span id="L341"><span class="lineNum">     341</span>              :                 ],</span>
-<span id="L342"><span class="lineNum">     342</span> <span class="tlaUNC">           0 :                 [</span></span>
-<span id="L343"><span class="lineNum">     343</span> <span class="tlaUNC">           0 :                   Text(AppLocale.labels.colorSecondary),</span></span>
-<span id="L344"><span class="lineNum">     344</span> <span class="tlaUNC">           0 :                   ColorSelector(</span></span>
-<span id="L345"><span class="lineNum">     345</span> <span class="tlaUNC">           0 :                       value: paletteState.light.secondary.toMaterialColor,</span></span>
-<span id="L346"><span class="lineNum">     346</span> <span class="tlaUNC">           0 :                       setState: (v) =&gt; changePalette(paletteState.light.secondary = v)),</span></span>
-<span id="L347"><span class="lineNum">     347</span> <span class="tlaUNC">           0 :                   ColorSelector(</span></span>
-<span id="L348"><span class="lineNum">     348</span> <span class="tlaUNC">           0 :                       value: paletteState.dark.secondary.toMaterialColor,</span></span>
-<span id="L349"><span class="lineNum">     349</span> <span class="tlaUNC">           0 :                       setState: (v) =&gt; changePalette(paletteState.dark.secondary = v)),</span></span>
-<span id="L350"><span class="lineNum">     350</span>              :                 ],</span>
-<span id="L351"><span class="lineNum">     351</span> <span class="tlaUNC">           0 :                 [</span></span>
-<span id="L352"><span class="lineNum">     352</span> <span class="tlaUNC">           0 :                   Text(AppLocale.labels.colorOnSecondary),</span></span>
-<span id="L353"><span class="lineNum">     353</span> <span class="tlaUNC">           0 :                   ColorSelector(</span></span>
-<span id="L354"><span class="lineNum">     354</span> <span class="tlaUNC">           0 :                       value: paletteState.light.onSecondary.toMaterialColor,</span></span>
-<span id="L355"><span class="lineNum">     355</span> <span class="tlaUNC">           0 :                       setState: (v) =&gt; changePalette(paletteState.light.onSecondary = v)),</span></span>
-<span id="L356"><span class="lineNum">     356</span> <span class="tlaUNC">           0 :                   ColorSelector(</span></span>
-<span id="L357"><span class="lineNum">     357</span> <span class="tlaUNC">           0 :                       value: paletteState.dark.onSecondary.toMaterialColor,</span></span>
-<span id="L358"><span class="lineNum">     358</span> <span class="tlaUNC">           0 :                       setState: (v) =&gt; changePalette(paletteState.dark.onSecondary = v)),</span></span>
-<span id="L359"><span class="lineNum">     359</span>              :                 ],</span>
-<span id="L360"><span class="lineNum">     360</span> <span class="tlaUNC">           0 :                 [</span></span>
-<span id="L361"><span class="lineNum">     361</span> <span class="tlaUNC">           0 :                   Text(AppLocale.labels.colorOnSecondaryContainer),</span></span>
-<span id="L362"><span class="lineNum">     362</span> <span class="tlaUNC">           0 :                   ColorSelector(</span></span>
-<span id="L363"><span class="lineNum">     363</span> <span class="tlaUNC">           0 :                       value: paletteState.light.onSecondaryContainer.toMaterialColor,</span></span>
-<span id="L364"><span class="lineNum">     364</span> <span class="tlaUNC">           0 :                       setState: (v) =&gt; changePalette(paletteState.light.onSecondaryContainer = v)),</span></span>
-<span id="L365"><span class="lineNum">     365</span> <span class="tlaUNC">           0 :                   ColorSelector(</span></span>
-<span id="L366"><span class="lineNum">     366</span> <span class="tlaUNC">           0 :                       value: paletteState.dark.onSecondaryContainer.toMaterialColor,</span></span>
-<span id="L367"><span class="lineNum">     367</span> <span class="tlaUNC">           0 :                       setState: (v) =&gt; changePalette(paletteState.dark.onSecondaryContainer = v)),</span></span>
-<span id="L368"><span class="lineNum">     368</span>              :                 ],</span>
-<span id="L369"><span class="lineNum">     369</span>              :               ],</span>
-<span id="L370"><span class="lineNum">     370</span>              :             ),</span>
-<span id="L371"><span class="lineNum">     371</span>              :             ThemeHelper.hIndent4x,</span>
-<span id="L372"><span class="lineNum">     372</span>              :           ],</span>
-<span id="L373"><span class="lineNum">     373</span> <span class="tlaGNC tlaBgGNC">           1 :           RowWidget(</span></span>
-<span id="L374"><span class="lineNum">     374</span>              :             indent: indent,</span>
-<span id="L375"><span class="lineNum">     375</span>              :             maxWidth: width,</span>
-<span id="L376"><span class="lineNum">     376</span> <span class="tlaGNC">           6 :             chunk: [null, indent + ThemeHelper.getTextWidth(Text(AppLocale.labels.reset))],</span></span>
-<span id="L377"><span class="lineNum">     377</span> <span class="tlaGNC">           1 :             children: [</span></span>
-<span id="L378"><span class="lineNum">     378</span> <span class="tlaGNC">           1 :               [</span></span>
-<span id="L379"><span class="lineNum">     379</span> <span class="tlaGNC">           1 :                 Text(</span></span>
-<span id="L380"><span class="lineNum">     380</span> <span class="tlaGNC">           2 :                   AppLocale.labels.zoomState,</span></span>
-<span id="L381"><span class="lineNum">     381</span> <span class="tlaGNC">           1 :                   style: textTheme.bodyLarge,</span></span>
-<span id="L382"><span class="lineNum">     382</span>              :                 ),</span>
-<span id="L383"><span class="lineNum">     383</span>              :               ],</span>
-<span id="L384"><span class="lineNum">     384</span> <span class="tlaGNC">           1 :               [</span></span>
-<span id="L385"><span class="lineNum">     385</span> <span class="tlaGNC">           1 :                 Align(</span></span>
-<span id="L386"><span class="lineNum">     386</span>              :                   alignment: Alignment.centerRight,</span>
-<span id="L387"><span class="lineNum">     387</span> <span class="tlaGNC">           3 :                   child: LinkWidget(AppLocale.labels.reset, onTap: () =&gt; zoom.set(1)),</span></span>
-<span id="L388"><span class="lineNum">     388</span>              :                 ),</span>
-<span id="L389"><span class="lineNum">     389</span>              :               ],</span>
-<span id="L390"><span class="lineNum">     390</span>              :             ],</span>
-<span id="L391"><span class="lineNum">     391</span>              :           ),</span>
-<span id="L392"><span class="lineNum">     392</span> <span class="tlaGNC">           1 :           Container(</span></span>
-<span id="L393"><span class="lineNum">     393</span> <span class="tlaGNC">           2 :             color: context.colorScheme.fieldBackground,</span></span>
-<span id="L394"><span class="lineNum">     394</span> <span class="tlaGNC">           1 :             child: Slider(</span></span>
-<span id="L395"><span class="lineNum">     395</span> <span class="tlaGNC">           2 :               value: zoom.value,</span></span>
-<span id="L396"><span class="lineNum">     396</span> <span class="tlaGNC">           2 :               onChanged: zoom.set,</span></span>
-<span id="L397"><span class="lineNum">     397</span>              :               min: AppZoom.min,</span>
-<span id="L398"><span class="lineNum">     398</span>              :               max: AppZoom.max,</span>
-<span id="L399"><span class="lineNum">     399</span>              :               divisions: 15,</span>
-<span id="L400"><span class="lineNum">     400</span> <span class="tlaGNC">           3 :               label: zoom.value.toStringAsFixed(2),</span></span>
-<span id="L401"><span class="lineNum">     401</span>              :             ),</span>
-<span id="L402"><span class="lineNum">     402</span>              :           ),</span>
-<span id="L403"><span class="lineNum">     403</span> <span class="tlaGNC">           1 :           ThemeHelper.hIndent2x,</span></span>
-<span id="L404"><span class="lineNum">     404</span>              :         ],</span>
-<span id="L405"><span class="lineNum">     405</span>              :       ),</span>
-<span id="L406"><span class="lineNum">     406</span>              :     );</span>
-<span id="L407"><span class="lineNum">     407</span>              :   }</span>
-<span id="L408"><span class="lineNum">     408</span>              : }</span>
+<span id="L235"><span class="lineNum">     235</span> <span class="tlaGNC">           1 :                 Switch(</span></span>
+<span id="L236"><span class="lineNum">     236</span> <span class="tlaGNC">           1 :                   value: isEncrypted,</span></span>
+<span id="L237"><span class="lineNum">     237</span> <span class="tlaGNC">           1 :                   onChanged: saveEncryption,</span></span>
+<span id="L238"><span class="lineNum">     238</span>              :                 ),</span>
+<span id="L239"><span class="lineNum">     239</span> <span class="tlaGNC">           1 :                 Expanded(</span></span>
+<span id="L240"><span class="lineNum">     240</span> <span class="tlaGNC">           1 :                   child: hasEncrypted ? Text(AppLocale.labels.hasEncrypted) : ThemeHelper.emptyBox,</span></span>
+<span id="L241"><span class="lineNum">     241</span>              :                 ),</span>
+<span id="L242"><span class="lineNum">     242</span>              :               ],</span>
+<span id="L243"><span class="lineNum">     243</span>              :             ),</span>
+<span id="L244"><span class="lineNum">     244</span>              :             ThemeHelper.hIndent2x,</span>
+<span id="L245"><span class="lineNum">     245</span>              :           ],</span>
+<span id="L246"><span class="lineNum">     246</span> <span class="tlaGNC">           1 :           InputWrapper.select(</span></span>
+<span id="L247"><span class="lineNum">     247</span> <span class="tlaGNC">           2 :             title: AppLocale.labels.brightnessTheme,</span></span>
+<span id="L248"><span class="lineNum">     248</span> <span class="tlaGNC">           1 :             value: brightness,</span></span>
+<span id="L249"><span class="lineNum">     249</span> <span class="tlaGNC">           2 :             tooltip: AppLocale.labels.brightnessTheme,</span></span>
+<span id="L250"><span class="lineNum">     250</span> <span class="tlaGNC">           1 :             options: [</span></span>
+<span id="L251"><span class="lineNum">     251</span> <span class="tlaGNC">           3 :               ListSelectorItem(id: '0', name: AppLocale.labels.systemMode),</span></span>
+<span id="L252"><span class="lineNum">     252</span> <span class="tlaGNC">           3 :               ListSelectorItem(id: '1', name: AppLocale.labels.lightMode),</span></span>
+<span id="L253"><span class="lineNum">     253</span> <span class="tlaGNC">           3 :               ListSelectorItem(id: '2', name: AppLocale.labels.darkMode),</span></span>
+<span id="L254"><span class="lineNum">     254</span> <span class="tlaGNC">           1 :             ].cast&lt;ListSelectorItem&gt;(),</span></span>
+<span id="L255"><span class="lineNum">     255</span> <span class="tlaUNC tlaBgUNC">           0 :             onChange: (v) =&gt; saveTheme(v ?? '0'),</span></span>
+<span id="L256"><span class="lineNum">     256</span>              :           ),</span>
+<span id="L257"><span class="lineNum">     257</span> <span class="tlaGNC tlaBgGNC">           1 :           InputWrapper.select(</span></span>
+<span id="L258"><span class="lineNum">     258</span> <span class="tlaGNC">           2 :             title: AppLocale.labels.colorTheme,</span></span>
+<span id="L259"><span class="lineNum">     259</span> <span class="tlaGNC">           1 :             value: colorMode,</span></span>
+<span id="L260"><span class="lineNum">     260</span> <span class="tlaGNC">           2 :             tooltip: AppLocale.labels.colorTheme,</span></span>
+<span id="L261"><span class="lineNum">     261</span> <span class="tlaGNC">           1 :             options: [</span></span>
+<span id="L262"><span class="lineNum">     262</span> <span class="tlaGNC">           3 :               ListSelectorItem(id: AppColors.colorApp, name: AppLocale.labels.colorApp),</span></span>
+<span id="L263"><span class="lineNum">     263</span> <span class="tlaGNC">           3 :               ListSelectorItem(id: AppColors.colorSystem, name: AppLocale.labels.colorSystem),</span></span>
+<span id="L264"><span class="lineNum">     264</span> <span class="tlaGNC">           3 :               ListSelectorItem(id: AppColors.colorUser, name: AppLocale.labels.colorUser),</span></span>
+<span id="L265"><span class="lineNum">     265</span> <span class="tlaGNC">           1 :             ].cast&lt;ListSelectorItem&gt;(),</span></span>
+<span id="L266"><span class="lineNum">     266</span> <span class="tlaUNC tlaBgUNC">           0 :             onChange: (v) =&gt; saveColor(v ?? AppColors.colorApp),</span></span>
+<span id="L267"><span class="lineNum">     267</span>              :           ),</span>
+<span id="L268"><span class="lineNum">     268</span> <span class="tlaGNC tlaBgGNC">           2 :           if (colorMode == AppColors.colorUser) ...[</span></span>
+<span id="L269"><span class="lineNum">     269</span> <span class="tlaUNC tlaBgUNC">           0 :             TableWidget(</span></span>
+<span id="L270"><span class="lineNum">     270</span>              :               width: width,</span>
+<span id="L271"><span class="lineNum">     271</span> <span class="tlaUNC">           0 :               shadowColor: context.colorScheme.onSurface.withValues(alpha: 0.05),</span></span>
+<span id="L272"><span class="lineNum">     272</span>              :               chunk: const [120, null, null],</span>
+<span id="L273"><span class="lineNum">     273</span> <span class="tlaUNC">           0 :               data: [</span></span>
+<span id="L274"><span class="lineNum">     274</span> <span class="tlaUNC">           0 :                 [</span></span>
+<span id="L275"><span class="lineNum">     275</span> <span class="tlaUNC">           0 :                   Text(AppLocale.labels.colorType),</span></span>
+<span id="L276"><span class="lineNum">     276</span> <span class="tlaUNC">           0 :                   Row(</span></span>
+<span id="L277"><span class="lineNum">     277</span>              :                     mainAxisAlignment: MainAxisAlignment.spaceBetween,</span>
+<span id="L278"><span class="lineNum">     278</span> <span class="tlaUNC">           0 :                     children: [</span></span>
+<span id="L279"><span class="lineNum">     279</span> <span class="tlaUNC">           0 :                       Text(AppLocale.labels.colorLight),</span></span>
+<span id="L280"><span class="lineNum">     280</span> <span class="tlaUNC">           0 :                       IconButton(</span></span>
+<span id="L281"><span class="lineNum">     281</span> <span class="tlaUNC">           0 :                         onPressed: () =&gt;</span></span>
+<span id="L282"><span class="lineNum">     282</span> <span class="tlaUNC">           0 :                             changePalette(paletteState = (light: AppDefaultColors(), dark: paletteState.dark)),</span></span>
+<span id="L283"><span class="lineNum">     283</span>              :                         icon: const Icon(Icons.restore),</span>
+<span id="L284"><span class="lineNum">     284</span> <span class="tlaUNC">           0 :                         tooltip: AppLocale.labels.colorRestore,</span></span>
+<span id="L285"><span class="lineNum">     285</span>              :                       ),</span>
+<span id="L286"><span class="lineNum">     286</span>              :                     ],</span>
+<span id="L287"><span class="lineNum">     287</span>              :                   ),</span>
+<span id="L288"><span class="lineNum">     288</span> <span class="tlaUNC">           0 :                   Row(</span></span>
+<span id="L289"><span class="lineNum">     289</span>              :                     mainAxisAlignment: MainAxisAlignment.spaceBetween,</span>
+<span id="L290"><span class="lineNum">     290</span> <span class="tlaUNC">           0 :                     children: [</span></span>
+<span id="L291"><span class="lineNum">     291</span> <span class="tlaUNC">           0 :                       Text(AppLocale.labels.colorDark),</span></span>
+<span id="L292"><span class="lineNum">     292</span> <span class="tlaUNC">           0 :                       IconButton(</span></span>
+<span id="L293"><span class="lineNum">     293</span> <span class="tlaUNC">           0 :                         onPressed: () =&gt;</span></span>
+<span id="L294"><span class="lineNum">     294</span> <span class="tlaUNC">           0 :                             changePalette(paletteState = (light: paletteState.light, dark: AppDarkColors())),</span></span>
+<span id="L295"><span class="lineNum">     295</span>              :                         icon: const Icon(Icons.restore),</span>
+<span id="L296"><span class="lineNum">     296</span> <span class="tlaUNC">           0 :                         tooltip: AppLocale.labels.colorRestore,</span></span>
+<span id="L297"><span class="lineNum">     297</span>              :                       ),</span>
+<span id="L298"><span class="lineNum">     298</span>              :                     ],</span>
+<span id="L299"><span class="lineNum">     299</span>              :                   ),</span>
+<span id="L300"><span class="lineNum">     300</span>              :                 ],</span>
+<span id="L301"><span class="lineNum">     301</span> <span class="tlaUNC">           0 :                 [</span></span>
+<span id="L302"><span class="lineNum">     302</span> <span class="tlaUNC">           0 :                   Text(AppLocale.labels.colorBackground),</span></span>
+<span id="L303"><span class="lineNum">     303</span> <span class="tlaUNC">           0 :                   ColorSelector(</span></span>
+<span id="L304"><span class="lineNum">     304</span> <span class="tlaUNC">           0 :                       value: paletteState.light.background.toMaterialColor,</span></span>
+<span id="L305"><span class="lineNum">     305</span> <span class="tlaUNC">           0 :                       setState: (v) =&gt; changePalette(paletteState.light.background = v)),</span></span>
+<span id="L306"><span class="lineNum">     306</span> <span class="tlaUNC">           0 :                   ColorSelector(</span></span>
+<span id="L307"><span class="lineNum">     307</span> <span class="tlaUNC">           0 :                       value: paletteState.dark.background.toMaterialColor,</span></span>
+<span id="L308"><span class="lineNum">     308</span> <span class="tlaUNC">           0 :                       setState: (v) =&gt; changePalette(paletteState.dark.background = v)),</span></span>
+<span id="L309"><span class="lineNum">     309</span>              :                 ],</span>
+<span id="L310"><span class="lineNum">     310</span> <span class="tlaUNC">           0 :                 [</span></span>
+<span id="L311"><span class="lineNum">     311</span> <span class="tlaUNC">           0 :                   Text(AppLocale.labels.colorPrimary),</span></span>
+<span id="L312"><span class="lineNum">     312</span> <span class="tlaUNC">           0 :                   ColorSelector(</span></span>
+<span id="L313"><span class="lineNum">     313</span> <span class="tlaUNC">           0 :                       value: paletteState.light.primary.toMaterialColor,</span></span>
+<span id="L314"><span class="lineNum">     314</span> <span class="tlaUNC">           0 :                       setState: (v) =&gt; changePalette(paletteState.light.primary = v)),</span></span>
+<span id="L315"><span class="lineNum">     315</span> <span class="tlaUNC">           0 :                   ColorSelector(</span></span>
+<span id="L316"><span class="lineNum">     316</span> <span class="tlaUNC">           0 :                       value: paletteState.dark.primary.toMaterialColor,</span></span>
+<span id="L317"><span class="lineNum">     317</span> <span class="tlaUNC">           0 :                       setState: (v) =&gt; changePalette(paletteState.dark.primary = v)),</span></span>
+<span id="L318"><span class="lineNum">     318</span>              :                 ],</span>
+<span id="L319"><span class="lineNum">     319</span> <span class="tlaUNC">           0 :                 [</span></span>
+<span id="L320"><span class="lineNum">     320</span> <span class="tlaUNC">           0 :                   Text(AppLocale.labels.colorInversePrimary),</span></span>
+<span id="L321"><span class="lineNum">     321</span> <span class="tlaUNC">           0 :                   ColorSelector(</span></span>
+<span id="L322"><span class="lineNum">     322</span> <span class="tlaUNC">           0 :                       value: paletteState.light.inversePrimary.toMaterialColor,</span></span>
+<span id="L323"><span class="lineNum">     323</span> <span class="tlaUNC">           0 :                       setState: (v) =&gt; changePalette(paletteState.light.inversePrimary = v)),</span></span>
+<span id="L324"><span class="lineNum">     324</span> <span class="tlaUNC">           0 :                   ColorSelector(</span></span>
+<span id="L325"><span class="lineNum">     325</span> <span class="tlaUNC">           0 :                       value: paletteState.dark.inversePrimary.toMaterialColor,</span></span>
+<span id="L326"><span class="lineNum">     326</span> <span class="tlaUNC">           0 :                       setState: (v) =&gt; changePalette(paletteState.dark.inversePrimary = v)),</span></span>
+<span id="L327"><span class="lineNum">     327</span>              :                 ],</span>
+<span id="L328"><span class="lineNum">     328</span> <span class="tlaUNC">           0 :                 [</span></span>
+<span id="L329"><span class="lineNum">     329</span> <span class="tlaUNC">           0 :                   Text(AppLocale.labels.colorInverseSurface),</span></span>
+<span id="L330"><span class="lineNum">     330</span> <span class="tlaUNC">           0 :                   ColorSelector(</span></span>
+<span id="L331"><span class="lineNum">     331</span> <span class="tlaUNC">           0 :                       value: paletteState.light.inverseSurface.toMaterialColor,</span></span>
+<span id="L332"><span class="lineNum">     332</span> <span class="tlaUNC">           0 :                       setState: (v) =&gt; changePalette(paletteState.light.inverseSurface = v)),</span></span>
+<span id="L333"><span class="lineNum">     333</span> <span class="tlaUNC">           0 :                   ColorSelector(</span></span>
+<span id="L334"><span class="lineNum">     334</span> <span class="tlaUNC">           0 :                       value: paletteState.dark.inverseSurface.toMaterialColor,</span></span>
+<span id="L335"><span class="lineNum">     335</span> <span class="tlaUNC">           0 :                       setState: (v) =&gt; changePalette(paletteState.dark.inverseSurface = v)),</span></span>
+<span id="L336"><span class="lineNum">     336</span>              :                 ],</span>
+<span id="L337"><span class="lineNum">     337</span> <span class="tlaUNC">           0 :                 [</span></span>
+<span id="L338"><span class="lineNum">     338</span> <span class="tlaUNC">           0 :                   Text(AppLocale.labels.colorOnInverseSurface),</span></span>
+<span id="L339"><span class="lineNum">     339</span> <span class="tlaUNC">           0 :                   ColorSelector(</span></span>
+<span id="L340"><span class="lineNum">     340</span> <span class="tlaUNC">           0 :                       value: paletteState.light.onInverseSurface.toMaterialColor,</span></span>
+<span id="L341"><span class="lineNum">     341</span> <span class="tlaUNC">           0 :                       setState: (v) =&gt; changePalette(paletteState.light.onInverseSurface = v)),</span></span>
+<span id="L342"><span class="lineNum">     342</span> <span class="tlaUNC">           0 :                   ColorSelector(</span></span>
+<span id="L343"><span class="lineNum">     343</span> <span class="tlaUNC">           0 :                       value: paletteState.dark.onInverseSurface.toMaterialColor,</span></span>
+<span id="L344"><span class="lineNum">     344</span> <span class="tlaUNC">           0 :                       setState: (v) =&gt; changePalette(paletteState.dark.onInverseSurface = v)),</span></span>
+<span id="L345"><span class="lineNum">     345</span>              :                 ],</span>
+<span id="L346"><span class="lineNum">     346</span> <span class="tlaUNC">           0 :                 [</span></span>
+<span id="L347"><span class="lineNum">     347</span> <span class="tlaUNC">           0 :                   Text(AppLocale.labels.colorSecondary),</span></span>
+<span id="L348"><span class="lineNum">     348</span> <span class="tlaUNC">           0 :                   ColorSelector(</span></span>
+<span id="L349"><span class="lineNum">     349</span> <span class="tlaUNC">           0 :                       value: paletteState.light.secondary.toMaterialColor,</span></span>
+<span id="L350"><span class="lineNum">     350</span> <span class="tlaUNC">           0 :                       setState: (v) =&gt; changePalette(paletteState.light.secondary = v)),</span></span>
+<span id="L351"><span class="lineNum">     351</span> <span class="tlaUNC">           0 :                   ColorSelector(</span></span>
+<span id="L352"><span class="lineNum">     352</span> <span class="tlaUNC">           0 :                       value: paletteState.dark.secondary.toMaterialColor,</span></span>
+<span id="L353"><span class="lineNum">     353</span> <span class="tlaUNC">           0 :                       setState: (v) =&gt; changePalette(paletteState.dark.secondary = v)),</span></span>
+<span id="L354"><span class="lineNum">     354</span>              :                 ],</span>
+<span id="L355"><span class="lineNum">     355</span> <span class="tlaUNC">           0 :                 [</span></span>
+<span id="L356"><span class="lineNum">     356</span> <span class="tlaUNC">           0 :                   Text(AppLocale.labels.colorOnSecondary),</span></span>
+<span id="L357"><span class="lineNum">     357</span> <span class="tlaUNC">           0 :                   ColorSelector(</span></span>
+<span id="L358"><span class="lineNum">     358</span> <span class="tlaUNC">           0 :                       value: paletteState.light.onSecondary.toMaterialColor,</span></span>
+<span id="L359"><span class="lineNum">     359</span> <span class="tlaUNC">           0 :                       setState: (v) =&gt; changePalette(paletteState.light.onSecondary = v)),</span></span>
+<span id="L360"><span class="lineNum">     360</span> <span class="tlaUNC">           0 :                   ColorSelector(</span></span>
+<span id="L361"><span class="lineNum">     361</span> <span class="tlaUNC">           0 :                       value: paletteState.dark.onSecondary.toMaterialColor,</span></span>
+<span id="L362"><span class="lineNum">     362</span> <span class="tlaUNC">           0 :                       setState: (v) =&gt; changePalette(paletteState.dark.onSecondary = v)),</span></span>
+<span id="L363"><span class="lineNum">     363</span>              :                 ],</span>
+<span id="L364"><span class="lineNum">     364</span> <span class="tlaUNC">           0 :                 [</span></span>
+<span id="L365"><span class="lineNum">     365</span> <span class="tlaUNC">           0 :                   Text(AppLocale.labels.colorOnSecondaryContainer),</span></span>
+<span id="L366"><span class="lineNum">     366</span> <span class="tlaUNC">           0 :                   ColorSelector(</span></span>
+<span id="L367"><span class="lineNum">     367</span> <span class="tlaUNC">           0 :                       value: paletteState.light.onSecondaryContainer.toMaterialColor,</span></span>
+<span id="L368"><span class="lineNum">     368</span> <span class="tlaUNC">           0 :                       setState: (v) =&gt; changePalette(paletteState.light.onSecondaryContainer = v)),</span></span>
+<span id="L369"><span class="lineNum">     369</span> <span class="tlaUNC">           0 :                   ColorSelector(</span></span>
+<span id="L370"><span class="lineNum">     370</span> <span class="tlaUNC">           0 :                       value: paletteState.dark.onSecondaryContainer.toMaterialColor,</span></span>
+<span id="L371"><span class="lineNum">     371</span> <span class="tlaUNC">           0 :                       setState: (v) =&gt; changePalette(paletteState.dark.onSecondaryContainer = v)),</span></span>
+<span id="L372"><span class="lineNum">     372</span>              :                 ],</span>
+<span id="L373"><span class="lineNum">     373</span>              :               ],</span>
+<span id="L374"><span class="lineNum">     374</span>              :             ),</span>
+<span id="L375"><span class="lineNum">     375</span>              :             ThemeHelper.hIndent4x,</span>
+<span id="L376"><span class="lineNum">     376</span>              :           ],</span>
+<span id="L377"><span class="lineNum">     377</span> <span class="tlaGNC tlaBgGNC">           1 :           RowWidget(</span></span>
+<span id="L378"><span class="lineNum">     378</span>              :             indent: indent,</span>
+<span id="L379"><span class="lineNum">     379</span>              :             maxWidth: width,</span>
+<span id="L380"><span class="lineNum">     380</span> <span class="tlaGNC">           6 :             chunk: [null, indent + ThemeHelper.getTextWidth(Text(AppLocale.labels.reset))],</span></span>
+<span id="L381"><span class="lineNum">     381</span> <span class="tlaGNC">           1 :             children: [</span></span>
+<span id="L382"><span class="lineNum">     382</span> <span class="tlaGNC">           1 :               [</span></span>
+<span id="L383"><span class="lineNum">     383</span> <span class="tlaGNC">           1 :                 Text(</span></span>
+<span id="L384"><span class="lineNum">     384</span> <span class="tlaGNC">           2 :                   AppLocale.labels.zoomState,</span></span>
+<span id="L385"><span class="lineNum">     385</span> <span class="tlaGNC">           1 :                   style: textTheme.bodyLarge,</span></span>
+<span id="L386"><span class="lineNum">     386</span>              :                 ),</span>
+<span id="L387"><span class="lineNum">     387</span>              :               ],</span>
+<span id="L388"><span class="lineNum">     388</span> <span class="tlaGNC">           1 :               [</span></span>
+<span id="L389"><span class="lineNum">     389</span> <span class="tlaGNC">           1 :                 Align(</span></span>
+<span id="L390"><span class="lineNum">     390</span>              :                   alignment: Alignment.centerRight,</span>
+<span id="L391"><span class="lineNum">     391</span> <span class="tlaGNC">           3 :                   child: LinkWidget(AppLocale.labels.reset, onTap: () =&gt; zoom.set(1)),</span></span>
+<span id="L392"><span class="lineNum">     392</span>              :                 ),</span>
+<span id="L393"><span class="lineNum">     393</span>              :               ],</span>
+<span id="L394"><span class="lineNum">     394</span>              :             ],</span>
+<span id="L395"><span class="lineNum">     395</span>              :           ),</span>
+<span id="L396"><span class="lineNum">     396</span> <span class="tlaGNC">           1 :           Container(</span></span>
+<span id="L397"><span class="lineNum">     397</span> <span class="tlaGNC">           2 :             color: context.colorScheme.fieldBackground,</span></span>
+<span id="L398"><span class="lineNum">     398</span> <span class="tlaGNC">           1 :             child: Slider(</span></span>
+<span id="L399"><span class="lineNum">     399</span> <span class="tlaGNC">           2 :               value: zoom.value,</span></span>
+<span id="L400"><span class="lineNum">     400</span> <span class="tlaGNC">           2 :               onChanged: zoom.set,</span></span>
+<span id="L401"><span class="lineNum">     401</span>              :               min: AppZoom.min,</span>
+<span id="L402"><span class="lineNum">     402</span>              :               max: AppZoom.max,</span>
+<span id="L403"><span class="lineNum">     403</span>              :               divisions: 15,</span>
+<span id="L404"><span class="lineNum">     404</span> <span class="tlaGNC">           3 :               label: zoom.value.toStringAsFixed(2),</span></span>
+<span id="L405"><span class="lineNum">     405</span>              :             ),</span>
+<span id="L406"><span class="lineNum">     406</span>              :           ),</span>
+<span id="L407"><span class="lineNum">     407</span> <span class="tlaGNC">           1 :           ThemeHelper.hIndent2x,</span></span>
+<span id="L408"><span class="lineNum">     408</span>              :         ],</span>
+<span id="L409"><span class="lineNum">     409</span>              :       ),</span>
+<span id="L410"><span class="lineNum">     410</span>              :     );</span>
+<span id="L411"><span class="lineNum">     411</span>              :   }</span>
+<span id="L412"><span class="lineNum">     412</span>              : }</span>
         </pre>
               </td>
             </tr>
