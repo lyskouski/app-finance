@@ -41,7 +41,8 @@ class DateInputState<T extends DateInput> extends AbstractSelectorState<T> {
       initialDate: widget.value ?? currentDate,
       firstDate: firstDate,
       lastDate: lastDate,
-      initialEntryMode: DatePickerEntryMode.input,
+      initialEntryMode: DatePickerEntryMode.calendar,
+      locale: AppLocale.get(),
     );
     if (selectedDate != null) {
       if (widget.value != null) {
