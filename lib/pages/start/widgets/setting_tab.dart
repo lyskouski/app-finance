@@ -2,6 +2,7 @@
 // Use of this source code is governed by a CC BY-NC-ND 4.0 license that can be found in the LICENSE file.
 
 import 'package:app_finance/_classes/controller/focus_controller.dart';
+import 'package:app_finance/_classes/herald/app_budget_positive.dart';
 import 'package:app_finance/_classes/herald/app_design.dart';
 import 'package:app_finance/_classes/herald/app_locale.dart';
 import 'package:app_finance/_classes/herald/app_palette.dart';
@@ -55,6 +56,7 @@ class SettingTabState<T extends SettingTab> extends AbstractTabState<T> {
   late AppLocale locale;
   late AppDesign design;
   late AppData state;
+  late AppBudgetPositive budgetPositive;
 
   Currency? currency;
   bool isEncrypted = false;
@@ -164,6 +166,7 @@ class SettingTabState<T extends SettingTab> extends AbstractTabState<T> {
     palette = Provider.of<AppPalette>(context, listen: false);
     locale = Provider.of<AppLocale>(context, listen: false);
     design = Provider.of<AppDesign>(context, listen: false);
+    budgetPositive = Provider.of<AppBudgetPositive>(context, listen: false);
     state = Provider.of<AppData>(context, listen: true);
     final textTheme = context.textTheme;
     final indent = ThemeHelper.getIndent(2);
@@ -223,6 +226,16 @@ class SettingTabState<T extends SettingTab> extends AbstractTabState<T> {
               return ListSelectorItem(id: key, name: key);
             }).cast<ListSelectorItem>(),
             onChange: saveStartOfMonth,
+          ),
+          InputWrapper.select(
+            title: AppLocale.labels.budgetPositive,
+            tooltip: AppLocale.labels.budgetPositive,
+            value: budgetPositive.value.toString(),
+            options: [
+              ListSelectorItem(id: '0', name: AppLocale.labels.budgetPositiveOff),
+              ListSelectorItem(id: '1', name: AppLocale.labels.budgetPositiveOn),
+            ],
+            onChange: (v) => budgetPositive.set(int.tryParse(v) ?? 0),
           ),
           if (kDebugMode) ...[
             Row(

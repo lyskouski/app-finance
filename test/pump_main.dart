@@ -2,6 +2,7 @@
 // Use of this source code is governed by a CC BY-NC-ND 4.0 license that can be found in the LICENSE file.
 
 import 'dart:io' as io;
+import 'package:app_finance/_classes/herald/app_budget_positive.dart';
 import 'package:app_finance/_classes/herald/app_design.dart';
 import 'package:app_finance/_classes/herald/app_purchase.dart';
 import 'package:app_finance/_classes/herald/app_sorting.dart';
@@ -181,6 +182,9 @@ class PumpMain {
         ),
         ChangeNotifierProvider<AppSorting>(
           create: (_) => AppSorting(),
+        ),
+        ChangeNotifierProvider<AppBudgetPositive>(
+          create: (_) => AppBudgetPositive(),
         ),
       ],
       child: home,

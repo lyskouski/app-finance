@@ -3,6 +3,7 @@
 
 import 'dart:collection';
 import 'package:app_finance/_classes/controller/iterator_controller.dart';
+import 'package:app_finance/_classes/herald/app_budget_positive.dart';
 import 'package:app_finance/_classes/herald/app_start_of_month.dart';
 import 'package:app_finance/_classes/herald/app_sync.dart';
 import 'package:app_finance/_classes/math/budget_prediction.dart';
@@ -121,7 +122,8 @@ class AppData extends ChangeNotifier {
   Future<void> updateTotals(List<AppDataType> scope) async {
     final accountTotal = getTotal(AppDataType.accounts);
     final exchange = Exchange(store: this);
-    final rec = TotalRecalculation(exchange: exchange);
+    int isBudgetPositive = AppBudgetPositive.get();
+    final rec = TotalRecalculation(exchange: exchange, isBudgetPositive: isBudgetPositive != 0);
     for (AppDataType type in scope) {
       await rec.updateTotal(type, _data[type], _hashTable);
     }

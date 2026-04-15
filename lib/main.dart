@@ -4,6 +4,7 @@
 import 'dart:async';
 
 import 'package:app_finance/_classes/controller/fallback_localization_delegate.dart';
+import 'package:app_finance/_classes/herald/app_budget_positive.dart';
 import 'package:app_finance/_classes/herald/app_design.dart';
 import 'package:app_finance/_classes/herald/app_locale.dart';
 import 'package:app_finance/_classes/herald/app_palette.dart';
@@ -136,6 +137,9 @@ void main() async {
           ),
           ChangeNotifierProvider<AppSorting>(
             create: (_) => AppSorting(),
+          ),
+          ChangeNotifierProvider<AppBudgetPositive>(
+            create: (_) => AppBudgetPositive(),
           ),
         ],
         child: MyApp(platform: platform),
