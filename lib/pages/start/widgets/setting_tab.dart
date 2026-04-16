@@ -232,10 +232,13 @@ class SettingTabState<T extends SettingTab> extends AbstractTabState<T> {
             tooltip: AppLocale.labels.budgetPositive,
             value: budgetPositive.value.toString(),
             options: [
-              ListSelectorItem(id: '0', name: AppLocale.labels.budgetPositiveOff),
-              ListSelectorItem(id: '1', name: AppLocale.labels.budgetPositiveOn),
-            ],
-            onChange: (v) => budgetPositive.set(int.tryParse(v) ?? 0),
+              ListSelectorItem(id: '0', name: AppLocale.labels.budgetPositiveOn),
+              ListSelectorItem(id: '1', name: AppLocale.labels.budgetPositiveOff),
+            ].cast<ListSelectorItem>(),
+            onChange: (v) {
+              budgetPositive.set(int.tryParse(v) ?? 0);
+              state.updateTotals([AppDataType.budgets]);
+            },
           ),
           if (kDebugMode) ...[
             Row(

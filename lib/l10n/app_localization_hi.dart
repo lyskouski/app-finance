@@ -160,6 +160,15 @@ class AppLocalizationsHi extends AppLocalizations {
   String get budgetLimitHeadline => 'सीमा समायोजन';
 
   @override
+  String get budgetPositive => 'बजट, सारांश हैंडलर';
+
+  @override
+  String get budgetPositiveOff => 'नकारात्मक मानों की अनदेखी करें';
+
+  @override
+  String get budgetPositiveOn => 'नकारात्मक मानों को शामिल करें';
+
+  @override
   String get budgetRelativeLimit => 'प्रति माह सापेक्ष गुणांक';
 
   @override

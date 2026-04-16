@@ -160,6 +160,15 @@ class AppLocalizationsTr extends AppLocalizations {
   String get budgetLimitHeadline => 'Limit Ayarlamaları';
 
   @override
+  String get budgetPositive => 'Bütçe, Özet Yöneticisi';
+
+  @override
+  String get budgetPositiveOff => 'Negatif değerleri yoksay';
+
+  @override
+  String get budgetPositiveOn => 'Negatif değerleri dahil et';
+
+  @override
   String get budgetRelativeLimit => 'Ay Başına Göreli Katsayı';
 
   @override

@@ -159,6 +159,15 @@ class AppLocalizationsZh extends AppLocalizations {
   String get budgetLimitHeadline => '限额调整';
 
   @override
+  String get budgetPositive => '预算、摘要处理器';
+
+  @override
+  String get budgetPositiveOff => '忽略负值';
+
+  @override
+  String get budgetPositiveOn => '包含负值';
+
+  @override
   String get budgetRelativeLimit => '每月相对系数';
 
   @override
@@ -1246,6 +1255,15 @@ class AppLocalizationsZhTw extends AppLocalizationsZh {
 
   @override
   String get budgetLimitHeadline => '限額調整';
+
+  @override
+  String get budgetPositive => '預算、摘要處理器';
+
+  @override
+  String get budgetPositiveOff => '忽略負數';
+
+  @override
+  String get budgetPositiveOn => '包含負數';
 
   @override
   String get budgetRelativeLimit => '每月相對係數';

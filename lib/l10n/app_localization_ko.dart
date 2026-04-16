@@ -159,6 +159,15 @@ class AppLocalizationsKo extends AppLocalizations {
   String get budgetLimitHeadline => '한도 조정';
 
   @override
+  String get budgetPositive => '예산, 요약 처리기';
+
+  @override
+  String get budgetPositiveOff => '부정적인 값 무시';
+
+  @override
+  String get budgetPositiveOn => '부정적인 값 포함';
+
+  @override
   String get budgetRelativeLimit => '월별 상대 계수';
 
   @override

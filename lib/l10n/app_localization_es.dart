@@ -37,7 +37,7 @@ class AppLocalizationsEs extends AppLocalizations {
   String get accountTypeTooltip => 'Elegir tipo de cuenta';
 
   @override
-  String get acknowledgeTooltip => 'Acknowledge';
+  String get acknowledgeTooltip => 'Reconocer';
 
   @override
   String get activate => 'Activar';
@@ -158,6 +158,15 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get budgetLimitHeadline => 'Ajustes Límite';
+
+  @override
+  String get budgetPositive => 'Presupuesto, Manejador de Resumen';
+
+  @override
+  String get budgetPositiveOff => 'Ignorar valores negativos';
+
+  @override
+  String get budgetPositiveOn => 'Incluir valores negativos';
 
   @override
   String get budgetRelativeLimit => 'Coeficiente relativo por mes';

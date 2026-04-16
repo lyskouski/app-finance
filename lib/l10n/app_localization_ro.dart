@@ -37,7 +37,7 @@ class AppLocalizationsRo extends AppLocalizations {
   String get accountTypeTooltip => 'Alegeți tipul de cont';
 
   @override
-  String get acknowledgeTooltip => 'Acknowledge';
+  String get acknowledgeTooltip => 'Recunoaște';
 
   @override
   String get activate => 'Activați';
@@ -158,6 +158,15 @@ class AppLocalizationsRo extends AppLocalizations {
 
   @override
   String get budgetLimitHeadline => 'Ajustări ale limitei';
+
+  @override
+  String get budgetPositive => 'Buget, Manager de Rezumat';
+
+  @override
+  String get budgetPositiveOff => 'Ignorați valorile negative';
+
+  @override
+  String get budgetPositiveOn => 'Includeți valorile negative';
 
   @override
   String get budgetRelativeLimit => 'Coeficient relativ pe lună';

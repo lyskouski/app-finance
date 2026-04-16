@@ -160,6 +160,15 @@ class AppLocalizationsBe extends AppLocalizations {
   String get budgetLimitHeadline => 'Карэкціроўкі абмежаваньняў';
 
   @override
+  String get budgetPositive => 'Бюджэт, Апрацоўшчык зводкі';
+
+  @override
+  String get budgetPositiveOff => 'Ігнараваць адмоўныя значэньні';
+
+  @override
+  String get budgetPositiveOn => 'Уключыць адмоўныя значэньні';
+
+  @override
   String get budgetRelativeLimit => 'Адносны каэфіцыент у месяц';
 
   @override
@@ -1252,6 +1261,15 @@ class AppLocalizationsBeEu extends AppLocalizationsBe {
 
   @override
   String get budgetLimitHeadline => 'Karekciroŭki Abmiežavańniaŭ';
+
+  @override
+  String get budgetPositive => 'Biudžet, Apracoŭščyk zvodki';
+
+  @override
+  String get budgetPositiveOff => 'Ihnaravać admoŭnyja značeńni';
+
+  @override
+  String get budgetPositiveOn => 'Ukliučyć admoŭnyja značeńni';
 
   @override
   String get budgetRelativeLimit => 'Adnosny Kaeficyjent u Miesiac';

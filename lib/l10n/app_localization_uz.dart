@@ -161,6 +161,15 @@ class AppLocalizationsUz extends AppLocalizations {
   String get budgetLimitHeadline => 'Cheklovlarni sozlash';
 
   @override
+  String get budgetPositive => 'Byudjet, Umumiy boshqaruvchi';
+
+  @override
+  String get budgetPositiveOff => 'Manfiy qiymatlarni e\'tiborsiz qoldirish';
+
+  @override
+  String get budgetPositiveOn => 'Manfiy qiymatlarni kiritish';
+
+  @override
   String get budgetRelativeLimit => 'Oyiga nisbiy koeffitsient';
 
   @override
