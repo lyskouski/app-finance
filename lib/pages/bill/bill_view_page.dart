@@ -8,6 +8,7 @@ import 'package:app_finance/_classes/structure/bill_app_data.dart';
 import 'package:app_finance/_configs/theme_helper.dart';
 import 'package:app_finance/_classes/structure/navigation/app_route.dart';
 import 'package:app_finance/design/button/full_sized_button_widget.dart';
+import 'package:app_finance/design/button/link_widget.dart';
 import 'package:app_finance/design/form/simple_input.dart';
 import 'package:app_finance/design/wrapper/background_wrapper.dart';
 import 'package:app_finance/design/wrapper/input_wrapper.dart';
@@ -146,6 +147,10 @@ class BillViewPageState extends AbstractPageState<BillViewPage> {
                 ),
                 if (isFormShown) ...[
                   const Divider(),
+                  Align(
+                    alignment: Alignment.centerRight,
+                    child: LinkWidget(AppLocale.labels.btnCancel, onTap: () => setState(() => isFormShown = false)),
+                  ),
                   // Form
                   InputWrapper.text(
                     title: AppLocale.labels.description,
