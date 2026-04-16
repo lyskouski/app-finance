@@ -3,12 +3,19 @@
 
 import 'package:app_finance/_classes/herald/app_locale.dart';
 import 'package:app_finance/_classes/controller/flow_state_machine.dart';
+import 'package:app_finance/_classes/storage/app_data.dart';
 import 'package:app_finance/_classes/structure/bill_app_data.dart';
 import 'package:app_finance/_configs/theme_helper.dart';
 import 'package:app_finance/_classes/structure/navigation/app_route.dart';
+import 'package:app_finance/design/button/full_sized_button_widget.dart';
+import 'package:app_finance/design/button/link_widget.dart';
+import 'package:app_finance/design/form/simple_input.dart';
+import 'package:app_finance/design/wrapper/background_wrapper.dart';
+import 'package:app_finance/design/wrapper/input_wrapper.dart';
 import 'package:app_finance/pages/_interfaces/abstract_page_state.dart';
 import 'package:app_finance/pages/bill/widgets/bill_header_widget.dart';
 import 'package:app_finance/design/wrapper/confirmation_wrapper.dart';
+import 'package:app_finance/pages/bill/widgets/bill_line_widget.dart';
 import 'package:flutter/material.dart';
 
 class BillViewPage extends StatefulWidget {
@@ -24,6 +31,24 @@ class BillViewPage extends StatefulWidget {
 }
 
 class BillViewPageState extends AbstractPageState<BillViewPage> {
+  bool isFormShown = false;
+  late TextEditingController description;
+  late TextEditingController bill;
+  String? budget;
+
+  void initState() {
+    super.initState();
+    description = TextEditingController();
+    bill = TextEditingController();
+  }
+
+  @override
+  void dispose() {
+    description.dispose();
+    bill.dispose();
+    super.dispose();
+  }
+
   @override
   String getTitle() => (state.getByUuid(widget.uuid) as BillAppData).title;
 
@@ -56,20 +81,119 @@ class BillViewPageState extends AbstractPageState<BillViewPage> {
     );
   }
 
+  void saveAction() {
+    double amount = double.tryParse(bill.text) ?? 0.0;
+    final item = state.getByUuid(widget.uuid).clone() as BillAppData;
+    item.details -= amount;
+    item.hasChild = true;
+    state.update(item.uuid ?? '', item);
+    final splitItem = item.clone();
+    splitItem.uuid = null;
+    splitItem.details = amount;
+    splitItem.category = budget ?? item.category;
+    splitItem.title = '${item.title}: ${description.text}';
+    splitItem.childOf = item.uuid;
+    state.add(splitItem);
+    setState(() => isFormShown = false);
+  }
+
   @override
   Widget buildContent(BuildContext context, BoxConstraints constraints) {
-    return Padding(
-      padding: EdgeInsets.only(top: ThemeHelper.getIndent()),
+    final indent = ThemeHelper.getIndent();
+    final item = state.getByUuid(widget.uuid) as BillAppData;
+    final width = ThemeHelper.getWidth(context, 2, constraints);
+    final bills = state
+        .getStream<BillAppData>(AppDataType.bills, filter: (e) => e.childOf != widget.uuid)
+        .toList()
+        .cast<BillAppData>();
+    return SingleChildScrollView(
+      padding: EdgeInsets.only(top: indent),
       child: Column(
         children: [
           BillHeaderWidget(
-            item: state.getByUuid(widget.uuid) as BillAppData,
-            width: ThemeHelper.getWidth(context, 2, constraints),
+            item: item,
+            width: width,
           ),
           ThemeHelper.hIndent05,
           const Divider(height: 2),
-          // List of items
-          // Images
+          Padding(
+            padding: EdgeInsets.all(indent),
+            child: Column(
+              children: [
+                ListView.builder(
+                  scrollDirection: Axis.vertical,
+                  shrinkWrap: true,
+                  physics: const NeverScrollableScrollPhysics(),
+                  itemCount: bills.length,
+                  itemBuilder: (_, int index) {
+                    BillAppData item = bills[index];
+                    final account = state.getByUuid(item.account);
+                    final budget = state.getByUuid(item.category);
+                    return BackgroundWrapper(
+                      index: index,
+                      child: BillLineWidget(
+                        width: width - 2 * indent,
+                        uuid: item.uuid ?? '',
+                        title: item.title,
+                        details: item.detailsFormatted,
+                        description: item.description,
+                        color: item.color ?? Colors.transparent,
+                        icon: item.icon ?? Icons.question_mark,
+                        descriptionColor: account?.color ?? Colors.transparent,
+                        iconTooltip: budget?.title ?? '?',
+                      ),
+                    );
+                  },
+                ),
+                if (isFormShown) ...[
+                  const Divider(),
+                  Align(
+                    alignment: Alignment.centerRight,
+                    child: LinkWidget(AppLocale.labels.btnCancel, onTap: () => setState(() => isFormShown = false)),
+                  ),
+                  // Form
+                  InputWrapper.text(
+                    title: AppLocale.labels.description,
+                    controller: description,
+                    tooltip: AppLocale.labels.descriptionTooltip,
+                  ),
+                  InputWrapper.text(
+                    title: AppLocale.labels.expense,
+                    isRequired: true,
+                    controller: bill,
+                    tooltip: AppLocale.labels.billSetTooltip,
+                    inputType: const TextInputType.numberWithOptions(decimal: true),
+                    formatter: [SimpleInputFormatter.filterDouble],
+                  ),
+                  InputWrapper(
+                    type: NamedInputType.budgetSelector,
+                    isRequired: true,
+                    value: state.getByUuid(budget ?? item.category),
+                    title: AppLocale.labels.budget,
+                    tooltip: AppLocale.labels.titleBudgetTooltip,
+                    state: state,
+                    onChange: (value) => setState(() => budget = value?.uuid),
+                    width: width - 2 * indent,
+                  ),
+                  ThemeHelper.hIndent,
+                  FullSizedButtonWidget(
+                    onPressed: saveAction,
+                    title: AppLocale.labels.saveSettingsTooltip,
+                    icon: Icons.save_outlined,
+                  ),
+                ],
+                if (!isFormShown)
+                  FullSizedButtonWidget(
+                    onPressed: () => setState(() => isFormShown = true),
+                    title: AppLocale.labels.splitHeadline,
+                    icon: Icons.account_balance_wallet_outlined,
+                  ),
+                const Divider(),
+                // Images
+                ThemeHelper.formEndBox,
+              ],
+            ),
+          ),
         ],
       ),
     );

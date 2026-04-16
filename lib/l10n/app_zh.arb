@@ -405,6 +405,7 @@
     "sortingUpdatedAtDesc": "更新时间降序",
     "spent": "已花费",
     "splitCancelTooltip": "取消每月拆分",
+    "splitHeadline": "分摊账单",
     "splitTooltip": "声明每月限额",
     "subscription": "作为一个开源项目，订阅不会解锁任何额外功能。不过，这将是对应用程序持续发展和改进的投资，并能保持其可用性。",
     "subscriptionCoffee": "购买咖啡",

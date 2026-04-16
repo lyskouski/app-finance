@@ -976,6 +976,9 @@ class AppLocalizationsBe extends AppLocalizations {
   String get splitCancelTooltip => 'Адмяніць падьзел па месяцы';
 
   @override
+  String get splitHeadline => 'Падзяліць рахунак';
+
+  @override
   String get splitTooltip => 'Вызначыць месячныя ліміты';
 
   @override
@@ -2077,6 +2080,9 @@ class AppLocalizationsBeEu extends AppLocalizationsBe {
 
   @override
   String get splitCancelTooltip => 'Admianić Pad́ziel pa Miesiacy';
+
+  @override
+  String get splitHeadline => 'Padzielić Rachunak';
 
   @override
   String get splitTooltip => 'Vyznačyć Miesiačnyja Limity';

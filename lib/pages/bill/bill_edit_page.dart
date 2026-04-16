@@ -32,6 +32,8 @@ class BillEditPageState extends BillAddPageState<BillEditPage> {
       bill: bill.details,
       description: bill.title,
       createdAt: bill.createdAt,
+      hasChild: bill.hasChild,
+      childOf: bill.childOf,
     );
   }
 }

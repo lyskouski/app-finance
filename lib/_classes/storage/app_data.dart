@@ -100,7 +100,7 @@ class AppData extends ChangeNotifier {
     }
   }
 
-  void _notify([_]) {
+  void _notify() {
     if (!isLoading) {
       WidgetsBinding.instance.addPostFrameCallback((_) => notifyListeners());
     }
@@ -227,6 +227,13 @@ class AppData extends ChangeNotifier {
       _data[AppDataType.budgets]?.add(change.category);
     }
     _set(AppDataType.bills, change);
+    if (initial?.childOf != null) {
+      BillAppData? parent = getByUuid(initial!.childOf!, false);
+      if (parent != null) {
+        parent.details -= change.details - (initial.details as double);
+        update(initial.childOf!, parent);
+      }
+    }
     if (!isLoading) {
       updateTotals([AppDataType.bills, AppDataType.accounts, AppDataType.budgets]);
     }

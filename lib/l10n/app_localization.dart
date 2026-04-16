@@ -1987,6 +1987,12 @@ abstract class AppLocalizations {
   /// **'Cancel Split per Month'**
   String get splitCancelTooltip;
 
+  /// No description provided for @splitHeadline.
+  ///
+  /// In en, this message translates to:
+  /// **'Split the Bill'**
+  String get splitHeadline;
+
   /// No description provided for @splitTooltip.
   ///
   /// In en, this message translates to:

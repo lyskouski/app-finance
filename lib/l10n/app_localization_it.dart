@@ -978,6 +978,9 @@ class AppLocalizationsIt extends AppLocalizations {
   String get splitCancelTooltip => 'Annullare la suddivisione per mese';
 
   @override
+  String get splitHeadline => 'Dividi il conto';
+
+  @override
   String get splitTooltip => 'Dichiara i limiti al mese';
 
   @override

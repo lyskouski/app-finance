@@ -1,6 +1,6 @@
 {
     "a": "RUN `dart run grinder sort-translations --quiet` FOR ORDERING",
-    "aboutHeadline": "Sobre a",
+    "aboutHeadline": "Sobre",
     "account": "Conta",
     "accountFrom": "Da conta",
     "accountHeadline": "Conta",
@@ -405,6 +405,7 @@
     "sortingUpdatedAtDesc": "Atualizado em ordem decrescente",
     "spent": "gasto",
     "splitCancelTooltip": "Cancelar divisão por mês",
+    "splitHeadline": "Dividir a conta",
     "splitTooltip": "Declarar limites por mês",
     "subscription": "Sendo um projeto de código aberto, a subscrição não desbloqueia quaisquer funcionalidades adicionais. No entanto, serviria como um investimento na evolução e melhoria contínuas da aplicação, e para preservar a sua disponibilidade.",
     "subscriptionCoffee": "Comprar um café",

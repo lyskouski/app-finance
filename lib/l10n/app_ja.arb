@@ -405,6 +405,7 @@
     "sortingUpdatedAtDesc": "更新日（降順）",
     "spent": "使用済み",
     "splitCancelTooltip": "月ごとの分割を取り消す",
+    "splitHeadline": "請求書を分割する",
     "splitTooltip": "月ごとの制限を宣言する",
     "subscription": "オープンソースプロジェクトであるため、購読することで追加機能がアンロックされることはありません。しかし、アプリケーションの継続的な進化と改善、そして可用性を維持するための投資となります。",
     "subscriptionCoffee": "コーヒーを買う",

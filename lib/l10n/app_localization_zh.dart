@@ -972,6 +972,9 @@ class AppLocalizationsZh extends AppLocalizations {
   String get splitCancelTooltip => '取消每月拆分';
 
   @override
+  String get splitHeadline => '分摊账单';
+
+  @override
   String get splitTooltip => '声明每月限额';
 
   @override
@@ -2068,6 +2071,9 @@ class AppLocalizationsZhTw extends AppLocalizationsZh {
 
   @override
   String get splitCancelTooltip => '取消每月分割';
+
+  @override
+  String get splitHeadline => '分攤帳單';
 
   @override
   String get splitTooltip => '宣告每月限制';

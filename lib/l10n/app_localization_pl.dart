@@ -975,6 +975,9 @@ class AppLocalizationsPl extends AppLocalizations {
   String get splitCancelTooltip => 'Anuluj podział na miesiąc';
 
   @override
+  String get splitHeadline => 'Podziel rachunek';
+
+  @override
   String get splitTooltip => 'Deklarowanie limitów na miesiąc';
 
   @override

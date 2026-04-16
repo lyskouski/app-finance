@@ -8,6 +8,8 @@ import 'package:app_finance/pages/bill/widgets/expenses_tab.dart';
 
 class ExpensesEditTab extends ExpensesTab {
   final String uuid;
+  final bool hasChild;
+  final String? childOf;
 
   const ExpensesEditTab({
     super.key,
@@ -20,6 +22,8 @@ class ExpensesEditTab extends ExpensesTab {
     super.bill,
     super.description,
     super.createdAt,
+    this.hasChild = false,
+    this.childOf,
   });
 
   @override
@@ -40,6 +44,8 @@ class ExpensesEditTabState extends ExpensesTabState<ExpensesEditTab> {
           title: description.text,
           details: double.tryParse(bill.text)?.toFixed(currency?.decimalDigits) ?? 0.0,
           createdAt: createdAt,
+          hasChild: widget.hasChild,
+          childOf: widget.childOf,
         ));
   }
 

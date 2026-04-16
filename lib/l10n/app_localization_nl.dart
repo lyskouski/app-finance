@@ -977,6 +977,9 @@ class AppLocalizationsNl extends AppLocalizations {
   String get splitCancelTooltip => 'Splitsen per maand annuleren';
 
   @override
+  String get splitHeadline => 'Rekening splitsen';
+
+  @override
   String get splitTooltip => 'Limieten aangeven per maand';
 
   @override

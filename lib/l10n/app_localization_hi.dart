@@ -977,6 +977,9 @@ class AppLocalizationsHi extends AppLocalizations {
   String get splitCancelTooltip => 'प्रति माह विभाजन रद्द करें';
 
   @override
+  String get splitHeadline => 'बिल विभाजित करें';
+
+  @override
   String get splitTooltip => 'प्रति माह सीमा घोषित करें';
 
   @override

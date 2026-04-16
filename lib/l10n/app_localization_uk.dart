@@ -975,6 +975,9 @@ class AppLocalizationsUk extends AppLocalizations {
   String get splitCancelTooltip => 'Скасувати розподіл на місяць';
 
   @override
+  String get splitHeadline => 'Розділити рахунок';
+
+  @override
   String get splitTooltip => 'Задекларуйте місячні ліміти';
 
   @override

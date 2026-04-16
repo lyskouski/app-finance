@@ -979,6 +979,9 @@ class AppLocalizationsEs extends AppLocalizations {
   String get splitCancelTooltip => 'Anular división por mes';
 
   @override
+  String get splitHeadline => 'Dividir la factura';
+
+  @override
   String get splitTooltip => 'Declarar límites por mes';
 
   @override

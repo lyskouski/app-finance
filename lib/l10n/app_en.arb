@@ -405,6 +405,7 @@
     "sortingUpdatedAtDesc": "Updated At Descending",
     "spent": "spent",
     "splitCancelTooltip": "Cancel Split per Month",
+    "splitHeadline": "Split the Bill",
     "splitTooltip": "Declare Limits per Month",
     "subscription": "As an open-source project, subscribing will not unlock any additional features. However, it would serve as an investment in the continuous evolution and improvement of the application, and to preserve its availability.",
     "subscriptionCoffee": "Buy a Coffee",

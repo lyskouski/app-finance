@@ -974,6 +974,9 @@ class AppLocalizationsAr extends AppLocalizations {
   String get splitCancelTooltip => 'إلغاء التقسيم في الشهر';
 
   @override
+  String get splitHeadline => 'تقسيم الحساب';
+
+  @override
   String get splitTooltip => 'إعلان الحدود في الشهر';
 
   @override

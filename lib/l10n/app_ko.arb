@@ -405,6 +405,7 @@
     "sortingUpdatedAtDesc": "업데이트 날짜 (내림차순)",
     "spent": "지출",
     "splitCancelTooltip": "월별 분할 취소",
+    "splitHeadline": "청구서 분할",
     "splitTooltip": "월별 한도 선언",
     "subscription": "오픈소스 프로젝트이므로 구독한다고 해서 추가 기능이 제공되지는 않습니다. 하지만 애플리케이션의 지속적인 발전과 개선, 가용성 유지를 위한 투자로 활용될 수 있습니다.",
     "subscriptionCoffee": "커피 구매",

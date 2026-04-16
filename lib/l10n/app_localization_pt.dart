@@ -13,7 +13,7 @@ class AppLocalizationsPt extends AppLocalizations {
       'RUN `dart run grinder sort-translations --quiet` FOR ORDERING';
 
   @override
-  String get aboutHeadline => 'Sobre a';
+  String get aboutHeadline => 'Sobre';
 
   @override
   String get account => 'Conta';
@@ -979,6 +979,9 @@ class AppLocalizationsPt extends AppLocalizations {
   String get splitCancelTooltip => 'Cancelar divisão por mês';
 
   @override
+  String get splitHeadline => 'Dividir a conta';
+
+  @override
   String get splitTooltip => 'Declarar limites por mês';
 
   @override
@@ -1121,7 +1124,7 @@ class AppLocalizationsPtBr extends AppLocalizationsPt {
       'RUN `dart run grinder sort-translations --quiet` FOR ORDERING';
 
   @override
-  String get aboutHeadline => 'Sobre a';
+  String get aboutHeadline => 'Sobre';
 
   @override
   String get account => 'Conta';
@@ -2084,6 +2087,9 @@ class AppLocalizationsPtBr extends AppLocalizationsPt {
 
   @override
   String get splitCancelTooltip => 'Cancelar divisão por mês';
+
+  @override
+  String get splitHeadline => 'Dividir a conta';
 
   @override
   String get splitTooltip => 'Declarar limites por mês';
