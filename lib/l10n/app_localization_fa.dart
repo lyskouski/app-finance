@@ -160,6 +160,15 @@ class AppLocalizationsFa extends AppLocalizations {
   String get budgetLimitHeadline => 'تنظیمات حد';
 
   @override
+  String get budgetPositive => 'بودجه، مدیر خلاصه';
+
+  @override
+  String get budgetPositiveOff => 'نادیده گرفتن مقادیر منفی';
+
+  @override
+  String get budgetPositiveOn => 'شامل مقادیر منفی';
+
+  @override
   String get budgetRelativeLimit => 'ضریب نسبی در ماه';
 
   @override

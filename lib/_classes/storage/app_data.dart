@@ -3,6 +3,7 @@
 
 import 'dart:collection';
 import 'package:app_finance/_classes/controller/iterator_controller.dart';
+import 'package:app_finance/_classes/herald/app_budget_positive.dart';
 import 'package:app_finance/_classes/herald/app_start_of_month.dart';
 import 'package:app_finance/_classes/herald/app_sync.dart';
 import 'package:app_finance/_classes/math/budget_prediction.dart';
@@ -95,8 +96,8 @@ class AppData extends ChangeNotifier {
     if (!isLoading) {
       TransactionLog.save(value);
       appSync.send(value.toStream());
+      _notify();
     }
-    _notify();
   }
 
   void _notify([_]) {
@@ -121,13 +122,15 @@ class AppData extends ChangeNotifier {
   Future<void> updateTotals(List<AppDataType> scope) async {
     final accountTotal = getTotal(AppDataType.accounts);
     final exchange = Exchange(store: this);
-    final rec = TotalRecalculation(exchange: exchange);
+    int isBudgetPositive = AppBudgetPositive.get();
+    final rec = TotalRecalculation(exchange: exchange, isBudgetPositive: isBudgetPositive != 0);
     for (AppDataType type in scope) {
       await rec.updateTotal(type, _data[type], _hashTable);
     }
     if (scope.contains(AppDataType.accounts)) {
       rec.updateGoals(getList(AppDataType.goals, false), accountTotal, getTotal(AppDataType.accounts));
     }
+    _notify();
   }
 
   void _update(InterfaceAppData? initial, InterfaceAppData change) {
@@ -184,14 +187,14 @@ class AppData extends ChangeNotifier {
       }
     }
     if (!isLoading) {
-      updateTotals([AppDataType.accounts]).then(_notify);
+      updateTotals([AppDataType.accounts]);
     }
   }
 
   void _updateAccount(AccountAppData? initial, AccountAppData change) {
     _set(AppDataType.accounts, change);
     if (!isLoading) {
-      updateTotals([AppDataType.accounts]).then(_notify);
+      updateTotals([AppDataType.accounts]);
     }
   }
 
@@ -225,7 +228,7 @@ class AppData extends ChangeNotifier {
     }
     _set(AppDataType.bills, change);
     if (!isLoading) {
-      updateTotals([AppDataType.bills, AppDataType.accounts, AppDataType.budgets]).then(_notify);
+      updateTotals([AppDataType.bills, AppDataType.accounts, AppDataType.budgets]);
     }
   }
 
@@ -235,7 +238,7 @@ class AppData extends ChangeNotifier {
       ..updateBudget();
     _set(AppDataType.budgets, change);
     if (!isLoading) {
-      updateTotals([AppDataType.budgets]).then(_notify);
+      updateTotals([AppDataType.budgets]);
     }
   }
 
@@ -245,14 +248,14 @@ class AppData extends ChangeNotifier {
       ..updateGoal();
     _set(AppDataType.goals, change);
     if (!isLoading) {
-      updateTotals([AppDataType.goals]).then(_notify);
+      updateTotals([AppDataType.goals]);
     }
   }
 
   void _updateCurrency(CurrencyAppData? initial, CurrencyAppData change) {
     _set(AppDataType.currencies, change);
     if (!isLoading) {
-      updateTotals(AppDataType.values).then(_notify);
+      updateTotals(AppDataType.values);
     }
   }
 

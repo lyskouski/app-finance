@@ -421,6 +421,24 @@ abstract class AppLocalizations {
   /// **'Limit Adjustments'**
   String get budgetLimitHeadline;
 
+  /// No description provided for @budgetPositive.
+  ///
+  /// In en, this message translates to:
+  /// **'Budget, Summary Handler'**
+  String get budgetPositive;
+
+  /// No description provided for @budgetPositiveOff.
+  ///
+  /// In en, this message translates to:
+  /// **'Ignore negative values'**
+  String get budgetPositiveOff;
+
+  /// No description provided for @budgetPositiveOn.
+  ///
+  /// In en, this message translates to:
+  /// **'Include negative values'**
+  String get budgetPositiveOn;
+
   /// No description provided for @budgetRelativeLimit.
   ///
   /// In en, this message translates to:

@@ -160,6 +160,15 @@ class AppLocalizationsPl extends AppLocalizations {
   String get budgetLimitHeadline => 'Korekty limitu';
 
   @override
+  String get budgetPositive => 'Budżet, Menedżer podsumowań';
+
+  @override
+  String get budgetPositiveOff => 'Ignoruj wartości ujemne';
+
+  @override
+  String get budgetPositiveOn => 'Uwzględnij wartości ujemne';
+
+  @override
   String get budgetRelativeLimit => 'Współczynnik względny na miesiąc';
 
   @override

@@ -26,6 +26,7 @@ class AppPreferences {
   static const String prefIsOTP = 'isOTP';
   static const String prefRecoveryKey = 'recoveryKey';
   static const String prefSortingKey = 'sortingKey';
+  static const String prefBudgetPositive = 'budgetPositive';
 
   static const String isActive = 'true';
   static const String isInactive = 'false';

@@ -160,6 +160,15 @@ class AppLocalizationsPt extends AppLocalizations {
   String get budgetLimitHeadline => 'Ajustes de limite';
 
   @override
+  String get budgetPositive => 'Orçamento, Gerenciador de Resumo';
+
+  @override
+  String get budgetPositiveOff => 'Ignorar valores negativos';
+
+  @override
+  String get budgetPositiveOn => 'Incluir valores negativos';
+
+  @override
   String get budgetRelativeLimit => 'Coeficiente relativo por mês';
 
   @override
@@ -1257,6 +1266,15 @@ class AppLocalizationsPtBr extends AppLocalizationsPt {
 
   @override
   String get budgetLimitHeadline => 'Ajustes de limite';
+
+  @override
+  String get budgetPositive => 'Orçamento, Gerenciador de Resumo';
+
+  @override
+  String get budgetPositiveOff => 'Ignorar valores negativos';
+
+  @override
+  String get budgetPositiveOn => 'Incluir valores negativos';
 
   @override
   String get budgetRelativeLimit => 'Coeficiente relativo por mês';

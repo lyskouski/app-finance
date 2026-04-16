@@ -12,9 +12,11 @@ class TotalRecalculation extends AbstractRecalculation {
   @override
   // ignore: overridden_fields
   Exchange exchange;
+  bool isBudgetPositive;
 
   TotalRecalculation({
     required this.exchange,
+    this.isBudgetPositive = false,
   });
 
   @override
@@ -28,6 +30,9 @@ class TotalRecalculation extends AbstractRecalculation {
       return 0.0;
     }
     double total = exchange.reform(item.details, item.currency, Exchange.defaultCurrency);
+    if (type == AppDataType.budgets && total < 0 && isBudgetPositive) {
+      total = 0.0;
+    }
     if (type == AppDataType.goals) {
       total *= (1 - item.progress);
     }

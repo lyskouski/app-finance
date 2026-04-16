@@ -160,6 +160,15 @@ class AppLocalizationsEn extends AppLocalizations {
   String get budgetLimitHeadline => 'Limit Adjustments';
 
   @override
+  String get budgetPositive => 'Budget, Summary Handler';
+
+  @override
+  String get budgetPositiveOff => 'Ignore negative values';
+
+  @override
+  String get budgetPositiveOn => 'Include negative values';
+
+  @override
   String get budgetRelativeLimit => 'Relative Coefficient per Month';
 
   @override

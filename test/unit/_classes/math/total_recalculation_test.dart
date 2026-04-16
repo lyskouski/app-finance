@@ -4,6 +4,7 @@
 import 'dart:collection';
 
 import 'package:app_finance/_classes/storage/app_data.dart';
+import 'package:app_finance/_classes/structure/budget_app_data.dart';
 import 'package:app_finance/_classes/structure/currency/exchange.dart';
 import 'package:app_finance/_classes/structure/goal_app_data.dart';
 import 'package:app_finance/_classes/structure/summary_app_data.dart';
@@ -32,6 +33,22 @@ void main() {
 
     test('getDelta (UnimplementedError)', () {
       expect(() => object.getDelta(), throwsA(isA<UnimplementedError>()));
+    });
+
+    test('isBudgetPositive is true', () {
+      final exchange = WrapperMockExchange();
+      exchange.mockReform = (double? v, Currency? from, Currency? to) => v ?? 0.0;
+      final o = TotalRecalculation(
+        exchange: exchange,
+        isBudgetPositive: true,
+      );
+      final hashTable = HashMap<String, dynamic>.from({
+        '1': BudgetAppData(uuid: '1', title: '', amount: -100.0),
+        '2': BudgetAppData(uuid: '2', title: '', amount: 100.0),
+      });
+      final summary = SummaryAppData(list: ['1', '2'], total: 0.0);
+      o.updateTotal(AppDataType.budgets, summary, hashTable);
+      expect(summary.total, 100.0);
     });
 
     group('updateTotalMap', () {

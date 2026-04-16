@@ -160,6 +160,15 @@ class AppLocalizationsUk extends AppLocalizations {
   String get budgetLimitHeadline => 'Коригування лімітів';
 
   @override
+  String get budgetPositive => 'Бюджет, Менеджер підсумків';
+
+  @override
+  String get budgetPositiveOff => 'Ігнорувати негативні значення';
+
+  @override
+  String get budgetPositiveOn => 'Включати негативні значення';
+
+  @override
   String get budgetRelativeLimit => 'Відносний коефіцієнт на місяць';
 
   @override

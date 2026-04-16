@@ -160,6 +160,15 @@ class AppLocalizationsAr extends AppLocalizations {
   String get budgetLimitHeadline => 'تعديلات الحد في الشهر';
 
   @override
+  String get budgetPositive => 'ميزانية، معالج الملخص';
+
+  @override
+  String get budgetPositiveOff => 'تجاهل القيم السلبية';
+
+  @override
+  String get budgetPositiveOn => 'تضمين القيم السلبية';
+
+  @override
   String get budgetRelativeLimit => 'المعامل النسبي لكل شهر';
 
   @override

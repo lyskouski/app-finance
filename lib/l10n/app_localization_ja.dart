@@ -159,6 +159,15 @@ class AppLocalizationsJa extends AppLocalizations {
   String get budgetLimitHeadline => '限度額の調整';
 
   @override
+  String get budgetPositive => '予算、サマリーハンドラー';
+
+  @override
+  String get budgetPositiveOff => '負の値を無視する';
+
+  @override
+  String get budgetPositiveOn => '負の値を含める';
+
+  @override
   String get budgetRelativeLimit => '月ごとの相対係数';
 
   @override

@@ -160,6 +160,15 @@ class AppLocalizationsIt extends AppLocalizations {
   String get budgetLimitHeadline => 'Aggiustamenti del limite';
 
   @override
+  String get budgetPositive => 'Bilancio, Gestore di riepilogo';
+
+  @override
+  String get budgetPositiveOff => 'Ignora i valori negativi';
+
+  @override
+  String get budgetPositiveOn => 'Includi i valori negativi';
+
+  @override
   String get budgetRelativeLimit => 'Coefficiente relativo per mese';
 
   @override

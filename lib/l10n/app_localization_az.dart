@@ -160,6 +160,15 @@ class AppLocalizationsAz extends AppLocalizations {
   String get budgetLimitHeadline => 'Limit Tənzimləmələri';
 
   @override
+  String get budgetPositive => 'Büdcə, Xülasə emalçısı';
+
+  @override
+  String get budgetPositiveOff => 'Mənfi dəyərləri nəzərə alma';
+
+  @override
+  String get budgetPositiveOn => 'Mənfi dəyərləri daxil et';
+
+  @override
   String get budgetRelativeLimit => 'Ayda nisbi əmsal';
 
   @override

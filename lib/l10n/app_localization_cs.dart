@@ -160,6 +160,15 @@ class AppLocalizationsCs extends AppLocalizations {
   String get budgetLimitHeadline => 'Úpravy limitu';
 
   @override
+  String get budgetPositive => 'Rozpočet, obslužná funkce pro souhrn';
+
+  @override
+  String get budgetPositiveOff => 'Ignorovat záporné hodnoty';
+
+  @override
+  String get budgetPositiveOn => 'Zahrnout záporné hodnoty';
+
+  @override
   String get budgetRelativeLimit => 'Relativní koeficient na měsíc';
 
   @override
