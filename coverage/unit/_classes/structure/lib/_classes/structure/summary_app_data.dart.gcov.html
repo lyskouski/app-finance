@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Test Date:</td>
-            <td class="headerValue">2026-03-31 13:26:27</td>
+            <td class="headerValue">2026-04-16 09:59:52</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntryHi">-</td>
@@ -85,28 +85,28 @@
 <span id="L23"><span class="lineNum">      23</span>              : </span>
 <span id="L24"><span class="lineNum">      24</span> <span class="tlaUNC tlaBgUNC">           0 :   SplayTreeMap&lt;double, String&gt; get origin =&gt; _scope;</span></span>
 <span id="L25"><span class="lineNum">      25</span>              : </span>
-<span id="L26"><span class="lineNum">      26</span> <span class="tlaGNC tlaBgGNC">           6 :   List&lt;String&gt; get list =&gt; _scope.values.toList().reversed.toList();</span></span>
+<span id="L26"><span class="lineNum">      26</span> <span class="tlaGNC tlaBgGNC">          12 :   List&lt;String&gt; get list =&gt; _scope.values.toList().reversed.toList();</span></span>
 <span id="L27"><span class="lineNum">      27</span>              : </span>
 <span id="L28"><span class="lineNum">      28</span> <span class="tlaGNC">           6 :   List&lt;String&gt; get listActual =&gt; _actual.values.toList().reversed.toList();</span></span>
 <span id="L29"><span class="lineNum">      29</span>              : </span>
 <span id="L30"><span class="lineNum">      30</span> <span class="tlaGNC">           2 :   set list(List&lt;String&gt; list) {</span></span>
-<span id="L31"><span class="lineNum">      31</span> <span class="tlaGNC">           5 :     for (int i = 0; i &lt; list.length; i++) {</span></span>
-<span id="L32"><span class="lineNum">      32</span> <span class="tlaGNC">           3 :       add(list[i], id: i + 1);</span></span>
+<span id="L31"><span class="lineNum">      31</span> <span class="tlaGNC">           6 :     for (int i = 0; i &lt; list.length; i++) {</span></span>
+<span id="L32"><span class="lineNum">      32</span> <span class="tlaGNC">           6 :       add(list[i], id: i + 1);</span></span>
 <span id="L33"><span class="lineNum">      33</span>              :     }</span>
 <span id="L34"><span class="lineNum">      34</span>              :   }</span>
 <span id="L35"><span class="lineNum">      35</span>              : </span>
-<span id="L36"><span class="lineNum">      36</span> <span class="tlaGNC">           1 :   add(String value, {DateTime? updatedAt, int? id}) {</span></span>
-<span id="L37"><span class="lineNum">      37</span> <span class="tlaGNC">           2 :     if (_hash.containsKey(value)) {</span></span>
+<span id="L36"><span class="lineNum">      36</span> <span class="tlaGNC">           2 :   add(String value, {DateTime? updatedAt, int? id}) {</span></span>
+<span id="L37"><span class="lineNum">      37</span> <span class="tlaGNC">           4 :     if (_hash.containsKey(value)) {</span></span>
 <span id="L38"><span class="lineNum">      38</span> <span class="tlaUNC tlaBgUNC">           0 :       _scope.remove(_hash[value]);</span></span>
 <span id="L39"><span class="lineNum">      39</span> <span class="tlaUNC">           0 :       _actual.remove(_hash[value]);</span></span>
 <span id="L40"><span class="lineNum">      40</span> <span class="tlaUNC">           0 :       _hash.remove(value);</span></span>
 <span id="L41"><span class="lineNum">      41</span>              :     }</span>
-<span id="L42"><span class="lineNum">      42</span> <span class="tlaGNC tlaBgGNC">           1 :     final current = DateTime.now();</span></span>
+<span id="L42"><span class="lineNum">      42</span> <span class="tlaGNC tlaBgGNC">           2 :     final current = DateTime.now();</span></span>
 <span id="L43"><span class="lineNum">      43</span>              :     updatedAt ??= current;</span>
-<span id="L44"><span class="lineNum">      44</span> <span class="tlaGNC">           5 :     double key = (id ?? updatedAt.millisecondsSinceEpoch).toDouble() + Random().nextDouble();</span></span>
-<span id="L45"><span class="lineNum">      45</span> <span class="tlaGNC">           2 :     _scope[key] = value;</span></span>
-<span id="L46"><span class="lineNum">      46</span> <span class="tlaGNC">           2 :     _hash[value] = key;</span></span>
-<span id="L47"><span class="lineNum">      47</span> <span class="tlaGNC">           4 :     if (key &gt;= current.getStartingDay(startingDay).millisecondsSinceEpoch) {</span></span>
+<span id="L44"><span class="lineNum">      44</span> <span class="tlaGNC">           9 :     double key = (id ?? updatedAt.millisecondsSinceEpoch).toDouble() + Random().nextDouble();</span></span>
+<span id="L45"><span class="lineNum">      45</span> <span class="tlaGNC">           4 :     _scope[key] = value;</span></span>
+<span id="L46"><span class="lineNum">      46</span> <span class="tlaGNC">           4 :     _hash[value] = key;</span></span>
+<span id="L47"><span class="lineNum">      47</span> <span class="tlaGNC">           8 :     if (key &gt;= current.getStartingDay(startingDay).millisecondsSinceEpoch) {</span></span>
 <span id="L48"><span class="lineNum">      48</span> <span class="tlaGNC">           2 :       _actual[key] = value;</span></span>
 <span id="L49"><span class="lineNum">      49</span>              :     }</span>
 <span id="L50"><span class="lineNum">      50</span>              :   }</span>
