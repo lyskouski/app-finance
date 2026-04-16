@@ -15,6 +15,8 @@ class BillAppData extends AbstractAppData with StorageMixin {
   String category;
   double exchangeAccount;
   double exchangeCategory;
+  bool hasChild;
+  String? childOf;
 
   BillAppData({
     required this.account,
@@ -30,6 +32,8 @@ class BillAppData extends AbstractAppData with StorageMixin {
     super.payment,
     this.exchangeAccount = 1.0,
     this.exchangeCategory = 1.0,
+    this.hasChild = false,
+    this.childOf,
   });
 
   @override
@@ -52,6 +56,8 @@ class BillAppData extends AbstractAppData with StorageMixin {
       payment: super.payment,
       exchangeAccount: exchangeAccount,
       exchangeCategory: exchangeCategory,
+      hasChild: hasChild,
+      childOf: childOf,
     );
   }
 
@@ -67,6 +73,8 @@ class BillAppData extends AbstractAppData with StorageMixin {
       createdAt: DateTime.parse(json['createdAt']),
       hidden: json['hidden'],
       payment: json['payment'],
+      hasChild: json['hasChild'] ?? false,
+      childOf: json['childOf'],
     );
   }
 
@@ -75,6 +83,8 @@ class BillAppData extends AbstractAppData with StorageMixin {
         ...super.toJson(),
         'account': account,
         'category': category,
+        'hasChild': hasChild,
+        'childOf': childOf,
       };
 
   String get detailsFormatted => (super.details as double).toCurrency(currency: currency, withPattern: false);

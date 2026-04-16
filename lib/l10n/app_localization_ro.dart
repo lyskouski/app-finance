@@ -979,6 +979,9 @@ class AppLocalizationsRo extends AppLocalizations {
   String get splitCancelTooltip => 'Anulare împărțire pe lună';
 
   @override
+  String get splitHeadline => 'Împarte factura';
+
+  @override
   String get splitTooltip => 'Declararea limitelor pe lună';
 
   @override

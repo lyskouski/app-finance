@@ -981,6 +981,9 @@ class AppLocalizationsUz extends AppLocalizations {
   String get splitCancelTooltip => 'Oyiga Splitni bekor qilish';
 
   @override
+  String get splitHeadline => 'Hisobni bo\'lish';
+
+  @override
   String get splitTooltip => 'Oyiga limitlarni e\'lon qiling';
 
   @override

@@ -972,6 +972,9 @@ class AppLocalizationsJa extends AppLocalizations {
   String get splitCancelTooltip => '月ごとの分割を取り消す';
 
   @override
+  String get splitHeadline => '請求書を分割する';
+
+  @override
   String get splitTooltip => '月ごとの制限を宣言する';
 
   @override

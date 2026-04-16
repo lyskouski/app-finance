@@ -974,6 +974,9 @@ class AppLocalizationsFa extends AppLocalizations {
   String get splitCancelTooltip => 'لغو تقسیم در ماه';
 
   @override
+  String get splitHeadline => 'تقسیم حساب';
+
+  @override
   String get splitTooltip => 'محدودیت ها را در ماه اعلام کنید';
 
   @override

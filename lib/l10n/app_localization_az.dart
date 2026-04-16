@@ -977,6 +977,9 @@ class AppLocalizationsAz extends AppLocalizations {
   String get splitCancelTooltip => 'Ayda bölünməni ləğv edin';
 
   @override
+  String get splitHeadline => 'Hesabı böl';
+
+  @override
   String get splitTooltip => 'Aylıq Limitləri Bəyan edin';
 
   @override

@@ -975,6 +975,9 @@ class AppLocalizationsCs extends AppLocalizations {
   String get splitCancelTooltip => 'Zrušit rozdělení na měsíce';
 
   @override
+  String get splitHeadline => 'Rozdělit účet';
+
+  @override
   String get splitTooltip => 'Vyhlášení limitů za měsíc';
 
   @override

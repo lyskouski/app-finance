@@ -972,6 +972,9 @@ class AppLocalizationsKo extends AppLocalizations {
   String get splitCancelTooltip => '월별 분할 취소';
 
   @override
+  String get splitHeadline => '청구서 분할';
+
+  @override
   String get splitTooltip => '월별 한도 선언';
 
   @override

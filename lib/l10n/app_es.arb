@@ -405,6 +405,7 @@
     "sortingUpdatedAtDesc": "Actualizado En Descendente",
     "spent": "gastado",
     "splitCancelTooltip": "Anular división por mes",
+    "splitHeadline": "Dividir la factura",
     "splitTooltip": "Declarar límites por mes",
     "subscription": "Al tratarse de un proyecto de código abierto, la suscripción no desbloqueará ninguna función adicional. Sin embargo, serviría como inversión en la continua evolución y mejora de la aplicación, y para preservar su disponibilidad.",
     "subscriptionCoffee": "Comprar un café",

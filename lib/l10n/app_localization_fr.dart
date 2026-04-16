@@ -981,6 +981,9 @@ class AppLocalizationsFr extends AppLocalizations {
   String get splitCancelTooltip => 'Annuler le fractionnement par mois';
 
   @override
+  String get splitHeadline => 'Partager la facture';
+
+  @override
   String get splitTooltip => 'Déclarer des limites par mois';
 
   @override

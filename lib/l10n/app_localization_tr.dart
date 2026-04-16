@@ -974,6 +974,9 @@ class AppLocalizationsTr extends AppLocalizations {
   String get splitCancelTooltip => 'Ay Başına Bölünmeyi İptal Et';
 
   @override
+  String get splitHeadline => 'Faturayı Böl';
+
+  @override
   String get splitTooltip => 'Aylık Limitleri Bildirin';
 
   @override
