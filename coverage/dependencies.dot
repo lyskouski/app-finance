@@ -800,12 +800,15 @@ digraph G {
   bill -> bill_widgets [color="#F0F0F050"];
   bill -> herald [color="#F0F0F050"];
   bill -> controller [color="#F0F0F050"];
+  bill -> storage [color="#F0F0F050"];
   bill -> structure [color="#F0F0F050"];
   bill -> _configs_ [color="#F0F0F050"];
   bill -> structure_navigation [color="#F0F0F050"];
+  bill -> button [color="#F0F0F050"];
+  bill -> form [color="#F0F0F050"];
+  bill -> wrapper [color="#F0F0F050"];
   bill -> _interfaces [color="#F0F0F050"];
   bill -> bill_widgets [color="#F0F0F050"];
-  bill -> wrapper [color="#F0F0F050"];
   bill -> structure [color="#F0F0F050"];
   bill -> bill [color="#F0F0F050"];
   bill -> bill_widgets [color="#F0F0F050"];
