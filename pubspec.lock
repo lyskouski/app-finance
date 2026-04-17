@@ -507,6 +507,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "5.0.0"
+  flutter_local_authentication:
+    dependency: "direct main"
+    description:
+      name: flutter_local_authentication
+      sha256: eb2e471ba77fbc42b6ce8b358939dc9878dc71fcce5a482a8ddcb045563d87cd
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.2.0"
   flutter_localizations:
     dependency: "direct main"
     description: flutter

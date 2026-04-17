@@ -381,6 +381,9 @@
         }
     },
     "searchTooltip": "Buscar",
+    "secureBioNotMatch": "¡Error de autenticación! Inténtalo de nuevo",
+    "secureBioPromptReason": "Autentícate para continuar",
+    "secureBioPromptTitle": "Autenticación biométrica",
     "secureOtpCode": "Código de contraseña de un solo uso",
     "secureOtpCodeInvalid": "¡No es válido! Por favor, obtenga un nuevo código e introdúzcalo.",
     "secureOtpDeactivated": "La protección con contraseña está desactivada",

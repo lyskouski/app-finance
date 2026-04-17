@@ -381,6 +381,9 @@
         }
     },
     "searchTooltip": "Zoekopdracht",
+    "secureBioNotMatch": "Authenticatie mislukt! Probeer het opnieuw",
+    "secureBioPromptReason": "Authenticeer uzelf om door te gaan",
+    "secureBioPromptTitle": "Biometrische authenticatie",
     "secureOtpCode": "Eenmalig wachtwoordcode",
     "secureOtpCodeInvalid": "Ongeldige code! Kies een nieuwe code en voer deze in",
     "secureOtpDeactivated": "Wachtwoordbeveiliging is gedeactiveerd",

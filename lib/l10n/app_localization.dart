@@ -1843,6 +1843,24 @@ abstract class AppLocalizations {
   /// **'Search'**
   String get searchTooltip;
 
+  /// No description provided for @secureBioNotMatch.
+  ///
+  /// In en, this message translates to:
+  /// **'Authentication failed! Please, try again'**
+  String get secureBioNotMatch;
+
+  /// No description provided for @secureBioPromptReason.
+  ///
+  /// In en, this message translates to:
+  /// **'Please authenticate to proceed'**
+  String get secureBioPromptReason;
+
+  /// No description provided for @secureBioPromptTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Biometric Authentication'**
+  String get secureBioPromptTitle;
+
   /// No description provided for @secureOtpCode.
   ///
   /// In en, this message translates to:

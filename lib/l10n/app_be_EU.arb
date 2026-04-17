@@ -381,6 +381,9 @@
         }
     },
     "searchTooltip": "Pošuk",
+    "secureBioNotMatch": "Pamylka aŭtentyfikacyi! Pasprabujcie jašče raz",
+    "secureBioPromptReason": "Kali laska, prajdzicie aŭtentyfikacyju, kab praciahnuć",
+    "secureBioPromptTitle": "Bijamietryčnaja aŭtentyfikacyja",
     "secureOtpCode": "Adnarazovy paroĺ",
     "secureOtpCodeInvalid": "Niapraviĺny! Kali laska, vaźmicie novy kod i ŭviadzicie jaho",
     "secureOtpDeactivated": "Abarona paroliem adkliučana",

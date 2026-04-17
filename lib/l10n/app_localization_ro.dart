@@ -906,6 +906,17 @@ class AppLocalizationsRo extends AppLocalizations {
   String get searchTooltip => 'Căutare';
 
   @override
+  String get secureBioNotMatch =>
+      'Autentificare eșuată! Vă rugăm să încercați din nou';
+
+  @override
+  String get secureBioPromptReason =>
+      'Vă rugăm să vă autentificați pentru a continua';
+
+  @override
+  String get secureBioPromptTitle => 'Autentificare biometrică';
+
+  @override
   String get secureOtpCode => 'Cod parolă unică';
 
   @override

@@ -381,6 +381,9 @@
         }
     },
     "searchTooltip": "Search",
+    "secureBioNotMatch": "Authentication failed! Please, try again",
+    "secureBioPromptReason": "Please authenticate to proceed",
+    "secureBioPromptTitle": "Biometric Authentication",
     "secureOtpCode": "One-time Password Code",
     "secureOtpCodeInvalid": "Invalid! Please, take fresh code and enter it",
     "secureOtpDeactivated": "Password Protection is deactivated",

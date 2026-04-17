@@ -900,6 +900,15 @@ class AppLocalizationsJa extends AppLocalizations {
   String get searchTooltip => '検索';
 
   @override
+  String get secureBioNotMatch => '認証に失敗しました！もう一度お試しください';
+
+  @override
+  String get secureBioPromptReason => '続行するには認証してください';
+
+  @override
+  String get secureBioPromptTitle => '生体認証';
+
+  @override
   String get secureOtpCode => 'ワンタイムパスワードコード';
 
   @override

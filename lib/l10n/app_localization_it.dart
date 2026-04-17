@@ -905,6 +905,15 @@ class AppLocalizationsIt extends AppLocalizations {
   String get searchTooltip => 'Ricerca';
 
   @override
+  String get secureBioNotMatch => 'Autenticazione fallita! Per favore, riprova';
+
+  @override
+  String get secureBioPromptReason => 'Per favore, autentica per procedere';
+
+  @override
+  String get secureBioPromptTitle => 'Autenticazione biometrica';
+
+  @override
   String get secureOtpCode => 'Codice password monouso';
 
   @override

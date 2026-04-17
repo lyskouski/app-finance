@@ -381,6 +381,9 @@
         }
     },
     "searchTooltip": "Szukaj",
+    "secureBioNotMatch": "Uwierzytelnianie nie powiodło się! Spróbuj ponownie",
+    "secureBioPromptReason": "Proszę uwierzytelnić się, aby kontynuować",
+    "secureBioPromptTitle": "Uwierzytelnianie biometryczne",
     "secureOtpCode": "Kod jednorazowego hasła",
     "secureOtpCodeInvalid": "Nieprawidłowy kod! Proszę, wygeneruj nowy kod i wprowadź go",
     "secureOtpDeactivated": "Ochrona hasłem jest wyłączona",

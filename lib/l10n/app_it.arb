@@ -381,6 +381,9 @@
         }
     },
     "searchTooltip": "Ricerca",
+    "secureBioNotMatch": "Autenticazione fallita! Per favore, riprova",
+    "secureBioPromptReason": "Per favore, autentica per procedere",
+    "secureBioPromptTitle": "Autenticazione biometrica",
     "secureOtpCode": "Codice password monouso",
     "secureOtpCodeInvalid": "Codice non valido! Per favore, genera un nuovo codice e inseriscilo",
     "secureOtpDeactivated": "La protezione con password è disattivata",

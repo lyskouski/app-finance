@@ -902,6 +902,16 @@ class AppLocalizationsCs extends AppLocalizations {
   String get searchTooltip => 'Vyhledávání';
 
   @override
+  String get secureBioNotMatch =>
+      'Ověření se nezdařilo! Zkuste to prosím znovu';
+
+  @override
+  String get secureBioPromptReason => 'Pro pokračování se prosím ověřte';
+
+  @override
+  String get secureBioPromptTitle => 'Biometrické ověření';
+
+  @override
   String get secureOtpCode => 'Jednorázové heslo';
 
   @override

@@ -901,6 +901,15 @@ class AppLocalizationsAr extends AppLocalizations {
   String get searchTooltip => 'يبحث';
 
   @override
+  String get secureBioNotMatch => 'فشلت عملية المصادقة! يرجى المحاولة مرة أخرى';
+
+  @override
+  String get secureBioPromptReason => 'يرجى المصادقة للمتابعة';
+
+  @override
+  String get secureBioPromptTitle => 'المصادقة البيومترية';
+
+  @override
   String get secureOtpCode => 'رمز كلمة المرور لمرة واحدة';
 
   @override

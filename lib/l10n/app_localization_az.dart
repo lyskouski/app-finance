@@ -904,6 +904,17 @@ class AppLocalizationsAz extends AppLocalizations {
   String get searchTooltip => 'Axtar';
 
   @override
+  String get secureBioNotMatch =>
+      'Təsdiqləmə uğursuz oldu! Zəhmət olmasa, yenidən cəhd edin';
+
+  @override
+  String get secureBioPromptReason =>
+      'Davam etmək üçün zəhmət olmasa təsdiqlənin';
+
+  @override
+  String get secureBioPromptTitle => 'Biometrik Təsdiqləmə';
+
+  @override
   String get secureOtpCode => 'Bir dəfəlik Şifrə Kodu';
 
   @override

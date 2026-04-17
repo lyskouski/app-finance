@@ -22,6 +22,7 @@ import 'package:app_finance/components/component_recent.dart';
 import 'package:app_finance/components/widgets/bill_ytd_chart.dart';
 import 'package:app_finance/pages/_interfaces/abstract_page_state.dart';
 import 'package:app_finance/pages/home/home_edit_page.dart';
+import 'package:app_finance/pages/home/widgets/security_bio_tab.dart';
 import 'package:app_finance/pages/home/widgets/security_tab.dart';
 import 'package:app_finance/pages/start/start_page.dart';
 import 'package:app_finance/design/wrapper/grid_layer.dart';
@@ -177,8 +178,11 @@ class HomePageState extends AbstractPageState<HomePage> {
       return const StartPage();
     }
     return Consumer<AppData>(builder: (context, appState, _) {
-      state = appState;
-      if (AppPreferences.get(AppPreferences.prefIsOTP) == AppPreferences.isActive && !isOtpPassed) {
+      if (AppPreferences.get(AppPreferences.prefIsBio) == AppPreferences.isActive && !isOtpPassed) {
+        return SecurityBioTab(
+          onSuccess: () => setState(() => isOtpPassed = true),
+        );
+      } else if (AppPreferences.get(AppPreferences.prefIsOTP) == AppPreferences.isActive && !isOtpPassed) {
         return SecurityTab(
           onSuccess: () => setState(() => isOtpPassed = true),
         );
@@ -186,7 +190,7 @@ class HomePageState extends AbstractPageState<HomePage> {
       if (appState.isLoading) {
         return const InitTab();
       }
-      WidgetsBinding.instance.addPostFrameCallback((_) => PaymentsController(state));
+      WidgetsBinding.instance.addPostFrameCallback((_) => PaymentsController(appState));
       return super.build(context);
     });
   }

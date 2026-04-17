@@ -907,6 +907,17 @@ class AppLocalizationsDe extends AppLocalizations {
   String get searchTooltip => 'Suchen';
 
   @override
+  String get secureBioNotMatch =>
+      'Die Authentifizierung ist fehlgeschlagen! Bitte versuchen Sie es erneut';
+
+  @override
+  String get secureBioPromptReason =>
+      'Bitte authentifizieren Sie sich, um fortzufahren';
+
+  @override
+  String get secureBioPromptTitle => 'Biometrische Authentifizierung';
+
+  @override
   String get secureOtpCode => 'Einmalpasswortcode';
 
   @override

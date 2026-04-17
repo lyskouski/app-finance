@@ -258,8 +258,12 @@ class BudgetAddPageState<T extends BudgetAddPage> extends AbstractAddPageState<T
               maxWidth: width + indent,
               chunk: const [20, null],
               children: [
-                [Checkbox(value: skip, onChanged: (value) => setState(() => skip = value!))],
-                [ThemeHelper.hIndent05, TextWrapper(AppLocale.labels.skipFromTotals)],
+                [
+                  Center(
+                      heightFactor: 0.5,
+                      child: Checkbox(value: skip, onChanged: (value) => setState(() => skip = value!)))
+                ],
+                [TextWrapper(AppLocale.labels.skipFromTotals)],
               ],
             ),
             ThemeHelper.hIndent2x,

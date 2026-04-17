@@ -381,6 +381,9 @@
         }
     },
     "searchTooltip": "搜尋",
+    "secureBioNotMatch": "驗證失敗！請重新嘗試",
+    "secureBioPromptReason": "請進行驗證以繼續",
+    "secureBioPromptTitle": "生物特徵驗證",
     "secureOtpCode": "一次性密碼代碼",
     "secureOtpCodeInvalid": "無效！請獲取新代碼並輸入",
     "secureOtpDeactivated": "密碼保護功能已停用",

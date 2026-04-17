@@ -381,6 +381,9 @@
         }
     },
     "searchTooltip": "खोज",
+    "secureBioNotMatch": "प्रमाणीकरण विफल! कृपया पुनः प्रयास करें",
+    "secureBioPromptReason": "कृपया आगे बढ़ने के लिए प्रमाणीकरण करें",
+    "secureBioPromptTitle": "बायोमेट्रिक प्रमाणीकरण",
     "secureOtpCode": "एक बार के लिए पासवर्ड कोड",
     "secureOtpCodeInvalid": "अमान्य! कृपया एक नया कोड प्राप्त करें और इसे दर्ज करें",
     "secureOtpDeactivated": "पासवर्ड सुरक्षा अक्षम है",

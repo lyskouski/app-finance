@@ -904,6 +904,15 @@ class AppLocalizationsNl extends AppLocalizations {
   String get searchTooltip => 'Zoekopdracht';
 
   @override
+  String get secureBioNotMatch => 'Authenticatie mislukt! Probeer het opnieuw';
+
+  @override
+  String get secureBioPromptReason => 'Authenticeer uzelf om door te gaan';
+
+  @override
+  String get secureBioPromptTitle => 'Biometrische authenticatie';
+
+  @override
   String get secureOtpCode => 'Eenmalig wachtwoordcode';
 
   @override

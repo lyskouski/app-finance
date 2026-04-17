@@ -381,6 +381,9 @@
         }
     },
     "searchTooltip": "搜索",
+    "secureBioNotMatch": "身份验证失败！请重试",
+    "secureBioPromptReason": "请进行身份验证以继续",
+    "secureBioPromptTitle": "生物识别验证",
     "secureOtpCode": "一次性密码验证码",
     "secureOtpCodeInvalid": "无效！请获取新验证码并输入",
     "secureOtpDeactivated": "密码保护已停用",

@@ -902,6 +902,17 @@ class AppLocalizationsUk extends AppLocalizations {
   String get searchTooltip => 'Пошук';
 
   @override
+  String get secureBioNotMatch =>
+      'Аутентифікація не вдалася! Будь ласка, спробуйте ще раз';
+
+  @override
+  String get secureBioPromptReason =>
+      'Будь ласка, пройдіть аутентифікацію, щоб продовжити';
+
+  @override
+  String get secureBioPromptTitle => 'Біометрична аутентифікація';
+
+  @override
   String get secureOtpCode => 'Код одноразового пароля';
 
   @override

@@ -904,6 +904,15 @@ class AppLocalizationsHi extends AppLocalizations {
   String get searchTooltip => 'खोज';
 
   @override
+  String get secureBioNotMatch => 'प्रमाणीकरण विफल! कृपया पुनः प्रयास करें';
+
+  @override
+  String get secureBioPromptReason => 'कृपया आगे बढ़ने के लिए प्रमाणीकरण करें';
+
+  @override
+  String get secureBioPromptTitle => 'बायोमेट्रिक प्रमाणीकरण';
+
+  @override
   String get secureOtpCode => 'एक बार के लिए पासवर्ड कोड';
 
   @override

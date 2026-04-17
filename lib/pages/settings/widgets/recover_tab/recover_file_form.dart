@@ -82,14 +82,20 @@ class RecoverFileFormState extends State<RecoverFileForm> {
         ThemeHelper.hIndent4x,
         Row(
           children: [
-            Checkbox(value: isEncrypted, onChanged: (value) => setState(() => isEncrypted = value!)),
+            Center(
+              heightFactor: 0.5,
+              child: Checkbox(value: isEncrypted, onChanged: (value) => setState(() => isEncrypted = value!)),
+            ),
             TextWrapper(AppLocale.labels.isEncrypted),
           ],
         ),
         ThemeHelper.hIndent,
         Row(
           children: [
-            Checkbox(value: isCleaned, onChanged: (value) => setState(() => isCleaned = value!)),
+            Center(
+              heightFactor: 0.5,
+              child: Checkbox(value: isCleaned, onChanged: (value) => setState(() => isCleaned = value!)),
+            ),
             TextWrapper(AppLocale.labels.isCleaned),
           ],
         ),

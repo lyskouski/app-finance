@@ -381,6 +381,9 @@
         }
     },
     "searchTooltip": "Căutare",
+    "secureBioNotMatch": "Autentificare eșuată! Vă rugăm să încercați din nou",
+    "secureBioPromptReason": "Vă rugăm să vă autentificați pentru a continua",
+    "secureBioPromptTitle": "Autentificare biometrică",
     "secureOtpCode": "Cod parolă unică",
     "secureOtpCodeInvalid": "Cod invalid! Vă rugăm să generați un cod nou și să-l introduceți",
     "secureOtpDeactivated": "Protecția cu parolă este dezactivată",
