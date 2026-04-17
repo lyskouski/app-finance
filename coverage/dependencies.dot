@@ -118,7 +118,7 @@ digraph G {
   }
   {
     rank = same; "pages";
-    home_widgets [label="<0>HOME_WIDGETS|<security_tab>security_tab|<goal_widget>goal_widget|<init_tab>init_tab|<goal_line_widget>goal_line_widget",fillcolor="silver:white", gradientangle=240, style="filled"];
+    home_widgets [label="<0>HOME_WIDGETS|<security_tab>security_tab|<goal_widget>goal_widget|<security_bio_tab>security_bio_tab|<init_tab>init_tab|<goal_line_widget>goal_line_widget",fillcolor="silver:white", gradientangle=240, style="filled"];
   }
   {
     rank = same; "pages";
@@ -826,6 +826,14 @@ digraph G {
   home_widgets -> _ext_ [color="#F0F0F050"];
   home_widgets -> wrapper [color="#F0F0F050"];
   home_widgets -> home_widgets [color="#F0F0F050"];
+  home_widgets -> controller [color="#F0F0F050"];
+  home_widgets -> herald [color="#F0F0F050"];
+  home_widgets -> storage [color="#F0F0F050"];
+  home_widgets -> _configs_ [color="#F0F0F050"];
+  home_widgets -> button [color="#F0F0F050"];
+  home_widgets -> generic [color="#F0F0F050"];
+  home_widgets -> wrapper [color="#F0F0F050"];
+  home_widgets -> _interfaces [color="#F0F0F050"];
   home_widgets -> herald [color="#F0F0F050"];
   home_widgets -> _configs_ [color="#F0F0F050"];
   home_widgets -> _interfaces [color="#F0F0F050"];

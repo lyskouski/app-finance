@@ -32,12 +32,12 @@
             <td></td>
             <td class="headerItem">Lines:</td>
             <td class="headerCovTableEntryLo">0.8&nbsp;%</td>
-            <td class="headerCovTableEntry">127</td>
+            <td class="headerCovTableEntry">131</td>
             <td class="headerCovTableEntry">1</td>
           </tr>
           <tr>
             <td class="headerItem">Test Date:</td>
-            <td class="headerValue">2026-04-16 12:29:17</td>
+            <td class="headerValue">2026-04-17 12:36:45</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntryHi">-</td>
@@ -278,42 +278,50 @@
 <span id="L216"><span class="lineNum">     216</span> <span class="tlaUNC">           0 :               maxWidth: width + indent,</span></span>
 <span id="L217"><span class="lineNum">     217</span>              :               chunk: const [20, null],</span>
 <span id="L218"><span class="lineNum">     218</span> <span class="tlaUNC">           0 :               children: [</span></span>
-<span id="L219"><span class="lineNum">     219</span> <span class="tlaUNC">           0 :                 [Checkbox(value: skip, onChanged: (value) =&gt; setState(() =&gt; skip = value!))],</span></span>
-<span id="L220"><span class="lineNum">     220</span> <span class="tlaUNC">           0 :                 [ThemeHelper.hIndent05, TextWrapper(AppLocale.labels.skipFromTotals)],</span></span>
-<span id="L221"><span class="lineNum">     221</span>              :               ],</span>
-<span id="L222"><span class="lineNum">     222</span>              :             ),</span>
-<span id="L223"><span class="lineNum">     223</span> <span class="tlaUNC">           0 :             ThemeHelper.hIndent2x,</span></span>
-<span id="L224"><span class="lineNum">     224</span> <span class="tlaUNC">           0 :             RowWidget(</span></span>
-<span id="L225"><span class="lineNum">     225</span>              :               indent: indent,</span>
-<span id="L226"><span class="lineNum">     226</span> <span class="tlaUNC">           0 :               maxWidth: width + indent,</span></span>
-<span id="L227"><span class="lineNum">     227</span>              :               chunk: const [null, 20],</span>
-<span id="L228"><span class="lineNum">     228</span> <span class="tlaUNC">           0 :               children: [</span></span>
-<span id="L229"><span class="lineNum">     229</span> <span class="tlaUNC">           0 :                 [</span></span>
-<span id="L230"><span class="lineNum">     230</span> <span class="tlaUNC">           0 :                   TextWrapper(</span></span>
-<span id="L231"><span class="lineNum">     231</span> <span class="tlaUNC">           0 :                     AppLocale.labels.balanceDate,</span></span>
-<span id="L232"><span class="lineNum">     232</span> <span class="tlaUNC">           0 :                     style: textTheme.bodyLarge,</span></span>
-<span id="L233"><span class="lineNum">     233</span>              :                   ),</span>
-<span id="L234"><span class="lineNum">     234</span>              :                 ],</span>
-<span id="L235"><span class="lineNum">     235</span> <span class="tlaUNC">           0 :                 [</span></span>
-<span id="L236"><span class="lineNum">     236</span> <span class="tlaUNC">           0 :                   Tooltip(</span></span>
-<span id="L237"><span class="lineNum">     237</span> <span class="tlaUNC">           0 :                     message: AppLocale.labels.balanceDateTooltip,</span></span>
-<span id="L238"><span class="lineNum">     238</span>              :                     child: const Icon(Icons.info_outline),</span>
-<span id="L239"><span class="lineNum">     239</span>              :                   ),</span>
-<span id="L240"><span class="lineNum">     240</span>              :                 ]</span>
-<span id="L241"><span class="lineNum">     241</span>              :               ],</span>
-<span id="L242"><span class="lineNum">     242</span>              :             ),</span>
-<span id="L243"><span class="lineNum">     243</span> <span class="tlaUNC">           0 :             DateTimeInput(</span></span>
-<span id="L244"><span class="lineNum">     244</span>              :               width: width,</span>
-<span id="L245"><span class="lineNum">     245</span> <span class="tlaUNC">           0 :               value: balanceUpdateDate,</span></span>
-<span id="L246"><span class="lineNum">     246</span> <span class="tlaUNC">           0 :               setState: (value) =&gt; setState(() =&gt; balanceUpdateDate = value),</span></span>
-<span id="L247"><span class="lineNum">     247</span>              :             ),</span>
-<span id="L248"><span class="lineNum">     248</span> <span class="tlaUNC">           0 :             ThemeHelper.hIndent2x,</span></span>
-<span id="L249"><span class="lineNum">     249</span>              :           ],</span>
-<span id="L250"><span class="lineNum">     250</span>              :         ),</span>
-<span id="L251"><span class="lineNum">     251</span>              :       ),</span>
-<span id="L252"><span class="lineNum">     252</span>              :     );</span>
-<span id="L253"><span class="lineNum">     253</span>              :   }</span>
-<span id="L254"><span class="lineNum">     254</span>              : }</span>
+<span id="L219"><span class="lineNum">     219</span> <span class="tlaUNC">           0 :                 [</span></span>
+<span id="L220"><span class="lineNum">     220</span> <span class="tlaUNC">           0 :                   Center(</span></span>
+<span id="L221"><span class="lineNum">     221</span>              :                     heightFactor: 0.5,</span>
+<span id="L222"><span class="lineNum">     222</span> <span class="tlaUNC">           0 :                     child: Checkbox(</span></span>
+<span id="L223"><span class="lineNum">     223</span> <span class="tlaUNC">           0 :                       value: skip,</span></span>
+<span id="L224"><span class="lineNum">     224</span> <span class="tlaUNC">           0 :                       onChanged: (value) =&gt; setState(() =&gt; skip = value!),</span></span>
+<span id="L225"><span class="lineNum">     225</span>              :                     ),</span>
+<span id="L226"><span class="lineNum">     226</span>              :                   ),</span>
+<span id="L227"><span class="lineNum">     227</span>              :                 ],</span>
+<span id="L228"><span class="lineNum">     228</span> <span class="tlaUNC">           0 :                 [TextWrapper(AppLocale.labels.skipFromTotals)],</span></span>
+<span id="L229"><span class="lineNum">     229</span>              :               ],</span>
+<span id="L230"><span class="lineNum">     230</span>              :             ),</span>
+<span id="L231"><span class="lineNum">     231</span> <span class="tlaUNC">           0 :             ThemeHelper.hIndent2x,</span></span>
+<span id="L232"><span class="lineNum">     232</span> <span class="tlaUNC">           0 :             RowWidget(</span></span>
+<span id="L233"><span class="lineNum">     233</span>              :               indent: indent,</span>
+<span id="L234"><span class="lineNum">     234</span> <span class="tlaUNC">           0 :               maxWidth: width + indent,</span></span>
+<span id="L235"><span class="lineNum">     235</span>              :               chunk: const [null, 20],</span>
+<span id="L236"><span class="lineNum">     236</span> <span class="tlaUNC">           0 :               children: [</span></span>
+<span id="L237"><span class="lineNum">     237</span> <span class="tlaUNC">           0 :                 [</span></span>
+<span id="L238"><span class="lineNum">     238</span> <span class="tlaUNC">           0 :                   TextWrapper(</span></span>
+<span id="L239"><span class="lineNum">     239</span> <span class="tlaUNC">           0 :                     AppLocale.labels.balanceDate,</span></span>
+<span id="L240"><span class="lineNum">     240</span> <span class="tlaUNC">           0 :                     style: textTheme.bodyLarge,</span></span>
+<span id="L241"><span class="lineNum">     241</span>              :                   ),</span>
+<span id="L242"><span class="lineNum">     242</span>              :                 ],</span>
+<span id="L243"><span class="lineNum">     243</span> <span class="tlaUNC">           0 :                 [</span></span>
+<span id="L244"><span class="lineNum">     244</span> <span class="tlaUNC">           0 :                   Tooltip(</span></span>
+<span id="L245"><span class="lineNum">     245</span> <span class="tlaUNC">           0 :                     message: AppLocale.labels.balanceDateTooltip,</span></span>
+<span id="L246"><span class="lineNum">     246</span>              :                     child: const Icon(Icons.info_outline),</span>
+<span id="L247"><span class="lineNum">     247</span>              :                   ),</span>
+<span id="L248"><span class="lineNum">     248</span>              :                 ]</span>
+<span id="L249"><span class="lineNum">     249</span>              :               ],</span>
+<span id="L250"><span class="lineNum">     250</span>              :             ),</span>
+<span id="L251"><span class="lineNum">     251</span> <span class="tlaUNC">           0 :             DateTimeInput(</span></span>
+<span id="L252"><span class="lineNum">     252</span>              :               width: width,</span>
+<span id="L253"><span class="lineNum">     253</span> <span class="tlaUNC">           0 :               value: balanceUpdateDate,</span></span>
+<span id="L254"><span class="lineNum">     254</span> <span class="tlaUNC">           0 :               setState: (value) =&gt; setState(() =&gt; balanceUpdateDate = value),</span></span>
+<span id="L255"><span class="lineNum">     255</span>              :             ),</span>
+<span id="L256"><span class="lineNum">     256</span> <span class="tlaUNC">           0 :             ThemeHelper.hIndent2x,</span></span>
+<span id="L257"><span class="lineNum">     257</span>              :           ],</span>
+<span id="L258"><span class="lineNum">     258</span>              :         ),</span>
+<span id="L259"><span class="lineNum">     259</span>              :       ),</span>
+<span id="L260"><span class="lineNum">     260</span>              :     );</span>
+<span id="L261"><span class="lineNum">     261</span>              :   }</span>
+<span id="L262"><span class="lineNum">     262</span>              : }</span>
         </pre>
               </td>
             </tr>
