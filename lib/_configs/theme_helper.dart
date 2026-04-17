@@ -31,6 +31,7 @@ class ThemeHelper {
   static const hIndent05 = SizedBox(height: _Sizes.half);
   static const wIndent = SizedBox(width: _Sizes.normal);
   static const wIndent2x = SizedBox(width: _Sizes.double);
+  static const wIndent05 = SizedBox(width: _Sizes.half);
 
   static double getIndent([double multiply = 1]) => _Sizes.normal / AppZoom.state * multiply;
 

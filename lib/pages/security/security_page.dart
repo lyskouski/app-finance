@@ -12,8 +12,11 @@ import 'package:app_finance/_ext/build_context_ext.dart';
 import 'package:app_finance/design/button/full_sized_button_widget.dart';
 import 'package:app_finance/design/generic/notification_bar.dart';
 import 'package:app_finance/design/wrapper/input_wrapper.dart';
+import 'package:app_finance/design/wrapper/row_widget.dart';
 import 'package:app_finance/design/wrapper/single_scroll_wrapper.dart';
+import 'package:app_finance/design/wrapper/text_wrapper.dart';
 import 'package:app_finance/pages/_interfaces/abstract_page_state.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:simple_totp_auth/simple_totp_auth.dart';
@@ -30,6 +33,7 @@ class SecurityPageState extends AbstractPageState<SecurityPage> {
   late TextEditingController password;
   late TextEditingController passwordRepeat;
   late TextEditingController otpCode;
+  bool isBio = AppPreferences.get(AppPreferences.prefIsBio) == AppPreferences.isActive;
 
   @override
   void initState() {
@@ -104,6 +108,7 @@ class SecurityPageState extends AbstractPageState<SecurityPage> {
       return;
     }
     AppPreferences.set(AppPreferences.prefIsOTP, AppPreferences.isInactive);
+    AppPreferences.set(AppPreferences.prefIsBio, isBio ? AppPreferences.isActive : AppPreferences.isInactive);
     setState(() => password.clear());
     NotificationBar.showSnackBar(context, AppLocale.labels.secureOtpDeactivated);
   }
@@ -114,6 +119,7 @@ class SecurityPageState extends AbstractPageState<SecurityPage> {
   @override
   Widget buildContent(BuildContext context, BoxConstraints constraints) {
     final indent = ThemeHelper.getIndent();
+    final width = ThemeHelper.getWidth(context, 2, constraints);
     final textTheme = context.textTheme;
     final secret = AppPreferences.get(AppPreferences.prefPrivacyKey) ?? '';
     final totp = TOTP(secret: secret);
@@ -138,6 +144,29 @@ class SecurityPageState extends AbstractPageState<SecurityPage> {
                 isRequired: true,
                 inputType: TextInputType.visiblePassword,
               ),
+              if (!kIsWeb)
+                RowWidget(
+                  indent: indent,
+                  maxWidth: width,
+                  chunk: const [20, null],
+                  children: [
+                    [
+                      Center(
+                        heightFactor: 0.5,
+                        child: Checkbox(
+                          value: isBio,
+                          onChanged: (value) => setState(() => isBio = value!),
+                        ),
+                      )
+                    ],
+                    [
+                      Align(
+                        alignment: Alignment.centerLeft,
+                        child: TextWrapper(AppLocale.labels.secureBioPromptTitle),
+                      ),
+                    ],
+                  ],
+                ),
               TOTPQrWidget(
                 secret: secret,
                 issuer: 'Fingrom',

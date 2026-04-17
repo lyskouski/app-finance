@@ -905,6 +905,15 @@ class AppLocalizationsEs extends AppLocalizations {
   String get searchTooltip => 'Buscar';
 
   @override
+  String get secureBioNotMatch => '¡Error de autenticación! Inténtalo de nuevo';
+
+  @override
+  String get secureBioPromptReason => 'Autentícate para continuar';
+
+  @override
+  String get secureBioPromptTitle => 'Autenticación biométrica';
+
+  @override
   String get secureOtpCode => 'Código de contraseña de un solo uso';
 
   @override

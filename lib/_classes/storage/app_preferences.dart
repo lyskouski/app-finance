@@ -24,6 +24,7 @@ class AppPreferences {
   static const String prefMonthStartDay = 'monthStartDay';
   static const String prefPrivacyKey = 'privacyKey';
   static const String prefIsOTP = 'isOTP';
+  static const String prefIsBio = 'isBio';
   static const String prefRecoveryKey = 'recoveryKey';
   static const String prefSortingKey = 'sortingKey';
   static const String prefBudgetPositive = 'budgetPositive';

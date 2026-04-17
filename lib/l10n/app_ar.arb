@@ -381,6 +381,9 @@
         }
     },
     "searchTooltip": "يبحث",
+    "secureBioNotMatch": "فشلت عملية المصادقة! يرجى المحاولة مرة أخرى",
+    "secureBioPromptReason": "يرجى المصادقة للمتابعة",
+    "secureBioPromptTitle": "المصادقة البيومترية",
     "secureOtpCode": "رمز كلمة المرور لمرة واحدة",
     "secureOtpCodeInvalid": "غير صالح! يرجى الحصول على رمز جديد وإدخاله",
     "secureOtpDeactivated": "حماية كلمة المرور معطلة",

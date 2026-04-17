@@ -903,6 +903,17 @@ class AppLocalizationsBe extends AppLocalizations {
   String get searchTooltip => 'Пошук';
 
   @override
+  String get secureBioNotMatch =>
+      'Памылка аўтэнтыфікацыі! Паспрабуйце яшчэ раз';
+
+  @override
+  String get secureBioPromptReason =>
+      'Калі ласка, прайдзіце аўтэнтыфікацыю, каб працягнуць';
+
+  @override
+  String get secureBioPromptTitle => 'Біяметрычная аўтэнтыфікацыя';
+
+  @override
   String get secureOtpCode => 'Аднаразовы пароль';
 
   @override
@@ -2007,6 +2018,17 @@ class AppLocalizationsBeEu extends AppLocalizationsBe {
 
   @override
   String get searchTooltip => 'Pošuk';
+
+  @override
+  String get secureBioNotMatch =>
+      'Pamylka aŭtentyfikacyi! Pasprabujcie jašče raz';
+
+  @override
+  String get secureBioPromptReason =>
+      'Kali laska, prajdzicie aŭtentyfikacyju, kab praciahnuć';
+
+  @override
+  String get secureBioPromptTitle => 'Bijamietryčnaja aŭtentyfikacyja';
 
   @override
   String get secureOtpCode => 'Adnarazovy paroĺ';

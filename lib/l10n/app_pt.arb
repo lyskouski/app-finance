@@ -381,6 +381,9 @@
         }
     },
     "searchTooltip": "Pesquisa",
+    "secureBioNotMatch": "Falha na autenticação! Por favor, tente novamente",
+    "secureBioPromptReason": "Por favor, autentique-se para continuar",
+    "secureBioPromptTitle": "Autenticação biométrica",
     "secureOtpCode": "Código de Palavra-passe Única",
     "secureOtpCodeInvalid": "Código inválido! Por favor, gere um novo código e insira-o",
     "secureOtpDeactivated": "A proteção por palavra-passe está desativada",

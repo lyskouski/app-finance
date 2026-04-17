@@ -381,6 +381,9 @@
         }
     },
     "searchTooltip": "Recherche",
+    "secureBioNotMatch": "Échec de l'authentification ! Veuillez réessayer",
+    "secureBioPromptReason": "Veuillez vous authentifier pour continuer",
+    "secureBioPromptTitle": "Authentification biométrique",
     "secureOtpCode": "Code de mot de passe à usage unique",
     "secureOtpCodeInvalid": "Code invalide ! Veuillez générer un nouveau code et le saisir",
     "secureOtpDeactivated": "La protection par mot de passe est désactivée",

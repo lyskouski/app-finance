@@ -906,6 +906,17 @@ class AppLocalizationsFr extends AppLocalizations {
   String get searchTooltip => 'Recherche';
 
   @override
+  String get secureBioNotMatch =>
+      'Échec de l\'authentification ! Veuillez réessayer';
+
+  @override
+  String get secureBioPromptReason =>
+      'Veuillez vous authentifier pour continuer';
+
+  @override
+  String get secureBioPromptTitle => 'Authentification biométrique';
+
+  @override
   String get secureOtpCode => 'Code de mot de passe à usage unique';
 
   @override

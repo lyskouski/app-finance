@@ -905,6 +905,16 @@ class AppLocalizationsPt extends AppLocalizations {
   String get searchTooltip => 'Pesquisa';
 
   @override
+  String get secureBioNotMatch =>
+      'Falha na autenticação! Por favor, tente novamente';
+
+  @override
+  String get secureBioPromptReason => 'Por favor, autentique-se para continuar';
+
+  @override
+  String get secureBioPromptTitle => 'Autenticação biométrica';
+
+  @override
   String get secureOtpCode => 'Código de Palavra-passe Única';
 
   @override
@@ -2014,6 +2024,16 @@ class AppLocalizationsPtBr extends AppLocalizationsPt {
 
   @override
   String get searchTooltip => 'Procurar';
+
+  @override
+  String get secureBioNotMatch =>
+      'Falha na autenticação! Por favor, tente novamente';
+
+  @override
+  String get secureBioPromptReason => 'Por favor, autentique-se para continuar';
+
+  @override
+  String get secureBioPromptTitle => 'Autenticação biométrica';
 
   @override
   String get secureOtpCode => 'Código de Senha Única';

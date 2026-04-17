@@ -900,6 +900,15 @@ class AppLocalizationsKo extends AppLocalizations {
   String get searchTooltip => '찾다';
 
   @override
+  String get secureBioNotMatch => '인증에 실패했습니다! 다시 시도해주세요';
+
+  @override
+  String get secureBioPromptReason => '계속하려면 인증해주세요';
+
+  @override
+  String get secureBioPromptTitle => '생체 인증';
+
+  @override
   String get secureOtpCode => '일회용 비밀번호 코드';
 
   @override

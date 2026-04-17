@@ -908,6 +908,17 @@ class AppLocalizationsUz extends AppLocalizations {
   String get searchTooltip => 'Qidiruv';
 
   @override
+  String get secureBioNotMatch =>
+      'Autentifikatsiya muvaffaqiyatsiz! Iltimos, qayta urinib ko\'ring';
+
+  @override
+  String get secureBioPromptReason =>
+      'Iltimos, davom etish uchun autentifikatsiya qiling';
+
+  @override
+  String get secureBioPromptTitle => 'Biometrik autentifikatsiya';
+
+  @override
   String get secureOtpCode => 'Bir martalik parol kodi';
 
   @override

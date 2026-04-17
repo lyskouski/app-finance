@@ -902,6 +902,17 @@ class AppLocalizationsPl extends AppLocalizations {
   String get searchTooltip => 'Szukaj';
 
   @override
+  String get secureBioNotMatch =>
+      'Uwierzytelnianie nie powiodło się! Spróbuj ponownie';
+
+  @override
+  String get secureBioPromptReason =>
+      'Proszę uwierzytelnić się, aby kontynuować';
+
+  @override
+  String get secureBioPromptTitle => 'Uwierzytelnianie biometryczne';
+
+  @override
   String get secureOtpCode => 'Kod jednorazowego hasła';
 
   @override

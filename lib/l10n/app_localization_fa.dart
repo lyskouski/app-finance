@@ -901,6 +901,16 @@ class AppLocalizationsFa extends AppLocalizations {
   String get searchTooltip => 'جستجو';
 
   @override
+  String get secureBioNotMatch =>
+      'احراز هویت ناموفق بود! لطفاً دوباره تلاش کنید';
+
+  @override
+  String get secureBioPromptReason => 'لطفاً برای ادامه احراز هویت کنید';
+
+  @override
+  String get secureBioPromptTitle => 'احراز هویت بیومتریک';
+
+  @override
   String get secureOtpCode => 'کد رمز عبور یکباره';
 
   @override

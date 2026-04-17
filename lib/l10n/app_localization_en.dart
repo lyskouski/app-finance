@@ -901,6 +901,15 @@ class AppLocalizationsEn extends AppLocalizations {
   String get searchTooltip => 'Search';
 
   @override
+  String get secureBioNotMatch => 'Authentication failed! Please, try again';
+
+  @override
+  String get secureBioPromptReason => 'Please authenticate to proceed';
+
+  @override
+  String get secureBioPromptTitle => 'Biometric Authentication';
+
+  @override
   String get secureOtpCode => 'One-time Password Code';
 
   @override

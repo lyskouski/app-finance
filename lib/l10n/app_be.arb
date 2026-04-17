@@ -381,6 +381,9 @@
         }
     },
     "searchTooltip": "Пошук",
+    "secureBioNotMatch": "Памылка аўтэнтыфікацыі! Паспрабуйце яшчэ раз",
+    "secureBioPromptReason": "Калі ласка, прайдзіце аўтэнтыфікацыю, каб працягнуць",
+    "secureBioPromptTitle": "Біяметрычная аўтэнтыфікацыя",
     "secureOtpCode": "Аднаразовы пароль",
     "secureOtpCodeInvalid": "Няправільны! Калі ласка, вазьміце новы код і ўвядзіце яго.",
     "secureOtpDeactivated": "Абарона паролем адключана",

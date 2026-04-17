@@ -381,6 +381,9 @@
         }
     },
     "searchTooltip": "Qidiruv",
+    "secureBioNotMatch": "Autentifikatsiya muvaffaqiyatsiz! Iltimos, qayta urinib ko'ring",
+    "secureBioPromptReason": "Iltimos, davom etish uchun autentifikatsiya qiling",
+    "secureBioPromptTitle": "Biometrik autentifikatsiya",
     "secureOtpCode": "Bir martalik parol kodi",
     "secureOtpCodeInvalid": "Noto'g'ri! Iltimos, yangi kod oling va uni kiriting",
     "secureOtpDeactivated": "Parol himoyasi o'chirilgan",

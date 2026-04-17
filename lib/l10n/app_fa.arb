@@ -381,6 +381,9 @@
         }
     },
     "searchTooltip": "جستجو",
+    "secureBioNotMatch": "احراز هویت ناموفق بود! لطفاً دوباره تلاش کنید",
+    "secureBioPromptReason": "لطفاً برای ادامه احراز هویت کنید",
+    "secureBioPromptTitle": "احراز هویت بیومتریک",
     "secureOtpCode": "کد رمز عبور یکباره",
     "secureOtpCodeInvalid": "کد نامعتبر! لطفاً کد جدیدی بگیرید و وارد کنید",
     "secureOtpDeactivated": "حفاظت با رمز عبور غیرفعال است",

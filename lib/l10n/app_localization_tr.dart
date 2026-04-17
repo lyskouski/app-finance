@@ -901,6 +901,17 @@ class AppLocalizationsTr extends AppLocalizations {
   String get searchTooltip => 'Aramak';
 
   @override
+  String get secureBioNotMatch =>
+      'Kimlik doğrulama başarısız! Lütfen tekrar deneyin';
+
+  @override
+  String get secureBioPromptReason =>
+      'Devam etmek için lütfen kimlik doğrulaması yapın';
+
+  @override
+  String get secureBioPromptTitle => 'Biyometrik Kimlik Doğrulama';
+
+  @override
   String get secureOtpCode => 'Bir Defalık Parola Kodu';
 
   @override

@@ -381,6 +381,9 @@
         }
     },
     "searchTooltip": "検索",
+    "secureBioNotMatch": "認証に失敗しました！もう一度お試しください",
+    "secureBioPromptReason": "続行するには認証してください",
+    "secureBioPromptTitle": "生体認証",
     "secureOtpCode": "ワンタイムパスワードコード",
     "secureOtpCodeInvalid": "無効なコードです！新しいコードを取得して入力してください",
     "secureOtpDeactivated": "パスワード保護は無効化されています",

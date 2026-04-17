@@ -381,6 +381,9 @@
         }
     },
     "searchTooltip": "Axtar",
+    "secureBioNotMatch": "Təsdiqləmə uğursuz oldu! Zəhmət olmasa, yenidən cəhd edin",
+    "secureBioPromptReason": "Davam etmək üçün zəhmət olmasa təsdiqlənin",
+    "secureBioPromptTitle": "Biometrik Təsdiqləmə",
     "secureOtpCode": "Bir dəfəlik Şifrə Kodu",
     "secureOtpCodeInvalid": "Etkisiz! Zəhmət olmasa, yeni kod götürün və daxil edin",
     "secureOtpDeactivated": "Şifrə qorunması deaktiv edilib",

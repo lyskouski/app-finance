@@ -381,6 +381,9 @@
         }
     },
     "searchTooltip": "Vyhledávání",
+    "secureBioNotMatch": "Ověření se nezdařilo! Zkuste to prosím znovu",
+    "secureBioPromptReason": "Pro pokračování se prosím ověřte",
+    "secureBioPromptTitle": "Biometrické ověření",
     "secureOtpCode": "Jednorázové heslo",
     "secureOtpCodeInvalid": "Neplatné! Získejte nový kód a zadejte jej.",
     "secureOtpDeactivated": "Ochrana heslem je deaktivována",

@@ -900,6 +900,15 @@ class AppLocalizationsZh extends AppLocalizations {
   String get searchTooltip => '搜索';
 
   @override
+  String get secureBioNotMatch => '身份验证失败！请重试';
+
+  @override
+  String get secureBioPromptReason => '请进行身份验证以继续';
+
+  @override
+  String get secureBioPromptTitle => '生物识别验证';
+
+  @override
   String get secureOtpCode => '一次性密码验证码';
 
   @override
@@ -1999,6 +2008,15 @@ class AppLocalizationsZhTw extends AppLocalizationsZh {
 
   @override
   String get searchTooltip => '搜尋';
+
+  @override
+  String get secureBioNotMatch => '驗證失敗！請重新嘗試';
+
+  @override
+  String get secureBioPromptReason => '請進行驗證以繼續';
+
+  @override
+  String get secureBioPromptTitle => '生物特徵驗證';
 
   @override
   String get secureOtpCode => '一次性密碼代碼';

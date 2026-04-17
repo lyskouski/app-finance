@@ -381,6 +381,9 @@
         }
     },
     "searchTooltip": "찾다",
+    "secureBioNotMatch": "인증에 실패했습니다! 다시 시도해주세요",
+    "secureBioPromptReason": "계속하려면 인증해주세요",
+    "secureBioPromptTitle": "생체 인증",
     "secureOtpCode": "일회용 비밀번호 코드",
     "secureOtpCodeInvalid": "유효하지 않은 코드입니다! 새로운 코드를 받아서 입력해주세요.",
     "secureOtpDeactivated": "비밀번호 보호가 비활성화되었습니다",

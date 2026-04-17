@@ -58,6 +58,7 @@ dependencies:
   custom_date_range_picker: ^1.2.0
   flutter_solidart: ^2.6.1
   simple_totp_auth: ^0.0.2
+  flutter_local_authentication: ^1.2.0
 
 dependency_overrides:
   flutter_webrtc: 0.12.10

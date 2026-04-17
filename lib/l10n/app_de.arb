@@ -381,6 +381,9 @@
         }
     },
     "searchTooltip": "Suchen",
+    "secureBioNotMatch": "Die Authentifizierung ist fehlgeschlagen! Bitte versuchen Sie es erneut",
+    "secureBioPromptReason": "Bitte authentifizieren Sie sich, um fortzufahren",
+    "secureBioPromptTitle": "Biometrische Authentifizierung",
     "secureOtpCode": "Einmalpasswortcode",
     "secureOtpCodeInvalid": "Ungültig! Bitte, neuen Code generieren und eingeben",
     "secureOtpDeactivated": "Passwortschutz ist deaktiviert",
