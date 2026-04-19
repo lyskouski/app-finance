@@ -47,10 +47,12 @@ Která uživatelům umožní bez námahy spravovat své finance a zároveň zaji
   - Nebo bez omezení zobrazením vynaložené částky
   - Různé časové osy: týdenní, měsíční, roční
   - Přizpůsobitelný počáteční den týdne a měsíce
+  - Souhrn rozpočtu: možnost ignorovat záporné hodnoty
 - Účty, převody, příjmy (faktury)
   - Opakující se platby (s widgetem na domovské obrazovce)
   - Filtrování
   - Předpoklad/předpověď rozpočtové kategorie
+  - Rozdělení účtu
 - Definice cílů
 - Směnné kurzy, výchozí měna pro shrnutí
 - Metriky:
@@ -75,6 +77,7 @@ Která uživatelům umožní bez námahy spravovat své finance a zároveň zaji
 - Bezpečnost
   - Ochrana jednorázovým heslem
   - Obnovovací kód
+  - Biometrické ověření
 - Uživatelské zkušenosti
   - Konfigurovatelná hlavní stránka (více konfigurací pro sadu `šířka x výška`)
   - Responzivní a přizpůsobivý design

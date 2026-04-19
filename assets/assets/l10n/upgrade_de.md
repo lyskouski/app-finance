@@ -2,6 +2,11 @@
 
 _Die vollständige Liste der Updates kann über den Navigationspunkt "Über" auf der Schaltfläche "Hinweise" eingesehen werden._
 
+### 7.1.0
+- Budgetübersicht: Option zum Ignorieren negativer Werte
+- Rechnung aufteilen
+- Biometrische Authentifizierung
+
 ### 7.0.2
 - Optimierte Startseite für große und kleine Bildschirme
 

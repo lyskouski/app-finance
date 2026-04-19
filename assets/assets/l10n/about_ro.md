@@ -47,10 +47,12 @@ Care permite utilizatorilor să își gestioneze finanțele fără efort, asigur
   - Sau, fără limite prin afișarea unei sume cheltuite
   - Cronologie diferită: săptămânală, lunară, anuală
   - Zi de început a săptămânii și a lunii personalizabilă
+  - Rezumat buget: opțiunea de a ignora valorile negative
 - Facturi, transferuri, venituri (facturi)
   - Plăți recurente (cu un widget de pornire)
   - Filtrare
   - Ipoteza/previziunea categoriei bugetare
+  - Împărțirea unei facturi
 - Definirea obiectivelor
 - Ratele de schimb, Moneda implicită pentru rezumat
 - Metrici:
@@ -75,6 +77,7 @@ Care permite utilizatorilor să își gestioneze finanțele fără efort, asigur
 - Securitate
   - Protecție prin cod de parolă unică
   - Cod de recuperare
+  - Autentificare biometrică
 - Experiența utilizatorului
   - Pagina principală configurabilă (configurații multiple pentru fiecare set `lățime x înălțime`)
   - Design receptiv și adaptabil

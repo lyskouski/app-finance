@@ -48,10 +48,12 @@ zastaniecca ŭ baku.
   - Abo biez abmiežavanniaŭ, pakazaŭšy vydatkavanuju sumu
   - Rozny hrafik: štotydzień, štomiesiac, štohod
   - Naladžvaĺny dzień pačatku tydnia i miesiaca
+  - Zvodka biudžetu: mahčymasć ihnaravać admoŭnyja značeńni
 - Rachunki, pieraklady, dachody (faktury)
   - Pieryjadyčnyja placiažy (z chatnim vidžetam)
   - Fiĺtravańnie
   - Prahnoz/dapuščeńnie pa katehoryi biudžetu
+  - Padzialić rachunak
 - Vyznačeńnie metaŭ - Kursy valiut, valiuta pa zmaŭčańni dlia zvodki
 - Mietryki:
   - Biudžet:
@@ -75,6 +77,7 @@ zastaniecca ŭ baku.
 - Biaspieka
   - Abarona adnarazovym paroliem
   - Kod adnaŭlieńnia
+  - Bijamietryčnaja aŭtentyfikacyja
 - Vopyt karystaĺnika
   - Haloŭnaja staronka z mahčymasciu kanfihuracyi (niekaĺki kanfihuracyj na nabor "šyrynia ch vyšynia")
   - Spahadny i adaptyŭny dyzajn

@@ -2,6 +2,11 @@
 
 _Yeniləmələrin tam siyahısına "İpucu" düyməsindəki "Haqqında" naviqasiya elementi vasitəsilə baxmaq olar._
 
+### 7.1.0
+- Büdcə xülasəsi: mənfi dəyərləri nəzərə almamaq seçimi
+- Hesabı bölmək
+- Biometrik autentifikasiya
+
 ### 7.0.2
 - Həm böyük, həm də kiçik ekranlar üçün Ana səhifə təkmilləşdirildi
 

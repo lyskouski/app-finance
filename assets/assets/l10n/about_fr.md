@@ -47,10 +47,12 @@ Elle permet aux utilisateurs de gérer leurs finances sans effort, tout en veill
   - Ou, sans limites en affichant un montant dépensé
   - Différents calendriers : hebdomadaire, mensuel, annuel
   - Jour de début de la semaine et du mois personnalisable
+  - Résumé du budget : option permettant d'ignorer les valeurs négatives
 - Factures, transferts, revenus (factures)
   - Paiements récurrents (avec un widget)
   - Filtrage
   - Hypothèse/prévision budgétaire par catégorie
+  - Partager une facture
 - Définition des objectifs
 - Taux de change, devise par défaut pour le résumé
 - Métriques :
@@ -75,6 +77,7 @@ Elle permet aux utilisateurs de gérer leurs finances sans effort, tout en veill
 - Sécurité
   - Protection par mot de passe à usage unique
   - Code de récupération
+  - Authentification biométrique
 - Expérience utilisateur
   - Page principale configurable (plusieurs configurations par jeu de `largeur x hauteur`)
   - Design réactif et adaptatif

@@ -47,10 +47,12 @@ Che permetta agli utenti di gestire le proprie finanze senza sforzo, garantendo 
   - Oppure, senza limiti, mostrando un importo speso
   - Cronologia diversa: settimanale, mensile, annuale
   - Giorno di inizio della settimana e del mese personalizzabili
+  - Riepilogo del bilancio: opzione per ignorare i valori negativi
 - Bollette, trasferimenti, entrate (fatture)
   - Pagamenti ricorrenti (con un widget)
   - Filtraggio
   - Ipotesi/previsioni relative alla categoria di bilancio
+  - Dividere una fattura
 - Definizione degli obiettivi
 - Tassi di cambio, Valuta predefinita per il riepilogo
 - Metriche:
@@ -75,6 +77,7 @@ Che permetta agli utenti di gestire le proprie finanze senza sforzo, garantendo 
 - Sicurezza
   - Protezione tramite codice password monouso
   - Codice di recupero
+  - Autenticazione biometrica
 - Esperienza utente
   - Pagina principale configurabile (configurazioni multiple per set di `larghezza x altezza`)
   - Design reattivo e adattivo

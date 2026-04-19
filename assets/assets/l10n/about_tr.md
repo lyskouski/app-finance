@@ -47,10 +47,12 @@ Bu, kullanıcıların mali durumlarını zahmetsizce yönetmelerini sağlarken k
   - Veya harcanan miktarı göstererek sınırlama olmaksızın
   - Farklı zaman çizelgesi: haftalık, aylık, yıllık
   - Haftanın ve ayın özelleştirilebilir başlangıç ​​günü
+  - Bütçe Özeti: negatif değerleri göz ardı etme seçeneği
 - Faturalar, Transferler, Gelirler (Faturalar)
   - Yinelenen Ödemeler (ana sayfa widget'ı ile)
   - Filtreleme
   - Bütçe Kategorisi varsayımı / tahmini
+  - Faturayı Bölme
 - Hedefler Tanım
 - Döviz kurları, Özet için Varsayılan Para Birimi
 - Metrikler:
@@ -75,6 +77,7 @@ Bu, kullanıcıların mali durumlarını zahmetsizce yönetmelerini sağlarken k
 - Güvenlik
   - Tek Kullanımlık Şifre Kodu ile Koruma
   - Kurtarma Kodu
+  - Biyometrik Kimlik Doğrulama
 - Kullanıcı Deneyimi
   - Yapılandırılabilir Ana Sayfa (`genişlik x yükseklik` seti başına birden fazla yapılandırma)
   - Duyarlı ve Uyarlanabilir Tasarım

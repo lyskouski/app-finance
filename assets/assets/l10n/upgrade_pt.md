@@ -2,6 +2,11 @@
 
 _A lista completa de actualizações pode ser consultada através do item de navegação "Acerca" no botão "Sugestões"._
 
+### 7.1.0
+- Resumo do orçamento: opção para ignorar valores negativos
+- Dividir uma conta
+- Autenticação biométrica
+
 ### 7.0.2
 - Página inicial otimizada para ecrãs grandes e pequenos
 

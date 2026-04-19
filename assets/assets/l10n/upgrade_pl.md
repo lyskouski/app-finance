@@ -2,6 +2,11 @@
 
 _Pełną listę aktualizacji można wyświetlić za pomocą elementu nawigacyjnego "O aplikacji" na przycisku "Wskazówki"._
 
+### 7.1.0
+- Podsumowanie budżetu: opcja pomijania wartości ujemnych
+- Podział rachunku
+- Uwierzytelnianie biometryczne
+
 ### 7.0.2
 - Ulepszona strona główna dostosowana zarówno do dużych, jak i małych ekranów
 

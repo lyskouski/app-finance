@@ -47,10 +47,12 @@ Dzięki temu użytkownicy mogą bez wysiłku zarządzać swoimi finansami, jedno
   - Lub bez ograniczeń, pokazując wydaną kwotę
   - Różne harmonogramy: tygodniowy, miesięczny, roczny
   - Możliwość dostosowania dnia rozpoczęcia tygodnia i miesiąca
+  - Podsumowanie budżetu: opcja pomijania wartości ujemnych
 - Rachunki, przelewy, dochody (faktury)
   - Płatności cykliczne (z widżetem domowym)
   - Filtrowanie
   - Założenie/prognoza kategorii budżetowej
+  - Podział rachunku
 - Definicja celów
 - Kursy wymiany, domyślna waluta dla podsumowania
 - Metryki:
@@ -75,6 +77,7 @@ Dzięki temu użytkownicy mogą bez wysiłku zarządzać swoimi finansami, jedno
 - Bezpieczeństwo
   - Ochrona za pomocą jednorazowego kodu hasła
   - Kod odzyskiwania
+  - Uwierzytelnianie biometryczne
 - Doświadczenie użytkownika
   - Konfigurowalna strona główna (wiele konfiguracji na zestaw `szerokość x wysokość`)
   - Responsywny i adaptacyjny design
