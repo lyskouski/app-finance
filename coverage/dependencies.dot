@@ -206,7 +206,7 @@ digraph G {
   }
   {
     rank = same; "design";
-    form [label="<0>FORM|<currency_selector>currency_selector|<date_input>date_input|<list_selector_item>list_selector_item|<simple_input>simple_input|<list_account_selector>list_account_selector|<abstract_selector>abstract_selector|<date_time_input>date_time_input|<color_selector>color_selector|<month_year_input>month_year_input|<currency_exchange_input>currency_exchange_input|<list_selector>list_selector|<list_budget_selector>list_budget_selector|<date_range_input>date_range_input|<currency_selector_code>currency_selector_code|<list_selector_page>list_selector_page|<icon_selector>icon_selector",fillcolor="silver:white", gradientangle=240, style="filled"];
+    form [label="<0>FORM|<currency_selector>currency_selector|<date_input>date_input|<list_selector_item>list_selector_item|<checkbox_input>checkbox_input|<simple_input>simple_input|<list_account_selector>list_account_selector|<abstract_selector>abstract_selector|<date_time_input>date_time_input|<color_selector>color_selector|<month_year_input>month_year_input|<currency_exchange_input>currency_exchange_input|<list_selector>list_selector|<list_budget_selector>list_budget_selector|<date_range_input>date_range_input|<currency_selector_code>currency_selector_code|<list_selector_page>list_selector_page|<icon_selector>icon_selector",fillcolor="silver:white", gradientangle=240, style="filled"];
   }
   {
     rank = same; "design";
@@ -966,9 +966,9 @@ digraph G {
   account -> controller [color="#F0F0F050"];
   account -> storage [color="#F0F0F050"];
   account -> _ext_ [color="#F0F0F050"];
+  account -> form [color="#F0F0F050"];
   account -> wrapper [color="#F0F0F050"];
   account -> _interfaces [color="#F0F0F050"];
-  account -> form [color="#F0F0F050"];
   account -> button [color="#F0F0F050"];
   account -> herald [color="#F0F0F050"];
   account -> storage [color="#F0F0F050"];
@@ -1080,10 +1080,10 @@ digraph G {
   budget -> storage [color="#F0F0F050"];
   budget -> _configs_ [color="#F0F0F050"];
   budget -> _ext_ [color="#F0F0F050"];
+  budget -> form [color="#F0F0F050"];
   budget -> wrapper [color="#F0F0F050"];
   budget -> _interfaces [color="#F0F0F050"];
   budget -> button [color="#F0F0F050"];
-  budget -> form [color="#F0F0F050"];
   budget -> budget_widgets [color="#F0F0F050"];
   budget -> herald [color="#F0F0F050"];
   budget -> structure [color="#F0F0F050"];
@@ -1191,6 +1191,7 @@ digraph G {
   security -> _configs_ [color="#F0F0F050"];
   security -> _ext_ [color="#F0F0F050"];
   security -> button [color="#F0F0F050"];
+  security -> form [color="#F0F0F050"];
   security -> generic [color="#F0F0F050"];
   security -> wrapper [color="#F0F0F050"];
   security -> _interfaces [color="#F0F0F050"];
@@ -1269,6 +1270,8 @@ digraph G {
   form -> form [color="#0000FF50"];
   form -> wrapper [color="#0000FF50"];
   form -> herald [color="#0000FF50"];
+  form -> _configs_ [color="#0000FF50"];
+  form -> wrapper [color="#0000FF50"];
   form -> _configs_ [color="#0000FF50"];
   form -> wrapper [color="#0000FF50"];
   form -> controller [color="#0000FF50"];
