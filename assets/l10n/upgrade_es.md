@@ -2,6 +2,11 @@
 
 _La lista completa de actualizaciones puede consultarse en el menú "Acerca de" del botón "Sugerencias"._
 
+### 7.1.0
+- Resumen del presupuesto: opción para ignorar los valores negativos
+- Dividir una factura
+- Autenticación biométrica
+
 ### 7.0.2
 - Página de inicio mejorada tanto para pantallas grandes como pequeñas
 

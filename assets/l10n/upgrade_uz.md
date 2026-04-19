@@ -2,6 +2,11 @@
 
 _Yangilanishlarning toʻliq roʻyxatini “Maslahat” tugmasidagi “Haqida” navigatsiya bandi orqali koʻrish mumkin._
 
+### 7.1.0
+- Byudjet xulosasi: salbiy qiymatlarni e'tiborsiz qoldirish imkoniyati
+- Hisobni bo'lish
+- Biometrik autentifikatsiya
+
 ### 7.0.2
 - Katta va kichik ekranlar uchun bosh sahifa yaxshilandi
 

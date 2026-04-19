@@ -2,6 +2,11 @@
 
 _Güncellemelerin tam listesi “İpuçları” düğmesindeki “Hakkında” gezinti öğesi aracılığıyla görüntülenebilir._
 
+### 7.1.0
+- Bütçe Özeti: negatif değerleri göz ardı etme seçeneği
+- Faturayı Bölme
+- Biyometrik Kimlik Doğrulama
+
 ### 7.0.2
 - Hem geniş hem de dar ekranlar için ana sayfa iyileştirildi
 

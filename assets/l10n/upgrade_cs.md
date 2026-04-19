@@ -2,6 +2,11 @@
 
 _Úplný seznam aktualizací si můžete prohlédnout v navigační položce „O aplikaci“ na tlačítku „Tipy“._
 
+### 7.1.0
+- Souhrn rozpočtu: možnost ignorovat záporné hodnoty
+- Rozdělení účtu
+- Biometrické ověření
+
 ### 7.0.2
 - Vylepšená úvodní stránka pro velké i malé obrazovky
 

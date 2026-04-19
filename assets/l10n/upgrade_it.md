@@ -3,6 +3,11 @@
 _L'elenco completo degli aggiornamenti può essere consultato tramite la voce di navigazione “Informazioni” del
 pulsante “Suggerimenti”._
 
+### 7.1.0
+- Riepilogo del bilancio: opzione per ignorare i valori negativi
+- Dividere una fattura
+- Autenticazione biometrica
+
 ### 7.0.2
 - Pagina iniziale ottimizzata sia per schermi grandi che piccoli
 

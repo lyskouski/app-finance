@@ -2,6 +2,11 @@
 
 _La liste complète des mises à jour peut être consultée via l'élément de navigation "À propos" du bouton "Conseils"._
 
+### 7.1.0
+- Résumé du budget : option permettant d'ignorer les valeurs négatives
+- Partage d'une facture
+- Authentification biométrique
+
 ### 7.0.2
 - Amélioration de la page d'accueil pour les grands et les petits écrans
 

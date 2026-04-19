@@ -2,6 +2,11 @@
 
 _Lista completă a actualizărilor poate fi vizualizată prin intermediul elementului de navigare „Despre” de pe butonul „Sugestii”._
 
+### 7.1.0
+- Rezumat buget: opțiune de ignorare a valorilor negative
+- Împărțirea unei facturi
+- Autentificare biometrică
+
 ### 7.0.2
 - Pagina de start optimizată atât pentru ecranele mari, cât și pentru cele mici
 

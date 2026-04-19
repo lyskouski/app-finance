@@ -2,6 +2,11 @@
 
 _Poŭny spis abnaŭlieńniaŭ možna prahliadzieć u navihacyjnym punkcie «Ab Dadatku» na knopcy «Padkazki»._
 
+### 7.1.0
+- Zvodka biudžetu: mahčymasć ihnaravać admoŭnyja značeńni
+- Padzialić rachunak
+- Bijamietryčnaja aŭtentyfikacyja
+
 ### 7.0.2
 - Paliepšanaja haloŭnaja staronka jak dlia vialikich, tak i dlia malych ekranaŭ
 

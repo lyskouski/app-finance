@@ -2,6 +2,11 @@
 
 _De volledige lijst met updates kan worden bekeken via het navigatie-item “Over” op de knop “Hints”._
 
+### 7.1.0
+- Begrotingsoverzicht: optie om negatieve waarden te negeren
+- Een rekening splitsen
+- Biometrische authenticatie
+
 ### 7.0.2
 - Verbeterde startpagina voor zowel grote als kleine schermen
 
