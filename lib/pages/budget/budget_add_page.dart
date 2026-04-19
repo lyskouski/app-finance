@@ -11,6 +11,7 @@ import 'package:app_finance/_configs/custom_color_scheme.dart';
 import 'package:app_finance/_configs/theme_helper.dart';
 import 'package:app_finance/_ext/build_context_ext.dart';
 import 'package:app_finance/_ext/date_time_ext.dart';
+import 'package:app_finance/design/form/checkbox_input.dart';
 import 'package:app_finance/design/wrapper/input_wrapper.dart';
 import 'package:app_finance/design/wrapper/text_wrapper.dart';
 import 'package:app_finance/pages/_interfaces/abstract_add_page.dart';
@@ -253,18 +254,11 @@ class BudgetAddPageState<T extends BudgetAddPage> extends AbstractAddPageState<T
               tooltip: AppLocale.labels.currencyTooltip,
               onChange: (value) => setState(() => currency = value),
             ),
-            RowWidget(
-              indent: indent,
-              maxWidth: width + indent,
-              chunk: const [20, null],
-              children: [
-                [
-                  Center(
-                      heightFactor: 0.5,
-                      child: Checkbox(value: skip, onChanged: (value) => setState(() => skip = value!)))
-                ],
-                [TextWrapper(AppLocale.labels.skipFromTotals)],
-              ],
+            CheckboxInput(
+              label: AppLocale.labels.skipFromTotals,
+              value: skip,
+              onChanged: (value) => setState(() => skip = value),
+              constraints: constraints,
             ),
             ThemeHelper.hIndent2x,
           ],

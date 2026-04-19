@@ -10,11 +10,10 @@ import 'package:app_finance/_configs/custom_color_scheme.dart';
 import 'package:app_finance/_configs/theme_helper.dart';
 import 'package:app_finance/_ext/build_context_ext.dart';
 import 'package:app_finance/design/button/full_sized_button_widget.dart';
+import 'package:app_finance/design/form/checkbox_input.dart';
 import 'package:app_finance/design/generic/notification_bar.dart';
 import 'package:app_finance/design/wrapper/input_wrapper.dart';
-import 'package:app_finance/design/wrapper/row_widget.dart';
 import 'package:app_finance/design/wrapper/single_scroll_wrapper.dart';
-import 'package:app_finance/design/wrapper/text_wrapper.dart';
 import 'package:app_finance/pages/_interfaces/abstract_page_state.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -119,7 +118,6 @@ class SecurityPageState extends AbstractPageState<SecurityPage> {
   @override
   Widget buildContent(BuildContext context, BoxConstraints constraints) {
     final indent = ThemeHelper.getIndent();
-    final width = ThemeHelper.getWidth(context, 2, constraints);
     final textTheme = context.textTheme;
     final secret = AppPreferences.get(AppPreferences.prefPrivacyKey) ?? '';
     final totp = TOTP(secret: secret);
@@ -145,27 +143,11 @@ class SecurityPageState extends AbstractPageState<SecurityPage> {
                 inputType: TextInputType.visiblePassword,
               ),
               if (!kIsWeb)
-                RowWidget(
-                  indent: indent,
-                  maxWidth: width,
-                  chunk: const [20, null],
-                  children: [
-                    [
-                      Center(
-                        heightFactor: 0.5,
-                        child: Checkbox(
-                          value: isBio,
-                          onChanged: (value) => setState(() => isBio = value!),
-                        ),
-                      )
-                    ],
-                    [
-                      Align(
-                        alignment: Alignment.centerLeft,
-                        child: TextWrapper(AppLocale.labels.secureBioPromptTitle),
-                      ),
-                    ],
-                  ],
+                CheckboxInput(
+                  label: AppLocale.labels.secureBioPromptTitle,
+                  value: isBio,
+                  onChanged: (value) => setState(() => isBio = value),
+                  constraints: constraints,
                 ),
               TOTPQrWidget(
                 secret: secret,

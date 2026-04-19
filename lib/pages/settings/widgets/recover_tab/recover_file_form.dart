@@ -6,9 +6,9 @@ import 'package:app_finance/_classes/herald/app_locale.dart';
 import 'package:app_finance/_classes/storage/transaction_log/file_protocol.dart';
 import 'package:app_finance/_configs/theme_helper.dart';
 import 'package:app_finance/_ext/build_context_ext.dart';
+import 'package:app_finance/design/form/checkbox_input.dart';
 import 'package:app_finance/design/form/simple_input.dart';
 import 'package:app_finance/design/wrapper/required_widget.dart';
-import 'package:app_finance/design/wrapper/text_wrapper.dart';
 import 'package:app_finance/pages/settings/widgets/recover_tab/nav_button_widget.dart';
 import 'package:app_finance/pages/settings/widgets/recover_tab/recovery_type.dart';
 import 'package:flutter/material.dart';
@@ -80,24 +80,16 @@ class RecoverFileFormState extends State<RecoverFileForm> {
           ),
         ),
         ThemeHelper.hIndent4x,
-        Row(
-          children: [
-            Center(
-              heightFactor: 0.5,
-              child: Checkbox(value: isEncrypted, onChanged: (value) => setState(() => isEncrypted = value!)),
-            ),
-            TextWrapper(AppLocale.labels.isEncrypted),
-          ],
+        CheckboxInput(
+          label: AppLocale.labels.isEncrypted,
+          value: isEncrypted,
+          onChanged: (value) => setState(() => isEncrypted = value),
         ),
         ThemeHelper.hIndent,
-        Row(
-          children: [
-            Center(
-              heightFactor: 0.5,
-              child: Checkbox(value: isCleaned, onChanged: (value) => setState(() => isCleaned = value!)),
-            ),
-            TextWrapper(AppLocale.labels.isCleaned),
-          ],
+        CheckboxInput(
+          label: AppLocale.labels.isCleaned,
+          value: isCleaned,
+          onChanged: (value) => setState(() => isCleaned = value),
         ),
         ThemeHelper.hIndent2x,
         SizedBox(
