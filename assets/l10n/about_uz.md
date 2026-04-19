@@ -47,10 +47,12 @@ Bu foydalanuvchilarga o'z mablag'larini osonlikcha boshqarish imkoniyatini berad
   - Yoki, sarflangan miqdorni ko'rsatish orqali cheklovlarsiz
   - Turli vaqt jadvallari: haftalik, oylik, yillik
   - Hafta va oyning moslashtirilgan boshlanish kuni
+  - Byudjet xulosasi: salbiy qiymatlarni e'tiborsiz qoldirish imkoniyati
 - Hisob-kitoblar, o'tkazmalar, daromadlar (hisob-kitoblar)
   - Takroriy to'lovlar (uy vidjeti bilan)
   - Filtrlash
   - Byudjet toifasi taxmini / bashorati
+  - Hisobni bo'lish
 - Maqsadlarni aniqlash
 - Valyuta kurslari, Xulosa uchun standart valyuta
 - Ko'rsatkichlar:
@@ -75,6 +77,7 @@ Bu foydalanuvchilarga o'z mablag'larini osonlikcha boshqarish imkoniyatini berad
 - Xavfsizlik
   - Bir martalik parol kodi bilan himoya
   - Tiklash kodi
+  - Biometrik autentifikatsiya
 - Foydalanuvchi tajribasi
   - Sozlanishi mumkin bo'lgan asosiy sahifa ("kenglik x balandlik" uchun bir nechta konfiguratsiyalar)
   - Sezgir va moslashuvchan dizayn

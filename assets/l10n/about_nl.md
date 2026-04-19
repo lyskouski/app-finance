@@ -47,10 +47,12 @@ Dat stelt gebruikers in staat om moeiteloos hun financiën te beheren en zorgt e
   - Of, zonder beperkingen door een uitgegeven bedrag te tonen
   - Verschillende tijdlijn: wekelijks, maandelijks, jaarlijks
   - Aanpasbare startdag van de week en maand
+  - Begrotingsoverzicht: optie om negatieve waarden te negeren
 - Rekeningen, overschrijvingen, inkomsten (facturen)
   - Terugkerende betalingen (met een widget)
   - Filteren
   - Begrotingscategorie veronderstelling / voorspelling
+  - Een rekening splitsen
 - Doelen definiëren
 - Wisselkoersen, standaardvaluta voor overzicht
 - Metriek:
@@ -75,6 +77,7 @@ Dat stelt gebruikers in staat om moeiteloos hun financiën te beheren en zorgt e
 - Beveiliging
   - Bescherming door eenmalige wachtwoordcode
   - Herstelcode
+  - Biometrische authenticatie
 - Gebruikerservaring
   - Configureerbare hoofdpagina (meerdere configuraties per `breedte x hoogte` set)
   - Responsief en adaptief ontwerp

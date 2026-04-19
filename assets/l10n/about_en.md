@@ -47,10 +47,12 @@ That empowers users to effortlessly manage their finances while ensuring that no
   - Or, without limitations by showing a spent amount
   - Different timeline: weekly, monthly, yearly
   - Customizable start day of the week and month
+  - Budget Summary: option to ignore negative values
 - Bills, Transfers, Incomes (Invoices)
   - Recurring Payments (with a home widget)
   - Filtering
   - Budget Category assumption / prediction
+  - Split a Bill
 - Goals Definition
 - Exchange rates, Default Currency for Summary
 - Metrics:
@@ -75,6 +77,7 @@ That empowers users to effortlessly manage their finances while ensuring that no
 - Security
   - Protection by One-time Password Code
   - Recovery Code
+  - Biometric Authentication
 - User Experience
   - Configurable Main Page (multiple configurations per `width x height` set)
   - Responsive & Adaptive Design

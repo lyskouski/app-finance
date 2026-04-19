@@ -2,6 +2,11 @@
 
 _The full list of updates can be viewed via the "About" navigation item on the "Hints" button._
 
+### 7.1.0
+- Biometric Authentication
+- Split a Bill
+- Budget Summary: option to ignore negative values
+
 ### 7.0.2
 - Improved Home page for both large and small screens
 

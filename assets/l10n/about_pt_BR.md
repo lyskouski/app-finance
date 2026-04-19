@@ -47,10 +47,12 @@ Isso permite que os usuários gerenciem suas finanças sem esforço, garantindo 
   - Ou, sem limitações, mostrando um valor gasto
   - Cronograma diferente: semanal, mensal, anual
   - Dia de início da semana e mês personalizáveis
+  - Resumo do orçamento: opção para ignorar valores negativos
 - Contas, transferências, receitas (faturas)
   - Pagamentos recorrentes (com um widget inicial)
   - Filtragem
   - Premissa/previsão da categoria orçamentária
+  - Dividir uma conta
 - Definição de metas
 - Taxas de câmbio, moeda padrão para resumo
 - Métricas:
@@ -75,6 +77,7 @@ Isso permite que os usuários gerenciem suas finanças sem esforço, garantindo 
 - Segurança
   - Proteção por código de senha única
   - Código de recuperação
+  - Autenticação biométrica
 - Experiência do usuário
   - Página principal configurável (várias configurações por conjunto de “largura x altura”)
   - Design responsivo e adaptável

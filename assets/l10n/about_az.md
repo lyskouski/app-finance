@@ -47,10 +47,12 @@ Bu, istifadəçilərə heç kimin geridə qalmamasını təmin etməklə öz mal
   - Və ya xərclənmiş məbləği göstərməklə məhdudiyyətsiz
   - Fərqli qrafik: həftəlik, aylıq, illik
   - Həftənin və ayın fərdiləşdirilə bilən başlanğıc günü
+  - Büdcə xülasəsi: mənfi dəyərləri nəzərə almamaq seçimi
 - Hesablar, köçürmələr, gəlirlər (qaimə-fakturalar)
   - Təkrarlanan ödənişlər (ev vidceti ilə)
   - Filtrləmə
   - Büdcə Kateqoriyasının fərziyyəsi / proqnozu
+  - Hesabı bölmək
 - Məqsədlərin Tərifi
 - Valyuta məzənnələri, Xülasə üçün Defolt Valyuta
 - Metriklər:
@@ -75,6 +77,7 @@ Bu, istifadəçilərə heç kimin geridə qalmamasını təmin etməklə öz mal
 - Təhlükəsizlik
   - Tək istifadəlik şifrə kodu ilə qoruma
   - Bərpa kodu
+  - Biometrik autentifikasiya
 - İstifadəçi təcrübəsi
   - Konfiqurasiya edilə bilən Əsas Səhifə ("en x hündürlük" dəsti üçün birdən çox konfiqurasiya)
   - Cavab verən və Uyğunlaşan Dizayn

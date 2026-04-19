@@ -49,10 +49,12 @@ zurückgelassen wird.
   - Oder ohne Einschränkungen durch Anzeige eines ausgegebenen Betrags
   - Verschiedene Zeitleisten: wöchentlich, monatlich, vorzeitig
   - Anpassbarer Starttag der Woche und des Monats
+  - Budgetübersicht: Option zum Ignorieren negativer Werte
 - Rechnungen, Überweisungen, Einkünfte (Rechnungen)
   - Wiederkehrende Zahlungen (mit einem Home-Widget für Android)
   - Filterung
   - Annahme/Prognose zur Budgetkategorie
+  - Rechnung aufteilen
 - Ziele Definition
 - Wechselkurse, Standardwährung für Zusammenfassung
 - Metriken:
@@ -77,6 +79,7 @@ zurückgelassen wird.
 - Sicherheit
   - Schutz durch Einmal-Passwort-Code
   - Wiederherstellungscode
+  - Biometrische Authentifizierung
 - Benutzerfreundlichkeit
   - Konfigurierbare Hauptseite (mehrere Konfigurationen pro `Breite x Höhe` eingestellt)
   - Reaktionsfähiges & adaptives Design

@@ -47,10 +47,12 @@ Que permita a los usuarios gestionar sus finanzas sin esfuerzo, garantizando al 
   - O, sin limitaciones mostrando un importe gastado
   - Diferentes cronogramas: semanal, mensual, anual
   - Día de inicio de la semana y del mes personalizable
+  - Resumen del presupuesto: opción para ignorar los valores negativos
 - Facturas, Transferencias, Ingresos (Facturas)
   - Pagos periódicos (con un widget de inicio)
   - Filtrado
   - Supuesto/predicción de la categoría presupuestaria
+  - Dividir una factura
 - Definición de Metas
 - Tipos de cambio, Moneda por defecto para el resumen
 - Métricas:
@@ -75,6 +77,7 @@ Que permita a los usuarios gestionar sus finanzas sin esfuerzo, garantizando al 
 - Seguridad
   - Protección mediante código de contraseña de un solo uso
   - Código de recuperación
+  - Autenticación biométrica
 - Experiencia de usuario
   - Página principal configurable (múltiples configuraciones por conjunto `ancho x alto`)
   - Diseño adaptable y con capacidad de respuesta
