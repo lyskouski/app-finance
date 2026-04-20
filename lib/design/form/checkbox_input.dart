@@ -11,6 +11,7 @@ class CheckboxInput extends StatelessWidget {
   final bool value;
   final Function(bool) onChanged;
   final BoxConstraints? constraints;
+  final bool enabled;
 
   const CheckboxInput({
     super.key,
@@ -18,6 +19,7 @@ class CheckboxInput extends StatelessWidget {
     required this.value,
     required this.onChanged,
     this.constraints,
+    this.enabled = true,
   });
 
   @override
@@ -30,13 +32,16 @@ class CheckboxInput extends StatelessWidget {
       chunk: const [20, null],
       children: [
         [
-          Center(
-            heightFactor: 0.5,
-            child: Checkbox(
-              value: value,
-              onChanged: (newValue) => onChanged(newValue ?? false),
-            ),
-          )
+          if (enabled)
+            Center(
+              heightFactor: 0.5,
+              child: Checkbox(
+                value: value,
+                onChanged: (newValue) => onChanged(newValue ?? false),
+              ),
+            )
+          else
+            Icon(Icons.indeterminate_check_box_outlined),
         ],
         [
           TextWrapper(label),

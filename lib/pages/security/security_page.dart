@@ -18,6 +18,7 @@ import 'package:app_finance/pages/_interfaces/abstract_page_state.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_local_authentication/flutter_local_authentication.dart';
 import 'package:simple_totp_auth/simple_totp_auth.dart';
 
 class SecurityPage extends StatefulWidget {
@@ -33,6 +34,7 @@ class SecurityPageState extends AbstractPageState<SecurityPage> {
   late TextEditingController passwordRepeat;
   late TextEditingController otpCode;
   bool isBio = AppPreferences.get(AppPreferences.prefIsBio) == AppPreferences.isActive;
+  bool canAuthenticateBio = false;
 
   @override
   void initState() {
@@ -53,6 +55,18 @@ class SecurityPageState extends AbstractPageState<SecurityPage> {
   }
 
   bool get isOtpActive => AppPreferences.get(AppPreferences.prefIsOTP) == AppPreferences.isActive;
+
+  Future<void> checkBioAuthentication() async {
+    final bio = FlutterLocalAuthentication();
+    bool isAvailable = false;
+    try {
+      isAvailable = await bio.canAuthenticate();
+      await bio.setTouchIDAuthenticationAllowableReuseDuration(30);
+    } on Exception catch (_) {
+      isAvailable = false;
+    }
+    setState(() => canAuthenticateBio = isAvailable);
+  }
 
   @override
   String getButtonName() {
@@ -117,6 +131,7 @@ class SecurityPageState extends AbstractPageState<SecurityPage> {
 
   @override
   Widget buildContent(BuildContext context, BoxConstraints constraints) {
+    WidgetsBinding.instance.addPostFrameCallback((_) => checkBioAuthentication());
     final indent = ThemeHelper.getIndent();
     final textTheme = context.textTheme;
     final secret = AppPreferences.get(AppPreferences.prefPrivacyKey) ?? '';
@@ -148,6 +163,7 @@ class SecurityPageState extends AbstractPageState<SecurityPage> {
                   value: isBio,
                   onChanged: (value) => setState(() => isBio = value),
                   constraints: constraints,
+                  enabled: canAuthenticateBio,
                 ),
               TOTPQrWidget(
                 secret: secret,
