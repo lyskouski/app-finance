@@ -31,13 +31,13 @@
             <td class="headerValue">lcov.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntryHi">92.3&nbsp;%</td>
+            <td class="headerCovTableEntryMed">86.7&nbsp;%</td>
+            <td class="headerCovTableEntry">15</td>
             <td class="headerCovTableEntry">13</td>
-            <td class="headerCovTableEntry">12</td>
           </tr>
           <tr>
             <td class="headerItem">Test Date:</td>
-            <td class="headerValue">2026-04-19 16:00:07</td>
+            <td class="headerValue">2026-04-20 07:20:45</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntryHi">-</td>
@@ -73,40 +73,45 @@
 <span id="L11"><span class="lineNum">      11</span>              :   final bool value;</span>
 <span id="L12"><span class="lineNum">      12</span>              :   final Function(bool) onChanged;</span>
 <span id="L13"><span class="lineNum">      13</span>              :   final BoxConstraints? constraints;</span>
-<span id="L14"><span class="lineNum">      14</span>              : </span>
-<span id="L15"><span class="lineNum">      15</span> <span class="tlaGNC tlaBgGNC">           1 :   const CheckboxInput({</span></span>
-<span id="L16"><span class="lineNum">      16</span>              :     super.key,</span>
-<span id="L17"><span class="lineNum">      17</span>              :     required this.label,</span>
-<span id="L18"><span class="lineNum">      18</span>              :     required this.value,</span>
-<span id="L19"><span class="lineNum">      19</span>              :     required this.onChanged,</span>
-<span id="L20"><span class="lineNum">      20</span>              :     this.constraints,</span>
-<span id="L21"><span class="lineNum">      21</span>              :   });</span>
-<span id="L22"><span class="lineNum">      22</span>              : </span>
-<span id="L23"><span class="lineNum">      23</span> <span class="tlaGNC">           1 :   @override</span></span>
-<span id="L24"><span class="lineNum">      24</span>              :   Widget build(BuildContext context) {</span>
-<span id="L25"><span class="lineNum">      25</span> <span class="tlaGNC">           1 :     final indent = ThemeHelper.getIndent();</span></span>
-<span id="L26"><span class="lineNum">      26</span> <span class="tlaGNC">           2 :     final width = ThemeHelper.getWidth(context, 6, constraints);</span></span>
-<span id="L27"><span class="lineNum">      27</span> <span class="tlaGNC">           1 :     return RowWidget(</span></span>
-<span id="L28"><span class="lineNum">      28</span>              :       indent: indent,</span>
-<span id="L29"><span class="lineNum">      29</span>              :       maxWidth: width,</span>
-<span id="L30"><span class="lineNum">      30</span>              :       chunk: const [20, null],</span>
-<span id="L31"><span class="lineNum">      31</span> <span class="tlaGNC">           1 :       children: [</span></span>
-<span id="L32"><span class="lineNum">      32</span> <span class="tlaGNC">           1 :         [</span></span>
-<span id="L33"><span class="lineNum">      33</span> <span class="tlaGNC">           1 :           Center(</span></span>
-<span id="L34"><span class="lineNum">      34</span>              :             heightFactor: 0.5,</span>
-<span id="L35"><span class="lineNum">      35</span> <span class="tlaGNC">           1 :             child: Checkbox(</span></span>
-<span id="L36"><span class="lineNum">      36</span> <span class="tlaGNC">           1 :               value: value,</span></span>
-<span id="L37"><span class="lineNum">      37</span> <span class="tlaUNC tlaBgUNC">           0 :               onChanged: (newValue) =&gt; onChanged(newValue ?? false),</span></span>
-<span id="L38"><span class="lineNum">      38</span>              :             ),</span>
-<span id="L39"><span class="lineNum">      39</span>              :           )</span>
-<span id="L40"><span class="lineNum">      40</span>              :         ],</span>
-<span id="L41"><span class="lineNum">      41</span> <span class="tlaGNC tlaBgGNC">           1 :         [</span></span>
-<span id="L42"><span class="lineNum">      42</span> <span class="tlaGNC">           2 :           TextWrapper(label),</span></span>
-<span id="L43"><span class="lineNum">      43</span>              :         ],</span>
-<span id="L44"><span class="lineNum">      44</span>              :       ],</span>
-<span id="L45"><span class="lineNum">      45</span>              :     );</span>
-<span id="L46"><span class="lineNum">      46</span>              :   }</span>
-<span id="L47"><span class="lineNum">      47</span>              : }</span>
+<span id="L14"><span class="lineNum">      14</span>              :   final bool enabled;</span>
+<span id="L15"><span class="lineNum">      15</span>              : </span>
+<span id="L16"><span class="lineNum">      16</span> <span class="tlaGNC tlaBgGNC">           1 :   const CheckboxInput({</span></span>
+<span id="L17"><span class="lineNum">      17</span>              :     super.key,</span>
+<span id="L18"><span class="lineNum">      18</span>              :     required this.label,</span>
+<span id="L19"><span class="lineNum">      19</span>              :     required this.value,</span>
+<span id="L20"><span class="lineNum">      20</span>              :     required this.onChanged,</span>
+<span id="L21"><span class="lineNum">      21</span>              :     this.constraints,</span>
+<span id="L22"><span class="lineNum">      22</span>              :     this.enabled = true,</span>
+<span id="L23"><span class="lineNum">      23</span>              :   });</span>
+<span id="L24"><span class="lineNum">      24</span>              : </span>
+<span id="L25"><span class="lineNum">      25</span> <span class="tlaGNC">           1 :   @override</span></span>
+<span id="L26"><span class="lineNum">      26</span>              :   Widget build(BuildContext context) {</span>
+<span id="L27"><span class="lineNum">      27</span> <span class="tlaGNC">           1 :     final indent = ThemeHelper.getIndent();</span></span>
+<span id="L28"><span class="lineNum">      28</span> <span class="tlaGNC">           2 :     final width = ThemeHelper.getWidth(context, 6, constraints);</span></span>
+<span id="L29"><span class="lineNum">      29</span> <span class="tlaGNC">           1 :     return RowWidget(</span></span>
+<span id="L30"><span class="lineNum">      30</span>              :       indent: indent,</span>
+<span id="L31"><span class="lineNum">      31</span>              :       maxWidth: width,</span>
+<span id="L32"><span class="lineNum">      32</span>              :       chunk: const [20, null],</span>
+<span id="L33"><span class="lineNum">      33</span> <span class="tlaGNC">           1 :       children: [</span></span>
+<span id="L34"><span class="lineNum">      34</span> <span class="tlaGNC">           1 :         [</span></span>
+<span id="L35"><span class="lineNum">      35</span> <span class="tlaGNC">           1 :           if (enabled)</span></span>
+<span id="L36"><span class="lineNum">      36</span> <span class="tlaGNC">           1 :             Center(</span></span>
+<span id="L37"><span class="lineNum">      37</span>              :               heightFactor: 0.5,</span>
+<span id="L38"><span class="lineNum">      38</span> <span class="tlaGNC">           1 :               child: Checkbox(</span></span>
+<span id="L39"><span class="lineNum">      39</span> <span class="tlaGNC">           1 :                 value: value,</span></span>
+<span id="L40"><span class="lineNum">      40</span> <span class="tlaUNC tlaBgUNC">           0 :                 onChanged: (newValue) =&gt; onChanged(newValue ?? false),</span></span>
+<span id="L41"><span class="lineNum">      41</span>              :               ),</span>
+<span id="L42"><span class="lineNum">      42</span>              :             )</span>
+<span id="L43"><span class="lineNum">      43</span>              :           else</span>
+<span id="L44"><span class="lineNum">      44</span> <span class="tlaUNC">           0 :             Icon(Icons.indeterminate_check_box_outlined),</span></span>
+<span id="L45"><span class="lineNum">      45</span>              :         ],</span>
+<span id="L46"><span class="lineNum">      46</span> <span class="tlaGNC tlaBgGNC">           1 :         [</span></span>
+<span id="L47"><span class="lineNum">      47</span> <span class="tlaGNC">           2 :           TextWrapper(label),</span></span>
+<span id="L48"><span class="lineNum">      48</span>              :         ],</span>
+<span id="L49"><span class="lineNum">      49</span>              :       ],</span>
+<span id="L50"><span class="lineNum">      50</span>              :     );</span>
+<span id="L51"><span class="lineNum">      51</span>              :   }</span>
+<span id="L52"><span class="lineNum">      52</span>              : }</span>
         </pre>
               </td>
             </tr>
