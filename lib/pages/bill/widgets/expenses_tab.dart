@@ -276,11 +276,11 @@ class ExpensesTabState<T extends ExpensesTab> extends State<T> {
                     isWide: true,
                     maxWidth:
                         display.isBottom ? width - indent * 2 : width / categories.length - indent * categories.length,
-                    tooltip: item.title,
-                    color: item.color ?? context.colorScheme.primary,
-                    borderColor: item.color?.withValues(alpha: 0.5),
-                    icon: item.icon ?? Icons.category,
-                    onPressed: () => setState(() => budget = item.uuid),
+                    tooltip: item?.title ?? '',
+                    color: item?.color ?? context.colorScheme.primary,
+                    borderColor: item?.color?.withValues(alpha: 0.5),
+                    icon: item?.icon ?? Icons.category,
+                    onPressed: () => setState(() => budget = item?.uuid),
                   );
                 });
                 return display.isBottom
