@@ -144,11 +144,11 @@ jobs:
           echo -n "$ANDROID_JKS" | base64 -d > $GITHUB_WORKSPACE/android/app/key.jks
           echo -n "$ANDROID_KEY" | base64 -d > $GITHUB_WORKSPACE/android/key.properties
 
-      - name: Clean Android Build
-        if: matrix.target == 'Android'
-        run: |
-          flutter clean
-          cd android && ./gradlew clean && cd ..
+      #- name: Clean Android Build
+      #  if: matrix.target == 'Android'
+      #  run: |
+      #    flutter clean
+      #    cd android && ./gradlew clean && cd ..
 
       - name: Run Android Build
         if: matrix.target == 'Android'
