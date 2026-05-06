@@ -110,7 +110,7 @@ digraph G {
   }
   {
     rank = same; "pages";
-    bill [label="<0>BILL|<bill_add_page>bill_add_page|<bill_search_page>bill_search_page|<bill_page>bill_page|<bill_scope_view_page>bill_scope_view_page|<bill_view_page>bill_view_page|<bill_edit_page>bill_edit_page",fillcolor="silver:white", gradientangle=240, style="filled"];
+    bill [label="<0>BILL|<bill_add_page>bill_add_page|<bill_search_page>bill_search_page|<bill_page>bill_page|<bill_scope_view_page>bill_scope_view_page|<bill_view_page>bill_view_page|<bill_edit_page>bill_edit_page|<bill_split_page>bill_split_page",fillcolor="silver:white", gradientangle=240, style="filled"];
   }
   {
     rank = same; "pages";
@@ -805,13 +805,21 @@ digraph G {
   bill -> _configs_ [color="#F0F0F050"];
   bill -> structure_navigation [color="#F0F0F050"];
   bill -> button [color="#F0F0F050"];
-  bill -> form [color="#F0F0F050"];
   bill -> wrapper [color="#F0F0F050"];
   bill -> _interfaces [color="#F0F0F050"];
   bill -> bill_widgets [color="#F0F0F050"];
+  bill -> bill [color="#F0F0F050"];
   bill -> structure [color="#F0F0F050"];
   bill -> bill [color="#F0F0F050"];
   bill -> bill_widgets [color="#F0F0F050"];
+  bill -> herald [color="#F0F0F050"];
+  bill -> controller [color="#F0F0F050"];
+  bill -> structure [color="#F0F0F050"];
+  bill -> _configs_ [color="#F0F0F050"];
+  bill -> button [color="#F0F0F050"];
+  bill -> form [color="#F0F0F050"];
+  bill -> wrapper [color="#F0F0F050"];
+  bill -> _interfaces [color="#F0F0F050"];
   home_widgets -> controller [color="#F0F0F050"];
   home_widgets -> herald [color="#F0F0F050"];
   home_widgets -> storage [color="#F0F0F050"];
