@@ -38,6 +38,7 @@ class DateTimeInputState extends AbstractSelectorState<DateTimeInput> {
       context: context,
       isScrollControlled: true,
       useSafeArea: true,
+      shape: const RoundedRectangleBorder(borderRadius: BorderRadius.zero),
       builder: (sheetContext) {
         int hour = initial.hour;
         int minute = initial.minute;
