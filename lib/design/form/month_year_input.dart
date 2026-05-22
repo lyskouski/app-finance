@@ -64,7 +64,7 @@ class MonthYearInputState extends AbstractSelectorState<MonthYearInput> {
             AppLocale.labels.dateTooltip,
             style: context.textTheme.tooltipMedium,
           );
-    return Container(
+    return Material(
       color: context.colorScheme.fieldBackground,
       child: ListTile(
         minVerticalPadding: 0,

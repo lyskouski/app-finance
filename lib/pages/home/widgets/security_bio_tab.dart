@@ -13,8 +13,7 @@ import 'package:app_finance/design/wrapper/input_wrapper.dart';
 import 'package:app_finance/design/wrapper/single_scroll_wrapper.dart';
 import 'package:app_finance/pages/_interfaces/abstract_page_state.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_local_authentication/flutter_local_authentication.dart';
-import 'package:flutter_local_authentication/localization_model.dart';
+import 'package:local_auth/local_auth.dart';
 
 class SecurityBioTab extends StatefulWidget {
   final VoidCallback onSuccess;
@@ -28,18 +27,12 @@ class SecurityBioTab extends StatefulWidget {
 class SecurityBioTabState extends AbstractPageState<SecurityBioTab> {
   late FocusController focus;
   late TextEditingController password;
-  final bio = FlutterLocalAuthentication();
+  final bio = LocalAuthentication();
 
   @override
   void initState() {
     focus = FocusController();
     password = TextEditingController();
-    final localization = LocalizationModel(
-      promptDialogTitle: AppLocale.labels.secureBioPromptTitle,
-      promptDialogReason: AppLocale.labels.secureBioPromptReason,
-      cancelButtonTitle: AppLocale.labels.btnCancel,
-    );
-    bio.setLocalizationModel(localization);
     super.initState();
   }
 
@@ -90,14 +83,25 @@ class SecurityBioTabState extends AbstractPageState<SecurityBioTab> {
   Future<void> checkBio(BuildContext context) async {
     bool canAuthenticate = false;
     try {
-      canAuthenticate = await bio.canAuthenticate();
-      await bio.setTouchIDAuthenticationAllowableReuseDuration(30);
+      final canCheckBiometrics = await bio.canCheckBiometrics;
+      final isDeviceSupported = await bio.isDeviceSupported();
+      canAuthenticate = canCheckBiometrics && isDeviceSupported;
     } on Exception catch (_) {
       canAuthenticate = false;
     }
     if (canAuthenticate) {
-      bio.authenticate().then((authenticated) {
-        widget.onSuccess();
+      bio
+          .authenticate(
+        localizedReason: AppLocale.labels.secureBioPromptReason,
+        options: const AuthenticationOptions(
+          biometricOnly: true,
+          stickyAuth: true,
+        ),
+      )
+          .then((authenticated) {
+        if (authenticated) {
+          widget.onSuccess();
+        }
       }).catchError((error) {
         if (context.mounted) {
           NotificationBar.showSnackBar(context, AppLocale.labels.secureBioNotMatch, true);

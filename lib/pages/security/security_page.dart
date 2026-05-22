@@ -18,7 +18,7 @@ import 'package:app_finance/pages/_interfaces/abstract_page_state.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_local_authentication/flutter_local_authentication.dart';
+import 'package:local_auth/local_auth.dart';
 import 'package:simple_totp_auth/simple_totp_auth.dart';
 
 class SecurityPage extends StatefulWidget {
@@ -57,11 +57,12 @@ class SecurityPageState extends AbstractPageState<SecurityPage> {
   bool get isOtpActive => AppPreferences.get(AppPreferences.prefIsOTP) == AppPreferences.isActive;
 
   Future<void> checkBioAuthentication() async {
-    final bio = FlutterLocalAuthentication();
+    final bio = LocalAuthentication();
     bool isAvailable = false;
     try {
-      isAvailable = await bio.canAuthenticate();
-      await bio.setTouchIDAuthenticationAllowableReuseDuration(30);
+      final canCheckBiometrics = await bio.canCheckBiometrics;
+      final isDeviceSupported = await bio.isDeviceSupported();
+      isAvailable = canCheckBiometrics && isDeviceSupported;
     } on Exception catch (_) {
       isAvailable = false;
     }
