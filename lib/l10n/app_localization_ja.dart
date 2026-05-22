@@ -678,6 +678,9 @@ class AppLocalizationsJa extends AppLocalizations {
   String get homeTooltip => 'メインページに戻る';
 
   @override
+  String get hour => '時間';
+
+  @override
   String get icon => 'アイコン';
 
   @override
@@ -744,6 +747,9 @@ class AppLocalizationsJa extends AppLocalizations {
 
   @override
   String get milestones => 'マイルストーン';
+
+  @override
+  String get minute => '分';
 
   @override
   String get missingContent => 'ファイルが処理できない（キャンセルされた）';

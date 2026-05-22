@@ -683,6 +683,9 @@ class AppLocalizationsUz extends AppLocalizations {
   String get homeTooltip => 'Bosh sahifaga qaytish';
 
   @override
+  String get hour => 'Soat';
+
+  @override
   String get icon => 'Belgi';
 
   @override
@@ -750,6 +753,9 @@ class AppLocalizationsUz extends AppLocalizations {
 
   @override
   String get milestones => 'Marosimlar';
+
+  @override
+  String get minute => 'Daqiqa';
 
   @override
   String get missingContent =>

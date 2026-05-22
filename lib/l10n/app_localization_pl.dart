@@ -679,6 +679,9 @@ class AppLocalizationsPl extends AppLocalizations {
   String get homeTooltip => 'Powrót do strony głównej';
 
   @override
+  String get hour => 'Godzina';
+
+  @override
   String get icon => 'Ikona';
 
   @override
@@ -745,6 +748,9 @@ class AppLocalizationsPl extends AppLocalizations {
 
   @override
   String get milestones => 'Kamienie milowe';
+
+  @override
+  String get minute => 'Minuta';
 
   @override
   String get missingContent => 'Plik nie może zostać przetworzony (anulowany)';

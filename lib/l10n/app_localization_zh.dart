@@ -678,6 +678,9 @@ class AppLocalizationsZh extends AppLocalizations {
   String get homeTooltip => '返回主页';
 
   @override
+  String get hour => '小时';
+
+  @override
   String get icon => '图标';
 
   @override
@@ -744,6 +747,9 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String get milestones => '里程碑';
+
+  @override
+  String get minute => '分钟';
 
   @override
   String get missingContent => '文件无法处理（或取消）';
@@ -1788,6 +1794,9 @@ class AppLocalizationsZhTw extends AppLocalizationsZh {
   String get homeTooltip => '回到主頁';
 
   @override
+  String get hour => '時間';
+
+  @override
   String get icon => '圖示';
 
   @override
@@ -1854,6 +1863,9 @@ class AppLocalizationsZhTw extends AppLocalizationsZh {
 
   @override
   String get milestones => '里程碑';
+
+  @override
+  String get minute => '分鐘';
 
   @override
   String get missingContent => '檔案無法處理 (或取消)';

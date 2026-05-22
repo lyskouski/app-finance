@@ -680,6 +680,9 @@ class AppLocalizationsPt extends AppLocalizations {
   String get homeTooltip => 'Voltar à página principal';
 
   @override
+  String get hour => 'Hora';
+
+  @override
   String get icon => 'Ícone';
 
   @override
@@ -746,6 +749,9 @@ class AppLocalizationsPt extends AppLocalizations {
 
   @override
   String get milestones => 'Marcos';
+
+  @override
+  String get minute => 'Minuto';
 
   @override
   String get missingContent =>
@@ -1801,6 +1807,9 @@ class AppLocalizationsPtBr extends AppLocalizationsPt {
   String get homeTooltip => 'Voltar à página principal';
 
   @override
+  String get hour => 'Hora';
+
+  @override
   String get icon => 'Ícone';
 
   @override
@@ -1867,6 +1876,9 @@ class AppLocalizationsPtBr extends AppLocalizationsPt {
 
   @override
   String get milestones => 'Marcos';
+
+  @override
+  String get minute => 'Minuto';
 
   @override
   String get missingContent =>

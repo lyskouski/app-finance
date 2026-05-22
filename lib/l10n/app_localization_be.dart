@@ -680,6 +680,9 @@ class AppLocalizationsBe extends AppLocalizations {
   String get homeTooltip => 'Вярнуцца да галоўнай старонкі';
 
   @override
+  String get hour => 'Час';
+
+  @override
   String get icon => 'Значок';
 
   @override
@@ -746,6 +749,9 @@ class AppLocalizationsBe extends AppLocalizations {
 
   @override
   String get milestones => 'Вехі';
+
+  @override
+  String get minute => 'Мінута';
 
   @override
   String get missingContent => 'Файл ня можа быць апрацаваны (альбо адменены)';
@@ -1797,6 +1803,9 @@ class AppLocalizationsBeEu extends AppLocalizationsBe {
   String get homeTooltip => 'Viarnucca da Haloŭnaj Staronki';
 
   @override
+  String get hour => 'Godzina';
+
+  @override
   String get icon => 'Značok';
 
   @override
@@ -1863,6 +1872,9 @@ class AppLocalizationsBeEu extends AppLocalizationsBe {
 
   @override
   String get milestones => 'Viechi';
+
+  @override
+  String get minute => 'Minuta';
 
   @override
   String get missingContent => 'Fajl nia moža być apracavany (aĺbo admienieny)';

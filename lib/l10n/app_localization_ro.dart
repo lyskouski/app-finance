@@ -681,6 +681,9 @@ class AppLocalizationsRo extends AppLocalizations {
   String get homeTooltip => 'Înapoi la pagina principală';
 
   @override
+  String get hour => 'Oră';
+
+  @override
   String get icon => 'Pictogramă';
 
   @override
@@ -747,6 +750,9 @@ class AppLocalizationsRo extends AppLocalizations {
 
   @override
   String get milestones => 'Etape';
+
+  @override
+  String get minute => 'Minut';
 
   @override
   String get missingContent => 'Fișierul nu poate fi procesat (fie anulat)';

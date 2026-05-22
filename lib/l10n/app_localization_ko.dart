@@ -678,6 +678,9 @@ class AppLocalizationsKo extends AppLocalizations {
   String get homeTooltip => '메인 페이지로 돌아가기';
 
   @override
+  String get hour => '시간';
+
+  @override
   String get icon => '아이콘';
 
   @override
@@ -744,6 +747,9 @@ class AppLocalizationsKo extends AppLocalizations {
 
   @override
   String get milestones => '마일스톤';
+
+  @override
+  String get minute => '분';
 
   @override
   String get missingContent => '파일을 처리할 수 없음(취소됨)';

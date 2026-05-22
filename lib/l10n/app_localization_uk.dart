@@ -680,6 +680,9 @@ class AppLocalizationsUk extends AppLocalizations {
   String get homeTooltip => 'Повернутися на головну сторінку';
 
   @override
+  String get hour => 'Година';
+
+  @override
   String get icon => 'Значок';
 
   @override
@@ -746,6 +749,9 @@ class AppLocalizationsUk extends AppLocalizations {
 
   @override
   String get milestones => 'Віхи';
+
+  @override
+  String get minute => 'Хвилина';
 
   @override
   String get missingContent => 'Файл не може бути оброблений (або скасуваний)';
