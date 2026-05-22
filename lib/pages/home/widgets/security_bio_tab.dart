@@ -85,19 +85,19 @@ class SecurityBioTabState extends AbstractPageState<SecurityBioTab> {
     try {
       final canCheckBiometrics = await bio.canCheckBiometrics;
       final isDeviceSupported = await bio.isDeviceSupported();
-      canAuthenticate = canCheckBiometrics || isDeviceSupported;
+      canAuthenticate = canCheckBiometrics && isDeviceSupported;
     } on Exception catch (_) {
       canAuthenticate = false;
     }
     if (canAuthenticate) {
       bio
           .authenticate(
-            localizedReason: AppLocale.labels.secureBioPromptReason,
-            options: const AuthenticationOptions(
-              biometricOnly: true,
-              stickyAuth: true,
-            ),
-          )
+        localizedReason: AppLocale.labels.secureBioPromptReason,
+        options: const AuthenticationOptions(
+          biometricOnly: true,
+          stickyAuth: true,
+        ),
+      )
           .then((authenticated) {
         if (authenticated) {
           widget.onSuccess();
