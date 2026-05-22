@@ -68,7 +68,9 @@ class DateTimeInputState extends AbstractSelectorState<DateTimeInput> {
                             initialValue: hour,
                             decoration: InputDecoration(
                               labelText: AppLocale.labels.hour,
-                              border: const OutlineInputBorder(),
+                              filled: true,
+                              border: InputBorder.none,
+                              fillColor: context.colorScheme.fieldBackground,
                             ),
                             items: List<DropdownMenuItem<int>>.generate(
                               24,
@@ -90,7 +92,9 @@ class DateTimeInputState extends AbstractSelectorState<DateTimeInput> {
                             initialValue: minute,
                             decoration: InputDecoration(
                               labelText: AppLocale.labels.minute,
-                              border: const OutlineInputBorder(),
+                              filled: true,
+                              border: InputBorder.none,
+                              fillColor: context.colorScheme.fieldBackground,
                             ),
                             items: List<DropdownMenuItem<int>>.generate(
                               60,
