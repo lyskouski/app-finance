@@ -67,7 +67,7 @@ class DateInputState<T extends DateInput> extends AbstractSelectorState<T> {
     final style = context.textTheme.numberMedium;
     final labelStyle = context.textTheme.tooltipSmall.copyWith(color: style.color?.withValues(alpha: 0.4));
     final hintStyle = context.textTheme.tooltipMedium.copyWith(overflow: TextOverflow.ellipsis);
-    return Container(
+    return Material(
       color: context.colorScheme.fieldBackground,
       child: ListTile(
         title: widget.value != null

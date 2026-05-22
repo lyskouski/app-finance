@@ -63,7 +63,7 @@ class DateTimeInputState extends AbstractSelectorState<DateTimeInput> {
           ),
         ],
         [
-          Container(
+          Material(
             color: context.colorScheme.fieldBackground,
             child: ListTile(
               focusNode: focus,
