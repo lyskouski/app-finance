@@ -4,8 +4,8 @@
 
 list(APPEND FLUTTER_PLUGIN_LIST
   firebase_core
-  flutter_local_authentication
   flutter_webrtc
+  local_auth_windows
   url_launcher_windows
 )
 
