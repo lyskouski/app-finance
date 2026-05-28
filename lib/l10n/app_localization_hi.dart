@@ -680,6 +680,9 @@ class AppLocalizationsHi extends AppLocalizations {
   String get homeTooltip => 'मुख्य पृष्ठ पर वापस जाएँ';
 
   @override
+  String get hour => 'घंटा';
+
+  @override
   String get icon => 'आइकन';
 
   @override
@@ -746,6 +749,9 @@ class AppLocalizationsHi extends AppLocalizations {
 
   @override
   String get milestones => 'मील के पत्थर';
+
+  @override
+  String get minute => 'मिनट';
 
   @override
   String get missingContent =>

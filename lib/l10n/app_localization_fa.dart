@@ -679,6 +679,9 @@ class AppLocalizationsFa extends AppLocalizations {
   String get homeTooltip => 'بازگشت به صفحه اصلی';
 
   @override
+  String get hour => 'ساعت';
+
+  @override
   String get icon => 'آیکون';
 
   @override
@@ -744,7 +747,10 @@ class AppLocalizationsFa extends AppLocalizations {
   String get metricsTooltip => 'معیارهای';
 
   @override
-  String get milestones => 'نقاط عطف';
+  String get milestones => 'نقاط عطفی';
+
+  @override
+  String get minute => 'دقیقه';
 
   @override
   String get missingContent => 'فایل قابل پردازش نیست (یا لغو می شود)';

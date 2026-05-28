@@ -679,6 +679,9 @@ class AppLocalizationsAr extends AppLocalizations {
   String get homeTooltip => 'العودة إلى الصفحة الرئيسية';
 
   @override
+  String get hour => 'ساعة';
+
+  @override
   String get icon => 'أيقونة';
 
   @override
@@ -745,6 +748,9 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get milestones => 'المقاييس';
+
+  @override
+  String get minute => 'دقيقة';
 
   @override
   String get missingContent => 'يتعذر معالجة الملف (تم إلغاء إما)';

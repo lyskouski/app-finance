@@ -1423,6 +1423,12 @@ abstract class AppLocalizations {
   /// **'Back to Main Page'**
   String get homeTooltip;
 
+  /// No description provided for @hour.
+  ///
+  /// In en, this message translates to:
+  /// **'Hour'**
+  String get hour;
+
   /// No description provided for @icon.
   ///
   /// In en, this message translates to:
@@ -1554,6 +1560,12 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Milestones'**
   String get milestones;
+
+  /// No description provided for @minute.
+  ///
+  /// In en, this message translates to:
+  /// **'Minute'**
+  String get minute;
 
   /// No description provided for @missingContent.
   ///

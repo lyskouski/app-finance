@@ -681,6 +681,9 @@ class AppLocalizationsEs extends AppLocalizations {
   String get homeTooltip => 'Volver a la página principal';
 
   @override
+  String get hour => 'Hora';
+
+  @override
   String get icon => 'Icono';
 
   @override
@@ -743,10 +746,13 @@ class AppLocalizationsEs extends AppLocalizations {
   String get metricsHeadline => 'Metrics';
 
   @override
-  String get metricsTooltip => 'Metrics';
+  String get metricsTooltip => 'Métricas';
 
   @override
   String get milestones => 'Hitos';
+
+  @override
+  String get minute => 'Minuto';
 
   @override
   String get missingContent => 'No se puede procesar el archivo (o se cancela)';

@@ -680,6 +680,9 @@ class AppLocalizationsNl extends AppLocalizations {
   String get homeTooltip => 'Terug naar hoofdpagina';
 
   @override
+  String get hour => 'Uur';
+
+  @override
   String get icon => 'Icoon';
 
   @override
@@ -746,6 +749,9 @@ class AppLocalizationsNl extends AppLocalizations {
 
   @override
   String get milestones => 'Mijlpalen';
+
+  @override
+  String get minute => 'Minuut';
 
   @override
   String get missingContent => 'Bestand kan niet worden verwerkt (geannuleerd)';

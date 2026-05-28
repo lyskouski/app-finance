@@ -681,6 +681,9 @@ class AppLocalizationsAz extends AppLocalizations {
   String get homeTooltip => 'Əsas səhifəyə qayıt';
 
   @override
+  String get hour => 'Saat';
+
+  @override
   String get icon => 'İkon';
 
   @override
@@ -747,6 +750,9 @@ class AppLocalizationsAz extends AppLocalizations {
 
   @override
   String get milestones => 'Mərhələlər';
+
+  @override
+  String get minute => 'Dəqiqə';
 
   @override
   String get missingContent => 'Fayl emal edilə bilməz (və ya ləğv edilir)';

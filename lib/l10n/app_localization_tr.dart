@@ -679,6 +679,9 @@ class AppLocalizationsTr extends AppLocalizations {
   String get homeTooltip => 'Ana Sayfaya Geri Dön';
 
   @override
+  String get hour => 'Saat';
+
+  @override
   String get icon => 'Simge';
 
   @override
@@ -745,6 +748,9 @@ class AppLocalizationsTr extends AppLocalizations {
 
   @override
   String get milestones => 'Kilometre Taşları';
+
+  @override
+  String get minute => 'Dakika';
 
   @override
   String get missingContent => 'Dosya işlenemiyor (ya iptal edildi)';

@@ -679,6 +679,9 @@ class AppLocalizationsCs extends AppLocalizations {
   String get homeTooltip => 'Zpět na hlavní stránku';
 
   @override
+  String get hour => 'Hodina';
+
+  @override
   String get icon => 'Ikonka';
 
   @override
@@ -745,6 +748,9 @@ class AppLocalizationsCs extends AppLocalizations {
 
   @override
   String get milestones => 'Milníky';
+
+  @override
+  String get minute => 'Minuta';
 
   @override
   String get missingContent => 'Soubor nelze zpracovat (buď zrušen)';

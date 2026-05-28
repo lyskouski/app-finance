@@ -31,13 +31,117 @@ class DateTimeInput extends AbstractSelector {
 }
 
 class DateTimeInputState extends AbstractSelectorState<DateTimeInput> {
+  Future<TimeOfDay?> _showCompactTimePicker(BuildContext context) {
+    final initial = TimeOfDay.fromDateTime(widget.value);
+    final indent = ThemeHelper.getIndent(2);
+    return showModalBottomSheet<TimeOfDay>(
+      context: context,
+      isScrollControlled: true,
+      useSafeArea: true,
+      shape: const RoundedRectangleBorder(borderRadius: BorderRadius.zero),
+      builder: (sheetContext) {
+        int hour = initial.hour;
+        int minute = initial.minute;
+        return StatefulBuilder(
+          builder: (context, setModalState) {
+            return Padding(
+              padding: EdgeInsets.fromLTRB(
+                indent,
+                indent,
+                indent,
+                MediaQuery.of(context).viewInsets.bottom + indent,
+              ),
+              child: ConstrainedBox(
+                constraints: const BoxConstraints(maxWidth: 420),
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                  children: [
+                    Text(
+                      AppLocale.labels.balanceDate,
+                      style: sheetContext.textTheme.titleMedium,
+                    ),
+                    SizedBox(height: indent),
+                    Row(
+                      children: [
+                        Expanded(
+                          child: DropdownButtonFormField<int>(
+                            initialValue: hour,
+                            decoration: InputDecoration(
+                              labelText: AppLocale.labels.hour,
+                              filled: true,
+                              border: InputBorder.none,
+                              fillColor: context.colorScheme.fieldBackground,
+                            ),
+                            items: List<DropdownMenuItem<int>>.generate(
+                              24,
+                              (index) => DropdownMenuItem<int>(
+                                value: index,
+                                child: Text(index.toString().padLeft(2, '0')),
+                              ),
+                            ),
+                            onChanged: (value) {
+                              if (value != null) {
+                                setModalState(() => hour = value);
+                              }
+                            },
+                          ),
+                        ),
+                        SizedBox(width: indent),
+                        Expanded(
+                          child: DropdownButtonFormField<int>(
+                            initialValue: minute,
+                            decoration: InputDecoration(
+                              labelText: AppLocale.labels.minute,
+                              filled: true,
+                              border: InputBorder.none,
+                              fillColor: context.colorScheme.fieldBackground,
+                            ),
+                            items: List<DropdownMenuItem<int>>.generate(
+                              60,
+                              (index) => DropdownMenuItem<int>(
+                                value: index,
+                                child: Text(index.toString().padLeft(2, '0')),
+                              ),
+                            ),
+                            onChanged: (value) {
+                              if (value != null) {
+                                setModalState(() => minute = value);
+                              }
+                            },
+                          ),
+                        ),
+                      ],
+                    ),
+                    SizedBox(height: indent),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      children: [
+                        TextButton(
+                          onPressed: () => Navigator.of(sheetContext).pop(),
+                          child: Text(AppLocale.labels.btnCancel),
+                        ),
+                        SizedBox(width: indent),
+                        FilledButton(
+                          style: FilledButton.styleFrom(foregroundColor: sheetContext.colorScheme.surface),
+                          onPressed: () => Navigator.of(sheetContext).pop(TimeOfDay(hour: hour, minute: minute)),
+                          child: Text(AppLocale.labels.btnConfirm),
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
+              ),
+            );
+          },
+        );
+      },
+    );
+  }
+
   @override
   Future<void> onTap(BuildContext context) async {
-    final time = await showTimePicker(
-      context: context,
-      initialTime: TimeOfDay.fromDateTime(widget.value),
-      initialEntryMode: TimePickerEntryMode.input,
-    );
+    final time = await _showCompactTimePicker(context);
     if (time != null) {
       widget.setState(DateTime(widget.value.year, widget.value.month, widget.value.day, time.hour, time.minute));
       focusController.onEditingComplete(this);
