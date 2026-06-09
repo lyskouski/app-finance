@@ -1,29 +1,28 @@
 ﻿[اللغة العربية (AR)](./about_ar.md) |
 [Azərbaycanlı (AZ)](./about_az.md) |
-[Тарашкевіца (BE)](./about_be.md) |
 [Latsinka (BE)](./about_be_EU.md) |
-[简体中文 (ZH-CN)](./about_zh.md) |
-[繁體中文 (ZH-TW)](./about_zh_TW.md) |
+[Тарашкевіца (BE)](./about_be.md) |
 [Čeština (CS)](./about_cs.md) |
-[Nederlandse (NL)](./about_nl.md) |
-[English (EN-US)](./about_en.md) |
-[Français (FR)](./about_fr.md) |
 [Deutsch (DE)](./about_de.md) |
+[English (EN-US)](./about_en.md) |
+[Español (ES)](./about_es.md) |
+[فارسی (FA)](./about_fa.md) |
+[Français (FR)](./about_fr.md) |
 [हिंदी (HI-IN)](./about_hi.md) |
 [Italiano (IT)](./about_it.md) |
 [日本語 (JA)](./about_ja.md) |
-[فارسی (FA)](./about_fa.md) |
+[ქართული (KA-GE)](./about_ka.md) |
 [한국어 (KO)](./about_ko.md) |
+[Nederlandse (NL)](./about_nl.md) |
 Polski (PL) |
 [Português Europeu (PT)](./about_pt.md) |
 [Português Brasileiro (PTB)](./about_pt_BR.md) |
 [Limba română (RO)](./about_ro.md) |
-[Español (ES)](./about_es.md) |
+[Русский (RU)](./about_ru.md) |
 [Türk dili (TR)](./about_tr.md) |
 [Українська (UK-UA)](./about_uk.md) |
-[ქართული (KA-GE)](./about_ka.md) |
-[Русский (RU)](./about_ru.md) |
-[O'zbek (UZ)](./about_uz.md)
+[简体中文 (ZH-CN)](./about_zh.md) |
+[繁體中文 (ZH-TW)](./about_zh_TW.md) |
 
 ---
 
@@ -109,4 +108,5 @@ Dzięki temu użytkownicy mogą bez wysiłku zarządzać swoimi finansami, jedno
 | Edytuj wybrany element              | `Ctrl` + `E`                   |
 | Usuń zaznaczony element             | `Ctrl` + `D`                   |
 -->
+
 
