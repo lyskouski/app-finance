@@ -27,7 +27,7 @@ dependencies:
   adaptive_breakpoints: ^0.1.6
   google_fonts: ^6.3.0
   intl: ^0.20.2
-  flutter_colorpicker: ^1.0.3
+  flutter_colorpicker: ^1.1.0
   uuid: ^4.5.1
   provider: ^6.0.5
   month_picker_dialog: ^6.0.3

@@ -50,7 +50,7 @@ class ColorSelectorState extends AbstractSelectorState<ColorSelector> {
         return AlertDialog(
           title: Text(AppLocale.labels.colorTooltip),
           content: SingleChildScrollView(
-            child: ColorPicker(
+            child: MaterialPicker(
               pickerColor: value,
               onColorChanged: (color) {
                 setState(() => value = color.toMaterialColor);
