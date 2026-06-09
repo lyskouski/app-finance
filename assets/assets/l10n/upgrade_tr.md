@@ -1,6 +1,9 @@
-## Son Değişiklikler
+﻿## Son Değişiklikler
 
 _Güncellemelerin tam listesi “İpuçları” düğmesindeki “Hakkında” gezinti öğesi aracılığıyla görüntülenebilir._
+
+### 7.2.0
+- Gürcüce (KA) ve Rusça (RU) dilleri ekleme
 
 ### 7.1.0
 - Bütçe Özeti: negatif değerleri göz ardı etme seçeneği

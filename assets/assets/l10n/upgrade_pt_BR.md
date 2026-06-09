@@ -1,6 +1,9 @@
-## Últimas alterações
+﻿## Últimas alterações
 
 _A lista completa de atualizações pode ser visualizada no item de navegação "Sobre" no botão "Dicas"._
+
+### 7.2.0
+- Adicionando Georgiano (KA) e Russo (RU)
 
 ### 7.1.0
 - Resumo do orçamento: opção para ignorar valores negativos

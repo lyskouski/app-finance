@@ -1,6 +1,9 @@
-## Ultimele modificări
+﻿## Ultimele modificări
 
 _Lista completă a actualizărilor poate fi vizualizată prin intermediul elementului de navigare „Despre” de pe butonul „Sugestii”._
+
+### 7.2.0
+- Adăugarea Georgiană (KA) și Rusă (RU)
 
 ### 7.1.0
 - Rezumat buget: opțiune de ignorare a valorilor negative

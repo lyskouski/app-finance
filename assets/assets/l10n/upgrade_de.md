@@ -1,6 +1,9 @@
-## Letzte Änderungen
+﻿## Letzte Änderungen
 
 _Die vollständige Liste der Updates kann über den Navigationspunkt "Über" auf der Schaltfläche "Hinweise" eingesehen werden._
+
+### 7.2.0
+- Hinzufügen von Georgisch (KA) und Russisch (RU)
 
 ### 7.1.0
 - Budgetübersicht: Option zum Ignorieren negativer Werte

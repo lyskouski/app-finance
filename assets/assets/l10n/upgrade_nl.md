@@ -1,6 +1,9 @@
-## Laatste wijzigingen
+﻿## Laatste wijzigingen
 
 _De volledige lijst met updates kan worden bekeken via het navigatie-item “Over” op de knop “Hints”._
+
+### 7.2.0
+- Georgisch (KA) en Russisch (RU) toevoegen
 
 ### 7.1.0
 - Begrotingsoverzicht: optie om negatieve waarden te negeren

@@ -1,6 +1,9 @@
-## Derniers changements
+﻿## Derniers changements
 
 _La liste complète des mises à jour peut être consultée via l'élément de navigation "À propos" du bouton "Conseils"._
+
+### 7.2.0
+- Ajout du Géorgien (KA) et du Russe (RU)
 
 ### 7.1.0
 - Résumé du budget : option permettant d'ignorer les valeurs négatives

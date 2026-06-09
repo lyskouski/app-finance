@@ -1,6 +1,9 @@
-## Poslední změny
+﻿## Poslední změny
 
 _Úplný seznam aktualizací si můžete prohlédnout v navigační položce „O aplikaci“ na tlačítku „Tipy“._
+
+### 7.2.0
+- Přidání Gruzínštiny (KA) a Ruštiny (RU)
 
 ### 7.1.0
 - Souhrn rozpočtu: možnost ignorovat záporné hodnoty

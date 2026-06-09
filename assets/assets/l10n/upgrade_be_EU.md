@@ -1,6 +1,9 @@
-## Apošnija zmieny
+﻿## Apošnija zmieny
 
 _Poŭny spis abnaŭlieńniaŭ možna prahliadzieć u navihacyjnym punkcie «Ab Dadatku» na knopcy «Padkazki»._
+
+### 7.2.0
+- Dadańnie Hrudzinskaj (KA) i Ruskaj (RU) moŭ
 
 ### 7.1.0
 - Zvodka biudžetu: mahčymasć ihnaravać admoŭnyja značeńni
