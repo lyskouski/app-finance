@@ -1,6 +1,9 @@
-## So'nggi o'zgarishlar
+﻿## So'nggi o'zgarishlar
 
 _Yangilanishlarning toʻliq roʻyxatini “Maslahat” tugmasidagi “Haqida” navigatsiya bandi orqali koʻrish mumkin._
+
+### 7.2.0
+- Gurji (KA) va Rus (RU) tillarini qo'shish
 
 ### 7.1.0
 - Byudjet xulosasi: salbiy qiymatlarni e'tiborsiz qoldirish imkoniyati

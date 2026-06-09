@@ -1,7 +1,10 @@
-## Ultime modifiche
+﻿## Ultime modifiche
 
 _L'elenco completo degli aggiornamenti può essere consultato tramite la voce di navigazione “Informazioni” del
 pulsante “Suggerimenti”._
+
+### 7.2.0
+- Aggiunta di Georgiano (KA) e Russo (RU)
 
 ### 7.1.0
 - Riepilogo del bilancio: opzione per ignorare i valori negativi

@@ -1,6 +1,9 @@
-## Ən Son Dəyişikliklər
+﻿## Ən Son Dəyişikliklər
 
 _Yeniləmələrin tam siyahısına "İpucu" düyməsindəki "Haqqında" naviqasiya elementi vasitəsilə baxmaq olar._
+
+### 7.2.0
+- Gürcü (KA) və Rus (RU) dillərini əlavə etmə
 
 ### 7.1.0
 - Büdcə xülasəsi: mənfi dəyərləri nəzərə almamaq seçimi

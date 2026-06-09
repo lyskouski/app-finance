@@ -1,6 +1,9 @@
-## Najnowsze zmiany
+﻿## Najnowsze zmiany
 
 _Pełną listę aktualizacji można wyświetlić za pomocą elementu nawigacyjnego "O aplikacji" na przycisku "Wskazówki"._
+
+### 7.2.0
+- Dodawanie Gruzińskiego (KA) i Rosyjskiego (RU)
 
 ### 7.1.0
 - Podsumowanie budżetu: opcja pomijania wartości ujemnych
