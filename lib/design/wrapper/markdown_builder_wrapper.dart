@@ -4,7 +4,7 @@
 import 'package:app_finance/_classes/herald/app_design.dart';
 import 'package:app_finance/_mixins/launcher_mixin.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_markdown/flutter_markdown.dart';
+import 'package:flutter_markdown_plus/flutter_markdown_plus.dart';
 
 class MarkdownBuilderWrapper extends StatelessWidget with LauncherMixin {
   final String url;

@@ -466,10 +466,10 @@ packages:
     dependency: "direct main"
     description:
       name: flutter_currency_picker
-      sha256: b6dd629decd1a72227dec8a1e6766873a663f89a0ed692395a5a44f00fe49ed2
+      sha256: "9371fac299aa70b388e966dcb532bfff0ee511374505b65701d71b9d89d41a9c"
       url: "https://pub.dev"
     source: hosted
-    version: "1.9.0"
+    version: "1.10.0"
   flutter_driver:
     dependency: "direct dev"
     description: flutter
@@ -512,14 +512,14 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.0"
-  flutter_markdown:
+  flutter_markdown_plus:
     dependency: "direct main"
     description:
-      name: flutter_markdown
-      sha256: "08fb8315236099ff8e90cb87bb2b935e0a724a3af1623000a9cec930468e0f27"
+      name: flutter_markdown_plus
+      sha256: "039177906850278e8fb1cd364115ee0a46281135932fa8ecea8455522166d2de"
       url: "https://pub.dev"
     source: hosted
-    version: "0.7.7+1"
+    version: "1.0.7"
   flutter_plugin_android_lifecycle:
     dependency: transitive
     description:
