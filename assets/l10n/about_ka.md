@@ -1,4 +1,4 @@
-[اللغة العربية (AR)](./about_ar.md) |
+﻿[اللغة العربية (AR)](./about_ar.md) |
 [Azərbaycanlı (AZ)](./about_az.md) |
 [Тарашкевіца (BE)](./about_be.md) |
 [Latsinka (BE)](./about_be_EU.md) |
@@ -13,7 +13,6 @@
 [हिंदी (HI-IN)](./about_hi.md) |
 [Italiano (IT)](./about_it.md) |
 [日本語 (JA)](./about_ja.md) |
-ქართული (KA-GE) |
 [한국어 (KO)](./about_ko.md) |
 [Polski (PL)](./about_pl.md) |
 [Português Europeu (PT)](./about_pt.md) |
@@ -22,6 +21,8 @@
 [Español (ES)](./about_es.md) |
 [Türk dili (TR)](./about_tr.md) |
 [Українська (UK-UA)](./about_uk.md) |
+ქართული (KA-GE) |
+[Русский (RU)](./about_ru.md) |
 [O'zbek (UZ)](./about_uz.md)
 
 ---
@@ -108,3 +109,4 @@
 | არჩეული ელემენტის რედაქტირება       | `Ctrl` + `E`                   |
 | არჩეული ელემენტის წაშლა             | `Ctrl` + `D`                   |
 -->
+

@@ -1,4 +1,4 @@
-[اللغة العربية (AR)](./about_ar.md) |
+﻿[اللغة العربية (AR)](./about_ar.md) |
 [Azərbaycanlı (AZ)](./about_az.md) |
 [Тарашкевіца (BE)](./about_be.md) |
 [Latsinka (BE)](./about_be_EU.md) |
@@ -21,6 +21,8 @@
 [Español (ES)](./about_es.md) |
 [Türk dili (TR)](./about_tr.md) |
 [Українська (UK-UA)](./about_uk.md) |
+[ქართული (KA-GE)](./about_ka.md) |
+[Русский (RU)](./about_ru.md) |
 [O'zbek (UZ)](./about_uz.md)
 
 ---
@@ -107,3 +109,4 @@
 | 선택한 항목 편집    | `Ctrl` + `E`         |
 | 선택 항목 삭제      | `Ctrl` + `D`         |
 -->
+

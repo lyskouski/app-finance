@@ -1,4 +1,4 @@
-[اللغة العربية (AR)](./about_ar.md) |
+﻿[اللغة العربية (AR)](./about_ar.md) |
 [Azərbaycanlı (AZ)](./about_az.md) |
 [Тарашкевіца (BE)](./about_be.md) |
 [Latsinka (BE)](./about_be_EU.md) |
@@ -21,6 +21,8 @@ Nederlandse (NL) |
 [Español (ES)](./about_es.md) |
 [Türk dili (TR)](./about_tr.md) |
 [Українська (UK-UA)](./about_uk.md) |
+[ქართული (KA-GE)](./about_ka.md) |
+[Русский (RU)](./about_ru.md) |
 [O'zbek (UZ)](./about_uz.md)
 
 ---
@@ -107,3 +109,4 @@ Dat stelt gebruikers in staat om moeiteloos hun financiën te beheren en zorgt e
 | Geselecteerd item bewerken          | `Ctrl` + `E`                   |
 | Geselecteerd item verwijderen       | `Ctrl` + `D`                   |
 -->
+

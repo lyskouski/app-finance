@@ -1,4 +1,4 @@
-[اللغة العربية (AR)](./about_ar.md) |
+﻿[اللغة العربية (AR)](./about_ar.md) |
 [Azərbaycanlı (AZ)](./about_az.md) |
 [Тарашкевіца (BE)](./about_be.md) |
 [Latsinka (BE)](./about_be_EU.md) |
@@ -21,6 +21,8 @@ Português Europeu (PT) |
 [Español (ES)](./about_es.md) |
 [Türk dili (TR)](./about_tr.md) |
 [Українська (UK-UA)](./about_uk.md) |
+[ქართული (KA-GE)](./about_ka.md) |
+[Русский (RU)](./about_ru.md) |
 [O'zbek (UZ)](./about_uz.md)
 
 ---
@@ -107,3 +109,4 @@ Isto permite aos utilizadores gerir as suas finanças sem esforço, garantindo q
 | Editar item selecionado              | `Ctrl` + `E`                   |
 | Excluir item selecionado             | `Ctrl` + `D`                   |
 -->
+
