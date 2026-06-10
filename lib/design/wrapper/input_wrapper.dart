@@ -54,6 +54,23 @@ class InputWrapper extends StatelessWidget {
 
   Key getKey() => ValueKey(key?.hashCode ?? '$title $tooltip');
 
+  ({bool min, String? hint, Color? hintColor}) getHintState(BuildContext context) {
+    final screenState = ScreenHelper.state();
+    final min = screenState.isRight || screenState.isWearable;
+    String? hint = min ? title : tooltip;
+    Color? hintColor;
+    if (isRequired && min) {
+      if (showError) {
+        hint = '$hint [!] ${AppLocale.labels.isRequired}';
+        hintColor = context.colorScheme.primary;
+      } else {
+        hint = '$hint*';
+      }
+    }
+
+    return (min: min, hint: hint, hintColor: hintColor);
+  }
+
   const InputWrapper({
     super.key,
     required this.type,
@@ -162,113 +179,135 @@ class InputWrapper extends StatelessWidget {
     this.inputType,
   });
 
+  Widget buildTextInput({required bool min, required String? hint, Color? hintColor}) => SimpleInput(
+        key: getKey(),
+        controller: controller!,
+        tooltip: hint,
+        withLabel: min,
+        hintColor: hintColor,
+        formatter: formatter,
+        type: inputType ?? TextInputType.text,
+        obscure: inputType == TextInputType.visiblePassword,
+      );
+
+  Widget buildListSelector({required bool min, required String? hint, Color? hintColor}) =>
+      ListSelector<ListSelectorItem>(
+        key: getKey(),
+        value: value != null ? ListSelectorItem(id: value, name: '') : null,
+        tooltip: tooltip,
+        hintText: hint,
+        hintColor: hintColor,
+        options: options as List<ListSelectorItem>,
+        setState: (ListSelectorItem? v) => onChange?.call(v?.id),
+        withLabel: min,
+        isDisabled: isDisabled,
+      );
+
+  Widget buildIconSelector({required bool min, required String? hint}) => IconSelector(
+        key: getKey(),
+        value: value != null ? IconSelectorItem(value, name: value.toString()) : null,
+        setState: (v) => onChange?.call((v as IconSelectorItem?)?.value),
+        hintText: hint,
+        withLabel: min,
+      );
+
+  Widget buildColorSelector({required bool min}) => ColorSelector(
+        key: getKey(),
+        value: value,
+        setState: (v) => onChange?.call(v),
+        withLabel: min,
+      );
+
+  Widget buildCurrencySelector({required bool min, required String? hint}) => BaseCurrencySelector(
+        key: getKey(),
+        value: value != null ? BaseListSelectorItem(value) : null,
+        setState: (v) => onChange?.call((v as BaseListSelectorItem?)?.item),
+        withLabel: min,
+        tooltip: tooltip,
+        hintText: hint,
+      );
+
+  Widget buildCurrencyShortSelector({required bool min, required String? hint}) => CodeCurrencySelector(
+        key: getKey(),
+        value: value != null ? CodeCurrencySelectorItem(value) : null,
+        setState: (v) => onChange?.call((v as CodeCurrencySelectorItem?)?.item),
+        withLabel: min,
+        tooltip: tooltip,
+        hintText: hint,
+      );
+
+  Widget buildMonthYearSelector({required bool min}) => MonthYearInput(
+        key: getKey(),
+        value: value,
+        setState: onChange!,
+        withLabel: min,
+        labelText: title,
+      );
+
+  Widget buildDateSelector({required bool min}) => DateInput(
+        value: value,
+        setState: onChange!,
+        withLabel: min,
+      );
+
+  Widget buildAccountSelector({required bool min, required String? hint}) => ListAccountSelector(
+        key: getKey(),
+        value: value != null ? ListAccountSelectorItem(item: value) : null,
+        hintText: hint,
+        tooltip: tooltip,
+        state: state!,
+        setState: (v) => onChange?.call((v as ListAccountSelectorItem?)?.item),
+        width: width!,
+        withLabel: min,
+        options: options?.cast() ?? [],
+      );
+
+  Widget buildBudgetSelector({required bool min, required String? hint}) => ListBudgetSelector(
+        key: getKey(),
+        value: value != null ? ListBudgetSelectorItem(item: value) : null,
+        hintText: hint,
+        tooltip: tooltip,
+        state: state!,
+        setState: (v) => onChange?.call((v as ListBudgetSelectorItem?)?.item),
+        width: width!,
+        withLabel: min,
+      );
+
+  Widget buildInput({required bool min, required String? hint, Color? hintColor}) {
+    return switch (type) {
+      NamedInputType.textInput => buildTextInput(min: min, hint: hint, hintColor: hintColor),
+      NamedInputType.listSelector => buildListSelector(min: min, hint: hint, hintColor: hintColor),
+      NamedInputType.iconSelector => buildIconSelector(min: min, hint: hint),
+      NamedInputType.colorSelector => buildColorSelector(min: min),
+      NamedInputType.currencySelector => buildCurrencySelector(min: min, hint: hint),
+      NamedInputType.currencyShort => buildCurrencyShortSelector(min: min, hint: hint),
+      NamedInputType.ymSelector => buildMonthYearSelector(min: min),
+      NamedInputType.dateSelector => buildDateSelector(min: min),
+      NamedInputType.accountSelector => buildAccountSelector(min: min, hint: hint),
+      NamedInputType.budgetSelector => buildBudgetSelector(min: min, hint: hint),
+    };
+  }
+
+  Widget buildTitle(BuildContext context, {required bool min}) {
+    if (min) {
+      return ThemeHelper.emptyBox;
+    }
+
+    return isRequired
+        ? RequiredWidget(title: title, showError: showError)
+        : TextWrapper(title, style: context.textTheme.bodyLarge);
+  }
+
   @override
   Widget build(BuildContext context) {
-    final screenState = ScreenHelper.state();
-    final min = screenState.isRight || screenState.isWearable;
-    String? hint = min ? title : tooltip;
-    Color? hintColor;
-    if (isRequired && min) {
-      if (showError) {
-        hint = '$hint [!] ${AppLocale.labels.isRequired}';
-        hintColor = context.colorScheme.primary;
-      } else {
-        hint = '$hint*';
-      }
-    }
+    final hintState = getHintState(context);
+    final min = hintState.min;
     return Column(
       mainAxisAlignment: AppDesign.getAlignment<MainAxisAlignment>(),
       crossAxisAlignment: AppDesign.getAlignment(),
       children: [
-        if (!min)
-          isRequired
-              ? RequiredWidget(title: title, showError: showError)
-              : TextWrapper(title, style: context.textTheme.bodyLarge),
-        switch (type) {
-          NamedInputType.textInput => SimpleInput(
-              key: getKey(),
-              controller: controller!,
-              tooltip: hint,
-              withLabel: min,
-              hintColor: hintColor,
-              formatter: formatter,
-              type: inputType ?? TextInputType.text,
-              obscure: inputType == TextInputType.visiblePassword,
-            ),
-          NamedInputType.listSelector => ListSelector<ListSelectorItem>(
-              key: getKey(),
-              value: value != null ? ListSelectorItem(id: value, name: '') : null,
-              tooltip: tooltip,
-              hintText: hint,
-              hintColor: hintColor,
-              options: options as List<ListSelectorItem>,
-              setState: (ListSelectorItem? v) => onChange?.call(v?.id),
-              withLabel: min,
-              isDisabled: isDisabled,
-            ),
-          NamedInputType.iconSelector => IconSelector(
-              key: getKey(),
-              value: value != null ? IconSelectorItem(value, name: value.toString()) : null,
-              setState: (v) => onChange?.call((v as IconSelectorItem?)?.value),
-              hintText: hint,
-              withLabel: min,
-            ),
-          NamedInputType.colorSelector => ColorSelector(
-              key: getKey(),
-              value: value,
-              setState: (v) => onChange?.call(v),
-              withLabel: min,
-            ),
-          NamedInputType.currencySelector => BaseCurrencySelector(
-              key: getKey(),
-              value: value != null ? BaseListSelectorItem(value) : null,
-              setState: (v) => onChange?.call((v as BaseListSelectorItem?)?.item),
-              withLabel: min,
-              tooltip: tooltip,
-              hintText: tooltip,
-            ),
-          NamedInputType.currencyShort => CodeCurrencySelector(
-              key: getKey(),
-              value: value != null ? CodeCurrencySelectorItem(value) : null,
-              setState: (v) => onChange?.call((v as CodeCurrencySelectorItem?)?.item),
-              withLabel: min,
-              tooltip: tooltip,
-              hintText: tooltip,
-            ),
-          NamedInputType.ymSelector => MonthYearInput(
-              key: getKey(),
-              value: value,
-              setState: onChange!,
-              withLabel: min,
-              labelText: title,
-            ),
-          NamedInputType.dateSelector => DateInput(
-              value: value,
-              setState: onChange!,
-              withLabel: min,
-            ),
-          NamedInputType.accountSelector => ListAccountSelector(
-              key: getKey(),
-              value: value != null ? ListAccountSelectorItem(item: value) : null,
-              hintText: hint,
-              tooltip: tooltip,
-              state: state!,
-              setState: (v) => onChange?.call((v as ListAccountSelectorItem?)?.item),
-              width: width!,
-              withLabel: min,
-              options: options?.cast() ?? [],
-            ),
-          NamedInputType.budgetSelector => ListBudgetSelector(
-              key: getKey(),
-              value: value != null ? ListBudgetSelectorItem(item: value) : null,
-              hintText: hint,
-              tooltip: tooltip,
-              state: state!,
-              setState: (v) => onChange?.call((v as ListBudgetSelectorItem?)?.item),
-              width: width!,
-              withLabel: min,
-            ),
-        },
+        if (!min) buildTitle(context, min: min),
+        buildInput(min: min, hint: hintState.hint, hintColor: hintState.hintColor),
         ThemeHelper.hIndent2x,
       ],
     );
