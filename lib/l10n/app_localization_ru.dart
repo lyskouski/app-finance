@@ -178,10 +178,10 @@ class AppLocalizationsRu extends AppLocalizations {
   String get budgetType => 'Интервал бюджетирования';
 
   @override
-  String get budgetTypeAsIs => 'Неограниченный';
+  String get budgetTypeAsIs => 'Фактический';
 
   @override
-  String get budgetTypeFixed => 'Фиксированный';
+  String get budgetTypeFixed => 'Ограниченный';
 
   @override
   String get budgetTypeMonth => 'ежемесячно';
