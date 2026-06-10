@@ -730,7 +730,7 @@ class AppLocalizationsRu extends AppLocalizations {
   String get language => 'Язык';
 
   @override
-  String get left => 'слева';
+  String get left => 'осталось';
 
   @override
   String get lightMode => 'Светлый';
