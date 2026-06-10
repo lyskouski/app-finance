@@ -3,10 +3,17 @@
 
 import 'dart:math';
 
-import 'package:adaptive_breakpoints/adaptive_breakpoints.dart';
 import 'package:app_finance/_classes/herald/app_zoom.dart';
 import 'package:app_finance/_configs/screen_helper.dart';
 import 'package:flutter/material.dart';
+
+enum AdaptiveWindowType {
+  xsmall,
+  small,
+  medium,
+  large,
+  xlarge,
+}
 
 class _Sizes {
   static const half = 4.0;
@@ -112,8 +119,6 @@ class ThemeHelper {
 
   static bool isHorizontal(BoxConstraints constraints) => constraints.maxWidth > constraints.maxHeight;
 
-  static bool isLower(AdaptiveWindowType size, AdaptiveWindowType windowType) => windowType <= size;
-
   static bool isNavBottom(BoxConstraints constraints) => getWidthCount(constraints) <= 2;
 
   static bool isNavRight(BuildContext context, BoxConstraints constraints) =>
@@ -122,10 +127,10 @@ class ThemeHelper {
   static int getWidthCount(BoxConstraints? constraints, [BuildContext? context]) {
     double width = context != null ? getWidth(context, 0, constraints) : constraints?.maxWidth ?? 0;
     final matrix = {
-      AdaptiveWindowType.xlarge: width >= 1440, // AdaptiveWindowType.xlarge.widthRangeValues.start,
-      AdaptiveWindowType.large: width >= 1024, // AdaptiveWindowType.large.widthRangeValues.start,
-      AdaptiveWindowType.medium: width >= 640, // AdaptiveWindowType.medium.widthRangeValues.start,
-      AdaptiveWindowType.small: width >= 320, // AdaptiveWindowType.small.widthRangeValues.start,
+      AdaptiveWindowType.xlarge: width >= 1440,
+      AdaptiveWindowType.large: width >= 1024,
+      AdaptiveWindowType.medium: width >= 640,
+      AdaptiveWindowType.small: width >= 320,
       AdaptiveWindowType.xsmall: true,
     };
     matrix.removeWhere((_, value) => value == false);
@@ -159,5 +164,5 @@ class ThemeHelper {
   static bool isWideScreen(BoxConstraints constraints) => ThemeHelper.getWidthCount(constraints) >= 4;
 
   static bool isWearableMode(BuildContext context, BoxConstraints constraints) =>
-      isWearable = getWidthCount(constraints) * getHeightCount(context, constraints) == 1;
+      getWidthCount(constraints) * getHeightCount(context, constraints) == 1;
 }
