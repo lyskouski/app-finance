@@ -164,5 +164,5 @@ class ThemeHelper {
   static bool isWideScreen(BoxConstraints constraints) => ThemeHelper.getWidthCount(constraints) >= 4;
 
   static bool isWearableMode(BuildContext context, BoxConstraints constraints) =>
-      getWidthCount(constraints) * getHeightCount(context, constraints) == 1;
+      isWearable = getWidthCount(constraints) * getHeightCount(context, constraints) == 1;
 }
