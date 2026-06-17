@@ -57,7 +57,8 @@
         <li>Import from CSV, QIF, OFX files for Bills and Invoices</li>
         <li>Export to Excel (XLSX) file</li>
         <li>Data encryption</li>
-        <li>Localizations: EN, BE, PL, PT, FR, DE, UK, ZH, HI, UZ, FA, AR, AZ, JA, ES, IT, TR, KO, NL, CS, RO</li>
+        <li>Localizations: EN, BE, PL, PT, FR, DE, UK, ZH, HI, UZ, FA, AR, AZ, JA, ES, IT, TR, KO, NL, CS, RO, KA, RU</li>
+        <li>Security: password protection, one-time password, biometrics</li>
         <li>Responsive and Adaptive Design</li>
         <li>Shortcuts</li>
     </ul>
