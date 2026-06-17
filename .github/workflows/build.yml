@@ -91,6 +91,7 @@ jobs:
         if: matrix.target == 'Windows'
         env:
           CMAKE_POLICY_VERSION_MINIMUM: '3.5'
+          CL: /D_SILENCE_EXPERIMENTAL_COROUTINE_DEPRECATION_WARNINGS
         run: |
           flutter config --enable-windows-desktop
           flutter build -v windows --build-name=${{ needs.release.outputs.version }} --build-number=${{ needs.release.outputs.build_number }} --release --obfuscate --split-debug-info=build/windows/symbols
