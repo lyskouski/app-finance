@@ -130755,7 +130755,7 @@
     onTap$body$DateInputState(context) {
       var $async$goto = 0,
         $async$completer = A._makeAsyncAwaitCompleter(type$.void),
-        $async$self = this, t2, selectedDate, t3, currentDate, firstDate, lastDate, t1;
+        $async$self = this, currentDate, firstDate, lastDate, t2, selectedDate, t3, t1;
       var $async$onTap$1 = A._wrapJsFunctionForAsync(function($async$errorCode, $async$result) {
         if ($async$errorCode === 1)
           return A._asyncRethrow($async$result, $async$completer);
@@ -130763,6 +130763,9 @@
           switch ($async$goto) {
             case 0:
               // Function start
+              t1 = $.WidgetsBinding__instance.WidgetsBinding__buildOwner.focusManager._primaryFocus;
+              if (t1 != null)
+                t1.unfocus$0();
               currentDate = new A.DateTime(Date.now(), 0, false);
               firstDate = currentDate._addMicroseconds$1(-63072e10);
               lastDate = currentDate._addMicroseconds$1(63072e10);
@@ -130919,7 +130922,7 @@
     onTap$body$DateTimeInputState(context) {
       var $async$goto = 0,
         $async$completer = A._makeAsyncAwaitCompleter(type$.void),
-        $async$self = this, t1, t2, time;
+        $async$self = this, time, t2, t1;
       var $async$onTap$1 = A._wrapJsFunctionForAsync(function($async$errorCode, $async$result) {
         if ($async$errorCode === 1)
           return A._asyncRethrow($async$result, $async$completer);
@@ -130927,6 +130930,9 @@
           switch ($async$goto) {
             case 0:
               // Function start
+              t1 = $.WidgetsBinding__instance.WidgetsBinding__buildOwner.focusManager._primaryFocus;
+              if (t1 != null)
+                t1.unfocus$0();
               $async$goto = 2;
               return A._asyncAwait($async$self._showCompactTimePicker$1(context), $async$onTap$1);
             case 2:
@@ -131670,7 +131676,7 @@
     onTap$body$MonthYearInputState(context) {
       var $async$goto = 0,
         $async$completer = A._makeAsyncAwaitCompleter(type$.void),
-        $async$self = this, currentDate, firstDate, lastDate, t1, selectedDate;
+        $async$self = this, currentDate, firstDate, lastDate, selectedDate, t1;
       var $async$onTap$1 = A._wrapJsFunctionForAsync(function($async$errorCode, $async$result) {
         if ($async$errorCode === 1)
           return A._asyncRethrow($async$result, $async$completer);
@@ -131678,6 +131684,9 @@
           switch ($async$goto) {
             case 0:
               // Function start
+              t1 = $.WidgetsBinding__instance.WidgetsBinding__buildOwner.focusManager._primaryFocus;
+              if (t1 != null)
+                t1.unfocus$0();
               currentDate = new A.DateTime(Date.now(), 0, false);
               firstDate = currentDate._addMicroseconds$1(-63072e10);
               lastDate = currentDate._addMicroseconds$1(63072e10);
