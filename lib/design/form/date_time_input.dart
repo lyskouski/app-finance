@@ -141,6 +141,7 @@ class DateTimeInputState extends AbstractSelectorState<DateTimeInput> {
 
   @override
   Future<void> onTap(BuildContext context) async {
+    FocusManager.instance.primaryFocus?.unfocus();
     final time = await _showCompactTimePicker(context);
     if (time != null) {
       widget.setState(DateTime(widget.value.year, widget.value.month, widget.value.day, time.hour, time.minute));

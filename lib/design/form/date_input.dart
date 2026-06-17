@@ -32,6 +32,7 @@ class DateInput extends AbstractSelector {
 class DateInputState<T extends DateInput> extends AbstractSelectorState<T> {
   @override
   Future<void> onTap(BuildContext context) async {
+    FocusManager.instance.primaryFocus?.unfocus();
     DateTime currentDate = DateTime.now();
     const Duration dateRange = Duration(days: 20 * 365);
     DateTime firstDate = currentDate.subtract(dateRange);

@@ -36,6 +36,7 @@ class MonthYearInput extends AbstractSelector {
 class MonthYearInputState extends AbstractSelectorState<MonthYearInput> {
   @override
   Future<void> onTap(context) async {
+    FocusManager.instance.primaryFocus?.unfocus();
     DateTime currentDate = DateTime.now();
     const Duration dateRange = Duration(days: 20 * 365);
     DateTime firstDate = currentDate.subtract(dateRange);
