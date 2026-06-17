@@ -81,6 +81,12 @@ jobs:
         working-directory: ${{ matrix.build_path }}
 
 # Windows
+      - name: Setup CMake 3.x for Windows
+        if: matrix.target == 'Windows'
+        uses: jwlawson/actions-setup-cmake@v2
+        with:
+          cmake-version: '3.31.x'
+
       - name: Run Windows Build
         if: matrix.target == 'Windows'
         run: |
