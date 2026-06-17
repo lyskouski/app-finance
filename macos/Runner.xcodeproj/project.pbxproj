@@ -261,7 +261,31 @@
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				ar,
+				az,
+				be,
+				cs,
+				de,
 				en,
+				es,
+				fa,
+				fr,
+				hi,
+				it,
+				ja,
+				ka,
+				ko,
+				nl,
+				pl,
+				pt,
+				"pt-BR",
+				ro,
+				ru,
+				tr,
+				uk,
+				uz,
+				zh,
+				"zh-Hant",
 				Base,
 			);
 			mainGroup = 33CC10E42044A3C60003C045;
