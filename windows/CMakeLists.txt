@@ -10,6 +10,10 @@ set(BINARY_NAME "Fingrom")
 # versions of CMake.
 cmake_policy(VERSION 3.14...3.25)
 
+# Allow third-party CMake projects that still declare very old compatibility
+# ranges (for example, Firebase C++ SDK) to configure under newer CMake.
+set(CMAKE_POLICY_VERSION_MINIMUM "3.5" CACHE STRING "" FORCE)
+
 # Define build configuration option.
 get_property(IS_MULTICONFIG GLOBAL PROPERTY GENERATOR_IS_MULTI_CONFIG)
 if(IS_MULTICONFIG)

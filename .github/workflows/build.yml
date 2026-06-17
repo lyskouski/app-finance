@@ -89,6 +89,8 @@ jobs:
 
       - name: Run Windows Build
         if: matrix.target == 'Windows'
+        env:
+          CMAKE_POLICY_VERSION_MINIMUM: '3.5'
         run: |
           flutter config --enable-windows-desktop
           flutter build -v windows --build-name=${{ needs.release.outputs.version }} --build-number=${{ needs.release.outputs.build_number }} --release --obfuscate --split-debug-info=build/windows/symbols
