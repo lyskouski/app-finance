@@ -90,7 +90,7 @@ class ThemeHelper {
   }
 
   static double getTextWidth(Text txt) {
-    return _getPainter(txt).width;
+    return _getPainter(txt).width * 1.1;
   }
 
   static TextPainter _getPainter(Text txt) {
