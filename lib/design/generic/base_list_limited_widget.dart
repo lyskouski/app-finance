@@ -69,6 +69,7 @@ class BaseListLimitedWidget extends StatelessWidget {
           } else if (limit != null && limit! > 0) {
             return addButton;
           }
+          return ThemeHelper.emptyBox;
         });
   }
 }

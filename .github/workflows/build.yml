@@ -94,7 +94,7 @@ jobs:
           CL: /D_SILENCE_EXPERIMENTAL_COROUTINE_DEPRECATION_WARNINGS
         run: |
           flutter config --enable-windows-desktop
-          flutter build -v windows --build-name=${{ needs.release.outputs.version }} --build-number=${{ needs.release.outputs.build_number }} --release --obfuscate --split-debug-info=build/windows/symbols
+          flutter build -v windows --build-name=${{ needs.release.outputs.version }} --build-number=${{ needs.release.outputs.build_number }} --release --split-debug-info=build/windows/symbols
 
       - name: Copy Additional DLLs
         if: matrix.target == 'Windows'
@@ -162,7 +162,7 @@ jobs:
       - name: Run Android Build
         if: matrix.target == 'Android'
         run: |
-          flutter build appbundle --build-name=${{ needs.release.outputs.version }} --build-number=${{ needs.release.outputs.build_number }} --release --no-tree-shake-icons --obfuscate --split-debug-info=build/app/symbols
+          flutter build appbundle --build-name=${{ needs.release.outputs.version }} --build-number=${{ needs.release.outputs.build_number }} --release --no-tree-shake-icons --split-debug-info=build/app/symbols
           mv ${{ matrix.build_path }}/app-release.aab $GITHUB_WORKSPACE/fingrom_${{ matrix.target }}.aab
 
 # iOS
@@ -269,7 +269,7 @@ jobs:
           export IPHONEOS_DEPLOYMENT_TARGET=18.0
 
           # Build iOS app with latest available SDK
-          flutter build ipa --build-name=${{ needs.release.outputs.version }} --build-number=${{ needs.release.outputs.build_number }} --release --obfuscate --split-debug-info=build/ios/symbols --no-tree-shake-icons --export-options-plist ./ios/ExportOptions.plist
+          flutter build ipa --build-name=${{ needs.release.outputs.version }} --build-number=${{ needs.release.outputs.build_number }} --release --split-debug-info=build/ios/symbols --no-tree-shake-icons --export-options-plist ./ios/ExportOptions.plist
           mv ${{ matrix.build_path }}/fingrom.ipa fingrom_${{ matrix.target }}.ipa
 
       - name: Upload iOS Package to Apple Store
@@ -283,7 +283,7 @@ jobs:
         if: matrix.target == 'macOS'
         run: |
           flutter config --enable-macos-desktop
-          flutter build -v macos --build-name=${{ needs.release.outputs.version }} --build-number=${{ needs.release.outputs.build_number }} --release --obfuscate --split-debug-info=build/macos/symbols --no-tree-shake-icons
+          flutter build -v macos --build-name=${{ needs.release.outputs.version }} --build-number=${{ needs.release.outputs.build_number }} --release --split-debug-info=build/macos/symbols --no-tree-shake-icons
 
       - name: Add the Provisioning Profile
         if: matrix.target == 'macOS'
