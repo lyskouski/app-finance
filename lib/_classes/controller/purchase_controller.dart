@@ -3,6 +3,7 @@
 
 import 'dart:async';
 
+import 'package:flutter/foundation.dart';
 import 'package:in_app_purchase/in_app_purchase.dart';
 
 class PurchaseController {
@@ -13,6 +14,10 @@ class PurchaseController {
   // static const pSubGoogle = 'fin-subscription-tiny';
 
   static InAppPurchase iap = InAppPurchase.instance;
+
+  static bool get supportsPurchases =>
+      defaultTargetPlatform == TargetPlatform.iOS || defaultTargetPlatform == TargetPlatform.macOS;
+
   late StreamSubscription<List<PurchaseDetails>> _subscription;
   Function? callback;
 
@@ -45,6 +50,10 @@ class PurchaseController {
   }
 
   Future<List<ProductDetails>> load() async {
+    if (!supportsPurchases) {
+      return [];
+    }
+
     final available = await iap.isAvailable();
     if (!available) {
       return [];
@@ -60,12 +69,18 @@ class PurchaseController {
     return response.productDetails;
   }
 
-  static Future<void> buy(ProductDetails product) async {
+  static Future<bool> buy(ProductDetails product) async {
+    if (!supportsPurchases) {
+      return false;
+    }
+
     final purchaseParam = PurchaseParam(productDetails: product);
     if (product.id.contains('subscription')) {
       await iap.buyNonConsumable(purchaseParam: purchaseParam);
     } else {
       await iap.buyConsumable(purchaseParam: purchaseParam);
     }
+
+    return true;
   }
 }

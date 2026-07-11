@@ -37,8 +37,11 @@ class PurchaseWidgetState extends State<PurchaseWidget> {
       NotificationBar.showSnackBar(context, AppLocale.labels.subscriptionInactive, true);
     } else {
       setState(() => isLoading = true);
-      await PurchaseController.buy(widget.product!);
+      final didStartPurchase = await PurchaseController.buy(widget.product!);
       setState(() => isLoading = false);
+      if (!didStartPurchase && mounted) {
+        NotificationBar.showSnackBar(context, AppLocale.labels.subscriptionInactive, true);
+      }
     }
   }
 

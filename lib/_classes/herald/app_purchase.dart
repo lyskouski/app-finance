@@ -11,7 +11,7 @@ class AppPurchase extends ChangeNotifier {
   Map<String, List<PurchaseDetails>> purchase = {};
 
   AppPurchase() {
-    if (defaultTargetPlatform == TargetPlatform.iOS || defaultTargetPlatform == TargetPlatform.macOS) {
+    if (PurchaseController.supportsPurchases) {
       _load();
     }
   }
