@@ -12132,9 +12132,7 @@ DA:76,0
 DA:79,0
 DA:80,0
 DA:81,0
-DA:85,0
-DA:86,0
-LF:42
+LF:40
 LH:5
 end_of_record
 SF:lib/_classes/controller/purchase_controller.dart
