@@ -1,2 +1,4 @@
 <resources>
+	<color name="widget_text_primary">#FFF9FAFB</color>
+	<color name="widget_text_secondary">#FFD1D5DB</color>
 </resources>

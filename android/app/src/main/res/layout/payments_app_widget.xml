@@ -19,6 +19,6 @@
         android:layout_height="wrap_content"
         android:text="No recurring payments to display ..."
         android:visibility="gone"
-        android:textColor="@android:color/black" />
+        android:textColor="@color/widget_text_primary" />
 
 </RelativeLayout>
