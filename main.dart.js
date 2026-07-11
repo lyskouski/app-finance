@@ -18828,8 +18828,8 @@
     },
     PurchaseController_buy(product) {
       var $async$goto = 0,
-        $async$completer = A._makeAsyncAwaitCompleter(type$.void),
-        purchaseParam;
+        $async$completer = A._makeAsyncAwaitCompleter(type$.bool),
+        $async$returnValue, purchaseParam;
       var $async$PurchaseController_buy = A._wrapJsFunctionForAsync(function($async$errorCode, $async$result) {
         if ($async$errorCode === 1)
           return A._asyncRethrow($async$result, $async$completer);
@@ -18837,30 +18837,41 @@
           switch ($async$goto) {
             case 0:
               // Function start
+              if (!(A.defaultTargetPlatform() === B.TargetPlatform_2 || A.defaultTargetPlatform() === B.TargetPlatform_4)) {
+                $async$returnValue = false;
+                // goto return
+                $async$goto = 1;
+                break;
+              }
               purchaseParam = new A.PurchaseParam(product);
-              $async$goto = B.JSString_methods.contains$1(product.id, "subscription") ? 2 : 4;
+              $async$goto = B.JSString_methods.contains$1(product.id, "subscription") ? 3 : 5;
               break;
-            case 2:
+            case 3:
               // then
               $.$get$PurchaseController_iap();
-              $async$goto = 5;
-              return A._asyncAwait($.InAppPurchasePlatform____instance._readField$0().buyNonConsumable$1$purchaseParam(purchaseParam), $async$PurchaseController_buy);
-            case 5:
-              // returning from await.
-              // goto join
-              $async$goto = 3;
-              break;
-            case 4:
-              // else
-              $.$get$PurchaseController_iap();
               $async$goto = 6;
-              return A._asyncAwait($.InAppPurchasePlatform____instance._readField$0().buyConsumable$2$autoConsume$purchaseParam(true, purchaseParam), $async$PurchaseController_buy);
+              return A._asyncAwait($.InAppPurchasePlatform____instance._readField$0().buyNonConsumable$1$purchaseParam(purchaseParam), $async$PurchaseController_buy);
             case 6:
               // returning from await.
-            case 3:
+              // goto join
+              $async$goto = 4;
+              break;
+            case 5:
+              // else
+              $.$get$PurchaseController_iap();
+              $async$goto = 7;
+              return A._asyncAwait($.InAppPurchasePlatform____instance._readField$0().buyConsumable$2$autoConsume$purchaseParam(true, purchaseParam), $async$PurchaseController_buy);
+            case 7:
+              // returning from await.
+            case 4:
               // join
-              // implicit return
-              return A._asyncReturn(null, $async$completer);
+              $async$returnValue = true;
+              // goto return
+              $async$goto = 1;
+              break;
+            case 1:
+              // return
+              return A._asyncReturn($async$returnValue, $async$completer);
           }
       });
       return A._asyncStartSync($async$PurchaseController_buy, $async$completer);
@@ -124046,6 +124057,12 @@
           switch ($async$goto) {
             case 0:
               // Function start
+              if (!(A.defaultTargetPlatform() === B.TargetPlatform_2 || A.defaultTargetPlatform() === B.TargetPlatform_4)) {
+                $async$returnValue = A._setArrayType([], type$.JSArray_ProductDetails);
+                // goto return
+                $async$goto = 1;
+                break;
+              }
               $.$get$PurchaseController_iap();
               $async$goto = 3;
               return A._asyncAwait($.InAppPurchasePlatform____instance._readField$0().isAvailable$0(), $async$load$0);
@@ -172044,7 +172061,7 @@
     _purchase$0() {
       var $async$goto = 0,
         $async$completer = A._makeAsyncAwaitCompleter(type$.void),
-        $async$self = this, t1;
+        $async$self = this, t1, didStartPurchase;
       var $async$_purchase$0 = A._wrapJsFunctionForAsync(function($async$errorCode, $async$result) {
         if ($async$errorCode === 1)
           return A._asyncRethrow($async$result, $async$completer);
@@ -172071,7 +172088,13 @@
               return A._asyncAwait(A.PurchaseController_buy(t1), $async$_purchase$0);
             case 5:
               // returning from await.
+              didStartPurchase = $async$result;
               $async$self.setState$1(new A.PurchaseWidgetState__purchase_closure0($async$self));
+              if (!didStartPurchase && $async$self._framework$_element != null) {
+                t1 = $async$self._framework$_element;
+                t1.toString;
+                A.NotificationBar_showSnackBar(t1, $.$get$AppLocale_labels().get$subscriptionInactive(), true);
+              }
             case 3:
               // join
               // implicit return
