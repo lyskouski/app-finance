@@ -79,6 +79,8 @@
 	<string>Would like to make photos from the application.</string>
 	<key>NSFaceIDUsageDescription</key>
 	<string>Use Face ID to securely unlock account.</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>Location access is used for anonymous analytics purposes.</string>
   <key>ITSAppUsesNonExemptEncryption</key>
   <true/>
   <key>ITSEncryptionExportComplianceCode</key>

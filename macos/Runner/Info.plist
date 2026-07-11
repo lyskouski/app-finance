@@ -58,6 +58,8 @@
 	<string>NSApplication</string>
 	<key>LSApplicationCategoryType</key>
 	<string>public.app-category.finance</string>
+  <key>NSLocationWhenInUseUsageDescription</key>
+  <string>Location access is used for anonymous analytics purposes.</string>
   <key>ITSAppUsesNonExemptEncryption</key>
   <true/>
   <key>ITSEncryptionExportComplianceCode</key>
