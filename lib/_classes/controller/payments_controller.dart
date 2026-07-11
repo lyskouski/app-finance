@@ -79,13 +79,8 @@ class PaymentsController {
   Future<void> _updateWidget() async {
     await HomeWidget.saveWidgetData<String>('payments_widget_data', _prepareData());
     await HomeWidget.updateWidget(
-      name: 'PaymentsWidgetProvider',
+      qualifiedAndroidName: 'com.tercad.fingrom.PaymentsWidgetProvider',
       //  iOSName: 'PaymentsWidget',
     );
-    if (Platform.isAndroid) {
-      await HomeWidget.updateWidget(
-        qualifiedAndroidName: 'com.tercad.fingrom.PaymentsWidgetService',
-      );
-    }
   }
 }
