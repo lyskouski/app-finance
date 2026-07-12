@@ -68,6 +68,9 @@ class ImportTabState extends State<ImportTab> {
       setState(() => errorMessage.clear());
       final picker = FilePicker(ext);
       final content = await picker.pickFile();
+      if (!mounted) {
+        return;
+      }
       setState(() {
         fileContent = content;
         columnMap = picker.columnMap;
@@ -77,6 +80,9 @@ class ImportTabState extends State<ImportTab> {
         }
       });
     } catch (e) {
+      if (!mounted) {
+        return;
+      }
       setState(() => errorMessage.writeln(e.toString()));
     }
   }
@@ -103,10 +109,16 @@ class ImportTabState extends State<ImportTab> {
         newItem = state.add(newItem, newItem.uuid);
         TransactionLog.save(newItem);
       } catch (e) {
+        if (!mounted) {
+          return;
+        }
         setState(() => errorMessage.writeln('[$i / ${fileContent?.length}] ${e.toString()}.'));
       }
     }
     await state.restate();
+    if (!mounted) {
+      return;
+    }
     setState(() => fileContent = null);
   }
 
@@ -115,23 +127,34 @@ class ImportTabState extends State<ImportTab> {
       final file = ExportExcel(state);
       await file.exportAll();
     } catch (e) {
+      if (!mounted) {
+        return;
+      }
       setState(() => errorMessage.writeln(e.toString()));
     }
   }
 
-  Future<void> wrapCall(Function callback) async {
+  Future<void> wrapCall(Future<void> Function() callback) async {
     setState(() {
       isLoading = true;
       errorMessage.clear();
     });
     await callback();
     await Future.delayed(const Duration(seconds: 1));
+    if (!mounted) {
+      return;
+    }
     setState(() {
       isLoading = false;
       String isFinished = AppLocale.labels.processIsFinished;
       errorMessage.write(isFinished);
       if (errorMessage.toString() == isFinished) {
-        Future.delayed(const Duration(seconds: 2), () => setState(() => errorMessage.clear()));
+        Future.delayed(const Duration(seconds: 2), () {
+          if (!mounted) {
+            return;
+          }
+          setState(() => errorMessage.clear());
+        });
       }
     });
   }
