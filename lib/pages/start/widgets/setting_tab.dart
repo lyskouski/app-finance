@@ -104,6 +104,9 @@ class SettingTabState<T extends SettingTab> extends AbstractTabState<T> {
       Exchange.defaultCurrency = value;
       CurrencyDefaults.defaultCurrency = value;
       await state.restate();
+      if (!mounted) {
+        return;
+      }
       setState(() => currency = value);
     }
   }
@@ -112,17 +115,26 @@ class SettingTabState<T extends SettingTab> extends AbstractTabState<T> {
     if (value != null) {
       await startOfMonth.set(int.tryParse(value) ?? 1);
       await state.restate();
+      if (!mounted) {
+        return;
+      }
       setState(() => {});
     }
   }
 
   Future<void> saveTheme(String value) async {
     await theme.setTheme(value);
+    if (!mounted) {
+      return;
+    }
     setState(() => brightness = value);
   }
 
   Future<void> saveColor(String value) async {
     await palette.setMode(value);
+    if (!mounted) {
+      return;
+    }
     setState(() => colorMode = value);
   }
 
@@ -132,16 +144,25 @@ class SettingTabState<T extends SettingTab> extends AbstractTabState<T> {
     if (value == 'ar') {
       await startOfWeek.set(int.parse(AppStartOfWeek.SATURDAY));
     }
+    if (!mounted) {
+      return;
+    }
     setState(() {});
   }
 
   Future<void> saveDesign(String value) async {
     await design.set(value);
+    if (!mounted) {
+      return;
+    }
     setState(() {});
   }
 
   Future<void> changePalette(_) async {
     await palette.set(paletteState.light, paletteState.dark);
+    if (!mounted) {
+      return;
+    }
     setState(() => paletteState);
   }
 
@@ -149,6 +170,9 @@ class SettingTabState<T extends SettingTab> extends AbstractTabState<T> {
     final format = NumberFormat.simpleCurrency(locale: locale);
     final code = format.currencyName ?? 'EUR';
     await AppPreferences.set(AppPreferences.prefCurrency, code);
+    if (!mounted) {
+      return;
+    }
     setState(() => currency = CurrencyProvider.find(code));
     Exchange.defaultCurrency = currency;
     CurrencyDefaults.defaultCurrency = currency;
