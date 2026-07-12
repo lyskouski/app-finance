@@ -17,7 +17,10 @@ class ComponentsBuilderForm extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final key = (data[componentData.key] as String).toEnum(ComponentRegistry.values);
+    var key = ComponentRegistry.recent;
+    if (data[componentData.key] != null) {
+      key = (data[componentData.key] as String).toEnum(ComponentRegistry.values);
+    }
     return switch (key) {
       ComponentRegistry.recent => ComponentRecentForm(data, adjust: adjust),
       ComponentRegistry.chart => ComponentChartForm(data, adjust: adjust),
