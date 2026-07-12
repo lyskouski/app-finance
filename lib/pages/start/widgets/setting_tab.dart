@@ -215,7 +215,7 @@ class SettingTabState<T extends SettingTab> extends AbstractTabState<T> {
               ListSelectorItem(id: '0', name: AppLocale.labels.daySunday),
               ListSelectorItem(id: '1', name: AppLocale.labels.dayMonday),
             ].cast<ListSelectorItem>(),
-            onChange: (v) => startOfWeek.set(int.tryParse(v) ?? 1),
+            onChange: (v) => startOfWeek.set(int.tryParse(v ?? '1') ?? 1),
           ),
           InputWrapper.select(
             title: AppLocale.labels.dayStartOfMonth,
@@ -225,7 +225,7 @@ class SettingTabState<T extends SettingTab> extends AbstractTabState<T> {
               String key = (index + 1).toString();
               return ListSelectorItem(id: key, name: key);
             }).cast<ListSelectorItem>(),
-            onChange: saveStartOfMonth,
+            onChange: (v) => saveStartOfMonth(v ?? '1'),
           ),
           InputWrapper.select(
             title: AppLocale.labels.budgetPositive,
