@@ -129865,7 +129865,8 @@
   };
   A.AccountWidget_buildGroupedListWidget_closure0.prototype = {
     call$1(e) {
-      return J.get$color$x(e);
+      var t1 = J.get$color$x(e);
+      return t1 == null ? B.Color_Edl : t1;
     },
     $signature: 23
   };
