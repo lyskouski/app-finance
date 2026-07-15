@@ -97,7 +97,7 @@ class AccountWidget extends BaseWidget {
       total: item.details,
       description: item.detailsFormatted,
       progress: scope.map((e) => e.progress).cast<double>().toList(),
-      color: scope.map((e) => e.color).cast<Color>().toList(),
+      color: scope.map((e) => e.color ?? Colors.transparent).cast<Color>().toList(),
       width: width - ThemeHelper.getIndent() / 2,
       items: scope,
       route: AppRoute.accountRoute,

@@ -57,6 +57,9 @@ class AppSync extends ChangeNotifier {
 
   void trace(String id) {
     WidgetsBinding.instance.addPostFrameCallback((_) {
+      if (peer == null) {
+        return;
+      }
       if (!peer.open) {
         peer.reconnect();
       }
