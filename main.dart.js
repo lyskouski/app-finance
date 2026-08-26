@@ -28472,23 +28472,22 @@
     FilePickerWeb: function FilePickerWeb() {
       this.__FilePickerWeb__target_A = $;
     },
-    FilePickerWeb_pickFiles_changeEventListener: function FilePickerWeb_pickFiles_changeEventListener(t0, t1, t2, t3, t4, t5, t6, t7) {
+    FilePickerWeb_pickFiles_changeEventListener: function FilePickerWeb_pickFiles_changeEventListener(t0, t1, t2, t3, t4, t5, t6) {
       var _ = this;
       _._box_0 = t0;
       _.$this = t1;
       _.uploadInput = t2;
       _.onFileLoading = t3;
-      _.filesCompleter = t4;
-      _.withReadStream = t5;
-      _.withData = t6;
-      _.readSequential = t7;
+      _.withReadStream = t4;
+      _.withData = t5;
+      _.readSequential = t6;
     },
     FilePickerWeb_pickFiles_changeEventListener_addPickedFile: function FilePickerWeb_pickFiles_changeEventListener_addPickedFile(t0, t1, t2, t3) {
       var _ = this;
-      _.pickedFiles = t0;
-      _.files = t1;
-      _.onFileLoading = t2;
-      _.filesCompleter = t3;
+      _._box_0 = t0;
+      _.pickedFiles = t1;
+      _.files = t2;
+      _.onFileLoading = t3;
     },
     FilePickerWeb_pickFiles_changeEventListener_closure: function FilePickerWeb_pickFiles_changeEventListener_closure(t0, t1, t2) {
       this.reader = t0;
@@ -28502,13 +28501,11 @@
       _.file = t2;
       _.syncCompleter = t3;
     },
-    FilePickerWeb_pickFiles_cancelledEventListener: function FilePickerWeb_pickFiles_cancelledEventListener(t0, t1) {
+    FilePickerWeb_pickFiles_cancelledEventListener: function FilePickerWeb_pickFiles_cancelledEventListener(t0) {
       this._box_0 = t0;
-      this.filesCompleter = t1;
     },
-    FilePickerWeb_pickFiles_cancelledEventListener_closure: function FilePickerWeb_pickFiles_cancelledEventListener_closure(t0, t1) {
+    FilePickerWeb_pickFiles_cancelledEventListener_closure: function FilePickerWeb_pickFiles_cancelledEventListener_closure(t0) {
       this._box_0 = t0;
-      this.filesCompleter = t1;
     },
     FilePickerWeb__fileType_closure: function FilePickerWeb__fileType_closure() {
     },
@@ -185264,7 +185261,7 @@
     pickFiles$body$FilePickerWeb(allowedExtensions, type, withData) {
       var $async$goto = 0,
         $async$completer = A._makeAsyncAwaitCompleter(type$.nullable_FilePickerResult),
-        $async$returnValue, $async$self = this, t1, filesCompleter, accept, t2, _this, changeEventListener, cancelledEventListener, firstChild, files, _box_0;
+        $async$returnValue, $async$self = this, t1, accept, _this, changeEventListener, cancelledEventListener, t2, firstChild, files, _box_0;
       var $async$pickFiles$3$allowedExtensions$type$withData = A._wrapJsFunctionForAsync(function($async$errorCode, $async$result) {
         if ($async$errorCode === 1)
           return A._asyncRethrow($async$result, $async$completer);
@@ -185280,44 +185277,46 @@
                 t1 = false;
               if (t1)
                 throw A.wrapException(A.Exception_Exception("You are setting a type [" + type.toString$0(0) + "]. Custom extension filters are only allowed with FileType.custom, please change it or remove filters."));
-              t1 = new A._Future($.Zone__current, type$._Future_nullable_List_PlatformFile);
-              filesCompleter = new A._AsyncCompleter(t1, type$._AsyncCompleter_nullable_List_PlatformFile);
+              _box_0.filesCompleter = new A._AsyncCompleter(new A._Future($.Zone__current, type$._Future_nullable_List_PlatformFile), type$._AsyncCompleter_nullable_List_PlatformFile);
               accept = A.FilePickerWeb__fileType(type, allowedExtensions);
-              t2 = init.G;
-              _this = t2.document.createElement("input");
+              t1 = init.G;
+              _this = t1.document.createElement("input");
               _this.type = "file";
               _this.draggable = true;
               _this.multiple = false;
               _this.accept = accept;
               _this.style.display = "none";
               _box_0.changeEventTriggered = false;
-              changeEventListener = new A.FilePickerWeb_pickFiles_changeEventListener(_box_0, $async$self, _this, null, filesCompleter, false, true, false);
-              cancelledEventListener = new A.FilePickerWeb_pickFiles_cancelledEventListener(_box_0, filesCompleter);
+              changeEventListener = new A.FilePickerWeb_pickFiles_changeEventListener(_box_0, $async$self, _this, null, false, true, false);
+              cancelledEventListener = new A.FilePickerWeb_pickFiles_cancelledEventListener(_box_0);
               A._EventStreamSubscription$(_this, "change", changeEventListener, false, type$._ElementEventStreamImpl_JSObject._precomputed1);
               _this.addEventListener("change", A._functionToJS1(changeEventListener));
               _this.addEventListener("cancel", A._functionToJS1(cancelledEventListener));
-              t2.window.addEventListener("focus", A._functionToJS1(cancelledEventListener));
-              t2 = $async$self.__FilePickerWeb__target_A;
-              t2 === $ && A.throwUnnamedLateFieldNI();
-              firstChild = t2.firstChild;
+              t1 = t1.window;
+              t2 = A._functionToJS1(cancelledEventListener);
+              t1.addEventListener("focus", t2);
+              t1 = $async$self.__FilePickerWeb__target_A;
+              t1 === $ && A.throwUnnamedLateFieldNI();
+              firstChild = t1.firstChild;
               while (firstChild != null) {
-                t2.removeChild(firstChild);
-                t2 = $async$self.__FilePickerWeb__target_A;
-                firstChild = t2.firstChild;
+                t1.removeChild(firstChild);
+                t1 = $async$self.__FilePickerWeb__target_A;
+                firstChild = t1.firstChild;
               }
               _this.click();
-              t2 = $async$self.__FilePickerWeb__target_A;
-              firstChild = t2.firstChild;
+              t1 = $async$self.__FilePickerWeb__target_A;
+              firstChild = t1.firstChild;
               while (firstChild != null) {
-                t2.removeChild(firstChild);
-                t2 = $async$self.__FilePickerWeb__target_A;
-                firstChild = t2.firstChild;
+                t1.removeChild(firstChild);
+                t1 = $async$self.__FilePickerWeb__target_A;
+                firstChild = t1.firstChild;
               }
               $async$goto = 3;
-              return A._asyncAwait(t1, $async$pickFiles$3$allowedExtensions$type$withData);
+              return A._asyncAwait(_box_0.filesCompleter.future, $async$pickFiles$3$allowedExtensions$type$withData);
             case 3:
               // returning from await.
               files = $async$result;
+              _box_0.filesCompleter = null;
               $async$returnValue = files == null ? null : new A.FilePickerResult(files);
               // goto return
               $async$goto = 1;
@@ -185334,7 +185333,7 @@
     $call$body$FilePickerWeb_pickFiles_changeEventListener(e) {
       var $async$goto = 0,
         $async$completer = A._makeAsyncAwaitCompleter(type$.void),
-        $async$returnValue, $async$self = this, addPickedFile, t2, t3, t4, t5, t6, i, file, reader, t7, t1;
+        $async$returnValue, $async$self = this, t2, addPickedFile, t3, t4, t5, t6, i, file, reader, t7, t1;
       var $async$call$1 = A._wrapJsFunctionForAsync(function($async$errorCode, $async$result) {
         if ($async$errorCode === 1)
           return A._asyncRethrow($async$result, $async$completer);
@@ -185349,11 +185348,11 @@
                 break;
               }
               t1.changeEventTriggered = true;
-              t1 = $async$self.uploadInput.files;
-              t1.toString;
-              addPickedFile = new A.FilePickerWeb_pickFiles_changeEventListener_addPickedFile(A._setArrayType([], type$.JSArray_PlatformFile), t1, $async$self.onFileLoading, $async$self.filesCompleter);
-              for (t2 = type$._Future_void, t3 = type$._AsyncCompleter_void, t4 = init.G, t5 = type$.JSObject, t6 = !$async$self.withData, i = 0; i < t1.length; ++i) {
-                file = t1.item(i);
+              t2 = $async$self.uploadInput.files;
+              t2.toString;
+              addPickedFile = new A.FilePickerWeb_pickFiles_changeEventListener_addPickedFile(t1, A._setArrayType([], type$.JSArray_PlatformFile), t2, $async$self.onFileLoading);
+              for (t1 = type$._Future_void, t3 = type$._AsyncCompleter_void, t4 = init.G, t5 = type$.JSObject, t6 = !$async$self.withData, i = 0; i < t2.length; ++i) {
+                file = t2.item(i);
                 if (file == null)
                   continue;
                 if (t6) {
@@ -185364,7 +185363,7 @@
                 }
                 t7 = $.Zone__current;
                 reader = new t4.FileReader();
-                A._EventStreamSubscription$(reader, "loadend", new A.FilePickerWeb_pickFiles_changeEventListener_closure0(reader, addPickedFile, file, new A._AsyncCompleter(new A._Future(t7, t2), t3)), false, t5);
+                A._EventStreamSubscription$(reader, "loadend", new A.FilePickerWeb_pickFiles_changeEventListener_closure0(reader, addPickedFile, file, new A._AsyncCompleter(new A._Future(t7, t1), t3)), false, t5);
                 reader.readAsArrayBuffer(file);
               }
             case 1:
@@ -185393,8 +185392,11 @@
       t3 = file.name;
       t4 = path == null ? blobUrl : path;
       t2.push(new A.PlatformFile(t4, t3, bytes, readStream, t1 ? bytes.length : file.size));
-      if (t2.length >= this.files.length)
-        this.filesCompleter.complete$1(0, t2);
+      if (t2.length >= this.files.length) {
+        t1 = this._box_0.filesCompleter;
+        if (t1 != null)
+          t1.complete$1(0, t2);
+      }
     },
     $signature: 408
   };
@@ -185422,7 +185424,7 @@
   A.FilePickerWeb_pickFiles_cancelledEventListener.prototype = {
     call$1(_) {
       init.G.window.removeEventListener("focus", A._functionToJS1(this));
-      A.Future_Future$delayed(A.Duration$(0, 0, 0, 0, 0, 1), null, type$.dynamic).then$1$1(new A.FilePickerWeb_pickFiles_cancelledEventListener_closure(this._box_0, this.filesCompleter), type$.Null);
+      A.Future_Future$delayed(A.Duration$(0, 0, 0, 0, 0, 1), null, type$.dynamic).then$1$1(new A.FilePickerWeb_pickFiles_cancelledEventListener_closure(this._box_0), type$.Null);
     },
     $signature: 4
   };
@@ -185431,7 +185433,9 @@
       var t1 = this._box_0;
       if (!t1.changeEventTriggered) {
         t1.changeEventTriggered = true;
-        this.filesCompleter.complete$1(0, null);
+        t1 = t1.filesCompleter;
+        if (t1 != null)
+          t1.complete$1(0, null);
       }
     },
     $signature: 34
