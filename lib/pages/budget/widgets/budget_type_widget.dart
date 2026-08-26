@@ -31,7 +31,16 @@ class BudgetTypeWidgetState extends State<BudgetTypeWidget> {
     super.initState();
   }
 
-  listener() {
+  @override
+  void dispose() {
+    widget.controller.removeListener(listener);
+    super.dispose();
+  }
+
+  void listener() {
+    if (!mounted) {
+      return;
+    }
     double amount = double.tryParse(widget.controller.text) ?? 0.0;
     BudgetValueType newValue = BudgetValueType.unlimited;
     if (amount > 0 && amount < 1) {
