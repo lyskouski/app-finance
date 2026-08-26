@@ -20538,9 +20538,14 @@
       return t2 + (t1 && A.ThemeHelper_getWidthCount(constraints, null) >= 4 || A.ScreenHelper_state()._values[5] ? 200 : 0);
     },
     ThemeHelper_getWidth(context, multiply, constraints, withZoom) {
-      var t1 = A.InheritedModel_inheritFrom(context, B._MediaQueryAspect_0, type$.MediaQuery).data,
-        t2 = withZoom ? A.AppZoom_state() : 1;
-      return t1.size._dx / t2 - 8 / A.AppZoom_state() * multiply - A.ThemeHelper__env(context, constraints);
+      var t2,
+        t1 = constraints == null ? null : constraints.maxWidth;
+      if (t1 == null) {
+        t1 = type$.MediaQuery;
+        t1 = A.InheritedModel_inheritFrom(context, B._MediaQueryAspect_0, t1).data.size._dx - A.InheritedModel_inheritFrom(context, B._MediaQueryAspect_8, t1).data.padding.get$horizontal();
+      }
+      t2 = withZoom ? A.AppZoom_state() : 1;
+      return t1 / t2 - 8 / A.AppZoom_state() * multiply - A.ThemeHelper__env(context, constraints);
     },
     ThemeHelper_getHeight(context) {
       return A.InheritedModel_inheritFrom(context, B._MediaQueryAspect_0, type$.MediaQuery).data.size._dy / A.AppZoom_state() - 8 / A.AppZoom_state() * 2;
