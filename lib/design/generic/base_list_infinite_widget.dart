@@ -41,13 +41,20 @@ class BaseListInfiniteWidgetState extends State<BaseListInfiniteWidget> {
 
   @override
   void dispose() {
+    scrollController.removeListener(_scrollListener);
     scrollController.dispose();
     super.dispose();
   }
 
   void _loadItems() {
+    if (!mounted) {
+      return;
+    }
     setState(() => isLoading = true);
     Future.delayed(const Duration(milliseconds: 300), () {
+      if (!mounted) {
+        return;
+      }
       setState(() {
         isLoading = false;
         _addItems();
@@ -71,6 +78,9 @@ class BaseListInfiniteWidgetState extends State<BaseListInfiniteWidget> {
   }
 
   void clearState() {
+    if (!mounted) {
+      return;
+    }
     if (scrollController.hasClients) {
       scrollController.jumpTo(0);
       items.clear();
