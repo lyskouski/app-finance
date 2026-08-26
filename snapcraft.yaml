@@ -31,5 +31,7 @@ parts:
     build-packages: [libgtk-3-dev, ninja-build, clang, lld, llvm-14]
     stage-packages: [libgtk-3-0, ibus-gtk3, libpulse0]
     flutter-target: lib/main.dart
-    flutter-build-args:
-      - "--no-tree-shake-icons"
+    override-build: |
+      flutter build linux --release --no-tree-shake-icons --target lib/main.dart
+      mkdir -p "$CRAFT_PART_INSTALL"
+      cp -r build/linux/x64/release/bundle/* "$CRAFT_PART_INSTALL/"
