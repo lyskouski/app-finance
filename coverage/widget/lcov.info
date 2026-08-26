@@ -1967,7 +1967,7 @@ LF:107
 LH:92
 end_of_record
 SF:lib/design/generic/empty_widget.dart
-DA:9,1
+DA:9,2
 DA:11,0
 DA:13,0
 DA:14,0
@@ -2744,7 +2744,7 @@ LF:38
 LH:0
 end_of_record
 SF:lib/components/component_recent.dart
-DA:39,1
+DA:39,2
 DA:41,0
 DA:43,0
 DA:44,0
@@ -3118,7 +3118,7 @@ LF:21
 LH:18
 end_of_record
 SF:lib/components/widgets/account_flow_chart.dart
-DA:23,1
+DA:23,2
 DA:25,0
 DA:26,0
 DA:27,0
@@ -3158,7 +3158,7 @@ LF:36
 LH:1
 end_of_record
 SF:lib/components/widgets/account_health_chart.dart
-DA:18,1
+DA:18,2
 DA:20,0
 DA:22,0
 DA:23,0
@@ -3179,7 +3179,7 @@ LF:17
 LH:1
 end_of_record
 SF:lib/components/widgets/bill_ytd_chart.dart
-DA:23,1
+DA:23,2
 DA:25,0
 DA:26,0
 DA:27,0
@@ -3234,7 +3234,7 @@ LF:51
 LH:1
 end_of_record
 SF:lib/components/widgets/budget_forecast_chart.dart
-DA:24,1
+DA:24,2
 DA:26,0
 DA:28,0
 DA:29,0
@@ -3272,7 +3272,7 @@ LF:34
 LH:1
 end_of_record
 SF:lib/components/widgets/budget_ytd_chart.dart
-DA:26,1
+DA:26,2
 DA:28,0
 DA:29,0
 DA:30,0
@@ -3619,7 +3619,7 @@ LF:80
 LH:30
 end_of_record
 SF:lib/design/generic/text_widget.dart
-DA:8,1
+DA:8,2
 DA:10,0
 DA:11,0
 DA:13,0
@@ -5617,7 +5617,7 @@ DA:150,0
 DA:152,0
 DA:154,0
 DA:160,0
-DA:167,0
+DA:167,1
 DA:169,3
 DA:170,3
 DA:174,3
@@ -5697,7 +5697,7 @@ DA:278,3
 DA:282,6
 DA:287,15
 LF:129
-LH:54
+LH:55
 end_of_record
 SF:lib/_classes/herald/app_budget_positive.dart
 DA:8,0
@@ -5830,7 +5830,7 @@ SF:lib/l10n/app_localization.dart
 DA:86,12
 DA:90,3
 DA:91,3
-DA:2287,1
+DA:2287,2
 DA:2289,4
 DA:2291,8
 DA:2294,4
@@ -5967,7 +5967,7 @@ LF:60
 LH:0
 end_of_record
 SF:lib/pages/account/account_add_page.dart
-DA:35,1
+DA:35,2
 DA:47,0
 DA:48,0
 DA:64,0
@@ -6291,7 +6291,7 @@ LF:146
 LH:0
 end_of_record
 SF:lib/pages/account/account_page.dart
-DA:24,1
+DA:24,2
 DA:29,1
 DA:30,1
 DA:34,1
@@ -6346,7 +6346,7 @@ LF:51
 LH:35
 end_of_record
 SF:lib/pages/automation/automation_page.dart
-DA:16,1
+DA:16,2
 DA:18,0
 DA:19,0
 DA:25,0
@@ -6374,7 +6374,7 @@ LF:24
 LH:1
 end_of_record
 SF:lib/pages/automation/payment_add_page.dart
-DA:23,1
+DA:23,2
 DA:25,0
 DA:26,0
 DA:41,0
@@ -6632,7 +6632,7 @@ LF:17
 LH:0
 end_of_record
 SF:lib/pages/bill/bill_page.dart
-DA:22,1
+DA:22,2
 DA:24,0
 DA:25,0
 DA:35,0
@@ -6984,7 +6984,7 @@ LF:60
 LH:0
 end_of_record
 SF:lib/pages/budget/budget_page.dart
-DA:24,1
+DA:24,2
 DA:29,0
 DA:30,0
 DA:34,0
@@ -7044,7 +7044,7 @@ LF:56
 LH:1
 end_of_record
 SF:lib/pages/budget/budget_add_page.dart
-DA:35,1
+DA:35,2
 DA:46,0
 DA:47,0
 DA:61,0
@@ -7342,7 +7342,7 @@ LF:113
 LH:0
 end_of_record
 SF:lib/pages/currency/currency_add_page.dart
-DA:17,1
+DA:17,2
 DA:19,0
 DA:20,0
 DA:29,0
@@ -7407,7 +7407,7 @@ LF:61
 LH:1
 end_of_record
 SF:lib/pages/currency/currency_page.dart
-DA:24,1
+DA:24,2
 DA:26,0
 DA:27,0
 DA:34,0
@@ -7491,7 +7491,7 @@ LF:80
 LH:1
 end_of_record
 SF:lib/pages/goal/goal_add_page.dart
-DA:29,1
+DA:29,2
 DA:39,0
 DA:40,0
 DA:52,0
@@ -7622,7 +7622,7 @@ LF:30
 LH:0
 end_of_record
 SF:lib/pages/goal/goal_page.dart
-DA:17,1
+DA:17,2
 DA:19,1
 DA:20,1
 DA:24,1
@@ -7724,7 +7724,7 @@ LF:54
 LH:0
 end_of_record
 SF:lib/pages/home/home_page.dart
-DA:44,1
+DA:44,2
 DA:46,3
 DA:47,3
 DA:57,3
@@ -8226,7 +8226,7 @@ LF:27
 LH:0
 end_of_record
 SF:lib/pages/metrics/metrics_page.dart
-DA:17,1
+DA:17,2
 DA:22,0
 DA:23,0
 DA:29,0
@@ -8258,7 +8258,7 @@ LF:28
 LH:1
 end_of_record
 SF:lib/pages/security/security_page.dart
-DA:25,1
+DA:25,2
 DA:27,0
 DA:28,0
 DA:39,0
@@ -8362,7 +8362,7 @@ LF:100
 LH:1
 end_of_record
 SF:lib/pages/settings/settings_page.dart
-DA:15,1
+DA:15,2
 DA:17,0
 DA:18,0
 DA:24,0
@@ -8385,7 +8385,7 @@ LF:19
 LH:1
 end_of_record
 SF:lib/pages/sorting_page.dart
-DA:15,1
+DA:15,2
 DA:17,0
 DA:18,0
 DA:22,0
@@ -8411,7 +8411,7 @@ LF:22
 LH:1
 end_of_record
 SF:lib/pages/start/start_page.dart
-DA:22,1
+DA:22,2
 DA:24,0
 DA:25,0
 DA:36,0
@@ -8474,7 +8474,7 @@ LF:59
 LH:1
 end_of_record
 SF:lib/pages/subscription/subscription_page.dart
-DA:17,1
+DA:17,2
 DA:19,0
 DA:20,0
 DA:24,0
@@ -8509,7 +8509,7 @@ LF:31
 LH:1
 end_of_record
 SF:lib/pages/_interfaces/abstract_add_page.dart
-DA:8,1
+DA:8,2
 DA:18,0
 DA:19,0
 DA:20,0
@@ -8729,7 +8729,7 @@ LF:35
 LH:32
 end_of_record
 SF:lib/pages/about/widgets/members_tab.dart
-DA:13,1
+DA:13,2
 DA:15,0
 DA:17,0
 DA:18,0
@@ -10197,7 +10197,7 @@ LF:46
 LH:0
 end_of_record
 SF:lib/pages/home/widgets/init_tab.dart
-DA:11,1
+DA:11,2
 DA:13,0
 DA:14,0
 DA:18,0
@@ -10468,7 +10468,7 @@ LF:56
 LH:0
 end_of_record
 SF:lib/pages/settings/widgets/import_tab.dart
-DA:29,1
+DA:29,2
 DA:33,0
 DA:34,0
 DA:46,0
@@ -10636,7 +10636,7 @@ LH:1
 end_of_record
 SF:lib/pages/settings/widgets/setting_tab.dart
 DA:8,0
-DA:11,1
+DA:11,2
 DA:13,0
 DA:14,0
 DA:18,0
@@ -10644,7 +10644,7 @@ LF:5
 LH:1
 end_of_record
 SF:lib/pages/settings/widgets/recover_tab.dart
-DA:19,1
+DA:19,2
 DA:21,0
 DA:22,0
 DA:32,0
@@ -10699,7 +10699,7 @@ LF:51
 LH:1
 end_of_record
 SF:lib/pages/settings/widgets/recover_tab/date_time_helper_widget.dart
-DA:11,1
+DA:11,2
 DA:13,0
 DA:15,0
 DA:16,0
@@ -10858,7 +10858,7 @@ LF:68
 LH:0
 end_of_record
 SF:lib/pages/start/widgets/setting_tab.dart
-DA:37,1
+DA:37,2
 DA:44,0
 DA:45,0
 DA:74,0
@@ -11280,7 +11280,7 @@ LF:6
 LH:6
 end_of_record
 SF:lib/pages/start/widgets/abstract_tab.dart
-DA:14,1
+DA:14,2
 DA:27,0
 DA:29,0
 DA:31,0
@@ -11303,7 +11303,7 @@ LF:19
 LH:1
 end_of_record
 SF:lib/pages/subscription/widgets/apple_widget.dart
-DA:13,1
+DA:13,2
 DA:15,0
 DA:17,0
 DA:18,0
@@ -11325,14 +11325,14 @@ LF:18
 LH:1
 end_of_record
 SF:lib/pages/subscription/widgets/google_widget.dart
-DA:14,1
+DA:14,2
 DA:16,0
 DA:18,0
 LF:3
 LH:1
 end_of_record
 SF:lib/pages/subscription/widgets/other_widget.dart
-DA:11,1
+DA:11,2
 DA:13,0
 DA:15,0
 DA:16,0
