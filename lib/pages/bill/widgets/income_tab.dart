@@ -98,10 +98,7 @@ class IncomeTabState<T extends IncomeTab> extends State<IncomeTab> {
 
   String getTitle() => AppLocale.labels.createBillHeader;
 
-  bool hasFormErrors() {
-    setState(() => hasErrors = account == null);
-    return hasErrors;
-  }
+  bool hasFormErrors() => account == null;
 
   void updateStorage() {
     AppPreferences.set(AppPreferences.prefAccount, account ?? '');
@@ -125,14 +122,16 @@ class IncomeTabState<T extends IncomeTab> extends State<IncomeTab> {
     return FullSizedButtonWidget(
       constraints: constraints,
       controller: focus,
-      onPressed: () => {
-        setState(() {
-          if (hasFormErrors()) {
-            return;
-          }
-          updateStorage();
-          nav.pop();
-        })
+      onPressed: () {
+        if (!mounted) {
+          return;
+        }
+        if (hasFormErrors()) {
+          setState(() => hasErrors = true);
+          return;
+        }
+        updateStorage();
+        nav.pop();
       },
       title: getButtonName(),
       icon: Icons.save,
