@@ -67,7 +67,10 @@ class GoalPageState extends AbstractPageState<GoalPage> {
               shrinkWrap: true,
               itemCount: goals.length,
               itemBuilder: (_, int index) {
-                final goal = goals.next as GoalAppData;
+                final goal = goals.next as GoalAppData?;
+                if (goal == null) {
+                  return const SizedBox.shrink();
+                }
                 return BackgroundWrapper(
                   index: index,
                   child: GoalLineWidget(
