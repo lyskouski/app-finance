@@ -31,7 +31,8 @@ if (keystoreFile.exists()) {
 
 android {
     namespace = "com.tercad.fingrom"
-    compileSdk = flutter.compileSdkVersion
+    // compileSdk = flutter.compileSdkVersion
+    compileSdk = 36
     // ndkVersion = flutter.ndkVersion
     ndkVersion = "28.2.13676358"
 
@@ -47,7 +48,8 @@ android {
     defaultConfig {
         applicationId = "com.tercad.fingrom"
         minSdk = flutter.minSdkVersion
-        targetSdk = flutter.targetSdkVersion
+        // targetSdk = flutter.targetSdkVersion
+        targetSdk = 36
         versionCode = flutter.versionCode
         versionName = flutter.versionName
     }
