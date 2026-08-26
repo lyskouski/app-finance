@@ -55,7 +55,8 @@ class ThemeHelper {
 
   static double getWidth(BuildContext context,
           [double multiply = 4, BoxConstraints? constraints, bool withZoom = true]) =>
-      MediaQuery.sizeOf(context).width / (withZoom ? AppZoom.state : 1) -
+      (constraints?.maxWidth ?? (MediaQuery.sizeOf(context).width - MediaQuery.paddingOf(context).horizontal)) /
+          (withZoom ? AppZoom.state : 1) -
       getIndent(multiply) -
       _env(context, constraints);
 
