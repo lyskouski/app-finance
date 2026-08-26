@@ -30,6 +30,7 @@ linux-appimage/appimage-build
 linux-appimage/*.AppImage
 linux-appimage/*.zsync
 android/build/
+android/.kotlin/
 
 # IntelliJ related
 *.iml
