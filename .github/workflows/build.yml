@@ -94,7 +94,7 @@ jobs:
           CL: /D_SILENCE_EXPERIMENTAL_COROUTINE_DEPRECATION_WARNINGS
         run: |
           flutter config --enable-windows-desktop
-          flutter build -v windows --build-name=${{ needs.release.outputs.version }} --build-number=${{ needs.release.outputs.build_number }} --release
+          flutter build -v windows --build-name=${{ needs.release.outputs.version }} --build-number=${{ needs.release.outputs.build_number }} --release --no-tree-shake-icons
 
       - name: Copy Additional DLLs
         if: matrix.target == 'Windows'
