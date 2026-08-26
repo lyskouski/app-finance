@@ -31,22 +31,30 @@ subprojects {
 }
 
 subprojects {
-    val setCompileSdk = {
+    val configureAndroidAndKotlin = {
         if (plugins.hasPlugin("com.android.application") || plugins.hasPlugin("com.android.library")) {
             configure<com.android.build.gradle.BaseExtension> {
                 compileSdkVersion(36)
+                compileOptions {
+                    sourceCompatibility = JavaVersion.VERSION_17
+                    targetCompatibility = JavaVersion.VERSION_17
+                }
+            }
+        }
+        tasks.withType<JavaCompile>().configureEach {
+            sourceCompatibility = "17"
+            targetCompatibility = "17"
+        }
+        tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile>().configureEach {
+            compilerOptions {
+                jvmTarget.set(org.jetbrains.kotlin.gradle.dsl.JvmTarget.JVM_17)
             }
         }
     }
     if (state.executed) {
-        setCompileSdk()
+        configureAndroidAndKotlin()
     } else {
-        afterEvaluate { setCompileSdk() }
-    }
-    tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile>().configureEach {
-        compilerOptions {
-            jvmTarget.set(org.jetbrains.kotlin.gradle.dsl.JvmTarget.JVM_17)
-        }
+        afterEvaluate { configureAndroidAndKotlin() }
     }
 }
 
