@@ -40,6 +40,10 @@ android {
         targetCompatibility = JavaVersion.VERSION_17
     }
 
+    kotlinOptions {
+        jvmTarget = "17"
+    }
+
     defaultConfig {
         applicationId = "com.tercad.fingrom"
         minSdk = flutter.minSdkVersion
@@ -51,12 +55,22 @@ android {
 
     signingConfigs {
         create("release") {
-            keyAlias = "key"
+            keyAlias = localProperties.getProperty("key.alias") ?: "key"
             keyPassword = localProperties.getProperty("key.password")
-            if (localProperties.getProperty("key.file") != null) {
-              storeFile = file(localProperties.getProperty("key.file"))
-            }
             storePassword = localProperties.getProperty("key.password")
+            val keyFilePath = localProperties.getProperty("key.file")
+            val keyFile = if (keyFilePath != null) file(keyFilePath) else null
+            if (keyFile != null && keyFile.exists()) {
+                storeFile = keyFile
+            } else {
+                val fallbackAppKey = file("key.jks")
+                val fallbackAndroidKey = rootProject.file("key.jks")
+                if (fallbackAppKey.exists()) {
+                    storeFile = fallbackAppKey
+                } else if (fallbackAndroidKey.exists()) {
+                    storeFile = fallbackAndroidKey
+                }
+            }
         }
     }
 
