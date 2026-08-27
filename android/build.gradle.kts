@@ -6,8 +6,8 @@ buildscript {
     dependencies {
         classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:2.3.20")
         classpath("org.jetbrains.kotlin:kotlin-serialization:2.3.20")
-        classpath("com.google.gms:google-services:4.3.15")
-        classpath("com.google.firebase:firebase-crashlytics-gradle:2.9.2")
+        classpath("com.google.gms:google-services:4.4.4")
+        classpath("com.google.firebase:firebase-crashlytics-gradle:3.0.8")
         classpath("com.android.tools.build:gradle:9.0.1")
     }
 }
