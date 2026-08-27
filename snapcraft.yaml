@@ -32,6 +32,11 @@ parts:
     stage-packages: [libgtk-3-0, ibus-gtk3, libpulse0]
     flutter-target: lib/main.dart
     override-build: |
+      if [ ! -d "${CRAFT_PART_BUILD}/flutter-distro" ]; then
+        git clone --depth 1 -b stable https://github.com/flutter/flutter.git "${CRAFT_PART_BUILD}/flutter-distro"
+        flutter precache --linux
+        flutter pub get
+      fi
       flutter build linux --release --no-tree-shake-icons --target lib/main.dart
       mkdir -p "$CRAFT_PART_INSTALL"
       cp -r build/linux/x64/release/bundle/* "$CRAFT_PART_INSTALL/"
