@@ -1,6 +1,6 @@
 // Source: https://stackoverflow.com/questions/57902361/flutter-app-crashes-building-the-appbar-with-multi-language-using-i18n-jetbrains
 
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 
 class FallbackLocalizationDelegate extends LocalizationsDelegate<MaterialLocalizations> {
   @override

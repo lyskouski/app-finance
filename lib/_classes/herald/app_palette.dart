@@ -3,7 +3,7 @@
 
 import 'package:app_finance/_classes/storage/app_preferences.dart';
 import 'package:app_finance/_configs/custom_color_scheme.dart';
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 
 class AppPalette extends ValueNotifier<String> {
   static get state => AppPreferences.get(AppPreferences.prefColor) ?? AppColors.colorApp;

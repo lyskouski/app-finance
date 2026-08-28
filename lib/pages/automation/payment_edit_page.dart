@@ -8,7 +8,7 @@ import 'package:app_finance/_configs/budget_type.dart';
 import 'package:app_finance/_configs/payment_type.dart';
 import 'package:app_finance/_ext/data_ext.dart';
 import 'package:app_finance/pages/automation/payment_add_page.dart';
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 
 class PaymentEditPage extends PaymentAddPage {
   final String uuid;

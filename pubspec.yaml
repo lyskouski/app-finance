@@ -58,6 +58,8 @@ dependencies:
   flutter_solidart: ^2.6.1
   simple_totp_auth: ^0.0.2
   local_auth: ^2.3.0
+  material_ui: any
+  web: any
 
 dependency_overrides:
   flutter_webrtc: 0.12.10
@@ -84,6 +86,7 @@ dev_dependencies:
   flutter_gherkin_generator: ^1.0.5
   flutter_gherkin_wrapper: ^1.0.5
   flutter_screenshot_generator: ^1.0.1
+  gherkin: any
 
 flutter:
   generate: true

@@ -19,7 +19,7 @@ import 'package:app_finance/components/widgets/budget_ytd_chart.dart';
 import 'package:app_finance/design/generic/text_widget.dart';
 import 'package:app_finance/design/wrapper/table_widget.dart';
 import 'package:app_finance/design/wrapper/tap_widget.dart';
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:provider/provider.dart';
 
 class BudgetTab extends StatelessWidget {

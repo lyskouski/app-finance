@@ -9,7 +9,7 @@ import 'package:app_finance/design/wrapper/tab_widget.dart';
 import 'package:app_finance/pages/metrics/widgets/account_tab.dart';
 import 'package:app_finance/pages/metrics/widgets/bill_tab.dart';
 import 'package:app_finance/pages/metrics/widgets/budget_tab.dart';
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 
 class MetricsPage extends StatefulWidget {
   final String? search;

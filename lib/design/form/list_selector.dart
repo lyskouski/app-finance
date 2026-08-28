@@ -13,7 +13,7 @@ import 'package:app_finance/design/wrapper/focus_wrapper.dart';
 import 'package:app_finance/design/wrapper/row_widget.dart';
 import 'package:app_finance/design/wrapper/tap_widget.dart';
 import 'package:app_finance/design/wrapper/text_wrapper.dart';
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 
 typedef FnState = Function(ListSelectorItem? value);
 

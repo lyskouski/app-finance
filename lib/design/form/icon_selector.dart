@@ -10,7 +10,7 @@ import 'package:app_finance/_ext/icons_ext.dart';
 import 'package:app_finance/design/form/list_selector.dart';
 import 'package:app_finance/design/form/list_selector_page.dart';
 import 'package:app_finance/design/wrapper/text_wrapper.dart';
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 
 class IconSelectorItem extends ListSelectorItem {
   IconData value;

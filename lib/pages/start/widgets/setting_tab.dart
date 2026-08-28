@@ -28,7 +28,7 @@ import 'package:app_finance/design/wrapper/row_widget.dart';
 import 'package:app_finance/design/wrapper/single_scroll_wrapper.dart';
 import 'package:app_finance/design/wrapper/table_widget.dart';
 import 'package:flutter/foundation.dart';
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:flutter_currency_picker/flutter_currency_picker.dart';
 import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';

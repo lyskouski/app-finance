@@ -5,7 +5,7 @@ import 'package:app_finance/_classes/herald/app_locale.dart';
 import 'package:app_finance/_configs/custom_text_theme.dart';
 import 'package:app_finance/design/wrapper/text_wrapper.dart';
 import 'package:dart_intl_search/dart_intl_search.dart';
-import 'package:flutter/material.dart' show Widget, BuildContext, Theme, Locale;
+import 'package:material_ui/material_ui.dart' show Widget, BuildContext, Theme, Locale;
 
 class ListSelectorItem {
   final String id;

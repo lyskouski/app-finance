@@ -4,7 +4,7 @@
 import 'package:app_finance/_classes/structure/bill_app_data.dart';
 import 'package:app_finance/pages/bill/bill_add_page.dart';
 import 'package:app_finance/pages/bill/widgets/expenses_edit_tab.dart';
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 
 class BillEditPage extends BillAddPage {
   final String uuid;

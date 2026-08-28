@@ -3,7 +3,7 @@
 
 import 'package:app_finance/_classes/controller/focus_controller.dart';
 import 'package:app_finance/design/wrapper/focus_wrapper.dart';
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 
 abstract class AbstractSelector extends StatefulWidget {
   final dynamic value;

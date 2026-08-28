@@ -11,7 +11,7 @@ import 'package:app_finance/components/_core/component_data.dart';
 import 'package:app_finance/components/_core/list_component_registry.dart';
 import 'package:app_finance/design/wrapper/confirmation_wrapper.dart';
 import 'package:app_finance/design/button/toolbar_button_widget.dart';
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 
 class HomeEditPage extends StatefulWidget {
   final Function callback;

@@ -3,7 +3,7 @@
 
 import 'package:app_finance/charts/interface/chart_value.dart';
 import 'package:app_finance/charts/painter/pie_radius_painter.dart';
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 
 class PieRadiusChart extends StatelessWidget {
   final double width;

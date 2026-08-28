@@ -4,7 +4,7 @@
 import 'package:app_finance/_classes/controller/exchange_controller.dart';
 import 'package:app_finance/_classes/storage/app_data.dart';
 import 'package:dart_class_wrapper/dart_class_wrapper.dart';
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:flutter_currency_picker/flutter_currency_picker.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/annotations.dart';

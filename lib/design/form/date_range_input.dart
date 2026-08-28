@@ -5,7 +5,7 @@ import 'package:app_finance/_classes/herald/app_locale.dart';
 import 'package:app_finance/_ext/build_context_ext.dart';
 import 'package:app_finance/design/form/date_input.dart';
 import 'package:custom_date_range_picker/custom_date_range_picker.dart';
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:intl/intl.dart';
 
 class DateRangeInput extends DateInput {

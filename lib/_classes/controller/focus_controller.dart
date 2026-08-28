@@ -6,7 +6,7 @@ import 'dart:math';
 
 import 'package:app_finance/_classes/controller/delayed_call.dart';
 import 'package:app_finance/_configs/theme_helper.dart';
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 
 class FocusController {
   final DelayedCall _scrollTo = DelayedCall(300);

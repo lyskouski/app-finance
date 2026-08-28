@@ -5,7 +5,7 @@ import 'dart:math';
 
 import 'package:app_finance/_classes/herald/app_zoom.dart';
 import 'package:app_finance/_configs/screen_helper.dart';
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 
 enum AdaptiveWindowType {
   xsmall,

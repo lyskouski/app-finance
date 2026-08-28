@@ -19,7 +19,7 @@ import 'package:app_finance/design/form/list_selector_item.dart';
 import 'package:app_finance/design/form/list_selector.dart';
 import 'package:app_finance/design/form/simple_input.dart';
 import 'package:app_finance/design/generic/base_widget.dart';
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:provider/provider.dart';
 
 enum ComponentRecentType {

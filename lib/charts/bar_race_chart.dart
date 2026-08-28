@@ -11,7 +11,7 @@ import 'package:app_finance/charts/interface/chart_data.dart';
 import 'package:app_finance/charts/painter/bar_chart_painter.dart';
 import 'package:app_finance/charts/painter/foreground_chart_painter.dart';
 import 'package:app_finance/design/generic/empty_widget.dart';
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:intl/intl.dart';
 
 class BarRaceChart extends StatelessWidget {

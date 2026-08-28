@@ -10,7 +10,7 @@ import 'package:app_finance/pages/subscription/widgets/google_widget.dart';
 import 'package:app_finance/pages/subscription/widgets/other_widget.dart';
 import 'package:app_finance/design/wrapper/row_widget.dart';
 import 'package:app_finance/design/wrapper/text_wrapper.dart';
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:flutter/foundation.dart';
 
 class SubscriptionPage extends StatefulWidget {

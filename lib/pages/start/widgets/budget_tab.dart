@@ -7,7 +7,7 @@ import 'package:app_finance/_classes/storage/app_data.dart';
 import 'package:app_finance/_configs/theme_helper.dart';
 import 'package:app_finance/design/button/full_sized_button_widget.dart';
 import 'package:app_finance/pages/budget/budget_add_page.dart';
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:provider/provider.dart';
 
 class BudgetTab extends BudgetAddPage {

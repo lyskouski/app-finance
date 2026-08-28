@@ -18,7 +18,7 @@ import 'package:app_finance/design/wrapper/tap_widget.dart';
 import 'package:app_finance/design/wrapper/text_wrapper.dart';
 import 'package:app_finance/pages/_interfaces/abstract_page_state.dart';
 import 'package:app_finance/pages/bill/widgets/bill_line_widget.dart';
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:intl/intl.dart';
 
 class BillScopeViewPage extends StatefulWidget {

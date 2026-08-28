@@ -21,7 +21,7 @@ import 'package:app_finance/design/generic/loading_widget.dart';
 import 'package:app_finance/design/wrapper/input_wrapper.dart';
 import 'package:app_finance/pages/settings/widgets/recover_tab/date_time_helper_widget.dart';
 import 'package:app_finance/design/wrapper/single_scroll_wrapper.dart';
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:flutter_currency_picker/flutter_currency_picker.dart';
 import 'package:provider/provider.dart';
 

@@ -6,7 +6,7 @@ import 'package:app_finance/_ext/build_context_ext.dart';
 import 'package:app_finance/design/wrapper/tap_widget.dart';
 import 'package:app_finance/design/button/toolbar_button_widget.dart';
 import 'package:app_finance/pages/settings/widgets/recover_tab/recovery_type.dart';
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 
 class NavButtonWidget extends StatelessWidget {
   final String name;

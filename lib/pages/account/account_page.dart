@@ -15,7 +15,7 @@ import 'package:app_finance/design/generic/base_header_widget.dart';
 import 'package:app_finance/design/generic/base_swipe_widget.dart';
 import 'package:app_finance/design/wrapper/tap_widget.dart';
 import 'package:app_finance/pages/account/widgets/header_widget.dart';
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:provider/provider.dart';
 
 class AccountPage extends StatefulWidget {

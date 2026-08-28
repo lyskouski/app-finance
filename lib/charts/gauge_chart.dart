@@ -3,7 +3,7 @@
 
 import 'package:app_finance/_ext/build_context_ext.dart';
 import 'package:app_finance/charts/painter/gauge_painter.dart';
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 
 class GaugeChart extends StatelessWidget {
   final double width;
