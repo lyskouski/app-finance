@@ -2,7 +2,7 @@
 // Use of this source code is governed by a CC BY-NC-ND 4.0 license that can be found in the LICENSE file.
 
 import 'package:app_finance/charts/painter/foreground_chart_painter.dart';
-import 'package:material_ui/material_ui.dart';
+import 'package:flutter/material.dart';
 
 abstract class AbstractPainter extends CustomPainter {
   final double indent;

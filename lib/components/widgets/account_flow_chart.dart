@@ -16,7 +16,7 @@ import 'package:app_finance/charts/interface/ohlc_data.dart';
 import 'package:app_finance/charts/ohlc_chart.dart';
 import 'package:app_finance/design/wrapper/row_widget.dart';
 import 'package:app_finance/design/wrapper/text_wrapper.dart';
-import 'package:material_ui/material_ui.dart';
+import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 class AccountFlowChart extends StatelessWidget {

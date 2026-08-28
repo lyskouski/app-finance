@@ -10,7 +10,7 @@ import 'package:app_finance/_classes/structure/payment_app_data.dart';
 import 'package:app_finance/_ext/data_ext.dart';
 import 'package:app_finance/_ext/date_time_ext.dart';
 import 'package:app_finance/design/generic/base_line_widget.dart';
-import 'package:material_ui/material_ui.dart';
+import 'package:flutter/material.dart';
 
 class PaymentListWidget extends StatelessWidget {
   final PaymentAppData item;

@@ -4,7 +4,7 @@
 import 'package:app_finance/_ext/build_context_ext.dart';
 import 'package:app_finance/charts/gauge_chart.dart';
 import 'package:app_finance/charts/painter/gauge_linear_painter.dart';
-import 'package:material_ui/material_ui.dart';
+import 'package:flutter/material.dart';
 
 class GaugeLinearChart extends GaugeChart {
   const GaugeLinearChart({

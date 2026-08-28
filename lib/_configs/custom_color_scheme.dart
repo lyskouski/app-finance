@@ -5,7 +5,7 @@ import 'dart:convert';
 
 import 'package:app_finance/_classes/herald/app_palette.dart';
 import 'package:app_finance/_configs/custom_text_theme.dart';
-import 'package:material_ui/material_ui.dart';
+import 'package:flutter/material.dart';
 
 class AppColors {
   late AppDefaultColors palette;

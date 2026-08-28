@@ -9,7 +9,7 @@ import 'package:app_finance/_ext/string_ext.dart';
 import 'package:app_finance/components/_core/components_builder_item.dart';
 import 'package:app_finance/components/_core/component_data.dart';
 import 'package:app_finance/components/_core/widgets/draggable_frame.dart';
-import 'package:material_ui/material_ui.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_grid_layout/flutter_grid_layout.dart';
 
 class ComponentsBuilder extends StatelessWidget {

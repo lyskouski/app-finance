@@ -15,7 +15,7 @@ import 'package:app_finance/_ext/date_time_ext.dart';
 import 'package:app_finance/components/widgets/payment_list_widget.dart';
 import 'package:app_finance/design/generic/base_header_widget.dart';
 import 'package:app_finance/design/generic/base_swipe_widget.dart';
-import 'package:material_ui/material_ui.dart';
+import 'package:flutter/material.dart';
 
 class PaymentWidget extends StatelessWidget {
   final List<PaymentAppData> data;

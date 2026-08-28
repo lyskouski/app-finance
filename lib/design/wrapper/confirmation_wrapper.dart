@@ -1,5 +1,5 @@
 import 'package:app_finance/_classes/herald/app_locale.dart';
-import 'package:material_ui/material_ui.dart';
+import 'package:flutter/material.dart';
 
 class ConfirmationWrapper {
   static void show(BuildContext context, Function callback) {

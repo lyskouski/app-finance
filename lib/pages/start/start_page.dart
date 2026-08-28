@@ -16,7 +16,7 @@ import 'package:app_finance/pages/start/widgets/budget_tab.dart';
 import 'package:app_finance/pages/start/widgets/privacy_tab.dart';
 import 'package:app_finance/pages/start/widgets/setting_tab.dart';
 import 'package:app_finance/design/button/toolbar_button_widget.dart';
-import 'package:material_ui/material_ui.dart';
+import 'package:flutter/material.dart';
 
 class StartPage extends StatefulWidget {
   const StartPage({super.key});

@@ -3,7 +3,7 @@
 
 import 'package:app_finance/_configs/theme_helper.dart';
 import 'package:app_finance/design/wrapper/row_widget.dart';
-import 'package:material_ui/material_ui.dart';
+import 'package:flutter/material.dart';
 
 class GridLayer extends StatelessWidget {
   final double padding;

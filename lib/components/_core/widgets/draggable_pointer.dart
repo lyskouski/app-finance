@@ -6,7 +6,7 @@ import 'dart:math';
 import 'package:app_finance/_configs/theme_helper.dart';
 import 'package:app_finance/_ext/build_context_ext.dart';
 import 'package:app_finance/components/_core/component_data.dart';
-import 'package:material_ui/material_ui.dart';
+import 'package:flutter/material.dart';
 
 class DraggablePointer extends StatefulWidget {
   final Map<String, dynamic> data;

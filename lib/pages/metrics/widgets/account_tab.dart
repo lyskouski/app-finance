@@ -16,7 +16,7 @@ import 'package:app_finance/components/widgets/account_health_chart.dart';
 import 'package:app_finance/design/generic/text_widget.dart';
 import 'package:app_finance/design/wrapper/row_widget.dart';
 import 'package:app_finance/design/wrapper/table_widget.dart';
-import 'package:material_ui/material_ui.dart';
+import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
 class AccountTab extends StatelessWidget {

@@ -5,7 +5,7 @@ import 'package:app_finance/_classes/herald/app_locale.dart';
 import 'package:app_finance/_classes/structure/account_app_data.dart';
 import 'package:app_finance/_configs/account_type.dart';
 import 'package:app_finance/pages/account/account_add_page.dart';
-import 'package:material_ui/material_ui.dart';
+import 'package:flutter/material.dart';
 
 class AccountEditPage extends AccountAddPage {
   final String uuid;

@@ -3,7 +3,7 @@
 
 import 'package:app_finance/charts/interface/chart_data.dart';
 import 'package:app_finance/charts/painter/abstract_painter.dart';
-import 'package:material_ui/material_ui.dart';
+import 'package:flutter/material.dart';
 
 class LineChartPainter extends AbstractPainter {
   final List<ChartData> data;

@@ -5,7 +5,7 @@ import 'package:app_finance/_classes/storage/app_data.dart';
 import 'package:app_finance/design/form/list_selector_item.dart';
 import 'package:app_finance/design/form/list_selector.dart';
 import 'package:app_finance/design/generic/base_line_widget.dart';
-import 'package:material_ui/material_ui.dart';
+import 'package:flutter/material.dart';
 
 class ListAccountSelectorItem extends ListSelectorItem {
   dynamic item;

@@ -11,7 +11,7 @@ import 'package:app_finance/_ext/build_context_ext.dart';
 import 'package:app_finance/design/wrapper/tap_widget.dart';
 import 'package:app_finance/design/wrapper/text_wrapper.dart';
 import 'package:app_finance/design/button/toolbar_button_widget.dart';
-import 'package:material_ui/material_ui.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_currency_picker/flutter_currency_picker.dart';
 import 'package:flutter_grid_layout/flutter_grid_layout.dart';
 import 'package:provider/provider.dart';

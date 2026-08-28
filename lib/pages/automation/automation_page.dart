@@ -10,7 +10,7 @@ import 'package:app_finance/pages/automation/widgets/payments_tab.dart';
 import 'package:app_finance/pages/automation/widgets/sync_tab.dart';
 import 'package:app_finance/design/wrapper/tab_widget.dart';
 //import 'package:app_finance/pages/automation/widgets/notification_tab.dart';
-import 'package:material_ui/material_ui.dart';
+import 'package:flutter/material.dart';
 
 class AutomationPage extends StatefulWidget {
   const AutomationPage({super.key});

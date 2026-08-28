@@ -15,7 +15,7 @@ import 'package:app_finance/design/wrapper/tap_widget.dart';
 import 'package:app_finance/pages/_interfaces/abstract_page_state.dart';
 import 'package:app_finance/pages/budget/widgets/budget_line_widget.dart';
 import 'package:app_finance/pages/budget/widgets/header_widget.dart';
-import 'package:material_ui/material_ui.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_currency_picker/flutter_currency_picker.dart';
 import 'package:provider/provider.dart';
 

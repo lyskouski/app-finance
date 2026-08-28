@@ -9,7 +9,7 @@ import 'package:app_finance/components/_core/component_data.dart';
 import 'package:app_finance/components/_core/widgets/draggable_pointer.dart';
 import 'package:app_finance/design/wrapper/confirmation_wrapper.dart';
 import 'package:app_finance/design/wrapper/tap_widget.dart';
-import 'package:material_ui/material_ui.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_grid_layout/flutter_grid_layout.dart';
 
 class DraggableFrame extends StatefulWidget {

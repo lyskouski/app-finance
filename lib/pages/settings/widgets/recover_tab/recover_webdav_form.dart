@@ -12,7 +12,7 @@ import 'package:app_finance/design/form/simple_input.dart';
 import 'package:app_finance/design/wrapper/required_widget.dart';
 import 'package:app_finance/pages/settings/widgets/recover_tab/nav_button_widget.dart';
 import 'package:app_finance/pages/settings/widgets/recover_tab/recovery_type.dart';
-import 'package:material_ui/material_ui.dart';
+import 'package:flutter/material.dart';
 
 class RecoverWebdavForm extends StatefulWidget {
   final Function cbMessage;

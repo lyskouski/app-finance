@@ -28,7 +28,7 @@ import 'package:app_finance/design/generic/base_line_widget.dart';
 import 'package:app_finance/design/generic/base_list_infinite_widget.dart';
 import 'package:app_finance/design/wrapper/confirmation_wrapper.dart';
 import 'package:app_finance/design/wrapper/tab_widget.dart';
-import 'package:material_ui/material_ui.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_currency_picker/flutter_currency_picker.dart';
 import 'package:intl/intl.dart' as intl;
 

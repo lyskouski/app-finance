@@ -8,7 +8,7 @@ import 'package:app_finance/_configs/theme_helper.dart';
 import 'package:app_finance/design/form/list_selector_item.dart';
 import 'package:app_finance/design/form/list_selector_page.dart';
 import 'package:app_finance/pages/_interfaces/abstract_page_state.dart';
-import 'package:material_ui/material_ui.dart';
+import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 class SortingPage extends StatefulWidget {

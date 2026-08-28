@@ -14,7 +14,7 @@ import 'package:app_finance/design/wrapper/table_widget.dart';
 import 'package:app_finance/design/wrapper/text_wrapper.dart';
 import 'package:app_finance/design/generic/loading_widget.dart';
 import 'package:app_finance/pages/_interfaces/interface_page_inject.dart';
-import 'package:material_ui/material_ui.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
 

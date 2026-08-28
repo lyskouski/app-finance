@@ -12,7 +12,7 @@ import 'package:app_finance/pages/settings/widgets/recover_tab/recover_file_form
 import 'package:app_finance/pages/settings/widgets/recover_tab/recover_webdav_form.dart';
 import 'package:app_finance/pages/settings/widgets/recover_tab/recovery_type.dart';
 import 'package:app_finance/design/wrapper/single_scroll_wrapper.dart';
-import 'package:material_ui/material_ui.dart';
+import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 class RecoverTab extends StatefulWidget {

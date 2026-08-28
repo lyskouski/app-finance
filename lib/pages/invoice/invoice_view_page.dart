@@ -9,7 +9,7 @@ import 'package:app_finance/_classes/structure/navigation/app_route.dart';
 import 'package:app_finance/pages/_interfaces/abstract_page_state.dart';
 import 'package:app_finance/pages/invoice/widgets/invoice_header_widget.dart';
 import 'package:app_finance/design/wrapper/confirmation_wrapper.dart';
-import 'package:material_ui/material_ui.dart';
+import 'package:flutter/material.dart';
 
 class InvoiceViewPage extends StatefulWidget {
   final String uuid;

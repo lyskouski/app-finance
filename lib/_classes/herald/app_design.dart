@@ -4,7 +4,7 @@
 import 'package:app_finance/_classes/storage/app_preferences.dart';
 import 'package:app_finance/_configs/design_type.dart';
 import 'package:app_finance/l10n/index.dart';
-import 'package:material_ui/material_ui.dart';
+import 'package:flutter/material.dart';
 
 class AppDesign extends ValueNotifier<AppDesignType> {
   static AppDesignType _state = find(AppPreferences.get(AppPreferences.prefDesign)) ?? AppDesignType.global;

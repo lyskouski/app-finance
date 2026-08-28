@@ -3,7 +3,7 @@
 
 import 'package:app_finance/_configs/theme_helper.dart';
 import 'package:app_finance/design/wrapper/dots_indicator_decoration.dart';
-import 'package:material_ui/material_ui.dart';
+import 'package:flutter/material.dart';
 
 class DotsTabBarWidget extends TabBar {
   final TabController tabController;

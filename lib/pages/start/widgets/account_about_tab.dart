@@ -5,7 +5,7 @@ import 'package:app_finance/_classes/herald/app_locale.dart';
 import 'package:app_finance/_mixins/launcher_mixin.dart';
 import 'package:app_finance/design/wrapper/markdown_builder_wrapper.dart';
 import 'package:app_finance/pages/start/widgets/abstract_tab.dart';
-import 'package:material_ui/material_ui.dart';
+import 'package:flutter/material.dart';
 
 class AccountAboutTab extends AbstractTab {
   const AccountAboutTab({

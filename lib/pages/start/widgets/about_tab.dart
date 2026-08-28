@@ -11,7 +11,7 @@ import 'package:app_finance/design/wrapper/input_wrapper.dart';
 import 'package:app_finance/design/wrapper/markdown_builder_wrapper.dart';
 import 'package:app_finance/l10n/index.dart';
 import 'package:app_finance/pages/start/widgets/abstract_tab.dart';
-import 'package:material_ui/material_ui.dart';
+import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 class AboutTab extends AbstractTab {

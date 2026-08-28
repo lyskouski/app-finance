@@ -13,7 +13,7 @@ import 'package:app_finance/charts/radial_bar_chart.dart';
 import 'package:app_finance/_configs/theme_helper.dart';
 import 'package:app_finance/design/wrapper/row_widget.dart';
 import 'package:app_finance/design/wrapper/tap_widget.dart';
-import 'package:material_ui/material_ui.dart';
+import 'package:flutter/material.dart';
 
 class BaseGroupWidget extends StatelessWidget {
   final String title;

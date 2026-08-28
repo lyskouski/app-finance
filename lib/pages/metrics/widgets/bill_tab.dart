@@ -11,7 +11,7 @@ import 'package:app_finance/_ext/build_context_ext.dart';
 import 'package:app_finance/charts/bar_race_chart.dart';
 import 'package:app_finance/components/widgets/bill_ytd_chart.dart';
 import 'package:app_finance/design/wrapper/text_wrapper.dart';
-import 'package:material_ui/material_ui.dart';
+import 'package:flutter/material.dart';
 
 class BillTab extends StatelessWidget {
   final AppData store;

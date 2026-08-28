@@ -3,7 +3,7 @@
 
 import 'package:app_finance/_classes/herald/app_design.dart';
 import 'package:app_finance/_configs/theme_helper.dart';
-import 'package:material_ui/material_ui.dart';
+import 'package:flutter/material.dart';
 
 class RowWidget extends StatelessWidget {
   late final List<double> chunk;

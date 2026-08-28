@@ -8,7 +8,7 @@ import 'package:app_finance/components/component_recent.dart';
 import 'package:app_finance/components/_core/component_data.dart';
 import 'package:app_finance/components/_core/list_component_registry.dart';
 import 'package:app_finance/components/component_summary.dart';
-import 'package:material_ui/material_ui.dart';
+import 'package:flutter/material.dart';
 
 class ComponentsBuilderItem extends StatelessWidget {
   final ComponentData data;

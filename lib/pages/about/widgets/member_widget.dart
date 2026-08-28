@@ -7,7 +7,7 @@ import 'package:app_finance/_configs/custom_text_theme.dart';
 import 'package:app_finance/_configs/theme_helper.dart';
 import 'package:app_finance/_ext/build_context_ext.dart';
 import 'package:app_finance/design/wrapper/text_wrapper.dart';
-import 'package:material_ui/material_ui.dart';
+import 'package:flutter/material.dart';
 
 typedef MemberData = ({
   String name,

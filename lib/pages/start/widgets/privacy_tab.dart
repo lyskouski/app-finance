@@ -5,7 +5,7 @@ import 'package:app_finance/_classes/herald/app_locale.dart';
 import 'package:app_finance/_classes/storage/app_preferences.dart';
 import 'package:app_finance/design/wrapper/markdown_builder_wrapper.dart';
 import 'package:app_finance/pages/start/widgets/abstract_tab.dart';
-import 'package:material_ui/material_ui.dart';
+import 'package:flutter/material.dart';
 
 class PrivacyTab extends AbstractTab {
   const PrivacyTab({

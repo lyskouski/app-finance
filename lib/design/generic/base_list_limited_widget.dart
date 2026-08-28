@@ -4,7 +4,7 @@
 import 'package:app_finance/_classes/herald/app_locale.dart';
 import 'package:app_finance/_classes/structure/navigation/app_route.dart';
 import 'package:app_finance/_configs/theme_helper.dart';
-import 'package:material_ui/material_ui.dart';
+import 'package:flutter/material.dart';
 
 typedef FnListWidget = Widget Function(dynamic item, BuildContext context);
 

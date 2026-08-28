@@ -3,7 +3,7 @@
 
 import 'dart:math';
 
-import 'package:material_ui/material_ui.dart';
+import 'package:flutter/material.dart';
 
 extension ColorExt on Color {
   MaterialColor get toMaterialColor {

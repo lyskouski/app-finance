@@ -11,7 +11,7 @@ import 'package:app_finance/pages/_interfaces/abstract_page_state.dart';
 import 'package:app_finance/pages/goal/widgets/goal_line_widget.dart';
 import 'package:app_finance/pages/goal/widgets/header_widget.dart';
 import 'package:app_finance/pages/goal/widgets/profit_widget.dart';
-import 'package:material_ui/material_ui.dart';
+import 'package:flutter/material.dart';
 
 class GoalPage extends StatefulWidget {
   const GoalPage({super.key});

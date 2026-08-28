@@ -12,7 +12,7 @@ import 'package:app_finance/design/generic/base_group_widget.dart';
 import 'package:app_finance/design/generic/base_line_widget.dart';
 import 'package:app_finance/design/generic/base_swipe_widget.dart';
 import 'package:app_finance/design/generic/base_widget.dart';
-import 'package:material_ui/material_ui.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_currency_picker/flutter_currency_picker.dart';
 
 class AccountWidget extends BaseWidget {

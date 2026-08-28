@@ -8,7 +8,7 @@ import 'package:app_finance/_configs/theme_helper.dart';
 import 'package:app_finance/components/widgets/payment_widget.dart';
 import 'package:app_finance/design/button/full_sized_button_widget.dart';
 import 'package:app_finance/pages/_interfaces/interface_page_inject.dart';
-import 'package:material_ui/material_ui.dart';
+import 'package:flutter/material.dart';
 
 class PaymentsTab extends StatefulWidget {
   final FnPageCallback callback;

@@ -9,7 +9,7 @@ import 'package:app_finance/design/wrapper/tab_widget.dart';
 import 'package:app_finance/pages/settings/widgets/import_tab.dart';
 import 'package:app_finance/pages/settings/widgets/setting_tab.dart';
 import 'package:app_finance/pages/settings/widgets/recover_tab.dart';
-import 'package:material_ui/material_ui.dart';
+import 'package:flutter/material.dart';
 
 class SettingsPage extends StatefulWidget {
   const SettingsPage({super.key});

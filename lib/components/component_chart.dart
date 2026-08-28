@@ -13,7 +13,7 @@ import 'package:app_finance/_ext/build_context_ext.dart';
 import 'package:app_finance/_ext/string_ext.dart';
 import 'package:app_finance/components/_core/component_data.dart';
 import 'package:app_finance/design/form/list_selector.dart';
-import 'package:material_ui/material_ui.dart';
+import 'package:flutter/material.dart';
 
 enum ComponentChartType {
   accountFlow,

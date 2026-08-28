@@ -16,7 +16,7 @@ import 'package:app_finance/pages/bill/widgets/bill_line_widget.dart';
 import 'package:app_finance/pages/bill/widgets/sliver_header_delegate.dart';
 import 'package:app_finance/design/generic/base_header_widget.dart';
 import 'package:app_finance/design/generic/base_swipe_widget.dart';
-import 'package:material_ui/material_ui.dart';
+import 'package:flutter/material.dart';
 
 class BillPage extends StatefulWidget {
   const BillPage({super.key});

@@ -249,14 +249,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.0.9"
-  cupertino_ui:
-    dependency: transitive
-    description:
-      name: cupertino_ui
-      sha256: "2137c0d41f3b62cc4d3d2495e6c354bd6b6133cd21c6bb155736cc31dbd49a11"
-      url: "https://pub.dev"
-    source: hosted
-    version: "1.0.1"
   custom_date_range_picker:
     dependency: "direct main"
     description:
@@ -608,7 +600,7 @@ packages:
     source: hosted
     version: "9.2.1"
   gherkin:
-    dependency: "direct dev"
+    dependency: transitive
     description:
       name: gherkin
       sha256: "7c835be5c28dc50f753caa30b4d8e2204d0617dc56fc019dca0fc70279d779b7"
@@ -900,14 +892,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "0.13.0"
-  material_ui:
-    dependency: "direct main"
-    description:
-      name: material_ui
-      sha256: "7ba1ca315d50a004791dbab290417c52a61466d56db2822fe3c5c2994903110c"
-      url: "https://pub.dev"
-    source: hosted
-    version: "1.1.0"
   meta:
     dependency: transitive
     description:
@@ -1490,7 +1474,7 @@ packages:
     source: hosted
     version: "1.2.1"
   web:
-    dependency: "direct main"
+    dependency: transitive
     description:
       name: web
       sha256: "868d88a33d8a87b18ffc05f9f030ba328ffefba92d6c127917a2ba740f9cfe4a"

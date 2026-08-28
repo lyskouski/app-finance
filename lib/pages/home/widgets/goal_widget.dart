@@ -8,7 +8,7 @@ import 'package:app_finance/_ext/build_context_ext.dart';
 import 'package:app_finance/design/wrapper/tab_widget.dart';
 import 'package:app_finance/pages/home/widgets/goal_line_widget.dart';
 import 'package:app_finance/design/wrapper/tap_widget.dart';
-import 'package:material_ui/material_ui.dart';
+import 'package:flutter/material.dart';
 
 class GoalWidget extends StatelessWidget {
   final double? width;
