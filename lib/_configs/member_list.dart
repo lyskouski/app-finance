@@ -5,6 +5,7 @@ import 'package:app_finance/_classes/herald/app_locale.dart';
 
 final memberList = [
   (name: 'Viachaslau Lyskouski', badge: [AppLocale.labels.coAuthor]),
+  (name: 'Abdullah Gökmen', badge: [AppLocale.labels.coDeveloper]),
   (name: 'Iryna Shepetovetska', badge: [AppLocale.labels.coTranslator]),
   (name: 'Sabri Ünal', badge: [AppLocale.labels.coDeveloper]),
   (name: 'Hazem Abbas', badge: [AppLocale.labels.coPromoter]),
