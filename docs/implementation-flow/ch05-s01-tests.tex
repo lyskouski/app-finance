@@ -40,7 +40,53 @@ execution on a physical device or platform:
 IntegrationTestWidgetsFlutterBinding.ensureInitialized();
 \end{lstlisting}
 
-\noindent \q{Firebase Test Lab} and \q{BrowserStack} are cloud-powered testing platforms that enable evaluation of integration tests across an extensive spectrum of devices and configurations.
+\noindent \q{Firebase Test Lab} and \q{BrowserStack} are cloud-powered testing platforms that enable evaluation of integration tests across an extensive spectrum of devices and configurations. Also, it is possible to add a native Integration Tests evaluation into the Quality Gates pipeline on GitHub:
+
+\begin{lstlisting}[language=yaml]
+## ./.github/workflows/general_checks.yml
+integration-android:
+  image: cirrusci/flutter:3.7.3
+  variables:
+    apiLevel: "27"
+    target: "google_apis"
+    arch: "x86"
+    deviceName: "android_emulator"
+    deviceType: "pixel"
+  artifacts:
+    when: always
+    paths:
+      - e2e_output.log
+  script: |
+    # Set up the emulator
+    sdkmanager "platform-tools" "platforms;android-${apiLevel}"
+    sdkmanager --install "system-images;android-${apiLevel};${target};${arch}"
+    sdkmanager --update
+    echo "y" | sdkmanager --licenses
+    sdkmanager --list
+    echo "no" | avdmanager -v create avd --force --name "${deviceName}" --package "system-images;android-${apiLevel};${target};${arch}" --tag "${target}" --sdcard 128M --device "${deviceType}"
+    emulator -avd "${deviceName}" -no-audio -no-window -no-snapstorage -no-snapshot -gpu swiftshader_indirect -no-boot-anim -no-accel -wipe-data -skip-adb-auth &
+    adb wait-for-device shell 'while [[ -z $(getprop sys.boot_completed) ]]; do sleep 1; done; input keyevent 82'
+    # Run Integration Tests (by ignoring failures due to uninstall app)
+    set +e
+    (flutter drive --driver=test_driver/integration_test.dart --target=integration_test/main.dart || true) > e2e_output.log 2>&1 | (grep -q "Failed to uninstall app" && (echo "Failed to uninstall app." && exit 0))
+    set -e
+    cat e2e_output.log | grep -q "Some tests failed." && (echo "Some tests failed. Exiting with error code." >&2 && exit 1)
+
+integration-ios:
+  tags:
+    - shared-macos-amd64
+  image: macos-12-xcode-13
+  script: |
+    # Set up the simulator
+    xcrun simctl list runtimes
+    xcrun simctl create "e2e test" "iPhone 12" "com.apple.CoreSimulator.SimRuntime.iOS-15-5"
+    xcrun xctrace list devices
+    UDID=$(xcrun xctrace list devices | grep "^iPhone 12 Simulator(15.5)" | awk '{gsub(/[()]/,""); print $NF}')
+    echo $UDID
+    xcrun simctl boot "${UDID:?No Simulator with this name found}"
+    # Run Integration Tests
+    flutter drive --driver=test_driver/integration_test.dart --target=integration_test/main.dart
+\end{lstlisting}
 
 Note that Just-In-Time (JIT) and Ahead-of-Time (AOT) compilers (see \ref{dart}) may produce different results. What 
 works flawlessly in development mode (JIT) may not work as well in release mode (AOT), as demonstrated by the following 
