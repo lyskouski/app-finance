@@ -12447,7 +12447,8 @@ DA:21,0
 DA:22,0
 DA:23,0
 DA:24,0
-LF:19
+DA:25,0
+LF:20
 LH:0
 end_of_record
 SF:lib/_configs/payment_type.dart
