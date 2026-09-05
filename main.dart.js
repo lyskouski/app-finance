@@ -132939,7 +132939,10 @@
       var t1 = this.$this,
         t2 = t1.__ListSelectorState_focusController_A;
       t2 === $ && A.throwUnnamedLateFieldNI();
-      return t2.onEditingComplete$1(t1);
+      t2.onEditingComplete$1(t1);
+      t1 = $.WidgetsBinding__instance.WidgetsBinding__buildOwner.focusManager._primaryFocus;
+      if (t1 != null)
+        t1.unfocus$0();
     },
     $signature: 2
   };
