@@ -80,25 +80,6 @@ void main() async {
   runZonedGuarded<Future<void>>(() async {
     WidgetsFlutterBinding.ensureInitialized();
 
-    if (platform != null) {
-      await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
-      FirebaseAnalytics.instance.logAppOpen();
-      PlatformDispatcher.instance.onError = (error, stack) {
-        FirebaseAnalytics.instance.logEvent(
-          name: 'platform-error',
-          parameters: {'error': error.toString(), 'trace': stack.toString()},
-        );
-        return true;
-      };
-      if (kIsWeb) {
-        FlutterError.onError = (details) {
-          FlutterError.presentError(details);
-          FirebaseAnalytics.instance.logEvent(name: 'flutter-error', parameters: {'error': details.toString()});
-        };
-      } else {
-        FlutterError.onError = FirebaseCrashlytics.instance.recordFlutterFatalError;
-      }
-    }
     AppPreferences.pref = await SharedPreferences.getInstance();
     CurrencyDefaults.cache = AppPreferences.pref;
     final appSync = AppSync();
@@ -145,6 +126,9 @@ void main() async {
         child: MyApp(platform: platform),
       ),
     );
+    if (platform != null) {
+      unawaited(_initializeFirebase(platform));
+    }
   }, (error, stack) {
     try {
       if (platform != null && Firebase.apps.isNotEmpty) {
@@ -160,6 +144,30 @@ void main() async {
     FlutterError.presentError(FlutterErrorDetails(exception: error, stack: stack));
     // SystemNavigator.pop();
   });
+}
+
+Future<void> _initializeFirebase(FirebaseOptions options) async {
+  try {
+    await Firebase.initializeApp(options: options).timeout(const Duration(seconds: 10));
+    FirebaseAnalytics.instance.logAppOpen();
+    PlatformDispatcher.instance.onError = (error, stack) {
+      FirebaseAnalytics.instance.logEvent(
+        name: 'platform-error',
+        parameters: {'error': error.toString(), 'trace': stack.toString()},
+      );
+      return true;
+    };
+    if (kIsWeb) {
+      FlutterError.onError = (details) {
+        FlutterError.presentError(details);
+        FirebaseAnalytics.instance.logEvent(name: 'flutter-error', parameters: {'error': details.toString()});
+      };
+    } else {
+      FlutterError.onError = FirebaseCrashlytics.instance.recordFlutterFatalError;
+    }
+  } catch (error, stack) {
+    FlutterError.presentError(FlutterErrorDetails(exception: error, stack: stack));
+  }
 }
 
 class MyApp extends StatefulWidget {
