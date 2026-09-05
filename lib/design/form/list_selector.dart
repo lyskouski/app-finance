@@ -66,7 +66,10 @@ class ListSelectorState<T extends ListSelector, K extends ListSelectorItem> exte
     );
     FocusController.force = false;
     widget.setState(result);
-    WidgetsBinding.instance.addPostFrameCallback((_) => focusController.onEditingComplete(this));
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      focusController.onEditingComplete(this);
+      FocusManager.instance.primaryFocus?.unfocus();
+    });
   }
 
   @override
