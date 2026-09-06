@@ -31,13 +31,13 @@
             <td class="headerValue">lcov.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntryLo">31.1&nbsp;%</td>
-            <td class="headerCovTableEntry">45</td>
-            <td class="headerCovTableEntry">14</td>
+            <td class="headerCovTableEntryLo">31.9&nbsp;%</td>
+            <td class="headerCovTableEntry">47</td>
+            <td class="headerCovTableEntry">15</td>
           </tr>
           <tr>
             <td class="headerItem">Test Date:</td>
-            <td class="headerValue">2026-09-05 13:15:35</td>
+            <td class="headerValue">2026-09-06 12:39:08</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntryHi">-</td>
@@ -66,7 +66,7 @@
 <span id="L4"><span class="lineNum">       4</span>              : import 'package:app_finance/_classes/controller/focus_controller.dart';</span>
 <span id="L5"><span class="lineNum">       5</span>              : import 'package:app_finance/_classes/herald/app_zoom.dart';</span>
 <span id="L6"><span class="lineNum">       6</span>              : import 'package:app_finance/_classes/structure/navigation/app_route.dart';</span>
-<span id="L7"><span class="lineNum">       7</span>              : // import 'package:app_finance/pages/_interfaces/abstract_page_state.dart';</span>
+<span id="L7"><span class="lineNum">       7</span>              : import 'package:app_finance/_configs/mobile_platform.dart';</span>
 <span id="L8"><span class="lineNum">       8</span>              : import 'package:flutter/gestures.dart';</span>
 <span id="L9"><span class="lineNum">       9</span>              : import 'package:flutter/material.dart';</span>
 <span id="L10"><span class="lineNum">      10</span>              : import 'package:flutter/services.dart';</span>
@@ -167,16 +167,19 @@
 <span id="L105"><span class="lineNum">     105</span> <span class="tlaGNC tlaBgGNC">           1 :   @override</span></span>
 <span id="L106"><span class="lineNum">     106</span>              :   Widget build(BuildContext context) {</span>
 <span id="L107"><span class="lineNum">     107</span> <span class="tlaGNC">           2 :     zoom = Provider.of&lt;AppZoom&gt;(context, listen: false);</span></span>
-<span id="L108"><span class="lineNum">     108</span> <span class="tlaGNC">           1 :     return Listener(</span></span>
-<span id="L109"><span class="lineNum">     109</span> <span class="tlaGNC">           1 :       onPointerSignal: onPointerSignal,</span></span>
-<span id="L110"><span class="lineNum">     110</span> <span class="tlaGNC">           1 :       child: KeyboardListener(</span></span>
-<span id="L111"><span class="lineNum">     111</span> <span class="tlaGNC">           3 :         focusNode: FocusController.force ? focus : (focus..requestFocus()),</span></span>
-<span id="L112"><span class="lineNum">     112</span> <span class="tlaGNC">           1 :         onKeyEvent: onKeyEvent,</span></span>
-<span id="L113"><span class="lineNum">     113</span> <span class="tlaGNC">           2 :         child: widget.child,</span></span>
-<span id="L114"><span class="lineNum">     114</span>              :       ),</span>
-<span id="L115"><span class="lineNum">     115</span>              :     );</span>
-<span id="L116"><span class="lineNum">     116</span>              :   }</span>
-<span id="L117"><span class="lineNum">     117</span>              : }</span>
+<span id="L108"><span class="lineNum">     108</span> <span class="tlaGNC">           1 :     if (isMobilePlatform) {</span></span>
+<span id="L109"><span class="lineNum">     109</span> <span class="tlaUNC tlaBgUNC">           0 :       return widget.child;</span></span>
+<span id="L110"><span class="lineNum">     110</span>              :     }</span>
+<span id="L111"><span class="lineNum">     111</span> <span class="tlaGNC tlaBgGNC">           1 :     return Listener(</span></span>
+<span id="L112"><span class="lineNum">     112</span> <span class="tlaGNC">           1 :       onPointerSignal: onPointerSignal,</span></span>
+<span id="L113"><span class="lineNum">     113</span> <span class="tlaGNC">           1 :       child: KeyboardListener(</span></span>
+<span id="L114"><span class="lineNum">     114</span> <span class="tlaGNC">           3 :         focusNode: FocusController.force ? focus : (focus..requestFocus()),</span></span>
+<span id="L115"><span class="lineNum">     115</span> <span class="tlaGNC">           1 :         onKeyEvent: onKeyEvent,</span></span>
+<span id="L116"><span class="lineNum">     116</span> <span class="tlaGNC">           2 :         child: widget.child,</span></span>
+<span id="L117"><span class="lineNum">     117</span>              :       ),</span>
+<span id="L118"><span class="lineNum">     118</span>              :     );</span>
+<span id="L119"><span class="lineNum">     119</span>              :   }</span>
+<span id="L120"><span class="lineNum">     120</span>              : }</span>
         </pre>
               </td>
             </tr>

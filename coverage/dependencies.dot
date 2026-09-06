@@ -58,7 +58,7 @@ digraph G {
   }
   {
     rank = same; "_configs";
-    _configs_ [label="<0>_CONFIGS_|<design_type>design_type|<budget_type>budget_type|<theme_helper>theme_helper|<account_type>account_type|<firebase_options>firebase_options|<screen_helper>screen_helper|<automation_type>automation_type|<custom_text_theme>custom_text_theme|<custom_color_scheme>custom_color_scheme|<payment_type>payment_type|<sorting_type>sorting_type|<member_list>member_list",fillcolor="silver:white", gradientangle=240, style="filled"];
+    _configs_ [label="<0>_CONFIGS_|<mobile_platform>mobile_platform|<design_type>design_type|<budget_type>budget_type|<theme_helper>theme_helper|<account_type>account_type|<firebase_options>firebase_options|<screen_helper>screen_helper|<automation_type>automation_type|<custom_text_theme>custom_text_theme|<custom_color_scheme>custom_color_scheme|<payment_type>payment_type|<sorting_type>sorting_type|<mobile_platform_stub>mobile_platform_stub|<mobile_platform_io>mobile_platform_io|<member_list>member_list",fillcolor="silver:white", gradientangle=240, style="filled"];
   }
   {
     rank = same; "_mixins";
@@ -399,7 +399,7 @@ digraph G {
   wrapper -> controller [color="#0000FF50"];
   wrapper -> herald [color="#0000FF50"];
   wrapper -> structure_navigation [color="#0000FF50"];
-  wrapper -> _interfaces [color="#0000FF50"];
+  wrapper -> _configs_ [color="#0000FF50"];
   wrapper -> _configs_ [color="#0000FF50"];
   wrapper -> _ext_ [color="#0000FF50"];
   wrapper -> herald [color="#0000FF50"];
@@ -532,6 +532,7 @@ digraph G {
   button -> _ext_ [color="#0000FF50"];
   button -> wrapper [color="#0000FF50"];
 
+
   _configs_ -> herald [color="green"];
   _configs_ -> form [color="green"];
   _configs_ -> herald [color="green"];
@@ -549,6 +550,8 @@ digraph G {
   _configs_ -> form [color="green"];
   _configs_ -> herald [color="green"];
   _configs_ -> form [color="green"];
+
+
   _configs_ -> herald [color="green"];
 
 
