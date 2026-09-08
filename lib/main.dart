@@ -80,6 +80,10 @@ void main() async {
   runZonedGuarded<Future<void>>(() async {
     WidgetsFlutterBinding.ensureInitialized();
 
+    if (platform != null) {
+      await _initializeFirebase(platform);
+    }
+
     AppPreferences.pref = await SharedPreferences.getInstance();
     CurrencyDefaults.cache = AppPreferences.pref;
     final appSync = AppSync();
@@ -126,9 +130,6 @@ void main() async {
         child: MyApp(platform: platform),
       ),
     );
-    if (platform != null) {
-      unawaited(_initializeFirebase(platform));
-    }
   }, (error, stack) {
     try {
       if (platform != null && Firebase.apps.isNotEmpty) {
@@ -149,12 +150,21 @@ void main() async {
 Future<void> _initializeFirebase(FirebaseOptions options) async {
   try {
     await Firebase.initializeApp(options: options).timeout(const Duration(seconds: 10));
+    // Enable Crashlytics only after the app is ready, otherwise any
+    // FirebaseCrashlytics call throws [core/no-app].
+    if (!kIsWeb) {
+      await FirebaseCrashlytics.instance.setCrashlyticsCollectionEnabled(true);
+    }
     FirebaseAnalytics.instance.logAppOpen();
     PlatformDispatcher.instance.onError = (error, stack) {
-      FirebaseAnalytics.instance.logEvent(
-        name: 'platform-error',
-        parameters: {'error': error.toString(), 'trace': stack.toString()},
-      );
+      if (kIsWeb) {
+        FirebaseAnalytics.instance.logEvent(
+          name: 'platform-error',
+          parameters: {'error': error.toString(), 'trace': stack.toString()},
+        );
+      } else {
+        FirebaseCrashlytics.instance.recordError(error, stack, fatal: true);
+      }
       return true;
     };
     if (kIsWeb) {
