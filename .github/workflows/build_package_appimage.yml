@@ -59,7 +59,9 @@ jobs:
             count=4 \
             2>/dev/null | xxd
 
-          unsquashfs -s "$APPIMAGE"
+          PAYLOAD="/tmp/Fingrom-${{ inputs.version }}.squashfs"
+          tail -c +$((OFFSET + 1)) "$APPIMAGE" > "$PAYLOAD"
+          unsquashfs -s "$PAYLOAD"
         working-directory: linux-appimage
 
       - name: Add AppImage Artifact to Build
