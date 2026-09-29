@@ -35,12 +35,18 @@ jobs:
           sh patch.sh -v "${{ inputs.version }}"
         working-directory: linux-appimage
 
-      - name: Build Linux AppImage
+      - name: Build AppImage
+        uses: AppImageCrafters/build-appimage@v1
+        env:
+          UPDATE_INFO: gh-releases-zsync|lyskouski|app-finance|latest|*x86_64.AppImage.zsync
+        with:
+          recipe: AppImageBuilder.yml
+        working-directory: linux-appimage
+
+      - name: Rename output
         run: |
-          sudo apt-get install -y libfuse2
-          wget -O appimage-builder-x86_64.AppImage https://github.com/AppImageCrafters/appimage-builder/releases/download/v1.1.0/appimage-builder-1.1.0-x86_64.AppImage
-          chmod +x appimage-builder-x86_64.AppImage
-          ./appimage-builder-x86_64.AppImage --recipe AppImageBuilder.yml
+          APPIMAGE=$(find . -maxdepth 1 -name "*.AppImage" | head -n1)
+          mv "$APPIMAGE" "fingrom_Linux.AppImage"
         working-directory: linux-appimage
 
       - name: Add AppImage Artifact to Build
@@ -48,7 +54,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: fingrom_Linux
-          path: linux-appimage/Fingrom-${{ inputs.version }}-x86_64.AppImage
+          path: linux-appimage/fingrom_Linux.AppImage
 
       - name: Add AppImage Artifact to Release
         if: inputs.is_release
@@ -57,6 +63,6 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: ${{ inputs.upload_url }}
-          asset_path: linux-appimage/Fingrom-${{ inputs.version }}-x86_64.AppImage
+          asset_path: linux-appimage/fingrom_Linux.AppImage
           asset_name: fingrom_Linux.AppImage
-          asset_content_type: application/zip
+          asset_content_type: application/vnd.appimage
