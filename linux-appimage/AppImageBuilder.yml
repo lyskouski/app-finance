@@ -34,6 +34,8 @@ AppDir:
     - librsvg2-common
     - ibus-gtk3
     - libpulse0
+    - libpulse-mainloop-glib0
+    - libasound2
     exclude:
     - humanity-icon-theme
     - hicolor-icon-theme
