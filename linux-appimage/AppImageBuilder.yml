@@ -29,6 +29,9 @@ AppDir:
     include:
     - libc6:amd64
     - libgtk-3-0
+    - libgdk-pixbuf-2.0-0
+    - librsvg2-2
+    - librsvg2-common
     - ibus-gtk3
     - libpulse0
     exclude:
@@ -60,6 +63,12 @@ AppDir:
 #    ubuntu-xenial:
 #      image: appimagecrafters/tests-env:ubuntu-xenial
 #      command: ./AppRun
+  runtime:
+    env:
+      LANG: C.UTF-8
+      LC_ALL: C.UTF-8
+      GDK_PIXBUF_MODULEDIR: $APPDIR/usr/lib/x86_64-linux-gnu/gdk-pixbuf-2.0/2.10.0/loaders
+      GDK_PIXBUF_MODULE_FILE: $APPDIR/usr/lib/x86_64-linux-gnu/gdk-pixbuf-2.0/2.10.0/loaders.cache
 AppImage:
   arch: x86_64
   update-information: guess
