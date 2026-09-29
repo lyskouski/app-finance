@@ -37,10 +37,29 @@ jobs:
 
       - name: Build Linux AppImage
         run: |
-          sudo apt-get install -y libfuse2
+          sudo apt-get update
+          sudo apt-get install -y libfuse2 squashfs-tools
           wget -O appimage-builder-x86_64.AppImage https://github.com/AppImageCrafters/appimage-builder/releases/download/v1.1.0/appimage-builder-1.1.0-x86_64.AppImage
           chmod +x appimage-builder-x86_64.AppImage
+
+          which mksquashfs
+          mksquashfs -version
+
           ./appimage-builder-x86_64.AppImage --recipe AppImageBuilder.yml
+
+          echo "=== Verify AppImage ==="
+          APPIMAGE="Fingrom-${{ inputs.version }}-x86_64.AppImage"
+
+          OFFSET=$(./"$APPIMAGE" --appimage-offset)
+          echo "AppImage payload offset: $OFFSET"
+
+          dd if="$APPIMAGE" \
+            bs=1 \
+            skip="$OFFSET" \
+            count=4 \
+            2>/dev/null | xxd
+
+          unsquashfs -s "$APPIMAGE"
         working-directory: linux-appimage
 
       - name: Add AppImage Artifact to Build
