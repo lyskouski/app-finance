@@ -253,3 +253,28 @@ with \href{https://github.com/AppImage/appimage.github.io}{https://github.com/Ap
 By a pull request we should add (or change) exactly one file in \q{data/} and nothing else; one application per
 pull request \issue{654}{}. Ideally, the file in \q{data/} contains a link to our repository:
 https://github.com/{User}/{App}/; the rest will be done by \q{appimage.github.io} automatically.
+
+It could be taken an error: \emph{"USquashfs image uses xz compression, this version supports only zlib, zstd."}.
+To fix that we might involve forcing the use of zstd compression when creating the AppImage:
+
+\begin{lstlisting}[language=yaml]
+- name: Build Linux AppImage
+  run: |
+    sudo apt-get update
+    sudo apt-get install -y libfuse2 squashfs-tools
+
+    wget -O appimage-builder-x86_64.AppImage \
+      https://github.com/AppImageCrafters/appimage-builder/releases/download/v1.1.0/appimage-builder-1.1.0-x86_64.AppImage
+    chmod +x appimage-builder-x86_64.AppImage
+
+    wget -O appimagetool \
+      https://github.com/AppImage/appimagetool/releases/download/continuous/appimagetool-x86_64.AppImage
+    chmod +x appimagetool
+
+    ./appimage-builder-x86_64.AppImage --recipe AppImageBuilder.yml --skip-appimage
+
+    # Force zstd compression
+    ./appimagetool --comp zstd AppDir \
+      "Fingrom-${{ inputs.version }}-x86_64.AppImage"
+  working-directory: linux-appimage
+\end{lstlisting}

@@ -5,7 +5,7 @@ AppDir:
   app_info:
     id: com.tercad.fingrom
     name: Fingrom
-    icon: com.tercad.fingrom.svg
+    icon: com.tercad.fingrom
     version: 1.0.0
     exec: fingrom
     exec_args: $@

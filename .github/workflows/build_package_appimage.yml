@@ -51,6 +51,11 @@ jobs:
 
           ./appimage-builder-x86_64.AppImage --recipe AppImageBuilder.yml --skip-appimage
 
+          # --- Fix icon (a standard hicolor location)
+          mkdir -p AppDir/usr/share/icons/hicolor/scalable/apps
+          cp -f AppDir/usr/share/icons/com.tercad.fingrom.svg \
+                AppDir/usr/share/icons/hicolor/scalable/apps/com.tercad.fingrom.svg
+
           # Force zstd compression
           ./appimagetool --comp zstd AppDir \
             "Fingrom-${{ inputs.version }}-x86_64.AppImage"
