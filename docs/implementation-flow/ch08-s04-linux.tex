@@ -3,26 +3,26 @@
 
 \subsubsection{Linux Snap Store}
 
-While the world of Linux distributions can appear complex due to the sheer variety available, there is a unified 
-solution to simplify the process: snaps. A snap is essentially a bundled package containing one or more applications 
-along with all their dependencies. What's remarkable about snaps is their ability to run consistently across a wide 
-array of Linux distributions, without requiring any modifications. These snaps are conveniently discoverable and 
+While the world of Linux distributions can appear complex due to the sheer variety available, there is a unified
+solution to simplify the process: snaps. A snap is essentially a bundled package containing one or more applications
+along with all their dependencies. What's remarkable about snaps is their ability to run consistently across a wide
+array of Linux distributions, without requiring any modifications. These snaps are conveniently discoverable and
 installable from the Snap Store (\href{https://snapcraft.io}{https://snapcraft.io}).
 
-To get started, we should visit the page \href{https://snapcraft.io/snaps}{https://snapcraft.io/snaps} to register 
-our application by simply clicking the "Register a snap name" button, with options to choose between "private" or 
-"public" application availability. A notable feature is the integration of Snap Store with GitHub account at 
-\href{https://snapcraft.io/fingrom/builds}{https://snapcraft.io/fingrom/builds} to simplify the build and deploy 
-procedures (both can be done directly from that page). If it's needed a control over the application's distribution, 
-whether through Github Actions or manual processes, we may refer to the instructions on configuring and building 
-Flutter projects provided at 
+To get started, we should visit the page \href{https://snapcraft.io/snaps}{https://snapcraft.io/snaps} to register
+our application by simply clicking the "Register a snap name" button, with options to choose between "private" or
+"public" application availability. A notable feature is the integration of Snap Store with GitHub account at
+\href{https://snapcraft.io/fingrom/builds}{https://snapcraft.io/fingrom/builds} to simplify the build and deploy
+procedures (both can be done directly from that page). If it's needed a control over the application's distribution,
+whether through Github Actions or manual processes, we may refer to the instructions on configuring and building
+Flutter projects provided at
 \href{https://snapcraft.io/docs/flutter-applications}{https://snapcraft.io/docs/flutter-applications}.
-in that case, we will utilize the \q{snapcraft}-application (it can be installed and used on various systems, including 
+in that case, we will utilize the \q{snapcraft}-application (it can be installed and used on various systems, including
 different Linux distributions, macOS, and Windows):
 
 \begin{lstlisting}[language=terminal]
 # For Linux with snap-support
-$ sudo snap install snapcraft --classic 
+$ sudo snap install snapcraft --classic
 
 ## Install Virtual Machine Manager
 # For Github Actions "uses: canonical/setup-lxd"
@@ -37,7 +37,7 @@ $ snapcraft login
 Enter your Ubuntu One e-mail address and password.
 Email: ...
 Password: ...
-Login successful 
+Login successful
 
 # Retrieve Developer ID
 $ snapcraft whoami
@@ -64,7 +64,7 @@ $ snapcraft release
 \begin{lstlisting}[language=yaml]
 # ./snapcraft.yaml
 name: fingrom
-base: core22 # span, based on Ubuntu 22.04 
+base: core22 # span, based on Ubuntu 22.04
 version: 1.0.0+1 # to be replaced by CI/CD
 summary: Platform-agnostic financial accounting app
 description: |
@@ -81,7 +81,7 @@ apps:
     # Grant access to the application
     # From: https://snapcraft.io/docs/supported-interfaces
     plugs: [home, network, network-bind, removable-media]
-    # Use basic libraries (alternative to 'stage-packages') 
+    # Use basic libraries (alternative to 'stage-packages')
     extensions: [gnome]
 
 parts:
@@ -95,9 +95,9 @@ parts:
     stage-packages: [libgtk-3-0]
 \end{lstlisting}
 
-\noindent \q{Parts}-section defines the parts that make up our \q{snap}-package. In our case, there's only one part 
-called app-finance. It specifies the source code location (in this directory), the plugin to use (in this case, the 
-Flutter plugin), the target for building our Flutter app (usually the main Dart file), and any additional build 
+\noindent \q{Parts}-section defines the parts that make up our \q{snap}-package. In our case, there's only one part
+called app-finance. It specifies the source code location (in this directory), the plugin to use (in this case, the
+Flutter plugin), the target for building our Flutter app (usually the main Dart file), and any additional build
 packages or dependencies required.
 
 Finally, the pipeline for the \q{snap}-package build and distribution would be the next \issue{209}{} (\cref{img:d-snap}):
@@ -128,14 +128,14 @@ Finally, the pipeline for the \q{snap}-package build and distribution would be t
 
 \subsubsection{Linux Flatpak Store}
 
-Flatpak (\href{https://flathub.org}{https://flathub.org}). is an attractive solution for distributing applications 
-because of its distribution-agnostic nature (it works seamlessly across different distributions with their 
+Flatpak (\href{https://flathub.org}{https://flathub.org}). is an attractive solution for distributing applications
+because of its distribution-agnostic nature (it works seamlessly across different distributions with their
 forward-compatibility by handling a dependency resolution problems).
 
-We may define a runtime that contains all the common libraries our application needs \issue{350}{}. Then, we build our 
-Flatpak on top of this runtime. What's powerful about this approach is that this same runtime is consistently used 
-across all distributions. Runtimes are reusable across multiple applications. In essence, the runtime acts as a 
-shared foundation for various applications, making it a practical solution for developers and users alike. 
+We may define a runtime that contains all the common libraries our application needs \issue{350}{}. Then, we build our
+Flatpak on top of this runtime. What's powerful about this approach is that this same runtime is consistently used
+across all distributions. Runtimes are reusable across multiple applications. In essence, the runtime acts as a
+shared foundation for various applications, making it a practical solution for developers and users alike.
 
 \begin{lstlisting}[language=terminal]
 ## Install builder
@@ -160,9 +160,9 @@ $ flatpak-builder --user --install --force-clean build-dir com.tercad.fingrom.ym
 $ flatpak run com.tercad.fingrom
 \end{lstlisting}
 
-\noindent To create a Flatpak application, we need to define a manifest file (YAML, \q{com.tercad.fingrom.yml}) that 
-describes our application, its dependencies, and how to build it. This manifest file is then used by the Flatpak build 
-system to create the application package. Here's a basic example of what a Flatpak manifest file might look like for a 
+\noindent To create a Flatpak application, we need to define a manifest file (YAML, \q{com.tercad.fingrom.yml}) that
+describes our application, its dependencies, and how to build it. This manifest file is then used by the Flatpak build
+system to create the application package. Here's a basic example of what a Flatpak manifest file might look like for a
 Flutter application (\href{https://docs.flatpak.org/en/latest/manifests.html}{https://docs.flatpak.org/en/latest/manifests.html}):
 
 \begin{lstlisting}[language=yaml]
@@ -185,17 +185,17 @@ and the modules that define how to build the application from its source code.
 
 To distribute it, we need to create a merge request into Flathub repository
 \href{https://github.com/flathub/flathub}{https://github.com/flathub/flathub}
-and submit our application for review. Once approved, it will be created a repository for our application with an 
+and submit our application for review. Once approved, it will be created a repository for our application with an
 automation to distribute it to Flatpak (\href{https://flathub.org}{https://flathub.org}).
 
 
 \subsubsection{Linux AppImage}
 
-AppImage serves as a platform-independent format for distributing software applications, distinguishing itself from 
-traditional package management systems by eliminating the need for installation. Users can effortlessly download the 
+AppImage serves as a platform-independent format for distributing software applications, distinguishing itself from
+traditional package management systems by eliminating the need for installation. Users can effortlessly download the
 \q{AppImage}-file, designate it as executable, and initiate it.
 
-The process of crafting an AppImage is overseen by a \q{.yml}-file (YAML), and a sample can be referenced at 
+The process of crafting an AppImage is overseen by a \q{.yml}-file (YAML), and a sample can be referenced at
 \href{https://appimage-builder.readthedocs.io}{https://appimage-builder.readthedocs.io}.
 
 \begin{lstlisting}[language=terminal]
@@ -230,7 +230,7 @@ INFO:Generator:Searching AppDir
 $ appimage-builder --recipe AppImageBuilder.yml
 \end{lstlisting}
 
-\noindent A valuable change \issue{460}{} to be done is to exclude icons packages from \q{AppImageBuilder.yml} before 
+\noindent A valuable change \issue{460}{} to be done is to exclude icons packages from \q{AppImageBuilder.yml} before
 the build to avoid an error \emph{"Unable to load image-loading module: libpixbufloader-svg.so"}:
 
 \begin{lstlisting}[language=yaml]
@@ -247,3 +247,9 @@ AppDir:
 and register our application (\cref{img:d-pling}):
 
 \img{distributing/pling-store}{Pling - Register product}{img:d-pling}
+
+\noindent Additionally, we can share our repository (that contains \q{.AppImage} in Releases)
+with \href{https://github.com/AppImage/appimage.github.io}{https://github.com/AppImage/appimage.github.io}.
+By a pull request we should add (or change) exactly one file in \q{data/} and nothing else; one application per
+pull request \issue{654}{}. Ideally, the file in \q{data/} contains a link to our repository:
+https://github.com/{User}/{App}/; the rest will be done by \q{appimage.github.io} automatically.
