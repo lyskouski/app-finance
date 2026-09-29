@@ -49,9 +49,9 @@ static void my_application_activate(GApplication* application) {
 
   gtk_window_set_default_size(window, 1280, 720);
   if (g_file_test("assets", G_FILE_TEST_IS_DIR)) {
-    gtk_window_set_icon_from_file(window, "assets/images/app_icon.ico", NULL); 
+    gtk_window_set_icon_from_file(window, "assets/images/logo.png", NULL);
   } else {
-    gtk_window_set_icon_from_file(window, "data/flutter_assets/assets/images/app_icon.ico", NULL);
+    gtk_window_set_icon_from_file(window, "data/flutter_assets/assets/images/logo.png", NULL);
   }
   gtk_widget_show(GTK_WIDGET(window));
 
