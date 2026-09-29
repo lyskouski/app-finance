@@ -132,8 +132,9 @@ jobs:
         if: matrix.target == 'LinuxSnap'
         run: |
           sudo snap install snapcraft --classic
-          snapcraft --verbose
-          cp fingrom_${{ needs.release.outputs.version }}+${{ needs.release.outputs.build_number }}_amd64.snap fingrom_${{ matrix.target }}.snap
+          snapcraft pack --verbose
+          ls -la *.snap
+          cp fingrom_*.snap fingrom_${{ matrix.target }}.snap
 
       - name: Publish Snap
         if: matrix.target == 'LinuxSnap'
