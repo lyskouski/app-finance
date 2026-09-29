@@ -39,29 +39,21 @@ jobs:
         run: |
           sudo apt-get update
           sudo apt-get install -y libfuse2 squashfs-tools
-          wget -O appimage-builder-x86_64.AppImage https://github.com/AppImageCrafters/appimage-builder/releases/download/v1.1.0/appimage-builder-1.1.0-x86_64.AppImage
+
+          wget -O appimage-builder-x86_64.AppImage \
+            https://github.com/AppImageCrafters/appimage-builder/releases/download/v1.1.0/appimage-builder-1.1.0-x86_64.AppImage
           chmod +x appimage-builder-x86_64.AppImage
 
-          which mksquashfs
-          mksquashfs -version
+          # Modern appimagetool that supports / defaults to zstd
+          wget -O appimagetool \
+            https://github.com/AppImage/appimagetool/releases/download/continuous/appimagetool-x86_64.AppImage
+          chmod +x appimagetool
 
-          ./appimage-builder-x86_64.AppImage --recipe AppImageBuilder.yml
+          ./appimage-builder-x86_64.AppImage --recipe AppImageBuilder.yml --skip-appimage
 
-          echo "=== Verify AppImage ==="
-          APPIMAGE="Fingrom-${{ inputs.version }}-x86_64.AppImage"
-
-          OFFSET=$(./"$APPIMAGE" --appimage-offset)
-          echo "AppImage payload offset: $OFFSET"
-
-          dd if="$APPIMAGE" \
-            bs=1 \
-            skip="$OFFSET" \
-            count=4 \
-            2>/dev/null | xxd
-
-          PAYLOAD="/tmp/Fingrom-${{ inputs.version }}.squashfs"
-          tail -c +$((OFFSET + 1)) "$APPIMAGE" > "$PAYLOAD"
-          unsquashfs -s "$PAYLOAD"
+          # Force zstd compression
+          ./appimagetool --comp zstd AppDir \
+            "Fingrom-${{ inputs.version }}-x86_64.AppImage"
         working-directory: linux-appimage
 
       - name: Add AppImage Artifact to Build
