@@ -72,3 +72,4 @@ AppDir:
 AppImage:
   arch: x86_64
   update-information: guess
+  compression: zstd
