@@ -7,6 +7,25 @@
 
 #include "flutter/generated_plugin_registrant.h"
 
+// flutter_webrtc eagerly creates WebRTC's AudioDeviceModule as soon as its plugin registers;
+// with no reachable sink that aborts the whole process with a fatal ADM init error (e.g. headless
+// AppImage screenshot/test pipelines that have no PulseAudio/ALSA device). Fall back to a dummy
+// sink in that case so the app can still start.
+static void ensure_audio_backend() {
+  gchar* sinks = nullptr;
+  if (!g_spawn_command_line_sync("pactl list short sinks", &sinks, nullptr, nullptr, nullptr) ||
+      sinks == nullptr || sinks[0] != '\0') {
+    g_free(sinks);
+    return;
+  }
+  g_free(sinks);
+
+  g_spawn_command_line_sync("pulseaudio --start --exit-idle-time=-1 --disallow-exit", nullptr, nullptr, nullptr,
+                             nullptr);
+  g_spawn_command_line_sync("pactl load-module module-null-sink sink_name=DummyOutput", nullptr, nullptr, nullptr,
+                             nullptr);
+}
+
 struct _MyApplication {
   GtkApplication parent_instance;
   char** dart_entrypoint_arguments;
@@ -62,6 +81,7 @@ static void my_application_activate(GApplication* application) {
   gtk_widget_show(GTK_WIDGET(view));
   gtk_container_add(GTK_CONTAINER(window), GTK_WIDGET(view));
 
+  ensure_audio_backend();
   fl_register_plugins(FL_PLUGIN_REGISTRY(view));
 
   gtk_widget_grab_focus(GTK_WIDGET(view));

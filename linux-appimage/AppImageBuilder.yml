@@ -7,7 +7,7 @@ AppDir:
     name: Fingrom
     icon: com.tercad.fingrom
     version: 1.0.0
-    exec: fingrom-launcher.sh
+    exec: fingrom
     exec_args: $@
   apt:
     arch:
