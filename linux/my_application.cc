@@ -4,14 +4,15 @@
 #ifdef GDK_WINDOWING_X11
 #include <gdk/gdkx.h>
 #endif
+#include <url_launcher_linux/url_launcher_plugin.h>
 
 #include "flutter/generated_plugin_registrant.h"
 
 // flutter_webrtc eagerly creates WebRTC's AudioDeviceModule as soon as its plugin registers;
 // with no reachable sink that aborts the whole process with a fatal ADM init error (e.g. headless
-// AppImage screenshot/test pipelines that have no PulseAudio/ALSA device). Fall back to a dummy
-// sink in that case so the app can still start.
-static gboolean pulse_is_reachable() {
+// AppImage screenshot/test pipelines that have no PulseAudio/ALSA device). There's no supported
+// way to defer/disable that from the plugin itself, so skip registering it in that case instead.
+static gboolean audio_backend_available() {
   gchar* out = nullptr;
   gboolean reachable = g_spawn_command_line_sync("pactl info", &out, nullptr, nullptr, nullptr) && out != nullptr &&
                        g_strstr_len(out, -1, "Server String") != nullptr;
@@ -19,34 +20,11 @@ static gboolean pulse_is_reachable() {
   return reachable;
 }
 
-// g_spawn_command_line_* tokenize via shell quoting rules but never invoke a real shell, so
-// env/glob/subshell syntax needs an explicit "/bin/sh -c" instead.
-static void spawn_shell_async(const gchar* script) {
-  gchar* argv[] = {(gchar*)"/bin/sh", (gchar*)"-c", (gchar*)script, nullptr};
-  g_spawn_async(nullptr, argv, nullptr, G_SPAWN_SEARCH_PATH, nullptr, nullptr, nullptr, nullptr);
-}
-
-static void ensure_audio_backend() {
-  gchar* sinks = nullptr;
-  if (!g_spawn_command_line_sync("pactl list short sinks", &sinks, nullptr, nullptr, nullptr) ||
-      sinks == nullptr || sinks[0] != '\0') {
-    g_free(sinks);
-    return;
-  }
-  g_free(sinks);
-
-  // The AppImage bundles pulseaudio built for a plain /usr prefix, so it can't find its own
-  // versioned module directory (e.g. pulse-16.1+dfsg1/modules) once relocated under $APPDIR;
-  // --daemonize=no avoids a self re-exec via /proc/self/exe that fails under sandboxes like firejail.
-  spawn_shell_async(
-      "dir=$(ls -d \"$APPDIR\"/usr/lib/*/pulse-*/modules 2>/dev/null | head -n1); "
-      "[ -n \"$dir\" ] && export PULSE_DLPATH=\"$dir\" LD_LIBRARY_PATH=\"$dir:$LD_LIBRARY_PATH\"; "
-      "exec pulseaudio --daemonize=no --exit-idle-time=-1 --disallow-exit --realtime=no --high-priority=no");
-  for (int i = 0; i < 20 && !pulse_is_reachable(); i++) {
-    g_usleep(100 * 1000);
-  }
-  g_spawn_command_line_sync("pactl load-module module-null-sink sink_name=DummyOutput", nullptr, nullptr, nullptr,
-                             nullptr);
+// Mirrors generated_plugin_registrant.cc, minus flutter_webrtc.
+static void register_plugins_without_webrtc(FlPluginRegistry* registry) {
+  g_autoptr(FlPluginRegistrar) url_launcher_linux_registrar =
+      fl_plugin_registry_get_registrar_for_plugin(registry, "UrlLauncherPlugin");
+  url_launcher_plugin_register_with_registrar(url_launcher_linux_registrar);
 }
 
 struct _MyApplication {
@@ -104,8 +82,11 @@ static void my_application_activate(GApplication* application) {
   gtk_widget_show(GTK_WIDGET(view));
   gtk_container_add(GTK_CONTAINER(window), GTK_WIDGET(view));
 
-  ensure_audio_backend();
-  fl_register_plugins(FL_PLUGIN_REGISTRY(view));
+  if (audio_backend_available()) {
+    fl_register_plugins(FL_PLUGIN_REGISTRY(view));
+  } else {
+    register_plugins_without_webrtc(FL_PLUGIN_REGISTRY(view));
+  }
 
   gtk_widget_grab_focus(GTK_WIDGET(view));
 }
