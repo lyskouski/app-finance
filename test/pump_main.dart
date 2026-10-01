@@ -133,6 +133,8 @@ class PumpMain {
     if (isIntegration) {
       AppPreferences.pref = await SharedPreferences.getInstance();
       await AppPreferences.set(AppPreferences.prefCurrency, 'USD');
+      await AppPreferences.clear(AppPreferences.prefPeer);
+      await AppPreferences.clear(AppPreferences.prefP2P);
     } else {
       final pref = WrapperMockSharedPreferences();
       pref.mockGetString = (value) => switch (value) {
