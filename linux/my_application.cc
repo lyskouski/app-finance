@@ -19,6 +19,13 @@ static gboolean pulse_is_reachable() {
   return reachable;
 }
 
+// g_spawn_command_line_* tokenize via shell quoting rules but never invoke a real shell, so
+// env/glob/subshell syntax needs an explicit "/bin/sh -c" instead.
+static void spawn_shell_async(const gchar* script) {
+  gchar* argv[] = {(gchar*)"/bin/sh", (gchar*)"-c", (gchar*)script, nullptr};
+  g_spawn_async(nullptr, argv, nullptr, G_SPAWN_SEARCH_PATH, nullptr, nullptr, nullptr, nullptr);
+}
+
 static void ensure_audio_backend() {
   gchar* sinks = nullptr;
   if (!g_spawn_command_line_sync("pactl list short sinks", &sinks, nullptr, nullptr, nullptr) ||
@@ -28,10 +35,13 @@ static void ensure_audio_backend() {
   }
   g_free(sinks);
 
-  // `pulseaudio --start` re-execs itself via /proc/self/exe to daemonize, which fails inside an
-  // AppImage+sandbox (e.g. firejail); run it in the foreground instead and wait for it to come up.
-  g_spawn_command_line_async(
-      "pulseaudio --daemonize=no --exit-idle-time=-1 --disallow-exit --realtime=no --high-priority=no", nullptr);
+  // The AppImage bundles pulseaudio built for a plain /usr prefix, so it can't find its own
+  // versioned module directory (e.g. pulse-16.1+dfsg1/modules) once relocated under $APPDIR;
+  // --daemonize=no avoids a self re-exec via /proc/self/exe that fails under sandboxes like firejail.
+  spawn_shell_async(
+      "dir=$(ls -d \"$APPDIR\"/usr/lib/*/pulse-*/modules 2>/dev/null | head -n1); "
+      "[ -n \"$dir\" ] && export PULSE_DLPATH=\"$dir\" LD_LIBRARY_PATH=\"$dir:$LD_LIBRARY_PATH\"; "
+      "exec pulseaudio --daemonize=no --exit-idle-time=-1 --disallow-exit --realtime=no --high-priority=no");
   for (int i = 0; i < 20 && !pulse_is_reachable(); i++) {
     g_usleep(100 * 1000);
   }
