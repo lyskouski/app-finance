@@ -11,6 +11,14 @@
 // with no reachable sink that aborts the whole process with a fatal ADM init error (e.g. headless
 // AppImage screenshot/test pipelines that have no PulseAudio/ALSA device). Fall back to a dummy
 // sink in that case so the app can still start.
+static gboolean pulse_is_reachable() {
+  gchar* out = nullptr;
+  gboolean reachable = g_spawn_command_line_sync("pactl info", &out, nullptr, nullptr, nullptr) && out != nullptr &&
+                       g_strstr_len(out, -1, "Server String") != nullptr;
+  g_free(out);
+  return reachable;
+}
+
 static void ensure_audio_backend() {
   gchar* sinks = nullptr;
   if (!g_spawn_command_line_sync("pactl list short sinks", &sinks, nullptr, nullptr, nullptr) ||
@@ -20,11 +28,13 @@ static void ensure_audio_backend() {
   }
   g_free(sinks);
 
-  // --realtime/--high-priority make pulseaudio re-exec itself via /proc/self/exe, which fails
-  // ("Couldn't canonicalize binary path") inside an AppImage+sandbox (e.g. firejail).
-  g_spawn_command_line_sync(
-      "pulseaudio --start --exit-idle-time=-1 --disallow-exit --realtime=no --high-priority=no", nullptr, nullptr,
-      nullptr, nullptr);
+  // `pulseaudio --start` re-execs itself via /proc/self/exe to daemonize, which fails inside an
+  // AppImage+sandbox (e.g. firejail); run it in the foreground instead and wait for it to come up.
+  g_spawn_command_line_async(
+      "pulseaudio --daemonize=no --exit-idle-time=-1 --disallow-exit --realtime=no --high-priority=no", nullptr);
+  for (int i = 0; i < 20 && !pulse_is_reachable(); i++) {
+    g_usleep(100 * 1000);
+  }
   g_spawn_command_line_sync("pactl load-module module-null-sink sink_name=DummyOutput", nullptr, nullptr, nullptr,
                              nullptr);
 }
