@@ -7,7 +7,7 @@ AppDir:
     name: Fingrom
     icon: com.tercad.fingrom
     version: 1.0.0
-    exec: fingrom
+    exec: fingrom-launcher.sh
     exec_args: $@
   apt:
     arch:
@@ -36,6 +36,8 @@ AppDir:
     - libpulse0
     - libpulse-mainloop-glib0
     - libasound2
+    - pulseaudio
+    - pulseaudio-utils
     exclude:
     - humanity-icon-theme
     - hicolor-icon-theme
