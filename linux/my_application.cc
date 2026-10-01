@@ -20,8 +20,11 @@ static void ensure_audio_backend() {
   }
   g_free(sinks);
 
-  g_spawn_command_line_sync("pulseaudio --start --exit-idle-time=-1 --disallow-exit", nullptr, nullptr, nullptr,
-                             nullptr);
+  // --realtime-scheduling/--high-priority make pulseaudio re-exec itself via /proc/self/exe,
+  // which fails ("Couldn't canonicalize binary path") inside an AppImage+sandbox (e.g. firejail).
+  g_spawn_command_line_sync(
+      "pulseaudio --start --exit-idle-time=-1 --disallow-exit --realtime-scheduling=no --high-priority=no", nullptr,
+      nullptr, nullptr, nullptr);
   g_spawn_command_line_sync("pactl load-module module-null-sink sink_name=DummyOutput", nullptr, nullptr, nullptr,
                              nullptr);
 }
