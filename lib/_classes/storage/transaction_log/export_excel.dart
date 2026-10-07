@@ -9,6 +9,8 @@ import 'package:app_finance/_classes/structure/currency/exchange.dart';
 import 'package:app_finance/_classes/structure/invoice_app_data.dart';
 import 'package:app_finance/_ext/date_time_ext.dart';
 import 'package:excel/excel.dart';
+import 'package:file_picker/file_picker.dart';
+import 'package:flutter/foundation.dart';
 
 class ExportExcel {
   final AppData state;
@@ -43,7 +45,20 @@ class ExportExcel {
       curr = DateTime(now.year, now.month - increment, now.day).getStartingDay(startingDay);
     }
     excel.delete('Sheet1');
-    excel.save(fileName: 'fingrom_export.xlsx');
+    const fileName = 'fingrom_export.xlsx';
+    if (kIsWeb) {
+      excel.save(fileName: fileName);
+      return;
+    }
+    final bytes = excel.encode();
+    if (bytes == null) {
+      throw Exception('Failed to generate $fileName');
+    }
+    await FilePicker.saveFile(
+      dialogTitle: AppLocale.labels.outputFile,
+      fileName: fileName,
+      bytes: Uint8List.fromList(bytes),
+    );
   }
 
   _addHeader(String name) {
