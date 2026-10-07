@@ -14,7 +14,6 @@ import 'package:app_finance/_configs/account_type.dart';
 import 'package:app_finance/_configs/theme_helper.dart';
 import 'package:app_finance/_configs/screen_helper.dart';
 import 'package:app_finance/_ext/build_context_ext.dart';
-import 'package:app_finance/_ext/double_ext.dart';
 import 'package:app_finance/design/button/toolbar_button_widget.dart';
 import 'package:app_finance/design/wrapper/input_wrapper.dart';
 import 'package:app_finance/pages/_interfaces/interface_page_inject.dart';
@@ -142,7 +141,7 @@ class ExpensesTabState<T extends ExpensesTab> extends State<T> {
         category: budget ?? '',
         currency: currency,
         title: description.text,
-        details: double.tryParse(bill.text)?.toFixed(currency?.decimalDigits) ?? 0.0,
+        details: double.tryParse(bill.text) ?? 0.0,
         createdAt: createdAt ?? DateTime.now(),
       );
 
