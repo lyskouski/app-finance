@@ -9,6 +9,7 @@
 [فارسی (FA)](./about_fa.md) |
 [Français (FR)](./about_fr.md) |
 [हिंदी (HI-IN)](./about_hi.md) |
+[Bahasa Indonesia (ID)](./about_id.md) |
 [Italiano (IT)](./about_it.md) |
 [日本語 (JA)](./about_ja.md) |
 ქართული (KA-GE) |
