@@ -102,6 +102,7 @@ class SecurityPageState extends AbstractPageState<SecurityPage> {
     }
 
     AppPreferences.set(AppPreferences.prefIsOTP, AppPreferences.isActive);
+    AppPreferences.set(AppPreferences.prefIsBio, isBio ? AppPreferences.isActive : AppPreferences.isInactive);
     AppPreferences.set(AppPreferences.prefRecoveryKey, EncryptionHandler.getHashString(password.text));
     setState(() {
       password.clear();
@@ -122,8 +123,11 @@ class SecurityPageState extends AbstractPageState<SecurityPage> {
       return;
     }
     AppPreferences.set(AppPreferences.prefIsOTP, AppPreferences.isInactive);
-    AppPreferences.set(AppPreferences.prefIsBio, isBio ? AppPreferences.isActive : AppPreferences.isInactive);
-    setState(() => password.clear());
+    AppPreferences.set(AppPreferences.prefIsBio, AppPreferences.isInactive);
+    setState(() {
+      isBio = false;
+      password.clear();
+    });
     NotificationBar.showSnackBar(context, AppLocale.labels.secureOtpDeactivated);
   }
 
