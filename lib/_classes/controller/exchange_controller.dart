@@ -93,21 +93,10 @@ class ExchangeController extends ValueNotifier<ExchangeMap> {
     }
   }
 
-  int _findDecimals(String? value) {
-    return (value ?? '').contains('.') ? value!.split('.')[1].length : 0;
-  }
-
-  int? _getDecimals(String uuid) {
-    int decimals = CurrencyProvider.find(uuid.split('-')[1])?.decimalDigits ?? 0;
-    final rateDecimals = _findDecimals(value[uuid]?.rate.text);
-    if (rateDecimals > decimals) {
-      decimals = rateDecimals;
-    }
-    final sumDecimals = _findDecimals(value[uuid]?.sum.text);
-    if (sumDecimals > decimals) {
-      decimals = sumDecimals;
-    }
-    return decimals;
+  int _getDecimals(ExchangeScope pair) {
+    final fromDecimals = pair.currency.currencyFrom?.decimalDigits ?? 0;
+    final toDecimals = pair.currency.currency?.decimalDigits ?? 0;
+    return fromDecimals > toDecimals ? fromDecimals : toDecimals;
   }
 
   void _updateSum(String uuid) {
@@ -115,7 +104,7 @@ class ExchangeController extends ValueNotifier<ExchangeMap> {
     double rate = double.tryParse(pair.rate.text) ?? 0.0;
     double amount = (double.tryParse(targetController.text) ?? 0.0) * rate;
     double? current = double.tryParse(pair.sum.text);
-    final decimals = _getDecimals(uuid);
+    final decimals = _getDecimals(pair);
     if (targetController.text != '' && amount.toFixed(decimals).isNotEqual(current?.toFixed(decimals))) {
       pair.sum.text = amount.toString();
       // pair.sum.notifyListeners();
@@ -128,7 +117,7 @@ class ExchangeController extends ValueNotifier<ExchangeMap> {
     double val = double.tryParse(targetController.text) ?? 0.0;
     double amount = double.tryParse(pair.sum.text) ?? 0.0;
     double newRate = val > 0 ? amount / val : 0.0;
-    final decimals = _getDecimals(uuid);
+    final decimals = _getDecimals(pair);
     if (targetController.text != '' && rate.toFixed(decimals).isNotEqual(newRate.toFixed(decimals))) {
       pair.rate.text = newRate.toString();
       // pair.rate.notifyListeners();

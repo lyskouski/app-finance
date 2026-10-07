@@ -39,5 +39,22 @@ void main() {
       controller.get(0).sum.text = '62.51';
       expect(double.parse(controller.get(0).rate.text).toStringAsFixed(1), '0.5');
     });
+
+    test('uses the maximum decimal digits of both currencies', () {
+      final editor = TextEditingController(text: '1');
+      final controller = ExchangeController(
+        {},
+        store: WrapperMockAppData(),
+        source: [CurrencyProvider.find('JPY')],
+        target: CurrencyProvider.find('USD'),
+        targetController: editor,
+      );
+
+      controller.get(0).sum.text = '1.004';
+
+      expect(controller.get(0).rate.text, '1.0');
+      controller.dispose();
+      editor.dispose();
+    });
   });
 }
