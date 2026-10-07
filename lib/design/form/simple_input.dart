@@ -13,7 +13,14 @@ import 'package:flutter/semantics.dart';
 import 'package:flutter/services.dart';
 
 abstract class SimpleInputFormatter {
-  static get filterDouble => FilteringTextInputFormatter.allow(RegExp(r'^\d+[.,]?(\d+)?'));
+  static TextInputFormatter get filterDouble => TextInputFormatter.withFunction((oldValue, newValue) {
+        final text = newValue.text.replaceAll(',', '.');
+        if (!RegExp(r'^\d*\.?\d*$').hasMatch(text)) {
+          return oldValue;
+        }
+        return newValue.copyWith(text: text);
+      });
+
   static get filterInt => FilteringTextInputFormatter.allow(RegExp(r'\d+'));
 }
 

@@ -70,8 +70,7 @@ class AccountAddPageState<T extends AccountAddPage> extends AbstractAddPageState
     validTillDate = widget.validTillDate;
     final currencyId = AppPreferences.get(AppPreferences.prefCurrency);
     currency = widget.currency ?? CurrencyProvider.find(currencyId);
-    balance = TextEditingController(
-        text: widget.balance != null ? widget.balance!.toFixed(currency?.decimalDigits).toString() : '');
+    balance = TextEditingController(text: widget.balance != null ? widget.balance!.toString() : '');
     icon = widget.icon;
     color = widget.color;
     super.initState();
