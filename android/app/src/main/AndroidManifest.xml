@@ -7,6 +7,9 @@
     <!-- Permission for using RemoteViewsService -->
     <uses-permission android:name="android.permission.BIND_REMOTEVIEWS" />
 
+    <!-- Biometric authentication -->
+    <uses-permission android:name="android.permission.USE_BIOMETRIC" />
+
     <!--
      Required to query activities that can process text, see:
          https://developer.android.com/training/package-visibility and

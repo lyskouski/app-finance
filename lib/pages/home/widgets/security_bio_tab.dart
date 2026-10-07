@@ -28,12 +28,18 @@ class SecurityBioTabState extends AbstractPageState<SecurityBioTab> {
   late FocusController focus;
   late TextEditingController password;
   final bio = LocalAuthentication();
+  bool _isAuthenticating = false;
 
   @override
   void initState() {
     focus = FocusController();
     password = TextEditingController();
     super.initState();
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      if (mounted) {
+        checkBio(context);
+      }
+    });
   }
 
   @override
@@ -89,7 +95,8 @@ class SecurityBioTabState extends AbstractPageState<SecurityBioTab> {
     } on Exception catch (_) {
       canAuthenticate = false;
     }
-    if (canAuthenticate) {
+    if (canAuthenticate && !_isAuthenticating) {
+      _isAuthenticating = true;
       bio
           .authenticate(
         localizedReason: AppLocale.labels.secureBioPromptReason,
@@ -106,14 +113,13 @@ class SecurityBioTabState extends AbstractPageState<SecurityBioTab> {
         if (context.mounted) {
           NotificationBar.showSnackBar(context, AppLocale.labels.secureBioNotMatch, true);
         }
-      });
+      }).whenComplete(() => _isAuthenticating = false);
     }
   }
 
   @override
   Widget buildContent(BuildContext context, BoxConstraints constraints) {
     final indent = ThemeHelper.getIndent();
-    WidgetsBinding.instance.addPostFrameCallback((_) => checkBio(context));
     return SingleScrollWrapper(
       controller: focus,
       child: Padding(
