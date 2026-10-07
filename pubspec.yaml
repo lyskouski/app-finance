@@ -39,10 +39,10 @@ dependencies:
   firebase_analytics: ^11.3.6
   firebase_crashlytics: ^4.2.0
   flutter_markdown_plus: ^1.0.7
-  package_info_plus: ^8.0.0
+  package_info_plus: ^10.2.2
   url_launcher: ^6.1.12
   webdav_client: ^1.2.1
-  file_picker: ^10.3.10
+  file_picker: ^13.1.0
   csv: ^6.0.0
   peerdart: ^0.5.6
   flutter_grid_layout: ^1.1.1
