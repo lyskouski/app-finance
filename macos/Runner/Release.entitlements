@@ -3,9 +3,9 @@
 <plist version="1.0">
 <dict>
 	<key>com.apple.application-identifier</key>
-	<string>$(AppIdentifierPrefix)$(PRODUCT_BUNDLE_IDENTIFIER)</string>
+	<string>8PVKPQ758L.com.tercad.fingrom</string>
 	<key>com.apple.developer.team-identifier</key>
-	<string>$(DEVELOPMENT_TEAM)</string>
+	<string>8PVKPQ758L</string>
 	<key>com.apple.security.app-sandbox</key>
 	<true/>
 	<key>com.apple.security.network.server</key>
