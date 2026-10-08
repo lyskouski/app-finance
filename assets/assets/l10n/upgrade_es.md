@@ -2,6 +2,12 @@
 
 _La lista completa de actualizaciones puede consultarse en el menú "Acerca de" del botón "Sugerencias"._
 
+### 7.3.0
+- Se ha añadido la localización al indonesio (ID)
+- Se ha mejorado la precisión de las divisas en los cambios de moneda
+- Se han corregido los cálculos de la información detallada, la inicialización de la autenticación biométrica y la exportación a Excel
+- Se ha mejorado el comportamiento de los formularios y del teclado, así como la estabilidad de la aplicación
+
 ### 7.2.0
 - Agregar Georgiano (KA) y Ruso (RU)
 

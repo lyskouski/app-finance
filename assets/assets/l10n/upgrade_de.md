@@ -2,6 +2,12 @@
 
 _Die vollständige Liste der Updates kann über den Navigationspunkt "Über" auf der Schaltfläche "Hinweise" eingesehen werden._
 
+### 7.3.0
+- Indonesische Lokalisierung (ID) hinzugefügt
+- Verbesserung der Währungsgenauigkeit bei Umrechnungen
+- Fehlerbehebung bei der Berechnung detaillierter Informationen, der Initialisierung der biometrischen Authentifizierung und beim Excel-Export
+- Verbesserung des Verhaltens von Formularen und der Tastatur sowie der App-Stabilität
+
 ### 7.2.0
 - Hinzufügen von Georgisch (KA) und Russisch (RU)
 

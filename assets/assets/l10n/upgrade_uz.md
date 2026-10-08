@@ -2,6 +2,12 @@
 
 _Yangilanishlarning toʻliq roʻyxatini “Maslahat” tugmasidagi “Haqida” navigatsiya bandi orqali koʻrish mumkin._
 
+### 7.3.0
+- Indonez (ID) lokalizatsiyasi qo'shildi
+- Valyuta almashuvlari uchun aniqlik darajasini yaxshilash
+- Tafsilotli ma'lumotlarni hisoblash, biometrik autentifikatsiyani boshlash va Excel eksportini tuzatish
+- Forma va klaviatura xatti-harakatlarini hamda ilovaning barqarorligini yaxshilash
+
 ### 7.2.0
 - Gurji (KA) va Rus (RU) tillarini qo'shish
 

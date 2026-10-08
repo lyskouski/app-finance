@@ -2,6 +2,12 @@
 
 _The full list of updates can be viewed via the "About" navigation item on the "Hints" button._
 
+### 7.3.0
+- Adding Indonesian (ID) localization
+- Improving currency precision for exchanges
+- Fixing detailed information calculations, biometric authentication initialization, and Excel export
+- Improving form and keyboard behavior and app stability
+
 ### 7.2.0
 - Adding Georgian (KA) and Russian (RU) languages
 

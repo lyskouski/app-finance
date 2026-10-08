@@ -2,6 +2,12 @@
 
 _Poŭny spis abnaŭlieńniaŭ možna prahliadzieć u navihacyjnym punkcie «Ab Dadatku» na knopcy «Padkazki»._
 
+### 7.3.0
+- Dadadziena lakalizacyja na indaniezijskuju movu (ID)
+- Paliepšana dakladnasć adliustravannia valiut pry abmienie
+- Vypraŭlieny pamylki ŭ razlikach padrabiaznaj infarmacyi, inicyjalizacyi bijamietryčnaj aŭtentyfikacyi i eksparcie ŭ Excel
+- Paliepšana praca formaŭ i klavijatury, a taksama stabiĺnasć prahramy
+
 ### 7.2.0
 - Dadańnie Hrudzinskaj (KA) i Ruskaj (RU) moŭ
 

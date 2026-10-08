@@ -2,6 +2,12 @@
 
 _Úplný seznam aktualizací si můžete prohlédnout v navigační položce „O aplikaci“ na tlačítku „Tipy“._
 
+### 7.3.0
+- Přidání lokalizace do indonéštiny (ID)
+- Zlepšení přesnosti měnových kurzů
+- Oprava výpočtů podrobných informací, inicializace biometrického ověřování a exportu do Excelu
+- Zlepšení chování formulářů a klávesnice a stability aplikace
+
 ### 7.2.0
 - Přidání Gruzínštiny (KA) a Ruštiny (RU)
 

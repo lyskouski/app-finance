@@ -2,6 +2,12 @@
 
 _De volledige lijst met updates kan worden bekeken via het navigatie-item “Over” op de knop “Hints”._
 
+### 7.3.0
+- Toevoeging van Indonesische (ID) lokalisatie
+- Verbetering van de nauwkeurigheid van valutakoersen
+- Oplossing van problemen met berekeningen van gedetailleerde informatie, het initialiseren van biometrische authenticatie en het exporteren naar Excel
+- Verbetering van het gedrag van formulieren en het toetsenbord, en van de stabiliteit van de app
+
 ### 7.2.0
 - Georgisch (KA) en Russisch (RU) toevoegen
 

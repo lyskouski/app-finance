@@ -2,6 +2,12 @@
 
 _Pełną listę aktualizacji można wyświetlić za pomocą elementu nawigacyjnego "O aplikacji" na przycisku "Wskazówki"._
 
+### 7.3.0
+- Dodano lokalizację w języku indonezyjskim (ID)
+- Poprawiono dokładność walutową w przypadku wymiany walut
+- Naprawiono obliczenia szczegółowych informacji, inicjalizację uwierzytelniania biometrycznego oraz eksport do programu Excel
+- Poprawiono działanie formularzy i klawiatury oraz stabilność aplikacji
+
 ### 7.2.0
 - Dodawanie Gruzińskiego (KA) i Rosyjskiego (RU)
 
