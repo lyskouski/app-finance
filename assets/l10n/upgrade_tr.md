@@ -2,6 +2,12 @@
 
 _Güncellemelerin tam listesi “İpuçları” düğmesindeki “Hakkında” gezinti öğesi aracılığıyla görüntülenebilir._
 
+### 7.3.0
+- Endonezyaca (ID) yerelleştirmesi eklendi
+- Döviz kurlarında para birimi hassasiyeti iyileştirildi
+- Ayrıntılı bilgi hesaplamaları, biyometrik kimlik doğrulama başlatma işlemi ve Excel'e aktarım sorunları giderildi
+- Form ve klavye davranışları ile uygulamanın kararlılığı iyileştirildi
+
 ### 7.2.0
 - Gürcüce (KA) ve Rusça (RU) dilleri ekleme
 

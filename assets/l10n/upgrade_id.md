@@ -2,6 +2,12 @@
 
 _Daftar lengkap pembaruan dapat dilihat melalui item navigasi "Tentang" pada tombol "Petunjuk"._
 
+### 7.3.0
+- Menambahkan lokalisasi bahasa Indonesia (ID)
+- Meningkatkan ketepatan nilai tukar mata uang
+- Memperbaiki perhitungan informasi terperinci, inisialisasi otentikasi biometrik, dan ekspor ke Excel
+- Meningkatkan perilaku formulir dan keyboard serta stabilitas aplikasi
+
 ### 7.2.0
 - Menambahkan bahasa Georgia (KA) dan Rusia (RU)
 

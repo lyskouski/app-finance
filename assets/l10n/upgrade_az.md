@@ -2,6 +2,12 @@
 
 _Yeniləmələrin tam siyahısına "İpucu" düyməsindəki "Haqqında" naviqasiya elementi vasitəsilə baxmaq olar._
 
+### 7.3.0
+- İndonez (ID) dilinə tərcümə əlavə edildi
+- Valyuta məzənnələrinin dəqiqliyinin yaxşılaşdırılması
+- Ətraflı məlumat hesablamalarının, biometrik autentifikasiyanın ilkinləşdirilməsinin və Excel ixracının düzəldilməsi
+- Forma və klaviaturanın davranışının, eləcə də tətbiqin sabitliyinin yaxşılaşdırılması
+
 ### 7.2.0
 - Gürcü (KA) və Rus (RU) dillərini əlavə etmə
 

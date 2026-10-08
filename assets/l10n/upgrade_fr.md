@@ -2,6 +2,12 @@
 
 _La liste complète des mises à jour peut être consultée via l'élément de navigation "À propos" du bouton "Conseils"._
 
+### 7.3.0
+- Ajout de la localisation en indonésien (ID)
+- Amélioration de la précision des taux de change
+- Correction des calculs des informations détaillées, de l'initialisation de l'authentification biométrique et de l'exportation vers Excel
+- Amélioration du comportement des formulaires et du clavier, ainsi que de la stabilité de l'application
+
 ### 7.2.0
 - Ajout du Géorgien (KA) et du Russe (RU)
 

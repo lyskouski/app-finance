@@ -2,6 +2,12 @@
 
 _Lista completă a actualizărilor poate fi vizualizată prin intermediul elementului de navigare „Despre” de pe butonul „Sugestii”._
 
+### 7.3.0
+- Adăugarea localizării în limba indoneziană (ID)
+- Îmbunătățirea preciziei valutare pentru operațiunile de schimb valutar
+- Remedierea problemelor legate de calculele informațiilor detaliate, inițializarea autentificării biometrice și exportul în Excel
+- Îmbunătățirea comportamentului formularelor și al tastaturii, precum și a stabilității aplicației
+
 ### 7.2.0
 - Adăugarea Georgiană (KA) și Rusă (RU)
 
