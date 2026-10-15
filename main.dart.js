@@ -84042,7 +84042,7 @@
     call$1(filename) {
       var t1 = A.configuration()._configuration;
       t1 = t1 == null ? null : t1.canvasKitBaseUrl;
-      return (t1 == null ? "https://www.gstatic.com/flutter-canvaskit/692136cb6582dbfc5af3fb33c2515a069f2f66d0/" : t1) + filename;
+      return (t1 == null ? "https://www.gstatic.com/flutter-canvaskit/deb287481e3ce9468f3434937ced4240a70539ca/" : t1) + filename;
     },
     $signature: 36
   };
