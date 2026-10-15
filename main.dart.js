@@ -61761,6 +61761,9 @@
         case "hi":
           A.canonicalizedLocale("hi");
           return new A.AppLocalizationsHi0();
+        case "id":
+          A.canonicalizedLocale("id");
+          return new A.AppLocalizationsId0();
         case "it":
           A.canonicalizedLocale("it");
           return new A.AppLocalizationsIt0();
@@ -61831,6 +61834,8 @@
     AppLocalizationsFr0: function AppLocalizationsFr0() {
     },
     AppLocalizationsHi0: function AppLocalizationsHi0() {
+    },
+    AppLocalizationsId0: function AppLocalizationsId0() {
     },
     AppLocalizationsIt0: function AppLocalizationsIt0() {
     },
@@ -301017,6 +301022,473 @@
       return "\u091c\u093c\u093f\u092e\u094d\u092c\u093e\u092c\u094d\u0935\u0947 \u0938\u094b\u0928\u093e";
     }
   };
+  A.AppLocalizationsId0.prototype = {
+    get$currencyAED() {
+      return "Dirham Uni Emirat Arab";
+    },
+    get$currencyAFN() {
+      return "Afghani Afghanistan";
+    },
+    get$currencyALL() {
+      return "Lek Albania";
+    },
+    get$currencyAMD() {
+      return "Dram Armenia";
+    },
+    get$currencyANG() {
+      return "Guilder Antillen Belanda";
+    },
+    get$currencyAOA() {
+      return "Kwanza Angola";
+    },
+    get$currencyARS() {
+      return "Peso Argentina";
+    },
+    get$currencyAUD() {
+      return "Dolar Australia";
+    },
+    get$currencyAWG() {
+      return "Florin Aruba";
+    },
+    get$currencyAZN() {
+      return "Manat Azerbaijan";
+    },
+    get$currencyBAM() {
+      return "Marka konvertibel Bosnia dan Herzegovina";
+    },
+    get$currencyBBD() {
+      return "Dolar Barbados";
+    },
+    get$currencyBDT() {
+      return "Taka Bangladesh";
+    },
+    get$currencyBGN() {
+      return "Lev Bulgaria";
+    },
+    get$currencyBHD() {
+      return "Dinar Bahrain";
+    },
+    get$currencyBIF() {
+      return "Franc Burundi";
+    },
+    get$currencyBMD() {
+      return "Dolar Bermuda";
+    },
+    get$currencyBND() {
+      return "Dolar Brunei Darussalam";
+    },
+    get$currencyBOB() {
+      return "Boliviano Bolivia";
+    },
+    get$currencyBRL() {
+      return "Real Brasil";
+    },
+    get$currencyBSD() {
+      return "Dolar Bahama";
+    },
+    get$currencyBTN() {
+      return "Ngultrum Bhutan";
+    },
+    get$currencyBWP() {
+      return "Pula Botswana";
+    },
+    get$currencyBYN() {
+      return "Rubel Belarus";
+    },
+    get$currencyBZD() {
+      return "Dolar Belize";
+    },
+    get$currencyCAD() {
+      return "Dolar Kanada";
+    },
+    get$currencyCDF() {
+      return "Franc Kongo";
+    },
+    get$currencyCHF() {
+      return "Franc Swiss";
+    },
+    get$currencyCLP() {
+      return "Peso Cile";
+    },
+    get$currencyCNY() {
+      return "Yuan Renminbi Tiongkok";
+    },
+    get$currencyCOP() {
+      return "Peso Kolombia";
+    },
+    get$currencyCRC() {
+      return "Colon Kosta Rika";
+    },
+    get$currencyCUP() {
+      return "Peso Kuba";
+    },
+    get$currencyCVE() {
+      return "Escudo Tanjung Verde";
+    },
+    get$currencyCZK() {
+      return "Koruna Ceko";
+    },
+    get$currencyDJF() {
+      return "Franc Djibouti";
+    },
+    get$currencyDKK() {
+      return "Krone Denmark";
+    },
+    get$currencyDOP() {
+      return "Peso Republik Dominika";
+    },
+    get$currencyDZD() {
+      return "Dinar Aljazair";
+    },
+    get$currencyEGP() {
+      return "Pound Mesir";
+    },
+    get$currencyERN() {
+      return "Nakfa Eritrea";
+    },
+    get$currencyETB() {
+      return "Birr Ethiopia";
+    },
+    get$currencyEUR() {
+      return "Euro";
+    },
+    get$currencyFJD() {
+      return "Dolar Fiji";
+    },
+    get$currencyFKP() {
+      return "Pound Kepulauan Falkland";
+    },
+    get$currencyGBP() {
+      return "Pound sterling Britania";
+    },
+    get$currencyGEL() {
+      return "Lari Georgia";
+    },
+    get$currencyGHS() {
+      return "Cedi Ghana";
+    },
+    get$currencyGIP() {
+      return "Pound Gibraltar";
+    },
+    get$currencyGMD() {
+      return "Dalasi Gambia";
+    },
+    get$currencyGNF() {
+      return "Franc Guinea";
+    },
+    get$currencyGTQ() {
+      return "Quetzal Guatemala";
+    },
+    get$currencyGYD() {
+      return "Dolar Guyana";
+    },
+    get$currencyHKD() {
+      return "Dolar Hong Kong";
+    },
+    get$currencyHNL() {
+      return "Lempira Honduras";
+    },
+    get$currencyHTG() {
+      return "Gourde Haiti";
+    },
+    get$currencyHUF() {
+      return "Forint Hungaria";
+    },
+    get$currencyIDR() {
+      return "Rupiah Indonesia";
+    },
+    get$currencyILS() {
+      return "Shekel Israel";
+    },
+    get$currencyINR() {
+      return "Rupee India";
+    },
+    get$currencyIQD() {
+      return "Dinar Irak";
+    },
+    get$currencyIRR() {
+      return "Rial Iran";
+    },
+    get$currencyISK() {
+      return "Krona Islandia";
+    },
+    get$currencyJMD() {
+      return "Dolar Jamaika";
+    },
+    get$currencyJOD() {
+      return "Dinar Yordania";
+    },
+    get$currencyJPY() {
+      return "Yen Jepang";
+    },
+    get$currencyKES() {
+      return "Shilling Kenya";
+    },
+    get$currencyKGS() {
+      return "Som Kirgizstan";
+    },
+    get$currencyKHR() {
+      return "Riel Kamboja";
+    },
+    get$currencyKMF() {
+      return "Franc Komoro";
+    },
+    get$currencyKPW() {
+      return "Won Korea Utara";
+    },
+    get$currencyKRW() {
+      return "Won Korea Selatan";
+    },
+    get$currencyKWD() {
+      return "Dinar Kuwait";
+    },
+    get$currencyKYD() {
+      return "Dolar Kepulauan Cayman";
+    },
+    get$currencyKZT() {
+      return "Tenge Kazakhstan";
+    },
+    get$currencyLAK() {
+      return "Kip Laos";
+    },
+    get$currencyLBP() {
+      return "Pound Lebanon";
+    },
+    get$currencyLKR() {
+      return "Rupee Sri Lanka";
+    },
+    get$currencyLRD() {
+      return "Dolar Liberia";
+    },
+    get$currencyLSL() {
+      return "Loti Lesotho";
+    },
+    get$currencyLYD() {
+      return "Dinar Libya";
+    },
+    get$currencyMAD() {
+      return "Dirham Maroko";
+    },
+    get$currencyMDL() {
+      return "Leu Moldova";
+    },
+    get$currencyMGA() {
+      return "Ariary Madagaskar";
+    },
+    get$currencyMKD() {
+      return "Denar Makedonia";
+    },
+    get$currencyMMK() {
+      return "Kyat Myanmar";
+    },
+    get$currencyMNT() {
+      return "Tugrik Mongolia";
+    },
+    get$currencyMOP() {
+      return "Pataca Makau";
+    },
+    get$currencyMRU() {
+      return "Ouguiya Mauritania";
+    },
+    get$currencyMUR() {
+      return "Rupee Mauritius";
+    },
+    get$currencyMVR() {
+      return "Rufiyaa Maladewa";
+    },
+    get$currencyMWK() {
+      return "Kwacha Malawi";
+    },
+    get$currencyMXN() {
+      return "Peso Meksiko";
+    },
+    get$currencyMYR() {
+      return "Ringgit Malaysia";
+    },
+    get$currencyMZN() {
+      return "Metical Mozambik";
+    },
+    get$currencyNAD() {
+      return "Dolar Namibia";
+    },
+    get$currencyNGN() {
+      return "Naira Nigeria";
+    },
+    get$currencyNIO() {
+      return "Cordoba Nikaragua";
+    },
+    get$currencyNOK() {
+      return "Krone Norwegia";
+    },
+    get$currencyNPR() {
+      return "Rupee Nepal";
+    },
+    get$currencyNZD() {
+      return "Dolar Selandia Baru";
+    },
+    get$currencyOMR() {
+      return "Rial Oman";
+    },
+    get$currencyPAB() {
+      return "Balboa Panama";
+    },
+    get$currencyPEN() {
+      return "Sol Peru";
+    },
+    get$currencyPGK() {
+      return "Kina Papua Nugini";
+    },
+    get$currencyPHP() {
+      return "Peso Filipina";
+    },
+    get$currencyPKR() {
+      return "Rupee Pakistan";
+    },
+    get$currencyPLN() {
+      return "Z\u0142oty Polandia";
+    },
+    get$currencyPYG() {
+      return "Guarani Paraguay";
+    },
+    get$currencyQAR() {
+      return "Riyal Qatar";
+    },
+    get$currencyRON() {
+      return "Leu Rumania";
+    },
+    get$currencyRSD() {
+      return "Dinar Serbia";
+    },
+    get$currencyRUB() {
+      return "Rubel Rusia";
+    },
+    get$currencyRWF() {
+      return "Franc Rwanda";
+    },
+    get$currencySAR() {
+      return "Riyal Arab Saudi";
+    },
+    get$currencySBD() {
+      return "Dolar Kepulauan Solomon";
+    },
+    get$currencySCR() {
+      return "Rupee Seychelles";
+    },
+    get$currencySDG() {
+      return "Pound Sudan";
+    },
+    get$currencySEK() {
+      return "Krona Swedia";
+    },
+    get$currencySGD() {
+      return "Dolar Singapura";
+    },
+    get$currencySHP() {
+      return "Pound Saint Helena";
+    },
+    get$currencySLE() {
+      return "Leone Sierra Leone";
+    },
+    get$currencySOS() {
+      return "Shilling Somalia";
+    },
+    get$currencySRD() {
+      return "Dolar Suriname";
+    },
+    get$currencySSP() {
+      return "Pound Sudan Selatan";
+    },
+    get$currencySTN() {
+      return "Dobra S\xe3o Tom\xe9 dan Pr\xedncipe";
+    },
+    get$currencySVC() {
+      return "Col\xf3n El Salvador";
+    },
+    get$currencySYP() {
+      return "Lira Suriah";
+    },
+    get$currencySZL() {
+      return "Lilangeni Eswatini";
+    },
+    get$currencyTHB() {
+      return "Baht Thailand";
+    },
+    get$currencyTJS() {
+      return "Somoni Tajikistan";
+    },
+    get$currencyTMT() {
+      return "Manat Turkmenistan";
+    },
+    get$currencyTND() {
+      return "Dinar Tunisia";
+    },
+    get$currencyTOP() {
+      return "Pa\u02bbanga Tonga";
+    },
+    get$currencyTRY() {
+      return "Lira Turki";
+    },
+    get$currencyTTD() {
+      return "Dolar Trinidad dan Tobago";
+    },
+    get$currencyTWD() {
+      return "Dolar Baru Taiwan";
+    },
+    get$currencyTZS() {
+      return "Shilling Tanzania";
+    },
+    get$currencyUAH() {
+      return "Hryvnia Ukraina";
+    },
+    get$currencyUGX() {
+      return "Shilling Uganda";
+    },
+    get$currencyUSD() {
+      return "Dolar Amerika Serikat";
+    },
+    get$currencyUYU() {
+      return "Peso Uruguay";
+    },
+    get$currencyUZS() {
+      return "Sum Uzbekistan";
+    },
+    get$currencyVES() {
+      return "Bol\xedvar Venezuela";
+    },
+    get$currencyVND() {
+      return "Dong Vietnam";
+    },
+    get$currencyVUV() {
+      return "Vatu Vanuatu";
+    },
+    get$currencyWST() {
+      return "Tala Samoa";
+    },
+    get$currencyXAF() {
+      return "Franc CFA Afrika Tengah";
+    },
+    get$currencyXCD() {
+      return "Dolar Karibia Timur";
+    },
+    get$currencyXOF() {
+      return "Franc CFA Afrika Barat";
+    },
+    get$currencyXPF() {
+      return "Franc CFP";
+    },
+    get$currencyYER() {
+      return "Rial Yaman";
+    },
+    get$currencyZAR() {
+      return "Rand Afrika Selatan";
+    },
+    get$currencyZMW() {
+      return "Kwacha Zambia";
+    },
+    get$currencyZWG() {
+      return "Emas Zimbabwe";
+    }
+  };
   A.AppLocalizationsIt0.prototype = {
     get$currencyAED() {
       return "Dirham degli Emirati Arabi Uniti";
@@ -371702,7 +372174,7 @@
     _inherit(A.WidgetStateTextStyle, A.TextStyle);
     _inherit(A._WidgetStateTextStyle, A.WidgetStateTextStyle);
     _inherit(A.WidgetStateMapper, A._WidgetStateMapper_Object_Diagnosticable);
-    _inheritMany(A.AppLocalizations0, [A.AppLocalizationsAr0, A.AppLocalizationsAz0, A.AppLocalizationsBe0, A.AppLocalizationsCs0, A.AppLocalizationsDe0, A.AppLocalizationsEn0, A.AppLocalizationsEs0, A.AppLocalizationsFa0, A.AppLocalizationsFr0, A.AppLocalizationsHi0, A.AppLocalizationsIt0, A.AppLocalizationsJa0, A.AppLocalizationsKa0, A.AppLocalizationsKo0, A.AppLocalizationsNl0, A.AppLocalizationsPl0, A.AppLocalizationsPt0, A.AppLocalizationsRo0, A.AppLocalizationsRu0, A.AppLocalizationsTr0, A.AppLocalizationsUk0, A.AppLocalizationsUz0, A.AppLocalizationsZh0]);
+    _inheritMany(A.AppLocalizations0, [A.AppLocalizationsAr0, A.AppLocalizationsAz0, A.AppLocalizationsBe0, A.AppLocalizationsCs0, A.AppLocalizationsDe0, A.AppLocalizationsEn0, A.AppLocalizationsEs0, A.AppLocalizationsFa0, A.AppLocalizationsFr0, A.AppLocalizationsHi0, A.AppLocalizationsId0, A.AppLocalizationsIt0, A.AppLocalizationsJa0, A.AppLocalizationsKa0, A.AppLocalizationsKo0, A.AppLocalizationsNl0, A.AppLocalizationsPl0, A.AppLocalizationsPt0, A.AppLocalizationsRo0, A.AppLocalizationsRu0, A.AppLocalizationsTr0, A.AppLocalizationsUk0, A.AppLocalizationsUz0, A.AppLocalizationsZh0]);
     _inherit(A.AppLocalizationsBeEu0, A.AppLocalizationsBe0);
     _inherit(A.AppLocalizationsPtBr0, A.AppLocalizationsPt0);
     _inherit(A.AppLocalizationsZhTw0, A.AppLocalizationsZh0);
