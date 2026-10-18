@@ -1,0 +1,264 @@
+% Copyright 2026 The terCAD team. All rights reserved.
+% Use of this content is governed by a CC BY-NC-ND 4.0 license that can be found in the LICENSE file.
+
+\subsection{Why Set Goals}
+\markboth{Planning}{Why Set Goals}
+
+A budget answers the question 'Where does the money go?', while a goal answers 'What is it
+all for?'. Without a clear destination, saving can feel like a sacrifice with no reward, and
+any surplus is quietly absorbed by everyday spending. However, with a goal, every unspent
+amount becomes a visible step towards something meaningful: a holiday, a new laptop, a
+deposit on a property, or simply peace of mind.
+
+A widely used checklist for setting well-formed goals is known by the acronym \emph{SMART}.
+A goal should be:
+
+\begin{itemize}
+  \item \textbf{Specific} -- \q{a vacation in Portugal}, not \q{to travel more};
+  \item \textbf{Measurable} -- with a target amount, so that progress can be tracked;
+  \item \textbf{Achievable} -- realistic with respect to the current income and expenses;
+  \item \textbf{Relevant} -- important enough to justify the effort;
+  \item \textbf{Time-bound} -- with a deadline that creates a pace.
+\end{itemize}
+
+\noindent Fingrom addresses the measurable and time-bound aspects directly: each goal has a
+target amount and a deadline, and the app calculates how much has been saved towards the goal
+and how much needs to be saved each month to reach it on time (\cref{img:goal-view}).
+However, deciding what is specific, achievable and relevant remains a personal decision.
+
+\img{img/ch04-s01-goal__view}{Goal View}{img:goal-view}
+
+
+\subsubsection{Goals and Budgets}
+
+Goals and budgets are two sides of the same plan. Budget categories limit expenses, while
+goals determine how the difference between income and expenditure is allocated. The
+well-known principle 'pay yourself first' prioritises goals: first decide how much to set
+aside, then distribute the rest among the budget categories. For example, the 50/30/20 rule
+(see \cref{budget:limit}) allocates 20\% to savings, which is exactly what is needed to
+achieve your goals.
+
+\subsubsection{Types of Goals}
+
+Goals differ mainly by their horizon:
+
+\begin{center}
+\small
+\begin{tabularx}{\textwidth}{|l|l|X|}
+  \hline
+  \textbf{Horizon} & \textbf{Period} & \textbf{Examples} \\
+  \hline
+  Short-term & up to 1 year & A new phone, a vacation, holiday gifts, an annual insurance
+  payment. \\
+  \hline
+  Mid-term & 1 -- 5 years & A car, a wedding, renovation, an emergency fund of 3 -- 6 months
+  of expenses. \\
+  \hline
+  Long-term & over 5 years & A down payment for a home, education of children, early
+  retirement. \\
+  \hline
+\end{tabularx}
+\end{center}
+
+\noindent An \emph{emergency fund} deserves a special mention. It is usually recommended as
+the first goal, as having a reserve that covers several months of essential expenses protects
+all your other goals (and your budget) from being derailed by unexpected events such as job
+loss, illness or urgent repairs.
+
+
+\subsection{Creating a Goal}
+\markboth{Planning}{Creating a Goal}
+
+Goals are managed on the \textbf{Goals} page, where a new one is added via the
+\textbf{Add new Goal} button. The form contains the following fields:
+
+\begin{description}
+  \item[Goal] (required) -- a short description, e.g. \q{Vacation in Portugal}.
+  \item[Target Amount] -- the amount to be collected.
+  \item[Currency] -- the currency of the target amount. It may differ from the default
+  currency (e.g. a vacation planned in euros while the income is in dollars); the progress is
+  calculated using the exchange rates.
+  \item[Finished till Date] -- the deadline.
+  \item[Icon] and \textbf{Color} -- visual identification of the goal in lists.
+\end{description}
+
+\noindent When the goal is created, Fingrom memorizes the current total of all accounts as
+the starting point of the goal. Money that already exists is not counted towards a new goal;
+only money saved from that point onwards moves the progress bar. This ensures that goals are
+realistic -- setting a goal of £1,000 while having £5,000 in your accounts does not instantly
+complete it.
+
+
+\subsection{How Progress Is Calculated}
+\label{goal:progress}
+\markboth{Planning}{How Progress Is Calculated}
+
+Fingrom does not require money to be transferred to a separate goal account. Instead, goal
+progress follows the total net worth: whenever it grows, the goals move forward; whenever it
+shrinks, they move back.
+
+\subsubsection{Distribution of Changes}
+
+Let $A$ be the target amount of a goal and $p$ its current progress (from $0$ up to $1$).
+When the total of accounts changes by $\Delta$ -- after an income, a bill, or an edit of a
+balance -- the change is distributed equally among all $N$ active goals, and the progress of
+each of them is updated as:
+\[
+  p' = \frac{A \cdot p + \Delta / N}{A}
+\]
+
+\noindent with the following rules:
+
+\begin{itemize}
+  \item the progress never falls below $0$ and never exceeds $1$ (100\%);
+  \item when a goal reaches 100\%, the excess of its share is passed on to the remaining
+  goals, so no saved money is lost;
+  \item while the total stays below the starting point of a goal, growth only restores the
+  losses and does not count as progress;
+  \item a completed goal remains completed as long as the total of accounts still covers it,
+  even if a part of the money is spent afterward;
+  \item amounts are converted between the default currency and the currency of each goal.
+\end{itemize}
+
+\noindent Transfers between own accounts do not change the total, and therefore do not
+influence goals at all.
+
+\subsubsection{Example}
+
+Suppose there are £5,000 in the accounts and two goals are created: 'Vacation' with a target
+of £1,200 and 'Laptop' with a target of £1,500.
+
+\begin{center}
+\footnotesize
+\begin{tabular}{|l|r|r|r|}
+  \hline
+  \textbf{Event} & \textbf{Total} & \textbf{Vacation} & \textbf{Laptop} \\
+  \hline
+  Goals created & 5000 & 0\% (0) & 0\% (0) \\
+  Salary \q{+2000}, bills \q{-1400} & 5600 & 25\% (300) & 20\% (300) \\
+  A gift \q{+200} & 5800 & 33\% (400) & 27\% (400) \\
+  Unexpected repair \q{-300} & 5500 & 21\% (250) & 17\% (250) \\
+  \hline
+\end{tabular}
+\end{center}
+
+\noindent Each change is split between the two goals. As their targets differ, the same
+amount represents a different percentage. For example, 300 is a quarter of the holiday
+budget, but only a fifth of the budget for the laptop.
+
+\subsubsection{Time Progress}
+
+Besides the collected amount, each goal has a \emph{time progress} -- the share of time
+already passed between its creation and its deadline:
+\[
+  t = \frac{\textit{days since creation}}{\textit{days from creation till deadline}}
+\]
+
+\noindent Comparing both values tells whether the goal is on schedule. If $p \geq t$ (e.g.
+40\% collected after 30\% of time), the goal is ahead; if $p < t$, saving has to speed up --
+or the deadline has to be moved.
+
+\subsubsection{Editing a Goal}
+
+The target amount, the deadline, and other fields can be changed at any time. The already
+collected amount is preserved, and the progress is recalculated against the new target:
+\[
+  p' = \frac{A_{old} \cdot p}{A_{new}}
+\]
+
+\noindent For example, if the target is set at 1,200 and 50\% of this is collected, raising
+the target to 1,500 would mean that the same 600 would represent 40\%.
+
+
+\subsection{Monthly Target}
+\markboth{Planning}{Monthly Target}
+
+While knowing the progress is useful, the practical question is 'How much should I save this
+month?'. The \textbf{Profit vs Goals Target} block at the top of the \textbf{Goals} page
+(\cref{img:goal-view}) provides the answer. For each active goal, the remaining amount is
+divided by the number of months until the deadline (at least one) and the results are added
+together:
+\[
+  \textit{Goals Target} = \sum_{goals} \frac{A \cdot (1 - p)}{\max(1, \textit{months left})}
+\]
+
+\noindent This target is compared with the current month's actual result, both expressed in
+the default currency.
+
+\begin{itemize}
+  \item \textbf{Invoices} -- the incomes of the current month (transfers are not counted);
+  \item \textbf{Bills} -- the expenses of the current month;
+  \item \textbf{Profit} -- incomes minus bills, i.e. what has actually been saved.
+\end{itemize}
+
+\noindent A gauge illustrates the comparison: the monthly target is positioned slightly
+before the middle of the scale. Therefore, a needle beyond the middle indicates that the
+month will exceed the required goals, while a needle on the left signals a shortfall.
+
+For example, 'Vacation' needs £900 more within six months (£150 per month), and 'Laptop'
+needs £1,250 more within five months (£250 per month). The target goal is 400. With an income
+of £2,000 and bills of £1,500 in the current month, the profit of £500 exceeds the target --
+the plan is on track.
+
+Please note that if a deadline has already passed, one month is added to the target for the
+current month. This is a signal to either complete the goal or move its deadline.
+
+
+\subsection{Completing a Goal}
+\markboth{Planning}{Completing a Goal}
+
+Once a goal has reached 100\%, it is marked as achieved on both the main page and the
+\textbf{Goals} page. The \textbf{Complete Goal} action then becomes available in its details.
+Completing a goal means spending the collected money on its intended purpose:
+
+\begin{enumerate}
+  \item a new bill for the target amount is created, titled \q{Complete Goal: \dots} with the
+  name of the goal;
+  \item the bill opens for editing -- select the account the money is paid from and the
+  budget category, and adjust the amount and date to the actual purchase;
+  \item the goal itself is deactivated and no longer takes part in the distribution of
+  savings.
+\end{enumerate}
+
+\noindent  Any goal that is no longer relevant can be deleted via the \textbf{Delete Goal}
+action. The progress of the remaining goals is unaffected in both cases, and each of them
+receives a larger share of future savings from that moment onwards.
+
+
+\subsection{Goals on the Main Page}
+\markboth{Planning}{Goals on the Main Page}
+
+Active goals can be displayed on the main page with a progress bar, showing the collected and
+target amounts and the deadline. The header of the block shows the total amount of all the
+goals -- the sum of the remaining amounts to be collected, converted into the default
+currency:
+\[
+  \textit{Goals Total} = \sum_{goals} A \cdot (1 - p)
+\]
+
+\noindent Like other components, the goals block can be added, moved, or removed via
+\textbf{Customize Page}.
+
+
+\subsection{Practical Tips}
+\markboth{Planning}{Practical Tips}
+
+\textbf{Start with an emergency fund.} It protects all other goals from being consumed by the
+first unexpected expense.
+
+\textbf{Keep the number of goals small.} Savings are split equally among active goals; with
+ten goals at once, each of them moves slowly. Two or three goals at a time are easier to
+achieve.
+
+\textbf{Set realistic deadlines.} Check the \textbf{Goals Target} right after creating a
+goal: if it exceeds the usual monthly profit, the deadline is too close or the target too
+high.
+
+\textbf{Compare money and time.} A goal that is collected slower than the time passes needs
+attention now, not a week before the deadline.
+
+\textbf{Review goals monthly.} Together with the budget review, check the progress, move
+deadlines if needed, and complete or delete goals that are achieved or no longer relevant.
+
+\textbf{Celebrate.} Completing a goal is the reward for months of discipline -- record the
+purchase via \textbf{Complete Goal} and set the next one.
