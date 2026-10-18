@@ -1,0 +1,152 @@
+% Copyright 2026 The terCAD team. All rights reserved.
+% Use of this content is governed by a CC BY-NC-ND 4.0 license that can be found in the LICENSE file.
+
+\noindent \textbf{Fingrom} is an open source code (\href{https://github.com/lyskouski/app-finance}{https://github.com/lyskouski/app-finance}), cross-platform (iOS, Android, macOS,
+Windows, Linux, Web) financial accounting application without ads or limitations. The goal is
+for it to be intuitive, efficient and inclusive, enabling anyone to effortlessly manage their
+personal finances, regardless of the device they use, the language they speak or their level
+of financial expertise.
+
+This manual guides you through using the application, from the initial launch to accessing
+its most advanced features. These include configuring accounts and budgets, recording
+everyday transactions, setting goals, analysing metrics, synchronising devices and
+protecting data.
+
+
+\subsection*{Why Fingrom}
+
+Most finance trackers either restrict access to key features unless users pay for a
+subscription, display advertisements to monetise users' attention, or require a cloud account
+that stores sensitive financial history on someone else's servers.
+
+\textbf{Fingrom} operates according to a different set of principles: every feature is
+available to all users free of charge; sponsorship only supports the further development
+of the application and never unlocks additional features; there are no advertisements, so
+the entire screen is dedicated to your finances; and no account registration is required
+because records are stored locally on the device, can be encrypted and synchronized directly
+between your own devices (peer-to-peer), and backed up wherever you choose -- to a file or
+your own WebDAV storage. In short, you have full control over both the application and your
+data.
+
+
+\subsection*{Core Concepts}
+
+Fingrom is built around a small number of entities. Understanding how these entities relate
+to each other will make the rest of the manual easier to follow.
+
+\begin{description}
+  \item[Accounts] are places where money is kept, such as cash, bank and debit cards, credit
+  cards, deposits, loans, investments and cryptocurrency wallets. Each account has its own
+  currency and balance and logs all the transactions that affect it.
+  \item[Budget Categories] describe what money is spent on, such as groceries, rent,
+  transport and leisure. A category can have a fixed limit, a limit configured per month, a
+  limit relative to income, or no limit (in which case only the amount spent is tracked).
+  \item[Transactions] change the balance of accounts and budgets.
+    \begin{itemize}
+      \item \emph{Bills} (expenses) decrease an account and are attributed to a budget
+      category. A bill can be split across several categories.
+      \item \emph{Incomes} (invoices) increase an account;
+      \item \emph{Transfers} move money between two accounts, including accounts in different
+      currencies.
+    \end{itemize}
+  \item[Goals] are the targets you are saving for, with a desired amount and deadline.
+  \item[Currencies] and their exchange rates allow you to mix accounts in different currencies while still seeing the overall picture in a single default currency.
+\end{description}
+
+\noindent You can group accounts and budget categories on the main page simply by adding the
+\q{/} symbol to their names. For example, \q{Bank/Debit} and \q{Bank/Savings} are displayed
+together under \q{Bank}.
+
+
+\subsection*{Capabilities at a Glance}
+
+Beyond everyday bookkeeping, the application provides a range of additional features:
+
+\begin{itemize}
+  \item \textbf{Automation} -- recurring payments created automatically on schedule (with a
+  home screen widget on Android) and budget category prediction for a new bill.
+  \item \textbf{Metrics} -- a budget forecast based on a Monte Carlo simulation; budget
+  limits versus monthly expenses; a candlestick (OHLC) chart of accounts; an income health
+  radar; currency distribution; year-to-date expenses; a category bar chart; a goals gauge;
+  and a historical currency chart;
+  \item \textbf{Import and export} -- importing and exporting bills and incomes from CSV, QIF
+  and OFX files exported by banks or other applications, and exporting data to an Excel XLSX
+  workbook.
+  \item \textbf{Synchronization and recovery} -- peer-to-peer synchronisation between devices
+  and backup or restoration via a WebDAV server or direct file.
+  \item \textbf{Security} -- data encryption, protection by a one-time password code, a
+  recovery code and biometric authentication.
+  \item \textbf{Personalization} -- a configurable main page with separate layouts for
+  different screen sizes, a dark, light or system theme with a custom colour palette, the
+  start day of the week and month, and the budget timeline (weekly, monthly or yearly).
+\end{itemize}
+
+
+\subsection*{Supported Platforms}
+
+Fingrom is distributed through the official stores of each platform, which can be found on
+the relevant app stores.
+
+\begin{center}
+\begin{tabularx}{\textwidth}{|l|X|}
+  \hline
+  \textbf{Platform} & \textbf{Distribution} \\
+  \hline
+  iOS, macOS & Apple App Store \\
+  \hline
+  Android & Google Play, Galaxy Store, Huawei AppGallery, Amazon Appstore \\
+  \hline
+  Linux & Snap Store, Flathub, AppImage \\
+  \hline
+  Windows & Microsoft Store \\
+  \hline
+  Web & Any modern browser, no installation required \\
+  \hline
+\end{tabularx}
+\end{center}
+
+\noindent Direct links to each store can be found in the \nameref{ref} section at the end of
+this book. Every release is also published on GitHub for users who prefer to install the
+application manually.
+
+
+\newpage
+\subsection*{Who This Book Is For}
+
+This manual is intended for anyone who uses or is considering using Fingrom:
+
+\begin{itemize}
+  \item \textbf{newcomers} who want to set up the application properly from the outset and
+  develop the habit of tracking their finances.
+  \item \textbf{users migrating} from spreadsheets or other applications who need to import
+  their history and preserve existing balances.
+  \item \textbf{experienced users} who want to make the most of budgeting strategies,
+  automation, metrics and synchronization across several devices.
+\end{itemize}
+
+\noindent No prior knowledge of accounting is required. Financial terms are explained as they
+first appear.
+
+
+\subsection*{Conventions Used in This Book}
+
+\begin{itemize}
+  \item The names of the interface elements (pages, buttons and fields) are written in
+  \textbf{bold}.
+  \item Values to be entered and file formats are written as \q{inline code}.
+  \item Keyboard shortcuts are shown as keys, \\
+  e.g. \key{Ctrl} + \key{N} to add a new transaction.
+  \item Screenshots are taken from the English version of the application. The layout may
+  differ slightly depending on screen size, platform, theme and selected language.
+\end{itemize}
+
+
+\subsection*{Feedback and Contribution}
+
+Fingrom is developed openly, which is a process that is open to anyone who wishes to
+participate. If you find anything in the application or this book that is unclear, incorrect
+or missing, please open an issue at
+\href{https://github.com/lyskouski/app-finance/issues}{https://github.com/lyskouski/app-finance/issues}.
+Translations, bug reports, ideas and pull requests are always welcome and are gratefully
+acknowledged in the application's \textbf{About} section under the \textbf{Contributors}
+heading.
