@@ -23,7 +23,8 @@ This book is diving deep into capabilities of [Fingrom](https://github.com/lysko
 2. Run command (from current directory):
   - PDF (MiKTeX): `pdflatex -halt-on-error -aux-directory=build -output-directory=build index.tex`
   - PDF (TeX Live): `mkdir -p build && pdflatex -halt-on-error -output-directory=build index.tex`
-  - EPUB: `pandoc --from=latex index.tex --to=epub -o index.epub`
+  - EPUB: `pandoc --from=latex index.tex --to=epub3 --mathml --lua-filter=_lib/epub.lua -M lang=en-US -o build/index.epub`
+    - Validate before uploading to stores: `java -jar epubcheck.jar build/index.epub` ([EPUBCheck](https://github.com/w3c/epubcheck/releases))
     - https://gist.github.com/lyskouski/9cc9abbc2dbf1589af4f26133a517d4c
   - MOBI: `tex4ebook -f mobi -l -r 640 index.tex`
   - TXT: `pdftotext -enc ASCII7 -nopgbrk -layout index.pdf`
