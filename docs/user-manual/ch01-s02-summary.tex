@@ -1,0 +1,195 @@
+% Copyright 2026 The terCAD team. All rights reserved.
+% Use of this content is governed by a CC BY-NC-ND 4.0 license that can be found in the LICENSE file.
+
+\subsection{Financial Statements}
+\markboth{Budgeting}{Financial Statements}
+
+In accounting, two reports answer most of the questions about the state of finances: the \emph{Balance Sheet} and the \emph{Income Statement}. Both are built from the same source -- the full log of recorded operations, known as the \emph{General Ledger} -- but they look at it from different angles \cite{Hart22}.
+
+\begin{description}
+  \item[Balance Sheet] is a snapshot at a given moment: what is owned (\emph{assets}), what is owed (\emph{liabilities}), and the difference between them (\emph{equity}, or net worth). It follows the accounting equation:
+  \[
+    \textit{Assets} = \textit{Liabilities} + \textit{Equity}
+  \]
+  \item[Income Statement] covers a period of time: all incomes received minus all expenses made, which results in a net profit (savings) or a net loss (overspending):
+  \[
+    \textit{Net Result} = \sum \textit{Incomes} - \sum \textit{Expenses}
+  \]
+\end{description}
+
+\noindent Why bother with them when it comes to personal finances? Because a quick look at
+these figures shows whether things are moving in the right direction. Drilling down into the
+details helps you to identify the categories or months that need more attention.
+
+\subsubsection{Chart of Accounts}
+
+Businesses organize the general ledger using a chart of accounts. This is a list of all the
+accounts and categories in use, usually with numeric codes that determine their position on
+reports (e.g. assets, liabilities and equity on the balance sheet; revenues and expenses on
+the income statement).
+
+Fingrom retains this concept, but without codes. Its chart of accounts comprises two lists
+that will be familiar from the previous section:
+
+\begin{center}
+\begin{tabularx}{\textwidth}{|l|X|l|}
+  \hline
+  \textbf{Accounting} & \textbf{Fingrom} & \textbf{Report} \\
+  \hline
+  Assets & Accounts: cash, bank accounts, debit cards, deposits, investments & Balance Sheet \\
+  \hline
+  Liabilities & Accounts: credit cards, loans, mortgages (negative balance) & Balance Sheet \\
+  \hline
+  Revenues & Incomes, attributed to the account that received them & Income Statement \\
+  \hline
+  Expenses & Bills, attributed to budget categories & Income Statement \\
+  \hline
+\end{tabularx}
+\end{center}
+
+
+\subsubsection{Cash and Accrual Methods}
+
+There are two methods of recording financial transactions. The accrual method registers
+income when it is earned and expenses when they are incurred, regardless of when the money
+actually changes hands. It requires additional accounts such as receivables, payables, and
+prepaid or accrued expenses. The cash method only registers an operation when money changes
+hands.
+
+Fingrom uses the cash method, whereby a bill or income is recorded when it is paid or
+received. This means that the balance of each account always reflects the actual amount of
+money held in it. This makes reports more streamlined and easier to verify against a bank
+statement. Rather than being recorded, upcoming obligations are planned: recurring payments
+(\cref{img:recurring-payments}) create bills automatically when they are due, and irregular
+expenses can be smoothed with yearly categories or monthly coefficients
+(see \cref{budget:coef}).
+
+\img{img/ch01-s02-automation__recurring-payments}{Recurring Payments}{img:recurring-payments}
+
+\noindent In this sense, the list of accounts on the main page, along with the total,
+constitutes the application's balance sheet, while the \textbf{Summary} table described below
+constitutes its income statement.
+
+
+\subsection{Summary Table}
+\label{summary:table}
+\markboth{Budgeting}{Summary Table}
+
+On a wide screen, the main page of Fingrom shows an overview of the last six months: how much was spent in each budget category, how much was received on each account, and what remained at the end of each month (see \cref{img:summary-table}).
+
+\img{img/ch01-s02-main__summary}{Summary Table}{img:summary-table}
+
+
+\subsubsection{When It Is Shown}
+
+The default layout of the main page depends on the size of the window. The
+wide-screen layout is used when the window is at least 1440 pixels wide and 480 pixels high
+-- a size typical of desktop monitors, laptops and tablets in landscape mode. Narrower
+windows display lists of accounts, budgets and bills instead (see \cref{img:main-page}).\\
+\\
+
+\noindent The wide-screen layout is a grid of 12 columns by 7 rows:
+
+\begin{center}
+\begin{tabular}{|p{0.27\textwidth}|p{0.27\textwidth}|p{0.27\textwidth}|}
+  \hline
+  \multicolumn{3}{|c|}{} \\
+  \multicolumn{3}{|c|}{\textbf{Summary} (rows 1--4, full width)} \\
+  \multicolumn{3}{|c|}{} \\
+  \hline
+  \centering \textbf{Candlestick (OHLC) Chart} &
+  \centering \textbf{YTD Expenses} &
+  \centering \textbf{Forecast Chart} \tabularnewline
+  \centering accounts & \centering bills & \centering budgets \tabularnewline
+  \hline
+\end{tabular}
+\end{center}
+
+\noindent The upper part (four rows of the grid) is occupied by the \textbf{Summary} table,
+and the lower part (three rows) is divided equally between three charts: the
+\textbf{Candlestick (OHLC) Chart} of accounts, the \textbf{YTD Expenses} of bills, and the
+\textbf{Forecast Chart} of budgets (see \cref{budget:metrics}).
+
+This layout is just the default one. The \textbf{Customize Page} action
+(\cref{img:main-editor}) on the main page allows you to rearrange, resize, add or remove
+components, and the configuration is stored separately for each window size. This means that
+even the \textbf{Summary} table can be shown on a mobile device. Once a custom configuration
+has been saved, it replaces the default one.
+
+\img{img/ch01-s02-main__editor}{Customize Main Page}{img:main-editor}
+
+
+\subsubsection{Structure of the Table}
+
+The table has eight columns: the title; one column for each of the last six months, with the current month being the rightmost; and the Summary column, which shows the total for these six months. The rows are organized into three blocks:
+
+\begin{description}
+  \item[Budgets] -- one row per active budget category with the amount spent in it in each month. This block is the expense part of the Income Statement.
+  \item[Accounts] -- one row per active account that received at least one income, with the incomes per month. Transfers between own accounts are not incomes and are therefore not counted. This block is the revenue part of the Income Statement.
+  \item[Total] -- the net result of each month: all incomes minus all bills. A positive value means that money was saved; a negative one means that more was spent than earned.
+\end{description}
+
+\noindent A simplified example (with only three months shown):
+
+\begin{center}
+\small
+\begin{tabular}{|l|r|r|r|r|}
+  \hline
+   & \textbf{August} & \textbf{September} & \textbf{October} & \textbf{Summary} \\
+  \hline
+  \textbf{Budgets} & & & & \\
+  - Food/Groceries & 410.00 & 385.50 & 220.10 & 1\,015.60 \\
+  - Housing/Rent & 900.00 & 900.00 & 900.00 & 2\,700.00 \\
+  - Leisure/Hobbies & 120.00 & 260.00 & 40.00 & 420.00 \\
+  \textbf{Accounts} & & & & \\
+  - Bank/Salary & 2\,000.00 & 2\,000.00 & 2\,000.00 & 6\,000.00 \\
+  - Cash & 0.00 & 150.00 & 0.00 & 150.00 \\
+  \hline
+  \textbf{Total} & \textbf{570.00} & \textbf{604.50} & \textbf{839.90} & \textbf{2\,014.40} \\
+  \hline
+\end{tabular}
+\end{center}
+
+\subsubsection{How the Values Are Calculated}
+
+\textbf{Months follow the start of month setting.} For example, if the start of month is set
+to 25, the October column covers the period from 25 October to 24 November. The current
+period is always the rightmost column.
+
+\textbf{All amounts are in the default currency.} Bills and incomes in different currencies
+are converted using exchange rates so that the figures can be compared and totalled directly.
+
+\textbf{Deactivated items are hidden.} Deactivated budget categories and accounts are not
+given their own rows.
+
+\textbf{Order follows the sorting preference.} The order in which categories and accounts are
+listed is the same as that selected for lists elsewhere in the application (by totals, dates
+or titles).
+
+\textbf{The table is always up to date.} It is recalculated with every change, meaning a new
+bill appears in the current column immediately.
+
+\noindent Please note that the 'Total' row is calculated from all bills and incomes of the
+month, including those from deactivated categories and categories marked 'Exclude from
+Totals'. Therefore, the total may differ from a manual sum of the visible rows, but it always
+reflects the actual cash flow.
+
+
+\subsubsection{Reading the Table}
+
+The table is the starting point for the monthly review recommended in the previous section:
+
+\begin{enumerate}
+  \item \textbf{Check the Total row first.} Even if every single category seems reasonable, a
+  sequence of negative months is the clearest sign that the budget does not match the income.
+  \item \textbf{Look for trends along each row.} If the growth of a category is justified, it needs either a higher limit or more attention.
+  \item \textbf{Compare with the limits.} The Summary column divided by six gives the average
+  monthly spending. This provides a natural basis for incremental budgeting and adjusting the
+  Limit per Month.
+  \item \textbf{Check the stability of incomes.} Inconsistent amounts in the 'Accounts' block
+  suggest that some categories should be assigned relative limits so that they adapt
+  automatically to good and bad months.
+  \item \textbf{Keep in mind the current month.} The values in the rightmost column are
+  naturally lower as it is still in progress. The Forecast Chart below the table shows where
+  the current month is heading.
+\end{enumerate}
