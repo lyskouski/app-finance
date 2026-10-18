@@ -1,0 +1,200 @@
+% Copyright 2026 The terCAD team. All rights reserved.
+% Use of this content is governed by a CC BY-NC-ND 4.0 license that can be found in the LICENSE file.
+
+\subsection{Looking Back}
+\markboth{Continuing}{Looking Back}
+
+Throughout this book, we have traced the journey of money in Fingrom, from allocating it to
+budget categories and maintaining accounts, to recording every bill, income and transfer, and
+directing savings towards goals. Together, these steps form a complete cycle of personal
+financial management.
+
+\begin{enumerate}
+  \item \textbf{Plan} -- define budget categories and their limits, set goals with deadlines;
+  \item \textbf{Record} -- enter transactions as they happen, automate the recurring ones,
+  import the history;
+  \item \textbf{Review} -- check the Summary table, the metrics, and the progress of goals;
+  \item \textbf{Adjust} -- correct the limits, the deadlines, and the habits, and start the
+  next cycle.
+\end{enumerate}
+
+\noindent No application can make financial decisions on behalf of a person. However, it can
+make the consequences of these decisions visible quickly, honestly and effortlessly. This is
+precisely why Fingrom was created: to be an intuitive, efficient and inclusive tool that
+enables anyone to manage their finances and leaves no one behind.
+
+
+\subsection{Work in Progress}
+\markboth{Continuing}{Work in Progress}
+
+Fingrom is in an active state of development. Since the first code was committed in 2023, the
+application has grown from a prototype developed in a developer's spare time into a product
+published in all major stores, with new releases appearing regularly. Consequently:
+
+\begin{itemize}
+  \item the appearance of some pages may differ from the descriptions and screenshots of this
+  book, especially in other languages or on other screen sizes;
+  \item new features are added, and existing ones are refined, based on the feedback of users;
+  \item some behaviors described here may change, if a more convenient or more correct
+  approach is found (but that book will be updated accordingly).
+\end{itemize}
+
+\noindent The source code is the ultimate reference, and it is open to everyone at
+\href{https://github.com/lyskouski/app-finance}{https://github.com/lyskouski/app-finance}. The
+release notes describe what has changed in each version. Even that book is a part of that
+repository (\q{./docs/user-manual/README.md}).
+
+
+\subsection{Comparing with Other Solutions}
+\markboth{Continuing}{Comparing with Other Solutions}
+
+The financial applications market is large, and there is no single best choice for everyone.
+The most common alternatives can be divided into a few categories:
+
+\begin{description}
+  \item[Desktop double-entry software] (e.g. GnuCash, KMyMoney) -- free and open-source
+  programs that follow the full accounting model with assets, liabilities, equity, incomes,
+  and expenses. They are powerful and precise, suitable even for small businesses, but demand
+  knowledge of accounting and are designed primarily for desktop computers.
+  \item[Local-first budgeting tools] (e.g. HomeBank, Actual Budget) -- focus on budgeting and
+  keep data under the control of the user. Some of them require a self-hosted server for
+  synchronization between devices.
+  \item[Self-hosted web applications] (e.g. Firefly III) -- rich functionality accessible
+  from any browser, at the cost of installing and maintaining one's own server.
+  \item[Commercial cloud services] (e.g. YNAB, Quicken) -- polished applications with direct
+  connections to banks and automatic import of transactions, usually by subscription, and
+  with the financial history stored on the servers of the provider. The shutdown of Mint in
+  2024 showed the other side of this convenience: when a service closes, its users have to
+  migrate years of history elsewhere.
+\end{description}
+
+\noindent Fingrom occupies a unique position between these groups: it is as private as
+local-first tools, as accessible as cloud services and far simpler than double-entry software
+-- all while remaining free.
+
+\begin{center}
+\footnotesize
+\begin{tabularx}{\textwidth}{|l|X|X|X|}
+  \hline
+  \textbf{Criterion} & \textbf{Fingrom} & \textbf{Desktop double-entry} & \textbf{Commercial cloud} \\
+  \hline
+  Cost & free & free & subscription \\
+  Ads & none & none & none or some \\
+  Platforms & all platforms & mostly desktop & all platforms \\
+  Data storage & on own devices & on own device & on servers \\
+  Serverless sync & yes (P2P) & no & -- \\
+  Bank connection & no & limited & yes \\
+  Double-entry & no & yes & no \\
+  Learning curve & low & high & low \\
+  \hline
+\end{tabularx}
+\end{center}
+
+
+\subsection{Strengths and Limitations}
+\markboth{Continuing}{Strengths and Limitations}
+
+A fair manual should not only demonstrate the strengths of an application, but also highlight
+its limitations. This information is useful for deciding whether Fingrom meets a particular
+need and where to look for complementary functionality.
+
+\subsubsection{Strengths}
+
+\begin{itemize}
+  \item \textbf{Free, without ads, open source.} No feature is locked behind a subscription,
+  and anyone can verify how the application works.
+  \item \textbf{Privacy by design.} No registration is required; the financial data is stored
+  locally, can be encrypted, and travels only between the devices of the user. Anonymous
+  usage statistics (device type, language, visited pages, errors) are collected solely to
+  improve the application, as described in the privacy policy.
+  \item \textbf{Every platform.} iOS, Android, macOS, Windows, Linux, and the Web, with the
+  same features everywhere.
+  \item \textbf{Inclusive interface.} More than twenty languages, including right-to-left
+  ones, adaptive layouts from phones to wide monitors, keyboard navigation, and zoom.
+  \item \textbf{Multi-currency.} Accounts, budgets, and goals in any currency or
+  cryptocurrency, with conversion of totals into the default one.
+  \item \textbf{Flexible budgeting.} Fixed, relative, and unlimited limits, monthly
+  coefficients, and weekly, monthly, or yearly intervals.
+  \item \textbf{Insights.} A forecast of the budget based on Monte Carlo simulation, the
+  Summary table, charts, and the automatic progress of goals with a monthly target.
+  \item \textbf{Low effort.} Category suggestions, remembered choices, recurring payments,
+  and import from \q{CSV}, \q{QIF}, and \q{OFX}.
+\end{itemize}
+
+\subsubsection{Limitations}
+
+\begin{itemize}
+  \item \textbf{No direct bank connection.} Transactions are entered manually, created by
+  recurring payments, or imported from files exported by the bank.
+  \item \textbf{Single-entry model.} Fingrom is designed for personal and family finances,
+  not for formal bookkeeping: it does not produce statutory reports, does not track
+  receivables and payables, and does not replace an accountant for business or tax purposes.
+  \item \textbf{No investment portfolio.} Securities can be tracked only as the balance of a
+  deposit account, without quotes, positions, or returns.
+  \item \textbf{No roles and permissions.} All synchronized devices have equal access to all
+  data; there is no read-only mode for a family member or an advisor.
+  \item \textbf{Limited import.} Transfers are not imported from files, and the mapping of
+  columns has to be repeated for every file.
+  \item \textbf{Manual reconciliation.} There is no mark for transactions verified against a
+  bank statement; discrepancies are corrected via the balance of an account.
+\end{itemize}
+
+
+\subsection{Possible Improvements}
+\markboth{Continuing}{Possible Improvements}
+
+From the outset, the concept of Fingrom encompassed more ideas than could be implemented
+immediately. Some of these features are already included in the application, such as adaptive
+design, onboarding, personalization, encryption, multi-factor protection, charts and
+automatic categorization. Others remain on the horizon.
+
+\begin{description}
+  \item[Integration with banks] -- connecting accounts through Open Banking interfaces, with
+  automatic import of transactions and real-time balances, while keeping the data under the
+  control of the user.
+  \item[Reconciliation] -- marking transactions as verified against a bank statement, to
+  identify discrepancies and missing entries.
+  \item[Intelligent notifications] -- detecting anomalies such as unexpectedly high expenses,
+  possible duplicate or unauthorized charges, and suggesting adjustments of budget limits
+  based on actual spending.
+  \item[Receipt recognition] -- extracting the amount, the date, and the merchant from a
+  photo of a receipt via optical character recognition (OCR).
+  \item[Parsing notifications] -- creating transactions from the messages of banking
+  applications on the device.
+  \item[Reports] -- customizable report templates and periodic summaries, exported to common
+  formats.
+  \item[Shared access] -- roles for family members or advisors with restricted permissions.
+  \item[Investments] -- tracking securities with their quotes and returns.
+\end{description}
+
+\noindent The order in which these ideas are implemented depends largely on the users.
+Development priorities are driven by feedback received through the issue tracker, stores and
+direct messages.
+
+
+\subsection{Getting Involved}
+\markboth{Continuing}{Getting Involved}
+
+Fingrom is an open project, and there are many ways to influence its future, even without
+programming:
+
+\begin{itemize}
+  \item \textbf{Report issues and ideas} at
+  \href{https://github.com/lyskouski/app-finance/issues}{https://github.com/lyskouski/app-finance/issues}
+  -- each report helps to find a problem or to prioritize a feature;
+  \item \textbf{Translate} the interface, or improve an existing translation;
+  \item \textbf{Test} pre-release versions via TestFlight, Google Play, or the web version;
+  \item \textbf{Contribute} code or documentation, including this book, via pull requests;
+  \item \textbf{Rate and recommend} the application in the stores -- it helps others to find
+  it;
+  \item \textbf{Sponsor} the development: subscribing does not unlock any features, but
+  supports the evolution of the application and preserves its availability.
+\end{itemize}
+
+\noindent Every contribution is acknowledged in the \textbf{About} -- \textbf{Contributors}
+section of the application.
+
+\vspace{1cm}
+
+\noindent Thank you for reading this book. May your budgets balance, your accounts grow, and
+your goals come true.
