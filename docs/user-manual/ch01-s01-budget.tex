@@ -1,0 +1,392 @@
+% Copyright 2026 The terCAD team. All rights reserved.
+% Use of this content is governed by a CC BY-NC-ND 4.0 license that can be found in the LICENSE file.
+
+\subsection{Why Budgeting Matters}
+\markboth{Budgeting}{Why Budgeting Matters}
+
+Budget. For many people, the word itself suggests restriction: income always seems finite,
+while the list of things we need (or simply want) keeps growing. However, a budget is not
+about saying no to everything. It's about deciding in advance how to spend your money, rather
+than discovering at the end of the month where it went.
+
+Without a plan, spending tends to creep up: a subscription here, a dinner out there, and a
+few unplanned purchases can easily cancel out any progress towards important goals. A budget
+gives every income a purpose, turning vague intentions ('I should save more') into measurable
+numbers that can be tracked day by day.
+
+When building a budget, it is important to bear in mind the two finite resources of money and
+time. Everything costs one or the other, and the two are closely connected. For example,
+cooking at home saves money but takes time, while owning a car saves time but costs money. A
+good budget acknowledges these trade-offs and makes them visible, enabling you to make
+conscious decisions.
+
+Finally, a budget is not a static document. It is not a one-off exercise, but rather a living
+plan that is reviewed and adjusted in response to life's changes: a new job, a move, having a
+child or paying off a loan. A budget designed for a student will not suit a family of four,
+so there is no reason to keep it unchanged when circumstances change.
+
+
+\subsection{Choosing a Strategy}
+\markboth{Budgeting}{Choosing a Strategy}
+
+A single magic formula is not known, but several well-known approaches are recognized. All of
+these can be implemented in Fingrom using the tools described later in this section.
+
+\subsubsection{The 50/30/20 Rule}
+
+This rule, popularised by Elizabeth Warren and Amelia Warren Tyagi \cite{Warr05}, splits the
+after-tax income into three parts:
+
+\begin{itemize}
+  \item 50\% -- needs: housing, utilities, groceries, transportation, insurance, minimum loan
+  payments;
+  \item 30\% -- wants: dining out, entertainment, hobbies, travel;
+  \item 20\% -- savings and extra debt repayment.
+\end{itemize}
+
+\noindent In Fingrom, this maps directly to 'relative' limits (see \cref{budget:limit}): a
+category with a limit of 0.5 always receives half of the income received in the current
+period, regardless of its size.
+
+
+\subsubsection{Zero-Based Budgeting}
+
+This approach assumes that everything starts from zero, and that every unit of income must be
+assigned to a category until nothing remains unallocated: \emph{Income} $-$ \emph{Expenses}
+$-$ \emph{Savings} $= 0$. This method is particularly useful when starting from scratch or
+after a significant change, as it prevents habits from carrying over. In Fingrom, it is
+implemented with fixed limits whose sum equals the expected monthly income (\cref{img:fixed-income}).
+
+\img{img/ch01-s01-budget__fixed-income}{Fixed Income Budgeting}{img:fixed-income}
+
+
+\subsubsection{Incremental Budgeting}
+
+Incremental budgeting uses the previous period as a basis and adjusts it by a certain
+percentage (an \q{$x + z\%$} view). This approach is ineffective on the first day, but
+becomes useful once a few months of data have been recorded. The \textbf{Summary} tab of each
+category and the \textbf{Metrics} page (see \cref{budget:metrics}) provide the exact numbers
+needed, showing how much was actually spent in each previous month.
+
+
+\subsubsection{Activity-Based Budgeting}
+
+This approach works in reverse: starting from a desired outcome (such as a holiday, a new
+laptop or an emergency fund), it calculates backwards to determine what is needed to achieve
+it. In Fingrom, the desired outcome is defined as a \textbf{Goal}, while the budget
+categories ensure that there is enough room in the remaining expenses to reach it.
+
+
+\subsubsection{Envelope Method}
+
+The classic approach to budgeting, where cash is divided into physical envelopes, one per
+spending category, is now available digitally. Once an envelope is empty, spending in that
+category stops until the next period. Each Fingrom budget category behaves exactly like such
+an envelope: the remaining amount is always displayed next to the category, and exceeding the
+limit is clearly highlighted (\cref{img:budget-list}).
+
+\img{img/ch01-s01-budget__budget-list}{Budget List}{img:budget-list}
+
+
+\subsubsection{Characteristics of a Good Budget}
+
+Regardless of the chosen strategy, the budget should:
+
+\begin{enumerate}
+  \item \textbf{Realistic.} One of the fastest ways to abandon a budget is to create an
+  unrealistic one. Start from actual spending, not an idealized version of it.
+  \item \textbf{Flexible.} It should be easy to adjust when income or priorities change.
+  Percentages (relative limits) scale up and down automatically, whereas fixed amounts need to be revised manually.
+  \item \textbf{Easily understood.} A dozen well-named categories are more useful than a
+  hundred precise ones. If it takes too long to choose a category for a bill, the structure is too complex.
+  \item \textbf{Mindful of irregularities.} Not all expenses or income are monthly.
+  Insurance, taxes, holidays and annual subscriptions should have their own place, either as
+  yearly categories or as monthly coefficients (see \cref{budget:coef}).
+\end{enumerate}
+
+\noindent The resources and the way to use them are unique to each person. Blindly copying
+someone else's recommendation rarely works, since it does not take personal circumstances or
+risk tolerance into account. Use the above strategies as a starting point and allow recorded
+history to inform subsequent adjustments.
+
+
+\subsection{Budget Categories}
+\markboth{Budgeting}{Budget Categories}
+
+A budget category is a specific area to which money is allocated in order to track expenses,
+such as groceries, rent, transport and leisure. Every bill recorded in Fingrom is attributed
+to exactly one category (or several if the bill is split, \cref{img:split-bill}), which makes
+it possible to answer the following questions at any time: How much did I spend on it? and
+How much is left?
+
+\img{img/ch01-s01-budget__split-bill}{Split Bill}{img:split-bill}
+
+\noindent The first category is created during the initial setup wizard. After that, as many
+categories as needed can be added from the \textbf{Budgets} page via the \textbf{Add New
+Budget Category} button.
+
+\newpage
+\subsubsection{Creating a Category}
+
+The form for a budget category contains the following fields (\cref{img:fixed-income}):
+
+\begin{description}
+  \item[Title] -- a unique and meaningful name. The \q{/} symbol can be used to group
+  categories on the main page: for example, \q{Food/Groceries} and \q{Food/Dining Out} are
+  shown together under \q{Food} (\cref{img:main-page}).
+  \item[Budgeting Interval] -- the period after which the spent amount is reset:
+  \textbf{weekly}, \textbf{monthly} (by default), or \textbf{yearly}.
+  \item[Icon] and \textbf{Color} -- visual identification of the category in lists and charts.
+  \item[Limit per Month] -- the amount that may be spent within the interval; its meaning
+  depends on the value entered (see \cref{budget:limit}).
+  \item[Relative Coefficient per Month] -- optional adjustment of the limit for each month of
+  the year (see \cref{budget:coef}).
+  \item[Currency] -- the currency in which the limit is defined. Bills in other currencies
+  are converted automatically using the exchange rates.
+  \item[Exclude from Totals] -- when checked, the category is still tracked, but is not
+  included in the summary on the main page. This is useful for reimbursable expenses
+  (business trips, shared purchases) that should not distort the personal budget.
+\end{description}
+
+\img{img/ch01-s01-budget__main-page}{Main Page}{img:main-page}
+
+
+\subsubsection{Limit Types}
+\label{budget:limit}
+
+The value entered in the \textbf{Limit per Month} field (\cref{img:fixed-income}) defines the
+category type. The application then highlights the matching type below the input field:
+
+\begin{center}
+\begin{tabularx}{\textwidth}{|l|l|X|}
+  \hline
+  \textbf{Type} & \textbf{Value} & \textbf{Behavior} \\
+  \hline
+  Unlimited & \q{0} & No limit is set; only the spent amount is recorded and shown. \\
+  \hline
+  Relative & \q{0 ... 1} & A share of the income received within the current interval (e.g. \q{0.3} means 30\%). \\
+  \hline
+  Fixed & \q{>= 1} & A fixed amount in the currency of the category. \\
+  \hline
+\end{tabularx}
+\end{center}
+
+\noindent \textbf{Unlimited} categories are useful for expenses that are difficult to plan
+for, but which are still worth monitoring. For example, this could be useful during the first
+month of using the application, when your actual spending habits are not yet known.
+
+\textbf{Fixed} limits are the most straightforward, with a limit of 400 for groceries meaning
+that 400 units of the selected currency can be spent within the interval.
+
+\textbf{Relative} limits are calculated dynamically from all income received since the
+beginning of the current interval. Transfers between own accounts are not counted. The income
+is then converted into the currency of the category:
+
+\[
+  \textit{Limit} = \textit{Coefficient} \times \sum \textit{Incomes}
+\]
+
+\noindent For example, if the limit for 'Entertainment' is 0.2 and there are two incomes in
+the current month of \$2,000 and \$500, the available amount is $0.2 \times 2\,500 = 500$. If
+another income is received later in the month, the limit increases accordingly. Bear in mind
+that at the start of the period, before any income has been recorded, the limit is zero.
+
+
+\subsubsection{Monthly Coefficients}
+\label{budget:coef}
+
+Some expenses are seasonal, such as heating in winter, travel in summer and buying gifts in
+December. Rather than editing the limit each month, a coefficient can be defined for each
+month of the year. To do this, click the \textbf{Declare Limits per Month} button next to the
+\textbf{Limit per Month} title (\cref{img:limits-month}). Twelve sliders will appear, one for
+each month, each with a value ranging from 0.0 to 4.0. (1.0 by default). The actual limit for
+the current month is the base limit multiplied by that month's coefficient:
+
+\img{img/ch01-s01-budget__limits-per-month}{Limits per Month}{img:limits-month}
+
+\begin{center}
+\begin{tabular}{|l|r|r|r|}
+  \hline
+  \textbf{Month} & \textbf{Base Limit} & \textbf{Coefficient} & \textbf{Actual Limit} \\
+  \hline
+  January  & 100 & 2.00 & 200 \\
+  April    & 100 & 1.00 & 100 \\
+  July     & 100 & 0.50 &  50 \\
+  December & 100 & 1.50 & 150 \\
+  \hline
+\end{tabular}
+\end{center}
+
+\noindent If the coefficient for the current month is greater than one, this is shown next to
+the limit in the category description (e.g. '(1.60 coef.)', \cref{img:limits-coef}). To
+remove all coefficients, press the \textbf{Cancel Split per Month} button.
+
+\img{img/ch01-s01-budget__limits-coef}{Coefficient per Month}{img:limits-coef}
+
+
+\subsubsection{Budgeting Intervals}
+
+The interval defines when the spent amount is reset:
+
+\begin{itemize}
+  \item \textbf{monthly} -- from the configured \textbf{Start of Month} (any day from 1 to
+  31, e.g. the day when the salary arrives);
+  \item \textbf{weekly} -- from the configured \textbf{Start of Week} (Monday, Saturday, or
+  Sunday);
+  \item \textbf{yearly} -- from the 1st of January.
+\end{itemize}
+
+\noindent Both start days are defined on the \textbf{Settings} page and affect all categories
+simultaneously. Weekly categories are useful for frequent expenses, such as lunches or
+groceries, where waiting until the end of the month to realise you have overspent is too
+late. Yearly categories are useful for irregular but predictable expenses such as insurance,
+vehicle tax and holidays.
+
+
+\subsection{Working with Categories}
+\markboth{Budgeting}{Working with Categories}
+
+\subsubsection{Budgets Page}
+
+The \textbf{Budgets} page lists all active categories. Each row shows the category's title
+and a progress bar indicating the amount spent against the limit. For unlimited categories,
+the spent amount is shown. Categories with an exceeded limit are highlighted to make
+overspending easy to spot.
+
+The header of the page displays the total amount left in all categories, converted into the
+default currency. The list can be sorted by total, date of creation or title, and searched
+using part of the title (\cref{img:budget-sort}).
+
+\img{img/ch01-s01-budget__sort}{Budget List Sorting}{img:budget-sort}
+
+
+\subsubsection{Category Details}
+
+Selecting a category opens its details, with a header summarizing the limit, the amount of expenses, and the actual balance, and three tabs (\cref{img:budget-detail}):
+
+\img{img/ch01-s01-budget__budget-detail}{Category Details}{img:budget-detail}
+
+\begin{description}
+  \item[Bills] -- all expenses attributed to the category within the current interval, with
+  quick access to view or edit each of them.
+  \item[Summary] -- spent amounts per month, starting with the current one. Months in which
+  the limit was exceeded are marked in red. This is the main source of data for incremental
+  budgeting.
+  \item[Limit Adjustments] -- the history of changes of the category limit.
+\end{description}
+
+\subsubsection{Editing and Deactivating}
+
+A category can be modified at any moment. Changing the limit does not affect the amount
+already spent: progress is recalculated against the new limit. For example, if £300 of a £400
+limit has been spent (75\%), and the limit is increased to £600, the progress becomes 50\%.
+
+\noindent A category that is no longer needed can be deactivated using the \textbf{Deactivate
+Budget Category} option. The category's history is preserved and remains available in
+reports, while the category itself is hidden from lists and the selection of a category for
+new bills. On touch screens, both actions are also accessible by swiping a row in the list
+(\cref{img:swipe}).
+
+\img{img/ch01-s01-budget__swipe}{Swiping a Category Row}{img:swipe}
+
+
+\subsubsection{Summary Handler}
+
+By default, the total amount shown on the main page and the \textbf{Budgets} page includes
+all categories, including those that have been overspent: exceeding the limit reduces the
+total. The \textbf{Budget, Summary Handler} option on the \textbf{Settings} page allows you
+to change this behavior:
+
+\begin{itemize}
+  \item \textbf{Include negative values} -- overspending in one category reduces the overall
+  remaining amount, which reflects the actual state of finances;
+  \item \textbf{Ignore negative values} -- overspent categories count as zero, so the total
+  shows only what is still available in the categories that are within their limits.
+\end{itemize}
+
+
+\subsubsection{Category Prediction}
+
+When a new bill is recorded, Fingrom suggests the most probable budget category. This
+suggestion is determined locally on the device using three signals with different weights:
+words in the bill description (50\%), the selected account (30\%), and the amount range
+(20\%). The more bills that are recorded, the more accurate the prediction becomes
+(\cref{img:add-expense}).
+
+\img{img/ch01-s01-budget__add-expense}{Add new Expense}{img:add-expense}
+
+
+\newpage
+\subsection{Monitoring the Budget}
+\label{budget:metrics}
+\markboth{Budgeting}{Monitoring the Budget}
+
+The \textbf{Metrics} page has a dedicated \textbf{Budgets} tab (\cref{img:budget-metrics}).
+
+\img{img/ch01-s01-budget__budget-metrics}{Budget Metrics}{img:budget-metrics}
+
+\begin{itemize}
+  \item \textbf{Forecast Chart} -- the Y-axis shows the budget allocation, where 100\% means
+  that all limits have been fully spent, and the X-axis shows the days of the current month.
+  The chart consists of two parts: historical data (accumulated expenses so far) and a
+  forecast up to the end of the month, calculated using the Monte Carlo simulation method. If
+  a forecast line crosses the 100\% mark, this indicates that the limits will be exceeded
+  before the end of the month at the current pace.
+  \item \textbf{YTD Expenses} -- the expenses accumulated since the beginning of the year,
+  which helps to compare the current year with the plan.
+  \item \textbf{Table of categories} -- shows the amount spent in each category for the
+  current month and the two previous months, making trends easy to spot.
+\end{itemize}
+
+\noindent The chart showing how the share of each category changes over time is on the same
+page, in the \textbf{Bills} tab. It is called the \textbf{Bar Race for Categories} chart.
+You can quickly navigate to the detailed view of a category for a selected month by clicking
+on any cell in the table.
+
+
+\subsection{Practical Tips}
+\markboth{Budgeting}{Practical Tips}
+
+\textbf{Start simple.} For the first month, create a few broad, unlimited categories
+and record every expense. Only then should you define limits based on the actual numbers.
+
+\textbf{Align the start of the month with your income.} If the salary arrives on the
+25th, set 'Start of Month' to 25: the budget period will then match the period in which the
+money is actually available.
+
+\noindent \textbf{Prefer relative limits for variable income.} Those with irregular income,
+such as freelancers, benefit from limits defined as shares, since they adapt automatically
+to good and bad months.
+
+\textbf{Plan for irregular expenses.} Use yearly categories or monthly coefficients
+for insurance, taxes, gifts and holidays, so that they do not come as a surprise.
+
+\textbf{Keep a buffer.} An 'Unexpected Expenses' category with a modest limit can
+absorb small surprises without disrupting the rest of the plan.
+
+\textbf{Review monthly.} At the end of each period, check the \textbf{Summary} tab
+and the \textbf{Metrics} page, and adjust any limits that were consistently exceeded or
+never reached.\\
+\\
+
+\noindent Common categories to start with:
+
+\begin{multicols}{2}
+\begin{itemize}
+  \item Housing/Rent
+  \item Housing/Utilities
+  \item Housing/Maintenance
+  \item Food/Groceries
+  \item Food/Dining Out
+  \item Transport/Fuel
+  \item Transport/Public
+  \item Health/Insurance
+  \item Health/Medical
+  \item Leisure/Subscriptions
+  \item Leisure/Hobbies
+  \item Leisure/Vacations
+  \item Personal/Clothing
+  \item Education
+  \item Unexpected Expenses
+\end{itemize}
+\end{multicols}
