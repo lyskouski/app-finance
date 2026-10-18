@@ -1,0 +1,296 @@
+% Copyright 2026 The terCAD team. All rights reserved.
+% Use of this content is governed by a CC BY-NC-ND 4.0 license that can be found in the LICENSE file.
+
+\subsection{Account Types}
+\markboth{Accounting}{Account Types}
+
+In Fingrom, an account is a place where money is kept, such as a wallet, bank account, card,
+deposit or loan. Every bill is paid from an account, every income is received into an
+account, and every transfer moves money between two accounts. The total value of all accounts
+is the net worth — the balance sheet of the application (see \cref{summary:table}).
+
+Traditional double-entry accounting software for businesses usually provides around a dozen
+account types, with separate categories for receivables, payables, equity, income, and
+expenses. However, most of these are only relevant to companies that record operations using
+the accrual method \footnote{Under the accrual method, income is recorded when it is earned
+and expenses are recorded when they are incurred, regardless of when the money actually
+changes hands. For example, a service provided in December but paid for in January is counted
+as December income. This method requires additional accounts for money owed to the company
+(receivables) and money owed by the company to others (payables). The opposite is the cash
+method, which only records an operation when payment is made or received.}. Fingrom, on the
+other hand, focuses on actual money and offers six types (\cref{tb:account-types}).
+
+\begin{table}[h!]
+\begin{center}
+\begin{tabularx}{\textwidth}{|l|X|l|}
+  \hline
+  \textbf{Type} & \textbf{Purpose and Examples} & \textbf{Group} \\
+  \hline
+  Bank Account & Funds held with a financial institution and used for everyday operations:
+  checking or current account without linked cards. & Asset \\
+  \hline
+  Cash & Physical money on hand: a wallet, a petty cash box, foreign banknotes after a
+  trip. & Asset \\
+  \hline
+  Debit Card & A card linked to a bank account; payments immediately reduce the available
+  balance. & Asset \\
+  \hline
+  Credit Card & Purchases made with borrowed funds that must be repaid later. & Liability \\
+  \hline
+  Deposit & Money placed for safekeeping, often earning interest: savings accounts,
+  fixed-term deposits, investments. & Asset \\
+  \hline
+  Credit & Borrowed money: loans, mortgages, lines of credit, debts to friends. & Liability \\
+  \hline
+\end{tabularx}
+\end{center}
+  \caption{Account Types in Fingrom} \label{tb:account-types}
+\end{table}
+
+
+The type helps to ensure that the account is treated appropriately. For example,
+the \textbf{Valid Till} field is only available for cards, deposits and credits, and the type
+is shown in the account details header.
+
+\newpage
+\noindent The remaining areas of classic accounting are covered by other entities rather than
+account types:
+
+\begin{itemize}
+  \item \textbf{Incomes} (revenues) are recorded as invoices received on an account;
+  \item \textbf{Expenses} are recorded as bills attributed to budget categories;
+  \item \textbf{Equity} (net worth) is not entered at all -- it is calculated automatically
+  as the total of all accounts.
+\end{itemize}
+
+\noindent For liabilities, enter the balance as a negative value (i.e. the amount owed) so
+that the total of all accounts accurately reflects net worth. For example, a debit card
+balance of £1,500 and a credit card balance of -£400 result in a net worth of £1,100.
+
+
+\subsection{Account Hierarchy}
+\markboth{Accounting}{Account Hierarchy}
+
+Accounting software typically organizes accounts in a hierarchical structure. Top-level
+groups, such as assets and liabilities, contain parent accounts, which in turn contain child
+accounts. Accountants refer to this structure as the 'chart of accounts'.
+
+Fingrom can build such a tree from the names of accounts alone, without any additional
+settings. The \q{/} symbol separates the levels:
+
+\begin{center}
+\begin{tabular}{|l|l|}
+  \hline
+  \textbf{Account Title} & \textbf{Shown on the Main Page} \\
+  \hline
+  \q{Bank/Debit} & \q{Bank} $\rightarrow$ Debit \\
+  \q{Bank/Savings} & \q{Bank} $\rightarrow$ Savings \\
+  \q{Bank/Credit Card} & \q{Bank} $\rightarrow$ Credit Card \\
+  \hline
+  \q{Cash/EUR} & \q{Cash} $\rightarrow$ EUR \\
+  \q{Cash/USD} & \q{Cash} $\rightarrow$ USD \\
+  \hline
+\end{tabular}
+\end{center}
+
+\noindent The group \q{Bank} itself is not an account: it holds no money and no transactions,
+but shows the total of its members and can be expanded or collapsed on the main page
+(\cref{img:main-page}). In other words, it plays the role of a \emph{placeholder account} --
+a parent that is only used for grouping. Renaming an account (for example, from \q{Debit} to
+\q{Bank/Debit}) moves it into a group without touching its history.
+
+There is no fixed set of top-level groups. Accounts can be grouped by institution
+(\q{Bank A/\dots}, \q{Bank B/\dots}), by purpose (\q{Daily/\dots}, \q{Savings/\dots}), by
+owner (\q{Family/\dots}, \q{Business/\dots}), or by currency. Choose a single principle and
+keep to it: the structure should be obvious at a glance.
+
+
+\subsection{Creating an Account}
+\markboth{Accounting}{Creating an Account}
+
+The first account is created using the initial setup wizard. Further accounts can be added
+via the \textbf{Accounts} page. The form contains the following fields
+(\cref{img:account-add}):
+
+\img{img/ch02-s01-account__add}{Add Account}{img:account-add}
+
+\begin{description}
+  \item[Account Type] -- one of the six types described above.
+  \item[Title] -- a unique name; use \q{/} to place the account into a group.
+  \item[Icon] and \textbf{Color} -- visual identification of the account in lists and charts.
+  \item[Details] -- a short hint to recognize the account, e.g. the last four digits of the card number (\q{****2345}). Do not store full card numbers, PIN codes, or passwords here.
+  \item[Currency] -- the currency of the account. It cannot be mixed: an account in another currency is a separate account, and money is moved between them by transfers with an exchange rate.
+  \item[Valid Till] -- the month and year of expiration of a card, the maturity of a deposit, or the end of a credit (not available for bank accounts and cash).
+  \item[Actual Balance] -- the amount on the account at the moment specified below.
+  \item[Balance Date Update] -- see \cref{account:balance}.
+  \item[Exclude from Totals] -- when checked, the account is still tracked, but is not included in the total on the main page. This is useful for money that is held, but does not belong to you (for example, a shared family fund or the money of a client).
+\end{description}
+
+\subsubsection{Opening Balance}
+\label{account:balance}
+
+When starting from scratch, the opening balance is straightforward: it is simply the current
+account balance. Enter this amount into \textbf{Actual Balance}, and every subsequent bill,
+income or transfer will change it.
+
+When switching from a spreadsheet, another application or a shoebox full of receipts, you
+have two options: you can either start from today and forget the past, or you can bring the
+history over. If you choose the second option, you have to define a cut-off date. For
+example, if you start using Fingrom on 1 January, you close the previous system on 31
+December, and the balances on that date (from bank statements) become the opening balances.
+
+The \textbf{Balance Date Update} field makes both options possible. Operations dated before
+this date do not affect the account balance, while those dated after it do. This allows the
+following sequence:
+
+\begin{enumerate}
+  \item Create the account with the current balance from the bank statement, setting the
+  \textbf{Balance Date Update} to the present date.
+  \item Import the previous history from \q{CSV}, \q{QIF}, or \q{OFX} files, or enter old
+  bills manually.
+  \item The imported operations will populate the reports, budget statistics and charts, but
+  the balance will stay exactly as it was entered — there is no need to recalculate it.
+\end{enumerate}
+
+\noindent The same field is used to correct an account after reconciliation. If the balance
+in the application differs from that on the bank statement, edit the account by entering the
+actual balance and the statement date.
+
+
+\subsection{Working with Accounts}
+\markboth{Accounting}{Working with Accounts}
+
+\subsubsection{Accounts Page}
+
+The \textbf{Accounts} page lists all active accounts and their balances, which are grouped
+using the \q{/} symbol. The header shows the total of all accounts converted into the default
+currency. Accounts with a \textbf{Valid Till} date display this under their title, providing
+a useful reminder of expiring cards and maturing deposits. The list can be sorted by totals,
+creation dates, or titles.
+
+
+\subsubsection{Account Details}
+
+Selecting an account opens its details. The header summarizes the account type, title and
+details, as well as the current balance. There are also four tabs (\cref{img:account-view}):
+
+\img{img/ch02-s01-account__view}{Account View}{img:account-view}
+
+\begin{description}
+  \item[Summary] -- incomes and bills per month (following the \textbf{Start of Month}
+  setting) in the currency of the account. Transfers are not counted as incomes.
+  \item[Bills] -- all expenses paid from the account.
+  \item[Invoices] -- all incomes received on the account.
+  \item[Transfers] -- all movements between this and other accounts, marked with \q{from}
+  and \q{to}.
+\end{description}
+
+\noindent Together, these tabs form the transactions log of the account, providing a complete
+history of how its balance was accumulated.
+
+\subsubsection{Editing and Deactivating}
+
+Any part of an account can be edited at a later date. Fingrom never overwrites a recorded
+operation internally: each change is stored as a new log entry, ensuring that the account's
+history remains consistent even after corrections are made.
+
+An account that is no longer in use, such as a closed bank account or an expired card, can be
+deactivated via the \textbf{Deactivate Account} option. The account will then disappear from
+lists and the selection of accounts for new operations, but its history will remain in
+reports and charts. Before deactivating an account, transfer the remaining balance to another
+account to ensure the total remains accurate. On touch screens, you can also deactivate an
+account by swiping a row in the list.
+
+
+\subsection{Personal and Business Finances}
+\markboth{Accounting}{Personal and Business Finances}
+
+Fingrom is designed with personal and family finances in mind, but it is also a suitable
+option for freelancers and small side businesses. There are several ways to use it:
+
+\begin{itemize}
+  \item \textbf{Personal only} -- the default setup.
+  \item \textbf{Combined with groups} -- keep business accounts under a separate group (e.g.
+  \q{Business/Bank}) and business expenses in separate budget categories
+  (e.g. \q{Business/Supplies}). The Summary table then shows both parts side by side.
+  \item \textbf{Combined, but separated in totals} -- mark business accounts and categories
+  as \textbf{Exclude from Totals}, so the main page shows only personal finances, while
+  business data is still recorded and available in the details.
+\end{itemize}
+
+\noindent These are merely the technical capabilities of the application. Questions relating
+to taxation and the legal separation of personal and business funds should be discussed with
+an accountant or tax consultant.
+
+\subsubsection{Several Users and Devices}
+
+Many desktop accounting programmes store all data in a single file that can only be opened by
+one person at a time. Sharing this file via a network folder can corrupt the data. Fingrom
+takes a different approach: each device keeps its own copy of the data and synchronizes
+directly with other devices (peer-to-peer). Therefore, a family can enter expenses on their
+phones and review reports on a laptop without using a shared folder or cloud account.
+Synchronization and recovery are described in a dedicated chapter.
+
+
+\subsubsection{Sharing with an Accountant}
+
+Accountants have their own terminology, so it helps to know that what Fingrom calls
+'accounts' grouped by \q{/} are called the 'chart of accounts' by accountants. To share data
+with someone who does not use Fingrom, export it to an Excel XLSX file via the
+\textbf{Import / Export} tab on the \textbf{Settings} page. Spreadsheets are an accountant's
+everyday tool, so such a file can be opened and reviewed anywhere.
+
+
+\subsubsection{What Fingrom Does Not Do}
+
+Fingrom is an accounting application and certain business functions are intentionally outside
+its scope. For example, there are no payroll, inventory or point-of-sale modules, nor any
+features for creating quotations, purchase orders or customer invoices. These operations do
+not move money themselves; however, once an operation has been completed (e.g. a salary has
+been paid or an invoice has been paid), the result is recorded as an ordinary bill or income.
+
+
+\subsection{Monitoring Accounts}
+\markboth{Accounting}{Monitoring Accounts}
+
+The \textbf{Metrics} page contains a dedicated tab for accounts (\cref{img:account-metrics}):
+
+\img{img/ch02-s01-account__metrics}{Account Metrics}{img:account-metrics}
+
+\begin{itemize}
+  \item \textbf{Candlestick (OHLC) Chart} -- the movement of the total balance of all
+  accounts (in the default currency) over the last six months: for each period, the opening,
+  highest, lowest, and closing values. Candles of \textbf{Amount Addition} and
+  \textbf{Amount Deduction} are shown in different colors; long candles indicate large
+  fluctuations within a period, while a sequence of rising candles shows a steady growth of
+  savings.
+  \item \textbf{Income Health Radar} -- a gauge from 0 up to 100 that summarizes the same
+  data in a single number: how much the total balance has grown over this period, relative to
+  its highest value at the beginning. A value close to zero means that savings are stagnating
+  (or decreasing).
+  \item \textbf{Currency Distribution} -- the share of each currency in the total, useful for
+  those who keep savings in several currencies.
+\end{itemize}
+
+
+\subsection{Practical Tips}
+\markboth{Accounting}{Practical Tips}
+
+\textbf{One account per real place of money.} If money can be spent separately from it (i.e.
+from a card, wallet or savings account), it deserves its own account.
+
+\textbf{One currency per account.} Cash in euros and cash in dollars are two accounts, e.g.
+\q{Cash/EUR} and \q{Cash/USD}.
+
+\textbf{Reconcile regularly.} Compare the balances with bank statements once a month and correct any differences via the \textbf{Edit} action by taking into account
+\textbf{Balance Date Update} field.
+
+\textbf{Record transfers, not bills, between own accounts.} Withdrawing cash from a card
+involves transferring funds from the 'Debit Card' category to the 'Cash' category; it is
+neither an expense nor an income.
+
+\textbf{Track debts as accounts.} Having a loan or credit card with a negative balance
+ensures that your net worth is accurate and shows your repayment progress.
+
+\noindent \textbf{Deactivate, do not delete.} The history of closed accounts is kept in
+reports, which is important for year-on-year comparisons.
