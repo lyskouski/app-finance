@@ -17,6 +17,8 @@ zurückgelassen wird.
 
 [![Watch the video](./docs/marketing-flow/presentation_video.png)](https://youtu.be/7hVGHYNzlQU)
 
+[Benutzerhandbuch](./docs/user-manual/README.md) | [Entwicklerhandbuch](./docs/implementation-flow/README.md)
+
 
 | Typ                      | Alpha-Version         | Vorabversion                  | Freigabe                      |
 | ------------------------ | ----------------------| ----------------------------- | ----------------------------- |

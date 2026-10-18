@@ -16,6 +16,8 @@ That empowers users to effortlessly manage their finances while ensuring that no
 
 [![Watch the video](./docs/marketing-flow/presentation_video.png)](https://youtu.be/sNTbpILLsOw)
 
+[User Manual](./docs/user-manual/README.md) | [Dev Manual](./docs/implementation-flow/README.md)
+
 
 | Type                     | Alpha Version         | Pre-Release                   | Release                       |
 | ------------------------ | ----------------------| ----------------------------- | ----------------------------- |
