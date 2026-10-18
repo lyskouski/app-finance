@@ -1,0 +1,451 @@
+% Copyright 2026 The terCAD team. All rights reserved.
+% Use of this content is governed by a CC BY-NC-ND 4.0 license that can be found in the LICENSE file.
+
+\subsection{Types of Transactions}
+\markboth{Processing}{Types of Transactions}
+
+Accounts and budget categories describe the structure of finances, while transactions bring
+them to life. Every financial transaction is recorded as one of three types:
+
+\begin{center}
+\small
+\begin{tabularx}{\textwidth}{|l|X|X|}
+  \hline
+  \textbf{Type} & \textbf{Meaning} & \textbf{Effect} \\
+  \hline
+  Bill & An expense: money leaves an account and is attributed to a budget category. & The
+  account decreases; the spent amount of the category increases. \\
+  \hline
+  Income & Money received on an account: salary, interest, gifts, refunds. & The account
+  increases. \\
+  \hline
+  Transfer & Money moved between own accounts: a cash withdrawal, a credit card repayment, a
+  deposit. & One account decreases, another one increases. \\
+  \hline
+\end{tabularx}
+\end{center}
+
+\noindent This distinction is important for the reports. A transfer does not change the net
+worth or the result of the month: moving £200 from a debit card to a wallet does not
+constitute an expense, and moving it back does not constitute an income. Recording transfers
+as bills and incomes would inflate both sides of the summary table and distort the budget
+statistics (see \cref{summary:table}).
+
+All three types are created from similar forms that can be accessed via the
+\textbf{Create new Transaction} action. This can be opened using the
+\textbf{Add Bill, Income or Transfer} button on the main page and on lists of transactions,
+or by using the shortcut \key{Ctrl} + \key{N}  on devices with a keyboard.
+The form has three tabs -- \textbf{Expense}, \textbf{Income}, and \textbf{Transfer}  -- and
+remembers the last selected account, budget category and currency. This means that repeated
+entries only require a few taps.
+
+
+\subsection{Recording a Bill}
+\markboth{Processing}{Recording a Bill}
+
+The \textbf{Expense} tab contains the following fields:
+
+\begin{description}
+  \item[Account] (required) -- where the money is taken from.
+  \item[Currency] and \textbf{Amount of Expenses} (required) -- the amount as it appears on
+  the receipt. The currency is preset from the account (or the budget category), but can be
+  changed, e.g. for a purchase abroad.
+  \item[Description] -- what was bought. A good description helps both the search and the
+  prediction of a category.
+  \item[Budget Category] (required) -- what the money was spent on.
+  \item[Billed At] -- the date and time of the purchase; the current moment by default.
+\end{description}
+
+
+\subsubsection{Category Suggestions}
+
+Below the \textbf{Budget Category} field, the form offers buttons with the most probable
+categories for the entered bill. These suggestions are learned from previously recorded bills
+on the device, including words from the description, the selected account and the amount
+range. Selecting a suggestion with a single tap will apply the category. The more bills that
+are recorded, the more precise the suggestions will become.
+
+
+\subsubsection{Bills in Another Currency}
+
+If the currency of a bill differs from that of the account, budget category or default
+currency, an additional block is shown on the form for each such pair.
+
+\begin{description}
+  \item[Conversion] -- the exchange rate between the two currencies;
+  \item[Taken in \dots] -- the resulting amount in the other currency.
+\end{description}
+
+\noindent Both fields are linked, so changing one recalculates the other and vice versa. This
+enables you to enter the exact amount charged by the bank (including fees), ensuring that
+the account balance matches the statement. The rate is preset using known exchange rates and
+can be saved for later use.
+
+For example, if you pay for a dinner costing 45.00 EUR with a card in USD at a rate of
+1.0870, 48.92 USD will be taken from your account. If the statement shows 49.30 USD, enter
+this amount into the Taken in USD field and the rate will be adjusted automatically.
+
+
+\subsubsection{Splitting a Bill}
+
+One receipt often covers several categories, such as groceries, household goods and gifts
+bought in one supermarket. Rather than recording three bills, record one for the total amount
+and split it afterwards (\cref{img:split-bill}).
+
+\begin{enumerate}
+  \item open the bill and select \textbf{Split the Bill};
+  \item enter the amount of the part, its description, and its budget category;
+  \item save -- the part becomes a separate bill, and the amount of the original bill is
+  reduced accordingly.
+\end{enumerate}
+
+\noindent The parts retain the account and date of the original bill, and their titles are
+prefixed with a description of the original (e.g. 'Supermarket: Gift'), making the
+relationship visible in any list. Repeat this process for each additional part; anything that
+remains will stay in the original category. The total charged to the account does not change.
+
+
+\subsection{Recording an Income}
+\markboth{Processing}{Recording an Income}
+
+The \textbf{Income} tab is a shorter version of the expense form:
+
+\begin{description}
+  \item[Account] (required) -- where the money is received.
+  \item[Currency] and \textbf{Amount of Income} (required).
+  \item[Description] -- the source of the income: salary, freelance, interest, refund.
+  \item[Date] -- when the money was received.
+\end{description}
+
+\noindent As with bills, an income in a currency other than the currency of the account shows
+the \textbf{Conversion} block to define the exact amount credited.
+
+Incomes have no budget category, but they influence budgets with \emph{relative} limits (see
+\cref{budget:limit}): each new income within the current interval increases the amount
+available in such categories.
+
+
+\subsubsection{Refunds}
+
+A returned purchase can be recorded in two ways:
+
+\begin{itemize}
+  \item \textbf{edit or delete the original bill} -- if the refund arrived in the same period
+  and the purchase should disappear from the statistics, as if it had never happened;
+  \item \textbf{record an income} -- if the original bill belongs to a closed period, or a
+  partial refund (cashback) should be visible as a separate operation.
+\end{itemize}
+
+
+\subsection{Recording a Transfer}
+\markboth{Processing}{Recording a Transfer}
+
+The \textbf{Transfer} tab moves money between two own accounts:
+
+\begin{description}
+  \item[From Account] and \textbf{To Account} (required) -- the source and the destination.
+  \item[Currency] and \textbf{Amount of Transfer} (required).
+  \item[Description] -- an optional note.
+  \item[Date] -- when the transfer took place.
+\end{description}
+
+\noindent Transfers between accounts in different currencies are commonplace, such as buying
+foreign currency or paying a credit card bill in a different currency. The Conversion block
+determines the exchange rate and the amount credited to the destination account, ensuring
+that both balances remain accurate.
+
+\newpage
+\noindent Typical transfers:
+
+\begin{itemize}
+  \item withdrawing cash: \q{Bank/Debit} $\rightarrow$ \q{Cash};
+  \item paying off a credit card: \q{Bank/Debit} $\rightarrow$ \q{Bank/Credit Card};
+  \item saving: \q{Bank/Debit} $\rightarrow$ \q{Deposit};
+  \item exchanging currency: \q{Cash/EUR} $\rightarrow$ \q{Cash/USD}.
+\end{itemize}
+
+\noindent A loan payment usually consists of two parts. The repayment of the principal is
+transferred to the 'Credit' account, which reduces the debt. The interest is a bill
+representing the actual cost of borrowing.
+
+
+\subsection{Browsing Transactions}
+\markboth{Processing}{Browsing Transactions}
+
+\subsubsection{Lists}
+
+Each type has its own page:
+
+\begin{description}
+  \item[Bills] -- the header shows the total expenses of the current month (following the
+  \textbf{Start of Month} setting), and the list below is grouped by days, with the date of
+  each day pinned on top while scrolling.
+  \item[Invoices] -- all incomes.
+  \item[Transfers] -- all movements between accounts.
+\end{description}
+
+\noindent The lists load progressively while you scroll, so even years of history open
+instantly. Selecting a row displays its details. On touch screens, swiping a row provides
+quick access to editing and deleting options (\cref{img:bill-view}).
+
+\img{img/ch03-s01-bill__view}{Bills Overview}{img:bill-view}
+
+Transactions can also be accessed from related entities: the details of an account list its
+bills, income and transfers, while the details of a budget category list its bills. Selecting
+a month in the \textbf{Summary} tab of a category (or in the categories table on the
+\textbf{Metrics} page, \cref{img:bill-metrics}) opens all the bills for that category for
+that month.
+
+\img{img/ch03-s01-bill__metrics}{Metrics Overview}{img:bill-metrics}
+
+
+\subsubsection{Search}
+
+The \textbf{Search} action on the pages of bills, invoices, and transfers opens a filter with
+the following criteria:
+
+\begin{itemize}
+  \item \textbf{Description} -- a part of the text;
+  \item \textbf{Account} and \textbf{Account Type} -- e.g. all payments by credit cards;
+  \item \textbf{Budget Category} -- for bills only;
+  \item \textbf{Currency};
+  \item \textbf{From Amount} and \textbf{To Amount} -- a range of amounts;
+  \item \textbf{Date Range}.
+\end{itemize}
+
+\noindent The criteria can be combined. For example, you could search for all bills over £100
+in the 'Leisure' category that were paid by credit card last summer.
+
+
+\subsubsection{Editing and Deleting}
+
+Any field in a transaction can be edited later via the \textbf{Edit} button. The balances of
+the affected accounts and the amounts spent in the affected categories are automatically
+recalculated -- including when the account, category, amount or date has been changed.
+Internally, changes are stored as new log entries rather than overwrites, which keeps the
+history consistent.
+
+\textbf{Delete}: (confirmed by a dialogue box) removes a transaction that has been entered
+incorrectly and reverses its effect on balances and budgets. Bear in mind that the balance
+date of accounts is updated (see \cref{account:balance}): transactions dated before this date
+do not affect the balance, either when they are created or edited or deleted.
+
+
+\subsection{Recurring Payments}
+\markboth{Processing}{Recurring Payments}
+
+Rent, subscriptions, salary, a monthly transfer to savings -- many transactions repeat on a
+schedule. Instead of entering them every time, define them once on the \textbf{Automation}
+page, in the \textbf{Recurring Payments} tab (see \cref{img:recurring-payments}):
+
+\begin{description}
+  \item[Type] -- a bill, an income, or a transfer;
+  \item[Payment Interval] -- weekly, monthly, yearly, or
+  after some days (for any custom period);
+  \item The usual fields of the selected type: account(s), amount, currency, description,
+  and budget category.
+\end{description}
+
+\noindent When the application is opened, any payments that have become due since the last
+launch are created automatically as ordinary transactions, with their scheduled dates. These
+can be edited or deleted as required, for example if the electricity bill is higher than
+usual. On Android, recurring payments can also be viewed via a widget on the home screen.
+
+
+\subsection{Importing Transactions}
+\markboth{Processing}{Importing Transactions}
+
+There is no need to enter bills and incomes individually. Most banks and financial
+applications export statements in one of the formats supported by Fingrom.
+
+\begin{itemize}
+  \item \q{CSV} -- a plain table, where the columns are mapped to the fields of a transaction
+  during the import;
+  \item \q{QIF} -- Quicken Interchange Format;
+  \item \q{OFX} -- Open Financial Exchange.
+\end{itemize}
+
+\noindent The import is available on the \textbf{Import / Export} tab of the
+\textbf{Settings} page. Combined with the \textbf{Balance Date Update} of accounts
+(see \cref{account:balance}), it allows bringing years of history without breaking the
+current balances.
+
+The procedure is the same for all formats:
+
+\begin{enumerate}
+  \item press \textbf{Pick .csv-file}, \textbf{Pick .qif-file}, or \textbf{Pick .ofx-file}
+  and select the file;
+  \item check the mapping of the columns and the \textbf{Date Format};
+  \item define the defaults: the account, the budget category, the currency, and the type for
+  the lines that do not specify them;
+  \item press \textbf{Parse File} and wait for the confirmation that the process is finished.
+\end{enumerate}
+
+\noindent Only bills and incomes are imported; transfers between your own accounts must be
+recorded manually. Any accounts or budget categories mentioned in the file that do not yet
+exist are created automatically -- review these after the import and adjust their types,
+currencies and limits.
+
+\subsubsection{CSV}
+
+A \q{CSV} (comma-separated values) file is a plain table. The first line contains the names
+of the columns and each subsequent line represents a transaction. Most banks and spreadsheet
+applications can export in this format.
+
+\begin{lstlisting}[caption=Sample CSV File, label=code:import-csv]
+Date,Account,Category,Description,Amount,Currency,Type
+10/1/2026 09:15,Bank/Debit,Food/Groceries,Supermarket,54.20,EUR,Bill
+10/1/2026 18:40,Cash,Food/Dining Out,Coffee,3.50,EUR,Bill
+10/5/2026 08:00,Bank/Debit,,Salary,2000.00,EUR,Invoice
+10/7/2026 12:30,Bank/Credit Card,Leisure/Hobbies,Books,24.90,EUR,Bill
+\end{lstlisting}
+
+\noindent As the names and order of columns differ between banks, each one must be mapped to
+a transaction field (the \textbf{Ignore} option skips a column):
+
+\begin{center}
+\small
+\begin{tabularx}{\textwidth}{|l|X|}
+  \hline
+  \textbf{Column} & \textbf{Mapping} \\
+  \hline
+  Date & Bill: Billed At \\
+  Account & Account: Title \\
+  Category & Budget Category: Title \\
+  Description & Bill: Description \\
+  Amount & Bill: Amount of Expenses \\
+  Currency & Bill: Currency \\
+  Type & Bill: Amount Type (Bill, Invoice) \\
+  \hline
+\end{tabularx}
+\end{center}
+
+\noindent A few rules to keep in mind:
+
+\begin{itemize}
+  \item \textbf{Type} -- a line with the value \q{Invoice} (as it is named in the language of
+  the interface) is imported as an income, any other value as a bill. If the file has no such
+  column, the default type is applied to all lines.
+  \item \textbf{Amount} -- a positive number with a dot as the decimal separator.
+  \item \textbf{Date Format} -- detected automatically from the values of the date column
+  (\q{M/d/yyyy HH:mm} in the sample above), and can be corrected manually, e.g.
+  \q{dd.MM.yyyy} for \q{31.10.2026}.
+  \item Empty cells (like the category of the salary above) are filled with the defaults.
+\end{itemize}
+
+\subsubsection{QIF}
+
+\q{QIF} (Quicken Interchange Format) is a text format, in which every line starts with a
+one-letter code, and every transaction ends with the \q{\^{}} symbol:
+
+\begin{lstlisting}[caption=Sample QIF File, label=code:import-qif]
+!Type:Bank
+D10/1/2026
+T-54.20
+PSupermarket
+LFood/Groceries
+N1001
+^
+D10/5/2026
+T2000.00
+PSalary
+N1002
+^
+\end{lstlisting}
+
+\noindent The codes are mapped automatically:
+
+\begin{center}
+\small
+\begin{tabularx}{\textwidth}{|l|X|}
+  \hline
+  \textbf{Code} & \textbf{Meaning} \\
+  \hline
+  \q{D} & Date of the transaction \\
+  \q{T} & Total amount: negative for a bill, positive for an income \\
+  \q{P} & Payee, imported as the description \\
+  \q{L} & Category, imported as the budget category \\
+  \q{N} & Number, imported as the unique identifier of the transaction \\
+  \hline
+\end{tabularx}
+\end{center}
+
+\noindent Other codes (e.g. \q{!Type} in the header, or \q{M} for a memo) are ignored. Since
+\q{QIF} does not specify an account, all transactions are imported into the default account.
+
+\subsubsection{OFX}
+
+\q{OFX} (Open Financial Exchange) is a format used by many banks for downloadable statements.
+Every transaction is enclosed in a \q{<STMTTRN>} block:
+
+\begin{lstlisting}[language=xml, caption=Sample OFX File, label=code:import-ofx]
+OFXHEADER:100
+DATA:OFXSGML
+VERSION:102
+
+<OFX>
+<BANKMSGSRSV1><STMTTRNRS><STMTRS>
+<CURDEF>EUR
+<BANKTRANLIST>
+<STMTTRN>
+<TRNTYPE>DEBIT
+<DTPOSTED>20261001091500
+<TRNAMT>-54.20
+<FITID>2026100101
+<NAME>Supermarket
+</STMTTRN>
+<STMTTRN>
+<TRNTYPE>CREDIT
+<DTPOSTED>20261005080000
+<TRNAMT>2000.00
+<FITID>2026100501
+<NAME>Salary
+</STMTTRN>
+</BANKTRANLIST>
+</STMTRS></STMTTRNRS></BANKMSGSRSV1>
+</OFX>
+\end{lstlisting}
+
+\noindent The following elements are read from each block:
+
+\begin{center}
+\small
+\begin{tabularx}{\textwidth}{|l|X|}
+  \hline
+  \textbf{Element} & \textbf{Meaning} \\
+  \hline
+  \q{DTPOSTED} & Date and time in the form \q{YYYYMMDDhhmmss} \\
+  \q{TRNAMT} & Amount: negative for a bill, positive for an income \\
+  \q{NAME} & Description \\
+  \q{FITID} & Unique identifier of the transaction \\
+  \hline
+\end{tabularx}
+\end{center}
+
+\noindent Both variants of the format are supported: the older, SGML-based format, where
+closing tags of elements are optional, and the newer, XML-based format. As with QIF files,
+OFX files do not carry accounts or categories in a form usable by Fingrom, so the defaults
+are applied: the account, budget category and currency selected before parsing.
+
+
+\subsection{Practical Tips}
+\markboth{Processing}{Practical Tips}
+
+\textbf{Record right away.} A bill entered at the cash desk takes seconds; a bill
+reconstructed at the end of the week is often forgotten or approximated.
+
+\textbf{Write descriptions consistently.} \q{Supermarket}, not \q{supermarket}, \q{SM}, or
+\q{groceries at the corner} -- consistent descriptions make search and category suggestions
+far more accurate.
+
+\textbf{Use transfers for own money.} Cash withdrawals, card repayments, and savings are
+transfers, never bills and incomes.
+
+\textbf{Enter the amount actually charged.} For purchases in a foreign currency, adjust the
+\textbf{Taken in \dots} amount to the bank statement, including fees.
+
+\textbf{Split instead of approximating.} One receipt with several categories is one bill
+split into parts, not a single bill in the \q{most important} category.
+
+\textbf{Automate the predictable.} Every regular payment defined as recurring is one less
+thing to remember.
