@@ -6,8 +6,9 @@
 
 
 - **Amazon Books**:
-  - Kindle eBook ___
-  - Hardcover ___
+  - Kindle eBook https://www.amazon.com/dp/B0GX2YSLKT
+  - Paperback ___
+  - Hardcover https://www.amazon.com/dp/B0HNHJG7HS
 - **Google Books**
   - __
 - **Apple Books**

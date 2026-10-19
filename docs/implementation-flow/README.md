@@ -11,7 +11,7 @@ Scheduled to 1st November 2023
   - Paperback (ASIN: B0CLP5JQJC): https://www.amazon.com/Zero-Market-Flutter-Desktop-Distribution/dp/B0CLP5JQJC/
   - Hardcover (ASIN: B0CLNT8GPC): https://www.amazon.com/Zero-Market-Flutter-Desktop-Distribution/dp/B0CLNT8GPC/
 - **Google Books**
-  - https://play.google.com/store/books/details?id=FkqIEQAAQBAJ&pli=1
+  - https://play.google.com/store/books/details?id=FkqIEQAAQBAJ&pli=1 (free)
 - **Apple Books**
   - https://books.apple.com/us/book/from-zero-to-market-with-flutter/id6470395206
 - **draft2digital**
@@ -35,8 +35,8 @@ This book is diving deep into the core mechanisms of Flutter to implement a plat
 **NOTE:** To compile the project
 1. Install [LaTeX](https://miktex.org/download)
 2. Run command (from current directory):
-  - PDF: `pdflatex -halt-on-error -aux-directory=build -output-directory=build index.tex` 
-  - EPUB: `pandoc --from=latex index.tex --to=epub -o index.epub`
+  - PDF: `pdflatex -halt-on-error -aux-directory=build -output-directory=build index.tex`
+  - EPUB: `pandoc --from=latex index.tex --to=epub3 --mathml --lua-filter=_lib/epub.lua -M lang=en-US -o build/index.epub`
     - https://gist.github.com/lyskouski/9cc9abbc2dbf1589af4f26133a517d4c
   - MOBI: `tex4ebook -f mobi -l -r 640 index.tex`
   - TXT: `pdftotext -enc ASCII7 -nopgbrk -layout index.pdf`
@@ -50,7 +50,7 @@ Any contributions you make to this effort **are of course greatly appreciated** 
 by adding your name into "Contributors"-section as a gratitude).
 
 However, if you choose to contribute content (not just typo corrections) to this repo, you agree that you're giving
-me a non-exclusive license to use that content for the book, as I (and my possible publisher) deem appropriate. 
+me a non-exclusive license to use that content for the book, as I (and my possible publisher) deem appropriate.
 You probably guessed that already, but I just wanted to be extra clear on that.
 
 ## Support (Sponsorship)
