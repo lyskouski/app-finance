@@ -1,6 +1,6 @@
 [ [English](./README.md) | [Deutsch](./README_de.md) | 简体中文 | [...](./assets/l10n/about_zh.md) ]
 
-# <img src="./docs/design-flow/logo/logo.svg" alt="Fingrom Logo" width="28" /> 财运: 财务会计应用
+# <img src="./docs/design-flow/logo/logo.svg" alt="Fingrom Logo" width="28" /> 财运：财务会计应用
 [![许可证 : CC BY-NC-ND 4.0](https://img.shields.io/badge/License-CC_BY--NC--ND_4.0-lightgrey.svg)](https://creativecommons.org/licenses/by-nc-nd/4.0/)
 [![检查状态](https://github.com/lyskouski/app-finance/actions/workflows/push_to_main.yml/badge.svg?branch=main)](https://github.com/lyskouski/app-finance/actions/workflows/push_to_main.yml)
 [![构建状态](https://github.com/lyskouski/app-finance/actions/workflows/build.yml/badge.svg)](https://github.com/lyskouski/app-finance/actions/workflows/build.yml)
