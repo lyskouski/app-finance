@@ -1,6 +1,6 @@
 [ English | [Deutsch](./README_de.md) | [简体中文](./README_zh-CN.md) | [...](./assets/l10n/about_en.md) ]
 
-# ![Fingrom Logo](./docs/design-flow/logo/main.svg) Financial Accounting Application
+# <img src="./docs/design-flow/logo/logo.svg" alt="Fingrom Logo" width="28" /> Fingrom: Financial Accounting Application
 [![License: CC BY-NC-ND 4.0](https://img.shields.io/badge/License-CC_BY--NC--ND_4.0-lightgrey.svg)](https://creativecommons.org/licenses/by-nc-nd/4.0/)
 [![Check Status](https://github.com/lyskouski/app-finance/actions/workflows/push_to_main.yml/badge.svg?branch=main)](https://github.com/lyskouski/app-finance/actions/workflows/push_to_main.yml)
 [![Build Status](https://github.com/lyskouski/app-finance/actions/workflows/build.yml/badge.svg)](https://github.com/lyskouski/app-finance/actions/workflows/build.yml)
