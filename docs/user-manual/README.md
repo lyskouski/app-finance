@@ -12,7 +12,7 @@
 - **Google Books**
   - __
 - **Apple Books**
-  - https://books.apple.com/us/book/id6824298183
+  - https://books.apple.com/us/book/fingrom-help-manual/id6824298183
 
 
 ## About
