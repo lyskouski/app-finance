@@ -7,10 +7,10 @@
 
 - **Amazon Books**:
   - Kindle eBook https://www.amazon.com/dp/B0GX2YSLKT
-  - Paperback ___
+  - Paperback https://www.amazon.com/dp/B0HNS7R82T
   - Hardcover https://www.amazon.com/dp/B0HNHJG7HS
 - **Google Books**
-  - __
+  - https://play.google.com/store/books/details?id=SBkdEgAAQBAJ
 - **Apple Books**
   - https://books.apple.com/us/book/fingrom-help-manual/id6824298183
 
