@@ -52,32 +52,35 @@ abstract class AbstractPageState<T extends StatefulWidget> extends State<T> {
     return Container(
       width: double.infinity,
       color: context.colorScheme.surface,
-      child: Column(
-        children: [
-          Transform.translate(
-            offset: const Offset(-10, -24),
-            child: Align(
-              alignment: Alignment.topRight,
-              child: FloatingActionButton(
-                heroTag: 'helper',
-                mini: true,
-                tooltip: AppLocale.labels.closeTooltip,
-                onPressed: () => Navigator.pop(context),
-                child: Icon(
-                  Icons.close,
-                  color: Colors.white70,
-                  semanticLabel: AppLocale.labels.closeTooltip,
+      child: SafeArea(
+        top: false,
+        child: Column(
+          children: [
+            Transform.translate(
+              offset: const Offset(-10, -24),
+              child: Align(
+                alignment: Alignment.topRight,
+                child: FloatingActionButton(
+                  heroTag: 'helper',
+                  mini: true,
+                  tooltip: AppLocale.labels.closeTooltip,
+                  onPressed: () => Navigator.pop(context),
+                  child: Icon(
+                    Icons.close,
+                    color: Colors.white70,
+                    semanticLabel: AppLocale.labels.closeTooltip,
+                  ),
                 ),
               ),
             ),
-          ),
-          Expanded(
-            child: MarkdownBuilderWrapper(
-              url: './assets/l10n/${type}_$locale.md',
-              builder: builder,
+            Expanded(
+              child: MarkdownBuilderWrapper(
+                url: './assets/l10n/${type}_$locale.md',
+                builder: builder,
+              ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }
