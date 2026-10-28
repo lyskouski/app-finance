@@ -14,7 +14,7 @@
 - Competitor data comes from vendor pages, app store listings, independent reviews and 2025–2026 roundups. Prices
   change often, and many roundups are written by competing vendors, so treat prices as approximate.
 - User demand comes from: the top-voted feature requests in public GitHub trackers (Actual Budget, Cashew, Ivy Wallet),
-  open Fingrom issues, published surveys (Forbes Advisor 2026, Academy Bank 2025) and analyses of negative reviews.
+  open Fingrom issues, 219 user comments across the 810 apps under AlternativeTo's personal-finance tag (§8), published surveys (Forbes Advisor 2026, Academy Bank 2025) and analyses of negative reviews.
   Sources are listed at the end.
 
 ---
@@ -228,6 +228,128 @@ Ranked from the strongest signals across surveys, review analyses and issue trac
 
 ---
 
+## 8. AlternativeTo Deep Dive: the "personal-finance" tag (pages 1–33)
+
+> Retrieved 2026-10-28 from [alternativeto.net/browse/all/?tag=personal-finance](https://alternativeto.net/browse/all/?tag=personal-finance).
+
+**Method.** All 33 listing pages were crawled: 810 apps, not counting sponsored entries such as Quicken and PrivacyNotes.
+The "about" page was opened for ~200 apps: every app on pages 1–3, every app with ≥3 likes on pages 4–8, ≥2 likes on
+pages 9–15, and spot checks on pages 16–33. From those pages, **219 user comments** were collected and tagged by sentiment
+and by what the user liked or disliked.
+
+Caveats:
+- The quotes come through a web-to-text extractor, so they may be slightly paraphrased.
+- Many short 5★ reviews come from new accounts that AlternativeTo excludes from ratings. A few are self-promotion by the
+  app's own developer and were discounted.
+- Apps with 1 like were mostly not opened. These pages contain almost no comments.
+
+### 8.1 Market landscape in numbers
+
+| Metric | Value | Takeaway for Fingrom |
+| ------ | ----- | -------------------- |
+| Apps under the tag | 810 | A crowded category, but mostly long tail |
+| Apps with ≤2 likes | 668 (82%); 387 have none | Only ~45 apps have more than 10 likes. With **11 likes, Fingrom is ~#46 by likes**, inside the visible head of the list |
+| Comments by page | Pages 1–3: ~110; pages 4–15: ~110; pages 16–33: **1** | User attention sits on the first pages. Reviews and likes push an app up |
+| Price model | Freemium 43% · Free 35% · Paid 22% | Free with no paywall is common in the list, but rare among apps that also cover many platforms |
+| Open source (OSI license listed) | 117 (14%) | Most liked apps in the head are OSS: GnuCash, HomeBank, MMEX, Cashew, KMyMoney, Actual, Firefly |
+| Platform coverage | Web/self-hosted only 39% · mobile only 28% · desktop only 12% · **mobile + desktop + web: 23 apps (3%)** | Fingrom's full coverage is a rare differentiator |
+| Most common feature tags (of 202 opened apps) | Ad-free 90 · Dark mode 61 · Privacy focused 60 · Works offline 52 · Cash-flow analysis 46 · Multi-currency 42 · Recurring billing 41 · No registration 39 · Bank integration 37 · Cloud sync 32 | Privacy, offline use and ad-free have become the standard pitch. They are no longer a differentiator on their own |
+| Themes in app descriptions (all 810) | Investments / net worth 18% · Privacy / no bank link 15% · Splitting / shared 14% · Subscriptions / bills 13% · Offline / local 8% · AI 6% · Debt 6% · Forecasting 5% · Receipt OCR 3% | New entrants on pages 16–33 cluster on: privacy (no bank login, import statements), splitting, subscription tracking, forecasting and AI categorization |
+
+**Most-liked apps (head of the category)**
+
+| Likes | App | Rating (n) | Model | License | What users praise most (from comments) |
+| ----: | --- | :--------: | ----- | ------- | -------------------------------------- |
+| 407 | GnuCash | 3.6 (16) | Free | GPL | Double-entry accuracy, OFX import with category suggestions. *Disliked:* clunky UI, no mobile/sync, week forced to start on Sunday |
+| 145 | HomeBank | 3.5 (8) | Free | GPL | Simple, neat UI, dark theme, split transactions. *Disliked:* no bulk edit, no undo, CSV import without a column mapper |
+| 126 | YNAB | — | Paid | Prop. | Sync, ease of use, bulk recategorize/rename. *Disliked:* limited reports |
+| 118 | CountAbout | 4.0 (3) | Paid | Prop. | Easy setup, editable categories, Quicken import, Excel export, support. *Disliked:* no forecasting |
+| 96 | MoneyManager Ex | 3.6 (7) | Free | GPL | Easy, CSV bank import, crypto/stock tracking, Syncthing sync. *Disliked:* dropped Android, Linux packaging, lost data on import |
+| 90 | Cashew | **4.7 (14)** | Freemium | GPL | Modern Material You UI, "all tools work together", clean charts, Google Sheets/CSV, subscriptions, offline. *Disliked:* bill splitter can't record who paid |
+| 47 | KMyMoney | 4.0 (3) | Free | GPL | Automatic payee creation, regex matching, bulk categorization, configurable dashboard, encryption |
+| 39 | Buxfer | — | Paid | Prop. | Fast bug-fix support. *Disliked:* data loss, outages, refund issues |
+| 38 | Actual Budget | 4.0 (5) | Free | MIT | Local-first, offline, clean design, sync, SimpleFIN. *Disliked:* no native mobile, CSV import without auto-categorization |
+| 36 | Firefly III | 3.2 (8) | Free | AGPL | Feature-rich, private, PWA. *Disliked:* self-hosting skill needed, no sub-categories, budgets ignore refunds |
+| 35 | Splitwise | 4.6 (7) | Freemium | Prop. | Trips, uneven splits, PayPal, reminders. *Disliked:* free tier cut back |
+| 17 | Ivy Wallet | **4.8 (4)** | Freemium | GPL | "Best open source expense manager". *Disliked:* unmaintained, 2 embedded trackers (Firebase) |
+
+### 8.2 What users like most (from 219 comments)
+
+Sentiment: 142 positive · 41 negative · 36 mixed. The table below counts mentions per theme. A comment can count toward
+more than one theme.
+
+| # | Praised aspect | ~Mentions | Representative quotes / apps |
+| - | -------------- | :-------: | ---------------------------- |
+| 1 | **Ease of use, simplicity, quick start** | 49 | "Sweet and minimalistic. No menus to click-through to add an expense" (Buckwheat). "intuitive and simple for a senior citizen like me" (CountAbout). "more user-friendly than GnuCash" (Denaro, Grisbi) |
+| 2 | **Import, sync, migration** | 32 | "Easy to download Quicken data" (CountAbout). "Importing bank transactions often suggests the right categories" (GnuCash). Sure + SimpleFIN. Cashew's Google Sheets. MMEX's Syncthing |
+| 3 | **Modern, clean UI** | 31 | "fully featured modern Material You design" (Cashew). "best looking financial software for the Mac" (Banktivity) |
+| 4 | **Charts, reports, insight and projections** | 18 | "Seeing your expenses projected for the year is the difference maker" (Neontra). "mainly its reports" (Moneydance). Overdraft warnings (Emma) |
+| 5 | **Fast entry** | 17 | Voice "say and save" (Alloc8). A daily allowance from just "an amount and a date" (Buckwheat). "blitzingly fast" (Moneydance) |
+| 6 | **Power and accuracy** | 16 | Double-entry, refunds, splits (Eqonomize!, GnuCash). Regex payee matching (KMyMoney) |
+| 7 | **Free, no ads, no subscription** | 15 | "It is actually completely free" (Oinkoin). "No ads, most features are free. Registration is not mandatory" (Splital). "without worrying about monthly subscription fee" (Netfiscus) |
+| 8 | **Responsive developer / active development** | 15 | "replied within minutes and fixed the issues" (Buxfer). "Development is active from 2006 to the present day" (Eqonomize!) |
+| 9 | **Sharing and splitting** (trips, family, roommates) | 14 | "We use it with my family" (Moneon). "no-login part is THE killer-feature" (Kittysplit) |
+| 10 | **Reminders and subscription overview** | 14 | "The renewal reminders alone are worth it" (Costloop). Bill reminders (Bobby). Automatic subscription detection (Emma) |
+| 11 | **Multi-currency, investments, everything in one place** | 14 | "handles multiple currencies without breaking" (ECONOXI). Portfolio Performance, Capitally. A USD-only app was criticized (OneBudget) |
+| 12 | **Cross-platform** | 13 | "It works on every platform. How wonderful!" (Cashew). Linux support (Denaro, Moneyspire). Android↔PC sync (MoneyMe) |
+| 13 | **Privacy, local data, no login** | 12 | "Your data stays on your computer" (KMyMoney). "I do not want to give my bank data to third-party apps" (VestFin, Ashampoo) |
+| 14 | **Attachments on records** | 2 | "attach one or more files to any record… really useful!" (Skrooge, Eqonomize!) |
+
+**Top complaints (what makes users leave)**
+
+| Complaint | ~Mentions | Examples |
+| --------- | :-------: | -------- |
+| Abandoned, unreliable or poor support | 16 | Ivy "no longer maintained", Buxfer data loss, Pibi "unfinished, abandoned", Quicken "bug-ridden" |
+| Hard setup, learning curve, accounting knowledge needed | 13 | Firefly III (Docker, database), GnuCash and MMEX (bookkeeping), Portfolio Performance |
+| No mobile app, no sync, missing platforms | 13 | GnuCash, Actual, Grisbi, MMEX (Android dropped), MoneyWiz (Apple only) |
+| Missing features | 11 | No forecasting (CountAbout), no investments (HomeBank), no sub-categories (Firefly), no 4-weekly budget (Moneydance), fixed Sunday week start (GnuCash), no security in free tier (Toshl) |
+| Import and editing friction | 10 | One-file-at-a-time QIF, no bulk edit, no undo, many clicks to categorize, CSV without auto-categorization |
+| Limited bank coverage, distrust of third-party aggregators | 7 | Toshl/Kresus (bank coverage limited by country), PocketSmith (Yodlee), Ashampoo |
+| Paywall, ads, billing | 7 | Splitwise free tier cut back, ads added to Splitser, PocketSmith surprise renewal, Financier sync costs extra |
+| Trust: trackers, license, terms of service | 4 | Ivy (Firebase trackers), **Fingrom (license)**, MonkeyPeanuts (data-liability waiver) |
+
+### 8.3 Implications for Fingrom
+
+**Where Fingrom already answers the top praise and complaints:** free with no ads, cross-platform (only 3% of the
+category), offline and private, no registration, multi-currency and crypto, forecasting (CountAbout users miss it), free
+TOTP and biometrics (Toshl users miss these on the free tier), custom start of week and month (fixes GnuCash's Sunday-only
+week and suits payday budgeting like Emma), CSV import with column mapping (HomeBank lacks it), and P2P sync without
+self-hosting (Firefly's #1 barrier).
+
+**Gaps confirmed by AlternativeTo comments** (these add evidence to §5):
+
+| Gap | AlternativeTo evidence | Maps to |
+| --- | ---------------------- | ------- |
+| Payees, regex rules, auto-categorization on import | KMyMoney's most-praised feature. Actual and GnuCash comments ask for categorization on import | §5 #2, #3 |
+| Bulk edit, multi-select, undo | HomeBank and KMyMoney complaints ("only edit one transaction at a time", "no undo") | **New**: add to P2 |
+| Attachments on transactions | Skrooge and Eqonomize! praise | §5 #4 |
+| Reminders for bills and renewals; a subscription view | Costloop, Bobby, Emma, Splitwise | §5 #5, #14 |
+| Split with "who paid" | Cashew's only negative review, Splitwise's popularity | §5 #11 |
+| Investment holdings | HomeBank criticism. Portfolio Performance, Capitally and Wealthfolio (35 likes) praise | §5 #15 |
+| Daily allowance ("safe to spend per day") | Buckwheat's core praise | §5 #18 |
+| Voice or quick entry | Alloc8 "say and save" | §5 #13 |
+| Flexible budget periods (4-weekly, biweekly) | Moneydance complaint | **New**: extend the custom-period setting |
+| Visible maintenance and fast support | The #1 complaint category. Ivy and Cashew users are looking for a maintained successor | Positioning |
+
+**Listing and reputation actions (low effort, high impact)**
+
+1. **Get reviews.** Fingrom has 11 likes but **zero positive reviews**. Its only two comments are negative and sit at
+   the top of the page. Apps with 4–14 reviews (Cashew 4.7, Ivy 4.8) dominate social proof. Add an in-app "Rate us on
+   AlternativeTo" link (e.g. in About or after a milestone) and ask existing users on GitHub/Discord.
+2. **Fix the license perception.** The top comment says "This application is not open source". Either relabel the
+   listing as *source-available / freeware* or move to an OSI license (see §4 perception risks, F-Droid #208).
+   Answer the comment with a factual reply.
+3. **Complete the feature tags.** The listing tags already include privacy, offline, E2E encryption and multi-currency.
+   Missing tags: *Multiple languages*, *Keyboard shortcuts*, *Biometric / Two-factor authentication*, *Budgeting*,
+   *Forecasting*, *Split bills*, *Peer-to-peer sync*, *Home-screen widget*, *Accessibility*, *Charts / Data
+   visualization*. Users filter the list by these tags.
+4. **Lead the description with ease of use.** Ease of use is the #1 praised aspect (49 mentions), well ahead of privacy
+   (12). Keep privacy, but open with simplicity and fast entry: "simple, free, every platform, no account".
+5. **Register Fingrom as an alternative to the apps people are leaving:** Ivy Wallet (unmaintained), Cashew, Mint,
+   MoneyManager Ex (dropped Android), Toshl, Wallet, Money Lover, Monefy.
+
+---
+
 ## Sources
 
 - Roundups and pricing: [Penny Hoarder: Best budgeting apps 2026](https://www.thepennyhoarder.com/budgeting/best-budgeting-apps/),
@@ -255,3 +377,7 @@ Ranked from the strongest signals across surveys, review analyses and issue trac
   [jameskokoska/Cashew](https://github.com/jameskokoska/Cashew/issues?q=sort%3Areactions-%2B1-desc),
   [Ivy-Apps/ivy-wallet](https://github.com/Ivy-Apps/ivy-wallet/issues?q=sort%3Areactions-%2B1-desc),
   [lyskouski/app-finance](https://github.com/lyskouski/app-finance/issues)
+- AlternativeTo crawl (2026-10-28): [personal-finance tag, pages 1–33](https://alternativeto.net/browse/all/?tag=personal-finance),
+  app "about" pages and user comments, e.g. [GnuCash](https://alternativeto.net/software/gnucash/about/),
+  [Cashew](https://alternativeto.net/software/cashew--expense-budget-tracker/about/),
+  [Fingrom](https://alternativeto.net/software/fingrom/about/)
