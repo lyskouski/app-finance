@@ -737,6 +737,9 @@ class AppLocalizationsKo extends AppLocalizations {
   String get link => '유니폼 리소스 로케이터(URL)';
 
   @override
+  String get managerHeadline => '관리자';
+
+  @override
   String get meaning => '의미';
 
   @override

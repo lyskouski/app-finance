@@ -738,6 +738,9 @@ class AppLocalizationsPl extends AppLocalizations {
   String get link => 'Jednolity lokalizator zasobów (URL)';
 
   @override
+  String get managerHeadline => 'Menedżer';
+
+  @override
   String get meaning => 'Znaczenie';
 
   @override

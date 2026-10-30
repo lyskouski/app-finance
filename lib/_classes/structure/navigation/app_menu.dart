@@ -90,6 +90,11 @@ class AppMenu {
           route: AppRoute.subscriptionRoute,
         ),
       AppMenuItem(
+        name: AppLocale.labels.managerHeadline,
+        icon: Icons.manage_history,
+        route: AppRoute.managerRoute,
+      ),
+      AppMenuItem(
         name: AppLocale.labels.aboutHeadline,
         icon: Icons.question_answer_outlined,
         route: AppRoute.aboutRoute,

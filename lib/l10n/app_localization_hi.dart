@@ -739,6 +739,9 @@ class AppLocalizationsHi extends AppLocalizations {
   String get link => 'यूनिफ़ॉर्म रिसोर्स लोकेटर (यूआरएल)';
 
   @override
+  String get managerHeadline => 'प्रबंधक';
+
+  @override
   String get meaning => 'अर्थ';
 
   @override

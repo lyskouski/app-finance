@@ -739,6 +739,9 @@ class AppLocalizationsUk extends AppLocalizations {
   String get link => 'Показник інформаційного ресурсу (URL)';
 
   @override
+  String get managerHeadline => 'Менеджер';
+
+  @override
   String get meaning => 'Сенс';
 
   @override

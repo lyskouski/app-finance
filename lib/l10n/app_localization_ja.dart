@@ -737,6 +737,9 @@ class AppLocalizationsJa extends AppLocalizations {
   String get link => 'ユニフォーム・リソース・ロケーター（URL）';
 
   @override
+  String get managerHeadline => 'マネージャー';
+
+  @override
   String get meaning => '意味';
 
   @override

@@ -738,6 +738,9 @@ class AppLocalizationsAr extends AppLocalizations {
   String get link => 'محدد موقع الموارد الموحد (URL)';
 
   @override
+  String get managerHeadline => 'المدير';
+
+  @override
   String get meaning => 'المعنى';
 
   @override

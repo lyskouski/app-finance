@@ -739,6 +739,9 @@ class AppLocalizationsId extends AppLocalizations {
   String get link => 'Uniform Resource Locator (URL)';
 
   @override
+  String get managerHeadline => 'Pengelola';
+
+  @override
   String get meaning => 'Arti';
 
   @override

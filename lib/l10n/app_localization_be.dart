@@ -739,6 +739,9 @@ class AppLocalizationsBe extends AppLocalizations {
   String get link => 'Паказальнік інфармацыйнага рэсурсу (URL)';
 
   @override
+  String get managerHeadline => 'Мэнэджар';
+
+  @override
   String get meaning => 'Сэнс';
 
   @override
@@ -1860,6 +1863,9 @@ class AppLocalizationsBeEu extends AppLocalizationsBe {
 
   @override
   String get link => 'Pakazaĺnik Infarmacyjnaha Resursu (URL)';
+
+  @override
+  String get managerHeadline => 'Menedžar';
 
   @override
   String get meaning => 'Sens';

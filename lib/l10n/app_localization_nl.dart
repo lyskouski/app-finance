@@ -739,6 +739,9 @@ class AppLocalizationsNl extends AppLocalizations {
   String get link => 'Uniform Resource Locator (URL)';
 
   @override
+  String get managerHeadline => 'Beheerder';
+
+  @override
   String get meaning => 'Betekenis';
 
   @override

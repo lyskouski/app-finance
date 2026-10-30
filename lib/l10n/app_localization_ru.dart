@@ -739,6 +739,9 @@ class AppLocalizationsRu extends AppLocalizations {
   String get link => 'Единый указатель ресурса (URL)';
 
   @override
+  String get managerHeadline => 'Менеджер';
+
+  @override
   String get meaning => 'Значение';
 
   @override

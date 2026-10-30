@@ -738,6 +738,9 @@ class AppLocalizationsTr extends AppLocalizations {
   String get link => 'Tekdüzen Kaynak Konum Belirleyici (URL)';
 
   @override
+  String get managerHeadline => 'Yönetici';
+
+  @override
   String get meaning => 'Anlamı';
 
   @override

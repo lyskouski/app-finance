@@ -737,6 +737,9 @@ class AppLocalizationsZh extends AppLocalizations {
   String get link => '统一资源定位符 (URL)';
 
   @override
+  String get managerHeadline => '管理器';
+
+  @override
   String get meaning => '意义';
 
   @override
@@ -1851,6 +1854,9 @@ class AppLocalizationsZhTw extends AppLocalizationsZh {
 
   @override
   String get link => '統一資源定位符 (URL)';
+
+  @override
+  String get managerHeadline => '管理器';
 
   @override
   String get meaning => '意義';

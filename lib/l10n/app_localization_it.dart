@@ -742,6 +742,9 @@ class AppLocalizationsIt extends AppLocalizations {
   String get link => 'Localizzatore uniforme di risorse (URL)';
 
   @override
+  String get managerHeadline => 'Gestore';
+
+  @override
   String get meaning => 'Significato';
 
   @override

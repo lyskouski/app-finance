@@ -21,6 +21,14 @@ class TransactionLog extends AbstractStorage implements InterfaceStorage {
 
   static void saveRaw(String line) => AbstractStorage.saveRaw(line);
 
+  static void rewrite(List<String> lines) {
+    clear();
+    for (final line in lines) {
+      saveRaw(line);
+    }
+    amount = lines.length;
+  }
+
   static void save(dynamic content) {
     String line = content.toString();
     if (EncryptionHandler.doEncrypt()) {

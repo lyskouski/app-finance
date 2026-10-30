@@ -740,6 +740,9 @@ class AppLocalizationsAz extends AppLocalizations {
   String get link => 'Vahid Resurs Lokatoru (URL)';
 
   @override
+  String get managerHeadline => 'Menecer';
+
+  @override
   String get meaning => 'Məna';
 
   @override

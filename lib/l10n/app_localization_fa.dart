@@ -738,6 +738,9 @@ class AppLocalizationsFa extends AppLocalizations {
   String get link => 'منبع یاب یکنواخت (URL)';
 
   @override
+  String get managerHeadline => 'مدیر';
+
+  @override
   String get meaning => 'معنی';
 
   @override

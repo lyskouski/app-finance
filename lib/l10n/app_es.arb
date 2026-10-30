@@ -305,6 +305,7 @@
     "left": "izquierda",
     "lightMode": "Light",
     "link": "Uniform Resource Locator (URL)",
+    "managerHeadline": "Gestor",
     "meaning": "Meaning",
     "metricsHeadline": "Metrics",
     "metricsTooltip": "Métricas",

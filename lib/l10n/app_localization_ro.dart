@@ -740,6 +740,9 @@ class AppLocalizationsRo extends AppLocalizations {
   String get link => 'Localizator uniform de resurse (URL)';
 
   @override
+  String get managerHeadline => 'Manager';
+
+  @override
   String get meaning => 'Înțeles';
 
   @override

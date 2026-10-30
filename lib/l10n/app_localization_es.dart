@@ -740,6 +740,9 @@ class AppLocalizationsEs extends AppLocalizations {
   String get link => 'Uniform Resource Locator (URL)';
 
   @override
+  String get managerHeadline => 'Gestor';
+
+  @override
   String get meaning => 'Meaning';
 
   @override

@@ -42,6 +42,7 @@ abstract class AppRoute {
   static const String invoiceTransferRoute = '/app/finance/invoice-transfer';
   static const String invoiceTransferSearchRoute = '/app/finance/invoice-transfer/search';
   static const String homeRoute = '/app/finance/main';
+  static const String managerRoute = '/app/finance/manager';
   static const String metricsRoute = '/app/finance/metrics';
   static const String metricsSearchRoute = '/app/finance/metrics/search';
   static const String securityRoute = '/app/finance/security';

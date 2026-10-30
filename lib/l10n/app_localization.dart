@@ -1543,6 +1543,12 @@ abstract class AppLocalizations {
   /// **'Uniform Resource Locator (URL)'**
   String get link;
 
+  /// No description provided for @managerHeadline.
+  ///
+  /// In en, this message translates to:
+  /// **'Manager'**
+  String get managerHeadline;
+
   /// No description provided for @meaning.
   ///
   /// In en, this message translates to:

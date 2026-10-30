@@ -738,6 +738,9 @@ class AppLocalizationsCs extends AppLocalizations {
   String get link => 'Jednotný vyhledávač zdrojů (URL)';
 
   @override
+  String get managerHeadline => 'Správce';
+
+  @override
   String get meaning => 'Význam';
 
   @override

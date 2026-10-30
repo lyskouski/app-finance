@@ -743,6 +743,9 @@ class AppLocalizationsUz extends AppLocalizations {
   String get link => 'Yagona Resurs Locator (URL)';
 
   @override
+  String get managerHeadline => 'Menejer';
+
+  @override
   String get meaning => 'Ma\'nosi';
 
   @override

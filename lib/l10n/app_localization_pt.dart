@@ -739,6 +739,9 @@ class AppLocalizationsPt extends AppLocalizations {
   String get link => 'Localizador Uniforme de Recursos (URL)';
 
   @override
+  String get managerHeadline => 'Gestor';
+
+  @override
   String get meaning => 'Significado';
 
   @override
@@ -1864,6 +1867,9 @@ class AppLocalizationsPtBr extends AppLocalizationsPt {
 
   @override
   String get link => 'Localizador uniforme de recursos (URL)';
+
+  @override
+  String get managerHeadline => 'Gerenciador';
 
   @override
   String get meaning => 'Significado';

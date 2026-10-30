@@ -739,6 +739,9 @@ class AppLocalizationsKa extends AppLocalizations {
   String get link => 'რესურსის ერთიანი მაჩვენებელი (URL)';
 
   @override
+  String get managerHeadline => 'მენეჯერი';
+
+  @override
   String get meaning => 'მნიშვნელობა';
 
   @override
