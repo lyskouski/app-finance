@@ -167,36 +167,10 @@ jobs:
           mv ${{ matrix.build_path }}/app-release.aab $GITHUB_WORKSPACE/fingrom_${{ matrix.target }}.aab
 
 # iOS
-      - name: Setup Xcode (iOS/macOS)
+      - uses: maxim-lobanov/setup-xcode@v1
         if: matrix.target == 'iOS' || matrix.target == 'macOS'
-        run: |
-          # List available Xcode versions
-          echo "Available Xcode versions:"
-          ls -la /Applications/ | grep -i xcode
-          # Try to use Xcode 26+ first (prioritize newest)
-          if [ -d "/Applications/Xcode_26.3.app" ]; then
-            echo "Using Xcode 26.3"
-            sudo xcode-select -s /Applications/Xcode_26.3.app/Contents/Developer
-          elif [ -d "/Applications/Xcode_26.2.app" ]; then
-            echo "Using Xcode 26.2"
-            sudo xcode-select -s /Applications/Xcode_26.2.app/Contents/Developer
-          elif [ -d "/Applications/Xcode_26.1.1.app" ]; then
-            echo "Using Xcode 26.1.1"
-            sudo xcode-select -s /Applications/Xcode_26.1.1.app/Contents/Developer
-          elif [ -d "/Applications/Xcode_26.0.1.app" ]; then
-            echo "Using Xcode 26.0.1"
-            sudo xcode-select -s /Applications/Xcode_26.0.1.app/Contents/Developer
-          elif [ -d "/Applications/Xcode_26.0.app" ]; then
-            echo "Using Xcode 26.0"
-            sudo xcode-select -s /Applications/Xcode_26.0.app/Contents/Developer
-          else
-            echo "Warning: No Xcode 26+ found, using default"
-            sudo xcode-select -s /Applications/Xcode.app/Contents/Developer
-          fi
-
-          # Show current Xcode version
-          echo "Selected Xcode version:"
-          xcrun xcodebuild -version
+        with:
+          xcode-version: latest-stable
 
       - name: Import Distribution Certificate
         if: matrix.target == 'iOS'
