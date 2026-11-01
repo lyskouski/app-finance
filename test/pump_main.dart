@@ -26,6 +26,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/annotations.dart';
+import 'package:platform/testing.dart';
 import 'package:provider/provider.dart';
 import 'package:platform/platform.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -40,7 +41,7 @@ import 'pump_main.wrapper.dart';
 class PumpMain {
   static const path = './coverage/data';
   static const FileSystem fs = LocalFileSystem();
-  static const Platform platform = LocalPlatform();
+  static const Platform platform = Platform();
 
   static Future<void> init(WidgetTester tester, [bool isIntegration = false]) async {
     final pumpMain = PumpMain();
@@ -60,7 +61,7 @@ class PumpMain {
 
   static Future<void> _initFont(String name) async {
     try {
-      final root = fs.directory(platform.environment['FLUTTER_ROOT']).path.replaceAll('\\', '/');
+      final root = fs.directory(platform.nativePlatform!.environment['FLUTTER_ROOT']).path.replaceAll('\\', '/');
       final scope = [
         'assets/fonts/$name.ttf',
         'assets/fonts/$name.otf',
