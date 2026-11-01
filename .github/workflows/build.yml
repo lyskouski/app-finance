@@ -260,6 +260,11 @@ jobs:
           flutter config --enable-macos-desktop
           flutter build -v macos --build-name=${{ needs.release.outputs.version }} --build-number=${{ needs.release.outputs.build_number }} --release --no-tree-shake-icons
 
+      - name: Compress macOS Package
+        if: matrix.target == 'macOS'
+        run: ditto -c -k --sequesterRsrc --keepParent Fingrom.app $GITHUB_WORKSPACE/fingrom_${{ matrix.target }}${{ matrix.asset_extension }}
+        working-directory: ${{ matrix.build_path }}
+
       - name: Add the Provisioning Profile
         if: matrix.target == 'macOS'
         env:
@@ -268,11 +273,6 @@ jobs:
           PP_PATH=$RUNNER_TEMP/Fingrom_macOS.provisionprofile
           echo -n "$PROVISIONING_MAC_BASE64" | base64 --decode --output $PP_PATH
           cp $PP_PATH ${{ matrix.build_path }}/Fingrom.app/Contents/embedded.provisionprofile
-
-      - name: Compress macOS Package
-        if: matrix.target == 'macOS'
-        run: ditto -c -k --sequesterRsrc --keepParent Fingrom.app $GITHUB_WORKSPACE/fingrom_${{ matrix.target }}${{ matrix.asset_extension }}
-        working-directory: ${{ matrix.build_path }}
 
       - name: Import macOS Distribution Certificate
         if: matrix.target == 'macOS'
@@ -285,7 +285,7 @@ jobs:
       - name: Sign macOS Package
         if: matrix.target == 'macOS'
         run: |
-          codesign --deep --force -s "8PVKPQ758L" --entitlements $GITHUB_WORKSPACE/macos/Runner/Release.entitlements "Fingrom.app"
+          codesign --deep --force -s "8PVKPQ758L" --entitlements $GITHUB_WORKSPACE/macos/Runner/AppStore.entitlements "Fingrom.app"
         working-directory: ${{ matrix.build_path }}
 
       - name: Import macOS Installer Certificate
