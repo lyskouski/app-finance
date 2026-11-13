@@ -3,6 +3,7 @@
 import 'dart:async';
 import 'package:flutter_test/flutter_test.dart';
 
+import 'pump_main.dart';
 import 'screen_comparator.dart';
 
 // Golden tests will pass if the pixel difference is equal to or below 2.1%
@@ -28,6 +29,10 @@ Future<void> testExecutable(FutureOr<void> Function() testMain) async {
       'but it is of type `${goldenFileComparator.runtimeType}`',
     );
   }
+
+  // Load fonts before any widget tree exists
+  TestWidgetsFlutterBinding.ensureInitialized();
+  await PumpMain.initFonts();
 
   await testMain();
 }
