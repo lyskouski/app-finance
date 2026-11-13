@@ -116,9 +116,10 @@ class ExchangeController extends ValueNotifier<ExchangeMap> {
     double rate = double.tryParse(pair.rate.text) ?? 0.0;
     double val = double.tryParse(targetController.text) ?? 0.0;
     double amount = double.tryParse(pair.sum.text) ?? 0.0;
+    double newAmount = val * rate;
     double newRate = val > 0 ? amount / val : 0.0;
     final decimals = _getDecimals(pair);
-    if (targetController.text != '' && rate.toFixed(decimals).isNotEqual(newRate.toFixed(decimals))) {
+    if (targetController.text != '' && amount.toFixed(decimals).isNotEqual(newAmount.toFixed(decimals))) {
       pair.rate.text = newRate.toString();
       // pair.rate.notifyListeners();
     }
