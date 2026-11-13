@@ -2,6 +2,7 @@
 // Use of this source code is governed by a CC BY-NC-ND 4.0 license that can be found in the LICENSE file.
 
 import 'package:app_finance/_classes/herald/app_locale.dart';
+import 'package:app_finance/_classes/storage/app_preferences.dart';
 import 'package:app_finance/_classes/structure/navigation/app_route.dart';
 import 'package:app_finance/_configs/theme_helper.dart';
 import 'package:app_finance/pages/_interfaces/abstract_page_state.dart';
@@ -32,6 +33,12 @@ class StartPageState extends AbstractPageState<StartPage> {
   Widget button = ThemeHelper.emptyBox;
   List<Widget> barActions = [];
   String buttonName = AppLocale.labels.goNextTooltip;
+
+  @override
+  void initState() {
+    AppPreferences.set(AppPreferences.prefPrivacyPolicy, 'true');
+    super.initState();
+  }
 
   @override
   String getTitle() => AppLocale.labels.appStartHeadline;
