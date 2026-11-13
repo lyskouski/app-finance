@@ -1,7 +1,6 @@
 // Copyright 2023 The terCAD team. All rights reserved.
 // Use of this source code is governed by a CC BY-NC-ND 4.0 license that can be found in the LICENSE file.
 
-import 'dart:async';
 import 'dart:io' as io;
 import 'package:app_finance/_classes/herald/app_budget_positive.dart';
 import 'package:app_finance/_classes/herald/app_design.dart';
@@ -54,29 +53,13 @@ class PumpMain {
     await pumpMain.initMain(tester, isIntegration);
   }
 
-  static Future<void>? _fontsLoaded;
-
-  static Future<void> initFonts() => _fontsLoaded ??= _loadFonts();
-
-  static Future<void> _loadFonts() async {
-    final notified = Completer<void>();
-    void listener() => notified.isCompleted ? null : notified.complete();
-    PaintingBinding.instance.systemFonts.addListener(listener);
-    try {
-      final loaded = [
-        await _initFont('Abel-Regular'),
-        await _initFont('RobotoCondensed-Regular'),
-        // await _initFont('MaterialIcons-Regular'),
-      ];
-      if (loaded.contains(true)) {
-        await notified.future.timeout(const Duration(seconds: 5), onTimeout: () {});
-      }
-    } finally {
-      PaintingBinding.instance.systemFonts.removeListener(listener);
-    }
+  static Future<void> initFonts() async {
+    await _initFont('Abel-Regular');
+    await _initFont('RobotoCondensed-Regular');
+    // await _initFont('MaterialIcons-Regular');
   }
 
-  static Future<bool> _initFont(String name) async {
+  static Future<void> _initFont(String name) async {
     try {
       final root = fs.directory(platform.nativePlatform!.environment['FLUTTER_ROOT']).path.replaceAll('\\', '/');
       final scope = [
@@ -89,13 +72,11 @@ class PumpMain {
         final Future<ByteData> fontData = rootBundle.load(path);
         final FontLoader fontLoader = FontLoader(name)..addFont(fontData);
         await fontLoader.load();
-        return true;
       }
     } catch (e) {
       // Font loading failed, tests will use fallback fonts
       print('Warning: Failed to load font $name, using fallback fonts');
     }
-    return false;
   }
 
   static Future<void> initPaint(WidgetTester tester, CustomPainter paint, [Size size = const Size(320, 240)]) async {
