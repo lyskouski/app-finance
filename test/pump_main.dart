@@ -25,6 +25,7 @@ import 'package:file/local.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:mockito/annotations.dart';
 import 'package:platform/testing.dart';
 import 'package:provider/provider.dart';
@@ -48,18 +49,35 @@ class PumpMain {
     final tmp = '$path/${UniqueKey()}';
     wrapProvider(tester, 'plugins.flutter.io/path_provider', tmp);
     io.File('$tmp/${AbstractStorage.filePath}').createSync(recursive: true);
-    await initFonts();
+    await initFonts(tester);
     await initPref(isIntegration);
     await pumpMain.initMain(tester, isIntegration);
   }
 
-  static Future<void> initFonts() async {
-    await _initFont('Abel-Regular');
-    await _initFont('RobotoCondensed-Regular');
-    // await _initFont('MaterialIcons-Regular');
+  static bool _isFontLoaded = false;
+
+  static Future<void> initFonts(WidgetTester tester) async {
+    if (_isFontLoaded) return;
+    _isFontLoaded = true;
+    await tester.runAsync(() async {
+      await _initFont('Abel-Regular');
+      await _initFont('RobotoCondensed-Regular');
+      // await _initFont('MaterialIcons-Regular');
+      for (final brightness in Brightness.values) {
+        ThemeData(brightness: brightness).textTheme.withCustom('', brightness);
+      }
+      await GoogleFonts.pendingFonts();
+    });
+    final binding = tester.binding;
+    SystemChannels.system.setMessageHandler((dynamic message) async {
+      if (message is Map && message['type'] == 'fontsChange') {
+        return;
+      }
+      return binding.handleSystemMessage(message as Object);
+    });
   }
 
-  static Future<void> _initFont(String name) async {
+  static Future<bool> _initFont(String name) async {
     try {
       final root = fs.directory(platform.nativePlatform!.environment['FLUTTER_ROOT']).path.replaceAll('\\', '/');
       final scope = [
@@ -72,11 +90,13 @@ class PumpMain {
         final Future<ByteData> fontData = rootBundle.load(path);
         final FontLoader fontLoader = FontLoader(name)..addFont(fontData);
         await fontLoader.load();
+        return true;
       }
     } catch (e) {
       // Font loading failed, tests will use fallback fonts
       print('Warning: Failed to load font $name, using fallback fonts');
     }
+    return false;
   }
 
   static Future<void> initPaint(WidgetTester tester, CustomPainter paint, [Size size = const Size(320, 240)]) async {
@@ -87,7 +107,7 @@ class PumpMain {
     tester.view.physicalSize = size;
     tester.view.devicePixelRatio = 1;
 
-    await initFonts();
+    await initFonts(tester);
     await initPref(false);
 
     await tester.pumpWidget(
