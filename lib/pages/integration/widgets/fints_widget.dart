@@ -12,6 +12,7 @@ import 'package:app_finance/_classes/storage/app_preferences.dart';
 import 'package:app_finance/_classes/storage/transaction_log.dart';
 import 'package:app_finance/_configs/theme_helper.dart';
 import 'package:app_finance/_ext/build_context_ext.dart';
+import 'package:app_finance/design/button/full_sized_button_widget.dart';
 import 'package:app_finance/design/form/list_selector_item.dart';
 import 'package:app_finance/design/generic/loading_widget.dart';
 import 'package:app_finance/design/wrapper/input_wrapper.dart';
@@ -374,22 +375,19 @@ class FinTsWidgetState extends State<FinTsWidget> {
           if (isLoading)
             const Center(child: LoadingWidget(isLoading: true, size: Size(48, 48)))
           else
-            SizedBox(
-              width: double.infinity,
-              child: client == null
-                  ? FilledButton.icon(
-                      key: const ValueKey('fints_connect'),
-                      icon: const Icon(Icons.login),
-                      onPressed: connect,
-                      label: Text(AppLocale.labels.finTsConnect),
-                    )
-                  : OutlinedButton.icon(
-                      key: const ValueKey('fints_disconnect'),
-                      icon: const Icon(Icons.logout),
-                      onPressed: disconnect,
-                      label: Text(AppLocale.labels.finTsDisconnect),
-                    ),
-            ),
+            client == null
+                ? FullSizedButtonWidget(
+                    key: const ValueKey('fints_connect'),
+                    icon: Icons.login,
+                    onPressed: connect,
+                    title: AppLocale.labels.finTsConnect,
+                  )
+                : FullSizedButtonWidget(
+                    key: const ValueKey('fints_disconnect'),
+                    icon: Icons.logout,
+                    onPressed: disconnect,
+                    title: AppLocale.labels.finTsDisconnect,
+                  ),
           for (final item in accounts) buildAccount(context, item, state),
         ],
       );
