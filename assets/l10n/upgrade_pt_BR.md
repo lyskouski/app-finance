@@ -2,6 +2,12 @@
 
 _A lista completa de atualizações pode ser visualizada no item de navegação "Sobre" no botão "Dicas"._
 
+### 8.0.0
+- Nova página de Integrações com seções expansíveis
+- Adicionado o Financial Transaction Services (FinTS 4.1): contas, saldos e importação de transações de bancos alemães
+- Correção da precisão das taxas de conversão
+- Simplificação da primeira inicialização e atualização para o Flutter 3.50
+
 ### 7.3.0
 - Adição da localização em indonésio (ID)
 - Melhoria na precisão da moeda para conversões

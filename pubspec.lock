@@ -433,6 +433,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "4.2.1"
+  fints:
+    dependency: "direct main"
+    description:
+      name: fints
+      sha256: "31205bc1e95759dfd1f81e6d4762b8a20421d7baf51ddb932c6ece302f7f89e3"
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.4.0"
   firebase_analytics:
     dependency: "direct main"
     description:
@@ -1618,13 +1626,13 @@ packages:
     source: hosted
     version: "1.1.0"
   xml:
-    dependency: transitive
+    dependency: "direct overridden"
     description:
       name: xml
-      sha256: "971043b3a0d3da28727e40ed3e0b5d18b742fa5a68665cca88e74b7876d5e025"
+      sha256: "0fe8cc98946def31cbcbc8734aa4067031e6f65ea3a78a508060bfed2200bfeb"
       url: "https://pub.dev"
     source: hosted
-    version: "6.6.1"
+    version: "7.1.0"
   yaml:
     dependency: "direct dev"
     description:

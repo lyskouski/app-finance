@@ -73,6 +73,8 @@ Isso permite que os usuários gerenciem suas finanças sem esforço, garantindo 
 - Sincronização entre dispositivos (P2P)
 - Recuperação via WebDav ou um arquivo direto
 - Importação de arquivos `CSV`, `QIF`, `OFX` para contas e faturas
+- Integrações
+  - Financial Transaction Services (FinTS 4.1): importação de saldos e transações de bancos alemães (PIN/TAN)
 - Exportar para arquivo Excel `XLSX`
 - Criptografia de dados
 - Localização

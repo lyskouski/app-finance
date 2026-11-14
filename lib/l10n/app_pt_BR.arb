@@ -263,6 +263,54 @@
         }
     },
     "failData": "Dedução do valor",
+    "finTsApproved": "Aprovado no aplicativo do banco",
+    "finTsBankCode": "Código do banco (BLZ)",
+    "finTsConnect": "Conectar",
+    "finTsCustomerId": "ID do cliente (se diferente do ID do usuário)",
+    "finTsDateFrom": "Importar transações desde",
+    "finTsDescription": "Importe saldos e transações de bancos compatíveis com FinTS 4.1 (PIN/TAN). Acesso somente leitura: nenhum pagamento é realizado.",
+    "finTsDisconnect": "Desconectar",
+    "finTsHeadline": "Financial Transaction Services (FinTS 4.1)",
+    "finTsImport": "Importar transações",
+    "finTsImported": "Importadas: {added}, ignoradas por já existirem: {skipped}, pendentes (não importadas): {pending}",
+    "@finTsImported": {
+        "added": {
+            "type": "int"
+        },
+        "skipped": {
+            "type": "int"
+        },
+        "pending": {
+            "type": "int"
+        }
+    },
+    "finTsIncomplete": "Preencha a URL do servidor, o código do banco, o ID do usuário e o número de registro do produto",
+    "finTsLoginChanged": "O banco alterou os dados de acesso, atualize o ID do usuário ou do cliente: {value}",
+    "@finTsLoginChanged": {
+        "value": {
+            "type": "String"
+        }
+    },
+    "finTsLoginRefused": "O banco recusou o login anterior: {value}. Tentar novamente com o PIN informado?",
+    "@finTsLoginRefused": {
+        "value": {
+            "type": "String"
+        }
+    },
+    "finTsNoAccounts": "O banco não forneceu nenhuma conta",
+    "finTsPin": "PIN",
+    "finTsPinHint": "Usado somente nesta sessão e nunca armazenado",
+    "finTsProductId": "Número de registro do produto",
+    "finTsProductIdTooltip": "Emitido pela Deutsche Kreditwirtschaft para o fabricante do aplicativo",
+    "finTsSelectTarget": "Selecione a conta e a categoria de orçamento para importar",
+    "finTsTan": "TAN",
+    "finTsTanHeadline": "Autenticação da transação (TAN)",
+    "finTsTanMedium": "Selecionar meio TAN",
+    "finTsTanMethod": "Selecionar método TAN",
+    "finTsUrl": "URL do servidor FinTS do banco",
+    "finTsUserId": "ID do usuário (login)",
+    "finTsVersion": "Versão do protocolo",
+    "finTsWebUnsupported": "Os servidores bancários não permitem acesso pelo navegador. Use o aplicativo para desktop ou celular.",
     "flowTypeInvoice": "Fatura",
     "flowTypeTooltip": "Tipo de valor: Nota Fiscal, Fatura",
     "forecastData": "Previsão",
@@ -290,6 +338,7 @@
     "incomeHeadline": "Renda",
     "incomeHealth": "Radar de saúde do rendimento",
     "incomeTooltip": "Definir detalhes do rendimento",
+    "integrationHeadline": "Integrações",
     "invoiceHeadline": "Faturas",
     "invoiceSum": "Faturas: {value}",
     "@invoiceSum": {

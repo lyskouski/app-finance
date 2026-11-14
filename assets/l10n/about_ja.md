@@ -73,6 +73,8 @@
 - デバイス間の同期（P2P）
 - WebDavまたは直接ファイルを介したリカバリ
 - CSVファイル、QIFファイル、OFXファイルから請求書や請求書をインポート
+- 連携
+  - Financial Transaction Services (FinTS 4.1)：ドイツの銀行からの残高と取引のインポート（PIN/TAN）
 - Excel の `XLSX` ファイルにエクスポート
 - データの暗号化
 - ローカライゼーション

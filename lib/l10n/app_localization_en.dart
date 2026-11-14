@@ -638,6 +638,98 @@ class AppLocalizationsEn extends AppLocalizations {
   String get failData => 'Amount Deduction';
 
   @override
+  String get finTsApproved => 'Approved in the Banking App';
+
+  @override
+  String get finTsBankCode => 'Bank Code (BLZ)';
+
+  @override
+  String get finTsConnect => 'Connect';
+
+  @override
+  String get finTsCustomerId => 'Customer ID (if different from User ID)';
+
+  @override
+  String get finTsDateFrom => 'Import Transactions Since';
+
+  @override
+  String get finTsDescription =>
+      'Import balances and transactions from banks supporting FinTS 4.1 (PIN/TAN). Access is read-only: no payments are made.';
+
+  @override
+  String get finTsDisconnect => 'Disconnect';
+
+  @override
+  String get finTsHeadline => 'Financial Transaction Services (FinTS 4.1)';
+
+  @override
+  String get finTsImport => 'Import Transactions';
+
+  @override
+  String finTsImported(Object added, Object pending, Object skipped) {
+    return 'Imported: $added, skipped as already present: $skipped, pending (not imported): $pending';
+  }
+
+  @override
+  String get finTsIncomplete =>
+      'Fill in the server URL, bank code, user ID and product registration ID';
+
+  @override
+  String finTsLoginChanged(Object value) {
+    return 'The bank has changed the login data, update the User ID or Customer ID: $value';
+  }
+
+  @override
+  String finTsLoginRefused(Object value) {
+    return 'The bank refused the previous login: $value. Retry with the entered PIN?';
+  }
+
+  @override
+  String get finTsNoAccounts => 'The bank has provided no accounts';
+
+  @override
+  String get finTsPin => 'PIN';
+
+  @override
+  String get finTsPinHint => 'Used for this session only and never stored';
+
+  @override
+  String get finTsProductId => 'Product Registration ID';
+
+  @override
+  String get finTsProductIdTooltip =>
+      'Issued by the Deutsche Kreditwirtschaft to the application\'s vendor';
+
+  @override
+  String get finTsSelectTarget =>
+      'Select the account and the budget category to import into';
+
+  @override
+  String get finTsTan => 'TAN';
+
+  @override
+  String get finTsTanHeadline => 'Transaction Authentication (TAN)';
+
+  @override
+  String get finTsTanMedium => 'Select TAN Medium';
+
+  @override
+  String get finTsTanMethod => 'Select TAN Method';
+
+  @override
+  String get finTsUrl => 'Bank\'s FinTS Server URL';
+
+  @override
+  String get finTsUserId => 'User ID (Login)';
+
+  @override
+  String get finTsVersion => 'Protocol Version';
+
+  @override
+  String get finTsWebUnsupported =>
+      'Bank servers do not allow access from a browser. Use the desktop or mobile application.';
+
+  @override
   String get flowTypeInvoice => 'Invoice';
 
   @override
@@ -704,6 +796,9 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get incomeTooltip => 'Set Income Details';
+
+  @override
+  String get integrationHeadline => 'Integrations';
 
   @override
   String get invoiceHeadline => 'Invoices';

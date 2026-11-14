@@ -639,6 +639,98 @@ class AppLocalizationsHi extends AppLocalizations {
   String get failData => 'राशि कटौती';
 
   @override
+  String get finTsApproved => 'बैंक ऐप में स्वीकृत';
+
+  @override
+  String get finTsBankCode => 'बैंक कोड (BLZ)';
+
+  @override
+  String get finTsConnect => 'कनेक्ट करें';
+
+  @override
+  String get finTsCustomerId => 'ग्राहक आईडी (यदि उपयोगकर्ता आईडी से अलग हो)';
+
+  @override
+  String get finTsDateFrom => 'इस तारीख से लेनदेन आयात करें';
+
+  @override
+  String get finTsDescription =>
+      'FinTS 4.1 (PIN/TAN) समर्थित बैंकों से शेष राशि और लेनदेन आयात करें। पहुँच केवल पढ़ने के लिए है: कोई भुगतान नहीं किया जाता।';
+
+  @override
+  String get finTsDisconnect => 'डिस्कनेक्ट करें';
+
+  @override
+  String get finTsHeadline => 'Financial Transaction Services (FinTS 4.1)';
+
+  @override
+  String get finTsImport => 'लेनदेन आयात करें';
+
+  @override
+  String finTsImported(Object added, Object pending, Object skipped) {
+    return 'आयात किए गए: $added, पहले से मौजूद होने के कारण छोड़े गए: $skipped, लंबित (आयात नहीं किए गए): $pending';
+  }
+
+  @override
+  String get finTsIncomplete =>
+      'सर्वर URL, बैंक कोड, उपयोगकर्ता आईडी और उत्पाद पंजीकरण संख्या भरें';
+
+  @override
+  String finTsLoginChanged(Object value) {
+    return 'बैंक ने लॉगिन डेटा बदल दिया है, उपयोगकर्ता आईडी या ग्राहक आईडी अपडेट करें: $value';
+  }
+
+  @override
+  String finTsLoginRefused(Object value) {
+    return 'बैंक ने पिछला लॉगिन अस्वीकार कर दिया: $value। दर्ज किए गए PIN से फिर प्रयास करें?';
+  }
+
+  @override
+  String get finTsNoAccounts => 'बैंक ने कोई खाता प्रदान नहीं किया';
+
+  @override
+  String get finTsPin => 'PIN';
+
+  @override
+  String get finTsPinHint =>
+      'केवल इस सत्र के लिए उपयोग होता है और कभी संग्रहीत नहीं किया जाता';
+
+  @override
+  String get finTsProductId => 'उत्पाद पंजीकरण संख्या';
+
+  @override
+  String get finTsProductIdTooltip =>
+      'Deutsche Kreditwirtschaft द्वारा ऐप निर्माता को जारी की जाती है';
+
+  @override
+  String get finTsSelectTarget => 'आयात के लिए खाता और बजट श्रेणी चुनें';
+
+  @override
+  String get finTsTan => 'TAN';
+
+  @override
+  String get finTsTanHeadline => 'लेनदेन प्रमाणीकरण (TAN)';
+
+  @override
+  String get finTsTanMedium => 'TAN माध्यम चुनें';
+
+  @override
+  String get finTsTanMethod => 'TAN विधि चुनें';
+
+  @override
+  String get finTsUrl => 'बैंक का FinTS सर्वर URL';
+
+  @override
+  String get finTsUserId => 'उपयोगकर्ता आईडी (लॉगिन)';
+
+  @override
+  String get finTsVersion => 'प्रोटोकॉल संस्करण';
+
+  @override
+  String get finTsWebUnsupported =>
+      'बैंक सर्वर ब्राउज़र से पहुँच की अनुमति नहीं देते। डेस्कटॉप या मोबाइल ऐप का उपयोग करें।';
+
+  @override
   String get flowTypeInvoice => 'चालान';
 
   @override
@@ -705,6 +797,9 @@ class AppLocalizationsHi extends AppLocalizations {
 
   @override
   String get incomeTooltip => 'आय विवरण निर्धारित करें';
+
+  @override
+  String get integrationHeadline => 'एकीकरण';
 
   @override
   String get invoiceHeadline => 'चालान';

@@ -263,6 +263,54 @@
         }
     },
     "failData": "თანხის შემცირება",
+    "finTsApproved": "დადასტურებულია ბანკის აპლიკაციაში",
+    "finTsBankCode": "ბანკის კოდი (BLZ)",
+    "finTsConnect": "დაკავშირება",
+    "finTsCustomerId": "კლიენტის ID (თუ განსხვავდება მომხმარებლის ID-სგან)",
+    "finTsDateFrom": "ტრანზაქციების იმპორტი თარიღიდან",
+    "finTsDescription": "ნაშთებისა და ტრანზაქციების იმპორტი ბანკებიდან, რომლებიც მხარს უჭერენ FinTS 4.1-ს (PIN/TAN). წვდომა მხოლოდ წაკითხვისთვისაა: გადახდები არ სრულდება.",
+    "finTsDisconnect": "გათიშვა",
+    "finTsHeadline": "Financial Transaction Services (FinTS 4.1)",
+    "finTsImport": "ტრანზაქციების იმპორტი",
+    "finTsImported": "იმპორტირებულია: {added}, გამოტოვებულია, როგორც უკვე არსებული: {skipped}, მოლოდინში (არ არის იმპორტირებული): {pending}",
+    "@finTsImported": {
+        "added": {
+            "type": "int"
+        },
+        "skipped": {
+            "type": "int"
+        },
+        "pending": {
+            "type": "int"
+        }
+    },
+    "finTsIncomplete": "შეავსეთ სერვერის URL, ბანკის კოდი, მომხმარებლის ID და პროდუქტის სარეგისტრაციო ნომერი",
+    "finTsLoginChanged": "ბანკმა შეცვალა შესვლის მონაცემები, განაახლეთ მომხმარებლის ან კლიენტის ID: {value}",
+    "@finTsLoginChanged": {
+        "value": {
+            "type": "String"
+        }
+    },
+    "finTsLoginRefused": "ბანკმა უარყო წინა შესვლა: {value}. ვცადოთ ხელახლა შეყვანილი PIN-ით?",
+    "@finTsLoginRefused": {
+        "value": {
+            "type": "String"
+        }
+    },
+    "finTsNoAccounts": "ბანკს არცერთი ანგარიში არ მოუწოდებია",
+    "finTsPin": "PIN",
+    "finTsPinHint": "გამოიყენება მხოლოდ ამ სესიისთვის და არასოდეს ინახება",
+    "finTsProductId": "პროდუქტის სარეგისტრაციო ნომერი",
+    "finTsProductIdTooltip": "გაიცემა Deutsche Kreditwirtschaft-ის მიერ აპლიკაციის მწარმოებლისთვის",
+    "finTsSelectTarget": "აირჩიეთ ანგარიში და ბიუჯეტის კატეგორია იმპორტისთვის",
+    "finTsTan": "TAN",
+    "finTsTanHeadline": "ტრანზაქციის დადასტურება (TAN)",
+    "finTsTanMedium": "აირჩიეთ TAN მატარებელი",
+    "finTsTanMethod": "აირჩიეთ TAN მეთოდი",
+    "finTsUrl": "ბანკის FinTS სერვერის URL",
+    "finTsUserId": "მომხმარებლის ID (ლოგინი)",
+    "finTsVersion": "პროტოკოლის ვერსია",
+    "finTsWebUnsupported": "ბანკის სერვერები არ იძლევიან ბრაუზერიდან წვდომის საშუალებას. გამოიყენეთ დესკტოპის ან მობილური აპლიკაცია.",
     "flowTypeInvoice": "ინვოისი",
     "flowTypeTooltip": "თანხის ტიპი: ხარჯი, ინვოისი",
     "forecastData": "პროგნოზი",
@@ -290,6 +338,7 @@
     "incomeHeadline": "შემოსავალი",
     "incomeHealth": "შემოსავლის ჯანმრთელობის რადარი",
     "incomeTooltip": "შემოსავლის დეტალების დაყენება",
+    "integrationHeadline": "ინტეგრაციები",
     "invoiceHeadline": "ინვოისები",
     "invoiceSum": "ინვოისები: {value}",
     "@invoiceSum": {

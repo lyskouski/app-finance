@@ -263,6 +263,54 @@
         }
     },
     "failData": "控除額",
+    "finTsApproved": "銀行アプリで承認済み",
+    "finTsBankCode": "銀行コード (BLZ)",
+    "finTsConnect": "接続",
+    "finTsCustomerId": "顧客ID（ユーザーIDと異なる場合）",
+    "finTsDateFrom": "取引のインポート開始日",
+    "finTsDescription": "FinTS 4.1（PIN/TAN）対応の銀行から残高と取引をインポートします。アクセスは読み取り専用で、支払いは行われません。",
+    "finTsDisconnect": "切断",
+    "finTsHeadline": "Financial Transaction Services (FinTS 4.1)",
+    "finTsImport": "取引をインポート",
+    "finTsImported": "インポート済み: {added}、既存のためスキップ: {skipped}、保留中（未インポート）: {pending}",
+    "@finTsImported": {
+        "added": {
+            "type": "int"
+        },
+        "skipped": {
+            "type": "int"
+        },
+        "pending": {
+            "type": "int"
+        }
+    },
+    "finTsIncomplete": "サーバーURL、銀行コード、ユーザーID、製品登録番号を入力してください",
+    "finTsLoginChanged": "銀行がログイン情報を変更しました。ユーザーIDまたは顧客IDを更新してください: {value}",
+    "@finTsLoginChanged": {
+        "value": {
+            "type": "String"
+        }
+    },
+    "finTsLoginRefused": "銀行が前回のログインを拒否しました: {value}。入力したPINで再試行しますか？",
+    "@finTsLoginRefused": {
+        "value": {
+            "type": "String"
+        }
+    },
+    "finTsNoAccounts": "銀行から口座が提供されませんでした",
+    "finTsPin": "PIN",
+    "finTsPinHint": "このセッションでのみ使用され、保存されることはありません",
+    "finTsProductId": "製品登録番号",
+    "finTsProductIdTooltip": "Deutsche Kreditwirtschaft がアプリの開発元に発行します",
+    "finTsSelectTarget": "インポート先の口座と予算カテゴリを選択してください",
+    "finTsTan": "TAN",
+    "finTsTanHeadline": "取引認証 (TAN)",
+    "finTsTanMedium": "TANメディアを選択",
+    "finTsTanMethod": "TAN方式を選択",
+    "finTsUrl": "銀行のFinTSサーバーURL",
+    "finTsUserId": "ユーザーID（ログイン）",
+    "finTsVersion": "プロトコルバージョン",
+    "finTsWebUnsupported": "銀行のサーバーはブラウザーからのアクセスを許可していません。デスクトップ版またはモバイル版アプリを使用してください。",
     "flowTypeInvoice": "請求書",
     "flowTypeTooltip": "金額の種類 請求書",
     "forecastData": "予想",
@@ -290,6 +338,7 @@
     "incomeHeadline": "収入",
     "incomeHealth": "所得健康レーダー",
     "incomeTooltip": "収入の詳細設定",
+    "integrationHeadline": "連携",
     "invoiceHeadline": "請求書",
     "invoiceSum": "請求書 {value}",
     "@invoiceSum": {

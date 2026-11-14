@@ -263,6 +263,54 @@
         }
     },
     "failData": "Kwota odliczenia",
+    "finTsApproved": "Zatwierdzono w aplikacji bankowej",
+    "finTsBankCode": "Kod banku (BLZ)",
+    "finTsConnect": "Połącz",
+    "finTsCustomerId": "ID klienta (jeśli inny niż ID użytkownika)",
+    "finTsDateFrom": "Importuj transakcje od",
+    "finTsDescription": "Import sald i transakcji z banków obsługujących FinTS 4.1 (PIN/TAN). Dostęp tylko do odczytu: żadne płatności nie są wykonywane.",
+    "finTsDisconnect": "Rozłącz",
+    "finTsHeadline": "Financial Transaction Services (FinTS 4.1)",
+    "finTsImport": "Importuj transakcje",
+    "finTsImported": "Zaimportowano: {added}, pominięto jako istniejące: {skipped}, oczekujące (nie zaimportowano): {pending}",
+    "@finTsImported": {
+        "added": {
+            "type": "int"
+        },
+        "skipped": {
+            "type": "int"
+        },
+        "pending": {
+            "type": "int"
+        }
+    },
+    "finTsIncomplete": "Uzupełnij URL serwera, kod banku, ID użytkownika i numer rejestracyjny produktu",
+    "finTsLoginChanged": "Bank zmienił dane logowania, zaktualizuj ID użytkownika lub ID klienta: {value}",
+    "@finTsLoginChanged": {
+        "value": {
+            "type": "String"
+        }
+    },
+    "finTsLoginRefused": "Bank odrzucił poprzednie logowanie: {value}. Spróbować ponownie z wprowadzonym PIN-em?",
+    "@finTsLoginRefused": {
+        "value": {
+            "type": "String"
+        }
+    },
+    "finTsNoAccounts": "Bank nie udostępnił żadnych kont",
+    "finTsPin": "PIN",
+    "finTsPinHint": "Używany tylko w tej sesji i nigdy nie zapisywany",
+    "finTsProductId": "Numer rejestracyjny produktu",
+    "finTsProductIdTooltip": "Nadawany przez Deutsche Kreditwirtschaft producentowi aplikacji",
+    "finTsSelectTarget": "Wybierz konto i kategorię budżetu do importu",
+    "finTsTan": "TAN",
+    "finTsTanHeadline": "Autoryzacja transakcji (TAN)",
+    "finTsTanMedium": "Wybierz nośnik TAN",
+    "finTsTanMethod": "Wybierz metodę TAN",
+    "finTsUrl": "URL serwera FinTS banku",
+    "finTsUserId": "ID użytkownika (login)",
+    "finTsVersion": "Wersja protokołu",
+    "finTsWebUnsupported": "Serwery banków nie pozwalają na dostęp z przeglądarki. Użyj aplikacji desktopowej lub mobilnej.",
     "flowTypeInvoice": "Faktura",
     "flowTypeTooltip": "Typ kwoty: Rachunek, Faktura",
     "forecastData": "Prognoza",
@@ -290,6 +338,7 @@
     "incomeHeadline": "Dochód",
     "incomeHealth": "Radar stanu dochodów",
     "incomeTooltip": "Ustawianie szczegółów dochodu",
+    "integrationHeadline": "Integracje",
     "invoiceHeadline": "Faktury",
     "invoiceSum": "Faktury: {value}",
     "@invoiceSum": {

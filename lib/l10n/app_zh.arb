@@ -263,6 +263,54 @@
         }
     },
     "failData": "扣除金额",
+    "finTsApproved": "已在银行应用中批准",
+    "finTsBankCode": "银行代码 (BLZ)",
+    "finTsConnect": "连接",
+    "finTsCustomerId": "客户 ID（如与用户 ID 不同）",
+    "finTsDateFrom": "导入交易的起始日期",
+    "finTsDescription": "从支持 FinTS 4.1（PIN/TAN）的银行导入余额和交易。仅限只读访问：不会执行任何付款。",
+    "finTsDisconnect": "断开连接",
+    "finTsHeadline": "Financial Transaction Services (FinTS 4.1)",
+    "finTsImport": "导入交易",
+    "finTsImported": "已导入：{added}，因已存在而跳过：{skipped}，待处理（未导入）：{pending}",
+    "@finTsImported": {
+        "added": {
+            "type": "int"
+        },
+        "skipped": {
+            "type": "int"
+        },
+        "pending": {
+            "type": "int"
+        }
+    },
+    "finTsIncomplete": "请填写服务器 URL、银行代码、用户 ID 和产品注册号",
+    "finTsLoginChanged": "银行已更改登录信息，请更新用户 ID 或客户 ID：{value}",
+    "@finTsLoginChanged": {
+        "value": {
+            "type": "String"
+        }
+    },
+    "finTsLoginRefused": "银行拒绝了上次登录：{value}。使用输入的 PIN 重试？",
+    "@finTsLoginRefused": {
+        "value": {
+            "type": "String"
+        }
+    },
+    "finTsNoAccounts": "银行未提供任何账户",
+    "finTsPin": "PIN",
+    "finTsPinHint": "仅用于本次会话，绝不保存",
+    "finTsProductId": "产品注册号",
+    "finTsProductIdTooltip": "由 Deutsche Kreditwirtschaft 颁发给应用开发商",
+    "finTsSelectTarget": "请选择要导入的账户和预算类别",
+    "finTsTan": "TAN",
+    "finTsTanHeadline": "交易验证 (TAN)",
+    "finTsTanMedium": "选择 TAN 介质",
+    "finTsTanMethod": "选择 TAN 方式",
+    "finTsUrl": "银行的 FinTS 服务器 URL",
+    "finTsUserId": "用户 ID（登录名）",
+    "finTsVersion": "协议版本",
+    "finTsWebUnsupported": "银行服务器不允许从浏览器访问。请使用桌面或移动应用。",
     "flowTypeInvoice": "发票",
     "flowTypeTooltip": "金额类型： 账单、发票",
     "forecastData": "预测",
@@ -290,6 +338,7 @@
     "incomeHeadline": "收入",
     "incomeHealth": "收入健康雷达",
     "incomeTooltip": "设置收入详情",
+    "integrationHeadline": "集成",
     "invoiceHeadline": "发票",
     "invoiceSum": "发票： {value}",
     "@invoiceSum": {

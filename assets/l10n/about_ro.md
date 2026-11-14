@@ -73,6 +73,8 @@ Care permite utilizatorilor să își gestioneze finanțele fără efort, asigur
 - Sincronizare între dispozitive (P2P)
 - Recuperare prin WebDav sau un fișier direct
 - Import din fișiere `CSV`, `QIF`, `OFX` pentru facturi și facturi
+- Integrări
+  - Financial Transaction Services (FinTS 4.1): import de solduri și tranzacții de la băncile germane (PIN/TAN)
 - Export către fișiere Excel `XLSX`.
 - Criptarea datelor
 - Localizare

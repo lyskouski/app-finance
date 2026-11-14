@@ -2,6 +2,12 @@
 
 _De volledige lijst met updates kan worden bekeken via het navigatie-item “Over” op de knop “Hints”._
 
+### 8.0.0
+- Nieuwe pagina Integraties met uitklapbare secties
+- Financial Transaction Services (FinTS 4.1) toegevoegd: rekeningen, saldi en import van transacties van Duitse banken
+- Nauwkeurigheid van omrekeningskoersen gecorrigeerd
+- Eerste start vereenvoudigd en bijgewerkt naar Flutter 3.50
+
 ### 7.3.0
 - Toevoeging van Indonesische (ID) lokalisatie
 - Verbetering van de nauwkeurigheid van valutakoersen

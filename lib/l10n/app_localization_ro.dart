@@ -640,6 +640,100 @@ class AppLocalizationsRo extends AppLocalizations {
   String get failData => 'Suma dedusă';
 
   @override
+  String get finTsApproved => 'Aprobat în aplicația băncii';
+
+  @override
+  String get finTsBankCode => 'Cod bancar (BLZ)';
+
+  @override
+  String get finTsConnect => 'Conectare';
+
+  @override
+  String get finTsCustomerId =>
+      'ID client (dacă diferă de ID-ul de utilizator)';
+
+  @override
+  String get finTsDateFrom => 'Importă tranzacțiile din';
+
+  @override
+  String get finTsDescription =>
+      'Importă solduri și tranzacții de la băncile care acceptă FinTS 4.1 (PIN/TAN). Acces doar în citire: nu se efectuează plăți.';
+
+  @override
+  String get finTsDisconnect => 'Deconectare';
+
+  @override
+  String get finTsHeadline => 'Financial Transaction Services (FinTS 4.1)';
+
+  @override
+  String get finTsImport => 'Importă tranzacții';
+
+  @override
+  String finTsImported(Object added, Object pending, Object skipped) {
+    return 'Importate: $added, omise deoarece există deja: $skipped, în așteptare (neimportate): $pending';
+  }
+
+  @override
+  String get finTsIncomplete =>
+      'Completați URL-ul serverului, codul bancar, ID-ul de utilizator și numărul de înregistrare al produsului';
+
+  @override
+  String finTsLoginChanged(Object value) {
+    return 'Banca a modificat datele de autentificare, actualizați ID-ul de utilizator sau ID-ul client: $value';
+  }
+
+  @override
+  String finTsLoginRefused(Object value) {
+    return 'Banca a refuzat autentificarea anterioară: $value. Reîncercați cu PIN-ul introdus?';
+  }
+
+  @override
+  String get finTsNoAccounts => 'Banca nu a furnizat niciun cont';
+
+  @override
+  String get finTsPin => 'PIN';
+
+  @override
+  String get finTsPinHint =>
+      'Folosit doar pentru această sesiune și niciodată salvat';
+
+  @override
+  String get finTsProductId => 'Număr de înregistrare al produsului';
+
+  @override
+  String get finTsProductIdTooltip =>
+      'Emis de Deutsche Kreditwirtschaft producătorului aplicației';
+
+  @override
+  String get finTsSelectTarget =>
+      'Selectați contul și categoria de buget pentru import';
+
+  @override
+  String get finTsTan => 'TAN';
+
+  @override
+  String get finTsTanHeadline => 'Autentificarea tranzacției (TAN)';
+
+  @override
+  String get finTsTanMedium => 'Selectați suportul TAN';
+
+  @override
+  String get finTsTanMethod => 'Selectați metoda TAN';
+
+  @override
+  String get finTsUrl => 'URL-ul serverului FinTS al băncii';
+
+  @override
+  String get finTsUserId => 'ID utilizator (login)';
+
+  @override
+  String get finTsVersion => 'Versiunea protocolului';
+
+  @override
+  String get finTsWebUnsupported =>
+      'Serverele băncilor nu permit accesul dintr-un browser. Folosiți aplicația desktop sau mobilă.';
+
+  @override
   String get flowTypeInvoice => 'Factură';
 
   @override
@@ -706,6 +800,9 @@ class AppLocalizationsRo extends AppLocalizations {
 
   @override
   String get incomeTooltip => 'Setați detaliile privind venitul';
+
+  @override
+  String get integrationHeadline => 'Integrări';
 
   @override
   String get invoiceHeadline => 'Facturi';

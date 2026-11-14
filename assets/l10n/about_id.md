@@ -73,6 +73,8 @@ Yang memberdayakan pengguna untuk mengelola keuangan mereka dengan mudah sambil 
 - Sinkronisasi antarperangkat (P2P)
 - Pemulihan melalui WebDav atau File langsung
 - Impor dari file `CSV`, `QIF`, `OFX` untuk Tagihan dan Faktur
+- Integrasi
+  - Financial Transaction Services (FinTS 4.1): impor saldo dan transaksi dari bank Jerman (PIN/TAN)
 - Ekspor ke file Excel `XLSX`
 - Enkripsi data
 - Lokalisasi

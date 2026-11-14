@@ -73,6 +73,8 @@ Bu, kullanıcıların mali durumlarını zahmetsizce yönetmelerini sağlarken k
 - Cihazlar arasında senkronizasyon (P2P)
 - WebDav veya doğrudan bir Dosya aracılığıyla kurtarma
 - Faturalar için `CSV`, `QIF`, `OFX` dosyalarından içe aktarma
+- Entegrasyonlar
+  - Financial Transaction Services (FinTS 4.1): Alman bankalarından bakiye ve işlemlerin içe aktarılması (PIN/TAN)
 - Excel `XLSX` dosyasına aktarın
 - Veri şifreleme
 - Yerelleştirme

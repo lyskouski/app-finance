@@ -263,6 +263,54 @@
         }
     },
     "failData": "Importe Deducción",
+    "finTsApproved": "Aprobado en la aplicación bancaria",
+    "finTsBankCode": "Código bancario (BLZ)",
+    "finTsConnect": "Conectar",
+    "finTsCustomerId": "ID de cliente (si es distinto del ID de usuario)",
+    "finTsDateFrom": "Importar movimientos desde",
+    "finTsDescription": "Importa saldos y movimientos de bancos compatibles con FinTS 4.1 (PIN/TAN). Acceso de solo lectura: no se realizan pagos.",
+    "finTsDisconnect": "Desconectar",
+    "finTsHeadline": "Financial Transaction Services (FinTS 4.1)",
+    "finTsImport": "Importar movimientos",
+    "finTsImported": "Importados: {added}, omitidos por existir ya: {skipped}, pendientes (no importados): {pending}",
+    "@finTsImported": {
+        "added": {
+            "type": "int"
+        },
+        "skipped": {
+            "type": "int"
+        },
+        "pending": {
+            "type": "int"
+        }
+    },
+    "finTsIncomplete": "Rellena la URL del servidor, el código bancario, el ID de usuario y el número de registro del producto",
+    "finTsLoginChanged": "El banco ha cambiado los datos de acceso, actualiza el ID de usuario o de cliente: {value}",
+    "@finTsLoginChanged": {
+        "value": {
+            "type": "String"
+        }
+    },
+    "finTsLoginRefused": "El banco rechazó el inicio de sesión anterior: {value}. ¿Reintentar con el PIN introducido?",
+    "@finTsLoginRefused": {
+        "value": {
+            "type": "String"
+        }
+    },
+    "finTsNoAccounts": "El banco no ha proporcionado ninguna cuenta",
+    "finTsPin": "PIN",
+    "finTsPinHint": "Se usa solo en esta sesión y nunca se guarda",
+    "finTsProductId": "Número de registro del producto",
+    "finTsProductIdTooltip": "Asignado por la Deutsche Kreditwirtschaft al fabricante de la aplicación",
+    "finTsSelectTarget": "Selecciona la cuenta y la categoría de presupuesto para la importación",
+    "finTsTan": "TAN",
+    "finTsTanHeadline": "Autenticación de la operación (TAN)",
+    "finTsTanMedium": "Seleccionar medio TAN",
+    "finTsTanMethod": "Seleccionar método TAN",
+    "finTsUrl": "URL del servidor FinTS del banco",
+    "finTsUserId": "ID de usuario (inicio de sesión)",
+    "finTsVersion": "Versión del protocolo",
+    "finTsWebUnsupported": "Los servidores bancarios no permiten el acceso desde un navegador. Usa la aplicación de escritorio o móvil.",
     "flowTypeInvoice": "Factura",
     "flowTypeTooltip": "Tipo de Importe Albarán, Factura",
     "forecastData": "Previsión",
@@ -290,6 +338,7 @@
     "incomeHeadline": "Ingresos",
     "incomeHealth": "Radar de salud de ingresos",
     "incomeTooltip": "Establecer detalles de ingresos",
+    "integrationHeadline": "Integraciones",
     "invoiceHeadline": "Invoices",
     "invoiceSum": "Facturas: {value}",
     "@invoiceSum": {

@@ -2,6 +2,12 @@
 
 _Daftar lengkap pembaruan dapat dilihat melalui item navigasi "Tentang" pada tombol "Petunjuk"._
 
+### 8.0.0
+- Halaman Integrasi baru dengan bagian yang dapat dibuka
+- Menambahkan Financial Transaction Services (FinTS 4.1): rekening, saldo, dan impor transaksi dari bank Jerman
+- Memperbaiki presisi kurs konversi
+- Menyederhanakan peluncuran pertama dan memperbarui ke Flutter 3.50
+
 ### 7.3.0
 - Menambahkan lokalisasi bahasa Indonesia (ID)
 - Meningkatkan ketepatan nilai tukar mata uang

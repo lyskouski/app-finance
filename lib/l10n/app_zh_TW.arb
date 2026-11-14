@@ -263,6 +263,54 @@
         }
     },
     "failData": "扣除金額",
+    "finTsApproved": "已在銀行應用程式中核准",
+    "finTsBankCode": "銀行代碼 (BLZ)",
+    "finTsConnect": "連線",
+    "finTsCustomerId": "客戶 ID（若與使用者 ID 不同）",
+    "finTsDateFrom": "匯入交易的起始日期",
+    "finTsDescription": "從支援 FinTS 4.1（PIN/TAN）的銀行匯入餘額與交易。僅限唯讀存取：不會執行任何付款。",
+    "finTsDisconnect": "中斷連線",
+    "finTsHeadline": "Financial Transaction Services (FinTS 4.1)",
+    "finTsImport": "匯入交易",
+    "finTsImported": "已匯入：{added}，因已存在而略過：{skipped}，待處理（未匯入）：{pending}",
+    "@finTsImported": {
+        "added": {
+            "type": "int"
+        },
+        "skipped": {
+            "type": "int"
+        },
+        "pending": {
+            "type": "int"
+        }
+    },
+    "finTsIncomplete": "請填寫伺服器 URL、銀行代碼、使用者 ID 與產品註冊編號",
+    "finTsLoginChanged": "銀行已變更登入資料，請更新使用者 ID 或客戶 ID：{value}",
+    "@finTsLoginChanged": {
+        "value": {
+            "type": "String"
+        }
+    },
+    "finTsLoginRefused": "銀行拒絕了上次登入：{value}。要使用輸入的 PIN 重試嗎？",
+    "@finTsLoginRefused": {
+        "value": {
+            "type": "String"
+        }
+    },
+    "finTsNoAccounts": "銀行未提供任何帳戶",
+    "finTsPin": "PIN",
+    "finTsPinHint": "僅用於本次工作階段，絕不儲存",
+    "finTsProductId": "產品註冊編號",
+    "finTsProductIdTooltip": "由 Deutsche Kreditwirtschaft 核發給應用程式開發商",
+    "finTsSelectTarget": "請選擇要匯入的帳戶與預算類別",
+    "finTsTan": "TAN",
+    "finTsTanHeadline": "交易驗證 (TAN)",
+    "finTsTanMedium": "選擇 TAN 媒介",
+    "finTsTanMethod": "選擇 TAN 方式",
+    "finTsUrl": "銀行的 FinTS 伺服器 URL",
+    "finTsUserId": "使用者 ID（登入）",
+    "finTsVersion": "通訊協定版本",
+    "finTsWebUnsupported": "銀行伺服器不允許從瀏覽器存取。請使用桌面或行動應用程式。",
     "flowTypeInvoice": "發票",
     "flowTypeTooltip": "金額類型： 帳單、發票",
     "forecastData": "預測",
@@ -290,6 +338,7 @@
     "incomeHeadline": "收入",
     "incomeHealth": "收入健康雷達",
     "incomeTooltip": "設定收入詳細資訊",
+    "integrationHeadline": "整合",
     "invoiceHeadline": "發票",
     "invoiceSum": "發票：{value}",
     "@invoiceSum": {

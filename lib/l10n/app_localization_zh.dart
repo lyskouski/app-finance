@@ -637,6 +637,94 @@ class AppLocalizationsZh extends AppLocalizations {
   String get failData => '扣除金额';
 
   @override
+  String get finTsApproved => '已在银行应用中批准';
+
+  @override
+  String get finTsBankCode => '银行代码 (BLZ)';
+
+  @override
+  String get finTsConnect => '连接';
+
+  @override
+  String get finTsCustomerId => '客户 ID（如与用户 ID 不同）';
+
+  @override
+  String get finTsDateFrom => '导入交易的起始日期';
+
+  @override
+  String get finTsDescription =>
+      '从支持 FinTS 4.1（PIN/TAN）的银行导入余额和交易。仅限只读访问：不会执行任何付款。';
+
+  @override
+  String get finTsDisconnect => '断开连接';
+
+  @override
+  String get finTsHeadline => 'Financial Transaction Services (FinTS 4.1)';
+
+  @override
+  String get finTsImport => '导入交易';
+
+  @override
+  String finTsImported(Object added, Object pending, Object skipped) {
+    return '已导入：$added，因已存在而跳过：$skipped，待处理（未导入）：$pending';
+  }
+
+  @override
+  String get finTsIncomplete => '请填写服务器 URL、银行代码、用户 ID 和产品注册号';
+
+  @override
+  String finTsLoginChanged(Object value) {
+    return '银行已更改登录信息，请更新用户 ID 或客户 ID：$value';
+  }
+
+  @override
+  String finTsLoginRefused(Object value) {
+    return '银行拒绝了上次登录：$value。使用输入的 PIN 重试？';
+  }
+
+  @override
+  String get finTsNoAccounts => '银行未提供任何账户';
+
+  @override
+  String get finTsPin => 'PIN';
+
+  @override
+  String get finTsPinHint => '仅用于本次会话，绝不保存';
+
+  @override
+  String get finTsProductId => '产品注册号';
+
+  @override
+  String get finTsProductIdTooltip => '由 Deutsche Kreditwirtschaft 颁发给应用开发商';
+
+  @override
+  String get finTsSelectTarget => '请选择要导入的账户和预算类别';
+
+  @override
+  String get finTsTan => 'TAN';
+
+  @override
+  String get finTsTanHeadline => '交易验证 (TAN)';
+
+  @override
+  String get finTsTanMedium => '选择 TAN 介质';
+
+  @override
+  String get finTsTanMethod => '选择 TAN 方式';
+
+  @override
+  String get finTsUrl => '银行的 FinTS 服务器 URL';
+
+  @override
+  String get finTsUserId => '用户 ID（登录名）';
+
+  @override
+  String get finTsVersion => '协议版本';
+
+  @override
+  String get finTsWebUnsupported => '银行服务器不允许从浏览器访问。请使用桌面或移动应用。';
+
+  @override
   String get flowTypeInvoice => '发票';
 
   @override
@@ -703,6 +791,9 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String get incomeTooltip => '设置收入详情';
+
+  @override
+  String get integrationHeadline => '集成';
 
   @override
   String get invoiceHeadline => '发票';
@@ -1756,6 +1847,94 @@ class AppLocalizationsZhTw extends AppLocalizationsZh {
   String get failData => '扣除金額';
 
   @override
+  String get finTsApproved => '已在銀行應用程式中核准';
+
+  @override
+  String get finTsBankCode => '銀行代碼 (BLZ)';
+
+  @override
+  String get finTsConnect => '連線';
+
+  @override
+  String get finTsCustomerId => '客戶 ID（若與使用者 ID 不同）';
+
+  @override
+  String get finTsDateFrom => '匯入交易的起始日期';
+
+  @override
+  String get finTsDescription =>
+      '從支援 FinTS 4.1（PIN/TAN）的銀行匯入餘額與交易。僅限唯讀存取：不會執行任何付款。';
+
+  @override
+  String get finTsDisconnect => '中斷連線';
+
+  @override
+  String get finTsHeadline => 'Financial Transaction Services (FinTS 4.1)';
+
+  @override
+  String get finTsImport => '匯入交易';
+
+  @override
+  String finTsImported(Object added, Object pending, Object skipped) {
+    return '已匯入：$added，因已存在而略過：$skipped，待處理（未匯入）：$pending';
+  }
+
+  @override
+  String get finTsIncomplete => '請填寫伺服器 URL、銀行代碼、使用者 ID 與產品註冊編號';
+
+  @override
+  String finTsLoginChanged(Object value) {
+    return '銀行已變更登入資料，請更新使用者 ID 或客戶 ID：$value';
+  }
+
+  @override
+  String finTsLoginRefused(Object value) {
+    return '銀行拒絕了上次登入：$value。要使用輸入的 PIN 重試嗎？';
+  }
+
+  @override
+  String get finTsNoAccounts => '銀行未提供任何帳戶';
+
+  @override
+  String get finTsPin => 'PIN';
+
+  @override
+  String get finTsPinHint => '僅用於本次工作階段，絕不儲存';
+
+  @override
+  String get finTsProductId => '產品註冊編號';
+
+  @override
+  String get finTsProductIdTooltip => '由 Deutsche Kreditwirtschaft 核發給應用程式開發商';
+
+  @override
+  String get finTsSelectTarget => '請選擇要匯入的帳戶與預算類別';
+
+  @override
+  String get finTsTan => 'TAN';
+
+  @override
+  String get finTsTanHeadline => '交易驗證 (TAN)';
+
+  @override
+  String get finTsTanMedium => '選擇 TAN 媒介';
+
+  @override
+  String get finTsTanMethod => '選擇 TAN 方式';
+
+  @override
+  String get finTsUrl => '銀行的 FinTS 伺服器 URL';
+
+  @override
+  String get finTsUserId => '使用者 ID（登入）';
+
+  @override
+  String get finTsVersion => '通訊協定版本';
+
+  @override
+  String get finTsWebUnsupported => '銀行伺服器不允許從瀏覽器存取。請使用桌面或行動應用程式。';
+
+  @override
   String get flowTypeInvoice => '發票';
 
   @override
@@ -1822,6 +2001,9 @@ class AppLocalizationsZhTw extends AppLocalizationsZh {
 
   @override
   String get incomeTooltip => '設定收入詳細資訊';
+
+  @override
+  String get integrationHeadline => '整合';
 
   @override
   String get invoiceHeadline => '發票';

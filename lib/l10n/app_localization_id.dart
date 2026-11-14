@@ -639,6 +639,99 @@ class AppLocalizationsId extends AppLocalizations {
   String get failData => 'Pengurangan Jumlah';
 
   @override
+  String get finTsApproved => 'Disetujui di aplikasi bank';
+
+  @override
+  String get finTsBankCode => 'Kode bank (BLZ)';
+
+  @override
+  String get finTsConnect => 'Hubungkan';
+
+  @override
+  String get finTsCustomerId => 'ID pelanggan (jika berbeda dari ID pengguna)';
+
+  @override
+  String get finTsDateFrom => 'Impor transaksi sejak';
+
+  @override
+  String get finTsDescription =>
+      'Impor saldo dan transaksi dari bank yang mendukung FinTS 4.1 (PIN/TAN). Akses hanya baca: tidak ada pembayaran yang dilakukan.';
+
+  @override
+  String get finTsDisconnect => 'Putuskan';
+
+  @override
+  String get finTsHeadline => 'Financial Transaction Services (FinTS 4.1)';
+
+  @override
+  String get finTsImport => 'Impor transaksi';
+
+  @override
+  String finTsImported(Object added, Object pending, Object skipped) {
+    return 'Diimpor: $added, dilewati karena sudah ada: $skipped, tertunda (tidak diimpor): $pending';
+  }
+
+  @override
+  String get finTsIncomplete =>
+      'Isi URL server, kode bank, ID pengguna, dan nomor registrasi produk';
+
+  @override
+  String finTsLoginChanged(Object value) {
+    return 'Bank telah mengubah data masuk, perbarui ID pengguna atau ID pelanggan: $value';
+  }
+
+  @override
+  String finTsLoginRefused(Object value) {
+    return 'Bank menolak login sebelumnya: $value. Coba lagi dengan PIN yang dimasukkan?';
+  }
+
+  @override
+  String get finTsNoAccounts => 'Bank tidak memberikan rekening apa pun';
+
+  @override
+  String get finTsPin => 'PIN';
+
+  @override
+  String get finTsPinHint =>
+      'Hanya digunakan untuk sesi ini dan tidak pernah disimpan';
+
+  @override
+  String get finTsProductId => 'Nomor registrasi produk';
+
+  @override
+  String get finTsProductIdTooltip =>
+      'Diterbitkan oleh Deutsche Kreditwirtschaft untuk pembuat aplikasi';
+
+  @override
+  String get finTsSelectTarget =>
+      'Pilih rekening dan kategori anggaran tujuan impor';
+
+  @override
+  String get finTsTan => 'TAN';
+
+  @override
+  String get finTsTanHeadline => 'Autentikasi transaksi (TAN)';
+
+  @override
+  String get finTsTanMedium => 'Pilih media TAN';
+
+  @override
+  String get finTsTanMethod => 'Pilih metode TAN';
+
+  @override
+  String get finTsUrl => 'URL server FinTS bank';
+
+  @override
+  String get finTsUserId => 'ID pengguna (login)';
+
+  @override
+  String get finTsVersion => 'Versi protokol';
+
+  @override
+  String get finTsWebUnsupported =>
+      'Server bank tidak mengizinkan akses dari browser. Gunakan aplikasi desktop atau seluler.';
+
+  @override
   String get flowTypeInvoice => 'Faktur';
 
   @override
@@ -705,6 +798,9 @@ class AppLocalizationsId extends AppLocalizations {
 
   @override
   String get incomeTooltip => 'Atur Detail Pemasukan';
+
+  @override
+  String get integrationHeadline => 'Integrasi';
 
   @override
   String get invoiceHeadline => 'Faktur';

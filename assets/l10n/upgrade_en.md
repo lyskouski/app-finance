@@ -2,6 +2,12 @@
 
 _The full list of updates can be viewed via the "About" navigation item on the "Hints" button._
 
+### 8.0.0
+- Introducing the Integrations page with expandable sections
+- Adding Financial Transaction Services (FinTS 4.1): accounts, balances, and import of transactions from German banks
+- Fixing conversion rate precision
+- Simplifying the first start and upgrading to Flutter 3.50
+
 ### 7.3.0
 - Adding Indonesian (ID) localization
 - Improving currency precision for exchanges

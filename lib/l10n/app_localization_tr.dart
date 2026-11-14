@@ -638,6 +638,100 @@ class AppLocalizationsTr extends AppLocalizations {
   String get failData => 'Tutar Kesintisi';
 
   @override
+  String get finTsApproved => 'Banka uygulamasında onaylandı';
+
+  @override
+  String get finTsBankCode => 'Banka kodu (BLZ)';
+
+  @override
+  String get finTsConnect => 'Bağlan';
+
+  @override
+  String get finTsCustomerId =>
+      'Müşteri kimliği (kullanıcı kimliğinden farklıysa)';
+
+  @override
+  String get finTsDateFrom => 'İşlemleri şu tarihten itibaren içe aktar';
+
+  @override
+  String get finTsDescription =>
+      'FinTS 4.1 (PIN/TAN) destekleyen bankalardan bakiyeleri ve işlemleri içe aktarın. Erişim salt okunurdur: ödeme yapılmaz.';
+
+  @override
+  String get finTsDisconnect => 'Bağlantıyı kes';
+
+  @override
+  String get finTsHeadline => 'Financial Transaction Services (FinTS 4.1)';
+
+  @override
+  String get finTsImport => 'İşlemleri içe aktar';
+
+  @override
+  String finTsImported(Object added, Object pending, Object skipped) {
+    return 'İçe aktarılan: $added, zaten mevcut olduğu için atlanan: $skipped, bekleyen (içe aktarılmayan): $pending';
+  }
+
+  @override
+  String get finTsIncomplete =>
+      'Sunucu URL\'sini, banka kodunu, kullanıcı kimliğini ve ürün kayıt numarasını doldurun';
+
+  @override
+  String finTsLoginChanged(Object value) {
+    return 'Banka giriş bilgilerini değiştirdi, kullanıcı veya müşteri kimliğini güncelleyin: $value';
+  }
+
+  @override
+  String finTsLoginRefused(Object value) {
+    return 'Banka önceki girişi reddetti: $value. Girilen PIN ile yeniden denensin mi?';
+  }
+
+  @override
+  String get finTsNoAccounts => 'Banka herhangi bir hesap sağlamadı';
+
+  @override
+  String get finTsPin => 'PIN';
+
+  @override
+  String get finTsPinHint =>
+      'Yalnızca bu oturum için kullanılır ve asla saklanmaz';
+
+  @override
+  String get finTsProductId => 'Ürün kayıt numarası';
+
+  @override
+  String get finTsProductIdTooltip =>
+      'Deutsche Kreditwirtschaft tarafından uygulama üreticisine verilir';
+
+  @override
+  String get finTsSelectTarget =>
+      'İçe aktarılacak hesabı ve bütçe kategorisini seçin';
+
+  @override
+  String get finTsTan => 'TAN';
+
+  @override
+  String get finTsTanHeadline => 'İşlem doğrulama (TAN)';
+
+  @override
+  String get finTsTanMedium => 'TAN aracını seçin';
+
+  @override
+  String get finTsTanMethod => 'TAN yöntemini seçin';
+
+  @override
+  String get finTsUrl => 'Bankanın FinTS sunucu URL\'si';
+
+  @override
+  String get finTsUserId => 'Kullanıcı kimliği (giriş)';
+
+  @override
+  String get finTsVersion => 'Protokol sürümü';
+
+  @override
+  String get finTsWebUnsupported =>
+      'Banka sunucuları tarayıcıdan erişime izin vermez. Masaüstü veya mobil uygulamayı kullanın.';
+
+  @override
   String get flowTypeInvoice => 'Invoice';
 
   @override
@@ -704,6 +798,9 @@ class AppLocalizationsTr extends AppLocalizations {
 
   @override
   String get incomeTooltip => 'Gelir Ayrıntılarını Ayarla';
+
+  @override
+  String get integrationHeadline => 'Entegrasyonlar';
 
   @override
   String get invoiceHeadline => 'Invoices';

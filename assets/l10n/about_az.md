@@ -73,6 +73,8 @@ Bu, istifadəçilərə heç kimin geridə qalmamasını təmin etməklə öz mal
 - Cihazlar arasında sinxronizasiya (P2P)
 - WebDav və ya birbaşa Fayl vasitəsilə bərpa
 - Hesablar və Fakturalar üçün `CSV`, `QIF`, `OFX` fayllarından idxal edin
+- İnteqrasiyalar
+  - Financial Transaction Services (FinTS 4.1): Alman banklarından qalıqların və əməliyyatların idxalı (PIN/TAN)
 - Excel `XLSX` faylına ixrac edin
 - Məlumatların şifrələnməsi
 - Lokallaşdırma

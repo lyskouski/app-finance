@@ -639,6 +639,100 @@ class AppLocalizationsUk extends AppLocalizations {
   String get failData => 'Сума відрахування';
 
   @override
+  String get finTsApproved => 'Підтверджено в банківському застосунку';
+
+  @override
+  String get finTsBankCode => 'Код банку (BLZ)';
+
+  @override
+  String get finTsConnect => 'Підключитися';
+
+  @override
+  String get finTsCustomerId =>
+      'ID клієнта (якщо відрізняється від ID користувача)';
+
+  @override
+  String get finTsDateFrom => 'Імпортувати операції з';
+
+  @override
+  String get finTsDescription =>
+      'Імпорт залишків і операцій із банків, що підтримують FinTS 4.1 (PIN/TAN). Доступ лише для читання: платежі не виконуються.';
+
+  @override
+  String get finTsDisconnect => 'Відключитися';
+
+  @override
+  String get finTsHeadline => 'Financial Transaction Services (FinTS 4.1)';
+
+  @override
+  String get finTsImport => 'Імпортувати операції';
+
+  @override
+  String finTsImported(Object added, Object pending, Object skipped) {
+    return 'Імпортовано: $added, пропущено як наявні: $skipped, в обробці (не імпортовано): $pending';
+  }
+
+  @override
+  String get finTsIncomplete =>
+      'Заповніть URL сервера, код банку, ID користувача та реєстраційний номер продукту';
+
+  @override
+  String finTsLoginChanged(Object value) {
+    return 'Банк змінив дані для входу, оновіть ID користувача або ID клієнта: $value';
+  }
+
+  @override
+  String finTsLoginRefused(Object value) {
+    return 'Банк відхилив попередній вхід: $value. Повторити з введеним PIN?';
+  }
+
+  @override
+  String get finTsNoAccounts => 'Банк не надав жодного рахунку';
+
+  @override
+  String get finTsPin => 'PIN';
+
+  @override
+  String get finTsPinHint =>
+      'Використовується лише в цьому сеансі й ніколи не зберігається';
+
+  @override
+  String get finTsProductId => 'Реєстраційний номер продукту';
+
+  @override
+  String get finTsProductIdTooltip =>
+      'Видається Deutsche Kreditwirtschaft розробнику застосунку';
+
+  @override
+  String get finTsSelectTarget =>
+      'Оберіть рахунок і категорію бюджету для імпорту';
+
+  @override
+  String get finTsTan => 'TAN';
+
+  @override
+  String get finTsTanHeadline => 'Підтвердження операції (TAN)';
+
+  @override
+  String get finTsTanMedium => 'Оберіть носій TAN';
+
+  @override
+  String get finTsTanMethod => 'Оберіть спосіб TAN';
+
+  @override
+  String get finTsUrl => 'URL сервера FinTS банку';
+
+  @override
+  String get finTsUserId => 'ID користувача (логін)';
+
+  @override
+  String get finTsVersion => 'Версія протоколу';
+
+  @override
+  String get finTsWebUnsupported =>
+      'Сервери банків не дозволяють доступ із браузера. Використовуйте настільний або мобільний застосунок.';
+
+  @override
   String get flowTypeInvoice => 'Прибуток';
 
   @override
@@ -705,6 +799,9 @@ class AppLocalizationsUk extends AppLocalizations {
 
   @override
   String get incomeTooltip => 'Встановіть відомості про дохід';
+
+  @override
+  String get integrationHeadline => 'Інтеграції';
 
   @override
   String get invoiceHeadline => 'Фактури';

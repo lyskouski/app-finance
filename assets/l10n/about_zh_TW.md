@@ -73,6 +73,8 @@
 - 裝置間同步 (P2P)
 - 透過 WebDav 或直接檔案復原
 - 從「CSV」、「QIF」、「OFX」檔案匯入帳單和發票
+- 整合
+  - Financial Transaction Services (FinTS 4.1)：從德國銀行匯入餘額與交易（PIN/TAN）
 - 匯出到 Excel「XLSX」文件
 - 資料加密
 - 本地化

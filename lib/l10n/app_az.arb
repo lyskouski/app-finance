@@ -263,6 +263,54 @@
         }
     },
     "failData": "Məbləğin tutulması",
+    "finTsApproved": "Bank tətbiqində təsdiqləndi",
+    "finTsBankCode": "Bank kodu (BLZ)",
+    "finTsConnect": "Qoşul",
+    "finTsCustomerId": "Müştəri ID-si (istifadəçi ID-sindən fərqlidirsə)",
+    "finTsDateFrom": "Əməliyyatları bu tarixdən idxal et",
+    "finTsDescription": "FinTS 4.1 (PIN/TAN) dəstəkləyən banklardan qalıqları və əməliyyatları idxal edin. Giriş yalnız oxumaq üçündür: ödənişlər edilmir.",
+    "finTsDisconnect": "Ayrıl",
+    "finTsHeadline": "Financial Transaction Services (FinTS 4.1)",
+    "finTsImport": "Əməliyyatları idxal et",
+    "finTsImported": "İdxal edildi: {added}, artıq mövcud olduğu üçün buraxıldı: {skipped}, gözləmədə (idxal edilmədi): {pending}",
+    "@finTsImported": {
+        "added": {
+            "type": "int"
+        },
+        "skipped": {
+            "type": "int"
+        },
+        "pending": {
+            "type": "int"
+        }
+    },
+    "finTsIncomplete": "Server URL-ni, bank kodunu, istifadəçi ID-sini və məhsulun qeydiyyat nömrəsini doldurun",
+    "finTsLoginChanged": "Bank giriş məlumatlarını dəyişdi, istifadəçi və ya müştəri ID-sini yeniləyin: {value}",
+    "@finTsLoginChanged": {
+        "value": {
+            "type": "String"
+        }
+    },
+    "finTsLoginRefused": "Bank əvvəlki girişi rədd etdi: {value}. Daxil edilmiş PIN ilə yenidən cəhd edilsin?",
+    "@finTsLoginRefused": {
+        "value": {
+            "type": "String"
+        }
+    },
+    "finTsNoAccounts": "Bank heç bir hesab təqdim etmədi",
+    "finTsPin": "PIN",
+    "finTsPinHint": "Yalnız bu sessiya üçün istifadə olunur və heç vaxt saxlanılmır",
+    "finTsProductId": "Məhsulun qeydiyyat nömrəsi",
+    "finTsProductIdTooltip": "Deutsche Kreditwirtschaft tərəfindən tətbiqin istehsalçısına verilir",
+    "finTsSelectTarget": "İdxal üçün hesabı və büdcə kateqoriyasını seçin",
+    "finTsTan": "TAN",
+    "finTsTanHeadline": "Əməliyyatın təsdiqi (TAN)",
+    "finTsTanMedium": "TAN vasitəsini seçin",
+    "finTsTanMethod": "TAN üsulunu seçin",
+    "finTsUrl": "Bankın FinTS server URL-i",
+    "finTsUserId": "İstifadəçi ID-si (giriş)",
+    "finTsVersion": "Protokol versiyası",
+    "finTsWebUnsupported": "Bank serverləri brauzerdən girişə icazə vermir. Masaüstü və ya mobil tətbiqdən istifadə edin.",
     "flowTypeInvoice": "Invoice",
     "flowTypeTooltip": "Məbləğ növü: faktura, faktura",
     "forecastData": "Proqnoz",
@@ -290,6 +338,7 @@
     "incomeHeadline": "Gəlir",
     "incomeHealth": "Gəlir Sağlamlığı Radarı",
     "incomeTooltip": "Gəlir təfərrüatlarını təyin edin",
+    "integrationHeadline": "İnteqrasiyalar",
     "invoiceHeadline": "Fakturalar",
     "invoiceSum": "Fakturalar: {value}",
     "@invoiceSum": {

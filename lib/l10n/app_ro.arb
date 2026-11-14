@@ -263,6 +263,54 @@
         }
     },
     "failData": "Suma dedusă",
+    "finTsApproved": "Aprobat în aplicația băncii",
+    "finTsBankCode": "Cod bancar (BLZ)",
+    "finTsConnect": "Conectare",
+    "finTsCustomerId": "ID client (dacă diferă de ID-ul de utilizator)",
+    "finTsDateFrom": "Importă tranzacțiile din",
+    "finTsDescription": "Importă solduri și tranzacții de la băncile care acceptă FinTS 4.1 (PIN/TAN). Acces doar în citire: nu se efectuează plăți.",
+    "finTsDisconnect": "Deconectare",
+    "finTsHeadline": "Financial Transaction Services (FinTS 4.1)",
+    "finTsImport": "Importă tranzacții",
+    "finTsImported": "Importate: {added}, omise deoarece există deja: {skipped}, în așteptare (neimportate): {pending}",
+    "@finTsImported": {
+        "added": {
+            "type": "int"
+        },
+        "skipped": {
+            "type": "int"
+        },
+        "pending": {
+            "type": "int"
+        }
+    },
+    "finTsIncomplete": "Completați URL-ul serverului, codul bancar, ID-ul de utilizator și numărul de înregistrare al produsului",
+    "finTsLoginChanged": "Banca a modificat datele de autentificare, actualizați ID-ul de utilizator sau ID-ul client: {value}",
+    "@finTsLoginChanged": {
+        "value": {
+            "type": "String"
+        }
+    },
+    "finTsLoginRefused": "Banca a refuzat autentificarea anterioară: {value}. Reîncercați cu PIN-ul introdus?",
+    "@finTsLoginRefused": {
+        "value": {
+            "type": "String"
+        }
+    },
+    "finTsNoAccounts": "Banca nu a furnizat niciun cont",
+    "finTsPin": "PIN",
+    "finTsPinHint": "Folosit doar pentru această sesiune și niciodată salvat",
+    "finTsProductId": "Număr de înregistrare al produsului",
+    "finTsProductIdTooltip": "Emis de Deutsche Kreditwirtschaft producătorului aplicației",
+    "finTsSelectTarget": "Selectați contul și categoria de buget pentru import",
+    "finTsTan": "TAN",
+    "finTsTanHeadline": "Autentificarea tranzacției (TAN)",
+    "finTsTanMedium": "Selectați suportul TAN",
+    "finTsTanMethod": "Selectați metoda TAN",
+    "finTsUrl": "URL-ul serverului FinTS al băncii",
+    "finTsUserId": "ID utilizator (login)",
+    "finTsVersion": "Versiunea protocolului",
+    "finTsWebUnsupported": "Serverele băncilor nu permit accesul dintr-un browser. Folosiți aplicația desktop sau mobilă.",
     "flowTypeInvoice": "Factură",
     "flowTypeTooltip": "Tip sumă: Factură, factură",
     "forecastData": "Prognoză",
@@ -290,6 +338,7 @@
     "incomeHeadline": "Venit",
     "incomeHealth": "Radar sănătate venit",
     "incomeTooltip": "Setați detaliile privind venitul",
+    "integrationHeadline": "Integrări",
     "invoiceHeadline": "Facturi",
     "invoiceSum": "Facturi: {value}",
     "@invoiceSum": {

@@ -639,6 +639,100 @@ class AppLocalizationsBe extends AppLocalizations {
   String get failData => 'Сума выліку';
 
   @override
+  String get finTsApproved => 'Пацверджана ў банкаўскай праграме';
+
+  @override
+  String get finTsBankCode => 'Код банка (BLZ)';
+
+  @override
+  String get finTsConnect => 'Падлучыцца';
+
+  @override
+  String get finTsCustomerId =>
+      'ID кліента (калі адрозніваецца ад ID карыстальніка)';
+
+  @override
+  String get finTsDateFrom => 'Імпартаваць аперацыі з';
+
+  @override
+  String get finTsDescription =>
+      'Імпарт рэшткаў і аперацый з банкаў, якія падтрымліваюць FinTS 4.1 (PIN/TAN). Доступ толькі для чытання: плацяжы не выконваюцца.';
+
+  @override
+  String get finTsDisconnect => 'Адлучыцца';
+
+  @override
+  String get finTsHeadline => 'Financial Transaction Services (FinTS 4.1)';
+
+  @override
+  String get finTsImport => 'Імпартаваць аперацыі';
+
+  @override
+  String finTsImported(Object added, Object pending, Object skipped) {
+    return 'Імпартавана: $added, прапушчана як наяўныя: $skipped, у апрацоўцы (не імпартаваны): $pending';
+  }
+
+  @override
+  String get finTsIncomplete =>
+      'Запоўніце URL сервера, код банка, ID карыстальніка і рэгістрацыйны нумар прадукту';
+
+  @override
+  String finTsLoginChanged(Object value) {
+    return 'Банк змяніў даныя для ўваходу, абнавіце ID карыстальніка або ID кліента: $value';
+  }
+
+  @override
+  String finTsLoginRefused(Object value) {
+    return 'Банк адхіліў папярэдні ўваход: $value. Паўтарыць з уведзеным PIN?';
+  }
+
+  @override
+  String get finTsNoAccounts => 'Банк не перадаў ніводнага рахунку';
+
+  @override
+  String get finTsPin => 'PIN';
+
+  @override
+  String get finTsPinHint =>
+      'Выкарыстоўваецца толькі ў гэтым сеансе і ніколі не захоўваецца';
+
+  @override
+  String get finTsProductId => 'Рэгістрацыйны нумар прадукту';
+
+  @override
+  String get finTsProductIdTooltip =>
+      'Выдаецца Deutsche Kreditwirtschaft распрацоўшчыку праграмы';
+
+  @override
+  String get finTsSelectTarget =>
+      'Абярыце рахунак і катэгорыю бюджэту для імпарту';
+
+  @override
+  String get finTsTan => 'TAN';
+
+  @override
+  String get finTsTanHeadline => 'Пацвярджэнне аперацыі (TAN)';
+
+  @override
+  String get finTsTanMedium => 'Абярыце носьбіт TAN';
+
+  @override
+  String get finTsTanMethod => 'Абярыце спосаб TAN';
+
+  @override
+  String get finTsUrl => 'URL сервера FinTS банка';
+
+  @override
+  String get finTsUserId => 'ID карыстальніка (лагін)';
+
+  @override
+  String get finTsVersion => 'Версія пратакола';
+
+  @override
+  String get finTsWebUnsupported =>
+      'Серверы банкаў не дазваляюць доступ з браўзера. Выкарыстоўвайце настольную або мабільную праграму.';
+
+  @override
   String get flowTypeInvoice => 'Прыбытак';
 
   @override
@@ -705,6 +799,9 @@ class AppLocalizationsBe extends AppLocalizations {
 
   @override
   String get incomeTooltip => 'Усталюйце звесткі аб даходах';
+
+  @override
+  String get integrationHeadline => 'Інтэграцыі';
 
   @override
   String get invoiceHeadline => 'Фактуры';
@@ -1765,6 +1862,100 @@ class AppLocalizationsBeEu extends AppLocalizationsBe {
   String get failData => 'Suma vyliku';
 
   @override
+  String get finTsApproved => 'Pacvierdžana ŭ bankaŭskaj prahramie';
+
+  @override
+  String get finTsBankCode => 'Kod banka (BLZ)';
+
+  @override
+  String get finTsConnect => 'Padłučycca';
+
+  @override
+  String get finTsCustomerId =>
+      'ID klijenta (kali adroznivajecca ad ID karystaĺnika)';
+
+  @override
+  String get finTsDateFrom => 'Impartavać aperacyi z';
+
+  @override
+  String get finTsDescription =>
+      'Impart reštkaŭ i aperacyj z bankaŭ, jakija padtrymlivajuć FinTS 4.1 (PIN/TAN). Dostup toĺki dla čytannia: płaciažy nie vykonvajucca.';
+
+  @override
+  String get finTsDisconnect => 'Adłučycca';
+
+  @override
+  String get finTsHeadline => 'Financial Transaction Services (FinTS 4.1)';
+
+  @override
+  String get finTsImport => 'Impartavać aperacyi';
+
+  @override
+  String finTsImported(Object added, Object pending, Object skipped) {
+    return 'Impartavana: $added, prapuščana jak najaŭnyja: $skipped, u apracoŭcy (nie impartavany): $pending';
+  }
+
+  @override
+  String get finTsIncomplete =>
+      'Zapoŭnicie URL sierviera, kod banka, ID karystaĺnika i rehistracyjny numar praduktu';
+
+  @override
+  String finTsLoginChanged(Object value) {
+    return 'Bank zmianiŭ danyja dla ŭvachodu, abnavicie ID karystaĺnika abo ID klijenta: $value';
+  }
+
+  @override
+  String finTsLoginRefused(Object value) {
+    return 'Bank adchiliŭ papiaredni ŭvachod: $value. Paŭtaryć z uviedzienym PIN?';
+  }
+
+  @override
+  String get finTsNoAccounts => 'Bank nie pieradaŭ nivodnaha rachunku';
+
+  @override
+  String get finTsPin => 'PIN';
+
+  @override
+  String get finTsPinHint =>
+      'Vykarystoŭvajecca toĺki ŭ hetym sieansie i nikoli nie zachoŭvajecca';
+
+  @override
+  String get finTsProductId => 'Rehistracyjny numar praduktu';
+
+  @override
+  String get finTsProductIdTooltip =>
+      'Vydajecca Deutsche Kreditwirtschaft raspracoŭščyku prahramy';
+
+  @override
+  String get finTsSelectTarget =>
+      'Abiarycie rachunak i katehoryju biudžetu dla impartu';
+
+  @override
+  String get finTsTan => 'TAN';
+
+  @override
+  String get finTsTanHeadline => 'Pacviardžennie aperacyi (TAN)';
+
+  @override
+  String get finTsTanMedium => 'Abiarycie nośbit TAN';
+
+  @override
+  String get finTsTanMethod => 'Abiarycie sposab TAN';
+
+  @override
+  String get finTsUrl => 'URL sierviera FinTS banka';
+
+  @override
+  String get finTsUserId => 'ID karystaĺnika (łahin)';
+
+  @override
+  String get finTsVersion => 'Viersija pratakoła';
+
+  @override
+  String get finTsWebUnsupported =>
+      'Siervery bankaŭ nie dazvalajuć dostup z braŭziera. Vykarystoŭvajcie nastoĺnuju abo mabiĺnuju prahramu.';
+
+  @override
   String get flowTypeInvoice => 'Prybytak';
 
   @override
@@ -1831,6 +2022,9 @@ class AppLocalizationsBeEu extends AppLocalizationsBe {
 
   @override
   String get incomeTooltip => 'Ustaliujcie Zviestki ab Dachodach';
+
+  @override
+  String get integrationHeadline => 'Intehracyi';
 
   @override
   String get invoiceHeadline => 'Faktury';

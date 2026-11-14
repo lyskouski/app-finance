@@ -1351,6 +1351,168 @@ abstract class AppLocalizations {
   /// **'Amount Deduction'**
   String get failData;
 
+  /// No description provided for @finTsApproved.
+  ///
+  /// In en, this message translates to:
+  /// **'Approved in the Banking App'**
+  String get finTsApproved;
+
+  /// No description provided for @finTsBankCode.
+  ///
+  /// In en, this message translates to:
+  /// **'Bank Code (BLZ)'**
+  String get finTsBankCode;
+
+  /// No description provided for @finTsConnect.
+  ///
+  /// In en, this message translates to:
+  /// **'Connect'**
+  String get finTsConnect;
+
+  /// No description provided for @finTsCustomerId.
+  ///
+  /// In en, this message translates to:
+  /// **'Customer ID (if different from User ID)'**
+  String get finTsCustomerId;
+
+  /// No description provided for @finTsDateFrom.
+  ///
+  /// In en, this message translates to:
+  /// **'Import Transactions Since'**
+  String get finTsDateFrom;
+
+  /// No description provided for @finTsDescription.
+  ///
+  /// In en, this message translates to:
+  /// **'Import balances and transactions from banks supporting FinTS 4.1 (PIN/TAN). Access is read-only: no payments are made.'**
+  String get finTsDescription;
+
+  /// No description provided for @finTsDisconnect.
+  ///
+  /// In en, this message translates to:
+  /// **'Disconnect'**
+  String get finTsDisconnect;
+
+  /// No description provided for @finTsHeadline.
+  ///
+  /// In en, this message translates to:
+  /// **'Financial Transaction Services (FinTS 4.1)'**
+  String get finTsHeadline;
+
+  /// No description provided for @finTsImport.
+  ///
+  /// In en, this message translates to:
+  /// **'Import Transactions'**
+  String get finTsImport;
+
+  /// No description provided for @finTsImported.
+  ///
+  /// In en, this message translates to:
+  /// **'Imported: {added}, skipped as already present: {skipped}, pending (not imported): {pending}'**
+  String finTsImported(Object added, Object pending, Object skipped);
+
+  /// No description provided for @finTsIncomplete.
+  ///
+  /// In en, this message translates to:
+  /// **'Fill in the server URL, bank code, user ID and product registration ID'**
+  String get finTsIncomplete;
+
+  /// No description provided for @finTsLoginChanged.
+  ///
+  /// In en, this message translates to:
+  /// **'The bank has changed the login data, update the User ID or Customer ID: {value}'**
+  String finTsLoginChanged(Object value);
+
+  /// No description provided for @finTsLoginRefused.
+  ///
+  /// In en, this message translates to:
+  /// **'The bank refused the previous login: {value}. Retry with the entered PIN?'**
+  String finTsLoginRefused(Object value);
+
+  /// No description provided for @finTsNoAccounts.
+  ///
+  /// In en, this message translates to:
+  /// **'The bank has provided no accounts'**
+  String get finTsNoAccounts;
+
+  /// No description provided for @finTsPin.
+  ///
+  /// In en, this message translates to:
+  /// **'PIN'**
+  String get finTsPin;
+
+  /// No description provided for @finTsPinHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Used for this session only and never stored'**
+  String get finTsPinHint;
+
+  /// No description provided for @finTsProductId.
+  ///
+  /// In en, this message translates to:
+  /// **'Product Registration ID'**
+  String get finTsProductId;
+
+  /// No description provided for @finTsProductIdTooltip.
+  ///
+  /// In en, this message translates to:
+  /// **'Issued by the Deutsche Kreditwirtschaft to the application\'s vendor'**
+  String get finTsProductIdTooltip;
+
+  /// No description provided for @finTsSelectTarget.
+  ///
+  /// In en, this message translates to:
+  /// **'Select the account and the budget category to import into'**
+  String get finTsSelectTarget;
+
+  /// No description provided for @finTsTan.
+  ///
+  /// In en, this message translates to:
+  /// **'TAN'**
+  String get finTsTan;
+
+  /// No description provided for @finTsTanHeadline.
+  ///
+  /// In en, this message translates to:
+  /// **'Transaction Authentication (TAN)'**
+  String get finTsTanHeadline;
+
+  /// No description provided for @finTsTanMedium.
+  ///
+  /// In en, this message translates to:
+  /// **'Select TAN Medium'**
+  String get finTsTanMedium;
+
+  /// No description provided for @finTsTanMethod.
+  ///
+  /// In en, this message translates to:
+  /// **'Select TAN Method'**
+  String get finTsTanMethod;
+
+  /// No description provided for @finTsUrl.
+  ///
+  /// In en, this message translates to:
+  /// **'Bank\'s FinTS Server URL'**
+  String get finTsUrl;
+
+  /// No description provided for @finTsUserId.
+  ///
+  /// In en, this message translates to:
+  /// **'User ID (Login)'**
+  String get finTsUserId;
+
+  /// No description provided for @finTsVersion.
+  ///
+  /// In en, this message translates to:
+  /// **'Protocol Version'**
+  String get finTsVersion;
+
+  /// No description provided for @finTsWebUnsupported.
+  ///
+  /// In en, this message translates to:
+  /// **'Bank servers do not allow access from a browser. Use the desktop or mobile application.'**
+  String get finTsWebUnsupported;
+
   /// No description provided for @flowTypeInvoice.
   ///
   /// In en, this message translates to:
@@ -1482,6 +1644,12 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Set Income Details'**
   String get incomeTooltip;
+
+  /// No description provided for @integrationHeadline.
+  ///
+  /// In en, this message translates to:
+  /// **'Integrations'**
+  String get integrationHeadline;
 
   /// No description provided for @invoiceHeadline.
   ///

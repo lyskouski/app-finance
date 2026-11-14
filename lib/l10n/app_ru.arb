@@ -263,6 +263,54 @@
         }
     },
     "failData": "Размер вычета",
+    "finTsApproved": "Подтверждено в банковском приложении",
+    "finTsBankCode": "Код банка (BLZ)",
+    "finTsConnect": "Подключиться",
+    "finTsCustomerId": "ID клиента (если отличается от ID пользователя)",
+    "finTsDateFrom": "Импортировать операции с",
+    "finTsDescription": "Импорт остатков и операций из банков с поддержкой FinTS 4.1 (PIN/TAN). Доступ только для чтения: платежи не выполняются.",
+    "finTsDisconnect": "Отключиться",
+    "finTsHeadline": "Financial Transaction Services (FinTS 4.1)",
+    "finTsImport": "Импортировать операции",
+    "finTsImported": "Импортировано: {added}, пропущено как уже существующие: {skipped}, в обработке (не импортированы): {pending}",
+    "@finTsImported": {
+        "added": {
+            "type": "int"
+        },
+        "skipped": {
+            "type": "int"
+        },
+        "pending": {
+            "type": "int"
+        }
+    },
+    "finTsIncomplete": "Заполните URL сервера, код банка, ID пользователя и регистрационный номер продукта",
+    "finTsLoginChanged": "Банк изменил данные для входа, обновите ID пользователя или ID клиента: {value}",
+    "@finTsLoginChanged": {
+        "value": {
+            "type": "String"
+        }
+    },
+    "finTsLoginRefused": "Банк отклонил предыдущий вход: {value}. Повторить с введённым PIN?",
+    "@finTsLoginRefused": {
+        "value": {
+            "type": "String"
+        }
+    },
+    "finTsNoAccounts": "Банк не предоставил ни одного счёта",
+    "finTsPin": "PIN",
+    "finTsPinHint": "Используется только в этом сеансе и никогда не сохраняется",
+    "finTsProductId": "Регистрационный номер продукта",
+    "finTsProductIdTooltip": "Выдаётся Deutsche Kreditwirtschaft разработчику приложения",
+    "finTsSelectTarget": "Выберите счёт и категорию бюджета для импорта",
+    "finTsTan": "TAN",
+    "finTsTanHeadline": "Подтверждение операции (TAN)",
+    "finTsTanMedium": "Выберите носитель TAN",
+    "finTsTanMethod": "Выберите способ TAN",
+    "finTsUrl": "URL сервера FinTS банка",
+    "finTsUserId": "ID пользователя (логин)",
+    "finTsVersion": "Версия протокола",
+    "finTsWebUnsupported": "Серверы банков не разрешают доступ из браузера. Используйте настольное или мобильное приложение.",
     "flowTypeInvoice": "Приход",
     "flowTypeTooltip": "Тип суммы: Чек, Приход",
     "forecastData": "Прогноз",
@@ -290,6 +338,7 @@
     "incomeHeadline": "Доход",
     "incomeHealth": "Радар здоровья доходов",
     "incomeTooltip": "Установить детали дохода",
+    "integrationHeadline": "Интеграции",
     "invoiceHeadline": "Доходы",
     "invoiceSum": "Доходы: {value}",
     "@invoiceSum": {

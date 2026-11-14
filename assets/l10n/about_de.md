@@ -74,6 +74,8 @@ zurückgelassen wird.
 - Synchronisierung zwischen Geräten (P2P)
 - Wiederherstellung über WebDav oder eine direkte Datei
 - Import von `CSV`, `QIF`, `OFX` Dateien für Rechnungen und Rechnungen
+- Integrationen
+  - Financial Transaction Services (FinTS 4.1): Import von Salden und Umsätzen deutscher Banken (PIN/TAN)
 - Exportieren in die Excel-Datei `XLSX`
 - Verschlüsselung der Daten
 - Lokalisierung

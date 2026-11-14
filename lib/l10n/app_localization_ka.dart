@@ -639,6 +639,100 @@ class AppLocalizationsKa extends AppLocalizations {
   String get failData => 'თანხის შემცირება';
 
   @override
+  String get finTsApproved => 'დადასტურებულია ბანკის აპლიკაციაში';
+
+  @override
+  String get finTsBankCode => 'ბანკის კოდი (BLZ)';
+
+  @override
+  String get finTsConnect => 'დაკავშირება';
+
+  @override
+  String get finTsCustomerId =>
+      'კლიენტის ID (თუ განსხვავდება მომხმარებლის ID-სგან)';
+
+  @override
+  String get finTsDateFrom => 'ტრანზაქციების იმპორტი თარიღიდან';
+
+  @override
+  String get finTsDescription =>
+      'ნაშთებისა და ტრანზაქციების იმპორტი ბანკებიდან, რომლებიც მხარს უჭერენ FinTS 4.1-ს (PIN/TAN). წვდომა მხოლოდ წაკითხვისთვისაა: გადახდები არ სრულდება.';
+
+  @override
+  String get finTsDisconnect => 'გათიშვა';
+
+  @override
+  String get finTsHeadline => 'Financial Transaction Services (FinTS 4.1)';
+
+  @override
+  String get finTsImport => 'ტრანზაქციების იმპორტი';
+
+  @override
+  String finTsImported(Object added, Object pending, Object skipped) {
+    return 'იმპორტირებულია: $added, გამოტოვებულია, როგორც უკვე არსებული: $skipped, მოლოდინში (არ არის იმპორტირებული): $pending';
+  }
+
+  @override
+  String get finTsIncomplete =>
+      'შეავსეთ სერვერის URL, ბანკის კოდი, მომხმარებლის ID და პროდუქტის სარეგისტრაციო ნომერი';
+
+  @override
+  String finTsLoginChanged(Object value) {
+    return 'ბანკმა შეცვალა შესვლის მონაცემები, განაახლეთ მომხმარებლის ან კლიენტის ID: $value';
+  }
+
+  @override
+  String finTsLoginRefused(Object value) {
+    return 'ბანკმა უარყო წინა შესვლა: $value. ვცადოთ ხელახლა შეყვანილი PIN-ით?';
+  }
+
+  @override
+  String get finTsNoAccounts => 'ბანკს არცერთი ანგარიში არ მოუწოდებია';
+
+  @override
+  String get finTsPin => 'PIN';
+
+  @override
+  String get finTsPinHint =>
+      'გამოიყენება მხოლოდ ამ სესიისთვის და არასოდეს ინახება';
+
+  @override
+  String get finTsProductId => 'პროდუქტის სარეგისტრაციო ნომერი';
+
+  @override
+  String get finTsProductIdTooltip =>
+      'გაიცემა Deutsche Kreditwirtschaft-ის მიერ აპლიკაციის მწარმოებლისთვის';
+
+  @override
+  String get finTsSelectTarget =>
+      'აირჩიეთ ანგარიში და ბიუჯეტის კატეგორია იმპორტისთვის';
+
+  @override
+  String get finTsTan => 'TAN';
+
+  @override
+  String get finTsTanHeadline => 'ტრანზაქციის დადასტურება (TAN)';
+
+  @override
+  String get finTsTanMedium => 'აირჩიეთ TAN მატარებელი';
+
+  @override
+  String get finTsTanMethod => 'აირჩიეთ TAN მეთოდი';
+
+  @override
+  String get finTsUrl => 'ბანკის FinTS სერვერის URL';
+
+  @override
+  String get finTsUserId => 'მომხმარებლის ID (ლოგინი)';
+
+  @override
+  String get finTsVersion => 'პროტოკოლის ვერსია';
+
+  @override
+  String get finTsWebUnsupported =>
+      'ბანკის სერვერები არ იძლევიან ბრაუზერიდან წვდომის საშუალებას. გამოიყენეთ დესკტოპის ან მობილური აპლიკაცია.';
+
+  @override
   String get flowTypeInvoice => 'ინვოისი';
 
   @override
@@ -705,6 +799,9 @@ class AppLocalizationsKa extends AppLocalizations {
 
   @override
   String get incomeTooltip => 'შემოსავლის დეტალების დაყენება';
+
+  @override
+  String get integrationHeadline => 'ინტეგრაციები';
 
   @override
   String get invoiceHeadline => 'ინვოისები';

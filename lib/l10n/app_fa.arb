@@ -263,6 +263,54 @@
         }
     },
     "failData": "کسر مبلغ",
+    "finTsApproved": "در برنامه بانک تأیید شد",
+    "finTsBankCode": "کد بانک (BLZ)",
+    "finTsConnect": "اتصال",
+    "finTsCustomerId": "شناسه مشتری (اگر با شناسه کاربر متفاوت است)",
+    "finTsDateFrom": "وارد کردن تراکنش‌ها از تاریخ",
+    "finTsDescription": "وارد کردن موجودی‌ها و تراکنش‌ها از بانک‌هایی که از FinTS 4.1 (PIN/TAN) پشتیبانی می‌کنند. دسترسی فقط خواندنی است: هیچ پرداختی انجام نمی‌شود.",
+    "finTsDisconnect": "قطع اتصال",
+    "finTsHeadline": "Financial Transaction Services (FinTS 4.1)",
+    "finTsImport": "وارد کردن تراکنش‌ها",
+    "finTsImported": "وارد شده: {added}، رد شده به دلیل وجود قبلی: {skipped}، در انتظار (وارد نشده): {pending}",
+    "@finTsImported": {
+        "added": {
+            "type": "int"
+        },
+        "skipped": {
+            "type": "int"
+        },
+        "pending": {
+            "type": "int"
+        }
+    },
+    "finTsIncomplete": "نشانی URL سرور، کد بانک، شناسه کاربر و شماره ثبت محصول را وارد کنید",
+    "finTsLoginChanged": "بانک اطلاعات ورود را تغییر داده است، شناسه کاربر یا شناسه مشتری را به‌روز کنید: {value}",
+    "@finTsLoginChanged": {
+        "value": {
+            "type": "String"
+        }
+    },
+    "finTsLoginRefused": "بانک ورود قبلی را رد کرد: {value}. با PIN واردشده دوباره تلاش شود؟",
+    "@finTsLoginRefused": {
+        "value": {
+            "type": "String"
+        }
+    },
+    "finTsNoAccounts": "بانک هیچ حسابی ارائه نکرده است",
+    "finTsPin": "PIN",
+    "finTsPinHint": "فقط برای این نشست استفاده می‌شود و هرگز ذخیره نمی‌شود",
+    "finTsProductId": "شماره ثبت محصول",
+    "finTsProductIdTooltip": "توسط Deutsche Kreditwirtschaft به سازنده برنامه اعطا می‌شود",
+    "finTsSelectTarget": "حساب و دسته بودجه را برای وارد کردن انتخاب کنید",
+    "finTsTan": "TAN",
+    "finTsTanHeadline": "احراز هویت تراکنش (TAN)",
+    "finTsTanMedium": "انتخاب رسانه TAN",
+    "finTsTanMethod": "انتخاب روش TAN",
+    "finTsUrl": "نشانی URL سرور FinTS بانک",
+    "finTsUserId": "شناسه کاربر (ورود)",
+    "finTsVersion": "نسخه پروتکل",
+    "finTsWebUnsupported": "سرورهای بانک اجازه دسترسی از مرورگر را نمی‌دهند. از برنامه دسکتاپ یا موبایل استفاده کنید.",
     "flowTypeInvoice": "صورتحساب",
     "flowTypeTooltip": "نوع مبلغ: قبض، فاکتور",
     "forecastData": "پیش بینی",
@@ -290,6 +338,7 @@
     "incomeHeadline": "درآمد",
     "incomeHealth": "رادار سلامت درآمد",
     "incomeTooltip": "تنظیم جزئیات درآمد",
+    "integrationHeadline": "یکپارچه‌سازی‌ها",
     "invoiceHeadline": "فاکتورها",
     "invoiceSum": "فاکتورها: {value}",
     "@invoiceSum": {

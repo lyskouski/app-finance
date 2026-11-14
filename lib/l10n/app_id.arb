@@ -263,6 +263,54 @@
         }
     },
     "failData": "Pengurangan Jumlah",
+    "finTsApproved": "Disetujui di aplikasi bank",
+    "finTsBankCode": "Kode bank (BLZ)",
+    "finTsConnect": "Hubungkan",
+    "finTsCustomerId": "ID pelanggan (jika berbeda dari ID pengguna)",
+    "finTsDateFrom": "Impor transaksi sejak",
+    "finTsDescription": "Impor saldo dan transaksi dari bank yang mendukung FinTS 4.1 (PIN/TAN). Akses hanya baca: tidak ada pembayaran yang dilakukan.",
+    "finTsDisconnect": "Putuskan",
+    "finTsHeadline": "Financial Transaction Services (FinTS 4.1)",
+    "finTsImport": "Impor transaksi",
+    "finTsImported": "Diimpor: {added}, dilewati karena sudah ada: {skipped}, tertunda (tidak diimpor): {pending}",
+    "@finTsImported": {
+        "added": {
+            "type": "int"
+        },
+        "skipped": {
+            "type": "int"
+        },
+        "pending": {
+            "type": "int"
+        }
+    },
+    "finTsIncomplete": "Isi URL server, kode bank, ID pengguna, dan nomor registrasi produk",
+    "finTsLoginChanged": "Bank telah mengubah data masuk, perbarui ID pengguna atau ID pelanggan: {value}",
+    "@finTsLoginChanged": {
+        "value": {
+            "type": "String"
+        }
+    },
+    "finTsLoginRefused": "Bank menolak login sebelumnya: {value}. Coba lagi dengan PIN yang dimasukkan?",
+    "@finTsLoginRefused": {
+        "value": {
+            "type": "String"
+        }
+    },
+    "finTsNoAccounts": "Bank tidak memberikan rekening apa pun",
+    "finTsPin": "PIN",
+    "finTsPinHint": "Hanya digunakan untuk sesi ini dan tidak pernah disimpan",
+    "finTsProductId": "Nomor registrasi produk",
+    "finTsProductIdTooltip": "Diterbitkan oleh Deutsche Kreditwirtschaft untuk pembuat aplikasi",
+    "finTsSelectTarget": "Pilih rekening dan kategori anggaran tujuan impor",
+    "finTsTan": "TAN",
+    "finTsTanHeadline": "Autentikasi transaksi (TAN)",
+    "finTsTanMedium": "Pilih media TAN",
+    "finTsTanMethod": "Pilih metode TAN",
+    "finTsUrl": "URL server FinTS bank",
+    "finTsUserId": "ID pengguna (login)",
+    "finTsVersion": "Versi protokol",
+    "finTsWebUnsupported": "Server bank tidak mengizinkan akses dari browser. Gunakan aplikasi desktop atau seluler.",
     "flowTypeInvoice": "Faktur",
     "flowTypeTooltip": "Jenis Jumlah: Tagihan, Faktur",
     "forecastData": "Prakiraan",
@@ -290,6 +338,7 @@
     "incomeHeadline": "Pemasukan",
     "incomeHealth": "Radar Kesehatan Pemasukan",
     "incomeTooltip": "Atur Detail Pemasukan",
+    "integrationHeadline": "Integrasi",
     "invoiceHeadline": "Faktur",
     "invoiceSum": "Faktur: {value}",
     "@invoiceSum": {

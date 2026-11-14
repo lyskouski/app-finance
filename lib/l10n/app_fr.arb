@@ -263,6 +263,54 @@
         }
     },
     "failData": "Montant de la déduction",
+    "finTsApproved": "Approuvé dans l'application bancaire",
+    "finTsBankCode": "Code bancaire (BLZ)",
+    "finTsConnect": "Se connecter",
+    "finTsCustomerId": "Identifiant client (s'il diffère de l'identifiant utilisateur)",
+    "finTsDateFrom": "Importer les opérations depuis",
+    "finTsDescription": "Importez les soldes et les opérations des banques prenant en charge FinTS 4.1 (PIN/TAN). Accès en lecture seule : aucun paiement n'est effectué.",
+    "finTsDisconnect": "Se déconnecter",
+    "finTsHeadline": "Financial Transaction Services (FinTS 4.1)",
+    "finTsImport": "Importer les opérations",
+    "finTsImported": "Importées : {added}, ignorées car déjà présentes : {skipped}, en attente (non importées) : {pending}",
+    "@finTsImported": {
+        "added": {
+            "type": "int"
+        },
+        "skipped": {
+            "type": "int"
+        },
+        "pending": {
+            "type": "int"
+        }
+    },
+    "finTsIncomplete": "Renseignez l'URL du serveur, le code bancaire, l'identifiant utilisateur et le numéro d'enregistrement du produit",
+    "finTsLoginChanged": "La banque a modifié les données de connexion, mettez à jour l'identifiant utilisateur ou client : {value}",
+    "@finTsLoginChanged": {
+        "value": {
+            "type": "String"
+        }
+    },
+    "finTsLoginRefused": "La banque a refusé la connexion précédente : {value}. Réessayer avec le PIN saisi ?",
+    "@finTsLoginRefused": {
+        "value": {
+            "type": "String"
+        }
+    },
+    "finTsNoAccounts": "La banque n'a fourni aucun compte",
+    "finTsPin": "PIN",
+    "finTsPinHint": "Utilisé uniquement pour cette session et jamais enregistré",
+    "finTsProductId": "Numéro d'enregistrement du produit",
+    "finTsProductIdTooltip": "Attribué par la Deutsche Kreditwirtschaft à l'éditeur de l'application",
+    "finTsSelectTarget": "Sélectionnez le compte et la catégorie de budget pour l'importation",
+    "finTsTan": "TAN",
+    "finTsTanHeadline": "Authentification de l'opération (TAN)",
+    "finTsTanMedium": "Choisir le support TAN",
+    "finTsTanMethod": "Choisir la méthode TAN",
+    "finTsUrl": "URL du serveur FinTS de la banque",
+    "finTsUserId": "Identifiant utilisateur (login)",
+    "finTsVersion": "Version du protocole",
+    "finTsWebUnsupported": "Les serveurs bancaires n'autorisent pas l'accès depuis un navigateur. Utilisez l'application de bureau ou mobile.",
     "flowTypeInvoice": "Facture",
     "flowTypeTooltip": "Type de montant : Facture",
     "forecastData": "Prévision",
@@ -290,6 +338,7 @@
     "incomeHeadline": "Revenu",
     "incomeHealth": "Radar de santé du revenu",
     "incomeTooltip": "Définir les détails du revenu",
+    "integrationHeadline": "Intégrations",
     "invoiceHeadline": "Factures",
     "invoiceSum": "Factures : {value}",
     "@invoiceSum": {

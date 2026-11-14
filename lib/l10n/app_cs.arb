@@ -263,6 +263,54 @@
         }
     },
     "failData": "Odečtená částka",
+    "finTsApproved": "Schváleno v bankovní aplikaci",
+    "finTsBankCode": "Kód banky (BLZ)",
+    "finTsConnect": "Připojit",
+    "finTsCustomerId": "ID zákazníka (pokud se liší od ID uživatele)",
+    "finTsDateFrom": "Importovat transakce od",
+    "finTsDescription": "Import zůstatků a transakcí z bank podporujících FinTS 4.1 (PIN/TAN). Přístup pouze pro čtení: neprovádějí se žádné platby.",
+    "finTsDisconnect": "Odpojit",
+    "finTsHeadline": "Financial Transaction Services (FinTS 4.1)",
+    "finTsImport": "Importovat transakce",
+    "finTsImported": "Importováno: {added}, přeskočeno jako existující: {skipped}, čekající (neimportováno): {pending}",
+    "@finTsImported": {
+        "added": {
+            "type": "int"
+        },
+        "skipped": {
+            "type": "int"
+        },
+        "pending": {
+            "type": "int"
+        }
+    },
+    "finTsIncomplete": "Vyplňte URL serveru, kód banky, ID uživatele a registrační číslo produktu",
+    "finTsLoginChanged": "Banka změnila přihlašovací údaje, aktualizujte ID uživatele nebo ID zákazníka: {value}",
+    "@finTsLoginChanged": {
+        "value": {
+            "type": "String"
+        }
+    },
+    "finTsLoginRefused": "Banka odmítla předchozí přihlášení: {value}. Zkusit znovu se zadaným PINem?",
+    "@finTsLoginRefused": {
+        "value": {
+            "type": "String"
+        }
+    },
+    "finTsNoAccounts": "Banka neposkytla žádné účty",
+    "finTsPin": "PIN",
+    "finTsPinHint": "Použije se pouze pro tuto relaci a nikdy se neukládá",
+    "finTsProductId": "Registrační číslo produktu",
+    "finTsProductIdTooltip": "Vydává Deutsche Kreditwirtschaft výrobci aplikace",
+    "finTsSelectTarget": "Vyberte účet a kategorii rozpočtu pro import",
+    "finTsTan": "TAN",
+    "finTsTanHeadline": "Ověření transakce (TAN)",
+    "finTsTanMedium": "Vyberte médium TAN",
+    "finTsTanMethod": "Vyberte metodu TAN",
+    "finTsUrl": "URL serveru FinTS banky",
+    "finTsUserId": "ID uživatele (přihlášení)",
+    "finTsVersion": "Verze protokolu",
+    "finTsWebUnsupported": "Servery bank neumožňují přístup z prohlížeče. Použijte desktopovou nebo mobilní aplikaci.",
     "flowTypeInvoice": "Faktura",
     "flowTypeTooltip": "Typ částky: Účet, faktura",
     "forecastData": "Předpověď",
@@ -290,6 +338,7 @@
     "incomeHeadline": "Příjem",
     "incomeHealth": "Radar stavu příjmů",
     "incomeTooltip": "Nastavení podrobností o příjmech",
+    "integrationHeadline": "Integrace",
     "invoiceHeadline": "Faktury",
     "invoiceSum": "Faktury: {value}",
     "@invoiceSum": {

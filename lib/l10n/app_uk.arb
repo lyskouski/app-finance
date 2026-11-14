@@ -263,6 +263,54 @@
         }
     },
     "failData": "Сума відрахування",
+    "finTsApproved": "Підтверджено в банківському застосунку",
+    "finTsBankCode": "Код банку (BLZ)",
+    "finTsConnect": "Підключитися",
+    "finTsCustomerId": "ID клієнта (якщо відрізняється від ID користувача)",
+    "finTsDateFrom": "Імпортувати операції з",
+    "finTsDescription": "Імпорт залишків і операцій із банків, що підтримують FinTS 4.1 (PIN/TAN). Доступ лише для читання: платежі не виконуються.",
+    "finTsDisconnect": "Відключитися",
+    "finTsHeadline": "Financial Transaction Services (FinTS 4.1)",
+    "finTsImport": "Імпортувати операції",
+    "finTsImported": "Імпортовано: {added}, пропущено як наявні: {skipped}, в обробці (не імпортовано): {pending}",
+    "@finTsImported": {
+        "added": {
+            "type": "int"
+        },
+        "skipped": {
+            "type": "int"
+        },
+        "pending": {
+            "type": "int"
+        }
+    },
+    "finTsIncomplete": "Заповніть URL сервера, код банку, ID користувача та реєстраційний номер продукту",
+    "finTsLoginChanged": "Банк змінив дані для входу, оновіть ID користувача або ID клієнта: {value}",
+    "@finTsLoginChanged": {
+        "value": {
+            "type": "String"
+        }
+    },
+    "finTsLoginRefused": "Банк відхилив попередній вхід: {value}. Повторити з введеним PIN?",
+    "@finTsLoginRefused": {
+        "value": {
+            "type": "String"
+        }
+    },
+    "finTsNoAccounts": "Банк не надав жодного рахунку",
+    "finTsPin": "PIN",
+    "finTsPinHint": "Використовується лише в цьому сеансі й ніколи не зберігається",
+    "finTsProductId": "Реєстраційний номер продукту",
+    "finTsProductIdTooltip": "Видається Deutsche Kreditwirtschaft розробнику застосунку",
+    "finTsSelectTarget": "Оберіть рахунок і категорію бюджету для імпорту",
+    "finTsTan": "TAN",
+    "finTsTanHeadline": "Підтвердження операції (TAN)",
+    "finTsTanMedium": "Оберіть носій TAN",
+    "finTsTanMethod": "Оберіть спосіб TAN",
+    "finTsUrl": "URL сервера FinTS банку",
+    "finTsUserId": "ID користувача (логін)",
+    "finTsVersion": "Версія протоколу",
+    "finTsWebUnsupported": "Сервери банків не дозволяють доступ із браузера. Використовуйте настільний або мобільний застосунок.",
     "flowTypeInvoice": "Прибуток",
     "flowTypeTooltip": "Тип суми: Чек, Прибуток",
     "forecastData": "Прогноз",
@@ -290,6 +338,7 @@
     "incomeHeadline": "Дохід",
     "incomeHealth": "Радар здоров'я доходів",
     "incomeTooltip": "Встановіть відомості про дохід",
+    "integrationHeadline": "Інтеграції",
     "invoiceHeadline": "Фактури",
     "invoiceSum": "Фактури: {value}",
     "@invoiceSum": {

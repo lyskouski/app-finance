@@ -641,6 +641,100 @@ class AppLocalizationsDe extends AppLocalizations {
   String get failData => 'Abgezogener Betrag';
 
   @override
+  String get finTsApproved => 'In der Banking-App freigegeben';
+
+  @override
+  String get finTsBankCode => 'Bankleitzahl (BLZ)';
+
+  @override
+  String get finTsConnect => 'Verbinden';
+
+  @override
+  String get finTsCustomerId =>
+      'Kunden-ID (falls abweichend von der Benutzerkennung)';
+
+  @override
+  String get finTsDateFrom => 'Umsätze importieren ab';
+
+  @override
+  String get finTsDescription =>
+      'Salden und Umsätze von Banken mit FinTS 4.1 (PIN/TAN) importieren. Der Zugriff ist nur lesend: Es werden keine Zahlungen ausgeführt.';
+
+  @override
+  String get finTsDisconnect => 'Trennen';
+
+  @override
+  String get finTsHeadline => 'Financial Transaction Services (FinTS 4.1)';
+
+  @override
+  String get finTsImport => 'Umsätze importieren';
+
+  @override
+  String finTsImported(Object added, Object pending, Object skipped) {
+    return 'Importiert: $added, als bereits vorhanden übersprungen: $skipped, vorgemerkt (nicht importiert): $pending';
+  }
+
+  @override
+  String get finTsIncomplete =>
+      'Server-URL, Bankleitzahl, Benutzerkennung und Produktregistrierungsnummer ausfüllen';
+
+  @override
+  String finTsLoginChanged(Object value) {
+    return 'Die Bank hat die Zugangsdaten geändert, Benutzerkennung oder Kunden-ID aktualisieren: $value';
+  }
+
+  @override
+  String finTsLoginRefused(Object value) {
+    return 'Die Bank hat die vorherige Anmeldung abgelehnt: $value. Mit der eingegebenen PIN erneut versuchen?';
+  }
+
+  @override
+  String get finTsNoAccounts => 'Die Bank hat keine Konten übermittelt';
+
+  @override
+  String get finTsPin => 'PIN';
+
+  @override
+  String get finTsPinHint =>
+      'Nur für diese Sitzung verwendet und nie gespeichert';
+
+  @override
+  String get finTsProductId => 'Produktregistrierungsnummer';
+
+  @override
+  String get finTsProductIdTooltip =>
+      'Von der Deutschen Kreditwirtschaft an den Hersteller der Anwendung vergeben';
+
+  @override
+  String get finTsSelectTarget =>
+      'Konto und Budgetkategorie für den Import auswählen';
+
+  @override
+  String get finTsTan => 'TAN';
+
+  @override
+  String get finTsTanHeadline => 'Transaktionsauthentifizierung (TAN)';
+
+  @override
+  String get finTsTanMedium => 'TAN-Medium auswählen';
+
+  @override
+  String get finTsTanMethod => 'TAN-Verfahren auswählen';
+
+  @override
+  String get finTsUrl => 'FinTS-Server-URL der Bank';
+
+  @override
+  String get finTsUserId => 'Benutzerkennung (Login)';
+
+  @override
+  String get finTsVersion => 'Protokollversion';
+
+  @override
+  String get finTsWebUnsupported =>
+      'Bankserver erlauben keinen Zugriff aus dem Browser. Bitte die Desktop- oder Mobil-App verwenden.';
+
+  @override
   String get flowTypeInvoice => 'Rechnung';
 
   @override
@@ -707,6 +801,9 @@ class AppLocalizationsDe extends AppLocalizations {
 
   @override
   String get incomeTooltip => 'Einkommensdetails festlegen';
+
+  @override
+  String get integrationHeadline => 'Integrationen';
 
   @override
   String get invoiceHeadline => 'Rechnungen';

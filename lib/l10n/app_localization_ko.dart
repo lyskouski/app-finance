@@ -637,6 +637,95 @@ class AppLocalizationsKo extends AppLocalizations {
   String get failData => '금액 공제';
 
   @override
+  String get finTsApproved => '은행 앱에서 승인됨';
+
+  @override
+  String get finTsBankCode => '은행 코드 (BLZ)';
+
+  @override
+  String get finTsConnect => '연결';
+
+  @override
+  String get finTsCustomerId => '고객 ID (사용자 ID와 다른 경우)';
+
+  @override
+  String get finTsDateFrom => '거래 가져오기 시작일';
+
+  @override
+  String get finTsDescription =>
+      'FinTS 4.1(PIN/TAN)을 지원하는 은행에서 잔액과 거래 내역을 가져옵니다. 읽기 전용 접근이며 결제는 이루어지지 않습니다.';
+
+  @override
+  String get finTsDisconnect => '연결 해제';
+
+  @override
+  String get finTsHeadline => 'Financial Transaction Services (FinTS 4.1)';
+
+  @override
+  String get finTsImport => '거래 가져오기';
+
+  @override
+  String finTsImported(Object added, Object pending, Object skipped) {
+    return '가져옴: $added, 이미 있어 건너뜀: $skipped, 대기 중(가져오지 않음): $pending';
+  }
+
+  @override
+  String get finTsIncomplete => '서버 URL, 은행 코드, 사용자 ID 및 제품 등록 번호를 입력하세요';
+
+  @override
+  String finTsLoginChanged(Object value) {
+    return '은행이 로그인 정보를 변경했습니다. 사용자 ID 또는 고객 ID를 업데이트하세요: $value';
+  }
+
+  @override
+  String finTsLoginRefused(Object value) {
+    return '은행이 이전 로그인을 거부했습니다: $value. 입력한 PIN으로 다시 시도하시겠습니까?';
+  }
+
+  @override
+  String get finTsNoAccounts => '은행에서 제공한 계좌가 없습니다';
+
+  @override
+  String get finTsPin => 'PIN';
+
+  @override
+  String get finTsPinHint => '이 세션에서만 사용되며 저장되지 않습니다';
+
+  @override
+  String get finTsProductId => '제품 등록 번호';
+
+  @override
+  String get finTsProductIdTooltip => 'Deutsche Kreditwirtschaft가 앱 제작사에 발급합니다';
+
+  @override
+  String get finTsSelectTarget => '가져올 계좌와 예산 카테고리를 선택하세요';
+
+  @override
+  String get finTsTan => 'TAN';
+
+  @override
+  String get finTsTanHeadline => '거래 인증 (TAN)';
+
+  @override
+  String get finTsTanMedium => 'TAN 매체 선택';
+
+  @override
+  String get finTsTanMethod => 'TAN 방식 선택';
+
+  @override
+  String get finTsUrl => '은행의 FinTS 서버 URL';
+
+  @override
+  String get finTsUserId => '사용자 ID (로그인)';
+
+  @override
+  String get finTsVersion => '프로토콜 버전';
+
+  @override
+  String get finTsWebUnsupported =>
+      '은행 서버는 브라우저에서의 접근을 허용하지 않습니다. 데스크톱 또는 모바일 앱을 사용하세요.';
+
+  @override
   String get flowTypeInvoice => '인보이스';
 
   @override
@@ -703,6 +792,9 @@ class AppLocalizationsKo extends AppLocalizations {
 
   @override
   String get incomeTooltip => '수입 세부 정보 설정';
+
+  @override
+  String get integrationHeadline => '통합';
 
   @override
   String get invoiceHeadline => '인보이스';

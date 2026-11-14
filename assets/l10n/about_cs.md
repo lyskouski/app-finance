@@ -73,6 +73,8 @@ Která uživatelům umožní bez námahy spravovat své finance a zároveň zaji
 - Synchronizace mezi zařízeními (P2P)
 - Obnovení prostřednictvím WebDav nebo přímo souboru
 - Import ze souborů `CSV`, `QIF`, `OFX` pro účty a faktury
+- Integrace
+  - Financial Transaction Services (FinTS 4.1): import zůstatků a transakcí z německých bank (PIN/TAN)
 - Export do souboru `XLSX` aplikace Excel
 - Šifrování dat
 - Lokalizace

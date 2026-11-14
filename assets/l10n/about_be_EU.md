@@ -73,6 +73,8 @@ zastaniecca ŭ baku.
 - Sinchranizacyja pamiž pryladami (P2P)
 - Adnaŭlieńnie praz WebDav abo fajl
 - Impart z fajlaŭ `CSV`, `QIF`, `OFX` dlia rachunkaŭ i rachunkaŭ-faktur
+- Intehracyi
+  - Financial Transaction Services (FinTS 4.1): impart reštkaŭ i aperacyj z niamieckich bankaŭ (PIN/TAN)
 - Ekspart u fajl Excel `XLSX`
 - Šyfravańnie dadzienych
 - Lakalizacyja

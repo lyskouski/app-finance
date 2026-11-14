@@ -2,6 +2,12 @@
 
 _Úplný seznam aktualizací si můžete prohlédnout v navigační položce „O aplikaci“ na tlačítku „Tipy“._
 
+### 8.0.0
+- Nová stránka Integrace s rozbalovacími sekcemi
+- Přidáno Financial Transaction Services (FinTS 4.1): účty, zůstatky a import transakcí z německých bank
+- Oprava přesnosti převodních kurzů
+- Zjednodušení prvního spuštění a aktualizace na Flutter 3.50
+
 ### 7.3.0
 - Přidání lokalizace do indonéštiny (ID)
 - Zlepšení přesnosti měnových kurzů

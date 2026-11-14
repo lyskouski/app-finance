@@ -641,6 +641,99 @@ class AppLocalizationsUz extends AppLocalizations {
   String get failData => 'Chegirma miqdori';
 
   @override
+  String get finTsApproved => 'Bank ilovasida tasdiqlandi';
+
+  @override
+  String get finTsBankCode => 'Bank kodi (BLZ)';
+
+  @override
+  String get finTsConnect => 'Ulanish';
+
+  @override
+  String get finTsCustomerId => 'Mijoz ID (foydalanuvchi ID dan farq qilsa)';
+
+  @override
+  String get finTsDateFrom => 'Tranzaksiyalarni shu sanadan import qilish';
+
+  @override
+  String get finTsDescription =>
+      'FinTS 4.1 (PIN/TAN) ni qo\'llab-quvvatlaydigan banklardan qoldiqlar va tranzaksiyalarni import qiling. Kirish faqat o\'qish uchun: to\'lovlar amalga oshirilmaydi.';
+
+  @override
+  String get finTsDisconnect => 'Uzish';
+
+  @override
+  String get finTsHeadline => 'Financial Transaction Services (FinTS 4.1)';
+
+  @override
+  String get finTsImport => 'Tranzaksiyalarni import qilish';
+
+  @override
+  String finTsImported(Object added, Object pending, Object skipped) {
+    return 'Import qilindi: $added, allaqachon mavjudligi sababli o\'tkazib yuborildi: $skipped, kutilmoqda (import qilinmadi): $pending';
+  }
+
+  @override
+  String get finTsIncomplete =>
+      'Server URL, bank kodi, foydalanuvchi ID va mahsulot ro\'yxatdan o\'tish raqamini to\'ldiring';
+
+  @override
+  String finTsLoginChanged(Object value) {
+    return 'Bank kirish ma\'lumotlarini o\'zgartirdi, foydalanuvchi yoki mijoz ID ni yangilang: $value';
+  }
+
+  @override
+  String finTsLoginRefused(Object value) {
+    return 'Bank oldingi kirishni rad etdi: $value. Kiritilgan PIN bilan qayta urinib ko\'rilsinmi?';
+  }
+
+  @override
+  String get finTsNoAccounts => 'Bank hech qanday hisob taqdim etmadi';
+
+  @override
+  String get finTsPin => 'PIN';
+
+  @override
+  String get finTsPinHint =>
+      'Faqat shu seans uchun ishlatiladi va hech qachon saqlanmaydi';
+
+  @override
+  String get finTsProductId => 'Mahsulot ro\'yxatdan o\'tish raqami';
+
+  @override
+  String get finTsProductIdTooltip =>
+      'Deutsche Kreditwirtschaft tomonidan ilova ishlab chiqaruvchisiga beriladi';
+
+  @override
+  String get finTsSelectTarget =>
+      'Import uchun hisob va byudjet toifasini tanlang';
+
+  @override
+  String get finTsTan => 'TAN';
+
+  @override
+  String get finTsTanHeadline => 'Tranzaksiyani tasdiqlash (TAN)';
+
+  @override
+  String get finTsTanMedium => 'TAN vositasini tanlang';
+
+  @override
+  String get finTsTanMethod => 'TAN usulini tanlang';
+
+  @override
+  String get finTsUrl => 'Bankning FinTS server URL manzili';
+
+  @override
+  String get finTsUserId => 'Foydalanuvchi ID (login)';
+
+  @override
+  String get finTsVersion => 'Protokol versiyasi';
+
+  @override
+  String get finTsWebUnsupported =>
+      'Bank serverlari brauzerdan kirishga ruxsat bermaydi. Kompyuter yoki mobil ilovadan foydalaning.';
+
+  @override
   String get flowTypeInvoice => 'Hisob-faktura';
 
   @override
@@ -708,6 +801,9 @@ class AppLocalizationsUz extends AppLocalizations {
 
   @override
   String get incomeTooltip => 'Daromad tafsilotlarini o\'rnating';
+
+  @override
+  String get integrationHeadline => 'Integratsiyalar';
 
   @override
   String get invoiceHeadline => 'Hisob-fakturalar';

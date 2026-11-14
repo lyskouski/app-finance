@@ -638,6 +638,98 @@ class AppLocalizationsAr extends AppLocalizations {
   String get failData => 'المبلغ المستقطع';
 
   @override
+  String get finTsApproved => 'تمت الموافقة في تطبيق البنك';
+
+  @override
+  String get finTsBankCode => 'رمز البنك (BLZ)';
+
+  @override
+  String get finTsConnect => 'اتصال';
+
+  @override
+  String get finTsCustomerId =>
+      'معرّف العميل (إذا كان مختلفًا عن معرّف المستخدم)';
+
+  @override
+  String get finTsDateFrom => 'استيراد المعاملات منذ';
+
+  @override
+  String get finTsDescription =>
+      'استيراد الأرصدة والمعاملات من البنوك التي تدعم FinTS 4.1 (PIN/TAN). الوصول للقراءة فقط: لا يتم تنفيذ أي مدفوعات.';
+
+  @override
+  String get finTsDisconnect => 'قطع الاتصال';
+
+  @override
+  String get finTsHeadline => 'Financial Transaction Services (FinTS 4.1)';
+
+  @override
+  String get finTsImport => 'استيراد المعاملات';
+
+  @override
+  String finTsImported(Object added, Object pending, Object skipped) {
+    return 'تم الاستيراد: $added، تم التخطي لوجودها مسبقًا: $skipped، قيد الانتظار (لم يتم استيرادها): $pending';
+  }
+
+  @override
+  String get finTsIncomplete =>
+      'املأ عنوان URL للخادم ورمز البنك ومعرّف المستخدم ورقم تسجيل المنتج';
+
+  @override
+  String finTsLoginChanged(Object value) {
+    return 'غيّر البنك بيانات تسجيل الدخول، حدّث معرّف المستخدم أو معرّف العميل: $value';
+  }
+
+  @override
+  String finTsLoginRefused(Object value) {
+    return 'رفض البنك تسجيل الدخول السابق: $value. هل تريد إعادة المحاولة باستخدام رمز PIN المُدخل؟';
+  }
+
+  @override
+  String get finTsNoAccounts => 'لم يقدّم البنك أي حسابات';
+
+  @override
+  String get finTsPin => 'PIN';
+
+  @override
+  String get finTsPinHint => 'يُستخدم لهذه الجلسة فقط ولا يُحفظ أبدًا';
+
+  @override
+  String get finTsProductId => 'رقم تسجيل المنتج';
+
+  @override
+  String get finTsProductIdTooltip =>
+      'يصدر عن Deutsche Kreditwirtschaft لمطوّر التطبيق';
+
+  @override
+  String get finTsSelectTarget => 'اختر الحساب وفئة الميزانية للاستيراد إليهما';
+
+  @override
+  String get finTsTan => 'TAN';
+
+  @override
+  String get finTsTanHeadline => 'مصادقة المعاملة (TAN)';
+
+  @override
+  String get finTsTanMedium => 'اختر وسيط TAN';
+
+  @override
+  String get finTsTanMethod => 'اختر طريقة TAN';
+
+  @override
+  String get finTsUrl => 'عنوان URL لخادم FinTS الخاص بالبنك';
+
+  @override
+  String get finTsUserId => 'معرّف المستخدم (تسجيل الدخول)';
+
+  @override
+  String get finTsVersion => 'إصدار البروتوكول';
+
+  @override
+  String get finTsWebUnsupported =>
+      'لا تسمح خوادم البنوك بالوصول من المتصفح. استخدم تطبيق سطح المكتب أو تطبيق الهاتف المحمول.';
+
+  @override
   String get flowTypeInvoice => 'الفاتورة';
 
   @override
@@ -704,6 +796,9 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get incomeTooltip => 'تعيين تفاصيل الدخل';
+
+  @override
+  String get integrationHeadline => 'التكاملات';
 
   @override
   String get invoiceHeadline => 'الفواتير';
