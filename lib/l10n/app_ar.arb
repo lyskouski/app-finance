@@ -265,25 +265,9 @@
     "failData": "المبلغ المستقطع",
     "finTsApproved": "تمت الموافقة في تطبيق البنك",
     "finTsBankCode": "رمز البنك (BLZ)",
-    "finTsConnect": "اتصال",
     "finTsCustomerId": "معرّف العميل (إذا كان مختلفًا عن معرّف المستخدم)",
-    "finTsDateFrom": "استيراد المعاملات منذ",
     "finTsDescription": "استيراد الأرصدة والمعاملات من البنوك التي تدعم FinTS 4.1 (PIN/TAN). الوصول للقراءة فقط: لا يتم تنفيذ أي مدفوعات.",
-    "finTsDisconnect": "قطع الاتصال",
     "finTsHeadline": "Financial Transaction Services (FinTS 4.1)",
-    "finTsImport": "استيراد المعاملات",
-    "finTsImported": "تم الاستيراد: {added}، تم التخطي لوجودها مسبقًا: {skipped}، قيد الانتظار (لم يتم استيرادها): {pending}",
-    "@finTsImported": {
-        "added": {
-            "type": "int"
-        },
-        "skipped": {
-            "type": "int"
-        },
-        "pending": {
-            "type": "int"
-        }
-    },
     "finTsIncomplete": "املأ عنوان URL للخادم ورمز البنك ومعرّف المستخدم ورقم تسجيل المنتج",
     "finTsLoginChanged": "غيّر البنك بيانات تسجيل الدخول، حدّث معرّف المستخدم أو معرّف العميل: {value}",
     "@finTsLoginChanged": {
@@ -297,12 +281,10 @@
             "type": "String"
         }
     },
-    "finTsNoAccounts": "لم يقدّم البنك أي حسابات",
     "finTsPin": "PIN",
     "finTsPinHint": "يُستخدم لهذه الجلسة فقط ولا يُحفظ أبدًا",
     "finTsProductId": "رقم تسجيل المنتج",
     "finTsProductIdTooltip": "يصدر عن Deutsche Kreditwirtschaft لمطوّر التطبيق",
-    "finTsSelectTarget": "اختر الحساب وفئة الميزانية للاستيراد إليهما",
     "finTsTan": "TAN",
     "finTsTanHeadline": "مصادقة المعاملة (TAN)",
     "finTsTanMedium": "اختر وسيط TAN",
@@ -338,7 +320,25 @@
     "incomeHeadline": "الدخل",
     "incomeHealth": "رادار صحة الدخل",
     "incomeTooltip": "تعيين تفاصيل الدخل",
+    "integrationConnect": "اتصال",
+    "integrationDateFrom": "استيراد المعاملات منذ",
+    "integrationDisconnect": "قطع الاتصال",
     "integrationHeadline": "التكاملات",
+    "integrationImport": "استيراد المعاملات",
+    "integrationImported": "تم الاستيراد: {added}، تم التخطي لوجودها مسبقًا: {skipped}، قيد الانتظار (لم يتم استيرادها): {pending}",
+    "@integrationImported": {
+        "added": {
+            "type": "int"
+        },
+        "skipped": {
+            "type": "int"
+        },
+        "pending": {
+            "type": "int"
+        }
+    },
+    "integrationNoAccounts": "لم يقدّم البنك أي حسابات",
+    "integrationSelectTarget": "اختر الحساب وفئة الميزانية للاستيراد إليهما",
     "invoiceHeadline": "الفواتير",
     "invoiceSum": "الفواتير {value}",
     "@invoiceSum": {
@@ -447,6 +447,11 @@
     "settingsBaseHeadline": "الأساسيات",
     "settingsHeadline": "الإعدادات",
     "settingsSaved": "تم حفظ الإعدادات!",
+    "simpleFinDescription": "استيراد الأرصدة والمعاملات من البنوك وجهات إصدار البطاقات الأمريكية عبر SimpleFIN Bridge. الوصول للقراءة فقط: لا يتم تنفيذ أي مدفوعات.",
+    "simpleFinForget": "نسيان الوصول",
+    "simpleFinHeadline": "SimpleFIN Bridge (US)",
+    "simpleFinToken": "رمز إعداد SimpleFIN",
+    "simpleFinTokenTooltip": "يُنشأ في SimpleFIN Bridge الخاص بك (مثل bridge.simplefin.org) لهذا التطبيق؛ ويمكن استخدامه مرة واحدة فقط",
     "skipFromTotals": "الاستبعاد من المجاميع",
     "skipTooltip": "تخطي الخطوة (الخطوات)",
     "sortTooltip": "فرز العناصر",

@@ -265,25 +265,9 @@
     "failData": "Kwota odliczenia",
     "finTsApproved": "Zatwierdzono w aplikacji bankowej",
     "finTsBankCode": "Kod banku (BLZ)",
-    "finTsConnect": "Połącz",
     "finTsCustomerId": "ID klienta (jeśli inny niż ID użytkownika)",
-    "finTsDateFrom": "Importuj transakcje od",
     "finTsDescription": "Import sald i transakcji z banków obsługujących FinTS 4.1 (PIN/TAN). Dostęp tylko do odczytu: żadne płatności nie są wykonywane.",
-    "finTsDisconnect": "Rozłącz",
     "finTsHeadline": "Financial Transaction Services (FinTS 4.1)",
-    "finTsImport": "Importuj transakcje",
-    "finTsImported": "Zaimportowano: {added}, pominięto jako istniejące: {skipped}, oczekujące (nie zaimportowano): {pending}",
-    "@finTsImported": {
-        "added": {
-            "type": "int"
-        },
-        "skipped": {
-            "type": "int"
-        },
-        "pending": {
-            "type": "int"
-        }
-    },
     "finTsIncomplete": "Uzupełnij URL serwera, kod banku, ID użytkownika i numer rejestracyjny produktu",
     "finTsLoginChanged": "Bank zmienił dane logowania, zaktualizuj ID użytkownika lub ID klienta: {value}",
     "@finTsLoginChanged": {
@@ -297,12 +281,10 @@
             "type": "String"
         }
     },
-    "finTsNoAccounts": "Bank nie udostępnił żadnych kont",
     "finTsPin": "PIN",
     "finTsPinHint": "Używany tylko w tej sesji i nigdy nie zapisywany",
     "finTsProductId": "Numer rejestracyjny produktu",
     "finTsProductIdTooltip": "Nadawany przez Deutsche Kreditwirtschaft producentowi aplikacji",
-    "finTsSelectTarget": "Wybierz konto i kategorię budżetu do importu",
     "finTsTan": "TAN",
     "finTsTanHeadline": "Autoryzacja transakcji (TAN)",
     "finTsTanMedium": "Wybierz nośnik TAN",
@@ -338,7 +320,25 @@
     "incomeHeadline": "Dochód",
     "incomeHealth": "Radar stanu dochodów",
     "incomeTooltip": "Ustawianie szczegółów dochodu",
+    "integrationConnect": "Połącz",
+    "integrationDateFrom": "Importuj transakcje od",
+    "integrationDisconnect": "Rozłącz",
     "integrationHeadline": "Integracje",
+    "integrationImport": "Importuj transakcje",
+    "integrationImported": "Zaimportowano: {added}, pominięto jako istniejące: {skipped}, oczekujące (nie zaimportowano): {pending}",
+    "@integrationImported": {
+        "added": {
+            "type": "int"
+        },
+        "skipped": {
+            "type": "int"
+        },
+        "pending": {
+            "type": "int"
+        }
+    },
+    "integrationNoAccounts": "Bank nie udostępnił żadnych kont",
+    "integrationSelectTarget": "Wybierz konto i kategorię budżetu do importu",
     "invoiceHeadline": "Faktury",
     "invoiceSum": "Faktury: {value}",
     "@invoiceSum": {
@@ -447,6 +447,11 @@
     "settingsBaseHeadline": "Podstawy",
     "settingsHeadline": "Ustawienia",
     "settingsSaved": "Ustawienia zapisane!",
+    "simpleFinDescription": "Import sald i transakcji z amerykańskich banków i wydawców kart przez SimpleFIN Bridge. Dostęp tylko do odczytu: żadne płatności nie są wykonywane.",
+    "simpleFinForget": "Zapomnij dostęp",
+    "simpleFinHeadline": "SimpleFIN Bridge (US)",
+    "simpleFinToken": "Token konfiguracyjny SimpleFIN",
+    "simpleFinTokenTooltip": "Tworzony w Twoim SimpleFIN Bridge (np. bridge.simplefin.org) dla tej aplikacji; można go użyć tylko raz",
     "skipFromTotals": "Wyklucz z sumy",
     "skipTooltip": "Pomiń kroki",
     "sortTooltip": "Sortuj elementy",

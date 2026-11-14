@@ -6,6 +6,7 @@ import 'package:app_finance/_configs/theme_helper.dart';
 import 'package:app_finance/_ext/build_context_ext.dart';
 import 'package:app_finance/pages/_interfaces/abstract_page_state.dart';
 import 'package:app_finance/pages/integration/widgets/fints_widget.dart';
+import 'package:app_finance/pages/integration/widgets/simplefin_widget.dart';
 import 'package:material_ui/material_ui.dart';
 
 typedef IntegrationItem = ({String id, String title, IconData icon, WidgetBuilder builder});
@@ -24,6 +25,12 @@ class IntegrationPageState extends AbstractPageState<IntegrationPage> {
           title: AppLocale.labels.finTsHeadline,
           icon: Icons.account_balance,
           builder: (_) => const FinTsWidget(),
+        ),
+        (
+          id: 'simplefin',
+          title: AppLocale.labels.simpleFinHeadline,
+          icon: Icons.account_balance_wallet,
+          builder: (_) => const SimpleFinWidget(),
         ),
       ];
 

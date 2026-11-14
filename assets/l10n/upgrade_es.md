@@ -5,8 +5,8 @@ _La lista completa de actualizaciones puede consultarse en el menú "Acerca de" 
 ### 8.0.0
 - Nueva página de Integraciones con secciones desplegables
 - Se añade Financial Transaction Services (FinTS 4.1): cuentas, saldos e importación de movimientos de bancos alemanes
+- Se añade SimpleFIN Bridge (US): cuentas, saldos e importación de movimientos de bancos y emisores de tarjetas de EE. UU.
 - Corrección de la precisión de los tipos de conversión
-- Simplificación del primer inicio y actualización a Flutter 3.50
 
 ### 7.3.0
 - Se ha añadido la localización al indonesio (ID)

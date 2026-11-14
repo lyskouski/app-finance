@@ -644,31 +644,14 @@ class AppLocalizationsCs extends AppLocalizations {
   String get finTsBankCode => 'Kód banky (BLZ)';
 
   @override
-  String get finTsConnect => 'Připojit';
-
-  @override
   String get finTsCustomerId => 'ID zákazníka (pokud se liší od ID uživatele)';
-
-  @override
-  String get finTsDateFrom => 'Importovat transakce od';
 
   @override
   String get finTsDescription =>
       'Import zůstatků a transakcí z bank podporujících FinTS 4.1 (PIN/TAN). Přístup pouze pro čtení: neprovádějí se žádné platby.';
 
   @override
-  String get finTsDisconnect => 'Odpojit';
-
-  @override
   String get finTsHeadline => 'Financial Transaction Services (FinTS 4.1)';
-
-  @override
-  String get finTsImport => 'Importovat transakce';
-
-  @override
-  String finTsImported(Object added, Object pending, Object skipped) {
-    return 'Importováno: $added, přeskočeno jako existující: $skipped, čekající (neimportováno): $pending';
-  }
 
   @override
   String get finTsIncomplete =>
@@ -685,9 +668,6 @@ class AppLocalizationsCs extends AppLocalizations {
   }
 
   @override
-  String get finTsNoAccounts => 'Banka neposkytla žádné účty';
-
-  @override
   String get finTsPin => 'PIN';
 
   @override
@@ -700,10 +680,6 @@ class AppLocalizationsCs extends AppLocalizations {
   @override
   String get finTsProductIdTooltip =>
       'Vydává Deutsche Kreditwirtschaft výrobci aplikace';
-
-  @override
-  String get finTsSelectTarget =>
-      'Vyberte účet a kategorii rozpočtu pro import';
 
   @override
   String get finTsTan => 'TAN';
@@ -799,7 +775,31 @@ class AppLocalizationsCs extends AppLocalizations {
   String get incomeTooltip => 'Nastavení podrobností o příjmech';
 
   @override
+  String get integrationConnect => 'Připojit';
+
+  @override
+  String get integrationDateFrom => 'Importovat transakce od';
+
+  @override
+  String get integrationDisconnect => 'Odpojit';
+
+  @override
   String get integrationHeadline => 'Integrace';
+
+  @override
+  String get integrationImport => 'Importovat transakce';
+
+  @override
+  String integrationImported(Object added, Object pending, Object skipped) {
+    return 'Importováno: $added, přeskočeno jako existující: $skipped, čekající (neimportováno): $pending';
+  }
+
+  @override
+  String get integrationNoAccounts => 'Banka neposkytla žádné účty';
+
+  @override
+  String get integrationSelectTarget =>
+      'Vyberte účet a kategorii rozpočtu pro import';
 
   @override
   String get invoiceHeadline => 'Faktury';
@@ -1049,6 +1049,23 @@ class AppLocalizationsCs extends AppLocalizations {
 
   @override
   String get settingsSaved => 'Nastavení uloženo!';
+
+  @override
+  String get simpleFinDescription =>
+      'Import zůstatků a transakcí amerických bank a vydavatelů karet přes SimpleFIN Bridge. Přístup pouze pro čtení: neprovádějí se žádné platby.';
+
+  @override
+  String get simpleFinForget => 'Zapomenout přístup';
+
+  @override
+  String get simpleFinHeadline => 'SimpleFIN Bridge (US)';
+
+  @override
+  String get simpleFinToken => 'Instalační token SimpleFIN';
+
+  @override
+  String get simpleFinTokenTooltip =>
+      'Vytváří se ve vašem SimpleFIN Bridge (např. bridge.simplefin.org) pro tuto aplikaci; lze jej použít pouze jednou';
 
   @override
   String get skipFromTotals => 'Vyloučit ze součtů';

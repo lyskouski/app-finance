@@ -645,32 +645,15 @@ class AppLocalizationsKa extends AppLocalizations {
   String get finTsBankCode => 'ბანკის კოდი (BLZ)';
 
   @override
-  String get finTsConnect => 'დაკავშირება';
-
-  @override
   String get finTsCustomerId =>
       'კლიენტის ID (თუ განსხვავდება მომხმარებლის ID-სგან)';
-
-  @override
-  String get finTsDateFrom => 'ტრანზაქციების იმპორტი თარიღიდან';
 
   @override
   String get finTsDescription =>
       'ნაშთებისა და ტრანზაქციების იმპორტი ბანკებიდან, რომლებიც მხარს უჭერენ FinTS 4.1-ს (PIN/TAN). წვდომა მხოლოდ წაკითხვისთვისაა: გადახდები არ სრულდება.';
 
   @override
-  String get finTsDisconnect => 'გათიშვა';
-
-  @override
   String get finTsHeadline => 'Financial Transaction Services (FinTS 4.1)';
-
-  @override
-  String get finTsImport => 'ტრანზაქციების იმპორტი';
-
-  @override
-  String finTsImported(Object added, Object pending, Object skipped) {
-    return 'იმპორტირებულია: $added, გამოტოვებულია, როგორც უკვე არსებული: $skipped, მოლოდინში (არ არის იმპორტირებული): $pending';
-  }
 
   @override
   String get finTsIncomplete =>
@@ -687,9 +670,6 @@ class AppLocalizationsKa extends AppLocalizations {
   }
 
   @override
-  String get finTsNoAccounts => 'ბანკს არცერთი ანგარიში არ მოუწოდებია';
-
-  @override
   String get finTsPin => 'PIN';
 
   @override
@@ -702,10 +682,6 @@ class AppLocalizationsKa extends AppLocalizations {
   @override
   String get finTsProductIdTooltip =>
       'გაიცემა Deutsche Kreditwirtschaft-ის მიერ აპლიკაციის მწარმოებლისთვის';
-
-  @override
-  String get finTsSelectTarget =>
-      'აირჩიეთ ანგარიში და ბიუჯეტის კატეგორია იმპორტისთვის';
 
   @override
   String get finTsTan => 'TAN';
@@ -801,7 +777,31 @@ class AppLocalizationsKa extends AppLocalizations {
   String get incomeTooltip => 'შემოსავლის დეტალების დაყენება';
 
   @override
+  String get integrationConnect => 'დაკავშირება';
+
+  @override
+  String get integrationDateFrom => 'ტრანზაქციების იმპორტი თარიღიდან';
+
+  @override
+  String get integrationDisconnect => 'გათიშვა';
+
+  @override
   String get integrationHeadline => 'ინტეგრაციები';
+
+  @override
+  String get integrationImport => 'ტრანზაქციების იმპორტი';
+
+  @override
+  String integrationImported(Object added, Object pending, Object skipped) {
+    return 'იმპორტირებულია: $added, გამოტოვებულია, როგორც უკვე არსებული: $skipped, მოლოდინში (არ არის იმპორტირებული): $pending';
+  }
+
+  @override
+  String get integrationNoAccounts => 'ბანკს არცერთი ანგარიში არ მოუწოდებია';
+
+  @override
+  String get integrationSelectTarget =>
+      'აირჩიეთ ანგარიში და ბიუჯეტის კატეგორია იმპორტისთვის';
 
   @override
   String get invoiceHeadline => 'ინვოისები';
@@ -1050,6 +1050,23 @@ class AppLocalizationsKa extends AppLocalizations {
 
   @override
   String get settingsSaved => 'პარამეტრები შენახულია!';
+
+  @override
+  String get simpleFinDescription =>
+      'აშშ-ის ბანკებისა და ბარათების ემიტენტების ნაშთებისა და ტრანზაქციების იმპორტი SimpleFIN Bridge-ის მეშვეობით. წვდომა მხოლოდ წაკითხვისთვისაა: გადახდები არ სრულდება.';
+
+  @override
+  String get simpleFinForget => 'წვდომის დავიწყება';
+
+  @override
+  String get simpleFinHeadline => 'SimpleFIN Bridge (US)';
+
+  @override
+  String get simpleFinToken => 'SimpleFIN-ის დაყენების ტოკენი';
+
+  @override
+  String get simpleFinTokenTooltip =>
+      'იქმნება თქვენს SimpleFIN Bridge-ში (მაგ. bridge.simplefin.org) ამ აპლიკაციისთვის; მისი გამოყენება მხოლოდ ერთხელ შეიძლება';
 
   @override
   String get skipFromTotals => 'ჯამებიდან გამორიცხვა';

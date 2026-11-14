@@ -643,31 +643,14 @@ class AppLocalizationsKo extends AppLocalizations {
   String get finTsBankCode => '은행 코드 (BLZ)';
 
   @override
-  String get finTsConnect => '연결';
-
-  @override
   String get finTsCustomerId => '고객 ID (사용자 ID와 다른 경우)';
-
-  @override
-  String get finTsDateFrom => '거래 가져오기 시작일';
 
   @override
   String get finTsDescription =>
       'FinTS 4.1(PIN/TAN)을 지원하는 은행에서 잔액과 거래 내역을 가져옵니다. 읽기 전용 접근이며 결제는 이루어지지 않습니다.';
 
   @override
-  String get finTsDisconnect => '연결 해제';
-
-  @override
   String get finTsHeadline => 'Financial Transaction Services (FinTS 4.1)';
-
-  @override
-  String get finTsImport => '거래 가져오기';
-
-  @override
-  String finTsImported(Object added, Object pending, Object skipped) {
-    return '가져옴: $added, 이미 있어 건너뜀: $skipped, 대기 중(가져오지 않음): $pending';
-  }
 
   @override
   String get finTsIncomplete => '서버 URL, 은행 코드, 사용자 ID 및 제품 등록 번호를 입력하세요';
@@ -683,9 +666,6 @@ class AppLocalizationsKo extends AppLocalizations {
   }
 
   @override
-  String get finTsNoAccounts => '은행에서 제공한 계좌가 없습니다';
-
-  @override
   String get finTsPin => 'PIN';
 
   @override
@@ -696,9 +676,6 @@ class AppLocalizationsKo extends AppLocalizations {
 
   @override
   String get finTsProductIdTooltip => 'Deutsche Kreditwirtschaft가 앱 제작사에 발급합니다';
-
-  @override
-  String get finTsSelectTarget => '가져올 계좌와 예산 카테고리를 선택하세요';
 
   @override
   String get finTsTan => 'TAN';
@@ -794,7 +771,30 @@ class AppLocalizationsKo extends AppLocalizations {
   String get incomeTooltip => '수입 세부 정보 설정';
 
   @override
+  String get integrationConnect => '연결';
+
+  @override
+  String get integrationDateFrom => '거래 가져오기 시작일';
+
+  @override
+  String get integrationDisconnect => '연결 해제';
+
+  @override
   String get integrationHeadline => '통합';
+
+  @override
+  String get integrationImport => '거래 가져오기';
+
+  @override
+  String integrationImported(Object added, Object pending, Object skipped) {
+    return '가져옴: $added, 이미 있어 건너뜀: $skipped, 대기 중(가져오지 않음): $pending';
+  }
+
+  @override
+  String get integrationNoAccounts => '은행에서 제공한 계좌가 없습니다';
+
+  @override
+  String get integrationSelectTarget => '가져올 계좌와 예산 카테고리를 선택하세요';
 
   @override
   String get invoiceHeadline => '인보이스';
@@ -1041,6 +1041,23 @@ class AppLocalizationsKo extends AppLocalizations {
 
   @override
   String get settingsSaved => '설정이 저장되었습니다!';
+
+  @override
+  String get simpleFinDescription =>
+      'SimpleFIN Bridge를 통해 미국 은행 및 카드 발급사의 잔액과 거래 내역을 가져옵니다. 읽기 전용 접근이며 결제는 이루어지지 않습니다.';
+
+  @override
+  String get simpleFinForget => '접근 정보 삭제';
+
+  @override
+  String get simpleFinHeadline => 'SimpleFIN Bridge (US)';
+
+  @override
+  String get simpleFinToken => 'SimpleFIN 설정 토큰';
+
+  @override
+  String get simpleFinTokenTooltip =>
+      '이 앱을 위해 SimpleFIN Bridge(예: bridge.simplefin.org)에서 생성하며 한 번만 사용할 수 있습니다';
 
   @override
   String get skipFromTotals => '합계에서 제외';

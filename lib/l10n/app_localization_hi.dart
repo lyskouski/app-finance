@@ -645,31 +645,14 @@ class AppLocalizationsHi extends AppLocalizations {
   String get finTsBankCode => 'बैंक कोड (BLZ)';
 
   @override
-  String get finTsConnect => 'कनेक्ट करें';
-
-  @override
   String get finTsCustomerId => 'ग्राहक आईडी (यदि उपयोगकर्ता आईडी से अलग हो)';
-
-  @override
-  String get finTsDateFrom => 'इस तारीख से लेनदेन आयात करें';
 
   @override
   String get finTsDescription =>
       'FinTS 4.1 (PIN/TAN) समर्थित बैंकों से शेष राशि और लेनदेन आयात करें। पहुँच केवल पढ़ने के लिए है: कोई भुगतान नहीं किया जाता।';
 
   @override
-  String get finTsDisconnect => 'डिस्कनेक्ट करें';
-
-  @override
   String get finTsHeadline => 'Financial Transaction Services (FinTS 4.1)';
-
-  @override
-  String get finTsImport => 'लेनदेन आयात करें';
-
-  @override
-  String finTsImported(Object added, Object pending, Object skipped) {
-    return 'आयात किए गए: $added, पहले से मौजूद होने के कारण छोड़े गए: $skipped, लंबित (आयात नहीं किए गए): $pending';
-  }
 
   @override
   String get finTsIncomplete =>
@@ -686,9 +669,6 @@ class AppLocalizationsHi extends AppLocalizations {
   }
 
   @override
-  String get finTsNoAccounts => 'बैंक ने कोई खाता प्रदान नहीं किया';
-
-  @override
   String get finTsPin => 'PIN';
 
   @override
@@ -701,9 +681,6 @@ class AppLocalizationsHi extends AppLocalizations {
   @override
   String get finTsProductIdTooltip =>
       'Deutsche Kreditwirtschaft द्वारा ऐप निर्माता को जारी की जाती है';
-
-  @override
-  String get finTsSelectTarget => 'आयात के लिए खाता और बजट श्रेणी चुनें';
 
   @override
   String get finTsTan => 'TAN';
@@ -799,7 +776,30 @@ class AppLocalizationsHi extends AppLocalizations {
   String get incomeTooltip => 'आय विवरण निर्धारित करें';
 
   @override
+  String get integrationConnect => 'कनेक्ट करें';
+
+  @override
+  String get integrationDateFrom => 'इस तारीख से लेनदेन आयात करें';
+
+  @override
+  String get integrationDisconnect => 'डिस्कनेक्ट करें';
+
+  @override
   String get integrationHeadline => 'एकीकरण';
+
+  @override
+  String get integrationImport => 'लेनदेन आयात करें';
+
+  @override
+  String integrationImported(Object added, Object pending, Object skipped) {
+    return 'आयात किए गए: $added, पहले से मौजूद होने के कारण छोड़े गए: $skipped, लंबित (आयात नहीं किए गए): $pending';
+  }
+
+  @override
+  String get integrationNoAccounts => 'बैंक ने कोई खाता प्रदान नहीं किया';
+
+  @override
+  String get integrationSelectTarget => 'आयात के लिए खाता और बजट श्रेणी चुनें';
 
   @override
   String get invoiceHeadline => 'चालान';
@@ -1049,6 +1049,23 @@ class AppLocalizationsHi extends AppLocalizations {
 
   @override
   String get settingsSaved => 'सेटिंग्स सहेजी गई!';
+
+  @override
+  String get simpleFinDescription =>
+      'SimpleFIN Bridge के माध्यम से अमेरिकी बैंकों और कार्ड जारीकर्ताओं से शेष राशि और लेनदेन आयात करें। पहुँच केवल पढ़ने के लिए है: कोई भुगतान नहीं किया जाता।';
+
+  @override
+  String get simpleFinForget => 'पहुँच भूल जाएँ';
+
+  @override
+  String get simpleFinHeadline => 'SimpleFIN Bridge (US)';
+
+  @override
+  String get simpleFinToken => 'SimpleFIN सेटअप टोकन';
+
+  @override
+  String get simpleFinTokenTooltip =>
+      'इस ऐप के लिए आपके SimpleFIN Bridge (जैसे bridge.simplefin.org) में बनाया जाता है; केवल एक बार उपयोग किया जा सकता है';
 
   @override
   String get skipFromTotals => 'कुल से बाहर रखें';

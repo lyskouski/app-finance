@@ -645,31 +645,14 @@ class AppLocalizationsId extends AppLocalizations {
   String get finTsBankCode => 'Kode bank (BLZ)';
 
   @override
-  String get finTsConnect => 'Hubungkan';
-
-  @override
   String get finTsCustomerId => 'ID pelanggan (jika berbeda dari ID pengguna)';
-
-  @override
-  String get finTsDateFrom => 'Impor transaksi sejak';
 
   @override
   String get finTsDescription =>
       'Impor saldo dan transaksi dari bank yang mendukung FinTS 4.1 (PIN/TAN). Akses hanya baca: tidak ada pembayaran yang dilakukan.';
 
   @override
-  String get finTsDisconnect => 'Putuskan';
-
-  @override
   String get finTsHeadline => 'Financial Transaction Services (FinTS 4.1)';
-
-  @override
-  String get finTsImport => 'Impor transaksi';
-
-  @override
-  String finTsImported(Object added, Object pending, Object skipped) {
-    return 'Diimpor: $added, dilewati karena sudah ada: $skipped, tertunda (tidak diimpor): $pending';
-  }
 
   @override
   String get finTsIncomplete =>
@@ -686,9 +669,6 @@ class AppLocalizationsId extends AppLocalizations {
   }
 
   @override
-  String get finTsNoAccounts => 'Bank tidak memberikan rekening apa pun';
-
-  @override
   String get finTsPin => 'PIN';
 
   @override
@@ -701,10 +681,6 @@ class AppLocalizationsId extends AppLocalizations {
   @override
   String get finTsProductIdTooltip =>
       'Diterbitkan oleh Deutsche Kreditwirtschaft untuk pembuat aplikasi';
-
-  @override
-  String get finTsSelectTarget =>
-      'Pilih rekening dan kategori anggaran tujuan impor';
 
   @override
   String get finTsTan => 'TAN';
@@ -800,7 +776,31 @@ class AppLocalizationsId extends AppLocalizations {
   String get incomeTooltip => 'Atur Detail Pemasukan';
 
   @override
+  String get integrationConnect => 'Hubungkan';
+
+  @override
+  String get integrationDateFrom => 'Impor transaksi sejak';
+
+  @override
+  String get integrationDisconnect => 'Putuskan';
+
+  @override
   String get integrationHeadline => 'Integrasi';
+
+  @override
+  String get integrationImport => 'Impor transaksi';
+
+  @override
+  String integrationImported(Object added, Object pending, Object skipped) {
+    return 'Diimpor: $added, dilewati karena sudah ada: $skipped, tertunda (tidak diimpor): $pending';
+  }
+
+  @override
+  String get integrationNoAccounts => 'Bank tidak memberikan rekening apa pun';
+
+  @override
+  String get integrationSelectTarget =>
+      'Pilih rekening dan kategori anggaran tujuan impor';
 
   @override
   String get invoiceHeadline => 'Faktur';
@@ -1049,6 +1049,23 @@ class AppLocalizationsId extends AppLocalizations {
 
   @override
   String get settingsSaved => 'Pengaturan disimpan!';
+
+  @override
+  String get simpleFinDescription =>
+      'Impor saldo dan transaksi dari bank dan penerbit kartu AS melalui SimpleFIN Bridge. Akses hanya baca: tidak ada pembayaran yang dilakukan.';
+
+  @override
+  String get simpleFinForget => 'Lupakan akses';
+
+  @override
+  String get simpleFinHeadline => 'SimpleFIN Bridge (US)';
+
+  @override
+  String get simpleFinToken => 'Token penyiapan SimpleFIN';
+
+  @override
+  String get simpleFinTokenTooltip =>
+      'Dibuat di SimpleFIN Bridge Anda (mis. bridge.simplefin.org) untuk aplikasi ini; hanya dapat digunakan sekali';
 
   @override
   String get skipFromTotals => 'Kecualikan dari Total';

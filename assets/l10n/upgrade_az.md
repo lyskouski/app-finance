@@ -5,8 +5,8 @@ _Yeniləmələrin tam siyahısına "İpucu" düyməsindəki "Haqqında" naviqasi
 ### 8.0.0
 - Açılan bölmələri olan yeni İnteqrasiyalar səhifəsi
 - Financial Transaction Services (FinTS 4.1) əlavə edildi: Alman banklarından hesablar, qalıqlar və əməliyyatların idxalı
+- SimpleFIN Bridge (US) əlavə edildi: ABŞ bankları və kart emitentlərindən hesablar, qalıqlar və əməliyyatların idxalı
 - Çevirmə məzənnələrinin dəqiqliyi düzəldildi
-- İlk başlanğıc sadələşdirildi və Flutter 3.50-yə yeniləndi
 
 ### 7.3.0
 - İndonez (ID) dilinə tərcümə əlavə edildi

@@ -75,6 +75,7 @@ Care permite utilizatorilor să își gestioneze finanțele fără efort, asigur
 - Import din fișiere `CSV`, `QIF`, `OFX` pentru facturi și facturi
 - Integrări
   - Financial Transaction Services (FinTS 4.1): import de solduri și tranzacții de la băncile germane (PIN/TAN)
+  - SimpleFIN Bridge (US): import de solduri și tranzacții de la băncile și emitenții de carduri din SUA
 - Export către fișiere Excel `XLSX`.
 - Criptarea datelor
 - Localizare

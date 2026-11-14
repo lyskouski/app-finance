@@ -645,32 +645,15 @@ class AppLocalizationsUk extends AppLocalizations {
   String get finTsBankCode => 'Код банку (BLZ)';
 
   @override
-  String get finTsConnect => 'Підключитися';
-
-  @override
   String get finTsCustomerId =>
       'ID клієнта (якщо відрізняється від ID користувача)';
-
-  @override
-  String get finTsDateFrom => 'Імпортувати операції з';
 
   @override
   String get finTsDescription =>
       'Імпорт залишків і операцій із банків, що підтримують FinTS 4.1 (PIN/TAN). Доступ лише для читання: платежі не виконуються.';
 
   @override
-  String get finTsDisconnect => 'Відключитися';
-
-  @override
   String get finTsHeadline => 'Financial Transaction Services (FinTS 4.1)';
-
-  @override
-  String get finTsImport => 'Імпортувати операції';
-
-  @override
-  String finTsImported(Object added, Object pending, Object skipped) {
-    return 'Імпортовано: $added, пропущено як наявні: $skipped, в обробці (не імпортовано): $pending';
-  }
 
   @override
   String get finTsIncomplete =>
@@ -687,9 +670,6 @@ class AppLocalizationsUk extends AppLocalizations {
   }
 
   @override
-  String get finTsNoAccounts => 'Банк не надав жодного рахунку';
-
-  @override
   String get finTsPin => 'PIN';
 
   @override
@@ -702,10 +682,6 @@ class AppLocalizationsUk extends AppLocalizations {
   @override
   String get finTsProductIdTooltip =>
       'Видається Deutsche Kreditwirtschaft розробнику застосунку';
-
-  @override
-  String get finTsSelectTarget =>
-      'Оберіть рахунок і категорію бюджету для імпорту';
 
   @override
   String get finTsTan => 'TAN';
@@ -801,7 +777,31 @@ class AppLocalizationsUk extends AppLocalizations {
   String get incomeTooltip => 'Встановіть відомості про дохід';
 
   @override
+  String get integrationConnect => 'Підключитися';
+
+  @override
+  String get integrationDateFrom => 'Імпортувати операції з';
+
+  @override
+  String get integrationDisconnect => 'Відключитися';
+
+  @override
   String get integrationHeadline => 'Інтеграції';
+
+  @override
+  String get integrationImport => 'Імпортувати операції';
+
+  @override
+  String integrationImported(Object added, Object pending, Object skipped) {
+    return 'Імпортовано: $added, пропущено як наявні: $skipped, в обробці (не імпортовано): $pending';
+  }
+
+  @override
+  String get integrationNoAccounts => 'Банк не надав жодного рахунку';
+
+  @override
+  String get integrationSelectTarget =>
+      'Оберіть рахунок і категорію бюджету для імпорту';
 
   @override
   String get invoiceHeadline => 'Фактури';
@@ -1051,6 +1051,23 @@ class AppLocalizationsUk extends AppLocalizations {
 
   @override
   String get settingsSaved => 'Налаштування збережено!';
+
+  @override
+  String get simpleFinDescription =>
+      'Імпорт залишків і операцій банків та емітентів карток США через SimpleFIN Bridge. Доступ лише для читання: платежі не виконуються.';
+
+  @override
+  String get simpleFinForget => 'Забути доступ';
+
+  @override
+  String get simpleFinHeadline => 'SimpleFIN Bridge (US)';
+
+  @override
+  String get simpleFinToken => 'Токен налаштування SimpleFIN';
+
+  @override
+  String get simpleFinTokenTooltip =>
+      'Створюється у вашому SimpleFIN Bridge (наприклад, bridge.simplefin.org) для цього застосунку; використовується лише один раз';
 
   @override
   String get skipFromTotals => 'Виключити із загальної кількості';

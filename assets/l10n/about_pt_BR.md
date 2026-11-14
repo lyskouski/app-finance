@@ -75,6 +75,7 @@ Isso permite que os usuários gerenciem suas finanças sem esforço, garantindo 
 - Importação de arquivos `CSV`, `QIF`, `OFX` para contas e faturas
 - Integrações
   - Financial Transaction Services (FinTS 4.1): importação de saldos e transações de bancos alemães (PIN/TAN)
+  - SimpleFIN Bridge (US): importação de saldos e transações de bancos e emissores de cartões dos EUA
 - Exportar para arquivo Excel `XLSX`
 - Criptografia de dados
 - Localização

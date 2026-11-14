@@ -646,32 +646,15 @@ class AppLocalizationsRo extends AppLocalizations {
   String get finTsBankCode => 'Cod bancar (BLZ)';
 
   @override
-  String get finTsConnect => 'Conectare';
-
-  @override
   String get finTsCustomerId =>
       'ID client (dacă diferă de ID-ul de utilizator)';
-
-  @override
-  String get finTsDateFrom => 'Importă tranzacțiile din';
 
   @override
   String get finTsDescription =>
       'Importă solduri și tranzacții de la băncile care acceptă FinTS 4.1 (PIN/TAN). Acces doar în citire: nu se efectuează plăți.';
 
   @override
-  String get finTsDisconnect => 'Deconectare';
-
-  @override
   String get finTsHeadline => 'Financial Transaction Services (FinTS 4.1)';
-
-  @override
-  String get finTsImport => 'Importă tranzacții';
-
-  @override
-  String finTsImported(Object added, Object pending, Object skipped) {
-    return 'Importate: $added, omise deoarece există deja: $skipped, în așteptare (neimportate): $pending';
-  }
 
   @override
   String get finTsIncomplete =>
@@ -688,9 +671,6 @@ class AppLocalizationsRo extends AppLocalizations {
   }
 
   @override
-  String get finTsNoAccounts => 'Banca nu a furnizat niciun cont';
-
-  @override
   String get finTsPin => 'PIN';
 
   @override
@@ -703,10 +683,6 @@ class AppLocalizationsRo extends AppLocalizations {
   @override
   String get finTsProductIdTooltip =>
       'Emis de Deutsche Kreditwirtschaft producătorului aplicației';
-
-  @override
-  String get finTsSelectTarget =>
-      'Selectați contul și categoria de buget pentru import';
 
   @override
   String get finTsTan => 'TAN';
@@ -802,7 +778,31 @@ class AppLocalizationsRo extends AppLocalizations {
   String get incomeTooltip => 'Setați detaliile privind venitul';
 
   @override
+  String get integrationConnect => 'Conectare';
+
+  @override
+  String get integrationDateFrom => 'Importă tranzacțiile din';
+
+  @override
+  String get integrationDisconnect => 'Deconectare';
+
+  @override
   String get integrationHeadline => 'Integrări';
+
+  @override
+  String get integrationImport => 'Importă tranzacții';
+
+  @override
+  String integrationImported(Object added, Object pending, Object skipped) {
+    return 'Importate: $added, omise deoarece există deja: $skipped, în așteptare (neimportate): $pending';
+  }
+
+  @override
+  String get integrationNoAccounts => 'Banca nu a furnizat niciun cont';
+
+  @override
+  String get integrationSelectTarget =>
+      'Selectați contul și categoria de buget pentru import';
 
   @override
   String get invoiceHeadline => 'Facturi';
@@ -1055,6 +1055,23 @@ class AppLocalizationsRo extends AppLocalizations {
 
   @override
   String get settingsSaved => 'Setări salvate!';
+
+  @override
+  String get simpleFinDescription =>
+      'Importă solduri și tranzacții de la băncile și emitenții de carduri din SUA printr-un SimpleFIN Bridge. Acces doar în citire: nu se efectuează plăți.';
+
+  @override
+  String get simpleFinForget => 'Uită accesul';
+
+  @override
+  String get simpleFinHeadline => 'SimpleFIN Bridge (US)';
+
+  @override
+  String get simpleFinToken => 'Token de configurare SimpleFIN';
+
+  @override
+  String get simpleFinTokenTooltip =>
+      'Creat în SimpleFIN Bridge (de ex. bridge.simplefin.org) pentru această aplicație; poate fi folosit o singură dată';
 
   @override
   String get skipFromTotals => 'Excludere din totaluri';

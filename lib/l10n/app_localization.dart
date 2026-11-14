@@ -1363,23 +1363,11 @@ abstract class AppLocalizations {
   /// **'Bank Code (BLZ)'**
   String get finTsBankCode;
 
-  /// No description provided for @finTsConnect.
-  ///
-  /// In en, this message translates to:
-  /// **'Connect'**
-  String get finTsConnect;
-
   /// No description provided for @finTsCustomerId.
   ///
   /// In en, this message translates to:
   /// **'Customer ID (if different from User ID)'**
   String get finTsCustomerId;
-
-  /// No description provided for @finTsDateFrom.
-  ///
-  /// In en, this message translates to:
-  /// **'Import Transactions Since'**
-  String get finTsDateFrom;
 
   /// No description provided for @finTsDescription.
   ///
@@ -1387,29 +1375,11 @@ abstract class AppLocalizations {
   /// **'Import balances and transactions from banks supporting FinTS 4.1 (PIN/TAN). Access is read-only: no payments are made.'**
   String get finTsDescription;
 
-  /// No description provided for @finTsDisconnect.
-  ///
-  /// In en, this message translates to:
-  /// **'Disconnect'**
-  String get finTsDisconnect;
-
   /// No description provided for @finTsHeadline.
   ///
   /// In en, this message translates to:
   /// **'Financial Transaction Services (FinTS 4.1)'**
   String get finTsHeadline;
-
-  /// No description provided for @finTsImport.
-  ///
-  /// In en, this message translates to:
-  /// **'Import Transactions'**
-  String get finTsImport;
-
-  /// No description provided for @finTsImported.
-  ///
-  /// In en, this message translates to:
-  /// **'Imported: {added}, skipped as already present: {skipped}, pending (not imported): {pending}'**
-  String finTsImported(Object added, Object pending, Object skipped);
 
   /// No description provided for @finTsIncomplete.
   ///
@@ -1428,12 +1398,6 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'The bank refused the previous login: {value}. Retry with the entered PIN?'**
   String finTsLoginRefused(Object value);
-
-  /// No description provided for @finTsNoAccounts.
-  ///
-  /// In en, this message translates to:
-  /// **'The bank has provided no accounts'**
-  String get finTsNoAccounts;
 
   /// No description provided for @finTsPin.
   ///
@@ -1458,12 +1422,6 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Issued by the Deutsche Kreditwirtschaft to the application\'s vendor'**
   String get finTsProductIdTooltip;
-
-  /// No description provided for @finTsSelectTarget.
-  ///
-  /// In en, this message translates to:
-  /// **'Select the account and the budget category to import into'**
-  String get finTsSelectTarget;
 
   /// No description provided for @finTsTan.
   ///
@@ -1645,11 +1603,53 @@ abstract class AppLocalizations {
   /// **'Set Income Details'**
   String get incomeTooltip;
 
+  /// No description provided for @integrationConnect.
+  ///
+  /// In en, this message translates to:
+  /// **'Connect'**
+  String get integrationConnect;
+
+  /// No description provided for @integrationDateFrom.
+  ///
+  /// In en, this message translates to:
+  /// **'Import Transactions Since'**
+  String get integrationDateFrom;
+
+  /// No description provided for @integrationDisconnect.
+  ///
+  /// In en, this message translates to:
+  /// **'Disconnect'**
+  String get integrationDisconnect;
+
   /// No description provided for @integrationHeadline.
   ///
   /// In en, this message translates to:
   /// **'Integrations'**
   String get integrationHeadline;
+
+  /// No description provided for @integrationImport.
+  ///
+  /// In en, this message translates to:
+  /// **'Import Transactions'**
+  String get integrationImport;
+
+  /// No description provided for @integrationImported.
+  ///
+  /// In en, this message translates to:
+  /// **'Imported: {added}, skipped as already present: {skipped}, pending (not imported): {pending}'**
+  String integrationImported(Object added, Object pending, Object skipped);
+
+  /// No description provided for @integrationNoAccounts.
+  ///
+  /// In en, this message translates to:
+  /// **'The bank has provided no accounts'**
+  String get integrationNoAccounts;
+
+  /// No description provided for @integrationSelectTarget.
+  ///
+  /// In en, this message translates to:
+  /// **'Select the account and the budget category to import into'**
+  String get integrationSelectTarget;
 
   /// No description provided for @invoiceHeadline.
   ///
@@ -2118,6 +2118,36 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Settings saved!'**
   String get settingsSaved;
+
+  /// No description provided for @simpleFinDescription.
+  ///
+  /// In en, this message translates to:
+  /// **'Import balances and transactions of US banks and card issuers through a SimpleFIN Bridge. Access is read-only: no payments are made.'**
+  String get simpleFinDescription;
+
+  /// No description provided for @simpleFinForget.
+  ///
+  /// In en, this message translates to:
+  /// **'Forget Access'**
+  String get simpleFinForget;
+
+  /// No description provided for @simpleFinHeadline.
+  ///
+  /// In en, this message translates to:
+  /// **'SimpleFIN Bridge (US)'**
+  String get simpleFinHeadline;
+
+  /// No description provided for @simpleFinToken.
+  ///
+  /// In en, this message translates to:
+  /// **'SimpleFIN Setup Token'**
+  String get simpleFinToken;
+
+  /// No description provided for @simpleFinTokenTooltip.
+  ///
+  /// In en, this message translates to:
+  /// **'Created at your SimpleFIN Bridge (e.g. bridge.simplefin.org) for this application; it can be used only once'**
+  String get simpleFinTokenTooltip;
 
   /// No description provided for @skipFromTotals.
   ///

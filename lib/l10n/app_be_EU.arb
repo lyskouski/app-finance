@@ -265,25 +265,9 @@
     "failData": "Suma vyliku",
     "finTsApproved": "Pacvierdžana ŭ bankaŭskaj prahramie",
     "finTsBankCode": "Kod banka (BLZ)",
-    "finTsConnect": "Padłučycca",
     "finTsCustomerId": "ID klijenta (kali adroznivajecca ad ID karystaĺnika)",
-    "finTsDateFrom": "Impartavać aperacyi z",
     "finTsDescription": "Impart reštkaŭ i aperacyj z bankaŭ, jakija padtrymlivajuć FinTS 4.1 (PIN/TAN). Dostup toĺki dla čytannia: płaciažy nie vykonvajucca.",
-    "finTsDisconnect": "Adłučycca",
     "finTsHeadline": "Financial Transaction Services (FinTS 4.1)",
-    "finTsImport": "Impartavać aperacyi",
-    "finTsImported": "Impartavana: {added}, prapuščana jak najaŭnyja: {skipped}, u apracoŭcy (nie impartavany): {pending}",
-    "@finTsImported": {
-        "added": {
-            "type": "int"
-        },
-        "skipped": {
-            "type": "int"
-        },
-        "pending": {
-            "type": "int"
-        }
-    },
     "finTsIncomplete": "Zapoŭnicie URL sierviera, kod banka, ID karystaĺnika i rehistracyjny numar praduktu",
     "finTsLoginChanged": "Bank zmianiŭ danyja dla ŭvachodu, abnavicie ID karystaĺnika abo ID klijenta: {value}",
     "@finTsLoginChanged": {
@@ -297,12 +281,10 @@
             "type": "String"
         }
     },
-    "finTsNoAccounts": "Bank nie pieradaŭ nivodnaha rachunku",
     "finTsPin": "PIN",
     "finTsPinHint": "Vykarystoŭvajecca toĺki ŭ hetym sieansie i nikoli nie zachoŭvajecca",
     "finTsProductId": "Rehistracyjny numar praduktu",
     "finTsProductIdTooltip": "Vydajecca Deutsche Kreditwirtschaft raspracoŭščyku prahramy",
-    "finTsSelectTarget": "Abiarycie rachunak i katehoryju biudžetu dla impartu",
     "finTsTan": "TAN",
     "finTsTanHeadline": "Pacviardžennie aperacyi (TAN)",
     "finTsTanMedium": "Abiarycie nośbit TAN",
@@ -338,7 +320,25 @@
     "incomeHeadline": "Dachod",
     "incomeHealth": "Radar Zdaroŭja Dachodaŭ",
     "incomeTooltip": "Ustaliujcie Zviestki ab Dachodach",
+    "integrationConnect": "Padłučycca",
+    "integrationDateFrom": "Impartavać aperacyi z",
+    "integrationDisconnect": "Adłučycca",
     "integrationHeadline": "Intehracyi",
+    "integrationImport": "Impartavać aperacyi",
+    "integrationImported": "Impartavana: {added}, prapuščana jak najaŭnyja: {skipped}, u apracoŭcy (nie impartavany): {pending}",
+    "@integrationImported": {
+        "added": {
+            "type": "int"
+        },
+        "skipped": {
+            "type": "int"
+        },
+        "pending": {
+            "type": "int"
+        }
+    },
+    "integrationNoAccounts": "Bank nie pieradaŭ nivodnaha rachunku",
+    "integrationSelectTarget": "Abiarycie rachunak i katehoryju biudžetu dla impartu",
     "invoiceHeadline": "Faktury",
     "invoiceSum": "Faktury: {value}",
     "@invoiceSum": {
@@ -447,6 +447,11 @@
     "settingsBaseHeadline": "Asnovy",
     "settingsHeadline": "Nalady",
     "settingsSaved": "Nalady zachavany!",
+    "simpleFinDescription": "Impart reštkaŭ i aperacyj bankaŭ i emitentaŭ kartak ZŠA praz SimpleFIN Bridge. Dostup toĺki dla čytannia: płaciažy nie vykonvajucca.",
+    "simpleFinForget": "Zabyć dostup",
+    "simpleFinHeadline": "SimpleFIN Bridge (US)",
+    "simpleFinToken": "Tokien naładki SimpleFIN",
+    "simpleFinTokenTooltip": "Stvarajecca ŭ vašym SimpleFIN Bridge (napryklad, bridge.simplefin.org) dla hetaj prahramy; vykarystoŭvajecca toĺki adzin raz",
     "skipFromTotals": "Vykliučyć z ahuĺnych vynikaŭ",
     "skipTooltip": "Prapuścić Krok(i)",
     "sortTooltip": "Sartavać eliemienty",

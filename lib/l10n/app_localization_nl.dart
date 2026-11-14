@@ -645,31 +645,14 @@ class AppLocalizationsNl extends AppLocalizations {
   String get finTsBankCode => 'Bankcode (BLZ)';
 
   @override
-  String get finTsConnect => 'Verbinden';
-
-  @override
   String get finTsCustomerId => 'Klant-ID (indien anders dan gebruikers-ID)';
-
-  @override
-  String get finTsDateFrom => 'Transacties importeren vanaf';
 
   @override
   String get finTsDescription =>
       'Importeer saldi en transacties van banken die FinTS 4.1 (PIN/TAN) ondersteunen. Alleen-lezen toegang: er worden geen betalingen uitgevoerd.';
 
   @override
-  String get finTsDisconnect => 'Verbinding verbreken';
-
-  @override
   String get finTsHeadline => 'Financial Transaction Services (FinTS 4.1)';
-
-  @override
-  String get finTsImport => 'Transacties importeren';
-
-  @override
-  String finTsImported(Object added, Object pending, Object skipped) {
-    return 'Geïmporteerd: $added, overgeslagen als al aanwezig: $skipped, in behandeling (niet geïmporteerd): $pending';
-  }
 
   @override
   String get finTsIncomplete =>
@@ -686,9 +669,6 @@ class AppLocalizationsNl extends AppLocalizations {
   }
 
   @override
-  String get finTsNoAccounts => 'De bank heeft geen rekeningen verstrekt';
-
-  @override
   String get finTsPin => 'PIN';
 
   @override
@@ -701,10 +681,6 @@ class AppLocalizationsNl extends AppLocalizations {
   @override
   String get finTsProductIdTooltip =>
       'Uitgegeven door de Deutsche Kreditwirtschaft aan de maker van de applicatie';
-
-  @override
-  String get finTsSelectTarget =>
-      'Selecteer de rekening en de budgetcategorie om in te importeren';
 
   @override
   String get finTsTan => 'TAN';
@@ -800,7 +776,31 @@ class AppLocalizationsNl extends AppLocalizations {
   String get incomeTooltip => 'Inkomstendetails instellen';
 
   @override
+  String get integrationConnect => 'Verbinden';
+
+  @override
+  String get integrationDateFrom => 'Transacties importeren vanaf';
+
+  @override
+  String get integrationDisconnect => 'Verbinding verbreken';
+
+  @override
   String get integrationHeadline => 'Integraties';
+
+  @override
+  String get integrationImport => 'Transacties importeren';
+
+  @override
+  String integrationImported(Object added, Object pending, Object skipped) {
+    return 'Geïmporteerd: $added, overgeslagen als al aanwezig: $skipped, in behandeling (niet geïmporteerd): $pending';
+  }
+
+  @override
+  String get integrationNoAccounts => 'De bank heeft geen rekeningen verstrekt';
+
+  @override
+  String get integrationSelectTarget =>
+      'Selecteer de rekening en de budgetcategorie om in te importeren';
 
   @override
   String get invoiceHeadline => 'Facturen';
@@ -1050,6 +1050,23 @@ class AppLocalizationsNl extends AppLocalizations {
 
   @override
   String get settingsSaved => 'Instellingen opgeslagen!';
+
+  @override
+  String get simpleFinDescription =>
+      'Importeer saldi en transacties van Amerikaanse banken en kaartuitgevers via een SimpleFIN Bridge. Alleen-lezen toegang: er worden geen betalingen uitgevoerd.';
+
+  @override
+  String get simpleFinForget => 'Toegang vergeten';
+
+  @override
+  String get simpleFinHeadline => 'SimpleFIN Bridge (US)';
+
+  @override
+  String get simpleFinToken => 'SimpleFIN-installatietoken';
+
+  @override
+  String get simpleFinTokenTooltip =>
+      'Aangemaakt in je SimpleFIN Bridge (bijv. bridge.simplefin.org) voor deze applicatie; slechts één keer te gebruiken';
 
   @override
   String get skipFromTotals => 'Niet opnemen in totalen';

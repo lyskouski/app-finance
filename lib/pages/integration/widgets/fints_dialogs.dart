@@ -133,7 +133,7 @@ class FinTsPinDialogState extends State<FinTsPinDialog> {
         TextButton(onPressed: () => Navigator.pop(context), child: Text(AppLocale.labels.closeTooltip)),
         FilledButton(
           onPressed: () => Navigator.pop(context, controller.text),
-          child: Text(AppLocale.labels.finTsConnect),
+          child: Text(AppLocale.labels.integrationConnect),
         ),
       ],
     );

@@ -17,6 +17,7 @@ import 'package:app_finance/design/form/list_selector_item.dart';
 import 'package:app_finance/design/generic/loading_widget.dart';
 import 'package:app_finance/design/wrapper/input_wrapper.dart';
 import 'package:app_finance/pages/integration/widgets/fints_dialogs.dart';
+import 'package:app_finance/pages/integration/widgets/integration_account_card.dart';
 import 'package:fints/fints.dart';
 import 'package:flutter/foundation.dart';
 import 'package:material_ui/material_ui.dart';
@@ -24,15 +25,12 @@ import 'package:provider/provider.dart';
 
 typedef FinTsClientFactory = FinTsClient Function(FinTsSettings settings, String pin, FinTsClientOptions options);
 
-class FinTsBankAccount {
+class FinTsBankAccount extends IntegrationTarget {
   final Account account;
   final String key;
   Balance? balance;
-  String? appAccount;
-  String? category;
-  DateTime from;
 
-  FinTsBankAccount(this.account, {this.appAccount, this.category, required this.from})
+  FinTsBankAccount(this.account, {super.appAccount, super.category, required super.from})
       : key = FinTsSettings.accountKey(account);
 
   String get title {
@@ -201,7 +199,7 @@ class FinTsWidgetState extends State<FinTsWidget> {
           }
         }
         if (accounts.isEmpty) {
-          notice = AppLocale.labels.finTsNoAccounts;
+          notice = AppLocale.labels.integrationNoAccounts;
         }
       });
 
@@ -216,7 +214,7 @@ class FinTsWidgetState extends State<FinTsWidget> {
           return;
         }
         if (item.appAccount == null || item.category == null) {
-          throw ArgumentError(AppLocale.labels.finTsSelectTarget);
+          throw ArgumentError(AppLocale.labels.integrationSelectTarget);
         }
         final state = Provider.of<AppData>(context, listen: false);
         List<Transaction> transactions;
@@ -241,7 +239,7 @@ class FinTsWidgetState extends State<FinTsWidget> {
         settings.links[item.key] = item.appAccount!;
         settings.imported[item.key] = DateTime(today.year, today.month, today.day);
         await settings.save();
-        notice = AppLocale.labels.finTsImported(result.added, result.pending, result.skipped);
+        notice = AppLocale.labels.integrationImported(result.added, result.pending, result.skipped);
       });
 
   Widget buildSettings(BuildContext context) {
@@ -296,56 +294,15 @@ class FinTsWidgetState extends State<FinTsWidget> {
   }
 
   Widget buildAccount(BuildContext context, FinTsBankAccount item, AppData state) {
-    final textTheme = context.textTheme;
     final balance = item.balance?.booked;
-    return Card(
-      margin: EdgeInsets.symmetric(vertical: ThemeHelper.getIndent()),
-      child: Padding(
-        padding: EdgeInsets.all(ThemeHelper.getIndent(2)),
-        child: LayoutBuilder(
-          builder: (context, constraints) => Column(
-            crossAxisAlignment: AppDesign.getAlignment(),
-            children: [
-              Text(item.title, style: textTheme.titleMedium),
-              if (balance != null) Text('${AppLocale.labels.balance}: ${balance.value} ${balance.currency}'),
-              ThemeHelper.hIndent,
-              InputWrapper(
-                type: NamedInputType.accountSelector,
-                title: AppLocale.labels.account,
-                isRequired: true,
-                value: item.appAccount != null ? state.getByUuid(item.appAccount!) : null,
-                onChange: (value) => setState(() => item.appAccount = value?.uuid),
-                state: state,
-                width: constraints.maxWidth,
-              ),
-              InputWrapper(
-                type: NamedInputType.budgetSelector,
-                title: AppLocale.labels.budget,
-                isRequired: true,
-                value: item.category != null ? state.getByUuid(item.category!) : null,
-                onChange: (value) => setState(() => item.category = value?.uuid),
-                state: state,
-                width: constraints.maxWidth,
-              ),
-              InputWrapper(
-                type: NamedInputType.dateSelector,
-                title: AppLocale.labels.finTsDateFrom,
-                value: item.from,
-                onChange: (value) => setState(() => item.from = value ?? item.from),
-              ),
-              ThemeHelper.hIndent,
-              SizedBox(
-                width: double.infinity,
-                child: FilledButton.icon(
-                  icon: const Icon(Icons.download),
-                  onPressed: isLoading ? null : () => importTransactions(item),
-                  label: Text(AppLocale.labels.finTsImport),
-                ),
-              ),
-            ],
-          ),
-        ),
-      ),
+    return IntegrationAccountCard(
+      title: item.title,
+      subtitle: balance != null ? '${AppLocale.labels.balance}: ${balance.value} ${balance.currency}' : null,
+      target: item,
+      state: state,
+      isDisabled: isLoading,
+      onChanged: () => setState(() {}),
+      onImport: () => importTransactions(item),
     );
   }
 
@@ -380,13 +337,13 @@ class FinTsWidgetState extends State<FinTsWidget> {
                     key: const ValueKey('fints_connect'),
                     icon: Icons.login,
                     onPressed: connect,
-                    title: AppLocale.labels.finTsConnect,
+                    title: AppLocale.labels.integrationConnect,
                   )
                 : FullSizedButtonWidget(
                     key: const ValueKey('fints_disconnect'),
                     icon: Icons.logout,
                     onPressed: disconnect,
-                    title: AppLocale.labels.finTsDisconnect,
+                    title: AppLocale.labels.integrationDisconnect,
                   ),
           for (final item in accounts) buildAccount(context, item, state),
         ],

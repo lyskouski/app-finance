@@ -5,8 +5,8 @@ _Poŭny spis abnaŭlieńniaŭ možna prahliadzieć u navihacyjnym punkcie «Ab D
 ### 8.0.0
 - Dadadziena staronka «Intehracyi» z raskryŭnymi razdziełami
 - Dadadzieny Financial Transaction Services (FinTS 4.1): rachunki, reštki i impart aperacyj z niamieckich bankaŭ
+- Dadadzieny SimpleFIN Bridge (US): rachunki, reštki i impart aperacyj bankaŭ i emitentaŭ kartak ZŠA
 - Vypraŭliena dakladnasć kursaŭ kanviertacyi
-- Sproščany pieršy zapusk, abnoŭliena da Flutter 3.50
 
 ### 7.3.0
 - Dadadziena lakalizacyja na indaniezijskuju movu (ID)

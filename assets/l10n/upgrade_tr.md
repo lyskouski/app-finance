@@ -5,8 +5,8 @@ _Güncellemelerin tam listesi “İpuçları” düğmesindeki “Hakkında” g
 ### 8.0.0
 - Genişletilebilir bölümlere sahip yeni Entegrasyonlar sayfası
 - Financial Transaction Services (FinTS 4.1) eklendi: Alman bankalarından hesaplar, bakiyeler ve işlemlerin içe aktarılması
+- SimpleFIN Bridge (US) eklendi: ABD bankaları ve kart sağlayıcılarından hesaplar, bakiyeler ve işlemlerin içe aktarılması
 - Dönüşüm kurlarının hassasiyeti düzeltildi
-- İlk başlatma basitleştirildi ve Flutter 3.50'ye yükseltildi
 
 ### 7.3.0
 - Endonezyaca (ID) yerelleştirmesi eklendi

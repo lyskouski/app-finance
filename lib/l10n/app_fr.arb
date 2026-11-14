@@ -265,25 +265,9 @@
     "failData": "Montant de la déduction",
     "finTsApproved": "Approuvé dans l'application bancaire",
     "finTsBankCode": "Code bancaire (BLZ)",
-    "finTsConnect": "Se connecter",
     "finTsCustomerId": "Identifiant client (s'il diffère de l'identifiant utilisateur)",
-    "finTsDateFrom": "Importer les opérations depuis",
     "finTsDescription": "Importez les soldes et les opérations des banques prenant en charge FinTS 4.1 (PIN/TAN). Accès en lecture seule : aucun paiement n'est effectué.",
-    "finTsDisconnect": "Se déconnecter",
     "finTsHeadline": "Financial Transaction Services (FinTS 4.1)",
-    "finTsImport": "Importer les opérations",
-    "finTsImported": "Importées : {added}, ignorées car déjà présentes : {skipped}, en attente (non importées) : {pending}",
-    "@finTsImported": {
-        "added": {
-            "type": "int"
-        },
-        "skipped": {
-            "type": "int"
-        },
-        "pending": {
-            "type": "int"
-        }
-    },
     "finTsIncomplete": "Renseignez l'URL du serveur, le code bancaire, l'identifiant utilisateur et le numéro d'enregistrement du produit",
     "finTsLoginChanged": "La banque a modifié les données de connexion, mettez à jour l'identifiant utilisateur ou client : {value}",
     "@finTsLoginChanged": {
@@ -297,12 +281,10 @@
             "type": "String"
         }
     },
-    "finTsNoAccounts": "La banque n'a fourni aucun compte",
     "finTsPin": "PIN",
     "finTsPinHint": "Utilisé uniquement pour cette session et jamais enregistré",
     "finTsProductId": "Numéro d'enregistrement du produit",
     "finTsProductIdTooltip": "Attribué par la Deutsche Kreditwirtschaft à l'éditeur de l'application",
-    "finTsSelectTarget": "Sélectionnez le compte et la catégorie de budget pour l'importation",
     "finTsTan": "TAN",
     "finTsTanHeadline": "Authentification de l'opération (TAN)",
     "finTsTanMedium": "Choisir le support TAN",
@@ -338,7 +320,25 @@
     "incomeHeadline": "Revenu",
     "incomeHealth": "Radar de santé du revenu",
     "incomeTooltip": "Définir les détails du revenu",
+    "integrationConnect": "Se connecter",
+    "integrationDateFrom": "Importer les opérations depuis",
+    "integrationDisconnect": "Se déconnecter",
     "integrationHeadline": "Intégrations",
+    "integrationImport": "Importer les opérations",
+    "integrationImported": "Importées : {added}, ignorées car déjà présentes : {skipped}, en attente (non importées) : {pending}",
+    "@integrationImported": {
+        "added": {
+            "type": "int"
+        },
+        "skipped": {
+            "type": "int"
+        },
+        "pending": {
+            "type": "int"
+        }
+    },
+    "integrationNoAccounts": "La banque n'a fourni aucun compte",
+    "integrationSelectTarget": "Sélectionnez le compte et la catégorie de budget pour l'importation",
     "invoiceHeadline": "Factures",
     "invoiceSum": "Factures : {value}",
     "@invoiceSum": {
@@ -447,6 +447,11 @@
     "settingsBaseHeadline": "Principes de base",
     "settingsHeadline": "Paramètres",
     "settingsSaved": "Paramètres enregistrés !",
+    "simpleFinDescription": "Importez les soldes et les opérations des banques et émetteurs de cartes américains via un SimpleFIN Bridge. Accès en lecture seule : aucun paiement n'est effectué.",
+    "simpleFinForget": "Oublier l'accès",
+    "simpleFinHeadline": "SimpleFIN Bridge (US)",
+    "simpleFinToken": "Jeton de configuration SimpleFIN",
+    "simpleFinTokenTooltip": "Créé dans votre SimpleFIN Bridge (p. ex. bridge.simplefin.org) pour cette application ; utilisable une seule fois",
     "skipFromTotals": "Exclure des totaux",
     "skipTooltip": "Sauter étape(s)",
     "sortTooltip": "Trier les éléments",

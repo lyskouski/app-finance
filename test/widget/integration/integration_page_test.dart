@@ -1,7 +1,11 @@
 // Copyright 2026 The terCAD team. All rights reserved.
 // Use of this source code is governed by a CC BY-NC-ND 4.0 license that can be found in the LICENSE file.
 
+import 'dart:convert';
+
 import 'package:app_finance/_classes/integration/fints/fints_settings.dart';
+import 'package:app_finance/_classes/integration/simplefin/simplefin_client.dart';
+import 'package:app_finance/_classes/integration/simplefin/simplefin_settings.dart';
 import 'package:app_finance/_classes/storage/app_data.dart';
 import 'package:app_finance/_classes/storage/app_preferences.dart';
 import 'package:app_finance/_classes/structure/account_app_data.dart';
@@ -12,7 +16,10 @@ import 'package:app_finance/_classes/structure/navigation/app_menu.dart';
 import 'package:app_finance/_classes/structure/navigation/app_route.dart';
 import 'package:app_finance/_configs/account_type.dart';
 import 'package:app_finance/pages/integration/widgets/fints_widget.dart';
+import 'package:app_finance/pages/integration/widgets/simplefin_widget.dart';
 import 'package:fints/fints.dart';
+import 'package:http/http.dart' as http;
+import 'package:http/testing.dart';
 import 'package:material_ui/material_ui.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:provider/provider.dart';
@@ -121,7 +128,15 @@ void main() {
 
     expect(find.text('Integrations'), findsWidgets);
     expect(find.text('Financial Transaction Services (FinTS 4.1)'), findsOneWidget);
+    expect(find.text('SimpleFIN Bridge (US)'), findsOneWidget);
     expect(find.textContaining('Bank Code (BLZ)', findRichText: true), findsNothing);
+    expect(find.textContaining('SimpleFIN Setup Token', findRichText: true), findsNothing);
+
+    await tester.tap(find.text('SimpleFIN Bridge (US)'));
+    await tester.pumpAndSettle();
+
+    expect(find.textContaining('SimpleFIN Setup Token', findRichText: true), findsOneWidget);
+    expect(find.byKey(const ValueKey('simplefin_connect')), findsOneWidget);
 
     await tester.tap(find.text('Financial Transaction Services (FinTS 4.1)'));
     await tester.pumpAndSettle();
@@ -217,6 +232,109 @@ void main() {
     await tester.tap(find.byKey(const ValueKey('fints_disconnect')));
     await tester.pumpAndSettle();
     expect(client?.closed, isTrue);
+    await tester.pump(const Duration(seconds: 10));
+  });
+
+  testWidgets('SimpleFIN claims a Setup Token and imports transactions', (WidgetTester tester) async {
+    await PumpMain.init(tester);
+    final memory = <String, String>{};
+    final pref = AppPreferences.pref as WrapperMockSharedPreferences;
+    pref.mockGetString = (key) => memory[key] ?? (key == AppPreferences.prefCurrency ? 'USD' : null);
+    pref.mockSetString = (key, value) async {
+      memory[key!] = value!;
+      return true;
+    };
+    pref.mockRemove = (key) async => memory.remove(key) != null;
+    final state = Provider.of<AppData>(tester.element(find.byType(Scaffold).first), listen: false);
+    final account = state.add(AccountAppData(
+      title: 'Checking',
+      type: AppAccountType.account.toString(),
+      details: 0.0,
+      hidden: false,
+    )) as AccountAppData;
+    final budget = state.add(BudgetAppData(title: 'Coffee', hidden: false)) as BudgetAppData;
+    final bills = state.getList(AppDataType.bills, false).length;
+
+    const accessUrl = 'https://user:secret@bridge.example.com/simplefin';
+    final requests = <http.Request>[];
+    final client = SimpleFinClient(
+      client: MockClient((request) async {
+        requests.add(request);
+        if (request.method == 'POST') {
+          return http.Response(accessUrl, 200);
+        }
+        final withTransactions = !request.url.queryParameters.containsKey('balances-only');
+        return http.Response(
+          jsonEncode({
+            'errlist': [],
+            'connections': [
+              {'conn_id': 'C', 'name': 'My Bank', 'org_id': 'O', 'sfin_url': 'https://bridge.example.com/simplefin'},
+            ],
+            'accounts': [
+              {
+                'id': 'ACT-1',
+                'name': 'Checking',
+                'conn_id': 'C',
+                'currency': 'USD',
+                'balance': '100.25',
+                'balance-date': 1763078400,
+                if (withTransactions)
+                  'transactions': [
+                    {'id': 'T1', 'posted': 1762905600, 'amount': '-4.75', 'description': 'Coffee Shop'},
+                    {'id': 'T2', 'posted': 0, 'amount': '-1.00', 'description': 'Hold', 'pending': true},
+                  ],
+              },
+            ],
+          }),
+          200,
+        );
+      }),
+    );
+
+    Navigator.of(tester.element(find.byType(Scaffold).first)).push(MaterialPageRoute(
+      builder: (_) => Scaffold(body: SingleChildScrollView(child: SimpleFinWidget(client: client))),
+    ));
+    await tester.pumpAndSettle();
+
+    await tester.enterText(
+        find.byType(TextField).first, base64.encode(utf8.encode('https://bridge.example.com/claim/x')));
+    await tester.ensureVisible(find.byKey(const ValueKey('simplefin_connect')));
+    await tester.tap(find.byKey(const ValueKey('simplefin_connect')));
+    await pumpFrames(tester);
+    await tester.pumpAndSettle();
+
+    expect(requests.first.method, 'POST');
+    expect(SimpleFinSettings.loadAccess(), Uri.parse(accessUrl));
+    expect(find.text('My Bank — Checking'), findsOneWidget);
+    expect(find.textContaining('100.25 USD'), findsOneWidget);
+
+    final widgetState = tester.state<SimpleFinWidgetState>(find.byType(SimpleFinWidget));
+    widgetState.accounts.single
+      ..appAccount = account.uuid
+      ..category = budget.uuid;
+    await tester.ensureVisible(find.text('Import Transactions'));
+    await tester.tap(find.text('Import Transactions'));
+    await pumpFrames(tester);
+    await tester.pumpAndSettle();
+
+    expect(find.text('Imported: 1, skipped as already present: 0, pending (not imported): 1'), findsOneWidget);
+    expect(requests.last.headers['Authorization'], 'Basic ${base64.encode(utf8.encode('user:secret'))}');
+    expect(state.getList(AppDataType.bills, false).length, bills + 1);
+    expect(state.getList(AppDataType.bills, false).whereType<BillAppData>().last.title, 'Coffee Shop');
+    expect(SimpleFinSettings.load().links, {'ACT-1': account.uuid});
+
+    await tester.ensureVisible(find.text('Import Transactions'));
+    await tester.tap(find.text('Import Transactions'));
+    await pumpFrames(tester);
+    await tester.pumpAndSettle();
+    expect(find.text('Imported: 0, skipped as already present: 1, pending (not imported): 1'), findsOneWidget);
+
+    await tester.ensureVisible(find.byKey(const ValueKey('simplefin_forget')));
+    await tester.tap(find.byKey(const ValueKey('simplefin_forget')));
+    await pumpFrames(tester);
+    await tester.pumpAndSettle();
+    expect(SimpleFinSettings.loadAccess(), isNull);
+    expect(find.textContaining('SimpleFIN Setup Token', findRichText: true), findsOneWidget);
     await tester.pump(const Duration(seconds: 10));
   });
 }

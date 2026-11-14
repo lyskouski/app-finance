@@ -75,6 +75,7 @@ Bu, kullanıcıların mali durumlarını zahmetsizce yönetmelerini sağlarken k
 - Faturalar için `CSV`, `QIF`, `OFX` dosyalarından içe aktarma
 - Entegrasyonlar
   - Financial Transaction Services (FinTS 4.1): Alman bankalarından bakiye ve işlemlerin içe aktarılması (PIN/TAN)
+  - SimpleFIN Bridge (US): ABD bankaları ve kart sağlayıcılarından bakiye ve işlemlerin içe aktarılması
 - Excel `XLSX` dosyasına aktarın
 - Veri şifreleme
 - Yerelleştirme

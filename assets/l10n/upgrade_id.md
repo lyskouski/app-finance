@@ -5,8 +5,8 @@ _Daftar lengkap pembaruan dapat dilihat melalui item navigasi "Tentang" pada tom
 ### 8.0.0
 - Halaman Integrasi baru dengan bagian yang dapat dibuka
 - Menambahkan Financial Transaction Services (FinTS 4.1): rekening, saldo, dan impor transaksi dari bank Jerman
+- Menambahkan SimpleFIN Bridge (US): rekening, saldo, dan impor transaksi dari bank dan penerbit kartu AS
 - Memperbaiki presisi kurs konversi
-- Menyederhanakan peluncuran pertama dan memperbarui ke Flutter 3.50
 
 ### 7.3.0
 - Menambahkan lokalisasi bahasa Indonesia (ID)

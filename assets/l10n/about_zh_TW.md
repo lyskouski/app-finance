@@ -75,6 +75,7 @@
 - 從「CSV」、「QIF」、「OFX」檔案匯入帳單和發票
 - 整合
   - Financial Transaction Services (FinTS 4.1)：從德國銀行匯入餘額與交易（PIN/TAN）
+  - SimpleFIN Bridge (US)：從美國銀行與發卡機構匯入餘額與交易
 - 匯出到 Excel「XLSX」文件
 - 資料加密
 - 本地化

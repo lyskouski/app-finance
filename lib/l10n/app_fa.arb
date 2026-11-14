@@ -265,25 +265,9 @@
     "failData": "کسر مبلغ",
     "finTsApproved": "در برنامه بانک تأیید شد",
     "finTsBankCode": "کد بانک (BLZ)",
-    "finTsConnect": "اتصال",
     "finTsCustomerId": "شناسه مشتری (اگر با شناسه کاربر متفاوت است)",
-    "finTsDateFrom": "وارد کردن تراکنش‌ها از تاریخ",
     "finTsDescription": "وارد کردن موجودی‌ها و تراکنش‌ها از بانک‌هایی که از FinTS 4.1 (PIN/TAN) پشتیبانی می‌کنند. دسترسی فقط خواندنی است: هیچ پرداختی انجام نمی‌شود.",
-    "finTsDisconnect": "قطع اتصال",
     "finTsHeadline": "Financial Transaction Services (FinTS 4.1)",
-    "finTsImport": "وارد کردن تراکنش‌ها",
-    "finTsImported": "وارد شده: {added}، رد شده به دلیل وجود قبلی: {skipped}، در انتظار (وارد نشده): {pending}",
-    "@finTsImported": {
-        "added": {
-            "type": "int"
-        },
-        "skipped": {
-            "type": "int"
-        },
-        "pending": {
-            "type": "int"
-        }
-    },
     "finTsIncomplete": "نشانی URL سرور، کد بانک، شناسه کاربر و شماره ثبت محصول را وارد کنید",
     "finTsLoginChanged": "بانک اطلاعات ورود را تغییر داده است، شناسه کاربر یا شناسه مشتری را به‌روز کنید: {value}",
     "@finTsLoginChanged": {
@@ -297,12 +281,10 @@
             "type": "String"
         }
     },
-    "finTsNoAccounts": "بانک هیچ حسابی ارائه نکرده است",
     "finTsPin": "PIN",
     "finTsPinHint": "فقط برای این نشست استفاده می‌شود و هرگز ذخیره نمی‌شود",
     "finTsProductId": "شماره ثبت محصول",
     "finTsProductIdTooltip": "توسط Deutsche Kreditwirtschaft به سازنده برنامه اعطا می‌شود",
-    "finTsSelectTarget": "حساب و دسته بودجه را برای وارد کردن انتخاب کنید",
     "finTsTan": "TAN",
     "finTsTanHeadline": "احراز هویت تراکنش (TAN)",
     "finTsTanMedium": "انتخاب رسانه TAN",
@@ -338,7 +320,25 @@
     "incomeHeadline": "درآمد",
     "incomeHealth": "رادار سلامت درآمد",
     "incomeTooltip": "تنظیم جزئیات درآمد",
+    "integrationConnect": "اتصال",
+    "integrationDateFrom": "وارد کردن تراکنش‌ها از تاریخ",
+    "integrationDisconnect": "قطع اتصال",
     "integrationHeadline": "یکپارچه‌سازی‌ها",
+    "integrationImport": "وارد کردن تراکنش‌ها",
+    "integrationImported": "وارد شده: {added}، رد شده به دلیل وجود قبلی: {skipped}، در انتظار (وارد نشده): {pending}",
+    "@integrationImported": {
+        "added": {
+            "type": "int"
+        },
+        "skipped": {
+            "type": "int"
+        },
+        "pending": {
+            "type": "int"
+        }
+    },
+    "integrationNoAccounts": "بانک هیچ حسابی ارائه نکرده است",
+    "integrationSelectTarget": "حساب و دسته بودجه را برای وارد کردن انتخاب کنید",
     "invoiceHeadline": "فاکتورها",
     "invoiceSum": "فاکتورها: {value}",
     "@invoiceSum": {
@@ -447,6 +447,11 @@
     "settingsBaseHeadline": "مبانی",
     "settingsHeadline": "تنظیمات",
     "settingsSaved": "تنظیمات ذخیره شد!",
+    "simpleFinDescription": "وارد کردن موجودی‌ها و تراکنش‌های بانک‌ها و صادرکنندگان کارت آمریکایی از طریق SimpleFIN Bridge. دسترسی فقط خواندنی است: هیچ پرداختی انجام نمی‌شود.",
+    "simpleFinForget": "فراموش کردن دسترسی",
+    "simpleFinHeadline": "SimpleFIN Bridge (US)",
+    "simpleFinToken": "توکن راه‌اندازی SimpleFIN",
+    "simpleFinTokenTooltip": "در SimpleFIN Bridge شما (مثلاً bridge.simplefin.org) برای این برنامه ساخته می‌شود؛ فقط یک بار قابل استفاده است",
     "skipFromTotals": "حذف از مجموع",
     "skipTooltip": "رد شدن از مرحله(های)",
     "sortTooltip": "مرتب سازی آیتم ها",

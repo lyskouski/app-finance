@@ -265,25 +265,9 @@
     "failData": "금액 공제",
     "finTsApproved": "은행 앱에서 승인됨",
     "finTsBankCode": "은행 코드 (BLZ)",
-    "finTsConnect": "연결",
     "finTsCustomerId": "고객 ID (사용자 ID와 다른 경우)",
-    "finTsDateFrom": "거래 가져오기 시작일",
     "finTsDescription": "FinTS 4.1(PIN/TAN)을 지원하는 은행에서 잔액과 거래 내역을 가져옵니다. 읽기 전용 접근이며 결제는 이루어지지 않습니다.",
-    "finTsDisconnect": "연결 해제",
     "finTsHeadline": "Financial Transaction Services (FinTS 4.1)",
-    "finTsImport": "거래 가져오기",
-    "finTsImported": "가져옴: {added}, 이미 있어 건너뜀: {skipped}, 대기 중(가져오지 않음): {pending}",
-    "@finTsImported": {
-        "added": {
-            "type": "int"
-        },
-        "skipped": {
-            "type": "int"
-        },
-        "pending": {
-            "type": "int"
-        }
-    },
     "finTsIncomplete": "서버 URL, 은행 코드, 사용자 ID 및 제품 등록 번호를 입력하세요",
     "finTsLoginChanged": "은행이 로그인 정보를 변경했습니다. 사용자 ID 또는 고객 ID를 업데이트하세요: {value}",
     "@finTsLoginChanged": {
@@ -297,12 +281,10 @@
             "type": "String"
         }
     },
-    "finTsNoAccounts": "은행에서 제공한 계좌가 없습니다",
     "finTsPin": "PIN",
     "finTsPinHint": "이 세션에서만 사용되며 저장되지 않습니다",
     "finTsProductId": "제품 등록 번호",
     "finTsProductIdTooltip": "Deutsche Kreditwirtschaft가 앱 제작사에 발급합니다",
-    "finTsSelectTarget": "가져올 계좌와 예산 카테고리를 선택하세요",
     "finTsTan": "TAN",
     "finTsTanHeadline": "거래 인증 (TAN)",
     "finTsTanMedium": "TAN 매체 선택",
@@ -338,7 +320,25 @@
     "incomeHeadline": "수입",
     "incomeHealth": "소득 건강 레이더",
     "incomeTooltip": "수입 세부 정보 설정",
+    "integrationConnect": "연결",
+    "integrationDateFrom": "거래 가져오기 시작일",
+    "integrationDisconnect": "연결 해제",
     "integrationHeadline": "통합",
+    "integrationImport": "거래 가져오기",
+    "integrationImported": "가져옴: {added}, 이미 있어 건너뜀: {skipped}, 대기 중(가져오지 않음): {pending}",
+    "@integrationImported": {
+        "added": {
+            "type": "int"
+        },
+        "skipped": {
+            "type": "int"
+        },
+        "pending": {
+            "type": "int"
+        }
+    },
+    "integrationNoAccounts": "은행에서 제공한 계좌가 없습니다",
+    "integrationSelectTarget": "가져올 계좌와 예산 카테고리를 선택하세요",
     "invoiceHeadline": "인보이스",
     "invoiceSum": "송장 {value}",
     "@invoiceSum": {
@@ -447,6 +447,11 @@
     "settingsBaseHeadline": "기본 사항",
     "settingsHeadline": "설정",
     "settingsSaved": "설정이 저장되었습니다!",
+    "simpleFinDescription": "SimpleFIN Bridge를 통해 미국 은행 및 카드 발급사의 잔액과 거래 내역을 가져옵니다. 읽기 전용 접근이며 결제는 이루어지지 않습니다.",
+    "simpleFinForget": "접근 정보 삭제",
+    "simpleFinHeadline": "SimpleFIN Bridge (US)",
+    "simpleFinToken": "SimpleFIN 설정 토큰",
+    "simpleFinTokenTooltip": "이 앱을 위해 SimpleFIN Bridge(예: bridge.simplefin.org)에서 생성하며 한 번만 사용할 수 있습니다",
     "skipFromTotals": "합계에서 제외",
     "skipTooltip": "단계 건너뛰기",
     "sortTooltip": "항목 정렬",

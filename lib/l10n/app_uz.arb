@@ -265,25 +265,9 @@
     "failData": "Chegirma miqdori",
     "finTsApproved": "Bank ilovasida tasdiqlandi",
     "finTsBankCode": "Bank kodi (BLZ)",
-    "finTsConnect": "Ulanish",
     "finTsCustomerId": "Mijoz ID (foydalanuvchi ID dan farq qilsa)",
-    "finTsDateFrom": "Tranzaksiyalarni shu sanadan import qilish",
     "finTsDescription": "FinTS 4.1 (PIN/TAN) ni qo'llab-quvvatlaydigan banklardan qoldiqlar va tranzaksiyalarni import qiling. Kirish faqat o'qish uchun: to'lovlar amalga oshirilmaydi.",
-    "finTsDisconnect": "Uzish",
     "finTsHeadline": "Financial Transaction Services (FinTS 4.1)",
-    "finTsImport": "Tranzaksiyalarni import qilish",
-    "finTsImported": "Import qilindi: {added}, allaqachon mavjudligi sababli o'tkazib yuborildi: {skipped}, kutilmoqda (import qilinmadi): {pending}",
-    "@finTsImported": {
-        "added": {
-            "type": "int"
-        },
-        "skipped": {
-            "type": "int"
-        },
-        "pending": {
-            "type": "int"
-        }
-    },
     "finTsIncomplete": "Server URL, bank kodi, foydalanuvchi ID va mahsulot ro'yxatdan o'tish raqamini to'ldiring",
     "finTsLoginChanged": "Bank kirish ma'lumotlarini o'zgartirdi, foydalanuvchi yoki mijoz ID ni yangilang: {value}",
     "@finTsLoginChanged": {
@@ -297,12 +281,10 @@
             "type": "String"
         }
     },
-    "finTsNoAccounts": "Bank hech qanday hisob taqdim etmadi",
     "finTsPin": "PIN",
     "finTsPinHint": "Faqat shu seans uchun ishlatiladi va hech qachon saqlanmaydi",
     "finTsProductId": "Mahsulot ro'yxatdan o'tish raqami",
     "finTsProductIdTooltip": "Deutsche Kreditwirtschaft tomonidan ilova ishlab chiqaruvchisiga beriladi",
-    "finTsSelectTarget": "Import uchun hisob va byudjet toifasini tanlang",
     "finTsTan": "TAN",
     "finTsTanHeadline": "Tranzaksiyani tasdiqlash (TAN)",
     "finTsTanMedium": "TAN vositasini tanlang",
@@ -338,7 +320,25 @@
     "incomeHeadline": "Daromad",
     "incomeHealth": "Sog'lik daromadlari radari",
     "incomeTooltip": "Daromad tafsilotlarini o'rnating",
+    "integrationConnect": "Ulanish",
+    "integrationDateFrom": "Tranzaksiyalarni shu sanadan import qilish",
+    "integrationDisconnect": "Uzish",
     "integrationHeadline": "Integratsiyalar",
+    "integrationImport": "Tranzaksiyalarni import qilish",
+    "integrationImported": "Import qilindi: {added}, allaqachon mavjudligi sababli o'tkazib yuborildi: {skipped}, kutilmoqda (import qilinmadi): {pending}",
+    "@integrationImported": {
+        "added": {
+            "type": "int"
+        },
+        "skipped": {
+            "type": "int"
+        },
+        "pending": {
+            "type": "int"
+        }
+    },
+    "integrationNoAccounts": "Bank hech qanday hisob taqdim etmadi",
+    "integrationSelectTarget": "Import uchun hisob va byudjet toifasini tanlang",
     "invoiceHeadline": "Hisob-fakturalar",
     "invoiceSum": "Hisob-fakturalar: {value}",
     "@invoiceSum": {
@@ -447,6 +447,11 @@
     "settingsBaseHeadline": "Asoslar",
     "settingsHeadline": "Sozlamalar",
     "settingsSaved": "Sozlamalar saqlandi!",
+    "simpleFinDescription": "AQSh banklari va karta emitentlarining qoldiqlari va tranzaksiyalarini SimpleFIN Bridge orqali import qiling. Kirish faqat o'qish uchun: to'lovlar amalga oshirilmaydi.",
+    "simpleFinForget": "Kirishni unutish",
+    "simpleFinHeadline": "SimpleFIN Bridge (US)",
+    "simpleFinToken": "SimpleFIN sozlash tokeni",
+    "simpleFinTokenTooltip": "Ushbu ilova uchun SimpleFIN Bridge'da (masalan, bridge.simplefin.org) yaratiladi; faqat bir marta ishlatilishi mumkin",
     "skipFromTotals": "Jami hisobdan chiqarib tashlang",
     "skipTooltip": "Qadam(lar)ni o‘tkazib yuborish",
     "sortTooltip": "Elementlarni saralash",

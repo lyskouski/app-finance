@@ -265,25 +265,9 @@
     "failData": "Tutar Kesintisi",
     "finTsApproved": "Banka uygulamasında onaylandı",
     "finTsBankCode": "Banka kodu (BLZ)",
-    "finTsConnect": "Bağlan",
     "finTsCustomerId": "Müşteri kimliği (kullanıcı kimliğinden farklıysa)",
-    "finTsDateFrom": "İşlemleri şu tarihten itibaren içe aktar",
     "finTsDescription": "FinTS 4.1 (PIN/TAN) destekleyen bankalardan bakiyeleri ve işlemleri içe aktarın. Erişim salt okunurdur: ödeme yapılmaz.",
-    "finTsDisconnect": "Bağlantıyı kes",
     "finTsHeadline": "Financial Transaction Services (FinTS 4.1)",
-    "finTsImport": "İşlemleri içe aktar",
-    "finTsImported": "İçe aktarılan: {added}, zaten mevcut olduğu için atlanan: {skipped}, bekleyen (içe aktarılmayan): {pending}",
-    "@finTsImported": {
-        "added": {
-            "type": "int"
-        },
-        "skipped": {
-            "type": "int"
-        },
-        "pending": {
-            "type": "int"
-        }
-    },
     "finTsIncomplete": "Sunucu URL'sini, banka kodunu, kullanıcı kimliğini ve ürün kayıt numarasını doldurun",
     "finTsLoginChanged": "Banka giriş bilgilerini değiştirdi, kullanıcı veya müşteri kimliğini güncelleyin: {value}",
     "@finTsLoginChanged": {
@@ -297,12 +281,10 @@
             "type": "String"
         }
     },
-    "finTsNoAccounts": "Banka herhangi bir hesap sağlamadı",
     "finTsPin": "PIN",
     "finTsPinHint": "Yalnızca bu oturum için kullanılır ve asla saklanmaz",
     "finTsProductId": "Ürün kayıt numarası",
     "finTsProductIdTooltip": "Deutsche Kreditwirtschaft tarafından uygulama üreticisine verilir",
-    "finTsSelectTarget": "İçe aktarılacak hesabı ve bütçe kategorisini seçin",
     "finTsTan": "TAN",
     "finTsTanHeadline": "İşlem doğrulama (TAN)",
     "finTsTanMedium": "TAN aracını seçin",
@@ -338,7 +320,25 @@
     "incomeHeadline": "Gelir",
     "incomeHealth": "Gelir Sağlığı Radarı",
     "incomeTooltip": "Gelir Ayrıntılarını Ayarla",
+    "integrationConnect": "Bağlan",
+    "integrationDateFrom": "İşlemleri şu tarihten itibaren içe aktar",
+    "integrationDisconnect": "Bağlantıyı kes",
     "integrationHeadline": "Entegrasyonlar",
+    "integrationImport": "İşlemleri içe aktar",
+    "integrationImported": "İçe aktarılan: {added}, zaten mevcut olduğu için atlanan: {skipped}, bekleyen (içe aktarılmayan): {pending}",
+    "@integrationImported": {
+        "added": {
+            "type": "int"
+        },
+        "skipped": {
+            "type": "int"
+        },
+        "pending": {
+            "type": "int"
+        }
+    },
+    "integrationNoAccounts": "Banka herhangi bir hesap sağlamadı",
+    "integrationSelectTarget": "İçe aktarılacak hesabı ve bütçe kategorisini seçin",
     "invoiceHeadline": "Invoices",
     "invoiceSum": "Faturalar: {value}",
     "@invoiceSum": {
@@ -447,6 +447,11 @@
     "settingsBaseHeadline": "Temel Bilgiler",
     "settingsHeadline": "Ayarlar",
     "settingsSaved": "Ayarlar kaydedildi!",
+    "simpleFinDescription": "ABD bankaları ve kart sağlayıcılarının bakiyelerini ve işlemlerini bir SimpleFIN Bridge üzerinden içe aktarın. Erişim salt okunurdur: ödeme yapılmaz.",
+    "simpleFinForget": "Erişimi unut",
+    "simpleFinHeadline": "SimpleFIN Bridge (US)",
+    "simpleFinToken": "SimpleFIN kurulum belirteci",
+    "simpleFinTokenTooltip": "Bu uygulama için SimpleFIN Bridge'inizde (ör. bridge.simplefin.org) oluşturulur; yalnızca bir kez kullanılabilir",
     "skipFromTotals": "Toplamlardan hariç tut",
     "skipTooltip": "Adım(lar)ı Atla",
     "sortTooltip": "Öğeleri Sırala",

@@ -5,8 +5,8 @@ _Lista completă a actualizărilor poate fi vizualizată prin intermediul elemen
 ### 8.0.0
 - Pagină nouă Integrări cu secțiuni extensibile
 - Adăugat Financial Transaction Services (FinTS 4.1): conturi, solduri și import de tranzacții de la băncile germane
+- Adăugat SimpleFIN Bridge (US): conturi, solduri și import de tranzacții de la băncile și emitenții de carduri din SUA
 - Corectarea preciziei cursurilor de conversie
-- Simplificarea primei porniri și actualizarea la Flutter 3.50
 
 ### 7.3.0
 - Adăugarea localizării în limba indoneziană (ID)

@@ -265,25 +265,9 @@
     "failData": "Odečtená částka",
     "finTsApproved": "Schváleno v bankovní aplikaci",
     "finTsBankCode": "Kód banky (BLZ)",
-    "finTsConnect": "Připojit",
     "finTsCustomerId": "ID zákazníka (pokud se liší od ID uživatele)",
-    "finTsDateFrom": "Importovat transakce od",
     "finTsDescription": "Import zůstatků a transakcí z bank podporujících FinTS 4.1 (PIN/TAN). Přístup pouze pro čtení: neprovádějí se žádné platby.",
-    "finTsDisconnect": "Odpojit",
     "finTsHeadline": "Financial Transaction Services (FinTS 4.1)",
-    "finTsImport": "Importovat transakce",
-    "finTsImported": "Importováno: {added}, přeskočeno jako existující: {skipped}, čekající (neimportováno): {pending}",
-    "@finTsImported": {
-        "added": {
-            "type": "int"
-        },
-        "skipped": {
-            "type": "int"
-        },
-        "pending": {
-            "type": "int"
-        }
-    },
     "finTsIncomplete": "Vyplňte URL serveru, kód banky, ID uživatele a registrační číslo produktu",
     "finTsLoginChanged": "Banka změnila přihlašovací údaje, aktualizujte ID uživatele nebo ID zákazníka: {value}",
     "@finTsLoginChanged": {
@@ -297,12 +281,10 @@
             "type": "String"
         }
     },
-    "finTsNoAccounts": "Banka neposkytla žádné účty",
     "finTsPin": "PIN",
     "finTsPinHint": "Použije se pouze pro tuto relaci a nikdy se neukládá",
     "finTsProductId": "Registrační číslo produktu",
     "finTsProductIdTooltip": "Vydává Deutsche Kreditwirtschaft výrobci aplikace",
-    "finTsSelectTarget": "Vyberte účet a kategorii rozpočtu pro import",
     "finTsTan": "TAN",
     "finTsTanHeadline": "Ověření transakce (TAN)",
     "finTsTanMedium": "Vyberte médium TAN",
@@ -338,7 +320,25 @@
     "incomeHeadline": "Příjem",
     "incomeHealth": "Radar stavu příjmů",
     "incomeTooltip": "Nastavení podrobností o příjmech",
+    "integrationConnect": "Připojit",
+    "integrationDateFrom": "Importovat transakce od",
+    "integrationDisconnect": "Odpojit",
     "integrationHeadline": "Integrace",
+    "integrationImport": "Importovat transakce",
+    "integrationImported": "Importováno: {added}, přeskočeno jako existující: {skipped}, čekající (neimportováno): {pending}",
+    "@integrationImported": {
+        "added": {
+            "type": "int"
+        },
+        "skipped": {
+            "type": "int"
+        },
+        "pending": {
+            "type": "int"
+        }
+    },
+    "integrationNoAccounts": "Banka neposkytla žádné účty",
+    "integrationSelectTarget": "Vyberte účet a kategorii rozpočtu pro import",
     "invoiceHeadline": "Faktury",
     "invoiceSum": "Faktury: {value}",
     "@invoiceSum": {
@@ -447,6 +447,11 @@
     "settingsBaseHeadline": "Základy",
     "settingsHeadline": "Nastavení",
     "settingsSaved": "Nastavení uloženo!",
+    "simpleFinDescription": "Import zůstatků a transakcí amerických bank a vydavatelů karet přes SimpleFIN Bridge. Přístup pouze pro čtení: neprovádějí se žádné platby.",
+    "simpleFinForget": "Zapomenout přístup",
+    "simpleFinHeadline": "SimpleFIN Bridge (US)",
+    "simpleFinToken": "Instalační token SimpleFIN",
+    "simpleFinTokenTooltip": "Vytváří se ve vašem SimpleFIN Bridge (např. bridge.simplefin.org) pro tuto aplikaci; lze jej použít pouze jednou",
     "skipFromTotals": "Vyloučit ze součtů",
     "skipTooltip": "Vynechat krok(y)",
     "sortTooltip": "Seřadit položky",

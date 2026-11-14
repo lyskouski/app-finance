@@ -75,6 +75,7 @@ Yang memberdayakan pengguna untuk mengelola keuangan mereka dengan mudah sambil 
 - Impor dari file `CSV`, `QIF`, `OFX` untuk Tagihan dan Faktur
 - Integrasi
   - Financial Transaction Services (FinTS 4.1): impor saldo dan transaksi dari bank Jerman (PIN/TAN)
+  - SimpleFIN Bridge (US): impor saldo dan transaksi dari bank dan penerbit kartu AS
 - Ekspor ke file Excel `XLSX`
 - Enkripsi data
 - Lokalisasi

@@ -644,32 +644,15 @@ class AppLocalizationsAr extends AppLocalizations {
   String get finTsBankCode => 'رمز البنك (BLZ)';
 
   @override
-  String get finTsConnect => 'اتصال';
-
-  @override
   String get finTsCustomerId =>
       'معرّف العميل (إذا كان مختلفًا عن معرّف المستخدم)';
-
-  @override
-  String get finTsDateFrom => 'استيراد المعاملات منذ';
 
   @override
   String get finTsDescription =>
       'استيراد الأرصدة والمعاملات من البنوك التي تدعم FinTS 4.1 (PIN/TAN). الوصول للقراءة فقط: لا يتم تنفيذ أي مدفوعات.';
 
   @override
-  String get finTsDisconnect => 'قطع الاتصال';
-
-  @override
   String get finTsHeadline => 'Financial Transaction Services (FinTS 4.1)';
-
-  @override
-  String get finTsImport => 'استيراد المعاملات';
-
-  @override
-  String finTsImported(Object added, Object pending, Object skipped) {
-    return 'تم الاستيراد: $added، تم التخطي لوجودها مسبقًا: $skipped، قيد الانتظار (لم يتم استيرادها): $pending';
-  }
 
   @override
   String get finTsIncomplete =>
@@ -686,9 +669,6 @@ class AppLocalizationsAr extends AppLocalizations {
   }
 
   @override
-  String get finTsNoAccounts => 'لم يقدّم البنك أي حسابات';
-
-  @override
   String get finTsPin => 'PIN';
 
   @override
@@ -700,9 +680,6 @@ class AppLocalizationsAr extends AppLocalizations {
   @override
   String get finTsProductIdTooltip =>
       'يصدر عن Deutsche Kreditwirtschaft لمطوّر التطبيق';
-
-  @override
-  String get finTsSelectTarget => 'اختر الحساب وفئة الميزانية للاستيراد إليهما';
 
   @override
   String get finTsTan => 'TAN';
@@ -798,7 +775,31 @@ class AppLocalizationsAr extends AppLocalizations {
   String get incomeTooltip => 'تعيين تفاصيل الدخل';
 
   @override
+  String get integrationConnect => 'اتصال';
+
+  @override
+  String get integrationDateFrom => 'استيراد المعاملات منذ';
+
+  @override
+  String get integrationDisconnect => 'قطع الاتصال';
+
+  @override
   String get integrationHeadline => 'التكاملات';
+
+  @override
+  String get integrationImport => 'استيراد المعاملات';
+
+  @override
+  String integrationImported(Object added, Object pending, Object skipped) {
+    return 'تم الاستيراد: $added، تم التخطي لوجودها مسبقًا: $skipped، قيد الانتظار (لم يتم استيرادها): $pending';
+  }
+
+  @override
+  String get integrationNoAccounts => 'لم يقدّم البنك أي حسابات';
+
+  @override
+  String get integrationSelectTarget =>
+      'اختر الحساب وفئة الميزانية للاستيراد إليهما';
 
   @override
   String get invoiceHeadline => 'الفواتير';
@@ -1046,6 +1047,23 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get settingsSaved => 'تم حفظ الإعدادات!';
+
+  @override
+  String get simpleFinDescription =>
+      'استيراد الأرصدة والمعاملات من البنوك وجهات إصدار البطاقات الأمريكية عبر SimpleFIN Bridge. الوصول للقراءة فقط: لا يتم تنفيذ أي مدفوعات.';
+
+  @override
+  String get simpleFinForget => 'نسيان الوصول';
+
+  @override
+  String get simpleFinHeadline => 'SimpleFIN Bridge (US)';
+
+  @override
+  String get simpleFinToken => 'رمز إعداد SimpleFIN';
+
+  @override
+  String get simpleFinTokenTooltip =>
+      'يُنشأ في SimpleFIN Bridge الخاص بك (مثل bridge.simplefin.org) لهذا التطبيق؛ ويمكن استخدامه مرة واحدة فقط';
 
   @override
   String get skipFromTotals => 'الاستبعاد من المجاميع';

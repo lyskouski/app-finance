@@ -75,6 +75,7 @@ Bu foydalanuvchilarga o'z mablag'larini osonlikcha boshqarish imkoniyatini berad
 - Hisob va hisob-fakturalar uchun `CSV`, `QIF`, `OFX` fayllaridan import qilish
 - Integratsiyalar
   - Financial Transaction Services (FinTS 4.1): nemis banklaridan qoldiqlar va tranzaksiyalarni import qilish (PIN/TAN)
+  - SimpleFIN Bridge (US): AQSh banklari va karta emitentlaridan qoldiqlar va tranzaksiyalarni import qilish
 - Excel `XLSX` fayliga eksport qiling
 - Ma'lumotlarni shifrlash
 - Mahalliylashtirish

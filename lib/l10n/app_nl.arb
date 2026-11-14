@@ -265,25 +265,9 @@
     "failData": "Bedrag Aftrek",
     "finTsApproved": "Goedgekeurd in de bankapp",
     "finTsBankCode": "Bankcode (BLZ)",
-    "finTsConnect": "Verbinden",
     "finTsCustomerId": "Klant-ID (indien anders dan gebruikers-ID)",
-    "finTsDateFrom": "Transacties importeren vanaf",
     "finTsDescription": "Importeer saldi en transacties van banken die FinTS 4.1 (PIN/TAN) ondersteunen. Alleen-lezen toegang: er worden geen betalingen uitgevoerd.",
-    "finTsDisconnect": "Verbinding verbreken",
     "finTsHeadline": "Financial Transaction Services (FinTS 4.1)",
-    "finTsImport": "Transacties importeren",
-    "finTsImported": "Geïmporteerd: {added}, overgeslagen als al aanwezig: {skipped}, in behandeling (niet geïmporteerd): {pending}",
-    "@finTsImported": {
-        "added": {
-            "type": "int"
-        },
-        "skipped": {
-            "type": "int"
-        },
-        "pending": {
-            "type": "int"
-        }
-    },
     "finTsIncomplete": "Vul de server-URL, bankcode, gebruikers-ID en productregistratienummer in",
     "finTsLoginChanged": "De bank heeft de inloggegevens gewijzigd, werk de gebruikers-ID of klant-ID bij: {value}",
     "@finTsLoginChanged": {
@@ -297,12 +281,10 @@
             "type": "String"
         }
     },
-    "finTsNoAccounts": "De bank heeft geen rekeningen verstrekt",
     "finTsPin": "PIN",
     "finTsPinHint": "Alleen voor deze sessie gebruikt en nooit opgeslagen",
     "finTsProductId": "Productregistratienummer",
     "finTsProductIdTooltip": "Uitgegeven door de Deutsche Kreditwirtschaft aan de maker van de applicatie",
-    "finTsSelectTarget": "Selecteer de rekening en de budgetcategorie om in te importeren",
     "finTsTan": "TAN",
     "finTsTanHeadline": "Transactie-authenticatie (TAN)",
     "finTsTanMedium": "TAN-medium kiezen",
@@ -338,7 +320,25 @@
     "incomeHeadline": "Inkomen",
     "incomeHealth": "Inkomen gezondheidsradar",
     "incomeTooltip": "Inkomstendetails instellen",
+    "integrationConnect": "Verbinden",
+    "integrationDateFrom": "Transacties importeren vanaf",
+    "integrationDisconnect": "Verbinding verbreken",
     "integrationHeadline": "Integraties",
+    "integrationImport": "Transacties importeren",
+    "integrationImported": "Geïmporteerd: {added}, overgeslagen als al aanwezig: {skipped}, in behandeling (niet geïmporteerd): {pending}",
+    "@integrationImported": {
+        "added": {
+            "type": "int"
+        },
+        "skipped": {
+            "type": "int"
+        },
+        "pending": {
+            "type": "int"
+        }
+    },
+    "integrationNoAccounts": "De bank heeft geen rekeningen verstrekt",
+    "integrationSelectTarget": "Selecteer de rekening en de budgetcategorie om in te importeren",
     "invoiceHeadline": "Facturen",
     "invoiceSum": "Facturen: {value}",
     "@invoiceSum": {
@@ -447,6 +447,11 @@
     "settingsBaseHeadline": "Basis",
     "settingsHeadline": "Instellingen",
     "settingsSaved": "Instellingen opgeslagen!",
+    "simpleFinDescription": "Importeer saldi en transacties van Amerikaanse banken en kaartuitgevers via een SimpleFIN Bridge. Alleen-lezen toegang: er worden geen betalingen uitgevoerd.",
+    "simpleFinForget": "Toegang vergeten",
+    "simpleFinHeadline": "SimpleFIN Bridge (US)",
+    "simpleFinToken": "SimpleFIN-installatietoken",
+    "simpleFinTokenTooltip": "Aangemaakt in je SimpleFIN Bridge (bijv. bridge.simplefin.org) voor deze applicatie; slechts één keer te gebruiken",
     "skipFromTotals": "Niet opnemen in totalen",
     "skipTooltip": "Stap(pen) overslaan",
     "sortTooltip": "Sorteer items",

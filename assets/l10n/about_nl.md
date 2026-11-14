@@ -75,6 +75,7 @@ Dat stelt gebruikers in staat om moeiteloos hun financiën te beheren en zorgt e
 - Importeren uit `CSV`, `QIF`, `OFX` bestanden voor rekeningen en facturen
 - Integraties
   - Financial Transaction Services (FinTS 4.1): import van saldi en transacties van Duitse banken (PIN/TAN)
+  - SimpleFIN Bridge (US): import van saldi en transacties van Amerikaanse banken en kaartuitgevers
 - Exporteren naar Excel `XLSX`-bestand
 - Gegevensencryptie
 - Lokalisatie

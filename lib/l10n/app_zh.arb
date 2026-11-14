@@ -265,25 +265,9 @@
     "failData": "扣除金额",
     "finTsApproved": "已在银行应用中批准",
     "finTsBankCode": "银行代码 (BLZ)",
-    "finTsConnect": "连接",
     "finTsCustomerId": "客户 ID（如与用户 ID 不同）",
-    "finTsDateFrom": "导入交易的起始日期",
     "finTsDescription": "从支持 FinTS 4.1（PIN/TAN）的银行导入余额和交易。仅限只读访问：不会执行任何付款。",
-    "finTsDisconnect": "断开连接",
     "finTsHeadline": "Financial Transaction Services (FinTS 4.1)",
-    "finTsImport": "导入交易",
-    "finTsImported": "已导入：{added}，因已存在而跳过：{skipped}，待处理（未导入）：{pending}",
-    "@finTsImported": {
-        "added": {
-            "type": "int"
-        },
-        "skipped": {
-            "type": "int"
-        },
-        "pending": {
-            "type": "int"
-        }
-    },
     "finTsIncomplete": "请填写服务器 URL、银行代码、用户 ID 和产品注册号",
     "finTsLoginChanged": "银行已更改登录信息，请更新用户 ID 或客户 ID：{value}",
     "@finTsLoginChanged": {
@@ -297,12 +281,10 @@
             "type": "String"
         }
     },
-    "finTsNoAccounts": "银行未提供任何账户",
     "finTsPin": "PIN",
     "finTsPinHint": "仅用于本次会话，绝不保存",
     "finTsProductId": "产品注册号",
     "finTsProductIdTooltip": "由 Deutsche Kreditwirtschaft 颁发给应用开发商",
-    "finTsSelectTarget": "请选择要导入的账户和预算类别",
     "finTsTan": "TAN",
     "finTsTanHeadline": "交易验证 (TAN)",
     "finTsTanMedium": "选择 TAN 介质",
@@ -338,7 +320,25 @@
     "incomeHeadline": "收入",
     "incomeHealth": "收入健康雷达",
     "incomeTooltip": "设置收入详情",
+    "integrationConnect": "连接",
+    "integrationDateFrom": "导入交易的起始日期",
+    "integrationDisconnect": "断开连接",
     "integrationHeadline": "集成",
+    "integrationImport": "导入交易",
+    "integrationImported": "已导入：{added}，因已存在而跳过：{skipped}，待处理（未导入）：{pending}",
+    "@integrationImported": {
+        "added": {
+            "type": "int"
+        },
+        "skipped": {
+            "type": "int"
+        },
+        "pending": {
+            "type": "int"
+        }
+    },
+    "integrationNoAccounts": "银行未提供任何账户",
+    "integrationSelectTarget": "请选择要导入的账户和预算类别",
     "invoiceHeadline": "发票",
     "invoiceSum": "发票： {value}",
     "@invoiceSum": {
@@ -447,6 +447,11 @@
     "settingsBaseHeadline": "基础知识",
     "settingsHeadline": "设置",
     "settingsSaved": "设置已保存！",
+    "simpleFinDescription": "通过 SimpleFIN Bridge 导入美国银行和发卡机构的余额与交易。仅限只读访问：不会执行任何付款。",
+    "simpleFinForget": "删除访问权限",
+    "simpleFinHeadline": "SimpleFIN Bridge (US)",
+    "simpleFinToken": "SimpleFIN 设置令牌",
+    "simpleFinTokenTooltip": "在您的 SimpleFIN Bridge（如 bridge.simplefin.org）中为本应用创建；只能使用一次",
     "skipFromTotals": "不计入总数",
     "skipTooltip": "跳过步骤",
     "sortTooltip": "排序项目",

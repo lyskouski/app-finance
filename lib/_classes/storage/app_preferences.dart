@@ -30,6 +30,8 @@ class AppPreferences {
   static const String prefBudgetPositive = 'budgetPositive';
   static const String prefFinTs = 'fints';
   static const String prefFinTsState = 'fintsState';
+  static const String prefSimpleFin = 'simplefin';
+  static const String prefSimpleFinAccess = 'simplefinAccess';
 
   static const String isActive = 'true';
   static const String isInactive = 'false';

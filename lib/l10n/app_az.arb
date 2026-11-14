@@ -265,25 +265,9 @@
     "failData": "Məbləğin tutulması",
     "finTsApproved": "Bank tətbiqində təsdiqləndi",
     "finTsBankCode": "Bank kodu (BLZ)",
-    "finTsConnect": "Qoşul",
     "finTsCustomerId": "Müştəri ID-si (istifadəçi ID-sindən fərqlidirsə)",
-    "finTsDateFrom": "Əməliyyatları bu tarixdən idxal et",
     "finTsDescription": "FinTS 4.1 (PIN/TAN) dəstəkləyən banklardan qalıqları və əməliyyatları idxal edin. Giriş yalnız oxumaq üçündür: ödənişlər edilmir.",
-    "finTsDisconnect": "Ayrıl",
     "finTsHeadline": "Financial Transaction Services (FinTS 4.1)",
-    "finTsImport": "Əməliyyatları idxal et",
-    "finTsImported": "İdxal edildi: {added}, artıq mövcud olduğu üçün buraxıldı: {skipped}, gözləmədə (idxal edilmədi): {pending}",
-    "@finTsImported": {
-        "added": {
-            "type": "int"
-        },
-        "skipped": {
-            "type": "int"
-        },
-        "pending": {
-            "type": "int"
-        }
-    },
     "finTsIncomplete": "Server URL-ni, bank kodunu, istifadəçi ID-sini və məhsulun qeydiyyat nömrəsini doldurun",
     "finTsLoginChanged": "Bank giriş məlumatlarını dəyişdi, istifadəçi və ya müştəri ID-sini yeniləyin: {value}",
     "@finTsLoginChanged": {
@@ -297,12 +281,10 @@
             "type": "String"
         }
     },
-    "finTsNoAccounts": "Bank heç bir hesab təqdim etmədi",
     "finTsPin": "PIN",
     "finTsPinHint": "Yalnız bu sessiya üçün istifadə olunur və heç vaxt saxlanılmır",
     "finTsProductId": "Məhsulun qeydiyyat nömrəsi",
     "finTsProductIdTooltip": "Deutsche Kreditwirtschaft tərəfindən tətbiqin istehsalçısına verilir",
-    "finTsSelectTarget": "İdxal üçün hesabı və büdcə kateqoriyasını seçin",
     "finTsTan": "TAN",
     "finTsTanHeadline": "Əməliyyatın təsdiqi (TAN)",
     "finTsTanMedium": "TAN vasitəsini seçin",
@@ -338,7 +320,25 @@
     "incomeHeadline": "Gəlir",
     "incomeHealth": "Gəlir Sağlamlığı Radarı",
     "incomeTooltip": "Gəlir təfərrüatlarını təyin edin",
+    "integrationConnect": "Qoşul",
+    "integrationDateFrom": "Əməliyyatları bu tarixdən idxal et",
+    "integrationDisconnect": "Ayrıl",
     "integrationHeadline": "İnteqrasiyalar",
+    "integrationImport": "Əməliyyatları idxal et",
+    "integrationImported": "İdxal edildi: {added}, artıq mövcud olduğu üçün buraxıldı: {skipped}, gözləmədə (idxal edilmədi): {pending}",
+    "@integrationImported": {
+        "added": {
+            "type": "int"
+        },
+        "skipped": {
+            "type": "int"
+        },
+        "pending": {
+            "type": "int"
+        }
+    },
+    "integrationNoAccounts": "Bank heç bir hesab təqdim etmədi",
+    "integrationSelectTarget": "İdxal üçün hesabı və büdcə kateqoriyasını seçin",
     "invoiceHeadline": "Fakturalar",
     "invoiceSum": "Fakturalar: {value}",
     "@invoiceSum": {
@@ -447,6 +447,11 @@
     "settingsBaseHeadline": "Əsaslar",
     "settingsHeadline": "Parametrlər",
     "settingsSaved": "Tənzimləmələr yadda saxlanıldı!",
+    "simpleFinDescription": "ABŞ bankları və kart emitentlərinin qalıqlarını və əməliyyatlarını SimpleFIN Bridge vasitəsilə idxal edin. Giriş yalnız oxumaq üçündür: ödənişlər edilmir.",
+    "simpleFinForget": "Girişi unut",
+    "simpleFinHeadline": "SimpleFIN Bridge (US)",
+    "simpleFinToken": "SimpleFIN quraşdırma tokeni",
+    "simpleFinTokenTooltip": "Bu tətbiq üçün SimpleFIN Bridge-də (məs. bridge.simplefin.org) yaradılır; yalnız bir dəfə istifadə oluna bilər",
     "skipFromTotals": "Cəmilərdən xaric edin",
     "skipTooltip": "Addım(lar)ı atlayın",
     "sortTooltip": "Elementləri sırala",

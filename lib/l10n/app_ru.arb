@@ -265,25 +265,9 @@
     "failData": "Размер вычета",
     "finTsApproved": "Подтверждено в банковском приложении",
     "finTsBankCode": "Код банка (BLZ)",
-    "finTsConnect": "Подключиться",
     "finTsCustomerId": "ID клиента (если отличается от ID пользователя)",
-    "finTsDateFrom": "Импортировать операции с",
     "finTsDescription": "Импорт остатков и операций из банков с поддержкой FinTS 4.1 (PIN/TAN). Доступ только для чтения: платежи не выполняются.",
-    "finTsDisconnect": "Отключиться",
     "finTsHeadline": "Financial Transaction Services (FinTS 4.1)",
-    "finTsImport": "Импортировать операции",
-    "finTsImported": "Импортировано: {added}, пропущено как уже существующие: {skipped}, в обработке (не импортированы): {pending}",
-    "@finTsImported": {
-        "added": {
-            "type": "int"
-        },
-        "skipped": {
-            "type": "int"
-        },
-        "pending": {
-            "type": "int"
-        }
-    },
     "finTsIncomplete": "Заполните URL сервера, код банка, ID пользователя и регистрационный номер продукта",
     "finTsLoginChanged": "Банк изменил данные для входа, обновите ID пользователя или ID клиента: {value}",
     "@finTsLoginChanged": {
@@ -297,12 +281,10 @@
             "type": "String"
         }
     },
-    "finTsNoAccounts": "Банк не предоставил ни одного счёта",
     "finTsPin": "PIN",
     "finTsPinHint": "Используется только в этом сеансе и никогда не сохраняется",
     "finTsProductId": "Регистрационный номер продукта",
     "finTsProductIdTooltip": "Выдаётся Deutsche Kreditwirtschaft разработчику приложения",
-    "finTsSelectTarget": "Выберите счёт и категорию бюджета для импорта",
     "finTsTan": "TAN",
     "finTsTanHeadline": "Подтверждение операции (TAN)",
     "finTsTanMedium": "Выберите носитель TAN",
@@ -338,7 +320,25 @@
     "incomeHeadline": "Доход",
     "incomeHealth": "Радар здоровья доходов",
     "incomeTooltip": "Установить детали дохода",
+    "integrationConnect": "Подключиться",
+    "integrationDateFrom": "Импортировать операции с",
+    "integrationDisconnect": "Отключиться",
     "integrationHeadline": "Интеграции",
+    "integrationImport": "Импортировать операции",
+    "integrationImported": "Импортировано: {added}, пропущено как уже существующие: {skipped}, в обработке (не импортированы): {pending}",
+    "@integrationImported": {
+        "added": {
+            "type": "int"
+        },
+        "skipped": {
+            "type": "int"
+        },
+        "pending": {
+            "type": "int"
+        }
+    },
+    "integrationNoAccounts": "Банк не предоставил ни одного счёта",
+    "integrationSelectTarget": "Выберите счёт и категорию бюджета для импорта",
     "invoiceHeadline": "Доходы",
     "invoiceSum": "Доходы: {value}",
     "@invoiceSum": {
@@ -447,6 +447,11 @@
     "settingsBaseHeadline": "Основы",
     "settingsHeadline": "Параметры",
     "settingsSaved": "Параметры сохранены!",
+    "simpleFinDescription": "Импорт остатков и операций банков и эмитентов карт США через SimpleFIN Bridge. Доступ только для чтения: платежи не выполняются.",
+    "simpleFinForget": "Забыть доступ",
+    "simpleFinHeadline": "SimpleFIN Bridge (US)",
+    "simpleFinToken": "Токен настройки SimpleFIN",
+    "simpleFinTokenTooltip": "Создаётся в вашем SimpleFIN Bridge (например, bridge.simplefin.org) для этого приложения; используется только один раз",
     "skipFromTotals": "Исключить из итогов",
     "skipTooltip": "Пропустить шаг(и)",
     "sortTooltip": "Сортировать элементы",

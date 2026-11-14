@@ -265,25 +265,9 @@
     "failData": "Pengurangan Jumlah",
     "finTsApproved": "Disetujui di aplikasi bank",
     "finTsBankCode": "Kode bank (BLZ)",
-    "finTsConnect": "Hubungkan",
     "finTsCustomerId": "ID pelanggan (jika berbeda dari ID pengguna)",
-    "finTsDateFrom": "Impor transaksi sejak",
     "finTsDescription": "Impor saldo dan transaksi dari bank yang mendukung FinTS 4.1 (PIN/TAN). Akses hanya baca: tidak ada pembayaran yang dilakukan.",
-    "finTsDisconnect": "Putuskan",
     "finTsHeadline": "Financial Transaction Services (FinTS 4.1)",
-    "finTsImport": "Impor transaksi",
-    "finTsImported": "Diimpor: {added}, dilewati karena sudah ada: {skipped}, tertunda (tidak diimpor): {pending}",
-    "@finTsImported": {
-        "added": {
-            "type": "int"
-        },
-        "skipped": {
-            "type": "int"
-        },
-        "pending": {
-            "type": "int"
-        }
-    },
     "finTsIncomplete": "Isi URL server, kode bank, ID pengguna, dan nomor registrasi produk",
     "finTsLoginChanged": "Bank telah mengubah data masuk, perbarui ID pengguna atau ID pelanggan: {value}",
     "@finTsLoginChanged": {
@@ -297,12 +281,10 @@
             "type": "String"
         }
     },
-    "finTsNoAccounts": "Bank tidak memberikan rekening apa pun",
     "finTsPin": "PIN",
     "finTsPinHint": "Hanya digunakan untuk sesi ini dan tidak pernah disimpan",
     "finTsProductId": "Nomor registrasi produk",
     "finTsProductIdTooltip": "Diterbitkan oleh Deutsche Kreditwirtschaft untuk pembuat aplikasi",
-    "finTsSelectTarget": "Pilih rekening dan kategori anggaran tujuan impor",
     "finTsTan": "TAN",
     "finTsTanHeadline": "Autentikasi transaksi (TAN)",
     "finTsTanMedium": "Pilih media TAN",
@@ -338,7 +320,25 @@
     "incomeHeadline": "Pemasukan",
     "incomeHealth": "Radar Kesehatan Pemasukan",
     "incomeTooltip": "Atur Detail Pemasukan",
+    "integrationConnect": "Hubungkan",
+    "integrationDateFrom": "Impor transaksi sejak",
+    "integrationDisconnect": "Putuskan",
     "integrationHeadline": "Integrasi",
+    "integrationImport": "Impor transaksi",
+    "integrationImported": "Diimpor: {added}, dilewati karena sudah ada: {skipped}, tertunda (tidak diimpor): {pending}",
+    "@integrationImported": {
+        "added": {
+            "type": "int"
+        },
+        "skipped": {
+            "type": "int"
+        },
+        "pending": {
+            "type": "int"
+        }
+    },
+    "integrationNoAccounts": "Bank tidak memberikan rekening apa pun",
+    "integrationSelectTarget": "Pilih rekening dan kategori anggaran tujuan impor",
     "invoiceHeadline": "Faktur",
     "invoiceSum": "Faktur: {value}",
     "@invoiceSum": {
@@ -447,6 +447,11 @@
     "settingsBaseHeadline": "Dasar",
     "settingsHeadline": "Pengaturan",
     "settingsSaved": "Pengaturan disimpan!",
+    "simpleFinDescription": "Impor saldo dan transaksi dari bank dan penerbit kartu AS melalui SimpleFIN Bridge. Akses hanya baca: tidak ada pembayaran yang dilakukan.",
+    "simpleFinForget": "Lupakan akses",
+    "simpleFinHeadline": "SimpleFIN Bridge (US)",
+    "simpleFinToken": "Token penyiapan SimpleFIN",
+    "simpleFinTokenTooltip": "Dibuat di SimpleFIN Bridge Anda (mis. bridge.simplefin.org) untuk aplikasi ini; hanya dapat digunakan sekali",
     "skipFromTotals": "Kecualikan dari Total",
     "skipTooltip": "Lewati Langkah",
     "sortTooltip": "Urutkan Item",

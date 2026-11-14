@@ -645,32 +645,15 @@ class AppLocalizationsBe extends AppLocalizations {
   String get finTsBankCode => 'Код банка (BLZ)';
 
   @override
-  String get finTsConnect => 'Падлучыцца';
-
-  @override
   String get finTsCustomerId =>
       'ID кліента (калі адрозніваецца ад ID карыстальніка)';
-
-  @override
-  String get finTsDateFrom => 'Імпартаваць аперацыі з';
 
   @override
   String get finTsDescription =>
       'Імпарт рэшткаў і аперацый з банкаў, якія падтрымліваюць FinTS 4.1 (PIN/TAN). Доступ толькі для чытання: плацяжы не выконваюцца.';
 
   @override
-  String get finTsDisconnect => 'Адлучыцца';
-
-  @override
   String get finTsHeadline => 'Financial Transaction Services (FinTS 4.1)';
-
-  @override
-  String get finTsImport => 'Імпартаваць аперацыі';
-
-  @override
-  String finTsImported(Object added, Object pending, Object skipped) {
-    return 'Імпартавана: $added, прапушчана як наяўныя: $skipped, у апрацоўцы (не імпартаваны): $pending';
-  }
 
   @override
   String get finTsIncomplete =>
@@ -687,9 +670,6 @@ class AppLocalizationsBe extends AppLocalizations {
   }
 
   @override
-  String get finTsNoAccounts => 'Банк не перадаў ніводнага рахунку';
-
-  @override
   String get finTsPin => 'PIN';
 
   @override
@@ -702,10 +682,6 @@ class AppLocalizationsBe extends AppLocalizations {
   @override
   String get finTsProductIdTooltip =>
       'Выдаецца Deutsche Kreditwirtschaft распрацоўшчыку праграмы';
-
-  @override
-  String get finTsSelectTarget =>
-      'Абярыце рахунак і катэгорыю бюджэту для імпарту';
 
   @override
   String get finTsTan => 'TAN';
@@ -801,7 +777,31 @@ class AppLocalizationsBe extends AppLocalizations {
   String get incomeTooltip => 'Усталюйце звесткі аб даходах';
 
   @override
+  String get integrationConnect => 'Падлучыцца';
+
+  @override
+  String get integrationDateFrom => 'Імпартаваць аперацыі з';
+
+  @override
+  String get integrationDisconnect => 'Адлучыцца';
+
+  @override
   String get integrationHeadline => 'Інтэграцыі';
+
+  @override
+  String get integrationImport => 'Імпартаваць аперацыі';
+
+  @override
+  String integrationImported(Object added, Object pending, Object skipped) {
+    return 'Імпартавана: $added, прапушчана як наяўныя: $skipped, у апрацоўцы (не імпартаваны): $pending';
+  }
+
+  @override
+  String get integrationNoAccounts => 'Банк не перадаў ніводнага рахунку';
+
+  @override
+  String get integrationSelectTarget =>
+      'Абярыце рахунак і катэгорыю бюджэту для імпарту';
 
   @override
   String get invoiceHeadline => 'Фактуры';
@@ -1052,6 +1052,23 @@ class AppLocalizationsBe extends AppLocalizations {
 
   @override
   String get settingsSaved => 'Налады захаваны!';
+
+  @override
+  String get simpleFinDescription =>
+      'Імпарт рэшткаў і аперацый банкаў і эмітэнтаў картак ЗША праз SimpleFIN Bridge. Доступ толькі для чытання: плацяжы не выконваюцца.';
+
+  @override
+  String get simpleFinForget => 'Забыць доступ';
+
+  @override
+  String get simpleFinHeadline => 'SimpleFIN Bridge (US)';
+
+  @override
+  String get simpleFinToken => 'Токен наладкі SimpleFIN';
+
+  @override
+  String get simpleFinTokenTooltip =>
+      'Ствараецца ў вашым SimpleFIN Bridge (напрыклад, bridge.simplefin.org) для гэтай праграмы; выкарыстоўваецца толькі адзін раз';
 
   @override
   String get skipFromTotals => 'Выключыць з агульных вынікаў';
@@ -1868,32 +1885,15 @@ class AppLocalizationsBeEu extends AppLocalizationsBe {
   String get finTsBankCode => 'Kod banka (BLZ)';
 
   @override
-  String get finTsConnect => 'Padłučycca';
-
-  @override
   String get finTsCustomerId =>
       'ID klijenta (kali adroznivajecca ad ID karystaĺnika)';
-
-  @override
-  String get finTsDateFrom => 'Impartavać aperacyi z';
 
   @override
   String get finTsDescription =>
       'Impart reštkaŭ i aperacyj z bankaŭ, jakija padtrymlivajuć FinTS 4.1 (PIN/TAN). Dostup toĺki dla čytannia: płaciažy nie vykonvajucca.';
 
   @override
-  String get finTsDisconnect => 'Adłučycca';
-
-  @override
   String get finTsHeadline => 'Financial Transaction Services (FinTS 4.1)';
-
-  @override
-  String get finTsImport => 'Impartavać aperacyi';
-
-  @override
-  String finTsImported(Object added, Object pending, Object skipped) {
-    return 'Impartavana: $added, prapuščana jak najaŭnyja: $skipped, u apracoŭcy (nie impartavany): $pending';
-  }
 
   @override
   String get finTsIncomplete =>
@@ -1910,9 +1910,6 @@ class AppLocalizationsBeEu extends AppLocalizationsBe {
   }
 
   @override
-  String get finTsNoAccounts => 'Bank nie pieradaŭ nivodnaha rachunku';
-
-  @override
   String get finTsPin => 'PIN';
 
   @override
@@ -1925,10 +1922,6 @@ class AppLocalizationsBeEu extends AppLocalizationsBe {
   @override
   String get finTsProductIdTooltip =>
       'Vydajecca Deutsche Kreditwirtschaft raspracoŭščyku prahramy';
-
-  @override
-  String get finTsSelectTarget =>
-      'Abiarycie rachunak i katehoryju biudžetu dla impartu';
 
   @override
   String get finTsTan => 'TAN';
@@ -2024,7 +2017,31 @@ class AppLocalizationsBeEu extends AppLocalizationsBe {
   String get incomeTooltip => 'Ustaliujcie Zviestki ab Dachodach';
 
   @override
+  String get integrationConnect => 'Padłučycca';
+
+  @override
+  String get integrationDateFrom => 'Impartavać aperacyi z';
+
+  @override
+  String get integrationDisconnect => 'Adłučycca';
+
+  @override
   String get integrationHeadline => 'Intehracyi';
+
+  @override
+  String get integrationImport => 'Impartavać aperacyi';
+
+  @override
+  String integrationImported(Object added, Object pending, Object skipped) {
+    return 'Impartavana: $added, prapuščana jak najaŭnyja: $skipped, u apracoŭcy (nie impartavany): $pending';
+  }
+
+  @override
+  String get integrationNoAccounts => 'Bank nie pieradaŭ nivodnaha rachunku';
+
+  @override
+  String get integrationSelectTarget =>
+      'Abiarycie rachunak i katehoryju biudžetu dla impartu';
 
   @override
   String get invoiceHeadline => 'Faktury';
@@ -2275,6 +2292,23 @@ class AppLocalizationsBeEu extends AppLocalizationsBe {
 
   @override
   String get settingsSaved => 'Nalady zachavany!';
+
+  @override
+  String get simpleFinDescription =>
+      'Impart reštkaŭ i aperacyj bankaŭ i emitentaŭ kartak ZŠA praz SimpleFIN Bridge. Dostup toĺki dla čytannia: płaciažy nie vykonvajucca.';
+
+  @override
+  String get simpleFinForget => 'Zabyć dostup';
+
+  @override
+  String get simpleFinHeadline => 'SimpleFIN Bridge (US)';
+
+  @override
+  String get simpleFinToken => 'Tokien naładki SimpleFIN';
+
+  @override
+  String get simpleFinTokenTooltip =>
+      'Stvarajecca ŭ vašym SimpleFIN Bridge (napryklad, bridge.simplefin.org) dla hetaj prahramy; vykarystoŭvajecca toĺki adzin raz';
 
   @override
   String get skipFromTotals => 'Vykliučyć z ahuĺnych vynikaŭ';

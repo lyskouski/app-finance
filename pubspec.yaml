@@ -60,6 +60,7 @@ dependencies:
   simple_totp_auth: ^0.0.2
   local_auth: ^2.3.0
   fints: ^0.4.0
+  http: ^1.5.0
 
 dependency_overrides:
   flutter_webrtc: 0.12.10

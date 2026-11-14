@@ -75,6 +75,7 @@ Bu, istifadəçilərə heç kimin geridə qalmamasını təmin etməklə öz mal
 - Hesablar və Fakturalar üçün `CSV`, `QIF`, `OFX` fayllarından idxal edin
 - İnteqrasiyalar
   - Financial Transaction Services (FinTS 4.1): Alman banklarından qalıqların və əməliyyatların idxalı (PIN/TAN)
+  - SimpleFIN Bridge (US): ABŞ bankları və kart emitentlərindən qalıqların və əməliyyatların idxalı
 - Excel `XLSX` faylına ixrac edin
 - Məlumatların şifrələnməsi
 - Lokallaşdırma

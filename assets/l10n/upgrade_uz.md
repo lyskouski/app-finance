@@ -5,8 +5,8 @@ _Yangilanishlarning toʻliq roʻyxatini “Maslahat” tugmasidagi “Haqida” 
 ### 8.0.0
 - Ochiladigan bo'limlarga ega yangi Integratsiyalar sahifasi
 - Financial Transaction Services (FinTS 4.1) qo'shildi: nemis banklaridan hisoblar, qoldiqlar va tranzaksiyalarni import qilish
+- SimpleFIN Bridge (US) qo'shildi: AQSh banklari va karta emitentlaridan hisoblar, qoldiqlar va tranzaksiyalarni import qilish
 - Konvertatsiya kurslarining aniqligi tuzatildi
-- Birinchi ishga tushirish soddalashtirildi va Flutter 3.50 ga yangilandi
 
 ### 7.3.0
 - Indonez (ID) lokalizatsiyasi qo'shildi

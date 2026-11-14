@@ -644,31 +644,14 @@ class AppLocalizationsFa extends AppLocalizations {
   String get finTsBankCode => 'کد بانک (BLZ)';
 
   @override
-  String get finTsConnect => 'اتصال';
-
-  @override
   String get finTsCustomerId => 'شناسه مشتری (اگر با شناسه کاربر متفاوت است)';
-
-  @override
-  String get finTsDateFrom => 'وارد کردن تراکنش‌ها از تاریخ';
 
   @override
   String get finTsDescription =>
       'وارد کردن موجودی‌ها و تراکنش‌ها از بانک‌هایی که از FinTS 4.1 (PIN/TAN) پشتیبانی می‌کنند. دسترسی فقط خواندنی است: هیچ پرداختی انجام نمی‌شود.';
 
   @override
-  String get finTsDisconnect => 'قطع اتصال';
-
-  @override
   String get finTsHeadline => 'Financial Transaction Services (FinTS 4.1)';
-
-  @override
-  String get finTsImport => 'وارد کردن تراکنش‌ها';
-
-  @override
-  String finTsImported(Object added, Object pending, Object skipped) {
-    return 'وارد شده: $added، رد شده به دلیل وجود قبلی: $skipped، در انتظار (وارد نشده): $pending';
-  }
 
   @override
   String get finTsIncomplete =>
@@ -685,9 +668,6 @@ class AppLocalizationsFa extends AppLocalizations {
   }
 
   @override
-  String get finTsNoAccounts => 'بانک هیچ حسابی ارائه نکرده است';
-
-  @override
   String get finTsPin => 'PIN';
 
   @override
@@ -700,10 +680,6 @@ class AppLocalizationsFa extends AppLocalizations {
   @override
   String get finTsProductIdTooltip =>
       'توسط Deutsche Kreditwirtschaft به سازنده برنامه اعطا می‌شود';
-
-  @override
-  String get finTsSelectTarget =>
-      'حساب و دسته بودجه را برای وارد کردن انتخاب کنید';
 
   @override
   String get finTsTan => 'TAN';
@@ -799,7 +775,31 @@ class AppLocalizationsFa extends AppLocalizations {
   String get incomeTooltip => 'تنظیم جزئیات درآمد';
 
   @override
+  String get integrationConnect => 'اتصال';
+
+  @override
+  String get integrationDateFrom => 'وارد کردن تراکنش‌ها از تاریخ';
+
+  @override
+  String get integrationDisconnect => 'قطع اتصال';
+
+  @override
   String get integrationHeadline => 'یکپارچه‌سازی‌ها';
+
+  @override
+  String get integrationImport => 'وارد کردن تراکنش‌ها';
+
+  @override
+  String integrationImported(Object added, Object pending, Object skipped) {
+    return 'وارد شده: $added، رد شده به دلیل وجود قبلی: $skipped، در انتظار (وارد نشده): $pending';
+  }
+
+  @override
+  String get integrationNoAccounts => 'بانک هیچ حسابی ارائه نکرده است';
+
+  @override
+  String get integrationSelectTarget =>
+      'حساب و دسته بودجه را برای وارد کردن انتخاب کنید';
 
   @override
   String get invoiceHeadline => 'فاکتورها';
@@ -1048,6 +1048,23 @@ class AppLocalizationsFa extends AppLocalizations {
 
   @override
   String get settingsSaved => 'تنظیمات ذخیره شد!';
+
+  @override
+  String get simpleFinDescription =>
+      'وارد کردن موجودی‌ها و تراکنش‌های بانک‌ها و صادرکنندگان کارت آمریکایی از طریق SimpleFIN Bridge. دسترسی فقط خواندنی است: هیچ پرداختی انجام نمی‌شود.';
+
+  @override
+  String get simpleFinForget => 'فراموش کردن دسترسی';
+
+  @override
+  String get simpleFinHeadline => 'SimpleFIN Bridge (US)';
+
+  @override
+  String get simpleFinToken => 'توکن راه‌اندازی SimpleFIN';
+
+  @override
+  String get simpleFinTokenTooltip =>
+      'در SimpleFIN Bridge شما (مثلاً bridge.simplefin.org) برای این برنامه ساخته می‌شود؛ فقط یک بار قابل استفاده است';
 
   @override
   String get skipFromTotals => 'حذف از مجموع';

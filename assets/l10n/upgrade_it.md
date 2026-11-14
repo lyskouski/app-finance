@@ -6,8 +6,8 @@ pulsante “Suggerimenti”._
 ### 8.0.0
 - Nuova pagina Integrazioni con sezioni espandibili
 - Aggiunto Financial Transaction Services (FinTS 4.1): conti, saldi e importazione dei movimenti dalle banche tedesche
+- Aggiunto SimpleFIN Bridge (US): conti, saldi e importazione dei movimenti di banche ed emittenti di carte statunitensi
 - Corretta la precisione dei tassi di conversione
-- Semplificato il primo avvio e aggiornamento a Flutter 3.50
 
 ### 7.3.0
 - Aggiunta la localizzazione in indonesiano (ID)

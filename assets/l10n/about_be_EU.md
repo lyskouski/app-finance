@@ -75,6 +75,7 @@ zastaniecca ŭ baku.
 - Impart z fajlaŭ `CSV`, `QIF`, `OFX` dlia rachunkaŭ i rachunkaŭ-faktur
 - Intehracyi
   - Financial Transaction Services (FinTS 4.1): impart reštkaŭ i aperacyj z niamieckich bankaŭ (PIN/TAN)
+  - SimpleFIN Bridge (US): impart reštkaŭ i aperacyj bankaŭ i emitentaŭ kartak ZŠA
 - Ekspart u fajl Excel `XLSX`
 - Šyfravańnie dadzienych
 - Lakalizacyja

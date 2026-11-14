@@ -75,6 +75,7 @@
 - CSVファイル、QIFファイル、OFXファイルから請求書や請求書をインポート
 - 連携
   - Financial Transaction Services (FinTS 4.1)：ドイツの銀行からの残高と取引のインポート（PIN/TAN）
+  - SimpleFIN Bridge (US)：米国の銀行やカード発行会社からの残高と取引のインポート
 - Excel の `XLSX` ファイルにエクスポート
 - データの暗号化
 - ローカライゼーション

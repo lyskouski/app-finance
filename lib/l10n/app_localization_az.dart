@@ -646,32 +646,15 @@ class AppLocalizationsAz extends AppLocalizations {
   String get finTsBankCode => 'Bank kodu (BLZ)';
 
   @override
-  String get finTsConnect => 'Qoşul';
-
-  @override
   String get finTsCustomerId =>
       'Müştəri ID-si (istifadəçi ID-sindən fərqlidirsə)';
-
-  @override
-  String get finTsDateFrom => 'Əməliyyatları bu tarixdən idxal et';
 
   @override
   String get finTsDescription =>
       'FinTS 4.1 (PIN/TAN) dəstəkləyən banklardan qalıqları və əməliyyatları idxal edin. Giriş yalnız oxumaq üçündür: ödənişlər edilmir.';
 
   @override
-  String get finTsDisconnect => 'Ayrıl';
-
-  @override
   String get finTsHeadline => 'Financial Transaction Services (FinTS 4.1)';
-
-  @override
-  String get finTsImport => 'Əməliyyatları idxal et';
-
-  @override
-  String finTsImported(Object added, Object pending, Object skipped) {
-    return 'İdxal edildi: $added, artıq mövcud olduğu üçün buraxıldı: $skipped, gözləmədə (idxal edilmədi): $pending';
-  }
 
   @override
   String get finTsIncomplete =>
@@ -688,9 +671,6 @@ class AppLocalizationsAz extends AppLocalizations {
   }
 
   @override
-  String get finTsNoAccounts => 'Bank heç bir hesab təqdim etmədi';
-
-  @override
   String get finTsPin => 'PIN';
 
   @override
@@ -703,10 +683,6 @@ class AppLocalizationsAz extends AppLocalizations {
   @override
   String get finTsProductIdTooltip =>
       'Deutsche Kreditwirtschaft tərəfindən tətbiqin istehsalçısına verilir';
-
-  @override
-  String get finTsSelectTarget =>
-      'İdxal üçün hesabı və büdcə kateqoriyasını seçin';
 
   @override
   String get finTsTan => 'TAN';
@@ -802,7 +778,31 @@ class AppLocalizationsAz extends AppLocalizations {
   String get incomeTooltip => 'Gəlir təfərrüatlarını təyin edin';
 
   @override
+  String get integrationConnect => 'Qoşul';
+
+  @override
+  String get integrationDateFrom => 'Əməliyyatları bu tarixdən idxal et';
+
+  @override
+  String get integrationDisconnect => 'Ayrıl';
+
+  @override
   String get integrationHeadline => 'İnteqrasiyalar';
+
+  @override
+  String get integrationImport => 'Əməliyyatları idxal et';
+
+  @override
+  String integrationImported(Object added, Object pending, Object skipped) {
+    return 'İdxal edildi: $added, artıq mövcud olduğu üçün buraxıldı: $skipped, gözləmədə (idxal edilmədi): $pending';
+  }
+
+  @override
+  String get integrationNoAccounts => 'Bank heç bir hesab təqdim etmədi';
+
+  @override
+  String get integrationSelectTarget =>
+      'İdxal üçün hesabı və büdcə kateqoriyasını seçin';
 
   @override
   String get invoiceHeadline => 'Fakturalar';
@@ -1053,6 +1053,23 @@ class AppLocalizationsAz extends AppLocalizations {
 
   @override
   String get settingsSaved => 'Tənzimləmələr yadda saxlanıldı!';
+
+  @override
+  String get simpleFinDescription =>
+      'ABŞ bankları və kart emitentlərinin qalıqlarını və əməliyyatlarını SimpleFIN Bridge vasitəsilə idxal edin. Giriş yalnız oxumaq üçündür: ödənişlər edilmir.';
+
+  @override
+  String get simpleFinForget => 'Girişi unut';
+
+  @override
+  String get simpleFinHeadline => 'SimpleFIN Bridge (US)';
+
+  @override
+  String get simpleFinToken => 'SimpleFIN quraşdırma tokeni';
+
+  @override
+  String get simpleFinTokenTooltip =>
+      'Bu tətbiq üçün SimpleFIN Bridge-də (məs. bridge.simplefin.org) yaradılır; yalnız bir dəfə istifadə oluna bilər';
 
   @override
   String get skipFromTotals => 'Cəmilərdən xaric edin';

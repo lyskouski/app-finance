@@ -643,31 +643,14 @@ class AppLocalizationsJa extends AppLocalizations {
   String get finTsBankCode => '銀行コード (BLZ)';
 
   @override
-  String get finTsConnect => '接続';
-
-  @override
   String get finTsCustomerId => '顧客ID（ユーザーIDと異なる場合）';
-
-  @override
-  String get finTsDateFrom => '取引のインポート開始日';
 
   @override
   String get finTsDescription =>
       'FinTS 4.1（PIN/TAN）対応の銀行から残高と取引をインポートします。アクセスは読み取り専用で、支払いは行われません。';
 
   @override
-  String get finTsDisconnect => '切断';
-
-  @override
   String get finTsHeadline => 'Financial Transaction Services (FinTS 4.1)';
-
-  @override
-  String get finTsImport => '取引をインポート';
-
-  @override
-  String finTsImported(Object added, Object pending, Object skipped) {
-    return 'インポート済み: $added、既存のためスキップ: $skipped、保留中（未インポート）: $pending';
-  }
 
   @override
   String get finTsIncomplete => 'サーバーURL、銀行コード、ユーザーID、製品登録番号を入力してください';
@@ -683,9 +666,6 @@ class AppLocalizationsJa extends AppLocalizations {
   }
 
   @override
-  String get finTsNoAccounts => '銀行から口座が提供されませんでした';
-
-  @override
   String get finTsPin => 'PIN';
 
   @override
@@ -697,9 +677,6 @@ class AppLocalizationsJa extends AppLocalizations {
   @override
   String get finTsProductIdTooltip =>
       'Deutsche Kreditwirtschaft がアプリの開発元に発行します';
-
-  @override
-  String get finTsSelectTarget => 'インポート先の口座と予算カテゴリを選択してください';
 
   @override
   String get finTsTan => 'TAN';
@@ -795,7 +772,30 @@ class AppLocalizationsJa extends AppLocalizations {
   String get incomeTooltip => '収入の詳細設定';
 
   @override
+  String get integrationConnect => '接続';
+
+  @override
+  String get integrationDateFrom => '取引のインポート開始日';
+
+  @override
+  String get integrationDisconnect => '切断';
+
+  @override
   String get integrationHeadline => '連携';
+
+  @override
+  String get integrationImport => '取引をインポート';
+
+  @override
+  String integrationImported(Object added, Object pending, Object skipped) {
+    return 'インポート済み: $added、既存のためスキップ: $skipped、保留中（未インポート）: $pending';
+  }
+
+  @override
+  String get integrationNoAccounts => '銀行から口座が提供されませんでした';
+
+  @override
+  String get integrationSelectTarget => 'インポート先の口座と予算カテゴリを選択してください';
 
   @override
   String get invoiceHeadline => '請求書';
@@ -1042,6 +1042,23 @@ class AppLocalizationsJa extends AppLocalizations {
 
   @override
   String get settingsSaved => '設定が保存されました！';
+
+  @override
+  String get simpleFinDescription =>
+      'SimpleFIN Bridge を通じて米国の銀行やカード発行会社から残高と取引をインポートします。アクセスは読み取り専用で、支払いは行われません。';
+
+  @override
+  String get simpleFinForget => 'アクセスを削除';
+
+  @override
+  String get simpleFinHeadline => 'SimpleFIN Bridge (US)';
+
+  @override
+  String get simpleFinToken => 'SimpleFIN セットアップトークン';
+
+  @override
+  String get simpleFinTokenTooltip =>
+      'このアプリ用に SimpleFIN Bridge（例: bridge.simplefin.org）で作成します。使用できるのは1回のみです';
 
   @override
   String get skipFromTotals => '合計から除外する';

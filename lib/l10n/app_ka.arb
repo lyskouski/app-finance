@@ -265,25 +265,9 @@
     "failData": "თანხის შემცირება",
     "finTsApproved": "დადასტურებულია ბანკის აპლიკაციაში",
     "finTsBankCode": "ბანკის კოდი (BLZ)",
-    "finTsConnect": "დაკავშირება",
     "finTsCustomerId": "კლიენტის ID (თუ განსხვავდება მომხმარებლის ID-სგან)",
-    "finTsDateFrom": "ტრანზაქციების იმპორტი თარიღიდან",
     "finTsDescription": "ნაშთებისა და ტრანზაქციების იმპორტი ბანკებიდან, რომლებიც მხარს უჭერენ FinTS 4.1-ს (PIN/TAN). წვდომა მხოლოდ წაკითხვისთვისაა: გადახდები არ სრულდება.",
-    "finTsDisconnect": "გათიშვა",
     "finTsHeadline": "Financial Transaction Services (FinTS 4.1)",
-    "finTsImport": "ტრანზაქციების იმპორტი",
-    "finTsImported": "იმპორტირებულია: {added}, გამოტოვებულია, როგორც უკვე არსებული: {skipped}, მოლოდინში (არ არის იმპორტირებული): {pending}",
-    "@finTsImported": {
-        "added": {
-            "type": "int"
-        },
-        "skipped": {
-            "type": "int"
-        },
-        "pending": {
-            "type": "int"
-        }
-    },
     "finTsIncomplete": "შეავსეთ სერვერის URL, ბანკის კოდი, მომხმარებლის ID და პროდუქტის სარეგისტრაციო ნომერი",
     "finTsLoginChanged": "ბანკმა შეცვალა შესვლის მონაცემები, განაახლეთ მომხმარებლის ან კლიენტის ID: {value}",
     "@finTsLoginChanged": {
@@ -297,12 +281,10 @@
             "type": "String"
         }
     },
-    "finTsNoAccounts": "ბანკს არცერთი ანგარიში არ მოუწოდებია",
     "finTsPin": "PIN",
     "finTsPinHint": "გამოიყენება მხოლოდ ამ სესიისთვის და არასოდეს ინახება",
     "finTsProductId": "პროდუქტის სარეგისტრაციო ნომერი",
     "finTsProductIdTooltip": "გაიცემა Deutsche Kreditwirtschaft-ის მიერ აპლიკაციის მწარმოებლისთვის",
-    "finTsSelectTarget": "აირჩიეთ ანგარიში და ბიუჯეტის კატეგორია იმპორტისთვის",
     "finTsTan": "TAN",
     "finTsTanHeadline": "ტრანზაქციის დადასტურება (TAN)",
     "finTsTanMedium": "აირჩიეთ TAN მატარებელი",
@@ -338,7 +320,25 @@
     "incomeHeadline": "შემოსავალი",
     "incomeHealth": "შემოსავლის ჯანმრთელობის რადარი",
     "incomeTooltip": "შემოსავლის დეტალების დაყენება",
+    "integrationConnect": "დაკავშირება",
+    "integrationDateFrom": "ტრანზაქციების იმპორტი თარიღიდან",
+    "integrationDisconnect": "გათიშვა",
     "integrationHeadline": "ინტეგრაციები",
+    "integrationImport": "ტრანზაქციების იმპორტი",
+    "integrationImported": "იმპორტირებულია: {added}, გამოტოვებულია, როგორც უკვე არსებული: {skipped}, მოლოდინში (არ არის იმპორტირებული): {pending}",
+    "@integrationImported": {
+        "added": {
+            "type": "int"
+        },
+        "skipped": {
+            "type": "int"
+        },
+        "pending": {
+            "type": "int"
+        }
+    },
+    "integrationNoAccounts": "ბანკს არცერთი ანგარიში არ მოუწოდებია",
+    "integrationSelectTarget": "აირჩიეთ ანგარიში და ბიუჯეტის კატეგორია იმპორტისთვის",
     "invoiceHeadline": "ინვოისები",
     "invoiceSum": "ინვოისები: {value}",
     "@invoiceSum": {
@@ -447,6 +447,11 @@
     "settingsBaseHeadline": "საფუძვლები",
     "settingsHeadline": "პარამეტრები",
     "settingsSaved": "პარამეტრები შენახულია!",
+    "simpleFinDescription": "აშშ-ის ბანკებისა და ბარათების ემიტენტების ნაშთებისა და ტრანზაქციების იმპორტი SimpleFIN Bridge-ის მეშვეობით. წვდომა მხოლოდ წაკითხვისთვისაა: გადახდები არ სრულდება.",
+    "simpleFinForget": "წვდომის დავიწყება",
+    "simpleFinHeadline": "SimpleFIN Bridge (US)",
+    "simpleFinToken": "SimpleFIN-ის დაყენების ტოკენი",
+    "simpleFinTokenTooltip": "იქმნება თქვენს SimpleFIN Bridge-ში (მაგ. bridge.simplefin.org) ამ აპლიკაციისთვის; მისი გამოყენება მხოლოდ ერთხელ შეიძლება",
     "skipFromTotals": "ჯამებიდან გამორიცხვა",
     "skipTooltip": "ნაბიჯ(ებ)ის გამოტოვება",
     "sortTooltip": "ელემენტების დალაგება",

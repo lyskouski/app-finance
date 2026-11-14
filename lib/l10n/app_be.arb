@@ -265,25 +265,9 @@
     "failData": "Сума выліку",
     "finTsApproved": "Пацверджана ў банкаўскай праграме",
     "finTsBankCode": "Код банка (BLZ)",
-    "finTsConnect": "Падлучыцца",
     "finTsCustomerId": "ID кліента (калі адрозніваецца ад ID карыстальніка)",
-    "finTsDateFrom": "Імпартаваць аперацыі з",
     "finTsDescription": "Імпарт рэшткаў і аперацый з банкаў, якія падтрымліваюць FinTS 4.1 (PIN/TAN). Доступ толькі для чытання: плацяжы не выконваюцца.",
-    "finTsDisconnect": "Адлучыцца",
     "finTsHeadline": "Financial Transaction Services (FinTS 4.1)",
-    "finTsImport": "Імпартаваць аперацыі",
-    "finTsImported": "Імпартавана: {added}, прапушчана як наяўныя: {skipped}, у апрацоўцы (не імпартаваны): {pending}",
-    "@finTsImported": {
-        "added": {
-            "type": "int"
-        },
-        "skipped": {
-            "type": "int"
-        },
-        "pending": {
-            "type": "int"
-        }
-    },
     "finTsIncomplete": "Запоўніце URL сервера, код банка, ID карыстальніка і рэгістрацыйны нумар прадукту",
     "finTsLoginChanged": "Банк змяніў даныя для ўваходу, абнавіце ID карыстальніка або ID кліента: {value}",
     "@finTsLoginChanged": {
@@ -297,12 +281,10 @@
             "type": "String"
         }
     },
-    "finTsNoAccounts": "Банк не перадаў ніводнага рахунку",
     "finTsPin": "PIN",
     "finTsPinHint": "Выкарыстоўваецца толькі ў гэтым сеансе і ніколі не захоўваецца",
     "finTsProductId": "Рэгістрацыйны нумар прадукту",
     "finTsProductIdTooltip": "Выдаецца Deutsche Kreditwirtschaft распрацоўшчыку праграмы",
-    "finTsSelectTarget": "Абярыце рахунак і катэгорыю бюджэту для імпарту",
     "finTsTan": "TAN",
     "finTsTanHeadline": "Пацвярджэнне аперацыі (TAN)",
     "finTsTanMedium": "Абярыце носьбіт TAN",
@@ -338,7 +320,25 @@
     "incomeHeadline": "Даход",
     "incomeHealth": "Радар здароўя даходаў",
     "incomeTooltip": "Усталюйце звесткі аб даходах",
+    "integrationConnect": "Падлучыцца",
+    "integrationDateFrom": "Імпартаваць аперацыі з",
+    "integrationDisconnect": "Адлучыцца",
     "integrationHeadline": "Інтэграцыі",
+    "integrationImport": "Імпартаваць аперацыі",
+    "integrationImported": "Імпартавана: {added}, прапушчана як наяўныя: {skipped}, у апрацоўцы (не імпартаваны): {pending}",
+    "@integrationImported": {
+        "added": {
+            "type": "int"
+        },
+        "skipped": {
+            "type": "int"
+        },
+        "pending": {
+            "type": "int"
+        }
+    },
+    "integrationNoAccounts": "Банк не перадаў ніводнага рахунку",
+    "integrationSelectTarget": "Абярыце рахунак і катэгорыю бюджэту для імпарту",
     "invoiceHeadline": "Фактуры",
     "invoiceSum": "Фактуры: {value}",
     "@invoiceSum": {
@@ -447,6 +447,11 @@
     "settingsBaseHeadline": "Асновы",
     "settingsHeadline": "Налады",
     "settingsSaved": "Налады захаваны!",
+    "simpleFinDescription": "Імпарт рэшткаў і аперацый банкаў і эмітэнтаў картак ЗША праз SimpleFIN Bridge. Доступ толькі для чытання: плацяжы не выконваюцца.",
+    "simpleFinForget": "Забыць доступ",
+    "simpleFinHeadline": "SimpleFIN Bridge (US)",
+    "simpleFinToken": "Токен наладкі SimpleFIN",
+    "simpleFinTokenTooltip": "Ствараецца ў вашым SimpleFIN Bridge (напрыклад, bridge.simplefin.org) для гэтай праграмы; выкарыстоўваецца толькі адзін раз",
     "skipFromTotals": "Выключыць з агульных вынікаў",
     "skipTooltip": "Прапусьціць крок(і)",
     "sortTooltip": "Сартаваць элементы",

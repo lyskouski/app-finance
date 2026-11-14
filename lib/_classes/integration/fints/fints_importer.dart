@@ -1,14 +1,12 @@
 // Copyright 2026 The terCAD team. All rights reserved.
 // Use of this source code is governed by a CC BY-NC-ND 4.0 license that can be found in the LICENSE file.
 
-import 'package:app_finance/_classes/structure/bill_app_data.dart';
+import 'package:app_finance/_classes/integration/integration_record.dart';
 import 'package:app_finance/_classes/structure/interface_app_data.dart';
-import 'package:app_finance/_classes/structure/invoice_app_data.dart';
 import 'package:fints/fints.dart';
-import 'package:flutter_currency_picker/flutter_currency_picker.dart';
 import 'package:uuid/uuid.dart';
 
-typedef FinTsImportResult = ({int added, int skipped, int pending});
+typedef FinTsImportResult = IntegrationImportResult;
 
 class FinTsImporter {
   final bool Function(String uuid) exists;
@@ -44,32 +42,15 @@ class FinTsImporter {
     return (added: added, skipped: skipped, pending: pending);
   }
 
-  static InterfaceAppData convert(Transaction transaction, {required String account, required String category}) {
-    final date = transaction.bookingDate ?? transaction.valueDate;
-    final currency = CurrencyProvider.find(transaction.amount.currency);
-    final amount = transaction.amount.value.abs();
-    if (transaction.amount.isNegative) {
-      return BillAppData(
+  static InterfaceAppData convert(Transaction transaction, {required String account, required String category}) =>
+      IntegrationRecord.toAppData(
+        amount: transaction.amount.value,
+        currency: transaction.amount.currency,
+        date: transaction.bookingDate ?? transaction.valueDate,
+        title: getTitle(transaction),
         account: account,
         category: category,
-        title: getTitle(transaction),
-        details: amount,
-        currency: currency,
-        createdAt: date,
-        updatedAt: date,
-        hidden: false,
       );
-    }
-    return InvoiceAppData(
-      account: account,
-      title: getTitle(transaction),
-      details: amount,
-      currency: currency,
-      createdAt: date,
-      updatedAt: date,
-      hidden: false,
-    );
-  }
 
   static String getTitle(Transaction transaction) {
     final parts = [transaction.counterpartyName, transaction.purpose]

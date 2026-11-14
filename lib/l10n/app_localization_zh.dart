@@ -643,31 +643,14 @@ class AppLocalizationsZh extends AppLocalizations {
   String get finTsBankCode => '银行代码 (BLZ)';
 
   @override
-  String get finTsConnect => '连接';
-
-  @override
   String get finTsCustomerId => '客户 ID（如与用户 ID 不同）';
-
-  @override
-  String get finTsDateFrom => '导入交易的起始日期';
 
   @override
   String get finTsDescription =>
       '从支持 FinTS 4.1（PIN/TAN）的银行导入余额和交易。仅限只读访问：不会执行任何付款。';
 
   @override
-  String get finTsDisconnect => '断开连接';
-
-  @override
   String get finTsHeadline => 'Financial Transaction Services (FinTS 4.1)';
-
-  @override
-  String get finTsImport => '导入交易';
-
-  @override
-  String finTsImported(Object added, Object pending, Object skipped) {
-    return '已导入：$added，因已存在而跳过：$skipped，待处理（未导入）：$pending';
-  }
 
   @override
   String get finTsIncomplete => '请填写服务器 URL、银行代码、用户 ID 和产品注册号';
@@ -683,9 +666,6 @@ class AppLocalizationsZh extends AppLocalizations {
   }
 
   @override
-  String get finTsNoAccounts => '银行未提供任何账户';
-
-  @override
   String get finTsPin => 'PIN';
 
   @override
@@ -696,9 +676,6 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String get finTsProductIdTooltip => '由 Deutsche Kreditwirtschaft 颁发给应用开发商';
-
-  @override
-  String get finTsSelectTarget => '请选择要导入的账户和预算类别';
 
   @override
   String get finTsTan => 'TAN';
@@ -793,7 +770,30 @@ class AppLocalizationsZh extends AppLocalizations {
   String get incomeTooltip => '设置收入详情';
 
   @override
+  String get integrationConnect => '连接';
+
+  @override
+  String get integrationDateFrom => '导入交易的起始日期';
+
+  @override
+  String get integrationDisconnect => '断开连接';
+
+  @override
   String get integrationHeadline => '集成';
+
+  @override
+  String get integrationImport => '导入交易';
+
+  @override
+  String integrationImported(Object added, Object pending, Object skipped) {
+    return '已导入：$added，因已存在而跳过：$skipped，待处理（未导入）：$pending';
+  }
+
+  @override
+  String get integrationNoAccounts => '银行未提供任何账户';
+
+  @override
+  String get integrationSelectTarget => '请选择要导入的账户和预算类别';
 
   @override
   String get invoiceHeadline => '发票';
@@ -1040,6 +1040,23 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String get settingsSaved => '设置已保存！';
+
+  @override
+  String get simpleFinDescription =>
+      '通过 SimpleFIN Bridge 导入美国银行和发卡机构的余额与交易。仅限只读访问：不会执行任何付款。';
+
+  @override
+  String get simpleFinForget => '删除访问权限';
+
+  @override
+  String get simpleFinHeadline => 'SimpleFIN Bridge (US)';
+
+  @override
+  String get simpleFinToken => 'SimpleFIN 设置令牌';
+
+  @override
+  String get simpleFinTokenTooltip =>
+      '在您的 SimpleFIN Bridge（如 bridge.simplefin.org）中为本应用创建；只能使用一次';
 
   @override
   String get skipFromTotals => '不计入总数';
@@ -1853,31 +1870,14 @@ class AppLocalizationsZhTw extends AppLocalizationsZh {
   String get finTsBankCode => '銀行代碼 (BLZ)';
 
   @override
-  String get finTsConnect => '連線';
-
-  @override
   String get finTsCustomerId => '客戶 ID（若與使用者 ID 不同）';
-
-  @override
-  String get finTsDateFrom => '匯入交易的起始日期';
 
   @override
   String get finTsDescription =>
       '從支援 FinTS 4.1（PIN/TAN）的銀行匯入餘額與交易。僅限唯讀存取：不會執行任何付款。';
 
   @override
-  String get finTsDisconnect => '中斷連線';
-
-  @override
   String get finTsHeadline => 'Financial Transaction Services (FinTS 4.1)';
-
-  @override
-  String get finTsImport => '匯入交易';
-
-  @override
-  String finTsImported(Object added, Object pending, Object skipped) {
-    return '已匯入：$added，因已存在而略過：$skipped，待處理（未匯入）：$pending';
-  }
 
   @override
   String get finTsIncomplete => '請填寫伺服器 URL、銀行代碼、使用者 ID 與產品註冊編號';
@@ -1893,9 +1893,6 @@ class AppLocalizationsZhTw extends AppLocalizationsZh {
   }
 
   @override
-  String get finTsNoAccounts => '銀行未提供任何帳戶';
-
-  @override
   String get finTsPin => 'PIN';
 
   @override
@@ -1906,9 +1903,6 @@ class AppLocalizationsZhTw extends AppLocalizationsZh {
 
   @override
   String get finTsProductIdTooltip => '由 Deutsche Kreditwirtschaft 核發給應用程式開發商';
-
-  @override
-  String get finTsSelectTarget => '請選擇要匯入的帳戶與預算類別';
 
   @override
   String get finTsTan => 'TAN';
@@ -2003,7 +1997,30 @@ class AppLocalizationsZhTw extends AppLocalizationsZh {
   String get incomeTooltip => '設定收入詳細資訊';
 
   @override
+  String get integrationConnect => '連線';
+
+  @override
+  String get integrationDateFrom => '匯入交易的起始日期';
+
+  @override
+  String get integrationDisconnect => '中斷連線';
+
+  @override
   String get integrationHeadline => '整合';
+
+  @override
+  String get integrationImport => '匯入交易';
+
+  @override
+  String integrationImported(Object added, Object pending, Object skipped) {
+    return '已匯入：$added，因已存在而略過：$skipped，待處理（未匯入）：$pending';
+  }
+
+  @override
+  String get integrationNoAccounts => '銀行未提供任何帳戶';
+
+  @override
+  String get integrationSelectTarget => '請選擇要匯入的帳戶與預算類別';
 
   @override
   String get invoiceHeadline => '發票';
@@ -2250,6 +2267,23 @@ class AppLocalizationsZhTw extends AppLocalizationsZh {
 
   @override
   String get settingsSaved => '設定已儲存！';
+
+  @override
+  String get simpleFinDescription =>
+      '透過 SimpleFIN Bridge 匯入美國銀行與發卡機構的餘額及交易。僅限唯讀存取：不會執行任何付款。';
+
+  @override
+  String get simpleFinForget => '移除存取權';
+
+  @override
+  String get simpleFinHeadline => 'SimpleFIN Bridge (US)';
+
+  @override
+  String get simpleFinToken => 'SimpleFIN 設定權杖';
+
+  @override
+  String get simpleFinTokenTooltip =>
+      '在您的 SimpleFIN Bridge（如 bridge.simplefin.org）中為本應用程式建立；只能使用一次';
 
   @override
   String get skipFromTotals => '總計不包括';

@@ -265,25 +265,9 @@
     "failData": "राशि कटौती",
     "finTsApproved": "बैंक ऐप में स्वीकृत",
     "finTsBankCode": "बैंक कोड (BLZ)",
-    "finTsConnect": "कनेक्ट करें",
     "finTsCustomerId": "ग्राहक आईडी (यदि उपयोगकर्ता आईडी से अलग हो)",
-    "finTsDateFrom": "इस तारीख से लेनदेन आयात करें",
     "finTsDescription": "FinTS 4.1 (PIN/TAN) समर्थित बैंकों से शेष राशि और लेनदेन आयात करें। पहुँच केवल पढ़ने के लिए है: कोई भुगतान नहीं किया जाता।",
-    "finTsDisconnect": "डिस्कनेक्ट करें",
     "finTsHeadline": "Financial Transaction Services (FinTS 4.1)",
-    "finTsImport": "लेनदेन आयात करें",
-    "finTsImported": "आयात किए गए: {added}, पहले से मौजूद होने के कारण छोड़े गए: {skipped}, लंबित (आयात नहीं किए गए): {pending}",
-    "@finTsImported": {
-        "added": {
-            "type": "int"
-        },
-        "skipped": {
-            "type": "int"
-        },
-        "pending": {
-            "type": "int"
-        }
-    },
     "finTsIncomplete": "सर्वर URL, बैंक कोड, उपयोगकर्ता आईडी और उत्पाद पंजीकरण संख्या भरें",
     "finTsLoginChanged": "बैंक ने लॉगिन डेटा बदल दिया है, उपयोगकर्ता आईडी या ग्राहक आईडी अपडेट करें: {value}",
     "@finTsLoginChanged": {
@@ -297,12 +281,10 @@
             "type": "String"
         }
     },
-    "finTsNoAccounts": "बैंक ने कोई खाता प्रदान नहीं किया",
     "finTsPin": "PIN",
     "finTsPinHint": "केवल इस सत्र के लिए उपयोग होता है और कभी संग्रहीत नहीं किया जाता",
     "finTsProductId": "उत्पाद पंजीकरण संख्या",
     "finTsProductIdTooltip": "Deutsche Kreditwirtschaft द्वारा ऐप निर्माता को जारी की जाती है",
-    "finTsSelectTarget": "आयात के लिए खाता और बजट श्रेणी चुनें",
     "finTsTan": "TAN",
     "finTsTanHeadline": "लेनदेन प्रमाणीकरण (TAN)",
     "finTsTanMedium": "TAN माध्यम चुनें",
@@ -338,7 +320,25 @@
     "incomeHeadline": "आय",
     "incomeHealth": "आय स्वास्थ्य रडार",
     "incomeTooltip": "आय विवरण निर्धारित करें",
+    "integrationConnect": "कनेक्ट करें",
+    "integrationDateFrom": "इस तारीख से लेनदेन आयात करें",
+    "integrationDisconnect": "डिस्कनेक्ट करें",
     "integrationHeadline": "एकीकरण",
+    "integrationImport": "लेनदेन आयात करें",
+    "integrationImported": "आयात किए गए: {added}, पहले से मौजूद होने के कारण छोड़े गए: {skipped}, लंबित (आयात नहीं किए गए): {pending}",
+    "@integrationImported": {
+        "added": {
+            "type": "int"
+        },
+        "skipped": {
+            "type": "int"
+        },
+        "pending": {
+            "type": "int"
+        }
+    },
+    "integrationNoAccounts": "बैंक ने कोई खाता प्रदान नहीं किया",
+    "integrationSelectTarget": "आयात के लिए खाता और बजट श्रेणी चुनें",
     "invoiceHeadline": "चालान",
     "invoiceSum": "चालान: {value}",
     "@invoiceSum": {
@@ -447,6 +447,11 @@
     "settingsBaseHeadline": "मूल बातें",
     "settingsHeadline": "समायोजन",
     "settingsSaved": "सेटिंग्स सहेजी गई!",
+    "simpleFinDescription": "SimpleFIN Bridge के माध्यम से अमेरिकी बैंकों और कार्ड जारीकर्ताओं से शेष राशि और लेनदेन आयात करें। पहुँच केवल पढ़ने के लिए है: कोई भुगतान नहीं किया जाता।",
+    "simpleFinForget": "पहुँच भूल जाएँ",
+    "simpleFinHeadline": "SimpleFIN Bridge (US)",
+    "simpleFinToken": "SimpleFIN सेटअप टोकन",
+    "simpleFinTokenTooltip": "इस ऐप के लिए आपके SimpleFIN Bridge (जैसे bridge.simplefin.org) में बनाया जाता है; केवल एक बार उपयोग किया जा सकता है",
     "skipFromTotals": "कुल से बाहर रखें",
     "skipTooltip": "चरण छोड़ें",
     "sortTooltip": "आइटम्स को क्रमबद्ध करें",

@@ -5,8 +5,8 @@ _Die vollständige Liste der Updates kann über den Navigationspunkt "Über" auf
 ### 8.0.0
 - Neue Seite „Integrationen“ mit ausklappbaren Abschnitten
 - Financial Transaction Services (FinTS 4.1) hinzugefügt: Konten, Salden und Import von Umsätzen deutscher Banken
+- SimpleFIN Bridge (US) hinzugefügt: Konten, Salden und Import von Umsätzen von US-Banken und Kartenanbietern
 - Fehlerbehebung bei der Genauigkeit von Umrechnungskursen
-- Vereinfachter erster Start und Aktualisierung auf Flutter 3.50
 
 ### 7.3.0
 - Indonesische Lokalisierung (ID) hinzugefügt

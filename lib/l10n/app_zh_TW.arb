@@ -265,25 +265,9 @@
     "failData": "扣除金額",
     "finTsApproved": "已在銀行應用程式中核准",
     "finTsBankCode": "銀行代碼 (BLZ)",
-    "finTsConnect": "連線",
     "finTsCustomerId": "客戶 ID（若與使用者 ID 不同）",
-    "finTsDateFrom": "匯入交易的起始日期",
     "finTsDescription": "從支援 FinTS 4.1（PIN/TAN）的銀行匯入餘額與交易。僅限唯讀存取：不會執行任何付款。",
-    "finTsDisconnect": "中斷連線",
     "finTsHeadline": "Financial Transaction Services (FinTS 4.1)",
-    "finTsImport": "匯入交易",
-    "finTsImported": "已匯入：{added}，因已存在而略過：{skipped}，待處理（未匯入）：{pending}",
-    "@finTsImported": {
-        "added": {
-            "type": "int"
-        },
-        "skipped": {
-            "type": "int"
-        },
-        "pending": {
-            "type": "int"
-        }
-    },
     "finTsIncomplete": "請填寫伺服器 URL、銀行代碼、使用者 ID 與產品註冊編號",
     "finTsLoginChanged": "銀行已變更登入資料，請更新使用者 ID 或客戶 ID：{value}",
     "@finTsLoginChanged": {
@@ -297,12 +281,10 @@
             "type": "String"
         }
     },
-    "finTsNoAccounts": "銀行未提供任何帳戶",
     "finTsPin": "PIN",
     "finTsPinHint": "僅用於本次工作階段，絕不儲存",
     "finTsProductId": "產品註冊編號",
     "finTsProductIdTooltip": "由 Deutsche Kreditwirtschaft 核發給應用程式開發商",
-    "finTsSelectTarget": "請選擇要匯入的帳戶與預算類別",
     "finTsTan": "TAN",
     "finTsTanHeadline": "交易驗證 (TAN)",
     "finTsTanMedium": "選擇 TAN 媒介",
@@ -338,7 +320,25 @@
     "incomeHeadline": "收入",
     "incomeHealth": "收入健康雷達",
     "incomeTooltip": "設定收入詳細資訊",
+    "integrationConnect": "連線",
+    "integrationDateFrom": "匯入交易的起始日期",
+    "integrationDisconnect": "中斷連線",
     "integrationHeadline": "整合",
+    "integrationImport": "匯入交易",
+    "integrationImported": "已匯入：{added}，因已存在而略過：{skipped}，待處理（未匯入）：{pending}",
+    "@integrationImported": {
+        "added": {
+            "type": "int"
+        },
+        "skipped": {
+            "type": "int"
+        },
+        "pending": {
+            "type": "int"
+        }
+    },
+    "integrationNoAccounts": "銀行未提供任何帳戶",
+    "integrationSelectTarget": "請選擇要匯入的帳戶與預算類別",
     "invoiceHeadline": "發票",
     "invoiceSum": "發票：{value}",
     "@invoiceSum": {
@@ -447,6 +447,11 @@
     "settingsBaseHeadline": "基本知識",
     "settingsHeadline": "設定",
     "settingsSaved": "設定已儲存！",
+    "simpleFinDescription": "透過 SimpleFIN Bridge 匯入美國銀行與發卡機構的餘額及交易。僅限唯讀存取：不會執行任何付款。",
+    "simpleFinForget": "移除存取權",
+    "simpleFinHeadline": "SimpleFIN Bridge (US)",
+    "simpleFinToken": "SimpleFIN 設定權杖",
+    "simpleFinTokenTooltip": "在您的 SimpleFIN Bridge（如 bridge.simplefin.org）中為本應用程式建立；只能使用一次",
     "skipFromTotals": "總計不包括",
     "skipTooltip": "跳過步驟",
     "sortTooltip": "排序項目",

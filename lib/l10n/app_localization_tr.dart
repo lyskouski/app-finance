@@ -644,32 +644,15 @@ class AppLocalizationsTr extends AppLocalizations {
   String get finTsBankCode => 'Banka kodu (BLZ)';
 
   @override
-  String get finTsConnect => 'Bağlan';
-
-  @override
   String get finTsCustomerId =>
       'Müşteri kimliği (kullanıcı kimliğinden farklıysa)';
-
-  @override
-  String get finTsDateFrom => 'İşlemleri şu tarihten itibaren içe aktar';
 
   @override
   String get finTsDescription =>
       'FinTS 4.1 (PIN/TAN) destekleyen bankalardan bakiyeleri ve işlemleri içe aktarın. Erişim salt okunurdur: ödeme yapılmaz.';
 
   @override
-  String get finTsDisconnect => 'Bağlantıyı kes';
-
-  @override
   String get finTsHeadline => 'Financial Transaction Services (FinTS 4.1)';
-
-  @override
-  String get finTsImport => 'İşlemleri içe aktar';
-
-  @override
-  String finTsImported(Object added, Object pending, Object skipped) {
-    return 'İçe aktarılan: $added, zaten mevcut olduğu için atlanan: $skipped, bekleyen (içe aktarılmayan): $pending';
-  }
 
   @override
   String get finTsIncomplete =>
@@ -686,9 +669,6 @@ class AppLocalizationsTr extends AppLocalizations {
   }
 
   @override
-  String get finTsNoAccounts => 'Banka herhangi bir hesap sağlamadı';
-
-  @override
   String get finTsPin => 'PIN';
 
   @override
@@ -701,10 +681,6 @@ class AppLocalizationsTr extends AppLocalizations {
   @override
   String get finTsProductIdTooltip =>
       'Deutsche Kreditwirtschaft tarafından uygulama üreticisine verilir';
-
-  @override
-  String get finTsSelectTarget =>
-      'İçe aktarılacak hesabı ve bütçe kategorisini seçin';
 
   @override
   String get finTsTan => 'TAN';
@@ -800,7 +776,31 @@ class AppLocalizationsTr extends AppLocalizations {
   String get incomeTooltip => 'Gelir Ayrıntılarını Ayarla';
 
   @override
+  String get integrationConnect => 'Bağlan';
+
+  @override
+  String get integrationDateFrom => 'İşlemleri şu tarihten itibaren içe aktar';
+
+  @override
+  String get integrationDisconnect => 'Bağlantıyı kes';
+
+  @override
   String get integrationHeadline => 'Entegrasyonlar';
+
+  @override
+  String get integrationImport => 'İşlemleri içe aktar';
+
+  @override
+  String integrationImported(Object added, Object pending, Object skipped) {
+    return 'İçe aktarılan: $added, zaten mevcut olduğu için atlanan: $skipped, bekleyen (içe aktarılmayan): $pending';
+  }
+
+  @override
+  String get integrationNoAccounts => 'Banka herhangi bir hesap sağlamadı';
+
+  @override
+  String get integrationSelectTarget =>
+      'İçe aktarılacak hesabı ve bütçe kategorisini seçin';
 
   @override
   String get invoiceHeadline => 'Invoices';
@@ -1050,6 +1050,23 @@ class AppLocalizationsTr extends AppLocalizations {
 
   @override
   String get settingsSaved => 'Ayarlar kaydedildi!';
+
+  @override
+  String get simpleFinDescription =>
+      'ABD bankaları ve kart sağlayıcılarının bakiyelerini ve işlemlerini bir SimpleFIN Bridge üzerinden içe aktarın. Erişim salt okunurdur: ödeme yapılmaz.';
+
+  @override
+  String get simpleFinForget => 'Erişimi unut';
+
+  @override
+  String get simpleFinHeadline => 'SimpleFIN Bridge (US)';
+
+  @override
+  String get simpleFinToken => 'SimpleFIN kurulum belirteci';
+
+  @override
+  String get simpleFinTokenTooltip =>
+      'Bu uygulama için SimpleFIN Bridge\'inizde (ör. bridge.simplefin.org) oluşturulur; yalnızca bir kez kullanılabilir';
 
   @override
   String get skipFromTotals => 'Toplamlardan hariç tut';
