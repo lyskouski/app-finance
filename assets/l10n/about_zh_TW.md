@@ -76,6 +76,7 @@
 - 整合
   - Financial Transaction Services (FinTS 4.1)：從德國銀行匯入餘額與交易（PIN/TAN）
   - SimpleFIN Bridge (US)：從美國銀行與發卡機構匯入餘額與交易
+  - Enable Banking (EU)：從歐洲銀行匯入餘額與交易（PSD2）
 - 匯出到 Excel「XLSX」文件
 - 資料加密
 - 本地化

@@ -598,6 +598,50 @@ class AppLocalizationsFa extends AppLocalizations {
   String get editTransferTooltip => 'ویرایش انتقال';
 
   @override
+  String get enableBankingAppId => 'شناسه برنامه';
+
+  @override
+  String get enableBankingBank => 'بانک';
+
+  @override
+  String get enableBankingCode => 'نشانی صفحه‌ای که پس از مجوزدهی باز می‌شود';
+
+  @override
+  String get enableBankingCodeTooltip =>
+      'دسترسی را در بانک تأیید کنید، سپس نشانی را از مرورگر کپی کرده و اینجا جای‌گذاری کنید';
+
+  @override
+  String get enableBankingCountry => 'کشور (کد ISO، مثلاً DE)';
+
+  @override
+  String get enableBankingDescription =>
+      'وارد کردن موجودی‌ها و تراکنش‌های بانک‌های اروپایی از طریق Enable Banking API (PSD2) با برنامه خودتان که در enablebanking.com ثبت شده است. دسترسی فقط خواندنی است: هیچ پرداختی انجام نمی‌شود.';
+
+  @override
+  String get enableBankingHeadline => 'Enable Banking (EU)';
+
+  @override
+  String get enableBankingIncomplete =>
+      'شناسه برنامه، کلید خصوصی، نشانی URL بازگشت و کشور را وارد کنید';
+
+  @override
+  String get enableBankingKey => 'کلید خصوصی (PEM)';
+
+  @override
+  String get enableBankingKeyTooltip =>
+      'همراه با برنامه در Enable Banking Control Panel ساخته می‌شود؛ به‌صورت رمزگذاری‌شده ذخیره می‌شود. برای نگه‌داشتن کلید ذخیره‌شده خالی بگذارید';
+
+  @override
+  String get enableBankingLoadBanks => 'بارگیری بانک‌ها';
+
+  @override
+  String get enableBankingRedirect => 'نشانی URL بازگشت';
+
+  @override
+  String get enableBankingRedirectTooltip =>
+      'برای برنامه ثبت شده است؛ بانک پس از مجوزدهی به آن بازمی‌گردد';
+
+  @override
   String get encryptionMode => 'رمزگذاری داده ها';
 
   @override
@@ -782,6 +826,9 @@ class AppLocalizationsFa extends AppLocalizations {
 
   @override
   String get integrationDisconnect => 'قطع اتصال';
+
+  @override
+  String get integrationForget => 'فراموش کردن دسترسی';
 
   @override
   String get integrationHeadline => 'یکپارچه‌سازی‌ها';
@@ -1052,9 +1099,6 @@ class AppLocalizationsFa extends AppLocalizations {
   @override
   String get simpleFinDescription =>
       'وارد کردن موجودی‌ها و تراکنش‌های بانک‌ها و صادرکنندگان کارت آمریکایی از طریق SimpleFIN Bridge. دسترسی فقط خواندنی است: هیچ پرداختی انجام نمی‌شود.';
-
-  @override
-  String get simpleFinForget => 'فراموش کردن دسترسی';
 
   @override
   String get simpleFinHeadline => 'SimpleFIN Bridge (US)';

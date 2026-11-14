@@ -77,6 +77,7 @@ zurückgelassen wird.
 - Integrationen
   - Financial Transaction Services (FinTS 4.1): Import von Salden und Umsätzen deutscher Banken (PIN/TAN)
   - SimpleFIN Bridge (US): Import von Salden und Umsätzen von US-Banken und Kartenanbietern
+  - Enable Banking (EU): Import von Salden und Umsätzen europäischer Banken (PSD2)
 - Exportieren in die Excel-Datei `XLSX`
 - Verschlüsselung der Daten
 - Lokalisierung

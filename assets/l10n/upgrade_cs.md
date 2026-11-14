@@ -6,6 +6,7 @@ _Úplný seznam aktualizací si můžete prohlédnout v navigační položce „
 - Nová stránka Integrace s rozbalovacími sekcemi
 - Přidáno Financial Transaction Services (FinTS 4.1): účty, zůstatky a import transakcí z německých bank
 - Přidáno SimpleFIN Bridge (US): účty, zůstatky a import transakcí amerických bank a vydavatelů karet
+- Přidáno Enable Banking (EU): účty, zůstatky a import transakcí evropských bank (PSD2)
 - Oprava přesnosti převodních kurzů
 
 ### 7.3.0

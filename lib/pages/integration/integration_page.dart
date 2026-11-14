@@ -5,6 +5,7 @@ import 'package:app_finance/_classes/herald/app_locale.dart';
 import 'package:app_finance/_configs/theme_helper.dart';
 import 'package:app_finance/_ext/build_context_ext.dart';
 import 'package:app_finance/pages/_interfaces/abstract_page_state.dart';
+import 'package:app_finance/pages/integration/widgets/enablebanking_widget.dart';
 import 'package:app_finance/pages/integration/widgets/fints_widget.dart';
 import 'package:app_finance/pages/integration/widgets/simplefin_widget.dart';
 import 'package:material_ui/material_ui.dart';
@@ -31,6 +32,12 @@ class IntegrationPageState extends AbstractPageState<IntegrationPage> {
           title: AppLocale.labels.simpleFinHeadline,
           icon: Icons.account_balance_wallet,
           builder: (_) => const SimpleFinWidget(),
+        ),
+        (
+          id: 'enablebanking',
+          title: AppLocale.labels.enableBankingHeadline,
+          icon: Icons.euro,
+          builder: (_) => const EnableBankingWidget(),
         ),
       ];
 

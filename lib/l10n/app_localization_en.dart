@@ -598,6 +598,51 @@ class AppLocalizationsEn extends AppLocalizations {
   String get editTransferTooltip => 'Edit Transfer';
 
   @override
+  String get enableBankingAppId => 'Application ID';
+
+  @override
+  String get enableBankingBank => 'Bank';
+
+  @override
+  String get enableBankingCode =>
+      'Address of the Page Opened after the Authorization';
+
+  @override
+  String get enableBankingCodeTooltip =>
+      'Confirm access at the bank, then copy the address from the browser and paste it here';
+
+  @override
+  String get enableBankingCountry => 'Country (ISO Code, e.g. FI)';
+
+  @override
+  String get enableBankingDescription =>
+      'Import balances and transactions from European banks through the Enable Banking API (PSD2) with your own application registered at enablebanking.com. Access is read-only: no payments are made.';
+
+  @override
+  String get enableBankingHeadline => 'Enable Banking (EU)';
+
+  @override
+  String get enableBankingIncomplete =>
+      'Fill in the application ID, private key, redirect URL, and country';
+
+  @override
+  String get enableBankingKey => 'Private Key (PEM)';
+
+  @override
+  String get enableBankingKeyTooltip =>
+      'Created with the application in the Enable Banking Control Panel; stored encrypted. Leave empty to keep the stored key';
+
+  @override
+  String get enableBankingLoadBanks => 'Load Banks';
+
+  @override
+  String get enableBankingRedirect => 'Redirect URL';
+
+  @override
+  String get enableBankingRedirectTooltip =>
+      'Registered for the application; the bank returns to it after the authorization';
+
+  @override
   String get encryptionMode => 'Data Encryption';
 
   @override
@@ -781,6 +826,9 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get integrationDisconnect => 'Disconnect';
+
+  @override
+  String get integrationForget => 'Forget Access';
 
   @override
   String get integrationHeadline => 'Integrations';
@@ -1050,9 +1098,6 @@ class AppLocalizationsEn extends AppLocalizations {
   @override
   String get simpleFinDescription =>
       'Import balances and transactions of US banks and card issuers through a SimpleFIN Bridge. Access is read-only: no payments are made.';
-
-  @override
-  String get simpleFinForget => 'Forget Access';
 
   @override
   String get simpleFinHeadline => 'SimpleFIN Bridge (US)';

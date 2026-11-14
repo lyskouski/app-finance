@@ -597,6 +597,49 @@ class AppLocalizationsKo extends AppLocalizations {
   String get editTransferTooltip => '전송 편집';
 
   @override
+  String get enableBankingAppId => '애플리케이션 ID';
+
+  @override
+  String get enableBankingBank => '은행';
+
+  @override
+  String get enableBankingCode => '인증 후 열린 페이지 주소';
+
+  @override
+  String get enableBankingCodeTooltip =>
+      '은행에서 접근을 승인한 후 브라우저의 주소를 복사하여 여기에 붙여넣으세요';
+
+  @override
+  String get enableBankingCountry => '국가 (ISO 코드, 예: DE)';
+
+  @override
+  String get enableBankingDescription =>
+      'enablebanking.com에 등록한 자체 애플리케이션으로 Enable Banking API(PSD2)를 통해 유럽 은행의 잔액과 거래 내역을 가져옵니다. 읽기 전용 접근이며 결제는 이루어지지 않습니다.';
+
+  @override
+  String get enableBankingHeadline => 'Enable Banking (EU)';
+
+  @override
+  String get enableBankingIncomplete => '애플리케이션 ID, 개인 키, 리디렉션 URL 및 국가를 입력하세요';
+
+  @override
+  String get enableBankingKey => '개인 키 (PEM)';
+
+  @override
+  String get enableBankingKeyTooltip =>
+      'Enable Banking Control Panel에서 애플리케이션과 함께 생성되며 암호화되어 저장됩니다. 저장된 키를 유지하려면 비워 두세요';
+
+  @override
+  String get enableBankingLoadBanks => '은행 불러오기';
+
+  @override
+  String get enableBankingRedirect => '리디렉션 URL';
+
+  @override
+  String get enableBankingRedirectTooltip =>
+      '애플리케이션에 등록된 주소로, 인증 후 은행이 이 주소로 돌아옵니다';
+
+  @override
   String get encryptionMode => '데이터 암호화';
 
   @override
@@ -778,6 +821,9 @@ class AppLocalizationsKo extends AppLocalizations {
 
   @override
   String get integrationDisconnect => '연결 해제';
+
+  @override
+  String get integrationForget => '접근 정보 삭제';
 
   @override
   String get integrationHeadline => '통합';
@@ -1045,9 +1091,6 @@ class AppLocalizationsKo extends AppLocalizations {
   @override
   String get simpleFinDescription =>
       'SimpleFIN Bridge를 통해 미국 은행 및 카드 발급사의 잔액과 거래 내역을 가져옵니다. 읽기 전용 접근이며 결제는 이루어지지 않습니다.';
-
-  @override
-  String get simpleFinForget => '접근 정보 삭제';
 
   @override
   String get simpleFinHeadline => 'SimpleFIN Bridge (US)';

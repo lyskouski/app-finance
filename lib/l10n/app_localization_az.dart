@@ -599,6 +599,51 @@ class AppLocalizationsAz extends AppLocalizations {
   String get editTransferTooltip => 'Transferi redaktə edin';
 
   @override
+  String get enableBankingAppId => 'Tətbiq ID-si';
+
+  @override
+  String get enableBankingBank => 'Bank';
+
+  @override
+  String get enableBankingCode =>
+      'Avtorizasiyadan sonra açılan səhifənin ünvanı';
+
+  @override
+  String get enableBankingCodeTooltip =>
+      'Bankda girişi təsdiqləyin, sonra ünvanı brauzerdən kopyalayıb bura yapışdırın';
+
+  @override
+  String get enableBankingCountry => 'Ölkə (ISO kodu, məs. DE)';
+
+  @override
+  String get enableBankingDescription =>
+      'enablebanking.com-da qeydiyyatdan keçmiş öz tətbiqinizlə Enable Banking API (PSD2) vasitəsilə Avropa banklarının qalıqlarını və əməliyyatlarını idxal edin. Giriş yalnız oxumaq üçündür: ödənişlər edilmir.';
+
+  @override
+  String get enableBankingHeadline => 'Enable Banking (EU)';
+
+  @override
+  String get enableBankingIncomplete =>
+      'Tətbiq ID-sini, şəxsi açarı, yönləndirmə URL-ni və ölkəni doldurun';
+
+  @override
+  String get enableBankingKey => 'Şəxsi açar (PEM)';
+
+  @override
+  String get enableBankingKeyTooltip =>
+      'Enable Banking Control Panel-də tətbiqlə birlikdə yaradılır; şifrələnmiş saxlanılır. Saxlanılmış açarı saxlamaq üçün boş buraxın';
+
+  @override
+  String get enableBankingLoadBanks => 'Bankları yüklə';
+
+  @override
+  String get enableBankingRedirect => 'Yönləndirmə URL-i';
+
+  @override
+  String get enableBankingRedirectTooltip =>
+      'Tətbiq üçün qeydiyyatdan keçib; bank avtorizasiyadan sonra ona qayıdır';
+
+  @override
   String get encryptionMode => 'Məlumatların Şifrələnməsi';
 
   @override
@@ -785,6 +830,9 @@ class AppLocalizationsAz extends AppLocalizations {
 
   @override
   String get integrationDisconnect => 'Ayrıl';
+
+  @override
+  String get integrationForget => 'Girişi unut';
 
   @override
   String get integrationHeadline => 'İnteqrasiyalar';
@@ -1057,9 +1105,6 @@ class AppLocalizationsAz extends AppLocalizations {
   @override
   String get simpleFinDescription =>
       'ABŞ bankları və kart emitentlərinin qalıqlarını və əməliyyatlarını SimpleFIN Bridge vasitəsilə idxal edin. Giriş yalnız oxumaq üçündür: ödənişlər edilmir.';
-
-  @override
-  String get simpleFinForget => 'Girişi unut';
 
   @override
   String get simpleFinHeadline => 'SimpleFIN Bridge (US)';

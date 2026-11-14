@@ -76,6 +76,7 @@ Yang memberdayakan pengguna untuk mengelola keuangan mereka dengan mudah sambil 
 - Integrasi
   - Financial Transaction Services (FinTS 4.1): impor saldo dan transaksi dari bank Jerman (PIN/TAN)
   - SimpleFIN Bridge (US): impor saldo dan transaksi dari bank dan penerbit kartu AS
+  - Enable Banking (EU): impor saldo dan transaksi dari bank Eropa (PSD2)
 - Ekspor ke file Excel `XLSX`
 - Enkripsi data
 - Lokalisasi

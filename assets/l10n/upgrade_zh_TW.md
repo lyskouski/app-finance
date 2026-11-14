@@ -6,6 +6,7 @@ _完整的更新清單可透過「關於」導覽項目中的「提示」按鈕�
 - 新增可展開區段的「整合」頁面
 - 新增 Financial Transaction Services (FinTS 4.1)：德國銀行的帳戶、餘額及交易匯入
 - 新增 SimpleFIN Bridge (US)：美國銀行與發卡機構的帳戶、餘額及交易匯入
+- 新增 Enable Banking (EU)：歐洲銀行的帳戶、餘額及交易匯入（PSD2）
 - 修正了換算匯率的精度
 
 ### 7.3.0

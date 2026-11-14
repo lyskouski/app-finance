@@ -6,6 +6,7 @@ _Yangilanishlarning toʻliq roʻyxatini “Maslahat” tugmasidagi “Haqida” 
 - Ochiladigan bo'limlarga ega yangi Integratsiyalar sahifasi
 - Financial Transaction Services (FinTS 4.1) qo'shildi: nemis banklaridan hisoblar, qoldiqlar va tranzaksiyalarni import qilish
 - SimpleFIN Bridge (US) qo'shildi: AQSh banklari va karta emitentlaridan hisoblar, qoldiqlar va tranzaksiyalarni import qilish
+- Enable Banking (EU) qo'shildi: Yevropa banklaridan hisoblar, qoldiqlar va tranzaksiyalarni import qilish (PSD2)
 - Konvertatsiya kurslarining aniqligi tuzatildi
 
 ### 7.3.0

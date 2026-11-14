@@ -6,6 +6,7 @@ _Yeniləmələrin tam siyahısına "İpucu" düyməsindəki "Haqqında" naviqasi
 - Açılan bölmələri olan yeni İnteqrasiyalar səhifəsi
 - Financial Transaction Services (FinTS 4.1) əlavə edildi: Alman banklarından hesablar, qalıqlar və əməliyyatların idxalı
 - SimpleFIN Bridge (US) əlavə edildi: ABŞ bankları və kart emitentlərindən hesablar, qalıqlar və əməliyyatların idxalı
+- Enable Banking (EU) əlavə edildi: Avropa banklarından hesablar, qalıqlar və əməliyyatların idxalı (PSD2)
 - Çevirmə məzənnələrinin dəqiqliyi düzəldildi
 
 ### 7.3.0

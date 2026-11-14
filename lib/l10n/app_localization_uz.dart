@@ -600,6 +600,51 @@ class AppLocalizationsUz extends AppLocalizations {
   String get editTransferTooltip => 'Transferni tahrirlash';
 
   @override
+  String get enableBankingAppId => 'Ilova ID';
+
+  @override
+  String get enableBankingBank => 'Bank';
+
+  @override
+  String get enableBankingCode =>
+      'Avtorizatsiyadan keyin ochilgan sahifa manzili';
+
+  @override
+  String get enableBankingCodeTooltip =>
+      'Bankda kirishni tasdiqlang, so\'ng manzilni brauzerdan nusxalab, shu yerga joylashtiring';
+
+  @override
+  String get enableBankingCountry => 'Mamlakat (ISO kodi, masalan, DE)';
+
+  @override
+  String get enableBankingDescription =>
+      'enablebanking.com saytida ro\'yxatdan o\'tgan o\'z ilovangiz bilan Enable Banking API (PSD2) orqali Yevropa banklarining qoldiqlari va tranzaksiyalarini import qiling. Kirish faqat o\'qish uchun: to\'lovlar amalga oshirilmaydi.';
+
+  @override
+  String get enableBankingHeadline => 'Enable Banking (EU)';
+
+  @override
+  String get enableBankingIncomplete =>
+      'Ilova ID, maxfiy kalit, yo\'naltirish URL manzili va mamlakatni to\'ldiring';
+
+  @override
+  String get enableBankingKey => 'Maxfiy kalit (PEM)';
+
+  @override
+  String get enableBankingKeyTooltip =>
+      'Enable Banking Control Panel\'da ilova bilan birga yaratiladi; shifrlangan holda saqlanadi. Saqlangan kalitni qoldirish uchun bo\'sh qoldiring';
+
+  @override
+  String get enableBankingLoadBanks => 'Banklarni yuklash';
+
+  @override
+  String get enableBankingRedirect => 'Yo\'naltirish URL manzili';
+
+  @override
+  String get enableBankingRedirectTooltip =>
+      'Ilova uchun ro\'yxatdan o\'tkazilgan; avtorizatsiyadan so\'ng bank unga qaytaradi';
+
+  @override
   String get encryptionMode => 'Ma\'lumotlarni shifrlash';
 
   @override
@@ -787,6 +832,9 @@ class AppLocalizationsUz extends AppLocalizations {
 
   @override
   String get integrationDisconnect => 'Uzish';
+
+  @override
+  String get integrationForget => 'Kirishni unutish';
 
   @override
   String get integrationHeadline => 'Integratsiyalar';
@@ -1061,9 +1109,6 @@ class AppLocalizationsUz extends AppLocalizations {
   @override
   String get simpleFinDescription =>
       'AQSh banklari va karta emitentlarining qoldiqlari va tranzaksiyalarini SimpleFIN Bridge orqali import qiling. Kirish faqat o\'qish uchun: to\'lovlar amalga oshirilmaydi.';
-
-  @override
-  String get simpleFinForget => 'Kirishni unutish';
 
   @override
   String get simpleFinHeadline => 'SimpleFIN Bridge (US)';

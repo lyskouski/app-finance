@@ -32,6 +32,9 @@ class AppPreferences {
   static const String prefFinTsState = 'fintsState';
   static const String prefSimpleFin = 'simplefin';
   static const String prefSimpleFinAccess = 'simplefinAccess';
+  static const String prefEnableBanking = 'enablebanking';
+  static const String prefEnableBankingKey = 'enablebankingKey';
+  static const String prefEnableBankingSession = 'enablebankingSession';
 
   static const String isActive = 'true';
   static const String isInactive = 'false';

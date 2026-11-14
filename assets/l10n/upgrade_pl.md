@@ -6,6 +6,7 @@ _Pełną listę aktualizacji można wyświetlić za pomocą elementu nawigacyjne
 - Nowa strona Integracje z rozwijanymi sekcjami
 - Dodano Financial Transaction Services (FinTS 4.1): konta, salda i import transakcji z niemieckich banków
 - Dodano SimpleFIN Bridge (US): konta, salda i import transakcji z amerykańskich banków i od wydawców kart
+- Dodano Enable Banking (EU): konta, salda i import transakcji z europejskich banków (PSD2)
 - Poprawiono dokładność kursów przeliczeniowych
 
 ### 7.3.0

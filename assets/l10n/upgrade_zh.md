@@ -6,6 +6,7 @@ _更新的完整列表可通过 "提示 "按钮上的 "关于 "导航项查看�
 - 新增可展开分区的“集成”页面
 - 新增 Financial Transaction Services (FinTS 4.1)：德国银行的账户、余额及交易导入
 - 新增 SimpleFIN Bridge (US)：美国银行和发卡机构的账户、余额及交易导入
+- 新增 Enable Banking (EU)：欧洲银行的账户、余额及交易导入（PSD2）
 - 修复了换算汇率的精度
 
 ### 7.3.0

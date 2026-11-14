@@ -6,6 +6,7 @@ _Lista completă a actualizărilor poate fi vizualizată prin intermediul elemen
 - Pagină nouă Integrări cu secțiuni extensibile
 - Adăugat Financial Transaction Services (FinTS 4.1): conturi, solduri și import de tranzacții de la băncile germane
 - Adăugat SimpleFIN Bridge (US): conturi, solduri și import de tranzacții de la băncile și emitenții de carduri din SUA
+- Adăugat Enable Banking (EU): conturi, solduri și import de tranzacții de la băncile europene (PSD2)
 - Corectarea preciziei cursurilor de conversie
 
 ### 7.3.0

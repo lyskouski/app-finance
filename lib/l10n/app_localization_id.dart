@@ -599,6 +599,51 @@ class AppLocalizationsId extends AppLocalizations {
   String get editTransferTooltip => 'Ubah Transfer';
 
   @override
+  String get enableBankingAppId => 'ID aplikasi';
+
+  @override
+  String get enableBankingBank => 'Bank';
+
+  @override
+  String get enableBankingCode =>
+      'Alamat halaman yang terbuka setelah otorisasi';
+
+  @override
+  String get enableBankingCodeTooltip =>
+      'Konfirmasikan akses di bank, lalu salin alamat dari browser dan tempelkan di sini';
+
+  @override
+  String get enableBankingCountry => 'Negara (kode ISO, mis. DE)';
+
+  @override
+  String get enableBankingDescription =>
+      'Impor saldo dan transaksi dari bank Eropa melalui Enable Banking API (PSD2) dengan aplikasi Anda sendiri yang terdaftar di enablebanking.com. Akses hanya baca: tidak ada pembayaran yang dilakukan.';
+
+  @override
+  String get enableBankingHeadline => 'Enable Banking (EU)';
+
+  @override
+  String get enableBankingIncomplete =>
+      'Isi ID aplikasi, kunci privat, URL pengalihan, dan negara';
+
+  @override
+  String get enableBankingKey => 'Kunci privat (PEM)';
+
+  @override
+  String get enableBankingKeyTooltip =>
+      'Dibuat bersama aplikasi di Enable Banking Control Panel; disimpan terenkripsi. Biarkan kosong untuk mempertahankan kunci yang tersimpan';
+
+  @override
+  String get enableBankingLoadBanks => 'Muat bank';
+
+  @override
+  String get enableBankingRedirect => 'URL pengalihan';
+
+  @override
+  String get enableBankingRedirectTooltip =>
+      'Terdaftar untuk aplikasi; bank kembali ke URL ini setelah otorisasi';
+
+  @override
   String get encryptionMode => 'Enkripsi Data';
 
   @override
@@ -783,6 +828,9 @@ class AppLocalizationsId extends AppLocalizations {
 
   @override
   String get integrationDisconnect => 'Putuskan';
+
+  @override
+  String get integrationForget => 'Lupakan akses';
 
   @override
   String get integrationHeadline => 'Integrasi';
@@ -1053,9 +1101,6 @@ class AppLocalizationsId extends AppLocalizations {
   @override
   String get simpleFinDescription =>
       'Impor saldo dan transaksi dari bank dan penerbit kartu AS melalui SimpleFIN Bridge. Akses hanya baca: tidak ada pembayaran yang dilakukan.';
-
-  @override
-  String get simpleFinForget => 'Lupakan akses';
 
   @override
   String get simpleFinHeadline => 'SimpleFIN Bridge (US)';

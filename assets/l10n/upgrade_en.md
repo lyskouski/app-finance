@@ -6,6 +6,7 @@ _The full list of updates can be viewed via the "About" navigation item on the "
 - Introducing the Integrations page with expandable sections
 - Adding Financial Transaction Services (FinTS 4.1): accounts, balances, and import of transactions from German banks
 - Adding SimpleFIN Bridge (US): accounts, balances, and import of transactions from US banks and card issuers
+- Adding Enable Banking (EU): accounts, balances, and import of transactions from European banks (PSD2)
 - Fixing conversion rate precision
 
 ### 7.3.0

@@ -599,6 +599,51 @@ class AppLocalizationsEs extends AppLocalizations {
   String get editTransferTooltip => 'Editar Transferencia';
 
   @override
+  String get enableBankingAppId => 'ID de la aplicación';
+
+  @override
+  String get enableBankingBank => 'Banco';
+
+  @override
+  String get enableBankingCode =>
+      'Dirección de la página abierta tras la autorización';
+
+  @override
+  String get enableBankingCodeTooltip =>
+      'Confirma el acceso en el banco, luego copia la dirección del navegador y pégala aquí';
+
+  @override
+  String get enableBankingCountry => 'País (código ISO, p. ej., ES)';
+
+  @override
+  String get enableBankingDescription =>
+      'Importa saldos y movimientos de bancos europeos mediante la API de Enable Banking (PSD2) con tu propia aplicación registrada en enablebanking.com. Acceso de solo lectura: no se realizan pagos.';
+
+  @override
+  String get enableBankingHeadline => 'Enable Banking (EU)';
+
+  @override
+  String get enableBankingIncomplete =>
+      'Rellena el ID de la aplicación, la clave privada, la URL de redirección y el país';
+
+  @override
+  String get enableBankingKey => 'Clave privada (PEM)';
+
+  @override
+  String get enableBankingKeyTooltip =>
+      'Se crea con la aplicación en el Enable Banking Control Panel; se guarda cifrada. Déjala vacía para conservar la clave guardada';
+
+  @override
+  String get enableBankingLoadBanks => 'Cargar bancos';
+
+  @override
+  String get enableBankingRedirect => 'URL de redirección';
+
+  @override
+  String get enableBankingRedirectTooltip =>
+      'Registrada para la aplicación; el banco vuelve a ella tras la autorización';
+
+  @override
   String get encryptionMode => 'Codificación de datos';
 
   @override
@@ -784,6 +829,9 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get integrationDisconnect => 'Desconectar';
+
+  @override
+  String get integrationForget => 'Olvidar el acceso';
 
   @override
   String get integrationHeadline => 'Integraciones';
@@ -1057,9 +1105,6 @@ class AppLocalizationsEs extends AppLocalizations {
   @override
   String get simpleFinDescription =>
       'Importa saldos y movimientos de bancos y emisores de tarjetas de EE. UU. mediante un SimpleFIN Bridge. Acceso de solo lectura: no se realizan pagos.';
-
-  @override
-  String get simpleFinForget => 'Olvidar el acceso';
 
   @override
   String get simpleFinHeadline => 'SimpleFIN Bridge (US)';

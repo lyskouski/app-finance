@@ -61,6 +61,7 @@ dependencies:
   local_auth: ^2.3.0
   fints: ^0.4.0
   http: ^1.5.0
+  pointycastle: ^3.9.1
 
 dependency_overrides:
   flutter_webrtc: 0.12.10

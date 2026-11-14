@@ -6,6 +6,7 @@ _De volledige lijst met updates kan worden bekeken via het navigatie-item “Ove
 - Nieuwe pagina Integraties met uitklapbare secties
 - Financial Transaction Services (FinTS 4.1) toegevoegd: rekeningen, saldi en import van transacties van Duitse banken
 - SimpleFIN Bridge (US) toegevoegd: rekeningen, saldi en import van transacties van Amerikaanse banken en kaartuitgevers
+- Enable Banking (EU) toegevoegd: rekeningen, saldi en import van transacties van Europese banken (PSD2)
 - Nauwkeurigheid van omrekeningskoersen gecorrigeerd
 
 ### 7.3.0

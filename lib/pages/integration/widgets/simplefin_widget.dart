@@ -212,7 +212,7 @@ class SimpleFinWidgetState extends State<SimpleFinWidget> {
                   key: const ValueKey('simplefin_forget'),
                   icon: const Icon(Icons.link_off),
                   onPressed: forget,
-                  label: Text(AppLocale.labels.simpleFinForget),
+                  label: Text(AppLocale.labels.integrationForget),
                 ),
               ),
           ],

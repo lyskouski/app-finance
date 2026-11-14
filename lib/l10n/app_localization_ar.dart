@@ -598,6 +598,50 @@ class AppLocalizationsAr extends AppLocalizations {
   String get editTransferTooltip => 'تحرير التحويل';
 
   @override
+  String get enableBankingAppId => 'معرّف التطبيق';
+
+  @override
+  String get enableBankingBank => 'البنك';
+
+  @override
+  String get enableBankingCode => 'عنوان الصفحة المفتوحة بعد التفويض';
+
+  @override
+  String get enableBankingCodeTooltip =>
+      'أكّد الوصول في البنك، ثم انسخ العنوان من المتصفح والصقه هنا';
+
+  @override
+  String get enableBankingCountry => 'الدولة (رمز ISO، مثل DE)';
+
+  @override
+  String get enableBankingDescription =>
+      'استيراد الأرصدة والمعاملات من البنوك الأوروبية عبر واجهة Enable Banking API (PSD2) باستخدام تطبيقك الخاص المسجّل في enablebanking.com. الوصول للقراءة فقط: لا يتم تنفيذ أي مدفوعات.';
+
+  @override
+  String get enableBankingHeadline => 'Enable Banking (EU)';
+
+  @override
+  String get enableBankingIncomplete =>
+      'املأ معرّف التطبيق والمفتاح الخاص وعنوان URL لإعادة التوجيه والدولة';
+
+  @override
+  String get enableBankingKey => 'المفتاح الخاص (PEM)';
+
+  @override
+  String get enableBankingKeyTooltip =>
+      'يُنشأ مع التطبيق في Enable Banking Control Panel؛ ويُخزَّن مشفّرًا. اتركه فارغًا للاحتفاظ بالمفتاح المخزَّن';
+
+  @override
+  String get enableBankingLoadBanks => 'تحميل البنوك';
+
+  @override
+  String get enableBankingRedirect => 'عنوان URL لإعادة التوجيه';
+
+  @override
+  String get enableBankingRedirectTooltip =>
+      'مسجّل للتطبيق؛ يعود إليه البنك بعد التفويض';
+
+  @override
   String get encryptionMode => 'تشفير البيانات';
 
   @override
@@ -782,6 +826,9 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get integrationDisconnect => 'قطع الاتصال';
+
+  @override
+  String get integrationForget => 'نسيان الوصول';
 
   @override
   String get integrationHeadline => 'التكاملات';
@@ -1051,9 +1098,6 @@ class AppLocalizationsAr extends AppLocalizations {
   @override
   String get simpleFinDescription =>
       'استيراد الأرصدة والمعاملات من البنوك وجهات إصدار البطاقات الأمريكية عبر SimpleFIN Bridge. الوصول للقراءة فقط: لا يتم تنفيذ أي مدفوعات.';
-
-  @override
-  String get simpleFinForget => 'نسيان الوصول';
 
   @override
   String get simpleFinHeadline => 'SimpleFIN Bridge (US)';

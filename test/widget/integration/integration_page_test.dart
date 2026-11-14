@@ -3,6 +3,8 @@
 
 import 'dart:convert';
 
+import 'package:app_finance/_classes/integration/enablebanking/enablebanking_client.dart';
+import 'package:app_finance/_classes/integration/enablebanking/enablebanking_settings.dart';
 import 'package:app_finance/_classes/integration/fints/fints_settings.dart';
 import 'package:app_finance/_classes/integration/simplefin/simplefin_client.dart';
 import 'package:app_finance/_classes/integration/simplefin/simplefin_settings.dart';
@@ -15,6 +17,7 @@ import 'package:app_finance/_classes/structure/invoice_app_data.dart';
 import 'package:app_finance/_classes/structure/navigation/app_menu.dart';
 import 'package:app_finance/_classes/structure/navigation/app_route.dart';
 import 'package:app_finance/_configs/account_type.dart';
+import 'package:app_finance/pages/integration/widgets/enablebanking_widget.dart';
 import 'package:app_finance/pages/integration/widgets/fints_widget.dart';
 import 'package:app_finance/pages/integration/widgets/simplefin_widget.dart';
 import 'package:fints/fints.dart';
@@ -26,6 +29,7 @@ import 'package:provider/provider.dart';
 
 import '../../pump_main.dart';
 import '../../pump_main.wrapper.dart';
+import '../../unit/_classes/integration/enablebanking_test_keys.dart';
 
 const _iban = 'DE02120300000000202051';
 
@@ -129,6 +133,7 @@ void main() {
     expect(find.text('Integrations'), findsWidgets);
     expect(find.text('Financial Transaction Services (FinTS 4.1)'), findsOneWidget);
     expect(find.text('SimpleFIN Bridge (US)'), findsOneWidget);
+    expect(find.text('Enable Banking (EU)'), findsOneWidget);
     expect(find.textContaining('Bank Code (BLZ)', findRichText: true), findsNothing);
     expect(find.textContaining('SimpleFIN Setup Token', findRichText: true), findsNothing);
 
@@ -335,6 +340,171 @@ void main() {
     await tester.pumpAndSettle();
     expect(SimpleFinSettings.loadAccess(), isNull);
     expect(find.textContaining('SimpleFIN Setup Token', findRichText: true), findsOneWidget);
+    await tester.pump(const Duration(seconds: 10));
+  });
+
+  testWidgets('Enable Banking authorizes at the bank and imports transactions', (WidgetTester tester) async {
+    await PumpMain.init(tester);
+    final memory = <String, String>{};
+    final pref = AppPreferences.pref as WrapperMockSharedPreferences;
+    pref.mockGetString = (key) => memory[key] ?? (key == AppPreferences.prefCurrency ? 'USD' : null);
+    pref.mockSetString = (key, value) async {
+      memory[key!] = value!;
+      return true;
+    };
+    pref.mockRemove = (key) async => memory.remove(key) != null;
+    final state = Provider.of<AppData>(tester.element(find.byType(Scaffold).first), listen: false);
+    final account = state.add(AccountAppData(
+      title: 'Current',
+      type: AppAccountType.account.toString(),
+      details: 0.0,
+      hidden: false,
+    )) as AccountAppData;
+    final budget = state.add(BudgetAppData(title: 'Food', hidden: false)) as BudgetAppData;
+    final bills = state.getList(AppDataType.bills, false).length;
+    final invoices = state.getList(AppDataType.invoice, false).length;
+
+    final requests = <http.Request>[];
+    final launched = <Uri>[];
+    String? authState;
+    final client = MockClient((request) async {
+      requests.add(request);
+      final body = switch ((request.method, request.url.path)) {
+        ('GET', '/aspsps') => {
+            'aspsps': [
+              {'name': 'Nordea', 'country': 'FI'},
+            ],
+          },
+        ('POST', '/auth') => () {
+            authState = jsonDecode(request.body)['state'];
+            return {'url': 'https://bank.example.com/authorize', 'authorization_id': 'A1'};
+          }(),
+        ('POST', '/sessions') => {
+            'session_id': 'S1',
+            'access': {'valid_until': DateTime.now().add(const Duration(days: 90)).toUtc().toIso8601String()},
+            'accounts': [
+              {
+                'uid': 'U1',
+                'account_id': {'iban': 'FI2112345600000785'},
+                'name': 'Current',
+                'currency': 'EUR',
+              },
+            ],
+          },
+        ('GET', '/accounts/U1/balances') => {
+            'balances': [
+              {
+                'name': 'Booked',
+                'balance_amount': {'currency': 'EUR', 'amount': '321.09'},
+                'balance_type': 'CLBD',
+              },
+            ],
+          },
+        ('GET', '/accounts/U1/transactions') => {
+            'transactions': [
+              {
+                'entry_reference': 'E1',
+                'transaction_amount': {'currency': 'EUR', 'amount': '12.50'},
+                'credit_debit_indicator': 'DBIT',
+                'status': 'BOOK',
+                'booking_date': '2026-11-02',
+                'creditor': {'name': 'Bakery'},
+                'remittance_information': ['Bread'],
+              },
+              {
+                'entry_reference': 'E2',
+                'transaction_amount': {'currency': 'EUR', 'amount': '100.00'},
+                'credit_debit_indicator': 'CRDT',
+                'status': 'BOOK',
+                'booking_date': '2026-11-03',
+                'debtor': {'name': 'Friend'},
+              },
+              {
+                'transaction_amount': {'currency': 'EUR', 'amount': '5.00'},
+                'credit_debit_indicator': 'DBIT',
+                'status': 'PDNG',
+                'value_date': '2026-11-04',
+              },
+            ],
+          },
+        ('DELETE', '/sessions/S1') => {'message': 'OK'},
+        _ => throw StateError('Unexpected ${request.method} ${request.url}'),
+      };
+      return http.Response(jsonEncode(body), 200);
+    });
+
+    Navigator.of(tester.element(find.byType(Scaffold).first)).push(MaterialPageRoute(
+      builder: (_) => Scaffold(
+        body: SingleChildScrollView(
+          child: EnableBankingWidget(httpClient: client, launcher: (url) async => launched.add(url)),
+        ),
+      ),
+    ));
+    await tester.pumpAndSettle();
+
+    final fields = find.byType(TextField);
+    await tester.enterText(fields.at(0), 'app-id');
+    await tester.enterText(fields.at(1), testPrivateKeyPkcs8);
+    await tester.enterText(fields.at(2), 'https://example.com/callback');
+    await tester.enterText(fields.at(3), 'fi');
+    await tester.ensureVisible(find.byKey(const ValueKey('enablebanking_banks')));
+    await tester.tap(find.byKey(const ValueKey('enablebanking_banks')));
+    await pumpFrames(tester);
+    await tester.pumpAndSettle();
+
+    final widgetState = tester.state<EnableBankingWidgetState>(find.byType(EnableBankingWidget));
+    expect(widgetState.error, isNull);
+    expect(widgetState.aspsps.single.name, 'Nordea');
+    expect(EnableBankingSettings.loadKey(), EnableBankingClient.normalizePrivateKey(testPrivateKeyPkcs8));
+    expect(EnableBankingSettings.load().country, 'FI');
+    widgetState.settings.aspsp = 'Nordea';
+
+    await tester.ensureVisible(find.byKey(const ValueKey('enablebanking_connect')));
+    await tester.tap(find.byKey(const ValueKey('enablebanking_connect')));
+    await pumpFrames(tester);
+    await tester.pumpAndSettle();
+
+    expect(launched, [Uri.parse('https://bank.example.com/authorize')]);
+    expect(requests.last.headers['Authorization'], startsWith('Bearer '));
+    final redirected = 'https://example.com/callback?state=$authState&code=C1';
+    await tester.enterText(find.byType(TextField).last, redirected);
+    await tester.ensureVisible(find.byKey(const ValueKey('enablebanking_connect')));
+    await tester.tap(find.byKey(const ValueKey('enablebanking_connect')));
+    await pumpFrames(tester);
+    await tester.pumpAndSettle();
+
+    expect(widgetState.error, isNull);
+    expect(jsonDecode(requests.firstWhere((e) => e.url.path == '/sessions').body), {'code': 'C1'});
+    expect(EnableBankingSettings.loadSession()?.id, 'S1');
+    expect(find.text('Current …0785'), findsOneWidget);
+    expect(find.textContaining('321.09 EUR'), findsOneWidget);
+
+    widgetState.accounts.single
+      ..appAccount = account.uuid
+      ..category = budget.uuid;
+    await tester.ensureVisible(find.text('Import Transactions'));
+    await tester.tap(find.text('Import Transactions'));
+    await pumpFrames(tester);
+    await tester.pumpAndSettle();
+
+    expect(find.text('Imported: 2, skipped as already present: 0, pending (not imported): 1'), findsOneWidget);
+    expect(state.getList(AppDataType.bills, false).length, bills + 1);
+    expect(state.getList(AppDataType.invoice, false).length, invoices + 1);
+    expect(state.getList(AppDataType.bills, false).whereType<BillAppData>().last.title, 'Bakery — Bread');
+    expect(EnableBankingSettings.load().links, {'FI2112345600000785': account.uuid});
+
+    await tester.ensureVisible(find.text('Import Transactions'));
+    await tester.tap(find.text('Import Transactions'));
+    await pumpFrames(tester);
+    await tester.pumpAndSettle();
+    expect(find.text('Imported: 0, skipped as already present: 2, pending (not imported): 1'), findsOneWidget);
+
+    await tester.ensureVisible(find.byKey(const ValueKey('enablebanking_forget')));
+    await tester.tap(find.byKey(const ValueKey('enablebanking_forget')));
+    await pumpFrames(tester);
+    await tester.pumpAndSettle();
+    expect(requests.last.method, 'DELETE');
+    expect(EnableBankingSettings.loadSession(), isNull);
     await tester.pump(const Duration(seconds: 10));
   });
 }

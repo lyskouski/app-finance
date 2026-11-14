@@ -598,6 +598,50 @@ class AppLocalizationsUk extends AppLocalizations {
   String get editTransferTooltip => 'Редагувати переказ';
 
   @override
+  String get enableBankingAppId => 'ID застосунку';
+
+  @override
+  String get enableBankingBank => 'Банк';
+
+  @override
+  String get enableBankingCode => 'Адреса сторінки після авторизації';
+
+  @override
+  String get enableBankingCodeTooltip =>
+      'Підтвердьте доступ у банку, потім скопіюйте адресу з браузера та вставте її сюди';
+
+  @override
+  String get enableBankingCountry => 'Країна (код ISO, наприклад FI)';
+
+  @override
+  String get enableBankingDescription =>
+      'Імпорт залишків і операцій європейських банків через Enable Banking API (PSD2) з вашим власним застосунком, зареєстрованим на enablebanking.com. Доступ лише для читання: платежі не виконуються.';
+
+  @override
+  String get enableBankingHeadline => 'Enable Banking (EU)';
+
+  @override
+  String get enableBankingIncomplete =>
+      'Заповніть ID застосунку, закритий ключ, URL перенаправлення та країну';
+
+  @override
+  String get enableBankingKey => 'Закритий ключ (PEM)';
+
+  @override
+  String get enableBankingKeyTooltip =>
+      'Створюється разом із застосунком в Enable Banking Control Panel; зберігається в зашифрованому вигляді. Залиште порожнім, щоб зберегти поточний ключ';
+
+  @override
+  String get enableBankingLoadBanks => 'Завантажити банки';
+
+  @override
+  String get enableBankingRedirect => 'URL перенаправлення';
+
+  @override
+  String get enableBankingRedirectTooltip =>
+      'Зареєстрований для застосунку; після авторизації банк повертає на нього';
+
+  @override
   String get encryptionMode => 'Шифрування даних';
 
   @override
@@ -784,6 +828,9 @@ class AppLocalizationsUk extends AppLocalizations {
 
   @override
   String get integrationDisconnect => 'Відключитися';
+
+  @override
+  String get integrationForget => 'Забути доступ';
 
   @override
   String get integrationHeadline => 'Інтеграції';
@@ -1055,9 +1102,6 @@ class AppLocalizationsUk extends AppLocalizations {
   @override
   String get simpleFinDescription =>
       'Імпорт залишків і операцій банків та емітентів карток США через SimpleFIN Bridge. Доступ лише для читання: платежі не виконуються.';
-
-  @override
-  String get simpleFinForget => 'Забути доступ';
 
   @override
   String get simpleFinHeadline => 'SimpleFIN Bridge (US)';

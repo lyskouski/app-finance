@@ -599,6 +599,51 @@ class AppLocalizationsKa extends AppLocalizations {
   String get editTransferTooltip => 'გადარიცხვის რედაქტირება';
 
   @override
+  String get enableBankingAppId => 'აპლიკაციის ID';
+
+  @override
+  String get enableBankingBank => 'ბანკი';
+
+  @override
+  String get enableBankingCode =>
+      'ავტორიზაციის შემდეგ გახსნილი გვერდის მისამართი';
+
+  @override
+  String get enableBankingCodeTooltip =>
+      'დაადასტურეთ წვდომა ბანკში, შემდეგ დააკოპირეთ მისამართი ბრაუზერიდან და ჩასვით აქ';
+
+  @override
+  String get enableBankingCountry => 'ქვეყანა (ISO კოდი, მაგ. DE)';
+
+  @override
+  String get enableBankingDescription =>
+      'ევროპული ბანკების ნაშთებისა და ტრანზაქციების იმპორტი Enable Banking API-ით (PSD2) თქვენი საკუთარი აპლიკაციით, რომელიც რეგისტრირებულია enablebanking.com-ზე. წვდომა მხოლოდ წაკითხვისთვისაა: გადახდები არ სრულდება.';
+
+  @override
+  String get enableBankingHeadline => 'Enable Banking (EU)';
+
+  @override
+  String get enableBankingIncomplete =>
+      'შეავსეთ აპლიკაციის ID, პირადი გასაღები, გადამისამართების URL და ქვეყანა';
+
+  @override
+  String get enableBankingKey => 'პირადი გასაღები (PEM)';
+
+  @override
+  String get enableBankingKeyTooltip =>
+      'იქმნება აპლიკაციასთან ერთად Enable Banking Control Panel-ში; ინახება დაშიფრული სახით. დატოვეთ ცარიელი შენახული გასაღების შესანარჩუნებლად';
+
+  @override
+  String get enableBankingLoadBanks => 'ბანკების ჩატვირთვა';
+
+  @override
+  String get enableBankingRedirect => 'გადამისამართების URL';
+
+  @override
+  String get enableBankingRedirectTooltip =>
+      'რეგისტრირებულია აპლიკაციისთვის; ავტორიზაციის შემდეგ ბანკი მასზე ბრუნდება';
+
+  @override
   String get encryptionMode => 'მონაცემთა დაშიფვრა';
 
   @override
@@ -784,6 +829,9 @@ class AppLocalizationsKa extends AppLocalizations {
 
   @override
   String get integrationDisconnect => 'გათიშვა';
+
+  @override
+  String get integrationForget => 'წვდომის დავიწყება';
 
   @override
   String get integrationHeadline => 'ინტეგრაციები';
@@ -1054,9 +1102,6 @@ class AppLocalizationsKa extends AppLocalizations {
   @override
   String get simpleFinDescription =>
       'აშშ-ის ბანკებისა და ბარათების ემიტენტების ნაშთებისა და ტრანზაქციების იმპორტი SimpleFIN Bridge-ის მეშვეობით. წვდომა მხოლოდ წაკითხვისთვისაა: გადახდები არ სრულდება.';
-
-  @override
-  String get simpleFinForget => 'წვდომის დავიწყება';
 
   @override
   String get simpleFinHeadline => 'SimpleFIN Bridge (US)';

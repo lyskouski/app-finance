@@ -599,6 +599,50 @@ class AppLocalizationsHi extends AppLocalizations {
   String get editTransferTooltip => 'स्थानांतरण संपादित करें';
 
   @override
+  String get enableBankingAppId => 'ऐप्लिकेशन आईडी';
+
+  @override
+  String get enableBankingBank => 'बैंक';
+
+  @override
+  String get enableBankingCode => 'प्राधिकरण के बाद खुले पृष्ठ का पता';
+
+  @override
+  String get enableBankingCodeTooltip =>
+      'बैंक में पहुँच की पुष्टि करें, फिर ब्राउज़र से पता कॉपी करके यहाँ पेस्ट करें';
+
+  @override
+  String get enableBankingCountry => 'देश (ISO कोड, जैसे DE)';
+
+  @override
+  String get enableBankingDescription =>
+      'enablebanking.com पर पंजीकृत अपने स्वयं के ऐप्लिकेशन के साथ Enable Banking API (PSD2) के माध्यम से यूरोपीय बैंकों से शेष राशि और लेनदेन आयात करें। पहुँच केवल पढ़ने के लिए है: कोई भुगतान नहीं किया जाता।';
+
+  @override
+  String get enableBankingHeadline => 'Enable Banking (EU)';
+
+  @override
+  String get enableBankingIncomplete =>
+      'ऐप्लिकेशन आईडी, निजी कुंजी, रीडायरेक्ट URL और देश भरें';
+
+  @override
+  String get enableBankingKey => 'निजी कुंजी (PEM)';
+
+  @override
+  String get enableBankingKeyTooltip =>
+      'Enable Banking Control Panel में ऐप्लिकेशन के साथ बनाई जाती है; एन्क्रिप्टेड रूप में संग्रहीत। संग्रहीत कुंजी रखने के लिए खाली छोड़ें';
+
+  @override
+  String get enableBankingLoadBanks => 'बैंक लोड करें';
+
+  @override
+  String get enableBankingRedirect => 'रीडायरेक्ट URL';
+
+  @override
+  String get enableBankingRedirectTooltip =>
+      'ऐप्लिकेशन के लिए पंजीकृत; प्राधिकरण के बाद बैंक इसी पर लौटता है';
+
+  @override
   String get encryptionMode => 'डेटा एन्क्रिप्शन';
 
   @override
@@ -783,6 +827,9 @@ class AppLocalizationsHi extends AppLocalizations {
 
   @override
   String get integrationDisconnect => 'डिस्कनेक्ट करें';
+
+  @override
+  String get integrationForget => 'पहुँच भूल जाएँ';
 
   @override
   String get integrationHeadline => 'एकीकरण';
@@ -1053,9 +1100,6 @@ class AppLocalizationsHi extends AppLocalizations {
   @override
   String get simpleFinDescription =>
       'SimpleFIN Bridge के माध्यम से अमेरिकी बैंकों और कार्ड जारीकर्ताओं से शेष राशि और लेनदेन आयात करें। पहुँच केवल पढ़ने के लिए है: कोई भुगतान नहीं किया जाता।';
-
-  @override
-  String get simpleFinForget => 'पहुँच भूल जाएँ';
 
   @override
   String get simpleFinHeadline => 'SimpleFIN Bridge (US)';

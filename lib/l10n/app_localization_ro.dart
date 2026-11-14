@@ -599,6 +599,50 @@ class AppLocalizationsRo extends AppLocalizations {
   String get editTransferTooltip => 'Editare transfer';
 
   @override
+  String get enableBankingAppId => 'ID aplicație';
+
+  @override
+  String get enableBankingBank => 'Bancă';
+
+  @override
+  String get enableBankingCode => 'Adresa paginii deschise după autorizare';
+
+  @override
+  String get enableBankingCodeTooltip =>
+      'Confirmați accesul la bancă, apoi copiați adresa din browser și lipiți-o aici';
+
+  @override
+  String get enableBankingCountry => 'Țară (cod ISO, de ex. RO)';
+
+  @override
+  String get enableBankingDescription =>
+      'Importă solduri și tranzacții de la băncile europene prin API-ul Enable Banking (PSD2) cu propria aplicație înregistrată pe enablebanking.com. Acces doar în citire: nu se efectuează plăți.';
+
+  @override
+  String get enableBankingHeadline => 'Enable Banking (EU)';
+
+  @override
+  String get enableBankingIncomplete =>
+      'Completați ID-ul aplicației, cheia privată, URL-ul de redirecționare și țara';
+
+  @override
+  String get enableBankingKey => 'Cheie privată (PEM)';
+
+  @override
+  String get enableBankingKeyTooltip =>
+      'Creată împreună cu aplicația în Enable Banking Control Panel; stocată criptat. Lăsați gol pentru a păstra cheia stocată';
+
+  @override
+  String get enableBankingLoadBanks => 'Încarcă băncile';
+
+  @override
+  String get enableBankingRedirect => 'URL de redirecționare';
+
+  @override
+  String get enableBankingRedirectTooltip =>
+      'Înregistrat pentru aplicație; banca revine la el după autorizare';
+
+  @override
   String get encryptionMode => 'Criptarea datelor';
 
   @override
@@ -785,6 +829,9 @@ class AppLocalizationsRo extends AppLocalizations {
 
   @override
   String get integrationDisconnect => 'Deconectare';
+
+  @override
+  String get integrationForget => 'Uită accesul';
 
   @override
   String get integrationHeadline => 'Integrări';
@@ -1059,9 +1106,6 @@ class AppLocalizationsRo extends AppLocalizations {
   @override
   String get simpleFinDescription =>
       'Importă solduri și tranzacții de la băncile și emitenții de carduri din SUA printr-un SimpleFIN Bridge. Acces doar în citire: nu se efectuează plăți.';
-
-  @override
-  String get simpleFinForget => 'Uită accesul';
 
   @override
   String get simpleFinHeadline => 'SimpleFIN Bridge (US)';

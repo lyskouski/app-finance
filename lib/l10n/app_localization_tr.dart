@@ -598,6 +598,51 @@ class AppLocalizationsTr extends AppLocalizations {
   String get editTransferTooltip => 'Aktarımı Düzenle';
 
   @override
+  String get enableBankingAppId => 'Uygulama kimliği';
+
+  @override
+  String get enableBankingBank => 'Banka';
+
+  @override
+  String get enableBankingCode =>
+      'Yetkilendirmeden sonra açılan sayfanın adresi';
+
+  @override
+  String get enableBankingCodeTooltip =>
+      'Bankada erişimi onaylayın, ardından adresi tarayıcıdan kopyalayıp buraya yapıştırın';
+
+  @override
+  String get enableBankingCountry => 'Ülke (ISO kodu, ör. DE)';
+
+  @override
+  String get enableBankingDescription =>
+      'Enable Banking API (PSD2) üzerinden, enablebanking.com\'da kayıtlı kendi uygulamanızla Avrupa bankalarının bakiyelerini ve işlemlerini içe aktarın. Erişim salt okunurdur: ödeme yapılmaz.';
+
+  @override
+  String get enableBankingHeadline => 'Enable Banking (EU)';
+
+  @override
+  String get enableBankingIncomplete =>
+      'Uygulama kimliğini, özel anahtarı, yönlendirme URL\'sini ve ülkeyi doldurun';
+
+  @override
+  String get enableBankingKey => 'Özel anahtar (PEM)';
+
+  @override
+  String get enableBankingKeyTooltip =>
+      'Enable Banking Control Panel\'de uygulamayla birlikte oluşturulur; şifreli olarak saklanır. Kayıtlı anahtarı korumak için boş bırakın';
+
+  @override
+  String get enableBankingLoadBanks => 'Bankaları yükle';
+
+  @override
+  String get enableBankingRedirect => 'Yönlendirme URL\'si';
+
+  @override
+  String get enableBankingRedirectTooltip =>
+      'Uygulama için kayıtlıdır; banka yetkilendirmeden sonra buraya geri döner';
+
+  @override
   String get encryptionMode => 'Veri Şifreleme';
 
   @override
@@ -783,6 +828,9 @@ class AppLocalizationsTr extends AppLocalizations {
 
   @override
   String get integrationDisconnect => 'Bağlantıyı kes';
+
+  @override
+  String get integrationForget => 'Erişimi unut';
 
   @override
   String get integrationHeadline => 'Entegrasyonlar';
@@ -1054,9 +1102,6 @@ class AppLocalizationsTr extends AppLocalizations {
   @override
   String get simpleFinDescription =>
       'ABD bankaları ve kart sağlayıcılarının bakiyelerini ve işlemlerini bir SimpleFIN Bridge üzerinden içe aktarın. Erişim salt okunurdur: ödeme yapılmaz.';
-
-  @override
-  String get simpleFinForget => 'Erişimi unut';
 
   @override
   String get simpleFinHeadline => 'SimpleFIN Bridge (US)';

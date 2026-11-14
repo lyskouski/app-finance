@@ -599,6 +599,50 @@ class AppLocalizationsNl extends AppLocalizations {
   String get editTransferTooltip => 'Bewerken Overdracht';
 
   @override
+  String get enableBankingAppId => 'Applicatie-ID';
+
+  @override
+  String get enableBankingBank => 'Bank';
+
+  @override
+  String get enableBankingCode => 'Adres van de pagina na de autorisatie';
+
+  @override
+  String get enableBankingCodeTooltip =>
+      'Bevestig de toegang bij de bank, kopieer daarna het adres uit de browser en plak het hier';
+
+  @override
+  String get enableBankingCountry => 'Land (ISO-code, bijv. NL)';
+
+  @override
+  String get enableBankingDescription =>
+      'Importeer saldi en transacties van Europese banken via de Enable Banking API (PSD2) met je eigen applicatie, geregistreerd op enablebanking.com. Alleen-lezen toegang: er worden geen betalingen uitgevoerd.';
+
+  @override
+  String get enableBankingHeadline => 'Enable Banking (EU)';
+
+  @override
+  String get enableBankingIncomplete =>
+      'Vul de applicatie-ID, privésleutel, omleidings-URL en het land in';
+
+  @override
+  String get enableBankingKey => 'Privésleutel (PEM)';
+
+  @override
+  String get enableBankingKeyTooltip =>
+      'Aangemaakt met de applicatie in het Enable Banking Control Panel; versleuteld opgeslagen. Laat leeg om de opgeslagen sleutel te behouden';
+
+  @override
+  String get enableBankingLoadBanks => 'Banken laden';
+
+  @override
+  String get enableBankingRedirect => 'Omleidings-URL';
+
+  @override
+  String get enableBankingRedirectTooltip =>
+      'Geregistreerd voor de applicatie; de bank keert er na de autorisatie naar terug';
+
+  @override
   String get encryptionMode => 'Gegevenscodering';
 
   @override
@@ -783,6 +827,9 @@ class AppLocalizationsNl extends AppLocalizations {
 
   @override
   String get integrationDisconnect => 'Verbinding verbreken';
+
+  @override
+  String get integrationForget => 'Toegang vergeten';
 
   @override
   String get integrationHeadline => 'Integraties';
@@ -1054,9 +1101,6 @@ class AppLocalizationsNl extends AppLocalizations {
   @override
   String get simpleFinDescription =>
       'Importeer saldi en transacties van Amerikaanse banken en kaartuitgevers via een SimpleFIN Bridge. Alleen-lezen toegang: er worden geen betalingen uitgevoerd.';
-
-  @override
-  String get simpleFinForget => 'Toegang vergeten';
 
   @override
   String get simpleFinHeadline => 'SimpleFIN Bridge (US)';

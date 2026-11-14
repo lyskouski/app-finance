@@ -598,6 +598,50 @@ class AppLocalizationsBe extends AppLocalizations {
   String get editTransferTooltip => 'Рэдагаваць перавод';
 
   @override
+  String get enableBankingAppId => 'ID праграмы';
+
+  @override
+  String get enableBankingBank => 'Банк';
+
+  @override
+  String get enableBankingCode => 'Адрас старонкі пасля аўтарызацыі';
+
+  @override
+  String get enableBankingCodeTooltip =>
+      'Пацвердзіце доступ у банку, потым скапіруйце адрас з браўзера і ўстаўце яго сюды';
+
+  @override
+  String get enableBankingCountry => 'Краіна (код ISO, напрыклад FI)';
+
+  @override
+  String get enableBankingDescription =>
+      'Імпарт рэшткаў і аперацый еўрапейскіх банкаў праз Enable Banking API (PSD2) з вашай уласнай праграмай, зарэгістраванай на enablebanking.com. Доступ толькі для чытання: плацяжы не выконваюцца.';
+
+  @override
+  String get enableBankingHeadline => 'Enable Banking (EU)';
+
+  @override
+  String get enableBankingIncomplete =>
+      'Запоўніце ID праграмы, закрыты ключ, URL перанакіравання і краіну';
+
+  @override
+  String get enableBankingKey => 'Закрыты ключ (PEM)';
+
+  @override
+  String get enableBankingKeyTooltip =>
+      'Ствараецца разам з праграмай у Enable Banking Control Panel; захоўваецца ў зашыфраваным выглядзе. Пакіньце пустым, каб захаваць бягучы ключ';
+
+  @override
+  String get enableBankingLoadBanks => 'Загрузіць банкі';
+
+  @override
+  String get enableBankingRedirect => 'URL перанакіравання';
+
+  @override
+  String get enableBankingRedirectTooltip =>
+      'Зарэгістраваны для праграмы; пасля аўтарызацыі банк вяртае на яго';
+
+  @override
   String get encryptionMode => 'Шыфраваньне дадьзеных';
 
   @override
@@ -784,6 +828,9 @@ class AppLocalizationsBe extends AppLocalizations {
 
   @override
   String get integrationDisconnect => 'Адлучыцца';
+
+  @override
+  String get integrationForget => 'Забыць доступ';
 
   @override
   String get integrationHeadline => 'Інтэграцыі';
@@ -1056,9 +1103,6 @@ class AppLocalizationsBe extends AppLocalizations {
   @override
   String get simpleFinDescription =>
       'Імпарт рэшткаў і аперацый банкаў і эмітэнтаў картак ЗША праз SimpleFIN Bridge. Доступ толькі для чытання: плацяжы не выконваюцца.';
-
-  @override
-  String get simpleFinForget => 'Забыць доступ';
 
   @override
   String get simpleFinHeadline => 'SimpleFIN Bridge (US)';
@@ -1838,6 +1882,50 @@ class AppLocalizationsBeEu extends AppLocalizationsBe {
   String get editTransferTooltip => 'Redahavać Pieravod';
 
   @override
+  String get enableBankingAppId => 'ID prahramy';
+
+  @override
+  String get enableBankingBank => 'Bank';
+
+  @override
+  String get enableBankingCode => 'Adras staronki paslia aŭtaryzacyi';
+
+  @override
+  String get enableBankingCodeTooltip =>
+      'Pacvierdzicie dostup u banku, potym skapirujcie adras z braŭziera i ŭstaŭcie jaho siudy';
+
+  @override
+  String get enableBankingCountry => 'Kraina (kod ISO, napryklad FI)';
+
+  @override
+  String get enableBankingDescription =>
+      'Impart reštkaŭ i aperacyj jeŭrapiejskich bankaŭ praz Enable Banking API (PSD2) z vašaj ułasnaj prahramaj, zarehistravanaj na enablebanking.com. Dostup toĺki dlia čytannia: płaciažy nie vykonvajucca.';
+
+  @override
+  String get enableBankingHeadline => 'Enable Banking (EU)';
+
+  @override
+  String get enableBankingIncomplete =>
+      'Zapoŭnicie ID prahramy, zakryty kluč, URL pieranakiravannia i krainu';
+
+  @override
+  String get enableBankingKey => 'Zakryty kluč (PEM)';
+
+  @override
+  String get enableBankingKeyTooltip =>
+      'Stvarajecca razam z prahramaj u Enable Banking Control Panel; zachoŭvajecca ŭ zašyfravanym vyhladzie. Pakińcie pustym, kab zachavać biahučy kluč';
+
+  @override
+  String get enableBankingLoadBanks => 'Zahruzić banki';
+
+  @override
+  String get enableBankingRedirect => 'URL pieranakiravannia';
+
+  @override
+  String get enableBankingRedirectTooltip =>
+      'Zarehistravany dlia prahramy; paslia aŭtaryzacyi bank viartaje na jaho';
+
+  @override
   String get encryptionMode => 'Šyfravańnie Dad́zienych';
 
   @override
@@ -2024,6 +2112,9 @@ class AppLocalizationsBeEu extends AppLocalizationsBe {
 
   @override
   String get integrationDisconnect => 'Adłučycca';
+
+  @override
+  String get integrationForget => 'Zabyć dostup';
 
   @override
   String get integrationHeadline => 'Intehracyi';
@@ -2296,9 +2387,6 @@ class AppLocalizationsBeEu extends AppLocalizationsBe {
   @override
   String get simpleFinDescription =>
       'Impart reštkaŭ i aperacyj bankaŭ i emitentaŭ kartak ZŠA praz SimpleFIN Bridge. Dostup toĺki dla čytannia: płaciažy nie vykonvajucca.';
-
-  @override
-  String get simpleFinForget => 'Zabyć dostup';
 
   @override
   String get simpleFinHeadline => 'SimpleFIN Bridge (US)';

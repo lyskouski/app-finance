@@ -1279,6 +1279,84 @@ abstract class AppLocalizations {
   /// **'Edit Transfer'**
   String get editTransferTooltip;
 
+  /// No description provided for @enableBankingAppId.
+  ///
+  /// In en, this message translates to:
+  /// **'Application ID'**
+  String get enableBankingAppId;
+
+  /// No description provided for @enableBankingBank.
+  ///
+  /// In en, this message translates to:
+  /// **'Bank'**
+  String get enableBankingBank;
+
+  /// No description provided for @enableBankingCode.
+  ///
+  /// In en, this message translates to:
+  /// **'Address of the Page Opened after the Authorization'**
+  String get enableBankingCode;
+
+  /// No description provided for @enableBankingCodeTooltip.
+  ///
+  /// In en, this message translates to:
+  /// **'Confirm access at the bank, then copy the address from the browser and paste it here'**
+  String get enableBankingCodeTooltip;
+
+  /// No description provided for @enableBankingCountry.
+  ///
+  /// In en, this message translates to:
+  /// **'Country (ISO Code, e.g. FI)'**
+  String get enableBankingCountry;
+
+  /// No description provided for @enableBankingDescription.
+  ///
+  /// In en, this message translates to:
+  /// **'Import balances and transactions from European banks through the Enable Banking API (PSD2) with your own application registered at enablebanking.com. Access is read-only: no payments are made.'**
+  String get enableBankingDescription;
+
+  /// No description provided for @enableBankingHeadline.
+  ///
+  /// In en, this message translates to:
+  /// **'Enable Banking (EU)'**
+  String get enableBankingHeadline;
+
+  /// No description provided for @enableBankingIncomplete.
+  ///
+  /// In en, this message translates to:
+  /// **'Fill in the application ID, private key, redirect URL, and country'**
+  String get enableBankingIncomplete;
+
+  /// No description provided for @enableBankingKey.
+  ///
+  /// In en, this message translates to:
+  /// **'Private Key (PEM)'**
+  String get enableBankingKey;
+
+  /// No description provided for @enableBankingKeyTooltip.
+  ///
+  /// In en, this message translates to:
+  /// **'Created with the application in the Enable Banking Control Panel; stored encrypted. Leave empty to keep the stored key'**
+  String get enableBankingKeyTooltip;
+
+  /// No description provided for @enableBankingLoadBanks.
+  ///
+  /// In en, this message translates to:
+  /// **'Load Banks'**
+  String get enableBankingLoadBanks;
+
+  /// No description provided for @enableBankingRedirect.
+  ///
+  /// In en, this message translates to:
+  /// **'Redirect URL'**
+  String get enableBankingRedirect;
+
+  /// No description provided for @enableBankingRedirectTooltip.
+  ///
+  /// In en, this message translates to:
+  /// **'Registered for the application; the bank returns to it after the authorization'**
+  String get enableBankingRedirectTooltip;
+
   /// No description provided for @encryptionMode.
   ///
   /// In en, this message translates to:
@@ -1620,6 +1698,12 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Disconnect'**
   String get integrationDisconnect;
+
+  /// No description provided for @integrationForget.
+  ///
+  /// In en, this message translates to:
+  /// **'Forget Access'**
+  String get integrationForget;
 
   /// No description provided for @integrationHeadline.
   ///
@@ -2124,12 +2208,6 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Import balances and transactions of US banks and card issuers through a SimpleFIN Bridge. Access is read-only: no payments are made.'**
   String get simpleFinDescription;
-
-  /// No description provided for @simpleFinForget.
-  ///
-  /// In en, this message translates to:
-  /// **'Forget Access'**
-  String get simpleFinForget;
 
   /// No description provided for @simpleFinHeadline.
   ///

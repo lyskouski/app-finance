@@ -76,6 +76,7 @@ Isso permite que os usuários gerenciem suas finanças sem esforço, garantindo 
 - Integrações
   - Financial Transaction Services (FinTS 4.1): importação de saldos e transações de bancos alemães (PIN/TAN)
   - SimpleFIN Bridge (US): importação de saldos e transações de bancos e emissores de cartões dos EUA
+  - Enable Banking (EU): importação de saldos e transações de bancos europeus (PSD2)
 - Exportar para arquivo Excel `XLSX`
 - Criptografia de dados
 - Localização

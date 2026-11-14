@@ -6,6 +6,7 @@ _Poŭny spis abnaŭlieńniaŭ možna prahliadzieć u navihacyjnym punkcie «Ab D
 - Dadadziena staronka «Intehracyi» z raskryŭnymi razdziełami
 - Dadadzieny Financial Transaction Services (FinTS 4.1): rachunki, reštki i impart aperacyj z niamieckich bankaŭ
 - Dadadzieny SimpleFIN Bridge (US): rachunki, reštki i impart aperacyj bankaŭ i emitentaŭ kartak ZŠA
+- Dadadzieny Enable Banking (EU): rachunki, reštki i impart aperacyj jeŭrapiejskich bankaŭ (PSD2)
 - Vypraŭliena dakladnasć kursaŭ kanviertacyi
 
 ### 7.3.0

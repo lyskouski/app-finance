@@ -598,6 +598,50 @@ class AppLocalizationsCs extends AppLocalizations {
   String get editTransferTooltip => 'Upravit převod';
 
   @override
+  String get enableBankingAppId => 'ID aplikace';
+
+  @override
+  String get enableBankingBank => 'Banka';
+
+  @override
+  String get enableBankingCode => 'Adresa stránky po autorizaci';
+
+  @override
+  String get enableBankingCodeTooltip =>
+      'Potvrďte přístup v bance, poté zkopírujte adresu z prohlížeče a vložte ji sem';
+
+  @override
+  String get enableBankingCountry => 'Země (kód ISO, např. CZ)';
+
+  @override
+  String get enableBankingDescription =>
+      'Import zůstatků a transakcí evropských bank přes Enable Banking API (PSD2) s vlastní aplikací registrovanou na enablebanking.com. Přístup pouze pro čtení: neprovádějí se žádné platby.';
+
+  @override
+  String get enableBankingHeadline => 'Enable Banking (EU)';
+
+  @override
+  String get enableBankingIncomplete =>
+      'Vyplňte ID aplikace, soukromý klíč, URL přesměrování a zemi';
+
+  @override
+  String get enableBankingKey => 'Soukromý klíč (PEM)';
+
+  @override
+  String get enableBankingKeyTooltip =>
+      'Vytváří se s aplikací v Enable Banking Control Panel; uložen šifrovaně. Ponechte prázdné pro zachování uloženého klíče';
+
+  @override
+  String get enableBankingLoadBanks => 'Načíst banky';
+
+  @override
+  String get enableBankingRedirect => 'URL přesměrování';
+
+  @override
+  String get enableBankingRedirectTooltip =>
+      'Registrována pro aplikaci; banka se na ni po autorizaci vrátí';
+
+  @override
   String get encryptionMode => 'Šifrování dat';
 
   @override
@@ -782,6 +826,9 @@ class AppLocalizationsCs extends AppLocalizations {
 
   @override
   String get integrationDisconnect => 'Odpojit';
+
+  @override
+  String get integrationForget => 'Zapomenout přístup';
 
   @override
   String get integrationHeadline => 'Integrace';
@@ -1053,9 +1100,6 @@ class AppLocalizationsCs extends AppLocalizations {
   @override
   String get simpleFinDescription =>
       'Import zůstatků a transakcí amerických bank a vydavatelů karet přes SimpleFIN Bridge. Přístup pouze pro čtení: neprovádějí se žádné platby.';
-
-  @override
-  String get simpleFinForget => 'Zapomenout přístup';
 
   @override
   String get simpleFinHeadline => 'SimpleFIN Bridge (US)';

@@ -597,6 +597,48 @@ class AppLocalizationsJa extends AppLocalizations {
   String get editTransferTooltip => '転送編集';
 
   @override
+  String get enableBankingAppId => 'アプリケーションID';
+
+  @override
+  String get enableBankingBank => '銀行';
+
+  @override
+  String get enableBankingCode => '認可後に開いたページのアドレス';
+
+  @override
+  String get enableBankingCodeTooltip =>
+      '銀行でアクセスを承認した後、ブラウザーのアドレスをコピーしてここに貼り付けてください';
+
+  @override
+  String get enableBankingCountry => '国（ISOコード、例: DE）';
+
+  @override
+  String get enableBankingDescription =>
+      'enablebanking.com に登録した独自のアプリケーションを使い、Enable Banking API（PSD2）経由でヨーロッパの銀行から残高と取引をインポートします。アクセスは読み取り専用で、支払いは行われません。';
+
+  @override
+  String get enableBankingHeadline => 'Enable Banking (EU)';
+
+  @override
+  String get enableBankingIncomplete => 'アプリケーションID、秘密鍵、リダイレクトURL、国を入力してください';
+
+  @override
+  String get enableBankingKey => '秘密鍵（PEM）';
+
+  @override
+  String get enableBankingKeyTooltip =>
+      'Enable Banking Control Panel でアプリケーションと共に作成され、暗号化して保存されます。保存済みの鍵を使う場合は空欄のままにしてください';
+
+  @override
+  String get enableBankingLoadBanks => '銀行を読み込む';
+
+  @override
+  String get enableBankingRedirect => 'リダイレクトURL';
+
+  @override
+  String get enableBankingRedirectTooltip => 'アプリケーションに登録済みのURL。認可後、銀行はここに戻ります';
+
+  @override
   String get encryptionMode => 'データ暗号化';
 
   @override
@@ -779,6 +821,9 @@ class AppLocalizationsJa extends AppLocalizations {
 
   @override
   String get integrationDisconnect => '切断';
+
+  @override
+  String get integrationForget => 'アクセスを削除';
 
   @override
   String get integrationHeadline => '連携';
@@ -1046,9 +1091,6 @@ class AppLocalizationsJa extends AppLocalizations {
   @override
   String get simpleFinDescription =>
       'SimpleFIN Bridge を通じて米国の銀行やカード発行会社から残高と取引をインポートします。アクセスは読み取り専用で、支払いは行われません。';
-
-  @override
-  String get simpleFinForget => 'アクセスを削除';
 
   @override
   String get simpleFinHeadline => 'SimpleFIN Bridge (US)';

@@ -597,6 +597,47 @@ class AppLocalizationsZh extends AppLocalizations {
   String get editTransferTooltip => '编辑转账';
 
   @override
+  String get enableBankingAppId => '应用 ID';
+
+  @override
+  String get enableBankingBank => '银行';
+
+  @override
+  String get enableBankingCode => '授权后打开页面的地址';
+
+  @override
+  String get enableBankingCodeTooltip => '在银行确认访问后，从浏览器复制地址并粘贴到此处';
+
+  @override
+  String get enableBankingCountry => '国家（ISO 代码，如 DE）';
+
+  @override
+  String get enableBankingDescription =>
+      '使用您在 enablebanking.com 注册的应用，通过 Enable Banking API（PSD2）导入欧洲银行的余额和交易。仅限只读访问：不会执行任何付款。';
+
+  @override
+  String get enableBankingHeadline => 'Enable Banking (EU)';
+
+  @override
+  String get enableBankingIncomplete => '请填写应用 ID、私钥、重定向 URL 和国家';
+
+  @override
+  String get enableBankingKey => '私钥（PEM）';
+
+  @override
+  String get enableBankingKeyTooltip =>
+      '在 Enable Banking Control Panel 中随应用一起创建；加密存储。留空则保留已存储的私钥';
+
+  @override
+  String get enableBankingLoadBanks => '加载银行';
+
+  @override
+  String get enableBankingRedirect => '重定向 URL';
+
+  @override
+  String get enableBankingRedirectTooltip => '已为应用注册；授权后银行将返回此地址';
+
+  @override
   String get encryptionMode => '数据加密';
 
   @override
@@ -777,6 +818,9 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String get integrationDisconnect => '断开连接';
+
+  @override
+  String get integrationForget => '删除访问权限';
 
   @override
   String get integrationHeadline => '集成';
@@ -1044,9 +1088,6 @@ class AppLocalizationsZh extends AppLocalizations {
   @override
   String get simpleFinDescription =>
       '通过 SimpleFIN Bridge 导入美国银行和发卡机构的余额与交易。仅限只读访问：不会执行任何付款。';
-
-  @override
-  String get simpleFinForget => '删除访问权限';
 
   @override
   String get simpleFinHeadline => 'SimpleFIN Bridge (US)';
@@ -1824,6 +1865,47 @@ class AppLocalizationsZhTw extends AppLocalizationsZh {
   String get editTransferTooltip => '編輯轉移';
 
   @override
+  String get enableBankingAppId => '應用程式 ID';
+
+  @override
+  String get enableBankingBank => '銀行';
+
+  @override
+  String get enableBankingCode => '授權後開啟頁面的網址';
+
+  @override
+  String get enableBankingCodeTooltip => '在銀行確認存取後，從瀏覽器複製網址並貼上至此處';
+
+  @override
+  String get enableBankingCountry => '國家（ISO 代碼，如 DE）';
+
+  @override
+  String get enableBankingDescription =>
+      '使用您在 enablebanking.com 註冊的應用程式，透過 Enable Banking API（PSD2）匯入歐洲銀行的餘額與交易。僅限唯讀存取：不會執行任何付款。';
+
+  @override
+  String get enableBankingHeadline => 'Enable Banking (EU)';
+
+  @override
+  String get enableBankingIncomplete => '請填寫應用程式 ID、私密金鑰、重新導向 URL 與國家';
+
+  @override
+  String get enableBankingKey => '私密金鑰（PEM）';
+
+  @override
+  String get enableBankingKeyTooltip =>
+      '在 Enable Banking Control Panel 中隨應用程式一併建立；加密儲存。留空則保留已儲存的金鑰';
+
+  @override
+  String get enableBankingLoadBanks => '載入銀行';
+
+  @override
+  String get enableBankingRedirect => '重新導向 URL';
+
+  @override
+  String get enableBankingRedirectTooltip => '已為應用程式註冊；授權後銀行將返回此網址';
+
+  @override
   String get encryptionMode => '資料加密';
 
   @override
@@ -2004,6 +2086,9 @@ class AppLocalizationsZhTw extends AppLocalizationsZh {
 
   @override
   String get integrationDisconnect => '中斷連線';
+
+  @override
+  String get integrationForget => '移除存取權';
 
   @override
   String get integrationHeadline => '整合';
@@ -2271,9 +2356,6 @@ class AppLocalizationsZhTw extends AppLocalizationsZh {
   @override
   String get simpleFinDescription =>
       '透過 SimpleFIN Bridge 匯入美國銀行與發卡機構的餘額及交易。僅限唯讀存取：不會執行任何付款。';
-
-  @override
-  String get simpleFinForget => '移除存取權';
 
   @override
   String get simpleFinHeadline => 'SimpleFIN Bridge (US)';
