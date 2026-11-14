@@ -626,6 +626,13 @@ class AppLocalizationsKo extends AppLocalizations {
   String get enableBankingKey => '개인 키 (PEM)';
 
   @override
+  String get enableBankingKeyInvalid =>
+      '잘못된 개인 키: PEM 블록 \"PRIVATE KEY\"가 필요합니다';
+
+  @override
+  String get enableBankingKeyNotRsa => '잘못된 개인 키: RSA 키가 필요합니다';
+
+  @override
   String get enableBankingKeyTooltip =>
       'Enable Banking Control Panel에서 애플리케이션과 함께 생성되며 암호화되어 저장됩니다. 저장된 키를 유지하려면 비워 두세요';
 
@@ -633,11 +640,20 @@ class AppLocalizationsKo extends AppLocalizations {
   String get enableBankingLoadBanks => '은행 불러오기';
 
   @override
+  String get enableBankingNoAuthPage => 'Enable Banking에서 인증 페이지를 반환하지 않았습니다';
+
+  @override
+  String get enableBankingNoCode => '주소에서 인증 코드를 찾을 수 없습니다';
+
+  @override
   String get enableBankingRedirect => '리디렉션 URL';
 
   @override
   String get enableBankingRedirectTooltip =>
       '애플리케이션에 등록된 주소로, 인증 후 은행이 이 주소로 돌아옵니다';
+
+  @override
+  String get enableBankingStateMismatch => '이 주소는 다른 인증에 속합니다. 다시 연결하세요';
 
   @override
   String get encryptionMode => '데이터 암호화';
@@ -814,6 +830,9 @@ class AppLocalizationsKo extends AppLocalizations {
   String get incomeTooltip => '수입 세부 정보 설정';
 
   @override
+  String get integrationAccessDenied => '접근 권한이 취소되었거나 자격 증명이 올바르지 않습니다';
+
+  @override
   String get integrationConnect => '연결';
 
   @override
@@ -829,6 +848,14 @@ class AppLocalizationsKo extends AppLocalizations {
   String get integrationHeadline => '통합';
 
   @override
+  String integrationHttpError(Object value) {
+    return '서비스가 오류로 응답했습니다 (HTTP $value)';
+  }
+
+  @override
+  String get integrationHttpsRequired => '보안(HTTPS) 주소만 허용됩니다';
+
+  @override
   String get integrationImport => '거래 가져오기';
 
   @override
@@ -837,10 +864,26 @@ class AppLocalizationsKo extends AppLocalizations {
   }
 
   @override
+  String integrationInvalidAmount(Object value) {
+    return '잘못된 금액: $value';
+  }
+
+  @override
   String get integrationNoAccounts => '은행에서 제공한 계좌가 없습니다';
 
   @override
+  String get integrationPaymentRequired => '서비스 접근에 결제가 필요합니다';
+
+  @override
   String get integrationSelectTarget => '가져올 계좌와 예산 카테고리를 선택하세요';
+
+  @override
+  String integrationServiceError(Object value) {
+    return '서비스 메시지: $value';
+  }
+
+  @override
+  String get integrationUnexpectedResponse => '서비스의 예기치 않은 응답';
 
   @override
   String get invoiceHeadline => '인보이스';
@@ -1096,7 +1139,17 @@ class AppLocalizationsKo extends AppLocalizations {
   String get simpleFinHeadline => 'SimpleFIN Bridge (US)';
 
   @override
+  String get simpleFinNoCredentials =>
+      'SimpleFIN Bridge가 자격 증명 없는 접근 주소를 반환했습니다';
+
+  @override
   String get simpleFinToken => 'SimpleFIN 설정 토큰';
+
+  @override
+  String get simpleFinTokenClaimed => '설정 토큰이 존재하지 않거나 이미 사용되었습니다';
+
+  @override
+  String get simpleFinTokenInvalid => '잘못된 SimpleFIN 설정 토큰';
 
   @override
   String get simpleFinTokenTooltip =>

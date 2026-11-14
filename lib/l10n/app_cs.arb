@@ -250,10 +250,15 @@
     "enableBankingHeadline": "Enable Banking (EU)",
     "enableBankingIncomplete": "Vyplňte ID aplikace, soukromý klíč, URL přesměrování a zemi",
     "enableBankingKey": "Soukromý klíč (PEM)",
+    "enableBankingKeyInvalid": "Neplatný soukromý klíč: očekává se blok PEM \"PRIVATE KEY\"",
+    "enableBankingKeyNotRsa": "Neplatný soukromý klíč: očekává se klíč RSA",
     "enableBankingKeyTooltip": "Vytváří se s aplikací v Enable Banking Control Panel; uložen šifrovaně. Ponechte prázdné pro zachování uloženého klíče",
     "enableBankingLoadBanks": "Načíst banky",
+    "enableBankingNoAuthPage": "Enable Banking nevrátil stránku autorizace",
+    "enableBankingNoCode": "V adrese nebyl nalezen autorizační kód",
     "enableBankingRedirect": "URL přesměrování",
     "enableBankingRedirectTooltip": "Registrována pro aplikaci; banka se na ni po autorizaci vrátí",
+    "enableBankingStateMismatch": "Adresa patří k jiné autorizaci, připojte se znovu",
     "encryptionMode": "Šifrování dat",
     "error": "Chyba: {value}",
     "@error": {
@@ -333,11 +338,19 @@
     "incomeHeadline": "Příjem",
     "incomeHealth": "Radar stavu příjmů",
     "incomeTooltip": "Nastavení podrobností o příjmech",
+    "integrationAccessDenied": "Přístup byl odvolán nebo jsou přihlašovací údaje nesprávné",
     "integrationConnect": "Připojit",
     "integrationDateFrom": "Importovat transakce od",
     "integrationDisconnect": "Odpojit",
     "integrationForget": "Zapomenout přístup",
     "integrationHeadline": "Integrace",
+    "integrationHttpError": "Služba odpověděla chybou (HTTP {value})",
+    "@integrationHttpError": {
+        "value": {
+            "type": "String"
+        }
+    },
+    "integrationHttpsRequired": "Povoleny jsou pouze zabezpečené adresy (HTTPS)",
     "integrationImport": "Importovat transakce",
     "integrationImported": "Importováno: {added}, přeskočeno jako existující: {skipped}, čekající (neimportováno): {pending}",
     "@integrationImported": {
@@ -351,8 +364,22 @@
             "type": "int"
         }
     },
+    "integrationInvalidAmount": "Neplatná částka: {value}",
+    "@integrationInvalidAmount": {
+        "value": {
+            "type": "String"
+        }
+    },
     "integrationNoAccounts": "Banka neposkytla žádné účty",
+    "integrationPaymentRequired": "Služba vyžaduje za přístup platbu",
     "integrationSelectTarget": "Vyberte účet a kategorii rozpočtu pro import",
+    "integrationServiceError": "Hlášení služby: {value}",
+    "@integrationServiceError": {
+        "value": {
+            "type": "String"
+        }
+    },
+    "integrationUnexpectedResponse": "Neočekávaná odpověď služby",
     "invoiceHeadline": "Faktury",
     "invoiceSum": "Faktury: {value}",
     "@invoiceSum": {
@@ -463,7 +490,10 @@
     "settingsSaved": "Nastavení uloženo!",
     "simpleFinDescription": "Import zůstatků a transakcí amerických bank a vydavatelů karet přes SimpleFIN Bridge. Přístup pouze pro čtení: neprovádějí se žádné platby.",
     "simpleFinHeadline": "SimpleFIN Bridge (US)",
+    "simpleFinNoCredentials": "SimpleFIN Bridge vrátil přístupovou adresu bez přihlašovacích údajů",
     "simpleFinToken": "Instalační token SimpleFIN",
+    "simpleFinTokenClaimed": "Instalační token neexistuje nebo již byl použit",
+    "simpleFinTokenInvalid": "Neplatný instalační token SimpleFIN",
     "simpleFinTokenTooltip": "Vytváří se ve vašem SimpleFIN Bridge (např. bridge.simplefin.org) pro tuto aplikaci; lze jej použít pouze jednou",
     "skipFromTotals": "Vyloučit ze součtů",
     "skipTooltip": "Vynechat krok(y)",

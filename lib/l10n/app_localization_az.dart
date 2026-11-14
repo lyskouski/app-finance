@@ -630,6 +630,14 @@ class AppLocalizationsAz extends AppLocalizations {
   String get enableBankingKey => 'Şəxsi açar (PEM)';
 
   @override
+  String get enableBankingKeyInvalid =>
+      'Yanlış şəxsi açar: \"PRIVATE KEY\" PEM bloku gözlənilir';
+
+  @override
+  String get enableBankingKeyNotRsa =>
+      'Yanlış şəxsi açar: RSA açarı gözlənilir';
+
+  @override
   String get enableBankingKeyTooltip =>
       'Enable Banking Control Panel-də tətbiqlə birlikdə yaradılır; şifrələnmiş saxlanılır. Saxlanılmış açarı saxlamaq üçün boş buraxın';
 
@@ -637,11 +645,22 @@ class AppLocalizationsAz extends AppLocalizations {
   String get enableBankingLoadBanks => 'Bankları yüklə';
 
   @override
+  String get enableBankingNoAuthPage =>
+      'Enable Banking avtorizasiya səhifəsi qaytarmadı';
+
+  @override
+  String get enableBankingNoCode => 'Ünvanda avtorizasiya kodu tapılmadı';
+
+  @override
   String get enableBankingRedirect => 'Yönləndirmə URL-i';
 
   @override
   String get enableBankingRedirectTooltip =>
       'Tətbiq üçün qeydiyyatdan keçib; bank avtorizasiyadan sonra ona qayıdır';
+
+  @override
+  String get enableBankingStateMismatch =>
+      'Ünvan başqa avtorizasiyaya aiddir, yenidən qoşulun';
 
   @override
   String get encryptionMode => 'Məlumatların Şifrələnməsi';
@@ -823,6 +842,10 @@ class AppLocalizationsAz extends AppLocalizations {
   String get incomeTooltip => 'Gəlir təfərrüatlarını təyin edin';
 
   @override
+  String get integrationAccessDenied =>
+      'Giriş ləğv edilib və ya giriş məlumatları yanlışdır';
+
+  @override
   String get integrationConnect => 'Qoşul';
 
   @override
@@ -838,6 +861,15 @@ class AppLocalizationsAz extends AppLocalizations {
   String get integrationHeadline => 'İnteqrasiyalar';
 
   @override
+  String integrationHttpError(Object value) {
+    return 'Xidmət xəta ilə cavab verdi (HTTP $value)';
+  }
+
+  @override
+  String get integrationHttpsRequired =>
+      'Yalnız təhlükəsiz (HTTPS) ünvanlara icazə verilir';
+
+  @override
   String get integrationImport => 'Əməliyyatları idxal et';
 
   @override
@@ -846,11 +878,28 @@ class AppLocalizationsAz extends AppLocalizations {
   }
 
   @override
+  String integrationInvalidAmount(Object value) {
+    return 'Yanlış məbləğ: $value';
+  }
+
+  @override
   String get integrationNoAccounts => 'Bank heç bir hesab təqdim etmədi';
+
+  @override
+  String get integrationPaymentRequired =>
+      'Xidmət giriş üçün ödəniş tələb edir';
 
   @override
   String get integrationSelectTarget =>
       'İdxal üçün hesabı və büdcə kateqoriyasını seçin';
+
+  @override
+  String integrationServiceError(Object value) {
+    return 'Xidmətin mesajı: $value';
+  }
+
+  @override
+  String get integrationUnexpectedResponse => 'Xidmətdən gözlənilməz cavab';
 
   @override
   String get invoiceHeadline => 'Fakturalar';
@@ -1110,7 +1159,18 @@ class AppLocalizationsAz extends AppLocalizations {
   String get simpleFinHeadline => 'SimpleFIN Bridge (US)';
 
   @override
+  String get simpleFinNoCredentials =>
+      'SimpleFIN Bridge giriş məlumatları olmayan giriş ünvanı qaytardı';
+
+  @override
   String get simpleFinToken => 'SimpleFIN quraşdırma tokeni';
+
+  @override
+  String get simpleFinTokenClaimed =>
+      'Quraşdırma tokeni mövcud deyil və ya artıq istifadə olunub';
+
+  @override
+  String get simpleFinTokenInvalid => 'Yanlış SimpleFIN quraşdırma tokeni';
 
   @override
   String get simpleFinTokenTooltip =>

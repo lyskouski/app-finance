@@ -250,10 +250,15 @@
     "enableBankingHeadline": "Enable Banking (EU)",
     "enableBankingIncomplete": "アプリケーションID、秘密鍵、リダイレクトURL、国を入力してください",
     "enableBankingKey": "秘密鍵（PEM）",
+    "enableBankingKeyInvalid": "無効な秘密鍵: PEM ブロック「PRIVATE KEY」が必要です",
+    "enableBankingKeyNotRsa": "無効な秘密鍵: RSA 鍵が必要です",
     "enableBankingKeyTooltip": "Enable Banking Control Panel でアプリケーションと共に作成され、暗号化して保存されます。保存済みの鍵を使う場合は空欄のままにしてください",
     "enableBankingLoadBanks": "銀行を読み込む",
+    "enableBankingNoAuthPage": "Enable Banking から認可ページが返されませんでした",
+    "enableBankingNoCode": "アドレスに認可コードが見つかりません",
     "enableBankingRedirect": "リダイレクトURL",
     "enableBankingRedirectTooltip": "アプリケーションに登録済みのURL。認可後、銀行はここに戻ります",
+    "enableBankingStateMismatch": "このアドレスは別の認可のものです。もう一度接続してください",
     "encryptionMode": "データ暗号化",
     "error": "エラー：{value}",
     "@error": {
@@ -333,11 +338,19 @@
     "incomeHeadline": "収入",
     "incomeHealth": "所得健康レーダー",
     "incomeTooltip": "収入の詳細設定",
+    "integrationAccessDenied": "アクセスが取り消されたか、認証情報が正しくありません",
     "integrationConnect": "接続",
     "integrationDateFrom": "取引のインポート開始日",
     "integrationDisconnect": "切断",
     "integrationForget": "アクセスを削除",
     "integrationHeadline": "連携",
+    "integrationHttpError": "サービスがエラーを返しました（HTTP {value}）",
+    "@integrationHttpError": {
+        "value": {
+            "type": "String"
+        }
+    },
+    "integrationHttpsRequired": "安全なアドレス（HTTPS）のみ使用できます",
     "integrationImport": "取引をインポート",
     "integrationImported": "インポート済み: {added}、既存のためスキップ: {skipped}、保留中（未インポート）: {pending}",
     "@integrationImported": {
@@ -351,8 +364,22 @@
             "type": "int"
         }
     },
+    "integrationInvalidAmount": "無効な金額: {value}",
+    "@integrationInvalidAmount": {
+        "value": {
+            "type": "String"
+        }
+    },
     "integrationNoAccounts": "銀行から口座が提供されませんでした",
+    "integrationPaymentRequired": "サービスへのアクセスには支払いが必要です",
     "integrationSelectTarget": "インポート先の口座と予算カテゴリを選択してください",
+    "integrationServiceError": "サービスからのメッセージ: {value}",
+    "@integrationServiceError": {
+        "value": {
+            "type": "String"
+        }
+    },
+    "integrationUnexpectedResponse": "サービスからの予期しない応答",
     "invoiceHeadline": "請求書",
     "invoiceSum": "請求書 {value}",
     "@invoiceSum": {
@@ -463,7 +490,10 @@
     "settingsSaved": "設定が保存されました！",
     "simpleFinDescription": "SimpleFIN Bridge を通じて米国の銀行やカード発行会社から残高と取引をインポートします。アクセスは読み取り専用で、支払いは行われません。",
     "simpleFinHeadline": "SimpleFIN Bridge (US)",
+    "simpleFinNoCredentials": "SimpleFIN Bridge が認証情報のないアクセスアドレスを返しました",
     "simpleFinToken": "SimpleFIN セットアップトークン",
+    "simpleFinTokenClaimed": "セットアップトークンが存在しないか、既に使用されています",
+    "simpleFinTokenInvalid": "無効な SimpleFIN セットアップトークン",
     "simpleFinTokenTooltip": "このアプリ用に SimpleFIN Bridge（例: bridge.simplefin.org）で作成します。使用できるのは1回のみです",
     "skipFromTotals": "合計から除外する",
     "skipTooltip": "ステップをスキップする",

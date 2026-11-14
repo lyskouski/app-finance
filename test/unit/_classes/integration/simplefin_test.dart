@@ -3,6 +3,7 @@
 
 import 'dart:convert';
 
+import 'package:app_finance/_classes/herald/app_locale.dart';
 import 'package:app_finance/_classes/integration/simplefin/simplefin_client.dart';
 import 'package:app_finance/_classes/integration/simplefin/simplefin_importer.dart';
 import 'package:app_finance/_classes/integration/simplefin/simplefin_settings.dart';
@@ -83,7 +84,9 @@ void main() {
 
       expect(
         () => client.claim(token),
-        throwsA(isA<SimpleFinException>().having((e) => e.statusCode, 'statusCode', 403)),
+        throwsA(isA<SimpleFinException>()
+            .having((e) => e.statusCode, 'statusCode', 403)
+            .having((e) => e.message, 'message', AppLocale.labels.simpleFinTokenClaimed)),
       );
     });
 
@@ -136,7 +139,11 @@ void main() {
     test('reports revoked access', () async {
       final client = SimpleFinClient(client: MockClient((_) async => http.Response('', 403)));
 
-      expect(() => client.getAccounts(access), throwsA(isA<SimpleFinException>()));
+      expect(
+        () => client.getAccounts(access),
+        throwsA(
+            isA<SimpleFinException>().having((e) => e.message, 'message', AppLocale.labels.integrationAccessDenied)),
+      );
     });
   });
 

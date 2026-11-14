@@ -628,6 +628,14 @@ class AppLocalizationsCs extends AppLocalizations {
   String get enableBankingKey => 'Soukromý klíč (PEM)';
 
   @override
+  String get enableBankingKeyInvalid =>
+      'Neplatný soukromý klíč: očekává se blok PEM \"PRIVATE KEY\"';
+
+  @override
+  String get enableBankingKeyNotRsa =>
+      'Neplatný soukromý klíč: očekává se klíč RSA';
+
+  @override
   String get enableBankingKeyTooltip =>
       'Vytváří se s aplikací v Enable Banking Control Panel; uložen šifrovaně. Ponechte prázdné pro zachování uloženého klíče';
 
@@ -635,11 +643,22 @@ class AppLocalizationsCs extends AppLocalizations {
   String get enableBankingLoadBanks => 'Načíst banky';
 
   @override
+  String get enableBankingNoAuthPage =>
+      'Enable Banking nevrátil stránku autorizace';
+
+  @override
+  String get enableBankingNoCode => 'V adrese nebyl nalezen autorizační kód';
+
+  @override
   String get enableBankingRedirect => 'URL přesměrování';
 
   @override
   String get enableBankingRedirectTooltip =>
       'Registrována pro aplikaci; banka se na ni po autorizaci vrátí';
+
+  @override
+  String get enableBankingStateMismatch =>
+      'Adresa patří k jiné autorizaci, připojte se znovu';
 
   @override
   String get encryptionMode => 'Šifrování dat';
@@ -819,6 +838,10 @@ class AppLocalizationsCs extends AppLocalizations {
   String get incomeTooltip => 'Nastavení podrobností o příjmech';
 
   @override
+  String get integrationAccessDenied =>
+      'Přístup byl odvolán nebo jsou přihlašovací údaje nesprávné';
+
+  @override
   String get integrationConnect => 'Připojit';
 
   @override
@@ -834,6 +857,15 @@ class AppLocalizationsCs extends AppLocalizations {
   String get integrationHeadline => 'Integrace';
 
   @override
+  String integrationHttpError(Object value) {
+    return 'Služba odpověděla chybou (HTTP $value)';
+  }
+
+  @override
+  String get integrationHttpsRequired =>
+      'Povoleny jsou pouze zabezpečené adresy (HTTPS)';
+
+  @override
   String get integrationImport => 'Importovat transakce';
 
   @override
@@ -842,11 +874,27 @@ class AppLocalizationsCs extends AppLocalizations {
   }
 
   @override
+  String integrationInvalidAmount(Object value) {
+    return 'Neplatná částka: $value';
+  }
+
+  @override
   String get integrationNoAccounts => 'Banka neposkytla žádné účty';
+
+  @override
+  String get integrationPaymentRequired => 'Služba vyžaduje za přístup platbu';
 
   @override
   String get integrationSelectTarget =>
       'Vyberte účet a kategorii rozpočtu pro import';
+
+  @override
+  String integrationServiceError(Object value) {
+    return 'Hlášení služby: $value';
+  }
+
+  @override
+  String get integrationUnexpectedResponse => 'Neočekávaná odpověď služby';
 
   @override
   String get invoiceHeadline => 'Faktury';
@@ -1105,7 +1153,18 @@ class AppLocalizationsCs extends AppLocalizations {
   String get simpleFinHeadline => 'SimpleFIN Bridge (US)';
 
   @override
+  String get simpleFinNoCredentials =>
+      'SimpleFIN Bridge vrátil přístupovou adresu bez přihlašovacích údajů';
+
+  @override
   String get simpleFinToken => 'Instalační token SimpleFIN';
+
+  @override
+  String get simpleFinTokenClaimed =>
+      'Instalační token neexistuje nebo již byl použit';
+
+  @override
+  String get simpleFinTokenInvalid => 'Neplatný instalační token SimpleFIN';
 
   @override
   String get simpleFinTokenTooltip =>

@@ -250,10 +250,15 @@
     "enableBankingHeadline": "Enable Banking (EU)",
     "enableBankingIncomplete": "Uygulama kimliğini, özel anahtarı, yönlendirme URL'sini ve ülkeyi doldurun",
     "enableBankingKey": "Özel anahtar (PEM)",
+    "enableBankingKeyInvalid": "Geçersiz özel anahtar: \"PRIVATE KEY\" PEM bloğu bekleniyor",
+    "enableBankingKeyNotRsa": "Geçersiz özel anahtar: RSA anahtarı bekleniyor",
     "enableBankingKeyTooltip": "Enable Banking Control Panel'de uygulamayla birlikte oluşturulur; şifreli olarak saklanır. Kayıtlı anahtarı korumak için boş bırakın",
     "enableBankingLoadBanks": "Bankaları yükle",
+    "enableBankingNoAuthPage": "Enable Banking bir yetkilendirme sayfası döndürmedi",
+    "enableBankingNoCode": "Adreste yetkilendirme kodu bulunamadı",
     "enableBankingRedirect": "Yönlendirme URL'si",
     "enableBankingRedirectTooltip": "Uygulama için kayıtlıdır; banka yetkilendirmeden sonra buraya geri döner",
+    "enableBankingStateMismatch": "Adres başka bir yetkilendirmeye ait, yeniden bağlanın",
     "encryptionMode": "Veri Şifreleme",
     "error": "Hata: {value}",
     "@error": {
@@ -333,11 +338,19 @@
     "incomeHeadline": "Gelir",
     "incomeHealth": "Gelir Sağlığı Radarı",
     "incomeTooltip": "Gelir Ayrıntılarını Ayarla",
+    "integrationAccessDenied": "Erişim iptal edildi veya kimlik bilgileri yanlış",
     "integrationConnect": "Bağlan",
     "integrationDateFrom": "İşlemleri şu tarihten itibaren içe aktar",
     "integrationDisconnect": "Bağlantıyı kes",
     "integrationForget": "Erişimi unut",
     "integrationHeadline": "Entegrasyonlar",
+    "integrationHttpError": "Hizmet bir hatayla yanıt verdi (HTTP {value})",
+    "@integrationHttpError": {
+        "value": {
+            "type": "String"
+        }
+    },
+    "integrationHttpsRequired": "Yalnızca güvenli (HTTPS) adreslere izin verilir",
     "integrationImport": "İşlemleri içe aktar",
     "integrationImported": "İçe aktarılan: {added}, zaten mevcut olduğu için atlanan: {skipped}, bekleyen (içe aktarılmayan): {pending}",
     "@integrationImported": {
@@ -351,8 +364,22 @@
             "type": "int"
         }
     },
+    "integrationInvalidAmount": "Geçersiz tutar: {value}",
+    "@integrationInvalidAmount": {
+        "value": {
+            "type": "String"
+        }
+    },
     "integrationNoAccounts": "Banka herhangi bir hesap sağlamadı",
+    "integrationPaymentRequired": "Hizmet, erişim için ödeme gerektiriyor",
     "integrationSelectTarget": "İçe aktarılacak hesabı ve bütçe kategorisini seçin",
+    "integrationServiceError": "Hizmet mesajı: {value}",
+    "@integrationServiceError": {
+        "value": {
+            "type": "String"
+        }
+    },
+    "integrationUnexpectedResponse": "Hizmetten beklenmeyen yanıt",
     "invoiceHeadline": "Invoices",
     "invoiceSum": "Faturalar: {value}",
     "@invoiceSum": {
@@ -463,7 +490,10 @@
     "settingsSaved": "Ayarlar kaydedildi!",
     "simpleFinDescription": "ABD bankaları ve kart sağlayıcılarının bakiyelerini ve işlemlerini bir SimpleFIN Bridge üzerinden içe aktarın. Erişim salt okunurdur: ödeme yapılmaz.",
     "simpleFinHeadline": "SimpleFIN Bridge (US)",
+    "simpleFinNoCredentials": "SimpleFIN Bridge kimlik bilgileri olmayan bir erişim adresi döndürdü",
     "simpleFinToken": "SimpleFIN kurulum belirteci",
+    "simpleFinTokenClaimed": "Kurulum belirteci mevcut değil veya zaten kullanılmış",
+    "simpleFinTokenInvalid": "Geçersiz SimpleFIN kurulum belirteci",
     "simpleFinTokenTooltip": "Bu uygulama için SimpleFIN Bridge'inizde (ör. bridge.simplefin.org) oluşturulur; yalnızca bir kez kullanılabilir",
     "skipFromTotals": "Toplamlardan hariç tut",
     "skipTooltip": "Adım(lar)ı Atla",

@@ -625,6 +625,12 @@ class AppLocalizationsZh extends AppLocalizations {
   String get enableBankingKey => '私钥（PEM）';
 
   @override
+  String get enableBankingKeyInvalid => '私钥无效：需要 PEM 块“PRIVATE KEY”';
+
+  @override
+  String get enableBankingKeyNotRsa => '私钥无效：需要 RSA 密钥';
+
+  @override
   String get enableBankingKeyTooltip =>
       '在 Enable Banking Control Panel 中随应用一起创建；加密存储。留空则保留已存储的私钥';
 
@@ -632,10 +638,19 @@ class AppLocalizationsZh extends AppLocalizations {
   String get enableBankingLoadBanks => '加载银行';
 
   @override
+  String get enableBankingNoAuthPage => 'Enable Banking 未返回授权页面';
+
+  @override
+  String get enableBankingNoCode => '地址中未找到授权码';
+
+  @override
   String get enableBankingRedirect => '重定向 URL';
 
   @override
   String get enableBankingRedirectTooltip => '已为应用注册；授权后银行将返回此地址';
+
+  @override
+  String get enableBankingStateMismatch => '该地址属于其他授权，请重新连接';
 
   @override
   String get encryptionMode => '数据加密';
@@ -811,6 +826,9 @@ class AppLocalizationsZh extends AppLocalizations {
   String get incomeTooltip => '设置收入详情';
 
   @override
+  String get integrationAccessDenied => '访问已被撤销或凭据不正确';
+
+  @override
   String get integrationConnect => '连接';
 
   @override
@@ -826,6 +844,14 @@ class AppLocalizationsZh extends AppLocalizations {
   String get integrationHeadline => '集成';
 
   @override
+  String integrationHttpError(Object value) {
+    return '服务返回错误（HTTP $value）';
+  }
+
+  @override
+  String get integrationHttpsRequired => '仅允许安全（HTTPS）地址';
+
+  @override
   String get integrationImport => '导入交易';
 
   @override
@@ -834,10 +860,26 @@ class AppLocalizationsZh extends AppLocalizations {
   }
 
   @override
+  String integrationInvalidAmount(Object value) {
+    return '金额无效：$value';
+  }
+
+  @override
   String get integrationNoAccounts => '银行未提供任何账户';
 
   @override
+  String get integrationPaymentRequired => '该服务需要付费才能访问';
+
+  @override
   String get integrationSelectTarget => '请选择要导入的账户和预算类别';
+
+  @override
+  String integrationServiceError(Object value) {
+    return '服务消息：$value';
+  }
+
+  @override
+  String get integrationUnexpectedResponse => '服务返回了意外的响应';
 
   @override
   String get invoiceHeadline => '发票';
@@ -1093,7 +1135,16 @@ class AppLocalizationsZh extends AppLocalizations {
   String get simpleFinHeadline => 'SimpleFIN Bridge (US)';
 
   @override
+  String get simpleFinNoCredentials => 'SimpleFIN Bridge 返回了不含凭据的访问地址';
+
+  @override
   String get simpleFinToken => 'SimpleFIN 设置令牌';
+
+  @override
+  String get simpleFinTokenClaimed => '设置令牌不存在或已被使用';
+
+  @override
+  String get simpleFinTokenInvalid => 'SimpleFIN 设置令牌无效';
 
   @override
   String get simpleFinTokenTooltip =>
@@ -1893,6 +1944,12 @@ class AppLocalizationsZhTw extends AppLocalizationsZh {
   String get enableBankingKey => '私密金鑰（PEM）';
 
   @override
+  String get enableBankingKeyInvalid => '私密金鑰無效：需要 PEM 區塊「PRIVATE KEY」';
+
+  @override
+  String get enableBankingKeyNotRsa => '私密金鑰無效：需要 RSA 金鑰';
+
+  @override
   String get enableBankingKeyTooltip =>
       '在 Enable Banking Control Panel 中隨應用程式一併建立；加密儲存。留空則保留已儲存的金鑰';
 
@@ -1900,10 +1957,19 @@ class AppLocalizationsZhTw extends AppLocalizationsZh {
   String get enableBankingLoadBanks => '載入銀行';
 
   @override
+  String get enableBankingNoAuthPage => 'Enable Banking 未傳回授權頁面';
+
+  @override
+  String get enableBankingNoCode => '網址中找不到授權碼';
+
+  @override
   String get enableBankingRedirect => '重新導向 URL';
 
   @override
   String get enableBankingRedirectTooltip => '已為應用程式註冊；授權後銀行將返回此網址';
+
+  @override
+  String get enableBankingStateMismatch => '此網址屬於其他授權，請重新連線';
 
   @override
   String get encryptionMode => '資料加密';
@@ -2079,6 +2145,9 @@ class AppLocalizationsZhTw extends AppLocalizationsZh {
   String get incomeTooltip => '設定收入詳細資訊';
 
   @override
+  String get integrationAccessDenied => '存取已被撤銷或憑證不正確';
+
+  @override
   String get integrationConnect => '連線';
 
   @override
@@ -2094,6 +2163,14 @@ class AppLocalizationsZhTw extends AppLocalizationsZh {
   String get integrationHeadline => '整合';
 
   @override
+  String integrationHttpError(Object value) {
+    return '服務回傳錯誤（HTTP $value）';
+  }
+
+  @override
+  String get integrationHttpsRequired => '僅允許安全（HTTPS）網址';
+
+  @override
   String get integrationImport => '匯入交易';
 
   @override
@@ -2102,10 +2179,26 @@ class AppLocalizationsZhTw extends AppLocalizationsZh {
   }
 
   @override
+  String integrationInvalidAmount(Object value) {
+    return '金額無效：$value';
+  }
+
+  @override
   String get integrationNoAccounts => '銀行未提供任何帳戶';
 
   @override
+  String get integrationPaymentRequired => '此服務需要付費才能存取';
+
+  @override
   String get integrationSelectTarget => '請選擇要匯入的帳戶與預算類別';
+
+  @override
+  String integrationServiceError(Object value) {
+    return '服務訊息：$value';
+  }
+
+  @override
+  String get integrationUnexpectedResponse => '服務傳回了非預期的回應';
 
   @override
   String get invoiceHeadline => '發票';
@@ -2361,7 +2454,16 @@ class AppLocalizationsZhTw extends AppLocalizationsZh {
   String get simpleFinHeadline => 'SimpleFIN Bridge (US)';
 
   @override
+  String get simpleFinNoCredentials => 'SimpleFIN Bridge 傳回了不含憑證的存取網址';
+
+  @override
   String get simpleFinToken => 'SimpleFIN 設定權杖';
+
+  @override
+  String get simpleFinTokenClaimed => '設定權杖不存在或已被使用';
+
+  @override
+  String get simpleFinTokenInvalid => 'SimpleFIN 設定權杖無效';
 
   @override
   String get simpleFinTokenTooltip =>

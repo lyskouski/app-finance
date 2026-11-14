@@ -629,6 +629,14 @@ class AppLocalizationsNl extends AppLocalizations {
   String get enableBankingKey => 'Privésleutel (PEM)';
 
   @override
+  String get enableBankingKeyInvalid =>
+      'Ongeldige privésleutel: een PEM-blok \"PRIVATE KEY\" wordt verwacht';
+
+  @override
+  String get enableBankingKeyNotRsa =>
+      'Ongeldige privésleutel: een RSA-sleutel wordt verwacht';
+
+  @override
   String get enableBankingKeyTooltip =>
       'Aangemaakt met de applicatie in het Enable Banking Control Panel; versleuteld opgeslagen. Laat leeg om de opgeslagen sleutel te behouden';
 
@@ -636,11 +644,23 @@ class AppLocalizationsNl extends AppLocalizations {
   String get enableBankingLoadBanks => 'Banken laden';
 
   @override
+  String get enableBankingNoAuthPage =>
+      'Enable Banking heeft geen autorisatiepagina teruggegeven';
+
+  @override
+  String get enableBankingNoCode =>
+      'Geen autorisatiecode gevonden in het adres';
+
+  @override
   String get enableBankingRedirect => 'Omleidings-URL';
 
   @override
   String get enableBankingRedirectTooltip =>
       'Geregistreerd voor de applicatie; de bank keert er na de autorisatie naar terug';
+
+  @override
+  String get enableBankingStateMismatch =>
+      'Het adres hoort bij een andere autorisatie, maak opnieuw verbinding';
 
   @override
   String get encryptionMode => 'Gegevenscodering';
@@ -820,6 +840,10 @@ class AppLocalizationsNl extends AppLocalizations {
   String get incomeTooltip => 'Inkomstendetails instellen';
 
   @override
+  String get integrationAccessDenied =>
+      'De toegang is ingetrokken of de inloggegevens zijn onjuist';
+
+  @override
   String get integrationConnect => 'Verbinden';
 
   @override
@@ -835,6 +859,15 @@ class AppLocalizationsNl extends AppLocalizations {
   String get integrationHeadline => 'Integraties';
 
   @override
+  String integrationHttpError(Object value) {
+    return 'De dienst antwoordde met een fout (HTTP $value)';
+  }
+
+  @override
+  String get integrationHttpsRequired =>
+      'Alleen beveiligde adressen (HTTPS) zijn toegestaan';
+
+  @override
   String get integrationImport => 'Transacties importeren';
 
   @override
@@ -843,11 +876,29 @@ class AppLocalizationsNl extends AppLocalizations {
   }
 
   @override
+  String integrationInvalidAmount(Object value) {
+    return 'Ongeldig bedrag: $value';
+  }
+
+  @override
   String get integrationNoAccounts => 'De bank heeft geen rekeningen verstrekt';
+
+  @override
+  String get integrationPaymentRequired =>
+      'De dienst vereist een betaling voor de toegang';
 
   @override
   String get integrationSelectTarget =>
       'Selecteer de rekening en de budgetcategorie om in te importeren';
+
+  @override
+  String integrationServiceError(Object value) {
+    return 'Melding van de dienst: $value';
+  }
+
+  @override
+  String get integrationUnexpectedResponse =>
+      'Onverwacht antwoord van de dienst';
 
   @override
   String get invoiceHeadline => 'Facturen';
@@ -1106,7 +1157,18 @@ class AppLocalizationsNl extends AppLocalizations {
   String get simpleFinHeadline => 'SimpleFIN Bridge (US)';
 
   @override
+  String get simpleFinNoCredentials =>
+      'De SimpleFIN Bridge gaf een toegangsadres zonder inloggegevens terug';
+
+  @override
   String get simpleFinToken => 'SimpleFIN-installatietoken';
+
+  @override
+  String get simpleFinTokenClaimed =>
+      'Het installatietoken bestaat niet of is al gebruikt';
+
+  @override
+  String get simpleFinTokenInvalid => 'Ongeldig SimpleFIN-installatietoken';
 
   @override
   String get simpleFinTokenTooltip =>

@@ -626,6 +626,12 @@ class AppLocalizationsJa extends AppLocalizations {
   String get enableBankingKey => '秘密鍵（PEM）';
 
   @override
+  String get enableBankingKeyInvalid => '無効な秘密鍵: PEM ブロック「PRIVATE KEY」が必要です';
+
+  @override
+  String get enableBankingKeyNotRsa => '無効な秘密鍵: RSA 鍵が必要です';
+
+  @override
   String get enableBankingKeyTooltip =>
       'Enable Banking Control Panel でアプリケーションと共に作成され、暗号化して保存されます。保存済みの鍵を使う場合は空欄のままにしてください';
 
@@ -633,10 +639,19 @@ class AppLocalizationsJa extends AppLocalizations {
   String get enableBankingLoadBanks => '銀行を読み込む';
 
   @override
+  String get enableBankingNoAuthPage => 'Enable Banking から認可ページが返されませんでした';
+
+  @override
+  String get enableBankingNoCode => 'アドレスに認可コードが見つかりません';
+
+  @override
   String get enableBankingRedirect => 'リダイレクトURL';
 
   @override
   String get enableBankingRedirectTooltip => 'アプリケーションに登録済みのURL。認可後、銀行はここに戻ります';
+
+  @override
+  String get enableBankingStateMismatch => 'このアドレスは別の認可のものです。もう一度接続してください';
 
   @override
   String get encryptionMode => 'データ暗号化';
@@ -814,6 +829,9 @@ class AppLocalizationsJa extends AppLocalizations {
   String get incomeTooltip => '収入の詳細設定';
 
   @override
+  String get integrationAccessDenied => 'アクセスが取り消されたか、認証情報が正しくありません';
+
+  @override
   String get integrationConnect => '接続';
 
   @override
@@ -829,6 +847,14 @@ class AppLocalizationsJa extends AppLocalizations {
   String get integrationHeadline => '連携';
 
   @override
+  String integrationHttpError(Object value) {
+    return 'サービスがエラーを返しました（HTTP $value）';
+  }
+
+  @override
+  String get integrationHttpsRequired => '安全なアドレス（HTTPS）のみ使用できます';
+
+  @override
   String get integrationImport => '取引をインポート';
 
   @override
@@ -837,10 +863,26 @@ class AppLocalizationsJa extends AppLocalizations {
   }
 
   @override
+  String integrationInvalidAmount(Object value) {
+    return '無効な金額: $value';
+  }
+
+  @override
   String get integrationNoAccounts => '銀行から口座が提供されませんでした';
 
   @override
+  String get integrationPaymentRequired => 'サービスへのアクセスには支払いが必要です';
+
+  @override
   String get integrationSelectTarget => 'インポート先の口座と予算カテゴリを選択してください';
+
+  @override
+  String integrationServiceError(Object value) {
+    return 'サービスからのメッセージ: $value';
+  }
+
+  @override
+  String get integrationUnexpectedResponse => 'サービスからの予期しない応答';
 
   @override
   String get invoiceHeadline => '請求書';
@@ -1096,7 +1138,17 @@ class AppLocalizationsJa extends AppLocalizations {
   String get simpleFinHeadline => 'SimpleFIN Bridge (US)';
 
   @override
+  String get simpleFinNoCredentials =>
+      'SimpleFIN Bridge が認証情報のないアクセスアドレスを返しました';
+
+  @override
   String get simpleFinToken => 'SimpleFIN セットアップトークン';
+
+  @override
+  String get simpleFinTokenClaimed => 'セットアップトークンが存在しないか、既に使用されています';
+
+  @override
+  String get simpleFinTokenInvalid => '無効な SimpleFIN セットアップトークン';
 
   @override
   String get simpleFinTokenTooltip =>

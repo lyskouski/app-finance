@@ -250,10 +250,15 @@
     "enableBankingHeadline": "Enable Banking (EU)",
     "enableBankingIncomplete": "Ilova ID, maxfiy kalit, yo'naltirish URL manzili va mamlakatni to'ldiring",
     "enableBankingKey": "Maxfiy kalit (PEM)",
+    "enableBankingKeyInvalid": "Noto'g'ri maxfiy kalit: \"PRIVATE KEY\" PEM bloki kutilmoqda",
+    "enableBankingKeyNotRsa": "Noto'g'ri maxfiy kalit: RSA kaliti kutilmoqda",
     "enableBankingKeyTooltip": "Enable Banking Control Panel'da ilova bilan birga yaratiladi; shifrlangan holda saqlanadi. Saqlangan kalitni qoldirish uchun bo'sh qoldiring",
     "enableBankingLoadBanks": "Banklarni yuklash",
+    "enableBankingNoAuthPage": "Enable Banking avtorizatsiya sahifasini qaytarmadi",
+    "enableBankingNoCode": "Manzilda avtorizatsiya kodi topilmadi",
     "enableBankingRedirect": "Yo'naltirish URL manzili",
     "enableBankingRedirectTooltip": "Ilova uchun ro'yxatdan o'tkazilgan; avtorizatsiyadan so'ng bank unga qaytaradi",
+    "enableBankingStateMismatch": "Manzil boshqa avtorizatsiyaga tegishli, qayta ulaning",
     "encryptionMode": "Ma'lumotlarni shifrlash",
     "error": "Xato: {value}",
     "@error": {
@@ -333,11 +338,19 @@
     "incomeHeadline": "Daromad",
     "incomeHealth": "Sog'lik daromadlari radari",
     "incomeTooltip": "Daromad tafsilotlarini o'rnating",
+    "integrationAccessDenied": "Kirish bekor qilingan yoki hisob ma'lumotlari noto'g'ri",
     "integrationConnect": "Ulanish",
     "integrationDateFrom": "Tranzaksiyalarni shu sanadan import qilish",
     "integrationDisconnect": "Uzish",
     "integrationForget": "Kirishni unutish",
     "integrationHeadline": "Integratsiyalar",
+    "integrationHttpError": "Xizmat xato bilan javob berdi (HTTP {value})",
+    "@integrationHttpError": {
+        "value": {
+            "type": "String"
+        }
+    },
+    "integrationHttpsRequired": "Faqat xavfsiz (HTTPS) manzillarga ruxsat beriladi",
     "integrationImport": "Tranzaksiyalarni import qilish",
     "integrationImported": "Import qilindi: {added}, allaqachon mavjudligi sababli o'tkazib yuborildi: {skipped}, kutilmoqda (import qilinmadi): {pending}",
     "@integrationImported": {
@@ -351,8 +364,22 @@
             "type": "int"
         }
     },
+    "integrationInvalidAmount": "Noto'g'ri summa: {value}",
+    "@integrationInvalidAmount": {
+        "value": {
+            "type": "String"
+        }
+    },
     "integrationNoAccounts": "Bank hech qanday hisob taqdim etmadi",
+    "integrationPaymentRequired": "Xizmat kirish uchun to'lov talab qiladi",
     "integrationSelectTarget": "Import uchun hisob va byudjet toifasini tanlang",
+    "integrationServiceError": "Xizmat xabari: {value}",
+    "@integrationServiceError": {
+        "value": {
+            "type": "String"
+        }
+    },
+    "integrationUnexpectedResponse": "Xizmatdan kutilmagan javob",
     "invoiceHeadline": "Hisob-fakturalar",
     "invoiceSum": "Hisob-fakturalar: {value}",
     "@invoiceSum": {
@@ -463,7 +490,10 @@
     "settingsSaved": "Sozlamalar saqlandi!",
     "simpleFinDescription": "AQSh banklari va karta emitentlarining qoldiqlari va tranzaksiyalarini SimpleFIN Bridge orqali import qiling. Kirish faqat o'qish uchun: to'lovlar amalga oshirilmaydi.",
     "simpleFinHeadline": "SimpleFIN Bridge (US)",
+    "simpleFinNoCredentials": "SimpleFIN Bridge hisob ma'lumotlarisiz kirish manzilini qaytardi",
     "simpleFinToken": "SimpleFIN sozlash tokeni",
+    "simpleFinTokenClaimed": "Sozlash tokeni mavjud emas yoki allaqachon ishlatilgan",
+    "simpleFinTokenInvalid": "Noto'g'ri SimpleFIN sozlash tokeni",
     "simpleFinTokenTooltip": "Ushbu ilova uchun SimpleFIN Bridge'da (masalan, bridge.simplefin.org) yaratiladi; faqat bir marta ishlatilishi mumkin",
     "skipFromTotals": "Jami hisobdan chiqarib tashlang",
     "skipTooltip": "Qadam(lar)ni o‘tkazib yuborish",

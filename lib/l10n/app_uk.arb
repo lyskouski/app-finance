@@ -250,10 +250,15 @@
     "enableBankingHeadline": "Enable Banking (EU)",
     "enableBankingIncomplete": "Заповніть ID застосунку, закритий ключ, URL перенаправлення та країну",
     "enableBankingKey": "Закритий ключ (PEM)",
+    "enableBankingKeyInvalid": "Неправильний закритий ключ: очікується PEM-блок \"PRIVATE KEY\"",
+    "enableBankingKeyNotRsa": "Неправильний закритий ключ: очікується ключ RSA",
     "enableBankingKeyTooltip": "Створюється разом із застосунком в Enable Banking Control Panel; зберігається в зашифрованому вигляді. Залиште порожнім, щоб зберегти поточний ключ",
     "enableBankingLoadBanks": "Завантажити банки",
+    "enableBankingNoAuthPage": "Enable Banking не повернув сторінку авторизації",
+    "enableBankingNoCode": "В адресі не знайдено код авторизації",
     "enableBankingRedirect": "URL перенаправлення",
     "enableBankingRedirectTooltip": "Зареєстрований для застосунку; після авторизації банк повертає на нього",
+    "enableBankingStateMismatch": "Адреса належить до іншої авторизації, підключіться знову",
     "encryptionMode": "Шифрування даних",
     "error": "Помилка: {value}",
     "@error": {
@@ -333,11 +338,19 @@
     "incomeHeadline": "Дохід",
     "incomeHealth": "Радар здоров'я доходів",
     "incomeTooltip": "Встановіть відомості про дохід",
+    "integrationAccessDenied": "Доступ відкликано або облікові дані неправильні",
     "integrationConnect": "Підключитися",
     "integrationDateFrom": "Імпортувати операції з",
     "integrationDisconnect": "Відключитися",
     "integrationForget": "Забути доступ",
     "integrationHeadline": "Інтеграції",
+    "integrationHttpError": "Сервіс відповів помилкою (HTTP {value})",
+    "@integrationHttpError": {
+        "value": {
+            "type": "String"
+        }
+    },
+    "integrationHttpsRequired": "Дозволені лише захищені адреси (HTTPS)",
     "integrationImport": "Імпортувати операції",
     "integrationImported": "Імпортовано: {added}, пропущено як наявні: {skipped}, в обробці (не імпортовано): {pending}",
     "@integrationImported": {
@@ -351,8 +364,22 @@
             "type": "int"
         }
     },
+    "integrationInvalidAmount": "Неправильна сума: {value}",
+    "@integrationInvalidAmount": {
+        "value": {
+            "type": "String"
+        }
+    },
     "integrationNoAccounts": "Банк не надав жодного рахунку",
+    "integrationPaymentRequired": "Сервіс вимагає оплати доступу",
     "integrationSelectTarget": "Оберіть рахунок і категорію бюджету для імпорту",
+    "integrationServiceError": "Повідомлення сервісу: {value}",
+    "@integrationServiceError": {
+        "value": {
+            "type": "String"
+        }
+    },
+    "integrationUnexpectedResponse": "Неочікувана відповідь сервісу",
     "invoiceHeadline": "Фактури",
     "invoiceSum": "Фактури: {value}",
     "@invoiceSum": {
@@ -463,7 +490,10 @@
     "settingsSaved": "Налаштування збережено!",
     "simpleFinDescription": "Імпорт залишків і операцій банків та емітентів карток США через SimpleFIN Bridge. Доступ лише для читання: платежі не виконуються.",
     "simpleFinHeadline": "SimpleFIN Bridge (US)",
+    "simpleFinNoCredentials": "SimpleFIN Bridge повернув адресу доступу без облікових даних",
     "simpleFinToken": "Токен налаштування SimpleFIN",
+    "simpleFinTokenClaimed": "Токен налаштування не існує або вже був використаний",
+    "simpleFinTokenInvalid": "Неправильний токен налаштування SimpleFIN",
     "simpleFinTokenTooltip": "Створюється у вашому SimpleFIN Bridge (наприклад, bridge.simplefin.org) для цього застосунку; використовується лише один раз",
     "skipFromTotals": "Виключити із загальної кількості",
     "skipTooltip": "Пропустити крок(і)",

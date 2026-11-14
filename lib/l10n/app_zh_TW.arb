@@ -250,10 +250,15 @@
     "enableBankingHeadline": "Enable Banking (EU)",
     "enableBankingIncomplete": "請填寫應用程式 ID、私密金鑰、重新導向 URL 與國家",
     "enableBankingKey": "私密金鑰（PEM）",
+    "enableBankingKeyInvalid": "私密金鑰無效：需要 PEM 區塊「PRIVATE KEY」",
+    "enableBankingKeyNotRsa": "私密金鑰無效：需要 RSA 金鑰",
     "enableBankingKeyTooltip": "在 Enable Banking Control Panel 中隨應用程式一併建立；加密儲存。留空則保留已儲存的金鑰",
     "enableBankingLoadBanks": "載入銀行",
+    "enableBankingNoAuthPage": "Enable Banking 未傳回授權頁面",
+    "enableBankingNoCode": "網址中找不到授權碼",
     "enableBankingRedirect": "重新導向 URL",
     "enableBankingRedirectTooltip": "已為應用程式註冊；授權後銀行將返回此網址",
+    "enableBankingStateMismatch": "此網址屬於其他授權，請重新連線",
     "encryptionMode": "資料加密",
     "error": "錯誤：{value}",
     "@error": {
@@ -333,11 +338,19 @@
     "incomeHeadline": "收入",
     "incomeHealth": "收入健康雷達",
     "incomeTooltip": "設定收入詳細資訊",
+    "integrationAccessDenied": "存取已被撤銷或憑證不正確",
     "integrationConnect": "連線",
     "integrationDateFrom": "匯入交易的起始日期",
     "integrationDisconnect": "中斷連線",
     "integrationForget": "移除存取權",
     "integrationHeadline": "整合",
+    "integrationHttpError": "服務回傳錯誤（HTTP {value}）",
+    "@integrationHttpError": {
+        "value": {
+            "type": "String"
+        }
+    },
+    "integrationHttpsRequired": "僅允許安全（HTTPS）網址",
     "integrationImport": "匯入交易",
     "integrationImported": "已匯入：{added}，因已存在而略過：{skipped}，待處理（未匯入）：{pending}",
     "@integrationImported": {
@@ -351,8 +364,22 @@
             "type": "int"
         }
     },
+    "integrationInvalidAmount": "金額無效：{value}",
+    "@integrationInvalidAmount": {
+        "value": {
+            "type": "String"
+        }
+    },
     "integrationNoAccounts": "銀行未提供任何帳戶",
+    "integrationPaymentRequired": "此服務需要付費才能存取",
     "integrationSelectTarget": "請選擇要匯入的帳戶與預算類別",
+    "integrationServiceError": "服務訊息：{value}",
+    "@integrationServiceError": {
+        "value": {
+            "type": "String"
+        }
+    },
+    "integrationUnexpectedResponse": "服務傳回了非預期的回應",
     "invoiceHeadline": "發票",
     "invoiceSum": "發票：{value}",
     "@invoiceSum": {
@@ -463,7 +490,10 @@
     "settingsSaved": "設定已儲存！",
     "simpleFinDescription": "透過 SimpleFIN Bridge 匯入美國銀行與發卡機構的餘額及交易。僅限唯讀存取：不會執行任何付款。",
     "simpleFinHeadline": "SimpleFIN Bridge (US)",
+    "simpleFinNoCredentials": "SimpleFIN Bridge 傳回了不含憑證的存取網址",
     "simpleFinToken": "SimpleFIN 設定權杖",
+    "simpleFinTokenClaimed": "設定權杖不存在或已被使用",
+    "simpleFinTokenInvalid": "SimpleFIN 設定權杖無效",
     "simpleFinTokenTooltip": "在您的 SimpleFIN Bridge（如 bridge.simplefin.org）中為本應用程式建立；只能使用一次",
     "skipFromTotals": "總計不包括",
     "skipTooltip": "跳過步驟",

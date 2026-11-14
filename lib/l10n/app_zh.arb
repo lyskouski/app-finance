@@ -250,10 +250,15 @@
     "enableBankingHeadline": "Enable Banking (EU)",
     "enableBankingIncomplete": "请填写应用 ID、私钥、重定向 URL 和国家",
     "enableBankingKey": "私钥（PEM）",
+    "enableBankingKeyInvalid": "私钥无效：需要 PEM 块“PRIVATE KEY”",
+    "enableBankingKeyNotRsa": "私钥无效：需要 RSA 密钥",
     "enableBankingKeyTooltip": "在 Enable Banking Control Panel 中随应用一起创建；加密存储。留空则保留已存储的私钥",
     "enableBankingLoadBanks": "加载银行",
+    "enableBankingNoAuthPage": "Enable Banking 未返回授权页面",
+    "enableBankingNoCode": "地址中未找到授权码",
     "enableBankingRedirect": "重定向 URL",
     "enableBankingRedirectTooltip": "已为应用注册；授权后银行将返回此地址",
+    "enableBankingStateMismatch": "该地址属于其他授权，请重新连接",
     "encryptionMode": "数据加密",
     "error": "错误：{value}",
     "@error": {
@@ -333,11 +338,19 @@
     "incomeHeadline": "收入",
     "incomeHealth": "收入健康雷达",
     "incomeTooltip": "设置收入详情",
+    "integrationAccessDenied": "访问已被撤销或凭据不正确",
     "integrationConnect": "连接",
     "integrationDateFrom": "导入交易的起始日期",
     "integrationDisconnect": "断开连接",
     "integrationForget": "删除访问权限",
     "integrationHeadline": "集成",
+    "integrationHttpError": "服务返回错误（HTTP {value}）",
+    "@integrationHttpError": {
+        "value": {
+            "type": "String"
+        }
+    },
+    "integrationHttpsRequired": "仅允许安全（HTTPS）地址",
     "integrationImport": "导入交易",
     "integrationImported": "已导入：{added}，因已存在而跳过：{skipped}，待处理（未导入）：{pending}",
     "@integrationImported": {
@@ -351,8 +364,22 @@
             "type": "int"
         }
     },
+    "integrationInvalidAmount": "金额无效：{value}",
+    "@integrationInvalidAmount": {
+        "value": {
+            "type": "String"
+        }
+    },
     "integrationNoAccounts": "银行未提供任何账户",
+    "integrationPaymentRequired": "该服务需要付费才能访问",
     "integrationSelectTarget": "请选择要导入的账户和预算类别",
+    "integrationServiceError": "服务消息：{value}",
+    "@integrationServiceError": {
+        "value": {
+            "type": "String"
+        }
+    },
+    "integrationUnexpectedResponse": "服务返回了意外的响应",
     "invoiceHeadline": "发票",
     "invoiceSum": "发票： {value}",
     "@invoiceSum": {
@@ -463,7 +490,10 @@
     "settingsSaved": "设置已保存！",
     "simpleFinDescription": "通过 SimpleFIN Bridge 导入美国银行和发卡机构的余额与交易。仅限只读访问：不会执行任何付款。",
     "simpleFinHeadline": "SimpleFIN Bridge (US)",
+    "simpleFinNoCredentials": "SimpleFIN Bridge 返回了不含凭据的访问地址",
     "simpleFinToken": "SimpleFIN 设置令牌",
+    "simpleFinTokenClaimed": "设置令牌不存在或已被使用",
+    "simpleFinTokenInvalid": "SimpleFIN 设置令牌无效",
     "simpleFinTokenTooltip": "在您的 SimpleFIN Bridge（如 bridge.simplefin.org）中为本应用创建；只能使用一次",
     "skipFromTotals": "不计入总数",
     "skipTooltip": "跳过步骤",

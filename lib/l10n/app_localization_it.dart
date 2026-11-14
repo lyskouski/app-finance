@@ -630,6 +630,14 @@ class AppLocalizationsIt extends AppLocalizations {
   String get enableBankingKey => 'Chiave privata (PEM)';
 
   @override
+  String get enableBankingKeyInvalid =>
+      'Chiave privata non valida: è previsto un blocco PEM \"PRIVATE KEY\"';
+
+  @override
+  String get enableBankingKeyNotRsa =>
+      'Chiave privata non valida: è prevista una chiave RSA';
+
+  @override
   String get enableBankingKeyTooltip =>
       'Creata con l\'applicazione nel Enable Banking Control Panel; memorizzata cifrata. Lascia vuoto per mantenere la chiave memorizzata';
 
@@ -637,11 +645,23 @@ class AppLocalizationsIt extends AppLocalizations {
   String get enableBankingLoadBanks => 'Carica banche';
 
   @override
+  String get enableBankingNoAuthPage =>
+      'Enable Banking non ha restituito alcuna pagina di autorizzazione';
+
+  @override
+  String get enableBankingNoCode =>
+      'Nessun codice di autorizzazione trovato nell\'indirizzo';
+
+  @override
   String get enableBankingRedirect => 'URL di reindirizzamento';
 
   @override
   String get enableBankingRedirectTooltip =>
       'Registrato per l\'applicazione; la banca vi ritorna dopo l\'autorizzazione';
+
+  @override
+  String get enableBankingStateMismatch =>
+      'L\'indirizzo appartiene a un\'altra autorizzazione, connettiti di nuovo';
 
   @override
   String get encryptionMode => 'Crittografia dei dati';
@@ -822,6 +842,10 @@ class AppLocalizationsIt extends AppLocalizations {
   String get incomeTooltip => 'Imposta i dettagli del reddito';
 
   @override
+  String get integrationAccessDenied =>
+      'L\'accesso è stato revocato o le credenziali non sono corrette';
+
+  @override
   String get integrationConnect => 'Connetti';
 
   @override
@@ -837,6 +861,15 @@ class AppLocalizationsIt extends AppLocalizations {
   String get integrationHeadline => 'Integrazioni';
 
   @override
+  String integrationHttpError(Object value) {
+    return 'Il servizio ha risposto con un errore (HTTP $value)';
+  }
+
+  @override
+  String get integrationHttpsRequired =>
+      'Sono consentiti solo indirizzi sicuri (HTTPS)';
+
+  @override
   String get integrationImport => 'Importa movimenti';
 
   @override
@@ -845,11 +878,28 @@ class AppLocalizationsIt extends AppLocalizations {
   }
 
   @override
+  String integrationInvalidAmount(Object value) {
+    return 'Importo non valido: $value';
+  }
+
+  @override
   String get integrationNoAccounts => 'La banca non ha fornito alcun conto';
+
+  @override
+  String get integrationPaymentRequired =>
+      'Il servizio richiede un pagamento per l\'accesso';
 
   @override
   String get integrationSelectTarget =>
       'Seleziona il conto e la categoria di budget per l\'importazione';
+
+  @override
+  String integrationServiceError(Object value) {
+    return 'Messaggio del servizio: $value';
+  }
+
+  @override
+  String get integrationUnexpectedResponse => 'Risposta inattesa del servizio';
 
   @override
   String get invoiceHeadline => 'Fatture';
@@ -1107,7 +1157,19 @@ class AppLocalizationsIt extends AppLocalizations {
   String get simpleFinHeadline => 'SimpleFIN Bridge (US)';
 
   @override
+  String get simpleFinNoCredentials =>
+      'Il SimpleFIN Bridge ha restituito un indirizzo di accesso senza credenziali';
+
+  @override
   String get simpleFinToken => 'Token di configurazione SimpleFIN';
+
+  @override
+  String get simpleFinTokenClaimed =>
+      'Il token di configurazione non esiste o è già stato utilizzato';
+
+  @override
+  String get simpleFinTokenInvalid =>
+      'Token di configurazione SimpleFIN non valido';
 
   @override
   String get simpleFinTokenTooltip =>

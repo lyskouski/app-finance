@@ -250,10 +250,15 @@
     "enableBankingHeadline": "Enable Banking (EU)",
     "enableBankingIncomplete": "Vul de applicatie-ID, privésleutel, omleidings-URL en het land in",
     "enableBankingKey": "Privésleutel (PEM)",
+    "enableBankingKeyInvalid": "Ongeldige privésleutel: een PEM-blok \"PRIVATE KEY\" wordt verwacht",
+    "enableBankingKeyNotRsa": "Ongeldige privésleutel: een RSA-sleutel wordt verwacht",
     "enableBankingKeyTooltip": "Aangemaakt met de applicatie in het Enable Banking Control Panel; versleuteld opgeslagen. Laat leeg om de opgeslagen sleutel te behouden",
     "enableBankingLoadBanks": "Banken laden",
+    "enableBankingNoAuthPage": "Enable Banking heeft geen autorisatiepagina teruggegeven",
+    "enableBankingNoCode": "Geen autorisatiecode gevonden in het adres",
     "enableBankingRedirect": "Omleidings-URL",
     "enableBankingRedirectTooltip": "Geregistreerd voor de applicatie; de bank keert er na de autorisatie naar terug",
+    "enableBankingStateMismatch": "Het adres hoort bij een andere autorisatie, maak opnieuw verbinding",
     "encryptionMode": "Gegevenscodering",
     "error": "Fout: {value}",
     "@error": {
@@ -333,11 +338,19 @@
     "incomeHeadline": "Inkomen",
     "incomeHealth": "Inkomen gezondheidsradar",
     "incomeTooltip": "Inkomstendetails instellen",
+    "integrationAccessDenied": "De toegang is ingetrokken of de inloggegevens zijn onjuist",
     "integrationConnect": "Verbinden",
     "integrationDateFrom": "Transacties importeren vanaf",
     "integrationDisconnect": "Verbinding verbreken",
     "integrationForget": "Toegang vergeten",
     "integrationHeadline": "Integraties",
+    "integrationHttpError": "De dienst antwoordde met een fout (HTTP {value})",
+    "@integrationHttpError": {
+        "value": {
+            "type": "String"
+        }
+    },
+    "integrationHttpsRequired": "Alleen beveiligde adressen (HTTPS) zijn toegestaan",
     "integrationImport": "Transacties importeren",
     "integrationImported": "Geïmporteerd: {added}, overgeslagen als al aanwezig: {skipped}, in behandeling (niet geïmporteerd): {pending}",
     "@integrationImported": {
@@ -351,8 +364,22 @@
             "type": "int"
         }
     },
+    "integrationInvalidAmount": "Ongeldig bedrag: {value}",
+    "@integrationInvalidAmount": {
+        "value": {
+            "type": "String"
+        }
+    },
     "integrationNoAccounts": "De bank heeft geen rekeningen verstrekt",
+    "integrationPaymentRequired": "De dienst vereist een betaling voor de toegang",
     "integrationSelectTarget": "Selecteer de rekening en de budgetcategorie om in te importeren",
+    "integrationServiceError": "Melding van de dienst: {value}",
+    "@integrationServiceError": {
+        "value": {
+            "type": "String"
+        }
+    },
+    "integrationUnexpectedResponse": "Onverwacht antwoord van de dienst",
     "invoiceHeadline": "Facturen",
     "invoiceSum": "Facturen: {value}",
     "@invoiceSum": {
@@ -463,7 +490,10 @@
     "settingsSaved": "Instellingen opgeslagen!",
     "simpleFinDescription": "Importeer saldi en transacties van Amerikaanse banken en kaartuitgevers via een SimpleFIN Bridge. Alleen-lezen toegang: er worden geen betalingen uitgevoerd.",
     "simpleFinHeadline": "SimpleFIN Bridge (US)",
+    "simpleFinNoCredentials": "De SimpleFIN Bridge gaf een toegangsadres zonder inloggegevens terug",
     "simpleFinToken": "SimpleFIN-installatietoken",
+    "simpleFinTokenClaimed": "Het installatietoken bestaat niet of is al gebruikt",
+    "simpleFinTokenInvalid": "Ongeldig SimpleFIN-installatietoken",
     "simpleFinTokenTooltip": "Aangemaakt in je SimpleFIN Bridge (bijv. bridge.simplefin.org) voor deze applicatie; slechts één keer te gebruiken",
     "skipFromTotals": "Niet opnemen in totalen",
     "skipTooltip": "Stap(pen) overslaan",

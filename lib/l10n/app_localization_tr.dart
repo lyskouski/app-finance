@@ -629,6 +629,14 @@ class AppLocalizationsTr extends AppLocalizations {
   String get enableBankingKey => 'Özel anahtar (PEM)';
 
   @override
+  String get enableBankingKeyInvalid =>
+      'Geçersiz özel anahtar: \"PRIVATE KEY\" PEM bloğu bekleniyor';
+
+  @override
+  String get enableBankingKeyNotRsa =>
+      'Geçersiz özel anahtar: RSA anahtarı bekleniyor';
+
+  @override
   String get enableBankingKeyTooltip =>
       'Enable Banking Control Panel\'de uygulamayla birlikte oluşturulur; şifreli olarak saklanır. Kayıtlı anahtarı korumak için boş bırakın';
 
@@ -636,11 +644,22 @@ class AppLocalizationsTr extends AppLocalizations {
   String get enableBankingLoadBanks => 'Bankaları yükle';
 
   @override
+  String get enableBankingNoAuthPage =>
+      'Enable Banking bir yetkilendirme sayfası döndürmedi';
+
+  @override
+  String get enableBankingNoCode => 'Adreste yetkilendirme kodu bulunamadı';
+
+  @override
   String get enableBankingRedirect => 'Yönlendirme URL\'si';
 
   @override
   String get enableBankingRedirectTooltip =>
       'Uygulama için kayıtlıdır; banka yetkilendirmeden sonra buraya geri döner';
+
+  @override
+  String get enableBankingStateMismatch =>
+      'Adres başka bir yetkilendirmeye ait, yeniden bağlanın';
 
   @override
   String get encryptionMode => 'Veri Şifreleme';
@@ -821,6 +840,10 @@ class AppLocalizationsTr extends AppLocalizations {
   String get incomeTooltip => 'Gelir Ayrıntılarını Ayarla';
 
   @override
+  String get integrationAccessDenied =>
+      'Erişim iptal edildi veya kimlik bilgileri yanlış';
+
+  @override
   String get integrationConnect => 'Bağlan';
 
   @override
@@ -836,6 +859,15 @@ class AppLocalizationsTr extends AppLocalizations {
   String get integrationHeadline => 'Entegrasyonlar';
 
   @override
+  String integrationHttpError(Object value) {
+    return 'Hizmet bir hatayla yanıt verdi (HTTP $value)';
+  }
+
+  @override
+  String get integrationHttpsRequired =>
+      'Yalnızca güvenli (HTTPS) adreslere izin verilir';
+
+  @override
   String get integrationImport => 'İşlemleri içe aktar';
 
   @override
@@ -844,11 +876,28 @@ class AppLocalizationsTr extends AppLocalizations {
   }
 
   @override
+  String integrationInvalidAmount(Object value) {
+    return 'Geçersiz tutar: $value';
+  }
+
+  @override
   String get integrationNoAccounts => 'Banka herhangi bir hesap sağlamadı';
+
+  @override
+  String get integrationPaymentRequired =>
+      'Hizmet, erişim için ödeme gerektiriyor';
 
   @override
   String get integrationSelectTarget =>
       'İçe aktarılacak hesabı ve bütçe kategorisini seçin';
+
+  @override
+  String integrationServiceError(Object value) {
+    return 'Hizmet mesajı: $value';
+  }
+
+  @override
+  String get integrationUnexpectedResponse => 'Hizmetten beklenmeyen yanıt';
 
   @override
   String get invoiceHeadline => 'Invoices';
@@ -1107,7 +1156,18 @@ class AppLocalizationsTr extends AppLocalizations {
   String get simpleFinHeadline => 'SimpleFIN Bridge (US)';
 
   @override
+  String get simpleFinNoCredentials =>
+      'SimpleFIN Bridge kimlik bilgileri olmayan bir erişim adresi döndürdü';
+
+  @override
   String get simpleFinToken => 'SimpleFIN kurulum belirteci';
+
+  @override
+  String get simpleFinTokenClaimed =>
+      'Kurulum belirteci mevcut değil veya zaten kullanılmış';
+
+  @override
+  String get simpleFinTokenInvalid => 'Geçersiz SimpleFIN kurulum belirteci';
 
   @override
   String get simpleFinTokenTooltip =>

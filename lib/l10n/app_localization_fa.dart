@@ -628,6 +628,14 @@ class AppLocalizationsFa extends AppLocalizations {
   String get enableBankingKey => 'کلید خصوصی (PEM)';
 
   @override
+  String get enableBankingKeyInvalid =>
+      'کلید خصوصی نامعتبر: بلوک PEM «PRIVATE KEY» مورد انتظار است';
+
+  @override
+  String get enableBankingKeyNotRsa =>
+      'کلید خصوصی نامعتبر: کلید RSA مورد انتظار است';
+
+  @override
   String get enableBankingKeyTooltip =>
       'همراه با برنامه در Enable Banking Control Panel ساخته می‌شود؛ به‌صورت رمزگذاری‌شده ذخیره می‌شود. برای نگه‌داشتن کلید ذخیره‌شده خالی بگذارید';
 
@@ -635,11 +643,22 @@ class AppLocalizationsFa extends AppLocalizations {
   String get enableBankingLoadBanks => 'بارگیری بانک‌ها';
 
   @override
+  String get enableBankingNoAuthPage =>
+      'Enable Banking صفحه مجوزدهی را برنگرداند';
+
+  @override
+  String get enableBankingNoCode => 'کد مجوزدهی در نشانی یافت نشد';
+
+  @override
   String get enableBankingRedirect => 'نشانی URL بازگشت';
 
   @override
   String get enableBankingRedirectTooltip =>
       'برای برنامه ثبت شده است؛ بانک پس از مجوزدهی به آن بازمی‌گردد';
+
+  @override
+  String get enableBankingStateMismatch =>
+      'این نشانی متعلق به مجوزدهی دیگری است، دوباره متصل شوید';
 
   @override
   String get encryptionMode => 'رمزگذاری داده ها';
@@ -819,6 +838,10 @@ class AppLocalizationsFa extends AppLocalizations {
   String get incomeTooltip => 'تنظیم جزئیات درآمد';
 
   @override
+  String get integrationAccessDenied =>
+      'دسترسی لغو شده یا اطلاعات ورود نادرست است';
+
+  @override
   String get integrationConnect => 'اتصال';
 
   @override
@@ -834,6 +857,14 @@ class AppLocalizationsFa extends AppLocalizations {
   String get integrationHeadline => 'یکپارچه‌سازی‌ها';
 
   @override
+  String integrationHttpError(Object value) {
+    return 'سرویس با خطا پاسخ داد (HTTP $value)';
+  }
+
+  @override
+  String get integrationHttpsRequired => 'فقط نشانی‌های امن (HTTPS) مجاز هستند';
+
+  @override
   String get integrationImport => 'وارد کردن تراکنش‌ها';
 
   @override
@@ -842,11 +873,27 @@ class AppLocalizationsFa extends AppLocalizations {
   }
 
   @override
+  String integrationInvalidAmount(Object value) {
+    return 'مبلغ نامعتبر: $value';
+  }
+
+  @override
   String get integrationNoAccounts => 'بانک هیچ حسابی ارائه نکرده است';
+
+  @override
+  String get integrationPaymentRequired => 'سرویس برای دسترسی پرداخت می‌خواهد';
 
   @override
   String get integrationSelectTarget =>
       'حساب و دسته بودجه را برای وارد کردن انتخاب کنید';
+
+  @override
+  String integrationServiceError(Object value) {
+    return 'پیام سرویس: $value';
+  }
+
+  @override
+  String get integrationUnexpectedResponse => 'پاسخ غیرمنتظره از سرویس';
 
   @override
   String get invoiceHeadline => 'فاکتورها';
@@ -1104,7 +1151,18 @@ class AppLocalizationsFa extends AppLocalizations {
   String get simpleFinHeadline => 'SimpleFIN Bridge (US)';
 
   @override
+  String get simpleFinNoCredentials =>
+      'SimpleFIN Bridge نشانی دسترسی بدون اطلاعات ورود برگرداند';
+
+  @override
   String get simpleFinToken => 'توکن راه‌اندازی SimpleFIN';
+
+  @override
+  String get simpleFinTokenClaimed =>
+      'توکن راه‌اندازی وجود ندارد یا قبلاً استفاده شده است';
+
+  @override
+  String get simpleFinTokenInvalid => 'توکن راه‌اندازی SimpleFIN نامعتبر است';
 
   @override
   String get simpleFinTokenTooltip =>

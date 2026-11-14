@@ -629,6 +629,14 @@ class AppLocalizationsHi extends AppLocalizations {
   String get enableBankingKey => 'निजी कुंजी (PEM)';
 
   @override
+  String get enableBankingKeyInvalid =>
+      'अमान्य निजी कुंजी: PEM ब्लॉक \"PRIVATE KEY\" अपेक्षित है';
+
+  @override
+  String get enableBankingKeyNotRsa =>
+      'अमान्य निजी कुंजी: RSA कुंजी अपेक्षित है';
+
+  @override
   String get enableBankingKeyTooltip =>
       'Enable Banking Control Panel में ऐप्लिकेशन के साथ बनाई जाती है; एन्क्रिप्टेड रूप में संग्रहीत। संग्रहीत कुंजी रखने के लिए खाली छोड़ें';
 
@@ -636,11 +644,22 @@ class AppLocalizationsHi extends AppLocalizations {
   String get enableBankingLoadBanks => 'बैंक लोड करें';
 
   @override
+  String get enableBankingNoAuthPage =>
+      'Enable Banking ने कोई प्राधिकरण पृष्ठ नहीं लौटाया';
+
+  @override
+  String get enableBankingNoCode => 'पते में कोई प्राधिकरण कोड नहीं मिला';
+
+  @override
   String get enableBankingRedirect => 'रीडायरेक्ट URL';
 
   @override
   String get enableBankingRedirectTooltip =>
       'ऐप्लिकेशन के लिए पंजीकृत; प्राधिकरण के बाद बैंक इसी पर लौटता है';
+
+  @override
+  String get enableBankingStateMismatch =>
+      'यह पता किसी अन्य प्राधिकरण का है, फिर से कनेक्ट करें';
 
   @override
   String get encryptionMode => 'डेटा एन्क्रिप्शन';
@@ -820,6 +839,10 @@ class AppLocalizationsHi extends AppLocalizations {
   String get incomeTooltip => 'आय विवरण निर्धारित करें';
 
   @override
+  String get integrationAccessDenied =>
+      'पहुँच रद्द कर दी गई है या क्रेडेंशियल गलत हैं';
+
+  @override
   String get integrationConnect => 'कनेक्ट करें';
 
   @override
@@ -835,6 +858,15 @@ class AppLocalizationsHi extends AppLocalizations {
   String get integrationHeadline => 'एकीकरण';
 
   @override
+  String integrationHttpError(Object value) {
+    return 'सेवा ने त्रुटि के साथ उत्तर दिया (HTTP $value)';
+  }
+
+  @override
+  String get integrationHttpsRequired =>
+      'केवल सुरक्षित (HTTPS) पतों की अनुमति है';
+
+  @override
   String get integrationImport => 'लेनदेन आयात करें';
 
   @override
@@ -843,10 +875,26 @@ class AppLocalizationsHi extends AppLocalizations {
   }
 
   @override
+  String integrationInvalidAmount(Object value) {
+    return 'अमान्य राशि: $value';
+  }
+
+  @override
   String get integrationNoAccounts => 'बैंक ने कोई खाता प्रदान नहीं किया';
 
   @override
+  String get integrationPaymentRequired => 'सेवा पहुँच के लिए भुगतान माँगती है';
+
+  @override
   String get integrationSelectTarget => 'आयात के लिए खाता और बजट श्रेणी चुनें';
+
+  @override
+  String integrationServiceError(Object value) {
+    return 'सेवा का संदेश: $value';
+  }
+
+  @override
+  String get integrationUnexpectedResponse => 'सेवा से अप्रत्याशित उत्तर';
 
   @override
   String get invoiceHeadline => 'चालान';
@@ -1105,7 +1153,18 @@ class AppLocalizationsHi extends AppLocalizations {
   String get simpleFinHeadline => 'SimpleFIN Bridge (US)';
 
   @override
+  String get simpleFinNoCredentials =>
+      'SimpleFIN Bridge ने क्रेडेंशियल के बिना पहुँच पता लौटाया';
+
+  @override
   String get simpleFinToken => 'SimpleFIN सेटअप टोकन';
+
+  @override
+  String get simpleFinTokenClaimed =>
+      'सेटअप टोकन मौजूद नहीं है या पहले ही उपयोग किया जा चुका है';
+
+  @override
+  String get simpleFinTokenInvalid => 'अमान्य SimpleFIN सेटअप टोकन';
 
   @override
   String get simpleFinTokenTooltip =>

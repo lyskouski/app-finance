@@ -1333,6 +1333,18 @@ abstract class AppLocalizations {
   /// **'Private Key (PEM)'**
   String get enableBankingKey;
 
+  /// No description provided for @enableBankingKeyInvalid.
+  ///
+  /// In en, this message translates to:
+  /// **'Invalid private key: a PEM block \"PRIVATE KEY\" is expected'**
+  String get enableBankingKeyInvalid;
+
+  /// No description provided for @enableBankingKeyNotRsa.
+  ///
+  /// In en, this message translates to:
+  /// **'Invalid private key: an RSA key is expected'**
+  String get enableBankingKeyNotRsa;
+
   /// No description provided for @enableBankingKeyTooltip.
   ///
   /// In en, this message translates to:
@@ -1345,6 +1357,18 @@ abstract class AppLocalizations {
   /// **'Load Banks'**
   String get enableBankingLoadBanks;
 
+  /// No description provided for @enableBankingNoAuthPage.
+  ///
+  /// In en, this message translates to:
+  /// **'Enable Banking returned no authorization page'**
+  String get enableBankingNoAuthPage;
+
+  /// No description provided for @enableBankingNoCode.
+  ///
+  /// In en, this message translates to:
+  /// **'No authorization code found in the address'**
+  String get enableBankingNoCode;
+
   /// No description provided for @enableBankingRedirect.
   ///
   /// In en, this message translates to:
@@ -1356,6 +1380,12 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Registered for the application; the bank returns to it after the authorization'**
   String get enableBankingRedirectTooltip;
+
+  /// No description provided for @enableBankingStateMismatch.
+  ///
+  /// In en, this message translates to:
+  /// **'The address belongs to another authorization, connect again'**
+  String get enableBankingStateMismatch;
 
   /// No description provided for @encryptionMode.
   ///
@@ -1681,6 +1711,12 @@ abstract class AppLocalizations {
   /// **'Set Income Details'**
   String get incomeTooltip;
 
+  /// No description provided for @integrationAccessDenied.
+  ///
+  /// In en, this message translates to:
+  /// **'Access has been revoked or the credentials are incorrect'**
+  String get integrationAccessDenied;
+
   /// No description provided for @integrationConnect.
   ///
   /// In en, this message translates to:
@@ -1711,6 +1747,18 @@ abstract class AppLocalizations {
   /// **'Integrations'**
   String get integrationHeadline;
 
+  /// No description provided for @integrationHttpError.
+  ///
+  /// In en, this message translates to:
+  /// **'The service answered with an error (HTTP {value})'**
+  String integrationHttpError(Object value);
+
+  /// No description provided for @integrationHttpsRequired.
+  ///
+  /// In en, this message translates to:
+  /// **'Only secure (HTTPS) addresses are allowed'**
+  String get integrationHttpsRequired;
+
   /// No description provided for @integrationImport.
   ///
   /// In en, this message translates to:
@@ -1723,17 +1771,41 @@ abstract class AppLocalizations {
   /// **'Imported: {added}, skipped as already present: {skipped}, pending (not imported): {pending}'**
   String integrationImported(Object added, Object pending, Object skipped);
 
+  /// No description provided for @integrationInvalidAmount.
+  ///
+  /// In en, this message translates to:
+  /// **'Invalid amount: {value}'**
+  String integrationInvalidAmount(Object value);
+
   /// No description provided for @integrationNoAccounts.
   ///
   /// In en, this message translates to:
   /// **'The bank has provided no accounts'**
   String get integrationNoAccounts;
 
+  /// No description provided for @integrationPaymentRequired.
+  ///
+  /// In en, this message translates to:
+  /// **'The service requires a payment for the access'**
+  String get integrationPaymentRequired;
+
   /// No description provided for @integrationSelectTarget.
   ///
   /// In en, this message translates to:
   /// **'Select the account and the budget category to import into'**
   String get integrationSelectTarget;
+
+  /// No description provided for @integrationServiceError.
+  ///
+  /// In en, this message translates to:
+  /// **'The service reported: {value}'**
+  String integrationServiceError(Object value);
+
+  /// No description provided for @integrationUnexpectedResponse.
+  ///
+  /// In en, this message translates to:
+  /// **'Unexpected response of the service'**
+  String get integrationUnexpectedResponse;
 
   /// No description provided for @invoiceHeadline.
   ///
@@ -2215,11 +2287,29 @@ abstract class AppLocalizations {
   /// **'SimpleFIN Bridge (US)'**
   String get simpleFinHeadline;
 
+  /// No description provided for @simpleFinNoCredentials.
+  ///
+  /// In en, this message translates to:
+  /// **'The SimpleFIN Bridge returned an access address without credentials'**
+  String get simpleFinNoCredentials;
+
   /// No description provided for @simpleFinToken.
   ///
   /// In en, this message translates to:
   /// **'SimpleFIN Setup Token'**
   String get simpleFinToken;
+
+  /// No description provided for @simpleFinTokenClaimed.
+  ///
+  /// In en, this message translates to:
+  /// **'The Setup Token does not exist or has already been used'**
+  String get simpleFinTokenClaimed;
+
+  /// No description provided for @simpleFinTokenInvalid.
+  ///
+  /// In en, this message translates to:
+  /// **'Invalid SimpleFIN Setup Token'**
+  String get simpleFinTokenInvalid;
 
   /// No description provided for @simpleFinTokenTooltip.
   ///

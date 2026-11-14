@@ -629,6 +629,14 @@ class AppLocalizationsPt extends AppLocalizations {
   String get enableBankingKey => 'Chave privada (PEM)';
 
   @override
+  String get enableBankingKeyInvalid =>
+      'Chave privada inválida: é esperado um bloco PEM \"PRIVATE KEY\"';
+
+  @override
+  String get enableBankingKeyNotRsa =>
+      'Chave privada inválida: é esperada uma chave RSA';
+
+  @override
   String get enableBankingKeyTooltip =>
       'Criada com a aplicação no Enable Banking Control Panel; guardada cifrada. Deixe vazio para manter a chave guardada';
 
@@ -636,11 +644,23 @@ class AppLocalizationsPt extends AppLocalizations {
   String get enableBankingLoadBanks => 'Carregar bancos';
 
   @override
+  String get enableBankingNoAuthPage =>
+      'O Enable Banking não devolveu nenhuma página de autorização';
+
+  @override
+  String get enableBankingNoCode =>
+      'Nenhum código de autorização encontrado no endereço';
+
+  @override
   String get enableBankingRedirect => 'URL de redirecionamento';
 
   @override
   String get enableBankingRedirectTooltip =>
       'Registado para a aplicação; o banco regressa a ele após a autorização';
+
+  @override
+  String get enableBankingStateMismatch =>
+      'O endereço pertence a outra autorização, ligue novamente';
 
   @override
   String get encryptionMode => 'Criptografia de dados';
@@ -821,6 +841,10 @@ class AppLocalizationsPt extends AppLocalizations {
   String get incomeTooltip => 'Definir detalhes do rendimento';
 
   @override
+  String get integrationAccessDenied =>
+      'O acesso foi revogado ou as credenciais estão incorretas';
+
+  @override
   String get integrationConnect => 'Ligar';
 
   @override
@@ -836,6 +860,15 @@ class AppLocalizationsPt extends AppLocalizations {
   String get integrationHeadline => 'Integrações';
 
   @override
+  String integrationHttpError(Object value) {
+    return 'O serviço respondeu com um erro (HTTP $value)';
+  }
+
+  @override
+  String get integrationHttpsRequired =>
+      'Apenas são permitidos endereços seguros (HTTPS)';
+
+  @override
   String get integrationImport => 'Importar movimentos';
 
   @override
@@ -844,11 +877,28 @@ class AppLocalizationsPt extends AppLocalizations {
   }
 
   @override
+  String integrationInvalidAmount(Object value) {
+    return 'Montante inválido: $value';
+  }
+
+  @override
   String get integrationNoAccounts => 'O banco não forneceu nenhuma conta';
+
+  @override
+  String get integrationPaymentRequired =>
+      'O serviço exige um pagamento pelo acesso';
 
   @override
   String get integrationSelectTarget =>
       'Selecione a conta e a categoria de orçamento para importar';
+
+  @override
+  String integrationServiceError(Object value) {
+    return 'Mensagem do serviço: $value';
+  }
+
+  @override
+  String get integrationUnexpectedResponse => 'Resposta inesperada do serviço';
 
   @override
   String get invoiceHeadline => 'Facturas';
@@ -1110,7 +1160,19 @@ class AppLocalizationsPt extends AppLocalizations {
   String get simpleFinHeadline => 'SimpleFIN Bridge (US)';
 
   @override
+  String get simpleFinNoCredentials =>
+      'O SimpleFIN Bridge devolveu um endereço de acesso sem credenciais';
+
+  @override
   String get simpleFinToken => 'Token de configuração SimpleFIN';
+
+  @override
+  String get simpleFinTokenClaimed =>
+      'O token de configuração não existe ou já foi utilizado';
+
+  @override
+  String get simpleFinTokenInvalid =>
+      'Token de configuração SimpleFIN inválido';
 
   @override
   String get simpleFinTokenTooltip =>
@@ -1917,6 +1979,14 @@ class AppLocalizationsPtBr extends AppLocalizationsPt {
   String get enableBankingKey => 'Chave privada (PEM)';
 
   @override
+  String get enableBankingKeyInvalid =>
+      'Chave privada inválida: é esperado um bloco PEM \"PRIVATE KEY\"';
+
+  @override
+  String get enableBankingKeyNotRsa =>
+      'Chave privada inválida: é esperada uma chave RSA';
+
+  @override
   String get enableBankingKeyTooltip =>
       'Criada com o aplicativo no Enable Banking Control Panel; armazenada criptografada. Deixe vazio para manter a chave armazenada';
 
@@ -1924,11 +1994,23 @@ class AppLocalizationsPtBr extends AppLocalizationsPt {
   String get enableBankingLoadBanks => 'Carregar bancos';
 
   @override
+  String get enableBankingNoAuthPage =>
+      'O Enable Banking não retornou nenhuma página de autorização';
+
+  @override
+  String get enableBankingNoCode =>
+      'Nenhum código de autorização encontrado no endereço';
+
+  @override
   String get enableBankingRedirect => 'URL de redirecionamento';
 
   @override
   String get enableBankingRedirectTooltip =>
       'Registrada para o aplicativo; o banco retorna a ela após a autorização';
+
+  @override
+  String get enableBankingStateMismatch =>
+      'O endereço pertence a outra autorização, conecte novamente';
 
   @override
   String get encryptionMode => 'Criptografia de dados';
@@ -2108,6 +2190,10 @@ class AppLocalizationsPtBr extends AppLocalizationsPt {
   String get incomeTooltip => 'Definir detalhes do rendimento';
 
   @override
+  String get integrationAccessDenied =>
+      'O acesso foi revogado ou as credenciais estão incorretas';
+
+  @override
   String get integrationConnect => 'Conectar';
 
   @override
@@ -2123,6 +2209,15 @@ class AppLocalizationsPtBr extends AppLocalizationsPt {
   String get integrationHeadline => 'Integrações';
 
   @override
+  String integrationHttpError(Object value) {
+    return 'O serviço respondeu com um erro (HTTP $value)';
+  }
+
+  @override
+  String get integrationHttpsRequired =>
+      'Somente endereços seguros (HTTPS) são permitidos';
+
+  @override
   String get integrationImport => 'Importar transações';
 
   @override
@@ -2131,11 +2226,28 @@ class AppLocalizationsPtBr extends AppLocalizationsPt {
   }
 
   @override
+  String integrationInvalidAmount(Object value) {
+    return 'Valor inválido: $value';
+  }
+
+  @override
   String get integrationNoAccounts => 'O banco não forneceu nenhuma conta';
+
+  @override
+  String get integrationPaymentRequired =>
+      'O serviço exige um pagamento pelo acesso';
 
   @override
   String get integrationSelectTarget =>
       'Selecione a conta e a categoria de orçamento para importar';
+
+  @override
+  String integrationServiceError(Object value) {
+    return 'Mensagem do serviço: $value';
+  }
+
+  @override
+  String get integrationUnexpectedResponse => 'Resposta inesperada do serviço';
 
   @override
   String get invoiceHeadline => 'Faturas';
@@ -2396,7 +2508,19 @@ class AppLocalizationsPtBr extends AppLocalizationsPt {
   String get simpleFinHeadline => 'SimpleFIN Bridge (US)';
 
   @override
+  String get simpleFinNoCredentials =>
+      'O SimpleFIN Bridge retornou um endereço de acesso sem credenciais';
+
+  @override
   String get simpleFinToken => 'Token de configuração do SimpleFIN';
+
+  @override
+  String get simpleFinTokenClaimed =>
+      'O token de configuração não existe ou já foi usado';
+
+  @override
+  String get simpleFinTokenInvalid =>
+      'Token de configuração do SimpleFIN inválido';
 
   @override
   String get simpleFinTokenTooltip =>

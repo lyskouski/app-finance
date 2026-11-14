@@ -3,6 +3,7 @@
 
 import 'dart:convert';
 
+import 'package:app_finance/_classes/herald/app_locale.dart';
 import 'package:app_finance/_classes/integration/enablebanking/enablebanking_client.dart';
 import 'package:app_finance/_classes/integration/enablebanking/enablebanking_importer.dart';
 import 'package:app_finance/_classes/integration/enablebanking/enablebanking_settings.dart';
@@ -90,7 +91,11 @@ void main() {
     });
 
     test('refuses a public key', () {
-      expect(() => EnableBankingClient.parsePrivateKey(testPublicKey), throwsA(isA<EnableBankingException>()));
+      expect(
+        () => EnableBankingClient.parsePrivateKey(testPublicKey),
+        throwsA(isA<EnableBankingException>()
+            .having((e) => e.message, 'message', AppLocale.labels.enableBankingKeyInvalid)),
+      );
     });
 
     test('signs a JWT (RS256) for the application', () {
@@ -119,11 +124,13 @@ void main() {
       expect(EnableBankingClient.extractCode(' abc '), 'abc');
       expect(
         () => EnableBankingClient.extractCode('https://example.com/cb?state=other&code=abc', state: 's1'),
-        throwsA(isA<EnableBankingException>()),
+        throwsA(isA<EnableBankingException>()
+            .having((e) => e.message, 'message', AppLocale.labels.enableBankingStateMismatch)),
       );
       expect(
         () => EnableBankingClient.extractCode('https://example.com/cb?error=access_denied'),
-        throwsA(isA<EnableBankingException>().having((e) => e.message, 'message', 'access_denied')),
+        throwsA(isA<EnableBankingException>()
+            .having((e) => e.message, 'message', AppLocale.labels.integrationServiceError('access_denied'))),
       );
       expect(() => EnableBankingClient.extractCode('https://example.com/cb'), throwsA(isA<EnableBankingException>()));
     });

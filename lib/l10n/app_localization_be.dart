@@ -628,6 +628,14 @@ class AppLocalizationsBe extends AppLocalizations {
   String get enableBankingKey => 'Закрыты ключ (PEM)';
 
   @override
+  String get enableBankingKeyInvalid =>
+      'Няправільны закрыты ключ: чакаецца PEM-блок \"PRIVATE KEY\"';
+
+  @override
+  String get enableBankingKeyNotRsa =>
+      'Няправільны закрыты ключ: чакаецца ключ RSA';
+
+  @override
   String get enableBankingKeyTooltip =>
       'Ствараецца разам з праграмай у Enable Banking Control Panel; захоўваецца ў зашыфраваным выглядзе. Пакіньце пустым, каб захаваць бягучы ключ';
 
@@ -635,11 +643,22 @@ class AppLocalizationsBe extends AppLocalizations {
   String get enableBankingLoadBanks => 'Загрузіць банкі';
 
   @override
+  String get enableBankingNoAuthPage =>
+      'Enable Banking не вярнуў старонку аўтарызацыі';
+
+  @override
+  String get enableBankingNoCode => 'У адрасе не знойдзены код аўтарызацыі';
+
+  @override
   String get enableBankingRedirect => 'URL перанакіравання';
 
   @override
   String get enableBankingRedirectTooltip =>
       'Зарэгістраваны для праграмы; пасля аўтарызацыі банк вяртае на яго';
+
+  @override
+  String get enableBankingStateMismatch =>
+      'Адрас належыць да іншай аўтарызацыі, падлучыцеся зноў';
 
   @override
   String get encryptionMode => 'Шыфраваньне дадьзеных';
@@ -821,6 +840,10 @@ class AppLocalizationsBe extends AppLocalizations {
   String get incomeTooltip => 'Усталюйце звесткі аб даходах';
 
   @override
+  String get integrationAccessDenied =>
+      'Доступ адкліканы або ўліковыя даныя няправільныя';
+
+  @override
   String get integrationConnect => 'Падлучыцца';
 
   @override
@@ -836,6 +859,15 @@ class AppLocalizationsBe extends AppLocalizations {
   String get integrationHeadline => 'Інтэграцыі';
 
   @override
+  String integrationHttpError(Object value) {
+    return 'Сэрвіс адказаў памылкай (HTTP $value)';
+  }
+
+  @override
+  String get integrationHttpsRequired =>
+      'Дазволены толькі абароненыя адрасы (HTTPS)';
+
+  @override
   String get integrationImport => 'Імпартаваць аперацыі';
 
   @override
@@ -844,11 +876,27 @@ class AppLocalizationsBe extends AppLocalizations {
   }
 
   @override
+  String integrationInvalidAmount(Object value) {
+    return 'Няправільная сума: $value';
+  }
+
+  @override
   String get integrationNoAccounts => 'Банк не перадаў ніводнага рахунку';
+
+  @override
+  String get integrationPaymentRequired => 'Сэрвіс патрабуе аплаты доступу';
 
   @override
   String get integrationSelectTarget =>
       'Абярыце рахунак і катэгорыю бюджэту для імпарту';
+
+  @override
+  String integrationServiceError(Object value) {
+    return 'Паведамленне сэрвісу: $value';
+  }
+
+  @override
+  String get integrationUnexpectedResponse => 'Нечаканы адказ сэрвісу';
 
   @override
   String get invoiceHeadline => 'Фактуры';
@@ -1108,7 +1156,18 @@ class AppLocalizationsBe extends AppLocalizations {
   String get simpleFinHeadline => 'SimpleFIN Bridge (US)';
 
   @override
+  String get simpleFinNoCredentials =>
+      'SimpleFIN Bridge вярнуў адрас доступу без уліковых даных';
+
+  @override
   String get simpleFinToken => 'Токен наладкі SimpleFIN';
+
+  @override
+  String get simpleFinTokenClaimed =>
+      'Токен наладкі не існуе або ўжо быў выкарыстаны';
+
+  @override
+  String get simpleFinTokenInvalid => 'Няправільны токен наладкі SimpleFIN';
 
   @override
   String get simpleFinTokenTooltip =>
@@ -1912,6 +1971,14 @@ class AppLocalizationsBeEu extends AppLocalizationsBe {
   String get enableBankingKey => 'Zakryty kluč (PEM)';
 
   @override
+  String get enableBankingKeyInvalid =>
+      'Niapraviĺny zakryty kluč: čakajecca PEM-błok \"PRIVATE KEY\"';
+
+  @override
+  String get enableBankingKeyNotRsa =>
+      'Niapraviĺny zakryty kluč: čakajecca kluč RSA';
+
+  @override
   String get enableBankingKeyTooltip =>
       'Stvarajecca razam z prahramaj u Enable Banking Control Panel; zachoŭvajecca ŭ zašyfravanym vyhladzie. Pakińcie pustym, kab zachavać biahučy kluč';
 
@@ -1919,11 +1986,22 @@ class AppLocalizationsBeEu extends AppLocalizationsBe {
   String get enableBankingLoadBanks => 'Zahruzić banki';
 
   @override
+  String get enableBankingNoAuthPage =>
+      'Enable Banking nie viarnuŭ staronku aŭtaryzacyi';
+
+  @override
+  String get enableBankingNoCode => 'U adrasie nie znojdzieny kod aŭtaryzacyi';
+
+  @override
   String get enableBankingRedirect => 'URL pieranakiravannia';
 
   @override
   String get enableBankingRedirectTooltip =>
       'Zarehistravany dlia prahramy; paslia aŭtaryzacyi bank viartaje na jaho';
+
+  @override
+  String get enableBankingStateMismatch =>
+      'Adras naliežyć da inšaj aŭtaryzacyi, padłučycieśsia znoŭ';
 
   @override
   String get encryptionMode => 'Šyfravańnie Dad́zienych';
@@ -2105,6 +2183,10 @@ class AppLocalizationsBeEu extends AppLocalizationsBe {
   String get incomeTooltip => 'Ustaliujcie Zviestki ab Dachodach';
 
   @override
+  String get integrationAccessDenied =>
+      'Dostup adklikany abo ŭlikovyja danyja niapraviĺnyja';
+
+  @override
   String get integrationConnect => 'Padłučycca';
 
   @override
@@ -2120,6 +2202,15 @@ class AppLocalizationsBeEu extends AppLocalizationsBe {
   String get integrationHeadline => 'Intehracyi';
 
   @override
+  String integrationHttpError(Object value) {
+    return 'Servis adkazaŭ pamyłkaj (HTTP $value)';
+  }
+
+  @override
+  String get integrationHttpsRequired =>
+      'Dazvolieny toĺki abaronienyja adrasy (HTTPS)';
+
+  @override
   String get integrationImport => 'Impartavać aperacyi';
 
   @override
@@ -2128,11 +2219,27 @@ class AppLocalizationsBeEu extends AppLocalizationsBe {
   }
 
   @override
+  String integrationInvalidAmount(Object value) {
+    return 'Niapraviĺnaja suma: $value';
+  }
+
+  @override
   String get integrationNoAccounts => 'Bank nie pieradaŭ nivodnaha rachunku';
+
+  @override
+  String get integrationPaymentRequired => 'Servis patrabuje apłaty dostupu';
 
   @override
   String get integrationSelectTarget =>
       'Abiarycie rachunak i katehoryju biudžetu dla impartu';
+
+  @override
+  String integrationServiceError(Object value) {
+    return 'Paviedamliennie servisu: $value';
+  }
+
+  @override
+  String get integrationUnexpectedResponse => 'Niečakany adkaz servisu';
 
   @override
   String get invoiceHeadline => 'Faktury';
@@ -2392,7 +2499,18 @@ class AppLocalizationsBeEu extends AppLocalizationsBe {
   String get simpleFinHeadline => 'SimpleFIN Bridge (US)';
 
   @override
+  String get simpleFinNoCredentials =>
+      'SimpleFIN Bridge viarnuŭ adras dostupu biez ulikovych danych';
+
+  @override
   String get simpleFinToken => 'Tokien naładki SimpleFIN';
+
+  @override
+  String get simpleFinTokenClaimed =>
+      'Tokien naładki nie isnuje abo ŭžo byŭ vykarystany';
+
+  @override
+  String get simpleFinTokenInvalid => 'Niapraviĺny tokien naładki SimpleFIN';
 
   @override
   String get simpleFinTokenTooltip =>

@@ -3,6 +3,7 @@
 
 import 'dart:convert';
 
+import 'package:app_finance/_classes/herald/app_locale.dart';
 import 'package:http/http.dart' as http;
 
 // SimpleFIN protocol (https://www.simplefin.org/protocol.html)
@@ -125,7 +126,7 @@ class SimpleFinClient {
   static double parseAmount(dynamic value) {
     final result = double.tryParse(value?.toString().trim() ?? '');
     if (result == null) {
-      throw SimpleFinException('Invalid amount: $value');
+      throw SimpleFinException(AppLocale.labels.integrationInvalidAmount('$value'));
     }
     return result;
   }
@@ -137,7 +138,7 @@ class SimpleFinClient {
 
   static Uri _requireHttps(Uri uri) {
     if (uri.scheme != 'https' || uri.host.isEmpty) {
-      throw const SimpleFinException('SimpleFIN requires an HTTPS URL');
+      throw SimpleFinException(AppLocale.labels.integrationHttpsRequired);
     }
     return uri;
   }
@@ -147,19 +148,19 @@ class SimpleFinClient {
     try {
       return _requireHttps(Uri.parse(utf8.decode(base64.decode(base64.normalize(value)))));
     } on FormatException {
-      throw const SimpleFinException('Invalid SimpleFIN Setup Token');
+      throw SimpleFinException(AppLocale.labels.simpleFinTokenInvalid);
     }
   }
 
   Future<Uri> claim(String token) async {
     final response = await _client.post(decodeToken(token), headers: {'Content-Length': '0'}).timeout(timeout);
     if (response.statusCode == 403) {
-      throw const SimpleFinException('The Setup Token does not exist or has already been claimed', 403);
+      throw SimpleFinException(AppLocale.labels.simpleFinTokenClaimed, 403);
     }
     _check(response);
     final access = _requireHttps(Uri.parse(response.body.trim()));
     if (!access.userInfo.contains(':')) {
-      throw const SimpleFinException('The Bridge returned an Access URL without credentials');
+      throw SimpleFinException(AppLocale.labels.simpleFinNoCredentials);
     }
     return access;
   }
@@ -188,22 +189,22 @@ class SimpleFinClient {
     final credentials = base64.encode(utf8.encode(Uri.decodeComponent(accessUrl.userInfo)));
     final response = await _client.get(uri, headers: {'Authorization': 'Basic $credentials'}).timeout(timeout);
     if (response.statusCode == 402) {
-      throw const SimpleFinException('SimpleFIN Bridge: payment required', 402);
+      throw SimpleFinException(AppLocale.labels.integrationPaymentRequired, 402);
     }
     if (response.statusCode == 403) {
-      throw const SimpleFinException('SimpleFIN Bridge: access has been revoked or the credentials are incorrect', 403);
+      throw SimpleFinException(AppLocale.labels.integrationAccessDenied, 403);
     }
     _check(response);
     final json = jsonDecode(utf8.decode(response.bodyBytes));
     if (json is! Map<String, dynamic>) {
-      throw const SimpleFinException('Unexpected SimpleFIN response');
+      throw SimpleFinException(AppLocale.labels.integrationUnexpectedResponse);
     }
     return SimpleFinAccountSet.fromJson(json);
   }
 
   static void _check(http.Response response) {
     if (response.statusCode != 200) {
-      throw SimpleFinException('SimpleFIN Bridge: HTTP ${response.statusCode}', response.statusCode);
+      throw SimpleFinException(AppLocale.labels.integrationHttpError('${response.statusCode}'), response.statusCode);
     }
   }
 }

@@ -629,6 +629,14 @@ class AppLocalizationsRo extends AppLocalizations {
   String get enableBankingKey => 'Cheie privată (PEM)';
 
   @override
+  String get enableBankingKeyInvalid =>
+      'Cheie privată nevalidă: se așteaptă un bloc PEM \"PRIVATE KEY\"';
+
+  @override
+  String get enableBankingKeyNotRsa =>
+      'Cheie privată nevalidă: se așteaptă o cheie RSA';
+
+  @override
   String get enableBankingKeyTooltip =>
       'Creată împreună cu aplicația în Enable Banking Control Panel; stocată criptat. Lăsați gol pentru a păstra cheia stocată';
 
@@ -636,11 +644,23 @@ class AppLocalizationsRo extends AppLocalizations {
   String get enableBankingLoadBanks => 'Încarcă băncile';
 
   @override
+  String get enableBankingNoAuthPage =>
+      'Enable Banking nu a returnat nicio pagină de autorizare';
+
+  @override
+  String get enableBankingNoCode =>
+      'Nu s-a găsit niciun cod de autorizare în adresă';
+
+  @override
   String get enableBankingRedirect => 'URL de redirecționare';
 
   @override
   String get enableBankingRedirectTooltip =>
       'Înregistrat pentru aplicație; banca revine la el după autorizare';
+
+  @override
+  String get enableBankingStateMismatch =>
+      'Adresa aparține altei autorizări, conectați-vă din nou';
 
   @override
   String get encryptionMode => 'Criptarea datelor';
@@ -822,6 +842,10 @@ class AppLocalizationsRo extends AppLocalizations {
   String get incomeTooltip => 'Setați detaliile privind venitul';
 
   @override
+  String get integrationAccessDenied =>
+      'Accesul a fost revocat sau datele de autentificare sunt incorecte';
+
+  @override
   String get integrationConnect => 'Conectare';
 
   @override
@@ -837,6 +861,15 @@ class AppLocalizationsRo extends AppLocalizations {
   String get integrationHeadline => 'Integrări';
 
   @override
+  String integrationHttpError(Object value) {
+    return 'Serviciul a răspuns cu o eroare (HTTP $value)';
+  }
+
+  @override
+  String get integrationHttpsRequired =>
+      'Sunt permise doar adrese securizate (HTTPS)';
+
+  @override
   String get integrationImport => 'Importă tranzacții';
 
   @override
@@ -845,11 +878,29 @@ class AppLocalizationsRo extends AppLocalizations {
   }
 
   @override
+  String integrationInvalidAmount(Object value) {
+    return 'Sumă nevalidă: $value';
+  }
+
+  @override
   String get integrationNoAccounts => 'Banca nu a furnizat niciun cont';
+
+  @override
+  String get integrationPaymentRequired =>
+      'Serviciul solicită o plată pentru acces';
 
   @override
   String get integrationSelectTarget =>
       'Selectați contul și categoria de buget pentru import';
+
+  @override
+  String integrationServiceError(Object value) {
+    return 'Mesajul serviciului: $value';
+  }
+
+  @override
+  String get integrationUnexpectedResponse =>
+      'Răspuns neașteptat al serviciului';
 
   @override
   String get invoiceHeadline => 'Facturi';
@@ -1111,7 +1162,18 @@ class AppLocalizationsRo extends AppLocalizations {
   String get simpleFinHeadline => 'SimpleFIN Bridge (US)';
 
   @override
+  String get simpleFinNoCredentials =>
+      'SimpleFIN Bridge a returnat o adresă de acces fără date de autentificare';
+
+  @override
   String get simpleFinToken => 'Token de configurare SimpleFIN';
+
+  @override
+  String get simpleFinTokenClaimed =>
+      'Tokenul de configurare nu există sau a fost deja folosit';
+
+  @override
+  String get simpleFinTokenInvalid => 'Token de configurare SimpleFIN nevalid';
 
   @override
   String get simpleFinTokenTooltip =>

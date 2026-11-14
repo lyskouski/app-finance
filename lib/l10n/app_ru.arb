@@ -250,10 +250,15 @@
     "enableBankingHeadline": "Enable Banking (EU)",
     "enableBankingIncomplete": "Заполните ID приложения, закрытый ключ, URL перенаправления и страну",
     "enableBankingKey": "Закрытый ключ (PEM)",
+    "enableBankingKeyInvalid": "Неверный закрытый ключ: ожидается PEM-блок \"PRIVATE KEY\"",
+    "enableBankingKeyNotRsa": "Неверный закрытый ключ: ожидается ключ RSA",
     "enableBankingKeyTooltip": "Создаётся вместе с приложением в Enable Banking Control Panel; хранится в зашифрованном виде. Оставьте пустым, чтобы сохранить текущий ключ",
     "enableBankingLoadBanks": "Загрузить банки",
+    "enableBankingNoAuthPage": "Enable Banking не вернул страницу авторизации",
+    "enableBankingNoCode": "В адресе не найден код авторизации",
     "enableBankingRedirect": "URL перенаправления",
     "enableBankingRedirectTooltip": "Зарегистрирован для приложения; после авторизации банк возвращает на него",
+    "enableBankingStateMismatch": "Адрес относится к другой авторизации, подключитесь заново",
     "encryptionMode": "Шифрование данных",
     "error": "Ошибка: {value}",
     "@error": {
@@ -333,11 +338,19 @@
     "incomeHeadline": "Доход",
     "incomeHealth": "Радар здоровья доходов",
     "incomeTooltip": "Установить детали дохода",
+    "integrationAccessDenied": "Доступ отозван или учётные данные неверны",
     "integrationConnect": "Подключиться",
     "integrationDateFrom": "Импортировать операции с",
     "integrationDisconnect": "Отключиться",
     "integrationForget": "Забыть доступ",
     "integrationHeadline": "Интеграции",
+    "integrationHttpError": "Сервис ответил ошибкой (HTTP {value})",
+    "@integrationHttpError": {
+        "value": {
+            "type": "String"
+        }
+    },
+    "integrationHttpsRequired": "Разрешены только защищённые адреса (HTTPS)",
     "integrationImport": "Импортировать операции",
     "integrationImported": "Импортировано: {added}, пропущено как уже существующие: {skipped}, в обработке (не импортированы): {pending}",
     "@integrationImported": {
@@ -351,8 +364,22 @@
             "type": "int"
         }
     },
+    "integrationInvalidAmount": "Неверная сумма: {value}",
+    "@integrationInvalidAmount": {
+        "value": {
+            "type": "String"
+        }
+    },
     "integrationNoAccounts": "Банк не предоставил ни одного счёта",
+    "integrationPaymentRequired": "Сервис требует оплаты доступа",
     "integrationSelectTarget": "Выберите счёт и категорию бюджета для импорта",
+    "integrationServiceError": "Сообщение сервиса: {value}",
+    "@integrationServiceError": {
+        "value": {
+            "type": "String"
+        }
+    },
+    "integrationUnexpectedResponse": "Неожиданный ответ сервиса",
     "invoiceHeadline": "Доходы",
     "invoiceSum": "Доходы: {value}",
     "@invoiceSum": {
@@ -463,7 +490,10 @@
     "settingsSaved": "Параметры сохранены!",
     "simpleFinDescription": "Импорт остатков и операций банков и эмитентов карт США через SimpleFIN Bridge. Доступ только для чтения: платежи не выполняются.",
     "simpleFinHeadline": "SimpleFIN Bridge (US)",
+    "simpleFinNoCredentials": "SimpleFIN Bridge вернул адрес доступа без учётных данных",
     "simpleFinToken": "Токен настройки SimpleFIN",
+    "simpleFinTokenClaimed": "Токен настройки не существует или уже был использован",
+    "simpleFinTokenInvalid": "Неверный токен настройки SimpleFIN",
     "simpleFinTokenTooltip": "Создаётся в вашем SimpleFIN Bridge (например, bridge.simplefin.org) для этого приложения; используется только один раз",
     "skipFromTotals": "Исключить из итогов",
     "skipTooltip": "Пропустить шаг(и)",

@@ -250,10 +250,15 @@
     "enableBankingHeadline": "Enable Banking (EU)",
     "enableBankingIncomplete": "شناسه برنامه، کلید خصوصی، نشانی URL بازگشت و کشور را وارد کنید",
     "enableBankingKey": "کلید خصوصی (PEM)",
+    "enableBankingKeyInvalid": "کلید خصوصی نامعتبر: بلوک PEM «PRIVATE KEY» مورد انتظار است",
+    "enableBankingKeyNotRsa": "کلید خصوصی نامعتبر: کلید RSA مورد انتظار است",
     "enableBankingKeyTooltip": "همراه با برنامه در Enable Banking Control Panel ساخته می‌شود؛ به‌صورت رمزگذاری‌شده ذخیره می‌شود. برای نگه‌داشتن کلید ذخیره‌شده خالی بگذارید",
     "enableBankingLoadBanks": "بارگیری بانک‌ها",
+    "enableBankingNoAuthPage": "Enable Banking صفحه مجوزدهی را برنگرداند",
+    "enableBankingNoCode": "کد مجوزدهی در نشانی یافت نشد",
     "enableBankingRedirect": "نشانی URL بازگشت",
     "enableBankingRedirectTooltip": "برای برنامه ثبت شده است؛ بانک پس از مجوزدهی به آن بازمی‌گردد",
+    "enableBankingStateMismatch": "این نشانی متعلق به مجوزدهی دیگری است، دوباره متصل شوید",
     "encryptionMode": "رمزگذاری داده ها",
     "error": "خطا: {value}",
     "@error": {
@@ -333,11 +338,19 @@
     "incomeHeadline": "درآمد",
     "incomeHealth": "رادار سلامت درآمد",
     "incomeTooltip": "تنظیم جزئیات درآمد",
+    "integrationAccessDenied": "دسترسی لغو شده یا اطلاعات ورود نادرست است",
     "integrationConnect": "اتصال",
     "integrationDateFrom": "وارد کردن تراکنش‌ها از تاریخ",
     "integrationDisconnect": "قطع اتصال",
     "integrationForget": "فراموش کردن دسترسی",
     "integrationHeadline": "یکپارچه‌سازی‌ها",
+    "integrationHttpError": "سرویس با خطا پاسخ داد (HTTP {value})",
+    "@integrationHttpError": {
+        "value": {
+            "type": "String"
+        }
+    },
+    "integrationHttpsRequired": "فقط نشانی‌های امن (HTTPS) مجاز هستند",
     "integrationImport": "وارد کردن تراکنش‌ها",
     "integrationImported": "وارد شده: {added}، رد شده به دلیل وجود قبلی: {skipped}، در انتظار (وارد نشده): {pending}",
     "@integrationImported": {
@@ -351,8 +364,22 @@
             "type": "int"
         }
     },
+    "integrationInvalidAmount": "مبلغ نامعتبر: {value}",
+    "@integrationInvalidAmount": {
+        "value": {
+            "type": "String"
+        }
+    },
     "integrationNoAccounts": "بانک هیچ حسابی ارائه نکرده است",
+    "integrationPaymentRequired": "سرویس برای دسترسی پرداخت می‌خواهد",
     "integrationSelectTarget": "حساب و دسته بودجه را برای وارد کردن انتخاب کنید",
+    "integrationServiceError": "پیام سرویس: {value}",
+    "@integrationServiceError": {
+        "value": {
+            "type": "String"
+        }
+    },
+    "integrationUnexpectedResponse": "پاسخ غیرمنتظره از سرویس",
     "invoiceHeadline": "فاکتورها",
     "invoiceSum": "فاکتورها: {value}",
     "@invoiceSum": {
@@ -463,7 +490,10 @@
     "settingsSaved": "تنظیمات ذخیره شد!",
     "simpleFinDescription": "وارد کردن موجودی‌ها و تراکنش‌های بانک‌ها و صادرکنندگان کارت آمریکایی از طریق SimpleFIN Bridge. دسترسی فقط خواندنی است: هیچ پرداختی انجام نمی‌شود.",
     "simpleFinHeadline": "SimpleFIN Bridge (US)",
+    "simpleFinNoCredentials": "SimpleFIN Bridge نشانی دسترسی بدون اطلاعات ورود برگرداند",
     "simpleFinToken": "توکن راه‌اندازی SimpleFIN",
+    "simpleFinTokenClaimed": "توکن راه‌اندازی وجود ندارد یا قبلاً استفاده شده است",
+    "simpleFinTokenInvalid": "توکن راه‌اندازی SimpleFIN نامعتبر است",
     "simpleFinTokenTooltip": "در SimpleFIN Bridge شما (مثلاً bridge.simplefin.org) برای این برنامه ساخته می‌شود؛ فقط یک بار قابل استفاده است",
     "skipFromTotals": "حذف از مجموع",
     "skipTooltip": "رد شدن از مرحله(های)",

@@ -250,10 +250,15 @@
     "enableBankingHeadline": "Enable Banking (EU)",
     "enableBankingIncomplete": "애플리케이션 ID, 개인 키, 리디렉션 URL 및 국가를 입력하세요",
     "enableBankingKey": "개인 키 (PEM)",
+    "enableBankingKeyInvalid": "잘못된 개인 키: PEM 블록 \"PRIVATE KEY\"가 필요합니다",
+    "enableBankingKeyNotRsa": "잘못된 개인 키: RSA 키가 필요합니다",
     "enableBankingKeyTooltip": "Enable Banking Control Panel에서 애플리케이션과 함께 생성되며 암호화되어 저장됩니다. 저장된 키를 유지하려면 비워 두세요",
     "enableBankingLoadBanks": "은행 불러오기",
+    "enableBankingNoAuthPage": "Enable Banking에서 인증 페이지를 반환하지 않았습니다",
+    "enableBankingNoCode": "주소에서 인증 코드를 찾을 수 없습니다",
     "enableBankingRedirect": "리디렉션 URL",
     "enableBankingRedirectTooltip": "애플리케이션에 등록된 주소로, 인증 후 은행이 이 주소로 돌아옵니다",
+    "enableBankingStateMismatch": "이 주소는 다른 인증에 속합니다. 다시 연결하세요",
     "encryptionMode": "데이터 암호화",
     "error": "오류입니다: {value}",
     "@error": {
@@ -333,11 +338,19 @@
     "incomeHeadline": "수입",
     "incomeHealth": "소득 건강 레이더",
     "incomeTooltip": "수입 세부 정보 설정",
+    "integrationAccessDenied": "접근 권한이 취소되었거나 자격 증명이 올바르지 않습니다",
     "integrationConnect": "연결",
     "integrationDateFrom": "거래 가져오기 시작일",
     "integrationDisconnect": "연결 해제",
     "integrationForget": "접근 정보 삭제",
     "integrationHeadline": "통합",
+    "integrationHttpError": "서비스가 오류로 응답했습니다 (HTTP {value})",
+    "@integrationHttpError": {
+        "value": {
+            "type": "String"
+        }
+    },
+    "integrationHttpsRequired": "보안(HTTPS) 주소만 허용됩니다",
     "integrationImport": "거래 가져오기",
     "integrationImported": "가져옴: {added}, 이미 있어 건너뜀: {skipped}, 대기 중(가져오지 않음): {pending}",
     "@integrationImported": {
@@ -351,8 +364,22 @@
             "type": "int"
         }
     },
+    "integrationInvalidAmount": "잘못된 금액: {value}",
+    "@integrationInvalidAmount": {
+        "value": {
+            "type": "String"
+        }
+    },
     "integrationNoAccounts": "은행에서 제공한 계좌가 없습니다",
+    "integrationPaymentRequired": "서비스 접근에 결제가 필요합니다",
     "integrationSelectTarget": "가져올 계좌와 예산 카테고리를 선택하세요",
+    "integrationServiceError": "서비스 메시지: {value}",
+    "@integrationServiceError": {
+        "value": {
+            "type": "String"
+        }
+    },
+    "integrationUnexpectedResponse": "서비스의 예기치 않은 응답",
     "invoiceHeadline": "인보이스",
     "invoiceSum": "송장 {value}",
     "@invoiceSum": {
@@ -463,7 +490,10 @@
     "settingsSaved": "설정이 저장되었습니다!",
     "simpleFinDescription": "SimpleFIN Bridge를 통해 미국 은행 및 카드 발급사의 잔액과 거래 내역을 가져옵니다. 읽기 전용 접근이며 결제는 이루어지지 않습니다.",
     "simpleFinHeadline": "SimpleFIN Bridge (US)",
+    "simpleFinNoCredentials": "SimpleFIN Bridge가 자격 증명 없는 접근 주소를 반환했습니다",
     "simpleFinToken": "SimpleFIN 설정 토큰",
+    "simpleFinTokenClaimed": "설정 토큰이 존재하지 않거나 이미 사용되었습니다",
+    "simpleFinTokenInvalid": "잘못된 SimpleFIN 설정 토큰",
     "simpleFinTokenTooltip": "이 앱을 위해 SimpleFIN Bridge(예: bridge.simplefin.org)에서 생성하며 한 번만 사용할 수 있습니다",
     "skipFromTotals": "합계에서 제외",
     "skipTooltip": "단계 건너뛰기",

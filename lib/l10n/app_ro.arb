@@ -250,10 +250,15 @@
     "enableBankingHeadline": "Enable Banking (EU)",
     "enableBankingIncomplete": "Completați ID-ul aplicației, cheia privată, URL-ul de redirecționare și țara",
     "enableBankingKey": "Cheie privată (PEM)",
+    "enableBankingKeyInvalid": "Cheie privată nevalidă: se așteaptă un bloc PEM \"PRIVATE KEY\"",
+    "enableBankingKeyNotRsa": "Cheie privată nevalidă: se așteaptă o cheie RSA",
     "enableBankingKeyTooltip": "Creată împreună cu aplicația în Enable Banking Control Panel; stocată criptat. Lăsați gol pentru a păstra cheia stocată",
     "enableBankingLoadBanks": "Încarcă băncile",
+    "enableBankingNoAuthPage": "Enable Banking nu a returnat nicio pagină de autorizare",
+    "enableBankingNoCode": "Nu s-a găsit niciun cod de autorizare în adresă",
     "enableBankingRedirect": "URL de redirecționare",
     "enableBankingRedirectTooltip": "Înregistrat pentru aplicație; banca revine la el după autorizare",
+    "enableBankingStateMismatch": "Adresa aparține altei autorizări, conectați-vă din nou",
     "encryptionMode": "Criptarea datelor",
     "error": "Eroare: {value}",
     "@error": {
@@ -333,11 +338,19 @@
     "incomeHeadline": "Venit",
     "incomeHealth": "Radar sănătate venit",
     "incomeTooltip": "Setați detaliile privind venitul",
+    "integrationAccessDenied": "Accesul a fost revocat sau datele de autentificare sunt incorecte",
     "integrationConnect": "Conectare",
     "integrationDateFrom": "Importă tranzacțiile din",
     "integrationDisconnect": "Deconectare",
     "integrationForget": "Uită accesul",
     "integrationHeadline": "Integrări",
+    "integrationHttpError": "Serviciul a răspuns cu o eroare (HTTP {value})",
+    "@integrationHttpError": {
+        "value": {
+            "type": "String"
+        }
+    },
+    "integrationHttpsRequired": "Sunt permise doar adrese securizate (HTTPS)",
     "integrationImport": "Importă tranzacții",
     "integrationImported": "Importate: {added}, omise deoarece există deja: {skipped}, în așteptare (neimportate): {pending}",
     "@integrationImported": {
@@ -351,8 +364,22 @@
             "type": "int"
         }
     },
+    "integrationInvalidAmount": "Sumă nevalidă: {value}",
+    "@integrationInvalidAmount": {
+        "value": {
+            "type": "String"
+        }
+    },
     "integrationNoAccounts": "Banca nu a furnizat niciun cont",
+    "integrationPaymentRequired": "Serviciul solicită o plată pentru acces",
     "integrationSelectTarget": "Selectați contul și categoria de buget pentru import",
+    "integrationServiceError": "Mesajul serviciului: {value}",
+    "@integrationServiceError": {
+        "value": {
+            "type": "String"
+        }
+    },
+    "integrationUnexpectedResponse": "Răspuns neașteptat al serviciului",
     "invoiceHeadline": "Facturi",
     "invoiceSum": "Facturi: {value}",
     "@invoiceSum": {
@@ -463,7 +490,10 @@
     "settingsSaved": "Setări salvate!",
     "simpleFinDescription": "Importă solduri și tranzacții de la băncile și emitenții de carduri din SUA printr-un SimpleFIN Bridge. Acces doar în citire: nu se efectuează plăți.",
     "simpleFinHeadline": "SimpleFIN Bridge (US)",
+    "simpleFinNoCredentials": "SimpleFIN Bridge a returnat o adresă de acces fără date de autentificare",
     "simpleFinToken": "Token de configurare SimpleFIN",
+    "simpleFinTokenClaimed": "Tokenul de configurare nu există sau a fost deja folosit",
+    "simpleFinTokenInvalid": "Token de configurare SimpleFIN nevalid",
     "simpleFinTokenTooltip": "Creat în SimpleFIN Bridge (de ex. bridge.simplefin.org) pentru această aplicație; poate fi folosit o singură dată",
     "skipFromTotals": "Excludere din totaluri",
     "skipTooltip": "Sari peste pas(e)",

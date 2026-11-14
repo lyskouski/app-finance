@@ -250,10 +250,15 @@
     "enableBankingHeadline": "Enable Banking (EU)",
     "enableBankingIncomplete": "შეავსეთ აპლიკაციის ID, პირადი გასაღები, გადამისამართების URL და ქვეყანა",
     "enableBankingKey": "პირადი გასაღები (PEM)",
+    "enableBankingKeyInvalid": "არასწორი პირადი გასაღები: მოსალოდნელია PEM ბლოკი \"PRIVATE KEY\"",
+    "enableBankingKeyNotRsa": "არასწორი პირადი გასაღები: მოსალოდნელია RSA გასაღები",
     "enableBankingKeyTooltip": "იქმნება აპლიკაციასთან ერთად Enable Banking Control Panel-ში; ინახება დაშიფრული სახით. დატოვეთ ცარიელი შენახული გასაღების შესანარჩუნებლად",
     "enableBankingLoadBanks": "ბანკების ჩატვირთვა",
+    "enableBankingNoAuthPage": "Enable Banking-მა ავტორიზაციის გვერდი არ დააბრუნა",
+    "enableBankingNoCode": "მისამართში ავტორიზაციის კოდი ვერ მოიძებნა",
     "enableBankingRedirect": "გადამისამართების URL",
     "enableBankingRedirectTooltip": "რეგისტრირებულია აპლიკაციისთვის; ავტორიზაციის შემდეგ ბანკი მასზე ბრუნდება",
+    "enableBankingStateMismatch": "მისამართი სხვა ავტორიზაციას ეკუთვნის, ხელახლა დაუკავშირდით",
     "encryptionMode": "მონაცემთა დაშიფვრა",
     "error": "შეცდომა: {value}",
     "@error": {
@@ -333,11 +338,19 @@
     "incomeHeadline": "შემოსავალი",
     "incomeHealth": "შემოსავლის ჯანმრთელობის რადარი",
     "incomeTooltip": "შემოსავლის დეტალების დაყენება",
+    "integrationAccessDenied": "წვდომა გაუქმებულია ან მონაცემები არასწორია",
     "integrationConnect": "დაკავშირება",
     "integrationDateFrom": "ტრანზაქციების იმპორტი თარიღიდან",
     "integrationDisconnect": "გათიშვა",
     "integrationForget": "წვდომის დავიწყება",
     "integrationHeadline": "ინტეგრაციები",
+    "integrationHttpError": "სერვისმა შეცდომით უპასუხა (HTTP {value})",
+    "@integrationHttpError": {
+        "value": {
+            "type": "String"
+        }
+    },
+    "integrationHttpsRequired": "დაშვებულია მხოლოდ დაცული (HTTPS) მისამართები",
     "integrationImport": "ტრანზაქციების იმპორტი",
     "integrationImported": "იმპორტირებულია: {added}, გამოტოვებულია, როგორც უკვე არსებული: {skipped}, მოლოდინში (არ არის იმპორტირებული): {pending}",
     "@integrationImported": {
@@ -351,8 +364,22 @@
             "type": "int"
         }
     },
+    "integrationInvalidAmount": "არასწორი თანხა: {value}",
+    "@integrationInvalidAmount": {
+        "value": {
+            "type": "String"
+        }
+    },
     "integrationNoAccounts": "ბანკს არცერთი ანგარიში არ მოუწოდებია",
+    "integrationPaymentRequired": "სერვისი წვდომისთვის გადახდას მოითხოვს",
     "integrationSelectTarget": "აირჩიეთ ანგარიში და ბიუჯეტის კატეგორია იმპორტისთვის",
+    "integrationServiceError": "სერვისის შეტყობინება: {value}",
+    "@integrationServiceError": {
+        "value": {
+            "type": "String"
+        }
+    },
+    "integrationUnexpectedResponse": "სერვისის მოულოდნელი პასუხი",
     "invoiceHeadline": "ინვოისები",
     "invoiceSum": "ინვოისები: {value}",
     "@invoiceSum": {
@@ -463,7 +490,10 @@
     "settingsSaved": "პარამეტრები შენახულია!",
     "simpleFinDescription": "აშშ-ის ბანკებისა და ბარათების ემიტენტების ნაშთებისა და ტრანზაქციების იმპორტი SimpleFIN Bridge-ის მეშვეობით. წვდომა მხოლოდ წაკითხვისთვისაა: გადახდები არ სრულდება.",
     "simpleFinHeadline": "SimpleFIN Bridge (US)",
+    "simpleFinNoCredentials": "SimpleFIN Bridge-მა დააბრუნა წვდომის მისამართი მონაცემების გარეშე",
     "simpleFinToken": "SimpleFIN-ის დაყენების ტოკენი",
+    "simpleFinTokenClaimed": "დაყენების ტოკენი არ არსებობს ან უკვე გამოყენებულია",
+    "simpleFinTokenInvalid": "SimpleFIN-ის არასწორი დაყენების ტოკენი",
     "simpleFinTokenTooltip": "იქმნება თქვენს SimpleFIN Bridge-ში (მაგ. bridge.simplefin.org) ამ აპლიკაციისთვის; მისი გამოყენება მხოლოდ ერთხელ შეიძლება",
     "skipFromTotals": "ჯამებიდან გამორიცხვა",
     "skipTooltip": "ნაბიჯ(ებ)ის გამოტოვება",

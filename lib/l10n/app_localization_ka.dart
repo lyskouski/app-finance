@@ -630,6 +630,14 @@ class AppLocalizationsKa extends AppLocalizations {
   String get enableBankingKey => 'პირადი გასაღები (PEM)';
 
   @override
+  String get enableBankingKeyInvalid =>
+      'არასწორი პირადი გასაღები: მოსალოდნელია PEM ბლოკი \"PRIVATE KEY\"';
+
+  @override
+  String get enableBankingKeyNotRsa =>
+      'არასწორი პირადი გასაღები: მოსალოდნელია RSA გასაღები';
+
+  @override
   String get enableBankingKeyTooltip =>
       'იქმნება აპლიკაციასთან ერთად Enable Banking Control Panel-ში; ინახება დაშიფრული სახით. დატოვეთ ცარიელი შენახული გასაღების შესანარჩუნებლად';
 
@@ -637,11 +645,22 @@ class AppLocalizationsKa extends AppLocalizations {
   String get enableBankingLoadBanks => 'ბანკების ჩატვირთვა';
 
   @override
+  String get enableBankingNoAuthPage =>
+      'Enable Banking-მა ავტორიზაციის გვერდი არ დააბრუნა';
+
+  @override
+  String get enableBankingNoCode => 'მისამართში ავტორიზაციის კოდი ვერ მოიძებნა';
+
+  @override
   String get enableBankingRedirect => 'გადამისამართების URL';
 
   @override
   String get enableBankingRedirectTooltip =>
       'რეგისტრირებულია აპლიკაციისთვის; ავტორიზაციის შემდეგ ბანკი მასზე ბრუნდება';
+
+  @override
+  String get enableBankingStateMismatch =>
+      'მისამართი სხვა ავტორიზაციას ეკუთვნის, ხელახლა დაუკავშირდით';
 
   @override
   String get encryptionMode => 'მონაცემთა დაშიფვრა';
@@ -822,6 +841,10 @@ class AppLocalizationsKa extends AppLocalizations {
   String get incomeTooltip => 'შემოსავლის დეტალების დაყენება';
 
   @override
+  String get integrationAccessDenied =>
+      'წვდომა გაუქმებულია ან მონაცემები არასწორია';
+
+  @override
   String get integrationConnect => 'დაკავშირება';
 
   @override
@@ -837,6 +860,15 @@ class AppLocalizationsKa extends AppLocalizations {
   String get integrationHeadline => 'ინტეგრაციები';
 
   @override
+  String integrationHttpError(Object value) {
+    return 'სერვისმა შეცდომით უპასუხა (HTTP $value)';
+  }
+
+  @override
+  String get integrationHttpsRequired =>
+      'დაშვებულია მხოლოდ დაცული (HTTPS) მისამართები';
+
+  @override
   String get integrationImport => 'ტრანზაქციების იმპორტი';
 
   @override
@@ -845,11 +877,28 @@ class AppLocalizationsKa extends AppLocalizations {
   }
 
   @override
+  String integrationInvalidAmount(Object value) {
+    return 'არასწორი თანხა: $value';
+  }
+
+  @override
   String get integrationNoAccounts => 'ბანკს არცერთი ანგარიში არ მოუწოდებია';
+
+  @override
+  String get integrationPaymentRequired =>
+      'სერვისი წვდომისთვის გადახდას მოითხოვს';
 
   @override
   String get integrationSelectTarget =>
       'აირჩიეთ ანგარიში და ბიუჯეტის კატეგორია იმპორტისთვის';
+
+  @override
+  String integrationServiceError(Object value) {
+    return 'სერვისის შეტყობინება: $value';
+  }
+
+  @override
+  String get integrationUnexpectedResponse => 'სერვისის მოულოდნელი პასუხი';
 
   @override
   String get invoiceHeadline => 'ინვოისები';
@@ -1107,7 +1156,18 @@ class AppLocalizationsKa extends AppLocalizations {
   String get simpleFinHeadline => 'SimpleFIN Bridge (US)';
 
   @override
+  String get simpleFinNoCredentials =>
+      'SimpleFIN Bridge-მა დააბრუნა წვდომის მისამართი მონაცემების გარეშე';
+
+  @override
   String get simpleFinToken => 'SimpleFIN-ის დაყენების ტოკენი';
+
+  @override
+  String get simpleFinTokenClaimed =>
+      'დაყენების ტოკენი არ არსებობს ან უკვე გამოყენებულია';
+
+  @override
+  String get simpleFinTokenInvalid => 'SimpleFIN-ის არასწორი დაყენების ტოკენი';
 
   @override
   String get simpleFinTokenTooltip =>

@@ -628,6 +628,14 @@ class AppLocalizationsUk extends AppLocalizations {
   String get enableBankingKey => 'Закритий ключ (PEM)';
 
   @override
+  String get enableBankingKeyInvalid =>
+      'Неправильний закритий ключ: очікується PEM-блок \"PRIVATE KEY\"';
+
+  @override
+  String get enableBankingKeyNotRsa =>
+      'Неправильний закритий ключ: очікується ключ RSA';
+
+  @override
   String get enableBankingKeyTooltip =>
       'Створюється разом із застосунком в Enable Banking Control Panel; зберігається в зашифрованому вигляді. Залиште порожнім, щоб зберегти поточний ключ';
 
@@ -635,11 +643,22 @@ class AppLocalizationsUk extends AppLocalizations {
   String get enableBankingLoadBanks => 'Завантажити банки';
 
   @override
+  String get enableBankingNoAuthPage =>
+      'Enable Banking не повернув сторінку авторизації';
+
+  @override
+  String get enableBankingNoCode => 'В адресі не знайдено код авторизації';
+
+  @override
   String get enableBankingRedirect => 'URL перенаправлення';
 
   @override
   String get enableBankingRedirectTooltip =>
       'Зареєстрований для застосунку; після авторизації банк повертає на нього';
+
+  @override
+  String get enableBankingStateMismatch =>
+      'Адреса належить до іншої авторизації, підключіться знову';
 
   @override
   String get encryptionMode => 'Шифрування даних';
@@ -821,6 +840,10 @@ class AppLocalizationsUk extends AppLocalizations {
   String get incomeTooltip => 'Встановіть відомості про дохід';
 
   @override
+  String get integrationAccessDenied =>
+      'Доступ відкликано або облікові дані неправильні';
+
+  @override
   String get integrationConnect => 'Підключитися';
 
   @override
@@ -836,6 +859,15 @@ class AppLocalizationsUk extends AppLocalizations {
   String get integrationHeadline => 'Інтеграції';
 
   @override
+  String integrationHttpError(Object value) {
+    return 'Сервіс відповів помилкою (HTTP $value)';
+  }
+
+  @override
+  String get integrationHttpsRequired =>
+      'Дозволені лише захищені адреси (HTTPS)';
+
+  @override
   String get integrationImport => 'Імпортувати операції';
 
   @override
@@ -844,11 +876,27 @@ class AppLocalizationsUk extends AppLocalizations {
   }
 
   @override
+  String integrationInvalidAmount(Object value) {
+    return 'Неправильна сума: $value';
+  }
+
+  @override
   String get integrationNoAccounts => 'Банк не надав жодного рахунку';
+
+  @override
+  String get integrationPaymentRequired => 'Сервіс вимагає оплати доступу';
 
   @override
   String get integrationSelectTarget =>
       'Оберіть рахунок і категорію бюджету для імпорту';
+
+  @override
+  String integrationServiceError(Object value) {
+    return 'Повідомлення сервісу: $value';
+  }
+
+  @override
+  String get integrationUnexpectedResponse => 'Неочікувана відповідь сервісу';
 
   @override
   String get invoiceHeadline => 'Фактури';
@@ -1107,7 +1155,19 @@ class AppLocalizationsUk extends AppLocalizations {
   String get simpleFinHeadline => 'SimpleFIN Bridge (US)';
 
   @override
+  String get simpleFinNoCredentials =>
+      'SimpleFIN Bridge повернув адресу доступу без облікових даних';
+
+  @override
   String get simpleFinToken => 'Токен налаштування SimpleFIN';
+
+  @override
+  String get simpleFinTokenClaimed =>
+      'Токен налаштування не існує або вже був використаний';
+
+  @override
+  String get simpleFinTokenInvalid =>
+      'Неправильний токен налаштування SimpleFIN';
 
   @override
   String get simpleFinTokenTooltip =>

@@ -250,10 +250,15 @@
     "enableBankingHeadline": "Enable Banking (EU)",
     "enableBankingIncomplete": "Isi ID aplikasi, kunci privat, URL pengalihan, dan negara",
     "enableBankingKey": "Kunci privat (PEM)",
+    "enableBankingKeyInvalid": "Kunci privat tidak valid: blok PEM \"PRIVATE KEY\" diharapkan",
+    "enableBankingKeyNotRsa": "Kunci privat tidak valid: kunci RSA diharapkan",
     "enableBankingKeyTooltip": "Dibuat bersama aplikasi di Enable Banking Control Panel; disimpan terenkripsi. Biarkan kosong untuk mempertahankan kunci yang tersimpan",
     "enableBankingLoadBanks": "Muat bank",
+    "enableBankingNoAuthPage": "Enable Banking tidak mengembalikan halaman otorisasi",
+    "enableBankingNoCode": "Kode otorisasi tidak ditemukan di alamat",
     "enableBankingRedirect": "URL pengalihan",
     "enableBankingRedirectTooltip": "Terdaftar untuk aplikasi; bank kembali ke URL ini setelah otorisasi",
+    "enableBankingStateMismatch": "Alamat milik otorisasi lain, hubungkan kembali",
     "encryptionMode": "Enkripsi Data",
     "error": "Kesalahan: {value}",
     "@error": {
@@ -333,11 +338,19 @@
     "incomeHeadline": "Pemasukan",
     "incomeHealth": "Radar Kesehatan Pemasukan",
     "incomeTooltip": "Atur Detail Pemasukan",
+    "integrationAccessDenied": "Akses telah dicabut atau kredensial salah",
     "integrationConnect": "Hubungkan",
     "integrationDateFrom": "Impor transaksi sejak",
     "integrationDisconnect": "Putuskan",
     "integrationForget": "Lupakan akses",
     "integrationHeadline": "Integrasi",
+    "integrationHttpError": "Layanan merespons dengan kesalahan (HTTP {value})",
+    "@integrationHttpError": {
+        "value": {
+            "type": "String"
+        }
+    },
+    "integrationHttpsRequired": "Hanya alamat aman (HTTPS) yang diizinkan",
     "integrationImport": "Impor transaksi",
     "integrationImported": "Diimpor: {added}, dilewati karena sudah ada: {skipped}, tertunda (tidak diimpor): {pending}",
     "@integrationImported": {
@@ -351,8 +364,22 @@
             "type": "int"
         }
     },
+    "integrationInvalidAmount": "Jumlah tidak valid: {value}",
+    "@integrationInvalidAmount": {
+        "value": {
+            "type": "String"
+        }
+    },
     "integrationNoAccounts": "Bank tidak memberikan rekening apa pun",
+    "integrationPaymentRequired": "Layanan memerlukan pembayaran untuk akses",
     "integrationSelectTarget": "Pilih rekening dan kategori anggaran tujuan impor",
+    "integrationServiceError": "Pesan layanan: {value}",
+    "@integrationServiceError": {
+        "value": {
+            "type": "String"
+        }
+    },
+    "integrationUnexpectedResponse": "Respons tak terduga dari layanan",
     "invoiceHeadline": "Faktur",
     "invoiceSum": "Faktur: {value}",
     "@invoiceSum": {
@@ -463,7 +490,10 @@
     "settingsSaved": "Pengaturan disimpan!",
     "simpleFinDescription": "Impor saldo dan transaksi dari bank dan penerbit kartu AS melalui SimpleFIN Bridge. Akses hanya baca: tidak ada pembayaran yang dilakukan.",
     "simpleFinHeadline": "SimpleFIN Bridge (US)",
+    "simpleFinNoCredentials": "SimpleFIN Bridge mengembalikan alamat akses tanpa kredensial",
     "simpleFinToken": "Token penyiapan SimpleFIN",
+    "simpleFinTokenClaimed": "Token penyiapan tidak ada atau sudah digunakan",
+    "simpleFinTokenInvalid": "Token penyiapan SimpleFIN tidak valid",
     "simpleFinTokenTooltip": "Dibuat di SimpleFIN Bridge Anda (mis. bridge.simplefin.org) untuk aplikasi ini; hanya dapat digunakan sekali",
     "skipFromTotals": "Kecualikan dari Total",
     "skipTooltip": "Lewati Langkah",

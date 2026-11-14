@@ -3,6 +3,7 @@
 
 import 'dart:convert';
 
+import 'package:app_finance/_classes/herald/app_locale.dart';
 import 'package:encrypt/encrypt.dart';
 import 'package:http/http.dart' as http;
 import 'package:pointycastle/asymmetric/api.dart';
@@ -173,7 +174,7 @@ class EnableBankingClient {
   static String normalizePrivateKey(String pem) {
     final match = RegExp(r'-----BEGIN ([A-Z ]*PRIVATE KEY)-----(.+?)-----END \1-----', dotAll: true).firstMatch(pem);
     if (match == null) {
-      throw const EnableBankingException('Invalid private key: PEM "PRIVATE KEY" expected');
+      throw EnableBankingException(AppLocale.labels.enableBankingKeyInvalid);
     }
     final body = match.group(2)!.replaceAll(RegExp(r'\s'), '');
     final lines = [for (var i = 0; i < body.length; i += 64) body.substring(i, (i + 64).clamp(0, body.length))];
@@ -191,13 +192,13 @@ class EnableBankingClient {
     } catch (_) {
       // Reported below
     }
-    throw const EnableBankingException('Invalid private key: RSA key expected');
+    throw EnableBankingException(AppLocale.labels.enableBankingKeyNotRsa);
   }
 
   static double parseAmount(dynamic value) {
     final result = double.tryParse(value?.toString().trim() ?? '');
     if (result == null) {
-      throw EnableBankingException('Invalid amount: $value');
+      throw EnableBankingException(AppLocale.labels.integrationInvalidAmount('$value'));
     }
     return result;
   }
@@ -218,11 +219,11 @@ class EnableBankingClient {
     if (uri != null && uri.hasQuery) {
       final error = uri.queryParameters['error_description'] ?? uri.queryParameters['error'];
       if (error != null) {
-        throw EnableBankingException(error);
+        throw EnableBankingException(AppLocale.labels.integrationServiceError(error));
       }
       final returned = uri.queryParameters['state'];
       if (state != null && returned != null && returned != state) {
-        throw const EnableBankingException('The address belongs to another authorization');
+        throw EnableBankingException(AppLocale.labels.enableBankingStateMismatch);
       }
       final code = uri.queryParameters['code'];
       if (code != null && code.isNotEmpty) {
@@ -230,7 +231,7 @@ class EnableBankingClient {
       }
     }
     if (value.isEmpty || value.contains('://')) {
-      throw const EnableBankingException('No authorization code found');
+      throw EnableBankingException(AppLocale.labels.enableBankingNoCode);
     }
     return value;
   }
@@ -269,8 +270,18 @@ class EnableBankingClient {
     }
     if (response.statusCode < 200 || response.statusCode >= 300) {
       final message = json is Map ? (json['message'] ?? json['detail'] ?? json['error']) : null;
+      if (response.statusCode == 401 || response.statusCode == 403) {
+        throw EnableBankingException(
+          message != null
+              ? AppLocale.labels.integrationServiceError('$message')
+              : AppLocale.labels.integrationAccessDenied,
+          response.statusCode,
+        );
+      }
       throw EnableBankingException(
-        'Enable Banking: ${message ?? 'HTTP ${response.statusCode}'}',
+        message != null
+            ? AppLocale.labels.integrationServiceError('$message')
+            : AppLocale.labels.integrationHttpError('${response.statusCode}'),
         response.statusCode,
       );
     }
@@ -303,7 +314,7 @@ class EnableBankingClient {
     });
     final url = Uri.tryParse((json as Map?)?['url']?.toString() ?? '');
     if (url == null || url.scheme != 'https') {
-      throw const EnableBankingException('Enable Banking: no authorization page returned');
+      throw EnableBankingException(AppLocale.labels.enableBankingNoAuthPage);
     }
     return url;
   }

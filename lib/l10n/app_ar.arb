@@ -250,10 +250,15 @@
     "enableBankingHeadline": "Enable Banking (EU)",
     "enableBankingIncomplete": "املأ معرّف التطبيق والمفتاح الخاص وعنوان URL لإعادة التوجيه والدولة",
     "enableBankingKey": "المفتاح الخاص (PEM)",
+    "enableBankingKeyInvalid": "مفتاح خاص غير صالح: يُتوقع كتلة PEM \"PRIVATE KEY\"",
+    "enableBankingKeyNotRsa": "مفتاح خاص غير صالح: يُتوقع مفتاح RSA",
     "enableBankingKeyTooltip": "يُنشأ مع التطبيق في Enable Banking Control Panel؛ ويُخزَّن مشفّرًا. اتركه فارغًا للاحتفاظ بالمفتاح المخزَّن",
     "enableBankingLoadBanks": "تحميل البنوك",
+    "enableBankingNoAuthPage": "لم يُرجع Enable Banking صفحة التفويض",
+    "enableBankingNoCode": "لم يُعثر على رمز التفويض في العنوان",
     "enableBankingRedirect": "عنوان URL لإعادة التوجيه",
     "enableBankingRedirectTooltip": "مسجّل للتطبيق؛ يعود إليه البنك بعد التفويض",
+    "enableBankingStateMismatch": "العنوان يخص تفويضًا آخر، اتصل مجددًا",
     "encryptionMode": "تشفير البيانات",
     "error": "خطأ {value}",
     "@error": {
@@ -333,11 +338,19 @@
     "incomeHeadline": "الدخل",
     "incomeHealth": "رادار صحة الدخل",
     "incomeTooltip": "تعيين تفاصيل الدخل",
+    "integrationAccessDenied": "تم إلغاء الوصول أو أن بيانات الاعتماد غير صحيحة",
     "integrationConnect": "اتصال",
     "integrationDateFrom": "استيراد المعاملات منذ",
     "integrationDisconnect": "قطع الاتصال",
     "integrationForget": "نسيان الوصول",
     "integrationHeadline": "التكاملات",
+    "integrationHttpError": "ردّت الخدمة بخطأ (HTTP {value})",
+    "@integrationHttpError": {
+        "value": {
+            "type": "String"
+        }
+    },
+    "integrationHttpsRequired": "يُسمح فقط بالعناوين الآمنة (HTTPS)",
     "integrationImport": "استيراد المعاملات",
     "integrationImported": "تم الاستيراد: {added}، تم التخطي لوجودها مسبقًا: {skipped}، قيد الانتظار (لم يتم استيرادها): {pending}",
     "@integrationImported": {
@@ -351,8 +364,22 @@
             "type": "int"
         }
     },
+    "integrationInvalidAmount": "مبلغ غير صالح: {value}",
+    "@integrationInvalidAmount": {
+        "value": {
+            "type": "String"
+        }
+    },
     "integrationNoAccounts": "لم يقدّم البنك أي حسابات",
+    "integrationPaymentRequired": "تتطلب الخدمة دفعًا مقابل الوصول",
     "integrationSelectTarget": "اختر الحساب وفئة الميزانية للاستيراد إليهما",
+    "integrationServiceError": "رسالة الخدمة: {value}",
+    "@integrationServiceError": {
+        "value": {
+            "type": "String"
+        }
+    },
+    "integrationUnexpectedResponse": "استجابة غير متوقعة من الخدمة",
     "invoiceHeadline": "الفواتير",
     "invoiceSum": "الفواتير {value}",
     "@invoiceSum": {
@@ -463,7 +490,10 @@
     "settingsSaved": "تم حفظ الإعدادات!",
     "simpleFinDescription": "استيراد الأرصدة والمعاملات من البنوك وجهات إصدار البطاقات الأمريكية عبر SimpleFIN Bridge. الوصول للقراءة فقط: لا يتم تنفيذ أي مدفوعات.",
     "simpleFinHeadline": "SimpleFIN Bridge (US)",
+    "simpleFinNoCredentials": "أرجع SimpleFIN Bridge عنوان وصول بدون بيانات اعتماد",
     "simpleFinToken": "رمز إعداد SimpleFIN",
+    "simpleFinTokenClaimed": "رمز الإعداد غير موجود أو تم استخدامه بالفعل",
+    "simpleFinTokenInvalid": "رمز إعداد SimpleFIN غير صالح",
     "simpleFinTokenTooltip": "يُنشأ في SimpleFIN Bridge الخاص بك (مثل bridge.simplefin.org) لهذا التطبيق؛ ويمكن استخدامه مرة واحدة فقط",
     "skipFromTotals": "الاستبعاد من المجاميع",
     "skipTooltip": "تخطي الخطوة (الخطوات)",

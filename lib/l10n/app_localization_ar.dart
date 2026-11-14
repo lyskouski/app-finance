@@ -628,6 +628,13 @@ class AppLocalizationsAr extends AppLocalizations {
   String get enableBankingKey => 'المفتاح الخاص (PEM)';
 
   @override
+  String get enableBankingKeyInvalid =>
+      'مفتاح خاص غير صالح: يُتوقع كتلة PEM \"PRIVATE KEY\"';
+
+  @override
+  String get enableBankingKeyNotRsa => 'مفتاح خاص غير صالح: يُتوقع مفتاح RSA';
+
+  @override
   String get enableBankingKeyTooltip =>
       'يُنشأ مع التطبيق في Enable Banking Control Panel؛ ويُخزَّن مشفّرًا. اتركه فارغًا للاحتفاظ بالمفتاح المخزَّن';
 
@@ -635,11 +642,21 @@ class AppLocalizationsAr extends AppLocalizations {
   String get enableBankingLoadBanks => 'تحميل البنوك';
 
   @override
+  String get enableBankingNoAuthPage => 'لم يُرجع Enable Banking صفحة التفويض';
+
+  @override
+  String get enableBankingNoCode => 'لم يُعثر على رمز التفويض في العنوان';
+
+  @override
   String get enableBankingRedirect => 'عنوان URL لإعادة التوجيه';
 
   @override
   String get enableBankingRedirectTooltip =>
       'مسجّل للتطبيق؛ يعود إليه البنك بعد التفويض';
+
+  @override
+  String get enableBankingStateMismatch =>
+      'العنوان يخص تفويضًا آخر، اتصل مجددًا';
 
   @override
   String get encryptionMode => 'تشفير البيانات';
@@ -819,6 +836,10 @@ class AppLocalizationsAr extends AppLocalizations {
   String get incomeTooltip => 'تعيين تفاصيل الدخل';
 
   @override
+  String get integrationAccessDenied =>
+      'تم إلغاء الوصول أو أن بيانات الاعتماد غير صحيحة';
+
+  @override
   String get integrationConnect => 'اتصال';
 
   @override
@@ -834,6 +855,14 @@ class AppLocalizationsAr extends AppLocalizations {
   String get integrationHeadline => 'التكاملات';
 
   @override
+  String integrationHttpError(Object value) {
+    return 'ردّت الخدمة بخطأ (HTTP $value)';
+  }
+
+  @override
+  String get integrationHttpsRequired => 'يُسمح فقط بالعناوين الآمنة (HTTPS)';
+
+  @override
   String get integrationImport => 'استيراد المعاملات';
 
   @override
@@ -842,11 +871,27 @@ class AppLocalizationsAr extends AppLocalizations {
   }
 
   @override
+  String integrationInvalidAmount(Object value) {
+    return 'مبلغ غير صالح: $value';
+  }
+
+  @override
   String get integrationNoAccounts => 'لم يقدّم البنك أي حسابات';
+
+  @override
+  String get integrationPaymentRequired => 'تتطلب الخدمة دفعًا مقابل الوصول';
 
   @override
   String get integrationSelectTarget =>
       'اختر الحساب وفئة الميزانية للاستيراد إليهما';
+
+  @override
+  String integrationServiceError(Object value) {
+    return 'رسالة الخدمة: $value';
+  }
+
+  @override
+  String get integrationUnexpectedResponse => 'استجابة غير متوقعة من الخدمة';
 
   @override
   String get invoiceHeadline => 'الفواتير';
@@ -1103,7 +1148,18 @@ class AppLocalizationsAr extends AppLocalizations {
   String get simpleFinHeadline => 'SimpleFIN Bridge (US)';
 
   @override
+  String get simpleFinNoCredentials =>
+      'أرجع SimpleFIN Bridge عنوان وصول بدون بيانات اعتماد';
+
+  @override
   String get simpleFinToken => 'رمز إعداد SimpleFIN';
+
+  @override
+  String get simpleFinTokenClaimed =>
+      'رمز الإعداد غير موجود أو تم استخدامه بالفعل';
+
+  @override
+  String get simpleFinTokenInvalid => 'رمز إعداد SimpleFIN غير صالح';
 
   @override
   String get simpleFinTokenTooltip =>

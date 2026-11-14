@@ -631,6 +631,14 @@ class AppLocalizationsUz extends AppLocalizations {
   String get enableBankingKey => 'Maxfiy kalit (PEM)';
 
   @override
+  String get enableBankingKeyInvalid =>
+      'Noto\'g\'ri maxfiy kalit: \"PRIVATE KEY\" PEM bloki kutilmoqda';
+
+  @override
+  String get enableBankingKeyNotRsa =>
+      'Noto\'g\'ri maxfiy kalit: RSA kaliti kutilmoqda';
+
+  @override
   String get enableBankingKeyTooltip =>
       'Enable Banking Control Panel\'da ilova bilan birga yaratiladi; shifrlangan holda saqlanadi. Saqlangan kalitni qoldirish uchun bo\'sh qoldiring';
 
@@ -638,11 +646,22 @@ class AppLocalizationsUz extends AppLocalizations {
   String get enableBankingLoadBanks => 'Banklarni yuklash';
 
   @override
+  String get enableBankingNoAuthPage =>
+      'Enable Banking avtorizatsiya sahifasini qaytarmadi';
+
+  @override
+  String get enableBankingNoCode => 'Manzilda avtorizatsiya kodi topilmadi';
+
+  @override
   String get enableBankingRedirect => 'Yo\'naltirish URL manzili';
 
   @override
   String get enableBankingRedirectTooltip =>
       'Ilova uchun ro\'yxatdan o\'tkazilgan; avtorizatsiyadan so\'ng bank unga qaytaradi';
+
+  @override
+  String get enableBankingStateMismatch =>
+      'Manzil boshqa avtorizatsiyaga tegishli, qayta ulaning';
 
   @override
   String get encryptionMode => 'Ma\'lumotlarni shifrlash';
@@ -824,6 +843,10 @@ class AppLocalizationsUz extends AppLocalizations {
   String get incomeTooltip => 'Daromad tafsilotlarini o\'rnating';
 
   @override
+  String get integrationAccessDenied =>
+      'Kirish bekor qilingan yoki hisob ma\'lumotlari noto\'g\'ri';
+
+  @override
   String get integrationConnect => 'Ulanish';
 
   @override
@@ -840,6 +863,15 @@ class AppLocalizationsUz extends AppLocalizations {
   String get integrationHeadline => 'Integratsiyalar';
 
   @override
+  String integrationHttpError(Object value) {
+    return 'Xizmat xato bilan javob berdi (HTTP $value)';
+  }
+
+  @override
+  String get integrationHttpsRequired =>
+      'Faqat xavfsiz (HTTPS) manzillarga ruxsat beriladi';
+
+  @override
   String get integrationImport => 'Tranzaksiyalarni import qilish';
 
   @override
@@ -848,11 +880,28 @@ class AppLocalizationsUz extends AppLocalizations {
   }
 
   @override
+  String integrationInvalidAmount(Object value) {
+    return 'Noto\'g\'ri summa: $value';
+  }
+
+  @override
   String get integrationNoAccounts => 'Bank hech qanday hisob taqdim etmadi';
+
+  @override
+  String get integrationPaymentRequired =>
+      'Xizmat kirish uchun to\'lov talab qiladi';
 
   @override
   String get integrationSelectTarget =>
       'Import uchun hisob va byudjet toifasini tanlang';
+
+  @override
+  String integrationServiceError(Object value) {
+    return 'Xizmat xabari: $value';
+  }
+
+  @override
+  String get integrationUnexpectedResponse => 'Xizmatdan kutilmagan javob';
 
   @override
   String get invoiceHeadline => 'Hisob-fakturalar';
@@ -1114,7 +1163,18 @@ class AppLocalizationsUz extends AppLocalizations {
   String get simpleFinHeadline => 'SimpleFIN Bridge (US)';
 
   @override
+  String get simpleFinNoCredentials =>
+      'SimpleFIN Bridge hisob ma\'lumotlarisiz kirish manzilini qaytardi';
+
+  @override
   String get simpleFinToken => 'SimpleFIN sozlash tokeni';
+
+  @override
+  String get simpleFinTokenClaimed =>
+      'Sozlash tokeni mavjud emas yoki allaqachon ishlatilgan';
+
+  @override
+  String get simpleFinTokenInvalid => 'Noto\'g\'ri SimpleFIN sozlash tokeni';
 
   @override
   String get simpleFinTokenTooltip =>

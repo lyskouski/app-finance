@@ -250,10 +250,15 @@
     "enableBankingHeadline": "Enable Banking (EU)",
     "enableBankingIncomplete": "Zapoŭnicie ID prahramy, zakryty kluč, URL pieranakiravannia i krainu",
     "enableBankingKey": "Zakryty kluč (PEM)",
+    "enableBankingKeyInvalid": "Niapraviĺny zakryty kluč: čakajecca PEM-błok \"PRIVATE KEY\"",
+    "enableBankingKeyNotRsa": "Niapraviĺny zakryty kluč: čakajecca kluč RSA",
     "enableBankingKeyTooltip": "Stvarajecca razam z prahramaj u Enable Banking Control Panel; zachoŭvajecca ŭ zašyfravanym vyhladzie. Pakińcie pustym, kab zachavać biahučy kluč",
     "enableBankingLoadBanks": "Zahruzić banki",
+    "enableBankingNoAuthPage": "Enable Banking nie viarnuŭ staronku aŭtaryzacyi",
+    "enableBankingNoCode": "U adrasie nie znojdzieny kod aŭtaryzacyi",
     "enableBankingRedirect": "URL pieranakiravannia",
     "enableBankingRedirectTooltip": "Zarehistravany dlia prahramy; paslia aŭtaryzacyi bank viartaje na jaho",
+    "enableBankingStateMismatch": "Adras naliežyć da inšaj aŭtaryzacyi, padłučycieśsia znoŭ",
     "encryptionMode": "Šyfravańnie Dad́zienych",
     "error": "Pamylka: {value}",
     "@error": {
@@ -333,11 +338,19 @@
     "incomeHeadline": "Dachod",
     "incomeHealth": "Radar Zdaroŭja Dachodaŭ",
     "incomeTooltip": "Ustaliujcie Zviestki ab Dachodach",
+    "integrationAccessDenied": "Dostup adklikany abo ŭlikovyja danyja niapraviĺnyja",
     "integrationConnect": "Padłučycca",
     "integrationDateFrom": "Impartavać aperacyi z",
     "integrationDisconnect": "Adłučycca",
     "integrationForget": "Zabyć dostup",
     "integrationHeadline": "Intehracyi",
+    "integrationHttpError": "Servis adkazaŭ pamyłkaj (HTTP {value})",
+    "@integrationHttpError": {
+        "value": {
+            "type": "String"
+        }
+    },
+    "integrationHttpsRequired": "Dazvolieny toĺki abaronienyja adrasy (HTTPS)",
     "integrationImport": "Impartavać aperacyi",
     "integrationImported": "Impartavana: {added}, prapuščana jak najaŭnyja: {skipped}, u apracoŭcy (nie impartavany): {pending}",
     "@integrationImported": {
@@ -351,8 +364,22 @@
             "type": "int"
         }
     },
+    "integrationInvalidAmount": "Niapraviĺnaja suma: {value}",
+    "@integrationInvalidAmount": {
+        "value": {
+            "type": "String"
+        }
+    },
     "integrationNoAccounts": "Bank nie pieradaŭ nivodnaha rachunku",
+    "integrationPaymentRequired": "Servis patrabuje apłaty dostupu",
     "integrationSelectTarget": "Abiarycie rachunak i katehoryju biudžetu dla impartu",
+    "integrationServiceError": "Paviedamliennie servisu: {value}",
+    "@integrationServiceError": {
+        "value": {
+            "type": "String"
+        }
+    },
+    "integrationUnexpectedResponse": "Niečakany adkaz servisu",
     "invoiceHeadline": "Faktury",
     "invoiceSum": "Faktury: {value}",
     "@invoiceSum": {
@@ -463,7 +490,10 @@
     "settingsSaved": "Nalady zachavany!",
     "simpleFinDescription": "Impart reštkaŭ i aperacyj bankaŭ i emitentaŭ kartak ZŠA praz SimpleFIN Bridge. Dostup toĺki dla čytannia: płaciažy nie vykonvajucca.",
     "simpleFinHeadline": "SimpleFIN Bridge (US)",
+    "simpleFinNoCredentials": "SimpleFIN Bridge viarnuŭ adras dostupu biez ulikovych danych",
     "simpleFinToken": "Tokien naładki SimpleFIN",
+    "simpleFinTokenClaimed": "Tokien naładki nie isnuje abo ŭžo byŭ vykarystany",
+    "simpleFinTokenInvalid": "Niapraviĺny tokien naładki SimpleFIN",
     "simpleFinTokenTooltip": "Stvarajecca ŭ vašym SimpleFIN Bridge (napryklad, bridge.simplefin.org) dla hetaj prahramy; vykarystoŭvajecca toĺki adzin raz",
     "skipFromTotals": "Vykliučyć z ahuĺnych vynikaŭ",
     "skipTooltip": "Prapuścić Krok(i)",

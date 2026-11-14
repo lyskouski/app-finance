@@ -250,10 +250,15 @@
     "enableBankingHeadline": "Enable Banking (EU)",
     "enableBankingIncomplete": "Rellena el ID de la aplicación, la clave privada, la URL de redirección y el país",
     "enableBankingKey": "Clave privada (PEM)",
+    "enableBankingKeyInvalid": "Clave privada no válida: se espera un bloque PEM \"PRIVATE KEY\"",
+    "enableBankingKeyNotRsa": "Clave privada no válida: se espera una clave RSA",
     "enableBankingKeyTooltip": "Se crea con la aplicación en el Enable Banking Control Panel; se guarda cifrada. Déjala vacía para conservar la clave guardada",
     "enableBankingLoadBanks": "Cargar bancos",
+    "enableBankingNoAuthPage": "Enable Banking no devolvió ninguna página de autorización",
+    "enableBankingNoCode": "No se encontró ningún código de autorización en la dirección",
     "enableBankingRedirect": "URL de redirección",
     "enableBankingRedirectTooltip": "Registrada para la aplicación; el banco vuelve a ella tras la autorización",
+    "enableBankingStateMismatch": "La dirección pertenece a otra autorización, vuelve a conectar",
     "encryptionMode": "Codificación de datos",
     "error": "Error: {value}",
     "@error": {
@@ -333,11 +338,19 @@
     "incomeHeadline": "Ingresos",
     "incomeHealth": "Radar de salud de ingresos",
     "incomeTooltip": "Establecer detalles de ingresos",
+    "integrationAccessDenied": "El acceso se ha revocado o las credenciales son incorrectas",
     "integrationConnect": "Conectar",
     "integrationDateFrom": "Importar movimientos desde",
     "integrationDisconnect": "Desconectar",
     "integrationForget": "Olvidar el acceso",
     "integrationHeadline": "Integraciones",
+    "integrationHttpError": "El servicio respondió con un error (HTTP {value})",
+    "@integrationHttpError": {
+        "value": {
+            "type": "String"
+        }
+    },
+    "integrationHttpsRequired": "Solo se permiten direcciones seguras (HTTPS)",
     "integrationImport": "Importar movimientos",
     "integrationImported": "Importados: {added}, omitidos por existir ya: {skipped}, pendientes (no importados): {pending}",
     "@integrationImported": {
@@ -351,8 +364,22 @@
             "type": "int"
         }
     },
+    "integrationInvalidAmount": "Importe no válido: {value}",
+    "@integrationInvalidAmount": {
+        "value": {
+            "type": "String"
+        }
+    },
     "integrationNoAccounts": "El banco no ha proporcionado ninguna cuenta",
+    "integrationPaymentRequired": "El servicio requiere un pago para el acceso",
     "integrationSelectTarget": "Selecciona la cuenta y la categoría de presupuesto para la importación",
+    "integrationServiceError": "Mensaje del servicio: {value}",
+    "@integrationServiceError": {
+        "value": {
+            "type": "String"
+        }
+    },
+    "integrationUnexpectedResponse": "Respuesta inesperada del servicio",
     "invoiceHeadline": "Invoices",
     "invoiceSum": "Facturas: {value}",
     "@invoiceSum": {
@@ -463,7 +490,10 @@
     "settingsSaved": "¡Configuración guardada!",
     "simpleFinDescription": "Importa saldos y movimientos de bancos y emisores de tarjetas de EE. UU. mediante un SimpleFIN Bridge. Acceso de solo lectura: no se realizan pagos.",
     "simpleFinHeadline": "SimpleFIN Bridge (US)",
+    "simpleFinNoCredentials": "El SimpleFIN Bridge devolvió una dirección de acceso sin credenciales",
     "simpleFinToken": "Token de configuración de SimpleFIN",
+    "simpleFinTokenClaimed": "El token de configuración no existe o ya se ha utilizado",
+    "simpleFinTokenInvalid": "Token de configuración de SimpleFIN no válido",
     "simpleFinTokenTooltip": "Se crea en tu SimpleFIN Bridge (p. ej., bridge.simplefin.org) para esta aplicación; solo puede usarse una vez",
     "skipFromTotals": "Excluir de los totales",
     "skipTooltip": "Saltar Paso(s)",

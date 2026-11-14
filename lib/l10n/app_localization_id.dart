@@ -630,6 +630,14 @@ class AppLocalizationsId extends AppLocalizations {
   String get enableBankingKey => 'Kunci privat (PEM)';
 
   @override
+  String get enableBankingKeyInvalid =>
+      'Kunci privat tidak valid: blok PEM \"PRIVATE KEY\" diharapkan';
+
+  @override
+  String get enableBankingKeyNotRsa =>
+      'Kunci privat tidak valid: kunci RSA diharapkan';
+
+  @override
   String get enableBankingKeyTooltip =>
       'Dibuat bersama aplikasi di Enable Banking Control Panel; disimpan terenkripsi. Biarkan kosong untuk mempertahankan kunci yang tersimpan';
 
@@ -637,11 +645,22 @@ class AppLocalizationsId extends AppLocalizations {
   String get enableBankingLoadBanks => 'Muat bank';
 
   @override
+  String get enableBankingNoAuthPage =>
+      'Enable Banking tidak mengembalikan halaman otorisasi';
+
+  @override
+  String get enableBankingNoCode => 'Kode otorisasi tidak ditemukan di alamat';
+
+  @override
   String get enableBankingRedirect => 'URL pengalihan';
 
   @override
   String get enableBankingRedirectTooltip =>
       'Terdaftar untuk aplikasi; bank kembali ke URL ini setelah otorisasi';
+
+  @override
+  String get enableBankingStateMismatch =>
+      'Alamat milik otorisasi lain, hubungkan kembali';
 
   @override
   String get encryptionMode => 'Enkripsi Data';
@@ -821,6 +840,10 @@ class AppLocalizationsId extends AppLocalizations {
   String get incomeTooltip => 'Atur Detail Pemasukan';
 
   @override
+  String get integrationAccessDenied =>
+      'Akses telah dicabut atau kredensial salah';
+
+  @override
   String get integrationConnect => 'Hubungkan';
 
   @override
@@ -836,6 +859,15 @@ class AppLocalizationsId extends AppLocalizations {
   String get integrationHeadline => 'Integrasi';
 
   @override
+  String integrationHttpError(Object value) {
+    return 'Layanan merespons dengan kesalahan (HTTP $value)';
+  }
+
+  @override
+  String get integrationHttpsRequired =>
+      'Hanya alamat aman (HTTPS) yang diizinkan';
+
+  @override
   String get integrationImport => 'Impor transaksi';
 
   @override
@@ -844,11 +876,29 @@ class AppLocalizationsId extends AppLocalizations {
   }
 
   @override
+  String integrationInvalidAmount(Object value) {
+    return 'Jumlah tidak valid: $value';
+  }
+
+  @override
   String get integrationNoAccounts => 'Bank tidak memberikan rekening apa pun';
+
+  @override
+  String get integrationPaymentRequired =>
+      'Layanan memerlukan pembayaran untuk akses';
 
   @override
   String get integrationSelectTarget =>
       'Pilih rekening dan kategori anggaran tujuan impor';
+
+  @override
+  String integrationServiceError(Object value) {
+    return 'Pesan layanan: $value';
+  }
+
+  @override
+  String get integrationUnexpectedResponse =>
+      'Respons tak terduga dari layanan';
 
   @override
   String get invoiceHeadline => 'Faktur';
@@ -1106,7 +1156,18 @@ class AppLocalizationsId extends AppLocalizations {
   String get simpleFinHeadline => 'SimpleFIN Bridge (US)';
 
   @override
+  String get simpleFinNoCredentials =>
+      'SimpleFIN Bridge mengembalikan alamat akses tanpa kredensial';
+
+  @override
   String get simpleFinToken => 'Token penyiapan SimpleFIN';
+
+  @override
+  String get simpleFinTokenClaimed =>
+      'Token penyiapan tidak ada atau sudah digunakan';
+
+  @override
+  String get simpleFinTokenInvalid => 'Token penyiapan SimpleFIN tidak valid';
 
   @override
   String get simpleFinTokenTooltip =>

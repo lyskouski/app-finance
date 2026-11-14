@@ -628,6 +628,14 @@ class AppLocalizationsRu extends AppLocalizations {
   String get enableBankingKey => 'Закрытый ключ (PEM)';
 
   @override
+  String get enableBankingKeyInvalid =>
+      'Неверный закрытый ключ: ожидается PEM-блок \"PRIVATE KEY\"';
+
+  @override
+  String get enableBankingKeyNotRsa =>
+      'Неверный закрытый ключ: ожидается ключ RSA';
+
+  @override
   String get enableBankingKeyTooltip =>
       'Создаётся вместе с приложением в Enable Banking Control Panel; хранится в зашифрованном виде. Оставьте пустым, чтобы сохранить текущий ключ';
 
@@ -635,11 +643,22 @@ class AppLocalizationsRu extends AppLocalizations {
   String get enableBankingLoadBanks => 'Загрузить банки';
 
   @override
+  String get enableBankingNoAuthPage =>
+      'Enable Banking не вернул страницу авторизации';
+
+  @override
+  String get enableBankingNoCode => 'В адресе не найден код авторизации';
+
+  @override
   String get enableBankingRedirect => 'URL перенаправления';
 
   @override
   String get enableBankingRedirectTooltip =>
       'Зарегистрирован для приложения; после авторизации банк возвращает на него';
+
+  @override
+  String get enableBankingStateMismatch =>
+      'Адрес относится к другой авторизации, подключитесь заново';
 
   @override
   String get encryptionMode => 'Шифрование данных';
@@ -821,6 +840,10 @@ class AppLocalizationsRu extends AppLocalizations {
   String get incomeTooltip => 'Установить детали дохода';
 
   @override
+  String get integrationAccessDenied =>
+      'Доступ отозван или учётные данные неверны';
+
+  @override
   String get integrationConnect => 'Подключиться';
 
   @override
@@ -836,6 +859,15 @@ class AppLocalizationsRu extends AppLocalizations {
   String get integrationHeadline => 'Интеграции';
 
   @override
+  String integrationHttpError(Object value) {
+    return 'Сервис ответил ошибкой (HTTP $value)';
+  }
+
+  @override
+  String get integrationHttpsRequired =>
+      'Разрешены только защищённые адреса (HTTPS)';
+
+  @override
   String get integrationImport => 'Импортировать операции';
 
   @override
@@ -844,11 +876,27 @@ class AppLocalizationsRu extends AppLocalizations {
   }
 
   @override
+  String integrationInvalidAmount(Object value) {
+    return 'Неверная сумма: $value';
+  }
+
+  @override
   String get integrationNoAccounts => 'Банк не предоставил ни одного счёта';
+
+  @override
+  String get integrationPaymentRequired => 'Сервис требует оплаты доступа';
 
   @override
   String get integrationSelectTarget =>
       'Выберите счёт и категорию бюджета для импорта';
+
+  @override
+  String integrationServiceError(Object value) {
+    return 'Сообщение сервиса: $value';
+  }
+
+  @override
+  String get integrationUnexpectedResponse => 'Неожиданный ответ сервиса';
 
   @override
   String get invoiceHeadline => 'Доходы';
@@ -1108,7 +1156,18 @@ class AppLocalizationsRu extends AppLocalizations {
   String get simpleFinHeadline => 'SimpleFIN Bridge (US)';
 
   @override
+  String get simpleFinNoCredentials =>
+      'SimpleFIN Bridge вернул адрес доступа без учётных данных';
+
+  @override
   String get simpleFinToken => 'Токен настройки SimpleFIN';
+
+  @override
+  String get simpleFinTokenClaimed =>
+      'Токен настройки не существует или уже был использован';
+
+  @override
+  String get simpleFinTokenInvalid => 'Неверный токен настройки SimpleFIN';
 
   @override
   String get simpleFinTokenTooltip =>
