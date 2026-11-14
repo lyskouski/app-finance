@@ -18,7 +18,7 @@ import 'package:app_finance/design/wrapper/input_wrapper.dart';
 import 'package:app_finance/pages/integration/widgets/fints_dialogs.dart';
 import 'package:fints/fints.dart';
 import 'package:flutter/foundation.dart';
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:provider/provider.dart';
 
 typedef FinTsClientFactory = FinTsClient Function(FinTsSettings settings, String pin, FinTsClientOptions options);
