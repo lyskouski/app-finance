@@ -8,6 +8,7 @@ pulsante “Suggerimenti”._
 - Aggiunto Financial Transaction Services (FinTS 4.1): conti, saldi e importazione dei movimenti dalle banche tedesche
 - Aggiunto SimpleFIN Bridge (US): conti, saldi e importazione dei movimenti di banche ed emittenti di carte statunitensi
 - Aggiunto Enable Banking (EU): conti, saldi e importazione dei movimenti delle banche europee (PSD2)
+- Aggiunta l'importazione degli estratti conto bancari (`MT940`, `camt.053`), ad es. delle banche polacche
 - Corretta la precisione dei tassi di conversione
 
 ### 7.3.0

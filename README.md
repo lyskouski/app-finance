@@ -73,7 +73,7 @@ That empowers users to effortlessly manage their finances while ensuring that no
   - Currency Historical Chart
 - [[demo]](https://youtu.be/RccQ8JpfJs4) Synchronization between devices (P2P)
 - Recovery via WebDav or a direct File
-- Import from `CSV`, `QIF`, `OFX` files for Bills and Invoices
+- Import from `CSV`, `QIF`, `OFX`, `MT940`, `camt.053` files for Bills and Invoices
 - Integrations
   - Financial Transaction Services (FinTS 4.1): import of balances and transactions from German banks (PIN/TAN)
   - SimpleFIN Bridge (US): import of balances and transactions from US banks and card issuers

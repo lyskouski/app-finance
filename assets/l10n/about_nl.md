@@ -72,7 +72,7 @@ Dat stelt gebruikers in staat om moeiteloos hun financiën te beheren en zorgt e
   - Historische valuta grafiek
 - Synchronisatie tussen apparaten (P2P)
 - Herstel via WebDav of een direct bestand
-- Importeren uit `CSV`, `QIF`, `OFX` bestanden voor rekeningen en facturen
+- Importeren uit `CSV`, `QIF`, `OFX`, `MT940`, `camt.053` bestanden voor rekeningen en facturen
 - Integraties
   - Financial Transaction Services (FinTS 4.1): import van saldi en transacties van Duitse banken (PIN/TAN)
   - SimpleFIN Bridge (US): import van saldi en transacties van Amerikaanse banken en kaartuitgevers

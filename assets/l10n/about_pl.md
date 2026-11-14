@@ -72,7 +72,7 @@ Dzięki temu użytkownicy mogą bez wysiłku zarządzać swoimi finansami, jedno
   - Wykres historyczny waluty
 - Synchronizacja między urządzeniami (P2P)
 - Odzyskiwanie poprzez WebDav lub bezpośredni plik
-- Import z plików `CSV`, `QIF`, `OFX` dla rachunków i faktur
+- Import z plików `CSV`, `QIF`, `OFX`, `MT940`, `camt.053` dla rachunków i faktur
 - Integracje
   - Financial Transaction Services (FinTS 4.1): import sald i transakcji z niemieckich banków (PIN/TAN)
   - SimpleFIN Bridge (US): import sald i transakcji z amerykańskich banków i od wydawców kart

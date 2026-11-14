@@ -7,6 +7,7 @@ _Güncellemelerin tam listesi “İpuçları” düğmesindeki “Hakkında” g
 - Financial Transaction Services (FinTS 4.1) eklendi: Alman bankalarından hesaplar, bakiyeler ve işlemlerin içe aktarılması
 - SimpleFIN Bridge (US) eklendi: ABD bankaları ve kart sağlayıcılarından hesaplar, bakiyeler ve işlemlerin içe aktarılması
 - Enable Banking (EU) eklendi: Avrupa bankalarından hesaplar, bakiyeler ve işlemlerin içe aktarılması (PSD2)
+- Banka ekstresi dosyalarının (`MT940`, `camt.053`) içe aktarılması eklendi, ör. Polonya bankalarından
 - Dönüşüm kurlarının hassasiyeti düzeltildi
 
 ### 7.3.0

@@ -72,7 +72,7 @@
   - 货币历史图表
 - 设备间同步（P2P）
 - 通过 WebDav 或直接文件恢复
-- 从 “CSV”、“QIF ”和 “OFX ”文件导入账单和发票
+- 从 “CSV”、“QIF”、“OFX”、“MT940” 和 “camt.053” 文件导入账单和发票
 - 集成
   - Financial Transaction Services (FinTS 4.1)：从德国银行导入余额和交易（PIN/TAN）
   - SimpleFIN Bridge (US)：从美国银行和发卡机构导入余额和交易

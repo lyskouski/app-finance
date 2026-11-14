@@ -7,6 +7,7 @@ _A lista completa de atualizações pode ser visualizada no item de navegação 
 - Adicionado o Financial Transaction Services (FinTS 4.1): contas, saldos e importação de transações de bancos alemães
 - Adicionado o SimpleFIN Bridge (US): contas, saldos e importação de transações de bancos e emissores de cartões dos EUA
 - Adicionado o Enable Banking (EU): contas, saldos e importação de transações de bancos europeus (PSD2)
+- Adicionada a importação de extratos bancários (`MT940`, `camt.053`), ex.: de bancos poloneses
 - Correção da precisão das taxas de conversão
 
 ### 7.3.0

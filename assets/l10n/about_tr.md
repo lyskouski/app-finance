@@ -72,7 +72,7 @@ Bu, kullanıcıların mali durumlarını zahmetsizce yönetmelerini sağlarken k
   - Para Birimi Tarihsel Grafiği
 - Cihazlar arasında senkronizasyon (P2P)
 - WebDav veya doğrudan bir Dosya aracılığıyla kurtarma
-- Faturalar için `CSV`, `QIF`, `OFX` dosyalarından içe aktarma
+- Faturalar için `CSV`, `QIF`, `OFX`, `MT940`, `camt.053` dosyalarından içe aktarma
 - Entegrasyonlar
   - Financial Transaction Services (FinTS 4.1): Alman bankalarından bakiye ve işlemlerin içe aktarılması (PIN/TAN)
   - SimpleFIN Bridge (US): ABD bankaları ve kart sağlayıcılarından bakiye ve işlemlerin içe aktarılması

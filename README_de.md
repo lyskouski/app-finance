@@ -74,7 +74,7 @@ zurückgelassen wird.
   - Historisches Währungsdiagramm
 - [[demo]](https://youtu.be/RccQ8JpfJs4) Synchronisation zwischen Geräten (P2P)
 - Wiederherstellung über WebDav oder eine direkte Datei
-- Import von `CSV`, `QIF`, `OFX` Dateien für Rechnungen und Abrechnungen
+- Import von `CSV`, `QIF`, `OFX`, `MT940`, `camt.053` Dateien für Rechnungen und Abrechnungen
 - Integrationen
   - Financial Transaction Services (FinTS 4.1): Import von Salden und Umsätzen deutscher Banken (PIN/TAN)
   - SimpleFIN Bridge (US): Import von Salden und Umsätzen von US-Banken und Kartenanbietern

@@ -72,7 +72,7 @@ Elle permet aux utilisateurs de gérer leurs finances sans effort, tout en veill
   - Graphique historique des devises
 - Synchronisation entre appareils (P2P)
 - Récupération via WebDav ou un fichier direct
-- Importation à partir de fichiers CSV, QIF, OFX pour les factures
+- Importation à partir de fichiers CSV, QIF, OFX, MT940, camt.053 pour les factures
 - Intégrations
   - Financial Transaction Services (FinTS 4.1) : importation des soldes et des opérations des banques allemandes (PIN/TAN)
   - SimpleFIN Bridge (US) : importation des soldes et des opérations des banques et émetteurs de cartes américains
