@@ -992,10 +992,10 @@ packages:
     dependency: "direct main"
     description:
       name: month_picker_dialog
-      sha256: acb19b732b14ac3b757faa7f4091001819b672816bc5f89af5d932e8b60e7db1
+      sha256: fbfdfe19f2c2249c0ea428cc1d5630cbfee0bae9c98375f0786191db8cde6b2e
       url: "https://pub.dev"
     source: hosted
-    version: "6.7.3"
+    version: "7.0.0"
   msix:
     dependency: "direct dev"
     description:
@@ -1634,5 +1634,5 @@ packages:
     source: hosted
     version: "3.1.4"
 sdks:
-  dart: ">=3.13.0 <4.0.0"
+  dart: ">=3.14.0 <4.0.0"
   flutter: ">=3.47.0"

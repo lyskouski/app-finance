@@ -19,6 +19,7 @@ import 'package:app_finance/_classes/storage/app_preferences.dart';
 import 'package:app_finance/_classes/structure/navigation/app_page_route.dart';
 import 'package:app_finance/_configs/custom_color_scheme.dart';
 import 'package:app_finance/_configs/custom_text_theme.dart';
+import 'package:app_finance/_configs/localization_delegates.dart';
 import 'package:app_finance/_classes/storage/app_data.dart';
 import 'package:app_finance/_classes/structure/navigation/app_route.dart';
 import 'package:app_finance/_configs/firebase_options.dart';
@@ -272,8 +273,7 @@ class MyAppState extends State<MyApp> {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       localizationsDelegates: [
-        AppLocalizations.delegate,
-        ...GlobalMaterialLocalizations.delegates,
+        ...appLocalizationsDelegates,
         FallbackLocalizationDelegate(),
       ],
       supportedLocales: AppLocalizations.supportedLocales,

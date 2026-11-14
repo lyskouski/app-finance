@@ -10,6 +10,7 @@ import 'package:app_finance/_classes/herald/app_start_of_month.dart';
 import 'package:app_finance/_classes/herald/app_start_of_week.dart';
 import 'package:app_finance/_classes/storage/transaction_log/abstract_storage.dart';
 import 'package:app_finance/_configs/custom_text_theme.dart';
+import 'package:app_finance/_configs/localization_delegates.dart';
 import 'package:app_finance/_classes/herald/app_palette.dart';
 import 'package:app_finance/_classes/herald/app_sync.dart';
 import 'package:app_finance/_classes/herald/app_zoom.dart';
@@ -113,7 +114,7 @@ class PumpMain {
     await tester.pumpWidget(
       MaterialApp(
         debugShowCheckedModeBanner: false,
-        localizationsDelegates: const [AppLocalizations.delegate, ...GlobalMaterialLocalizations.delegates],
+        localizationsDelegates: appLocalizationsDelegates,
         supportedLocales: AppLocalizations.supportedLocales,
         theme: ThemeData(
           brightness: Brightness.light,
