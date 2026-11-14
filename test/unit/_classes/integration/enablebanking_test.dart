@@ -119,6 +119,32 @@ void main() {
       );
     });
 
+    test('requires the pending state of links opening the application', () {
+      String link(String query) => EnableBankingClient.extractCode('fingrom://integration/enablebanking?$query',
+          state: 's1', requireState: true);
+      final refused = throwsA(
+        isA<EnableBankingException>().having((e) => e.message, 'message', AppLocale.labels.enableBankingStateMismatch),
+      );
+
+      expect(link('state=s1&code=abc'), 'abc');
+      expect(() => link('code=abc'), refused);
+      expect(() => link('state=&code=abc'), refused);
+      expect(() => link('state=other&code=abc'), refused);
+      expect(
+        () => EnableBankingClient.extractCode('fingrom://integration/enablebanking?state=s1&code=abc',
+            state: null, requireState: true),
+        refused,
+      );
+      expect(
+        () => link('error=access_denied'),
+        throwsA(isA<EnableBankingException>()
+            .having((e) => e.message, 'message', AppLocale.labels.integrationServiceError('access_denied'))),
+      );
+      // Entered manually: a code as is, or an address without state
+      expect(EnableBankingClient.extractCode('abc', state: 's1'), 'abc');
+      expect(EnableBankingClient.extractCode('https://example.com/cb?code=abc', state: 's1'), 'abc');
+    });
+
     test('extracts the authorization code from the redirected address', () {
       expect(EnableBankingClient.extractCode('https://example.com/cb?state=s1&code=abc', state: 's1'), 'abc');
       expect(EnableBankingClient.extractCode(' abc '), 'abc');

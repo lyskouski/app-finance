@@ -143,8 +143,7 @@ class EnableBankingWidgetState extends State<EnableBankingWidget> {
       Future.delayed(const Duration(milliseconds: 300), onLink);
       return;
     }
-    code.text = DeepLinkHandler.takeEnableBankingCallback().toString();
-    confirm();
+    confirm(link: DeepLinkHandler.takeEnableBankingCallback().toString());
   }
 
   Future<void> _setAuthorizationState(String? state) async {
@@ -183,8 +182,13 @@ class EnableBankingWidgetState extends State<EnableBankingWidget> {
         await (widget.launcher ?? (uri) => launchUrl(uri, mode: LaunchMode.externalApplication))(url);
       });
 
-  Future<void> confirm() => _run((client) async {
-        final value = EnableBankingClient.extractCode(code.text, state: authorizationState);
+  // [link] comes from the bank's redirect (deep link) and has to return the pending state; the field is entered manually
+  Future<void> confirm({String? link}) => _run((client) async {
+        final value = EnableBankingClient.extractCode(
+          link ?? code.text,
+          state: authorizationState,
+          requireState: link != null,
+        );
         final created = await client.createSession(value);
         await EnableBankingSettings.saveSession(created);
         session = created;

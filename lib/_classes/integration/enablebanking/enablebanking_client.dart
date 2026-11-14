@@ -213,9 +213,16 @@ class EnableBankingClient {
 
   static String _base64Url(List<int> bytes) => base64Url.encode(bytes).replaceAll('=', '');
 
-  static String extractCode(String input, {String? state}) {
+  static String extractCode(String input, {String? state, bool requireState = false}) {
     final value = input.trim();
     final uri = Uri.tryParse(value);
+    if (requireState) {
+      final returned = uri != null && uri.hasQuery ? uri.queryParameters['state'] : null;
+      final hasError = uri != null && uri.hasQuery && uri.queryParameters.containsKey('error');
+      if (!hasError && (state == null || state.isEmpty || returned == null || returned != state)) {
+        throw EnableBankingException(AppLocale.labels.enableBankingStateMismatch);
+      }
+    }
     if (uri != null && uri.hasQuery) {
       final error = uri.queryParameters['error_description'] ?? uri.queryParameters['error'];
       if (error != null) {

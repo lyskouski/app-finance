@@ -4,6 +4,7 @@
 import 'dart:convert';
 
 import 'package:app_finance/_classes/controller/deep_link/deep_link_handler.dart';
+import 'package:app_finance/_classes/herald/app_locale.dart';
 import 'package:app_finance/_classes/integration/enablebanking/enablebanking_client.dart';
 import 'package:app_finance/_classes/integration/enablebanking/enablebanking_settings.dart';
 import 'package:app_finance/_classes/storage/app_preferences.dart';
@@ -150,6 +151,22 @@ void main() {
 
     expect(requests.where((e) => e.url.path == '/sessions'), isEmpty);
     expect(widgetState.error, contains('another authorization'));
+    await tester.pump(const Duration(seconds: 10));
+  });
+
+  testWidgets('A link without the state of the pending authorization is refused', (WidgetTester tester) async {
+    await setUpApp(tester);
+    final widgetState = await open(tester);
+    await startAuthorization(tester);
+
+    DeepLinkHandler.handle(Uri.parse('fingrom://integration/enablebanking?code=FORGED'));
+    await pumpFrames(tester);
+    await tester.pumpAndSettle();
+
+    expect(requests.where((e) => e.url.path == '/sessions'), isEmpty);
+    expect(widgetState.error, AppLocale.labels.enableBankingStateMismatch);
+    expect(widgetState.code.text, isEmpty);
+    expect(widgetState.authorizationState, isNotNull);
     await tester.pump(const Duration(seconds: 10));
   });
 }
