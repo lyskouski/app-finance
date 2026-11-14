@@ -72,7 +72,11 @@ Bu foydalanuvchilarga o'z mablag'larini osonlikcha boshqarish imkoniyatini berad
   - Valyuta tarixiy jadvali
 - Qurilmalar o'rtasida sinxronizatsiya (P2P)
 - WebDav yoki to'g'ridan-to'g'ri fayl orqali tiklash
-- Hisob va hisob-fakturalar uchun `CSV`, `QIF`, `OFX` fayllaridan import qilish
+- Hisob va hisob-fakturalar uchun `CSV`, `QIF`, `OFX`, `MT940`, `camt.053` fayllaridan import qilish
+- Integratsiyalar
+  - Financial Transaction Services (FinTS 4.1): nemis banklaridan qoldiqlar va tranzaksiyalarni import qilish (PIN/TAN)
+  - SimpleFIN Bridge (US): AQSh banklari va karta emitentlaridan qoldiqlar va tranzaksiyalarni import qilish
+  - Enable Banking (EU): Yevropa banklaridan qoldiqlar va tranzaksiyalarni import qilish (PSD2)
 - Excel `XLSX` fayliga eksport qiling
 - Ma'lumotlarni shifrlash
 - Mahalliylashtirish

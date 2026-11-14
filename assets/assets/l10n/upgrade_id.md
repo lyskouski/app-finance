@@ -2,6 +2,14 @@
 
 _Daftar lengkap pembaruan dapat dilihat melalui item navigasi "Tentang" pada tombol "Petunjuk"._
 
+### 8.0.0
+- Halaman Integrasi baru dengan bagian yang dapat dibuka
+- Menambahkan Financial Transaction Services (FinTS 4.1): rekening, saldo, dan impor transaksi dari bank Jerman
+- Menambahkan SimpleFIN Bridge (US): rekening, saldo, dan impor transaksi dari bank dan penerbit kartu AS
+- Menambahkan Enable Banking (EU): rekening, saldo, dan impor transaksi dari bank Eropa (PSD2)
+- Menambahkan impor file mutasi rekening bank (`MT940`, `camt.053`), mis. dari bank Polandia
+- Memperbaiki presisi kurs konversi
+
 ### 7.3.0
 - Menambahkan lokalisasi bahasa Indonesia (ID)
 - Meningkatkan ketepatan nilai tukar mata uang

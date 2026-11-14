@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Test Date:</td>
-            <td class="headerValue">2026-11-14 10:30:16</td>
+            <td class="headerValue">2026-11-14 15:04:37</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntryHi">-</td>
@@ -92,11 +92,11 @@
 <span id="L30"><span class="lineNum">      30</span>              :     this.delete,</span>
 <span id="L31"><span class="lineNum">      31</span>              :   });</span>
 <span id="L32"><span class="lineNum">      32</span>              : </span>
-<span id="L33"><span class="lineNum">      33</span> <span class="tlaGNC">           3 :   static String getKey(BuildContext context) =&gt;</span></span>
-<span id="L34"><span class="lineNum">      34</span> <span class="tlaGNC">          15 :       'cmp${ThemeHelper.getWidth(context).toInt()}x${ThemeHelper.getHeight(context).toInt()}';</span></span>
+<span id="L33"><span class="lineNum">      33</span> <span class="tlaGNC">           6 :   static String getKey(BuildContext context) =&gt;</span></span>
+<span id="L34"><span class="lineNum">      34</span> <span class="tlaGNC">          30 :       'cmp${ThemeHelper.getWidth(context).toInt()}x${ThemeHelper.getHeight(context).toInt()}';</span></span>
 <span id="L35"><span class="lineNum">      35</span>              : </span>
-<span id="L36"><span class="lineNum">      36</span> <span class="tlaGNC">           3 :   static List&lt;ComponentData&gt;? getData(BuildContext context) =&gt;</span></span>
-<span id="L37"><span class="lineNum">      37</span> <span class="tlaGNC">           6 :       AppPreferences.get(getKey(context))?.toList&lt;ComponentData&gt;();</span></span>
+<span id="L36"><span class="lineNum">      36</span> <span class="tlaGNC">           6 :   static List&lt;ComponentData&gt;? getData(BuildContext context) =&gt;</span></span>
+<span id="L37"><span class="lineNum">      37</span> <span class="tlaGNC">          12 :       AppPreferences.get(getKey(context))?.toList&lt;ComponentData&gt;();</span></span>
 <span id="L38"><span class="lineNum">      38</span>              : </span>
 <span id="L39"><span class="lineNum">      39</span> <span class="tlaUNC">           0 :   void resize(ComponentData change, Size start) {</span></span>
 <span id="L40"><span class="lineNum">      40</span> <span class="tlaUNC">           0 :     final scope = data[change[_order]];</span></span>

@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Test Date:</td>
-            <td class="headerValue">2026-11-14 10:30:16</td>
+            <td class="headerValue">2026-11-14 15:04:37</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntryHi">-</td>
@@ -74,34 +74,34 @@
 <span id="L12"><span class="lineNum">      12</span>              :   final String title;</span>
 <span id="L13"><span class="lineNum">      13</span>              :   final bool showError;</span>
 <span id="L14"><span class="lineNum">      14</span>              : </span>
-<span id="L15"><span class="lineNum">      15</span> <span class="tlaGNC">           2 :   const RequiredWidget({</span></span>
+<span id="L15"><span class="lineNum">      15</span> <span class="tlaGNC">           4 :   const RequiredWidget({</span></span>
 <span id="L16"><span class="lineNum">      16</span>              :     super.key,</span>
 <span id="L17"><span class="lineNum">      17</span>              :     required this.title,</span>
 <span id="L18"><span class="lineNum">      18</span>              :     required this.showError,</span>
 <span id="L19"><span class="lineNum">      19</span>              :   });</span>
 <span id="L20"><span class="lineNum">      20</span>              : </span>
-<span id="L21"><span class="lineNum">      21</span> <span class="tlaGNC">           4 :   Widget _requiredText(TextTheme textTheme, ColorScheme colorScheme) =&gt; RichText(</span></span>
+<span id="L21"><span class="lineNum">      21</span> <span class="tlaGNC">           8 :   Widget _requiredText(TextTheme textTheme, ColorScheme colorScheme) =&gt; RichText(</span></span>
 <span id="L22"><span class="lineNum">      22</span>              :         maxLines: 1,</span>
 <span id="L23"><span class="lineNum">      23</span>              :         overflow: TextOverflow.ellipsis,</span>
-<span id="L24"><span class="lineNum">      24</span> <span class="tlaGNC">           2 :         text: TextSpan(</span></span>
-<span id="L25"><span class="lineNum">      25</span> <span class="tlaGNC">           2 :           style: textTheme.bodyLarge,</span></span>
-<span id="L26"><span class="lineNum">      26</span> <span class="tlaGNC">           2 :           children: [</span></span>
-<span id="L27"><span class="lineNum">      27</span> <span class="tlaGNC">           4 :             TextSpan(text: title),</span></span>
-<span id="L28"><span class="lineNum">      28</span> <span class="tlaGNC">           2 :             TextSpan(</span></span>
+<span id="L24"><span class="lineNum">      24</span> <span class="tlaGNC">           4 :         text: TextSpan(</span></span>
+<span id="L25"><span class="lineNum">      25</span> <span class="tlaGNC">           4 :           style: textTheme.bodyLarge,</span></span>
+<span id="L26"><span class="lineNum">      26</span> <span class="tlaGNC">           4 :           children: [</span></span>
+<span id="L27"><span class="lineNum">      27</span> <span class="tlaGNC">           8 :             TextSpan(text: title),</span></span>
+<span id="L28"><span class="lineNum">      28</span> <span class="tlaGNC">           4 :             TextSpan(</span></span>
 <span id="L29"><span class="lineNum">      29</span>              :               text: '*',</span>
-<span id="L30"><span class="lineNum">      30</span> <span class="tlaGNC">           4 :               semanticsLabel: AppLocale.labels.isRequired,</span></span>
-<span id="L31"><span class="lineNum">      31</span> <span class="tlaGNC">           6 :               style: textTheme.bodyLarge?.copyWith(color: colorScheme.primary),</span></span>
+<span id="L30"><span class="lineNum">      30</span> <span class="tlaGNC">           8 :               semanticsLabel: AppLocale.labels.isRequired,</span></span>
+<span id="L31"><span class="lineNum">      31</span> <span class="tlaGNC">          12 :               style: textTheme.bodyLarge?.copyWith(color: colorScheme.primary),</span></span>
 <span id="L32"><span class="lineNum">      32</span>              :             )</span>
 <span id="L33"><span class="lineNum">      33</span>              :           ],</span>
 <span id="L34"><span class="lineNum">      34</span>              :         ),</span>
 <span id="L35"><span class="lineNum">      35</span>              :       );</span>
 <span id="L36"><span class="lineNum">      36</span>              : </span>
-<span id="L37"><span class="lineNum">      37</span> <span class="tlaGNC">           2 :   @override</span></span>
+<span id="L37"><span class="lineNum">      37</span> <span class="tlaGNC">           4 :   @override</span></span>
 <span id="L38"><span class="lineNum">      38</span>              :   Widget build(BuildContext context) {</span>
-<span id="L39"><span class="lineNum">      39</span> <span class="tlaGNC">           2 :     final textTheme = context.textTheme;</span></span>
-<span id="L40"><span class="lineNum">      40</span> <span class="tlaGNC">           2 :     final colorScheme = context.colorScheme;</span></span>
-<span id="L41"><span class="lineNum">      41</span> <span class="tlaGNC">           2 :     if (!showError) {</span></span>
-<span id="L42"><span class="lineNum">      42</span> <span class="tlaGNC">           2 :       return _requiredText(textTheme, colorScheme);</span></span>
+<span id="L39"><span class="lineNum">      39</span> <span class="tlaGNC">           4 :     final textTheme = context.textTheme;</span></span>
+<span id="L40"><span class="lineNum">      40</span> <span class="tlaGNC">           4 :     final colorScheme = context.colorScheme;</span></span>
+<span id="L41"><span class="lineNum">      41</span> <span class="tlaGNC">           4 :     if (!showError) {</span></span>
+<span id="L42"><span class="lineNum">      42</span> <span class="tlaGNC">           4 :       return _requiredText(textTheme, colorScheme);</span></span>
 <span id="L43"><span class="lineNum">      43</span>              :     }</span>
 <span id="L44"><span class="lineNum">      44</span> <span class="tlaUNC">           0 :     return LayoutBuilder(builder: (context, constraints) {</span></span>
 <span id="L45"><span class="lineNum">      45</span> <span class="tlaUNC">           0 :       final indent = ThemeHelper.getIndent();</span></span>

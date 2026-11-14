@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Test Date:</td>
-            <td class="headerValue">2026-11-14 10:30:16</td>
+            <td class="headerValue">2026-11-14 15:04:37</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntryHi">-</td>
@@ -87,7 +87,7 @@
 <span id="L25"><span class="lineNum">      25</span>              :   final bool? isSelected;</span>
 <span id="L26"><span class="lineNum">      26</span>              :   final double? maxWidth;</span>
 <span id="L27"><span class="lineNum">      27</span>              : </span>
-<span id="L28"><span class="lineNum">      28</span> <span class="tlaGNC">           3 :   const ToolbarButtonWidget({</span></span>
+<span id="L28"><span class="lineNum">      28</span> <span class="tlaGNC">           6 :   const ToolbarButtonWidget({</span></span>
 <span id="L29"><span class="lineNum">      29</span>              :     super.key,</span>
 <span id="L30"><span class="lineNum">      30</span>              :     required this.onPressed,</span>
 <span id="L31"><span class="lineNum">      31</span>              :     required this.tooltip,</span>
@@ -104,20 +104,20 @@
 <span id="L42"><span class="lineNum">      42</span>              :     this.isWide = false,</span>
 <span id="L43"><span class="lineNum">      43</span>              :   });</span>
 <span id="L44"><span class="lineNum">      44</span>              : </span>
-<span id="L45"><span class="lineNum">      45</span> <span class="tlaGNC">           3 :   @override</span></span>
-<span id="L46"><span class="lineNum">      46</span> <span class="tlaGNC">           3 :   ToolbarButtonWidgetState createState() =&gt; ToolbarButtonWidgetState();</span></span>
+<span id="L45"><span class="lineNum">      45</span> <span class="tlaGNC">           6 :   @override</span></span>
+<span id="L46"><span class="lineNum">      46</span> <span class="tlaGNC">           6 :   ToolbarButtonWidgetState createState() =&gt; ToolbarButtonWidgetState();</span></span>
 <span id="L47"><span class="lineNum">      47</span>              : }</span>
 <span id="L48"><span class="lineNum">      48</span>              : </span>
 <span id="L49"><span class="lineNum">      49</span>              : class ToolbarButtonWidgetState extends State&lt;ToolbarButtonWidget&gt; {</span>
 <span id="L50"><span class="lineNum">      50</span>              :   late Color initColor;</span>
-<span id="L51"><span class="lineNum">      51</span> <span class="tlaGNC">           6 :   late Color color = _getColor();</span></span>
+<span id="L51"><span class="lineNum">      51</span> <span class="tlaGNC">          12 :   late Color color = _getColor();</span></span>
 <span id="L52"><span class="lineNum">      52</span>              :   bool isHover = false;</span>
 <span id="L53"><span class="lineNum">      53</span>              : </span>
-<span id="L54"><span class="lineNum">      54</span> <span class="tlaGNC">           3 :   Color _getColor() {</span></span>
-<span id="L55"><span class="lineNum">      55</span> <span class="tlaGNC">           6 :     if (widget.color != null) {</span></span>
-<span id="L56"><span class="lineNum">      56</span> <span class="tlaGNC">           6 :       return widget.color!;</span></span>
+<span id="L54"><span class="lineNum">      54</span> <span class="tlaGNC">           6 :   Color _getColor() {</span></span>
+<span id="L55"><span class="lineNum">      55</span> <span class="tlaGNC">          12 :     if (widget.color != null) {</span></span>
+<span id="L56"><span class="lineNum">      56</span> <span class="tlaGNC">          12 :       return widget.color!;</span></span>
 <span id="L57"><span class="lineNum">      57</span>              :     }</span>
-<span id="L58"><span class="lineNum">      58</span> <span class="tlaGNC">           6 :     return widget.isWide ? context.colorScheme.onSurface : Colors.white70;</span></span>
+<span id="L58"><span class="lineNum">      58</span> <span class="tlaGNC">          12 :     return widget.isWide ? context.colorScheme.onSurface : Colors.white70;</span></span>
 <span id="L59"><span class="lineNum">      59</span>              :   }</span>
 <span id="L60"><span class="lineNum">      60</span>              : </span>
 <span id="L61"><span class="lineNum">      61</span> <span class="tlaUNC">           0 :   _onEnter(_) =&gt; setState(() {</span></span>
@@ -130,32 +130,32 @@
 <span id="L68"><span class="lineNum">      68</span> <span class="tlaUNC">           0 :         isHover = false;</span></span>
 <span id="L69"><span class="lineNum">      69</span>              :       });</span>
 <span id="L70"><span class="lineNum">      70</span>              : </span>
-<span id="L71"><span class="lineNum">      71</span> <span class="tlaGNC">           3 :   @override</span></span>
+<span id="L71"><span class="lineNum">      71</span> <span class="tlaGNC">           6 :   @override</span></span>
 <span id="L72"><span class="lineNum">      72</span>              :   Widget build(BuildContext context) {</span>
-<span id="L73"><span class="lineNum">      73</span> <span class="tlaGNC">           3 :     final indent = ThemeHelper.getIndent();</span></span>
-<span id="L74"><span class="lineNum">      74</span> <span class="tlaGNC">          18 :     initColor = widget.backgroundColor ?? context.colorScheme.surface.withValues(alpha: 0.1);</span></span>
-<span id="L75"><span class="lineNum">      75</span> <span class="tlaGNC">           6 :     final borderColor = widget.isWide ? context.colorScheme.onSurface : Colors.white30;</span></span>
-<span id="L76"><span class="lineNum">      76</span> <span class="tlaGNC">           3 :     return Semantics(</span></span>
-<span id="L77"><span class="lineNum">      77</span> <span class="tlaGNC">           9 :       attributedHint: AttributedString(AppLocale.labels.typeButton),</span></span>
-<span id="L78"><span class="lineNum">      78</span> <span class="tlaGNC">          15 :       attributedLabel: AttributedString(widget.semanticLabel ?? widget.tooltip),</span></span>
-<span id="L79"><span class="lineNum">      79</span> <span class="tlaGNC">           3 :       child: MouseRegion(</span></span>
-<span id="L80"><span class="lineNum">      80</span> <span class="tlaGNC">           3 :         onEnter: _onEnter,</span></span>
-<span id="L81"><span class="lineNum">      81</span> <span class="tlaGNC">           3 :         onExit: _onExit,</span></span>
-<span id="L82"><span class="lineNum">      82</span> <span class="tlaGNC">           3 :         child: Container(</span></span>
+<span id="L73"><span class="lineNum">      73</span> <span class="tlaGNC">           6 :     final indent = ThemeHelper.getIndent();</span></span>
+<span id="L74"><span class="lineNum">      74</span> <span class="tlaGNC">          36 :     initColor = widget.backgroundColor ?? context.colorScheme.surface.withValues(alpha: 0.1);</span></span>
+<span id="L75"><span class="lineNum">      75</span> <span class="tlaGNC">          12 :     final borderColor = widget.isWide ? context.colorScheme.onSurface : Colors.white30;</span></span>
+<span id="L76"><span class="lineNum">      76</span> <span class="tlaGNC">           6 :     return Semantics(</span></span>
+<span id="L77"><span class="lineNum">      77</span> <span class="tlaGNC">          18 :       attributedHint: AttributedString(AppLocale.labels.typeButton),</span></span>
+<span id="L78"><span class="lineNum">      78</span> <span class="tlaGNC">          30 :       attributedLabel: AttributedString(widget.semanticLabel ?? widget.tooltip),</span></span>
+<span id="L79"><span class="lineNum">      79</span> <span class="tlaGNC">           6 :       child: MouseRegion(</span></span>
+<span id="L80"><span class="lineNum">      80</span> <span class="tlaGNC">           6 :         onEnter: _onEnter,</span></span>
+<span id="L81"><span class="lineNum">      81</span> <span class="tlaGNC">           6 :         onExit: _onExit,</span></span>
+<span id="L82"><span class="lineNum">      82</span> <span class="tlaGNC">           6 :         child: Container(</span></span>
 <span id="L83"><span class="lineNum">      83</span>              :           margin: const EdgeInsets.all(2.0),</span>
 <span id="L84"><span class="lineNum">      84</span>              :           padding: const EdgeInsets.all(1.0),</span>
 <span id="L85"><span class="lineNum">      85</span>              :           height: 42,</span>
-<span id="L86"><span class="lineNum">      86</span> <span class="tlaGNC">           3 :           decoration: BoxDecoration(</span></span>
+<span id="L86"><span class="lineNum">      86</span> <span class="tlaGNC">           6 :           decoration: BoxDecoration(</span></span>
 <span id="L87"><span class="lineNum">      87</span>              :             shape: BoxShape.rectangle,</span>
-<span id="L88"><span class="lineNum">      88</span> <span class="tlaGNC">           6 :             color: isHover ? Colors.black54 : initColor,</span></span>
-<span id="L89"><span class="lineNum">      89</span> <span class="tlaGNC">           9 :             border: Border.all(color: widget.borderColor ?? borderColor, width: 1),</span></span>
+<span id="L88"><span class="lineNum">      88</span> <span class="tlaGNC">          12 :             color: isHover ? Colors.black54 : initColor,</span></span>
+<span id="L89"><span class="lineNum">      89</span> <span class="tlaGNC">          18 :             border: Border.all(color: widget.borderColor ?? borderColor, width: 1),</span></span>
 <span id="L90"><span class="lineNum">      90</span>              :           ),</span>
-<span id="L91"><span class="lineNum">      91</span> <span class="tlaGNC">           3 :           child: Material(</span></span>
+<span id="L91"><span class="lineNum">      91</span> <span class="tlaGNC">           6 :           child: Material(</span></span>
 <span id="L92"><span class="lineNum">      92</span>              :             elevation: 0,</span>
 <span id="L93"><span class="lineNum">      93</span>              :             color: Colors.transparent,</span>
 <span id="L94"><span class="lineNum">      94</span>              :             borderRadius: BorderRadius.zero,</span>
-<span id="L95"><span class="lineNum">      95</span> <span class="tlaGNC">           3 :             child: Center(</span></span>
-<span id="L96"><span class="lineNum">      96</span> <span class="tlaGNC">           6 :               child: widget.isWide</span></span>
+<span id="L95"><span class="lineNum">      95</span> <span class="tlaGNC">           6 :             child: Center(</span></span>
+<span id="L96"><span class="lineNum">      96</span> <span class="tlaGNC">          12 :               child: widget.isWide</span></span>
 <span id="L97"><span class="lineNum">      97</span> <span class="tlaUNC">           0 :                   ? InkWell(</span></span>
 <span id="L98"><span class="lineNum">      98</span> <span class="tlaUNC">           0 :                       onTap: widget.onPressed,</span></span>
 <span id="L99"><span class="lineNum">      99</span> <span class="tlaUNC">           0 :                       child: Row(</span></span>
@@ -173,13 +173,13 @@
 <span id="L111"><span class="lineNum">     111</span>              :                         ],</span>
 <span id="L112"><span class="lineNum">     112</span>              :                       ),</span>
 <span id="L113"><span class="lineNum">     113</span>              :                     )</span>
-<span id="L114"><span class="lineNum">     114</span> <span class="tlaGNC">           3 :                   : IconButton(</span></span>
-<span id="L115"><span class="lineNum">     115</span> <span class="tlaGNC">           6 :                       tooltip: widget.tooltip,</span></span>
-<span id="L116"><span class="lineNum">     116</span> <span class="tlaGNC">           6 :                       onPressed: widget.onPressed,</span></span>
-<span id="L117"><span class="lineNum">     117</span> <span class="tlaGNC">           6 :                       isSelected: widget.isSelected,</span></span>
+<span id="L114"><span class="lineNum">     114</span> <span class="tlaGNC">           6 :                   : IconButton(</span></span>
+<span id="L115"><span class="lineNum">     115</span> <span class="tlaGNC">          12 :                       tooltip: widget.tooltip,</span></span>
+<span id="L116"><span class="lineNum">     116</span> <span class="tlaGNC">          12 :                       onPressed: widget.onPressed,</span></span>
+<span id="L117"><span class="lineNum">     117</span> <span class="tlaGNC">          12 :                       isSelected: widget.isSelected,</span></span>
 <span id="L118"><span class="lineNum">     118</span>              :                       hoverColor: Colors.transparent,</span>
-<span id="L119"><span class="lineNum">     119</span> <span class="tlaGNC">          12 :                       icon: Icon(widget.icon, color: color),</span></span>
-<span id="L120"><span class="lineNum">     120</span> <span class="tlaGNC">           6 :                       selectedIcon: widget.selectedIcon != null</span></span>
+<span id="L119"><span class="lineNum">     119</span> <span class="tlaGNC">          24 :                       icon: Icon(widget.icon, color: color),</span></span>
+<span id="L120"><span class="lineNum">     120</span> <span class="tlaGNC">          12 :                       selectedIcon: widget.selectedIcon != null</span></span>
 <span id="L121"><span class="lineNum">     121</span> <span class="tlaUNC">           0 :                           ? Icon(</span></span>
 <span id="L122"><span class="lineNum">     122</span> <span class="tlaUNC">           0 :                               widget.selectedIcon,</span></span>
 <span id="L123"><span class="lineNum">     123</span> <span class="tlaUNC">           0 :                               color: isHover ? color : widget.selectedColor,</span></span>

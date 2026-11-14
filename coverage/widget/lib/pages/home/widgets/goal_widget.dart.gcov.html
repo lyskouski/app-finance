@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Test Date:</td>
-            <td class="headerValue">2026-11-14 10:30:16</td>
+            <td class="headerValue">2026-11-14 15:04:37</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntryHi">-</td>
@@ -76,31 +76,31 @@
 <span id="L14"><span class="lineNum">      14</span>              :   final double? width;</span>
 <span id="L15"><span class="lineNum">      15</span>              :   final List&lt;dynamic&gt; state;</span>
 <span id="L16"><span class="lineNum">      16</span>              : </span>
-<span id="L17"><span class="lineNum">      17</span> <span class="tlaGNC">           3 :   const GoalWidget({</span></span>
+<span id="L17"><span class="lineNum">      17</span> <span class="tlaGNC">           6 :   const GoalWidget({</span></span>
 <span id="L18"><span class="lineNum">      18</span>              :     super.key,</span>
 <span id="L19"><span class="lineNum">      19</span>              :     required this.state,</span>
 <span id="L20"><span class="lineNum">      20</span>              :     this.width,</span>
 <span id="L21"><span class="lineNum">      21</span>              :   });</span>
 <span id="L22"><span class="lineNum">      22</span>              : </span>
-<span id="L23"><span class="lineNum">      23</span> <span class="tlaGNC">           3 :   @override</span></span>
+<span id="L23"><span class="lineNum">      23</span> <span class="tlaGNC">           6 :   @override</span></span>
 <span id="L24"><span class="lineNum">      24</span>              :   Widget build(BuildContext context) {</span>
-<span id="L25"><span class="lineNum">      25</span> <span class="tlaGNC">           6 :     if (state.isEmpty) {</span></span>
-<span id="L26"><span class="lineNum">      26</span> <span class="tlaGNC">           3 :       return TapWidget(</span></span>
+<span id="L25"><span class="lineNum">      25</span> <span class="tlaGNC">          12 :     if (state.isEmpty) {</span></span>
+<span id="L26"><span class="lineNum">      26</span> <span class="tlaGNC">           6 :       return TapWidget(</span></span>
 <span id="L27"><span class="lineNum">      27</span>              :         route: const RouteSettings(name: AppRoute.goalAddRoute),</span>
-<span id="L28"><span class="lineNum">      28</span> <span class="tlaGNC">           6 :         tooltip: AppLocale.labels.addGoalTooltip,</span></span>
-<span id="L29"><span class="lineNum">      29</span> <span class="tlaGNC">           3 :         child: Container(</span></span>
+<span id="L28"><span class="lineNum">      28</span> <span class="tlaGNC">          12 :         tooltip: AppLocale.labels.addGoalTooltip,</span></span>
+<span id="L29"><span class="lineNum">      29</span> <span class="tlaGNC">           6 :         child: Container(</span></span>
 <span id="L30"><span class="lineNum">      30</span>              :           width: double.infinity,</span>
-<span id="L31"><span class="lineNum">      31</span> <span class="tlaGNC">           6 :           padding: EdgeInsets.only(top: ThemeHelper.getIndent()),</span></span>
-<span id="L32"><span class="lineNum">      32</span> <span class="tlaGNC">           3 :           child: Container(</span></span>
-<span id="L33"><span class="lineNum">      33</span> <span class="tlaGNC">           3 :             decoration: BoxDecoration(</span></span>
+<span id="L31"><span class="lineNum">      31</span> <span class="tlaGNC">          12 :           padding: EdgeInsets.only(top: ThemeHelper.getIndent()),</span></span>
+<span id="L32"><span class="lineNum">      32</span> <span class="tlaGNC">           6 :           child: Container(</span></span>
+<span id="L33"><span class="lineNum">      33</span> <span class="tlaGNC">           6 :             decoration: BoxDecoration(</span></span>
 <span id="L34"><span class="lineNum">      34</span>              :               shape: BoxShape.rectangle,</span>
-<span id="L35"><span class="lineNum">      35</span> <span class="tlaGNC">           9 :               color: context.colorScheme.primary.withValues(alpha: 0.2),</span></span>
-<span id="L36"><span class="lineNum">      36</span> <span class="tlaGNC">          12 :               border: Border.all(color: context.colorScheme.inverseSurface.withValues(alpha: 0.1), width: 1),</span></span>
+<span id="L35"><span class="lineNum">      35</span> <span class="tlaGNC">          18 :               color: context.colorScheme.primary.withValues(alpha: 0.2),</span></span>
+<span id="L36"><span class="lineNum">      36</span> <span class="tlaGNC">          24 :               border: Border.all(color: context.colorScheme.inverseSurface.withValues(alpha: 0.1), width: 1),</span></span>
 <span id="L37"><span class="lineNum">      37</span>              :             ),</span>
-<span id="L38"><span class="lineNum">      38</span> <span class="tlaGNC">           3 :             child: Padding(</span></span>
+<span id="L38"><span class="lineNum">      38</span> <span class="tlaGNC">           6 :             child: Padding(</span></span>
 <span id="L39"><span class="lineNum">      39</span>              :               padding: const EdgeInsets.only(top: 6),</span>
-<span id="L40"><span class="lineNum">      40</span> <span class="tlaGNC">           3 :               child: Center(</span></span>
-<span id="L41"><span class="lineNum">      41</span> <span class="tlaGNC">          15 :                 child: Text(AppLocale.labels.addGoalTooltip, style: context.textTheme.headlineMedium),</span></span>
+<span id="L40"><span class="lineNum">      40</span> <span class="tlaGNC">           6 :               child: Center(</span></span>
+<span id="L41"><span class="lineNum">      41</span> <span class="tlaGNC">          30 :                 child: Text(AppLocale.labels.addGoalTooltip, style: context.textTheme.headlineMedium),</span></span>
 <span id="L42"><span class="lineNum">      42</span>              :               ),</span>
 <span id="L43"><span class="lineNum">      43</span>              :             ),</span>
 <span id="L44"><span class="lineNum">      44</span>              :           ),</span>

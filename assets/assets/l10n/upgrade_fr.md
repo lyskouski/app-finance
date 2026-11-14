@@ -2,6 +2,14 @@
 
 _La liste complète des mises à jour peut être consultée via l'élément de navigation "À propos" du bouton "Conseils"._
 
+### 8.0.0
+- Nouvelle page Intégrations avec des sections dépliables
+- Ajout de Financial Transaction Services (FinTS 4.1) : comptes, soldes et importation des opérations des banques allemandes
+- Ajout de SimpleFIN Bridge (US) : comptes, soldes et importation des opérations des banques et émetteurs de cartes américains
+- Ajout d'Enable Banking (EU) : comptes, soldes et importation des opérations des banques européennes (DSP2)
+- Ajout de l'importation des relevés bancaires (`MT940`, `camt.053`), p. ex. des banques polonaises
+- Correction de la précision des taux de conversion
+
 ### 7.3.0
 - Ajout de la localisation en indonésien (ID)
 - Amélioration de la précision des taux de change

@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Test Date:</td>
-            <td class="headerValue">2026-11-14 10:30:16</td>
+            <td class="headerValue">2026-11-14 15:04:37</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntryHi">-</td>
@@ -74,7 +74,7 @@
 <span id="L12"><span class="lineNum">      12</span>              :   final List&lt;dynamic&gt; children;</span>
 <span id="L13"><span class="lineNum">      13</span>              :   final List&lt;dynamic&gt; strategy;</span>
 <span id="L14"><span class="lineNum">      14</span>              : </span>
-<span id="L15"><span class="lineNum">      15</span> <span class="tlaGNC">           3 :   const GridLayer({</span></span>
+<span id="L15"><span class="lineNum">      15</span> <span class="tlaGNC">           6 :   const GridLayer({</span></span>
 <span id="L16"><span class="lineNum">      16</span>              :     super.key,</span>
 <span id="L17"><span class="lineNum">      17</span>              :     required this.padding,</span>
 <span id="L18"><span class="lineNum">      18</span>              :     required this.crossAxisCount,</span>
@@ -83,18 +83,18 @@
 <span id="L21"><span class="lineNum">      21</span>              :     this.width,</span>
 <span id="L22"><span class="lineNum">      22</span>              :   });</span>
 <span id="L23"><span class="lineNum">      23</span>              : </span>
-<span id="L24"><span class="lineNum">      24</span> <span class="tlaGNC">           3 :   @override</span></span>
+<span id="L24"><span class="lineNum">      24</span> <span class="tlaGNC">           6 :   @override</span></span>
 <span id="L25"><span class="lineNum">      25</span>              :   Widget build(BuildContext context) {</span>
-<span id="L26"><span class="lineNum">      26</span> <span class="tlaGNC">          18 :     fnItem(int index) =&gt; children[index] is Function ? children[index]() : children[index];</span></span>
-<span id="L27"><span class="lineNum">      27</span> <span class="tlaGNC">          24 :     fnList(List&lt;dynamic&gt; scope) =&gt; scope.map((e) =&gt; e is List ? fnList(e).cast&lt;Widget&gt;().toList() : fnItem(e));</span></span>
-<span id="L28"><span class="lineNum">      28</span> <span class="tlaGNC">           3 :     return Padding(</span></span>
-<span id="L29"><span class="lineNum">      29</span> <span class="tlaGNC">           9 :       padding: EdgeInsets.only(left: padding, right: padding),</span></span>
-<span id="L30"><span class="lineNum">      30</span> <span class="tlaGNC">           9 :       child: strategy.length &gt; 1</span></span>
-<span id="L31"><span class="lineNum">      31</span> <span class="tlaGNC">           3 :           ? RowWidget(</span></span>
-<span id="L32"><span class="lineNum">      32</span> <span class="tlaGNC">           3 :               indent: padding,</span></span>
-<span id="L33"><span class="lineNum">      33</span> <span class="tlaGNC">           3 :               maxWidth: width ?? ThemeHelper.getWidth(context, 2),</span></span>
-<span id="L34"><span class="lineNum">      34</span> <span class="tlaGNC">           9 :               chunk: List.generate(crossAxisCount, (_) =&gt; null),</span></span>
-<span id="L35"><span class="lineNum">      35</span> <span class="tlaGNC">          12 :               children: fnList(strategy).cast&lt;List&lt;Widget&gt;&gt;().toList(),</span></span>
+<span id="L26"><span class="lineNum">      26</span> <span class="tlaGNC">          36 :     fnItem(int index) =&gt; children[index] is Function ? children[index]() : children[index];</span></span>
+<span id="L27"><span class="lineNum">      27</span> <span class="tlaGNC">          48 :     fnList(List&lt;dynamic&gt; scope) =&gt; scope.map((e) =&gt; e is List ? fnList(e).cast&lt;Widget&gt;().toList() : fnItem(e));</span></span>
+<span id="L28"><span class="lineNum">      28</span> <span class="tlaGNC">           6 :     return Padding(</span></span>
+<span id="L29"><span class="lineNum">      29</span> <span class="tlaGNC">          18 :       padding: EdgeInsets.only(left: padding, right: padding),</span></span>
+<span id="L30"><span class="lineNum">      30</span> <span class="tlaGNC">          18 :       child: strategy.length &gt; 1</span></span>
+<span id="L31"><span class="lineNum">      31</span> <span class="tlaGNC">           6 :           ? RowWidget(</span></span>
+<span id="L32"><span class="lineNum">      32</span> <span class="tlaGNC">           6 :               indent: padding,</span></span>
+<span id="L33"><span class="lineNum">      33</span> <span class="tlaGNC">           6 :               maxWidth: width ?? ThemeHelper.getWidth(context, 2),</span></span>
+<span id="L34"><span class="lineNum">      34</span> <span class="tlaGNC">          18 :               chunk: List.generate(crossAxisCount, (_) =&gt; null),</span></span>
+<span id="L35"><span class="lineNum">      35</span> <span class="tlaGNC">          24 :               children: fnList(strategy).cast&lt;List&lt;Widget&gt;&gt;().toList(),</span></span>
 <span id="L36"><span class="lineNum">      36</span>              :             )</span>
 <span id="L37"><span class="lineNum">      37</span> <span class="tlaUNC">           0 :           : Column(</span></span>
 <span id="L38"><span class="lineNum">      38</span> <span class="tlaUNC">           0 :               children: fnList(strategy.first).cast&lt;Widget&gt;().toList(),</span></span>

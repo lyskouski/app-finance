@@ -2,6 +2,14 @@
 
 _Poŭny spis abnaŭlieńniaŭ možna prahliadzieć u navihacyjnym punkcie «Ab Dadatku» na knopcy «Padkazki»._
 
+### 8.0.0
+- Dadadziena staronka «Intehracyi» z raskryŭnymi razdziełami
+- Dadadzieny Financial Transaction Services (FinTS 4.1): rachunki, reštki i impart aperacyj z niamieckich bankaŭ
+- Dadadzieny SimpleFIN Bridge (US): rachunki, reštki i impart aperacyj bankaŭ i emitentaŭ kartak ZŠA
+- Dadadzieny Enable Banking (EU): rachunki, reštki i impart aperacyj jeŭrapiejskich bankaŭ (PSD2)
+- Dadadzieny impart fajlaŭ bankaŭskich vypisak (`MT940`, `camt.053`), napryklad z poĺskich bankaŭ
+- Vypraŭliena dakladnasć kursaŭ kanviertacyi
+
 ### 7.3.0
 - Dadadziena lakalizacyja na indaniezijskuju movu (ID)
 - Paliepšana dakladnasć adliustravannia valiut pry abmienie

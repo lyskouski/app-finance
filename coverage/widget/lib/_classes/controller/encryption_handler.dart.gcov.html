@@ -31,13 +31,13 @@
             <td class="headerValue">lcov.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntryLo">16.7&nbsp;%</td>
+            <td class="headerCovTableEntryHi">100.0&nbsp;%</td>
             <td class="headerCovTableEntry">12</td>
-            <td class="headerCovTableEntry">2</td>
+            <td class="headerCovTableEntry">12</td>
           </tr>
           <tr>
             <td class="headerItem">Test Date:</td>
-            <td class="headerValue">2026-11-14 10:30:16</td>
+            <td class="headerValue">2026-11-14 15:04:37</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntryHi">-</td>
@@ -72,28 +72,28 @@
 <span id="L10"><span class="lineNum">      10</span>              : class EncryptionHandler {</span>
 <span id="L11"><span class="lineNum">      11</span>              :   static String prefNotEncrypted = 'false';</span>
 <span id="L12"><span class="lineNum">      12</span>              : </span>
-<span id="L13"><span class="lineNum">      13</span> <span class="tlaUNC">           0 :   static Encrypter get salt =&gt; Encrypter(AES(Key.fromUtf8('tercad-app-finance-by-vlyskouski')));</span></span>
+<span id="L13"><span class="lineNum">      13</span> <span class="tlaGNC">          12 :   static Encrypter get salt =&gt; Encrypter(AES(Key.fromUtf8('tercad-app-finance-by-vlyskouski')));</span></span>
 <span id="L14"><span class="lineNum">      14</span>              : </span>
-<span id="L15"><span class="lineNum">      15</span> <span class="tlaUNC">           0 :   static IV get code =&gt; IV.fromLength(8);</span></span>
+<span id="L15"><span class="lineNum">      15</span> <span class="tlaGNC">           6 :   static IV get code =&gt; IV.fromLength(8);</span></span>
 <span id="L16"><span class="lineNum">      16</span>              : </span>
-<span id="L17"><span class="lineNum">      17</span> <span class="tlaUNC">           0 :   static String getHash(Map&lt;String, dynamic&gt; data) {</span></span>
-<span id="L18"><span class="lineNum">      18</span> <span class="tlaUNC">           0 :     return getHashString(data.toString());</span></span>
+<span id="L17"><span class="lineNum">      17</span> <span class="tlaGNC">           2 :   static String getHash(Map&lt;String, dynamic&gt; data) {</span></span>
+<span id="L18"><span class="lineNum">      18</span> <span class="tlaGNC">           4 :     return getHashString(data.toString());</span></span>
 <span id="L19"><span class="lineNum">      19</span>              :   }</span>
 <span id="L20"><span class="lineNum">      20</span>              : </span>
-<span id="L21"><span class="lineNum">      21</span> <span class="tlaUNC">           0 :   static String getHashString(String data) {</span></span>
-<span id="L22"><span class="lineNum">      22</span> <span class="tlaUNC">           0 :     return md5.convert(utf8.encode(data)).toString();</span></span>
+<span id="L21"><span class="lineNum">      21</span> <span class="tlaGNC">           2 :   static String getHashString(String data) {</span></span>
+<span id="L22"><span class="lineNum">      22</span> <span class="tlaGNC">           6 :     return md5.convert(utf8.encode(data)).toString();</span></span>
 <span id="L23"><span class="lineNum">      23</span>              :   }</span>
 <span id="L24"><span class="lineNum">      24</span>              : </span>
-<span id="L25"><span class="lineNum">      25</span> <span class="tlaGNC">           3 :   static bool doEncrypt() {</span></span>
-<span id="L26"><span class="lineNum">      26</span> <span class="tlaGNC">           6 :     return AppPreferences.get(AppPreferences.prefDoEncrypt) != prefNotEncrypted;</span></span>
+<span id="L25"><span class="lineNum">      25</span> <span class="tlaGNC">           6 :   static bool doEncrypt() {</span></span>
+<span id="L26"><span class="lineNum">      26</span> <span class="tlaGNC">          12 :     return AppPreferences.get(AppPreferences.prefDoEncrypt) != prefNotEncrypted;</span></span>
 <span id="L27"><span class="lineNum">      27</span>              :   }</span>
 <span id="L28"><span class="lineNum">      28</span>              : </span>
-<span id="L29"><span class="lineNum">      29</span> <span class="tlaUNC">           0 :   static String encrypt(String line) {</span></span>
-<span id="L30"><span class="lineNum">      30</span> <span class="tlaUNC">           0 :     return salt.encrypt(line, iv: code).base64;</span></span>
+<span id="L29"><span class="lineNum">      29</span> <span class="tlaGNC">           3 :   static String encrypt(String line) {</span></span>
+<span id="L30"><span class="lineNum">      30</span> <span class="tlaGNC">          12 :     return salt.encrypt(line, iv: code).base64;</span></span>
 <span id="L31"><span class="lineNum">      31</span>              :   }</span>
 <span id="L32"><span class="lineNum">      32</span>              : </span>
-<span id="L33"><span class="lineNum">      33</span> <span class="tlaUNC">           0 :   static String decrypt(String line) {</span></span>
-<span id="L34"><span class="lineNum">      34</span> <span class="tlaUNC">           0 :     return salt.decrypt64(line, iv: code);</span></span>
+<span id="L33"><span class="lineNum">      33</span> <span class="tlaGNC">           2 :   static String decrypt(String line) {</span></span>
+<span id="L34"><span class="lineNum">      34</span> <span class="tlaGNC">           6 :     return salt.decrypt64(line, iv: code);</span></span>
 <span id="L35"><span class="lineNum">      35</span>              :   }</span>
 <span id="L36"><span class="lineNum">      36</span>              : }</span>
         </pre>

@@ -31,13 +31,13 @@
             <td class="headerValue">lcov.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntryLo">58.9&nbsp;%</td>
+            <td class="headerCovTableEntryLo">70.5&nbsp;%</td>
             <td class="headerCovTableEntry">95</td>
-            <td class="headerCovTableEntry">56</td>
+            <td class="headerCovTableEntry">67</td>
           </tr>
           <tr>
             <td class="headerItem">Test Date:</td>
-            <td class="headerValue">2026-11-14 10:30:16</td>
+            <td class="headerValue">2026-11-14 15:04:37</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntryHi">-</td>
@@ -114,14 +114,14 @@
 <span id="L52"><span class="lineNum">      52</span>              :   final double? width;</span>
 <span id="L53"><span class="lineNum">      53</span>              :   final TextInputType? inputType;</span>
 <span id="L54"><span class="lineNum">      54</span>              : </span>
-<span id="L55"><span class="lineNum">      55</span> <span class="tlaGNC">          12 :   Key getKey() =&gt; ValueKey(key?.hashCode ?? '$title $tooltip');</span></span>
+<span id="L55"><span class="lineNum">      55</span> <span class="tlaGNC">          24 :   Key getKey() =&gt; ValueKey(key?.hashCode ?? '$title $tooltip');</span></span>
 <span id="L56"><span class="lineNum">      56</span>              : </span>
-<span id="L57"><span class="lineNum">      57</span> <span class="tlaGNC">           2 :   ({bool min, String? hint, Color? hintColor}) getHintState(BuildContext context) {</span></span>
-<span id="L58"><span class="lineNum">      58</span> <span class="tlaGNC">           2 :     final screenState = ScreenHelper.state();</span></span>
+<span id="L57"><span class="lineNum">      57</span> <span class="tlaGNC">           4 :   ({bool min, String? hint, Color? hintColor}) getHintState(BuildContext context) {</span></span>
+<span id="L58"><span class="lineNum">      58</span> <span class="tlaGNC">           4 :     final screenState = ScreenHelper.state();</span></span>
 <span id="L59"><span class="lineNum">      59</span>              :     final min = screenState.isRight || screenState.isWearable;</span>
-<span id="L60"><span class="lineNum">      60</span> <span class="tlaGNC">           2 :     String? hint = min ? title : tooltip;</span></span>
+<span id="L60"><span class="lineNum">      60</span> <span class="tlaGNC">           4 :     String? hint = min ? title : tooltip;</span></span>
 <span id="L61"><span class="lineNum">      61</span>              :     Color? hintColor;</span>
-<span id="L62"><span class="lineNum">      62</span> <span class="tlaGNC">           2 :     if (isRequired &amp;&amp; min) {</span></span>
+<span id="L62"><span class="lineNum">      62</span> <span class="tlaGNC">           4 :     if (isRequired &amp;&amp; min) {</span></span>
 <span id="L63"><span class="lineNum">      63</span> <span class="tlaUNC">           0 :       if (showError) {</span></span>
 <span id="L64"><span class="lineNum">      64</span> <span class="tlaUNC">           0 :         hint = '$hint [!] ${AppLocale.labels.isRequired}';</span></span>
 <span id="L65"><span class="lineNum">      65</span> <span class="tlaUNC">           0 :         hintColor = context.colorScheme.primary;</span></span>
@@ -133,7 +133,7 @@
 <span id="L71"><span class="lineNum">      71</span>              :     return (min: min, hint: hint, hintColor: hintColor);</span>
 <span id="L72"><span class="lineNum">      72</span>              :   }</span>
 <span id="L73"><span class="lineNum">      73</span>              : </span>
-<span id="L74"><span class="lineNum">      74</span> <span class="tlaGNC">           2 :   const InputWrapper({</span></span>
+<span id="L74"><span class="lineNum">      74</span> <span class="tlaGNC">           4 :   const InputWrapper({</span></span>
 <span id="L75"><span class="lineNum">      75</span>              :     super.key,</span>
 <span id="L76"><span class="lineNum">      76</span>              :     required this.type,</span>
 <span id="L77"><span class="lineNum">      77</span>              :     required this.title,</span>
@@ -151,7 +151,7 @@
 <span id="L89"><span class="lineNum">      89</span>              :     this.inputType,</span>
 <span id="L90"><span class="lineNum">      90</span>              :   });</span>
 <span id="L91"><span class="lineNum">      91</span>              : </span>
-<span id="L92"><span class="lineNum">      92</span> <span class="tlaGNC">           2 :   const InputWrapper.text({</span></span>
+<span id="L92"><span class="lineNum">      92</span> <span class="tlaGNC">           4 :   const InputWrapper.text({</span></span>
 <span id="L93"><span class="lineNum">      93</span>              :     super.key,</span>
 <span id="L94"><span class="lineNum">      94</span>              :     this.type = NamedInputType.textInput,</span>
 <span id="L95"><span class="lineNum">      95</span>              :     required this.title,</span>
@@ -169,7 +169,7 @@
 <span id="L107"><span class="lineNum">     107</span>              :     this.inputType,</span>
 <span id="L108"><span class="lineNum">     108</span>              :   });</span>
 <span id="L109"><span class="lineNum">     109</span>              : </span>
-<span id="L110"><span class="lineNum">     110</span> <span class="tlaUNC">           0 :   const InputWrapper.select({</span></span>
+<span id="L110"><span class="lineNum">     110</span> <span class="tlaGNC">           2 :   const InputWrapper.select({</span></span>
 <span id="L111"><span class="lineNum">     111</span>              :     super.key,</span>
 <span id="L112"><span class="lineNum">     112</span>              :     this.type = NamedInputType.listSelector,</span>
 <span id="L113"><span class="lineNum">     113</span>              :     required this.title,</span>
@@ -241,28 +241,28 @@
 <span id="L179"><span class="lineNum">     179</span>              :     this.inputType,</span>
 <span id="L180"><span class="lineNum">     180</span>              :   });</span>
 <span id="L181"><span class="lineNum">     181</span>              : </span>
-<span id="L182"><span class="lineNum">     182</span> <span class="tlaGNC">           4 :   Widget buildTextInput({required bool min, required String? hint, Color? hintColor}) =&gt; SimpleInput(</span></span>
-<span id="L183"><span class="lineNum">     183</span> <span class="tlaGNC">           2 :         key: getKey(),</span></span>
-<span id="L184"><span class="lineNum">     184</span> <span class="tlaGNC">           2 :         controller: controller!,</span></span>
+<span id="L182"><span class="lineNum">     182</span> <span class="tlaGNC">           8 :   Widget buildTextInput({required bool min, required String? hint, Color? hintColor}) =&gt; SimpleInput(</span></span>
+<span id="L183"><span class="lineNum">     183</span> <span class="tlaGNC">           4 :         key: getKey(),</span></span>
+<span id="L184"><span class="lineNum">     184</span> <span class="tlaGNC">           4 :         controller: controller!,</span></span>
 <span id="L185"><span class="lineNum">     185</span>              :         tooltip: hint,</span>
 <span id="L186"><span class="lineNum">     186</span>              :         withLabel: min,</span>
 <span id="L187"><span class="lineNum">     187</span>              :         hintColor: hintColor,</span>
-<span id="L188"><span class="lineNum">     188</span> <span class="tlaGNC">           2 :         formatter: formatter,</span></span>
-<span id="L189"><span class="lineNum">     189</span> <span class="tlaGNC">           2 :         type: inputType ?? TextInputType.text,</span></span>
-<span id="L190"><span class="lineNum">     190</span> <span class="tlaGNC">           4 :         obscure: inputType == TextInputType.visiblePassword,</span></span>
+<span id="L188"><span class="lineNum">     188</span> <span class="tlaGNC">           4 :         formatter: formatter,</span></span>
+<span id="L189"><span class="lineNum">     189</span> <span class="tlaGNC">           4 :         type: inputType ?? TextInputType.text,</span></span>
+<span id="L190"><span class="lineNum">     190</span> <span class="tlaGNC">           8 :         obscure: inputType == TextInputType.visiblePassword,</span></span>
 <span id="L191"><span class="lineNum">     191</span>              :       );</span>
 <span id="L192"><span class="lineNum">     192</span>              : </span>
-<span id="L193"><span class="lineNum">     193</span> <span class="tlaUNC">           0 :   Widget buildListSelector({required bool min, required String? hint, Color? hintColor}) =&gt;</span></span>
-<span id="L194"><span class="lineNum">     194</span> <span class="tlaUNC">           0 :       ListSelector&lt;ListSelectorItem&gt;(</span></span>
-<span id="L195"><span class="lineNum">     195</span> <span class="tlaUNC">           0 :         key: getKey(),</span></span>
-<span id="L196"><span class="lineNum">     196</span> <span class="tlaUNC">           0 :         value: value != null ? ListSelectorItem(id: value, name: '') : null,</span></span>
-<span id="L197"><span class="lineNum">     197</span> <span class="tlaUNC">           0 :         tooltip: tooltip,</span></span>
+<span id="L193"><span class="lineNum">     193</span> <span class="tlaGNC">           2 :   Widget buildListSelector({required bool min, required String? hint, Color? hintColor}) =&gt;</span></span>
+<span id="L194"><span class="lineNum">     194</span> <span class="tlaGNC">           2 :       ListSelector&lt;ListSelectorItem&gt;(</span></span>
+<span id="L195"><span class="lineNum">     195</span> <span class="tlaGNC">           2 :         key: getKey(),</span></span>
+<span id="L196"><span class="lineNum">     196</span> <span class="tlaGNC">           6 :         value: value != null ? ListSelectorItem(id: value, name: '') : null,</span></span>
+<span id="L197"><span class="lineNum">     197</span> <span class="tlaGNC">           2 :         tooltip: tooltip,</span></span>
 <span id="L198"><span class="lineNum">     198</span>              :         hintText: hint,</span>
 <span id="L199"><span class="lineNum">     199</span>              :         hintColor: hintColor,</span>
-<span id="L200"><span class="lineNum">     200</span> <span class="tlaUNC">           0 :         options: options as List&lt;ListSelectorItem&gt;,</span></span>
+<span id="L200"><span class="lineNum">     200</span> <span class="tlaGNC">           2 :         options: options as List&lt;ListSelectorItem&gt;,</span></span>
 <span id="L201"><span class="lineNum">     201</span> <span class="tlaUNC">           0 :         setState: (ListSelectorItem? v) =&gt; onChange?.call(v?.id),</span></span>
 <span id="L202"><span class="lineNum">     202</span>              :         withLabel: min,</span>
-<span id="L203"><span class="lineNum">     203</span> <span class="tlaUNC">           0 :         isDisabled: isDisabled,</span></span>
+<span id="L203"><span class="lineNum">     203</span> <span class="tlaGNC">           2 :         isDisabled: isDisabled,</span></span>
 <span id="L204"><span class="lineNum">     204</span>              :       );</span>
 <span id="L205"><span class="lineNum">     205</span>              : </span>
 <span id="L206"><span class="lineNum">     206</span> <span class="tlaUNC">           0 :   Widget buildIconSelector({required bool min, required String? hint}) =&gt; IconSelector(</span></span>
@@ -306,71 +306,71 @@
 <span id="L244"><span class="lineNum">     244</span> <span class="tlaUNC">           0 :         labelText: title,</span></span>
 <span id="L245"><span class="lineNum">     245</span>              :       );</span>
 <span id="L246"><span class="lineNum">     246</span>              : </span>
-<span id="L247"><span class="lineNum">     247</span> <span class="tlaUNC">           0 :   Widget buildDateSelector({required bool min}) =&gt; DateInput(</span></span>
-<span id="L248"><span class="lineNum">     248</span> <span class="tlaUNC">           0 :         value: value,</span></span>
-<span id="L249"><span class="lineNum">     249</span> <span class="tlaUNC">           0 :         setState: onChange!,</span></span>
+<span id="L247"><span class="lineNum">     247</span> <span class="tlaGNC">           4 :   Widget buildDateSelector({required bool min}) =&gt; DateInput(</span></span>
+<span id="L248"><span class="lineNum">     248</span> <span class="tlaGNC">           2 :         value: value,</span></span>
+<span id="L249"><span class="lineNum">     249</span> <span class="tlaGNC">           2 :         setState: onChange!,</span></span>
 <span id="L250"><span class="lineNum">     250</span>              :         withLabel: min,</span>
 <span id="L251"><span class="lineNum">     251</span>              :       );</span>
 <span id="L252"><span class="lineNum">     252</span>              : </span>
-<span id="L253"><span class="lineNum">     253</span> <span class="tlaGNC">           4 :   Widget buildAccountSelector({required bool min, required String? hint}) =&gt; ListAccountSelector(</span></span>
-<span id="L254"><span class="lineNum">     254</span> <span class="tlaGNC">           2 :         key: getKey(),</span></span>
-<span id="L255"><span class="lineNum">     255</span> <span class="tlaGNC">           2 :         value: value != null ? ListAccountSelectorItem(item: value) : null,</span></span>
+<span id="L253"><span class="lineNum">     253</span> <span class="tlaGNC">           8 :   Widget buildAccountSelector({required bool min, required String? hint}) =&gt; ListAccountSelector(</span></span>
+<span id="L254"><span class="lineNum">     254</span> <span class="tlaGNC">           4 :         key: getKey(),</span></span>
+<span id="L255"><span class="lineNum">     255</span> <span class="tlaGNC">           6 :         value: value != null ? ListAccountSelectorItem(item: value) : null,</span></span>
 <span id="L256"><span class="lineNum">     256</span>              :         hintText: hint,</span>
-<span id="L257"><span class="lineNum">     257</span> <span class="tlaGNC">           2 :         tooltip: tooltip,</span></span>
-<span id="L258"><span class="lineNum">     258</span> <span class="tlaGNC">           2 :         state: state!,</span></span>
+<span id="L257"><span class="lineNum">     257</span> <span class="tlaGNC">           4 :         tooltip: tooltip,</span></span>
+<span id="L258"><span class="lineNum">     258</span> <span class="tlaGNC">           4 :         state: state!,</span></span>
 <span id="L259"><span class="lineNum">     259</span> <span class="tlaUNC">           0 :         setState: (v) =&gt; onChange?.call((v as ListAccountSelectorItem?)?.item),</span></span>
-<span id="L260"><span class="lineNum">     260</span> <span class="tlaGNC">           2 :         width: width!,</span></span>
+<span id="L260"><span class="lineNum">     260</span> <span class="tlaGNC">           4 :         width: width!,</span></span>
 <span id="L261"><span class="lineNum">     261</span>              :         withLabel: min,</span>
-<span id="L262"><span class="lineNum">     262</span> <span class="tlaGNC">           4 :         options: options?.cast() ?? [],</span></span>
+<span id="L262"><span class="lineNum">     262</span> <span class="tlaGNC">           8 :         options: options?.cast() ?? [],</span></span>
 <span id="L263"><span class="lineNum">     263</span>              :       );</span>
 <span id="L264"><span class="lineNum">     264</span>              : </span>
-<span id="L265"><span class="lineNum">     265</span> <span class="tlaGNC">           4 :   Widget buildBudgetSelector({required bool min, required String? hint}) =&gt; ListBudgetSelector(</span></span>
-<span id="L266"><span class="lineNum">     266</span> <span class="tlaGNC">           2 :         key: getKey(),</span></span>
-<span id="L267"><span class="lineNum">     267</span> <span class="tlaGNC">           2 :         value: value != null ? ListBudgetSelectorItem(item: value) : null,</span></span>
+<span id="L265"><span class="lineNum">     265</span> <span class="tlaGNC">           8 :   Widget buildBudgetSelector({required bool min, required String? hint}) =&gt; ListBudgetSelector(</span></span>
+<span id="L266"><span class="lineNum">     266</span> <span class="tlaGNC">           4 :         key: getKey(),</span></span>
+<span id="L267"><span class="lineNum">     267</span> <span class="tlaGNC">           6 :         value: value != null ? ListBudgetSelectorItem(item: value) : null,</span></span>
 <span id="L268"><span class="lineNum">     268</span>              :         hintText: hint,</span>
-<span id="L269"><span class="lineNum">     269</span> <span class="tlaGNC">           2 :         tooltip: tooltip,</span></span>
-<span id="L270"><span class="lineNum">     270</span> <span class="tlaGNC">           2 :         state: state!,</span></span>
+<span id="L269"><span class="lineNum">     269</span> <span class="tlaGNC">           4 :         tooltip: tooltip,</span></span>
+<span id="L270"><span class="lineNum">     270</span> <span class="tlaGNC">           4 :         state: state!,</span></span>
 <span id="L271"><span class="lineNum">     271</span> <span class="tlaUNC">           0 :         setState: (v) =&gt; onChange?.call((v as ListBudgetSelectorItem?)?.item),</span></span>
-<span id="L272"><span class="lineNum">     272</span> <span class="tlaGNC">           2 :         width: width!,</span></span>
+<span id="L272"><span class="lineNum">     272</span> <span class="tlaGNC">           4 :         width: width!,</span></span>
 <span id="L273"><span class="lineNum">     273</span>              :         withLabel: min,</span>
 <span id="L274"><span class="lineNum">     274</span>              :       );</span>
 <span id="L275"><span class="lineNum">     275</span>              : </span>
-<span id="L276"><span class="lineNum">     276</span> <span class="tlaGNC">           2 :   Widget buildInput({required bool min, required String? hint, Color? hintColor}) {</span></span>
-<span id="L277"><span class="lineNum">     277</span> <span class="tlaGNC">           2 :     return switch (type) {</span></span>
-<span id="L278"><span class="lineNum">     278</span> <span class="tlaGNC">           4 :       NamedInputType.textInput =&gt; buildTextInput(min: min, hint: hint, hintColor: hintColor),</span></span>
-<span id="L279"><span class="lineNum">     279</span> <span class="tlaGNC">           2 :       NamedInputType.listSelector =&gt; buildListSelector(min: min, hint: hint, hintColor: hintColor),</span></span>
-<span id="L280"><span class="lineNum">     280</span> <span class="tlaGNC">           2 :       NamedInputType.iconSelector =&gt; buildIconSelector(min: min, hint: hint),</span></span>
-<span id="L281"><span class="lineNum">     281</span> <span class="tlaGNC">           2 :       NamedInputType.colorSelector =&gt; buildColorSelector(min: min),</span></span>
-<span id="L282"><span class="lineNum">     282</span> <span class="tlaGNC">           2 :       NamedInputType.currencySelector =&gt; buildCurrencySelector(min: min, hint: hint),</span></span>
-<span id="L283"><span class="lineNum">     283</span> <span class="tlaGNC">           4 :       NamedInputType.currencyShort =&gt; buildCurrencyShortSelector(min: min, hint: hint),</span></span>
-<span id="L284"><span class="lineNum">     284</span> <span class="tlaGNC">           2 :       NamedInputType.ymSelector =&gt; buildMonthYearSelector(min: min),</span></span>
-<span id="L285"><span class="lineNum">     285</span> <span class="tlaGNC">           2 :       NamedInputType.dateSelector =&gt; buildDateSelector(min: min),</span></span>
-<span id="L286"><span class="lineNum">     286</span> <span class="tlaGNC">           4 :       NamedInputType.accountSelector =&gt; buildAccountSelector(min: min, hint: hint),</span></span>
-<span id="L287"><span class="lineNum">     287</span> <span class="tlaGNC">           4 :       NamedInputType.budgetSelector =&gt; buildBudgetSelector(min: min, hint: hint),</span></span>
+<span id="L276"><span class="lineNum">     276</span> <span class="tlaGNC">           4 :   Widget buildInput({required bool min, required String? hint, Color? hintColor}) {</span></span>
+<span id="L277"><span class="lineNum">     277</span> <span class="tlaGNC">           4 :     return switch (type) {</span></span>
+<span id="L278"><span class="lineNum">     278</span> <span class="tlaGNC">           8 :       NamedInputType.textInput =&gt; buildTextInput(min: min, hint: hint, hintColor: hintColor),</span></span>
+<span id="L279"><span class="lineNum">     279</span> <span class="tlaGNC">           6 :       NamedInputType.listSelector =&gt; buildListSelector(min: min, hint: hint, hintColor: hintColor),</span></span>
+<span id="L280"><span class="lineNum">     280</span> <span class="tlaGNC">           4 :       NamedInputType.iconSelector =&gt; buildIconSelector(min: min, hint: hint),</span></span>
+<span id="L281"><span class="lineNum">     281</span> <span class="tlaGNC">           4 :       NamedInputType.colorSelector =&gt; buildColorSelector(min: min),</span></span>
+<span id="L282"><span class="lineNum">     282</span> <span class="tlaGNC">           4 :       NamedInputType.currencySelector =&gt; buildCurrencySelector(min: min, hint: hint),</span></span>
+<span id="L283"><span class="lineNum">     283</span> <span class="tlaGNC">           6 :       NamedInputType.currencyShort =&gt; buildCurrencyShortSelector(min: min, hint: hint),</span></span>
+<span id="L284"><span class="lineNum">     284</span> <span class="tlaGNC">           4 :       NamedInputType.ymSelector =&gt; buildMonthYearSelector(min: min),</span></span>
+<span id="L285"><span class="lineNum">     285</span> <span class="tlaGNC">           6 :       NamedInputType.dateSelector =&gt; buildDateSelector(min: min),</span></span>
+<span id="L286"><span class="lineNum">     286</span> <span class="tlaGNC">           8 :       NamedInputType.accountSelector =&gt; buildAccountSelector(min: min, hint: hint),</span></span>
+<span id="L287"><span class="lineNum">     287</span> <span class="tlaGNC">           8 :       NamedInputType.budgetSelector =&gt; buildBudgetSelector(min: min, hint: hint),</span></span>
 <span id="L288"><span class="lineNum">     288</span>              :     };</span>
 <span id="L289"><span class="lineNum">     289</span>              :   }</span>
 <span id="L290"><span class="lineNum">     290</span>              : </span>
-<span id="L291"><span class="lineNum">     291</span> <span class="tlaGNC">           2 :   Widget buildTitle(BuildContext context, {required bool min}) {</span></span>
+<span id="L291"><span class="lineNum">     291</span> <span class="tlaGNC">           4 :   Widget buildTitle(BuildContext context, {required bool min}) {</span></span>
 <span id="L292"><span class="lineNum">     292</span>              :     if (min) {</span>
 <span id="L293"><span class="lineNum">     293</span>              :       return ThemeHelper.emptyBox;</span>
 <span id="L294"><span class="lineNum">     294</span>              :     }</span>
 <span id="L295"><span class="lineNum">     295</span>              : </span>
-<span id="L296"><span class="lineNum">     296</span> <span class="tlaGNC">           2 :     return isRequired</span></span>
-<span id="L297"><span class="lineNum">     297</span> <span class="tlaGNC">           6 :         ? RequiredWidget(title: title, showError: showError)</span></span>
-<span id="L298"><span class="lineNum">     298</span> <span class="tlaGNC">           8 :         : TextWrapper(title, style: context.textTheme.bodyLarge);</span></span>
+<span id="L296"><span class="lineNum">     296</span> <span class="tlaGNC">           4 :     return isRequired</span></span>
+<span id="L297"><span class="lineNum">     297</span> <span class="tlaGNC">          12 :         ? RequiredWidget(title: title, showError: showError)</span></span>
+<span id="L298"><span class="lineNum">     298</span> <span class="tlaGNC">          16 :         : TextWrapper(title, style: context.textTheme.bodyLarge);</span></span>
 <span id="L299"><span class="lineNum">     299</span>              :   }</span>
 <span id="L300"><span class="lineNum">     300</span>              : </span>
-<span id="L301"><span class="lineNum">     301</span> <span class="tlaGNC">           2 :   @override</span></span>
+<span id="L301"><span class="lineNum">     301</span> <span class="tlaGNC">           4 :   @override</span></span>
 <span id="L302"><span class="lineNum">     302</span>              :   Widget build(BuildContext context) {</span>
-<span id="L303"><span class="lineNum">     303</span> <span class="tlaGNC">           2 :     final hintState = getHintState(context);</span></span>
+<span id="L303"><span class="lineNum">     303</span> <span class="tlaGNC">           4 :     final hintState = getHintState(context);</span></span>
 <span id="L304"><span class="lineNum">     304</span>              :     final min = hintState.min;</span>
-<span id="L305"><span class="lineNum">     305</span> <span class="tlaGNC">           2 :     return Column(</span></span>
-<span id="L306"><span class="lineNum">     306</span> <span class="tlaGNC">           2 :       mainAxisAlignment: AppDesign.getAlignment&lt;MainAxisAlignment&gt;(),</span></span>
-<span id="L307"><span class="lineNum">     307</span> <span class="tlaGNC">           2 :       crossAxisAlignment: AppDesign.getAlignment(),</span></span>
-<span id="L308"><span class="lineNum">     308</span> <span class="tlaGNC">           2 :       children: [</span></span>
-<span id="L309"><span class="lineNum">     309</span> <span class="tlaGNC">           2 :         if (!min) buildTitle(context, min: min),</span></span>
-<span id="L310"><span class="lineNum">     310</span> <span class="tlaGNC">           2 :         buildInput(min: min, hint: hintState.hint, hintColor: hintState.hintColor),</span></span>
-<span id="L311"><span class="lineNum">     311</span> <span class="tlaGNC">           2 :         ThemeHelper.hIndent2x,</span></span>
+<span id="L305"><span class="lineNum">     305</span> <span class="tlaGNC">           4 :     return Column(</span></span>
+<span id="L306"><span class="lineNum">     306</span> <span class="tlaGNC">           4 :       mainAxisAlignment: AppDesign.getAlignment&lt;MainAxisAlignment&gt;(),</span></span>
+<span id="L307"><span class="lineNum">     307</span> <span class="tlaGNC">           4 :       crossAxisAlignment: AppDesign.getAlignment(),</span></span>
+<span id="L308"><span class="lineNum">     308</span> <span class="tlaGNC">           4 :       children: [</span></span>
+<span id="L309"><span class="lineNum">     309</span> <span class="tlaGNC">           4 :         if (!min) buildTitle(context, min: min),</span></span>
+<span id="L310"><span class="lineNum">     310</span> <span class="tlaGNC">           4 :         buildInput(min: min, hint: hintState.hint, hintColor: hintState.hintColor),</span></span>
+<span id="L311"><span class="lineNum">     311</span> <span class="tlaGNC">           4 :         ThemeHelper.hIndent2x,</span></span>
 <span id="L312"><span class="lineNum">     312</span>              :       ],</span>
 <span id="L313"><span class="lineNum">     313</span>              :     );</span>
 <span id="L314"><span class="lineNum">     314</span>              :   }</span>

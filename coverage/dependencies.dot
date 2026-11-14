@@ -26,7 +26,23 @@ digraph G {
   }
   {
     rank = same; "_classes";
-    storage [label="<0>STORAGE|<app_preferences>app_preferences|<transaction_log>transaction_log|<app_data>app_data|<history_data>history_data|<file_picker>file_picker|<file_parser>file_parser",fillcolor="silver:white", gradientangle=240, style="filled"];
+    integration [label="<0>INTEGRATION|<integration_record>integration_record",fillcolor="silver:white", gradientangle=240, style="filled"];
+  }
+  {
+    rank = same; "_classes";
+    integration_simplefin [label="<0>INTEGRATION_SIMPLEFIN|<simplefin_client>simplefin_client|<simplefin_importer>simplefin_importer|<simplefin_settings>simplefin_settings",fillcolor="silver:white", gradientangle=240, style="filled"];
+  }
+  {
+    rank = same; "_classes";
+    integration_enablebanking [label="<0>INTEGRATION_ENABLEBANKING|<enablebanking_client>enablebanking_client|<enablebanking_importer>enablebanking_importer|<enablebanking_settings>enablebanking_settings",fillcolor="silver:white", gradientangle=240, style="filled"];
+  }
+  {
+    rank = same; "_classes";
+    integration_fints [label="<0>INTEGRATION_FINTS|<fints_importer>fints_importer|<fints_settings>fints_settings",fillcolor="silver:white", gradientangle=240, style="filled"];
+  }
+  {
+    rank = same; "_classes";
+    storage [label="<0>STORAGE|<app_preferences>app_preferences|<transaction_log>transaction_log|<statement_parser>statement_parser|<app_data>app_data|<history_data>history_data|<file_picker>file_picker|<file_parser>file_parser",fillcolor="silver:white", gradientangle=240, style="filled"];
   }
   {
     rank = same; "_classes";
@@ -35,6 +51,10 @@ digraph G {
   {
     rank = same; "_classes";
     controller [label="<0>CONTROLLER|<fallback_localization_delegate>fallback_localization_delegate|<encryption_handler>encryption_handler|<delayed_call>delayed_call|<focus_controller>focus_controller|<flow_state_machine>flow_state_machine|<payments_controller>payments_controller|<exchange_controller>exchange_controller|<iterator_controller>iterator_controller|<date_format_helper>date_format_helper|<purchase_controller>purchase_controller",fillcolor="silver:white", gradientangle=240, style="filled"];
+  }
+  {
+    rank = same; "_classes";
+    controller_deep_link [label="<0>CONTROLLER_DEEP_LINK|<url_scheme_io>url_scheme_io|<deep_link_handler>deep_link_handler|<url_scheme_stub>url_scheme_stub|<url_scheme>url_scheme",fillcolor="silver:white", gradientangle=240, style="filled"];
   }
   {
     rank = same; "_classes";
@@ -151,6 +171,14 @@ digraph G {
   {
     rank = same; "pages";
     about [label="<0>ABOUT|<about_page>about_page",fillcolor="silver:white", gradientangle=240, style="filled"];
+  }
+  {
+    rank = same; "pages";
+    integration_widgets [label="<0>INTEGRATION_WIDGETS|<fints_dialogs>fints_dialogs|<simplefin_widget>simplefin_widget|<enablebanking_widget>enablebanking_widget|<fints_widget>fints_widget|<integration_account_card>integration_account_card",fillcolor="silver:white", gradientangle=240, style="filled"];
+  }
+  {
+    rank = same; "pages";
+    integration [label="<0>INTEGRATION|<integration_page>integration_page",fillcolor="silver:white", gradientangle=240, style="filled"];
   }
   {
     rank = same; "pages";
@@ -294,11 +322,32 @@ digraph G {
 
   structure_currency -> structure [color="green"];
   structure_currency -> storage [color="green"];
+  integration -> structure [color="green"];
+  integration_simplefin -> herald [color="green"];
+  integration_simplefin -> integration [color="green"];
+  integration_simplefin -> integration_simplefin [color="green"];
+  integration_simplefin -> structure [color="green"];
+  integration_simplefin -> controller [color="green"];
+  integration_simplefin -> storage [color="green"];
+  integration_enablebanking -> herald [color="green"];
+  integration_enablebanking -> integration_enablebanking [color="green"];
+  integration_enablebanking -> integration [color="green"];
+  integration_enablebanking -> structure [color="green"];
+  integration_enablebanking -> controller_deep_link [color="green"];
+  integration_enablebanking -> controller [color="green"];
+  integration_enablebanking -> integration_enablebanking [color="green"];
+  integration_enablebanking -> storage [color="green"];
+  integration_fints -> integration [color="green"];
+  integration_fints -> structure [color="green"];
+  integration_fints -> controller [color="green"];
+  integration_fints -> storage [color="green"];
 
   storage -> controller [color="green"];
   storage -> storage [color="green"];
   storage -> storage_transaction_log [color="green"];
   storage -> _ext_ [color="green"];
+  storage -> herald [color="green"];
+  storage -> integration_fints [color="green"];
 
   storage_transaction_log -> controller [color="green"];
   storage_transaction_log -> storage [color="green"];
@@ -337,6 +386,10 @@ digraph G {
   storage -> structure [color="green"];
   storage -> form [color="green"];
   storage -> _configs_ [color="green"];
+
+
+  controller_deep_link -> controller_deep_link [color="green"];
+
 
   controller -> storage [color="green"];
 
@@ -935,6 +988,50 @@ digraph G {
   about -> wrapper [color="#F0F0F050"];
   about -> _interfaces [color="#F0F0F050"];
   about -> about_widgets [color="#F0F0F050"];
+  integration_widgets -> herald [color="#F0F0F050"];
+  integration_widgets -> _configs_ [color="#F0F0F050"];
+  integration_widgets -> _ext_ [color="#F0F0F050"];
+  integration_widgets -> herald [color="#F0F0F050"];
+  integration_widgets -> integration_simplefin [color="#F0F0F050"];
+  integration_widgets -> storage [color="#F0F0F050"];
+  integration_widgets -> _configs_ [color="#F0F0F050"];
+  integration_widgets -> _ext_ [color="#F0F0F050"];
+  integration_widgets -> button [color="#F0F0F050"];
+  integration_widgets -> generic [color="#F0F0F050"];
+  integration_widgets -> wrapper [color="#F0F0F050"];
+  integration_widgets -> integration_widgets [color="#F0F0F050"];
+  integration_widgets -> controller_deep_link [color="#F0F0F050"];
+  integration_widgets -> herald [color="#F0F0F050"];
+  integration_widgets -> integration_enablebanking [color="#F0F0F050"];
+  integration_widgets -> storage [color="#F0F0F050"];
+  integration_widgets -> _configs_ [color="#F0F0F050"];
+  integration_widgets -> _ext_ [color="#F0F0F050"];
+  integration_widgets -> button [color="#F0F0F050"];
+  integration_widgets -> form [color="#F0F0F050"];
+  integration_widgets -> generic [color="#F0F0F050"];
+  integration_widgets -> wrapper [color="#F0F0F050"];
+  integration_widgets -> integration_widgets [color="#F0F0F050"];
+  integration_widgets -> herald [color="#F0F0F050"];
+  integration_widgets -> integration_fints [color="#F0F0F050"];
+  integration_widgets -> storage [color="#F0F0F050"];
+  integration_widgets -> _configs_ [color="#F0F0F050"];
+  integration_widgets -> _ext_ [color="#F0F0F050"];
+  integration_widgets -> button [color="#F0F0F050"];
+  integration_widgets -> form [color="#F0F0F050"];
+  integration_widgets -> generic [color="#F0F0F050"];
+  integration_widgets -> wrapper [color="#F0F0F050"];
+  integration_widgets -> integration_widgets [color="#F0F0F050"];
+  integration_widgets -> herald [color="#F0F0F050"];
+  integration_widgets -> storage [color="#F0F0F050"];
+  integration_widgets -> _configs_ [color="#F0F0F050"];
+  integration_widgets -> _ext_ [color="#F0F0F050"];
+  integration_widgets -> wrapper [color="#F0F0F050"];
+  integration -> controller_deep_link [color="#F0F0F050"];
+  integration -> herald [color="#F0F0F050"];
+  integration -> _configs_ [color="#F0F0F050"];
+  integration -> _ext_ [color="#F0F0F050"];
+  integration -> _interfaces [color="#F0F0F050"];
+  integration -> integration_widgets [color="#F0F0F050"];
   _interfaces -> _interfaces [color="#F0F0F050"];
   _interfaces_widgets -> herald [color="#F0F0F050"];
   _interfaces_widgets -> structure_navigation [color="#F0F0F050"];

@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Test Date:</td>
-            <td class="headerValue">2026-11-14 10:30:16</td>
+            <td class="headerValue">2026-11-14 15:04:37</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntryHi">-</td>
@@ -74,7 +74,7 @@
 <span id="L12"><span class="lineNum">      12</span>              :   final String tooltip;</span>
 <span id="L13"><span class="lineNum">      13</span>              :   final double? maxWidth;</span>
 <span id="L14"><span class="lineNum">      14</span>              : </span>
-<span id="L15"><span class="lineNum">      15</span> <span class="tlaGNC">           3 :   const TextWrapper(</span></span>
+<span id="L15"><span class="lineNum">      15</span> <span class="tlaGNC">           6 :   const TextWrapper(</span></span>
 <span id="L16"><span class="lineNum">      16</span>              :     this.text, {</span>
 <span id="L17"><span class="lineNum">      17</span>              :     super.key,</span>
 <span id="L18"><span class="lineNum">      18</span>              :     String? tooltip,</span>
@@ -83,12 +83,12 @@
 <span id="L21"><span class="lineNum">      21</span>              :     this.maxLines = 1,</span>
 <span id="L22"><span class="lineNum">      22</span>              :   }) : tooltip = tooltip ?? text;</span>
 <span id="L23"><span class="lineNum">      23</span>              : </span>
-<span id="L24"><span class="lineNum">      24</span> <span class="tlaGNC">           3 :   @override</span></span>
+<span id="L24"><span class="lineNum">      24</span> <span class="tlaGNC">           6 :   @override</span></span>
 <span id="L25"><span class="lineNum">      25</span>              :   Widget build(BuildContext context) {</span>
-<span id="L26"><span class="lineNum">      26</span> <span class="tlaGNC">           3 :     return LayoutBuilder(</span></span>
-<span id="L27"><span class="lineNum">      27</span> <span class="tlaGNC">           3 :       builder: (context, constraints) {</span></span>
-<span id="L28"><span class="lineNum">      28</span> <span class="tlaGNC">           6 :         final width = maxWidth ?? constraints.maxWidth;</span></span>
-<span id="L29"><span class="lineNum">      29</span> <span class="tlaGNC">           9 :         if (ThemeHelper.isTextExceedWidth(text, style, width)) {</span></span>
+<span id="L26"><span class="lineNum">      26</span> <span class="tlaGNC">           6 :     return LayoutBuilder(</span></span>
+<span id="L27"><span class="lineNum">      27</span> <span class="tlaGNC">           6 :       builder: (context, constraints) {</span></span>
+<span id="L28"><span class="lineNum">      28</span> <span class="tlaGNC">          12 :         final width = maxWidth ?? constraints.maxWidth;</span></span>
+<span id="L29"><span class="lineNum">      29</span> <span class="tlaGNC">          18 :         if (ThemeHelper.isTextExceedWidth(text, style, width)) {</span></span>
 <span id="L30"><span class="lineNum">      30</span> <span class="tlaUNC">           0 :           return SizedBox(</span></span>
 <span id="L31"><span class="lineNum">      31</span>              :             width: width,</span>
 <span id="L32"><span class="lineNum">      32</span> <span class="tlaUNC">           0 :             child: Tooltip(</span></span>
@@ -103,12 +103,12 @@
 <span id="L41"><span class="lineNum">      41</span>              :             ),</span>
 <span id="L42"><span class="lineNum">      42</span>              :           );</span>
 <span id="L43"><span class="lineNum">      43</span>              :         } else {</span>
-<span id="L44"><span class="lineNum">      44</span> <span class="tlaGNC">           3 :           return Text(</span></span>
-<span id="L45"><span class="lineNum">      45</span> <span class="tlaGNC">           3 :             text,</span></span>
-<span id="L46"><span class="lineNum">      46</span> <span class="tlaGNC">           3 :             style: style,</span></span>
-<span id="L47"><span class="lineNum">      47</span> <span class="tlaGNC">           3 :             maxLines: maxLines,</span></span>
+<span id="L44"><span class="lineNum">      44</span> <span class="tlaGNC">           6 :           return Text(</span></span>
+<span id="L45"><span class="lineNum">      45</span> <span class="tlaGNC">           6 :             text,</span></span>
+<span id="L46"><span class="lineNum">      46</span> <span class="tlaGNC">           6 :             style: style,</span></span>
+<span id="L47"><span class="lineNum">      47</span> <span class="tlaGNC">           6 :             maxLines: maxLines,</span></span>
 <span id="L48"><span class="lineNum">      48</span>              :             overflow: TextOverflow.ellipsis,</span>
-<span id="L49"><span class="lineNum">      49</span> <span class="tlaGNC">           3 :             textDirection: AppDesign.getAlignment&lt;TextDirection&gt;(),</span></span>
+<span id="L49"><span class="lineNum">      49</span> <span class="tlaGNC">           6 :             textDirection: AppDesign.getAlignment&lt;TextDirection&gt;(),</span></span>
 <span id="L50"><span class="lineNum">      50</span>              :           );</span>
 <span id="L51"><span class="lineNum">      51</span>              :         }</span>
 <span id="L52"><span class="lineNum">      52</span>              :       },</span>

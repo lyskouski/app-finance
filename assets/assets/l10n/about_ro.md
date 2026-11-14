@@ -72,7 +72,11 @@ Care permite utilizatorilor să își gestioneze finanțele fără efort, asigur
   - Diagrama istorică a monedei
 - Sincronizare între dispozitive (P2P)
 - Recuperare prin WebDav sau un fișier direct
-- Import din fișiere `CSV`, `QIF`, `OFX` pentru facturi și facturi
+- Import din fișiere `CSV`, `QIF`, `OFX`, `MT940`, `camt.053` pentru facturi și facturi
+- Integrări
+  - Financial Transaction Services (FinTS 4.1): import de solduri și tranzacții de la băncile germane (PIN/TAN)
+  - SimpleFIN Bridge (US): import de solduri și tranzacții de la băncile și emitenții de carduri din SUA
+  - Enable Banking (EU): import de solduri și tranzacții de la băncile europene (PSD2)
 - Export către fișiere Excel `XLSX`.
 - Criptarea datelor
 - Localizare

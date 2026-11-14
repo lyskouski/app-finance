@@ -31,13 +31,13 @@
             <td class="headerValue">lcov.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntryLo">10.0&nbsp;%</td>
+            <td class="headerCovTableEntryLo">70.0&nbsp;%</td>
             <td class="headerCovTableEntry">10</td>
-            <td class="headerCovTableEntry">1</td>
+            <td class="headerCovTableEntry">7</td>
           </tr>
           <tr>
             <td class="headerItem">Test Date:</td>
-            <td class="headerValue">2026-11-14 10:30:16</td>
+            <td class="headerValue">2026-11-14 15:04:37</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntryHi">-</td>
@@ -73,9 +73,9 @@
 <span id="L11"><span class="lineNum">      11</span>              :   final String id;</span>
 <span id="L12"><span class="lineNum">      12</span>              :   final String name;</span>
 <span id="L13"><span class="lineNum">      13</span>              : </span>
-<span id="L14"><span class="lineNum">      14</span> <span class="tlaUNC">           0 :   Widget build(BuildContext context) {</span></span>
-<span id="L15"><span class="lineNum">      15</span> <span class="tlaUNC">           0 :     final textTheme = Theme.of(context).textTheme;</span></span>
-<span id="L16"><span class="lineNum">      16</span> <span class="tlaUNC">           0 :     return TextWrapper(toString(), style: textTheme.numberMedium.copyWith(color: textTheme.headlineSmall?.color));</span></span>
+<span id="L14"><span class="lineNum">      14</span> <span class="tlaGNC">           2 :   Widget build(BuildContext context) {</span></span>
+<span id="L15"><span class="lineNum">      15</span> <span class="tlaGNC">           4 :     final textTheme = Theme.of(context).textTheme;</span></span>
+<span id="L16"><span class="lineNum">      16</span> <span class="tlaGNC">          12 :     return TextWrapper(toString(), style: textTheme.numberMedium.copyWith(color: textTheme.headlineSmall?.color));</span></span>
 <span id="L17"><span class="lineNum">      17</span>              :   }</span>
 <span id="L18"><span class="lineNum">      18</span>              : </span>
 <span id="L19"><span class="lineNum">      19</span> <span class="tlaUNC">           0 :   Widget suggest(BuildContext context) =&gt; build(context);</span></span>
@@ -83,12 +83,12 @@
 <span id="L21"><span class="lineNum">      21</span> <span class="tlaUNC">           0 :   bool match(String search) =&gt;</span></span>
 <span id="L22"><span class="lineNum">      22</span> <span class="tlaUNC">           0 :       search.isPartOf(name, Locale(AppLocale.code)) || name.toLowerCase().contains(search.toLowerCase());</span></span>
 <span id="L23"><span class="lineNum">      23</span>              : </span>
-<span id="L24"><span class="lineNum">      24</span> <span class="tlaUNC">           0 :   bool equal(dynamic val) =&gt; val is ListSelectorItem ? id == val.id : id == val;</span></span>
+<span id="L24"><span class="lineNum">      24</span> <span class="tlaGNC">           8 :   bool equal(dynamic val) =&gt; val is ListSelectorItem ? id == val.id : id == val;</span></span>
 <span id="L25"><span class="lineNum">      25</span>              : </span>
-<span id="L26"><span class="lineNum">      26</span> <span class="tlaUNC">           0 :   @override</span></span>
-<span id="L27"><span class="lineNum">      27</span> <span class="tlaUNC">           0 :   toString() =&gt; name;</span></span>
+<span id="L26"><span class="lineNum">      26</span> <span class="tlaGNC">           2 :   @override</span></span>
+<span id="L27"><span class="lineNum">      27</span> <span class="tlaGNC">           2 :   toString() =&gt; name;</span></span>
 <span id="L28"><span class="lineNum">      28</span>              : </span>
-<span id="L29"><span class="lineNum">      29</span> <span class="tlaGNC">           2 :   ListSelectorItem({required this.id, required this.name});</span></span>
+<span id="L29"><span class="lineNum">      29</span> <span class="tlaGNC">           4 :   ListSelectorItem({required this.id, required this.name});</span></span>
 <span id="L30"><span class="lineNum">      30</span>              : }</span>
         </pre>
               </td>

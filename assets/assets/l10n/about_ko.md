@@ -72,7 +72,11 @@
   - 통화 내역 차트
 - 장치 간 동기화(P2P)
 - WebDav 또는 직접 파일을 통한 복구
-- 청구서 및 송장에 대해 `CSV`, `QIF`, `OFX` 파일에서 가져 오기
+- 청구서 및 송장에 대해 `CSV`, `QIF`, `OFX`, `MT940`, `camt.053` 파일에서 가져 오기
+- 통합
+  - Financial Transaction Services (FinTS 4.1): 독일 은행의 잔액 및 거래 내역 가져오기 (PIN/TAN)
+  - SimpleFIN Bridge (US): 미국 은행 및 카드 발급사의 잔액 및 거래 내역 가져오기
+  - Enable Banking (EU): 유럽 은행의 잔액 및 거래 내역 가져오기 (PSD2)
 - Excel `XLSX` 파일로 내보내기
 - 데이터 암호화
 - 로컬라이제이션

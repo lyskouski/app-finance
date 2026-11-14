@@ -31,13 +31,13 @@
             <td class="headerValue">lcov.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntryLo">13.0&nbsp;%</td>
+            <td class="headerCovTableEntryLo">19.6&nbsp;%</td>
             <td class="headerCovTableEntry">46</td>
-            <td class="headerCovTableEntry">6</td>
+            <td class="headerCovTableEntry">9</td>
           </tr>
           <tr>
             <td class="headerItem">Test Date:</td>
-            <td class="headerValue">2026-11-14 10:30:16</td>
+            <td class="headerValue">2026-11-14 15:04:37</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntryHi">-</td>
@@ -82,9 +82,9 @@
 <span id="L20"><span class="lineNum">      20</span>              :     ));</span>
 <span id="L21"><span class="lineNum">      21</span>              :   }</span>
 <span id="L22"><span class="lineNum">      22</span>              : </span>
-<span id="L23"><span class="lineNum">      23</span> <span class="tlaGNC">           3 :   DateTime getStartingDay([int startingDay = 1]) {</span></span>
-<span id="L24"><span class="lineNum">      24</span> <span class="tlaGNC">           6 :     if (startingDay &lt;= day) {</span></span>
-<span id="L25"><span class="lineNum">      25</span> <span class="tlaGNC">           9 :       return DateTime(year, month, startingDay);</span></span>
+<span id="L23"><span class="lineNum">      23</span> <span class="tlaGNC">           6 :   DateTime getStartingDay([int startingDay = 1]) {</span></span>
+<span id="L24"><span class="lineNum">      24</span> <span class="tlaGNC">          12 :     if (startingDay &lt;= day) {</span></span>
+<span id="L25"><span class="lineNum">      25</span> <span class="tlaGNC">          18 :       return DateTime(year, month, startingDay);</span></span>
 <span id="L26"><span class="lineNum">      26</span>              :     } else {</span>
 <span id="L27"><span class="lineNum">      27</span> <span class="tlaUNC">           0 :       DateTime previousMonth = DateTime(year, month - 1);</span></span>
 <span id="L28"><span class="lineNum">      28</span> <span class="tlaUNC">           0 :       if (month == 1) {</span></span>
@@ -120,24 +120,24 @@
 <span id="L58"><span class="lineNum">      58</span> <span class="tlaUNC">           0 :     return formatterDate.format(this);</span></span>
 <span id="L59"><span class="lineNum">      59</span>              :   }</span>
 <span id="L60"><span class="lineNum">      60</span>              : </span>
-<span id="L61"><span class="lineNum">      61</span> <span class="tlaUNC">           0 :   String monthDay() {</span></span>
+<span id="L61"><span class="lineNum">      61</span> <span class="tlaGNC">           2 :   String monthDay() {</span></span>
 <span id="L62"><span class="lineNum">      62</span>              :     DateFormat formatterDate;</span>
 <span id="L63"><span class="lineNum">      63</span>              :     try {</span>
-<span id="L64"><span class="lineNum">      64</span> <span class="tlaUNC">           0 :       formatterDate = DateFormat.MMMMd(AppLocale.code);</span></span>
+<span id="L64"><span class="lineNum">      64</span> <span class="tlaGNC">           2 :       formatterDate = DateFormat.MMMMd(AppLocale.code);</span></span>
 <span id="L65"><span class="lineNum">      65</span>              :     } catch (e) {</span>
 <span id="L66"><span class="lineNum">      66</span> <span class="tlaUNC">           0 :       formatterDate = DateFormat.MMMMd('en_US');</span></span>
 <span id="L67"><span class="lineNum">      67</span>              :     }</span>
-<span id="L68"><span class="lineNum">      68</span> <span class="tlaUNC">           0 :     return formatterDate.format(this);</span></span>
+<span id="L68"><span class="lineNum">      68</span> <span class="tlaGNC">           2 :     return formatterDate.format(this);</span></span>
 <span id="L69"><span class="lineNum">      69</span>              :   }</span>
 <span id="L70"><span class="lineNum">      70</span>              : </span>
-<span id="L71"><span class="lineNum">      71</span> <span class="tlaGNC">           3 :   String fullMonth() {</span></span>
+<span id="L71"><span class="lineNum">      71</span> <span class="tlaGNC">           6 :   String fullMonth() {</span></span>
 <span id="L72"><span class="lineNum">      72</span>              :     DateFormat formatterDate;</span>
 <span id="L73"><span class="lineNum">      73</span>              :     try {</span>
-<span id="L74"><span class="lineNum">      74</span> <span class="tlaGNC">           3 :       formatterDate = DateFormat.MMMM(AppLocale.code);</span></span>
+<span id="L74"><span class="lineNum">      74</span> <span class="tlaGNC">           6 :       formatterDate = DateFormat.MMMM(AppLocale.code);</span></span>
 <span id="L75"><span class="lineNum">      75</span>              :     } catch (e) {</span>
 <span id="L76"><span class="lineNum">      76</span> <span class="tlaUNC">           0 :       formatterDate = DateFormat.MMMM('en_US');</span></span>
 <span id="L77"><span class="lineNum">      77</span>              :     }</span>
-<span id="L78"><span class="lineNum">      78</span> <span class="tlaGNC">           3 :     return formatterDate.format(this);</span></span>
+<span id="L78"><span class="lineNum">      78</span> <span class="tlaGNC">           6 :     return formatterDate.format(this);</span></span>
 <span id="L79"><span class="lineNum">      79</span>              :   }</span>
 <span id="L80"><span class="lineNum">      80</span>              : </span>
 <span id="L81"><span class="lineNum">      81</span> <span class="tlaUNC">           0 :   String fullMonthYear() {</span></span>

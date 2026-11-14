@@ -2,6 +2,14 @@
 
 _Úplný seznam aktualizací si můžete prohlédnout v navigační položce „O aplikaci“ na tlačítku „Tipy“._
 
+### 8.0.0
+- Nová stránka Integrace s rozbalovacími sekcemi
+- Přidáno Financial Transaction Services (FinTS 4.1): účty, zůstatky a import transakcí z německých bank
+- Přidáno SimpleFIN Bridge (US): účty, zůstatky a import transakcí amerických bank a vydavatelů karet
+- Přidáno Enable Banking (EU): účty, zůstatky a import transakcí evropských bank (PSD2)
+- Přidán import souborů bankovních výpisů (`MT940`, `camt.053`), např. z polských bank
+- Oprava přesnosti převodních kurzů
+
 ### 7.3.0
 - Přidání lokalizace do indonéštiny (ID)
 - Zlepšení přesnosti měnových kurzů

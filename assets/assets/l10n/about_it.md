@@ -72,7 +72,11 @@ Che permetta agli utenti di gestire le proprie finanze senza sforzo, garantendo 
   - Grafico storico della valuta
 - Sincronizzazione tra dispositivi (P2P)
 - Recupero tramite WebDav o file diretto
-- Importazione da file `CSV`, `QIF`, `OFX` per fatture e bollette
+- Importazione da file `CSV`, `QIF`, `OFX`, `MT940`, `camt.053` per fatture e bollette
+- Integrazioni
+  - Financial Transaction Services (FinTS 4.1): importazione di saldi e movimenti dalle banche tedesche (PIN/TAN)
+  - SimpleFIN Bridge (US): importazione di saldi e movimenti di banche ed emittenti di carte statunitensi
+  - Enable Banking (EU): importazione di saldi e movimenti delle banche europee (PSD2)
 - Esportazione in file Excel `XLSX`
 - Cifratura dei dati
 - Localizzazione

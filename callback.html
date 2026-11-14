@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<!--
+  Copyright 2026 The terCAD team. All rights reserved.
+  Use of this source code is governed by a CC BY-NC-ND 4.0 license that can be found in the LICENSE file.
+
+  Redirect URL for bank authorizations (Integrations > Enable Banking):
+  without the application installed, the address can be copied into it manually
+-->
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="referrer" content="no-referrer">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'unsafe-inline'; script-src 'unsafe-inline'; img-src 'self'">
+  <title>Fingrom: Bank Authorization</title>
+  <link rel="icon" type="image/png" href="favicon.png">
+  <style>
+    :root { color-scheme: light dark; --accent: #2e7d32; }
+    body { margin: 0; font-family: system-ui, sans-serif; display: flex; min-height: 100vh; align-items: center;
+           justify-content: center; padding: 16px; box-sizing: border-box; }
+    main { max-width: 560px; width: 100%; text-align: center; }
+    a.button, button { display: inline-block; margin: 8px 4px; padding: 12px 20px; border-radius: 8px; border: 0;
+                       font-size: 1rem; cursor: pointer; text-decoration: none; background: var(--accent); color: #fff; }
+    button.secondary { background: transparent; color: inherit; border: 1px solid currentColor; }
+    textarea { width: 100%; min-height: 96px; box-sizing: border-box; font-family: monospace; font-size: .85rem; }
+    .error { color: #c62828; }
+    [hidden] { display: none; }
+  </style>
+</head>
+<body>
+<main>
+  <h1>Fingrom</h1>
+  <p id="status">Returning to the application…</p>
+  <p id="error" class="error" hidden></p>
+  <div id="actions" hidden>
+    <a id="open" class="button" href="#">Open Fingrom</a>
+    <p>If the application does not open, copy this address and paste it into
+      <em>Integrations › Enable Banking</em>:</p>
+    <textarea id="address" readonly></textarea>
+    <button id="copy" class="secondary" type="button">Copy</button>
+  </div>
+</main>
+<script>
+  (function () {
+    var params = new URLSearchParams(window.location.search);
+    var error = params.get('error_description') || params.get('error');
+    var status = document.getElementById('status');
+    if (!params.get('code') && !error) {
+      status.textContent = 'No authorization data found in the address.';
+      return;
+    }
+    if (error) {
+      var message = document.getElementById('error');
+      message.textContent = 'The bank reported: ' + error;
+      message.hidden = false;
+    }
+    var link = 'fingrom://integration/enablebanking' + window.location.search;
+    document.getElementById('open').href = link;
+    document.getElementById('address').value = window.location.href;
+    document.getElementById('copy').addEventListener('click', function () {
+      var field = document.getElementById('address');
+      field.select();
+      if (navigator.clipboard) {
+        navigator.clipboard.writeText(field.value);
+      } else {
+        document.execCommand('copy');
+      }
+    });
+    window.location.href = link;
+    setTimeout(function () {
+      status.textContent = 'Authorization received.';
+      document.getElementById('actions').hidden = false;
+    }, 1500);
+  })();
+</script>
+</body>
+</html>

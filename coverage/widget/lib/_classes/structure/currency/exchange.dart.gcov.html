@@ -31,13 +31,13 @@
             <td class="headerValue">lcov.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntryLo">30.0&nbsp;%</td>
+            <td class="headerCovTableEntryHi">90.0&nbsp;%</td>
             <td class="headerCovTableEntry">10</td>
-            <td class="headerCovTableEntry">3</td>
+            <td class="headerCovTableEntry">9</td>
           </tr>
           <tr>
             <td class="headerItem">Test Date:</td>
-            <td class="headerValue">2026-11-14 10:30:16</td>
+            <td class="headerValue">2026-11-14 15:04:37</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntryHi">-</td>
@@ -72,29 +72,29 @@
 <span id="L10"><span class="lineNum">      10</span>              :   AppData store;</span>
 <span id="L11"><span class="lineNum">      11</span>              :   static Currency? defaultCurrency;</span>
 <span id="L12"><span class="lineNum">      12</span>              : </span>
-<span id="L13"><span class="lineNum">      13</span> <span class="tlaGNC">           3 :   Exchange({</span></span>
+<span id="L13"><span class="lineNum">      13</span> <span class="tlaGNC">           6 :   Exchange({</span></span>
 <span id="L14"><span class="lineNum">      14</span>              :     required this.store,</span>
 <span id="L15"><span class="lineNum">      15</span>              :   });</span>
 <span id="L16"><span class="lineNum">      16</span>              : </span>
-<span id="L17"><span class="lineNum">      17</span> <span class="tlaGNC">           3 :   Currency? getDefaultCurrency() {</span></span>
-<span id="L18"><span class="lineNum">      18</span> <span class="tlaGNC">           6 :     defaultCurrency ??= CurrencyProvider.find(AppPreferences.get(AppPreferences.prefCurrency));</span></span>
+<span id="L17"><span class="lineNum">      17</span> <span class="tlaGNC">           6 :   Currency? getDefaultCurrency() {</span></span>
+<span id="L18"><span class="lineNum">      18</span> <span class="tlaGNC">          12 :     defaultCurrency ??= CurrencyProvider.find(AppPreferences.get(AppPreferences.prefCurrency));</span></span>
 <span id="L19"><span class="lineNum">      19</span> <span class="tlaUNC">           0 :     defaultCurrency ??= CurrencyProvider.find('EUR');</span></span>
 <span id="L20"><span class="lineNum">      20</span>              :     CurrencyDefaults.defaultCurrency = defaultCurrency;</span>
 <span id="L21"><span class="lineNum">      21</span>              :     return defaultCurrency;</span>
 <span id="L22"><span class="lineNum">      22</span>              :   }</span>
 <span id="L23"><span class="lineNum">      23</span>              : </span>
-<span id="L24"><span class="lineNum">      24</span> <span class="tlaUNC">           0 :   double reform(double? amount, Currency? origin, Currency? target) {</span></span>
+<span id="L24"><span class="lineNum">      24</span> <span class="tlaGNC">           2 :   double reform(double? amount, Currency? origin, Currency? target) {</span></span>
 <span id="L25"><span class="lineNum">      25</span>              :     amount ??= 0.0;</span>
-<span id="L26"><span class="lineNum">      26</span> <span class="tlaUNC">           0 :     if (origin != null &amp;&amp; target != null &amp;&amp; origin.code != target.code) {</span></span>
-<span id="L27"><span class="lineNum">      27</span> <span class="tlaUNC">           0 :       CurrencyAppData? ex = store.getByUuid('${origin.code}-${target.code}');</span></span>
+<span id="L26"><span class="lineNum">      26</span> <span class="tlaGNC">           2 :     if (origin != null &amp;&amp; target != null &amp;&amp; origin.code != target.code) {</span></span>
+<span id="L27"><span class="lineNum">      27</span> <span class="tlaGNC">           6 :       CurrencyAppData? ex = store.getByUuid('${origin.code}-${target.code}');</span></span>
 <span id="L28"><span class="lineNum">      28</span>              :       if (ex == null) {</span>
-<span id="L29"><span class="lineNum">      29</span> <span class="tlaUNC">           0 :         ex = CurrencyAppData(</span></span>
+<span id="L29"><span class="lineNum">      29</span> <span class="tlaGNC">           2 :         ex = CurrencyAppData(</span></span>
 <span id="L30"><span class="lineNum">      30</span>              :           currency: target,</span>
 <span id="L31"><span class="lineNum">      31</span>              :           currencyFrom: origin,</span>
 <span id="L32"><span class="lineNum">      32</span>              :         );</span>
-<span id="L33"><span class="lineNum">      33</span> <span class="tlaUNC">           0 :         store.add(ex);</span></span>
+<span id="L33"><span class="lineNum">      33</span> <span class="tlaGNC">           4 :         store.add(ex);</span></span>
 <span id="L34"><span class="lineNum">      34</span>              :       }</span>
-<span id="L35"><span class="lineNum">      35</span> <span class="tlaUNC">           0 :       amount *= ex.details;</span></span>
+<span id="L35"><span class="lineNum">      35</span> <span class="tlaGNC">           4 :       amount *= ex.details;</span></span>
 <span id="L36"><span class="lineNum">      36</span>              :     }</span>
 <span id="L37"><span class="lineNum">      37</span>              :     return amount;</span>
 <span id="L38"><span class="lineNum">      38</span>              :   }</span>

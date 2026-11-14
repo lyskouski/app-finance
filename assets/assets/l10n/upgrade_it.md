@@ -3,6 +3,14 @@
 _L'elenco completo degli aggiornamenti può essere consultato tramite la voce di navigazione “Informazioni” del
 pulsante “Suggerimenti”._
 
+### 8.0.0
+- Nuova pagina Integrazioni con sezioni espandibili
+- Aggiunto Financial Transaction Services (FinTS 4.1): conti, saldi e importazione dei movimenti dalle banche tedesche
+- Aggiunto SimpleFIN Bridge (US): conti, saldi e importazione dei movimenti di banche ed emittenti di carte statunitensi
+- Aggiunto Enable Banking (EU): conti, saldi e importazione dei movimenti delle banche europee (PSD2)
+- Aggiunta l'importazione degli estratti conto bancari (`MT940`, `camt.053`), ad es. delle banche polacche
+- Corretta la precisione dei tassi di conversione
+
 ### 7.3.0
 - Aggiunta la localizzazione in indonesiano (ID)
 - Miglioramento della precisione valutaria per i cambi

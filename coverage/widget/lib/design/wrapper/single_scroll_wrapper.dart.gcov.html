@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Test Date:</td>
-            <td class="headerValue">2026-11-14 10:30:16</td>
+            <td class="headerValue">2026-11-14 15:04:37</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntryHi">-</td>
@@ -71,17 +71,17 @@
 <span id="L9"><span class="lineNum">       9</span>              :   final FocusController controller;</span>
 <span id="L10"><span class="lineNum">      10</span>              :   final Widget child;</span>
 <span id="L11"><span class="lineNum">      11</span>              : </span>
-<span id="L12"><span class="lineNum">      12</span> <span class="tlaGNC">           2 :   const SingleScrollWrapper({</span></span>
+<span id="L12"><span class="lineNum">      12</span> <span class="tlaGNC">           3 :   const SingleScrollWrapper({</span></span>
 <span id="L13"><span class="lineNum">      13</span>              :     super.key,</span>
 <span id="L14"><span class="lineNum">      14</span>              :     required this.controller,</span>
 <span id="L15"><span class="lineNum">      15</span>              :     required this.child,</span>
 <span id="L16"><span class="lineNum">      16</span>              :   });</span>
 <span id="L17"><span class="lineNum">      17</span>              : </span>
-<span id="L18"><span class="lineNum">      18</span> <span class="tlaGNC">           2 :   @override</span></span>
+<span id="L18"><span class="lineNum">      18</span> <span class="tlaGNC">           3 :   @override</span></span>
 <span id="L19"><span class="lineNum">      19</span>              :   Widget build(BuildContext context) {</span>
-<span id="L20"><span class="lineNum">      20</span> <span class="tlaGNC">           2 :     return FocusWrapper(</span></span>
-<span id="L21"><span class="lineNum">      21</span> <span class="tlaGNC">           2 :       controller: controller,</span></span>
-<span id="L22"><span class="lineNum">      22</span> <span class="tlaGNC">           8 :       child: SingleChildScrollView(controller: controller.controller, child: child),</span></span>
+<span id="L20"><span class="lineNum">      20</span> <span class="tlaGNC">           3 :     return FocusWrapper(</span></span>
+<span id="L21"><span class="lineNum">      21</span> <span class="tlaGNC">           3 :       controller: controller,</span></span>
+<span id="L22"><span class="lineNum">      22</span> <span class="tlaGNC">          12 :       child: SingleChildScrollView(controller: controller.controller, child: child),</span></span>
 <span id="L23"><span class="lineNum">      23</span>              :     );</span>
 <span id="L24"><span class="lineNum">      24</span>              :   }</span>
 <span id="L25"><span class="lineNum">      25</span>              : }</span>

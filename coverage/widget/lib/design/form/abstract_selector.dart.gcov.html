@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Test Date:</td>
-            <td class="headerValue">2026-11-14 10:30:16</td>
+            <td class="headerValue">2026-11-14 15:04:37</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntryHi">-</td>
@@ -70,7 +70,7 @@
 <span id="L8"><span class="lineNum">       8</span>              : abstract class AbstractSelector extends StatefulWidget {</span>
 <span id="L9"><span class="lineNum">       9</span>              :   final dynamic value;</span>
 <span id="L10"><span class="lineNum">      10</span>              : </span>
-<span id="L11"><span class="lineNum">      11</span> <span class="tlaGNC">           2 :   const AbstractSelector({super.key, this.value});</span></span>
+<span id="L11"><span class="lineNum">      11</span> <span class="tlaGNC">           4 :   const AbstractSelector({super.key, this.value});</span></span>
 <span id="L12"><span class="lineNum">      12</span>              : }</span>
 <span id="L13"><span class="lineNum">      13</span>              : </span>
 <span id="L14"><span class="lineNum">      14</span>              : abstract class AbstractSelectorState&lt;T extends AbstractSelector&gt; extends State&lt;T&gt; {</span>
@@ -78,23 +78,23 @@
 <span id="L16"><span class="lineNum">      16</span>              :   late FocusController focusController;</span>
 <span id="L17"><span class="lineNum">      17</span>              :   final textController = SearchController();</span>
 <span id="L18"><span class="lineNum">      18</span>              : </span>
-<span id="L19"><span class="lineNum">      19</span> <span class="tlaGNC">           2 :   @override</span></span>
+<span id="L19"><span class="lineNum">      19</span> <span class="tlaGNC">           4 :   @override</span></span>
 <span id="L20"><span class="lineNum">      20</span>              :   void dispose() {</span>
-<span id="L21"><span class="lineNum">      21</span> <span class="tlaGNC">           4 :     textController.dispose();</span></span>
-<span id="L22"><span class="lineNum">      22</span> <span class="tlaGNC">           2 :     super.dispose();</span></span>
+<span id="L21"><span class="lineNum">      21</span> <span class="tlaGNC">           8 :     textController.dispose();</span></span>
+<span id="L22"><span class="lineNum">      22</span> <span class="tlaGNC">           4 :     super.dispose();</span></span>
 <span id="L23"><span class="lineNum">      23</span>              :   }</span>
 <span id="L24"><span class="lineNum">      24</span>              : </span>
 <span id="L25"><span class="lineNum">      25</span>              :   void onTap(BuildContext context);</span>
 <span id="L26"><span class="lineNum">      26</span>              : </span>
 <span id="L27"><span class="lineNum">      27</span>              :   Widget buildContent(BuildContext context);</span>
 <span id="L28"><span class="lineNum">      28</span>              : </span>
-<span id="L29"><span class="lineNum">      29</span> <span class="tlaGNC">           2 :   @override</span></span>
+<span id="L29"><span class="lineNum">      29</span> <span class="tlaGNC">           4 :   @override</span></span>
 <span id="L30"><span class="lineNum">      30</span>              :   Widget build(BuildContext context) {</span>
-<span id="L31"><span class="lineNum">      31</span> <span class="tlaGNC">           4 :     focusController = FocusWrapper.of(context) ?? FocusController();</span></span>
-<span id="L32"><span class="lineNum">      32</span> <span class="tlaGNC">          10 :     focus = focusController.bind(this, context: context, value: widget.value);</span></span>
-<span id="L33"><span class="lineNum">      33</span> <span class="tlaGNC">           2 :     return Focus(</span></span>
-<span id="L34"><span class="lineNum">      34</span> <span class="tlaGNC">           6 :       autofocus: mounted &amp;&amp; focusController.isFocused(this) &amp;&amp; widget.value == null,</span></span>
-<span id="L35"><span class="lineNum">      35</span> <span class="tlaGNC">           2 :       child: buildContent(context),</span></span>
+<span id="L31"><span class="lineNum">      31</span> <span class="tlaGNC">          10 :     focusController = FocusWrapper.of(context) ?? FocusController();</span></span>
+<span id="L32"><span class="lineNum">      32</span> <span class="tlaGNC">          20 :     focus = focusController.bind(this, context: context, value: widget.value);</span></span>
+<span id="L33"><span class="lineNum">      33</span> <span class="tlaGNC">           4 :     return Focus(</span></span>
+<span id="L34"><span class="lineNum">      34</span> <span class="tlaGNC">          12 :       autofocus: mounted &amp;&amp; focusController.isFocused(this) &amp;&amp; widget.value == null,</span></span>
+<span id="L35"><span class="lineNum">      35</span> <span class="tlaGNC">           4 :       child: buildContent(context),</span></span>
 <span id="L36"><span class="lineNum">      36</span>              :     );</span>
 <span id="L37"><span class="lineNum">      37</span>              :   }</span>
 <span id="L38"><span class="lineNum">      38</span>              : }</span>

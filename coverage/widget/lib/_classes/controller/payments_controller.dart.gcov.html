@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Test Date:</td>
-            <td class="headerValue">2026-11-14 10:30:16</td>
+            <td class="headerValue">2026-11-14 15:04:37</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntryHi">-</td>
@@ -79,10 +79,10 @@
 <span id="L17"><span class="lineNum">      17</span>              : class PaymentsController {</span>
 <span id="L18"><span class="lineNum">      18</span>              :   final AppData state;</span>
 <span id="L19"><span class="lineNum">      19</span>              : </span>
-<span id="L20"><span class="lineNum">      20</span> <span class="tlaGNC">           3 :   PaymentsController(this.state) {</span></span>
-<span id="L21"><span class="lineNum">      21</span> <span class="tlaGNC">           9 :     final data = state.getList(AppDataType.payments).cast();</span></span>
-<span id="L22"><span class="lineNum">      22</span> <span class="tlaGNC">           3 :     DateTime now = DateTime.now();</span></span>
-<span id="L23"><span class="lineNum">      23</span> <span class="tlaGNC">           3 :     for (PaymentAppData item in data) {</span></span>
+<span id="L20"><span class="lineNum">      20</span> <span class="tlaGNC">           6 :   PaymentsController(this.state) {</span></span>
+<span id="L21"><span class="lineNum">      21</span> <span class="tlaGNC">          18 :     final data = state.getList(AppDataType.payments).cast();</span></span>
+<span id="L22"><span class="lineNum">      22</span> <span class="tlaGNC">           6 :     DateTime now = DateTime.now();</span></span>
+<span id="L23"><span class="lineNum">      23</span> <span class="tlaGNC">           6 :     for (PaymentAppData item in data) {</span></span>
 <span id="L24"><span class="lineNum">      24</span> <span class="tlaUNC">           0 :       item = item.clone();</span></span>
 <span id="L25"><span class="lineNum">      25</span>              :       bool needUpdate = false;</span>
 <span id="L26"><span class="lineNum">      26</span> <span class="tlaUNC">           0 :       while (item.updatedAt.isBefore(now)) {</span></span>
@@ -108,7 +108,7 @@
 <span id="L46"><span class="lineNum">      46</span>              :     }</span>
 <span id="L47"><span class="lineNum">      47</span>              :     // TODO: create iOS Widget</span>
 <span id="L48"><span class="lineNum">      48</span>              :     if (!kIsWeb) {</span>
-<span id="L49"><span class="lineNum">      49</span> <span class="tlaGNC">           3 :       if (Platform.isAndroid) {</span></span>
+<span id="L49"><span class="lineNum">      49</span> <span class="tlaGNC">           6 :       if (Platform.isAndroid) {</span></span>
 <span id="L50"><span class="lineNum">      50</span> <span class="tlaUNC">           0 :         _updateWidget();</span></span>
 <span id="L51"><span class="lineNum">      51</span>              :       }</span>
 <span id="L52"><span class="lineNum">      52</span>              :     }</span>

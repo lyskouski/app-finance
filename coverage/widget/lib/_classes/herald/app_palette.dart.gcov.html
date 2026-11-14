@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Test Date:</td>
-            <td class="headerValue">2026-11-14 10:30:16</td>
+            <td class="headerValue">2026-11-14 15:04:37</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntryHi">-</td>
@@ -68,11 +68,11 @@
 <span id="L6"><span class="lineNum">       6</span>              : import 'package:material_ui/material_ui.dart';</span>
 <span id="L7"><span class="lineNum">       7</span>              : </span>
 <span id="L8"><span class="lineNum">       8</span>              : class AppPalette extends ValueNotifier&lt;String&gt; {</span>
-<span id="L9"><span class="lineNum">       9</span> <span class="tlaGNC">           6 :   static get state =&gt; AppPreferences.get(AppPreferences.prefColor) ?? AppColors.colorApp;</span></span>
+<span id="L9"><span class="lineNum">       9</span> <span class="tlaGNC">          12 :   static get state =&gt; AppPreferences.get(AppPreferences.prefColor) ?? AppColors.colorApp;</span></span>
 <span id="L10"><span class="lineNum">      10</span> <span class="tlaUNC">           0 :   static get light =&gt; AppPreferences.get(AppPreferences.prefPalette) ?? AppDefaultColors().toString();</span></span>
 <span id="L11"><span class="lineNum">      11</span> <span class="tlaUNC">           0 :   static get dark =&gt; AppPreferences.get(AppPreferences.prefPaletteDark) ?? AppDarkColors().toString();</span></span>
 <span id="L12"><span class="lineNum">      12</span>              : </span>
-<span id="L13"><span class="lineNum">      13</span> <span class="tlaGNC">           9 :   AppPalette() : super(state);</span></span>
+<span id="L13"><span class="lineNum">      13</span> <span class="tlaGNC">          18 :   AppPalette() : super(state);</span></span>
 <span id="L14"><span class="lineNum">      14</span>              : </span>
 <span id="L15"><span class="lineNum">      15</span> <span class="tlaUNC">           0 :   Future&lt;void&gt; setMode(String newValue) async {</span></span>
 <span id="L16"><span class="lineNum">      16</span> <span class="tlaUNC">           0 :     if (newValue != value) {</span></span>

@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Test Date:</td>
-            <td class="headerValue">2026-11-14 10:30:16</td>
+            <td class="headerValue">2026-11-14 15:04:37</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntryHi">-</td>
@@ -87,23 +87,23 @@
 <span id="L25"><span class="lineNum">      25</span>              :   double width = 0;</span>
 <span id="L26"><span class="lineNum">      26</span>              :   double originWidth = 0;</span>
 <span id="L27"><span class="lineNum">      27</span>              : </span>
-<span id="L28"><span class="lineNum">      28</span> <span class="tlaGNC">           3 :   @protected</span></span>
+<span id="L28"><span class="lineNum">      28</span> <span class="tlaGNC">           6 :   @protected</span></span>
 <span id="L29"><span class="lineNum">      29</span>              :   ScreenHelper(BuildContext context, BoxConstraints constraints) {</span>
-<span id="L30"><span class="lineNum">      30</span> <span class="tlaGNC">           3 :     init(context, constraints);</span></span>
+<span id="L30"><span class="lineNum">      30</span> <span class="tlaGNC">           6 :     init(context, constraints);</span></span>
 <span id="L31"><span class="lineNum">      31</span>              :   }</span>
 <span id="L32"><span class="lineNum">      32</span>              : </span>
-<span id="L33"><span class="lineNum">      33</span> <span class="tlaGNC">           3 :   void init(BuildContext context, BoxConstraints constraints) {</span></span>
-<span id="L34"><span class="lineNum">      34</span> <span class="tlaGNC">           6 :     isWide = ThemeHelper.isWideScreen(constraints);</span></span>
-<span id="L35"><span class="lineNum">      35</span> <span class="tlaGNC">           6 :     isBottom = ThemeHelper.isNavBottom(constraints);</span></span>
-<span id="L36"><span class="lineNum">      36</span> <span class="tlaGNC">           6 :     isWearable = ThemeHelper.isWearableMode(context, constraints);</span></span>
-<span id="L37"><span class="lineNum">      37</span> <span class="tlaGNC">           6 :     isRight = ThemeHelper.isNavRight(context, constraints);</span></span>
-<span id="L38"><span class="lineNum">      38</span> <span class="tlaGNC">           6 :     isLeftBar = isRight &amp;&amp; ThemeHelper.getHeight(context) &lt; 520;</span></span>
-<span id="L39"><span class="lineNum">      39</span> <span class="tlaGNC">           6 :     height = ThemeHelper.getHeight(context);</span></span>
-<span id="L40"><span class="lineNum">      40</span> <span class="tlaGNC">           6 :     originWidth = ThemeHelper.getWidth(context);</span></span>
-<span id="L41"><span class="lineNum">      41</span> <span class="tlaGNC">           6 :     width = ThemeHelper.getWidth(context, 0, constraints);</span></span>
+<span id="L33"><span class="lineNum">      33</span> <span class="tlaGNC">           6 :   void init(BuildContext context, BoxConstraints constraints) {</span></span>
+<span id="L34"><span class="lineNum">      34</span> <span class="tlaGNC">          12 :     isWide = ThemeHelper.isWideScreen(constraints);</span></span>
+<span id="L35"><span class="lineNum">      35</span> <span class="tlaGNC">          12 :     isBottom = ThemeHelper.isNavBottom(constraints);</span></span>
+<span id="L36"><span class="lineNum">      36</span> <span class="tlaGNC">          12 :     isWearable = ThemeHelper.isWearableMode(context, constraints);</span></span>
+<span id="L37"><span class="lineNum">      37</span> <span class="tlaGNC">          12 :     isRight = ThemeHelper.isNavRight(context, constraints);</span></span>
+<span id="L38"><span class="lineNum">      38</span> <span class="tlaGNC">          12 :     isLeftBar = isRight &amp;&amp; ThemeHelper.getHeight(context) &lt; 520;</span></span>
+<span id="L39"><span class="lineNum">      39</span> <span class="tlaGNC">          12 :     height = ThemeHelper.getHeight(context);</span></span>
+<span id="L40"><span class="lineNum">      40</span> <span class="tlaGNC">          12 :     originWidth = ThemeHelper.getWidth(context);</span></span>
+<span id="L41"><span class="lineNum">      41</span> <span class="tlaGNC">          12 :     width = ThemeHelper.getWidth(context, 0, constraints);</span></span>
 <span id="L42"><span class="lineNum">      42</span>              :   }</span>
 <span id="L43"><span class="lineNum">      43</span>              : </span>
-<span id="L44"><span class="lineNum">      44</span> <span class="tlaGNC">           3 :   static ScreenHelperState state() =&gt; _instance == null</span></span>
+<span id="L44"><span class="lineNum">      44</span> <span class="tlaGNC">           6 :   static ScreenHelperState state() =&gt; _instance == null</span></span>
 <span id="L45"><span class="lineNum">      45</span>              :       ? (</span>
 <span id="L46"><span class="lineNum">      46</span>              :           isWide: false,</span>
 <span id="L47"><span class="lineNum">      47</span>              :           isBottom: false,</span>
@@ -114,21 +114,21 @@
 <span id="L52"><span class="lineNum">      52</span>              :           width: 0,</span>
 <span id="L53"><span class="lineNum">      53</span>              :         )</span>
 <span id="L54"><span class="lineNum">      54</span>              :       : (</span>
-<span id="L55"><span class="lineNum">      55</span> <span class="tlaGNC">           3 :           isWide: _instance!.isWide,</span></span>
-<span id="L56"><span class="lineNum">      56</span> <span class="tlaGNC">           3 :           isBottom: _instance!.isBottom,</span></span>
-<span id="L57"><span class="lineNum">      57</span> <span class="tlaGNC">           3 :           isWearable: _instance!.isWearable,</span></span>
-<span id="L58"><span class="lineNum">      58</span> <span class="tlaGNC">           3 :           isRight: _instance!.isRight,</span></span>
-<span id="L59"><span class="lineNum">      59</span> <span class="tlaGNC">           3 :           isLeftBar: _instance!.isLeftBar,</span></span>
-<span id="L60"><span class="lineNum">      60</span> <span class="tlaGNC">           3 :           height: _instance!.height,</span></span>
-<span id="L61"><span class="lineNum">      61</span> <span class="tlaGNC">           3 :           width: _instance!.width,</span></span>
+<span id="L55"><span class="lineNum">      55</span> <span class="tlaGNC">           6 :           isWide: _instance!.isWide,</span></span>
+<span id="L56"><span class="lineNum">      56</span> <span class="tlaGNC">           6 :           isBottom: _instance!.isBottom,</span></span>
+<span id="L57"><span class="lineNum">      57</span> <span class="tlaGNC">           6 :           isWearable: _instance!.isWearable,</span></span>
+<span id="L58"><span class="lineNum">      58</span> <span class="tlaGNC">           6 :           isRight: _instance!.isRight,</span></span>
+<span id="L59"><span class="lineNum">      59</span> <span class="tlaGNC">           6 :           isLeftBar: _instance!.isLeftBar,</span></span>
+<span id="L60"><span class="lineNum">      60</span> <span class="tlaGNC">           6 :           height: _instance!.height,</span></span>
+<span id="L61"><span class="lineNum">      61</span> <span class="tlaGNC">           6 :           width: _instance!.width,</span></span>
 <span id="L62"><span class="lineNum">      62</span>              :         );</span>
 <span id="L63"><span class="lineNum">      63</span>              : </span>
-<span id="L64"><span class="lineNum">      64</span> <span class="tlaGNC">           3 :   static ScreenHelperState getInstance(BuildContext context, BoxConstraints constraints) {</span></span>
-<span id="L65"><span class="lineNum">      65</span> <span class="tlaGNC">           3 :     _instance ??= ScreenHelper(context, constraints);</span></span>
-<span id="L66"><span class="lineNum">      66</span> <span class="tlaGNC">           9 :     if (_instance?.originWidth != ThemeHelper.getWidth(context)) {</span></span>
+<span id="L64"><span class="lineNum">      64</span> <span class="tlaGNC">           6 :   static ScreenHelperState getInstance(BuildContext context, BoxConstraints constraints) {</span></span>
+<span id="L65"><span class="lineNum">      65</span> <span class="tlaGNC">           6 :     _instance ??= ScreenHelper(context, constraints);</span></span>
+<span id="L66"><span class="lineNum">      66</span> <span class="tlaGNC">          18 :     if (_instance?.originWidth != ThemeHelper.getWidth(context)) {</span></span>
 <span id="L67"><span class="lineNum">      67</span> <span class="tlaUNC">           0 :       _instance?.init(context, constraints);</span></span>
 <span id="L68"><span class="lineNum">      68</span>              :     }</span>
-<span id="L69"><span class="lineNum">      69</span> <span class="tlaGNC">           3 :     return state();</span></span>
+<span id="L69"><span class="lineNum">      69</span> <span class="tlaGNC">           6 :     return state();</span></span>
 <span id="L70"><span class="lineNum">      70</span>              :   }</span>
 <span id="L71"><span class="lineNum">      71</span>              : }</span>
         </pre>
