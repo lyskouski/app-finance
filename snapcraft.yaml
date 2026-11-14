@@ -12,6 +12,13 @@ confinement: strict
 environment:
   LD_LIBRARY_PATH: ${SNAP}/usr/lib/$SNAPCRAFT_ARCH_TRIPLET/pulseaudio
 
+# Single instance (links like fingrom://... reach the running app): own the application's D-Bus name
+slots:
+  dbus-fingrom:
+    interface: dbus
+    bus: session
+    name: com.tercad.fingrom
+
 apps:
   fingrom:
     command: fingrom

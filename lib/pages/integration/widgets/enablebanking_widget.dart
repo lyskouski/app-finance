@@ -1,6 +1,7 @@
 // Copyright 2026 The terCAD team. All rights reserved.
 // Use of this source code is governed by a CC BY-NC-ND 4.0 license that can be found in the LICENSE file.
 
+import 'package:app_finance/_classes/controller/deep_link/deep_link_handler.dart';
 import 'package:app_finance/_classes/herald/app_design.dart';
 import 'package:app_finance/_classes/herald/app_locale.dart';
 import 'package:app_finance/_classes/integration/enablebanking/enablebanking_client.dart';
@@ -67,13 +68,20 @@ class EnableBankingWidgetState extends State<EnableBankingWidget> {
     super.initState();
     settings = EnableBankingSettings.load();
     session = EnableBankingSettings.loadSession();
+    authorizationState = settings.authorizationState.isEmpty ? null : settings.authorizationState;
     applicationId = TextEditingController(text: settings.applicationId);
-    redirectUrl = TextEditingController(text: settings.redirectUrl);
+    redirectUrl = TextEditingController(
+      text: settings.redirectUrl.isEmpty ? EnableBankingSettings.defaultRedirectUrl : settings.redirectUrl,
+    );
     country = TextEditingController(text: settings.country);
+    DeepLinkHandler.enableBankingCallback.addListener(onLink);
+    // A callback that came before this section was open (e.g. the application was restarted meanwhile)
+    WidgetsBinding.instance.addPostFrameCallback((_) => onLink());
   }
 
   @override
   void dispose() {
+    DeepLinkHandler.enableBankingCallback.removeListener(onLink);
     for (final controller in [applicationId, redirectUrl, country, privateKey, code]) {
       controller.dispose();
     }
@@ -127,6 +135,24 @@ class EnableBankingWidgetState extends State<EnableBankingWidget> {
     await settings.save();
   }
 
+  void onLink() {
+    if (!mounted || DeepLinkHandler.enableBankingCallback.value == null || authorizationState == null) {
+      return;
+    }
+    if (isLoading) {
+      Future.delayed(const Duration(milliseconds: 300), onLink);
+      return;
+    }
+    code.text = DeepLinkHandler.takeEnableBankingCallback().toString();
+    confirm();
+  }
+
+  Future<void> _setAuthorizationState(String? state) async {
+    authorizationState = state;
+    settings.authorizationState = state ?? '';
+    await settings.save();
+  }
+
   EnableBankingAspsp? get _aspsp {
     final selected = aspsps.where((e) => e.name == settings.aspsp).firstOrNull;
     if (selected != null || settings.aspsp.isEmpty) {
@@ -153,7 +179,7 @@ class EnableBankingWidgetState extends State<EnableBankingWidget> {
         }
         final state = const Uuid().v4();
         final url = await client.startAuthorization(aspsp: aspsp, redirectUrl: settings.redirectUrl, state: state);
-        authorizationState = state;
+        await _setAuthorizationState(state);
         await (widget.launcher ?? (uri) => launchUrl(uri, mode: LaunchMode.externalApplication))(url);
       });
 
@@ -162,7 +188,7 @@ class EnableBankingWidgetState extends State<EnableBankingWidget> {
         final created = await client.createSession(value);
         await EnableBankingSettings.saveSession(created);
         session = created;
-        authorizationState = null;
+        await _setAuthorizationState(null);
         code.clear();
         await _loadAccounts(client, created);
       });

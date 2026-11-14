@@ -1,6 +1,7 @@
 // Copyright 2026 The terCAD team. All rights reserved.
 // Use of this source code is governed by a CC BY-NC-ND 4.0 license that can be found in the LICENSE file.
 
+import 'package:app_finance/_classes/controller/deep_link/deep_link_handler.dart';
 import 'package:app_finance/_classes/herald/app_locale.dart';
 import 'package:app_finance/_configs/theme_helper.dart';
 import 'package:app_finance/_ext/build_context_ext.dart';
@@ -64,6 +65,8 @@ class IntegrationPageState extends AbstractPageState<IntegrationPage> {
               leading: Icon(item.icon),
               title: Text(item.title, style: context.textTheme.titleMedium),
               maintainState: true,
+              // A bank's callback (deep link) is completed by its section
+              initiallyExpanded: item.id == 'enablebanking' && DeepLinkHandler.enableBankingCallback.value != null,
               childrenPadding: EdgeInsets.fromLTRB(indent * 2, 0, indent * 2, indent * 2),
               expandedCrossAxisAlignment: CrossAxisAlignment.stretch,
               children: [Builder(builder: item.builder)],

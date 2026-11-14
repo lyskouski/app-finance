@@ -236,6 +236,22 @@ void main() {
   });
 
   group('EnableBankingSettings', () {
+    test('takes the callback page next to the web build, else the deep link of the application', () {
+      for (final (base, expected) in [
+        ('https://tercad.com/app/finance/', 'https://tercad.com/app/finance/callback.html'),
+        (
+          'https://tercad.com/app/finance/index.html#/app/finance/integration',
+          'https://tercad.com/app/finance/callback.html'
+        ),
+        ('https://lyskouski.github.io/app-finance/?lang=pl#/', 'https://lyskouski.github.io/app-finance/callback.html'),
+        ('http://localhost:8080/', 'http://localhost:8080/callback.html'),
+      ]) {
+        expect(EnableBankingSettings.redirectUrlFor(Uri.parse(base)), expected, reason: base);
+      }
+      expect(EnableBankingSettings.redirectUrlFor(null), 'fingrom://integration/enablebanking');
+      expect(EnableBankingSettings.redirectUrlFor(Uri.parse('file:///app/')), 'fingrom://integration/enablebanking');
+    });
+
     test('keeps the private key and the session encrypted', () async {
       await EnableBankingSettings.saveKey(testPrivateKeyPkcs8);
       final session = EnableBankingSession(

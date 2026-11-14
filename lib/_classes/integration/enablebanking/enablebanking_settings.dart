@@ -3,15 +3,34 @@
 
 import 'dart:convert';
 
+import 'package:app_finance/_classes/controller/deep_link/deep_link_handler.dart';
 import 'package:app_finance/_classes/controller/encryption_handler.dart';
 import 'package:app_finance/_classes/integration/enablebanking/enablebanking_client.dart';
 import 'package:app_finance/_classes/storage/app_preferences.dart';
+import 'package:flutter/foundation.dart';
 
 class EnableBankingSettings {
+  // Native applications are opened by the bank's redirect directly (deep link)
+  static const callbackUrl = '${DeepLinkHandler.scheme}://integration${DeepLinkHandler.enableBankingPath}';
+
+  static const callbackPage = 'callback.html';
+
+  static String get defaultRedirectUrl => redirectUrlFor(kIsWeb ? Uri.base : null);
+
+  @visibleForTesting
+  static String redirectUrlFor(Uri? base) {
+    if (base != null && (base.scheme == 'https' || base.scheme == 'http') && base.host.isNotEmpty) {
+      return base.resolve(callbackPage).toString();
+    }
+    return callbackUrl;
+  }
+
   String applicationId;
   String redirectUrl;
   String country;
   String aspsp;
+
+  String authorizationState;
 
   // Bank account (IBAN, else uid) to the uuid of the application's account
   final Map<String, String> links;
@@ -24,6 +43,7 @@ class EnableBankingSettings {
     this.redirectUrl = '',
     this.country = '',
     this.aspsp = '',
+    this.authorizationState = '',
     Map<String, String>? links,
     Map<String, DateTime>? imported,
   })  : links = links ?? {},
@@ -34,6 +54,7 @@ class EnableBankingSettings {
         'redirectUrl': redirectUrl,
         'country': country,
         'aspsp': aspsp,
+        'authorizationState': authorizationState,
         'links': links,
         'imported': imported.map((key, value) => MapEntry(key, value.toIso8601String())),
       };
@@ -43,6 +64,7 @@ class EnableBankingSettings {
         redirectUrl: json['redirectUrl'] ?? '',
         country: json['country'] ?? '',
         aspsp: json['aspsp'] ?? '',
+        authorizationState: json['authorizationState'] ?? '',
         links: (json['links'] as Map<String, dynamic>? ?? {}).map((key, value) => MapEntry(key, value.toString())),
         imported: (json['imported'] as Map<String, dynamic>? ?? {}).map(
           (key, value) => MapEntry(key, DateTime.parse(value.toString())),

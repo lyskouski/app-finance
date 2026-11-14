@@ -65,5 +65,16 @@
   <true/>
   <key>ITSEncryptionExportComplianceCode</key>
   <string>e1ee37ee-6a3c-4b65-848f-55bfe01178da</string>
+  <key>CFBundleURLTypes</key>
+  <array>
+    <dict>
+      <key>CFBundleURLName</key>
+      <string>com.tercad.fingrom</string>
+      <key>CFBundleURLSchemes</key>
+      <array>
+        <string>fingrom</string>
+      </array>
+    </dict>
+  </array>
 </dict>
 </plist>

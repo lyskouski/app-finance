@@ -3,6 +3,7 @@
 
 import 'dart:async';
 
+import 'package:app_finance/_classes/controller/deep_link/deep_link_handler.dart';
 import 'package:app_finance/_classes/controller/fallback_localization_delegate.dart';
 import 'package:app_finance/_classes/herald/app_budget_positive.dart';
 import 'package:app_finance/_classes/herald/app_design.dart';
@@ -89,6 +90,7 @@ void main() async {
 
     AppPreferences.pref = await SharedPreferences.getInstance();
     CurrencyDefaults.cache = AppPreferences.pref;
+    await DeepLinkHandler.init();
     final appSync = AppSync();
     runApp(
       MultiProvider(
