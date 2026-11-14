@@ -7,7 +7,7 @@ import 'package:app_finance/_classes/storage/app_data.dart';
 import 'package:app_finance/_classes/structure/navigation/app_route.dart';
 import 'package:app_finance/_configs/theme_helper.dart';
 import 'package:app_finance/design/wrapper/text_wrapper.dart';
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:flutter_swipe_action_cell/core/cell.dart';
 import 'package:provider/provider.dart';
 

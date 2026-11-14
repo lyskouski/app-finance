@@ -3,7 +3,7 @@
 
 import 'dart:math';
 
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 
 extension IntExt on int {
   IconData toIcon() => IconData(this, fontFamily: 'MaterialIcons');

@@ -22,7 +22,7 @@ import 'package:app_finance/main.dart';
 import 'package:dart_class_wrapper/dart_class_wrapper.dart';
 import 'package:file/file.dart';
 import 'package:file/local.dart';
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -113,7 +113,7 @@ class PumpMain {
     await tester.pumpWidget(
       MaterialApp(
         debugShowCheckedModeBanner: false,
-        localizationsDelegates: AppLocalizations.localizationsDelegates,
+        localizationsDelegates: const [AppLocalizations.delegate, ...GlobalMaterialLocalizations.delegates],
         supportedLocales: AppLocalizations.supportedLocales,
         theme: ThemeData(
           brightness: Brightness.light,

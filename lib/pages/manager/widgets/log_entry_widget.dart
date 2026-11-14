@@ -7,7 +7,7 @@ import 'package:app_finance/_ext/build_context_ext.dart';
 import 'package:app_finance/_ext/date_time_ext.dart';
 import 'package:app_finance/design/wrapper/text_wrapper.dart';
 import 'package:app_finance/pages/manager/widgets/log_entry.dart';
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 
 class LogEntryWidget extends StatelessWidget {
   final LogEntry entry;

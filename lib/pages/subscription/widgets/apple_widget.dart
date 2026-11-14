@@ -6,7 +6,7 @@ import 'package:app_finance/_classes/herald/app_locale.dart';
 import 'package:app_finance/_classes/herald/app_purchase.dart';
 import 'package:app_finance/_configs/theme_helper.dart';
 import 'package:app_finance/pages/subscription/widgets/purchase_widget.dart';
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:provider/provider.dart';
 
 class AppleWidget extends StatelessWidget {

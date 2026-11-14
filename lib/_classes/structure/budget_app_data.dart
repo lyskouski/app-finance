@@ -14,7 +14,7 @@ import 'package:app_finance/_ext/date_time_ext.dart';
 import 'package:app_finance/_ext/int_ext.dart';
 import 'package:app_finance/_ext/string_ext.dart';
 import 'package:app_finance/_mixins/storage_mixin.dart';
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:flutter_currency_picker/flutter_currency_picker.dart';
 
 class BudgetAppData extends AbstractAppData with StorageMixin {

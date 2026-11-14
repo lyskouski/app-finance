@@ -11,7 +11,7 @@ import 'package:app_finance/_classes/structure/navigation/app_route.dart';
 import 'package:app_finance/pages/_interfaces/abstract_page_state.dart';
 import 'package:app_finance/design/generic/base_line_widget.dart';
 import 'package:app_finance/design/wrapper/confirmation_wrapper.dart';
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:flutter_currency_picker/flutter_currency_picker.dart';
 
 class GoalViewPage extends StatefulWidget {

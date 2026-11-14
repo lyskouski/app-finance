@@ -14,7 +14,7 @@ import 'package:app_finance/pages/bill/widgets/bill_header_widget.dart';
 import 'package:app_finance/design/wrapper/confirmation_wrapper.dart';
 import 'package:app_finance/pages/bill/widgets/bill_line_widget.dart';
 import 'package:app_finance/pages/bill/bill_split_page.dart';
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 
 class BillViewPage extends StatefulWidget {
   final String uuid;

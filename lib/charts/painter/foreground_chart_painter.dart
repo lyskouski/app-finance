@@ -3,7 +3,7 @@
 
 import 'package:app_finance/_classes/herald/app_locale.dart';
 import 'package:app_finance/charts/painter/abstract_painter.dart';
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:intl/intl.dart' as intl;
 
 typedef Percentage = int;
