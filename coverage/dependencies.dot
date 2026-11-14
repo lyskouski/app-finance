@@ -42,7 +42,7 @@ digraph G {
   }
   {
     rank = same; "_configs";
-    _configs_ [label="<0>_CONFIGS_|<design_type>design_type|<mobile_platform>mobile_platform|<screen_helper>screen_helper|<account_type>account_type|<mobile_platform_io>mobile_platform_io|<automation_type>automation_type|<theme_helper>theme_helper|<mobile_platform_stub>mobile_platform_stub|<custom_text_theme>custom_text_theme|<firebase_options>firebase_options|<payment_type>payment_type|<custom_color_scheme>custom_color_scheme|<member_list>member_list|<sorting_type>sorting_type|<budget_type>budget_type",fillcolor="silver:white", gradientangle=240, style="filled"];
+    _configs_ [label="<0>_CONFIGS_|<design_type>design_type|<mobile_platform>mobile_platform|<screen_helper>screen_helper|<account_type>account_type|<localization_delegates>localization_delegates|<mobile_platform_io>mobile_platform_io|<automation_type>automation_type|<theme_helper>theme_helper|<mobile_platform_stub>mobile_platform_stub|<custom_text_theme>custom_text_theme|<firebase_options>firebase_options|<payment_type>payment_type|<custom_color_scheme>custom_color_scheme|<member_list>member_list|<sorting_type>sorting_type|<budget_type>budget_type",fillcolor="silver:white", gradientangle=240, style="filled"];
   }
   {
     rank = same; "charts";
@@ -378,6 +378,7 @@ digraph G {
   _configs_ -> _configs_ [color="green"];
   _configs_ -> herald [color="green"];
   _configs_ -> form [color="green"];
+  _configs_ -> l10n_ [color="green"];
 
   _configs_ -> herald [color="green"];
   _configs_ -> form [color="green"];

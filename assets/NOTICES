@@ -2386,6 +2386,7 @@ See the License for the specific language governing permissions and
 limitations under the License.
 --------------------------------------------------------------------------------
 cross_file
+cupertino_ui
 flutter_plugin_android_lifecycle
 google_fonts
 in_app_purchase
@@ -2395,6 +2396,7 @@ in_app_purchase_storekit
 listen
 local_auth_android
 local_auth_platform_interface
+material_ui
 path_provider
 path_provider_android
 path_provider_foundation
@@ -26654,7 +26656,7 @@ month_picker_dialog
 
 MIT License
 
-Copyright (c) 2025 Gianluca Bettega
+Copyright (c) 2026 Gianluca Bettega
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
