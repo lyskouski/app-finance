@@ -17,7 +17,7 @@ import 'package:app_finance/pages/_interfaces/abstract_add_page.dart';
 import 'package:app_finance/pages/bill/widgets/expenses_tab.dart';
 import 'package:app_finance/pages/bill/widgets/income_tab.dart';
 import 'package:app_finance/pages/bill/widgets/transfer_tab.dart';
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 
 class PaymentAddPage extends AbstractAddPage {
   const PaymentAddPage({super.key});

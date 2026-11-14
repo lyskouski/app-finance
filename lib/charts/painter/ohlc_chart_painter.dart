@@ -3,7 +3,7 @@
 
 import 'package:app_finance/charts/interface/ohlc_data.dart';
 import 'package:app_finance/charts/painter/abstract_painter.dart';
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 
 class OhlcChartPainter extends AbstractPainter {
   final List<OhlcData> data;

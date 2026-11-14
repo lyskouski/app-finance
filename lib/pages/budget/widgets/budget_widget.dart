@@ -3,7 +3,7 @@
 
 import 'package:app_finance/pages/budget/widgets/budget_line_widget.dart';
 import 'package:app_finance/components/widgets/budget_widget.dart' as home;
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 
 class BudgetWidget extends home.BudgetWidget {
   BudgetWidget({

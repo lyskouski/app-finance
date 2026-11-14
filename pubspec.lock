@@ -257,6 +257,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.0.9"
+  cupertino_ui:
+    dependency: transitive
+    description:
+      name: cupertino_ui
+      sha256: "369e39a1c5c030a6212589c3da1809920b1c2cfade7b02aade7695bfa4b88c3a"
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.1.6"
   custom_date_range_picker:
     dependency: "direct main"
     description:
@@ -948,6 +956,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "0.13.0"
+  material_ui:
+    dependency: "direct main"
+    description:
+      name: material_ui
+      sha256: "474c135fd46b56ff1d35ca982155e8863d28fbc6464d1192acf4ee53a738680e"
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.11.0"
   meta:
     dependency: transitive
     description:
@@ -976,10 +992,10 @@ packages:
     dependency: "direct main"
     description:
       name: month_picker_dialog
-      sha256: acb19b732b14ac3b757faa7f4091001819b672816bc5f89af5d932e8b60e7db1
+      sha256: fbfdfe19f2c2249c0ea428cc1d5630cbfee0bae9c98375f0786191db8cde6b2e
       url: "https://pub.dev"
     source: hosted
-    version: "6.7.3"
+    version: "7.0.0"
   msix:
     dependency: "direct dev"
     description:
@@ -1618,5 +1634,5 @@ packages:
     source: hosted
     version: "3.1.4"
 sdks:
-  dart: ">=3.13.0 <4.0.0"
+  dart: ">=3.14.0 <4.0.0"
   flutter: ">=3.47.0"

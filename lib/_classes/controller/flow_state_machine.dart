@@ -3,7 +3,7 @@
 
 import 'package:app_finance/_classes/storage/app_data.dart';
 import 'package:app_finance/_classes/structure/interface_app_data.dart';
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 
 class FlowStateMachine {
   static void deactivate(NavigatorState? nav, {required AppData store, String? uuid, InterfaceAppData? data}) {

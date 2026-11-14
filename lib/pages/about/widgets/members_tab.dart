@@ -7,7 +7,7 @@ import 'package:app_finance/_configs/theme_helper.dart';
 import 'package:app_finance/_mixins/launcher_mixin.dart';
 import 'package:app_finance/design/button/full_sized_button_widget.dart';
 import 'package:app_finance/pages/about/widgets/member_widget.dart';
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 
 class MembersTab extends StatelessWidget with LauncherMixin {
   const MembersTab({super.key});

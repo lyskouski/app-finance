@@ -10,7 +10,7 @@ import 'package:app_finance/pages/bill/widgets/income_tab.dart';
 import 'package:app_finance/pages/_interfaces/interface_page_inject.dart';
 import 'package:app_finance/pages/bill/widgets/transfer_tab.dart';
 import 'package:app_finance/design/wrapper/tab_widget.dart';
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 
 class BillAddPage extends StatefulWidget {
   final int focus;

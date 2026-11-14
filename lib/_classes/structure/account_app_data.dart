@@ -7,7 +7,7 @@ import 'package:app_finance/_classes/storage/app_data.dart';
 import 'package:app_finance/_configs/account_type.dart';
 import 'package:app_finance/_ext/date_time_ext.dart';
 import 'package:app_finance/_ext/int_ext.dart';
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:flutter_currency_picker/flutter_currency_picker.dart';
 
 class AccountAppData extends AbstractAppData {

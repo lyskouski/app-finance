@@ -13,7 +13,7 @@ import 'package:app_finance/design/wrapper/confirmation_wrapper.dart';
 import 'package:app_finance/pages/_interfaces/abstract_page_state.dart';
 import 'package:app_finance/pages/manager/widgets/log_entry.dart';
 import 'package:app_finance/pages/manager/widgets/log_entry_widget.dart';
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 
 class ManagerPage extends StatefulWidget {
   const ManagerPage({super.key});

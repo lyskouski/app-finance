@@ -17,7 +17,7 @@ import 'package:app_finance/design/wrapper/row_widget.dart';
 import 'package:app_finance/design/wrapper/text_wrapper.dart';
 import 'package:app_finance/design/button/toolbar_button_widget.dart';
 import 'package:flutter/foundation.dart';
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:flutter_grid_layout/flutter_grid_layout.dart';
 import 'package:provider/provider.dart';
 

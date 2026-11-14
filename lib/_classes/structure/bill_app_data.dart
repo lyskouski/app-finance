@@ -7,7 +7,7 @@ import 'package:app_finance/_classes/structure/budget_app_data.dart';
 import 'package:app_finance/_classes/storage/app_data.dart';
 import 'package:app_finance/_ext/date_time_ext.dart';
 import 'package:app_finance/_mixins/storage_mixin.dart';
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:flutter_currency_picker/flutter_currency_picker.dart';
 
 class BillAppData extends AbstractAppData with StorageMixin {

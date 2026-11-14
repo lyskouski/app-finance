@@ -11,7 +11,7 @@ import 'package:app_finance/design/wrapper/row_widget.dart';
 import 'package:app_finance/design/wrapper/tab_widget.dart';
 import 'package:app_finance/design/wrapper/text_wrapper.dart';
 import 'package:app_finance/pages/about/widgets/members_tab.dart';
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:package_info_plus/package_info_plus.dart';
 
 class AboutPage extends StatefulWidget {

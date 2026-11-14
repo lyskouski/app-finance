@@ -14,7 +14,7 @@ import 'package:app_finance/design/generic/base_line_widget.dart';
 import 'package:app_finance/pages/bill/bill_page.dart';
 import 'package:app_finance/design/generic/base_header_widget.dart';
 import 'package:app_finance/design/generic/base_swipe_widget.dart';
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 
 class InvoicePage extends StatefulWidget {
   const InvoicePage({super.key});
