@@ -241,6 +241,24 @@
     "editPaymentTooltip": "تحرير الدفع",
     "editTooltip": "تحرير",
     "editTransferTooltip": "تحرير التحويل",
+    "enableBankingAppId": "معرّف التطبيق",
+    "enableBankingBank": "البنك",
+    "enableBankingCode": "عنوان الصفحة المفتوحة بعد التفويض",
+    "enableBankingCodeTooltip": "أكّد الوصول في البنك، ثم انسخ العنوان من المتصفح والصقه هنا",
+    "enableBankingCountry": "الدولة (رمز ISO، مثل DE)",
+    "enableBankingDescription": "استيراد الأرصدة والمعاملات من البنوك الأوروبية عبر واجهة Enable Banking API (PSD2) باستخدام تطبيقك الخاص المسجّل في enablebanking.com. الوصول للقراءة فقط: لا يتم تنفيذ أي مدفوعات.",
+    "enableBankingHeadline": "Enable Banking (EU)",
+    "enableBankingIncomplete": "املأ معرّف التطبيق والمفتاح الخاص وعنوان URL لإعادة التوجيه والدولة",
+    "enableBankingKey": "المفتاح الخاص (PEM)",
+    "enableBankingKeyInvalid": "مفتاح خاص غير صالح: يُتوقع كتلة PEM \"PRIVATE KEY\"",
+    "enableBankingKeyNotRsa": "مفتاح خاص غير صالح: يُتوقع مفتاح RSA",
+    "enableBankingKeyTooltip": "يُنشأ مع التطبيق في Enable Banking Control Panel؛ ويُخزَّن مشفّرًا. اتركه فارغًا للاحتفاظ بالمفتاح المخزَّن",
+    "enableBankingLoadBanks": "تحميل البنوك",
+    "enableBankingNoAuthPage": "لم يُرجع Enable Banking صفحة التفويض",
+    "enableBankingNoCode": "لم يُعثر على رمز التفويض في العنوان",
+    "enableBankingRedirect": "عنوان URL لإعادة التوجيه",
+    "enableBankingRedirectTooltip": "مسجّل للتطبيق؛ يعود إليه البنك بعد التفويض",
+    "enableBankingStateMismatch": "العنوان يخص تفويضًا آخر، اتصل مجددًا",
     "encryptionMode": "تشفير البيانات",
     "error": "خطأ {value}",
     "@error": {
@@ -263,6 +281,36 @@
         }
     },
     "failData": "المبلغ المستقطع",
+    "finTsApproved": "تمت الموافقة في تطبيق البنك",
+    "finTsBankCode": "رمز البنك (BLZ)",
+    "finTsCustomerId": "معرّف العميل (إذا كان مختلفًا عن معرّف المستخدم)",
+    "finTsDescription": "استيراد الأرصدة والمعاملات من البنوك التي تدعم FinTS 4.1 (PIN/TAN). الوصول للقراءة فقط: لا يتم تنفيذ أي مدفوعات.",
+    "finTsHeadline": "Financial Transaction Services (FinTS 4.1)",
+    "finTsIncomplete": "املأ عنوان URL للخادم ورمز البنك ومعرّف المستخدم ورقم تسجيل المنتج",
+    "finTsLoginChanged": "غيّر البنك بيانات تسجيل الدخول، حدّث معرّف المستخدم أو معرّف العميل: {value}",
+    "@finTsLoginChanged": {
+        "value": {
+            "type": "String"
+        }
+    },
+    "finTsLoginRefused": "رفض البنك تسجيل الدخول السابق: {value}. هل تريد إعادة المحاولة باستخدام رمز PIN المُدخل؟",
+    "@finTsLoginRefused": {
+        "value": {
+            "type": "String"
+        }
+    },
+    "finTsPin": "PIN",
+    "finTsPinHint": "يُستخدم لهذه الجلسة فقط ولا يُحفظ أبدًا",
+    "finTsProductId": "رقم تسجيل المنتج",
+    "finTsProductIdTooltip": "يصدر عن Deutsche Kreditwirtschaft لمطوّر التطبيق",
+    "finTsTan": "TAN",
+    "finTsTanHeadline": "مصادقة المعاملة (TAN)",
+    "finTsTanMedium": "اختر وسيط TAN",
+    "finTsTanMethod": "اختر طريقة TAN",
+    "finTsUrl": "عنوان URL لخادم FinTS الخاص بالبنك",
+    "finTsUserId": "معرّف المستخدم (تسجيل الدخول)",
+    "finTsVersion": "إصدار البروتوكول",
+    "finTsWebUnsupported": "لا تسمح خوادم البنوك بالوصول من المتصفح. استخدم تطبيق سطح المكتب أو تطبيق الهاتف المحمول.",
     "flowTypeInvoice": "الفاتورة",
     "flowTypeTooltip": "نوع المبلغ فاتورة، فاتورة",
     "forecastData": "تنبؤات",
@@ -290,6 +338,48 @@
     "incomeHeadline": "الدخل",
     "incomeHealth": "رادار صحة الدخل",
     "incomeTooltip": "تعيين تفاصيل الدخل",
+    "integrationAccessDenied": "تم إلغاء الوصول أو أن بيانات الاعتماد غير صحيحة",
+    "integrationConnect": "اتصال",
+    "integrationDateFrom": "استيراد المعاملات منذ",
+    "integrationDisconnect": "قطع الاتصال",
+    "integrationForget": "نسيان الوصول",
+    "integrationHeadline": "التكاملات",
+    "integrationHttpError": "ردّت الخدمة بخطأ (HTTP {value})",
+    "@integrationHttpError": {
+        "value": {
+            "type": "String"
+        }
+    },
+    "integrationHttpsRequired": "يُسمح فقط بالعناوين الآمنة (HTTPS)",
+    "integrationImport": "استيراد المعاملات",
+    "integrationImported": "تم الاستيراد: {added}، تم التخطي لوجودها مسبقًا: {skipped}، قيد الانتظار (لم يتم استيرادها): {pending}",
+    "@integrationImported": {
+        "added": {
+            "type": "int"
+        },
+        "skipped": {
+            "type": "int"
+        },
+        "pending": {
+            "type": "int"
+        }
+    },
+    "integrationInvalidAmount": "مبلغ غير صالح: {value}",
+    "@integrationInvalidAmount": {
+        "value": {
+            "type": "String"
+        }
+    },
+    "integrationNoAccounts": "لم يقدّم البنك أي حسابات",
+    "integrationPaymentRequired": "تتطلب الخدمة دفعًا مقابل الوصول",
+    "integrationSelectTarget": "اختر الحساب وفئة الميزانية للاستيراد إليهما",
+    "integrationServiceError": "رسالة الخدمة: {value}",
+    "@integrationServiceError": {
+        "value": {
+            "type": "String"
+        }
+    },
+    "integrationUnexpectedResponse": "استجابة غير متوقعة من الخدمة",
     "invoiceHeadline": "الفواتير",
     "invoiceSum": "الفواتير {value}",
     "@invoiceSum": {
@@ -398,6 +488,13 @@
     "settingsBaseHeadline": "الأساسيات",
     "settingsHeadline": "الإعدادات",
     "settingsSaved": "تم حفظ الإعدادات!",
+    "simpleFinDescription": "استيراد الأرصدة والمعاملات من البنوك وجهات إصدار البطاقات الأمريكية عبر SimpleFIN Bridge. الوصول للقراءة فقط: لا يتم تنفيذ أي مدفوعات.",
+    "simpleFinHeadline": "SimpleFIN Bridge (US)",
+    "simpleFinNoCredentials": "أرجع SimpleFIN Bridge عنوان وصول بدون بيانات اعتماد",
+    "simpleFinToken": "رمز إعداد SimpleFIN",
+    "simpleFinTokenClaimed": "رمز الإعداد غير موجود أو تم استخدامه بالفعل",
+    "simpleFinTokenInvalid": "رمز إعداد SimpleFIN غير صالح",
+    "simpleFinTokenTooltip": "يُنشأ في SimpleFIN Bridge الخاص بك (مثل bridge.simplefin.org) لهذا التطبيق؛ ويمكن استخدامه مرة واحدة فقط",
     "skipFromTotals": "الاستبعاد من المجاميع",
     "skipTooltip": "تخطي الخطوة (الخطوات)",
     "sortTooltip": "فرز العناصر",

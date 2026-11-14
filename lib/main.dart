@@ -3,6 +3,7 @@
 
 import 'dart:async';
 
+import 'package:app_finance/_classes/controller/deep_link/deep_link_handler.dart';
 import 'package:app_finance/_classes/controller/fallback_localization_delegate.dart';
 import 'package:app_finance/_classes/herald/app_budget_positive.dart';
 import 'package:app_finance/_classes/herald/app_design.dart';
@@ -49,6 +50,7 @@ import 'package:app_finance/pages/goal/goal_add_page.dart';
 import 'package:app_finance/pages/goal/goal_edit_page.dart';
 import 'package:app_finance/pages/goal/goal_page.dart';
 import 'package:app_finance/pages/goal/goal_view_page.dart';
+import 'package:app_finance/pages/integration/integration_page.dart';
 import 'package:app_finance/pages/home/home_page.dart';
 import 'package:app_finance/pages/invoice/invoice_edit_page.dart';
 import 'package:app_finance/pages/invoice/invoice_page.dart';
@@ -88,6 +90,7 @@ void main() async {
 
     AppPreferences.pref = await SharedPreferences.getInstance();
     CurrencyDefaults.cache = AppPreferences.pref;
+    await DeepLinkHandler.init();
     final appSync = AppSync();
     runApp(
       MultiProvider(
@@ -245,6 +248,7 @@ class MyAppState extends State<MyApp> {
           AppRoute.invoiceSearchRoute => InvoiceSearchPage(),
           AppRoute.invoiceTransferRoute => InvoiceTransferPage(),
           AppRoute.invoiceTransferSearchRoute => InvoiceTransferSearchPage(),
+          AppRoute.integrationRoute => const IntegrationPage(),
           AppRoute.homeRoute => const HomePage(),
           AppRoute.managerRoute => const ManagerPage(),
           AppRoute.metricsRoute => const MetricsPage(),

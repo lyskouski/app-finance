@@ -1,8 +1,11 @@
 // Copyright 2023 The terCAD team. All rights reserved.
 // Use of this source code is governed by a CC BY-NC-ND 4.0 license that can be found in the LICENSE file.
 
+import 'dart:typed_data';
+
 import 'package:app_finance/_classes/herald/app_locale.dart';
 import 'package:app_finance/_classes/storage/file_parser.dart';
+import 'package:app_finance/_classes/storage/statement_parser.dart';
 import 'package:app_finance/_mixins/file/file_import_mixin.dart';
 import 'package:csv/csv.dart';
 
@@ -12,7 +15,7 @@ class FilePicker with FileImportMixin {
   static const csvFormat = 'csv';
   static const qifFormat = 'qif';
   static const ofxFormat = 'ofx';
-  static const fileFormats = [csvFormat, qifFormat, ofxFormat];
+  static const fileFormats = [csvFormat, qifFormat, ofxFormat, ...StatementParser.formats];
   final List<String> ext;
   List<String> columnMap = [
     FileParser.attrBillUuid,
@@ -31,7 +34,25 @@ class FilePicker with FileImportMixin {
     AppLocale.labels.flowTypeTooltip,
   ];
 
+  // Pending transactions a statement file holds, left out of the import
+  int pending = 0;
+
   FilePicker(this.ext);
+
+  FileScope parseStatement(String format, Uint8List bytes) {
+    final (:rows, :pending) = StatementParser.parse(format, bytes);
+    this.pending = pending;
+    columnMap = [
+      FileParser.attrBillUuid,
+      FileParser.attrBillAmount,
+      FileParser.attrBillComment,
+      FileParser.attrBillDate,
+      FileParser.attrBillType,
+      FileParser.attrBillCurrency,
+      '',
+    ];
+    return rows;
+  }
 
   FileScope _parseCsv(String content, String splitter) {
     final result = CsvToListConverter(eol: splitter).convert(content);
@@ -119,6 +140,14 @@ class FilePicker with FileImportMixin {
   }
 
   Future<FileScope?> pickFile() async {
+    final format = ext.first;
+    if (StatementParser.isStatement(format)) {
+      final bytes = await importFileBytes(StatementParser.extensions[format]!);
+      if (bytes == null) {
+        throw Exception(AppLocale.labels.missingContent);
+      }
+      return parseStatement(format, bytes);
+    }
     String? content = await importFile(ext);
     if (content != null) {
       final splitter = content.contains('\r\n') ? '\r\n' : '\n';

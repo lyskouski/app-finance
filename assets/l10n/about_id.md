@@ -72,7 +72,11 @@ Yang memberdayakan pengguna untuk mengelola keuangan mereka dengan mudah sambil 
   - Grafik Riwayat Mata Uang
 - Sinkronisasi antarperangkat (P2P)
 - Pemulihan melalui WebDav atau File langsung
-- Impor dari file `CSV`, `QIF`, `OFX` untuk Tagihan dan Faktur
+- Impor dari file `CSV`, `QIF`, `OFX`, `MT940`, `camt.053` untuk Tagihan dan Faktur
+- Integrasi
+  - Financial Transaction Services (FinTS 4.1): impor saldo dan transaksi dari bank Jerman (PIN/TAN)
+  - SimpleFIN Bridge (US): impor saldo dan transaksi dari bank dan penerbit kartu AS
+  - Enable Banking (EU): impor saldo dan transaksi dari bank Eropa (PSD2)
 - Ekspor ke file Excel `XLSX`
 - Enkripsi data
 - Lokalisasi

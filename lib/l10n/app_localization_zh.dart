@@ -597,6 +597,62 @@ class AppLocalizationsZh extends AppLocalizations {
   String get editTransferTooltip => '编辑转账';
 
   @override
+  String get enableBankingAppId => '应用 ID';
+
+  @override
+  String get enableBankingBank => '银行';
+
+  @override
+  String get enableBankingCode => '授权后打开页面的地址';
+
+  @override
+  String get enableBankingCodeTooltip => '在银行确认访问后，从浏览器复制地址并粘贴到此处';
+
+  @override
+  String get enableBankingCountry => '国家（ISO 代码，如 DE）';
+
+  @override
+  String get enableBankingDescription =>
+      '使用您在 enablebanking.com 注册的应用，通过 Enable Banking API（PSD2）导入欧洲银行的余额和交易。仅限只读访问：不会执行任何付款。';
+
+  @override
+  String get enableBankingHeadline => 'Enable Banking (EU)';
+
+  @override
+  String get enableBankingIncomplete => '请填写应用 ID、私钥、重定向 URL 和国家';
+
+  @override
+  String get enableBankingKey => '私钥（PEM）';
+
+  @override
+  String get enableBankingKeyInvalid => '私钥无效：需要 PEM 块“PRIVATE KEY”';
+
+  @override
+  String get enableBankingKeyNotRsa => '私钥无效：需要 RSA 密钥';
+
+  @override
+  String get enableBankingKeyTooltip =>
+      '在 Enable Banking Control Panel 中随应用一起创建；加密存储。留空则保留已存储的私钥';
+
+  @override
+  String get enableBankingLoadBanks => '加载银行';
+
+  @override
+  String get enableBankingNoAuthPage => 'Enable Banking 未返回授权页面';
+
+  @override
+  String get enableBankingNoCode => '地址中未找到授权码';
+
+  @override
+  String get enableBankingRedirect => '重定向 URL';
+
+  @override
+  String get enableBankingRedirectTooltip => '已为应用注册；授权后银行将返回此地址';
+
+  @override
+  String get enableBankingStateMismatch => '该地址属于其他授权，请重新连接';
+
+  @override
   String get encryptionMode => '数据加密';
 
   @override
@@ -635,6 +691,71 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String get failData => '扣除金额';
+
+  @override
+  String get finTsApproved => '已在银行应用中批准';
+
+  @override
+  String get finTsBankCode => '银行代码 (BLZ)';
+
+  @override
+  String get finTsCustomerId => '客户 ID（如与用户 ID 不同）';
+
+  @override
+  String get finTsDescription =>
+      '从支持 FinTS 4.1（PIN/TAN）的银行导入余额和交易。仅限只读访问：不会执行任何付款。';
+
+  @override
+  String get finTsHeadline => 'Financial Transaction Services (FinTS 4.1)';
+
+  @override
+  String get finTsIncomplete => '请填写服务器 URL、银行代码、用户 ID 和产品注册号';
+
+  @override
+  String finTsLoginChanged(Object value) {
+    return '银行已更改登录信息，请更新用户 ID 或客户 ID：$value';
+  }
+
+  @override
+  String finTsLoginRefused(Object value) {
+    return '银行拒绝了上次登录：$value。使用输入的 PIN 重试？';
+  }
+
+  @override
+  String get finTsPin => 'PIN';
+
+  @override
+  String get finTsPinHint => '仅用于本次会话，绝不保存';
+
+  @override
+  String get finTsProductId => '产品注册号';
+
+  @override
+  String get finTsProductIdTooltip => '由 Deutsche Kreditwirtschaft 颁发给应用开发商';
+
+  @override
+  String get finTsTan => 'TAN';
+
+  @override
+  String get finTsTanHeadline => '交易验证 (TAN)';
+
+  @override
+  String get finTsTanMedium => '选择 TAN 介质';
+
+  @override
+  String get finTsTanMethod => '选择 TAN 方式';
+
+  @override
+  String get finTsUrl => '银行的 FinTS 服务器 URL';
+
+  @override
+  String get finTsUserId => '用户 ID（登录名）';
+
+  @override
+  String get finTsVersion => '协议版本';
+
+  @override
+  String get finTsWebUnsupported => '银行服务器不允许从浏览器访问。请使用桌面或移动应用。';
 
   @override
   String get flowTypeInvoice => '发票';
@@ -703,6 +824,62 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String get incomeTooltip => '设置收入详情';
+
+  @override
+  String get integrationAccessDenied => '访问已被撤销或凭据不正确';
+
+  @override
+  String get integrationConnect => '连接';
+
+  @override
+  String get integrationDateFrom => '导入交易的起始日期';
+
+  @override
+  String get integrationDisconnect => '断开连接';
+
+  @override
+  String get integrationForget => '删除访问权限';
+
+  @override
+  String get integrationHeadline => '集成';
+
+  @override
+  String integrationHttpError(Object value) {
+    return '服务返回错误（HTTP $value）';
+  }
+
+  @override
+  String get integrationHttpsRequired => '仅允许安全（HTTPS）地址';
+
+  @override
+  String get integrationImport => '导入交易';
+
+  @override
+  String integrationImported(Object added, Object pending, Object skipped) {
+    return '已导入：$added，因已存在而跳过：$skipped，待处理（未导入）：$pending';
+  }
+
+  @override
+  String integrationInvalidAmount(Object value) {
+    return '金额无效：$value';
+  }
+
+  @override
+  String get integrationNoAccounts => '银行未提供任何账户';
+
+  @override
+  String get integrationPaymentRequired => '该服务需要付费才能访问';
+
+  @override
+  String get integrationSelectTarget => '请选择要导入的账户和预算类别';
+
+  @override
+  String integrationServiceError(Object value) {
+    return '服务消息：$value';
+  }
+
+  @override
+  String get integrationUnexpectedResponse => '服务返回了意外的响应';
 
   @override
   String get invoiceHeadline => '发票';
@@ -949,6 +1126,29 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String get settingsSaved => '设置已保存！';
+
+  @override
+  String get simpleFinDescription =>
+      '通过 SimpleFIN Bridge 导入美国银行和发卡机构的余额与交易。仅限只读访问：不会执行任何付款。';
+
+  @override
+  String get simpleFinHeadline => 'SimpleFIN Bridge (US)';
+
+  @override
+  String get simpleFinNoCredentials => 'SimpleFIN Bridge 返回了不含凭据的访问地址';
+
+  @override
+  String get simpleFinToken => 'SimpleFIN 设置令牌';
+
+  @override
+  String get simpleFinTokenClaimed => '设置令牌不存在或已被使用';
+
+  @override
+  String get simpleFinTokenInvalid => 'SimpleFIN 设置令牌无效';
+
+  @override
+  String get simpleFinTokenTooltip =>
+      '在您的 SimpleFIN Bridge（如 bridge.simplefin.org）中为本应用创建；只能使用一次';
 
   @override
   String get skipFromTotals => '不计入总数';
@@ -1716,6 +1916,62 @@ class AppLocalizationsZhTw extends AppLocalizationsZh {
   String get editTransferTooltip => '編輯轉移';
 
   @override
+  String get enableBankingAppId => '應用程式 ID';
+
+  @override
+  String get enableBankingBank => '銀行';
+
+  @override
+  String get enableBankingCode => '授權後開啟頁面的網址';
+
+  @override
+  String get enableBankingCodeTooltip => '在銀行確認存取後，從瀏覽器複製網址並貼上至此處';
+
+  @override
+  String get enableBankingCountry => '國家（ISO 代碼，如 DE）';
+
+  @override
+  String get enableBankingDescription =>
+      '使用您在 enablebanking.com 註冊的應用程式，透過 Enable Banking API（PSD2）匯入歐洲銀行的餘額與交易。僅限唯讀存取：不會執行任何付款。';
+
+  @override
+  String get enableBankingHeadline => 'Enable Banking (EU)';
+
+  @override
+  String get enableBankingIncomplete => '請填寫應用程式 ID、私密金鑰、重新導向 URL 與國家';
+
+  @override
+  String get enableBankingKey => '私密金鑰（PEM）';
+
+  @override
+  String get enableBankingKeyInvalid => '私密金鑰無效：需要 PEM 區塊「PRIVATE KEY」';
+
+  @override
+  String get enableBankingKeyNotRsa => '私密金鑰無效：需要 RSA 金鑰';
+
+  @override
+  String get enableBankingKeyTooltip =>
+      '在 Enable Banking Control Panel 中隨應用程式一併建立；加密儲存。留空則保留已儲存的金鑰';
+
+  @override
+  String get enableBankingLoadBanks => '載入銀行';
+
+  @override
+  String get enableBankingNoAuthPage => 'Enable Banking 未傳回授權頁面';
+
+  @override
+  String get enableBankingNoCode => '網址中找不到授權碼';
+
+  @override
+  String get enableBankingRedirect => '重新導向 URL';
+
+  @override
+  String get enableBankingRedirectTooltip => '已為應用程式註冊；授權後銀行將返回此網址';
+
+  @override
+  String get enableBankingStateMismatch => '此網址屬於其他授權，請重新連線';
+
+  @override
   String get encryptionMode => '資料加密';
 
   @override
@@ -1754,6 +2010,71 @@ class AppLocalizationsZhTw extends AppLocalizationsZh {
 
   @override
   String get failData => '扣除金額';
+
+  @override
+  String get finTsApproved => '已在銀行應用程式中核准';
+
+  @override
+  String get finTsBankCode => '銀行代碼 (BLZ)';
+
+  @override
+  String get finTsCustomerId => '客戶 ID（若與使用者 ID 不同）';
+
+  @override
+  String get finTsDescription =>
+      '從支援 FinTS 4.1（PIN/TAN）的銀行匯入餘額與交易。僅限唯讀存取：不會執行任何付款。';
+
+  @override
+  String get finTsHeadline => 'Financial Transaction Services (FinTS 4.1)';
+
+  @override
+  String get finTsIncomplete => '請填寫伺服器 URL、銀行代碼、使用者 ID 與產品註冊編號';
+
+  @override
+  String finTsLoginChanged(Object value) {
+    return '銀行已變更登入資料，請更新使用者 ID 或客戶 ID：$value';
+  }
+
+  @override
+  String finTsLoginRefused(Object value) {
+    return '銀行拒絕了上次登入：$value。要使用輸入的 PIN 重試嗎？';
+  }
+
+  @override
+  String get finTsPin => 'PIN';
+
+  @override
+  String get finTsPinHint => '僅用於本次工作階段，絕不儲存';
+
+  @override
+  String get finTsProductId => '產品註冊編號';
+
+  @override
+  String get finTsProductIdTooltip => '由 Deutsche Kreditwirtschaft 核發給應用程式開發商';
+
+  @override
+  String get finTsTan => 'TAN';
+
+  @override
+  String get finTsTanHeadline => '交易驗證 (TAN)';
+
+  @override
+  String get finTsTanMedium => '選擇 TAN 媒介';
+
+  @override
+  String get finTsTanMethod => '選擇 TAN 方式';
+
+  @override
+  String get finTsUrl => '銀行的 FinTS 伺服器 URL';
+
+  @override
+  String get finTsUserId => '使用者 ID（登入）';
+
+  @override
+  String get finTsVersion => '通訊協定版本';
+
+  @override
+  String get finTsWebUnsupported => '銀行伺服器不允許從瀏覽器存取。請使用桌面或行動應用程式。';
 
   @override
   String get flowTypeInvoice => '發票';
@@ -1822,6 +2143,62 @@ class AppLocalizationsZhTw extends AppLocalizationsZh {
 
   @override
   String get incomeTooltip => '設定收入詳細資訊';
+
+  @override
+  String get integrationAccessDenied => '存取已被撤銷或憑證不正確';
+
+  @override
+  String get integrationConnect => '連線';
+
+  @override
+  String get integrationDateFrom => '匯入交易的起始日期';
+
+  @override
+  String get integrationDisconnect => '中斷連線';
+
+  @override
+  String get integrationForget => '移除存取權';
+
+  @override
+  String get integrationHeadline => '整合';
+
+  @override
+  String integrationHttpError(Object value) {
+    return '服務回傳錯誤（HTTP $value）';
+  }
+
+  @override
+  String get integrationHttpsRequired => '僅允許安全（HTTPS）網址';
+
+  @override
+  String get integrationImport => '匯入交易';
+
+  @override
+  String integrationImported(Object added, Object pending, Object skipped) {
+    return '已匯入：$added，因已存在而略過：$skipped，待處理（未匯入）：$pending';
+  }
+
+  @override
+  String integrationInvalidAmount(Object value) {
+    return '金額無效：$value';
+  }
+
+  @override
+  String get integrationNoAccounts => '銀行未提供任何帳戶';
+
+  @override
+  String get integrationPaymentRequired => '此服務需要付費才能存取';
+
+  @override
+  String get integrationSelectTarget => '請選擇要匯入的帳戶與預算類別';
+
+  @override
+  String integrationServiceError(Object value) {
+    return '服務訊息：$value';
+  }
+
+  @override
+  String get integrationUnexpectedResponse => '服務傳回了非預期的回應';
 
   @override
   String get invoiceHeadline => '發票';
@@ -2068,6 +2445,29 @@ class AppLocalizationsZhTw extends AppLocalizationsZh {
 
   @override
   String get settingsSaved => '設定已儲存！';
+
+  @override
+  String get simpleFinDescription =>
+      '透過 SimpleFIN Bridge 匯入美國銀行與發卡機構的餘額及交易。僅限唯讀存取：不會執行任何付款。';
+
+  @override
+  String get simpleFinHeadline => 'SimpleFIN Bridge (US)';
+
+  @override
+  String get simpleFinNoCredentials => 'SimpleFIN Bridge 傳回了不含憑證的存取網址';
+
+  @override
+  String get simpleFinToken => 'SimpleFIN 設定權杖';
+
+  @override
+  String get simpleFinTokenClaimed => '設定權杖不存在或已被使用';
+
+  @override
+  String get simpleFinTokenInvalid => 'SimpleFIN 設定權杖無效';
+
+  @override
+  String get simpleFinTokenTooltip =>
+      '在您的 SimpleFIN Bridge（如 bridge.simplefin.org）中為本應用程式建立；只能使用一次';
 
   @override
   String get skipFromTotals => '總計不包括';

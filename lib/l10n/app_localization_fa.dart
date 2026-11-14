@@ -598,6 +598,69 @@ class AppLocalizationsFa extends AppLocalizations {
   String get editTransferTooltip => 'ویرایش انتقال';
 
   @override
+  String get enableBankingAppId => 'شناسه برنامه';
+
+  @override
+  String get enableBankingBank => 'بانک';
+
+  @override
+  String get enableBankingCode => 'نشانی صفحه‌ای که پس از مجوزدهی باز می‌شود';
+
+  @override
+  String get enableBankingCodeTooltip =>
+      'دسترسی را در بانک تأیید کنید، سپس نشانی را از مرورگر کپی کرده و اینجا جای‌گذاری کنید';
+
+  @override
+  String get enableBankingCountry => 'کشور (کد ISO، مثلاً DE)';
+
+  @override
+  String get enableBankingDescription =>
+      'وارد کردن موجودی‌ها و تراکنش‌های بانک‌های اروپایی از طریق Enable Banking API (PSD2) با برنامه خودتان که در enablebanking.com ثبت شده است. دسترسی فقط خواندنی است: هیچ پرداختی انجام نمی‌شود.';
+
+  @override
+  String get enableBankingHeadline => 'Enable Banking (EU)';
+
+  @override
+  String get enableBankingIncomplete =>
+      'شناسه برنامه، کلید خصوصی، نشانی URL بازگشت و کشور را وارد کنید';
+
+  @override
+  String get enableBankingKey => 'کلید خصوصی (PEM)';
+
+  @override
+  String get enableBankingKeyInvalid =>
+      'کلید خصوصی نامعتبر: بلوک PEM «PRIVATE KEY» مورد انتظار است';
+
+  @override
+  String get enableBankingKeyNotRsa =>
+      'کلید خصوصی نامعتبر: کلید RSA مورد انتظار است';
+
+  @override
+  String get enableBankingKeyTooltip =>
+      'همراه با برنامه در Enable Banking Control Panel ساخته می‌شود؛ به‌صورت رمزگذاری‌شده ذخیره می‌شود. برای نگه‌داشتن کلید ذخیره‌شده خالی بگذارید';
+
+  @override
+  String get enableBankingLoadBanks => 'بارگیری بانک‌ها';
+
+  @override
+  String get enableBankingNoAuthPage =>
+      'Enable Banking صفحه مجوزدهی را برنگرداند';
+
+  @override
+  String get enableBankingNoCode => 'کد مجوزدهی در نشانی یافت نشد';
+
+  @override
+  String get enableBankingRedirect => 'نشانی URL بازگشت';
+
+  @override
+  String get enableBankingRedirectTooltip =>
+      'برای برنامه ثبت شده است؛ بانک پس از مجوزدهی به آن بازمی‌گردد';
+
+  @override
+  String get enableBankingStateMismatch =>
+      'این نشانی متعلق به مجوزدهی دیگری است، دوباره متصل شوید';
+
+  @override
   String get encryptionMode => 'رمزگذاری داده ها';
 
   @override
@@ -636,6 +699,75 @@ class AppLocalizationsFa extends AppLocalizations {
 
   @override
   String get failData => 'کسر مبلغ';
+
+  @override
+  String get finTsApproved => 'در برنامه بانک تأیید شد';
+
+  @override
+  String get finTsBankCode => 'کد بانک (BLZ)';
+
+  @override
+  String get finTsCustomerId => 'شناسه مشتری (اگر با شناسه کاربر متفاوت است)';
+
+  @override
+  String get finTsDescription =>
+      'وارد کردن موجودی‌ها و تراکنش‌ها از بانک‌هایی که از FinTS 4.1 (PIN/TAN) پشتیبانی می‌کنند. دسترسی فقط خواندنی است: هیچ پرداختی انجام نمی‌شود.';
+
+  @override
+  String get finTsHeadline => 'Financial Transaction Services (FinTS 4.1)';
+
+  @override
+  String get finTsIncomplete =>
+      'نشانی URL سرور، کد بانک، شناسه کاربر و شماره ثبت محصول را وارد کنید';
+
+  @override
+  String finTsLoginChanged(Object value) {
+    return 'بانک اطلاعات ورود را تغییر داده است، شناسه کاربر یا شناسه مشتری را به‌روز کنید: $value';
+  }
+
+  @override
+  String finTsLoginRefused(Object value) {
+    return 'بانک ورود قبلی را رد کرد: $value. با PIN واردشده دوباره تلاش شود؟';
+  }
+
+  @override
+  String get finTsPin => 'PIN';
+
+  @override
+  String get finTsPinHint =>
+      'فقط برای این نشست استفاده می‌شود و هرگز ذخیره نمی‌شود';
+
+  @override
+  String get finTsProductId => 'شماره ثبت محصول';
+
+  @override
+  String get finTsProductIdTooltip =>
+      'توسط Deutsche Kreditwirtschaft به سازنده برنامه اعطا می‌شود';
+
+  @override
+  String get finTsTan => 'TAN';
+
+  @override
+  String get finTsTanHeadline => 'احراز هویت تراکنش (TAN)';
+
+  @override
+  String get finTsTanMedium => 'انتخاب رسانه TAN';
+
+  @override
+  String get finTsTanMethod => 'انتخاب روش TAN';
+
+  @override
+  String get finTsUrl => 'نشانی URL سرور FinTS بانک';
+
+  @override
+  String get finTsUserId => 'شناسه کاربر (ورود)';
+
+  @override
+  String get finTsVersion => 'نسخه پروتکل';
+
+  @override
+  String get finTsWebUnsupported =>
+      'سرورهای بانک اجازه دسترسی از مرورگر را نمی‌دهند. از برنامه دسکتاپ یا موبایل استفاده کنید.';
 
   @override
   String get flowTypeInvoice => 'صورتحساب';
@@ -704,6 +836,64 @@ class AppLocalizationsFa extends AppLocalizations {
 
   @override
   String get incomeTooltip => 'تنظیم جزئیات درآمد';
+
+  @override
+  String get integrationAccessDenied =>
+      'دسترسی لغو شده یا اطلاعات ورود نادرست است';
+
+  @override
+  String get integrationConnect => 'اتصال';
+
+  @override
+  String get integrationDateFrom => 'وارد کردن تراکنش‌ها از تاریخ';
+
+  @override
+  String get integrationDisconnect => 'قطع اتصال';
+
+  @override
+  String get integrationForget => 'فراموش کردن دسترسی';
+
+  @override
+  String get integrationHeadline => 'یکپارچه‌سازی‌ها';
+
+  @override
+  String integrationHttpError(Object value) {
+    return 'سرویس با خطا پاسخ داد (HTTP $value)';
+  }
+
+  @override
+  String get integrationHttpsRequired => 'فقط نشانی‌های امن (HTTPS) مجاز هستند';
+
+  @override
+  String get integrationImport => 'وارد کردن تراکنش‌ها';
+
+  @override
+  String integrationImported(Object added, Object pending, Object skipped) {
+    return 'وارد شده: $added، رد شده به دلیل وجود قبلی: $skipped، در انتظار (وارد نشده): $pending';
+  }
+
+  @override
+  String integrationInvalidAmount(Object value) {
+    return 'مبلغ نامعتبر: $value';
+  }
+
+  @override
+  String get integrationNoAccounts => 'بانک هیچ حسابی ارائه نکرده است';
+
+  @override
+  String get integrationPaymentRequired => 'سرویس برای دسترسی پرداخت می‌خواهد';
+
+  @override
+  String get integrationSelectTarget =>
+      'حساب و دسته بودجه را برای وارد کردن انتخاب کنید';
+
+  @override
+  String integrationServiceError(Object value) {
+    return 'پیام سرویس: $value';
+  }
+
+  @override
+  String get integrationUnexpectedResponse => 'پاسخ غیرمنتظره از سرویس';
 
   @override
   String get invoiceHeadline => 'فاکتورها';
@@ -952,6 +1142,31 @@ class AppLocalizationsFa extends AppLocalizations {
 
   @override
   String get settingsSaved => 'تنظیمات ذخیره شد!';
+
+  @override
+  String get simpleFinDescription =>
+      'وارد کردن موجودی‌ها و تراکنش‌های بانک‌ها و صادرکنندگان کارت آمریکایی از طریق SimpleFIN Bridge. دسترسی فقط خواندنی است: هیچ پرداختی انجام نمی‌شود.';
+
+  @override
+  String get simpleFinHeadline => 'SimpleFIN Bridge (US)';
+
+  @override
+  String get simpleFinNoCredentials =>
+      'SimpleFIN Bridge نشانی دسترسی بدون اطلاعات ورود برگرداند';
+
+  @override
+  String get simpleFinToken => 'توکن راه‌اندازی SimpleFIN';
+
+  @override
+  String get simpleFinTokenClaimed =>
+      'توکن راه‌اندازی وجود ندارد یا قبلاً استفاده شده است';
+
+  @override
+  String get simpleFinTokenInvalid => 'توکن راه‌اندازی SimpleFIN نامعتبر است';
+
+  @override
+  String get simpleFinTokenTooltip =>
+      'در SimpleFIN Bridge شما (مثلاً bridge.simplefin.org) برای این برنامه ساخته می‌شود؛ فقط یک بار قابل استفاده است';
 
   @override
   String get skipFromTotals => 'حذف از مجموع';

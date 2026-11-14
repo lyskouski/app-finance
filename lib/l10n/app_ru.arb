@@ -241,6 +241,24 @@
     "editPaymentTooltip": "Редактировать платёж",
     "editTooltip": "Редактировать",
     "editTransferTooltip": "Редактировать перевод",
+    "enableBankingAppId": "ID приложения",
+    "enableBankingBank": "Банк",
+    "enableBankingCode": "Адрес страницы после авторизации",
+    "enableBankingCodeTooltip": "Подтвердите доступ в банке, затем скопируйте адрес из браузера и вставьте его сюда",
+    "enableBankingCountry": "Страна (код ISO, например FI)",
+    "enableBankingDescription": "Импорт остатков и операций европейских банков через Enable Banking API (PSD2) с вашим собственным приложением, зарегистрированным на enablebanking.com. Доступ только для чтения: платежи не выполняются.",
+    "enableBankingHeadline": "Enable Banking (EU)",
+    "enableBankingIncomplete": "Заполните ID приложения, закрытый ключ, URL перенаправления и страну",
+    "enableBankingKey": "Закрытый ключ (PEM)",
+    "enableBankingKeyInvalid": "Неверный закрытый ключ: ожидается PEM-блок \"PRIVATE KEY\"",
+    "enableBankingKeyNotRsa": "Неверный закрытый ключ: ожидается ключ RSA",
+    "enableBankingKeyTooltip": "Создаётся вместе с приложением в Enable Banking Control Panel; хранится в зашифрованном виде. Оставьте пустым, чтобы сохранить текущий ключ",
+    "enableBankingLoadBanks": "Загрузить банки",
+    "enableBankingNoAuthPage": "Enable Banking не вернул страницу авторизации",
+    "enableBankingNoCode": "В адресе не найден код авторизации",
+    "enableBankingRedirect": "URL перенаправления",
+    "enableBankingRedirectTooltip": "Зарегистрирован для приложения; после авторизации банк возвращает на него",
+    "enableBankingStateMismatch": "Адрес относится к другой авторизации, подключитесь заново",
     "encryptionMode": "Шифрование данных",
     "error": "Ошибка: {value}",
     "@error": {
@@ -263,6 +281,36 @@
         }
     },
     "failData": "Размер вычета",
+    "finTsApproved": "Подтверждено в банковском приложении",
+    "finTsBankCode": "Код банка (BLZ)",
+    "finTsCustomerId": "ID клиента (если отличается от ID пользователя)",
+    "finTsDescription": "Импорт остатков и операций из банков с поддержкой FinTS 4.1 (PIN/TAN). Доступ только для чтения: платежи не выполняются.",
+    "finTsHeadline": "Financial Transaction Services (FinTS 4.1)",
+    "finTsIncomplete": "Заполните URL сервера, код банка, ID пользователя и регистрационный номер продукта",
+    "finTsLoginChanged": "Банк изменил данные для входа, обновите ID пользователя или ID клиента: {value}",
+    "@finTsLoginChanged": {
+        "value": {
+            "type": "String"
+        }
+    },
+    "finTsLoginRefused": "Банк отклонил предыдущий вход: {value}. Повторить с введённым PIN?",
+    "@finTsLoginRefused": {
+        "value": {
+            "type": "String"
+        }
+    },
+    "finTsPin": "PIN",
+    "finTsPinHint": "Используется только в этом сеансе и никогда не сохраняется",
+    "finTsProductId": "Регистрационный номер продукта",
+    "finTsProductIdTooltip": "Выдаётся Deutsche Kreditwirtschaft разработчику приложения",
+    "finTsTan": "TAN",
+    "finTsTanHeadline": "Подтверждение операции (TAN)",
+    "finTsTanMedium": "Выберите носитель TAN",
+    "finTsTanMethod": "Выберите способ TAN",
+    "finTsUrl": "URL сервера FinTS банка",
+    "finTsUserId": "ID пользователя (логин)",
+    "finTsVersion": "Версия протокола",
+    "finTsWebUnsupported": "Серверы банков не разрешают доступ из браузера. Используйте настольное или мобильное приложение.",
     "flowTypeInvoice": "Приход",
     "flowTypeTooltip": "Тип суммы: Чек, Приход",
     "forecastData": "Прогноз",
@@ -290,6 +338,48 @@
     "incomeHeadline": "Доход",
     "incomeHealth": "Радар здоровья доходов",
     "incomeTooltip": "Установить детали дохода",
+    "integrationAccessDenied": "Доступ отозван или учётные данные неверны",
+    "integrationConnect": "Подключиться",
+    "integrationDateFrom": "Импортировать операции с",
+    "integrationDisconnect": "Отключиться",
+    "integrationForget": "Забыть доступ",
+    "integrationHeadline": "Интеграции",
+    "integrationHttpError": "Сервис ответил ошибкой (HTTP {value})",
+    "@integrationHttpError": {
+        "value": {
+            "type": "String"
+        }
+    },
+    "integrationHttpsRequired": "Разрешены только защищённые адреса (HTTPS)",
+    "integrationImport": "Импортировать операции",
+    "integrationImported": "Импортировано: {added}, пропущено как уже существующие: {skipped}, в обработке (не импортированы): {pending}",
+    "@integrationImported": {
+        "added": {
+            "type": "int"
+        },
+        "skipped": {
+            "type": "int"
+        },
+        "pending": {
+            "type": "int"
+        }
+    },
+    "integrationInvalidAmount": "Неверная сумма: {value}",
+    "@integrationInvalidAmount": {
+        "value": {
+            "type": "String"
+        }
+    },
+    "integrationNoAccounts": "Банк не предоставил ни одного счёта",
+    "integrationPaymentRequired": "Сервис требует оплаты доступа",
+    "integrationSelectTarget": "Выберите счёт и категорию бюджета для импорта",
+    "integrationServiceError": "Сообщение сервиса: {value}",
+    "@integrationServiceError": {
+        "value": {
+            "type": "String"
+        }
+    },
+    "integrationUnexpectedResponse": "Неожиданный ответ сервиса",
     "invoiceHeadline": "Доходы",
     "invoiceSum": "Доходы: {value}",
     "@invoiceSum": {
@@ -398,6 +488,13 @@
     "settingsBaseHeadline": "Основы",
     "settingsHeadline": "Параметры",
     "settingsSaved": "Параметры сохранены!",
+    "simpleFinDescription": "Импорт остатков и операций банков и эмитентов карт США через SimpleFIN Bridge. Доступ только для чтения: платежи не выполняются.",
+    "simpleFinHeadline": "SimpleFIN Bridge (US)",
+    "simpleFinNoCredentials": "SimpleFIN Bridge вернул адрес доступа без учётных данных",
+    "simpleFinToken": "Токен настройки SimpleFIN",
+    "simpleFinTokenClaimed": "Токен настройки не существует или уже был использован",
+    "simpleFinTokenInvalid": "Неверный токен настройки SimpleFIN",
+    "simpleFinTokenTooltip": "Создаётся в вашем SimpleFIN Bridge (например, bridge.simplefin.org) для этого приложения; используется только один раз",
     "skipFromTotals": "Исключить из итогов",
     "skipTooltip": "Пропустить шаг(и)",
     "sortTooltip": "Сортировать элементы",

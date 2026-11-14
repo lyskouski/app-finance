@@ -599,6 +599,69 @@ class AppLocalizationsHi extends AppLocalizations {
   String get editTransferTooltip => 'स्थानांतरण संपादित करें';
 
   @override
+  String get enableBankingAppId => 'ऐप्लिकेशन आईडी';
+
+  @override
+  String get enableBankingBank => 'बैंक';
+
+  @override
+  String get enableBankingCode => 'प्राधिकरण के बाद खुले पृष्ठ का पता';
+
+  @override
+  String get enableBankingCodeTooltip =>
+      'बैंक में पहुँच की पुष्टि करें, फिर ब्राउज़र से पता कॉपी करके यहाँ पेस्ट करें';
+
+  @override
+  String get enableBankingCountry => 'देश (ISO कोड, जैसे DE)';
+
+  @override
+  String get enableBankingDescription =>
+      'enablebanking.com पर पंजीकृत अपने स्वयं के ऐप्लिकेशन के साथ Enable Banking API (PSD2) के माध्यम से यूरोपीय बैंकों से शेष राशि और लेनदेन आयात करें। पहुँच केवल पढ़ने के लिए है: कोई भुगतान नहीं किया जाता।';
+
+  @override
+  String get enableBankingHeadline => 'Enable Banking (EU)';
+
+  @override
+  String get enableBankingIncomplete =>
+      'ऐप्लिकेशन आईडी, निजी कुंजी, रीडायरेक्ट URL और देश भरें';
+
+  @override
+  String get enableBankingKey => 'निजी कुंजी (PEM)';
+
+  @override
+  String get enableBankingKeyInvalid =>
+      'अमान्य निजी कुंजी: PEM ब्लॉक \"PRIVATE KEY\" अपेक्षित है';
+
+  @override
+  String get enableBankingKeyNotRsa =>
+      'अमान्य निजी कुंजी: RSA कुंजी अपेक्षित है';
+
+  @override
+  String get enableBankingKeyTooltip =>
+      'Enable Banking Control Panel में ऐप्लिकेशन के साथ बनाई जाती है; एन्क्रिप्टेड रूप में संग्रहीत। संग्रहीत कुंजी रखने के लिए खाली छोड़ें';
+
+  @override
+  String get enableBankingLoadBanks => 'बैंक लोड करें';
+
+  @override
+  String get enableBankingNoAuthPage =>
+      'Enable Banking ने कोई प्राधिकरण पृष्ठ नहीं लौटाया';
+
+  @override
+  String get enableBankingNoCode => 'पते में कोई प्राधिकरण कोड नहीं मिला';
+
+  @override
+  String get enableBankingRedirect => 'रीडायरेक्ट URL';
+
+  @override
+  String get enableBankingRedirectTooltip =>
+      'ऐप्लिकेशन के लिए पंजीकृत; प्राधिकरण के बाद बैंक इसी पर लौटता है';
+
+  @override
+  String get enableBankingStateMismatch =>
+      'यह पता किसी अन्य प्राधिकरण का है, फिर से कनेक्ट करें';
+
+  @override
   String get encryptionMode => 'डेटा एन्क्रिप्शन';
 
   @override
@@ -637,6 +700,75 @@ class AppLocalizationsHi extends AppLocalizations {
 
   @override
   String get failData => 'राशि कटौती';
+
+  @override
+  String get finTsApproved => 'बैंक ऐप में स्वीकृत';
+
+  @override
+  String get finTsBankCode => 'बैंक कोड (BLZ)';
+
+  @override
+  String get finTsCustomerId => 'ग्राहक आईडी (यदि उपयोगकर्ता आईडी से अलग हो)';
+
+  @override
+  String get finTsDescription =>
+      'FinTS 4.1 (PIN/TAN) समर्थित बैंकों से शेष राशि और लेनदेन आयात करें। पहुँच केवल पढ़ने के लिए है: कोई भुगतान नहीं किया जाता।';
+
+  @override
+  String get finTsHeadline => 'Financial Transaction Services (FinTS 4.1)';
+
+  @override
+  String get finTsIncomplete =>
+      'सर्वर URL, बैंक कोड, उपयोगकर्ता आईडी और उत्पाद पंजीकरण संख्या भरें';
+
+  @override
+  String finTsLoginChanged(Object value) {
+    return 'बैंक ने लॉगिन डेटा बदल दिया है, उपयोगकर्ता आईडी या ग्राहक आईडी अपडेट करें: $value';
+  }
+
+  @override
+  String finTsLoginRefused(Object value) {
+    return 'बैंक ने पिछला लॉगिन अस्वीकार कर दिया: $value। दर्ज किए गए PIN से फिर प्रयास करें?';
+  }
+
+  @override
+  String get finTsPin => 'PIN';
+
+  @override
+  String get finTsPinHint =>
+      'केवल इस सत्र के लिए उपयोग होता है और कभी संग्रहीत नहीं किया जाता';
+
+  @override
+  String get finTsProductId => 'उत्पाद पंजीकरण संख्या';
+
+  @override
+  String get finTsProductIdTooltip =>
+      'Deutsche Kreditwirtschaft द्वारा ऐप निर्माता को जारी की जाती है';
+
+  @override
+  String get finTsTan => 'TAN';
+
+  @override
+  String get finTsTanHeadline => 'लेनदेन प्रमाणीकरण (TAN)';
+
+  @override
+  String get finTsTanMedium => 'TAN माध्यम चुनें';
+
+  @override
+  String get finTsTanMethod => 'TAN विधि चुनें';
+
+  @override
+  String get finTsUrl => 'बैंक का FinTS सर्वर URL';
+
+  @override
+  String get finTsUserId => 'उपयोगकर्ता आईडी (लॉगिन)';
+
+  @override
+  String get finTsVersion => 'प्रोटोकॉल संस्करण';
+
+  @override
+  String get finTsWebUnsupported =>
+      'बैंक सर्वर ब्राउज़र से पहुँच की अनुमति नहीं देते। डेस्कटॉप या मोबाइल ऐप का उपयोग करें।';
 
   @override
   String get flowTypeInvoice => 'चालान';
@@ -705,6 +837,64 @@ class AppLocalizationsHi extends AppLocalizations {
 
   @override
   String get incomeTooltip => 'आय विवरण निर्धारित करें';
+
+  @override
+  String get integrationAccessDenied =>
+      'पहुँच रद्द कर दी गई है या क्रेडेंशियल गलत हैं';
+
+  @override
+  String get integrationConnect => 'कनेक्ट करें';
+
+  @override
+  String get integrationDateFrom => 'इस तारीख से लेनदेन आयात करें';
+
+  @override
+  String get integrationDisconnect => 'डिस्कनेक्ट करें';
+
+  @override
+  String get integrationForget => 'पहुँच भूल जाएँ';
+
+  @override
+  String get integrationHeadline => 'एकीकरण';
+
+  @override
+  String integrationHttpError(Object value) {
+    return 'सेवा ने त्रुटि के साथ उत्तर दिया (HTTP $value)';
+  }
+
+  @override
+  String get integrationHttpsRequired =>
+      'केवल सुरक्षित (HTTPS) पतों की अनुमति है';
+
+  @override
+  String get integrationImport => 'लेनदेन आयात करें';
+
+  @override
+  String integrationImported(Object added, Object pending, Object skipped) {
+    return 'आयात किए गए: $added, पहले से मौजूद होने के कारण छोड़े गए: $skipped, लंबित (आयात नहीं किए गए): $pending';
+  }
+
+  @override
+  String integrationInvalidAmount(Object value) {
+    return 'अमान्य राशि: $value';
+  }
+
+  @override
+  String get integrationNoAccounts => 'बैंक ने कोई खाता प्रदान नहीं किया';
+
+  @override
+  String get integrationPaymentRequired => 'सेवा पहुँच के लिए भुगतान माँगती है';
+
+  @override
+  String get integrationSelectTarget => 'आयात के लिए खाता और बजट श्रेणी चुनें';
+
+  @override
+  String integrationServiceError(Object value) {
+    return 'सेवा का संदेश: $value';
+  }
+
+  @override
+  String get integrationUnexpectedResponse => 'सेवा से अप्रत्याशित उत्तर';
 
   @override
   String get invoiceHeadline => 'चालान';
@@ -954,6 +1144,31 @@ class AppLocalizationsHi extends AppLocalizations {
 
   @override
   String get settingsSaved => 'सेटिंग्स सहेजी गई!';
+
+  @override
+  String get simpleFinDescription =>
+      'SimpleFIN Bridge के माध्यम से अमेरिकी बैंकों और कार्ड जारीकर्ताओं से शेष राशि और लेनदेन आयात करें। पहुँच केवल पढ़ने के लिए है: कोई भुगतान नहीं किया जाता।';
+
+  @override
+  String get simpleFinHeadline => 'SimpleFIN Bridge (US)';
+
+  @override
+  String get simpleFinNoCredentials =>
+      'SimpleFIN Bridge ने क्रेडेंशियल के बिना पहुँच पता लौटाया';
+
+  @override
+  String get simpleFinToken => 'SimpleFIN सेटअप टोकन';
+
+  @override
+  String get simpleFinTokenClaimed =>
+      'सेटअप टोकन मौजूद नहीं है या पहले ही उपयोग किया जा चुका है';
+
+  @override
+  String get simpleFinTokenInvalid => 'अमान्य SimpleFIN सेटअप टोकन';
+
+  @override
+  String get simpleFinTokenTooltip =>
+      'इस ऐप के लिए आपके SimpleFIN Bridge (जैसे bridge.simplefin.org) में बनाया जाता है; केवल एक बार उपयोग किया जा सकता है';
 
   @override
   String get skipFromTotals => 'कुल से बाहर रखें';

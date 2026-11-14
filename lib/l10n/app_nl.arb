@@ -241,6 +241,24 @@
     "editPaymentTooltip": "Betaling bewerken",
     "editTooltip": "Bewerken",
     "editTransferTooltip": "Bewerken Overdracht",
+    "enableBankingAppId": "Applicatie-ID",
+    "enableBankingBank": "Bank",
+    "enableBankingCode": "Adres van de pagina na de autorisatie",
+    "enableBankingCodeTooltip": "Bevestig de toegang bij de bank, kopieer daarna het adres uit de browser en plak het hier",
+    "enableBankingCountry": "Land (ISO-code, bijv. NL)",
+    "enableBankingDescription": "Importeer saldi en transacties van Europese banken via de Enable Banking API (PSD2) met je eigen applicatie, geregistreerd op enablebanking.com. Alleen-lezen toegang: er worden geen betalingen uitgevoerd.",
+    "enableBankingHeadline": "Enable Banking (EU)",
+    "enableBankingIncomplete": "Vul de applicatie-ID, privésleutel, omleidings-URL en het land in",
+    "enableBankingKey": "Privésleutel (PEM)",
+    "enableBankingKeyInvalid": "Ongeldige privésleutel: een PEM-blok \"PRIVATE KEY\" wordt verwacht",
+    "enableBankingKeyNotRsa": "Ongeldige privésleutel: een RSA-sleutel wordt verwacht",
+    "enableBankingKeyTooltip": "Aangemaakt met de applicatie in het Enable Banking Control Panel; versleuteld opgeslagen. Laat leeg om de opgeslagen sleutel te behouden",
+    "enableBankingLoadBanks": "Banken laden",
+    "enableBankingNoAuthPage": "Enable Banking heeft geen autorisatiepagina teruggegeven",
+    "enableBankingNoCode": "Geen autorisatiecode gevonden in het adres",
+    "enableBankingRedirect": "Omleidings-URL",
+    "enableBankingRedirectTooltip": "Geregistreerd voor de applicatie; de bank keert er na de autorisatie naar terug",
+    "enableBankingStateMismatch": "Het adres hoort bij een andere autorisatie, maak opnieuw verbinding",
     "encryptionMode": "Gegevenscodering",
     "error": "Fout: {value}",
     "@error": {
@@ -263,6 +281,36 @@
         }
     },
     "failData": "Bedrag Aftrek",
+    "finTsApproved": "Goedgekeurd in de bankapp",
+    "finTsBankCode": "Bankcode (BLZ)",
+    "finTsCustomerId": "Klant-ID (indien anders dan gebruikers-ID)",
+    "finTsDescription": "Importeer saldi en transacties van banken die FinTS 4.1 (PIN/TAN) ondersteunen. Alleen-lezen toegang: er worden geen betalingen uitgevoerd.",
+    "finTsHeadline": "Financial Transaction Services (FinTS 4.1)",
+    "finTsIncomplete": "Vul de server-URL, bankcode, gebruikers-ID en productregistratienummer in",
+    "finTsLoginChanged": "De bank heeft de inloggegevens gewijzigd, werk de gebruikers-ID of klant-ID bij: {value}",
+    "@finTsLoginChanged": {
+        "value": {
+            "type": "String"
+        }
+    },
+    "finTsLoginRefused": "De bank heeft de vorige aanmelding geweigerd: {value}. Opnieuw proberen met de ingevoerde PIN?",
+    "@finTsLoginRefused": {
+        "value": {
+            "type": "String"
+        }
+    },
+    "finTsPin": "PIN",
+    "finTsPinHint": "Alleen voor deze sessie gebruikt en nooit opgeslagen",
+    "finTsProductId": "Productregistratienummer",
+    "finTsProductIdTooltip": "Uitgegeven door de Deutsche Kreditwirtschaft aan de maker van de applicatie",
+    "finTsTan": "TAN",
+    "finTsTanHeadline": "Transactie-authenticatie (TAN)",
+    "finTsTanMedium": "TAN-medium kiezen",
+    "finTsTanMethod": "TAN-methode kiezen",
+    "finTsUrl": "FinTS-server-URL van de bank",
+    "finTsUserId": "Gebruikers-ID (login)",
+    "finTsVersion": "Protocolversie",
+    "finTsWebUnsupported": "Bankservers staan geen toegang vanuit een browser toe. Gebruik de desktop- of mobiele app.",
     "flowTypeInvoice": "Factuur",
     "flowTypeTooltip": "Type bedrag: Factuur",
     "forecastData": "Prognose",
@@ -290,6 +338,48 @@
     "incomeHeadline": "Inkomen",
     "incomeHealth": "Inkomen gezondheidsradar",
     "incomeTooltip": "Inkomstendetails instellen",
+    "integrationAccessDenied": "De toegang is ingetrokken of de inloggegevens zijn onjuist",
+    "integrationConnect": "Verbinden",
+    "integrationDateFrom": "Transacties importeren vanaf",
+    "integrationDisconnect": "Verbinding verbreken",
+    "integrationForget": "Toegang vergeten",
+    "integrationHeadline": "Integraties",
+    "integrationHttpError": "De dienst antwoordde met een fout (HTTP {value})",
+    "@integrationHttpError": {
+        "value": {
+            "type": "String"
+        }
+    },
+    "integrationHttpsRequired": "Alleen beveiligde adressen (HTTPS) zijn toegestaan",
+    "integrationImport": "Transacties importeren",
+    "integrationImported": "Geïmporteerd: {added}, overgeslagen als al aanwezig: {skipped}, in behandeling (niet geïmporteerd): {pending}",
+    "@integrationImported": {
+        "added": {
+            "type": "int"
+        },
+        "skipped": {
+            "type": "int"
+        },
+        "pending": {
+            "type": "int"
+        }
+    },
+    "integrationInvalidAmount": "Ongeldig bedrag: {value}",
+    "@integrationInvalidAmount": {
+        "value": {
+            "type": "String"
+        }
+    },
+    "integrationNoAccounts": "De bank heeft geen rekeningen verstrekt",
+    "integrationPaymentRequired": "De dienst vereist een betaling voor de toegang",
+    "integrationSelectTarget": "Selecteer de rekening en de budgetcategorie om in te importeren",
+    "integrationServiceError": "Melding van de dienst: {value}",
+    "@integrationServiceError": {
+        "value": {
+            "type": "String"
+        }
+    },
+    "integrationUnexpectedResponse": "Onverwacht antwoord van de dienst",
     "invoiceHeadline": "Facturen",
     "invoiceSum": "Facturen: {value}",
     "@invoiceSum": {
@@ -398,6 +488,13 @@
     "settingsBaseHeadline": "Basis",
     "settingsHeadline": "Instellingen",
     "settingsSaved": "Instellingen opgeslagen!",
+    "simpleFinDescription": "Importeer saldi en transacties van Amerikaanse banken en kaartuitgevers via een SimpleFIN Bridge. Alleen-lezen toegang: er worden geen betalingen uitgevoerd.",
+    "simpleFinHeadline": "SimpleFIN Bridge (US)",
+    "simpleFinNoCredentials": "De SimpleFIN Bridge gaf een toegangsadres zonder inloggegevens terug",
+    "simpleFinToken": "SimpleFIN-installatietoken",
+    "simpleFinTokenClaimed": "Het installatietoken bestaat niet of is al gebruikt",
+    "simpleFinTokenInvalid": "Ongeldig SimpleFIN-installatietoken",
+    "simpleFinTokenTooltip": "Aangemaakt in je SimpleFIN Bridge (bijv. bridge.simplefin.org) voor deze applicatie; slechts één keer te gebruiken",
     "skipFromTotals": "Niet opnemen in totalen",
     "skipTooltip": "Stap(pen) overslaan",
     "sortTooltip": "Sorteer items",

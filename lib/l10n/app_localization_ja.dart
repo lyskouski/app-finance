@@ -597,6 +597,63 @@ class AppLocalizationsJa extends AppLocalizations {
   String get editTransferTooltip => '転送編集';
 
   @override
+  String get enableBankingAppId => 'アプリケーションID';
+
+  @override
+  String get enableBankingBank => '銀行';
+
+  @override
+  String get enableBankingCode => '認可後に開いたページのアドレス';
+
+  @override
+  String get enableBankingCodeTooltip =>
+      '銀行でアクセスを承認した後、ブラウザーのアドレスをコピーしてここに貼り付けてください';
+
+  @override
+  String get enableBankingCountry => '国（ISOコード、例: DE）';
+
+  @override
+  String get enableBankingDescription =>
+      'enablebanking.com に登録した独自のアプリケーションを使い、Enable Banking API（PSD2）経由でヨーロッパの銀行から残高と取引をインポートします。アクセスは読み取り専用で、支払いは行われません。';
+
+  @override
+  String get enableBankingHeadline => 'Enable Banking (EU)';
+
+  @override
+  String get enableBankingIncomplete => 'アプリケーションID、秘密鍵、リダイレクトURL、国を入力してください';
+
+  @override
+  String get enableBankingKey => '秘密鍵（PEM）';
+
+  @override
+  String get enableBankingKeyInvalid => '無効な秘密鍵: PEM ブロック「PRIVATE KEY」が必要です';
+
+  @override
+  String get enableBankingKeyNotRsa => '無効な秘密鍵: RSA 鍵が必要です';
+
+  @override
+  String get enableBankingKeyTooltip =>
+      'Enable Banking Control Panel でアプリケーションと共に作成され、暗号化して保存されます。保存済みの鍵を使う場合は空欄のままにしてください';
+
+  @override
+  String get enableBankingLoadBanks => '銀行を読み込む';
+
+  @override
+  String get enableBankingNoAuthPage => 'Enable Banking から認可ページが返されませんでした';
+
+  @override
+  String get enableBankingNoCode => 'アドレスに認可コードが見つかりません';
+
+  @override
+  String get enableBankingRedirect => 'リダイレクトURL';
+
+  @override
+  String get enableBankingRedirectTooltip => 'アプリケーションに登録済みのURL。認可後、銀行はここに戻ります';
+
+  @override
+  String get enableBankingStateMismatch => 'このアドレスは別の認可のものです。もう一度接続してください';
+
+  @override
   String get encryptionMode => 'データ暗号化';
 
   @override
@@ -635,6 +692,73 @@ class AppLocalizationsJa extends AppLocalizations {
 
   @override
   String get failData => '控除額';
+
+  @override
+  String get finTsApproved => '銀行アプリで承認済み';
+
+  @override
+  String get finTsBankCode => '銀行コード (BLZ)';
+
+  @override
+  String get finTsCustomerId => '顧客ID（ユーザーIDと異なる場合）';
+
+  @override
+  String get finTsDescription =>
+      'FinTS 4.1（PIN/TAN）対応の銀行から残高と取引をインポートします。アクセスは読み取り専用で、支払いは行われません。';
+
+  @override
+  String get finTsHeadline => 'Financial Transaction Services (FinTS 4.1)';
+
+  @override
+  String get finTsIncomplete => 'サーバーURL、銀行コード、ユーザーID、製品登録番号を入力してください';
+
+  @override
+  String finTsLoginChanged(Object value) {
+    return '銀行がログイン情報を変更しました。ユーザーIDまたは顧客IDを更新してください: $value';
+  }
+
+  @override
+  String finTsLoginRefused(Object value) {
+    return '銀行が前回のログインを拒否しました: $value。入力したPINで再試行しますか？';
+  }
+
+  @override
+  String get finTsPin => 'PIN';
+
+  @override
+  String get finTsPinHint => 'このセッションでのみ使用され、保存されることはありません';
+
+  @override
+  String get finTsProductId => '製品登録番号';
+
+  @override
+  String get finTsProductIdTooltip =>
+      'Deutsche Kreditwirtschaft がアプリの開発元に発行します';
+
+  @override
+  String get finTsTan => 'TAN';
+
+  @override
+  String get finTsTanHeadline => '取引認証 (TAN)';
+
+  @override
+  String get finTsTanMedium => 'TANメディアを選択';
+
+  @override
+  String get finTsTanMethod => 'TAN方式を選択';
+
+  @override
+  String get finTsUrl => '銀行のFinTSサーバーURL';
+
+  @override
+  String get finTsUserId => 'ユーザーID（ログイン）';
+
+  @override
+  String get finTsVersion => 'プロトコルバージョン';
+
+  @override
+  String get finTsWebUnsupported =>
+      '銀行のサーバーはブラウザーからのアクセスを許可していません。デスクトップ版またはモバイル版アプリを使用してください。';
 
   @override
   String get flowTypeInvoice => '請求書';
@@ -703,6 +827,62 @@ class AppLocalizationsJa extends AppLocalizations {
 
   @override
   String get incomeTooltip => '収入の詳細設定';
+
+  @override
+  String get integrationAccessDenied => 'アクセスが取り消されたか、認証情報が正しくありません';
+
+  @override
+  String get integrationConnect => '接続';
+
+  @override
+  String get integrationDateFrom => '取引のインポート開始日';
+
+  @override
+  String get integrationDisconnect => '切断';
+
+  @override
+  String get integrationForget => 'アクセスを削除';
+
+  @override
+  String get integrationHeadline => '連携';
+
+  @override
+  String integrationHttpError(Object value) {
+    return 'サービスがエラーを返しました（HTTP $value）';
+  }
+
+  @override
+  String get integrationHttpsRequired => '安全なアドレス（HTTPS）のみ使用できます';
+
+  @override
+  String get integrationImport => '取引をインポート';
+
+  @override
+  String integrationImported(Object added, Object pending, Object skipped) {
+    return 'インポート済み: $added、既存のためスキップ: $skipped、保留中（未インポート）: $pending';
+  }
+
+  @override
+  String integrationInvalidAmount(Object value) {
+    return '無効な金額: $value';
+  }
+
+  @override
+  String get integrationNoAccounts => '銀行から口座が提供されませんでした';
+
+  @override
+  String get integrationPaymentRequired => 'サービスへのアクセスには支払いが必要です';
+
+  @override
+  String get integrationSelectTarget => 'インポート先の口座と予算カテゴリを選択してください';
+
+  @override
+  String integrationServiceError(Object value) {
+    return 'サービスからのメッセージ: $value';
+  }
+
+  @override
+  String get integrationUnexpectedResponse => 'サービスからの予期しない応答';
 
   @override
   String get invoiceHeadline => '請求書';
@@ -949,6 +1129,30 @@ class AppLocalizationsJa extends AppLocalizations {
 
   @override
   String get settingsSaved => '設定が保存されました！';
+
+  @override
+  String get simpleFinDescription =>
+      'SimpleFIN Bridge を通じて米国の銀行やカード発行会社から残高と取引をインポートします。アクセスは読み取り専用で、支払いは行われません。';
+
+  @override
+  String get simpleFinHeadline => 'SimpleFIN Bridge (US)';
+
+  @override
+  String get simpleFinNoCredentials =>
+      'SimpleFIN Bridge が認証情報のないアクセスアドレスを返しました';
+
+  @override
+  String get simpleFinToken => 'SimpleFIN セットアップトークン';
+
+  @override
+  String get simpleFinTokenClaimed => 'セットアップトークンが存在しないか、既に使用されています';
+
+  @override
+  String get simpleFinTokenInvalid => '無効な SimpleFIN セットアップトークン';
+
+  @override
+  String get simpleFinTokenTooltip =>
+      'このアプリ用に SimpleFIN Bridge（例: bridge.simplefin.org）で作成します。使用できるのは1回のみです';
 
   @override
   String get skipFromTotals => '合計から除外する';

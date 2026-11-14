@@ -6,6 +6,7 @@ import 'package:app_finance/_classes/storage/app_data.dart';
 import 'package:app_finance/_classes/herald/app_locale.dart';
 import 'package:app_finance/_classes/storage/file_parser.dart';
 import 'package:app_finance/_classes/storage/file_picker.dart';
+import 'package:app_finance/_classes/storage/statement_parser.dart';
 import 'package:app_finance/_classes/storage/transaction_log.dart';
 import 'package:app_finance/_classes/controller/focus_controller.dart';
 import 'package:app_finance/_classes/storage/transaction_log/export_excel.dart';
@@ -40,6 +41,8 @@ class ImportTabState extends State<ImportTab> {
   List<List<dynamic>>? fileContent;
   StringBuffer errorMessage = StringBuffer();
   List<String> columnMap = [];
+  String? fileFormat;
+  int pending = 0;
   bool isLoading = false;
   final dateFormat = TextEditingController(text: 'M/d/yyyy HH:mm');
 
@@ -73,8 +76,12 @@ class ImportTabState extends State<ImportTab> {
       }
       setState(() {
         fileContent = content;
+        fileFormat = ext.first;
+        pending = picker.pending;
         columnMap = picker.columnMap;
-        if (columnMap.contains(FileParser.attrBillDate)) {
+        if (StatementParser.isStatement(ext.first)) {
+          dateFormat.text = StatementParser.dateFormat;
+        } else if (columnMap.contains(FileParser.attrBillDate)) {
           int index = columnMap.indexOf(FileParser.attrBillDate);
           dateFormat.text = DateFormatHelper().detectFormat([fileContent!.last[index]], AppLocale.code);
         }
@@ -103,11 +110,20 @@ class ImportTabState extends State<ImportTab> {
       FileParser.attrBillCurrency: attrValue[FileParser.attrBillCurrency],
       FileParser.defDateFormat: dateFormat.text,
     };
+
+    final isStatement = StatementParser.isStatement(fileFormat ?? '');
+    var added = 0;
+    var skipped = 0;
     for (int i = 1; i < (fileContent?.length ?? 0); i++) {
       try {
         dynamic newItem = await parser.parseFileLine(fileContent![i], def);
+        if (isStatement && newItem.uuid != null && state.getByUuid(newItem.uuid) != null) {
+          skipped++;
+          continue;
+        }
         newItem = state.add(newItem, newItem.uuid);
         TransactionLog.save(newItem);
+        added++;
       } catch (e) {
         if (!mounted) {
           return;
@@ -119,7 +135,13 @@ class ImportTabState extends State<ImportTab> {
     if (!mounted) {
       return;
     }
-    setState(() => fileContent = null);
+    setState(() {
+      if (isStatement) {
+        errorMessage.writeln(AppLocale.labels.integrationImported(added, pending, skipped));
+      }
+      fileContent = null;
+      fileFormat = null;
+    });
   }
 
   Future<void> exportFile() async {

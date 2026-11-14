@@ -241,6 +241,24 @@
     "editPaymentTooltip": "გადახდის რედაქტირება",
     "editTooltip": "რედაქტირება",
     "editTransferTooltip": "გადარიცხვის რედაქტირება",
+    "enableBankingAppId": "აპლიკაციის ID",
+    "enableBankingBank": "ბანკი",
+    "enableBankingCode": "ავტორიზაციის შემდეგ გახსნილი გვერდის მისამართი",
+    "enableBankingCodeTooltip": "დაადასტურეთ წვდომა ბანკში, შემდეგ დააკოპირეთ მისამართი ბრაუზერიდან და ჩასვით აქ",
+    "enableBankingCountry": "ქვეყანა (ISO კოდი, მაგ. DE)",
+    "enableBankingDescription": "ევროპული ბანკების ნაშთებისა და ტრანზაქციების იმპორტი Enable Banking API-ით (PSD2) თქვენი საკუთარი აპლიკაციით, რომელიც რეგისტრირებულია enablebanking.com-ზე. წვდომა მხოლოდ წაკითხვისთვისაა: გადახდები არ სრულდება.",
+    "enableBankingHeadline": "Enable Banking (EU)",
+    "enableBankingIncomplete": "შეავსეთ აპლიკაციის ID, პირადი გასაღები, გადამისამართების URL და ქვეყანა",
+    "enableBankingKey": "პირადი გასაღები (PEM)",
+    "enableBankingKeyInvalid": "არასწორი პირადი გასაღები: მოსალოდნელია PEM ბლოკი \"PRIVATE KEY\"",
+    "enableBankingKeyNotRsa": "არასწორი პირადი გასაღები: მოსალოდნელია RSA გასაღები",
+    "enableBankingKeyTooltip": "იქმნება აპლიკაციასთან ერთად Enable Banking Control Panel-ში; ინახება დაშიფრული სახით. დატოვეთ ცარიელი შენახული გასაღების შესანარჩუნებლად",
+    "enableBankingLoadBanks": "ბანკების ჩატვირთვა",
+    "enableBankingNoAuthPage": "Enable Banking-მა ავტორიზაციის გვერდი არ დააბრუნა",
+    "enableBankingNoCode": "მისამართში ავტორიზაციის კოდი ვერ მოიძებნა",
+    "enableBankingRedirect": "გადამისამართების URL",
+    "enableBankingRedirectTooltip": "რეგისტრირებულია აპლიკაციისთვის; ავტორიზაციის შემდეგ ბანკი მასზე ბრუნდება",
+    "enableBankingStateMismatch": "მისამართი სხვა ავტორიზაციას ეკუთვნის, ხელახლა დაუკავშირდით",
     "encryptionMode": "მონაცემთა დაშიფვრა",
     "error": "შეცდომა: {value}",
     "@error": {
@@ -263,6 +281,36 @@
         }
     },
     "failData": "თანხის შემცირება",
+    "finTsApproved": "დადასტურებულია ბანკის აპლიკაციაში",
+    "finTsBankCode": "ბანკის კოდი (BLZ)",
+    "finTsCustomerId": "კლიენტის ID (თუ განსხვავდება მომხმარებლის ID-სგან)",
+    "finTsDescription": "ნაშთებისა და ტრანზაქციების იმპორტი ბანკებიდან, რომლებიც მხარს უჭერენ FinTS 4.1-ს (PIN/TAN). წვდომა მხოლოდ წაკითხვისთვისაა: გადახდები არ სრულდება.",
+    "finTsHeadline": "Financial Transaction Services (FinTS 4.1)",
+    "finTsIncomplete": "შეავსეთ სერვერის URL, ბანკის კოდი, მომხმარებლის ID და პროდუქტის სარეგისტრაციო ნომერი",
+    "finTsLoginChanged": "ბანკმა შეცვალა შესვლის მონაცემები, განაახლეთ მომხმარებლის ან კლიენტის ID: {value}",
+    "@finTsLoginChanged": {
+        "value": {
+            "type": "String"
+        }
+    },
+    "finTsLoginRefused": "ბანკმა უარყო წინა შესვლა: {value}. ვცადოთ ხელახლა შეყვანილი PIN-ით?",
+    "@finTsLoginRefused": {
+        "value": {
+            "type": "String"
+        }
+    },
+    "finTsPin": "PIN",
+    "finTsPinHint": "გამოიყენება მხოლოდ ამ სესიისთვის და არასოდეს ინახება",
+    "finTsProductId": "პროდუქტის სარეგისტრაციო ნომერი",
+    "finTsProductIdTooltip": "გაიცემა Deutsche Kreditwirtschaft-ის მიერ აპლიკაციის მწარმოებლისთვის",
+    "finTsTan": "TAN",
+    "finTsTanHeadline": "ტრანზაქციის დადასტურება (TAN)",
+    "finTsTanMedium": "აირჩიეთ TAN მატარებელი",
+    "finTsTanMethod": "აირჩიეთ TAN მეთოდი",
+    "finTsUrl": "ბანკის FinTS სერვერის URL",
+    "finTsUserId": "მომხმარებლის ID (ლოგინი)",
+    "finTsVersion": "პროტოკოლის ვერსია",
+    "finTsWebUnsupported": "ბანკის სერვერები არ იძლევიან ბრაუზერიდან წვდომის საშუალებას. გამოიყენეთ დესკტოპის ან მობილური აპლიკაცია.",
     "flowTypeInvoice": "ინვოისი",
     "flowTypeTooltip": "თანხის ტიპი: ხარჯი, ინვოისი",
     "forecastData": "პროგნოზი",
@@ -290,6 +338,48 @@
     "incomeHeadline": "შემოსავალი",
     "incomeHealth": "შემოსავლის ჯანმრთელობის რადარი",
     "incomeTooltip": "შემოსავლის დეტალების დაყენება",
+    "integrationAccessDenied": "წვდომა გაუქმებულია ან მონაცემები არასწორია",
+    "integrationConnect": "დაკავშირება",
+    "integrationDateFrom": "ტრანზაქციების იმპორტი თარიღიდან",
+    "integrationDisconnect": "გათიშვა",
+    "integrationForget": "წვდომის დავიწყება",
+    "integrationHeadline": "ინტეგრაციები",
+    "integrationHttpError": "სერვისმა შეცდომით უპასუხა (HTTP {value})",
+    "@integrationHttpError": {
+        "value": {
+            "type": "String"
+        }
+    },
+    "integrationHttpsRequired": "დაშვებულია მხოლოდ დაცული (HTTPS) მისამართები",
+    "integrationImport": "ტრანზაქციების იმპორტი",
+    "integrationImported": "იმპორტირებულია: {added}, გამოტოვებულია, როგორც უკვე არსებული: {skipped}, მოლოდინში (არ არის იმპორტირებული): {pending}",
+    "@integrationImported": {
+        "added": {
+            "type": "int"
+        },
+        "skipped": {
+            "type": "int"
+        },
+        "pending": {
+            "type": "int"
+        }
+    },
+    "integrationInvalidAmount": "არასწორი თანხა: {value}",
+    "@integrationInvalidAmount": {
+        "value": {
+            "type": "String"
+        }
+    },
+    "integrationNoAccounts": "ბანკს არცერთი ანგარიში არ მოუწოდებია",
+    "integrationPaymentRequired": "სერვისი წვდომისთვის გადახდას მოითხოვს",
+    "integrationSelectTarget": "აირჩიეთ ანგარიში და ბიუჯეტის კატეგორია იმპორტისთვის",
+    "integrationServiceError": "სერვისის შეტყობინება: {value}",
+    "@integrationServiceError": {
+        "value": {
+            "type": "String"
+        }
+    },
+    "integrationUnexpectedResponse": "სერვისის მოულოდნელი პასუხი",
     "invoiceHeadline": "ინვოისები",
     "invoiceSum": "ინვოისები: {value}",
     "@invoiceSum": {
@@ -398,6 +488,13 @@
     "settingsBaseHeadline": "საფუძვლები",
     "settingsHeadline": "პარამეტრები",
     "settingsSaved": "პარამეტრები შენახულია!",
+    "simpleFinDescription": "აშშ-ის ბანკებისა და ბარათების ემიტენტების ნაშთებისა და ტრანზაქციების იმპორტი SimpleFIN Bridge-ის მეშვეობით. წვდომა მხოლოდ წაკითხვისთვისაა: გადახდები არ სრულდება.",
+    "simpleFinHeadline": "SimpleFIN Bridge (US)",
+    "simpleFinNoCredentials": "SimpleFIN Bridge-მა დააბრუნა წვდომის მისამართი მონაცემების გარეშე",
+    "simpleFinToken": "SimpleFIN-ის დაყენების ტოკენი",
+    "simpleFinTokenClaimed": "დაყენების ტოკენი არ არსებობს ან უკვე გამოყენებულია",
+    "simpleFinTokenInvalid": "SimpleFIN-ის არასწორი დაყენების ტოკენი",
+    "simpleFinTokenTooltip": "იქმნება თქვენს SimpleFIN Bridge-ში (მაგ. bridge.simplefin.org) ამ აპლიკაციისთვის; მისი გამოყენება მხოლოდ ერთხელ შეიძლება",
     "skipFromTotals": "ჯამებიდან გამორიცხვა",
     "skipTooltip": "ნაბიჯ(ებ)ის გამოტოვება",
     "sortTooltip": "ელემენტების დალაგება",

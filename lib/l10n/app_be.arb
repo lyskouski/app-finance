@@ -241,6 +241,24 @@
     "editPaymentTooltip": "Рэдагаваць аплату",
     "editTooltip": "Рэдагаваць",
     "editTransferTooltip": "Рэдагаваць перавод",
+    "enableBankingAppId": "ID праграмы",
+    "enableBankingBank": "Банк",
+    "enableBankingCode": "Адрас старонкі пасля аўтарызацыі",
+    "enableBankingCodeTooltip": "Пацвердзіце доступ у банку, потым скапіруйце адрас з браўзера і ўстаўце яго сюды",
+    "enableBankingCountry": "Краіна (код ISO, напрыклад FI)",
+    "enableBankingDescription": "Імпарт рэшткаў і аперацый еўрапейскіх банкаў праз Enable Banking API (PSD2) з вашай уласнай праграмай, зарэгістраванай на enablebanking.com. Доступ толькі для чытання: плацяжы не выконваюцца.",
+    "enableBankingHeadline": "Enable Banking (EU)",
+    "enableBankingIncomplete": "Запоўніце ID праграмы, закрыты ключ, URL перанакіравання і краіну",
+    "enableBankingKey": "Закрыты ключ (PEM)",
+    "enableBankingKeyInvalid": "Няправільны закрыты ключ: чакаецца PEM-блок \"PRIVATE KEY\"",
+    "enableBankingKeyNotRsa": "Няправільны закрыты ключ: чакаецца ключ RSA",
+    "enableBankingKeyTooltip": "Ствараецца разам з праграмай у Enable Banking Control Panel; захоўваецца ў зашыфраваным выглядзе. Пакіньце пустым, каб захаваць бягучы ключ",
+    "enableBankingLoadBanks": "Загрузіць банкі",
+    "enableBankingNoAuthPage": "Enable Banking не вярнуў старонку аўтарызацыі",
+    "enableBankingNoCode": "У адрасе не знойдзены код аўтарызацыі",
+    "enableBankingRedirect": "URL перанакіравання",
+    "enableBankingRedirectTooltip": "Зарэгістраваны для праграмы; пасля аўтарызацыі банк вяртае на яго",
+    "enableBankingStateMismatch": "Адрас належыць да іншай аўтарызацыі, падлучыцеся зноў",
     "encryptionMode": "Шыфраваньне дадьзеных",
     "error": "Памылка: {value}",
     "@error": {
@@ -263,6 +281,36 @@
         }
     },
     "failData": "Сума выліку",
+    "finTsApproved": "Пацверджана ў банкаўскай праграме",
+    "finTsBankCode": "Код банка (BLZ)",
+    "finTsCustomerId": "ID кліента (калі адрозніваецца ад ID карыстальніка)",
+    "finTsDescription": "Імпарт рэшткаў і аперацый з банкаў, якія падтрымліваюць FinTS 4.1 (PIN/TAN). Доступ толькі для чытання: плацяжы не выконваюцца.",
+    "finTsHeadline": "Financial Transaction Services (FinTS 4.1)",
+    "finTsIncomplete": "Запоўніце URL сервера, код банка, ID карыстальніка і рэгістрацыйны нумар прадукту",
+    "finTsLoginChanged": "Банк змяніў даныя для ўваходу, абнавіце ID карыстальніка або ID кліента: {value}",
+    "@finTsLoginChanged": {
+        "value": {
+            "type": "String"
+        }
+    },
+    "finTsLoginRefused": "Банк адхіліў папярэдні ўваход: {value}. Паўтарыць з уведзеным PIN?",
+    "@finTsLoginRefused": {
+        "value": {
+            "type": "String"
+        }
+    },
+    "finTsPin": "PIN",
+    "finTsPinHint": "Выкарыстоўваецца толькі ў гэтым сеансе і ніколі не захоўваецца",
+    "finTsProductId": "Рэгістрацыйны нумар прадукту",
+    "finTsProductIdTooltip": "Выдаецца Deutsche Kreditwirtschaft распрацоўшчыку праграмы",
+    "finTsTan": "TAN",
+    "finTsTanHeadline": "Пацвярджэнне аперацыі (TAN)",
+    "finTsTanMedium": "Абярыце носьбіт TAN",
+    "finTsTanMethod": "Абярыце спосаб TAN",
+    "finTsUrl": "URL сервера FinTS банка",
+    "finTsUserId": "ID карыстальніка (лагін)",
+    "finTsVersion": "Версія пратакола",
+    "finTsWebUnsupported": "Серверы банкаў не дазваляюць доступ з браўзера. Выкарыстоўвайце настольную або мабільную праграму.",
     "flowTypeInvoice": "Прыбытак",
     "flowTypeTooltip": "Тып сумы: Чэк, Прыбытак",
     "forecastData": "Прагноз",
@@ -290,6 +338,48 @@
     "incomeHeadline": "Даход",
     "incomeHealth": "Радар здароўя даходаў",
     "incomeTooltip": "Усталюйце звесткі аб даходах",
+    "integrationAccessDenied": "Доступ адкліканы або ўліковыя даныя няправільныя",
+    "integrationConnect": "Падлучыцца",
+    "integrationDateFrom": "Імпартаваць аперацыі з",
+    "integrationDisconnect": "Адлучыцца",
+    "integrationForget": "Забыць доступ",
+    "integrationHeadline": "Інтэграцыі",
+    "integrationHttpError": "Сэрвіс адказаў памылкай (HTTP {value})",
+    "@integrationHttpError": {
+        "value": {
+            "type": "String"
+        }
+    },
+    "integrationHttpsRequired": "Дазволены толькі абароненыя адрасы (HTTPS)",
+    "integrationImport": "Імпартаваць аперацыі",
+    "integrationImported": "Імпартавана: {added}, прапушчана як наяўныя: {skipped}, у апрацоўцы (не імпартаваны): {pending}",
+    "@integrationImported": {
+        "added": {
+            "type": "int"
+        },
+        "skipped": {
+            "type": "int"
+        },
+        "pending": {
+            "type": "int"
+        }
+    },
+    "integrationInvalidAmount": "Няправільная сума: {value}",
+    "@integrationInvalidAmount": {
+        "value": {
+            "type": "String"
+        }
+    },
+    "integrationNoAccounts": "Банк не перадаў ніводнага рахунку",
+    "integrationPaymentRequired": "Сэрвіс патрабуе аплаты доступу",
+    "integrationSelectTarget": "Абярыце рахунак і катэгорыю бюджэту для імпарту",
+    "integrationServiceError": "Паведамленне сэрвісу: {value}",
+    "@integrationServiceError": {
+        "value": {
+            "type": "String"
+        }
+    },
+    "integrationUnexpectedResponse": "Нечаканы адказ сэрвісу",
     "invoiceHeadline": "Фактуры",
     "invoiceSum": "Фактуры: {value}",
     "@invoiceSum": {
@@ -398,6 +488,13 @@
     "settingsBaseHeadline": "Асновы",
     "settingsHeadline": "Налады",
     "settingsSaved": "Налады захаваны!",
+    "simpleFinDescription": "Імпарт рэшткаў і аперацый банкаў і эмітэнтаў картак ЗША праз SimpleFIN Bridge. Доступ толькі для чытання: плацяжы не выконваюцца.",
+    "simpleFinHeadline": "SimpleFIN Bridge (US)",
+    "simpleFinNoCredentials": "SimpleFIN Bridge вярнуў адрас доступу без уліковых даных",
+    "simpleFinToken": "Токен наладкі SimpleFIN",
+    "simpleFinTokenClaimed": "Токен наладкі не існуе або ўжо быў выкарыстаны",
+    "simpleFinTokenInvalid": "Няправільны токен наладкі SimpleFIN",
+    "simpleFinTokenTooltip": "Ствараецца ў вашым SimpleFIN Bridge (напрыклад, bridge.simplefin.org) для гэтай праграмы; выкарыстоўваецца толькі адзін раз",
     "skipFromTotals": "Выключыць з агульных вынікаў",
     "skipTooltip": "Прапусьціць крок(і)",
     "sortTooltip": "Сартаваць элементы",

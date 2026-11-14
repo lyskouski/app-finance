@@ -599,6 +599,70 @@ class AppLocalizationsRo extends AppLocalizations {
   String get editTransferTooltip => 'Editare transfer';
 
   @override
+  String get enableBankingAppId => 'ID aplicație';
+
+  @override
+  String get enableBankingBank => 'Bancă';
+
+  @override
+  String get enableBankingCode => 'Adresa paginii deschise după autorizare';
+
+  @override
+  String get enableBankingCodeTooltip =>
+      'Confirmați accesul la bancă, apoi copiați adresa din browser și lipiți-o aici';
+
+  @override
+  String get enableBankingCountry => 'Țară (cod ISO, de ex. RO)';
+
+  @override
+  String get enableBankingDescription =>
+      'Importă solduri și tranzacții de la băncile europene prin API-ul Enable Banking (PSD2) cu propria aplicație înregistrată pe enablebanking.com. Acces doar în citire: nu se efectuează plăți.';
+
+  @override
+  String get enableBankingHeadline => 'Enable Banking (EU)';
+
+  @override
+  String get enableBankingIncomplete =>
+      'Completați ID-ul aplicației, cheia privată, URL-ul de redirecționare și țara';
+
+  @override
+  String get enableBankingKey => 'Cheie privată (PEM)';
+
+  @override
+  String get enableBankingKeyInvalid =>
+      'Cheie privată nevalidă: se așteaptă un bloc PEM \"PRIVATE KEY\"';
+
+  @override
+  String get enableBankingKeyNotRsa =>
+      'Cheie privată nevalidă: se așteaptă o cheie RSA';
+
+  @override
+  String get enableBankingKeyTooltip =>
+      'Creată împreună cu aplicația în Enable Banking Control Panel; stocată criptat. Lăsați gol pentru a păstra cheia stocată';
+
+  @override
+  String get enableBankingLoadBanks => 'Încarcă băncile';
+
+  @override
+  String get enableBankingNoAuthPage =>
+      'Enable Banking nu a returnat nicio pagină de autorizare';
+
+  @override
+  String get enableBankingNoCode =>
+      'Nu s-a găsit niciun cod de autorizare în adresă';
+
+  @override
+  String get enableBankingRedirect => 'URL de redirecționare';
+
+  @override
+  String get enableBankingRedirectTooltip =>
+      'Înregistrat pentru aplicație; banca revine la el după autorizare';
+
+  @override
+  String get enableBankingStateMismatch =>
+      'Adresa aparține altei autorizări, conectați-vă din nou';
+
+  @override
   String get encryptionMode => 'Criptarea datelor';
 
   @override
@@ -638,6 +702,76 @@ class AppLocalizationsRo extends AppLocalizations {
 
   @override
   String get failData => 'Suma dedusă';
+
+  @override
+  String get finTsApproved => 'Aprobat în aplicația băncii';
+
+  @override
+  String get finTsBankCode => 'Cod bancar (BLZ)';
+
+  @override
+  String get finTsCustomerId =>
+      'ID client (dacă diferă de ID-ul de utilizator)';
+
+  @override
+  String get finTsDescription =>
+      'Importă solduri și tranzacții de la băncile care acceptă FinTS 4.1 (PIN/TAN). Acces doar în citire: nu se efectuează plăți.';
+
+  @override
+  String get finTsHeadline => 'Financial Transaction Services (FinTS 4.1)';
+
+  @override
+  String get finTsIncomplete =>
+      'Completați URL-ul serverului, codul bancar, ID-ul de utilizator și numărul de înregistrare al produsului';
+
+  @override
+  String finTsLoginChanged(Object value) {
+    return 'Banca a modificat datele de autentificare, actualizați ID-ul de utilizator sau ID-ul client: $value';
+  }
+
+  @override
+  String finTsLoginRefused(Object value) {
+    return 'Banca a refuzat autentificarea anterioară: $value. Reîncercați cu PIN-ul introdus?';
+  }
+
+  @override
+  String get finTsPin => 'PIN';
+
+  @override
+  String get finTsPinHint =>
+      'Folosit doar pentru această sesiune și niciodată salvat';
+
+  @override
+  String get finTsProductId => 'Număr de înregistrare al produsului';
+
+  @override
+  String get finTsProductIdTooltip =>
+      'Emis de Deutsche Kreditwirtschaft producătorului aplicației';
+
+  @override
+  String get finTsTan => 'TAN';
+
+  @override
+  String get finTsTanHeadline => 'Autentificarea tranzacției (TAN)';
+
+  @override
+  String get finTsTanMedium => 'Selectați suportul TAN';
+
+  @override
+  String get finTsTanMethod => 'Selectați metoda TAN';
+
+  @override
+  String get finTsUrl => 'URL-ul serverului FinTS al băncii';
+
+  @override
+  String get finTsUserId => 'ID utilizator (login)';
+
+  @override
+  String get finTsVersion => 'Versiunea protocolului';
+
+  @override
+  String get finTsWebUnsupported =>
+      'Serverele băncilor nu permit accesul dintr-un browser. Folosiți aplicația desktop sau mobilă.';
 
   @override
   String get flowTypeInvoice => 'Factură';
@@ -706,6 +840,67 @@ class AppLocalizationsRo extends AppLocalizations {
 
   @override
   String get incomeTooltip => 'Setați detaliile privind venitul';
+
+  @override
+  String get integrationAccessDenied =>
+      'Accesul a fost revocat sau datele de autentificare sunt incorecte';
+
+  @override
+  String get integrationConnect => 'Conectare';
+
+  @override
+  String get integrationDateFrom => 'Importă tranzacțiile din';
+
+  @override
+  String get integrationDisconnect => 'Deconectare';
+
+  @override
+  String get integrationForget => 'Uită accesul';
+
+  @override
+  String get integrationHeadline => 'Integrări';
+
+  @override
+  String integrationHttpError(Object value) {
+    return 'Serviciul a răspuns cu o eroare (HTTP $value)';
+  }
+
+  @override
+  String get integrationHttpsRequired =>
+      'Sunt permise doar adrese securizate (HTTPS)';
+
+  @override
+  String get integrationImport => 'Importă tranzacții';
+
+  @override
+  String integrationImported(Object added, Object pending, Object skipped) {
+    return 'Importate: $added, omise deoarece există deja: $skipped, în așteptare (neimportate): $pending';
+  }
+
+  @override
+  String integrationInvalidAmount(Object value) {
+    return 'Sumă nevalidă: $value';
+  }
+
+  @override
+  String get integrationNoAccounts => 'Banca nu a furnizat niciun cont';
+
+  @override
+  String get integrationPaymentRequired =>
+      'Serviciul solicită o plată pentru acces';
+
+  @override
+  String get integrationSelectTarget =>
+      'Selectați contul și categoria de buget pentru import';
+
+  @override
+  String integrationServiceError(Object value) {
+    return 'Mesajul serviciului: $value';
+  }
+
+  @override
+  String get integrationUnexpectedResponse =>
+      'Răspuns neașteptat al serviciului';
 
   @override
   String get invoiceHeadline => 'Facturi';
@@ -958,6 +1153,31 @@ class AppLocalizationsRo extends AppLocalizations {
 
   @override
   String get settingsSaved => 'Setări salvate!';
+
+  @override
+  String get simpleFinDescription =>
+      'Importă solduri și tranzacții de la băncile și emitenții de carduri din SUA printr-un SimpleFIN Bridge. Acces doar în citire: nu se efectuează plăți.';
+
+  @override
+  String get simpleFinHeadline => 'SimpleFIN Bridge (US)';
+
+  @override
+  String get simpleFinNoCredentials =>
+      'SimpleFIN Bridge a returnat o adresă de acces fără date de autentificare';
+
+  @override
+  String get simpleFinToken => 'Token de configurare SimpleFIN';
+
+  @override
+  String get simpleFinTokenClaimed =>
+      'Tokenul de configurare nu există sau a fost deja folosit';
+
+  @override
+  String get simpleFinTokenInvalid => 'Token de configurare SimpleFIN nevalid';
+
+  @override
+  String get simpleFinTokenTooltip =>
+      'Creat în SimpleFIN Bridge (de ex. bridge.simplefin.org) pentru această aplicație; poate fi folosit o singură dată';
 
   @override
   String get skipFromTotals => 'Excludere din totaluri';

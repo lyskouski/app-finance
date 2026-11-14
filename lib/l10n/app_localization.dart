@@ -1279,6 +1279,114 @@ abstract class AppLocalizations {
   /// **'Edit Transfer'**
   String get editTransferTooltip;
 
+  /// No description provided for @enableBankingAppId.
+  ///
+  /// In en, this message translates to:
+  /// **'Application ID'**
+  String get enableBankingAppId;
+
+  /// No description provided for @enableBankingBank.
+  ///
+  /// In en, this message translates to:
+  /// **'Bank'**
+  String get enableBankingBank;
+
+  /// No description provided for @enableBankingCode.
+  ///
+  /// In en, this message translates to:
+  /// **'Address of the Page Opened after the Authorization'**
+  String get enableBankingCode;
+
+  /// No description provided for @enableBankingCodeTooltip.
+  ///
+  /// In en, this message translates to:
+  /// **'Confirm access at the bank, then copy the address from the browser and paste it here'**
+  String get enableBankingCodeTooltip;
+
+  /// No description provided for @enableBankingCountry.
+  ///
+  /// In en, this message translates to:
+  /// **'Country (ISO Code, e.g. FI)'**
+  String get enableBankingCountry;
+
+  /// No description provided for @enableBankingDescription.
+  ///
+  /// In en, this message translates to:
+  /// **'Import balances and transactions from European banks through the Enable Banking API (PSD2) with your own application registered at enablebanking.com. Access is read-only: no payments are made.'**
+  String get enableBankingDescription;
+
+  /// No description provided for @enableBankingHeadline.
+  ///
+  /// In en, this message translates to:
+  /// **'Enable Banking (EU)'**
+  String get enableBankingHeadline;
+
+  /// No description provided for @enableBankingIncomplete.
+  ///
+  /// In en, this message translates to:
+  /// **'Fill in the application ID, private key, redirect URL, and country'**
+  String get enableBankingIncomplete;
+
+  /// No description provided for @enableBankingKey.
+  ///
+  /// In en, this message translates to:
+  /// **'Private Key (PEM)'**
+  String get enableBankingKey;
+
+  /// No description provided for @enableBankingKeyInvalid.
+  ///
+  /// In en, this message translates to:
+  /// **'Invalid private key: a PEM block \"PRIVATE KEY\" is expected'**
+  String get enableBankingKeyInvalid;
+
+  /// No description provided for @enableBankingKeyNotRsa.
+  ///
+  /// In en, this message translates to:
+  /// **'Invalid private key: an RSA key is expected'**
+  String get enableBankingKeyNotRsa;
+
+  /// No description provided for @enableBankingKeyTooltip.
+  ///
+  /// In en, this message translates to:
+  /// **'Created with the application in the Enable Banking Control Panel; stored encrypted. Leave empty to keep the stored key'**
+  String get enableBankingKeyTooltip;
+
+  /// No description provided for @enableBankingLoadBanks.
+  ///
+  /// In en, this message translates to:
+  /// **'Load Banks'**
+  String get enableBankingLoadBanks;
+
+  /// No description provided for @enableBankingNoAuthPage.
+  ///
+  /// In en, this message translates to:
+  /// **'Enable Banking returned no authorization page'**
+  String get enableBankingNoAuthPage;
+
+  /// No description provided for @enableBankingNoCode.
+  ///
+  /// In en, this message translates to:
+  /// **'No authorization code found in the address'**
+  String get enableBankingNoCode;
+
+  /// No description provided for @enableBankingRedirect.
+  ///
+  /// In en, this message translates to:
+  /// **'Redirect URL'**
+  String get enableBankingRedirect;
+
+  /// No description provided for @enableBankingRedirectTooltip.
+  ///
+  /// In en, this message translates to:
+  /// **'Registered for the application; the bank returns to it after the authorization'**
+  String get enableBankingRedirectTooltip;
+
+  /// No description provided for @enableBankingStateMismatch.
+  ///
+  /// In en, this message translates to:
+  /// **'The address belongs to another authorization, connect again'**
+  String get enableBankingStateMismatch;
+
   /// No description provided for @encryptionMode.
   ///
   /// In en, this message translates to:
@@ -1350,6 +1458,126 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Amount Deduction'**
   String get failData;
+
+  /// No description provided for @finTsApproved.
+  ///
+  /// In en, this message translates to:
+  /// **'Approved in the Banking App'**
+  String get finTsApproved;
+
+  /// No description provided for @finTsBankCode.
+  ///
+  /// In en, this message translates to:
+  /// **'Bank Code (BLZ)'**
+  String get finTsBankCode;
+
+  /// No description provided for @finTsCustomerId.
+  ///
+  /// In en, this message translates to:
+  /// **'Customer ID (if different from User ID)'**
+  String get finTsCustomerId;
+
+  /// No description provided for @finTsDescription.
+  ///
+  /// In en, this message translates to:
+  /// **'Import balances and transactions from banks supporting FinTS 4.1 (PIN/TAN). Access is read-only: no payments are made.'**
+  String get finTsDescription;
+
+  /// No description provided for @finTsHeadline.
+  ///
+  /// In en, this message translates to:
+  /// **'Financial Transaction Services (FinTS 4.1)'**
+  String get finTsHeadline;
+
+  /// No description provided for @finTsIncomplete.
+  ///
+  /// In en, this message translates to:
+  /// **'Fill in the server URL, bank code, user ID and product registration ID'**
+  String get finTsIncomplete;
+
+  /// No description provided for @finTsLoginChanged.
+  ///
+  /// In en, this message translates to:
+  /// **'The bank has changed the login data, update the User ID or Customer ID: {value}'**
+  String finTsLoginChanged(Object value);
+
+  /// No description provided for @finTsLoginRefused.
+  ///
+  /// In en, this message translates to:
+  /// **'The bank refused the previous login: {value}. Retry with the entered PIN?'**
+  String finTsLoginRefused(Object value);
+
+  /// No description provided for @finTsPin.
+  ///
+  /// In en, this message translates to:
+  /// **'PIN'**
+  String get finTsPin;
+
+  /// No description provided for @finTsPinHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Used for this session only and never stored'**
+  String get finTsPinHint;
+
+  /// No description provided for @finTsProductId.
+  ///
+  /// In en, this message translates to:
+  /// **'Product Registration ID'**
+  String get finTsProductId;
+
+  /// No description provided for @finTsProductIdTooltip.
+  ///
+  /// In en, this message translates to:
+  /// **'Issued by the Deutsche Kreditwirtschaft to the application\'s vendor'**
+  String get finTsProductIdTooltip;
+
+  /// No description provided for @finTsTan.
+  ///
+  /// In en, this message translates to:
+  /// **'TAN'**
+  String get finTsTan;
+
+  /// No description provided for @finTsTanHeadline.
+  ///
+  /// In en, this message translates to:
+  /// **'Transaction Authentication (TAN)'**
+  String get finTsTanHeadline;
+
+  /// No description provided for @finTsTanMedium.
+  ///
+  /// In en, this message translates to:
+  /// **'Select TAN Medium'**
+  String get finTsTanMedium;
+
+  /// No description provided for @finTsTanMethod.
+  ///
+  /// In en, this message translates to:
+  /// **'Select TAN Method'**
+  String get finTsTanMethod;
+
+  /// No description provided for @finTsUrl.
+  ///
+  /// In en, this message translates to:
+  /// **'Bank\'s FinTS Server URL'**
+  String get finTsUrl;
+
+  /// No description provided for @finTsUserId.
+  ///
+  /// In en, this message translates to:
+  /// **'User ID (Login)'**
+  String get finTsUserId;
+
+  /// No description provided for @finTsVersion.
+  ///
+  /// In en, this message translates to:
+  /// **'Protocol Version'**
+  String get finTsVersion;
+
+  /// No description provided for @finTsWebUnsupported.
+  ///
+  /// In en, this message translates to:
+  /// **'Bank servers do not allow access from a browser. Use the desktop or mobile application.'**
+  String get finTsWebUnsupported;
 
   /// No description provided for @flowTypeInvoice.
   ///
@@ -1482,6 +1710,102 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Set Income Details'**
   String get incomeTooltip;
+
+  /// No description provided for @integrationAccessDenied.
+  ///
+  /// In en, this message translates to:
+  /// **'Access has been revoked or the credentials are incorrect'**
+  String get integrationAccessDenied;
+
+  /// No description provided for @integrationConnect.
+  ///
+  /// In en, this message translates to:
+  /// **'Connect'**
+  String get integrationConnect;
+
+  /// No description provided for @integrationDateFrom.
+  ///
+  /// In en, this message translates to:
+  /// **'Import Transactions Since'**
+  String get integrationDateFrom;
+
+  /// No description provided for @integrationDisconnect.
+  ///
+  /// In en, this message translates to:
+  /// **'Disconnect'**
+  String get integrationDisconnect;
+
+  /// No description provided for @integrationForget.
+  ///
+  /// In en, this message translates to:
+  /// **'Forget Access'**
+  String get integrationForget;
+
+  /// No description provided for @integrationHeadline.
+  ///
+  /// In en, this message translates to:
+  /// **'Integrations'**
+  String get integrationHeadline;
+
+  /// No description provided for @integrationHttpError.
+  ///
+  /// In en, this message translates to:
+  /// **'The service answered with an error (HTTP {value})'**
+  String integrationHttpError(Object value);
+
+  /// No description provided for @integrationHttpsRequired.
+  ///
+  /// In en, this message translates to:
+  /// **'Only secure (HTTPS) addresses are allowed'**
+  String get integrationHttpsRequired;
+
+  /// No description provided for @integrationImport.
+  ///
+  /// In en, this message translates to:
+  /// **'Import Transactions'**
+  String get integrationImport;
+
+  /// No description provided for @integrationImported.
+  ///
+  /// In en, this message translates to:
+  /// **'Imported: {added}, skipped as already present: {skipped}, pending (not imported): {pending}'**
+  String integrationImported(Object added, Object pending, Object skipped);
+
+  /// No description provided for @integrationInvalidAmount.
+  ///
+  /// In en, this message translates to:
+  /// **'Invalid amount: {value}'**
+  String integrationInvalidAmount(Object value);
+
+  /// No description provided for @integrationNoAccounts.
+  ///
+  /// In en, this message translates to:
+  /// **'The bank has provided no accounts'**
+  String get integrationNoAccounts;
+
+  /// No description provided for @integrationPaymentRequired.
+  ///
+  /// In en, this message translates to:
+  /// **'The service requires a payment for the access'**
+  String get integrationPaymentRequired;
+
+  /// No description provided for @integrationSelectTarget.
+  ///
+  /// In en, this message translates to:
+  /// **'Select the account and the budget category to import into'**
+  String get integrationSelectTarget;
+
+  /// No description provided for @integrationServiceError.
+  ///
+  /// In en, this message translates to:
+  /// **'The service reported: {value}'**
+  String integrationServiceError(Object value);
+
+  /// No description provided for @integrationUnexpectedResponse.
+  ///
+  /// In en, this message translates to:
+  /// **'Unexpected response of the service'**
+  String get integrationUnexpectedResponse;
 
   /// No description provided for @invoiceHeadline.
   ///
@@ -1950,6 +2274,48 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Settings saved!'**
   String get settingsSaved;
+
+  /// No description provided for @simpleFinDescription.
+  ///
+  /// In en, this message translates to:
+  /// **'Import balances and transactions of US banks and card issuers through a SimpleFIN Bridge. Access is read-only: no payments are made.'**
+  String get simpleFinDescription;
+
+  /// No description provided for @simpleFinHeadline.
+  ///
+  /// In en, this message translates to:
+  /// **'SimpleFIN Bridge (US)'**
+  String get simpleFinHeadline;
+
+  /// No description provided for @simpleFinNoCredentials.
+  ///
+  /// In en, this message translates to:
+  /// **'The SimpleFIN Bridge returned an access address without credentials'**
+  String get simpleFinNoCredentials;
+
+  /// No description provided for @simpleFinToken.
+  ///
+  /// In en, this message translates to:
+  /// **'SimpleFIN Setup Token'**
+  String get simpleFinToken;
+
+  /// No description provided for @simpleFinTokenClaimed.
+  ///
+  /// In en, this message translates to:
+  /// **'The Setup Token does not exist or has already been used'**
+  String get simpleFinTokenClaimed;
+
+  /// No description provided for @simpleFinTokenInvalid.
+  ///
+  /// In en, this message translates to:
+  /// **'Invalid SimpleFIN Setup Token'**
+  String get simpleFinTokenInvalid;
+
+  /// No description provided for @simpleFinTokenTooltip.
+  ///
+  /// In en, this message translates to:
+  /// **'Created at your SimpleFIN Bridge (e.g. bridge.simplefin.org) for this application; it can be used only once'**
+  String get simpleFinTokenTooltip;
 
   /// No description provided for @skipFromTotals.
   ///

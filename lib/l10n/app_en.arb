@@ -241,6 +241,24 @@
     "editPaymentTooltip": "Edit Payment",
     "editTooltip": "Edit",
     "editTransferTooltip": "Edit Transfer",
+    "enableBankingAppId": "Application ID",
+    "enableBankingBank": "Bank",
+    "enableBankingCode": "Address of the Page Opened after the Authorization",
+    "enableBankingCodeTooltip": "Confirm access at the bank, then copy the address from the browser and paste it here",
+    "enableBankingCountry": "Country (ISO Code, e.g. FI)",
+    "enableBankingDescription": "Import balances and transactions from European banks through the Enable Banking API (PSD2) with your own application registered at enablebanking.com. Access is read-only: no payments are made.",
+    "enableBankingHeadline": "Enable Banking (EU)",
+    "enableBankingIncomplete": "Fill in the application ID, private key, redirect URL, and country",
+    "enableBankingKey": "Private Key (PEM)",
+    "enableBankingKeyInvalid": "Invalid private key: a PEM block \"PRIVATE KEY\" is expected",
+    "enableBankingKeyNotRsa": "Invalid private key: an RSA key is expected",
+    "enableBankingKeyTooltip": "Created with the application in the Enable Banking Control Panel; stored encrypted. Leave empty to keep the stored key",
+    "enableBankingLoadBanks": "Load Banks",
+    "enableBankingNoAuthPage": "Enable Banking returned no authorization page",
+    "enableBankingNoCode": "No authorization code found in the address",
+    "enableBankingRedirect": "Redirect URL",
+    "enableBankingRedirectTooltip": "Registered for the application; the bank returns to it after the authorization",
+    "enableBankingStateMismatch": "The address belongs to another authorization, connect again",
     "encryptionMode": "Data Encryption",
     "error": "Error: {value}",
     "@error": {
@@ -263,6 +281,36 @@
         }
     },
     "failData": "Amount Deduction",
+    "finTsApproved": "Approved in the Banking App",
+    "finTsBankCode": "Bank Code (BLZ)",
+    "finTsCustomerId": "Customer ID (if different from User ID)",
+    "finTsDescription": "Import balances and transactions from banks supporting FinTS 4.1 (PIN/TAN). Access is read-only: no payments are made.",
+    "finTsHeadline": "Financial Transaction Services (FinTS 4.1)",
+    "finTsIncomplete": "Fill in the server URL, bank code, user ID and product registration ID",
+    "finTsLoginChanged": "The bank has changed the login data, update the User ID or Customer ID: {value}",
+    "@finTsLoginChanged": {
+        "value": {
+            "type": "String"
+        }
+    },
+    "finTsLoginRefused": "The bank refused the previous login: {value}. Retry with the entered PIN?",
+    "@finTsLoginRefused": {
+        "value": {
+            "type": "String"
+        }
+    },
+    "finTsPin": "PIN",
+    "finTsPinHint": "Used for this session only and never stored",
+    "finTsProductId": "Product Registration ID",
+    "finTsProductIdTooltip": "Issued by the Deutsche Kreditwirtschaft to the application's vendor",
+    "finTsTan": "TAN",
+    "finTsTanHeadline": "Transaction Authentication (TAN)",
+    "finTsTanMedium": "Select TAN Medium",
+    "finTsTanMethod": "Select TAN Method",
+    "finTsUrl": "Bank's FinTS Server URL",
+    "finTsUserId": "User ID (Login)",
+    "finTsVersion": "Protocol Version",
+    "finTsWebUnsupported": "Bank servers do not allow access from a browser. Use the desktop or mobile application.",
     "flowTypeInvoice": "Invoice",
     "flowTypeTooltip": "Amount Type: Bill, Invoice",
     "forecastData": "Forecast",
@@ -290,6 +338,48 @@
     "incomeHeadline": "Income",
     "incomeHealth": "Income Health Radar",
     "incomeTooltip": "Set Income Details",
+    "integrationAccessDenied": "Access has been revoked or the credentials are incorrect",
+    "integrationConnect": "Connect",
+    "integrationDateFrom": "Import Transactions Since",
+    "integrationDisconnect": "Disconnect",
+    "integrationForget": "Forget Access",
+    "integrationHeadline": "Integrations",
+    "integrationHttpError": "The service answered with an error (HTTP {value})",
+    "@integrationHttpError": {
+        "value": {
+            "type": "String"
+        }
+    },
+    "integrationHttpsRequired": "Only secure (HTTPS) addresses are allowed",
+    "integrationImport": "Import Transactions",
+    "integrationImported": "Imported: {added}, skipped as already present: {skipped}, pending (not imported): {pending}",
+    "@integrationImported": {
+        "added": {
+            "type": "int"
+        },
+        "skipped": {
+            "type": "int"
+        },
+        "pending": {
+            "type": "int"
+        }
+    },
+    "integrationInvalidAmount": "Invalid amount: {value}",
+    "@integrationInvalidAmount": {
+        "value": {
+            "type": "String"
+        }
+    },
+    "integrationNoAccounts": "The bank has provided no accounts",
+    "integrationPaymentRequired": "The service requires a payment for the access",
+    "integrationSelectTarget": "Select the account and the budget category to import into",
+    "integrationServiceError": "The service reported: {value}",
+    "@integrationServiceError": {
+        "value": {
+            "type": "String"
+        }
+    },
+    "integrationUnexpectedResponse": "Unexpected response of the service",
     "invoiceHeadline": "Invoices",
     "invoiceSum": "Invoices: {value}",
     "@invoiceSum": {
@@ -398,6 +488,13 @@
     "settingsBaseHeadline": "Basics",
     "settingsHeadline": "Settings",
     "settingsSaved": "Settings saved!",
+    "simpleFinDescription": "Import balances and transactions of US banks and card issuers through a SimpleFIN Bridge. Access is read-only: no payments are made.",
+    "simpleFinHeadline": "SimpleFIN Bridge (US)",
+    "simpleFinNoCredentials": "The SimpleFIN Bridge returned an access address without credentials",
+    "simpleFinToken": "SimpleFIN Setup Token",
+    "simpleFinTokenClaimed": "The Setup Token does not exist or has already been used",
+    "simpleFinTokenInvalid": "Invalid SimpleFIN Setup Token",
+    "simpleFinTokenTooltip": "Created at your SimpleFIN Bridge (e.g. bridge.simplefin.org) for this application; it can be used only once",
     "skipFromTotals": "Exclude from Totals",
     "skipTooltip": "Skip Step(s)",
     "sortTooltip": "Sort Items",

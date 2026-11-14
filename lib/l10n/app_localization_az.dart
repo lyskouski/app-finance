@@ -599,6 +599,70 @@ class AppLocalizationsAz extends AppLocalizations {
   String get editTransferTooltip => 'Transferi redaktə edin';
 
   @override
+  String get enableBankingAppId => 'Tətbiq ID-si';
+
+  @override
+  String get enableBankingBank => 'Bank';
+
+  @override
+  String get enableBankingCode =>
+      'Avtorizasiyadan sonra açılan səhifənin ünvanı';
+
+  @override
+  String get enableBankingCodeTooltip =>
+      'Bankda girişi təsdiqləyin, sonra ünvanı brauzerdən kopyalayıb bura yapışdırın';
+
+  @override
+  String get enableBankingCountry => 'Ölkə (ISO kodu, məs. DE)';
+
+  @override
+  String get enableBankingDescription =>
+      'enablebanking.com-da qeydiyyatdan keçmiş öz tətbiqinizlə Enable Banking API (PSD2) vasitəsilə Avropa banklarının qalıqlarını və əməliyyatlarını idxal edin. Giriş yalnız oxumaq üçündür: ödənişlər edilmir.';
+
+  @override
+  String get enableBankingHeadline => 'Enable Banking (EU)';
+
+  @override
+  String get enableBankingIncomplete =>
+      'Tətbiq ID-sini, şəxsi açarı, yönləndirmə URL-ni və ölkəni doldurun';
+
+  @override
+  String get enableBankingKey => 'Şəxsi açar (PEM)';
+
+  @override
+  String get enableBankingKeyInvalid =>
+      'Yanlış şəxsi açar: \"PRIVATE KEY\" PEM bloku gözlənilir';
+
+  @override
+  String get enableBankingKeyNotRsa =>
+      'Yanlış şəxsi açar: RSA açarı gözlənilir';
+
+  @override
+  String get enableBankingKeyTooltip =>
+      'Enable Banking Control Panel-də tətbiqlə birlikdə yaradılır; şifrələnmiş saxlanılır. Saxlanılmış açarı saxlamaq üçün boş buraxın';
+
+  @override
+  String get enableBankingLoadBanks => 'Bankları yüklə';
+
+  @override
+  String get enableBankingNoAuthPage =>
+      'Enable Banking avtorizasiya səhifəsi qaytarmadı';
+
+  @override
+  String get enableBankingNoCode => 'Ünvanda avtorizasiya kodu tapılmadı';
+
+  @override
+  String get enableBankingRedirect => 'Yönləndirmə URL-i';
+
+  @override
+  String get enableBankingRedirectTooltip =>
+      'Tətbiq üçün qeydiyyatdan keçib; bank avtorizasiyadan sonra ona qayıdır';
+
+  @override
+  String get enableBankingStateMismatch =>
+      'Ünvan başqa avtorizasiyaya aiddir, yenidən qoşulun';
+
+  @override
   String get encryptionMode => 'Məlumatların Şifrələnməsi';
 
   @override
@@ -638,6 +702,76 @@ class AppLocalizationsAz extends AppLocalizations {
 
   @override
   String get failData => 'Məbləğin tutulması';
+
+  @override
+  String get finTsApproved => 'Bank tətbiqində təsdiqləndi';
+
+  @override
+  String get finTsBankCode => 'Bank kodu (BLZ)';
+
+  @override
+  String get finTsCustomerId =>
+      'Müştəri ID-si (istifadəçi ID-sindən fərqlidirsə)';
+
+  @override
+  String get finTsDescription =>
+      'FinTS 4.1 (PIN/TAN) dəstəkləyən banklardan qalıqları və əməliyyatları idxal edin. Giriş yalnız oxumaq üçündür: ödənişlər edilmir.';
+
+  @override
+  String get finTsHeadline => 'Financial Transaction Services (FinTS 4.1)';
+
+  @override
+  String get finTsIncomplete =>
+      'Server URL-ni, bank kodunu, istifadəçi ID-sini və məhsulun qeydiyyat nömrəsini doldurun';
+
+  @override
+  String finTsLoginChanged(Object value) {
+    return 'Bank giriş məlumatlarını dəyişdi, istifadəçi və ya müştəri ID-sini yeniləyin: $value';
+  }
+
+  @override
+  String finTsLoginRefused(Object value) {
+    return 'Bank əvvəlki girişi rədd etdi: $value. Daxil edilmiş PIN ilə yenidən cəhd edilsin?';
+  }
+
+  @override
+  String get finTsPin => 'PIN';
+
+  @override
+  String get finTsPinHint =>
+      'Yalnız bu sessiya üçün istifadə olunur və heç vaxt saxlanılmır';
+
+  @override
+  String get finTsProductId => 'Məhsulun qeydiyyat nömrəsi';
+
+  @override
+  String get finTsProductIdTooltip =>
+      'Deutsche Kreditwirtschaft tərəfindən tətbiqin istehsalçısına verilir';
+
+  @override
+  String get finTsTan => 'TAN';
+
+  @override
+  String get finTsTanHeadline => 'Əməliyyatın təsdiqi (TAN)';
+
+  @override
+  String get finTsTanMedium => 'TAN vasitəsini seçin';
+
+  @override
+  String get finTsTanMethod => 'TAN üsulunu seçin';
+
+  @override
+  String get finTsUrl => 'Bankın FinTS server URL-i';
+
+  @override
+  String get finTsUserId => 'İstifadəçi ID-si (giriş)';
+
+  @override
+  String get finTsVersion => 'Protokol versiyası';
+
+  @override
+  String get finTsWebUnsupported =>
+      'Bank serverləri brauzerdən girişə icazə vermir. Masaüstü və ya mobil tətbiqdən istifadə edin.';
 
   @override
   String get flowTypeInvoice => 'Invoice';
@@ -706,6 +840,66 @@ class AppLocalizationsAz extends AppLocalizations {
 
   @override
   String get incomeTooltip => 'Gəlir təfərrüatlarını təyin edin';
+
+  @override
+  String get integrationAccessDenied =>
+      'Giriş ləğv edilib və ya giriş məlumatları yanlışdır';
+
+  @override
+  String get integrationConnect => 'Qoşul';
+
+  @override
+  String get integrationDateFrom => 'Əməliyyatları bu tarixdən idxal et';
+
+  @override
+  String get integrationDisconnect => 'Ayrıl';
+
+  @override
+  String get integrationForget => 'Girişi unut';
+
+  @override
+  String get integrationHeadline => 'İnteqrasiyalar';
+
+  @override
+  String integrationHttpError(Object value) {
+    return 'Xidmət xəta ilə cavab verdi (HTTP $value)';
+  }
+
+  @override
+  String get integrationHttpsRequired =>
+      'Yalnız təhlükəsiz (HTTPS) ünvanlara icazə verilir';
+
+  @override
+  String get integrationImport => 'Əməliyyatları idxal et';
+
+  @override
+  String integrationImported(Object added, Object pending, Object skipped) {
+    return 'İdxal edildi: $added, artıq mövcud olduğu üçün buraxıldı: $skipped, gözləmədə (idxal edilmədi): $pending';
+  }
+
+  @override
+  String integrationInvalidAmount(Object value) {
+    return 'Yanlış məbləğ: $value';
+  }
+
+  @override
+  String get integrationNoAccounts => 'Bank heç bir hesab təqdim etmədi';
+
+  @override
+  String get integrationPaymentRequired =>
+      'Xidmət giriş üçün ödəniş tələb edir';
+
+  @override
+  String get integrationSelectTarget =>
+      'İdxal üçün hesabı və büdcə kateqoriyasını seçin';
+
+  @override
+  String integrationServiceError(Object value) {
+    return 'Xidmətin mesajı: $value';
+  }
+
+  @override
+  String get integrationUnexpectedResponse => 'Xidmətdən gözlənilməz cavab';
 
   @override
   String get invoiceHeadline => 'Fakturalar';
@@ -956,6 +1150,31 @@ class AppLocalizationsAz extends AppLocalizations {
 
   @override
   String get settingsSaved => 'Tənzimləmələr yadda saxlanıldı!';
+
+  @override
+  String get simpleFinDescription =>
+      'ABŞ bankları və kart emitentlərinin qalıqlarını və əməliyyatlarını SimpleFIN Bridge vasitəsilə idxal edin. Giriş yalnız oxumaq üçündür: ödənişlər edilmir.';
+
+  @override
+  String get simpleFinHeadline => 'SimpleFIN Bridge (US)';
+
+  @override
+  String get simpleFinNoCredentials =>
+      'SimpleFIN Bridge giriş məlumatları olmayan giriş ünvanı qaytardı';
+
+  @override
+  String get simpleFinToken => 'SimpleFIN quraşdırma tokeni';
+
+  @override
+  String get simpleFinTokenClaimed =>
+      'Quraşdırma tokeni mövcud deyil və ya artıq istifadə olunub';
+
+  @override
+  String get simpleFinTokenInvalid => 'Yanlış SimpleFIN quraşdırma tokeni';
+
+  @override
+  String get simpleFinTokenTooltip =>
+      'Bu tətbiq üçün SimpleFIN Bridge-də (məs. bridge.simplefin.org) yaradılır; yalnız bir dəfə istifadə oluna bilər';
 
   @override
   String get skipFromTotals => 'Cəmilərdən xaric edin';

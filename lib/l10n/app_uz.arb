@@ -241,6 +241,24 @@
     "editPaymentTooltip": "To'lovni tahrirlash",
     "editTooltip": "Tahrirlash",
     "editTransferTooltip": "Transferni tahrirlash",
+    "enableBankingAppId": "Ilova ID",
+    "enableBankingBank": "Bank",
+    "enableBankingCode": "Avtorizatsiyadan keyin ochilgan sahifa manzili",
+    "enableBankingCodeTooltip": "Bankda kirishni tasdiqlang, so'ng manzilni brauzerdan nusxalab, shu yerga joylashtiring",
+    "enableBankingCountry": "Mamlakat (ISO kodi, masalan, DE)",
+    "enableBankingDescription": "enablebanking.com saytida ro'yxatdan o'tgan o'z ilovangiz bilan Enable Banking API (PSD2) orqali Yevropa banklarining qoldiqlari va tranzaksiyalarini import qiling. Kirish faqat o'qish uchun: to'lovlar amalga oshirilmaydi.",
+    "enableBankingHeadline": "Enable Banking (EU)",
+    "enableBankingIncomplete": "Ilova ID, maxfiy kalit, yo'naltirish URL manzili va mamlakatni to'ldiring",
+    "enableBankingKey": "Maxfiy kalit (PEM)",
+    "enableBankingKeyInvalid": "Noto'g'ri maxfiy kalit: \"PRIVATE KEY\" PEM bloki kutilmoqda",
+    "enableBankingKeyNotRsa": "Noto'g'ri maxfiy kalit: RSA kaliti kutilmoqda",
+    "enableBankingKeyTooltip": "Enable Banking Control Panel'da ilova bilan birga yaratiladi; shifrlangan holda saqlanadi. Saqlangan kalitni qoldirish uchun bo'sh qoldiring",
+    "enableBankingLoadBanks": "Banklarni yuklash",
+    "enableBankingNoAuthPage": "Enable Banking avtorizatsiya sahifasini qaytarmadi",
+    "enableBankingNoCode": "Manzilda avtorizatsiya kodi topilmadi",
+    "enableBankingRedirect": "Yo'naltirish URL manzili",
+    "enableBankingRedirectTooltip": "Ilova uchun ro'yxatdan o'tkazilgan; avtorizatsiyadan so'ng bank unga qaytaradi",
+    "enableBankingStateMismatch": "Manzil boshqa avtorizatsiyaga tegishli, qayta ulaning",
     "encryptionMode": "Ma'lumotlarni shifrlash",
     "error": "Xato: {value}",
     "@error": {
@@ -263,6 +281,36 @@
         }
     },
     "failData": "Chegirma miqdori",
+    "finTsApproved": "Bank ilovasida tasdiqlandi",
+    "finTsBankCode": "Bank kodi (BLZ)",
+    "finTsCustomerId": "Mijoz ID (foydalanuvchi ID dan farq qilsa)",
+    "finTsDescription": "FinTS 4.1 (PIN/TAN) ni qo'llab-quvvatlaydigan banklardan qoldiqlar va tranzaksiyalarni import qiling. Kirish faqat o'qish uchun: to'lovlar amalga oshirilmaydi.",
+    "finTsHeadline": "Financial Transaction Services (FinTS 4.1)",
+    "finTsIncomplete": "Server URL, bank kodi, foydalanuvchi ID va mahsulot ro'yxatdan o'tish raqamini to'ldiring",
+    "finTsLoginChanged": "Bank kirish ma'lumotlarini o'zgartirdi, foydalanuvchi yoki mijoz ID ni yangilang: {value}",
+    "@finTsLoginChanged": {
+        "value": {
+            "type": "String"
+        }
+    },
+    "finTsLoginRefused": "Bank oldingi kirishni rad etdi: {value}. Kiritilgan PIN bilan qayta urinib ko'rilsinmi?",
+    "@finTsLoginRefused": {
+        "value": {
+            "type": "String"
+        }
+    },
+    "finTsPin": "PIN",
+    "finTsPinHint": "Faqat shu seans uchun ishlatiladi va hech qachon saqlanmaydi",
+    "finTsProductId": "Mahsulot ro'yxatdan o'tish raqami",
+    "finTsProductIdTooltip": "Deutsche Kreditwirtschaft tomonidan ilova ishlab chiqaruvchisiga beriladi",
+    "finTsTan": "TAN",
+    "finTsTanHeadline": "Tranzaksiyani tasdiqlash (TAN)",
+    "finTsTanMedium": "TAN vositasini tanlang",
+    "finTsTanMethod": "TAN usulini tanlang",
+    "finTsUrl": "Bankning FinTS server URL manzili",
+    "finTsUserId": "Foydalanuvchi ID (login)",
+    "finTsVersion": "Protokol versiyasi",
+    "finTsWebUnsupported": "Bank serverlari brauzerdan kirishga ruxsat bermaydi. Kompyuter yoki mobil ilovadan foydalaning.",
     "flowTypeInvoice": "Hisob-faktura",
     "flowTypeTooltip": "Miqdor turi: hisob-faktura, hisob-faktura",
     "forecastData": "Prognoz",
@@ -290,6 +338,48 @@
     "incomeHeadline": "Daromad",
     "incomeHealth": "Sog'lik daromadlari radari",
     "incomeTooltip": "Daromad tafsilotlarini o'rnating",
+    "integrationAccessDenied": "Kirish bekor qilingan yoki hisob ma'lumotlari noto'g'ri",
+    "integrationConnect": "Ulanish",
+    "integrationDateFrom": "Tranzaksiyalarni shu sanadan import qilish",
+    "integrationDisconnect": "Uzish",
+    "integrationForget": "Kirishni unutish",
+    "integrationHeadline": "Integratsiyalar",
+    "integrationHttpError": "Xizmat xato bilan javob berdi (HTTP {value})",
+    "@integrationHttpError": {
+        "value": {
+            "type": "String"
+        }
+    },
+    "integrationHttpsRequired": "Faqat xavfsiz (HTTPS) manzillarga ruxsat beriladi",
+    "integrationImport": "Tranzaksiyalarni import qilish",
+    "integrationImported": "Import qilindi: {added}, allaqachon mavjudligi sababli o'tkazib yuborildi: {skipped}, kutilmoqda (import qilinmadi): {pending}",
+    "@integrationImported": {
+        "added": {
+            "type": "int"
+        },
+        "skipped": {
+            "type": "int"
+        },
+        "pending": {
+            "type": "int"
+        }
+    },
+    "integrationInvalidAmount": "Noto'g'ri summa: {value}",
+    "@integrationInvalidAmount": {
+        "value": {
+            "type": "String"
+        }
+    },
+    "integrationNoAccounts": "Bank hech qanday hisob taqdim etmadi",
+    "integrationPaymentRequired": "Xizmat kirish uchun to'lov talab qiladi",
+    "integrationSelectTarget": "Import uchun hisob va byudjet toifasini tanlang",
+    "integrationServiceError": "Xizmat xabari: {value}",
+    "@integrationServiceError": {
+        "value": {
+            "type": "String"
+        }
+    },
+    "integrationUnexpectedResponse": "Xizmatdan kutilmagan javob",
     "invoiceHeadline": "Hisob-fakturalar",
     "invoiceSum": "Hisob-fakturalar: {value}",
     "@invoiceSum": {
@@ -398,6 +488,13 @@
     "settingsBaseHeadline": "Asoslar",
     "settingsHeadline": "Sozlamalar",
     "settingsSaved": "Sozlamalar saqlandi!",
+    "simpleFinDescription": "AQSh banklari va karta emitentlarining qoldiqlari va tranzaksiyalarini SimpleFIN Bridge orqali import qiling. Kirish faqat o'qish uchun: to'lovlar amalga oshirilmaydi.",
+    "simpleFinHeadline": "SimpleFIN Bridge (US)",
+    "simpleFinNoCredentials": "SimpleFIN Bridge hisob ma'lumotlarisiz kirish manzilini qaytardi",
+    "simpleFinToken": "SimpleFIN sozlash tokeni",
+    "simpleFinTokenClaimed": "Sozlash tokeni mavjud emas yoki allaqachon ishlatilgan",
+    "simpleFinTokenInvalid": "Noto'g'ri SimpleFIN sozlash tokeni",
+    "simpleFinTokenTooltip": "Ushbu ilova uchun SimpleFIN Bridge'da (masalan, bridge.simplefin.org) yaratiladi; faqat bir marta ishlatilishi mumkin",
     "skipFromTotals": "Jami hisobdan chiqarib tashlang",
     "skipTooltip": "Qadam(lar)ni o‘tkazib yuborish",
     "sortTooltip": "Elementlarni saralash",

@@ -241,6 +241,24 @@
     "editPaymentTooltip": "Modifier le paiement",
     "editTooltip": "Modifier",
     "editTransferTooltip": "Modifier le transfert",
+    "enableBankingAppId": "ID de l'application",
+    "enableBankingBank": "Banque",
+    "enableBankingCode": "Adresse de la page ouverte après l'autorisation",
+    "enableBankingCodeTooltip": "Confirmez l'accès auprès de la banque, puis copiez l'adresse depuis le navigateur et collez-la ici",
+    "enableBankingCountry": "Pays (code ISO, p. ex. FR)",
+    "enableBankingDescription": "Importez les soldes et les opérations des banques européennes via l'API Enable Banking (DSP2) avec votre propre application enregistrée sur enablebanking.com. Accès en lecture seule : aucun paiement n'est effectué.",
+    "enableBankingHeadline": "Enable Banking (EU)",
+    "enableBankingIncomplete": "Renseignez l'ID de l'application, la clé privée, l'URL de redirection et le pays",
+    "enableBankingKey": "Clé privée (PEM)",
+    "enableBankingKeyInvalid": "Clé privée invalide : un bloc PEM « PRIVATE KEY » est attendu",
+    "enableBankingKeyNotRsa": "Clé privée invalide : une clé RSA est attendue",
+    "enableBankingKeyTooltip": "Créée avec l'application dans le Enable Banking Control Panel ; stockée chiffrée. Laissez vide pour conserver la clé enregistrée",
+    "enableBankingLoadBanks": "Charger les banques",
+    "enableBankingNoAuthPage": "Enable Banking n'a renvoyé aucune page d'autorisation",
+    "enableBankingNoCode": "Aucun code d'autorisation trouvé dans l'adresse",
+    "enableBankingRedirect": "URL de redirection",
+    "enableBankingRedirectTooltip": "Enregistrée pour l'application ; la banque y revient après l'autorisation",
+    "enableBankingStateMismatch": "L'adresse appartient à une autre autorisation, reconnectez-vous",
     "encryptionMode": "Cryptage des données",
     "error": "Erreur : {value}",
     "@error": {
@@ -263,6 +281,36 @@
         }
     },
     "failData": "Montant de la déduction",
+    "finTsApproved": "Approuvé dans l'application bancaire",
+    "finTsBankCode": "Code bancaire (BLZ)",
+    "finTsCustomerId": "Identifiant client (s'il diffère de l'identifiant utilisateur)",
+    "finTsDescription": "Importez les soldes et les opérations des banques prenant en charge FinTS 4.1 (PIN/TAN). Accès en lecture seule : aucun paiement n'est effectué.",
+    "finTsHeadline": "Financial Transaction Services (FinTS 4.1)",
+    "finTsIncomplete": "Renseignez l'URL du serveur, le code bancaire, l'identifiant utilisateur et le numéro d'enregistrement du produit",
+    "finTsLoginChanged": "La banque a modifié les données de connexion, mettez à jour l'identifiant utilisateur ou client : {value}",
+    "@finTsLoginChanged": {
+        "value": {
+            "type": "String"
+        }
+    },
+    "finTsLoginRefused": "La banque a refusé la connexion précédente : {value}. Réessayer avec le PIN saisi ?",
+    "@finTsLoginRefused": {
+        "value": {
+            "type": "String"
+        }
+    },
+    "finTsPin": "PIN",
+    "finTsPinHint": "Utilisé uniquement pour cette session et jamais enregistré",
+    "finTsProductId": "Numéro d'enregistrement du produit",
+    "finTsProductIdTooltip": "Attribué par la Deutsche Kreditwirtschaft à l'éditeur de l'application",
+    "finTsTan": "TAN",
+    "finTsTanHeadline": "Authentification de l'opération (TAN)",
+    "finTsTanMedium": "Choisir le support TAN",
+    "finTsTanMethod": "Choisir la méthode TAN",
+    "finTsUrl": "URL du serveur FinTS de la banque",
+    "finTsUserId": "Identifiant utilisateur (login)",
+    "finTsVersion": "Version du protocole",
+    "finTsWebUnsupported": "Les serveurs bancaires n'autorisent pas l'accès depuis un navigateur. Utilisez l'application de bureau ou mobile.",
     "flowTypeInvoice": "Facture",
     "flowTypeTooltip": "Type de montant : Facture",
     "forecastData": "Prévision",
@@ -290,6 +338,48 @@
     "incomeHeadline": "Revenu",
     "incomeHealth": "Radar de santé du revenu",
     "incomeTooltip": "Définir les détails du revenu",
+    "integrationAccessDenied": "L'accès a été révoqué ou les identifiants sont incorrects",
+    "integrationConnect": "Se connecter",
+    "integrationDateFrom": "Importer les opérations depuis",
+    "integrationDisconnect": "Se déconnecter",
+    "integrationForget": "Oublier l'accès",
+    "integrationHeadline": "Intégrations",
+    "integrationHttpError": "Le service a répondu par une erreur (HTTP {value})",
+    "@integrationHttpError": {
+        "value": {
+            "type": "String"
+        }
+    },
+    "integrationHttpsRequired": "Seules les adresses sécurisées (HTTPS) sont autorisées",
+    "integrationImport": "Importer les opérations",
+    "integrationImported": "Importées : {added}, ignorées car déjà présentes : {skipped}, en attente (non importées) : {pending}",
+    "@integrationImported": {
+        "added": {
+            "type": "int"
+        },
+        "skipped": {
+            "type": "int"
+        },
+        "pending": {
+            "type": "int"
+        }
+    },
+    "integrationInvalidAmount": "Montant invalide : {value}",
+    "@integrationInvalidAmount": {
+        "value": {
+            "type": "String"
+        }
+    },
+    "integrationNoAccounts": "La banque n'a fourni aucun compte",
+    "integrationPaymentRequired": "Le service exige un paiement pour l'accès",
+    "integrationSelectTarget": "Sélectionnez le compte et la catégorie de budget pour l'importation",
+    "integrationServiceError": "Message du service : {value}",
+    "@integrationServiceError": {
+        "value": {
+            "type": "String"
+        }
+    },
+    "integrationUnexpectedResponse": "Réponse inattendue du service",
     "invoiceHeadline": "Factures",
     "invoiceSum": "Factures : {value}",
     "@invoiceSum": {
@@ -398,6 +488,13 @@
     "settingsBaseHeadline": "Principes de base",
     "settingsHeadline": "Paramètres",
     "settingsSaved": "Paramètres enregistrés !",
+    "simpleFinDescription": "Importez les soldes et les opérations des banques et émetteurs de cartes américains via un SimpleFIN Bridge. Accès en lecture seule : aucun paiement n'est effectué.",
+    "simpleFinHeadline": "SimpleFIN Bridge (US)",
+    "simpleFinNoCredentials": "Le SimpleFIN Bridge a renvoyé une adresse d'accès sans identifiants",
+    "simpleFinToken": "Jeton de configuration SimpleFIN",
+    "simpleFinTokenClaimed": "Le jeton de configuration n'existe pas ou a déjà été utilisé",
+    "simpleFinTokenInvalid": "Jeton de configuration SimpleFIN invalide",
+    "simpleFinTokenTooltip": "Créé dans votre SimpleFIN Bridge (p. ex. bridge.simplefin.org) pour cette application ; utilisable une seule fois",
     "skipFromTotals": "Exclure des totaux",
     "skipTooltip": "Sauter étape(s)",
     "sortTooltip": "Trier les éléments",

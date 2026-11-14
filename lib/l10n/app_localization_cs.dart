@@ -598,6 +598,69 @@ class AppLocalizationsCs extends AppLocalizations {
   String get editTransferTooltip => 'Upravit převod';
 
   @override
+  String get enableBankingAppId => 'ID aplikace';
+
+  @override
+  String get enableBankingBank => 'Banka';
+
+  @override
+  String get enableBankingCode => 'Adresa stránky po autorizaci';
+
+  @override
+  String get enableBankingCodeTooltip =>
+      'Potvrďte přístup v bance, poté zkopírujte adresu z prohlížeče a vložte ji sem';
+
+  @override
+  String get enableBankingCountry => 'Země (kód ISO, např. CZ)';
+
+  @override
+  String get enableBankingDescription =>
+      'Import zůstatků a transakcí evropských bank přes Enable Banking API (PSD2) s vlastní aplikací registrovanou na enablebanking.com. Přístup pouze pro čtení: neprovádějí se žádné platby.';
+
+  @override
+  String get enableBankingHeadline => 'Enable Banking (EU)';
+
+  @override
+  String get enableBankingIncomplete =>
+      'Vyplňte ID aplikace, soukromý klíč, URL přesměrování a zemi';
+
+  @override
+  String get enableBankingKey => 'Soukromý klíč (PEM)';
+
+  @override
+  String get enableBankingKeyInvalid =>
+      'Neplatný soukromý klíč: očekává se blok PEM \"PRIVATE KEY\"';
+
+  @override
+  String get enableBankingKeyNotRsa =>
+      'Neplatný soukromý klíč: očekává se klíč RSA';
+
+  @override
+  String get enableBankingKeyTooltip =>
+      'Vytváří se s aplikací v Enable Banking Control Panel; uložen šifrovaně. Ponechte prázdné pro zachování uloženého klíče';
+
+  @override
+  String get enableBankingLoadBanks => 'Načíst banky';
+
+  @override
+  String get enableBankingNoAuthPage =>
+      'Enable Banking nevrátil stránku autorizace';
+
+  @override
+  String get enableBankingNoCode => 'V adrese nebyl nalezen autorizační kód';
+
+  @override
+  String get enableBankingRedirect => 'URL přesměrování';
+
+  @override
+  String get enableBankingRedirectTooltip =>
+      'Registrována pro aplikaci; banka se na ni po autorizaci vrátí';
+
+  @override
+  String get enableBankingStateMismatch =>
+      'Adresa patří k jiné autorizaci, připojte se znovu';
+
+  @override
   String get encryptionMode => 'Šifrování dat';
 
   @override
@@ -636,6 +699,75 @@ class AppLocalizationsCs extends AppLocalizations {
 
   @override
   String get failData => 'Odečtená částka';
+
+  @override
+  String get finTsApproved => 'Schváleno v bankovní aplikaci';
+
+  @override
+  String get finTsBankCode => 'Kód banky (BLZ)';
+
+  @override
+  String get finTsCustomerId => 'ID zákazníka (pokud se liší od ID uživatele)';
+
+  @override
+  String get finTsDescription =>
+      'Import zůstatků a transakcí z bank podporujících FinTS 4.1 (PIN/TAN). Přístup pouze pro čtení: neprovádějí se žádné platby.';
+
+  @override
+  String get finTsHeadline => 'Financial Transaction Services (FinTS 4.1)';
+
+  @override
+  String get finTsIncomplete =>
+      'Vyplňte URL serveru, kód banky, ID uživatele a registrační číslo produktu';
+
+  @override
+  String finTsLoginChanged(Object value) {
+    return 'Banka změnila přihlašovací údaje, aktualizujte ID uživatele nebo ID zákazníka: $value';
+  }
+
+  @override
+  String finTsLoginRefused(Object value) {
+    return 'Banka odmítla předchozí přihlášení: $value. Zkusit znovu se zadaným PINem?';
+  }
+
+  @override
+  String get finTsPin => 'PIN';
+
+  @override
+  String get finTsPinHint =>
+      'Použije se pouze pro tuto relaci a nikdy se neukládá';
+
+  @override
+  String get finTsProductId => 'Registrační číslo produktu';
+
+  @override
+  String get finTsProductIdTooltip =>
+      'Vydává Deutsche Kreditwirtschaft výrobci aplikace';
+
+  @override
+  String get finTsTan => 'TAN';
+
+  @override
+  String get finTsTanHeadline => 'Ověření transakce (TAN)';
+
+  @override
+  String get finTsTanMedium => 'Vyberte médium TAN';
+
+  @override
+  String get finTsTanMethod => 'Vyberte metodu TAN';
+
+  @override
+  String get finTsUrl => 'URL serveru FinTS banky';
+
+  @override
+  String get finTsUserId => 'ID uživatele (přihlášení)';
+
+  @override
+  String get finTsVersion => 'Verze protokolu';
+
+  @override
+  String get finTsWebUnsupported =>
+      'Servery bank neumožňují přístup z prohlížeče. Použijte desktopovou nebo mobilní aplikaci.';
 
   @override
   String get flowTypeInvoice => 'Faktura';
@@ -704,6 +836,65 @@ class AppLocalizationsCs extends AppLocalizations {
 
   @override
   String get incomeTooltip => 'Nastavení podrobností o příjmech';
+
+  @override
+  String get integrationAccessDenied =>
+      'Přístup byl odvolán nebo jsou přihlašovací údaje nesprávné';
+
+  @override
+  String get integrationConnect => 'Připojit';
+
+  @override
+  String get integrationDateFrom => 'Importovat transakce od';
+
+  @override
+  String get integrationDisconnect => 'Odpojit';
+
+  @override
+  String get integrationForget => 'Zapomenout přístup';
+
+  @override
+  String get integrationHeadline => 'Integrace';
+
+  @override
+  String integrationHttpError(Object value) {
+    return 'Služba odpověděla chybou (HTTP $value)';
+  }
+
+  @override
+  String get integrationHttpsRequired =>
+      'Povoleny jsou pouze zabezpečené adresy (HTTPS)';
+
+  @override
+  String get integrationImport => 'Importovat transakce';
+
+  @override
+  String integrationImported(Object added, Object pending, Object skipped) {
+    return 'Importováno: $added, přeskočeno jako existující: $skipped, čekající (neimportováno): $pending';
+  }
+
+  @override
+  String integrationInvalidAmount(Object value) {
+    return 'Neplatná částka: $value';
+  }
+
+  @override
+  String get integrationNoAccounts => 'Banka neposkytla žádné účty';
+
+  @override
+  String get integrationPaymentRequired => 'Služba vyžaduje za přístup platbu';
+
+  @override
+  String get integrationSelectTarget =>
+      'Vyberte účet a kategorii rozpočtu pro import';
+
+  @override
+  String integrationServiceError(Object value) {
+    return 'Hlášení služby: $value';
+  }
+
+  @override
+  String get integrationUnexpectedResponse => 'Neočekávaná odpověď služby';
 
   @override
   String get invoiceHeadline => 'Faktury';
@@ -953,6 +1144,31 @@ class AppLocalizationsCs extends AppLocalizations {
 
   @override
   String get settingsSaved => 'Nastavení uloženo!';
+
+  @override
+  String get simpleFinDescription =>
+      'Import zůstatků a transakcí amerických bank a vydavatelů karet přes SimpleFIN Bridge. Přístup pouze pro čtení: neprovádějí se žádné platby.';
+
+  @override
+  String get simpleFinHeadline => 'SimpleFIN Bridge (US)';
+
+  @override
+  String get simpleFinNoCredentials =>
+      'SimpleFIN Bridge vrátil přístupovou adresu bez přihlašovacích údajů';
+
+  @override
+  String get simpleFinToken => 'Instalační token SimpleFIN';
+
+  @override
+  String get simpleFinTokenClaimed =>
+      'Instalační token neexistuje nebo již byl použit';
+
+  @override
+  String get simpleFinTokenInvalid => 'Neplatný instalační token SimpleFIN';
+
+  @override
+  String get simpleFinTokenTooltip =>
+      'Vytváří se ve vašem SimpleFIN Bridge (např. bridge.simplefin.org) pro tuto aplikaci; lze jej použít pouze jednou';
 
   @override
   String get skipFromTotals => 'Vyloučit ze součtů';

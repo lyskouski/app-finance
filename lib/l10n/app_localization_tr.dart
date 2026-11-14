@@ -598,6 +598,70 @@ class AppLocalizationsTr extends AppLocalizations {
   String get editTransferTooltip => 'Aktarımı Düzenle';
 
   @override
+  String get enableBankingAppId => 'Uygulama kimliği';
+
+  @override
+  String get enableBankingBank => 'Banka';
+
+  @override
+  String get enableBankingCode =>
+      'Yetkilendirmeden sonra açılan sayfanın adresi';
+
+  @override
+  String get enableBankingCodeTooltip =>
+      'Bankada erişimi onaylayın, ardından adresi tarayıcıdan kopyalayıp buraya yapıştırın';
+
+  @override
+  String get enableBankingCountry => 'Ülke (ISO kodu, ör. DE)';
+
+  @override
+  String get enableBankingDescription =>
+      'Enable Banking API (PSD2) üzerinden, enablebanking.com\'da kayıtlı kendi uygulamanızla Avrupa bankalarının bakiyelerini ve işlemlerini içe aktarın. Erişim salt okunurdur: ödeme yapılmaz.';
+
+  @override
+  String get enableBankingHeadline => 'Enable Banking (EU)';
+
+  @override
+  String get enableBankingIncomplete =>
+      'Uygulama kimliğini, özel anahtarı, yönlendirme URL\'sini ve ülkeyi doldurun';
+
+  @override
+  String get enableBankingKey => 'Özel anahtar (PEM)';
+
+  @override
+  String get enableBankingKeyInvalid =>
+      'Geçersiz özel anahtar: \"PRIVATE KEY\" PEM bloğu bekleniyor';
+
+  @override
+  String get enableBankingKeyNotRsa =>
+      'Geçersiz özel anahtar: RSA anahtarı bekleniyor';
+
+  @override
+  String get enableBankingKeyTooltip =>
+      'Enable Banking Control Panel\'de uygulamayla birlikte oluşturulur; şifreli olarak saklanır. Kayıtlı anahtarı korumak için boş bırakın';
+
+  @override
+  String get enableBankingLoadBanks => 'Bankaları yükle';
+
+  @override
+  String get enableBankingNoAuthPage =>
+      'Enable Banking bir yetkilendirme sayfası döndürmedi';
+
+  @override
+  String get enableBankingNoCode => 'Adreste yetkilendirme kodu bulunamadı';
+
+  @override
+  String get enableBankingRedirect => 'Yönlendirme URL\'si';
+
+  @override
+  String get enableBankingRedirectTooltip =>
+      'Uygulama için kayıtlıdır; banka yetkilendirmeden sonra buraya geri döner';
+
+  @override
+  String get enableBankingStateMismatch =>
+      'Adres başka bir yetkilendirmeye ait, yeniden bağlanın';
+
+  @override
   String get encryptionMode => 'Veri Şifreleme';
 
   @override
@@ -636,6 +700,76 @@ class AppLocalizationsTr extends AppLocalizations {
 
   @override
   String get failData => 'Tutar Kesintisi';
+
+  @override
+  String get finTsApproved => 'Banka uygulamasında onaylandı';
+
+  @override
+  String get finTsBankCode => 'Banka kodu (BLZ)';
+
+  @override
+  String get finTsCustomerId =>
+      'Müşteri kimliği (kullanıcı kimliğinden farklıysa)';
+
+  @override
+  String get finTsDescription =>
+      'FinTS 4.1 (PIN/TAN) destekleyen bankalardan bakiyeleri ve işlemleri içe aktarın. Erişim salt okunurdur: ödeme yapılmaz.';
+
+  @override
+  String get finTsHeadline => 'Financial Transaction Services (FinTS 4.1)';
+
+  @override
+  String get finTsIncomplete =>
+      'Sunucu URL\'sini, banka kodunu, kullanıcı kimliğini ve ürün kayıt numarasını doldurun';
+
+  @override
+  String finTsLoginChanged(Object value) {
+    return 'Banka giriş bilgilerini değiştirdi, kullanıcı veya müşteri kimliğini güncelleyin: $value';
+  }
+
+  @override
+  String finTsLoginRefused(Object value) {
+    return 'Banka önceki girişi reddetti: $value. Girilen PIN ile yeniden denensin mi?';
+  }
+
+  @override
+  String get finTsPin => 'PIN';
+
+  @override
+  String get finTsPinHint =>
+      'Yalnızca bu oturum için kullanılır ve asla saklanmaz';
+
+  @override
+  String get finTsProductId => 'Ürün kayıt numarası';
+
+  @override
+  String get finTsProductIdTooltip =>
+      'Deutsche Kreditwirtschaft tarafından uygulama üreticisine verilir';
+
+  @override
+  String get finTsTan => 'TAN';
+
+  @override
+  String get finTsTanHeadline => 'İşlem doğrulama (TAN)';
+
+  @override
+  String get finTsTanMedium => 'TAN aracını seçin';
+
+  @override
+  String get finTsTanMethod => 'TAN yöntemini seçin';
+
+  @override
+  String get finTsUrl => 'Bankanın FinTS sunucu URL\'si';
+
+  @override
+  String get finTsUserId => 'Kullanıcı kimliği (giriş)';
+
+  @override
+  String get finTsVersion => 'Protokol sürümü';
+
+  @override
+  String get finTsWebUnsupported =>
+      'Banka sunucuları tarayıcıdan erişime izin vermez. Masaüstü veya mobil uygulamayı kullanın.';
 
   @override
   String get flowTypeInvoice => 'Invoice';
@@ -704,6 +838,66 @@ class AppLocalizationsTr extends AppLocalizations {
 
   @override
   String get incomeTooltip => 'Gelir Ayrıntılarını Ayarla';
+
+  @override
+  String get integrationAccessDenied =>
+      'Erişim iptal edildi veya kimlik bilgileri yanlış';
+
+  @override
+  String get integrationConnect => 'Bağlan';
+
+  @override
+  String get integrationDateFrom => 'İşlemleri şu tarihten itibaren içe aktar';
+
+  @override
+  String get integrationDisconnect => 'Bağlantıyı kes';
+
+  @override
+  String get integrationForget => 'Erişimi unut';
+
+  @override
+  String get integrationHeadline => 'Entegrasyonlar';
+
+  @override
+  String integrationHttpError(Object value) {
+    return 'Hizmet bir hatayla yanıt verdi (HTTP $value)';
+  }
+
+  @override
+  String get integrationHttpsRequired =>
+      'Yalnızca güvenli (HTTPS) adreslere izin verilir';
+
+  @override
+  String get integrationImport => 'İşlemleri içe aktar';
+
+  @override
+  String integrationImported(Object added, Object pending, Object skipped) {
+    return 'İçe aktarılan: $added, zaten mevcut olduğu için atlanan: $skipped, bekleyen (içe aktarılmayan): $pending';
+  }
+
+  @override
+  String integrationInvalidAmount(Object value) {
+    return 'Geçersiz tutar: $value';
+  }
+
+  @override
+  String get integrationNoAccounts => 'Banka herhangi bir hesap sağlamadı';
+
+  @override
+  String get integrationPaymentRequired =>
+      'Hizmet, erişim için ödeme gerektiriyor';
+
+  @override
+  String get integrationSelectTarget =>
+      'İçe aktarılacak hesabı ve bütçe kategorisini seçin';
+
+  @override
+  String integrationServiceError(Object value) {
+    return 'Hizmet mesajı: $value';
+  }
+
+  @override
+  String get integrationUnexpectedResponse => 'Hizmetten beklenmeyen yanıt';
 
   @override
   String get invoiceHeadline => 'Invoices';
@@ -953,6 +1147,31 @@ class AppLocalizationsTr extends AppLocalizations {
 
   @override
   String get settingsSaved => 'Ayarlar kaydedildi!';
+
+  @override
+  String get simpleFinDescription =>
+      'ABD bankaları ve kart sağlayıcılarının bakiyelerini ve işlemlerini bir SimpleFIN Bridge üzerinden içe aktarın. Erişim salt okunurdur: ödeme yapılmaz.';
+
+  @override
+  String get simpleFinHeadline => 'SimpleFIN Bridge (US)';
+
+  @override
+  String get simpleFinNoCredentials =>
+      'SimpleFIN Bridge kimlik bilgileri olmayan bir erişim adresi döndürdü';
+
+  @override
+  String get simpleFinToken => 'SimpleFIN kurulum belirteci';
+
+  @override
+  String get simpleFinTokenClaimed =>
+      'Kurulum belirteci mevcut değil veya zaten kullanılmış';
+
+  @override
+  String get simpleFinTokenInvalid => 'Geçersiz SimpleFIN kurulum belirteci';
+
+  @override
+  String get simpleFinTokenTooltip =>
+      'Bu uygulama için SimpleFIN Bridge\'inizde (ör. bridge.simplefin.org) oluşturulur; yalnızca bir kez kullanılabilir';
 
   @override
   String get skipFromTotals => 'Toplamlardan hariç tut';

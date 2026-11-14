@@ -598,6 +598,69 @@ class AppLocalizationsBe extends AppLocalizations {
   String get editTransferTooltip => 'Рэдагаваць перавод';
 
   @override
+  String get enableBankingAppId => 'ID праграмы';
+
+  @override
+  String get enableBankingBank => 'Банк';
+
+  @override
+  String get enableBankingCode => 'Адрас старонкі пасля аўтарызацыі';
+
+  @override
+  String get enableBankingCodeTooltip =>
+      'Пацвердзіце доступ у банку, потым скапіруйце адрас з браўзера і ўстаўце яго сюды';
+
+  @override
+  String get enableBankingCountry => 'Краіна (код ISO, напрыклад FI)';
+
+  @override
+  String get enableBankingDescription =>
+      'Імпарт рэшткаў і аперацый еўрапейскіх банкаў праз Enable Banking API (PSD2) з вашай уласнай праграмай, зарэгістраванай на enablebanking.com. Доступ толькі для чытання: плацяжы не выконваюцца.';
+
+  @override
+  String get enableBankingHeadline => 'Enable Banking (EU)';
+
+  @override
+  String get enableBankingIncomplete =>
+      'Запоўніце ID праграмы, закрыты ключ, URL перанакіравання і краіну';
+
+  @override
+  String get enableBankingKey => 'Закрыты ключ (PEM)';
+
+  @override
+  String get enableBankingKeyInvalid =>
+      'Няправільны закрыты ключ: чакаецца PEM-блок \"PRIVATE KEY\"';
+
+  @override
+  String get enableBankingKeyNotRsa =>
+      'Няправільны закрыты ключ: чакаецца ключ RSA';
+
+  @override
+  String get enableBankingKeyTooltip =>
+      'Ствараецца разам з праграмай у Enable Banking Control Panel; захоўваецца ў зашыфраваным выглядзе. Пакіньце пустым, каб захаваць бягучы ключ';
+
+  @override
+  String get enableBankingLoadBanks => 'Загрузіць банкі';
+
+  @override
+  String get enableBankingNoAuthPage =>
+      'Enable Banking не вярнуў старонку аўтарызацыі';
+
+  @override
+  String get enableBankingNoCode => 'У адрасе не знойдзены код аўтарызацыі';
+
+  @override
+  String get enableBankingRedirect => 'URL перанакіравання';
+
+  @override
+  String get enableBankingRedirectTooltip =>
+      'Зарэгістраваны для праграмы; пасля аўтарызацыі банк вяртае на яго';
+
+  @override
+  String get enableBankingStateMismatch =>
+      'Адрас належыць да іншай аўтарызацыі, падлучыцеся зноў';
+
+  @override
   String get encryptionMode => 'Шыфраваньне дадьзеных';
 
   @override
@@ -637,6 +700,76 @@ class AppLocalizationsBe extends AppLocalizations {
 
   @override
   String get failData => 'Сума выліку';
+
+  @override
+  String get finTsApproved => 'Пацверджана ў банкаўскай праграме';
+
+  @override
+  String get finTsBankCode => 'Код банка (BLZ)';
+
+  @override
+  String get finTsCustomerId =>
+      'ID кліента (калі адрозніваецца ад ID карыстальніка)';
+
+  @override
+  String get finTsDescription =>
+      'Імпарт рэшткаў і аперацый з банкаў, якія падтрымліваюць FinTS 4.1 (PIN/TAN). Доступ толькі для чытання: плацяжы не выконваюцца.';
+
+  @override
+  String get finTsHeadline => 'Financial Transaction Services (FinTS 4.1)';
+
+  @override
+  String get finTsIncomplete =>
+      'Запоўніце URL сервера, код банка, ID карыстальніка і рэгістрацыйны нумар прадукту';
+
+  @override
+  String finTsLoginChanged(Object value) {
+    return 'Банк змяніў даныя для ўваходу, абнавіце ID карыстальніка або ID кліента: $value';
+  }
+
+  @override
+  String finTsLoginRefused(Object value) {
+    return 'Банк адхіліў папярэдні ўваход: $value. Паўтарыць з уведзеным PIN?';
+  }
+
+  @override
+  String get finTsPin => 'PIN';
+
+  @override
+  String get finTsPinHint =>
+      'Выкарыстоўваецца толькі ў гэтым сеансе і ніколі не захоўваецца';
+
+  @override
+  String get finTsProductId => 'Рэгістрацыйны нумар прадукту';
+
+  @override
+  String get finTsProductIdTooltip =>
+      'Выдаецца Deutsche Kreditwirtschaft распрацоўшчыку праграмы';
+
+  @override
+  String get finTsTan => 'TAN';
+
+  @override
+  String get finTsTanHeadline => 'Пацвярджэнне аперацыі (TAN)';
+
+  @override
+  String get finTsTanMedium => 'Абярыце носьбіт TAN';
+
+  @override
+  String get finTsTanMethod => 'Абярыце спосаб TAN';
+
+  @override
+  String get finTsUrl => 'URL сервера FinTS банка';
+
+  @override
+  String get finTsUserId => 'ID карыстальніка (лагін)';
+
+  @override
+  String get finTsVersion => 'Версія пратакола';
+
+  @override
+  String get finTsWebUnsupported =>
+      'Серверы банкаў не дазваляюць доступ з браўзера. Выкарыстоўвайце настольную або мабільную праграму.';
 
   @override
   String get flowTypeInvoice => 'Прыбытак';
@@ -705,6 +838,65 @@ class AppLocalizationsBe extends AppLocalizations {
 
   @override
   String get incomeTooltip => 'Усталюйце звесткі аб даходах';
+
+  @override
+  String get integrationAccessDenied =>
+      'Доступ адкліканы або ўліковыя даныя няправільныя';
+
+  @override
+  String get integrationConnect => 'Падлучыцца';
+
+  @override
+  String get integrationDateFrom => 'Імпартаваць аперацыі з';
+
+  @override
+  String get integrationDisconnect => 'Адлучыцца';
+
+  @override
+  String get integrationForget => 'Забыць доступ';
+
+  @override
+  String get integrationHeadline => 'Інтэграцыі';
+
+  @override
+  String integrationHttpError(Object value) {
+    return 'Сэрвіс адказаў памылкай (HTTP $value)';
+  }
+
+  @override
+  String get integrationHttpsRequired =>
+      'Дазволены толькі абароненыя адрасы (HTTPS)';
+
+  @override
+  String get integrationImport => 'Імпартаваць аперацыі';
+
+  @override
+  String integrationImported(Object added, Object pending, Object skipped) {
+    return 'Імпартавана: $added, прапушчана як наяўныя: $skipped, у апрацоўцы (не імпартаваны): $pending';
+  }
+
+  @override
+  String integrationInvalidAmount(Object value) {
+    return 'Няправільная сума: $value';
+  }
+
+  @override
+  String get integrationNoAccounts => 'Банк не перадаў ніводнага рахунку';
+
+  @override
+  String get integrationPaymentRequired => 'Сэрвіс патрабуе аплаты доступу';
+
+  @override
+  String get integrationSelectTarget =>
+      'Абярыце рахунак і катэгорыю бюджэту для імпарту';
+
+  @override
+  String integrationServiceError(Object value) {
+    return 'Паведамленне сэрвісу: $value';
+  }
+
+  @override
+  String get integrationUnexpectedResponse => 'Нечаканы адказ сэрвісу';
 
   @override
   String get invoiceHeadline => 'Фактуры';
@@ -955,6 +1147,31 @@ class AppLocalizationsBe extends AppLocalizations {
 
   @override
   String get settingsSaved => 'Налады захаваны!';
+
+  @override
+  String get simpleFinDescription =>
+      'Імпарт рэшткаў і аперацый банкаў і эмітэнтаў картак ЗША праз SimpleFIN Bridge. Доступ толькі для чытання: плацяжы не выконваюцца.';
+
+  @override
+  String get simpleFinHeadline => 'SimpleFIN Bridge (US)';
+
+  @override
+  String get simpleFinNoCredentials =>
+      'SimpleFIN Bridge вярнуў адрас доступу без уліковых даных';
+
+  @override
+  String get simpleFinToken => 'Токен наладкі SimpleFIN';
+
+  @override
+  String get simpleFinTokenClaimed =>
+      'Токен наладкі не існуе або ўжо быў выкарыстаны';
+
+  @override
+  String get simpleFinTokenInvalid => 'Няправільны токен наладкі SimpleFIN';
+
+  @override
+  String get simpleFinTokenTooltip =>
+      'Ствараецца ў вашым SimpleFIN Bridge (напрыклад, bridge.simplefin.org) для гэтай праграмы; выкарыстоўваецца толькі адзін раз';
 
   @override
   String get skipFromTotals => 'Выключыць з агульных вынікаў';
@@ -1724,6 +1941,69 @@ class AppLocalizationsBeEu extends AppLocalizationsBe {
   String get editTransferTooltip => 'Redahavać Pieravod';
 
   @override
+  String get enableBankingAppId => 'ID prahramy';
+
+  @override
+  String get enableBankingBank => 'Bank';
+
+  @override
+  String get enableBankingCode => 'Adras staronki paslia aŭtaryzacyi';
+
+  @override
+  String get enableBankingCodeTooltip =>
+      'Pacvierdzicie dostup u banku, potym skapirujcie adras z braŭziera i ŭstaŭcie jaho siudy';
+
+  @override
+  String get enableBankingCountry => 'Kraina (kod ISO, napryklad FI)';
+
+  @override
+  String get enableBankingDescription =>
+      'Impart reštkaŭ i aperacyj jeŭrapiejskich bankaŭ praz Enable Banking API (PSD2) z vašaj ułasnaj prahramaj, zarehistravanaj na enablebanking.com. Dostup toĺki dlia čytannia: płaciažy nie vykonvajucca.';
+
+  @override
+  String get enableBankingHeadline => 'Enable Banking (EU)';
+
+  @override
+  String get enableBankingIncomplete =>
+      'Zapoŭnicie ID prahramy, zakryty kluč, URL pieranakiravannia i krainu';
+
+  @override
+  String get enableBankingKey => 'Zakryty kluč (PEM)';
+
+  @override
+  String get enableBankingKeyInvalid =>
+      'Niapraviĺny zakryty kluč: čakajecca PEM-błok \"PRIVATE KEY\"';
+
+  @override
+  String get enableBankingKeyNotRsa =>
+      'Niapraviĺny zakryty kluč: čakajecca kluč RSA';
+
+  @override
+  String get enableBankingKeyTooltip =>
+      'Stvarajecca razam z prahramaj u Enable Banking Control Panel; zachoŭvajecca ŭ zašyfravanym vyhladzie. Pakińcie pustym, kab zachavać biahučy kluč';
+
+  @override
+  String get enableBankingLoadBanks => 'Zahruzić banki';
+
+  @override
+  String get enableBankingNoAuthPage =>
+      'Enable Banking nie viarnuŭ staronku aŭtaryzacyi';
+
+  @override
+  String get enableBankingNoCode => 'U adrasie nie znojdzieny kod aŭtaryzacyi';
+
+  @override
+  String get enableBankingRedirect => 'URL pieranakiravannia';
+
+  @override
+  String get enableBankingRedirectTooltip =>
+      'Zarehistravany dlia prahramy; paslia aŭtaryzacyi bank viartaje na jaho';
+
+  @override
+  String get enableBankingStateMismatch =>
+      'Adras naliežyć da inšaj aŭtaryzacyi, padłučycieśsia znoŭ';
+
+  @override
   String get encryptionMode => 'Šyfravańnie Dad́zienych';
 
   @override
@@ -1763,6 +2043,76 @@ class AppLocalizationsBeEu extends AppLocalizationsBe {
 
   @override
   String get failData => 'Suma vyliku';
+
+  @override
+  String get finTsApproved => 'Pacvierdžana ŭ bankaŭskaj prahramie';
+
+  @override
+  String get finTsBankCode => 'Kod banka (BLZ)';
+
+  @override
+  String get finTsCustomerId =>
+      'ID klijenta (kali adroznivajecca ad ID karystaĺnika)';
+
+  @override
+  String get finTsDescription =>
+      'Impart reštkaŭ i aperacyj z bankaŭ, jakija padtrymlivajuć FinTS 4.1 (PIN/TAN). Dostup toĺki dla čytannia: płaciažy nie vykonvajucca.';
+
+  @override
+  String get finTsHeadline => 'Financial Transaction Services (FinTS 4.1)';
+
+  @override
+  String get finTsIncomplete =>
+      'Zapoŭnicie URL sierviera, kod banka, ID karystaĺnika i rehistracyjny numar praduktu';
+
+  @override
+  String finTsLoginChanged(Object value) {
+    return 'Bank zmianiŭ danyja dla ŭvachodu, abnavicie ID karystaĺnika abo ID klijenta: $value';
+  }
+
+  @override
+  String finTsLoginRefused(Object value) {
+    return 'Bank adchiliŭ papiaredni ŭvachod: $value. Paŭtaryć z uviedzienym PIN?';
+  }
+
+  @override
+  String get finTsPin => 'PIN';
+
+  @override
+  String get finTsPinHint =>
+      'Vykarystoŭvajecca toĺki ŭ hetym sieansie i nikoli nie zachoŭvajecca';
+
+  @override
+  String get finTsProductId => 'Rehistracyjny numar praduktu';
+
+  @override
+  String get finTsProductIdTooltip =>
+      'Vydajecca Deutsche Kreditwirtschaft raspracoŭščyku prahramy';
+
+  @override
+  String get finTsTan => 'TAN';
+
+  @override
+  String get finTsTanHeadline => 'Pacviardžennie aperacyi (TAN)';
+
+  @override
+  String get finTsTanMedium => 'Abiarycie nośbit TAN';
+
+  @override
+  String get finTsTanMethod => 'Abiarycie sposab TAN';
+
+  @override
+  String get finTsUrl => 'URL sierviera FinTS banka';
+
+  @override
+  String get finTsUserId => 'ID karystaĺnika (łahin)';
+
+  @override
+  String get finTsVersion => 'Viersija pratakoła';
+
+  @override
+  String get finTsWebUnsupported =>
+      'Siervery bankaŭ nie dazvalajuć dostup z braŭziera. Vykarystoŭvajcie nastoĺnuju abo mabiĺnuju prahramu.';
 
   @override
   String get flowTypeInvoice => 'Prybytak';
@@ -1831,6 +2181,65 @@ class AppLocalizationsBeEu extends AppLocalizationsBe {
 
   @override
   String get incomeTooltip => 'Ustaliujcie Zviestki ab Dachodach';
+
+  @override
+  String get integrationAccessDenied =>
+      'Dostup adklikany abo ŭlikovyja danyja niapraviĺnyja';
+
+  @override
+  String get integrationConnect => 'Padłučycca';
+
+  @override
+  String get integrationDateFrom => 'Impartavać aperacyi z';
+
+  @override
+  String get integrationDisconnect => 'Adłučycca';
+
+  @override
+  String get integrationForget => 'Zabyć dostup';
+
+  @override
+  String get integrationHeadline => 'Intehracyi';
+
+  @override
+  String integrationHttpError(Object value) {
+    return 'Servis adkazaŭ pamyłkaj (HTTP $value)';
+  }
+
+  @override
+  String get integrationHttpsRequired =>
+      'Dazvolieny toĺki abaronienyja adrasy (HTTPS)';
+
+  @override
+  String get integrationImport => 'Impartavać aperacyi';
+
+  @override
+  String integrationImported(Object added, Object pending, Object skipped) {
+    return 'Impartavana: $added, prapuščana jak najaŭnyja: $skipped, u apracoŭcy (nie impartavany): $pending';
+  }
+
+  @override
+  String integrationInvalidAmount(Object value) {
+    return 'Niapraviĺnaja suma: $value';
+  }
+
+  @override
+  String get integrationNoAccounts => 'Bank nie pieradaŭ nivodnaha rachunku';
+
+  @override
+  String get integrationPaymentRequired => 'Servis patrabuje apłaty dostupu';
+
+  @override
+  String get integrationSelectTarget =>
+      'Abiarycie rachunak i katehoryju biudžetu dla impartu';
+
+  @override
+  String integrationServiceError(Object value) {
+    return 'Paviedamliennie servisu: $value';
+  }
+
+  @override
+  String get integrationUnexpectedResponse => 'Niečakany adkaz servisu';
 
   @override
   String get invoiceHeadline => 'Faktury';
@@ -2081,6 +2490,31 @@ class AppLocalizationsBeEu extends AppLocalizationsBe {
 
   @override
   String get settingsSaved => 'Nalady zachavany!';
+
+  @override
+  String get simpleFinDescription =>
+      'Impart reštkaŭ i aperacyj bankaŭ i emitentaŭ kartak ZŠA praz SimpleFIN Bridge. Dostup toĺki dla čytannia: płaciažy nie vykonvajucca.';
+
+  @override
+  String get simpleFinHeadline => 'SimpleFIN Bridge (US)';
+
+  @override
+  String get simpleFinNoCredentials =>
+      'SimpleFIN Bridge viarnuŭ adras dostupu biez ulikovych danych';
+
+  @override
+  String get simpleFinToken => 'Tokien naładki SimpleFIN';
+
+  @override
+  String get simpleFinTokenClaimed =>
+      'Tokien naładki nie isnuje abo ŭžo byŭ vykarystany';
+
+  @override
+  String get simpleFinTokenInvalid => 'Niapraviĺny tokien naładki SimpleFIN';
+
+  @override
+  String get simpleFinTokenTooltip =>
+      'Stvarajecca ŭ vašym SimpleFIN Bridge (napryklad, bridge.simplefin.org) dla hetaj prahramy; vykarystoŭvajecca toĺki adzin raz';
 
   @override
   String get skipFromTotals => 'Vykliučyć z ahuĺnych vynikaŭ';

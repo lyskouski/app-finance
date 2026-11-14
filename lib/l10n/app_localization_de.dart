@@ -600,6 +600,70 @@ class AppLocalizationsDe extends AppLocalizations {
   String get editTransferTooltip => 'Überweisung bearbeiten';
 
   @override
+  String get enableBankingAppId => 'Anwendungs-ID';
+
+  @override
+  String get enableBankingBank => 'Bank';
+
+  @override
+  String get enableBankingCode => 'Adresse der Seite nach der Autorisierung';
+
+  @override
+  String get enableBankingCodeTooltip =>
+      'Bestätigen Sie den Zugriff bei der Bank, kopieren Sie dann die Adresse aus dem Browser und fügen Sie sie hier ein';
+
+  @override
+  String get enableBankingCountry => 'Land (ISO-Code, z. B. DE)';
+
+  @override
+  String get enableBankingDescription =>
+      'Salden und Umsätze europäischer Banken über die Enable Banking API (PSD2) mit Ihrer eigenen, bei enablebanking.com registrierten Anwendung importieren. Der Zugriff ist nur lesend: Es werden keine Zahlungen ausgeführt.';
+
+  @override
+  String get enableBankingHeadline => 'Enable Banking (EU)';
+
+  @override
+  String get enableBankingIncomplete =>
+      'Anwendungs-ID, privaten Schlüssel, Weiterleitungs-URL und Land ausfüllen';
+
+  @override
+  String get enableBankingKey => 'Privater Schlüssel (PEM)';
+
+  @override
+  String get enableBankingKeyInvalid =>
+      'Ungültiger privater Schlüssel: Ein PEM-Block \"PRIVATE KEY\" wird erwartet';
+
+  @override
+  String get enableBankingKeyNotRsa =>
+      'Ungültiger privater Schlüssel: Ein RSA-Schlüssel wird erwartet';
+
+  @override
+  String get enableBankingKeyTooltip =>
+      'Mit der Anwendung im Enable Banking Control Panel erstellt; verschlüsselt gespeichert. Leer lassen, um den gespeicherten Schlüssel zu behalten';
+
+  @override
+  String get enableBankingLoadBanks => 'Banken laden';
+
+  @override
+  String get enableBankingNoAuthPage =>
+      'Enable Banking hat keine Autorisierungsseite geliefert';
+
+  @override
+  String get enableBankingNoCode =>
+      'In der Adresse wurde kein Autorisierungscode gefunden';
+
+  @override
+  String get enableBankingRedirect => 'Weiterleitungs-URL';
+
+  @override
+  String get enableBankingRedirectTooltip =>
+      'Für die Anwendung registriert; die Bank leitet nach der Autorisierung dorthin zurück';
+
+  @override
+  String get enableBankingStateMismatch =>
+      'Die Adresse gehört zu einer anderen Autorisierung, bitte erneut verbinden';
+
+  @override
   String get encryptionMode => 'Daten verschlüsseln';
 
   @override
@@ -639,6 +703,76 @@ class AppLocalizationsDe extends AppLocalizations {
 
   @override
   String get failData => 'Abgezogener Betrag';
+
+  @override
+  String get finTsApproved => 'In der Banking-App freigegeben';
+
+  @override
+  String get finTsBankCode => 'Bankleitzahl (BLZ)';
+
+  @override
+  String get finTsCustomerId =>
+      'Kunden-ID (falls abweichend von der Benutzerkennung)';
+
+  @override
+  String get finTsDescription =>
+      'Salden und Umsätze von Banken mit FinTS 4.1 (PIN/TAN) importieren. Der Zugriff ist nur lesend: Es werden keine Zahlungen ausgeführt.';
+
+  @override
+  String get finTsHeadline => 'Financial Transaction Services (FinTS 4.1)';
+
+  @override
+  String get finTsIncomplete =>
+      'Server-URL, Bankleitzahl, Benutzerkennung und Produktregistrierungsnummer ausfüllen';
+
+  @override
+  String finTsLoginChanged(Object value) {
+    return 'Die Bank hat die Zugangsdaten geändert, Benutzerkennung oder Kunden-ID aktualisieren: $value';
+  }
+
+  @override
+  String finTsLoginRefused(Object value) {
+    return 'Die Bank hat die vorherige Anmeldung abgelehnt: $value. Mit der eingegebenen PIN erneut versuchen?';
+  }
+
+  @override
+  String get finTsPin => 'PIN';
+
+  @override
+  String get finTsPinHint =>
+      'Nur für diese Sitzung verwendet und nie gespeichert';
+
+  @override
+  String get finTsProductId => 'Produktregistrierungsnummer';
+
+  @override
+  String get finTsProductIdTooltip =>
+      'Von der Deutschen Kreditwirtschaft an den Hersteller der Anwendung vergeben';
+
+  @override
+  String get finTsTan => 'TAN';
+
+  @override
+  String get finTsTanHeadline => 'Transaktionsauthentifizierung (TAN)';
+
+  @override
+  String get finTsTanMedium => 'TAN-Medium auswählen';
+
+  @override
+  String get finTsTanMethod => 'TAN-Verfahren auswählen';
+
+  @override
+  String get finTsUrl => 'FinTS-Server-URL der Bank';
+
+  @override
+  String get finTsUserId => 'Benutzerkennung (Login)';
+
+  @override
+  String get finTsVersion => 'Protokollversion';
+
+  @override
+  String get finTsWebUnsupported =>
+      'Bankserver erlauben keinen Zugriff aus dem Browser. Bitte die Desktop- oder Mobil-App verwenden.';
 
   @override
   String get flowTypeInvoice => 'Rechnung';
@@ -707,6 +841,67 @@ class AppLocalizationsDe extends AppLocalizations {
 
   @override
   String get incomeTooltip => 'Einkommensdetails festlegen';
+
+  @override
+  String get integrationAccessDenied =>
+      'Der Zugriff wurde widerrufen oder die Zugangsdaten sind falsch';
+
+  @override
+  String get integrationConnect => 'Verbinden';
+
+  @override
+  String get integrationDateFrom => 'Umsätze importieren ab';
+
+  @override
+  String get integrationDisconnect => 'Trennen';
+
+  @override
+  String get integrationForget => 'Zugriff vergessen';
+
+  @override
+  String get integrationHeadline => 'Integrationen';
+
+  @override
+  String integrationHttpError(Object value) {
+    return 'Der Dienst hat mit einem Fehler geantwortet (HTTP $value)';
+  }
+
+  @override
+  String get integrationHttpsRequired =>
+      'Nur sichere Adressen (HTTPS) sind erlaubt';
+
+  @override
+  String get integrationImport => 'Umsätze importieren';
+
+  @override
+  String integrationImported(Object added, Object pending, Object skipped) {
+    return 'Importiert: $added, als bereits vorhanden übersprungen: $skipped, vorgemerkt (nicht importiert): $pending';
+  }
+
+  @override
+  String integrationInvalidAmount(Object value) {
+    return 'Ungültiger Betrag: $value';
+  }
+
+  @override
+  String get integrationNoAccounts => 'Die Bank hat keine Konten übermittelt';
+
+  @override
+  String get integrationPaymentRequired =>
+      'Der Dienst verlangt eine Zahlung für den Zugriff';
+
+  @override
+  String get integrationSelectTarget =>
+      'Konto und Budgetkategorie für den Import auswählen';
+
+  @override
+  String integrationServiceError(Object value) {
+    return 'Meldung des Dienstes: $value';
+  }
+
+  @override
+  String get integrationUnexpectedResponse =>
+      'Unerwartete Antwort des Dienstes';
 
   @override
   String get invoiceHeadline => 'Rechnungen';
@@ -959,6 +1154,31 @@ class AppLocalizationsDe extends AppLocalizations {
 
   @override
   String get settingsSaved => 'Einstellungen gespeichert!';
+
+  @override
+  String get simpleFinDescription =>
+      'Salden und Umsätze von US-Banken und Kartenanbietern über eine SimpleFIN Bridge importieren. Der Zugriff ist nur lesend: Es werden keine Zahlungen ausgeführt.';
+
+  @override
+  String get simpleFinHeadline => 'SimpleFIN Bridge (US)';
+
+  @override
+  String get simpleFinNoCredentials =>
+      'Die SimpleFIN Bridge hat eine Zugriffsadresse ohne Zugangsdaten geliefert';
+
+  @override
+  String get simpleFinToken => 'SimpleFIN-Einrichtungstoken';
+
+  @override
+  String get simpleFinTokenClaimed =>
+      'Das Einrichtungstoken existiert nicht oder wurde bereits verwendet';
+
+  @override
+  String get simpleFinTokenInvalid => 'Ungültiges SimpleFIN-Einrichtungstoken';
+
+  @override
+  String get simpleFinTokenTooltip =>
+      'In Ihrer SimpleFIN Bridge (z. B. bridge.simplefin.org) für diese Anwendung erstellt; nur einmal verwendbar';
 
   @override
   String get skipFromTotals => 'Aus den Gesamtwerten ausschließen';

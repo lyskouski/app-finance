@@ -59,9 +59,15 @@ dependencies:
   flutter_solidart: ^2.6.1
   simple_totp_auth: ^0.0.2
   local_auth: ^2.3.0
+  fints: ^0.4.0
+  http: ^1.5.0
+  pointycastle: ^3.9.1
+  app_links: ^7.2.2
 
 dependency_overrides:
   flutter_webrtc: 0.12.10
+  # excel 4.0.6 caps xml below 7, fints needs xml 7 (excel verified with xml 7)
+  xml: ^7.0.0
 
 dev_dependencies:
   flutter_test:
@@ -121,6 +127,7 @@ msix_config:
   tile_icon_path: assets/images/logo.png
   icons_background_color: transparent
   capabilities: internetClient
+  protocol_activation: fingrom
   store: true
 
 # Commands and their dependencies

@@ -2,6 +2,14 @@
 
 _The full list of updates can be viewed via the "About" navigation item on the "Hints" button._
 
+### 8.0.0
+- Introducing the Integrations page with expandable sections
+- Adding Financial Transaction Services (FinTS 4.1): accounts, balances, and import of transactions from German banks
+- Adding SimpleFIN Bridge (US): accounts, balances, and import of transactions from US banks and card issuers
+- Adding Enable Banking (EU): accounts, balances, and import of transactions from European banks (PSD2)
+- Adding import of bank statement files (`MT940`, `camt.053`), e.g. exported by Polish banks
+- Fixing conversion rate precision
+
 ### 7.3.0
 - Adding Indonesian (ID) localization
 - Improving currency precision for exchanges

@@ -241,6 +241,24 @@
     "editPaymentTooltip": "Redahavać Aplatu",
     "editTooltip": "Redahavać",
     "editTransferTooltip": "Redahavać Pieravod",
+    "enableBankingAppId": "ID prahramy",
+    "enableBankingBank": "Bank",
+    "enableBankingCode": "Adras staronki paslia aŭtaryzacyi",
+    "enableBankingCodeTooltip": "Pacvierdzicie dostup u banku, potym skapirujcie adras z braŭziera i ŭstaŭcie jaho siudy",
+    "enableBankingCountry": "Kraina (kod ISO, napryklad FI)",
+    "enableBankingDescription": "Impart reštkaŭ i aperacyj jeŭrapiejskich bankaŭ praz Enable Banking API (PSD2) z vašaj ułasnaj prahramaj, zarehistravanaj na enablebanking.com. Dostup toĺki dlia čytannia: płaciažy nie vykonvajucca.",
+    "enableBankingHeadline": "Enable Banking (EU)",
+    "enableBankingIncomplete": "Zapoŭnicie ID prahramy, zakryty kluč, URL pieranakiravannia i krainu",
+    "enableBankingKey": "Zakryty kluč (PEM)",
+    "enableBankingKeyInvalid": "Niapraviĺny zakryty kluč: čakajecca PEM-błok \"PRIVATE KEY\"",
+    "enableBankingKeyNotRsa": "Niapraviĺny zakryty kluč: čakajecca kluč RSA",
+    "enableBankingKeyTooltip": "Stvarajecca razam z prahramaj u Enable Banking Control Panel; zachoŭvajecca ŭ zašyfravanym vyhladzie. Pakińcie pustym, kab zachavać biahučy kluč",
+    "enableBankingLoadBanks": "Zahruzić banki",
+    "enableBankingNoAuthPage": "Enable Banking nie viarnuŭ staronku aŭtaryzacyi",
+    "enableBankingNoCode": "U adrasie nie znojdzieny kod aŭtaryzacyi",
+    "enableBankingRedirect": "URL pieranakiravannia",
+    "enableBankingRedirectTooltip": "Zarehistravany dlia prahramy; paslia aŭtaryzacyi bank viartaje na jaho",
+    "enableBankingStateMismatch": "Adras naliežyć da inšaj aŭtaryzacyi, padłučycieśsia znoŭ",
     "encryptionMode": "Šyfravańnie Dad́zienych",
     "error": "Pamylka: {value}",
     "@error": {
@@ -263,6 +281,36 @@
         }
     },
     "failData": "Suma vyliku",
+    "finTsApproved": "Pacvierdžana ŭ bankaŭskaj prahramie",
+    "finTsBankCode": "Kod banka (BLZ)",
+    "finTsCustomerId": "ID klijenta (kali adroznivajecca ad ID karystaĺnika)",
+    "finTsDescription": "Impart reštkaŭ i aperacyj z bankaŭ, jakija padtrymlivajuć FinTS 4.1 (PIN/TAN). Dostup toĺki dla čytannia: płaciažy nie vykonvajucca.",
+    "finTsHeadline": "Financial Transaction Services (FinTS 4.1)",
+    "finTsIncomplete": "Zapoŭnicie URL sierviera, kod banka, ID karystaĺnika i rehistracyjny numar praduktu",
+    "finTsLoginChanged": "Bank zmianiŭ danyja dla ŭvachodu, abnavicie ID karystaĺnika abo ID klijenta: {value}",
+    "@finTsLoginChanged": {
+        "value": {
+            "type": "String"
+        }
+    },
+    "finTsLoginRefused": "Bank adchiliŭ papiaredni ŭvachod: {value}. Paŭtaryć z uviedzienym PIN?",
+    "@finTsLoginRefused": {
+        "value": {
+            "type": "String"
+        }
+    },
+    "finTsPin": "PIN",
+    "finTsPinHint": "Vykarystoŭvajecca toĺki ŭ hetym sieansie i nikoli nie zachoŭvajecca",
+    "finTsProductId": "Rehistracyjny numar praduktu",
+    "finTsProductIdTooltip": "Vydajecca Deutsche Kreditwirtschaft raspracoŭščyku prahramy",
+    "finTsTan": "TAN",
+    "finTsTanHeadline": "Pacviardžennie aperacyi (TAN)",
+    "finTsTanMedium": "Abiarycie nośbit TAN",
+    "finTsTanMethod": "Abiarycie sposab TAN",
+    "finTsUrl": "URL sierviera FinTS banka",
+    "finTsUserId": "ID karystaĺnika (łahin)",
+    "finTsVersion": "Viersija pratakoła",
+    "finTsWebUnsupported": "Siervery bankaŭ nie dazvalajuć dostup z braŭziera. Vykarystoŭvajcie nastoĺnuju abo mabiĺnuju prahramu.",
     "flowTypeInvoice": "Prybytak",
     "flowTypeTooltip": "Typ sumy: Ček, Prybytak",
     "forecastData": "Prahnoz",
@@ -290,6 +338,48 @@
     "incomeHeadline": "Dachod",
     "incomeHealth": "Radar Zdaroŭja Dachodaŭ",
     "incomeTooltip": "Ustaliujcie Zviestki ab Dachodach",
+    "integrationAccessDenied": "Dostup adklikany abo ŭlikovyja danyja niapraviĺnyja",
+    "integrationConnect": "Padłučycca",
+    "integrationDateFrom": "Impartavać aperacyi z",
+    "integrationDisconnect": "Adłučycca",
+    "integrationForget": "Zabyć dostup",
+    "integrationHeadline": "Intehracyi",
+    "integrationHttpError": "Servis adkazaŭ pamyłkaj (HTTP {value})",
+    "@integrationHttpError": {
+        "value": {
+            "type": "String"
+        }
+    },
+    "integrationHttpsRequired": "Dazvolieny toĺki abaronienyja adrasy (HTTPS)",
+    "integrationImport": "Impartavać aperacyi",
+    "integrationImported": "Impartavana: {added}, prapuščana jak najaŭnyja: {skipped}, u apracoŭcy (nie impartavany): {pending}",
+    "@integrationImported": {
+        "added": {
+            "type": "int"
+        },
+        "skipped": {
+            "type": "int"
+        },
+        "pending": {
+            "type": "int"
+        }
+    },
+    "integrationInvalidAmount": "Niapraviĺnaja suma: {value}",
+    "@integrationInvalidAmount": {
+        "value": {
+            "type": "String"
+        }
+    },
+    "integrationNoAccounts": "Bank nie pieradaŭ nivodnaha rachunku",
+    "integrationPaymentRequired": "Servis patrabuje apłaty dostupu",
+    "integrationSelectTarget": "Abiarycie rachunak i katehoryju biudžetu dla impartu",
+    "integrationServiceError": "Paviedamliennie servisu: {value}",
+    "@integrationServiceError": {
+        "value": {
+            "type": "String"
+        }
+    },
+    "integrationUnexpectedResponse": "Niečakany adkaz servisu",
     "invoiceHeadline": "Faktury",
     "invoiceSum": "Faktury: {value}",
     "@invoiceSum": {
@@ -398,6 +488,13 @@
     "settingsBaseHeadline": "Asnovy",
     "settingsHeadline": "Nalady",
     "settingsSaved": "Nalady zachavany!",
+    "simpleFinDescription": "Impart reštkaŭ i aperacyj bankaŭ i emitentaŭ kartak ZŠA praz SimpleFIN Bridge. Dostup toĺki dla čytannia: płaciažy nie vykonvajucca.",
+    "simpleFinHeadline": "SimpleFIN Bridge (US)",
+    "simpleFinNoCredentials": "SimpleFIN Bridge viarnuŭ adras dostupu biez ulikovych danych",
+    "simpleFinToken": "Tokien naładki SimpleFIN",
+    "simpleFinTokenClaimed": "Tokien naładki nie isnuje abo ŭžo byŭ vykarystany",
+    "simpleFinTokenInvalid": "Niapraviĺny tokien naładki SimpleFIN",
+    "simpleFinTokenTooltip": "Stvarajecca ŭ vašym SimpleFIN Bridge (napryklad, bridge.simplefin.org) dla hetaj prahramy; vykarystoŭvajecca toĺki adzin raz",
     "skipFromTotals": "Vykliučyć z ahuĺnych vynikaŭ",
     "skipTooltip": "Prapuścić Krok(i)",
     "sortTooltip": "Sartavać eliemienty",

@@ -241,6 +241,24 @@
     "editPaymentTooltip": "ویرایش پرداخت",
     "editTooltip": "ویرایش کنید",
     "editTransferTooltip": "ویرایش انتقال",
+    "enableBankingAppId": "شناسه برنامه",
+    "enableBankingBank": "بانک",
+    "enableBankingCode": "نشانی صفحه‌ای که پس از مجوزدهی باز می‌شود",
+    "enableBankingCodeTooltip": "دسترسی را در بانک تأیید کنید، سپس نشانی را از مرورگر کپی کرده و اینجا جای‌گذاری کنید",
+    "enableBankingCountry": "کشور (کد ISO، مثلاً DE)",
+    "enableBankingDescription": "وارد کردن موجودی‌ها و تراکنش‌های بانک‌های اروپایی از طریق Enable Banking API (PSD2) با برنامه خودتان که در enablebanking.com ثبت شده است. دسترسی فقط خواندنی است: هیچ پرداختی انجام نمی‌شود.",
+    "enableBankingHeadline": "Enable Banking (EU)",
+    "enableBankingIncomplete": "شناسه برنامه، کلید خصوصی، نشانی URL بازگشت و کشور را وارد کنید",
+    "enableBankingKey": "کلید خصوصی (PEM)",
+    "enableBankingKeyInvalid": "کلید خصوصی نامعتبر: بلوک PEM «PRIVATE KEY» مورد انتظار است",
+    "enableBankingKeyNotRsa": "کلید خصوصی نامعتبر: کلید RSA مورد انتظار است",
+    "enableBankingKeyTooltip": "همراه با برنامه در Enable Banking Control Panel ساخته می‌شود؛ به‌صورت رمزگذاری‌شده ذخیره می‌شود. برای نگه‌داشتن کلید ذخیره‌شده خالی بگذارید",
+    "enableBankingLoadBanks": "بارگیری بانک‌ها",
+    "enableBankingNoAuthPage": "Enable Banking صفحه مجوزدهی را برنگرداند",
+    "enableBankingNoCode": "کد مجوزدهی در نشانی یافت نشد",
+    "enableBankingRedirect": "نشانی URL بازگشت",
+    "enableBankingRedirectTooltip": "برای برنامه ثبت شده است؛ بانک پس از مجوزدهی به آن بازمی‌گردد",
+    "enableBankingStateMismatch": "این نشانی متعلق به مجوزدهی دیگری است، دوباره متصل شوید",
     "encryptionMode": "رمزگذاری داده ها",
     "error": "خطا: {value}",
     "@error": {
@@ -263,6 +281,36 @@
         }
     },
     "failData": "کسر مبلغ",
+    "finTsApproved": "در برنامه بانک تأیید شد",
+    "finTsBankCode": "کد بانک (BLZ)",
+    "finTsCustomerId": "شناسه مشتری (اگر با شناسه کاربر متفاوت است)",
+    "finTsDescription": "وارد کردن موجودی‌ها و تراکنش‌ها از بانک‌هایی که از FinTS 4.1 (PIN/TAN) پشتیبانی می‌کنند. دسترسی فقط خواندنی است: هیچ پرداختی انجام نمی‌شود.",
+    "finTsHeadline": "Financial Transaction Services (FinTS 4.1)",
+    "finTsIncomplete": "نشانی URL سرور، کد بانک، شناسه کاربر و شماره ثبت محصول را وارد کنید",
+    "finTsLoginChanged": "بانک اطلاعات ورود را تغییر داده است، شناسه کاربر یا شناسه مشتری را به‌روز کنید: {value}",
+    "@finTsLoginChanged": {
+        "value": {
+            "type": "String"
+        }
+    },
+    "finTsLoginRefused": "بانک ورود قبلی را رد کرد: {value}. با PIN واردشده دوباره تلاش شود؟",
+    "@finTsLoginRefused": {
+        "value": {
+            "type": "String"
+        }
+    },
+    "finTsPin": "PIN",
+    "finTsPinHint": "فقط برای این نشست استفاده می‌شود و هرگز ذخیره نمی‌شود",
+    "finTsProductId": "شماره ثبت محصول",
+    "finTsProductIdTooltip": "توسط Deutsche Kreditwirtschaft به سازنده برنامه اعطا می‌شود",
+    "finTsTan": "TAN",
+    "finTsTanHeadline": "احراز هویت تراکنش (TAN)",
+    "finTsTanMedium": "انتخاب رسانه TAN",
+    "finTsTanMethod": "انتخاب روش TAN",
+    "finTsUrl": "نشانی URL سرور FinTS بانک",
+    "finTsUserId": "شناسه کاربر (ورود)",
+    "finTsVersion": "نسخه پروتکل",
+    "finTsWebUnsupported": "سرورهای بانک اجازه دسترسی از مرورگر را نمی‌دهند. از برنامه دسکتاپ یا موبایل استفاده کنید.",
     "flowTypeInvoice": "صورتحساب",
     "flowTypeTooltip": "نوع مبلغ: قبض، فاکتور",
     "forecastData": "پیش بینی",
@@ -290,6 +338,48 @@
     "incomeHeadline": "درآمد",
     "incomeHealth": "رادار سلامت درآمد",
     "incomeTooltip": "تنظیم جزئیات درآمد",
+    "integrationAccessDenied": "دسترسی لغو شده یا اطلاعات ورود نادرست است",
+    "integrationConnect": "اتصال",
+    "integrationDateFrom": "وارد کردن تراکنش‌ها از تاریخ",
+    "integrationDisconnect": "قطع اتصال",
+    "integrationForget": "فراموش کردن دسترسی",
+    "integrationHeadline": "یکپارچه‌سازی‌ها",
+    "integrationHttpError": "سرویس با خطا پاسخ داد (HTTP {value})",
+    "@integrationHttpError": {
+        "value": {
+            "type": "String"
+        }
+    },
+    "integrationHttpsRequired": "فقط نشانی‌های امن (HTTPS) مجاز هستند",
+    "integrationImport": "وارد کردن تراکنش‌ها",
+    "integrationImported": "وارد شده: {added}، رد شده به دلیل وجود قبلی: {skipped}، در انتظار (وارد نشده): {pending}",
+    "@integrationImported": {
+        "added": {
+            "type": "int"
+        },
+        "skipped": {
+            "type": "int"
+        },
+        "pending": {
+            "type": "int"
+        }
+    },
+    "integrationInvalidAmount": "مبلغ نامعتبر: {value}",
+    "@integrationInvalidAmount": {
+        "value": {
+            "type": "String"
+        }
+    },
+    "integrationNoAccounts": "بانک هیچ حسابی ارائه نکرده است",
+    "integrationPaymentRequired": "سرویس برای دسترسی پرداخت می‌خواهد",
+    "integrationSelectTarget": "حساب و دسته بودجه را برای وارد کردن انتخاب کنید",
+    "integrationServiceError": "پیام سرویس: {value}",
+    "@integrationServiceError": {
+        "value": {
+            "type": "String"
+        }
+    },
+    "integrationUnexpectedResponse": "پاسخ غیرمنتظره از سرویس",
     "invoiceHeadline": "فاکتورها",
     "invoiceSum": "فاکتورها: {value}",
     "@invoiceSum": {
@@ -398,6 +488,13 @@
     "settingsBaseHeadline": "مبانی",
     "settingsHeadline": "تنظیمات",
     "settingsSaved": "تنظیمات ذخیره شد!",
+    "simpleFinDescription": "وارد کردن موجودی‌ها و تراکنش‌های بانک‌ها و صادرکنندگان کارت آمریکایی از طریق SimpleFIN Bridge. دسترسی فقط خواندنی است: هیچ پرداختی انجام نمی‌شود.",
+    "simpleFinHeadline": "SimpleFIN Bridge (US)",
+    "simpleFinNoCredentials": "SimpleFIN Bridge نشانی دسترسی بدون اطلاعات ورود برگرداند",
+    "simpleFinToken": "توکن راه‌اندازی SimpleFIN",
+    "simpleFinTokenClaimed": "توکن راه‌اندازی وجود ندارد یا قبلاً استفاده شده است",
+    "simpleFinTokenInvalid": "توکن راه‌اندازی SimpleFIN نامعتبر است",
+    "simpleFinTokenTooltip": "در SimpleFIN Bridge شما (مثلاً bridge.simplefin.org) برای این برنامه ساخته می‌شود؛ فقط یک بار قابل استفاده است",
     "skipFromTotals": "حذف از مجموع",
     "skipTooltip": "رد شدن از مرحله(های)",
     "sortTooltip": "مرتب سازی آیتم ها",

@@ -241,6 +241,24 @@
     "editPaymentTooltip": "Ödənişi redaktə edin",
     "editTooltip": "Redaktə et",
     "editTransferTooltip": "Transferi redaktə edin",
+    "enableBankingAppId": "Tətbiq ID-si",
+    "enableBankingBank": "Bank",
+    "enableBankingCode": "Avtorizasiyadan sonra açılan səhifənin ünvanı",
+    "enableBankingCodeTooltip": "Bankda girişi təsdiqləyin, sonra ünvanı brauzerdən kopyalayıb bura yapışdırın",
+    "enableBankingCountry": "Ölkə (ISO kodu, məs. DE)",
+    "enableBankingDescription": "enablebanking.com-da qeydiyyatdan keçmiş öz tətbiqinizlə Enable Banking API (PSD2) vasitəsilə Avropa banklarının qalıqlarını və əməliyyatlarını idxal edin. Giriş yalnız oxumaq üçündür: ödənişlər edilmir.",
+    "enableBankingHeadline": "Enable Banking (EU)",
+    "enableBankingIncomplete": "Tətbiq ID-sini, şəxsi açarı, yönləndirmə URL-ni və ölkəni doldurun",
+    "enableBankingKey": "Şəxsi açar (PEM)",
+    "enableBankingKeyInvalid": "Yanlış şəxsi açar: \"PRIVATE KEY\" PEM bloku gözlənilir",
+    "enableBankingKeyNotRsa": "Yanlış şəxsi açar: RSA açarı gözlənilir",
+    "enableBankingKeyTooltip": "Enable Banking Control Panel-də tətbiqlə birlikdə yaradılır; şifrələnmiş saxlanılır. Saxlanılmış açarı saxlamaq üçün boş buraxın",
+    "enableBankingLoadBanks": "Bankları yüklə",
+    "enableBankingNoAuthPage": "Enable Banking avtorizasiya səhifəsi qaytarmadı",
+    "enableBankingNoCode": "Ünvanda avtorizasiya kodu tapılmadı",
+    "enableBankingRedirect": "Yönləndirmə URL-i",
+    "enableBankingRedirectTooltip": "Tətbiq üçün qeydiyyatdan keçib; bank avtorizasiyadan sonra ona qayıdır",
+    "enableBankingStateMismatch": "Ünvan başqa avtorizasiyaya aiddir, yenidən qoşulun",
     "encryptionMode": "Məlumatların Şifrələnməsi",
     "error": "Xəta: {value}",
     "@error": {
@@ -263,6 +281,36 @@
         }
     },
     "failData": "Məbləğin tutulması",
+    "finTsApproved": "Bank tətbiqində təsdiqləndi",
+    "finTsBankCode": "Bank kodu (BLZ)",
+    "finTsCustomerId": "Müştəri ID-si (istifadəçi ID-sindən fərqlidirsə)",
+    "finTsDescription": "FinTS 4.1 (PIN/TAN) dəstəkləyən banklardan qalıqları və əməliyyatları idxal edin. Giriş yalnız oxumaq üçündür: ödənişlər edilmir.",
+    "finTsHeadline": "Financial Transaction Services (FinTS 4.1)",
+    "finTsIncomplete": "Server URL-ni, bank kodunu, istifadəçi ID-sini və məhsulun qeydiyyat nömrəsini doldurun",
+    "finTsLoginChanged": "Bank giriş məlumatlarını dəyişdi, istifadəçi və ya müştəri ID-sini yeniləyin: {value}",
+    "@finTsLoginChanged": {
+        "value": {
+            "type": "String"
+        }
+    },
+    "finTsLoginRefused": "Bank əvvəlki girişi rədd etdi: {value}. Daxil edilmiş PIN ilə yenidən cəhd edilsin?",
+    "@finTsLoginRefused": {
+        "value": {
+            "type": "String"
+        }
+    },
+    "finTsPin": "PIN",
+    "finTsPinHint": "Yalnız bu sessiya üçün istifadə olunur və heç vaxt saxlanılmır",
+    "finTsProductId": "Məhsulun qeydiyyat nömrəsi",
+    "finTsProductIdTooltip": "Deutsche Kreditwirtschaft tərəfindən tətbiqin istehsalçısına verilir",
+    "finTsTan": "TAN",
+    "finTsTanHeadline": "Əməliyyatın təsdiqi (TAN)",
+    "finTsTanMedium": "TAN vasitəsini seçin",
+    "finTsTanMethod": "TAN üsulunu seçin",
+    "finTsUrl": "Bankın FinTS server URL-i",
+    "finTsUserId": "İstifadəçi ID-si (giriş)",
+    "finTsVersion": "Protokol versiyası",
+    "finTsWebUnsupported": "Bank serverləri brauzerdən girişə icazə vermir. Masaüstü və ya mobil tətbiqdən istifadə edin.",
     "flowTypeInvoice": "Invoice",
     "flowTypeTooltip": "Məbləğ növü: faktura, faktura",
     "forecastData": "Proqnoz",
@@ -290,6 +338,48 @@
     "incomeHeadline": "Gəlir",
     "incomeHealth": "Gəlir Sağlamlığı Radarı",
     "incomeTooltip": "Gəlir təfərrüatlarını təyin edin",
+    "integrationAccessDenied": "Giriş ləğv edilib və ya giriş məlumatları yanlışdır",
+    "integrationConnect": "Qoşul",
+    "integrationDateFrom": "Əməliyyatları bu tarixdən idxal et",
+    "integrationDisconnect": "Ayrıl",
+    "integrationForget": "Girişi unut",
+    "integrationHeadline": "İnteqrasiyalar",
+    "integrationHttpError": "Xidmət xəta ilə cavab verdi (HTTP {value})",
+    "@integrationHttpError": {
+        "value": {
+            "type": "String"
+        }
+    },
+    "integrationHttpsRequired": "Yalnız təhlükəsiz (HTTPS) ünvanlara icazə verilir",
+    "integrationImport": "Əməliyyatları idxal et",
+    "integrationImported": "İdxal edildi: {added}, artıq mövcud olduğu üçün buraxıldı: {skipped}, gözləmədə (idxal edilmədi): {pending}",
+    "@integrationImported": {
+        "added": {
+            "type": "int"
+        },
+        "skipped": {
+            "type": "int"
+        },
+        "pending": {
+            "type": "int"
+        }
+    },
+    "integrationInvalidAmount": "Yanlış məbləğ: {value}",
+    "@integrationInvalidAmount": {
+        "value": {
+            "type": "String"
+        }
+    },
+    "integrationNoAccounts": "Bank heç bir hesab təqdim etmədi",
+    "integrationPaymentRequired": "Xidmət giriş üçün ödəniş tələb edir",
+    "integrationSelectTarget": "İdxal üçün hesabı və büdcə kateqoriyasını seçin",
+    "integrationServiceError": "Xidmətin mesajı: {value}",
+    "@integrationServiceError": {
+        "value": {
+            "type": "String"
+        }
+    },
+    "integrationUnexpectedResponse": "Xidmətdən gözlənilməz cavab",
     "invoiceHeadline": "Fakturalar",
     "invoiceSum": "Fakturalar: {value}",
     "@invoiceSum": {
@@ -398,6 +488,13 @@
     "settingsBaseHeadline": "Əsaslar",
     "settingsHeadline": "Parametrlər",
     "settingsSaved": "Tənzimləmələr yadda saxlanıldı!",
+    "simpleFinDescription": "ABŞ bankları və kart emitentlərinin qalıqlarını və əməliyyatlarını SimpleFIN Bridge vasitəsilə idxal edin. Giriş yalnız oxumaq üçündür: ödənişlər edilmir.",
+    "simpleFinHeadline": "SimpleFIN Bridge (US)",
+    "simpleFinNoCredentials": "SimpleFIN Bridge giriş məlumatları olmayan giriş ünvanı qaytardı",
+    "simpleFinToken": "SimpleFIN quraşdırma tokeni",
+    "simpleFinTokenClaimed": "Quraşdırma tokeni mövcud deyil və ya artıq istifadə olunub",
+    "simpleFinTokenInvalid": "Yanlış SimpleFIN quraşdırma tokeni",
+    "simpleFinTokenTooltip": "Bu tətbiq üçün SimpleFIN Bridge-də (məs. bridge.simplefin.org) yaradılır; yalnız bir dəfə istifadə oluna bilər",
     "skipFromTotals": "Cəmilərdən xaric edin",
     "skipTooltip": "Addım(lar)ı atlayın",
     "sortTooltip": "Elementləri sırala",

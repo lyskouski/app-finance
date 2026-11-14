@@ -241,6 +241,24 @@
     "editPaymentTooltip": "Ödeme Düzenle",
     "editTooltip": "Düzenle",
     "editTransferTooltip": "Aktarımı Düzenle",
+    "enableBankingAppId": "Uygulama kimliği",
+    "enableBankingBank": "Banka",
+    "enableBankingCode": "Yetkilendirmeden sonra açılan sayfanın adresi",
+    "enableBankingCodeTooltip": "Bankada erişimi onaylayın, ardından adresi tarayıcıdan kopyalayıp buraya yapıştırın",
+    "enableBankingCountry": "Ülke (ISO kodu, ör. DE)",
+    "enableBankingDescription": "Enable Banking API (PSD2) üzerinden, enablebanking.com'da kayıtlı kendi uygulamanızla Avrupa bankalarının bakiyelerini ve işlemlerini içe aktarın. Erişim salt okunurdur: ödeme yapılmaz.",
+    "enableBankingHeadline": "Enable Banking (EU)",
+    "enableBankingIncomplete": "Uygulama kimliğini, özel anahtarı, yönlendirme URL'sini ve ülkeyi doldurun",
+    "enableBankingKey": "Özel anahtar (PEM)",
+    "enableBankingKeyInvalid": "Geçersiz özel anahtar: \"PRIVATE KEY\" PEM bloğu bekleniyor",
+    "enableBankingKeyNotRsa": "Geçersiz özel anahtar: RSA anahtarı bekleniyor",
+    "enableBankingKeyTooltip": "Enable Banking Control Panel'de uygulamayla birlikte oluşturulur; şifreli olarak saklanır. Kayıtlı anahtarı korumak için boş bırakın",
+    "enableBankingLoadBanks": "Bankaları yükle",
+    "enableBankingNoAuthPage": "Enable Banking bir yetkilendirme sayfası döndürmedi",
+    "enableBankingNoCode": "Adreste yetkilendirme kodu bulunamadı",
+    "enableBankingRedirect": "Yönlendirme URL'si",
+    "enableBankingRedirectTooltip": "Uygulama için kayıtlıdır; banka yetkilendirmeden sonra buraya geri döner",
+    "enableBankingStateMismatch": "Adres başka bir yetkilendirmeye ait, yeniden bağlanın",
     "encryptionMode": "Veri Şifreleme",
     "error": "Hata: {value}",
     "@error": {
@@ -263,6 +281,36 @@
         }
     },
     "failData": "Tutar Kesintisi",
+    "finTsApproved": "Banka uygulamasında onaylandı",
+    "finTsBankCode": "Banka kodu (BLZ)",
+    "finTsCustomerId": "Müşteri kimliği (kullanıcı kimliğinden farklıysa)",
+    "finTsDescription": "FinTS 4.1 (PIN/TAN) destekleyen bankalardan bakiyeleri ve işlemleri içe aktarın. Erişim salt okunurdur: ödeme yapılmaz.",
+    "finTsHeadline": "Financial Transaction Services (FinTS 4.1)",
+    "finTsIncomplete": "Sunucu URL'sini, banka kodunu, kullanıcı kimliğini ve ürün kayıt numarasını doldurun",
+    "finTsLoginChanged": "Banka giriş bilgilerini değiştirdi, kullanıcı veya müşteri kimliğini güncelleyin: {value}",
+    "@finTsLoginChanged": {
+        "value": {
+            "type": "String"
+        }
+    },
+    "finTsLoginRefused": "Banka önceki girişi reddetti: {value}. Girilen PIN ile yeniden denensin mi?",
+    "@finTsLoginRefused": {
+        "value": {
+            "type": "String"
+        }
+    },
+    "finTsPin": "PIN",
+    "finTsPinHint": "Yalnızca bu oturum için kullanılır ve asla saklanmaz",
+    "finTsProductId": "Ürün kayıt numarası",
+    "finTsProductIdTooltip": "Deutsche Kreditwirtschaft tarafından uygulama üreticisine verilir",
+    "finTsTan": "TAN",
+    "finTsTanHeadline": "İşlem doğrulama (TAN)",
+    "finTsTanMedium": "TAN aracını seçin",
+    "finTsTanMethod": "TAN yöntemini seçin",
+    "finTsUrl": "Bankanın FinTS sunucu URL'si",
+    "finTsUserId": "Kullanıcı kimliği (giriş)",
+    "finTsVersion": "Protokol sürümü",
+    "finTsWebUnsupported": "Banka sunucuları tarayıcıdan erişime izin vermez. Masaüstü veya mobil uygulamayı kullanın.",
     "flowTypeInvoice": "Invoice",
     "flowTypeTooltip": "Tutar Türü: Fatura, Fatura",
     "forecastData": "Tahmin",
@@ -290,6 +338,48 @@
     "incomeHeadline": "Gelir",
     "incomeHealth": "Gelir Sağlığı Radarı",
     "incomeTooltip": "Gelir Ayrıntılarını Ayarla",
+    "integrationAccessDenied": "Erişim iptal edildi veya kimlik bilgileri yanlış",
+    "integrationConnect": "Bağlan",
+    "integrationDateFrom": "İşlemleri şu tarihten itibaren içe aktar",
+    "integrationDisconnect": "Bağlantıyı kes",
+    "integrationForget": "Erişimi unut",
+    "integrationHeadline": "Entegrasyonlar",
+    "integrationHttpError": "Hizmet bir hatayla yanıt verdi (HTTP {value})",
+    "@integrationHttpError": {
+        "value": {
+            "type": "String"
+        }
+    },
+    "integrationHttpsRequired": "Yalnızca güvenli (HTTPS) adreslere izin verilir",
+    "integrationImport": "İşlemleri içe aktar",
+    "integrationImported": "İçe aktarılan: {added}, zaten mevcut olduğu için atlanan: {skipped}, bekleyen (içe aktarılmayan): {pending}",
+    "@integrationImported": {
+        "added": {
+            "type": "int"
+        },
+        "skipped": {
+            "type": "int"
+        },
+        "pending": {
+            "type": "int"
+        }
+    },
+    "integrationInvalidAmount": "Geçersiz tutar: {value}",
+    "@integrationInvalidAmount": {
+        "value": {
+            "type": "String"
+        }
+    },
+    "integrationNoAccounts": "Banka herhangi bir hesap sağlamadı",
+    "integrationPaymentRequired": "Hizmet, erişim için ödeme gerektiriyor",
+    "integrationSelectTarget": "İçe aktarılacak hesabı ve bütçe kategorisini seçin",
+    "integrationServiceError": "Hizmet mesajı: {value}",
+    "@integrationServiceError": {
+        "value": {
+            "type": "String"
+        }
+    },
+    "integrationUnexpectedResponse": "Hizmetten beklenmeyen yanıt",
     "invoiceHeadline": "Invoices",
     "invoiceSum": "Faturalar: {value}",
     "@invoiceSum": {
@@ -398,6 +488,13 @@
     "settingsBaseHeadline": "Temel Bilgiler",
     "settingsHeadline": "Ayarlar",
     "settingsSaved": "Ayarlar kaydedildi!",
+    "simpleFinDescription": "ABD bankaları ve kart sağlayıcılarının bakiyelerini ve işlemlerini bir SimpleFIN Bridge üzerinden içe aktarın. Erişim salt okunurdur: ödeme yapılmaz.",
+    "simpleFinHeadline": "SimpleFIN Bridge (US)",
+    "simpleFinNoCredentials": "SimpleFIN Bridge kimlik bilgileri olmayan bir erişim adresi döndürdü",
+    "simpleFinToken": "SimpleFIN kurulum belirteci",
+    "simpleFinTokenClaimed": "Kurulum belirteci mevcut değil veya zaten kullanılmış",
+    "simpleFinTokenInvalid": "Geçersiz SimpleFIN kurulum belirteci",
+    "simpleFinTokenTooltip": "Bu uygulama için SimpleFIN Bridge'inizde (ör. bridge.simplefin.org) oluşturulur; yalnızca bir kez kullanılabilir",
     "skipFromTotals": "Toplamlardan hariç tut",
     "skipTooltip": "Adım(lar)ı Atla",
     "sortTooltip": "Öğeleri Sırala",

@@ -599,6 +599,70 @@ class AppLocalizationsId extends AppLocalizations {
   String get editTransferTooltip => 'Ubah Transfer';
 
   @override
+  String get enableBankingAppId => 'ID aplikasi';
+
+  @override
+  String get enableBankingBank => 'Bank';
+
+  @override
+  String get enableBankingCode =>
+      'Alamat halaman yang terbuka setelah otorisasi';
+
+  @override
+  String get enableBankingCodeTooltip =>
+      'Konfirmasikan akses di bank, lalu salin alamat dari browser dan tempelkan di sini';
+
+  @override
+  String get enableBankingCountry => 'Negara (kode ISO, mis. DE)';
+
+  @override
+  String get enableBankingDescription =>
+      'Impor saldo dan transaksi dari bank Eropa melalui Enable Banking API (PSD2) dengan aplikasi Anda sendiri yang terdaftar di enablebanking.com. Akses hanya baca: tidak ada pembayaran yang dilakukan.';
+
+  @override
+  String get enableBankingHeadline => 'Enable Banking (EU)';
+
+  @override
+  String get enableBankingIncomplete =>
+      'Isi ID aplikasi, kunci privat, URL pengalihan, dan negara';
+
+  @override
+  String get enableBankingKey => 'Kunci privat (PEM)';
+
+  @override
+  String get enableBankingKeyInvalid =>
+      'Kunci privat tidak valid: blok PEM \"PRIVATE KEY\" diharapkan';
+
+  @override
+  String get enableBankingKeyNotRsa =>
+      'Kunci privat tidak valid: kunci RSA diharapkan';
+
+  @override
+  String get enableBankingKeyTooltip =>
+      'Dibuat bersama aplikasi di Enable Banking Control Panel; disimpan terenkripsi. Biarkan kosong untuk mempertahankan kunci yang tersimpan';
+
+  @override
+  String get enableBankingLoadBanks => 'Muat bank';
+
+  @override
+  String get enableBankingNoAuthPage =>
+      'Enable Banking tidak mengembalikan halaman otorisasi';
+
+  @override
+  String get enableBankingNoCode => 'Kode otorisasi tidak ditemukan di alamat';
+
+  @override
+  String get enableBankingRedirect => 'URL pengalihan';
+
+  @override
+  String get enableBankingRedirectTooltip =>
+      'Terdaftar untuk aplikasi; bank kembali ke URL ini setelah otorisasi';
+
+  @override
+  String get enableBankingStateMismatch =>
+      'Alamat milik otorisasi lain, hubungkan kembali';
+
+  @override
   String get encryptionMode => 'Enkripsi Data';
 
   @override
@@ -637,6 +701,75 @@ class AppLocalizationsId extends AppLocalizations {
 
   @override
   String get failData => 'Pengurangan Jumlah';
+
+  @override
+  String get finTsApproved => 'Disetujui di aplikasi bank';
+
+  @override
+  String get finTsBankCode => 'Kode bank (BLZ)';
+
+  @override
+  String get finTsCustomerId => 'ID pelanggan (jika berbeda dari ID pengguna)';
+
+  @override
+  String get finTsDescription =>
+      'Impor saldo dan transaksi dari bank yang mendukung FinTS 4.1 (PIN/TAN). Akses hanya baca: tidak ada pembayaran yang dilakukan.';
+
+  @override
+  String get finTsHeadline => 'Financial Transaction Services (FinTS 4.1)';
+
+  @override
+  String get finTsIncomplete =>
+      'Isi URL server, kode bank, ID pengguna, dan nomor registrasi produk';
+
+  @override
+  String finTsLoginChanged(Object value) {
+    return 'Bank telah mengubah data masuk, perbarui ID pengguna atau ID pelanggan: $value';
+  }
+
+  @override
+  String finTsLoginRefused(Object value) {
+    return 'Bank menolak login sebelumnya: $value. Coba lagi dengan PIN yang dimasukkan?';
+  }
+
+  @override
+  String get finTsPin => 'PIN';
+
+  @override
+  String get finTsPinHint =>
+      'Hanya digunakan untuk sesi ini dan tidak pernah disimpan';
+
+  @override
+  String get finTsProductId => 'Nomor registrasi produk';
+
+  @override
+  String get finTsProductIdTooltip =>
+      'Diterbitkan oleh Deutsche Kreditwirtschaft untuk pembuat aplikasi';
+
+  @override
+  String get finTsTan => 'TAN';
+
+  @override
+  String get finTsTanHeadline => 'Autentikasi transaksi (TAN)';
+
+  @override
+  String get finTsTanMedium => 'Pilih media TAN';
+
+  @override
+  String get finTsTanMethod => 'Pilih metode TAN';
+
+  @override
+  String get finTsUrl => 'URL server FinTS bank';
+
+  @override
+  String get finTsUserId => 'ID pengguna (login)';
+
+  @override
+  String get finTsVersion => 'Versi protokol';
+
+  @override
+  String get finTsWebUnsupported =>
+      'Server bank tidak mengizinkan akses dari browser. Gunakan aplikasi desktop atau seluler.';
 
   @override
   String get flowTypeInvoice => 'Faktur';
@@ -705,6 +838,67 @@ class AppLocalizationsId extends AppLocalizations {
 
   @override
   String get incomeTooltip => 'Atur Detail Pemasukan';
+
+  @override
+  String get integrationAccessDenied =>
+      'Akses telah dicabut atau kredensial salah';
+
+  @override
+  String get integrationConnect => 'Hubungkan';
+
+  @override
+  String get integrationDateFrom => 'Impor transaksi sejak';
+
+  @override
+  String get integrationDisconnect => 'Putuskan';
+
+  @override
+  String get integrationForget => 'Lupakan akses';
+
+  @override
+  String get integrationHeadline => 'Integrasi';
+
+  @override
+  String integrationHttpError(Object value) {
+    return 'Layanan merespons dengan kesalahan (HTTP $value)';
+  }
+
+  @override
+  String get integrationHttpsRequired =>
+      'Hanya alamat aman (HTTPS) yang diizinkan';
+
+  @override
+  String get integrationImport => 'Impor transaksi';
+
+  @override
+  String integrationImported(Object added, Object pending, Object skipped) {
+    return 'Diimpor: $added, dilewati karena sudah ada: $skipped, tertunda (tidak diimpor): $pending';
+  }
+
+  @override
+  String integrationInvalidAmount(Object value) {
+    return 'Jumlah tidak valid: $value';
+  }
+
+  @override
+  String get integrationNoAccounts => 'Bank tidak memberikan rekening apa pun';
+
+  @override
+  String get integrationPaymentRequired =>
+      'Layanan memerlukan pembayaran untuk akses';
+
+  @override
+  String get integrationSelectTarget =>
+      'Pilih rekening dan kategori anggaran tujuan impor';
+
+  @override
+  String integrationServiceError(Object value) {
+    return 'Pesan layanan: $value';
+  }
+
+  @override
+  String get integrationUnexpectedResponse =>
+      'Respons tak terduga dari layanan';
 
   @override
   String get invoiceHeadline => 'Faktur';
@@ -953,6 +1147,31 @@ class AppLocalizationsId extends AppLocalizations {
 
   @override
   String get settingsSaved => 'Pengaturan disimpan!';
+
+  @override
+  String get simpleFinDescription =>
+      'Impor saldo dan transaksi dari bank dan penerbit kartu AS melalui SimpleFIN Bridge. Akses hanya baca: tidak ada pembayaran yang dilakukan.';
+
+  @override
+  String get simpleFinHeadline => 'SimpleFIN Bridge (US)';
+
+  @override
+  String get simpleFinNoCredentials =>
+      'SimpleFIN Bridge mengembalikan alamat akses tanpa kredensial';
+
+  @override
+  String get simpleFinToken => 'Token penyiapan SimpleFIN';
+
+  @override
+  String get simpleFinTokenClaimed =>
+      'Token penyiapan tidak ada atau sudah digunakan';
+
+  @override
+  String get simpleFinTokenInvalid => 'Token penyiapan SimpleFIN tidak valid';
+
+  @override
+  String get simpleFinTokenTooltip =>
+      'Dibuat di SimpleFIN Bridge Anda (mis. bridge.simplefin.org) untuk aplikasi ini; hanya dapat digunakan sekali';
 
   @override
   String get skipFromTotals => 'Kecualikan dari Total';

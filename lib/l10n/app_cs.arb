@@ -241,6 +241,24 @@
     "editPaymentTooltip": "Upravit platbu",
     "editTooltip": "Upravit",
     "editTransferTooltip": "Upravit převod",
+    "enableBankingAppId": "ID aplikace",
+    "enableBankingBank": "Banka",
+    "enableBankingCode": "Adresa stránky po autorizaci",
+    "enableBankingCodeTooltip": "Potvrďte přístup v bance, poté zkopírujte adresu z prohlížeče a vložte ji sem",
+    "enableBankingCountry": "Země (kód ISO, např. CZ)",
+    "enableBankingDescription": "Import zůstatků a transakcí evropských bank přes Enable Banking API (PSD2) s vlastní aplikací registrovanou na enablebanking.com. Přístup pouze pro čtení: neprovádějí se žádné platby.",
+    "enableBankingHeadline": "Enable Banking (EU)",
+    "enableBankingIncomplete": "Vyplňte ID aplikace, soukromý klíč, URL přesměrování a zemi",
+    "enableBankingKey": "Soukromý klíč (PEM)",
+    "enableBankingKeyInvalid": "Neplatný soukromý klíč: očekává se blok PEM \"PRIVATE KEY\"",
+    "enableBankingKeyNotRsa": "Neplatný soukromý klíč: očekává se klíč RSA",
+    "enableBankingKeyTooltip": "Vytváří se s aplikací v Enable Banking Control Panel; uložen šifrovaně. Ponechte prázdné pro zachování uloženého klíče",
+    "enableBankingLoadBanks": "Načíst banky",
+    "enableBankingNoAuthPage": "Enable Banking nevrátil stránku autorizace",
+    "enableBankingNoCode": "V adrese nebyl nalezen autorizační kód",
+    "enableBankingRedirect": "URL přesměrování",
+    "enableBankingRedirectTooltip": "Registrována pro aplikaci; banka se na ni po autorizaci vrátí",
+    "enableBankingStateMismatch": "Adresa patří k jiné autorizaci, připojte se znovu",
     "encryptionMode": "Šifrování dat",
     "error": "Chyba: {value}",
     "@error": {
@@ -263,6 +281,36 @@
         }
     },
     "failData": "Odečtená částka",
+    "finTsApproved": "Schváleno v bankovní aplikaci",
+    "finTsBankCode": "Kód banky (BLZ)",
+    "finTsCustomerId": "ID zákazníka (pokud se liší od ID uživatele)",
+    "finTsDescription": "Import zůstatků a transakcí z bank podporujících FinTS 4.1 (PIN/TAN). Přístup pouze pro čtení: neprovádějí se žádné platby.",
+    "finTsHeadline": "Financial Transaction Services (FinTS 4.1)",
+    "finTsIncomplete": "Vyplňte URL serveru, kód banky, ID uživatele a registrační číslo produktu",
+    "finTsLoginChanged": "Banka změnila přihlašovací údaje, aktualizujte ID uživatele nebo ID zákazníka: {value}",
+    "@finTsLoginChanged": {
+        "value": {
+            "type": "String"
+        }
+    },
+    "finTsLoginRefused": "Banka odmítla předchozí přihlášení: {value}. Zkusit znovu se zadaným PINem?",
+    "@finTsLoginRefused": {
+        "value": {
+            "type": "String"
+        }
+    },
+    "finTsPin": "PIN",
+    "finTsPinHint": "Použije se pouze pro tuto relaci a nikdy se neukládá",
+    "finTsProductId": "Registrační číslo produktu",
+    "finTsProductIdTooltip": "Vydává Deutsche Kreditwirtschaft výrobci aplikace",
+    "finTsTan": "TAN",
+    "finTsTanHeadline": "Ověření transakce (TAN)",
+    "finTsTanMedium": "Vyberte médium TAN",
+    "finTsTanMethod": "Vyberte metodu TAN",
+    "finTsUrl": "URL serveru FinTS banky",
+    "finTsUserId": "ID uživatele (přihlášení)",
+    "finTsVersion": "Verze protokolu",
+    "finTsWebUnsupported": "Servery bank neumožňují přístup z prohlížeče. Použijte desktopovou nebo mobilní aplikaci.",
     "flowTypeInvoice": "Faktura",
     "flowTypeTooltip": "Typ částky: Účet, faktura",
     "forecastData": "Předpověď",
@@ -290,6 +338,48 @@
     "incomeHeadline": "Příjem",
     "incomeHealth": "Radar stavu příjmů",
     "incomeTooltip": "Nastavení podrobností o příjmech",
+    "integrationAccessDenied": "Přístup byl odvolán nebo jsou přihlašovací údaje nesprávné",
+    "integrationConnect": "Připojit",
+    "integrationDateFrom": "Importovat transakce od",
+    "integrationDisconnect": "Odpojit",
+    "integrationForget": "Zapomenout přístup",
+    "integrationHeadline": "Integrace",
+    "integrationHttpError": "Služba odpověděla chybou (HTTP {value})",
+    "@integrationHttpError": {
+        "value": {
+            "type": "String"
+        }
+    },
+    "integrationHttpsRequired": "Povoleny jsou pouze zabezpečené adresy (HTTPS)",
+    "integrationImport": "Importovat transakce",
+    "integrationImported": "Importováno: {added}, přeskočeno jako existující: {skipped}, čekající (neimportováno): {pending}",
+    "@integrationImported": {
+        "added": {
+            "type": "int"
+        },
+        "skipped": {
+            "type": "int"
+        },
+        "pending": {
+            "type": "int"
+        }
+    },
+    "integrationInvalidAmount": "Neplatná částka: {value}",
+    "@integrationInvalidAmount": {
+        "value": {
+            "type": "String"
+        }
+    },
+    "integrationNoAccounts": "Banka neposkytla žádné účty",
+    "integrationPaymentRequired": "Služba vyžaduje za přístup platbu",
+    "integrationSelectTarget": "Vyberte účet a kategorii rozpočtu pro import",
+    "integrationServiceError": "Hlášení služby: {value}",
+    "@integrationServiceError": {
+        "value": {
+            "type": "String"
+        }
+    },
+    "integrationUnexpectedResponse": "Neočekávaná odpověď služby",
     "invoiceHeadline": "Faktury",
     "invoiceSum": "Faktury: {value}",
     "@invoiceSum": {
@@ -398,6 +488,13 @@
     "settingsBaseHeadline": "Základy",
     "settingsHeadline": "Nastavení",
     "settingsSaved": "Nastavení uloženo!",
+    "simpleFinDescription": "Import zůstatků a transakcí amerických bank a vydavatelů karet přes SimpleFIN Bridge. Přístup pouze pro čtení: neprovádějí se žádné platby.",
+    "simpleFinHeadline": "SimpleFIN Bridge (US)",
+    "simpleFinNoCredentials": "SimpleFIN Bridge vrátil přístupovou adresu bez přihlašovacích údajů",
+    "simpleFinToken": "Instalační token SimpleFIN",
+    "simpleFinTokenClaimed": "Instalační token neexistuje nebo již byl použit",
+    "simpleFinTokenInvalid": "Neplatný instalační token SimpleFIN",
+    "simpleFinTokenTooltip": "Vytváří se ve vašem SimpleFIN Bridge (např. bridge.simplefin.org) pro tuto aplikaci; lze jej použít pouze jednou",
     "skipFromTotals": "Vyloučit ze součtů",
     "skipTooltip": "Vynechat krok(y)",
     "sortTooltip": "Seřadit položky",

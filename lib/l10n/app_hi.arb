@@ -241,6 +241,24 @@
     "editPaymentTooltip": "भुगतान संपादित करें",
     "editTooltip": "संपादन करना",
     "editTransferTooltip": "स्थानांतरण संपादित करें",
+    "enableBankingAppId": "ऐप्लिकेशन आईडी",
+    "enableBankingBank": "बैंक",
+    "enableBankingCode": "प्राधिकरण के बाद खुले पृष्ठ का पता",
+    "enableBankingCodeTooltip": "बैंक में पहुँच की पुष्टि करें, फिर ब्राउज़र से पता कॉपी करके यहाँ पेस्ट करें",
+    "enableBankingCountry": "देश (ISO कोड, जैसे DE)",
+    "enableBankingDescription": "enablebanking.com पर पंजीकृत अपने स्वयं के ऐप्लिकेशन के साथ Enable Banking API (PSD2) के माध्यम से यूरोपीय बैंकों से शेष राशि और लेनदेन आयात करें। पहुँच केवल पढ़ने के लिए है: कोई भुगतान नहीं किया जाता।",
+    "enableBankingHeadline": "Enable Banking (EU)",
+    "enableBankingIncomplete": "ऐप्लिकेशन आईडी, निजी कुंजी, रीडायरेक्ट URL और देश भरें",
+    "enableBankingKey": "निजी कुंजी (PEM)",
+    "enableBankingKeyInvalid": "अमान्य निजी कुंजी: PEM ब्लॉक \"PRIVATE KEY\" अपेक्षित है",
+    "enableBankingKeyNotRsa": "अमान्य निजी कुंजी: RSA कुंजी अपेक्षित है",
+    "enableBankingKeyTooltip": "Enable Banking Control Panel में ऐप्लिकेशन के साथ बनाई जाती है; एन्क्रिप्टेड रूप में संग्रहीत। संग्रहीत कुंजी रखने के लिए खाली छोड़ें",
+    "enableBankingLoadBanks": "बैंक लोड करें",
+    "enableBankingNoAuthPage": "Enable Banking ने कोई प्राधिकरण पृष्ठ नहीं लौटाया",
+    "enableBankingNoCode": "पते में कोई प्राधिकरण कोड नहीं मिला",
+    "enableBankingRedirect": "रीडायरेक्ट URL",
+    "enableBankingRedirectTooltip": "ऐप्लिकेशन के लिए पंजीकृत; प्राधिकरण के बाद बैंक इसी पर लौटता है",
+    "enableBankingStateMismatch": "यह पता किसी अन्य प्राधिकरण का है, फिर से कनेक्ट करें",
     "encryptionMode": "डेटा एन्क्रिप्शन",
     "error": "त्रुटि: {value}",
     "@error": {
@@ -263,6 +281,36 @@
         }
     },
     "failData": "राशि कटौती",
+    "finTsApproved": "बैंक ऐप में स्वीकृत",
+    "finTsBankCode": "बैंक कोड (BLZ)",
+    "finTsCustomerId": "ग्राहक आईडी (यदि उपयोगकर्ता आईडी से अलग हो)",
+    "finTsDescription": "FinTS 4.1 (PIN/TAN) समर्थित बैंकों से शेष राशि और लेनदेन आयात करें। पहुँच केवल पढ़ने के लिए है: कोई भुगतान नहीं किया जाता।",
+    "finTsHeadline": "Financial Transaction Services (FinTS 4.1)",
+    "finTsIncomplete": "सर्वर URL, बैंक कोड, उपयोगकर्ता आईडी और उत्पाद पंजीकरण संख्या भरें",
+    "finTsLoginChanged": "बैंक ने लॉगिन डेटा बदल दिया है, उपयोगकर्ता आईडी या ग्राहक आईडी अपडेट करें: {value}",
+    "@finTsLoginChanged": {
+        "value": {
+            "type": "String"
+        }
+    },
+    "finTsLoginRefused": "बैंक ने पिछला लॉगिन अस्वीकार कर दिया: {value}। दर्ज किए गए PIN से फिर प्रयास करें?",
+    "@finTsLoginRefused": {
+        "value": {
+            "type": "String"
+        }
+    },
+    "finTsPin": "PIN",
+    "finTsPinHint": "केवल इस सत्र के लिए उपयोग होता है और कभी संग्रहीत नहीं किया जाता",
+    "finTsProductId": "उत्पाद पंजीकरण संख्या",
+    "finTsProductIdTooltip": "Deutsche Kreditwirtschaft द्वारा ऐप निर्माता को जारी की जाती है",
+    "finTsTan": "TAN",
+    "finTsTanHeadline": "लेनदेन प्रमाणीकरण (TAN)",
+    "finTsTanMedium": "TAN माध्यम चुनें",
+    "finTsTanMethod": "TAN विधि चुनें",
+    "finTsUrl": "बैंक का FinTS सर्वर URL",
+    "finTsUserId": "उपयोगकर्ता आईडी (लॉगिन)",
+    "finTsVersion": "प्रोटोकॉल संस्करण",
+    "finTsWebUnsupported": "बैंक सर्वर ब्राउज़र से पहुँच की अनुमति नहीं देते। डेस्कटॉप या मोबाइल ऐप का उपयोग करें।",
     "flowTypeInvoice": "चालान",
     "flowTypeTooltip": "राशि का प्रकार: बिल, चालान",
     "forecastData": "पूर्वानुमान",
@@ -290,6 +338,48 @@
     "incomeHeadline": "आय",
     "incomeHealth": "आय स्वास्थ्य रडार",
     "incomeTooltip": "आय विवरण निर्धारित करें",
+    "integrationAccessDenied": "पहुँच रद्द कर दी गई है या क्रेडेंशियल गलत हैं",
+    "integrationConnect": "कनेक्ट करें",
+    "integrationDateFrom": "इस तारीख से लेनदेन आयात करें",
+    "integrationDisconnect": "डिस्कनेक्ट करें",
+    "integrationForget": "पहुँच भूल जाएँ",
+    "integrationHeadline": "एकीकरण",
+    "integrationHttpError": "सेवा ने त्रुटि के साथ उत्तर दिया (HTTP {value})",
+    "@integrationHttpError": {
+        "value": {
+            "type": "String"
+        }
+    },
+    "integrationHttpsRequired": "केवल सुरक्षित (HTTPS) पतों की अनुमति है",
+    "integrationImport": "लेनदेन आयात करें",
+    "integrationImported": "आयात किए गए: {added}, पहले से मौजूद होने के कारण छोड़े गए: {skipped}, लंबित (आयात नहीं किए गए): {pending}",
+    "@integrationImported": {
+        "added": {
+            "type": "int"
+        },
+        "skipped": {
+            "type": "int"
+        },
+        "pending": {
+            "type": "int"
+        }
+    },
+    "integrationInvalidAmount": "अमान्य राशि: {value}",
+    "@integrationInvalidAmount": {
+        "value": {
+            "type": "String"
+        }
+    },
+    "integrationNoAccounts": "बैंक ने कोई खाता प्रदान नहीं किया",
+    "integrationPaymentRequired": "सेवा पहुँच के लिए भुगतान माँगती है",
+    "integrationSelectTarget": "आयात के लिए खाता और बजट श्रेणी चुनें",
+    "integrationServiceError": "सेवा का संदेश: {value}",
+    "@integrationServiceError": {
+        "value": {
+            "type": "String"
+        }
+    },
+    "integrationUnexpectedResponse": "सेवा से अप्रत्याशित उत्तर",
     "invoiceHeadline": "चालान",
     "invoiceSum": "चालान: {value}",
     "@invoiceSum": {
@@ -398,6 +488,13 @@
     "settingsBaseHeadline": "मूल बातें",
     "settingsHeadline": "समायोजन",
     "settingsSaved": "सेटिंग्स सहेजी गई!",
+    "simpleFinDescription": "SimpleFIN Bridge के माध्यम से अमेरिकी बैंकों और कार्ड जारीकर्ताओं से शेष राशि और लेनदेन आयात करें। पहुँच केवल पढ़ने के लिए है: कोई भुगतान नहीं किया जाता।",
+    "simpleFinHeadline": "SimpleFIN Bridge (US)",
+    "simpleFinNoCredentials": "SimpleFIN Bridge ने क्रेडेंशियल के बिना पहुँच पता लौटाया",
+    "simpleFinToken": "SimpleFIN सेटअप टोकन",
+    "simpleFinTokenClaimed": "सेटअप टोकन मौजूद नहीं है या पहले ही उपयोग किया जा चुका है",
+    "simpleFinTokenInvalid": "अमान्य SimpleFIN सेटअप टोकन",
+    "simpleFinTokenTooltip": "इस ऐप के लिए आपके SimpleFIN Bridge (जैसे bridge.simplefin.org) में बनाया जाता है; केवल एक बार उपयोग किया जा सकता है",
     "skipFromTotals": "कुल से बाहर रखें",
     "skipTooltip": "चरण छोड़ें",
     "sortTooltip": "आइटम्स को क्रमबद्ध करें",

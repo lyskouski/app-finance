@@ -600,6 +600,70 @@ class AppLocalizationsUz extends AppLocalizations {
   String get editTransferTooltip => 'Transferni tahrirlash';
 
   @override
+  String get enableBankingAppId => 'Ilova ID';
+
+  @override
+  String get enableBankingBank => 'Bank';
+
+  @override
+  String get enableBankingCode =>
+      'Avtorizatsiyadan keyin ochilgan sahifa manzili';
+
+  @override
+  String get enableBankingCodeTooltip =>
+      'Bankda kirishni tasdiqlang, so\'ng manzilni brauzerdan nusxalab, shu yerga joylashtiring';
+
+  @override
+  String get enableBankingCountry => 'Mamlakat (ISO kodi, masalan, DE)';
+
+  @override
+  String get enableBankingDescription =>
+      'enablebanking.com saytida ro\'yxatdan o\'tgan o\'z ilovangiz bilan Enable Banking API (PSD2) orqali Yevropa banklarining qoldiqlari va tranzaksiyalarini import qiling. Kirish faqat o\'qish uchun: to\'lovlar amalga oshirilmaydi.';
+
+  @override
+  String get enableBankingHeadline => 'Enable Banking (EU)';
+
+  @override
+  String get enableBankingIncomplete =>
+      'Ilova ID, maxfiy kalit, yo\'naltirish URL manzili va mamlakatni to\'ldiring';
+
+  @override
+  String get enableBankingKey => 'Maxfiy kalit (PEM)';
+
+  @override
+  String get enableBankingKeyInvalid =>
+      'Noto\'g\'ri maxfiy kalit: \"PRIVATE KEY\" PEM bloki kutilmoqda';
+
+  @override
+  String get enableBankingKeyNotRsa =>
+      'Noto\'g\'ri maxfiy kalit: RSA kaliti kutilmoqda';
+
+  @override
+  String get enableBankingKeyTooltip =>
+      'Enable Banking Control Panel\'da ilova bilan birga yaratiladi; shifrlangan holda saqlanadi. Saqlangan kalitni qoldirish uchun bo\'sh qoldiring';
+
+  @override
+  String get enableBankingLoadBanks => 'Banklarni yuklash';
+
+  @override
+  String get enableBankingNoAuthPage =>
+      'Enable Banking avtorizatsiya sahifasini qaytarmadi';
+
+  @override
+  String get enableBankingNoCode => 'Manzilda avtorizatsiya kodi topilmadi';
+
+  @override
+  String get enableBankingRedirect => 'Yo\'naltirish URL manzili';
+
+  @override
+  String get enableBankingRedirectTooltip =>
+      'Ilova uchun ro\'yxatdan o\'tkazilgan; avtorizatsiyadan so\'ng bank unga qaytaradi';
+
+  @override
+  String get enableBankingStateMismatch =>
+      'Manzil boshqa avtorizatsiyaga tegishli, qayta ulaning';
+
+  @override
   String get encryptionMode => 'Ma\'lumotlarni shifrlash';
 
   @override
@@ -639,6 +703,75 @@ class AppLocalizationsUz extends AppLocalizations {
 
   @override
   String get failData => 'Chegirma miqdori';
+
+  @override
+  String get finTsApproved => 'Bank ilovasida tasdiqlandi';
+
+  @override
+  String get finTsBankCode => 'Bank kodi (BLZ)';
+
+  @override
+  String get finTsCustomerId => 'Mijoz ID (foydalanuvchi ID dan farq qilsa)';
+
+  @override
+  String get finTsDescription =>
+      'FinTS 4.1 (PIN/TAN) ni qo\'llab-quvvatlaydigan banklardan qoldiqlar va tranzaksiyalarni import qiling. Kirish faqat o\'qish uchun: to\'lovlar amalga oshirilmaydi.';
+
+  @override
+  String get finTsHeadline => 'Financial Transaction Services (FinTS 4.1)';
+
+  @override
+  String get finTsIncomplete =>
+      'Server URL, bank kodi, foydalanuvchi ID va mahsulot ro\'yxatdan o\'tish raqamini to\'ldiring';
+
+  @override
+  String finTsLoginChanged(Object value) {
+    return 'Bank kirish ma\'lumotlarini o\'zgartirdi, foydalanuvchi yoki mijoz ID ni yangilang: $value';
+  }
+
+  @override
+  String finTsLoginRefused(Object value) {
+    return 'Bank oldingi kirishni rad etdi: $value. Kiritilgan PIN bilan qayta urinib ko\'rilsinmi?';
+  }
+
+  @override
+  String get finTsPin => 'PIN';
+
+  @override
+  String get finTsPinHint =>
+      'Faqat shu seans uchun ishlatiladi va hech qachon saqlanmaydi';
+
+  @override
+  String get finTsProductId => 'Mahsulot ro\'yxatdan o\'tish raqami';
+
+  @override
+  String get finTsProductIdTooltip =>
+      'Deutsche Kreditwirtschaft tomonidan ilova ishlab chiqaruvchisiga beriladi';
+
+  @override
+  String get finTsTan => 'TAN';
+
+  @override
+  String get finTsTanHeadline => 'Tranzaksiyani tasdiqlash (TAN)';
+
+  @override
+  String get finTsTanMedium => 'TAN vositasini tanlang';
+
+  @override
+  String get finTsTanMethod => 'TAN usulini tanlang';
+
+  @override
+  String get finTsUrl => 'Bankning FinTS server URL manzili';
+
+  @override
+  String get finTsUserId => 'Foydalanuvchi ID (login)';
+
+  @override
+  String get finTsVersion => 'Protokol versiyasi';
+
+  @override
+  String get finTsWebUnsupported =>
+      'Bank serverlari brauzerdan kirishga ruxsat bermaydi. Kompyuter yoki mobil ilovadan foydalaning.';
 
   @override
   String get flowTypeInvoice => 'Hisob-faktura';
@@ -708,6 +841,67 @@ class AppLocalizationsUz extends AppLocalizations {
 
   @override
   String get incomeTooltip => 'Daromad tafsilotlarini o\'rnating';
+
+  @override
+  String get integrationAccessDenied =>
+      'Kirish bekor qilingan yoki hisob ma\'lumotlari noto\'g\'ri';
+
+  @override
+  String get integrationConnect => 'Ulanish';
+
+  @override
+  String get integrationDateFrom =>
+      'Tranzaksiyalarni shu sanadan import qilish';
+
+  @override
+  String get integrationDisconnect => 'Uzish';
+
+  @override
+  String get integrationForget => 'Kirishni unutish';
+
+  @override
+  String get integrationHeadline => 'Integratsiyalar';
+
+  @override
+  String integrationHttpError(Object value) {
+    return 'Xizmat xato bilan javob berdi (HTTP $value)';
+  }
+
+  @override
+  String get integrationHttpsRequired =>
+      'Faqat xavfsiz (HTTPS) manzillarga ruxsat beriladi';
+
+  @override
+  String get integrationImport => 'Tranzaksiyalarni import qilish';
+
+  @override
+  String integrationImported(Object added, Object pending, Object skipped) {
+    return 'Import qilindi: $added, allaqachon mavjudligi sababli o\'tkazib yuborildi: $skipped, kutilmoqda (import qilinmadi): $pending';
+  }
+
+  @override
+  String integrationInvalidAmount(Object value) {
+    return 'Noto\'g\'ri summa: $value';
+  }
+
+  @override
+  String get integrationNoAccounts => 'Bank hech qanday hisob taqdim etmadi';
+
+  @override
+  String get integrationPaymentRequired =>
+      'Xizmat kirish uchun to\'lov talab qiladi';
+
+  @override
+  String get integrationSelectTarget =>
+      'Import uchun hisob va byudjet toifasini tanlang';
+
+  @override
+  String integrationServiceError(Object value) {
+    return 'Xizmat xabari: $value';
+  }
+
+  @override
+  String get integrationUnexpectedResponse => 'Xizmatdan kutilmagan javob';
 
   @override
   String get invoiceHeadline => 'Hisob-fakturalar';
@@ -960,6 +1154,31 @@ class AppLocalizationsUz extends AppLocalizations {
 
   @override
   String get settingsSaved => 'Sozlamalar saqlandi!';
+
+  @override
+  String get simpleFinDescription =>
+      'AQSh banklari va karta emitentlarining qoldiqlari va tranzaksiyalarini SimpleFIN Bridge orqali import qiling. Kirish faqat o\'qish uchun: to\'lovlar amalga oshirilmaydi.';
+
+  @override
+  String get simpleFinHeadline => 'SimpleFIN Bridge (US)';
+
+  @override
+  String get simpleFinNoCredentials =>
+      'SimpleFIN Bridge hisob ma\'lumotlarisiz kirish manzilini qaytardi';
+
+  @override
+  String get simpleFinToken => 'SimpleFIN sozlash tokeni';
+
+  @override
+  String get simpleFinTokenClaimed =>
+      'Sozlash tokeni mavjud emas yoki allaqachon ishlatilgan';
+
+  @override
+  String get simpleFinTokenInvalid => 'Noto\'g\'ri SimpleFIN sozlash tokeni';
+
+  @override
+  String get simpleFinTokenTooltip =>
+      'Ushbu ilova uchun SimpleFIN Bridge\'da (masalan, bridge.simplefin.org) yaratiladi; faqat bir marta ishlatilishi mumkin';
 
   @override
   String get skipFromTotals => 'Jami hisobdan chiqarib tashlang';

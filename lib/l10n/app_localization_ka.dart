@@ -599,6 +599,70 @@ class AppLocalizationsKa extends AppLocalizations {
   String get editTransferTooltip => 'გადარიცხვის რედაქტირება';
 
   @override
+  String get enableBankingAppId => 'აპლიკაციის ID';
+
+  @override
+  String get enableBankingBank => 'ბანკი';
+
+  @override
+  String get enableBankingCode =>
+      'ავტორიზაციის შემდეგ გახსნილი გვერდის მისამართი';
+
+  @override
+  String get enableBankingCodeTooltip =>
+      'დაადასტურეთ წვდომა ბანკში, შემდეგ დააკოპირეთ მისამართი ბრაუზერიდან და ჩასვით აქ';
+
+  @override
+  String get enableBankingCountry => 'ქვეყანა (ISO კოდი, მაგ. DE)';
+
+  @override
+  String get enableBankingDescription =>
+      'ევროპული ბანკების ნაშთებისა და ტრანზაქციების იმპორტი Enable Banking API-ით (PSD2) თქვენი საკუთარი აპლიკაციით, რომელიც რეგისტრირებულია enablebanking.com-ზე. წვდომა მხოლოდ წაკითხვისთვისაა: გადახდები არ სრულდება.';
+
+  @override
+  String get enableBankingHeadline => 'Enable Banking (EU)';
+
+  @override
+  String get enableBankingIncomplete =>
+      'შეავსეთ აპლიკაციის ID, პირადი გასაღები, გადამისამართების URL და ქვეყანა';
+
+  @override
+  String get enableBankingKey => 'პირადი გასაღები (PEM)';
+
+  @override
+  String get enableBankingKeyInvalid =>
+      'არასწორი პირადი გასაღები: მოსალოდნელია PEM ბლოკი \"PRIVATE KEY\"';
+
+  @override
+  String get enableBankingKeyNotRsa =>
+      'არასწორი პირადი გასაღები: მოსალოდნელია RSA გასაღები';
+
+  @override
+  String get enableBankingKeyTooltip =>
+      'იქმნება აპლიკაციასთან ერთად Enable Banking Control Panel-ში; ინახება დაშიფრული სახით. დატოვეთ ცარიელი შენახული გასაღების შესანარჩუნებლად';
+
+  @override
+  String get enableBankingLoadBanks => 'ბანკების ჩატვირთვა';
+
+  @override
+  String get enableBankingNoAuthPage =>
+      'Enable Banking-მა ავტორიზაციის გვერდი არ დააბრუნა';
+
+  @override
+  String get enableBankingNoCode => 'მისამართში ავტორიზაციის კოდი ვერ მოიძებნა';
+
+  @override
+  String get enableBankingRedirect => 'გადამისამართების URL';
+
+  @override
+  String get enableBankingRedirectTooltip =>
+      'რეგისტრირებულია აპლიკაციისთვის; ავტორიზაციის შემდეგ ბანკი მასზე ბრუნდება';
+
+  @override
+  String get enableBankingStateMismatch =>
+      'მისამართი სხვა ავტორიზაციას ეკუთვნის, ხელახლა დაუკავშირდით';
+
+  @override
   String get encryptionMode => 'მონაცემთა დაშიფვრა';
 
   @override
@@ -637,6 +701,76 @@ class AppLocalizationsKa extends AppLocalizations {
 
   @override
   String get failData => 'თანხის შემცირება';
+
+  @override
+  String get finTsApproved => 'დადასტურებულია ბანკის აპლიკაციაში';
+
+  @override
+  String get finTsBankCode => 'ბანკის კოდი (BLZ)';
+
+  @override
+  String get finTsCustomerId =>
+      'კლიენტის ID (თუ განსხვავდება მომხმარებლის ID-სგან)';
+
+  @override
+  String get finTsDescription =>
+      'ნაშთებისა და ტრანზაქციების იმპორტი ბანკებიდან, რომლებიც მხარს უჭერენ FinTS 4.1-ს (PIN/TAN). წვდომა მხოლოდ წაკითხვისთვისაა: გადახდები არ სრულდება.';
+
+  @override
+  String get finTsHeadline => 'Financial Transaction Services (FinTS 4.1)';
+
+  @override
+  String get finTsIncomplete =>
+      'შეავსეთ სერვერის URL, ბანკის კოდი, მომხმარებლის ID და პროდუქტის სარეგისტრაციო ნომერი';
+
+  @override
+  String finTsLoginChanged(Object value) {
+    return 'ბანკმა შეცვალა შესვლის მონაცემები, განაახლეთ მომხმარებლის ან კლიენტის ID: $value';
+  }
+
+  @override
+  String finTsLoginRefused(Object value) {
+    return 'ბანკმა უარყო წინა შესვლა: $value. ვცადოთ ხელახლა შეყვანილი PIN-ით?';
+  }
+
+  @override
+  String get finTsPin => 'PIN';
+
+  @override
+  String get finTsPinHint =>
+      'გამოიყენება მხოლოდ ამ სესიისთვის და არასოდეს ინახება';
+
+  @override
+  String get finTsProductId => 'პროდუქტის სარეგისტრაციო ნომერი';
+
+  @override
+  String get finTsProductIdTooltip =>
+      'გაიცემა Deutsche Kreditwirtschaft-ის მიერ აპლიკაციის მწარმოებლისთვის';
+
+  @override
+  String get finTsTan => 'TAN';
+
+  @override
+  String get finTsTanHeadline => 'ტრანზაქციის დადასტურება (TAN)';
+
+  @override
+  String get finTsTanMedium => 'აირჩიეთ TAN მატარებელი';
+
+  @override
+  String get finTsTanMethod => 'აირჩიეთ TAN მეთოდი';
+
+  @override
+  String get finTsUrl => 'ბანკის FinTS სერვერის URL';
+
+  @override
+  String get finTsUserId => 'მომხმარებლის ID (ლოგინი)';
+
+  @override
+  String get finTsVersion => 'პროტოკოლის ვერსია';
+
+  @override
+  String get finTsWebUnsupported =>
+      'ბანკის სერვერები არ იძლევიან ბრაუზერიდან წვდომის საშუალებას. გამოიყენეთ დესკტოპის ან მობილური აპლიკაცია.';
 
   @override
   String get flowTypeInvoice => 'ინვოისი';
@@ -705,6 +839,66 @@ class AppLocalizationsKa extends AppLocalizations {
 
   @override
   String get incomeTooltip => 'შემოსავლის დეტალების დაყენება';
+
+  @override
+  String get integrationAccessDenied =>
+      'წვდომა გაუქმებულია ან მონაცემები არასწორია';
+
+  @override
+  String get integrationConnect => 'დაკავშირება';
+
+  @override
+  String get integrationDateFrom => 'ტრანზაქციების იმპორტი თარიღიდან';
+
+  @override
+  String get integrationDisconnect => 'გათიშვა';
+
+  @override
+  String get integrationForget => 'წვდომის დავიწყება';
+
+  @override
+  String get integrationHeadline => 'ინტეგრაციები';
+
+  @override
+  String integrationHttpError(Object value) {
+    return 'სერვისმა შეცდომით უპასუხა (HTTP $value)';
+  }
+
+  @override
+  String get integrationHttpsRequired =>
+      'დაშვებულია მხოლოდ დაცული (HTTPS) მისამართები';
+
+  @override
+  String get integrationImport => 'ტრანზაქციების იმპორტი';
+
+  @override
+  String integrationImported(Object added, Object pending, Object skipped) {
+    return 'იმპორტირებულია: $added, გამოტოვებულია, როგორც უკვე არსებული: $skipped, მოლოდინში (არ არის იმპორტირებული): $pending';
+  }
+
+  @override
+  String integrationInvalidAmount(Object value) {
+    return 'არასწორი თანხა: $value';
+  }
+
+  @override
+  String get integrationNoAccounts => 'ბანკს არცერთი ანგარიში არ მოუწოდებია';
+
+  @override
+  String get integrationPaymentRequired =>
+      'სერვისი წვდომისთვის გადახდას მოითხოვს';
+
+  @override
+  String get integrationSelectTarget =>
+      'აირჩიეთ ანგარიში და ბიუჯეტის კატეგორია იმპორტისთვის';
+
+  @override
+  String integrationServiceError(Object value) {
+    return 'სერვისის შეტყობინება: $value';
+  }
+
+  @override
+  String get integrationUnexpectedResponse => 'სერვისის მოულოდნელი პასუხი';
 
   @override
   String get invoiceHeadline => 'ინვოისები';
@@ -953,6 +1147,31 @@ class AppLocalizationsKa extends AppLocalizations {
 
   @override
   String get settingsSaved => 'პარამეტრები შენახულია!';
+
+  @override
+  String get simpleFinDescription =>
+      'აშშ-ის ბანკებისა და ბარათების ემიტენტების ნაშთებისა და ტრანზაქციების იმპორტი SimpleFIN Bridge-ის მეშვეობით. წვდომა მხოლოდ წაკითხვისთვისაა: გადახდები არ სრულდება.';
+
+  @override
+  String get simpleFinHeadline => 'SimpleFIN Bridge (US)';
+
+  @override
+  String get simpleFinNoCredentials =>
+      'SimpleFIN Bridge-მა დააბრუნა წვდომის მისამართი მონაცემების გარეშე';
+
+  @override
+  String get simpleFinToken => 'SimpleFIN-ის დაყენების ტოკენი';
+
+  @override
+  String get simpleFinTokenClaimed =>
+      'დაყენების ტოკენი არ არსებობს ან უკვე გამოყენებულია';
+
+  @override
+  String get simpleFinTokenInvalid => 'SimpleFIN-ის არასწორი დაყენების ტოკენი';
+
+  @override
+  String get simpleFinTokenTooltip =>
+      'იქმნება თქვენს SimpleFIN Bridge-ში (მაგ. bridge.simplefin.org) ამ აპლიკაციისთვის; მისი გამოყენება მხოლოდ ერთხელ შეიძლება';
 
   @override
   String get skipFromTotals => 'ჯამებიდან გამორიცხვა';

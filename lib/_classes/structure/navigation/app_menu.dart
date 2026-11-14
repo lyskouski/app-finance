@@ -74,6 +74,11 @@ class AppMenu {
         route: AppRoute.automationRoute,
       ),
       AppMenuItem(
+        name: AppLocale.labels.integrationHeadline,
+        icon: Icons.hub,
+        route: AppRoute.integrationRoute,
+      ),
+      AppMenuItem(
         name: AppLocale.labels.settingsHeadline,
         icon: Icons.settings,
         route: AppRoute.settingsRoute,

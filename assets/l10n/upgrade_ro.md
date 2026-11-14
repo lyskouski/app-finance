@@ -2,6 +2,14 @@
 
 _Lista completă a actualizărilor poate fi vizualizată prin intermediul elementului de navigare „Despre” de pe butonul „Sugestii”._
 
+### 8.0.0
+- Pagină nouă Integrări cu secțiuni extensibile
+- Adăugat Financial Transaction Services (FinTS 4.1): conturi, solduri și import de tranzacții de la băncile germane
+- Adăugat SimpleFIN Bridge (US): conturi, solduri și import de tranzacții de la băncile și emitenții de carduri din SUA
+- Adăugat Enable Banking (EU): conturi, solduri și import de tranzacții de la băncile europene (PSD2)
+- Adăugat importul extraselor bancare (`MT940`, `camt.053`), de ex. de la băncile poloneze
+- Corectarea preciziei cursurilor de conversie
+
 ### 7.3.0
 - Adăugarea localizării în limba indoneziană (ID)
 - Îmbunătățirea preciziei valutare pentru operațiunile de schimb valutar

@@ -241,6 +241,24 @@
     "editPaymentTooltip": "Editar pagamento",
     "editTooltip": "Editar",
     "editTransferTooltip": "Editar transferência",
+    "enableBankingAppId": "ID do aplicativo",
+    "enableBankingBank": "Banco",
+    "enableBankingCode": "Endereço da página aberta após a autorização",
+    "enableBankingCodeTooltip": "Confirme o acesso no banco, depois copie o endereço do navegador e cole-o aqui",
+    "enableBankingCountry": "País (código ISO, ex.: PT)",
+    "enableBankingDescription": "Importe saldos e transações de bancos europeus pela API Enable Banking (PSD2) com seu próprio aplicativo registrado em enablebanking.com. Acesso somente leitura: nenhum pagamento é realizado.",
+    "enableBankingHeadline": "Enable Banking (EU)",
+    "enableBankingIncomplete": "Preencha o ID do aplicativo, a chave privada, a URL de redirecionamento e o país",
+    "enableBankingKey": "Chave privada (PEM)",
+    "enableBankingKeyInvalid": "Chave privada inválida: é esperado um bloco PEM \"PRIVATE KEY\"",
+    "enableBankingKeyNotRsa": "Chave privada inválida: é esperada uma chave RSA",
+    "enableBankingKeyTooltip": "Criada com o aplicativo no Enable Banking Control Panel; armazenada criptografada. Deixe vazio para manter a chave armazenada",
+    "enableBankingLoadBanks": "Carregar bancos",
+    "enableBankingNoAuthPage": "O Enable Banking não retornou nenhuma página de autorização",
+    "enableBankingNoCode": "Nenhum código de autorização encontrado no endereço",
+    "enableBankingRedirect": "URL de redirecionamento",
+    "enableBankingRedirectTooltip": "Registrada para o aplicativo; o banco retorna a ela após a autorização",
+    "enableBankingStateMismatch": "O endereço pertence a outra autorização, conecte novamente",
     "encryptionMode": "Criptografia de dados",
     "error": "Erro: {value}",
     "@error": {
@@ -263,6 +281,36 @@
         }
     },
     "failData": "Dedução do valor",
+    "finTsApproved": "Aprovado no aplicativo do banco",
+    "finTsBankCode": "Código do banco (BLZ)",
+    "finTsCustomerId": "ID do cliente (se diferente do ID do usuário)",
+    "finTsDescription": "Importe saldos e transações de bancos compatíveis com FinTS 4.1 (PIN/TAN). Acesso somente leitura: nenhum pagamento é realizado.",
+    "finTsHeadline": "Financial Transaction Services (FinTS 4.1)",
+    "finTsIncomplete": "Preencha a URL do servidor, o código do banco, o ID do usuário e o número de registro do produto",
+    "finTsLoginChanged": "O banco alterou os dados de acesso, atualize o ID do usuário ou do cliente: {value}",
+    "@finTsLoginChanged": {
+        "value": {
+            "type": "String"
+        }
+    },
+    "finTsLoginRefused": "O banco recusou o login anterior: {value}. Tentar novamente com o PIN informado?",
+    "@finTsLoginRefused": {
+        "value": {
+            "type": "String"
+        }
+    },
+    "finTsPin": "PIN",
+    "finTsPinHint": "Usado somente nesta sessão e nunca armazenado",
+    "finTsProductId": "Número de registro do produto",
+    "finTsProductIdTooltip": "Emitido pela Deutsche Kreditwirtschaft para o fabricante do aplicativo",
+    "finTsTan": "TAN",
+    "finTsTanHeadline": "Autenticação da transação (TAN)",
+    "finTsTanMedium": "Selecionar meio TAN",
+    "finTsTanMethod": "Selecionar método TAN",
+    "finTsUrl": "URL do servidor FinTS do banco",
+    "finTsUserId": "ID do usuário (login)",
+    "finTsVersion": "Versão do protocolo",
+    "finTsWebUnsupported": "Os servidores bancários não permitem acesso pelo navegador. Use o aplicativo para desktop ou celular.",
     "flowTypeInvoice": "Fatura",
     "flowTypeTooltip": "Tipo de valor: Nota Fiscal, Fatura",
     "forecastData": "Previsão",
@@ -290,6 +338,48 @@
     "incomeHeadline": "Renda",
     "incomeHealth": "Radar de saúde do rendimento",
     "incomeTooltip": "Definir detalhes do rendimento",
+    "integrationAccessDenied": "O acesso foi revogado ou as credenciais estão incorretas",
+    "integrationConnect": "Conectar",
+    "integrationDateFrom": "Importar transações desde",
+    "integrationDisconnect": "Desconectar",
+    "integrationForget": "Esquecer o acesso",
+    "integrationHeadline": "Integrações",
+    "integrationHttpError": "O serviço respondeu com um erro (HTTP {value})",
+    "@integrationHttpError": {
+        "value": {
+            "type": "String"
+        }
+    },
+    "integrationHttpsRequired": "Somente endereços seguros (HTTPS) são permitidos",
+    "integrationImport": "Importar transações",
+    "integrationImported": "Importadas: {added}, ignoradas por já existirem: {skipped}, pendentes (não importadas): {pending}",
+    "@integrationImported": {
+        "added": {
+            "type": "int"
+        },
+        "skipped": {
+            "type": "int"
+        },
+        "pending": {
+            "type": "int"
+        }
+    },
+    "integrationInvalidAmount": "Valor inválido: {value}",
+    "@integrationInvalidAmount": {
+        "value": {
+            "type": "String"
+        }
+    },
+    "integrationNoAccounts": "O banco não forneceu nenhuma conta",
+    "integrationPaymentRequired": "O serviço exige um pagamento pelo acesso",
+    "integrationSelectTarget": "Selecione a conta e a categoria de orçamento para importar",
+    "integrationServiceError": "Mensagem do serviço: {value}",
+    "@integrationServiceError": {
+        "value": {
+            "type": "String"
+        }
+    },
+    "integrationUnexpectedResponse": "Resposta inesperada do serviço",
     "invoiceHeadline": "Faturas",
     "invoiceSum": "Faturas: {value}",
     "@invoiceSum": {
@@ -398,6 +488,13 @@
     "settingsBaseHeadline": "Noções básicas",
     "settingsHeadline": "Configurações",
     "settingsSaved": "Configurações salvas!",
+    "simpleFinDescription": "Importe saldos e transações de bancos e emissores de cartões dos EUA por meio de um SimpleFIN Bridge. Acesso somente leitura: nenhum pagamento é realizado.",
+    "simpleFinHeadline": "SimpleFIN Bridge (US)",
+    "simpleFinNoCredentials": "O SimpleFIN Bridge retornou um endereço de acesso sem credenciais",
+    "simpleFinToken": "Token de configuração do SimpleFIN",
+    "simpleFinTokenClaimed": "O token de configuração não existe ou já foi usado",
+    "simpleFinTokenInvalid": "Token de configuração do SimpleFIN inválido",
+    "simpleFinTokenTooltip": "Criado no seu SimpleFIN Bridge (ex.: bridge.simplefin.org) para este aplicativo; pode ser usado apenas uma vez",
     "skipFromTotals": "Excluir dos totais",
     "skipTooltip": "Pular etapa(s)",
     "sortTooltip": "Ordenar itens",
