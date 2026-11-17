@@ -79972,7 +79972,7 @@
     SnackBar$(action, actionOverflowThreshold, animation, backgroundColor, behavior, clipBehavior, closeIconColor, $content, dismissDirection, duration, elevation, hitTestBehavior, key, margin, onVisible, padding, persist, shape, showCloseIcon, width) {
       return new A.SnackBar($content, backgroundColor, elevation, margin, padding, width, shape, hitTestBehavior, behavior, action, actionOverflowThreshold, showCloseIcon, closeIconColor, duration, persist === true, animation, onVisible, dismissDirection, clipBehavior, key);
     },
-    _SnackbarDefaultsM3: function _SnackbarDefaultsM3(t0, t1, t2, t3, t4, t5, t6, t7, t8, t9, t10, t11, t12, t13, t14) {
+    _SnackbarDefaultsM3: function _SnackbarDefaultsM3(t0, t1, t2, t3, t4, t5, t6, t7, t8, t9, t10, t11, t12, t13, t14, t15) {
       var _ = this;
       _.context = t0;
       _.___SnackbarDefaultsM3__colors_FI = _.___SnackbarDefaultsM3__theme_FI = $;
@@ -79985,11 +79985,12 @@
       _.behavior = t7;
       _.width = t8;
       _.insetPadding = t9;
-      _.closeIconColor = t10;
-      _.actionOverflowThreshold = t11;
-      _.actionBackgroundColor = t12;
-      _.disabledActionBackgroundColor = t13;
-      _.dismissDirection = t14;
+      _.showCloseIcon = t10;
+      _.closeIconColor = t11;
+      _.actionOverflowThreshold = t12;
+      _.actionBackgroundColor = t13;
+      _.disabledActionBackgroundColor = t14;
+      _.dismissDirection = t15;
     },
     _SnackbarDefaultsM3_actionTextColor_closure: function _SnackbarDefaultsM3_actionTextColor_closure(t0) {
       this.$this = t0;
@@ -80038,11 +80039,11 @@
     },
     _SnackBarState_build_closure2: function _SnackBarState_build_closure2() {
     },
-    SnackBarThemeData$(actionBackgroundColor, actionOverflowThreshold, actionTextColor, backgroundColor, behavior, closeIconColor, contentTextStyle, disabledActionBackgroundColor, disabledActionTextColor, dismissDirection, elevation, insetPadding, shape, width) {
-      return new A.SnackBarThemeData(backgroundColor, actionTextColor, disabledActionTextColor, contentTextStyle, elevation, shape, behavior, width, insetPadding, closeIconColor, actionOverflowThreshold, actionBackgroundColor, disabledActionBackgroundColor, dismissDirection);
+    SnackBarThemeData$(actionBackgroundColor, actionOverflowThreshold, actionTextColor, backgroundColor, behavior, closeIconColor, contentTextStyle, disabledActionBackgroundColor, disabledActionTextColor, dismissDirection, elevation, insetPadding, shape, showCloseIcon, width) {
+      return new A.SnackBarThemeData(backgroundColor, actionTextColor, disabledActionTextColor, contentTextStyle, elevation, shape, behavior, width, insetPadding, showCloseIcon, closeIconColor, actionOverflowThreshold, actionBackgroundColor, disabledActionBackgroundColor, dismissDirection);
     },
     SnackBarThemeData_lerp(a, b, t) {
-      var t1, t2, t3, t4, t5, t6, t7, t8, t9, t10, t11, t12, t13, t14;
+      var t1, t2, t3, t4, t5, t6, t7, t8, t9, t10, t11, t12, t13, t14, t15;
       if (a === b)
         return a;
       t1 = A.Color_lerp(a.backgroundColor, b.backgroundColor, t);
@@ -80063,10 +80064,14 @@
       t13 = A.Color_lerp(a.actionBackgroundColor, b.actionBackgroundColor, t);
       t14 = A.Color_lerp(a.disabledActionBackgroundColor, b.disabledActionBackgroundColor, t);
       if (t7)
-        t7 = a.dismissDirection;
+        t15 = a.dismissDirection;
       else
-        t7 = b.dismissDirection;
-      return A.SnackBarThemeData$(t13, t12, t2, t1, t8, t11, t4, t14, t3, t7, t5, t10, t6, t9);
+        t15 = b.dismissDirection;
+      if (t7)
+        t7 = a.showCloseIcon;
+      else
+        t7 = b.showCloseIcon;
+      return A.SnackBarThemeData$(t13, t12, t2, t1, t8, t11, t4, t14, t3, t15, t5, t10, t6, t7, t9);
     },
     SnackBarTheme_of(context) {
       var t1;
@@ -80078,7 +80083,7 @@
       this.index = t0;
       this._name = t1;
     },
-    SnackBarThemeData: function SnackBarThemeData(t0, t1, t2, t3, t4, t5, t6, t7, t8, t9, t10, t11, t12, t13) {
+    SnackBarThemeData: function SnackBarThemeData(t0, t1, t2, t3, t4, t5, t6, t7, t8, t9, t10, t11, t12, t13, t14) {
       var _ = this;
       _.backgroundColor = t0;
       _.actionTextColor = t1;
@@ -80089,11 +80094,12 @@
       _.behavior = t6;
       _.width = t7;
       _.insetPadding = t8;
-      _.closeIconColor = t9;
-      _.actionOverflowThreshold = t10;
-      _.actionBackgroundColor = t11;
-      _.disabledActionBackgroundColor = t12;
-      _.dismissDirection = t13;
+      _.showCloseIcon = t9;
+      _.closeIconColor = t10;
+      _.actionOverflowThreshold = t11;
+      _.actionBackgroundColor = t12;
+      _.disabledActionBackgroundColor = t13;
+      _.dismissDirection = t14;
     },
     _SnackBarThemeData_Object_Diagnosticable0: function _SnackBarThemeData_Object_Diagnosticable0() {
     },
@@ -81748,7 +81754,7 @@
       }
       t1 = A.ThemeData__createAdaptationMap0(adaptations);
       t2 = A.ThemeData__themeExtensionIterableToMap0(extensions);
-      theme = A.ThemeData$raw(_null, t1, B.AppBarThemeData_LXw0, applyElevationOverlayColor === true, B.BadgeThemeData_MPo0, B.MaterialBannerThemeData_G750, B.BottomAppBarThemeData_QZa0, B.BottomNavigationBarThemeData_w6n0, bottomSheetTheme, B.ButtonBarThemeData_CyY0, buttonTheme, canvasColor, cardColor, B.CardThemeData_Bjv0, B.CarouselViewThemeData_xox0, B.CheckboxThemeData_DNG, B.ChipThemeData_6eo0, colorScheme, _null, B.DataTableThemeData_jUB, datePickerTheme, dialogBackgroundColor, B.DialogThemeData_Bsq0, disabledColor, dividerColor, dividerTheme, B.DrawerThemeData_BLY0, B.DropdownMenuThemeData_null_null_null_null0, B.ElevatedButtonThemeData_null_null, B.ExpansionTileThemeData_OwP0, t2, B.FilledButtonThemeData_null0, floatingActionButtonTheme, focusColor, highlightColor, hintColor, hoverColor, B.IconButtonThemeData_null_null, iconTheme, indicatorColor, B.InputDecorationThemeData_APR, B.ListTileThemeData_ivE0, materialTapTargetSize, B.MenuBarThemeData_null_null0, B.MenuButtonThemeData_null0, B.MenuThemeData_null_null0, B.NavigationBarThemeData_T3X0, B.NavigationDrawerThemeData_iQs0, B.NavigationRailThemeData_LDF0, B.OutlinedButtonThemeData_null0, B.C_PageTransitionsTheme0, platform, B.PopupMenuThemeData_sU50, primaryColor, primaryColorDark, primaryColorLight, primaryIconTheme, primaryTextTheme, B.ProgressIndicatorThemeData_6280, B.RadioThemeData_biV0, scaffoldBackgroundColor, B.ScrollbarThemeData_loh0, B.SearchBarThemeData_HPM0, B.SearchViewThemeData_gYW0, secondaryHeaderColor, B.SegmentedButtonThemeData_null_null0, B.Color_vnR, B.SliderThemeData_tAL0, B.SnackBarThemeData_P680, splashColor, splashFactory, B.SwitchThemeData_lmW0, B.TabBarThemeData_cDs0, B.TextButtonThemeData_null0, B.TextSelectionThemeData_null_null_null0, textTheme, timePickerTheme, B.ToggleButtonsThemeData_F1A0, B.TooltipThemeData_kb2, typography, unselectedWidgetColor, useMaterial3, visualDensity);
+      theme = A.ThemeData$raw(_null, t1, B.AppBarThemeData_LXw0, applyElevationOverlayColor === true, B.BadgeThemeData_MPo0, B.MaterialBannerThemeData_G750, B.BottomAppBarThemeData_QZa0, B.BottomNavigationBarThemeData_w6n0, bottomSheetTheme, B.ButtonBarThemeData_CyY0, buttonTheme, canvasColor, cardColor, B.CardThemeData_Bjv0, B.CarouselViewThemeData_xox0, B.CheckboxThemeData_DNG, B.ChipThemeData_6eo0, colorScheme, _null, B.DataTableThemeData_jUB, datePickerTheme, dialogBackgroundColor, B.DialogThemeData_Bsq0, disabledColor, dividerColor, dividerTheme, B.DrawerThemeData_BLY0, B.DropdownMenuThemeData_null_null_null_null0, B.ElevatedButtonThemeData_null_null, B.ExpansionTileThemeData_OwP0, t2, B.FilledButtonThemeData_null0, floatingActionButtonTheme, focusColor, highlightColor, hintColor, hoverColor, B.IconButtonThemeData_null_null, iconTheme, indicatorColor, B.InputDecorationThemeData_APR, B.ListTileThemeData_ivE0, materialTapTargetSize, B.MenuBarThemeData_null_null0, B.MenuButtonThemeData_null0, B.MenuThemeData_null_null0, B.NavigationBarThemeData_T3X0, B.NavigationDrawerThemeData_iQs0, B.NavigationRailThemeData_LDF0, B.OutlinedButtonThemeData_null0, B.C_PageTransitionsTheme0, platform, B.PopupMenuThemeData_sU50, primaryColor, primaryColorDark, primaryColorLight, primaryIconTheme, primaryTextTheme, B.ProgressIndicatorThemeData_6280, B.RadioThemeData_biV0, scaffoldBackgroundColor, B.ScrollbarThemeData_loh0, B.SearchBarThemeData_HPM0, B.SearchViewThemeData_gYW0, secondaryHeaderColor, B.SegmentedButtonThemeData_null_null0, B.Color_vnR, B.SliderThemeData_tAL0, B.SnackBarThemeData_FP1, splashColor, splashFactory, B.SwitchThemeData_lmW0, B.TabBarThemeData_cDs0, B.TextButtonThemeData_null0, B.TextSelectionThemeData_null_null_null0, textTheme, timePickerTheme, B.ToggleButtonsThemeData_F1A0, B.TooltipThemeData_kb2, typography, unselectedWidgetColor, useMaterial3, visualDensity);
       return theme;
     },
     ThemeData$raw(actionIconTheme, adaptationMap, appBarTheme, applyElevationOverlayColor, badgeTheme, bannerTheme, bottomAppBarTheme, bottomNavigationBarTheme, bottomSheetTheme, buttonBarTheme, buttonTheme, canvasColor, cardColor, cardTheme, carouselViewTheme, checkboxTheme, chipTheme, colorScheme, cupertinoOverrideTheme, dataTableTheme, datePickerTheme, dialogBackgroundColor, dialogTheme, disabledColor, dividerColor, dividerTheme, drawerTheme, dropdownMenuTheme, elevatedButtonTheme, expansionTileTheme, extensions, filledButtonTheme, floatingActionButtonTheme, focusColor, highlightColor, hintColor, hoverColor, iconButtonTheme, iconTheme, indicatorColor, inputDecorationTheme, listTileTheme, materialTapTargetSize, menuBarTheme, menuButtonTheme, menuTheme, navigationBarTheme, navigationDrawerTheme, navigationRailTheme, outlinedButtonTheme, pageTransitionsTheme, platform, popupMenuTheme, primaryColor, primaryColorDark, primaryColorLight, primaryIconTheme, primaryTextTheme, progressIndicatorTheme, radioTheme, scaffoldBackgroundColor, scrollbarTheme, searchBarTheme, searchViewTheme, secondaryHeaderColor, segmentedButtonTheme, shadowColor, sliderTheme, snackBarTheme, splashColor, splashFactory, switchTheme, tabBarTheme, textButtonTheme, textSelectionTheme, textTheme, timePickerTheme, toggleButtonsTheme, tooltipTheme, typography, unselectedWidgetColor, useMaterial3, visualDensity) {
@@ -206798,11 +206804,11 @@
         return true;
       if (J.get$runtimeType$(other) !== A.getRuntimeTypeOfDartObject(_this))
         return false;
-      return other instanceof A.NoDefaultCupertinoThemeData && other.get$brightness() == _this.get$brightness() && J.$eq$(other.get$primaryColor(), _this.get$primaryColor()) && J.$eq$(other.get$primaryContrastingColor(), _this.get$primaryContrastingColor()) && J.$eq$(other.get$textTheme(), _this.get$textTheme()) && J.$eq$(other.get$barBackgroundColor(), _this.get$barBackgroundColor()) && J.$eq$(other.get$scaffoldBackgroundColor(), _this.get$scaffoldBackgroundColor()) && other.get$applyThemeToAll() == _this.get$applyThemeToAll();
+      return other instanceof A.NoDefaultCupertinoThemeData && other.get$brightness() == _this.get$brightness() && J.$eq$(other.get$primaryColor(), _this.get$primaryColor()) && J.$eq$(other.get$primaryContrastingColor(), _this.get$primaryContrastingColor()) && J.$eq$(other.get$textTheme(), _this.get$textTheme()) && J.$eq$(other.get$barBackgroundColor(), _this.get$barBackgroundColor()) && J.$eq$(other.get$scaffoldBackgroundColor(), _this.get$scaffoldBackgroundColor()) && J.$eq$(other.get$selectionHandleColor(), _this.get$selectionHandleColor()) && other.get$applyThemeToAll() == _this.get$applyThemeToAll();
     },
     get$hashCode(_) {
       var _this = this;
-      return A.Object_hash(_this.get$brightness(), _this.get$primaryColor(), _this.get$primaryContrastingColor(), _this.get$textTheme(), _this.get$barBackgroundColor(), _this.get$scaffoldBackgroundColor(), _this.get$applyThemeToAll(), B.C_SentinelValue, B.C_SentinelValue, B.C_SentinelValue, B.C_SentinelValue, B.C_SentinelValue, B.C_SentinelValue, B.C_SentinelValue, B.C_SentinelValue, B.C_SentinelValue, B.C_SentinelValue, B.C_SentinelValue, B.C_SentinelValue, B.C_SentinelValue);
+      return A.Object_hash(_this.get$brightness(), _this.get$primaryColor(), _this.get$primaryContrastingColor(), _this.get$textTheme(), _this.get$barBackgroundColor(), _this.get$scaffoldBackgroundColor(), _this.get$selectionHandleColor(), _this.get$applyThemeToAll(), B.C_SentinelValue, B.C_SentinelValue, B.C_SentinelValue, B.C_SentinelValue, B.C_SentinelValue, B.C_SentinelValue, B.C_SentinelValue, B.C_SentinelValue, B.C_SentinelValue, B.C_SentinelValue, B.C_SentinelValue, B.C_SentinelValue);
     },
     get$brightness() {
       return this.brightness;
@@ -379710,7 +379716,7 @@
         t2 = A.InheritedModel_inheritFrom(context, B._MediaQueryAspect_13, t1).data,
         theme = A.Theme_of(context),
         snackBarTheme = A.SnackBarTheme_of(context),
-        defaults = new A._SnackbarDefaultsM3(context, _null, _null, _null, _null, _null, _null, _null, _null, _null, _null, _null, _null, _null, _null),
+        defaults = new A._SnackbarDefaultsM3(context, _null, _null, _null, _null, _null, _null, _null, _null, _null, _null, _null, _null, _null, _null, _null),
         contentTextStyle = snackBarTheme.contentTextStyle;
       if (contentTextStyle == null)
         contentTextStyle = defaults.get$contentTextStyle();
@@ -379884,7 +379890,7 @@
       return this.insetPadding;
     },
     get$showCloseIcon() {
-      return null;
+      return this.showCloseIcon;
     },
     get$closeIconColor() {
       return this.closeIconColor;
@@ -440295,8 +440301,8 @@
     B.SnackBarClosedReason_3 = new A.SnackBarClosedReason(3, "hide");
     B.SnackBarClosedReason_4 = new A.SnackBarClosedReason(4, "remove");
     B.SnackBarClosedReason_5 = new A.SnackBarClosedReason(5, "timeout");
+    B.SnackBarThemeData_FP1 = new A.SnackBarThemeData(null, null, null, null, null, null, null, null, null, null, null, null, null, null, null);
     B.SnackBarThemeData_P68 = new A.SnackBarThemeData0(null, null, null, null, null, null, null, null, null, null, null, null, null, null);
-    B.SnackBarThemeData_P680 = new A.SnackBarThemeData(null, null, null, null, null, null, null, null, null, null, null, null, null, null);
     B.SnapshotMode_0 = new A.SnapshotMode(0, "permissive");
     B.SnapshotMode_1 = new A.SnapshotMode(1, "normal");
     B.SnapshotMode_2 = new A.SnapshotMode(2, "forced");
