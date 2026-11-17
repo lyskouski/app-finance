@@ -11,7 +11,7 @@ import 'package:fints/fints.dart';
 // The PIN is never part of it - asked for on each connection
 class FinTsSettings {
   // Product registration ID of the Deutsche Kreditwirtschaft
-  // TBD: inject on build `--dart-define=FINTS_PRODUCT_ID=...`
+  // Injected on build `--dart-define=FINTS_PRODUCT_ID=...` from GitHub secrets
   static const defaultProductId = String.fromEnvironment('FINTS_PRODUCT_ID');
 
   static const namespaces = {
