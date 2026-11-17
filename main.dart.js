@@ -20379,7 +20379,7 @@
       if (t5 == null)
         t5 = "";
       t6 = A._asStringQ(t1.$index(json, _s9_));
-      t6 = (t6 == null ? null : t6.length !== 0) === true ? t1.$index(json, _s9_) : "";
+      t6 = (t6 == null ? null : t6.length !== 0) === true ? t1.$index(json, _s9_) : "A0AFFA2E4D32359F5430BEAF9";
       t7 = B.Map_Jr6Xm.containsKey$1(0, t1.$index(json, "version")) ? t1.$index(json, "version") : "4.1.1";
       t8 = type$.nullable_Map_String_dynamic;
       t9 = t8._as(t1.$index(json, "links"));
@@ -20394,15 +20394,16 @@
     },
     FinTsSettings_load() {
       var t1, exception, _null = null,
+        _s25_ = "A0AFFA2E4D32359F5430BEAF9",
         value = A._asStringQ(J.$index$asx($.AppPreferences___pref._readField$0()._preferenceCache, "fints"));
       if (value == null || value.length === 0)
-        return A.FinTsSettings$("", "", _null, _null, "", "", "", "4.1.1");
+        return A.FinTsSettings$("", "", _null, _null, _s25_, "", "", "4.1.1");
       try {
         t1 = A.FinTsSettings_FinTsSettings$fromJson(B.C_JsonCodec.decode$2$reviver(0, value, _null));
         return t1;
       } catch (exception) {
         if (type$.FormatException._is(A.unwrapException(exception)))
-          return A.FinTsSettings$("", "", _null, _null, "", "", "", "4.1.1");
+          return A.FinTsSettings$("", "", _null, _null, _s25_, "", "", "4.1.1");
         else
           throw exception;
       }
