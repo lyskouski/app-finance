@@ -8,7 +8,7 @@ buildscript {
         classpath("org.jetbrains.kotlin:kotlin-serialization:2.3.20")
         classpath("com.google.gms:google-services:4.4.4")
         classpath("com.google.firebase:firebase-crashlytics-gradle:3.0.8")
-        classpath("com.android.tools.build:gradle:9.0.1")
+        classpath("com.android.tools.build:gradle:9.1.1")
     }
 }
 
