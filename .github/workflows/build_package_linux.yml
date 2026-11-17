@@ -55,12 +55,21 @@ jobs:
       - name: Patch PubSpec
         run: dart run grinder pubspec-update --build-name=${{ inputs.version }} --build-number=${{ inputs.build_number }}
 
+      - name: Prepare Build Variables
+        shell: bash
+        env:
+          FINTS_PRODUCT_ID: ${{ secrets.FINTS_PRODUCT_ID }}
+        run: |
+          VALUE=$(printf '%s' "$FINTS_PRODUCT_ID" | tr -d '[:space:]')
+          [ -n "$VALUE" ] && echo "::add-mask::$VALUE"
+          echo "FINTS_PRODUCT_ID=$VALUE" >> "$GITHUB_ENV"
+
       - name: Run Linux Build
         run: |
           sudo apt-get update
           sudo apt-get install -y libgtk-3-dev ninja-build
           flutter config --enable-linux-desktop
-          flutter build -v linux --build-name=${{ inputs.version }} --build-number=${{ inputs.build_number }} --release --no-tree-shake-icons --dart-define=FINTS_PRODUCT_ID=${{ secrets.FINTS_PRODUCT_ID }}
+          flutter build -v linux --build-name=${{ inputs.version }} --build-number=${{ inputs.build_number }} --release --no-tree-shake-icons --dart-define="FINTS_PRODUCT_ID=$FINTS_PRODUCT_ID"
 
       - name: Compress Linux Package
         run: |

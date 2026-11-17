@@ -70,10 +70,19 @@ jobs:
       - name: Patch PubSpec
         run: dart run grinder pubspec-update --build-name=${{ needs.release.outputs.version }} --build-number=${{ needs.release.outputs.build_number }}
 
+      - name: Prepare Build Variables
+        shell: bash
+        env:
+          FINTS_PRODUCT_ID: ${{ secrets.FINTS_PRODUCT_ID }}
+        run: |
+          VALUE=$(printf '%s' "$FINTS_PRODUCT_ID" | tr -d '[:space:]')
+          [ -n "$VALUE" ] && echo "::add-mask::$VALUE"
+          echo "FINTS_PRODUCT_ID=$VALUE" >> "$GITHUB_ENV"
+
 # Web
       - name: Build Web Package
         if: matrix.target == 'Web'
-        run: flutter build -v web --release --no-tree-shake-icons --dart-define=FINTS_PRODUCT_ID=${{ secrets.FINTS_PRODUCT_ID }} --base-href="/app/finance/"
+        run: flutter build -v web --release --no-tree-shake-icons --dart-define="FINTS_PRODUCT_ID=$FINTS_PRODUCT_ID" --base-href="/app/finance/"
 
       - name: Compress Web Package
         if: matrix.target == 'Web'
@@ -94,7 +103,7 @@ jobs:
           CL: /D_SILENCE_EXPERIMENTAL_COROUTINE_DEPRECATION_WARNINGS
         run: |
           flutter config --enable-windows-desktop
-          flutter build -v windows --build-name=${{ needs.release.outputs.version }} --build-number=${{ needs.release.outputs.build_number }} --release --no-tree-shake-icons --dart-define=FINTS_PRODUCT_ID=${{ secrets.FINTS_PRODUCT_ID }}
+          flutter build -v windows --build-name=${{ needs.release.outputs.version }} --build-number=${{ needs.release.outputs.build_number }} --release --no-tree-shake-icons --dart-define="FINTS_PRODUCT_ID=$env:FINTS_PRODUCT_ID"
 
       - name: Copy Additional DLLs
         if: matrix.target == 'Windows'
@@ -130,8 +139,6 @@ jobs:
 
       - name: Build Snap
         if: matrix.target == 'LinuxSnap'
-        env:
-          FINTS_PRODUCT_ID: ${{ secrets.FINTS_PRODUCT_ID }}
         run: |
           sed -i "s|--target lib/main.dart$|--target lib/main.dart --dart-define=FINTS_PRODUCT_ID=${FINTS_PRODUCT_ID}|" snapcraft.yaml
           sudo snap install snapcraft --classic
@@ -166,7 +173,7 @@ jobs:
       - name: Run Android Build
         if: matrix.target == 'Android'
         run: |
-          flutter build appbundle --build-name=${{ needs.release.outputs.version }} --build-number=${{ needs.release.outputs.build_number }} --release --no-tree-shake-icons --dart-define=FINTS_PRODUCT_ID=${{ secrets.FINTS_PRODUCT_ID }}
+          flutter build appbundle --build-name=${{ needs.release.outputs.version }} --build-number=${{ needs.release.outputs.build_number }} --release --no-tree-shake-icons --dart-define="FINTS_PRODUCT_ID=$FINTS_PRODUCT_ID"
           mv ${{ matrix.build_path }}/app-release.aab $GITHUB_WORKSPACE/fingrom_${{ matrix.target }}.aab
 
 # iOS
@@ -247,7 +254,7 @@ jobs:
           export IPHONEOS_DEPLOYMENT_TARGET=18.0
 
           # Build iOS app with latest available SDK
-          flutter build ipa --build-name=${{ needs.release.outputs.version }} --build-number=${{ needs.release.outputs.build_number }} --release --no-tree-shake-icons --dart-define=FINTS_PRODUCT_ID=${{ secrets.FINTS_PRODUCT_ID }} --export-options-plist ./ios/ExportOptions.plist
+          flutter build ipa --build-name=${{ needs.release.outputs.version }} --build-number=${{ needs.release.outputs.build_number }} --release --no-tree-shake-icons --dart-define="FINTS_PRODUCT_ID=$FINTS_PRODUCT_ID" --export-options-plist ./ios/ExportOptions.plist
           mv ${{ matrix.build_path }}/fingrom.ipa fingrom_${{ matrix.target }}.ipa
 
       - name: Upload iOS Package to Apple Store
@@ -261,7 +268,7 @@ jobs:
         if: matrix.target == 'macOS'
         run: |
           flutter config --enable-macos-desktop
-          flutter build -v macos --build-name=${{ needs.release.outputs.version }} --build-number=${{ needs.release.outputs.build_number }} --release --no-tree-shake-icons --dart-define=FINTS_PRODUCT_ID=${{ secrets.FINTS_PRODUCT_ID }}
+          flutter build -v macos --build-name=${{ needs.release.outputs.version }} --build-number=${{ needs.release.outputs.build_number }} --release --no-tree-shake-icons --dart-define="FINTS_PRODUCT_ID=$FINTS_PRODUCT_ID"
 
       - name: Compress macOS Package
         if: matrix.target == 'macOS'

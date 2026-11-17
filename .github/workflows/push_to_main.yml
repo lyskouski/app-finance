@@ -67,11 +67,15 @@ jobs:
           dart run grinder create-class-graph
 
       - name: Build Web Package
+        env:
+          FINTS_PRODUCT_ID: ${{ secrets.FINTS_PRODUCT_ID }}
         run: |
+          FINTS_PRODUCT_ID=$(printf '%s' "$FINTS_PRODUCT_ID" | tr -d '[:space:]')
+          [ -n "$FINTS_PRODUCT_ID" ] && echo "::add-mask::$FINTS_PRODUCT_ID"
           BUILD=$(git rev-list --count HEAD)
           TAG=$(git describe --tags `git rev-list --tags --max-count=1` | cut -c 2-)
           dart run grinder pubspec-update --build-name=$TAG --build-number=$BUILD
-          flutter build -v web --profile --no-tree-shake-icons --dart-define=FINTS_PRODUCT_ID=${{ secrets.FINTS_PRODUCT_ID }} --base-href="/app-finance/"
+          flutter build -v web --profile --no-tree-shake-icons --dart-define="FINTS_PRODUCT_ID=$FINTS_PRODUCT_ID" --base-href="/app-finance/"
 
       - name: Add Coverage Report to the Package
         run: cp -R ./coverage ./build/web/coverage
