@@ -1015,6 +1015,20 @@ class AppLocalizationsTr extends AppLocalizations {
       'amount (zorunlu), currency ve title adlandırılmış gruplarını içeren düzenli ifade, örn. (?<amount>[0-9.,]+) (?<currency>[A-Z]+) at (?<title>.+)';
 
   @override
+  String get notificationIncome => 'Gelir anahtar kelimeleri (isteğe bağlı)';
+
+  @override
+  String get notificationIncomeTooltip =>
+      'Bildirimi gelir olarak işaretleyen virgülle ayrılmış kelimeler, yerleşik olanlara ek olarak, ör. ödeme, temettü';
+
+  @override
+  String get notificationBalance => 'Bakiye anahtar kelimeleri (isteğe bağlı)';
+
+  @override
+  String get notificationBalanceTooltip =>
+      'Yok sayılacak bir tutardan (bakiye, limit) önce gelen virgülle ayrılmış kelimeler, yerleşik olanlara ek olarak, ör. kalan, kredi limiti';
+
+  @override
   String get notificationUnparsed => 'Tanınmadı';
 
   @override

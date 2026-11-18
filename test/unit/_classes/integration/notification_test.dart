@@ -137,6 +137,25 @@ void main() {
     test('rejects an invalid custom pattern', () {
       expect(NotificationParser.parse('', 'Paid 5 EUR', pattern: '(?<amount>'), isNull);
     });
+
+    test('splits user keywords', () {
+      expect(NotificationParser.toKeywords(' Payout, Dividend\n,  ,Bonus '), ['payout', 'dividend', 'bonus']);
+      expect(NotificationParser.toKeywords(null), isEmpty);
+    });
+
+    test('applies user income keywords', () {
+      expect(NotificationParser.parse('', 'Payout 40 EUR')!.amount, -40.0);
+      expect(NotificationParser.parse('', 'Payout 40 EUR', income: ['payout'])!.amount, 40.0);
+      final result = NotificationParser.parse('', 'Payout: 40.00', pattern: r'Payout: ([\d.]+)', income: ['payout']);
+      expect(result!.amount, 40.0);
+    });
+
+    test('applies user balance keywords', () {
+      const text = 'Paid 10 EUR at Shop. Remaining 500 EUR';
+      expect(NotificationParser.parse('', 'Remaining 500 EUR')!.amount, -500.0);
+      expect(NotificationParser.parse('', 'Remaining 500 EUR', balance: ['remaining']), isNull);
+      expect(NotificationParser.parse('', text, balance: ['remaining'])!.amount, -10.0);
+    });
   });
 
   group('NotificationImporter', () {
@@ -182,6 +201,21 @@ void main() {
       );
       expect(added.single.currency?.code, 'SEK');
     });
+
+    test('passes user keywords to the parser', () {
+      final added = <InterfaceAppData>[];
+      final importer = NotificationImporter(exists: (_) => false, add: (item, _) => added.add(item));
+      final summary = importer.run(
+        records: [record('Remaining 900 EUR'), record('Payout 15 EUR', id: 'b')],
+        account: 'acc',
+        category: 'cat',
+        from: DateTime(2026),
+        income: 'payout',
+        balance: 'remaining',
+      );
+      expect((summary.added, summary.pending), (1, 1));
+      expect(added.single, isA<InvoiceAppData>());
+    });
   });
 
   group('NotificationSettings', () {
@@ -195,11 +229,14 @@ void main() {
       settings.get('com.bank')
         ..account = 'acc'
         ..category = 'cat'
-        ..pattern = '(?<amount>\\d+)';
+        ..pattern = '(?<amount>\\d+)'
+        ..income = 'payout'
+        ..balance = 'remaining';
       await settings.save();
 
       final restored = NotificationSettings.load().get('com.bank');
       expect((restored.account, restored.category, restored.pattern), ('acc', 'cat', '(?<amount>\\d+)'));
+      expect((restored.income, restored.balance), ('payout', 'remaining'));
       expect(restored.auto, isFalse);
 
       settings.get('com.bank').auto = true;

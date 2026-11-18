@@ -1013,6 +1013,20 @@ class AppLocalizationsCs extends AppLocalizations {
       'Regulární výraz s pojmenovanými skupinami amount (povinná), currency a title, např. (?<amount>[0-9.,]+) (?<currency>[A-Z]+) at (?<title>.+)';
 
   @override
+  String get notificationIncome => 'Klíčová slova příjmu (volitelné)';
+
+  @override
+  String get notificationIncomeTooltip =>
+      'Slova oddělená čárkami, která označují oznámení jako příjem, navíc k vestavěným, např. výplata, dividenda';
+
+  @override
+  String get notificationBalance => 'Klíčová slova zůstatku (volitelné)';
+
+  @override
+  String get notificationBalanceTooltip =>
+      'Slova oddělená čárkami před částkou, která se má ignorovat (zůstatek, limit), navíc k vestavěným, např. zbývá, úvěrový rámec';
+
+  @override
   String get notificationUnparsed => 'Nerozpoznáno';
 
   @override

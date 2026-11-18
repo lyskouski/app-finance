@@ -1019,6 +1019,20 @@ class AppLocalizationsIt extends AppLocalizations {
       'Espressione regolare con i gruppi denominati amount (obbligatorio), currency e title, ad es. (?<amount>[0-9.,]+) (?<currency>[A-Z]+) at (?<title>.+)';
 
   @override
+  String get notificationIncome => 'Parole chiave di entrata (facoltativo)';
+
+  @override
+  String get notificationIncomeTooltip =>
+      'Parole separate da virgole che contrassegnano una notifica come entrata, oltre a quelle integrate, ad es. pagamento, dividendo';
+
+  @override
+  String get notificationBalance => 'Parole chiave di saldo (facoltativo)';
+
+  @override
+  String get notificationBalanceTooltip =>
+      'Parole separate da virgole che precedono un importo da ignorare (saldo, limite), oltre a quelle integrate, ad es. residuo, linea di credito';
+
+  @override
   String get notificationUnparsed => 'Non riconosciuto';
 
   @override

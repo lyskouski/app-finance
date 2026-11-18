@@ -1013,6 +1013,20 @@ class AppLocalizationsHi extends AppLocalizations {
       'नामित समूहों amount (आवश्यक), currency और title वाला रेगुलर एक्सप्रेशन, उदा. (?<amount>[0-9.,]+) (?<currency>[A-Z]+) at (?<title>.+)';
 
   @override
+  String get notificationIncome => 'आय कीवर्ड (वैकल्पिक)';
+
+  @override
+  String get notificationIncomeTooltip =>
+      'अल्पविराम से अलग किए गए शब्द जो सूचना को आय के रूप में चिह्नित करते हैं, अंतर्निहित शब्दों के अतिरिक्त, जैसे भुगतान प्राप्त, लाभांश';
+
+  @override
+  String get notificationBalance => 'शेष राशि कीवर्ड (वैकल्पिक)';
+
+  @override
+  String get notificationBalanceTooltip =>
+      'अल्पविराम से अलग किए गए शब्द जो अनदेखी की जाने वाली राशि (शेष, सीमा) से पहले आते हैं, अंतर्निहित शब्दों के अतिरिक्त, जैसे बकाया, क्रेडिट लाइन';
+
+  @override
   String get notificationUnparsed => 'पहचाना नहीं गया';
 
   @override

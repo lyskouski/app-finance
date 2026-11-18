@@ -1021,6 +1021,20 @@ class AppLocalizationsEs extends AppLocalizations {
       'Expresión regular con los grupos con nombre amount (obligatorio), currency y title, p. ej. (?<amount>[0-9.,]+) (?<currency>[A-Z]+) at (?<title>.+)';
 
   @override
+  String get notificationIncome => 'Palabras clave de ingreso (opcional)';
+
+  @override
+  String get notificationIncomeTooltip =>
+      'Palabras separadas por comas que marcan una notificación como ingreso, además de las integradas, p. ej. pago, dividendo';
+
+  @override
+  String get notificationBalance => 'Palabras clave de saldo (opcional)';
+
+  @override
+  String get notificationBalanceTooltip =>
+      'Palabras separadas por comas que preceden a un importe a ignorar (saldo, límite), además de las integradas, p. ej. restante, línea de crédito';
+
+  @override
   String get notificationUnparsed => 'No reconocido';
 
   @override

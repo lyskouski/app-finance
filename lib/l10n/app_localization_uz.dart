@@ -1022,6 +1022,20 @@ class AppLocalizationsUz extends AppLocalizations {
       'amount (majburiy), currency va title nomli guruhlari bo\'lgan muntazam ifoda, masalan, (?<amount>[0-9.,]+) (?<currency>[A-Z]+) at (?<title>.+)';
 
   @override
+  String get notificationIncome => 'Daromad kalit so\'zlari (ixtiyoriy)';
+
+  @override
+  String get notificationIncomeTooltip =>
+      'Bildirishnomani daromad sifatida belgilovchi vergul bilan ajratilgan so\'zlar, o\'rnatilganlarga qo\'shimcha, masalan, to\'lov, dividend';
+
+  @override
+  String get notificationBalance => 'Balans kalit so\'zlari (ixtiyoriy)';
+
+  @override
+  String get notificationBalanceTooltip =>
+      'E\'tiborga olinmaydigan summa (balans, limit) oldidan keladigan vergul bilan ajratilgan so\'zlar, o\'rnatilganlarga qo\'shimcha, masalan, qolgan, kredit liniyasi';
+
+  @override
   String get notificationUnparsed => 'Aniqlanmadi';
 
   @override

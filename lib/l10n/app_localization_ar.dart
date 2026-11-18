@@ -1009,6 +1009,20 @@ class AppLocalizationsAr extends AppLocalizations {
       'تعبير نمطي مع المجموعات المسماة amount (مطلوبة) وcurrency وtitle، مثلًا (?<amount>[0-9.,]+) (?<currency>[A-Z]+) at (?<title>.+)';
 
   @override
+  String get notificationIncome => 'كلمات مفتاحية للدخل (اختياري)';
+
+  @override
+  String get notificationIncomeTooltip =>
+      'كلمات مفصولة بفواصل تحدد الإشعار كدخل، بالإضافة إلى الكلمات المضمنة، مثلًا دفعة، أرباح';
+
+  @override
+  String get notificationBalance => 'كلمات مفتاحية للرصيد (اختياري)';
+
+  @override
+  String get notificationBalanceTooltip =>
+      'كلمات مفصولة بفواصل تسبق مبلغًا يجب تجاهله (الرصيد، الحد)، بالإضافة إلى الكلمات المضمنة، مثلًا المتبقي، خط ائتمان';
+
+  @override
   String get notificationUnparsed => 'لم يتم التعرف عليه';
 
   @override

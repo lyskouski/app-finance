@@ -1016,6 +1016,20 @@ class AppLocalizationsBe extends AppLocalizations {
       'Рэгулярны выраз з найменнымі групамі amount (абавязкова), currency і title, напрыклад, (?<amount>[0-9.,]+) (?<currency>[A-Z]+) at (?<title>.+)';
 
   @override
+  String get notificationIncome => 'Ключавыя словы даходу (неабавязкова)';
+
+  @override
+  String get notificationIncomeTooltip =>
+      'Словы праз коску, якія пазначаюць апавяшчэнне як даход, у дадатак да ўбудаваных, напрыклад, выплата, дывідэнды';
+
+  @override
+  String get notificationBalance => 'Ключавыя словы балансу (неабавязкова)';
+
+  @override
+  String get notificationBalanceTooltip =>
+      'Словы праз коску перад сумай, якую трэба ігнараваць (баланс, ліміт), у дадатак да ўбудаваных, напрыклад, рэшта, крэдытная лінія';
+
+  @override
   String get notificationUnparsed => 'Не распазнана';
 
   @override
@@ -2440,6 +2454,20 @@ class AppLocalizationsBeEu extends AppLocalizationsBe {
   @override
   String get notificationPatternTooltip =>
       'Rehuliarny vyraz z najmiennymi hrupami amount (abaviazkova), currency i title, napryklad, (?<amount>[0-9.,]+) (?<currency>[A-Z]+) at (?<title>.+)';
+
+  @override
+  String get notificationIncome => 'Klučavyja słovy dachodu (nieabaviazkova)';
+
+  @override
+  String get notificationIncomeTooltip =>
+      'Słovy praz kosku, jakija paznačajuć apaviaščennie jak dachod, u dadatak da ŭbudavanych, napryklad, vypłata, dyvidendy';
+
+  @override
+  String get notificationBalance => 'Klučavyja słovy balansu (nieabaviazkova)';
+
+  @override
+  String get notificationBalanceTooltip =>
+      'Słovy praz kosku pierad sumaj, jakuju treba ihnaravać (balans, limit), u dadatak da ŭbudavanych, napryklad, rešta, kredytnaja linija';
 
   @override
   String get notificationUnparsed => 'Nie raspaznana';

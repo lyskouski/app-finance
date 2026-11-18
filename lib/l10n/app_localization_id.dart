@@ -1017,6 +1017,20 @@ class AppLocalizationsId extends AppLocalizations {
       'Ekspresi reguler dengan grup bernama amount (wajib), currency, dan title, mis. (?<amount>[0-9.,]+) (?<currency>[A-Z]+) at (?<title>.+)';
 
   @override
+  String get notificationIncome => 'Kata kunci pemasukan (opsional)';
+
+  @override
+  String get notificationIncomeTooltip =>
+      'Kata yang dipisahkan koma untuk menandai notifikasi sebagai pemasukan, selain yang bawaan, mis. pembayaran, dividen';
+
+  @override
+  String get notificationBalance => 'Kata kunci saldo (opsional)';
+
+  @override
+  String get notificationBalanceTooltip =>
+      'Kata yang dipisahkan koma sebelum jumlah yang diabaikan (saldo, limit), selain yang bawaan, mis. tersisa, batas kredit';
+
+  @override
   String get notificationUnparsed => 'Tidak dikenali';
 
   @override

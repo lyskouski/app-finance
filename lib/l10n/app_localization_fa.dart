@@ -1011,6 +1011,20 @@ class AppLocalizationsFa extends AppLocalizations {
       'عبارت باقاعده با گروه‌های نام‌دار amount (الزامی)، currency و title، برای مثال (?<amount>[0-9.,]+) (?<currency>[A-Z]+) at (?<title>.+)';
 
   @override
+  String get notificationIncome => 'کلیدواژه‌های درآمد (اختیاری)';
+
+  @override
+  String get notificationIncomeTooltip =>
+      'واژه‌های جداشده با کاما که اعلان را به عنوان درآمد مشخص می‌کنند، علاوه بر موارد داخلی، مثلاً پرداخت، سود سهام';
+
+  @override
+  String get notificationBalance => 'کلیدواژه‌های موجودی (اختیاری)';
+
+  @override
+  String get notificationBalanceTooltip =>
+      'واژه‌های جداشده با کاما پیش از مبلغی که باید نادیده گرفته شود (موجودی، سقف)، علاوه بر موارد داخلی، مثلاً باقیمانده، خط اعتباری';
+
+  @override
   String get notificationUnparsed => 'شناسایی نشد';
 
   @override

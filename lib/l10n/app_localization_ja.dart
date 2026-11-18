@@ -999,6 +999,20 @@ class AppLocalizationsJa extends AppLocalizations {
       '名前付きグループ amount（必須）、currency、title を含む正規表現。例： (?<amount>[0-9.,]+) (?<currency>[A-Z]+) at (?<title>.+)';
 
   @override
+  String get notificationIncome => '収入キーワード（任意）';
+
+  @override
+  String get notificationIncomeTooltip =>
+      '通知を収入として判定するカンマ区切りの語句（組み込みのものに追加）、例：配当, 振込';
+
+  @override
+  String get notificationBalance => '残高キーワード（任意）';
+
+  @override
+  String get notificationBalanceTooltip =>
+      '無視する金額（残高、限度額）の前に置かれるカンマ区切りの語句（組み込みのものに追加）、例：残り, 利用可能額';
+
+  @override
   String get notificationUnparsed => '認識できません';
 
   @override

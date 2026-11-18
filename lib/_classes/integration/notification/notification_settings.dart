@@ -9,10 +9,13 @@ class NotificationApp {
   String? account;
   String? category;
   String? pattern;
+  // Additional keywords (comma separated) to detect income and to skip balance amounts
+  String? income;
+  String? balance;
   // Recognized notifications are imported without a confirmation
   bool auto;
 
-  NotificationApp({this.account, this.category, this.pattern, this.auto = false});
+  NotificationApp({this.account, this.category, this.pattern, this.income, this.balance, this.auto = false});
 
   bool get isLinked => account != null && category != null;
 
@@ -20,6 +23,8 @@ class NotificationApp {
         if (account != null) 'account': account,
         if (category != null) 'category': category,
         if (pattern != null && pattern!.isNotEmpty) 'pattern': pattern,
+        if (income != null && income!.isNotEmpty) 'income': income,
+        if (balance != null && balance!.isNotEmpty) 'balance': balance,
         if (auto) 'auto': true,
       };
 
@@ -27,6 +32,8 @@ class NotificationApp {
         account: json['account']?.toString(),
         category: json['category']?.toString(),
         pattern: json['pattern']?.toString(),
+        income: json['income']?.toString(),
+        balance: json['balance']?.toString(),
         auto: json['auto'] == true,
       );
 }

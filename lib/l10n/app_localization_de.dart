@@ -1023,6 +1023,20 @@ class AppLocalizationsDe extends AppLocalizations {
       'Regulärer Ausdruck mit den benannten Gruppen amount (erforderlich), currency und title, z. B. (?<amount>[0-9.,]+) (?<currency>[A-Z]+) at (?<title>.+)';
 
   @override
+  String get notificationIncome => 'Einnahme-Schlüsselwörter (optional)';
+
+  @override
+  String get notificationIncomeTooltip =>
+      'Durch Kommas getrennte Wörter, die eine Benachrichtigung als Einnahme kennzeichnen, zusätzlich zu den integrierten, z. B. Auszahlung, Dividende';
+
+  @override
+  String get notificationBalance => 'Kontostand-Schlüsselwörter (optional)';
+
+  @override
+  String get notificationBalanceTooltip =>
+      'Durch Kommas getrennte Wörter vor einem zu ignorierenden Betrag (Kontostand, Limit), zusätzlich zu den integrierten, z. B. Restbetrag, Kreditrahmen';
+
+  @override
   String get notificationUnparsed => 'Nicht erkannt';
 
   @override

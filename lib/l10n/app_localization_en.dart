@@ -1015,6 +1015,20 @@ class AppLocalizationsEn extends AppLocalizations {
       'Regular expression with the named groups amount (required), currency and title, e.g. (?<amount>[0-9.,]+) (?<currency>[A-Z]+) at (?<title>.+)';
 
   @override
+  String get notificationIncome => 'Income Keywords (optional)';
+
+  @override
+  String get notificationIncomeTooltip =>
+      'Comma-separated words marking a notification as income, in addition to the built-in ones, e.g. payout, dividend';
+
+  @override
+  String get notificationBalance => 'Balance Keywords (optional)';
+
+  @override
+  String get notificationBalanceTooltip =>
+      'Comma-separated words preceding an amount that should be ignored (balance, limit), in addition to the built-in ones, e.g. remaining, credit line';
+
+  @override
   String get notificationUnparsed => 'Not recognized';
 
   @override

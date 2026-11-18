@@ -996,6 +996,20 @@ class AppLocalizationsZh extends AppLocalizations {
       '包含命名分组 amount（必填）、currency 和 title 的正则表达式，例如 (?<amount>[0-9.,]+) (?<currency>[A-Z]+) at (?<title>.+)';
 
   @override
+  String get notificationIncome => '收入关键词（可选）';
+
+  @override
+  String get notificationIncomeTooltip =>
+      '以逗号分隔的词语，用于将通知标记为收入，作为内置词语的补充，例如：派息, 返现';
+
+  @override
+  String get notificationBalance => '余额关键词（可选）';
+
+  @override
+  String get notificationBalanceTooltip =>
+      '以逗号分隔的词语，出现在需要忽略的金额（余额、额度）之前，作为内置词语的补充，例如：剩余, 信用额度';
+
+  @override
   String get notificationUnparsed => '无法识别';
 
   @override
@@ -2392,6 +2406,20 @@ class AppLocalizationsZhTw extends AppLocalizationsZh {
   @override
   String get notificationPatternTooltip =>
       '包含具名群組 amount（必填）、currency 與 title 的正規表示式，例如 (?<amount>[0-9.,]+) (?<currency>[A-Z]+) at (?<title>.+)';
+
+  @override
+  String get notificationIncome => '收入關鍵字（選填）';
+
+  @override
+  String get notificationIncomeTooltip =>
+      '以逗號分隔的詞語，用於將通知標記為收入，作為內建詞語的補充，例如：派息, 回饋';
+
+  @override
+  String get notificationBalance => '餘額關鍵字（選填）';
+
+  @override
+  String get notificationBalanceTooltip =>
+      '以逗號分隔的詞語，出現在需要忽略的金額（餘額、額度）之前，作為內建詞語的補充，例如：剩餘, 信用額度';
 
   @override
   String get notificationUnparsed => '無法辨識';

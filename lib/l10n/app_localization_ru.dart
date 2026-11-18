@@ -1016,6 +1016,20 @@ class AppLocalizationsRu extends AppLocalizations {
       'Регулярное выражение с именованными группами amount (обязательно), currency и title, например, (?<amount>[0-9.,]+) (?<currency>[A-Z]+) at (?<title>.+)';
 
   @override
+  String get notificationIncome => 'Ключевые слова дохода (необязательно)';
+
+  @override
+  String get notificationIncomeTooltip =>
+      'Слова через запятую, отмечающие уведомление как доход, в дополнение к встроенным, например, выплата, дивиденды';
+
+  @override
+  String get notificationBalance => 'Ключевые слова баланса (необязательно)';
+
+  @override
+  String get notificationBalanceTooltip =>
+      'Слова через запятую перед суммой, которую нужно игнорировать (баланс, лимит), в дополнение к встроенным, например, остаток, кредитная линия';
+
+  @override
   String get notificationUnparsed => 'Не распознано';
 
   @override

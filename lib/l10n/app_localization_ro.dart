@@ -1019,6 +1019,20 @@ class AppLocalizationsRo extends AppLocalizations {
       'Expresie regulată cu grupurile denumite amount (obligatoriu), currency și title, de ex. (?<amount>[0-9.,]+) (?<currency>[A-Z]+) at (?<title>.+)';
 
   @override
+  String get notificationIncome => 'Cuvinte cheie pentru venit (opțional)';
+
+  @override
+  String get notificationIncomeTooltip =>
+      'Cuvinte separate prin virgulă care marchează o notificare ca venit, pe lângă cele integrate, de ex. plată, dividend';
+
+  @override
+  String get notificationBalance => 'Cuvinte cheie pentru sold (opțional)';
+
+  @override
+  String get notificationBalanceTooltip =>
+      'Cuvinte separate prin virgulă care preced o sumă de ignorat (sold, limită), pe lângă cele integrate, de ex. rămas, linie de credit';
+
+  @override
   String get notificationUnparsed => 'Nerecunoscut';
 
   @override

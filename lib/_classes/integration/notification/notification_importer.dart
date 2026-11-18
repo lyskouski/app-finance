@@ -31,8 +31,12 @@ class NotificationImporter {
     required DateTime from,
     Currency? currency,
     String? pattern,
+    String? income,
+    String? balance,
     BudgetPrediction? prediction,
   }) {
+    final incomeKeywords = NotificationParser.toKeywords(income);
+    final balanceKeywords = NotificationParser.toKeywords(balance);
     var added = 0;
     var skipped = 0;
     var pending = 0;
@@ -47,7 +51,14 @@ class NotificationImporter {
         processed.add(record.id);
         continue;
       }
-      final parsed = NotificationParser.parse(record.title, record.text, pattern: pattern, fallback: currency);
+      final parsed = NotificationParser.parse(
+        record.title,
+        record.text,
+        pattern: pattern,
+        fallback: currency,
+        income: incomeKeywords,
+        balance: balanceKeywords,
+      );
       if (parsed == null) {
         pending++;
         continue;

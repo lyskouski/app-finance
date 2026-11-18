@@ -23,18 +23,48 @@ class NotificationSource extends IntegrationTarget {
   final String package;
   final String label;
   final TextEditingController pattern;
+  final TextEditingController income;
+  final TextEditingController balance;
   bool auto;
 
-  NotificationSource(this.package, this.label,
-      {super.appAccount, super.category, required super.from, String? pattern, this.auto = false})
-      : pattern = TextEditingController(text: pattern);
+  NotificationSource(
+    this.package,
+    this.label, {
+    super.appAccount,
+    super.category,
+    required super.from,
+    String? pattern,
+    String? income,
+    String? balance,
+    this.auto = false,
+  })  : pattern = TextEditingController(text: pattern),
+        income = TextEditingController(text: income),
+        balance = TextEditingController(text: balance);
+
+  Listenable get inputs => Listenable.merge([pattern, income, balance]);
+
+  NotificationParsed? parse(NotificationRecord record) => NotificationParser.parse(
+        record.title,
+        record.text,
+        pattern: pattern.text,
+        income: NotificationParser.toKeywords(income.text),
+        balance: NotificationParser.toKeywords(balance.text),
+      );
 
   NotificationApp toLink() => NotificationApp(
         account: appAccount,
         category: category,
         pattern: pattern.text.trim(),
+        income: income.text.trim(),
+        balance: balance.text.trim(),
         auto: auto,
       );
+
+  void dispose() {
+    pattern.dispose();
+    income.dispose();
+    balance.dispose();
+  }
 }
 
 class NotificationWidget extends StatefulWidget {
@@ -75,7 +105,7 @@ class NotificationWidgetState extends State<NotificationWidget> with WidgetsBind
     WidgetsBinding.instance.removeObserver(this);
     controller.revision.removeListener(refresh);
     for (final source in sources.values) {
-      source.pattern.dispose();
+      source.dispose();
     }
     super.dispose();
   }
@@ -120,8 +150,10 @@ class NotificationWidgetState extends State<NotificationWidget> with WidgetsBind
           category: link.category ?? AppPreferences.get(AppPreferences.prefBudget),
           from: DateTime.now().subtract(const Duration(days: 30)),
           pattern: link.pattern,
+          income: link.income,
+          balance: link.balance,
           auto: link.auto,
-        )..pattern.addListener(() => persist(package));
+        )..inputs.addListener(() => persist(package));
       });
 
   Future<void> persist(String package) async {
@@ -203,7 +235,7 @@ class NotificationWidgetState extends State<NotificationWidget> with WidgetsBind
       children: [
         for (final record in scope.reversed.take(3))
           Builder(builder: (context) {
-            final parsed = NotificationParser.parse(record.title, record.text, pattern: item.pattern.text);
+            final parsed = item.parse(record);
             return ListTile(
               dense: true,
               contentPadding: EdgeInsets.zero,
@@ -255,8 +287,18 @@ class NotificationWidgetState extends State<NotificationWidget> with WidgetsBind
           tooltip: AppLocale.labels.notificationPatternTooltip,
           controller: item.pattern,
         ),
+        InputWrapper.text(
+          title: AppLocale.labels.notificationIncome,
+          tooltip: AppLocale.labels.notificationIncomeTooltip,
+          controller: item.income,
+        ),
+        InputWrapper.text(
+          title: AppLocale.labels.notificationBalance,
+          tooltip: AppLocale.labels.notificationBalanceTooltip,
+          controller: item.balance,
+        ),
         ListenableBuilder(
-          listenable: item.pattern,
+          listenable: item.inputs,
           builder: (context, _) => buildPreview(context, item, scope),
         ),
         if (scope.isNotEmpty)

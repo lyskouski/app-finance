@@ -177,6 +177,8 @@ class NotificationController with WidgetsBindingObserver {
       from: from,
       currency: account is AccountAppData ? account.currency : null,
       pattern: link.pattern,
+      income: link.income,
+      balance: link.balance,
       prediction: state.prediction,
     );
     if (summary.added > 0) {

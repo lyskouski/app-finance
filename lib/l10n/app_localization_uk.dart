@@ -1015,6 +1015,20 @@ class AppLocalizationsUk extends AppLocalizations {
       'Регулярний вираз з іменованими групами amount (обов\'язково), currency і title, наприклад, (?<amount>[0-9.,]+) (?<currency>[A-Z]+) at (?<title>.+)';
 
   @override
+  String get notificationIncome => 'Ключові слова доходу (необов\'язково)';
+
+  @override
+  String get notificationIncomeTooltip =>
+      'Слова через кому, що позначають сповіщення як дохід, на додаток до вбудованих, наприклад, виплата, дивіденди';
+
+  @override
+  String get notificationBalance => 'Ключові слова балансу (необов\'язково)';
+
+  @override
+  String get notificationBalanceTooltip =>
+      'Слова через кому перед сумою, яку слід ігнорувати (баланс, ліміт), на додаток до вбудованих, наприклад, залишок, кредитна лінія';
+
+  @override
   String get notificationUnparsed => 'Не розпізнано';
 
   @override

@@ -1018,6 +1018,20 @@ class AppLocalizationsAz extends AppLocalizations {
       'amount (məcburi), currency və title adlı qrupları olan müntəzəm ifadə, məsələn, (?<amount>[0-9.,]+) (?<currency>[A-Z]+) at (?<title>.+)';
 
   @override
+  String get notificationIncome => 'Gəlir açar sözləri (istəyə bağlı)';
+
+  @override
+  String get notificationIncomeTooltip =>
+      'Bildirişi gəlir kimi qeyd edən vergüllə ayrılmış sözlər, daxili olanlara əlavə olaraq, məsələn, ödəniş, dividend';
+
+  @override
+  String get notificationBalance => 'Balans açar sözləri (istəyə bağlı)';
+
+  @override
+  String get notificationBalanceTooltip =>
+      'Nəzərə alınmayacaq məbləğdən (balans, limit) əvvəl gələn vergüllə ayrılmış sözlər, daxili olanlara əlavə olaraq, məsələn, qalan, kredit xətti';
+
+  @override
   String get notificationUnparsed => 'Tanınmadı';
 
   @override

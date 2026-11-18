@@ -1017,6 +1017,20 @@ class AppLocalizationsNl extends AppLocalizations {
       'Reguliere expressie met de benoemde groepen amount (verplicht), currency en title, bijv. (?<amount>[0-9.,]+) (?<currency>[A-Z]+) at (?<title>.+)';
 
   @override
+  String get notificationIncome => 'Trefwoorden voor inkomsten (optioneel)';
+
+  @override
+  String get notificationIncomeTooltip =>
+      'Door komma\'s gescheiden woorden die een melding als inkomsten markeren, naast de ingebouwde, bijv. uitbetaling, dividend';
+
+  @override
+  String get notificationBalance => 'Trefwoorden voor saldo (optioneel)';
+
+  @override
+  String get notificationBalanceTooltip =>
+      'Door komma\'s gescheiden woorden vóór een bedrag dat genegeerd moet worden (saldo, limiet), naast de ingebouwde, bijv. resterend, kredietlijn';
+
+  @override
   String get notificationUnparsed => 'Niet herkend';
 
   @override

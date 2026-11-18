@@ -1019,6 +1019,20 @@ class AppLocalizationsPt extends AppLocalizations {
       'Expressão regular com os grupos nomeados amount (obrigatório), currency e title, p. ex. (?<amount>[0-9.,]+) (?<currency>[A-Z]+) at (?<title>.+)';
 
   @override
+  String get notificationIncome => 'Palavras-chave de receita (opcional)';
+
+  @override
+  String get notificationIncomeTooltip =>
+      'Palavras separadas por vírgulas que marcam uma notificação como receita, além das incorporadas, por exemplo, pagamento, dividendo';
+
+  @override
+  String get notificationBalance => 'Palavras-chave de saldo (opcional)';
+
+  @override
+  String get notificationBalanceTooltip =>
+      'Palavras separadas por vírgulas antes de um valor a ignorar (saldo, limite), além das incorporadas, por exemplo, restante, linha de crédito';
+
+  @override
   String get notificationUnparsed => 'Não reconhecido';
 
   @override
@@ -2449,6 +2463,20 @@ class AppLocalizationsPtBr extends AppLocalizationsPt {
   @override
   String get notificationPatternTooltip =>
       'Expressão regular com os grupos nomeados amount (obrigatório), currency e title, por exemplo, (?<amount>[0-9.,]+) (?<currency>[A-Z]+) at (?<title>.+)';
+
+  @override
+  String get notificationIncome => 'Palavras-chave de receita (opcional)';
+
+  @override
+  String get notificationIncomeTooltip =>
+      'Palavras separadas por vírgulas que marcam uma notificação como receita, além das embutidas, por exemplo, pagamento, dividendo';
+
+  @override
+  String get notificationBalance => 'Palavras-chave de saldo (opcional)';
+
+  @override
+  String get notificationBalanceTooltip =>
+      'Palavras separadas por vírgulas antes de um valor a ignorar (saldo, limite), além das embutidas, por exemplo, restante, linha de crédito';
 
   @override
   String get notificationUnparsed => 'Não reconhecido';

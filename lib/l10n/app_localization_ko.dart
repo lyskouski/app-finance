@@ -1000,6 +1000,20 @@ class AppLocalizationsKo extends AppLocalizations {
       '이름 있는 그룹 amount(필수), currency, title이 포함된 정규식, 예: (?<amount>[0-9.,]+) (?<currency>[A-Z]+) at (?<title>.+)';
 
   @override
+  String get notificationIncome => '수입 키워드 (선택 사항)';
+
+  @override
+  String get notificationIncomeTooltip =>
+      '알림을 수입으로 표시하는 쉼표로 구분된 단어 (기본 제공 단어에 추가), 예: 지급, 배당금';
+
+  @override
+  String get notificationBalance => '잔액 키워드 (선택 사항)';
+
+  @override
+  String get notificationBalanceTooltip =>
+      '무시할 금액(잔액, 한도) 앞에 오는 쉼표로 구분된 단어 (기본 제공 단어에 추가), 예: 남은 금액, 신용 한도';
+
+  @override
   String get notificationUnparsed => '인식되지 않음';
 
   @override

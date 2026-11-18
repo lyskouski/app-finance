@@ -199,10 +199,17 @@ class NotificationParser {
     return preferred.firstWhere((code) => code != null && codes.contains(code), orElse: () => codes.first);
   }
 
-  static bool isIncome(String text) {
+  // User-defined keywords (comma or new line separated) extend the default ones
+  static List<String> toKeywords(String? value) =>
+      (value ?? '').split(RegExp(r'[,\n]')).map((e) => e.trim().toLowerCase()).where((e) => e.isNotEmpty).toList();
+
+  static bool isIncome(String text, {List<String> income = const []}) {
     final value = text.toLowerCase();
-    return incomeKeywords.any(value.contains);
+    return incomeKeywords.any(value.contains) || income.any(value.contains);
   }
+
+  static bool isBalance(String text, {List<String> balance = const []}) =>
+      balanceKeywords.any(text.contains) || balance.any(text.contains);
 
   static String toLine(String value) {
     final line = value.replaceAll(RegExp(r'\s+'), ' ').trim();
@@ -220,10 +227,17 @@ class NotificationParser {
         _ => -1,
       };
 
-  static NotificationParsed? parse(String title, String text, {String? pattern, Currency? fallback}) {
+  static NotificationParsed? parse(
+    String title,
+    String text, {
+    String? pattern,
+    Currency? fallback,
+    List<String> income = const [],
+    List<String> balance = const [],
+  }) {
     final content = [title, text].where((e) => e.isNotEmpty).join('\n');
     if (pattern != null && pattern.trim().isNotEmpty) {
-      return parseByPattern(content, text, pattern, fallback: fallback);
+      return parseByPattern(content, text, pattern, fallback: fallback, income: income);
     }
     var from = 0;
     NotificationParsed? weak;
@@ -233,10 +247,12 @@ class NotificationParser {
       final symbol = match.namedGroup('c1') ?? match.namedGroup('c2');
       final currency = toCurrency(symbol, fallback: fallback);
       final amount = toAmount(match.namedGroup('n1') ?? match.namedGroup('n2') ?? '');
-      if (currency == null || amount == null || amount == 0 || balanceKeywords.any(before.contains)) {
+      if (currency == null || amount == null || amount == 0 || isBalance(before, balance: balance)) {
         continue;
       }
-      final sign = _sign(match.namedGroup('s0')) ?? _sign(match.namedGroup('s1')) ?? (isIncome(content) ? 1 : -1);
+      final sign = _sign(match.namedGroup('s0')) ??
+          _sign(match.namedGroup('s1')) ??
+          (isIncome(content, income: income) ? 1 : -1);
       final result = (amount: sign * amount, currency: currency, title: getTitle(content, text));
       if (!_isWeak(symbol!)) {
         return result;
@@ -246,7 +262,13 @@ class NotificationParser {
     return weak;
   }
 
-  static NotificationParsed? parseByPattern(String content, String text, String pattern, {Currency? fallback}) {
+  static NotificationParsed? parseByPattern(
+    String content,
+    String text,
+    String pattern, {
+    Currency? fallback,
+    List<String> income = const [],
+  }) {
     final RegExpMatch? match;
     try {
       match = RegExp(pattern, caseSensitive: false, multiLine: true, unicode: true).firstMatch(content);
@@ -265,7 +287,7 @@ class NotificationParser {
     }
     final title = group('title');
     return (
-      amount: (_sign(sign) ?? (isIncome(content) ? 1 : -1)) * amount,
+      amount: (_sign(sign) ?? (isIncome(content, income: income) ? 1 : -1)) * amount,
       currency: toCurrency(group('currency'), fallback: fallback),
       title: title != null && title.isNotEmpty ? toLine(title) : getTitle(content, text),
     );

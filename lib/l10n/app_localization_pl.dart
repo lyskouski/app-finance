@@ -1012,6 +1012,20 @@ class AppLocalizationsPl extends AppLocalizations {
       'Wyrażenie regularne z nazwanymi grupami amount (wymagana), currency i title, np. (?<amount>[0-9.,]+) (?<currency>[A-Z]+) at (?<title>.+)';
 
   @override
+  String get notificationIncome => 'Słowa kluczowe przychodu (opcjonalnie)';
+
+  @override
+  String get notificationIncomeTooltip =>
+      'Słowa oddzielone przecinkami oznaczające powiadomienie jako przychód, oprócz wbudowanych, np. wypłata, dywidenda';
+
+  @override
+  String get notificationBalance => 'Słowa kluczowe salda (opcjonalnie)';
+
+  @override
+  String get notificationBalanceTooltip =>
+      'Słowa oddzielone przecinkami poprzedzające kwotę do pominięcia (saldo, limit), oprócz wbudowanych, np. pozostało, linia kredytowa';
+
+  @override
   String get notificationUnparsed => 'Nie rozpoznano';
 
   @override

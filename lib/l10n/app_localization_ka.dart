@@ -1017,6 +1017,22 @@ class AppLocalizationsKa extends AppLocalizations {
       'რეგულარული გამოსახულება სახელდებული ჯგუფებით amount (სავალდებულო), currency და title, მაგ. (?<amount>[0-9.,]+) (?<currency>[A-Z]+) at (?<title>.+)';
 
   @override
+  String get notificationIncome =>
+      'შემოსავლის საკვანძო სიტყვები (არასავალდებულო)';
+
+  @override
+  String get notificationIncomeTooltip =>
+      'მძიმით გამოყოფილი სიტყვები, რომლებიც შეტყობინებას შემოსავლად აღნიშნავს, ჩაშენებულთან ერთად, მაგ. გადახდა, დივიდენდი';
+
+  @override
+  String get notificationBalance =>
+      'ბალანსის საკვანძო სიტყვები (არასავალდებულო)';
+
+  @override
+  String get notificationBalanceTooltip =>
+      'მძიმით გამოყოფილი სიტყვები იგნორირებული თანხის (ბალანსი, ლიმიტი) წინ, ჩაშენებულთან ერთად, მაგ. დარჩენილი, საკრედიტო ხაზი';
+
+  @override
   String get notificationUnparsed => 'ვერ ამოიცნო';
 
   @override

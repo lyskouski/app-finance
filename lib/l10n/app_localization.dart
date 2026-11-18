@@ -2011,6 +2011,30 @@ abstract class AppLocalizations {
   /// **'Regular expression with the named groups amount (required), currency and title, e.g. (?<amount>[0-9.,]+) (?<currency>[A-Z]+) at (?<title>.+)'**
   String get notificationPatternTooltip;
 
+  /// No description provided for @notificationIncome.
+  ///
+  /// In en, this message translates to:
+  /// **'Income Keywords (optional)'**
+  String get notificationIncome;
+
+  /// No description provided for @notificationIncomeTooltip.
+  ///
+  /// In en, this message translates to:
+  /// **'Comma-separated words marking a notification as income, in addition to the built-in ones, e.g. payout, dividend'**
+  String get notificationIncomeTooltip;
+
+  /// No description provided for @notificationBalance.
+  ///
+  /// In en, this message translates to:
+  /// **'Balance Keywords (optional)'**
+  String get notificationBalance;
+
+  /// No description provided for @notificationBalanceTooltip.
+  ///
+  /// In en, this message translates to:
+  /// **'Comma-separated words preceding an amount that should be ignored (balance, limit), in addition to the built-in ones, e.g. remaining, credit line'**
+  String get notificationBalanceTooltip;
+
   /// No description provided for @notificationUnparsed.
   ///
   /// In en, this message translates to:
