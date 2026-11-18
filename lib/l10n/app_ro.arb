@@ -415,13 +415,15 @@
     "notificationAccessSteps": "Cum se acordă accesul:\n1. Apăsați \"Acordă acces\" pentru a deschide setările sistemului\n2. Permiteți aplicației Fingrom să citească notificările\n3. Dacă Android semnalează o setare restricționată: deschideți Informații aplicație Fingrom → ⋮ → \"Permite setările restricționate\" și reîncercați\n4. Reveniți în Fingrom și selectați aplicațiile ale căror notificări vor fi citite",
     "notificationApps": "Aplicații ale căror notificări sunt citite",
     "notificationAuto": "Importă automat",
-    "notificationAutoTooltip": "Notificările recunoscute sunt adăugate fără confirmare: imediat cât timp Fingrom rulează, altfel la următoarea pornire. Cele nerecunoscute așteaptă verificarea",
     "notificationAutoImported": "Adăugate din notificări: {value}",
     "@notificationAutoImported": {
         "value": {
             "type": "int"
         }
     },
+    "notificationAutoTooltip": "Notificările recunoscute sunt adăugate fără confirmare: imediat cât timp Fingrom rulează, altfel la următoarea pornire. Cele nerecunoscute așteaptă verificarea",
+    "notificationBalance": "Cuvinte cheie pentru sold (opțional)",
+    "notificationBalanceTooltip": "Cuvinte separate prin virgulă care preced o sumă de ignorat (sold, limită), pe lângă cele integrate, de ex. rămas, linie de credit",
     "notificationCaptured": "Notificări capturate: {value}",
     "@notificationCaptured": {
         "value": {
@@ -431,13 +433,11 @@
     "notificationClear": "Șterge capturate",
     "notificationDescription": "Creați tranzacții din notificările aplicațiilor bancare și de plată de pe acest dispozitiv. Sunt citite doar notificările aplicațiilor selectate, care rămân pe dispozitiv până la import. Suma și moneda sunt recunoscute automat sau printr-un model personalizat.",
     "notificationGrant": "Acordă acces",
+    "notificationIncome": "Cuvinte cheie pentru venit (opțional)",
+    "notificationIncomeTooltip": "Cuvinte separate prin virgulă care marchează o notificare ca venit, pe lângă cele integrate, de ex. plată, dividend",
     "notificationNoApps": "Nu s-au primit încă notificări: aplicațiile apar aici după ce trimit o notificare",
     "notificationPattern": "Model personalizat (opțional)",
     "notificationPatternTooltip": "Expresie regulată cu grupurile denumite amount (obligatoriu), currency și title, de ex. (?<amount>[0-9.,]+) (?<currency>[A-Z]+) at (?<title>.+)",
-    "notificationIncome": "Cuvinte cheie pentru venit (opțional)",
-    "notificationIncomeTooltip": "Cuvinte separate prin virgulă care marchează o notificare ca venit, pe lângă cele integrate, de ex. plată, dividend",
-    "notificationBalance": "Cuvinte cheie pentru sold (opțional)",
-    "notificationBalanceTooltip": "Cuvinte separate prin virgulă care preced o sumă de ignorat (sold, limită), pe lângă cele integrate, de ex. rămas, linie de credit",
     "notificationUnparsed": "Nerecunoscut",
     "notifyHeadline": "Notificări Parser",
     "ok": "OK",

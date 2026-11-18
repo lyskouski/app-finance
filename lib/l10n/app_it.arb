@@ -415,13 +415,15 @@
     "notificationAccessSteps": "Come concedere l'accesso:\n1. Premi \"Concedi accesso\" per aprire le impostazioni di sistema\n2. Consenti a Fingrom di leggere le notifiche\n3. Se Android segnala un'impostazione con restrizioni: apri le info dell'app Fingrom → ⋮ → \"Consenti impostazioni con restrizioni\" e riprova\n4. Torna a Fingrom e seleziona le app di cui leggere le notifiche",
     "notificationApps": "App di cui leggere le notifiche",
     "notificationAuto": "Importa automaticamente",
-    "notificationAutoTooltip": "Le notifiche riconosciute vengono aggiunte senza conferma: subito mentre Fingrom è in esecuzione, altrimenti al prossimo avvio. Quelle non riconosciute attendono una revisione",
     "notificationAutoImported": "Aggiunti dalle notifiche: {value}",
     "@notificationAutoImported": {
         "value": {
             "type": "int"
         }
     },
+    "notificationAutoTooltip": "Le notifiche riconosciute vengono aggiunte senza conferma: subito mentre Fingrom è in esecuzione, altrimenti al prossimo avvio. Quelle non riconosciute attendono una revisione",
+    "notificationBalance": "Parole chiave di saldo (facoltativo)",
+    "notificationBalanceTooltip": "Parole separate da virgole che precedono un importo da ignorare (saldo, limite), oltre a quelle integrate, ad es. residuo, linea di credito",
     "notificationCaptured": "Notifiche acquisite: {value}",
     "@notificationCaptured": {
         "value": {
@@ -431,13 +433,11 @@
     "notificationClear": "Cancella acquisite",
     "notificationDescription": "Crea movimenti dalle notifiche delle app bancarie e di pagamento su questo dispositivo. Vengono lette solo le notifiche delle app selezionate, che restano sul dispositivo fino all'importazione. Importo e valuta vengono riconosciuti automaticamente o tramite un modello personalizzato.",
     "notificationGrant": "Concedi accesso",
+    "notificationIncome": "Parole chiave di entrata (facoltativo)",
+    "notificationIncomeTooltip": "Parole separate da virgole che contrassegnano una notifica come entrata, oltre a quelle integrate, ad es. pagamento, dividendo",
     "notificationNoApps": "Nessuna notifica ricevuta finora: le app compaiono qui dopo aver inviato una notifica",
     "notificationPattern": "Modello personalizzato (facoltativo)",
     "notificationPatternTooltip": "Espressione regolare con i gruppi denominati amount (obbligatorio), currency e title, ad es. (?<amount>[0-9.,]+) (?<currency>[A-Z]+) at (?<title>.+)",
-    "notificationIncome": "Parole chiave di entrata (facoltativo)",
-    "notificationIncomeTooltip": "Parole separate da virgole che contrassegnano una notifica come entrata, oltre a quelle integrate, ad es. pagamento, dividendo",
-    "notificationBalance": "Parole chiave di saldo (facoltativo)",
-    "notificationBalanceTooltip": "Parole separate da virgole che precedono un importo da ignorare (saldo, limite), oltre a quelle integrate, ad es. residuo, linea di credito",
     "notificationUnparsed": "Non riconosciuto",
     "notifyHeadline": "Parser delle notifiche",
     "ok": "OK",

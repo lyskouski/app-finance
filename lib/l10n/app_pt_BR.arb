@@ -415,13 +415,15 @@
     "notificationAccessSteps": "Como conceder o acesso:\n1. Toque em \"Conceder acesso\" para abrir as configurações do sistema\n2. Permita que o Fingrom leia as notificações\n3. Se o Android informar uma configuração restrita: abra as informações do app Fingrom → ⋮ → \"Permitir configurações restritas\" e tente novamente\n4. Volte ao Fingrom e selecione os aplicativos cujas notificações serão lidas",
     "notificationApps": "Aplicativos cujas notificações são lidas",
     "notificationAuto": "Importar automaticamente",
-    "notificationAutoTooltip": "As notificações reconhecidas são adicionadas sem confirmação: imediatamente enquanto o Fingrom está em execução, caso contrário na próxima abertura. As não reconhecidas aguardam revisão",
     "notificationAutoImported": "Adicionadas a partir de notificações: {value}",
     "@notificationAutoImported": {
         "value": {
             "type": "int"
         }
     },
+    "notificationAutoTooltip": "As notificações reconhecidas são adicionadas sem confirmação: imediatamente enquanto o Fingrom está em execução, caso contrário na próxima abertura. As não reconhecidas aguardam revisão",
+    "notificationBalance": "Palavras-chave de saldo (opcional)",
+    "notificationBalanceTooltip": "Palavras separadas por vírgulas antes de um valor a ignorar (saldo, limite), além das embutidas, por exemplo, restante, linha de crédito",
     "notificationCaptured": "Notificações capturadas: {value}",
     "@notificationCaptured": {
         "value": {
@@ -431,13 +433,11 @@
     "notificationClear": "Limpar capturadas",
     "notificationDescription": "Crie transações a partir de notificações de aplicativos bancários e de pagamento neste dispositivo. Apenas as notificações dos aplicativos selecionados são lidas e ficam no dispositivo até serem importadas. O valor e a moeda são reconhecidos automaticamente ou por um padrão personalizado.",
     "notificationGrant": "Conceder acesso",
+    "notificationIncome": "Palavras-chave de receita (opcional)",
+    "notificationIncomeTooltip": "Palavras separadas por vírgulas que marcam uma notificação como receita, além das embutidas, por exemplo, pagamento, dividendo",
     "notificationNoApps": "Nenhuma notificação recebida ainda: os aplicativos aparecem aqui depois de enviarem uma notificação",
     "notificationPattern": "Padrão personalizado (opcional)",
     "notificationPatternTooltip": "Expressão regular com os grupos nomeados amount (obrigatório), currency e title, por exemplo, (?<amount>[0-9.,]+) (?<currency>[A-Z]+) at (?<title>.+)",
-    "notificationIncome": "Palavras-chave de receita (opcional)",
-    "notificationIncomeTooltip": "Palavras separadas por vírgulas que marcam uma notificação como receita, além das embutidas, por exemplo, pagamento, dividendo",
-    "notificationBalance": "Palavras-chave de saldo (opcional)",
-    "notificationBalanceTooltip": "Palavras separadas por vírgulas antes de um valor a ignorar (saldo, limite), além das embutidas, por exemplo, restante, linha de crédito",
     "notificationUnparsed": "Não reconhecido",
     "notifyHeadline": "Analisador de notificações",
     "ok": "OK",

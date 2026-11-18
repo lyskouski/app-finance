@@ -415,13 +415,15 @@
     "notificationAccessSteps": "Cómo conceder el acceso:\n1. Pulsa \"Conceder acceso\" para abrir los ajustes del sistema\n2. Permite que Fingrom lea las notificaciones\n3. Si Android indica un ajuste restringido: abre la información de la aplicación Fingrom → ⋮ → \"Permitir ajustes restringidos\" y vuelve a intentarlo\n4. Vuelve a Fingrom y selecciona las aplicaciones cuyas notificaciones se leerán",
     "notificationApps": "Aplicaciones cuyas notificaciones se leen",
     "notificationAuto": "Importar automáticamente",
-    "notificationAutoTooltip": "Las notificaciones reconocidas se añaden sin confirmación: al instante mientras Fingrom está abierto, si no, en el siguiente inicio. Las no reconocidas esperan revisión",
     "notificationAutoImported": "Añadidos desde notificaciones: {value}",
     "@notificationAutoImported": {
         "value": {
             "type": "int"
         }
     },
+    "notificationAutoTooltip": "Las notificaciones reconocidas se añaden sin confirmación: al instante mientras Fingrom está abierto, si no, en el siguiente inicio. Las no reconocidas esperan revisión",
+    "notificationBalance": "Palabras clave de saldo (opcional)",
+    "notificationBalanceTooltip": "Palabras separadas por comas que preceden a un importe a ignorar (saldo, límite), además de las integradas, p. ej. restante, línea de crédito",
     "notificationCaptured": "Notificaciones capturadas: {value}",
     "@notificationCaptured": {
         "value": {
@@ -431,13 +433,11 @@
     "notificationClear": "Borrar capturadas",
     "notificationDescription": "Crea movimientos a partir de las notificaciones de las aplicaciones bancarias y de pago de este dispositivo. Solo se leen las notificaciones de las aplicaciones seleccionadas, que permanecen en el dispositivo hasta su importación. El importe y la moneda se reconocen automáticamente o mediante un patrón personalizado.",
     "notificationGrant": "Conceder acceso",
+    "notificationIncome": "Palabras clave de ingreso (opcional)",
+    "notificationIncomeTooltip": "Palabras separadas por comas que marcan una notificación como ingreso, además de las integradas, p. ej. pago, dividendo",
     "notificationNoApps": "Aún no se han recibido notificaciones: las aplicaciones aparecen aquí después de publicar una notificación",
     "notificationPattern": "Patrón personalizado (opcional)",
     "notificationPatternTooltip": "Expresión regular con los grupos con nombre amount (obligatorio), currency y title, p. ej. (?<amount>[0-9.,]+) (?<currency>[A-Z]+) at (?<title>.+)",
-    "notificationIncome": "Palabras clave de ingreso (opcional)",
-    "notificationIncomeTooltip": "Palabras separadas por comas que marcan una notificación como ingreso, además de las integradas, p. ej. pago, dividendo",
-    "notificationBalance": "Palabras clave de saldo (opcional)",
-    "notificationBalanceTooltip": "Palabras separadas por comas que preceden a un importe a ignorar (saldo, límite), además de las integradas, p. ej. restante, línea de crédito",
     "notificationUnparsed": "No reconocido",
     "notifyHeadline": "Notificaciones Parser",
     "ok": "OK",

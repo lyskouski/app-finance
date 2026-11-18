@@ -415,13 +415,15 @@
     "notificationAccessSteps": "Cara memberikan akses:\n1. Tekan \"Berikan Akses\" untuk membuka pengaturan sistem\n2. Izinkan Fingrom membaca notifikasi\n3. Jika Android melaporkan setelan terbatas: buka Info aplikasi Fingrom → ⋮ → \"Izinkan setelan terbatas\", lalu coba lagi\n4. Kembali ke Fingrom dan pilih aplikasi yang notifikasinya akan dibaca",
     "notificationApps": "Aplikasi yang notifikasinya dibaca",
     "notificationAuto": "Impor Otomatis",
-    "notificationAutoTooltip": "Notifikasi yang dikenali ditambahkan tanpa konfirmasi: langsung saat Fingrom berjalan, jika tidak saat dibuka berikutnya. Yang tidak dikenali menunggu ditinjau",
     "notificationAutoImported": "Ditambahkan dari notifikasi: {value}",
     "@notificationAutoImported": {
         "value": {
             "type": "int"
         }
     },
+    "notificationAutoTooltip": "Notifikasi yang dikenali ditambahkan tanpa konfirmasi: langsung saat Fingrom berjalan, jika tidak saat dibuka berikutnya. Yang tidak dikenali menunggu ditinjau",
+    "notificationBalance": "Kata kunci saldo (opsional)",
+    "notificationBalanceTooltip": "Kata yang dipisahkan koma sebelum jumlah yang diabaikan (saldo, limit), selain yang bawaan, mis. tersisa, batas kredit",
     "notificationCaptured": "Notifikasi yang ditangkap: {value}",
     "@notificationCaptured": {
         "value": {
@@ -431,13 +433,11 @@
     "notificationClear": "Hapus yang ditangkap",
     "notificationDescription": "Buat transaksi dari notifikasi aplikasi perbankan dan pembayaran di perangkat ini. Hanya notifikasi dari aplikasi yang dipilih yang dibaca, dan notifikasi tetap tersimpan di perangkat hingga diimpor. Jumlah dan mata uang dikenali secara otomatis atau dengan pola khusus.",
     "notificationGrant": "Berikan Akses",
+    "notificationIncome": "Kata kunci pemasukan (opsional)",
+    "notificationIncomeTooltip": "Kata yang dipisahkan koma untuk menandai notifikasi sebagai pemasukan, selain yang bawaan, mis. pembayaran, dividen",
     "notificationNoApps": "Belum ada notifikasi yang diterima: aplikasi muncul di sini setelah mengirim notifikasi",
     "notificationPattern": "Pola khusus (opsional)",
     "notificationPatternTooltip": "Ekspresi reguler dengan grup bernama amount (wajib), currency, dan title, mis. (?<amount>[0-9.,]+) (?<currency>[A-Z]+) at (?<title>.+)",
-    "notificationIncome": "Kata kunci pemasukan (opsional)",
-    "notificationIncomeTooltip": "Kata yang dipisahkan koma untuk menandai notifikasi sebagai pemasukan, selain yang bawaan, mis. pembayaran, dividen",
-    "notificationBalance": "Kata kunci saldo (opsional)",
-    "notificationBalanceTooltip": "Kata yang dipisahkan koma sebelum jumlah yang diabaikan (saldo, limit), selain yang bawaan, mis. tersisa, batas kredit",
     "notificationUnparsed": "Tidak dikenali",
     "notifyHeadline": "Pengurai Notifikasi",
     "ok": "OK",

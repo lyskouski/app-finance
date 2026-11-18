@@ -415,13 +415,15 @@
     "notificationAccessSteps": "Girişi necə vermək olar:\n1. Sistem ayarlarını açmaq üçün \"Giriş ver\" düyməsini basın\n2. Fingrom-a bildirişləri oxumağa icazə verin\n3. Android məhdudlaşdırılmış ayar barədə bildirərsə: Fingrom tətbiq məlumatı → ⋮ → \"Məhdud ayarlara icazə ver\" seçin və yenidən cəhd edin\n4. Fingrom-a qayıdın və bildirişləri oxunacaq tətbiqləri seçin",
     "notificationApps": "Bildirişləri oxunan tətbiqlər",
     "notificationAuto": "Avtomatik idxal et",
-    "notificationAutoTooltip": "Tanınan bildirişlər təsdiqsiz əlavə olunur: Fingrom işləyərkən dərhal, əks halda növbəti açılışda. Tanınmayanlar yoxlamanı gözləyir",
     "notificationAutoImported": "Bildirişlərdən əlavə edildi: {value}",
     "@notificationAutoImported": {
         "value": {
             "type": "int"
         }
     },
+    "notificationAutoTooltip": "Tanınan bildirişlər təsdiqsiz əlavə olunur: Fingrom işləyərkən dərhal, əks halda növbəti açılışda. Tanınmayanlar yoxlamanı gözləyir",
+    "notificationBalance": "Balans açar sözləri (istəyə bağlı)",
+    "notificationBalanceTooltip": "Nəzərə alınmayacaq məbləğdən (balans, limit) əvvəl gələn vergüllə ayrılmış sözlər, daxili olanlara əlavə olaraq, məsələn, qalan, kredit xətti",
     "notificationCaptured": "Tutulan bildirişlər: {value}",
     "@notificationCaptured": {
         "value": {
@@ -431,13 +433,11 @@
     "notificationClear": "Tutulanları təmizlə",
     "notificationDescription": "Bu cihazdakı bank və ödəniş tətbiqlərinin bildirişlərindən əməliyyatlar yaradın. Yalnız seçilmiş tətbiqlərin bildirişləri oxunur və idxal olunana qədər cihazda qalır. Məbləğ və valyuta avtomatik və ya fərdi şablonla tanınır.",
     "notificationGrant": "Giriş ver",
+    "notificationIncome": "Gəlir açar sözləri (istəyə bağlı)",
+    "notificationIncomeTooltip": "Bildirişi gəlir kimi qeyd edən vergüllə ayrılmış sözlər, daxili olanlara əlavə olaraq, məsələn, ödəniş, dividend",
     "notificationNoApps": "Hələ bildiriş alınmayıb: tətbiqlər bildiriş göndərdikdən sonra burada görünür",
     "notificationPattern": "Fərdi şablon (istəyə bağlı)",
     "notificationPatternTooltip": "amount (məcburi), currency və title adlı qrupları olan müntəzəm ifadə, məsələn, (?<amount>[0-9.,]+) (?<currency>[A-Z]+) at (?<title>.+)",
-    "notificationIncome": "Gəlir açar sözləri (istəyə bağlı)",
-    "notificationIncomeTooltip": "Bildirişi gəlir kimi qeyd edən vergüllə ayrılmış sözlər, daxili olanlara əlavə olaraq, məsələn, ödəniş, dividend",
-    "notificationBalance": "Balans açar sözləri (istəyə bağlı)",
-    "notificationBalanceTooltip": "Nəzərə alınmayacaq məbləğdən (balans, limit) əvvəl gələn vergüllə ayrılmış sözlər, daxili olanlara əlavə olaraq, məsələn, qalan, kredit xətti",
     "notificationUnparsed": "Tanınmadı",
     "notifyHeadline": "Bildirişlər Parser",
     "ok": "tamam",

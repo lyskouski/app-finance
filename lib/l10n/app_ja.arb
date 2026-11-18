@@ -415,13 +415,15 @@
     "notificationAccessSteps": "アクセスを許可する方法：\n1.「アクセスを許可」を押してシステム設定を開きます\n2. Fingrom に通知の読み取りを許可します\n3. Android が制限付き設定と表示した場合：Fingrom のアプリ情報 → ⋮ →「制限付き設定を許可」を開き、再試行します\n4. Fingrom に戻り、通知を読み取るアプリを選択します",
     "notificationApps": "通知を読み取るアプリ",
     "notificationAuto": "自動でインポート",
-    "notificationAutoTooltip": "認識された通知は確認なしで追加されます：Fingrom の実行中は即時、それ以外は次回起動時。認識されない通知は確認待ちになります",
     "notificationAutoImported": "通知から追加：{value}",
     "@notificationAutoImported": {
         "value": {
             "type": "int"
         }
     },
+    "notificationAutoTooltip": "認識された通知は確認なしで追加されます：Fingrom の実行中は即時、それ以外は次回起動時。認識されない通知は確認待ちになります",
+    "notificationBalance": "残高キーワード（任意）",
+    "notificationBalanceTooltip": "無視する金額（残高、限度額）の前に置かれるカンマ区切りの語句（組み込みのものに追加）、例：残り, 利用可能額",
     "notificationCaptured": "取得した通知：{value}",
     "@notificationCaptured": {
         "value": {
@@ -431,13 +433,11 @@
     "notificationClear": "取得済みを消去",
     "notificationDescription": "この端末の銀行・決済アプリの通知から取引を作成します。選択したアプリの通知のみが読み取られ、インポートされるまで端末に保存されます。金額と通貨は自動で、またはカスタムパターンで認識されます。",
     "notificationGrant": "アクセスを許可",
+    "notificationIncome": "収入キーワード（任意）",
+    "notificationIncomeTooltip": "通知を収入として判定するカンマ区切りの語句（組み込みのものに追加）、例：配当, 振込",
     "notificationNoApps": "まだ通知を受信していません：アプリは通知を送信した後にここに表示されます",
     "notificationPattern": "カスタムパターン（任意）",
     "notificationPatternTooltip": "名前付きグループ amount（必須）、currency、title を含む正規表現。例： (?<amount>[0-9.,]+) (?<currency>[A-Z]+) at (?<title>.+)",
-    "notificationIncome": "収入キーワード（任意）",
-    "notificationIncomeTooltip": "通知を収入として判定するカンマ区切りの語句（組み込みのものに追加）、例：配当, 振込",
-    "notificationBalance": "残高キーワード（任意）",
-    "notificationBalanceTooltip": "無視する金額（残高、限度額）の前に置かれるカンマ区切りの語句（組み込みのものに追加）、例：残り, 利用可能額",
     "notificationUnparsed": "認識できません",
     "notifyHeadline": "通知パーサー",
     "ok": "よし",

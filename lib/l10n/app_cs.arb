@@ -415,13 +415,15 @@
     "notificationAccessSteps": "Jak udělit přístup:\n1. Stiskněte \"Udělit přístup\" pro otevření nastavení systému\n2. Povolte aplikaci Fingrom číst oznámení\n3. Pokud Android hlásí omezené nastavení: otevřete informace o aplikaci Fingrom → ⋮ → \"Povolit omezená nastavení\" a zkuste to znovu\n4. Vraťte se do Fingrom a vyberte aplikace, jejichž oznámení se mají číst",
     "notificationApps": "Aplikace, jejichž oznámení se čtou",
     "notificationAuto": "Importovat automaticky",
-    "notificationAutoTooltip": "Rozpoznaná oznámení se přidávají bez potvrzení: ihned, když Fingrom běží, jinak při příštím spuštění. Nerozpoznaná čekají na kontrolu",
     "notificationAutoImported": "Přidáno z oznámení: {value}",
     "@notificationAutoImported": {
         "value": {
             "type": "int"
         }
     },
+    "notificationAutoTooltip": "Rozpoznaná oznámení se přidávají bez potvrzení: ihned, když Fingrom běží, jinak při příštím spuštění. Nerozpoznaná čekají na kontrolu",
+    "notificationBalance": "Klíčová slova zůstatku (volitelné)",
+    "notificationBalanceTooltip": "Slova oddělená čárkami před částkou, která se má ignorovat (zůstatek, limit), navíc k vestavěným, např. zbývá, úvěrový rámec",
     "notificationCaptured": "Zachycená oznámení: {value}",
     "@notificationCaptured": {
         "value": {
@@ -431,13 +433,11 @@
     "notificationClear": "Vymazat zachycená",
     "notificationDescription": "Vytvářejte transakce z oznámení bankovních a platebních aplikací v tomto zařízení. Čtou se pouze oznámení vybraných aplikací a zůstávají v zařízení až do importu. Částka a měna se rozpoznají automaticky nebo podle vlastního vzoru.",
     "notificationGrant": "Udělit přístup",
+    "notificationIncome": "Klíčová slova příjmu (volitelné)",
+    "notificationIncomeTooltip": "Slova oddělená čárkami, která označují oznámení jako příjem, navíc k vestavěným, např. výplata, dividenda",
     "notificationNoApps": "Zatím nebyla přijata žádná oznámení: aplikace se zde zobrazí poté, co odešlou oznámení",
     "notificationPattern": "Vlastní vzor (volitelné)",
     "notificationPatternTooltip": "Regulární výraz s pojmenovanými skupinami amount (povinná), currency a title, např. (?<amount>[0-9.,]+) (?<currency>[A-Z]+) at (?<title>.+)",
-    "notificationIncome": "Klíčová slova příjmu (volitelné)",
-    "notificationIncomeTooltip": "Slova oddělená čárkami, která označují oznámení jako příjem, navíc k vestavěným, např. výplata, dividenda",
-    "notificationBalance": "Klíčová slova zůstatku (volitelné)",
-    "notificationBalanceTooltip": "Slova oddělená čárkami před částkou, která se má ignorovat (zůstatek, limit), navíc k vestavěným, např. zbývá, úvěrový rámec",
     "notificationUnparsed": "Nerozpoznáno",
     "notifyHeadline": "Parser oznámení",
     "ok": "OK",

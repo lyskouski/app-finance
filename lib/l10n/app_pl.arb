@@ -415,13 +415,15 @@
     "notificationAccessSteps": "Jak przyznać dostęp:\n1. Naciśnij \"Przyznaj dostęp\", aby otworzyć ustawienia systemowe\n2. Zezwól Fingrom na odczyt powiadomień\n3. Jeśli Android zgłasza ustawienie ograniczone: otwórz informacje o aplikacji Fingrom → ⋮ → \"Zezwól na ustawienia ograniczone\" i spróbuj ponownie\n4. Wróć do Fingrom i wybierz aplikacje, z których mają być odczytywane powiadomienia",
     "notificationApps": "Aplikacje do odczytu powiadomień",
     "notificationAuto": "Importuj automatycznie",
-    "notificationAutoTooltip": "Rozpoznane powiadomienia są dodawane bez potwierdzenia: od razu, gdy Fingrom działa, w przeciwnym razie przy następnym uruchomieniu. Nierozpoznane czekają na sprawdzenie",
     "notificationAutoImported": "Dodano z powiadomień: {value}",
     "@notificationAutoImported": {
         "value": {
             "type": "int"
         }
     },
+    "notificationAutoTooltip": "Rozpoznane powiadomienia są dodawane bez potwierdzenia: od razu, gdy Fingrom działa, w przeciwnym razie przy następnym uruchomieniu. Nierozpoznane czekają na sprawdzenie",
+    "notificationBalance": "Słowa kluczowe salda (opcjonalnie)",
+    "notificationBalanceTooltip": "Słowa oddzielone przecinkami poprzedzające kwotę do pominięcia (saldo, limit), oprócz wbudowanych, np. pozostało, linia kredytowa",
     "notificationCaptured": "Odebrane powiadomienia: {value}",
     "@notificationCaptured": {
         "value": {
@@ -431,13 +433,11 @@
     "notificationClear": "Wyczyść odebrane",
     "notificationDescription": "Tworzenie transakcji z powiadomień aplikacji bankowych i płatniczych na tym urządzeniu. Odczytywane są tylko powiadomienia wybranych aplikacji i pozostają one na urządzeniu do czasu importu. Kwota i waluta są rozpoznawane automatycznie lub według własnego wzorca.",
     "notificationGrant": "Przyznaj dostęp",
+    "notificationIncome": "Słowa kluczowe przychodu (opcjonalnie)",
+    "notificationIncomeTooltip": "Słowa oddzielone przecinkami oznaczające powiadomienie jako przychód, oprócz wbudowanych, np. wypłata, dywidenda",
     "notificationNoApps": "Nie otrzymano jeszcze powiadomień: aplikacje pojawią się tutaj po wysłaniu powiadomienia",
     "notificationPattern": "Własny wzorzec (opcjonalnie)",
     "notificationPatternTooltip": "Wyrażenie regularne z nazwanymi grupami amount (wymagana), currency i title, np. (?<amount>[0-9.,]+) (?<currency>[A-Z]+) at (?<title>.+)",
-    "notificationIncome": "Słowa kluczowe przychodu (opcjonalnie)",
-    "notificationIncomeTooltip": "Słowa oddzielone przecinkami oznaczające powiadomienie jako przychód, oprócz wbudowanych, np. wypłata, dywidenda",
-    "notificationBalance": "Słowa kluczowe salda (opcjonalnie)",
-    "notificationBalanceTooltip": "Słowa oddzielone przecinkami poprzedzające kwotę do pominięcia (saldo, limit), oprócz wbudowanych, np. pozostało, linia kredytowa",
     "notificationUnparsed": "Nie rozpoznano",
     "notifyHeadline": "Parser powiadomień",
     "ok": "OK",

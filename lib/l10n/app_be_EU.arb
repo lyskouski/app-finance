@@ -415,13 +415,15 @@
     "notificationAccessSteps": "Jak dać dostup:\n1. Nacišnicie \"Dać dostup\", kab adkryć systemnyja nalady\n2. Dazvoĺcie Fingrom čytać apaviaščeńni\n3. Kali Android paviedamliaje pra abmiežavanuju naladu: adkryjcie źviestki pra prahramu Fingrom → ⋮ → \"Dazvolić abmiežavanyja nalady\" i paŭtarycie\n4. Viarniciesia ŭ Fingrom i vybierycie prahramy dlia čytańnia apaviaščeńniaŭ",
     "notificationApps": "Prahramy dlia čytańnia apaviaščeńniaŭ",
     "notificationAuto": "Impartavać aŭtamatyčna",
-    "notificationAutoTooltip": "Raspaznanyja apaviaščeńni dadajucca biez paćvierdžańnia: adrazu, kali Fingrom pracuje, inakš pry nastupnym zapusku. Nieraspaznanyja čakajuć pravierki",
     "notificationAutoImported": "Dadadziena z apaviaščeńniaŭ: {value}",
     "@notificationAutoImported": {
         "value": {
             "type": "int"
         }
     },
+    "notificationAutoTooltip": "Raspaznanyja apaviaščeńni dadajucca biez paćvierdžańnia: adrazu, kali Fingrom pracuje, inakš pry nastupnym zapusku. Nieraspaznanyja čakajuć pravierki",
+    "notificationBalance": "Klučavyja słovy balansu (nieabaviazkova)",
+    "notificationBalanceTooltip": "Słovy praz kosku pierad sumaj, jakuju treba ihnaravać (balans, limit), u dadatak da ŭbudavanych, napryklad, rešta, kredytnaja linija",
     "notificationCaptured": "Atrymana apaviaščeńniaŭ: {value}",
     "@notificationCaptured": {
         "value": {
@@ -431,13 +433,11 @@
     "notificationClear": "Ačyścić atrymanyja",
     "notificationDescription": "Stvareńnie aperacyj z apaviaščeńniaŭ bankaŭskich i placiožnych prahram na hetaj pryladzie. Čytajucca toĺki apaviaščeńni vybranych prahram, i jany zachoŭvajucca na pryladzie da impartu. Suma i valiuta raspaznajucca aŭtamatyčna abo pa ŭlasnym šablonie.",
     "notificationGrant": "Dać dostup",
+    "notificationIncome": "Klučavyja słovy dachodu (nieabaviazkova)",
+    "notificationIncomeTooltip": "Słovy praz kosku, jakija paznačajuć apaviaščennie jak dachod, u dadatak da ŭbudavanych, napryklad, vypłata, dyvidendy",
     "notificationNoApps": "Apaviaščeńniaŭ jašče nie było: prahramy źjaviacca tut paślia taho, jak dašliuć apaviaščeńnie",
     "notificationPattern": "Ŭlasny šablon (nieabaviazkova)",
     "notificationPatternTooltip": "Rehuliarny vyraz z najmiennymi hrupami amount (abaviazkova), currency i title, napryklad, (?<amount>[0-9.,]+) (?<currency>[A-Z]+) at (?<title>.+)",
-    "notificationIncome": "Klučavyja słovy dachodu (nieabaviazkova)",
-    "notificationIncomeTooltip": "Słovy praz kosku, jakija paznačajuć apaviaščennie jak dachod, u dadatak da ŭbudavanych, napryklad, vypłata, dyvidendy",
-    "notificationBalance": "Klučavyja słovy balansu (nieabaviazkova)",
-    "notificationBalanceTooltip": "Słovy praz kosku pierad sumaj, jakuju treba ihnaravać (balans, limit), u dadatak da ŭbudavanych, napryklad, rešta, kredytnaja linija",
     "notificationUnparsed": "Nie raspaznana",
     "notifyHeadline": "Apracoŭščyk Apaviaščeńniaŭ",
     "ok": "OK",
