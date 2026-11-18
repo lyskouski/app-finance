@@ -9,8 +9,7 @@ class AppLocalizationsZh extends AppLocalizations {
   AppLocalizationsZh([String locale = 'zh']) : super(locale);
 
   @override
-  String get a =>
-      'RUN `dart run grinder sort-translations --quiet` FOR ORDERING';
+  String get a => 'RUN `dart run grinder sort-translations --quiet` FOR ORDERING';
 
   @override
   String get aboutHeadline => '关于';
@@ -631,8 +630,7 @@ class AppLocalizationsZh extends AppLocalizations {
   String get enableBankingKeyNotRsa => '私钥无效：需要 RSA 密钥';
 
   @override
-  String get enableBankingKeyTooltip =>
-      '在 Enable Banking Control Panel 中随应用一起创建；加密存储。留空则保留已存储的私钥';
+  String get enableBankingKeyTooltip => '在 Enable Banking Control Panel 中随应用一起创建；加密存储。留空则保留已存储的私钥';
 
   @override
   String get enableBankingLoadBanks => '加载银行';
@@ -702,8 +700,7 @@ class AppLocalizationsZh extends AppLocalizations {
   String get finTsCustomerId => '客户 ID（如与用户 ID 不同）';
 
   @override
-  String get finTsDescription =>
-      '从支持 FinTS 4.1（PIN/TAN）的银行导入余额和交易。仅限只读访问：不会执行任何付款。';
+  String get finTsDescription => '从支持 FinTS 4.1（PIN/TAN）的银行导入余额和交易。仅限只读访问：不会执行任何付款。';
 
   @override
   String get finTsHeadline => 'Financial Transaction Services (FinTS 4.1)';
@@ -1131,8 +1128,7 @@ class AppLocalizationsZh extends AppLocalizations {
   String get settingsSaved => '设置已保存！';
 
   @override
-  String get simpleFinDescription =>
-      '通过 SimpleFIN Bridge 导入美国银行和发卡机构的余额与交易。仅限只读访问：不会执行任何付款。';
+  String get simpleFinDescription => '通过 SimpleFIN Bridge 导入美国银行和发卡机构的余额与交易。仅限只读访问：不会执行任何付款。';
 
   @override
   String get simpleFinHeadline => 'SimpleFIN Bridge (US)';
@@ -1150,8 +1146,7 @@ class AppLocalizationsZh extends AppLocalizations {
   String get simpleFinTokenInvalid => 'SimpleFIN 设置令牌无效';
 
   @override
-  String get simpleFinTokenTooltip =>
-      '在您的 SimpleFIN Bridge（如 bridge.simplefin.org）中为本应用创建；只能使用一次';
+  String get simpleFinTokenTooltip => '在您的 SimpleFIN Bridge（如 bridge.simplefin.org）中为本应用创建；只能使用一次';
 
   @override
   String get skipFromTotals => '不计入总数';
@@ -1199,8 +1194,7 @@ class AppLocalizationsZh extends AppLocalizations {
   String get splitTooltip => '声明每月限额';
 
   @override
-  String get subscription =>
-      '作为一个开源项目，订阅不会解锁任何额外功能。不过，这将是对应用程序持续发展和改进的投资，并能保持其可用性。';
+  String get subscription => '作为一个开源项目，订阅不会解锁任何额外功能。不过，这将是对应用程序持续发展和改进的投资，并能保持其可用性。';
 
   @override
   String get subscriptionCoffee => '购买咖啡';
@@ -1323,8 +1317,7 @@ class AppLocalizationsZh extends AppLocalizations {
   String get webDav => '网络分布式创作和版本管理（WebDav）';
 
   @override
-  String get wiseDescription =>
-      '使用个人 API 令牌导入 Wise 多币种账户的余额和交易。已关联余额之间的换汇将作为转账导入。访问为只读：不会进行任何付款。';
+  String get wiseDescription => '使用个人 API 令牌导入 Wise 多币种账户的余额和交易。已关联余额之间的换汇将作为转账导入。访问为只读：不会进行任何付款。';
 
   @override
   String get wiseHeadline => 'Wise API (Global)';
@@ -1357,8 +1350,7 @@ class AppLocalizationsZhTw extends AppLocalizationsZh {
   AppLocalizationsZhTw() : super('zh_TW');
 
   @override
-  String get a =>
-      'RUN `dart run grinder sort-translations --quiet` FOR ORDERING';
+  String get a => 'RUN `dart run grinder sort-translations --quiet` FOR ORDERING';
 
   @override
   String get aboutHeadline => '關於我們';
@@ -1979,8 +1971,7 @@ class AppLocalizationsZhTw extends AppLocalizationsZh {
   String get enableBankingKeyNotRsa => '私密金鑰無效：需要 RSA 金鑰';
 
   @override
-  String get enableBankingKeyTooltip =>
-      '在 Enable Banking Control Panel 中隨應用程式一併建立；加密儲存。留空則保留已儲存的金鑰';
+  String get enableBankingKeyTooltip => '在 Enable Banking Control Panel 中隨應用程式一併建立；加密儲存。留空則保留已儲存的金鑰';
 
   @override
   String get enableBankingLoadBanks => '載入銀行';
@@ -2050,8 +2041,7 @@ class AppLocalizationsZhTw extends AppLocalizationsZh {
   String get finTsCustomerId => '客戶 ID（若與使用者 ID 不同）';
 
   @override
-  String get finTsDescription =>
-      '從支援 FinTS 4.1（PIN/TAN）的銀行匯入餘額與交易。僅限唯讀存取：不會執行任何付款。';
+  String get finTsDescription => '從支援 FinTS 4.1（PIN/TAN）的銀行匯入餘額與交易。僅限唯讀存取：不會執行任何付款。';
 
   @override
   String get finTsHeadline => 'Financial Transaction Services (FinTS 4.1)';
@@ -2479,8 +2469,7 @@ class AppLocalizationsZhTw extends AppLocalizationsZh {
   String get settingsSaved => '設定已儲存！';
 
   @override
-  String get simpleFinDescription =>
-      '透過 SimpleFIN Bridge 匯入美國銀行與發卡機構的餘額及交易。僅限唯讀存取：不會執行任何付款。';
+  String get simpleFinDescription => '透過 SimpleFIN Bridge 匯入美國銀行與發卡機構的餘額及交易。僅限唯讀存取：不會執行任何付款。';
 
   @override
   String get simpleFinHeadline => 'SimpleFIN Bridge (US)';
@@ -2498,8 +2487,7 @@ class AppLocalizationsZhTw extends AppLocalizationsZh {
   String get simpleFinTokenInvalid => 'SimpleFIN 設定權杖無效';
 
   @override
-  String get simpleFinTokenTooltip =>
-      '在您的 SimpleFIN Bridge（如 bridge.simplefin.org）中為本應用程式建立；只能使用一次';
+  String get simpleFinTokenTooltip => '在您的 SimpleFIN Bridge（如 bridge.simplefin.org）中為本應用程式建立；只能使用一次';
 
   @override
   String get skipFromTotals => '總計不包括';
@@ -2547,8 +2535,7 @@ class AppLocalizationsZhTw extends AppLocalizationsZh {
   String get splitTooltip => '宣告每月限制';
 
   @override
-  String get subscription =>
-      '作為一個開放原始碼專案，訂閱不會解鎖任何額外功能。然而，這將會成為對應用程式持續演進與改進的投資，並維持其可用性。';
+  String get subscription => '作為一個開放原始碼專案，訂閱不會解鎖任何額外功能。然而，這將會成為對應用程式持續演進與改進的投資，並維持其可用性。';
 
   @override
   String get subscriptionCoffee => '購買咖啡';
@@ -2671,8 +2658,7 @@ class AppLocalizationsZhTw extends AppLocalizationsZh {
   String get webDav => '網路分散式撰寫與版本控制 (WebDav)';
 
   @override
-  String get wiseDescription =>
-      '使用個人 API 權杖匯入 Wise 多幣別帳戶的餘額與交易。已連結餘額之間的換匯將以轉帳匯入。存取為唯讀：不會進行任何付款。';
+  String get wiseDescription => '使用個人 API 權杖匯入 Wise 多幣別帳戶的餘額與交易。已連結餘額之間的換匯將以轉帳匯入。存取為唯讀：不會進行任何付款。';
 
   @override
   String get wiseHeadline => 'Wise API (Global)';

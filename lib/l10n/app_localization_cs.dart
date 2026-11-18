@@ -9,8 +9,7 @@ class AppLocalizationsCs extends AppLocalizations {
   AppLocalizationsCs([String locale = 'cs']) : super(locale);
 
   @override
-  String get a =>
-      'RUN `dart run grinder sort-translations --quiet` FOR ORDERING';
+  String get a => 'RUN `dart run grinder sort-translations --quiet` FOR ORDERING';
 
   @override
   String get aboutHeadline => 'O stránkách';
@@ -103,8 +102,7 @@ class AppLocalizationsCs extends AppLocalizations {
   String get balanceDate => 'Datum aktualizace zůstatku';
 
   @override
-  String get balanceDateTooltip =>
-      'Výnosy a příjmy před tímto datem zůstatek neovlivní.';
+  String get balanceDateTooltip => 'Výnosy a příjmy před tímto datem zůstatek neovlivní.';
 
   @override
   String get balanceTooltip => 'Nastavení zůstatku';
@@ -621,19 +619,16 @@ class AppLocalizationsCs extends AppLocalizations {
   String get enableBankingHeadline => 'Enable Banking (EU)';
 
   @override
-  String get enableBankingIncomplete =>
-      'Vyplňte ID aplikace, soukromý klíč, URL přesměrování a zemi';
+  String get enableBankingIncomplete => 'Vyplňte ID aplikace, soukromý klíč, URL přesměrování a zemi';
 
   @override
   String get enableBankingKey => 'Soukromý klíč (PEM)';
 
   @override
-  String get enableBankingKeyInvalid =>
-      'Neplatný soukromý klíč: očekává se blok PEM \"PRIVATE KEY\"';
+  String get enableBankingKeyInvalid => 'Neplatný soukromý klíč: očekává se blok PEM \"PRIVATE KEY\"';
 
   @override
-  String get enableBankingKeyNotRsa =>
-      'Neplatný soukromý klíč: očekává se klíč RSA';
+  String get enableBankingKeyNotRsa => 'Neplatný soukromý klíč: očekává se klíč RSA';
 
   @override
   String get enableBankingKeyTooltip =>
@@ -643,8 +638,7 @@ class AppLocalizationsCs extends AppLocalizations {
   String get enableBankingLoadBanks => 'Načíst banky';
 
   @override
-  String get enableBankingNoAuthPage =>
-      'Enable Banking nevrátil stránku autorizace';
+  String get enableBankingNoAuthPage => 'Enable Banking nevrátil stránku autorizace';
 
   @override
   String get enableBankingNoCode => 'V adrese nebyl nalezen autorizační kód';
@@ -653,12 +647,10 @@ class AppLocalizationsCs extends AppLocalizations {
   String get enableBankingRedirect => 'URL přesměrování';
 
   @override
-  String get enableBankingRedirectTooltip =>
-      'Registrována pro aplikaci; banka se na ni po autorizaci vrátí';
+  String get enableBankingRedirectTooltip => 'Registrována pro aplikaci; banka se na ni po autorizaci vrátí';
 
   @override
-  String get enableBankingStateMismatch =>
-      'Adresa patří k jiné autorizaci, připojte se znovu';
+  String get enableBankingStateMismatch => 'Adresa patří k jiné autorizaci, připojte se znovu';
 
   @override
   String get encryptionMode => 'Šifrování dat';
@@ -717,8 +709,7 @@ class AppLocalizationsCs extends AppLocalizations {
   String get finTsHeadline => 'Financial Transaction Services (FinTS 4.1)';
 
   @override
-  String get finTsIncomplete =>
-      'Vyplňte URL serveru, kód banky, ID uživatele a registrační číslo produktu';
+  String get finTsIncomplete => 'Vyplňte URL serveru, kód banky, ID uživatele a registrační číslo produktu';
 
   @override
   String finTsLoginChanged(Object value) {
@@ -734,15 +725,13 @@ class AppLocalizationsCs extends AppLocalizations {
   String get finTsPin => 'PIN';
 
   @override
-  String get finTsPinHint =>
-      'Použije se pouze pro tuto relaci a nikdy se neukládá';
+  String get finTsPinHint => 'Použije se pouze pro tuto relaci a nikdy se neukládá';
 
   @override
   String get finTsProductId => 'Registrační číslo produktu';
 
   @override
-  String get finTsProductIdTooltip =>
-      'Vydává Deutsche Kreditwirtschaft výrobci aplikace';
+  String get finTsProductIdTooltip => 'Vydává Deutsche Kreditwirtschaft výrobci aplikace';
 
   @override
   String get finTsTan => 'TAN';
@@ -838,8 +827,7 @@ class AppLocalizationsCs extends AppLocalizations {
   String get incomeTooltip => 'Nastavení podrobností o příjmech';
 
   @override
-  String get integrationAccessDenied =>
-      'Přístup byl odvolán nebo jsou přihlašovací údaje nesprávné';
+  String get integrationAccessDenied => 'Přístup byl odvolán nebo jsou přihlašovací údaje nesprávné';
 
   @override
   String get integrationConnect => 'Připojit';
@@ -865,8 +853,7 @@ class AppLocalizationsCs extends AppLocalizations {
   }
 
   @override
-  String get integrationHttpsRequired =>
-      'Povoleny jsou pouze zabezpečené adresy (HTTPS)';
+  String get integrationHttpsRequired => 'Povoleny jsou pouze zabezpečené adresy (HTTPS)';
 
   @override
   String get integrationImport => 'Importovat transakce';
@@ -888,8 +875,7 @@ class AppLocalizationsCs extends AppLocalizations {
   String get integrationPaymentRequired => 'Služba vyžaduje za přístup platbu';
 
   @override
-  String get integrationSelectTarget =>
-      'Vyberte účet a kategorii rozpočtu pro import';
+  String get integrationSelectTarget => 'Vyberte účet a kategorii rozpočtu pro import';
 
   @override
   String integrationServiceError(Object value) {
@@ -961,8 +947,7 @@ class AppLocalizationsCs extends AppLocalizations {
   }
 
   @override
-  String get noChartData =>
-      'Chybí údaje (nebo jich není dostatek), aby se zobrazily';
+  String get noChartData => 'Chybí údaje (nebo jich není dostatek), aby se zobrazily';
 
   @override
   String get notifyHeadline => 'Parser oznámení';
@@ -1105,8 +1090,7 @@ class AppLocalizationsCs extends AppLocalizations {
   String get searchTooltip => 'Vyhledávání';
 
   @override
-  String get secureBioNotMatch =>
-      'Ověření se nezdařilo! Zkuste to prosím znovu';
+  String get secureBioNotMatch => 'Ověření se nezdařilo! Zkuste to prosím znovu';
 
   @override
   String get secureBioPromptReason => 'Pro pokračování se prosím ověřte';
@@ -1118,8 +1102,7 @@ class AppLocalizationsCs extends AppLocalizations {
   String get secureOtpCode => 'Jednorázové heslo';
 
   @override
-  String get secureOtpCodeInvalid =>
-      'Neplatné! Získejte nový kód a zadejte jej.';
+  String get secureOtpCodeInvalid => 'Neplatné! Získejte nový kód a zadejte jej.';
 
   @override
   String get secureOtpDeactivated => 'Ochrana heslem je deaktivována';
@@ -1156,15 +1139,13 @@ class AppLocalizationsCs extends AppLocalizations {
   String get simpleFinHeadline => 'SimpleFIN Bridge (US)';
 
   @override
-  String get simpleFinNoCredentials =>
-      'SimpleFIN Bridge vrátil přístupovou adresu bez přihlašovacích údajů';
+  String get simpleFinNoCredentials => 'SimpleFIN Bridge vrátil přístupovou adresu bez přihlašovacích údajů';
 
   @override
   String get simpleFinToken => 'Instalační token SimpleFIN';
 
   @override
-  String get simpleFinTokenClaimed =>
-      'Instalační token neexistuje nebo již byl použit';
+  String get simpleFinTokenClaimed => 'Instalační token neexistuje nebo již byl použit';
 
   @override
   String get simpleFinTokenInvalid => 'Neplatný instalační token SimpleFIN';
@@ -1350,8 +1331,7 @@ class AppLocalizationsCs extends AppLocalizations {
   String get wiseHeadline => 'Wise API (Global)';
 
   @override
-  String get wiseNoProfiles =>
-      'Pro token nejsou k dispozici žádné profily Wise';
+  String get wiseNoProfiles => 'Pro token nejsou k dispozici žádné profily Wise';
 
   @override
   String get wiseProfile => 'Profil';

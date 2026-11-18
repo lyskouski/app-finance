@@ -9,8 +9,7 @@ class AppLocalizationsNl extends AppLocalizations {
   AppLocalizationsNl([String locale = 'nl']) : super(locale);
 
   @override
-  String get a =>
-      'RUN `dart run grinder sort-translations --quiet` FOR ORDERING';
+  String get a => 'RUN `dart run grinder sort-translations --quiet` FOR ORDERING';
 
   @override
   String get aboutHeadline => 'Over';
@@ -103,8 +102,7 @@ class AppLocalizationsNl extends AppLocalizations {
   String get balanceDate => 'Saldo Datum Bijwerken';
 
   @override
-  String get balanceDateTooltip =>
-      'Uitkomsten en inkomsten vóór deze datum hebben geen invloed op het saldo';
+  String get balanceDateTooltip => 'Uitkomsten en inkomsten vóór deze datum hebben geen invloed op het saldo';
 
   @override
   String get balanceTooltip => 'Saldo instellen';
@@ -323,8 +321,7 @@ class AppLocalizationsNl extends AppLocalizations {
   String get confirmHeader => 'Actie bevestigen';
 
   @override
-  String get confirmTooltip =>
-      'Weet u het zeker? Deze actie kan niet ongedaan worden gemaakt.';
+  String get confirmTooltip => 'Weet u het zeker? Deze actie kan niet ongedaan worden gemaakt.';
 
   @override
   String get contributors => 'Medewerkers';
@@ -622,19 +619,16 @@ class AppLocalizationsNl extends AppLocalizations {
   String get enableBankingHeadline => 'Enable Banking (EU)';
 
   @override
-  String get enableBankingIncomplete =>
-      'Vul de applicatie-ID, privésleutel, omleidings-URL en het land in';
+  String get enableBankingIncomplete => 'Vul de applicatie-ID, privésleutel, omleidings-URL en het land in';
 
   @override
   String get enableBankingKey => 'Privésleutel (PEM)';
 
   @override
-  String get enableBankingKeyInvalid =>
-      'Ongeldige privésleutel: een PEM-blok \"PRIVATE KEY\" wordt verwacht';
+  String get enableBankingKeyInvalid => 'Ongeldige privésleutel: een PEM-blok \"PRIVATE KEY\" wordt verwacht';
 
   @override
-  String get enableBankingKeyNotRsa =>
-      'Ongeldige privésleutel: een RSA-sleutel wordt verwacht';
+  String get enableBankingKeyNotRsa => 'Ongeldige privésleutel: een RSA-sleutel wordt verwacht';
 
   @override
   String get enableBankingKeyTooltip =>
@@ -644,12 +638,10 @@ class AppLocalizationsNl extends AppLocalizations {
   String get enableBankingLoadBanks => 'Banken laden';
 
   @override
-  String get enableBankingNoAuthPage =>
-      'Enable Banking heeft geen autorisatiepagina teruggegeven';
+  String get enableBankingNoAuthPage => 'Enable Banking heeft geen autorisatiepagina teruggegeven';
 
   @override
-  String get enableBankingNoCode =>
-      'Geen autorisatiecode gevonden in het adres';
+  String get enableBankingNoCode => 'Geen autorisatiecode gevonden in het adres';
 
   @override
   String get enableBankingRedirect => 'Omleidings-URL';
@@ -659,8 +651,7 @@ class AppLocalizationsNl extends AppLocalizations {
       'Geregistreerd voor de applicatie; de bank keert er na de autorisatie naar terug';
 
   @override
-  String get enableBankingStateMismatch =>
-      'Het adres hoort bij een andere autorisatie, maak opnieuw verbinding';
+  String get enableBankingStateMismatch => 'Het adres hoort bij een andere autorisatie, maak opnieuw verbinding';
 
   @override
   String get encryptionMode => 'Gegevenscodering';
@@ -719,8 +710,7 @@ class AppLocalizationsNl extends AppLocalizations {
   String get finTsHeadline => 'Financial Transaction Services (FinTS 4.1)';
 
   @override
-  String get finTsIncomplete =>
-      'Vul de server-URL, bankcode, gebruikers-ID en productregistratienummer in';
+  String get finTsIncomplete => 'Vul de server-URL, bankcode, gebruikers-ID en productregistratienummer in';
 
   @override
   String finTsLoginChanged(Object value) {
@@ -736,15 +726,13 @@ class AppLocalizationsNl extends AppLocalizations {
   String get finTsPin => 'PIN';
 
   @override
-  String get finTsPinHint =>
-      'Alleen voor deze sessie gebruikt en nooit opgeslagen';
+  String get finTsPinHint => 'Alleen voor deze sessie gebruikt en nooit opgeslagen';
 
   @override
   String get finTsProductId => 'Productregistratienummer';
 
   @override
-  String get finTsProductIdTooltip =>
-      'Uitgegeven door de Deutsche Kreditwirtschaft aan de maker van de applicatie';
+  String get finTsProductIdTooltip => 'Uitgegeven door de Deutsche Kreditwirtschaft aan de maker van de applicatie';
 
   @override
   String get finTsTan => 'TAN';
@@ -840,8 +828,7 @@ class AppLocalizationsNl extends AppLocalizations {
   String get incomeTooltip => 'Inkomstendetails instellen';
 
   @override
-  String get integrationAccessDenied =>
-      'De toegang is ingetrokken of de inloggegevens zijn onjuist';
+  String get integrationAccessDenied => 'De toegang is ingetrokken of de inloggegevens zijn onjuist';
 
   @override
   String get integrationConnect => 'Verbinden';
@@ -867,8 +854,7 @@ class AppLocalizationsNl extends AppLocalizations {
   }
 
   @override
-  String get integrationHttpsRequired =>
-      'Alleen beveiligde adressen (HTTPS) zijn toegestaan';
+  String get integrationHttpsRequired => 'Alleen beveiligde adressen (HTTPS) zijn toegestaan';
 
   @override
   String get integrationImport => 'Transacties importeren';
@@ -887,12 +873,10 @@ class AppLocalizationsNl extends AppLocalizations {
   String get integrationNoAccounts => 'De bank heeft geen rekeningen verstrekt';
 
   @override
-  String get integrationPaymentRequired =>
-      'De dienst vereist een betaling voor de toegang';
+  String get integrationPaymentRequired => 'De dienst vereist een betaling voor de toegang';
 
   @override
-  String get integrationSelectTarget =>
-      'Selecteer de rekening en de budgetcategorie om in te importeren';
+  String get integrationSelectTarget => 'Selecteer de rekening en de budgetcategorie om in te importeren';
 
   @override
   String integrationServiceError(Object value) {
@@ -900,8 +884,7 @@ class AppLocalizationsNl extends AppLocalizations {
   }
 
   @override
-  String get integrationUnexpectedResponse =>
-      'Onverwacht antwoord van de dienst';
+  String get integrationUnexpectedResponse => 'Onverwacht antwoord van de dienst';
 
   @override
   String get invoiceHeadline => 'Facturen';
@@ -965,8 +948,7 @@ class AppLocalizationsNl extends AppLocalizations {
   }
 
   @override
-  String get noChartData =>
-      'Gegevens ontbreken (of zijn niet voldoende) om te worden getoond';
+  String get noChartData => 'Gegevens ontbreken (of zijn niet voldoende) om te worden getoond';
 
   @override
   String get notifyHeadline => 'Meldingen Parser';
@@ -1044,8 +1026,7 @@ class AppLocalizationsNl extends AppLocalizations {
   String get peerPing => 'ping';
 
   @override
-  String get peerSent =>
-      'Gegevens worden overgedragen naar verbonden Apparaten';
+  String get peerSent => 'Gegevens worden overgedragen naar verbonden Apparaten';
 
   @override
   String get peerStatus => 'Status';
@@ -1122,8 +1103,7 @@ class AppLocalizationsNl extends AppLocalizations {
   String get secureOtpCode => 'Eenmalig wachtwoordcode';
 
   @override
-  String get secureOtpCodeInvalid =>
-      'Ongeldige code! Kies een nieuwe code en voer deze in';
+  String get secureOtpCodeInvalid => 'Ongeldige code! Kies een nieuwe code en voer deze in';
 
   @override
   String get secureOtpDeactivated => 'Wachtwoordbeveiliging is gedeactiveerd';
@@ -1160,15 +1140,13 @@ class AppLocalizationsNl extends AppLocalizations {
   String get simpleFinHeadline => 'SimpleFIN Bridge (US)';
 
   @override
-  String get simpleFinNoCredentials =>
-      'De SimpleFIN Bridge gaf een toegangsadres zonder inloggegevens terug';
+  String get simpleFinNoCredentials => 'De SimpleFIN Bridge gaf een toegangsadres zonder inloggegevens terug';
 
   @override
   String get simpleFinToken => 'SimpleFIN-installatietoken';
 
   @override
-  String get simpleFinTokenClaimed =>
-      'Het installatietoken bestaat niet of is al gebruikt';
+  String get simpleFinTokenClaimed => 'Het installatietoken bestaat niet of is al gebruikt';
 
   @override
   String get simpleFinTokenInvalid => 'Ongeldig SimpleFIN-installatietoken';
@@ -1344,8 +1322,7 @@ class AppLocalizationsNl extends AppLocalizations {
   String get validTillDate => 'Geldig tot';
 
   @override
-  String get webDav =>
-      'Web gedistribueerde authorisatie en versiebeheer (WebDav)';
+  String get webDav => 'Web gedistribueerde authorisatie en versiebeheer (WebDav)';
 
   @override
   String get wiseDescription =>
@@ -1355,8 +1332,7 @@ class AppLocalizationsNl extends AppLocalizations {
   String get wiseHeadline => 'Wise API (Global)';
 
   @override
-  String get wiseNoProfiles =>
-      'Er zijn geen Wise-profielen beschikbaar voor het token';
+  String get wiseNoProfiles => 'Er zijn geen Wise-profielen beschikbaar voor het token';
 
   @override
   String get wiseProfile => 'Profiel';

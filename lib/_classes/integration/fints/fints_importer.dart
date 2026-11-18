@@ -44,8 +44,8 @@ class FinTsImporter {
     return (added: added, skipped: skipped, pending: pending);
   }
 
-  static InterfaceAppData convert(
-          Transaction transaction, {required String account, required String category, BudgetPrediction? prediction}) =>
+  static InterfaceAppData convert(Transaction transaction,
+          {required String account, required String category, BudgetPrediction? prediction}) =>
       IntegrationRecord.toAppData(
         amount: transaction.amount.value,
         currency: transaction.amount.currency,
