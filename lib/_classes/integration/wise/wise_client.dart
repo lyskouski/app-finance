@@ -144,9 +144,7 @@ class WiseClient {
       'Accept': 'application/json',
     }).timeout(timeout);
     final headers = response.headers;
-    final requiresSca = response.statusCode == 403 &&
-        headers.containsKey('x-2fa-approval') &&
-        headers['x-2fa-approval-result']?.toUpperCase() == 'REJECTED';
+    final requiresSca = response.statusCode == 403 && headers.containsKey('x-2fa-approval');
     if (requiresSca) {
       throw WiseScaException();
     }
