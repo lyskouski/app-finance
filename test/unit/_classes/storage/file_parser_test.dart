@@ -29,15 +29,19 @@ void main() {
         );
 
     test('predicts the category when the file has no category column', () async {
-      final item = await parser([FileParser.attrBillComment, FileParser.attrBillAmount, FileParser.attrBillDate, '']).parseFileLine(line, def);
+      final item = await parser([FileParser.attrBillComment, FileParser.attrBillAmount, FileParser.attrBillDate, ''])
+          .parseFileLine(line, def);
 
       expect((item as BillAppData).category, 'predicted');
     });
 
     test('keeps the category from the file', () async {
-      final item = await parser(
-              [FileParser.attrBillComment, FileParser.attrBillAmount, FileParser.attrBillDate, FileParser.attrCategoryName])
-          .parseFileLine(line, def);
+      final item = await parser([
+        FileParser.attrBillComment,
+        FileParser.attrBillAmount,
+        FileParser.attrBillDate,
+        FileParser.attrCategoryName
+      ]).parseFileLine(line, def);
 
       expect((item as BillAppData).category, isNot('predicted'));
     });
