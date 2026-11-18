@@ -551,5 +551,13 @@
     "uuid": "Unikalny identyfikator transakcji",
     "validTillDate": "Ważny termin płatności",
     "webDav": "Rozproszone tworzenie i wersjonowanie przez Internet (WebDav)",
+    "wiseDescription": "Import sald i transakcji wielowalutowych kont Wise za pomocą osobistego tokena API. Przewalutowania między powiązanymi saldami są importowane jako przelewy. Dostęp tylko do odczytu: nie są wykonywane żadne płatności.",
+    "wiseHeadline": "Wise API (Global)",
+    "wiseNoProfiles": "Dla tokena nie są dostępne żadne profile Wise",
+    "wiseProfile": "Profil",
+    "wiseScaRequired": "Wise wymaga silnego uwierzytelnienia klienta: otwórz wyciąg tego salda w aplikacji Wise i spróbuj ponownie",
+    "wiseToken": "Osobisty token API",
+    "wiseTokenSteps": "Jak uzyskać osobisty token API:\n1. Zaloguj się na wise.com w przeglądarce (w aplikacji mobilnej nie można tworzyć tokenów)\n2. Otwórz Ustawienia → Integracje i narzędzia → Tokeny API\n3. Wybierz „Dodaj nowy token”, nadaj nazwę (np. Fingrom) i wybierz dostęp „Tylko do odczytu”\n4. Potwierdź weryfikacją dwuetapową i skopiuj token\n5. Wklej go poniżej i naciśnij „Połącz”",
+    "wiseTokenTooltip": "Tworzony w Wise w Ustawienia → Tokeny API (tylko do odczytu, jeśli dostępne); przechowywany w postaci zaszyfrowanej",
     "zoomState": "Powiększanie / pomniejszanie"
 }

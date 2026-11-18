@@ -1320,6 +1320,32 @@ class AppLocalizationsZh extends AppLocalizations {
   String get webDav => '网络分布式创作和版本管理（WebDav）';
 
   @override
+  String get wiseDescription =>
+      '使用个人 API 令牌导入 Wise 多币种账户的余额和交易。已关联余额之间的换汇将作为转账导入。访问为只读：不会进行任何付款。';
+
+  @override
+  String get wiseHeadline => 'Wise API (Global)';
+
+  @override
+  String get wiseNoProfiles => '该令牌没有可用的 Wise 资料';
+
+  @override
+  String get wiseProfile => '资料';
+
+  @override
+  String get wiseScaRequired => 'Wise 要求强客户认证：请在 Wise 应用中打开此余额的对账单，然后重试';
+
+  @override
+  String get wiseToken => '个人 API 令牌';
+
+  @override
+  String get wiseTokenSteps =>
+      '如何获取个人 API 令牌：\n1. 在浏览器中登录 wise.com（移动应用中无法创建令牌）\n2. 打开 设置 → 集成和工具 → API 令牌\n3. 选择“添加新令牌”，命名（如 Fingrom），并选择“只读”权限\n4. 通过两步验证确认并复制令牌\n5. 粘贴到下方并点击“连接”';
+
+  @override
+  String get wiseTokenTooltip => '在 Wise 的 设置 → API 令牌 中创建（如可选则为只读）；加密存储';
+
+  @override
   String get zoomState => '放大/缩小';
 }
 
@@ -2637,6 +2663,32 @@ class AppLocalizationsZhTw extends AppLocalizationsZh {
 
   @override
   String get webDav => '網路分散式撰寫與版本控制 (WebDav)';
+
+  @override
+  String get wiseDescription =>
+      '使用個人 API 權杖匯入 Wise 多幣別帳戶的餘額與交易。已連結餘額之間的換匯將以轉帳匯入。存取為唯讀：不會進行任何付款。';
+
+  @override
+  String get wiseHeadline => 'Wise API (Global)';
+
+  @override
+  String get wiseNoProfiles => '此權杖沒有可用的 Wise 個人檔案';
+
+  @override
+  String get wiseProfile => '個人檔案';
+
+  @override
+  String get wiseScaRequired => 'Wise 要求強式客戶驗證：請在 Wise 應用程式中開啟此餘額的對帳單，然後重試';
+
+  @override
+  String get wiseToken => '個人 API 權杖';
+
+  @override
+  String get wiseTokenSteps =>
+      '如何取得個人 API 權杖：\n1. 在瀏覽器中登入 wise.com（行動應用程式中無法建立權杖）\n2. 開啟 設定 → 整合與工具 → API 權杖\n3. 選擇「新增權杖」，命名（如 Fingrom），並選擇「唯讀」權限\n4. 透過兩步驟驗證確認並複製權杖\n5. 貼到下方並點選「連線」';
+
+  @override
+  String get wiseTokenTooltip => '在 Wise 的 設定 → API 權杖 中建立（如可選則為唯讀）；加密儲存';
 
   @override
   String get zoomState => '放大/縮小';

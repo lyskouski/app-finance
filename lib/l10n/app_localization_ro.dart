@@ -1350,5 +1350,34 @@ class AppLocalizationsRo extends AppLocalizations {
   String get webDav => 'Autorizare și versiune distribuite pe web (WebDav)';
 
   @override
+  String get wiseDescription =>
+      'Importă soldurile și tranzacțiile conturilor multivalută Wise cu un token API personal. Conversiile dintre soldurile asociate sunt importate ca transferuri. Accesul este doar pentru citire: nu se efectuează plăți.';
+
+  @override
+  String get wiseHeadline => 'Wise API (Global)';
+
+  @override
+  String get wiseNoProfiles =>
+      'Nu există profiluri Wise disponibile pentru token';
+
+  @override
+  String get wiseProfile => 'Profil';
+
+  @override
+  String get wiseScaRequired =>
+      'Wise solicită autentificarea strictă a clientului: deschideți extrasul acestui sold în aplicația Wise, apoi reîncercați';
+
+  @override
+  String get wiseToken => 'Token API personal';
+
+  @override
+  String get wiseTokenSteps =>
+      'Cum obțineți un token API personal:\n1. Conectați-vă la wise.com într-un browser (tokenurile nu pot fi create în aplicația mobilă)\n2. Deschideți Setări → Integrări și instrumente → Tokenuri API\n3. Alegeți „Adăugați un token nou”, denumiți-l (de ex. Fingrom) și selectați accesul „Doar citire”\n4. Confirmați cu verificarea în doi pași și copiați tokenul\n5. Lipiți-l mai jos și apăsați „Conectare”';
+
+  @override
+  String get wiseTokenTooltip =>
+      'Creat în Wise în Setări → Tokenuri API (doar citire, dacă este disponibil); stocat criptat';
+
+  @override
   String get zoomState => 'Măriți / Micșorați';
 }

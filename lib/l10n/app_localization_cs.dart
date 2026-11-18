@@ -1340,5 +1340,34 @@ class AppLocalizationsCs extends AppLocalizations {
   String get webDav => 'Webové distribuované autorizace a verzování (WebDav)';
 
   @override
+  String get wiseDescription =>
+      'Import zůstatků a transakcí víceměnových účtů Wise pomocí osobního tokenu API. Převody měn mezi propojenými zůstatky se importují jako převody. Přístup pouze pro čtení: neprovádějí se žádné platby.';
+
+  @override
+  String get wiseHeadline => 'Wise API (Global)';
+
+  @override
+  String get wiseNoProfiles =>
+      'Pro token nejsou k dispozici žádné profily Wise';
+
+  @override
+  String get wiseProfile => 'Profil';
+
+  @override
+  String get wiseScaRequired =>
+      'Wise vyžaduje silné ověření klienta: otevřete výpis tohoto zůstatku v aplikaci Wise a zkuste to znovu';
+
+  @override
+  String get wiseToken => 'Osobní token API';
+
+  @override
+  String get wiseTokenSteps =>
+      'Jak získat osobní token API:\n1. Přihlaste se na wise.com v prohlížeči (v mobilní aplikaci tokeny vytvořit nelze)\n2. Otevřete Nastavení → Integrace a nástroje → Tokeny API\n3. Zvolte „Přidat nový token“, pojmenujte jej (např. Fingrom) a vyberte přístup „Pouze pro čtení“\n4. Potvrďte dvoufázovým ověřením a zkopírujte token\n5. Vložte jej níže a stiskněte „Připojit“';
+
+  @override
+  String get wiseTokenTooltip =>
+      'Vytváří se ve Wise v Nastavení → Tokeny API (pouze pro čtení, je-li k dispozici); ukládá se šifrovaně';
+
+  @override
   String get zoomState => 'Přiblížení / oddálení';
 }

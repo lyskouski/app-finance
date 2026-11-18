@@ -551,5 +551,13 @@
     "uuid": "Unikaĺny Identyfikatar Tranzakcyi",
     "validTillDate": "D́ziejničaje da",
     "webDav": "Veb-razmierkavanaje Stvareńnie i Kiravańnie Viersijami (WebDav)",
+    "wiseDescription": "Impart reštkaŭ i aperacyj šmatvalutnych rachunkaŭ Wise z dapamohaj persanaĺnaha API-tokiena. Kanviertacyi pamiž zviazanymi balansami impartujucca jak pieravody. Dostup toĺki dla čytannia: płaciažy nie vykonvajucca.",
+    "wiseHeadline": "Wise API (Global)",
+    "wiseNoProfiles": "Dla tokiena niama dastupnych profilaŭ Wise",
+    "wiseProfile": "Profiĺ",
+    "wiseScaRequired": "Wise patrabuje strohaj aŭtentyfikacyi klijenta: adkryjcie vypisku hetaha balansu ŭ prahramie Wise i paŭtarycie sprobu",
+    "wiseToken": "Persanaĺny API-tokien",
+    "wiseTokenSteps": "Jak atrymać persanaĺny API-tokien:\n1. Uvajdzicie na wise.com u braŭzery (u mabiĺnaj prahramie tokieny nie stvarajucca)\n2. Adkryjcie Nałady → Intehracyi i instrumienty → API-tokieny\n3. Naciśnicie «Dadać tokien», zadajcie nazvu (napryklad, Fingrom) i vybierycie dostup «Toĺki čytannie»\n4. Paćvierdzicie dvuchetapnaj pravierkaj i skapirujcie tokien\n5. Ustaŭcie jaho nižej i naciśnicie «Padłučycca»",
+    "wiseTokenTooltip": "Stvarajecca ŭ Wise u raździele Nałady → API-tokieny (toĺki dla čytannia, kali dastupna); zachoŭvajecca ŭ zašyfravanym vyhladzie",
     "zoomState": "Pavialičyć / Pamieńšyć"
 }

@@ -1335,5 +1335,33 @@ class AppLocalizationsAr extends AppLocalizations {
   String get webDav => 'التأليف والإصدار الموزع عبر الويب (WebDav)';
 
   @override
+  String get wiseDescription =>
+      'استيراد الأرصدة والمعاملات لحسابات Wise متعددة العملات باستخدام رمز API شخصي. يتم استيراد التحويلات بين الأرصدة المرتبطة كتحويلات. الوصول للقراءة فقط: لا يتم تنفيذ أي مدفوعات.';
+
+  @override
+  String get wiseHeadline => 'Wise API (Global)';
+
+  @override
+  String get wiseNoProfiles => 'لا توجد ملفات تعريف Wise متاحة لهذا الرمز';
+
+  @override
+  String get wiseProfile => 'الملف الشخصي';
+
+  @override
+  String get wiseScaRequired =>
+      'تتطلب Wise مصادقة قوية للعميل: افتح كشف هذا الرصيد في تطبيق Wise ثم أعد المحاولة';
+
+  @override
+  String get wiseToken => 'رمز API الشخصي';
+
+  @override
+  String get wiseTokenSteps =>
+      'كيفية الحصول على رمز API الشخصي:\n1. سجّل الدخول إلى wise.com من المتصفح (لا يمكن إنشاء الرموز في تطبيق الجوال)\n2. افتح الإعدادات ← عمليات التكامل والأدوات ← رموز API\n3. اختر «إضافة رمز جديد»، وسمِّه (مثل Fingrom)، واختر صلاحية «للقراءة فقط»\n4. أكّد بالتحقق بخطوتين وانسخ الرمز\n5. الصقه أدناه واضغط «اتصال»';
+
+  @override
+  String get wiseTokenTooltip =>
+      'يُنشأ في Wise من الإعدادات ← رموز API (للقراءة فقط إن توفر)؛ ويُخزَّن مشفرًا';
+
+  @override
   String get zoomState => 'تكبير/تصغير';
 }

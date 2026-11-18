@@ -1324,5 +1324,33 @@ class AppLocalizationsJa extends AppLocalizations {
   String get webDav => 'Web分散オーサリングとバージョニング（WebDav）';
 
   @override
+  String get wiseDescription =>
+      '個人用 API トークンで Wise マルチカレンシー口座の残高と取引をインポートします。連携した残高間の両替は振替としてインポートされます。アクセスは読み取り専用で、支払いは行われません。';
+
+  @override
+  String get wiseHeadline => 'Wise API (Global)';
+
+  @override
+  String get wiseNoProfiles => 'このトークンで利用できる Wise プロフィールがありません';
+
+  @override
+  String get wiseProfile => 'プロフィール';
+
+  @override
+  String get wiseScaRequired =>
+      'Wise で強力な顧客認証が必要です。Wise アプリでこの残高の明細を開いてから再試行してください';
+
+  @override
+  String get wiseToken => '個人用 API トークン';
+
+  @override
+  String get wiseTokenSteps =>
+      '個人用 API トークンの取得方法:\n1. ブラウザで wise.com にログインします（モバイルアプリではトークンを作成できません）\n2. 設定 → 連携とツール → API トークン を開きます\n3. 「新しいトークンを追加」を選び、名前（例: Fingrom）を付けて「読み取り専用」アクセスを選択します\n4. 2 段階認証で確認し、トークンをコピーします\n5. 下に貼り付けて「接続」を押します';
+
+  @override
+  String get wiseTokenTooltip =>
+      'Wise の 設定 → API トークン で作成します（可能であれば読み取り専用）。暗号化して保存されます';
+
+  @override
   String get zoomState => 'ズームイン/ズームアウト';
 }

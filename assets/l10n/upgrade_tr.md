@@ -2,6 +2,9 @@
 
 _Güncellemelerin tam listesi “İpuçları” düğmesindeki “Hakkında” gezinti öğesi aracılığıyla görüntülenebilir._
 
+### 8.1.0
+- Wise API (Global) eklendi: Wise çoklu para birimi hesaplarının bakiyeleri ve işlemlerinin içe aktarılması, dönüşümler transfer olarak
+
 ### 8.0.0
 - Genişletilebilir bölümlere sahip yeni Entegrasyonlar sayfası
 - Financial Transaction Services (FinTS 4.1) eklendi: Alman bankalarından hesaplar, bakiyeler ve işlemlerin içe aktarılması

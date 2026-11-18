@@ -2,6 +2,9 @@
 
 _Die vollständige Liste der Updates kann über den Navigationspunkt "Über" auf der Schaltfläche "Hinweise" eingesehen werden._
 
+### 8.1.0
+- Wise API (Global) hinzugefügt: Salden und Import von Umsätzen von Wise-Mehrwährungskonten, Umrechnungen als Überweisungen
+
 ### 8.0.0
 - Neue Seite „Integrationen“ mit ausklappbaren Abschnitten
 - Financial Transaction Services (FinTS 4.1) hinzugefügt: Konten, Salden und Import von Umsätzen deutscher Banken

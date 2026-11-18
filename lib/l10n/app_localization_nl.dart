@@ -1345,5 +1345,34 @@ class AppLocalizationsNl extends AppLocalizations {
       'Web gedistribueerde authorisatie en versiebeheer (WebDav)';
 
   @override
+  String get wiseDescription =>
+      'Importeer saldi en transacties van Wise-rekeningen in meerdere valuta met een persoonlijk API-token. Omwisselingen tussen gekoppelde saldi worden als overboekingen geïmporteerd. De toegang is alleen-lezen: er worden geen betalingen uitgevoerd.';
+
+  @override
+  String get wiseHeadline => 'Wise API (Global)';
+
+  @override
+  String get wiseNoProfiles =>
+      'Er zijn geen Wise-profielen beschikbaar voor het token';
+
+  @override
+  String get wiseProfile => 'Profiel';
+
+  @override
+  String get wiseScaRequired =>
+      'Wise vereist sterke klantauthenticatie: open het afschrift van dit saldo in de Wise-app en probeer het opnieuw';
+
+  @override
+  String get wiseToken => 'Persoonlijk API-token';
+
+  @override
+  String get wiseTokenSteps =>
+      'Zo krijgt u een persoonlijk API-token:\n1. Log in op wise.com in een browser (in de mobiele app kunnen geen tokens worden aangemaakt)\n2. Open Instellingen → Integraties en tools → API-tokens\n3. Kies \'Nieuw token toevoegen\', geef het een naam (bijv. Fingrom) en kies toegang \'Alleen lezen\'\n4. Bevestig met tweestapsverificatie en kopieer het token\n5. Plak het hieronder en druk op \'Verbinden\'';
+
+  @override
+  String get wiseTokenTooltip =>
+      'Aangemaakt in Wise onder Instellingen → API-tokens (alleen-lezen indien mogelijk); versleuteld opgeslagen';
+
+  @override
   String get zoomState => 'Inzoomen / Uitzoomen';
 }

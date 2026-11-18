@@ -77,6 +77,7 @@ Která uživatelům umožní bez námahy spravovat své finance a zároveň zaji
   - Financial Transaction Services (FinTS 4.1): import zůstatků a transakcí z německých bank (PIN/TAN)
   - SimpleFIN Bridge (US): import zůstatků a transakcí amerických bank a vydavatelů karet
   - Enable Banking (EU): import zůstatků a transakcí evropských bank (PSD2)
+  - Wise API (Global): import zůstatků a transakcí víceměnových účtů Wise (osobní token API)
 - Export do souboru `XLSX` aplikace Excel
 - Šifrování dat
 - Lokalizace

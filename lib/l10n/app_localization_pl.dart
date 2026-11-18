@@ -1342,5 +1342,33 @@ class AppLocalizationsPl extends AppLocalizations {
       'Rozproszone tworzenie i wersjonowanie przez Internet (WebDav)';
 
   @override
+  String get wiseDescription =>
+      'Import sald i transakcji wielowalutowych kont Wise za pomocą osobistego tokena API. Przewalutowania między powiązanymi saldami są importowane jako przelewy. Dostęp tylko do odczytu: nie są wykonywane żadne płatności.';
+
+  @override
+  String get wiseHeadline => 'Wise API (Global)';
+
+  @override
+  String get wiseNoProfiles => 'Dla tokena nie są dostępne żadne profile Wise';
+
+  @override
+  String get wiseProfile => 'Profil';
+
+  @override
+  String get wiseScaRequired =>
+      'Wise wymaga silnego uwierzytelnienia klienta: otwórz wyciąg tego salda w aplikacji Wise i spróbuj ponownie';
+
+  @override
+  String get wiseToken => 'Osobisty token API';
+
+  @override
+  String get wiseTokenSteps =>
+      'Jak uzyskać osobisty token API:\n1. Zaloguj się na wise.com w przeglądarce (w aplikacji mobilnej nie można tworzyć tokenów)\n2. Otwórz Ustawienia → Integracje i narzędzia → Tokeny API\n3. Wybierz „Dodaj nowy token”, nadaj nazwę (np. Fingrom) i wybierz dostęp „Tylko do odczytu”\n4. Potwierdź weryfikacją dwuetapową i skopiuj token\n5. Wklej go poniżej i naciśnij „Połącz”';
+
+  @override
+  String get wiseTokenTooltip =>
+      'Tworzony w Wise w Ustawienia → Tokeny API (tylko do odczytu, jeśli dostępne); przechowywany w postaci zaszyfrowanej';
+
+  @override
   String get zoomState => 'Powiększanie / pomniejszanie';
 }

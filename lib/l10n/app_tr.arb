@@ -551,5 +551,13 @@
     "uuid": "Benzersiz İşlem Tanımlayıcısı",
     "validTillDate": "Geçerlilik Süresi",
     "webDav": "Web Dağıtılmış Yazma ve Sürüm Oluşturma (WebDav)",
+    "wiseDescription": "Wise çoklu para birimi hesaplarının bakiyelerini ve işlemlerini kişisel API anahtarıyla içe aktarın. Bağlı bakiyeler arasındaki dönüşümler transfer olarak içe aktarılır. Erişim salt okunurdur: hiçbir ödeme yapılmaz.",
+    "wiseHeadline": "Wise API (Global)",
+    "wiseNoProfiles": "Bu anahtar için kullanılabilir Wise profili yok",
+    "wiseProfile": "Profil",
+    "wiseScaRequired": "Wise güçlü müşteri kimlik doğrulaması istiyor: bu bakiyenin ekstresini Wise uygulamasında açın ve tekrar deneyin",
+    "wiseToken": "Kişisel API Anahtarı",
+    "wiseTokenSteps": "Kişisel API anahtarı nasıl alınır:\n1. Tarayıcıda wise.com'a giriş yapın (mobil uygulamada anahtar oluşturulamaz)\n2. Ayarlar → Entegrasyonlar ve araçlar → API anahtarları bölümünü açın\n3. \"Yeni anahtar ekle\"yi seçin, bir ad verin (ör. Fingrom) ve \"Salt okunur\" erişimi seçin\n4. İki adımlı doğrulamayla onaylayın ve anahtarı kopyalayın\n5. Aşağıya yapıştırın ve \"Bağlan\"a basın",
+    "wiseTokenTooltip": "Wise'da Ayarlar → API anahtarları bölümünde oluşturulur (mümkünse salt okunur); şifreli olarak saklanır",
     "zoomState": "Yakınlaştırma / Uzaklaştırma"
 }

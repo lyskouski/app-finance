@@ -1341,5 +1341,33 @@ class AppLocalizationsEn extends AppLocalizations {
   String get webDav => 'Web Distributed Authoring and Versioning (WebDav)';
 
   @override
+  String get wiseDescription =>
+      'Import balances and transactions of Wise multi-currency accounts with a Personal API Token. Conversions between linked balances are imported as transfers. Access is read-only: no payments are made.';
+
+  @override
+  String get wiseHeadline => 'Wise API (Global)';
+
+  @override
+  String get wiseNoProfiles => 'No Wise profiles are available for the token';
+
+  @override
+  String get wiseProfile => 'Profile';
+
+  @override
+  String get wiseScaRequired =>
+      'Wise requires a strong customer authentication: open the statement of this balance in the Wise app, then retry';
+
+  @override
+  String get wiseToken => 'Personal API Token';
+
+  @override
+  String get wiseTokenSteps =>
+      'How to get a Personal API Token:\n1. Sign in at wise.com in a browser (tokens cannot be created in the mobile app)\n2. Open Settings → Integrations and tools → API tokens\n3. Choose \"Add new token\", name it (e.g. Fingrom), and select \"Read only\" access\n4. Confirm with two-step verification and copy the token\n5. Paste it below and press \"Connect\"';
+
+  @override
+  String get wiseTokenTooltip =>
+      'Created in Wise under Settings → API tokens (read-only if offered); stored encrypted';
+
+  @override
   String get zoomState => 'Zoom In / Zoom Out';
 }

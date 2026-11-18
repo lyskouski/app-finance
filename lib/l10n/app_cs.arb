@@ -551,5 +551,13 @@
     "uuid": "Jedinečný identifikátor transakce",
     "validTillDate": "Platný termín",
     "webDav": "Webové distribuované autorizace a verzování (WebDav)",
+    "wiseDescription": "Import zůstatků a transakcí víceměnových účtů Wise pomocí osobního tokenu API. Převody měn mezi propojenými zůstatky se importují jako převody. Přístup pouze pro čtení: neprovádějí se žádné platby.",
+    "wiseHeadline": "Wise API (Global)",
+    "wiseNoProfiles": "Pro token nejsou k dispozici žádné profily Wise",
+    "wiseProfile": "Profil",
+    "wiseScaRequired": "Wise vyžaduje silné ověření klienta: otevřete výpis tohoto zůstatku v aplikaci Wise a zkuste to znovu",
+    "wiseToken": "Osobní token API",
+    "wiseTokenSteps": "Jak získat osobní token API:\n1. Přihlaste se na wise.com v prohlížeči (v mobilní aplikaci tokeny vytvořit nelze)\n2. Otevřete Nastavení → Integrace a nástroje → Tokeny API\n3. Zvolte „Přidat nový token“, pojmenujte jej (např. Fingrom) a vyberte přístup „Pouze pro čtení“\n4. Potvrďte dvoufázovým ověřením a zkopírujte token\n5. Vložte jej níže a stiskněte „Připojit“",
+    "wiseTokenTooltip": "Vytváří se ve Wise v Nastavení → Tokeny API (pouze pro čtení, je-li k dispozici); ukládá se šifrovaně",
     "zoomState": "Přiblížení / oddálení"
 }

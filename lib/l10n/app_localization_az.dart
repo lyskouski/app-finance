@@ -1346,5 +1346,33 @@ class AppLocalizationsAz extends AppLocalizations {
   String get webDav => 'Veb Paylanmış Müəlliflik və Versiyalaşdırma (WebDav)';
 
   @override
+  String get wiseDescription =>
+      'Şəxsi API tokeni ilə Wise çoxvalyutalı hesablarının qalıqlarını və əməliyyatlarını idxal edin. Əlaqələndirilmiş balanslar arasında konvertasiyalar köçürmə kimi idxal olunur. Giriş yalnız oxumaq üçündür: ödənişlər edilmir.';
+
+  @override
+  String get wiseHeadline => 'Wise API (Global)';
+
+  @override
+  String get wiseNoProfiles => 'Token üçün mövcud Wise profili yoxdur';
+
+  @override
+  String get wiseProfile => 'Profil';
+
+  @override
+  String get wiseScaRequired =>
+      'Wise güclü müştəri autentifikasiyası tələb edir: bu balansın çıxarışını Wise tətbiqində açın, sonra yenidən cəhd edin';
+
+  @override
+  String get wiseToken => 'Şəxsi API tokeni';
+
+  @override
+  String get wiseTokenSteps =>
+      'Şəxsi API tokenini necə əldə etmək olar:\n1. Brauzerdə wise.com saytına daxil olun (mobil tətbiqdə token yaratmaq olmur)\n2. Parametrlər → İnteqrasiyalar və alətlər → API tokenləri bölməsini açın\n3. \"Yeni token əlavə et\" seçin, ad verin (məs. Fingrom) və \"Yalnız oxumaq\" girişini seçin\n4. İkimərhələli doğrulama ilə təsdiqləyin və tokeni kopyalayın\n5. Onu aşağıya yapışdırın və \"Qoşul\" düyməsini basın';
+
+  @override
+  String get wiseTokenTooltip =>
+      'Wise-da Parametrlər → API tokenləri bölməsində yaradılır (mümkündürsə, yalnız oxumaq üçün); şifrələnmiş saxlanılır';
+
+  @override
   String get zoomState => 'Böyüt / Uçaltın';
 }

@@ -1353,5 +1353,34 @@ class AppLocalizationsFr extends AppLocalizations {
   String get webDav => 'Rédaction et version distribuées sur le web (WebDav)';
 
   @override
+  String get wiseDescription =>
+      'Importer les soldes et les transactions des comptes multidevises Wise avec un jeton d’API personnel. Les conversions entre soldes liés sont importées comme virements. L’accès est en lecture seule : aucun paiement n’est effectué.';
+
+  @override
+  String get wiseHeadline => 'Wise API (Global)';
+
+  @override
+  String get wiseNoProfiles =>
+      'Aucun profil Wise n’est disponible pour ce jeton';
+
+  @override
+  String get wiseProfile => 'Profil';
+
+  @override
+  String get wiseScaRequired =>
+      'Wise exige une authentification forte du client : ouvrez le relevé de ce solde dans l’application Wise, puis réessayez';
+
+  @override
+  String get wiseToken => 'Jeton d’API personnel';
+
+  @override
+  String get wiseTokenSteps =>
+      'Comment obtenir un jeton d’API personnel :\n1. Connectez-vous à wise.com dans un navigateur (les jetons ne peuvent pas être créés dans l’application mobile)\n2. Ouvrez Paramètres → Intégrations et outils → Jetons d’API\n3. Choisissez « Ajouter un jeton », nommez-le (p. ex. Fingrom) et sélectionnez l’accès « Lecture seule »\n4. Confirmez avec la vérification en deux étapes et copiez le jeton\n5. Collez-le ci-dessous et appuyez sur « Se connecter »';
+
+  @override
+  String get wiseTokenTooltip =>
+      'Créé dans Wise sous Paramètres → Jetons d’API (en lecture seule si proposé) ; stocké chiffré';
+
+  @override
   String get zoomState => 'Zoom avant / Zoom arrière';
 }

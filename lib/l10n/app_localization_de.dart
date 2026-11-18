@@ -1351,5 +1351,34 @@ class AppLocalizationsDe extends AppLocalizations {
       'Verteilte Autorisierung und Versionierung im Web (WebDav)';
 
   @override
+  String get wiseDescription =>
+      'Salden und Umsätze von Wise-Mehrwährungskonten mit einem persönlichen API-Token importieren. Umrechnungen zwischen verknüpften Guthaben werden als Überweisungen importiert. Der Zugriff ist nur lesend: Es werden keine Zahlungen ausgeführt.';
+
+  @override
+  String get wiseHeadline => 'Wise API (Global)';
+
+  @override
+  String get wiseNoProfiles =>
+      'Für das Token sind keine Wise-Profile verfügbar';
+
+  @override
+  String get wiseProfile => 'Profil';
+
+  @override
+  String get wiseScaRequired =>
+      'Wise verlangt eine starke Kundenauthentifizierung: Öffnen Sie den Kontoauszug dieses Guthabens in der Wise-App und versuchen Sie es erneut';
+
+  @override
+  String get wiseToken => 'Persönliches API-Token';
+
+  @override
+  String get wiseTokenSteps =>
+      'So erhalten Sie ein persönliches API-Token:\n1. Melden Sie sich im Browser bei wise.com an (in der mobilen App können keine Token erstellt werden)\n2. Öffnen Sie Einstellungen → Integrationen und Tools → API-Token\n3. Wählen Sie „Neues Token hinzufügen“, benennen Sie es (z. B. Fingrom) und wählen Sie den Zugriff „Nur lesen“\n4. Bestätigen Sie mit der Zwei-Faktor-Verifizierung und kopieren Sie das Token\n5. Fügen Sie es unten ein und tippen Sie auf „Verbinden“';
+
+  @override
+  String get wiseTokenTooltip =>
+      'Wird in Wise unter Einstellungen → API-Token erstellt (wenn möglich nur lesend); verschlüsselt gespeichert';
+
+  @override
   String get zoomState => 'Vergrößern / Verkleinern';
 }

@@ -8,6 +8,8 @@ import 'package:app_finance/_classes/integration/enablebanking/enablebanking_set
 import 'package:app_finance/_classes/integration/fints/fints_settings.dart';
 import 'package:app_finance/_classes/integration/simplefin/simplefin_client.dart';
 import 'package:app_finance/_classes/integration/simplefin/simplefin_settings.dart';
+import 'package:app_finance/_classes/integration/wise/wise_client.dart';
+import 'package:app_finance/_classes/integration/wise/wise_settings.dart';
 import 'package:app_finance/_classes/storage/app_data.dart';
 import 'package:app_finance/_classes/storage/app_preferences.dart';
 import 'package:app_finance/_classes/structure/account_app_data.dart';
@@ -20,6 +22,7 @@ import 'package:app_finance/_configs/account_type.dart';
 import 'package:app_finance/pages/integration/widgets/enablebanking_widget.dart';
 import 'package:app_finance/pages/integration/widgets/fints_widget.dart';
 import 'package:app_finance/pages/integration/widgets/simplefin_widget.dart';
+import 'package:app_finance/pages/integration/widgets/wise_widget.dart';
 import 'package:fints/fints.dart';
 import 'package:http/http.dart' as http;
 import 'package:http/testing.dart';
@@ -134,6 +137,11 @@ void main() {
     expect(find.text('Financial Transaction Services (FinTS 4.1)'), findsOneWidget);
     expect(find.text('SimpleFIN Bridge (US)'), findsOneWidget);
     expect(find.text('Enable Banking (EU)'), findsOneWidget);
+    expect(find.text('Wise API (Global)'), findsOneWidget);
+    // Protocols are separated from the APIs of single institutions
+    final divider = tester.getTopLeft(find.byKey(const ValueKey('integration_divider'))).dy;
+    expect(tester.getTopLeft(find.byKey(const ValueKey('integration_enablebanking'))).dy, lessThan(divider));
+    expect(tester.getTopLeft(find.byKey(const ValueKey('integration_wise'))).dy, greaterThan(divider));
     expect(find.textContaining('Bank Code (BLZ)', findRichText: true), findsNothing);
     expect(find.textContaining('SimpleFIN Setup Token', findRichText: true), findsNothing);
 
@@ -340,6 +348,107 @@ void main() {
     await tester.pumpAndSettle();
     expect(SimpleFinSettings.loadAccess(), isNull);
     expect(find.textContaining('SimpleFIN Setup Token', findRichText: true), findsOneWidget);
+    await tester.pump(const Duration(seconds: 10));
+  });
+
+  testWidgets('Wise connects with a Personal API Token and imports transactions', (WidgetTester tester) async {
+    await PumpMain.init(tester);
+    final memory = <String, String>{};
+    final pref = AppPreferences.pref as WrapperMockSharedPreferences;
+    pref.mockGetString = (key) => memory[key] ?? (key == AppPreferences.prefCurrency ? 'USD' : null);
+    pref.mockSetString = (key, value) async {
+      memory[key!] = value!;
+      return true;
+    };
+    pref.mockRemove = (key) async => memory.remove(key) != null;
+    final state = Provider.of<AppData>(tester.element(find.byType(Scaffold).first), listen: false);
+    final account = state.add(AccountAppData(
+      title: 'Wise EUR',
+      type: AppAccountType.account.toString(),
+      details: 0.0,
+      hidden: false,
+    )) as AccountAppData;
+    final budget = state.add(BudgetAppData(title: 'Travel', hidden: false)) as BudgetAppData;
+    final bills = state.getList(AppDataType.bills, false).length;
+
+    final requests = <http.Request>[];
+    final client = WiseClient(
+      client: MockClient((request) async {
+        requests.add(request);
+        final body = switch (request.url.path) {
+          '/v2/profiles' => [
+              {'id': 7, 'type': 'PERSONAL', 'fullName': 'Jane Doe'},
+            ],
+          '/v4/profiles/7/balances' => [
+              {
+                'id': 100,
+                'currency': 'EUR',
+                'amount': {'value': 42.5, 'currency': 'EUR'},
+              },
+            ],
+          '/v1/profiles/7/balance-statements/100/statement.json' => {
+              'transactions': [
+                {
+                  'type': 'DEBIT',
+                  'date': '2026-11-02T08:00:00Z',
+                  'amount': {'value': -7.5, 'currency': 'EUR'},
+                  'details': {
+                    'type': 'CARD',
+                    'description': 'Card',
+                    'merchant': {'name': 'Museum'}
+                  },
+                  'referenceNumber': 'CARD-1',
+                },
+              ],
+            },
+          _ => throw StateError('Unexpected ${request.url}'),
+        };
+        return http.Response(jsonEncode(body), 200);
+      }),
+    );
+
+    Navigator.of(tester.element(find.byType(Scaffold).first)).push(MaterialPageRoute(
+      builder: (_) => Scaffold(body: SingleChildScrollView(child: WiseWidget(client: client))),
+    ));
+    await tester.pumpAndSettle();
+
+    await tester.enterText(find.byType(TextField).first, 'personal-token');
+    await tester.ensureVisible(find.byKey(const ValueKey('wise_connect')));
+    await tester.tap(find.byKey(const ValueKey('wise_connect')));
+    await pumpFrames(tester);
+    await tester.pumpAndSettle();
+
+    expect(requests.first.headers['Authorization'], 'Bearer personal-token');
+    expect(WiseSettings.loadToken(), 'personal-token');
+    expect(WiseSettings.load().profile, 7);
+    expect(find.textContaining('42.5 EUR'), findsOneWidget);
+
+    final widgetState = tester.state<WiseWidgetState>(find.byType(WiseWidget));
+    widgetState.accounts.single
+      ..appAccount = account.uuid
+      ..category = budget.uuid;
+    await tester.ensureVisible(find.text('Import Transactions'));
+    await tester.tap(find.text('Import Transactions'));
+    await pumpFrames(tester);
+    await tester.pumpAndSettle();
+
+    expect(find.text('Imported: 1, skipped as already present: 0, pending (not imported): 0'), findsOneWidget);
+    expect(state.getList(AppDataType.bills, false).length, bills + 1);
+    expect(state.getList(AppDataType.bills, false).whereType<BillAppData>().last.title, 'Museum');
+    expect(WiseSettings.load().links, {'100': account.uuid});
+
+    await tester.ensureVisible(find.text('Import Transactions'));
+    await tester.tap(find.text('Import Transactions'));
+    await pumpFrames(tester);
+    await tester.pumpAndSettle();
+    expect(find.text('Imported: 0, skipped as already present: 1, pending (not imported): 0'), findsOneWidget);
+
+    await tester.ensureVisible(find.byKey(const ValueKey('wise_forget')));
+    await tester.tap(find.byKey(const ValueKey('wise_forget')));
+    await pumpFrames(tester);
+    await tester.pumpAndSettle();
+    expect(WiseSettings.loadToken(), isNull);
+    expect(find.textContaining('Personal API Tokenrequired', findRichText: true), findsOneWidget);
     await tester.pump(const Duration(seconds: 10));
   });
 

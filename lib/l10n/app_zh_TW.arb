@@ -551,5 +551,13 @@
     "uuid": "唯一交易識別碼",
     "validTillDate": "有效提單",
     "webDav": "網路分散式撰寫與版本控制 (WebDav)",
+    "wiseDescription": "使用個人 API 權杖匯入 Wise 多幣別帳戶的餘額與交易。已連結餘額之間的換匯將以轉帳匯入。存取為唯讀：不會進行任何付款。",
+    "wiseHeadline": "Wise API (Global)",
+    "wiseNoProfiles": "此權杖沒有可用的 Wise 個人檔案",
+    "wiseProfile": "個人檔案",
+    "wiseScaRequired": "Wise 要求強式客戶驗證：請在 Wise 應用程式中開啟此餘額的對帳單，然後重試",
+    "wiseToken": "個人 API 權杖",
+    "wiseTokenSteps": "如何取得個人 API 權杖：\n1. 在瀏覽器中登入 wise.com（行動應用程式中無法建立權杖）\n2. 開啟 設定 → 整合與工具 → API 權杖\n3. 選擇「新增權杖」，命名（如 Fingrom），並選擇「唯讀」權限\n4. 透過兩步驟驗證確認並複製權杖\n5. 貼到下方並點選「連線」",
+    "wiseTokenTooltip": "在 Wise 的 設定 → API 權杖 中建立（如可選則為唯讀）；加密儲存",
     "zoomState": "放大/縮小"
 }

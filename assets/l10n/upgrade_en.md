@@ -2,6 +2,9 @@
 
 _The full list of updates can be viewed via the "About" navigation item on the "Hints" button._
 
+### 8.1.0
+- Adding Wise API (Global): balances and import of transactions of Wise multi-currency accounts, conversions as transfers
+
 ### 8.0.0
 - Introducing the Integrations page with expandable sections
 - Adding Financial Transaction Services (FinTS 4.1): accounts, balances, and import of transactions from German banks

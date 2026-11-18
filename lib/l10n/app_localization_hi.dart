@@ -1340,5 +1340,34 @@ class AppLocalizationsHi extends AppLocalizations {
   String get webDav => 'वेब वितरित संलेखन और संस्करण (वेबडाव)';
 
   @override
+  String get wiseDescription =>
+      'व्यक्तिगत API टोकन से Wise मल्टी-करेंसी खातों के बैलेंस और लेन-देन इम्पोर्ट करें। लिंक किए गए बैलेंस के बीच रूपांतरण ट्रांसफर के रूप में इम्पोर्ट होते हैं। एक्सेस केवल पढ़ने के लिए है: कोई भुगतान नहीं किया जाता।';
+
+  @override
+  String get wiseHeadline => 'Wise API (Global)';
+
+  @override
+  String get wiseNoProfiles =>
+      'इस टोकन के लिए कोई Wise प्रोफ़ाइल उपलब्ध नहीं है';
+
+  @override
+  String get wiseProfile => 'प्रोफ़ाइल';
+
+  @override
+  String get wiseScaRequired =>
+      'Wise को मज़बूत ग्राहक प्रमाणीकरण चाहिए: Wise ऐप में इस बैलेंस का स्टेटमेंट खोलें, फिर पुनः प्रयास करें';
+
+  @override
+  String get wiseToken => 'व्यक्तिगत API टोकन';
+
+  @override
+  String get wiseTokenSteps =>
+      'व्यक्तिगत API टोकन कैसे प्राप्त करें:\n1. ब्राउज़र में wise.com पर साइन इन करें (मोबाइल ऐप में टोकन नहीं बनाए जा सकते)\n2. सेटिंग्स → इंटीग्रेशन और टूल्स → API टोकन खोलें\n3. \"नया टोकन जोड़ें\" चुनें, नाम दें (जैसे Fingrom) और \"केवल पढ़ने\" वाली पहुँच चुनें\n4. दो-चरणीय सत्यापन से पुष्टि करें और टोकन कॉपी करें\n5. इसे नीचे चिपकाएँ और \"कनेक्ट\" दबाएँ';
+
+  @override
+  String get wiseTokenTooltip =>
+      'Wise में सेटिंग्स → API टोकन में बनाया जाता है (उपलब्ध हो तो केवल पढ़ने वाला); एन्क्रिप्ट करके संग्रहीत';
+
+  @override
   String get zoomState => 'ज़ूम इन ज़ूम आउट';
 }

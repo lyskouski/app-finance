@@ -1343,5 +1343,34 @@ class AppLocalizationsTr extends AppLocalizations {
   String get webDav => 'Web Dağıtılmış Yazma ve Sürüm Oluşturma (WebDav)';
 
   @override
+  String get wiseDescription =>
+      'Wise çoklu para birimi hesaplarının bakiyelerini ve işlemlerini kişisel API anahtarıyla içe aktarın. Bağlı bakiyeler arasındaki dönüşümler transfer olarak içe aktarılır. Erişim salt okunurdur: hiçbir ödeme yapılmaz.';
+
+  @override
+  String get wiseHeadline => 'Wise API (Global)';
+
+  @override
+  String get wiseNoProfiles =>
+      'Bu anahtar için kullanılabilir Wise profili yok';
+
+  @override
+  String get wiseProfile => 'Profil';
+
+  @override
+  String get wiseScaRequired =>
+      'Wise güçlü müşteri kimlik doğrulaması istiyor: bu bakiyenin ekstresini Wise uygulamasında açın ve tekrar deneyin';
+
+  @override
+  String get wiseToken => 'Kişisel API Anahtarı';
+
+  @override
+  String get wiseTokenSteps =>
+      'Kişisel API anahtarı nasıl alınır:\n1. Tarayıcıda wise.com\'a giriş yapın (mobil uygulamada anahtar oluşturulamaz)\n2. Ayarlar → Entegrasyonlar ve araçlar → API anahtarları bölümünü açın\n3. \"Yeni anahtar ekle\"yi seçin, bir ad verin (ör. Fingrom) ve \"Salt okunur\" erişimi seçin\n4. İki adımlı doğrulamayla onaylayın ve anahtarı kopyalayın\n5. Aşağıya yapıştırın ve \"Bağlan\"a basın';
+
+  @override
+  String get wiseTokenTooltip =>
+      'Wise\'da Ayarlar → API anahtarları bölümünde oluşturulur (mümkünse salt okunur); şifreli olarak saklanır';
+
+  @override
   String get zoomState => 'Yakınlaştırma / Uzaklaştırma';
 }

@@ -9,6 +9,7 @@ import 'package:app_finance/pages/_interfaces/abstract_page_state.dart';
 import 'package:app_finance/pages/integration/widgets/enablebanking_widget.dart';
 import 'package:app_finance/pages/integration/widgets/fints_widget.dart';
 import 'package:app_finance/pages/integration/widgets/simplefin_widget.dart';
+import 'package:app_finance/pages/integration/widgets/wise_widget.dart';
 import 'package:material_ui/material_ui.dart';
 
 typedef IntegrationItem = ({String id, String title, IconData icon, WidgetBuilder builder});
@@ -21,7 +22,7 @@ class IntegrationPage extends StatefulWidget {
 }
 
 class IntegrationPageState extends AbstractPageState<IntegrationPage> {
-  static List<IntegrationItem> getIntegrations() => [
+  static List<IntegrationItem> getProtocols() => [
         (
           id: 'fints',
           title: AppLocale.labels.finTsHeadline,
@@ -42,6 +43,32 @@ class IntegrationPageState extends AbstractPageState<IntegrationPage> {
         ),
       ];
 
+  static List<IntegrationItem> getServices() => [
+        (
+          id: 'wise',
+          title: AppLocale.labels.wiseHeadline,
+          icon: Icons.currency_exchange,
+          builder: (_) => const WiseWidget(),
+        ),
+      ];
+
+  Widget buildItem(BuildContext context, IntegrationItem item) {
+    final indent = ThemeHelper.getIndent();
+    return Card(
+      key: ValueKey('integration_${item.id}'),
+      clipBehavior: Clip.antiAlias,
+      child: ExpansionTile(
+        leading: Icon(item.icon),
+        title: Text(item.title, style: context.textTheme.titleMedium),
+        maintainState: true,
+        initiallyExpanded: item.id == 'enablebanking' && DeepLinkHandler.enableBankingCallback.value != null,
+        childrenPadding: EdgeInsets.fromLTRB(indent * 2, 0, indent * 2, indent * 2),
+        expandedCrossAxisAlignment: CrossAxisAlignment.stretch,
+        children: [Builder(builder: item.builder)],
+      ),
+    );
+  }
+
   @override
   String getTitle() => AppLocale.labels.integrationHeadline;
 
@@ -57,21 +84,9 @@ class IntegrationPageState extends AbstractPageState<IntegrationPage> {
     return ListView(
       padding: EdgeInsets.all(indent),
       children: [
-        for (final item in getIntegrations())
-          Card(
-            key: ValueKey('integration_${item.id}'),
-            clipBehavior: Clip.antiAlias,
-            child: ExpansionTile(
-              leading: Icon(item.icon),
-              title: Text(item.title, style: context.textTheme.titleMedium),
-              maintainState: true,
-              // A bank's callback (deep link) is completed by its section
-              initiallyExpanded: item.id == 'enablebanking' && DeepLinkHandler.enableBankingCallback.value != null,
-              childrenPadding: EdgeInsets.fromLTRB(indent * 2, 0, indent * 2, indent * 2),
-              expandedCrossAxisAlignment: CrossAxisAlignment.stretch,
-              children: [Builder(builder: item.builder)],
-            ),
-          ),
+        for (final item in getProtocols()) buildItem(context, item),
+        Divider(key: const ValueKey('integration_divider'), height: indent * 4),
+        for (final item in getServices()) buildItem(context, item),
       ],
     );
   }

@@ -1344,6 +1344,34 @@ class AppLocalizationsBe extends AppLocalizations {
       'Вэб-размеркаванае стварэньне і кіраваньне версіямі (WebDav)';
 
   @override
+  String get wiseDescription =>
+      'Імпарт рэшткаў і аперацый шматвалютных рахункаў Wise з дапамогай персанальнага API-токена. Канвертацыі паміж звязанымі балансамі імпартуюцца як пераводы. Доступ толькі для чытання: плацяжы не выконваюцца.';
+
+  @override
+  String get wiseHeadline => 'Wise API (Global)';
+
+  @override
+  String get wiseNoProfiles => 'Для токена няма даступных профіляў Wise';
+
+  @override
+  String get wiseProfile => 'Профіль';
+
+  @override
+  String get wiseScaRequired =>
+      'Wise патрабуе строгай аўтэнтыфікацыі кліента: адкрыйце выпіску гэтага балансу ў праграме Wise і паўтарыце спробу';
+
+  @override
+  String get wiseToken => 'Персанальны API-токен';
+
+  @override
+  String get wiseTokenSteps =>
+      'Як атрымаць персанальны API-токен:\n1. Увайдзіце на wise.com у браўзеры (у мабільнай праграме токены не ствараюцца)\n2. Адкрыйце Налады → Інтэграцыі і інструменты → API-токены\n3. Націсніце «Дадаць токен», задайце назву (напрыклад, Fingrom) і выберыце доступ «Толькі чытанне»\n4. Пацвердзіце двухэтапнай праверкай і скапіруйце токен\n5. Устаўце яго ніжэй і націсніце «Падлучыцца»';
+
+  @override
+  String get wiseTokenTooltip =>
+      'Ствараецца ў Wise у раздзеле Налады → API-токены (толькі для чытання, калі даступна); захоўваецца ў зашыфраваным выглядзе';
+
+  @override
   String get zoomState => 'Павялічыць / паменьшыць';
 }
 
@@ -2685,6 +2713,34 @@ class AppLocalizationsBeEu extends AppLocalizationsBe {
   @override
   String get webDav =>
       'Veb-razmierkavanaje Stvareńnie i Kiravańnie Viersijami (WebDav)';
+
+  @override
+  String get wiseDescription =>
+      'Impart reštkaŭ i aperacyj šmatvalutnych rachunkaŭ Wise z dapamohaj persanaĺnaha API-tokiena. Kanviertacyi pamiž zviazanymi balansami impartujucca jak pieravody. Dostup toĺki dla čytannia: płaciažy nie vykonvajucca.';
+
+  @override
+  String get wiseHeadline => 'Wise API (Global)';
+
+  @override
+  String get wiseNoProfiles => 'Dla tokiena niama dastupnych profilaŭ Wise';
+
+  @override
+  String get wiseProfile => 'Profiĺ';
+
+  @override
+  String get wiseScaRequired =>
+      'Wise patrabuje strohaj aŭtentyfikacyi klijenta: adkryjcie vypisku hetaha balansu ŭ prahramie Wise i paŭtarycie sprobu';
+
+  @override
+  String get wiseToken => 'Persanaĺny API-tokien';
+
+  @override
+  String get wiseTokenSteps =>
+      'Jak atrymać persanaĺny API-tokien:\n1. Uvajdzicie na wise.com u braŭzery (u mabiĺnaj prahramie tokieny nie stvarajucca)\n2. Adkryjcie Nałady → Intehracyi i instrumienty → API-tokieny\n3. Naciśnicie «Dadać tokien», zadajcie nazvu (napryklad, Fingrom) i vybierycie dostup «Toĺki čytannie»\n4. Paćvierdzicie dvuchetapnaj pravierkaj i skapirujcie tokien\n5. Ustaŭcie jaho nižej i naciśnicie «Padłučycca»';
+
+  @override
+  String get wiseTokenTooltip =>
+      'Stvarajecca ŭ Wise u raździele Nałady → API-tokieny (toĺki dla čytannia, kali dastupna); zachoŭvajecca ŭ zašyfravanym vyhladzie';
 
   @override
   String get zoomState => 'Pavialičyć / Pamieńšyć';

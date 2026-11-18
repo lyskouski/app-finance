@@ -1343,5 +1343,33 @@ class AppLocalizationsRu extends AppLocalizations {
   String get webDav => 'Веб-распределённое версионирование (WebDav)';
 
   @override
+  String get wiseDescription =>
+      'Импорт остатков и операций мультивалютных счетов Wise с помощью персонального API-токена. Конвертации между связанными балансами импортируются как переводы. Доступ только для чтения: платежи не выполняются.';
+
+  @override
+  String get wiseHeadline => 'Wise API (Global)';
+
+  @override
+  String get wiseNoProfiles => 'Для токена нет доступных профилей Wise';
+
+  @override
+  String get wiseProfile => 'Профиль';
+
+  @override
+  String get wiseScaRequired =>
+      'Wise требует строгой аутентификации клиента: откройте выписку по этому балансу в приложении Wise и повторите попытку';
+
+  @override
+  String get wiseToken => 'Персональный API-токен';
+
+  @override
+  String get wiseTokenSteps =>
+      'Как получить персональный API-токен:\n1. Войдите на wise.com в браузере (в мобильном приложении токены не создаются)\n2. Откройте Настройки → Интеграции и инструменты → API-токены\n3. Нажмите «Добавить токен», задайте имя (например, Fingrom) и выберите доступ «Только чтение»\n4. Подтвердите двухэтапной проверкой и скопируйте токен\n5. Вставьте его ниже и нажмите «Подключиться»';
+
+  @override
+  String get wiseTokenTooltip =>
+      'Создаётся в Wise в разделе Настройки → API-токены (только для чтения, если доступно); хранится в зашифрованном виде';
+
+  @override
   String get zoomState => 'Увеличить / Уменьшить';
 }

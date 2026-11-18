@@ -1343,5 +1343,34 @@ class AppLocalizationsId extends AppLocalizations {
   String get webDav => 'Web Distributed Authoring and Versioning (WebDav)';
 
   @override
+  String get wiseDescription =>
+      'Impor saldo dan transaksi akun multi-mata uang Wise dengan Token API Pribadi. Konversi antar saldo yang ditautkan diimpor sebagai transfer. Akses hanya-baca: tidak ada pembayaran yang dilakukan.';
+
+  @override
+  String get wiseHeadline => 'Wise API (Global)';
+
+  @override
+  String get wiseNoProfiles =>
+      'Tidak ada profil Wise yang tersedia untuk token ini';
+
+  @override
+  String get wiseProfile => 'Profil';
+
+  @override
+  String get wiseScaRequired =>
+      'Wise memerlukan autentikasi pelanggan yang kuat: buka laporan saldo ini di aplikasi Wise, lalu coba lagi';
+
+  @override
+  String get wiseToken => 'Token API Pribadi';
+
+  @override
+  String get wiseTokenSteps =>
+      'Cara mendapatkan Token API Pribadi:\n1. Masuk ke wise.com melalui browser (token tidak dapat dibuat di aplikasi seluler)\n2. Buka Pengaturan → Integrasi dan alat → Token API\n3. Pilih \"Tambah token baru\", beri nama (mis. Fingrom), dan pilih akses \"Hanya baca\"\n4. Konfirmasi dengan verifikasi dua langkah lalu salin token\n5. Tempel di bawah dan tekan \"Hubungkan\"';
+
+  @override
+  String get wiseTokenTooltip =>
+      'Dibuat di Wise pada Pengaturan → Token API (hanya-baca jika tersedia); disimpan terenkripsi';
+
+  @override
   String get zoomState => 'Perbesar / Perkecil';
 }

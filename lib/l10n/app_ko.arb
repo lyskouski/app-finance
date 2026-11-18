@@ -551,5 +551,13 @@
     "uuid": "고유 거래 식별자",
     "validTillDate": "유효 기간",
     "webDav": "웹 분산 저작 및 버전 관리(WebDav)",
+    "wiseDescription": "개인 API 토큰으로 Wise 다중 통화 계좌의 잔액과 거래를 가져옵니다. 연결된 잔액 간 환전은 이체로 가져옵니다. 읽기 전용 접근이며 결제는 이루어지지 않습니다.",
+    "wiseHeadline": "Wise API (Global)",
+    "wiseNoProfiles": "이 토큰으로 사용할 수 있는 Wise 프로필이 없습니다",
+    "wiseProfile": "프로필",
+    "wiseScaRequired": "Wise에서 강력한 고객 인증을 요구합니다: Wise 앱에서 이 잔액의 명세서를 연 후 다시 시도하세요",
+    "wiseToken": "개인 API 토큰",
+    "wiseTokenSteps": "개인 API 토큰 받는 방법:\n1. 브라우저에서 wise.com에 로그인합니다(모바일 앱에서는 토큰을 만들 수 없음)\n2. 설정 → 연동 및 도구 → API 토큰을 엽니다\n3. \"새 토큰 추가\"를 선택하고 이름(예: Fingrom)을 지정한 뒤 \"읽기 전용\" 권한을 선택합니다\n4. 2단계 인증으로 확인하고 토큰을 복사합니다\n5. 아래에 붙여 넣고 \"연결\"을 누릅니다",
+    "wiseTokenTooltip": "Wise의 설정 → API 토큰에서 생성합니다(가능하면 읽기 전용). 암호화되어 저장됩니다",
     "zoomState": "줌인/줌아웃"
 }

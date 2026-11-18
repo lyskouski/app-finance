@@ -1351,5 +1351,33 @@ class AppLocalizationsUz extends AppLocalizations {
       'Internetda tarqatilgan mualliflik va versiyalarni yaratish (WebDav)';
 
   @override
+  String get wiseDescription =>
+      'Shaxsiy API tokeni orqali Wise ko‘p valyutali hisoblarining qoldiqlari va tranzaksiyalarini import qiling. Bog‘langan balanslar orasidagi konvertatsiyalar o‘tkazma sifatida import qilinadi. Kirish faqat o‘qish uchun: to‘lovlar amalga oshirilmaydi.';
+
+  @override
+  String get wiseHeadline => 'Wise API (Global)';
+
+  @override
+  String get wiseNoProfiles => 'Token uchun mavjud Wise profillari yo‘q';
+
+  @override
+  String get wiseProfile => 'Profil';
+
+  @override
+  String get wiseScaRequired =>
+      'Wise mijozni kuchli autentifikatsiya qilishni talab qiladi: ushbu balans ko‘chirmasini Wise ilovasida oching va qayta urinib ko‘ring';
+
+  @override
+  String get wiseToken => 'Shaxsiy API tokeni';
+
+  @override
+  String get wiseTokenSteps =>
+      'Shaxsiy API tokenini qanday olish mumkin:\n1. Brauzerda wise.com saytiga kiring (mobil ilovada token yaratib bo‘lmaydi)\n2. Sozlamalar → Integratsiyalar va vositalar → API tokenlari bo‘limini oching\n3. «Yangi token qo‘shish»ni tanlang, nom bering (masalan, Fingrom) va «Faqat o‘qish» ruxsatini tanlang\n4. Ikki bosqichli tasdiqlash bilan tasdiqlang va tokenni nusxalang\n5. Uni quyiga joylang va «Ulanish» tugmasini bosing';
+
+  @override
+  String get wiseTokenTooltip =>
+      'Wise’da Sozlamalar → API tokenlari bo‘limida yaratiladi (imkon bo‘lsa, faqat o‘qish uchun); shifrlangan holda saqlanadi';
+
+  @override
   String get zoomState => 'Kattalashtirish / Kichraytirish';
 }

@@ -1338,5 +1338,33 @@ class AppLocalizationsFa extends AppLocalizations {
   String get webDav => 'تالیف و نسخه سازی توزیع شده وب (WebDav)';
 
   @override
+  String get wiseDescription =>
+      'وارد کردن موجودی‌ها و تراکنش‌های حساب‌های چندارزی Wise با توکن API شخصی. تبدیل‌های بین موجودی‌های پیوندشده به‌عنوان انتقال وارد می‌شوند. دسترسی فقط خواندنی است: هیچ پرداختی انجام نمی‌شود.';
+
+  @override
+  String get wiseHeadline => 'Wise API (Global)';
+
+  @override
+  String get wiseNoProfiles => 'هیچ نمایه Wise برای این توکن در دسترس نیست';
+
+  @override
+  String get wiseProfile => 'نمایه';
+
+  @override
+  String get wiseScaRequired =>
+      'Wise احراز هویت قوی مشتری را الزامی کرده است: صورت‌حساب این موجودی را در برنامه Wise باز کنید و دوباره تلاش کنید';
+
+  @override
+  String get wiseToken => 'توکن API شخصی';
+
+  @override
+  String get wiseTokenSteps =>
+      'نحوه دریافت توکن API شخصی:\n1. در مرورگر وارد wise.com شوید (در برنامه موبایل امکان ساخت توکن وجود ندارد)\n2. تنظیمات ← یکپارچه‌سازی‌ها و ابزارها ← توکن‌های API را باز کنید\n3. «افزودن توکن جدید» را انتخاب کنید، نامی بدهید (مثلاً Fingrom) و دسترسی «فقط خواندنی» را برگزینید\n4. با تأیید دومرحله‌ای تأیید کنید و توکن را کپی کنید\n5. آن را در زیر جای‌گذاری کرده و «اتصال» را بزنید';
+
+  @override
+  String get wiseTokenTooltip =>
+      'در Wise از مسیر تنظیمات ← توکن‌های API ایجاد می‌شود (در صورت امکان فقط خواندنی)؛ به‌صورت رمزگذاری‌شده ذخیره می‌شود';
+
+  @override
   String get zoomState => 'بزرگنمایی / بزرگنمایی';
 }

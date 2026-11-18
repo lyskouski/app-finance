@@ -551,5 +551,13 @@
     "uuid": "Identificator unic al tranzacției",
     "validTillDate": "Factură valabilă",
     "webDav": "Autorizare și versiune distribuite pe web (WebDav)",
+    "wiseDescription": "Importă soldurile și tranzacțiile conturilor multivalută Wise cu un token API personal. Conversiile dintre soldurile asociate sunt importate ca transferuri. Accesul este doar pentru citire: nu se efectuează plăți.",
+    "wiseHeadline": "Wise API (Global)",
+    "wiseNoProfiles": "Nu există profiluri Wise disponibile pentru token",
+    "wiseProfile": "Profil",
+    "wiseScaRequired": "Wise solicită autentificarea strictă a clientului: deschideți extrasul acestui sold în aplicația Wise, apoi reîncercați",
+    "wiseToken": "Token API personal",
+    "wiseTokenSteps": "Cum obțineți un token API personal:\n1. Conectați-vă la wise.com într-un browser (tokenurile nu pot fi create în aplicația mobilă)\n2. Deschideți Setări → Integrări și instrumente → Tokenuri API\n3. Alegeți „Adăugați un token nou”, denumiți-l (de ex. Fingrom) și selectați accesul „Doar citire”\n4. Confirmați cu verificarea în doi pași și copiați tokenul\n5. Lipiți-l mai jos și apăsați „Conectare”",
+    "wiseTokenTooltip": "Creat în Wise în Setări → Tokenuri API (doar citire, dacă este disponibil); stocat criptat",
     "zoomState": "Măriți / Micșorați"
 }

@@ -551,5 +551,13 @@
     "uuid": "Eindeutiger Transaktionsbezeichner",
     "validTillDate": "Gültig bis",
     "webDav": "Verteilte Autorisierung und Versionierung im Web (WebDav)",
+    "wiseDescription": "Salden und Umsätze von Wise-Mehrwährungskonten mit einem persönlichen API-Token importieren. Umrechnungen zwischen verknüpften Guthaben werden als Überweisungen importiert. Der Zugriff ist nur lesend: Es werden keine Zahlungen ausgeführt.",
+    "wiseHeadline": "Wise API (Global)",
+    "wiseNoProfiles": "Für das Token sind keine Wise-Profile verfügbar",
+    "wiseProfile": "Profil",
+    "wiseScaRequired": "Wise verlangt eine starke Kundenauthentifizierung: Öffnen Sie den Kontoauszug dieses Guthabens in der Wise-App und versuchen Sie es erneut",
+    "wiseToken": "Persönliches API-Token",
+    "wiseTokenSteps": "So erhalten Sie ein persönliches API-Token:\n1. Melden Sie sich im Browser bei wise.com an (in der mobilen App können keine Token erstellt werden)\n2. Öffnen Sie Einstellungen → Integrationen und Tools → API-Token\n3. Wählen Sie „Neues Token hinzufügen“, benennen Sie es (z. B. Fingrom) und wählen Sie den Zugriff „Nur lesen“\n4. Bestätigen Sie mit der Zwei-Faktor-Verifizierung und kopieren Sie das Token\n5. Fügen Sie es unten ein und tippen Sie auf „Verbinden“",
+    "wiseTokenTooltip": "Wird in Wise unter Einstellungen → API-Token erstellt (wenn möglich nur lesend); verschlüsselt gespeichert",
     "zoomState": "Vergrößern / Verkleinern"
 }

@@ -3,6 +3,9 @@
 _L'elenco completo degli aggiornamenti può essere consultato tramite la voce di navigazione “Informazioni” del
 pulsante “Suggerimenti”._
 
+### 8.1.0
+- Aggiunto Wise API (Global): saldi e importazione dei movimenti dei conti multivaluta Wise, conversioni come trasferimenti
+
 ### 8.0.0
 - Nuova pagina Integrazioni con sezioni espandibili
 - Aggiunto Financial Transaction Services (FinTS 4.1): conti, saldi e importazione dei movimenti dalle banche tedesche

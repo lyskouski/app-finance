@@ -1351,6 +1351,34 @@ class AppLocalizationsPt extends AppLocalizations {
       'Criação de versões e autoria distribuída na Web (WebDav)';
 
   @override
+  String get wiseDescription =>
+      'Importe saldos e transações de contas multimoeda Wise com um token de API pessoal. As conversões entre saldos vinculados são importadas como transferências. O acesso é somente leitura: nenhum pagamento é efetuado.';
+
+  @override
+  String get wiseHeadline => 'Wise API (Global)';
+
+  @override
+  String get wiseNoProfiles => 'Não há perfis Wise disponíveis para o token';
+
+  @override
+  String get wiseProfile => 'Perfil';
+
+  @override
+  String get wiseScaRequired =>
+      'A Wise exige uma autenticação forte do cliente: abra o extrato deste saldo na aplicação Wise e tente novamente';
+
+  @override
+  String get wiseToken => 'Token de API pessoal';
+
+  @override
+  String get wiseTokenSteps =>
+      'Como obter um token de API pessoal:\n1. Inicie sessão em wise.com num navegador (os tokens não podem ser criados na aplicação móvel)\n2. Abra Definições → Integrações e ferramentas → Tokens de API\n3. Escolha \"Adicionar novo token\", dê-lhe um nome (p. ex. Fingrom) e selecione o acesso \"Só de leitura\"\n4. Confirme com a verificação em dois passos e copie o token\n5. Cole-o abaixo e prima \"Ligar\"';
+
+  @override
+  String get wiseTokenTooltip =>
+      'Criado na Wise em Definições → Tokens de API (só de leitura, se disponível); guardado encriptado';
+
+  @override
   String get zoomState => 'Ampliar / Reduzir o zoom';
 }
 
@@ -2697,6 +2725,34 @@ class AppLocalizationsPtBr extends AppLocalizationsPt {
   @override
   String get webDav =>
       'Autoria e controle de versão distribuídos pela Web (WebDav)';
+
+  @override
+  String get wiseDescription =>
+      'Importe saldos e transações de contas multimoeda Wise com um token de API pessoal. As conversões entre saldos vinculados são importadas como transferências. O acesso é somente leitura: nenhum pagamento é efetuado.';
+
+  @override
+  String get wiseHeadline => 'Wise API (Global)';
+
+  @override
+  String get wiseNoProfiles => 'Não há perfis Wise disponíveis para o token';
+
+  @override
+  String get wiseProfile => 'Perfil';
+
+  @override
+  String get wiseScaRequired =>
+      'A Wise exige uma autenticação forte do cliente: abra o extrato deste saldo no aplicativo Wise e tente novamente';
+
+  @override
+  String get wiseToken => 'Token de API pessoal';
+
+  @override
+  String get wiseTokenSteps =>
+      'Como obter um token de API pessoal:\n1. Entre em wise.com pelo navegador (não é possível criar tokens no aplicativo)\n2. Abra Configurações → Integrações e ferramentas → Tokens de API\n3. Escolha \"Adicionar novo token\", dê um nome (ex.: Fingrom) e selecione o acesso \"Somente leitura\"\n4. Confirme com a verificação em duas etapas e copie o token\n5. Cole-o abaixo e toque em \"Conectar\"';
+
+  @override
+  String get wiseTokenTooltip =>
+      'Criado na Wise em Configurações → Tokens de API (somente leitura, se disponível); armazenado criptografado';
 
   @override
   String get zoomState => 'Ampliar / Reduzir o zoom';

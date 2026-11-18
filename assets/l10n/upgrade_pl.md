@@ -2,6 +2,9 @@
 
 _Pełną listę aktualizacji można wyświetlić za pomocą elementu nawigacyjnego "O aplikacji" na przycisku "Wskazówki"._
 
+### 8.1.0
+- Dodano Wise API (Global): salda i import transakcji wielowalutowych kont Wise, przewalutowania jako przelewy
+
 ### 8.0.0
 - Nowa strona Integracje z rozwijanymi sekcjami
 - Dodano Financial Transaction Services (FinTS 4.1): konta, salda i import transakcji z niemieckich banków

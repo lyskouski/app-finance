@@ -551,5 +551,13 @@
     "uuid": "Pengenal Unik Transaksi",
     "validTillDate": "Berlaku Hingga",
     "webDav": "Web Distributed Authoring and Versioning (WebDav)",
+    "wiseDescription": "Impor saldo dan transaksi akun multi-mata uang Wise dengan Token API Pribadi. Konversi antar saldo yang ditautkan diimpor sebagai transfer. Akses hanya-baca: tidak ada pembayaran yang dilakukan.",
+    "wiseHeadline": "Wise API (Global)",
+    "wiseNoProfiles": "Tidak ada profil Wise yang tersedia untuk token ini",
+    "wiseProfile": "Profil",
+    "wiseScaRequired": "Wise memerlukan autentikasi pelanggan yang kuat: buka laporan saldo ini di aplikasi Wise, lalu coba lagi",
+    "wiseToken": "Token API Pribadi",
+    "wiseTokenSteps": "Cara mendapatkan Token API Pribadi:\n1. Masuk ke wise.com melalui browser (token tidak dapat dibuat di aplikasi seluler)\n2. Buka Pengaturan → Integrasi dan alat → Token API\n3. Pilih \"Tambah token baru\", beri nama (mis. Fingrom), dan pilih akses \"Hanya baca\"\n4. Konfirmasi dengan verifikasi dua langkah lalu salin token\n5. Tempel di bawah dan tekan \"Hubungkan\"",
+    "wiseTokenTooltip": "Dibuat di Wise pada Pengaturan → Token API (hanya-baca jika tersedia); disimpan terenkripsi",
     "zoomState": "Perbesar / Perkecil"
 }

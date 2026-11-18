@@ -551,5 +551,13 @@
     "uuid": "Identificatore unico di transazione",
     "validTillDate": "Scadenza valida",
     "webDav": "Autenticazione e versionamento distribuiti via web (WebDav)",
+    "wiseDescription": "Importa saldi e transazioni dei conti multivaluta Wise con un token API personale. Le conversioni tra saldi collegati vengono importate come trasferimenti. L’accesso è di sola lettura: non vengono effettuati pagamenti.",
+    "wiseHeadline": "Wise API (Global)",
+    "wiseNoProfiles": "Nessun profilo Wise disponibile per il token",
+    "wiseProfile": "Profilo",
+    "wiseScaRequired": "Wise richiede un’autenticazione forte del cliente: apri l’estratto conto di questo saldo nell’app Wise, quindi riprova",
+    "wiseToken": "Token API personale",
+    "wiseTokenSteps": "Come ottenere un token API personale:\n1. Accedi a wise.com da un browser (i token non si possono creare nell’app mobile)\n2. Apri Impostazioni → Integrazioni e strumenti → Token API\n3. Scegli «Aggiungi nuovo token», assegna un nome (ad es. Fingrom) e seleziona l’accesso «Sola lettura»\n4. Conferma con la verifica in due passaggi e copia il token\n5. Incollalo qui sotto e premi «Connetti»",
+    "wiseTokenTooltip": "Creato in Wise in Impostazioni → Token API (di sola lettura, se disponibile); memorizzato cifrato",
     "zoomState": "Zoom avanti / Zoom indietro"
 }
