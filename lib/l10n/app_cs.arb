@@ -341,6 +341,7 @@
     "integrationAccessDenied": "Přístup byl odvolán nebo jsou přihlašovací údaje nesprávné",
     "integrationConnect": "Připojit",
     "integrationDateFrom": "Importovat transakce od",
+    "integrationDefaultBudgetCategory": "Výchozí kategorie rozpočtu",
     "integrationDisconnect": "Odpojit",
     "integrationForget": "Zapomenout přístup",
     "integrationHeadline": "Integrace",

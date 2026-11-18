@@ -853,6 +853,9 @@ class AppLocalizationsDe extends AppLocalizations {
   String get integrationDateFrom => 'Umsätze importieren ab';
 
   @override
+  String get integrationDefaultBudgetCategory => 'Standard-Budgetkategorie';
+
+  @override
   String get integrationDisconnect => 'Trennen';
 
   @override

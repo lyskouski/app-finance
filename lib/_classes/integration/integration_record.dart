@@ -1,6 +1,7 @@
 // Copyright 2026 The terCAD team. All rights reserved.
 // Use of this source code is governed by a CC BY-NC-ND 4.0 license that can be found in the LICENSE file.
 
+import 'package:app_finance/_classes/math/budget_prediction.dart';
 import 'package:app_finance/_classes/structure/bill_app_data.dart';
 import 'package:app_finance/_classes/structure/interface_app_data.dart';
 import 'package:app_finance/_classes/structure/invoice_app_data.dart';
@@ -16,10 +17,11 @@ class IntegrationRecord {
     required String title,
     required String account,
     required String category,
+    BudgetPrediction? prediction,
   }) {
     final code = currency != null ? CurrencyProvider.find(currency) : null;
     if (amount < 0) {
-      return BillAppData(
+      final bill = BillAppData(
         account: account,
         category: category,
         title: title,
@@ -29,6 +31,11 @@ class IntegrationRecord {
         updatedAt: date,
         hidden: false,
       );
+      final categories = prediction?.predict(bill) ?? const [];
+      if (categories.isNotEmpty) {
+        bill.category = categories.first;
+      }
+      return bill;
     }
     return InvoiceAppData(
       account: account,

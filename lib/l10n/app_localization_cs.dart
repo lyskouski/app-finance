@@ -848,6 +848,9 @@ class AppLocalizationsCs extends AppLocalizations {
   String get integrationDateFrom => 'Importovat transakce od';
 
   @override
+  String get integrationDefaultBudgetCategory => 'Výchozí kategorie rozpočtu';
+
+  @override
   String get integrationDisconnect => 'Odpojit';
 
   @override

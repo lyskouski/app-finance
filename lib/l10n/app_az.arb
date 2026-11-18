@@ -341,6 +341,7 @@
     "integrationAccessDenied": "Giriş ləğv edilib və ya giriş məlumatları yanlışdır",
     "integrationConnect": "Qoşul",
     "integrationDateFrom": "Əməliyyatları bu tarixdən idxal et",
+    "integrationDefaultBudgetCategory": "Defolt büdcə kateqoriyası",
     "integrationDisconnect": "Ayrıl",
     "integrationForget": "Girişi unut",
     "integrationHeadline": "İnteqrasiyalar",

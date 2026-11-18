@@ -233,6 +233,7 @@ class FinTsWidgetState extends State<FinTsWidget> {
           transactions: transactions,
           account: item.appAccount!,
           category: item.category!,
+          prediction: state.prediction,
         );
         await state.restate();
         final today = DateTime.now();

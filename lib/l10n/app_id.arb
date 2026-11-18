@@ -341,6 +341,7 @@
     "integrationAccessDenied": "Akses telah dicabut atau kredensial salah",
     "integrationConnect": "Hubungkan",
     "integrationDateFrom": "Impor transaksi sejak",
+    "integrationDefaultBudgetCategory": "Kategori anggaran default",
     "integrationDisconnect": "Putuskan",
     "integrationForget": "Lupakan akses",
     "integrationHeadline": "Integrasi",

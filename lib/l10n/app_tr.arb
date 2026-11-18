@@ -341,6 +341,7 @@
     "integrationAccessDenied": "Erişim iptal edildi veya kimlik bilgileri yanlış",
     "integrationConnect": "Bağlan",
     "integrationDateFrom": "İşlemleri şu tarihten itibaren içe aktar",
+    "integrationDefaultBudgetCategory": "Varsayılan bütçe kategorisi",
     "integrationDisconnect": "Bağlantıyı kes",
     "integrationForget": "Erişimi unut",
     "integrationHeadline": "Entegrasyonlar",

@@ -139,7 +139,12 @@ class SimpleFinWidgetState extends State<SimpleFinWidget> {
           add: (value, uuid) => TransactionLog.save(state.add(value, uuid)),
         );
         final summary = source != null
-            ? importer.run(source: source, account: item.appAccount!, category: item.category!)
+            ? importer.run(
+                source: source,
+                account: item.appAccount!,
+                category: item.category!,
+                prediction: state.prediction,
+              )
             : (added: 0, skipped: 0, pending: 0);
         await state.restate();
         final today = DateTime.now();

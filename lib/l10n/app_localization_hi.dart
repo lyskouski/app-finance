@@ -849,6 +849,9 @@ class AppLocalizationsHi extends AppLocalizations {
   String get integrationDateFrom => 'इस तारीख से लेनदेन आयात करें';
 
   @override
+  String get integrationDefaultBudgetCategory => 'डिफ़ॉल्ट बजट श्रेणी';
+
+  @override
   String get integrationDisconnect => 'डिस्कनेक्ट करें';
 
   @override

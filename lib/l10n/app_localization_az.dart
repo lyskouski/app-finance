@@ -852,6 +852,9 @@ class AppLocalizationsAz extends AppLocalizations {
   String get integrationDateFrom => 'Əməliyyatları bu tarixdən idxal et';
 
   @override
+  String get integrationDefaultBudgetCategory => 'Defolt büdcə kateqoriyası';
+
+  @override
   String get integrationDisconnect => 'Ayrıl';
 
   @override

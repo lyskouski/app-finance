@@ -1729,6 +1729,12 @@ abstract class AppLocalizations {
   /// **'Import Transactions Since'**
   String get integrationDateFrom;
 
+  /// No description provided for @integrationDefaultBudgetCategory.
+  ///
+  /// In en, this message translates to:
+  /// **'Default Budget Category'**
+  String get integrationDefaultBudgetCategory;
+
   /// No description provided for @integrationDisconnect.
   ///
   /// In en, this message translates to:

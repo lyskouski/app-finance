@@ -341,6 +341,7 @@
     "integrationAccessDenied": "Kirish bekor qilingan yoki hisob ma'lumotlari noto'g'ri",
     "integrationConnect": "Ulanish",
     "integrationDateFrom": "Tranzaksiyalarni shu sanadan import qilish",
+    "integrationDefaultBudgetCategory": "Standart byudjet toifasi",
     "integrationDisconnect": "Uzish",
     "integrationForget": "Kirishni unutish",
     "integrationHeadline": "Integratsiyalar",

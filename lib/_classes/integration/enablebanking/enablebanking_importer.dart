@@ -3,6 +3,7 @@
 
 import 'package:app_finance/_classes/integration/enablebanking/enablebanking_client.dart';
 import 'package:app_finance/_classes/integration/integration_record.dart';
+import 'package:app_finance/_classes/math/budget_prediction.dart';
 import 'package:app_finance/_classes/structure/interface_app_data.dart';
 import 'package:uuid/uuid.dart';
 
@@ -17,6 +18,7 @@ class EnableBankingImporter {
     required List<EnableBankingTransaction> transactions,
     required String account,
     required String category,
+    BudgetPrediction? prediction,
   }) {
     var added = 0;
     var skipped = 0;
@@ -45,6 +47,7 @@ class EnableBankingImporter {
           title: transaction.title,
           account: account,
           category: category,
+          prediction: prediction,
         ),
         uuid,
       );

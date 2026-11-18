@@ -341,6 +341,7 @@
     "integrationAccessDenied": "De toegang is ingetrokken of de inloggegevens zijn onjuist",
     "integrationConnect": "Verbinden",
     "integrationDateFrom": "Transacties importeren vanaf",
+    "integrationDefaultBudgetCategory": "Standaard budgetcategorie",
     "integrationDisconnect": "Verbinding verbreken",
     "integrationForget": "Toegang vergeten",
     "integrationHeadline": "Integraties",

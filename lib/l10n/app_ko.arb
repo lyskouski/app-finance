@@ -341,6 +341,7 @@
     "integrationAccessDenied": "접근 권한이 취소되었거나 자격 증명이 올바르지 않습니다",
     "integrationConnect": "연결",
     "integrationDateFrom": "거래 가져오기 시작일",
+    "integrationDefaultBudgetCategory": "기본 예산 카테고리",
     "integrationDisconnect": "연결 해제",
     "integrationForget": "접근 정보 삭제",
     "integrationHeadline": "통합",

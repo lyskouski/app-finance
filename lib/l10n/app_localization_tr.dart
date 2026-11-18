@@ -850,6 +850,9 @@ class AppLocalizationsTr extends AppLocalizations {
   String get integrationDateFrom => 'İşlemleri şu tarihten itibaren içe aktar';
 
   @override
+  String get integrationDefaultBudgetCategory => 'Varsayılan bütçe kategorisi';
+
+  @override
   String get integrationDisconnect => 'Bağlantıyı kes';
 
   @override

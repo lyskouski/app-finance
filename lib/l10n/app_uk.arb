@@ -341,6 +341,7 @@
     "integrationAccessDenied": "Доступ відкликано або облікові дані неправильні",
     "integrationConnect": "Підключитися",
     "integrationDateFrom": "Імпортувати операції з",
+    "integrationDefaultBudgetCategory": "Категорія бюджету за замовчуванням",
     "integrationDisconnect": "Відключитися",
     "integrationForget": "Забути доступ",
     "integrationHeadline": "Інтеграції",

@@ -3,6 +3,7 @@
 
 import 'package:app_finance/_classes/integration/integration_record.dart';
 import 'package:app_finance/_classes/integration/wise/wise_client.dart';
+import 'package:app_finance/_classes/math/budget_prediction.dart';
 import 'package:app_finance/_classes/structure/currency_app_data.dart';
 import 'package:app_finance/_classes/structure/interface_app_data.dart';
 import 'package:app_finance/_classes/structure/invoice_app_data.dart';
@@ -32,6 +33,7 @@ class WiseImporter {
     required List<WiseTransaction> transactions,
     required String account,
     required String category,
+    BudgetPrediction? prediction,
     Map<String, WiseCounterpart> counterparts = const {},
   }) {
     var added = 0;
@@ -63,6 +65,7 @@ class WiseImporter {
           title: transaction.description,
           account: account,
           category: category,
+          prediction: prediction,
         ),
         own,
       );

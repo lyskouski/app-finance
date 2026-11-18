@@ -341,6 +341,7 @@
     "integrationAccessDenied": "Доступ отозван или учётные данные неверны",
     "integrationConnect": "Подключиться",
     "integrationDateFrom": "Импортировать операции с",
+    "integrationDefaultBudgetCategory": "Категория бюджета по умолчанию",
     "integrationDisconnect": "Отключиться",
     "integrationForget": "Забыть доступ",
     "integrationHeadline": "Интеграции",

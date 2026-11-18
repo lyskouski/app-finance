@@ -341,6 +341,7 @@
     "integrationAccessDenied": "O acesso foi revogado ou as credenciais estão incorretas",
     "integrationConnect": "Conectar",
     "integrationDateFrom": "Importar transações desde",
+    "integrationDefaultBudgetCategory": "Categoria de orçamento padrão",
     "integrationDisconnect": "Desconectar",
     "integrationForget": "Esquecer o acesso",
     "integrationHeadline": "Integrações",

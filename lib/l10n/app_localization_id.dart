@@ -850,6 +850,9 @@ class AppLocalizationsId extends AppLocalizations {
   String get integrationDateFrom => 'Impor transaksi sejak';
 
   @override
+  String get integrationDefaultBudgetCategory => 'Kategori anggaran default';
+
+  @override
   String get integrationDisconnect => 'Putuskan';
 
   @override

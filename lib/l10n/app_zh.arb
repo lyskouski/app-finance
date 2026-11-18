@@ -341,6 +341,7 @@
     "integrationAccessDenied": "访问已被撤销或凭据不正确",
     "integrationConnect": "连接",
     "integrationDateFrom": "导入交易的起始日期",
+    "integrationDefaultBudgetCategory": "默认预算类别",
     "integrationDisconnect": "断开连接",
     "integrationForget": "删除访问权限",
     "integrationHeadline": "集成",

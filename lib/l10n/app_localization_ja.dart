@@ -838,6 +838,9 @@ class AppLocalizationsJa extends AppLocalizations {
   String get integrationDateFrom => '取引のインポート開始日';
 
   @override
+  String get integrationDefaultBudgetCategory => 'デフォルトの予算カテゴリ';
+
+  @override
   String get integrationDisconnect => '切断';
 
   @override

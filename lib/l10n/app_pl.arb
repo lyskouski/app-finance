@@ -341,6 +341,7 @@
     "integrationAccessDenied": "Dostęp został cofnięty lub dane logowania są nieprawidłowe",
     "integrationConnect": "Połącz",
     "integrationDateFrom": "Importuj transakcje od",
+    "integrationDefaultBudgetCategory": "Domyślna kategoria budżetu",
     "integrationDisconnect": "Rozłącz",
     "integrationForget": "Zapomnij dostęp",
     "integrationHeadline": "Integracje",

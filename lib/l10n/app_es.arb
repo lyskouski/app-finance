@@ -341,6 +341,7 @@
     "integrationAccessDenied": "El acceso se ha revocado o las credenciales son incorrectas",
     "integrationConnect": "Conectar",
     "integrationDateFrom": "Importar movimientos desde",
+    "integrationDefaultBudgetCategory": "Categoría de presupuesto predeterminada",
     "integrationDisconnect": "Desconectar",
     "integrationForget": "Olvidar el acceso",
     "integrationHeadline": "Integraciones",

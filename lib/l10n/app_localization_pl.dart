@@ -847,6 +847,9 @@ class AppLocalizationsPl extends AppLocalizations {
   String get integrationDateFrom => 'Importuj transakcje od';
 
   @override
+  String get integrationDefaultBudgetCategory => 'Domyślna kategoria budżetu';
+
+  @override
   String get integrationDisconnect => 'Rozłącz';
 
   @override

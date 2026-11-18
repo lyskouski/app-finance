@@ -835,6 +835,9 @@ class AppLocalizationsZh extends AppLocalizations {
   String get integrationDateFrom => '导入交易的起始日期';
 
   @override
+  String get integrationDefaultBudgetCategory => '默认预算类别';
+
+  @override
   String get integrationDisconnect => '断开连接';
 
   @override
@@ -2178,6 +2181,9 @@ class AppLocalizationsZhTw extends AppLocalizationsZh {
 
   @override
   String get integrationDateFrom => '匯入交易的起始日期';
+
+  @override
+  String get integrationDefaultBudgetCategory => '預設預算類別';
 
   @override
   String get integrationDisconnect => '中斷連線';

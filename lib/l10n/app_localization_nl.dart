@@ -850,6 +850,9 @@ class AppLocalizationsNl extends AppLocalizations {
   String get integrationDateFrom => 'Transacties importeren vanaf';
 
   @override
+  String get integrationDefaultBudgetCategory => 'Standaard budgetcategorie';
+
+  @override
   String get integrationDisconnect => 'Verbinding verbreken';
 
   @override

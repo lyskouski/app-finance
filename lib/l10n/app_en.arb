@@ -341,6 +341,7 @@
     "integrationAccessDenied": "Access has been revoked or the credentials are incorrect",
     "integrationConnect": "Connect",
     "integrationDateFrom": "Import Transactions Since",
+    "integrationDefaultBudgetCategory": "Default Budget Category",
     "integrationDisconnect": "Disconnect",
     "integrationForget": "Forget Access",
     "integrationHeadline": "Integrations",

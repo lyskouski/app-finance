@@ -850,6 +850,10 @@ class AppLocalizationsUk extends AppLocalizations {
   String get integrationDateFrom => 'Імпортувати операції з';
 
   @override
+  String get integrationDefaultBudgetCategory =>
+      'Категорія бюджету за замовчуванням';
+
+  @override
   String get integrationDisconnect => 'Відключитися';
 
   @override

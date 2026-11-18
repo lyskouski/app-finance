@@ -854,6 +854,9 @@ class AppLocalizationsUz extends AppLocalizations {
       'Tranzaksiyalarni shu sanadan import qilish';
 
   @override
+  String get integrationDefaultBudgetCategory => 'Standart byudjet toifasi';
+
+  @override
   String get integrationDisconnect => 'Uzish';
 
   @override

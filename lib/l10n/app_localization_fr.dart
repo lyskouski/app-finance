@@ -854,6 +854,10 @@ class AppLocalizationsFr extends AppLocalizations {
   String get integrationDateFrom => 'Importer les opérations depuis';
 
   @override
+  String get integrationDefaultBudgetCategory =>
+      'Catégorie de budget par défaut';
+
+  @override
   String get integrationDisconnect => 'Se déconnecter';
 
   @override

@@ -848,6 +848,9 @@ class AppLocalizationsFa extends AppLocalizations {
   String get integrationDateFrom => 'وارد کردن تراکنش‌ها از تاریخ';
 
   @override
+  String get integrationDefaultBudgetCategory => 'دسته‌بندی پیش‌فرض بودجه';
+
+  @override
   String get integrationDisconnect => 'قطع اتصال';
 
   @override

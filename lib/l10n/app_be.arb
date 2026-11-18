@@ -341,6 +341,7 @@
     "integrationAccessDenied": "Доступ адкліканы або ўліковыя даныя няправільныя",
     "integrationConnect": "Падлучыцца",
     "integrationDateFrom": "Імпартаваць аперацыі з",
+    "integrationDefaultBudgetCategory": "Катэгорыя бюджэту па змаўчанні",
     "integrationDisconnect": "Адлучыцца",
     "integrationForget": "Забыць доступ",
     "integrationHeadline": "Інтэграцыі",

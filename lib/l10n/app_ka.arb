@@ -341,6 +341,7 @@
     "integrationAccessDenied": "წვდომა გაუქმებულია ან მონაცემები არასწორია",
     "integrationConnect": "დაკავშირება",
     "integrationDateFrom": "ტრანზაქციების იმპორტი თარიღიდან",
+    "integrationDefaultBudgetCategory": "ნაგულისხმევი ბიუჯეტის კატეგორია",
     "integrationDisconnect": "გათიშვა",
     "integrationForget": "წვდომის დავიწყება",
     "integrationHeadline": "ინტეგრაციები",

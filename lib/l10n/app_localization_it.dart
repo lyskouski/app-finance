@@ -852,6 +852,10 @@ class AppLocalizationsIt extends AppLocalizations {
   String get integrationDateFrom => 'Importa movimenti dal';
 
   @override
+  String get integrationDefaultBudgetCategory =>
+      'Categoria di budget predefinita';
+
+  @override
   String get integrationDisconnect => 'Disconnetti';
 
   @override

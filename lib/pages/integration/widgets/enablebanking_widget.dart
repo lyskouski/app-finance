@@ -247,6 +247,7 @@ class EnableBankingWidgetState extends State<EnableBankingWidget> {
           transactions: transactions,
           account: item.appAccount!,
           category: item.category!,
+          prediction: state.prediction,
         );
         await state.restate();
         final today = DateTime.now();

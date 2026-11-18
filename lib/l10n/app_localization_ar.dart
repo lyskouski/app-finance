@@ -846,6 +846,9 @@ class AppLocalizationsAr extends AppLocalizations {
   String get integrationDateFrom => 'استيراد المعاملات منذ';
 
   @override
+  String get integrationDefaultBudgetCategory => 'فئة الميزانية الافتراضية';
+
+  @override
   String get integrationDisconnect => 'قطع الاتصال';
 
   @override

@@ -852,6 +852,9 @@ class AppLocalizationsRo extends AppLocalizations {
   String get integrationDateFrom => 'Importă tranzacțiile din';
 
   @override
+  String get integrationDefaultBudgetCategory => 'Categorie implicită de buget';
+
+  @override
   String get integrationDisconnect => 'Deconectare';
 
   @override

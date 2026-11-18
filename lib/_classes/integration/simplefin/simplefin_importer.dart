@@ -1,6 +1,7 @@
 // Copyright 2026 The terCAD team. All rights reserved.
 // Use of this source code is governed by a CC BY-NC-ND 4.0 license that can be found in the LICENSE file.
 
+import 'package:app_finance/_classes/math/budget_prediction.dart';
 import 'package:app_finance/_classes/integration/integration_record.dart';
 import 'package:app_finance/_classes/integration/simplefin/simplefin_client.dart';
 import 'package:app_finance/_classes/structure/interface_app_data.dart';
@@ -16,6 +17,7 @@ class SimpleFinImporter {
     required SimpleFinAccount source,
     required String account,
     required String category,
+    BudgetPrediction? prediction,
   }) {
     var added = 0;
     var skipped = 0;
@@ -39,6 +41,7 @@ class SimpleFinImporter {
           title: transaction.description,
           account: account,
           category: category,
+          prediction: prediction,
         ),
         uuid,
       );

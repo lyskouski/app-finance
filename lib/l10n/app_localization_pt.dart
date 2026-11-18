@@ -851,6 +851,10 @@ class AppLocalizationsPt extends AppLocalizations {
   String get integrationDateFrom => 'Importar movimentos desde';
 
   @override
+  String get integrationDefaultBudgetCategory =>
+      'Categoria de orçamento predefinida';
+
+  @override
   String get integrationDisconnect => 'Desligar';
 
   @override
@@ -2226,6 +2230,10 @@ class AppLocalizationsPtBr extends AppLocalizationsPt {
 
   @override
   String get integrationDateFrom => 'Importar transações desde';
+
+  @override
+  String get integrationDefaultBudgetCategory =>
+      'Categoria de orçamento padrão';
 
   @override
   String get integrationDisconnect => 'Desconectar';

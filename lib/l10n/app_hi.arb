@@ -341,6 +341,7 @@
     "integrationAccessDenied": "पहुँच रद्द कर दी गई है या क्रेडेंशियल गलत हैं",
     "integrationConnect": "कनेक्ट करें",
     "integrationDateFrom": "इस तारीख से लेनदेन आयात करें",
+    "integrationDefaultBudgetCategory": "डिफ़ॉल्ट बजट श्रेणी",
     "integrationDisconnect": "डिस्कनेक्ट करें",
     "integrationForget": "पहुँच भूल जाएँ",
     "integrationHeadline": "एकीकरण",

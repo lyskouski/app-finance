@@ -341,6 +341,7 @@
     "integrationAccessDenied": "Der Zugriff wurde widerrufen oder die Zugangsdaten sind falsch",
     "integrationConnect": "Verbinden",
     "integrationDateFrom": "Umsätze importieren ab",
+    "integrationDefaultBudgetCategory": "Standard-Budgetkategorie",
     "integrationDisconnect": "Trennen",
     "integrationForget": "Zugriff vergessen",
     "integrationHeadline": "Integrationen",

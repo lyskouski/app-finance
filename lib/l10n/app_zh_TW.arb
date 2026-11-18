@@ -341,6 +341,7 @@
     "integrationAccessDenied": "存取已被撤銷或憑證不正確",
     "integrationConnect": "連線",
     "integrationDateFrom": "匯入交易的起始日期",
+    "integrationDefaultBudgetCategory": "預設預算類別",
     "integrationDisconnect": "中斷連線",
     "integrationForget": "移除存取權",
     "integrationHeadline": "整合",

@@ -850,6 +850,10 @@ class AppLocalizationsBe extends AppLocalizations {
   String get integrationDateFrom => 'Імпартаваць аперацыі з';
 
   @override
+  String get integrationDefaultBudgetCategory =>
+      'Катэгорыя бюджэту па змаўчанні';
+
+  @override
   String get integrationDisconnect => 'Адлучыцца';
 
   @override
@@ -2219,6 +2223,10 @@ class AppLocalizationsBeEu extends AppLocalizationsBe {
 
   @override
   String get integrationDateFrom => 'Impartavać aperacyi z';
+
+  @override
+  String get integrationDefaultBudgetCategory =>
+      'Katehoryja biudžetu pa zmaŭčanni';
 
   @override
   String get integrationDisconnect => 'Adłučycca';

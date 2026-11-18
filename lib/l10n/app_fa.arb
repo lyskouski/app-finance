@@ -341,6 +341,7 @@
     "integrationAccessDenied": "دسترسی لغو شده یا اطلاعات ورود نادرست است",
     "integrationConnect": "اتصال",
     "integrationDateFrom": "وارد کردن تراکنش‌ها از تاریخ",
+    "integrationDefaultBudgetCategory": "دسته‌بندی پیش‌فرض بودجه",
     "integrationDisconnect": "قطع اتصال",
     "integrationForget": "فراموش کردن دسترسی",
     "integrationHeadline": "یکپارچه‌سازی‌ها",

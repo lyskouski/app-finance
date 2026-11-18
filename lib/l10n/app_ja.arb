@@ -341,6 +341,7 @@
     "integrationAccessDenied": "アクセスが取り消されたか、認証情報が正しくありません",
     "integrationConnect": "接続",
     "integrationDateFrom": "取引のインポート開始日",
+    "integrationDefaultBudgetCategory": "デフォルトの予算カテゴリ",
     "integrationDisconnect": "切断",
     "integrationForget": "アクセスを削除",
     "integrationHeadline": "連携",

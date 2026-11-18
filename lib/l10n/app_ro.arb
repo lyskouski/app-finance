@@ -341,6 +341,7 @@
     "integrationAccessDenied": "Accesul a fost revocat sau datele de autentificare sunt incorecte",
     "integrationConnect": "Conectare",
     "integrationDateFrom": "Importă tranzacțiile din",
+    "integrationDefaultBudgetCategory": "Categorie implicită de buget",
     "integrationDisconnect": "Deconectare",
     "integrationForget": "Uită accesul",
     "integrationHeadline": "Integrări",

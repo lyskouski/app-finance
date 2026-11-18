@@ -66,7 +66,7 @@ class IntegrationAccountCard extends StatelessWidget {
               ),
               InputWrapper(
                 type: NamedInputType.budgetSelector,
-                title: AppLocale.labels.budget,
+                title: AppLocale.labels.integrationDefaultBudgetCategory,
                 isRequired: true,
                 value: target.category != null ? state.getByUuid(target.category!) : null,
                 onChange: (value) {

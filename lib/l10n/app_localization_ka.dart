@@ -851,6 +851,10 @@ class AppLocalizationsKa extends AppLocalizations {
   String get integrationDateFrom => 'ტრანზაქციების იმპორტი თარიღიდან';
 
   @override
+  String get integrationDefaultBudgetCategory =>
+      'ნაგულისხმევი ბიუჯეტის კატეგორია';
+
+  @override
   String get integrationDisconnect => 'გათიშვა';
 
   @override

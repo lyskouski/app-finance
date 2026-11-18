@@ -849,6 +849,9 @@ class AppLocalizationsEn extends AppLocalizations {
   String get integrationDateFrom => 'Import Transactions Since';
 
   @override
+  String get integrationDefaultBudgetCategory => 'Default Budget Category';
+
+  @override
   String get integrationDisconnect => 'Disconnect';
 
   @override

@@ -850,6 +850,10 @@ class AppLocalizationsRu extends AppLocalizations {
   String get integrationDateFrom => 'Импортировать операции с';
 
   @override
+  String get integrationDefaultBudgetCategory =>
+      'Категория бюджета по умолчанию';
+
+  @override
   String get integrationDisconnect => 'Отключиться';
 
   @override

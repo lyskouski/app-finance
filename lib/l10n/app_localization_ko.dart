@@ -839,6 +839,9 @@ class AppLocalizationsKo extends AppLocalizations {
   String get integrationDateFrom => '거래 가져오기 시작일';
 
   @override
+  String get integrationDefaultBudgetCategory => '기본 예산 카테고리';
+
+  @override
   String get integrationDisconnect => '연결 해제';
 
   @override

@@ -185,6 +185,7 @@ class WiseWidgetState extends State<WiseWidget> {
           transactions: transactions,
           account: item.appAccount!,
           category: item.category!,
+          prediction: state.prediction,
           counterparts: _counterparts(item),
         );
         await state.restate();
