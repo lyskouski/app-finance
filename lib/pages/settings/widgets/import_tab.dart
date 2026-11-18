@@ -103,7 +103,7 @@ class ImportTabState extends State<ImportTab> {
       return item;
     }
 
-    final parser = FileParser(columnMap: columnMap, search: fnSearch, add: fnAdd);
+    final parser = FileParser(columnMap: columnMap, search: fnSearch, add: fnAdd, prediction: state.prediction);
     final def = {
       FileParser.attrAccountName: attrValue[FileParser.attrAccountName],
       FileParser.attrCategoryName: attrValue[FileParser.attrCategoryName],

@@ -4,6 +4,7 @@
 import 'dart:async';
 
 import 'package:app_finance/_classes/herald/app_locale.dart';
+import 'package:app_finance/_classes/math/budget_prediction.dart';
 import 'package:app_finance/_classes/storage/app_data.dart';
 import 'package:app_finance/_classes/structure/account_app_data.dart';
 import 'package:app_finance/_classes/structure/bill_app_data.dart';
@@ -32,6 +33,7 @@ class FileParser {
   List<String> columnMap;
   SearchFunction search;
   AddFunction add;
+  BudgetPrediction? prediction;
 
   String? _defaultCurrency;
   final _cache = <AppDataType, Map<String, String?>>{};
@@ -39,6 +41,7 @@ class FileParser {
   FileParser({
     required this.search,
     required this.add,
+    this.prediction,
     this.columnMap = const [],
   });
 
@@ -95,10 +98,11 @@ class FileParser {
         hidden: false,
       );
     } else {
+      final categoryFromFile = _get(line, attrCategoryName);
       newItem = BillAppData(
         uuid: uuid,
         account: account,
-        category: await _find(AppDataType.budgets, line, _get(line, attrCategoryName), defaultBudget),
+        category: await _find(AppDataType.budgets, line, categoryFromFile, defaultBudget),
         title: _get(line, attrBillComment).toString(),
         details: 0.0 + amount,
         createdAt: date,
@@ -106,6 +110,12 @@ class FileParser {
         currency: _getCurrency(line, _defaultCurrency),
         hidden: false,
       );
+      if (categoryFromFile == null) {
+        final categories = prediction?.predict(newItem) ?? const [];
+        if (categories.isNotEmpty) {
+          newItem.category = categories.first;
+        }
+      }
     }
     return newItem;
   }
